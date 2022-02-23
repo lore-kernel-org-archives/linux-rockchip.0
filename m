@@ -4,8 +4,8 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EAD4C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Feb 2022 08:41:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ABEEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Feb 2022 08:52:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
@@ -13,132 +13,139 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=Azi3a6ccMKg+bN28/4a/oNysyNPFGyhK6d12aU2jS4Y=; b=aMhHrTynQdfmtb1CusNpFFz6YH
-	nRrhf/YwD6pjVzjzeBL8fO3LntD7YzAy+vcffPS90MiVLGuIu3yLd6aeicDf+8jciYdVZQ6hG+Jbh
-	VehHWfZib1CQ9TogUfI6RD21xX/9ZlWaPefZuFUBq2vAEquVXmQokmtblPVyJSmbUgJDlfTDXEP1p
-	X+pY7wkrWUuog6wN+fqnFCLi3xsCAMc8nCTnbDnb0KtgJ5uSNKUBsoeYy5MIA2agD0+IWKhlv/1cJ
-	0KvHFG+/QOfsmF7KI0beiaIv5YIn9kybKYRxNzp6cayJ5zDXe/D0wCEj8ZGvHC9djSwvG7LmUvvg/
-	T2AtUszA==;
+	bh=sanDcQP/VCioBysUuqb2y8VTTCKuNZY/Ozh+qdoFj5A=; b=Y0Gq/6zJkKl5fllOZy78/PAhg5
+	KuHgGNQyWGMhB/anBO2BQ1YkXMejSFsHOCja46QeRJOzCjqCeLcPe2blYOloyNe86OqWmnBjec/6V
+	bS0x3kmpknlGakMgtD23E+poXWHSi4TXhjgJwGq6ORdIapDJ0BKd3oiYRVlDd+ED6D1U+paJe+LXX
+	8EJTBV/nIvoQL3xXkTrp5TZJLRwzwmsovCjMUh8Rx143ELUzdXaCnE6l26hV1/Fz8TUkt3BZocrFd
+	TTwfbsOy7nIrRhM1QyWgOJC7A8AnhUUYntRqgzi6+GVxTS3gYnR5Qgh2Sz9WUcfrzTwcyjLifEdq0
+	nlsVKA7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nMnDP-00DIH6-5T; Wed, 23 Feb 2022 08:41:39 +0000
-Received: from mail-am5eur02on060d.outbound.protection.outlook.com
- ([2a01:111:f400:fe07::60d]
- helo=EUR02-AM5-obe.outbound.protection.outlook.com)
+	id 1nMnNV-00DKYZ-3m; Wed, 23 Feb 2022 08:52:05 +0000
+Received: from mail-vi1eur04on062b.outbound.protection.outlook.com
+ ([2a01:111:f400:fe0e::62b]
+ helo=EUR04-VI1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nMnDC-00DIFI-SB; Wed, 23 Feb 2022 08:41:28 +0000
+ id 1nMnNN-00DKWP-L3; Wed, 23 Feb 2022 08:52:03 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WkK+8I9yiUeZQWLKYJIJ6DqGcXjsauJSFN4rhcNQttdLZcAeWk0h5ROvnnucAKdwVdIze0lxerGTUUODfF0gs7GXcRege67jNho+ehuAYGIvZqWmQCZ2qW2stp8kr+XQsmST2B2vy6czvT1q9Qt6y5byUyleNEQybAP1wrPCBlWC78SDdtzNHtOwNcOEGn/OShEXYZcAcnpWG3RlLmjqiFpRT8hlokawNTGiKTMDCCrBqQhBcu5YgQciAAgKx4mQozzl8GkAK/LQ3ZvOZV9FD428i/qg/UQqBDlm5h8LWSBGVssZyePmEgv1Hyt1nU4b/8Nre2I3l+X4AU7J0djjDQ==
+ b=K1ZC3yGiAAOeIVMQzFnExitsi+SKRh/vjzAj9ns8X7+BiyAinGE1Ad1Wg2Ier0ydOUP1tZlhgPd+H9FTrcLXy66MLthoF3L3HAi7+iuZGf6hbsgdKCZJ/3j8gmUXEWoGxLV59PRPJHwxqIAHSg+HKEHhX/7gmvSTlSDc2ZSFPpVH88XR+4zA7WiWqOZWv6W7SrAK07WmBOpXpMiTEMR9TL4fP8H3vw4wRGoyLeORwyfwsRM+xlQc81l2RFU7Ipmyq4oU30Gl9mbSbbXXflH+HTzrIq90Gkeeuv/tPAZieslekHtFmNORo2xNcFtKyP9i5mzeYksI5ilU95II6D5bwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8pPj934eM5zbeM9TxRZS0NSCvIdx8UY2p/ZWzjMGwPE=;
- b=oUqhMeYjxXVFjHLIK4n2RYd2+1uMFa8SULsZz8KJJeA2QXuTVMseWiBZzsRLwQMfFRCc6snY87Qllk9yLAaz8K/6RTSulIWG6f6Wx+kcJb5dqBfQMC4rk/84hmer4AE3Gik3ckSGHAg6tO6ZhVxpj/qmG2CrzwKElt1Qe2OfMb0DalM9GRgxERYCNQ0Bg9d6Knh72wXrsTOK0rvXBOy0EssPZwqWLguj2XPmcD6pblsYfGwneDHdpCxMvB0fRGQ8K4RXiZXNz8xrK/dXMbBNPoh7pBQ1jvLoyzdFKc6dd/+/2huceSrwRcyzOrqD8l+fRV2LK1vedq1n9jHhGQGdWw==
+ bh=dlUnIFAQlTnIt3sjEaxzPhDtCA3/AUoQLVFTAUPDQpg=;
+ b=bg4IWbF4XOeu5V1EggquqiIJywtGf9x/6Rp35UACD7/Md2+dBHHtBqR99s7sl79tXWLjdxN9MQcSvpWsRarEDkVbtqI665aHIskQN5fo76gV78IgHFt7OGxocPqfbl04+MS/Qe+K59AcV/KqU+y7QXzL/JU8pYhl4DrhTiR4yz5JbEcJTbPh0gd+B1qiemisMhjMWoGZU7NIjnIaCGSu8kGkcL3YaTCwtq36iqboez7kbFPhojfLS96x0UXaUyJ39hRGECYUvdRNWAByp3oQuDjf/MjU5ecGZ92WruWmxZcFKdQToirYA2vxUgF4uoTPFBFGWNc/0GI6ftRnbsDUYg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wolfvision.net; dmarc=pass action=none
  header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=8pPj934eM5zbeM9TxRZS0NSCvIdx8UY2p/ZWzjMGwPE=;
- b=Pe2cFuzLZABC9sL/TWt5AAwoqj7q39wx2gH/C5YKmjftiEGW3T49B5pBHPfiQpJ7XboEx1cxwZ1aI2tXPfcYtQJMSSpSt77BNrUfDoIGf5ckoZCZGiiHihJ9hsKKG9wYSz6FZAiTXEavQO+9YwjEPwHu07G9p1F4jH/F8WV2h1Q=
+ bh=dlUnIFAQlTnIt3sjEaxzPhDtCA3/AUoQLVFTAUPDQpg=;
+ b=xPqTQDNDjIcmUf8PTMvf07aXguvRFxmOpLdHCgHmlq7fuCNqhJZNGNB3J1+8/YrfcknMt/dlmWpf7cibujYOs+wvTV3tcDPLL8HXRRJb3ZB6IEMIP2iWAOBW7edvnXa0zLYHi7tcIGKOM/iaRYjOLrd1Pw7J17mphgsLcL84534=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=wolfvision.net;
 Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com (2603:10a6:3:e1::23)
- by AM0PR08MB4433.eurprd08.prod.outlook.com (2603:10a6:208:13b::20)
+ by VI1PR08MB3999.eurprd08.prod.outlook.com (2603:10a6:803:ea::26)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5017.22; Wed, 23 Feb
- 2022 08:41:23 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4995.16; Wed, 23 Feb
+ 2022 08:51:52 +0000
 Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com
  ([fe80::f9ee:a333:b115:5049]) by HE1PR0802MB2426.eurprd08.prod.outlook.com
  ([fe80::f9ee:a333:b115:5049%4]) with mapi id 15.20.4995.027; Wed, 23 Feb 2022
- 08:41:23 +0000
-Message-ID: <7d5512ce-b94b-b890-f852-6c37e2698b7f@wolfvision.net>
-Date: Wed, 23 Feb 2022 09:41:21 +0100
+ 08:51:52 +0000
+Message-ID: <a6145f16-c75d-2045-0a1f-9cf5fcb48464@wolfvision.net>
+Date: Wed, 23 Feb 2022 09:51:50 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.6.0
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: enable rk809 audio codec on the
- rk3568 evb1
+Subject: Re: [PATCH 3/4] soc: rockchip: power-domain: Add regulator support
 Content-Language: en-US
-To: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Cc: Rob Herring <robh+dt@kernel.org>, Liang Chen <cl@rock-chips.com>,
- frank-w@public-files.de
-References: <20220222175004.1308990-1-michael.riesch@wolfvision.net>
- <20220222175004.1308990-2-michael.riesch@wolfvision.net>
- <3287619.yDqD7nnjd0@phil>
+To: Mark Brown <broonie@kernel.org>
+Cc: Robin Murphy <robin.murphy@arm.com>, Sascha Hauer
+ <s.hauer@pengutronix.de>, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
+ kernel@pengutronix.de
+References: <20211217130919.3035788-1-s.hauer@pengutronix.de>
+ <20211217130919.3035788-4-s.hauer@pengutronix.de>
+ <20211220094435.GU6003@pengutronix.de> <YcB85mzJHrirUEDA@sirena.org.uk>
+ <20211222104036.GY6003@pengutronix.de>
+ <baa1603a-a6e2-4a32-a5fb-dc1eff01189c@arm.com>
+ <YcMhazsAfU26fCa3@sirena.org.uk>
+ <04982df2-29a0-86d5-d4a8-05826916d9a0@arm.com>
+ <YcMnNXu9Iun71uCG@sirena.org.uk>
+ <73caef1d-7e55-57f5-5912-b056fff73a06@wolfvision.net>
+ <YcMq4vF7yKn7iu5U@sirena.org.uk>
 From: Michael Riesch <michael.riesch@wolfvision.net>
-In-Reply-To: <3287619.yDqD7nnjd0@phil>
-X-ClientProxiedBy: ZR0P278CA0142.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:40::21) To HE1PR0802MB2426.eurprd08.prod.outlook.com
+In-Reply-To: <YcMq4vF7yKn7iu5U@sirena.org.uk>
+X-ClientProxiedBy: ZRAP278CA0017.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:10::27) To HE1PR0802MB2426.eurprd08.prod.outlook.com
  (2603:10a6:3:e1::23)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 918ff529-3f91-42e7-582e-08d9f6a84557
-X-MS-TrafficTypeDiagnostic: AM0PR08MB4433:EE_
-X-Microsoft-Antispam-PRVS: <AM0PR08MB44333E0B7835957EDC830FE5F23C9@AM0PR08MB4433.eurprd08.prod.outlook.com>
+X-MS-Office365-Filtering-Correlation-Id: be99dd73-e3eb-412c-917d-08d9f6a9bc70
+X-MS-TrafficTypeDiagnostic: VI1PR08MB3999:EE_
+X-Microsoft-Antispam-PRVS: <VI1PR08MB39996AA3A1999C29BB38300BF23C9@VI1PR08MB3999.eurprd08.prod.outlook.com>
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: eRY+0IfUK02jo/fYEloxwXfzuDjWqsiLM3uxjL78uU5Ie71qDKf1mZnBUVyuJ1krtAqENpk/pnPq4o228UdWO1Mq/CBMYxrlSaHCQxqgM/sQv2+LJ+g8aIa/GlM8/ayDNtz1r7wt6k0R3+CcgNAh5AUMqZgxdndGBlA/o0Arz2/qSStnbTtwU3+wLOE8AxWrKW8RDWPvSicrtVip6mf+QrIaZxXpes0S5d/csA71WrQlvqsfC8yVNkobEkJiDPx0n8Mtsl+4zlN4S7WBYwdYs0zGHHgj9FZF/Q0OF8t8klSVZD1FuXRds9vTnpfDLCiaWrCO69+iiJk6js8TvfVPzjdZ7Us/5YtnQDih6826pbRgb/XfnCePok15kRoQV3EIPlJTgLYmQ7ixRhl3HW2OCmvkOOum4uSeaL24pUnk46hWkgqqp1qeAb72yVK3GmyCceF9WokseVttKRtUStJeEPc9MjBPpsQb4EVO2Hlxdlc2mLvGfvNvcUpt7HHQ75lSXyIXDEeATaSo9gbUnMjWKkVP9lTpsY6BRMzlfn42nMOEsTXQ0Iww2AIib4AlrfpuSVs1/ob/FPb0cftAnzJsFjiMIVJ79+Maltkp85zPRUpfetZVH11zPIevflT/On8BHvzavuWKMr5aITMp2y1EScWHnOfIp8wuYy+7b+QJcaaTTRidmaueEzxqSfsXIP20BG38mI+NRfU066uhCTDRhEf00BMT4C/XhZdnw5Ibnqs=
+X-Microsoft-Antispam-Message-Info: RWWkzP3Nw7U0UM/1E4tTuytWKUDw9APIlS4fu5TaEA4jriNQIbAzXIVhtA+bRXro9JEXssGVs0eM3JSYV4inBDYvuf+ywyLXGFJHvaC5sEuktnWzbuLkL4wGINIkyoVbb8oRGHkynMcbEpOf0k1j8VrYoW9cxgWm8OnJOcXiqn0elvsp5ESbGSvL28tQxwuWp30L+45ovki3IvqorepBTn5H4owuQ0vvIZSDnAbKPkx8BXyqVNbFV6kdCkIEnYoyJOwFPY/e8nMgAf0V9LBRJJzERTLG6Cs6YQMZyyC+YsGx9e6r/3HzHI15QnNPxYhZjfEfe4BlCRkyzDmAkjvTsGbeDTgsMtjkdg7rtVPny+TFpOOqF43QdgbOtyaNyVmZU15QdZ9EMyMs4nWpKB0zZT8TXji0U35O62e4/DLQt4hpEghnkbFyigHKwSAS3lMcQELTM7exmuoIEwDpOFbg1PxPsyj4yhlbn0x+s8gQnE7AyFgeKxk3EdIH7UbBTcZPJC3Bhw1A1Ff37ScY/n4lHXjp3WTtmPlW6k0+mALgEozKuMqQ1sitVlmOFJbW+tk1QtZH6j7aExf36yOWha+OWPdZ2rNlQCUbIz0qFrBnN9PeJ+sILtOhRSdcKnuLB9ZJP8PMv+U+f2lWAKf6gZ8gf5eoI0rz5p02Luxn5F0BPHuwmCzQVgrxPlexQXaqXznlslyqLl9wlRHIVgTmX7m+1RZ53LSxw28tsbMoSh2EA3tlGHhiQkvdht1g9d/yvw9g
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:HE1PR0802MB2426.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(346002)(376002)(39850400004)(366004)(136003)(396003)(8936002)(53546011)(52116002)(66946007)(6512007)(4326008)(5660300002)(66556008)(54906003)(316002)(31696002)(8676002)(66476007)(6506007)(38100700002)(6486002)(86362001)(508600001)(31686004)(83380400001)(2906002)(186003)(36756003)(44832011)(2616005)(45980500001)(43740500002);
+ SFS:(13230001)(4636009)(396003)(346002)(39840400004)(136003)(366004)(376002)(2616005)(6506007)(5660300002)(2906002)(31686004)(6916009)(54906003)(36756003)(316002)(6512007)(44832011)(508600001)(4326008)(8936002)(186003)(38100700002)(6486002)(8676002)(66946007)(53546011)(86362001)(66556008)(31696002)(66476007)(52116002)(45980500001)(43740500002);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dGV2NlNoWUNkNDkvRFFzNnBteXhFNk8xaFUxK2dWTWxyb01DZEpmcVRPaFBE?=
- =?utf-8?B?d0tQclBKVWhXdUNzTGVub21UTHQ0U0pWTGZNVTkrVmhSYU11cDRkeVZrbWhU?=
- =?utf-8?B?TDJ6dnN6ejJaN2dPa1UrUzZDSzlPZjQ1S2cycjJVM01hVjZUeEdpd2N4cnZr?=
- =?utf-8?B?WEVzOHYwdE0xcElhdlFOQUkwM2RHNVA0VnE1d2RZQ3daK04zbms4ZWJwTUtV?=
- =?utf-8?B?OE5UYjZicWdqb1Y1TGJFMHZWM0ZYWkRiL3hHdHp1NmtFczJmbVlqVnpTeTVs?=
- =?utf-8?B?YTdQUmQrUVFYalJmSHZOenR1RTJxTTlFSWFqOXJmS2xzLy81dEJJanI4KzZQ?=
- =?utf-8?B?aUVFWHV2cHdxZlpsVnd1TjA1OXhGVFd1alh1di9HcU04N0pTeGYyUDZIa2ZD?=
- =?utf-8?B?SlQ0YmZvTlc2REdSSmpBTmVvMnpGSzc1R1k1bkNyUGNWQi9mZE42UnZablR4?=
- =?utf-8?B?aUEreE11NDFoNDlJQk9tcVZaaEZRNFkvOXBQTUYvS2V6eHRmbjhvNE9VYk9a?=
- =?utf-8?B?OTh0UHB4Zy9PL3o5dE1yUlV0cWFINDA0SEJicWRwUjNXZktleUo4VkJvTXps?=
- =?utf-8?B?YnBQT0pYVjFWYUcvUXkzOFJIeUpyU1dhcUhNOGthbldhT0NxN0ViRFV5eU93?=
- =?utf-8?B?ZFpEckdYU3RZU1duSnV1ZkdiZHFvN0p3emVFQlg3a01NUkxZck95OEhWbnJO?=
- =?utf-8?B?aW8zVHpkalQyRmFrWG9JUjBmNzRwdEpwc1lKc1hud2hRbUZidHk5K2EwZDla?=
- =?utf-8?B?cjlHWUFGNlcrZU45ODgrTkY1bTA2SXNGek8yN3VOUXRzWVU0TWlRUkQvSWtn?=
- =?utf-8?B?MUpGYXpsTlpQVno2dHloaHFXandHa0xQL2FHS0RSa2FMN3Q5c3dySjNScmsz?=
- =?utf-8?B?OE5FZEhQSW1Tc2U3WTJ4c1JsV1Y1M3gzRU5iUCtxQlJ5YnNqeUFvRmdDazA0?=
- =?utf-8?B?b3NrSURFKzNqVFY1TjRDY3BOR2h3dEhvQURxVHBzYm9UR0tQeng5UG1qWnJp?=
- =?utf-8?B?SUNDNGd4UUZWczV1UmRyVGVBVm43Y09TTUMvVGYzcEwzK2JwbHRWSUc3MjdK?=
- =?utf-8?B?V1VFVE92K1AxOFdKcTZVUzVQSGFZM2ZzY3Z6THIwQ0M1TnY4Snd3WTNZc3ll?=
- =?utf-8?B?RE4ramM4NVByTUphclNDK3hDVWdCNFF0NVFySzJIcGZCb1JNY0hTTWF4R3VQ?=
- =?utf-8?B?ZE8yc3pzYVhTaEtZM2JUU3Q3WUwrR0RRdHNmdmd0azV0a1V0RzE5enEvMnZU?=
- =?utf-8?B?ejlBNTk0ZzBsSCtQd1JTdnFvVStNMDRmZjVmcTVXRnkzZlNwR1BKN3NpeWVG?=
- =?utf-8?B?ajQzZGtjVG83WnIxRjhYYm9IMDdUcCt6OFB4Z3dQRVZYQTY0dDZDeUFETURK?=
- =?utf-8?B?REYzYldvemphdzdvY0N4WUxYV1U4dGJudFA3Q3lvZFVEQUNOTXBFc3pKUjRU?=
- =?utf-8?B?dmRrcDhGSTlkVmRsWjlySVlhRW9TRXBBMysxU29lY2lBZ21nT05VWFdZRUJL?=
- =?utf-8?B?VktSYzg2VUFZcVdaN2lhUUVuTFBmcXNpSnE4dVNNK3Z6REJGTksva1RNRzUw?=
- =?utf-8?B?NjVXL0JHRG1TR0pXejlzWmpOWEtZZ3pqUGFnamlRMFZlK0U4d0FVVk54aHNG?=
- =?utf-8?B?cDg2cnJFbnVBS2pXcFY2dURTVnFBakZ1d3VCNXZLR0IwRXJCNytQY3JnRjRG?=
- =?utf-8?B?OENoTEQxemQ2YVpWZG5IYVZEQ0MrUXFkZmN5QW4wYkZjejJhNUR4cm9hNkU1?=
- =?utf-8?B?bUt6ZWU4eTJYcEJCb0dWQW4vc2p3dktFcVpESlYvc0NzZkFQSEt4QkUydWdo?=
- =?utf-8?B?TDdSQ3ZaM0lKOExGVXU5d3kvMXh5QStpaVpuQjdySlVpSlV4YXJGN05kYjJm?=
- =?utf-8?B?c2lEWFk4Tm5pYlZFZTdwSmR0T2hiSjlWaFVIdCtFY0oydUxscGNsb2FqNHFw?=
- =?utf-8?B?dkFTNTl6VnZ0WjkzSFdWc0pCczYrZGQxR3A3MmxXRytvVzZkamI2eXRaZzBo?=
- =?utf-8?B?MHVFSlFmQm5QQklSM0dUcUlGelhFYTBza1d5b2FtcW4vbTZid3VoSVRDWkxJ?=
- =?utf-8?B?bHJIOFdlMDNUb3ZCc2VXblZYV05RQWozN0x5dXJKdU9hWHlHWjFvNGtDbEVk?=
- =?utf-8?B?S3lCUkRQa1ozNmpOeW1MZkxUdlB4dERRckFwczNXb3c1VHN2eUl6aHJDMFNY?=
- =?utf-8?B?YmtjZVBXYnhTaU9kSDNtR2J5cm42SkNGR3kxRWNVTXRWY1dVTGpIMC9ZeWZQ?=
- =?utf-8?B?N0QwSzdXWmxVRXhycjB0VzlCZmt1UkJ1dm5tSGNTOWMwNGtVNjQvaExJWXpZ?=
- =?utf-8?B?dkNkT2dvQUIyZWRJZjNMWGMyWng1T2JZb1ZacVBIbzVjQnhxK2QzZz09?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UnI1a2kwU1VhK0JRTDVLWlN5KzEybHhSbUhJUWVnMnFTZFJCWkg3VmlCTlFw?=
+ =?utf-8?B?SWNDWktPZGVVZm5pa2c4QlpzcUVTdmdqSGFYV0V6cEhrVHhyZXlYNUYxd2s5?=
+ =?utf-8?B?aHNGOGhsM2hwUHAvTTY1aVFnK256WDUvQnM1TDhJbDk0cmY4c1lFdFQwUFlS?=
+ =?utf-8?B?NTNlMVVEU09uNlVjbGNEdjdiUmVkQjludWZDWGhINUQrOHEvczF3S0U1Ymc0?=
+ =?utf-8?B?YmNPM2xBVlBIendiZEVROXRja1FTLzVrM3RLcXhRUmVsNGNpWSs4alA0Zm4r?=
+ =?utf-8?B?Qngyd3hLN0luRjhob2ZtQUVGTDVuOG45Y0NhZHRadi9YbS84M1RlcWpqWk1M?=
+ =?utf-8?B?V2ptdVlSZmJWSEF0cVRJemFVWE5xa2FjZ3hZQzZPNEw1T3U0M1dPbG0zeGdC?=
+ =?utf-8?B?KzM2ejdXNEFNbE01Vjd0VWdod2REWjNLUVdwM0pnUGI0NzF1cGFkMXh5b1dD?=
+ =?utf-8?B?RDErNFdKSkxXczhjWDNqWDk2SjlZSzJRZmpWUXp4aDlzRHJybFJ0TVA1eUc2?=
+ =?utf-8?B?Qkppa3lHYnZpREVrTzh1NEIvSmhkcjVCYkM4ZTM1a0NMeFJ0N2d1TTBsc1o2?=
+ =?utf-8?B?YmU1VnpvTWJPK2dmeXRQTGJpenBDcG9kUm91cGN2enN2YWJCRzJZdHE1YmZs?=
+ =?utf-8?B?THdlcEZHYW5kYUMyQ1hRSmNHUDhtNXJzbFZQdzl2UEJuNWYyNmRUWC9aUlZN?=
+ =?utf-8?B?K3ArYUEyMGpudFFia1A3ME0wSkd2c1pGMTVuaDBkbTh0dXMza0Fna05mSm96?=
+ =?utf-8?B?ZWRObjkvUTd5aUFkTXFzdVJNenpsYUZLbXY3dzVMcnZLa3BJT3N3c0dENk5w?=
+ =?utf-8?B?cGtpdG9mYUdDbjA3blFhUU96VXg0OHIrL1ZXbUNka00vVFNKSHVBZEJRYy95?=
+ =?utf-8?B?NDFKVWxUYmtyVzhPNUZqTS9iSlVranBjK3hGLzU5RjYyWmdkOWhGbUNkK2w0?=
+ =?utf-8?B?SHViTC9WWllURmRGWFFwa2lORWkzN2FZTlNzSVdNVTQ1RHV6alBUdXdlMHpr?=
+ =?utf-8?B?eHJtd2hCbnZsbHEyMHZIR1VTdlRIcnEyVnFORFMxOHBPcW5PbkZBNWRWUGxl?=
+ =?utf-8?B?d1pYODVxY044czNHbFB6dGhkb2dvVGw4U0dmVC91MkJDNTMxaGdVcTY1UDZF?=
+ =?utf-8?B?NHpkeW5KcTUxSk4vVnlxQkk0K1l2a252Q3ZYbC8yanA5NFlkYmdnV3FZM1pp?=
+ =?utf-8?B?OFRURmNzckdXUEp4MmdxWmUzdXJHOVJBRU5PKzZzdlJCYU9OaVgvNklpbnNN?=
+ =?utf-8?B?WUhraDk0dk0zbEJXVTg5dThlS3pyOFg4bnJ5ODdSUDlOaXRBVkZMeTdqMHpo?=
+ =?utf-8?B?S25GK1h4bTRrRW0rWDJQdC9rbS8rWlpHemJqNi9hV1BxOXJiMm0ya2FkN2xw?=
+ =?utf-8?B?RGY4c29iMzFDMU1LRnNIVGlYYUgrbG41TU9LR2dVS2ZGTWF0N0c5ZjlEUExj?=
+ =?utf-8?B?Z0llbEhvN0x6TzVacXhoY1hCYkJGYjBRajAyNEVNdFJsSzlneXpob3RiMEhC?=
+ =?utf-8?B?VXRRa2RPaGFCZHg0QUwyK1l0eW96UDY5VWd1bzZweHdEcG5DVG1MSUtqamJx?=
+ =?utf-8?B?SjQvSStFZDB3OEhTVmZ5YUhFZXN6dEhGRlhuMEUyV01TUnJJUTZBbHFOWWdz?=
+ =?utf-8?B?ODAwQ1NhUmgveEwyWmNocGs5SFppRGJzanNnNVB5VGc1NXRzbFlsVnJIVzNq?=
+ =?utf-8?B?V3VOSkFnTDhUS0dXcHNPVDdpWUxacElhVGVYVDd1QWpPK1RjNGNCZnB3RXo4?=
+ =?utf-8?B?bE1jTXJBeDRCVWx5TFNHU3VWa2lEWW56Tmo0SGsvNXJkTVdNOGZVQ0V3ZUhz?=
+ =?utf-8?B?NC9nTkVwaGtNc2IvdW90NXlBQmdJblo1a3YzKzlPeHc3QzdwWjFxSEdzQW5p?=
+ =?utf-8?B?a3kwNXNJTWh5QTRoejBhbmc3LzYzZ0lqdFljWm4rOFU5SDJOTzRVLzJDSmtJ?=
+ =?utf-8?B?NXFLOXY3d0prd3RlYVp0d3MyVEFER3BrekJiaDNOTlh1ZlVSNUFwWnI5VnRL?=
+ =?utf-8?B?RWxzWkNZUDJvYXRPU2FRN1JVd1JGdjhOd2FBTG12bmhQUGYvakNvazJ4UGN0?=
+ =?utf-8?B?WDRGTEJ6MWMwNlBlU25oQndJZ2lIcVk5Q24zcEhSNmlmeVdWZzdiWGxmbDVt?=
+ =?utf-8?B?U1huTzFtVjhOak4yYkpwakpEWVQyaUpDTndFNFlodDlTNVFHWDF3LzQwT1lY?=
+ =?utf-8?B?RVI3T2ZWS2dYQXNiQVNvNHE1a3hjT2RmVzhYSHFYbWRmUE5acnF5cGxSZ3Jv?=
+ =?utf-8?B?K05GckJjcXpDbTRzYmtiSzA4cm03ZUgrRE1qK0NkVFBNaDZmQ2gxLzc5N0lM?=
+ =?utf-8?B?STZpanQyQjh3Q0lvTjZUVVR2Wkd4ZlF2eXI3clBKVGM2WmJpdVJBb0NIRHlm?=
+ =?utf-8?Q?MQxY1xNxd4YhOz0c=3D?=
 X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 918ff529-3f91-42e7-582e-08d9f6a84557
+X-MS-Exchange-CrossTenant-Network-Message-Id: be99dd73-e3eb-412c-917d-08d9f6a9bc70
 X-MS-Exchange-CrossTenant-AuthSource: HE1PR0802MB2426.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Feb 2022 08:41:23.0426 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Feb 2022 08:51:52.2754 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 79GB7pnn8Yg18A35yfbe8ALNsO+kKPjJtp0nWK+cJWcMLNuzYlX5B3q7cs3gN3fl/IUszjV2a+3xSvA8ERytq0H6psqraxwB7NhVjzRcR00=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR08MB4433
+X-MS-Exchange-CrossTenant-UserPrincipalName: KPSIqsJq59OoyrvuNSq7+1G07wrGLVCFupyc+RuwjhFnaHIu2zYf7HtRSwbKMOF0RUUmUKL3Z6Db/aiXM8bkPbcI+bPFEXWVU7KDrZx9KYw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB3999
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220223_004127_032105_E64EA66D 
-X-CRM114-Status: GOOD (  24.15  )
+X-CRM114-CacheID: sfid-20220223_005157_738597_62F8E0FA 
+X-CRM114-Status: GOOD (  16.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,91 +163,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Heiko,
+Hi Mark,
 
-On 2/23/22 00:11, Heiko Stuebner wrote:
-> Hi,
+Sorry for the long pause!
+
+On 12/22/21 14:40, Mark Brown wrote:
+> On Wed, Dec 22, 2021 at 02:29:23PM +0100, Michael Riesch wrote:
+>> On 12/22/21 2:25 PM, Mark Brown wrote:
 > 
-> Am Dienstag, 22. Februar 2022, 18:50:04 CET schrieb Michael Riesch:
->> Enable the Rockchip RK809 audio codec on the Rockchip RK3568
->> EVB1. This requires the VCCIO_ACODEC voltage regulator to be set
->> to always on.
->>
->> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+>>> In that case I would tend to assume that unless otherwise stated it's
+>>> safer to keep the supply enabled when everything else is enabled.  It's
+>>> the default thing and so is more likely to be what was designed for and
+>>> less likely to result in nasty surprises.
 > 
-> [...]
+>> Based on my experience with the RK3568 EVB1 the vdd_gpu supply turns
+>> after startup if it is unused and the SoC works fine. Let's take the
+>> energy efficient route here :-)
 > 
->> @@ -282,6 +301,7 @@ regulator-state-mem {
->>  
->>  			vccio_acodec: LDO_REG4 {
->>  				regulator-name = "vccio_acodec";
->> +				regulator-always-on;
-> 
-> As this seems to supply the codec (in the rk809?) shouldn't the
-> sound part model that relationship and handle regulators
-> instead of requiring an arbitary regulator to be always on?
+> One of the issues is that it may not actually be energy efficient if it
+> ends up leaking current through the SoC from the other supplies (and
+> long term that leakage probably won't do any good for hardware).  A very
+> lightly loaded regulator can be the better option.
 
-To be honest, I am not entirely sure. VCCIO_ACODEC is supplied by the
-(LDO regulator part of the) RK809. As far as I can tell, the audio codec
-part of the RK809 is powered internally. There is indeed a note "IO
-Power = LDO4" (which corresponds to VCCIO_ACODEC) at the I2S interface,
-which would make the RK809 the producer and a consumer of this voltage.
-This could be modeled in the driver, but seeing that the rk808 driver
-and the codec driver are directly coupled I think it would not change much.
-
-I admit that I am going for the low-effort solution here, but it is done
-in similar fashion on other boards. What do you think?
-
-As to the other consumers of VCCIO_ACODEC: The microphone requires this
-voltage, but is there a representation of an analog microphone?
-
-And of course the voltage serves as supply for one of the PMU IO
-(voltage) domains (vccio1). But I think here the principle is that the
-IO voltage is only turned on if there is a peer on the other end, which
-(most likely) consumes this voltage as well.
-
-If you decide to accept the change as is, could you please fix up the
-commit message "rk3568 evb1" -> "rk3568-evb1-v10" for consistency? This
-did not occur to me when I sent the patches, sorry!
+OK, I see. So in summary we don't know the behavior of the SoC and
+should go for the safe route (set the GPU regulator to always on)? I'll
+submit a patch for the RK3568 EVB1 -- the other boards enable this
+regulator always as well.
 
 Best regards,
 Michael
-
-> 
-> 
-> Heiko
-> 
->>  				regulator-min-microvolt = <3300000>;
->>  				regulator-max-microvolt = <3300000>;
->>  
->> @@ -366,6 +386,10 @@ regulator-state-mem {
->>  				};
->>  			};
->>  		};
->> +
->> +		codec {
->> +			mic-in-differential;
->> +		};
->>  	};
->>  };
->>  
->> @@ -386,6 +410,11 @@ touchscreen0: goodix@14 {
->>  	};
->>  };
->>  
->> +&i2s1_8ch {
->> +	rockchip,trcm-sync-tx-only;
->> +	status = "okay";
->> +};
->> +
->>  &mdio0 {
->>  	rgmii_phy0: ethernet-phy@0 {
->>  		compatible = "ethernet-phy-ieee802.3-c22";
->>
-> 
-> 
-> 
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
