@@ -4,55 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D064DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Feb 2022 22:57:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E889C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Feb 2022 23:44:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m0WoskeyxR+SF0drnq0DaBvkmmSvgLQdPkxwVe9As6A=; b=omL9IwoXA8VjDI
-	rSXOme2k7NxlzJwmjYPi0XKCxaz+CMsTA30W0WCrMRVAPHwDUiMwQt6EI0UfZ7j5ev/YRkpj8v1m+
-	QlM5GKB2xa6r6NqcutaGy1ZsdsFeVSeNFoyDzwbU/pxci6PqbCQiXIBLF/RHkLSYepp5na52FyaS4
-	JQ3vFLLnYszWLKshtV6dv3vFFrKlUbnWp6VgaaLYwol+5gZLRPsh1z8nI2eZEICMOXvMW2xWiz4dj
-	HkoM3wMVlu9PzQ3foeBO+E5MODTCByvNDLk87K6FpZ2klpSYWBQ/IU/H+NZEHFawlUTti3i2RiORZ
-	+Bs2eEqKQlkiGroTFIzw==;
+	List-Owner; bh=TfGHnzVoi6SND0VIWbrZdosNo0Y6RdZknY2thC+w74A=; b=NV1w3QoyoMii1z
+	9JLJnWW+9tOwsnOsQhLhL7c/6FtqzTYTQV71jPtB52pvIyU655X20ivUHveRV/YP4U1YQrwN5dcz0
+	qILGAaAq/RIygIGdJUyYuXVOp7AOd7BM+fP7V4D5JLIvifJEW8Z+iw+umg7p/N/XAqdZQttqFP+xv
+	HrXjLHUyIE6nnc73fNRpqDbZpU5AGfYhDig9b4YVfUMPf+CHeSggcDc0spJE5rFupNPwm6p7HaM0j
+	6hHoNhOfW7B0zsctbxPfA8jxEzULXmiTbnv5e9HsR/IcqwBf/jSpnWA1SMjFY3fht+EFomAyJdr3p
+	LC6qt6314Z3IviRUwtPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nN0Zh-00GDOm-Mn; Wed, 23 Feb 2022 22:57:33 +0000
+	id 1nN1Iw-00GICM-QK; Wed, 23 Feb 2022 23:44:18 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nN0ZV-00GDMb-N5; Wed, 23 Feb 2022 22:57:22 +0000
-Received: from [185.156.123.69] (helo=phil.localnet)
+ id 1nN1Iu-00GIAg-11; Wed, 23 Feb 2022 23:44:17 +0000
+Received: from [185.156.123.69] (helo=phil.sntech)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nN0ZC-0005UO-OL; Wed, 23 Feb 2022 23:57:02 +0100
+ id 1nN1Ir-0005mN-O5; Thu, 24 Feb 2022 00:44:13 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Lee Jones <lee.jones@linaro.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Benson Leung <bleung@chromium.org>,
- Guenter Roeck <groeck@chromium.org>, Thierry Reding <thierry.reding@gmail.com>,
- Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Douglas Anderson <dianders@chromium.org>, devicetree@vger.kernel.org,
- chrome-platform@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 1/4] dt-bindings: pwm: google,
- cros-ec: include generic pwm schema
-Date: Wed, 23 Feb 2022 23:57:00 +0100
-Message-ID: <3248917.W5uN0jUHDo@phil>
-In-Reply-To: <YhX7UZSDaqNyD1rV@google.com>
-References: <20220214081916.162014-1-krzysztof.kozlowski@canonical.com>
- <20220214081916.162014-2-krzysztof.kozlowski@canonical.com>
- <YhX7UZSDaqNyD1rV@google.com>
+To: linux-rockchip@lists.infradead.org,
+ Michael Riesch <michael.riesch@wolfvision.net>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>, frank-w@public-files.de,
+ Rob Herring <robh+dt@kernel.org>, Liang Chen <cl@rock-chips.com>
+Subject: Re: (subset) [PATCH 1/2] arm64: dts: rockchip: enable work led on
+ rk3568-evb1
+Date: Thu, 24 Feb 2022 00:44:08 +0100
+Message-Id: <164565984101.1356028.4981586346529851167.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220222175004.1308990-1-michael.riesch@wolfvision.net>
+References: <20220222175004.1308990-1-michael.riesch@wolfvision.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220223_145721_761511_0E48098A 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20220223_154416_093480_FD5674D4 
+X-CRM114-Status: UNSURE (   8.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,42 +63,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Lee,
+On Tue, 22 Feb 2022 18:50:03 +0100, Michael Riesch wrote:
+> Enable the blue work LED on the Rockchip RK3568 EVB1.
 
-Am Mittwoch, 23. Februar 2022, 10:16:01 CET schrieb Lee Jones:
-> On Mon, 14 Feb 2022, Krzysztof Kozlowski wrote:
-> 
-> > Include generic pwm.yaml schema, which enforces PWM node naming.  Keep
-> > the old name in bindings as deprecated.
-> > 
-> > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-> > ---
-> >  Documentation/devicetree/bindings/mfd/google,cros-ec.yaml    | 4 ++++
-> 
-> Acked-by: Lee Jones <lee.jones@linaro.org>
+Applied, thanks!
 
-what is your expectation regarding this patch?
+[2/2] arm64: dts: rockchip: enable rk809 audio codec on the rk3568 evb1
+      commit: 3e4c629ca680785af2cd6bfd688e958b03db921e
 
-Are you planning to merge it or are you expecting this to go through
-some other tree?
-
-The binding-change here is backward-comaptible in that the old
-node-name is still in it, only marked as deprecated, so in theory
-this patch should be able to be applied on its own without
-causing defects.
-
-
-Heiko
-
-> 
-> >  .../devicetree/bindings/pwm/google,cros-ec-pwm.yaml          | 5 ++++-
-> >  2 files changed, 8 insertions(+), 1 deletion(-)
-> 
-> 
-
-
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
