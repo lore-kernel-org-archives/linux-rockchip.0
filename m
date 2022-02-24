@@ -4,49 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA99DC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Feb 2022 23:45:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44CD9C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Feb 2022 03:08:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hsLX3P06LSM9ctd5FrFTHahW9Ny18IuUpGf58kbwigc=; b=buMcOapA5Z/zy2
-	pL8kIY4+e5tPwdTPr5nHTdM9g95ZXoOoOpQQNuEjUYztykMtm3bSrgpfasunzpZr1PBJh3tEQnI8v
-	TZkAnsnOhIxM6Tfg0iNPQXTJlYJa1FfS/EGuK5106xJ5lKPv7WtNYBAnv8XKROkb75K8AEwgnQI5Z
-	UU5iAkk/U7dE+MNQ+NqhMQsoS4QT+e3JTGMNU+LVS9MK6+89RS3NBK1hKpdP0Nb0j3Ab63sNGT9Ng
-	qY6AUglPjlsJDKQo/VoBZPjxlZdww5cjrJqfD/tTeO82duQHeT1tvS7X8l6lnrx7sue9XNVLSizva
-	wTqRkeYJmLaeZDjjRaxQ==;
+	List-Owner; bh=H16ECvM0yT86QETXNJBM6blRlZhAvGKjx+CgkbjDxz4=; b=rVEn/zZaIrTfWh
+	VEzAmBBgPv1Hur7PxhVvoywpVoVVWEtOT5e/qmaRtXJqxxCDxuEsreOCKGAR4f665SXwwgunIbxhu
+	Vey/zkLsdD+zxY+YEl90E7/tWBy9DlT2Q2YRNeQpzbw+IfIRrWe4ZyFb9CD+/I81ud62dXJv3E6KL
+	hLsBWKMTS/htzM10q3SaDccbBn938U1L96hQsaq3tmXQQIyU6FHfcoKwqRspKNb/L9mDDhMvfejY/
+	6XtB2KbMGQp+IQL6FxAPj5O+GXTa1vF9eKq8dsdEgRf0o/Ar5Mc7HGhbB4jSaroi2LSOeP1BlCyvA
+	bZ0IrXMxzdp/Ly/fRvBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nN1Ju-00GIfh-S8; Wed, 23 Feb 2022 23:45:18 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1nN4UO-00GZbf-7a; Thu, 24 Feb 2022 03:08:20 +0000
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nN1Iz-00GICm-BZ; Wed, 23 Feb 2022 23:44:22 +0000
-Received: from [185.156.123.69] (helo=phil.sntech)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nN1Is-0005mN-Ig; Thu, 24 Feb 2022 00:44:14 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: "quentin.schulz@theobroma-systems.com"
- <quentin.schulz@theobroma-systems.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, sboyd@kernel.org,
- linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org,
- andriy.shevchenko@linux.intel.com, Quentin Schulz <foss+kernel@0leil.net>,
- mturquette@baylibre.com, stable@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] clk: rockchip: re-add rational best approximation
- algorithm to the fractional divider
-Date: Thu, 24 Feb 2022 00:44:11 +0100
-Message-Id: <164565984101.1356028.16253191967940444197.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220131163224.708002-1-quentin.schulz@theobroma-systems.com>
-References: <20220131163224.708002-1-quentin.schulz@theobroma-systems.com>
+ id 1nN4UK-00GZZi-TY
+ for linux-rockchip@lists.infradead.org; Thu, 24 Feb 2022 03:08:19 +0000
+Received: by mail-yb1-xb29.google.com with SMTP id y189so1248849ybe.4
+ for <linux-rockchip@lists.infradead.org>; Wed, 23 Feb 2022 19:08:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=/q6Deaa5uqZuGAWoUP6lea3xGvCdALyWAfkFdodfDos=;
+ b=cRO+oLUbuMcoFQFDRxl+dVhXOKmKqDBMvmPCdgQuT9dsoWb7IrsglYQuSlh3X8FGkD
+ v1N87TBaS54hqubuz95YT6J18JcxOsF0cTlV/tWJEsbT4OL/kYcOTafKu25nGC935hZK
+ FQ1Bc59c+GAnC95piAy7qcja8E+uZzpz+lsJM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=/q6Deaa5uqZuGAWoUP6lea3xGvCdALyWAfkFdodfDos=;
+ b=Sf32keBKm0cTUvNOr3KNDtK5JHkzWgNyEi09Gnx6bPDEV9QuteeoIJIEs6FfpLE+4o
+ /nuai+y1ZxgnXHmBjkumC+x64a8qNCO49aGvaDvxNTC6nyiLtW8avnSzurHppci0GORo
+ k3vcvTMpbY94aY3DsRdfO7zBocLEdfzLPimdKoCTFV/6onGfwW5AxErixz02tsZlMU4V
+ L+ZenZ20t+9ExKQfcytc6ewRlk1tEFxSiOBHHKY8EBR3tA6RCMSiwkMq+44ktCewf09j
+ aYwrUR18ylSpV6Wf5QTxaQvVtbjpQNdG72zjkEqCvFsbEO2SLnDMmnWcHrE0z/u3eWAz
+ 65jQ==
+X-Gm-Message-State: AOAM5329vOGtHUslQKV5BUdbHp/ie/qdcqzMLB2dd73pOaoQjhwKq+DU
+ X2jisva32kNr+gUCsVFd3I4mtcewkkboYIFWz8VhwQ==
+X-Google-Smtp-Source: ABdhPJwfo+xTG3B4wQ1YRHZ1K6lChEnGUdnDsbfMdGY87BoSQaXWFXbrihuGh318BbM0NxlRgLRFyzonQxSZhzFdjrs=
+X-Received: by 2002:a25:d314:0:b0:624:6c1a:6f2d with SMTP id
+ e20-20020a25d314000000b006246c1a6f2dmr693752ybf.189.1645672092353; Wed, 23
+ Feb 2022 19:08:12 -0800 (PST)
 MIME-Version: 1.0
+References: <20220211110617.2202714-1-wenst@chromium.org>
+In-Reply-To: <20220211110617.2202714-1-wenst@chromium.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Thu, 24 Feb 2022 11:08:01 +0800
+Message-ID: <CAGXv+5H+NC-Co2bkc4TH5Kc7qQjYz98wH5WFFNXjbnLA_J50fg@mail.gmail.com>
+Subject: Re: [PATCH RFC v2] media: hantro: Implement support for encoder
+ commands
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ linux-media@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
+ linux-kernel@vger.kernel.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220223_154421_445333_FE7FEB8E 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20220223_190816_967273_A31681E7 
+X-CRM114-Status: GOOD (  32.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,28 +86,210 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 31 Jan 2022 17:32:24 +0100, quentin.schulz@theobroma-systems.com wrote:
-> In commit 4e7cf74fa3b2 ("clk: fractional-divider: Export approximation
-> algorithm to the CCF users"), the code handling the rational best
-> approximation algorithm was replaced by a call to the core
-> clk_fractional_divider_general_approximation function which did the same
-> thing back then.
-> 
-> However, in commit 82f53f9ee577 ("clk: fractional-divider: Introduce
-> POWER_OF_TWO_PS flag"), this common code was made conditional on
-> CLK_FRAC_DIVIDER_POWER_OF_TWO_PS flag which was not added back to the
-> rockchip clock driver.
-> 
-> [...]
+Hi,
 
-Applied, thanks!
+On Fri, Feb 11, 2022 at 7:06 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
+>
+> The V4L2 stateful encoder uAPI specification requires that drivers
+> support the ENCODER_CMD ioctl to allow draining of buffers. This
+> however was not implemented, and causes issues for some userspace
+> applications.
+>
+> Implement support for the ENCODER_CMD ioctl using v4l2-mem2mem helpers.
+> This is entirely based on existing code found in the vicodec test
+> driver.
+>
+> Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>
+> Changes since v1:
+> - Correctly handle last buffers that are empty
+> - Correctly handle last buffers that just got queued
+> - Disable (TRY_)ENCODER_CMD ioctls for hantro decoder
+>
+> This is based on linux-next-20220208, and was tested on RK3399 with
+> Gstreamer running the JPEG encoder. It was also tested on ChromeOS
+> 5.10 on Kevin with the video encoder used in ChromeOS ARC, which
+> requires this. For ChromeOS, both encoder and decoder tests were run
+> to check for regressions.
+>
+> Everything really works OK now, but since I'm not very familiar with
+> the mem2mem framework, I might be missing something, causing resource
+> leaks. Hence this patch is labeled RFC.
+>
+> Last, I suppose we could also add support for (TRY_)DECODER_CMD now?
 
-[1/1] clk: rockchip: re-add rational best approximation algorithm to the fractional divider
-      commit: 10b74af310735860510a533433b1d3ab2e05a138
+Gentle ping on this patch?
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+ChenYu
+
+> ---
+>  drivers/staging/media/hantro/hantro_drv.c  | 17 +++++-
+>  drivers/staging/media/hantro/hantro_v4l2.c | 68 +++++++++++++++++++++-
+>  2 files changed, 81 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+> index bc9bcb4eaf46..99bc650a5a93 100644
+> --- a/drivers/staging/media/hantro/hantro_drv.c
+> +++ b/drivers/staging/media/hantro/hantro_drv.c
+> @@ -56,6 +56,10 @@ dma_addr_t hantro_get_ref(struct hantro_ctx *ctx, u64 ts)
+>         return hantro_get_dec_buf_addr(ctx, buf);
+>  }
+>
+> +static const struct v4l2_event hantro_eos_event = {
+> +       .type = V4L2_EVENT_EOS
+> +};
+> +
+>  static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
+>                                     struct hantro_ctx *ctx,
+>                                     enum vb2_buffer_state result)
+> @@ -73,6 +77,12 @@ static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
+>         src->sequence = ctx->sequence_out++;
+>         dst->sequence = ctx->sequence_cap++;
+>
+> +       if (v4l2_m2m_is_last_draining_src_buf(ctx->fh.m2m_ctx, src)) {
+> +               dst->flags |= V4L2_BUF_FLAG_LAST;
+> +               v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
+> +               v4l2_m2m_mark_stopped(ctx->fh.m2m_ctx);
+> +       }
+> +
+>         v4l2_m2m_buf_done_and_job_finish(ctx->dev->m2m_dev, ctx->fh.m2m_ctx,
+>                                          result);
+>  }
+> @@ -807,10 +817,13 @@ static int hantro_add_func(struct hantro_dev *vpu, unsigned int funcid)
+>         snprintf(vfd->name, sizeof(vfd->name), "%s-%s", match->compatible,
+>                  funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ? "enc" : "dec");
+>
+> -       if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER)
+> +       if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER) {
+>                 vpu->encoder = func;
+> -       else
+> +       } else {
+>                 vpu->decoder = func;
+> +               v4l2_disable_ioctl(vfd, VIDIOC_TRY_ENCODER_CMD);
+> +               v4l2_disable_ioctl(vfd, VIDIOC_ENCODER_CMD);
+> +       }
+>
+>         video_set_drvdata(vfd, vpu);
+>
+> diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+> index 67148ba346f5..777bd3dbd875 100644
+> --- a/drivers/staging/media/hantro/hantro_v4l2.c
+> +++ b/drivers/staging/media/hantro/hantro_v4l2.c
+> @@ -628,6 +628,39 @@ static int vidioc_s_selection(struct file *file, void *priv,
+>         return 0;
+>  }
+>
+> +static const struct v4l2_event hantro_eos_event = {
+> +       .type = V4L2_EVENT_EOS
+> +};
+> +
+> +static int vidioc_encoder_cmd(struct file *file, void *priv,
+> +                             struct v4l2_encoder_cmd *ec)
+> +{
+> +       struct hantro_ctx *ctx = fh_to_ctx(priv);
+> +       int ret;
+> +
+> +       ret = v4l2_m2m_ioctl_try_encoder_cmd(file, priv, ec);
+> +       if (ret < 0)
+> +               return ret;
+> +
+> +       if (!vb2_is_streaming(v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx)) ||
+> +           !vb2_is_streaming(v4l2_m2m_get_dst_vq(ctx->fh.m2m_ctx)))
+> +               return 0;
+> +
+> +       ret = v4l2_m2m_ioctl_encoder_cmd(file, priv, ec);
+> +       if (ret < 0)
+> +               return ret;
+> +
+> +       if (ec->cmd == V4L2_ENC_CMD_STOP &&
+> +           v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
+> +               v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
+> +
+> +       if (ec->cmd == V4L2_ENC_CMD_START &&
+> +           v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
+> +               vb2_clear_last_buffer_dequeued(&ctx->fh.m2m_ctx->cap_q_ctx.q);
+> +
+> +       return 0;
+> +}
+> +
+>  const struct v4l2_ioctl_ops hantro_ioctl_ops = {
+>         .vidioc_querycap = vidioc_querycap,
+>         .vidioc_enum_framesizes = vidioc_enum_framesizes,
+> @@ -657,6 +690,9 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
+>
+>         .vidioc_g_selection = vidioc_g_selection,
+>         .vidioc_s_selection = vidioc_s_selection,
+> +
+> +       .vidioc_try_encoder_cmd = v4l2_m2m_ioctl_try_encoder_cmd,
+> +       .vidioc_encoder_cmd = vidioc_encoder_cmd,
+>  };
+>
+>  static int
+> @@ -733,8 +769,12 @@ static int hantro_buf_prepare(struct vb2_buffer *vb)
+>          * (for OUTPUT buffers, if userspace passes 0 bytesused, v4l2-core sets
+>          * it to buffer length).
+>          */
+> -       if (V4L2_TYPE_IS_CAPTURE(vq->type))
+> -               vb2_set_plane_payload(vb, 0, pix_fmt->plane_fmt[0].sizeimage);
+> +       if (V4L2_TYPE_IS_CAPTURE(vq->type)) {
+> +               if (ctx->is_encoder)
+> +                       vb2_set_plane_payload(vb, 0, 0);
+> +               else
+> +                       vb2_set_plane_payload(vb, 0, pix_fmt->plane_fmt[0].sizeimage);
+> +       }
+>
+>         return 0;
+>  }
+> @@ -744,6 +784,22 @@ static void hantro_buf_queue(struct vb2_buffer *vb)
+>         struct hantro_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+>         struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
+>
+> +       if (V4L2_TYPE_IS_CAPTURE(vb->vb2_queue->type) &&
+> +           vb2_is_streaming(vb->vb2_queue) &&
+> +           v4l2_m2m_dst_buf_is_last(ctx->fh.m2m_ctx)) {
+> +               unsigned int i;
+> +
+> +               for (i = 0; i < vb->num_planes; i++)
+> +                       vb->planes[i].bytesused = 0;
+> +
+> +               vbuf->field = V4L2_FIELD_NONE;
+> +               vbuf->sequence = ctx->sequence_cap++;
+> +
+> +               v4l2_m2m_last_buffer_done(ctx->fh.m2m_ctx, vbuf);
+> +               v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
+> +               return;
+> +       }
+> +
+>         v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
+>  }
+>
+> @@ -759,6 +815,8 @@ static int hantro_start_streaming(struct vb2_queue *q, unsigned int count)
+>         struct hantro_ctx *ctx = vb2_get_drv_priv(q);
+>         int ret = 0;
+>
+> +       v4l2_m2m_update_start_streaming_state(ctx->fh.m2m_ctx, q);
+> +
+>         if (V4L2_TYPE_IS_OUTPUT(q->type))
+>                 ctx->sequence_out = 0;
+>         else
+> @@ -831,6 +889,12 @@ static void hantro_stop_streaming(struct vb2_queue *q)
+>                 hantro_return_bufs(q, v4l2_m2m_src_buf_remove);
+>         else
+>                 hantro_return_bufs(q, v4l2_m2m_dst_buf_remove);
+> +
+> +       v4l2_m2m_update_stop_streaming_state(ctx->fh.m2m_ctx, q);
+> +
+> +       if (V4L2_TYPE_IS_OUTPUT(q->type) &&
+> +           v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
+> +               v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
+>  }
+>
+>  static void hantro_buf_request_complete(struct vb2_buffer *vb)
+> --
+> 2.35.1.265.g69c8d7142f-goog
+>
 
 _______________________________________________
 Linux-rockchip mailing list
