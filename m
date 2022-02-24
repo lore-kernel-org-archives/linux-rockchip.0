@@ -4,70 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA1D5C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Feb 2022 19:30:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 016FDC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Feb 2022 20:54:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WzxOUTMMyjY1dmydNDT0IpI3xSlS7c/b4XckxXCRFXE=; b=HPVYobaUjfO9ST
-	b1yo2Lro7luG89MMBZX1MzCMzDUqIUQaEr/ltClCpBVBkio41M5JP0YraUQNK34BC/mujWWPdaXKL
-	i0Cz8GKbq4i9StxtPbxMhWQbrG4l5OKS47TojB81/7uXopIMDhg0l+a5Ji8qPsWo1B81N+LkhcVDH
-	wChovMulZ6sZv6iMcYt4SEg56Nft0heC/C7dOEP5A/YM/LOqJzu6ST0aQmwPYdhx+P6HgTo017Mav
-	ji/XRqqwZzVm0vRsL55RMMc9sMrUFjr1vTeHimdVs/PVIV1lN6HQeueLqJ1ktC6CY3LNmKnBKtqkb
-	rzUwhudGsvuwl/smPYdw==;
+	List-Owner; bh=XZvFtfkIvch+X0AFUg6fOwawu0+w/HKbvhsmbBiRRFc=; b=GV/LQG151uhyt8
+	+RIkeBhgvGAnPwb1aKUN0kwqZvX04BpygyYcaZG26ThFC4rbA5O5Ix4+j2QiWpsG2XuJA0nldiUal
+	O1l3TEVRfZgfl0qQ6oXv6Wo0lU5YocT5K5+vRHlA4P+w/xmnXuQGbgPyTh+7AhUK7HX7HbQ1IWPfl
+	VsloUhMZo3LqADncI1QAkTwU29bfVRFoaLAq0WGvS5Xcy+VvKLG95oCXAj5vOU3XCMrzThwEab7On
+	zMeHLyvKR4G3xmcA7Lrx8AQkJLbHcDGIcnTVoQj+n9aDKueaNYLFP0KPypVl4pC+U8NOr/rHvpCra
+	osYz0wBiZ0GCaAKuzjXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNJoi-00299e-HW; Thu, 24 Feb 2022 19:30:20 +0000
-Received: from mail-oi1-f175.google.com ([209.85.167.175])
+	id 1nNL88-002Nrs-Ef; Thu, 24 Feb 2022 20:54:28 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNJof-002978-5M
- for linux-rockchip@lists.infradead.org; Thu, 24 Feb 2022 19:30:19 +0000
-Received: by mail-oi1-f175.google.com with SMTP id q5so4434634oij.6
- for <linux-rockchip@lists.infradead.org>; Thu, 24 Feb 2022 11:30:16 -0800 (PST)
+ id 1nNL7v-002Nmw-0a
+ for linux-rockchip@lists.infradead.org; Thu, 24 Feb 2022 20:54:17 +0000
+Received: by mail-ot1-x332.google.com with SMTP id
+ s1-20020a056830148100b005acfdcb1f4bso2210390otq.4
+ for <linux-rockchip@lists.infradead.org>; Thu, 24 Feb 2022 12:54:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ :content-transfer-encoding;
+ bh=w7kYYicECLFYqJJp06iUhZt+dZdvmlULZGafsy+TJYY=;
+ b=jZEz+rzkZ3qSK3QIGheoWaMmA3vav7COKy6XwkN2b1xZlR8w8uHw9DU+hsfVrKT2A1
+ U+nJo9oYUOhKL2bluBtJc7uA2lL279nyzDvXpMQrF6jfqgRTzBzicWt8M5L7O24AeScr
+ c3tANUX7ruj1tgsLIYaMxWfWfMHGFsBUoBh3oTqvs+HCxFWt0HI6kAvxv59aVIEjm5qB
+ DHNii3B4lT65JyRyop8S4Ye+rYq8DgmRA7P6XT51vRvnKyAkiODRXBDabFIs6jRMkJ4R
+ /Dzfvtw98dOOGyzT0mdluTBhkcSOBAFD5TjzwdK2k/Xz3Fluj/VsS40oZVY+YfhRh8J7
+ CwLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ekpcNnh0CQkIhdkZOZ4oJo4aa5FJvQxiGzn0YCkw9Yo=;
- b=n69Eo9QOhQ2S3xivWbKWJKm7P8RZSM0jgARG83dNUFXWe3kucViv5lXUDE7T1ISU09
- poSHTNen4BK8nRm6KwlNxQNQlr6JCIlP7lqbYsZjhoofWoRUU1M87VZKoQT0Ezdjciu9
- brIFKAy2GFmcFkZCt+/46h3Cm+ihJXeNkmGTiOP9ap6w7rerLQnIJRTr/VciGYbuKB8i
- eVrrPhAl8JO8+vvz1kcwByzgygCFMJq+edHL76zwQxXy9UOON0KwNWOlzgWcVYHQ46h2
- pnxcHXgXuTMvgnCV2ivZhG77VN7ODcODVuekeu7/Pti24K5FlVkFe+gFaG+R2iOpHdM/
- 6aIA==
-X-Gm-Message-State: AOAM532+k2Ncj7X2NTICS+ftecDYUM9fuQUpWC2ebGtePNoO+gjvyEwI
- wrA6RwZ2TIVM9xEKJHhKTQ==
-X-Google-Smtp-Source: ABdhPJw2tKmfA1xpJykLBPLMI+cydZGFmsj/OEnHxYqqwbFQ40uAcC+43LxErKAda94gyqNLi10HzA==
-X-Received: by 2002:a05:6870:5401:b0:ce:c0c9:5fa with SMTP id
- d1-20020a056870540100b000cec0c905famr6971254oan.76.1645731015422; 
- Thu, 24 Feb 2022 11:30:15 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213]) by smtp.gmail.com with ESMTPSA id
- q14-20020a4a330e000000b002e89ed90006sm84172ooq.44.2022.02.24.11.30.14
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=w7kYYicECLFYqJJp06iUhZt+dZdvmlULZGafsy+TJYY=;
+ b=Jg1mH8vSMQ9Zs8gNfXMAfGBv07+IhPyrd2MJxu8NPro1dB4rGBWyd9dzdZVAjsXC82
+ HHvsVaOLYdQKkpiykVlunSkVFPV5cwIbI4+tx+QTSikIEd9/HyGUIiB8VSXMyWbwZAa1
+ DYEH49tqj6/GWFlZ2Zosio/MqYP4pwVqehkraW4uuLwlbudv1CGNECBtgs9WOQFIKS0X
+ of72shNOrmHDF7BegvLYPTo9RPaojn3dUMph895iMe0rvbfwUubnj4DGZWcYuU+rpRDk
+ 5/Bh/gZd4SfkSfrfTfLzA/R9Z3lMHHLLbKXlNJ9Mw9yQXlTONDMo2PoSqRWSjEIlb6A8
+ ryyQ==
+X-Gm-Message-State: AOAM533WP5JHHE71YPOoyHCBbfwVL7Razer0zUmW+RiFKUTvi6evM88x
+ 7pmU749c/o1oDV032uOwswN2Xv8yaMG5Pg==
+X-Google-Smtp-Source: ABdhPJwqpinof7vCzpo3JsDgvR8WPsKLX9v8AOxpnybjdBazfy5rwg4vCIHUvilq1nJfyHr4S8hplQ==
+X-Received: by 2002:a05:6830:1098:b0:5af:a452:2f17 with SMTP id
+ y24-20020a056830109800b005afa4522f17mr1620669oto.175.1645736053623; 
+ Thu, 24 Feb 2022 12:54:13 -0800 (PST)
+Received: from builder.lan ([2600:1700:a0:3dc8:3697:f6ff:fe85:aac9])
+ by smtp.gmail.com with ESMTPSA id
+ c8-20020a4ad788000000b0031ce69b1640sm191259oou.10.2022.02.24.12.54.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Feb 2022 11:30:14 -0800 (PST)
-Received: (nullmailer pid 3448733 invoked by uid 1000);
- Thu, 24 Feb 2022 19:30:13 -0000
-Date: Thu, 24 Feb 2022 13:30:13 -0600
-From: Rob Herring <robh@kernel.org>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>, devicetree@vger.kernel.org,
- lee.jones@linaro.org, heiko@sntech.de, zyw@rock-chips.com,
- zhangqing@rock-chips.com, linux-rockchip@lists.infradead.org,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH v3] dt-bindings: mfd: rk808: Convert bindings to yaml
-Message-ID: <YhfcxaaQgO7eDOXH@robh.at.kernel.org>
-References: <20220215211548.31940-1-macroalpha82@gmail.com>
- <9142ff41-4e95-3d52-bbe3-4f638b7d0fb2@arm.com>
+ Thu, 24 Feb 2022 12:54:13 -0800 (PST)
+From: Bjorn Andersson <bjorn.andersson@linaro.org>
+To: linux-rockchip@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
+ linux-mediatek@lists.infradead.org,
+ Douglas Anderson <dianders@chromium.org>,
+ Thierry Reding <thierry.reding@gmail.com>, Andy Gross <agross@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-arm-kernel@lists.infradead.org, chrome-platform@lists.linux.dev,
+ linux-kernel@vger.kernel.org, Guenter Roeck <groeck@chromium.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+ Benson Leung <bleung@chromium.org>, linux-pwm@vger.kernel.org,
+ devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ linux-arm-msm@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: (subset) [PATCH 3/4] arm64: dts: qcom: align Google CROS EC PWM
+ node name with dtschema
+Date: Thu, 24 Feb 2022 14:54:00 -0600
+Message-Id: <164573604161.1471031.3877884989605040071.b4-ty@linaro.org>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220214081916.162014-4-krzysztof.kozlowski@canonical.com>
+References: <20220214081916.162014-1-krzysztof.kozlowski@canonical.com>
+ <20220214081916.162014-4-krzysztof.kozlowski@canonical.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <9142ff41-4e95-3d52-bbe3-4f638b7d0fb2@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220224_113017_266943_E1E0FBF4 
-X-CRM114-Status: GOOD (  30.48  )
+X-CRM114-CacheID: sfid-20220224_125415_067759_D87CA1A8 
+X-CRM114-Status: UNSURE (   6.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,198 +103,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 16, 2022 at 12:39:09PM +0000, Robin Murphy wrote:
-> On 2022-02-15 21:15, Chris Morgan wrote:
-> [...]
-> > diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
-> > new file mode 100644
-> > index 000000000000..1b928b94fbfd
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
-> > @@ -0,0 +1,88 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/mfd/rockchip,rk805.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: RK805 Power Management Integrated Circuit
-> > +
-> > +maintainers:
-> > +  - Chris Zhong <zyw@rock-chips.com>
-> > +  - Zhang Qing <zhangqing@rock-chips.com>
-> > +
-> > +description: |
-> > +  Rockchip RK805 series PMIC. This device consists of an i2c controlled MFD
-> > +  that includes multiple switchable regulators.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      - rockchip,rk805
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +
-> > +  '#clock-cells':
-> > +    const: 1
-> > +
-> > +  clock-output-names:
-> > +    maxItems: 2
+On Mon, 14 Feb 2022 09:19:15 +0100, Krzysztof Kozlowski wrote:
+> dtschema expects PWM node name to be a generic "pwm".  This also matches
+> Devicetree specification requirements about generic node names.
 > 
-> I think this should be 1, since RK805 only has a single CLK32K output -
-> ditto for RK817.
 > 
-> [...]
-> > diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
-> > new file mode 100644
-> > index 000000000000..f5908fa01a61
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
-> > @@ -0,0 +1,257 @@
-> > +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/mfd/rockchip,rk808.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: RK808 Power Management Integrated Circuit
-> > +
-> > +maintainers:
-> > +  - Chris Zhong <zyw@rock-chips.com>
-> > +  - Zhang Qing <zhangqing@rock-chips.com>
-> > +
-> > +description: |
-> > +  Rockchip RK808 series PMIC. This device consists of an i2c controlled MFD
-> > +  that includes regulators, an RTC, and a power button.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      - rockchip,rk808
-> > +
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +
-> > +  '#clock-cells':
-> > +    description:
-> > +      See <dt-bindings/clock/rockchip,rk808.h> for clock IDs.
-> > +    const: 1
-> > +
-> > +  clock-output-names:
-> > +    description:
-> > +      From common clock binding to override the default output clock name.
-> 
-> minItems should be consistent across RK808/818/819 - when two clocks exist,
-> either it's legitimate to rename only the first one, or it isn't. There
-> shouldn't be an arbitrary difference just because of what existing DTs
-> happen to use.
-> 
-> > +    maxItems: 2
-> > +
-> > +  rockchip,system-power-controller:
-> > +    type: boolean
-> > +    description:
-> > +      Telling whether or not this PMIC is controlling the system power.
-> > +
-> > +  wakeup-source:
-> > +    type: boolean
-> > +    description:
-> > +      Device can be used as a wakeup source.
-> > +
-> > +  vcc1-supply:
-> > +    description:
-> > +      The input supply for DCDC_REG1.
-> > +
-> > +  vcc2-supply:
-> > +    description:
-> > +      The input supply for DCDC_REG2.
-> > +
-> > +  vcc3-supply:
-> > +    description:
-> > +      The input supply for DCDC_REG3.
-> > +
-> > +  vcc4-supply:
-> > +    description:
-> > +      The input supply for DCDC_REG4.
-> > +
-> > +  vcc6-supply:
-> > +    description:
-> > +      The input supply for LDO_REG1 and LDO_REG2.
-> > +
-> > +  vcc7-supply:
-> > +    description:
-> > +      The input supply for LDO_REG3 and LDO_REG7.
-> > +
-> > +  vcc8-supply:
-> > +    description:
-> > +      The input supply for SWITCH_REG1.
-> > +
-> > +  vcc9-supply:
-> > +    description:
-> > +      The input supply for LDO_REG4 and LDO_REG5.
-> > +
-> > +  vcc10-supply:
-> > +    description:
-> > +      The input supply for LDO_REG6.
-> > +
-> > +  vcc11-supply:
-> > +    description:
-> > +      The input supply for LDO_REG8.
-> > +
-> > +  vcc12-supply:
-> > +    description:
-> > +      The input supply for SWITCH_REG2.
-> > +
-> > +  vddio-supply:
-> > +    description:
-> > +      The input supply for digital IO.
-> > +
-> > +  dvs-gpios:
-> > +    description: |
-> > +      buck1/2 can be controlled by gpio dvs, this is GPIO specifiers for
-> > +      2 host gpio's used for dvs. The format of the gpio specifier
-> > +      depends in the gpio controller. If DVS GPIOs aren't present,
-> > +      voltage changes will happen very quickly with no slow ramp time.
-> > +    maxItems: 2
-> > +
-> > +  regulators:
-> > +    type: object
-> > +    patternProperties:
-> > +      "^(DCDC_REG[1-4]|LDO_REG[1-8]|SWITCH_REG[1-2])$":
-> > +        type: object
-> > +        $ref: ../regulator/regulator.yaml#
-> > +    unevaluatedProperties: false
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - interrupts
-> > +  - "#clock-cells"
-> 
-> Is this actually required (ditto elsewhere)? Technically it's only necessary
-> if there are any clock consumers targeting this node, so arguably it should
-> be the clock binding's responsibility to validate that.
-> 
-> It wouldn't make much sense for a dedicated clock controller to omit
-> #clock-cells such that it couldn't have any consumers, but given that these
-> things are primarily PMICs I think it's reasonable to allow a board not to
-> care about the clocks at all if it doesn't use them. I know that the
-> original binding claimed it was required, but if we're already relaxing that
-> for RK805 here then we may as well relax it entirely.
 
-Fair enough. However, if the consumer could be in an overlay, then I 
-think we want it to be required and not make the overlay add the 
-property. Properties just appearing within nodes at runtime is likely 
-not well supported in OSs.
+Applied, thanks!
 
-Rob
+[3/4] arm64: dts: qcom: align Google CROS EC PWM node name with dtschema
+      commit: 1e49defb863638cde53e48805747271f80f9abec
+
+Best regards,
+-- 
+Bjorn Andersson <bjorn.andersson@linaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
