@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2B48C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 11:04:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66ADAC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 11:11:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SfX6ZuZ8I0Mc0MTTkVLTtnA9rI5Z8ZtRDE4tUCMuoFc=; b=r4Ssypy6F1OGxY
-	yYEdXZilw4xwTJP7Xg16ZHsKk4CYBFME/3C2m+mCDWXuz+Ops02vVCMkT3yxw6tesDAJZK68kQLxu
-	xbrTPIfpREf4yJsnKP7PHGJmA0GKW+0chIfKtxMP509U3vkCrS2f5AyJ/3SANTIZu78+afPSkd+AH
-	WUdeb7yAvEHQn9axbIguAScgUzkfCbTwoffufoS5HLPyKMki2S68j4uybazUBUZ87OtOwlB4IRIO8
-	vKEMVNLuBs5m9xrvVstmxy4irofsN6ZBJsbr0QDEONFZcRT+nS2fWDJmqguGZIPwUxoRS0RZMp9yr
-	jwW8XVLqK3UFkEKnKG8g==;
+	List-Owner; bh=Yq+K1a63RF9uUvozzjDO+NSkbB2pjn/Aj8QTv4rXiyU=; b=nxc4/6GgNQSaO4
+	GI9vhw+yTMTWcIrrm9pqPXi2f1pgGNfyTpli0VoVIOIf2gxmijZ5FmbHQ+XE3QS248Yuhuvfsz2na
+	BNq0xkrE72AxkltAGcx3h036rlMruvad9q8j7MX2H+skoVaYXnrmJwVYu45yefkI5r0iemRCtLqr/
+	agSRrABhb/tii3l1otIrUcrb0eDfuwz1FgMcT2AvF5NIBAF5RGM17SY8iSEaoqeH3Wbh6qdma5jbu
+	32RhpXn8IaGVTZoa/eXSywt1nuSB82u1rfFxYMh/SISUtIKlLCLtYj9FVS4RPOTWIERNhvprfzAP9
+	Yy24VypOnV5msuVNi5WQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNYOa-004bkt-Jz; Fri, 25 Feb 2022 11:04:20 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1nNYV4-004cx2-Ku; Fri, 25 Feb 2022 11:11:02 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNYOO-004bit-0N; Fri, 25 Feb 2022 11:04:09 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id gb39so10134346ejc.1;
- Fri, 25 Feb 2022 03:04:07 -0800 (PST)
+ id 1nNYV1-004cuq-BS; Fri, 25 Feb 2022 11:11:01 +0000
+Received: by mail-lj1-x232.google.com with SMTP id e2so6855319ljq.12;
+ Fri, 25 Feb 2022 03:10:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language
- :from:to:cc:references:in-reply-to:content-transfer-encoding;
- bh=J1vtATe8xS2rnhXfuGjs3otCLwyKXCCg9BTOffjh3gk=;
- b=DKjBKIQcroCN2WWwSd8HkCbHtJiS+c+4hFc3dx+D7uXixR9RFIlIE4Lj/m2fx83HEp
- 6OCethccFO7W3Mm0eqMw6X6vq7Wx1l9fNHzegavQDCqvT20o6Pbq5WwrN+7EEuOmmlW/
- xyW0ZLNe2Z0LMgjAfnWtGIk0VXOK2rOpnisw+QsdxbjTh6advilSCX2pDsRwfm8PwSf2
- z5xnbHgkRQRD4AJZJaEgFqOmJ2Vtmw2q3bp9hApB4R2Fp8faiaA8+MqdTzzcsXn4ag6x
- 4QBJhEKaM2XzCr590DSPD9oNzKE0cLTjUgTXOZbFbCnBFHdufdmBYLb7uoxHOaVrnQ1z
- eMzQ==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=yfHDVChMIt79P8PwPVg3ITAsqmLO2xEVeCJUOEsGqTU=;
+ b=YYiU90jPEjbBPpGtGlks3J6ji5Nd3R7OXrhwxviCnTFNqQpKJJnJtC5ehaLTKgPv6d
+ kytOZEuiglne9JU2KDODLNAk3kSnVaXhENvmnBtvrBbuGp/LmYESK1W3L2pDk+iUYmTq
+ KqWJVFd1YncInr0mcJoJcA0/NgWltTcKtQEvETZRIPWbMYnZwgIomPPWFTh/GwaEQ0w/
+ /q92mKU79F4TZmLhSIed3q5bfj8I0MJ7jU8M5FhdAjmYQ/xwPXK9nq/oM1z1t6IqlZOS
+ 5Fktm2+KaIZ1bj+8igJ/PSK5VWx+/oGbmra2Gr9CrvDH4UL45bEStlNRKgE6PNXEv63N
+ 5b/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:from:to:cc:references:in-reply-to
+ :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=J1vtATe8xS2rnhXfuGjs3otCLwyKXCCg9BTOffjh3gk=;
- b=eKvkSO6LjgS3TYnVGXYSonDLCxT5rvjb/W5CNFYbGBistJcVYk1aLoZR/1eRgzxZP4
- WfstTGxej4LIGzF9rctY/zdQK0yk7s77bf4KT1vp/22WHE9esE6U7hvRER6FOzSHfh5w
- UrnYhIEQQ7uxDXlcQwN/dk06jEwZX6PVBlpU+SidfeiXbVZTzwoF2YoZ9cP+ctONhpNC
- L9k6J83khrNfiIpp9UFJFB/iHxAeu6eU8uFrryiqhCaRYQ4okAO5TDy3a/qJWQ3ENt+m
- VFo86ErObCMANSfv7pGEv6m74oIga5GDf7AHz8U4GYZZ4YK3zN3LyM8s1/5ywVk64/mK
- bbKg==
-X-Gm-Message-State: AOAM5314um2dP0oKPeSbfRFveaPr6l3JX8R4bXNm+SDGjBl8gX8zrrwx
- gQ0FSff2XgWZPw2UvDx9p5M=
-X-Google-Smtp-Source: ABdhPJwH7GUb7aprXSwoupidbtjf/OXY/8xeFuVk5HLbvAPx14fCA8zgXvelMEtG/AdqFFFzPzSmcw==
-X-Received: by 2002:a17:907:7711:b0:6ce:e03c:e1e2 with SMTP id
- kw17-20020a170907771100b006cee03ce1e2mr5780203ejc.769.1645787046076; 
- Fri, 25 Feb 2022 03:04:06 -0800 (PST)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- l21-20020a056402231500b0041327b58030sm1231150eda.2.2022.02.25.03.04.04
+ bh=yfHDVChMIt79P8PwPVg3ITAsqmLO2xEVeCJUOEsGqTU=;
+ b=lEQ2hp0YbEcfgz/qmcij4IMgh0cRb0WpCPkfmgxnqMsEZXnFtzoyuNXn04Ydfhq8LS
+ /hsMumLXWoOmbCSUM6n1BmPfyDLn1o5MyFoxbzbQI74/gEsyzXcC7KewXKdrmArhaI0r
+ i7hpT++6Jh7ouwoJOJuMLXMwxgEyF+lOUyAxVEFZa2D5HaoBL1/SemB4uyekxXoyN9rR
+ p0CtCHDD6stdNYcjV6acqLoTwgsavOtnpjV+/vV4M1wwali4WVutFRk6R39UsJst0Z8u
+ ON4cMMk7B8JA31zp+7jzvtA3Oy1DsvBrVnXd2XWYfKMfz7UFAOcJ4OArppOehzLIPDaW
+ 4Amw==
+X-Gm-Message-State: AOAM531lLHkVHvptTYIyk1Fgu7bt5+PXLhUuobmZKmca+Xzki7uuS8DW
+ eFqPBpV5ipNOeMKTePVdH5o=
+X-Google-Smtp-Source: ABdhPJy3g0VW5PnDPjeFJlNBTjarbzOJxXYBGGvfVSZkpGhwP0uSgOx0oKsnOg7b8V6oGQav6wtkcA==
+X-Received: by 2002:a2e:7218:0:b0:246:4772:1fa0 with SMTP id
+ n24-20020a2e7218000000b0024647721fa0mr4972875ljc.125.1645787457313; 
+ Fri, 25 Feb 2022 03:10:57 -0800 (PST)
+Received: from [192.168.2.145] (109-252-137-194.dynamic.spd-mgts.ru.
+ [109.252.137.194]) by smtp.googlemail.com with ESMTPSA id
+ u17-20020a056512095100b0044381f00805sm174550lft.139.2022.02.25.03.10.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Feb 2022 03:04:05 -0800 (PST)
-Message-ID: <3c7494bc-cff2-5b69-9c3c-b5f5560d0fbc@gmail.com>
-Date: Fri, 25 Feb 2022 12:04:04 +0100
+ Fri, 25 Feb 2022 03:10:56 -0800 (PST)
+Message-ID: <78207d97-b5a1-9792-8ec9-11fcf2e00370@gmail.com>
+Date: Fri, 25 Feb 2022 14:10:55 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: add the usb3 nodes to rk356x
+Subject: Re: [PATCH v7 10/24] drm/rockchip: dw_hdmi: Add support for hclk
 Content-Language: en-US
-From: Johan Jonker <jbx6244@gmail.com>
-To: Michael Riesch <michael.riesch@wolfvision.net>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Sascha Hauer <s.hauer@pengutronix.de>, Liang Chen <cl@rock-chips.com>,
- Peter Geis <pgwipeout@gmail.com>, Simon Xue <xxm@rock-chips.com>,
- Yifeng Zhao <yifeng.zhao@rock-chips.com>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-References: <20220225100943.2115933-1-michael.riesch@wolfvision.net>
- <20220225100943.2115933-2-michael.riesch@wolfvision.net>
- <3e3d0e25-cea4-5b1a-e181-15e793ecba91@gmail.com>
-In-Reply-To: <3e3d0e25-cea4-5b1a-e181-15e793ecba91@gmail.com>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Peter Geis <pgwipeout@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
+ linux-rockchip@lists.infradead.org,
+ Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
+ Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+References: <20220225075150.2729401-1-s.hauer@pengutronix.de>
+ <20220225075150.2729401-11-s.hauer@pengutronix.de>
+ <47ddcaf3-4544-2b7c-a2f6-1f6346907f33@gmail.com>
+ <20220225104924.GC19585@pengutronix.de>
+From: Dmitry Osipenko <digetx@gmail.com>
+In-Reply-To: <20220225104924.GC19585@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_030408_123162_1B20CD67 
-X-CRM114-Status: GOOD (  21.87  )
+X-CRM114-CacheID: sfid-20220225_031059_441800_ADE2CC08 
+X-CRM114-Status: GOOD (  17.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,246 +94,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Oops...
-
-On 2/25/22 11:53, Johan Jonker wrote:
-> Hi Michael,
-> 
-> On 2/25/22 11:09, Michael Riesch wrote:
->> The Rockchip RK3566 and RK3568 feature two USB 3.0 xHCI controllers,
->> one of them with Dual Role Device (DRD) capability.
->>
->> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
->> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
->> ---
->>  arch/arm64/boot/dts/rockchip/rk3568.dtsi |  5 ++
->>  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 58 ++++++++++++++++++++++++
->>  2 files changed, 63 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
->> index 91a0b798b857..0cd4ef36066a 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
->> @@ -116,3 +116,8 @@ power-domain@RK3568_PD_PIPE {
->>  		#power-domain-cells = <0>;
->>  	};
->>  };
->> +
->> +&usb_host0_dwc3 {
->> +	phys = <&usb2phy0_otg>, <&combphy0 PHY_TYPE_USB3>;
->> +	phy-names = "usb2-phy", "usb3-phy";
->> +};
->> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
->> index 8b9fae3d348a..b46794486037 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
->> @@ -230,6 +230,64 @@ scmi_shmem: sram@0 {
->>  		};
->>  	};
->>  
->> +	usb_host0_xhci: usb@fcc00000 {
-> 
->> +		compatible = "rockchip,rk3399-dwc3";
-> 
-> Add string to rockchip,dwc3.yaml
-> and check with dtsb_check
-> 
-
-> compatible = "rockchip,rk3399-dwc3", "snps,dwc3";
-
-compatible = "rockchip,rk3568-dwc3", "snps,dwc3";
-
-> 
->> +		#address-cells = <2>;
-> 
-> remove
-> 
->> +		clocks = <&cru CLK_USB3OTG0_REF>, <&cru CLK_USB3OTG0_SUSPEND>,
-> 
->> +			 <&cru ACLK_USB3OTG0>, <&cru PCLK_PIPE>;
-> 
-> PCLK_PIPE part of an other node, probably only to enable PD_PIPE.
-> 
-> 	combphy1: phy@fe830000 {
-> 		compatible = "rockchip,rk3568-naneng-combphy";
-> 		reg = <0x0 0xfe830000 0x0 0x100>;
-> 		clocks = <&pmucru CLK_PCIEPHY1_REF>,
-> 			 <&cru PCLK_PIPEPHY1>,
-> 			 <&cru PCLK_PIPE>;
-> 		clock-names = "ref", "apb", "pipe";
-> 		assigned-clocks = <&pmucru CLK_PCIEPHY1_REF>;
-> 		assigned-clock-rates = <100000000>;
-> 		resets = <&cru SRST_PIPEPHY1>;
-> 		rockchip,pipe-grf = <&pipegrf>;
-> 		rockchip,pipe-phy-grf = <&pipe_phy_grf1>;
-> 		#phy-cells = <1>;
-> 		status = "disabled";
-> 	};
-> 
-> Rockchip RK3568 TRM Part1 V1.0-20210111.pdf
-> page 475
-> 
-> PD_PIPE:
-> 
-> BIU_PIPE
-> USB3OTG
-> PCIE20
-> PCIE30
-> SATA
-> XPCS
-> 
-> PCIE, SATA USB clocks are child of aclk_pipe
-> Yet PCLK_PIPE is the only clock that enables RK3568_PD_PIPE.
-> 
-> 
-> 	COMPOSITE_NOMUX(PCLK_PIPE, "pclk_pipe", "aclk_pipe", 0,
-> 			RK3568_CLKSEL_CON(29), 4, 4, DFLAGS,
-> 			RK3568_CLKGATE_CON(10), 1, GFLAGS),
-> 
-> &power {
-> 	power-domain@RK3568_PD_PIPE {
-> 		reg = <RK3568_PD_PIPE>;
-> 
-> 		clocks = <&cru PCLK_PIPE>;
-> 
-> Do we need more clocks here for USB for example?
-> 
-> 		pm_qos = <&qos_pcie2x1>,
-> 			 <&qos_pcie3x1>,
-> 			 <&qos_pcie3x2>,
-> 			 <&qos_sata0>,
-> 			 <&qos_sata1>,
-> 			 <&qos_sata2>,
-> 			 <&qos_usb3_0>,
-> 			 <&qos_usb3_1>;
-> 		#power-domain-cells = <0>;
-> 	};
-> };
-> 
->> +		clock-names = "ref_clk", "suspend_clk", "bus_clk", "grf_clk";
-> 
-> grf_clk only related to rk3399 ACLK_USB3_GRF and not to PCLK_PIPE.
-> 
->> +		ranges;
->> +		#size-cells = <2>;
-> 
-> remove
-> 
->> +		status = "disabled";
->> +
->> +		usb_host0_dwc3: usb@fcc00000 {
-> 
-> No subnode for "snps,dwc3"
-> No more subdriver like rk3399.
-> Use dwc core only and fix things/quirks there.
-> 
->> +			compatible = "snps,dwc3";
->> +			reg = <0x0 0xfcc00000 0x0 0x400000>;
->> +			interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH>;
->> +			dr_mode = "otg";
->> +			phy_type = "utmi_wide";
->> +			power-domains = <&power RK3568_PD_PIPE>;
->> +			resets = <&cru SRST_USB3OTG0>;
->> +			reset-names = "usb3-otg";
->> +			snps,dis-del-phy-power-chg-quirk;
->> +			snps,dis_enblslpm_quirk;
->> +			snps,dis_rxdet_inp3_quirk;
->> +			snps,dis-tx-ipgap-linecheck-quirk;
->> +			snps,dis-u2-freeclk-exists-quirk;
-> 
->> +			snps,xhci-trb-ent-quirk;
-> 
-> Not in mainline.
-> See snps,dwc3.yaml
-> 
->> +		};
->> +	};
->> +
->> +	usb_host1_xhci: usb@fd000000 {
-
->> +		compatible = "rockchip,rk3399-dwc3";
-
-compatible = "rockchip,rk3568-dwc3", "snps,dwc3";
-
->> +		#address-cells = <2>;
->> +		clocks = <&cru CLK_USB3OTG1_REF>, <&cru CLK_USB3OTG1_SUSPEND>,
->> +			 <&cru ACLK_USB3OTG1>, <&cru PCLK_PIPE>;
->> +		clock-names = "ref_clk", "suspend_clk", "bus_clk", "grf_clk";
->> +		ranges;
->> +		#size-cells = <2>;
->> +		status = "disabled";
->> +
->> +		usb_host1_dwc3: usb@fd000000 {
->> +			compatible = "snps,dwc3";
->> +			reg = <0x0 0xfd000000 0x0 0x400000>;
->> +			interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH>;
->> +			dr_mode = "host";
->> +			phy_type = "utmi_wide";
->> +			phys = <&usb2phy0_host>, <&combphy1 PHY_TYPE_USB3>;
->> +			phy-names = "usb2-phy", "usb3-phy";
->> +			power-domains = <&power RK3568_PD_PIPE>;
->> +			resets = <&cru SRST_USB3OTG1>;
-> 
->> +			reset-names = "usb3-host";
-> 
->   reset-names:
->     const: usb3-otg
-> 
-> Fix binding or DT ??
-> 
->> +			snps,dis-del-phy-power-chg-quirk;
->> +			snps,dis_enblslpm_quirk;
->> +			snps,dis_rxdet_inp3_quirk;
->> +			snps,dis-tx-ipgap-linecheck-quirk;
->> +			snps,dis-u2-freeclk-exists-quirk;
-> 
->> +			snps,xhci-trb-ent-quirk;
-> 
-> Not in mainline ??
-> 
->> +		};
->> +	};
->> +
-> 
-> 
-> 	usbdrd3_1: usb@fd000000 {
-
-> 		compatible = "rockchip,rk3399-dwc3", "snps,dwc3";
-
-compatible = "rockchip,rk3568-dwc3", "snps,dwc3";
-
-> 		reg = <0x0 0xfd000000 0x0 0x400000>;
-> 		interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH>;
-> 		clocks = <&cru CLK_USB3OTG1_REF>,
-> 			 <&cru CLK_USB3OTG1_SUSPEND>,
-> 			 <&cru ACLK_USB3OTG1>;
-> 		clock-names = "ref_clk", "suspend_clk", "bus_clk";
-> 		dr_mode = "host";
-> 		phy_type = "utmi_wide";
-> 		phys = <&usb2phy0_host>, <&combphy1 PHY_TYPE_USB3>;
-> 		phy-names = "usb2-phy", "usb3-phy";
-> 		power-domains = <&power RK3568_PD_PIPE>;
-> 		resets = <&cru SRST_USB3OTG1>;
-> 		reset-names = "usb3-otg";
-> 		snps,dis-del-phy-power-chg-quirk;
-> 		snps,dis_enblslpm_quirk;
-> 		snps,dis_rxdet_inp3_quirk;
-> 		snps,dis-tx-ipgap-linecheck-quirk;
-> 		snps,dis-u2-freeclk-exists-quirk;
-> 		status = "disabled";
-> 	};
-> 
-> 
->>  	gic: interrupt-controller@fd400000 {
->>  		compatible = "arm,gic-v3";
->>  		reg = <0x0 0xfd400000 0 0x10000>, /* GICD */
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+MjUuMDIuMjAyMiAxMzo0OSwgU2FzY2hhIEhhdWVyINC/0LjRiNC10YI6Cj4gT24gRnJpLCBGZWIg
+MjUsIDIwMjIgYXQgMDE6MjY6MTRQTSArMDMwMCwgRG1pdHJ5IE9zaXBlbmtvIHdyb3RlOgo+PiAy
+NS4wMi4yMDIyIDEwOjUxLCBTYXNjaGEgSGF1ZXIg0L/QuNGI0LXRgjoKPj4+IFRoZSByazM1Njgg
+SERNSSBoYXMgYW4gYWRkaXRpb25hbCBjbG9jayB0aGF0IG5lZWRzIHRvIGJlIGVuYWJsZWQgZm9y
+IHRoZQo+Pj4gSERNSSBjb250cm9sbGVyIHRvIHdvcmsuIFRoZSBwdXJwb3NlIG9mIHRoYXQgY2xv
+Y2sgaXMgbm90IGNsZWFyLiBJdCBpcwo+Pj4gbmFtZWQgImhjbGsiIGluIHRoZSBkb3duc3RyZWFt
+IGRyaXZlciwgc28gdXNlIHRoZSBzYW1lIG5hbWUuCj4+Pgo+Pj4gU2lnbmVkLW9mZi1ieTogU2Fz
+Y2hhIEhhdWVyIDxzLmhhdWVyQHBlbmd1dHJvbml4LmRlPgo+Pj4gLS0tCj4+Pgo+Pj4gTm90ZXM6
+Cj4+PiAgICAgQ2hhbmdlcyBzaW5jZSB2NToKPj4+ICAgICAtIFVzZSBkZXZtX2Nsa19nZXRfb3B0
+aW9uYWwgcmF0aGVyIHRoYW4gZGV2bV9jbGtfZ2V0Cj4+Pgo+Pj4gIGRyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMgfCAxNiArKysrKysrKysrKysrKysrCj4+PiAgMSBm
+aWxlIGNoYW5nZWQsIDE2IGluc2VydGlvbnMoKykKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMKPj4+IGluZGV4IGZlNGY5NTU2MjM5YWMuLmM2YzAw
+ZTg3NzlhYjUgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRt
+aS1yb2NrY2hpcC5jCj4+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1y
+b2NrY2hpcC5jCj4+PiBAQCAtNzYsNiArNzYsNyBAQCBzdHJ1Y3Qgcm9ja2NoaXBfaGRtaSB7Cj4+
+PiAgCWNvbnN0IHN0cnVjdCByb2NrY2hpcF9oZG1pX2NoaXBfZGF0YSAqY2hpcF9kYXRhOwo+Pj4g
+IAlzdHJ1Y3QgY2xrICpyZWZfY2xrOwo+Pj4gIAlzdHJ1Y3QgY2xrICpncmZfY2xrOwo+Pj4gKwlz
+dHJ1Y3QgY2xrICpoY2xrX2NsazsKPj4+ICAJc3RydWN0IGR3X2hkbWkgKmhkbWk7Cj4+PiAgCXN0
+cnVjdCByZWd1bGF0b3IgKmF2ZGRfMHY5Owo+Pj4gIAlzdHJ1Y3QgcmVndWxhdG9yICphdmRkXzF2
+ODsKPj4+IEBAIC0yMjksNiArMjMwLDE0IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfaGRtaV9wYXJz
+ZV9kdChzdHJ1Y3Qgcm9ja2NoaXBfaGRtaSAqaGRtaSkKPj4+ICAJCXJldHVybiBQVFJfRVJSKGhk
+bWktPmdyZl9jbGspOwo+Pj4gIAl9Cj4+PiAgCj4+PiArCWhkbWktPmhjbGtfY2xrID0gZGV2bV9j
+bGtfZ2V0X29wdGlvbmFsKGhkbWktPmRldiwgImhjbGsiKTsKPj4+ICsJaWYgKFBUUl9FUlIoaGRt
+aS0+aGNsa19jbGspID09IC1FUFJPQkVfREVGRVIpIHsKPj4KPj4gSGF2ZSB5b3UgdHJpZWQgdG8g
+aW52ZXN0aWdhdGUgdGhlIGhjbGs/IEknbSBzdGlsbCB0aGlua2luZyB0aGF0J3Mgbm90Cj4+IG9u
+bHkgSERNSSB0aGF0IG5lZWRzIHRoaXMgY2xvY2sgYW5kIHRoZW4gdGhlIGhhcmR3YXJlIGRlc2Ny
+aXB0aW9uCj4+IGRvZXNuJ3QgbG9vayBjb3JyZWN0Lgo+IAo+IEkgYW0gc3RpbGwgbm90IHN1cmUg
+d2hhdCB5b3UgbWVhbi4gWWVzLCBpdCdzIG5vdCBvbmx5IHRoZSBIRE1JIHRoYXQKPiBuZWVkcyB0
+aGlzIGNsb2NrLiBUaGUgVk9QMiBuZWVkcyBpdCBhcyB3ZWxsIGFuZCB0aGUgZHJpdmVyIGhhbmRs
+ZXMgdGhhdC4KCkknbSBjdXJpb3VzIHdoZXRoZXIgRFNJL0RQIGFsc28gbmVlZCB0aGF0IGNsb2Nr
+IHRvIGJlIGVuYWJsZWQuIElmIHRoZXkKZG8sIHRoZW4geW91IGFyZW4ndCBtb2RlbGluZyBoL3cg
+cHJvcGVybHkgQUZBSUNTLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1yb2NrY2hpcAo=
