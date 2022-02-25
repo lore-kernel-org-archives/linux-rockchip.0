@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD1D5C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 08:08:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8C8AC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 08:09:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WMHI1p10co7Rt4/+4m2lk1KqD42LJ0Olc/R1cdNcNRs=; b=Zh87n0+hDiTGY1
-	7AOTx1lHqXsuGKK2cbaSUSqlYHsKGAnOBrJHEav+yR+f6fqaPvD2JQcZ1dcTFjqCXK9V7rMZMdEuS
-	fTQifWKQHRCJRB2xRaD484KlyP31LkoHpfo6YBoZr4UwUJBDDwPYAVnt1TRFdZ0fIcQ4CxemD66Te
-	CbFwYd1qSagSaljBMKExRY39AZ3kNPk9UjurGPLOqzGwZa6Sgoln62KMOiEz+snbps1ZnmRqgEJFu
-	arIRpxD9pX6oN+i00V4qiUWvNz+cuvqCG1mRn+LGA5qbHsjlygGdoMVl7FMf9xwYhpbkpYBjlj8os
-	Scl60PFJCS+pK2q9ndNA==;
+	List-Owner; bh=/psYTI4XJLVhGTug/XfnPGc2anCnsO3caj4T7shM3r0=; b=WHwk3FGqhl4BNl
+	osEYkdgeT7ASlOZ0a962PMvxy5DUYOW2rUbqo8yklx39OzlviTzg4W9iD/hdCzQ41Wdyem5FBUAq6
+	OiyY3gOtVoaAQwL9jtEwD1ngMRrozVAqdnDKffhiwlYbJ2atRYeydByrMX5fDAlPpmp5653x09kSK
+	aYBtVkZngPuoXzCWorvFnxx0Y96t/1/b3EG68QHyq3rHuxgEN544nZnl/iRGgYcCefNTbEWUaxRPv
+	FnY/nVXXpLa1TsweJVSWZK1eBcwbJ6kwwFgoCWTm5SEH+9aXabOo0Zmi2H9hDyubiH3mL4JAGCLLp
+	dGy3pQcDz/R8nS64hgcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNVeP-003q9k-Fm; Fri, 25 Feb 2022 08:08:29 +0000
+	id 1nNVfW-003qfa-8U; Fri, 25 Feb 2022 08:09:38 +0000
 Received: from desiato.infradead.org ([90.155.92.199])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNVOo-003iB7-Jo
- for linux-rockchip@bombadil.infradead.org; Fri, 25 Feb 2022 07:52:22 +0000
+ id 1nNVOs-003iDc-PM
+ for linux-rockchip@bombadil.infradead.org; Fri, 25 Feb 2022 07:52:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
  :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=qcReYizSJYPruLNqNjK0EIWjMkr+X/vmTj4VMI8975Y=; b=eNB29UApsaQ9QI8EvKmGahAPj6
- cZK14iH5t/nzN7fqI0CKtD9XowCpGmNYVmjN1hcMCLcMnj9G3NR2v0bybZRCvzMB/Rv+4hmnHJSCs
- vFV4LB+59vIgQiFEL90HH0sotngdHfdJcS5XVBzdBV9tAbQuWgbCS4PDDtoKOYqs8lvqWD//Rfbd9
- Zq2GeGYI5xsV9ke+glMqVthK4QAIt2hge7YmjnaV4IpOWY1lNOFFUxKvWH2Bj+2vGa/ptxZ51DEOQ
- LDl/0ar+Ef+ovsVLaBCfr6nsFbddgLd8OnKhOIXWuFEmWUZioLnbjoYPHqQzQv0pKlupwvIY1TNCm
- yucL3ChA==;
+ bh=wTGijRx/J7le/l6UudfsbESYNZzBFCfEYCOrOaUafA0=; b=VBaV0r1I18WduMjRJDkxZVYSBb
+ SKVxVwLAG4rx9qns+nk+IG6pAP2hMHaERB/jBoVcKbxAXA32qQ+qpgbq48K7h+nCd00zC3PbtoLdY
+ 4TfB0tC2IhPT7kB/cvvBqcRU09TBBwWImcuN6s4MZa+tGkrZBGKmTpJm9jO4fT6gRf+KNDbKqpgsq
+ al7MBEs65i8cOWQvrlC/u1empuZwwhcsf8+U/mp+9kftR1NYYUf7ofGkHVO7mnGdIDmgZb9aotI8g
+ hInZHtn93GrT4V3ewITWX9ZoQzlCJAlvYeBr5R4K3+Ew+DADj85O/Wu9i+vHo1gDrZKoUdWytSu+G
+ B9kXkDsw==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNVOk-00Ctjg-Ma
- for linux-rockchip@lists.infradead.org; Fri, 25 Feb 2022 07:52:21 +0000
+ id 1nNVOa-00Ctg9-4C
+ for linux-rockchip@lists.infradead.org; Fri, 25 Feb 2022 07:52:25 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nNVOR-0000Py-Kd; Fri, 25 Feb 2022 08:51:59 +0100
+ id 1nNVON-0000Pn-AA; Fri, 25 Feb 2022 08:51:55 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nNVOL-00BSY9-87; Fri, 25 Feb 2022 08:51:53 +0100
+ id 1nNVOL-00BSXc-0X; Fri, 25 Feb 2022 08:51:53 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -56,11 +56,10 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Rob Herring <robh@kernel.org>
-Subject: [PATCH v7 17/24] arm64: dts: rockchip: rk356x: Add VOP2 nodes
-Date: Fri, 25 Feb 2022 08:51:43 +0100
-Message-Id: <20220225075150.2729401-18-s.hauer@pengutronix.de>
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v7 06/24] drm/rockchip: dw_hdmi: add rk3568 support
+Date: Fri, 25 Feb 2022 08:51:32 +0100
+Message-Id: <20220225075150.2729401-7-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220225075150.2729401-1-s.hauer@pengutronix.de>
 References: <20220225075150.2729401-1-s.hauer@pengutronix.de>
@@ -71,8 +70,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_075219_460118_D419767C 
-X-CRM114-Status: GOOD (  14.80  )
+X-CRM114-CacheID: sfid-20220225_075208_262756_55371AC7 
+X-CRM114-Status: GOOD (  14.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,142 +89,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The VOP2 is the display output controller on the RK3568. Add the node
-for it to the dtsi file along with the required display-subsystem node
-and the iommu node.
+Add a new dw_hdmi_plat_data struct and new compatible for rk3568.
 
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-Acked-by: Rob Herring <robh@kernel.org>
 ---
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 31 +++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
-Notes:
-    Changes since v4:
-    - Add Robs Ack
-    
-    Changes since v3:
-    - Bring back gamma_lut regs
-    - Drop redundant _vop suffix from clock names
-
- arch/arm64/boot/dts/rockchip/rk3566.dtsi |  4 ++
- arch/arm64/boot/dts/rockchip/rk3568.dtsi |  4 ++
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 51 ++++++++++++++++++++++++
- include/dt-bindings/soc/rockchip,vop2.h  | 14 +++++++
- 4 files changed, 73 insertions(+)
- create mode 100644 include/dt-bindings/soc/rockchip,vop2.h
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566.dtsi b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
-index 3839eef5e4f76..595fa2562cb8e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
-@@ -18,3 +18,7 @@ power-domain@RK3568_PD_PIPE {
- 		#power-domain-cells = <0>;
- 	};
- };
-+
-+&vop {
-+	compatible = "rockchip,rk3566-vop";
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-index 2fd313a295f8a..1e55efb6fcfde 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -95,3 +95,7 @@ power-domain@RK3568_PD_PIPE {
- 		#power-domain-cells = <0>;
- 	};
- };
-+
-+&vop {
-+	compatible = "rockchip,rk3568-vop";
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index a68033a239750..19d8e67c4698b 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -129,6 +129,11 @@ opp-1800000000 {
- 		};
- 	};
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 912181429880a..b64cc62c7b5af 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -50,6 +50,10 @@
+ #define RK3399_GRF_SOC_CON20		0x6250
+ #define RK3399_HDMI_LCDC_SEL		BIT(6)
  
-+	display_subsystem: display-subsystem {
-+		compatible = "rockchip,display-subsystem";
-+		ports = <&vop_out>;
-+	};
++#define RK3568_GRF_VO_CON1		0x0364
++#define RK3568_HDMI_SDAIN_MSK		BIT(15)
++#define RK3568_HDMI_SCLIN_MSK		BIT(14)
 +
- 	firmware {
- 		scmi: scmi {
- 			compatible = "arm,scmi-smc";
-@@ -451,6 +456,52 @@ gmac1_mtl_tx_setup: tx-queues-config {
- 		};
- 	};
+ #define HIWORD_UPDATE(val, mask)	(val | (mask) << 16)
  
-+	vop: vop@fe040000 {
-+		reg = <0x0 0xfe040000 0x0 0x3000>, <0x0 0xfe044000 0x0 0x1000>;
-+		reg-names = "regs", "gamma_lut";
-+		interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>, <&cru DCLK_VOP0>,
-+			 <&cru DCLK_VOP1>, <&cru DCLK_VOP2>;
-+		clock-names = "aclk", "hclk", "dclk_vp0", "dclk_vp1", "dclk_vp2";
-+		iommus = <&vop_mmu>;
-+		power-domains = <&power RK3568_PD_VO>;
-+		rockchip,grf = <&grf>;
-+		status = "disabled";
+ /**
+@@ -473,6 +477,19 @@ static const struct dw_hdmi_plat_data rk3399_hdmi_drv_data = {
+ 	.use_drm_infoframe = true,
+ };
+ 
++static struct rockchip_hdmi_chip_data rk3568_chip_data = {
++	.lcdsel_grf_reg = -1,
++};
 +
-+		vop_out: ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
++static const struct dw_hdmi_plat_data rk3568_hdmi_drv_data = {
++	.mode_valid = dw_hdmi_rockchip_mode_valid,
++	.mpll_cfg   = rockchip_mpll_cfg,
++	.cur_ctr    = rockchip_cur_ctr,
++	.phy_config = rockchip_phy_config,
++	.phy_data = &rk3568_chip_data,
++	.use_drm_infoframe = true,
++};
 +
-+			vp0: port@0 {
-+				reg = <0>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+			};
+ static const struct of_device_id dw_hdmi_rockchip_dt_ids[] = {
+ 	{ .compatible = "rockchip,rk3228-dw-hdmi",
+ 	  .data = &rk3228_hdmi_drv_data
+@@ -486,6 +503,9 @@ static const struct of_device_id dw_hdmi_rockchip_dt_ids[] = {
+ 	{ .compatible = "rockchip,rk3399-dw-hdmi",
+ 	  .data = &rk3399_hdmi_drv_data
+ 	},
++	{ .compatible = "rockchip,rk3568-dw-hdmi",
++	  .data = &rk3568_hdmi_drv_data
++	},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, dw_hdmi_rockchip_dt_ids);
+@@ -520,6 +540,9 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	encoder = &hdmi->encoder.encoder;
+ 
+ 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
++	rockchip_drm_encoder_set_crtc_endpoint_id(&hdmi->encoder,
++						  dev->of_node, 0, 0);
 +
-+			vp1: port@1 {
-+				reg = <1>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+			};
+ 	/*
+ 	 * If we failed to find the CRTC(s) which this encoder is
+ 	 * supposed to be connected to, it's because the CRTC has
+@@ -550,6 +573,14 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 		return ret;
+ 	}
+ 
++	if (hdmi->chip_data == &rk3568_chip_data) {
++		regmap_write(hdmi->regmap, RK3568_GRF_VO_CON1,
++			     HIWORD_UPDATE(RK3568_HDMI_SDAIN_MSK |
++					   RK3568_HDMI_SCLIN_MSK,
++					   RK3568_HDMI_SDAIN_MSK |
++					   RK3568_HDMI_SCLIN_MSK));
++	}
 +
-+			vp2: port@2 {
-+				reg = <2>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+			};
-+		};
-+	};
-+
-+	vop_mmu: iommu@fe043e00 {
-+		compatible = "rockchip,rk3568-iommu";
-+		reg = <0x0 0xfe043e00 0x0 0x100>, <0x0 0xfe043f00 0x0 0x100>;
-+		interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
-+		clock-names = "aclk", "iface";
-+		#iommu-cells = <0>;
-+		status = "disabled";
-+	};
-+
- 	qos_gpu: qos@fe128000 {
- 		compatible = "rockchip,rk3568-qos", "syscon";
- 		reg = <0x0 0xfe128000 0x0 0x20>;
-diff --git a/include/dt-bindings/soc/rockchip,vop2.h b/include/dt-bindings/soc/rockchip,vop2.h
-new file mode 100644
-index 0000000000000..6e66a802b96a5
---- /dev/null
-+++ b/include/dt-bindings/soc/rockchip,vop2.h
-@@ -0,0 +1,14 @@
-+/* SPDX-License-Identifier: GPL-2.0 OR BSD-2-Clause */
-+
-+#ifndef __DT_BINDINGS_ROCKCHIP_VOP2_H
-+#define __DT_BINDINGS_ROCKCHIP_VOP2_H
-+
-+#define ROCKCHIP_VOP2_EP_RGB0	1
-+#define ROCKCHIP_VOP2_EP_HDMI0	2
-+#define ROCKCHIP_VOP2_EP_EDP0	3
-+#define ROCKCHIP_VOP2_EP_MIPI0	4
-+#define ROCKCHIP_VOP2_EP_LVDS0	5
-+#define ROCKCHIP_VOP2_EP_MIPI1	6
-+#define ROCKCHIP_VOP2_EP_LVDS1	7
-+
-+#endif /* __DT_BINDINGS_ROCKCHIP_VOP2_H */
+ 	drm_encoder_helper_add(encoder, &dw_hdmi_rockchip_encoder_helper_funcs);
+ 	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
+ 
 -- 
 2.30.2
 
