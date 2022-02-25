@@ -4,53 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05A89C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 10:45:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DB40C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 10:50:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dSD5w1/e7B8NhRVV9WuV+iAqlw8jOG3aU3DM7ECUwks=; b=KB6sBu6V1TWtdq
-	iL9KA6keiasSgQv0CFcFibzuE+AqJ2fJERiXyJhBNUbzKoD7b9e0D0mJSGokrOESuEca/CWKxOKDE
-	1B3kgSKyv2sjc/1mYrJo64pK2pWIH3Lv0+JKfQbRNdZvsKZnBay4Vn8MXGNXwZ+5wWn5zNQSRkoFm
-	P1j8JO/w7TMNP1zuuVNgHYcgSyxHPO9htdnn+XRTPABqWDWYvVeScjcwXxfvb+/ALULyWsqoKMFFr
-	xJOtHyxJdYJRg0IJmb3QIjHy6s/DIxDwb92niK8MMVYmjJhvL1WTqhgmMUrDMQ7Q+mOjyNZ3n12MH
-	MVoMKVsvCUB7tei12LpQ==;
+	List-Owner; bh=XMcvfnVLN46DMWcc+SIPCqIzMlxxrJzSUkZArL+Gd4k=; b=IN1iFImoo9ZIZS
+	RepHKVsfuxnA+wLu6gWV2dW0soja4VPvveIdrbJlgseA/ZqYIs8urVNPhe9HCUqEHnS2UC9NgX1tJ
+	Q7qfZ380Pjf3g/xEUA5jZIanYjZJwreLF/GiimUEg/UW3T+rRtTQPLmwkDFhtbcmecJYbOf2dtTVD
+	cibEH64qRJNgJeQpCUHnXpal279qN8+mWAoE7ACo3ZbfW6d3wOlWTGUo/hQiPByEj11UzpgNa4zot
+	l4k+a7RxIwP2tJklXanFOV0mP/e7pJDWuEcPByndiTRntzWfEt829yVwaXJQYSXp6mYU2lrbdlJLO
+	4RzNRGtjhq2o4w4Xdhqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNY60-004UvL-1h; Fri, 25 Feb 2022 10:45:08 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNY5x-004Uta-Dt
- for linux-rockchip@lists.infradead.org; Fri, 25 Feb 2022 10:45:07 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0C47D106F;
- Fri, 25 Feb 2022 02:45:01 -0800 (PST)
-Received: from [10.57.39.47] (unknown [10.57.39.47])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5F2A03F70D;
- Fri, 25 Feb 2022 02:44:59 -0800 (PST)
-Message-ID: <6ba1c897-a932-915e-1415-1bb685754305@arm.com>
-Date: Fri, 25 Feb 2022 10:44:55 +0000
+	id 1nNYAm-004WcQ-MX; Fri, 25 Feb 2022 10:50:04 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nNYAJ-004WQM-U6
+ for linux-rockchip@lists.infradead.org; Fri, 25 Feb 2022 10:49:42 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nNYAA-0001c6-I2; Fri, 25 Feb 2022 11:49:26 +0100
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nNYA8-00082k-B5; Fri, 25 Feb 2022 11:49:24 +0100
+Date: Fri, 25 Feb 2022 11:49:24 +0100
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Dmitry Osipenko <digetx@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Peter Geis <pgwipeout@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
+ linux-rockchip@lists.infradead.org,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v7 10/24] drm/rockchip: dw_hdmi: Add support for hclk
+Message-ID: <20220225104924.GC19585@pengutronix.de>
+References: <20220225075150.2729401-1-s.hauer@pengutronix.de>
+ <20220225075150.2729401-11-s.hauer@pengutronix.de>
+ <47ddcaf3-4544-2b7c-a2f6-1f6346907f33@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.6.1
-Subject: Re: [PATCH v3] dt-bindings: mfd: rk808: Convert bindings to yaml
-Content-Language: en-GB
-To: Rob Herring <robh@kernel.org>
-Cc: Chris Morgan <macroalpha82@gmail.com>, devicetree@vger.kernel.org,
- lee.jones@linaro.org, heiko@sntech.de, zyw@rock-chips.com,
- zhangqing@rock-chips.com, linux-rockchip@lists.infradead.org,
- Chris Morgan <macromorgan@hotmail.com>
-References: <20220215211548.31940-1-macroalpha82@gmail.com>
- <9142ff41-4e95-3d52-bbe3-4f638b7d0fb2@arm.com>
- <YhfcxaaQgO7eDOXH@robh.at.kernel.org>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <YhfcxaaQgO7eDOXH@robh.at.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <47ddcaf3-4544-2b7c-a2f6-1f6346907f33@gmail.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 11:47:47 up 76 days, 19:33, 91 users,  load average: 0.18, 0.18, 0.23
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_024505_554793_B91DA490 
-X-CRM114-Status: GOOD (  16.96  )
+X-CRM114-CacheID: sfid-20220225_024936_000650_55A4DB6A 
+X-CRM114-Status: GOOD (  30.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,53 +78,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-02-24 19:30, Rob Herring wrote:
-[...]
->>> +required:
->>> +  - compatible
->>> +  - reg
->>> +  - interrupts
->>> +  - "#clock-cells"
->>
->> Is this actually required (ditto elsewhere)? Technically it's only necessary
->> if there are any clock consumers targeting this node, so arguably it should
->> be the clock binding's responsibility to validate that.
->>
->> It wouldn't make much sense for a dedicated clock controller to omit
->> #clock-cells such that it couldn't have any consumers, but given that these
->> things are primarily PMICs I think it's reasonable to allow a board not to
->> care about the clocks at all if it doesn't use them. I know that the
->> original binding claimed it was required, but if we're already relaxing that
->> for RK805 here then we may as well relax it entirely.
-> 
-> Fair enough. However, if the consumer could be in an overlay, then I
-> think we want it to be required and not make the overlay add the
-> property. Properties just appearing within nodes at runtime is likely
-> not well supported in OSs.
-
-Ah yes, that's an angle I hadn't considered, and I reckon it clearly 
-answers my original question in the affirmative :)
-
-Indeed these clock outputs are often hooked up to SDIO WiFi modules, and 
-I'm sure I *have* seen boards which put such modules on pluggable 
-daughterboards in a manner which could reasonably use overlays, so in 
-principle it does seem like a realistic concern. I'm happy with setting 
-a general principle that if a clock output is exposed on a physical pin, 
-then at the DTS level we can't know for sure that it *won't* be consumed 
-(even if the original board design didn't intend it), therefore the 
-device is always a potential clock controller and "#clock-cells" should 
-be required. In that case, the consistency argument would fall the other 
-way, to enforcing it for RK805 as well.
-
-Cheers,
-Robin.
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBGZWIgMjUsIDIwMjIgYXQgMDE6MjY6MTRQTSArMDMwMCwgRG1pdHJ5IE9zaXBlbmtv
+IHdyb3RlOgo+IDI1LjAyLjIwMjIgMTA6NTEsIFNhc2NoYSBIYXVlciDQv9C40YjQtdGCOgo+ID4g
+VGhlIHJrMzU2OCBIRE1JIGhhcyBhbiBhZGRpdGlvbmFsIGNsb2NrIHRoYXQgbmVlZHMgdG8gYmUg
+ZW5hYmxlZCBmb3IgdGhlCj4gPiBIRE1JIGNvbnRyb2xsZXIgdG8gd29yay4gVGhlIHB1cnBvc2Ug
+b2YgdGhhdCBjbG9jayBpcyBub3QgY2xlYXIuIEl0IGlzCj4gPiBuYW1lZCAiaGNsayIgaW4gdGhl
+IGRvd25zdHJlYW0gZHJpdmVyLCBzbyB1c2UgdGhlIHNhbWUgbmFtZS4KPiA+IAo+ID4gU2lnbmVk
+LW9mZi1ieTogU2FzY2hhIEhhdWVyIDxzLmhhdWVyQHBlbmd1dHJvbml4LmRlPgo+ID4gLS0tCj4g
+PiAKPiA+IE5vdGVzOgo+ID4gICAgIENoYW5nZXMgc2luY2UgdjU6Cj4gPiAgICAgLSBVc2UgZGV2
+bV9jbGtfZ2V0X29wdGlvbmFsIHJhdGhlciB0aGFuIGRldm1fY2xrX2dldAo+ID4gCj4gPiAgZHJp
+dmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYyB8IDE2ICsrKysrKysrKysr
+KysrKysKPiA+ICAxIGZpbGUgY2hhbmdlZCwgMTYgaW5zZXJ0aW9ucygrKQo+ID4gCj4gPiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYyBiL2Ry
+aXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19oZG1pLXJvY2tjaGlwLmMKPiA+IGluZGV4IGZlNGY5
+NTU2MjM5YWMuLmM2YzAwZTg3NzlhYjUgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+cm9ja2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvZHdfaGRtaS1yb2NrY2hpcC5jCj4gPiBAQCAtNzYsNiArNzYsNyBAQCBzdHJ1Y3Qgcm9j
+a2NoaXBfaGRtaSB7Cj4gPiAgCWNvbnN0IHN0cnVjdCByb2NrY2hpcF9oZG1pX2NoaXBfZGF0YSAq
+Y2hpcF9kYXRhOwo+ID4gIAlzdHJ1Y3QgY2xrICpyZWZfY2xrOwo+ID4gIAlzdHJ1Y3QgY2xrICpn
+cmZfY2xrOwo+ID4gKwlzdHJ1Y3QgY2xrICpoY2xrX2NsazsKPiA+ICAJc3RydWN0IGR3X2hkbWkg
+KmhkbWk7Cj4gPiAgCXN0cnVjdCByZWd1bGF0b3IgKmF2ZGRfMHY5Owo+ID4gIAlzdHJ1Y3QgcmVn
+dWxhdG9yICphdmRkXzF2ODsKPiA+IEBAIC0yMjksNiArMjMwLDE0IEBAIHN0YXRpYyBpbnQgcm9j
+a2NoaXBfaGRtaV9wYXJzZV9kdChzdHJ1Y3Qgcm9ja2NoaXBfaGRtaSAqaGRtaSkKPiA+ICAJCXJl
+dHVybiBQVFJfRVJSKGhkbWktPmdyZl9jbGspOwo+ID4gIAl9Cj4gPiAgCj4gPiArCWhkbWktPmhj
+bGtfY2xrID0gZGV2bV9jbGtfZ2V0X29wdGlvbmFsKGhkbWktPmRldiwgImhjbGsiKTsKPiA+ICsJ
+aWYgKFBUUl9FUlIoaGRtaS0+aGNsa19jbGspID09IC1FUFJPQkVfREVGRVIpIHsKPiAKPiBIYXZl
+IHlvdSB0cmllZCB0byBpbnZlc3RpZ2F0ZSB0aGUgaGNsaz8gSSdtIHN0aWxsIHRoaW5raW5nIHRo
+YXQncyBub3QKPiBvbmx5IEhETUkgdGhhdCBuZWVkcyB0aGlzIGNsb2NrIGFuZCB0aGVuIHRoZSBo
+YXJkd2FyZSBkZXNjcmlwdGlvbgo+IGRvZXNuJ3QgbG9vayBjb3JyZWN0LgoKSSBhbSBzdGlsbCBu
+b3Qgc3VyZSB3aGF0IHlvdSBtZWFuLiBZZXMsIGl0J3Mgbm90IG9ubHkgdGhlIEhETUkgdGhhdApu
+ZWVkcyB0aGlzIGNsb2NrLiBUaGUgVk9QMiBuZWVkcyBpdCBhcyB3ZWxsIGFuZCB0aGUgZHJpdmVy
+IGhhbmRsZXMgdGhhdC4KClNhc2NoYQoKLS0gClBlbmd1dHJvbml4IGUuSy4gICAgICAgICAgICAg
+ICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ClN0ZXVlcndhbGRl
+ciBTdHIuIDIxICAgICAgICAgICAgICAgICAgICAgICB8IGh0dHA6Ly93d3cucGVuZ3V0cm9uaXgu
+ZGUvICB8CjMxMTM3IEhpbGRlc2hlaW0sIEdlcm1hbnkgICAgICAgICAgICAgICAgICB8IFBob25l
+OiArNDktNTEyMS0yMDY5MTctMCAgICB8CkFtdHNnZXJpY2h0IEhpbGRlc2hlaW0sIEhSQSAyNjg2
+ICAgICAgICAgICB8IEZheDogICArNDktNTEyMS0yMDY5MTctNTU1NSB8CgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
