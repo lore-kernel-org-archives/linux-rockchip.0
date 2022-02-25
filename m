@@ -4,49 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C66DC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 07:57:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D165C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 07:57:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AJHbrXwNCMZVMZMr9IIPgcdTnKbmMgg33hTmpWtd3RA=; b=kJipQ5GLYFYyAC
-	i2tK7Kmk1Ns4ZIZRoNA0Smn2G1GxFS25Dtdc6TsQJCapA9KDBNBI4eHQKTge0ZqbzfXc1FtTKChx0
-	D+dh9LvHHjUDQW8co90d1UIxP+Aa8ytQ2BRv7t5vG5lGkGFPG299ZjeTeZ1bmoDalawOtl1dxrAhq
-	kzE3zhzwMPiX9MNrfR+19Cj5k+wb2ZPQEXSPoWu3y32DnFZeoqZ1hmtNZUCy0qYFiMLBiO+9q/8lV
-	26BZ1xR9n2mhGqaUNtbCQlHOyO7zTsGASgXD+Rg/MJVsa9/tyPGeoQxoJjaqAMS88K7+IJMVTn3BT
-	VuEsdprcTFVyYVlgyixA==;
+	List-Owner; bh=nONz9+Q7OJAQf09J3S06JzPtzG0FSsP2OEtVEK1314Q=; b=MW0ekd2ghIJa0z
+	vDZzSSDUlcDlG1Au5+dw6sJOuWQxnWxWYd+SbD2b4BnySLrGFM0mEdG3l4Bfqa2IUWSvOlYXp1m0r
+	LjGBTLW3HGJI1J/j11wkKki9qPaHgOJrnAhFdnOKCwKu35hbs/mEX7DW6Sn1tj3rnN2LZ7cVFwPJI
+	tzR9y/kk2R3BqJHw/uSLfJJdS7ENfdB76yu4E59TGRfxBo42lasybmFZSHe7SMBagEAjEEHRPIcuI
+	3huo8wZMQvnP7hWQbOA8+KMhFkP2LWfWmARs31NKxwVp2CEZvs5txivAO0g8DJc06uWaIyYD7TKlq
+	7qT4suqqXE+lEcehlVtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNVU5-003l1n-Fp; Fri, 25 Feb 2022 07:57:49 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNVOe-003i4G-RZ
- for linux-rockchip@bombadil.infradead.org; Fri, 25 Feb 2022 07:52:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
- :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=ojDXyLG5qxHZyW0yAptVBab9f/fjB9Vugmitf7O2J0g=; b=okBqOG1z8KXyWN8xaUPc9YgUfA
- ScjNJsrRje0FWo4KcQeI8ys50yf3T8WlJX9F9XxwLeiZKSXLWXsq0O4HIoNgzLe8VI4Puq/o28JJg
- +JXnkni/0dplbhS+otJT7mObKGOc4BZf7Ud2431czl57neaL0drHPKSHm25WiJXPhQ9/pmVGu5vD4
- 1yf9qjZCseX5qf5y8VjetEFVyidZ2KC6xA7QQyO5klv1y/+bTpeSKyiieoPXuLUV81wBf7dzRK14C
- pX2o8bALjLkQqO+a+PErNxBcZ7AYUpAZo9eiVxdNbBHZeoOcc/7V1hwC3E9uWtC+GDi5yW6D+46lL
- ZtI/Hd8Q==;
+	id 1nNVU3-003l0p-Lk; Fri, 25 Feb 2022 07:57:47 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNVOZ-00Ctg1-Rv
- for linux-rockchip@lists.infradead.org; Fri, 25 Feb 2022 07:52:10 +0000
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nNVOV-003hyU-0n
+ for linux-rockchip@lists.infradead.org; Fri, 25 Feb 2022 07:52:12 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nNVOS-0000Pt-6j; Fri, 25 Feb 2022 08:52:00 +0100
+ id 1nNVOR-0000Pq-Gc; Fri, 25 Feb 2022 08:51:59 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nNVOL-00BSXu-4g; Fri, 25 Feb 2022 08:51:53 +0100
+ id 1nNVOL-00BSXl-2W; Fri, 25 Feb 2022 08:51:53 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -56,11 +42,12 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Douglas Anderson <dianders@chromium.org>,
- Yakir Yang <ykk@rock-chips.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v7 12/24] drm/rockchip: dw_hdmi: Use auto-generated tables
-Date: Fri, 25 Feb 2022 08:51:38 +0100
-Message-Id: <20220225075150.2729401-13-s.hauer@pengutronix.de>
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Rob Herring <robh@kernel.org>
+Subject: [PATCH v7 09/24] dt-bindings: display: rockchip: dw-hdmi: Add
+ regulator support
+Date: Fri, 25 Feb 2022 08:51:35 +0100
+Message-Id: <20220225075150.2729401-10-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220225075150.2729401-1-s.hauer@pengutronix.de>
 References: <20220225075150.2729401-1-s.hauer@pengutronix.de>
@@ -71,8 +58,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_075207_992633_AA4039FE 
-X-CRM114-Status: GOOD (  14.66  )
+X-CRM114-CacheID: sfid-20220224_235203_118587_26553EF0 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,195 +77,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Douglas Anderson <dianders@chromium.org>
+The RK3568 has HDMI_TX_AVDD0V9 and HDMI_TX_AVDD_1V8 supply inputs
+needed for the HDMI port. Add the binding for these supplies.
 
-The previous tables for mpll_cfg and curr_ctrl were created using the
-20-pages of example settings provided by the PHY vendor.  Those
-example settings weren't particularly dense, so there were places
-where we were guessing what the settings would be for 10-bit and
-12-bit (not that we use those anyway).  It was also always a lot of
-extra work every time we wanted to add a new clock rate since we had
-to cross-reference several tables.
-
-In <https://crrev.com/c/285855> I've gone through the work to figure
-out how to generate this table automatically.  Let's now use the
-automatically generated table and then we'll never need to look at it
-again.
-
-We only support 8-bit mode right now and only support a small number
-of clock rates and I've verified that the only 8-bit rate that was
-affected was 148.5.  That mode appears to have been wrong in the old
-table.
-
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
 
 Notes:
-    Changes since v5:
-    - Add missing Signed-off-by me
-    
-    Changes since v3:
-    - new patch
+    Changes since v4:
+    - Add Robs Ack
 
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 130 +++++++++++---------
- 1 file changed, 69 insertions(+), 61 deletions(-)
+ .../bindings/display/rockchip/rockchip,dw-hdmi.yaml   | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index c6c00e8779ab5..2f5264a7d558a 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -92,80 +92,88 @@ static struct rockchip_hdmi *to_rockchip_hdmi(struct drm_encoder *encoder)
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+index e6b8437a1e2d1..38ebb69830287 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
+@@ -28,6 +28,17 @@ properties:
+   reg-io-width:
+     const: 4
  
- static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
- 	{
--		27000000, {
--			{ 0x00b3, 0x0000},
--			{ 0x2153, 0x0000},
--			{ 0x40f3, 0x0000}
-+		30666000, {
-+			{ 0x00b3, 0x0000 },
-+			{ 0x2153, 0x0000 },
-+			{ 0x40f3, 0x0000 },
- 		},
--	}, {
--		36000000, {
--			{ 0x00b3, 0x0000},
--			{ 0x2153, 0x0000},
--			{ 0x40f3, 0x0000}
-+	},  {
-+		36800000, {
-+			{ 0x00b3, 0x0000 },
-+			{ 0x2153, 0x0000 },
-+			{ 0x40a2, 0x0001 },
- 		},
--	}, {
--		40000000, {
--			{ 0x00b3, 0x0000},
--			{ 0x2153, 0x0000},
--			{ 0x40f3, 0x0000}
-+	},  {
-+		46000000, {
-+			{ 0x00b3, 0x0000 },
-+			{ 0x2142, 0x0001 },
-+			{ 0x40a2, 0x0001 },
- 		},
--	}, {
--		54000000, {
--			{ 0x0072, 0x0001},
--			{ 0x2142, 0x0001},
--			{ 0x40a2, 0x0001},
-+	},  {
-+		61333000, {
-+			{ 0x0072, 0x0001 },
-+			{ 0x2142, 0x0001 },
-+			{ 0x40a2, 0x0001 },
- 		},
--	}, {
--		65000000, {
--			{ 0x0072, 0x0001},
--			{ 0x2142, 0x0001},
--			{ 0x40a2, 0x0001},
-+	},  {
-+		73600000, {
-+			{ 0x0072, 0x0001 },
-+			{ 0x2142, 0x0001 },
-+			{ 0x4061, 0x0002 },
- 		},
--	}, {
--		66000000, {
--			{ 0x013e, 0x0003},
--			{ 0x217e, 0x0002},
--			{ 0x4061, 0x0002}
-+	},  {
-+		92000000, {
-+			{ 0x0072, 0x0001 },
-+			{ 0x2145, 0x0002 },
-+			{ 0x4061, 0x0002 },
- 		},
--	}, {
--		74250000, {
--			{ 0x0072, 0x0001},
--			{ 0x2145, 0x0002},
--			{ 0x4061, 0x0002}
-+	},  {
-+		122666000, {
-+			{ 0x0051, 0x0002 },
-+			{ 0x2145, 0x0002 },
-+			{ 0x4061, 0x0002 },
- 		},
--	}, {
--		83500000, {
--			{ 0x0072, 0x0001},
-+	},  {
-+		147200000, {
-+			{ 0x0051, 0x0002 },
-+			{ 0x2145, 0x0002 },
-+			{ 0x4064, 0x0003 },
- 		},
--	}, {
--		108000000, {
--			{ 0x0051, 0x0002},
--			{ 0x2145, 0x0002},
--			{ 0x4061, 0x0002}
-+	},  {
-+		184000000, {
-+			{ 0x0051, 0x0002 },
-+			{ 0x214c, 0x0003 },
-+			{ 0x4064, 0x0003 },
- 		},
--	}, {
--		106500000, {
--			{ 0x0051, 0x0002},
--			{ 0x2145, 0x0002},
--			{ 0x4061, 0x0002}
-+	},  {
-+		226666000, {
-+			{ 0x0040, 0x0003 },
-+			{ 0x214c, 0x0003 },
-+			{ 0x4064, 0x0003 },
- 		},
--	}, {
--		146250000, {
--			{ 0x0051, 0x0002},
--			{ 0x2145, 0x0002},
--			{ 0x4061, 0x0002}
-+	},  {
-+		272000000, {
-+			{ 0x0040, 0x0003 },
-+			{ 0x214c, 0x0003 },
-+			{ 0x5a64, 0x0003 },
- 		},
--	}, {
--		148500000, {
--			{ 0x0051, 0x0003},
--			{ 0x214c, 0x0003},
--			{ 0x4064, 0x0003}
-+	},  {
-+		340000000, {
-+			{ 0x0040, 0x0003 },
-+			{ 0x3b4c, 0x0003 },
-+			{ 0x5a64, 0x0003 },
- 		},
--	}, {
-+	},  {
-+		600000000, {
-+			{ 0x1a40, 0x0003 },
-+			{ 0x3b4c, 0x0003 },
-+			{ 0x5a64, 0x0003 },
-+		},
-+	},  {
- 		~0UL, {
--			{ 0x00a0, 0x000a },
--			{ 0x2001, 0x000f },
--			{ 0x4002, 0x000f },
-+			{ 0x0000, 0x0000 },
-+			{ 0x0000, 0x0000 },
-+			{ 0x0000, 0x0000 },
- 		},
- 	}
- };
++  avdd-0v9-supply:
++    description:
++      A 0.9V supply that powers up the SoC internal circuitry. The actual pin name
++      varies between the different SoCs and is usually HDMI_TX_AVDD_0V9 or sometimes
++      HDMI_AVDD_1V0.
++
++  avdd-1v8-supply:
++    description:
++      A 1.8V supply that powers up the SoC internal circuitry. The pin name on the
++      SoC usually is HDMI_TX_AVDD_1V8.
++
+   clocks:
+     minItems: 2
+     items:
 -- 
 2.30.2
 
