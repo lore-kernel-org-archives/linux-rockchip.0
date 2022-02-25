@@ -4,57 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FBBCC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 14:15:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA8E8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 14:55:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Evi/HewCN0MPXv++6XO/VauHfi6O+yw1VpzyBBITgHY=; b=1jVVpNv4GCoU7V
-	RMdeuCz80F6qnsl0GSmZJsMvBwNihetn9ELJ7oNwlhs4TA7+J1ObDnyxqjc2Dd4uROrBpNkPg5T1l
-	x1BWeaxf9rCf1u4nNZhRlx8BeyRDeb/F0XgSwWp2i5XYrulVwy7z/B5f1NkoFZsi30z0+eGqYk2bt
-	Kh37WpvJedC32DZo1L0fbIUrWFSXuFIPiEAPlpgYpDDqK2qiytz17kN9lHibEEQSI4y6Pym0nVZ0J
-	ywJqpeeeaeLN6Pc1XZmCggNkDjddX6yktyJmCnbjFQPzJuyNrx8RFEVSXM/Rf/9hOhz+dhqEZLXQ2
-	pJg473rnAMuMCLy5o8UA==;
+	List-Owner; bh=0mHGbsjxXLiGIwFKVt5/aSOkyW7kZRelRcD+Im2xXmk=; b=O8EyVknFkWQt1H
+	8iETivP9IWjHlKjX+v083kRp3S8GZrpIbhKGQOgL0TSyG0IcojGYyow0JVvalsMmDv9hj4tHC4HRH
+	sbuM1QwnEY3CEOGr4RuUiJ9a4ZjYHO4VN0GB0KkHjS5Xcv93RncgU8a0cbi7iMU9LDrVeWDdjF8d9
+	gUrbH+SjX+yAEcK3cYzqvDJpS6g5HvwoV/EEafg+IgGZwXaxt2nwcrpcMbzjFNU+NvAYB1keToMkS
+	ytELhmQzJBC5sjyd3oM2BvMRvoA7iAbL7rl3YnOCuii7HrYJS/dpYUnoX+k8YILoaqjJ3zgA2y6N/
+	+nzlJdodtJYLx0HxpO9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNbNI-005LpS-AC; Fri, 25 Feb 2022 14:15:12 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNbMm-005LkI-I7; Fri, 25 Feb 2022 14:14:42 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id EF705106F;
- Fri, 25 Feb 2022 06:14:38 -0800 (PST)
-Received: from [10.57.39.47] (unknown [10.57.39.47])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A17A63F5A1;
- Fri, 25 Feb 2022 06:14:36 -0800 (PST)
-Message-ID: <2939d801-586d-85fd-97ef-d42925ddecce@arm.com>
-Date: Fri, 25 Feb 2022 14:14:31 +0000
+	id 1nNbzz-005TvN-E4; Fri, 25 Feb 2022 14:55:11 +0000
+Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nNbzS-005Th7-Gt; Fri, 25 Feb 2022 14:54:42 +0000
+Received: by mail-qk1-x733.google.com with SMTP id b13so4624050qkj.12;
+ Fri, 25 Feb 2022 06:54:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=gwYHMhbRHXQxrol3Z4onOOebIeXrEkEaF8cW1M7ix2U=;
+ b=ZER9dqeve3GLpay7/CeKXOHvRdxd93sDJdphtL21FC+B6K6WJp6rNACTQcU+GbsI4t
+ psKHa0gSnah0AxamhlomcPSyWhXvgNBJx5Ov2n0gZ0EQJccwuAg8aBiaQCDEqTS2TYu1
+ 8xJzWTDSlPaHtP1pAm/m83wknHob1hbJMDrX0NdHofMSn1GKsJ0IbiOXr4DXfBFv4WpQ
+ 0syJTQljhm8Lt6E4cfR8d9sGYmO76mbLi98cYOLSc4htvG19pBm/3JEJC9u8w9jRk0r0
+ SqwpvisiVAWYdkiKq3fZz6cg/rdtG0NYGlQVKpNTz94HjV6oVcJ6GjJGDkRj8iuadVJh
+ QBhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=gwYHMhbRHXQxrol3Z4onOOebIeXrEkEaF8cW1M7ix2U=;
+ b=SojjMKuZDbOzKJDbmE/XPweOwuGF8XvJNLUmQSud4WmQA7zGHYQBTEOrimfQbJf3xW
+ lpE+zCgAJNRdJAM/XrNtJZx380mziEUaqHnMzy1GUIH7ieqYlct7GTVRHdzFHshKkJBa
+ 3yICyZeEyzEPG/NgBPjUzm+XUa62tvupgz7w0bz2517jTxQe0xLR+XXw5KkipJXVh5Sn
+ CIDWhfJzV9Upi8femp7709DKh1aNzO2cF0i327lh7g2jujWZSLDmHABDYG4Dn6/MW9zT
+ lOh/VYItmVZFF721wX0igMsHhx4c4T+NfNkZxbYZ6+8a33nvOsI5u25fTcvFXUm120or
+ ScoQ==
+X-Gm-Message-State: AOAM533/wx2X8ChkgEvYLHGyQEm4qVJLD/Dc3itDrWxxKdDOBKW+w8Ac
+ 3QcSV9HeqAsxFar7TwmqapE=
+X-Google-Smtp-Source: ABdhPJwee8UY1BnbzYFvaxa8NG4VwTthJ6UyhjOsZwLH2qycERTg1bJl7POhSx3GuOb0jru6PA+/jw==
+X-Received: by 2002:ae9:e114:0:b0:609:b256:ee5 with SMTP id
+ g20-20020ae9e114000000b00609b2560ee5mr5028795qkm.93.1645800876714; 
+ Fri, 25 Feb 2022 06:54:36 -0800 (PST)
+Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
+ by smtp.gmail.com with ESMTPSA id
+ d202-20020a3768d3000000b005f18706845dsm1318292qkc.73.2022.02.25.06.54.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 25 Feb 2022 06:54:36 -0800 (PST)
+From: Peter Geis <pgwipeout@gmail.com>
+To: Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v1 1/8] dt-bindings: soc: grf: add rk3566-pipe-grf compatible
+Date: Fri, 25 Feb 2022 09:54:24 -0500
+Message-Id: <20220225145432.422130-2-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220225145432.422130-1-pgwipeout@gmail.com>
+References: <20220225145432.422130-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.6.1
-Subject: Re: [PATCH v2 1/4] arm64: dts: rockchip: move power domain PD_PIPE to
- rk356x
-Content-Language: en-GB
-To: Michael Riesch <michael.riesch@wolfvision.net>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Frank Wunderlich <frank-w@public-files.de>,
- Sascha Hauer <s.hauer@pengutronix.de>, Liang Chen <cl@rock-chips.com>,
- Peter Geis <pgwipeout@gmail.com>, Johan Jonker <jbx6244@gmail.com>,
- Simon Xue <xxm@rock-chips.com>, Yifeng Zhao <yifeng.zhao@rock-chips.com>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-References: <20220225131602.2283499-1-michael.riesch@wolfvision.net>
- <20220225131602.2283499-2-michael.riesch@wolfvision.net>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20220225131602.2283499-2-michael.riesch@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_061440_698222_92E885F1 
-X-CRM114-Status: GOOD (  15.19  )
+X-CRM114-CacheID: sfid-20220225_065438_612087_55BDF5A4 
+X-CRM114-Status: GOOD (  10.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,77 +87,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-02-25 13:15, Michael Riesch wrote:
-> The power domain PD_PIPE was moved to the RK3568 specific dtsi but
-> is available on the RK3566 as well. Move it back to the shared dtsi.
+The rk3566 requires special handling for the dwc3-otg clock in order for
+the port to function correctly.
+Add a binding for the rk3566-pipe-grf so we can handle setup with the
+grf driver.
 
-Note that a corresponding definition does already exist in rk3568.dtsi. 
-That one *could* inherit the base definition and only override the 
-"pm_qos" property, but looking back to the original patch series it 
-seems like not doing that was a deliberate choice.
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Robin.
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index 5079e9d24af6..75a2b8bb25fb 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -15,6 +15,7 @@ properties:
+       - items:
+           - enum:
+               - rockchip,rk3288-sgrf
++              - rockchip,rk3566-pipe-grf
+               - rockchip,rk3568-pipe-grf
+               - rockchip,rk3568-pipe-phy-grf
+               - rockchip,rk3568-usb2phy-grf
+-- 
+2.25.1
 
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> ---
->   arch/arm64/boot/dts/rockchip/rk3568.dtsi | 16 ----------------
->   arch/arm64/boot/dts/rockchip/rk356x.dtsi | 14 ++++++++++++++
->   2 files changed, 14 insertions(+), 16 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> index 91a0b798b857..ecc0f3015915 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> @@ -100,19 +100,3 @@ opp-1992000000 {
->   		opp-microvolt = <1150000 1150000 1150000>;
->   	};
->   };
-> -
-> -&power {
-> -	power-domain@RK3568_PD_PIPE {
-> -		reg = <RK3568_PD_PIPE>;
-> -		clocks = <&cru PCLK_PIPE>;
-> -		pm_qos = <&qos_pcie2x1>,
-> -			 <&qos_pcie3x1>,
-> -			 <&qos_pcie3x2>,
-> -			 <&qos_sata0>,
-> -			 <&qos_sata1>,
-> -			 <&qos_sata2>,
-> -			 <&qos_usb3_0>,
-> -			 <&qos_usb3_1>;
-> -		#power-domain-cells = <0>;
-> -	};
-> -};
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> index 8b9fae3d348a..742f5adcdf2b 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -490,6 +490,20 @@ power-domain@RK3568_PD_RKVENC {
->   					 <&qos_rkvenc_wr_m0>;
->   				#power-domain-cells = <0>;
->   			};
-> +
-> +			power-domain@RK3568_PD_PIPE {
-> +				reg = <RK3568_PD_PIPE>;
-> +				clocks = <&cru PCLK_PIPE>;
-> +				pm_qos = <&qos_pcie2x1>,
-> +					 <&qos_pcie3x1>,
-> +					 <&qos_pcie3x2>,
-> +					 <&qos_sata0>,
-> +					 <&qos_sata1>,
-> +					 <&qos_sata2>,
-> +					 <&qos_usb3_0>,
-> +					 <&qos_usb3_1>;
-> +				#power-domain-cells = <0>;
-> +			};
->   		};
->   	};
->   
 
 _______________________________________________
 Linux-rockchip mailing list
