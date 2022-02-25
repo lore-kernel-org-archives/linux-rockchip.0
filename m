@@ -4,74 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AA40C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 18:23:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80CA1C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 18:24:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s/ZLjQMi4dA34jgHug5+U+IL/NPnn5mskn/kvoOIx/o=; b=wK/dgXredSs1lV
-	KInAt8uVQW21i4uMU1fvgzimTDn12XUJ094yERo5BiHQx1n1VEHC9SedLM7FbZSTLzbZYaVIkkILl
-	j+J2X7ikrmhJ514U5edeJNCH0i357grrn/AlL9RriWYB//fH73WWAL2hdnEmI+jb/sfeS2Ccb7pN1
-	uEp6fR0Er3hjdXDGV0hTIJaTPK0laX5Mm0bKN/mJA7aH3Wk88OgirhvbuVAAysG2i4RzULlI6AmJk
-	bCRr9Qj5nkcEveQjeCpzh5flxQeUMEiCzBRQ9olXEDrSuUf3r1ocEZKn0z6i/k+0Fltf0q5+JC99p
-	7Z/fO0386tBe48JOsjHA==;
+	List-Owner; bh=qhZFRdrOSGDilBDx7g/ePeXzw61jjkDIbG9gg0acbLU=; b=s/0MsXosBN9DiW
+	DYTIek99n7/Tjm9I7iJGCBTeDihQJfJb7FCcWLOdAun68qVkgMiZNFLJGtXe8oLtZjwYkit7OKpCA
+	mZW5EUSeOJW0y5Q2pzrpq62o5m9MdHQSIOSGX7/rmGoPJxE3grJWE56cCFc1ZO9+oOXBFEXfrJOYE
+	gcpPJU/hJOrovgXANmqXDpvRyRYscVS2GE6GsdNnD/eVkrXOZH2QVozBBMs4oG9M3yTl/ogLvKbHj
+	I0nkFqCypHh7zKfWJHPxN4AkCtFy8wQBoMFnaOQsLwGkMbolD5oxLCjEp3bJrpwpXvcr54K1Tykw0
+	RRCMaO86K8HkCcDd3NdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNfFk-006ZXF-63; Fri, 25 Feb 2022 18:23:40 +0000
-Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
+	id 1nNfGu-006a0h-Jv; Fri, 25 Feb 2022 18:24:52 +0000
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNesU-006Pud-OH; Fri, 25 Feb 2022 17:59:40 +0000
-Received: by mail-yb1-xb30.google.com with SMTP id u3so7390930ybh.5;
- Fri, 25 Feb 2022 09:59:38 -0800 (PST)
+ id 1nNex5-006RnQ-9N; Fri, 25 Feb 2022 18:04:25 +0000
+Received: by mail-yb1-xb31.google.com with SMTP id j12so7405704ybh.8;
+ Fri, 25 Feb 2022 10:04:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8kz9NZiBiYRGALk1m6Ovqtpeje/s73CVTmwpIkcwCPk=;
- b=hfTP4XLAu13JbblnqvqrPPBprgC2sJvvAMS82h4kde46sTUPoP2znvX9fVRePJkvJC
- mS98ljMkDQl9zM7EXXrk8OftTVLzhNiZ8H6guVcGqbYEXulJv4hAb3UKv69TW6lRt1Ef
- eclAa9DjvURNdF0K1eWL7BLQYivkIB3Xo9FgfgsMdrMneY/ncss9JPA1psd72UpxHImw
- grdvsKAl/7uwdFGso5zFtdKEhTgkXuPUHAtfZDaOySBL/jzfyfqcZXMK/pKk9/Js5CYn
- pH621ABn/mLic79WR+Fbd9EgSKAX2zL4ZMdBDIpHgcrtUP6ALzD3PetJS5DB3cILAiPP
- tPGg==
+ :cc; bh=KojlstE2lgoa7NRwY6/3wf4IDjFuyhSCMnLIbiB/VXw=;
+ b=YsJOaByGxkVsWmlo3S060z6DNQE5Lpo0T52+WHe1QFVq1Np/PzH3I0i2xuV7aTMy/u
+ Q1kmPlvlBiL69lnqJu3XUV9IHW/Y6GcTXKhgAM1qqT6wqsIj5rTBMmRmp21nuQFG5MpD
+ iNDjQwEKh+b1yixh5b2jucpDw07D4LnYEuF4EtPK1iwjS7YEAgim+pnTWQT4rzvu5NL8
+ bCGymTsqjS6dXsUCatOsKzhYDnZN9c/0eSSoQEMulK5c5H8EhwhsC1SKteesQcz9uWMN
+ vazLu5uvqbP7OcmwtOu9xS+UARj3g9EIIvGU+mCXuoaLWkhMFQXOoBhGr1GnHmDWLZHl
+ qXwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=8kz9NZiBiYRGALk1m6Ovqtpeje/s73CVTmwpIkcwCPk=;
- b=aDe2pfA2ccTZdRODzTUmJ46ld1k6xkXsWTJ9SKtd2S0TRMiW3FAXBbUzvO2LjVi1Pw
- 6N4wndm5a0KupnFIth4RvdDWam6fu2n+CEPbbDsKyYn2EwHg0KgmVvsUsTX+Qh9iEzvT
- lWXuy+p1hltgpYyBZSHwMXyroLi20rDiZFxQxnfHJEFf6sRD0QuZR0u7RTLeWPDvt6+t
- +nNoTk2lZFtG3s9uD/noTgHIwIKbbEhTvAogZnEIbjse9XsM7uMmzS4Ifd2mDTF/nXO3
- lahcV2R/lLouPrN6MmYtTvtU5rseNkVcnUnTnoKJnt0/WETQ1FLBueMJrAsKcWRMUVdy
- +zPQ==
-X-Gm-Message-State: AOAM5307bVsKgjrkJZlZzNK9xtzWJrX/cyRMDUklpvErAtLR1J/9B2eC
- mb1to7NNQ8UyfGVmieMvyV4Pviv8nZxuk88bl4Y=
-X-Google-Smtp-Source: ABdhPJwN67LxqhBHaYtXPLv7XV+GoM49N48Yf33dmmVit7EySdc2NF93LIYx/FOayyAsdbW85jFSjza7i7o2pXzqYjE=
-X-Received: by 2002:a25:c752:0:b0:624:71ee:65d7 with SMTP id
- w79-20020a25c752000000b0062471ee65d7mr8379627ybe.366.1645811977842; Fri, 25
- Feb 2022 09:59:37 -0800 (PST)
+ bh=KojlstE2lgoa7NRwY6/3wf4IDjFuyhSCMnLIbiB/VXw=;
+ b=K1mB5CIGFWqbKhEbQo1eL3fL4MB5Q9eggHLMf7WkAseidIeClugg68zZHsvnW1zfCj
+ IR3OX83fRoxySVsILUta9Z43ZFbfO2H1TvN2M0n1vvrozBeDL3fT6vYSVW5S9xgSp0Vf
+ 3QvtzxeynJdfALsz0b6VCqQ5CXliTkuM+GCHMTB2CH6wwfYBGQoHOepdteiFVdZGSOB3
+ B2W6tHejVvkow/0OEu8Ptr/I9nZbhcTyw7S5c8Ve5BsCN6qTiJPtHskjtjjs+FNaCQOj
+ Pz2QKWLyXgkKb95nUyu+nmLqxoGN+HQRnj5cypJo42JIo6lVZ0m5QA2zZ7fgbp3WygK5
+ dt1A==
+X-Gm-Message-State: AOAM530S6ZlmEZcVvQ5ogYtP4i4Q5VXVFWA8IRYCV4EjxXih/amSnatP
+ JmjDhaOju+f3/O6v6NdXAvSnH1Pi6nQmSFWqNCs=
+X-Google-Smtp-Source: ABdhPJyqs/M2Em3/HU+NEY5CE3n65PJxyF06pbxASaTFZx+ohua2HRsbXo6S+rdEcQ6h3e4hUCuCMghFj0B5Kj/71MA=
+X-Received: by 2002:a25:5d0:0:b0:61d:932b:6fc0 with SMTP id
+ 199-20020a2505d0000000b0061d932b6fc0mr8506142ybf.585.1645812261673; Fri, 25
+ Feb 2022 10:04:21 -0800 (PST)
 MIME-Version: 1.0
 References: <20220225145432.422130-1-pgwipeout@gmail.com>
- <20220225145432.422130-8-pgwipeout@gmail.com>
- <2f1f09c0-9b7e-5145-fb25-a5f1fe4d0ab4@wolfvision.net>
-In-Reply-To: <2f1f09c0-9b7e-5145-fb25-a5f1fe4d0ab4@wolfvision.net>
+ <20220225145432.422130-3-pgwipeout@gmail.com>
+ <5cca79dc-619c-a162-e850-b3efd4dc746d@gmail.com>
+In-Reply-To: <5cca79dc-619c-a162-e850-b3efd4dc746d@gmail.com>
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Fri, 25 Feb 2022 12:59:26 -0500
-Message-ID: <CAMdYzYqRsOji3PfxK_FgOUbg4KomC+LnWgkTXS7=YRKTuPYVow@mail.gmail.com>
-Subject: Re: [PATCH v1 7/8] arm64: dts: rockchip: add rk356x dwc3 usb3 nodes
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Rob Herring <robh+dt@kernel.org>, 
+Date: Fri, 25 Feb 2022 13:04:10 -0500
+Message-ID: <CAMdYzYo81L5YnLr=whBbqde--e_DSuSwSPaXuDwtzeXN7pLMwQ@mail.gmail.com>
+Subject: Re: [PATCH v1 2/8] dt-bindings: usb: dwc3: add description for rk3568
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh+dt@kernel.org>, 
  Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
  Heiko Stuebner <heiko@sntech.de>, 
- devicetree <devicetree@vger.kernel.org>, 
+ linux-usb@vger.kernel.org, devicetree <devicetree@vger.kernel.org>, 
  arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ Michael Riesch <michael.riesch@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220225_095938_857220_FB745AC1 
-X-CRM114-Status: GOOD (  41.21  )
+X-CRM114-CacheID: sfid-20220225_100423_380158_78EE7F07 
+X-CRM114-Status: GOOD (  28.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,212 +91,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 25, 2022 at 12:01 PM Michael Riesch
-<michael.riesch@wolfvision.net> wrote:
+On Fri, Feb 25, 2022 at 11:07 AM Johan Jonker <jbx6244@gmail.com> wrote:
 >
 > Hi Peter,
 >
-> (It should be noted that there was a slight mishap in communications
-> between the two of us resulting in two series with the same goal. Now
-> let's clean up the mess :-)
->
-> Thanks for your series. Seeing that it contains more patches than mine
-> it probably makes sense to use your series as basis. Please Cc: me in
-> future iterations of this patch series and consider my comments below.
-
-Will do.
-If you'd like I can also pull your enablement patch.
-
+> Lots of USB series all of a sudden.
+> Combine possible?
 >
 > On 2/25/22 15:54, Peter Geis wrote:
-> > Add the dwc3 device nodes to the rk356x device trees.
-> > The rk3566 has one usb2 capable dwc3 otg controller and one usb3 capable
-> > dwc3 host controller.
-> > The rk3568 has one usb3 capable dwc3 otg controller and one usb3 capable
-> > dwc3 host controller.
+> > The rk3568 dwc3 controllers are backwards compatible with the rk3399.
+> > Add the device tree description for it.
 > >
 > > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 > > ---
-> >  arch/arm64/boot/dts/rockchip/rk3566.dtsi | 12 +++++++
-> >  arch/arm64/boot/dts/rockchip/rk3568.dtsi |  9 +++++
-> >  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 45 +++++++++++++++++++++++-
-> >  3 files changed, 65 insertions(+), 1 deletion(-)
+> >  Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml | 7 ++++++-
+> >  1 file changed, 6 insertions(+), 1 deletion(-)
 > >
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3566.dtsi b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
-> > index 3839eef5e4f7..8e8b52f58f44 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3566.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
-> > @@ -6,6 +6,10 @@ / {
-> >       compatible = "rockchip,rk3566";
-> >  };
+> > diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml b/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+> > index 04077f2d7faf..e3044e81cc72 100644
+> > --- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+> > +++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml
+> > @@ -30,6 +30,7 @@ select:
+> >          enum:
+> >            - rockchip,rk3328-dwc3
+> >            - rockchip,rk3399-dwc3
+> > +          - rockchip,rk3568-dwc3
+> >    required:
+> >      - compatible
 > >
-> > +&pipegrf {
-> > +     compatible = "rockchip,rk3566-pipe-grf", "syscon";
-> > +};
-> > +
-> >  &power {
-> >       power-domain@RK3568_PD_PIPE {
-> >               reg = <RK3568_PD_PIPE>;
-> > @@ -18,3 +22,11 @@ power-domain@RK3568_PD_PIPE {
-> >               #power-domain-cells = <0>;
-> >       };
-> >  };
-> > +
-> > +&usbdrd30 {
->
-> I would really love to have some alignment with the other USB controllers
->
-> usb_host{0,1}_{e,o}hci
->
-> here. I am aware that older SoCs and the SDK are using these names and
-> it might be painful to have different versions to maintain at the
-> moment, but can we please agree on
->
-> usb_host0_xhci
-> usb_host1_xhci
->
-> or something like that?
-
-I agree, I like your naming better.
-
->
-> > +     phys = <&usb2phy0_otg>;
-> > +     phy-names = "usb2-phy";
-> > +     extcon = <&usb2phy0>;
-> > +     maximum-speed = "high-speed";
-> > +     snps,dis_u2_susphy_quirk;
-> > +};
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> > index 5b0f528d6818..77c044cbaaad 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-> > @@ -99,6 +99,10 @@ opp-1992000000 {
-> >       };
-> >  };
+> > @@ -39,6 +40,7 @@ properties:
+> >        - enum:
+> >            - rockchip,rk3328-dwc3
+> >            - rockchip,rk3399-dwc3
+> > +          - rockchip,rk3568-dwc3
+> >        - const: snps,dwc3
 > >
-> > +&pipegrf {
-> > +     compatible = "rockchip,rk3568-pipe-grf", "syscon";
-> > +};
-> > +
-> >  &power {
-> >       power-domain@RK3568_PD_PIPE {
-> >               reg = <RK3568_PD_PIPE>;
-> > @@ -114,3 +118,8 @@ power-domain@RK3568_PD_PIPE {
-> >               #power-domain-cells = <0>;
-> >       };
-> >  };
-> > +
-> > +&usbdrd30 {
-> > +     phys = <&usb2phy0_otg>, <&combphy0 PHY_TYPE_USB3>;
-> > +     phy-names = "usb2-phy", "usb3-phy";
-> > +};
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> > index 84d5d607e693..4fae5b3b326e 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> > @@ -230,6 +230,50 @@ scmi_shmem: sram@0 {
-> >               };
-> >       };
+> >    reg:
+> > @@ -75,7 +77,10 @@ properties:
+> >      maxItems: 1
 > >
-> > +     usbdrd30: usbdrd@fcc00000 {
-> > +             compatible = "rockchip,rk3568-dwc3", "snps,dwc3";
-> > +             reg = <0x0 0xfcc00000 0x0 0x400000>;
-> > +             interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH>;
-> > +             clocks = <&cru CLK_USB3OTG0_REF>, <&cru CLK_USB3OTG0_SUSPEND>,
-> > +                      <&cru ACLK_USB3OTG0>, <&cru PCLK_PIPE>;
-> > +             clock-names = "ref_clk", "suspend_clk",
-> > +                           "bus_clk", "grf_clk";
+> he
+> >    reset-names:
+> > -    const: usb3-otg
+> > +    items:
+> > +      - enum:
+> > +          - usb3-otg
+> > +          - usb3-host
 >
-> Please consider Johan's comments on my first series. In my tests
-> removing the PCLK_PIPE clock did not make any difference.
-
-I'd like to test that this isn't being used, or isn't just working
-because it's enabled elsewhere.
-If both of those are false, then I'll be happy to drop this.
-
+> The use of reset-names is "sort of" only related to the rk3399 legacy
+> node. Still using this sub node DT to not to break older existing boot
+> loaders.
 >
-> > +             dr_mode = "host";
+> https://github.com/torvalds/linux/search?q=usb3-otg
 >
-> Based on the description in the commit message above it should be "otg",
-> right? Boards are free to overrule this, of course.
-
-Currently the usb2phy does not support OTG mode correctly.
-There are patches in the works for this, but at the moment it's safer
-to default to host.
-
+> It's only mentioned as comment in dwc3-of-simple.c but not used:
 >
-> > +             phy_type = "utmi_wide";
-> > +             power-domains = <&power RK3568_PD_PIPE>;
-> > +             resets = <&cru SRST_USB3OTG0>;
-> > +             reset-names = "usb3-otg";
-> > +             snps,dis_enblslpm_quirk;
-> > +             snps,dis-u2-freeclk-exists-quirk;
-> > +             snps,dis-del-phy-power-chg-quirk;
-> > +             snps,dis-tx-ipgap-linecheck-quirk;
-> > +             snps,xhci-trb-ent-quirk;
+>         simple->resets = of_reset_control_array_get(np, false, true,
+>                                                     true);
+> core.c uses something similar.
 >
-> In my first version I had all those quirks as well, but are they
-> actually necessary? I decided to remove them all to have a fresh start
-> (also activating them did not seem to affect my test setup).
+>         dwc->reset = devm_reset_control_array_get_optional_shared(dev);
+>         if (IS_ERR(dwc->reset))
+>                 return PTR_ERR(dwc->reset);
+>
+>
+> Up to the maintainers, but I wouldn't add another variant/name for the
+> same thing as it also optional(= not required) and no longer needed.
 
-I'm now curious about this, can someone weigh in on valid ways of
-testing each one of these in a way that is definite?
+I left these named separately since they are different reset signals,
+but if it isn't an issue I don't mind having them both be usb3-otg.
 
 >
-> > +             status = "disabled";
-> > +     };
-> > +
-> > +     usbhost30: usbhost@fd000000 {
+> Johan
 >
-> Please reconsider the this name as well.
+> ===
 >
-> > +             compatible = "rockchip,rk3568-dwc3", "snps,dwc3";
-> > +             reg = <0x0 0xfd000000 0x0 0x400000>;
-> > +             interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH>;
-> > +             clocks = <&cru CLK_USB3OTG1_REF>, <&cru CLK_USB3OTG1_SUSPEND>,
-> > +                      <&cru ACLK_USB3OTG1>, <&cru PCLK_PIPE>;
-> > +             clock-names = "ref_clk", "suspend_clk",
-> > +                           "bus_clk", "grf_clk";
-> > +             dr_mode = "host";
->
-> Here "host" clearly makes sense, as this controller is not capable of otg.
->
-> > +             phys = <&usb2phy0_host>, <&combphy1 PHY_TYPE_USB3>;
-> > +             phy-names = "usb2-phy", "usb3-phy";
-> > +             phy_type = "utmi_wide";
-> > +             power-domains = <&power RK3568_PD_PIPE>;
-> > +             resets = <&cru SRST_USB3OTG1>;
-> > +             reset-names = "usb3-host";
-> > +             snps,dis_enblslpm_quirk;
-> > +             snps,dis-u2-freeclk-exists-quirk;
-> > +             snps,dis_u2_susphy_quirk;
-> > +             snps,dis-del-phy-power-chg-quirk;
-> > +             snps,dis-tx-ipgap-linecheck-quirk;
->
-> What was said about quirks above holds here as well (although one quirk
-> not documented in the bindings is missing here).
+> Maybe drop PCLK_PIPE as well to reduce notifications.
 
-Same thing here, I'd like absolute testing to determine that these are
-not necessary, since downstream (the oem) felt they were.
+I'll be conducting testing to determine if we need PCLK_PIPE here, and
+as long as it isn't working simply because it's enabled by someone
+else I'll drop it.
+Ideally, it would be nice to have a proper clock map for these chips,
+but currently that's not in the TRM.
 
 >
-> Best regards,
-> Michael
+> See example:
+> https://lore.kernel.org/linux-rockchip/20220225131602.2283499-4-michael.riesch@wolfvision.net/T/#u
 >
-> > +             status = "disabled";
-> > +     };
-> > +
-> >       gic: interrupt-controller@fd400000 {
-> >               compatible = "arm,gic-v3";
-> >               reg = <0x0 0xfd400000 0 0x10000>, /* GICD */
-> > @@ -297,7 +341,6 @@ pmu_io_domains: io-domains {
-> >       };
 > >
-> >       pipegrf: syscon@fdc50000 {
-> > -             compatible = "rockchip,rk3568-pipe-grf", "syscon";
-> >               reg = <0x0 0xfdc50000 0x0 0x1000>;
-> >       };
+> >  unevaluatedProperties: false
 > >
+
+Thanks for the review!
 
 _______________________________________________
 Linux-rockchip mailing list
