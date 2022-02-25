@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6589EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 07:55:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A39B3C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Feb 2022 07:55:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RocB+BRwHsQHuvY3lVti/jM7nQ5Mg+89YPyxOV4ezMM=; b=nrxIEx5fXGjah9
-	a4ZFn4QkADN8ewra+H5NPKjSBvs2TFCnt4AnMro/jYhACad9FYa63X7/MQC4vV3s2MGsJ5c+e4ITW
-	tCRZd8TbickZaOIIbc8rFnNxLdSkyKja/gIqrXSaaNM9uvJyFXzsjHaFU64rp9krdDRFTyRt3lt3M
-	kz3uAHIgIIfAP7ev94a39Vs/BpFcl4IXFdhZ31Lf/Ow6su8nh9+sqI5GsiB6D0ZcCIK1FuN3Y3U7Y
-	ifbwG1WNZQ3wsBxDyyhlQUpJis1c6iIGrEQUJQi1zgYgPLY70H9kquxVWBQaImWXlXShjtQVy6RcG
-	XC3KXGuLv/Yl5Hl8UdGA==;
+	List-Owner; bh=V03tnckZJat1PaFFU13UL5fT7usHpGpsQQtMQDYP2b0=; b=Ce/uPy0n2/aBWT
+	a65R7gMhwINlkkM1V3ejD6kk3eV+ibxhW5VwEqBt9C2PDw3HqgsGWcKfPBem5jNURwy4S1n5SG7do
+	B9rh5Och6hI1dmiRknhUZAqMRfsaTlcSnvOORq4hPEaN7G+iVBFJ+XVAVETTMX53yJi0bbt/UlDMZ
+	BsHkBMTOMuuIZXAcBh81tbeXj8rAg4MVSQINisdCGggBce7D+BSJ4zq/BFeaTyXyDBjv/L6RNzQvs
+	h+XogC2bWfvTuPEHRRqcBDvJMKXwUz5PhWESIuEVVIrhRRVvMT8ZZJ5LZI2JZveD0dWmY80zFCQvY
+	Jg+1xwfTHLWMOonHoIhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nNVSC-003jdt-9y; Fri, 25 Feb 2022 07:55:52 +0000
+	id 1nNVSB-003jd2-2S; Fri, 25 Feb 2022 07:55:51 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nNVOQ-003hug-M4
+ id 1nNVOQ-003huf-Lt
  for linux-rockchip@lists.infradead.org; Fri, 25 Feb 2022 07:52:03 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nNVON-0000Pv-82; Fri, 25 Feb 2022 08:51:55 +0100
+ id 1nNVON-0000Pw-7x; Fri, 25 Feb 2022 08:51:55 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nNVOL-00BSY0-6B; Fri, 25 Feb 2022 08:51:53 +0100
+ id 1nNVOL-00BSY3-6n; Fri, 25 Feb 2022 08:51:53 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -42,11 +42,12 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Douglas Anderson <dianders@chromium.org>,
- Yakir Yang <ykk@rock-chips.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v7 14/24] drm/rockchip: dw_hdmi: Set cur_ctr to 0 always
-Date: Fri, 25 Feb 2022 08:51:40 +0100
-Message-Id: <20220225075150.2729401-15-s.hauer@pengutronix.de>
+ Peter Geis <pgwipeout@gmail.com>, Nickey Yang <nickey.yang@rock-chips.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v7 15/24] drm/rockchip: dw_hdmi: add default 594Mhz clk for
+ 4K@60hz
+Date: Fri, 25 Feb 2022 08:51:41 +0100
+Message-Id: <20220225075150.2729401-16-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220225075150.2729401-1-s.hauer@pengutronix.de>
 References: <20220225075150.2729401-1-s.hauer@pengutronix.de>
@@ -57,8 +58,9 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220224_235158_762559_56E8909B 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20220224_235158_758061_FE0A4B2A 
+X-CRM114-Status: UNSURE (   9.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,15 +78,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Douglas Anderson <dianders@chromium.org>
+From: Nickey Yang <nickey.yang@rock-chips.com>
 
-Jitter was improved by lowering the MPLL bandwidth to account for high
-frequency noise in the rk3288 PLL.  In each case MPLL bandwidth was
-lowered only enough to get us a comfortable margin.  We believe that
-lowering the bandwidth like this is safe given sufficient testing.
+add 594Mhz configuration parameters in rockchip_phy_config
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+Signed-off-by: Nickey Yang <nickey.yang@rock-chips.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
 
@@ -92,36 +90,21 @@ Notes:
     Changes since v3:
     - new patch
 
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 16 ++--------------
- 1 file changed, 2 insertions(+), 14 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index d1fe4d9299c96..e97ba072a097b 100644
+index e97ba072a097b..03cda7229e559 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -181,20 +181,8 @@ static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
- static const struct dw_hdmi_curr_ctrl rockchip_cur_ctr[] = {
- 	/*      pixelclk    bpp8    bpp10   bpp12 */
- 	{
--		40000000,  { 0x0018, 0x0018, 0x0018 },
--	}, {
--		65000000,  { 0x0028, 0x0028, 0x0028 },
--	}, {
--		66000000,  { 0x0038, 0x0038, 0x0038 },
--	}, {
--		74250000,  { 0x0028, 0x0038, 0x0038 },
--	}, {
--		83500000,  { 0x0028, 0x0038, 0x0038 },
--	}, {
--		146250000, { 0x0038, 0x0038, 0x0038 },
--	}, {
--		148500000, { 0x0000, 0x0038, 0x0038 },
--	}, {
-+		600000000, { 0x0000, 0x0000, 0x0000 },
-+	},  {
- 		~0UL,      { 0x0000, 0x0000, 0x0000},
- 	}
+@@ -192,6 +192,7 @@ static const struct dw_hdmi_phy_config rockchip_phy_config[] = {
+ 	{ 74250000,  0x8009, 0x0004, 0x0272},
+ 	{ 148500000, 0x802b, 0x0004, 0x028d},
+ 	{ 297000000, 0x8039, 0x0005, 0x028d},
++	{ 594000000, 0x8039, 0x0000, 0x019d},
+ 	{ ~0UL,	     0x0000, 0x0000, 0x0000}
  };
+ 
 -- 
 2.30.2
 
