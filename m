@@ -4,78 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BBAAC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Feb 2022 18:44:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5750CC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Feb 2022 21:44:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9GTmNvs6M/L00zkurL5AHZSBKwcB2VzQuJx5vgwSups=; b=XMXRM6YYAkRc7L
-	YEWOLTpZOxXGzH6G1QsSWQiPOAcTFkyethQzbMQ3N8A4X3FVoiWUdcYEHBQ+NdOZMFvbLzIazrl25
-	56JEE8HX4HIa5jk1GrtS56rxjzyjWH/0nSbI/Js/UbLPT9kiebolEhyB2+dFAUAFaWeVe0mU81wFe
-	h/M/UPEk66VNFS3XOnCzTSwsPtM6uNkjLZHDVNgRrxjAoHjh443E5qDwEALGZqryvck6ZucVXmhag
-	7ZJfcdck5+N/SzRrElSdDf6e+9dSGGinKmAGsJtUhV070sfdE/vRDVEfWsCfV18osk/Jn4xGRWuSW
-	htNOeUIDYfQpvEu5kg2w==;
+	List-Owner; bh=OfDbTBWjsdzY3SyADVPu7bIBy1BnJDfMFDp6bR/eiK0=; b=CCJE19YQtGLXWi
+	ZIEiWF3hGZUCkwTPrI4L2zuzOEj0vTQXxaTcoX9roO3DCUGkEEXt7rFTmA1VTJo2Cu6z0oIorMwnl
+	VbxImfKcU0s/i+JtfxA7KlKxJM4VNggUueUqzun1zRW2ifW0KUzGLNlqOsYLhGwYVtVOXOuV3EnqJ
+	WQJ0hYHTEQ0R5Ize4YljT+VUPjNwHM72i4sTcyGwWJOum31LG1PWMPRnffrmz7qGU4lFNTyydIe/f
+	dWvEehiwcdYmPYhMzoJBjL/+nGroxVZJhN0rGTpZ7QLF5RYMBmiC+Z7Uv9CA+Z13Ym2cGMdktOLoB
+	JG/iV0S+eEm1oYCtfelA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nO23S-008Oh4-2q; Sat, 26 Feb 2022 18:44:30 +0000
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
+	id 1nO4rA-008YyA-0O; Sat, 26 Feb 2022 21:44:00 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nO218-008NDw-6X; Sat, 26 Feb 2022 18:42:08 +0000
-Received: by mail-qt1-x836.google.com with SMTP id w1so5529691qtj.2;
- Sat, 26 Feb 2022 10:42:05 -0800 (PST)
+ id 1nO4r7-008Yxa-4Q
+ for linux-rockchip@lists.infradead.org; Sat, 26 Feb 2022 21:43:58 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id g20so12160541edw.6
+ for <linux-rockchip@lists.infradead.org>; Sat, 26 Feb 2022 13:43:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=OHIHH7LBjO7n3w0TkyTvZ+CHhZPHMYRUZ96K/VbT0E0=;
- b=aIKmXmXT0X3QGneIFAV3GhqKa4LgEhGVof8di7S4VZTO3vixTBvQ18ZxWjDRJJJn7d
- L3kouKub8Vu8dxjHqk+L4g4vIN30KNoaIxOu5RZH75NLsvfkpzNtrLzXmvXNNwnYKpGh
- nZcn8AP5Gn9bSm3UlB6HfQCWMKxmz7YrxTH6pJVewCZs4rmS5SoW/vOgbgF63siaUj1q
- NJp5hQIe9XrYcGX32A8i+uuVqc5qVyrsc0Kk4ERlPHNJb82AcdcQ0DkFxMQMUoUZycLy
- ca1MGC8AtLvQlJzYz17WoUWa/oQ/7BjiZtGxmgiH1jDDbdMKTTjSKDXpRnzRZ2Xeh2V2
- HQGQ==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=gwvZa2dcVddk9XhPqnnw7BdDWgMrIWi0l2xYTw7uVq4=;
+ b=ieuNHUrgJeWwVhmGIAi92YZErZliThzoNqRKo14Vh+sq3q1K9eTV+DiAdkpOoRTYaG
+ WXNuRbXkazy+XO0BJK7MKSAt6Em7dNuT2QdgJpNTqlHnHm/v95O0pfprvooUCt/NvsNP
+ GsGeRZcVt6bsmPb/OVepmmCzhLbFdfigKKPGdNKglInJGsvP4kYjYGakxo0TYHKiLOeR
+ Hb0B/WodBnzk5LwENVkEwgLMfptAZ2nIh3ed/smowJh+s/V5xsy5YA0d78SnAaHhEZ1c
+ +0eV1wxXGGCaV8f22P5RzZZMaDyTH5meSyMsfyoAqbg0Qhf1U2asE7lyjTKtcPwZkp0R
+ ISqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=OHIHH7LBjO7n3w0TkyTvZ+CHhZPHMYRUZ96K/VbT0E0=;
- b=x16Mykh6CJGzCrMWRwKHJ/+p7yF2Q91F0DFSU0Hq1ut3hdeSqgTsljxPoq4YXN5lDJ
- zFahubWk8TW5QZcqexaz4Q8kHmQvDxEKaXHYpBGN3eePa+JvMza4m8W5gA3oRw5x7KQd
- tPC09oZqfCr6PXG6PRoBWbdN5j6O9y2Mcw57eTc4JDCRNZCMNaNCOnCI/7VMH61Ic3KJ
- Q/XijAbwFZr6CP+rq89utvrp2xHPzRV6x4wqfu5VK+oGEl5OSD3qrs+4EuU4PjqJHsiT
- U0ay7iu06g1XDU1oibae1wKz1fKkFad/LGXu0gFyfWY7EN1YoR1rBaGgYtRS3uF7gsUS
- xkig==
-X-Gm-Message-State: AOAM530ayOoBwCoseIFKyXXJWF30gByfJa16euW1bdq9CM2s4SOa9zLh
- 5OcbAglyE5Af01J9jDO9c6w=
-X-Google-Smtp-Source: ABdhPJxlMcbNkkrusXkql9nwS+Wn/Z9sD2cs8nqKgPu+C8cCCHwwYoC2LCrMmNBJLLog7nn4qwdHmg==
-X-Received: by 2002:a05:622a:1187:b0:2de:6ffc:19f8 with SMTP id
- m7-20020a05622a118700b002de6ffc19f8mr11440373qtk.453.1645900925094; 
- Sat, 26 Feb 2022 10:42:05 -0800 (PST)
-Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=gwvZa2dcVddk9XhPqnnw7BdDWgMrIWi0l2xYTw7uVq4=;
+ b=dX4kkomTKeAO7kB2voWz9UBp7Jn4u24pi6UqFKU0GkfrfMre+trABTeV9zmqYTeCIh
+ LSZKRgJwY1onybNZ+5ZiZb0OMdc/EaZ4yfivdlhb27GEmt4nTi00cwlWxisM5ui+J3TL
+ NTwWJdobUfbVE3nl/ucHwoBD5rMRn6vFTYo692ihd3+ERW9PyqoD4ROVobLeinJXPniZ
+ ru75R5SG15hz7P4mP67UFCNTfOOYjdq9zX1Xsa09OBYCr+d07uRl07oOCT6R6k5OWRjU
+ Wpa7lhDmdpfUesdTElk+QrulW+/cVD1kKjVkabAdJDxogYrMD5CyN5y2E2X//ytu4wBP
+ oYrg==
+X-Gm-Message-State: AOAM533a+Er7ENS0djQERnijAKPeqwpy7gn/R5DUt16Nvvd5/DUDHBHP
+ FvVzjA8txW0UY7Ph0p7fsns=
+X-Google-Smtp-Source: ABdhPJyNzE3rhYea/K5v861WD31Sr8quT5QSWT3FQqUAGpv/O3PpnjVEp3OTedF/I9qaslLnxSh6uQ==
+X-Received: by 2002:a05:6402:518b:b0:412:80a3:fb6e with SMTP id
+ q11-20020a056402518b00b0041280a3fb6emr13399264edd.84.1645911834812; 
+ Sat, 26 Feb 2022 13:43:54 -0800 (PST)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
  by smtp.gmail.com with ESMTPSA id
- p68-20020a378d47000000b006491d2d1450sm2891983qkd.10.2022.02.26.10.42.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Feb 2022 10:42:04 -0800 (PST)
-From: Peter Geis <pgwipeout@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, michael.riesch@wolfvision.net,
- Sascha Hauer <s.hauer@pengutronix.de>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 11/11] arm64: dts: rockchip: add usb3 support to
- rk3568-evb1-v10
-Date: Sat, 26 Feb 2022 13:41:47 -0500
-Message-Id: <20220226184147.769964-12-pgwipeout@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220226184147.769964-1-pgwipeout@gmail.com>
-References: <20220226184147.769964-1-pgwipeout@gmail.com>
+ t19-20020a1709060c5300b006d582121f99sm2658615ejf.36.2022.02.26.13.43.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 26 Feb 2022 13:43:54 -0800 (PST)
+Message-ID: <cdbf28ae-b54f-dfaf-887b-c5705319ac06@gmail.com>
+Date: Sat, 26 Feb 2022 22:43:53 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v2 08/11] usb: dwc3: add rk3568 dwc3 support
+Content-Language: en-US
+To: Peter Geis <pgwipeout@gmail.com>, Felipe Balbi <balbi@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
+ michael.riesch@wolfvision.net, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <20220226184147.769964-1-pgwipeout@gmail.com>
+ <20220226184147.769964-9-pgwipeout@gmail.com>
+From: Johan Jonker <jbx6244@gmail.com>
+In-Reply-To: <20220226184147.769964-9-pgwipeout@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220226_104206_285585_2D202139 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20220226_134357_247252_16D7161F 
+X-CRM114-Status: GOOD (  17.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,107 +96,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Michael Riesch <michael.riesch@wolfvision.net>
+Hi Peter,
 
-The Rockchip RK3568 EVB1 features one USB 3.0 device-only
-(USB 2.0 OTG) port and one USB 3.0 host-only port.
-Activate the USB 3.0 controller nodes and phy nodes in the
-device tree.
+See comments by rob+dt:
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
----
- .../boot/dts/rockchip/rk3568-evb1-v10.dts     | 46 +++++++++++++++++++
- 1 file changed, 46 insertions(+)
+https://lore.kernel.org/linux-rockchip/CAL_JsqJwNdUfoYM8SZmOgMG9iAyZkJ4-kzjjiDDm_mdmghTEOA@mail.gmail.com/
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-index a794a0ea5c70..622be8be9813 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-@@ -103,6 +103,18 @@ vcc5v0_usb_host: vcc5v0-usb-host {
- 		vin-supply = <&vcc5v0_usb>;
- 	};
- 
-+	vcc5v0_usb_otg: vcc5v0-usb-otg {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_usb_otg_en>;
-+		regulator-name = "vcc5v0_usb_otg";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_usb>;
-+	};
-+
- 	vcc3v3_lcd0_n: vcc3v3-lcd0-n {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v3_lcd0_n";
-@@ -136,6 +148,14 @@ regulator-state-mem {
- 	};
- };
- 
-+&combphy0 {
-+	status = "okay";
-+};
-+
-+&combphy1 {
-+	status = "okay";
-+};
-+
- &cpu0 {
- 	cpu-supply = <&vdd_cpu>;
- };
-@@ -507,6 +527,9 @@ usb {
- 		vcc5v0_usb_host_en: vcc5v0_usb_host_en {
- 			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-+		vcc5v0_usb_otg_en: vcc5v0_usb_otg_en {
-+			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
- 	};
- };
- 
-@@ -568,6 +591,11 @@ &usb_host0_ohci {
- 	status = "okay";
- };
- 
-+&usb_host0_xhci {
-+	extcon = <&usb2phy0>;
-+	status = "okay";
-+};
-+
- &usb_host1_ehci {
- 	status = "okay";
- };
-@@ -576,6 +604,24 @@ &usb_host1_ohci {
- 	status = "okay";
- };
- 
-+&usb_host1_xhci {
-+	status = "okay";
-+};
-+
-+&usb2phy0 {
-+	status = "okay";
-+};
-+
-+&usb2phy0_host {
-+	phy-supply = <&vcc5v0_usb_host>;
-+	status = "okay";
-+};
-+
-+&usb2phy0_otg {
-+	vbus-supply = <&vcc5v0_usb_otg>;
-+	status = "okay";
-+};
-+
- &usb2phy1 {
- 	status = "okay";
- };
--- 
-2.25.1
+> Presumably you are getting lucky here (with link order). The kernel
+> has no logic to decide which driver to bind to if there are 2 matching
+> drivers.
 
+Due to the fall back string you make a mess with two drivers.
+Don't use dwc3-of-simple.c
+(only for rk3399 and legacy support. Not for new SoCs),
+because core.c has now reset support.
+You are creating a race which driver get probed first.
+Handle your quirks in core.
+
+Johan
+
+On 2/26/22 19:41, Peter Geis wrote:
+> The rk3568 dwc3 controller is backwards compatible with the rk3399 dwc3
+> controller.
+> Add support for it to the dwc3-of-simple driver.
+> 
+> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> ---
+>  drivers/usb/dwc3/dwc3-of-simple.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-simple.c
+> index 57ba9427ad74..d9d1c5bfac3f 100644
+> --- a/drivers/usb/dwc3/dwc3-of-simple.c
+> +++ b/drivers/usb/dwc3/dwc3-of-simple.c
+> @@ -195,6 +195,10 @@ static const struct of_device_id of_dwc3_simple_match[] = {
+>  		.compatible = "rockchip,rk3399-dwc3",
+>  		.data = &dwc3_of_simple_data_rk3399,
+>  	},
+> +	{
+> +		.compatible = "rockchip,rk3568-dwc3",
+> +		.data = &dwc3_of_simple_data_rk3399,
+> +	},
+>  	{
+>  		.compatible = "sprd,sc9860-dwc3",
+>  	},
 
 _______________________________________________
 Linux-rockchip mailing list
