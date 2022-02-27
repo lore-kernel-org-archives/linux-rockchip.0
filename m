@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EF17C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Feb 2022 16:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68B57C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Feb 2022 16:02:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XmQ+9R3o5hJijcAIX5XFiUVdsFDeDySuLb+n0kTVD7s=; b=XgrAmSzzdS8def
-	UcaWg+VPIj28sBdx0+sbCQB7Kq5vAsk32ZbytvmWffy0wrlm5jcrqHESb4zKqtVA4tR7/NWzPXq1J
-	sNf5D+RwxFPTMEEnFcOgrvtXbLhrIh4u0h0dtS9Mub3jQ/nYbvBC1xQj3ofKViUFcB40OcNTOEvXV
-	8+PDNCGPYYWErw7sC5BtjedBjVJCZ77CwY8/83CJj4CCctnsC4rb0xAn0LEMXJD5Nb1Torz0T0cUy
-	f+2gkVDqd5qKyjcMiahpDtFxPsEGrLHpwK6N4O7dsN4+jtU48pl2BRbIHflaVsNZR2LfffFjsPeJc
-	OLj87t3x+sPzyEiiBXOQ==;
+	List-Owner; bh=yzSrjhUmPkqh+yrh5fi9RYm23u+IoLCUfuGlb24k/8o=; b=hia/AhA/PnRaKZ
+	YHqm78PjjvfCGP7704TBRaF7bQkUDGeNmf6EArUoa01yjgf4YR5gwEYApIdnXNMjnPYcuFhfwN1ZW
+	3zob9TNH4TZTGMg+/tZRUOKsxnDxNGzeA2jZantsbHAYQh5wS/6bCeDov8OKxX3jsoQHGdM6TdF8L
+	PEkv3nX/n/1WiEON3Kw1oSn7q6Ayu8VSy5TgTJgItBbe5GaScorQVdhYCqk98leJxumTHwjvZu8gF
+	OKFxfBHicg67IzgUnLUxQPZG9XjDwMEWP8fOFZGhyHjdndbj0Oi3o47ub5dv+gm+fq1/bJCS6/Pvf
+	azZGD6v1fe7FAVSJn1dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOLzl-009dYd-Rr; Sun, 27 Feb 2022 16:02:01 +0000
+	id 1nOLzn-009daR-5j; Sun, 27 Feb 2022 16:02:03 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOLzR-009dAa-Bu
+ id 1nOLzT-009dCo-GC
  for linux-rockchip@lists.infradead.org; Sun, 27 Feb 2022 16:01:47 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8D7B7143C;
- Sun, 27 Feb 2022 17:01:35 +0100 (CET)
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 2871CA24;
+ Sun, 27 Feb 2022 17:01:41 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1645977696;
- bh=nUj698IpYF7pASyDTpPtRfX96ohmf6vKk5mnUSq5OWQ=;
+ s=mail; t=1645977701;
+ bh=heycZim0eKCwx5lxslvOSBxZ3vLPkugfiG4q1xt2AwM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=mmJWCDKU9y/ECrwNhPMofSwvpMpPceq7Gi+UUvgUnMazr3J/wNqCSfT8uxD3YJ+CN
- m8avxB6YxPZGCWXlZL2cdHYkknP8U2YqcrCVzo9dpzXwHpXUNfkeYLvnXHZnqy+IJ8
- 64hD7ErwzUcgNQQKA6DCGFdBdb2O/gonW0FNVvb8=
+ b=sOMtFPyS36Mc905q9l90KlcAwmk1JEOBETeuoV5gaIujeMR4mdXArhr43uOoViZJH
+ W8aNbl5usU47idPdeoqcrMvNZ2LnMRkW7+6GVDepdZTRQ9nlxr7PUb28L/kuJ+Wcgh
+ 0HHYyMJ9P0MTiO3E2HRQf49hCcl6HzKMqbpusN4o=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>,
  Paul Elder <paul.elder@ideasonboard.com>, Tomasz Figa <tfiga@google.com>,
  linux-rockchip@lists.infradead.org
-Subject: [PATCH 07/16] media: rkisp1: Simplify rkisp1_entities_register()
- error path
-Date: Sun, 27 Feb 2022 18:01:07 +0200
-Message-Id: <20220227160116.18556-8-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH 15/16] media: rkisp1: debug: Move resizer register dump to
+ debugfs
+Date: Sun, 27 Feb 2022 18:01:15 +0200
+Message-Id: <20220227160116.18556-16-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220227160116.18556-1-laurent.pinchart@ideasonboard.com>
 References: <20220227160116.18556-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220227_080141_639304_CF729230 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20220227_080143_789040_DDA7E82F 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,100 +68,137 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Now that all the unregistration functions are safe to call on
-non-registered entities, the error path in rkisp1_entities_register()
-can be simplified. Factor out the unregistration to a separate function
-to share code with rkisp1_remove().
+The debugfs support already includes support to dump core and ISP
+registers. Move the resizer register dump there too to make the
+userspace interface consistent.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-dev.c     | 40 +++++++++----------
- 1 file changed, 19 insertions(+), 21 deletions(-)
+ .../platform/rockchip/rkisp1/rkisp1-debug.c   | 48 +++++++++++++++++++
+ .../platform/rockchip/rkisp1/rkisp1-resizer.c | 37 --------------
+ 2 files changed, 48 insertions(+), 37 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 3f5cfa7eb937..f8b2573aa9da 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -346,48 +346,50 @@ static const struct dev_pm_ops rkisp1_pm_ops = {
-  * Core
-  */
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+index c7872d8dc3df..f9fc8b661bdb 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+@@ -73,6 +73,50 @@ static int rkisp1_debug_dump_isp_regs_show(struct seq_file *m, void *p)
+ }
+ DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_isp_regs);
  
-+static void rkisp1_entities_unregister(struct rkisp1_device *rkisp1)
-+{
-+	rkisp1_params_unregister(rkisp1);
-+	rkisp1_stats_unregister(rkisp1);
-+	rkisp1_capture_devs_unregister(rkisp1);
-+	rkisp1_resizer_devs_unregister(rkisp1);
-+	rkisp1_isp_unregister(rkisp1);
++#define RKISP1_DEBUG_RSZ_REG_DEC(name) { \
++	RKISP1_CIF_##name, RKISP1_CIF_##name##_SHD, #name, false \
 +}
 +
- static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
- {
- 	int ret;
- 
- 	ret = rkisp1_isp_register(rkisp1);
- 	if (ret)
--		return ret;
-+		goto error;
- 
- 	ret = rkisp1_resizer_devs_register(rkisp1);
- 	if (ret)
--		goto err_unreg_isp_subdev;
-+		goto error;
- 
- 	ret = rkisp1_capture_devs_register(rkisp1);
- 	if (ret)
--		goto err_unreg_resizer_devs;
-+		goto error;
- 
- 	ret = rkisp1_stats_register(rkisp1);
- 	if (ret)
--		goto err_unreg_capture_devs;
-+		goto error;
- 
- 	ret = rkisp1_params_register(rkisp1);
- 	if (ret)
--		goto err_unreg_stats;
-+		goto error;
- 
- 	ret = rkisp1_subdev_notifier(rkisp1);
- 	if (ret) {
- 		dev_err(rkisp1->dev,
- 			"Failed to register subdev notifier(%d)\n", ret);
--		goto err_unreg_params;
-+		goto error;
- 	}
- 
- 	return 0;
--err_unreg_params:
--	rkisp1_params_unregister(rkisp1);
--err_unreg_stats:
--	rkisp1_stats_unregister(rkisp1);
--err_unreg_capture_devs:
--	rkisp1_capture_devs_unregister(rkisp1);
--err_unreg_resizer_devs:
--	rkisp1_resizer_devs_unregister(rkisp1);
--err_unreg_isp_subdev:
--	rkisp1_isp_unregister(rkisp1);
++#define RKISP1_DEBUG_RSZ_REG_HEX(name) { \
++	RKISP1_CIF_##name, RKISP1_CIF_##name##_SHD, #name, true \
++}
 +
-+error:
-+	rkisp1_entities_unregister(rkisp1);
- 	return ret;
++static int rkisp1_debug_dump_rsz_regs_show(struct seq_file *m, void *p)
++{
++	static const struct {
++		u32 reg;
++		u32 shadow;
++		const char * const name;
++		bool hex;
++	} registers[] = {
++		RKISP1_DEBUG_RSZ_REG_HEX(RSZ_CTRL),
++		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_SCALE_HY),
++		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_SCALE_HCB),
++		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_SCALE_HCR),
++		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_SCALE_VY),
++		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_SCALE_VC),
++		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_PHASE_HY),
++		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_PHASE_HC),
++		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_PHASE_VY),
++		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_PHASE_VC),
++		{ /* Sentinel */ },
++	};
++
++	struct rkisp1_resizer *rsz = m->private;
++	typeof(registers[0]) *reg;
++	u32 val, shd;
++
++	for (reg = registers; reg->name; ++reg) {
++		val = rkisp1_read(rsz->rkisp1, rsz->regs_base + reg->reg);
++		shd = rkisp1_read(rsz->rkisp1, rsz->regs_base + reg->shadow);
++		seq_printf(m, reg->hex ? "%14s: 0x%08x/0x%08x\n" : "%14s: %u/%u\n",
++			   reg->name, val, shd);
++	}
++
++	return 0;
++}
++DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_rsz_regs);
++
+ #define RKISP1_DEBUG_DATA_COUNT_BINS	32
+ #define RKISP1_DEBUG_DATA_COUNT_STEP	(4096 / RKISP1_DEBUG_DATA_COUNT_BINS)
+ 
+@@ -153,6 +197,10 @@ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+ 			    &rkisp1_debug_dump_core_regs_fops);
+ 	debugfs_create_file("isp", 0444, regs_dir, rkisp1,
+ 			    &rkisp1_debug_dump_isp_regs_fops);
++	debugfs_create_file("mrsz", 0444, regs_dir, &rkisp1->resizer_devs[0],
++			    &rkisp1_debug_dump_rsz_regs_fops);
++	debugfs_create_file("srsz", 0444, regs_dir, &rkisp1->resizer_devs[1],
++			    &rkisp1_debug_dump_rsz_regs_fops);
  }
  
-@@ -583,11 +585,7 @@ static int rkisp1_remove(struct platform_device *pdev)
- 	v4l2_async_nf_unregister(&rkisp1->notifier);
- 	v4l2_async_nf_cleanup(&rkisp1->notifier);
+ void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+index 2135cd40f604..3895c522f49e 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+@@ -203,41 +203,6 @@ static void rkisp1_dcrop_config(struct rkisp1_resizer *rsz)
+  * Resizer hw configs
+  */
  
--	rkisp1_params_unregister(rkisp1);
--	rkisp1_stats_unregister(rkisp1);
--	rkisp1_capture_devs_unregister(rkisp1);
--	rkisp1_resizer_devs_unregister(rkisp1);
--	rkisp1_isp_unregister(rkisp1);
-+	rkisp1_entities_unregister(rkisp1);
+-static void rkisp1_rsz_dump_regs(struct rkisp1_resizer *rsz)
+-{
+-	dev_dbg(rsz->rkisp1->dev,
+-		"RSZ_CTRL 0x%08x/0x%08x\n"
+-		"RSZ_SCALE_HY %d/%d\n"
+-		"RSZ_SCALE_HCB %d/%d\n"
+-		"RSZ_SCALE_HCR %d/%d\n"
+-		"RSZ_SCALE_VY %d/%d\n"
+-		"RSZ_SCALE_VC %d/%d\n"
+-		"RSZ_PHASE_HY %d/%d\n"
+-		"RSZ_PHASE_HC %d/%d\n"
+-		"RSZ_PHASE_VY %d/%d\n"
+-		"RSZ_PHASE_VC %d/%d\n",
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_CTRL),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_CTRL_SHD),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HY),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HY_SHD),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HCB),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HCB_SHD),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HCR),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HCR_SHD),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_VY),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_VY_SHD),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_VC),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_VC_SHD),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_HY),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_HY_SHD),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_HC),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_HC_SHD),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_VY),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_VY_SHD),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_VC),
+-		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_VC_SHD));
+-}
+-
+ static void rkisp1_rsz_update_shadow(struct rkisp1_resizer *rsz,
+ 				     enum rkisp1_shadow_regs_when when)
+ {
+@@ -386,8 +351,6 @@ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
  
- 	media_device_unregister(&rkisp1->media_dev);
- 	v4l2_device_unregister(&rkisp1->v4l2_dev);
+ 	/* set values in the hw */
+ 	rkisp1_rsz_config_regs(rsz, &sink_y, &sink_c, &src_y, &src_c, when);
+-
+-	rkisp1_rsz_dump_regs(rsz);
+ }
+ 
+ /* ----------------------------------------------------------------------------
 -- 
 Regards,
 
