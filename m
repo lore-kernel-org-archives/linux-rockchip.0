@@ -4,54 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 914A2C43219
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Feb 2022 16:01:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92CCFC4321E
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Feb 2022 16:01:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=borHZzZvW5QY6WOwLwfIHZMmT0IPyouJ6qlznsgBb7M=; b=nbIVmSDyHANmtt
-	SQ8znpsnSxSN4wz/+TTW6s6I46Ai/SF3IxlGFdFobJQeRSvnQrGszjlQrWY3VOzmTltSJmsvfyzMo
-	1X23kkjjeuaKLVuU6seE3fb5umydNPKqA9MyMiq0dFp2HUKaNEYv11b1f0KazMf7quYE5QCNR4bOJ
-	eMP8BRabDYTuk9qfBMddhZGPz83UG+WBTp95YyKsEio6dbYYpS1r0rysiNrU5MqjGtdUf41zyyIT9
-	8W/yP9a8O+NMuHBddls3Bxy7Gj7swzG8QQbWpVCVOp6lfWwiofckl52K/4fXEN5RkKzfghJ/K0oxL
-	2JS5Pymu0U6hMt5eGG3A==;
+	List-Owner; bh=K5BGVLsmP4/2xdfduTfIWMh6W67lAXo9gZ28C24DuLc=; b=AofW+j9x30nSXS
+	mSvnt9e+f5vupXw6Vm0RFx0XCJlB0UXW6cxV7ads97INAutoH/BwbNq+V1znpvWSyHenmq/K+VMc0
+	lTNb7DwKpNRa9LWmeA+w81hG5RG3yuoJYedGjS1tOoawT2To5DTL4DreTFdyqoDLVMFZMUKyzWIjX
+	NGf1heiTVkNEbRIx22hIBS3175CVqOwLjFca7oZY3sUkhEmb30fCN0O9NRSK2+5m3KayjRHGDJrET
+	Rj9lRBWZoBHBMF8FGOJEhxELsOGt9kJEXWJo22Qnd2V7qgbBUqo0KTe4w++t6MFpC2nUgcbNkcwYl
+	zDtGUdPG9BNnWEjQ2O6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOLzR-009dBR-LC; Sun, 27 Feb 2022 16:01:41 +0000
+	id 1nOLzV-009dFF-As; Sun, 27 Feb 2022 16:01:45 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOLzM-009d7o-Ox
+ id 1nOLzM-009d7p-Pu
  for linux-rockchip@lists.infradead.org; Sun, 27 Feb 2022 16:01:39 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7D6F8488;
- Sun, 27 Feb 2022 17:01:31 +0100 (CET)
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id D43DFA24;
+ Sun, 27 Feb 2022 17:01:32 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1645977692;
- bh=vy7JpQTnRFpo97VwYZj+0uG3egTgvClvLHTT5UB033w=;
+ s=mail; t=1645977693;
+ bh=Fo/MAmfmbCU7QtcFYItatJyeAsk3482qu8dImgsHC4k=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=CFrC+I7IPDKHw2Z+GTQkpWfjD0lvTVn4NKNF96tNiIzdk/tZT6RiZY8fwwNYciOcw
- 6jgVGhfWRsPsOKCwB5704fhUCODdPCc3l0NnyrPFtC6+sy9EFEC+XEoSjNSdL2GNkA
- BhnFAVbDAK71Edmsz6RZXALI8xTelo6S57nvWam8=
+ b=DNgg8NAwbvlTdTRs0bDnvsPUYeJ6cF4Q3Cbw9RGjxnKliJWAZBHoPAp5h/7C4yDF0
+ lzE3jHTc+zgtRpl5TeBohvVcVHglwedCiZCYAauFn8riPfDrHUtI4yOrv1EqobdTG5
+ ZlZla/OUM3cS2Z210ZvrLcae62v3DL/p9Vx7wxjU=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>,
  Paul Elder <paul.elder@ideasonboard.com>, Tomasz Figa <tfiga@google.com>,
  linux-rockchip@lists.infradead.org
-Subject: [PATCH 01/16] media: rkisp1: capture: Initialize entity before video
- device
-Date: Sun, 27 Feb 2022 18:01:01 +0200
-Message-Id: <20220227160116.18556-2-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH 03/16] media: rkisp1: isp: Fix and simplify (un)registration
+Date: Sun, 27 Feb 2022 18:01:03 +0200
+Message-Id: <20220227160116.18556-4-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220227160116.18556-1-laurent.pinchart@ideasonboard.com>
 References: <20220227160116.18556-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220227_080137_053022_C09645FA 
-X-CRM114-Status: UNSURE (   9.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220227_080137_064957_429D23DB 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,51 +67,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The media_entity embedded in the video_device needs to be initialized
-before registering the video_device. Do so.
+The rkisp1_isp_register() and rkisp1_isp_unregister() functions don't
+destroy the mutex (in the error path for the former). Fix this, simplify
+error handling at registration time as media_entity_cleanup() can be
+called on an uninitialized entity, and make rkisp1_isp_unregister() and
+safe to be called on an unregistered isp subdev to prepare for
+simplification of error handling at probe time.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-capture.c   | 17 ++++++++++-------
- 1 file changed, 10 insertions(+), 7 deletions(-)
+ .../platform/rockchip/rkisp1/rkisp1-capture.c |  4 ++--
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     | 20 ++++++++++++-------
+ 2 files changed, 15 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index c95c00a91180..9c11f2b8e5f5 100644
+index 18be7c982db7..0eccf9eb6a14 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -1372,22 +1372,25 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
- 
- 	vdev->queue = q;
- 
-+	ret = media_entity_pads_init(&vdev->entity, 1, &node->pad);
-+	if (ret)
-+		return ret;
-+
- 	ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
+@@ -1371,14 +1371,14 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
  	if (ret) {
  		dev_err(cap->rkisp1->dev,
- 			"failed to register %s, ret=%d\n", vdev->name, ret);
+ 			"vb2 queue init failed (err=%d)\n", ret);
 -		return ret;
 +		goto error;
  	}
-+
- 	v4l2_info(v4l2_dev, "registered %s as /dev/video%d\n", vdev->name,
- 		  vdev->num);
  
--	ret = media_entity_pads_init(&vdev->entity, 1, &node->pad);
--	if (ret) {
--		video_unregister_device(vdev);
+ 	vdev->queue = q;
+ 
+ 	ret = media_entity_pads_init(&vdev->entity, 1, &node->pad);
+ 	if (ret)
 -		return ret;
--	}
--
- 	return 0;
++		goto error;
+ 
+ 	ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
+ 	if (ret) {
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index 2a35bf24e54e..f84e53b60ee1 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -1090,29 +1090,35 @@ int rkisp1_isp_register(struct rkisp1_device *rkisp1)
+ 	mutex_init(&isp->ops_lock);
+ 	ret = media_entity_pads_init(&sd->entity, RKISP1_ISP_PAD_MAX, pads);
+ 	if (ret)
+-		return ret;
++		goto error;
+ 
+ 	ret = v4l2_device_register_subdev(&rkisp1->v4l2_dev, sd);
+ 	if (ret) {
+ 		dev_err(rkisp1->dev, "Failed to register isp subdev\n");
+-		goto err_cleanup_media_entity;
++		goto error;
+ 	}
+ 
+ 	rkisp1_isp_init_config(sd, &state);
 +
+ 	return 0;
+ 
+-err_cleanup_media_entity:
 +error:
-+	media_entity_cleanup(&vdev->entity);
-+	return ret;
+ 	media_entity_cleanup(&sd->entity);
+-
++	mutex_destroy(&isp->ops_lock);
++	isp->sd.flags = 0;
+ 	return ret;
  }
  
- static void
+ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
+ {
+-	struct v4l2_subdev *sd = &rkisp1->isp.sd;
++	struct rkisp1_isp *isp = &rkisp1->isp;
+ 
+-	v4l2_device_unregister_subdev(sd);
+-	media_entity_cleanup(&sd->entity);
++	if (!isp->sd.flags)
++		return;
++
++	v4l2_device_unregister_subdev(&isp->sd);
++	media_entity_cleanup(&isp->sd.entity);
++	mutex_destroy(&isp->ops_lock);
+ }
+ 
+ /* ----------------------------------------------------------------------------
 -- 
 Regards,
 
