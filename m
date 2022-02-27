@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2644C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Feb 2022 16:02:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31442C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Feb 2022 16:02:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3xkMfXl7dZIOIKoeVaipKtlvure1laMlZKbnC8WfJMk=; b=UtU0Wf+axGGtMB
-	0TZJW4OS/ApIFcUPdR/jXw7n7flH5Jb831fxx9jqdT+3GkyU6/4V28AfjbLLjxp/g0y5bCqbAk1T3
-	frjggU7UOcyGtR85DvEUCo00GRd4raZ1LNJwY6lY3FufIHy03dxIIurmsnQPXIqK/luzfl9yl0x2c
-	a+HtbRLdSWT2aBXANnlSwNJKzDYMbf6x4jaojEOJtKlrjr07gcfvdBLUyBUBzsFn431dg5HoE4L5m
-	2oGpctSiC/dgIzWo5GK0JBQ5JWmBXQvG1A61+tzsXx3eOedFtEeJ7uLTaKgIAckTes0og24Rgx2st
-	cD4ymE5PIudZ/b88LiyQ==;
+	List-Owner; bh=I0JZSGkHb0f17ORnmD1ygvCVKPCPwJJLvnUQZMztjTs=; b=wd2KYUk+u5Si8i
+	4oaMcTyXfHtevCxKCAAfgF0YVvCNb6CKeOZ1QXs2qSHsVFc/7jl16PptueaE1Ajc2iW7cP6UkBVDF
+	VOLJOYBsdEXptO9fIcXp9biRp+6msHx77nkU0Ml9ovFl88IKj90OOHpud5z+VkXRKRalMAnYlgD+e
+	vJzw9Tnn3PCQti1Xz4OAVzrxvAKGwtrl4tYZZbSe6vS8Aw2gft9Sw5qNAOzhxdFWvIgOlVgV9edAv
+	Mb4n7/SqBYE8mRyn7kaovsziGSNzGVRGgBt9xlRUisLAQBCjx6U8xT7xXuWgUVvWs2LPxPlPktYnZ
+	fs7C9TdQEb65ykYN545Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOLzi-009dTN-52; Sun, 27 Feb 2022 16:01:58 +0000
+	id 1nOLzj-009dVl-LY; Sun, 27 Feb 2022 16:01:59 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOLzS-009dBN-45
- for linux-rockchip@lists.infradead.org; Sun, 27 Feb 2022 16:01:46 +0000
+ id 1nOLzT-009dCt-JB
+ for linux-rockchip@lists.infradead.org; Sun, 27 Feb 2022 16:01:48 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id A06A114D5;
- Sun, 27 Feb 2022 17:01:39 +0100 (CET)
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5078F993;
+ Sun, 27 Feb 2022 17:01:40 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
  s=mail; t=1645977700;
- bh=NfhcRaOKnhJs2ckz7D7y6MXIixwJUREYQUk8lB1BpY8=;
+ bh=NhVNyN/Hqu9OJYLxGrtpiTI30hGwggbAJZF6AFwFqHk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=JRzvSkNtiTain/tUCQ9NJcOI2RaFWe7j6uF2JsOtR8GIGBX8bFbyQlGFiiPF4MLwe
- MELqD7S10lVLo0sCAmMiEtP4O6lMByN71itpW4G98EXOUJqmWrHdYtB0c1GiAo2+By
- aQNHNATo4DK9tH3lG0esb9/1Zl7MN2Tj0V+LC0oI=
+ b=RM7PG0xcggtVaFqTKWyG9+/TRyXumYmRVPIsJyCWDHj/2fL+V8Z91hBew9BrULkPE
+ C653ji+fRON3vadibAKQRWh2jLxlahqaoSHx2kK0IwjD51JVeRvd+RbCuVLYGbzBSO
+ 6HT/y9MUa/w0qYvBJbON643PQ6GOdTJFQxvnxVls=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>,
  Paul Elder <paul.elder@ideasonboard.com>, Tomasz Figa <tfiga@google.com>,
  linux-rockchip@lists.infradead.org
-Subject: [PATCH 13/16] media: rkisp1: debug: Collect input status by sampling
- ISP_FLAGS_SHD
-Date: Sun, 27 Feb 2022 18:01:13 +0200
-Message-Id: <20220227160116.18556-14-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH 14/16] media: rkisp1: debug: Add debugfs files to dump core
+ and ISP registers
+Date: Sun, 27 Feb 2022 18:01:14 +0200
+Message-Id: <20220227160116.18556-15-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220227160116.18556-1-laurent.pinchart@ideasonboard.com>
 References: <20220227160116.18556-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220227_080142_396714_1E57DD1E 
-X-CRM114-Status: GOOD (  13.65  )
+X-CRM114-CacheID: sfid-20220227_080143_881010_B555A46E 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,75 +63,116 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhlIElTUF9GTEFHU19TSEQgcmVnaXN0ZXIgZXhwb3NlcyB0aGUgSVNQIHBhcmFsbGVsIGlucHV0
-IHNpZ25hbHMgKGRhdGEKYW5kIHN5bmNocm9uaXphdGlvbikgaW4gcmVhbCB0aW1lLiBUaGlzIGNh
-biBoZWxwIGRlYnVnZ2luZyB3aGVuIHRoZQpkZXZpY2UgZG9lc24ndCBvdXRwdXQgYW55IGltYWdl
-LiBTYW1wbGUgdGhlIHJlZ2lzdGVyIDEwMDAwIHRpbWVzIHdpdGggYQoxwrVzIGRlbGF5IGFuZCBl
-eHBvc2UgdGhlIHJlc3VsdCB0aHJvdWdoIGRlYnVnZnMuCgpTaWduZWQtb2ZmLWJ5OiBMYXVyZW50
-IFBpbmNoYXJ0IDxsYXVyZW50LnBpbmNoYXJ0QGlkZWFzb25ib2FyZC5jb20+Ci0tLQogLi4uL3Bs
-YXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtZGVidWcuYyAgIHwgNDYgKysrKysrKysrKysr
-KysrKysrKwogLi4uL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtcmVncy5oICAgIHwg
-IDkgKysrKwogMiBmaWxlcyBjaGFuZ2VkLCA1NSBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEv
-ZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRlYnVnLmMgYi9k
-cml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtZGVidWcuYwppbmRl
-eCA2NGIzMzc3NGNiZGYuLjhiZTRhYzEzNGNjOSAxMDA2NDQKLS0tIGEvZHJpdmVycy9tZWRpYS9w
-bGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRlYnVnLmMKKysrIGIvZHJpdmVycy9tZWRp
-YS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRlYnVnLmMKQEAgLTksOSArOSw1MyBA
-QAogICovCiAKICNpbmNsdWRlIDxsaW51eC9kZWJ1Z2ZzLmg+CisjaW5jbHVkZSA8bGludXgvZGVs
-YXkuaD4KICNpbmNsdWRlIDxsaW51eC9kZXZpY2UuaD4KKyNpbmNsdWRlIDxsaW51eC9zZXFfZmls
-ZS5oPgogCiAjaW5jbHVkZSAicmtpc3AxLWNvbW1vbi5oIgorI2luY2x1ZGUgInJraXNwMS1yZWdz
-LmgiCisKKyNkZWZpbmUgUktJU1AxX0RFQlVHX0RBVEFfQ09VTlRfQklOUwkzMgorI2RlZmluZSBS
-S0lTUDFfREVCVUdfREFUQV9DT1VOVF9TVEVQCSg0MDk2IC8gUktJU1AxX0RFQlVHX0RBVEFfQ09V
-TlRfQklOUykKKworc3RhdGljIGludCBya2lzcDFfZGVidWdfaW5wdXRfc3RhdHVzX3Nob3coc3Ry
-dWN0IHNlcV9maWxlICptLCB2b2lkICpwKQoreworCXN0cnVjdCBya2lzcDFfZGV2aWNlICpya2lz
-cDEgPSBtLT5wcml2YXRlOworCXUxNiBkYXRhX2NvdW50W1JLSVNQMV9ERUJVR19EQVRBX0NPVU5U
-X0JJTlNdID0geyB9OworCXVuc2lnbmVkIGludCBoc3luY19jb3VudCA9IDA7CisJdW5zaWduZWQg
-aW50IHZzeW5jX2NvdW50ID0gMDsKKwl1bnNpZ25lZCBpbnQgaTsKKwl1MzIgZGF0YTsKKwl1MzIg
-dmFsOworCisJLyogU2FtcGxlIHRoZSBJU1AgaW5wdXQgcG9ydCBzdGF0dXMgMTAwMDAgdGltZXMg
-d2l0aCBhIDHCtXMgaW50ZXJ2YWwuICovCisJZm9yIChpID0gMDsgaSA8IDEwMDAwOyArK2kpIHsK
-KwkJdmFsID0gcmtpc3AxX3JlYWQocmtpc3AxLCBSS0lTUDFfQ0lGX0lTUF9GTEFHU19TSEQpOwor
-CisJCWRhdGEgPSAodmFsICYgUktJU1AxX0NJRl9JU1BfRkxBR1NfU0hEX1NfREFUQV9NQVNLKQor
-CQkgICAgID4+IFJLSVNQMV9DSUZfSVNQX0ZMQUdTX1NIRF9TX0RBVEFfU0hJRlQ7CisJCWRhdGFf
-Y291bnRbZGF0YSAvIFJLSVNQMV9ERUJVR19EQVRBX0NPVU5UX1NURVBdKys7CisKKwkJaWYgKHZh
-bCAmIFJLSVNQMV9DSUZfSVNQX0ZMQUdTX1NIRF9TX0hTWU5DKQorCQkJaHN5bmNfY291bnQrKzsK
-KwkJaWYgKHZhbCAmIFJLSVNQMV9DSUZfSVNQX0ZMQUdTX1NIRF9TX1ZTWU5DKQorCQkJdnN5bmNf
-Y291bnQrKzsKKworCQl1ZGVsYXkoMSk7CisJfQorCisJc2VxX3ByaW50ZihtLCAidnN5bmM6ICV1
-LCBoc3luYzogJXVcbiIsIHZzeW5jX2NvdW50LCBoc3luY19jb3VudCk7CisJc2VxX3B1dHMobSwg
-ImRhdGE6XG4iKTsKKwlmb3IgKGkgPSAwOyBpIDwgQVJSQVlfU0laRShkYXRhX2NvdW50KTsgKytp
-KQorCQlzZXFfcHJpbnRmKG0sICItIFslMDR1OiUwNHVdOiAldVxuIiwKKwkJCSAgIGkgKiBSS0lT
-UDFfREVCVUdfREFUQV9DT1VOVF9TVEVQLAorCQkJICAgKGkgKyAxKSAqIFJLSVNQMV9ERUJVR19E
-QVRBX0NPVU5UX1NURVAgLSAxLAorCQkJICAgZGF0YV9jb3VudFtpXSk7CisKKwlyZXR1cm4gMDsK
-K30KK0RFRklORV9TSE9XX0FUVFJJQlVURShya2lzcDFfZGVidWdfaW5wdXRfc3RhdHVzKTsKIAog
-dm9pZCBya2lzcDFfZGVidWdfaW5pdChzdHJ1Y3Qgcmtpc3AxX2RldmljZSAqcmtpc3AxKQogewpA
-QCAtNDIsNiArODYsOCBAQCB2b2lkIHJraXNwMV9kZWJ1Z19pbml0KHN0cnVjdCBya2lzcDFfZGV2
-aWNlICpya2lzcDEpCiAJCQkgICAgICZkZWJ1Zy0+ZnJhbWVfZHJvcFtSS0lTUDFfTUFJTlBBVEhd
-KTsKIAlkZWJ1Z2ZzX2NyZWF0ZV91bG9uZygic3BfZnJhbWVfZHJvcCIsIDA0NDQsIGRlYnVnLT5k
-ZWJ1Z2ZzX2RpciwKIAkJCSAgICAgJmRlYnVnLT5mcmFtZV9kcm9wW1JLSVNQMV9TRUxGUEFUSF0p
-OworCWRlYnVnZnNfY3JlYXRlX2ZpbGUoImlucHV0X3N0YXR1cyIsIDA0NDQsIGRlYnVnLT5kZWJ1
-Z2ZzX2Rpciwgcmtpc3AxLAorCQkJICAgICZya2lzcDFfZGVidWdfaW5wdXRfc3RhdHVzX2ZvcHMp
-OwogfQogCiB2b2lkIHJraXNwMV9kZWJ1Z19jbGVhbnVwKHN0cnVjdCBya2lzcDFfZGV2aWNlICpy
-a2lzcDEpCmRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNw
-MS9ya2lzcDEtcmVncy5oIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEv
-cmtpc3AxLXJlZ3MuaAppbmRleCAwODNkOTJhZGE3M2YuLjQ0N2M1ZjI0MWQ2OSAxMDA2NDQKLS0t
-IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLXJlZ3MuaAor
-KysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtcmVncy5o
-CkBAIC00NTQsNiArNDU0LDE1IEBACiAjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX0RFTU9TQUlDX0JZ
-UEFTUwkJCUJJVCgxMCkKICNkZWZpbmUgUktJU1AxX0NJRl9JU1BfREVNT1NBSUNfVEgoeCkJCQko
-KHgpICYgMHhGRikKIAorLyogSVNQX0ZMQUdTX1NIRCAqLworI2RlZmluZSBSS0lTUDFfQ0lGX0lT
-UF9GTEFHU19TSERfSVNQX0VOQUJMRV9TSEQJCUJJVCgwKQorI2RlZmluZSBSS0lTUDFfQ0lGX0lT
-UF9GTEFHU19TSERfSVNQX0VOQUJMRV9JTkZPUk1fU0hECUJJVCgxKQorI2RlZmluZSBSS0lTUDFf
-Q0lGX0lTUF9GTEFHU19TSERfSU5GT1JNX0ZJRUxECQlCSVQoMikKKyNkZWZpbmUgUktJU1AxX0NJ
-Rl9JU1BfRkxBR1NfU0hEX1NfREFUQV9NQVNLCQlHRU5NQVNLKDI3LCAxNikKKyNkZWZpbmUgUktJ
-U1AxX0NJRl9JU1BfRkxBR1NfU0hEX1NfREFUQV9TSElGVAkJMTYKKyNkZWZpbmUgUktJU1AxX0NJ
-Rl9JU1BfRkxBR1NfU0hEX1NfVlNZTkMJCUJJVCgzMCkKKyNkZWZpbmUgUktJU1AxX0NJRl9JU1Bf
-RkxBR1NfU0hEX1NfSFNZTkMJCUJJVCgzMSkKKwogLyogQVdCICovCiAvKiBJU1BfQVdCX1BST1Ag
-Ki8KICNkZWZpbmUgUktJU1AxX0NJRl9JU1BfQVdCX1lNQVhfQ01QX0VOCQkJQklUKDIpCi0tIApS
-ZWdhcmRzLAoKTGF1cmVudCBQaW5jaGFydAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+It's useful to dumb the value of registers for debugging purpose. Add
+two debugfs files to dump key core and ISP registers.
+
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+ .../platform/rockchip/rkisp1/rkisp1-debug.c   | 65 +++++++++++++++++++
+ 1 file changed, 65 insertions(+)
+
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+index 8be4ac134cc9..c7872d8dc3df 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+@@ -16,6 +16,63 @@
+ #include "rkisp1-common.h"
+ #include "rkisp1-regs.h"
+ 
++struct rkisp1_debug_register {
++	u32 offset;
++	const char * const name;
++};
++
++#define RKISP1_DEBUG_REG(name)	{ RKISP1_CIF_##name, #name }
++
++static int rkisp1_debug_dump_regs(struct seq_file *m,
++				  const struct rkisp1_debug_register *regs)
++{
++	struct rkisp1_device *rkisp1 = m->private;
++	u32 val;
++
++	for ( ; regs->name; ++regs) {
++		val = rkisp1_read(rkisp1, regs->offset);
++		seq_printf(m, "%14s: 0x%08x\n", regs->name, val);
++	}
++
++	return 0;
++}
++
++static int rkisp1_debug_dump_core_regs_show(struct seq_file *m, void *p)
++{
++	static const struct rkisp1_debug_register registers[] = {
++		RKISP1_DEBUG_REG(VI_CCL),
++		RKISP1_DEBUG_REG(VI_ICCL),
++		RKISP1_DEBUG_REG(VI_IRCL),
++		RKISP1_DEBUG_REG(VI_DPCL),
++		RKISP1_DEBUG_REG(MI_CTRL),
++		RKISP1_DEBUG_REG(MI_BYTE_CNT),
++		RKISP1_DEBUG_REG(MI_CTRL_SHD),
++		RKISP1_DEBUG_REG(MI_RIS),
++		RKISP1_DEBUG_REG(MI_STATUS),
++		RKISP1_DEBUG_REG(MI_DMA_CTRL),
++		RKISP1_DEBUG_REG(MI_DMA_STATUS),
++		{ /* Sentinel */ },
++	};
++
++	return rkisp1_debug_dump_regs(m, registers);
++}
++DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_core_regs);
++
++static int rkisp1_debug_dump_isp_regs_show(struct seq_file *m, void *p)
++{
++	static const struct rkisp1_debug_register registers[] = {
++		RKISP1_DEBUG_REG(ISP_CTRL),
++		RKISP1_DEBUG_REG(ISP_ACQ_PROP),
++		RKISP1_DEBUG_REG(ISP_FLAGS_SHD),
++		RKISP1_DEBUG_REG(ISP_RIS),
++		RKISP1_DEBUG_REG(ISP_ERR),
++		{ /* Sentinel */ },
++	};
++
++	return rkisp1_debug_dump_regs(m, registers);
++}
++DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_isp_regs);
++
+ #define RKISP1_DEBUG_DATA_COUNT_BINS	32
+ #define RKISP1_DEBUG_DATA_COUNT_STEP	(4096 / RKISP1_DEBUG_DATA_COUNT_BINS)
+ 
+@@ -60,6 +117,7 @@ DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_input_status);
+ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+ {
+ 	struct rkisp1_debug *debug = &rkisp1->debug;
++	struct dentry *regs_dir;
+ 
+ 	debug->debugfs_dir = debugfs_create_dir(dev_name(rkisp1->dev), NULL);
+ 
+@@ -88,6 +146,13 @@ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+ 			     &debug->frame_drop[RKISP1_SELFPATH]);
+ 	debugfs_create_file("input_status", 0444, debug->debugfs_dir, rkisp1,
+ 			    &rkisp1_debug_input_status_fops);
++
++	regs_dir = debugfs_create_dir("regs", debug->debugfs_dir);
++
++	debugfs_create_file("core", 0444, regs_dir, rkisp1,
++			    &rkisp1_debug_dump_core_regs_fops);
++	debugfs_create_file("isp", 0444, regs_dir, rkisp1,
++			    &rkisp1_debug_dump_isp_regs_fops);
+ }
+ 
+ void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
+-- 
+Regards,
+
+Laurent Pinchart
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
