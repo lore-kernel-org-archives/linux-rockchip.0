@@ -4,74 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF908C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Feb 2022 23:49:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADAA0C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Feb 2022 08:14:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CAS+CNXbM1MYmxps6RWYP5MccHueO6djWfWDOnE14fk=; b=aUzRBtzQg1apTC
-	8AVgw5M46VQupNuo2xcq8rH9sLMbHtVhZwb3/EhBw94LXS+S6pyq+5zacii6PQpO28XQHyKLMNWyL
-	Rzn4ulKFM7NNAH0VrKgxqV8oalhUg1XeOTp50Y9+0J4s4OsCqkSe739nQQwEVKClWfIPAWlily9oc
-	yS8YNY+HfzSC/K1JSUQ3wnTW2SsSBJN4t4D5eolyxZlGvWnRT0V7FEp4AWK0gD4ZNrC49twWYZnk/
-	QWPirUupSLKmbs7SrtPgTiC0DTU7jjUncpAjjxx6ocW5li5BdEeY0ZOBtnuWzwUq9G55nhSmMS4xe
-	r0zOB5qkAIpdfrTe0U6g==;
+	List-Owner; bh=66sFoYaZiBj329VSNtkWXEUmHgtQJ60Zkvo9WmycBTw=; b=J/ZP1P2gx9JS2e
+	KCMJlZqNLOwQrWdiI6cX0VXswF+gttRumPKOw4H8SMvImw/rsft+U73eqxnkF6Zk/Zp2rfxbPL0zN
+	xN8cVgVid5tqZ0Sunisd56ukuWLQ31h4b45yxr+5BozTwwf3PYI/f9SgvkbqAsJ8aqlFtbd+KoryR
+	jeWYTSRqpxIEoJJisSuzrXAuRaqfumi2XXx+D7paHBbWtjQI3d4xXVj+5dCdfpgJGmt2ogsuYb63H
+	DsbQl/KHrFThgbnNneRwKmHOnWUYga8WAsn8DIVdd5/36LCT/D+4haX+3YcL+SJnFWSsfS64Z7Af0
+	Kl2b7ki75O3uZgvHzJYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nO6oE-008fAb-Mo; Sat, 26 Feb 2022 23:49:06 +0000
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
+	id 1nOEh5-008xIX-TB; Sun, 27 Feb 2022 08:14:15 +0000
+Received: from mout.gmx.net ([212.227.17.22])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nO6o8-008f9S-Hy
- for linux-rockchip@lists.infradead.org; Sat, 26 Feb 2022 23:49:06 +0000
-Received: by mail-yb1-xb36.google.com with SMTP id g6so13142209ybe.12
- for <linux-rockchip@lists.infradead.org>; Sat, 26 Feb 2022 15:49:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ket/CFuLQVcpMPfanob90ElrwMFDUMsunTV9FoIi2O4=;
- b=cRrFFaYZUVtz+mUobnnDnYKkn/NpQM6EexIH/jgWbpk4vB8zQYf1aq8qUftkwG1wig
- jMq88JM8lXUtYn3tVkCfRjEc24ZGlPJ3laekldZTVR4+3LQisE6X/KrjPWnHDPFc9XJv
- z2+6OvGXlslLs827YZqevyVwRhh6K8PECi0L34+FOjmJYteMswqZmaPhqhVuR+dzPsRo
- JOqlv5Yh5o2cUMk8HQPPoJO/z4Tx7fTakcfVw5hwxbGKfgtsAw1y35VfM9wSlusByZrc
- 5U8ojemyDjfY1rP4y8sd061f6JlZlokdzJqjY920LSJPeMXbn58Bao7n4tMQa4keRoJP
- x0DQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ket/CFuLQVcpMPfanob90ElrwMFDUMsunTV9FoIi2O4=;
- b=3D0rSvB5b6r4gcsFO5EZJMN+pS9CdCngkJyB3oTajRcyuhrf68J5BbF/eHiDV62AWt
- gFyT/Snd9G2ePWUyWmwc4U4xIFZI5gmuXernM4B6EV1r12jPFORmNut3HFQG3ZhdW29T
- RiW3B2R/mxsMzInXlMn4acDLdrEYm9DXng+jtnB4z5Vnm8NPHFly7L16KnBiYakE3Np0
- q/zAzTiWM2St6FLBFvp9ETI6Tf/YTK/lnXxkIGBzo/UoqFEX7kCjWypLc6bi5eJmMNLk
- 0ar6beSc4AEiKFklM572kbN8tNHDu9KCRK49S9av9CYyoeX1756SYFFutIPSfdxFxNWk
- qYsA==
-X-Gm-Message-State: AOAM532AbQbLz1q0Vgha9M/gV9FqM1IGfcUA36C7bL+5gXfMURhZZpFt
- /xw8xCLScUXysihTT13f4+Mrx2NzeABavRfX3Vk=
-X-Google-Smtp-Source: ABdhPJyITcdVPfs1ScLHMux4f+qpKZkjMDONysLqcDqaxcdj8zCdlMT/vGIqB0grmaak1Hb3xP8/pu//ic37ONIgoJ0=
-X-Received: by 2002:a25:c752:0:b0:624:71ee:65d7 with SMTP id
- w79-20020a25c752000000b0062471ee65d7mr13371085ybe.366.1645919339347; Sat, 26
- Feb 2022 15:48:59 -0800 (PST)
+ id 1nOEgs-008xHl-VR; Sun, 27 Feb 2022 08:14:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1645949622;
+ bh=CBoV8ODIiZ4otV26RH+UDOxaWaSm2+1iqQDPLbFEFwU=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=V70pDzMIgOU0tK2UIyi2eQaG0NTXNjLjJCacIzwGD+7rUDKzcf76Zk8CCPRpWPJ64
+ ALB5yi6A0ZC3o/8dxOOT8ICH/lsCG1lCeXW0k+2koAlrgXKNm2SbGqksyIaezWc1Ii
+ IqbXVLXmzMUrHGpGahcGY7KGbt4TqWp9/JJ1Tt/E=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.76.205] ([80.245.76.205]) by web-mail.gmx.net
+ (3c-app-gmx-bs39.server.lan [172.19.170.91]) (via HTTP); Sun, 27 Feb 2022
+ 09:13:42 +0100
 MIME-Version: 1.0
-References: <20220226184147.769964-1-pgwipeout@gmail.com>
- <20220226184147.769964-9-pgwipeout@gmail.com>
- <cdbf28ae-b54f-dfaf-887b-c5705319ac06@gmail.com>
-In-Reply-To: <cdbf28ae-b54f-dfaf-887b-c5705319ac06@gmail.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Sat, 26 Feb 2022 18:48:47 -0500
-Message-ID: <CAMdYzYpRhZerT3tnAQ4XdTpGQk9MbfL3CBZT9+FvvytOQ=Ytyg@mail.gmail.com>
-Subject: Re: [PATCH v2 08/11] usb: dwc3: add rk3568 dwc3 support
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Felipe Balbi <balbi@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Heiko Stuebner <heiko@sntech.de>, 
- Michael Riesch <michael.riesch@wolfvision.net>, linux-usb@vger.kernel.org, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Message-ID: <trinity-005e10e1-b6fd-4573-956d-3f474c3c9ae2-1645949622469@3c-app-gmx-bs39>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open
+ list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Frank
+ Wunderlich <linux@fw-web.de>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski@canonical.com>, Michael Riesch
+ <michael.riesch@wolfvision.net>, devicetree <devicetree@vger.kernel.org>,
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing
+ List <linux-kernel@vger.kernel.org>
+Subject: Aw: Re: [PATCH v1] arm64: dts: rockchip: Add sata2 node to rk356x
+Date: Sun, 27 Feb 2022 09:13:42 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <CAMdYzYro7r2nELu2O4TuxxtZLxNSv1e3iU5yBzjd7AQgHP+FPw@mail.gmail.com>
+References: <20220226135724.61516-1-linux@fw-web.de> <2815432.3mA4caTK8C@diego>
+ <CAMdYzYro7r2nELu2O4TuxxtZLxNSv1e3iU5yBzjd7AQgHP+FPw@mail.gmail.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:yI6VQbuHD0V179iz/NvKAtzuqEHuGyBQnL6Qz25j679nLrC9g2CpYQDahzgWxkjkPIYVj
+ MKgMgUXtXEgDEC7zjdjU+TcoX51Wdts+fwXqSSyJFipNXYh1COeCAwKMRlAP69AAUkAOOKp8/R/A
+ kAwgLCLKzhmU9b+HaXhebNSUJs2RbnZx2DEULv9FoXrdHxtiMm1IGybCPbqnV5fWiJwllcCgXxoI
+ t8al0OGjjsQgozRNZz46gGV79LGQ1zaf22vCwDi0PYX43i8a+bCiaolOkn/TtpScELlvnf75lsoj
+ 9o=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:UygpNT5sHHc=:T3eRL5nuQIRyis4orHoxYZ
+ aexhmE3dB2/0TZmn7PJMRroLvkI7tfXFVAXhhlBiQ0XKI8YH74WtSTp5JmzoaE3s8i6jXIEdQ
+ TdAoejdPSsGqFCkiTAXoHsQhyeFL7DTAfKpmaiUqYaw62KNxuTDvbnvoxk+EKz8ZTHz34L76W
+ XHSzjFwPtUI3+0nfFwmlSe73WN6isS+tSRNFNDfwDmWdakIHlfcduVNE2sciCRzTtXYrop4BL
+ MCBTvryA2sqUS1NAxiGitFsXs3qQWHAymjkAfERUcHSJ0fxg5OrUn7WHIJRchhyEMKpVdSy45
+ etyc98YIKVasiY1CFzDgDXKIl3CVTppwh4y/Bq7We4UnBmR5agOBcWOLXj5YGyia0QHHd54Ol
+ YsOpgxlYDTZaGomP02wlgvLitnS4aQbb/foNgwhkRGPdlgaGuRrDBzUzePGbHfT5DC7max75p
+ ODfdmhMe6V/Ea+pVhu2X6349eFBm5nYpenaDIkDFkCowqoxFLqA2Fcll3FbyB8wpDOTOU2IEX
+ 6PFqMVvZa2nPhwkKRcke7wkaXB2csvlRVO2nckd0yCUz56qkxR8GfzFfKQT4AqNZLIz8RxrjR
+ IQHMzCWnsdoWnXwfkwA8zFGBqtAi60gRV7ErxvydDFWPGW2Wl/2SrSujNYA0JHNn9TaaMgpQs
+ uJ53rlosnLwc0GXoafHBqY51I6iOLvB4+FfUJ4FXCQR8Nk2WgKq2ZM6cPSKxzzcBYZBDNVAfJ
+ b5giOUrfaUDruoXvVTISrF+X9Qfj+U5tiut/eKVYkh+AGElEuUL+Tjek2UOgwYUeHok4sfrM0
+ lm7SPqp
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220226_154900_644535_7E452D2C 
-X-CRM114-Status: GOOD (  23.08  )
+X-CRM114-CacheID: sfid-20220227_001403_397506_1A9E03C3 
+X-CRM114-Status: GOOD (  18.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,66 +88,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 26, 2022 at 4:43 PM Johan Jonker <jbx6244@gmail.com> wrote:
->
-> Hi Peter,
->
-> See comments by rob+dt:
->
-> https://lore.kernel.org/linux-rockchip/CAL_JsqJwNdUfoYM8SZmOgMG9iAyZkJ4-kzjjiDDm_mdmghTEOA@mail.gmail.com/
->
-> > Presumably you are getting lucky here (with link order). The kernel
-> > has no logic to decide which driver to bind to if there are 2 matching
-> > drivers.
->
-> Due to the fall back string you make a mess with two drivers.
-> Don't use dwc3-of-simple.c
-> (only for rk3399 and legacy support. Not for new SoCs),
-> because core.c has now reset support.
-> You are creating a race which driver get probed first.
-> Handle your quirks in core.
-
-I finally understood what you were trying to get at here.
-After some testing, it seems the core driver handles everything we need now.
-This makes me want to revisit the rk3399 support.
-
-Thanks!
-
->
-> Johan
->
-> On 2/26/22 19:41, Peter Geis wrote:
-> > The rk3568 dwc3 controller is backwards compatible with the rk3399 dwc3
-> > controller.
-> > Add support for it to the dwc3-of-simple driver.
-> >
-> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> > ---
-> >  drivers/usb/dwc3/dwc3-of-simple.c | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> >
-> > diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-simple.c
-> > index 57ba9427ad74..d9d1c5bfac3f 100644
-> > --- a/drivers/usb/dwc3/dwc3-of-simple.c
-> > +++ b/drivers/usb/dwc3/dwc3-of-simple.c
-> > @@ -195,6 +195,10 @@ static const struct of_device_id of_dwc3_simple_match[] = {
-> >               .compatible = "rockchip,rk3399-dwc3",
-> >               .data = &dwc3_of_simple_data_rk3399,
-> >       },
-> > +     {
-> > +             .compatible = "rockchip,rk3568-dwc3",
-> > +             .data = &dwc3_of_simple_data_rk3399,
-> > +     },
-> >       {
-> >               .compatible = "sprd,sc9860-dwc3",
-> >       },
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkKCj4gR2VzZW5kZXQ6IFNhbXN0YWcsIDI2LiBGZWJydWFyIDIwMjIgdW0gMTk6MTUgVWhyCj4g
+Vm9uOiAiUGV0ZXIgR2VpcyIgPHBnd2lwZW91dEBnbWFpbC5jb20+Cj4gT24gU2F0LCBGZWIgMjYs
+IDIwMjIgYXQgMTowOCBQTSBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZToK
+PiA+Cj4gPiBIaSBGcmFuaywKPiA+Cj4gPiBBbSBTYW1zdGFnLCAyNi4gRmVicnVhciAyMDIyLCAx
+NDo1NzoyNCBDRVQgc2NocmllYiBGcmFuayBXdW5kZXJsaWNoOgo+ID4gPiBGcm9tOiBGcmFuayBX
+dW5kZXJsaWNoIDxmcmFuay13QHB1YmxpYy1maWxlcy5kZT4KPiA+ID4KPiA+ID4gUkszNTZ4IHN1
+cHBvcnRzIHVwIHRvIDMgc2F0YSBjb250cm9sbGVycyB3aGljaCB3ZXJlIGNvbXBhdGlibGUgd2l0
+aCB0aGUKPiA+ID4gZXhpc3Rpbmcgc25wcyxkd2MtYWhjaSBiaW5kaW5nLgo+ID4gPgo+ID4gPiBN
+eSBib2FyZCBoYXMgb25seSBzYXRhMiBjb25uZWN0ZWQgdG8gY29tYnBoeTIgc28gb25seSBhZGQg
+dGhpcyBvbmUuCj4gPgo+ID4gaG93IGZhciBkb2VzIHRoZSBhZGRlZCBub2RlIGRpdmVyZ2UgZnJv
+bSB0aGUgdmVuZG9yIGtlcm5lbD8KPiA+Cj4gPiBJZiBpdCdzIHByZXR0eSBtdWNoIHNpbWlsYXIg
+YmV0d2VlbiBib3RoLCB3ZSBjYW4gYXNzdW1lIHRoZSBvdGhlciBub2Rlcwo+ID4gc2hvdWxkIHdv
+cmsgcHJldHR5IHdlbGwgYXMgd2VsbCBhbmQgdGhlcmVmb3JlIHNob3VsZCBhbGwgb2YgdGhlbSBh
+dCBvbmNlCj4gPiBhbmQgaG9wZSBmb3IgdGhlIGJlc3Q/Cj4gCj4gVGhlcmUncyBlc3NlbnRpYWxs
+eSB6ZXJvIGRpdmVyZ2VuY2UgKG1pbnVzIHRoZSBjaGFuZ2UgZHVlIHRvIGNvbWJvcGh5Cj4gY2hh
+bmdpbmcpLCBhbmQgbGlrZWx5IHdvbid0IGJlIHVudGlsIHRoZSBhaGNpLXBsYXRmb3JtLnR4dCBp
+cwo+IGNvbnZlcnRlZCB0byB5YW1sLgo+IAo+IEkgaGF2ZSB0ZXN0ZWQgYm90aCBTQVRBMSBhbmQg
+U0FUQTIgc3VjY2Vzc2Z1bGx5IG9uIHRoZSByazM1NjYuCj4gSSBkb24ndCBoYXZlIGFueSByazM1
+NjggYm9hcmRzIHRoYXQgYXJlIG9wZXJhdGlvbmFsIHlldCB0byB0ZXN0IFNBVEEwLgoKTGlrZSBQ
+ZXRlciBzYXlzLCB0aGUgc2F0YS1ub2RlKHMpIGlzIGJhc2ljbHkgc2FtZSBhcyBkb3duc3RyZWFt
+LCBvbmx5IGNvbWJwaHktbGFiZWwgaGFzIGNoYW5nZWQuClNhdGExIGZyb20gUGV0ZXJzIHRyZWUg
+WzFdIHNlZW1zIHRvIGhhdmUgb25seSB0aGlzIGNoYW5nZS4KSSdsbCBzZW5kIGFuIGZvbGxvd3Vw
+IGNvbnRhaW5pbmcgYWxsIDMsIGJ1dCBoYWQgb25seSB0ZXN0ZWQgc2F0YTIuCgphbHJlYWR5IHNl
+bnQgYSBiaW5kaW5ncy1wYXRjaCBmb3IgdGhlIGFoY2ktcGxhdGZvcm0udHh0IFsyXQoKcmVnYXJk
+cyBGcmFuawoKWzFdIGh0dHBzOi8vZ2l0bGFiLmNvbS9wZ3dpcGVvdXQvbGludXgtbmV4dC8tL2Js
+b2IvbWFpbi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2eC5kdHNpI0wyMzgKWzJd
+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xrbWwvMjAyMjAyMjYyMDQ0MDQuMTA5ODY3LTEtbGlu
+dXhAZnctd2ViLmRlL1QvCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
