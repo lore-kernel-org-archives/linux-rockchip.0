@@ -4,83 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B66CC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Feb 2022 09:55:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2642FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Feb 2022 13:59:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FvVH6le8/TezwBD4Jp//G9QSKLAq30NQVjjU64P0QKU=; b=pHDPMEfv4RAhq9
-	uDirTbZv1jFIfEut6Yahck03ZVkTplb7f3hic3fa7FHZd3vZStWyEya0nvQDbYbUxSfFKBkSPzodk
-	W2VzO3lgMJ0GbJZzPAqQsUUY2dR/A1W7A9DmN8rEe+mJLo5mMoSm7C8Sq3cJ7/xX5+g36RbBreClN
-	J0RDvPJbsEHobPPijJS0XcMPNRwm43rG6nIxNfl2bgm6/mNAhulDX7/FNyjZExF4dDh8HvtYE6aBF
-	wZzHlN3ehX5mjpZT6vFaP4JA2IjsAspDlQt7GH2aiKXdSkKq8NzFp6cPvwyf78nZgYU/eiXdFUEf3
-	rRzqSp3/dGOR6pXmwPaA==;
+	List-Owner; bh=Oj5nuwa6TIw1JTiKvF8rvLCVPNieqMobUmsygN1HlvU=; b=VyRifahakSKHqI
+	K86hq7tX2EVc61mX9RXsU5Vjm/tiVBYO0yZ7lDTvLJTkza/h/QqoUo7WZJTNeZVJjLobo6+uldAk+
+	e3vW+cqlfl8YM/vzeDfjvr5U6hpG9ovnR1PYIaeHXHSv9w/C4sa1sHwzrxe9n5BbWh6mkryJ7dXEi
+	l3bWJHiw8Scli/8+XsXpQ7wknygVPuK5VtlHsSGEz5TpWg4M27CxkighOhU11E2aJrPOZmEILbC3W
+	A01gqQMB8J3/ptcNcEkAnuoXIjG9UsZIMQCmCyGNvFWei77Svp7eRIfR89yBoRfocofnm1KgoD9vy
+	5QhxiBze4q1h3iiTPBOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOGGq-0091aB-0W; Sun, 27 Feb 2022 09:55:16 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1nOK5Y-009Kb2-Jt; Sun, 27 Feb 2022 13:59:52 +0000
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOGGm-0091Zj-Jr
- for linux-rockchip@lists.infradead.org; Sun, 27 Feb 2022 09:55:14 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id gb39so19267308ejc.1
- for <linux-rockchip@lists.infradead.org>; Sun, 27 Feb 2022 01:55:11 -0800 (PST)
+ id 1nOK26-009JFA-G5; Sun, 27 Feb 2022 13:56:20 +0000
+Received: by mail-yb1-xb33.google.com with SMTP id h126so529691ybc.1;
+ Sun, 27 Feb 2022 05:56:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=a0TWmZ5TqxjnJRwC6WA6zfFCPTgI5AdsnlPUfHcIo20=;
- b=UqiNrE4nDC8dmxsGADt350qNz9njqgWfyF88VK1QQ8myDHzRYyj8ZG6pRqCzPisZJs
- 22yPtcuuD/tIvFz2krYlNWCMd0Zd9zro1LhAexVzt6zmaUSaW/cFpMOzyrPU/eoEMBbp
- qtvJYL8yL8pMp99rCVbQBjK3/VdF8b+NZpqHebhHXSFdhP/Q+7mXmzYof4CIFUzlmrCw
- h743VM0lxeb6Rn98YkNWbrjSkdjOq4cg6J0hHrv7396+o6iCNBm8M4mqWbRa8XR+kNea
- hmouVa1iNWilzboNkUwznD/mPPj3vQBYwPT8ewdQMmgjzEDGdnzEZYmQdLttGeHYCGJp
- 05MQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=xc/7Dlh75lxyDiAYU+5HYV0L9tvJxDsTFMNP81dQQno=;
+ b=UBOeYv6SwDgFKGbaBmR/0P/ERMKbg5kIeCUKKpMqQ8IES6motWVbhTR9/twlb02nVJ
+ 7LtSYHDAPbTVY3ga9zuHPY2Bqt4NAK91vQKc2gwb16Qy8DjchS0vqbMAJtdwdiWqZjbW
+ Uc4ZWTvSAdwrxin4BNsCysnHFNKcQRcuDc7IWn2ilE9jTrFN5F/4bj9L/5YYAdxqZ4fj
+ FtNEU8zYsyyTEKf1AMTh0Hmn1d2tthCXFFqENlmwbnPF7JkBSr8D5oMTCDiopwV0ocCI
+ qyd4Df1zuDcevrea/9KvNaHkRP6+jqvzu0NN1Yz5LdMi2VpZsPwy4GCa6If1bsFBIYcf
+ M6bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=a0TWmZ5TqxjnJRwC6WA6zfFCPTgI5AdsnlPUfHcIo20=;
- b=nE+q/Lp57hHLVQGMotshqZJbEnGS37r3YZILJa3VVBtUrIWgf8AQvpPuN6Zz84XOdp
- Bs8eZcb5Hqe9PEaac1C4nHy7NcjJozWPOvoQKOrQtGL9bKZLnF/HUk27kJBPcvKZnMmq
- QPLkzc7ZTJ3wXJW7pyFyG8NTxuG3XBe47mDP6XloOx2JlsUNyPQbUmRTn+inluyZQ6CI
- e3BHQlMxV0XKJ4zkeBkzu2V4gLdhJhluAOmXLdSR1dzxGF10wytJrly2wAGyT2aiiqxP
- 1C14TJ5oTVSvHWXhTxROxcdIRxIW6eCeDk5HmE4aZOi4mpnu5zNxPn+9zt75PboBFHES
- L0Xg==
-X-Gm-Message-State: AOAM533mFHvv3gd0N39RGzc6DO2e1rYuI7aNxCNcNZ2ZTm9G5RqGYteY
- JrNTo13ylBWFniYlnoArIHA=
-X-Google-Smtp-Source: ABdhPJyNoRWUgY0eOtb419sKGoRRV8NeEdNA3+7eT/DCsqxRdpSs9azDSqUnWBbFCDnmNKi9+2C3VQ==
-X-Received: by 2002:a17:906:d964:b0:6ca:4019:3928 with SMTP id
- rp4-20020a170906d96400b006ca40193928mr11901605ejb.762.1645955710055; 
- Sun, 27 Feb 2022 01:55:10 -0800 (PST)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- h21-20020a170906829500b006cef3dcd067sm3194084ejx.174.2022.02.27.01.55.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 27 Feb 2022 01:55:09 -0800 (PST)
-Message-ID: <dc2484ac-6851-2b25-443c-0a3344a13454@gmail.com>
-Date: Sun, 27 Feb 2022 10:55:08 +0100
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=xc/7Dlh75lxyDiAYU+5HYV0L9tvJxDsTFMNP81dQQno=;
+ b=WsIEo+xqIaJZQqS1obsddmiRQeNXwA46eEnOxZzpwMDygCGV06t4Mn0PmLxqokWWkl
+ XVPGuHoMk47ZEKpy+nZGqOFedbjavADGtF5N6ViAV4Y61wOL17YzEERK4Hbj4z7+9UOA
+ Y27ZNYXt/0FbY4zmQvfPjfJAZULPMwNhND/MiDj1RVh/SJYsmlYbwFHwSvNgIcZL+9Ft
+ 3KR3Fj6Sy1hVTl6qb7ZvLwXhVWGLc0H7As573UmWLdWic9PV18snaVcYpbctQdiCiXR8
+ /L1JX+6p/sKyoE7KtQZgrmM/IDxklJYju8Q6JUNcTUwm60Mu3wXZy7X6E4xsBnCljTjv
+ 41Ww==
+X-Gm-Message-State: AOAM531cjhujOVZ3C6rhda1LLWC7ztB/KkNTKFaQE6BUG7udd+ILpInG
+ WCFcyk0cCLUO672J10xbzGDWdwjms/J6G2OmGZs=
+X-Google-Smtp-Source: ABdhPJz9khkLFz86gIsM8mgkVyb76HvsrmNaCS2pTufix/js3aYjXkAufdiXRIwhnYI1+4w6LnM7A7KvHfXtonDQNFY=
+X-Received: by 2002:a25:8490:0:b0:624:5f70:142a with SMTP id
+ v16-20020a258490000000b006245f70142amr14772699ybk.173.1645970177342; Sun, 27
+ Feb 2022 05:56:17 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH] dt-bindings: Convert ahci-platform DT bindings to yaml
-Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-ide@vger.kernel.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
- Damien Le Moal <damien.lemoal@opensource.wdc.com>,
- Rob Herring <robh+dt@kernel.org>, Hans de Goede <hdegoede@redhat.com>,
- Jens Axboe <axboe@kernel.dk>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Peter Geis <pgwipeout@gmail.com>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- heiko Stuebner <heiko@sntech.de>
-References: <20220226204404.109867-1-linux@fw-web.de>
-From: Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <20220226204404.109867-1-linux@fw-web.de>
+References: <20220226184147.769964-1-pgwipeout@gmail.com>
+ <20220226184147.769964-10-pgwipeout@gmail.com>
+ <4a49ba17-436b-c6b3-4a7d-42902781d2f4@gmail.com>
+In-Reply-To: <4a49ba17-436b-c6b3-4a7d-42902781d2f4@gmail.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Sun, 27 Feb 2022 08:56:06 -0500
+Message-ID: <CAMdYzYoKfyCOHrH-o1HDiMQqqQzvVrpY2TFVH4ANNzJvPg6rBQ@mail.gmail.com>
+Subject: Re: [PATCH v2 09/11] arm64: dts: rockchip: add rk356x dwc3 usb3 nodes
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Heiko Stuebner <heiko@sntech.de>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ devicetree <devicetree@vger.kernel.org>, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220227_015512_706517_E0DF5C14 
-X-CRM114-Status: GOOD (  28.92  )
+X-CRM114-CacheID: sfid-20220227_055618_589356_BC899012 
+X-CRM114-Status: GOOD (  26.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,308 +90,201 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
+On Sat, Feb 26, 2022 at 6:01 PM Johan Jonker <jbx6244@gmail.com> wrote:
+>
+>
+>
+> On 2/26/22 19:41, Peter Geis wrote:
+> > Add the dwc3 device nodes to the rk356x device trees.
+> > The rk3566 has one usb2 capable dwc3 otg controller and one usb3 capable
+> > dwc3 host controller.
+> > The rk3568 has one usb3 capable dwc3 otg controller and one usb3 capable
+> > dwc3 host controller.
+> >
+> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3566.dtsi | 12 +++++++
+> >  arch/arm64/boot/dts/rockchip/rk3568.dtsi |  9 +++++
+> >  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 45 +++++++++++++++++++++++-
+> >  3 files changed, 65 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3566.dtsi b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+> > index 3839eef5e4f7..a57eb68faba2 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+> > @@ -6,6 +6,10 @@ / {
+> >       compatible = "rockchip,rk3566";
+> >  };
+> >
+> > +&pipegrf {
+> > +     compatible = "rockchip,rk3566-pipe-grf", "syscon";
+> > +};
+> > +
+> >  &power {
+> >       power-domain@RK3568_PD_PIPE {
+> >               reg = <RK3568_PD_PIPE>;
+> > @@ -18,3 +22,11 @@ power-domain@RK3568_PD_PIPE {
+> >               #power-domain-cells = <0>;
+> >       };
+> >  };
+> > +
+> > +&usb_host0_xhci {
+> > +     phys = <&usb2phy0_otg>;
+> > +     phy-names = "usb2-phy";
+> > +     extcon = <&usb2phy0>;
+> > +     maximum-speed = "high-speed";
+> > +     snps,dis_u2_susphy_quirk;
+> > +};
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> > index 5b0f528d6818..8ba9334f9753 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> > @@ -99,6 +99,10 @@ opp-1992000000 {
+> >       };
+> >  };
+> >
+> > +&pipegrf {
+> > +     compatible = "rockchip,rk3568-pipe-grf", "syscon";
+> > +};
+> > +
+> >  &power {
+> >       power-domain@RK3568_PD_PIPE {
+> >               reg = <RK3568_PD_PIPE>;
+> > @@ -114,3 +118,8 @@ power-domain@RK3568_PD_PIPE {
+> >               #power-domain-cells = <0>;
+> >       };
+> >  };
+> > +
+> > +&usb_host0_xhci {
+> > +     phys = <&usb2phy0_otg>, <&combphy0 PHY_TYPE_USB3>;
+> > +     phy-names = "usb2-phy", "usb3-phy";
+> > +};
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > index 7cdef800cb3c..b22e5a514ad7 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > @@ -230,6 +230,50 @@ scmi_shmem: sram@0 {
+> >               };
+> >       };
+> >
+> > +     usb_host0_xhci: usb@fcc00000 {
+> > +             compatible = "rockchip,rk3568-dwc3", "snps,dwc3";
+> > +             reg = <0x0 0xfcc00000 0x0 0x400000>;
+> > +             interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH>;
+> > +             clocks = <&cru CLK_USB3OTG0_REF>, <&cru CLK_USB3OTG0_SUSPEND>,
+> > +                      <&cru ACLK_USB3OTG0>;
+> > +             clock-names = "ref_clk", "suspend_clk",
+> > +                           "bus_clk";
+> > +             dr_mode = "host";
+> > +             phy_type = "utmi_wide";
+>
+> > +             power-domains = <&power RK3568_PD_PIPE>;
+>
+> When both usb_host0_xhci and usb_host1_xhci are connected to a usb2phy
+> and the combphy's disabled there's no PCLK_PIPE enabled.
+> Fix logic for RK3568_PD_PIPE by adding the USB3 clocks.
+>
+>
+> > +             resets = <&cru SRST_USB3OTG0>;
+>
+> > +             reset-names = "usb3-otg";
+>
+> remove
+>
+> snps,dwc3.yaml only mentions the "resets" because
+> devm_reset_control_array_get_optional_shared is used.
+> reset-names is only a rk3399 legacy that I included due to the YAML
+> conversion.
+> With unevaluatedProperties now working "resets" also could be removed
+> from rockchip,dwc3.yaml I think.
 
-Combine your patch in a serie with Rockchip rk356x sata nodes and
-include all current CC people and Rockchip list.
+I've tested removing the reset entirely, and it seems the issues that
+affected the rk3399 do not affect us here.
 
-Your conversion and DT patch contains lots of errors.
-Check your serie with all/more platforms then Rockchip before you submit
-and fix.
+>
+> https://github.com/torvalds/linux/commit/2f8e928408885dad5d8d6afefacb82100b6b62c7
+> Added properties for rk3399 are:
+>   power-domains
+>   resets
+>   reset-names
+>
+> > +             snps,dis_enblslpm_quirk;
+> > +             snps,dis-u2-freeclk-exists-quirk;
+> > +             snps,dis-del-phy-power-chg-quirk;
+> > +             snps,dis-tx-ipgap-linecheck-quirk;
+>
+> sort
+>
+> > +             snps,xhci-trb-ent-quirk;
+>
+> ???
+>
+> check snps,dwc3.yaml
 
-ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- make dt_binding_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/ata/ahci-platform.yaml
+I've tried dropping all of these and testing all the configurations I
+can think of.
+The only one we seem to absolutely need is snps,dis_u2_susphy_quirk,
+without which sometimes devices fail to enumerate after being removed.
+The only weird behavior I found was on the Pinenote, where there is
+only the OTG port and when a state change happens from host to device
+mode the controller locks up the AXI bus for a few seconds until it
+times out and gets reset by core.
+OTG support is still a work in progress here though and is not supported yet.
 
-ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- make dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/ata/ahci-platform.yaml
+TLDR: I'll be dropping all the quirks that have no apparent effect in
+the v3, they can be added in if needed following broader testing.
 
-Add power-domains as a new property after the conversion patch.
+Thanks for all the insight here!
 
-Johan
-
-===
-
-make a serie:
-
-conversion ahci-platform.yaml
-power-domains patch
-rockchip rk356x sata nodes patch
-
-On 2/26/22 21:44, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Create a yaml file for dtbs_check from the old txt binding.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  .../devicetree/bindings/ata/ahci-platform.txt |  79 -----------
->  .../bindings/ata/ahci-platform.yaml           | 134 ++++++++++++++++++
->  2 files changed, 134 insertions(+), 79 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/ata/ahci-platform.txt
->  create mode 100644 Documentation/devicetree/bindings/ata/ahci-platform.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/ata/ahci-platform.txt b/Documentation/devicetree/bindings/ata/ahci-platform.txt
-> deleted file mode 100644
-> index 77091a277642..000000000000
-> --- a/Documentation/devicetree/bindings/ata/ahci-platform.txt
-> +++ /dev/null
-> @@ -1,79 +0,0 @@
-> -* AHCI SATA Controller
-> -
-> -SATA nodes are defined to describe on-chip Serial ATA controllers.
-> -Each SATA controller should have its own node.
-> -
-> -It is possible, but not required, to represent each port as a sub-node.
-> -It allows to enable each port independently when dealing with multiple
-> -PHYs.
-> -
-> -Required properties:
-> -- compatible        : compatible string, one of:
-> -  - "brcm,iproc-ahci"
-> -  - "hisilicon,hisi-ahci"
-> -  - "cavium,octeon-7130-ahci"
-> -  - "ibm,476gtr-ahci"
-> -  - "marvell,armada-380-ahci"
-> -  - "marvell,armada-3700-ahci"
-> -  - "snps,dwc-ahci"
-> -  - "snps,spear-ahci"
-> -  - "generic-ahci"
-> -- interrupts        : <interrupt mapping for SATA IRQ>
-> -- reg               : <registers mapping>
-> -
-> -Please note that when using "generic-ahci" you must also specify a SoC specific
-> -compatible:
-> -	compatible = "manufacturer,soc-model-ahci", "generic-ahci";
-> -
-> -Optional properties:
-> -- dma-coherent      : Present if dma operations are coherent
-> -- clocks            : a list of phandle + clock specifier pairs
-> -- resets            : a list of phandle + reset specifier pairs
-> -- target-supply     : regulator for SATA target power
-> -- phy-supply        : regulator for PHY power
-> -- phys              : reference to the SATA PHY node
-> -- phy-names         : must be "sata-phy"
-> -- ahci-supply       : regulator for AHCI controller
-> -- ports-implemented : Mask that indicates which ports that the HBA supports
-> -		      are available for software to use. Useful if PORTS_IMPL
-> -		      is not programmed by the BIOS, which is true with
-> -		      some embedded SOC's.
-> -
-> -Required properties when using sub-nodes:
-> -- #address-cells    : number of cells to encode an address
-> -- #size-cells       : number of cells representing the size of an address
-> -
-> -Sub-nodes required properties:
-> -- reg		    : the port number
-> -And at least one of the following properties:
-> -- phys		    : reference to the SATA PHY node
-> -- target-supply     : regulator for SATA target power
-> -
-> -Examples:
-> -        sata@ffe08000 {
-> -		compatible = "snps,spear-ahci";
-> -		reg = <0xffe08000 0x1000>;
-> -		interrupts = <115>;
-> -        };
-> -
-> -With sub-nodes:
-> -	sata@f7e90000 {
-> -		compatible = "marvell,berlin2q-achi", "generic-ahci";
-> -		reg = <0xe90000 0x1000>;
-> -		interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-> -		clocks = <&chip CLKID_SATA>;
-> -		#address-cells = <1>;
-> -		#size-cells = <0>;
-> -
-> -		sata0: sata-port@0 {
-> -			reg = <0>;
-> -			phys = <&sata_phy 0>;
-> -			target-supply = <&reg_sata0>;
-> -		};
-> -
-> -		sata1: sata-port@1 {
-> -			reg = <1>;
-> -			phys = <&sata_phy 1>;
-> -			target-supply = <&reg_sata1>;;
-> -		};
-> -	};
-> diff --git a/Documentation/devicetree/bindings/ata/ahci-platform.yaml b/Documentation/devicetree/bindings/ata/ahci-platform.yaml
-> new file mode 100644
-> index 000000000000..b5bef93215c0
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/ata/ahci-platform.yaml
-> @@ -0,0 +1,134 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/ata/ahci-platform.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: AHCI SATA Controller
-> +description:
-> +  SATA nodes are defined to describe on-chip Serial ATA controllers.
-> +  Each SATA controller should have its own node.
-> +
-> +  It is possible, but not required, to represent each port as a sub-node.
-> +  It allows to enable each port independently when dealing with multiple
-> +  PHYs.
-> +> +maintainers:
-> +  - Hans de Goede <hdegoede@redhat.com>
-> +  - Jens Axboe <axboe@kernel.dk>
-> +
-
-include sata-common.yaml
-
-
-> +properties:
-
-compatible
-reg
-interrupts
-
-clocks
-
-the rest
-
-> +  compatible:
-> +    enum:
-
-> +      - brcm,iproc-ahci
-> +      - hisilicon,hisi-ahci
-> +      - cavium,octeon-7130-ahci
-> +      - ibm,476gtr-ahci
-> +      - marvell,armada-380-ahci
-> +      - marvell,armada-3700-ahci
-> +      - snps,dwc-ahci
-> +      - snps,spear-ahci
-> +      - generic-ahci
-
-Sort list in case someone after you wants to add something.
-
-> +
-> +  ahci-supply:
-> +    description:
-> +      regulator for AHCI controller
-> +
-> +  dma-coherent:
-> +    description:
-> +      Present if dma operations are coherent
-> +
-> +  clocks:
-> +    minItems: 1
-> +    maxItems: 3
-> +
-> +  interrupts:
-> +    minItems: 1
-> +
-> +  phy-supply:
-> +    description:
-> +      regulator for PHY power
-> +
-> +  phys:
-> +    minItems: 1
-> +
-> +  phy-names:
-> +    minItems: 1
-> +
-> +  ports-implemented:
-> +    description:
-> +      Mask that indicates which ports that the HBA supports
-> +      are available for software to use. Useful if PORTS_IMPL
-> +      is not programmed by the BIOS, which is true with
-> +      some embedded SOC's.
-> +    minItems: 1
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  resets:
-> +    minItems: 1
-> +
-> +  target-supply:
-> +    description:
-> +      regulator for SATA target power
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-
-A node without clocks does that work?
-Shouldn't that be required?
-
-> +
-
-> +patternProperties:
-> +  "^sata-port@[0-9]+$":
-
-Already in included sata-common.yaml
-  "^sata-port@[0-9a-e]$":
-
-How many ports does this thing support??
-
-> +    type: object
-> +    description:
-> +      Subnode with configuration of the Ports.
-> +
-> +    properties:
-
-> +      reg:
-> +        maxItems: 1
-
-Already in included sata-common.yaml
-Include only additional special things.
-
-> +
-> +      phys:
-> +        minItems: 1
-> +
-> +      target-supply:
-> +        description:
-> +          regulator for SATA target power
-> +
-> +    required:
-> +      - reg
-> +
-> +    anyOf:
-> +      - required: [ phys ]
-> +      - required: [ target-supply ]
-> +
-
-> +additionalProperties: true
-> +
-> +examples:
-> +  - |
-> +        sata@ffe08000 {
-> +               compatible = "snps,spear-ahci";
-> +               reg = <0xffe08000 0x1000>;
-> +               interrupts = <115>;
-> +        };
-> +  - |
-> +        sata@f7e90000 {
-> +                compatible = "marvell,berlin2q-achi", "generic-ahci";
-> +                reg = <0xe90000 0x1000>;
-
-> +                interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-> +                clocks = <&chip CLKID_SATA>;
-
-Missing includes for these defines.
-
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +
-> +                sata0: sata-port@0 {
-> +                        reg = <0>;
-> +                        phys = <&sata_phy 0>;
-> +                        target-supply = <&reg_sata0>;
-> +                };
-> +
-> +                sata1: sata-port@1 {
-> +                        reg = <1>;
-> +                        phys = <&sata_phy 1>;
-> +                        target-supply = <&reg_sata1>;;
-> +                };
-> +        };
+>
+> > +             status = "disabled";
+> > +     };
+> > +
+> > +     usb_host1_xhci: usb@fd000000 {
+> > +             compatible = "rockchip,rk3568-dwc3", "snps,dwc3";
+> > +             reg = <0x0 0xfd000000 0x0 0x400000>;
+> > +             interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH>;
+> > +             clocks = <&cru CLK_USB3OTG1_REF>, <&cru CLK_USB3OTG1_SUSPEND>,
+> > +                      <&cru ACLK_USB3OTG1>;
+> > +             clock-names = "ref_clk", "suspend_clk",
+> > +                           "bus_clk";
+> > +             dr_mode = "host";
+> > +             phys = <&usb2phy0_host>, <&combphy1 PHY_TYPE_USB3>;
+> > +             phy-names = "usb2-phy", "usb3-phy";
+> > +             phy_type = "utmi_wide";
+>
+> > +             power-domains = <&power RK3568_PD_PIPE>;
+>
+> dito
+>
+> > +             resets = <&cru SRST_USB3OTG1>;
+>
+> > +             reset-names = "usb3-otg";
+>
+> remove
+>
+> > +             snps,dis_enblslpm_quirk;
+> > +             snps,dis-u2-freeclk-exists-quirk;
+> > +             snps,dis_u2_susphy_quirk;
+> > +             snps,dis-del-phy-power-chg-quirk;
+> > +             snps,dis-tx-ipgap-linecheck-quirk;
+>
+> sort
+>
+> > +             status = "disabled";
+> > +     };
+> > +
+> >       gic: interrupt-controller@fd400000 {
+> >               compatible = "arm,gic-v3";
+> >               reg = <0x0 0xfd400000 0 0x10000>, /* GICD */
+> > @@ -297,7 +341,6 @@ pmu_io_domains: io-domains {
+> >       };
+> >
+> >       pipegrf: syscon@fdc50000 {
+> > -             compatible = "rockchip,rk3568-pipe-grf", "syscon";
+> >               reg = <0x0 0xfdc50000 0x0 0x1000>;
+> >       };
+> >
 
 _______________________________________________
 Linux-rockchip mailing list
