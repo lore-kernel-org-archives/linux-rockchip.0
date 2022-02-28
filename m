@@ -4,68 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35FA2C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 03:28:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9314C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 07:24:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AxlcOycnQr+F+dJxj2geA9cN+QDU8sIQnzB762Mykeg=; b=zWoiQHbWEQYLJ+
-	z170q9IhSfzW7EFax/6o5VCanJvu3sQAK8fiyTF/JmOivf2PPGsgKBkd2/Awfcxwowl4iAP2NtYQw
-	rZUfMm7H0R43EwWQ7D6yN3jMhUY2EvBt+t1DsaJW5xkp6L8jawp2R5LHtP0SY0rgv6XuTNyqorlrW
-	hykhDv0c2KkzHAP4o0xdhsLEf9VgbJ3Lz1nBLMir0AAXqkTOAhFxrQWD07Alc1vlGhsVZ+d9+mbTh
-	u7txjj0lITH+so8FVuACNEooHYvR53BuSoZwgFXsZ+k+akarICCQYXs4i7GvtiBEr7cb0Nrv70+pd
-	Gyl8T1KxWokXEwIlbdFw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=bYYzu+ossbfYp0X/cp2IP8f2Hrj6u/mQ4B3AZMLoqsc=; b=itdaLV9K9BCUHcCBdYDh5jQhzn
+	3tGIH/EVYi5nvj9W86A2S3EcK+UME9ofAgW9PF1KLRtJK0Y56kQSjIEcNP0vLa0eBXq7+ClDt7c6n
+	3DxSDckvn9hhlyk4FWnio7864MUUNuq/DffT8IR6MQRL/bcEE2+c3Y2ge+nAY6Z9jZye1Yrd4DFTL
+	lawOZ5vYdI8TKgwEIcy0CBptffcfx6GaoneyvBFFgomVAmANBjVgW18LjBBYz3sF6RWeoY+jv80LA
+	2Z1xCJskcc+brQtxNZiEeEOWLXQOG+/gz+SYBOscg7euoGk//+dZP2OPtcKgE2ybo/lCW6kS9EOYp
+	OEUJLM5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOWhb-00AhGK-Pl; Mon, 28 Feb 2022 03:27:59 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1nOaO9-00Axxt-Qa; Mon, 28 Feb 2022 07:24:09 +0000
+Received: from mail-he1eur01on060b.outbound.protection.outlook.com
+ ([2a01:111:f400:fe1e::60b]
+ helo=EUR01-HE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOWhY-00AhFj-Dd
- for linux-rockchip@lists.infradead.org; Mon, 28 Feb 2022 03:27:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1646018876; x=1677554876;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=byNeG2vWKZv6tMrVrWwTfMcGnhTE1EpRz1JspjtgHGo=;
- b=Z+CaeG97KUG4kt8Nmm6qqsWC2cGe31ICcJlJuQWpC+29v/4L/KTvR49s
- C1yHmPshW2sk8fM9TvUy03KH//rYq0BGzUqpdeWN6CzkiuI3Y61Px7NE7
- A3N0eS/RzdvzSq83U7hoDkbgptGTyjqwBh3YLqXn/b9vGdsNaZ4ndNcAS
- 8nHIxJxJJzuZz/b0LxXb7w3PEF9Go9+g1yEOLvBTsGxKbxeR/FjKTtrKq
- 9W/1TP9YcpL/ryrjoxTuOATwyqaVk6Weo+aRVsskTfE77YiLFdGKTJ+JP
- YBZm/Q59d+4fyHALKGg93lH1QmmFveb26qHYEONMZdOrASWOqhTFcso12 A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10271"; a="252522841"
-X-IronPort-AV: E=Sophos;i="5.90,142,1643702400"; d="scan'208";a="252522841"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Feb 2022 19:27:54 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,142,1643702400"; d="scan'208";a="629474823"
-Received: from lkp-server01.sh.intel.com (HELO 788b1cd46f0d) ([10.239.97.150])
- by FMSMGA003.fm.intel.com with ESMTP; 27 Feb 2022 19:27:51 -0800
-Received: from kbuild by 788b1cd46f0d with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1nOWhT-0006zG-1o; Mon, 28 Feb 2022 03:27:51 +0000
-Date: Mon, 28 Feb 2022 11:27:26 +0800
-From: kernel test robot <lkp@intel.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-media@vger.kernel.org
-Cc: kbuild-all@lists.01.org, Dafna Hirschfeld <dafna@fastmail.com>,
- Heiko Stuebner <heiko@sntech.de>, Paul Elder <paul.elder@ideasonboard.com>,
- Tomasz Figa <tfiga@google.com>, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 12/16] media: rkisp1: Compile debugfs support conditionally
-Message-ID: <202202281151.lY2yvuon-lkp@intel.com>
-References: <20220227160116.18556-13-laurent.pinchart@ideasonboard.com>
+ id 1nOaO6-00Axwc-Vk; Mon, 28 Feb 2022 07:24:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hiYT8akoiaH9t+4R9gbC/nQ+uZrYQgDeQfANO4XbaNToSt3IA7t36qX0OK1VnjtGNMpMuPKFfBJrzLd3qw4LXkXDSqyg7jPnhO25VdFwM2D/iY0Xjag14Bey/90uo/WHo54OcigC6nDlGkP/PBM/DCFSxpfk3ZIklTu6qR3+hWXlddD+jAVLpSjl9Lxw+YB9bRgEk2ICeRAyGi+680EN0F6seu1VOEMnU4iitAsKGCaRf9rXEzj84qsBqcwrkfWJI/skil9RiB7DJD6muNWY+NSPB/wKPGbHqOc3AJ+ktqu0LZJlX6Ep3B556Wsl6zS78xmMOteba2YnVXqLftONwA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=aSzdleLiZMFuqwoE6zntyTfFA/cBY+Wn9/YoCH5nQ2Y=;
+ b=VJ3l8dIvwyqWi9qfnVPQ3yzr2urRK6AbNnMG3y8Tn+FzgGCHEzdzPDDgag+z1R1fvPSL1C4WEAibC1qluiJ3Jx5wPnMAPuk4FhQG0aKpxhSCFr/40bLyVelt2xxgh2087PmfikDchj81xQJelMm4P8fVuNvOh5L2EE2TDeD2WV3tVG2m7J6JnaCTMDlgDeHFmqrJB0kIOHG7uaoJV8xeZ/c0mRBlGK64ICLBxIb3NhPUU9Aig3/XYFhnaTC8FrUD6PKrzYXrsUGTI6acONNFOJhIi/dica6j93OXaiM2LL31b3bk9hEnKPSToPr136eIFItbMi6b/Qbcyd+wrVx4Dw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=aSzdleLiZMFuqwoE6zntyTfFA/cBY+Wn9/YoCH5nQ2Y=;
+ b=V8Gd48Mus+6m+MGg3S1/tevS/vGn0NqISTMX1VbAYMvFSWg5F5vjcx6g7C5nPCkNPN8iwt4jTjRTmccFYLnbSsyil6C38csdX7laNlRZZe4sAJ1es68ynrhNK99dr/iovbfntIhAtkhx9LkuExIcbnh00kKBiWbY7pcjHhEd0bA=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com (2603:10a6:3:e1::23)
+ by PAXPR08MB7382.eurprd08.prod.outlook.com (2603:10a6:102:22d::6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5017.26; Mon, 28 Feb
+ 2022 07:23:58 +0000
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::f9ee:a333:b115:5049]) by HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::f9ee:a333:b115:5049%4]) with mapi id 15.20.5017.026; Mon, 28 Feb 2022
+ 07:23:58 +0000
+Message-ID: <fdacf3eb-7892-c767-ae85-1672f85684dc@wolfvision.net>
+Date: Mon, 28 Feb 2022 08:23:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.0
+Subject: Re: [PATCH v3 5/7] arm64: dts: rockchip: add rk356x dwc3 usb3 nodes
+Content-Language: en-US
+To: Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, jbx6244@gmail.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220227153016.950473-1-pgwipeout@gmail.com>
+ <20220227153016.950473-6-pgwipeout@gmail.com>
+From: Michael Riesch <michael.riesch@wolfvision.net>
+In-Reply-To: <20220227153016.950473-6-pgwipeout@gmail.com>
+X-ClientProxiedBy: ZR0P278CA0155.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:41::16) To HE1PR0802MB2426.eurprd08.prod.outlook.com
+ (2603:10a6:3:e1::23)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220227160116.18556-13-laurent.pinchart@ideasonboard.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 4c2e95ca-4112-4c64-5850-08d9fa8b4921
+X-MS-TrafficTypeDiagnostic: PAXPR08MB7382:EE_
+X-Microsoft-Antispam-PRVS: <PAXPR08MB738276C9DEA690435F48F234F2019@PAXPR08MB7382.eurprd08.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 0o5H4Mzn0yIB5lPxpLXHMUe4lnCIk8beYRaHrQeJwNj1Z7Nn2iDo92iadaRJAxS4nSlv3RuWVLgGLuqh3ocmabBrG0L8ZeOFb904Z3IWHPXpOxsi7z6/KUJ7Dm237aQ7KZGdn85upiAXtEaX8iE8MKmXKMhnEibiPdCp3E3gkD8yjBMf6CsA+i0Skbtibje2VhhxS+7ep2dqpq18LGtLVsmNoSbfB7DkrtoABPY0BIlbA2JLAW1l+6tv/QtOdtsBtvOKklXZU+Wl8ccWL/qusUjbx3qZrMnZDviZ/Ql4c5pxLoL2kqpQt2h82vT3w8XG3mXw3StYjkqZlCW9I15W4hhvNT0iSKApRbC2PX9qy5EjRUGxmJhKKL0qw/L347qp0yR8hkUYDz1Vdx51I1HblIrB3oJfwdW6gs0grQB0dmqnlNuOZLgNNkHvDwBNYbSAuTWrJswfmubH1QOF3ZprHSg3KP/Y0PB82izxs1iYzOUukgvne6q4BUY8bhs06aMtFu6a+xI6BO/4tF+Zd/xrxbCFOg46O7NQYuMn1aQcoQN+cthMPEjfX8D3vCmN3bZXtN67QK8UDyUaq1uYXvb+NUVVAHqZ6yorn3U5YK/KzR3EpK0NbIlF5KsBUwtNQhb81IzB9Qb/z35zPTRcbUd+iEQxWe31kchDUQcBVTRYuv5nvUEdo1RXsNb/LJt4Dd47hkVEN7HTmXcPdiadzH5+RYJR73rSaK2AkWh2hr8eN+M=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:HE1PR0802MB2426.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(31696002)(6512007)(31686004)(110136005)(83380400001)(36756003)(2906002)(6486002)(86362001)(316002)(38100700002)(186003)(508600001)(4326008)(53546011)(66476007)(8676002)(66946007)(2616005)(66556008)(44832011)(6506007)(8936002)(5660300002)(52116002)(45980500001)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?QXI4Y0tZVEVsTjRkYTZCWXE4WHFrS3F5azd6bFUzeFpuNnlvYnM3aEhMaUxr?=
+ =?utf-8?B?cHNqaXFTdzdEdzd1TlJzbFo5ZWxGUHdFZkdidVNiNVlqN0M2ZUVDTm9iUUVC?=
+ =?utf-8?B?MW02ekJmZm5wZHNEeTJyUEthNEJQSDZKUmxvUCtnYXhIZlN5R0RidmFZay9K?=
+ =?utf-8?B?RTNXMGZFbzFnQ1J3UzJPdnczL2ZSMEFCODlmcVpnWG5HbTZ3T3FHZEZqRzJo?=
+ =?utf-8?B?NG81eVBnREJmMk9Zall4bWVIWWs2OXpuRXlDOTRyblZyTVJCc1gzYUFoaTlX?=
+ =?utf-8?B?YW12S1dVNHQvVklJdjlWVWo0dEI5a1MycEE4WEVGL3lMQkEvbFVxZlB4UkEy?=
+ =?utf-8?B?ekNIcUc5L1pxaUNWVXd5a2tPTWhUbSsyei9ZSEVZWjVuT3RsNytVUnRKejdk?=
+ =?utf-8?B?SWZpOE40ZytwZEdrSW94Qzg4NU9IS3MzUG5TUndZUlFtYmg4OVFxLzMveWdW?=
+ =?utf-8?B?OFp5OFkwZFZOY2FMZ1hhL3NOVEFmYmlKTjZZZXRialNZZmtqTldNRXVSTWp6?=
+ =?utf-8?B?eDYzOWhqdkhXWTRFWmxsa3JSclpGRGEvYkw4OURiR2VJaHF5bjdWdVFFc0l1?=
+ =?utf-8?B?S0NjdlNGUWh2N0tGbmJKNERldXJwMEN5TXk4ck5BUTI5akUwWGtQNjVDWno4?=
+ =?utf-8?B?WXp0aGp4ZVVXWnZtWWgrYTRFd1p5Z2QzQU5ndmhZUE1VYitLVW5FRWl3NklQ?=
+ =?utf-8?B?L3BMZVgzb1ZrZW5qNGlYa2xjUWhTWXNzU2ZmOXdFT1RzcFZsdFl5WnRRL0FR?=
+ =?utf-8?B?YkR6eG5OV1MvcUtHYVQwZkJQMSt5VHhNallYZVBhWCsvTjR4V3Jvek0wSzdT?=
+ =?utf-8?B?bFhEVlRjaXJDeXppblNCUWF1RXNkbkg3U3hTU3FtOEV1QktMVzEyU3FlSGNq?=
+ =?utf-8?B?NTRsWloyYldyL1QvNkxoa2pyRnJXamY5QStUanhaeUJIQVBXZXFnVHFmT1Nj?=
+ =?utf-8?B?aXMyaGFpTG1rUGlrK0gxdFl2bFAwVEEwQUpBQ1Y5UjR3MlEwSUVENUtPMmpG?=
+ =?utf-8?B?RkNPcSt5SXB4c0ZyWThyQVdKdUFjVCtpOGp1Q3ZreEpacm1EUEQyemNtZVhJ?=
+ =?utf-8?B?TzcrMURzZE51RnlHUmt4SlE0TFVORURDNGd6dXphdE94TXJvajFieGRPZnBi?=
+ =?utf-8?B?SmRodDRXbjBLemQzWWQ3WHFwNW5tTlJYS0hERkJTS080a2VFM3E1eElKWHdu?=
+ =?utf-8?B?TkFnVTJ6bks0dUNWdU52bWFtVkpRSE5xNzBQcW1uYXpYR2VScVZHeWxYZGhh?=
+ =?utf-8?B?N2NxSldyTTZOVUMvb2R4SjRWb1dZREo5NUU5TmZxNlFGeTlwYlJDazh1V3Za?=
+ =?utf-8?B?OHdDNms0UEpDT3N1SEZ4cTFmc3pqOHlkUTROdWxDZDM1N0dtY2xGaGJ1dE9q?=
+ =?utf-8?B?Q2RSQ21HdGpqL29KTVFYVzNCVlNmMGNHNklOTmxYWERDVVJpTVdPRjhXUjNj?=
+ =?utf-8?B?dU84S3ArTVUwdzVheFdrYTFmMllUL1B0bHhxVzkxRnlNMW0wQU9sZG40Y0Vt?=
+ =?utf-8?B?dklORE1BZEdMTlliSXRReDI2ZmFZT0VEcUtPQkpTd2pJQUhIZFhwOTh0dXdF?=
+ =?utf-8?B?RlQ0K1p2OHBIMVRmMERJdnlMaTZ2aWhxcVV4RzZHblZIbDhKbGQ0SUJxcmRm?=
+ =?utf-8?B?SjZuLzhiUzVIUTFPb0Fzc3NuK0FDUXRaZDZFd0tPL3FxNHUvcGN4UjVhNm5Y?=
+ =?utf-8?B?U2hGYmwrSVhPbDk1d0lnMUsyTUxiREc4dTRZanhhdWoySldLaHc2VlFkWkVP?=
+ =?utf-8?B?WFU5VHRKdU5TdjkxMUYwWXRQM3ZyMTdwWHdUdmY4b01XSlpwZXhaQ25IY2Rj?=
+ =?utf-8?B?bzJ4ZmNVUXVIdndra0lmUlk5Q1h4WVV2NEJCQ2toTEhVNEdyT1ZvOGFhU2tL?=
+ =?utf-8?B?V3E1MVdBdVNicTViOHkzaEZwMnFUNUZBOW1uWEJmWVJHNktLdERIN2dtbmJk?=
+ =?utf-8?B?Y2ZWY09HVmRuUzJnVmxYUk4raGRqcy9LWkVSMFRZazZXcmhuNXdGNGM2V2hC?=
+ =?utf-8?B?TFEySHJPenAvMnBpNk9PVzZPVUkzZ0twNDFvWllKeVd2TzIvUzNwQzJ1Rlls?=
+ =?utf-8?B?Qk1LR2lraDFlL1lLYnk4UXVHaVRhRXRFQzNkbnI0MEhRQ3dreUYzQnIvaTNi?=
+ =?utf-8?B?ZDh3U0d1MFhna3g4NUdKdURFUkxIRGdGUkhjK2NsM1k4RzNRQ1VrbG9EeHlh?=
+ =?utf-8?B?L1hUdFFMeFo5TGg0ZXRucnU5eGY2dkh4OHRYakovMXdsYk9LK3c2SzJ4eXNM?=
+ =?utf-8?B?RDVlb0wyQ0lUSDhjMjI1NnRhOW9aTFRNd25OSDAxaHlJZU9aNFZsNlJNUVlF?=
+ =?utf-8?B?R1hzUHU2bi9xOXF4VHJuNHRvL1JZazEzeEIyL3Q1dGV0YjFSaDMzZz09?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4c2e95ca-4112-4c64-5850-08d9fa8b4921
+X-MS-Exchange-CrossTenant-AuthSource: HE1PR0802MB2426.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Feb 2022 07:23:58.5518 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: BZqJVNwpNVrVwm+yVs0sBwkuwPp9AHC87syRNa/SZhyY15JLIvrOw5gmD1ugTvTnSv8jtgFG8i1/WaFusbPusj5cGLbC3+kZYTC3NEeBuxA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR08MB7382
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220227_192756_561571_065483E6 
-X-CRM114-Status: GOOD (  13.61  )
+X-CRM114-CacheID: sfid-20220227_232407_057403_DC5A2CA3 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,91 +155,133 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
+Hi Peter,
 
-I love your patch! Yet something to improve:
+On 2/27/22 16:30, Peter Geis wrote:
+> Add the dwc3 device nodes to the rk356x device trees.
+> The rk3566 has one usb2 capable dwc3 otg controller and one usb3 capable
+> dwc3 host controller.
+> The rk3568 has one usb3 capable dwc3 otg controller and one usb3 capable
+> dwc3 host controller.
+> 
+> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3566.dtsi | 11 ++++++++
+>  arch/arm64/boot/dts/rockchip/rk3568.dtsi |  9 ++++++
+>  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 35 +++++++++++++++++++++++-
+>  3 files changed, 54 insertions(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566.dtsi b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+> index 3839eef5e4f7..0b957068ff89 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+> @@ -6,6 +6,10 @@ / {
+>  	compatible = "rockchip,rk3566";
+>  };
+>  
+> +&pipegrf {
+> +	compatible = "rockchip,rk3566-pipe-grf", "syscon";
+> +};
+> +
+>  &power {
+>  	power-domain@RK3568_PD_PIPE {
+>  		reg = <RK3568_PD_PIPE>;
+> @@ -18,3 +22,10 @@ power-domain@RK3568_PD_PIPE {
+>  		#power-domain-cells = <0>;
+>  	};
+>  };
+> +
+> +&usb_host0_xhci {
+> +	phys = <&usb2phy0_otg>;
+> +	phy-names = "usb2-phy";
+> +	extcon = <&usb2phy0>;
 
-[auto build test ERROR on rockchip/for-next]
-[also build test ERROR on media-tree/master v5.17-rc6 next-20220225]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
+I wonder what the correct place for this extcon property is. You defined
+it on SoC (RK3566) level, in my patch for the RK3568 EVB1 it is added on
+board level. Is this common to all RK356x variants?
 
-url:    https://github.com/0day-ci/linux/commits/Laurent-Pinchart/media-rkisp1-Misc-bug-fixes-and-cleanups/20220228-000306
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-config: m68k-randconfig-r022-20220228 (https://download.01.org/0day-ci/archive/20220228/202202281151.lY2yvuon-lkp@intel.com/config)
-compiler: m68k-linux-gcc (GCC) 11.2.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/0day-ci/linux/commit/2ee8966047a595378fe16e057f9a25fd7e237f9c
-        git remote add linux-review https://github.com/0day-ci/linux
-        git fetch --no-tags linux-review Laurent-Pinchart/media-rkisp1-Misc-bug-fixes-and-cleanups/20220228-000306
-        git checkout 2ee8966047a595378fe16e057f9a25fd7e237f9c
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=m68k SHELL=/bin/bash drivers/media/platform/rockchip/rkisp1/
+Best regards,
+Michael
 
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-All errors (new ones prefixed by >>):
-
->> drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c:16:6: error: redefinition of 'rkisp1_debug_init'
-      16 | void rkisp1_debug_init(struct rkisp1_device *rkisp1)
-         |      ^~~~~~~~~~~~~~~~~
-   In file included from drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c:14:
-   drivers/media/platform/rockchip/rkisp1/rkisp1-common.h:525:20: note: previous definition of 'rkisp1_debug_init' with type 'void(struct rkisp1_device *)'
-     525 | static inline void rkisp1_debug_init(struct rkisp1_device *rkisp1)
-         |                    ^~~~~~~~~~~~~~~~~
->> drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c:47:6: error: redefinition of 'rkisp1_debug_cleanup'
-      47 | void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
-         |      ^~~~~~~~~~~~~~~~~~~~
-   In file included from drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c:14:
-   drivers/media/platform/rockchip/rkisp1/rkisp1-common.h:528:20: note: previous definition of 'rkisp1_debug_cleanup' with type 'void(struct rkisp1_device *)'
-     528 | static inline void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
-         |                    ^~~~~~~~~~~~~~~~~~~~
-
-
-vim +/rkisp1_debug_init +16 drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-
-d321afe87aa3ed Laurent Pinchart 2022-02-27  15  
-d321afe87aa3ed Laurent Pinchart 2022-02-27 @16  void rkisp1_debug_init(struct rkisp1_device *rkisp1)
-d321afe87aa3ed Laurent Pinchart 2022-02-27  17  {
-d321afe87aa3ed Laurent Pinchart 2022-02-27  18  	struct rkisp1_debug *debug = &rkisp1->debug;
-d321afe87aa3ed Laurent Pinchart 2022-02-27  19  
-d321afe87aa3ed Laurent Pinchart 2022-02-27  20  	debug->debugfs_dir = debugfs_create_dir(dev_name(rkisp1->dev), NULL);
-d321afe87aa3ed Laurent Pinchart 2022-02-27  21  
-d321afe87aa3ed Laurent Pinchart 2022-02-27  22  	debugfs_create_ulong("data_loss", 0444, debug->debugfs_dir,
-d321afe87aa3ed Laurent Pinchart 2022-02-27  23  			     &debug->data_loss);
-d321afe87aa3ed Laurent Pinchart 2022-02-27  24  	debugfs_create_ulong("outform_size_err", 0444,  debug->debugfs_dir,
-d321afe87aa3ed Laurent Pinchart 2022-02-27  25  			     &debug->outform_size_error);
-d321afe87aa3ed Laurent Pinchart 2022-02-27  26  	debugfs_create_ulong("img_stabilization_size_error", 0444,
-d321afe87aa3ed Laurent Pinchart 2022-02-27  27  			     debug->debugfs_dir,
-d321afe87aa3ed Laurent Pinchart 2022-02-27  28  			     &debug->img_stabilization_size_error);
-d321afe87aa3ed Laurent Pinchart 2022-02-27  29  	debugfs_create_ulong("inform_size_error", 0444,  debug->debugfs_dir,
-d321afe87aa3ed Laurent Pinchart 2022-02-27  30  			     &debug->inform_size_error);
-d321afe87aa3ed Laurent Pinchart 2022-02-27  31  	debugfs_create_ulong("irq_delay", 0444,  debug->debugfs_dir,
-d321afe87aa3ed Laurent Pinchart 2022-02-27  32  			     &debug->irq_delay);
-d321afe87aa3ed Laurent Pinchart 2022-02-27  33  	debugfs_create_ulong("mipi_error", 0444, debug->debugfs_dir,
-d321afe87aa3ed Laurent Pinchart 2022-02-27  34  			     &debug->mipi_error);
-d321afe87aa3ed Laurent Pinchart 2022-02-27  35  	debugfs_create_ulong("stats_error", 0444, debug->debugfs_dir,
-d321afe87aa3ed Laurent Pinchart 2022-02-27  36  			     &debug->stats_error);
-d321afe87aa3ed Laurent Pinchart 2022-02-27  37  	debugfs_create_ulong("mp_stop_timeout", 0444, debug->debugfs_dir,
-d321afe87aa3ed Laurent Pinchart 2022-02-27  38  			     &debug->stop_timeout[RKISP1_MAINPATH]);
-d321afe87aa3ed Laurent Pinchart 2022-02-27  39  	debugfs_create_ulong("sp_stop_timeout", 0444, debug->debugfs_dir,
-d321afe87aa3ed Laurent Pinchart 2022-02-27  40  			     &debug->stop_timeout[RKISP1_SELFPATH]);
-d321afe87aa3ed Laurent Pinchart 2022-02-27  41  	debugfs_create_ulong("mp_frame_drop", 0444, debug->debugfs_dir,
-d321afe87aa3ed Laurent Pinchart 2022-02-27  42  			     &debug->frame_drop[RKISP1_MAINPATH]);
-d321afe87aa3ed Laurent Pinchart 2022-02-27  43  	debugfs_create_ulong("sp_frame_drop", 0444, debug->debugfs_dir,
-d321afe87aa3ed Laurent Pinchart 2022-02-27  44  			     &debug->frame_drop[RKISP1_SELFPATH]);
-d321afe87aa3ed Laurent Pinchart 2022-02-27  45  }
-d321afe87aa3ed Laurent Pinchart 2022-02-27  46  
-d321afe87aa3ed Laurent Pinchart 2022-02-27 @47  void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+> +	maximum-speed = "high-speed";
+> +};
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> index 5b0f528d6818..8ba9334f9753 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> @@ -99,6 +99,10 @@ opp-1992000000 {
+>  	};
+>  };
+>  
+> +&pipegrf {
+> +	compatible = "rockchip,rk3568-pipe-grf", "syscon";
+> +};
+> +
+>  &power {
+>  	power-domain@RK3568_PD_PIPE {
+>  		reg = <RK3568_PD_PIPE>;
+> @@ -114,3 +118,8 @@ power-domain@RK3568_PD_PIPE {
+>  		#power-domain-cells = <0>;
+>  	};
+>  };
+> +
+> +&usb_host0_xhci {
+> +	phys = <&usb2phy0_otg>, <&combphy0 PHY_TYPE_USB3>;
+> +	phy-names = "usb2-phy", "usb3-phy";
+> +};
+> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> index 7cdef800cb3c..072bb9080cd6 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> @@ -230,6 +230,40 @@ scmi_shmem: sram@0 {
+>  		};
+>  	};
+>  
+> +	usb_host0_xhci: usb@fcc00000 {
+> +		compatible = "snps,dwc3";
+> +		reg = <0x0 0xfcc00000 0x0 0x400000>;
+> +		interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru CLK_USB3OTG0_REF>, <&cru CLK_USB3OTG0_SUSPEND>,
+> +			 <&cru ACLK_USB3OTG0>;
+> +		clock-names = "ref_clk", "suspend_clk",
+> +			      "bus_clk";
+> +		dr_mode = "host";
+> +		phy_type = "utmi_wide";
+> +		power-domains = <&power RK3568_PD_PIPE>;
+> +		resets = <&cru SRST_USB3OTG0>;
+> +		snps,dis_u2_susphy_quirk;
+> +		status = "disabled";
+> +	};
+> +
+> +	usb_host1_xhci: usb@fd000000 {
+> +		compatible = "snps,dwc3";
+> +		reg = <0x0 0xfd000000 0x0 0x400000>;
+> +		interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru CLK_USB3OTG1_REF>, <&cru CLK_USB3OTG1_SUSPEND>,
+> +			 <&cru ACLK_USB3OTG1>;
+> +		clock-names = "ref_clk", "suspend_clk",
+> +			      "bus_clk";
+> +		dr_mode = "host";
+> +		phys = <&usb2phy0_host>, <&combphy1 PHY_TYPE_USB3>;
+> +		phy-names = "usb2-phy", "usb3-phy";
+> +		phy_type = "utmi_wide";
+> +		power-domains = <&power RK3568_PD_PIPE>;
+> +		resets = <&cru SRST_USB3OTG1>;
+> +		snps,dis_u2_susphy_quirk;
+> +		status = "disabled";
+> +	};
+> +
+>  	gic: interrupt-controller@fd400000 {
+>  		compatible = "arm,gic-v3";
+>  		reg = <0x0 0xfd400000 0 0x10000>, /* GICD */
+> @@ -297,7 +331,6 @@ pmu_io_domains: io-domains {
+>  	};
+>  
+>  	pipegrf: syscon@fdc50000 {
+> -		compatible = "rockchip,rk3568-pipe-grf", "syscon";
+>  		reg = <0x0 0xfdc50000 0x0 0x1000>;
+>  	};
+>  
 
 _______________________________________________
 Linux-rockchip mailing list
