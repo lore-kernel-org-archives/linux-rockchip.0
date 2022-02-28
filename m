@@ -4,77 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 873CDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 14:00:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 330AEC433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 14:03:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CkuuDBUzvv7vB9nQPYOljXwT3edw8yNU+bnoNShSesc=; b=yuGWuqALv/IzMU
-	6BZi01N3DTlT10s1b6EROYaket/DrRjBWoWqbpd006VFmAIE7Nc6FERXCIEyRWH31cHZJg3ACrq1b
-	wWoDaUgVu7vf1+JpVnC52Seczzq9WixllpDI7iHjmfQM5E5Dy4saPYuHudUaxaYcrIXTdPcoze8yb
-	8in689l8MjZ9QNxHA/DYTnKs02wnpjxPLJcJKjrepGl7U/BUu2kCjS30+1S3KDvUwh1B7gnTAJ3Rt
-	q5LxNmp7Ym6LAX6zU3TkBY+c3whQVg5vf6YOunkHfvrwoc6G0SJ8O1Xi3f0dCrxQ9NzHRK5b6Q3+g
-	qVUFPXiAHM7XmEeJWjYw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DjDRdOe5gytdCbP2P970M2APTQkldVYsy6oRZsKHlZU=; b=xqcGf6kQNa76Gg
+	iH0RkyIYjNsF70msuDuNeN07PBwMnhfQ/Ze8J9xckjITQupcS2UK1l15xQ7iHANHFgvOGHICgVZs9
+	DPiXCR8OHvywgBjn1lJOlSLzY7B3/ZlNQnXhCdJt1CVWeilHampf0DjcFDlg7nPq/wRmV1o2gZie0
+	NkcVYApHdzlueB/RTVlQKyj1E8IHrsq8eH0zuL7Me9qVSjK20tY9yEL3+9pHjrwDeaCNUttqLEDKh
+	b7sXNY3r5eH3uHRtljOYSnGupfAZgTpXGdxI32mKKHvJOMbFLnS0eySkfA556tP8tECp0hDqtUn/Y
+	g0ZsIEm+kLI07rm8iEtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOgZv-00CjnB-5w; Mon, 28 Feb 2022 14:00:43 +0000
-Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
+	id 1nOgch-00Ckm1-04; Mon, 28 Feb 2022 14:03:35 +0000
+Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOgWS-00CihK-QH; Mon, 28 Feb 2022 13:57:11 +0000
-Received: by mail-qk1-x731.google.com with SMTP id bm39so10366314qkb.0;
- Mon, 28 Feb 2022 05:57:08 -0800 (PST)
+ id 1nOgWY-00CijP-BU
+ for linux-rockchip@lists.infradead.org; Mon, 28 Feb 2022 13:57:15 +0000
+Received: by mail-qk1-x72d.google.com with SMTP id q4so10278345qki.11
+ for <linux-rockchip@lists.infradead.org>; Mon, 28 Feb 2022 05:57:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8Q8rfAYWCPuCFZWUbMwuXl1w3LX/ZhxGllWhtuSRFCM=;
- b=XmcfNyiUVum9tKD+wGJadl/B39imKzB11lORzzu1JLqYGEzZHtwIIKRS/L/robEZIk
- Hedvm0IK0YoyRKLbu88OSmwQyvvkhqHFQ52EnVbNS4dY0cfI6CYRZ1YABxWCL3nCD/gU
- c5BWQYU1MU3GBWP432jcEGTsaEToAC+QVQ+z/38DO4fdvdZfGBsgZ/XXbk86VXoZD7Ni
- fCwxZPJvetv+wltkdg5bgcjM1w7Tah5ncE36d6cI0YggqJJ6mton4CwaviQFkuHl/dYQ
- oQfGERMn/wWUAHXVn06CiMEQuEpPwGSEb1ymvAUrMKAmrZFwDNdJsH+ddIKPqQ0lcqs8
- J9vQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=JPaFw68OuUtIuwUUWQ/YAMH/m6245D2UW9piC4irepM=;
+ b=axLq9ESk4KLwkRhxFwrsPb0IhXxAtdnSMp5bxmAzIv9jg7Ka+soIzf8ERaxP1neUMI
+ x5AP662tSuRGrmnrT2/XP41iPtF0c53qMrnUAInWhVqdK5WK8i3tsGzEL3hTrVEobJ0s
+ DlD0Wqa5Y7H1CmQEEJxiq1q/L4S+GS23T03gXXgzad+j40I1VR/O+Blqb8R7m/4qxpdP
+ 3j2kccWHmuoG8sCn7iNlt2c4hzleWmscG3jBeZ0id02XjkHXlZROaGU/DKvi709oLp7U
+ 5i8DRBkPj4conLmXDexlel3pRFEHcPn+9+J3bJcgNR7Hpq1Q9Kj9lH9/r3VBLNkbFJvM
+ mKyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8Q8rfAYWCPuCFZWUbMwuXl1w3LX/ZhxGllWhtuSRFCM=;
- b=G4MCo4mta3bEdr3zPyB2TQwO5BZZVf2RN58ZpUESUoaDJpqACH0liGeXyo2NYwnBT9
- ugWxaSqnMSc/nueBFEwcddsw7dpuI86CY9m14Ir/h00osAH6vcUWeDA08KiqgR7WnUql
- qol2b1+2tCzqsS9qDMBkMnkag8ZaIP7aSJLvbrwC44D1jAhiEN+kVAjbSABtyfBT9XY5
- cbaYIezHMAeLx0khwNyZNJnNT3mDBWrDEhgr71RIWwCADK/CwcFhTO2oB06H/s8ONlv8
- I99mtawgvbGRsXplNsWy+ksGpwyNXqmZXFm1HQ0oZHaisH1LAsoHaLpFnc/tpSm94BX5
- Bvnw==
-X-Gm-Message-State: AOAM531GxFWW89OC6I5pswl2Lq+LVVV/Av7lZ7qg6wnJi1oHODBPSAAP
- wPMKkfvhgQvyvMkzhsiN8NGqm/Z3QHgC+A==
-X-Google-Smtp-Source: ABdhPJyTz57PuiLNW+lonT9pwGs9q/VaYGWFFnMuoqKJha0FF8v+OMU7hAd+MXRLdyY3f+G2SdDyPQ==
-X-Received: by 2002:a05:620a:2404:b0:508:b101:6f97 with SMTP id
- d4-20020a05620a240400b00508b1016f97mr2618410qkn.369.1646056627394; 
- Mon, 28 Feb 2022 05:57:07 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=JPaFw68OuUtIuwUUWQ/YAMH/m6245D2UW9piC4irepM=;
+ b=Kicjv7qH2X577QZYs8sixaOQSBPZd5yyL2a7h1AeO0RSE11oQc2t3gzL80wNZfUq87
+ 33bTPp1VrcM03doHe33fWC4GbJX/v3X0TOi0smGNJ8c+MCCxalDCsYDWxZsQJXNuvqi+
+ gCCItXfnPL9gy5uW7Ja5Yrn6S7NduCXL/zrq03Z/OIx4/WocYLmjdqbm7HDRffios2cJ
+ cBHNlRBzZy7Wxvd5ggIw/3mE7FXlN7+Z7uYuKwI9zgGheWVadJ1EUx3Z3yfba1THGfD9
+ +trks4tY70WgX3qyOOn0l6dgvpqcsOFYjJ7CpMrqL0RW4eOnnxwic69dxXLCiX8FpuLz
+ g20Q==
+X-Gm-Message-State: AOAM531tpcpqLdhn9om5EPpGVH4y+m1xazw7N+18r4I09FI6APAopBFB
+ G8rwnIf1DMzqIJr11SA4CC0=
+X-Google-Smtp-Source: ABdhPJzG6wOa4TN1QLaAMRRFyvPIWxUudagzxS54MIfEGeVgC11S4FrJNmCjk/EhdBzDgihkBBzPzA==
+X-Received: by 2002:a05:620a:138d:b0:646:d79f:84ea with SMTP id
+ k13-20020a05620a138d00b00646d79f84eamr11333629qki.501.1646056632345; 
+ Mon, 28 Feb 2022 05:57:12 -0800 (PST)
 Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
  by smtp.gmail.com with ESMTPSA id
- b8-20020a05620a088800b00648bfd00a41sm4932244qka.80.2022.02.28.05.57.06
+ b8-20020a05620a088800b00648bfd00a41sm4932244qka.80.2022.02.28.05.57.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Feb 2022 05:57:07 -0800 (PST)
+ Mon, 28 Feb 2022 05:57:12 -0800 (PST)
 From: Peter Geis <pgwipeout@gmail.com>
-To: 
+To: Felipe Balbi <balbi@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
  michael.riesch@wolfvision.net, jbx6244@gmail.com,
- Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Felipe Balbi <balbi@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-usb@vger.kernel.org
-Subject: [PATCH v4 0/8]  enable usb support on rk356x
-Date: Mon, 28 Feb 2022 08:56:51 -0500
-Message-Id: <20220228135700.1089526-1-pgwipeout@gmail.com>
+ Bin Yang <yangbin@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v4 5/8] usb: dwc3: core: do not use 3.0 clock when operating
+ in 2.0 mode
+Date: Mon, 28 Feb 2022 08:56:56 -0500
+Message-Id: <20220228135700.1089526-6-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220228135700.1089526-1-pgwipeout@gmail.com>
+References: <20220228135700.1089526-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_055708_888350_57B1CE19 
-X-CRM114-Status: GOOD (  15.50  )
+X-CRM114-CacheID: sfid-20220228_055714_459414_46BC5B58 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,75 +94,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Good Morning,
+From: Bin Yang <yangbin@rock-chips.com>
 
-This is my patch series that I have maintained out of tree until the
-combophy driver landed.
+In the 3.0 device core, if the core is programmed to operate in
+2.0 only, then setting the GUCTL1.DEV_FORCE_20_CLK_FOR_30_CLK makes
+the internal 2.0(utmi/ulpi) clock to be routed as the 3.0 (pipe)
+clock. Enabling this feature allows the pipe3 clock to be not-running
+when forcibly operating in 2.0 device mode.
 
-Patch 1 fixes the grf dt binding from the combophy merge.
-Patch 2 adds the dt bindings for the grf changes necessary.
-Patch 3 adds the SoC specific binding.
-Patch 4 adds support to the grf driver to set the rk3566 otg clock
-source.
-Patch 5 is a downstream patch ported forward to shut down the usb3 clock
-when the controller is operating in usb2 mode.
-Patch 6 adds the dwc3 nodes to the rk356x device tree includes.
-Patch 7 enables the dwc3 nodes on the Quartz64 Model A.
-Patch 8 enables the dwc3 nodes on the rk3568-evb.
+Signed-off-by: Bin Yang <yangbin@rock-chips.com>
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+ drivers/usb/dwc3/core.c | 5 +++++
+ drivers/usb/dwc3/core.h | 1 +
+ 2 files changed, 6 insertions(+)
 
-Note, there are functional changes from previous versions.
-
-Please review and apply.
-
-Very Respectfully,
-Peter Geis
-
-Changelog:
-v4:
-- Add SoC specific binding, fall back to core.
+diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
+index 18adddfba3da..416d83a055fe 100644
+--- a/drivers/usb/dwc3/core.c
++++ b/drivers/usb/dwc3/core.c
+@@ -1167,6 +1167,11 @@ static int dwc3_core_init(struct dwc3 *dwc)
+ 		if (dwc->parkmode_disable_ss_quirk)
+ 			reg |= DWC3_GUCTL1_PARKMODE_DISABLE_SS;
  
-v3:
-- Drop the dwc-of-simple method in favor of using dwc core.
-- Drop all quirks except snps,dis_u2_susphy_quirk, which is necessary to
-  prevent device detection failures in some states.
-- Drop the reset-names.
-
-v2:
-- Add a dt-bindings fix for grf.yaml
-- Unify the reset names.
-- Constrain the force usb2 clock dwc3 patch to only supported variants of
-the ip.
-- Change dwc3-of-simple to support of-match-data.
-- Drop the PCLK-PIPE clk.
-- Rename the usb nodes to be more friendly.
-- Add the rk3568-evb enable patch.
-
-Bin Yang (1):
-  usb: dwc3: core: do not use 3.0 clock when operating in 2.0 mode
-
-Michael Riesch (2):
-  dt-bindings: usb: add rk3568 compatible to rockchip, dwc3
-  arm64: dts: rockchip: add usb3 support to rk3568-evb1-v10
-
-Peter Geis (5):
-  dt-bindings: soc: grf: fix rk3568 usb definitions
-  dt-bindings: soc: grf: add rk3566-pipe-grf compatible
-  soc: rockchip: set dwc3 clock for rk3566
-  arm64: dts: rockchip: add rk356x dwc3 usb3 nodes
-  arm64: dts: rockchip: enable dwc3 on quartz64-a
-
- .../devicetree/bindings/soc/rockchip/grf.yaml |  5 +-
- .../bindings/usb/rockchip,dwc3.yaml           |  2 +
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 37 +++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3566.dtsi      | 11 +++++
- .../boot/dts/rockchip/rk3568-evb1-v10.dts     | 46 +++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3568.dtsi      |  9 ++++
- arch/arm64/boot/dts/rockchip/rk356x.dtsi      | 35 +++++++++++++-
- drivers/soc/rockchip/grf.c                    | 17 +++++++
- drivers/usb/dwc3/core.c                       |  5 ++
- drivers/usb/dwc3/core.h                       |  1 +
- 10 files changed, 165 insertions(+), 3 deletions(-)
-
++		if (DWC3_VER_IS_WITHIN(DWC3, 290A, ANY) &&
++		    (dwc->maximum_speed == USB_SPEED_HIGH ||
++		     dwc->maximum_speed == USB_SPEED_FULL))
++			reg |= DWC3_GUCTL1_DEV_FORCE_20_CLK_FOR_30_CLK;
++
+ 		dwc3_writel(dwc->regs, DWC3_GUCTL1, reg);
+ 	}
+ 
+diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
+index eb9c1efced05..ea3ca04406bb 100644
+--- a/drivers/usb/dwc3/core.h
++++ b/drivers/usb/dwc3/core.h
+@@ -259,6 +259,7 @@
+ /* Global User Control 1 Register */
+ #define DWC3_GUCTL1_DEV_DECOUPLE_L1L2_EVT	BIT(31)
+ #define DWC3_GUCTL1_TX_IPGAP_LINECHECK_DIS	BIT(28)
++#define DWC3_GUCTL1_DEV_FORCE_20_CLK_FOR_30_CLK	BIT(26)
+ #define DWC3_GUCTL1_DEV_L1_EXIT_BY_HW		BIT(24)
+ #define DWC3_GUCTL1_PARKMODE_DISABLE_SS		BIT(17)
+ 
 -- 
 2.25.1
 
