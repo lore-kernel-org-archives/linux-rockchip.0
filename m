@@ -4,81 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3121C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 13:07:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD912C433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 13:11:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R7dXG2nW5v/4VpufxfJ3mdfgPgZq+Z+1rVjf16ojL5I=; b=r8AdOOz65DJ0PY
-	cl5tVtVZpgnVZA+UkrHbGn9NZpS+440OW386mepddpkChxomMSwor5tiCNle1gqUccJn45Xfgb3cG
-	8gXLxMwdnx/bn0A+0JSiALVJfuHE8VgA9BDJ3lZ6+1Yco+PHDO7DAcFzGk+ndzv7Pjvxpz0sP30oO
-	mZ19nwKR/Ni/QXdzxV3XZZ0wGxF7S9pttk1+SGn5Ccabzd9UzhX/dn1wUcwgrS0U2pg22FnNVtatX
-	Ro2oI54jJvXlyyJ05K/RZeCOMuW01Dq3YxEtBh2KbpM6XToprfJ7bDKF+yaqlD9yFLvQjP+BtqIM8
-	pQwU00xalJ8nhZbBmWYA==;
+	List-Owner; bh=OBlfmpgV0k745yl10dnw6xBaAkmCPF8V5ZZW6nemWK8=; b=Ze7wMKpo0OzTSp
+	BY6V3/FYBOj+JhOs6jxurKeGp37Rm/aOxw7LbixBafenimPmsiX9N62dqzbM0HUNULDDIWT+oCF4e
+	tXvpnrSAuDPtmPUMRSmySRnvDb1TiFCfCL5jT/ij5OqIeconmhmziZEq+f4Aq3wHJJe2JmUYiTWZx
+	rf09/a1RpfJhjH//7l6FXLGRy7vt+xzqjSsWAYbRkcJ9OD+iBCvzwtZ6aPuN2A0HelNFKYaenxcEI
+	rvJdV8m8CmWAmI7cn3njekhBkHY5Ts4rZ/NO0g//4BqbVp5KKbWz/Lo1IGd4KX5bhzQ64lP/5M9G+
+	6npGaD1r6cjhXBCZmpfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOfkT-00CRNb-Fq; Mon, 28 Feb 2022 13:07:33 +0000
-Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
+	id 1nOfoR-00CSqP-Km; Mon, 28 Feb 2022 13:11:39 +0000
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOfST-00CKSq-Bh
- for linux-rockchip@lists.infradead.org; Mon, 28 Feb 2022 12:48:59 +0000
-Received: by mail-qv1-xf2c.google.com with SMTP id d3so12232278qvb.5
- for <linux-rockchip@lists.infradead.org>; Mon, 28 Feb 2022 04:48:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ndufresne-ca.20210112.gappssmtp.com; s=20210112;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :user-agent:mime-version:content-transfer-encoding;
- bh=+8I/V7LMKeEgdjfech8pVN3rLVcrkyoXC3NkYpHqx50=;
- b=UzEaMg7JeXuUGaFUzjzNTjWqymgIKqaEVBGX/ytQjyMN6OC9OOJ0/nKWUdYq5uxvI3
- /dra9cjZKvXzgDUebBGOWC5W7Vex1+dDK2vfDgq6DQqBF0xV3OAaHLTrixCGbjpTrelZ
- oKZ4YLNuUVKHI8QeYETFk0iXjog6Qe7igxM3RkkXzBUgb0EBNE3mMMQlLlQIEemz/1up
- y2yUjx+uzFN2xwsKNATwGf4tXX+27dJGIKH1fBmD8Ml/FNURZakDjIMB+01PmrrJ9Nh8
- VkFceIVqIYMtP9KCjfKcXhhAJeXp9s+7UxbIONneuk+b62r95b0yzSskFZltmHazBbRR
- 26aw==
+ id 1nOfbJ-00CO3G-DW; Mon, 28 Feb 2022 12:58:07 +0000
+Received: by mail-yb1-xb36.google.com with SMTP id j2so20398572ybu.0;
+ Mon, 28 Feb 2022 04:58:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=cPns1/npz7Dlc50rQYvlC2uiB8hqGLU7hoL0Zgx0XJ0=;
+ b=pEolgqNiqpxngoF3DgV5antmR2xK1ESw6GfdlgaC1VRT62KrVi1FE94NVxvHe2y040
+ DCgDJOZ8s0kSQSPw6C9sx78FJavBTotCFHL/anc4DfXGcrgvPo8okv1JUkhqVfi/se9i
+ hW06Ah3qyMKaaKOTNtTu8wbusrbB7phNlPF+AySvdDIO7u1QsCzFU7mpPGJHlzk9Mby6
+ UdsH3Nd6/98kA7DwkBYhjYGX9ZL6TzuOELKMCJfbDGjyY8VVL4mqSLXGaumytYsPQ2HJ
+ 9J/sCwpo1GpeL79zD5T/i/qLvHLVrKyKmbC72hCBVyK1VCZmw12EYO+c52RVTUKHhVzh
+ rDoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:user-agent:mime-version:content-transfer-encoding;
- bh=+8I/V7LMKeEgdjfech8pVN3rLVcrkyoXC3NkYpHqx50=;
- b=JXAlNm8xMN9Txm95ZosSntM8czdkECNl+BxSHE7u0EayoVVrHzi54UzMR39A6cGa12
- Xq8TvSzQuCdhgg71mqtjAM0WmLNc4X+FBaAjlDaoAFP0dZ1tJR9iIHGlfWHs6dOx/1Nl
- zaFCqBPWZv/YdyDZ3hkW+uWpsrLSES9al9nnUhEryHTG0JF6JnAZUGi8KLIxtuQ7LvNZ
- jfKqXgcE5PK+TpHJYvQ+HjRIhn6RI7dD989SigwzsqiMPWzlYY1e9XihXreT6iHRrICR
- +oSHkTzMhAmeA3tG0/BN1sLhMU4K9/0NVaxzfBraoToF4fcrOnYXmjG4vWY9qsHTc9f2
- e4rA==
-X-Gm-Message-State: AOAM531RZxRQ1GUhcfEQACtu9yhURqumCKumpSx3e8pGHheVrNxzrIcd
- yWxNW4m5tOLJ9ThaOE9NjtwoTw==
-X-Google-Smtp-Source: ABdhPJx3Zx++4poidmZxiaKiNp7huRBp+c07iQ/2xxhDNM88zR5W38PXzrrhlyBTtk2qm0T1kR/z9Q==
-X-Received: by 2002:ac8:59c8:0:b0:2de:5f4:7e84 with SMTP id
- f8-20020ac859c8000000b002de05f47e84mr16487539qtf.97.1646052535083; 
- Mon, 28 Feb 2022 04:48:55 -0800 (PST)
-Received: from nicolas-tpx395.localdomain (173-246-12-168.qc.cable.ebox.net.
- [173.246.12.168]) by smtp.gmail.com with ESMTPSA id
- y24-20020a05620a09d800b00648c8ba03c1sm4906437qky.107.2022.02.28.04.48.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Feb 2022 04:48:54 -0800 (PST)
-Message-ID: <1b2ce01fb04f29cca58d40bd81d9f4cc46dcebf8.camel@ndufresne.ca>
-Subject: Re: [RFC PATCH 2/8] media: Add P010 format
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Jernej Skrabec <jernej.skrabec@gmail.com>,
- ezequiel@vanguardiasur.com.ar,  p.zabel@pengutronix.de
-Cc: mchehab@kernel.org, hverkuil-cisco@xs4all.nl,
- gregkh@linuxfoundation.org,  wens@csie.org, samuel@sholland.org,
- linux-media@vger.kernel.org,  linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org,  linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org,  linux-sunxi@lists.linux.dev
-Date: Mon, 28 Feb 2022 07:48:53 -0500
-In-Reply-To: <20220227144926.3006585-3-jernej.skrabec@gmail.com>
-References: <20220227144926.3006585-1-jernej.skrabec@gmail.com>
- <20220227144926.3006585-3-jernej.skrabec@gmail.com>
-User-Agent: Evolution 3.42.3 (3.42.3-1.fc35) 
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=cPns1/npz7Dlc50rQYvlC2uiB8hqGLU7hoL0Zgx0XJ0=;
+ b=cIpx2BwGPiqHw/mAY+pyW8YAD4TV3ZwQ6s17lfeG0XEBe553UWvm/8KsfwijTCTgP4
+ lmFqRVFMtlrkmrizMHYo1p+mhrjiPlG5NYfrq2F2xLjtZGV+89cJfD9H6yb1V+hBbgRd
+ ZkizSGZQ8yS2NsE263hkeDlFog4WWbdQuV0bgHT8teFycwfCzxcPavUUvjwNFhi77GuK
+ +b0/4yYRZj1a6hF2jqpERKU4eOTQrxNpD/P5QydGBOSdsJUup6x2CcPDrWayCE88ySdx
+ rQXySfaeoH/w4oao2fWJ5iH2GVtQcgftARmqk8kymi7beqesHHLrnGjPKnI5oIDr1ewb
+ LjMg==
+X-Gm-Message-State: AOAM533/INJIZwGVT6w0lR4sa+ghmf66N//3MbQ8jeNdRytU367yQ4aD
+ QE+SNjZAG+4HuVDJDdDB58wo+rLHmG21SwLWVb8=
+X-Google-Smtp-Source: ABdhPJyMMcn4V8F4Xi286fHhfGSOe0I5iwgQNzJBxzAM62I7vOIac08EqoIzl0comFG8kmVNvryVHX5S6ObASHPyNZo=
+X-Received: by 2002:a25:5145:0:b0:61d:ad99:6e5a with SMTP id
+ f66-20020a255145000000b0061dad996e5amr18295765ybb.228.1646053084143; Mon, 28
+ Feb 2022 04:58:04 -0800 (PST)
 MIME-Version: 1.0
+References: <20220227153016.950473-1-pgwipeout@gmail.com>
+ <20220227153016.950473-6-pgwipeout@gmail.com>
+ <fdacf3eb-7892-c767-ae85-1672f85684dc@wolfvision.net>
+In-Reply-To: <fdacf3eb-7892-c767-ae85-1672f85684dc@wolfvision.net>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Mon, 28 Feb 2022 07:57:52 -0500
+Message-ID: <CAMdYzYoEEY6-kGVDeWj9AoA98BL5hxnc_4CnUPiuStUnSrFXLA@mail.gmail.com>
+Subject: Re: [PATCH v3 5/7] arm64: dts: rockchip: add rk356x dwc3 usb3 nodes
+To: Michael Riesch <michael.riesch@wolfvision.net>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Heiko Stuebner <heiko@sntech.de>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Johan Jonker <jbx6244@gmail.com>, 
+ devicetree <devicetree@vger.kernel.org>, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_044857_524477_5D95A996 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20220228_045805_512286_3E075F15 
+X-CRM114-Status: GOOD (  22.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,69 +85,150 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgZGltYW5jaGUgMjcgZsOpdnJpZXIgMjAyMiDDoCAxNTo0OSArMDEwMCwgSmVybmVqIFNrcmFi
-ZWMgYSDDqWNyaXTCoDoKPiBBZGQgUDAxMCBmb3JtYXQsIHdoaWNoIGlzIGNvbW1vbmx5IHVzZWQg
-Zm9yIDEwLWJpdCB2aWRlb3MuCgpUaGVyZSBpcyBhIG11Y2ggbW9yZSBjb21wbGV0ZSBwYXRjaCB0
-aGF0IHdhcyBzZW50IHByZXZpb3VzbHkgKHdpdGggZG9jdW1lbnRhdGlvbgphbmQgYWxsKToKCmh0
-dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1yb2NrY2hpcC9wYXRjaC8y
-MDIxMDYxODEzMTUyNi41NjY3NjItNS1iZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEuY29tLwoK
-cmVnYXJkcywKTmljb2xhcwoKPiAKPiBTaWduZWQtb2ZmLWJ5OiBKZXJuZWogU2tyYWJlYyA8amVy
-bmVqLnNrcmFiZWNAZ21haWwuY29tPgo+IC0tLQo+ICBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92
-NGwyLWNvbW1vbi5jIHwgMiArKwo+ICBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3Rs
-LmMgIHwgMSArCj4gIGluY2x1ZGUvdWFwaS9saW51eC92aWRlb2RldjIuaCAgICAgICAgfCAxICsK
-PiAgMyBmaWxlcyBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJp
-dmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jb21tb24uYyBiL2RyaXZlcnMvbWVkaWEvdjRsMi1j
-b3JlL3Y0bDItY29tbW9uLmMKPiBpbmRleCAxZGIwMDIwZTA4YzAuLjRlZGUzNjU0NmU5YyAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWNvbW1vbi5jCj4gKysrIGIv
-ZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jb21tb24uYwo+IEBAIC0yNzUsNiArMjc1LDgg
-QEAgY29uc3Qgc3RydWN0IHY0bDJfZm9ybWF0X2luZm8gKnY0bDJfZm9ybWF0X2luZm8odTMyIGZv
-cm1hdCkKPiAgCQl7IC5mb3JtYXQgPSBWNEwyX1BJWF9GTVRfWVVWNDIyUCwgLnBpeGVsX2VuYyA9
-IFY0TDJfUElYRUxfRU5DX1lVViwgLm1lbV9wbGFuZXMgPSAxLCAuY29tcF9wbGFuZXMgPSAzLCAu
-YnBwID0geyAxLCAxLCAxLCAwIH0sIC5oZGl2ID0gMiwgLnZkaXYgPSAxIH0sCj4gIAkJeyAuZm9y
-bWF0ID0gVjRMMl9QSVhfRk1UX0dSRVksICAgIC5waXhlbF9lbmMgPSBWNEwyX1BJWEVMX0VOQ19Z
-VVYsIC5tZW1fcGxhbmVzID0gMSwgLmNvbXBfcGxhbmVzID0gMSwgLmJwcCA9IHsgMSwgMCwgMCwg
-MCB9LCAuaGRpdiA9IDEsIC52ZGl2ID0gMSB9LAo+ICAKPiArCQl7IC5mb3JtYXQgPSBWNEwyX1BJ
-WF9GTVRfUDAxMCwgICAgLnBpeGVsX2VuYyA9IFY0TDJfUElYRUxfRU5DX1lVViwgLm1lbV9wbGFu
-ZXMgPSAxLCAuY29tcF9wbGFuZXMgPSAyLCAuYnBwID0geyAyLCA0LCAwLCAwIH0sIC5oZGl2ID0g
-MiwgLnZkaXYgPSAyIH0sCj4gKwo+ICAJCS8qIFRpbGVkIFlVViBmb3JtYXRzICovCj4gIAkJeyAu
-Zm9ybWF0ID0gVjRMMl9QSVhfRk1UX05WMTJfNEw0LCAucGl4ZWxfZW5jID0gVjRMMl9QSVhFTF9F
-TkNfWVVWLCAubWVtX3BsYW5lcyA9IDEsIC5jb21wX3BsYW5lcyA9IDIsIC5icHAgPSB7IDEsIDIs
-IDAsIDAgfSwgLmhkaXYgPSAyLCAudmRpdiA9IDIgfSwKPiAgCQl7IC5mb3JtYXQgPSBWNEwyX1BJ
-WF9GTVRfUDAxMF80TDQsIC5waXhlbF9lbmMgPSBWNEwyX1BJWEVMX0VOQ19ZVVYsIC5tZW1fcGxh
-bmVzID0gMSwgLmNvbXBfcGxhbmVzID0gMiwgLmJwcCA9IHsgMiwgNCwgMCwgMCB9LCAuaGRpdiA9
-IDIsIC52ZGl2ID0gMiB9LAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92
-NGwyLWlvY3RsLmMgYi9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmMKPiBpbmRl
-eCAwNDhmMzI2YzU3YjkuLmE4ZDk5OWUyM2U1YiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL21lZGlh
-L3Y0bDItY29yZS92NGwyLWlvY3RsLmMKPiArKysgYi9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92
-NGwyLWlvY3RsLmMKPiBAQCAtMTI5NSw2ICsxMjk1LDcgQEAgc3RhdGljIHZvaWQgdjRsX2ZpbGxf
-Zm10ZGVzYyhzdHJ1Y3QgdjRsMl9mbXRkZXNjICpmbXQpCj4gIAljYXNlIFY0TDJfUElYX0ZNVF9N
-NDIwOgkJZGVzY3IgPSAiWVVWIDQ6MjowIChNNDIwKSI7IGJyZWFrOwo+ICAJY2FzZSBWNEwyX1BJ
-WF9GTVRfTlYxMjoJCWRlc2NyID0gIlkvQ2JDciA0OjI6MCI7IGJyZWFrOwo+ICAJY2FzZSBWNEwy
-X1BJWF9GTVRfTlYyMToJCWRlc2NyID0gIlkvQ3JDYiA0OjI6MCI7IGJyZWFrOwo+ICsJY2FzZSBW
-NEwyX1BJWF9GTVRfUDAxMDoJCWRlc2NyID0gIjEwLWJpdCBZL0NiQ3IgNDoyOjAiOyBicmVhazsK
-PiAgCWNhc2UgVjRMMl9QSVhfRk1UX05WMTY6CQlkZXNjciA9ICJZL0NiQ3IgNDoyOjIiOyBicmVh
-azsKPiAgCWNhc2UgVjRMMl9QSVhfRk1UX05WNjE6CQlkZXNjciA9ICJZL0NyQ2IgNDoyOjIiOyBi
-cmVhazsKPiAgCWNhc2UgVjRMMl9QSVhfRk1UX05WMjQ6CQlkZXNjciA9ICJZL0NiQ3IgNDo0OjQi
-OyBicmVhazsKPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oIGIv
-aW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oCj4gaW5kZXggNzcyZGJhZGQxYTI0Li4yMTFi
-YzExYTQ4Y2IgMTAwNjQ0Cj4gLS0tIGEvaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oCj4g
-KysrIGIvaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oCj4gQEAgLTU5Nyw2ICs1OTcsNyBA
-QCBzdHJ1Y3QgdjRsMl9waXhfZm9ybWF0IHsKPiAgLyogdHdvIHBsYW5lcyAtLSBvbmUgWSwgb25l
-IENyICsgQ2IgaW50ZXJsZWF2ZWQgICovCj4gICNkZWZpbmUgVjRMMl9QSVhfRk1UX05WMTIgICAg
-djRsMl9mb3VyY2MoJ04nLCAnVicsICcxJywgJzInKSAvKiAxMiAgWS9DYkNyIDQ6MjowICAqLwo+
-ICAjZGVmaW5lIFY0TDJfUElYX0ZNVF9OVjIxICAgIHY0bDJfZm91cmNjKCdOJywgJ1YnLCAnMics
-ICcxJykgLyogMTIgIFkvQ3JDYiA0OjI6MCAgKi8KPiArI2RlZmluZSBWNEwyX1BJWF9GTVRfUDAx
-MCAgICB2NGwyX2ZvdXJjYygnUCcsICcwJywgJzEnLCAnMCcpIC8qIDI0ICBZL0NiQ3IgNDoyOjAg
-MTAtYml0ICovCj4gICNkZWZpbmUgVjRMMl9QSVhfRk1UX05WMTYgICAgdjRsMl9mb3VyY2MoJ04n
-LCAnVicsICcxJywgJzYnKSAvKiAxNiAgWS9DYkNyIDQ6MjoyICAqLwo+ICAjZGVmaW5lIFY0TDJf
-UElYX0ZNVF9OVjYxICAgIHY0bDJfZm91cmNjKCdOJywgJ1YnLCAnNicsICcxJykgLyogMTYgIFkv
-Q3JDYiA0OjI6MiAgKi8KPiAgI2RlZmluZSBWNEwyX1BJWF9GTVRfTlYyNCAgICB2NGwyX2ZvdXJj
-YygnTicsICdWJywgJzInLCAnNCcpIC8qIDI0ICBZL0NiQ3IgNDo0OjQgICovCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Mon, Feb 28, 2022 at 2:24 AM Michael Riesch
+<michael.riesch@wolfvision.net> wrote:
+>
+> Hi Peter,
+>
+> On 2/27/22 16:30, Peter Geis wrote:
+> > Add the dwc3 device nodes to the rk356x device trees.
+> > The rk3566 has one usb2 capable dwc3 otg controller and one usb3 capable
+> > dwc3 host controller.
+> > The rk3568 has one usb3 capable dwc3 otg controller and one usb3 capable
+> > dwc3 host controller.
+> >
+> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3566.dtsi | 11 ++++++++
+> >  arch/arm64/boot/dts/rockchip/rk3568.dtsi |  9 ++++++
+> >  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 35 +++++++++++++++++++++++-
+> >  3 files changed, 54 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3566.dtsi b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+> > index 3839eef5e4f7..0b957068ff89 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+> > @@ -6,6 +6,10 @@ / {
+> >       compatible = "rockchip,rk3566";
+> >  };
+> >
+> > +&pipegrf {
+> > +     compatible = "rockchip,rk3566-pipe-grf", "syscon";
+> > +};
+> > +
+> >  &power {
+> >       power-domain@RK3568_PD_PIPE {
+> >               reg = <RK3568_PD_PIPE>;
+> > @@ -18,3 +22,10 @@ power-domain@RK3568_PD_PIPE {
+> >               #power-domain-cells = <0>;
+> >       };
+> >  };
+> > +
+> > +&usb_host0_xhci {
+> > +     phys = <&usb2phy0_otg>;
+> > +     phy-names = "usb2-phy";
+> > +     extcon = <&usb2phy0>;
+>
+> I wonder what the correct place for this extcon property is. You defined
+> it on SoC (RK3566) level, in my patch for the RK3568 EVB1 it is added on
+> board level. Is this common to all RK356x variants?
+
+Yes, the usb2phy is always available as an extcon unless you make a
+device that doesn't have usb2 capability.
+In that case you'd have to override the device anyways.
+If we want to turn on default role otg here, we'd need this defined
+here as well or things break.
+
+>
+> Best regards,
+> Michael
+>
+> > +     maximum-speed = "high-speed";
+> > +};
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> > index 5b0f528d6818..8ba9334f9753 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+> > @@ -99,6 +99,10 @@ opp-1992000000 {
+> >       };
+> >  };
+> >
+> > +&pipegrf {
+> > +     compatible = "rockchip,rk3568-pipe-grf", "syscon";
+> > +};
+> > +
+> >  &power {
+> >       power-domain@RK3568_PD_PIPE {
+> >               reg = <RK3568_PD_PIPE>;
+> > @@ -114,3 +118,8 @@ power-domain@RK3568_PD_PIPE {
+> >               #power-domain-cells = <0>;
+> >       };
+> >  };
+> > +
+> > +&usb_host0_xhci {
+> > +     phys = <&usb2phy0_otg>, <&combphy0 PHY_TYPE_USB3>;
+> > +     phy-names = "usb2-phy", "usb3-phy";
+> > +};
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > index 7cdef800cb3c..072bb9080cd6 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > @@ -230,6 +230,40 @@ scmi_shmem: sram@0 {
+> >               };
+> >       };
+> >
+> > +     usb_host0_xhci: usb@fcc00000 {
+> > +             compatible = "snps,dwc3";
+> > +             reg = <0x0 0xfcc00000 0x0 0x400000>;
+> > +             interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH>;
+> > +             clocks = <&cru CLK_USB3OTG0_REF>, <&cru CLK_USB3OTG0_SUSPEND>,
+> > +                      <&cru ACLK_USB3OTG0>;
+> > +             clock-names = "ref_clk", "suspend_clk",
+> > +                           "bus_clk";
+> > +             dr_mode = "host";
+> > +             phy_type = "utmi_wide";
+> > +             power-domains = <&power RK3568_PD_PIPE>;
+> > +             resets = <&cru SRST_USB3OTG0>;
+> > +             snps,dis_u2_susphy_quirk;
+> > +             status = "disabled";
+> > +     };
+> > +
+> > +     usb_host1_xhci: usb@fd000000 {
+> > +             compatible = "snps,dwc3";
+> > +             reg = <0x0 0xfd000000 0x0 0x400000>;
+> > +             interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH>;
+> > +             clocks = <&cru CLK_USB3OTG1_REF>, <&cru CLK_USB3OTG1_SUSPEND>,
+> > +                      <&cru ACLK_USB3OTG1>;
+> > +             clock-names = "ref_clk", "suspend_clk",
+> > +                           "bus_clk";
+> > +             dr_mode = "host";
+> > +             phys = <&usb2phy0_host>, <&combphy1 PHY_TYPE_USB3>;
+> > +             phy-names = "usb2-phy", "usb3-phy";
+> > +             phy_type = "utmi_wide";
+> > +             power-domains = <&power RK3568_PD_PIPE>;
+> > +             resets = <&cru SRST_USB3OTG1>;
+> > +             snps,dis_u2_susphy_quirk;
+> > +             status = "disabled";
+> > +     };
+> > +
+> >       gic: interrupt-controller@fd400000 {
+> >               compatible = "arm,gic-v3";
+> >               reg = <0x0 0xfd400000 0 0x10000>, /* GICD */
+> > @@ -297,7 +331,6 @@ pmu_io_domains: io-domains {
+> >       };
+> >
+> >       pipegrf: syscon@fdc50000 {
+> > -             compatible = "rockchip,rk3568-pipe-grf", "syscon";
+> >               reg = <0x0 0xfdc50000 0x0 0x1000>;
+> >       };
+> >
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
