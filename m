@@ -4,80 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6AACC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 21:37:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD7CEC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 22:37:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0WzIi9FqHKYcLNWXbqaG07tBmjytfjZzy+/b1COATo0=; b=qV+l1sKSOlhdev
-	EJ92/6z51gukhkE5V/g3u1D9eiksnEK0vyXFY7Ubim/Wbe1pkhyWvFIPuDpYTDfFUo6KhO1EGjHXG
-	fmqci8wduHl+xdA7L8Xp+D3HSkvTmQr/9EgcTznQbhKHw/6jb4YoVI9A2emOb4YVABp3tNcKuw+hz
-	//awtirUITuYfj5JrclHI9Jk0f7J+U5P2/3XcJkw5V3YdY6ZssXGYMBbRxcGnf9zH5JqtXtARkbOj
-	nqt5zSbC2nKRELM40xCy/+tfDMSAEH4Se275bB/CUtJdnywZyIB4B3xZFeOU14FEQsLT4g6LvcQQk
-	OnJ/MCxaiAeRDQlS7XDw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/+Iqux4u11eLho1Lkh1UotOpokftgQMpeCZTleCSOJg=; b=lcfe2Ql+KIX/M7
+	wsEzzW5SolN1AXTrMJq/bXJnfbXg6hzNHLbPdI//RFIxz2VRZtou8v4Gz7B5Fupx0FQ4EMzh3N0Lo
+	ttnqUXfyQmni2RFdiPMxFB5hWC1CjJC2ULqb0sL+RpUjEjbN4aSYHi2zCVpFD8HuIBq3FGJ9K1VyB
+	m4bDjzBYY0YKFjIRAdDFQmqigfhh8CZFYxGyl9bKdunaiNPzCTYZWwfJi8e9AWMG4R4q8azb1Vb05
+	ke9/PnJ/pNvPYjT/TFrn3zXkk23WwTdPtEEXjWjcdvBpdxCAZnmI6enX1X9TijrnBGvE026V2I9BL
+	Wje+m3/2oOnwKqVI5ZVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOnha-00EBFu-3y; Mon, 28 Feb 2022 21:37:06 +0000
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+	id 1nOodX-00EJI0-Ic; Mon, 28 Feb 2022 22:36:59 +0000
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOnhW-00EBEf-97; Mon, 28 Feb 2022 21:37:03 +0000
-Received: by mail-yb1-xb2e.google.com with SMTP id j12so23265615ybh.8;
- Mon, 28 Feb 2022 13:37:00 -0800 (PST)
+ id 1nOodK-00EJEO-U5; Mon, 28 Feb 2022 22:36:48 +0000
+Received: by mail-qk1-x729.google.com with SMTP id v5so11603382qkj.4;
+ Mon, 28 Feb 2022 14:36:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=49RK8fagkzciDmeTkIUa5Y3PaFfL+9gEC9qTeysrkEw=;
- b=Ghc7xyANaUfo3Im8KlGsbHeju/J021WzlgH1XO1+kLhmTwKg6MNa/M/s0wk0QZGJD2
- WjUQcbo2GTyyM6cVHIIb9e9UJTP337Megzc732e3+RfgCvGsevshLw4O34Gev3WM9Iof
- jZ9ksLwhVpDHok8/b5/Ly+5YDywsL852fI5vux7vHc+fQI8lZCjYNvPK673nxBFRIfl4
- 7e3X/tHZc+ya/S4KDiIWv0NZha6Npmbx8L7oja3t6QFEaRjqZXocKTnUfcBt7Ucn1/ln
- vA5Un2vuavYPXjxyxs5n/554nrZ76YNRQrSFbKgxNC70ATbbWqtoqSc7npPg4n7T2cNi
- tuVA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NqNLCNZbfRzdZ6s+RPZUVSDu53vbe0qWHYGyNkt893E=;
+ b=XftIddrMAmhmuVKIlxOi7ezAmFRdps3UDkEEbl2ZeQMGo2H+ELXtV+4e9DhnZAMsyL
+ D/pDeeWj49sL9GZwHUnnj7n3RGyrUTegADjvReidPUORqC64NeyziR5G+yT6oAKr6A2d
+ Vdk+FWwex1AuVPvENWoJB6Ej44hGNZptg3xEBBphTsCS8U8UUkUxFpOUgebJdUc2qjrN
+ ox0phf1gLwEbJqPCbyajU3SIVtC/zaTN1s3koJIojHtROjDUYqV56hheoywgjYgCNSYz
+ vxCzJtshV5w34Hu9TntuiYVCrJxoLt0yfBW6VGutDNiE8lv73o7vOn34u0tiBsX6p2Gg
+ aRMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=49RK8fagkzciDmeTkIUa5Y3PaFfL+9gEC9qTeysrkEw=;
- b=IDrCXmE2l39c5hp9mTfHblt5lIs+paiViYFk/BLXGXQEJ5SBMABzwCJTWv4JNZdRFT
- 0HONptQgkPfYKKA3d93Y5rEXcctHv4xTbGY9CcOTi7hV0l9jOiErePCyg8XACB6+wpWv
- 4NbtSfmHSSduJ2JmeSumKU0ns4Ru+hBcvi0jV1Cqy9Y0XZCl9C50+OU4sQP+BjYCCXnc
- MYb/CUuBizmjqLdtfXndvoj86NLXJJLwICjKpvQ4WYj47FoW2xPJo/xT1zvqB3Y4olJq
- Ut32I4pRKlq72AeCnM6FxE/94oxEHuHHgKW0SQoMZPlxzkymjlWjkmo3T+WwckDkp0OQ
- 6+yw==
-X-Gm-Message-State: AOAM532LjiU9xOhsQsDs5ruvHFdyA9ZFvWhwSKmPbHcJZowl4291d54+
- dd1CCjiliFCG4ysO1CzB/MuSCOi8ecm7sVcnHnM=
-X-Google-Smtp-Source: ABdhPJwiasc5SG6oyWvTcvWy37s6zd5KJrMwEeLlNDItpQ1esBIXssG8lOe7GAJYo0dA1LW/S2a+CMvmww/+rJBVEx4=
-X-Received: by 2002:a25:268c:0:b0:624:b515:5859 with SMTP id
- m134-20020a25268c000000b00624b5155859mr10899928ybm.232.1646084220065; Mon, 28
- Feb 2022 13:37:00 -0800 (PST)
-MIME-Version: 1.0
-References: <20220208091326.12495-1-yifeng.zhao@rock-chips.com>
- <20220208091326.12495-3-yifeng.zhao@rock-chips.com>
- <CAL_Jsq+1ixfw4+pwPcM5azPdC_4_bYCPu50jUvKnVMr6dSncpA@mail.gmail.com>
-In-Reply-To: <CAL_Jsq+1ixfw4+pwPcM5azPdC_4_bYCPu50jUvKnVMr6dSncpA@mail.gmail.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=NqNLCNZbfRzdZ6s+RPZUVSDu53vbe0qWHYGyNkt893E=;
+ b=vzuyr0D+36aiwDKSMmvgmj4Gy0wyjXa6n+NvuDjW630Nx5A3ThyukRXqgLLPKnuFpV
+ Desh7Au4rli0vs/27GKj6fav0vWdQk0ROLEFkhq2xYsRBqccPhI+H2Oeu82/QMrfvset
+ r/4NH6W3KgCwCyGi/OaFQbQe78bK3Fa25eVJQA2xJK59OLKw0wRse+YN/YWH92h9nczd
+ ReKFHnWdwii0OfeZJZxdZ70U9+eVezbzeUouyNMAG1WOeRhxQ5ivK4o1gAgGNnyJisPC
+ u9UMKj/feHyJKPB9C9GdtrLh2y24w3uXaeldwB811vl4OzuYawKpqbQidpmtDK105D/k
+ TyUA==
+X-Gm-Message-State: AOAM532V7motQnF5hsLACM5MJ8lmzW4FMfjAFgoRkQyTIDXCXZ03J5l0
+ +SeM9olL7BkTZKaYmIWMIRI=
+X-Google-Smtp-Source: ABdhPJxzocr7KcKfiyTO0gDJ53raBvOlFPXC+nmpx349DwcEXm+eD7Ij9yg7XQVuxFESGg/JvDVyWw==
+X-Received: by 2002:a05:620a:45:b0:508:176a:8892 with SMTP id
+ t5-20020a05620a004500b00508176a8892mr12549250qkt.731.1646087805470; 
+ Mon, 28 Feb 2022 14:36:45 -0800 (PST)
+Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
+ by smtp.gmail.com with ESMTPSA id
+ v9-20020a05622a144900b002dfedb4dccasm6632068qtx.66.2022.02.28.14.36.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 28 Feb 2022 14:36:45 -0800 (PST)
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Mon, 28 Feb 2022 16:36:48 -0500
-Message-ID: <CAMdYzYryTb4Gvv3XENgUOSrutr7S-5a7GOMRahXWWZOeL1qKWA@mail.gmail.com>
-Subject: Re: [PATCH v8 2/4] dt-bindings: phy: rockchip: Add Naneng combo PHY
- bindings
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Yifeng Zhao <yifeng.zhao@rock-chips.com>, Vinod <vkoul@kernel.org>, 
- "heiko@sntech.de" <heiko@sntech.de>, Johan Jonker <jbx6244@gmail.com>, 
- devicetree <devicetree@vger.kernel.org>,
- Michael Riesch <michael.riesch@wolfvision.net>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
- "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
- Kishon Vijay Abraham I <kishon@ti.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Liang Chen <cl@rock-chips.com>, 
- Kever Yang <kever.yang@rock-chips.com>, Lee Jones <lee.jones@linaro.org>, 
- wulf <wulf@rock-chips.com>, David Wu <david.wu@rock-chips.com>
+To: Jaehoon Chung <jh80.chung@samsung.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Peter Geis <pgwipeout@gmail.com>, linux-mmc@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] mmc: host: dw-mmc-rockchip: avoid logspam when cd-broken
+Date: Mon, 28 Feb 2022 17:36:42 -0500
+Message-Id: <20220228223642.1136229-1-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_133702_359791_E13CE5BF 
-X-CRM114-Status: GOOD (  21.26  )
+X-CRM114-CacheID: sfid-20220228_143647_002793_01771BCA 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,80 +89,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 28, 2022 at 2:18 PM Rob Herring <robh+dt@kernel.org> wrote:
->
-> On Tue, Feb 8, 2022 at 3:15 AM Yifeng Zhao <yifeng.zhao@rock-chips.com> wrote:
-> >
-> > Add the compatible strings for the Naneng combo PHY found on rockchip SoC.
-> >
-> > Reviewed-by: Rob Herring <robh@kernel.org>
-> > Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> > ---
-> >
-> > Changes in v8: None
-> > Changes in v7:
-> > - remove u3otg0_port_en, u3otg1_port_en and pipe_sgmii_mac_sel
-> >
-> > Changes in v5:
-> > - modify description for ssc and ext-refclk
-> > - remove apb reset
-> >
-> > Changes in v4:
-> > - restyle
-> > - remove some minItems
-> > - add more properties
-> > - remove reset-names
-> > - move #phy-cells
-> > - add rockchip,rk3568-pipe-grf
-> > - add rockchip,rk3568-pipe-phy-grf
-> >
-> > Changes in v3: None
-> > Changes in v2:
-> > - Fix dtschema/dtc warnings/errors
-> >
-> >  .../phy/phy-rockchip-naneng-combphy.yaml      | 109 ++++++++++++++++++
-> >  1 file changed, 109 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
->
-> This now fails in linux-next:
->
-> /builds/robherring/linux-dt/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.example.dt.yaml:
-> syscon@fdc50000: compatible: 'oneOf' conditional failed, one must be
-> fixed:
->  ['rockchip,rk3568-pipe-grf', 'syscon'] is too short
->  'rockchip,rk3568-pipe-grf' is not one of ['rockchip,rk3288-sgrf',
-> 'rockchip,rk3568-usb2phy-grf', 'rockchip,rv1108-usbgrf']
-> From schema: /builds/robherring/linux-dt/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> /builds/robherring/linux-dt/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.example.dt.yaml:
-> syscon@fdc70000: compatible: 'oneOf' conditional failed, one must be
-> fixed:
->  ['rockchip,rk3568-pipe-phy-grf', 'syscon'] is too short
->  'rockchip,rk3568-pipe-phy-grf' is not one of ['rockchip,rk3288-sgrf',
-> 'rockchip,rk3568-usb2phy-grf', 'rockchip,rv1108-usbgrf']
-> From schema: /builds/robherring/linux-dt/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
->
->
-> The problem appears to be that patch 1 was applied incorrectly and the
-> compatibles ended up in the wrong section (the one requiring
-> 'simple-mfd'). Patch 1 probably conflicts as my bot will just skip the
-> patch if it conflicts which is why this had a different error report.
+The dw_mmc-rockchip driver drops a large amound of logspam constantly
+when the cd-broken flag is enabled.
+Set the warning to be debug ratelimited in this case.
 
-Good Afternoon Rob,
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+ drivers/mmc/host/dw_mmc-rockchip.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-This is fixed in the first patch of my rk356x dwc3 enablement series:
-https://patchwork.kernel.org/project/linux-rockchip/patch/20220228135700.1089526-2-pgwipeout@gmail.com/
+diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+index 95d0ec0f5f3a..d0ebf0afa42a 100644
+--- a/drivers/mmc/host/dw_mmc-rockchip.c
++++ b/drivers/mmc/host/dw_mmc-rockchip.c
+@@ -50,8 +50,13 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ 		cclkin = ios->clock * RK3288_CLKGEN_DIV;
+ 
+ 	ret = clk_set_rate(host->ciu_clk, cclkin);
+-	if (ret)
+-		dev_warn(host->dev, "failed to set rate %uHz\n", ios->clock);
++	if (ret) {
++		/* this screams when card detection is broken */
++		if (host->slot->mmc->caps & MMC_CAP_NEEDS_POLL)
++			dev_dbg_ratelimited(host->dev, "failed to set rate %uHz\n", ios->clock);
++		else
++			dev_warn(host->dev, "failed to set rate %uHz\n", ios->clock);
++	}
+ 
+ 	bus_hz = clk_get_rate(host->ciu_clk) / RK3288_CLKGEN_DIV;
+ 	if (bus_hz != host->bus_hz) {
+-- 
+2.25.1
 
-Very Respectfully,
-Peter Geis
-
->
-> Rob
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
