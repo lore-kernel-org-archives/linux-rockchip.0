@@ -4,88 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9701C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 13:27:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC429C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 13:38:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WYxleyiaN4WZaxRDKO3JZ2X2iF6gw5bEobT5asDaF/A=; b=mRZU1B0F7iQBYv
-	F3nMojo1o7+Q4+rW1AgilxGFjpC6cMmL1i9xAI6DL106bOIZ4cMokuzpBVtp6V2KucMWh+etsx012
-	Im66yTG0/ZPnwYNFej2DLmkig1A2pLNZXyEFlDFolS8zbWZMADBrTlcMmVw2qadC4hBSO/gd1KaxM
-	Zdmj2iLAf9Y7XFP45bdJBoGYigB3niWFqS+/BW8qpkX0HWK1rswjPaETzCE3X/A+CERI9dZO9YYbJ
-	V0mxEG6x/C5VEOFghVTWmdZT8c367ccG8f7oPsUwQL80U5/b0fAs/bFghPq1OT/TgvlvPvg048Mli
-	ol4UlVxe2hwYu112ipwg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=J3sH0jXkJqF7oiJMtWM1LDRfiOLTJp7+HbDNRvnMj6g=; b=QDK96RY/DxBNjLgIdZdQcXsG5B
+	ulusuubiKyX9H6/UAKQNtR2hgFOVcJQtx7WjBJCZgInEjGbDIWK5fEUmA9mptmJM163733PWT1u0L
+	nrPJg4lZqG2opkomVT3UFxKohKaWwJ76yHg4g8gvLS2oESzCwt2IemvvbsjPz7lT8BPrpfYXqhKkp
+	0kp60PoJN3pRR5WI2S1TS7MdEu+MVy7RDBhAaUgplVdQGwt6iBwb1kcLKw8rFJeCLfIkvPOPYeuw+
+	O+IFYnErb0oFmy8w0oS+lbx6iv9QQa47RAEAte41smrmhzSx1v9pBIa3A6V4iuXuTJe+x1GlMav0j
+	s3IVFolQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOg3N-00CYru-JK; Mon, 28 Feb 2022 13:27:05 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1nOgEH-00Cd7S-Gg; Mon, 28 Feb 2022 13:38:21 +0000
+Received: from mail-vi1eur05on20628.outbound.protection.outlook.com
+ ([2a01:111:f400:7d00::628]
+ helo=EUR05-VI1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOftG-00CUYw-ON; Mon, 28 Feb 2022 13:16:41 +0000
-Received: by mail-ej1-x633.google.com with SMTP id hw13so24637124ejc.9;
- Mon, 28 Feb 2022 05:16:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=gLyji2lXIIBrJ7pS+hjvr2Fre28Lj40SpMAVpenGsu8=;
- b=NQivf7OXRQw+/i2egcr1EYrZDOZzyJNpvwK6BB9CNMapN0ed+78zUcES21XNm/6/15
- d+cUKMhv164xKNmhA74yZgGrvzZ+TfV14EIToEsRkDR820pkFJppFqlpvs08WPqkTAvq
- svdldf+LPmBq3dH78qbAfWRTiESmQ70EGMRzB3U1DhJQZughkbm7pMvrCgUVPNB0tNJP
- dcRkPIjLqCNtOezB1lY++uK7dsceyM8uPGB3SM0CaeUTSkEN0bpLtLOw+enu1S5B6QvB
- cUOxArA4suelgxAX/5FsZ0NvxYqDnmkQXmYp3VV/YzPoU1vMzKz+pzCd6WDqvUlUvZdY
- qRYA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=gLyji2lXIIBrJ7pS+hjvr2Fre28Lj40SpMAVpenGsu8=;
- b=RaP7gBs94gzYm1l/KLJRLOUysHxEIyVDbTA8CNF0dp5P2A+Ew4uC8BIPXX42zr9SSu
- T/FV8y95663CmNRNLajmIxackm5IGMns2fys39AIiBpcTXFa9iW1FclkgnXJ87znDDAy
- u12Hfvb0LGH8mZQTz6qUBgLsMsVmaWnp2K8hMDeGDErogFEl1PLJSMOXII51ux4YdBzT
- wP5tj8jL0LLCgI4+yGsjrmX+W6nY2ntv4+iwigzReZ0sahtBJZemNwFCK3hpS/idB+wF
- CHgyEZhIy1fy7y8KrUz+4RJ0wAAUE0V/n9ARVfxzcd1rhDESF+WQH7Ne4uI+qv+R922i
- mzOQ==
-X-Gm-Message-State: AOAM533lgsgr25f4mnFdthQI9htfzCnkdMcm6riSSOBowBgJqFNDh7lG
- pwBWsjR4id8W8xhqOeX35nI=
-X-Google-Smtp-Source: ABdhPJyeE6XZT50xZ7y3mqQRvl3/GTUleK/YA6H91A0QUoKL4Yy5/MFnFHsrJRca/gyd1Af+YZ1keg==
-X-Received: by 2002:a17:906:9509:b0:6d0:fbc5:eb4a with SMTP id
- u9-20020a170906950900b006d0fbc5eb4amr15101640ejx.228.1646054196450; 
- Mon, 28 Feb 2022 05:16:36 -0800 (PST)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- ju22-20020a17090798b600b006ce70fa8e4fsm4337983ejc.187.2022.02.28.05.16.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Feb 2022 05:16:36 -0800 (PST)
-Message-ID: <ab72daa6-9b8b-a435-82c3-93a9018a0bfa@gmail.com>
-Date: Mon, 28 Feb 2022 14:16:35 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
+ id 1nOgDv-00Ccy9-2d; Mon, 28 Feb 2022 13:38:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Va+SAv4l6XohtuHXJ9Bp8yClcLRoKQz/SsNgcTe2m8X7iGCDjtpNiRsBeLi39mvplZeyALixlAe+B2iKJrTjJi8GMpLdYPMM1wKBmXynfFEI2Jz+N0BtCUCQ5noyRJVhItxc2ysiiuUzaFp2DZvQmSMYifRjEX+DWhyDi11suAZYqhzyl/EpQ77+zw7kmFF+hrE5iiyrOiaYxcpn1DCz3ixyWNVjRj07mfc0p+cnmaEq3HXkAMr9fsfaK4a+uI0owOseeclLzsNJEr9RKFBzCl7cGaH49BW+joCF5FSe/iRGRn0/iIwBLnHKxsid7CzTnO4WdnywwaNefNVYrD1TOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=MUgkZug00jCigowMOB3S/cszBQcBLjo90ugo5XYeL5A=;
+ b=Y/WaWobIEfINWZ8QnGNVZEeB87CfZT8KyWHVZ1q+frY0O2GFGh7i/unqE3psrDqVs2I0JISfSe7YuCfXnItgmxoxEpNfBEpMXvZOHW1uaqFjym7VB450SXwbZJpFPQFsoSKfRiAT3dZoXkaESA/PWD92oKY3NaS/sfO/h1sqJlnMGPOT9Nu1l4RJO2yPAQqPful3RYXIohADhTyNcYPSJVADpSk1CKgkPzVUk0Cai5uOy8+iqVYSjrws8Z48x2Ov4shUnw4m3OPTHwcKmUJlFBKHs21z8SX4TLJrnsKYfAud2Q9im4+h5c5bHvnX9/YMjytzBNHpFxWVAEC75hEupA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=MUgkZug00jCigowMOB3S/cszBQcBLjo90ugo5XYeL5A=;
+ b=wE00xdlFpftesi/QT4DfZxXg9rP0Ys9BLJjKHNwQYTbpOuQsgWAaxt0zR7t5JZ17Ca/1ZA9vut7B7u45dnvdxtuCUJSVSyIwOjusZI1xL3ApLBvj2bil0wjDQvN6m7h4o1AX/HsG3NcQyV3EXdhKdXMWKvMyqc47ppLxYGoigH4=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com (2603:10a6:3:e1::23)
+ by HE1PR0802MB2348.eurprd08.prod.outlook.com (2603:10a6:3:c5::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5017.26; Mon, 28 Feb
+ 2022 13:37:53 +0000
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::f9ee:a333:b115:5049]) by HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::f9ee:a333:b115:5049%4]) with mapi id 15.20.5017.026; Mon, 28 Feb 2022
+ 13:37:53 +0000
 Subject: Re: [PATCH v3 5/7] arm64: dts: rockchip: add rk356x dwc3 usb3 nodes
-Content-Language: en-US
 To: Peter Geis <pgwipeout@gmail.com>
 Cc: Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
  Heiko Stuebner <heiko@sntech.de>,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- devicetree <devicetree@vger.kernel.org>,
+ Johan Jonker <jbx6244@gmail.com>, devicetree <devicetree@vger.kernel.org>,
  arm-mail-list <linux-arm-kernel@lists.infradead.org>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 References: <20220227153016.950473-1-pgwipeout@gmail.com>
  <20220227153016.950473-6-pgwipeout@gmail.com>
- <7b20fccd-4394-da3c-6556-4732d67cde3d@gmail.com>
- <CAMdYzYp8x_mKffm1WkHD4D1Fx_tVJ8WdBc=u-j+j_zRbJmyaCQ@mail.gmail.com>
- <3ac3cdf9-17c0-654f-b204-c5b4b0436c98@gmail.com>
- <CAMdYzYrxQUhFNog1hvwme=V-3xptE6C9Se09FxEoEQm9bPdEEQ@mail.gmail.com>
-From: Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <CAMdYzYrxQUhFNog1hvwme=V-3xptE6C9Se09FxEoEQm9bPdEEQ@mail.gmail.com>
+ <fdacf3eb-7892-c767-ae85-1672f85684dc@wolfvision.net>
+ <CAMdYzYoEEY6-kGVDeWj9AoA98BL5hxnc_4CnUPiuStUnSrFXLA@mail.gmail.com>
+From: Michael Riesch <michael.riesch@wolfvision.net>
+Organization: WolfVision GmbH
+Message-ID: <56f8b74d-d9a1-7c6b-67f2-29586956670d@wolfvision.net>
+Date: Mon, 28 Feb 2022 14:37:51 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
+In-Reply-To: <CAMdYzYoEEY6-kGVDeWj9AoA98BL5hxnc_4CnUPiuStUnSrFXLA@mail.gmail.com>
+Content-Language: en-US
+X-ClientProxiedBy: VI1PR0801CA0083.eurprd08.prod.outlook.com
+ (2603:10a6:800:7d::27) To HE1PR0802MB2426.eurprd08.prod.outlook.com
+ (2603:10a6:3:e1::23)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 5be13627-415d-41ee-4ab7-08d9fabf8535
+X-MS-TrafficTypeDiagnostic: HE1PR0802MB2348:EE_
+X-Microsoft-Antispam-PRVS: <HE1PR0802MB23489F0598C1D4AA2DD4819EF2019@HE1PR0802MB2348.eurprd08.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: PsPRpkI3Gp4eBefciRt6xsHRfes6A8rkBntEbvGC3tHF7q54fwFzprS7e4Yy4C1SR87CDZk3m1WSjLdB78WtLC/1YCq5ymvBci4opoUxHca/++mpHCNEv8yvBirFmxpSuZzNY+YV9pDUUcKoEFylqGsBTS9it6fKm3LymRimxbCVJ8kWJnWdtHa7Ag+vDjPWd/C8ijWt4i54Nuk79cX75tmnQPsvOwcHMjPp2wXRYyBAVyup3+d3BMGMtp0VhbBrJgb7zaFATFtaFA9pWCNohW5mXRD6NnssnaefPS2LvG2AUSVBSPpBWiSjMqTgHrs3WHrVA3GGuzoGJxEUTlo5khuqldaEwYRdMvFjzbgDsEF1S2QQRynAYA+H/23LK1L/QQ7n69VpZWddRVdiGq6ZCORMNf0vsAyEXG1xdtqt49L0DNOr8mO8Tf8ME1AZ9YXg+j3lsBsE7NwfoAi60VjaLyV7Y0WcEtjyntZURtRhM6514cjBnFjqKkl5maXEf/b3GA76gpcht4DrkFDI44foVaLb5+eL0xB4WIHvM5KysGFSS1Ey2BEp4a64QnTm/Yeia/TZLOMvV2VMLLRG/BlA8HmRQftVD3JQdG93u4mJEMeII5Zu8FOLFo6pHh5ZXYeHdfdTJEj8nd+lnvvSva5eMPwLj6fsKqft/MZI5nJMYaRyWGnhjOg+tX4jlknaQmH3uMA3CJSAD142yFlIsDuelWe/O+tp0v30F1sNe3yi0V7ognsREZGBnGhhYvRge+E5z4c0afkDckPBNm1+zllraw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:HE1PR0802MB2426.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(5660300002)(44832011)(4744005)(54906003)(508600001)(6486002)(6916009)(26005)(186003)(2616005)(31696002)(6506007)(36916002)(2906002)(52116002)(6512007)(86362001)(53546011)(66946007)(66476007)(66556008)(4326008)(38350700002)(38100700002)(31686004)(8676002)(8936002)(316002)(36756003)(45980500001)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Q2ZoVEFTRnd6TVY2WWd4aGR2QWtXS2dZMXNYdzBGUHREbFI5MFRJTU15SmFC?=
+ =?utf-8?B?NmNrcWRZTmMwdEI3WUpoZERxaWoreGZtekhkYVhzeUdWVHhkbkJRY0JtUUJX?=
+ =?utf-8?B?N3pacUxuTU5pNkRQVXgzd3ZJL291YTk2M1V3Uk1rK3FxcGxjNU01MVB2RnVL?=
+ =?utf-8?B?ZEFTMm5PUmw1TUVRVWc2WVBHdTBOekZSM0c4bVh2WXJsaW9QalpEdHhLMW5s?=
+ =?utf-8?B?SWZCVGRBbHdFbTBweERRbUJ3ZGV3azRUL2t4OFBtbFdCbU5LU1NFYzYzeWVR?=
+ =?utf-8?B?SmUrakIwaUluU3FBMXVXOVRCY2E5d2JTSEFJdUhQNXliZXJHMnJQalA4MXZz?=
+ =?utf-8?B?ZUJ4MjZqVXloanJrRGtXcGhkTU10M3hIckNaVnZjSGs4QTRuMVkxOUFHK29J?=
+ =?utf-8?B?bWVkQUZmaGhKajBzdUlGbEowZzg0a21GSzRuZ210ZWZiajkrd1dvaHhUUC9k?=
+ =?utf-8?B?RFpweDBySDJWSkZsSVhZcms4cVRrVEtmbkNHS2p0MWloeXFZMDd6Rm1jS2d3?=
+ =?utf-8?B?UmJDdzBtKzYxemcxdGZUS3IzYmhsbG1FNnd2dFpFUWdZVWVycEFiV25jR3hx?=
+ =?utf-8?B?UFE2YVBsK04vNUlEQllqTzB2b09JZzYxL2NQSi8vQzlabWRReUI4L1plQTdZ?=
+ =?utf-8?B?d1dDRW9BblNKT2xRNHlIeHZaaTFjSUtoZXM0WDFoNmpFbnlqbHBZaTZxb0or?=
+ =?utf-8?B?bkttMUtWQ2JzK1VXbWl3RmxpUzNRUzBNUENkbVFsMFF1TFVwbm5RN2dxcjFB?=
+ =?utf-8?B?TDJubm13K3JJTXh4cm5FZmZ5ZWlpN0tjbUdsOWpjWjh5YWw0dnhORWVCemtl?=
+ =?utf-8?B?djBhQnFVZXRCUkk4aFFxckVtSTFHQ29Hamw3N1pjeGZxc1UvSnM3bXE0UWtZ?=
+ =?utf-8?B?eXBjL050NUVmN1FFdURGRmZzK3FFV3VLTmZqSmRtcHZQVG93eG5sUTY5bHJR?=
+ =?utf-8?B?QmFRbEtEOE5HRUVGR0QrcE8rcm9WeXlVdnFQSE1pbExZZ0pQcDFEQjBqQkpI?=
+ =?utf-8?B?T3hxa0xEcGp6blZjcmhkWThWYTl1cHZYNWZxVWVlM2gvdHBTVGhMenZCMUs0?=
+ =?utf-8?B?dXBNYVFycG9ieGRnWTFrN3E4c21VYSt4a1hoV2orZld3WlY3R1AwQlYzM1pE?=
+ =?utf-8?B?OUlpZHlFRGJiQyt0eEFZNXJzOHZoWU9HMG1hUzdOTkUwSEs1YzQxcUJ2eVlG?=
+ =?utf-8?B?QUdZeTVJZXVmWUd3TzdCQmo1UkVxcW9vcmlSYlpDTlZUQ1NtSHgwSTRYSCt6?=
+ =?utf-8?B?Vy85Uy9UaHFvRElvZy8rdVJMVXFhRzYyY0lHSzBhNGd5Y01IekRGNnZzSDJs?=
+ =?utf-8?B?RFIvQmhLYWtsYWhHUlRwQUpTcEZxSWJVZmx4b09LMVhLMGxaeDNzek9taWpL?=
+ =?utf-8?B?WUkvNk5qUGU3cWdSazVLYkdDZFRNeVlrcnBJNDFWcFBZcGwzM3hqUE00ZitB?=
+ =?utf-8?B?ZXMwK2JvdDVxRG10b1lrcmlQWEhIYWpMYVNmR2d3cFRVVzVGZFE4YXZpT1Q5?=
+ =?utf-8?B?MTMzV05EWUx3c3hiMlpmcDUvL0xiMFBJZllUdTVoSVFRdDNpOEhLWkdzck9p?=
+ =?utf-8?B?U252MUluSnNBeW13L2JZOU5oZUN1UFphSk9nNThaWGdrVGJ4dGgzelBkL2Fj?=
+ =?utf-8?B?NXlXRW00VS9WakJVY0lpRDJKYzdQUXovOVZmVTlucW1nNFRudDFTNEM0b25V?=
+ =?utf-8?B?cysxbGtnMzNsbUpITlQyU2YxazFYajJxekhXckV1T2xMY0l4VjBIQURnV0ZS?=
+ =?utf-8?B?aWRYNFJBeWlYdGNBQ25yUkkybUxMeDJ5YklvaFBCNlBXWUY5a1M3UHlNUW5W?=
+ =?utf-8?B?TnluQW5Db0RGdHFaU0xDV0lnOUorY21DUHdOSW55WUsram93NGtXQkZJMmhq?=
+ =?utf-8?B?Q1JPalJ1V0w1cmhCWVRXelEzd3ZFRjYxTjFjTnArS01qNHd3REowd2t4STZE?=
+ =?utf-8?B?aGpKT3ZQUTlXOTNLdkhvVjlhY3B3QzVMZlFvRExxVWNUVnk3NUM2dlJ0aUp3?=
+ =?utf-8?B?YVgraXdzNDFOVGpOS1dnUXNHQmxvY3M3SWI5L3YwdFBkNVRLQWw5SGk3U0hZ?=
+ =?utf-8?B?V3cvREZNK09BRk45V3dhUnZIYWRHY0hySmZsZTNJMjE3amdSZUkxZTJWa3Nz?=
+ =?utf-8?B?NnlrYVJZQ0h5MXlIZ0F4SkVGbnJ6ZmIxN3oweFhQaXdJWjUrbHIrRkxXUkZ3?=
+ =?utf-8?B?Uy9mNnVBNmtMVDJKVjRoL1dlNFBTU2xtMHZrVUdQb3NtdnlXSVRiZ3U2blBG?=
+ =?utf-8?Q?GPdBd3t/krMfHX+wXmdFrZcplzuwelZIvyFzDtYcyg=3D?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5be13627-415d-41ee-4ab7-08d9fabf8535
+X-MS-Exchange-CrossTenant-AuthSource: HE1PR0802MB2426.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Feb 2022 13:37:53.2382 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: vFy9d2mAJwlBJ53j139nao0wGtV3XDr42Vs/XiJpRVY5qmYDdIQWVLg4OaQjos04ZJI3aqqDvzMuMnZx2hJ+nudZB2xUPcHgtadSOMTSKEo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: HE1PR0802MB2348
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_051638_882125_3E3B257C 
-X-CRM114-Status: GOOD (  22.71  )
+X-CRM114-CacheID: sfid-20220228_053759_251561_FB2BCE6E 
+X-CRM114-Status: GOOD (  14.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,191 +159,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Peter,
 
-
-On 2/28/22 14:02, Peter Geis wrote:
-> On Mon, Feb 28, 2022 at 4:10 AM Johan Jonker <jbx6244@gmail.com> wrote:
+On 2/28/22 1:57 PM, Peter Geis wrote:
+> [...]
+>>> +
+>>> +&usb_host0_xhci {
+>>> +     phys = <&usb2phy0_otg>;
+>>> +     phy-names = "usb2-phy";
+>>> +     extcon = <&usb2phy0>;
 >>
->>
->>
->> On 2/27/22 23:44, Peter Geis wrote:
->>> On Sun, Feb 27, 2022 at 12:50 PM Johan Jonker <jbx6244@gmail.com> wrote:
->>>>
->>>>
->>>>
->>>> On 2/27/22 16:30, Peter Geis wrote:
->>>>> Add the dwc3 device nodes to the rk356x device trees.
->>>>> The rk3566 has one usb2 capable dwc3 otg controller and one usb3 capable
->>>>> dwc3 host controller.
->>>>> The rk3568 has one usb3 capable dwc3 otg controller and one usb3 capable
->>>>> dwc3 host controller.
->>>>>
->>>>> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
->>>>> ---
->>>>>  arch/arm64/boot/dts/rockchip/rk3566.dtsi | 11 ++++++++
->>>>>  arch/arm64/boot/dts/rockchip/rk3568.dtsi |  9 ++++++
->>>>>  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 35 +++++++++++++++++++++++-
->>>>>  3 files changed, 54 insertions(+), 1 deletion(-)
->>>>>
->>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3566.dtsi b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
->>>>> index 3839eef5e4f7..0b957068ff89 100644
->>>>> --- a/arch/arm64/boot/dts/rockchip/rk3566.dtsi
->>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
->>>>> @@ -6,6 +6,10 @@ / {
->>>>>       compatible = "rockchip,rk3566";
->>>>>  };
->>>>>
->>>>> +&pipegrf {
->>>>> +     compatible = "rockchip,rk3566-pipe-grf", "syscon";
->>>>> +};
->>>>> +
->>>>>  &power {
->>>>>       power-domain@RK3568_PD_PIPE {
->>>>>               reg = <RK3568_PD_PIPE>;
->>>>> @@ -18,3 +22,10 @@ power-domain@RK3568_PD_PIPE {
->>>>>               #power-domain-cells = <0>;
->>>>>       };
->>>>>  };
->>>>> +
->>>>> +&usb_host0_xhci {
->>>>> +     phys = <&usb2phy0_otg>;
->>>>> +     phy-names = "usb2-phy";
->>>>> +     extcon = <&usb2phy0>;
->>>>> +     maximum-speed = "high-speed";
->>>>> +};
->>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
->>>>> index 5b0f528d6818..8ba9334f9753 100644
->>>>> --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
->>>>> +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
->>>>> @@ -99,6 +99,10 @@ opp-1992000000 {
->>>>>       };
->>>>>  };
->>>>>
->>>>> +&pipegrf {
->>>>> +     compatible = "rockchip,rk3568-pipe-grf", "syscon";
->>>>> +};
->>>>> +
->>>>>  &power {
->>>>>       power-domain@RK3568_PD_PIPE {
->>>>>               reg = <RK3568_PD_PIPE>;
->>>>> @@ -114,3 +118,8 @@ power-domain@RK3568_PD_PIPE {
->>>>>               #power-domain-cells = <0>;
->>>>>       };
->>>>>  };
->>>>> +
->>>>> +&usb_host0_xhci {
->>>>> +     phys = <&usb2phy0_otg>, <&combphy0 PHY_TYPE_USB3>;
->>>>> +     phy-names = "usb2-phy", "usb3-phy";
->>>>> +};
->>>>> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
->>>>> index 7cdef800cb3c..072bb9080cd6 100644
->>>>> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
->>>>> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
->>>>> @@ -230,6 +230,40 @@ scmi_shmem: sram@0 {
->>>>>               };
->>>>>       };
->>>>>
->>>>> +     usb_host0_xhci: usb@fcc00000 {
->>>>
->>>>> +             compatible = "snps,dwc3";
->>>>
->>>> compatible = "rockchip,rk3568-dwc3", "snps,dwc3";
->>>>
->>>> compatible strings must be SoC orientated.
->>>> Add binding like you did before.
->>>
->>> Okay, should this go in the core yaml, since it's not really handled
->>> by of-simple?
->>
->> Nothing to change in core.c, because the fall back string does the
->> trick, so we don't have to change the driver for every new SoC.
->> Change the node compatible here and add the binding.
->> That's it. The rest comes later if needed.
+>> I wonder what the correct place for this extcon property is. You defined
+>> it on SoC (RK3566) level, in my patch for the RK3568 EVB1 it is added on
+>> board level. Is this common to all RK356x variants?
 > 
-> It's the binding I'm referring to here.
-> snps,dwc3.yaml seems the logical place, but I want to make sure you
-> concur first.
+> Yes, the usb2phy is always available as an extcon unless you make a
+> device that doesn't have usb2 capability.
+> In that case you'd have to override the device anyways.
+> If we want to turn on default role otg here, we'd need this defined
+> here as well or things break.
 
-rockchip,dwc3.yaml is the place be!
-Hurry up!
+OK, so it seems to me that the extcon could or should enter the
+rk356x.dtsi (and can be removed from the rk3566.dtsi and the
+rk3568-evb1-v10.dts in this series). Is that correct?
 
-Use Michael's patch, because his commit message is better.(no reference
-to rk3399)
+Best regards,
+Michael
 
-https://lore.kernel.org/linux-rockchip/20220225131602.2283499-3-michael.riesch@wolfvision.net/
-
-vs.
-
-https://lore.kernel.org/linux-rockchip/20220226184147.769964-4-pgwipeout@gmail.com/
-
-> 
->>
->>> Also, should I add in the compatible for rk3328 as well?
->>
->> No, same story the fall back string does the trick in core.c
-> 
-> Same thing here, since I'm in snps,dwc3.yaml anyways I can add the
-> rk3328 binding in and silence that error in one go.
-
-It's been done already:
-
-[PATCH v5 6/8] dt-bindings: usb: dwc3: add description for rk3328
-
-https://lore.kernel.org/linux-rockchip/20210209192350.7130-6-jbx6244@gmail.com/
-
-
-> 
->>
->>
->>>
->>>>
->>>>> +             reg = <0x0 0xfcc00000 0x0 0x400000>;
->>>>> +             interrupts = <GIC_SPI 169 IRQ_TYPE_LEVEL_HIGH>;
->>>>> +             clocks = <&cru CLK_USB3OTG0_REF>, <&cru CLK_USB3OTG0_SUSPEND>,
->>>>> +                      <&cru ACLK_USB3OTG0>;
->>>>> +             clock-names = "ref_clk", "suspend_clk",
->>>>> +                           "bus_clk";
->>>>> +             dr_mode = "host";
->>>>> +             phy_type = "utmi_wide";
->>>>> +             power-domains = <&power RK3568_PD_PIPE>;
->>>>> +             resets = <&cru SRST_USB3OTG0>;
->>>>> +             snps,dis_u2_susphy_quirk;
->>>>> +             status = "disabled";
->>>>> +     };
->>>>> +
->>>>> +     usb_host1_xhci: usb@fd000000 {
->>>>
->>>>> +             compatible = "snps,dwc3";
->>>>
->>>> compatible = "rockchip,rk3568-dwc3", "snps,dwc3";
->>>>
->>>>> +             reg = <0x0 0xfd000000 0x0 0x400000>;
->>>>> +             interrupts = <GIC_SPI 170 IRQ_TYPE_LEVEL_HIGH>;
->>>>> +             clocks = <&cru CLK_USB3OTG1_REF>, <&cru CLK_USB3OTG1_SUSPEND>,
->>>>> +                      <&cru ACLK_USB3OTG1>;
->>>>> +             clock-names = "ref_clk", "suspend_clk",
->>>>> +                           "bus_clk";
->>>>> +             dr_mode = "host";
->>>>> +             phys = <&usb2phy0_host>, <&combphy1 PHY_TYPE_USB3>;
->>>>> +             phy-names = "usb2-phy", "usb3-phy";
->>>>> +             phy_type = "utmi_wide";
->>>>> +             power-domains = <&power RK3568_PD_PIPE>;
->>>>> +             resets = <&cru SRST_USB3OTG1>;
->>>>> +             snps,dis_u2_susphy_quirk;
->>>>> +             status = "disabled";
->>>>> +     };
->>>>> +
->>>>>       gic: interrupt-controller@fd400000 {
->>>>>               compatible = "arm,gic-v3";
->>>>>               reg = <0x0 0xfd400000 0 0x10000>, /* GICD */
->>>>> @@ -297,7 +331,6 @@ pmu_io_domains: io-domains {
->>>>>       };
->>>>>
->>>>>       pipegrf: syscon@fdc50000 {
->>>>> -             compatible = "rockchip,rk3568-pipe-grf", "syscon";
->>>>>               reg = <0x0 0xfdc50000 0x0 0x1000>;
->>>>>       };
->>>>>
+> [...]
 
 _______________________________________________
 Linux-rockchip mailing list
