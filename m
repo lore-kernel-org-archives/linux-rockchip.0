@@ -4,63 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B05FEC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 09:33:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95D93C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 09:55:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OsWtUcEUKcJ6sEbjCAilpoWa9pj4dwiPTs4wPxwp+1Y=; b=2ONrwMNQIBHDCt
-	wQCuQXTBoI0S4wYZQnV55MsqZ2JftxLBpaojsktOWY+DH5y9myQ7URuIVosBU+12ZkmOsC9rP5xkd
-	CBOCpDbv3StotF7dGN7iikByqYgZVW4pLA4BXeahwV+dnj3vvjjE1ycOCAl2J4oPCciGR91QgsbhC
-	TJR9vk+RPGEd0f5Ps0XwP/5RpDJb3zDfbCYTho+PQs7IND5OhxMIH5G2IvK9aP5mvvFXABBYZX6Gn
-	fnsn+HmRoDb5Pzv67H+qmiZUZbEl4Xtg4OjqLUr4Fr5IAoZDiOr46NZFCxsHmMjXUw9mkQEGfKL4A
-	oQShtUQ6eGO6UlmrOZTg==;
+	List-Owner; bh=riVP2+YW5X98v8608n4TywsQMxbGSJsA+5ZFK0rsC6k=; b=euGalrq+IaPqOH
+	4u1DnSuKrHiPjT2mCo2EI4fj8H18O5/XAGPZibs1AsoHifvWsocAsKti/HqECwFszrrBpQgtdImOo
+	ItQUo5GBz21xLKL1XtNiYjX1aFiBEc+93Lv+NqkdsFlF0mn81OkW2vyhYDlw/MZYc3GsdL7JDYdpq
+	UU79os+12tEd+ojzTenW19e5uOIBH5zGdxoPigSY+5lwNdmMrPP2p+0rJ5Sh/8e6qaDpXibgvB9lA
+	s2LZDlKi4YdubPZCOeO8o+zXhTAN49H3/7sGKd15L4/LbDPv74gfhk5nebu7wXGo4Fehl5YDGaEGN
+	JKM/4C+UgaZWTwDD1WQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOcP4-00BGmg-9l; Mon, 28 Feb 2022 09:33:14 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1nOckl-00BMfi-IW; Mon, 28 Feb 2022 09:55:39 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOcOp-00BGhN-Va; Mon, 28 Feb 2022 09:33:01 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id gb39so23518692ejc.1;
- Mon, 28 Feb 2022 01:32:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=CLX9p46LTKB/Eq3eNvJoQTNYHBrAzPGjbvot9brS2qA=;
- b=mSjmrvh595YDAVZMgNjYK7iY9jJsf6ffteY5LNQ7hkjPy8URdKSh/qC0gfCqmJ1my1
- Qpi25Q25zJe+wBpMWjGFKTVrbWF4JlOaa7Y7EQUzQF2NKs8guyjP5sa73inWcL2rPKgL
- Z4Mc/DuqqWuniGLKhle7vMI0AJPo+4gPPnauSdIChzhacanwS0ZKPzxodvbMVU2uN65q
- pvEyoL1aghlRdEgJYh1S6JnW3PpAoxj/hcpIx2oaIspTFDPQuhKgCL5yYcBD2tnTOdyZ
- NAbWn9L8+oM/g+Bhim9dLNKblHtOvHd5kVm+hHX4E3zlglPs6P2PmGVpDp10Umy20wMP
- cgrA==
+ id 1nOcjc-00BMCy-Gs
+ for linux-rockchip@lists.infradead.org; Mon, 28 Feb 2022 09:54:34 +0000
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id CCA413FCA8
+ for <linux-rockchip@lists.infradead.org>; Mon, 28 Feb 2022 09:54:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1646042065;
+ bh=mna9J1nBg6HOMnow2P6fMcSmE8VXg1IqnH2FURdKmp0=;
+ h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+ In-Reply-To:Content-Type;
+ b=f/OD2VNO+nXtSZLHFiS1/91UX0fGEmAPWyWnDrf4xz5X/SY5YAZawiScUYFg5m3r9
+ beVPIrBsISVvy0hOr3ZQu0FGpHszTy1K3vFxFLMKbUdbkF5uUMB99IkxRaNe0j4GiQ
+ b5nhxTkUnMbClnZq07HtAMQtQl4sEwK00QJrkCmCYdJtu4UEDHpnL4Ovepm3uYXs1j
+ /MSLJVhfznzVOJkltXzdez+UisBUAj4aSKOgL/RD88xXFL49Wq9iMD5FigQZvOfYc3
+ Ndx6+HZhor5K1SUaIXLDz892YkNsWvzubD3Kw4oOTmzLmMmwM3E8joXjRoVxWlz341
+ YUjLtJdHtgA9w==
+Received: by mail-wm1-f70.google.com with SMTP id
+ r206-20020a1c44d7000000b00380e36c6d34so6178157wma.4
+ for <linux-rockchip@lists.infradead.org>; Mon, 28 Feb 2022 01:54:25 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=CLX9p46LTKB/Eq3eNvJoQTNYHBrAzPGjbvot9brS2qA=;
- b=h7WgGeUp3MzuzQ0IOWEGEIc6S4y4jo9PjoZjU8reekUsaV2MzQKHS/7ALnSIKXrJi6
- C2RWmGSrQ3u24+3vbAPqinnEPTYCYAKsqEeV1Qj3+A/yRXEDDQHM2UMO/Rv9l3sumIvQ
- Fhs7vL4GSIcn1qh45ZvQTR4FIVCObmy3D3JJ0vwKX+ifJi3O/hkGJ+/RbwmK8PLa8lXR
- 3GgJa3mVATIogA+2iBTOvUb3auZYVQhx5pt4epGODEQartm8OgHKoODb9J6jj3HSgAp/
- EHFKCIF8Skc7kR3j+iIPT/sOAJ0bYdP443dwo5neMHAEvPfXhUHL6k2j6dRL2KCuWl6n
- R8Qw==
-X-Gm-Message-State: AOAM533KwwsNYfo5KyS2SrMGg+q/KN0khmWCG4Bpvq8W6NHQ8VgYbKK8
- tJncyITegXG4/N8X8EpEb1o=
-X-Google-Smtp-Source: ABdhPJyGNPCf5gF83CrzPwGUn65KVEOklQP88mDv1lM7Oxdsd9c3Gvs+2/MhV9t3bc5Qjjfaeyy8Vw==
-X-Received: by 2002:a17:906:6b8e:b0:6ce:9879:ff88 with SMTP id
- l14-20020a1709066b8e00b006ce9879ff88mr14387553ejr.147.1646040778557; 
- Mon, 28 Feb 2022 01:32:58 -0800 (PST)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- n24-20020a509358000000b00410bedd9eb4sm5932397eda.88.2022.02.28.01.32.57
+ bh=mna9J1nBg6HOMnow2P6fMcSmE8VXg1IqnH2FURdKmp0=;
+ b=1ITgHf8i3Vteai2Me+eEXW8WSBIkvib4rLWpjlu9Q3a5BiYxaHSGZU0nsrmai+Q83v
+ b+ekJKLlPnD7aZYDcE6vQ/kkkngxrOCc3FC937S7IALIU+J3q011pVRm9RbioxlQiK4o
+ HM7MlN6nK16Y4muldvvMxAShcFJZf3Dn40wy/H4ymJcecci/3XL+jyLZM3591f9UEmvV
+ U8GmZasGtXiGLpkvOUEa15BVPNWwUxI2ZZsjREZZhVtI56aGDvvddDEk6Ar0UEHiGKxa
+ tHPZ6gW+tgVypXv67w9jn1wGSq3tAYKRjTSfF/oliJSMVuLYsereDhFXN2zvPbwdvi6c
+ GGKg==
+X-Gm-Message-State: AOAM532V6GWG/NI17baiHchjvAQ6T2S4KAV6GAQ3i8b3+RP/I0Nprd4b
+ 6BIzxBoOU0YFPBaJZ7Z6Tet9v8mpWxJTYo6esZFr0+pqhI04qyR5ew8lJuNlfYfIQr+4hEf6/1t
+ /iJyFAauIxSMd/GRLkQLOPog6H74nbhd/0l//5tf03SDUPWfkiw==
+X-Received: by 2002:a05:6000:162f:b0:1ed:bbef:f7b9 with SMTP id
+ v15-20020a056000162f00b001edbbeff7b9mr15608217wrb.379.1646042064787; 
+ Mon, 28 Feb 2022 01:54:24 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwF4VDklq4C5zzM72nwt08X01T/IfVu/GQ6QrQbbkJljUbB9HduFrRm9IjGHQBgzq6rkjLXyQ==
+X-Received: by 2002:a05:6000:162f:b0:1ed:bbef:f7b9 with SMTP id
+ v15-20020a056000162f00b001edbbeff7b9mr15608187wrb.379.1646042064370; 
+ Mon, 28 Feb 2022 01:54:24 -0800 (PST)
+Received: from [192.168.0.133] (xdsl-188-155-181-108.adslplus.ch.
+ [188.155.181.108]) by smtp.gmail.com with ESMTPSA id
+ n10-20020a5d598a000000b001efab095615sm4434539wri.29.2022.02.28.01.54.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Feb 2022 01:32:58 -0800 (PST)
-Message-ID: <14a29a3f-c886-89b0-e453-1e8bee469536@gmail.com>
-Date: Mon, 28 Feb 2022 10:32:57 +0100
+ Mon, 28 Feb 2022 01:54:23 -0800 (PST)
+Message-ID: <fc3186ce-f731-a7c1-e958-b0071125b32c@canonical.com>
+Date: Mon, 28 Feb 2022 10:54:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
@@ -69,7 +83,6 @@ Content-Language: en-US
 To: Frank Wunderlich <linux@fw-web.de>,
  "devicetree @ vger . kernel . org Damien Le Moal"
  <damien.lemoal@opensource.wdc.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
  Hans de Goede <hdegoede@redhat.com>, Jens Axboe <axboe@kernel.dk>,
  linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
  Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>,
@@ -78,11 +91,11 @@ To: Frank Wunderlich <linux@fw-web.de>,
 Cc: Frank Wunderlich <frank-w@public-files.de>
 References: <20220227182800.275572-1-linux@fw-web.de>
  <20220227182800.275572-4-linux@fw-web.de>
-From: Johan Jonker <jbx6244@gmail.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 In-Reply-To: <20220227182800.275572-4-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_013300_067524_FD8040B8 
-X-CRM114-Status: GOOD (  17.85  )
+X-CRM114-CacheID: sfid-20220228_015428_738921_A6B4C4FB 
+X-CRM114-Status: GOOD (  18.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,9 +113,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
-
-On 2/27/22 19:28, Frank Wunderlich wrote:
+On 27/02/2022 19:28, Frank Wunderlich wrote:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
 > RK356x supports up to 3 sata controllers which were compatible with the
@@ -129,16 +140,7 @@ On 2/27/22 19:28, Frank Wunderlich wrote:
 >  	compatible = "rockchip,rk3568";
 >  
 > +	sata0: sata@fc000000 {
-
 > +		compatible = "snps,dwc-ahci";
-
-		compatible = "rockchip,rk3568-dwc-ahci", "snps,dwc-ahci";
-
-Compatible strings must be SoC orientated.
-By using a fall back string the driver doesn't have to be changed for
-every new SoC.
-Add binding in extra patch.
-
 > +		reg = <0 0xfc000000 0 0x1000>;
 > +		clocks = <&cru ACLK_SATA0>, <&cru CLK_SATA0_PMALIVE>,
 > +			 <&cru CLK_SATA0_RXOOB>;
@@ -158,6 +160,9 @@ Add binding in extra patch.
 >  	};
 >  };
 > +
+
+No need for new line here,
+
 > diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
 > index 7cdef800cb3c..484c5ace718a 100644
 > --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
@@ -167,42 +172,16 @@ Add binding in extra patch.
 >  	};
 >  
 > +	sata1: sata@fc400000 {
-
 > +		compatible = "snps,dwc-ahci";
-
-dito
-
 > +		reg = <0 0xfc400000 0 0x1000>;
 > +		clocks = <&cru ACLK_SATA1>, <&cru CLK_SATA1_PMALIVE>,
 > +			 <&cru CLK_SATA1_RXOOB>;
-> +		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
-> +		phys = <&combphy1 PHY_TYPE_SATA>;
-> +		phy-names = "sata-phy";
-> +		ports-implemented = <0x1>;
-> +		power-domains = <&power RK3568_PD_PIPE>;
-> +		status = "disabled";
-> +	};
-> +
-> +	sata2: sata@fc800000 {
 
-> +		compatible = "snps,dwc-ahci";
+clock-names should be added. Also to bindings.
 
-dito
 
-> +		reg = <0 0xfc800000 0 0x1000>;
-> +		clocks = <&cru ACLK_SATA2>, <&cru CLK_SATA2_PMALIVE>,
-> +			 <&cru CLK_SATA2_RXOOB>;
-> +		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
-> +		phys = <&combphy2 PHY_TYPE_SATA>;
-> +		phy-names = "sata-phy";
-> +		ports-implemented = <0x1>;
-> +		power-domains = <&power RK3568_PD_PIPE>;
-> +		status = "disabled";
-> +	};
-> +
->  	gic: interrupt-controller@fd400000 {
->  		compatible = "arm,gic-v3";
->  		reg = <0x0 0xfd400000 0 0x10000>, /* GICD */
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
