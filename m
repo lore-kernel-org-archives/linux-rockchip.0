@@ -4,102 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33FDCC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 14:43:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D08A3C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 16:32:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+9mKv2uDaGL+UNKAU3dcDorgS9hjOg+KWL3g9agWFSY=; b=iWmwHzW6FZv9Jx
-	Ua0N7QDOJcH2DuSxzYs6yeuXVG88EnylA3ho+FIT1FIO8x3QoiyuLuiJMEEMALiRHy6OHNaf5GA0c
-	WTvefDvP5x9Rd+aGiWHBAi2AKTqIH+PhNDmEK56lWDOKOmyml4vsoKTPmfgYsx69zm5ugaueFswCo
-	qp004CStXcLYEIyHoLmsKqucxyZV8b/C6UKL+G5Dtikj3gTJnyWtHFKbdKerXbZh+9mROOZCbVYhs
-	u+RDpvBZNPMsG76hiy49KgEeHaKnGMqBJzx/1l5AuQdiceX+C7c95aPpMkhjjXQuhCMv7FI+kjThP
-	2G+HbJdUsT1vAXA6HO0g==;
+	List-Owner; bh=E8ppsIbAkhjzEnaD8kH4fPvTz+c1T5SH4u/zVmuLGIM=; b=hq1L/ENg6B5kmR
+	n2aRNOZOcqs5Rtllq2BplzhdyS2s6UPZHERKqa39qElpNfwEhaelAdUcBt5R1CHa77jp+t6fK9901
+	R9ck+VZ46/Apb6xhsHpQcpDVIcj5caBjXRip+ug0Rj7ZmTqBmWurhgjrzbRcj6bH3VELMU3PE5s5t
+	cKFELvfnSrHI9XQ1IaVDK3Mw5h6yo6jLcRVaD0qrORe5q3gMlP/cC2xe2JfsKM0/dA2q8koLAWcSn
+	3nUzm41I9TR+Q2q526ralA8a3ZXzqIOuM0jsVHNDjQGhasohE58+R3bgW1fk6T6PMD0MnMA7Den/B
+	CqMeJOzqrjp4KHXi9jlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOhEt-00CyvT-6l; Mon, 28 Feb 2022 14:43:03 +0000
-Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
+	id 1nOiwi-00DLFT-Um; Mon, 28 Feb 2022 16:32:24 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOh7J-00CwAa-Fk
- for linux-rockchip@lists.infradead.org; Mon, 28 Feb 2022 14:35:15 +0000
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 5AC7F3F33A
- for <linux-rockchip@lists.infradead.org>; Mon, 28 Feb 2022 14:35:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1646058909;
- bh=cY+2Lb+cjTat47mxYF3hRVRAsG+Ud2T/F9b9vhwTP8I=;
- h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
- In-Reply-To:Content-Type;
- b=iil41hGdghowujboZBO/eRe7a2roqtnvcCwQu4hnD58jF3iDCJoVH8wePiSnW+V/g
- EBme/C5uoo+lcDEtK2rXe/tDWpSqy+S+GpTXF7hxVO4c7Fg9z0ZBh2Ogpl9h71jXuz
- KyNQpGOnWWq7BJQ86DArdiNFbP4HxkrmOb8+bvMkoZ/o+uM+s9Z5s1/dtrw6Q/hi0h
- nuLNJUAjVTvSNItn8tL+evZ7dnxPn40gnNUU5sGZxJIu+caApRZH8ImQGTS2e8PrrH
- RHguGckW2kExy7p2zhTRgLtH4ZQuiF7RMMd81ky2nGWQmHArqIbrezHUmcu/XvGC32
- QpRvrrbpwuuFg==
-Received: by mail-ej1-f70.google.com with SMTP id
- hq34-20020a1709073f2200b006d677c94909so2119123ejc.8
- for <linux-rockchip@lists.infradead.org>; Mon, 28 Feb 2022 06:35:09 -0800 (PST)
+ id 1nOiwb-00DLCF-UY; Mon, 28 Feb 2022 16:32:23 +0000
+Received: by mail-wm1-x331.google.com with SMTP id r10so6022359wma.2;
+ Mon, 28 Feb 2022 08:32:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=nspjxBI9tYzhw/PzFHLylmjKidTTydsrD7JFMGTC0VQ=;
+ b=FPcvzvX3MDs+LdnqfpdttONymmd5Rh4uve9/n2nXP25NoIaAzzIdxwwWDw74Eu2KAI
+ s7CcDs1KSGhtfBpOFKS9DacY1Xo9WueMmBUvHWJ3xmIJP7JG2mKiuTOJkrLHQvGUsCoX
+ 3MGqYVcHH8JyXnG9VDBJa2G3WdzVY2i8A6bUaV2YeoVt43Y7Gk0EGEkO8giTcRgXZEa1
+ d2sIdsyHQvoAkmkkfV/trDwqaYFMLsGxnRmU6/rgU/hUm/p4fIAuhDbtVGD4HTE9KA/T
+ jV9dQimHsukOP9QwzcTcDUq5vajfFEy6WqvtxDGfLVRtKL6+dKj0XvnqoXXF/qh+qYUL
+ DsdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=cY+2Lb+cjTat47mxYF3hRVRAsG+Ud2T/F9b9vhwTP8I=;
- b=qt/YNmr/WDzmV2b0zJKrRgct2vmZJEazIWHIsN7FIv0U5AI3oKdyTNynSQOYrsEKdI
- U7S8rVbBSLSyqBiTraKzROc91TV+m3r3cATe896lkgjnaImQEnixJLCpZpq71KN89C9U
- AdnUvZgFOiH/Z2G+rhn9IKlNx+HQWm7kD4NH09rXvlda6UFrNLYCUWFZYg8EMhT5Ybk3
- +DHi+6yiVv/Wuva48o6gN0a4gq/fAbuwV8k4b6w2Iyb2gYIp3cJnt151wdIUg/hy6AJe
- 6rAxnc7BhqlZR9VuKALyBOijL6Q8bb78hCFhBj/fczrK5p/2NUszkjcN0lkheIX1JJVP
- 9rSw==
-X-Gm-Message-State: AOAM532VNaBCrcrZHqs8/tHfUV/sovpvxSIffSwmTnDGR3ho6QmfukX2
- BkIwtL85N3T8wjdR4aaaMcfSda/CqWLoBJHS0roF+w66fkAyYtRyaJvr2wFTfprpTe4lTLvE5p3
- pdtSKXT/h+9QF4qiNsh1t9pUU33mcsltLkbXQ+W633JyKixiPiA==
-X-Received: by 2002:a05:6402:50d4:b0:413:2a27:6b56 with SMTP id
- h20-20020a05640250d400b004132a276b56mr20130563edb.228.1646058906393; 
- Mon, 28 Feb 2022 06:35:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxDY8R2MrubTXi50w56pdwC6DtPAk6AD2Vm2bz+yDKpsTw4K5OhCQsji/CEA8QLue8RhCTBgw==
-X-Received: by 2002:a05:6402:50d4:b0:413:2a27:6b56 with SMTP id
- h20-20020a05640250d400b004132a276b56mr20130333edb.228.1646058903378; 
- Mon, 28 Feb 2022 06:35:03 -0800 (PST)
-Received: from [192.168.0.135] (xdsl-188-155-181-108.adslplus.ch.
- [188.155.181.108]) by smtp.gmail.com with ESMTPSA id
- n13-20020a170906724d00b006cedd6d7e24sm4416053ejk.119.2022.02.28.06.35.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Feb 2022 06:35:02 -0800 (PST)
-Message-ID: <ddd09f4f-782f-67e9-ec2f-dd5818ae26c5@canonical.com>
-Date: Mon, 28 Feb 2022 15:35:01 +0100
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=nspjxBI9tYzhw/PzFHLylmjKidTTydsrD7JFMGTC0VQ=;
+ b=72RP48QIWMKUHJ4jIPnijwCo7N6K0udqOMenti4H4sFiwdbx3jLTC0YbVQmHj3ak3U
+ A2INljRyqNzIRVM0oRb1/G7dUKa3L3UbzXiVjV3/c8yzG2gbEXF1idLk6PEiqo43bJQw
+ CJL9iDeQnoeR4Wz7RHHzZ5vAr6qw91bFham5GTdfY7H0LapPS+UuFPIoiY6XjdVx/DAm
+ oe/z36I6aA9ka3v6/qolKydh8ov95N5IQ/alV4XECEg14MkJYR3oJPNX6R8Cm7wbGxfi
+ dJriBZY6GxVTDA2yYzbssav+qAnS/AL413S5DRq68T5WGBukbZRr9m1mjJIHGP60pop+
+ +cXw==
+X-Gm-Message-State: AOAM532fFaZ6+iLwZVzhE/dx6UDx2yi9FDZ6IEGHba2kbQaz1UgtpxWE
+ qFJbmObpfDirrDtqHFQtxDw=
+X-Google-Smtp-Source: ABdhPJy/RE308BOWztEfvBeC+M/1tepbLiYUtCH/0hJf9ShvYGyv+1u2o9DxOIVpfyR+PA44lN0jhw==
+X-Received: by 2002:a05:600c:418b:b0:380:e493:660a with SMTP id
+ p11-20020a05600c418b00b00380e493660amr13779838wmh.189.1646065935336; 
+ Mon, 28 Feb 2022 08:32:15 -0800 (PST)
+Received: from kista.localnet (cpe-86-58-32-107.static.triera.net.
+ [86.58.32.107]) by smtp.gmail.com with ESMTPSA id
+ u4-20020adfdb84000000b001e8d8ac5394sm11503518wri.110.2022.02.28.08.32.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 28 Feb 2022 08:32:14 -0800 (PST)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ Nicolas Dufresne <nicolas@ndufresne.ca>
+Cc: mchehab@kernel.org, hverkuil-cisco@xs4all.nl, gregkh@linuxfoundation.org,
+ wens@csie.org, samuel@sholland.org, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
+Subject: Re: Re: [RFC PATCH 2/8] media: Add P010 format
+Date: Mon, 28 Feb 2022 17:32:13 +0100
+Message-ID: <5696849.MhkbZ0Pkbq@kista>
+In-Reply-To: <1b2ce01fb04f29cca58d40bd81d9f4cc46dcebf8.camel@ndufresne.ca>
+References: <20220227144926.3006585-1-jernej.skrabec@gmail.com>
+ <20220227144926.3006585-3-jernej.skrabec@gmail.com>
+ <1b2ce01fb04f29cca58d40bd81d9f4cc46dcebf8.camel@ndufresne.ca>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: Aw: Re: Re: [PATCH v3 1/3] dt-bindings: Convert ahci-platform DT
- bindings to yaml
-Content-Language: en-US
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>, Rob Herring <robh+dt@kernel.org>,
- Hans de Goede <hdegoede@redhat.com>, Jens Axboe <axboe@kernel.dk>,
- linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
- Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>
-References: <20220227182800.275572-1-linux@fw-web.de>
- <20220227182800.275572-2-linux@fw-web.de>
- <4c3303f5-7af5-9974-7bea-b7f0d6c7ef53@canonical.com>
- <trinity-ac45bde6-392d-4810-8aad-9a06d2bcd85a-1646050780475@3c-app-gmx-bs53>
- <8fbbce9e-4fd9-d420-43ef-953e846d29f1@canonical.com>
- <trinity-f1b6ce3a-6f22-4cf8-bf51-a5e7f007dda7-1646057347735@3c-app-gmx-bs53>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-In-Reply-To: <trinity-f1b6ce3a-6f22-4cf8-bf51-a5e7f007dda7-1646057347735@3c-app-gmx-bs53>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_063513_745621_1DD7EA46 
-X-CRM114-Status: GOOD (  41.82  )
+X-CRM114-CacheID: sfid-20220228_083218_014417_B577A7B2 
+X-CRM114-Status: GOOD (  17.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,229 +89,149 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 28/02/2022 15:09, Frank Wunderlich wrote:
-> Hi,
-> 
-> looks like i'm not the right person to convert the binding. I have not enough knowledge about yaml, bindings, drivers, ...
-> 
-> i will try you suggestions for me as a lerning-by-doing approach, but will drop it from the series, same for part2 as it depends on first.
-> 
-> 
-> 
->> Gesendet: Montag, 28. Februar 2022 um 13:38 Uhr
->> Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@canonical.com>
-> 
->> On 28/02/2022 13:19, Frank Wunderlich wrote:
-> 
->>>> You converted the TXT bindings explicitly, but you missed the comment
->>>> just below the 'reg' about generic-ahci. The generic-ahci never comes alone.
->>>
->>> How should this comment be added? description above/below the compatible-property?
->>> Sorry for dumb questions...this is my first yaml ;)
->>
->> No, this has to be oneOf. See for example
->> Documentation/devicetree/bindings/gpio/gpio-vf610.yaml or many other files.
-> 
-> Afaik the generic-ahci should be defined optional with one of the others needed, but afaik this will duplicate the list i had.
-> 
-> so i end up in a struct like this
-> 
-> compatible:
->   oneOf:
->     - enum:
->       - brcm,iproc-ahci
->       - cavium,octeon-7130-ahci
->       - hisilicon,hisi-ahci
->       - ibm,476gtr-ahci
->       - marvell,armada-3700-ahci
->       - marvell,armada-380-ahci
->       - snps,dwc-ahci
->       - snps,spear-ahci
->     - items:
->       - const: generic-ahci
->       - enum:
->         - brcm,iproc-ahci
->         - cavium,octeon-7130-ahci
->         - hisilicon,hisi-ahci
->         - ibm,476gtr-ahci
->         - marvell,armada-3700-ahci
->         - marvell,armada-380-ahci
->         - snps,dwc-ahci
->         - snps,spear-ahci
+Dne ponedeljek, 28. februar 2022 ob 13:48:53 CET je Nicolas Dufresne =
 
-That could be one way, but instead I propose to have only second part
-(so enum + generic-ahci) for all compatibles mentioned in
-ahci_platform.c, which do not customize the driver behavior for these
-compatibles..
+napisal(a):
+> Le dimanche 27 f=E9vrier 2022 =E0 15:49 +0100, Jernej Skrabec a =E9crit :
+> > Add P010 format, which is commonly used for 10-bit videos.
+> =
 
+> There is a much more complete patch that was sent previously (with =
 
-> 
-> 
->>>>> + interrupts:
->>>>> + minItems: 1
->>>>
->>>> You mean maxItems?
->>>
->>> no, minItems, as interrupts suggests 1+ (same for phys)
->>
->> You cannot have infinite number of interrupts... What suggests "1+"?
->> What does it mean "as interrupts suggests"? Do these hardware blocks
->> really have many interrupt lines?
->>
->> The same for phys.
-> 
-> interrupts/phys is plural of interrupt/phy, so it suggests it can be more than 1.
+documentation
+> and all):
+> =
 
-There is no property named "interrupt" or "phy". There is only
-"interrupts", "phys", "gpios", "clocks" etc. regardless whether there is
-one or multiple items. This is not specific to bindings, but all DTS
-have this.
+> https://patchwork.kernel.org/project/linux-rockchip/patch/
+20210618131526.566762-5-benjamin.gaignard@collabora.com/
 
-> 
-> as i said i do not know every driver with all possibilities, so i started with the min-items as we need at least 1 interrupt/phy, but yes if there are any limits then they should be added, but this needs extensive knowledge about the drivers/hardware, i don't have.
+Great, I'll take it for next revision. Although I'm not sure what "much mor=
+e =
 
-But the sources of the driver and DTS are available, why not using them?
-
-> 
->>>>> + ports-implemented:
->>>>> + description:
->>>>> + Mask that indicates which ports that the HBA supports
->>>>> + are available for software to use. Useful if PORTS_IMPL
->>>>> + is not programmed by the BIOS, which is true with
->>>>> + some embedded SoCs.
->>>>> + minItems: 1
->>>>
->>>> You need a type and maxItems.
->>>
->>> what will be the type of a mask?
->>
->> `git grep ports-implemented` gives pretty straightfoward answer. All DTS
->> have u32 and driver also uses u32.
-> 
-> so type should be
-> 
-> $ref: '/schemas/types.yaml#/definitions/uint32'
-
-Yes. See example schema.
-
-> 
-> ?
-> 
-> it's the only one i've found with u32 looking like a type
-> 
-> found in Documentation/devicetree/bindings/interrupt-controller/fsl,irqsteer.yaml
-
-This part I do not understand.
-
-> 
->>>
->>>>> +
->>>>> + resets:
->>>>> + minItems: 1
->>>>
->>>> maxItems?
->>>
->>> if there is a known maximum....
->>
->> Must be. You cannot have infinite number of reset lines... Please check
->> all DTS and drivers. If there is public documentation, it also might be
->> useful.
-> 
-> "Please check all DTS and drivers." this is impossible for me as doing this as hobby with still limited time ;(
-
-I believe that information - how many resets - is in general findable
-via driver sources. In all bindings conversions, if we do not have such
-information, we need to try to look it up.
-
->>>
->>>>> +
->>>>> + target-supply:
->>>>> + description:
->>>>> + regulator for SATA target power
->>>>> +
->>>>> +required:
->>>>> + - compatible
->>>>> + - reg
->>>>> + - interrupts
->>>>> +
->>>>> +patternProperties:
->>>>> + "^sata-port@[0-9]+$":
->>>>
->>>> You limit number of ports to 10. On purpose? What about 0xa? 0xb?
->>>
->>> oh, right, there can be hexadecimal...
->>> thought this is only true for the main-node (address) and have only seen @0, @1 and @2
->>>
->>>>> + type: object
->>>>> + description:
->>>>> + Subnode with configuration of the Ports.
->>>>> +
->>>>> + properties:
->>>>> + reg:
->>>>> + maxItems: 1
->>>>> +
->>>>> + phys:
->>>>> + minItems: 1
->>>>
->>>> maxItems? Why do you put everywhere minItems? Are several phys really
->>>> expected?
->>>
->>> name suggests that it can be more than 1.
->>
->> What do you mean "name suggests"? Name of property? No, it does not
->> suggest that. Name is standard. Please check example schema and other
->> existing schema bindings to see how it is done. For example earlier
->> gpio-vf610.yaml is not bad.
-> 
->>> i know from usb subsystem (dwc3 usb3) that a device can have more than one phy, and because in the txt there are no ranges i set everywhere MinItems to 1 with open end as i do not know all possibilities. Anything else will be trial and error...for all properties
->>
->> The bindings need to be specific, so only properties which really,
->> really can have many unknown elements we could keep here some high
->> maxItems limit. In 99% of cases maxItems are clearly defined.
-> 
-> so i need to do try-and-error, setting maxItems to 1, make checks, if failing look in driver, increase, ...
-
-Why try-and-error? "git grep" works here...
-
-> 
-> but this is maybe not the right way to do as dts can contain errors which should not modify the binding.
-
-True, but having stricter limit, even if not fully correct, is better
-than having too loose limit. Stricter can be always loosened. Loose
-requirement cannot be made stricter.
-
-> 
->>> these are the commands i used:
->>>
->>> ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/ata/ahci-platform.yaml
->>> ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- make dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/ata/ahci-platform.yaml
->>
->> Install dependencies (libyaml-dev) and you will see first error:
->> Documentation/devicetree/bindings/ata/ahci-platform.yaml:110:1:
->> [warning] wrong indentation: expected 2 but found 0 (indentation)
->>
->> But the one I am thinking is indeed not visible by default. You would
->> need to run it like Rob's boot is running, so add DT_CHECKER_FLAGS=-m.
->> Then you see:
->>
->> Documentation/devicetree/bindings/ata/ahci-platform.example.dt.yaml:0:0:
->> /example-1/sata@f7e90000: failed to match any schema with compatible:
->> ['marvell,berlin2q-achi', 'generic-ahci']
-> 
-> i try this, but imho it's better to drop the Patch as i'm no expert in this, don't know the HW/drivers enough and this will delay the dts patch too much.
-> I thought i can help getting this (simple looking) txt converted to yaml.
-> Seems the binding needs to be done by someone who knows the drivers more than me.
-> 
-> regards Frank
-
+complete" means. Only additional thing is documentation.
 
 Best regards,
-Krzysztof
+Jernej
+
+> =
+
+> regards,
+> Nicolas
+> =
+
+> > =
+
+> > Signed-off-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+> > ---
+> >  drivers/media/v4l2-core/v4l2-common.c | 2 ++
+> >  drivers/media/v4l2-core/v4l2-ioctl.c  | 1 +
+> >  include/uapi/linux/videodev2.h        | 1 +
+> >  3 files changed, 4 insertions(+)
+> > =
+
+> > diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-
+core/v4l2-common.c
+> > index 1db0020e08c0..4ede36546e9c 100644
+> > --- a/drivers/media/v4l2-core/v4l2-common.c
+> > +++ b/drivers/media/v4l2-core/v4l2-common.c
+> > @@ -275,6 +275,8 @@ const struct v4l2_format_info *v4l2_format_info(u32 =
+
+format)
+> >  		{ .format =3D V4L2_PIX_FMT_YUV422P, .pixel_enc =3D =
+
+V4L2_PIXEL_ENC_YUV, .mem_planes =3D 1, .comp_planes =3D 3, .bpp =3D { 1, 1,=
+ 1, 0 }, =
+
+.hdiv =3D 2, .vdiv =3D 1 },
+> >  		{ .format =3D V4L2_PIX_FMT_GREY,    .pixel_enc =3D =
+
+V4L2_PIXEL_ENC_YUV, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 1, 0,=
+ 0, 0 }, =
+
+.hdiv =3D 1, .vdiv =3D 1 },
+> >  =
+
+> > +		{ .format =3D V4L2_PIX_FMT_P010,    .pixel_enc =3D =
+
+V4L2_PIXEL_ENC_YUV, .mem_planes =3D 1, .comp_planes =3D 2, .bpp =3D { 2, 4,=
+ 0, 0 }, =
+
+.hdiv =3D 2, .vdiv =3D 2 },
+> > +
+> >  		/* Tiled YUV formats */
+> >  		{ .format =3D V4L2_PIX_FMT_NV12_4L4, .pixel_enc =3D =
+
+V4L2_PIXEL_ENC_YUV, .mem_planes =3D 1, .comp_planes =3D 2, .bpp =3D { 1, 2,=
+ 0, 0 }, =
+
+.hdiv =3D 2, .vdiv =3D 2 },
+> >  		{ .format =3D V4L2_PIX_FMT_P010_4L4, .pixel_enc =3D =
+
+V4L2_PIXEL_ENC_YUV, .mem_planes =3D 1, .comp_planes =3D 2, .bpp =3D { 2, 4,=
+ 0, 0 }, =
+
+.hdiv =3D 2, .vdiv =3D 2 },
+> > diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-
+core/v4l2-ioctl.c
+> > index 048f326c57b9..a8d999e23e5b 100644
+> > --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> > +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> > @@ -1295,6 +1295,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc =
+
+*fmt)
+> >  	case V4L2_PIX_FMT_M420:		descr =3D "YUV 4:2:0 =
+
+(M420)"; break;
+> >  	case V4L2_PIX_FMT_NV12:		descr =3D "Y/CbCr 4:2:0"; break;
+> >  	case V4L2_PIX_FMT_NV21:		descr =3D "Y/CrCb 4:2:0"; break;
+> > +	case V4L2_PIX_FMT_P010:		descr =3D "10-bit Y/CbCr 4:2:0"; =
+
+break;
+> >  	case V4L2_PIX_FMT_NV16:		descr =3D "Y/CbCr 4:2:2"; break;
+> >  	case V4L2_PIX_FMT_NV61:		descr =3D "Y/CrCb 4:2:2"; break;
+> >  	case V4L2_PIX_FMT_NV24:		descr =3D "Y/CbCr 4:4:4"; break;
+> > diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/
+videodev2.h
+> > index 772dbadd1a24..211bc11a48cb 100644
+> > --- a/include/uapi/linux/videodev2.h
+> > +++ b/include/uapi/linux/videodev2.h
+> > @@ -597,6 +597,7 @@ struct v4l2_pix_format {
+> >  /* two planes -- one Y, one Cr + Cb interleaved  */
+> >  #define V4L2_PIX_FMT_NV12    v4l2_fourcc('N', 'V', '1', '2') /* 12  Y/=
+CbCr =
+
+4:2:0  */
+> >  #define V4L2_PIX_FMT_NV21    v4l2_fourcc('N', 'V', '2', '1') /* 12  Y/=
+CrCb =
+
+4:2:0  */
+> > +#define V4L2_PIX_FMT_P010    v4l2_fourcc('P', '0', '1', '0') /* 24  Y/=
+CbCr =
+
+4:2:0 10-bit */
+> >  #define V4L2_PIX_FMT_NV16    v4l2_fourcc('N', 'V', '1', '6') /* 16  Y/=
+CbCr =
+
+4:2:2  */
+> >  #define V4L2_PIX_FMT_NV61    v4l2_fourcc('N', 'V', '6', '1') /* 16  Y/=
+CrCb =
+
+4:2:2  */
+> >  #define V4L2_PIX_FMT_NV24    v4l2_fourcc('N', 'V', '2', '4') /* 24  Y/=
+CbCr =
+
+4:4:4  */
+> =
+
+> =
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
