@@ -4,76 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 120EAC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Feb 2022 23:31:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 485B7C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 00:14:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UYn7SKALm7x/U+TdeXGed1f0MDPPWXQz2/mDbqvjBlE=; b=CHqTNUhzkhVNx2
-	rVhiS/psiG1PMupqS2mztiDYys8cOVBeAjd/QalqgxXoSzSEd5SSp1awWdtYlrdOU2SsKQyY1aDwC
-	EquMwI17I4BHEzoMShPm00qEwi/SaElOEnrl9OU/VgLriBipVfPjAYlGahKaqeRgYzaVUKp+Tjgyg
-	hp6YvXnPNqgRUxeMstvpASWUx+6eTicN8HnxxTONoGkrMG2s2IlDYhwWLNahH6t29aolaVrNrc20u
-	fvTy1jDMvHSrKCfnAB1e3NUJ9eS7lo7UhDD9JRhxaQnWcIKrr/Jbfwdl/Hb4JxZI9lwyJT7ZaV588
-	bSk3X8M2UkD4t59LqSQQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Y/88phZbte2oPRhQDW/ottllXc4OmufByKzo2l+KWiY=; b=QYOEwtRdpA4poY
+	rm30+jXQ3/spuUP1jsjp6z0AA54oK7jmZlw5ZRExqX+vxDnXIBnGfaqR0BBw38W1u1UyAYQEFSJap
+	Iz6JxuwNK9viSybHsIwUV7nzCnIqtYszgFqCNs577ts0mV/wrj8YB1jQOn7ikKqz4RQ3UOeIjgTgS
+	DGPB55x3LE23Ckj7JeokrNdXf65Nknw6NaPhv9fSy3Y7hZbnAbFJuis/ktTaWJ8GoHyiC85/SyeiO
+	NadBXJbEivCix0+jmDzjfufuEWYki6GB2/69/8+nmFyzHd/8BMzq90r5LZMVLTbXDpoiGrCmodbL7
+	lHFTdJdA1UKOMTGvOk3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOpTt-00EO9G-KR; Mon, 28 Feb 2022 23:31:05 +0000
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
+	id 1nOqAD-00ETSJ-2o; Tue, 01 Mar 2022 00:14:49 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOpTr-00EO8U-Bt
- for linux-rockchip@lists.infradead.org; Mon, 28 Feb 2022 23:31:04 +0000
-Received: by mail-qk1-x72f.google.com with SMTP id v5so11699820qkj.4
- for <linux-rockchip@lists.infradead.org>; Mon, 28 Feb 2022 15:31:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rqXBt8yzUjWrarVpoIHmOjmSMgjNVBuHKspHFnevxUA=;
- b=cS1ycKAtfbn+XsNgoBE4DAXZtO7H2lZt5v+XcGll+qQ4wQE8eiouQ9y3BYrCnapRkM
- XFpSNIeiYMc77L6JHAMIyeXIN7uV722UqhjGQWuV0hmVLxlfrwpoJ41VgqabrQVeVb63
- FT3tWvJIdvTQztYHBlMNy1Fau4j82zcNIpzoY7MvU6RthdbPsYeTpGtxonsotF3tOK1H
- mQP41z5/6O+CazPQgwyCFNevY/j1ZadJWAIZ1XrwaqhQaF2DI2sJJgzE6XRy2jbVFkI1
- H6AECCJmQ7MrfYigvtxEcYL3tPX3S6kZ/hJvLwcGrue/srsPCxV3l+zTahQilk4LRngK
- 3TRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=rqXBt8yzUjWrarVpoIHmOjmSMgjNVBuHKspHFnevxUA=;
- b=CUPvox+Q3G68qynMJmgiR+bjzHuh1oeovbXEvqHyWm8zcdm/BUJ7kpA928G3NtJvSR
- s6enndYDoFPcWc02VhFRk9hAW4V9gVJCKNqm3BBk2V+OAXU4PXQ4u5Ti79dDC2Y3xuL8
- i4V8U29T4v+lG50zLnV1tV2zPhBCs2WJFqpUK74pCV+Qy3d2ufJeHTDzosqxplniKBgq
- lCdLwQdSy+R7ohreIE1+t/I+jAWN6lbeqB5MY/tMe6rVlm9uJhooWnVRSkVhb+bCjyf3
- svi1VNpTg7obOUkkIG2S6kYx0OVR4gT065ruZfo3ruP79VpGRRP9NnlAQ/8FIzx6O7ym
- hhTg==
-X-Gm-Message-State: AOAM5305+UWE0ZXcbjSPbqL2xRULL7Rcgisb0G8c8Pg+zZ5BdRCQwVHu
- KbF+og8EKJKhKw0HyZ1rwNI=
-X-Google-Smtp-Source: ABdhPJyyCW54RFkyJTyjxuy+jdYFhw6jgTumX6JBc2jenfOBm7AIbpEiCmpxMLb0sAl+zvnuGdAf9g==
-X-Received: by 2002:a37:687:0:b0:5f1:9134:8815 with SMTP id
- 129-20020a370687000000b005f191348815mr12442442qkg.255.1646091061288; 
- Mon, 28 Feb 2022 15:31:01 -0800 (PST)
-Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
- by smtp.gmail.com with ESMTPSA id
- n1-20020a05622a11c100b002dff3364c6esm6164575qtk.19.2022.02.28.15.31.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Feb 2022 15:31:01 -0800 (PST)
-From: Peter Geis <pgwipeout@gmail.com>
-To: Peter Geis <pgwipeout@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Heiner Kallweit <hkallweit1@gmail.com>,
- Russell King <linux@armlinux.org.uk>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
-Cc: linux-rockchip@lists.infradead.org, netdev@vger.kernel.org,
+ id 1nOqAA-00ETRw-Rn
+ for linux-rockchip@lists.infradead.org; Tue, 01 Mar 2022 00:14:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=jHhhXdYvdwbERT2LG1xSfD5WhTW4Le242Y9B4XkNvMc=; b=xIYZtIP3LfKmvTwJ7lKDXdJQP+
+ NYarX7erluU6lSzaEJcwjUB8EN7FPIof6PZMXiXJVMLFyhp0vAefyVs4PGTMrPdvdEfADEn8DUS0/
+ H2/achkGrugQ5zEHuYtyHtOU2BirkHOeDeAb5/TiRlupuCZNqzCqWFTke/f5ThdxBvSY7Ft+cttGL
+ WJvRt5U/IkfhtS2sYkiAbheh/I1IHI41vCWUtjSzMYHAqIsMSyKZXCDNxjEW4Y18myxSh6tuqvwJn
+ 13Wfi8YU6LSnM656UJ08SW2oW/VJyxI1bSOdx7Ccr5p64+etsBcJM3CGFJTYqmMmqI1fOKKIIrwzI
+ rpHdhpLA==;
+Received: from shell.armlinux.org.uk
+ ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:57568)
+ by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1nOqA4-0000aE-Ev; Tue, 01 Mar 2022 00:14:40 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1nOqA2-0006cU-H3; Tue, 01 Mar 2022 00:14:38 +0000
+Date: Tue, 1 Mar 2022 00:14:38 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ linux-rockchip@lists.infradead.org, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v1] net: phy: fix motorcomm module automatic loading
-Date: Mon, 28 Feb 2022 18:30:57 -0500
-Message-Id: <20220228233057.1140817-1-pgwipeout@gmail.com>
-X-Mailer: git-send-email 2.25.1
+Subject: Re: [PATCH v1] net: phy: fix motorcomm module automatic loading
+Message-ID: <Yh1lboz7VDiuYuZV@shell.armlinux.org.uk>
+References: <20220228233057.1140817-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220228233057.1140817-1-pgwipeout@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_153103_426686_6FFEFAEB 
-X-CRM114-Status: GOOD (  10.97  )
+X-CRM114-CacheID: sfid-20220228_161446_925154_50206E37 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,33 +79,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The sentinel compatible entry whitespace causes automatic module loading
-to fail with certain userspace utilities. Fix this by removing the
-whitespace and sentinel comment, which is unnecessary.
+On Mon, Feb 28, 2022 at 06:30:57PM -0500, Peter Geis wrote:
+> The sentinel compatible entry whitespace causes automatic module loading
+> to fail with certain userspace utilities. Fix this by removing the
+> whitespace and sentinel comment, which is unnecessary.
 
-Fixes: 48e8c6f1612b ("net: phy: add driver for Motorcomm yt8511 phy")
+Umm. How does it fail?
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
----
- drivers/net/phy/motorcomm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+>  static const struct mdio_device_id __maybe_unused motorcomm_tbl[] = {
+>  	{ PHY_ID_MATCH_EXACT(PHY_ID_YT8511) },
+> -	{ /* sentinal */ }
+> +	{}
 
-diff --git a/drivers/net/phy/motorcomm.c b/drivers/net/phy/motorcomm.c
-index 7e6ac2c5e27e..1e3a4eed39bc 100644
---- a/drivers/net/phy/motorcomm.c
-+++ b/drivers/net/phy/motorcomm.c
-@@ -131,7 +131,7 @@ MODULE_LICENSE("GPL");
- 
- static const struct mdio_device_id __maybe_unused motorcomm_tbl[] = {
- 	{ PHY_ID_MATCH_EXACT(PHY_ID_YT8511) },
--	{ /* sentinal */ }
-+	{}
- };
- 
- MODULE_DEVICE_TABLE(mdio, motorcomm_tbl);
+These two should be 100% identical in terms of the object code produced,
+and thus should have no bearing on the ability for the module to be
+loaded.
+
+Have you investigated the differences in the produced object code?
+If not, please do so, and describe what they were. Thanks.
+
 -- 
-2.25.1
-
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-rockchip mailing list
