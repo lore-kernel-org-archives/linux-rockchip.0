@@ -4,57 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B697BC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 16:03:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7707AC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 20:14:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ND+42V7W3iiykwaa8ndvQ4fwixbBOQpOXuzio8GU1Ok=; b=CIZReQuEH+Wmtr
-	kirn3lPyjgF05Mypipj8/xu6j/16blzoJzZ+F1uen5p01zA8pXYasv8UeEfPJ4PKNZ99VKOY9FfeZ
-	CwiZjdqcoux355zCa+XYSdrVz+/R29ohBr/1D7xUxOfRoTIX1/e6Ma+trr41kf7YV27ItwekCaR5J
-	vE66DJLhF3MjFsT9BhGXVK24ae4yv4z//LThNehoGwn4DWOo73A+kOnKiU/lgv46LGO+5Qz9vmwaS
-	MYfxFQ18jPQI+bmEn9ejpvemQ+K1y25JQRGgyR+rP+Kd++j5D9mkdAz4queHc7OsyF+Kq/zvQTvf6
-	gjRCjfMlwPqsB5UZ/2fA==;
+	List-Owner; bh=sqlBYFFAkdxn5CnxvuRa1/7cQ8/HGXRadGLEcz/1nQo=; b=a9y3fRC2jNKjuS
+	y/nFEC2YC7TtmocHx5+L+/26jZ5A/vYCj93ffUCbSTqefgjuPO43CLpp6wMkDw3lKWOBuDhQFkdta
+	rN2rTJGtBSykR+bkV6fCfPhW0DFSo+AnlcIEsTj7nVbZKEsEKjVpnX44Oxt3ma90Mnn+tc5KhWzaU
+	/uCyupng+XcQjyrBOZ7T245fDKA1rj9MDVdP4oq4Runteh1VmnL1u6qIKv6qWWKpX6DhXg+T/FQ1l
+	yM/bcLHS6BfwcjZyJZWxLt7+9+oomqMcNOt+oo+SjuHRv/WpLZn5HIjTkwXm0+WQw0jYJ7zh8/l+o
+	rT9SST5zQJMRgZwLIpgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP4yA-00HT48-3E; Tue, 01 Mar 2022 16:03:22 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP4xy-00HT0H-3l; Tue, 01 Mar 2022 16:03:11 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 66BB31042;
- Tue,  1 Mar 2022 08:03:06 -0800 (PST)
-Received: from [10.57.39.47] (unknown [10.57.39.47])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 26E0B3F70D;
- Tue,  1 Mar 2022 08:03:05 -0800 (PST)
-Message-ID: <f9768ddd-26c4-9b23-8c48-9de4123a75e6@arm.com>
-Date: Tue, 1 Mar 2022 16:03:00 +0000
+	id 1nP8tQ-000O2F-8c; Tue, 01 Mar 2022 20:14:44 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nP8tC-000NwQ-JO; Tue, 01 Mar 2022 20:14:32 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 9CBA961711;
+ Tue,  1 Mar 2022 20:14:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19A0AC340EE;
+ Tue,  1 Mar 2022 20:14:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1646165669;
+ bh=Xu0+i5k46GDbxoq5qyFGw7zlYHWQ576m6QBwAW8Us3k=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=O1uaehbcynWOhf4b1dNa0JoTLbD8vUttnuioyV73lUoR7WRDQ/WjnEsp6iVt9qOmE
+ JULvDJuEfIZ+jgT2zwRl/ONscXQfukyRCMJtmwI1ALU4+fO9rgU6cxIwA1yIAfBMJN
+ wrHr4TAhPW/qxElvw7tOufifEcvLTebL4WHQLuTQDied3zB2pG+tADzEgKnrI/7bgI
+ 5A5BLaX4GQ0S0b316JxQaolOImqohsN7L7RGvGjAQRwpfbcim/qjUVfZoqV/rIUSoQ
+ g6I4vk8gYuA6UeY1K+LcRXbmQgwm7wuu+8dgAIawHdYX+oUMrJIo+n975QjENJUf2y
+ q9J6JzE2osaHw==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Jon Lin <jon.lin@rock-chips.com>, Mark Brown <broonie@kernel.org>,
+ Sasha Levin <sashal@kernel.org>, heiko@sntech.de,
+ linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.16 08/28] spi: rockchip: Fix error in getting num-cs
+ property
+Date: Tue,  1 Mar 2022 15:13:13 -0500
+Message-Id: <20220301201344.18191-8-sashal@kernel.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220301201344.18191-1-sashal@kernel.org>
+References: <20220301201344.18191-1-sashal@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.6.1
-Subject: Re: [PATCH] mmc: host: dw-mmc-rockchip: avoid logspam when cd-broken
-Content-Language: en-GB
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- linux-mmc@vger.kernel.org,
- arm-mail-list <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
-References: <20220228223642.1136229-1-pgwipeout@gmail.com>
- <c12e74b7-0bef-ac7a-20c1-2a17ddd050dd@arm.com>
- <CAMdYzYq0A4FitRGe49fxvjbwLUCi_KGwCtfz7pmayt_dK=r32w@mail.gmail.com>
- <54b24f3d-3762-abbd-5ac4-dc5728f2fe4e@arm.com>
- <CAMdYzYp=Po08pap9w5s8PV0mKfFZSPSOhM1U1AUdrRkYV-FRZQ@mail.gmail.com>
- <CAMdYzYoF6eO3mBZD=PtOPL3atdA3kH4UzV++6wB0pirW-7h_9A@mail.gmail.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <CAMdYzYoF6eO3mBZD=PtOPL3atdA3kH4UzV++6wB0pirW-7h_9A@mail.gmail.com>
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_080310_278398_AEC2716C 
-X-CRM114-Status: GOOD (  27.02  )
+X-CRM114-CacheID: sfid-20220301_121430_701445_9D5FDD23 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,81 +73,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-03-01 14:49, Peter Geis wrote:
-> On Tue, Mar 1, 2022 at 7:46 AM Peter Geis <pgwipeout@gmail.com> wrote:
->>
->> On Tue, Mar 1, 2022 at 7:38 AM Robin Murphy <robin.murphy@arm.com> wrote:
->>>
->>> On 2022-03-01 11:49, Peter Geis wrote:
->>>> On Tue, Mar 1, 2022 at 6:23 AM Robin Murphy <robin.murphy@arm.com> wrote:
->>>>>
->>>>> On 2022-02-28 22:36, Peter Geis wrote:
->>>>>> The dw_mmc-rockchip driver drops a large amound of logspam constantly
->>>>>> when the cd-broken flag is enabled.
->>>>>> Set the warning to be debug ratelimited in this case.
->>>>>
->>>>> Isn't this just papering over some fundamental problem with the clock?
->>>>> If it's failing to set the expected rate for communicating with a card,
->>>>> then presumably that's an issue for correct operation in general? The
->>>>> fact that polling for a card makes a lot more of that communication
->>>>> happen seems unrelated :/
->>>>
->>>> Good Morning,
->>>>
->>>> This only happens when a card is not inserted, so communication cannot happen.
->>>
->>> Well, I suppose there's a philosophical question in there about whether
->>> shouting into the void counts as "communication", but AFAIR what the
->>> polling function does is power up the controller, send a command, and
->>> see if it gets a response.
->>>
->>> If the clock can't be set to the proper rate for low-speed discovery,
->>> some or all cards may not be detected properly. Conversely if it is
->>> already at a slow enough rate for discovery but can't be set higher once
->>> a proper communication mode has been established, data transfer
->>> performance will be terrible. Either way, it is not OK in general for
->>> clk_set_rate() to fail, hence the warning. You have a clock driver problem.
->>
->> Alright, I'll look into this.
->> It seems only extremely low clock speeds fail and I know rockchip
->> chips have a hard time with extremely low clock rates.
->> I'll trace out where the failure is happening.
-> 
-> Okay, I hope you can provide me a direction to go from here, because
-> it looks like it's doing exactly what it should do in this situation.
-> mmc core is requesting a rate (200k/100k).
-> clk core tries to find a parent to provide a clock that low and fails,
-> because the lowest possible parent is 750k.
-> clk_sdmmc(x) is listed as no-div, so it can't go any lower.
-> 
-> It seems to me that this error is sane, because other results of
-> einval you want to catch.
-> But einval in this case is fine, because
-> The thing that strikes me weird is currently clk_core thinks the
-> lowest possible freq here is 0, when in actuality it should be 750k,
-> am I correct here?
-> The mmc controller has an internal divider, so if my line of thinking
-> is correct here we should be more flexible here and request a rate
-> that's acceptable rather than just failing if it doesn't work.
-> But that's based on my limited understanding of how mmc core is
-> requesting this and what it expects in return.
+From: Jon Lin <jon.lin@rock-chips.com>
 
-The downstream solution appears to be just to clamp the rate for 
-detection[1][2]. Not sure whether it's feasible to try to be cleverer 
-with the local divider to settle on a more in-spec rate for the final 
-output :/
+[ Upstream commit 9382df0a98aad5bbcd4d634790305a1d786ad224 ]
 
-Robin.
+Get num-cs u32 from dts of_node property rather than u16.
 
-[1] 
-https://github.com/JeffyCN/mirrors/commit/d80d5062b22f9c4a559401bdb7b2727c4ced36c0
-[2] 
-https://github.com/JeffyCN/mirrors/commit/3f26edfb2392df25efc361ad0a9f41d0917e40ee
+Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+Link: https://lore.kernel.org/r/20220216014028.8123-2-jon.lin@rock-chips.com
+Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/spi/spi-rockchip.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 553b6b9d02222..4f65ba3dd19c2 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -654,7 +654,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 	struct spi_controller *ctlr;
+ 	struct resource *mem;
+ 	struct device_node *np = pdev->dev.of_node;
+-	u32 rsd_nsecs;
++	u32 rsd_nsecs, num_cs;
+ 	bool slave_mode;
+ 
+ 	slave_mode = of_property_read_bool(np, "spi-slave");
+@@ -764,8 +764,9 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 		 * rk spi0 has two native cs, spi1..5 one cs only
+ 		 * if num-cs is missing in the dts, default to 1
+ 		 */
+-		if (of_property_read_u16(np, "num-cs", &ctlr->num_chipselect))
+-			ctlr->num_chipselect = 1;
++		if (of_property_read_u32(np, "num-cs", &num_cs))
++			num_cs = 1;
++		ctlr->num_chipselect = num_cs;
+ 		ctlr->use_gpio_descriptors = true;
+ 	}
+ 	ctlr->dev.of_node = pdev->dev.of_node;
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
