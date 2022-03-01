@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23EDAC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 20:15:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 010F2C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 20:17:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2N0JmmbN88+6aoq2HkL3XbvFc45qabsfzFPPfgujspU=; b=VhBNCc+5QGErck
-	qKS+iLLLlX46qGrb4XfyerajRAiH6vgkG1qTwhRBjawid4Qtwyi95OfNwbbQPL7tYUO+6tTDKASzr
-	UNv69lFuKnPC455OprHhUUw35lyheC7WgpAc0xOGxPVUlnod91MlckfOCT3jKbmpSqo8xIjxKa6B9
-	1Til1dZ16isijtIytaYLdBlu25qfqEstdH90ioof10EUHT1SIbi2PyIodxlS8OpdXGfC1LQZXf0Tv
-	yFeQJb7WllCZLWPB0+HXuzAWr7S871EWLNRbPRWdaA5gbkRh7DRvOOFTXVZaJ7n4JrBvBHUMK4aqM
-	F1yqaOZLXzM8CVmH06BQ==;
+	List-Owner; bh=sqlBYFFAkdxn5CnxvuRa1/7cQ8/HGXRadGLEcz/1nQo=; b=4lA+1jdXCRb3JR
+	Cntku17FtMhAM/YeiSQRKpey5niBvq0pvMiMeFcIrjglrY6ZqZyRo6yi52RoKW3VFZlnZDdEW00Zc
+	sH3sAMje6nIToG50V/xJvZSJpzIy5ZfxpRHrvf6Uzl3Vu8s0B6/6Oq16yEa2bmum9JPbjegMj7siJ
+	0gVjXRox7/GX9umvVDiej1RetC1HGLLh+9+J8g8k7IGkXE2dtu19UEAvTG9BnhwGusluTIX8xtTkV
+	ijl12erlHQFBZ5+w+7CvbNoplV+UbIkEQg1YB7j094MoYrxGOCtFWQZsDSh+e70FQ2PuZaQ6zrU+N
+	jH8ALFQs1SjRPMw6Wa1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP8td-000O9Z-4K; Tue, 01 Mar 2022 20:14:57 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nP8vv-000PHk-Jt; Tue, 01 Mar 2022 20:17:19 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP8tG-000Nyj-0d; Tue, 01 Mar 2022 20:14:35 +0000
+ id 1nP8vh-000PD3-TI; Tue, 01 Mar 2022 20:17:07 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 7079461715;
- Tue,  1 Mar 2022 20:14:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74AC7C340EE;
- Tue,  1 Mar 2022 20:14:30 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 8A03FB81CB4;
+ Tue,  1 Mar 2022 20:17:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 369A3C340F1;
+ Tue,  1 Mar 2022 20:16:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646165673;
- bh=HbSeXkCCNcIiCPTKco1bU66sLMchExDVmSqGybBsPP0=;
+ s=k20201202; t=1646165823;
+ bh=Xu0+i5k46GDbxoq5qyFGw7zlYHWQ576m6QBwAW8Us3k=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ZDFS6KKgaxylDtMgtTw+ufHMumZEX8OEasU/5PtISb+cPks2+f4EQ+aTiXjVLOLEE
- 3gy4GIdoAeufsMXW2B4Uzj0JPRnULfyWh1xP7IpH4t4vYyl1T5GhpcPgCrONmXb1Si
- vjxqa6Jzq2+fBiA3+kP/KZrVw1X3KLaipDSIrunBf8EMQKdkTQb3x7IVEnR2ushYlI
- jhZPj2qxWOOSO4QXzyuxfZU26MXmt3smM1P1ZGTvPodX0JuTUKnkdAxJJb8Afucu/k
- FDX+MKgqdwiESVxk0A7J7gLUXPDJFydxKNA2jHZWd1HM1xvWWZ9IL0ZPZlhGpZBAQp
- mq0umspHMIDEA==
+ b=px7bi9MJvKRcvCAoHft/wsj0Jk/nUuDzLZYRgJMOAHNFZOT/3E/2fDwQYIyKhSv8L
+ d+mHVIy9qzP2gGW3TEd3UrmfRkat6NxLbnQjPi4OL14+s9r2UiweR7xAPjr+l9tD/0
+ JxSwHynuoFoapvMPuDFtg75OK2vwJDfIxJneSThM4Ds3oSebZMsPzczx7et0V4Bxmk
+ qyVKaBj6QbtxrNmpx6fvRrATF/rcvtX+v5UUOKO7juhi/bVJaq2gg2cmkfPFot3jrz
+ RLDXHx4mogeEJz96QbRHYyHPTVggia2AJodjdmeAk9oYphKg2NAbkIEOL6cnUUIQlY
+ bqjxsekA+hHGw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -48,19 +48,19 @@ Cc: Jon Lin <jon.lin@rock-chips.com>, Mark Brown <broonie@kernel.org>,
  Sasha Levin <sashal@kernel.org>, heiko@sntech.de,
  linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.16 09/28] spi: rockchip: terminate dma transmission
- when slave abort
-Date: Tue,  1 Mar 2022 15:13:14 -0500
-Message-Id: <20220301201344.18191-9-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 07/23] spi: rockchip: Fix error in getting num-cs
+ property
+Date: Tue,  1 Mar 2022 15:16:06 -0500
+Message-Id: <20220301201629.18547-7-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220301201344.18191-1-sashal@kernel.org>
-References: <20220301201344.18191-1-sashal@kernel.org>
+In-Reply-To: <20220301201629.18547-1-sashal@kernel.org>
+References: <20220301201629.18547-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_121434_151520_9B3975FE 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20220301_121706_095999_4221D8B9 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,36 +80,43 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Jon Lin <jon.lin@rock-chips.com>
 
-[ Upstream commit 80808768e41324d2e23de89972b5406c1020e6e4 ]
+[ Upstream commit 9382df0a98aad5bbcd4d634790305a1d786ad224 ]
 
-After slave abort, all DMA should be stopped, or it will affect the
-next transmission and maybe abort again.
+Get num-cs u32 from dts of_node property rather than u16.
 
 Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
-Link: https://lore.kernel.org/r/20220216014028.8123-3-jon.lin@rock-chips.com
+Link: https://lore.kernel.org/r/20220216014028.8123-2-jon.lin@rock-chips.com
 Signed-off-by: Mark Brown <broonie@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/spi/spi-rockchip.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/spi/spi-rockchip.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 4f65ba3dd19c2..c6a1bb09be056 100644
+index 553b6b9d02222..4f65ba3dd19c2 100644
 --- a/drivers/spi/spi-rockchip.c
 +++ b/drivers/spi/spi-rockchip.c
-@@ -585,6 +585,12 @@ static int rockchip_spi_slave_abort(struct spi_controller *ctlr)
- {
- 	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
+@@ -654,7 +654,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 	struct spi_controller *ctlr;
+ 	struct resource *mem;
+ 	struct device_node *np = pdev->dev.of_node;
+-	u32 rsd_nsecs;
++	u32 rsd_nsecs, num_cs;
+ 	bool slave_mode;
  
-+	if (atomic_read(&rs->state) & RXDMA)
-+		dmaengine_terminate_sync(ctlr->dma_rx);
-+	if (atomic_read(&rs->state) & TXDMA)
-+		dmaengine_terminate_sync(ctlr->dma_tx);
-+	atomic_set(&rs->state, 0);
-+	spi_enable_chip(rs, false);
- 	rs->slave_abort = true;
- 	spi_finalize_current_transfer(ctlr);
- 
+ 	slave_mode = of_property_read_bool(np, "spi-slave");
+@@ -764,8 +764,9 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 		 * rk spi0 has two native cs, spi1..5 one cs only
+ 		 * if num-cs is missing in the dts, default to 1
+ 		 */
+-		if (of_property_read_u16(np, "num-cs", &ctlr->num_chipselect))
+-			ctlr->num_chipselect = 1;
++		if (of_property_read_u32(np, "num-cs", &num_cs))
++			num_cs = 1;
++		ctlr->num_chipselect = num_cs;
+ 		ctlr->use_gpio_descriptors = true;
+ 	}
+ 	ctlr->dev.of_node = pdev->dev.of_node;
 -- 
 2.34.1
 
