@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC759C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 14:49:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD007C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 14:52:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PaWwceQ6iytzK3Bd6+A8yxLz3ffSHWMpoa1BYYnHDQ0=; b=oTJlKRMtF/3iYz
-	eEsYBhK/IESoUsi3l5+WqPLigw7zZKcCCmJDKRxlQzYUeCTqzFyi5+/EReAkI9GkT99NiEO/km8Pc
-	8QuXKSXSdGp2TyFHvtNEadN2/+GPh1xu2Bm5XCrK6SHudXfO2w0jx92QKy8t2386lgT/E5f7xrEBB
-	RCYdeiPklgo8qvHsYsH4tCOOXSymckfAFGjOCG11AZaifaZvdQz5SKQ6JtDKL0BVgoNwx1lw4OjW0
-	mLduNQbKoTor7hkb0UDHEf5tRiAvqNIXEKAYdRgTuT0Rs3CYCzJQIp5yGN5SfhDudWzhBw5YAlwIo
-	sUyIeoQuBI03dXzrZ7Dw==;
+	List-Owner; bh=Mcr0+gdMQh60HFXaaNBcEiimySX+JqOI5zkmcs/ABjM=; b=EVj258nL65xLoJ
+	0f8qXuvVF8EIFX/VSf8CaNGomDvmOARANcKSpjtEW0Pjiuxe3dcq8FxWOLhlgh7+ozIzQv6okFe2m
+	Bj75mxrIMWAo01n9RsIf1WOkPQcPEbt4uQQbepq5Aw8zyMmwg2EQx3FFzI6hw4rAtasEtSdp7B9+7
+	cr4aJKoKTyVMptpiw7bbyDF1a+JubANZ5vLFKr+BeAyMQl64K5ZqhuaH8XPSEmj0ytfhW8SH+gwlh
+	N4kzO+Q/vji97olZBv6m9MgN3lBEgQAS1lLs0uw+yVfOhI/FJ7Cioumx0yLe2+UiO1OICWkpLOnmo
+	Vq8rOGRy3fW/GMfwwGzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP3ou-00H8x4-4C; Tue, 01 Mar 2022 14:49:44 +0000
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
+	id 1nP3rL-00H9f2-9T; Tue, 01 Mar 2022 14:52:15 +0000
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP3oh-00H8ti-Hg; Tue, 01 Mar 2022 14:49:33 +0000
-Received: by mail-yb1-xb2c.google.com with SMTP id g26so2049102ybj.10;
- Tue, 01 Mar 2022 06:49:30 -0800 (PST)
+ id 1nP3rI-00H9dr-OJ; Tue, 01 Mar 2022 14:52:14 +0000
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-2db569555d6so90804027b3.12; 
+ Tue, 01 Mar 2022 06:52:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4U0iuFvcp7ujNscgy9HWinVgMJBUfxF78O2+/sgxqws=;
- b=CMUPJpGKvr3VRoQQvPQyzEsAzLDTj34vgFV5ES1+5Nu15WcUM+u0NDaq/u5h2wT5EF
- xA0SxExyPZ5A3+PfU5CznkcMfWJ34LGBbyWZjXf45jZF3BHFwDNznx9vGtJACZAoRCM+
- gpEoI17azZ4V/VgCOnobUjySB62ZOhRALn1ftTxgp+8FCIitE2kf0vkpFOEnYdlSwN1m
- P8JWKP0/aSxFVKqHEoxPEAalT+J13PmU4q1FPuCQ4gjpHePy8RJC/iYWJaOdj9UCbyXi
- zVB4bQ0JVb+9o/ZTHu93yddixmVHx3ASVka+DdA2TsuRCOYIni0OacRqlqDxnnPC2M4Y
- e0gQ==
+ :cc; bh=p6Qg573gQNt9jfmniDqk9TUY0R6tRZETMQPLMgu5ja0=;
+ b=MVzYKmbx2t7YMZV9Xu+2eR04C5rESan7pI1k2NW1iYgltGe4Mb7IYmeBqg2gA+t6MG
+ 19DmTPhph79iYaEvmXnUGkuQOiv3Q80nP5y4TZZ1Ok2g1V+Zvyj/WwRldjuPZWv4INRi
+ GmfapsiSFKSnJ9UKK0+QxdmRLrzOuilB+dRkm7orz8EKBJ3FLi8f2hgUfu63BTWEbxAM
+ Gw1PfN9U3QqKRA5svNldODCwyLCWCAzyB9ORWAAw76IPRNZkrhe28RVRSDoVsJJYEA3l
+ Ugp9K89fWodTQTziL8XmaWk0Yv4gfZeG9DDTZbnlzCoeZcOYbpkI7jQ6bi/9u5P6IwSP
+ JOoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=4U0iuFvcp7ujNscgy9HWinVgMJBUfxF78O2+/sgxqws=;
- b=7K185zwaDKWS0Q3wBN9cfxM65R6CAKCbGl+n1+fhEIl5iNrgIxLrH7ZL/9iTo+qFe1
- rx+LdjBfyX9HybddbBgAnLsCoSCUppXRs9xRXdJZzufufc0LGOkWgxIe/11VxoeXdsto
- 5iaFzq5XsVkoG1FY1jcUngs+EGS+/zepsMbrR6qR4TD4LZeYjgagIHOPGrF7yArkNE3t
- 0qf06FvQxrJuDBAo+zxZR2zhUlxud70vhG3lqnwl6G3QsjLsW1AIUKm8FTV4TqXTdWEt
- qAuphjf6raK08wml4nFtcom0gHRB+x7D0bWWE7/5LWVM5v3rtJLtWevp+2Y3x4t+TzwQ
- /8lg==
-X-Gm-Message-State: AOAM5326Zya2Sqa4+A2Yp7/nRIfjirhTdT3jfiQp714X6tFu600fdb8B
- vJjH3YjMt6fjB48uTv3T/js3/hHppIGlC5N1HDk=
-X-Google-Smtp-Source: ABdhPJyWo86SQbAsOm+jG2RskwR28LgIWL5XKSlmF2OvZVF3QyQ1JM2DddFW07h88pUDilmGCDkPhF5MsIjLBwEte8s=
-X-Received: by 2002:a25:5145:0:b0:61d:ad99:6e5a with SMTP id
- f66-20020a255145000000b0061dad996e5amr23834211ybb.228.1646146169969; Tue, 01
- Mar 2022 06:49:29 -0800 (PST)
+ bh=p6Qg573gQNt9jfmniDqk9TUY0R6tRZETMQPLMgu5ja0=;
+ b=ZTGMsFv7pXt1pf9hQiEjwyYjU8vKKLyFlJBk+GeUnCPKfC4/18HslxGTKg/3zUMktm
+ da6ubhW1IdjFBfRrrQt+yHd0AINjuGcW8M7q2gxyuzNj/HvkWbqxCe0QearA6hL8l9kz
+ ot8DUykDXuGza+uKw1F4mECJkB2/1lNiT6J03lD3e9PCIXbX1woPRkrsvj2nOeGAtDaE
+ nP3xy8+PagBRxFU/sPHJgtwgzQSrfv/jLuGi+4J0XHDE6ZRe3BR9geHo+SKmLgJJCOcr
+ tWgiQtr4KwGxdLOfqCyIPOyC4pgPpGFQKAT7PIt5G/0EcnM07hD9lFAzwAR8peZUbaWR
+ 77FQ==
+X-Gm-Message-State: AOAM531aBBDgypH6frlCM8SHCUnnJTsjcnS092zuCxqrxZnQVLq7Wnt1
+ DZKQMfXy22fxdcxrExnBsNdXVPPoi+a7GAnI/3M=
+X-Google-Smtp-Source: ABdhPJyysLGtnRH92oZtE9p17EhgqGO4pnLHjiquEF3VshCrVWSWx0aniFMT/paLW5OieVagmvOftjmUzRGi1FAxI8c=
+X-Received: by 2002:a05:690c:89:b0:2d7:fb7d:db7 with SMTP id
+ be9-20020a05690c008900b002d7fb7d0db7mr27255346ywb.219.1646146331471; Tue, 01
+ Mar 2022 06:52:11 -0800 (PST)
 MIME-Version: 1.0
-References: <20220228223642.1136229-1-pgwipeout@gmail.com>
- <c12e74b7-0bef-ac7a-20c1-2a17ddd050dd@arm.com>
- <CAMdYzYq0A4FitRGe49fxvjbwLUCi_KGwCtfz7pmayt_dK=r32w@mail.gmail.com>
- <54b24f3d-3762-abbd-5ac4-dc5728f2fe4e@arm.com>
- <CAMdYzYp=Po08pap9w5s8PV0mKfFZSPSOhM1U1AUdrRkYV-FRZQ@mail.gmail.com>
-In-Reply-To: <CAMdYzYp=Po08pap9w5s8PV0mKfFZSPSOhM1U1AUdrRkYV-FRZQ@mail.gmail.com>
+References: <20220228135700.1089526-1-pgwipeout@gmail.com>
+ <20220228135700.1089526-2-pgwipeout@gmail.com>
+In-Reply-To: <20220228135700.1089526-2-pgwipeout@gmail.com>
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Tue, 1 Mar 2022 09:49:19 -0500
-Message-ID: <CAMdYzYoF6eO3mBZD=PtOPL3atdA3kH4UzV++6wB0pirW-7h_9A@mail.gmail.com>
-Subject: Re: [PATCH] mmc: host: dw-mmc-rockchip: avoid logspam when cd-broken
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Jaehoon Chung <jh80.chung@samsung.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, linux-mmc@vger.kernel.org, 
+Date: Tue, 1 Mar 2022 09:52:00 -0500
+Message-ID: <CAMdYzYqs=iRY6uNzVSkHrrhPYFixXdbZjtwSpPOjf-6f8TXutw@mail.gmail.com>
+Subject: Re: [PATCH v4 1/8] dt-bindings: soc: grf: fix rk3568 usb definitions
+To: Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Heiko Stuebner <heiko@sntech.de>, 
+ Vinod Koul <vkoul@kernel.org>, Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
+ Johan Jonker <jbx6244@gmail.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Michael Riesch <michael.riesch@wolfvision.net>, Rob Herring <robh@kernel.org>, 
+ devicetree <devicetree@vger.kernel.org>, 
  arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_064931_616914_7BB007FC 
-X-CRM114-Status: GOOD (  43.61  )
+X-CRM114-CacheID: sfid-20220301_065212_813434_0067AF68 
+X-CRM114-Status: GOOD (  17.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,108 +91,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 1, 2022 at 7:46 AM Peter Geis <pgwipeout@gmail.com> wrote:
->
-> On Tue, Mar 1, 2022 at 7:38 AM Robin Murphy <robin.murphy@arm.com> wrote:
-> >
-> > On 2022-03-01 11:49, Peter Geis wrote:
-> > > On Tue, Mar 1, 2022 at 6:23 AM Robin Murphy <robin.murphy@arm.com> wrote:
-> > >>
-> > >> On 2022-02-28 22:36, Peter Geis wrote:
-> > >>> The dw_mmc-rockchip driver drops a large amound of logspam constantly
-> > >>> when the cd-broken flag is enabled.
-> > >>> Set the warning to be debug ratelimited in this case.
-> > >>
-> > >> Isn't this just papering over some fundamental problem with the clock?
-> > >> If it's failing to set the expected rate for communicating with a card,
-> > >> then presumably that's an issue for correct operation in general? The
-> > >> fact that polling for a card makes a lot more of that communication
-> > >> happen seems unrelated :/
-> > >
-> > > Good Morning,
-> > >
-> > > This only happens when a card is not inserted, so communication cannot happen.
-> >
-> > Well, I suppose there's a philosophical question in there about whether
-> > shouting into the void counts as "communication", but AFAIR what the
-> > polling function does is power up the controller, send a command, and
-> > see if it gets a response.
-> >
-> > If the clock can't be set to the proper rate for low-speed discovery,
-> > some or all cards may not be detected properly. Conversely if it is
-> > already at a slow enough rate for discovery but can't be set higher once
-> > a proper communication mode has been established, data transfer
-> > performance will be terrible. Either way, it is not OK in general for
-> > clk_set_rate() to fail, hence the warning. You have a clock driver problem.
->
-> Alright, I'll look into this.
-> It seems only extremely low clock speeds fail and I know rockchip
-> chips have a hard time with extremely low clock rates.
-> I'll trace out where the failure is happening.
+Good Morning,
 
-Okay, I hope you can provide me a direction to go from here, because
-it looks like it's doing exactly what it should do in this situation.
-mmc core is requesting a rate (200k/100k).
-clk core tries to find a parent to provide a clock that low and fails,
-because the lowest possible parent is 750k.
-clk_sdmmc(x) is listed as no-div, so it can't go any lower.
+Would it be possible to pull this patch individually, to fix the
+current error reported by Rob?
 
-It seems to me that this error is sane, because other results of
-einval you want to catch.
-But einval in this case is fine, because
-The thing that strikes me weird is currently clk_core thinks the
-lowest possible freq here is 0, when in actuality it should be 750k,
-am I correct here?
-The mmc controller has an internal divider, so if my line of thinking
-is correct here we should be more flexible here and request a rate
-that's acceptable rather than just failing if it doesn't work.
-But that's based on my limited understanding of how mmc core is
-requesting this and what it expects in return.
+Thanks,
+Peter
 
+On Mon, Feb 28, 2022 at 8:57 AM Peter Geis <pgwipeout@gmail.com> wrote:
 >
-> Thanks!
+> The rockchip,rk3568-pipe-grf and rockchip,rk3568-pipe-phy-grf
+> compatibles were incorrectly assigned to the syscon, simple-mfd
+> enumeration, vice only the syscon enumeration.
+> This leads a dtbs_check failure.
 >
-> >
-> > Cheers,
-> > Robin.
-> >
-> > > I found it while lighting off the SoQuartz module.
-> > > As it is pin compatible with the RPi CM4, and the CM4 does not have a
-> > > card detect line, sdmmc is non functional without cd-broken.
-> > > This led to the fun spew when there wasn't a card inserted as this
-> > > function is called every poll tick.
-> > >
-> > > Thanks,
-> > > Peter
-> > >
-> > >>
-> > >> Robin.
-> > >>
-> > >>> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> > >>> ---
-> > >>>    drivers/mmc/host/dw_mmc-rockchip.c | 9 +++++++--
-> > >>>    1 file changed, 7 insertions(+), 2 deletions(-)
-> > >>>
-> > >>> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-> > >>> index 95d0ec0f5f3a..d0ebf0afa42a 100644
-> > >>> --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> > >>> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> > >>> @@ -50,8 +50,13 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
-> > >>>                cclkin = ios->clock * RK3288_CLKGEN_DIV;
-> > >>>
-> > >>>        ret = clk_set_rate(host->ciu_clk, cclkin);
-> > >>> -     if (ret)
-> > >>> -             dev_warn(host->dev, "failed to set rate %uHz\n", ios->clock);
-> > >>> +     if (ret) {
-> > >>> +             /* this screams when card detection is broken */
-> > >>> +             if (host->slot->mmc->caps & MMC_CAP_NEEDS_POLL)
-> > >>> +                     dev_dbg_ratelimited(host->dev, "failed to set rate %uHz\n", ios->clock);
-> > >>> +             else
-> > >>> +                     dev_warn(host->dev, "failed to set rate %uHz\n", ios->clock);
-> > >>> +     }
-> > >>>
-> > >>>        bus_hz = clk_get_rate(host->ciu_clk) / RK3288_CLKGEN_DIV;
-> > >>>        if (bus_hz != host->bus_hz) {
+> Move these to the syscon enumeration.
+>
+> Fixes: b3df807e1fb0 ("dt-bindings: soc: grf: add naneng combo phy register compatible")
+>
+> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> index 072318fcd57b..5079e9d24af6 100644
+> --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> @@ -15,6 +15,8 @@ properties:
+>        - items:
+>            - enum:
+>                - rockchip,rk3288-sgrf
+> +              - rockchip,rk3568-pipe-grf
+> +              - rockchip,rk3568-pipe-phy-grf
+>                - rockchip,rk3568-usb2phy-grf
+>                - rockchip,rv1108-usbgrf
+>            - const: syscon
+> @@ -39,8 +41,6 @@ properties:
+>                - rockchip,rk3399-grf
+>                - rockchip,rk3399-pmugrf
+>                - rockchip,rk3568-grf
+> -              - rockchip,rk3568-pipe-grf
+> -              - rockchip,rk3568-pipe-phy-grf
+>                - rockchip,rk3568-pmugrf
+>                - rockchip,rv1108-grf
+>                - rockchip,rv1108-pmugrf
+> --
+> 2.25.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
