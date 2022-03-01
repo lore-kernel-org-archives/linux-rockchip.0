@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C70CC43217
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 15:25:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 503DEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 15:26:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N71/jFKceyGmpfCB98jZ4yhBmIVrNdrDll25R3WnjVs=; b=F2vlT/PnWwthV2
-	/MOftSAUOFtQAMNM6cP9+cbnWMORt9DWge3XMAU+h/7Hzcy3Mcy0uM2O4yydekWPH2UZ4Twh98che
-	L73byMIHekZO4oDkNMYDqMQlpzg9P/+F/3HW7YXCYCsjd8TZkIi8tEZcpSeH5rWyXJRtJC7NIS/5p
-	pSCk4Kza1u1szZ89QqlImukujxSBkzowl/jqgyv1szbctP0wA4RRpbh8Ot8PlAsD+NxKQc/F/0KXV
-	2AP6o9uZofW3ieslfqbvIHyD+xD7l6msbF/f31tZ0h8nbHtzvkvo5PdyOLB+Lx3bTKdzdyaSOPmmq
-	4i2HIcSxug30IAC5ZI4A==;
+	List-Owner; bh=U/pBkyWPij1Ra+pXvs1gCZKOBoEQHpfplneMZ1LW/hk=; b=rmTWV8ICZoeI7b
+	RsXaxpT2jVLfCdQyCg7iftEVn+eQhhSBvzZqa1VeFDz1/YJPXtH+SZ5MkGC4HuYxH78+9S/n8uccD
+	GuhzUHnPBMKiPPk7+ysKUUGOiv2ymb4gPjJq4IBzT9zoz2ckN2GuLZasGvZgmywahk4ZDphIln5Tp
+	PurYQ0Uh/P2jF30Xa9ZSrVdruawchpPDYNulu+a4aY19kzIzqH3f3GVM3Mvzkh2fcoDdUOZ+1fq5T
+	XeNPPWIkVg/ijg7YgR72dLHCzao4AqiOUJ81hdQmF1SQnieRemmd0PY6N4cdyj1z/Tinw1qDyuICv
+	0Pz33FJrvpUEHh5AGXvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP4NI-00HI2J-HC; Tue, 01 Mar 2022 15:25:16 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1nP4Nx-00HIZR-EA; Tue, 01 Mar 2022 15:25:57 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP4Ms-00HHkt-Bx; Tue, 01 Mar 2022 15:24:52 +0000
+ id 1nP4Ms-00HHjJ-Br; Tue, 01 Mar 2022 15:24:52 +0000
 Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
- by mxout2.routing.net (Postfix) with ESMTP id 5B8445FD47;
- Tue,  1 Mar 2022 15:24:48 +0000 (UTC)
+ by mxout1.routing.net (Postfix) with ESMTP id 5592B401AC;
+ Tue,  1 Mar 2022 15:24:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1646148288;
+ s=20200217; t=1646148286;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=O4mDNDnNrc2l6l2KQYpl88DRF0oS2RB4UmRhs1zBpaA=;
- b=HprEB0730UH3XpwJHwa8vjTm1DZo+5lXhkA2Eb9BgsafDAOCIzFCOytOvgdxmNiLibaQnF
- FMgYDRzyjmbCcwIshFpAZ1w3/SeKCmaWO4RE37zSSNssdkDM0gKH5Oz+QN3P6Y+maJow7P
- A/iep4XYWCT4I8SG3tV4KG5vWfnZTAs=
+ bh=EvM/I1oBTjBlwWa4oI6EL2zWGeQZf22/TQ7on05EAo0=;
+ b=tcABabNGeU9UPyXoSKOwdEWXcE5qvwx01hME3ZuAnkOp1GQj3PC8hklda/MrvDDz7Hexvo
+ X7XpYnzYjRCs03sufxg2ekXhCXgcv/+bq9LaPN90McOlO/zsIn0pG6QvWl7B6W3t1dmGGZ
+ q2K35Yb/zVBj2hRSdZtv74yDIqQOYig=
 Received: from localhost.localdomain (fttx-pool-80.245.77.190.bambit.de
  [80.245.77.190])
- by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 47D3C10011C;
- Tue,  1 Mar 2022 15:24:47 +0000 (UTC)
+ by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 2EFF010011C;
+ Tue,  1 Mar 2022 15:24:45 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: devicetree@vger.kernel.org
 Cc: Frank Wunderlich <frank-w@public-files.de>,
@@ -54,18 +54,17 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
  bcm-kernel-feedback-list@broadcom.com
-Subject: [PATCH v4 4/5] dt-bindings: Add rk3568-dwc3-ahci compatible
-Date: Tue,  1 Mar 2022 16:24:20 +0100
-Message-Id: <20220301152421.57281-5-linux@fw-web.de>
+Subject: [PATCH v4 2/5] arm64: dts: broadcom: Fix sata nodename
+Date: Tue,  1 Mar 2022 16:24:18 +0100
+Message-Id: <20220301152421.57281-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220301152421.57281-1-linux@fw-web.de>
 References: <20220301152421.57281-1-linux@fw-web.de>
 MIME-Version: 1.0
-X-Mail-ID: 6258418b-4d96-4beb-b093-528b24be8dfe
+X-Mail-ID: aa3616cc-85b9-47a9-bd4f-f6f08ce454ab
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_072450_631349_E483FEBF 
-X-CRM114-Status: UNSURE (   8.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220301_072450_625077_58B4F51A 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,29 +84,36 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add SoC specific compatible for rk3568 ahci controller
+After converting ahci-platform txt binding to yaml nodename is reported
+as not matching the standard:
 
+arch/arm64/boot/dts/broadcom/northstar2/ns2-svk.dt.yaml:
+ahci@663f2000: $nodename:0: 'ahci@663f2000' does not match '^sata(@.*)?$'
+
+Fix it to match binding.
+
+Fixes: ac9aae00f0fc ("arm64: dts: Add SATA3 AHCI and SATA3 PHY DT nodes for NS2")
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
-v4: new Patch
- Documentation/devicetree/bindings/ata/ahci-platform.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
+v4:
+ - new Patch
+---
+ arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/ata/ahci-platform.yaml b/Documentation/devicetree/bindings/ata/ahci-platform.yaml
-index ea1af283d125..7111cf448f45 100644
---- a/Documentation/devicetree/bindings/ata/ahci-platform.yaml
-+++ b/Documentation/devicetree/bindings/ata/ahci-platform.yaml
-@@ -29,6 +29,10 @@ properties:
-           - marvell,armada-8k-ahci
-           - marvell,berlin2q-ahci
-         - const: generic-ahci
-+      - items:
-+        - enum:
-+          - rockchip,rk3568-dwc-ahci
-+        - const: snps,dwc-ahci
-       - enum:
-         - brcm,iproc-ahci
-         - cavium,octeon-7130-ahci
+diff --git a/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi b/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi
+index 2cfeaf3b0a87..8c218689fef7 100644
+--- a/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi
++++ b/arch/arm64/boot/dts/broadcom/northstar2/ns2.dtsi
+@@ -687,7 +687,7 @@ sata_phy1: sata-phy@1 {
+ 			};
+ 		};
+ 
+-		sata: ahci@663f2000 {
++		sata: sata@663f2000 {
+ 			compatible = "brcm,iproc-ahci", "generic-ahci";
+ 			reg = <0x663f2000 0x1000>;
+ 			dma-coherent;
 -- 
 2.25.1
 
