@@ -4,67 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C015C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 15:27:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B697BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 16:03:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qGfaCsUX4gj5YXqc+HYV1YeqOwL6/mWRpSpJYsd9t3c=; b=tMpb6cDpFDtooN
-	fqlBSMWWzWy06KzBF2hhhxa/Y22wxT1xVem6gWUdWiyUxrmJVdLrK+S7qjRxmilY/E6DiD0el0FqS
-	k5420YMKkhL76hu3pTB8wgc/WZL0xplg64OpYMOAKONTSCCWgubSY3wKrqTfcrit5Oo9KTz8o2E4B
-	XgXRsj3Ef5mlZlg29/NoK+xp+EQY0YMxLezHlTBgZHJBVgcuaJUZToOjBbPYr4vFeOKXQWkpAwph8
-	IX/LR04JG+wHiPOkKDrQrhcsxN0n8yxsWo841t6PqwUZ26Bg6h9ETDpvQR5mRa9UmEVWQrHYWXjQE
-	VlMDldmnjQgSJRat0hGw==;
+	List-Owner; bh=ND+42V7W3iiykwaa8ndvQ4fwixbBOQpOXuzio8GU1Ok=; b=CIZReQuEH+Wmtr
+	kirn3lPyjgF05Mypipj8/xu6j/16blzoJzZ+F1uen5p01zA8pXYasv8UeEfPJ4PKNZ99VKOY9FfeZ
+	CwiZjdqcoux355zCa+XYSdrVz+/R29ohBr/1D7xUxOfRoTIX1/e6Ma+trr41kf7YV27ItwekCaR5J
+	vE66DJLhF3MjFsT9BhGXVK24ae4yv4z//LThNehoGwn4DWOo73A+kOnKiU/lgv46LGO+5Qz9vmwaS
+	MYfxFQ18jPQI+bmEn9ejpvemQ+K1y25JQRGgyR+rP+Kd++j5D9mkdAz4queHc7OsyF+Kq/zvQTvf6
+	gjRCjfMlwPqsB5UZ/2fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP4PA-00HJd2-Tn; Tue, 01 Mar 2022 15:27:12 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP4Mt-00HHlJ-Om; Tue, 01 Mar 2022 15:24:53 +0000
-Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
- by mxout3.routing.net (Postfix) with ESMTP id 55CA1604D9;
- Tue,  1 Mar 2022 15:24:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1646148289;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oeojDkbixb+3+AqcShTPnuHWz+1GrcPznWJUJt5Sy3k=;
- b=mCD9IItZHz/nvNSw+9nUHqW7k4ury82ESpc+eia4AE3SjgYsDGOTXqNBNJCDoI++q0jcmL
- pFOS+9nkJPmLxef1LhJfTfApHMkumNJ+3emH6O4B/x8/+bS5jOjgG7/nyyxud1fYDBIJoh
- ajA9m00XiJaKcMBdHTvxXlzp4x5U3gw=
-Received: from localhost.localdomain (fttx-pool-80.245.77.190.bambit.de
- [80.245.77.190])
- by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 50CC71005DD;
- Tue,  1 Mar 2022 15:24:48 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: devicetree@vger.kernel.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
- Damien Le Moal <damien.lemoal@opensource.wdc.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Hans de Goede <hdegoede@redhat.com>, Jens Axboe <axboe@kernel.dk>,
- linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
- Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
- bcm-kernel-feedback-list@broadcom.com
-Subject: [PATCH v4 5/5] arm64: dts: rockchip: Add sata nodes to rk356x
-Date: Tue,  1 Mar 2022 16:24:21 +0100
-Message-Id: <20220301152421.57281-6-linux@fw-web.de>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220301152421.57281-1-linux@fw-web.de>
-References: <20220301152421.57281-1-linux@fw-web.de>
+	id 1nP4yA-00HT48-3E; Tue, 01 Mar 2022 16:03:22 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nP4xy-00HT0H-3l; Tue, 01 Mar 2022 16:03:11 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 66BB31042;
+ Tue,  1 Mar 2022 08:03:06 -0800 (PST)
+Received: from [10.57.39.47] (unknown [10.57.39.47])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 26E0B3F70D;
+ Tue,  1 Mar 2022 08:03:05 -0800 (PST)
+Message-ID: <f9768ddd-26c4-9b23-8c48-9de4123a75e6@arm.com>
+Date: Tue, 1 Mar 2022 16:03:00 +0000
 MIME-Version: 1.0
-X-Mail-ID: ca1f5b53-0846-4b9d-9ef4-c9539ffd73ec
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.1
+Subject: Re: [PATCH] mmc: host: dw-mmc-rockchip: avoid logspam when cd-broken
+Content-Language: en-GB
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ linux-mmc@vger.kernel.org,
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+References: <20220228223642.1136229-1-pgwipeout@gmail.com>
+ <c12e74b7-0bef-ac7a-20c1-2a17ddd050dd@arm.com>
+ <CAMdYzYq0A4FitRGe49fxvjbwLUCi_KGwCtfz7pmayt_dK=r32w@mail.gmail.com>
+ <54b24f3d-3762-abbd-5ac4-dc5728f2fe4e@arm.com>
+ <CAMdYzYp=Po08pap9w5s8PV0mKfFZSPSOhM1U1AUdrRkYV-FRZQ@mail.gmail.com>
+ <CAMdYzYoF6eO3mBZD=PtOPL3atdA3kH4UzV++6wB0pirW-7h_9A@mail.gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <CAMdYzYoF6eO3mBZD=PtOPL3atdA3kH4UzV++6wB0pirW-7h_9A@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_072452_028698_CC7A7B3E 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20220301_080310_278398_AEC2716C 
+X-CRM114-Status: GOOD (  27.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,99 +67,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+On 2022-03-01 14:49, Peter Geis wrote:
+> On Tue, Mar 1, 2022 at 7:46 AM Peter Geis <pgwipeout@gmail.com> wrote:
+>>
+>> On Tue, Mar 1, 2022 at 7:38 AM Robin Murphy <robin.murphy@arm.com> wrote:
+>>>
+>>> On 2022-03-01 11:49, Peter Geis wrote:
+>>>> On Tue, Mar 1, 2022 at 6:23 AM Robin Murphy <robin.murphy@arm.com> wrote:
+>>>>>
+>>>>> On 2022-02-28 22:36, Peter Geis wrote:
+>>>>>> The dw_mmc-rockchip driver drops a large amound of logspam constantly
+>>>>>> when the cd-broken flag is enabled.
+>>>>>> Set the warning to be debug ratelimited in this case.
+>>>>>
+>>>>> Isn't this just papering over some fundamental problem with the clock?
+>>>>> If it's failing to set the expected rate for communicating with a card,
+>>>>> then presumably that's an issue for correct operation in general? The
+>>>>> fact that polling for a card makes a lot more of that communication
+>>>>> happen seems unrelated :/
+>>>>
+>>>> Good Morning,
+>>>>
+>>>> This only happens when a card is not inserted, so communication cannot happen.
+>>>
+>>> Well, I suppose there's a philosophical question in there about whether
+>>> shouting into the void counts as "communication", but AFAIR what the
+>>> polling function does is power up the controller, send a command, and
+>>> see if it gets a response.
+>>>
+>>> If the clock can't be set to the proper rate for low-speed discovery,
+>>> some or all cards may not be detected properly. Conversely if it is
+>>> already at a slow enough rate for discovery but can't be set higher once
+>>> a proper communication mode has been established, data transfer
+>>> performance will be terrible. Either way, it is not OK in general for
+>>> clk_set_rate() to fail, hence the warning. You have a clock driver problem.
+>>
+>> Alright, I'll look into this.
+>> It seems only extremely low clock speeds fail and I know rockchip
+>> chips have a hard time with extremely low clock rates.
+>> I'll trace out where the failure is happening.
+> 
+> Okay, I hope you can provide me a direction to go from here, because
+> it looks like it's doing exactly what it should do in this situation.
+> mmc core is requesting a rate (200k/100k).
+> clk core tries to find a parent to provide a clock that low and fails,
+> because the lowest possible parent is 750k.
+> clk_sdmmc(x) is listed as no-div, so it can't go any lower.
+> 
+> It seems to me that this error is sane, because other results of
+> einval you want to catch.
+> But einval in this case is fine, because
+> The thing that strikes me weird is currently clk_core thinks the
+> lowest possible freq here is 0, when in actuality it should be 750k,
+> am I correct here?
+> The mmc controller has an internal divider, so if my line of thinking
+> is correct here we should be more flexible here and request a rate
+> that's acceptable rather than just failing if it doesn't work.
+> But that's based on my limited understanding of how mmc core is
+> requesting this and what it expects in return.
 
-RK356x supports up to 3 sata controllers which were compatible with the
-existing snps,dwc-ahci binding.
+The downstream solution appears to be just to clamp the rate for 
+detection[1][2]. Not sure whether it's feasible to try to be cleverer 
+with the local divider to settle on a more in-spec rate for the final 
+output :/
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
-changes in v4:
- - drop newline in dts
- - re-add clock-names
- - add soc specific compatible
-changes in v3:
- - fix combphy error by moving sata0 to rk3568.dtsi
- - remove clock-names and interrupt-names
-changes in v2:
- - added sata0 + 1, but have only tested sata2
----
- arch/arm64/boot/dts/rockchip/rk3568.dtsi | 14 ++++++++++++
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 28 ++++++++++++++++++++++++
- 2 files changed, 42 insertions(+)
+Robin.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-index 5b0f528d6818..3e07d9f6a2d1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -8,6 +8,20 @@
- / {
- 	compatible = "rockchip,rk3568";
- 
-+	sata0: sata@fc000000 {
-+		compatible = "rockchip,rk3568-dwc-ahci", "snps,dwc-ahci";
-+		reg = <0 0xfc000000 0 0x1000>;
-+		clocks = <&cru ACLK_SATA0>, <&cru CLK_SATA0_PMALIVE>,
-+			 <&cru CLK_SATA0_RXOOB>;
-+		clock-names = "sata", "pmalive", "rxoob";
-+		interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_HIGH>;
-+		phys = <&combphy0 PHY_TYPE_SATA>;
-+		phy-names = "sata-phy";
-+		ports-implemented = <0x1>;
-+		power-domains = <&power RK3568_PD_PIPE>;
-+		status = "disabled";
-+	};
-+
- 	pipe_phy_grf0: syscon@fdc70000 {
- 		compatible = "rockchip,rk3568-pipe-phy-grf", "syscon";
- 		reg = <0x0 0xfdc70000 0x0 0x1000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index 7cdef800cb3c..264dd030e703 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -230,6 +230,34 @@ scmi_shmem: sram@0 {
- 		};
- 	};
- 
-+	sata1: sata@fc400000 {
-+		compatible = "rockchip,rk3568-dwc-ahci", "snps,dwc-ahci";
-+		reg = <0 0xfc400000 0 0x1000>;
-+		clocks = <&cru ACLK_SATA1>, <&cru CLK_SATA1_PMALIVE>,
-+			 <&cru CLK_SATA1_RXOOB>;
-+		clock-names = "sata", "pmalive", "rxoob";
-+		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
-+		phys = <&combphy1 PHY_TYPE_SATA>;
-+		phy-names = "sata-phy";
-+		ports-implemented = <0x1>;
-+		power-domains = <&power RK3568_PD_PIPE>;
-+		status = "disabled";
-+	};
-+
-+	sata2: sata@fc800000 {
-+		compatible = "rockchip,rk3568-dwc-ahci", "snps,dwc-ahci";
-+		reg = <0 0xfc800000 0 0x1000>;
-+		clocks = <&cru ACLK_SATA2>, <&cru CLK_SATA2_PMALIVE>,
-+			 <&cru CLK_SATA2_RXOOB>;
-+		clock-names = "sata", "pmalive", "rxoob";
-+		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
-+		phys = <&combphy2 PHY_TYPE_SATA>;
-+		phy-names = "sata-phy";
-+		ports-implemented = <0x1>;
-+		power-domains = <&power RK3568_PD_PIPE>;
-+		status = "disabled";
-+	};
-+
- 	gic: interrupt-controller@fd400000 {
- 		compatible = "arm,gic-v3";
- 		reg = <0x0 0xfd400000 0 0x10000>, /* GICD */
--- 
-2.25.1
-
+[1] 
+https://github.com/JeffyCN/mirrors/commit/d80d5062b22f9c4a559401bdb7b2727c4ced36c0
+[2] 
+https://github.com/JeffyCN/mirrors/commit/3f26edfb2392df25efc361ad0a9f41d0917e40ee
 
 _______________________________________________
 Linux-rockchip mailing list
