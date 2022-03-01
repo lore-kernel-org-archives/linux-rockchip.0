@@ -4,147 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1360C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 13:44:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E395C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 14:07:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=dCkjOkvpE7LydWsp8MNVLlyvuHTzhzn8MGRVgbxge1E=; b=GLTSmkPrq+rzxr0wNgJ6BK5b0T
-	T3hjOUXfPTPs2TA4KUCc5tbzrQHc617kmXZUO326+n8MKSXSQcjjcOH9qCSrMmTtTWWY+mPB624FQ
-	hXCdFMAzof2uj7/ahQswYKkEkqz6DtpCbqygj1fgYksef9KxmmstGeQC5rt0/ZwpuC2JYl5KBmrCA
-	v+F/Tl3n9cnTUMw46fVRr/h542Ccc8c4DjnrKOw4yMN638cg0wrPabNH3ci2ormWduybhcenN6HYv
-	2Sr2HH0p0+FcxKWEP1MPYMNUfKPF9sAPj2TNqxRRIwHKOrGbBZPVwrmYi3hQpNvnX68KFgqFrFfGh
-	npeNq8nA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=68hRT/hMbbn30ed7wGcXEhMP8bgpXC+f6JINYD8HDj4=; b=IiDY0JnmDREe3P
+	XZsoL7oApEspKBJOiJdmZGv4RiIzROzSzkXsSlGgguLRqiaeX0aDpmaFyvPY5kZXRvXyQCmBUq9oG
+	g5c9e++QFtOA18Q0oHCAwKb92cVrixNpv2iZ+gaQus0zZcqjCACTlWYhaby+95plPYJGK7S2nX60f
+	7KTrlNv1sxGfy9rOfzHHQC4qeVH+a1lpTWQt2b7do9ozRll5UpO+lpQcRmPfkvdOj59S7pG+m7xFQ
+	25V96HRnSW5AGgS1rfXXhDw4j7whe2hXAbeYGUrsccX6niag8q03JB3c2rs0yeyp2BeK4XoIcZyHS
+	OKbnFnqIzq0wz4zpE5GQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nP2no-00Gw5J-9E; Tue, 01 Mar 2022 13:44:32 +0000
-Received: from mail-db5eur03on0618.outbound.protection.outlook.com
- ([2a01:111:f400:fe0a::618]
- helo=EUR03-DB5-obe.outbound.protection.outlook.com)
+	id 1nP39v-00GzF6-Ut; Tue, 01 Mar 2022 14:07:23 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nP2nk-00Gw2t-Dr; Tue, 01 Mar 2022 13:44:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=D+W0Fjjry/IQpl1QskifPJDHveND2Tc4oFJBC7J0ODDlWHxpHSiH8JHdTML7m1SzEJ6oi5t/D95s/W6Zdx9GSZW2ganibNgxLohwMcX6RtUTU/Bb0I7sOzx4fe+51mDvKyLskmeHtpucitv+OUgfDKiWWoLZ5ncYNdLbb0tM+DndC0ClIbMOJA1wDM+h6LLHvPoFRQUJ1+apvf6oLMKZLbhcysVf0EvcyHOqFB2zUR2GeB5xJkhJKx6eCN6UjlHw22CFOrjvsy8kqDKTMve9pLaYqNlDXggEKJtkbeu1ta595BjVd/65g+1CwONPqfGbQ9PQa0Y1G7Bn1Kgr3AUAYQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=z62eI7u7zD/tah5JR21UxJAQ3BkbDrsXI+ubKjg/yb8=;
- b=Ia5XWLQA6QEI7Bz+EMLCyhqNCtbvwOGEUVV3K88MA3sdUBjJHetf3svPOaixb3ZBVRYboynKrxOuYVUQnIInv748JUGZtui286fis1rw7eMMUsOjFQykyM3u7NLZ/BahevFpDnGpDLipRo3GP0HTbeIIf0Q/1lCV59kcATXISfoq7OQDHgx6t222cN9URuwFDHFoP96Ow9vlT1mM+ZDE46HjZDTKO1N2s95f8c+fHooN/yFUc7A55hSpAsavIKK1EL6bcINOZR/6C8WlS2RfQ391rC6EQCzG7kxE+feQyOFPA4WX3hA41gKpMOs9XEII0/H/EM6nbcdu+Irrh7WX8A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=z62eI7u7zD/tah5JR21UxJAQ3BkbDrsXI+ubKjg/yb8=;
- b=Zbn6aySDFkb6pISjB2wvpUstG7FLUZzepBXsmr0JCkpYhCGdbrkABuMFqPqGHefAIYsTFPXyOY81gFA15WHtQWnRSfl3yRsM8tni8de21ZjSczsA9zSTYOx+5bhVAGixzrSIbgJXeCX77R18o9i+Q97dY5RaP5O+FMUXd0wODJQ=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com (2603:10a6:3:e1::23)
- by AM4PR08MB2643.eurprd08.prod.outlook.com (2603:10a6:205:5::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5017.26; Tue, 1 Mar
- 2022 13:44:23 +0000
-Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com
- ([fe80::f9ee:a333:b115:5049]) by HE1PR0802MB2426.eurprd08.prod.outlook.com
- ([fe80::f9ee:a333:b115:5049%4]) with mapi id 15.20.5017.027; Tue, 1 Mar 2022
- 13:44:23 +0000
-Message-ID: <bdf30b12-da0e-8505-2179-c8914185a169@wolfvision.net>
-Date: Tue, 1 Mar 2022 14:44:20 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.0
-Subject: Re: [PATCH v3 5/7] arm64: dts: rockchip: add rk356x dwc3 usb3 nodes
-Content-Language: en-US
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Heiko Stuebner <heiko@sntech.de>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Johan Jonker <jbx6244@gmail.com>, devicetree <devicetree@vger.kernel.org>,
- arm-mail-list <linux-arm-kernel@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
-References: <20220227153016.950473-1-pgwipeout@gmail.com>
- <20220227153016.950473-6-pgwipeout@gmail.com>
- <fdacf3eb-7892-c767-ae85-1672f85684dc@wolfvision.net>
- <CAMdYzYoEEY6-kGVDeWj9AoA98BL5hxnc_4CnUPiuStUnSrFXLA@mail.gmail.com>
- <56f8b74d-d9a1-7c6b-67f2-29586956670d@wolfvision.net>
- <CAMdYzYpiNZ1ofzWmjf-3ew1F3RMHngz_Lo72Nu56AnirZSmRPw@mail.gmail.com>
-From: Michael Riesch <michael.riesch@wolfvision.net>
-In-Reply-To: <CAMdYzYpiNZ1ofzWmjf-3ew1F3RMHngz_Lo72Nu56AnirZSmRPw@mail.gmail.com>
-X-ClientProxiedBy: ZR0P278CA0066.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:21::17) To HE1PR0802MB2426.eurprd08.prod.outlook.com
- (2603:10a6:3:e1::23)
+ id 1nP39f-00GzBl-NE; Tue, 01 Mar 2022 14:07:13 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id CFBA961541;
+ Tue,  1 Mar 2022 14:07:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39669C340FA;
+ Tue,  1 Mar 2022 14:07:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1646143626;
+ bh=EclZqpMJR1tYEAmca7b905ZIwmOC5TaIXkHf5lThpIk=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=JWjRHH8IYu+kF4Po1soEE6Ewr8+HCEUmDtGX95Ck9OyUqQML+GyWqI479v8uK9W9z
+ BGHCwdZoAux+WuSQLTuoq0R1NZ4vIvelieDU7f7JCKlLsTk5R+Dohqhgt7rmyh2Gow
+ DH6P5EGDBG0JvLLE40p+8eS/6YNbNIuELP3X1iUyRhgXubGx2cnEyPbWaPn9H9rpmL
+ U2xpHA1g2Ekfet26kIzpkDQyIoSPwv0h0YA59GPmZASjXp1ZxNRjJYJexFunabZUGf
+ wUvIfrFjgNAybe4GQAwBVuWfSoca2W6gwoqLzs0fBc/CM3L7K2LyMsi8s4hZAh3qcI
+ L9kk3ISLRrdDA==
+Received: by mail-ed1-f51.google.com with SMTP id s14so22197590edw.0;
+ Tue, 01 Mar 2022 06:07:06 -0800 (PST)
+X-Gm-Message-State: AOAM530nlq62V3qJDgZctAdjBHmg1Gfz5Fa1Rj1RNtldALgTi2elrBzM
+ IPgIAuzCBZYa8i/MfDYxzh8cbZj9DlRM1hlPsw==
+X-Google-Smtp-Source: ABdhPJwmaTZSRCBxdhtl1HfQ8MmkEGVxX0jRBq7/dxH/OHiYeN+U4x2bgyRCgL5udfuw1JmC1YQsVAmSw2fYxqTzjFI=
+X-Received: by 2002:aa7:d415:0:b0:410:a0fa:dc40 with SMTP id
+ z21-20020aa7d415000000b00410a0fadc40mr24270451edq.46.1646143624441; Tue, 01
+ Mar 2022 06:07:04 -0800 (PST)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 12219d3f-e2ea-416c-5a96-08d9fb8997df
-X-MS-TrafficTypeDiagnostic: AM4PR08MB2643:EE_
-X-Microsoft-Antispam-PRVS: <AM4PR08MB2643B307B1A334C5663F1658F2029@AM4PR08MB2643.eurprd08.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: bPy59At65IIoS0ugXO5eNSfVficO7R5WlaOl7HGn5b93MWgXcBzgNEuTxz+/gFRjmGDqAOJ/6ez54oy+LW1H16aGqbCcPtxE+OAnlUl6UbQeu+73XXQA3LuamjKRkD5n/xZRHp2wLYB7MVdehnwM3fLSwghcl7Gq+wjc/RDVEbLXptWkBFH+mCbDoqwZvU7bvhvDCWrmyhewh8GX9bSmbKzjkczhWDanavweB9MG8rUVqAybzYAYfPXAg76MwO9Hh2KNza8dgH+c6Vmo14uhLFa0yECfXXmdCXLwsKXhqEBiMyYO4b7b5OSI6/QkLoU6v03s4u6cOqEAOynpd0VB9mIZ2kPrGB9xvfcE9fiCkiLaMuNVGr2BI461uAjXbzO6M7jjrnB8lv6zg3IwIWOKI568klPxZWNfRb/17FWbuonVyDDHcxuoKKOk9d2jLYvH4MvoXR1QPzqwzgx/+X8QVT02uxxgiAT9mkugXZVgx94qzxovzzko/NMx19PeooWfkacGovRq8PUxzmLqXIMxKVaKTb7LCiTSw0iNhJcf3usTtY7CRx5xwikoRNh9o6pWDP/+dccG6PEuZHI7brks6nfhaKcqYNyfH6fSqnc8xTAuIzDNS9fLwq/YUoSngdYleO96kTKQXfK559N5QI8iFWLs7CgDbIpxAqOevwqxPhJyWsHHuxxJTW+Sp7XQfJdNqkAaqAEdlaq8XMUl1VUPYZ1cluGMS88Aq2Ac/qj2/Dbf+l8Le4mvjY14tIUIgidT
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:HE1PR0802MB2426.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(2906002)(2616005)(31686004)(54906003)(52116002)(53546011)(6506007)(6916009)(44832011)(31696002)(86362001)(38100700002)(6486002)(8936002)(5660300002)(66946007)(6512007)(316002)(36756003)(66476007)(66556008)(4326008)(8676002)(186003)(508600001)(45980500001)(43740500002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?U21ISnY1eEdPZzZFbExOaDhoeHJuWERPZDNKdStVZGxDazhRc0cwL01XdFZk?=
- =?utf-8?B?NERDMENiRGQvcDF3cGp5Vm9UYzdFeVRwaktXM2VzUjBzUWV6QlVESzFkbkZF?=
- =?utf-8?B?VnNNaHRmZmVVOXVvaGxrTUsvUnBMSUVWbkMycTFtNWRCY1Z3ZklJWUFtTUdB?=
- =?utf-8?B?N0VScFpESHBjYUxwQ0pETFR1Q3JheHk1TmFRSEdJM2l6NzZEdGVEWlYzbThV?=
- =?utf-8?B?bDVnOFFLSnhlSHBRV0RKRUNFSnJxeklSUE01WDhMdnlWeFg0ZFJNbWtjcWpa?=
- =?utf-8?B?NHRCN3dJSWpnSmxNTGl2OVBsWHc5dS9aQmRGOTkraEVpMFZHQnlzZlVTMHF1?=
- =?utf-8?B?Tjg5N092L0E1Z2xvTGFCRFZMeDV0bFRNMzdZNWhyOHFRZ25vbG92Nlh3UzRs?=
- =?utf-8?B?T2ZINmxyTGw2TWxFWFRta3BCK2JPM0M2bGlXcmRmT2cxT1JqZXU5YTVUMEtN?=
- =?utf-8?B?cEkwa1A4MUl5TVpERE83TloxaU55WExuRzVpWjgrTk5xY2dTQnFEZTNqUERV?=
- =?utf-8?B?L3BMWndaWnYzSmF1QWxQRTNGU0kyZFRIZWs5bktqSE5xVk9BZDlXeVNSck1R?=
- =?utf-8?B?VGpJK0NxbDQ0MTUyYjdwSlFCQUdkUlJjWEp5UEVrR0NzY3lTU3c4MWNmdkhC?=
- =?utf-8?B?L0p3VFJZM0xrNUlHME01aEFycWppWEoxTW5CVzA3bW1sNS82ck0rOFh4T001?=
- =?utf-8?B?NzNXbXhiZTd0RFA2TUlpdE5ObWhxU2ViODFVdWZPQTFMbXdLS0xTcGc2Z0tl?=
- =?utf-8?B?WElLOWpxQU5JMDBiMXJHRlpBUXIvV2JWcEJqNGoyWmZDUmdDK1dsYVZTL1cz?=
- =?utf-8?B?OVJOTEJFV2I1SG9jV0JYVzVFOTFPL0ZpMU9KemRkNWdpNWNMTk5oVlBDNVRN?=
- =?utf-8?B?QnJ2bktSNmxKYm9FYUh1WGNvYXFWdEcxUlZRYmV6VHp0bnRKSGpieGNaSlNY?=
- =?utf-8?B?a3dxOE1EZVJtRE81V0VWRCtVd1B1SElMbGwwTElwc21YcytNcDF0cUhSOWZL?=
- =?utf-8?B?dEtuUjZGbWhYUUdhRTY0Ylh1RDdQUFlTckxwczBONGZMN3YxTjh1MWN0K0Er?=
- =?utf-8?B?NW5yTHpxSUs4WkM4QlE1eFVTU2phRW5mYjV2cStsQ3RuekdNQmRZYllZbnVN?=
- =?utf-8?B?QnBmblljM0dQOWhSRWttS3BUcmRvYjgzZVJRNWpoMnhoMnQycDZIZ0VEYnFD?=
- =?utf-8?B?VDFRNmxjUlAvY1YzaGd4b0VCWVF1dFhscVNrVzlZNFpTSEwxa1JJdk01cytv?=
- =?utf-8?B?bEZMSE5IdmF4dk9ZNUxwbDNjNkFZME5tTUx6eUNyWEUwY0NxSEhWTzlDT25P?=
- =?utf-8?B?MEU3RDU5NjZwWCtVRTdSa1U3ekY4Tm83cjV1d3pEWHBtWUdxVFBzdSt3bzI1?=
- =?utf-8?B?UzJDSDl2OEJZL1BqbS8vb0xwcGxYbW9ndGIyMmVGL2N2Sm5NYkoyOEVjUlhI?=
- =?utf-8?B?dGh1Nmk3Q1I4U2c1WkE2cDVUenFZd2xpYVdQSk0zT2V3OTZDU1gxdWQvdTJJ?=
- =?utf-8?B?NmlzTWc4VHlZa1ZiUXZrbkZzVkFuZW9JZE5jVWtDa1F0U2ZlSHJyVGZ2T3gx?=
- =?utf-8?B?VTB3dHRkSzN1cDZnQkJWR1ByWEtOZ2k4TmhzY3JkbXM5M0gvaDN4N1RtNkVY?=
- =?utf-8?B?NkNQTE9EeXh6WGQ2eTJGL1JOczQwWkVkeFRabjVMOEZXVVdKOFhPVVMrVklv?=
- =?utf-8?B?bi94RVViSjZXWnByR2J2U09pcEJ5N3FmQk91MjlkRlhVWmpxSnNMYVVZcHRV?=
- =?utf-8?B?U0FkSm5SNUsyczRRWkRoWWpZS0JrR2gzaFB5U2ViQkpXUVRzUjc1Nk5uUVo3?=
- =?utf-8?B?QTNnZEJlUzVKRWxzKzdKQ1NqOWVrVXZpT0poZElvMXM5NXpyV2dZTTFHRlNF?=
- =?utf-8?B?V0s1dEhSYUpnRUk4U2JhT1hlcnJFTy8wd1d1bEM2UzBhVkRrUW1KcEVoM1FN?=
- =?utf-8?B?dUo4QzV2NHF1S2dVMTBGVzRkSWIvSnZjais5YVArSmtSTm9hMEtvS0Y4LzBx?=
- =?utf-8?B?VGY0eU1BMkViRFJBbW4wL29pVkNQRnF1OU52NnE5UGJsS09VUmdUSHJYNTg4?=
- =?utf-8?B?bk81amZzRWVTNEJiUUw5SU5PekJ2YzJTdTRyRFAxTEhNcElSSmdBQ2R6QjZn?=
- =?utf-8?B?anRNTEhsNlA1U3Z0R0gva2YyUXRNL1FVdmgxamlmek4ycnBsMUNmYXVrUkNr?=
- =?utf-8?B?cmYzYS9rd3dtOGlqeFlTdjhJdUdJY2RSZE1GZ0VrNUFNUzNWcmJIYVVYWFQy?=
- =?utf-8?B?TGREWjJZbDhNdS83LzREcWJ0WWlzNTFUME9RK3JoaStxRWY4cEN1bFBTdWNQ?=
- =?utf-8?B?V1pXRFJLRXFzcEJaKzNtb20zTExLOUcyWVV2OG1UUkJzMm9RQ0xWNXJvMG9q?=
- =?utf-8?Q?SwNgNI5MzpvfgYwY=3D?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 12219d3f-e2ea-416c-5a96-08d9fb8997df
-X-MS-Exchange-CrossTenant-AuthSource: HE1PR0802MB2426.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Mar 2022 13:44:22.8599 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: N5yjkiOm28evpA+BPKBZQcviWiU8HjA8tuFfjpUwnaXuKGU+xiXm6pvnLRT0TpFx4Oc0LwUKeE+Cnr0te2b8V5AHx7pGI2ycw4CzY2+i3OU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM4PR08MB2643
+References: <20220208091326.12495-1-yifeng.zhao@rock-chips.com>
+ <20220208091326.12495-3-yifeng.zhao@rock-chips.com>
+ <CAL_Jsq+1ixfw4+pwPcM5azPdC_4_bYCPu50jUvKnVMr6dSncpA@mail.gmail.com>
+ <CAMdYzYryTb4Gvv3XENgUOSrutr7S-5a7GOMRahXWWZOeL1qKWA@mail.gmail.com>
+In-Reply-To: <CAMdYzYryTb4Gvv3XENgUOSrutr7S-5a7GOMRahXWWZOeL1qKWA@mail.gmail.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Tue, 1 Mar 2022 08:06:52 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqLsLU5-bJVRWv_TzGUZdFHOx7tdzqV2piNfacNkXg=zww@mail.gmail.com>
+Message-ID: <CAL_JsqLsLU5-bJVRWv_TzGUZdFHOx7tdzqV2piNfacNkXg=zww@mail.gmail.com>
+Subject: Re: [PATCH v8 2/4] dt-bindings: phy: rockchip: Add Naneng combo PHY
+ bindings
+To: Peter Geis <pgwipeout@gmail.com>, Vinod <vkoul@kernel.org>
+Cc: Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+ "heiko@sntech.de" <heiko@sntech.de>, 
+ Johan Jonker <jbx6244@gmail.com>, devicetree <devicetree@vger.kernel.org>, 
+ Michael Riesch <michael.riesch@wolfvision.net>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+ "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Liang Chen <cl@rock-chips.com>, 
+ Kever Yang <kever.yang@rock-chips.com>, Lee Jones <lee.jones@linaro.org>, 
+ wulf <wulf@rock-chips.com>, David Wu <david.wu@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220301_054428_501193_DBEA155F 
-X-CRM114-Status: GOOD (  19.46  )
+X-CRM114-CacheID: sfid-20220301_060707_855274_642F7788 
+X-CRM114-Status: GOOD (  26.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,54 +94,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Peter,
+On Mon, Feb 28, 2022 at 3:37 PM Peter Geis <pgwipeout@gmail.com> wrote:
+>
+> On Mon, Feb 28, 2022 at 2:18 PM Rob Herring <robh+dt@kernel.org> wrote:
+> >
+> > On Tue, Feb 8, 2022 at 3:15 AM Yifeng Zhao <yifeng.zhao@rock-chips.com> wrote:
+> > >
+> > > Add the compatible strings for the Naneng combo PHY found on rockchip SoC.
+> > >
+> > > Reviewed-by: Rob Herring <robh@kernel.org>
+> > > Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> > > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> > > ---
+> > >
+> > > Changes in v8: None
+> > > Changes in v7:
+> > > - remove u3otg0_port_en, u3otg1_port_en and pipe_sgmii_mac_sel
+> > >
+> > > Changes in v5:
+> > > - modify description for ssc and ext-refclk
+> > > - remove apb reset
+> > >
+> > > Changes in v4:
+> > > - restyle
+> > > - remove some minItems
+> > > - add more properties
+> > > - remove reset-names
+> > > - move #phy-cells
+> > > - add rockchip,rk3568-pipe-grf
+> > > - add rockchip,rk3568-pipe-phy-grf
+> > >
+> > > Changes in v3: None
+> > > Changes in v2:
+> > > - Fix dtschema/dtc warnings/errors
+> > >
+> > >  .../phy/phy-rockchip-naneng-combphy.yaml      | 109 ++++++++++++++++++
+> > >  1 file changed, 109 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.yaml
+> >
+> > This now fails in linux-next:
+> >
+> > /builds/robherring/linux-dt/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.example.dt.yaml:
+> > syscon@fdc50000: compatible: 'oneOf' conditional failed, one must be
+> > fixed:
+> >  ['rockchip,rk3568-pipe-grf', 'syscon'] is too short
+> >  'rockchip,rk3568-pipe-grf' is not one of ['rockchip,rk3288-sgrf',
+> > 'rockchip,rk3568-usb2phy-grf', 'rockchip,rv1108-usbgrf']
+> > From schema: /builds/robherring/linux-dt/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> > /builds/robherring/linux-dt/Documentation/devicetree/bindings/phy/phy-rockchip-naneng-combphy.example.dt.yaml:
+> > syscon@fdc70000: compatible: 'oneOf' conditional failed, one must be
+> > fixed:
+> >  ['rockchip,rk3568-pipe-phy-grf', 'syscon'] is too short
+> >  'rockchip,rk3568-pipe-phy-grf' is not one of ['rockchip,rk3288-sgrf',
+> > 'rockchip,rk3568-usb2phy-grf', 'rockchip,rv1108-usbgrf']
+> > From schema: /builds/robherring/linux-dt/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> >
+> >
+> > The problem appears to be that patch 1 was applied incorrectly and the
+> > compatibles ended up in the wrong section (the one requiring
+> > 'simple-mfd'). Patch 1 probably conflicts as my bot will just skip the
+> > patch if it conflicts which is why this had a different error report.
+>
+> Good Afternoon Rob,
+>
+> This is fixed in the first patch of my rk356x dwc3 enablement series:
+> https://patchwork.kernel.org/project/linux-rockchip/patch/20220228135700.1089526-2-pgwipeout@gmail.com/
 
-On 2/28/22 15:10, Peter Geis wrote:
-> On Mon, Feb 28, 2022 at 8:37 AM Michael Riesch
-> <michael.riesch@wolfvision.net> wrote:
->>
->> Hi Peter,
->>
->> On 2/28/22 1:57 PM, Peter Geis wrote:
->>> [...]
->>>>> +
->>>>> +&usb_host0_xhci {
->>>>> +     phys = <&usb2phy0_otg>;
->>>>> +     phy-names = "usb2-phy";
->>>>> +     extcon = <&usb2phy0>;
->>>>
->>>> I wonder what the correct place for this extcon property is. You defined
->>>> it on SoC (RK3566) level, in my patch for the RK3568 EVB1 it is added on
->>>> board level. Is this common to all RK356x variants?
->>>
->>> Yes, the usb2phy is always available as an extcon unless you make a
->>> device that doesn't have usb2 capability.
->>> In that case you'd have to override the device anyways.
->>> If we want to turn on default role otg here, we'd need this defined
->>> here as well or things break.
->>
->> OK, so it seems to me that the extcon could or should enter the
->> rk356x.dtsi (and can be removed from the rk3566.dtsi and the
->> rk3568-evb1-v10.dts in this series). Is that correct?
-> 
-> Apologies it seems I just missed this.
-> Yes, this could get moved to the base dtsi.
-> I'd prefer to do it as part of the next series supporting otg, as I've
-> only been doing OTG development on the rk3566 and would prefer it be
-> fully tested.
+Where does that say Vinod incorrectly applied the original patch and
+needs to apply it? What's the status of the series? Do we have to wait
+for the rest of the series to be applied?
 
-Thanks for the clarification, that'll be fine for me.
-
-Best regards,
-Michael
-
-> However if Johan prefers I can send another revision accomplishing this now.
-> 
->>
->> Best regards,
->> Michael
->>
->>> [...]
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
