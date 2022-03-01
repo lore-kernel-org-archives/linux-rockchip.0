@@ -4,69 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0F3BC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 04:20:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96565C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Mar 2022 04:22:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wcI1X65XEbxyNeXpJK8FKXedFIXLZ9klKanq7tzkrMM=; b=e2vxlUyNZozmIn
-	feMowyhc4hg5ZdUzTT56E+n55AZaAUKa4uJOVGG8AIfg081kIiG5MOChx6sqCCnZgIQ+RlC/C23MT
-	xF9FrkcNkubIihUPKgXGrBL09UBtszPTZ+s8wt4zPc5A4402jECZahIdptU6TRMKCVCdOu61rRQQg
-	kEKXf7gK4Vr8mn66hFNvhXGwY7P+BYLsZgjp1ik/cwlOzONsYvhVgWfGaNFuDs+1M9Ga59TUL5YSR
-	QF/sI4JD2OnOmtVRBJP1G4UWpD+Rt9yya95//j2hv5aeb778ZPk1ZJ+ngtolxiKpi5JKamJySwkWM
-	oCkjd8d+INm/PBAkK5lA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=rOWd67s53oiXKLaZOMT61r5KEs+fpr0HWWx4ZN9pIPQ=; b=Q3zNNp3dJXEjvr
+	8CDqD0qQ2MmHvXrGPm+q06poWIUEPYmrmjIFPa1MK5c9zk2kJ/lfqSn6wM6tt57kf5FM+ZIyN+ytL
+	myaT7rKAQCsdC5c8vxoPb+wwulmvjcay44+S1hG5XVyVMl1Px0u1vQGkZUKdYQdYKA7jyWCKL8hbC
+	BBcL9GtblOYhnpAGKCmQwZDr9N2iQL0HNUhpNRFV5aCtiY26hTq2AEov7GAbBrCfZxIxR8838eBuv
+	pT0PbBUOWChrESvccMIeqeAHCHUwfT6yKEWlPSfCynhLSbN53n1bV9l/0XGj9X9kk2afNt5c1QZmZ
+	FihJnHN2QD6fn73mAByQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nOtzk-00ErQh-Ha; Tue, 01 Mar 2022 04:20:16 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1nOu20-00EsKn-4k; Tue, 01 Mar 2022 04:22:36 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nOtzQ-00ErGU-4O; Tue, 01 Mar 2022 04:19:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1646108396; x=1677644396;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=vYBNAlp/fbezUdL30BdHV5afm3jG+W6zRpPec4mqI+U=;
- b=QOLPfxBiRKVQ2sC50h3gObveyRx3V+KKtXejfWw9B3gMpiwYfJLxaSDr
- 0e9KhjQbCQsLabHbTheU9RSAhKhRnBRQUl4vU2KYjRItzPh7RaiC+36ak
- karzMi9Mlc2qU051QL4QtHD6B9MQsPf4dKXCrLGAyxSXYot2cjH2bJUd3
- RiB3zwnM0qmW/vXffmys0+HXxd1I4KeJDN8XQUNAbkHHaHwbrJNiECR1P
- m3EcWBHCCs039sYAunK/SLUs24VVzSrxlCZv1MfRrAJOEhXRGtMY9blSO
- D5HPUPhlAuaBnAD4tGUD7iU8NlUM6itbei+37NoME6IAVqdgfOrN7Jdqd A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10272"; a="253243232"
-X-IronPort-AV: E=Sophos;i="5.90,144,1643702400"; d="scan'208";a="253243232"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Feb 2022 20:19:50 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,144,1643702400"; d="scan'208";a="608682706"
-Received: from lkp-server01.sh.intel.com (HELO 788b1cd46f0d) ([10.239.97.150])
- by fmsmga004.fm.intel.com with ESMTP; 28 Feb 2022 20:19:47 -0800
-Received: from kbuild by 788b1cd46f0d with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1nOtzG-00086Y-LT; Tue, 01 Mar 2022 04:19:46 +0000
-Date: Tue, 1 Mar 2022 12:18:48 +0800
-From: kernel test robot <lkp@intel.com>
-To: Corentin Labbe <clabbe@baylibre.com>, heiko@sntech.de,
- herbert@gondor.apana.org.au, krzysztof.kozlowski@canonical.com,
- robh+dt@kernel.org
-Cc: kbuild-all@lists.01.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Corentin Labbe <clabbe@baylibre.com>
-Subject: Re: [PATCH 13/16] crypto: rockchip: rewrite type
-Message-ID: <202203011055.8Y6mA9xW-lkp@intel.com>
-References: <20220228194037.1600509-14-clabbe@baylibre.com>
+ id 1nOu1x-00EsHz-7t
+ for linux-rockchip@lists.infradead.org; Tue, 01 Mar 2022 04:22:34 +0000
+Received: by mail-pl1-x636.google.com with SMTP id q11so12472109pln.11
+ for <linux-rockchip@lists.infradead.org>; Mon, 28 Feb 2022 20:22:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=YiuwsItVgiHnp3P3VJMKFvdvhrCE1xpf4s9ZlXl+PbQ=;
+ b=QQ4fluqz5WXBpkKtSYvLRxOIATkBOH8/cAQlea9sUiUA+b/dzUbaYk9wcXvdaWC5Ox
+ I20Gu+F0tCq6FgMw0FNnUvvTsZGSAIKzkeMZXstAnZYuzdnq/w8cLjrj9r/cs9MdHhx6
+ SA2KrVrSS32/uw05IsQeD9jN2PRul5TZjZt0Q=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=YiuwsItVgiHnp3P3VJMKFvdvhrCE1xpf4s9ZlXl+PbQ=;
+ b=pkOwliSqfqoXgvlIIDUDQVgx/hHvfRyCJZKo/HMznOQ8StVakCYNa5fjtEivC+MOrS
+ 08nIWr8wqRNRH/oLeuznyjARd/y7rQGXtxpBZcZ0j3Umi6OujvqwfcvNSmI12qleQ0SN
+ CBv9xSH0uyV7aeZ/h6JbT6+YfnpqoI/YlvSZ8394GT9GavuU/MhEzSHI0FjhMhCeJKMl
+ H1Z3fMUqSVgCZCbQRJvG21ivXZ9cXrBvGQVJJHk0A7zebLvc9xumzXWDNOYoZ6gB4ZEu
+ HkPldPRcPXUF+Id1H433JKyN+wvDsvu7vWU+bQk1dQtTQtAP9U+cLtxlqFx2d7yCXAK1
+ UslQ==
+X-Gm-Message-State: AOAM531MDLlsTDzPEiTYZtJFjPemS0X6J7gvEbX26O1yGnRZTy6NFXKh
+ FgSVvwiB0lOSgWLs9OeQoVgcEA==
+X-Google-Smtp-Source: ABdhPJwrUuR4xfw3ppxF+k8PiK8Tz/m8iuVhac/5vgw9ak5tNvg4B5bN1rFj/6nxyJRX+YJTHAGSwA==
+X-Received: by 2002:a17:90b:228a:b0:1bc:7ca4:efaf with SMTP id
+ kx10-20020a17090b228a00b001bc7ca4efafmr20262946pjb.245.1646108551356; 
+ Mon, 28 Feb 2022 20:22:31 -0800 (PST)
+Received: from wenstp920.tpe.corp.google.com
+ ([2401:fa00:1:10:786d:ffd4:ee63:5b33])
+ by smtp.gmail.com with ESMTPSA id
+ v189-20020a6389c6000000b00372e3b6fe90sm11877807pgd.55.2022.02.28.20.22.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 28 Feb 2022 20:22:31 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v3] media: hantro: Implement support for encoder commands
+Date: Tue,  1 Mar 2022 12:22:25 +0800
+Message-Id: <20220301042225.1540019-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.35.1.574.g5d30c73bfb-goog
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220228194037.1600509-14-clabbe@baylibre.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220228_201956_244287_62FF9470 
-X-CRM114-Status: GOOD (  18.90  )
+X-CRM114-CacheID: sfid-20220228_202233_310989_DB381614 
+X-CRM114-Status: GOOD (  21.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,177 +93,208 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Corentin,
+The V4L2 stateful encoder uAPI specification requires that drivers
+support the ENCODER_CMD ioctl to allow draining of buffers. This
+however was not implemented, and causes issues for some userspace
+applications.
 
-I love your patch! Perhaps something to improve:
+Implement support for the ENCODER_CMD ioctl using v4l2-mem2mem helpers.
+This is entirely based on existing code found in the vicodec test
+driver.
 
-[auto build test WARNING on rockchip/for-next]
-[also build test WARNING on herbert-cryptodev-2.6/master herbert-crypto-2.6/master v5.17-rc6 next-20220228]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/0day-ci/linux/commits/Corentin-Labbe/crypto-rockchip-permit-to-pass-self-tests/20220301-035430
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-config: arm-defconfig (https://download.01.org/0day-ci/archive/20220301/202203011055.8Y6mA9xW-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 11.2.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/0day-ci/linux/commit/03fb353165f76dc7c5ed7c27401537552070406b
-        git remote add linux-review https://github.com/0day-ci/linux
-        git fetch --no-tags linux-review Corentin-Labbe/crypto-rockchip-permit-to-pass-self-tests/20220301-035430
-        git checkout 03fb353165f76dc7c5ed7c27401537552070406b
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=arm SHELL=/bin/bash drivers/crypto/rockchip/
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-All warnings (new ones prefixed by >>):
-
-   In file included from include/linux/device.h:15,
-                    from include/linux/dma-mapping.h:7,
-                    from drivers/crypto/rockchip/rk3288_crypto.h:8,
-                    from drivers/crypto/rockchip/rk3288_crypto.c:12:
-   drivers/crypto/rockchip/rk3288_crypto.c: In function 'rk_crypto_register':
->> drivers/crypto/rockchip/rk3288_crypto.c:99:52: warning: too many arguments for format [-Wformat-extra-args]
-      99 |                         dev_info(crypto_info->dev, "Register %s as\n",
-         |                                                    ^~~~~~~~~~~~~~~~~~
-   include/linux/dev_printk.h:110:30: note: in definition of macro 'dev_printk_index_wrap'
-     110 |                 _p_func(dev, fmt, ##__VA_ARGS__);                       \
-         |                              ^~~
-   include/linux/dev_printk.h:150:58: note: in expansion of macro 'dev_fmt'
-     150 |         dev_printk_index_wrap(_dev_info, KERN_INFO, dev, dev_fmt(fmt), ##__VA_ARGS__)
-         |                                                          ^~~~~~~
-   drivers/crypto/rockchip/rk3288_crypto.c:99:25: note: in expansion of macro 'dev_info'
-      99 |                         dev_info(crypto_info->dev, "Register %s as\n",
-         |                         ^~~~~~~~
-
-
-vim +99 drivers/crypto/rockchip/rk3288_crypto.c
-
-  > 12	#include "rk3288_crypto.h"
-    13	#include <linux/dma-mapping.h>
-    14	#include <linux/module.h>
-    15	#include <linux/platform_device.h>
-    16	#include <linux/of.h>
-    17	#include <linux/clk.h>
-    18	#include <linux/crypto.h>
-    19	#include <linux/reset.h>
-    20	
-    21	static int rk_crypto_enable_clk(struct rk_crypto_info *dev)
-    22	{
-    23		int err;
-    24	
-    25		err = clk_prepare_enable(dev->sclk);
-    26		if (err) {
-    27			dev_err(dev->dev, "[%s:%d], Couldn't enable clock sclk\n",
-    28				__func__, __LINE__);
-    29			goto err_return;
-    30		}
-    31		err = clk_prepare_enable(dev->aclk);
-    32		if (err) {
-    33			dev_err(dev->dev, "[%s:%d], Couldn't enable clock aclk\n",
-    34				__func__, __LINE__);
-    35			goto err_aclk;
-    36		}
-    37		err = clk_prepare_enable(dev->hclk);
-    38		if (err) {
-    39			dev_err(dev->dev, "[%s:%d], Couldn't enable clock hclk\n",
-    40				__func__, __LINE__);
-    41			goto err_hclk;
-    42		}
-    43	
-    44		return err;
-    45	err_hclk:
-    46		clk_disable_unprepare(dev->aclk);
-    47	err_aclk:
-    48		clk_disable_unprepare(dev->sclk);
-    49	err_return:
-    50		return err;
-    51	}
-    52	
-    53	static void rk_crypto_disable_clk(struct rk_crypto_info *dev)
-    54	{
-    55		clk_disable_unprepare(dev->hclk);
-    56		clk_disable_unprepare(dev->aclk);
-    57		clk_disable_unprepare(dev->sclk);
-    58	}
-    59	
-    60	static irqreturn_t rk_crypto_irq_handle(int irq, void *dev_id)
-    61	{
-    62		struct rk_crypto_info *dev  = platform_get_drvdata(dev_id);
-    63		u32 interrupt_status;
-    64	
-    65		interrupt_status = CRYPTO_READ(dev, RK_CRYPTO_INTSTS);
-    66		CRYPTO_WRITE(dev, RK_CRYPTO_INTSTS, interrupt_status);
-    67	
-    68		dev->status = 1;
-    69		if (interrupt_status & 0x0a) {
-    70			dev_warn(dev->dev, "DMA Error\n");
-    71			dev->status = 0;
-    72		}
-    73		complete(&dev->complete);
-    74	
-    75		return IRQ_HANDLED;
-    76	}
-    77	
-    78	static struct rk_crypto_tmp *rk_cipher_algs[] = {
-    79		&rk_ecb_aes_alg,
-    80		&rk_cbc_aes_alg,
-    81		&rk_ecb_des_alg,
-    82		&rk_cbc_des_alg,
-    83		&rk_ecb_des3_ede_alg,
-    84		&rk_cbc_des3_ede_alg,
-    85		&rk_ahash_sha1,
-    86		&rk_ahash_sha256,
-    87		&rk_ahash_md5,
-    88	};
-    89	
-    90	static int rk_crypto_register(struct rk_crypto_info *crypto_info)
-    91	{
-    92		unsigned int i, k;
-    93		int err = 0;
-    94	
-    95		for (i = 0; i < ARRAY_SIZE(rk_cipher_algs); i++) {
-    96			rk_cipher_algs[i]->dev = crypto_info;
-    97			switch (rk_cipher_algs[i]->type) {
-    98			case CRYPTO_ALG_TYPE_SKCIPHER:
-  > 99				dev_info(crypto_info->dev, "Register %s as\n",
-   100					 rk_cipher_algs[i]->alg.skcipher.base.cra_name,
-   101					 rk_cipher_algs[i]->alg.skcipher.base.cra_driver_name);
-   102				err = crypto_register_skcipher(&rk_cipher_algs[i]->alg.skcipher);
-   103				break;
-   104			case CRYPTO_ALG_TYPE_AHASH:
-   105				dev_info(crypto_info->dev, "Register %s as %s\n",
-   106					 rk_cipher_algs[i]->alg.hash.halg.base.cra_name,
-   107					 rk_cipher_algs[i]->alg.hash.halg.base.cra_driver_name);
-   108				err = crypto_register_ahash(&rk_cipher_algs[i]->alg.hash);
-   109				break;
-   110			default:
-   111				dev_err(crypto_info->dev, "unknown algorithm\n");
-   112			}
-   113			if (err)
-   114				goto err_cipher_algs;
-   115		}
-   116		return 0;
-   117	
-   118	err_cipher_algs:
-   119		for (k = 0; k < i; k++) {
-   120			if (rk_cipher_algs[i]->type == CRYPTO_ALG_TYPE_SKCIPHER)
-   121				crypto_unregister_skcipher(&rk_cipher_algs[k]->alg.skcipher);
-   122			else
-   123				crypto_unregister_ahash(&rk_cipher_algs[i]->alg.hash);
-   124		}
-   125		return err;
-   126	}
-   127	
-
+Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Reviewed-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+
+Changes since v2:
+- Dropped RFC tag
+- Added Reviewed-by from Benjamin
+- Replace direct access to vb->planes[i].bytesused with
+  vb2_set_plane_payload()
+
+Changes since v1:
+- Correctly handle last buffers that are empty
+- Correctly handle last buffers that just got queued
+- Disable (TRY_)ENCODER_CMD ioctls for hantro decoder
+
+This is based on linux-next-20220208, and was tested on RK3399 with
+Gstreamer running the JPEG encoder. It was also tested on ChromeOS
+5.10 on Kevin with the video encoder used in ChromeOS ARC, which
+requires this. For ChromeOS, both encoder and decoder tests were run
+to check for regressions.
+
+Everything really works OK now, but since I'm not very familiar with
+the mem2mem framework, I might be missing something, causing resource
+leaks. Hence this patch is labeled RFC.
+
+Last, I suppose we could also add support for (TRY_)DECODER_CMD now?
+
+ drivers/staging/media/hantro/hantro_drv.c  | 17 +++++-
+ drivers/staging/media/hantro/hantro_v4l2.c | 68 +++++++++++++++++++++-
+ 2 files changed, 81 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index bc9bcb4eaf46..99bc650a5a93 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -56,6 +56,10 @@ dma_addr_t hantro_get_ref(struct hantro_ctx *ctx, u64 ts)
+ 	return hantro_get_dec_buf_addr(ctx, buf);
+ }
+ 
++static const struct v4l2_event hantro_eos_event = {
++	.type = V4L2_EVENT_EOS
++};
++
+ static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
+ 				    struct hantro_ctx *ctx,
+ 				    enum vb2_buffer_state result)
+@@ -73,6 +77,12 @@ static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
+ 	src->sequence = ctx->sequence_out++;
+ 	dst->sequence = ctx->sequence_cap++;
+ 
++	if (v4l2_m2m_is_last_draining_src_buf(ctx->fh.m2m_ctx, src)) {
++		dst->flags |= V4L2_BUF_FLAG_LAST;
++		v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
++		v4l2_m2m_mark_stopped(ctx->fh.m2m_ctx);
++	}
++
+ 	v4l2_m2m_buf_done_and_job_finish(ctx->dev->m2m_dev, ctx->fh.m2m_ctx,
+ 					 result);
+ }
+@@ -807,10 +817,13 @@ static int hantro_add_func(struct hantro_dev *vpu, unsigned int funcid)
+ 	snprintf(vfd->name, sizeof(vfd->name), "%s-%s", match->compatible,
+ 		 funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ? "enc" : "dec");
+ 
+-	if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER)
++	if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER) {
+ 		vpu->encoder = func;
+-	else
++	} else {
+ 		vpu->decoder = func;
++		v4l2_disable_ioctl(vfd, VIDIOC_TRY_ENCODER_CMD);
++		v4l2_disable_ioctl(vfd, VIDIOC_ENCODER_CMD);
++	}
+ 
+ 	video_set_drvdata(vfd, vpu);
+ 
+diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+index 67148ba346f5..aa10ecd04c9c 100644
+--- a/drivers/staging/media/hantro/hantro_v4l2.c
++++ b/drivers/staging/media/hantro/hantro_v4l2.c
+@@ -628,6 +628,39 @@ static int vidioc_s_selection(struct file *file, void *priv,
+ 	return 0;
+ }
+ 
++static const struct v4l2_event hantro_eos_event = {
++	.type = V4L2_EVENT_EOS
++};
++
++static int vidioc_encoder_cmd(struct file *file, void *priv,
++			      struct v4l2_encoder_cmd *ec)
++{
++	struct hantro_ctx *ctx = fh_to_ctx(priv);
++	int ret;
++
++	ret = v4l2_m2m_ioctl_try_encoder_cmd(file, priv, ec);
++	if (ret < 0)
++		return ret;
++
++	if (!vb2_is_streaming(v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx)) ||
++	    !vb2_is_streaming(v4l2_m2m_get_dst_vq(ctx->fh.m2m_ctx)))
++		return 0;
++
++	ret = v4l2_m2m_ioctl_encoder_cmd(file, priv, ec);
++	if (ret < 0)
++		return ret;
++
++	if (ec->cmd == V4L2_ENC_CMD_STOP &&
++	    v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
++		v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
++
++	if (ec->cmd == V4L2_ENC_CMD_START &&
++	    v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
++		vb2_clear_last_buffer_dequeued(&ctx->fh.m2m_ctx->cap_q_ctx.q);
++
++	return 0;
++}
++
+ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
+ 	.vidioc_querycap = vidioc_querycap,
+ 	.vidioc_enum_framesizes = vidioc_enum_framesizes,
+@@ -657,6 +690,9 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
+ 
+ 	.vidioc_g_selection = vidioc_g_selection,
+ 	.vidioc_s_selection = vidioc_s_selection,
++
++	.vidioc_try_encoder_cmd = v4l2_m2m_ioctl_try_encoder_cmd,
++	.vidioc_encoder_cmd = vidioc_encoder_cmd,
+ };
+ 
+ static int
+@@ -733,8 +769,12 @@ static int hantro_buf_prepare(struct vb2_buffer *vb)
+ 	 * (for OUTPUT buffers, if userspace passes 0 bytesused, v4l2-core sets
+ 	 * it to buffer length).
+ 	 */
+-	if (V4L2_TYPE_IS_CAPTURE(vq->type))
+-		vb2_set_plane_payload(vb, 0, pix_fmt->plane_fmt[0].sizeimage);
++	if (V4L2_TYPE_IS_CAPTURE(vq->type)) {
++		if (ctx->is_encoder)
++			vb2_set_plane_payload(vb, 0, 0);
++		else
++			vb2_set_plane_payload(vb, 0, pix_fmt->plane_fmt[0].sizeimage);
++	}
+ 
+ 	return 0;
+ }
+@@ -744,6 +784,22 @@ static void hantro_buf_queue(struct vb2_buffer *vb)
+ 	struct hantro_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
+ 	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
+ 
++	if (V4L2_TYPE_IS_CAPTURE(vb->vb2_queue->type) &&
++	    vb2_is_streaming(vb->vb2_queue) &&
++	    v4l2_m2m_dst_buf_is_last(ctx->fh.m2m_ctx)) {
++		unsigned int i;
++
++		for (i = 0; i < vb->num_planes; i++)
++			vb2_set_plane_payload(vb, i, 0);
++
++		vbuf->field = V4L2_FIELD_NONE;
++		vbuf->sequence = ctx->sequence_cap++;
++
++		v4l2_m2m_last_buffer_done(ctx->fh.m2m_ctx, vbuf);
++		v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
++		return;
++	}
++
+ 	v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
+ }
+ 
+@@ -759,6 +815,8 @@ static int hantro_start_streaming(struct vb2_queue *q, unsigned int count)
+ 	struct hantro_ctx *ctx = vb2_get_drv_priv(q);
+ 	int ret = 0;
+ 
++	v4l2_m2m_update_start_streaming_state(ctx->fh.m2m_ctx, q);
++
+ 	if (V4L2_TYPE_IS_OUTPUT(q->type))
+ 		ctx->sequence_out = 0;
+ 	else
+@@ -831,6 +889,12 @@ static void hantro_stop_streaming(struct vb2_queue *q)
+ 		hantro_return_bufs(q, v4l2_m2m_src_buf_remove);
+ 	else
+ 		hantro_return_bufs(q, v4l2_m2m_dst_buf_remove);
++
++	v4l2_m2m_update_stop_streaming_state(ctx->fh.m2m_ctx, q);
++
++	if (V4L2_TYPE_IS_OUTPUT(q->type) &&
++	    v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
++		v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
+ }
+ 
+ static void hantro_buf_request_complete(struct vb2_buffer *vb)
+-- 
+2.35.1.574.g5d30c73bfb-goog
+
 
 _______________________________________________
 Linux-rockchip mailing list
