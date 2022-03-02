@@ -4,79 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39A7AC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Mar 2022 10:33:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66176C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Mar 2022 11:00:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=579ppcghwfXpsqTiW9/wlKe9zLqb5ISeAmBtLUMLfAM=; b=g9yBOnSGhMzd9/
-	0XSy9FbPSQWpshNTC7hGygNBNG3Gq1FUNSmlnckGNqcCbqSRCB7jNCcHF5aw0PRUm6/dK7uUy3dJ1
-	/NCJOw/borQFCIDuNswYr8V6R0bGNuZ0pfVWG2AZpch1/e1P/8PTz9kbZO/qn0Y/0/d8MPUoBuRc9
-	bakoZTKuJ9Sgziho4hJPnY1Qi9gI9eMqByQ6bQtjglM2jyIOjXMQXNM/r4CMZ/tMw759xAyGyklIo
-	JtP9mdIuV5fJfp/P7jUZ943F6IopOx2yw9mAG5nJyzkXnRrxni9PkERY291Ib8c2qVSJNTmDoS3MH
-	SmzwV9dauTjWbyG/kj8w==;
+	List-Owner; bh=f/GrC8hY9DrwHv1HCVoKo/aTvp0VKUcCdgb4C6HMvio=; b=FjOClSLxfauRmp
+	uRXq8IeC3ZuQH5cGS2BlhlB7xFjn/PhUYBCqqSAfnp/lBkSDiHswwfi2piC1VqXCS2ImibZGldPlL
+	9DtIZY2A69cWM9GBjlGHd9p+ikmEplI3eJewfp5fM3BmCXsZ+S1is9cEhh1WNIhkxxRS0j6e9fzmi
+	m7Cghi6gRPHIEg1xMUrVh2JOagOUmy2zC22Zy4ioisn8ZC8VufQdZgBz7jcIsmf+SivffA+U74B4t
+	InDWjVOwq62qO0N8rsR8AtVqSgzapQbqcxklrOmEzAYvPLRxnxqOaBZ+5BttAaFQ12SmPBEHmXgry
+	CX9caIvEHSDO3trr6Mfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPMIG-002KMz-00; Wed, 02 Mar 2022 10:33:16 +0000
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+	id 1nPMiS-002MWY-QT; Wed, 02 Mar 2022 11:00:20 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPMIC-002KLq-TQ; Wed, 02 Mar 2022 10:33:14 +0000
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-2dc242a79beso1489207b3.8; 
- Wed, 02 Mar 2022 02:33:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3UgdP2Dpp/ayPL7kDyX+opL+M19kkYSAxJLDHKMfOjo=;
- b=hgMHnafWoG7jhNO+4dBb8l3Xj0JRlTx7aC4SxY7F+BOKwgMy8u54J0jEjDFQ/zS9tr
- 781mmzucZbg+phfSkFd9ySl7bdiWpmEK90ZMbm/HqtqGWlqPpaTtUDEfEcEPlBuR8wsK
- ZvdAp3O/Q0OeHND90mkw42O6HKMQblR7OzOhdcPGYQcFr1fdAl7vIG6NqgsNr+uJYoAA
- rHTsc52QEwB5qJD+5bu1FB0u7n5BSKP6H3gCNGE/L2eJjpqbxvk0HO0Cf3+ioNDf1XzG
- bATChf3BdOc3wtqWiZW9DuWAq/zDC9oJ/zj89BAYnou8MvFFARE+Vk5LghE3cvxrs0Qu
- TkJg==
+ id 1nPMiG-002MTf-8h
+ for linux-rockchip@lists.infradead.org; Wed, 02 Mar 2022 11:00:10 +0000
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 7CB593F611
+ for <linux-rockchip@lists.infradead.org>; Wed,  2 Mar 2022 11:00:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1646218800;
+ bh=fYiIm7cAYvvcwgs5d23+mNowBlqk+U3OOhYGtWE4nhQ=;
+ h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+ In-Reply-To:Content-Type;
+ b=YLHxUnq8Pxh85hLX6lQhCJzzIB9+00Q5mCtP0UVUXZ3TgExTptykYTeqvES8IlOkt
+ 2FdYyxnU14uwOx6TwwJYXCvUfFGy/HVwFDeQ6+JEd0AuDWehut7308tm62lIh6wL9U
+ xEj284NqESLWBawV4R2ct19lVf89D5IAKhLoz/I/mB7mW09tIOvax5CScMn0bwg7LO
+ 2QCiX787NUSp0Lozv8qPsBEnxz0ZYm4BsocJFI2JKEU2tUrs1kGWCWuMnCymtC1sxY
+ gJ+3bvqn6OBp9W+zseKrazY4QH2E6MKAXNJu035e2G8YvJ56C/UR9Emq8D5kdCZCe+
+ O8TJOGNcIbySg==
+Received: by mail-ed1-f72.google.com with SMTP id
+ l14-20020aa7cace000000b003f7f8e1cbbdso761724edt.20
+ for <linux-rockchip@lists.infradead.org>; Wed, 02 Mar 2022 03:00:00 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=3UgdP2Dpp/ayPL7kDyX+opL+M19kkYSAxJLDHKMfOjo=;
- b=U/IXiVvtJCc51V9szamuYnV3luXNGinZPED40K61T8ck1vnTHrZ5TDu/X1PJQ8Shfk
- beL4b/iGER7CV1l8a3R0+oQosqPiNhXFICVQaSQRJ0qsLjLsRkyCfOUqNMuCzJJ4o81C
- bDPH9mk6gcrKPl2rZhiTgZ5G4IlQQCV2aichC/6uzrDAuP4elWpJMVFTaDMmjS5U3jw5
- SssPMJUqUCm50Ph8qx9idG5jkOqP2eZeka97iJieLAx8Z4bzbsov4qiKuKnjHuu0sU9V
- x7T82BKmPyBZui+r0KJlRP2YxmyRtXoN0W75TtwkRL2x4zhr6kfzMYbkDGjLkt/jGvRa
- GrYw==
-X-Gm-Message-State: AOAM532gwaM9BfBrNLF+mqHVhgLX9aoX6TrJNM9URG5O4towb1GHY0of
- IsHHQf4JX4nkr7vEvDNnYVxGfidLD6s2Qmw/rnE=
-X-Google-Smtp-Source: ABdhPJw/fyplq0eveO/WZAJ9BKAE58Gzeab43u2IhFVd4Pz56JPXFmPNyZ6iFdCRjIel9aE29x2PRK0WUTlcWe1tgBY=
-X-Received: by 2002:a81:4503:0:b0:2db:83ea:6914 with SMTP id
- s3-20020a814503000000b002db83ea6914mr13732773ywa.42.1646217191339; Wed, 02
- Mar 2022 02:33:11 -0800 (PST)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=fYiIm7cAYvvcwgs5d23+mNowBlqk+U3OOhYGtWE4nhQ=;
+ b=a6+/CZ6Ei85yytPrr1uTelfaOCQNRhbHzeDXijaQR1FgLdzHjiTbECnLEeteeIMixI
+ z7VbrBQy/pXNW2qieBF9Ibtc6sRXHUuQhifU2ECyg6mmi/0q1qH2IYOmKsrwmwBnKApP
+ Bo8+BVbdfofMfoIDh4DzUsvPcXvyROpBNNEpGyk6x9IbMv0rt44NP/PeK4e9I19qcCw9
+ lVboOgHzAbIgwQXTJUBl1zaVUAdjvNGn8UgMK4pkiWNfmePnRsBTTRbpYnrrWugC4rah
+ maA45mtQtO0J+YQuG/aLhpBNTHWSRcdx5/BWtN0IXK/T1ssNFdOEgmS5RWVPlaMB5laG
+ kLGg==
+X-Gm-Message-State: AOAM530k3uteg2eehChl0yCfxUnefzmtRnvES/IkCy2iW20oq/ln08YW
+ jlXVtCuLfL7TrvF8QNvP55xgQyBCmkw0pWNXEH6579vPd5CLLXmeE/NDQZhsetgrOdzbNcbf6D0
+ qQsShXynXqD77oh1tNcyP7Ax/yVAbk6b4ekT21OFA0gcceL5m2A==
+X-Received: by 2002:a17:906:af79:b0:6cf:6b3f:5b3b with SMTP id
+ os25-20020a170906af7900b006cf6b3f5b3bmr22477698ejb.14.1646218800087; 
+ Wed, 02 Mar 2022 03:00:00 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwERV6fTesKj9iO1fvVCbS8f7t6+HOQi7nNSbBRmJKjBddmSjWjb4ufnflgk2FauT1UX0gr+w==
+X-Received: by 2002:a17:906:af79:b0:6cf:6b3f:5b3b with SMTP id
+ os25-20020a170906af7900b006cf6b3f5b3bmr22477682ejb.14.1646218799941; 
+ Wed, 02 Mar 2022 02:59:59 -0800 (PST)
+Received: from [192.168.0.136] (xdsl-188-155-181-108.adslplus.ch.
+ [188.155.181.108]) by smtp.gmail.com with ESMTPSA id
+ ey10-20020a1709070b8a00b006d1cb2eb221sm6274372ejc.170.2022.03.02.02.59.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Mar 2022 02:59:59 -0800 (PST)
+Message-ID: <468d1c64-b954-dcdf-6660-74f51e29807c@canonical.com>
+Date: Wed, 2 Mar 2022 11:59:58 +0100
 MIME-Version: 1.0
-References: <CAK4VdL3-BEBzgVXTMejrAmDjOorvoGDBZ14UFrDrKxVEMD2Zjg@mail.gmail.com>
- <1jczjzt05k.fsf@starbuckisacylon.baylibre.com>
- <CAK4VdL2=1ibpzMRJ97m02AiGD7_sN++F3SCKn6MyKRZX_nhm=g@mail.gmail.com>
- <6b04d864-7642-3f0a-aac0-a3db84e541af@gmail.com>
-In-Reply-To: <6b04d864-7642-3f0a-aac0-a3db84e541af@gmail.com>
-From: Erico Nunes <nunes.erico@gmail.com>
-Date: Wed, 2 Mar 2022 11:33:00 +0100
-Message-ID: <CAK4VdL0gpz_55aYo6pt+8h14FHxaBmo5kNookzua9+0w+E4JcA@mail.gmail.com>
-Subject: Re: net: stmmac: dwmac-meson8b: interface sometimes does not come up
- at boot
-To: Heiner Kallweit <hkallweit1@gmail.com>,
- Jerome Brunet <jbrunet@baylibre.com>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Giuseppe Cavallaro <peppe.cavallaro@st.com>, Jose Abreu <joabreu@synopsys.com>,
- Kevin Hilman <khilman@baylibre.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Neil Armstrong <narmstrong@baylibre.com>, linux-amlogic@lists.infradead.org, 
- netdev@vger.kernel.org, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-sunxi@lists.linux.dev
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: Aw: Re: [PATCH v4 1/5] dt-bindings: Convert ahci-platform DT
+ bindings to yaml
+Content-Language: en-US
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>, devicetree@vger.kernel.org,
+ Damien Le Moal <damien.lemoal@opensource.wdc.com>,
+ Rob Herring <robh+dt@kernel.org>, Hans de Goede <hdegoede@redhat.com>,
+ Jens Axboe <axboe@kernel.dk>, linux-ide@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+ bcm-kernel-feedback-list@broadcom.com
+References: <20220301152421.57281-1-linux@fw-web.de>
+ <20220301152421.57281-2-linux@fw-web.de>
+ <6dae47c3-6083-782e-ecab-7be3f0bca0e1@canonical.com>
+ <trinity-80a229fb-42dd-4705-9c55-fe6f3a381a40-1646217098213@3c-app-gmx-bap21>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+In-Reply-To: <trinity-80a229fb-42dd-4705-9c55-fe6f3a381a40-1646217098213@3c-app-gmx-bap21>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_023312_970560_402024CC 
-X-CRM114-Status: GOOD (  12.19  )
+X-CRM114-CacheID: sfid-20220302_030008_540651_E8B8678A 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,36 +118,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Feb 26, 2022 at 2:53 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
-> Just to rule out that the PHY may be involved:
-> - Does the issue occur with internal and/or external PHY?
+On 02/03/2022 11:31, Frank Wunderlich wrote:
+> 
+>>> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+>>> +    #include <dt-bindings/clock/berlin2q.h>
+>>> +    sata@f7e90000 {
+>>> +            compatible = "marvell,berlin2q-ahci", "generic-ahci";
+>>> +            reg = <0xe90000 0x1000>;
+>>
+>> You still have wrong address.
+> 
+> only took the example from the txt, but i guess reg should be <0xf7e90000 0x1000>; ?
+> 
 
-My target boards have the internal phy only. It is not possible for me
-at the moment to test it with an external phy.
+Yes.
 
-> - Issue still occurs in PHY polling mode? (disable PHY interrupt in dts)
 
-Thanks for suggesting this. I did tests with this and it seems to be a
-workaround.
-With phy interrupt on recent kernels (around v5.17-rc3) I'm able to
-reproduce the issue relatively easily over a batch of a hundred jobs.
-With my tests with the phy in polling mode, I have not been able to
-reproduce so far, even with several hundred jobs.
-
-For completeness I also tested 46f69ded988d (from my initial analysis)
-and setting the phy to polling mode there does not make a difference,
-issue still reproduces. So it may have been a different bug. Though I
-guess at this point we can disregard that and focus on the current
-kernel.
-
-I tried adding a few debugs and delays to the interrupt code path in
-drivers/net/phy/meson-gxl.c but nothing gave me useful info so far.
-
-Do you have more advice on how to proceed from here?
-
-Thanks
-
-Erico
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
