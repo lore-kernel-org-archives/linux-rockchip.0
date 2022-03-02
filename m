@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BB72C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Mar 2022 21:23:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1BDAC433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Mar 2022 21:23:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PBq08+wu/Hj8duxm/RfpczUkLa9EU98kG4EUwuAO6i8=; b=R5WZJ/3OZtB7s2
-	ck40rjRGZqyp0DdNJNu6xrazm4imtv4plvWOkun09xpJ8OW7tiH06cOXsiSd/5phxpt+6XB7ZUpTu
-	QzH8xuAX7ga2Mun8rEiDayAVeheE+ZVy3tcd9jW/CqFe65rtNHEmfq6lcE3zpIDSJFnZlEDeiNePD
-	RabBUXO3/v7SgL4v4a9pkD9ZzDpc4yNkyZT8d2UFmYxYwhXQi73iM+ZVGL1dV2r1mSbCkaEft36Ss
-	VKF8qK/jfAnGCqsz8JJhTqHiiylCOEhUJzP2Rx6XRThAYoKiAV2mIEYsBZEE8wHbKbV+pHpN/46EP
-	dLUCrEM1wYCmhiqlQYqw==;
+	List-Owner; bh=9oDCRGogE/R/5d7feZnn6ErEhICUSbv2wT1UPDK174Q=; b=aoPXJ5hDmmVL3C
+	RSFKrAE4eom0p5hnpho6kEtQshis57cKaio9IWO4DVjAJuKeDDWcDI7UBY78NOgvQ+j+ZRbCHW+MN
+	S8u3HZTeeSUM2TRVPiY+M2VatWNuvyFJeweuR81LfYPU/7ufIEDw573uAu7fU+28aj/lMYT6LYDFb
+	i0OeA8jolAeeiK60EUehINBFBEnAUki6fWw1xNYJ4Kr9ri58HZTJvmncI04d96R8IoWvRV68Q/aa7
+	z73H692pLIGxVlleWdbjZ96PmdmQkIefesDd3n9ZGhPYUQAbCDcZ4Nw+67jcYDrqjicrj0Ca3Rsfi
+	Xlw+5Jhmb0VieHl5tdeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPWQz-004HI0-NK; Wed, 02 Mar 2022 21:22:57 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1nPWR3-004HIv-5E; Wed, 02 Mar 2022 21:23:01 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPWFt-004Bih-N1
- for linux-rockchip@lists.infradead.org; Wed, 02 Mar 2022 21:11:35 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id d3so4771719wrf.1
- for <linux-rockchip@lists.infradead.org>; Wed, 02 Mar 2022 13:11:29 -0800 (PST)
+ id 1nPWFu-004BjX-C1
+ for linux-rockchip@lists.infradead.org; Wed, 02 Mar 2022 21:11:36 +0000
+Received: by mail-wr1-x431.google.com with SMTP id n14so4744989wrq.7
+ for <linux-rockchip@lists.infradead.org>; Wed, 02 Mar 2022 13:11:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=UQNU+zESf8LDh+yao8Oc3gO6dXSE2ne6kHnyQ9VdhdQ=;
- b=XyO28tj3TU+B+3XLenZaHOAECDjiZQCjIzHC4Ys3oYIiUR3pcp4sGFhwBnqSZYe4a/
- Da4DZewdoOXXZsf7fHZ2CDBO7vZpEMLu7+MFtZ+1KtavfBY8GjwyAskpIwUzQwK6ljj0
- iBb5t+bvXd8ECvZiv1r3CVxPuDBRgQvDoLXehvLYbVLDLlXsl55m9+e4lu0Wy2eqmlfG
- 2bTXSNOsVygIv+VFIb0s0XKSDfZYL8jEp7bZLuBCNTw7cZUtMYvZJycY0CZ3528KrFpO
- p8ScGO0EqTtUH8sUqks6Iy3zVymRj3cd5UnmueOGlON7/Qh8aPBdRcu8oUq9ELxHOR/C
- cDcQ==
+ bh=Rr/s1AMem5307bBAXneqYLyupU8V7ZeChNQeI5zxrzM=;
+ b=JBokm6dBuOP85k33AG5O/a+3vXWgcircm+ObjEvEyE15/5/FznrW/eLqmqgCf+Zd/l
+ 8vSBREESzAA1q6MwsRukYIS10mZrreHEzZvXcnnJOwlIlsSwSFQw98Mr0odIVEIWXrVZ
+ nWzVU/qO40hPqiUC9AFLM5W77cFiKY0KySME/yaveB3O5x6y2qXRnbVt+qbiTckLhztd
+ gLUiAAYnJvf2airC1HvVd8apgN2KVuVKdm3t2mFXxsX1rnZJPY7q7c9g8v9odPmkwqe8
+ QYt4Mohxp8bp9zq6HfmF9HAS8TLq76yN7ZotHxeZ6n9zsfU+QJcTn59MimmLnGwwSmTe
+ ohgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=UQNU+zESf8LDh+yao8Oc3gO6dXSE2ne6kHnyQ9VdhdQ=;
- b=67NWR2B9yEfL6UsKPQu3dTJdCnLJgZI/37mhKtMOGyaCOdMmeDALU2tXzB5DlsgB4i
- NQ0x3L3atrkPDlsC1boTa92r8/hZ8Ix+eUBX7isx1CDkZxjIairrvlJo2zVXClKvAfhY
- ykpbHATAL3J/Z+uLdlamusf8e6DutMxHAY7BxVzF/Etv2HvyuU31oiPOZTRzir90TvGs
- aanMxQQLcXB/CEnGys5whHnSZt7Z9DvUet08DKpsS4SGI9aCdTj1Fm2WP9VW7jCRwvSm
- Hm/fIV2Ty1sUicn+klQilP2pD07u6y9b20Wt/zJ01GjMGnuQ9+owH3MfaKWdrxhwukXX
- /dvA==
-X-Gm-Message-State: AOAM531Lgj7RwLLxT/yKLRTQ29XgvKTURCD4Z12DJqC9pkrSYWU2fi7w
- v5Ld8c/nG2Xn/9+8tNwDARLnaw==
-X-Google-Smtp-Source: ABdhPJzfWDf+uImBTOrxpwmcexKER/HJdZYcXbT6y4/9uwZp7eE8txba43Evn6iHNknG/kRArRh8fw==
-X-Received: by 2002:a5d:59ae:0:b0:1f0:474c:d995 with SMTP id
- p14-20020a5d59ae000000b001f0474cd995mr2125020wrr.217.1646255488302; 
- Wed, 02 Mar 2022 13:11:28 -0800 (PST)
+ bh=Rr/s1AMem5307bBAXneqYLyupU8V7ZeChNQeI5zxrzM=;
+ b=Ahx+mNn6qhUXTe8I4q7MJvQN85GcxCkuPuC5OpqrZp6PoivhpL20D4/FmYHtyety9q
+ kIJkAhOLHv0RdJxXNkYuHhEtgWMx2ifLsGCknzDS4RWJ/MQNxOKj3JtFh/DeYRm9GJCN
+ IWW++0vgEXJQF2lciE2XchxjNhARVkb4r4sUaQ/X7ViAE0gRrd5tke6ec0vMtLDbvJlS
+ QXvftZlx0hIPTrAqdak7k4sPfQ2dsRrBQLivpSgyyB1Svq9M59B93rJI7g813QknSCBv
+ 1KRohjaQGdsL0Dk/B2+a0mo0JMNKca2PxOSioKgWfECDEDKUm99ZmUHM09t4FHewGJWO
+ Lkvw==
+X-Gm-Message-State: AOAM531MEvS9gB8vfWIXdGPvu9w1IaK4pWcmQHdT2Vy+kl/16zNScLNC
+ DxNndkId15VcGR2PYzKgnLfvIA==
+X-Google-Smtp-Source: ABdhPJwpp57UL2OgR9HnHGMBylSPpHRpY/bZQ4XhT2XosbTBwxO8IPFpsOZkvEcBj/RHvQVgMbViqA==
+X-Received: by 2002:adf:fbcf:0:b0:1ef:d5f2:23a5 with SMTP id
+ d15-20020adffbcf000000b001efd5f223a5mr11929581wrs.567.1646255489050; 
+ Wed, 02 Mar 2022 13:11:29 -0800 (PST)
 Received: from localhost.localdomain
  (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
  by smtp.googlemail.com with ESMTPSA id
- z5-20020a05600c0a0500b0037fa93193a8sm145776wmp.44.2022.03.02.13.11.27
+ z5-20020a05600c0a0500b0037fa93193a8sm145776wmp.44.2022.03.02.13.11.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Mar 2022 13:11:27 -0800 (PST)
+ Wed, 02 Mar 2022 13:11:28 -0800 (PST)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: heiko@sntech.de,
 	herbert@gondor.apana.org.au,
@@ -69,16 +69,16 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, john@metanate.com,
  Corentin Labbe <clabbe@baylibre.com>
-Subject: [PATCH v2 07/18] crypto: rockchip: add fallback for ahash
-Date: Wed,  2 Mar 2022 21:11:02 +0000
-Message-Id: <20220302211113.4003816-8-clabbe@baylibre.com>
+Subject: [PATCH v2 08/18] crypto: rockchip: better handle cipher key
+Date: Wed,  2 Mar 2022 21:11:03 +0000
+Message-Id: <20220302211113.4003816-9-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220302211113.4003816-1-clabbe@baylibre.com>
 References: <20220302211113.4003816-1-clabbe@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_131129_804335_12B773C9 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20220302_131130_567473_53A5AB73 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,77 +96,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Adds a fallback for all case hardware cannot handle.
+The key should not be set in hardware too much in advance, this will
+fail it 2 TFM with different keys generate alternative requests.
+The key should be stored and used just before doing cipher operations.
 
 Fixes: ce0183cb6464b ("crypto: rockchip - switch to skcipher API")
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- drivers/crypto/rockchip/rk3288_crypto_ahash.c | 38 +++++++++++++++++++
- 1 file changed, 38 insertions(+)
+ drivers/crypto/rockchip/rk3288_crypto.h          |  1 +
+ drivers/crypto/rockchip/rk3288_crypto_skcipher.c | 10 +++++++---
+ 2 files changed, 8 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-index 49017d1fb510..16009bb0bf16 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-@@ -16,6 +16,40 @@
-  * so we put the fixed hash out when met zero message.
-  */
+diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
+index 8b1e15d8ddc6..826508e4a0c3 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto.h
++++ b/drivers/crypto/rockchip/rk3288_crypto.h
+@@ -245,6 +245,7 @@ struct rk_ahash_rctx {
+ struct rk_cipher_ctx {
+ 	struct rk_crypto_info		*dev;
+ 	unsigned int			keylen;
++	u32 key[AES_MAX_KEY_SIZE / 4];
+ 	u8				iv[AES_BLOCK_SIZE];
+ 	struct crypto_skcipher *fallback_tfm;
+ };
+diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+index bf9d398cc54c..26d74d4bd415 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
++++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+@@ -95,7 +95,7 @@ static int rk_aes_setkey(struct crypto_skcipher *cipher,
+ 	    keylen != AES_KEYSIZE_256)
+ 		return -EINVAL;
+ 	ctx->keylen = keylen;
+-	memcpy_toio(ctx->dev->reg + RK_CRYPTO_AES_KEY_0, key, keylen);
++	memcpy(ctx->key, key, keylen);
  
-+static bool rk_ahash_need_fallback(struct ahash_request *req)
-+{
-+	struct scatterlist *sg;
-+
-+	sg = req->src;
-+	while (sg) {
-+		if (!IS_ALIGNED(sg->offset, sizeof(u32))) {
-+			return true;
-+		}
-+		if (sg->length % 4) {
-+			return true;
-+		}
-+		sg = sg_next(sg);
-+	}
-+	return false;
-+}
-+
-+static int rk_ahash_digest_fb(struct ahash_request *areq)
-+{
-+	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
-+	struct crypto_ahash *tfm = crypto_ahash_reqtfm(areq);
-+	struct rk_ahash_ctx *tfmctx = crypto_ahash_ctx(tfm);
-+
-+	ahash_request_set_tfm(&rctx->fallback_req, tfmctx->fallback_tfm);
-+	rctx->fallback_req.base.flags = areq->base.flags &
-+					CRYPTO_TFM_REQ_MAY_SLEEP;
-+
-+	rctx->fallback_req.nbytes = areq->nbytes;
-+	rctx->fallback_req.src = areq->src;
-+	rctx->fallback_req.result = areq->result;
-+
-+	return crypto_ahash_digest(&rctx->fallback_req);
-+}
-+
- static int zero_message_process(struct ahash_request *req)
- {
- 	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
-@@ -167,6 +201,9 @@ static int rk_ahash_digest(struct ahash_request *req)
- 	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
- 	struct rk_crypto_info *dev = tctx->dev;
+ 	return crypto_skcipher_setkey(ctx->fallback_tfm, key, keylen);
+ }
+@@ -111,7 +111,7 @@ static int rk_des_setkey(struct crypto_skcipher *cipher,
+ 		return err;
  
-+	if (rk_ahash_need_fallback(req))
-+		return rk_ahash_digest_fb(req);
-+
- 	if (!req->nbytes)
- 		return zero_message_process(req);
- 	else
-@@ -309,6 +346,7 @@ static void rk_cra_hash_exit(struct crypto_tfm *tfm)
- 	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(tfm);
+ 	ctx->keylen = keylen;
+-	memcpy_toio(ctx->dev->reg + RK_CRYPTO_TDES_KEY1_0, key, keylen);
++	memcpy(ctx->key, key, keylen);
  
- 	free_page((unsigned long)tctx->dev->addr_vir);
-+	crypto_free_ahash(tctx->fallback_tfm);
+ 	return crypto_skcipher_setkey(ctx->fallback_tfm, key, keylen);
+ }
+@@ -127,7 +127,8 @@ static int rk_tdes_setkey(struct crypto_skcipher *cipher,
+ 		return err;
+ 
+ 	ctx->keylen = keylen;
+-	memcpy_toio(ctx->dev->reg + RK_CRYPTO_TDES_KEY1_0, key, keylen);
++	memcpy(ctx->key, key, keylen);
++
+ 	return crypto_skcipher_setkey(ctx->fallback_tfm, key, keylen);
  }
  
- struct rk_crypto_tmp rk_ahash_sha1 = {
+@@ -283,6 +284,7 @@ static void rk_ablk_hw_init(struct rk_crypto_info *dev)
+ 			     RK_CRYPTO_TDES_BYTESWAP_IV;
+ 		CRYPTO_WRITE(dev, RK_CRYPTO_TDES_CTRL, rctx->mode);
+ 		memcpy_toio(dev->reg + RK_CRYPTO_TDES_IV_0, req->iv, ivsize);
++		memcpy_toio(ctx->dev->reg + RK_CRYPTO_TDES_KEY1_0, ctx->key, ctx->keylen);
+ 		conf_reg = RK_CRYPTO_DESSEL;
+ 	} else {
+ 		rctx->mode |= RK_CRYPTO_AES_FIFO_MODE |
+@@ -295,6 +297,7 @@ static void rk_ablk_hw_init(struct rk_crypto_info *dev)
+ 			rctx->mode |= RK_CRYPTO_AES_256BIT_key;
+ 		CRYPTO_WRITE(dev, RK_CRYPTO_AES_CTRL, rctx->mode);
+ 		memcpy_toio(dev->reg + RK_CRYPTO_AES_IV_0, req->iv, ivsize);
++		memcpy_toio(ctx->dev->reg + RK_CRYPTO_AES_KEY_0, ctx->key, ctx->keylen);
+ 	}
+ 	conf_reg |= RK_CRYPTO_BYTESWAP_BTFIFO |
+ 		    RK_CRYPTO_BYTESWAP_BRFIFO;
+@@ -484,6 +487,7 @@ static void rk_ablk_exit_tfm(struct crypto_skcipher *tfm)
+ {
+ 	struct rk_cipher_ctx *ctx = crypto_skcipher_ctx(tfm);
+ 
++	memzero_explicit(ctx->key, ctx->keylen);
+ 	free_page((unsigned long)ctx->dev->addr_vir);
+ 	crypto_free_skcipher(ctx->fallback_tfm);
+ }
 -- 
 2.34.1
 
