@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E45ACC433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Mar 2022 21:09:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30415C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Mar 2022 21:10:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5fOHxnZEPA9wQUva8LNHDkGALg0mM/Saznvhr/j6nlg=; b=ABden5m8VktDXQ
-	Gx+B8VZfFtjFRQSa/VMAbTOtCZ/TTIiB4Pa7UB7Fu+gFvNIxBQ8cJn99ZpZSJJWRiLmEFCVoJKyPp
-	pZ57vJv1WCIDSHGbUHMMoGiWqWQogx08BHothRzzCh9cLpOLCqQpoK7pLYxBiC82SmJuGuZh1sZvH
-	aIeGCkQ/t749kfJ8O6gqz9b3wvyN1SXmyG/7Xh65s9+0Xa4TvUqomBIhbLCW6jCkxUxxGGCbuoCva
-	JT9UQVfah/5hBknlRdSGfDP/u/rd3Kr436VBIhMhtBai+9kIZwvjNFZPwNkTPxXsZ0ePg76R1yiwL
-	xV2yE/Qnb6/xVpjwRi0g==;
+	List-Owner; bh=28vHeIZt/wwPeaw/dGwT5+/DrNLXmGen46VSUzsUl+c=; b=YvYYs5nAsdRxXU
+	28WgK1uw0JuAtlHGCquHgVi6kO6MDwOmOLyenh2PeYlmZ/P1l+ZWa+qYT4RDbESXjQjulz9UMgCsd
+	20yuh8YWoWAmEI6tU1u6xFzEMQ2yZezq16zykfsPfkIEFpDiwZMG95zNhGBIB8OeOragguaOafYaX
+	QceR+8gwTH+JuBvUN4mtV8yv3I26I4DMGBSNBysgexIFqWvcfQxkcEEtJqCsp835L6VSRKp0DAbHW
+	VDy0VSU11qaoCF+J3G/c4f+++JGoiMLs2O67NqfJqeQKQ0vUdezYMolNVEiSPtA4awdXsJJJdwTHM
+	DcbfSKXo4iEHeJiOO3NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPWDu-004B46-WD; Wed, 02 Mar 2022 21:09:27 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1nPWFG-004BMX-Da; Wed, 02 Mar 2022 21:10:50 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPWDs-004B38-EQ
- for linux-rockchip@lists.infradead.org; Wed, 02 Mar 2022 21:09:26 +0000
-Received: by mail-wr1-x430.google.com with SMTP id x15so4700027wru.13
- for <linux-rockchip@lists.infradead.org>; Wed, 02 Mar 2022 13:09:23 -0800 (PST)
+ id 1nPWF4-004BI7-Tm
+ for linux-rockchip@lists.infradead.org; Wed, 02 Mar 2022 21:10:40 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id p4so1971350wmg.1
+ for <linux-rockchip@lists.infradead.org>; Wed, 02 Mar 2022 13:10:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:content-transfer-encoding:in-reply-to;
- bh=+SuWPZ2e/7zeEhPWaoi9jelX8WbYRm2ComoX27Rv4U4=;
- b=UKsy+0FXcuJ8Do65rOR9YbcsdUErJHZHS65EmTolGTe9BMmpHY619TGTyBALKgJSQV
- /i1o2tyB9QPtreYoRnIMoLZbDG5n0xaQdAS9OuAhsn8YYqeCNQXP7+VjbkJdmFP66N1B
- z8yQfrvD57bI9vn9nkGNVFzb3IJcIPmS4qZbw4d1GxTNx9FIRRuvvcp/20Bi1hUcPcXq
- 1hERbZ3B8OhnuXlZidtmDufDMZ/s0ECxo6n3cVUnCFhP16ENoYDKdc0fgbCEviNgkzHa
- B1gumXaSx6XNweFhIzz6O6zFFm5tpE7+FudcurirFwo8fw6q/vXR8emE33TcuIBitk/1
- 1u4w==
+ bh=dQsFhF1/hV1naVDlbcCm3YVz6Er9ziLGvWW482VtK3Q=;
+ b=K/eASSZiHGsNk3WKGGcy7BgI65UgOtLPWPoWEFkbEMo59l5HNvPWcYR35FHdrlShr4
+ 5xFuug7BnHoGw67glt0a72xAbnihBvVm6v+CuFacgR2DF6phuBwCBp8u2pN830W67Jhw
+ 3Wpt24zx6BQWyRtJWnXmuKtir+/oesk7s9JaRJkv0KH4bkO8kf2AexzLLYUKRHrZUlNE
+ 6l6MffU3UWBbLsCVN3VLYsUSHIJoUe/FAJ4k9riNqikL1KcZw4EXoSHKM54vc/0sZQ7B
+ Phh2Aks98ecZihS5NKjdgM+5BtRC0PggapwU7Y91IhVOOp0euvhRplyo8KdN5EFph8+d
+ kHHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:content-transfer-encoding
  :in-reply-to;
- bh=+SuWPZ2e/7zeEhPWaoi9jelX8WbYRm2ComoX27Rv4U4=;
- b=zEiongMuGtRZiBz1H7Xzsx2mEiNIi8RRusT7N443tV+7pOjM5+WZoc2QJ9cTfZ6tXv
- SDlcyQSZBOGtwJYLtR1E0bMZU/rU7PYv0OQX4Mz9bVALryUFib98yRm3dZx5LUnA12ew
- uhd2tmmIt4xjJDtNUrKKtfLtUa+3GrjUVFee2aQ6nB9cXew3z2P+m0EGXevyAe20gxXk
- kYBLJYVKmKu5kdaoMsVXNzd0zjxbCEBVnvKfU2aSyvf3yVRFRt8qguhUEohBcapJhgFk
- C8juG/r7ANZw3Mfby1kx/szbeJ04tdiaxNWfA8ApMAQJgA8HzYKTddKNo7k+/FEjSP+Q
- 9K2Q==
-X-Gm-Message-State: AOAM530eAt/FTG/AQLMvdIbaxwljaRiReCvfgksAo/BGaQruwkpKlynX
- W5gJUItJ8ZCAkKHRbnj1w/KDx/q/gUMQSA==
-X-Google-Smtp-Source: ABdhPJw1KQWknFtoCAT+qBKsppNuuDAWOhAm97zko+rTSN6HXr4brTteq/LgXKaMD610Tg1naQiAlg==
-X-Received: by 2002:a05:6000:50a:b0:1e3:5af:153e with SMTP id
- a10-20020a056000050a00b001e305af153emr24268852wrf.385.1646255362131; 
- Wed, 02 Mar 2022 13:09:22 -0800 (PST)
+ bh=dQsFhF1/hV1naVDlbcCm3YVz6Er9ziLGvWW482VtK3Q=;
+ b=Pp5I+zXUVIjJgwEzIC0ZOcm1iMS2SvKD9AVW2P4UWcj3i1Os9chFwagHw1occFEjFZ
+ bND+pg1zMu0+Am6eKdD2rY/UVC/DG+uKacR68kaY9L6uzSFX2RVrPsuXZTZbS6FX3lq4
+ 9ZQKg2vzZwexT+h/+0xsNfrp1k36lITYr4MXhyevXZLBnE/aa75L47BUpzPfCWSIkU52
+ eH4h/vr/K5e5Mv1Kjg2UgbX58Bikulan4lAOtGX9Vv/m5UTTvOfS7NhBQq6BIZTxQpBt
+ 3pOiyl0UbsM6l5axgPm/pCIcQZc+wZurZmCZWMO6xgnE61SlR99NSjJhDHQUyzxGcNAc
+ hOCw==
+X-Gm-Message-State: AOAM531D/tI6H66tN6Z6QFmTEtxm5N0dqMdthFqDgIHpSfLI9INRCfOB
+ sltsp35eYquY+9dWT7AJDzpEIRyUsFJC2A==
+X-Google-Smtp-Source: ABdhPJz3l7hSdXw5FPBP4h5QrTtNeUrO/cpc7nHx9qcYgH+e/DxuEe7f9waYf+ZJ40PnOn5vzrIFQA==
+X-Received: by 2002:a05:600c:5118:b0:381:71f6:bb93 with SMTP id
+ o24-20020a05600c511800b0038171f6bb93mr1342536wms.169.1646255437350; 
+ Wed, 02 Mar 2022 13:10:37 -0800 (PST)
 Received: from Red ([2a01:cb1d:3d5:a100:264b:feff:fe03:2806])
  by smtp.googlemail.com with ESMTPSA id
- j27-20020adfd21b000000b001e519f3e0d0sm118605wrh.7.2022.03.02.13.09.21
+ b13-20020a05600c4e0d00b003816cb4892csm12624945wmq.0.2022.03.02.13.10.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Mar 2022 13:09:21 -0800 (PST)
-Date: Wed, 2 Mar 2022 22:09:19 +0100
+ Wed, 02 Mar 2022 13:10:36 -0800 (PST)
+Date: Wed, 2 Mar 2022 22:10:35 +0100
 From: LABBE Corentin <clabbe@baylibre.com>
 To: John Keeping <john@metanate.com>
 Cc: heiko@sntech.de, herbert@gondor.apana.org.au,
@@ -69,17 +69,16 @@ Cc: heiko@sntech.de, herbert@gondor.apana.org.au,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 10/16] crypto: rockchip: rework by using crypto_engine
-Message-ID: <Yh/c//qzz6c20NI6@Red>
+Subject: Re: [PATCH 00/16] crypto: rockchip: permit to pass self-tests
+Message-ID: <Yh/dS1LBmUlM2zPD@Red>
 References: <20220228194037.1600509-1-clabbe@baylibre.com>
- <20220228194037.1600509-11-clabbe@baylibre.com>
- <Yh4YLGeaXAzzr+PK@donbot>
+ <Yh4Y99KCi+1lbrve@donbot>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <Yh4YLGeaXAzzr+PK@donbot>
+In-Reply-To: <Yh4Y99KCi+1lbrve@donbot>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_130924_493230_392BE6AC 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20220302_131038_971333_2A2BCF44 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,29 +96,35 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Le Tue, Mar 01, 2022 at 12:57:16PM +0000, John Keeping a =E9crit :
-> On Mon, Feb 28, 2022 at 07:40:31PM +0000, Corentin Labbe wrote:
-> > Instead of doing manual queue management, let's use the crypto/engine
-> > for that.
-> > In the same time, rework the requests handling to be easier to
-> > understand (and fix all bugs related to them).
+Le Tue, Mar 01, 2022 at 01:00:39PM +0000, John Keeping a =E9crit :
+> On Mon, Feb 28, 2022 at 07:40:21PM +0000, Corentin Labbe wrote:
+> > The rockchip crypto driver is broken and do not pass self-tests.
+> > This serie's goal is to permit to become usable and pass self-tests.
 > > =
 
-> > Fixes: ce0183cb6464b ("crypto: rockchip - switch to skcipher API")
-> > Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
-> > ---
+> > This whole serie is tested on a rk3328-rock64 with selftests (with
+> > CONFIG_CRYPTO_MANAGER_EXTRA_TESTS=3Dy)
 > =
 
-> In addition to the warnings reported by the kernel test robot, this
-> needs to add select CRYPTO_ENGINE to Kconfig for the Rockchip driver.
+> I previously noticed this breakage on rk3288 but never got time to
+> investigate (disabling the driver was quicker).
+> =
+
+> This series fixes everything on rk3288 as well, thanks!
+> =
+
+> I hit the same warnings as the kernel test robot as well as a missing
+> new kconfig dependency (see separate reply to patch 10), but this is
+> =
+
+> Tested-by: John Keeping <john@metanate.com>
 > =
 
 
-Hello
+Thanks for the test, but since I have added some code in v2, could you re-t=
+est it ?
 
-Thanks for the report, I will fix this in v2
-
-Thanks
+Regards
 
 _______________________________________________
 Linux-rockchip mailing list
