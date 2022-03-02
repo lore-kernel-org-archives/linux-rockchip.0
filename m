@@ -4,81 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 634E0C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Mar 2022 16:36:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90077C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Mar 2022 17:04:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L+YsHr8gpZlPvtdU/PxmhZF//McIu75/UWwoytrSWOc=; b=wSRNY8yTDEOodW
-	JFhxBVXBwvG/3xB+wm/KmECgWiaD0mI44kYVLBHcF7lZflVDaQLut/u0ucOk2k/bq8TU4EYE6v5UE
-	ft5zEYA6cKwcEre9CKxD27WR88tAQFLeEHOpAY5ey39jFtU0rqiuN3dFZ50SowQf6HkgKT2G7Qkhb
-	rV3V/PCqIoNlXXdgQDC3l+9qXVe6lVs8WRTqkN/T9dcxnI5CxyGn1TLG3MwwVUW4pZUuiaOaxT4Ui
-	b6ORaXXB18EzB1ngn3RhkdsBLX31uAc8S8IsWkBJ8pvTFJufOiVAm7LjfPrkMrPFZhCwbd+e8EbFm
-	bFadvGOM0qVU4a1qDvDw==;
+	List-Owner; bh=H+VyjebR49KhxKWznoGdg8NEVRZ9XsXOyKZYzKrPWhI=; b=UtP66uarZmsP4R
+	lBMEQG4053a0AIa7EoigBumAvLyDAZiyjQ7ovS8GF2kmsHAzIz+ddO4Bctl86CmUwu4q2mwnacKzY
+	1QUi31RwRkOKEEzu+gW3MMri3D5TllL7FocngSONLTrDOmIdVR8WrdvmVOfV0aIc9OM4nkMTLLoH4
+	18+e1LDZjIt3abMaDX480a+ECH1eivjpP6Oq3Afyq2xTK+Lf9WJwe0vSnSPKPozkM91ljeKsxV9c/
+	upfjFoTbnJBSnQVnu4y15WaEFwgGF/t4n7sd+0s2fDJi13qtNYAXHYyjS8wZbfNa7GAAQvLsdsxUF
+	FdoSQgXAD0Q5BIM9k0xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPRxd-003MHP-9V; Wed, 02 Mar 2022 16:36:21 +0000
-Received: from mail-oo1-xc30.google.com ([2607:f8b0:4864:20::c30])
+	id 1nPSP0-003Rqv-S0; Wed, 02 Mar 2022 17:04:38 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPRxa-003MGR-89
- for linux-rockchip@lists.infradead.org; Wed, 02 Mar 2022 16:36:19 +0000
-Received: by mail-oo1-xc30.google.com with SMTP id
- n5-20020a4a9545000000b0031d45a442feso2513348ooi.3
- for <linux-rockchip@lists.infradead.org>; Wed, 02 Mar 2022 08:36:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=o9t4H73QttGgZo+vQTCpgTCC+eA6JW9j2EdawokS1xg=;
- b=Kh+hsA+IflggohdoCjeykEn6rdFU/iq8ofBCgdXylV1aoI6MALB8chVupv8YW4B4qy
- NHWM4/OX0VoVpby85g/1JLrQOeXjfbZEWkNLKiiZ61UekrwMkJKDkX1/7KD0WhLJXK0s
- WhUoo+jg+QMIz7VXBskoHAQIf2lW1Ptra+j4M+OmQq8gdnHTzd06dqYfe1vL/zsNq/UH
- hK+N/fvamAmzjSDvWMChPot6IDlelhv1G4FpUCVAqeiVaXGmPMYXEIUP6JegvIF4PoP0
- n0nl/jOcSuC4zR/YJAxMHdqZjz5yUbx7CbYjxPRq4PprqT0tnFES9U7gt+PHFhvJ1zG0
- f+8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=o9t4H73QttGgZo+vQTCpgTCC+eA6JW9j2EdawokS1xg=;
- b=RtJ/368mkjqjBymKzdfQ/zfm2UKzM4ifBQRZpc4Ge6FfijJbK6y+8Dp9vkCrYkhaUw
- nH1vXtWNbuwFUcKfF9wGaTb1x16jOpbUKrDunhE+5P9s5S4mebMVABHuBjhhYax0rWko
- al1ThdUrPdQ7jtrZXLya84SB9Gp/epcF4EcCZUh3FJWx82LPHGv9CljgSLYXeuaU2NoM
- Cn4WZ586F/qaHr3A1Nkp2Ly2EClcJWIjqQRBAiTtfZzbhoUqHU8+3aZ/DajAWhWaWvX/
- sVijVoonHeq+Pz14zpY8KFIysRwjZkzuIw7fAAb9wOpTeGq0omLgLlK1+vacDuMqCsqr
- NGww==
-X-Gm-Message-State: AOAM533i6nDcpb8q+ZJOBqnuNF4NMbH7lBrGIGsokuMsTYXNuoLbjzt7
- o5LNs1OzvU/NgnhLVoW787k=
-X-Google-Smtp-Source: ABdhPJzLd5RWxiotT7UCT5TSI5p8jatncWxYu4TxdOtvcvTRC6SeAQK+PX0Frar3/CRJ3733avW7HQ==
-X-Received: by 2002:a4a:2d19:0:b0:2da:d991:a489 with SMTP id
- y25-20020a4a2d19000000b002dad991a489mr15591889ooy.32.1646238976195; 
- Wed, 02 Mar 2022 08:36:16 -0800 (PST)
-Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
- [76.183.134.35]) by smtp.gmail.com with ESMTPSA id
- y6-20020a4a86c6000000b0031bf43a9212sm7804950ooh.11.2022.03.02.08.36.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Mar 2022 08:36:13 -0800 (PST)
-Date: Wed, 2 Mar 2022 10:36:11 -0600
-From: Chris Morgan <macroalpha82@gmail.com>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org,
- lee.jones@linaro.org, heiko@sntech.de, zyw@rock-chips.com,
- zhangqing@rock-chips.com, linux-rockchip@lists.infradead.org,
- Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH v3] dt-bindings: mfd: rk808: Convert bindings to yaml
-Message-ID: <20220302163611.GA12995@wintermute.localdomain>
-References: <20220215211548.31940-1-macroalpha82@gmail.com>
- <9142ff41-4e95-3d52-bbe3-4f638b7d0fb2@arm.com>
- <YhfcxaaQgO7eDOXH@robh.at.kernel.org>
- <6ba1c897-a932-915e-1415-1bb685754305@arm.com>
+ id 1nPSOn-003Rm8-DI; Wed, 02 Mar 2022 17:04:26 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 137D6B82104;
+ Wed,  2 Mar 2022 17:04:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 358E7C340F5;
+ Wed,  2 Mar 2022 17:04:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1646240661;
+ bh=Icqzp9SWIKc87+ugA8V1Jg/Egl5KGIZgDSmOGMm1YjM=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=XlN89rRBvF+GlGzocnWiX3bxrAI2gW6UwYY9sVM2abvIaNKse/VLFty1vRTc36Lnb
+ SSdHHvC8+2f2xs+Ai+f5bVGIc8xGogCj6Xyb3IQod3sJNXMpuMbh4JtLyo9FuyGkdw
+ QeBMia/6AvkZY4fLDs3RGxSd9SeT98vWiiplnvECmf9Llo3Gs8qymYHZUxLFsgwJYU
+ tv+h0w8B4RKHuO09aJMWRTYACMp+HDRufCp5FtTLwnLm4Bcwn/PmxRjlHgSf+8G+tN
+ O847KYrkTuVKbaDKHuhpSwE9AdztBEOaKZZFVcGY81gCrxvtANDYA62iBj0dPtefFM
+ p1yp2/FLiHc5g==
+Received: by mail-qt1-f179.google.com with SMTP id u28so382343qtc.4;
+ Wed, 02 Mar 2022 09:04:21 -0800 (PST)
+X-Gm-Message-State: AOAM5312PKdiz8VDuudADDZTwWAxhm+4T6/m2a+QPmcDky74sImmwyIF
+ Pe34b8vH+qWeazBdCWuVQI7CLh8I5NNz5yuZUQ==
+X-Google-Smtp-Source: ABdhPJzVh9qPRrBt75o8AJLwWVKH7Kq5B4Apg3LHn1XCzh/s46oA4VubuT2CvtvTNnOdmGBFZvtsF8c7sASSb8loYU0=
+X-Received: by 2002:ac8:4e56:0:b0:2de:7120:61c9 with SMTP id
+ e22-20020ac84e56000000b002de712061c9mr24266586qtw.684.1646240660169; Wed, 02
+ Mar 2022 09:04:20 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <6ba1c897-a932-915e-1415-1bb685754305@arm.com>
+References: <20220302143427.447748-1-vkoul@kernel.org>
+In-Reply-To: <20220302143427.447748-1-vkoul@kernel.org>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Wed, 2 Mar 2022 11:04:08 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqJMZ8PHqJk6drNbNHprmfeV9UvJzJnech7sz_JwcdbckA@mail.gmail.com>
+Message-ID: <CAL_JsqJMZ8PHqJk6drNbNHprmfeV9UvJzJnech7sz_JwcdbckA@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: Revert "dt-bindings: soc: grf: add naneng
+ combo phy register compatible"
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Peter Geis <pgwipeout@gmail.com>, 
+ "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
+ Heiko Stuebner <heiko@sntech.de>, 
+ Johan Jonker <jbx6244@gmail.com>, Jianqun Xu <jay.xu@rock-chips.com>, 
+ Tobias Schramm <t.schramm@manjaro.org>,
+ Michael Riesch <michael.riesch@wolfvision.net>, 
+ devicetree@vger.kernel.org, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_083618_322606_E74CADED 
-X-CRM114-Status: GOOD (  41.89  )
+X-CRM114-CacheID: sfid-20220302_090425_631317_43BE1A30 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,86 +89,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 25, 2022 at 10:44:55AM +0000, Robin Murphy wrote:
-> On 2022-02-24 19:30, Rob Herring wrote:
-> [...]
-> > > > +required:
-> > > > +  - compatible
-> > > > +  - reg
-> > > > +  - interrupts
-> > > > +  - "#clock-cells"
-> > > 
-> > > Is this actually required (ditto elsewhere)? Technically it's only necessary
-> > > if there are any clock consumers targeting this node, so arguably it should
-> > > be the clock binding's responsibility to validate that.
-> > > 
-> > > It wouldn't make much sense for a dedicated clock controller to omit
-> > > #clock-cells such that it couldn't have any consumers, but given that these
-> > > things are primarily PMICs I think it's reasonable to allow a board not to
-> > > care about the clocks at all if it doesn't use them. I know that the
-> > > original binding claimed it was required, but if we're already relaxing that
-> > > for RK805 here then we may as well relax it entirely.
-> > 
-> > Fair enough. However, if the consumer could be in an overlay, then I
-> > think we want it to be required and not make the overlay add the
-> > property. Properties just appearing within nodes at runtime is likely
-> > not well supported in OSs.
-> 
-> Ah yes, that's an angle I hadn't considered, and I reckon it clearly answers
-> my original question in the affirmative :)
-> 
-> Indeed these clock outputs are often hooked up to SDIO WiFi modules, and I'm
-> sure I *have* seen boards which put such modules on pluggable daughterboards
-> in a manner which could reasonably use overlays, so in principle it does
-> seem like a realistic concern. I'm happy with setting a general principle
-> that if a clock output is exposed on a physical pin, then at the DTS level
-> we can't know for sure that it *won't* be consumed (even if the original
-> board design didn't intend it), therefore the device is always a potential
-> clock controller and "#clock-cells" should be required. In that case, the
-> consistency argument would fall the other way, to enforcing it for RK805 as
-> well.
+On Wed, Mar 2, 2022 at 8:34 AM Vinod Koul <vkoul@kernel.org> wrote:
+>
+> This reverts commit b3df807e1fb0 ("dt-bindings: soc: grf: add naneng
+> combo phy register compatible") as that was wrongly merged, so better to
+> drop the wrong patch
+>
+> Signed-off-by: Vinod Koul <vkoul@kernel.org>
+> ---
+> I am applying this to phy-next to fix the issue
 
-Okay. So the existing point of contentions are:
+Reverting will just cause a different warning that it is undocumented.
+The fix in the other thread won't apply either if you revert.
 
-1) "#clock-cells" should always be required. This causes a few boards
-to fail to check properly, but I assume that can be easily remedied by
-adding the "#clock-cells" to the devicetree.
-
-2) The rk805, rk809, and rk817 only have a single clock-out. To
-workaround a quirk in the driver some boards have 2 clock-output-names.
-To fix the devicetree to accurately describe the hardware, the driver
-will have to be updated along with many boards with these PMICs.
-
-3) The rk808 has no vcc13 or vcc14 input, but at least 4 boards preport
-to use such a voltage input anyway.
-
-Not a point of contention, but I need to add examples for the rk805,
-rk809, and rk818 which I will just pull from a popular devicetree.
-
-I can solve the clock-cells issue by simply adding that to the correct
-devicetrees (though I have no devices to test those on I assume they
-should be benign changes?). Is that acceptable to fix that?
-
-For the single clock out, I can't really fix it without updating the
-driver and modifying a large number of devicetrees. Should I just make
-it 1 min/2 max across all these YAML files and note for the rk805,
-rk809, and rk817 that there is only really one clock output?
-
-What should I do for #3? I've checked the schematic for the Pinebook
-Pro (which is one of the 4 boards affected) and can confirm that
-VCC13 and VCC14 on these boards is literally just VCC1 and VCC2,
-respectively. I can't seem to find the schematics for the other 3
-boards affected though, but I assume it's something similar.
-
-Let me know, I'd like to get this finalized so I can get the battery
-code for the rk817 charger pushed too.
-
-Thank you very much for all your help.
-Chris
-
-> 
-> Cheers,
-> Robin.
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
