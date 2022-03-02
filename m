@@ -4,80 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F17F8C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Mar 2022 18:24:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BD4BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Mar 2022 19:05:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:Cc:References:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7uGsSHdfnmVJ/kc/guoxEm7mO3pYekArynqSN7FzhPo=; b=zcYEQUP5c1BSN9
-	E48TswZU/dmBe7OLEAy5tiQYM1Gx3O+20o3kGIDypEXih5AgwLY2uCPJKPfV568mUhPc436xDDMhe
-	aJHdogayvp162zxy03duuzH3h9jdsW8eiZIE4I5dIAbHaN5mP5sSnuSxiAHOke2NIxzZDfekOtmiq
-	RXOjlHKuJ1nxnDZY4eZjByqz/rggFhebDtP1cn683uE8D+hlrF0JDQ2Hn8Q+bnIH8J+IifuLuQjMT
-	g+eLRGF0aIyXU+xL1WSqV8AwuTDGL1Wq0vj03CvnRngNJc5Ymlmme0mmteebCodSSbd37Do07fwK8
-	K+DCD6SeYRjmmVheeeqA==;
+	List-Owner; bh=B/bCo1zJc/L9WpOfraXgHJZ77qB+xhd86NtV1A7XNuU=; b=3WMOxwVAlWK4xx
+	HobwE2Xeo5DY/Pb+F97Ah5Wel0K4CDgk9Yfdb+/5BtTzNNnj6l5cpYpvJdbe49DDCc7L4lWCT78rp
+	O5MZ4ECowSRkLa+ZwMQHTWlusFTuiRoSZlJj4v0DTmaBlsJykj+cYo12bs7viLRIOVyEyS84B1wUN
+	uO3YunzV6vukZ6fCD6u68wJzD1nDkUPQ7LJYocslGU0xXzUbmyCgno52oYEsbLoZ0ctw/aHj+smoi
+	4nTUkugKl9hAZ8JPBTTbhr2bUUVDfFI+hvaUM7vkn9FPSqwmfpWTSwp2Fk0gcjjl1UMNtAKJt7I7k
+	7SZecUBDfQZmp9eRfoNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPTec-003pqH-MQ; Wed, 02 Mar 2022 18:24:50 +0000
-Received: from mail-yb1-xb2c.google.com ([2607:f8b0:4864:20::b2c])
+	id 1nPUHb-003uTx-UQ; Wed, 02 Mar 2022 19:05:07 +0000
+Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPTeP-003pm5-Fn; Wed, 02 Mar 2022 18:24:39 +0000
-Received: by mail-yb1-xb2c.google.com with SMTP id g1so5186979ybe.4;
- Wed, 02 Mar 2022 10:24:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=k8trmR3Q/wKgFOlN56Zfs9MLMD2hMa6/k0WKIWBkMmM=;
- b=EI7PKbxWvSqGp9xJmAzLPWSp5Tf1E04s3YrH5kSS7z6m+CKHqqpxsF1gSsptgTcOcP
- s92pTtvsM1mPJlvaG7OtmwhLVLwZj/9riUWO8vLV72/BDvSjj+rvsO4KlqLXBNUW4Wsa
- jbDq62016TJkK8q8iZwUdEaU8qe40kqrghh1GqvbX7Gq9mSUMvDVyO2JYFjrLH+dgaWW
- Y5We2GXHWVHPyr3pLLn9QNykj6paKj5xfYDElWRybIvDGi28yatztI44TWmZoRTGxIOm
- KD8BRSfnehZMnzHlXWDkmeocicXx0K2iD3tCxtfS7nu6euo1LBpEkcv4z7KEzBURG8od
- fj2w==
+ id 1nPUHZ-003uSq-9X
+ for linux-rockchip@lists.infradead.org; Wed, 02 Mar 2022 19:05:06 +0000
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id E8F7C3F1E6
+ for <linux-rockchip@lists.infradead.org>; Wed,  2 Mar 2022 19:05:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1646247901;
+ bh=o/gq2zH0XhC0PaitqVD/LagQpkqLCpBFDwRKMGbmd0w=;
+ h=Message-ID:Date:MIME-Version:Subject:To:References:Cc:From:
+ In-Reply-To:Content-Type;
+ b=paifCzoumozPCgowa7dzMuwXNt5AtzNtgP1WBHuhsti2tBLjMHEHucxawN3B+TM1G
+ CNSpca91RncTQM9IVHpW6yxHhnf3udLllgtDWGpZrdaHsT065UmvnI2u6VBN7PXfqh
+ 5qQUpwt4iy8q/NtXdTd7c8ixPKyJbJ6T10GpkfWmcTMmx9MrCfhWXIh8nwtPrEfWzC
+ YVV0F57X64k2qX7a2qac1lmhYralJf9WUxuMllqPvbOVtWTF789iFnzavdIi7r87N8
+ oZJElokxFjeHOHq0AuE7vuY9TqjPHL6ZYqMvZ1rt0U4hZUlEeWcSJBMQO+yF1mRh2v
+ DXbnwuYGLJGTA==
+Received: by mail-wr1-f71.google.com with SMTP id
+ h11-20020a5d430b000000b001f01a35a86fso972306wrq.4
+ for <linux-rockchip@lists.infradead.org>; Wed, 02 Mar 2022 11:05:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=k8trmR3Q/wKgFOlN56Zfs9MLMD2hMa6/k0WKIWBkMmM=;
- b=UIOpwNO8P5jDB4Vmsk+K/Pt54C5MXvn5rJ34lWgKMtaDf8kSAAINdOITqVHrZiK1ja
- gV1uSpy2TE1QFnAi5UPmR3xYr9+ApLviNghtSkb5KxtTR29G1QzGbyMv6lv+qzRY0Sbu
- emY81kvG/V4OzATLasPGfgiL94xhuI2j+LpA5CuaGYPpQfCshbB3LnfTQDeqsXfjMxBF
- 3DgWjO2XSyknNGDRC/PsE3g4JUkvadIdzcJR1f2BaK4LQgoUY7tVll22AKevZrEn8X/8
- tsyWGrdX2MIy8nRm5ayTNnHNH6Irdcg29FXvSPnzjVawvlPO/50bXgi0OhOFWCoC/bDl
- DPqA==
-X-Gm-Message-State: AOAM530FMpU3lLGNkor3aTsY1zvEg4s4WdS9C3ckHYcheGkBBTCqyJUP
- vS/8ipXLayjAkHNgPK6O5uNbOpXQbrbcpAkwZ7A7YVmA8gk=
-X-Google-Smtp-Source: ABdhPJztt2OEDdgAGfUkeMuakEtvQlotuosKn6RGHzjaJ0yQIJbh4vJafHCFX3KRfLld0T8niouzFGhLQs3ATA6lq9o=
-X-Received: by 2002:a5b:dc8:0:b0:624:a898:dea6 with SMTP id
- t8-20020a5b0dc8000000b00624a898dea6mr29475925ybr.600.1646245476111; Wed, 02
- Mar 2022 10:24:36 -0800 (PST)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:references:cc:from:in-reply-to
+ :content-transfer-encoding;
+ bh=o/gq2zH0XhC0PaitqVD/LagQpkqLCpBFDwRKMGbmd0w=;
+ b=rpU1a/A1y15Ndx945AYZ+i3cNk/xsgR3KjLpFZ+CBfrkdu41AUqLXHSn/5Kr2yGYU8
+ Kh9tF82ugTzjB0yJ5tXI7tKV7xP4sdPJ2atQsXANJvBC2hvErHbZcJkIY+lEFBn6Q10/
+ 5dUb8woGoxYFbin6taCaS0A1dXgeGplZ/+oyHPvp774CyOOFbMIitITVMTkNaLNNVgW1
+ TtevKOZt9XElXACxvUKX5D97wKoJO1cy3qz1SZQX3G/ZLRuG+jelBpHgpLdjHY6A/MgD
+ fqkA8JQFvN/n0SrU8bRym9QnTLek89VZdMtpEWFF1a0a1DrYqylaU5cFjw04IPzmfmUe
+ e+Hw==
+X-Gm-Message-State: AOAM531EKxaX/GGRyOLptPwxWE4OzdQ6Jw8RwEnprXHLTL8xACTd2tt9
+ WazposgxHj+6hnF8X1tzTte82Ni1QzVzjb1lcpuDHNhxmuh6zJWK+6CYVaTqU1Wh3H5xrprX5de
+ mqPMu4teIug66E82S75ah9RMfjMTae3DmlzyLCmrFFeoPORdTnw==
+X-Received: by 2002:a05:6402:26cb:b0:3fa:3817:1f78 with SMTP id
+ x11-20020a05640226cb00b003fa38171f78mr30654864edd.219.1646247889926; 
+ Wed, 02 Mar 2022 11:04:49 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy5ud+uzIs5hvG4Gs8CgEyL9Hzob7WkoDzIJWUkIA9MRmpeL5TH6uATTuuggM0eZzWdPfuGEw==
+X-Received: by 2002:a05:6402:26cb:b0:3fa:3817:1f78 with SMTP id
+ x11-20020a05640226cb00b003fa38171f78mr30654817edd.219.1646247889629; 
+ Wed, 02 Mar 2022 11:04:49 -0800 (PST)
+Received: from [192.168.0.137] (xdsl-188-155-181-108.adslplus.ch.
+ [188.155.181.108]) by smtp.gmail.com with ESMTPSA id
+ t14-20020a170906608e00b006d1455acc62sm6630349ejj.74.2022.03.02.11.04.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Mar 2022 11:04:46 -0800 (PST)
+Message-ID: <211b3d35-1d8d-b71c-996a-b185324815f7@canonical.com>
+Date: Wed, 2 Mar 2022 20:04:45 +0100
 MIME-Version: 1.0
-References: <20220302143427.447748-1-vkoul@kernel.org>
- <CAL_JsqJMZ8PHqJk6drNbNHprmfeV9UvJzJnech7sz_JwcdbckA@mail.gmail.com>
- <Yh+l7+7zDvI/9e6n@matsya>
- <CAMdYzYoVz4wk-EhfxQdwu9FqRg8Vj-HGMFG+CFjfsHeM8HcnNQ@mail.gmail.com>
- <CAL_JsqL1cYyU=LCmEn=dEk712CECpxj8sUWrwpi8_XpoaXEQig@mail.gmail.com>
-In-Reply-To: <CAL_JsqL1cYyU=LCmEn=dEk712CECpxj8sUWrwpi8_XpoaXEQig@mail.gmail.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Wed, 2 Mar 2022 13:24:24 -0500
-Message-ID: <CAMdYzYqMgoOKuBw9gKuybcoGxiGYtwf3aA07C9Mqvq2gjB47rw@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: Revert "dt-bindings: soc: grf: add naneng
- combo phy register compatible"
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, 
- "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
- Heiko Stuebner <heiko@sntech.de>, 
- Johan Jonker <jbx6244@gmail.com>, Jianqun Xu <jay.xu@rock-chips.com>, 
- Tobias Schramm <t.schramm@manjaro.org>,
- Michael Riesch <michael.riesch@wolfvision.net>, 
- devicetree <devicetree@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v2 00/15] pwm: dt-bindings: Include generic pwm schema
+Content-Language: en-US
+To: Thierry Reding <thierry.reding@gmail.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>,
+ Lee Jones <lee.jones@linaro.org>
+References: <20220214212154.8853-1-krzysztof.kozlowski@canonical.com>
+Cc: Chen-Yu Tsai <wens@csie.org>, Florian Fainelli <f.fainelli@gmail.com>,
+ bcm-kernel-feedback-list@broadcom.com, Heiko Stuebner <heiko@sntech.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Shawn Guo <shawnguo@kernel.org>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Paul Walmsley <paul.walmsley@sifive.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Yash Shah <yash.shah@sifive.com>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+ Vijayakannan Ayyathurai <vijayakannan.ayyathurai@intel.com>,
+ Vignesh R <vigneshr@ti.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Anson Huang <anson.huang@nxp.com>, Rahul Tanwar <rtanwar@maxlinear.com>,
+ Rob Herring <robh+dt@kernel.org>, Maxime Ripard <mripard@kernel.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Jeff LaBundy <jeff@labundy.com>, Sagar Kadam <sagar.kadam@sifive.com>,
+ linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-riscv@lists.infradead.org,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ linux-rockchip@lists.infradead.org
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220214212154.8853-1-krzysztof.kozlowski@canonical.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_102437_561385_0D9C602B 
-X-CRM114-Status: GOOD (  27.91  )
+X-CRM114-CacheID: sfid-20220302_110505_475863_23697269 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,58 +127,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 2, 2022 at 12:34 PM Rob Herring <robh+dt@kernel.org> wrote:
->
-> On Wed, Mar 2, 2022 at 11:25 AM Peter Geis <pgwipeout@gmail.com> wrote:
-> >
-> > On Wed, Mar 2, 2022 at 12:14 PM Vinod Koul <vkoul@kernel.org> wrote:
-> > >
-> > > On 02-03-22, 11:04, Rob Herring wrote:
-> > > > On Wed, Mar 2, 2022 at 8:34 AM Vinod Koul <vkoul@kernel.org> wrote:
-> > > > >
-> > > > > This reverts commit b3df807e1fb0 ("dt-bindings: soc: grf: add naneng
-> > > > > combo phy register compatible") as that was wrongly merged, so better to
-> > > > > drop the wrong patch
-> > > > >
-> > > > > Signed-off-by: Vinod Koul <vkoul@kernel.org>
-> > > > > ---
-> > > > > I am applying this to phy-next to fix the issue
-> > > >
-> > > > Reverting will just cause a different warning that it is undocumented.
-> > >
-> > > Right, but a patch for that would fix that
-> > >
-> > > > The fix in the other thread won't apply either if you revert.
-> > >
-> > > It is not applying for me, so that needs to be updated anyways..
-> >
-> > It seems phy-next has fallen out of sync with -next.
-> > It's missing this patch:
-> > https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/Documentation/devicetree/bindings/soc/rockchip/grf.yaml?h=next-20220302&id=7dbb47d64acf4aac131a2aaade726913aa62abe7
->
-> That is not how things work. linux-next is a tree that no one can
-> apply patches to (in the worst case like this one). It's useful for
-> integration testing and a shortcut for getting a maintainer's tree,
-> but should not be the basis for patches to the lists. You should
-> generally use the last rc1 or a maintainer's tree when there is a
-> known dependency. Using a stable base means 'git am -3' works and the
-> merge tools work rather than git just failing to apply anything.
+On 14/02/2022 22:21, Krzysztof Kozlowski wrote:
+> Hi,
+> 
+> Changes since v1:
+> 1. Add tags.
+> 2. Adjust subject (Uwe).
+> 
 
-I apologize, as I'm not the progenitor of the original patch or the
-merge conflict I'm missing insight here.
-My series is dependent on patches that were pulled in several trees
-and the only place they are all currently available is in -next.
-I attempted to correct the merge issue in my series, but I don't know
-how I would do so when it needs to be based on multiple trees to be
-correct.
+Hi Thierry, Uwe and Lee,
 
-I will wait until this all settles down and resubmit based on 5.18-rc1
+Any comments here? Rob acked all these, so these are clear to go via PWM
+tree.
 
-Respectfully,
-Peter
 
->
-> Rob
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
