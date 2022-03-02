@@ -4,65 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0231C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Mar 2022 17:14:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09B3AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Mar 2022 17:25:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YX7riAYRafgCgWH0/G9OIHhGth3y4GvJx3WmiHgi39M=; b=s/8QxDTU8MN41m
-	+DIGKYJQ1GFwh78SH5HWP17rJD8ELp7ffEyqt9KJho5e76yKlwM8pO/hrYTBOJVzwON6on+nNkHWj
-	CS42EpASF+B5CkwVEtL3nWg2rWhwtlpRCZeWPoIQjJs64om9OO0ugJy3CfkYTNjkn8psHSqYBW6DC
-	ryqTuOcJyfU+BOxtyKH+wgVGulObu4Xt8gPHKQQZ/THEwRmOvL9Xr5wMgGPCMW+NR0ZTt2WHD7A/r
-	V9qjjX2ygsBcozU5wpC+wnDPU6Cggj+zGtvrA5I0uL7syH+8NquG6oo0XD4pH2O8ITJS0hpILtFAO
-	HbC9BVnh1SWF8n2RtF/w==;
+	List-Owner; bh=c4GKAPOfQxij2eRNIDPi3Vm39fBJc+HPRP+KXIWTVMY=; b=Sx/qPw7LaHgwfT
+	udocHlLZsejRZESdTDOUvy+0aGdOjNiA2RjgyqxmZuQEU/rodSktxNMVs5xkRx+YCf8/u0R021F5Q
+	8Z4l4ssYtDi0ORJVfGELBIoko64Ys8VPx5GauaNgYgAqt6XbZjGNzS+rRagA+T1XAZjCNntfXRnZP
+	2FQqZQCJoAZnrpJKqO5nR7VouMOTaODqJ+cbOtrCAKXqP3bOXNVSKehvmL6ttK1WuQ1q3P6Xwz9Ik
+	rt/Fm4MPfEpfZTrnrLZz6tX+wJA8+DQlDq89cDFw4w1vaCnbKiSPMZdlXLwn8QYXQiMBpIPvlufhW
+	2nEcHMwAysTkcXc6hRpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPSYn-003Usk-6h; Wed, 02 Mar 2022 17:14:45 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nPSjI-003X8G-Sc; Wed, 02 Mar 2022 17:25:36 +0000
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPSYZ-003Uo6-2G; Wed, 02 Mar 2022 17:14:32 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id A9D02B82020;
- Wed,  2 Mar 2022 17:14:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75300C004E1;
- Wed,  2 Mar 2022 17:14:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646241268;
- bh=SOwFFF1Iq+bs3gvz8AxW8+ACa2Xzt/OHDUy2LcN4t4Q=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=VVXBqVqWvkyQdraxGqpHYbW56m0sDK6dga0TJE2eCl12sXOukgforDdWC+PmmXqiV
- yLUqxyNmZ8Yh0nM9+UWYn2xspcy0vF3WB5RcIfXRMiNgci9w0K7tqELjZ/TOB7f4FH
- wVR90qm+bWO81OQ9sqNcpcqeYu9qrWDsTjNFNNbaLBejlLfMREfmqC4y75qM5QVZ2j
- AP52UGmGXuoXBWlbxabP5tpObaKrlrzhz2Ouvp5ykFMpvaePKPKi8udcmVHLDNekrX
- K43O+pe3eeEvIguILzcbK07en58thnRRb9Xenro9plN3zTpnzJmR7/8TvwGmbYctrm
- ToPC4c+sZFgIg==
-Date: Wed, 2 Mar 2022 22:44:23 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Peter Geis <pgwipeout@gmail.com>,
- "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
- Heiko Stuebner <heiko@sntech.de>, Johan Jonker <jbx6244@gmail.com>,
- Jianqun Xu <jay.xu@rock-chips.com>, Tobias Schramm <t.schramm@manjaro.org>,
- Michael Riesch <michael.riesch@wolfvision.net>, devicetree@vger.kernel.org,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH] dt-bindings: Revert "dt-bindings: soc: grf: add naneng
- combo phy register compatible"
-Message-ID: <Yh+l7+7zDvI/9e6n@matsya>
+ id 1nPSiy-003X1B-CZ; Wed, 02 Mar 2022 17:25:17 +0000
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-2db569555d6so26019697b3.12; 
+ Wed, 02 Mar 2022 09:25:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=WHLK0rZoZwvLk407H3I3AQl9EwHKDQ8Qn/KJVxCEprA=;
+ b=Mpa9yuqvsgiPWU7E5zDlY7qrZ7YkH/oJgAwF0bkUoBZTiKb5A4QoOJmxH5ADLmgE0L
+ WrHX6Gcsj2UNIAUowILtqQAe5yzF3jnRbxGuuojrdZPkmEnf4tGFqcfyXq1C/nrKLsXN
+ daRlwC/rUv+SrgitsXZmEvTrc+73PV6zDsjEDAWT4Iv43QDXuNzvJvR9/K3YVNcxNIqp
+ KKXIN6+IXkSawy5mHmKIhiCdpYBfu/gVlaGjwcDarFGZC6JeX7/zQJnzeePylIsc/Ekb
+ nVq7ojdJ7f8X9+DsKlF2ongMaze3of8LvrhLF8zp2DkAkpFU/nRKPra2CjjKxXwxint2
+ SdMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=WHLK0rZoZwvLk407H3I3AQl9EwHKDQ8Qn/KJVxCEprA=;
+ b=Xv9CEPj9KfnHNPQ1IuoCZxNcZsZZBTQxVaMiQdgIqZny8q5SROMP367JO6YwVb/qFA
+ 3ED1D78jxN0Z0jTJfsSMiaezvBqxgaIxVrDi5L61NF36YHHafORLTfoNKzPWPe7NA52i
+ 9+5H09bpdWoN0lN4i2nnkBSxb4iMEJD9qFMePaA152ZFPQXwvTojNzDKOCSLM+UMFqaK
+ e6H15NbCS+jBEO/c2l+TMyavCS7MRvG5ijwtoaLVuoZREjvvWPS5MesuOY/fRZs/LAsc
+ SqvBwxabIIEGR+nOTxAEP5BTkhVQTT0jW2N5AOiZXvjgFBeK9cV0p9DXiuUxN/2n8ZMf
+ P8yA==
+X-Gm-Message-State: AOAM530X7eJEEfaXSNBTyrIvA74DTFNX0vWw2vOPpI0wIoWjN/W5n/Yx
+ rxbyue0wLcsju30pdTusrjqZqKxhhfm9LXiBpBc=
+X-Google-Smtp-Source: ABdhPJwQX66RmntT4aJExWpWltr3suaoJxs4GWL9aqZqibeCHhZOncYjov5VmoDhhvP6zgQnYaeSQWcDLbeK6o/LHao=
+X-Received: by 2002:a81:3807:0:b0:2d8:2ed:1d19 with SMTP id
+ f7-20020a813807000000b002d802ed1d19mr30671490ywa.519.1646241915023; Wed, 02
+ Mar 2022 09:25:15 -0800 (PST)
+MIME-Version: 1.0
 References: <20220302143427.447748-1-vkoul@kernel.org>
  <CAL_JsqJMZ8PHqJk6drNbNHprmfeV9UvJzJnech7sz_JwcdbckA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAL_JsqJMZ8PHqJk6drNbNHprmfeV9UvJzJnech7sz_JwcdbckA@mail.gmail.com>
+ <Yh+l7+7zDvI/9e6n@matsya>
+In-Reply-To: <Yh+l7+7zDvI/9e6n@matsya>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Wed, 2 Mar 2022 12:25:03 -0500
+Message-ID: <CAMdYzYoVz4wk-EhfxQdwu9FqRg8Vj-HGMFG+CFjfsHeM8HcnNQ@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: Revert "dt-bindings: soc: grf: add naneng
+ combo phy register compatible"
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, 
+ "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
+ Heiko Stuebner <heiko@sntech.de>, 
+ Johan Jonker <jbx6244@gmail.com>, Jianqun Xu <jay.xu@rock-chips.com>, 
+ Tobias Schramm <t.schramm@manjaro.org>,
+ Michael Riesch <michael.riesch@wolfvision.net>, 
+ devicetree <devicetree@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_091431_287512_F892A918 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20220302_092516_469688_3F292847 
+X-CRM114-Status: GOOD (  17.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,27 +94,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 02-03-22, 11:04, Rob Herring wrote:
-> On Wed, Mar 2, 2022 at 8:34 AM Vinod Koul <vkoul@kernel.org> wrote:
+On Wed, Mar 2, 2022 at 12:14 PM Vinod Koul <vkoul@kernel.org> wrote:
+>
+> On 02-03-22, 11:04, Rob Herring wrote:
+> > On Wed, Mar 2, 2022 at 8:34 AM Vinod Koul <vkoul@kernel.org> wrote:
+> > >
+> > > This reverts commit b3df807e1fb0 ("dt-bindings: soc: grf: add naneng
+> > > combo phy register compatible") as that was wrongly merged, so better to
+> > > drop the wrong patch
+> > >
+> > > Signed-off-by: Vinod Koul <vkoul@kernel.org>
+> > > ---
+> > > I am applying this to phy-next to fix the issue
 > >
-> > This reverts commit b3df807e1fb0 ("dt-bindings: soc: grf: add naneng
-> > combo phy register compatible") as that was wrongly merged, so better to
-> > drop the wrong patch
-> >
-> > Signed-off-by: Vinod Koul <vkoul@kernel.org>
-> > ---
-> > I am applying this to phy-next to fix the issue
-> 
-> Reverting will just cause a different warning that it is undocumented.
+> > Reverting will just cause a different warning that it is undocumented.
+>
+> Right, but a patch for that would fix that
+>
+> > The fix in the other thread won't apply either if you revert.
+>
+> It is not applying for me, so that needs to be updated anyways..
 
-Right, but a patch for that would fix that
+It seems phy-next has fallen out of sync with -next.
+It's missing this patch:
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/Documentation/devicetree/bindings/soc/rockchip/grf.yaml?h=next-20220302&id=7dbb47d64acf4aac131a2aaade726913aa62abe7
 
-> The fix in the other thread won't apply either if you revert.
-
-It is not applying for me, so that needs to be updated anyways..
-
--- 
-~Vinod
+>
+> --
+> ~Vinod
 
 _______________________________________________
 Linux-rockchip mailing list
