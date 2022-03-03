@@ -4,75 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1ABDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 13:43:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38165C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 13:45:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/W0EEAtMbYPUSe74EFd87PYDO0zk1ExzMc7HerO1Efw=; b=mU2wZF1L58oQnt
-	G4XG3Vi5KD0zJ9bwArEEBVZ6ZyYLFovRSFWSChqhiWY5PrWyk0NgAk1p0ucQ0I0Tr4W1yb8EXnSo3
-	pGDqyFsToEY+jiUgYY3B/s54JE53BcT0jbbI/XlMTfVuxizZKUiVyAMr55HKbnsHMm3wNGZwDZfas
-	ORgZc+PnVyxu1yDzTPB3YwUvVlTlEqErKJ9I9DUGB30cEF9jHczipCO4OUyMuROSxXVRfglf2iPzp
-	/LgMCh/Y3Eb1AcvrJCvmL2SEoZ090fcPgkGiu2+1Ed6wK0RUi1akQw9H7ouO9IzvxU5FY1Gg+VPhy
-	Eb8TRkpAUjbCvf7Jb/PQ==;
+	List-Owner; bh=QlHKWbDd/9uo9qjJ9XW3Y+HqjJmVVS18QNAUsDqHdso=; b=cBYR0s9zGpOnZU
+	D29waXqnCrZ930Qowm8rnSFJtHvLSjiYVeIiwfAepj3RDiHZLFQBTFAPwXT2x/rFqUzdMQh/PGe11
+	3fZkkpsZOVvBFLTD53kqranLYS3PNLkF0405wMUvCpFpNasBU6gxGswO/lXhsobiCzPEIJXRxX4HO
+	JL03itzOgwUhwciG7t5lE3UxC7+ReRqwZ+MdLwNn7D5f1LXsfcScGfbVirWoC5V2nr0uMviIeSI3j
+	HxAqKYKrlXYuNeSQEsjnrSJSQGc2u1mIhXXL8qVrq8KcmWc0DQQokv/GXa1GtNNzMVHb/JdNC412h
+	9dULQieRk31AKK3wwBcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPljg-006WjM-Kt; Thu, 03 Mar 2022 13:43:16 +0000
-Received: from mail-oi1-f174.google.com ([209.85.167.174])
+	id 1nPllJ-006WzO-97; Thu, 03 Mar 2022 13:44:57 +0000
+Received: from mail-oi1-f172.google.com ([209.85.167.172])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPljU-006Wgq-OP; Thu, 03 Mar 2022 13:43:05 +0000
-Received: by mail-oi1-f174.google.com with SMTP id q5so4814855oij.6;
- Thu, 03 Mar 2022 05:43:04 -0800 (PST)
+ id 1nPll8-006WvI-OX
+ for linux-rockchip@lists.infradead.org; Thu, 03 Mar 2022 13:44:48 +0000
+Received: by mail-oi1-f172.google.com with SMTP id j24so4788683oii.11
+ for <linux-rockchip@lists.infradead.org>; Thu, 03 Mar 2022 05:44:43 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=uVjIFvRGxmCNMTbSrBbokaQaBUIKi3VHJCUkgaVuEhc=;
- b=zVqD24sQZNJ6PtW3eZhTmOr04zmrG6aTrKQxaTYfKFC+MFvgxyVWgj4ZEiqkMEmqP1
- qBF0h3UTAqRNsr5+E2zHxNL7N2hs13SLGI7F7rsH2T6VHIdl+c17eGNAQYTq/8nTvwAq
- ndjKSnvr8HbiVNuy5L2ui7Fi4KtpwoHd0/Ikk9Gm8aUXHU+DbxLtB6KwbbD3mmKSencd
- 9eF10H+xKw+Pjc2fOJzDBaO6LvmgrCFvTElny4CGll9J/Nmh3m1SMkgzNTF8Aca88U1v
- OI37Uij+LaD8cHxnyIK2GTO6ucnFDIOiZDBvK6/U6giL2BOihfkdS1HBi+v4IxsJ50NN
- 94UA==
-X-Gm-Message-State: AOAM533ulsWAPBCMCK8SmMHzH98IOiKabGlXbLN6VLT3821/5LiiOjaY
- 6kUI4Kb4sIFBTVj8LXxcLQ==
-X-Google-Smtp-Source: ABdhPJyerRkHKmBETO/iPjPoX2HnozFhTqwx0qSfhqj4YNiGOkshnbjByp8JMzHFIJUHKbBPBFFypA==
-X-Received: by 2002:a54:4e9a:0:b0:2d5:3e7c:7ff6 with SMTP id
- c26-20020a544e9a000000b002d53e7c7ff6mr4594562oiy.24.1646314983421; 
- Thu, 03 Mar 2022 05:43:03 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=LVNw/ls/eRTKLlhsyPvmLuEhSjvK3qoiS6H5MeDHqG8=;
+ b=YXSym9xz/gUQ/dX2NystIR+6EIKzLF8EnTUrs4yhapzhtDY4ISsHo06OMCH8pC+qT0
+ ANQ2vWorJK+1vK1DvjRHfbam8B9I4yetggZQnfhiGG82tlCgO0Nlm8cRCLw5uuicCWFY
+ WjqWLkFOSUnGH1KExfw23Rgb3nZkswkxZsI3YOWCa33IH50h46Nx+zJX+thF4izTaWW4
+ BfKz6Fvy+V4+2Gbbuod3NYYJE1hX5iaoBCdxcbOIQWfEA6mEZqgFU6fmOmaThsCCTke4
+ 59dJNmGo/FuJinEm2lT3kywxZ6IlYBbtU5ScaxGeA7x2M//WQiBDycTtaqeWiMtjRHAW
+ l/5w==
+X-Gm-Message-State: AOAM530S1LNYXgeb707AAuuf/nmM4JZhOkEkkapT8zRKu1xMFZ4w1ec8
+ a+TecjXYkzsWQKq0DFKcgg==
+X-Google-Smtp-Source: ABdhPJx0CQYL45E+PUGvxlwfgLWgVgDXqpMXflVyMKx2X8GxGOtkUMWtghvxFxrOusZN0vqOERPaXw==
+X-Received: by 2002:a05:6808:1804:b0:2d4:c904:a83f with SMTP id
+ bh4-20020a056808180400b002d4c904a83fmr4513034oib.103.1646315083234; 
+ Thu, 03 Mar 2022 05:44:43 -0800 (PST)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213]) by smtp.gmail.com with ESMTPSA id
- n23-20020a056870559700b000d47e9dabf0sm1166362oao.0.2022.03.03.05.43.02
+ s14-20020a05680810ce00b002ca4eddde1esm1089063ois.11.2022.03.03.05.44.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Mar 2022 05:43:02 -0800 (PST)
-Received: (nullmailer pid 1492131 invoked by uid 1000);
- Thu, 03 Mar 2022 13:43:01 -0000
-Date: Thu, 3 Mar 2022 07:43:01 -0600
+ Thu, 03 Mar 2022 05:44:42 -0800 (PST)
+Received: (nullmailer pid 1495434 invoked by uid 1000);
+ Thu, 03 Mar 2022 13:44:38 -0000
 From: Rob Herring <robh@kernel.org>
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org,
- Yifeng Zhao <yifeng.zhao@rock-chips.com>,
- Frank Wunderlich <frank-w@public-files.de>, Peter Geis <pgwipeout@gmail.com>,
- Simon Xue <xxm@rock-chips.com>, devicetree@vger.kernel.org,
- Liang Chen <cl@rock-chips.com>, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>, Sascha Hauer <s.hauer@pengutronix.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: Re: [PATCH v2 2/4] dt-bindings: usb: add rk3568 compatible to
- rockchip,dwc3
-Message-ID: <YiDF5WVoR3c0Eevt@robh.at.kernel.org>
-References: <20220225131602.2283499-1-michael.riesch@wolfvision.net>
- <20220225131602.2283499-3-michael.riesch@wolfvision.net>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220225131602.2283499-3-michael.riesch@wolfvision.net>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: mbrugger@suse.com, lee.jones@linaro.org, heiko@sntech.de,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ knaerzche@gmail.com, zyw@rock-chips.com, zhangqing@rock-chips.com,
+ strit@manjaro.org, Chris Morgan <macromorgan@hotmail.com>, robh+dt@kernel.org,
+ arnaud.ferraris@collabora.com
+In-Reply-To: <20220302232612.25455-4-macroalpha82@gmail.com>
+References: <20220302232612.25455-1-macroalpha82@gmail.com>
+ <20220302232612.25455-4-macroalpha82@gmail.com>
+Subject: Re: [PATCH 3/3 v4] dt-bindings: mfd: rk808: Convert bindings to yaml
+Date: Thu, 03 Mar 2022 07:44:38 -0600
+Message-Id: <1646315078.984067.1495433.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_054304_815407_7AC5BB05 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20220303_054446_824753_35C5A94F 
+X-CRM114-Status: GOOD (  14.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,21 +79,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 25 Feb 2022 14:16:00 +0100, Michael Riesch wrote:
-> Add the compatible for the Rockchip RK3568 variant.
+On Wed, 02 Mar 2022 17:26:12 -0600, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> Convert the rk808 bindings into yaml format. clock-output-names varies
+> in maxItems depending on whether or not the clock-cells is 0 or 1. For
+> the rk805, rk809, and rk817. This preserves behavior with the existing
+> driver handling setting the clock for these specific PMICs. When this
+> driver is corrected and the devicetrees updated this logic can be
+> removed (since the rk805, rk808, and rk817 only have one actual clock).
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > ---
->  Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml | 2 ++
->  1 file changed, 2 insertions(+)
+>  .../devicetree/bindings/mfd/rk808.txt         | 465 ------------------
+>  .../bindings/mfd/rockchip,rk805.yaml          | 219 +++++++++
+>  .../bindings/mfd/rockchip,rk808.yaml          | 257 ++++++++++
+>  .../bindings/mfd/rockchip,rk809.yaml          | 284 +++++++++++
+>  .../bindings/mfd/rockchip,rk817.yaml          | 330 +++++++++++++
+>  .../bindings/mfd/rockchip,rk818.yaml          | 282 +++++++++++
+>  6 files changed, 1372 insertions(+), 465 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/mfd/rk808.txt
+>  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk805.yaml
+>  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk808.yaml
+>  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk809.yaml
+>  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+>  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
 > 
 
-Acked-by: Rob Herring <robh@kernel.org>
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/rockchip,rk818.example.dt.yaml: pmic@1c: regulators: Unevaluated properties are not allowed ('DCDC_BOOST' was unexpected)
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mfd/rockchip,rk818.yaml
+
+doc reference errors (make refcheckdocs):
+Documentation/devicetree/bindings/pinctrl/pinctrl-rk805.txt: Documentation/devicetree/bindings/mfd/rk808.txt
+
+See https://patchwork.ozlabs.org/patch/1600127
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-rockchip mailing list
