@@ -4,51 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B4B2C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 11:54:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E96BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 11:58:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6u1BrRwSXXUg0Vi/oGpozjpRtxkf79cQ6uPzhgRIpNk=; b=Z78s0aXWcXUl7I
-	m+aToPFudz14+RZTFcW4f9eaW9epCFjAmfhO0yc7xUXiW9VbqCHpLwumY7nv8mvx1YlZryqkNaDWy
-	f93K0BI3enwSG86uFtbQhiuXI/Hr9yFIIHdHVChExV4bKBkT2zVVal3Ts860T2WhsXVaMDk/LsGb2
-	6u/WRkq7pgSxTKKFf1wzlYK61BGXtUelTlKT2ngCjYbIM7NTaQLUfpktqnf8vwETBv2JoFkXP+lne
-	eMlSm2Ef6+7Y+VcwJ6nazEUEMgWozY2dRM6d/ecjWK7eGO7fJn9CstHnJjhbamZM+y8ib1PrDsH7v
-	ZS5q9JUxBSiAKZu538Xg==;
+	List-Owner; bh=d7c3vu/NaKbFj70P3Rdtmas/udyvPYg2cHX+SILQdKA=; b=1CTWbS/0L6qYB0
+	71jaDWwX8MxpP7mgCkNsbyKXTMYjIPEDoXc2lPSf9+7R88nSRRv3XtjIkPVMrZedQNASVb/0Vfqzs
+	QTVoHis7/L4pQsqsAuls1q4nO+KOO9RuZ2SEvULI57BzOol9fUoW3AfHVgSPJcGVZhZOaEdJIjHsh
+	xklUabq2f41RAY9mKBF9S4U+nx4fL5gqPHSuVfb565D3RTp73Wq4y2z8bhNyz8GsmfCBO0c4zTID9
+	WYiQ/pTf1Smhr9ocrnIhkwAFgaFHzAzYdqEJwKZfu6EFLdx+Q7VNTv/VbFS2atsgqt0Kfd/FiVgyh
+	xqKKTfngfu0898/T5gag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPk25-006GN9-UY; Thu, 03 Mar 2022 11:54:09 +0000
+	id 1nPk5n-006HB7-4y; Thu, 03 Mar 2022 11:57:59 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPk1u-006GLL-Cx; Thu, 03 Mar 2022 11:54:00 +0000
+ id 1nPk5k-006H9t-1w
+ for linux-rockchip@lists.infradead.org; Thu, 03 Mar 2022 11:57:57 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D70C01424;
- Thu,  3 Mar 2022 03:53:54 -0800 (PST)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D5BBF1424;
+ Thu,  3 Mar 2022 03:57:54 -0800 (PST)
 Received: from [10.57.39.47] (unknown [10.57.39.47])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A9E733F70D;
- Thu,  3 Mar 2022 03:53:52 -0800 (PST)
-Message-ID: <07977a52-a492-4568-7259-7f213af0b0b0@arm.com>
-Date: Thu, 3 Mar 2022 11:53:48 +0000
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 917F93F70D;
+ Thu,  3 Mar 2022 03:57:51 -0800 (PST)
+Message-ID: <7ebbc850-a6ca-ce77-aa1b-d8c30172f752@arm.com>
+Date: Thu, 3 Mar 2022 11:57:46 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
  Thunderbird/91.6.1
-Subject: Re: [PATCH] mmc: host: dw-mmc-rockchip: fix handling invalid clock
- rates
+Subject: Re: [PATCH 1/3 v4] arm64: dts: rockchip: Remove vcc13 and vcc14 for
+ rk808
 Content-Language: en-GB
-To: Peter Geis <pgwipeout@gmail.com>, Jaehoon Chung <jh80.chung@samsung.com>, 
- Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Addy Ke <addy.ke@rock-chips.com>, Doug Anderson <dianders@chromium.org>
-Cc: linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220303015151.1711860-1-pgwipeout@gmail.com>
+To: Chris Morgan <macroalpha82@gmail.com>, devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, lee.jones@linaro.org,
+ robh+dt@kernel.org, heiko@sntech.de, strit@manjaro.org, mbrugger@suse.com,
+ arnaud.ferraris@collabora.com, knaerzche@gmail.com, zyw@rock-chips.com,
+ zhangqing@rock-chips.com, Chris Morgan <macromorgan@hotmail.com>
+References: <20220302232612.25455-1-macroalpha82@gmail.com>
+ <20220302232612.25455-2-macroalpha82@gmail.com>
 From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20220303015151.1711860-1-pgwipeout@gmail.com>
+In-Reply-To: <20220302232612.25455-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_035358_545882_0D489ADA 
-X-CRM114-Status: GOOD (  31.00  )
+X-CRM114-CacheID: sfid-20220303_035756_186064_EBE9A4DE 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,123 +68,48 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-03-03 01:51, Peter Geis wrote:
-> The Rockchip ciu clock cannot be set as low as the dw-mmc hardware
-> supports.
-
-Isn't that specific to RK3568, per the downstream fix? Certainly my 
-RK3399 has no problem if I simulate polling by plugging in an empty adapter:
-
-[499969.392530] mmc_host mmc1: Bus speed (slot 0) = 400000Hz (slot req 
-400000Hz, actual 400000HZ div = 0)
-[499969.467709] mmc_host mmc1: Bus speed (slot 0) = 300000Hz (slot req 
-300000Hz, actual 300000HZ div = 0)
-[499969.545975] mmc_host mmc1: Bus speed (slot 0) = 200000Hz (slot req 
-200000Hz, actual 200000HZ div = 0)
-[499969.629824] mmc_host mmc1: Bus speed (slot 0) = 100000Hz (slot req 
-100000Hz, actual 100000HZ div = 0)
-
-Even though every card within arm's reach of my desk does seem happy to 
-identify at 400KHz, there are apparently some that only work towards the 
-lower end of the range, so it's less than ideal to impose this 
-limitation where it isn't necessary.
-
-Robin.
-
-> This leads to a situation during card initialization where the
-> ciu clock is set lower than the clock driver can support. The
-> dw-mmc-rockchip driver spews errors when this happens.
-> For normal operation this only happens a few times during boot, but when
-> cd-broken is enabled (in cases such as the SoQuartz module) this fires
-> multiple times each poll cycle.
+On 2022-03-02 23:26, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Fix this by testing the minimum frequency the clock driver can support
-> that is within the mmc specification, then divide that by the internal
-> clock divider. Set the f_min frequency to this value, or if it fails,
-> set f_min to the downstream driver's default.
-> 
-> Fixes: f629ba2c04c9 ("mmc: dw_mmc: add support for RK3288")
-> 
-> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> The Rockchip rk808 Power Management IC does not have a vcc13 or a
+> vcc14. The schematics for at least the Pinebook Pro suggest this is
+> actually vcc1 and vcc2, and may be an artifact from the reference
+> design schematic).
+
+Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > ---
->   drivers/mmc/host/dw_mmc-rockchip.c | 31 ++++++++++++++++++++++++++----
->   1 file changed, 27 insertions(+), 4 deletions(-)
+>   arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 2 --
+>   arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi      | 2 --
+>   2 files changed, 4 deletions(-)
 > 
-> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-> index 95d0ec0f5f3a..c198590cd74a 100644
-> --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> @@ -15,7 +15,9 @@
->   #include "dw_mmc.h"
->   #include "dw_mmc-pltfm.h"
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> index c2f021a1a18f..20f71317d7ab 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> @@ -472,8 +472,6 @@ rk808: pmic@1b {
+>   		vcc10-supply = <&vcc_sysin>;
+>   		vcc11-supply = <&vcc_sysin>;
+>   		vcc12-supply = <&vcc3v3_sys>;
+> -		vcc13-supply = <&vcc_sysin>;
+> -		vcc14-supply = <&vcc_sysin>;
 >   
-> -#define RK3288_CLKGEN_DIV       2
-> +#define RK3288_CLKGEN_DIV	2
-> +#define RK3288_MIN_INIT_FREQ	375000
-> +#define MMC_MAX_INIT_FREQ	400000
+>   		regulators {
+>   			/* rk3399 center logic supply */
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> index d1aaf8e83391..0e45cc2d195b 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> @@ -310,8 +310,6 @@ rk808: pmic@1b {
+>   		vcc10-supply = <&vcc3v3_sys>;
+>   		vcc11-supply = <&vcc3v3_sys>;
+>   		vcc12-supply = <&vcc3v3_sys>;
+> -		vcc13-supply = <&vcc3v3_sys>;
+> -		vcc14-supply = <&vcc3v3_sys>;
+>   		vddio-supply = <&vcc_3v0>;
 >   
->   struct dw_mci_rockchip_priv_data {
->   	struct clk		*drv_clk;
-> @@ -27,6 +29,7 @@ struct dw_mci_rockchip_priv_data {
->   static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
->   {
->   	struct dw_mci_rockchip_priv_data *priv = host->priv;
-> +	struct mmc_host *mmc = mmc_from_priv(host);
->   	int ret;
->   	unsigned int cclkin;
->   	u32 bus_hz;
-> @@ -34,6 +37,10 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
->   	if (ios->clock == 0)
->   		return;
->   
-> +	/* the clock will fail if below the f_min rate */
-> +	if (ios->clock < mmc->f_min)
-> +		ios->clock = mmc->f_min;
-> +
->   	/*
->   	 * cclkin: source clock of mmc controller
->   	 * bus_hz: card interface clock generated by CLKGEN
-> @@ -51,7 +58,7 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
->   
->   	ret = clk_set_rate(host->ciu_clk, cclkin);
->   	if (ret)
-> -		dev_warn(host->dev, "failed to set rate %uHz\n", ios->clock);
-> +		dev_warn(host->dev, "failed to set rate %uHz err: %d\n", cclkin, ret);
->   
->   	bus_hz = clk_get_rate(host->ciu_clk) / RK3288_CLKGEN_DIV;
->   	if (bus_hz != host->bus_hz) {
-> @@ -290,13 +297,29 @@ static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
->   
->   static int dw_mci_rockchip_init(struct dw_mci *host)
->   {
-> +	struct mmc_host *mmc = mmc_from_priv(host);
-> +	int ret;
-> +
->   	/* It is slot 8 on Rockchip SoCs */
->   	host->sdio_id0 = 8;
->   
-> -	if (of_device_is_compatible(host->dev->of_node,
-> -				    "rockchip,rk3288-dw-mshc"))
-> +	if (of_device_is_compatible(host->dev->of_node, "rockchip,rk3288-dw-mshc")) {
->   		host->bus_hz /= RK3288_CLKGEN_DIV;
->   
-> +		/* clock driver will fail if the clock is less than the lowest source clock
-> +		 * divided by the internal clock divider. Test for the lowest available
-> +		 * clock and set the f_min freq to clock / clock divider. If we fail, set
-> +		 * it to the downstream hardcoded value.
-> +		 */
-> +		ret = clk_round_rate(host->ciu_clk, MMC_MAX_INIT_FREQ * RK3288_CLKGEN_DIV);
-> +		if (ret < 0) {
-> +			dev_warn(host->dev, "mmc safe rate failed: %d\n", ret);
-> +			mmc->f_min = RK3288_MIN_INIT_FREQ;
-> +		} else {
-> +			mmc->f_min = ret / RK3288_CLKGEN_DIV;
-> +		}
-> +	}
-> +
->   	return 0;
->   }
->   
+>   		regulators {
 
 _______________________________________________
 Linux-rockchip mailing list
