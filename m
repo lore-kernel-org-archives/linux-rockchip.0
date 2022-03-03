@@ -4,125 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6854C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 12:35:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF9E1C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 12:57:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=H3i6QRSJUBOuPw5iRawX0QMtHrXTyJy410NrYCaMGUA=; b=hn4cum+D266u9G
-	MZ7xzr047NkThod45WvNT6x6E19IONF69J3sC9DthCzsFHQoI2/W6ApEt5l7SJaLkSU0SaG4EDgCQ
-	iJwkJdW0PQL/+jVj38yOYjdOS/A6562G9LKdMOu8102dpACrotNfYU4MxA5dTvia/3cZBkm7GzeLo
-	B89ge67gLQ9Nc9iNje1mRyIbawhZa45oF9N7Cn2V8DNkyW1QF1n3mzb6weVvd6edMEjXLIOSfVb/u
-	efNdcZVSI6Zv6C/uhyfeK1+6J9E6iXHtLH2IKknra5ONs4uMpoCjqiJC8MK66EOwucyCKIL8zwGtX
-	SlK0CMZTcDC4DmD9Ka/Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aUNgCsp2FJJCEc6//GJ3/8LkOJqHOR5vdFrI1FqcPCo=; b=w0dP1hbwYgZHXT
+	yUCzyM5nJaYMdFDiTKvCiPMpc1kBrsjUA26qnhO7BRvn8H2YNZJG9kKi6DFU9FrKhlCWrQHHn3sSQ
+	CCJDe4owCA1vQJjNJUHwBeKkvGNwGZ8D13S2Zfwo6pDl6NRPQnD7pCBeaPbRSBG3l8lgt9PTWv1d+
+	B+nury3WJnV8nRK+l9h4eE+SV0sT2cKvHU5JyqIbnCHCCl3APxZw1k27xVF1vx9KVArcdIigN7Cyh
+	BRDTRE9F/PUHnHMYimbtSZvnTtvkJaph7Chphci3mowj6cUvlLBAuJ9w+/aAc9diT2uk/PR2oEdwX
+	UJQxWOdimal+u7yYNYWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPkfu-006MTM-Tc; Thu, 03 Mar 2022 12:35:18 +0000
-Received: from mail-hk2apc01on0708.outbound.protection.outlook.com
- ([2a01:111:f400:febc::708]
- helo=APC01-HK2-obe.outbound.protection.outlook.com)
+	id 1nPl1Y-006QxB-1E; Thu, 03 Mar 2022 12:57:40 +0000
+Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPkfX-006MPh-7l; Thu, 03 Mar 2022 12:34:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NErIOJVe+/lKqvvxx8O2xf0C4kXUNPqO6BOLuGC4y6sBufX+cK9iVrnkB83COsQ2x2DSNbvjhbIWwBfQdZKqEDbD6WSzw33OgKjfpx0LO5Hvk5fm2qGuMsWQY2ENlBe243NY8kfuxoKfuNix0a2dwWSBqeAjkyQAz04xeSInHCyEr+SdWxIUhCZWyFXeSNm3pBOtyKfFxX4pRCGCNl+7TGnS2Zr7ygpljGs36BW5CUXKCXPbqI8OBoDQMD0f/FK7842Umvw3p2zo/7OgahdBbnSiOlTdufgpHMHlc7RCsRbKl7DVbVdQllPsB+2PQbWVIl+4TvsMmO0+fu2PGvvqSg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=SKHxZrw0/Xdh4wPURR7swiowURDa6GcoHSCZsBngSck=;
- b=ii6usSkjBlB4YoCcp+KihdDFH6uWyKVW3dSAyF1Ip+yfzojrCC5iscLUtg5NyA2NvoDtaV7D/aJaSTR9UGy4hAq8T/2PU0LaflqIkPkPm1CCC5I0tuaGReEOBfqfR9d/wFBVq5TlizZPUCmqQEFHc5GlX35bdWY3DppCtjGTCS7J4XKpWub5lqTPfTS+N3eOm6Y32ShbQ2PRlSNFQ4+Z9F+L2VFGs0rZKo1JGY/C/wB2FqF3xbhOSKcfRzkSX4EyaP/3ZA1C8Ipk4IMZslyaI3rLbOhxVM8Q9vCay/8StriuaAfnWjO1C1zrHByTCFrMHN4QGfQrMANL24npRryxkw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
- dkim=pass header.d=vivo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo0.onmicrosoft.com; 
- s=selector2-vivo0-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SKHxZrw0/Xdh4wPURR7swiowURDa6GcoHSCZsBngSck=;
- b=Rfo1lR/krfXkRUbSz0LXAV91CVZFORfHnKWDfV3HdQzrT9KE2DE/8nGnrymg6jbeRrTJdizuIpi55judCOyST52WbVugsESKbZaotPblOTvhYJ4NeUS4NDXpXGDwjEFIAbbiR4jy6MeXYsQQUt2oHqBd3LdcoTX4+N3HdJnpRXQ=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=vivo.com;
-Received: from TYZPR06MB4173.apcprd06.prod.outlook.com (2603:1096:400:26::14)
- by HK0PR06MB3700.apcprd06.prod.outlook.com (2603:1096:203:b3::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5038.14; Thu, 3 Mar
- 2022 12:34:45 +0000
-Received: from TYZPR06MB4173.apcprd06.prod.outlook.com
- ([fe80::30ce:609e:c8e8:8a06]) by TYZPR06MB4173.apcprd06.prod.outlook.com
- ([fe80::30ce:609e:c8e8:8a06%4]) with mapi id 15.20.5038.014; Thu, 3 Mar 2022
- 12:34:44 +0000
-From: Yihao Han <hanyihao@vivo.com>
-To: Miquel Raynal <miquel.raynal@bootlin.com>,
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
- Heiko Stuebner <heiko@sntech.de>, Zou Wei <zou_wei@huawei.com>,
- Yihao Han <hanyihao@vivo.com>, linux-mtd@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Cc: kernel@vivo.com
-Subject: [PATCH] mtd: rawnand: rockchip: fix platform_get_irq.cocci warning
-Date: Thu,  3 Mar 2022 04:34:27 -0800
-Message-Id: <20220303123431.3170-1-hanyihao@vivo.com>
-X-Mailer: git-send-email 2.17.1
-X-ClientProxiedBy: HK2PR02CA0183.apcprd02.prod.outlook.com
- (2603:1096:201:21::19) To TYZPR06MB4173.apcprd06.prod.outlook.com
- (2603:1096:400:26::14)
+ id 1nPl1G-006QsZ-KI; Thu, 03 Mar 2022 12:57:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=metanate.com; s=stronger; h=In-Reply-To:Content-Type:References:Message-ID:
+ Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description; bh=Ui7Wx3HT5wFF2lD9OqwpaMhrO7qy33DzT68PqCTpFeA=; b=t2ko4
+ NFlATGyheALC9w+H68/z3RvSSOEB6BrmYEzUF5r8KqMq1m06wmG4/48fY/k1SirfLL8ebbuWySbK+
+ yAIBOZP7CNmNQwuVEQFAyP6sY3UK1LSpXV+t+8dZS/gAeJjam7Eu7BQ1fmtksh1ecMYZM7QJCHYtn
+ kBW0GuvUjAebv5yS+bC5ZA0izcBIu8XwZBDNE8aadZPiBBeTFnvKy1vu7Nb0iW8b60M7xMAX9fUIL
+ kVAxrsn/p2QVIA4oUW3Ety5Agn002vZfP/aTWFOu8FDRIHiBKgqt4I8XPykJQCQ8JszenDrhULJNU
+ z9o0dmnVkLuKL3W7mSH/OAvSeAIsQ==;
+Received: from [81.174.171.191] (helo=donbot)
+ by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.93) (envelope-from <john@metanate.com>)
+ id 1nPl0y-0004oa-Jj; Thu, 03 Mar 2022 12:57:04 +0000
+Date: Thu, 3 Mar 2022 12:57:03 +0000
+From: John Keeping <john@metanate.com>
+To: Corentin Labbe <clabbe@baylibre.com>
+Cc: heiko@sntech.de, herbert@gondor.apana.org.au, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 15/18] crypto: rockchip: introduce PM
+Message-ID: <YiC7Hxm0epcAcHen@donbot>
+References: <20220302211113.4003816-1-clabbe@baylibre.com>
+ <20220302211113.4003816-16-clabbe@baylibre.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 23e0a189-efbf-4376-2e5e-08d9fd12323a
-X-MS-TrafficTypeDiagnostic: HK0PR06MB3700:EE_
-X-Microsoft-Antispam-PRVS: <HK0PR06MB3700D51C125B89D2905E2F1EA2049@HK0PR06MB3700.apcprd06.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: LMszuqkT6OuV6uCeTYSL+9gsMQJ/8sjRNdea+3gtu1mslQjgJS5AWQ0vUmqqOOR81qkT8rybPRyIdGS1PreSirfD4Y/WteZv8pQ0r53/hr7NA6avZ0SRy9FywNAW8Q1eCft9l0zaOu7+dSABcnzDbVL44toMzYM9xjf0wsLfTNH7eqHQqTwK7TlKqMGdb0+XKZRTv9SBGX6FW2GfO7SfKfInZaGYMshtWKTMbFAjrN4m3ff7/adTR4zKIrbds/AcqNYaE2foNu4fMHW9cieVQ2EiIo/vDhezpY+eJOISn0SJDLj7bOUkazCbXJQmpkonzyHkou3nuPZP+D1QIwF43kcf+VgLOP4CtVl9poDOwUOtlOy3U/MAFeJJ7iAAmTwx8MXDqmh8LYDbj9FU7ltw9EDO9+4RDefp6Ek1kaDiTIKjL2xyNbMiZ1ybAmhUd1jxMEkfF4rSV6CS3q9cRexxZ5IbqciobQ0K3WYne7f+fNEMUbVicDRGcb2uVxCo+IXFuyhVW15lXc7lUnj4MfwP535krdxsdRPBx9JjzPXMs0qn8BQyigxOrXWeWyUcFmE6cAKoMcSHZkOZeweBE5tPrh5r6TKEFPRVPDURtUxMyejl32hDKUR0ZULfFPAmbQ3/jL2gabjAtka74z7/fFGluaf/+Rsfkw/pgVgdU7lWx9sB8lr6q6yFDSEaovBgl5MnBa41/AeRDisHuujRj+lzjBCbtmAj0onBqxwG7VxC7AQ=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYZPR06MB4173.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(4636009)(366004)(86362001)(83380400001)(921005)(38350700002)(38100700002)(110136005)(316002)(6486002)(6666004)(36756003)(6506007)(186003)(66946007)(107886003)(26005)(66556008)(2906002)(66476007)(8676002)(52116002)(4326008)(508600001)(4744005)(2616005)(1076003)(5660300002)(8936002)(6512007);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?c3sQKkyt8HBK54zg8Ln4xalwR2lYXmh4KhHvfE2ijaX5S+tSuoqEBiaoTMV3?=
- =?us-ascii?Q?N2lnPNpL1VYI2Ucd6QxdGsrhe1hOhu580ZmPVmGfV2OVIr3WiS1acMCMcSuY?=
- =?us-ascii?Q?wmFr9r6xq+PeypaTAParxI5B23BxfB6vXixddGK1xlhwnuxWAGJvw87Ojvkl?=
- =?us-ascii?Q?lIUb4We64xRXAbO6GqtIUH668jI+sCEE06k7l3O9fHYVZORVeOvNkJLGaUAP?=
- =?us-ascii?Q?xqdAfbkm9Q42zr+9PxLGjf+l4kCwaNyUke7I3aDldFblkFpcUdrFaM9ScFCm?=
- =?us-ascii?Q?udU+mlJyoib81wSL+DCt0WdUyXT4V836f8aE54f76A6J2rDG3QXLygDClGLg?=
- =?us-ascii?Q?bruTt4bJTK6xxmh15kJDSU1wzWAzpJwhUG3tTRMBskjsuWfmg5qOfQqA5ujZ?=
- =?us-ascii?Q?9ox1ZYWOjOfmDmt5EfZywi6q1B/+sljF44lRBeRNPv0fix97bhTA5nwqadGD?=
- =?us-ascii?Q?LcWUDSmmQ3MXugFtdApWJ+aW1P8afwtd/Z4DKpJ6AoYlvgIOm9mhrGl7m/r7?=
- =?us-ascii?Q?r2bw9W6KovnAGja0LboX3PaDD+iiok1pF0zZswERaUa0ejldif68yL6kXDUO?=
- =?us-ascii?Q?abCXdCNnukRkoEkNLP8oN+cn1YwX0AqW8Uw+Ir3egn5QA1QZf5Hl0TeNk5XV?=
- =?us-ascii?Q?QPnmkdYZ4vlUdZzDktexYTO6RXsv2lqiKbIFgqFeoUbOarki0ZyetyQQRUVx?=
- =?us-ascii?Q?nkUy4Hp8J8AEM3zCam+GZYzcczlpf7r1Z3Mb8ATaDTyPYcQf4UKx3Zhm/DO2?=
- =?us-ascii?Q?KPtzTWxn5WylKnUY1yunGadSVgpREx9zYQcJL+peQzVeWZ+MjgePtqOM93E4?=
- =?us-ascii?Q?J2QFbVQgIUYE5CpoZwepY+bc6wMHtoIYVJQr2+UpYRtz//E7o9GEi2WkiHIf?=
- =?us-ascii?Q?b1NljLKyUOCPro3Ze3Al139a1bRgZTK4zJi63IZ7TlzQY7wR2vg46s2lbiXB?=
- =?us-ascii?Q?EirjqhOSU4zfbvBZuy1TGMkpno/ExaCoEIwMc+S5VMXtOF328nJH01zpXjHc?=
- =?us-ascii?Q?OWpPoQ1hFm5Pq8143d51oFztQXml8CzJlh1So5HeF1ahqBXidqgxDGvuggo+?=
- =?us-ascii?Q?sIzHP3uOsZ3jX8nSStngxBjrECPTf3FWCHp6vT0LPXgv04+SwvuQ4iP9OEdb?=
- =?us-ascii?Q?Lkx6/8Uzkxds+IDDh26XQltu8hKakLlLnmXpXb4GuwmG2nuuyYNcTLDsf5Hf?=
- =?us-ascii?Q?KaR2BsurbDZl1NkS49Xo+DQyEb0nbSObUK8CpZrxfVwUMacRwnPKeRtXnJGJ?=
- =?us-ascii?Q?2NfZN+JhaC3q16XLxP7Zqpu9jUztDXbHeT5jkS8v+eoIYp0KLSCFoF+jGebg?=
- =?us-ascii?Q?S6YbWBzfGpgNTDDlA/TQwuDMs/lmgLHZhr88iA4zNwHjviaUQq14RrJFZQXe?=
- =?us-ascii?Q?UlJ/qITfESOZ5vXcQqXAmU6XYZj43QiYhv+FHqAfuuWMs0JF38ZjgDp9GEN6?=
- =?us-ascii?Q?ebmP1+Xjh8OsaV7TLW2wnLB7n1/8AjYdDs8gHbLBzo+uMganFRDDb+K7Prvb?=
- =?us-ascii?Q?n3XVOtsHLmDx62fupDp4uwV1cpPA4BYClbzf4kgYUIQEwsCy/bcv32HxyVmA?=
- =?us-ascii?Q?inou5tjL/wC5+YYpHSBD553W7a7dxB89f0/l+7qdjwWoUjFeowgcvr5kAOIF?=
- =?us-ascii?Q?5VIvdhEUWCHT2/drp5WEoqQ=3D?=
-X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 23e0a189-efbf-4376-2e5e-08d9fd12323a
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4173.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Mar 2022 12:34:44.5422 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: PbdO1NpzGaKyaBbEkGZs7shg4N4rwlFQ2fPawoy9NiExe/T25zpZZkHuCK4E/XCPqORyMPTZAvMVLEIskKb8xg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: HK0PR06MB3700
+Content-Disposition: inline
+In-Reply-To: <20220302211113.4003816-16-clabbe@baylibre.com>
+X-Authenticated: YES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_043455_312568_5BF6B98C 
-X-CRM114-Status: UNSURE (   8.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220303_045722_859383_648A7822 
+X-CRM114-Status: GOOD (  30.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,31 +72,217 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove dev_err() messages after platform_get_irq*() failures.
-platform_get_irq() already prints an error.
+On Wed, Mar 02, 2022 at 09:11:10PM +0000, Corentin Labbe wrote:
+> Add runtime PM support for rockchip crypto.
+> 
+> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> ---
+>  drivers/crypto/Kconfig                        |  1 +
+>  drivers/crypto/rockchip/rk3288_crypto.c       | 50 ++++++++++++++++++-
+>  drivers/crypto/rockchip/rk3288_crypto.h       |  1 +
+>  drivers/crypto/rockchip/rk3288_crypto_ahash.c | 11 ++++
+>  .../crypto/rockchip/rk3288_crypto_skcipher.c  | 10 ++++
+>  5 files changed, 71 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/crypto/Kconfig b/drivers/crypto/Kconfig
+> index 04c8e332c5a1..685631a5cbea 100644
+> --- a/drivers/crypto/Kconfig
+> +++ b/drivers/crypto/Kconfig
+> @@ -784,6 +784,7 @@ config CRYPTO_DEV_IMGTEC_HASH
+>  config CRYPTO_DEV_ROCKCHIP
+>  	tristate "Rockchip's Cryptographic Engine driver"
+>  	depends on OF && ARCH_ROCKCHIP
+> +	depends on PM
 
-Generated by: scripts/coccinelle/api/platform_get_irq.cocci
+Does this need to depend on PM?  If you enable the clock in _probe then
+use pm_runtime_put_autosuspend() the no-op helpers when !PM will mean
+this works whether PM is enabled or not.
 
-Signed-off-by: Yihao Han <hanyihao@vivo.com>
----
- drivers/mtd/nand/raw/rockchip-nand-controller.c | 1 -
- 1 file changed, 1 deletion(-)
+>  	select CRYPTO_AES
+>  	select CRYPTO_ENGINE
+>  	select CRYPTO_LIB_DES
+> diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
+> index cd0755731cf7..ba56f8ff97c3 100644
+> --- a/drivers/crypto/rockchip/rk3288_crypto.c
+> +++ b/drivers/crypto/rockchip/rk3288_crypto.c
+> @@ -57,6 +57,48 @@ static void rk_crypto_disable_clk(struct rk_crypto_info *dev)
+>  	clk_disable_unprepare(dev->sclk);
+>  }
+>  
+> +/*
+> + * Power management strategy: The device is suspended unless a TFM exists for
+> + * one of the algorithms proposed by this driver.
+> + */
+> +static int rk_crypto_pm_suspend(struct device *dev)
+> +{
+> +	struct rk_crypto_info *rkdev = dev_get_drvdata(dev);
+> +
+> +	rk_crypto_disable_clk(rkdev);
+> +	return 0;
+> +}
+> +
+> +static int rk_crypto_pm_resume(struct device *dev)
+> +{
+> +	struct rk_crypto_info *rkdev = dev_get_drvdata(dev);
+> +
+> +	return rk_crypto_enable_clk(rkdev);
+> +}
+> +
+> +static const struct dev_pm_ops rk_crypto_pm_ops = {
+> +	SET_RUNTIME_PM_OPS(rk_crypto_pm_suspend, rk_crypto_pm_resume, NULL)
+> +};
+> +
+> +static int rk_crypto_pm_init(struct rk_crypto_info *rkdev)
+> +{
+> +	int err;
+> +
+> +	pm_runtime_use_autosuspend(rkdev->dev);
+> +	pm_runtime_set_autosuspend_delay(rkdev->dev, 2000);
+> +
+> +	err = pm_runtime_set_suspended(rkdev->dev);
+> +	if (err)
+> +		return err;
+> +	pm_runtime_enable(rkdev->dev);
+> +	return err;
+> +}
+> +
+> +static void rk_crypto_pm_exit(struct rk_crypto_info *rkdev)
+> +{
+> +	pm_runtime_disable(rkdev->dev);
+> +}
+> +
+>  static irqreturn_t rk_crypto_irq_handle(int irq, void *dev_id)
+>  {
+>  	struct rk_crypto_info *dev  = platform_get_drvdata(dev_id);
+> @@ -259,7 +301,9 @@ static int rk_crypto_probe(struct platform_device *pdev)
+>  	crypto_engine_start(crypto_info->engine);
+>  	init_completion(&crypto_info->complete);
+>  
+> -	rk_crypto_enable_clk(crypto_info);
+> +	err = rk_crypto_pm_init(crypto_info);
+> +	if (err)
+> +		goto err_crypto;
+>  
+>  	err = rk_crypto_register(crypto_info);
+>  	if (err) {
+> @@ -280,6 +324,7 @@ static int rk_crypto_probe(struct platform_device *pdev)
+>  	return 0;
+>  
+>  err_register_alg:
+> +	rk_crypto_pm_exit(crypto_info);
+>  err_crypto:
+>  	dev_err(dev, "Crypto Accelerator not successfully registered\n");
+>  	return err;
+> @@ -293,7 +338,7 @@ static int rk_crypto_remove(struct platform_device *pdev)
+>  	debugfs_remove_recursive(crypto_tmp->dbgfs_dir);
+>  #endif
+>  	rk_crypto_unregister();
+> -	rk_crypto_disable_clk(crypto_tmp);
+> +	rk_crypto_pm_exit(crypto_tmp);
+>  	return 0;
+>  }
+>  
+> @@ -302,6 +347,7 @@ static struct platform_driver crypto_driver = {
+>  	.remove		= rk_crypto_remove,
+>  	.driver		= {
+>  		.name	= "rk3288-crypto",
+> +		.pm		= &rk_crypto_pm_ops,
+>  		.of_match_table	= crypto_of_id_table,
+>  	},
+>  };
+> diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
+> index e2a6d735f2e2..06b2d9f52a80 100644
+> --- a/drivers/crypto/rockchip/rk3288_crypto.h
+> +++ b/drivers/crypto/rockchip/rk3288_crypto.h
+> @@ -9,6 +9,7 @@
+>  #include <linux/interrupt.h>
+>  #include <linux/debugfs.h>
+>  #include <linux/delay.h>
+> +#include <linux/pm_runtime.h>
+>  #include <linux/scatterlist.h>
+>  #include <crypto/engine.h>
+>  #include <crypto/internal/hash.h>
+> diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+> index 8856c6226be6..a41e21c7141b 100644
+> --- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+> +++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+> @@ -328,6 +328,7 @@ static int rk_cra_hash_init(struct crypto_tfm *tfm)
+>  	struct ahash_alg *alg = __crypto_ahash_alg(tfm->__crt_alg);
+>  
+>  	const char *alg_name = crypto_tfm_alg_name(tfm);
+> +	int err;
+>  
+>  	algt = container_of(alg, struct rk_crypto_tmp, alg.hash);
+>  
+> @@ -349,7 +350,16 @@ static int rk_cra_hash_init(struct crypto_tfm *tfm)
+>  	tctx->enginectx.op.prepare_request = rk_hash_prepare;
+>  	tctx->enginectx.op.unprepare_request = rk_hash_unprepare;
+>  
+> +	err = pm_runtime_get_sync(tctx->dev->dev);
 
-diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-index b5405bc7ca3a..cbaa4f1c83da 100644
---- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
-+++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-@@ -1403,7 +1403,6 @@ static int rk_nfc_probe(struct platform_device *pdev)
- 
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq < 0) {
--		dev_err(dev, "no NFC irq resource\n");
- 		ret = -EINVAL;
- 		goto clk_disable;
- 	}
--- 
-2.17.1
+pm_runtime_resume_and_get() ?  The error handling is nicer with that.
 
+> +	if (err < 0)
+> +		goto error_pm;
+> +
+>  	return 0;
+> +error_pm:
+> +	pm_runtime_put_noidle(tctx->dev->dev);
+> +	crypto_free_ahash(tctx->fallback_tfm);
+> +
+> +	return err;
+>  }
+>  
+>  static void rk_cra_hash_exit(struct crypto_tfm *tfm)
+> @@ -357,6 +367,7 @@ static void rk_cra_hash_exit(struct crypto_tfm *tfm)
+>  	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(tfm);
+>  
+>  	crypto_free_ahash(tctx->fallback_tfm);
+> +	pm_runtime_put_sync_suspend(tctx->dev->dev);
+
+Why use sync_suspend here?  Could this be pm_runtime_put_autosuspend()?
+
+>  }
+>  
+>  struct rk_crypto_tmp rk_ahash_sha1 = {
+> diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> index a8cfb520eaf8..55efda6ea3e7 100644
+> --- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> +++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> @@ -458,6 +458,7 @@ static int rk_ablk_init_tfm(struct crypto_skcipher *tfm)
+>  	struct skcipher_alg *alg = crypto_skcipher_alg(tfm);
+>  	const char *name = crypto_tfm_alg_name(&tfm->base);
+>  	struct rk_crypto_tmp *algt;
+> +	int err;
+>  
+>  	algt = container_of(alg, struct rk_crypto_tmp, alg.skcipher);
+>  
+> @@ -475,7 +476,15 @@ static int rk_ablk_init_tfm(struct crypto_skcipher *tfm)
+>  
+>  	ctx->enginectx.op.do_one_request = rk_cipher_run;
+>  
+> +	err = pm_runtime_get_sync(ctx->dev->dev);
+
+Another place for pm_runtime_resume_and_get() ?
+
+> +	if (err < 0)
+> +		goto error_pm;
+> +
+>  	return 0;
+> +error_pm:
+> +	pm_runtime_put_noidle(ctx->dev->dev);
+> +	crypto_free_skcipher(ctx->fallback_tfm);
+> +	return err;
+>  }
+>  
+>  static void rk_ablk_exit_tfm(struct crypto_skcipher *tfm)
+> @@ -484,6 +493,7 @@ static void rk_ablk_exit_tfm(struct crypto_skcipher *tfm)
+>  
+>  	memzero_explicit(ctx->key, ctx->keylen);
+>  	crypto_free_skcipher(ctx->fallback_tfm);
+> +	pm_runtime_put_sync_suspend(ctx->dev->dev);
+
+Again, can this be pm_runtime_put_autosuspend() ?
 
 _______________________________________________
 Linux-rockchip mailing list
