@@ -4,88 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C504C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 06:32:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C812C433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 06:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jj4QOK5QLXw3bKicAOJC2zukXuVHQkndazLU+fcrPho=; b=KUC7ucmWi6OiUY
-	t19Zi71yBxFQem1rl98n0bf8SQqfqv8z31S18zGGv4/1SBppo8/VHzKnZ2W6vHHsvdE/Upm+626cm
-	dbCGESEUzdk7JAl0fB/junypacgNQgqqe6lKHWXKB6BY/hArRGdYoYvnZXy6cCfTd3IWk+yJ6cTpj
-	YXQoQZlBtfQlS+1Ln5zgF6Ldw94Y9zEEP6S64GZwhYlMVcDPElBFyZOj2oenDzxqZv5gOJoK5GWPR
-	7uD8x9tAPWluIsh1lkpM+PjOio58JlfhmDCs5LnPIp67W35mD8OXR9Ot1ZHBvlgaBqs86iu+nd8GJ
-	pSAit75M0H+fp5TWG3eQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FX1D1OfsCL+ZxJ8gpd6Lt/woJ5kUAVOGRTR/Qh8Bii8=; b=F10D/fWyYtq3yc1Y+c3OH7l2vb
+	BAJ5FPyJ+J//0Iq16/56eEJO+cQDOUFNMPi3cYvVS6RGPBwef5wVXK7xZVG4ne+EfINfJRMTzR/0U
+	ZYAgLFq/eJ4q+daiGJclxTL1XQnycfeP8YTpmaTn9Z3j4fDdWiCh3Eke1+KaNvUygVLfCTsDHnCBc
+	3izAeQCIe5kJsSfsv1y9OHHdK+wB0KiI+dNGSqgKCoGI9xEVuc6WDW/mXySdD00wk+PO8ViE3OXEh
+	CekTx6e2mC2wY+OGkgKCaYSovr8bPmqLTdXJGmzlphSdIKyZgvOgeDRXpSW/EetmBRQ3lTaJx4FPz
+	J+gpaNcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPf0n-005Meu-Sn; Thu, 03 Mar 2022 06:32:29 +0000
-Received: from out2-smtp.messagingengine.com ([66.111.4.26])
+	id 1nPfAA-005Oz1-Cg; Thu, 03 Mar 2022 06:42:10 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPf0i-005MZh-GF
- for linux-rockchip@lists.infradead.org; Thu, 03 Mar 2022 06:32:27 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.nyi.internal (Postfix) with ESMTP id ED2535C025F;
- Thu,  3 Mar 2022 01:32:20 -0500 (EST)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute2.internal (MEProxy); Thu, 03 Mar 2022 01:32:20 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
- cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to; s=fm2; bh=DzP8bhMv1vYdzPTM7+6y2C0Qkp9UzIqDWzL10S
- elGko=; b=TFLrjAMq6Lx+gO4zf7D2OB0/d+iWbKEcSJ+91AEZgleKSdPqtbjyxA
- NXWxEgONzwumPC18cDa7AXhEKWQqJEYsxd3Pur/iyKDJw69ZYeYpfnbEBL+9hOuk
- n7DUJkEKiOzWbfUNCKjXdNDZNGzEsYQRHzSMNHTjKWLsD0wPU+9WcO5pc1Ap+mCc
- 3JFX6sRdpc3kn0IQIluZbgKNLYArPXyoRndU7zO8o1uFem68D4rnDeMmYpsyyS6B
- RBhDF41gEuT9QCe2Afdh8R0XJDUKIZolhTwE7DUrsOvsZNqqlggFcdEDIiOO2deG
- oE+L/j+8NWOK6WdrIzTiROMj374bRrNA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; bh=DzP8bhMv1vYdzPTM7
- +6y2C0Qkp9UzIqDWzL10SelGko=; b=Jqhwda+GsJV9hs89ochV2KE1WOyIEizdc
- lQYk7Go9M4MgqSinpPqdmJiYUGrlEwK0PWwS2zW186xkvOOJwsp+OwOKX1grjA8r
- 9T4/xMrc1rXtAPzZhyteRX6skXO41SuNFoM6wCft5p/A5I/PcorhJH/KrecnJpB5
- fRuzYokzNg3RllC9ULcaurMa+LSrtrdjmlc8E+rBRFxS58pbp+RlK7CEUCNRs5mk
- PzXUjKUUY3sqKE77Q/+uh3+PYQbUsh0kU7ZW5EaHs/QE9Ic+zVP0Mgo989V+Hjl5
- jMSzfTN0qSFU+jcCpxDtBhQpqj5E/jkQ0BBPCnwgxyow721RUI5vg==
-X-ME-Sender: <xms:9GAgYkuaghEqyrlXbR1xtEV66qhgd3wgYQCCIdU_lP1cQfexeYp4tg>
- <xme:9GAgYhcwVVqcGIFKXWvMbFsFMTUN-CWXEAgvKneBsa9_CTUlAABLPe4_nba3Gm5iK
- oT412zh5TRIpmW1Qes>
-X-ME-Received: <xmr:9GAgYvx7Dj4dWpU3YtwdKXTbXdbTK0icxoIkaE45QBHRoH2VK2N9fUkba0M8IF8lU0IOxC5znI2p9t-vMufIqSbI>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddruddthedgleejucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvffukfhfgggtuggjsehttdertddttdejnecuhfhrohhmpeffrghfnhgr
- ucfjihhrshgthhhfvghlugcuoegurghfnhgrsehfrghsthhmrghilhdrtghomheqnecugg
- ftrfgrthhtvghrnhepffelvddujefgieetvdelveetudeukeektdejvdegvdfgudelteff
- ueejvdevkeeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrh
- homhepuggrfhhnrgesfhgrshhtmhgrihhlrdgtohhm
-X-ME-Proxy: <xmx:9GAgYnOewoh7UWqbwhN5TD0bo7jc_dtKDtw7YfrlmDCyerH41E8_FA>
- <xmx:9GAgYk-NgB3aOrG3mLCRQ04VxDCId9g50oz0EDV2XZsJ7firhujnVg>
- <xmx:9GAgYvXAa1ZV1ii4mBkiwHJ3NHbIBavUeiGOQxPqTjYuGDPE8iE1Pg>
- <xmx:9GAgYobqpLyXKh224xW8JNjtpzkDAdN2SfexUUuCZ6S0KORIdahImA>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 3 Mar 2022 01:32:18 -0500 (EST)
-Date: Thu, 3 Mar 2022 08:32:12 +0200
-From: Dafna Hirschfeld <dafna@fastmail.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- Paul Elder <paul.elder@ideasonboard.com>,
- Tomasz Figa <tfiga@google.com>, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v1.1 10/16] media: rkisp1: resizer: Simplify register
- access
-Message-ID: <20220303063212.itpk232kjzfy3awo@guri>
-References: <20220227160116.18556-11-laurent.pinchart@ideasonboard.com>
- <20220227161047.12424-1-laurent.pinchart@ideasonboard.com>
+ id 1nPfA7-005Oy0-0Q
+ for linux-rockchip@lists.infradead.org; Thu, 03 Mar 2022 06:42:08 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1nPf9i-0000cS-G5; Thu, 03 Mar 2022 07:41:42 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+ by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1nPf9a-002MQZ-Jb; Thu, 03 Mar 2022 07:41:33 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1nPf9Z-006eej-4Z; Thu, 03 Mar 2022 07:41:33 +0100
+Date: Thu, 3 Mar 2022 07:41:30 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Cc: Thierry Reding <thierry.reding@gmail.com>,
+ Lee Jones <lee.jones@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org,
+ Vijayakannan Ayyathurai <vijayakannan.ayyathurai@intel.com>,
+ Sagar Kadam <sagar.kadam@sifive.com>,
+ Nobuhiro Iwamatsu <nobuhiro1.iwamatsu@toshiba.co.jp>,
+ Fabio Estevam <festevam@gmail.com>, linux-riscv@lists.infradead.org,
+ Vignesh R <vigneshr@ti.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Rahul Tanwar <rtanwar@maxlinear.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>,
+ bcm-kernel-feedback-list@broadcom.com,
+ NXP Linux Team <linux-imx@nxp.com>, Jeff LaBundy <jeff@labundy.com>,
+ linux-sunxi@lists.linux.dev, linux-pwm@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Maxime Ripard <mripard@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Paul Walmsley <paul.walmsley@sifive.com>,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ linux-arm-kernel@lists.infradead.org,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ linux-kernel@vger.kernel.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Shawn Guo <shawnguo@kernel.org>
+Subject: Re: [PATCH v2 00/15] pwm: dt-bindings: Include generic pwm schema
+Message-ID: <20220303064130.lzvptbq3hpny74ke@pengutronix.de>
+References: <20220214212154.8853-1-krzysztof.kozlowski@canonical.com>
+ <211b3d35-1d8d-b71c-996a-b185324815f7@canonical.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220227161047.12424-1-laurent.pinchart@ideasonboard.com>
+In-Reply-To: <211b3d35-1d8d-b71c-996a-b185324815f7@canonical.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_223224_830349_0DDFD8FE 
-X-CRM114-Status: GOOD (  19.28  )
+X-CRM114-CacheID: sfid-20220302_224207_057421_561221AE 
+X-CRM114-Status: GOOD (  15.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,413 +89,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4556439536536810592=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 27.02.2022 18:10, Laurent Pinchart wrote:
-> The registers for the mainpath and selfpath resizers are located at the
-> same offset from the instance-specific base. Use this to simplify
-> register access, removing the need to store per-register offsets in the
-> rkisp1_rsz_config structure.
-> 
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> ---
-> Changes since v1:
-> 
-> - Fix order of arguments to write function
-> ---
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |   2 +
->  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  67 +++-----
->  .../platform/rockchip/rkisp1/rkisp1-resizer.c | 161 ++++++------------
->  3 files changed, 75 insertions(+), 155 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index d8fa3f1a5a85..64ad7452eb6b 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> @@ -313,6 +313,7 @@ struct rkisp1_params {
->   * struct rkisp1_resizer - Resizer subdev
->   *
->   * @sd:	       v4l2_subdev variable
-> + * @regs_base: base register address offset
->   * @id:	       id of the resizer, one of RKISP1_SELFPATH, RKISP1_MAINPATH
->   * @rkisp1:    pointer to the rkisp1 device
->   * @pads:      media pads
-> @@ -323,6 +324,7 @@ struct rkisp1_params {
->   */
->  struct rkisp1_resizer {
->  	struct v4l2_subdev sd;
-> +	u32 regs_base;
->  	enum rkisp1_stream_id id;
->  	struct rkisp1_device *rkisp1;
->  	struct media_pad pads[RKISP1_RSZ_PAD_MAX];
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> index 4e2b73227e61..083d92ada73f 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> @@ -905,52 +905,29 @@
->  #define RKISP1_CIF_DUAL_CROP_S_V_SIZE_SHD	(RKISP1_CIF_DUAL_CROP_BASE + 0x00000040)
->  
->  #define RKISP1_CIF_MRSZ_BASE			0x00000C00
-> -#define RKISP1_CIF_MRSZ_CTRL			(RKISP1_CIF_MRSZ_BASE + 0x00000000)
-> -#define RKISP1_CIF_MRSZ_SCALE_HY		(RKISP1_CIF_MRSZ_BASE + 0x00000004)
-> -#define RKISP1_CIF_MRSZ_SCALE_HCB		(RKISP1_CIF_MRSZ_BASE + 0x00000008)
-> -#define RKISP1_CIF_MRSZ_SCALE_HCR		(RKISP1_CIF_MRSZ_BASE + 0x0000000C)
-> -#define RKISP1_CIF_MRSZ_SCALE_VY		(RKISP1_CIF_MRSZ_BASE + 0x00000010)
-> -#define RKISP1_CIF_MRSZ_SCALE_VC		(RKISP1_CIF_MRSZ_BASE + 0x00000014)
-> -#define RKISP1_CIF_MRSZ_PHASE_HY		(RKISP1_CIF_MRSZ_BASE + 0x00000018)
-> -#define RKISP1_CIF_MRSZ_PHASE_HC		(RKISP1_CIF_MRSZ_BASE + 0x0000001C)
-> -#define RKISP1_CIF_MRSZ_PHASE_VY		(RKISP1_CIF_MRSZ_BASE + 0x00000020)
-> -#define RKISP1_CIF_MRSZ_PHASE_VC		(RKISP1_CIF_MRSZ_BASE + 0x00000024)
-> -#define RKISP1_CIF_MRSZ_SCALE_LUT_ADDR		(RKISP1_CIF_MRSZ_BASE + 0x00000028)
-> -#define RKISP1_CIF_MRSZ_SCALE_LUT		(RKISP1_CIF_MRSZ_BASE + 0x0000002C)
-> -#define RKISP1_CIF_MRSZ_CTRL_SHD		(RKISP1_CIF_MRSZ_BASE + 0x00000030)
-> -#define RKISP1_CIF_MRSZ_SCALE_HY_SHD		(RKISP1_CIF_MRSZ_BASE + 0x00000034)
-> -#define RKISP1_CIF_MRSZ_SCALE_HCB_SHD		(RKISP1_CIF_MRSZ_BASE + 0x00000038)
-> -#define RKISP1_CIF_MRSZ_SCALE_HCR_SHD		(RKISP1_CIF_MRSZ_BASE + 0x0000003C)
-> -#define RKISP1_CIF_MRSZ_SCALE_VY_SHD		(RKISP1_CIF_MRSZ_BASE + 0x00000040)
-> -#define RKISP1_CIF_MRSZ_SCALE_VC_SHD		(RKISP1_CIF_MRSZ_BASE + 0x00000044)
-> -#define RKISP1_CIF_MRSZ_PHASE_HY_SHD		(RKISP1_CIF_MRSZ_BASE + 0x00000048)
-> -#define RKISP1_CIF_MRSZ_PHASE_HC_SHD		(RKISP1_CIF_MRSZ_BASE + 0x0000004C)
-> -#define RKISP1_CIF_MRSZ_PHASE_VY_SHD		(RKISP1_CIF_MRSZ_BASE + 0x00000050)
-> -#define RKISP1_CIF_MRSZ_PHASE_VC_SHD		(RKISP1_CIF_MRSZ_BASE + 0x00000054)
-> -
->  #define RKISP1_CIF_SRSZ_BASE			0x00001000
-> -#define RKISP1_CIF_SRSZ_CTRL			(RKISP1_CIF_SRSZ_BASE + 0x00000000)
-> -#define RKISP1_CIF_SRSZ_SCALE_HY		(RKISP1_CIF_SRSZ_BASE + 0x00000004)
-> -#define RKISP1_CIF_SRSZ_SCALE_HCB		(RKISP1_CIF_SRSZ_BASE + 0x00000008)
-> -#define RKISP1_CIF_SRSZ_SCALE_HCR		(RKISP1_CIF_SRSZ_BASE + 0x0000000C)
-> -#define RKISP1_CIF_SRSZ_SCALE_VY		(RKISP1_CIF_SRSZ_BASE + 0x00000010)
-> -#define RKISP1_CIF_SRSZ_SCALE_VC		(RKISP1_CIF_SRSZ_BASE + 0x00000014)
-> -#define RKISP1_CIF_SRSZ_PHASE_HY		(RKISP1_CIF_SRSZ_BASE + 0x00000018)
-> -#define RKISP1_CIF_SRSZ_PHASE_HC		(RKISP1_CIF_SRSZ_BASE + 0x0000001C)
-> -#define RKISP1_CIF_SRSZ_PHASE_VY		(RKISP1_CIF_SRSZ_BASE + 0x00000020)
-> -#define RKISP1_CIF_SRSZ_PHASE_VC		(RKISP1_CIF_SRSZ_BASE + 0x00000024)
-> -#define RKISP1_CIF_SRSZ_SCALE_LUT_ADDR		(RKISP1_CIF_SRSZ_BASE + 0x00000028)
-> -#define RKISP1_CIF_SRSZ_SCALE_LUT		(RKISP1_CIF_SRSZ_BASE + 0x0000002C)
-> -#define RKISP1_CIF_SRSZ_CTRL_SHD		(RKISP1_CIF_SRSZ_BASE + 0x00000030)
-> -#define RKISP1_CIF_SRSZ_SCALE_HY_SHD		(RKISP1_CIF_SRSZ_BASE + 0x00000034)
-> -#define RKISP1_CIF_SRSZ_SCALE_HCB_SHD		(RKISP1_CIF_SRSZ_BASE + 0x00000038)
-> -#define RKISP1_CIF_SRSZ_SCALE_HCR_SHD		(RKISP1_CIF_SRSZ_BASE + 0x0000003C)
-> -#define RKISP1_CIF_SRSZ_SCALE_VY_SHD		(RKISP1_CIF_SRSZ_BASE + 0x00000040)
-> -#define RKISP1_CIF_SRSZ_SCALE_VC_SHD		(RKISP1_CIF_SRSZ_BASE + 0x00000044)
-> -#define RKISP1_CIF_SRSZ_PHASE_HY_SHD		(RKISP1_CIF_SRSZ_BASE + 0x00000048)
-> -#define RKISP1_CIF_SRSZ_PHASE_HC_SHD		(RKISP1_CIF_SRSZ_BASE + 0x0000004C)
-> -#define RKISP1_CIF_SRSZ_PHASE_VY_SHD		(RKISP1_CIF_SRSZ_BASE + 0x00000050)
-> -#define RKISP1_CIF_SRSZ_PHASE_VC_SHD		(RKISP1_CIF_SRSZ_BASE + 0x00000054)
-> +#define RKISP1_CIF_RSZ_CTRL			0x0000
-> +#define RKISP1_CIF_RSZ_SCALE_HY			0x0004
-> +#define RKISP1_CIF_RSZ_SCALE_HCB		0x0008
-> +#define RKISP1_CIF_RSZ_SCALE_HCR		0x000C
-> +#define RKISP1_CIF_RSZ_SCALE_VY			0x0010
-> +#define RKISP1_CIF_RSZ_SCALE_VC			0x0014
-> +#define RKISP1_CIF_RSZ_PHASE_HY			0x0018
-> +#define RKISP1_CIF_RSZ_PHASE_HC			0x001C
-> +#define RKISP1_CIF_RSZ_PHASE_VY			0x0020
-> +#define RKISP1_CIF_RSZ_PHASE_VC			0x0024
-> +#define RKISP1_CIF_RSZ_SCALE_LUT_ADDR		0x0028
-> +#define RKISP1_CIF_RSZ_SCALE_LUT		0x002C
-> +#define RKISP1_CIF_RSZ_CTRL_SHD			0x0030
-> +#define RKISP1_CIF_RSZ_SCALE_HY_SHD		0x0034
-> +#define RKISP1_CIF_RSZ_SCALE_HCB_SHD		0x0038
-> +#define RKISP1_CIF_RSZ_SCALE_HCR_SHD		0x003C
-> +#define RKISP1_CIF_RSZ_SCALE_VY_SHD		0x0040
-> +#define RKISP1_CIF_RSZ_SCALE_VC_SHD		0x0044
-> +#define RKISP1_CIF_RSZ_PHASE_HY_SHD		0x0048
-> +#define RKISP1_CIF_RSZ_PHASE_HC_SHD		0x004C
-> +#define RKISP1_CIF_RSZ_PHASE_VY_SHD		0x0050
-> +#define RKISP1_CIF_RSZ_PHASE_VC_SHD		0x0054
->  
->  #define RKISP1_CIF_MI_BASE			0x00001400
->  #define RKISP1_CIF_MI_CTRL			(RKISP1_CIF_MI_BASE + 0x00000000)
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> index 65ce8d647118..d92a23bd2d51 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> @@ -59,30 +59,6 @@ struct rkisp1_rsz_config {
->  	const int min_rsz_width;
->  	const int min_rsz_height;
->  	/* registers */
-> -	struct {
-> -		u32 ctrl;
-> -		u32 ctrl_shd;
-> -		u32 scale_hy;
-> -		u32 scale_hcr;
-> -		u32 scale_hcb;
-> -		u32 scale_vy;
-> -		u32 scale_vc;
-> -		u32 scale_lut;
-> -		u32 scale_lut_addr;
-> -		u32 scale_hy_shd;
-> -		u32 scale_hcr_shd;
-> -		u32 scale_hcb_shd;
-> -		u32 scale_vy_shd;
-> -		u32 scale_vc_shd;
-> -		u32 phase_hy;
-> -		u32 phase_hc;
-> -		u32 phase_vy;
-> -		u32 phase_vc;
-> -		u32 phase_hy_shd;
-> -		u32 phase_hc_shd;
-> -		u32 phase_vy_shd;
-> -		u32 phase_vc_shd;
-> -	} rsz;
->  	struct {
->  		u32 ctrl;
->  		u32 yuvmode_mask;
-> @@ -101,30 +77,6 @@ static const struct rkisp1_rsz_config rkisp1_rsz_config_mp = {
->  	.min_rsz_width = RKISP1_RSZ_SRC_MIN_WIDTH,
->  	.min_rsz_height = RKISP1_RSZ_SRC_MIN_HEIGHT,
->  	/* registers */
-> -	.rsz = {
-> -		.ctrl =			RKISP1_CIF_MRSZ_CTRL,
-> -		.scale_hy =		RKISP1_CIF_MRSZ_SCALE_HY,
-> -		.scale_hcr =		RKISP1_CIF_MRSZ_SCALE_HCR,
-> -		.scale_hcb =		RKISP1_CIF_MRSZ_SCALE_HCB,
-> -		.scale_vy =		RKISP1_CIF_MRSZ_SCALE_VY,
-> -		.scale_vc =		RKISP1_CIF_MRSZ_SCALE_VC,
-> -		.scale_lut =		RKISP1_CIF_MRSZ_SCALE_LUT,
-> -		.scale_lut_addr =	RKISP1_CIF_MRSZ_SCALE_LUT_ADDR,
-> -		.scale_hy_shd =		RKISP1_CIF_MRSZ_SCALE_HY_SHD,
-> -		.scale_hcr_shd =	RKISP1_CIF_MRSZ_SCALE_HCR_SHD,
-> -		.scale_hcb_shd =	RKISP1_CIF_MRSZ_SCALE_HCB_SHD,
-> -		.scale_vy_shd =		RKISP1_CIF_MRSZ_SCALE_VY_SHD,
-> -		.scale_vc_shd =		RKISP1_CIF_MRSZ_SCALE_VC_SHD,
-> -		.phase_hy =		RKISP1_CIF_MRSZ_PHASE_HY,
-> -		.phase_hc =		RKISP1_CIF_MRSZ_PHASE_HC,
-> -		.phase_vy =		RKISP1_CIF_MRSZ_PHASE_VY,
-> -		.phase_vc =		RKISP1_CIF_MRSZ_PHASE_VC,
-> -		.ctrl_shd =		RKISP1_CIF_MRSZ_CTRL_SHD,
-> -		.phase_hy_shd =		RKISP1_CIF_MRSZ_PHASE_HY_SHD,
-> -		.phase_hc_shd =		RKISP1_CIF_MRSZ_PHASE_HC_SHD,
-> -		.phase_vy_shd =		RKISP1_CIF_MRSZ_PHASE_VY_SHD,
-> -		.phase_vc_shd =		RKISP1_CIF_MRSZ_PHASE_VC_SHD,
-> -	},
->  	.dual_crop = {
->  		.ctrl =			RKISP1_CIF_DUAL_CROP_CTRL,
->  		.yuvmode_mask =		RKISP1_CIF_DUAL_CROP_MP_MODE_YUV,
-> @@ -143,30 +95,6 @@ static const struct rkisp1_rsz_config rkisp1_rsz_config_sp = {
->  	.min_rsz_width = RKISP1_RSZ_SRC_MIN_WIDTH,
->  	.min_rsz_height = RKISP1_RSZ_SRC_MIN_HEIGHT,
->  	/* registers */
-> -	.rsz = {
-> -		.ctrl =			RKISP1_CIF_SRSZ_CTRL,
-> -		.scale_hy =		RKISP1_CIF_SRSZ_SCALE_HY,
-> -		.scale_hcr =		RKISP1_CIF_SRSZ_SCALE_HCR,
-> -		.scale_hcb =		RKISP1_CIF_SRSZ_SCALE_HCB,
-> -		.scale_vy =		RKISP1_CIF_SRSZ_SCALE_VY,
-> -		.scale_vc =		RKISP1_CIF_SRSZ_SCALE_VC,
-> -		.scale_lut =		RKISP1_CIF_SRSZ_SCALE_LUT,
-> -		.scale_lut_addr =	RKISP1_CIF_SRSZ_SCALE_LUT_ADDR,
-> -		.scale_hy_shd =		RKISP1_CIF_SRSZ_SCALE_HY_SHD,
-> -		.scale_hcr_shd =	RKISP1_CIF_SRSZ_SCALE_HCR_SHD,
-> -		.scale_hcb_shd =	RKISP1_CIF_SRSZ_SCALE_HCB_SHD,
-> -		.scale_vy_shd =		RKISP1_CIF_SRSZ_SCALE_VY_SHD,
-> -		.scale_vc_shd =		RKISP1_CIF_SRSZ_SCALE_VC_SHD,
-> -		.phase_hy =		RKISP1_CIF_SRSZ_PHASE_HY,
-> -		.phase_hc =		RKISP1_CIF_SRSZ_PHASE_HC,
-> -		.phase_vy =		RKISP1_CIF_SRSZ_PHASE_VY,
-> -		.phase_vc =		RKISP1_CIF_SRSZ_PHASE_VC,
-> -		.ctrl_shd =		RKISP1_CIF_SRSZ_CTRL_SHD,
-> -		.phase_hy_shd =		RKISP1_CIF_SRSZ_PHASE_HY_SHD,
-> -		.phase_hc_shd =		RKISP1_CIF_SRSZ_PHASE_HC_SHD,
-> -		.phase_vy_shd =		RKISP1_CIF_SRSZ_PHASE_VY_SHD,
-> -		.phase_vc_shd =		RKISP1_CIF_SRSZ_PHASE_VC_SHD,
-> -	},
->  	.dual_crop = {
->  		.ctrl =			RKISP1_CIF_DUAL_CROP_CTRL,
->  		.yuvmode_mask =		RKISP1_CIF_DUAL_CROP_SP_MODE_YUV,
-> @@ -178,6 +106,17 @@ static const struct rkisp1_rsz_config rkisp1_rsz_config_sp = {
->  	},
->  };
->  
-> +static inline u32 rkisp1_rsz_read(struct rkisp1_resizer *rsz, u32 offset)
-> +{
-> +	return rkisp1_read(rsz->rkisp1, rsz->regs_base + offset);
-> +}
-> +
-> +static inline void rkisp1_rsz_write(struct rkisp1_resizer *rsz, u32 offset,
-> +				    u32 value)
-> +{
-> +	rkisp1_write(rsz->rkisp1, value, rsz->regs_base + offset);
-> +}
 
-I'd keep the order of params the same as rkisp1_write, or change the order
-of params in rkisp1_write to the be the same as rkisp1_rsz_write, otherwise
-it's confusing.
+--===============4556439536536810592==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="szkcsdi5ha36tvvv"
+Content-Disposition: inline
 
-thanks,
-Dafna
 
-> +
->  static struct v4l2_mbus_framefmt *
->  rkisp1_rsz_get_pad_fmt(struct rkisp1_resizer *rsz,
->  		       struct v4l2_subdev_state *sd_state,
-> @@ -277,39 +216,39 @@ static void rkisp1_rsz_dump_regs(struct rkisp1_resizer *rsz)
->  		"RSZ_PHASE_HC %d/%d\n"
->  		"RSZ_PHASE_VY %d/%d\n"
->  		"RSZ_PHASE_VC %d/%d\n",
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.ctrl),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.ctrl_shd),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.scale_hy),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.scale_hy_shd),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.scale_hcb),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.scale_hcb_shd),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.scale_hcr),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.scale_hcr_shd),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.scale_vy),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.scale_vy_shd),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.scale_vc),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.scale_vc_shd),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.phase_hy),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.phase_hy_shd),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.phase_hc),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.phase_hc_shd),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.phase_vy),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.phase_vy_shd),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.phase_vc),
-> -		rkisp1_read(rsz->rkisp1, rsz->config->rsz.phase_vc_shd));
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_CTRL),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_CTRL_SHD),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HY),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HY_SHD),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HCB),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HCB_SHD),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HCR),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HCR_SHD),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_VY),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_VY_SHD),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_VC),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_VC_SHD),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_HY),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_HY_SHD),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_HC),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_HC_SHD),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_VY),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_VY_SHD),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_VC),
-> +		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_VC_SHD));
->  }
->  
->  static void rkisp1_rsz_update_shadow(struct rkisp1_resizer *rsz,
->  				     enum rkisp1_shadow_regs_when when)
->  {
-> -	u32 ctrl_cfg = rkisp1_read(rsz->rkisp1, rsz->config->rsz.ctrl);
-> +	u32 ctrl_cfg = rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_CTRL);
->  
->  	if (when == RKISP1_SHADOW_REGS_ASYNC)
->  		ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CFG_UPD_AUTO;
->  	else
->  		ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CFG_UPD;
->  
-> -	rkisp1_write(rsz->rkisp1, ctrl_cfg, rsz->config->rsz.ctrl);
-> +	rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_CTRL, ctrl_cfg);
->  }
->  
->  static u32 rkisp1_rsz_calc_ratio(u32 len_sink, u32 len_src)
-> @@ -325,7 +264,7 @@ static u32 rkisp1_rsz_calc_ratio(u32 len_sink, u32 len_src)
->  static void rkisp1_rsz_disable(struct rkisp1_resizer *rsz,
->  			       enum rkisp1_shadow_regs_when when)
->  {
-> -	rkisp1_write(rsz->rkisp1, 0, rsz->config->rsz.ctrl);
-> +	rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_CTRL, 0);
->  
->  	if (when == RKISP1_SHADOW_REGS_SYNC)
->  		rkisp1_rsz_update_shadow(rsz, when);
-> @@ -338,20 +277,19 @@ static void rkisp1_rsz_config_regs(struct rkisp1_resizer *rsz,
->  				   struct v4l2_rect *src_c,
->  				   enum rkisp1_shadow_regs_when when)
->  {
-> -	struct rkisp1_device *rkisp1 = rsz->rkisp1;
->  	u32 ratio, rsz_ctrl = 0;
->  	unsigned int i;
->  
->  	/* No phase offset */
-> -	rkisp1_write(rkisp1, 0, rsz->config->rsz.phase_hy);
-> -	rkisp1_write(rkisp1, 0, rsz->config->rsz.phase_hc);
-> -	rkisp1_write(rkisp1, 0, rsz->config->rsz.phase_vy);
-> -	rkisp1_write(rkisp1, 0, rsz->config->rsz.phase_vc);
-> +	rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_PHASE_HY, 0);
-> +	rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_PHASE_HC, 0);
-> +	rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_PHASE_VY, 0);
-> +	rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_PHASE_VC, 0);
->  
->  	/* Linear interpolation */
->  	for (i = 0; i < 64; i++) {
-> -		rkisp1_write(rkisp1, i, rsz->config->rsz.scale_lut_addr);
-> -		rkisp1_write(rkisp1, i, rsz->config->rsz.scale_lut);
-> +		rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_SCALE_LUT_ADDR, i);
-> +		rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_SCALE_LUT, i);
->  	}
->  
->  	if (sink_y->width != src_y->width) {
-> @@ -359,7 +297,7 @@ static void rkisp1_rsz_config_regs(struct rkisp1_resizer *rsz,
->  		if (sink_y->width < src_y->width)
->  			rsz_ctrl |= RKISP1_CIF_RSZ_CTRL_SCALE_HY_UP;
->  		ratio = rkisp1_rsz_calc_ratio(sink_y->width, src_y->width);
-> -		rkisp1_write(rkisp1, ratio, rsz->config->rsz.scale_hy);
-> +		rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_SCALE_HY, ratio);
->  	}
->  
->  	if (sink_c->width != src_c->width) {
-> @@ -367,8 +305,8 @@ static void rkisp1_rsz_config_regs(struct rkisp1_resizer *rsz,
->  		if (sink_c->width < src_c->width)
->  			rsz_ctrl |= RKISP1_CIF_RSZ_CTRL_SCALE_HC_UP;
->  		ratio = rkisp1_rsz_calc_ratio(sink_c->width, src_c->width);
-> -		rkisp1_write(rkisp1, ratio, rsz->config->rsz.scale_hcb);
-> -		rkisp1_write(rkisp1, ratio, rsz->config->rsz.scale_hcr);
-> +		rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_SCALE_HCB, ratio);
-> +		rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_SCALE_HCR, ratio);
->  	}
->  
->  	if (sink_y->height != src_y->height) {
-> @@ -376,7 +314,7 @@ static void rkisp1_rsz_config_regs(struct rkisp1_resizer *rsz,
->  		if (sink_y->height < src_y->height)
->  			rsz_ctrl |= RKISP1_CIF_RSZ_CTRL_SCALE_VY_UP;
->  		ratio = rkisp1_rsz_calc_ratio(sink_y->height, src_y->height);
-> -		rkisp1_write(rkisp1, ratio, rsz->config->rsz.scale_vy);
-> +		rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_SCALE_VY, ratio);
->  	}
->  
->  	if (sink_c->height != src_c->height) {
-> @@ -384,10 +322,10 @@ static void rkisp1_rsz_config_regs(struct rkisp1_resizer *rsz,
->  		if (sink_c->height < src_c->height)
->  			rsz_ctrl |= RKISP1_CIF_RSZ_CTRL_SCALE_VC_UP;
->  		ratio = rkisp1_rsz_calc_ratio(sink_c->height, src_c->height);
-> -		rkisp1_write(rkisp1, ratio, rsz->config->rsz.scale_vc);
-> +		rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_SCALE_VC, ratio);
->  	}
->  
-> -	rkisp1_write(rkisp1, rsz_ctrl, rsz->config->rsz.ctrl);
-> +	rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_CTRL, rsz_ctrl);
->  
->  	rkisp1_rsz_update_shadow(rsz, when);
->  }
-> @@ -803,10 +741,13 @@ static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
->  	struct v4l2_subdev *sd = &rsz->sd;
->  	int ret;
->  
-> -	if (rsz->id == RKISP1_SELFPATH)
-> +	if (rsz->id == RKISP1_SELFPATH) {
-> +		rsz->regs_base = RKISP1_CIF_SRSZ_BASE;
->  		rsz->config = &rkisp1_rsz_config_sp;
-> -	else
-> +	} else {
-> +		rsz->regs_base = RKISP1_CIF_MRSZ_BASE;
->  		rsz->config = &rkisp1_rsz_config_mp;
-> +	}
->  
->  	v4l2_subdev_init(sd, &rkisp1_rsz_ops);
->  	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
-> -- 
-> Regards,
-> 
-> Laurent Pinchart
-> 
+--szkcsdi5ha36tvvv
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+
+(dropped Anson Huang and Yash Shah from Cc, their addresses bounced last
+time I used them.)
+
+On Wed, Mar 02, 2022 at 08:04:45PM +0100, Krzysztof Kozlowski wrote:
+> On 14/02/2022 22:21, Krzysztof Kozlowski wrote:
+> > Hi,
+> >=20
+> > Changes since v1:
+> > 1. Add tags.
+> > 2. Adjust subject (Uwe).
+> >=20
+>=20
+> Hi Thierry, Uwe and Lee,
+>=20
+> Any comments here? Rob acked all these, so these are clear to go via PWM
+> tree.
+
+They are fine from my side:
+
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+
+It's Thierry who is reponsible to pick these up and it seems he marked
+the series as accepted:
+	https://patchwork.ozlabs.org/project/linux-pwm/list/?series=3D286150&state=
+=3D*
+
+So I would expect that it turns up in next after Thierry is done with
+his testing.
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--szkcsdi5ha36tvvv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmIgYxYACgkQwfwUeK3K
+7AlLnwf/RtAHP6ySxnXSdGI6h/ICx3Q7FjK5zy2WDgciveSQhO92SP1TrQR8Ll0H
+CN5ftiC6uc/PqFXfnzno/ZKrQ+yhwuL3GNWl/tK070bXLkZS9rtZoo62p2DxK6/U
+V9GQpUSATRqU19pMkuje+qfbL5o5gTzehAAtQq/aQLEUqn0R46gk4DnYVuFK9ezV
+KLe6HD8NoNbclEkJwJ6NKZKgwxIck0g3HFqTwHD7PEHb1i1R1teL4M3lacIflRMB
+dNw2LCVgIFw/Su/sZWL/sj2vilOrKUQD+R+O4vOzxqEO7TrSOZgHitAHOWs2uBI6
+NeJ60SyXxmDSYCmuEiZVL1Fax6Dldg==
+=/r9+
+-----END PGP SIGNATURE-----
+
+--szkcsdi5ha36tvvv--
+
+
+--===============4556439536536810592==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4556439536536810592==--
+
