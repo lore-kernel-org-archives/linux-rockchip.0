@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 025FDC433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 01:44:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06F61C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 01:52:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ttNULegiRjDzQWt2KXuE4tVZDaoTx4r8+jWMP+yIXoA=; b=AvavtMF1Ink6iy
-	p5EJjBDwYgESYfRXg2Xmt2G0KVMojloiwXP3E1NY/gwiIQkBjJp+CO3N7PZkxJJnuIhj0DOZqk3QY
-	IhLOIv63C7MeQ5n1Q3NJ9cXnMVuzMdUbte2owHaBeRY4Wu7fafU7AZf0JW+QxCQ90IXkXPaw10DYp
-	hi69Xxw8rwgAjhiHTAnWt6WR6pOzHmBH6oF7KelHkzmGVdRZDPOc52o6ArYU6HaRLIaJCY0+SO2ki
-	5yCQIY/xXNhai0c5pjDFtGH42guV11J6oBZSKyKOnvW4YkH7mlPh+HUTLMMWOIRrEbdl+0JqhytLb
-	3SntKFvFeSN2zngx5gPw==;
+	List-Owner; bh=FcenyZRVe3nqpZBwyWeMG7HAFy+0zdZJMucHooZzRpo=; b=UPh6dO5i9L8LFN
+	SA12tqMPQjb7z8Xa4jLANaMcSLESX96p3V6QL6CsoT3NuQ72yTVRrUuIJ6eEcHxwyx3WcQLZ6n4Mi
+	d5c++IvoKAaGDxii3H9cEcG5kGgtoyETflkJ4NXHkgkVZKgNFr/7FVKpL+r/5xnOUTwZ8xFmqE7hp
+	xKWvZO6QUpymX+Maq/uRaIyrsbNpIYg8Bx+7DEwMZGQG2c5nQfROFUbLjQ0LVk6rqmFq73/lo/ZWh
+	8IBSNvF1AYBTFwYnqQGFXDs5yd9yEss5PCagJEWgkqcJ6GY0kCvXZEUQq4Vx7coEu4HO7WKjDRqnz
+	/BlFPwV7HLLAF8nhHl4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPaW4-004w7p-5D; Thu, 03 Mar 2022 01:44:28 +0000
-Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
+	id 1nPadi-004x50-1J; Thu, 03 Mar 2022 01:52:22 +0000
+Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPaVs-004w5Y-EZ; Thu, 03 Mar 2022 01:44:17 +0000
-Received: by mail-qt1-x830.google.com with SMTP id w1so3422294qtj.2;
- Wed, 02 Mar 2022 17:44:15 -0800 (PST)
+ id 1nPadV-004x1M-PK; Thu, 03 Mar 2022 01:52:11 +0000
+Received: by mail-qv1-xf2e.google.com with SMTP id f11so3034019qvz.4;
+ Wed, 02 Mar 2022 17:52:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=TEJaO0Vi4Kwfv0Wb4WQ2+Q+z6zunlr1TGnFG+5J/o0Y=;
- b=O6yWcrDHwFQRhE4PxZR/mpmttlr1A73V9h8HAbSE18gjKpEOxOGOMDG5nRHWozR3uz
- r5yBzWz88Em4bNspoQZKRA3tyiOO7tWB/cs9THxzZMxikI5vBT8mQhAxaW53oIDItQn/
- UzAV2Ca11pywRutZrQTj85YDlx5pm0XHgwEw0onY2aKOijiEXYfxkAp/NYyBcIrKo6RR
- 45HkDkbLqHCv63Ol+HzagOrNbeZKLJI+lRYTGb28QAl5lCzcNu5mRs3Fk1zUv8ztVh4Y
- p3LZdlIV1Qa6P7QEtWtQtD+FanQFb65EbMtPSauzYCsm8KeQCuDw40FRyQwAaCi+e4S7
- TZqw==
+ bh=3KVujQolZaOxrqf5Q/2Oi93Y5mDWXCJ9XvGmoyx2Rfs=;
+ b=V+cy/NCTgADucp216rHe8jhqh3g+R5gW3nArEHc5P9B493NX301In8q8py+ypygpmi
+ ZV5RVGx/L98CrEJrzgthflS5bmNiCteuXdhU52A/+k6BuObWkFp0N076JumK/5Wh6ATu
+ STUaaI3WoW/uIu1Cp1t/AgryI+q7F9eRPV3V+iHTWQQ0zx6Nwb3XisPYD9L4CrwnQnsB
+ XdKbExZaXHHaJ3xcggFS2uy4g+2WeVHugVMbEQDR7EqBrXlGBxDByVk5uE0haTEr46ne
+ unlSafCUxkygdhMal9v1pTolMuRSVsWTDInyvWLL8iuna8+QLq32yhXbCQFwIMb07Fsu
+ 1KPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=TEJaO0Vi4Kwfv0Wb4WQ2+Q+z6zunlr1TGnFG+5J/o0Y=;
- b=OLdD8biSKEZSpnpUD95MQLBGa0Mr1NRyncJutIu1F0H9IWZ+wSP61zbU+SX/F7aIv9
- bhilfqJXbr3YLPhXVClM326moROiGrsk2hOC9ITq8LvRpizzLY5358g3o2tPFoXH4xky
- V1HkZJAUN9w4CJzLAWUPB6rZDsAU/re5RxVtKX7Cmc5epYFsmoS0uYEyPd6ZEwW4fPim
- XZMlWpjTq246ucpJ1sY1piO2ZDIIOTL79N5Q3cAte5z6etBRvlAENUZL3kvpnaTyxAlf
- 0bt8inotKysnN+0HiKYDwhwoSZyXIIrtG01V/fLBxuip5hHlv4j94vPZKZL6EybQJGy4
- Z5RQ==
-X-Gm-Message-State: AOAM531b3eOiBF/sOo7Y8C8/5flzQJpkBs4RS/nxYV8A3n1QlLkYNJRa
- LUDLmC3/aBiD0IFRj8rPGeE=
-X-Google-Smtp-Source: ABdhPJyFwaId4iQ/+ux2jZP4uLbwMNoJjMfyEd5/rGbhuWf7T6m6Bku7ZaVtuiJ1awSuOKjGHH98fg==
-X-Received: by 2002:ac8:5a05:0:b0:2de:15ef:8bd5 with SMTP id
- n5-20020ac85a05000000b002de15ef8bd5mr25783831qta.71.1646271854779; 
- Wed, 02 Mar 2022 17:44:14 -0800 (PST)
-Received: from localhost.localdomain ([193.203.214.57])
+ bh=3KVujQolZaOxrqf5Q/2Oi93Y5mDWXCJ9XvGmoyx2Rfs=;
+ b=OHU0v+KKySbO/fzK9c61iCAAjlhiPzRMLfU1G3LkQrp8R9MBBkH67uKeavDEqBZsPD
+ iAnMob90idWbayZ7CXYZZmvNam1l3+r5qbsOx21NLiMSrNeSm5jQglfWVAHQfQ5Qz95g
+ GyX2Txi7a+/YiQ37dbyHz4zOiNUmTGUyZllUrXw/Z3EAP22sON8FB7l8yi1O0eXK6D+2
+ TemaeE4ouckuCkVmcFaATm3p+ZNB0oa+nbvsEIzgSi2dTSgM9tFLHsjFiIqwjJYEGmok
+ UItCCBo2MK6GpNg9fGU8bDnMUy2oynv70+Gq/rAwZgXU5LAzgVmjB/RLoGaTm/yZybW3
+ LzMQ==
+X-Gm-Message-State: AOAM533UuM5UOlW1o5yD4YUuUUB2quXQUil8uChBjMNezLMXbjVLtXfO
+ 0kjyMIJE508X5+HXQ7mx5sI=
+X-Google-Smtp-Source: ABdhPJyzLMVOPLC8sHNOXTgI2vgUY914/z1joGrNE5mu7Nb3Q1H1fi5SpCNsQ9gbt/mW/9LgBXA2pA==
+X-Received: by 2002:a05:6214:c2f:b0:435:1b08:f0ed with SMTP id
+ a15-20020a0562140c2f00b004351b08f0edmr4277800qvd.52.1646272328000; 
+ Wed, 02 Mar 2022 17:52:08 -0800 (PST)
+Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
  by smtp.gmail.com with ESMTPSA id
- d13-20020a05622a05cd00b002dffcc45ba5sm563131qtb.4.2022.03.02.17.44.11
+ m2-20020ae9e002000000b0050819df7151sm388258qkk.99.2022.03.02.17.52.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Mar 2022 17:44:14 -0800 (PST)
-From: cgel.zte@gmail.com
-X-Google-Original-From: chi.minghao@zte.com.cn
-To: kishon@ti.com
-Cc: vkoul@kernel.org, heiko@sntech.de, linux-phy@lists.infradead.org,
+ Wed, 02 Mar 2022 17:52:07 -0800 (PST)
+From: Peter Geis <pgwipeout@gmail.com>
+To: robin.murphy@arm.com, Jaehoon Chung <jh80.chung@samsung.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Addy Ke <addy.ke@rock-chips.com>, Doug Anderson <dianders@chromium.org>
+Cc: Peter Geis <pgwipeout@gmail.com>, linux-mmc@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Minghao Chi <chi.minghao@zte.com.cn>,
- Zeal Robot <zealci@zte.com.cn>
-Subject: [PATCH] phy/rockchip: Use of_device_get_match_data()
-Date: Thu,  3 Mar 2022 01:44:06 +0000
-Message-Id: <20220303014406.2059140-1-chi.minghao@zte.com.cn>
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] mmc: host: dw-mmc-rockchip: fix handling invalid clock rates
+Date: Wed,  2 Mar 2022 20:51:51 -0500
+Message-Id: <20220303015151.1711860-1-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220302_174416_554156_70FA2C4D 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220302_175209_856078_E341A9B5 
+X-CRM114-Status: GOOD (  22.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,41 +90,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Minghao Chi (CGEL ZTE) <chi.minghao@zte.com.cn>
+The Rockchip ciu clock cannot be set as low as the dw-mmc hardware
+supports. This leads to a situation during card initialization where the
+ciu clock is set lower than the clock driver can support. The
+dw-mmc-rockchip driver spews errors when this happens.
+For normal operation this only happens a few times during boot, but when
+cd-broken is enabled (in cases such as the SoQuartz module) this fires
+multiple times each poll cycle.
 
-Use of_device_get_match_data() to simplify the code.
+Fix this by testing the minimum frequency the clock driver can support
+that is within the mmc specification, then divide that by the internal
+clock divider. Set the f_min frequency to this value, or if it fails,
+set f_min to the downstream driver's default.
 
-Reported-by: Zeal Robot <zealci@zte.com.cn>
-Signed-off-by: Minghao Chi (CGEL ZTE) <chi.minghao@zte.com.cn>
+Fixes: f629ba2c04c9 ("mmc: dw_mmc: add support for RK3288")
+
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 ---
- drivers/phy/rockchip/phy-rockchip-dphy-rx0.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+ drivers/mmc/host/dw_mmc-rockchip.c | 31 ++++++++++++++++++++++++++----
+ 1 file changed, 27 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c b/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c
-index 4df9476ef2a9..639452f47869 100644
---- a/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c
-+++ b/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c
-@@ -327,7 +327,6 @@ static int rk_dphy_probe(struct platform_device *pdev)
- 	struct device_node *np = dev->of_node;
- 	const struct rk_dphy_drv_data *drv_data;
- 	struct phy_provider *phy_provider;
--	const struct of_device_id *of_id;
- 	struct rk_dphy *priv;
- 	struct phy *phy;
- 	unsigned int i;
-@@ -347,11 +346,7 @@ static int rk_dphy_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	}
+diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+index 95d0ec0f5f3a..c198590cd74a 100644
+--- a/drivers/mmc/host/dw_mmc-rockchip.c
++++ b/drivers/mmc/host/dw_mmc-rockchip.c
+@@ -15,7 +15,9 @@
+ #include "dw_mmc.h"
+ #include "dw_mmc-pltfm.h"
  
--	of_id = of_match_device(rk_dphy_dt_ids, dev);
--	if (!of_id)
--		return -EINVAL;
--
--	drv_data = of_id->data;
-+	drv_data = of_device_get_match_data(dev);
- 	priv->drv_data = drv_data;
- 	priv->clks = devm_kcalloc(&pdev->dev, drv_data->num_clks,
- 				  sizeof(*priv->clks), GFP_KERNEL);
+-#define RK3288_CLKGEN_DIV       2
++#define RK3288_CLKGEN_DIV	2
++#define RK3288_MIN_INIT_FREQ	375000
++#define MMC_MAX_INIT_FREQ	400000
+ 
+ struct dw_mci_rockchip_priv_data {
+ 	struct clk		*drv_clk;
+@@ -27,6 +29,7 @@ struct dw_mci_rockchip_priv_data {
+ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ {
+ 	struct dw_mci_rockchip_priv_data *priv = host->priv;
++	struct mmc_host *mmc = mmc_from_priv(host);
+ 	int ret;
+ 	unsigned int cclkin;
+ 	u32 bus_hz;
+@@ -34,6 +37,10 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ 	if (ios->clock == 0)
+ 		return;
+ 
++	/* the clock will fail if below the f_min rate */
++	if (ios->clock < mmc->f_min)
++		ios->clock = mmc->f_min;
++
+ 	/*
+ 	 * cclkin: source clock of mmc controller
+ 	 * bus_hz: card interface clock generated by CLKGEN
+@@ -51,7 +58,7 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ 
+ 	ret = clk_set_rate(host->ciu_clk, cclkin);
+ 	if (ret)
+-		dev_warn(host->dev, "failed to set rate %uHz\n", ios->clock);
++		dev_warn(host->dev, "failed to set rate %uHz err: %d\n", cclkin, ret);
+ 
+ 	bus_hz = clk_get_rate(host->ciu_clk) / RK3288_CLKGEN_DIV;
+ 	if (bus_hz != host->bus_hz) {
+@@ -290,13 +297,29 @@ static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
+ 
+ static int dw_mci_rockchip_init(struct dw_mci *host)
+ {
++	struct mmc_host *mmc = mmc_from_priv(host);
++	int ret;
++
+ 	/* It is slot 8 on Rockchip SoCs */
+ 	host->sdio_id0 = 8;
+ 
+-	if (of_device_is_compatible(host->dev->of_node,
+-				    "rockchip,rk3288-dw-mshc"))
++	if (of_device_is_compatible(host->dev->of_node, "rockchip,rk3288-dw-mshc")) {
+ 		host->bus_hz /= RK3288_CLKGEN_DIV;
+ 
++		/* clock driver will fail if the clock is less than the lowest source clock
++		 * divided by the internal clock divider. Test for the lowest available
++		 * clock and set the f_min freq to clock / clock divider. If we fail, set
++		 * it to the downstream hardcoded value.
++		 */
++		ret = clk_round_rate(host->ciu_clk, MMC_MAX_INIT_FREQ * RK3288_CLKGEN_DIV);
++		if (ret < 0) {
++			dev_warn(host->dev, "mmc safe rate failed: %d\n", ret);
++			mmc->f_min = RK3288_MIN_INIT_FREQ;
++		} else {
++			mmc->f_min = ret / RK3288_CLKGEN_DIV;
++		}
++	}
++
+ 	return 0;
+ }
+ 
 -- 
 2.25.1
 
