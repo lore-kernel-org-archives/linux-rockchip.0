@@ -4,57 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF9E1C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 12:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1ABDC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 13:43:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aUNgCsp2FJJCEc6//GJ3/8LkOJqHOR5vdFrI1FqcPCo=; b=w0dP1hbwYgZHXT
-	yUCzyM5nJaYMdFDiTKvCiPMpc1kBrsjUA26qnhO7BRvn8H2YNZJG9kKi6DFU9FrKhlCWrQHHn3sSQ
-	CCJDe4owCA1vQJjNJUHwBeKkvGNwGZ8D13S2Zfwo6pDl6NRPQnD7pCBeaPbRSBG3l8lgt9PTWv1d+
-	B+nury3WJnV8nRK+l9h4eE+SV0sT2cKvHU5JyqIbnCHCCl3APxZw1k27xVF1vx9KVArcdIigN7Cyh
-	BRDTRE9F/PUHnHMYimbtSZvnTtvkJaph7Chphci3mowj6cUvlLBAuJ9w+/aAc9diT2uk/PR2oEdwX
-	UJQxWOdimal+u7yYNYWA==;
+	List-Owner; bh=/W0EEAtMbYPUSe74EFd87PYDO0zk1ExzMc7HerO1Efw=; b=mU2wZF1L58oQnt
+	G4XG3Vi5KD0zJ9bwArEEBVZ6ZyYLFovRSFWSChqhiWY5PrWyk0NgAk1p0ucQ0I0Tr4W1yb8EXnSo3
+	pGDqyFsToEY+jiUgYY3B/s54JE53BcT0jbbI/XlMTfVuxizZKUiVyAMr55HKbnsHMm3wNGZwDZfas
+	ORgZc+PnVyxu1yDzTPB3YwUvVlTlEqErKJ9I9DUGB30cEF9jHczipCO4OUyMuROSxXVRfglf2iPzp
+	/LgMCh/Y3Eb1AcvrJCvmL2SEoZ090fcPgkGiu2+1Ed6wK0RUi1akQw9H7ouO9IzvxU5FY1Gg+VPhy
+	Eb8TRkpAUjbCvf7Jb/PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPl1Y-006QxB-1E; Thu, 03 Mar 2022 12:57:40 +0000
-Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
+	id 1nPljg-006WjM-Kt; Thu, 03 Mar 2022 13:43:16 +0000
+Received: from mail-oi1-f174.google.com ([209.85.167.174])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPl1G-006QsZ-KI; Thu, 03 Mar 2022 12:57:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=metanate.com; s=stronger; h=In-Reply-To:Content-Type:References:Message-ID:
- Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description; bh=Ui7Wx3HT5wFF2lD9OqwpaMhrO7qy33DzT68PqCTpFeA=; b=t2ko4
- NFlATGyheALC9w+H68/z3RvSSOEB6BrmYEzUF5r8KqMq1m06wmG4/48fY/k1SirfLL8ebbuWySbK+
- yAIBOZP7CNmNQwuVEQFAyP6sY3UK1LSpXV+t+8dZS/gAeJjam7Eu7BQ1fmtksh1ecMYZM7QJCHYtn
- kBW0GuvUjAebv5yS+bC5ZA0izcBIu8XwZBDNE8aadZPiBBeTFnvKy1vu7Nb0iW8b60M7xMAX9fUIL
- kVAxrsn/p2QVIA4oUW3Ety5Agn002vZfP/aTWFOu8FDRIHiBKgqt4I8XPykJQCQ8JszenDrhULJNU
- z9o0dmnVkLuKL3W7mSH/OAvSeAIsQ==;
-Received: from [81.174.171.191] (helo=donbot)
- by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.93) (envelope-from <john@metanate.com>)
- id 1nPl0y-0004oa-Jj; Thu, 03 Mar 2022 12:57:04 +0000
-Date: Thu, 3 Mar 2022 12:57:03 +0000
-From: John Keeping <john@metanate.com>
-To: Corentin Labbe <clabbe@baylibre.com>
-Cc: heiko@sntech.de, herbert@gondor.apana.org.au, robh+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 15/18] crypto: rockchip: introduce PM
-Message-ID: <YiC7Hxm0epcAcHen@donbot>
-References: <20220302211113.4003816-1-clabbe@baylibre.com>
- <20220302211113.4003816-16-clabbe@baylibre.com>
+ id 1nPljU-006Wgq-OP; Thu, 03 Mar 2022 13:43:05 +0000
+Received: by mail-oi1-f174.google.com with SMTP id q5so4814855oij.6;
+ Thu, 03 Mar 2022 05:43:04 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=uVjIFvRGxmCNMTbSrBbokaQaBUIKi3VHJCUkgaVuEhc=;
+ b=zVqD24sQZNJ6PtW3eZhTmOr04zmrG6aTrKQxaTYfKFC+MFvgxyVWgj4ZEiqkMEmqP1
+ qBF0h3UTAqRNsr5+E2zHxNL7N2hs13SLGI7F7rsH2T6VHIdl+c17eGNAQYTq/8nTvwAq
+ ndjKSnvr8HbiVNuy5L2ui7Fi4KtpwoHd0/Ikk9Gm8aUXHU+DbxLtB6KwbbD3mmKSencd
+ 9eF10H+xKw+Pjc2fOJzDBaO6LvmgrCFvTElny4CGll9J/Nmh3m1SMkgzNTF8Aca88U1v
+ OI37Uij+LaD8cHxnyIK2GTO6ucnFDIOiZDBvK6/U6giL2BOihfkdS1HBi+v4IxsJ50NN
+ 94UA==
+X-Gm-Message-State: AOAM533ulsWAPBCMCK8SmMHzH98IOiKabGlXbLN6VLT3821/5LiiOjaY
+ 6kUI4Kb4sIFBTVj8LXxcLQ==
+X-Google-Smtp-Source: ABdhPJyerRkHKmBETO/iPjPoX2HnozFhTqwx0qSfhqj4YNiGOkshnbjByp8JMzHFIJUHKbBPBFFypA==
+X-Received: by 2002:a54:4e9a:0:b0:2d5:3e7c:7ff6 with SMTP id
+ c26-20020a544e9a000000b002d53e7c7ff6mr4594562oiy.24.1646314983421; 
+ Thu, 03 Mar 2022 05:43:03 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213]) by smtp.gmail.com with ESMTPSA id
+ n23-20020a056870559700b000d47e9dabf0sm1166362oao.0.2022.03.03.05.43.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Mar 2022 05:43:02 -0800 (PST)
+Received: (nullmailer pid 1492131 invoked by uid 1000);
+ Thu, 03 Mar 2022 13:43:01 -0000
+Date: Thu, 3 Mar 2022 07:43:01 -0600
+From: Rob Herring <robh@kernel.org>
+To: Michael Riesch <michael.riesch@wolfvision.net>
+Cc: Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org,
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+ Frank Wunderlich <frank-w@public-files.de>, Peter Geis <pgwipeout@gmail.com>,
+ Simon Xue <xxm@rock-chips.com>, devicetree@vger.kernel.org,
+ Liang Chen <cl@rock-chips.com>, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v2 2/4] dt-bindings: usb: add rk3568 compatible to
+ rockchip,dwc3
+Message-ID: <YiDF5WVoR3c0Eevt@robh.at.kernel.org>
+References: <20220225131602.2283499-1-michael.riesch@wolfvision.net>
+ <20220225131602.2283499-3-michael.riesch@wolfvision.net>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220302211113.4003816-16-clabbe@baylibre.com>
-X-Authenticated: YES
+In-Reply-To: <20220225131602.2283499-3-michael.riesch@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_045722_859383_648A7822 
-X-CRM114-Status: GOOD (  30.69  )
+X-CRM114-CacheID: sfid-20220303_054304_815407_7AC5BB05 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,217 +90,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 02, 2022 at 09:11:10PM +0000, Corentin Labbe wrote:
-> Add runtime PM support for rockchip crypto.
+On Fri, 25 Feb 2022 14:16:00 +0100, Michael Riesch wrote:
+> Add the compatible for the Rockchip RK3568 variant.
 > 
-> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
 > ---
->  drivers/crypto/Kconfig                        |  1 +
->  drivers/crypto/rockchip/rk3288_crypto.c       | 50 ++++++++++++++++++-
->  drivers/crypto/rockchip/rk3288_crypto.h       |  1 +
->  drivers/crypto/rockchip/rk3288_crypto_ahash.c | 11 ++++
->  .../crypto/rockchip/rk3288_crypto_skcipher.c  | 10 ++++
->  5 files changed, 71 insertions(+), 2 deletions(-)
+>  Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> diff --git a/drivers/crypto/Kconfig b/drivers/crypto/Kconfig
-> index 04c8e332c5a1..685631a5cbea 100644
-> --- a/drivers/crypto/Kconfig
-> +++ b/drivers/crypto/Kconfig
-> @@ -784,6 +784,7 @@ config CRYPTO_DEV_IMGTEC_HASH
->  config CRYPTO_DEV_ROCKCHIP
->  	tristate "Rockchip's Cryptographic Engine driver"
->  	depends on OF && ARCH_ROCKCHIP
-> +	depends on PM
 
-Does this need to depend on PM?  If you enable the clock in _probe then
-use pm_runtime_put_autosuspend() the no-op helpers when !PM will mean
-this works whether PM is enabled or not.
-
->  	select CRYPTO_AES
->  	select CRYPTO_ENGINE
->  	select CRYPTO_LIB_DES
-> diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
-> index cd0755731cf7..ba56f8ff97c3 100644
-> --- a/drivers/crypto/rockchip/rk3288_crypto.c
-> +++ b/drivers/crypto/rockchip/rk3288_crypto.c
-> @@ -57,6 +57,48 @@ static void rk_crypto_disable_clk(struct rk_crypto_info *dev)
->  	clk_disable_unprepare(dev->sclk);
->  }
->  
-> +/*
-> + * Power management strategy: The device is suspended unless a TFM exists for
-> + * one of the algorithms proposed by this driver.
-> + */
-> +static int rk_crypto_pm_suspend(struct device *dev)
-> +{
-> +	struct rk_crypto_info *rkdev = dev_get_drvdata(dev);
-> +
-> +	rk_crypto_disable_clk(rkdev);
-> +	return 0;
-> +}
-> +
-> +static int rk_crypto_pm_resume(struct device *dev)
-> +{
-> +	struct rk_crypto_info *rkdev = dev_get_drvdata(dev);
-> +
-> +	return rk_crypto_enable_clk(rkdev);
-> +}
-> +
-> +static const struct dev_pm_ops rk_crypto_pm_ops = {
-> +	SET_RUNTIME_PM_OPS(rk_crypto_pm_suspend, rk_crypto_pm_resume, NULL)
-> +};
-> +
-> +static int rk_crypto_pm_init(struct rk_crypto_info *rkdev)
-> +{
-> +	int err;
-> +
-> +	pm_runtime_use_autosuspend(rkdev->dev);
-> +	pm_runtime_set_autosuspend_delay(rkdev->dev, 2000);
-> +
-> +	err = pm_runtime_set_suspended(rkdev->dev);
-> +	if (err)
-> +		return err;
-> +	pm_runtime_enable(rkdev->dev);
-> +	return err;
-> +}
-> +
-> +static void rk_crypto_pm_exit(struct rk_crypto_info *rkdev)
-> +{
-> +	pm_runtime_disable(rkdev->dev);
-> +}
-> +
->  static irqreturn_t rk_crypto_irq_handle(int irq, void *dev_id)
->  {
->  	struct rk_crypto_info *dev  = platform_get_drvdata(dev_id);
-> @@ -259,7 +301,9 @@ static int rk_crypto_probe(struct platform_device *pdev)
->  	crypto_engine_start(crypto_info->engine);
->  	init_completion(&crypto_info->complete);
->  
-> -	rk_crypto_enable_clk(crypto_info);
-> +	err = rk_crypto_pm_init(crypto_info);
-> +	if (err)
-> +		goto err_crypto;
->  
->  	err = rk_crypto_register(crypto_info);
->  	if (err) {
-> @@ -280,6 +324,7 @@ static int rk_crypto_probe(struct platform_device *pdev)
->  	return 0;
->  
->  err_register_alg:
-> +	rk_crypto_pm_exit(crypto_info);
->  err_crypto:
->  	dev_err(dev, "Crypto Accelerator not successfully registered\n");
->  	return err;
-> @@ -293,7 +338,7 @@ static int rk_crypto_remove(struct platform_device *pdev)
->  	debugfs_remove_recursive(crypto_tmp->dbgfs_dir);
->  #endif
->  	rk_crypto_unregister();
-> -	rk_crypto_disable_clk(crypto_tmp);
-> +	rk_crypto_pm_exit(crypto_tmp);
->  	return 0;
->  }
->  
-> @@ -302,6 +347,7 @@ static struct platform_driver crypto_driver = {
->  	.remove		= rk_crypto_remove,
->  	.driver		= {
->  		.name	= "rk3288-crypto",
-> +		.pm		= &rk_crypto_pm_ops,
->  		.of_match_table	= crypto_of_id_table,
->  	},
->  };
-> diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
-> index e2a6d735f2e2..06b2d9f52a80 100644
-> --- a/drivers/crypto/rockchip/rk3288_crypto.h
-> +++ b/drivers/crypto/rockchip/rk3288_crypto.h
-> @@ -9,6 +9,7 @@
->  #include <linux/interrupt.h>
->  #include <linux/debugfs.h>
->  #include <linux/delay.h>
-> +#include <linux/pm_runtime.h>
->  #include <linux/scatterlist.h>
->  #include <crypto/engine.h>
->  #include <crypto/internal/hash.h>
-> diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-> index 8856c6226be6..a41e21c7141b 100644
-> --- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-> +++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-> @@ -328,6 +328,7 @@ static int rk_cra_hash_init(struct crypto_tfm *tfm)
->  	struct ahash_alg *alg = __crypto_ahash_alg(tfm->__crt_alg);
->  
->  	const char *alg_name = crypto_tfm_alg_name(tfm);
-> +	int err;
->  
->  	algt = container_of(alg, struct rk_crypto_tmp, alg.hash);
->  
-> @@ -349,7 +350,16 @@ static int rk_cra_hash_init(struct crypto_tfm *tfm)
->  	tctx->enginectx.op.prepare_request = rk_hash_prepare;
->  	tctx->enginectx.op.unprepare_request = rk_hash_unprepare;
->  
-> +	err = pm_runtime_get_sync(tctx->dev->dev);
-
-pm_runtime_resume_and_get() ?  The error handling is nicer with that.
-
-> +	if (err < 0)
-> +		goto error_pm;
-> +
->  	return 0;
-> +error_pm:
-> +	pm_runtime_put_noidle(tctx->dev->dev);
-> +	crypto_free_ahash(tctx->fallback_tfm);
-> +
-> +	return err;
->  }
->  
->  static void rk_cra_hash_exit(struct crypto_tfm *tfm)
-> @@ -357,6 +367,7 @@ static void rk_cra_hash_exit(struct crypto_tfm *tfm)
->  	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(tfm);
->  
->  	crypto_free_ahash(tctx->fallback_tfm);
-> +	pm_runtime_put_sync_suspend(tctx->dev->dev);
-
-Why use sync_suspend here?  Could this be pm_runtime_put_autosuspend()?
-
->  }
->  
->  struct rk_crypto_tmp rk_ahash_sha1 = {
-> diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-> index a8cfb520eaf8..55efda6ea3e7 100644
-> --- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-> +++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-> @@ -458,6 +458,7 @@ static int rk_ablk_init_tfm(struct crypto_skcipher *tfm)
->  	struct skcipher_alg *alg = crypto_skcipher_alg(tfm);
->  	const char *name = crypto_tfm_alg_name(&tfm->base);
->  	struct rk_crypto_tmp *algt;
-> +	int err;
->  
->  	algt = container_of(alg, struct rk_crypto_tmp, alg.skcipher);
->  
-> @@ -475,7 +476,15 @@ static int rk_ablk_init_tfm(struct crypto_skcipher *tfm)
->  
->  	ctx->enginectx.op.do_one_request = rk_cipher_run;
->  
-> +	err = pm_runtime_get_sync(ctx->dev->dev);
-
-Another place for pm_runtime_resume_and_get() ?
-
-> +	if (err < 0)
-> +		goto error_pm;
-> +
->  	return 0;
-> +error_pm:
-> +	pm_runtime_put_noidle(ctx->dev->dev);
-> +	crypto_free_skcipher(ctx->fallback_tfm);
-> +	return err;
->  }
->  
->  static void rk_ablk_exit_tfm(struct crypto_skcipher *tfm)
-> @@ -484,6 +493,7 @@ static void rk_ablk_exit_tfm(struct crypto_skcipher *tfm)
->  
->  	memzero_explicit(ctx->key, ctx->keylen);
->  	crypto_free_skcipher(ctx->fallback_tfm);
-> +	pm_runtime_put_sync_suspend(ctx->dev->dev);
-
-Again, can this be pm_runtime_put_autosuspend() ?
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
