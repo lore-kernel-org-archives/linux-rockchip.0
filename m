@@ -4,46 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B814C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 11:28:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2B0EC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 11:40:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6bkE3/eUwHCG9MxB+bLO6oIuBA92mr/cNnq2ZkWAfpg=; b=h0N2+0cjGSoIwQ
-	kgfYzk0MpcYbUa1BtULWFRetAAahycS3rH/V0+DJF35yTPCACYa2v1J0m/px4a/O1ztGpIlnFTdCx
-	nndBGW2LxmRoueFpJ/MxG0E2kvPM5vBibMbLpXlJrlYIsP6O5OU1LfHSBwfjHZSZ8+oYxXbsljM4t
-	jneuaVb9or/d1AaD6+xD19nT66/ajQWiYUK6+H23iyerF2R0lNxAo6L1TSce8uxmco8IYUiFSLIOC
-	482rxmytpZIIiqvgmCaBi+NRIbm7DNMperpszOx7okEPIIttNqzJlJ2Genzi6+5BvT4V+OJ1lXSbO
-	BAGQ3MkaLGLM7B8uoIHA==;
+	List-Owner; bh=xg6fWrCPW5Cvj/9RVvJcThgJYr7irGevpBgt7drMQ+I=; b=k19uUFyhseikzA
+	PPFwnq53YGEFoT+Z7JYSsDU2WbCjQsEs2txXzxLX0vuJL3I2btbb9rtRXfdds8N8FRo87SksA6YWW
+	o8PV/3pX6XcVcqjrvC6omRlACZgfHscFlkvdhRsUA6/HFdpaJ0HojtiGoQsVaqqNiSuXzNCVHLw4B
+	UQzIP2vPTFmNUoEeJHXqlWZHLe42YVwcqXE8cUUgppH98VXgd+kZ6D0N3Woxfcrfvvf5X/PzJZbVg
+	IWDa+zHE5f3ojl4Zbg9UnZ0XdslkMReU+U9gS8vkOGSvaPZ/1k6f5/JsXdsGAbvODfZkqDYXewzFO
+	Pf4Duf9GcpBLOLyNDFhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPjd4-006Cvw-Ra; Thu, 03 Mar 2022 11:28:18 +0000
+	id 1nPjox-006EyV-C7; Thu, 03 Mar 2022 11:40:35 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPjd2-006CvW-7S
- for linux-rockchip@lists.infradead.org; Thu, 03 Mar 2022 11:28:17 +0000
+ id 1nPjou-006ExG-IE
+ for linux-rockchip@lists.infradead.org; Thu, 03 Mar 2022 11:40:33 +0000
 Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
  helo=diego.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nPjcx-0007jj-Gf; Thu, 03 Mar 2022 12:28:11 +0100
+ id 1nPjos-0007nY-N4; Thu, 03 Mar 2022 12:40:30 +0100
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Jianqun Xu <jay.xu@rock-chips.com>
 Cc: linus.walleij@linaro.org, linux-rockchip@lists.infradead.org,
  linux-gpio@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
-Subject: Re: [PATCH 1/2] gpio: rockchip: make gpio work without cru module
-Date: Thu, 03 Mar 2022 12:28:10 +0100
-Message-ID: <8576445.5iEe77X0Xf@diego>
-In-Reply-To: <20220303062211.1378883-2-jay.xu@rock-chips.com>
+Subject: Re: [PATCH 2/2] gpio: rockchip: get pinctrl node from 'gpio-ranges'
+ property
+Date: Thu, 03 Mar 2022 12:40:30 +0100
+Message-ID: <2004737.KQk8vJUODO@diego>
+In-Reply-To: <20220303062211.1378883-3-jay.xu@rock-chips.com>
 References: <20220303062211.1378883-1-jay.xu@rock-chips.com>
- <20220303062211.1378883-2-jay.xu@rock-chips.com>
+ <20220303062211.1378883-3-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_032816_294309_DC8069E7 
-X-CRM114-Status: GOOD (  20.17  )
+X-CRM114-CacheID: sfid-20220303_034032_628380_95D76EA3 
+X-CRM114-Status: GOOD (  25.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,82 +64,105 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Jianqun,
 
-Am Donnerstag, 3. M=E4rz 2022, 07:22:10 CET schrieb Jianqun Xu:
-> In some case the system may has no builtin cru module, the gpio driver
-> will fail to get periph clock and debounce clock.
-
-can you elaborate a bit on what these cases are?
-
-> On rockchip SoCs, the pclk and dbg clk are default to be enabled and
-> ungated, the gpio possible to work without cru module.
+Am Donnerstag, 3. M=E4rz 2022, 07:22:11 CET schrieb Jianqun Xu:
+> The dt nodes for rockchip soc designes as
 > =
 
-> This patch makes gpio work fine without cru module.
+> 	pinctrl: pinctrl {
+> 		gpio {
+> 			gpio-ranges =3D <&pinctrl xxx>;
+> 		};
+> 	};
 > =
 
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> ---
->  drivers/gpio/gpio-rockchip.c | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
+> Currently, we get the pinctrl dt node from parent of gpio, this patch
+> try to get pinctrl dt node from 'gpio-ranges' property.
 > =
 
-> diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-> index a4c4e4584f5b..1da0324445cc 100644
-> --- a/drivers/gpio/gpio-rockchip.c
-> +++ b/drivers/gpio/gpio-rockchip.c
-> @@ -195,6 +195,9 @@ static int rockchip_gpio_set_debounce(struct gpio_chi=
-p *gc,
->  	unsigned int cur_div_reg;
->  	u64 div;
->  =
+> After this patch, the dt nodes possible to be
+> =
 
-> +	if (!bank->db_clk)
-> +		return -ENOENT;
-> +
->  	if (bank->gpio_type =3D=3D GPIO_TYPE_V2 && !IS_ERR(bank->db_clk)) {
->  		div_debounce_support =3D true;
->  		freq =3D clk_get_rate(bank->db_clk);
-> @@ -654,8 +657,10 @@ static int rockchip_get_bank_data(struct rockchip_pi=
-n_bank *bank)
->  		return -EINVAL;
->  =
+> 	gpio {
+> 		gpio-ranges =3D <&pinctrl xxx>;
+> 	};
+> =
 
->  	bank->clk =3D of_clk_get(bank->of_node, 0);
-> -	if (IS_ERR(bank->clk))
-> -		return PTR_ERR(bank->clk);
-> +	if (IS_ERR(bank->clk)) {
-> +		bank->clk =3D NULL;
-> +		dev_warn(bank->dev, "works without clk pm\n");
+> 	pinctrl: pinctrl {
+> =
 
-I'd definitly expect a more sensitive handling here (and below).
+> 	};
+> =
 
-I.e. the change right now, simply disables all error handling.
-But I do expect a handling difference between:
-- clock described in DT, but not available - should fail
-- clock not described in DT - can be allowed to go to NULL
+> then the gpio driver could register as platform device itself, but not
+> populate from pinctrl driver.
+
+The change looks interesting, as it would solve that long-standing
+design-issue I "created" back in 2013 ;-) .
+
+Though you need to keep some things in mind:
+
+(1) Such a change should be reflected in the devicetree binding
+    as it involves a different form of nodes and introduces.
+
+    Looking at the binding description, using gpio-ranges to map
+    to specific pinctrl pins really seems to be a valid use for this.
+
+
+(2) Keep things backwards compatible.
+    Old devicetrees should stay working with new kernel versions
+
+    A common pattern is to try the new approach and if that fails
+    try the "deprecated" method, which should be nicely doable
+    when looking at the code change below.
 
 
 Heiko
 
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> ---
+>  drivers/gpio/gpio-rockchip.c | 10 +++++++---
+>  1 file changed, 7 insertions(+), 3 deletions(-)
+> =
 
-> +	}
+> diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+> index 1da0324445cc..46c54dff92db 100644
+> --- a/drivers/gpio/gpio-rockchip.c
+> +++ b/drivers/gpio/gpio-rockchip.c
+> @@ -690,6 +690,9 @@ rockchip_gpio_find_bank(struct pinctrl_dev *pctldev, =
+int id)
+>  	int i, found =3D 0;
 >  =
 
->  	clk_prepare_enable(bank->clk);
->  	id =3D readl(bank->reg_base + gpio_regs_v2.version_id);
-> @@ -666,9 +671,8 @@ static int rockchip_get_bank_data(struct rockchip_pin=
-_bank *bank)
->  		bank->gpio_type =3D GPIO_TYPE_V2;
->  		bank->db_clk =3D of_clk_get(bank->of_node, 1);
->  		if (IS_ERR(bank->db_clk)) {
-> -			dev_err(bank->dev, "cannot find debounce clk\n");
-> -			clk_disable_unprepare(bank->clk);
-> -			return -EINVAL;
-> +			bank->db_clk =3D NULL;
-> +			dev_warn(bank->dev, "works without debounce clk pm\n");
->  		}
->  	} else {
->  		bank->gpio_regs =3D &gpio_regs_v1;
+>  	info =3D pinctrl_dev_get_drvdata(pctldev);
+> +	if (!info)
+> +		return NULL;
+> +
+>  	bank =3D info->ctrl->pin_banks;
+>  	for (i =3D 0; i < info->ctrl->nr_banks; i++, bank++) {
+>  		if (bank->bank_num =3D=3D id) {
+> @@ -705,15 +708,16 @@ static int rockchip_gpio_probe(struct platform_devi=
+ce *pdev)
+>  {
+>  	struct device *dev =3D &pdev->dev;
+>  	struct device_node *np =3D dev->of_node;
+> -	struct device_node *pctlnp =3D of_get_parent(np);
+> +	struct device_node *pctlnp =3D NULL;
+>  	struct pinctrl_dev *pctldev =3D NULL;
+>  	struct rockchip_pin_bank *bank =3D NULL;
+>  	struct rockchip_pin_output_deferred *cfg;
+>  	static int gpio;
+>  	int id, ret;
+>  =
+
+> -	if (!np || !pctlnp)
+> -		return -ENODEV;
+> +	pctlnp =3D of_parse_phandle(np, "gpio-ranges", 0);
+> +	if (!pctlnp)
+> +		pctlnp =3D of_get_parent(np);
+>  =
+
+>  	pctldev =3D of_pinctrl_get(pctlnp);
+>  	if (!pctldev)
 > =
 
 
