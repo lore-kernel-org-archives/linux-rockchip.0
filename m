@@ -4,70 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9095C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 13:45:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 861B2C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 14:22:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QJ1DI5/u9artcAOz1dJHDGWFNmqOt/zSR2T6jmsCIH4=; b=tffzE9wTTPL8W3
-	VtMw/gJuFbwg+tk+2t0gsPw/EnVQciyzFFhhVbXMQCrsm7m/kHlo4byaV6x3ub91KD1p/DUlDp50B
-	rvZwidO6ZmeVeqHo5P4sjwrHMhzwLpg/qAKFkjBigNht/vV6QAx53sBm2SgqDf3yzFev8Pxu6hCin
-	nPpcFKg5erC1lLRNvh1707cTk3fBJEnfnl8fwcycGen69/y2hTqyL9CMSUSyYsMCLw0uVYYH/3zxZ
-	9tX+Oj827jQF/v32p/Nudusc9RwH2PE8A63nbsR6k+MUqHzU5PBuK6cbs/ZJ4Ob3mTxhqdDfye5ol
-	uFsfn3/qtVwO4f3HRsCg==;
+	List-Owner; bh=abhcn/pJPJFfN3mW6+pPkSN/oRXPe9LZKGGDAI1kpes=; b=LRzJ4cGMvQhL0v
+	tuGN+AhFgK5qFGPj3ykSTjGOa7jXuo0C5BXi7UI8cp3H3SR9vvO3TgyLq9YH7DQsN/D+cHnSr+XUU
+	OSbXgFQVlSTq9Bq2zF5BA3tek/lh/XVzJl8ODbUFJo27LfdFgc1IbqDycDw6HOx56tIOGiaAI/D67
+	LZF49TsBe1NXzm/tZOxbKKEI5d5j27jiXDNB0LirlH+4H1kdEJzQTcInIjJJRjQUe2UTrNFmXjv5T
+	MN+et4jpO4VYbSZNij2509V2VWLwQrrtAwq3ZkH3mahpZycu+VcL/txwt3OFPcjt2VbCJAoWTW7kP
+	UEed9FEA67JTQGTCwOHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPllJ-006WzU-QL; Thu, 03 Mar 2022 13:44:57 +0000
-Received: from mail-oo1-f43.google.com ([209.85.161.43])
+	id 1nPmLA-006cml-Lo; Thu, 03 Mar 2022 14:22:00 +0000
+Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPll9-006Wvg-Du; Thu, 03 Mar 2022 13:44:50 +0000
-Received: by mail-oo1-f43.google.com with SMTP id
- j7-20020a4ad6c7000000b0031c690e4123so5766291oot.11; 
- Thu, 03 Mar 2022 05:44:46 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=MWU8DyAQWfBCp/kx00pg2Nk6vyP9a87Eky1nXis5bgw=;
- b=xX5rxEDtgC6fsnKGIEEmhGZt/yLuckyiLaQDrIpVPnGee9YgViWYCxK1BAy4GoCwGs
- 83snbosZhwo8RS3bstcdiXCW/TPjoqVrLgOfyellClUZGPLFSU64bpRf0k9ZVQtr13rK
- ysTH+ypwa29VvyzU9vS6bSmz3ByvWa0oiydkOzdN919Y3Bwj5nNMWM8oDefeozGS1DHv
- Ww+01Ix0ehMx2NNa9De4yhOsbqtdVK6evX/SlMrC+6DxaUQfx8gagDLsaKeraDVerIxY
- 7A6YoSZB/VlQHElK32uWeDKTbhTnNX8pxr0BAVwBKo7Smj/1YQC85ANtR+CUoZDNitNQ
- HDdA==
-X-Gm-Message-State: AOAM530v/GXRheeU1Yla7oJsk+SsKnnoQ7PkcXDM8/mdH24OyYUTYSoJ
- GPYiAoERTqtwUf4KqzKwor0Vn0T5FQ==
-X-Google-Smtp-Source: ABdhPJxEjj3zkKGLS+DBVQDv69xIDBRF37rnjyhkcK3WRGVogrbTz8vxAjXBhVtoY28jPMDvlnXutw==
-X-Received: by 2002:a05:6870:b62a:b0:d9:a98b:7a24 with SMTP id
- cm42-20020a056870b62a00b000d9a98b7a24mr3983372oab.160.1646315085557; 
- Thu, 03 Mar 2022 05:44:45 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213]) by smtp.gmail.com with ESMTPSA id
- a69-20020a4a4c48000000b0031bec1608fbsm940634oob.17.2022.03.03.05.44.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Mar 2022 05:44:44 -0800 (PST)
-Received: (nullmailer pid 1495436 invoked by uid 1000);
- Thu, 03 Mar 2022 13:44:38 -0000
-From: Rob Herring <robh@kernel.org>
+ id 1nPmKy-006ciC-2i; Thu, 03 Mar 2022 14:21:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=metanate.com; s=stronger; h=In-Reply-To:Content-Type:References:Message-ID:
+ Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description; bh=qjeRQXDRHJDEOFaM/bFhRf+N+QLbWVSGAMDaOy7ZtIw=; b=Rvpp4
+ 8c8iAHDqTdLm8OD88p2G1kMMZO1W9Qi8uaYRy6VtgwIne1WnNP5cFq+1yHtWWbJKgAzkyrTZ2OD/t
+ 1GAjcpLSaQ2q1Z/zbJhwn+ZgShs+EEoJtL4NtYR7Lr4tJBrTiRgJjUiYtedY05KN3wsNw56tzeXd5
+ xYsbHbNtEHBnddcHxE2yKCNmG24T3XqK0lcyH9rwZlwmW76WtWKTAsk6ZiB2mxqelhLwKG/iIkfPH
+ Q4t4f9pYMq0gttOHOmdDFCcchJpb1xwWOAz2XvzIyq0SEQiHiymNXyNpwu9qTLXc/GpjeaUg474I2
+ zs2suSeUxZ4I2VTyRjKIDlr7YdiWQ==;
+Received: from [81.174.171.191] (helo=donbot)
+ by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.93) (envelope-from <john@metanate.com>)
+ id 1nPmKo-0005yL-KP; Thu, 03 Mar 2022 14:21:38 +0000
+Date: Thu, 3 Mar 2022 14:21:37 +0000
+From: John Keeping <john@metanate.com>
 To: Corentin Labbe <clabbe@baylibre.com>
-Cc: devicetree@vger.kernel.org, heiko@sntech.de, linux-crypto@vger.kernel.org,
- herbert@gondor.apana.org.au, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, john@metanate.com, robh+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20220302211113.4003816-18-clabbe@baylibre.com>
+Cc: heiko@sntech.de, herbert@gondor.apana.org.au, robh+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 06/18] crypto: rockchip: add fallback for cipher
+Message-ID: <YiDO8Tt9Lhx530Oz@donbot>
 References: <20220302211113.4003816-1-clabbe@baylibre.com>
- <20220302211113.4003816-18-clabbe@baylibre.com>
-Subject: Re: [PATCH v2 17/18] dt-bindings: crypto: convert rockchip-crypto to
- yaml
-Date: Thu, 03 Mar 2022 07:44:38 -0600
-Message-Id: <1646315078.991896.1495435.nullmailer@robh.at.kernel.org>
+ <20220302211113.4003816-7-clabbe@baylibre.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220302211113.4003816-7-clabbe@baylibre.com>
+X-Authenticated: YES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_054447_497259_0B6AF4C4 
-X-CRM114-Status: UNSURE (   9.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220303_062148_142464_053CDBFF 
+X-CRM114-Status: GOOD (  19.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,86 +67,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 02 Mar 2022 21:11:12 +0000, Corentin Labbe wrote:
-> convert rockchip-crypto to yaml
+On Wed, Mar 02, 2022 at 09:11:01PM +0000, Corentin Labbe wrote:
+> The hardware does not handle 0 size length request, let's add a
+> fallback.
+> Furthermore fallback will be used for all unaligned case the hardware
+> cannot handle.
 > 
+> Fixes: ce0183cb6464b ("crypto: rockchip - switch to skcipher API")
 > Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 > ---
->  .../crypto/rockchip,rk3288-crypto.yaml        | 64 +++++++++++++++++++
->  .../bindings/crypto/rockchip-crypto.txt       | 28 --------
->  2 files changed, 64 insertions(+), 28 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
->  delete mode 100644 Documentation/devicetree/bindings/crypto/rockchip-crypto.txt
+>  drivers/crypto/rockchip/rk3288_crypto.h       |  2 +
+>  .../crypto/rockchip/rk3288_crypto_skcipher.c  | 97 ++++++++++++++++---
+>  2 files changed, 86 insertions(+), 13 deletions(-)
 > 
+> diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
+> index c919d9a43a08..8b1e15d8ddc6 100644
+> --- a/drivers/crypto/rockchip/rk3288_crypto.h
+> +++ b/drivers/crypto/rockchip/rk3288_crypto.h
+> @@ -246,10 +246,12 @@ struct rk_cipher_ctx {
+>  	struct rk_crypto_info		*dev;
+>  	unsigned int			keylen;
+>  	u8				iv[AES_BLOCK_SIZE];
+> +	struct crypto_skcipher *fallback_tfm;
+>  };
+>  
+>  struct rk_cipher_rctx {
+>  	u32				mode;
+> +	struct skcipher_request fallback_req;   // keep at the end
+>  };
+>  
+>  enum alg_type {
+> diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> index bbd0bf52bf07..bf9d398cc54c 100644
+> --- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> +++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> @@ -13,6 +13,63 @@
+>  
+>  #define RK_CRYPTO_DEC			BIT(0)
+>  
+> +static int rk_cipher_need_fallback(struct skcipher_request *req)
+> +{
+> +	struct scatterlist *sgs, *sgd;
+> +
+> +	if (!req->cryptlen)
+> +		return true;
+> +
+> +	sgs = req->src;
+> +	while (sgs) {
+> +		if (!IS_ALIGNED(sgs->offset, sizeof(u32))) {
+> +			return true;
+> +		}
+> +		if (sgs->length % 16) {
 
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
+Can this be relaxed to check for alignment to 4 rather than 16?  That's
+the requirement for programming the registers.
 
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
-
-Full log is available here: https://patchwork.ozlabs.org/patch/1600075
-
-
-cypto-controller@ff8a0000: clock-names: ['aclk', 'hclk', 'sclk', 'apb_pclk'] is too long
-	arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml
-	arch/arm/boot/dts/rk3288-evb-rk808.dt.yaml
-	arch/arm/boot/dts/rk3288-firefly-beta.dt.yaml
-	arch/arm/boot/dts/rk3288-firefly.dt.yaml
-	arch/arm/boot/dts/rk3288-firefly-reload.dt.yaml
-	arch/arm/boot/dts/rk3288-miqi.dt.yaml
-	arch/arm/boot/dts/rk3288-phycore-rdk.dt.yaml
-	arch/arm/boot/dts/rk3288-popmetal.dt.yaml
-	arch/arm/boot/dts/rk3288-r89.dt.yaml
-	arch/arm/boot/dts/rk3288-rock2-square.dt.yaml
-	arch/arm/boot/dts/rk3288-rock-pi-n8.dt.yaml
-	arch/arm/boot/dts/rk3288-tinker.dt.yaml
-	arch/arm/boot/dts/rk3288-tinker-s.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-brain.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-fievel.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-jaq.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-jerry.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-mickey.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-mighty.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-minnie.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-pinky.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-speedy.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-tiger.dt.yaml
-	arch/arm/boot/dts/rk3288-vyasa.dt.yaml
-
-cypto-controller@ff8a0000: clocks: [[7, 199], [7, 461], [7, 125], [7, 193]] is too long
-	arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml
-	arch/arm/boot/dts/rk3288-evb-rk808.dt.yaml
-	arch/arm/boot/dts/rk3288-firefly-beta.dt.yaml
-	arch/arm/boot/dts/rk3288-firefly.dt.yaml
-	arch/arm/boot/dts/rk3288-firefly-reload.dt.yaml
-	arch/arm/boot/dts/rk3288-miqi.dt.yaml
-	arch/arm/boot/dts/rk3288-phycore-rdk.dt.yaml
-	arch/arm/boot/dts/rk3288-popmetal.dt.yaml
-	arch/arm/boot/dts/rk3288-r89.dt.yaml
-	arch/arm/boot/dts/rk3288-rock2-square.dt.yaml
-	arch/arm/boot/dts/rk3288-rock-pi-n8.dt.yaml
-	arch/arm/boot/dts/rk3288-tinker.dt.yaml
-	arch/arm/boot/dts/rk3288-tinker-s.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-brain.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-fievel.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-jaq.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-jerry.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-mickey.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-mighty.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-minnie.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-pinky.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-speedy.dt.yaml
-	arch/arm/boot/dts/rk3288-veyron-tiger.dt.yaml
-	arch/arm/boot/dts/rk3288-vyasa.dt.yaml
-
+But I think this check is wrong in general as it doesn't account for
+cryptlen; with fscrypt I'm seeing sgs->length == 255 but cryptlen == 16
+so the hardware can be used but at the moment the fallback path is
+triggered.
 
 _______________________________________________
 Linux-rockchip mailing list
