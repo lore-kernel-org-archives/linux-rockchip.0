@@ -4,75 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FD6CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 10:21:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B814C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 11:28:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jmMP71vuuZMfdfG1apxjdxSg/SfCfbYaMxPGIzUy9cQ=; b=44zz+Ms1xyoB5R
-	5inm+M7ADidurePzxVBm5A3Gy0rJ1rgt2a9X0RsfrYOeHxDTdOWjJx2+2kNeFDoYd90tQPJ86K7SY
-	74LE8gx4ecmcYzj7njbvc7phO5aka2BbotJnIrkRcTUiVanAq8YONGQvCSBoJ76PCo6+JOojAEtvE
-	nPl+ZPkevUM7yUNwrL1/7YCdbHvYwsZUF4wtQ5qFynzCNDBuuWK17ZISQRrWeIQzBQnkV8HCHosqb
-	hTLJS8Ws4y3wv/lRDOky+heiEVcx9x0fieVkzEHEAeaGLdsfD/6imt2KcYU8/wIwEFQsedWugALJl
-	Ki57Ox8oz+9hxCqVdLsw==;
+	List-Owner; bh=6bkE3/eUwHCG9MxB+bLO6oIuBA92mr/cNnq2ZkWAfpg=; b=h0N2+0cjGSoIwQ
+	kgfYzk0MpcYbUa1BtULWFRetAAahycS3rH/V0+DJF35yTPCACYa2v1J0m/px4a/O1ztGpIlnFTdCx
+	nndBGW2LxmRoueFpJ/MxG0E2kvPM5vBibMbLpXlJrlYIsP6O5OU1LfHSBwfjHZSZ8+oYxXbsljM4t
+	jneuaVb9or/d1AaD6+xD19nT66/ajQWiYUK6+H23iyerF2R0lNxAo6L1TSce8uxmco8IYUiFSLIOC
+	482rxmytpZIIiqvgmCaBi+NRIbm7DNMperpszOx7okEPIIttNqzJlJ2Genzi6+5BvT4V+OJ1lXSbO
+	BAGQ3MkaLGLM7B8uoIHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPian-0063UN-Mu; Thu, 03 Mar 2022 10:21:53 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1nPjd4-006Cvw-Ra; Thu, 03 Mar 2022 11:28:18 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPiak-0063TZ-Sf
- for linux-rockchip@lists.infradead.org; Thu, 03 Mar 2022 10:21:52 +0000
-Received: by mail-lf1-x134.google.com with SMTP id j15so7538794lfe.11
- for <linux-rockchip@lists.infradead.org>; Thu, 03 Mar 2022 02:21:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=YzVwY3mEdfiRjeh2nt8836txEmK+uEtk2JZC3Nb2yhk=;
- b=j9gu4Mu0aHrDPXhX9fLc18SmXl5WKdNcVj8zUgG/jHfez5HDyr9OyMW5K/I1w4bV0n
- 3FyDjFem2mdqFd/HELZ7FQCZ16utQ2I5Z0/CDl4ifmZceSJL85dgADz05D3Fm0waPatR
- gWtWwWZhpWz/BJZM6C8Vk92O4ir6gZk10aNCluzkdRMPkgM9508C/R22kC3AoF585IN4
- 0HNHImtsgHLkeAiz/Zsq8AzGJolAUFXeP7BQNP8+SKWXE7fF1UQvzGu4To+hAIA/d6GJ
- DAfx7RMicH8qS89PmQS+1ClQmTMREGz68SNsPB0y1tuMaruAeBQ6AZVQXaEc+KsoeFS0
- ab/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=YzVwY3mEdfiRjeh2nt8836txEmK+uEtk2JZC3Nb2yhk=;
- b=DF+6hUgIt45DyJOFnbIUYV6ZCNTSjkgIknnmt9lhFWCGK1UTbkPrGkjlgbSK4p75ke
- FyUtCeYFa4q5r8U09fRF2zXY/tgiClIukiKkPO54WqCw9sZNyyDgS245P/WzhfpS9TLA
- lzdpWa6Xdvsyez2++uVuI9DOEVx3qmTJs+3ycR8LT82+OAPF16cnlc8Mgz4b6qpGKH12
- rNc3Q+81DT7gccMpSzr4vOnVKja1RL153iTYEjbdCfsJKYSdyk3a3EIMIHBXrQD6oXME
- TwRHLG/TZlJ1e0c/L1ecZz/ZsfvgFZm360rXg+KlP9n2h+LN+mzh/to1tG/85U0aFvmp
- +dlg==
-X-Gm-Message-State: AOAM530jn/b7jfkTAcZ2z203jb+t98Zr9DA3n13Qo7wMWxrd/m4d17Ng
- fZZ99+hDjAsmBvqF7GFzkHdR9TNTQ3CXSHA2DSSAKA==
-X-Google-Smtp-Source: ABdhPJyRYePCBmySOF86+bHiB9xM/7SHonPiD0jMfoAj63fevUiSyjjk2EiJRi3fN0UWBQfOhYDVdoWgep3vWddYIPg=
-X-Received: by 2002:a05:6512:260b:b0:445:c54c:4157 with SMTP id
- bt11-20020a056512260b00b00445c54c4157mr1496331lfb.254.1646302908794; Thu, 03
- Mar 2022 02:21:48 -0800 (PST)
+ id 1nPjd2-006CvW-7S
+ for linux-rockchip@lists.infradead.org; Thu, 03 Mar 2022 11:28:17 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1nPjcx-0007jj-Gf; Thu, 03 Mar 2022 12:28:11 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Jianqun Xu <jay.xu@rock-chips.com>
+Cc: linus.walleij@linaro.org, linux-rockchip@lists.infradead.org,
+ linux-gpio@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
+Subject: Re: [PATCH 1/2] gpio: rockchip: make gpio work without cru module
+Date: Thu, 03 Mar 2022 12:28:10 +0100
+Message-ID: <8576445.5iEe77X0Xf@diego>
+In-Reply-To: <20220303062211.1378883-2-jay.xu@rock-chips.com>
+References: <20220303062211.1378883-1-jay.xu@rock-chips.com>
+ <20220303062211.1378883-2-jay.xu@rock-chips.com>
 MIME-Version: 1.0
-References: <20220303015151.1711860-1-pgwipeout@gmail.com>
- <CAPDyKFrk+HCbSZtB7uv6u9tjTgzFDjpB9oP9FYJUqNxcCzQ9iw@mail.gmail.com>
- <CAMdYzYrndAwWJELRRL4kP-BCdWuF6bLVwS2PUMVx_UcJZE=nsQ@mail.gmail.com>
-In-Reply-To: <CAMdYzYrndAwWJELRRL4kP-BCdWuF6bLVwS2PUMVx_UcJZE=nsQ@mail.gmail.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Thu, 3 Mar 2022 11:21:12 +0100
-Message-ID: <CAPDyKFp8tZ-Ty0Wo2jkTjr6Jun83QczQfQRQ1zvFBBCOCWjtng@mail.gmail.com>
-Subject: Re: [PATCH] mmc: host: dw-mmc-rockchip: fix handling invalid clock
- rates
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Jaehoon Chung <jh80.chung@samsung.com>,
- Heiko Stuebner <heiko@sntech.de>, Addy Ke <addy.ke@rock-chips.com>, 
- Doug Anderson <dianders@chromium.org>, linux-mmc@vger.kernel.org, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_022150_976582_8B8F8859 
-X-CRM114-Status: GOOD (  31.41  )
+X-CRM114-CacheID: sfid-20220303_032816_294309_DC8069E7 
+X-CRM114-Status: GOOD (  20.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,88 +56,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 3 Mar 2022 at 10:49, Peter Geis <pgwipeout@gmail.com> wrote:
->
-> On Thu, Mar 3, 2022 at 2:53 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
-> >
-> > On Thu, 3 Mar 2022 at 02:52, Peter Geis <pgwipeout@gmail.com> wrote:
-> > >
-> > > The Rockchip ciu clock cannot be set as low as the dw-mmc hardware
-> > > supports. This leads to a situation during card initialization where the
-> > > ciu clock is set lower than the clock driver can support. The
-> > > dw-mmc-rockchip driver spews errors when this happens.
-> > > For normal operation this only happens a few times during boot, but when
-> > > cd-broken is enabled (in cases such as the SoQuartz module) this fires
-> > > multiple times each poll cycle.
-> > >
-> > > Fix this by testing the minimum frequency the clock driver can support
-> > > that is within the mmc specification, then divide that by the internal
-> > > clock divider. Set the f_min frequency to this value, or if it fails,
-> > > set f_min to the downstream driver's default.
-> > >
-> > > Fixes: f629ba2c04c9 ("mmc: dw_mmc: add support for RK3288")
-> > >
-> > > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> > > ---
-> > >  drivers/mmc/host/dw_mmc-rockchip.c | 31 ++++++++++++++++++++++++++----
-> > >  1 file changed, 27 insertions(+), 4 deletions(-)
-> > >
-> > > diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-> > > index 95d0ec0f5f3a..c198590cd74a 100644
-> > > --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> > > +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> > > @@ -15,7 +15,9 @@
-> > >  #include "dw_mmc.h"
-> > >  #include "dw_mmc-pltfm.h"
-> > >
-> > > -#define RK3288_CLKGEN_DIV       2
-> > > +#define RK3288_CLKGEN_DIV      2
-> > > +#define RK3288_MIN_INIT_FREQ   375000
-> > > +#define MMC_MAX_INIT_FREQ      400000
-> > >
-> > >  struct dw_mci_rockchip_priv_data {
-> > >         struct clk              *drv_clk;
-> > > @@ -27,6 +29,7 @@ struct dw_mci_rockchip_priv_data {
-> > >  static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
-> > >  {
-> > >         struct dw_mci_rockchip_priv_data *priv = host->priv;
-> > > +       struct mmc_host *mmc = mmc_from_priv(host);
-> > >         int ret;
-> > >         unsigned int cclkin;
-> > >         u32 bus_hz;
-> > > @@ -34,6 +37,10 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
-> > >         if (ios->clock == 0)
-> > >                 return;
-> > >
-> > > +       /* the clock will fail if below the f_min rate */
-> > > +       if (ios->clock < mmc->f_min)
-> > > +               ios->clock = mmc->f_min;
-> > > +
-> >
-> > You shouldn't need this. The mmc core should manage this already.
->
-> I thought so too, but while setting f_min did reduce the number of
-> errors, it didn't stop them completely.
-> Each tick I was getting three failures, it turns out mmc core tries
-> anyways with 300000, 200000, and 100000.
-> Clamping it here was necessary to stop these.
+Hi Jianqun,
 
-Ohh, that was certainly a surprise to me. Unless the dw_mmc driver
-invokes this path on it's own in some odd way, that means the mmc core
-has a bug that we need to fix.
+Am Donnerstag, 3. M=E4rz 2022, 07:22:10 CET schrieb Jianqun Xu:
+> In some case the system may has no builtin cru module, the gpio driver
+> will fail to get periph clock and debounce clock.
 
-Would you mind taking a stack trace or debug this so we understand in
-what case the mmc core doesn't respect f_min? It really should.
+can you elaborate a bit on what these cases are?
 
-[...]
+> On rockchip SoCs, the pclk and dbg clk are default to be enabled and
+> ungated, the gpio possible to work without cru module.
+> =
 
-Kind regards
-Uffe
+> This patch makes gpio work fine without cru module.
+> =
+
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> ---
+>  drivers/gpio/gpio-rockchip.c | 14 +++++++++-----
+>  1 file changed, 9 insertions(+), 5 deletions(-)
+> =
+
+> diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+> index a4c4e4584f5b..1da0324445cc 100644
+> --- a/drivers/gpio/gpio-rockchip.c
+> +++ b/drivers/gpio/gpio-rockchip.c
+> @@ -195,6 +195,9 @@ static int rockchip_gpio_set_debounce(struct gpio_chi=
+p *gc,
+>  	unsigned int cur_div_reg;
+>  	u64 div;
+>  =
+
+> +	if (!bank->db_clk)
+> +		return -ENOENT;
+> +
+>  	if (bank->gpio_type =3D=3D GPIO_TYPE_V2 && !IS_ERR(bank->db_clk)) {
+>  		div_debounce_support =3D true;
+>  		freq =3D clk_get_rate(bank->db_clk);
+> @@ -654,8 +657,10 @@ static int rockchip_get_bank_data(struct rockchip_pi=
+n_bank *bank)
+>  		return -EINVAL;
+>  =
+
+>  	bank->clk =3D of_clk_get(bank->of_node, 0);
+> -	if (IS_ERR(bank->clk))
+> -		return PTR_ERR(bank->clk);
+> +	if (IS_ERR(bank->clk)) {
+> +		bank->clk =3D NULL;
+> +		dev_warn(bank->dev, "works without clk pm\n");
+
+I'd definitly expect a more sensitive handling here (and below).
+
+I.e. the change right now, simply disables all error handling.
+But I do expect a handling difference between:
+- clock described in DT, but not available - should fail
+- clock not described in DT - can be allowed to go to NULL
+
+
+Heiko
+
+
+> +	}
+>  =
+
+>  	clk_prepare_enable(bank->clk);
+>  	id =3D readl(bank->reg_base + gpio_regs_v2.version_id);
+> @@ -666,9 +671,8 @@ static int rockchip_get_bank_data(struct rockchip_pin=
+_bank *bank)
+>  		bank->gpio_type =3D GPIO_TYPE_V2;
+>  		bank->db_clk =3D of_clk_get(bank->of_node, 1);
+>  		if (IS_ERR(bank->db_clk)) {
+> -			dev_err(bank->dev, "cannot find debounce clk\n");
+> -			clk_disable_unprepare(bank->clk);
+> -			return -EINVAL;
+> +			bank->db_clk =3D NULL;
+> +			dev_warn(bank->dev, "works without debounce clk pm\n");
+>  		}
+>  	} else {
+>  		bank->gpio_regs =3D &gpio_regs_v1;
+> =
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
