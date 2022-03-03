@@ -4,78 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6FA8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 21:31:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60032C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Mar 2022 21:52:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FZBlbu8xO/BgGMOs0Ma8wDOVQQ3UnUbUiBNAupfwYyc=; b=JzHJfl8ICcLZvD
-	UH+GPx4Q6NlxHh6s+Mg4XIi11FtsDFUa4/acoSrCpjpE5g2WVXJCD9UmHW0OUstTcG27pQifYOaNb
-	s9xF+StVMe7U+jBOjZQm+gtAU7wOU0BgRjNlngAk0jtCggmJK+letu8+SZVa0WRWwtjsZ7knSEuz/
-	ER5tBl069vbPqUjIRumlrtrvj74XnT4um0Lmi83wfh4KEO4f4WPyebaqGZkl7s+QDZAv+H7WV9frs
-	2vVRZrGbvb9o0wbYrVUB1EuCot1X833XtsgtGaruQ1GXXF4DXwAionqC2stUhrxjGJSB4dYOP+Ers
-	H9kKMjDJPeFug5d9GusA==;
+	List-Owner; bh=nlQakHctWC+oJL2E9Shm01kSW+NKW4aMC8wfIENU0ow=; b=xee/cWDmLdOcvC
+	OLMi9lkdxC478U1rztnTYyV3HxdJY9udqvzFE5MA2OT0wGRrYtVHIoxyYkjZN+nlcBzxU92tPL+Fx
+	BozMDj9vV7C1k2ySPma3Oxlb7fMrO354zpu77dfgvtx7wTLsNwRboHQ+SMRsuSrmAGbXg7IktfHjH
+	j4ejt7o1Fw847hcFzLVLo9SPu2FPz7oVYtwlSssqqULKv2HVTcKcPDstEk0HX1j3sVzYnGZPgp0tU
+	qkpFXi4h3rcEd2kQFmbN0qtfSB9GOKn18X0nr76x1mxqed/e+QsOGjZVz7pG1S2u7DXBOfZ6Y3z5S
+	h+uJ8MjVHNjsd+y9KBZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nPt2p-007pV4-Qy; Thu, 03 Mar 2022 21:31:31 +0000
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+	id 1nPtN8-007slA-JQ; Thu, 03 Mar 2022 21:52:30 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nPt2c-007pRA-RE; Thu, 03 Mar 2022 21:31:20 +0000
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-2dc348dab52so37038097b3.6; 
- Thu, 03 Mar 2022 13:31:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ id 1nPtN5-007sjW-Gy
+ for linux-rockchip@lists.infradead.org; Thu, 03 Mar 2022 21:52:28 +0000
+Received: by mail-ed1-x531.google.com with SMTP id w4so5852506edc.7
+ for <linux-rockchip@lists.infradead.org>; Thu, 03 Mar 2022 13:52:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QNfKZMMKziUoL1dbgKyTvgeSMX2xqKvBZZHesE5dGSE=;
- b=ljCPXBT7kCLlCBtRr+GUEScUoSqwhmMm61CWTz4QuukXEximFyV+hlmC6jxR/xMquh
- 7GwHSDZxEMPpRYWlpYMPBj/pUX3uqkSLI22DaWjRNwMNcqh/VLo4ewSgfopRBsKUwKVL
- ptPDGFR2dA3u5nGVRXyEhzKIYePQCkXZmpPfjbDomCMJO7SK5GEeTMTALoGGr3wdJt6a
- aUg9zxwOpQniKud5eqc0RU4QuFtKrWKRKwoUTxkV6PU750t6hfqXURbiSIxfAcyr/FxD
- 7RXpjBPEh/eR7wNb6DO8Aj4sUObDEYNRPpAY503qMU2DpiMJJ0msBijlLh8YW4uKs9z+
- Iv7g==
+ :cc; bh=GYiLJYYPJSjUhcXRGu1IuMA7OVQstg8mWS33iyknnRU=;
+ b=Zc/WF7ywL7MhnMKbU00JCToNkD/++ZgWE+Y89kS14vE0kJ93fDvXJU5KZ4j0/9sqRK
+ u9AjOEVVqB293uk/CyLW01XQKf8FgYoh55sm0DdlmYgEg1i9BkiLpKzZDXMyBcFxiTKe
+ r1vJZPhN00yxmarO4mEaCG8FJaDbFVV0xnbKY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=QNfKZMMKziUoL1dbgKyTvgeSMX2xqKvBZZHesE5dGSE=;
- b=bL63L3hLYQxHF8ra45Hu+DMt+XglTAylSZtSV3JGXD3SnJS9WpbTAt9WGCGu6lmzHZ
- In57NfuB/e2o8fI5xbzcmHOM929WUIVRiK0RnIsYCBGODRx5zt74j/w/ZkIxo4jlKr54
- hy/KsGWtQWs/fXQQx37hbs6LRflQ7VH3WbL7ksTZdZ1nrHGgDq98/e9+pXq44/HBadjw
- gq2lnlgczAvhkYYsqeXuaMdLtBKpplW2hsPxE9BNDaCkOlTfajiHI6fVBKZgYDwzDhTt
- gvEuGABPtZNBMGSv4DyotfruCV9CcdPPnLXEfa5VPc35tlJkgy+OcQQFUoW6ajilxF7A
- cCJw==
-X-Gm-Message-State: AOAM533pv/ZJ9lSChdaFcEDBg5hYuXc3tWevaUyUekSknsH5XXTnWe7Q
- +zqKlG6+07zHVpvH2pVp34jmBAfnaxxcMlR2AVk=
-X-Google-Smtp-Source: ABdhPJxH4H8OaBQDItbgQF521yYplb1Gjv67ZCeHiqcOfboIqpFvQONrxrQNM0ENsmVMT0wfWjHo5NYbiu8nHSakp6w=
-X-Received: by 2002:a81:b147:0:b0:2d7:68b8:de55 with SMTP id
- p68-20020a81b147000000b002d768b8de55mr36338788ywh.281.1646343077491; Thu, 03
- Mar 2022 13:31:17 -0800 (PST)
+ bh=GYiLJYYPJSjUhcXRGu1IuMA7OVQstg8mWS33iyknnRU=;
+ b=eRizT3GAPMaj3Ar0XmGKM6jJgKQlXIOW1bXOf+OLtqN3TZzxGe/bjhXvggJv3aSFec
+ 0FKr/zrWsYAPSFmfIZLf9ujpAp4eBBkI+6tWNSSmXDmdG6NMkYIWnguRFAveJYAWFbRq
+ E4dEiJ6kx+ZAF3LttZYzRlNRavJlyNpG35/ZCNSb94Rt0Nsob14S/KJjh8L+3zTxrJ5I
+ Id2FoXwWQYgTY0wjikv+yJvEhpFTXzMKLzoXJH4lFUOwbgwRqsWRRMxP/Js4ZsFOQUZj
+ 7gOvXJ5geL5wrlRtba4mv/E9v/oTh5zC8EpJq9BBvWtehBe6p6wEOlcGPH8CqvchukzX
+ OPLw==
+X-Gm-Message-State: AOAM533/DaMTjJSOj6Zlijy2fRU43nPsIyCECUi2GI6d1LrmWQzzdhxT
+ FGkA2/q9DsvS0vfo2ysD9YYdLpyZrAUWAuCZ
+X-Google-Smtp-Source: ABdhPJxc/H7Zo9Rp5MPV770wdamwK41h6LlwULtnyt7APkXz5TIeF4uUFRDnNCvKCkP3X4G1EaUSFQ==
+X-Received: by 2002:a05:6402:5241:b0:415:b1c4:4c6a with SMTP id
+ t1-20020a056402524100b00415b1c44c6amr11023801edd.324.1646344343320; 
+ Thu, 03 Mar 2022 13:52:23 -0800 (PST)
+Received: from mail-wr1-f41.google.com (mail-wr1-f41.google.com.
+ [209.85.221.41]) by smtp.gmail.com with ESMTPSA id
+ u1-20020aa7d0c1000000b004132c0a9ee3sm1311251edo.84.2022.03.03.13.52.21
+ for <linux-rockchip@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 03 Mar 2022 13:52:22 -0800 (PST)
+Received: by mail-wr1-f41.google.com with SMTP id i8so9819094wrr.8
+ for <linux-rockchip@lists.infradead.org>; Thu, 03 Mar 2022 13:52:21 -0800 (PST)
+X-Received: by 2002:a5d:64ed:0:b0:1f0:6672:f10c with SMTP id
+ g13-20020a5d64ed000000b001f06672f10cmr1142174wri.679.1646344341238; Thu, 03
+ Mar 2022 13:52:21 -0800 (PST)
 MIME-Version: 1.0
 References: <20220303015151.1711860-1-pgwipeout@gmail.com>
- <CAPDyKFrk+HCbSZtB7uv6u9tjTgzFDjpB9oP9FYJUqNxcCzQ9iw@mail.gmail.com>
- <CAMdYzYrndAwWJELRRL4kP-BCdWuF6bLVwS2PUMVx_UcJZE=nsQ@mail.gmail.com>
- <CAPDyKFp8tZ-Ty0Wo2jkTjr6Jun83QczQfQRQ1zvFBBCOCWjtng@mail.gmail.com>
- <05ffc792-17cf-64f8-d3fd-4f7658aa6722@arm.com>
-In-Reply-To: <05ffc792-17cf-64f8-d3fd-4f7658aa6722@arm.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Thu, 3 Mar 2022 16:31:06 -0500
-Message-ID: <CAMdYzYpEhoU+0RVkDgoo3c49Pa8q-oeqd=sp7y8SYsvwDPOP0g@mail.gmail.com>
+In-Reply-To: <20220303015151.1711860-1-pgwipeout@gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Date: Thu, 3 Mar 2022 13:52:08 -0800
+X-Gmail-Original-Message-ID: <CAD=FV=W6O5TtOHdVCbOyu221HrQWB8CnvcKA-5G49UF6TJaaHQ@mail.gmail.com>
+Message-ID: <CAD=FV=W6O5TtOHdVCbOyu221HrQWB8CnvcKA-5G49UF6TJaaHQ@mail.gmail.com>
 Subject: Re: [PATCH] mmc: host: dw-mmc-rockchip: fix handling invalid clock
  rates
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
- Jaehoon Chung <jh80.chung@samsung.com>, 
- Heiko Stuebner <heiko@sntech.de>, Addy Ke <addy.ke@rock-chips.com>, 
- Doug Anderson <dianders@chromium.org>, linux-mmc@vger.kernel.org, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Robin Murphy <robin.murphy@arm.com>, Jaehoon Chung <jh80.chung@samsung.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Addy Ke <addy.ke@rock-chips.com>, Linux MMC List <linux-mmc@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ LKML <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220303_133118_905400_3F4F194F 
-X-CRM114-Status: GOOD (  33.44  )
+X-CRM114-CacheID: sfid-20220303_135227_616339_A6C9F2D9 
+X-CRM114-Status: GOOD (  17.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,91 +97,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 3, 2022 at 10:19 AM Robin Murphy <robin.murphy@arm.com> wrote:
->
-> On 2022-03-03 10:21, Ulf Hansson wrote:
-> > On Thu, 3 Mar 2022 at 10:49, Peter Geis <pgwipeout@gmail.com> wrote:
-> >>
-> >> On Thu, Mar 3, 2022 at 2:53 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
-> >>>
-> >>> On Thu, 3 Mar 2022 at 02:52, Peter Geis <pgwipeout@gmail.com> wrote:
-> >>>>
-> >>>> The Rockchip ciu clock cannot be set as low as the dw-mmc hardware
-> >>>> supports. This leads to a situation during card initialization where the
-> >>>> ciu clock is set lower than the clock driver can support. The
-> >>>> dw-mmc-rockchip driver spews errors when this happens.
-> >>>> For normal operation this only happens a few times during boot, but when
-> >>>> cd-broken is enabled (in cases such as the SoQuartz module) this fires
-> >>>> multiple times each poll cycle.
-> >>>>
-> >>>> Fix this by testing the minimum frequency the clock driver can support
-> >>>> that is within the mmc specification, then divide that by the internal
-> >>>> clock divider. Set the f_min frequency to this value, or if it fails,
-> >>>> set f_min to the downstream driver's default.
-> >>>>
-> >>>> Fixes: f629ba2c04c9 ("mmc: dw_mmc: add support for RK3288")
-> >>>>
-> >>>> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> >>>> ---
-> >>>>   drivers/mmc/host/dw_mmc-rockchip.c | 31 ++++++++++++++++++++++++++----
-> >>>>   1 file changed, 27 insertions(+), 4 deletions(-)
-> >>>>
-> >>>> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-> >>>> index 95d0ec0f5f3a..c198590cd74a 100644
-> >>>> --- a/drivers/mmc/host/dw_mmc-rockchip.c
-> >>>> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
-> >>>> @@ -15,7 +15,9 @@
-> >>>>   #include "dw_mmc.h"
-> >>>>   #include "dw_mmc-pltfm.h"
-> >>>>
-> >>>> -#define RK3288_CLKGEN_DIV       2
-> >>>> +#define RK3288_CLKGEN_DIV      2
-> >>>> +#define RK3288_MIN_INIT_FREQ   375000
-> >>>> +#define MMC_MAX_INIT_FREQ      400000
-> >>>>
-> >>>>   struct dw_mci_rockchip_priv_data {
-> >>>>          struct clk              *drv_clk;
-> >>>> @@ -27,6 +29,7 @@ struct dw_mci_rockchip_priv_data {
-> >>>>   static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
-> >>>>   {
-> >>>>          struct dw_mci_rockchip_priv_data *priv = host->priv;
-> >>>> +       struct mmc_host *mmc = mmc_from_priv(host);
-> >>>>          int ret;
-> >>>>          unsigned int cclkin;
-> >>>>          u32 bus_hz;
-> >>>> @@ -34,6 +37,10 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
-> >>>>          if (ios->clock == 0)
-> >>>>                  return;
-> >>>>
-> >>>> +       /* the clock will fail if below the f_min rate */
-> >>>> +       if (ios->clock < mmc->f_min)
-> >>>> +               ios->clock = mmc->f_min;
-> >>>> +
-> >>>
-> >>> You shouldn't need this. The mmc core should manage this already.
-> >>
-> >> I thought so too, but while setting f_min did reduce the number of
-> >> errors, it didn't stop them completely.
-> >> Each tick I was getting three failures, it turns out mmc core tries
-> >> anyways with 300000, 200000, and 100000.
-> >> Clamping it here was necessary to stop these.
-> >
-> > Ohh, that was certainly a surprise to me. Unless the dw_mmc driver
-> > invokes this path on it's own in some odd way, that means the mmc core
-> > has a bug that we need to fix.
-> >
-> > Would you mind taking a stack trace or debug this so we understand in
-> > what case the mmc core doesn't respect f_min? It really should.
->
-> I'm only armed with grep and a hunch, but is dw_mci_init_slot_caps()
-> stomping on the same f_min that we've set in the platform init hook?
+Hi,
 
-I suspected this originally, but no, f_min remains intact, so it's
-something else.
-Also, this clamp wouldn't work if f_min got clobbered.
-
+On Wed, Mar 2, 2022 at 5:52 PM Peter Geis <pgwipeout@gmail.com> wrote:
 >
-> Robin.
+> The Rockchip ciu clock cannot be set as low as the dw-mmc hardware
+> supports. This leads to a situation during card initialization where the
+> ciu clock is set lower than the clock driver can support. The
+> dw-mmc-rockchip driver spews errors when this happens.
+> For normal operation this only happens a few times during boot, but when
+> cd-broken is enabled (in cases such as the SoQuartz module) this fires
+> multiple times each poll cycle.
+>
+> Fix this by testing the minimum frequency the clock driver can support
+> that is within the mmc specification, then divide that by the internal
+> clock divider. Set the f_min frequency to this value, or if it fails,
+> set f_min to the downstream driver's default.
+>
+> Fixes: f629ba2c04c9 ("mmc: dw_mmc: add support for RK3288")
+
+I don't spend tons of time either Rockchip or dw-mmc these days, but
+your email tickled a memory in my mind and I swore that I remember
+this whole 400 kHz minimum thing, though I never dug into it myself.
+It actually looks like the 400 kHz minimum disappeared sometime in
+2016! See commit 6a8883d614c7 ("ARM: dts: rockchip: replace to
+"max-frequency" instead of "clock-freq-min-max"") which only accounted
+for the high end, not the low end?
+
+I'm pretty sure I've tested on veyron since then, though and I didn't
+see any errors, but perhaps this is because I was never using
+cd-broken and the 400 kHz always worked?
+
+-Doug
 
 _______________________________________________
 Linux-rockchip mailing list
