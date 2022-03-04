@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FB83C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Mar 2022 14:47:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA32C433FE
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Mar 2022 15:02:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oVVQiTnjIQaoDgFup9cVNowasQqor5BjpmP7bNYJQFs=; b=W3aY1ueVtbQiNo
-	WE3uU4swQNTwYU5Nf/J748x8a1n1bpySilqfestb6pbFOZmKAaM/e/awh0Va+N8/SY5f5cs9SordM
-	7xUwqMutd4ZP0lRFyQMwFLZHHuU+SLdR/0K7KUA+KdMKalS87LR5eu7Zqz57+bIqckIB7fZKLu6IC
-	OTLAkfbvKb4AysOISWiV+HXnt5imZ1MrgmEq2jnYXtxrzgQPckYeh/nBM5YIxYoXaGfHSocB3WxNA
-	F9yGpifYIVnOg8cXTt3Z7F0cDfzxLzXlSuisGvHVDuVt26PQ+VN2TqtfUn4GM22qhlHc5G5YW+Zgc
-	R4IQ6GAbUSCPXHAGxX0w==;
+	List-Owner; bh=jYKc3FcryJ2LZCyzxGy8cQ7BqnKMlRcBxjx700IN3ag=; b=W/NHHhA6EbdbQR
+	SfP8/kh7rUlQ868kejldcLuDS0rQRvSAs8/eKkCm92yzlblGO9BDaqsthWbppgB9Osz1f7TrJx7Mp
+	g5o0IwzUgxfTtkSAYinhEQOpE3i2zdE51LcIVYWT1IFHp68QAO2dAz31V1PgFHlKl84pjQVyf/GE3
+	miDwY95A5vPJ++mE6nkJyypqdQsziV83rYhO+DKHraBgt6IZz6U0eKrEILCgf6aMoKIPdUeX85uPK
+	cKPtn6mFswogaYIRWmOt5/hucsOqSXkMh98YMSOv/GDvjm+LjtRHZ0sU8YKMcdirLp1h4mCmrZs0e
+	XWMyYCKkjEqo3SCzf2XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQ9DE-00AaGI-1O; Fri, 04 Mar 2022 14:47:20 +0000
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
+	id 1nQ9Rh-00AdvB-IM; Fri, 04 Mar 2022 15:02:17 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQ9DA-00AaF8-OZ; Fri, 04 Mar 2022 14:47:18 +0000
-Received: by mail-yb1-xb2a.google.com with SMTP id u3so17276729ybh.5;
- Fri, 04 Mar 2022 06:47:15 -0800 (PST)
+ id 1nQ9RU-00Ads0-H3; Fri, 04 Mar 2022 15:02:06 +0000
+Received: by mail-ed1-x535.google.com with SMTP id x5so11077438edd.11;
+ Fri, 04 Mar 2022 07:02:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=CUW9eyq6olA9UOxPXQmSp+qMVQaP00he0KkU/RyKjq0=;
- b=ETyBEW7YhnLoIr1wJ94chKj8as25ZaiWCxdoQeJfM2137JFZx84RaD1MY+P+XNzoUy
- P165qPpM5aAS9MffBzqblSELPKK9kxtTairC8Js/3oG3r3IHbrDLi18scYeptCyna7SP
- TdxjaQ1rkJv7A03GmgIUFYy0DgSgLz7sBRlDUDER6ue7GgDUwaarpfbYV7BN1F5eTFlf
- MSkMadqL7DBmi4eCyISJMDa+TWbOhaU34nZeSmLfAL4Zq136Q2HPdBdsgf48VgsLcMyQ
- XNHCrMtwByGh/RsmKmeRc3AqDNe+FBnIz4FKJM4qKiAyj4Dd9ekHHh4i2tr4tAqlMK1D
- TngQ==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=GU8UB6TON4VenNNLOM6Y8KYCnXRjIdD5gZ9A5OMk8Fk=;
+ b=If/0zGbiuK3yY47gqLG0585NAxBoPdu39NK737vawufjZ239O5wd1D6cDSd9lKNOg2
+ 7Y24wNvwo/CMM9rBs6FPjoq+rp6mOdMRExj4l2EKDdtKoP1P56MmFedB1XVykKE3GrNZ
+ 9vHOyVBQzZJNrgyTMGdt8gxuGmtpnEVGKOragTRZdAUatZCs+78gV75urVEEii5LXlz2
+ Q+S091bTDyfrhl3boEeJ4A667JYijoN3u1Ndps4cYQ/xCpPJa76XFiMWer2umxTYskVa
+ 9U+XtIFkd+qAokpcrpcWXlTMvcBFJ7TRAxVzeTCX4+POPoXpllPCHSgOZfpFkBkvn27n
+ yEWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=CUW9eyq6olA9UOxPXQmSp+qMVQaP00he0KkU/RyKjq0=;
- b=WzxR7CgxZd5nletG9ujj7c/5puePD0DWSHesNJQwHDVAzkHHsLZZcRQ0RhPRkYCbMK
- RAXnR7St1EdNUwtki5gO+gz88ZMl51DhswNHQz2PPnzXbxkgv5MvJCz5Fll7gqrkgFmr
- 8YQLPuTTedP1eH3OunkbOAW5GrUvEKpuX/79STilM82eWmRBnsXOhVGfwlMApOvUfTyq
- wLgkovEgQ/30G0emQFOw7bghYymZ9jHa8oVl8/wG584xUathm20TN7M8/G6lmrJ3OeuW
- qF/vLhWXEV+/EcFArm5SHtciJuGdyoloY/FGsuArAPIvu3MRBYgPmYRgldNgDQY3br0O
- yY6g==
-X-Gm-Message-State: AOAM533nWLiKM3hjPVSlwh17+9ZLgxFvhoCdphjOHFROWTtBvgGD3BEc
- RWe0tZZ5NGmtHlEzHDzULgrbaXkbBEXl4lt/Ios=
-X-Google-Smtp-Source: ABdhPJzL3K/jikdloz8L2WO3+zi/8Cp0G3owqWF4urVyT4uasuJoj++B4FPKa3BA6m7Ih1hTbhxRqbFNnawHLzBx2DA=
-X-Received: by 2002:a05:6902:143:b0:628:7cf1:f2a9 with SMTP id
- p3-20020a056902014300b006287cf1f2a9mr17194704ybh.51.1646405234801; Fri, 04
- Mar 2022 06:47:14 -0800 (PST)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=GU8UB6TON4VenNNLOM6Y8KYCnXRjIdD5gZ9A5OMk8Fk=;
+ b=FdGwbbtZnUvlTVBuiE31sapVWah6/Jo8Ett4XnBXyKqbW5bHdaDOmSyRlRgsK0kp0r
+ rUqXA54gVLb3fTCG6B44VTZDqrhHOr4eqQEGIZIZ3DkuljaS9Kp6nSCb79LAX74YLcaB
+ wlS+MoNTT5Cvx/gJDGrRLDomxUFScCZbeVILS7mMH8r7V3I3LYQcb91Ic4wQLaj8ZD2T
+ wIDZ4uZubet2m4l4QK+rtk7zdahGaacB+BGx7xLFyY77+1zuYnPeyObrL0mWiSrBiUg2
+ kxZ8+0MZfCnBK8FCbxStgkCKHdLe7/1X+ZzAYdh1bfayWmCAnz88HmPNalLRUQEuEBlW
+ FmGQ==
+X-Gm-Message-State: AOAM531FSwNtVAWvjkW5FReRjZAm7vESvNl9A25VpDobTEFgNZR8O2hm
+ MueQ3lm1Vr5VKWN4ELrjd9c=
+X-Google-Smtp-Source: ABdhPJwbeg+zMrY7HvyZLfPCoywd61S1zgix/OQC8hvmSEFI8VN2hn1c66x0LTx0Yi88SvTVQPFpBw==
+X-Received: by 2002:a05:6402:3487:b0:40f:fa53:956c with SMTP id
+ v7-20020a056402348700b0040ffa53956cmr39023279edc.22.1646406120238; 
+ Fri, 04 Mar 2022 07:02:00 -0800 (PST)
+Received: from [192.168.2.2] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ l19-20020a056402255300b00415f526c6b0sm1084798edb.30.2022.03.04.07.01.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 04 Mar 2022 07:01:59 -0800 (PST)
+Message-ID: <064626ad-129e-c7eb-5e08-12d93cffa993@gmail.com>
+Date: Fri, 4 Mar 2022 16:01:58 +0100
 MIME-Version: 1.0
-References: <20220127230727.3369358-1-briannorris@chromium.org>
- <20220127150615.v2.12.I3a5c7f21ecd8221b42c2dbcd618386bce7b3e9a6@changeid>
-In-Reply-To: <20220127150615.v2.12.I3a5c7f21ecd8221b42c2dbcd618386bce7b3e9a6@changeid>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Fri, 4 Mar 2022 09:47:03 -0500
-Message-ID: <CAMdYzYo9Y_pEAAtreQU0B9DVzGsbUgpTA2g7HGRyUXcSBjMy4g@mail.gmail.com>
-Subject: Re: [PATCH v2 12/15] arm64: dts: rockchip: Enable dmc and dfi nodes
- on gru
-To: Brian Norris <briannorris@chromium.org>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Lin Huang <hl@rock-chips.com>, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- Derek Basehore <dbasehore@chromium.org>,
- devicetree <devicetree@vger.kernel.org>, 
- linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, 
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- =?UTF-8?B?R2HDq2wgUE9SVEFZ?= <gael.portay@collabora.com>, 
- Daniel Lezcano <daniel.lezcano@linaro.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v2 11/18] crypto: rockhip: do not handle dma clock
+Content-Language: en-US
+To: Corentin Labbe <clabbe@baylibre.com>, heiko@sntech.de,
+ herbert@gondor.apana.org.au, robh+dt@kernel.org
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, john@metanate.com
+References: <20220302211113.4003816-1-clabbe@baylibre.com>
+ <20220302211113.4003816-12-clabbe@baylibre.com>
+From: Johan Jonker <jbx6244@gmail.com>
+In-Reply-To: <20220302211113.4003816-12-clabbe@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_064716_832874_97121DB4 
-X-CRM114-Status: GOOD (  28.06  )
+X-CRM114-CacheID: sfid-20220304_070204_630330_815478C6 
+X-CRM114-Status: GOOD (  25.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,126 +90,203 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBKYW4gMjcsIDIwMjIgYXQgNjoxNyBQTSBCcmlhbiBOb3JyaXMgPGJyaWFubm9ycmlz
-QGNocm9taXVtLm9yZz4gd3JvdGU6Cj4KPiBGcm9tOiBMaW4gSHVhbmcgPGhsQHJvY2stY2hpcHMu
-Y29tPgo+Cj4gRW5hYmxlIHRoZSBETUMgKER5bmFtaWMgTWVtb3J5IENvbnRyb2xsZXIpIGFuZCB0
-aGUgREZJIChERFIgUEhZCj4gSW50ZXJmYWNlKSBub2RlcyBvbiBncnUgYm9hcmRzIHNvIHdlIGNh
-biBzdXBwb3J0IEREUiBEVkZTLgo+Cj4gU2lnbmVkLW9mZi1ieTogTGluIEh1YW5nIDxobEByb2Nr
-LWNoaXBzLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIDxlbnJp
-Yy5iYWxsZXRib0Bjb2xsYWJvcmEuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEdhw6tsIFBPUlRBWSA8
-Z2FlbC5wb3J0YXlAY29sbGFib3JhLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgTGV6Y2Fu
-byA8ZGFuaWVsLmxlemNhbm9AbGluYXJvLm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiBCcmlhbiBOb3Jy
-aXMgPGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4KPiBVcGRhdGVzIHNpbmNlIHRoZSBvbGQgc2Vy
-aWVzOgo+Cj4gIC0gcmVvcmRlcmVkIGFscGhhYmV0aWNhbGx5IGJ5IHBoYW5kbGUgbmFtZSwgcGVy
-IHN0eWxlCj4gIC0gZHJvcCBhIHRvbiBvZiBkZXByZWNhdGVkL3VudXNlZCBwcm9wZXJ0aWVzCj4g
-IC0gYWRkIHJlcXVpcmVkIGNlbnRlci1zdXBwbHkgZm9yIHNjYXJsZXQKPiAgLSBhZGQgbmV3ICpf
-aWRsZV9kaXNfZnJlcSBwcm9wZXJ0aWVzCj4gIC0gZHJvcCB0aGUgbG93ZXN0ICgyMDAgTUh6KSBP
-UFA7IHRoaXMgd2FzIG5ldmVyIHN0YWJpbGl6ZWQgZm9yCj4gICAgcHJvZHVjdGlvbgo+ICAtIGJ1
-bXAgdGhlIHZvbHRhZ2UgKDAuOVYgLT4gMC45MjVWKSBmb3IgdGhlIGhpZ2hlc3QgT1BQIG9uIENo
-cm9tZWJvb2sKPiAgICBtb2RlbHM7IGxhdGVyICh0YWJsZXQpIG1vZGVscyB3ZXJlIG1vcmUgc3Rh
-YmxlLCB3aXRoIGEgZml4ZWQgRERSCj4gICAgcmVndWxhdG9yCj4gIC0gYnVtcCBvZHRfZGlzX2Zy
-ZXEgdG8gNjY2IE1IejsgZWFybHkgdmVyc2lvbnMgdXNlZCAzMzMgTUh6LCBidXQKPiAgICBzdGFi
-aWxpemF0aW9uIGVmZm9ydHMgbGFuZGVkIG9uIDY2NiBNSHogZm9yIHByb2R1Y3Rpb24KPgo+IC0t
-LQo+Cj4gQ2hhbmdlcyBpbiB2MjoKPiAgLSBBZGFwdCB0byBuZXcgcHJvcGVydGllcwo+Cj4gQ2hh
-bmdlcyBpbiB2MToKPiBUaGlzIHdhcyBwYXJ0IG9mIGEgcHJldmlvdXMgc2VyaWVzLCBhdDoKPiBo
-dHRwczovL2xvcmUua2VybmVsLm9yZy9yLzIwMjEwMzA4MjMzODU4LjI0NzQxLTMtZGFuaWVsLmxl
-emNhbm9AbGluYXJvLm9yZwo+IEkndmUgcGlja2VkIHVwIGEgYnVuY2ggb2YgY2hhbmdlcyBhbmQg
-Zml4ZXMsIHNvIEkndmUgcmVzdGFydGVkIHRoZSBwYXRjaAo+IHNlcmllcyBudW1iZXJpbmcuCgpH
-b29kIE1vcm5pbmcsCgpJJ20gdHJ5aW5nIHRvIGJyaW5nIHRoaXMgc2VyaWVzIG92ZXIgdG8gcm9j
-a3BybzY0IChhbmQgZXZlbnR1YWxseSB0aGUKcGluZXBob25lLXBybykgYW5kIGFtIHJ1bm5pbmcg
-aW50byBzb21lIHNuYWdzLgpFc3NlbnRpYWxseSwgYW55dGltZSBhIHRyYW5zaXRpb24gaGFwcGVu
-cywgdGhlIGJvYXJkIGxvY2tzIHVwLgpJJ3ZlIGRpc2FibGVkIHRoZSBleHRyYSBwb3dlciBzYXZl
-IGRpc2FibGUgZmxhZ3MgYW5kIGFkanVzdGVkIHRoZSBPUFBzCmZvciByb2NrcHJvNjQncyBwb3dl
-ci4KVHJhbnNpdGlvbnMgYW55d2hlcmUgZnJvbSB0aGUgZGVmYXVsdCA4MDBtaHogY2F1c2UgYSBs
-b2NrLgoKSSdtIGRpZ2dpbmcgZGVlcGVyLCBidXQgSSdtIGhvcGluZyB5b3UgY2FuIGFuc3dlciBz
-b21lIHF1ZXN0aW9ucyBpbgp0aGUgbWVhbnRpbWU6CjEuIERvZXMgdGhpcyByZXF1aXJlIHNvbWV0
-aGluZyBmcm9tIGZpcm13YXJlIHRoYXQgaXNuJ3QgYXZhaWxhYmxlIG9uCk1haW5saW5lIEFURj8g
-KEFLQSBzcGVjaWFsIGZpcm13YXJlIHRvIHRoZSBDaHJvbWVib29rIGxpbmUpCjIuIElmIG5vdCwg
-ZG8geW91IGhhdmUgYW55IHJlY29tbWVuZGF0aW9ucyBvZmYgdGhlIHRvcCBvZiB5b3VyIGhlYWQ/
-CgpUaGFua3MsClBldGVyIEdlaXMKCj4KPiAgLi4uL2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1LWNo
-cm9tZWJvb2suZHRzaSAgIHwgIDcgKysrKysKPiAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5
-OS1ncnUtc2NhcmxldC5kdHNpIHwgMTIgKysrKysrKysKPiAgYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazMzOTktZ3J1LmR0c2kgIHwgMjggKysrKysrKysrKysrKysrKysrKwo+ICAuLi4v
-Ym9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW9wMS1vcHAuZHRzaSAgICAgfCAyNSArKysrKysrKysr
-KysrKysrKwo+ICA0IGZpbGVzIGNoYW5nZWQsIDcyIGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1n
-aXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1ncnUtY2hyb21lYm9vay5k
-dHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1LWNocm9tZWJvb2su
-ZHRzaQo+IGluZGV4IDliMmM2NzlmNWVjYS4uY2M4OTUwMDQ2ZDk0IDEwMDY0NAo+IC0tLSBhL2Fy
-Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWdydS1jaHJvbWVib29rLmR0c2kKPiAr
-KysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1ncnUtY2hyb21lYm9vay5k
-dHNpCj4gQEAgLTIzNCw2ICsyMzQsMTMgQEAgJmNkbl9kcCB7Cj4gICAgICAgICBleHRjb24gPSA8
-JnVzYmNfZXh0Y29uMD4sIDwmdXNiY19leHRjb24xPjsKPiAgfTsKPgo+ICsmZG1jIHsKPiArICAg
-ICAgIGNlbnRlci1zdXBwbHkgPSA8JnBwdmFyX2NlbnRlcmxvZ2ljPjsKPiArICAgICAgIHJvY2tj
-aGlwLHBkLWlkbGUtZGlzLWZyZXEtaHogPSA8ODAwMDAwMDAwPjsKPiArICAgICAgIHJvY2tjaGlw
-LHNyLWlkbGUtZGlzLWZyZXEtaHogPSA8ODAwMDAwMDAwPjsKPiArICAgICAgIHJvY2tjaGlwLHNy
-LW1jLWdhdGUtaWRsZS1kaXMtZnJlcS1oeiA9IDw4MDAwMDAwMDA+Owo+ICt9Owo+ICsKPiAgJmVk
-cCB7Cj4gICAgICAgICBzdGF0dXMgPSAib2theSI7Cj4KPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02
-NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1LXNjYXJsZXQuZHRzaSBiL2FyY2gvYXJtNjQv
-Ym9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWdydS1zY2FybGV0LmR0c2kKPiBpbmRleCBhOTgxN2Iz
-ZDdlZGMuLjkxM2Q4NDVlYjUxYSAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzM5OS1ncnUtc2NhcmxldC5kdHNpCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazMzOTktZ3J1LXNjYXJsZXQuZHRzaQo+IEBAIC0zOTEsNiArMzkxLDE4IEBA
-ICZjcnUgewo+ICAgICAgICAgICAgICAgICA8NDAwMDAwMDAwPjsKPiAgfTsKPgo+ICsvKiBUaGUg
-Y2VudGVyIHN1cHBseSBpcyBmaXhlZCB0byAuOVYgb24gc2NhcmxldCAqLwo+ICsmZG1jIHsKPiAr
-ICAgICAgIGNlbnRlci1zdXBwbHkgPSA8JnBwOTAwX3MwPjsKPiArfTsKPiArCj4gKy8qIFdlIGRv
-bid0IG5lZWQgLjkyNSBWIGZvciA5MjggTUh6IG9uIHNjYXJsZXQgKi8KPiArJmRtY19vcHBfdGFi
-bGUgewo+ICsgICAgICAgb3BwMDMgewo+ICsgICAgICAgICAgICAgICBvcHAtbWljcm92b2x0ID0g
-PDkwMDAwMD47Cj4gKyAgICAgICB9Owo+ICt9Owo+ICsKPiAgJmdwaW8wIHsKPiAgICAgICAgIGdw
-aW8tbGluZS1uYW1lcyA9IC8qIEdQSU8wIEEgMC03ICovCj4gICAgICAgICAgICAgICAgICAgICAg
-ICAgICAiQ0xLXzMyS19BUCIsCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
-a2NoaXAvcmszMzk5LWdydS5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMz
-OTktZ3J1LmR0c2kKPiBpbmRleCAxNjJmMDhiY2EwZDQuLjIzYmZiYTg2ZGFhYiAxMDA2NDQKPiAt
-LS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1ncnUuZHRzaQo+ICsrKyBi
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWdydS5kdHNpCj4gQEAgLTM3Myw2
-ICszNzMsMzQgQEAgJmNydSB7Cj4gICAgICAgICAgICAgICAgIDwyMDAwMDAwMDA+Owo+ICB9Owo+
-Cj4gKyZkZmkgewo+ICsgICAgICAgc3RhdHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJmRtYyB7
-Cj4gKyAgICAgICBzdGF0dXMgPSAib2theSI7Cj4gKwo+ICsgICAgICAgcm9ja2NoaXAscGQtaWRs
-ZS1ucyA9IDwxNjA+Owo+ICsgICAgICAgcm9ja2NoaXAsc3ItaWRsZS1ucyA9IDwxMDI0MD47Cj4g
-KyAgICAgICByb2NrY2hpcCxzci1tYy1nYXRlLWlkbGUtbnMgPSA8NDA5NjA+Owo+ICsgICAgICAg
-cm9ja2NoaXAsc3JwZC1saXRlLWlkbGUtbnMgPSA8NjE0NDA+Owo+ICsgICAgICAgcm9ja2NoaXAs
-c3RhbmRieS1pZGxlLW5zID0gPDgxOTIwPjsKPiArCj4gKyAgICAgICByb2NrY2hpcCxkZHIzX29k
-dF9kaXNfZnJlcSA9IDw2NjYwMDAwMDA+Owo+ICsgICAgICAgcm9ja2NoaXAsbHBkZHIzX29kdF9k
-aXNfZnJlcSA9IDw2NjYwMDAwMDA+Owo+ICsgICAgICAgcm9ja2NoaXAsbHBkZHI0X29kdF9kaXNf
-ZnJlcSA9IDw2NjYwMDAwMDA+Owo+ICsKPiArICAgICAgIHJvY2tjaGlwLHNyLW1jLWdhdGUtaWRs
-ZS1kaXMtZnJlcS1oeiA9IDwxMDAwMDAwMDAwPjsKPiArICAgICAgIHJvY2tjaGlwLHNycGQtbGl0
-ZS1pZGxlLWRpcy1mcmVxLWh6ID0gPDA+Owo+ICsgICAgICAgcm9ja2NoaXAsc3RhbmRieS1pZGxl
-LWRpcy1mcmVxLWh6ID0gPDkyODAwMDAwMD47Cj4gK307Cj4gKwo+ICsmZG1jX29wcF90YWJsZSB7
-Cj4gKyAgICAgICBvcHAwMyB7Cj4gKyAgICAgICAgICAgICAgIG9wcC1zdXNwZW5kOwo+ICsgICAg
-ICAgfTsKPiArfTsKPiArCj4gICZlbW1jX3BoeSB7Cj4gICAgICAgICBzdGF0dXMgPSAib2theSI7
-Cj4gIH07Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5
-LW9wMS1vcHAuZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW9wMS1v
-cHAuZHRzaQo+IGluZGV4IDIxODBlMGY3NTAwMy4uNmUyOWU3NGY2ZmM2IDEwMDY0NAo+IC0tLSBh
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW9wMS1vcHAuZHRzaQo+ICsrKyBi
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW9wMS1vcHAuZHRzaQo+IEBAIC0x
-MTAsNiArMTEwLDI3IEBAIG9wcDA1IHsKPiAgICAgICAgICAgICAgICAgICAgICAgICBvcHAtbWlj
-cm92b2x0ID0gPDEwNzUwMDA+Owo+ICAgICAgICAgICAgICAgICB9Owo+ICAgICAgICAgfTsKPiAr
-Cj4gKyAgICAgICBkbWNfb3BwX3RhYmxlOiBkbWNfb3BwX3RhYmxlIHsKPiArICAgICAgICAgICAg
-ICAgY29tcGF0aWJsZSA9ICJvcGVyYXRpbmctcG9pbnRzLXYyIjsKPiArCj4gKyAgICAgICAgICAg
-ICAgIG9wcDAwIHsKPiArICAgICAgICAgICAgICAgICAgICAgICBvcHAtaHogPSAvYml0cy8gNjQg
-PDQwMDAwMDAwMD47Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgb3BwLW1pY3Jvdm9sdCA9IDw5
-MDAwMDA+Owo+ICsgICAgICAgICAgICAgICB9Owo+ICsgICAgICAgICAgICAgICBvcHAwMSB7Cj4g
-KyAgICAgICAgICAgICAgICAgICAgICAgb3BwLWh6ID0gL2JpdHMvIDY0IDw2NjYwMDAwMDA+Owo+
-ICsgICAgICAgICAgICAgICAgICAgICAgIG9wcC1taWNyb3ZvbHQgPSA8OTAwMDAwPjsKPiArICAg
-ICAgICAgICAgICAgfTsKPiArICAgICAgICAgICAgICAgb3BwMDIgewo+ICsgICAgICAgICAgICAg
-ICAgICAgICAgIG9wcC1oeiA9IC9iaXRzLyA2NCA8ODAwMDAwMDAwPjsKPiArICAgICAgICAgICAg
-ICAgICAgICAgICBvcHAtbWljcm92b2x0ID0gPDkwMDAwMD47Cj4gKyAgICAgICAgICAgICAgIH07
-Cj4gKyAgICAgICAgICAgICAgIG9wcDAzIHsKPiArICAgICAgICAgICAgICAgICAgICAgICBvcHAt
-aHogPSAvYml0cy8gNjQgPDkyODAwMDAwMD47Cj4gKyAgICAgICAgICAgICAgICAgICAgICAgb3Bw
-LW1pY3Jvdm9sdCA9IDw5MjUwMDA+Owo+ICsgICAgICAgICAgICAgICB9Owo+ICsgICAgICAgfTsK
-PiAgfTsKPgo+ICAmY3B1X2wwIHsKPiBAQCAtMTM2LDYgKzE1NywxMCBAQCAmY3B1X2IxIHsKPiAg
-ICAgICAgIG9wZXJhdGluZy1wb2ludHMtdjIgPSA8JmNsdXN0ZXIxX29wcD47Cj4gIH07Cj4KPiAr
-JmRtYyB7Cj4gKyAgICAgICBvcGVyYXRpbmctcG9pbnRzLXYyID0gPCZkbWNfb3BwX3RhYmxlPjsK
-PiArfTsKPiArCj4gICZncHUgewo+ICAgICAgICAgb3BlcmF0aW5nLXBvaW50cy12MiA9IDwmZ3B1
-X29wcF90YWJsZT47Cj4gIH07Cj4gLS0KPiAyLjM1LjAucmMwLjIyNy5nMDA3ODBjOWFmNC1nb29n
-Cj4KPgo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4g
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+Hi Corentin,
+
+Make your clock driver parsing portable.
+
+===
+    oneOf:
+      - const: rockchip,rk3288-crypto
+      - items:
+          - enum:
+              - rockchip,rk3328-crypto
+          - const: rockchip,rk3288-crypto
+
+Compatible string must be SoC related!
+
+rk3288 was the first in line that had support, so we use that as fall
+back string.
+
+===
+
+Make binding fit for more SoC types.
+Allow more clocks by using devm_clk_bulk_get_all.
+Drop reset-names requirement for devm_reset_control_array_get_exclusive.
+
+===
+
+Use a patch order to prevent the scripts generate notifications.
+
+- dt-bindings conversion
+
+- add rk3328 compatible string in a separate patch
+
+- your driver changes
+
+- dts patches
+
+A proposed maintainer must be able to submit patch series without errors. ;)
+
+===
+
+When you remove a clock in a YAML conversion you must add a note to the
+DT maintainer.
+
+===
+
+Johan
+
+On 3/2/22 22:11, Corentin Labbe wrote:
+> The DMA clock is handled by the DMA controller, so the crypto does not
+> have to touch it.
+> 
+> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> ---
+>  drivers/crypto/rockchip/rk3288_crypto.c | 16 +---------------
+>  drivers/crypto/rockchip/rk3288_crypto.h |  1 -
+>  2 files changed, 1 insertion(+), 16 deletions(-)
+> 
+> diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
+> index 94ef1283789f..645855d2651b 100644
+> --- a/drivers/crypto/rockchip/rk3288_crypto.c
+> +++ b/drivers/crypto/rockchip/rk3288_crypto.c
+> @@ -40,15 +40,8 @@ static int rk_crypto_enable_clk(struct rk_crypto_info *dev)
+>  			__func__, __LINE__);
+>  		goto err_hclk;
+>  	}
+> -	err = clk_prepare_enable(dev->dmaclk);
+> -	if (err) {
+> -		dev_err(dev->dev, "[%s:%d], Couldn't enable clock dmaclk\n",
+> -			__func__, __LINE__);
+> -		goto err_dmaclk;
+> -	}
+> +
+>  	return err;
+> -err_dmaclk:
+> -	clk_disable_unprepare(dev->hclk);
+>  err_hclk:
+>  	clk_disable_unprepare(dev->aclk);
+>  err_aclk:
+> @@ -59,7 +52,6 @@ static int rk_crypto_enable_clk(struct rk_crypto_info *dev)
+>  
+>  static void rk_crypto_disable_clk(struct rk_crypto_info *dev)
+>  {
+> -	clk_disable_unprepare(dev->dmaclk);
+>  	clk_disable_unprepare(dev->hclk);
+>  	clk_disable_unprepare(dev->aclk);
+>  	clk_disable_unprepare(dev->sclk);
+> @@ -199,12 +191,6 @@ static int rk_crypto_probe(struct platform_device *pdev)
+>  		goto err_crypto;
+>  	}
+>  
+
+> -	crypto_info->dmaclk = devm_clk_get(&pdev->dev, "apb_pclk");
+> -	if (IS_ERR(crypto_info->dmaclk)) {
+> -		err = PTR_ERR(crypto_info->dmaclk);
+> -		goto err_crypto;
+> -	}
+> -
+
+rk3288:
+ 		clocks = <&cru ACLK_CRYPTO>, <&cru HCLK_CRYPTO>,
+-			 <&cru SCLK_CRYPTO>, <&cru ACLK_DMAC1>;
+-		clock-names = "aclk", "hclk", "sclk", "apb_pclk";
++			 <&cru SCLK_CRYPTO>;
++		clock-names = "aclk", "hclk", "sclk";
+
+
+rk3328:
++		clocks = <&cru HCLK_CRYPTO_MST>, <&cru HCLK_CRYPTO_SLV>,
++			 <&cru SCLK_CRYPTO>;
++		clock-names = "aclk", "hclk", "sclk";
+
+The HCLK_CRYPTO_MST not is related to ACLK_CRYPTO.
+You are reusing rk3288 names to not to change the driver.
+Give it an other name.
+
+===
+
+The sclk goes through a crypto_div_con.
+Does that need a frequency set?
+Or does that come from nowhere?
+
+From crypto_v1.c
+	priv->frequency = dev_read_u32_default(dev, "clock-frequency",
+					       CRYPTO_V1_DEFAULT_RATE);
+
+	ret = clk_set_rate(&priv->sclk, priv->frequency);
+
+===
+
+Could you make this portable?
+Example:
+
+	int i;
+
+	priv->num_clks = devm_clk_bulk_get_all(dev, &priv->clks);
+	if (priv->num_clks < 1)
+		return -EINVAL;
+
+	priv->sclk = NULL;
+	for (i = 0; i < priv->num_clks; i++) {
+		if (!strncmp(priv->clks[i].id, "sclk", 3)) {
+			priv->sclk = priv->clks[i].clk;
+			break;
+		}
+	}
+
+	if (!priv->sclk) {
+		dev_err(dev, "no sclk found\n");
+		return -EINVAL;
+	}
+
+Also add optional "sclk1" clock for rk3399.
+Use "sclk" and not "sclk0" to be backwards compatible.
+
+===
+
+Also make the resets portable for rk3399.
+Remove the requirement for "reset-names".
+
+Example:
+	priv->phy_rst = devm_reset_control_array_get_exclusive(dev);
+	if (IS_ERR(priv->phy_rst))
+		return dev_err_probe(dev, PTR_ERR(priv->phy_rst), "failed to get phy
+reset\n");
+
+
+
+>  	crypto_info->irq = platform_get_irq(pdev, 0);
+>  	if (crypto_info->irq < 0) {
+>  		dev_err(&pdev->dev, "control Interrupt is not available.\n");
+> diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
+> index c741e97057dc..963fbfc4d14e 100644
+> --- a/drivers/crypto/rockchip/rk3288_crypto.h
+> +++ b/drivers/crypto/rockchip/rk3288_crypto.h
+> @@ -191,7 +191,6 @@ struct rk_crypto_info {
+
+>  	struct clk			*aclk;
+>  	struct clk			*hclk;
+>  	struct clk			*sclk;
+> -	struct clk			*dmaclk;
+
+
+	int num_clks;
+	struct clk_bulk_data *clks;
+	struct clk *sclk;
+	struct clk *sclk1;
+
+
+>  	struct reset_control		*rst;
+>  	void __iomem			*reg;
+>  	int				irq;
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
