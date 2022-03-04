@@ -4,50 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C1FBC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Mar 2022 17:22:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C618C433FE
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Mar 2022 17:22:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=++32QcnMk3TkaVa+GSXKxe9mm/Dbz078MiqzCqkKcYc=; b=nPYjkfyWUbjwPX
-	IKldSg1cVht7vpD3DPtwEZ7zcQ+IoOupPaceOtjEqriaH+4wujQqqNWF0zImMAM4fcmdlRew6nj9v
-	cMV3mOhvrYe/Nfz4NMSUM6swF1BoVmBfiX5XHPQNsQnpykHaV/IriJkihwqENXx2hpZ33+9mU2TyY
-	NupO1bPHLI13JLLuXwjryk3JkBHYw4orH5qHPwmOaLou+6+fHYwOGxEF7zo7IjfBirHbnVan36utS
-	7//CsC3uIc687OwCW8nQ99s84kDOxqigVEITlD7dWYOneWi0oGkJT8jwAEqI15zpd99fHkZySpR3l
-	nG0O5URJTastt4uOhrGw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NdpCKlhmp9lYudT0Oi80zVMj/uTONAoiMw+r7XOrmNM=; b=BXbwkFj31Aro9V
+	XvliXljGJ8GJVa//EDyFD8zrstftyp8ElfUNkeKa8f1oZc67lwfl5dJQux+Blv+BLvx43j8ukmyCr
+	NPatv21Vtymz6+VlS8HdYy2MUK5yjEc0c+MD4xf/wnj1z+oqt/olLNDM/DUX4LO0WFIJ7HMoRhnFd
+	kUZXNggXKpruokumUO4wUZL1jwePh+KejXjbvOSxp9FCUoX6VWE2wr7MjFVahDf+8vFC/ebCY+arO
+	imGUrqoqztp4l/xNKfTOnmzw1FvHR1WpuLkm5tYGyTXYJwjXLB25d9hskWQawKpzlZDrhMyP5mfUF
+	T8phVLx4eU4xPTTdY30A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQBdO-00BHLj-6h; Fri, 04 Mar 2022 17:22:30 +0000
+	id 1nQBdQ-00BHNZ-GQ; Fri, 04 Mar 2022 17:22:32 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQBah-00BFb1-OD
+ id 1nQBai-00BFbe-JK
  for linux-rockchip@lists.infradead.org; Fri, 04 Mar 2022 17:19:47 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9160E51C;
- Fri,  4 Mar 2022 18:19:40 +0100 (CET)
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 98F371858;
+ Fri,  4 Mar 2022 18:19:42 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1646414381;
- bh=KcTE76/LQjyWq1yvd3Hcjv/KAzUkHcc/6fMbavLKoZI=;
- h=From:To:Cc:Subject:Date:From;
- b=W2FG5TBvYgdAaAcLmgrrrhu7Mq1LmEapdapiIiVs5k0IaBS7fheOrVSmNhqLc8grV
- bRSPGpfohFHEXQVJa+4CmnktjVa+ckarM52MbnU5HdjSSawktEYUieuB++J0KHeXZq
- J9Y2RrBz9fdeUNY8bMJPF5HZsxbSlaqeP17nl7A4=
+ s=mail; t=1646414383;
+ bh=8gzY6lDCQ60Au340BxDAxGxG8EXcExhgQejq7Vb848M=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=YCP/5u9DRyE20U4IeIc3Z8Td3+Y5ZWPSHlnwBfmgQumr2JOQ8rzfzrf1+LueTzAMR
+ egw2qasDoxuIiVtW7e25ZAxzrzocEaxkpX5s+4N3oU8ONYOCkHFEB02az3PsuuLpbm
+ EFIEmYNFmKr2GDFcOm42hS5rKd4dfjGQ4Y+jgBWo=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>,
  Paul Elder <paul.elder@ideasonboard.com>, Tomasz Figa <tfiga@google.com>,
  linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 00/17] media: rkisp1: Misc bug fixes and cleanups
-Date: Fri,  4 Mar 2022 19:19:08 +0200
-Message-Id: <20220304171925.1592-1-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v2 03/17] media: rkisp1: isp: Fix and simplify (un)registration
+Date: Fri,  4 Mar 2022 19:19:11 +0200
+Message-Id: <20220304171925.1592-4-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220304171925.1592-1-laurent.pinchart@ideasonboard.com>
+References: <20220304171925.1592-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_091944_011409_1EDFB724 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20220304_091944_810137_D14814BB 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,69 +67,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
+The rkisp1_isp_register() and rkisp1_isp_unregister() functions don't
+destroy the mutex (in the error path for the former). Fix this, simplify
+error handling at registration time as media_entity_cleanup() can be
+called on an uninitialized entity, and make rkisp1_isp_unregister() and
+safe to be called on an unregistered isp subdev to prepare for
+simplification of error handling at probe time.
 
-This series fixes multiple issues and performs further cleanups for the
-rkisp1 driver.
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+ .../platform/rockchip/rkisp1/rkisp1-capture.c |  4 ++--
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     | 20 ++++++++++++-------
+ 2 files changed, 15 insertions(+), 9 deletions(-)
 
-Patches 01/17 to 07/17 fix issues in the error paths at probe time that
-lead to kernel crashes in case of errors. The .remove() path is also
-improved as a result.
-
-Patches 08/17 and 09/17 then clean up register definitions, patch 10/17
-swaps the arguments to rkisp1_write(), and patch 11/17 simplifies access
-to the resizer registers.
-
-Patches 12/17 to 16/17 move on to improving debugfs support, with code
-first moved to a separate file (12/17) that can be conditionally
-compiled (13/17), support for collecting statistics on the input
-interface (14/17, very useful to check if the ISP actually receives
-data) and for dumping core and ISP registers (15/17). Patch 16/17
-completes that rework by moving the resizer register dumps support to
-debugfs too.
-
-Finally, patch 17/17 simplifies the V4L2 querycap implementation on
-video nodes.
-
-More fixes and improvements should follow, so I'd like to merge sooner
-than latter if possible, to avoid having to rebase large series.
-
-Laurent Pinchart (16):
-  media: rkisp1: capture: Initialize entity before video device
-  media: rkisp1: capture: Fix and simplify (un)registration
-  media: rkisp1: isp: Fix and simplify (un)registration
-  media: rkisp1: resizer: Fix and simplify (un)registration
-  media: rkisp1: params: Fix and simplify (un)registration
-  media: rkisp1: stats: Simplify (un)registration
-  media: rkisp1: Simplify rkisp1_entities_register() error path
-  media: rkisp1: regs: Don't use BIT() macro for multi-bit register
-    fields
-  media: rkisp1: regs: Rename CCL, ICCL and IRCL registers with VI_
-    prefix
-  media: rkisp1: Swap value and address arguments to rkisp1_write()
-  media: rkisp1: resizer: Simplify register access
-  media: rkisp1: Move debugfs code to a separate file
-  media: rkisp1: Compile debugfs support conditionally
-  media: rkisp1: debug: Collect input status by sampling ISP_FLAGS_SHD
-  media: rkisp1: debug: Add debugfs files to dump core and ISP registers
-  media: rkisp1: debug: Move resizer register dump to debugfs
-
-Paul Elder (1):
-  media: rkisp1: capture: Bypass the main device for handling querycap
-
- .../media/platform/rockchip/rkisp1/Makefile   |  18 +-
- .../platform/rockchip/rkisp1/rkisp1-capture.c | 153 ++--
- .../platform/rockchip/rkisp1/rkisp1-common.h  |  18 +-
- .../platform/rockchip/rkisp1/rkisp1-debug.c   | 209 ++++++
- .../platform/rockchip/rkisp1/rkisp1-dev.c     |  73 +-
- .../platform/rockchip/rkisp1/rkisp1-isp.c     | 156 ++--
- .../platform/rockchip/rkisp1/rkisp1-params.c  | 706 +++++++++---------
- .../platform/rockchip/rkisp1/rkisp1-regs.h    | 188 +++--
- .../platform/rockchip/rkisp1/rkisp1-resizer.c | 204 ++---
- .../platform/rockchip/rkisp1/rkisp1-stats.c   |  13 +-
- 10 files changed, 916 insertions(+), 822 deletions(-)
- create mode 100644 drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+index 96a7e6c0a622..eedf4bb1c74c 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+@@ -1371,14 +1371,14 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
+ 	if (ret) {
+ 		dev_err(cap->rkisp1->dev,
+ 			"vb2 queue init failed (err=%d)\n", ret);
+-		return ret;
++		goto error;
+ 	}
+ 
+ 	vdev->queue = q;
+ 
+ 	ret = media_entity_pads_init(&vdev->entity, 1, &node->pad);
+ 	if (ret)
+-		return ret;
++		goto error;
+ 
+ 	ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
+ 	if (ret) {
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index 2a35bf24e54e..f84e53b60ee1 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -1090,29 +1090,35 @@ int rkisp1_isp_register(struct rkisp1_device *rkisp1)
+ 	mutex_init(&isp->ops_lock);
+ 	ret = media_entity_pads_init(&sd->entity, RKISP1_ISP_PAD_MAX, pads);
+ 	if (ret)
+-		return ret;
++		goto error;
+ 
+ 	ret = v4l2_device_register_subdev(&rkisp1->v4l2_dev, sd);
+ 	if (ret) {
+ 		dev_err(rkisp1->dev, "Failed to register isp subdev\n");
+-		goto err_cleanup_media_entity;
++		goto error;
+ 	}
+ 
+ 	rkisp1_isp_init_config(sd, &state);
++
+ 	return 0;
+ 
+-err_cleanup_media_entity:
++error:
+ 	media_entity_cleanup(&sd->entity);
+-
++	mutex_destroy(&isp->ops_lock);
++	isp->sd.flags = 0;
+ 	return ret;
+ }
+ 
+ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
+ {
+-	struct v4l2_subdev *sd = &rkisp1->isp.sd;
++	struct rkisp1_isp *isp = &rkisp1->isp;
+ 
+-	v4l2_device_unregister_subdev(sd);
+-	media_entity_cleanup(&sd->entity);
++	if (!isp->sd.flags)
++		return;
++
++	v4l2_device_unregister_subdev(&isp->sd);
++	media_entity_cleanup(&isp->sd.entity);
++	mutex_destroy(&isp->ops_lock);
+ }
+ 
+ /* ----------------------------------------------------------------------------
 -- 
 Regards,
 
