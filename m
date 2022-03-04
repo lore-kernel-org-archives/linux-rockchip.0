@@ -4,79 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D90DDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Mar 2022 21:24:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95BE6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Mar 2022 23:13:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pU2l4FHq+rPGIWMoH5FYmc4daCB5UPSye3TJpU8or7I=; b=4H/X52vF+B1egM
-	a9RoKtfwZDmgDOr9eaQklE+SB4CV5s0jXwuVJEye80rg5/1ECdRaV36Uv72mEDWnj9muufZKwngB1
-	TijUATKv0MU41Zix6Njlu0/3VDKA/j+hTjiX/FuKeS4gbP1JFkgzuAvFLW+a9cz0vFuEA/vGNeJg2
-	M8LPZepBn/7TcXNhBDWGOCcmBghHBOLWYvE5uGiM4c6sWQtMvhxwq4iAGUt+OMqABYZnmzKI5Req9
-	5bx4Zmss205z/CnlUSyxjFMSBwDHpYjVFkWtasQC5wNurJKuv9SlRkxynCwxg0tmtzNua/PdG7UOa
-	CEnO5kPzUa2V8+nytplQ==;
+	List-Owner; bh=6ai7KTzB33PJzCAb04/tBr+GO2cPOz5pUuAiRUHujec=; b=XzsTZWjC9Hbk5Y
+	YSxxivicoNQukfPBQs54ST5rSCcbVfKtjS5OfTm3PrNPVApOZhRQSicoCg7dHrhQsMhPhI19gMcrl
+	6zKWL9BGO+F7t3X4nLORcPirn+HXeuLS1EFzwqxxR0PpSL7HoT9PhC6GDXQBi/tSjydYvUQu07nO6
+	Yus9ZnrEsidZE7co0ytaEM4b07054ltdTDcguqNGr0+LN3N/C6/53pyW6REkdgaVZHlFjHzWe/ENT
+	dEgQrGRtaJ2xItbmNB1xyPBQhWG5cnKz9w5H3WCV9SDaj0fALBuKOKV43zB977oRXg+Bw/hNjeYBC
+	hPC0asGBmL8Of/8UMi4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQFPC-00C7F6-KP; Fri, 04 Mar 2022 21:24:06 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1nQH7I-00CJAk-Uw; Fri, 04 Mar 2022 23:13:44 +0000
+Received: from mail-ot1-f53.google.com ([209.85.210.53])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQFP9-00C7D8-P6
- for linux-rockchip@lists.infradead.org; Fri, 04 Mar 2022 21:24:05 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id ay5so8870725plb.1
- for <linux-rockchip@lists.infradead.org>; Fri, 04 Mar 2022 13:24:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=0/gI0rQqdFAbRjNwHFPVJ4i6AznAGpkDeOuSwoRZAto=;
- b=dW6sniIDfe4ZwFk7pH6asyZbMfHUDkzWKEaqD8k09+XRZxqGVgvxvwowBaBBa8GvSB
- LnIHuXeBP/MKBb2IurRBYrLkjNiDDW9kZzPMXsmeLPCaYAg2Za7l9w1TJzZSI2ILROCa
- Bq/xEX+B3iF9Vgn8acNFkeBDRtPua299o+IvI=
+ id 1nQH73-00CJ4b-Gp; Fri, 04 Mar 2022 23:13:30 +0000
+Received: by mail-ot1-f53.google.com with SMTP id
+ j9-20020a9d7d89000000b005ad5525ba09so8563171otn.10; 
+ Fri, 04 Mar 2022 15:13:27 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=0/gI0rQqdFAbRjNwHFPVJ4i6AznAGpkDeOuSwoRZAto=;
- b=Fw69v1e7cwgma5Iqog+JBfioB7tr89JJ1nPDvGYpuu4dp/1zPn2gJN0uI7njseW4fh
- xGiJ1omPelED7FXlrGJ/cr0cWFghVWk2afN6jCARteMHlzvhfulVhXYEAYa3+oIE2y9P
- 3W+xAofNfxhh3MkjoDn8TOH3GsFk9K4ZRTKOaDg+7ZJvEec/J0QMQKyXI3Scr1npnjk8
- EJ6VhGvCF2gchjhE+4babC15FtoPXw8WPACNoMb9dT+y9w7jVPTZp35s48qgeQewrSh4
- +IGokMVcK/yJpI1RfkU9ufIuAd7MeMn0C6z6Bht1i0z5REFdu/AS5hRFDUc/LractVp8
- 7Z2A==
-X-Gm-Message-State: AOAM531aAevbRwCQywTwUgF3c78Q388bxWpPe06mLQLrUsT0gZu0gKHW
- ij2k+0cr5kgeAbj0Hfsrdfitqw==
-X-Google-Smtp-Source: ABdhPJzeXYM5JVp1IZEistkWdlM9E10Rt6/gCbVwnsqXjdM071vp3edsel14904JddV43vI5XN1yYQ==
-X-Received: by 2002:a17:902:b784:b0:151:a28a:9445 with SMTP id
- e4-20020a170902b78400b00151a28a9445mr512967pls.82.1646429042669; 
- Fri, 04 Mar 2022 13:24:02 -0800 (PST)
-Received: from google.com ([2620:15c:202:201:2947:8460:2ca7:c348])
- by smtp.gmail.com with ESMTPSA id
- g10-20020a056a000b8a00b004de9129eb80sm7612495pfj.85.2022.03.04.13.24.01
+ bh=8tXT4S0piSpQICQpgP+9oA4HWrt9IUaGgLMB7vO8b84=;
+ b=Z3R/hm3yKhkY7ycV+EytfbFvhKoyMMkC6cwLhgZeqJBjoZW/ZAte2p0g+8hnDCyL8z
+ bbRQy/PoqXYVTSf9/BvS8yW2+EUaThPM4p0CNOpdGnu15B4aTxcpSfFta7gXQE4CIsu8
+ 55ggMiHwFKa52LfCyU6fNVRhIeGWAKg/AEYIp2C4U9X7kBPUiLNDY3Z+lVE12zAdB8q8
+ wp1bV8JMiO2oijHUktAsYjdmdQRRK75PXrmUgBKTKRpBlkJ7TAUvNhCfS+9IA1ZMJ6pI
+ lgSUTgkUW4+g4PmOJ/3NFrhB09klvyekQxiCFr6wCaT9K+ii2pzCQJKme8nKDo06CfIF
+ OT3A==
+X-Gm-Message-State: AOAM5314xAK0dPTi3sfXMmbLpVa2EjXicrHVsAGk2EsWuefg1yBQoAhl
+ p2m/Hv7FOtV9Pp85eKJfig==
+X-Google-Smtp-Source: ABdhPJwj+VuafiICwCgnIKimWglwgIZWkpcyb5FEymTdjCHIYmSjfCFoLcu3YupK4D8uOWJ8G4jcig==
+X-Received: by 2002:a9d:7306:0:b0:5af:91d8:875f with SMTP id
+ e6-20020a9d7306000000b005af91d8875fmr458801otk.144.1646435607274; 
+ Fri, 04 Mar 2022 15:13:27 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213]) by smtp.gmail.com with ESMTPSA id
+ x25-20020a056830409900b005af164235b4sm2835755ott.2.2022.03.04.15.13.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Mar 2022 13:24:02 -0800 (PST)
-Date: Fri, 4 Mar 2022 13:23:59 -0800
-From: Brian Norris <briannorris@chromium.org>
-To: Rob Herring <robh@kernel.org>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Lin Huang <hl@rock-chips.com>,
- linux-arm-kernel@lists.infradead.org,
- Derek Basehore <dbasehore@chromium.org>, devicetree@vger.kernel.org,
- linux-pm@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 01/15] dt-bindings: devfreq: rk3399_dmc: Convert to YAML
-Message-ID: <YiKDb6q5k4NHpyVn@google.com>
-References: <20220127230727.3369358-1-briannorris@chromium.org>
- <20220127150615.v2.1.I875ab8f28c5155a7d2f103316191954d4b07ac13@changeid>
- <YgQhXb/0BM0OFy/6@robh.at.kernel.org>
+ Fri, 04 Mar 2022 15:13:26 -0800 (PST)
+Received: (nullmailer pid 640205 invoked by uid 1000);
+ Fri, 04 Mar 2022 23:13:25 -0000
+Date: Fri, 4 Mar 2022 17:13:25 -0600
+From: Rob Herring <robh@kernel.org>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: michael.riesch@wolfvision.net, Heiko Stuebner <heiko@sntech.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-usb@vger.kernel.org, Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v2 03/11] dt-bindings: usb: dwc3: add description for
+ rk3568
+Message-ID: <YiKdFdYtTS+KKCvP@robh.at.kernel.org>
+References: <20220226184147.769964-1-pgwipeout@gmail.com>
+ <20220226184147.769964-4-pgwipeout@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <YgQhXb/0BM0OFy/6@robh.at.kernel.org>
+In-Reply-To: <20220226184147.769964-4-pgwipeout@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_132403_844711_66F45930 
-X-CRM114-Status: GOOD (  27.94  )
+X-CRM114-CacheID: sfid-20220304_151329_595692_1356B212 
+X-CRM114-Status: GOOD (  11.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,107 +88,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 09, 2022 at 02:17:33PM -0600, Rob Herring wrote:
-> On Thu, Jan 27, 2022 at 03:07:12PM -0800, Brian Norris wrote:
-> > I want to add, deprecate, and bugfix some properties, as well as add the
-> > first users. This is easier with a proper schema.
-> > 
-> > The transformation is mostly straightforward, plus a few notable tweaks:
-> > 
-> >  * Renamed rockchip,dram_speed_bin to rockchip,ddr3_speed_bin. The
-> >    driver code and the example matched, but the description was
-> >    different. I went with the implementation.
-
-...
-
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
-> > @@ -0,0 +1,293 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +# %YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/devfreq/rk3399_dmc.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: Rockchip rk3399 DMC (Dynamic Memory Controller) device
-> > +
-> > +maintainers:
-> > +  - Brian Norris <briannorris@chromium.org>
-> > +
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      - rockchip,rk3399-dmc
-> > +
-> > +  devfreq-events:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> > +    minItems: 1
+On Sat, 26 Feb 2022 13:41:39 -0500, Peter Geis wrote:
+> The rk3568 dwc3 controllers are backwards compatible with the rk3399.
+> Add the device tree description for it.
 > 
-> What's the max?
+> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/usb/rockchip,dwc3.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> If this is just phandles (no arg cells), then you need:
-> 
-> items:
->   maxItems: 1
-> 
-> IOW, fully describe the number of entries and cells for each entry.
 
-We only need 1, with no args. Will add |maxItems|.
-
-> > +    description:
-> > +      Node to get DDR loading. Refer to
-> > +      Documentation/devicetree/bindings/devfreq/event/rockchip-dfi.txt.
-> > +
-> > +  clocks:
-> > +    maxItems: 1
-> > +
-> > +  clock-names:
-> > +    items:
-> > +      - const: dmc_clk
-> > +
-> > +  operating-points-v2: true
-> > +
-> > +  center-supply:
-> > +    description:
-> > +      DMC regulator supply.
-> > +
-> > +  rockchip,pmu:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +    description:
-> > +      Phandle to the syscon managing the "PMU general register files".
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-> > +    description:
-> > +      The CPU interrupt number. It should be a DCF interrupt. When DDR DVFS
-> > +      finishes, a DCF interrupt is triggered.
-> > +
-> > +  rockchip,ddr3_speed_bin:
-> 
-> Since you are changing this, s/_/-/
-
-I'm only including this because the driver already supports the
-rockchip,ddr3_speed_bin spelling. But I'm also deprecating it (because
-it's not really needed) and removing it later in the series. I'd rather
-not change the spelling again in the middle, when it doesn't really have
-any net effect.
-
-I can add some clarifying notes in the commit message, about impending
-deprecations, so this makes a little more sense as a standalone commit.
-
-Or if it's somehow better, I can just drop the to-be-deprecated
-properties right now in the .yaml conversion? As it happens, I've seen
-at least one (probably more) other YAML conversion that made breaking
-changes at the same time...
-
-> > +    $ref: /schemas/types.yaml#/definitions/uint32
-> > +    description:
-> > +      For values, reference include/dt-bindings/clock/rk3399-ddr.h. Selects the
-> > +      DDR3 cl-trp-trcd type. It must be set according to "Speed Bin" in DDR3
-> > +      datasheet; DO NOT use a smaller "Speed Bin" than specified for the DDR3
-> > +      being used.
-
-Brian
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
