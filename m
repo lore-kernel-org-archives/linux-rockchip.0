@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D0E8C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Mar 2022 17:24:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD5BBC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Mar 2022 17:24:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oRp39DUnM9isfwAymkpcEwb3FoQN1Z1REyl67Y+YLUA=; b=Z5s+D9W6R/DSzQ
-	hKHLRW5fMIte3vi2w2H0C8xnHVR0dAvNacVUiL48uNaZep4YKPb0ycAlLfMwjLA7JIeimkSEAM9I2
-	bpSXQNSjlQQrBppJrtGZFXBNon8RGSDDjGBLGkHX2yMip+DTRr+eSN2Txv3RD0k52vpL6o+1+670b
-	O6w5Q0AGhpZozKott15MbyBnINj4mlxhy1cjffsV4h/EsnrVKNbI8oQYKbt+D1hdnxVsIO82eC+CW
-	oYz8pYuXCvqe3ChzW8hVP0KjwpXWvwR737WUW93r5E9nMCbW0NGFyjcBXY1HtNwoYlLDt89RkxgHp
-	GViEdTY/alaD/unQTDdA==;
+	List-Owner; bh=hEHRTeV7dpbU0d4WJ058DfCVubQ5ssf+Ba2EDz2yV1w=; b=e7XVH5Yrv8VZvs
+	3CUTSatiGsMg7FXs5Vm952KcaTCrIoYkj/H1h5dXiTTDNJxgVITPVgp1Sc3rEzMqVF0E5z1pzhORI
+	gOmKrakt47IKkiOcVvt0MU+ONAXFUYRF01kVeqj7gQ//lmN7ltuE/U/ncbDAe/9VFq096sLDT3Kdj
+	9CxMLJj7fHEYtYvNZWrZOWTlEDdw72ysJf4WEhcIIyJShju6szaLSmnKZXgZVeX9SOIRwbORAVF+s
+	AJyBTy+4GiVZ8PKAqyzbXBd3J6UVkG+xeG96EFO1mrnBdUdkFHuBWwYRFYB9H56J7+P15FX4yY69T
+	EKgSzRsv3HoJ3WI9KGkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQBf7-00BIZc-0d; Fri, 04 Mar 2022 17:24:17 +0000
+	id 1nQBfA-00BIbv-41; Fri, 04 Mar 2022 17:24:20 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQBam-00BFeR-NX
- for linux-rockchip@lists.infradead.org; Fri, 04 Mar 2022 17:19:52 +0000
+ id 1nQBap-00BFhN-NL
+ for linux-rockchip@lists.infradead.org; Fri, 04 Mar 2022 17:19:54 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id D33E11C4B;
- Fri,  4 Mar 2022 18:19:46 +0100 (CET)
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id D9EAF1027;
+ Fri,  4 Mar 2022 18:19:49 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1646414387;
- bh=+I21XNPnxfBFcrpJBAdDAPtZrSNDC7LAAxQbMXt9Tcc=;
+ s=mail; t=1646414390;
+ bh=vkcss5sWKQIu90Ea0+JY+IY38PUEMtBAw7K4gtJuE90=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=beyO8GkGrq+b6ncHYFvB4kSB9Tt7zRocRwu80Ra57QcfJk1wMpPv/ANhd9NVnCiaJ
- Pih8KFjQVAobTZreTNX7c5pm9o2g3pkUtEqjQM+wAOYvOxH7PPLOj79pKWxFxsjsc8
- qciTaNDeEJnFDcGPBFQD1zkBsfLvdqqyiXHE726U=
+ b=cGAOOLgCZfK8hvXIg8f0erUvSpfU4mdE+QZTuIPSIEQA+yf5xPfnVtcThPwt0oTn7
+ nT+HPziUDSPmmIA5CzCe7KNWBImJUV3kpv9OWaRWRqJw58QAvH6R8wpT4zdY9pd9w7
+ yh5SuRf5PGQwsJVFNImHRrD/FUdU58B7WIpomB9c=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>,
  Paul Elder <paul.elder@ideasonboard.com>, Tomasz Figa <tfiga@google.com>,
  linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 09/17] media: rkisp1: regs: Rename CCL,
- ICCL and IRCL registers with VI_ prefix
-Date: Fri,  4 Mar 2022 19:19:17 +0200
-Message-Id: <20220304171925.1592-10-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v2 13/17] media: rkisp1: Compile debugfs support conditionally
+Date: Fri,  4 Mar 2022 19:19:21 +0200
+Message-Id: <20220304171925.1592-14-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220304171925.1592-1-laurent.pinchart@ideasonboard.com>
 References: <20220304171925.1592-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220304_091948_983790_9C379BEB 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20220304_091951_938654_AB34B584 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,165 +68,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The documentation names the CCL, ICCL and IRCL registers with a VI_
-prefix, like the VI_ID and VI_DPCL registers. Fix the macro names
-accordingly.
+When CONFIG_DEBUGFS is disabled, there's no need to compile the debugfs
+support in. Make it conditional.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-isp.c     | 19 +++---
- .../platform/rockchip/rkisp1/rkisp1-params.c  |  8 +--
- .../platform/rockchip/rkisp1/rkisp1-regs.h    | 60 +++++++++----------
- 3 files changed, 44 insertions(+), 43 deletions(-)
+ .../media/platform/rockchip/rkisp1/Makefile   | 19 +++++++++++--------
+ .../platform/rockchip/rkisp1/rkisp1-common.h  |  9 +++++++++
+ 2 files changed, 20 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index f84e53b60ee1..e8abb57fb728 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -523,20 +523,21 @@ static void rkisp1_isp_stop(struct rkisp1_device *rkisp1)
- 	readx_poll_timeout(readl, rkisp1->base_addr + RKISP1_CIF_ISP_RIS,
- 			   val, val & RKISP1_CIF_ISP_OFF, 20, 100);
- 	rkisp1_write(rkisp1,
--		     RKISP1_CIF_IRCL_MIPI_SW_RST | RKISP1_CIF_IRCL_ISP_SW_RST,
--		     RKISP1_CIF_IRCL);
--	rkisp1_write(rkisp1, 0x0, RKISP1_CIF_IRCL);
-+		     RKISP1_CIF_VI_IRCL_MIPI_SW_RST |
-+		     RKISP1_CIF_VI_IRCL_ISP_SW_RST,
-+		     RKISP1_CIF_VI_IRCL);
-+	rkisp1_write(rkisp1, 0x0, RKISP1_CIF_VI_IRCL);
- }
+diff --git a/drivers/media/platform/rockchip/rkisp1/Makefile b/drivers/media/platform/rockchip/rkisp1/Makefile
+index 1a39bdcc608e..c39ab7010c66 100644
+--- a/drivers/media/platform/rockchip/rkisp1/Makefile
++++ b/drivers/media/platform/rockchip/rkisp1/Makefile
+@@ -1,11 +1,14 @@
+ # SPDX-License-Identifier: GPL-2.0
  
- static void rkisp1_config_clk(struct rkisp1_device *rkisp1)
- {
--	u32 val = RKISP1_CIF_ICCL_ISP_CLK | RKISP1_CIF_ICCL_CP_CLK |
--		  RKISP1_CIF_ICCL_MRSZ_CLK | RKISP1_CIF_ICCL_SRSZ_CLK |
--		  RKISP1_CIF_ICCL_JPEG_CLK | RKISP1_CIF_ICCL_MI_CLK |
--		  RKISP1_CIF_ICCL_IE_CLK | RKISP1_CIF_ICCL_MIPI_CLK |
--		  RKISP1_CIF_ICCL_DCROP_CLK;
-+	u32 val = RKISP1_CIF_VI_ICCL_ISP_CLK | RKISP1_CIF_VI_ICCL_CP_CLK |
-+		  RKISP1_CIF_VI_ICCL_MRSZ_CLK | RKISP1_CIF_VI_ICCL_SRSZ_CLK |
-+		  RKISP1_CIF_VI_ICCL_JPEG_CLK | RKISP1_CIF_VI_ICCL_MI_CLK |
-+		  RKISP1_CIF_VI_ICCL_IE_CLK | RKISP1_CIF_VI_ICCL_MIPI_CLK |
-+		  RKISP1_CIF_VI_ICCL_DCROP_CLK;
++rockchip-isp1-y := rkisp1-capture.o \
++		   rkisp1-common.o \
++		   rkisp1-debug.o \
++		   rkisp1-dev.o \
++		   rkisp1-isp.o \
++		   rkisp1-resizer.o \
++		   rkisp1-stats.o \
++		   rkisp1-params.o
++
++rockchip-isp1-$(CONFIG_DEBUG_FS) += rkisp1-debug.o
++
+ obj-$(CONFIG_VIDEO_ROCKCHIP_ISP1) += rockchip-isp1.o
+-rockchip-isp1-objs += 	rkisp1-capture.o \
+-			rkisp1-common.o \
+-			rkisp1-debug.o \
+-			rkisp1-dev.o \
+-			rkisp1-isp.o \
+-			rkisp1-resizer.o \
+-			rkisp1-stats.o \
+-			rkisp1-params.o
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+index 07a92ed8bdc8..a7ffe2830fa8 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+@@ -518,7 +518,16 @@ void rkisp1_stats_unregister(struct rkisp1_device *rkisp1);
+ int rkisp1_params_register(struct rkisp1_device *rkisp1);
+ void rkisp1_params_unregister(struct rkisp1_device *rkisp1);
  
--	rkisp1_write(rkisp1, val, RKISP1_CIF_ICCL);
-+	rkisp1_write(rkisp1, val, RKISP1_CIF_VI_ICCL);
++#if IS_ENABLED(CONFIG_DEBUG_FS)
+ void rkisp1_debug_init(struct rkisp1_device *rkisp1);
+ void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1);
++#else
++static inline void rkisp1_debug_init(struct rkisp1_device *rkisp1)
++{
++}
++static inline void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
++{
++}
++#endif
  
- 	/* ensure sp and mp can run at the same time in V12 */
- 	if (rkisp1->media_dev.hw_revision == RKISP1_V12) {
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-index d41823c861ca..7a172d47d475 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-@@ -1058,8 +1058,8 @@ static void rkisp1_ie_config(struct rkisp1_params *params,
- static void rkisp1_ie_enable(struct rkisp1_params *params, bool en)
- {
- 	if (en) {
--		rkisp1_param_set_bits(params, RKISP1_CIF_ICCL,
--				      RKISP1_CIF_ICCL_IE_CLK);
-+		rkisp1_param_set_bits(params, RKISP1_CIF_VI_ICCL,
-+				      RKISP1_CIF_VI_ICCL_IE_CLK);
- 		rkisp1_write(params->rkisp1, RKISP1_CIF_IMG_EFF_CTRL_ENABLE,
- 			     RKISP1_CIF_IMG_EFF_CTRL);
- 		rkisp1_param_set_bits(params, RKISP1_CIF_IMG_EFF_CTRL,
-@@ -1067,8 +1067,8 @@ static void rkisp1_ie_enable(struct rkisp1_params *params, bool en)
- 	} else {
- 		rkisp1_param_clear_bits(params, RKISP1_CIF_IMG_EFF_CTRL,
- 					RKISP1_CIF_IMG_EFF_CTRL_ENABLE);
--		rkisp1_param_clear_bits(params, RKISP1_CIF_ICCL,
--					RKISP1_CIF_ICCL_IE_CLK);
-+		rkisp1_param_clear_bits(params, RKISP1_CIF_VI_ICCL,
-+					RKISP1_CIF_VI_ICCL_IE_CLK);
- 	}
- }
- 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-index 9e786de23480..4e2b73227e61 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-@@ -210,7 +210,7 @@
- #define RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP	BIT(1)
- #define RKISP1_CIF_MI_XTD_FMT_CTRL_DMA_CB_CR_SWAP	BIT(2)
- 
--/* CCL */
-+/* VI_CCL */
- #define RKISP1_CIF_CCL_CIF_CLK_DIS			BIT(2)
- /* VI_ISP_CLK_CTRL */
- #define RKISP1_CIF_CLK_CTRL_ISP_RAW			BIT(0)
-@@ -241,32 +241,32 @@
- #define RKISP1_CIF_CLK_CTRL_RSZS			BIT(25)
- #define RKISP1_CIF_CLK_CTRL_MIPI			BIT(26)
- #define RKISP1_CIF_CLK_CTRL_MARVINMI			BIT(27)
--/* ICCL */
--#define RKISP1_CIF_ICCL_ISP_CLK				BIT(0)
--#define RKISP1_CIF_ICCL_CP_CLK				BIT(1)
--#define RKISP1_CIF_ICCL_RES_2				BIT(2)
--#define RKISP1_CIF_ICCL_MRSZ_CLK			BIT(3)
--#define RKISP1_CIF_ICCL_SRSZ_CLK			BIT(4)
--#define RKISP1_CIF_ICCL_JPEG_CLK			BIT(5)
--#define RKISP1_CIF_ICCL_MI_CLK				BIT(6)
--#define RKISP1_CIF_ICCL_RES_7				BIT(7)
--#define RKISP1_CIF_ICCL_IE_CLK				BIT(8)
--#define RKISP1_CIF_ICCL_SIMP_CLK			BIT(9)
--#define RKISP1_CIF_ICCL_SMIA_CLK			BIT(10)
--#define RKISP1_CIF_ICCL_MIPI_CLK			BIT(11)
--#define RKISP1_CIF_ICCL_DCROP_CLK			BIT(12)
--/* IRCL */
--#define RKISP1_CIF_IRCL_ISP_SW_RST			BIT(0)
--#define RKISP1_CIF_IRCL_CP_SW_RST			BIT(1)
--#define RKISP1_CIF_IRCL_YCS_SW_RST			BIT(2)
--#define RKISP1_CIF_IRCL_MRSZ_SW_RST			BIT(3)
--#define RKISP1_CIF_IRCL_SRSZ_SW_RST			BIT(4)
--#define RKISP1_CIF_IRCL_JPEG_SW_RST			BIT(5)
--#define RKISP1_CIF_IRCL_MI_SW_RST			BIT(6)
--#define RKISP1_CIF_IRCL_CIF_SW_RST			BIT(7)
--#define RKISP1_CIF_IRCL_IE_SW_RST			BIT(8)
--#define RKISP1_CIF_IRCL_SI_SW_RST			BIT(9)
--#define RKISP1_CIF_IRCL_MIPI_SW_RST			BIT(11)
-+/* VI_ICCL */
-+#define RKISP1_CIF_VI_ICCL_ISP_CLK			BIT(0)
-+#define RKISP1_CIF_VI_ICCL_CP_CLK			BIT(1)
-+#define RKISP1_CIF_VI_ICCL_RES_2			BIT(2)
-+#define RKISP1_CIF_VI_ICCL_MRSZ_CLK			BIT(3)
-+#define RKISP1_CIF_VI_ICCL_SRSZ_CLK			BIT(4)
-+#define RKISP1_CIF_VI_ICCL_JPEG_CLK			BIT(5)
-+#define RKISP1_CIF_VI_ICCL_MI_CLK			BIT(6)
-+#define RKISP1_CIF_VI_ICCL_RES_7			BIT(7)
-+#define RKISP1_CIF_VI_ICCL_IE_CLK			BIT(8)
-+#define RKISP1_CIF_VI_ICCL_SIMP_CLK			BIT(9)
-+#define RKISP1_CIF_VI_ICCL_SMIA_CLK			BIT(10)
-+#define RKISP1_CIF_VI_ICCL_MIPI_CLK			BIT(11)
-+#define RKISP1_CIF_VI_ICCL_DCROP_CLK			BIT(12)
-+/* VI_IRCL */
-+#define RKISP1_CIF_VI_IRCL_ISP_SW_RST			BIT(0)
-+#define RKISP1_CIF_VI_IRCL_CP_SW_RST			BIT(1)
-+#define RKISP1_CIF_VI_IRCL_YCS_SW_RST			BIT(2)
-+#define RKISP1_CIF_VI_IRCL_MRSZ_SW_RST			BIT(3)
-+#define RKISP1_CIF_VI_IRCL_SRSZ_SW_RST			BIT(4)
-+#define RKISP1_CIF_VI_IRCL_JPEG_SW_RST			BIT(5)
-+#define RKISP1_CIF_VI_IRCL_MI_SW_RST			BIT(6)
-+#define RKISP1_CIF_VI_IRCL_CIF_SW_RST			BIT(7)
-+#define RKISP1_CIF_VI_IRCL_IE_SW_RST			BIT(8)
-+#define RKISP1_CIF_VI_IRCL_SI_SW_RST			BIT(9)
-+#define RKISP1_CIF_VI_IRCL_MIPI_SW_RST			BIT(11)
- 
- /* C_PROC_CTR */
- #define RKISP1_CIF_C_PROC_CTR_ENABLE			BIT(0)
-@@ -687,11 +687,11 @@
- /*                            CIF Registers                            */
- /* =================================================================== */
- #define RKISP1_CIF_CTRL_BASE			0x00000000
--#define RKISP1_CIF_CCL				(RKISP1_CIF_CTRL_BASE + 0x00000000)
-+#define RKISP1_CIF_VI_CCL			(RKISP1_CIF_CTRL_BASE + 0x00000000)
- #define RKISP1_CIF_VI_ID			(RKISP1_CIF_CTRL_BASE + 0x00000008)
- #define RKISP1_CIF_VI_ISP_CLK_CTRL_V12		(RKISP1_CIF_CTRL_BASE + 0x0000000C)
--#define RKISP1_CIF_ICCL				(RKISP1_CIF_CTRL_BASE + 0x00000010)
--#define RKISP1_CIF_IRCL				(RKISP1_CIF_CTRL_BASE + 0x00000014)
-+#define RKISP1_CIF_VI_ICCL			(RKISP1_CIF_CTRL_BASE + 0x00000010)
-+#define RKISP1_CIF_VI_IRCL			(RKISP1_CIF_CTRL_BASE + 0x00000014)
- #define RKISP1_CIF_VI_DPCL			(RKISP1_CIF_CTRL_BASE + 0x00000018)
- 
- #define RKISP1_CIF_IMG_EFF_BASE			0x00000200
+ #endif /* _RKISP1_COMMON_H */
 -- 
 Regards,
 
