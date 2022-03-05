@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67C3FC433FE
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Mar 2022 11:27:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BC1DC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Mar 2022 11:28:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qGfaCsUX4gj5YXqc+HYV1YeqOwL6/mWRpSpJYsd9t3c=; b=KqYHWbMWwJhvmN
-	i0woXXMhW82WfRp8Lk8B+Zj74CdPvvEC0+LMf+HdYclKboyQbjxpO5aZDnYhd2zI3PPQoxK16hLSk
-	SVFvZxevF/jsOn7QJdcHeuZHGFoT64OImqIbqeDII7Ui69Skd67kYcLZ3ZzusqBM+dz7IbF8JPT9D
-	nYTlCICmRqhD884xurgNIyuXSlGOtckuW+qBAffGlIWZ53fCX+fvL3neBLinrhiN+sgI7g+JaSppm
-	QEy6GC8umraZi7sCWI9OSQwmmjC1Og38qnPFioU0Lq5b8MsmRaiGn7xqD8cRG8K2RYARNjIXSEFqH
-	cEmBE4RvkkGiflNExcPA==;
+	List-Owner; bh=GKL1OOYcFhPLGM9UeeIaq9c4d2/jhWl4mmbvEUiwmjg=; b=encq/9zHxpSyGE
+	1vGrch89x8hK1glns5uowXV3ZQUOEN2NCnld0SFH2+UM/rcAIBOqwxfblLw2iJPoazcBOXcdWcAc7
+	7TtSSHyqu+blXsLjOW+QOFYtXb/kwEMR6g6ahStS1M1pVpk+DoILH0HYivdstAqH4E/bk5e9ZZfvz
+	TpeyRraYoAAJRYkcPrIC0KU1+8bo5Gl4SV0rCc67ofRooUspoXY6Qj3fNxPs9du1kFQ8RTCOvGGkO
+	SR0/nlX81O968LPx/xApviy4qw/tlM2utr2HL63Tge4dW4+zqLPA7DsjvWY2FJXVrCQe2LohFIga9
+	T7XWGklwFm5aNUghTjJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQSZF-00DEk8-Qj; Sat, 05 Mar 2022 11:27:21 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1nQSZs-00DFA2-UF; Sat, 05 Mar 2022 11:28:00 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQSYN-00DEJo-RP; Sat, 05 Mar 2022 11:26:29 +0000
+ id 1nQSYP-00DEJc-1A; Sat, 05 Mar 2022 11:26:31 +0000
 Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
- by mxout2.routing.net (Postfix) with ESMTP id 8AA445FD5D;
- Sat,  5 Mar 2022 11:26:24 +0000 (UTC)
+ by mxout1.routing.net (Postfix) with ESMTP id E386F3FDCC;
+ Sat,  5 Mar 2022 11:26:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1646479584;
+ s=20200217; t=1646479582;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=oeojDkbixb+3+AqcShTPnuHWz+1GrcPznWJUJt5Sy3k=;
- b=v+/pylN7fIi8+EJUtnWzr056KkXzMdaedd8sSSturEfyQOeI/a9pkpI49bIs4yF/Ja939r
- PGjd/jAyuF/eyz+2yuGft/UJbOOMwn/NJkYAHL3di/Z10AG0fLpyvwGR17sXfiZhtiOV2b
- w34lFlqgJmc4Nma/5qE68J+88L8z9Mw=
+ bh=h+3kTihjkrAcsYoutmb53vd9PaAyKUnnM/fDjJgZmeU=;
+ b=VOUP0K/Y8IieQ9RLGSHVIjqfexlK0NOVW+gJxqMCj3nbP7PzV/LHv+4ldi++I3y9Up6QZd
+ //+gIMiZbdSn2BG5sAD+CD2OrLHf6K+k1OQTD/ojs6sfIXoTB9PaAsqsuUUUITPmBg4qYJ
+ 6UkNyIOQT6In75XciGtRABJ8vvPs5yE=
 Received: from localhost.localdomain (fttx-pool-217.61.157.101.bambit.de
  [217.61.157.101])
- by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 9D40F1007DD;
- Sat,  5 Mar 2022 11:26:23 +0000 (UTC)
+ by mxbox2.masterlogin.de (Postfix) with ESMTPSA id E16881007DD;
+ Sat,  5 Mar 2022 11:26:20 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: devicetree@vger.kernel.org
 Cc: Frank Wunderlich <frank-w@public-files.de>,
@@ -56,17 +56,17 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
  Hans de Goede <hdegoede@redhat.com>, Jens Axboe <axboe@kernel.dk>,
  linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH v5 5/5] arm64: dts: rockchip: Add sata nodes to rk356x
-Date: Sat,  5 Mar 2022 12:26:07 +0100
-Message-Id: <20220305112607.257734-6-linux@fw-web.de>
+Subject: [PATCH v5 2/5] arm64: dts: marvell: fix anyOf conditional failed
+Date: Sat,  5 Mar 2022 12:26:04 +0100
+Message-Id: <20220305112607.257734-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220305112607.257734-1-linux@fw-web.de>
 References: <20220305112607.257734-1-linux@fw-web.de>
 MIME-Version: 1.0
-X-Mail-ID: 6c0e6171-3ca7-422f-bfb9-56d26079865c
+X-Mail-ID: 003685f4-bab2-49f1-b8ba-7f9748801efb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220305_032628_078335_ED7B35C9 
-X-CRM114-Status: GOOD (  10.34  )
+X-CRM114-CacheID: sfid-20220305_032629_481011_B73C2C9E 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,89 +86,204 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-RK356x supports up to 3 sata controllers which were compatible with the
-existing snps,dwc-ahci binding.
+after converting the ahci-platform binding to yaml the following files
+reporting "'anyOf' conditional failed" on
+
+sata@540000: sata-port@0
+
+armada-7040-db.dts
+armada-8040-clearfog-gt-8k.dts
+armada-8040-mcbin.dts
+armada-8040-mcbin-singleshot.dts
+cn9130-db.dts
+cn9130-db-B.dts
+cn9131-db.dts
+cn9131-db-B.dts
+cn9132-db.dts
+cn9132-db-B.dts
+
+the following files reporting 'anyOf' conditional failed on
+
+sata@540000: sata-port@1
+
+cn9132-db.dts
+cn9132-db-B.dts
+cn9130-crb-B.dts
+
+'phys' is a required property
+'target-supply' is a required property
+From schema: Documentation/devicetree/bindings/ata/ahci-platform.yaml
+
+This is caused by defining sata-ports incomplete in armada-cp11x.dtsi
+and overriding only a subset of ports with the needed
+phys/target-supply property.
+
+Fix this by disabling the node-templates and enabling the needed nodes.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
-changes in v4:
- - drop newline in dts
- - re-add clock-names
- -  add soc specific compatible
-changes in v3:
-  - fix combphy error by moving sata0 to rk3568.dtsi
-  - remove clock-names and interrupt-names
-changes in v2:
-  - added sata0 + 1, but have only tested sata2
----
- arch/arm64/boot/dts/rockchip/rk3568.dtsi | 14 ++++++++++++
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 28 ++++++++++++++++++++++++
- 2 files changed, 42 insertions(+)
+the dtsi uses a macro for the node-label defined in armada-common.dtsi
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-index 5b0f528d6818..3e07d9f6a2d1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -8,6 +8,20 @@
- / {
- 	compatible = "rockchip,rk3568";
+CP11X_LABEL(sata0): sata@540000 {
+
+so i hope i catched all right nodes to be enabled...
+have enabled all cpX_sata0 sata-portY childs
+---
+ arch/arm64/boot/dts/marvell/armada-7040-db.dts             | 1 +
+ arch/arm64/boot/dts/marvell/armada-7040-mochabin.dts       | 2 ++
+ arch/arm64/boot/dts/marvell/armada-8040-clearfog-gt-8k.dts | 1 +
+ arch/arm64/boot/dts/marvell/armada-8040-db.dts             | 2 ++
+ arch/arm64/boot/dts/marvell/armada-8040-mcbin.dtsi         | 1 +
+ arch/arm64/boot/dts/marvell/armada-8040-puzzle-m801.dts    | 2 ++
+ arch/arm64/boot/dts/marvell/armada-cp11x.dtsi              | 2 ++
+ arch/arm64/boot/dts/marvell/cn9130-crb-B.dts               | 1 +
+ arch/arm64/boot/dts/marvell/cn9131-db.dtsi                 | 1 +
+ arch/arm64/boot/dts/marvell/cn9132-db.dtsi                 | 1 +
+ 10 files changed, 14 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/marvell/armada-7040-db.dts b/arch/arm64/boot/dts/marvell/armada-7040-db.dts
+index cd326fe224ce..f8b1b46a03b3 100644
+--- a/arch/arm64/boot/dts/marvell/armada-7040-db.dts
++++ b/arch/arm64/boot/dts/marvell/armada-7040-db.dts
+@@ -215,6 +215,7 @@ &cp0_sata0 {
+ 	sata-port@1 {
+ 		phys = <&cp0_comphy3 1>;
+ 		phy-names = "cp0-sata0-1-phy";
++		status = "okay";
+ 	};
+ };
  
-+	sata0: sata@fc000000 {
-+		compatible = "rockchip,rk3568-dwc-ahci", "snps,dwc-ahci";
-+		reg = <0 0xfc000000 0 0x1000>;
-+		clocks = <&cru ACLK_SATA0>, <&cru CLK_SATA0_PMALIVE>,
-+			 <&cru CLK_SATA0_RXOOB>;
-+		clock-names = "sata", "pmalive", "rxoob";
-+		interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_HIGH>;
-+		phys = <&combphy0 PHY_TYPE_SATA>;
-+		phy-names = "sata-phy";
-+		ports-implemented = <0x1>;
-+		power-domains = <&power RK3568_PD_PIPE>;
-+		status = "disabled";
-+	};
-+
- 	pipe_phy_grf0: syscon@fdc70000 {
- 		compatible = "rockchip,rk3568-pipe-phy-grf", "syscon";
- 		reg = <0x0 0xfdc70000 0x0 0x1000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index 7cdef800cb3c..264dd030e703 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -230,6 +230,34 @@ scmi_shmem: sram@0 {
- 		};
+diff --git a/arch/arm64/boot/dts/marvell/armada-7040-mochabin.dts b/arch/arm64/boot/dts/marvell/armada-7040-mochabin.dts
+index f3b0d57a24a3..7529018f9b72 100644
+--- a/arch/arm64/boot/dts/marvell/armada-7040-mochabin.dts
++++ b/arch/arm64/boot/dts/marvell/armada-7040-mochabin.dts
+@@ -436,12 +436,14 @@ &cp0_sata0 {
+ 	sata-port@0 {
+ 		phys = <&cp0_comphy2 0>;
+ 		phy-names = "cp0-sata0-0-phy";
++		status = "okay";
  	};
  
-+	sata1: sata@fc400000 {
-+		compatible = "rockchip,rk3568-dwc-ahci", "snps,dwc-ahci";
-+		reg = <0 0xfc400000 0 0x1000>;
-+		clocks = <&cru ACLK_SATA1>, <&cru CLK_SATA1_PMALIVE>,
-+			 <&cru CLK_SATA1_RXOOB>;
-+		clock-names = "sata", "pmalive", "rxoob";
-+		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
-+		phys = <&combphy1 PHY_TYPE_SATA>;
-+		phy-names = "sata-phy";
-+		ports-implemented = <0x1>;
-+		power-domains = <&power RK3568_PD_PIPE>;
-+		status = "disabled";
-+	};
-+
-+	sata2: sata@fc800000 {
-+		compatible = "rockchip,rk3568-dwc-ahci", "snps,dwc-ahci";
-+		reg = <0 0xfc800000 0 0x1000>;
-+		clocks = <&cru ACLK_SATA2>, <&cru CLK_SATA2_PMALIVE>,
-+			 <&cru CLK_SATA2_RXOOB>;
-+		clock-names = "sata", "pmalive", "rxoob";
-+		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
-+		phys = <&combphy2 PHY_TYPE_SATA>;
-+		phy-names = "sata-phy";
-+		ports-implemented = <0x1>;
-+		power-domains = <&power RK3568_PD_PIPE>;
-+		status = "disabled";
-+	};
-+
- 	gic: interrupt-controller@fd400000 {
- 		compatible = "arm,gic-v3";
- 		reg = <0x0 0xfd400000 0 0x10000>, /* GICD */
+ 	/* M.2-2250 B-key (J39) */
+ 	sata-port@1 {
+ 		phys = <&cp0_comphy3 1>;
+ 		phy-names = "cp0-sata0-1-phy";
++		status = "okay";
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/marvell/armada-8040-clearfog-gt-8k.dts b/arch/arm64/boot/dts/marvell/armada-8040-clearfog-gt-8k.dts
+index 8729c6467303..5bb429abb1de 100644
+--- a/arch/arm64/boot/dts/marvell/armada-8040-clearfog-gt-8k.dts
++++ b/arch/arm64/boot/dts/marvell/armada-8040-clearfog-gt-8k.dts
+@@ -476,6 +476,7 @@ &cp1_sata0 {
+ 	sata-port@1 {
+ 		phys = <&cp1_comphy0 1>;
+ 		phy-names = "cp1-sata0-1-phy";
++		status = "okay";
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/marvell/armada-8040-db.dts b/arch/arm64/boot/dts/marvell/armada-8040-db.dts
+index f2e8e0df8865..b33d64babcd9 100644
+--- a/arch/arm64/boot/dts/marvell/armada-8040-db.dts
++++ b/arch/arm64/boot/dts/marvell/armada-8040-db.dts
+@@ -146,10 +146,12 @@ &cp0_sata0 {
+ 	sata-port@0 {
+ 		phys = <&cp0_comphy1 0>;
+ 		phy-names = "cp0-sata0-0-phy";
++		status = "okay";
+ 	};
+ 	sata-port@1 {
+ 		phys = <&cp0_comphy3 1>;
+ 		phy-names = "cp0-sata0-1-phy";
++		status = "okay";
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/marvell/armada-8040-mcbin.dtsi b/arch/arm64/boot/dts/marvell/armada-8040-mcbin.dtsi
+index adbfecc678b5..2be4d67cbf16 100644
+--- a/arch/arm64/boot/dts/marvell/armada-8040-mcbin.dtsi
++++ b/arch/arm64/boot/dts/marvell/armada-8040-mcbin.dtsi
+@@ -246,6 +246,7 @@ &cp0_sata0 {
+ 	sata-port@1 {
+ 		phys = <&cp0_comphy5 1>;
+ 		phy-names = "cp0-sata0-1-phy";
++		status = "okay";
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/marvell/armada-8040-puzzle-m801.dts b/arch/arm64/boot/dts/marvell/armada-8040-puzzle-m801.dts
+index dac85fa748de..03f9cc3a895f 100644
+--- a/arch/arm64/boot/dts/marvell/armada-8040-puzzle-m801.dts
++++ b/arch/arm64/boot/dts/marvell/armada-8040-puzzle-m801.dts
+@@ -409,11 +409,13 @@ &cp0_sata0 {
+ 	sata-port@0 {
+ 		phys = <&cp0_comphy2 0>;
+ 		phy-names = "cp0-sata0-0-phy";
++		status = "okay";
+ 	};
+ 
+ 	sata-port@1 {
+ 		phys = <&cp0_comphy5 1>;
+ 		phy-names = "cp0-sata0-1-phy";
++		status = "okay";
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/marvell/armada-cp11x.dtsi b/arch/arm64/boot/dts/marvell/armada-cp11x.dtsi
+index 3bd2182817fb..a2cc85d2adce 100644
+--- a/arch/arm64/boot/dts/marvell/armada-cp11x.dtsi
++++ b/arch/arm64/boot/dts/marvell/armada-cp11x.dtsi
+@@ -342,10 +342,12 @@ CP11X_LABEL(sata0): sata@540000 {
+ 
+ 			sata-port@0 {
+ 				reg = <0>;
++				status = "disabled";
+ 			};
+ 
+ 			sata-port@1 {
+ 				reg = <1>;
++				status = "disabled";
+ 			};
+ 		};
+ 
+diff --git a/arch/arm64/boot/dts/marvell/cn9130-crb-B.dts b/arch/arm64/boot/dts/marvell/cn9130-crb-B.dts
+index 0904cb0309ae..34194745f79e 100644
+--- a/arch/arm64/boot/dts/marvell/cn9130-crb-B.dts
++++ b/arch/arm64/boot/dts/marvell/cn9130-crb-B.dts
+@@ -28,6 +28,7 @@ sata-port@0 {
+ 		status = "okay";
+ 		/* Generic PHY, providing serdes lanes */
+ 		phys = <&cp0_comphy2 0>;
++		status = "okay";
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/marvell/cn9131-db.dtsi b/arch/arm64/boot/dts/marvell/cn9131-db.dtsi
+index f995b1bcda01..e6566dac885e 100644
+--- a/arch/arm64/boot/dts/marvell/cn9131-db.dtsi
++++ b/arch/arm64/boot/dts/marvell/cn9131-db.dtsi
+@@ -127,6 +127,7 @@ &cp1_sata0 {
+ 	sata-port@1 {
+ 		/* Generic PHY, providing serdes lanes */
+ 		phys = <&cp1_comphy5 1>;
++		status = "okay";
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/marvell/cn9132-db.dtsi b/arch/arm64/boot/dts/marvell/cn9132-db.dtsi
+index 3f1795fb4fe7..5f9614bf2a0f 100644
+--- a/arch/arm64/boot/dts/marvell/cn9132-db.dtsi
++++ b/arch/arm64/boot/dts/marvell/cn9132-db.dtsi
+@@ -175,6 +175,7 @@ &cp2_sata0 {
+ 	sata-port@0 {
+ 		/* Generic PHY, providing serdes lanes */
+ 		phys = <&cp2_comphy2 0>;
++		status = "okay";
+ 	};
+ };
+ 
 -- 
 2.25.1
 
