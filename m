@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9EA3C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Mar 2022 09:41:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81095C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Mar 2022 09:48:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p77jB3YQnN3Rjq9d0XWA+6EDyV1OEuoRJ6tjsasKUC8=; b=P8yzsWJiZ8RRjC
-	Yn3muIfa15rFNyYexDRjSPkrLmmUnHjZDyhsg9f1f7yl5/pjJq4XB9CpxKX5RTdeCZ3YXqsIQGZ3g
-	Nz+I8vbOFJIVwRAOe/FcxrKUoQsr25uH+twLA4VvOAU8xnV7UnRQN/sFJzQVdi0MZi/mskmcdkGwG
-	fZKDSbXtyLhrz6tKBHQ49AJIKsdL6fboKHOUhP4GOGbnTcEqMMSiBJx987UbHpLwS5XDQarDHT+sK
-	0JS+GfbWmtcbRedz+eYRteshG2HEOa0nt6JSXrihKeam64b+Ec44AZ2W6ltTPf4leXGVjb7Wx0O8R
-	u5kHQDpg8RF46lrA9zpQ==;
+	List-Owner; bh=5iFikobxAG2+c60BghYhK18GCgcu+4DKEi/O+fRJW/w=; b=bddFasB/BbhsWJ
+	Uy8upsBOCqcVCxBUEDqvcgHalr13zXtQHL/z6wo3kAIfq0vFzVvWlBtaDGztEReKJBFvoYePtrDKn
+	/GG1wK9CQxSZTkrkmPC1r1lvEP65an/ppORHa27oMlXL/jNGF84ubRgVDrV3WV5yg82MMW4SZKMPx
+	vJjoKUnzJ7tzzijkNpVNjjb47etYQl9JlilHHOdeYmFvoaQuNWR8GNzL7tqdwqMIEHJkSafr6FmPp
+	8LbVdwihcgvtyouOvWtWrZsOV3lyjoka+Qui6F1mpR9IIv3GrFtHK4Jm8iZfg1T0f/alasYBdDCHa
+	lfJhYdo93udgpzS8nZvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQnNw-00ENoa-DN; Sun, 06 Mar 2022 09:41:04 +0000
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+	id 1nQnV2-00EOFq-FM; Sun, 06 Mar 2022 09:48:24 +0000
+Received: from mout.gmx.net ([212.227.17.20])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQnNs-00ENnX-PF; Sun, 06 Mar 2022 09:41:02 +0000
-Received: by mail-yw1-x1130.google.com with SMTP id
- 00721157ae682-2d07ae0b1c0so134099897b3.2; 
- Sun, 06 Mar 2022 01:40:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=IbHyYTr6WOPJjB6Gi+P7cukHb81trN1p7PDNUlogpq0=;
- b=ULSSmk/qS6K+NUV9dXKDoKW48orew9LWfGZ1Cay/PkA+Mdf3Ct2cpAD5r4lfzceYmJ
- Wl3CwJg9d5TDzlXloE8ym4AdZhp3s6pKva8mY7Q1I5fXzH5qgx0y5HtPipp9+WarkXU+
- /0ufDpuHq2ZEZondl02FCAyeqc97Iq0AEsuB68CiDAGvazAf+j3YwVMuoyypj6xVcTq6
- OsU8UB4JsQmhBMwXpY2PIt7h2BXWzx91K7cRVD1qFCB5NzndCADnFW9MkbmYVAM0IJUI
- HOULKjSH6tiWhFK2A7tZRb2FvPlo1QIRyhiBkgdCx9M/nxfP7J45ldwO8b6otY8mKScD
- usow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=IbHyYTr6WOPJjB6Gi+P7cukHb81trN1p7PDNUlogpq0=;
- b=4uGr3j8kpOFkZOG0f6X/z/kwLER9LpEWSqoq88auz0PWA7XV+wo0jjujgIDwP6h7Sm
- d07ojbu7DhRnylImxCkV3MxDsgtG5HhinYmbyCs2DzOQYeMBz92FD5uKCuvcD1rRdKzk
- GNC4Shl7q9QmXNnUCPRI3JrQlu+VzibwbY/BVMrZ2mSYsQgRNvpFcfHu/JtPLHB/s8tX
- Tm+g2OBwSDP8T+dYeZxpMUfcZ89LAnLsIRtRvUOL29xhRsHQFVD+AvSYr4zKRqj5jLM/
- 150Fd+C4chHxUYUkHA6HpeYXv6AU/7fefJxopnGupD6WDsluzLERaeWca0FSUGkebHuH
- HKjw==
-X-Gm-Message-State: AOAM531CfdPT11EWJZZ7ZDzo/vyubgB/XZkuV6EnJ4LgHhxAFnVd7USI
- wHINlfhc/MBeKGCrAq7lA2vzQaDHNc+HAG8oQdNN17UjBEo=
-X-Google-Smtp-Source: ABdhPJxGHlUXwba52RmTK6Cc/YUTsTVchbtsUg2P2U70IppClc6ePUHTgfFCfjBEzN9w52V2RDjWTrl5gNHkDeOtC/Q=
-X-Received: by 2002:a0d:f507:0:b0:2dc:348e:54af with SMTP id
- e7-20020a0df507000000b002dc348e54afmr4604951ywf.204.1646559658793; Sun, 06
- Mar 2022 01:40:58 -0800 (PST)
+ id 1nQnUz-00EOFG-EC; Sun, 06 Mar 2022 09:48:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1646560070;
+ bh=OD9fC9I+jhM8Okh3twd8v6eVvZwsGcKGQ/IgKak8Gv0=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=Ny5UjL1sTdiqrIRD3wdU7tqzCN4lUZru1dJUCIRnKTmN6xcyx5SmRkhxv8IEgbQG9
+ StdwseJ272DQcBXAXCYlVGGK4ct+XstTGKsg6xLMOjBff/XferX08EL1cUoBzgtV6e
+ zRtzz0bjaKKyJrk/BAV3PJK+cmUHxysOpADXtyI8=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.145.243] ([217.61.145.243]) by web-mail.gmx.net
+ (3c-app-gmx-bs46.server.lan [172.19.170.98]) (via HTTP); Sun, 6 Mar 2022
+ 10:47:50 +0100
 MIME-Version: 1.0
-References: <CAK4VdL3-BEBzgVXTMejrAmDjOorvoGDBZ14UFrDrKxVEMD2Zjg@mail.gmail.com>
- <1jczjzt05k.fsf@starbuckisacylon.baylibre.com>
- <CAK4VdL2=1ibpzMRJ97m02AiGD7_sN++F3SCKn6MyKRZX_nhm=g@mail.gmail.com>
- <6b04d864-7642-3f0a-aac0-a3db84e541af@gmail.com>
- <CAK4VdL0gpz_55aYo6pt+8h14FHxaBmo5kNookzua9+0w+E4JcA@mail.gmail.com>
- <1e828df4-7c5d-01af-cc49-3ef9de2cf6de@gmail.com>
- <1j8rts76te.fsf@starbuckisacylon.baylibre.com>
- <a4d3fef1-d410-c029-cdff-4d90f578e2da@gmail.com>
-In-Reply-To: <a4d3fef1-d410-c029-cdff-4d90f578e2da@gmail.com>
-From: Erico Nunes <nunes.erico@gmail.com>
-Date: Sun, 6 Mar 2022 10:40:47 +0100
-Message-ID: <CAK4VdL08sdZV7o7Bw=cutdmoCEi1NYB-yisstLqRuH7QcHOHvA@mail.gmail.com>
-Subject: Re: net: stmmac: dwmac-meson8b: interface sometimes does not come up
- at boot
-To: Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Jerome Brunet <jbrunet@baylibre.com>, 
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
- Jose Abreu <joabreu@synopsys.com>, Kevin Hilman <khilman@baylibre.com>, 
- Neil Armstrong <narmstrong@baylibre.com>, linux-amlogic@lists.infradead.org, 
- netdev@vger.kernel.org, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-sunxi@lists.linux.dev
+Message-ID: <trinity-9ef9e0d3-e70c-45d9-bdd8-e43d1c89a8c9-1646560070497@3c-app-gmx-bs46>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Cc: Frank Wunderlich <linux@fw-web.de>, devicetree@vger.kernel.org, Damien
+ Le Moal <damien.lemoal@opensource.wdc.com>, Rob Herring
+ <robh+dt@kernel.org>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement
+ <gregory.clement@bootlin.com>, Sebastian Hesselbarth
+ <sebastian.hesselbarth@gmail.com>, Russell King <linux@armlinux.org.uk>,
+ Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>, Michael
+ Riesch <michael.riesch@wolfvision.net>, Hans de Goede
+ <hdegoede@redhat.com>, Jens Axboe <axboe@kernel.dk>,
+ linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Aw: Re: [PATCH v5 1/5] dt-bindings: ata: ahci-platform: Convert DT
+ bindings to yaml
+Date: Sun, 6 Mar 2022 10:47:50 +0100
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <a2839b00-d195-131f-b2a7-d2f030a5bd95@canonical.com>
+References: <20220305112607.257734-1-linux@fw-web.de>
+ <20220305112607.257734-2-linux@fw-web.de>
+ <a2839b00-d195-131f-b2a7-d2f030a5bd95@canonical.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:Echz34LhzOW5lmBqLmmb4P7mnPgqTTUheGQ31g1l4cvCB7QgzRtTYu2fQgCY6tYwBeroz
+ bkiKXu1NYcjP50rVa7bvFlK05WbKn34j5J3LeomEbN8mZHBor8Z9e28tvxyU13X+a1B0VMcEo3Is
+ 0c0SW2QymXtdzlA+3Qs7FfKYs175VGlLw9j2We/yhu1/F44dZQpZMdH6WaBV5zgfbEXy9abRCjeQ
+ DusZRjUvBrwRp0/hkZr1HHgYogx4mFESNDB/LGNEl/HZTSYqypdTFzqW+nkovm4U4zLCjm+2iuI8
+ es=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:EowYyED6Quw=:Z01UPjyHuVxost3uxThyxc
+ ozZn7Bq/AJadPhkzyUmulvBAuWzvsO5W3OMUpNO0YksneTyUgNH9j6cdGxoLDJJMpQhgEa5r0
+ iZ1lMnk5aXliO2O4GQgH2NuaEAFVYV/4C3fIHC7p2wsRLGhsynzhz4IqITYN/uN2sIQ6XvrfP
+ wu92vavFMgcD+otN+pZxhhdAVUWuwsHZiVwtY8bKhbvDEVbnUh0f3svL1u2dWi0cCcEXVHHSU
+ UZrM7kXHfO474b4HE1QgZUdfQgY97n7fTuNzzP6v9mq2TOIjjUvyFr5TkxNeGI3vZrH/tt6v6
+ PyUgdKaj8qGR0IDHvGogajmD7i+t1WqfPh6QrWrkFhcpuy7Z+w5zKNIdE3du+yymkHFFDNHk2
+ 3YQS0yVgRg8ezuyQ10swPa/GdqYoGnKfMXC0i7jjH1wajvnRhshKRtxTCy2CtRL0dEO2FRwey
+ WFoVaJFlYriuZ4Hu7e1kmCYpbxFTf4frCUC7RvY4dMUiYTMTXNaDigbA7+J+LTVrG764N5EJ7
+ u2KkQ7ekRZrjH1FbhdwgROx+Q0LQSrzgWc0gjNOlPsk95dxjpnqy5Vt7YryeT4PebHNgt/3CM
+ 7wrwruTI0TxxG81/zyYzIT96eB2rbFe0Ipu8ZUkHLpvy2qczvvlAQx9aX5xAemMDXRln4XvtF
+ qeU4NcZcPfO5nmqFSa+2SqwLHW7QvdZR1Yn+YsEg2gDIjLpFAktTlvRoIT0SnlsTEcqBCOmks
+ NTdRv10cnMvpSQmGXXEwB1CKjmVrB9cE42vPy7dXJScAKy7sakNygTCNVmspFw2QqJF8W2XbE
+ p8XvUie
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220306_014100_876198_251334D5 
-X-CRM114-Status: GOOD (  31.53  )
+X-CRM114-CacheID: sfid-20220306_014821_838515_AF66FE95 
+X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,126 +94,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 2, 2022 at 5:35 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
-> When using polling the time difference between aneg complete and
-> PHY state machine run is random in the interval 0 .. 1s.
-> Hence there's a certain chance that the difference is too small
-> to avoid the issue.
->
-> > If I understand the proposed patch correctly, it is mostly about the phy
-> > IRQ. Since I reproduce without the IRQ, I suppose it is not the
-> > problem we where looking for (might still be a problem worth fixing -
-> > the phy is not "rock-solid" when it comes to aneg - I already tried
-> > stabilising it a few years ago)
->
-> Below is a slightly improved version of the test patch. It doesn't sleep
-> in the (threaded) interrupt handler and lets the workqueue do it.
->
-> Maybe Amlogic is aware of a potentially related silicon issue?
->
-> >
-> > TBH, It bothers me that I reproduced w/o the IRQ. The idea makes
-> > sense :/
-> >
-> >>
-> [...]
-> >
->
->
-> diff --git a/drivers/net/phy/meson-gxl.c b/drivers/net/phy/meson-gxl.c
-> index 7e7904fee..a3318ae01 100644
-> --- a/drivers/net/phy/meson-gxl.c
-> +++ b/drivers/net/phy/meson-gxl.c
-> @@ -209,12 +209,7 @@ static int meson_gxl_config_intr(struct phy_device *phydev)
->                 if (ret)
->                         return ret;
->
-> -               val = INTSRC_ANEG_PR
-> -                       | INTSRC_PARALLEL_FAULT
-> -                       | INTSRC_ANEG_LP_ACK
-> -                       | INTSRC_LINK_DOWN
-> -                       | INTSRC_REMOTE_FAULT
-> -                       | INTSRC_ANEG_COMPLETE;
-> +               val = INTSRC_LINK_DOWN | INTSRC_ANEG_COMPLETE;
->                 ret = phy_write(phydev, INTSRC_MASK, val);
->         } else {
->                 val = 0;
-> @@ -240,7 +235,10 @@ static irqreturn_t meson_gxl_handle_interrupt(struct phy_device *phydev)
->         if (irq_status == 0)
->                 return IRQ_NONE;
->
-> -       phy_trigger_machine(phydev);
-> +       if (irq_status & INTSRC_ANEG_COMPLETE)
-> +               phy_queue_state_machine(phydev, msecs_to_jiffies(100));
-> +       else
-> +               phy_trigger_machine(phydev);
->
->         return IRQ_HANDLED;
->  }
-> --
-> 2.35.1
-
-I did a lot of testing with this patch, and it seems to improve things.
-To me it completely resolves the original issue which was more easily
-reproducible where I would see "Link is Up" but the interface did not
-really work.
-At least in over a thousand jobs, that never reproduced again with this patch.
-
-I do see a different issue now, but it is even less frequent and
-harder to reproduce. In those over a thousand jobs, I have seen it
-only about 4 times.
-The difference is that now when the issue happens, the link is not
-even reported as Up. The output is a bit different than the original
-one, but it is consistently the same output in all instances where it
-reproduced. Looks like this (note that there is no longer Link is
-Down/Link is Up):
-
-[    2.186151] meson8b-dwmac c9410000.ethernet eth0: PHY
-[0.e40908ff:08] driver [Meson GXL Internal PHY] (irq=48)
-[    2.191582] meson8b-dwmac c9410000.ethernet eth0: Register
-MEM_TYPE_PAGE_POOL RxQ-0
-[    2.208713] meson8b-dwmac c9410000.ethernet eth0: No Safety
-Features support found
-[    2.210673] meson8b-dwmac c9410000.ethernet eth0: PTP not supported by HW
-[    2.218083] meson8b-dwmac c9410000.ethernet eth0: configuring for
-phy/rmii link mode
-[   22.227444] Waiting up to 100 more seconds for network.
-[   42.231440] Waiting up to 80 more seconds for network.
-[   62.235437] Waiting up to 60 more seconds for network.
-[   82.239437] Waiting up to 40 more seconds for network.
-[  102.243439] Waiting up to 20 more seconds for network.
-[  122.243446] Sending DHCP requests ...
-[  130.113944] random: fast init done
-[  134.219441] ... timed out!
-[  194.559562] IP-Config: Retrying forever (NFS root)...
-[  194.624630] meson8b-dwmac c9410000.ethernet eth0: PHY
-[0.e40908ff:08] driver [Meson GXL Internal PHY] (irq=48)
-[  194.630739] meson8b-dwmac c9410000.ethernet eth0: Register
-MEM_TYPE_PAGE_POOL RxQ-0
-[  194.649138] meson8b-dwmac c9410000.ethernet eth0: No Safety
-Features support found
-[  194.651113] meson8b-dwmac c9410000.ethernet eth0: PTP not supported by HW
-[  194.657931] meson8b-dwmac c9410000.ethernet eth0: configuring for
-phy/rmii link mode
-[  196.313602] meson8b-dwmac c9410000.ethernet eth0: Link is Up -
-100Mbps/Full - flow control off
-[  196.339463] Sending DHCP requests ., OK
-...
-
-
-I don't remember seeing an output like this one in the previous tests.
-Is there any further improvement we can do to the patch based on this?
-
-Thanks
-
-Erico
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgS3J6eXN6dG9mLAoKaGF2ZSBzZWVuIHNvbWUgd2FybmluZ3MgaW4gUm9icyBib3QgZm9yIGFy
+bS4KCmltaG8gaGF2ZSBmaXhlZCB0aGVtIChhbmQgdGhlIGluZGVudGlvbiB5b3UndmUgbWVudGlv
+bmVkIGFscmVhZHkgc3F1YXNoZWQpIGluIG15IHRyZWUgWzFdLgoKICAgIGFkZCBjb21wYXRpYmxl
+cyB1c2VkIHRvZ2V0aGVyIHdpdGggZ2VuZXJpYy1haGNpCiAgICAgIC0gbWFydmVsbCxiZXJsaW4y
+LWFoY2kKICAgICAgLSBxY29tLGFwcTgwNjQtYWhjaQogICAgICAtIHFjb20saXBxODA2eC1haGNp
+CiAgICBpbmNyZWFzZSByZWctY291bnQgdG8gMiAodXNlZCBpbiBvbWFwNS1sNC5kdHNpKQogICAg
+aW5jcmVhc2UgY2xvY2stY291bnQgdG8gNSAodXNlZCBpbiBxY29tLWFwcTgwNjQuZHRzaSkKCmNh
+biBpIHN0aWxsIGFkZCB5b3UgcmV2aWV3ZWQtYnkgdG8gdjY/CgpbMV0gaHR0cHM6Ly9naXRodWIu
+Y29tL2ZyYW5rLXcvQlBJLVIyLTQuMTQvY29tbWl0cy81LjE3LW5leHQtMjAyMjAyMjUKCnJlZ2Fy
+ZHMgRnJhbmsKCgo+IEdlc2VuZGV0OiBTYW1zdGFnLCAwNS4gTcOkcnogMjAyMiB1bSAxODo0MyBV
+aHIKPiBWb246ICJLcnp5c3p0b2YgS296bG93c2tpIiA8a3J6eXN6dG9mLmtvemxvd3NraUBjYW5v
+bmljYWwuY29tPgo+IAo+IFRoYW5rcyBmb3IgdGhlIGNoYW5nZXMsIGFsbCBsb29rIGdvb2QgZXhj
+ZXB0IG5vdyBJIG5vdGljZWQgdGhhdAo+IGluZGVudGF0aW9uIG9mIGV4YW1wbGUgaXMgdW51c3Vh
+bC4gSXQncyBub3QgY29uc2lzdGVudC4gU3RhcnRzIHdpdGggZm91cgo+IHNwYWNlIChjb3JyZWN0
+KSBidXQgdGhlbiBnb2VzIHRvIDcgc3BhY2VzLiBQbGVhc2UgYWRqdXN0IGVudGlyZSBleGFtcGxl
+Cj4gdG8gdXNlIDQgc3BhY2VzIGluZGVudGF0aW9uLgo+IAo+IFdpdGggdGhhdDoKPiAKPiBSZXZp
+ZXdlZC1ieTogS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6eXN6dG9mLmtvemxvd3NraUBjYW5vbmlj
+YWwuY29tPgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
