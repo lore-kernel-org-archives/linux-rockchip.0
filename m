@@ -4,77 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAD95C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Mar 2022 21:58:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9EA3C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Mar 2022 09:41:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IcV3wSEmmCjDr2mrtWjtdn+Et7p8+v6XeGHeCgIHL/s=; b=fUNws0KtCV1+7m
-	6pNDUiQ+f0LhvlHudza0fdgTMbY56qL+byvLprkg6oXKUID4mJlbJKnTCPwy8Le7E38gH1PuHxGdd
-	psQInup2cQdlagqmhS7zWtlsaLBeI/Bf1uxiGblXyb4hKt9z8CnGiskylQXdftnR4ELIWkx7vu4HC
-	h6QY/nSO/c+8zFNMUSGLlImtqWaD9wFlzB9/5TAvuQNpAJGySKs8+wU9d8UDGG2GvVAo53tpIDLWm
-	XqrBLaB6Q4McRphIkSORuY5hbVILowiAKLeGcNgyrWCwUOZWxXhtkka0iIlYs50dSu41XKwycyg1Y
-	72oznf2KFKF31DBfmFhg==;
+	List-Owner; bh=p77jB3YQnN3Rjq9d0XWA+6EDyV1OEuoRJ6tjsasKUC8=; b=P8yzsWJiZ8RRjC
+	Yn3muIfa15rFNyYexDRjSPkrLmmUnHjZDyhsg9f1f7yl5/pjJq4XB9CpxKX5RTdeCZ3YXqsIQGZ3g
+	Nz+I8vbOFJIVwRAOe/FcxrKUoQsr25uH+twLA4VvOAU8xnV7UnRQN/sFJzQVdi0MZi/mskmcdkGwG
+	fZKDSbXtyLhrz6tKBHQ49AJIKsdL6fboKHOUhP4GOGbnTcEqMMSiBJx987UbHpLwS5XDQarDHT+sK
+	0JS+GfbWmtcbRedz+eYRteshG2HEOa0nt6JSXrihKeam64b+Ec44AZ2W6ltTPf4leXGVjb7Wx0O8R
+	u5kHQDpg8RF46lrA9zpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nQcQR-00DtER-Oj; Sat, 05 Mar 2022 21:58:55 +0000
-Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
+	id 1nQnNw-00ENoa-DN; Sun, 06 Mar 2022 09:41:04 +0000
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nQcQF-00Dt8p-R7; Sat, 05 Mar 2022 21:58:45 +0000
-Received: by mail-qk1-x732.google.com with SMTP id 85so1063129qkm.9;
- Sat, 05 Mar 2022 13:58:43 -0800 (PST)
+ id 1nQnNs-00ENnX-PF; Sun, 06 Mar 2022 09:41:02 +0000
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-2d07ae0b1c0so134099897b3.2; 
+ Sun, 06 Mar 2022 01:40:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=bA6COhkxqJULw1J6YY+ycVS3dSCISRuj2zyilCuPjTI=;
- b=BXZW4KqpbIUC7e+zCk9eKL18jIJ0xZDUM3QtLst9hKoIqWVpoDyleq8wSY2l5TncMf
- JQk2xtn64KZmU1Ia3GSEU6RIMKWAGnrVYFoHUoI2RhJSOit01nr0AibQupeN8cW08iHC
- RDYBX6rgSbkNCwhalIT+DRyn1Gbr/XWUyswf8JXXuhL9gyPJ6zlQexrG+xA6/BSn0g0B
- skCYIBmAmproF0AygsVLr6LeZBsjJkbCkYF7zkkea53wpfy42+0yUB6rY9VY4apC7SzL
- xwf5LMUJyZKnmUL0YucmXeOny0+opvohkONeP7QKsY/f8na36oD8KkMEjI5GAXEhuUh5
- 1H4g==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=IbHyYTr6WOPJjB6Gi+P7cukHb81trN1p7PDNUlogpq0=;
+ b=ULSSmk/qS6K+NUV9dXKDoKW48orew9LWfGZ1Cay/PkA+Mdf3Ct2cpAD5r4lfzceYmJ
+ Wl3CwJg9d5TDzlXloE8ym4AdZhp3s6pKva8mY7Q1I5fXzH5qgx0y5HtPipp9+WarkXU+
+ /0ufDpuHq2ZEZondl02FCAyeqc97Iq0AEsuB68CiDAGvazAf+j3YwVMuoyypj6xVcTq6
+ OsU8UB4JsQmhBMwXpY2PIt7h2BXWzx91K7cRVD1qFCB5NzndCADnFW9MkbmYVAM0IJUI
+ HOULKjSH6tiWhFK2A7tZRb2FvPlo1QIRyhiBkgdCx9M/nxfP7J45ldwO8b6otY8mKScD
+ usow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=bA6COhkxqJULw1J6YY+ycVS3dSCISRuj2zyilCuPjTI=;
- b=rls6V63C2AXmCK/I7T3fS21mUlI3b2JBFe5AyW2i0e7zySLIbj4YDDNRp02s+JCTAv
- 6HhJ5D3rHDEFxFGEpVY4W0Uf0iIR/nmtww75ESjYs547MNycyJRjcf+P4tvf5r70zA0B
- 7f3d4tavgWxBTjjoVFwKd/Yp0WKFWhaqMUQGv23fScPtNSu6FQH3vCLgangrJN3jPuaJ
- rB2HX5roqUZ2EJoCtW0jFBlhhRToDjjHqMKdlftTje2YvphL4ypAqXr5A9/r3ETKJa8w
- rSVgkFFeXnPyeA3Y+4XQ8BFMDDoG5efhOBrq6dj/rWf13nUVUZzbdLqESDVZ70tQW5Pp
- 4erA==
-X-Gm-Message-State: AOAM533a3qaAKfylrC0h1Rhk/mmxGVfzHe0OS/aK0sDqVpBZAw9kO5mV
- EHW7ORZbYSWBNhTNjWHcbQg=
-X-Google-Smtp-Source: ABdhPJw4vJOzmKSTMCO2ApCNqa91/MVS9ULXJohkxDqioQVkTER3QFf0T9/hF/IJnPH+tAoyzM+xew==
-X-Received: by 2002:a05:620a:4307:b0:507:d5b1:f65e with SMTP id
- u7-20020a05620a430700b00507d5b1f65emr2924851qko.363.1646517522746; 
- Sat, 05 Mar 2022 13:58:42 -0800 (PST)
-Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
- by smtp.gmail.com with ESMTPSA id
- h188-20020a376cc5000000b00648d7e2a36bsm4230067qkc.117.2022.03.05.13.58.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 05 Mar 2022 13:58:42 -0800 (PST)
-From: Peter Geis <pgwipeout@gmail.com>
-To: Jaehoon Chung <jh80.chung@samsung.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: robin.murphy@arm.com, linux-rockchip@lists.infradead.org,
- Peter Geis <pgwipeout@gmail.com>, linux-mmc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v3 2/2] mmc: host: dw-mmc-rockchip: fix handling invalid clock
- rates
-Date: Sat,  5 Mar 2022 16:58:35 -0500
-Message-Id: <20220305215835.2210388-3-pgwipeout@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220305215835.2210388-1-pgwipeout@gmail.com>
-References: <20220305215835.2210388-1-pgwipeout@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=IbHyYTr6WOPJjB6Gi+P7cukHb81trN1p7PDNUlogpq0=;
+ b=4uGr3j8kpOFkZOG0f6X/z/kwLER9LpEWSqoq88auz0PWA7XV+wo0jjujgIDwP6h7Sm
+ d07ojbu7DhRnylImxCkV3MxDsgtG5HhinYmbyCs2DzOQYeMBz92FD5uKCuvcD1rRdKzk
+ GNC4Shl7q9QmXNnUCPRI3JrQlu+VzibwbY/BVMrZ2mSYsQgRNvpFcfHu/JtPLHB/s8tX
+ Tm+g2OBwSDP8T+dYeZxpMUfcZ89LAnLsIRtRvUOL29xhRsHQFVD+AvSYr4zKRqj5jLM/
+ 150Fd+C4chHxUYUkHA6HpeYXv6AU/7fefJxopnGupD6WDsluzLERaeWca0FSUGkebHuH
+ HKjw==
+X-Gm-Message-State: AOAM531CfdPT11EWJZZ7ZDzo/vyubgB/XZkuV6EnJ4LgHhxAFnVd7USI
+ wHINlfhc/MBeKGCrAq7lA2vzQaDHNc+HAG8oQdNN17UjBEo=
+X-Google-Smtp-Source: ABdhPJxGHlUXwba52RmTK6Cc/YUTsTVchbtsUg2P2U70IppClc6ePUHTgfFCfjBEzN9w52V2RDjWTrl5gNHkDeOtC/Q=
+X-Received: by 2002:a0d:f507:0:b0:2dc:348e:54af with SMTP id
+ e7-20020a0df507000000b002dc348e54afmr4604951ywf.204.1646559658793; Sun, 06
+ Mar 2022 01:40:58 -0800 (PST)
 MIME-Version: 1.0
+References: <CAK4VdL3-BEBzgVXTMejrAmDjOorvoGDBZ14UFrDrKxVEMD2Zjg@mail.gmail.com>
+ <1jczjzt05k.fsf@starbuckisacylon.baylibre.com>
+ <CAK4VdL2=1ibpzMRJ97m02AiGD7_sN++F3SCKn6MyKRZX_nhm=g@mail.gmail.com>
+ <6b04d864-7642-3f0a-aac0-a3db84e541af@gmail.com>
+ <CAK4VdL0gpz_55aYo6pt+8h14FHxaBmo5kNookzua9+0w+E4JcA@mail.gmail.com>
+ <1e828df4-7c5d-01af-cc49-3ef9de2cf6de@gmail.com>
+ <1j8rts76te.fsf@starbuckisacylon.baylibre.com>
+ <a4d3fef1-d410-c029-cdff-4d90f578e2da@gmail.com>
+In-Reply-To: <a4d3fef1-d410-c029-cdff-4d90f578e2da@gmail.com>
+From: Erico Nunes <nunes.erico@gmail.com>
+Date: Sun, 6 Mar 2022 10:40:47 +0100
+Message-ID: <CAK4VdL08sdZV7o7Bw=cutdmoCEi1NYB-yisstLqRuH7QcHOHvA@mail.gmail.com>
+Subject: Re: net: stmmac: dwmac-meson8b: interface sometimes does not come up
+ at boot
+To: Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
+ Jose Abreu <joabreu@synopsys.com>, Kevin Hilman <khilman@baylibre.com>, 
+ Neil Armstrong <narmstrong@baylibre.com>, linux-amlogic@lists.infradead.org, 
+ netdev@vger.kernel.org, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ linux-sunxi@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220305_135843_899406_3420B651 
-X-CRM114-Status: GOOD (  20.77  )
+X-CRM114-CacheID: sfid-20220306_014100_876198_251334D5 
+X-CRM114-Status: GOOD (  31.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,83 +98,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip rk356x ciu clock cannot be set as low as the dw-mmc
-hardware supports. This leads to a situation during card initialization
-where the clock is set lower than the clock driver can support. The
-dw-mmc-rockchip driver spews errors when this happens.
-For normal operation this only happens a few times during boot, but when
-cd-broken is enabled (in cases such as the SoQuartz module) this fires
-multiple times each poll cycle.
+On Wed, Mar 2, 2022 at 5:35 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
+> When using polling the time difference between aneg complete and
+> PHY state machine run is random in the interval 0 .. 1s.
+> Hence there's a certain chance that the difference is too small
+> to avoid the issue.
+>
+> > If I understand the proposed patch correctly, it is mostly about the phy
+> > IRQ. Since I reproduce without the IRQ, I suppose it is not the
+> > problem we where looking for (might still be a problem worth fixing -
+> > the phy is not "rock-solid" when it comes to aneg - I already tried
+> > stabilising it a few years ago)
+>
+> Below is a slightly improved version of the test patch. It doesn't sleep
+> in the (threaded) interrupt handler and lets the workqueue do it.
+>
+> Maybe Amlogic is aware of a potentially related silicon issue?
+>
+> >
+> > TBH, It bothers me that I reproduced w/o the IRQ. The idea makes
+> > sense :/
+> >
+> >>
+> [...]
+> >
+>
+>
+> diff --git a/drivers/net/phy/meson-gxl.c b/drivers/net/phy/meson-gxl.c
+> index 7e7904fee..a3318ae01 100644
+> --- a/drivers/net/phy/meson-gxl.c
+> +++ b/drivers/net/phy/meson-gxl.c
+> @@ -209,12 +209,7 @@ static int meson_gxl_config_intr(struct phy_device *phydev)
+>                 if (ret)
+>                         return ret;
+>
+> -               val = INTSRC_ANEG_PR
+> -                       | INTSRC_PARALLEL_FAULT
+> -                       | INTSRC_ANEG_LP_ACK
+> -                       | INTSRC_LINK_DOWN
+> -                       | INTSRC_REMOTE_FAULT
+> -                       | INTSRC_ANEG_COMPLETE;
+> +               val = INTSRC_LINK_DOWN | INTSRC_ANEG_COMPLETE;
+>                 ret = phy_write(phydev, INTSRC_MASK, val);
+>         } else {
+>                 val = 0;
+> @@ -240,7 +235,10 @@ static irqreturn_t meson_gxl_handle_interrupt(struct phy_device *phydev)
+>         if (irq_status == 0)
+>                 return IRQ_NONE;
+>
+> -       phy_trigger_machine(phydev);
+> +       if (irq_status & INTSRC_ANEG_COMPLETE)
+> +               phy_queue_state_machine(phydev, msecs_to_jiffies(100));
+> +       else
+> +               phy_trigger_machine(phydev);
+>
+>         return IRQ_HANDLED;
+>  }
+> --
+> 2.35.1
 
-Fix this by testing the lowest possible frequency that the clock driver
-can support which is within the mmc specification. Divide that rate by
-the internal divider and set f_min to this.
+I did a lot of testing with this patch, and it seems to improve things.
+To me it completely resolves the original issue which was more easily
+reproducible where I would see "Link is Up" but the interface did not
+really work.
+At least in over a thousand jobs, that never reproduced again with this patch.
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
----
- drivers/mmc/host/dw_mmc-rockchip.c | 27 +++++++++++++++++++++++----
- 1 file changed, 23 insertions(+), 4 deletions(-)
+I do see a different issue now, but it is even less frequent and
+harder to reproduce. In those over a thousand jobs, I have seen it
+only about 4 times.
+The difference is that now when the issue happens, the link is not
+even reported as Up. The output is a bit different than the original
+one, but it is consistently the same output in all instances where it
+reproduced. Looks like this (note that there is no longer Link is
+Down/Link is Up):
 
-diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-index 95d0ec0f5f3a..f825487aa739 100644
---- a/drivers/mmc/host/dw_mmc-rockchip.c
-+++ b/drivers/mmc/host/dw_mmc-rockchip.c
-@@ -15,7 +15,9 @@
- #include "dw_mmc.h"
- #include "dw_mmc-pltfm.h"
- 
--#define RK3288_CLKGEN_DIV       2
-+#define RK3288_CLKGEN_DIV	2
-+
-+static const unsigned int freqs[] = { 100000, 200000, 300000, 400000 };
- 
- struct dw_mci_rockchip_priv_data {
- 	struct clk		*drv_clk;
-@@ -51,7 +53,7 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
- 
- 	ret = clk_set_rate(host->ciu_clk, cclkin);
- 	if (ret)
--		dev_warn(host->dev, "failed to set rate %uHz\n", ios->clock);
-+		dev_warn(host->dev, "failed to set rate %uHz err: %d\n", cclkin, ret);
- 
- 	bus_hz = clk_get_rate(host->ciu_clk) / RK3288_CLKGEN_DIV;
- 	if (bus_hz != host->bus_hz) {
-@@ -290,13 +292,30 @@ static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
- 
- static int dw_mci_rockchip_init(struct dw_mci *host)
- {
-+	int ret, i;
-+
- 	/* It is slot 8 on Rockchip SoCs */
- 	host->sdio_id0 = 8;
- 
--	if (of_device_is_compatible(host->dev->of_node,
--				    "rockchip,rk3288-dw-mshc"))
-+	if (of_device_is_compatible(host->dev->of_node, "rockchip,rk3288-dw-mshc")) {
- 		host->bus_hz /= RK3288_CLKGEN_DIV;
- 
-+		/* clock driver will fail if the clock is less than the lowest source clock
-+		 * divided by the internal clock divider. Test for the lowest available
-+		 * clock and set the minimum freq to clock / clock divider.
-+		 */
-+
-+		for (i = 0; i < ARRAY_SIZE(freqs); i++) {
-+			ret = clk_round_rate(host->ciu_clk, freqs[i] * RK3288_CLKGEN_DIV);
-+			if (ret > 0) {
-+				host->minimum_speed = ret / RK3288_CLKGEN_DIV;
-+				break;
-+			}
-+		}
-+		if (ret < 0)
-+			dev_warn(host->dev, "no valid minimum freq: %d\n", ret);
-+	}
-+
- 	return 0;
- }
- 
--- 
-2.25.1
+[    2.186151] meson8b-dwmac c9410000.ethernet eth0: PHY
+[0.e40908ff:08] driver [Meson GXL Internal PHY] (irq=48)
+[    2.191582] meson8b-dwmac c9410000.ethernet eth0: Register
+MEM_TYPE_PAGE_POOL RxQ-0
+[    2.208713] meson8b-dwmac c9410000.ethernet eth0: No Safety
+Features support found
+[    2.210673] meson8b-dwmac c9410000.ethernet eth0: PTP not supported by HW
+[    2.218083] meson8b-dwmac c9410000.ethernet eth0: configuring for
+phy/rmii link mode
+[   22.227444] Waiting up to 100 more seconds for network.
+[   42.231440] Waiting up to 80 more seconds for network.
+[   62.235437] Waiting up to 60 more seconds for network.
+[   82.239437] Waiting up to 40 more seconds for network.
+[  102.243439] Waiting up to 20 more seconds for network.
+[  122.243446] Sending DHCP requests ...
+[  130.113944] random: fast init done
+[  134.219441] ... timed out!
+[  194.559562] IP-Config: Retrying forever (NFS root)...
+[  194.624630] meson8b-dwmac c9410000.ethernet eth0: PHY
+[0.e40908ff:08] driver [Meson GXL Internal PHY] (irq=48)
+[  194.630739] meson8b-dwmac c9410000.ethernet eth0: Register
+MEM_TYPE_PAGE_POOL RxQ-0
+[  194.649138] meson8b-dwmac c9410000.ethernet eth0: No Safety
+Features support found
+[  194.651113] meson8b-dwmac c9410000.ethernet eth0: PTP not supported by HW
+[  194.657931] meson8b-dwmac c9410000.ethernet eth0: configuring for
+phy/rmii link mode
+[  196.313602] meson8b-dwmac c9410000.ethernet eth0: Link is Up -
+100Mbps/Full - flow control off
+[  196.339463] Sending DHCP requests ., OK
+...
 
+
+I don't remember seeing an output like this one in the previous tests.
+Is there any further improvement we can do to the patch based on this?
+
+Thanks
+
+Erico
 
 _______________________________________________
 Linux-rockchip mailing list
