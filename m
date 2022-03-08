@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FCDAC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 18:09:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46547C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 18:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oQnogvJg6kFus0jcS1lVI6xjKmUqcSKPlyrBafed+Ys=; b=m04UHiBU4uwDOs
-	sLFO9vVkTMsyjU8AdUJO2au+dYxhQAlk/WIlWDGBtllP2QatffJU+6VtQdnUjW60PQsyo/lWXFccb
-	cbzRGcxAJfOHVFSNfbj9zKw2CTQZePMBg/yG4uDtfXtxF1O32jFMR7VMof8yqsPutpKTrTTWggYAZ
-	dBx5vH/CgLGbLtV0q8/v0MIk2cPCurie4iVOKC6uoqqjHsIEWxCBO+sbitHvzUSrgcyEQAt0wdyPH
-	JsINrcR5brzgF5vccHyX704q/UVDlBZVpP9vMFZ9GivMqai8lSBPxck8NkyLYGZCuD6O6thlT8mt9
-	+/Z0Kbs4B1j8MvTIgP5A==;
+	List-Owner; bh=CGsyAuVh4d10MLLJC+mKrVHIqQ7EuVatapTXojJszKE=; b=k5jW8ijT6TR7WK
+	9zVsL3FM+C2D4QjTkjyhTPbL0VuSpnl73O4GcCJPmrVsA++VgVjzdVOlqOXPa3SPVM2vDhud6RNxG
+	Wkl457CSP8P77kyNa8yMptiUTgVuDwAoYCj04aPUCrM8stRack49lD1yVUc56htryteHDER5Ohrrm
+	bDSxbA1nt6JgmlOrCmtK4MnpiYqWpEJ24rHbNymaC8Dgqbd8kTPwwNgQn++w5b9QFjIoOiASinSBR
+	U0+toxk8fAEQQcpYMcVnSHPCnP+q+8pqRi/wS2nKeLjZolLkNPo5zEixI+JuPBWE//cVfHXIDpy2A
+	u5GYg+7d7pTqMLmdCj2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nReGr-005jMV-SY; Tue, 08 Mar 2022 18:09:17 +0000
-Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
+	id 1nReHm-005jhI-FU; Tue, 08 Mar 2022 18:10:14 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nReGo-005jLQ-St
- for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 18:09:16 +0000
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72])
+ id 1nReHi-005jfG-Ni
+ for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 18:10:12 +0000
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 8FD6D3F222
- for <linux-rockchip@lists.infradead.org>; Tue,  8 Mar 2022 18:09:13 +0000 (UTC)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 75DAF3F61F
+ for <linux-rockchip@lists.infradead.org>; Tue,  8 Mar 2022 18:10:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1646762953;
- bh=HQ+AlAxOvin8Z7RnFZllWIX2zdkr8lWtXui3jEa4PvY=;
+ s=20210705; t=1646763009;
+ bh=P5NfD1dxp72/Z/UJR5oJ5juKBT9hEONgDz/FvaCJI40=;
  h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
  In-Reply-To:Content-Type;
- b=H7OIoA0OAP8YUGoVOH+BtTb9Vey0BY5RT1b+8ZmypG677iIk4GXQhamwcAk7sMmJ1
- F3H9ZnVR+5hCs4wpKCj+kub81VoejzPGqlYwbMnPoyGv0ZhOgwTaffsty2Te2ThYFP
- ELP7JpGnK5duhaIfAy3qrrzNpFazilfH0au7ZnO8yYQxCdns5LSBMUWoNTRe/7lPb/
- DUFsX+KRijW1bQh9y+1Isj/1ZrTAD0R3fRQ23AUfaSF0gpVuy8NJmmBz652+ideFsK
- 3xDlgK/ixL/S/1J5FJ65+d+MMFyq10O1aFdOqvBwSYLhVRrteTLdTCJs5mAiyG0Tyi
- tWHL8c5S4/vrA==
-Received: by mail-ed1-f72.google.com with SMTP id
- l8-20020a056402028800b0041636072ef0so5003782edv.13
- for <linux-rockchip@lists.infradead.org>; Tue, 08 Mar 2022 10:09:13 -0800 (PST)
+ b=jSzKNQ/w58XuU2p4z4aXPdeR3XWy32BU4Vu/23BqPC9TWH6DUyGo3MVtlZEC4QKCO
+ ec4jTXLEkG2dPm7fkLbI9Stu7XwDrkuTQepaCHKCZEp/vuzyuyqqeinj1ozpkmbFBH
+ KtLcUcmEeXyNtsD8JVDlWBV2StZ2AypBF3AgEVIBue0tqA3+QaudHRAtXhmDyZYDyJ
+ Bi5dvknVplyl7hH0hxOwM2gE1N6l+JbfXuGGZ/URvmjSZIKQEfa2TqBFyabQYNKNPG
+ IXw6OnYMYoMExevQinDgBj7dxl2uFGGsW9w3MVOdnWZZjMOlgVPYSKCNj7CEEeTUep
+ bSepUhObacpSg==
+Received: by mail-ej1-f72.google.com with SMTP id
+ h22-20020a1709060f5600b006b11a2d3dcfso9105128ejj.4
+ for <linux-rockchip@lists.infradead.org>; Tue, 08 Mar 2022 10:10:09 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=HQ+AlAxOvin8Z7RnFZllWIX2zdkr8lWtXui3jEa4PvY=;
- b=wToZkj2g/DgBGcIvMibYEnY46dwuDibgccJWak3krrscQBOV45RhfacjKLakFcJbjy
- Y2CbvS4xQ3eRU+/7ecnExid3npx3cRnQ9LAJ7e9pTo7YjcTgVxpOYvqgCvHxVcr0HBsc
- xqYwpf4IbHepILxqOeBW6iSn/zMIOkFXHLjaYUV0EUltySJLi5CFw7AOmVHPq5/Yuwww
- ISNS9SEO7jL0IqI7W9nIv14p5r+PicvLhANr/ORk5E2EWn+VuCcEgKI4W7XovoGwYXr3
- 0B7h8JSnxKYiHEpT6urEH3StzyaQkIV0KftFxpbqiCUdOSE+gqEl41FKrvZkiHhwLjjx
- ynSg==
-X-Gm-Message-State: AOAM532Z0DyBJCdR2o6N6NK7OCudMHBEsEpCz+8L/eS0oiF1jct4Hyw0
- BB3QZ/N3U3edMzKrN35tGqEimGJloNOB2nTH7e0DrjI6OWyHPbVPfxx4/KxuwEs2zdz4I8bGI36
- rIItsQnDM9l551sXoNvbxINY73T9SUm6HIUjgF7IA7kAUIqNUmA==
-X-Received: by 2002:a17:906:6144:b0:6cf:bb2e:a2e1 with SMTP id
- p4-20020a170906614400b006cfbb2ea2e1mr14517498ejl.299.1646762953181; 
- Tue, 08 Mar 2022 10:09:13 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxPCRvAFRNuiWIjRNsm0bW5FihvdxlTfCRotQpM3ip6wvmg1l+ish0iIhGP3Q3PTtKYKZzEkg==
-X-Received: by 2002:a17:906:6144:b0:6cf:bb2e:a2e1 with SMTP id
- p4-20020a170906614400b006cfbb2ea2e1mr14517473ejl.299.1646762952927; 
- Tue, 08 Mar 2022 10:09:12 -0800 (PST)
+ bh=P5NfD1dxp72/Z/UJR5oJ5juKBT9hEONgDz/FvaCJI40=;
+ b=lTPHpER7k83ER5B9UQKc+WZRKZQV/FJTjgX9GGvxRZOa3fucBqUy/ZuBMct3F1B8nn
+ z0LyrpOnAHvs67ItXLTV5GVvq5nZIPEAvK9aDFOy81D4aFXJaNELebFeayGg7jgpJISu
+ lxkR8vezvdQWX/O6S7DQ0UZRPBeqJVjFMunutvSsR5+FNFTsmvAOIkhwkaChbw62zSpS
+ 8+yeF8xGGRad/PqIo9jyepljOxcArYM92/ZfztqXY30IQBBW+8rI4fjenOg8LxbluOEO
+ iWdyMZJzsaAgSjC3jeYFp8PoNYrzDcxvnM8MOsvlYewjLV8jrZGNsyCAYSx1+qD14/+l
+ 2udQ==
+X-Gm-Message-State: AOAM5334iMZBGN9cJ3e1gsWM3iuUZ0RJrw7oPIHZIU+dkhYNdywh48g3
+ h2rEG/QaJgp9OlNED5UtMNsmqZ3+IRm5VJjZwT6tZSA0V0sECPh1V+DlCjkE5hXokm9/J/lhgFV
+ cyMiLx/4ltqZBbNxYK+psRbGDirm3Dj/8FIqICEaov5TcJuUJRA==
+X-Received: by 2002:a17:906:2a50:b0:6da:ed06:b029 with SMTP id
+ k16-20020a1709062a5000b006daed06b029mr14158895eje.506.1646763008685; 
+ Tue, 08 Mar 2022 10:10:08 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzdsvPNPxGbwShrZZxnDXdfQoC5eYJxtPkPGLQtGTq+xlcflRFTJjtk66/HeJ0oH8kS8x/sSA==
+X-Received: by 2002:a17:906:2a50:b0:6da:ed06:b029 with SMTP id
+ k16-20020a1709062a5000b006daed06b029mr14158874eje.506.1646763008423; 
+ Tue, 08 Mar 2022 10:10:08 -0800 (PST)
 Received: from [192.168.0.144] (xdsl-188-155-174-239.adslplus.ch.
  [188.155.174.239]) by smtp.gmail.com with ESMTPSA id
- z5-20020a1709063a0500b006da8fa9526esm6111715eje.178.2022.03.08.10.09.11
+ qx13-20020a170906fccd00b006bdeb94f50csm6141273ejb.203.2022.03.08.10.10.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Mar 2022 10:09:12 -0800 (PST)
-Message-ID: <612d1ee6-aa25-20f8-081a-e6cdfeeafce0@canonical.com>
-Date: Tue, 8 Mar 2022 19:09:11 +0100
+ Tue, 08 Mar 2022 10:10:07 -0800 (PST)
+Message-ID: <e80dd94a-633c-b1be-64c4-1c8fbdfd677f@canonical.com>
+Date: Tue, 8 Mar 2022 19:10:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH v3 04/15] dt-bindings: devfreq: rk3399_dmc: Specify idle
- params in nanoseconds
+Subject: Re: [PATCH v3 05/15] dt-bindings: devfreq: rk3399_dmc: Add more
+ disable-freq properties
 Content-Language: en-US
 To: Brian Norris <briannorris@chromium.org>,
  MyungJoo Ham <myungjoo.ham@samsung.com>,
@@ -91,12 +91,12 @@ Cc: Lin Huang <hl@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  Rob Herring <robh@kernel.org>
 References: <20220308000945.706701-1-briannorris@chromium.org>
- <20220307160918.v3.4.I01c6a2b2db578136686b42d463af985cfdff2fd9@changeid>
+ <20220307160918.v3.5.I382d4de737198ea52deb118c9bdc4d93d76e009e@changeid>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-In-Reply-To: <20220307160918.v3.4.I01c6a2b2db578136686b42d463af985cfdff2fd9@changeid>
+In-Reply-To: <20220307160918.v3.5.I382d4de737198ea52deb118c9bdc4d93d76e009e@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_100915_135325_28E4B241 
-X-CRM114-Status: GOOD (  23.58  )
+X-CRM114-CacheID: sfid-20220308_101010_915980_8513AF54 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,12 +115,10 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 08/03/2022 01:09, Brian Norris wrote:
-> It's inefficient to use the same number of cycles for all OPPs, since
-> lower frequencies make for longer idle times. Let's specify the idle
-> time instead, so software can pick the optimal number of cycles on its
-> own.
-> 
-> NB: these bindings aren't used anywhere yet.
+> DDR DVFS tuning has found that several power-saving features don't have
+> good tradeoffs at higher frequencies -- at higher frequencies, we'll see
+> glitches or other errors. Provide tuning controls so these can be
+> disabled at higher OPPs, and left active only at the lower ones.
 > 
 > Signed-off-by: Brian Norris <briannorris@chromium.org>
 > Reviewed-by: Rob Herring <robh@kernel.org>
@@ -130,90 +128,14 @@ On 08/03/2022 01:09, Brian Norris wrote:
 >  * Add Reviewed-by
 > 
 > Changes in v2:
->  * New patch
+>  * hyphens, not underscores
+>  * *-hz units, and drop the types definition
 > 
->  .../bindings/devfreq/rk3399_dmc.yaml          | 50 +++++++++++++++++--
->  1 file changed, 45 insertions(+), 5 deletions(-)
+>  .../bindings/devfreq/rk3399_dmc.yaml          | 37 +++++++++++++++++++
+>  1 file changed, 37 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
-> index 2904ae4115f3..6a33a7b44741 100644
-> --- a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
-> +++ b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
-> @@ -56,42 +56,52 @@ properties:
->        being used.
->  
->    rockchip,pd_idle:
-> +    deprecated: true
->      $ref: /schemas/types.yaml#/definitions/uint32
->      description:
->        Configure the PD_IDLE value. Defines the power-down idle period in which
->        memories are placed into power-down mode if bus is idle for PD_IDLE DFI
->        clock cycles.
-> +      See also rockchip,pd-idle-ns.
->  
->    rockchip,sr_idle:
-> +    deprecated: true
->      $ref: /schemas/types.yaml#/definitions/uint32
->      description:
->        Configure the SR_IDLE value. Defines the self-refresh idle period in
->        which memories are placed into self-refresh mode if bus is idle for
->        SR_IDLE * 1024 DFI clock cycles (DFI clocks freq is half of DRAM clock).
->        Default value is "0".
-> +      See also rockchip,sr-idle-ns.
->  
->    rockchip,sr_mc_gate_idle:
-> +    deprecated: true
->      $ref: /schemas/types.yaml#/definitions/uint32
->      description:
->        Defines the memory self-refresh and controller clock gating idle period.
->        Memories are placed into self-refresh mode and memory controller clock
->        arg gating started if bus is idle for sr_mc_gate_idle*1024 DFI clock
->        cycles.
-> +      See also rockchip,sr-mc-gate-idle-ns.
->  
->    rockchip,srpd_lite_idle:
-> +    deprecated: true
->      $ref: /schemas/types.yaml#/definitions/uint32
->      description:
->        Defines the self-refresh power down idle period in which memories are
->        placed into self-refresh power down mode if bus is idle for
->        srpd_lite_idle * 1024 DFI clock cycles. This parameter is for LPDDR4
->        only.
-> +      See also rockchip,srpd-lite-idle-ns.
->  
->    rockchip,standby_idle:
-> +    deprecated: true
->      $ref: /schemas/types.yaml#/definitions/uint32
->      description:
->        Defines the standby idle period in which memories are placed into
->        self-refresh mode. The controller, pi, PHY and DRAM clock will be gated
->        if bus is idle for standby_idle * DFI clock cycles.
-> +      See also rockchip,standby-idle-ns.
->  
->    rockchip,dram_dll_dis_freq:
->      deprecated: true
-> @@ -260,6 +270,36 @@ properties:
->        When the DRAM type is LPDDR4, this parameter defines the PHY side ODT
->        strength. Default value is 60.
->  
-> +  rockchip,pd-idle-ns:
-> +    description:
-> +      Configure the PD_IDLE value in nanoseconds. Defines the power-down idle
-> +      period in which memories are placed into power-down mode if bus is idle
-> +      for PD_IDLE nanoseconds.
-> +
-> +  rockchip,sr-idle-ns:
-> +    description:
-> +      Configure the SR_IDLE value in nanoseconds. Defines the self-refresh idle
-> +      period in which memories are placed into self-refresh mode if bus is idle
-> +      for SR_IDLE nanoseconds. Default value is "0".
-
-Use "default: 0".
-
-
 
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-
 
 Best regards,
 Krzysztof
