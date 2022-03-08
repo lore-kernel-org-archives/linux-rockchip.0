@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73E25C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 19:10:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C65FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 19:10:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nuG+03PhY7lliG4it7b0llpRQUd3xe/ubKXhI+GcMZk=; b=kEih5LwvxlxZ5i
-	Mixv/d894nDO6k2gnyVKw+b/uudfdeLKiLdwOhHMy4Q/T+QIrjGcw+AyP66pMNaIKJ1glvKrcnYpX
-	J0ixZuw/UxBJx9hW7p7l0KOfwRN8/vXaTHOxAUrXe+2g9Cu1lPxuy8hHfWwyO1HSGkVavW+ODH+GH
-	zlePoZ0ocDnOiiGDJEDnaFsdorXmbQqkBY+rhSmC8rkjQv+Jj0juh9pjsGsMbhhxXt6cJtAxEy+I0
-	WoeaY3zZ0rxqSRdRj8/JdNB1IAuTcu2evfjw3OD00fAdvf5Xo7Zvpyw23BkZreWLNNYx8oJNlqgbM
-	rlHKSshHrGEJ5fh3NRIw==;
+	List-Owner; bh=Mdclg4T+XpluuVYaGDQuMD7CLJaaUnoWmVSBnKYlj4s=; b=kK3btebzOAVdN+
+	XePmIszbjA6oqGbZuGDRAleWd7dIaf6e8wcxn+MCykzH5rQFOPAG4Fqu+L18ckphSBi6kKSJgZ5+A
+	cYTBzuU4Q7tt7d34IdWU1TH+jVRmDIrW1jaNewDD8xJ90j6lMwe/fpu7ncWIRP4TwlAwHCqoJBl3o
+	q5CYfW64wXj7aWkGTmw46sus2RuGy+VHOPVP7n4cZkMNbwOGjy7bwRqTRBXRd5ufnzFOZqwH7lWPU
+	5IV1ZCw+We0+6onF8nEPBZyKfDwoUaMQJU3iKkYIXqXXVqaCwMenha5wuBGUMdsSaTZ+ns7JK5A9F
+	UHoRVEtHnrTkXqLLdLbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRfEP-005tB0-7I; Tue, 08 Mar 2022 19:10:49 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1nRfEQ-005tBY-Io; Tue, 08 Mar 2022 19:10:50 +0000
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRfCv-005sCh-Bs
- for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 19:09:19 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id
- c16-20020a17090aa61000b001befad2bfaaso214968pjq.1
- for <linux-rockchip@lists.infradead.org>; Tue, 08 Mar 2022 11:09:17 -0800 (PST)
+ id 1nRfCx-005sEJ-CP
+ for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 19:09:21 +0000
+Received: by mail-pg1-x529.google.com with SMTP id o26so17274465pgb.8
+ for <linux-rockchip@lists.infradead.org>; Tue, 08 Mar 2022 11:09:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=TukPsTakLeJLLpOHxj5U6zbUOX+HpPNC5juckJdtkGc=;
- b=bG90AlQ35R976HVEt3EiNjnAAZRltYCer7lgVDl2CBxgHxRHT0U5M9YdzxVk2mmKI9
- uQHr+VZU3Zt9PDWsu7fFhhs3KzeXXsSJ5i7iH7lu/27aopmKU8nL5QrBZ6E1jcyH5fnY
- aNd4uJJJKIWzW744O3mt/ZSmLh6igdfg7V/IA=
+ bh=aQBXnYV77u8nGKn/MzXkBt16/3DAVGbxcTfsybprNzY=;
+ b=mCBxWxx6dpCtH8y2eYwy4bA86huPX44nffjFiMfYcPzNPGzEFjY5/isggSYFRHymfA
+ SuD4SuNPjNsJ0gkJYzcGgdErOmEBtQK42eAtTXzl0CzUbbb3DU6mP7Wjcl3SNwJ+5LLY
+ wSdrD/ZIqmJZP1nklPmE9Wmp+ikm+Mt4f1pKs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=TukPsTakLeJLLpOHxj5U6zbUOX+HpPNC5juckJdtkGc=;
- b=5+Us3rwzJ7x00NXrHmAOAuGtsCBiaC2wW7rDn3PzVGsy+WyDxRqCAeun9y5aQNA4Ev
- YEZSxJG67htKo2dqK4mp1ew18Gztr16S8xPk1xXdkJnr76YrXHUo44WkqU8aT5HKbwkp
- X8P/BXnIdWY/k44Sc3Or5+f+mCAche5Qb57YnLCIAfh7BC0lKRHmTXDbUKLq3MkWpDh0
- GQYPFEepGmQUMICSTjdlIXfEInmW18PeK7AY2PQblguhcoe6UDZ6sJ2tQKMCgpfah9Si
- 5dobbOiFiTANdqs/7E+LQ3CXecURFAAIHdSWYqZForbuQo0AT9HMTXmBnkpxtYxkz5cL
- kJxw==
-X-Gm-Message-State: AOAM5307pDFo/cf7/EkPm20s8zS04LJq2QN4tJzU0VlxWa9mwd8coPFI
- Ez/b4mfkeNaaUaAfF6ZWzUGHKg==
-X-Google-Smtp-Source: ABdhPJykCBYHNRLZLOxaBgcOcb+HYAE6UHeIN2/NgAuMxlP9SyrFIHZjXykkIWIaxv9ICBnq57ZimQ==
-X-Received: by 2002:a17:902:dad2:b0:151:f895:9c31 with SMTP id
- q18-20020a170902dad200b00151f8959c31mr7535212plx.93.1646766556509; 
- Tue, 08 Mar 2022 11:09:16 -0800 (PST)
+ bh=aQBXnYV77u8nGKn/MzXkBt16/3DAVGbxcTfsybprNzY=;
+ b=xejG2wNkhd5bMHzqX6OXMqrB5GVXLvZGNzpCOxRmONcauJILVjSdZukTdXpSzWDu5A
+ PB4ccuZExlHym+lc4HYk3wfmLIGBh4tKyNTZ3Fpyum6SSeyuxFLR2pzbS4udfeZsqICB
+ qEHtjnwaOGOQAIz7wu/8Xg08S8uXQMVbsqs+5HZYGENYZ4PFFd4dXwWvKVnmjXwwFmLy
+ 9FjLlp62IEfW4ZoX9hR3L5ZQyvDSP7yxyWxfqAbC7m2wVxqhdpAta/l5i/v5NV50M5JK
+ EBJvM9YROg9u8rlCPRHUfaLcM+XxsbxhXkx5d70ACmZizlzXXLECYnBFo3g3IN0d4aV3
+ bxZQ==
+X-Gm-Message-State: AOAM531y3O5AmYqtyerVHwecB1p3Td/5o/EeLcZmIBwUr1KPso7j17/v
+ RhwPvE0zVnjnJnx2E1KmCrseJg==
+X-Google-Smtp-Source: ABdhPJy2G8NKjzBfMuq+zr/kLWgKLJwymWEQdXwGWRkQT7dOHPkeLllLbPtznYqzy9tlAdivDeqCgA==
+X-Received: by 2002:a05:6a00:1490:b0:4f6:f2bd:1dd3 with SMTP id
+ v16-20020a056a00149000b004f6f2bd1dd3mr13949465pfu.58.1646766558818; 
+ Tue, 08 Mar 2022 11:09:18 -0800 (PST)
 Received: from localhost ([2620:15c:202:201:b3e3:a188:cbfc:3a0e])
  by smtp.gmail.com with UTF8SMTPSA id
- d7-20020a056a00244700b004e1300a2f7csm20703284pfj.212.2022.03.08.11.09.15
+ p186-20020a62d0c3000000b004f6fa49c4b9sm9110384pfg.218.2022.03.08.11.09.17
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Mar 2022 11:09:16 -0800 (PST)
+ Tue, 08 Mar 2022 11:09:18 -0800 (PST)
 From: Brian Norris <briannorris@chromium.org>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
  Kyungmin Park <kyungmin.park@samsung.com>,
@@ -68,16 +67,17 @@ Cc: Derek Basehore <dbasehore@chromium.org>, devicetree@vger.kernel.org,
  linux-pm@vger.kernel.org, Brian Norris <briannorris@chromium.org>,
  Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Subject: [PATCH v4 03/15] dt-bindings: devfreq: rk3399_dmc: Fix Hz units
-Date: Tue,  8 Mar 2022 11:08:49 -0800
-Message-Id: <20220308110825.v4.3.I9341269171c114d0e04e41d48037fd32816e2d8c@changeid>
+Subject: [PATCH v4 04/15] dt-bindings: devfreq: rk3399_dmc: Specify idle
+ params in nanoseconds
+Date: Tue,  8 Mar 2022 11:08:50 -0800
+Message-Id: <20220308110825.v4.4.I01c6a2b2db578136686b42d463af985cfdff2fd9@changeid>
 X-Mailer: git-send-email 2.35.1.616.g0bdcbb4464-goog
 In-Reply-To: <20220308190901.3144566-1-briannorris@chromium.org>
 References: <20220308190901.3144566-1-briannorris@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_110917_438143_FC1CBDB2 
-X-CRM114-Status: GOOD (  13.45  )
+X-CRM114-CacheID: sfid-20220308_110919_494355_8660191F 
+X-CRM114-Status: GOOD (  13.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,93 +95,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The driver and all downstream device trees [1] are using Hz units, but
-the document claims MHz. DRAM frequency for these systems can't possibly
-exceed 2^32-1 Hz, so the choice of unit doesn't really matter than much.
+It's inefficient to use the same number of cycles for all OPPs, since
+lower frequencies make for longer idle times. Let's specify the idle
+time instead, so software can pick the optimal number of cycles on its
+own.
 
-Rather than add unnecessary risk in getting the units wrong, let's just
-go with the unofficial convention and make the docs match reality.
-
-A sub-1MHz frequency is extremely unlikely, so include a minimum in the
-schema, to help catch anybody who might have believed this was MHz.
-
-[1] And notably, also those trying to upstream them:
-https://lore.kernel.org/lkml/20210308233858.24741-3-daniel.lezcano@linaro.org/
+NB: these bindings aren't used anywhere yet.
 
 Signed-off-by: Brian Norris <briannorris@chromium.org>
 Reviewed-by: Rob Herring <robh@kernel.org>
-Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
 Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 ---
 
-(no changes since v3)
+Changes in v4:
+ * Use 'default:'
 
 Changes in v3:
- * Add Reviewed-by, Acked-by
+ * Add Reviewed-by
 
- .../rockchip,rk3399-dmc.yaml                  | 24 +++++++++----------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+Changes in v2:
+ * New patch
+
+ .../rockchip,rk3399-dmc.yaml                  | 51 +++++++++++++++++--
+ 1 file changed, 46 insertions(+), 5 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml b/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml
-index 356bbe5db383..96efb23cfc0f 100644
+index 96efb23cfc0f..5228a32b5962 100644
 --- a/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml
 +++ b/Documentation/devicetree/bindings/memory-controllers/rockchip,rk3399-dmc.yaml
-@@ -115,11 +115,11 @@ properties:
+@@ -54,42 +54,52 @@ properties:
+       being used.
  
-   rockchip,ddr3_odt_dis_freq:
+   rockchip,pd_idle:
++    deprecated: true
      $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 1000000  # In case anyone thought this was MHz.
      description:
-       When the DRAM type is DDR3, this parameter defines the ODT disable
--      frequency in MHz (Mega Hz). When the DDR frequency is less then
--      ddr3_odt_dis_freq, the ODT on the DRAM side and controller side are both
--      disabled.
-+      frequency in Hz. When the DDR frequency is less then ddr3_odt_dis_freq,
-+      the ODT on the DRAM side and controller side are both disabled.
+       Configure the PD_IDLE value. Defines the power-down idle period in which
+       memories are placed into power-down mode if bus is idle for PD_IDLE DFI
+       clock cycles.
++      See also rockchip,pd-idle-ns.
  
-   rockchip,ddr3_drv:
-     deprecated: true
-@@ -163,11 +163,11 @@ properties:
- 
-   rockchip,lpddr3_odt_dis_freq:
+   rockchip,sr_idle:
++    deprecated: true
      $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 1000000  # In case anyone thought this was MHz.
      description:
-       When the DRAM type is LPDDR3, this parameter defines then ODT disable
--      frequency in MHz (Mega Hz). When DDR frequency is less then
--      ddr3_odt_dis_freq, the ODT on the DRAM side and controller side are both
--      disabled.
-+      frequency in Hz. When DDR frequency is less then ddr3_odt_dis_freq, the
-+      ODT on the DRAM side and controller side are both disabled.
+       Configure the SR_IDLE value. Defines the self-refresh idle period in
+       which memories are placed into self-refresh mode if bus is idle for
+       SR_IDLE * 1024 DFI clock cycles (DFI clocks freq is half of DRAM clock).
++      See also rockchip,sr-idle-ns.
+     default: 0
  
-   rockchip,lpddr3_drv:
-     deprecated: true
-@@ -210,11 +210,11 @@ properties:
- 
-   rockchip,lpddr4_odt_dis_freq:
+   rockchip,sr_mc_gate_idle:
++    deprecated: true
      $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 1000000  # In case anyone thought this was MHz.
      description:
-       When the DRAM type is LPDDR4, this parameter defines the ODT disable
--      frequency in MHz (Mega Hz). When the DDR frequency is less then
--      ddr3_odt_dis_freq, the ODT on the DRAM side and controller side are both
--      disabled.
-+      frequency in Hz. When the DDR frequency is less then ddr3_odt_dis_freq,
-+      the ODT on the DRAM side and controller side are both disabled.
+       Defines the memory self-refresh and controller clock gating idle period.
+       Memories are placed into self-refresh mode and memory controller clock
+       arg gating started if bus is idle for sr_mc_gate_idle*1024 DFI clock
+       cycles.
++      See also rockchip,sr-mc-gate-idle-ns.
  
-   rockchip,lpddr4_drv:
+   rockchip,srpd_lite_idle:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       Defines the self-refresh power down idle period in which memories are
+       placed into self-refresh power down mode if bus is idle for
+       srpd_lite_idle * 1024 DFI clock cycles. This parameter is for LPDDR4
+       only.
++      See also rockchip,srpd-lite-idle-ns.
+ 
+   rockchip,standby_idle:
++    deprecated: true
+     $ref: /schemas/types.yaml#/definitions/uint32
+     description:
+       Defines the standby idle period in which memories are placed into
+       self-refresh mode. The controller, pi, PHY and DRAM clock will be gated
+       if bus is idle for standby_idle * DFI clock cycles.
++      See also rockchip,standby-idle-ns.
+ 
+   rockchip,dram_dll_dis_freq:
      deprecated: true
-@@ -300,7 +300,7 @@ examples:
-       rockchip,sr_mc_gate_idle = <0x3>;
-       rockchip,srpd_lite_idle = <0x4>;
-       rockchip,standby_idle = <0x2000>;
--      rockchip,ddr3_odt_dis_freq = <333>;
--      rockchip,lpddr3_odt_dis_freq = <333>;
--      rockchip,lpddr4_odt_dis_freq = <333>;
-+      rockchip,ddr3_odt_dis_freq = <333000000>;
-+      rockchip,lpddr3_odt_dis_freq = <333000000>;
-+      rockchip,lpddr4_odt_dis_freq = <333000000>;
-     };
+@@ -272,6 +282,37 @@ properties:
+       strength.
+     default: 60
+ 
++  rockchip,pd-idle-ns:
++    description:
++      Configure the PD_IDLE value in nanoseconds. Defines the power-down idle
++      period in which memories are placed into power-down mode if bus is idle
++      for PD_IDLE nanoseconds.
++
++  rockchip,sr-idle-ns:
++    description:
++      Configure the SR_IDLE value in nanoseconds. Defines the self-refresh idle
++      period in which memories are placed into self-refresh mode if bus is idle
++      for SR_IDLE nanoseconds.
++    default: 0
++
++  rockchip,sr-mc-gate-idle-ns:
++    description:
++      Defines the memory self-refresh and controller clock gating idle period in nanoseconds.
++      Memories are placed into self-refresh mode and memory controller clock
++      arg gating started if bus is idle for sr_mc_gate_idle nanoseconds.
++
++  rockchip,srpd-lite-idle-ns:
++    description:
++      Defines the self-refresh power down idle period in which memories are
++      placed into self-refresh power down mode if bus is idle for
++      srpd_lite_idle nanoseonds. This parameter is for LPDDR4 only.
++
++  rockchip,standby-idle-ns:
++    description:
++      Defines the standby idle period in which memories are placed into
++      self-refresh mode. The controller, pi, PHY and DRAM clock will be gated
++      if bus is idle for standby_idle nanoseconds.
++
+ required:
+   - compatible
+   - devfreq-events
+@@ -295,11 +336,11 @@ examples:
+       clock-names = "dmc_clk";
+       operating-points-v2 = <&dmc_opp_table>;
+       center-supply = <&ppvar_centerlogic>;
+-      rockchip,pd_idle = <0x40>;
+-      rockchip,sr_idle = <0x2>;
+-      rockchip,sr_mc_gate_idle = <0x3>;
+-      rockchip,srpd_lite_idle = <0x4>;
+-      rockchip,standby_idle = <0x2000>;
++      rockchip,pd-idle-ns = <160>;
++      rockchip,sr-idle-ns = <10240>;
++      rockchip,sr-mc-gate-idle-ns = <40960>;
++      rockchip,srpd-lite-idle-ns = <61440>;
++      rockchip,standby-idle-ns = <81920>;
+       rockchip,ddr3_odt_dis_freq = <333000000>;
+       rockchip,lpddr3_odt_dis_freq = <333000000>;
+       rockchip,lpddr4_odt_dis_freq = <333000000>;
 -- 
 2.35.1.616.g0bdcbb4464-goog
 
