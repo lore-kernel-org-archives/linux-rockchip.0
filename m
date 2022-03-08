@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7B95C433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 00:11:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6315BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 00:12:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QsfcgU5braX8FbzrAL1ELVgu11S6JQp+tBoB2IugwO4=; b=YmK97ar2+1+C7T
-	mNnyR1JgtzgMsnwn8j8iPJogpDQZs8I4VJ6/SU170IOHekB4M5eHaXLuBZObJZKgHgsbB8zo9arkc
-	DjrqBBcgAjZUwSdsMJhe24Zaiz0RLEQsifnTq5Mv5GD7KZAaNzgpI4sn3BD1qGA6MEePtQU7bqWkW
-	E7A0yYkaL1l7FXFqWAUzkP2lxgsaPFhLBJg6n0Be13RbRc6dBQkU1HHU1hpbIXSTXitP8Vs7SXV8u
-	aiv+OMn3bmGB1HmbduIACZWCzzNuS85j5IiGw4d3oMCgcJYHK9bLQtnnYKPKlKY+3u5nTaEDZ2xJd
-	1+sBvQm8oTY3Oxm5NLzA==;
+	List-Owner; bh=erBrEOKe4O2l7ph5JFwcngUwLqKSyta+MgP7QDRRyTQ=; b=b7mtBl76SaGCc2
+	hM9QocArZLjxss4HuGVoWShA0GtAV+SWuSYuoN+pFv1m/g6fLS9E4VXXn2E8EADFc1ux05lUdqiKB
+	G7SeI6L+MfC/tvgaOO2PIR9d/EcfDdTeUbZQ0wQUfFu4QkGdSA9NyG9/TDBUuChYaEkZqQXb7rsKk
+	/dFVyxJ5ejJMrU43ztD/p8kQvjgs1OSXn7tp5dGquTqu9WRjOVqw8bN7dMwT7QlFgax+pwlEY1JuH
+	u641CHYArVVKP0Utlaz7s6vBWuqBH08MkEK3dKN9R0t/vn2vDKPgxHbgx5rtltl3TbT5VJvoTz7s2
+	ogwXXyd73KKxEN9QztSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRNS7-0023FE-Jd; Tue, 08 Mar 2022 00:11:47 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1nRNSV-0023Tn-CM; Tue, 08 Mar 2022 00:12:11 +0000
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRNQe-0022I5-7K
- for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 00:10:17 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id s18so2283138plp.1
- for <linux-rockchip@lists.infradead.org>; Mon, 07 Mar 2022 16:10:16 -0800 (PST)
+ id 1nRNQg-0022JF-OF
+ for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 00:10:20 +0000
+Received: by mail-pj1-x102a.google.com with SMTP id
+ fs4-20020a17090af28400b001bf5624c0aaso829193pjb.0
+ for <linux-rockchip@lists.infradead.org>; Mon, 07 Mar 2022 16:10:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=4MidqK8UFH0OO5PuGunb8WphemubCtQBPIxhc/BLNC4=;
- b=Y7MZ3dBBFqBsHVJw4LhSele0cERRtvLPdhqjvm/dbYuKac/ttY1X7dhkkWQ/tfVGl0
- tr7jWz/2apfy1mdwUM7wRiCrcE5/lHX/RNl0+Y4iWCR7Y7j0/7W/RELbflk4b1yVvoVZ
- zjgTnxNRlNWVX3HyNdCEkxpAZRGe4F+pSxuHM=
+ bh=NhX5SlYl7BXLmMZAasTyx4ByzRymbQLodzBvBVJqn84=;
+ b=YFKkSZN5IsoC+uHTyxgHguq+/wJgkUo4bsSgIDnrz0qlLwM6zV1HBalJ2kha3O/owJ
+ LJmHd4tfW2regTgvT0rLqWpbvn9pJ/Vv0B6JBEy4/AEB+LvnKAtudJkxXyD8mO+wmytX
+ PcqNKd+sH5JSzBCBpRfrOAwrGbAL4obRvkteQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=4MidqK8UFH0OO5PuGunb8WphemubCtQBPIxhc/BLNC4=;
- b=Vam7mY35cpmKCWDpG5Fb4ctJmT6OGtjmXEt4N/onDwqrX6nFKm6tPGVhVoWsSW2FiH
- a+MmtHiTXjj+ZaisoXPbjDeUKROQuwMdisRvMmTVgKnQx22jk57/q/aJOm84kQ4C//Il
- /uF8F+ElZ13L699x6U95vpxeWExk8VQOX/5QIZHmnWD40dIB8i8lg8IwQWCeXCZvM8LR
- vGyE+uF6NE5/qigYVVmJyclvoTRBM0pUikIKn/HbHFrls/HmHkcX5GGEhS5CzPgRKxVT
- 1vTZFN1UBE/4/5BtXsyGzDBCWzcD4Rfg0V6PcYu2EBAsC8ZTzr63YMKLomhT668Zpo4d
- z8XA==
-X-Gm-Message-State: AOAM533sQZZGhbUROnQiJHhKiUb1E+/J2tQZ8L/Zx/rdqf7EFkK+Anu9
- +JidTpiTYCmsEOiZZB8tkTHs7w==
-X-Google-Smtp-Source: ABdhPJxEvIqD1klp8jx5ozBpuURKAe+1fn2tbuJrsH1G/PMoec47nH+zhYizJ5ADadhdFnqLvm92UA==
-X-Received: by 2002:a17:90a:bf86:b0:1bd:6057:b77c with SMTP id
- d6-20020a17090abf8600b001bd6057b77cmr1688428pjs.72.1646698215650; 
- Mon, 07 Mar 2022 16:10:15 -0800 (PST)
+ bh=NhX5SlYl7BXLmMZAasTyx4ByzRymbQLodzBvBVJqn84=;
+ b=lXDpiRpKeC3XAiUD0xVNo5EyngZOUZZ37rLPcl2kMTfo3TuDw0QR5rjmspXSwULNLQ
+ CSkapdyToLjnYfONbJqIjFwTMyy4QPv1MkT3Zz4MuSqu7msLkv5nyk+0aNL+9KmWSwS4
+ t5AR5Q4OH2GvisLgaN3JvRx2TUxVlDqd6ozKGP9lTEzTiNmnw+eI2U6AIU7A3ey5az25
+ t2/vyRxRoeuHMj3ACgoxoe2/E2J6Zme5paLtI3rl41QCz1YcWnyYJzCZtzlkp9O31ph9
+ /AhEPlvSRr1xAPO1JUpMKUAMWmXf5niNjFuLUyfLvkfmsEZBBzCq0FoeXo2L1B861wJI
+ DgZw==
+X-Gm-Message-State: AOAM532haUBgyL83jim310u2zUi8laO/yPO9GT35uP1bH5ZFQrcTZrJ9
+ S6utu33449PZVsyp0hrlj+EYKLwPCKLOdw==
+X-Google-Smtp-Source: ABdhPJxQUs9wwprlA9jOWSx+o7EiW9t5JGe5afQ9CcxF+0aKMeDDa1CF1TKUG2Hj29RvKz6CgwS0Lw==
+X-Received: by 2002:a17:902:cf02:b0:14d:54cf:9a6a with SMTP id
+ i2-20020a170902cf0200b0014d54cf9a6amr14320856plg.137.1646698217819; 
+ Mon, 07 Mar 2022 16:10:17 -0800 (PST)
 Received: from localhost ([2620:15c:202:201:e551:44dc:2842:57f1])
  by smtp.gmail.com with UTF8SMTPSA id
- h6-20020a636c06000000b00363a2533b17sm12943047pgc.8.2022.03.07.16.10.14
+ ic6-20020a17090b414600b001bf691499e4sm463733pjb.33.2022.03.07.16.10.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Mar 2022 16:10:15 -0800 (PST)
+ Mon, 07 Mar 2022 16:10:17 -0800 (PST)
 From: Brian Norris <briannorris@chromium.org>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
  Kyungmin Park <kyungmin.park@samsung.com>,
@@ -65,18 +66,18 @@ Cc: Lin Huang <hl@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org,
- Brian Norris <briannorris@chromium.org>, Rob Herring <robh@kernel.org>
-Subject: [PATCH v3 05/15] dt-bindings: devfreq: rk3399_dmc: Add more
- disable-freq properties
-Date: Mon,  7 Mar 2022 16:09:35 -0800
-Message-Id: <20220307160918.v3.5.I382d4de737198ea52deb118c9bdc4d93d76e009e@changeid>
+ Brian Norris <briannorris@chromium.org>
+Subject: [PATCH v3 06/15] PM / devfreq: rk3399_dmc: Drop undocumented ondemand
+ DT props
+Date: Mon,  7 Mar 2022 16:09:36 -0800
+Message-Id: <20220307160918.v3.6.I4bd77eb751d5bfce8346bfed576bcacb28e4550f@changeid>
 X-Mailer: git-send-email 2.35.1.616.g0bdcbb4464-goog
 In-Reply-To: <20220308000945.706701-1-briannorris@chromium.org>
 References: <20220308000945.706701-1-briannorris@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_161016_297473_B58CE25C 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20220307_161018_833696_37459BE7 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,78 +95,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-DDR DVFS tuning has found that several power-saving features don't have
-good tradeoffs at higher frequencies -- at higher frequencies, we'll see
-glitches or other errors. Provide tuning controls so these can be
-disabled at higher OPPs, and left active only at the lower ones.
+These properties are:
+
+* undocumented
+* directly representing software properties, not hardware properties
+* unused (no in-tree users, yet; this IP block has so far only been used
+  in downstream kernels)
+
+Let's just stick the values that downstream users have been using
+directly in the driver and call it a day.
 
 Signed-off-by: Brian Norris <briannorris@chromium.org>
-Reviewed-by: Rob Herring <robh@kernel.org>
 ---
 
-Changes in v3:
- * Add Reviewed-by
+(no changes since v1)
 
-Changes in v2:
- * hyphens, not underscores
- * *-hz units, and drop the types definition
+ drivers/devfreq/rk3399_dmc.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
- .../bindings/devfreq/rk3399_dmc.yaml          | 37 +++++++++++++++++++
- 1 file changed, 37 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
-index 6a33a7b44741..60ed5023f54f 100644
---- a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
-+++ b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
-@@ -300,6 +300,38 @@ properties:
-       self-refresh mode. The controller, pi, PHY and DRAM clock will be gated
-       if bus is idle for standby_idle nanoseconds.
+diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
+index 293857ebfd75..e982862f6ac2 100644
+--- a/drivers/devfreq/rk3399_dmc.c
++++ b/drivers/devfreq/rk3399_dmc.c
+@@ -430,10 +430,8 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
+ 		goto err_edev;
+ 	}
  
-+  rockchip,pd-idle-dis-freq-hz:
-+    description:
-+      Defines the power-down idle disable frequency in Hz. When the DDR
-+      frequency is greater than pd-idle-dis-freq, power-down idle is disabled.
-+      See also rockchip,pd-idle-ns.
-+
-+  rockchip,sr-idle-dis-freq-hz:
-+    description:
-+      Defines the self-refresh idle disable frequency in Hz. When the DDR
-+      frequency is greater than sr-idle-dis-freq, self-refresh idle is
-+      disabled. See also rockchip,sr-idle-ns.
-+
-+  rockchip,sr-mc-gate-idle-dis-freq-hz:
-+    description:
-+      Defines the self-refresh and memory-controller clock gating disable
-+      frequency in Hz. When the DDR frequency is greater than
-+      sr-mc-gate-idle-dis-freq, the clock will not be gated when idle. See also
-+      rockchip,sr-mc-gate-idle-ns.
-+
-+  rockchip,srpd-lite-idle-dis-freq-hz:
-+    description:
-+      Defines the self-refresh power down idle disable frequency in Hz. When
-+      the DDR frequency is greater than srpd-lite-idle-dis-freq, memory will
-+      not be placed into self-refresh power down mode when idle. See also
-+      rockchip,srpd-lite-idle-ns.
-+
-+  rockchip,standby-idle-dis-freq-hz:
-+    description:
-+      Defines the standby idle disable frequency in Hz. When the DDR frequency
-+      is greater than standby-idle-dis-freq, standby idle is disabled. See also
-+      rockchip,standby-idle-ns.
-+
- required:
-   - compatible
-   - devfreq-events
-@@ -331,4 +363,9 @@ examples:
-       rockchip,ddr3_odt_dis_freq = <333000000>;
-       rockchip,lpddr3_odt_dis_freq = <333000000>;
-       rockchip,lpddr4_odt_dis_freq = <333000000>;
-+      rockchip,pd-idle-dis-freq-hz = <1000000000>;
-+      rockchip,sr-idle-dis-freq-hz = <1000000000>;
-+      rockchip,sr-mc-gate-idle-dis-freq-hz = <1000000000>;
-+      rockchip,srpd-lite-idle-dis-freq-hz = <0>;
-+      rockchip,standby-idle-dis-freq-hz = <928000000>;
-     };
+-	of_property_read_u32(np, "upthreshold",
+-			     &data->ondemand_data.upthreshold);
+-	of_property_read_u32(np, "downdifferential",
+-			     &data->ondemand_data.downdifferential);
++	data->ondemand_data.upthreshold = 25;
++	data->ondemand_data.downdifferential = 15;
+ 
+ 	data->rate = clk_get_rate(data->dmc_clk);
+ 
 -- 
 2.35.1.616.g0bdcbb4464-goog
 
