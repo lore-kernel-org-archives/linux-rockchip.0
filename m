@@ -4,50 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F67CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 06:19:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57EC4C433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 06:19:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=S5En5RYYM+DcXJHGeQuQnaZEI2rOdzGWp9OPSc5EoS8=; b=g1EZ0u13k2cCnY
-	HdOtfslG2z2CnqKP5wXUJepMAkNiP0k8nA2bqAg+f2d6U1ia7x2QJyls/uGJDUyy+MBSBIJSWIEP0
-	1YMPwkku8ZT6P2TVqLGZhqO9ZlUc4LzeC5FvbbVhD7jJ8qtg4rFuY6DObOJ9JZyqz0gTnRYZDr4cy
-	l7dm5e4iQPPV5WoTV52upzajoa7uJP60aDI5eRPIckEFX5Wdy+ZBfYLxuCHvvFqmbOaRGQlsFqk8Y
-	XU50gxYIJOtfwOYacUKeOuW75h+BMjuCp6ykDHZVR7Osgdbw872n+SlmUFKZVBuOYH6f9EzF3+RdT
-	yD7G8q0WjNuiEjH2UgCA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mpr9t/QEsncu50zrWxWlFHubiSkNnbK7TKIsugk9R3c=; b=FEAH2vLY84elIv
+	cRfXjuM3mNcYMc2nOpD9sYfZHdVsO0ZnQLjxdCyYKjqukeXFYhMP3MyS8WleX8q43kb3gAiYFgryS
+	pvN3EzmSuwzV3qykII3dwHj5/PrHRpoAN/BojyZThuN0A9lJmyzFrn31i6TOu66wDndeTLAJBYRge
+	QofIhhdBGhhjGFkFwMBNJsUME+GUkyl0z9STzQPl18+ZVH6uWEBkN8pVnSdxzECmXVVFzOkXzzVXD
+	XQ8hAbBOvpRq3JikckBX0it7hjz8wQ0UnE2g+uD/7MPWjx9nA1gUdv+OpsAGqbVTiyAXFJ/m5UBQ3
+	MNNc3F8uLrt9MburncFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRTCB-002mAC-L6; Tue, 08 Mar 2022 06:19:43 +0000
+	id 1nRTCC-002mAR-Dw; Tue, 08 Mar 2022 06:19:44 +0000
 Received: from mail-m17661.qiye.163.com ([59.111.176.61])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRTC8-002m86-C4
+ id 1nRTC8-002m87-CB
  for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 06:19:42 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
- by mail-m17661.qiye.163.com (Hmail) with ESMTPA id 23A861DF654;
+ by mail-m17661.qiye.163.com (Hmail) with ESMTPA id 9B6A31DF341;
  Tue,  8 Mar 2022 14:19:37 +0800 (CST)
 From: Jianqun Xu <jay.xu@rock-chips.com>
 To: heiko@sntech.de
 Cc: linus.walleij@linaro.org, huangtao@rock-chips.com,
  kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org,
  linux-gpio@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH RESEND 0/4] gpio-before-pinctrl
-Date: Tue,  8 Mar 2022 14:19:31 +0800
-Message-Id: <20220308061935.2441447-1-jay.xu@rock-chips.com>
+Subject: [PATCH 1/4] gpio: rockchip: get regmap by
+ devm_platform_ioremap_resource
+Date: Tue,  8 Mar 2022 14:19:32 +0800
+Message-Id: <20220308061935.2441447-2-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220308061935.2441447-1-jay.xu@rock-chips.com>
+References: <20220308061935.2441447-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
- kWDxoPAgseWUFZKDYvK1lXWShZQUlKS0tKN1dZLVlBSVdZDwkaFQgSH1lBWUNPQh9WQkhDHUwZHh
- 0eGkpIVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWU9LSFVKSktISkNVS1kG
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MDo6MRw5Hz4MDTJDPBcvKz40
- DwswC0pVSlVKTU9NTElLSExMTkNDVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
- WU5DVUlJVUxVSkpPWVdZCAFZQUpOS083Bg++
-X-HM-Tid: 0a7f682ee1d8da2bkuws23a861df654
+ kWDxoPAgseWUFZKDYvK1lXWShZQUlKS0tKN1dZLVlBSVdZDwkaFQgSH1lBWUMfTE1WSBkdSkJPSk
+ xOHx1CVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWU9LSFVKSktITUpVS1kG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NzY6Njo6Az4BLzINLBUCKytK
+ Ni4aCzRVSlVKTU9NTElLSExDS05PVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
+ WU5DVUlJVUxVSkpPWVdZCAFZQUlPQ083Bg++
+X-HM-Tid: 0a7f682ee3c2da2bkuws9b6a31df341
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_221940_618086_3E1C84D7 
-X-CRM114-Status: UNSURE (   4.88  )
+X-CRM114-CacheID: sfid-20220307_221940_622317_0B183032 
+X-CRM114-Status: UNSURE (   9.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -66,20 +69,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-These patches make the gpio driver able to register independ on pinctrl,
-and fix the output set before gpio register issue.
+Use devm_platform_ioremap_resource to get the reg from device.
 
-Jianqun Xu (4):
-  gpio: rockchip: get regmap by devm_platform_ioremap_resource
-  gpio: rockchip: get irq support for both dt and acpi
-  gpio: rockchip: support driver to work independs on pinctrl
-  pinctrl: rockchip: register gpio driver before pinctrl driver
+Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+---
+ drivers/gpio/gpio-rockchip.c | 13 +++----------
+ 1 file changed, 3 insertions(+), 10 deletions(-)
 
- drivers/gpio/gpio-rockchip.c       | 228 ++++++++++++-----------------
- drivers/pinctrl/pinctrl-rockchip.c |  90 ++++--------
- drivers/pinctrl/pinctrl-rockchip.h |   2 +-
- 3 files changed, 123 insertions(+), 197 deletions(-)
-
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index a4c4e4584f5b..b67038572285 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -637,18 +637,8 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+ 
+ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+ {
+-	struct resource res;
+ 	int id = 0;
+ 
+-	if (of_address_to_resource(bank->of_node, 0, &res)) {
+-		dev_err(bank->dev, "cannot find IO resource for bank\n");
+-		return -ENOENT;
+-	}
+-
+-	bank->reg_base = devm_ioremap_resource(bank->dev, &res);
+-	if (IS_ERR(bank->reg_base))
+-		return PTR_ERR(bank->reg_base);
+-
+ 	bank->irq = irq_of_parse_and_map(bank->of_node, 0);
+ 	if (!bank->irq)
+ 		return -EINVAL;
+@@ -727,6 +717,9 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
+ 	bank->of_node = np;
+ 
+ 	raw_spin_lock_init(&bank->slock);
++	bank->reg_base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(bank->reg_base))
++		return PTR_ERR(bank->reg_base);
+ 
+ 	ret = rockchip_get_bank_data(bank);
+ 	if (ret)
 -- 
 2.25.1
 
