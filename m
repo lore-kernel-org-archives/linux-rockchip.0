@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57800C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 19:18:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7563FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 19:19:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D4i0q1cKmTKPLslbtg8eCSDSgHNWBNFHAkt7us61aX0=; b=II7vijU/9nlxec
-	AZO5p2Zc67V2UfZEB5QSKE7oL3xaSRaovziaW9CrlCoTLxNfTRfUtupxydufU3nA72LY9IXBX6eu4
-	OR6/XLAm744JVQT99EMKo4bVmYrXUXuagCkWFUEBcrXlxNINX5p+y6Wok5pCrvZneCJilfrXh4wD6
-	ONLkq/yrHXLOUSPf+pN9f5DntzajrktOD46l08nflvAnT9aHl0BuVNLhNpaAvOjPvUt1Bxol9Y2S4
-	TVtPqDOLSxVdwLfHb618l2JHwO5qP+Yrjh06Y0sS4II2zWUph2xSs3HqQyQLIYkxpim9tnyZI8MFi
-	LGq/YtcuNnVRtZCZVA5A==;
+	List-Owner; bh=cdjBHFwenEoq2/kQm9GWm3kv+Y1PdXsReW6KBieFxxs=; b=exxPC2ZiQsaN5M
+	rkPYeKXIcVaFUdcWESEteZhO/nARzqYT152Gd0+j6Y0kAsbVin8h0hrQbmTBTtWTu99unR9gqYWhf
+	QCn7m/fMz339ofGEIm6WBYs0p+PJGl6O+Mg88HZeysprkm8TNgwuhgXsPfRsjO6uecNEdq82Hm03X
+	l9TOzo7PCy/vjRe3C3RJhst6gVTQRN/D7MKknvgFuZf5f+c3zeWz3MzhTl0Nheirs474jmSGvqpyR
+	+YpNsMhN0xPeh4urU3XG8icky9cydDotOb1ZlkH3hUbeF3hMHgqrRK+IwHHVJW3XxBl3WIiviGnoQ
+	t78VPSUs5R91HqzhyEZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRfLe-005x70-Ek; Tue, 08 Mar 2022 19:18:18 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1nRfMe-005xZX-BW; Tue, 08 Mar 2022 19:19:20 +0000
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRfDO-005sUs-LW
- for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 19:09:49 +0000
-Received: by mail-pl1-x635.google.com with SMTP id t19so14383661plr.5
- for <linux-rockchip@lists.infradead.org>; Tue, 08 Mar 2022 11:09:46 -0800 (PST)
+ id 1nRfDR-005sWw-M9
+ for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 19:09:51 +0000
+Received: by mail-pj1-x1036.google.com with SMTP id m22so255108pja.0
+ for <linux-rockchip@lists.infradead.org>; Tue, 08 Mar 2022 11:09:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=IizyyKLt67Z0rg/Dl48rRHBPPMkh6LQBUEtOh7L4+qk=;
- b=Bvfe9G/MEM66BYRH60KYgdCaJh8AKOGbjxX5+ZCBHFRCY02DcOTijHLwWDlLz9nFmg
- V3PqU98KeKYRX34QTCbWnr1XJ0sMW/rOeT5GMi0izY6xvBsIPbq32RiLBMYqCOm9fUJn
- QJnq/Qrlh5G66FkEuGcFblcQlUXp0y2ZnWIJ8=
+ bh=3vcQ7E3QlJ5EMbZ1LFMqprOJOYHlzqtxgL896kYiqOo=;
+ b=cC8dBqHfPkF5HKHeDhMknhDRfgstZiTS1u1yK5S3G3C6N0fiGTUxyYIQ7C7knE7yul
+ lXJoiicgFcctg65I1e/izXC41nZ72yeoiJOY6b/PtDjW/Fvcxh8n+AFIrecGK7QP0rfm
+ 62TUbwp+3VeVnkaYdDFcz8OKq0TwTfLdwT9PQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=IizyyKLt67Z0rg/Dl48rRHBPPMkh6LQBUEtOh7L4+qk=;
- b=oObAUeiEKPm7A27qpD6wF9JOFTwc99/M5+mGWeb3E/dqgJ1phPn80ZXA+EQGAu+h3E
- i+EraO4iPtHQMB+xgq0RjgDkKSD/wiiAOSBT/BvwQrpldCAVybpN5uIQQjJUS8ZUNjwb
- 2ujfGsRhF5HjocUnhWXBr/JZ8IEtvoIz71zzSeWp9dAedz+qdsGQYXuDumBJ9q5zRfbF
- jq5MNVVUS3c8qOvVY2IEvgt6r82l6m9+wJH8J9LoJmjM+qSML8kqBTMRYQ9c72bXH6fp
- VmwwvLuON8HjNijNDOuJswID9CgN/UBr1IAjDrDo+aoPqOpXbfsF5S1ZgDc1Qy28uX9p
- 8Zlw==
-X-Gm-Message-State: AOAM531GaEMP8nwUzXRJaP/wJjoXGchumIRP9bbppw2sE8Sc87Q3YQaR
- qmNiYeIu8qJpmDnTPtBMKuOflg==
-X-Google-Smtp-Source: ABdhPJyqj7YklmvfKU/LYYyISAhNTAhR5T/zle5js+D93QhjzLdkS7Znp9ivicweO2UwT/n6KE8wCA==
-X-Received: by 2002:a17:902:e944:b0:14e:dc4f:f099 with SMTP id
- b4-20020a170902e94400b0014edc4ff099mr19029261pll.161.1646766585879; 
- Tue, 08 Mar 2022 11:09:45 -0800 (PST)
+ bh=3vcQ7E3QlJ5EMbZ1LFMqprOJOYHlzqtxgL896kYiqOo=;
+ b=BdGQOFkCTcd56RHCo/hLBC3TURQEoi1qgGfusHknV/XSK6e7TlEIvTPlRkhkE4x7EC
+ h8BkvN7hwxINOotd4mHdYGlJQEh6k6egLQ+g/WBYHWjxrOCo88BB8vfCgv2tEE8Aiw2m
+ +EtYw/8BJE692fgRJJF48SPIQVY1x4x6e7FEp7D6TjKe5EgY1o30eaN4e4rWiXKBiqmQ
+ 6oN8orrC1jXGYlCerd80rYCE27f4o4l9voB7Z2t7A9klKPwluIpxvsQvFTtdVZC45JId
+ ZUkQk0MVQAUVwGkamcKDNHn+t4oCFeq6iFTUwMdHvgedxaQbu4/aGIORjLcx3Hx4E/a1
+ SXdg==
+X-Gm-Message-State: AOAM532/4psYWlHgow0GYRS8cHth7c4EpFv1wQIaE9xfbl8l7OCooogv
+ Dz0qh0O2qMt+LEWiBfP7TFZazg==
+X-Google-Smtp-Source: ABdhPJzuHLhnsJe7gqPUU3F8/rKTzM5Cz8MQmvX+D9Q23OR5/GSYX3B2XbcEjamJWu7JKVbRlxWzJQ==
+X-Received: by 2002:a17:90b:3b92:b0:1bf:a61b:742b with SMTP id
+ pc18-20020a17090b3b9200b001bfa61b742bmr662827pjb.157.1646766588724; 
+ Tue, 08 Mar 2022 11:09:48 -0800 (PST)
 Received: from localhost ([2620:15c:202:201:b3e3:a188:cbfc:3a0e])
  by smtp.gmail.com with UTF8SMTPSA id
- x14-20020a17090ab00e00b001bf2d30ee9dsm3639224pjq.3.2022.03.08.11.09.44
+ f18-20020a056a001ad200b004bf321765dfsm21125042pfv.95.2022.03.08.11.09.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Mar 2022 11:09:45 -0800 (PST)
+ Tue, 08 Mar 2022 11:09:48 -0800 (PST)
 From: Brian Norris <briannorris@chromium.org>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
  Kyungmin Park <kyungmin.park@samsung.com>,
@@ -65,16 +65,17 @@ Cc: Derek Basehore <dbasehore@chromium.org>, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  Lin Huang <hl@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
  linux-pm@vger.kernel.org, Brian Norris <briannorris@chromium.org>
-Subject: [PATCH v4 13/15] PM / devfreq: rk3399_dmc: Disable edev on remove()
-Date: Tue,  8 Mar 2022 11:08:59 -0800
-Message-Id: <20220308110825.v4.13.I1476960b2586441beaef21dca4feb3ecc067f768@changeid>
+Subject: [PATCH v4 14/15] PM / devfreq: rk3399_dmc: Use
+ devm_pm_opp_of_add_table()
+Date: Tue,  8 Mar 2022 11:09:00 -0800
+Message-Id: <20220308110825.v4.14.I3df48ceacbf299549501a44433039d46e0a275ea@changeid>
 X-Mailer: git-send-email 2.35.1.616.g0bdcbb4464-goog
 In-Reply-To: <20220308190901.3144566-1-briannorris@chromium.org>
 References: <20220308190901.3144566-1-briannorris@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_110946_782566_797A47C0 
-X-CRM114-Status: GOOD (  12.67  )
+X-CRM114-CacheID: sfid-20220308_110949_772784_B4DBE7B1 
+X-CRM114-Status: GOOD (  16.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,37 +93,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Otherwise we hit an unablanced enable-count when unbinding the DFI
-device:
-
-[ 1279.659119] ------------[ cut here ]------------
-[ 1279.659179] WARNING: CPU: 2 PID: 5638 at drivers/devfreq/devfreq-event.c:360 devfreq_event_remove_edev+0x84/0x8c
-...
-[ 1279.659352] Hardware name: Google Kevin (DT)
-[ 1279.659363] pstate: 80400005 (Nzcv daif +PAN -UAO -TCO BTYPE=--)
-[ 1279.659371] pc : devfreq_event_remove_edev+0x84/0x8c
-[ 1279.659380] lr : devm_devfreq_event_release+0x1c/0x28
-...
-[ 1279.659571] Call trace:
-[ 1279.659582]  devfreq_event_remove_edev+0x84/0x8c
-[ 1279.659590]  devm_devfreq_event_release+0x1c/0x28
-[ 1279.659602]  release_nodes+0x1cc/0x244
-[ 1279.659611]  devres_release_all+0x44/0x60
-[ 1279.659621]  device_release_driver_internal+0x11c/0x1ac
-[ 1279.659629]  device_driver_detach+0x20/0x2c
-[ 1279.659641]  unbind_store+0x7c/0xb0
-[ 1279.659650]  drv_attr_store+0x2c/0x40
-[ 1279.659663]  sysfs_kf_write+0x44/0x58
-[ 1279.659672]  kernfs_fop_write_iter+0xf4/0x190
-[ 1279.659684]  vfs_write+0x2b0/0x2e4
-[ 1279.659693]  ksys_write+0x80/0xec
-[ 1279.659701]  __arm64_sys_write+0x24/0x30
-[ 1279.659714]  el0_svc_common+0xf0/0x1d8
-[ 1279.659724]  do_el0_svc_compat+0x28/0x3c
-[ 1279.659738]  el0_svc_compat+0x10/0x1c
-[ 1279.659746]  el0_sync_compat_handler+0xa8/0xcc
-[ 1279.659758]  el0_sync_compat+0x188/0x1c0
-[ 1279.659768] ---[ end trace cec200e5094155b4 ]---
+This simplifies error-cleanup and remove().
 
 Signed-off-by: Brian Norris <briannorris@chromium.org>
 ---
@@ -132,22 +103,62 @@ Signed-off-by: Brian Norris <briannorris@chromium.org>
 Changes in v2:
  - New patch
 
- drivers/devfreq/rk3399_dmc.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/devfreq/rk3399_dmc.c | 14 +++-----------
+ 1 file changed, 3 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
-index f778564cab49..fca9fcbd4249 100644
+index fca9fcbd4249..9615658d04ae 100644
 --- a/drivers/devfreq/rk3399_dmc.c
 +++ b/drivers/devfreq/rk3399_dmc.c
-@@ -452,6 +452,8 @@ static int rk3399_dmcfreq_remove(struct platform_device *pdev)
- {
- 	struct rk3399_dmcfreq *dmcfreq = dev_get_drvdata(&pdev->dev);
- 
-+	devfreq_event_disable_edev(dmcfreq->edev);
-+
- 	/*
- 	 * Before remove the opp table we need to unregister the opp notifier.
+@@ -401,7 +401,7 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
+ 	 * We add a devfreq driver to our parent since it has a device tree node
+ 	 * with operating points.
  	 */
+-	if (dev_pm_opp_of_add_table(dev)) {
++	if (devm_pm_opp_of_add_table(dev)) {
+ 		dev_err(dev, "Invalid operating-points in device tree.\n");
+ 		ret = -EINVAL;
+ 		goto err_edev;
+@@ -415,7 +415,7 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
+ 	opp = devfreq_recommended_opp(dev, &data->rate, 0);
+ 	if (IS_ERR(opp)) {
+ 		ret = PTR_ERR(opp);
+-		goto err_free_opp;
++		goto err_edev;
+ 	}
+ 
+ 	data->rate = dev_pm_opp_get_freq(opp);
+@@ -430,7 +430,7 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
+ 					   &data->ondemand_data);
+ 	if (IS_ERR(data->devfreq)) {
+ 		ret = PTR_ERR(data->devfreq);
+-		goto err_free_opp;
++		goto err_edev;
+ 	}
+ 
+ 	devm_devfreq_register_opp_notifier(dev, data->devfreq);
+@@ -440,8 +440,6 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
+ 
+ 	return 0;
+ 
+-err_free_opp:
+-	dev_pm_opp_of_remove_table(&pdev->dev);
+ err_edev:
+ 	devfreq_event_disable_edev(data->edev);
+ 
+@@ -454,12 +452,6 @@ static int rk3399_dmcfreq_remove(struct platform_device *pdev)
+ 
+ 	devfreq_event_disable_edev(dmcfreq->edev);
+ 
+-	/*
+-	 * Before remove the opp table we need to unregister the opp notifier.
+-	 */
+-	devm_devfreq_unregister_opp_notifier(dmcfreq->dev, dmcfreq->devfreq);
+-	dev_pm_opp_of_remove_table(dmcfreq->dev);
+-
+ 	return 0;
+ }
+ 
 -- 
 2.35.1.616.g0bdcbb4464-goog
 
