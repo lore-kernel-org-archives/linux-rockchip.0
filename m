@@ -4,99 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46547C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 18:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 969D2C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 19:07:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CGsyAuVh4d10MLLJC+mKrVHIqQ7EuVatapTXojJszKE=; b=k5jW8ijT6TR7WK
-	9zVsL3FM+C2D4QjTkjyhTPbL0VuSpnl73O4GcCJPmrVsA++VgVjzdVOlqOXPa3SPVM2vDhud6RNxG
-	Wkl457CSP8P77kyNa8yMptiUTgVuDwAoYCj04aPUCrM8stRack49lD1yVUc56htryteHDER5Ohrrm
-	bDSxbA1nt6JgmlOrCmtK4MnpiYqWpEJ24rHbNymaC8Dgqbd8kTPwwNgQn++w5b9QFjIoOiASinSBR
-	U0+toxk8fAEQQcpYMcVnSHPCnP+q+8pqRi/wS2nKeLjZolLkNPo5zEixI+JuPBWE//cVfHXIDpy2A
-	u5GYg+7d7pTqMLmdCj2w==;
+	List-Owner; bh=mHd5pyaw7dNWImS+tMNl/51GEHE3JnDZPa6CrrRZkRA=; b=oeq5JDwkc/IgXO
+	VnqcdwRUhelISJOWhQE7ABefEpXn2g3sZ9Of5n9XVFZtV+n6hJb8E56qeQvXaV2eZbn7ZD+c+QDza
+	FDja76tmftVSvkUlG5NBI/zsdVJP02sCSRk3MnTdBpngPrafO01Ef0dwY25nXdjK6MnX0LL8z/6SP
+	LMXo2FRYSDdjqCc/3VpIv236H/gdjmSnzWjiU/g7OzCfdRrnUMkn2c062elhb41u3PbmTm1bV8vd2
+	sF7l6PxuFEVrBLqBidqjbDOojfqAh/VTyHOIckeEUUYUnfPfE9o5ER7UEGZ3AUXKjKBgioY1TDtpa
+	tlJD5BaXtY5BBhNyAnvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nReHm-005jhI-FU; Tue, 08 Mar 2022 18:10:14 +0000
-Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
+	id 1nRfAd-005rZJ-Q3; Tue, 08 Mar 2022 19:06:55 +0000
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nReHi-005jfG-Ni
- for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 18:10:12 +0000
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 75DAF3F61F
- for <linux-rockchip@lists.infradead.org>; Tue,  8 Mar 2022 18:10:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1646763009;
- bh=P5NfD1dxp72/Z/UJR5oJ5juKBT9hEONgDz/FvaCJI40=;
- h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
- In-Reply-To:Content-Type;
- b=jSzKNQ/w58XuU2p4z4aXPdeR3XWy32BU4Vu/23BqPC9TWH6DUyGo3MVtlZEC4QKCO
- ec4jTXLEkG2dPm7fkLbI9Stu7XwDrkuTQepaCHKCZEp/vuzyuyqqeinj1ozpkmbFBH
- KtLcUcmEeXyNtsD8JVDlWBV2StZ2AypBF3AgEVIBue0tqA3+QaudHRAtXhmDyZYDyJ
- Bi5dvknVplyl7hH0hxOwM2gE1N6l+JbfXuGGZ/URvmjSZIKQEfa2TqBFyabQYNKNPG
- IXw6OnYMYoMExevQinDgBj7dxl2uFGGsW9w3MVOdnWZZjMOlgVPYSKCNj7CEEeTUep
- bSepUhObacpSg==
-Received: by mail-ej1-f72.google.com with SMTP id
- h22-20020a1709060f5600b006b11a2d3dcfso9105128ejj.4
- for <linux-rockchip@lists.infradead.org>; Tue, 08 Mar 2022 10:10:09 -0800 (PST)
+ id 1nRfAb-005rYb-FS
+ for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 19:06:54 +0000
+Received: by mail-pl1-x631.google.com with SMTP id p17so17929979plo.9
+ for <linux-rockchip@lists.infradead.org>; Tue, 08 Mar 2022 11:06:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=fKKD+3hXAeIEEWs0Yh0fwesV2YwX9bcSV9zNUsAN1go=;
+ b=TiAz7VQN6cqOR+YCGQONQ1puu9/mIbyi+3VaF2Y+0BaZGeb5d0zwRpgV+wE8vfCZR2
+ Pgq+thE1e9/4lXjLiLuSG2aKfs9V+qPTceSPGx1VZpZ/g/nRHQ1xsr06c/+SZh0uL6ZD
+ l59TPYzzVMS9JLJRtFAh9Cax5j2QTPG0/KiPc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=P5NfD1dxp72/Z/UJR5oJ5juKBT9hEONgDz/FvaCJI40=;
- b=lTPHpER7k83ER5B9UQKc+WZRKZQV/FJTjgX9GGvxRZOa3fucBqUy/ZuBMct3F1B8nn
- z0LyrpOnAHvs67ItXLTV5GVvq5nZIPEAvK9aDFOy81D4aFXJaNELebFeayGg7jgpJISu
- lxkR8vezvdQWX/O6S7DQ0UZRPBeqJVjFMunutvSsR5+FNFTsmvAOIkhwkaChbw62zSpS
- 8+yeF8xGGRad/PqIo9jyepljOxcArYM92/ZfztqXY30IQBBW+8rI4fjenOg8LxbluOEO
- iWdyMZJzsaAgSjC3jeYFp8PoNYrzDcxvnM8MOsvlYewjLV8jrZGNsyCAYSx1+qD14/+l
- 2udQ==
-X-Gm-Message-State: AOAM5334iMZBGN9cJ3e1gsWM3iuUZ0RJrw7oPIHZIU+dkhYNdywh48g3
- h2rEG/QaJgp9OlNED5UtMNsmqZ3+IRm5VJjZwT6tZSA0V0sECPh1V+DlCjkE5hXokm9/J/lhgFV
- cyMiLx/4ltqZBbNxYK+psRbGDirm3Dj/8FIqICEaov5TcJuUJRA==
-X-Received: by 2002:a17:906:2a50:b0:6da:ed06:b029 with SMTP id
- k16-20020a1709062a5000b006daed06b029mr14158895eje.506.1646763008685; 
- Tue, 08 Mar 2022 10:10:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzdsvPNPxGbwShrZZxnDXdfQoC5eYJxtPkPGLQtGTq+xlcflRFTJjtk66/HeJ0oH8kS8x/sSA==
-X-Received: by 2002:a17:906:2a50:b0:6da:ed06:b029 with SMTP id
- k16-20020a1709062a5000b006daed06b029mr14158874eje.506.1646763008423; 
- Tue, 08 Mar 2022 10:10:08 -0800 (PST)
-Received: from [192.168.0.144] (xdsl-188-155-174-239.adslplus.ch.
- [188.155.174.239]) by smtp.gmail.com with ESMTPSA id
- qx13-20020a170906fccd00b006bdeb94f50csm6141273ejb.203.2022.03.08.10.10.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Mar 2022 10:10:07 -0800 (PST)
-Message-ID: <e80dd94a-633c-b1be-64c4-1c8fbdfd677f@canonical.com>
-Date: Tue, 8 Mar 2022 19:10:07 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v3 05/15] dt-bindings: devfreq: rk3399_dmc: Add more
- disable-freq properties
-Content-Language: en-US
-To: Brian Norris <briannorris@chromium.org>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=fKKD+3hXAeIEEWs0Yh0fwesV2YwX9bcSV9zNUsAN1go=;
+ b=UC+GLMrqriZwzZO49UX08zeiSzYWqV3rw6jQz51f8mpv86lAdNqM9w9Xq5tRdZQAfv
+ zRsYA9Kd5iEKG9ah4wrrnIxFvPOXsAWGCFyNzVX4Jt0NbPlrkxNIxsmVygMABh4tXHVN
+ dfERwkBxHo/qLPf0GR/KPS3/hwNTgpnF3oPeVimGEM1M5PFcVorXVPH5GeHOoVx86ePK
+ hx1GssmTf0rhIbKWl/VGZkeTY0VxOFFC8ni0V0o3RsNoGcId+4ueHQ5xLJ3WU1TPjvI4
+ OpZ4cuAwxMKgLaYjOEE8KbI87K5C3/eDNNDJMBVR6eRoKTK9yHGPzxYOWGFQBpP89ixx
+ kAyg==
+X-Gm-Message-State: AOAM533KcPJdRmjA9qKjS8knYmz+YgPA16dmYD3hFPFOzmiceJeMoGwb
+ VhaiRR3+nPquB37w8qIi08jQOta9W76Q0g==
+X-Google-Smtp-Source: ABdhPJwSOD+gGbHatfnouDV590+C0yrq8QOnBDEG0WOdkHpfzRz+TxjH6jpl1Ho2oEWdFX5xJuG7yw==
+X-Received: by 2002:a17:90a:aa8c:b0:1bf:5273:ba28 with SMTP id
+ l12-20020a17090aaa8c00b001bf5273ba28mr6261331pjq.226.1646766412904; 
+ Tue, 08 Mar 2022 11:06:52 -0800 (PST)
+Received: from google.com ([2620:15c:202:201:b3e3:a188:cbfc:3a0e])
+ by smtp.gmail.com with ESMTPSA id
+ x29-20020aa79a5d000000b004f0ef1822d3sm19910654pfj.128.2022.03.08.11.06.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Mar 2022 11:06:52 -0800 (PST)
+Date: Tue, 8 Mar 2022 11:06:49 -0800
+From: Brian Norris <briannorris@chromium.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
  Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>
-Cc: Lin Huang <hl@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Derek Basehore <dbasehore@chromium.org>, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Rob Herring <robh@kernel.org>
+ Chanwoo Choi <cw00.choi@samsung.com>,
+ Rob Herring <robh+dt@kernel.org>, Lin Huang <hl@rock-chips.com>,
+ Heiko Stuebner <heiko@sntech.de>, Derek Basehore <dbasehore@chromium.org>,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v3 01/15] dt-bindings: devfreq: rk3399_dmc: Convert to YAML
+Message-ID: <YiepSZXhmUZVwjKo@google.com>
 References: <20220308000945.706701-1-briannorris@chromium.org>
- <20220307160918.v3.5.I382d4de737198ea52deb118c9bdc4d93d76e009e@changeid>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-In-Reply-To: <20220307160918.v3.5.I382d4de737198ea52deb118c9bdc4d93d76e009e@changeid>
+ <20220307160918.v3.1.I875ab8f28c5155a7d2f103316191954d4b07ac13@changeid>
+ <bf59a2bc-a708-27de-866a-346085dcee7d@canonical.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <bf59a2bc-a708-27de-866a-346085dcee7d@canonical.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_101010_915980_8513AF54 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20220308_110653_548795_5FCFA13D 
+X-CRM114-Status: GOOD (  19.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,31 +96,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 08/03/2022 01:09, Brian Norris wrote:
-> DDR DVFS tuning has found that several power-saving features don't have
-> good tradeoffs at higher frequencies -- at higher frequencies, we'll see
-> glitches or other errors. Provide tuning controls so these can be
-> disabled at higher OPPs, and left active only at the lower ones.
-> 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> ---
-> 
-> Changes in v3:
->  * Add Reviewed-by
-> 
-> Changes in v2:
->  * hyphens, not underscores
->  * *-hz units, and drop the types definition
-> 
->  .../bindings/devfreq/rk3399_dmc.yaml          | 37 +++++++++++++++++++
->  1 file changed, 37 insertions(+)
-> 
+On Tue, Mar 08, 2022 at 07:03:15PM +0100, Krzysztof Kozlowski wrote:
+> On 08/03/2022 01:09, Brian Norris wrote:
+ 
+> Apologies for jumping in late in discussion, but how about moving it to
+> memory-controllers or interconnect directory? devfreq is Linux specific
+> and DMC sounds a lot like dynamic memory controller.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Sure! Will do in v4.
 
-Best regards,
-Krzysztof
+> > 
+> >  .../bindings/devfreq/rk3399_dmc.txt           | 212 -------------
+> >  .../bindings/devfreq/rk3399_dmc.yaml          | 294 ++++++++++++++++++
+> 
+> file name:
+> rockchip,rk3399-dmc.yaml
+
+Ack.
+
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.yaml
+
+> > +  devfreq-events:
+> > +    $ref: /schemas/types.yaml#/definitions/phandle-array
+> > +    minItems: 1
+> > +    maxItems: 1
+> 
+> Rob previously asked about max, but it seems it is only one phandle,
+> right? Then the type - 'phandle'.
+
+Sure! Don't know why I didn't notice that.
+
+> > +  rockchip,ddr3_odt:
+> > +    $ref: /schemas/types.yaml#/definitions/uint32
+> > +    description:
+> > +      When the DRAM type is DDR3, this parameter defines the DRAM side ODT
+> > +      strength in ohms. Default value is 120.
+> 
+> Here and in all other places - instead of describing default value in
+> description, just add "default: 120".
+
+Yep. Most of these properties are actually deprecated in the end, but
+doesn't hurt to use the facilities available.
+
+> Best regards,
+> Krzysztof
+
+Thanks for the reviews! I'll roll them all into v4 shortly.
+
+While I'm at it: I think I have Reviewed-by's for all the DT patches
+(except this one). Given it also touches Rockchip device trees, maybe
+this all needs to go through Heiko / linux-rockchip? Or if not, it'd be
+nice if Heiko spoke up to tell the devfreq maintainers instead.
+
+Regards,
+Brian
 
 _______________________________________________
 Linux-rockchip mailing list
