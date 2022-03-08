@@ -4,53 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC70CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 03:26:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50A62C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 03:31:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rUw4AUOwgefEZ/kVaBVMr23raKjsdWw0KravBS7WhUQ=; b=E+8Tp0CUxwXz3j
-	8FfrVQ3NBQ8Ad7WNp7cDqb618feboIpkjzZTgNuxHf4DF8mv/nulJkcmjMIoYxaumlDkRu0XisAJs
-	ft+ILYBbyWd0z6Y3KdtE05E7JIlDXWljvaiGCBSNn28M3BGFdUtvTUR3RodegIIBPg8DVgQwyw2Nb
-	kKyhUAMUreKWRiert+YUyuLwKc9mjI6aEWFxJaKEQdh+0uyQvtU239wb/5au1r+qT9sL4U0Usn2xR
-	mw4iaoHucjPAc6lUcVjayueYQ8tVYV/pMowtBZGBQv7dhnsL8I++yiJjbRnL8P3L4dwDeyCMNf4jQ
-	PrsCnsG+1s+6n1Muzzmw==;
+	List-Owner; bh=zijtQJqOnSdn6uAX8HlK/c1Q3Bq2oJE70VBVshQ3Tlk=; b=xTXtHw3Qg1s6Sg
+	KahMxv3D4qbfPRFHoEVDZEj1db0Sf2HnkUeV3hPVgjZAWniwruYPL9DgmfsB2BvQDgCuPVc14sc80
+	c1/EjwPASBB4GaSdnna9xOx65HAfAUdxZWP9ERL/xVBK0m+Prx5m8w1UaVdMgPXg/AaLlrCohxOrC
+	9gqTUjS4rmp5MIsq/cs2e9uddvhGLs9hCXXC+MGJEdoYkoEl/nx+RAyJFNTd51KQE9Pxmppo+0asY
+	qnZt9yotup0Xbgbr2r0/gjEooL72teIZM/iuqN99EW6IOamiYVIFQiWrSnl4OW6XkKmAilJTSHJcp
+	/H/PDx3/3Axn7XNpnEaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRQU3-002X8F-NL; Tue, 08 Mar 2022 03:25:59 +0000
-Received: from mail-m17661.qiye.163.com ([59.111.176.61])
+	id 1nRQZW-002Xhe-CT; Tue, 08 Mar 2022 03:31:38 +0000
+Received: from mail-m121144.qiye.163.com ([115.236.121.144])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRQTv-002X5F-Vc
- for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 03:25:56 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by mail-m17661.qiye.163.com (Hmail) with ESMTPA id E30BD1DF614;
- Tue,  8 Mar 2022 11:25:49 +0800 (CST)
-From: Jianqun Xu <jay.xu@rock-chips.com>
-To: heiko@sntech.de
-Cc: linus.walleij@linaro.org, huangtao@rock-chips.com,
- kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org,
- linux-gpio@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH 3/4] gpio: rockchip: allow rockchip-gpio driver works
- independs on pinctrl
-Date: Tue,  8 Mar 2022 11:25:45 +0800
-Message-Id: <20220308032546.2169929-4-jay.xu@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220308032546.2169929-1-jay.xu@rock-chips.com>
-References: <20220308032546.2169929-1-jay.xu@rock-chips.com>
+ id 1nRQZJ-002Xg3-S3; Tue, 08 Mar 2022 03:31:28 +0000
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+ by mail-m121144.qiye.163.com (Hmail) with ESMTPA id 1E19CAC03A0;
+ Tue,  8 Mar 2022 11:31:23 +0800 (CST)
+Message-ID: <035f2dfd-bf35-abca-32bf-2be85cc88f8a@rock-chips.com>
+Date: Tue, 8 Mar 2022 11:31:22 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v7 10/24] drm/rockchip: dw_hdmi: Add support for hclk
+Content-Language: en-US
+To: Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Robin Murphy <robin.murphy@arm.com>,
+ elaine.zhang@rock-chips.com
+Cc: devicetree@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, kernel@pengutronix.de,
+ Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Peter Geis <pgwipeout@gmail.com>, Dmitry Osipenko <digetx@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Kever Yang
+ <Kever.yang@rock-chips.com>, algea.cao@rock-chips.com,
+ huangtao@rock-chips.com
+References: <20220225075150.2729401-1-s.hauer@pengutronix.de>
+ <20220225075150.2729401-11-s.hauer@pengutronix.de>
+ <47ddcaf3-4544-2b7c-a2f6-1f6346907f33@gmail.com>
+ <20220225104924.GC19585@pengutronix.de>
+ <78207d97-b5a1-9792-8ec9-11fcf2e00370@gmail.com>
+ <90c61299-f02c-607b-4734-7134852ef0a6@arm.com>
+ <20220225131154.GE19585@pengutronix.de>
+ <20220228141921.GN19585@pengutronix.de>
+ <5184ecf2-8734-3121-cbbc-5dcfcf0d02f8@arm.com>
+ <20220302112528.GV19585@pengutronix.de>
+ <20220304142235.GL22780@pengutronix.de>
+ <9ea0134e-aac7-60e1-5c58-ae31b4e1c422@collabora.com>
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <9ea0134e-aac7-60e1-5c58-ae31b4e1c422@collabora.com>
 X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
- kWDxoPAgseWUFZKDYvK1lXWShZQUlKS0tKN1dZLVlBSVdZDwkaFQgSH1lBWUIeQxhWSE8fQx1NT0
- 5ISUwfVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWU9LSFVKSktITUpVS1kG
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PlE6ORw*UT5MIzJCEytJGR8X
- NB4KCi9VSlVKTU9NTEtCQk5LT0NCVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
- WU5DVUlJVUxVSkpPWVdZCAFZQUpMSE9KNwY+
-X-HM-Tid: 0a7f678fc694da2bkuwse30bd1df614
+ kWDxoPAgseWUFZKDYvK1lXWShZQUlKS0tKN1dZLVlBSVdZDwkaFQgSH1lBWRpNSE5WSRhDHRpKGB
+ hLGUpKVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWU9LSFVKSktISkNVS1kG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PBQ6Ayo4PT5RNzItAx8xDhYL
+ N1FPC0tVSlVKTU9NTEpLSUNIQk5LVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+ WUFZTkNVSUlVTFVKSk9ZV1kIAVlBQkNPQjcG
+X-HM-Tid: 0a7f6794dd93b039kuuu1e19cac03a0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220307_192552_398172_96297E13 
-X-CRM114-Status: GOOD (  27.06  )
+X-CRM114-CacheID: sfid-20220307_193126_253449_579387D9 
+X-CRM114-Status: GOOD (  34.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,490 +82,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently, the rockchip_pin_bank is get from pinctrl, that binds the
-gpio driver to the pinctrl driver.
-
-rockchip-pinctrl
-->probe
-  ->register pinctrl
-    ->populate gpio platform
-    ...
-    ->rockchip-gpio probe
-      ->register gpio_chip
-
-Once the pinctrl device registered, other devices may try to configure
-pins througth pinctrl_bind_pins before probe, and if it is a gpio
-operation, that make a failure since gpio not ready.
-
-Heiko has provide a output-defer-list to store settings between pinctrl
-and gpio driver, once gpio register, the list will set activate.
-
-With this patch, the gpio can register itself before or without pinctrl,
-even if pinctrl driver used, we can make the gpio register before
-pinctrl by another patch to rockchip pinctrl driver.
-
-rockchip-pinctrl
-->probe
-  ->populate gpio platform
-    ->rockchip-gpio probe
-      ->register gpio_chip
-  ->register pinctrl
-
-Since the pinctrl is registered last, other devices will do defer probe.
-
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
----
- drivers/gpio/gpio-rockchip.c | 211 +++++++++++++----------------------
- 1 file changed, 80 insertions(+), 131 deletions(-)
-
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index 3703c3d71809..3c3bb47c3d79 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -26,6 +26,27 @@
- 
- #define GPIO_TYPE_V1		(0)           /* GPIO Version ID reserved */
- #define GPIO_TYPE_V2		(0x01000C2B)  /* GPIO Version ID 0x01000C2B */
-+#define GPIO_MAX_PINS	(32)
-+
-+struct rockchip_gpio {
-+	struct device *dev;
-+	void __iomem *reg_base;
-+	struct gpio_chip gpio_chip;
-+	struct irq_domain *domain;
-+	const struct rockchip_gpio_regs	*gpio_regs;
-+	struct device_node *of_node;
-+	struct clk *clk;
-+	struct clk *db_clk;
-+	raw_spinlock_t slock;
-+	u32 saved_masks;
-+	u32 toggle_edge_mode;
-+	int gpio_type;
-+	int irq;
-+	int id;
-+};
-+
-+#define to_gpio_gpio(_gc) \
-+	(container_of(_gc, struct rockchip_gpio, gpio_chip))
- 
- static const struct rockchip_gpio_regs gpio_regs_v1 = {
- 	.port_dr = 0x00,
-@@ -70,7 +91,7 @@ static inline u32 gpio_readl_v2(void __iomem *reg)
- 	return readl(reg + 0x4) << 16 | readl(reg);
- }
- 
--static inline void rockchip_gpio_writel(struct rockchip_pin_bank *bank,
-+static inline void rockchip_gpio_writel(struct rockchip_gpio *bank,
- 					u32 value, unsigned int offset)
- {
- 	void __iomem *reg = bank->reg_base + offset;
-@@ -81,7 +102,7 @@ static inline void rockchip_gpio_writel(struct rockchip_pin_bank *bank,
- 		writel(value, reg);
- }
- 
--static inline u32 rockchip_gpio_readl(struct rockchip_pin_bank *bank,
-+static inline u32 rockchip_gpio_readl(struct rockchip_gpio *bank,
- 				      unsigned int offset)
- {
- 	void __iomem *reg = bank->reg_base + offset;
-@@ -95,7 +116,7 @@ static inline u32 rockchip_gpio_readl(struct rockchip_pin_bank *bank,
- 	return value;
- }
- 
--static inline void rockchip_gpio_writel_bit(struct rockchip_pin_bank *bank,
-+static inline void rockchip_gpio_writel_bit(struct rockchip_gpio *bank,
- 					    u32 bit, u32 value,
- 					    unsigned int offset)
- {
-@@ -117,7 +138,7 @@ static inline void rockchip_gpio_writel_bit(struct rockchip_pin_bank *bank,
- 	}
- }
- 
--static inline u32 rockchip_gpio_readl_bit(struct rockchip_pin_bank *bank,
-+static inline u32 rockchip_gpio_readl_bit(struct rockchip_gpio *bank,
- 					  u32 bit, unsigned int offset)
- {
- 	void __iomem *reg = bank->reg_base + offset;
-@@ -137,7 +158,7 @@ static inline u32 rockchip_gpio_readl_bit(struct rockchip_pin_bank *bank,
- static int rockchip_gpio_get_direction(struct gpio_chip *chip,
- 				       unsigned int offset)
- {
--	struct rockchip_pin_bank *bank = gpiochip_get_data(chip);
-+	struct rockchip_gpio *bank = gpiochip_get_data(chip);
- 	u32 data;
- 
- 	data = rockchip_gpio_readl_bit(bank, offset, bank->gpio_regs->port_ddr);
-@@ -150,7 +171,7 @@ static int rockchip_gpio_get_direction(struct gpio_chip *chip,
- static int rockchip_gpio_set_direction(struct gpio_chip *chip,
- 				       unsigned int offset, bool input)
- {
--	struct rockchip_pin_bank *bank = gpiochip_get_data(chip);
-+	struct rockchip_gpio *bank = gpiochip_get_data(chip);
- 	unsigned long flags;
- 	u32 data = input ? 0 : 1;
- 
-@@ -164,7 +185,7 @@ static int rockchip_gpio_set_direction(struct gpio_chip *chip,
- static void rockchip_gpio_set(struct gpio_chip *gc, unsigned int offset,
- 			      int value)
- {
--	struct rockchip_pin_bank *bank = gpiochip_get_data(gc);
-+	struct rockchip_gpio *bank = gpiochip_get_data(gc);
- 	unsigned long flags;
- 
- 	raw_spin_lock_irqsave(&bank->slock, flags);
-@@ -174,7 +195,7 @@ static void rockchip_gpio_set(struct gpio_chip *gc, unsigned int offset,
- 
- static int rockchip_gpio_get(struct gpio_chip *gc, unsigned int offset)
- {
--	struct rockchip_pin_bank *bank = gpiochip_get_data(gc);
-+	struct rockchip_gpio *bank = gpiochip_get_data(gc);
- 	u32 data;
- 
- 	data = readl(bank->reg_base + bank->gpio_regs->ext_port);
-@@ -188,7 +209,7 @@ static int rockchip_gpio_set_debounce(struct gpio_chip *gc,
- 				      unsigned int offset,
- 				      unsigned int debounce)
- {
--	struct rockchip_pin_bank *bank = gpiochip_get_data(gc);
-+	struct rockchip_gpio *bank = gpiochip_get_data(gc);
- 	const struct rockchip_gpio_regs	*reg = bank->gpio_regs;
- 	unsigned long flags, div_reg, freq, max_debounce;
- 	bool div_debounce_support;
-@@ -295,7 +316,7 @@ static int rockchip_gpio_set_config(struct gpio_chip *gc, unsigned int offset,
-  */
- static int rockchip_gpio_to_irq(struct gpio_chip *gc, unsigned int offset)
- {
--	struct rockchip_pin_bank *bank = gpiochip_get_data(gc);
-+	struct rockchip_gpio *bank = gpiochip_get_data(gc);
- 	unsigned int virq;
- 
- 	if (!bank->domain)
-@@ -322,10 +343,10 @@ static const struct gpio_chip rockchip_gpiolib_chip = {
- static void rockchip_irq_demux(struct irq_desc *desc)
- {
- 	struct irq_chip *chip = irq_desc_get_chip(desc);
--	struct rockchip_pin_bank *bank = irq_desc_get_handler_data(desc);
-+	struct rockchip_gpio *bank = irq_desc_get_handler_data(desc);
- 	u32 pend;
- 
--	dev_dbg(bank->dev, "got irq for bank %s\n", bank->name);
-+	dev_dbg(bank->dev, "got irq\n");
- 
- 	chained_irq_enter(chip, desc);
- 
-@@ -385,7 +406,7 @@ static void rockchip_irq_demux(struct irq_desc *desc)
- static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- {
- 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
--	struct rockchip_pin_bank *bank = gc->private;
-+	struct rockchip_gpio *bank = gc->private;
- 	u32 mask = BIT(d->hwirq);
- 	u32 polarity;
- 	u32 level;
-@@ -468,7 +489,7 @@ static int rockchip_irq_set_type(struct irq_data *d, unsigned int type)
- static int rockchip_irq_reqres(struct irq_data *d)
- {
- 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
--	struct rockchip_pin_bank *bank = gc->private;
-+	struct rockchip_gpio *bank = gc->private;
- 
- 	return gpiochip_reqres_irq(&bank->gpio_chip, d->hwirq);
- }
-@@ -476,7 +497,7 @@ static int rockchip_irq_reqres(struct irq_data *d)
- static void rockchip_irq_relres(struct irq_data *d)
- {
- 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
--	struct rockchip_pin_bank *bank = gc->private;
-+	struct rockchip_gpio *bank = gc->private;
- 
- 	gpiochip_relres_irq(&bank->gpio_chip, d->hwirq);
- }
-@@ -484,7 +505,7 @@ static void rockchip_irq_relres(struct irq_data *d)
- static void rockchip_irq_suspend(struct irq_data *d)
- {
- 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
--	struct rockchip_pin_bank *bank = gc->private;
-+	struct rockchip_gpio *bank = gc->private;
- 
- 	bank->saved_masks = irq_reg_readl(gc, bank->gpio_regs->int_mask);
- 	irq_reg_writel(gc, ~gc->wake_active, bank->gpio_regs->int_mask);
-@@ -493,7 +514,7 @@ static void rockchip_irq_suspend(struct irq_data *d)
- static void rockchip_irq_resume(struct irq_data *d)
- {
- 	struct irq_chip_generic *gc = irq_data_get_irq_chip_data(d);
--	struct rockchip_pin_bank *bank = gc->private;
-+	struct rockchip_gpio *bank = gc->private;
- 
- 	irq_reg_writel(gc, bank->saved_masks, bank->gpio_regs->int_mask);
- }
-@@ -508,7 +529,7 @@ static void rockchip_irq_disable(struct irq_data *d)
- 	irq_gc_mask_set_bit(d);
- }
- 
--static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
-+static int rockchip_interrupts_register(struct rockchip_gpio *bank)
- {
- 	unsigned int clr = IRQ_NOREQUEST | IRQ_NOPROBE | IRQ_NOAUTOEN;
- 	struct irq_chip_generic *gc;
-@@ -517,8 +538,7 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
- 	bank->domain = irq_domain_add_linear(bank->of_node, 32,
- 					&irq_generic_chip_ops, NULL);
- 	if (!bank->domain) {
--		dev_warn(bank->dev, "could not init irq domain for bank %s\n",
--			 bank->name);
-+		dev_warn(bank->dev, "could not init irq domain\n");
- 		return -EINVAL;
- 	}
- 
-@@ -527,8 +547,7 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
- 					     handle_level_irq,
- 					     clr, 0, 0);
- 	if (ret) {
--		dev_err(bank->dev, "could not alloc generic chips for bank %s\n",
--			bank->name);
-+		dev_err(bank->dev, "could not alloc generic chips\n");
- 		irq_domain_remove(bank->domain);
- 		return -EINVAL;
- 	}
-@@ -554,7 +573,7 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
- 	gc->chip_types[0].chip.irq_set_type = rockchip_irq_set_type;
- 	gc->chip_types[0].chip.irq_request_resources = rockchip_irq_reqres;
- 	gc->chip_types[0].chip.irq_release_resources = rockchip_irq_relres;
--	gc->wake_enabled = IRQ_MSK(bank->nr_pins);
-+	gc->wake_enabled = IRQ_MSK(GPIO_MAX_PINS);
- 
- 	/*
- 	 * Linux assumes that all interrupts start out disabled/masked.
-@@ -572,7 +591,7 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
- 	return 0;
- }
- 
--static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
-+static int rockchip_gpiolib_register(struct rockchip_gpio *bank)
- {
- 	struct gpio_chip *gc;
- 	int ret;
-@@ -580,9 +599,9 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
- 	bank->gpio_chip = rockchip_gpiolib_chip;
- 
- 	gc = &bank->gpio_chip;
--	gc->base = bank->pin_base;
--	gc->ngpio = bank->nr_pins;
--	gc->label = bank->name;
-+	gc->base = GPIO_MAX_PINS * bank->id;
-+	gc->ngpio = GPIO_MAX_PINS;
-+	gc->label = kasprintf(GFP_KERNEL, "gpio%d", bank->id);
- 	gc->parent = bank->dev;
- 
- 	ret = gpiochip_add_data(gc, bank);
-@@ -592,35 +611,6 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
- 		return ret;
- 	}
- 
--	/*
--	 * For DeviceTree-supported systems, the gpio core checks the
--	 * pinctrl's device node for the "gpio-ranges" property.
--	 * If it is present, it takes care of adding the pin ranges
--	 * for the driver. In this case the driver can skip ahead.
--	 *
--	 * In order to remain compatible with older, existing DeviceTree
--	 * files which don't set the "gpio-ranges" property or systems that
--	 * utilize ACPI the driver has to call gpiochip_add_pin_range().
--	 */
--	if (!of_property_read_bool(bank->of_node, "gpio-ranges")) {
--		struct device_node *pctlnp = of_get_parent(bank->of_node);
--		struct pinctrl_dev *pctldev = NULL;
--
--		if (!pctlnp)
--			return -ENODATA;
--
--		pctldev = of_pinctrl_get(pctlnp);
--		if (!pctldev)
--			return -ENODEV;
--
--		ret = gpiochip_add_pin_range(gc, dev_name(pctldev->dev), 0,
--					     gc->base, gc->ngpio);
--		if (ret) {
--			dev_err(bank->dev, "Failed to add pin range\n");
--			goto fail;
--		}
--	}
--
- 	ret = rockchip_interrupts_register(bank);
- 	if (ret) {
- 		dev_err(bank->dev, "failed to register interrupt, %d\n", ret);
-@@ -635,15 +625,10 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
- 	return ret;
- }
- 
--static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
-+static int rockchip_gpio_get_type(struct rockchip_gpio *bank)
- {
- 	int id = 0;
- 
--	bank->clk = of_clk_get(bank->of_node, 0);
--	if (IS_ERR(bank->clk))
--		return PTR_ERR(bank->clk);
--
--	clk_prepare_enable(bank->clk);
- 	id = readl(bank->reg_base + gpio_regs_v2.version_id);
- 
- 	/* If not gpio v2, that is default to v1. */
-@@ -664,7 +649,7 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
- 	return 0;
- }
- 
--static int rockchip_gpio_get_irq(struct rockchip_pin_bank *bank)
-+static int rockchip_gpio_get_irq(struct rockchip_gpio *bank)
- {
- 	struct device *dev = bank->dev;
- 	struct fwnode_handle *fwnode = dev_fwnode(dev);
-@@ -682,103 +667,67 @@ static int rockchip_gpio_get_irq(struct rockchip_pin_bank *bank)
- 	return irq;
- }
- 
--static struct rockchip_pin_bank *
--rockchip_gpio_find_bank(struct pinctrl_dev *pctldev, int id)
--{
--	struct rockchip_pinctrl *info;
--	struct rockchip_pin_bank *bank;
--	int i, found = 0;
--
--	info = pinctrl_dev_get_drvdata(pctldev);
--	bank = info->ctrl->pin_banks;
--	for (i = 0; i < info->ctrl->nr_banks; i++, bank++) {
--		if (bank->bank_num == id) {
--			found = 1;
--			break;
--		}
--	}
--
--	return found ? bank : NULL;
--}
--
- static int rockchip_gpio_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct device_node *np = dev->of_node;
--	struct device_node *pctlnp = of_get_parent(np);
--	struct pinctrl_dev *pctldev = NULL;
--	struct rockchip_pin_bank *bank = NULL;
--	struct rockchip_pin_output_deferred *cfg;
--	static int gpio;
-+	struct rockchip_gpio *gpio;
-+	static int static_gpio_id;
- 	int id, ret;
- 
--	if (!np || !pctlnp)
--		return -ENODEV;
--
--	pctldev = of_pinctrl_get(pctlnp);
--	if (!pctldev)
--		return -EPROBE_DEFER;
-+	gpio = devm_kzalloc(dev, sizeof(*gpio), GFP_KERNEL);
-+	if (!gpio)
-+		return -ENOMEM;
- 
- 	id = of_alias_get_id(np, "gpio");
- 	if (id < 0)
--		id = gpio++;
-+		id = static_gpio_id++;
- 
--	bank = rockchip_gpio_find_bank(pctldev, id);
--	if (!bank)
--		return -EINVAL;
-+	gpio->id = id;
-+	gpio->dev = dev;
-+	gpio->of_node = np;
- 
--	bank->dev = dev;
--	bank->of_node = np;
-+	gpio->reg_base = devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(gpio->reg_base))
-+		return PTR_ERR(gpio->reg_base);
- 
--	raw_spin_lock_init(&bank->slock);
--	bank->reg_base = devm_platform_ioremap_resource(pdev, 0);
--	if (IS_ERR(bank->reg_base))
--		return PTR_ERR(bank->reg_base);
-+	gpio->irq = rockchip_gpio_get_irq(gpio);
-+	if (gpio->irq < 0)
-+		return gpio->irq;
- 
--	bank->irq = rockchip_gpio_get_irq(bank);
--	if (bank->irq < 0)
--		return bank->irq;
-+	gpio->clk = of_clk_get(np, 0);
-+	if (IS_ERR(gpio->clk))
-+		return PTR_ERR(gpio->clk);
- 
--	ret = rockchip_get_bank_data(bank);
--	if (ret)
--		return ret;
-+	gpio->db_clk = of_clk_get(np, 1);
-+	if (IS_ERR(gpio->db_clk))
-+		gpio->db_clk = NULL;
- 
--	/*
--	 * Prevent clashes with a deferred output setting
--	 * being added right at this moment.
--	 */
--	mutex_lock(&bank->deferred_lock);
-+	clk_prepare_enable(gpio->clk);
- 
--	ret = rockchip_gpiolib_register(bank);
-+	ret = rockchip_gpio_get_type(gpio);
- 	if (ret) {
--		clk_disable_unprepare(bank->clk);
--		mutex_unlock(&bank->deferred_lock);
-+		clk_disable_unprepare(gpio->clk);
- 		return ret;
- 	}
- 
--	while (!list_empty(&bank->deferred_output)) {
--		cfg = list_first_entry(&bank->deferred_output,
--				       struct rockchip_pin_output_deferred, head);
--		list_del(&cfg->head);
--
--		ret = rockchip_gpio_direction_output(&bank->gpio_chip, cfg->pin, cfg->arg);
--		if (ret)
--			dev_warn(dev, "setting output pin %u to %u failed\n", cfg->pin, cfg->arg);
-+	raw_spin_lock_init(&gpio->slock);
- 
--		kfree(cfg);
-+	ret = rockchip_gpiolib_register(gpio);
-+	if (ret) {
-+		clk_disable_unprepare(gpio->clk);
-+		return ret;
- 	}
- 
--	mutex_unlock(&bank->deferred_lock);
--
--	platform_set_drvdata(pdev, bank);
--	dev_info(dev, "probed %pOF\n", np);
-+	platform_set_drvdata(pdev, gpio);
-+	printk("%s: probed %s\n", __func__, dev_name(dev));
- 
- 	return 0;
- }
- 
- static int rockchip_gpio_remove(struct platform_device *pdev)
- {
--	struct rockchip_pin_bank *bank = platform_get_drvdata(pdev);
-+	struct rockchip_gpio *bank = platform_get_drvdata(pdev);
- 
- 	clk_disable_unprepare(bank->clk);
- 	gpiochip_remove(&bank->gpio_chip);
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgOgoKT24gMy81LzIyIDA3OjU1LCBEbWl0cnkgT3NpcGVua28gd3JvdGU6Cj4gT24gMy80LzIy
+IDE3OjIyLCBTYXNjaGEgSGF1ZXIgd3JvdGU6Cj4+IE9uIFdlZCwgTWFyIDAyLCAyMDIyIGF0IDEy
+OjI1OjI4UE0gKzAxMDAsIFNhc2NoYSBIYXVlciB3cm90ZToKPj4+IE9uIFR1ZSwgTWFyIDAxLCAy
+MDIyIGF0IDAxOjM5OjMxUE0gKzAwMDAsIFJvYmluIE11cnBoeSB3cm90ZToKPj4+PiBPbiAyMDIy
+LTAyLTI4IDE0OjE5LCBTYXNjaGEgSGF1ZXIgd3JvdGU6Cj4+Pj4+IE9uIEZyaSwgRmViIDI1LCAy
+MDIyIGF0IDAyOjExOjU0UE0gKzAxMDAsIFNhc2NoYSBIYXVlciB3cm90ZToKPj4+Pj4+IE9uIEZy
+aSwgRmViIDI1LCAyMDIyIGF0IDEyOjQxOjIzUE0gKzAwMDAsIFJvYmluIE11cnBoeSB3cm90ZToK
+Pj4+Pj4+PiBPbiAyMDIyLTAyLTI1IDExOjEwLCBEbWl0cnkgT3NpcGVua28gd3JvdGU6Cj4+Pj4+
+Pj4+IDI1LjAyLjIwMjIgMTM6NDksIFNhc2NoYSBIYXVlciDQv9C40YjQtdGCOgo+Pj4+Pj4+Pj4g
+T24gRnJpLCBGZWIgMjUsIDIwMjIgYXQgMDE6MjY6MTRQTSArMDMwMCwgRG1pdHJ5IE9zaXBlbmtv
+IHdyb3RlOgo+Pj4+Pj4+Pj4+IDI1LjAyLjIwMjIgMTA6NTEsIFNhc2NoYSBIYXVlciDQv9C40YjQ
+tdGCOgo+Pj4+Pj4+Pj4+PiBUaGUgcmszNTY4IEhETUkgaGFzIGFuIGFkZGl0aW9uYWwgY2xvY2sg
+dGhhdCBuZWVkcyB0byBiZSBlbmFibGVkIGZvciB0aGUKPj4+Pj4+Pj4+Pj4gSERNSSBjb250cm9s
+bGVyIHRvIHdvcmsuIFRoZSBwdXJwb3NlIG9mIHRoYXQgY2xvY2sgaXMgbm90IGNsZWFyLiBJdCBp
+cwo+Pj4+Pj4+Pj4+PiBuYW1lZCAiaGNsayIgaW4gdGhlIGRvd25zdHJlYW0gZHJpdmVyLCBzbyB1
+c2UgdGhlIHNhbWUgbmFtZS4KPj4+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+Pj4gU2lnbmVkLW9mZi1ieTog
+U2FzY2hhIEhhdWVyIDxzLmhhdWVyQHBlbmd1dHJvbml4LmRlPgo+Pj4+Pj4+Pj4+PiAtLS0KPj4+
+Pj4+Pj4+Pj4KPj4+Pj4+Pj4+Pj4gTm90ZXM6Cj4+Pj4+Pj4+Pj4+ICAgICAgICBDaGFuZ2VzIHNp
+bmNlIHY1Ogo+Pj4+Pj4+Pj4+PiAgICAgICAgLSBVc2UgZGV2bV9jbGtfZ2V0X29wdGlvbmFsIHJh
+dGhlciB0aGFuIGRldm1fY2xrX2dldAo+Pj4+Pj4+Pj4+Pgo+Pj4+Pj4+Pj4+PiAgICAgZHJpdmVy
+cy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9ja2NoaXAuYyB8IDE2ICsrKysrKysrKysrKysr
+KysKPj4+Pj4+Pj4+Pj4gICAgIDEgZmlsZSBjaGFuZ2VkLCAxNiBpbnNlcnRpb25zKCspCj4+Pj4+
+Pj4+Pj4+Cj4+Pj4+Pj4+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+ZHdfaGRtaS1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2hkbWktcm9j
+a2NoaXAuYwo+Pj4+Pj4+Pj4+PiBpbmRleCBmZTRmOTU1NjIzOWFjLi5jNmMwMGU4Nzc5YWI1IDEw
+MDY0NAo+Pj4+Pj4+Pj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfaGRtaS1y
+b2NrY2hpcC5jCj4+Pj4+Pj4+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kd19o
+ZG1pLXJvY2tjaGlwLmMKPj4+Pj4+Pj4+Pj4gQEAgLTc2LDYgKzc2LDcgQEAgc3RydWN0IHJvY2tj
+aGlwX2hkbWkgewo+Pj4+Pj4+Pj4+PiAgICAgCWNvbnN0IHN0cnVjdCByb2NrY2hpcF9oZG1pX2No
+aXBfZGF0YSAqY2hpcF9kYXRhOwo+Pj4+Pj4+Pj4+PiAgICAgCXN0cnVjdCBjbGsgKnJlZl9jbGs7
+Cj4+Pj4+Pj4+Pj4+ICAgICAJc3RydWN0IGNsayAqZ3JmX2NsazsKPj4+Pj4+Pj4+Pj4gKwlzdHJ1
+Y3QgY2xrICpoY2xrX2NsazsKPj4+Pj4+Pj4+Pj4gICAgIAlzdHJ1Y3QgZHdfaGRtaSAqaGRtaTsK
+Pj4+Pj4+Pj4+Pj4gICAgIAlzdHJ1Y3QgcmVndWxhdG9yICphdmRkXzB2OTsKPj4+Pj4+Pj4+Pj4g
+ICAgIAlzdHJ1Y3QgcmVndWxhdG9yICphdmRkXzF2ODsKPj4+Pj4+Pj4+Pj4gQEAgLTIyOSw2ICsy
+MzAsMTQgQEAgc3RhdGljIGludCByb2NrY2hpcF9oZG1pX3BhcnNlX2R0KHN0cnVjdCByb2NrY2hp
+cF9oZG1pICpoZG1pKQo+Pj4+Pj4+Pj4+PiAgICAgCQlyZXR1cm4gUFRSX0VSUihoZG1pLT5ncmZf
+Y2xrKTsKPj4+Pj4+Pj4+Pj4gICAgIAl9Cj4+Pj4+Pj4+Pj4+ICsJaGRtaS0+aGNsa19jbGsgPSBk
+ZXZtX2Nsa19nZXRfb3B0aW9uYWwoaGRtaS0+ZGV2LCAiaGNsayIpOwo+Pj4+Pj4+Pj4+PiArCWlm
+IChQVFJfRVJSKGhkbWktPmhjbGtfY2xrKSA9PSAtRVBST0JFX0RFRkVSKSB7Cj4+Pj4+Pj4+Pj4g
+SGF2ZSB5b3UgdHJpZWQgdG8gaW52ZXN0aWdhdGUgdGhlIGhjbGs/IEknbSBzdGlsbCB0aGlua2lu
+ZyB0aGF0J3Mgbm90Cj4+Pj4+Pj4+Pj4gb25seSBIRE1JIHRoYXQgbmVlZHMgdGhpcyBjbG9jayBh
+bmQgdGhlbiB0aGUgaGFyZHdhcmUgZGVzY3JpcHRpb24KPj4+Pj4+Pj4+PiBkb2Vzbid0IGxvb2sg
+Y29ycmVjdC4KPj4+Pj4+Pj4+IEkgYW0gc3RpbGwgbm90IHN1cmUgd2hhdCB5b3UgbWVhbi4gWWVz
+LCBpdCdzIG5vdCBvbmx5IHRoZSBIRE1JIHRoYXQKPj4+Pj4+Pj4+IG5lZWRzIHRoaXMgY2xvY2su
+IFRoZSBWT1AyIG5lZWRzIGl0IGFzIHdlbGwgYW5kIHRoZSBkcml2ZXIgaGFuZGxlcyB0aGF0Lgo+
+Pj4+Pj4+PiBJJ20gY3VyaW91cyB3aGV0aGVyIERTSS9EUCBhbHNvIG5lZWQgdGhhdCBjbG9jayB0
+byBiZSBlbmFibGVkLiBJZiB0aGV5Cj4+Pj4+Pj4+IGRvLCB0aGVuIHlvdSBhcmVuJ3QgbW9kZWxp
+bmcgaC93IHByb3Blcmx5IEFGQUlDUy4KPj4+Pj4+PiBBc3N1bWluZyBub2JvZHkgYXQgUm9ja2No
+aXAgZGVjaWRlZCB0byBtYWtlIHRoaW5ncyBuZWVkbGVzc2x5IGluY29uc2lzdGVudAo+Pj4+Pj4+
+IHdpdGggcHJldmlvdXMgU29DcywgSENMS19WT1Agc2hvdWxkIGJlIHRoZSBjbG9jayBmb3IgdGhl
+IFZPUCdzIEFIQiBzbGF2ZQo+Pj4+Pj4+IGludGVyZmFjZS4gVXN1YWxseSwgaWYgdGhhdCBhZmZl
+Y3RlZCBhbnl0aGluZyBvdGhlciB0aGFuIGFjY2Vzc2luZyBWT1AKPj4+Pj4+PiByZWdpc3RlcnMs
+IGluZGVlZCBpdCB3b3VsZCBzbWVsbCBvZiBzb21ldGhpbmcgYmVpbmcgd3JvbmcgaW4gdGhlIGNs
+b2NrIHRyZWUsCj4+Pj4+Pj4gYnV0IGluIHRoaXMgY2FzZSBJJ2QgYWxzbyBiZSBzdXNwaWNpb3Vz
+IG9mIHdoZXRoZXIgaXQgbWlnaHQgaGF2ZSBlbmRlZCB1cAo+Pj4+Pj4+IGNsb2NraW5nIHJlbGF0
+ZWQgR1JGIHJlZ2lzdGVycyBhcyB3ZWxsIChlaXRoZXIgZGlyZWN0bHksIG9yIGluZGlyZWN0bHkg
+dmlhCj4+Pj4+Pj4gc29tZSBnYXRlIHRoYXQgdGhlIGNsb2NrIGRyaXZlciBoYXNuJ3QgbW9kZWxs
+ZWQgeWV0KS4KPj4+Pj4+IE9rLCBJIGFtIGJlZ2lubmluZyB0byB1bmRlcnN0YW5kLiBJIHZlcmlm
+aWVkIHRoYXQgaGRtaSwgbWlwaSBhbmQgZHAgYXJlCj4+Pj4+PiBoYW5naW5nIHdoZW4gSENMS19W
+T1AgaXMgZGlzYWJsZWQgYnkgZGlzYWJsaW5nIHRoYXQgY2xvY2sgdmlhIHN5c2ZzCj4+Pj4+PiB1
+c2luZyBDTE9DS19BTExPV19XUklURV9ERUJVR0ZTLiBXaGVuIGl0J3MgZGlzYWJsZWQgdGhlbiB0
+aGUgcmVnaXN0ZXJzCj4+Pj4+PiBvZiB0aGF0IHVuaXRzIGNhbid0IGJlIGFjY2Vzc2VkLiBIb3dl
+dmVyLCB3aGVuIEkgZGlzYWJsZSBIQ0xLX1ZPUCBieQo+Pj4+Pj4gZGlyZWN0bHkgd3JpdGluZyB0
+byB0aGUgZ2F0ZSBiaXQgUkszNTY4X0NMS0dBVEVfQ09OKDIwKSB0aGVuIG9ubHkKPj4+Pj4+IGFj
+Y2Vzc2luZyBWT1AgcmVnaXN0ZXJzIGhhbmdzLCB0aGUgb3RoZXIgdW5pdHMgc3RheSBmdW5jdGlv
+bmFsLgo+Pj4+Pj4gU28gaXQgc2VlbXMgaXQgbXVzdCBiZSB0aGUgcGFyZW50IGNsb2NrIHdoaWNo
+IG11c3QgYmUgZW5hYmxlZC4gVGhlCj4+Pj4+PiBwYXJlbnQgY2xvY2sgaXMgaGNsa192by4gVGhp
+cyBjbG9jayBzaG91bGQgYmUgaGFuZGxlZCBhcyBwYXJ0IG9mIHRoZQo+Pj4+Pj4gUkszNTY4X1BE
+X1ZPIHBvd2VyIGRvbWFpbjoKPj4+Pj4+Cj4+Pj4+PiAJcG93ZXItZG9tYWluQFJLMzU2OF9QRF9W
+TyB7Cj4+Pj4+PiAgICAgICAgICAgICAgICAgICByZWcgPSA8UkszNTY4X1BEX1ZPPjsKPj4+Pj4+
+ICAgICAgICAgICAgICAgICAgIGNsb2NrcyA9IDwmY3J1IEhDTEtfVk8+LAo+Pj4+Pj4gICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgPCZjcnUgUENMS19WTz4sCj4+Pj4+PiAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICA8JmNydSBBQ0xLX1ZPUF9QUkU+Owo+Pj4+Pj4gICAgICAgICAgICAgICAg
+ICAgIHBtX3FvcyA9IDwmcW9zX2hkY3A+LAo+Pj4+Pj4gICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIDwmcW9zX3ZvcF9tMD4sCj4+Pj4+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZx
+b3Nfdm9wX20xPjsKPj4+Pj4+ICAgICAgICAgICAgICAgICAgICAjcG93ZXItZG9tYWluLWNlbGxz
+ID0gPDA+Owo+Pj4+Pj4gICAgICAgICAgIH07Cj4+Pj4+IEZvcmdldCB0aGlzLiBUaGUgY2xvY2tz
+IGluIHRoaXMgbm9kZSBhcmUgb25seSBlbmFibGVkIGR1cmluZyBlbmFibGluZyBvcgo+Pj4+PiBk
+aXNhYmxpbmcgdGhlIHBvd2VyIGRvbWFpbiwgdGhleSBhcmUgZGlzYWJsZWQgYWdhaW4gaW1tZWRp
+YXRlbHkgYWZ0ZXJ3YXJkcy4KPj4+Pj4KPj4+Pj4gT0ssIEkgbmVlZCBIQ0xLX1ZPIHRvIGFjY2Vz
+cyB0aGUgSERNSSByZWdpc3RlcnMuIEkgdmVyaWZpZWQgdGhhdCBieQo+Pj4+PiBkaXNhYmxpbmcg
+SENMS19WTyBhdCByZWdpc3RlciBsZXZlbCAoQ1JVX0dBVEVfQ09OKDIwKSBCSVQoMSkpLiBUaGUK
+Pj4+Pj4gSERNSSByZWdpc3RlcnMgYmVjb21lIGluYWNjZXNzaWJsZSB0aGVuLiBUaGlzIG1lYW5z
+IEknbGwgcmVwbGFjZQo+Pj4+PiBIQ0xLX1ZPUCBpbiB0aGUgSERNSSBub2RlIHdpdGggSENMS19W
+Ty4gRG9lcyB0aGlzIHNvdW5kIHNhbmU/Cj4+Pj4gV2VsbCwgaXQncyBzdGlsbCBhIG15c3Rlcnkg
+aGFjayBvdmVyYWxsLCBhbmQgaW4gc29tZSB3YXlzIGl0IHNlZW1zIGV2ZW4gbW9yZQo+Pj4+IHN1
+c3BlY3QgdG8gYmUgY2xhaW1pbmcgYSB3aG9sZSBicmFuY2ggb2YgdGhlIGNsb2NrIHRyZWUgcmF0
+aGVyIHRoYW4gYSBsZWFmCj4+Pj4gZ2F0ZSB3aXRoIGEgc3BlY2lmaWMgcHVycG9zZS4gSSdtIHJl
+YWxseSBzdGFydGluZyB0byB0aGluayB0aGF0IHRoZQo+Pj4+IHVuZGVybHlpbmcgaXNzdWUgaGVy
+ZSBpcyBhIGJ1ZyBpbiB0aGUgY2xvY2sgZHJpdmVyLCBvciBhIGhhcmR3YXJlIG1pc2hhcAo+Pj4+
+IHRoYXQgc2hvdWxkIGxvZ2ljYWxseSBiZSB3b3JrZWQgYXJvdW5kIGJ5IHRoZSBjbG9jayBkcml2
+ZXIsIHJhdGhlciB0aGFuCj4+Pj4gaW5kaXZpZHVhbCB0aGUgY29uc3VtZXJzLgo+Pj4+Cj4+Pj4g
+RG9lcyBpdCB3b3JrIGlmIHlvdSBoYWNrIHRoZSBjbG9jayBkcml2ZXIgdG8gdGhpbmsgdGhhdCBQ
+Q0xLX1ZPIGlzIGEgY2hpbGQKPj4+PiBvZiBIQ0xLX1ZPPyBFdmVuIGlmIHRoYXQncyBub3QgdGVj
+aG5pY2FsbHkgdHJ1ZSwgaXQgd291bGQgc2VlbSB0bwo+Pj4+IGVmZmVjdGl2ZWx5IG1hdGNoIHRo
+ZSBvYnNlcnZlZCBiZWhhdmlvdXIgKGkuZS4gYWxsIDMgdGhpbmdzIHdob3NlIHJlZ2lzdGVyCj4+
+Pj4gYWNjZXNzIGFwcGFyZW50bHkgKnNob3VsZCogYmUgZW5hYmxlZCBieSBhIGdhdGUgb2ZmIFBD
+TEtfVk8sIHNlZW0gdG8gYWxzbwo+Pj4+IHJlcXVpcmUgSENMS19WTykuCj4+PiBZZXMsIHRoYXQg
+d29ya3MgYXMgZXhwZWN0ZWQuIEkgYW0gbm90IHN1cmUgdGhvdWdoIGlmIHdlIHJlYWxseSB3YW50
+IHRvCj4+PiBnbyB0aGF0IHBhdGguIFRoZSBwY2xrIHJhdGVzIHdpbGwgYmVjb21lIGNvbXBsZXRl
+bHkgYm9ndXMgd2l0aCB0aGlzIGFuZAo+Pj4gc2hvdWxkIHdlIGhhdmUgdG8gcGxheSB3aXRoIHRo
+ZSByYXRlcyBpbiB0aGUgZnV0dXJlIHdlIG1pZ2h0IHJlZ3JldCB0aGlzCj4+PiBzdGVwLgo+PiBI
+b3cgZG8gd2UgcHJvY2VlZCBoZXJlPyBJIGNhbiBpbmNsdWRlIGEgcGF0Y2ggd2hpY2ggbWFrZXMg
+UENMS19WTyBhCj4+IGNoaWxkIG9mIEhDTEtfVk8gaWYgdGhhdCdzIHdoYXQgd2UgYWdyZWUgdXBv
+bi4KPiBDb3VsZG4ndCBBbmR5IGNsYXJpZnkgdGhlIGFjdHVhbCBjbG9jayB0cmVlIHN0cnVjdHVy
+ZSBvZiB0aGUgaC93IGZvciB1cz8KPgo+IFRoaXMgd2lsbCBiZSB0aGUgYmVzdCBvcHRpb24gYmVj
+YXVzZSBkYXRhc2hlZXQgZG9lc24ndCBnaXZlIHRoZSBjbGVhcgo+IGFuc3dlciwgb3IgYXQgbGVh
+c3QgSSBjb3VsZG4ndCBmaW5kIGl0LiBUZWNobmljYWxseSwgUENMSyBpbmRlZWQgc2hvdWxkCj4g
+YmUgYSBjaGlsZCBvZiB0aGUgSENMSyBpbiBnZW5lcmFsLCBzbyBSb2JpbiBjb3VsZCBiZSByaWdo
+dC4KCgpBZGQgb3VyIGNsayBleHBlcnQgRWxhaW5lLCBzaGUgd2lsbCBzaGFyZSBzb21lIGluZm9y
+bWF0aW9uIGFib3V0IHRoZSAKYWN0dWFsIGNsb2NrIHN0cnVjdHVyZS4KCgo+IF9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
