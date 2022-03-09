@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF8B4C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Mar 2022 16:37:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E335C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Mar 2022 16:38:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=djCj2u7RXgZzdCCdEqg5iVgPhEqdDKdgAwJnVdukivY=; b=IfjD4qwNyuzZwJ
-	6ehYhHiRLSj1cEYufUledSxk07cnPY7bm+o+YYEc/LrrIdI6dESkPYA1zuiATCBmwEzP6tn4q18rZ
-	NWc4iiqQNJBgY+qMbGViZG+zqc9x7uoBQ0nWtP1xz2RPaaZqAir7utK8StLGIN67+x65QRAcZ5kSE
-	JTtTWxKHj6XnpP8QK+yII9xv4otuhO2Qp7e3H2s+UuD04L2DynuQEo6cweIUZsbhQVAUEDzGIhXof
-	Zl+sYPiIuzHtiy4oAt5qMr5OI8ZUoRYUdmvSrrSk/4IYOX0tng6dXi891rPCQpInufqNkxggACUoT
-	AHbjE4CXoH/ampoEUU6Q==;
+	List-Owner; bh=kFvJs5dSSQQsZhkJvgZmN7TCl5qBQ+anaW4zzonNMSo=; b=IU04+RWpVLtVoY
+	TviCNN8mfVVDfean/dBb9zhVtYEJmg0Sif5wH8y/aVzeQKkhXl8CsfAeP+heZf1mTffR0DszP/vjJ
+	7gFzLKSMzgSAN0AkGxe4VEpIP92HPPSgLnxKJPTJl4aMCJs4n/1lH/GvTJTVQTN/dWGCLtdps2+Y/
+	xKP+taMh596Qsbz4rkesivbYt0h4hQjBUH1OfjDmVofDSsttc0E/dtG+dwh4w4ZeSun3SMIzlVdKv
+	ggwlXw+WYCAserMvW4VD84boOc+Zdc9AR+bWKnZIIC9c5OB1X0F8z1fn0HWXsguvOftDs5eSQW24P
+	oFJZtQMCQyOXN7UtzM2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRzJw-009UQr-J2; Wed, 09 Mar 2022 16:37:52 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nRzKe-009UmL-BF; Wed, 09 Mar 2022 16:38:36 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRz6h-009NdJ-MZ; Wed, 09 Mar 2022 16:24:14 +0000
+ id 1nRz7w-009OOx-Bp; Wed, 09 Mar 2022 16:25:30 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id C365C6196B;
- Wed,  9 Mar 2022 16:24:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47A48C36AE2;
- Wed,  9 Mar 2022 16:24:07 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 00794B81EE7;
+ Wed,  9 Mar 2022 16:25:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E701C340E8;
+ Wed,  9 Mar 2022 16:25:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646843050;
- bh=j7hmCy1CU7rAvVLIg9oPZL7rB5QJwqoUz2WqR3uMxdI=;
+ s=k20201202; t=1646843125;
+ bh=K9gceViHzNAZRZsRqEmIjzn7fQTvsVlXZG/p6NcdhHk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=RoyU0aBxqA+XmADrkD4NkO2rtM9oy6zuRhFvl24BrXIjkNZqxgU6VQh7433p7aXQU
- iE7PDmgnl2eOxjYgMle6K7lcLXNglySZkoU+BUZsolrt1+Tt2cMBTWFmko0F4qEyoQ
- avM1rsBNdG/0pgNyu55uk/7eC4llnBNzp7I9yLID2PPK7xHARPM+TlIPhrPz1aZZpO
- eNKt3GO93SSSBBJKH00FBnyQtlafpgkZQQq/TQ1dB+ez1L1wfoj6vNdQDpY2tmc8p/
- +ajIKaIkO0s8b/XyTbm6aq7MhZDRMDbeUasgFVo5zvfwq5GiWHqq/skqAyt5UuLOdv
- U3bkNnCg8ufPw==
+ b=oNqnmikp8Wio4YDMmGaqZ4TqlScAIaJ8FpJZMCCGYIjdxfK4i1lGYLWXRpWH7vT/i
+ +2qnVjSRNvi/gzIdyeqxIJ9DvRkdoYyrP3b+ZI9CPK7lDze9roZrSEXWMQQWExUVs0
+ yORXtyGjk/GT6jDup4sis083EFQf4mMwCvferP7FZV+fmyS2un2/AduGfbOlrwOHID
+ 5//yL3budJFyTBFvvzymcNT6xb4AK1yC9YA3633A46iZ6PUuEPLzNFwM1Mc52JWasu
+ kjYhEoIkH0x83kZ6Imc4A2BzbxRJE0m724DHM++eqqEtD4WywWl/XY0/ze8myqxN+j
+ 1PKKY/Oy13P5g==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Corentin Labbe <clabbe@baylibre.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+Cc: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>,
+ Quentin Schulz <foss+kernel@0leil.net>,
+ Quentin Schulz <quentin.schulz@theobroma-systems.com>,
  Heiko Stuebner <heiko@sntech.de>, Sasha Levin <sashal@kernel.org>,
- robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 07/19] ARM: dts: rockchip: fix a typo on rk3288
- crypto-controller
-Date: Wed,  9 Mar 2022 11:23:24 -0500
-Message-Id: <20220309162337.136773-7-sashal@kernel.org>
+ robh+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH AUTOSEL 4.19 03/14] arm64: dts: rockchip: fix rk3399-puma eMMC
+ HS400 signal integrity
+Date: Wed,  9 Mar 2022 11:24:56 -0500
+Message-Id: <20220309162508.137035-3-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220309162337.136773-1-sashal@kernel.org>
-References: <20220309162337.136773-1-sashal@kernel.org>
+In-Reply-To: <20220309162508.137035-1-sashal@kernel.org>
+References: <20220309162508.137035-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220309_082411_857145_0D1BCBEE 
-X-CRM114-Status: GOOD (  12.64  )
+X-CRM114-CacheID: sfid-20220309_082528_592889_B0692FA6 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,35 +80,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Corentin Labbe <clabbe@baylibre.com>
+From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
 
-[ Upstream commit 3916c3619599a3970d3e6f98fb430b7c46266ada ]
+[ Upstream commit 62966cbdda8a92f82d966a45aa671e788b2006f7 ]
 
-crypto-controller had a typo, fix it.
-In the same time, rename it to just crypto
+There are signal integrity issues running the eMMC at 200MHz on Puma
+RK3399-Q7.
 
-Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Link: https://lore.kernel.org/r/20220209120355.1985707-1-clabbe@baylibre.com
+Similar to the work-around found for RK3399 Gru boards, lowering the
+frequency to 100MHz made the eMMC much more stable, so let's lower the
+frequency to 100MHz.
+
+It might be possible to run at 150MHz as on RK3399 Gru boards but only
+100MHz was extensively tested.
+
+Cc: Quentin Schulz <foss+kernel@0leil.net>
+Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
+Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+Link: https://lore.kernel.org/r/20220119134948.1444965-1-quentin.schulz@theobroma-systems.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk3288.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 658ceb96d8bd..7dcafd0833ba 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -975,7 +975,7 @@ i2s: i2s@ff890000 {
- 		status = "disabled";
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+index b155f657292b..ce1320e4c106 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+@@ -468,6 +468,12 @@ vcc5v0_host_en: vcc5v0-host-en {
+ };
  
--	crypto: cypto-controller@ff8a0000 {
-+	crypto: crypto@ff8a0000 {
- 		compatible = "rockchip,rk3288-crypto";
- 		reg = <0x0 0xff8a0000 0x0 0x4000>;
- 		interrupts = <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
+ &sdhci {
++	/*
++	 * Signal integrity isn't great at 200MHz but 100MHz has proven stable
++	 * enough.
++	 */
++	max-frequency = <100000000>;
++
+ 	bus-width = <8>;
+ 	mmc-hs400-1_8v;
+ 	mmc-hs400-enhanced-strobe;
 -- 
 2.34.1
 
