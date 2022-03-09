@@ -4,56 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8628C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Mar 2022 16:23:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A169C433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Mar 2022 16:25:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZvDrC07xp/L/WdPNfzJs7N0hRDZkdzlQcnlC6F6HNO0=; b=krkDQacUkkJFMf
-	gxo0r7hVdHC6n5Rrxcz16qXyIBxWHt+doHSgZGLSRnBbWfnYuzxhHzz0NGJFkY1xRgCJpxPVnMyDb
-	XFYuE18jjPGGHndwcM05PlnbOK88TfVQ768OR3dNXq0kXWtm5BG2oyz2gerX71bAvVH9rZUdJYAeu
-	dqu1QQ8diT4trUeE1Bp+hc/5mzq8eNWiAqsbEWMOrUiiDfqwrgtgm+YPES7cC+h3JuFWYuxNU412L
-	aTDPp0BbjbRRivrQG8Q0vI6JOpQ8+ZenQKmLiqpyGHUJo9n66zNk0fLcQJjTtkOdIwVM/kUKNbDXR
-	cFfJBHWdAQ8+zSqIbREg==;
+	List-Owner; bh=boMm93sXtkiADIrWJj3EFBRaKNCzHOSyDaR6cxkMWpI=; b=FQB7z7p71x43YR
+	ddZTsgaAFm5NGrEf1yrLW+o6avipjkY5YLov0uLLG+qKDISyA60kCsEV3OOtWglqyt3wUlz8gnytM
+	+YsrZqz5277fcfa/XwThgKHg+ERgvag6+qE9ICmbZCPgNT47wyI3lN4CiuLIdIdCBZiJUrY7iJM+c
+	ulwysadRYIMblEkr5wFpZ3WB617c9QkKlFJujtvkgagR6XDSe1aNJcZ0ManthKhH394ZWqr674IlM
+	59v7K8IkN6KaQax40wz9KCHFM08ySxuYu0aIyIRo62XtkkW8hsi6g8cx4Ss1duCgF0kE8cPXCz8ma
+	fUfvjBaShdLGb6ImQX8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRz6H-009NLJ-Sf; Wed, 09 Mar 2022 16:23:45 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nRz7S-009O5A-KF; Wed, 09 Mar 2022 16:24:58 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRz2p-009LP6-RQ; Wed, 09 Mar 2022 16:20:13 +0000
+ id 1nRz2y-009LUA-Tl; Wed, 09 Mar 2022 16:20:22 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 0D3C1B81EE7;
- Wed,  9 Mar 2022 16:20:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFC34C340EC;
- Wed,  9 Mar 2022 16:20:03 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 4CE5F615F1;
+ Wed,  9 Mar 2022 16:20:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F17AC340EC;
+ Wed,  9 Mar 2022 16:20:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646842808;
- bh=YIErJnc75CCefGBPMKlJGtrhLN04w92UXi9qejAIpu0=;
+ s=k20201202; t=1646842819;
+ bh=KxyRlOyUxc84zYC6QXsIDrt+eRE+gpXYHahoT4dc/go=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=mAL1bBL/C8EYBdRPJREovsE3uhylQKiuL2W8fZagnZfubWmQYxCGSCqx8HXquRR+g
- rZcc4JtASOD4LWNfQeZbk7vQVJr5Ybe/4xNCK2gX4MZmBnL2Nh2WUA4SNiovhTUCu2
- DUG/6KXXilMevvR6+rSiZOzTICGkOdNA+v0kFP9krtIM6yt5QqUxfAd5bibEDvNUpY
- 1TgNim263e9bFs0uHU/mFJYD6S54pH0z5s7fD46R6Y+r1m/fKQ0vMw77UNK+WT260V
- k7FCXFuiNEqbfSkyXVafBRKMO7LxlxoYBkj24/bEMvgN/sQeO2Xe2HHimat0lAHpe/
- K0Mz2A6zAr04Q==
+ b=MqEVLOCu/YZE6XizBTgFLWjH52Zbf56SWHIDxAHuSSj7cibEfVXSZhvvZFf4pSHfn
+ pToWdLQlyMx/nuDCdnU7EmdBMdWRD9p6itMPbSzOZ1Ib+dARxqfyJHNxpGUvPDwi3/
+ NpOa/JSgjnWHUdws2Isoba4JNn3cH2vWjC+GZze8j3qRiZ9Wz2FKiUYnFuWdL8fTMF
+ jM+YICCH2LBRtp6L3UOToewzzRBiY6cAyfeWgkJtJBluHSw8tqOOaNHS2pwUdwhIO5
+ Z+3IhJo754mPP5cNCghr3PcZrOP3WiG90J0nohAPLyJabryP2ARUWKyBb7vRtp0vRN
+ IjgafA7k3DgJQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>,
- Quentin Schulz <foss+kernel@0leil.net>,
- Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
  Heiko Stuebner <heiko@sntech.de>, Sasha Levin <sashal@kernel.org>,
- robh+dt@kernel.org, devicetree@vger.kernel.org,
+ robh+dt@kernel.org, jbx6244@gmail.com, maccraft123mc@gmail.com,
+ linus.walleij@linaro.org, paul.kocialkowski@bootlin.com,
+ macromorgan@hotmail.com, zhangqing@rock-chips.com,
+ benjamin.gaignard@collabora.com, cnemo@tutanota.com,
+ ezequiel@vanguardiasur.com.ar, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 04/24] arm64: dts: rockchip: fix rk3399-puma eMMC
- HS400 signal integrity
-Date: Wed,  9 Mar 2022 11:19:23 -0500
-Message-Id: <20220309161946.136122-4-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 05/24] arm64: dts: rockchip: align pl330 node
+ name with dtschema
+Date: Wed,  9 Mar 2022 11:19:24 -0500
+Message-Id: <20220309161946.136122-5-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220309161946.136122-1-sashal@kernel.org>
 References: <20220309161946.136122-1-sashal@kernel.org>
@@ -61,8 +63,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220309_082012_197794_2B9EDAC7 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20220309_082021_078003_37819779 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,47 +82,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
 
-[ Upstream commit 62966cbdda8a92f82d966a45aa671e788b2006f7 ]
+[ Upstream commit 8fd9415042826c7609c588e5ef45f3e84237785f ]
 
-There are signal integrity issues running the eMMC at 200MHz on Puma
-RK3399-Q7.
+Fixes dtbs_check warnings like:
 
-Similar to the work-around found for RK3399 Gru boards, lowering the
-frequency to 100MHz made the eMMC much more stable, so let's lower the
-frequency to 100MHz.
+  dmac@ff240000: $nodename:0: 'dmac@ff240000' does not match '^dma-controller(@.*)?$'
 
-It might be possible to run at 150MHz as on RK3399 Gru boards but only
-100MHz was extensively tested.
-
-Cc: Quentin Schulz <foss+kernel@0leil.net>
-Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
-Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-Link: https://lore.kernel.org/r/20220119134948.1444965-1-quentin.schulz@theobroma-systems.com
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Link: https://lore.kernel.org/r/20220129175429.298836-1-krzysztof.kozlowski@canonical.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ arch/arm64/boot/dts/rockchip/px30.dtsi   | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index 002ece51c3ba..08fa00364b42 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -439,6 +439,12 @@ usb3_id: usb3-id {
- };
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 248ebb61aa79..5200d0bbd9e9 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -711,7 +711,7 @@ rktimer: timer@ff210000 {
+ 		clock-names = "pclk", "timer";
+ 	};
  
- &sdhci {
-+	/*
-+	 * Signal integrity isn't great at 200MHz but 100MHz has proven stable
-+	 * enough.
-+	 */
-+	max-frequency = <100000000>;
-+
- 	bus-width = <8>;
- 	mmc-hs400-1_8v;
- 	mmc-hs400-enhanced-strobe;
+-	dmac: dmac@ff240000 {
++	dmac: dma-controller@ff240000 {
+ 		compatible = "arm,pl330", "arm,primecell";
+ 		reg = <0x0 0xff240000 0x0 0x4000>;
+ 		interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index da84be6f4715..3cbe83e6fb9a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -489,7 +489,7 @@ pwm3: pwm@ff1b0030 {
+ 		status = "disabled";
+ 	};
+ 
+-	dmac: dmac@ff1f0000 {
++	dmac: dma-controller@ff1f0000 {
+ 		compatible = "arm,pl330", "arm,primecell";
+ 		reg = <0x0 0xff1f0000 0x0 0x4000>;
+ 		interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
 -- 
 2.34.1
 
