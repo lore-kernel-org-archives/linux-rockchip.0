@@ -4,72 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E99DFC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Mar 2022 23:10:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62406C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Mar 2022 02:03:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HMiZs7i39GHIp+r4GuYfp+3JblRNWlQ2tx9phkfpgaM=; b=z/4hxU4WjFP02f
-	iMXBDhDqIB+2ahHIoNZF6QwkSw9hPOWn5Q8oUTm01iIwstxIju129lDKdx8Aa+j4aBLNTzWh5mFyP
-	sZcHL36Hai2rfMaSQ2AYjriMBg6IzrwZttGjowKVnt6QLpZU8v+rw4k+xRFsxQN2ju6JpiDLmw5DA
-	eI/TinqdG47niWZNxfP65ZX3T1txRq6kpfKOK0mEnFdY4YwGIYSzJFgxbh+NEAEUlK5ncRnbS4akH
-	OcpkEI21G5TI8niZSCSzRSwsTFCqbbq6jdy7cvS1k+ZZ0/VH9bUgZnx8and8DsQncPU+K9zeQWq5f
-	ov35yjEdXEL4XSStwAvg==;
+	List-Owner; bh=GxXa8ZYRyg45zRiQNEBiRgB3lpx1ZIx1WzmT7jb/NpM=; b=hDH7McOOxGehow
+	w8isfmkfZjlFFLdPGquJxrv+0lnibP9M/Mws8YKJhXx0QGHY4t1fRcSREzUFnVndP0MJN1klGhQ99
+	YJt/v2BUgg8qS+TEc2gujWDcjnmNTyKIB06RctWt4WmAGxbaYOpAxp6HYChwxoY4m+N/UJAavQ9pd
+	eu2aoZpyUwcekVTq2qaYsaEBkIgM4HKt7BiN8DxNeuQKiCj/qaC0PgmN0Z0DwpfnyjdQFE3PtmzOU
+	lMI8/XWRxcKGIQ23kZ3Wd3nxD2ILlj1CS9CGnh53N1+mB4KHXmKeJnNCjljQ+Lc0yiLUlL+om5DiF
+	urmAGVJkFwBpZPgin0ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRiyd-006VER-14; Tue, 08 Mar 2022 23:10:47 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1nRlfe-006sTZ-V0; Wed, 09 Mar 2022 02:03:22 +0000
+Received: from mail-m121144.qiye.163.com ([115.236.121.144])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRiya-006VD8-Hm
- for linux-rockchip@lists.infradead.org; Tue, 08 Mar 2022 23:10:45 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id z11so621835lfh.13
- for <linux-rockchip@lists.infradead.org>; Tue, 08 Mar 2022 15:10:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=tclsFaPE34TrWsSULlYvU9YsW3x7Tf6mvtJ/Ff+EAgw=;
- b=YTxtynEturtmQ9+fQ2vk4MLEzSozTMNeDRXaVWblqZvl5cNILUeHdpEsitwfPfNIzn
- uCtJuZ5NsjYf2Ok6NBtbFh9Ma45M5vV4eDFye5M5b2CqwFnkNoA8DFyU50SPmMselqV/
- q/tlUGMcxIMfJNgMyYAgT5U/xKc9hbMGY84CXSrjQz3QPryQGm3EntO5dzCPy4t1eLLM
- PJF3EWLGIRs9IQkx+NbaWBj8+A2ASwVgX7J8o5ZMMpRM0FvqYWU3ThHQDTV7BjFmtynz
- gVx61JpRkMOep1q+pQ1+vJQs7ocgJhkFT/XQnL7qiyo2bgs0+u1VgxYEfGddeAxQFlhp
- Cxgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=tclsFaPE34TrWsSULlYvU9YsW3x7Tf6mvtJ/Ff+EAgw=;
- b=qQRelmUlsHWQXdHKBc4bQjNPXM/Flw0Uaz8cKqzdtBL4tIx6Isnszg0orkft2Hmq1V
- Ccyb2n6ZDM6txcsZ8Ko6azptsSK/Np2TsECZ8wnGz6Ca4NtckOquNq77aymVlh54KtWs
- VR0hNfbhKg9VT6wDZa1Lovy0CPKYbd8pg1E7ZD005eSwlFNeJZ4Ej5NvvzqPPHOCKbRP
- aMI6AfLVXZhDA2bmrsQZniM5NpBZiPap3TWJFy9BoH6/MRJZNc3FD51AmmfL5TJLcgib
- 7b9Ov2U8IAIsMOaLsdMCc2Qws2ro0a3YsfpD4/Jj0Wpxo3Klc99veT37tM5Dr1R68RXI
- MR7Q==
-X-Gm-Message-State: AOAM532Im6yEGUDJZWx3FqTGDeoqppIDe1tUALoS4DPc0PntDuOiA8ld
- QSrSrba/MWh1pUpo6mUpAoEhuuM3ViP7GEnr6vaPmg==
-X-Google-Smtp-Source: ABdhPJx/fglOdwsFUXGzUPIPq1H3ZUZI8HoqBE3Dc7CpwH2vZZ4CHq8MWt1insKPhpHz2VgNI0Ys/4lxjE1mEucfOrE=
-X-Received: by 2002:a05:6512:31d4:b0:445:e4ef:c0f8 with SMTP id
- j20-20020a05651231d400b00445e4efc0f8mr12498094lfe.626.1646781042694; Tue, 08
- Mar 2022 15:10:42 -0800 (PST)
+ id 1nRlfS-006sQQ-6E; Wed, 09 Mar 2022 02:03:11 +0000
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+ by mail-m121144.qiye.163.com (Hmail) with ESMTPA id 293B1AC0613;
+ Wed,  9 Mar 2022 10:03:06 +0800 (CST)
+Message-ID: <f3af0286-fc64-f011-bc90-6797e26e3640@rock-chips.com>
+Date: Wed, 9 Mar 2022 10:03:05 +0800
 MIME-Version: 1.0
-References: <20220307181704.149076-1-colin.i.king@gmail.com>
-In-Reply-To: <20220307181704.149076-1-colin.i.king@gmail.com>
-From: Nick Desaulniers <ndesaulniers@google.com>
-Date: Tue, 8 Mar 2022 15:10:31 -0800
-Message-ID: <CAKwvOdkXNGRJkZDd7Cg8jhL9Ex7R+VPYqEEc+VpwDyi9NJKXQQ@mail.gmail.com>
-Subject: Re: [PATCH] drm/rockchip: remove redundant assignment to pointer
- connector
-To: Colin Ian King <colin.i.king@gmail.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>, 
- Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org, 
- llvm@lists.linux.dev, knaerzche@gmail.com, Heiko Stuebner <heiko@sntech.de>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v7 22/24] drm: rockchip: Add VOP2 driver
+Content-Language: en-US
+To: Daniel Stone <daniel@fooishbar.org>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org,
+ Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
+ Peter Geis <pgwipeout@gmail.com>, linux-arm-kernel@lists.infradead.org
+References: <20220225075150.2729401-1-s.hauer@pengutronix.de>
+ <20220225075150.2729401-23-s.hauer@pengutronix.de>
+ <bb077f34-333e-a07a-1fcb-702a6807f941@rock-chips.com>
+ <CAPj87rO2sztocJrE-CeSQWry9j_cSe2uv9F1Yf81pGnBXdu2Ag@mail.gmail.com>
+ <ae4314db-09c0-049b-ccc9-f6b1c3003dcb@rock-chips.com>
+ <CAPj87rOanNE1wca3ijJx1zXYZkKX1ta9F145GCXM15Nv=POicA@mail.gmail.com>
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <CAPj87rOanNE1wca3ijJx1zXYZkKX1ta9F145GCXM15Nv=POicA@mail.gmail.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
+ kWDxoPAgseWUFZKDYvK1lXWShZQUlKS0tKN1dZLVlBSVdZDwkaFQgSH1lBWRlNS0xWSBkdTU8fHR
+ oaHRoZVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWU9LSFVKSktITUpVS1kG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PRQ6PQw4Ej5ICTEyTjNPFDZD
+ LT8KCk5VSlVKTU9NTEJKSENNQ0lJVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+ WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSExLQjcG
+X-HM-Tid: 0a7f6c6a657bb039kuuu293b1ac0613
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220308_151044_629313_5DC733C0 
-X-CRM114-Status: GOOD (  18.17  )
+X-CRM114-CacheID: sfid-20220308_180310_449700_C9255D85 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,52 +71,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 7, 2022 at 10:17 AM Colin Ian King <colin.i.king@gmail.com> wrote:
->
-> The pointer connector is being assigned a value that is never read,
-> it is being re-assigned in the following statement. The assignment
-> is redundant and can be removed.
->
-> Cleans up clang scan build warning:
-> drivers/gpu/drm/rockchip/rockchip_rgb.c:153:2: warning: Value stored
-> to 'connector' is never read [deadcode.DeadStores]
+Hi Daniel:
 
-+ Author & reviewer of:
-Fixes: 2e87bf389e13 ("drm/rockchip: add DRM_BRIDGE_ATTACH_NO_CONNECTOR
-flag to drm_bridge_attach")
-
->
-> Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
-> ---
->  drivers/gpu/drm/rockchip/rockchip_rgb.c | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-> index 2494b079489d..92a727931a49 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
-> @@ -150,7 +150,6 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
->         if (ret)
->                 goto err_free_encoder;
->
-> -       connector = &rgb->connector;
->         connector = drm_bridge_connector_init(rgb->drm_dev, encoder);
->         if (IS_ERR(connector)) {
->                 DRM_DEV_ERROR(drm_dev->dev,
-> --
-> 2.35.1
->
->
+On 3/8/22 22:04, Daniel Stone wrote:
+> On Tue, 8 Mar 2022 at 08:42, Andy Yan <andy.yan@rock-chips.com> wrote:
+>> On 3/7/22 21:09, Daniel Stone wrote:
+>>> On Mon, 7 Mar 2022 at 12:18, Andy Yan <andy.yan@rock-chips.com> wrote:
+>>>> When run a weston 10.0.0:
+>>>>
+>>>>     # export XDG_RUNTIME_DIR=/tmp
+>>>>     # weston --backend=drm-backend.so --use-pixma --tty=2
+>>>> --continue=without-input
+>>>>
+>>>> I got the following error:
+>>>>
+>>>> drm_atomic_check_only [PLANE:31:Smart0-win0] CRTC set but no FB
+>>> Can you please start Weston with --logger-scopes=log,drm-backend and
+>>> attach the output?
+>> Please see the weston ouput here[0]
+> Are you running with musl perhaps?
+Do you mean the C library? I chose uClib-ng in buildroot, not use musl.
+> Either way, please make sure your
+> libdrm build includes commit 79fa377c8bdc84fde99c6a6ac17e554971c617be.
 
 
--- 
-Thanks,
-~Nick Desaulniers
+The upstream buildroot use libdrm2.4.109, this commit[0] if from 
+libdrm2.4.110
+
+I cherry-pick this patch to my local libdrm, but has no effect, still 
+has "atomic: couldn't commit new state" error.
+
+I have do a search in libdrm and weston, but find no one call 
+drmModeAtomicMerge, is that right?
+
+[0]https://gitlab.freedesktop.org/mesa/drm/-/merge_requests/167
+
+>
+> Cheers,
+> Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
