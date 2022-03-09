@@ -4,92 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6267C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Mar 2022 15:06:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAB82C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Mar 2022 16:04:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
-	Date:Subject:Cc:To:From:References:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9xpAZ+iIWH5lJyJJwTGX/AkMNhXv81aihc7eIn2k1+s=; b=gDORsTo6kCsedd
-	ezKeJrac6CGd7uAUu9l8j7hT21ITxoBd8/eXOyB4anV4sWt+Wu0Qn4py3Z8aGptEAHip7xYFYx3vA
-	tZdaa56S40lwXiy/grZklEOj5yDzAR4ZW901FI33821RedtjhU+qp61F0liheeZA+1rnn3cBZJX14
-	dylLp5wnTf0lGRaE7gn3jz+N22cRyBGXmejkk+E8ohORc8tAcN6Bgmb0OZMvCaA7RXEOEay2uCm6O
-	dkc05hAaQYSZvmhRTcsUKcRAc/37zsJSntD4sBGvZXFKdEHNDIUmkgg4KAsVdoetgmBvmEjn2EiwK
-	+6NBGemVlgEaksJiHZiw==;
+	List-Owner; bh=4YQ7SyQdsrjG9+yNQdsZXNd4/8tj0W2610kPcVwWX2I=; b=BKxb6JDAhXQVSZ
+	UYzb4e29YyZXTKX3vNPqyF0wGfKwU1pO1hJA/9+KvfCUHVWLYqcmq6f9v6lr9C7Vw/scsciudpFRB
+	Rq1vLLFPAMYyKu5zQEd/k8ABigo30cvAkiLfwA1iGzhI9Vc8YiF4ZrFp2h8k2zyTYR78NcuDoKIC7
+	EcjCEjYlSkxI/EJXIJEebmYCnQDm+Yz7fgGJM09aghDjL7ZH/Ip7RjMieubb5Tu11/sR44wwZIfVy
+	TfmTC5w9d/lq33vAf9U6VZHtbGTTuIk3x+wgxElARp/j1IdaxJ0xV3i7pyIePrYThYDJ78AYxbGZB
+	6wfjtT19qVVBhjwkaQ/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRxto-0096zT-5W; Wed, 09 Mar 2022 15:06:48 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1nRynW-009Fru-Kp; Wed, 09 Mar 2022 16:04:22 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRxtk-0096yY-JN
- for linux-rockchip@lists.infradead.org; Wed, 09 Mar 2022 15:06:47 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id p9so3475111wra.12
- for <linux-rockchip@lists.infradead.org>; Wed, 09 Mar 2022 07:06:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=references:user-agent:from:to:cc:subject:date:in-reply-to
- :message-id:mime-version;
- bh=moBcVO4/zcOx1GJWJOPQodSwqeyH9qKr37XAEJrs55w=;
- b=xTq9TsVY/e7a+L5/g45+gc7gQhtImlgR1X9hdvm84A4/6Vl3Iqjis+Tqk39QWte43u
- oZTwCMdaVapSCYGJf5qYGvuHqUpQtMgvPITM83Y9nY1pIe0mwT9347zp/W+vPvF57/Q5
- VK6euyNQZTLDLAIUoIxAr7yomegfvfxIUHHPVoP9iZXx1TNmvjkKMyNGhIw3RAUXgDNg
- k2JrovZm5nFVGUccwogG8+RTUnjLOZNnm31RCPDjsQ/jqkiEXNtGSz+pEZwt3LmIfPb7
- SDPybDoEBNFZ1hWJzPMx356BloxJJycPi02zw2dvk8W+lgGTPR2/We0IBcBzZD6K/MCN
- vIJg==
+ id 1nRynT-009FqV-TR
+ for linux-rockchip@lists.infradead.org; Wed, 09 Mar 2022 16:04:21 +0000
+Received: by mail-ed1-x531.google.com with SMTP id h13so3479147ede.5
+ for <linux-rockchip@lists.infradead.org>; Wed, 09 Mar 2022 08:04:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=fZqCvAf0xgF95WkOEHDGm/vV6tt9EczTXGvjsdd1WwE=;
+ b=OrxNHdDIFcqZV/a5MLxU2Ga+L+3AhRk/xIdWG4X6CSM8T9JSvLsWCzqG2gdhBVtm+w
+ I2R5dYX3JEgvMByVLyxwG5LU9G7iMJGA2/St5e+WlHM3UHASFMB+Be4NEXN3uJRfKZt4
+ fqSO0EYAd4ll6cQJ3PUK1BZcENVS1MwedBTio=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:references:user-agent:from:to:cc:subject:date
- :in-reply-to:message-id:mime-version;
- bh=moBcVO4/zcOx1GJWJOPQodSwqeyH9qKr37XAEJrs55w=;
- b=YX+UfCteViBeSsS0Vds36eOINzamL3goUpBrPE0gwsiob90Xeo0i7XIyvIKQrWOhUD
- GYW5gfZ4Io5lrbq9aApTMT26DTSGwERoX8ut09fO+l6vvbWlqsoaK46FyA1UVE+nC4Et
- 7P65MSpOMwOL382hCUY05DA2+XnkT1WQG+FtjWnzNPd4NQnbjxOYsBYfGE+R9LB4IccP
- u1qbnnXgb7Wnd788e3hll4Jyz9MYUPXeTonjtCDkPwR1X1LLEYqVIxXvjIOZjgYOyeLj
- +chIwYvvn6t19YOfK9Oj/OAw1OimBci1GL979J4WpnE77Cu0KkRcOOl0OvhDivAiiHm1
- q82g==
-X-Gm-Message-State: AOAM530lEDdNnABAifutjYL3OWfzwduzug+x/zg+ENcm1JRP4ovnRZnu
- rUBSyNp+LgTp6Ln9kFegkZWVqQ==
-X-Google-Smtp-Source: ABdhPJw3bLQRbTPx1PwgjgPNUkIGCdNA73k7avZT6ToJuXxNgNm6Pq2L+rTAc5AkxwLjddmhLmJn1w==
-X-Received: by 2002:a05:6000:1ac5:b0:1ea:7870:d7eb with SMTP id
- i5-20020a0560001ac500b001ea7870d7ebmr45585wry.171.1646838402736; 
- Wed, 09 Mar 2022 07:06:42 -0800 (PST)
-Received: from localhost (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr.
- [90.63.244.31]) by smtp.gmail.com with ESMTPSA id
- q23-20020a1cf317000000b003815206a638sm5264634wmq.15.2022.03.09.07.06.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Mar 2022 07:06:42 -0800 (PST)
-References: <CAK4VdL3-BEBzgVXTMejrAmDjOorvoGDBZ14UFrDrKxVEMD2Zjg@mail.gmail.com>
- <1jczjzt05k.fsf@starbuckisacylon.baylibre.com>
- <CAK4VdL2=1ibpzMRJ97m02AiGD7_sN++F3SCKn6MyKRZX_nhm=g@mail.gmail.com>
- <6b04d864-7642-3f0a-aac0-a3db84e541af@gmail.com>
- <CAK4VdL0gpz_55aYo6pt+8h14FHxaBmo5kNookzua9+0w+E4JcA@mail.gmail.com>
- <1e828df4-7c5d-01af-cc49-3ef9de2cf6de@gmail.com>
- <1j8rts76te.fsf@starbuckisacylon.baylibre.com>
- <a4d3fef1-d410-c029-cdff-4d90f578e2da@gmail.com>
- <CAK4VdL08sdZV7o7Bw=cutdmoCEi1NYB-yisstLqRuH7QcHOHvA@mail.gmail.com>
- <435b2a9d-c3c6-a162-331f-9f47f69be5ac@gmail.com>
- <CAK4VdL28nWstiS09MYq5nbtiL+aMbNc=Hzv5F0-VMuNKmX9R+Q@mail.gmail.com>
-User-agent: mu4e 1.6.10; emacs 27.1
-From: Jerome Brunet <jbrunet@baylibre.com>
-To: Erico Nunes <nunes.erico@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>
-Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Alexandre
- Torgue <alexandre.torgue@foss.st.com>, Giuseppe Cavallaro
- <peppe.cavallaro@st.com>, Jose Abreu <joabreu@synopsys.com>, Kevin Hilman
- <khilman@baylibre.com>, Neil Armstrong <narmstrong@baylibre.com>,
- linux-amlogic@lists.infradead.org, netdev@vger.kernel.org, "open
- list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-sunxi@lists.linux.dev
-Subject: Re: net: stmmac: dwmac-meson8b: interface sometimes does not come
- up at boot
-Date: Wed, 09 Mar 2022 15:57:27 +0100
-In-reply-to: <CAK4VdL28nWstiS09MYq5nbtiL+aMbNc=Hzv5F0-VMuNKmX9R+Q@mail.gmail.com>
-Message-ID: <1j5yonnp1a.fsf@starbuckisacylon.baylibre.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=fZqCvAf0xgF95WkOEHDGm/vV6tt9EczTXGvjsdd1WwE=;
+ b=7ymY/W8/QntCJ36jt9htMP7CTaljsCdxyCMR7ZmwILXYLtTztg/O+UMqd2JBF9gD0C
+ 3YHpfnNZBR21DntmEKHvVnbey2OWr4bbVORqMUY60I5iGNKZFKRnUtdQXMwT4Hqxn8Bc
+ 3sOUx4M45ys4KWIV+f0HLgiKAXVGR+7ZRYS6t9qP7FJjfqDZTg/3uXKDNiNsbMQGbTfy
+ 1Zh3AnFM16jsRptHivgYiBPRcf19bO2Zwa3eIQO4UNRCni/Y4JMh02ii0KefsCPwdeqN
+ IS2h8qM2EpYI2R8TYD7rISNaT5wlMJHJZQ29w44+0zmrzk1JF3rTF79IEnZFxRjlmsoe
+ xHQQ==
+X-Gm-Message-State: AOAM53365c6aLaX3fXcaSCs/Kx13PsTTRcWV0+SZw5m+7uRA1tBE7RHN
+ sSE3GAg/6A2MhRFkvBg35K1Q6v+JKwkjUrZG
+X-Google-Smtp-Source: ABdhPJznUipwnKucjDEK2C2LOrowFgy/uRutld/xRMSpgIQq3zoItLZ4TRgMHDo6w0EGqKsUlSNoyw==
+X-Received: by 2002:a05:6402:35d2:b0:416:4c38:1537 with SMTP id
+ z18-20020a05640235d200b004164c381537mr138874edc.260.1646841856262; 
+ Wed, 09 Mar 2022 08:04:16 -0800 (PST)
+Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com.
+ [209.85.128.51]) by smtp.gmail.com with ESMTPSA id
+ u9-20020a170906124900b006ce88a505a1sm921825eja.179.2022.03.09.08.04.14
+ for <linux-rockchip@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 09 Mar 2022 08:04:14 -0800 (PST)
+Received: by mail-wm1-f51.google.com with SMTP id
+ 7-20020a05600c228700b00385fd860f49so1795588wmf.0
+ for <linux-rockchip@lists.infradead.org>; Wed, 09 Mar 2022 08:04:14 -0800 (PST)
+X-Received: by 2002:a1c:7518:0:b0:37c:7eb:f255 with SMTP id
+ o24-20020a1c7518000000b0037c07ebf255mr8067411wmc.29.1646841853982; Wed, 09
+ Mar 2022 08:04:13 -0800 (PST)
 MIME-Version: 1.0
+References: <20220301181107.v4.1.I773a08785666ebb236917b0c8e6c05e3de471e75@changeid>
+ <20220301181107.v4.2.I48b18ab197c9b649d376cf8cfd934e59d338f86d@changeid>
+ <CAD=FV=X6jf-UbCzB23MjBWwfs0HcHuoE9ozd3FZxN1U-H_8Saw@mail.gmail.com>
+In-Reply-To: <CAD=FV=X6jf-UbCzB23MjBWwfs0HcHuoE9ozd3FZxN1U-H_8Saw@mail.gmail.com>
+From: Doug Anderson <dianders@chromium.org>
+Date: Wed, 9 Mar 2022 08:04:01 -0800
+X-Gmail-Original-Message-ID: <CAD=FV=V+HNSihpg+nMS52w9VWhfkbv+HR4F-XfS+GZ8JdSJBJw@mail.gmail.com>
+Message-ID: <CAD=FV=V+HNSihpg+nMS52w9VWhfkbv+HR4F-XfS+GZ8JdSJBJw@mail.gmail.com>
+Subject: Re: [PATCH v4 2/2] drm/bridge: analogix_dp: Enable autosuspend
+To: Brian Norris <briannorris@chromium.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <narmstrong@baylibre.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, dri-devel <dri-devel@lists.freedesktop.org>, 
+ LKML <linux-kernel@vger.kernel.org>, Sean Paul <sean@poorly.run>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220309_070644_728167_E1703B50 
-X-CRM114-Status: GOOD (  21.49  )
+X-CRM114-CacheID: sfid-20220309_080419_983709_20D6C278 
+X-CRM114-Status: GOOD (  23.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,57 +100,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
-On Wed 09 Mar 2022 at 15:45, Erico Nunes <nunes.erico@gmail.com> wrote:
-
-> On Sun, Mar 6, 2022 at 1:56 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
->> You could try the following (quick and dirty) test patch that fully mimics
->> the vendor driver as found here:
->> https://github.com/khadas/linux/blob/buildroot-aml-4.9/drivers/amlogic/ethernet/phy/amlogic.c
->>
->> First apply
->> https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net.git/commit/?id=a502a8f04097e038c3daa16c5202a9538116d563
->> This patch is in the net tree currently and should show up in linux-next
->> beginning of the week.
->>
->> On top please apply the following (it includes the test patch your working with).
+On Thu, Mar 3, 2022 at 3:02 PM Doug Anderson <dianders@chromium.org> wrote:
 >
-> I triggered test jobs with this configuration (latest mainline +
-> a502a8f0409 + test patch for vendor driver behaviour), and the results
-> are pretty much the same as with the previous test patch from this
-> thread only.
-> That is, I never got the issue with non-functional link up anymore,
-> but I get the (rare) issue with link not going up.
-> The reproducibility is still extremely low, in the >1% range.
-
-Low reproducibility means the problem is still there, or at least not
-understood completly.
-
-I understand the benefit from the user standpoint.
-
-Heiner if you are going to continue from the test patch you sent,
-I would welcome some explanation with each of the changes.
-
-We know very little about this IP and I'm not very confortable with
-tweaking/aligning with AML sdk "blindly" on a driver that has otherwise
-been working well so far.
-
-Thx
-
+> Hi,
 >
-> So at this point, I'm not sure how much more effort to invest into
-> this. Given the rate is very low and the fallback is it will just
-> reset the link and proceed to work, I think the situation would
-> already be much better with the solution from that test patch being
-> merged. If you propose that as a patch separately, I'm happy to test
-> the final submitted patch again and provide feedback there. Or if
-> there is another solution to try, I can try with that too.
+> On Tue, Mar 1, 2022 at 6:11 PM Brian Norris <briannorris@chromium.org> wrote:
+> >
+> > DP AUX transactions can consist of many short operations. There's no
+> > need to power things up/down in short intervals.
+> >
+> > I pick an arbitrary 100ms; for the systems I'm testing (Rockchip
+> > RK3399), runtime-PM transitions only take a few microseconds.
+> >
+> > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> > ---
+> >
+> > Changes in v4:
+> >  - call pm_runtime_mark_last_busy() and
+> >    pm_runtime_dont_use_autosuspend()
+> >  - drop excess pm references around drm_get_edid(), now that we grab and
+> >    hold in the dp-aux helper
+> >
+> > Changes in v3:
+> >  - New in v3
+> >
+> >  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 9 ++++++---
+> >  1 file changed, 6 insertions(+), 3 deletions(-)
 >
-> Thanks
+> This looks great to me now, thanks.
 >
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
 >
-> Erico
+> Though I'm not a massive expert on the Analogix DP driver, I'm pretty
+> confident about the DP AUX stuff that Brian is touching. I just
+> checked and I see that this driver isn't changing lots and the last
+> change landed in drm-misc, which means that I can commit this. Thus,
+> unless someone else shouts, I'll plan to wait until next week and
+> commit these two patches to drm-misc.
+>
+> The first of the two patches is a "Fix" but since it's been broken
+> since 2016 I'll assume that nobody is chomping at the bit for these to
+> get into stable and that it would be easier to land both in
+> "drm-misc-next". Please yell if someone disagrees.
 
+Pushed both to drm-misc-next:
+
+f28dd5075675 drm/bridge: analogix_dp: Enable autosuspend
+8fb6c44fe846 drm/bridge: analogix_dp: Grab runtime PM reference for DP-AUX
+
+-Doug
 
 _______________________________________________
 Linux-rockchip mailing list
