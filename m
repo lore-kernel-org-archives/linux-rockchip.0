@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEBC1C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Mar 2022 16:27:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBF05C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Mar 2022 16:28:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tssYQ99IgxaQdGvk54MC6/mSOgJKw2klCQoODSQeJqE=; b=UrQCGL9rh6FR7X
-	RI2Q/h536Ftm0s2NOlnzTACCxmRF3C1/+jMuMQcnt2KdVPAltllumXht4Q0UebQ3UH5j7B0cY3Cif
-	Y4kWbwIB1pIcNflD7pzDk88tNnJ8u0VZw8FY2zOXGLIy3dtlADKtibYME1TAJC3FSLxXYKyYn+sjJ
-	vb49P3goHml/pdiBnw6LQFftprDFVph2Snh5/IPNfT/qEqhxugdrKjRFjqbw4Jyv4QWhoww0q7scC
-	wSdlf1D1S8Q6ldLECt046IkVzGIsfZfodcUrYegszdOq8QS7+PBGH3B1BbvNWDk0JQyuxdKQh4DYx
-	ZS3C11LvXfMWNad5AoUA==;
+	List-Owner; bh=oa9ZUUdLd0U0qO7EFeO26CIFvd7mVbXMC+TeRJOA58E=; b=ilrEvozVqTCofl
+	Znw3tP1bHjM/9OUJs6EolDqkmU2XhiFy5Ivfa9yfIGQMjOkW5tZBmY0TbU3tyMdHKCbWo7NMYAcwe
+	dI/rJf6ZyniXp1U67DsyI4psgM0v1Eqd8OUX2N7sDMK5bW+OYJntQ2YQPzMbi3mMdgF1B8a7YGiVn
+	vig/VNKWaA8uVDs5ZA8b8Rk7cw8ZMnfTxWylF5Kz526t4wXDxwTW956gW/wUxv81jK0TJKMuf5vzL
+	tilHjnuKLH1Ub52cMqSL5+FXg145YT/390f+N1mTk4An8WdZaYZ2v7jB8F9O1hh9oxTxqs+r0Ernj
+	msHM82EG4/BR2BQgiXag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nRz9U-009PG7-QZ; Wed, 09 Mar 2022 16:27:04 +0000
+	id 1nRzAS-009Pmd-2o; Wed, 09 Mar 2022 16:28:04 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nRz3C-009Law-Bj; Wed, 09 Mar 2022 16:20:35 +0000
+ id 1nRz3G-009LdO-DD; Wed, 09 Mar 2022 16:20:39 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id BE2E96194A;
+ by dfw.source.kernel.org (Postfix) with ESMTPS id DE509615F1;
+ Wed,  9 Mar 2022 16:20:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19896C340E8;
  Wed,  9 Mar 2022 16:20:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85538C340F4;
- Wed,  9 Mar 2022 16:20:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1646842833;
- bh=2qoYap93Lv7+DpPy/KPh09IFRziERvaOX6sizGltWBo=;
+ s=k20201202; t=1646842837;
+ bh=cOnmEJ3SL4r6/v5TFjAJCqaqodqDNHZuOq9BLJmSKYw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=psP+H/x9QYusA0s0Lf21o5ExYG8FOHyXCwVVYNBVFaTnxEB93F5T6WuJ5kW/i/lZQ
- RGGZaozJF9kiTomp1CJm4yTdsA5/RIOl7J1UkzyBO0iLxo5mot/nnafDnZ+io3vMCd
- IW5eA9e3MMQrpRrD55BZnHvCYAkgptD8g/RU3kBGg2vQ/B34kftlaKtfa/m431az67
- X+1SQ5s56WCs+/Oy2ltL+JvnhJIz14Cc+Rn6UZnOxhuUSo1aQPwkCzT0NGyE149223
- IYz96ubOBoFZsWsqgU6YmIqypE5O0SCcNIHtMkM/9h5XeJ8Q8x9ggrTO9aIlzODDZS
- 8BoocCUlBcf0g==
+ b=sVqErGRDb4PusR7Sg0nxtxq5gEX/eEp590HRRepQqTCIFLvpghM/lw7+hhDe1zjAH
+ iFDbL2lVpXI1vPYXkRRQFR3Oz9BMb/QaCfdUc5n+WmQIdyHb5nS/79p5ukoaTmh3Qe
+ 1vXsWKZxubzrrFehUyOYyIAaxE+64ATojLvbewrY2M9YUcLRekurrjZXhBlK2wO5Pb
+ u8rEYSr6fsDJZmi32J0zuDhXmc6jL8RUZ4pUjNN0belRHVkpt57jpmaNYvjcJ9XcLm
+ 6URUyMvqfum1+JkxC6czuuFVOZIeQ9sQHfITaEI8+iaEZY31BmsvGPFs2VyRnW/Noa
+ XNtk9STv1ZVwQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>,
- Sasha Levin <sashal@kernel.org>, robh+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.15 08/24] ARM: dts: rockchip: reorder rk322x hmdi
- clocks
-Date: Wed,  9 Mar 2022 11:19:27 -0500
-Message-Id: <20220309161946.136122-8-sashal@kernel.org>
+Cc: Corentin Labbe <clabbe@baylibre.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Heiko Stuebner <heiko@sntech.de>, Sasha Levin <sashal@kernel.org>,
+ robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.15 09/24] ARM: dts: rockchip: fix a typo on rk3288
+ crypto-controller
+Date: Wed,  9 Mar 2022 11:19:28 -0500
+Message-Id: <20220309161946.136122-9-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220309161946.136122-1-sashal@kernel.org>
 References: <20220309161946.136122-1-sashal@kernel.org>
@@ -59,8 +60,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220309_082034_494592_A128A06F 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20220309_082038_557360_223E907A 
+X-CRM114-Status: GOOD (  12.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,36 +79,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Sascha Hauer <s.hauer@pengutronix.de>
+From: Corentin Labbe <clabbe@baylibre.com>
 
-[ Upstream commit be4e65bdffab5f588044325117df77dad7e9c45a ]
+[ Upstream commit 3916c3619599a3970d3e6f98fb430b7c46266ada ]
 
-The binding specifies the clock order to "iahb", "isfr", "cec". Reorder
-the clocks accordingly.
+crypto-controller had a typo, fix it.
+In the same time, rename it to just crypto
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-Link: https://lore.kernel.org/r/20220210142353.3420859-1-s.hauer@pengutronix.de
+Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Link: https://lore.kernel.org/r/20220209120355.1985707-1-clabbe@baylibre.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk322x.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm/boot/dts/rk3288.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index 75af99c76d7e..f31cf1df892b 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -718,8 +718,8 @@ hdmi: hdmi@200a0000 {
- 		interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
- 		assigned-clocks = <&cru SCLK_HDMI_PHY>;
- 		assigned-clock-parents = <&hdmi_phy>;
--		clocks = <&cru SCLK_HDMI_HDCP>, <&cru PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_CEC>;
--		clock-names = "isfr", "iahb", "cec";
-+		clocks = <&cru PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_HDCP>, <&cru SCLK_HDMI_CEC>;
-+		clock-names = "iahb", "isfr", "cec";
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&hdmii2c_xfer &hdmi_hpd &hdmi_cec>;
- 		resets = <&cru SRST_HDMI_P>;
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 4dcdcf17c977..66ff5db53c5a 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -971,7 +971,7 @@ i2s: i2s@ff890000 {
+ 		status = "disabled";
+ 	};
+ 
+-	crypto: cypto-controller@ff8a0000 {
++	crypto: crypto@ff8a0000 {
+ 		compatible = "rockchip,rk3288-crypto";
+ 		reg = <0x0 0xff8a0000 0x0 0x4000>;
+ 		interrupts = <GIC_SPI 48 IRQ_TYPE_LEVEL_HIGH>;
 -- 
 2.34.1
 
