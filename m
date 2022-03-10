@@ -4,44 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 544CBC433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Mar 2022 01:39:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AD7AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Mar 2022 09:48:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MM7af6nOV+rzU2CEDkcstCOFz4+t/uIlfhMFtMSu1E4=; b=35i5/Vm9MHt96h
-	OXOZaxCUXcl0aHh3p9G5c3A07Z4FFZPIQOdEY4MWVc9lsJBED8y3Du3z/zl0n/9oO0vcppYmYyIvV
-	RK2XsD3Ddz6ZuMfx9aYObtOCUzNJf9aFim8ZCRQsh58IMyZIfptCG+fJ990OY6aFxispZg74DT8T9
-	IIqb3QP/Hg5/EJuokppKFsUQXju2Q+lws9oFc7Jc+AUQaajnSYJ9/VP7nFFThYeqIYCnXgpr1+1Yw
-	mnWk6lRNGjHmyaHpdqKiVAA0Tjs9LKJnTT8vCjnCJVK6GCkyj10/YlXN4Xo/GAEDBgOjnF16bpDgJ
-	vYR71+EyWkt4Qe0ZF0Yw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=P4js4A+wvkeDzrrM+JPtLOG1qUwpsB9gAl/qKXATEII=; b=mKd64fLjq4Ev1N
+	+Pjubl+9T3tGtu6jEEbOyS23bFMxE7P+1U6wc4kdYhgFfFg/URopr10FwXkBCPyyx8A3a2AVPup+0
+	xAFNJZk92aKaioZ+IHPY17un8YDrPzms5uKVvb+0/6jZZMfYo7LRyNG11zW7PAZTuboVVRmNd8lrn
+	DIb7nW6H75ZSb6O1mjOG+Hm8ZzzClP5kkp0+PVanMWrI5xcBkTKPb7hjGcZdGbBU60bup6pkuHAgf
+	CsY1ohAv2bRxPn8A9n4Wkq6EfCItLidA4Sd7Hdb8JjhZuThf1LgGdW5xgB8EUpaXhEhwZdPswIMsv
+	3fEzJigLCxhCoILyEs+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nS7mV-00AzXM-SX; Thu, 10 Mar 2022 01:39:55 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1nSFPU-00CBP2-7S; Thu, 10 Mar 2022 09:48:40 +0000
+Received: from mail-sgaapc01on2071d.outbound.protection.outlook.com
+ ([2a01:111:f400:feab::71d]
+ helo=APC01-SG2-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nS7mT-00AzWE-GW; Thu, 10 Mar 2022 01:39:54 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
- helo=phil.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nS7mS-0000Qc-F4; Thu, 10 Mar 2022 02:39:52 +0100
-From: heiko@sntech.de
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [GIT PULL] Rockchip dts32 changes for 5.18 #1
-Date: Thu, 10 Mar 2022 02:39:51 +0100
-Message-ID: <37432054.P6GNo21ksS@phil>
-In-Reply-To: <3788968.RB9BLzCXGK@phil>
-References: <3788968.RB9BLzCXGK@phil>
+ id 1nSFPH-00CBMZ-G9; Thu, 10 Mar 2022 09:48:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=augWVoaibgtLB5BOD+n2oDGsHGaUJWz9KQ0zcBSa3QBW43zCxyfL4m6caKqgHYAY1LtJfC0n2HW1YYDSrgIbaCqkkFO8hijlLWeHyBYppTNQmY7RAZ0/vyrJX1YSWqz4/ACjN0WZrZLg2KyYXqchhuR7fWtggcNP7GCjUHvO7MHZRpQG/2oqfTtI2bPR8E29IzrHsuRcMEo9k62q+LQR2JRkgoqChiTB5v8BqpdVKoFkODEq1Pxw1Dqkpt7aEeHJItwWnnyl+VxMjs7l1o6WugQVt30jS706vg9ex/reuCKsovnZeDhZzoNTFSvmtU9sdeRvL7Lj0+9Q2jfMrRmD0Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=vQftdU4xHPrN49RZbHmGY4m1rLaAsap84Dtb65x/gcM=;
+ b=IDFeMegF7uVcoJ636gOJOuYqeL2X/01+nvGkZBX9Fck0XnKl+e98ql2BX4XXz1c72q5N8DViL6nQz6pMbGgosBhwcIt2tanufOeje0Tv2seK1JE0dvfCp9ftV9nv30uGD+u1STFYY7eWYxr1hmtWHZdoE0EcBFwdAnl/y5dIIxOwgcIk6XqtllQEhe+yHfylZpi7gZNS4+0Vy5WPTF42x/81C/aZPbCemitjqRzeccTo2XNbXMrzfcJ5TbaowJ6p5pueieJwJMXJmFMxsmc1FXuFrubFgY4BW1ctis7CfAUyx4H2lC1wHBwzesTuMKZtDd5MC92ue8K/fpMLaE27Jg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo0.onmicrosoft.com; 
+ s=selector2-vivo0-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vQftdU4xHPrN49RZbHmGY4m1rLaAsap84Dtb65x/gcM=;
+ b=a12KKMhOPISoru8+hN3M2IA/kyKq311AblgTUFymIFSMy1orpzqjTJo9DAz8+Artk7OROPZHXZYk9sgycdRsyyQIN+uSAA5Qsy6aTsUJZxhpTE2sMzbx55PLqNqlXM5Td0X3/R6yBWEw77ZFwAv1tw48SwxyFYuAgcFdKiCOmQE=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=vivo.com;
+Received: from TYZPR06MB4173.apcprd06.prod.outlook.com (2603:1096:400:26::14)
+ by HK0PR06MB3858.apcprd06.prod.outlook.com (2603:1096:203:ba::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5038.14; Thu, 10 Mar
+ 2022 09:48:19 +0000
+Received: from TYZPR06MB4173.apcprd06.prod.outlook.com
+ ([fe80::30ce:609e:c8e8:8a06]) by TYZPR06MB4173.apcprd06.prod.outlook.com
+ ([fe80::30ce:609e:c8e8:8a06%4]) with mapi id 15.20.5038.027; Thu, 10 Mar 2022
+ 09:48:19 +0000
+From: Yihao Han <hanyihao@vivo.com>
+To: Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: kernel@vivo.com,
+	Yihao Han <hanyihao@vivo.com>
+Subject: [PATCH] spi: rockchip-sfc: fix platform_get_irq.cocci warning
+Date: Thu, 10 Mar 2022 01:48:06 -0800
+Message-Id: <20220310094806.13734-1-hanyihao@vivo.com>
+X-Mailer: git-send-email 2.17.1
+X-ClientProxiedBy: SG2PR03CA0118.apcprd03.prod.outlook.com
+ (2603:1096:4:91::22) To TYZPR06MB4173.apcprd06.prod.outlook.com
+ (2603:1096:400:26::14)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 13d8be47-4bb5-44c8-05ea-08da027b1b4b
+X-MS-TrafficTypeDiagnostic: HK0PR06MB3858:EE_
+X-Microsoft-Antispam-PRVS: <HK0PR06MB3858155B5062D5B2E5969286A20B9@HK0PR06MB3858.apcprd06.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: l+vecqVIQVgaXvrg+IPFv/zgdKborkIAXyh2Pwn/ituAAdpJxW/6gd40bvEjx+/uLXJHATn9bY8eoj6Ik8Z3huHyX7LjGtFdlXN3rjMAO/oy97nebBRg2esNhw494zNfil0CbQBLvbPgSTDOwq1m5tVdZ8Qy7s+wkSfQIvp6DMjcaVBxrBZwFjYBWSQEoSAo49qF4bHhdgSEO3GWzPitNpHSM/qCreONSTQref8LiGhw4IleDo97vaHsPjnN59crAdAGuZ5B42LNqBGGCkSKKYhQV3RfRE0M4J4tKjy8yuGvhuABBp9FqB4dn8JwzxUNNwTCGBv8kh8vIR20wHmVbRj4iAa2Arn7hvotn7UTNP3XhB2aTrrRyjw//Lu7H3nhkYYXc0cZDJUu+raZI1RJ+UJfkLklKMFUhdMY4/2T0K0OyXwWIft1TFSpdvF6VZrG6kk7Ql1SnAQvbUwluoksbvXMOLBh3NLYUBw3qMv/0BUBBH7kosJkI/ePcoZC2FhApYKeoWQSh6GmGQIHdAmHHWtB5AgV0C8PDg8NQrVkuXRv0liimMz0pFJvQof6NruxwbFlihperKEtaB4aQ4YDyYeaaHj8u7fPi05jVCnduDlQUpKzfPK7QyluTMsk2kReZ1vWs4PdtvpgqWioFjvFy0OiXIvKoJqVZ0ITn9BA59V/emPjvgifTDC0eZzbY85LbOY4mTKn29HE3oZ4rwmm8A==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYZPR06MB4173.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(36756003)(66556008)(8676002)(4326008)(66476007)(83380400001)(66946007)(508600001)(1076003)(107886003)(6512007)(110136005)(2616005)(6506007)(316002)(52116002)(6486002)(4744005)(8936002)(86362001)(5660300002)(38350700002)(38100700002)(186003)(26005)(2906002)(6666004);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?gIvkth4Pduc28AzVI1Z/SWyW6Rl+qiKawIVexzq7vio9VG2tC1iohJBPQ9TC?=
+ =?us-ascii?Q?5TCzoF8ItBoIjjFdr1H+b7dfC61vH2Uq97z+1Xpn354uczVVk7Uu4sG6KrHQ?=
+ =?us-ascii?Q?79Y8l92mhmoCrkFOB7seL/roQH7E7bOh5Y0jVDBh2Gz7Yo7KTlaHTHgRJMQL?=
+ =?us-ascii?Q?EpqxMOUzxUoQ+F9iUo+y7KP6OAjQ9xEuVx19XrmmS8FJ2hGwhHeLsIHtS8lt?=
+ =?us-ascii?Q?ymRIM6B3Y7SZfYO4UE3exJ+J1Nrpw2XtAi8jm5va9TIGc72zfZeI/RKKP68Q?=
+ =?us-ascii?Q?q0kufsnTCj+xT92XDTl24cXQpc9BPlhZgzpcu00/jwNCXmEM21jl8WyOeQCr?=
+ =?us-ascii?Q?hy9pH746NegnfarP1tP7YsSjFkwQg5IIcXpf4g091X6tw5jx9pbJvfqDRCk6?=
+ =?us-ascii?Q?H5tXsbEJeeSiwjgCRs6MlNzFvE/eIVAFwP6QZAnjxcHJev3QrstoEm8b/BmM?=
+ =?us-ascii?Q?iBaqCuNfjxENs47waqWeBb63ePYZpd94YT/Hs5Oyth+s3bTTa7aNF8n7CqtU?=
+ =?us-ascii?Q?S++U+E8dk8T35Zv7wb98N5jA80gSf3EchhMQXnbOKB7C1XXGm088G1Na4QKA?=
+ =?us-ascii?Q?4bbVs/QAjyxVrpWI+0FnqRVP74xML+6HaYetLgyu1+pnD6XoHlKpJVSBnclv?=
+ =?us-ascii?Q?YU7arAf69bFGmNA5a7bOz9H/IYPER1gr8jS4nIX5EYM6WberIEDs12URiBYP?=
+ =?us-ascii?Q?FMz/3sZjkKwvZ4yHGHFij31P2eV1xmOx+Rs1ZLrsXp79+zOqnCeWK++B9Sw9?=
+ =?us-ascii?Q?sfpAocWtBiVQIg5SVDa/JfaJAZ5TlDETXEhZiPnCAiQr4c8i+heYQ3bSaLTv?=
+ =?us-ascii?Q?y12qeiE/0Q0fPbkM/Ok57VVtzQSZwVIwvSzauLgEvUOFFoRG8UtBedKdoul0?=
+ =?us-ascii?Q?jTaxl5qphLj0C+qiElrL5w3ZxNZRUbvWljd83kATJJztP6tHSz8CDzJ0UU5I?=
+ =?us-ascii?Q?EeMMe08u8Ya4lHald7wnT5VZd5u7yVp8FK0IWo7pJ4P6ygJoEoihBuQxO4MX?=
+ =?us-ascii?Q?NwF695A1sMdkZPP+Xf0QQHIaATWwySwO9k9eHDEy+O1L/KaKGSxIqfg/cfwy?=
+ =?us-ascii?Q?XkvG3aZTYQnad2PC+9oGwyel5NuSRtLJxnJD+OS5f3R64HJpKWBIOOcO7Npm?=
+ =?us-ascii?Q?J+1TK8c6EMocQsSYl6WAZuHL4pARQ0rK6HOT4plPCMfQALIs9lRwSqyEOpVI?=
+ =?us-ascii?Q?SOZYe/B4Ot4XaF1eiyj3nDUZ8DgbmVgZRO1F2mFS/n1Ro6qe8MvT/hb+y23y?=
+ =?us-ascii?Q?DRk94/i/4OInpevnxeyreHcXHiEux1JQuiKUNC+HUYhaBUXBn40fSVL3dhZj?=
+ =?us-ascii?Q?8ugvmf/UcsnaOY6hjhMdl+J35nVeC7YsiL9rlPLok4fmfNY1mG+JKRLurvSZ?=
+ =?us-ascii?Q?7MkVHAduDG1aeVLWYd1/l/OyeO7HKfs7seAYNUaG6Ish5EdMtz+aIoSa1ReZ?=
+ =?us-ascii?Q?yTtFe89nfApRoP8CzP9UCpwOrYuagGV5Lx159FG0KfigtvMQsJRif1uXHOG4?=
+ =?us-ascii?Q?6+dja35Npsn4P3RK3PsT8wCPbdDEhC6XpG19BvI1NhFGwOmYx7csBH6DyOiY?=
+ =?us-ascii?Q?bokDa1eucTPEp0ZDgDvq1Ds0GiY17d7ByCjzHdjxhA+bdfalmSbxsJEynHp4?=
+ =?us-ascii?Q?igPvdu8P7RUctr+awd7xrIQ=3D?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 13d8be47-4bb5-44c8-05ea-08da027b1b4b
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4173.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Mar 2022 09:48:19.0355 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Xr2Qm9f0mAUc3HCYsW5HmZfOgzM0JGX74HnyL3Stwxh1KRNfrsyweTSqCkFJCCXBGm3GsomLdgAsZhPYq8bOeA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: HK0PR06MB3858
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220309_173953_571323_BA7C4E5B 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20220310_014827_594152_1BA9015E 
+X-CRM114-Status: UNSURE (   9.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -54,58 +133,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Correction: The mail subject was supposed to be "#2"
+Remove dev_err() messages after platform_get_irq*() failures.
+platform_get_irq() already prints an error.
 
-Heiko
+Generated by: scripts/coccinelle/api/platform_get_irq.cocci
 
-Am Donnerstag, 10. M=E4rz 2022, 02:38:50 CET schrieb Heiko Stuebner:
-> The following changes since commit 5a68ce0a7b89a7005a71d406435a45a24c7e86=
-da:
-> =
+Signed-off-by: Yihao Han <hanyihao@vivo.com>
+---
+ drivers/spi/spi-rockchip-sfc.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
->   ARM: dts: rockchip: remove status from rk3288 crypto node (2022-02-15 0=
-8:59:53 +0100)
-> =
-
-> are available in the Git repository at:
-> =
-
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git =
-tags/v5.18-rockchip-dts32-2
-> =
-
-> for you to fetch changes up to c042639a70ed00ab2138f507ae1d6fa57c66ce11:
-> =
-
->   ARM: dts: rockchip: Update regulator name for PX3 (2022-03-05 18:17:08 =
-+0100)
-> =
-
-> ----------------------------------------------------------------
-> Some fixes for rk8xx pmics to make them follow
-> the dt-binding better.
-> =
-
-> ----------------------------------------------------------------
-> Chris Morgan (2):
->       ARM: dts: rockchip: Add #clock-cells value for rk805
->       ARM: dts: rockchip: Update regulator name for PX3
-> =
-
->  arch/arm/boot/dts/rk3188-px3-evb.dts  | 2 +-
->  arch/arm/boot/dts/rv1108-elgin-r1.dts | 1 +
->  arch/arm/boot/dts/rv1108-evb.dts      | 1 +
->  3 files changed, 3 insertions(+), 1 deletion(-)
-> =
-
-
-
-
+diff --git a/drivers/spi/spi-rockchip-sfc.c b/drivers/spi/spi-rockchip-sfc.c
+index a46b38544027..bd87d3c92dd3 100644
+--- a/drivers/spi/spi-rockchip-sfc.c
++++ b/drivers/spi/spi-rockchip-sfc.c
+@@ -624,10 +624,8 @@ static int rockchip_sfc_probe(struct platform_device *pdev)
+ 
+ 	/* Find the irq */
+ 	ret = platform_get_irq(pdev, 0);
+-	if (ret < 0) {
+-		dev_err(dev, "Failed to get the irq\n");
++	if (ret < 0)
+ 		goto err_irq;
+-	}
+ 
+ 	ret = devm_request_irq(dev, ret, rockchip_sfc_irq_handler,
+ 			       0, pdev->name, sfc);
+-- 
+2.17.1
 
 
 _______________________________________________
