@@ -4,72 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E347AC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Mar 2022 20:01:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B900C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Mar 2022 21:04:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=87Y60Hq+tImWfo8H2e+ru64tYHXdVw7IQpY3GRAuLLY=; b=nuG9dVX0Kq/IiP
-	remARHyLiUAILU9YIlZhN07j0T1iq+LD5oT3ppFtwFIXFNAE1hdVP5bYfaBcXrnS40+ZqZJpCrsLu
-	Y2BWZ1HkQJ2N+aU8jWBI3Csf+A+KrLr8Tx0OAE+gUp5wDJn8HmBa2pVtsvaYiVswGsrJaKIHlGW3Y
-	TwAQYT5Ct+AcTRisYksGDXXS1f5jSk0AWniGrYzW3sQXKMs2ovOJcbHqKYbRzrxybtfU6tVbD+wRV
-	MOb44IzaRDg/eZvay+CUAKnfw1i4OOxtBxgdzxOsMhL7vv//RT9yDdnJcwd90KdKjocOuQBQJhTxL
-	DZNux94y7wGrA5ZlbpYw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vS6kIp2OVi4F1p1mK/AHaLqdQQm9HUEs3y6VZGbFV0o=; b=4q/1Jv4lmjpxGm
+	bpra4NjZewDZ4fDDgCUnmz0xR7ti5SLdpAUGQQlWtSQ0Aw7Xu+OP+l7uNFKq9lYUx4tJtrG48OFzC
+	RbJ/oiQooxEPW4ZmKfPvod/S2/Oa8GduvzMCHcPuRmaMp7+i4gpBpZFVPzGfO3yjvr7nrgOYkCjVJ
+	Xle0wSqhNyHOJUusGr2gOOtp7WXuLLYSsTfk2fHZsrFKpj469QillRjnyDanWceEUerSlv4qJ8i+M
+	gns8St8GuexBc48PBlORkqaf21QB5gBMTTOGgQDmQhWuAW1/kK1vrLPJiwUcw3bGYM2SScrr82+qI
+	STTi8c/jUlpKEcbB7Jbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSOyA-00DuEW-Lj; Thu, 10 Mar 2022 20:01:06 +0000
-Received: from mail-oi1-f175.google.com ([209.85.167.175])
+	id 1nSPxQ-00E1nM-Mp; Thu, 10 Mar 2022 21:04:24 +0000
+Received: from mail-vi1eur05on2062d.outbound.protection.outlook.com
+ ([2a01:111:f400:7d00::62d]
+ helo=EUR05-VI1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSOy4-00DuC0-PO; Thu, 10 Mar 2022 20:01:01 +0000
-Received: by mail-oi1-f175.google.com with SMTP id b188so7043150oia.13;
- Thu, 10 Mar 2022 12:01:00 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=uLQUYwbI142mPK+bpbXClLmkKDnYrWpju591cR/ZRE0=;
- b=xDL+x+n0nOWqjgT2wcGJhe5zEcshjBLXa+t67iUJmDDZlLgY/WobkBXlt65OtMdQAM
- 1teEV1Gh/tZRCFckR6aXVJiEeSAOmOUr1Flt3oxURFnfsM1Vc4EwHbxGbEjoLbqAD7Ec
- 4B1OdRa62HVPXRqMH9+IhY669zhM0Hy+TKBr4QF/Wh3pbFBcEtxYQlZSeCmZrlbWGMV6
- O5aAlUFDZlmprSdeYJAMjQP23FyN5lR7wIMCkC4LZYO55t9ZorAdr+wfLZQkDciocVTj
- IJI2Znd2Gx2VRvUWS/7n9ygLNV2euPsJcNyB51T60UERH4Q4ElG8gE45z1Wxz2NrIuW2
- dmLw==
-X-Gm-Message-State: AOAM5317tbGPPkL9/XlYOQM45CeWGmcIzNRsNrpxuVLeQiFdbgyDSi4J
- kNnZHtTHj5Mju6XsDrhbAw==
-X-Google-Smtp-Source: ABdhPJxgtl62Rn5MfIz5PDMuxe0atN8+OKDMV0hDYPugU0yN5r01kQ03Mbod8t+beWBP1M7itVn4vg==
-X-Received: by 2002:a54:438a:0:b0:2d9:a01a:4be2 with SMTP id
- u10-20020a54438a000000b002d9a01a4be2mr4360203oiv.265.1646942459469; 
- Thu, 10 Mar 2022 12:00:59 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- o2-20020a05687072c200b000d9ae3e1fabsm2643375oak.12.2022.03.10.12.00.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Mar 2022 12:00:58 -0800 (PST)
-Received: (nullmailer pid 1965958 invoked by uid 1000);
- Thu, 10 Mar 2022 20:00:57 -0000
-Date: Thu, 10 Mar 2022 14:00:57 -0600
-From: Rob Herring <robh@kernel.org>
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
- Levin Du <djw@t-chip.com.cn>, Peter Geis <pgwipeout@gmail.com>,
- Alex Bee <knaerzche@gmail.com>, Liang Chen <cl@rock-chips.com>,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Tianling Shen <cnsztl@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ id 1nSPxC-00E1i5-Ur; Thu, 10 Mar 2022 21:04:12 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=A35PUVIwzl5I87e73UKytiRT+NX8mdy7b90WWoDhvGX3qIZNb0/lEhmSWN/7rIa8cXIOr1Ktb0l/IeMesCggF1ZTKC5oUc4uljHVr0z94d35TSMn7bIXNGUljsuIwDVESFPUg4i1btMgdbzuC1cihJ8AfA/HiV7i0bW7tfjymPBZ5inlQfsAzmtCugkgNb8pMScZ8q5VDMocuZR29L74J44ZJIXL8xcfl0FwjUks2HEXRtCYf+5almmhC16l7b2MoGbdv6d4rexjhxc6kNJxy3PbNsfMsgmHgvYlOKmXNhSi0VcIAJkKs2Eio7xKNDUAJnDV86T/zw/oUE8oT9uWUg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=OxhsBdnK87/cgowtU4sJnthRJHvviADoflEZ93URbsQ=;
+ b=BDP1ZoGmh4jIxqKbKvII+qtulgsvRcouuzYTxo9gt3MFqdiIjqSAxlNY7HFM38ehL4omD9gwEPfwlC/uhPWlknvvgyFbIj64CjzJ1kw34DNEVZY4icUkI0DAwJ2CDzYz55kOmtXEltfJcBW+dhdBpN47V6tRZUsRF1/vo+2OCvcueeyTbnQsa0Ae5x8pzVp6XR2AIoJ/9BUNKdxnpidtUk6z2P6xXHWG9E1GlnitVm7puL3ncUz/rgWVhIpI2S1BRf9wivUu89mh38It60lNaU5kKrGwPyLc+x3mW7Q7tPrCZTWb6g0ofdKy9s95s/5i78ed1Z9yP1pg+bHrP1FmXQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=OxhsBdnK87/cgowtU4sJnthRJHvviADoflEZ93URbsQ=;
+ b=j4x5SiYuv8brB4z0T5EGPd7rYoFJEnM6IcmkxffHqd5PpvZQ7tzdwLhJDPY84me9u+I2xbfLUNUVHG4afGnKVsKPXikZWzJBgloY3EvffdzbHziPt2fX+JL9Mvr/q8UTxp6i2G3NbJDKZ6NyZnAwKlVMLbJhxGGjo5zp45bx4nk=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com (2603:10a6:3:e1::23)
+ by AM6PR08MB5078.eurprd08.prod.outlook.com (2603:10a6:20b:e7::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5061.22; Thu, 10 Mar
+ 2022 21:04:05 +0000
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::f9ee:a333:b115:5049]) by HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::f9ee:a333:b115:5049%4]) with mapi id 15.20.5038.030; Thu, 10 Mar 2022
+ 21:04:05 +0000
+From: Michael Riesch <michael.riesch@wolfvision.net>
+To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Levin Du <djw@t-chip.com.cn>, Tianling Shen <cnsztl@gmail.com>,
  Chen-Yu Tsai <wenst@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- devicetree@vger.kernel.org
-Subject: Re: [PATCH 1/3] dt-bindings: arm: rockchip: add radxa rock3 model a
-Message-ID: <YipY+W2HVPNyA15W@robh.at.kernel.org>
-References: <20220304161130.34977-1-michael.riesch@wolfvision.net>
- <20220304161130.34977-2-michael.riesch@wolfvision.net>
+ Alex Bee <knaerzche@gmail.com>, Liang Chen <cl@rock-chips.com>,
+ Peter Geis <pgwipeout@gmail.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>
+Subject: [PATCH v2 0/3] arm64: dts: rockchip: add basic dts for the radxa
+ rock3 model a
+Date: Thu, 10 Mar 2022 22:03:49 +0100
+Message-Id: <20220310210352.451136-1-michael.riesch@wolfvision.net>
+X-Mailer: git-send-email 2.30.2
+X-ClientProxiedBy: ZR0P278CA0132.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:40::11) To HE1PR0802MB2426.eurprd08.prod.outlook.com
+ (2603:10a6:3:e1::23)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220304161130.34977-2-michael.riesch@wolfvision.net>
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 95c0a598-42ee-431c-3d1d-08da02d98261
+X-MS-TrafficTypeDiagnostic: AM6PR08MB5078:EE_
+X-Microsoft-Antispam-PRVS: <AM6PR08MB5078DE225EA666B2BDCA64F0F20B9@AM6PR08MB5078.eurprd08.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: q7/GeXZTe/BNFuptaYzzaxsMK2rLO1CaWYCrrHTemwH7ndqRDvrvUu4NAA+ueMs/zwY5RZ6Tw5EF188sFMwcrPRnCJf8chvowgZvpayzPi0bZARLcgRRnGtWhbodqpLt7JGHYQ+lDWiEjoPdtffmtyME4NDtuYUYsZzyhPNXf/ixkMFzK6WrC8A87C9zl5FO3osSxPTrN5tMFZqWnf8UJ1rndgpqcNzxDfX1zbLAZ/MZHjSfW2cxTH5MoywRDR1EdG4PkQicQoI5OE2B5v399MP1LjzhjNslMVmD827K4Nex/CZb6aSDURNf1OrjpmjS83h9gt/X0VU9nMrK3iJHdbeyZaBDsPnkHTodnAXIevZ0LYZa/qV89b8//3nPUfNl2l/ss0xgEHRSunXaOX8mTzGzGjXjdkvvC/WINk0q4nRDMe7sUjJqKT9KAbCcx1rTRZOE6zk7/ejOxp6/9PLEOutTFyaJkyb8izafLusrFU/guwoF9ids6vaEhDf6xDj+Lq6CYfJbOJG/t4FBiOd6IULMoknc3+atH118FYw/IItN6iyM2ulFq3B7Wi4LYzwfft1fkPGbkH9Lj009VcvS3EpIg6gFI3YSdX3JFQoWinY6Dv8+kocCeO5gTiilCiYysJ3GnBHpYnGlnnbw40QTdvFIusoe2nwVqG57eI9+RQPXSf47450gJz/XbHZEb4kN5JAuzfxxZ01/Ri2WlrBhOw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:HE1PR0802MB2426.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(508600001)(4744005)(54906003)(186003)(44832011)(52116002)(86362001)(6486002)(66556008)(66476007)(4326008)(7416002)(5660300002)(6666004)(8936002)(66946007)(316002)(36756003)(6506007)(6512007)(38100700002)(8676002)(2906002)(107886003)(2616005)(1076003)(129723003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?MPUYCc/hrIcqQtMTPCHuWq19ZlGQvHGi9lPD8NFcEOp5xk5Npdolv7lYFGId?=
+ =?us-ascii?Q?ZFxgCShrxqtOESx5RiqUcP6wbW1NYIUqjR+sG9VRNNjNyezgUHoW8I92QgJE?=
+ =?us-ascii?Q?8dq7fHZckUR+0dlF4l4kbCp/fVxim0/V90+stFG4dax9ANDHn3ZaGAAP3Hb5?=
+ =?us-ascii?Q?7r49fuQiCK/OvGF1XVCeR1gKmPW5VSj8YTwz1/CQNNwUYiGkeqOLJXyf+8If?=
+ =?us-ascii?Q?uTfF3arhsY5jSaONTyfCdXHDcnxhLqUWxceZr2ByiOwU/NL6HzN2LK330gg+?=
+ =?us-ascii?Q?Hc6U0KemthjTiZY06vhclFAm9fyi2bq0xXdMBHp6+NNpI4KWW8dKLMDy20aG?=
+ =?us-ascii?Q?0d6aprLBBalOFZ2hZxvgDrPTd6nn89QlV8iI1nd7zrlReqaKnoYVjQ6Dt6KG?=
+ =?us-ascii?Q?TzmYfiFDAs5VFohxDPqmS8y3MjJv9YwSwcFXiw2dT6PR26vsDkQy1g4CJ41l?=
+ =?us-ascii?Q?tw+KzublWtIbkNHP5LtRVTETEkaAoKJmvFeChyfHNYShO/TIvcGrY+HtUSv8?=
+ =?us-ascii?Q?1pSoTHow8XulISZV+xrN1D4K9Ov7kIBNO3wRJsUysrzwAJNedD/xwmKO5rnV?=
+ =?us-ascii?Q?+0gFSHP1lGkzieKMwQEYqhh6gDuYH5peW0DLZfZBu3aQHZFnAqgdtwbzbKbj?=
+ =?us-ascii?Q?hbGiYft7SPv4PozIRhDMHdR6yRoAZFN6kGPz6aQWW9CgtjmbdAxi4YKISr3S?=
+ =?us-ascii?Q?uYTMfHN+jmzmvsigHZ906u12bzA3F2GtSfC+WWAxhDCyLe1ivBygUWsYIz7A?=
+ =?us-ascii?Q?Qn8VP9US57Kx2YJODf+AqCM6uutlhOvI7azS6LznlxVQCjdRVi80oKaYcgpu?=
+ =?us-ascii?Q?Rbpd1Ne3Poj6DkI+eWXiNDk1+DhKBIPbgbg97ncTzu/+WZP0e2xl5UZPrXUf?=
+ =?us-ascii?Q?1YPKncKpynuO/zjChew3NWr5Dla5IgrAE0RqK7CCDFeh9AR5BisCxZ4eG0YH?=
+ =?us-ascii?Q?0la9HijYtxAKCiRXkZgbU35Pi4V8h9+2ydxGXv1uVZZEU7fiZiemwwd3GKLp?=
+ =?us-ascii?Q?6mtRqH8X/mVcou/BhilNGHGTvf2q4KwbPTIs9MVu2h+V9Lt8EtrXnkJ68C+5?=
+ =?us-ascii?Q?IDpm8H4O/CArKUrrUrslQccWZRLLvuD0F1PZLkZDL8QEfKjdPRKt14VDloID?=
+ =?us-ascii?Q?BC2ZzeFc8b/edXv3lJ+eSQChjr94dTCBur1lxFg4BUAbg6hdXlCoPxGpZ1GG?=
+ =?us-ascii?Q?pWhwncahc2eTOOKyrPcx58/+9v2F1mFeDj4mkbXuj/5XOIhjG7nkpimV7lTp?=
+ =?us-ascii?Q?rBPBODpElHfAzxN3vrlavWiIEh9Uh27t6xp5qO66rsGkdA47Sr1AbO5I/f/w?=
+ =?us-ascii?Q?xyehdsHjB7hd3aqmZm+byyvA9ZBoNenNkwp8XAPfUL+OwxxF4Dh/oeaXT3Zb?=
+ =?us-ascii?Q?gQnBv5Bk87gNV9xEh1lbP9J4zi9JpbiRiHPskkYSHKDUK8AoV2gylcw3+wEG?=
+ =?us-ascii?Q?VHYoruZTrUTszyKLQXjYhThC7ORGksivbxL1MsAx/Q+UP28ZES+ZRMlNlXc8?=
+ =?us-ascii?Q?N1gz1WoRKCu/t8uaeqk5DjOu0Zt8LJCBpTDB1cjXVbXfSWZ3kgSBr6QFKZ2Y?=
+ =?us-ascii?Q?kgkj5sxhEITi2IvMF8w=3D?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: 95c0a598-42ee-431c-3d1d-08da02d98261
+X-MS-Exchange-CrossTenant-AuthSource: HE1PR0802MB2426.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Mar 2022 21:04:04.6790 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: uMh33CA5+Wr5/wEK7PCCd/c7sJGQnC2DQoaGWOoGsIoIxr0msnWB1OUuyQeNkQ46HpwoK2RPqgM3j+y1w6LO5rEwNC9O+X67sTc7fmsIbEI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR08MB5078
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220310_120100_846067_EC54B81B 
-X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-CacheID: sfid-20220310_130411_098653_EF1BAFE9 
+X-CRM114-Status: UNSURE (   9.65  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,17 +141,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 04 Mar 2022 17:11:28 +0100, Michael Riesch wrote:
-> Add entry for the Radxa ROCK3 Model A board (with the Rockchip
-> RK3568 SoC).
-> 
-> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
+Hi all,
 
-Acked-by: Rob Herring <robh@kernel.org>
+This series introduces basic support for the Radxa ROCK3 Model A
+featuring the Rockchip RK3568 SoC. The basic support includes Ethernet,
+USB2 and the headphone connector.
+
+Patch 3 adds support for the Video Output Processor (VOP) 2 and the
+HDMI output. It requires the VOP2/HDMI TX patches (which are discussed
+on the list) and can be considered as RFC.
+
+v2 adds the missing entry in the Makefile and Rob's Acked-by: on the
+dt-bindings patch.
+
+Looking forward to your comments!
+
+Best regards,
+Michael
+
+Michael Riesch (3):
+  dt-bindings: arm: rockchip: add radxa rock3 model a
+  arm64: dts: rockchip: add basic dts for the radxa rock3 model a
+  arm64: dts: rockchip: enable vop2 and hdmi tx on rock-3a
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3568-rock-3a.dts      | 548 ++++++++++++++++++
+ 3 files changed, 554 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
