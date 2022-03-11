@@ -4,49 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7CD2C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 08:44:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7078C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 08:44:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kTPZHB4rt7/v/MiTqfGN9oulBHCu4/VK7KpTr0+jCtk=; b=nzeOcRkX9erx/t
-	jh/BOrzV/Xv3wURxHmND0RmZioNukg/km7dsKPN0hD45FWxfeYKz/qqFGf1M1A2JO60f15lpI9RcK
-	iGvPjgGs/J2KPgxpMMJR8CYTOBV1iyov7wm+B8Rxgw6B1HHzWUxo7wh1mPEusyAtss6qzXcZAx5W2
-	xdzjOdvEZqnR9V5G1dsP+f21x6W/K/Gm/kBEOK5WP0QK13X7RyIyHpc7UBUSielDEerl/sjCAEXBE
-	G7MI0PBuwPoj+FLkZ0BiWV5aO/LPOnrXdE1jmP61RmGgj8Gm2HDcsDTxV4kZPoZdIZ5sqAGF4vsJJ
-	qXC7Gx3B15mL4G9jXBqw==;
+	List-Owner; bh=/psYTI4XJLVhGTug/XfnPGc2anCnsO3caj4T7shM3r0=; b=LVm9BoPsi4FqEZ
+	fHx44XDW9reLl9tewAWtMSlGyJmN0cNATU0T1y1hu2RMYnQR8YiSzuhXsFD+RcqVUCzjTb4btJiG/
+	jBDnvoCODF6n8T2GZBjNI6Ehk+y3Cy0DDvWfE98f7eCg+aagzC36c4FDg4FGDJeaPx8wLpGEMZXYM
+	LN+374zPohehncL2MZN6sbHm56FUWb77WOEen9xgS7Bj4WIJCbovAvNA5HwV6Hq53YhhzQ4kzNKan
+	Qc4b6Du8hBtqICe9+VGZwl2tTQnopSVnWyVAB01kG1P+LZmoXvNgNv43Ae8VelOXpOflBUspt3EIf
+	fWpq79ugmIRTq8LKfigw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSatH-00Fezs-BL; Fri, 11 Mar 2022 08:44:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSaii-00FZQd-LQ
- for linux-rockchip@bombadil.infradead.org; Fri, 11 Mar 2022 08:33:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
- :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=7zeVvcbLYWGqTMQaCmcxPpNJWb1uj10X6HwObpqh0BI=; b=fbjgy6MEuBmtPGc5jMwcv1u6/2
- V0eyQolJIP7nJEUu8iqSmmzNeAxzUclaYexeiU9LI6/7CSQ8mJfliCPc/JItCxJfNDszQqz8u2YN8
- Zese8tOCCfkKRLu0yAtBFpm5mAMGl34PNeUkXnSLx5XrpPThLl+PLd5n1bqFpskofvhaqoCPMYFR5
- rvTlag8xi0c3WS6i4b+w7YDI2NY79I66F3RJ6X/dqeLOb5fmvw1dIMBrkN5wrdDl1GOgtGmLczfhT
- Kj0VSu83YCvwa80bY7Ss8yRh3ArOR4DXzUBjwYP3eDdZeQ0fl5SSYboktE+RtvYIJ/88lpSvWcHt4
- 3k6LTcwQ==;
+	id 1nSatL-00Ff1Z-6d; Fri, 11 Mar 2022 08:44:55 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSaiT-00HOE3-Hs
- for linux-rockchip@lists.infradead.org; Fri, 11 Mar 2022 08:33:55 +0000
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nSaic-00FZMa-2f
+ for linux-rockchip@lists.infradead.org; Fri, 11 Mar 2022 08:33:57 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nSaiL-0000aY-BG; Fri, 11 Mar 2022 09:33:33 +0100
+ id 1nSaiI-0000aK-F2; Fri, 11 Mar 2022 09:33:30 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nSaiE-0040hd-Ma; Fri, 11 Mar 2022 09:33:26 +0100
+ id 1nSaiE-0040ga-Fs; Fri, 11 Mar 2022 09:33:26 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -57,9 +43,9 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v8 18/24] arm64: dts: rockchip: rk356x: Add HDMI nodes
-Date: Fri, 11 Mar 2022 09:33:17 +0100
-Message-Id: <20220311083323.887372-19-s.hauer@pengutronix.de>
+Subject: [PATCH v8 06/24] drm/rockchip: dw_hdmi: add rk3568 support
+Date: Fri, 11 Mar 2022 09:33:05 +0100
+Message-Id: <20220311083323.887372-7-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220311083323.887372-1-s.hauer@pengutronix.de>
 References: <20220311083323.887372-1-s.hauer@pengutronix.de>
@@ -70,8 +56,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_083341_706978_CBC28D9E 
-X-CRM114-Status: GOOD (  10.47  )
+X-CRM114-CacheID: sfid-20220311_003350_174485_F633D0E8 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,64 +75,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for the HDMI port found on RK3568.
+Add a new dw_hdmi_plat_data struct and new compatible for rk3568.
 
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 31 +++++++++++++++++++++
+ 1 file changed, 31 insertions(+)
 
-Notes:
-    Changes since v7:
-    - Rename hclk to niu
-    
-    Changes since v5:
-    - Drop unnecessary #size-cells/#address-cells from nodes with only single endpoint
-
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 32 ++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index 19d8e67c4698b..0a94d59b33ba4 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -502,6 +502,38 @@ vop_mmu: iommu@fe043e00 {
- 		status = "disabled";
- 	};
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 912181429880a..b64cc62c7b5af 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -50,6 +50,10 @@
+ #define RK3399_GRF_SOC_CON20		0x6250
+ #define RK3399_HDMI_LCDC_SEL		BIT(6)
  
-+	hdmi: hdmi@fe0a0000 {
-+		compatible = "rockchip,rk3568-dw-hdmi";
-+		reg = <0x0 0xfe0a0000 0x0 0x20000>;
-+		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru PCLK_HDMI_HOST>,
-+			 <&cru CLK_HDMI_SFR>,
-+			 <&cru CLK_HDMI_CEC>,
-+			 <&pmucru CLK_HDMI_REF>,
-+			 <&cru HCLK_VO>;
-+		clock-names = "iahb", "isfr", "cec", "ref", "niu";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hdmitx_scl &hdmitx_sda &hdmitxm0_cec>;
-+		power-domains = <&power RK3568_PD_VO>;
-+		reg-io-width = <4>;
-+		rockchip,grf = <&grf>;
-+		#sound-dai-cells = <0>;
-+		status = "disabled";
++#define RK3568_GRF_VO_CON1		0x0364
++#define RK3568_HDMI_SDAIN_MSK		BIT(15)
++#define RK3568_HDMI_SCLIN_MSK		BIT(14)
 +
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
+ #define HIWORD_UPDATE(val, mask)	(val | (mask) << 16)
+ 
+ /**
+@@ -473,6 +477,19 @@ static const struct dw_hdmi_plat_data rk3399_hdmi_drv_data = {
+ 	.use_drm_infoframe = true,
+ };
+ 
++static struct rockchip_hdmi_chip_data rk3568_chip_data = {
++	.lcdsel_grf_reg = -1,
++};
 +
-+			hdmi_in: port@0 {
-+				reg = <0>;
-+			};
++static const struct dw_hdmi_plat_data rk3568_hdmi_drv_data = {
++	.mode_valid = dw_hdmi_rockchip_mode_valid,
++	.mpll_cfg   = rockchip_mpll_cfg,
++	.cur_ctr    = rockchip_cur_ctr,
++	.phy_config = rockchip_phy_config,
++	.phy_data = &rk3568_chip_data,
++	.use_drm_infoframe = true,
++};
 +
-+			hdmi_out: port@1 {
-+				reg = <1>;
-+			};
-+		};
-+	};
+ static const struct of_device_id dw_hdmi_rockchip_dt_ids[] = {
+ 	{ .compatible = "rockchip,rk3228-dw-hdmi",
+ 	  .data = &rk3228_hdmi_drv_data
+@@ -486,6 +503,9 @@ static const struct of_device_id dw_hdmi_rockchip_dt_ids[] = {
+ 	{ .compatible = "rockchip,rk3399-dw-hdmi",
+ 	  .data = &rk3399_hdmi_drv_data
+ 	},
++	{ .compatible = "rockchip,rk3568-dw-hdmi",
++	  .data = &rk3568_hdmi_drv_data
++	},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, dw_hdmi_rockchip_dt_ids);
+@@ -520,6 +540,9 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	encoder = &hdmi->encoder.encoder;
+ 
+ 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
++	rockchip_drm_encoder_set_crtc_endpoint_id(&hdmi->encoder,
++						  dev->of_node, 0, 0);
 +
- 	qos_gpu: qos@fe128000 {
- 		compatible = "rockchip,rk3568-qos", "syscon";
- 		reg = <0x0 0xfe128000 0x0 0x20>;
+ 	/*
+ 	 * If we failed to find the CRTC(s) which this encoder is
+ 	 * supposed to be connected to, it's because the CRTC has
+@@ -550,6 +573,14 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 		return ret;
+ 	}
+ 
++	if (hdmi->chip_data == &rk3568_chip_data) {
++		regmap_write(hdmi->regmap, RK3568_GRF_VO_CON1,
++			     HIWORD_UPDATE(RK3568_HDMI_SDAIN_MSK |
++					   RK3568_HDMI_SCLIN_MSK,
++					   RK3568_HDMI_SDAIN_MSK |
++					   RK3568_HDMI_SCLIN_MSK));
++	}
++
+ 	drm_encoder_helper_add(encoder, &dw_hdmi_rockchip_encoder_helper_funcs);
+ 	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
+ 
 -- 
 2.30.2
 
