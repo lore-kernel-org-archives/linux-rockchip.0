@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EB99C43219
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 08:34:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98895C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 08:35:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KALRDnjOlrVIsR4Q5L52QSTVJWC7b0ShiU0JPF04dhM=; b=4CzyAdZpcq7MUt
-	BNOhhVpaNl6chKTmhHQzThojMzcjE2F5oIppqoL3iUQfTpCaLdBK0xpiF18ETdOvswtoK0lqm4den
-	VlDSUh61Fjy7EiXRjdD7E4hU1XAePsVOL1zeV/y6oMTlqLW/62BDMMgfsHKSOgFTSBzMJja45EXSi
-	8JOl0VArPvhg9DXAHcSnsify5MrDJBU22HqT0vnJij60iAh1g3P2de9srLw6gG4ZIce07eA1QD3vM
-	82BBQuVO/9NfvVj5tENgkkP+uhg0CUv/AFbmeoxIVhKMoDIMmInu6XDot+jXAdLpZOnKO8VSv4FYC
-	gSdbuUDrM5Js9HzbSFIg==;
+	List-Owner; bh=4LcoSEMpmOXVIipV8WE0NWWGwkGPuOhqDvit+wv3/Zs=; b=qhUao51llpGd3K
+	2KyGkdHeu3JB4Y9Dtvg4Mk0ie4lbg1zbBVRx49wvjCWOgNzWcgJdbGdGutGQgXUnEhdDaa7fWV/Q6
+	+5/bSwVDprhec8fcCjHMKbmLdMWGZXwQ4upvBmF9Xn/15l6wSZmGDgE0vK/mrI8jO3zP4GZug/I7j
+	6DlUijYuHbRZPz+FPjg57+RauQEdU7ZgkKMuOoLWmDYVF4FeCuXCzewcF4/kUTcgPBsWKsGpAWs6+
+	TaXDYACMkLw92rL2CJnCymJodiiE6z8goE9XzSVv6XcMc3kQVs1N2eY5COh+j372SmMMdhUGVdaat
+	iSj4zlP0tNphAvuUEO5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSaiu-00FZX6-QF; Fri, 11 Mar 2022 08:34:08 +0000
+	id 1nSajp-00Fa2V-Ff; Fri, 11 Mar 2022 08:35:05 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSaiM-00FZ90-3e
- for linux-rockchip@lists.infradead.org; Fri, 11 Mar 2022 08:33:36 +0000
+ id 1nSaiM-00FZ9J-4i
+ for linux-rockchip@lists.infradead.org; Fri, 11 Mar 2022 08:33:38 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nSaiI-0000aG-FA; Fri, 11 Mar 2022 09:33:30 +0100
+ id 1nSaiI-0000aH-FJ; Fri, 11 Mar 2022 09:33:30 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nSaiE-0040gI-Dv; Fri, 11 Mar 2022 09:33:26 +0100
+ id 1nSaiE-0040gO-ER; Fri, 11 Mar 2022 09:33:26 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -42,11 +42,12 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v8 02/24] drm/rockchip: Add crtc_endpoint_id to
- rockchip_encoder
-Date: Fri, 11 Mar 2022 09:33:01 +0100
-Message-Id: <20220311083323.887372-3-s.hauer@pengutronix.de>
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Subject: [PATCH v8 03/24] drm/rockchip: dw_hdmi: rename vpll clock to
+ reference clock
+Date: Fri, 11 Mar 2022 09:33:02 +0100
+Message-Id: <20220311083323.887372-4-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220311083323.887372-1-s.hauer@pengutronix.de>
 References: <20220311083323.887372-1-s.hauer@pengutronix.de>
@@ -57,8 +58,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_003334_163930_A8011333 
-X-CRM114-Status: GOOD (  22.60  )
+X-CRM114-CacheID: sfid-20220311_003334_193709_AB21CC71 
+X-CRM114-Status: GOOD (  16.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,95 +77,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The VOP2 has an interface mux which decides to which encoder(s) a CRTC
-is routed to. The encoders and CRTCs are connected via of_graphs in the
-device tree. When given an encoder the VOP2 driver needs to know to
-which internal register setting this encoder matches. For this the VOP2
-binding offers different endpoints, one for each possible encoder. The
-endpoint ids of these endpoints are used as a key from an encoders
-device tree description to the internal register setting.
-
-This patch adds the key aka endpoint id to struct rockchip_encoder plus
-a function to read the endpoint id starting from the encoders device
-node.
+"vpll" is a misnomer. A clock input to a device should be named after
+the usage in the device, not after the clock that drives it. On the
+rk3568 the same clock is driven by the HPLL.
+To fix that, this patch renames the vpll clock to ref clock. The clock
+name "vpll" is left for compatibility to old device trees.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 ---
 
 Notes:
     Changes since v6:
-    - new patch
+    - Simplify by using devm_clk_get_optional() instead of devm_clk_get()
 
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 33 +++++++++++++++++++++
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h |  4 ++-
- 2 files changed, 36 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 27 +++++++++++----------
+ 1 file changed, 14 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index bec207de45440..7920a4f44f693 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -236,6 +236,39 @@ static const struct dev_pm_ops rockchip_drm_pm_ops = {
- static struct platform_driver *rockchip_sub_drivers[MAX_ROCKCHIP_SUB_DRIVERS];
- static int num_rockchip_sub_drivers;
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 06c9ddef6f362..912181429880a 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -69,7 +69,7 @@ struct rockchip_hdmi {
+ 	struct regmap *regmap;
+ 	struct rockchip_encoder encoder;
+ 	const struct rockchip_hdmi_chip_data *chip_data;
+-	struct clk *vpll_clk;
++	struct clk *ref_clk;
+ 	struct clk *grf_clk;
+ 	struct dw_hdmi *hdmi;
+ 	struct phy *phy;
+@@ -201,14 +201,15 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ 		return PTR_ERR(hdmi->regmap);
+ 	}
  
-+/*
-+ * Get the endpoint id of the remote endpoint of the given encoder. This
-+ * information is used by the VOP2 driver to identify the encoder.
-+ *
-+ * @rkencoder: The encoder to get the remote endpoint id from
-+ * @np: The encoder device node
-+ * @port: The number of the port leading to the VOP2
-+ * @reg: The endpoint number leading to the VOP2
-+ */
-+int rockchip_drm_encoder_set_crtc_endpoint_id(struct rockchip_encoder *rkencoder,
-+					      struct device_node *np, int port, int reg)
-+{
-+	struct of_endpoint ep;
-+	struct device_node *en, *ren;
-+	int ret;
+-	hdmi->vpll_clk = devm_clk_get(hdmi->dev, "vpll");
+-	if (PTR_ERR(hdmi->vpll_clk) == -ENOENT) {
+-		hdmi->vpll_clk = NULL;
+-	} else if (PTR_ERR(hdmi->vpll_clk) == -EPROBE_DEFER) {
++	hdmi->ref_clk = devm_clk_get_optional(hdmi->dev, "ref");
++	if (!hdmi->ref_clk)
++		hdmi->ref_clk = devm_clk_get_optional(hdmi->dev, "vpll");
 +
-+	en = of_graph_get_endpoint_by_regs(np, port, reg);
-+	if (!en)
-+		return -ENOENT;
-+
-+	ren = of_graph_get_remote_endpoint(en);
-+	if (!ren)
-+		return -ENOENT;
-+
-+	ret = of_graph_parse_endpoint(ren, &ep);
-+	if (ret)
-+		return ret;
-+
-+	rkencoder->crtc_endpoint_id = ep.id;
-+
-+	return 0;
-+}
-+
- /*
-  * Check if a vop endpoint is leading to a rockchip subdriver or bridge.
-  * Should be called from the component bind stage of the drivers
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-index 686f687a76a37..1f66a447acada 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-@@ -49,6 +49,7 @@ struct rockchip_drm_private {
- };
++	if (PTR_ERR(hdmi->ref_clk) == -EPROBE_DEFER) {
+ 		return -EPROBE_DEFER;
+-	} else if (IS_ERR(hdmi->vpll_clk)) {
+-		DRM_DEV_ERROR(hdmi->dev, "failed to get vpll clock\n");
+-		return PTR_ERR(hdmi->vpll_clk);
++	} else if (IS_ERR(hdmi->ref_clk)) {
++		DRM_DEV_ERROR(hdmi->dev, "failed to get reference clock\n");
++		return PTR_ERR(hdmi->ref_clk);
+ 	}
  
- struct rockchip_encoder {
-+	int crtc_endpoint_id;
- 	struct drm_encoder encoder;
- };
+ 	hdmi->grf_clk = devm_clk_get(hdmi->dev, "grf");
+@@ -262,7 +263,7 @@ static void dw_hdmi_rockchip_encoder_mode_set(struct drm_encoder *encoder,
+ {
+ 	struct rockchip_hdmi *hdmi = to_rockchip_hdmi(encoder);
  
-@@ -57,7 +58,8 @@ int rockchip_drm_dma_attach_device(struct drm_device *drm_dev,
- void rockchip_drm_dma_detach_device(struct drm_device *drm_dev,
- 				    struct device *dev);
- int rockchip_drm_wait_vact_end(struct drm_crtc *crtc, unsigned int mstimeout);
--
-+int rockchip_drm_encoder_set_crtc_endpoint_id(struct rockchip_encoder *rencoder,
-+					      struct device_node *np, int port, int reg);
- int rockchip_drm_endpoint_is_subdriver(struct device_node *ep);
- extern struct platform_driver cdn_dp_driver;
- extern struct platform_driver dw_hdmi_rockchip_pltfm_driver;
+-	clk_set_rate(hdmi->vpll_clk, adj_mode->clock * 1000);
++	clk_set_rate(hdmi->ref_clk, adj_mode->clock * 1000);
+ }
+ 
+ static void dw_hdmi_rockchip_encoder_enable(struct drm_encoder *encoder)
+@@ -542,9 +543,9 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 		return ret;
+ 	}
+ 
+-	ret = clk_prepare_enable(hdmi->vpll_clk);
++	ret = clk_prepare_enable(hdmi->ref_clk);
+ 	if (ret) {
+-		DRM_DEV_ERROR(hdmi->dev, "Failed to enable HDMI vpll: %d\n",
++		DRM_DEV_ERROR(hdmi->dev, "Failed to enable HDMI reference clock: %d\n",
+ 			      ret);
+ 		return ret;
+ 	}
+@@ -563,7 +564,7 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	if (IS_ERR(hdmi->hdmi)) {
+ 		ret = PTR_ERR(hdmi->hdmi);
+ 		drm_encoder_cleanup(encoder);
+-		clk_disable_unprepare(hdmi->vpll_clk);
++		clk_disable_unprepare(hdmi->ref_clk);
+ 	}
+ 
+ 	return ret;
+@@ -575,7 +576,7 @@ static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
+ 	struct rockchip_hdmi *hdmi = dev_get_drvdata(dev);
+ 
+ 	dw_hdmi_unbind(hdmi->hdmi);
+-	clk_disable_unprepare(hdmi->vpll_clk);
++	clk_disable_unprepare(hdmi->ref_clk);
+ }
+ 
+ static const struct component_ops dw_hdmi_rockchip_ops = {
 -- 
 2.30.2
 
