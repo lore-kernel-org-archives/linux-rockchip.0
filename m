@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97BDEC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 08:38:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 469C8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 08:38:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ciMs7eIuTGgkWRHYHBybUTLq8V0r5HkDr+827A5cU9E=; b=UncN1VyiBzmb13
-	HJqZ01f8cUPuB4cWCMQv+jR8C1YlEC/5pSB4HMVLyWIYO6hrEwBzMHTrzbYkPmOdiG+/TKnc7HuEf
-	IoDRwqVaroN1+guDaaiKJ7Pfs6PVE7R025Il7UxMIi5vIDwa+Zb013Nx9p/YExA1stwbjZuHC9QUx
-	YMw1JWgFTi6dOMSvUPz0veip7Idl9EmMTjsP5hB4wsmToMPaZxtA2lLU9UN0Tu4ELUY9WKi7K6Pdx
-	Yrr5XjWOT27AIo8FdE8IDGQL+k3SQNePjPcvNAoe4EKwJ1Qvw5K1DqAHuGZqe8+HAvvXxj+RxFs7j
-	KmRrGebmQ22dSiYIzygg==;
+	List-Owner; bh=GVkq2jZLTpJsIrxY4PVmeTTeCBljjDlP28elBfdoTCE=; b=DbM5UbtA0VzItd
+	SDWeN6w4ajnp82ik4YjWD7j9+AZmfkl1KGpcmE6US/mm6mQKK+huKK5meNasdNsMLgRqZokKg9zw+
+	kib6/wwHm0yXTMBPB7MCmtumgT5eXYD/Bq19+9JeeI4pcKQwaQttyre4/18zQE4EO6mq/y0CZLSFP
+	Utv9pAogWoLX0wj08WpeahAPAAtFEQbCeo7FwOA1MQlbzl/MZcVc2w9XJ8obNyDPP0ac9d1zQG7so
+	lRLDaW9kwyN3acIRnx7+lO8kyGUW1pikhqcAbVRxwP97UFDgAhhOujjj+c0hxtIf8Yh3msqqTG5lV
+	PZmnkFCWFIP8XPnFxlCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSanD-00FbuG-FV; Fri, 11 Mar 2022 08:38:35 +0000
+	id 1nSanF-00FbvM-3N; Fri, 11 Mar 2022 08:38:37 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSaiY-00FZKT-0R
+ id 1nSaiY-00FZKX-0P
  for linux-rockchip@bombadil.infradead.org; Fri, 11 Mar 2022 08:33:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
  :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=yNVusaOcEA4LTJyX+ezMPm1mKFHQXHbtCu5/rYy/V/Q=; b=AyU97+WeeO2kZf7aCHY40f1dj7
- PmpoYpPHTAwE1rycjVRGhKT8j/I/xZ7WAbKaUKiJT75wZlXqqGByaUyhLLIDoD2lrTD53Jm1Y0AuW
- n9J1PxaiEBBdr2iWb+1fXscwl0bcooBAHAVdZ9PjDE+VtdHnJ9JbdGH612gAmmljAMx/GnqonIXH9
- w2bPcdlE7OrgCDOa1D1FdNQc1qZsZKQ6lazWRfDIFUM3Dk6gWejZA/S+Lu9ZAXS2vGZT9IyEWevIu
- 7o6Q0hNNAyPs6SI9NyHIphO+ijUO6g2CiJRtIJ0Qtr6uz6XN7g2mLV78V/cblSa3Y95sKYqgqqV1P
- xEZCgtkA==;
+ bh=4OVHQKezPZFWNLJrWam88gbEJunfZ4TGV6gGCuRdW4w=; b=YEmqbS4m4m9pfz6xNRCQsOyFM5
+ 9x+LB9oTwSf2yMC2ulF6snWJ9KCPD3rCNuW4EawTkyNg6C7EHZ3u1OTULysEcxMc7Ld0zL9A91Iaq
+ UJx3QUQPwo/pzUe11djkxJXZ5UevNOqNEkoQhENItzjcl24bY5bgmfIAOgdnFp/v4ZkHQEzaFPxmW
+ 4WOV2o9t0heZffbyOXtQuCg4qxP73eizW2ISQZ7W9nROydmcLgclQ2glQj6wLceRVTUT9zYLXcUcJ
+ WrYEN5V+lsO8QUtfHo1r5vGs0uJ0FUuu7Lf9QhXIZ3GfAhM3yqDKEgxzwXF24+yViLDTxccaMNQOM
+ q0PkQQ8Q==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSaiT-00HOE5-G6
+ id 1nSaiT-00HOE6-C5
  for linux-rockchip@lists.infradead.org; Fri, 11 Mar 2022 08:33:44 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nSaiL-0000aU-AL; Fri, 11 Mar 2022 09:33:33 +0100
+ id 1nSaiL-0000aQ-Cg; Fri, 11 Mar 2022 09:33:33 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nSaiE-0040hM-LS; Fri, 11 Mar 2022 09:33:26 +0100
+ id 1nSaiE-0040h5-JL; Fri, 11 Mar 2022 09:33:26 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -56,12 +56,11 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Rob Herring <robh@kernel.org>
-Subject: [PATCH v8 16/24] dt-bindings: display: rockchip: dw-hdmi: Make
- unwedge pinctrl optional
-Date: Fri, 11 Mar 2022 09:33:15 +0100
-Message-Id: <20220311083323.887372-17-s.hauer@pengutronix.de>
+ Peter Geis <pgwipeout@gmail.com>, Douglas Anderson <dianders@chromium.org>,
+ Yakir Yang <ykk@rock-chips.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v8 12/24] drm/rockchip: dw_hdmi: Use auto-generated tables
+Date: Fri, 11 Mar 2022 09:33:11 +0100
+Message-Id: <20220311083323.887372-13-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220311083323.887372-1-s.hauer@pengutronix.de>
 References: <20220311083323.887372-1-s.hauer@pengutronix.de>
@@ -72,9 +71,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_083341_686433_224ACA7E 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220311_083341_536198_02BD47DF 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,32 +90,195 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-None of the upstream device tree files has a "unwedge" pinctrl
-specified. Make it optional.
+From: Douglas Anderson <dianders@chromium.org>
 
+The previous tables for mpll_cfg and curr_ctrl were created using the
+20-pages of example settings provided by the PHY vendor.  Those
+example settings weren't particularly dense, so there were places
+where we were guessing what the settings would be for 10-bit and
+12-bit (not that we use those anyway).  It was also always a lot of
+extra work every time we wanted to add a new clock rate since we had
+to cross-reference several tables.
+
+In <https://crrev.com/c/285855> I've gone through the work to figure
+out how to generate this table automatically.  Let's now use the
+automatically generated table and then we'll never need to look at it
+again.
+
+We only support 8-bit mode right now and only support a small number
+of clock rates and I've verified that the only 8-bit rate that was
+affected was 148.5.  That mode appears to have been wrong in the old
+table.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-Acked-by: Rob Herring <robh@kernel.org>
 ---
 
 Notes:
-    Changes since v4:
-    - Add Robs Ack
+    Changes since v5:
+    - Add missing Signed-off-by me
+    
+    Changes since v3:
+    - new patch
 
- .../devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml   | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 130 +++++++++++---------
+ 1 file changed, 69 insertions(+), 61 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-index a48b0e842218f..ff5cf9fe20904 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-@@ -94,6 +94,7 @@ properties:
-       The unwedge pinctrl entry shall drive the DDC SDA line low. This is
-       intended to work around a hardware errata that can cause the DDC I2C
-       bus to be wedged.
-+    minItems: 1
-     items:
-       - const: default
-       - const: unwedge
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 7adf9044cb73b..265b615bfacdc 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -92,80 +92,88 @@ static struct rockchip_hdmi *to_rockchip_hdmi(struct drm_encoder *encoder)
+ 
+ static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
+ 	{
+-		27000000, {
+-			{ 0x00b3, 0x0000},
+-			{ 0x2153, 0x0000},
+-			{ 0x40f3, 0x0000}
++		30666000, {
++			{ 0x00b3, 0x0000 },
++			{ 0x2153, 0x0000 },
++			{ 0x40f3, 0x0000 },
+ 		},
+-	}, {
+-		36000000, {
+-			{ 0x00b3, 0x0000},
+-			{ 0x2153, 0x0000},
+-			{ 0x40f3, 0x0000}
++	},  {
++		36800000, {
++			{ 0x00b3, 0x0000 },
++			{ 0x2153, 0x0000 },
++			{ 0x40a2, 0x0001 },
+ 		},
+-	}, {
+-		40000000, {
+-			{ 0x00b3, 0x0000},
+-			{ 0x2153, 0x0000},
+-			{ 0x40f3, 0x0000}
++	},  {
++		46000000, {
++			{ 0x00b3, 0x0000 },
++			{ 0x2142, 0x0001 },
++			{ 0x40a2, 0x0001 },
+ 		},
+-	}, {
+-		54000000, {
+-			{ 0x0072, 0x0001},
+-			{ 0x2142, 0x0001},
+-			{ 0x40a2, 0x0001},
++	},  {
++		61333000, {
++			{ 0x0072, 0x0001 },
++			{ 0x2142, 0x0001 },
++			{ 0x40a2, 0x0001 },
+ 		},
+-	}, {
+-		65000000, {
+-			{ 0x0072, 0x0001},
+-			{ 0x2142, 0x0001},
+-			{ 0x40a2, 0x0001},
++	},  {
++		73600000, {
++			{ 0x0072, 0x0001 },
++			{ 0x2142, 0x0001 },
++			{ 0x4061, 0x0002 },
+ 		},
+-	}, {
+-		66000000, {
+-			{ 0x013e, 0x0003},
+-			{ 0x217e, 0x0002},
+-			{ 0x4061, 0x0002}
++	},  {
++		92000000, {
++			{ 0x0072, 0x0001 },
++			{ 0x2145, 0x0002 },
++			{ 0x4061, 0x0002 },
+ 		},
+-	}, {
+-		74250000, {
+-			{ 0x0072, 0x0001},
+-			{ 0x2145, 0x0002},
+-			{ 0x4061, 0x0002}
++	},  {
++		122666000, {
++			{ 0x0051, 0x0002 },
++			{ 0x2145, 0x0002 },
++			{ 0x4061, 0x0002 },
+ 		},
+-	}, {
+-		83500000, {
+-			{ 0x0072, 0x0001},
++	},  {
++		147200000, {
++			{ 0x0051, 0x0002 },
++			{ 0x2145, 0x0002 },
++			{ 0x4064, 0x0003 },
+ 		},
+-	}, {
+-		108000000, {
+-			{ 0x0051, 0x0002},
+-			{ 0x2145, 0x0002},
+-			{ 0x4061, 0x0002}
++	},  {
++		184000000, {
++			{ 0x0051, 0x0002 },
++			{ 0x214c, 0x0003 },
++			{ 0x4064, 0x0003 },
+ 		},
+-	}, {
+-		106500000, {
+-			{ 0x0051, 0x0002},
+-			{ 0x2145, 0x0002},
+-			{ 0x4061, 0x0002}
++	},  {
++		226666000, {
++			{ 0x0040, 0x0003 },
++			{ 0x214c, 0x0003 },
++			{ 0x4064, 0x0003 },
+ 		},
+-	}, {
+-		146250000, {
+-			{ 0x0051, 0x0002},
+-			{ 0x2145, 0x0002},
+-			{ 0x4061, 0x0002}
++	},  {
++		272000000, {
++			{ 0x0040, 0x0003 },
++			{ 0x214c, 0x0003 },
++			{ 0x5a64, 0x0003 },
+ 		},
+-	}, {
+-		148500000, {
+-			{ 0x0051, 0x0003},
+-			{ 0x214c, 0x0003},
+-			{ 0x4064, 0x0003}
++	},  {
++		340000000, {
++			{ 0x0040, 0x0003 },
++			{ 0x3b4c, 0x0003 },
++			{ 0x5a64, 0x0003 },
+ 		},
+-	}, {
++	},  {
++		600000000, {
++			{ 0x1a40, 0x0003 },
++			{ 0x3b4c, 0x0003 },
++			{ 0x5a64, 0x0003 },
++		},
++	},  {
+ 		~0UL, {
+-			{ 0x00a0, 0x000a },
+-			{ 0x2001, 0x000f },
+-			{ 0x4002, 0x000f },
++			{ 0x0000, 0x0000 },
++			{ 0x0000, 0x0000 },
++			{ 0x0000, 0x0000 },
+ 		},
+ 	}
+ };
 -- 
 2.30.2
 
