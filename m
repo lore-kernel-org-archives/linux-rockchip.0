@@ -4,71 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60187C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 14:20:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08624C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 15:11:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tkmeVIfLSOaHsdVx0Nn1mSF9BOyT4OXXWpW72u6Ifb8=; b=Wt62O83a4Qf7Y9
-	cp6wUyBbNRYrlA7XXfmGJbFNvXmp4vJNaBGEhG1PJgGcx59I6au8U1sM0JjzRuIp1R13cCLdC+qPl
-	52/n+bnm8ZOjMWX8UUaj31XVBFEAZN5WlPD433QLkGsuFw80dFIYpOMpThvucEoBFwV5ZdcOFCdwQ
-	1f6OF5cInJaKYjUx4jUjc4E1t9SZwB2peXX+2lLAm/pVUILVXcH1pIHtZ37qX4AKMoqHtx7kSmt04
-	/Wrhfo1DCGziOveHR3X3aIZieQoFzISKdYpJTSaLIVg7D29TI6ngaG0yBZp1s1eUuDmDRgtqBnL6s
-	whlzuhldAZ1Ir6KK+12w==;
+	List-Owner; bh=S/PkCiwFfYVr1R1xF7NTOioxgw+F/IHMKc6HAvy8JhM=; b=m8fXnLGZGZ8sNj
+	9g3l9oU/0dkFTdn8zYjVZdl2yCQOaWxlvGhHh4iCyLZyEhKPUPhn468X2pV2EmuazE61lMgHNkPwR
+	ksZC4sTBFC7nvvulnJ5094qkt/AgUg19STEmL9ftg9zZuoaGg5IRSA3yFdo40KhpxvniEH3evwE/d
+	XbPrHNKb7bBu8llWao040ZRWyWGMXEzhGCE+eJ60wx5NLS8EV6mRvA23ls6y0psKjpJqNQjlncina
+	fS6IOSv7RMTIsGRSTitWkkI2LobeciasFO0HAzK4fM0aGR8cva4MYljJeYKl6mfXmYDMQoS7XjXMj
+	na5vkFQvSmv965N+QGEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSg7n-00GjYW-6F; Fri, 11 Mar 2022 14:20:11 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1nSgvT-00H3Pe-EJ; Fri, 11 Mar 2022 15:11:31 +0000
+Received: from mail-oo1-f52.google.com ([209.85.161.52])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSfxh-00GeVn-BB; Fri, 11 Mar 2022 14:09:54 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id AB94961F1C;
- Fri, 11 Mar 2022 14:09:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CCC84C340ED;
- Fri, 11 Mar 2022 14:09:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647007778;
- bh=0CL2/qApCnzCj9IzxwD5iw737g8Sy9uOx0U4nGkwXFE=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=GBnlhlJcJ/HAEEPNLdvbr6Rd+QWZVzIQfNqRtTIL6wxdFpwVwgfpXlzDqY5S7KB4k
- V7Dy+rml9Z8Hur5GsBNJNsgmFjVsXHMV0OjuA85QRKjxLvUoikx7xMRKt/S+4y9JZ9
- ycwr/DJu0+NeuasA7VuImticuba8w9jyuYDtxWlk5gcdqoSDXMazXGN57RSnUbVZZ8
- 2hl3zVmNAEn62cQvCuaDHMn8e1lthShzTzUVy03lrITpeRuR9SzbrqGGqnVGv9gpY7
- VcV+W8PaktyLtQDVWPUwsxfDndvzUjQdjmskIrDvr+LVT6bQHy6VzfCr1zYaD5/Pmr
- a/9C5DBAjqnig==
-Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
- (envelope-from <mchehab@kernel.org>)
- id 1nSfxY-000lIn-Ga; Fri, 11 Mar 2022 15:09:36 +0100
-From: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: 
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- =?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Chen-Yu Tsai <wens@csie.org>,
- Dmitry Osipenko <digetx@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Heiko Stuebner <heiko@sntech.de>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Maxime Ripard <mripard@kernel.org>, Ming Qian <ming.qian@nxp.com>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: [PATCH v2 38/38] drivers: media: platform: move some manufacturer
- entries
-Date: Fri, 11 Mar 2022 15:07:51 +0100
-Message-Id: <b1803d005b2f671d238fc8579882a493c173d1ef.1647006877.git.mchehab@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <cover.1647006877.git.mchehab@kernel.org>
-References: <cover.1647006877.git.mchehab@kernel.org>
+ id 1nSgg2-00GwxA-11; Fri, 11 Mar 2022 14:55:35 +0000
+Received: by mail-oo1-f52.google.com with SMTP id
+ w3-20020a4ac183000000b0031d806bbd7eso10710952oop.13; 
+ Fri, 11 Mar 2022 06:55:33 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=4vC10SOLI9xOKTVYszTXMZKBktQmr7QFcn56lUlHPqY=;
+ b=AeMJ+4pxIKT0I6dnzivVHRgo3xNI4TsgpDFUU1R5Zp02c/o5r8WcY36ivhiw7qnZzr
+ kcSrupJPycuBQreJJa/smfnBIm87MJC57+YcPgexm+F2cnAZKB7eH1ruSXscA7VnbBxw
+ Nk1JV2qRfZCDrbeW9VweuR7rRyWuxCM6RqkJx70qfKmRCk+IDfjsMay5j9Y8lrI7lQH6
+ nPqNC9oV2lzO5K9qHM08VhqOuuLS0T6cAMVjKcSNrgLIyWSe7o24g8H6yOC2KDQYqIJy
+ E9sqX0241Ok7ZdewkcTJeTRCBH6oH9oYXTxrJSC+ZVOa8HjHJ0B3p3AlT3kuh3kfJ2/p
+ QSog==
+X-Gm-Message-State: AOAM533gpxeviAHeSPhPiITmNPY4yyug39ZUEqA+FBN7HBeFo9+Gq+SB
+ MgwszsP9G8X34t4UHM6ebQ==
+X-Google-Smtp-Source: ABdhPJyE+yG0Kmj8j3sIuXoUp3Io81NMMrA2r6Q0cA7nkN1tKUpiAx9HKkuSbr2kBPy0PNmsE3WMOw==
+X-Received: by 2002:a05:6870:3929:b0:d9:a13b:2454 with SMTP id
+ b41-20020a056870392900b000d9a13b2454mr11082044oap.162.1647010532202; 
+ Fri, 11 Mar 2022 06:55:32 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ n23-20020a056870559700b000d47e9dabf0sm3791327oao.0.2022.03.11.06.55.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 11 Mar 2022 06:55:31 -0800 (PST)
+Received: (nullmailer pid 3777813 invoked by uid 1000);
+ Fri, 11 Mar 2022 14:55:30 -0000
+Date: Fri, 11 Mar 2022 08:55:30 -0600
+From: Rob Herring <robh@kernel.org>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Andy Yan <andy.yan@rock-chips.com>,
+ Peter Geis <pgwipeout@gmail.com>, linux-rockchip@lists.infradead.org,
+ Sandy Huang <hjc@rock-chips.com>, kernel@pengutronix.de,
+ Michael Riesch <michael.riesch@wolfvision.net>
+Subject: Re: [PATCH v8 10/24] dt-bindings: display: rockchip: dw-hdmi: Add
+ additional clock
+Message-ID: <Yiti4n0prhDLdYC+@robh.at.kernel.org>
+References: <20220311083323.887372-1-s.hauer@pengutronix.de>
+ <20220311083323.887372-11-s.hauer@pengutronix.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220311083323.887372-11-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_060945_543536_EBF9A9CA 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20220311_065534_106112_38672665 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,99 +89,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As there are 4 manufacturer's directories with multiple sources
-(qcom, rockchip, sti and sunxi), move the sources from
-platform/Kconfig to their specific Konfig files.
+On Fri, 11 Mar 2022 09:33:09 +0100, Sascha Hauer wrote:
+> The rk3568 HDMI has an additional clock that needs to be enabled for the
+> HDMI controller to work. It is not needed for the HDMI controller
+> itself, but to make the SoC internal busses work.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
+> 
+> Notes:
+>     Changes since v7:
+>     - rename hclk to niu
+> 
+>  .../bindings/display/rockchip/rockchip,dw-hdmi.yaml        | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+> 
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
----
-
-To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
-See [PATCH v2 00/38] at: https://lore.kernel.org/all/cover.1647006877.git.mchehab@kernel.org/
-
- drivers/media/platform/Kconfig          | 13 +++----------
- drivers/media/platform/qcom/Kconfig     |  3 +++
- drivers/media/platform/rockchip/Kconfig |  3 +++
- drivers/media/platform/sti/Kconfig      |  5 +++++
- drivers/media/platform/sunxi/Kconfig    |  2 ++
- 5 files changed, 16 insertions(+), 10 deletions(-)
- create mode 100644 drivers/media/platform/qcom/Kconfig
- create mode 100644 drivers/media/platform/rockchip/Kconfig
- create mode 100644 drivers/media/platform/sti/Kconfig
-
-diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index 527e9f08008b..a3ad25c6a56c 100644
---- a/drivers/media/platform/Kconfig
-+++ b/drivers/media/platform/Kconfig
-@@ -85,23 +85,16 @@ source "drivers/media/platform/mtk-vpu/Kconfig"
- source "drivers/media/platform/nxp/Kconfig"
- source "drivers/media/platform/omap3isp/Kconfig"
- source "drivers/media/platform/omap/Kconfig"
--source "drivers/media/platform/qcom/camss/Kconfig"
--source "drivers/media/platform/qcom/venus/Kconfig"
-+source "drivers/media/platform/qcom/Kconfig"
- source "drivers/media/platform/renesas/Kconfig"
--source "drivers/media/platform/rockchip/rga/Kconfig"
--source "drivers/media/platform/rockchip/rkisp1/Kconfig"
-+source "drivers/media/platform/rockchip/Kconfig"
- source "drivers/media/platform/s3c-camif/Kconfig"
- source "drivers/media/platform/s5p-g2d/Kconfig"
- source "drivers/media/platform/s5p-jpeg/Kconfig"
- source "drivers/media/platform/s5p-mfc/Kconfig"
--source "drivers/media/platform/sti/bdisp/Kconfig"
--source "drivers/media/platform/sti/c8sectpfe/Kconfig"
--source "drivers/media/platform/sti/delta/Kconfig"
--source "drivers/media/platform/sti/hva/Kconfig"
-+source "drivers/media/platform/sti/Kconfig"
- source "drivers/media/platform/stm32/Kconfig"
- source "drivers/media/platform/sunxi/Kconfig"
--source "drivers/media/platform/sunxi/sun8i-di/Kconfig"
--source "drivers/media/platform/sunxi/sun8i-rotate/Kconfig"
- source "drivers/media/platform/tegra/vde/Kconfig"
- source "drivers/media/platform/ti-vpe/Kconfig"
- source "drivers/media/platform/via/Kconfig"
-diff --git a/drivers/media/platform/qcom/Kconfig b/drivers/media/platform/qcom/Kconfig
-new file mode 100644
-index 000000000000..aa2428f641d3
---- /dev/null
-+++ b/drivers/media/platform/qcom/Kconfig
-@@ -0,0 +1,3 @@
-+# SPDX-License-Identifier: GPL-2.0
-+source "drivers/media/platform/qcom/camss/Kconfig"
-+source "drivers/media/platform/qcom/venus/Kconfig"
-diff --git a/drivers/media/platform/rockchip/Kconfig b/drivers/media/platform/rockchip/Kconfig
-new file mode 100644
-index 000000000000..c7ba06388780
---- /dev/null
-+++ b/drivers/media/platform/rockchip/Kconfig
-@@ -0,0 +1,3 @@
-+# SPDX-License-Identifier: GPL-2.0
-+source "drivers/media/platform/rockchip/rga/Kconfig"
-+source "drivers/media/platform/rockchip/rkisp1/Kconfig"
-diff --git a/drivers/media/platform/sti/Kconfig b/drivers/media/platform/sti/Kconfig
-new file mode 100644
-index 000000000000..9fb5e78a92cf
---- /dev/null
-+++ b/drivers/media/platform/sti/Kconfig
-@@ -0,0 +1,5 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+source "drivers/media/platform/sti/bdisp/Kconfig"
-+source "drivers/media/platform/sti/c8sectpfe/Kconfig"
-+source "drivers/media/platform/sti/delta/Kconfig"
-+source "drivers/media/platform/sti/hva/Kconfig"
-diff --git a/drivers/media/platform/sunxi/Kconfig b/drivers/media/platform/sunxi/Kconfig
-index 7151cc249afa..a10032215b08 100644
---- a/drivers/media/platform/sunxi/Kconfig
-+++ b/drivers/media/platform/sunxi/Kconfig
-@@ -2,3 +2,5 @@
- 
- source "drivers/media/platform/sunxi/sun4i-csi/Kconfig"
- source "drivers/media/platform/sunxi/sun6i-csi/Kconfig"
-+source "drivers/media/platform/sunxi/sun8i-di/Kconfig"
-+source "drivers/media/platform/sunxi/sun8i-rotate/Kconfig"
--- 
-2.35.1
-
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
