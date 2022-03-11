@@ -4,73 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1A38C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 16:59:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C31A1C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 19:30:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2/ieuLMnwhgBddeHEI2YJuTBM3nqu8jMxV40Rkmbecw=; b=vGZRT9707Y+IdT
-	lgxf3VIDYKJvfhFdsVsHlSZNEqJebFrLk//KHd42oCkYvGEgiFLHsqAL1k3M9YjTYrYbeWKWlR2Rt
-	oSx7uukIZNgZlfNA4fJUDQdBsfXtdNPqKbrZR0CasUe2asVBOCIrsmAJUcVn9K1lFSJiJ9hKfVbqk
-	xaoJ4IhsdQX+V31GQnjhOQH1fX1T8mexoUHWqgXAEhY0mo7EEBRfwbG3hXeDqL+4rFWcinRPelvd1
-	lwh4rRjj3aL6FR/UjCWZ/SDgMVHgm36vX88qyUocb+h08hrxEKPbp2nC9N5SVfuWUSJkpyYd21Nm3
-	OZ67d/MpZLzquirONRzA==;
+	List-Owner; bh=5RJwBvUHdwlSKci3WcqPbqtGmSbxhfKw5H2u03IQv0c=; b=rj+EOMbDWWPoVv
+	Jv2znFZ7y65BqWQycHpgEZpqUBa/H8ZPyXDh5etKQgVQtekjEdL8dThnXGqOQSEk/dL2lILV5PvkF
+	USGiLmEM8P6kQK8wvy/EJgHByJjzBv6YGi4WTg/xk5Zae2rVPvAcs9mUfAHxLGlqDHh/xrEJ/pwcH
+	bmv1wVcYFN50wXM9HORcDkkxbx/mxMT3wB6BgLupFC61K8nCq6mdYiqjHR+It4JgTquEjAfdoFFji
+	YNyOLxcE9GIiqEeClYHQtq9BdzgurUA9ucqHCKKgv2g2JR6GIGi5bxyBhaZxJJkSTJ0mCILYXtFSk
+	HlW7NqZNDjVKK0eHAfeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSibb-00HPbq-UQ; Fri, 11 Mar 2022 16:59:07 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1nSkxq-0005tU-4C; Fri, 11 Mar 2022 19:30:14 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSibE-00HPRm-3r; Fri, 11 Mar 2022 16:58:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1647017924; x=1678553924;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=hBJLDracNIElCTfhPdQSzpk98yuQXkyTtpQr/vOOpJM=;
- b=il45hapW9gxgEfuMMAnlBbRsOeTkMM1lhR5tB1/4eQ2j+ljPj5gf+WTL
- hw8SBi1sGHCoIyCgoZkGZ61g7p6nJ3ZLgjRmXTCpEGQiIR10Nx+tWuTIo
- rIgts8zpeCJm5oHCbYV5i74CCTrAf2XFi/H7Mk2BkrMURBK6X7EbQdI38
- uWeQ/u3vazv4YrUEdfFvz5y7m5Ej0eS8bPexL8k1dv0CTBggFhPTw7EW4
- oWOXjaVDST7BvW+FZBt0vc1HX4ivFvZOQ1W1o1iW4I9XUsn6HjR+T7ANc
- rM8bbLkGKqVLuHWc1EkPvdFjDPJY2Z14eZZvOwZ9KNGx5UbrQ3mH/W1Sz A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10283"; a="280354122"
-X-IronPort-AV: E=Sophos;i="5.90,174,1643702400"; d="scan'208";a="280354122"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Mar 2022 08:58:40 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,174,1643702400"; d="scan'208";a="633467843"
-Received: from lkp-server02.sh.intel.com (HELO 89b41b6ae01c) ([10.239.97.151])
- by FMSMGA003.fm.intel.com with ESMTP; 11 Mar 2022 08:58:37 -0800
-Received: from kbuild by 89b41b6ae01c with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1nSib6-0006nB-Bp; Fri, 11 Mar 2022 16:58:36 +0000
-Date: Sat, 12 Mar 2022 00:57:51 +0800
-From: kernel test robot <lkp@intel.com>
-To: Michael Riesch <michael.riesch@wolfvision.net>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org,
- Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Levin Du <djw@t-chip.com.cn>, Tianling Shen <cnsztl@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, Sascha Hauer <s.hauer@pengutronix.de>,
- Alex Bee <knaerzche@gmail.com>, Liang Chen <cl@rock-chips.com>,
- Peter Geis <pgwipeout@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>
-Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: enable vop2 and hdmi tx on
- rock-3a
-Message-ID: <202203120049.YIR5IFdM-lkp@intel.com>
-References: <20220310210352.451136-4-michael.riesch@wolfvision.net>
+ id 1nSkxm-0005se-Qi
+ for linux-rockchip@lists.infradead.org; Fri, 11 Mar 2022 19:30:12 +0000
+Received: by mail-ed1-x531.google.com with SMTP id c25so9954864edj.13
+ for <linux-rockchip@lists.infradead.org>; Fri, 11 Mar 2022 11:30:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amarulasolutions.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CiUezDJ58r8Iw07Qoyvxoz0ZHX0G/54rwMW8d0RbjzA=;
+ b=iHIAbhWzp8tc0YAwEhQQ/Qz4Ooak+7FaxTGYcSS60i0qCxWBmTJaBBV52h2QbuoHnB
+ B7CReWzagbIfI9r6aP+iT+GRtSrgtqQ/0WD8ekPTrgRYFhm/0QMcLZAcdbzakphIkLDS
+ EKyKWj5aWRdz/VkB5hgB0gJjxMI5baLl0OGms=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CiUezDJ58r8Iw07Qoyvxoz0ZHX0G/54rwMW8d0RbjzA=;
+ b=iYUBCacy+MBS9W3IdTIHOY9tBC7Algg+L2zafMoiMO9WlqX2OKzxHRveP9LT+xOQMu
+ oyYDtrXI0qOfGqhNpb6GAhva1x5Z6AK9U5DHYsj+D+0jeh5g9J5km30Pr1DI7Dkrmc6u
+ ZUJuAtpbnsKF2ZF0GqBzvL75yZlDjqjdBI0o5INmhw5AhZirLaT/hfY3yC/Ov6RjaFpG
+ trUffZa45XorTzXwxDCY8eSyOD6qNYV4dRK48cB7CBEaE9CcF66Ef3aIFwh2LXgeDWZE
+ 2GprUrasqxc+EAZR9esnnghhzXkHPxh4xCKSIgrAvkMFsWo7BBlT3o5DAgiRumBoEPAq
+ v93w==
+X-Gm-Message-State: AOAM5331i6Ks+YrArQmcisNEWdVIMWCFrpg06MagyW9RPVYEDk9gaunT
+ nWUxYpJtNYtlWZj7sRQTvzSQ3PofjpOMJQR1GzT3FgW4VH0=
+X-Google-Smtp-Source: ABdhPJz13FaP30N6s3Ix91dc3p/I2bGiAVjpU4cugf7dfyUG+ysFJja0OY+rv8QfXqkqBg8iY7W8MqSJdHDs0SD2LfM=
+X-Received: by 2002:aa7:d4d6:0:b0:416:30a2:58c7 with SMTP id
+ t22-20020aa7d4d6000000b0041630a258c7mr10143247edr.271.1647027008290; Fri, 11
+ Mar 2022 11:30:08 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220310210352.451136-4-michael.riesch@wolfvision.net>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20210630162251.7378-1-jbx6244@gmail.com>
+ <20210630162251.7378-2-jbx6244@gmail.com>
+In-Reply-To: <20210630162251.7378-2-jbx6244@gmail.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Date: Sat, 12 Mar 2022 00:59:57 +0530
+Message-ID: <CAMty3ZDdvR4doWoXCT-vchg3kQA5gLVO+FW-xUqAeDXEY39QuQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v1 1/6] arm: dts: rockchip: update rk3328.dtsi
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: kever.yang@rock-chips.com, sjg@chromium.org, philipp.tomsich@vrull.eu, 
+ heiko@sntech.de, mail@david-bauer.net, ldevulder@suse.com, wens@csie.org, 
+ banglang.huang@foxmail.com, matwey.kornilov@gmail.com, u-boot@lists.denx.de, 
+ linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_085844_224594_9790F6CC 
-X-CRM114-Status: GOOD (  16.99  )
+X-CRM114-CacheID: sfid-20220311_113010_902173_A008C8A2 
+X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,59 +85,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
+On Thu, Jul 1, 2021 at 12:19 AM Johan Jonker <jbx6244@gmail.com> wrote:
+>
+> In the Linux DT the file rk3328.dtsi has recently had
+> some updates. Update this for U-boot as well.
+> The rk3328 usb3 port has now support in the Linux DT.
+> Rename node names ending on 'gpio' to 'pin' or 'pins'.
+>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
 
-Thank you for the patch! Yet something to improve:
-
-[auto build test ERROR on robh/for-next]
-[also build test ERROR on arm/for-next xilinx-xlnx/master arm64/for-next/core shawnguo/for-next clk/clk-next kvmarm/next keystone/next v5.17-rc7]
-[cannot apply to rockchip/for-next soc/for-next next-20220310]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/0day-ci/linux/commits/Michael-Riesch/arm64-dts-rockchip-add-basic-dts-for-the-radxa-rock3-model-a/20220311-050612
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-config: arm64-randconfig-r014-20220310 (https://download.01.org/0day-ci/archive/20220312/202203120049.YIR5IFdM-lkp@intel.com/config)
-compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project 276ca87382b8f16a65bddac700202924228982f6)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install arm64 cross compiling tool for clang build
-        # apt-get install binutils-aarch64-linux-gnu
-        # https://github.com/0day-ci/linux/commit/c217f194b7a9cbdb7cbb8149ae1f6e8c2faf6e3f
-        git remote add linux-review https://github.com/0day-ci/linux
-        git fetch --no-tags linux-review Michael-Riesch/arm64-dts-rockchip-add-basic-dts-for-the-radxa-rock3-model-a/20220311-050612
-        git checkout c217f194b7a9cbdb7cbb8149ae1f6e8c2faf6e3f
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-All errors (new ones prefixed by >>):
-
->> arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts:7:10: fatal error: 'dt-bindings/soc/rockchip,vop2.h' file not found
-   #include <dt-bindings/soc/rockchip,vop2.h>
-            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   1 error generated.
-
-
-vim +7 arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-
-     2	
-     3	/dts-v1/;
-     4	#include <dt-bindings/gpio/gpio.h>
-     5	#include <dt-bindings/leds/common.h>
-     6	#include <dt-bindings/pinctrl/rockchip.h>
-   > 7	#include <dt-bindings/soc/rockchip,vop2.h>
-     8	#include "rk3568.dtsi"
-     9	
-
----
-0-DAY CI Kernel Test Service
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+This patch needs to squash 3/6 and adds a commit tag from Linux Sync.
 
 _______________________________________________
 Linux-rockchip mailing list
