@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A23C8C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 08:42:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC043C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 08:42:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j975VVZgn/RixLx2KrZ0OKA2Q/bkpNSkvJkTx2NMPK8=; b=sdYiAOUGF95gNI
-	D1KkoDP4iZ6kEIZgT6sgZxTou8z0nXxd93lXnfom6KXa6Ucdp4j6QlDqgaysEGW0KOjbXEkTD2s48
-	/VPMsxxRVeEkF9+jw6UxH9XzPVFPeOSPedix8d3A+50YOh0C8ZgCDCk6E2FJp92ELEC0DkZavfjJ7
-	SBfAB9vEUplTpRSwJgtH3xjXdlrMZctUS3tgNztREF7GxaQNA4xKcLq3jM7CQeEdCjIT/mcQXIAub
-	0/aEQ2KRHjkV3WVLcPLak+oi2ZI9pLMbm9PXzbgx2gLpvn8R0+IlhVNtFRsmsZXFCJAKVzepnAl6Y
-	LJE0LMHWldCb8cf4riZw==;
+	List-Owner; bh=7bVOsODxDut6pIXmeCF/EwdacOx8pysfg0ncgeH5LWs=; b=TLt2tGrS05vYw7
+	JFbXfS8rtGLv7EwBOheih+lw64ovVEYC3Xeiw4rkpjlbq+TD+gM8NTIEWRGEmDoi56arxu/F8sIg6
+	nBpDvOwIwcQ3nQH9ijru7jsOqXc9M1ZRwUvm1l7yxjDpeOfzm6ms6yqtkLZf3aXW4z5xj75WrMzMN
+	etMuIb8al2AO1MiGZ2xlKjJdVueQ4JuTNVGgsYs6PMmsM1rh8yZiqpE+W/a54w6LBnrFqMhAa/bjS
+	FyNY0st+wlAUx2d1LfEijrll0AcjSi1HvvYQPOEIefo+5AxQB6iEdNY6gmYyFk3bvYeVOqbHy/7ln
+	rR84DXGhsQ1I3svEE5ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSaqy-00Fdm8-Jx; Fri, 11 Mar 2022 08:42:28 +0000
+	id 1nSaqz-00FdnM-Vx; Fri, 11 Mar 2022 08:42:30 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSaiW-00FZJN-OL
- for linux-rockchip@lists.infradead.org; Fri, 11 Mar 2022 08:33:50 +0000
+ id 1nSaiW-00FZJM-JI
+ for linux-rockchip@lists.infradead.org; Fri, 11 Mar 2022 08:33:51 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nSaiL-0000ab-9M; Fri, 11 Mar 2022 09:33:33 +0100
+ id 1nSaiL-0000aR-7b; Fri, 11 Mar 2022 09:33:33 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nSaiE-0040hq-OR; Fri, 11 Mar 2022 09:33:26 +0100
+ id 1nSaiE-0040h9-Js; Fri, 11 Mar 2022 09:33:26 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -43,9 +43,9 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v8 21/24] drm/rockchip: Make VOP driver optional
-Date: Fri, 11 Mar 2022 09:33:20 +0100
-Message-Id: <20220311083323.887372-22-s.hauer@pengutronix.de>
+Subject: [PATCH v8 13/24] drm/rockchip: dw_hdmi: drop mode_valid hook
+Date: Fri, 11 Mar 2022 09:33:12 +0100
+Message-Id: <20220311083323.887372-14-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220311083323.887372-1-s.hauer@pengutronix.de>
 References: <20220311083323.887372-1-s.hauer@pengutronix.de>
@@ -56,8 +56,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_003344_944905_A3200E49 
-X-CRM114-Status: GOOD (  14.22  )
+X-CRM114-CacheID: sfid-20220311_003344_958753_EA453EFD 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,65 +75,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With upcoming VOP2 support VOP won't be the only choice anymore, so make
-the VOP driver optional.
+The driver checks if the pixel clock of the given mode matches an entry
+in the mpll config table. The frequencies in the mpll table are meant as
+a frequency range up to which the entry works, not as a frequency that
+must match the pixel clock. The downstream Kernel also does not have
+this check, so drop it to allow for more display resolutions.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- drivers/gpu/drm/rockchip/Kconfig            | 8 ++++++++
- drivers/gpu/drm/rockchip/Makefile           | 3 ++-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 2 +-
- 3 files changed, 11 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-index 9f1ecefc39332..b9b156308460a 100644
---- a/drivers/gpu/drm/rockchip/Kconfig
-+++ b/drivers/gpu/drm/rockchip/Kconfig
-@@ -21,8 +21,16 @@ config DRM_ROCKCHIP
+Notes:
+    Changes since v3:
+    - new patch
+
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 25 ---------------------
+ 1 file changed, 25 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 265b615bfacdc..4f912cbea73bb 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -257,26 +257,6 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ 	return 0;
+ }
  
- if DRM_ROCKCHIP
+-static enum drm_mode_status
+-dw_hdmi_rockchip_mode_valid(struct dw_hdmi *hdmi, void *data,
+-			    const struct drm_display_info *info,
+-			    const struct drm_display_mode *mode)
+-{
+-	const struct dw_hdmi_mpll_config *mpll_cfg = rockchip_mpll_cfg;
+-	int pclk = mode->clock * 1000;
+-	bool valid = false;
+-	int i;
+-
+-	for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
+-		if (pclk == mpll_cfg[i].mpixelclock) {
+-			valid = true;
+-			break;
+-		}
+-	}
+-
+-	return (valid) ? MODE_OK : MODE_BAD;
+-}
+-
+ static void dw_hdmi_rockchip_encoder_disable(struct drm_encoder *encoder)
+ {
+ }
+@@ -442,7 +422,6 @@ static struct rockchip_hdmi_chip_data rk3228_chip_data = {
+ };
  
-+config ROCKCHIP_VOP
-+	bool "Rockchip VOP driver"
-+	default y
-+	help
-+	  This selects support for the VOP driver. You should enable it
-+	  on all older SoCs up to RK3399.
-+
- config ROCKCHIP_ANALOGIX_DP
- 	bool "Rockchip specific extensions for Analogix DP driver"
-+	depends on ROCKCHIP_VOP
- 	help
- 	  This selects support for Rockchip SoC specific extensions
- 	  for the Analogix Core DP driver. If you want to enable DP
-diff --git a/drivers/gpu/drm/rockchip/Makefile b/drivers/gpu/drm/rockchip/Makefile
-index 1a56f696558ca..dfc5512fdb9f1 100644
---- a/drivers/gpu/drm/rockchip/Makefile
-+++ b/drivers/gpu/drm/rockchip/Makefile
-@@ -4,8 +4,9 @@
- # Direct Rendering Infrastructure (DRI) in XFree86 4.1.0 and higher.
+ static const struct dw_hdmi_plat_data rk3228_hdmi_drv_data = {
+-	.mode_valid = dw_hdmi_rockchip_mode_valid,
+ 	.mpll_cfg = rockchip_mpll_cfg,
+ 	.cur_ctr = rockchip_cur_ctr,
+ 	.phy_config = rockchip_phy_config,
+@@ -459,7 +438,6 @@ static struct rockchip_hdmi_chip_data rk3288_chip_data = {
+ };
  
- rockchipdrm-y := rockchip_drm_drv.o rockchip_drm_fb.o \
--		rockchip_drm_gem.o rockchip_drm_vop.o rockchip_vop_reg.o
-+		rockchip_drm_gem.o
+ static const struct dw_hdmi_plat_data rk3288_hdmi_drv_data = {
+-	.mode_valid = dw_hdmi_rockchip_mode_valid,
+ 	.mpll_cfg   = rockchip_mpll_cfg,
+ 	.cur_ctr    = rockchip_cur_ctr,
+ 	.phy_config = rockchip_phy_config,
+@@ -479,7 +457,6 @@ static struct rockchip_hdmi_chip_data rk3328_chip_data = {
+ };
  
-+rockchipdrm-$(CONFIG_ROCKCHIP_VOP) += rockchip_drm_vop.o rockchip_vop_reg.o
- rockchipdrm-$(CONFIG_ROCKCHIP_ANALOGIX_DP) += analogix_dp-rockchip.o
- rockchipdrm-$(CONFIG_ROCKCHIP_CDN_DP) += cdn-dp-core.o cdn-dp-reg.o
- rockchipdrm-$(CONFIG_ROCKCHIP_DW_HDMI) += dw_hdmi-rockchip.o
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index 7920a4f44f693..cf8dba96a7dee 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -491,7 +491,7 @@ static int __init rockchip_drm_init(void)
- 	int ret;
+ static const struct dw_hdmi_plat_data rk3328_hdmi_drv_data = {
+-	.mode_valid = dw_hdmi_rockchip_mode_valid,
+ 	.mpll_cfg = rockchip_mpll_cfg,
+ 	.cur_ctr = rockchip_cur_ctr,
+ 	.phy_config = rockchip_phy_config,
+@@ -497,7 +474,6 @@ static struct rockchip_hdmi_chip_data rk3399_chip_data = {
+ };
  
- 	num_rockchip_sub_drivers = 0;
--	ADD_ROCKCHIP_SUB_DRIVER(vop_platform_driver, CONFIG_DRM_ROCKCHIP);
-+	ADD_ROCKCHIP_SUB_DRIVER(vop_platform_driver, CONFIG_ROCKCHIP_VOP);
- 	ADD_ROCKCHIP_SUB_DRIVER(rockchip_lvds_driver,
- 				CONFIG_ROCKCHIP_LVDS);
- 	ADD_ROCKCHIP_SUB_DRIVER(rockchip_dp_driver,
+ static const struct dw_hdmi_plat_data rk3399_hdmi_drv_data = {
+-	.mode_valid = dw_hdmi_rockchip_mode_valid,
+ 	.mpll_cfg   = rockchip_mpll_cfg,
+ 	.cur_ctr    = rockchip_cur_ctr,
+ 	.phy_config = rockchip_phy_config,
+@@ -510,7 +486,6 @@ static struct rockchip_hdmi_chip_data rk3568_chip_data = {
+ };
+ 
+ static const struct dw_hdmi_plat_data rk3568_hdmi_drv_data = {
+-	.mode_valid = dw_hdmi_rockchip_mode_valid,
+ 	.mpll_cfg   = rockchip_mpll_cfg,
+ 	.cur_ctr    = rockchip_cur_ctr,
+ 	.phy_config = rockchip_phy_config,
 -- 
 2.30.2
 
