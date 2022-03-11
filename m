@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7078C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 08:44:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59FDBC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 08:45:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/psYTI4XJLVhGTug/XfnPGc2anCnsO3caj4T7shM3r0=; b=LVm9BoPsi4FqEZ
-	fHx44XDW9reLl9tewAWtMSlGyJmN0cNATU0T1y1hu2RMYnQR8YiSzuhXsFD+RcqVUCzjTb4btJiG/
-	jBDnvoCODF6n8T2GZBjNI6Ehk+y3Cy0DDvWfE98f7eCg+aagzC36c4FDg4FGDJeaPx8wLpGEMZXYM
-	LN+374zPohehncL2MZN6sbHm56FUWb77WOEen9xgS7Bj4WIJCbovAvNA5HwV6Hq53YhhzQ4kzNKan
-	Qc4b6Du8hBtqICe9+VGZwl2tTQnopSVnWyVAB01kG1P+LZmoXvNgNv43Ae8VelOXpOflBUspt3EIf
-	fWpq79ugmIRTq8LKfigw==;
+	List-Owner; bh=S44eKKcbmZ20bVLLR/XqrYGs3hFVSTrQT8X/vPeo6c0=; b=HIp9ZapA1+3qAe
+	3wqE+yfCTaWLr3/48euS1NzGSgAnml/0il/WTvkw8ECmIs+Nigy9dgIxnAHL0cjctEO/Tgx81u13K
+	cafmh4uaTBfDClgVEhBukQg5nQOzlGYRAQSux15tVO9+f1GmfjT8TIw9v9BQv9pZjLNOQCmqdvE9n
+	ucVWpF4wdD4iIp+uhIjLSuUigmm6ubWvNhPN51hnEXuyovE5oSxnF/q66DgQXo5pPVKq0wtgcDWG2
+	Xr+jMcNUwbBWmD1AiH8htSmjIm6mTHW8eYSijarwmR7biUa4Bqk3XxSWeSuqQJZPejjhPwO6irYx2
+	QLE0vuKSJLUiHr5kvHcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSatL-00Ff1Z-6d; Fri, 11 Mar 2022 08:44:55 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nSatN-00Ff2b-Kd; Fri, 11 Mar 2022 08:44:57 +0000
+Received: from metis.ext.pengutronix.de ([85.220.165.71])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSaic-00FZMa-2f
+ id 1nSaic-00FZMr-OR
  for linux-rockchip@lists.infradead.org; Fri, 11 Mar 2022 08:33:57 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nSaiI-0000aK-F2; Fri, 11 Mar 2022 09:33:30 +0100
+ id 1nSaiI-0000aM-FN; Fri, 11 Mar 2022 09:33:30 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nSaiE-0040ga-Fs; Fri, 11 Mar 2022 09:33:26 +0100
+ id 1nSaiE-0040gh-Gt; Fri, 11 Mar 2022 09:33:26 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -42,10 +42,11 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v8 06/24] drm/rockchip: dw_hdmi: add rk3568 support
-Date: Fri, 11 Mar 2022 09:33:05 +0100
-Message-Id: <20220311083323.887372-7-s.hauer@pengutronix.de>
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Subject: [PATCH v8 08/24] drm/rockchip: dw_hdmi: add regulator support
+Date: Fri, 11 Mar 2022 09:33:07 +0100
+Message-Id: <20220311083323.887372-9-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220311083323.887372-1-s.hauer@pengutronix.de>
 References: <20220311083323.887372-1-s.hauer@pengutronix.de>
@@ -56,8 +57,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_003350_174485_F633D0E8 
-X-CRM114-Status: GOOD (  14.67  )
+X-CRM114-CacheID: sfid-20220311_003350_823552_065ACA64 
+X-CRM114-Status: GOOD (  17.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,84 +76,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a new dw_hdmi_plat_data struct and new compatible for rk3568.
+The RK3568 has HDMI_TX_AVDD0V9 and HDMI_TX_AVDD_1V8 supply inputs needed
+for the HDMI port. add support for these to the driver for boards which
+have them supplied by switchable regulators.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 31 +++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 41 +++++++++++++++++++--
+ 1 file changed, 38 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 912181429880a..b64cc62c7b5af 100644
+index b64cc62c7b5af..fe4f9556239ac 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -50,6 +50,10 @@
- #define RK3399_GRF_SOC_CON20		0x6250
- #define RK3399_HDMI_LCDC_SEL		BIT(6)
+@@ -9,6 +9,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/phy/phy.h>
+ #include <linux/regmap.h>
++#include <linux/regulator/consumer.h>
  
-+#define RK3568_GRF_VO_CON1		0x0364
-+#define RK3568_HDMI_SDAIN_MSK		BIT(15)
-+#define RK3568_HDMI_SCLIN_MSK		BIT(14)
-+
- #define HIWORD_UPDATE(val, mask)	(val | (mask) << 16)
- 
- /**
-@@ -473,6 +477,19 @@ static const struct dw_hdmi_plat_data rk3399_hdmi_drv_data = {
- 	.use_drm_infoframe = true,
+ #include <drm/bridge/dw_hdmi.h>
+ #include <drm/drm_edid.h>
+@@ -76,6 +77,8 @@ struct rockchip_hdmi {
+ 	struct clk *ref_clk;
+ 	struct clk *grf_clk;
+ 	struct dw_hdmi *hdmi;
++	struct regulator *avdd_0v9;
++	struct regulator *avdd_1v8;
+ 	struct phy *phy;
  };
  
-+static struct rockchip_hdmi_chip_data rk3568_chip_data = {
-+	.lcdsel_grf_reg = -1,
-+};
-+
-+static const struct dw_hdmi_plat_data rk3568_hdmi_drv_data = {
-+	.mode_valid = dw_hdmi_rockchip_mode_valid,
-+	.mpll_cfg   = rockchip_mpll_cfg,
-+	.cur_ctr    = rockchip_cur_ctr,
-+	.phy_config = rockchip_phy_config,
-+	.phy_data = &rk3568_chip_data,
-+	.use_drm_infoframe = true,
-+};
-+
- static const struct of_device_id dw_hdmi_rockchip_dt_ids[] = {
- 	{ .compatible = "rockchip,rk3228-dw-hdmi",
- 	  .data = &rk3228_hdmi_drv_data
-@@ -486,6 +503,9 @@ static const struct of_device_id dw_hdmi_rockchip_dt_ids[] = {
- 	{ .compatible = "rockchip,rk3399-dw-hdmi",
- 	  .data = &rk3399_hdmi_drv_data
- 	},
-+	{ .compatible = "rockchip,rk3568-dw-hdmi",
-+	  .data = &rk3568_hdmi_drv_data
-+	},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, dw_hdmi_rockchip_dt_ids);
-@@ -520,6 +540,9 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 	encoder = &hdmi->encoder.encoder;
+@@ -226,6 +229,14 @@ static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+ 		return PTR_ERR(hdmi->grf_clk);
+ 	}
  
- 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
-+	rockchip_drm_encoder_set_crtc_endpoint_id(&hdmi->encoder,
-+						  dev->of_node, 0, 0);
++	hdmi->avdd_0v9 = devm_regulator_get(hdmi->dev, "avdd-0v9");
++	if (IS_ERR(hdmi->avdd_0v9))
++		return PTR_ERR(hdmi->avdd_0v9);
 +
- 	/*
- 	 * If we failed to find the CRTC(s) which this encoder is
- 	 * supposed to be connected to, it's because the CRTC has
-@@ -550,6 +573,14 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
++	hdmi->avdd_1v8 = devm_regulator_get(hdmi->dev, "avdd-1v8");
++	if (IS_ERR(hdmi->avdd_1v8))
++		return PTR_ERR(hdmi->avdd_1v8);
++
+ 	return 0;
+ }
+ 
+@@ -566,11 +577,23 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
  		return ret;
  	}
  
-+	if (hdmi->chip_data == &rk3568_chip_data) {
-+		regmap_write(hdmi->regmap, RK3568_GRF_VO_CON1,
-+			     HIWORD_UPDATE(RK3568_HDMI_SDAIN_MSK |
-+					   RK3568_HDMI_SCLIN_MSK,
-+					   RK3568_HDMI_SDAIN_MSK |
-+					   RK3568_HDMI_SCLIN_MSK));
++	ret = regulator_enable(hdmi->avdd_0v9);
++	if (ret) {
++		DRM_DEV_ERROR(hdmi->dev, "failed to enable avdd0v9: %d\n", ret);
++		goto err_avdd_0v9;
 +	}
 +
- 	drm_encoder_helper_add(encoder, &dw_hdmi_rockchip_encoder_helper_funcs);
- 	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
++	ret = regulator_enable(hdmi->avdd_1v8);
++	if (ret) {
++		DRM_DEV_ERROR(hdmi->dev, "failed to enable avdd1v8: %d\n", ret);
++		goto err_avdd_1v8;
++	}
++
+ 	ret = clk_prepare_enable(hdmi->ref_clk);
+ 	if (ret) {
+ 		DRM_DEV_ERROR(hdmi->dev, "Failed to enable HDMI reference clock: %d\n",
+ 			      ret);
+-		return ret;
++		goto err_clk;
+ 	}
  
+ 	if (hdmi->chip_data == &rk3568_chip_data) {
+@@ -594,10 +617,19 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	 */
+ 	if (IS_ERR(hdmi->hdmi)) {
+ 		ret = PTR_ERR(hdmi->hdmi);
+-		drm_encoder_cleanup(encoder);
+-		clk_disable_unprepare(hdmi->ref_clk);
++		goto err_bind;
+ 	}
+ 
++	return 0;
++
++err_bind:
++	clk_disable_unprepare(hdmi->ref_clk);
++	drm_encoder_cleanup(encoder);
++err_clk:
++	regulator_disable(hdmi->avdd_1v8);
++err_avdd_1v8:
++	regulator_disable(hdmi->avdd_0v9);
++err_avdd_0v9:
+ 	return ret;
+ }
+ 
+@@ -608,6 +640,9 @@ static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
+ 
+ 	dw_hdmi_unbind(hdmi->hdmi);
+ 	clk_disable_unprepare(hdmi->ref_clk);
++
++	regulator_disable(hdmi->avdd_1v8);
++	regulator_disable(hdmi->avdd_0v9);
+ }
+ 
+ static const struct component_ops dw_hdmi_rockchip_ops = {
 -- 
 2.30.2
 
