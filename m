@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E67FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 08:38:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8F26C433FE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 08:38:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IvbBaU3Sxg+YELGG+HgsH07RWFHL5aEwbhqD8zU0cB0=; b=r1827XrQP+LVMy
-	5oOQQAPTpBReuWOn1r22fmqtU5iirAU99KYSRp138IrS7q/1BG/4BXXKzIQXhdhueRBCW/o84YWtW
-	ITKEbcx//R8bKgRXWwzA/u9II1JzaPKDMvA3qBACiTZ2Ymm9WxCjXWuth6IPPIf1zr4AcRCRNAh2P
-	xDeUgcNImB8Oy9nDdsIJCm1fwNoqIWy+nR6g1selFGgmmqW4AEVnHNSD/W4rXWyM/k9Pu/5WjqhQv
-	c9q6kpp3lOo3Dzh97dZZSWm/ljm8Q8q6G3cyEXsqvhqE/k0S5MBQ4wZw2UUGGRbYJhjo0Qb2yRL9n
-	Q+RVIqiVN7K7zPReo9KA==;
+	List-Owner; bh=4cOYvVHtNZyGYE9OPQsf/gLYHaA+LpxvkweP0ooXpww=; b=xyEPEbBWCfFxWg
+	tbITpE27ltn7qvJcYz7XPPONkxdMdjTDdDrZjd4ZPqQlGvcuVe3afo0+td4sLh9CenFYNo7JulqJm
+	d1cfCC0PB3NRACjjXjFtOf6QgWJIyy2ZFOpW6pAymZ7Dzkm0HWs/3NiKyBlkgmt8/P47e0ULkAT0x
+	U7bIhJK/ofYO2O3O0ZOwGzjeCtV5GWepkEX69UbrBjhGbket/BFcLkvTSJXhuLxMzpKCo/LOQdQUC
+	QEiJKY4TBWJdiMJWmAKzzw7PufRm5njCL0WLopx5CY/yt6Rpb3uTEI5uQfG7jIkbvnjL4zQ4Y4ndM
+	yZTtZ6SMAcDVAuNcECNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSanB-00Fbsz-89; Fri, 11 Mar 2022 08:38:33 +0000
+	id 1nSanC-00Fbtf-BL; Fri, 11 Mar 2022 08:38:34 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSaiT-00FZG6-IH
+ id 1nSaiT-00FZG8-JT
  for linux-rockchip@lists.infradead.org; Fri, 11 Mar 2022 08:33:44 +0000
 Received: from dude02.hi.pengutronix.de ([2001:67c:670:100:1d::28])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nSaiI-0000aL-IY; Fri, 11 Mar 2022 09:33:30 +0100
+ id 1nSaiI-0000aJ-F1; Fri, 11 Mar 2022 09:33:30 +0100
 Received: from sha by dude02.hi.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nSaiE-0040ge-GS; Fri, 11 Mar 2022 09:33:26 +0100
+ id 1nSaiE-0040gU-FS; Fri, 11 Mar 2022 09:33:26 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -42,12 +42,11 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v8 07/24] dt-bindings: display: rockchip: dw-hdmi: Add
- compatible for rk3568 HDMI
-Date: Fri, 11 Mar 2022 09:33:06 +0100
-Message-Id: <20220311083323.887372-8-s.hauer@pengutronix.de>
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v8 05/24] arm64: dts: rockchip: rk3399: rename HDMI ref clock
+ to 'ref'
+Date: Fri, 11 Mar 2022 09:33:04 +0100
+Message-Id: <20220311083323.887372-6-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220311083323.887372-1-s.hauer@pengutronix.de>
 References: <20220311083323.887372-1-s.hauer@pengutronix.de>
@@ -58,9 +57,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_003341_634159_C182353C 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220311_003341_682901_7049BBD6 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,31 +76,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+The reference clock for the HDMI controller has been renamed to 'ref',
+the previous 'vpll' name is only left for compatibility in the driver.
+Rename the clock to the new name.
 
-Define a new compatible for rk3568 HDMI.
-This version of HDMI hardware block needs two new clocks hclk_vio and hclk
-to provide phy reference clocks.
-
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- .../devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml   | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-index 0400f67e5f2c9..e6b8437a1e2d1 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-@@ -23,6 +23,7 @@ properties:
-       - rockchip,rk3288-dw-hdmi
-       - rockchip,rk3328-dw-hdmi
-       - rockchip,rk3399-dw-hdmi
-+      - rockchip,rk3568-dw-hdmi
- 
-   reg-io-width:
-     const: 4
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 080457a68e3c7..d0add619b0d22 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1884,7 +1884,7 @@ hdmi: hdmi@ff940000 {
+ 			 <&cru SCLK_HDMI_CEC>,
+ 			 <&cru PCLK_VIO_GRF>,
+ 			 <&cru PLL_VPLL>;
+-		clock-names = "iahb", "isfr", "cec", "grf", "vpll";
++		clock-names = "iahb", "isfr", "cec", "grf", "ref";
+ 		power-domains = <&power RK3399_PD_HDCP>;
+ 		reg-io-width = <4>;
+ 		rockchip,grf = <&grf>;
 -- 
 2.30.2
 
