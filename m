@@ -4,84 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B3EDC433FE
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Mar 2022 11:25:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 341E6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Mar 2022 21:08:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9sdo2maM7p0x1kAL3bGqvVPf/SUXxRViaBqRb2uQc24=; b=EUTO/bD4vxeshQ
-	L5PvS7QWQfcegEdhpqud5ib9gTY/V7ZMdwFTnVY/B6ULCBOsdAIar/0bxVDwIgzsQxisd73wlez+4
-	Lk5iI6jxSLlKENMQB2cg876T+4EHN5d1NyMiMKzJFjhCXe4S/NVqEiGWPyd7bX/Jsp3WuiqvlYEy/
-	ABxlKZcXWCQnCkebf86GFagZ4RBUnDyHHCL+wa98ID82A07yPZUB4+jOBOP3zFccaq/L9vZrv0ted
-	QTd2Q9aFIbKhSYkf9dC4PabFzZnny934Lp9zQCB6iafTT8HQBRP5EQNQzl5JNmrDdgbdIF8HUXQaz
-	EisYLzkQN7U2/fvlhEGA==;
+	List-Owner; bh=liVuyw8nMbX49rHI0YgK7qfp3anxLbHJYXnpEdkk40I=; b=smFOrI+NmVebcf
+	/EkOHVcatU9TvhLtGp1cJUqd0d52xU+JZAZmpLjjNdi+T9L53op3e2pbSrDHhdnL9Sv2DZxJ5d2kV
+	yBa7yqMgEWb7lu7l1xhDmYnoV/7onPURKbiEg4gGrFYIqFNRqUpBq4jL1yW+8aPPUTPC3FQScs2Sf
+	Q2vxlDj3ewen2Vb/oGHC7h1OpRxaNQ7o5rvhUuXA1Z+MhTVpHTi0mvL+muLhJrbPRFt+qTuFhrt6K
+	ghMSEtx8BWB2SehBDYmhFuNwMylhPKglHiDUS9cKwGQsx0zBr5+tP781f1EyxvkErR+myE93VEn7W
+	JEdyAH0FEAWSZ5kr6egw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSzsD-001ALy-N4; Sat, 12 Mar 2022 11:25:25 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1nT8yH-001qyR-7P; Sat, 12 Mar 2022 21:08:17 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSzs0-001AGw-0g; Sat, 12 Mar 2022 11:25:13 +0000
-Received: by mail-ej1-x636.google.com with SMTP id gb39so24088517ejc.1;
- Sat, 12 Mar 2022 03:25:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=fx0MrYefQPXmP/XkFOCjZt2OHaGLfQKFTyYOY0yPe9w=;
- b=gaf2zOWy1w6FBA6+DRGE+ymkly6rJbMD+1y/WVH7LfobmhPDArS2489NFlbZqaYLXu
- EX//j+8IDLl6ijB3uSgu08XPSNCpn68rwicL4DeWgYgnz+tm37M6cwKgT7TraKQrbwLD
- xZ5w0cT76gS4R7LqImqhwzG7zI1ho6lwOqJT3Hw0hHT7C5Gc8KLX7C8a07QM8iL9aAPh
- N2q31V83w5/3/8Uj1rK8EbbEcnkyRjrOloCIV8TGC88FvUiRv84Jb0hB65XuyWy/xBBQ
- JA+spDq39+sGWg51GyengXW7vEZ2/afHIqrM2vT837hOreuVaWYBSfJ4PiOdqIXvHxJe
- T/Rw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=fx0MrYefQPXmP/XkFOCjZt2OHaGLfQKFTyYOY0yPe9w=;
- b=BQG/L6iTtVq+pqGWUnPfEuSpUecZ+lTV5zeCK2QfUYSVhL4ArFM+jr18AYryT/5jFJ
- Iu1GIwujn6xhLTmLf4FWGP/+6c7zH8sRDiTBkgaOyj69PgXXY+hk3IgDGIqmRLOVKNLT
- sJmmX7fvbDQ9mntpcy82wXvk9H2ljqfOlGMq1EuMml+8Xd60EW0M1crWVFe0/Yuk/+Kz
- 2f0SdlS+B4V7IRWjUK8X9qkkZ1m/dqpTFuQXQRA/OOnQcBW2X2xV9SqfEI6oz8QvOcUz
- htSn74tDYGYgk5OD8eHAg3BFEbGdqh4Ff4pddiyH7wl0ZFzYitDyDgU/r5Dffc6wEltg
- gnjQ==
-X-Gm-Message-State: AOAM532PLk1l46x6CWPoz3iOEkF6N3dg8Sfw8U6laOUo9mGIDK+vKF33
- fZM8D6jhemRcekT8W08CvYc=
-X-Google-Smtp-Source: ABdhPJwd+u8szoFSR1CMM8z8hBobMLvJ4Z1fdinUtjhYzvSepYT5FB3cQTiUZmVDovs8o2cWc/NeBw==
-X-Received: by 2002:a17:907:7e8f:b0:6da:6352:a7be with SMTP id
- qb15-20020a1709077e8f00b006da6352a7bemr11651882ejc.612.1647084310533; 
- Sat, 12 Mar 2022 03:25:10 -0800 (PST)
-Received: from kista.localnet (cpe-86-58-32-107.static.triera.net.
- [86.58.32.107]) by smtp.gmail.com with ESMTPSA id
- ka6-20020a170907990600b006ce54c95e3csm4186601ejc.161.2022.03.12.03.25.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 12 Mar 2022 03:25:10 -0800 (PST)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Niklas =?ISO-8859-1?Q?S=F6derlund?=
- <niklas.soderlund+renesas@ragnatech.se>, Andy Gross <agross@kernel.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>, Chen-Yu Tsai <wens@csie.org>,
- Dmitry Osipenko <digetx@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Heiko Stuebner <heiko@sntech.de>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Maxime Ripard <mripard@kernel.org>, Ming Qian <ming.qian@nxp.com>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH v2 38/38] drivers: media: platform: move some manufacturer
- entries
-Date: Sat, 12 Mar 2022 12:25:08 +0100
-Message-ID: <4720554.31r3eYUQgx@kista>
-In-Reply-To: <b1803d005b2f671d238fc8579882a493c173d1ef.1647006877.git.mchehab@kernel.org>
-References: <cover.1647006877.git.mchehab@kernel.org>
- <b1803d005b2f671d238fc8579882a493c173d1ef.1647006877.git.mchehab@kernel.org>
+ id 1nT8y4-001qwx-B8; Sat, 12 Mar 2022 21:08:05 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dmitry.osipenko) with ESMTPSA id AE00E1F4595D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1647119280;
+ bh=wLExJO5a7BmNAEjWa2vEXI65hZUlcnfDKIQubmXYQnc=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=QYeUEH+ikY/Ro0+JeLJULZFKaxxIFkAzMFLOhDP83klBIXSO/dTzyh02Ta91Msvkz
+ Co7Da98R4PxLxTf2su/UBioVU1YgOlfOenhHw9yjbvlMiP8/WA1Qld7GSG3cGG4J7x
+ EZUrFmknuwGh3ws+Cq61njszuQwOgN+ztZthFrmQDfnJpw6xvxp6h9urLbStLUAE94
+ sby0sevwi1CxegYfipUaMpooeK8yJl7rIW2Pfy90HqIgLTzifmmpOgC03xlNdjseFg
+ UorG2by37kNYSuDTChgTvPzoOxNyzudZ62M5A8MCmVbQqawTlFPPQSLjS4XE456Bl4
+ FAnhceRnDkSWg==
+Message-ID: <4712e128-8a14-e361-0819-911dc3453372@collabora.com>
+Date: Sun, 13 Mar 2022 00:07:56 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.2
+Subject: Re: [PATCH v8 09/24] drm/rockchip: dw_hdmi: Add support for niu clk
+Content-Language: en-US
+To: Sascha Hauer <s.hauer@pengutronix.de>,
+ "elaine.zhang" <zhangqing@rock-chips.com>,
+ Robin Murphy <robin.murphy@arm.com>
+Cc: devicetree@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Peter Geis <pgwipeout@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
+ linux-rockchip@lists.infradead.org,
+ Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
+ Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
+ dri-devel@lists.freedesktop.org
+References: <20220311083323.887372-1-s.hauer@pengutronix.de>
+ <20220311083323.887372-10-s.hauer@pengutronix.de>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <20220311083323.887372-10-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220312_032512_098153_AC7F4FC2 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20220312_130804_615747_7B178F11 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,115 +77,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Dne petek, 11. marec 2022 ob 15:07:51 CET je Mauro Carvalho Chehab napisal(a):
-> As there are 4 manufacturer's directories with multiple sources
-> (qcom, rockchip, sti and sunxi), move the sources from
-> platform/Kconfig to their specific Konfig files.
+On 3/11/22 11:33, Sascha Hauer wrote:
+> The rk3568 HDMI has an additional clock that needs to be enabled for the
+> HDMI controller to work. This clock is not needed for the HDMI
+> controller itself, but to make the SoC internal bus logic work. From the
+> reference manual:
 > 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
-> ---
-> 
-> To avoid mailbombing on a large number of people, only mailing lists were C/
-C on the cover.
-> See [PATCH v2 00/38] at: https://lore.kernel.org/all/cover.
-1647006877.git.mchehab@kernel.org/
-> 
->  drivers/media/platform/Kconfig          | 13 +++----------
->  drivers/media/platform/qcom/Kconfig     |  3 +++
->  drivers/media/platform/rockchip/Kconfig |  3 +++
->  drivers/media/platform/sti/Kconfig      |  5 +++++
->  drivers/media/platform/sunxi/Kconfig    |  2 ++
+>> 2.8.6 NIU Clock gating reliance
+>>
+>> A part of niu clocks have a dependence on another niu clock in order to
+>> sharing the internal bus. When these clocks are in use, another niu
+>> clock must be opened, and cannot be gated.  These clocks and the special
+>> clock on which they are relied are as following:
+>>
+>> Clocks which have dependency     The clock which can not be gated
+>> -----------------------------------------------------------------
+>> ...
+>> pclk_vo_niu, hclk_vo_s_niu       hclk_vo_niu
+>> ...
+> The clock framework does not support turning on a clock whenever another
+> clock is turned on, so this patch adds support for the dependent clock
+> to the HDMI driver. We call it "NIU", which is for "Native Interface
+> Unit"
 
-Acked-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+This still doesn't make sense to me. You're saying that "pclk_vo_niu,
+hclk_vo_s_niu" depend on "hclk_vo_niu", but HDMI doesn't use pclk_vo, it
+uses pclk_hdmi. I don't see how these "niu" clocks are related to HDMI
+from your description. The pclk_vo should remain being disabled for HDMI.
 
-Best regards,
-Jernej
-
->  5 files changed, 16 insertions(+), 10 deletions(-)
->  create mode 100644 drivers/media/platform/qcom/Kconfig
->  create mode 100644 drivers/media/platform/rockchip/Kconfig
->  create mode 100644 drivers/media/platform/sti/Kconfig
-> 
-> diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-> index 527e9f08008b..a3ad25c6a56c 100644
-> --- a/drivers/media/platform/Kconfig
-> +++ b/drivers/media/platform/Kconfig
-> @@ -85,23 +85,16 @@ source "drivers/media/platform/mtk-vpu/Kconfig"
->  source "drivers/media/platform/nxp/Kconfig"
->  source "drivers/media/platform/omap3isp/Kconfig"
->  source "drivers/media/platform/omap/Kconfig"
-> -source "drivers/media/platform/qcom/camss/Kconfig"
-> -source "drivers/media/platform/qcom/venus/Kconfig"
-> +source "drivers/media/platform/qcom/Kconfig"
->  source "drivers/media/platform/renesas/Kconfig"
-> -source "drivers/media/platform/rockchip/rga/Kconfig"
-> -source "drivers/media/platform/rockchip/rkisp1/Kconfig"
-> +source "drivers/media/platform/rockchip/Kconfig"
->  source "drivers/media/platform/s3c-camif/Kconfig"
->  source "drivers/media/platform/s5p-g2d/Kconfig"
->  source "drivers/media/platform/s5p-jpeg/Kconfig"
->  source "drivers/media/platform/s5p-mfc/Kconfig"
-> -source "drivers/media/platform/sti/bdisp/Kconfig"
-> -source "drivers/media/platform/sti/c8sectpfe/Kconfig"
-> -source "drivers/media/platform/sti/delta/Kconfig"
-> -source "drivers/media/platform/sti/hva/Kconfig"
-> +source "drivers/media/platform/sti/Kconfig"
->  source "drivers/media/platform/stm32/Kconfig"
->  source "drivers/media/platform/sunxi/Kconfig"
-> -source "drivers/media/platform/sunxi/sun8i-di/Kconfig"
-> -source "drivers/media/platform/sunxi/sun8i-rotate/Kconfig"
->  source "drivers/media/platform/tegra/vde/Kconfig"
->  source "drivers/media/platform/ti-vpe/Kconfig"
->  source "drivers/media/platform/via/Kconfig"
-> diff --git a/drivers/media/platform/qcom/Kconfig b/drivers/media/platform/
-qcom/Kconfig
-> new file mode 100644
-> index 000000000000..aa2428f641d3
-> --- /dev/null
-> +++ b/drivers/media/platform/qcom/Kconfig
-> @@ -0,0 +1,3 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +source "drivers/media/platform/qcom/camss/Kconfig"
-> +source "drivers/media/platform/qcom/venus/Kconfig"
-> diff --git a/drivers/media/platform/rockchip/Kconfig b/drivers/media/platform/
-rockchip/Kconfig
-> new file mode 100644
-> index 000000000000..c7ba06388780
-> --- /dev/null
-> +++ b/drivers/media/platform/rockchip/Kconfig
-> @@ -0,0 +1,3 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +source "drivers/media/platform/rockchip/rga/Kconfig"
-> +source "drivers/media/platform/rockchip/rkisp1/Kconfig"
-> diff --git a/drivers/media/platform/sti/Kconfig b/drivers/media/platform/sti/
-Kconfig
-> new file mode 100644
-> index 000000000000..9fb5e78a92cf
-> --- /dev/null
-> +++ b/drivers/media/platform/sti/Kconfig
-> @@ -0,0 +1,5 @@
-> +# SPDX-License-Identifier: GPL-2.0-only
-> +source "drivers/media/platform/sti/bdisp/Kconfig"
-> +source "drivers/media/platform/sti/c8sectpfe/Kconfig"
-> +source "drivers/media/platform/sti/delta/Kconfig"
-> +source "drivers/media/platform/sti/hva/Kconfig"
-> diff --git a/drivers/media/platform/sunxi/Kconfig b/drivers/media/platform/
-sunxi/Kconfig
-> index 7151cc249afa..a10032215b08 100644
-> --- a/drivers/media/platform/sunxi/Kconfig
-> +++ b/drivers/media/platform/sunxi/Kconfig
-> @@ -2,3 +2,5 @@
->  
->  source "drivers/media/platform/sunxi/sun4i-csi/Kconfig"
->  source "drivers/media/platform/sunxi/sun6i-csi/Kconfig"
-> +source "drivers/media/platform/sunxi/sun8i-di/Kconfig"
-> +source "drivers/media/platform/sunxi/sun8i-rotate/Kconfig"
-> -- 
-> 2.35.1
-> 
-> 
-
-
+I already said before that the datasheet suggests that hclk_vo needs to
+be enabled in order to ungate the AHB part of the VO module, which is
+needed for CPU accesses. Elain, could you please confirm this or clarify
+more about why hclk_vo needs to be enabled for HDMI?
 
 _______________________________________________
 Linux-rockchip mailing list
