@@ -4,73 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31238C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Mar 2022 21:51:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FD4AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Mar 2022 03:45:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zAbmmWYKerH1fvAaq/ijD9PUN+XS9LUhONHCrQ/5aiQ=; b=Q9yyZfKoB3MvEw
-	2rf2be9/gdhe/Yyvsp86KAZvYd+IDKjPcARbURizhp76ewVfUm8BUQBdH68nAyje5SVbEgQdaZR8p
-	8felGFkfBReRkgzHC/WM+iwILItq0tf2rqm3JkohfpRhgJMZslh3JKH1Ue8zi5F1QU22j0V7/vyFd
-	MAivExWn5TLwELOmoCTPbbo8Ul+qUS3mj9MBOByWg8JoAY3yKFDNfQdtCkJ0C1E6IP0VuZgXhhSU4
-	6JCI4ECvXpbJw4KEb+h6cFbDoGVyVxXZLycD8j+wSKhu00p28MEjlYX4Z/VjuIXnJJYajH4piHZJn
-	V4z52B5x0ZbUiiVnHkeQ==;
+	List-Owner; bh=bJiAmZToMnP8WYV+dke+lydfgy7B8N3VEeBq/+lZTfc=; b=W0x5BFHKLK81tp
+	NXTlerldvkoRyyB5T9O0vDI2X1xw8ppJn8us/lD+WK6123hGAeVNAScb/duB9Qqxghc+D1h2aTh0T
+	iX+NzjODVJYlvFTywSD4w7s987snWZ17jOMiucDftHipTn6DFykcRgWA/1RUMcqoLq8DktDZ7DYnA
+	n1gtNlB87ZTtxfWcZFtJ5LJGHVkgSSWj3LmvlWcCCQnK9k1PTZu/ckZvK/2F8cCGF7ky4xa1L08Xj
+	ux0j2Zt+r6+W9qF0VHSeNw+J/1dqGxAxbqL1I2rZ6uN2QjGRRj2TC/T6XQ6mpeZBo9aFl9IK5dvdT
+	WgXFmkPgHCnkUqorPEDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nSnAX-000MXD-SZ; Fri, 11 Mar 2022 21:51:29 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1nSshJ-000gvu-NL; Sat, 12 Mar 2022 03:45:41 +0000
+Received: from mail-oi1-f177.google.com ([209.85.167.177])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nSnAL-000MWe-Uu; Fri, 11 Mar 2022 21:51:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1647035477; x=1678571477;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=TII6J4aKIbWXaAC0bycqdUuzXY20aYHTjj7YIZmiAvQ=;
- b=BYbUjfCoxlDIAxhTXUwIcalNHpkur0eMTpeb6joIjQd0UUYBrLxCtB02
- 2GaOQEBwkJUrk1AgywDuYKMXzuK92XdDdtCB0oFAj03uJk87xvAeljtsx
- a2M+DXzzkC4Q5oeTGNTmwnySj2u6KoGpI/PI8337jIP3O99IpTa9oK6LU
- b0MxUbGxhFJkCGA0JGlkPTbNd9q0ofTQH+5/TqgXHt8nrrexFUZ51QX9e
- togzu0CU1/uiJ8ieCwnlqvdWPOn/mtO7P9dxZa2NesjJ89+BQQzXFcQlI
- Z6/lbGCzdVi1oU6akW9au8wtpo/4EB96xxyRQEX9keHTvRiflz9ChYOoW w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10283"; a="243107103"
-X-IronPort-AV: E=Sophos;i="5.90,174,1643702400"; d="scan'208";a="243107103"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Mar 2022 13:51:16 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,174,1643702400"; d="scan'208";a="496890795"
-Received: from lkp-server02.sh.intel.com (HELO 89b41b6ae01c) ([10.239.97.151])
- by orsmga003.jf.intel.com with ESMTP; 11 Mar 2022 13:51:12 -0800
-Received: from kbuild by 89b41b6ae01c with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1nSnAG-00079K-09; Fri, 11 Mar 2022 21:51:12 +0000
-Date: Sat, 12 Mar 2022 05:50:54 +0800
-From: kernel test robot <lkp@intel.com>
-To: Michael Riesch <michael.riesch@wolfvision.net>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: kbuild-all@lists.01.org, Rob Herring <robh+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Levin Du <djw@t-chip.com.cn>,
- Tianling Shen <cnsztl@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Alex Bee <knaerzche@gmail.com>, Liang Chen <cl@rock-chips.com>,
- Peter Geis <pgwipeout@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>
-Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: add basic dts for the radxa
- rock3 model a
-Message-ID: <202203120525.muN78AQX-lkp@intel.com>
-References: <20220310210352.451136-3-michael.riesch@wolfvision.net>
+ id 1nSsh7-000gsz-C7; Sat, 12 Mar 2022 03:45:30 +0000
+Received: by mail-oi1-f177.google.com with SMTP id w127so11510187oig.10;
+ Fri, 11 Mar 2022 19:45:28 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=BwjHEM1ve6vauVKyKa9ZUyCUyEFXM5iLr7KYRJbKfko=;
+ b=GdQn5uNdj1CAweFpNJTMqQrwO7IGsO/NryXKklncuPzc2v+QXtIXMv5+eSCITA6whR
+ RKxaluJ9DliUoqlCYJqvz5jD+Z1optCvvvlFxeeU/7rrGc3dq+153rMgWxuL7Wawe49V
+ easkZ1SBP1k2bAIka2HZ1xxpGX97ivLchmH0Ggt97VgB4VQeOOF+1030ZiFBcuoSDpbg
+ hjekbBdhNDjrsdDRuu40q+DjkomNHwWIZd3JzwZE81ap0Nun//jNmzzw77LRrhwPoCO2
+ DcLLKH4o3YHTBSiwFPJH/CBiIcDnAi9HiwIa2bhPS+s370hV1VvneSfr2G+p/mDGF4Er
+ M+XQ==
+X-Gm-Message-State: AOAM530YQfSt8nghhg/ZZwK/vcf4jBBMtTh69gRMBezbGx6udgjdeVzq
+ 4z11sOZJqK2oLjAoCVUquQ==
+X-Google-Smtp-Source: ABdhPJyN4Me6aXpEWsG65Sb5BfWNEBIhIM8S49iH8KYbautApP4UfXutmtJ97KxAWUQ7Amb9REJqQg==
+X-Received: by 2002:aca:34c1:0:b0:2ec:8ee8:90c7 with SMTP id
+ b184-20020aca34c1000000b002ec8ee890c7mr3951666oia.267.1647056727702; 
+ Fri, 11 Mar 2022 19:45:27 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ 67-20020aca0546000000b002d46e151b9bsm4645324oif.18.2022.03.11.19.45.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 11 Mar 2022 19:45:26 -0800 (PST)
+Received: (nullmailer pid 730303 invoked by uid 1000);
+ Sat, 12 Mar 2022 03:45:25 -0000
+Date: Fri, 11 Mar 2022 21:45:25 -0600
+From: Rob Herring <robh@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-arm-kernel@lists.infradead.org, soc@kernel.org,
+ Heiko Stuebner <heiko@sntech.de>, Viresh Kumar <vireshk@kernel.org>,
+ Hans de Goede <hdegoede@redhat.com>,
+ Shiraz Hashim <shiraz.linux.kernel@gmail.com>,
+ Gregory Clement <gregory.clement@bootlin.com>,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Michael Riesch <michael.riesch@wolfvision.net>, linux-ide@vger.kernel.org,
+ Jens Axboe <axboe@kernel.dk>, Peter Geis <pgwipeout@gmail.com>,
+ Damien Le Moal <damien.lemoal@opensource.wdc.com>,
+ Andrew Lunn <andrew@lunn.ch>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Rob Herring <robh+dt@kernel.org>, Russell King <linux@armlinux.org.uk>,
+ devicetree@vger.kernel.org
+Subject: Re: [PATCH v6 1/6] dt-bindings: ata: ahci-platform: Convert DT
+ bindings to yaml
+Message-ID: <YiwXVRPJITCOiCoj@robh.at.kernel.org>
+References: <20220311210357.222830-1-linux@fw-web.de>
+ <20220311210357.222830-2-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220310210352.451136-3-michael.riesch@wolfvision.net>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20220311210357.222830-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220311_135118_105721_C60212B9 
-X-CRM114-Status: GOOD (  16.77  )
+X-CRM114-CacheID: sfid-20220311_194529_464692_8C71C6F6 
+X-CRM114-Status: GOOD (  20.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,53 +96,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
+On Fri, 11 Mar 2022 22:03:52 +0100, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Create a yaml file for dtbs_check from the old txt binding.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> 
+> v6:
+>   - fix indentation of examples
+>   - add compatible marvell,berlin2-ahci
+>   - change maximum of ports-implemented
+>   - add select to exclude qcom compatibles
+>   - drop marvell,armada-380-ahci
+>     it is not handled in the ahci-platform.c but ahci_mvebu.c
+>     and incompatible due to missing phys/target-supply
+> 
+> v5:
+>   - change subject
+>   - drop brcm,iproc-ahci from standalone enum
+>   - fix reg address in example 2
+>   - move clocknames next to clocks, regnames to reg
+>   - drop interrupts description
+>   - drop newline from dma-coherent
+>   - drop max-items from ports-implemented
+>   - min2max in child phys
+>   - fix identation for compatible and sata-common
+>   - add additionalProperties=false for subnodes
+>   - pipe for paragraphs and newline after title
+>   - add maximum for ports-implemented (found only 0x1 as its value)
+>   - add phy-names to sata-ports
+> 
+> v4:
+>   - fix min vs. max
+>   - fix indention of examples
+>   - move up sata-common.yaml
+>   - reorder compatible
+>   - add descriptions/maxitems
+>   - fix compatible-structure
+>   - fix typo in example achi vs. ahci
+>   - add clock-names and reg-names
+>   - fix ns2 errors in separate patch
+> v3:
+>   - add conversion to sata-series
+>   - fix some errors in dt_binding_check and dtbs_check
+>   - move to unevaluated properties = false
+> 
+> arch/arm/boot/dts/qcom-apq8064.dtsi had caused errors for clock-count
+> ---
+> 
+> have not added reviewed-by from v5 because i have changed patch too much
+> 
+> ---
+>  .../devicetree/bindings/ata/ahci-platform.txt |  79 --------
+>  .../bindings/ata/ahci-platform.yaml           | 182 ++++++++++++++++++
+>  2 files changed, 182 insertions(+), 79 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/ata/ahci-platform.txt
+>  create mode 100644 Documentation/devicetree/bindings/ata/ahci-platform.yaml
+> 
 
-Thank you for the patch! Yet something to improve:
-
-[auto build test ERROR on robh/for-next]
-[also build test ERROR on arm/for-next xilinx-xlnx/master arm64/for-next/core shawnguo/for-next clk/clk-next kvmarm/next keystone/next v5.17-rc7]
-[cannot apply to rockchip/for-next soc/for-next next-20220310]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/0day-ci/linux/commits/Michael-Riesch/arm64-dts-rockchip-add-basic-dts-for-the-radxa-rock3-model-a/20220311-050612
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-config: arm64-buildonly-randconfig-r002-20220310 (https://download.01.org/0day-ci/archive/20220312/202203120525.muN78AQX-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 11.2.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/0day-ci/linux/commit/8d0dad8b66056847b8a2e95272ee74ca4b12fd29
-        git remote add linux-review https://github.com/0day-ci/linux
-        git fetch --no-tags linux-review Michael-Riesch/arm64-dts-rockchip-add-basic-dts-for-the-radxa-rock3-model-a/20220311-050612
-        git checkout 8d0dad8b66056847b8a2e95272ee74ca4b12fd29
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=arm64 SHELL=/bin/bash
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-Note: the linux-review/Michael-Riesch/arm64-dts-rockchip-add-basic-dts-for-the-radxa-rock3-model-a/20220311-050612 HEAD c217f194b7a9cbdb7cbb8149ae1f6e8c2faf6e3f builds fine.
-      It only hurts bisectability.
-
-All errors (new ones prefixed by >>):
-
->> Error: arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts:132.1-5 Label or path gpu not found
->> Error: arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts:473.1-16 Label or path usb_host0_ehci not found
->> Error: arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts:477.1-16 Label or path usb_host0_ohci not found
->> Error: arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts:481.1-16 Label or path usb_host1_ehci not found
->> Error: arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts:485.1-16 Label or path usb_host1_ohci not found
->> Error: arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts:489.1-10 Label or path usb2phy1 not found
->> Error: arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts:493.1-15 Label or path usb2phy1_host not found
->> Error: arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts:498.1-14 Label or path usb2phy1_otg not found
->> FATAL ERROR: Syntax error parsing input tree
-
----
-0-DAY CI Kernel Test Service
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Applied, thanks!
 
 _______________________________________________
 Linux-rockchip mailing list
