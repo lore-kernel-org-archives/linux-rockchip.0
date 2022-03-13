@@ -4,85 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9DB6C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Mar 2022 10:13:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DC8EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Mar 2022 10:57:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qHu7HjkHmj8dE4J78i0j5o7DGL9PsmsO8GKPPw3fxKs=; b=rzswhinJiHSlUB
-	834U80gNGsMcPoF5rHy3CT+pp2O4qfeXWhCBL0nqrsxtNqR8csc9XYyY4G56ukZNBSPtFXoxo27Rw
-	nQmnIU8ij/q7qvfgYvTGSoo1ykw7XHabun6+5f75rScAMJ0sbnDudCgJ7p1oyRQq8R7aN1ySXWL8L
-	4wQwEDIup5U/lJMGLQdHoFecgCoc1lbe8fWxVAlCBkd0zPDawj6C5PaqfUlyrZJz42dcXKo4jQlH6
-	kuqqJGuyUXePm9YriFErlF5KsdmNH0RvWSg0ChR8tq2PPAAcnPS8z8fhWoryz7Je2ZBYCD7jLnSEG
-	VIsPHuOZzVPM6gEYGsdw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=jYNN6Ud/S3wdSj8c2tkF7oAWwhRZvK0a3Xtb4nf2W3Q=; b=GnGcOEstOlEuSR
+	2iiHFCtQMw3FVB8B5HLiezZTi/TETfqSV5I79ZYgO5a7cWmJGERekkHIPjK0s7+2fqHbZX8659pe/
+	YBhy3Ky1IT/lYSz781bcxK4lmSGFJtjhrPt6GlZMpkgC6luD7MgfK7Rilz4vfbmFFAAMLUTP3ByFv
+	bykH5QNn4/lc1DVH/74x6BN/ROYFwBkBgmVaJibIu9F0T3sM0XkwnaxdpnvzSwiil7IUIWQ7XIQW1
+	FjFN9DX+4t5JXFngWLG1TydqLMgTWYviuhMpfZBq85cmH6Wo2UHe4SSLjHfS5A9+sb/HeEdQ4pj4M
+	AA5MmfCuq2LyOuhOABGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTLDm-002X0G-On; Sun, 13 Mar 2022 10:13:06 +0000
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+	id 1nTLus-002c0k-2d; Sun, 13 Mar 2022 10:57:38 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTLDj-002Wzk-NJ
- for linux-rockchip@lists.infradead.org; Sun, 13 Mar 2022 10:13:05 +0000
-Received: by mail-lf1-x12e.google.com with SMTP id l20so22226843lfg.12
- for <linux-rockchip@lists.infradead.org>; Sun, 13 Mar 2022 03:13:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=m2Ai362wiP1vbbI9s63xOoA0fn/s0S5gwcjrtQUOdC0=;
- b=Xb2KG/qzbCzKWRqqkFkNLDfgZbNIdJq0K48cH98toOKzlr++cToOqHLTfu6dONqa9n
- E4l0UR2UGi2dW6U+ARQf6VscmLDjBYT3A6EBOGd34QBivuhQ9RVHylgsSjxO/MvlUgdt
- CkidXajy0njCyepY4aBdXlDLMRXsIf+1ufVPdpqE4qiu6v9tkMMfyW8I9CM1D0bUDg9A
- aXq1TrhMc8QyQSkfuf9tSJE5U4fJQanWybZm1Y8VW3ZDIilhUPWz2ho+TYbdl9cEDdVj
- gfW3YiVi62q8A8osD/oTlUEZVcwCH0A0RJuIqiH6blQyygQsyjDbr/zvU0m2Zjjngrow
- S/wA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=m2Ai362wiP1vbbI9s63xOoA0fn/s0S5gwcjrtQUOdC0=;
- b=r2enlNxX6xZHXuft1R09UZdVT/a7/i1kMHLEo9uB/yCNO1pXsSphqgIX64SRtr3yOI
- 3OjdBGery0GoO4PqjKfPzPjzpO8/2soK/S0mXp2WCSL188Kv6SUVekiV/XEXbbP95sAA
- QCg+6/WYJSZs4HlNCSNW6IenwM4vRpMETDwd9ZNyJ7PXM/oh0DGa02hw4OCzebihsWvi
- qKWrvGprG/wLvhs3MY1DN1i1WPup5in7HHfS9RCoz4cZvjnh8VdUlqdD75Pe+63fbTM+
- zwglYOdU+LUQWYNJE1oWuOF/Ngn1smN20YSS3C/divvAa5DO6pNpUxYKb4d0x3D6Vn2I
- hq/Q==
-X-Gm-Message-State: AOAM5333Mn2IhLc8c0+oHbl/zS6hzH0vwXTUZV4P5QuiAAXpkzxTJ3zN
- T55ylHK/Zy2ofs0o3j4fX/o=
-X-Google-Smtp-Source: ABdhPJyCp5AaYs+cO005a0E86TOpIdIPyD2467a87+CRiH9PN/jRXTTSeStgacBI42adrU6kiqdj6g==
-X-Received: by 2002:a05:6512:e90:b0:448:6d41:c736 with SMTP id
- bi16-20020a0565120e9000b004486d41c736mr7125972lfb.453.1647166381462; 
- Sun, 13 Mar 2022 03:13:01 -0700 (PDT)
-Received: from smtpclient.apple (31-178-191-245.dynamic.chello.pl.
- [31.178.191.245]) by smtp.gmail.com with ESMTPSA id
- bp4-20020a056512158400b0044332792f30sm2649522lfb.175.2022.03.13.03.13.00
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 13 Mar 2022 03:13:01 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
-Subject: Re: [PATCH] drm/bridge: synopsys/dw-hdmi: set cec clock rate
-From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-In-Reply-To: <20220126202427.3047814-1-pgwipeout@gmail.com>
-Date: Sun, 13 Mar 2022 11:12:59 +0100
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <narmstrong@baylibre.com>,
+ id 1nTLpn-002ZY5-Se; Sun, 13 Mar 2022 10:52:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+ :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=VR7l/aH3Jmjxuw1ICIBPNm2gDIGR1QczOZds9SSRJFE=; b=FaiX7+aW6OWGQeRbAcNpR4RQGo
+ cRSksc+HGf8Nbt59YMz7uQaiJ14rhxMlytfp/Ksy1WnWmHy4KigUyKC9RSP79JlLb+eu1IpkLRERY
+ +wp5cExkBSIFSnQgZt5voi9qubVg34ELlp3Hp9zglmqB3GaNVzcWg17PdtDujKuRX9IkO4UXtSUBE
+ P52PtTIHNbjWL1/GzvMnG1evW+l+UA3Ufs1CNOZCHoauWEb6JJRGE6SwLsJj1Xxj0NJmXhczwtcIB
+ /zQsDXmAqby20qhsNxmgzrrikP9waRhl2YFN+1ew9PjjpccmHfO4EpRydD28Iw79Z5oovCGa1UDNo
+ fdTn0wkw==;
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+ by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nTLph-000Urj-Em; Sun, 13 Mar 2022 10:52:22 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 42BFD6109E;
+ Sun, 13 Mar 2022 10:52:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 302A9C36AF5;
+ Sun, 13 Mar 2022 10:52:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1647168730;
+ bh=ZJpDoFp5EVeECmac6pdqahL0F4Nn1kZOAzMvBSNwEMo=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=D+PzrITrS1Cxj7gsEoQHQXrY3T4geigSw9fPsVMF04tWihbcZAbf+YwdnIKnm+G5f
+ PYQsl9qLUKw/XNrChWPYn6T19xD8DqxIkjxbm7PsbGI4ia1HX88NWI3bhT6lubpng7
+ momyLMqBuEnr0N2IxynFEiUhBvOlnh3kRWiL8E0Sugq9bGlWpYGfkhkdFeyFBMLqrM
+ YNv8TsPU9eLiwKHmmrytxq//3PF04qLoZ8JfNyg39qZ+yFS9tSQQhayumWud/o3PqY
+ thN7+BJQBS4Hhh5qF9QbEDs3OCy1g34XkkNExXrFS1CHVJWksIZUGJtwqDp1+mph6C
+ 5FBAssrz8/YLQ==
+Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
+ (envelope-from <mchehab@kernel.org>)
+ id 1nTLpX-001I2i-Rl; Sun, 13 Mar 2022 11:52:07 +0100
+From: Mauro Carvalho Chehab <mchehab@kernel.org>
+To: 
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ =?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Andy Gross <agross@kernel.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Dmitry Osipenko <digetx@gmail.com>,
+ Eugen Hristev <eugen.hristev@microchip.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Heiko Stuebner <heiko@sntech.de>,
+ Jacopo Mondi <jacopo@jmondi.org>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Ming Qian <ming.qian@nxp.com>,
  Robert Foss <robert.foss@linaro.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Pierre-Hugues Husson <phh@phh.me>, Archit Taneja <architt@codeaurora.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Robin Murphy <robin.murphy@arm.com>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- dri-devel@lists.freedesktop.org,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Message-Id: <3AFD1DD4-AF0A-4ECC-B4F5-E6BD6B9F1BB7@gmail.com>
-References: <20220126202427.3047814-1-pgwipeout@gmail.com>
-To: Peter Geis <pgwipeout@gmail.com>
-X-Mailer: Apple Mail (2.3654.120.0.1.13)
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH 23/24] media: platform: Create vendor/{Makefile, Kconfig} files
+Date: Sun, 13 Mar 2022 11:52:04 +0100
+Message-Id: <96ba1497fde1226a3ccc3efe7b39c67f4a6f2aa3.1647167750.git.mchehab@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <cover.1647167750.git.mchehab@kernel.org>
+References: <cover.1647167750.git.mchehab@kernel.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220313_031303_785090_DD0AA7C6 
-X-CRM114-Status: GOOD (  19.64  )
+X-CRM114-CacheID: sfid-20220313_105217_756894_1B8EF0A8 
+X-CRM114-Status: GOOD (  14.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,45 +97,312 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFBldGVyIEdlaXMgPHBnd2lwZW91dEBnbWFp
-bC5jb20+IHcgZG5pdSAyNi4wMS4yMDIyLCBvIGdvZHouIDIxOjI0Ogo+IAo+IFRoZSBoZG1pLWNl
-YyBjbG9jayBtdXN0IGJlIDMya2h6IGluIG9yZGVyIGZvciBjZWMgdG8gd29yayBjb3JyZWN0bHku
-Cj4gRW5zdXJlIGFmdGVyIGVuYWJsaW5nIHRoZSBjbG9jayB3ZSBzZXQgaXQgaW4gb3JkZXIgZm9y
-IHRoZSBoYXJkd2FyZSB0bwo+IHdvcmsgYXMgZXhwZWN0ZWQuCj4gV2FybiBvbiBmYWlsdXJlLCBp
-biBjYXNlIHRoaXMgaXMgYSBzdGF0aWMgY2xvY2sgdGhhdCBpcyBzbGlnaHR5IG9mZi4KPiBGaXhl
-cyBoZG1pLWNlYyBzdXBwb3J0IG9uIFJvY2tjaGlwIGRldmljZXMuCj4gCj4gRml4ZXM6IGViZTMy
-YzNlMjgyYSAoImRybS9icmlkZ2U6IHN5bm9wc3lzL2R3LWhkbWk6IEVuYWJsZSBjZWMgY2xvY2si
-KQo+IAo+IFNpZ25lZC1vZmYtYnk6IFBldGVyIEdlaXMgPHBnd2lwZW91dEBnbWFpbC5jb20+Cj4g
-LS0tCj4gZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgfCA3ICsrKysr
-KysKPiAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jIGIvZHJpdmVycy9ncHUvZHJt
-L2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPiBpbmRleCA1NGQ4ZmRhZDM5NWYuLjFhOTZkYTYw
-ZTM1NyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhk
-bWkuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jCj4g
-QEAgLTQ4LDYgKzQ4LDkgQEAKPiAKPiAjZGVmaW5lIEhETUkxNF9NQVhfVE1EU0NMSwkzNDAwMDAw
-MDAKPiAKPiArLyogSERNSSBDRUMgbmVlZHMgYSBjbG9jayByYXRlIG9mIDMya2h6ICovCj4gKyNk
-ZWZpbmUgSERNSV9DRUNfQ0xLX1JBVEUJMzI3NjgKPiArCj4gZW51bSBoZG1pX2RhdGFtYXAgewo+
-IAlSR0I0NDRfOEIgPSAweDAxLAo+IAlSR0I0NDRfMTBCID0gMHgwMywKPiBAQCAtMzM0Nyw2ICsz
-MzUwLDEwIEBAIHN0cnVjdCBkd19oZG1pICpkd19oZG1pX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9k
-ZXZpY2UgKnBkZXYsCj4gCQkJCXJldCk7Cj4gCQkJZ290byBlcnJfaWFoYjsKPiAJCX0KPiArCj4g
-KwkJcmV0ID0gY2xrX3NldF9yYXRlKGhkbWktPmNlY19jbGssIEhETUlfQ0VDX0NMS19SQVRFKTsK
-PiArCQlpZiAocmV0KQo+ICsJCQlkZXZfd2FybihoZG1pLT5kZXYsICJDYW5ub3Qgc2V0IEhETUkg
-Y2VjIGNsb2NrIHJhdGU6ICVkXG4iLCByZXQpOwo+IAl9Cj4gCj4gCS8qIFByb2R1Y3QgYW5kIHJl
-dmlzaW9uIElEcyAqLwo+IC0tIAo+IDIuMjUuMQo+IAo+IAo+IF9fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKClBldGVyLAoKT24gbXkg
-NS4xNy1yYzcgd2l0aCBhcHBsaWVkIHJrMzU2eCBWT1AyIHY4IHNlcmllcyAtIHRoaXMgcGF0Y2gg
-bWFrZXMgQ0VDIHdvcmtpbmcgb24gcmszNTY2LgpVbmZvcnR1bmF0ZWx5IGl0IGJyZWFrcyB3b3Jr
-aW5nIG9rIENFQyBvbiByazMzOTkgcm9ja3BpLTRiLgoKUmV2ZXJ0aW5nIHRoaXMgcGF0Y2ggYnJp
-bmdzIGJhY2sgQ0VDIG9uIHJrMzM5OSAtIGJ1dCByazMzNjYgYmVjb21lcyB3aXRoIG5vbiB3b3Jr
-aW5nIENFQwogCkknbSBub3Qgc3VyZSBob3cgdG8gbW92ZSBmb3J3YXJkIHdpdGggdGhpcy4uLi4K
-IApicgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+Instead of placing multiple per-vendor entries at the
+platform/{Makefile,Kconfig}, create them at the per-vendor
+directories.
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+---
+
+To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
+See [PATCH 00/24] at: https://lore.kernel.org/all/cover.1647167750.git.mchehab@kernel.org/
+
+ drivers/media/platform/Kconfig           | 24 ++++------------
+ drivers/media/platform/Makefile          | 35 ++++++------------------
+ drivers/media/platform/amlogic/Kconfig   |  2 ++
+ drivers/media/platform/amlogic/Makefile  |  2 ++
+ drivers/media/platform/mediatek/Kconfig  |  5 ++++
+ drivers/media/platform/mediatek/Makefile |  5 ++++
+ drivers/media/platform/nvidia/Kconfig    |  2 ++
+ drivers/media/platform/nxp/Kconfig       |  1 +
+ drivers/media/platform/nxp/Makefile      |  1 +
+ drivers/media/platform/qcom/Makefile     |  3 ++
+ drivers/media/platform/rockchip/Makefile |  3 ++
+ drivers/media/platform/samsung/Kconfig   |  7 +++++
+ drivers/media/platform/samsung/Makefile  |  7 +++++
+ drivers/media/platform/sti/Kconfig       |  1 +
+ drivers/media/platform/sti/Makefile      |  6 ++++
+ drivers/media/platform/ti/Kconfig        |  6 ++++
+ drivers/media/platform/ti/Makefile       |  6 ++++
+ 17 files changed, 70 insertions(+), 46 deletions(-)
+ create mode 100644 drivers/media/platform/amlogic/Kconfig
+ create mode 100644 drivers/media/platform/amlogic/Makefile
+ create mode 100644 drivers/media/platform/mediatek/Kconfig
+ create mode 100644 drivers/media/platform/mediatek/Makefile
+ create mode 100644 drivers/media/platform/nvidia/Kconfig
+ create mode 100644 drivers/media/platform/qcom/Makefile
+ create mode 100644 drivers/media/platform/rockchip/Makefile
+ create mode 100644 drivers/media/platform/samsung/Kconfig
+ create mode 100644 drivers/media/platform/samsung/Makefile
+ create mode 100644 drivers/media/platform/sti/Makefile
+ create mode 100644 drivers/media/platform/ti/Kconfig
+ create mode 100644 drivers/media/platform/ti/Makefile
+
+diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+index d9bd7a675c22..4e7b2973fbc1 100644
+--- a/drivers/media/platform/Kconfig
++++ b/drivers/media/platform/Kconfig
+@@ -67,36 +67,22 @@ config VIDEO_MUX
+ 
+ source "drivers/media/platform/allegro-dvt/Kconfig"
+ source "drivers/media/platform/allwinner/Kconfig"
+-source "drivers/media/platform/amlogic/meson-ge2d/Kconfig"
++source "drivers/media/platform/amlogic/Kconfig"
+ source "drivers/media/platform/aspeed/Kconfig"
+ source "drivers/media/platform/atmel/Kconfig"
+ source "drivers/media/platform/cadence/Kconfig"
+ source "drivers/media/platform/chips-media/Kconfig"
+ source "drivers/media/platform/intel/Kconfig"
+ source "drivers/media/platform/marvell/Kconfig"
+-source "drivers/media/platform/mediatek/mtk-jpeg/Kconfig"
+-source "drivers/media/platform/mediatek/mtk-mdp/Kconfig"
+-source "drivers/media/platform/mediatek/mtk-vcodec/Kconfig"
+-source "drivers/media/platform/mediatek/mtk-vpu/Kconfig"
+-source "drivers/media/platform/nvidia/tegra-vde/Kconfig"
++source "drivers/media/platform/mediatek/Kconfig"
++source "drivers/media/platform/nvidia/Kconfig"
+ source "drivers/media/platform/nxp/Kconfig"
+-source "drivers/media/platform/nxp/amphion/Kconfig"
+ source "drivers/media/platform/qcom/Kconfig"
+ source "drivers/media/platform/renesas/Kconfig"
+ source "drivers/media/platform/rockchip/Kconfig"
+-source "drivers/media/platform/samsung/exynos-gsc/Kconfig"
+-source "drivers/media/platform/samsung/exynos4-is/Kconfig"
+-source "drivers/media/platform/samsung/s3c-camif/Kconfig"
+-source "drivers/media/platform/samsung/s5p-g2d/Kconfig"
+-source "drivers/media/platform/samsung/s5p-jpeg/Kconfig"
+-source "drivers/media/platform/samsung/s5p-mfc/Kconfig"
++source "drivers/media/platform/samsung/Kconfig"
+ source "drivers/media/platform/sti/Kconfig"
+-source "drivers/media/platform/sti/stm32/Kconfig"
+-source "drivers/media/platform/ti/am437x/Kconfig"
+-source "drivers/media/platform/ti/davinci/Kconfig"
+-source "drivers/media/platform/ti/omap/Kconfig"
+-source "drivers/media/platform/ti/omap3isp/Kconfig"
+-source "drivers/media/platform/ti/vpe/Kconfig"
++source "drivers/media/platform/ti/Kconfig"
+ source "drivers/media/platform/via/Kconfig"
+ source "drivers/media/platform/xilinx/Kconfig"
+ 
+diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
+index 1e62a4009b6c..5b14b231140b 100644
+--- a/drivers/media/platform/Makefile
++++ b/drivers/media/platform/Makefile
+@@ -7,41 +7,22 @@
+ # (e. g. LC_ALL=C sort Makefile)
+ obj-y += allegro-dvt/
+ obj-y += allwinner/
+-obj-y += amlogic/meson-ge2d/
++obj-y += amlogic/
+ obj-y += aspeed/
+ obj-y += atmel/
+ obj-y += cadence/
+ obj-y += chips-media/
+ obj-y += intel/
+ obj-y += marvell/
+-obj-y += mediatek/mtk-jpeg/
+-obj-y += mediatek/mtk-mdp/
+-obj-y += mediatek/mtk-vcodec/
+-obj-y += mediatek/mtk-vpu/
+-obj-y += nvidia/tegra-vde/
++obj-y += mediatek/
++obj-y += nvidia/
+ obj-y += nxp/
+-obj-y += nxp/amphion/
+-obj-y += qcom/camss/
+-obj-y += qcom/venus/
++obj-y += qcom/
+ obj-y += renesas/
+-obj-y += rockchip/rga/
+-obj-y += rockchip/rkisp1/
+-obj-y += samsung/exynos-gsc/
+-obj-y += samsung/exynos4-is/
+-obj-y += samsung/s3c-camif/
+-obj-y += samsung/s5p-g2d/
+-obj-y += samsung/s5p-jpeg/
+-obj-y += samsung/s5p-mfc/
+-obj-y += sti/bdisp/
+-obj-y += sti/c8sectpfe/
+-obj-y += sti/delta/
+-obj-y += sti/hva/
+-obj-y += sti/stm32/
+-obj-y += ti/am437x/
+-obj-y += ti/davinci/
+-obj-y += ti/omap/
+-obj-y += ti/omap3isp/
+-obj-y += ti/vpe/
++obj-y += rockchip/
++obj-y += samsung/
++obj-y += sti/
++obj-y += ti/
+ obj-y += via/
+ obj-y += xilinx/
+ 
+diff --git a/drivers/media/platform/amlogic/Kconfig b/drivers/media/platform/amlogic/Kconfig
+new file mode 100644
+index 000000000000..09fb145a0b30
+--- /dev/null
++++ b/drivers/media/platform/amlogic/Kconfig
+@@ -0,0 +1,2 @@
++# SPDX-License-Identifier: GPL-2.0
++source "drivers/media/platform/amlogic/meson-ge2d/Kconfig"
+diff --git a/drivers/media/platform/amlogic/Makefile b/drivers/media/platform/amlogic/Makefile
+new file mode 100644
+index 000000000000..ec387adbacdd
+--- /dev/null
++++ b/drivers/media/platform/amlogic/Makefile
+@@ -0,0 +1,2 @@
++# SPDX-License-Identifier: GPL-2.0
++obj-y += meson-ge2d/
+diff --git a/drivers/media/platform/mediatek/Kconfig b/drivers/media/platform/mediatek/Kconfig
+new file mode 100644
+index 000000000000..549abf1df7d9
+--- /dev/null
++++ b/drivers/media/platform/mediatek/Kconfig
+@@ -0,0 +1,5 @@
++# SPDX-License-Identifier: GPL-2.0
++source "drivers/media/platform/mediatek/mtk-jpeg/Kconfig"
++source "drivers/media/platform/mediatek/mtk-mdp/Kconfig"
++source "drivers/media/platform/mediatek/mtk-vcodec/Kconfig"
++source "drivers/media/platform/mediatek/mtk-vpu/Kconfig"
+diff --git a/drivers/media/platform/mediatek/Makefile b/drivers/media/platform/mediatek/Makefile
+new file mode 100644
+index 000000000000..ec7f58943576
+--- /dev/null
++++ b/drivers/media/platform/mediatek/Makefile
+@@ -0,0 +1,5 @@
++# SPDX-License-Identifier: GPL-2.0
++obj-y += mtk-jpeg/
++obj-y += mtk-mdp/
++obj-y += mtk-vcodec/
++obj-y += mtk-vpu/
+diff --git a/drivers/media/platform/nvidia/Kconfig b/drivers/media/platform/nvidia/Kconfig
+new file mode 100644
+index 000000000000..413005d8cd66
+--- /dev/null
++++ b/drivers/media/platform/nvidia/Kconfig
+@@ -0,0 +1,2 @@
++# SPDX-License-Identifier: GPL-2.0
++source "drivers/media/platform/nvidia/tegra-vde/Kconfig"
+diff --git a/drivers/media/platform/nxp/Kconfig b/drivers/media/platform/nxp/Kconfig
+index af5cd4eb6bf3..e8c9d33cd3b7 100644
+--- a/drivers/media/platform/nxp/Kconfig
++++ b/drivers/media/platform/nxp/Kconfig
+@@ -64,3 +64,4 @@ config VIDEO_MX2_EMMAPRP
+ 	    conversion.
+ 
+ source "drivers/media/platform/nxp/imx-jpeg/Kconfig"
++source "drivers/media/platform/nxp/amphion/Kconfig"
+diff --git a/drivers/media/platform/nxp/Makefile b/drivers/media/platform/nxp/Makefile
+index a217cf7f109d..9ff13ce1391d 100644
+--- a/drivers/media/platform/nxp/Makefile
++++ b/drivers/media/platform/nxp/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ 
++obj-y += amphion/
+ obj-y += imx-jpeg/
+ 
+ obj-$(CONFIG_VIDEO_IMX_MIPI_CSIS) += imx-mipi-csis.o
+diff --git a/drivers/media/platform/qcom/Makefile b/drivers/media/platform/qcom/Makefile
+new file mode 100644
+index 000000000000..98628912bc05
+--- /dev/null
++++ b/drivers/media/platform/qcom/Makefile
+@@ -0,0 +1,3 @@
++# SPDX-License-Identifier: GPL-2.0
++obj-y += camss/
++obj-y += venus/
+diff --git a/drivers/media/platform/rockchip/Makefile b/drivers/media/platform/rockchip/Makefile
+new file mode 100644
+index 000000000000..ef58d1a82fc6
+--- /dev/null
++++ b/drivers/media/platform/rockchip/Makefile
+@@ -0,0 +1,3 @@
++# SPDX-License-Identifier: GPL-2.0
++obj-y += rga/
++obj-y += rkisp1/
+diff --git a/drivers/media/platform/samsung/Kconfig b/drivers/media/platform/samsung/Kconfig
+new file mode 100644
+index 000000000000..9e9e8acdccd3
+--- /dev/null
++++ b/drivers/media/platform/samsung/Kconfig
+@@ -0,0 +1,7 @@
++# SPDX-License-Identifier: GPL-2.0
++source "drivers/media/platform/samsung/exynos-gsc/Kconfig"
++source "drivers/media/platform/samsung/exynos4-is/Kconfig"
++source "drivers/media/platform/samsung/s3c-camif/Kconfig"
++source "drivers/media/platform/samsung/s5p-g2d/Kconfig"
++source "drivers/media/platform/samsung/s5p-jpeg/Kconfig"
++source "drivers/media/platform/samsung/s5p-mfc/Kconfig"
+diff --git a/drivers/media/platform/samsung/Makefile b/drivers/media/platform/samsung/Makefile
+new file mode 100644
+index 000000000000..00a2d7e4daab
+--- /dev/null
++++ b/drivers/media/platform/samsung/Makefile
+@@ -0,0 +1,7 @@
++# SPDX-License-Identifier: GPL-2.0
++obj-y += exynos-gsc/
++obj-y += exynos4-is/
++obj-y += s3c-camif/
++obj-y += s5p-g2d/
++obj-y += s5p-jpeg/
++obj-y += s5p-mfc/
+diff --git a/drivers/media/platform/sti/Kconfig b/drivers/media/platform/sti/Kconfig
+index 9fb5e78a92cf..d5423743d905 100644
+--- a/drivers/media/platform/sti/Kconfig
++++ b/drivers/media/platform/sti/Kconfig
+@@ -3,3 +3,4 @@ source "drivers/media/platform/sti/bdisp/Kconfig"
+ source "drivers/media/platform/sti/c8sectpfe/Kconfig"
+ source "drivers/media/platform/sti/delta/Kconfig"
+ source "drivers/media/platform/sti/hva/Kconfig"
++source "drivers/media/platform/sti/stm32/Kconfig"
+diff --git a/drivers/media/platform/sti/Makefile b/drivers/media/platform/sti/Makefile
+new file mode 100644
+index 000000000000..a26dc89de577
+--- /dev/null
++++ b/drivers/media/platform/sti/Makefile
+@@ -0,0 +1,6 @@
++# SPDX-License-Identifier: GPL-2.0
++obj-y += bdisp/
++obj-y += c8sectpfe/
++obj-y += delta/
++obj-y += hva/
++obj-y += stm32/
+diff --git a/drivers/media/platform/ti/Kconfig b/drivers/media/platform/ti/Kconfig
+new file mode 100644
+index 000000000000..796acd229987
+--- /dev/null
++++ b/drivers/media/platform/ti/Kconfig
+@@ -0,0 +1,6 @@
++# SPDX-License-Identifier: GPL-2.0
++source "drivers/media/platform/ti/am437x/Kconfig"
++source "drivers/media/platform/ti/davinci/Kconfig"
++source "drivers/media/platform/ti/omap/Kconfig"
++source "drivers/media/platform/ti/omap3isp/Kconfig"
++source "drivers/media/platform/ti/vpe/Kconfig"
+diff --git a/drivers/media/platform/ti/Makefile b/drivers/media/platform/ti/Makefile
+new file mode 100644
+index 000000000000..2e0f43ed2e25
+--- /dev/null
++++ b/drivers/media/platform/ti/Makefile
+@@ -0,0 +1,6 @@
++# SPDX-License-Identifier: GPL-2.0
++obj-y += am437x/
++obj-y += davinci/
++obj-y += omap/
++obj-y += omap3isp/
++obj-y += vpe/
+-- 
+2.35.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
