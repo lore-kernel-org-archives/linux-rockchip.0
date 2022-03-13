@@ -4,76 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5EE6C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Mar 2022 11:03:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C97AFC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Mar 2022 12:57:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:From:Date:Reply-To:To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NaVv5cUmIqK7XGERNGd6/tQNALvmyEMA9WqfEtyM6vQ=; b=xDONj5zooFs2rx
-	GpItJekAV1SfP/Ci8KczdDrPClr2C7/Q/YSSXD5YYDzVZe1+H0BpQs3z4kwYcHPNn0o06gkKJQ8P9
-	MJKGYVu1IVpdUsNq/f6m6rtF3bQDrZpR2XGMBk1Q2iinc6Ps76j8WNfbdqlTPgH7yESSYXW/JK1dC
-	01hjOkulZmr94hTaW+vkt0XUvkW47yGngXn6Ww5EP1cRR+u1m31vKWMd1cwB4KvXuXF/E4AIPKJP4
-	SLiVfyugGByxfnSq7yuIkUBJCXS9I47C3jm44F3A40yRmAGtmqBT6ktyx1HVx3Q0iAQJGa+Fscjwo
-	NEVxI7uvhASApsfLxi/Q==;
+	List-Owner; bh=mvKbRfGgR4WBeWM5D0PcTyf1orI/2DvE/uHQn+tkg/U=; b=ZQnAreeTGb3ZiW
+	ScuEcTxJ9ek3LbOThpo0ZHzlY8stRmh5PXDR9v+3vFcpviy/K4+tUs2GcUEL31AvFOPoSpXry9yk5
+	tLBknP6cCByM5awHqsTb9r9Wf3xaeABK2jBkwVuYoCTkMGELgT8naU1nkjx0AQSy1NARFpljeo+SS
+	tVp5FDPcIor24pNVeArVdRUabX8/3RCyDVyN/FaLDcF9Yfbi9WLGGxfdF06DEiCgDyfyejS8wHhX2
+	KcG8jeZo7/Ngb48qMJvptZmp0AzyuUW3Tyb4Tl2sEwqEFvp9GwaaNfAwK4m64uIFPXcPOPW5zEC6T
+	wXm9Rm65a3yhbsmizuRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTM0V-002egS-3M; Sun, 13 Mar 2022 11:03:27 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nTNmd-002nL8-Go; Sun, 13 Mar 2022 12:57:15 +0000
+Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTLxQ-002dDU-KJ; Sun, 13 Mar 2022 11:00:21 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id AD0F1B80CA8;
- Sun, 13 Mar 2022 11:00:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9060C340EC;
- Sun, 13 Mar 2022 11:00:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647169213;
- bh=K6raQ3hcVYXvtlWvYXOLgzshf6ywpYtouqfgtS4XSgI=;
- h=Date:From:Cc:Subject:In-Reply-To:References:From;
- b=f6FajvJWGzBUEAJpip4FTCW+ziT2N4Fes+bwxhm6P4X7wHhwUaOMcP7i6caQXwqAV
- SWFJaTRBzr7UeVqgZ+iQvK2L3/es8ZmF5h5H5xaq7iNbSQ7hOWUmfOoqgkr4yH0Kyi
- NtI8zelQGEh4QkIsNyt+pRe1NmA2S5GeVN6NyJtGOiToEcx9OvPpDe6BbFPYjsJ0TW
- Q2BxYhRUItV5G1A7lThY+qbpnEFFMkYGlshPOVw01Xmd9feBk2BRWRn4e0xWiwwXF3
- /6jc7G1QK35edetsIKmeke+nHWz8o2iqh3gG38fXqgG+tLtV3iKAFRUZpClo/8XJVp
- Lk/RW6spFk5+g==
-Date: Sun, 13 Mar 2022 12:00:02 +0100
-From: Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Andrew Jeffery <andrew@aj.id.au>, Andrzej
- Hajda <andrzej.hajda@intel.com>, Andy Gross <agross@kernel.org>, Bjorn
- Andersson <bjorn.andersson@linaro.org>, Eddie James
- <eajames@linux.ibm.com>, Fabio Estevam <festevam@gmail.com>, Heiko Stuebner
- <heiko@sntech.de>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Jerome
- Brunet <jbrunet@baylibre.com>, Kevin Hilman <khilman@baylibre.com>, Martin
- Blumenstingl <martin.blumenstingl@googlemail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Michael Tretter <m.tretter@pengutronix.de>, Mikhail Ulyanov
- <mikhail.ulyanov@cogentembedded.com>, NXP Linux Team <linux-imx@nxp.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>, Philipp Zabel
- <p.zabel@pengutronix.de>, Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo
- <shawnguo@kernel.org>, Sylwester Nawrocki <sylvester.nawrocki@gmail.com>,
- Yong Deng <yong.deng@magewell.com>, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-aspeed@lists.ozlabs.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, openbmc@lists.ozlabs.org
-Subject: Re: [PATCH 00/24] Organize media platform drivers per manufacturer
-Message-ID: <20220313120002.0d782ce7@coco.lan>
-In-Reply-To: <cover.1647167750.git.mchehab@kernel.org>
-References: <cover.1647167750.git.mchehab@kernel.org>
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.31; x86_64-redhat-linux-gnu)
+ id 1nTNma-002nKj-Jk
+ for linux-rockchip@lists.infradead.org; Sun, 13 Mar 2022 12:57:14 +0000
+Received: by mail-yb1-xb2f.google.com with SMTP id g1so25825295ybe.4
+ for <linux-rockchip@lists.infradead.org>; Sun, 13 Mar 2022 05:57:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=fkXYlJ6C6wkFx+x1ssKNLuodQj89i4Wuj3dyn8HZpf4=;
+ b=e6LfJXTDrJfr5e+FFTBR0v8xULBC4J7mRTDfbLN9gxn7hKKROSV7ZupjXMLbjousk1
+ xo3TallrpFvTBcUxLYiWQoDzUINEUjp0OnUTfRNdrVUYmyiY4gjx//bLKVUYDi31D+Pf
+ c1qPal5zb3zJU2M1jTTSUein/9JRR1fbzyWfhW5Gqbt2uUlGJNWuMkLEqPNqg01VBjcp
+ vUaEA7NxHf2krE4SbXeHOv3AcOMnRsdHQ9giyIm6nWRalg/MkCJpdKMuO4Z1smX5fazZ
+ aH6qJY53kFdK7D3JZ+RuT4jMwsBmBMo/2JCUN9UsIeTkzEZLYJzxlTPQBEtEWzS+TH5u
+ KLrg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=fkXYlJ6C6wkFx+x1ssKNLuodQj89i4Wuj3dyn8HZpf4=;
+ b=cwHjg5tWQopgiYTU1FwKN3fASonQOXEhSPyt8m9b0fV8uO7LFtt0MbsxBdqCPxjX1G
+ RhakxVO+Iw+70py+Iy/TgXIcgQ4n4mlmgOnE26BCChJOpRPWIlU7n6ghhh1AJMQ/CY/u
+ vYB774Cm+W5Qso5Hwpv8kq3KPqEv6rfkLnTomPn7faYoSfPUO77FGh3VLBxIXsN92TV7
+ 03VzqWEB4uWEJZiwQIYYcKHxNuy85rXlJL7Rqv8l5TrS9IFLsxGtmcxCD2amlmAU6fRo
+ y6JIdwAX60tYDphTTVMo9AiS+tiMz3yxWdhKKuHdKNF9rfvI2FVy7QLjxIvUBlr4EXDc
+ c7JQ==
+X-Gm-Message-State: AOAM530UWzP5fawZKopZQVTvaf/E6Dl7VhqmxKmQyMuc7TlmHRA/bilA
+ juI8A9ke7QJIG7OIzm4IRafjyl5TsTw+iTW62zI=
+X-Google-Smtp-Source: ABdhPJxH2ISX8S+q91FSxXNkK8blf42NUZjIRur4xEN3Knox2qgPaszmg0iOARYnwXKwf7vmcknjfuEcvofiXpzpTFc=
+X-Received: by 2002:a25:e697:0:b0:629:1f4a:5a3c with SMTP id
+ d145-20020a25e697000000b006291f4a5a3cmr14243335ybh.228.1647176227256; Sun, 13
+ Mar 2022 05:57:07 -0700 (PDT)
 MIME-Version: 1.0
+References: <20220126202427.3047814-1-pgwipeout@gmail.com>
+ <3AFD1DD4-AF0A-4ECC-B4F5-E6BD6B9F1BB7@gmail.com>
+In-Reply-To: <3AFD1DD4-AF0A-4ECC-B4F5-E6BD6B9F1BB7@gmail.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Sun, 13 Mar 2022 08:56:55 -0400
+Message-ID: <CAMdYzYq06QSmFAwCuTmBYy4LfQAQDxzx2PGc8HOB1iEjxXHGyg@mail.gmail.com>
+Subject: Re: [PATCH] drm/bridge: synopsys/dw-hdmi: set cec clock rate
+To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <narmstrong@baylibre.com>, 
+ Robert Foss <robert.foss@linaro.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, David Airlie <airlied@linux.ie>, 
+ Daniel Vetter <daniel@ffwll.ch>, Pierre-Hugues Husson <phh@phh.me>,
+ Archit Taneja <architt@codeaurora.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Robin Murphy <robin.murphy@arm.com>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ dri-devel@lists.freedesktop.org, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220313_040017_051065_57D4EBFA 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20220313_055712_688291_E97EA772 
+X-CRM114-Status: GOOD (  24.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,224 +91,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Em Sun, 13 Mar 2022 11:51:41 +0100
-Mauro Carvalho Chehab <mchehab@kernel.org> escreveu:
-
-> This series comes after the one I sent earlier today sorting media/platform Makefile and Kconfig.
-> 
-> It basically groups all drivers per vendor, ensuring that each vendor has a Makefile/Kconfig
-> pair.
-> 
-> The end goal is to keep the platform Makefile/Kconfig clean and easier to maintain, less
-> prune to errors. After applying both series, the size of such files were drastically reduced:
-> 
-> 	 drivers/media/platform/Kconfig  |  731 ++------------------------------
-> 	 drivers/media/platform/Makefile |  115 +----
-> 	 2 files changed, 78 insertions(+), 768 deletions(-)
-> 
-> Mauro Carvalho Chehab (24):
->   media: platform: rename coda/ to chips-media/
->   media: platform: rename marvell-ccic/ to marvell/
->   media: platform: rename meson/ge2d/ to amlogic/meson-ge2d/
->   media: platform: rename mtk-jpeg/ to mediatek/mtk-jpeg/
->   media: platform: rename mtk-mdp/ to mediatek/mtk-mdp/
->   media: platform: rename mtk-vcodec/ to mediatek/mtk-vcodec/
->   media: platform: rename mtk-vpu/ to mediatek/mtk-vpu/
->   media: platform: rename sunxi/ to allwinner/
->   media: platform: rename tegra/vde/ to nvidia/tegra-vde/
->   media: platform: rename amphion/ to nxp/amphion/
->   media: platform: rename exynos4-is/ to samsung/exynos4-is/
->   media: platform: rename exynos-gsc/ to samsung/exynos-gsc/
->   media: platform: rename s3c-camif/ to samsung/s3c-camif/
->   media: platform: rename s5p-g2d/ to samsung/s5p-g2d/
->   media: platform: rename s5p-jpeg/ to samsung/s5p-jpeg/
->   media: platform: rename s5p-mfc/ to samsung/s5p-mfc/
->   media: platform: rename stm32/ to sti/stm32/
->   media: platform: rename am437x/ to ti/am437x/
->   media: platform: rename davinci/ to ti/davinci/
->   media: platform: rename omap3isp/ to ti/omap3isp/
->   media: platform: rename omap/ to ti/omap/
->   media: platform: rename ti-vpe/ to ti/vpe/
->   media: platform: Create vendor/{Makefile,Kconfig} files
-
-Worth mention that, while the above changes are really trivial, it is
-no fun to do them individually. It is also subject to errors.
-
-So, after manually doing a couple of them, I decided to revert
-to the original state and do it via the script below, checking
-the patches and editing the last one.
-
-Thanks,
-Mauro
-
----
-
-#!/bin/bash -e
-
-export LC_ALL=C # Needed by sort
-
-TMP=$(mktemp /tmp/rename.XXXXXXXXX)
-
-trap 'catch $LINENO' ERR SIGINT
-catch()
-{
-	echo "Error on line $1"
-	rm $TMP || true
-	exit 1
-}
-
-sort_makefile()
-{
-	# sort Makefile
-	sed '/^obj-y/Q' drivers/media/platform/Makefile> $TMP
-	grep "^obj-y" drivers/media/platform/Makefile |sort | uniq >> $TMP
-	cat <<EOF >> $TMP
-
-# Please place here only ancillary drivers that aren't SoC-specific
-# Please keep it alphabetically sorted by Kconfig name
-# (e. g. LC_ALL=C sort Makefile)
-obj-\$(CONFIG_VIDEO_MEM2MEM_DEINTERLACE)	+= m2m-deinterlace.o
-obj-\$(CONFIG_VIDEO_MUX)			+= video-mux.o
-EOF
-	mv $TMP drivers/media/platform/Makefile
-}
-
-sort_kconfig()
-{
-	# sort Kconfig
-	sed '/^source/Q' drivers/media/platform/Kconfig> $TMP
-	grep "^source" drivers/media/platform/Kconfig |sort | uniq >> $TMP
-	cat <<EOF >> $TMP
-
-endif # MEDIA_PLATFORM_DRIVERS
-EOF
-
-	mv $TMP drivers/media/platform/Kconfig
-}
-
-do_rename_vendor()
-{
-	old=$(echo $1 |perl -ne 's,/$,,; print $_')
-	new=$(echo $2 |perl -ne 's,/$,,; print $_')
-
-	echo "$old -> $new"
-
-	mkdir -p dirname drivers/media/platform/$new
-
-	git mv drivers/media/platform/$old/* drivers/media/platform/$new/
-
-	sed s,$old/,$new/, -i $(find drivers/media/platform/ -name Kconfig) $(find drivers/media/platform/ -name Makefile)
-	sed s,drivers/media/platform/$old,drivers/media/platform/$new, -i $(git grep -l drivers/media/platform/$old) || true
-
-	# Remove obj files, to make the directory cleaner
-	rm -rf drivers/media/platform/$old/ || true
-
-	sort_makefile
-	sort_kconfig
-
-	cat <<EOF >> $TMP
-media: platform: rename $old/ to $new/
-
-As the end goal is to have platform drivers split by vendor,
-rename $old/ to $new/.
-EOF
-
-	git commit -as -m "$(cat $TMP)" --no-edit
-}
-
-do_rename_vendor coda chips-media
-do_rename_vendor marvell-ccic/ marvell/
-do_rename_vendor meson/ge2d/ amlogic/meson-ge2d/
-do_rename_vendor mtk-jpeg mediatek/mtk-jpeg
-do_rename_vendor mtk-mdp mediatek/mtk-mdp
-do_rename_vendor mtk-vcodec mediatek/mtk-vcodec
-do_rename_vendor mtk-vpu mediatek/mtk-vpu
-do_rename_vendor sunxi/ allwinner/
-do_rename_vendor tegra/vde nvidia/tegra-vde
-do_rename_vendor amphion nxp/amphion
-do_rename_vendor exynos4-is/ samsung/exynos4-is/
-do_rename_vendor exynos-gsc samsung/exynos-gsc
-do_rename_vendor s3c-camif samsung/s3c-camif
-do_rename_vendor s5p-g2d samsung/s5p-g2d
-do_rename_vendor s5p-jpeg samsung/s5p-jpeg
-do_rename_vendor s5p-mfc samsung/s5p-mfc
-do_rename_vendor stm32 sti/stm32
-do_rename_vendor am437x/ ti/am437x/
-do_rename_vendor davinci ti/davinci
-do_rename_vendor omap3isp ti/omap3isp
-do_rename_vendor omap ti/omap
-do_rename_vendor ti-vpe ti/vpe
-
-# Create or update drivers/media/platform/*/Kconfig
-
-IFS=$'\n'
-
-# Fixup Kconfig files
-for i in $(cat drivers/media/platform/Kconfig|perl -ne 'if (m,platform/([^/]+)/([^/]+)/Kconfig,) { print "$1 $2\n" }'); do
-        echo "Handling $i Kconfig entries"
-
-        a=$(echo $i|cut -d' ' -f1)
-        b=$(echo $i|cut -d' ' -f2)
-
-	kconfig="drivers/media/platform/$a/$b/Kconfig"
-	parent="drivers/media/platform/$a/Kconfig"
-
-        if [ ! -e $parent ]; then
-                echo "creating $parent..."
-                echo "# SPDX-License-Identifier: GPL-2.0" > $parent
-		git add $parent
-        fi
-
-        echo "source \"$kconfig\"" >> drivers/media/platform/$a/Kconfig
-        echo "source \"$parent\"" >> drivers/media/platform/Kconfig
-
-        sed s,$kconfig,$parent, -i drivers/media/platform/Kconfig
-
-        echo "sorting..."
-	sort_kconfig
-done
-
-# Create or update drivers/media/platform/*/Makefile
-
-for i in $(cat drivers/media/platform/Makefile|perl -ne 'if (m,.*=\s*([^/]+)/([^/]+)/,) { print "$1 $2\n" }'); do
-        echo "Handling $i Makefile entries"
-
-        a=$(echo $i|cut -d' ' -f1)
-        b=$(echo $i|cut -d' ' -f2)
-
-        make="$a/$b/"
-        parent="$a/"
-
-        if [ ! -e drivers/media/platform/$a/Makefile ]; then
-                echo "creating $parent..."
-                echo "# SPDX-License-Identifier: GPL-2.0" > drivers/media/platform/$a/Makefile
-                git add drivers/media/platform/$a/Makefile
-        fi
-        echo "obj-y += $b/" >> drivers/media/platform/$a/Makefile
-        echo "obj-y += $parent" >> drivers/media/platform/Makefile
-
-        sed s,$make\$,$parent, -i drivers/media/platform/Makefile
-done
-
-sort_kconfig
-sort_makefile
-
-	cat <<EOF >> $TMP
-media: platform: Create vendor/{Makefile,Kconfig} files
-
-Instead of placing multiple per-vendor entries at the
-platform/{Makefile,Kconfig}, create them at the per-vendor
-directories.
-EOF
-
-git commit -as -m "$(cat $TMP)" --no-edit
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU3VuLCBNYXIgMTMsIDIwMjIgYXQgNjoxMyBBTSBQaW90ciBPbmlzemN6dWsKPHBpb3RyLm9u
+aXN6Y3p1a0BnbWFpbC5jb20+IHdyb3RlOgo+Cj4KPgo+ID4gV2lhZG9tb8WbxIcgbmFwaXNhbmEg
+cHJ6ZXogUGV0ZXIgR2VpcyA8cGd3aXBlb3V0QGdtYWlsLmNvbT4gdyBkbml1IDI2LjAxLjIwMjIs
+IG8gZ29kei4gMjE6MjQ6Cj4gPgo+ID4gVGhlIGhkbWktY2VjIGNsb2NrIG11c3QgYmUgMzJraHog
+aW4gb3JkZXIgZm9yIGNlYyB0byB3b3JrIGNvcnJlY3RseS4KPiA+IEVuc3VyZSBhZnRlciBlbmFi
+bGluZyB0aGUgY2xvY2sgd2Ugc2V0IGl0IGluIG9yZGVyIGZvciB0aGUgaGFyZHdhcmUgdG8KPiA+
+IHdvcmsgYXMgZXhwZWN0ZWQuCj4gPiBXYXJuIG9uIGZhaWx1cmUsIGluIGNhc2UgdGhpcyBpcyBh
+IHN0YXRpYyBjbG9jayB0aGF0IGlzIHNsaWdodHkgb2ZmLgo+ID4gRml4ZXMgaGRtaS1jZWMgc3Vw
+cG9ydCBvbiBSb2NrY2hpcCBkZXZpY2VzLgo+ID4KPiA+IEZpeGVzOiBlYmUzMmMzZTI4MmEgKCJk
+cm0vYnJpZGdlOiBzeW5vcHN5cy9kdy1oZG1pOiBFbmFibGUgY2VjIGNsb2NrIikKPiA+Cj4gPiBT
+aWduZWQtb2ZmLWJ5OiBQZXRlciBHZWlzIDxwZ3dpcGVvdXRAZ21haWwuY29tPgo+ID4gLS0tCj4g
+PiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyB8IDcgKysrKysrKwo+
+ID4gMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKQo+ID4KPiA+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYyBiL2RyaXZlcnMvZ3B1L2Ry
+bS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jCj4gPiBpbmRleCA1NGQ4ZmRhZDM5NWYuLjFhOTZk
+YTYwZTM1NyAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMv
+ZHctaGRtaS5jCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhk
+bWkuYwo+ID4gQEAgLTQ4LDYgKzQ4LDkgQEAKPiA+Cj4gPiAjZGVmaW5lIEhETUkxNF9NQVhfVE1E
+U0NMSyAgICAzNDAwMDAwMDAKPiA+Cj4gPiArLyogSERNSSBDRUMgbmVlZHMgYSBjbG9jayByYXRl
+IG9mIDMya2h6ICovCj4gPiArI2RlZmluZSBIRE1JX0NFQ19DTEtfUkFURSAgICAzMjc2OAo+ID4g
+Kwo+ID4gZW51bSBoZG1pX2RhdGFtYXAgewo+ID4gICAgICAgUkdCNDQ0XzhCID0gMHgwMSwKPiA+
+ICAgICAgIFJHQjQ0NF8xMEIgPSAweDAzLAo+ID4gQEAgLTMzNDcsNiArMzM1MCwxMCBAQCBzdHJ1
+Y3QgZHdfaGRtaSAqZHdfaGRtaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+
+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgcmV0KTsKPiA+ICAgICAgICAgICAgICAg
+ICAgICAgICBnb3RvIGVycl9pYWhiOwo+ID4gICAgICAgICAgICAgICB9Cj4gPiArCj4gPiArICAg
+ICAgICAgICAgIHJldCA9IGNsa19zZXRfcmF0ZShoZG1pLT5jZWNfY2xrLCBIRE1JX0NFQ19DTEtf
+UkFURSk7Cj4gPiArICAgICAgICAgICAgIGlmIChyZXQpCj4gPiArICAgICAgICAgICAgICAgICAg
+ICAgZGV2X3dhcm4oaGRtaS0+ZGV2LCAiQ2Fubm90IHNldCBIRE1JIGNlYyBjbG9jayByYXRlOiAl
+ZFxuIiwgcmV0KTsKPiA+ICAgICAgIH0KPiA+Cj4gPiAgICAgICAvKiBQcm9kdWN0IGFuZCByZXZp
+c2lvbiBJRHMgKi8KPiA+IC0tCj4gPiAyLjI1LjEKPiA+Cj4gPgo+ID4gX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiA+IExpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdAo+ID4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+ID4gaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo+Cj4g
+UGV0ZXIsCj4KPiBPbiBteSA1LjE3LXJjNyB3aXRoIGFwcGxpZWQgcmszNTZ4IFZPUDIgdjggc2Vy
+aWVzIC0gdGhpcyBwYXRjaCBtYWtlcyBDRUMgd29ya2luZyBvbiByazM1NjYuCj4gVW5mb3J0dW5h
+dGVseSBpdCBicmVha3Mgd29ya2luZyBvayBDRUMgb24gcmszMzk5IHJvY2twaS00Yi4KPgo+IFJl
+dmVydGluZyB0aGlzIHBhdGNoIGJyaW5ncyBiYWNrIENFQyBvbiByazMzOTkgLSBidXQgcmszMzY2
+IGJlY29tZXMgd2l0aCBub24gd29ya2luZyBDRUMKPgo+IEknbSBub3Qgc3VyZSBob3cgdG8gbW92
+ZSBmb3J3YXJkIHdpdGggdGhpcy4uLi4KCkkgd2FzIHdvcnJpZWQgYWJvdXQgdGhhdCwgdGhhbmtz
+IGZvciB0ZXN0aW5nIGl0LgpDYW4geW91IHNlbmQgbWUgdGhlIGNlY19jbGsgcmF0ZSBiZWZvcmUg
+YW5kIGFmdGVyIHRoaXMgcGF0Y2g/Cgo+Cj4gYnIKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
