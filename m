@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 341E6C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Mar 2022 21:08:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 489ABC4332F
+	for <linux-rockchip@archiver.kernel.org>; Sun, 13 Mar 2022 07:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=liVuyw8nMbX49rHI0YgK7qfp3anxLbHJYXnpEdkk40I=; b=smFOrI+NmVebcf
-	/EkOHVcatU9TvhLtGp1cJUqd0d52xU+JZAZmpLjjNdi+T9L53op3e2pbSrDHhdnL9Sv2DZxJ5d2kV
-	yBa7yqMgEWb7lu7l1xhDmYnoV/7onPURKbiEg4gGrFYIqFNRqUpBq4jL1yW+8aPPUTPC3FQScs2Sf
-	Q2vxlDj3ewen2Vb/oGHC7h1OpRxaNQ7o5rvhUuXA1Z+MhTVpHTi0mvL+muLhJrbPRFt+qTuFhrt6K
-	ghMSEtx8BWB2SehBDYmhFuNwMylhPKglHiDUS9cKwGQsx0zBr5+tP781f1EyxvkErR+myE93VEn7W
-	JEdyAH0FEAWSZ5kr6egw==;
+	List-Owner; bh=aso/hJIV6Z8JNkI2tskcme3xinS6zT4tPdGTY1uRjtk=; b=TiVK5n9wPMyzSv
+	Iw7J+a6VbcNXQYnshnZYaZ3JK14rScEdrOXQvQQP67sLPG/cJLl8E1NrACPsvKAi3EOFH/5PbX3uu
+	CjjAvspvOtzjy3emI58gaEGjU+0rVc39aCvHmyQ0aTPTOGWabKaNaxQP4ihhzdrEgwO+INqigWyZZ
+	nfU5cL/8QIPUyn6WnciXqFUoZMN+TveX/xKHfBvOngFbdifkwVLvQVidOwqVgbVAhRyY5R0xOcEin
+	6YWIE+sCjh8IbJplnTXR/1QQgardv5pyZx3yPBjm10BipWJtkGqlmg/BK6FvNDuwj62+zCvvmRdJj
+	X8qCh66vSbI1LuPQ9kDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nT8yH-001qyR-7P; Sat, 12 Mar 2022 21:08:17 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nTIYp-002J4y-0s; Sun, 13 Mar 2022 07:22:39 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nT8y4-001qwx-B8; Sat, 12 Mar 2022 21:08:05 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dmitry.osipenko) with ESMTPSA id AE00E1F4595D
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1647119280;
- bh=wLExJO5a7BmNAEjWa2vEXI65hZUlcnfDKIQubmXYQnc=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=QYeUEH+ikY/Ro0+JeLJULZFKaxxIFkAzMFLOhDP83klBIXSO/dTzyh02Ta91Msvkz
- Co7Da98R4PxLxTf2su/UBioVU1YgOlfOenhHw9yjbvlMiP8/WA1Qld7GSG3cGG4J7x
- EZUrFmknuwGh3ws+Cq61njszuQwOgN+ztZthFrmQDfnJpw6xvxp6h9urLbStLUAE94
- sby0sevwi1CxegYfipUaMpooeK8yJl7rIW2Pfy90HqIgLTzifmmpOgC03xlNdjseFg
- UorG2by37kNYSuDTChgTvPzoOxNyzudZ62M5A8MCmVbQqawTlFPPQSLjS4XE456Bl4
- FAnhceRnDkSWg==
-Message-ID: <4712e128-8a14-e361-0819-911dc3453372@collabora.com>
-Date: Sun, 13 Mar 2022 00:07:56 +0300
+ id 1nTIY8-002InC-Vd; Sun, 13 Mar 2022 07:22:02 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 0A21760F7F;
+ Sun, 13 Mar 2022 07:21:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32CFDC3411A;
+ Sun, 13 Mar 2022 07:21:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1647156114;
+ bh=KA+6RqKKL2tHInP+Yl4ffLWSNGYgen7X1gnannt2kJE=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=Sbtm6lguq70itw+2+zO3LQcf9ciHKmLp7SjM0Wi5TaoQ9kRyk7T/3jS39eBE/823y
+ w7cQl1Sq3EZRKUPyrfzO4iwZVtu1gqZ3R6S60fr36BhGT5sfATa3SH3ePlBov6+BRC
+ RSpsM1axYumc601KR37nw9CdTSzpvsAJ07oCJy4Oil6rxMMgUK1ofFg4B2jCq9t+3f
+ hl4p7oQJA93d6gHan3ipEpK6aIvFVffQgtqwm1eLJZ/8EJo69NGNy1XIMD1ETsSXNe
+ 0adv4KEnkfR6lAe3BRTinOzb/VMSR7h5ldB0N1ky6ftUZGxwC3ud/vyMyNjvTHog8m
+ 0PdcNyYW6XWRA==
+Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
+ (envelope-from <mchehab@kernel.org>)
+ id 1nTIY4-0012wy-14; Sun, 13 Mar 2022 08:21:52 +0100
+From: Mauro Carvalho Chehab <mchehab@kernel.org>
+To: 
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ =?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
+ Dmitry Osipenko <digetx@gmail.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Heiko Stuebner <heiko@sntech.de>,
+ Jacob Chen <jacob-chen@iotwrt.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Ming Qian <ming.qian@nxp.com>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: [PATCH v3 23/39] media: platform: rga: move config to its own file
+Date: Sun, 13 Mar 2022 08:21:32 +0100
+Message-Id: <9ad75561524a2a99999405e0d689bd162e6fbb3d.1647155572.git.mchehab@kernel.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <cover.1647155572.git.mchehab@kernel.org>
+References: <cover.1647155572.git.mchehab@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.2
-Subject: Re: [PATCH v8 09/24] drm/rockchip: dw_hdmi: Add support for niu clk
-Content-Language: en-US
-To: Sascha Hauer <s.hauer@pengutronix.de>,
- "elaine.zhang" <zhangqing@rock-chips.com>,
- Robin Murphy <robin.murphy@arm.com>
-Cc: devicetree@vger.kernel.org,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Peter Geis <pgwipeout@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
- linux-rockchip@lists.infradead.org,
- Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
- Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org
-References: <20220311083323.887372-1-s.hauer@pengutronix.de>
- <20220311083323.887372-10-s.hauer@pengutronix.de>
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <20220311083323.887372-10-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220312_130804_615747_7B178F11 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20220312_232157_202042_173F141E 
+X-CRM114-Status: GOOD (  15.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,38 +84,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 3/11/22 11:33, Sascha Hauer wrote:
-> The rk3568 HDMI has an additional clock that needs to be enabled for the
-> HDMI controller to work. This clock is not needed for the HDMI
-> controller itself, but to make the SoC internal bus logic work. From the
-> reference manual:
-> 
->> 2.8.6 NIU Clock gating reliance
->>
->> A part of niu clocks have a dependence on another niu clock in order to
->> sharing the internal bus. When these clocks are in use, another niu
->> clock must be opened, and cannot be gated.  These clocks and the special
->> clock on which they are relied are as following:
->>
->> Clocks which have dependency     The clock which can not be gated
->> -----------------------------------------------------------------
->> ...
->> pclk_vo_niu, hclk_vo_s_niu       hclk_vo_niu
->> ...
-> The clock framework does not support turning on a clock whenever another
-> clock is turned on, so this patch adds support for the dependent clock
-> to the HDMI driver. We call it "NIU", which is for "Native Interface
-> Unit"
+In order to better organize the platform/Kconfig, place
+rga-specific config stuff on a separate Kconfig file.
 
-This still doesn't make sense to me. You're saying that "pclk_vo_niu,
-hclk_vo_s_niu" depend on "hclk_vo_niu", but HDMI doesn't use pclk_vo, it
-uses pclk_hdmi. I don't see how these "niu" clocks are related to HDMI
-from your description. The pclk_vo should remain being disabled for HDMI.
+Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+---
 
-I already said before that the datasheet suggests that hclk_vo needs to
-be enabled in order to ungate the AHB part of the VO module, which is
-needed for CPU accesses. Elain, could you please confirm this or clarify
-more about why hclk_vo needs to be enabled for HDMI?
+To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
+See [PATCH v3 00/39] at: https://lore.kernel.org/all/cover.1647155572.git.mchehab@kernel.org/
+
+ drivers/media/platform/Kconfig              | 16 +---------------
+ drivers/media/platform/rockchip/rga/Kconfig | 14 ++++++++++++++
+ 2 files changed, 15 insertions(+), 15 deletions(-)
+ create mode 100644 drivers/media/platform/rockchip/rga/Kconfig
+
+diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
+index 5a8495338fd4..314e25dd7ca1 100644
+--- a/drivers/media/platform/Kconfig
++++ b/drivers/media/platform/Kconfig
+@@ -58,6 +58,7 @@ source "drivers/media/platform/qcom/camss/Kconfig"
+ source "drivers/media/platform/qcom/venus/Kconfig"
+ 
+ source "drivers/media/platform/aspeed/Kconfig"
++source "drivers/media/platform/rockchip/rga/Kconfig"
+ 
+ config VIDEO_MUX
+ 	tristate "Video Multiplexer"
+@@ -284,21 +285,6 @@ config VIDEO_STM32_DMA2D
+ 	  The STM32 DMA2D is a memory-to-memory engine for pixel conversion
+ 	  and specialized DMA dedicated to image manipulation.
+ 
+-config VIDEO_ROCKCHIP_RGA
+-	tristate "Rockchip Raster 2d Graphic Acceleration Unit"
+-	depends on V4L_MEM2MEM_DRIVERS
+-	depends on VIDEO_DEV && VIDEO_V4L2
+-	depends on ARCH_ROCKCHIP || COMPILE_TEST
+-	select VIDEOBUF2_DMA_SG
+-	select V4L2_MEM2MEM_DEV
+-	help
+-	  This is a v4l2 driver for Rockchip SOC RGA 2d graphics accelerator.
+-	  Rockchip RGA is a separate 2D raster graphic acceleration unit.
+-	  It accelerates 2D graphics operations, such as point/line drawing,
+-	  image scaling, rotation, BitBLT, alpha blending and image blur/sharpness.
+-
+-	  To compile this driver as a module choose m here.
+-
+ config VIDEO_TI_VPE
+ 	tristate "TI VPE (Video Processing Engine) driver"
+ 	depends on V4L_MEM2MEM_DRIVERS
+diff --git a/drivers/media/platform/rockchip/rga/Kconfig b/drivers/media/platform/rockchip/rga/Kconfig
+new file mode 100644
+index 000000000000..0106cc8a93a7
+--- /dev/null
++++ b/drivers/media/platform/rockchip/rga/Kconfig
+@@ -0,0 +1,14 @@
++config VIDEO_ROCKCHIP_RGA
++	tristate "Rockchip Raster 2d Graphic Acceleration Unit"
++	depends on V4L_MEM2MEM_DRIVERS
++	depends on VIDEO_DEV && VIDEO_V4L2
++	depends on ARCH_ROCKCHIP || COMPILE_TEST
++	select VIDEOBUF2_DMA_SG
++	select V4L2_MEM2MEM_DEV
++	help
++	  This is a v4l2 driver for Rockchip SOC RGA 2d graphics accelerator.
++	  Rockchip RGA is a separate 2D raster graphic acceleration unit.
++	  It accelerates 2D graphics operations, such as point/line drawing,
++	  image scaling, rotation, BitBLT, alpha blending and image blur/sharpness.
++
++	  To compile this driver as a module choose m here.
+-- 
+2.35.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
