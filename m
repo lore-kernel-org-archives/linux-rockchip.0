@@ -4,62 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0657C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Mar 2022 11:32:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3905DC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Mar 2022 13:39:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8+lQI8RMa9qzu+FM7FBbPSiyxUNldmJQQQ3hCvRxKW4=; b=Y4y+DXOn5SN1U8
-	3OousZy0uQQiSXsIOLLPzV9GqeSwwHMQrLhRxzzqE8lIAyU4v2jZHzCYbwjlb8Bb3Biq8/Lrsl/Qd
-	M8loqudysGbtzZGIrKY0VyWhm3Q+IFHXO6puvz4bOz1UM+5wqUp1EZO+ronZQLiii1ySLdYhB8qTK
-	rBkdD42HVhp8BWsvcHNfwOmsvvV8eOe3U6aQ4YwzAGrD0unXiQW9wcrisAkb3+uv/dAgPpQuJJyBP
-	23LS+e8ISsZFIg0/Ga037PoeGyS1QUqJ95sVPprwOpFtwT1CmatexncCj/kzT0m4enQqQHutGFaIB
-	Vi8ojeX0iScHYXCHq8vQ==;
+	List-Owner; bh=ZDnkdp9zPA2sYNZPSINxWC8rJZI+r41H/wtIxfxAd8M=; b=pRKSnpdJBUPcSE
+	5CetIzX2K4mOZ3aLseXsQtsU0CT6hzLdyJqHS1iUqEppWYPQUyhV9kQacTtTpa1BSBquAF3NvIpRS
+	uedd2RnCteHvPtkcP3dnlw3b13xHKPcjnN7a33Nwoz1XzY7bof6/rbrFRJ0cJP+dzDpSo6kMmtScw
+	kyQo5vFKxHNhV/HAXxwdj8BwEanywl1aFf9C9D28yKAykBiKH2Ahbjn/rjYnZeuFRyaUMl+LK6bsW
+	S5sv+TKi2xb/Gvc1lc95N4zpYT7+u8FRIQ4o2hZ1+DN3yg+0cchwjDFHE4PuPN5eFeeLREVRgehey
+	W9CkuzH3ODRA3DpR81OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTive-0059ly-LZ; Mon, 14 Mar 2022 11:31:58 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTivb-0059jg-Ce
- for linux-rockchip@lists.infradead.org; Mon, 14 Mar 2022 11:31:57 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9BA0A106F;
- Mon, 14 Mar 2022 04:31:52 -0700 (PDT)
-Received: from [10.57.42.204] (unknown [10.57.42.204])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 2D0E13F99C;
- Mon, 14 Mar 2022 04:31:50 -0700 (PDT)
-Message-ID: <c6766e6e-3c90-f0e6-86b3-4afdf41fbbb1@arm.com>
-Date: Mon, 14 Mar 2022 11:31:45 +0000
+	id 1nTkuT-005Y8E-G2; Mon, 14 Mar 2022 13:38:53 +0000
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nTkuQ-005Y6q-Sr
+ for linux-rockchip@lists.infradead.org; Mon, 14 Mar 2022 13:38:52 +0000
+Received: by mail-yw1-x1132.google.com with SMTP id
+ 00721157ae682-2e57826a10bso5380447b3.7
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Mar 2022 06:38:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fooishbar-org.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=xC+lJiodR+sWpzqzm91V+sLXEyA0MqIpnbN3l1bqwWU=;
+ b=OexWQ2h693u4lZOOUvJTKtfnBVn43v7FMeeMk5qC6Frv256FwjHDfU7eMS1+8nFYmb
+ i3A7P9HN5ayJTyk/xe33mK8GVleqWqW85fUg5rWNLWZ+xDhV/KwCvpDsQeuLdBQR8+Xo
+ czjRV4c3d/fwjqVQ2XYLj8s+A9wfHndMUpwBA/k6f9n+l06tQSRE+rJchhDCTpb9lFqQ
+ 4znbk3UIOaTqHlj/AP5CvXd4dAKjjvxE6ZsXyF//gBc3BEmA+n79YsjU8RlWUca2oKok
+ vlzRCH1tajRmDhoakSGDMBw8avYHd3MLbA6mlM0shYCsLfgTuTfM3MyfwgTVrcMLGkb1
+ fIrg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=xC+lJiodR+sWpzqzm91V+sLXEyA0MqIpnbN3l1bqwWU=;
+ b=8GjDj9y1DUk9Z9YUaCcKmS2bEFKfrBuzi/MxrxpaYaQTNYr98RPR3I/xgtm+Jc+5I0
+ HKDWJ7mDE2hz4rtdlF3k+K5eAwZWzGM/VVNWvUmuC4VWjz7Eme/bGzawhYik9u1UN7h5
+ EmlJwpYVOamvvY2PJ6Ua4iCZCAE3+ED8qT82/60Ca8IZcHjfJe8HYtmGTQ5a7VlYRTNO
+ hKELQlp7HWl5HthOwv53Pbd2Wrezex6Ji9R+axhaNDjlq88Qd1pYMRWagdLotIytU8iz
+ zte2bM0PhrDaxYbN/2l8yCAY0lkV195fJk0j79ihY+154mffDx/OOrg3bQ27OdDdUK85
+ Bj3A==
+X-Gm-Message-State: AOAM533DZWygFiE2apC/ROtbfpp2duY17emvdwJL490TFtH3WGbLxpgP
+ R2QrN2SrcLMkXYkcDHD1y8WtfAvXQZtYwWTzTlYQYQ==
+X-Google-Smtp-Source: ABdhPJxR5tRZorPtoK9M8ocNQ9ikdDUGdQA0+NLPUHYqvLKOH7htQyeEib4lFHIQySUWWYAOFtzU3UegfAPAeVz5eBs=
+X-Received: by 2002:a81:1182:0:b0:2dc:4e58:da41 with SMTP id
+ 124-20020a811182000000b002dc4e58da41mr18944386ywr.268.1647265126402; Mon, 14
+ Mar 2022 06:38:46 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.6.2
-Subject: Re: [PATCH] drm/bridge: synopsys/dw-hdmi: set cec clock rate
-Content-Language: en-GB
-To: Peter Geis <pgwipeout@gmail.com>,
- Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <narmstrong@baylibre.com>,
- Robert Foss <robert.foss@linaro.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Pierre-Hugues Husson <phh@phh.me>, Archit Taneja <architt@codeaurora.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- dri-devel@lists.freedesktop.org,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-References: <20220126202427.3047814-1-pgwipeout@gmail.com>
- <3AFD1DD4-AF0A-4ECC-B4F5-E6BD6B9F1BB7@gmail.com>
- <CAMdYzYq06QSmFAwCuTmBYy4LfQAQDxzx2PGc8HOB1iEjxXHGyg@mail.gmail.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <CAMdYzYq06QSmFAwCuTmBYy4LfQAQDxzx2PGc8HOB1iEjxXHGyg@mail.gmail.com>
+References: <20220225075150.2729401-1-s.hauer@pengutronix.de>
+ <20220225075150.2729401-23-s.hauer@pengutronix.de>
+ <bb077f34-333e-a07a-1fcb-702a6807f941@rock-chips.com>
+ <CAPj87rO2sztocJrE-CeSQWry9j_cSe2uv9F1Yf81pGnBXdu2Ag@mail.gmail.com>
+ <ae4314db-09c0-049b-ccc9-f6b1c3003dcb@rock-chips.com>
+ <CAPj87rOanNE1wca3ijJx1zXYZkKX1ta9F145GCXM15Nv=POicA@mail.gmail.com>
+ <f3af0286-fc64-f011-bc90-6797e26e3640@rock-chips.com>
+ <30f195d6-e9d7-3da6-89fa-4a064a1f6bf9@rock-chips.com>
+ <d98782df-43c8-475b-375d-ad6aff4fae44@rock-chips.com>
+In-Reply-To: <d98782df-43c8-475b-375d-ad6aff4fae44@rock-chips.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Mon, 14 Mar 2022 13:38:35 +0000
+Message-ID: <CAPj87rNXuJ6MQMb7dJHWZcqxaH9cyu1f2_NWidT_zsm44STmaw@mail.gmail.com>
+Subject: Re: [PATCH v7 22/24] drm: rockchip: Add VOP2 driver
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org, 
+ devicetree@vger.kernel.org, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, 
+ Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de, 
+ Peter Geis <pgwipeout@gmail.com>, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_043155_616108_CFCAA344 
-X-CRM114-Status: GOOD (  16.99  )
+X-CRM114-CacheID: sfid-20220314_063850_941799_7DDA86E2 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,59 +93,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyMi0wMy0xMyAxMjo1NiwgUGV0ZXIgR2VpcyB3cm90ZToKPiBPbiBTdW4sIE1hciAxMywg
-MjAyMiBhdCA2OjEzIEFNIFBpb3RyIE9uaXN6Y3p1awo+IDxwaW90ci5vbmlzemN6dWtAZ21haWwu
-Y29tPiB3cm90ZToKPj4KPj4KPj4KPj4+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFBldGVy
-IEdlaXMgPHBnd2lwZW91dEBnbWFpbC5jb20+IHcgZG5pdSAyNi4wMS4yMDIyLCBvIGdvZHouIDIx
-OjI0Ogo+Pj4KPj4+IFRoZSBoZG1pLWNlYyBjbG9jayBtdXN0IGJlIDMya2h6IGluIG9yZGVyIGZv
-ciBjZWMgdG8gd29yayBjb3JyZWN0bHkuCj4+PiBFbnN1cmUgYWZ0ZXIgZW5hYmxpbmcgdGhlIGNs
-b2NrIHdlIHNldCBpdCBpbiBvcmRlciBmb3IgdGhlIGhhcmR3YXJlIHRvCj4+PiB3b3JrIGFzIGV4
-cGVjdGVkLgo+Pj4gV2FybiBvbiBmYWlsdXJlLCBpbiBjYXNlIHRoaXMgaXMgYSBzdGF0aWMgY2xv
-Y2sgdGhhdCBpcyBzbGlnaHR5IG9mZi4KPj4+IEZpeGVzIGhkbWktY2VjIHN1cHBvcnQgb24gUm9j
-a2NoaXAgZGV2aWNlcy4KPj4+Cj4+PiBGaXhlczogZWJlMzJjM2UyODJhICgiZHJtL2JyaWRnZTog
-c3lub3BzeXMvZHctaGRtaTogRW5hYmxlIGNlYyBjbG9jayIpCj4+Pgo+Pj4gU2lnbmVkLW9mZi1i
-eTogUGV0ZXIgR2VpcyA8cGd3aXBlb3V0QGdtYWlsLmNvbT4KPj4+IC0tLQo+Pj4gZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgfCA3ICsrKysrKysKPj4+IDEgZmlsZSBj
-aGFuZ2VkLCA3IGluc2VydGlvbnMoKykKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUv
-ZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMgYi9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5
-bm9wc3lzL2R3LWhkbWkuYwo+Pj4gaW5kZXggNTRkOGZkYWQzOTVmLi4xYTk2ZGE2MGUzNTcgMTAw
-NjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lzL2R3LWhkbWkuYwo+
-Pj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMKPj4+IEBA
-IC00OCw2ICs0OCw5IEBACj4+Pgo+Pj4gI2RlZmluZSBIRE1JMTRfTUFYX1RNRFNDTEsgICAgMzQw
-MDAwMDAwCj4+Pgo+Pj4gKy8qIEhETUkgQ0VDIG5lZWRzIGEgY2xvY2sgcmF0ZSBvZiAzMmtoeiAq
-Lwo+Pj4gKyNkZWZpbmUgSERNSV9DRUNfQ0xLX1JBVEUgICAgMzI3NjgKPj4+ICsKPj4+IGVudW0g
-aGRtaV9kYXRhbWFwIHsKPj4+ICAgICAgICBSR0I0NDRfOEIgPSAweDAxLAo+Pj4gICAgICAgIFJH
-QjQ0NF8xMEIgPSAweDAzLAo+Pj4gQEAgLTMzNDcsNiArMzM1MCwxMCBAQCBzdHJ1Y3QgZHdfaGRt
-aSAqZHdfaGRtaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+Pj4gICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgIHJldCk7Cj4+PiAgICAgICAgICAgICAgICAgICAgICAg
-IGdvdG8gZXJyX2lhaGI7Cj4+PiAgICAgICAgICAgICAgICB9Cj4+PiArCj4+PiArICAgICAgICAg
-ICAgIHJldCA9IGNsa19zZXRfcmF0ZShoZG1pLT5jZWNfY2xrLCBIRE1JX0NFQ19DTEtfUkFURSk7
-Cj4+PiArICAgICAgICAgICAgIGlmIChyZXQpCj4+PiArICAgICAgICAgICAgICAgICAgICAgZGV2
-X3dhcm4oaGRtaS0+ZGV2LCAiQ2Fubm90IHNldCBIRE1JIGNlYyBjbG9jayByYXRlOiAlZFxuIiwg
-cmV0KTsKPj4+ICAgICAgICB9Cj4+Pgo+Pj4gICAgICAgIC8qIFByb2R1Y3QgYW5kIHJldmlzaW9u
-IElEcyAqLwo+Pj4gLS0KPj4+IDIuMjUuMQo+Pj4KPj4+Cj4+PiBfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+Pj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0Cj4+PiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4+PiBodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4+Cj4+IFBl
-dGVyLAo+Pgo+PiBPbiBteSA1LjE3LXJjNyB3aXRoIGFwcGxpZWQgcmszNTZ4IFZPUDIgdjggc2Vy
-aWVzIC0gdGhpcyBwYXRjaCBtYWtlcyBDRUMgd29ya2luZyBvbiByazM1NjYuCj4+IFVuZm9ydHVu
-YXRlbHkgaXQgYnJlYWtzIHdvcmtpbmcgb2sgQ0VDIG9uIHJrMzM5OSByb2NrcGktNGIuCj4+Cj4+
-IFJldmVydGluZyB0aGlzIHBhdGNoIGJyaW5ncyBiYWNrIENFQyBvbiByazMzOTkgLSBidXQgcmsz
-MzY2IGJlY29tZXMgd2l0aCBub24gd29ya2luZyBDRUMKPj4KPj4gSSdtIG5vdCBzdXJlIGhvdyB0
-byBtb3ZlIGZvcndhcmQgd2l0aCB0aGlzLi4uLgo+IAo+IEkgd2FzIHdvcnJpZWQgYWJvdXQgdGhh
-dCwgdGhhbmtzIGZvciB0ZXN0aW5nIGl0Lgo+IENhbiB5b3Ugc2VuZCBtZSB0aGUgY2VjX2NsayBy
-YXRlIGJlZm9yZSBhbmQgYWZ0ZXIgdGhpcyBwYXRjaD8KCkhtbSwgbG9va3MgbGlrZSB0aGVyZSBt
-aWdodCBiZSBhIGJ1ZyBpbiB0aGUgUkszMzk5IGNsb2NrIGRyaXZlciAtIAphbHRob3VnaCBpdCdz
-IHRyZWF0ZWQgYXMgaGF2aW5nIG11eF9wbGxfcCBhcyBwYXJlbnRzLCBhY2NvcmRpbmcgdG8gdGhl
-IApwdWJsaWMgVFJNIHRoZSBDRUMgY2xvY2sgYXBwZWFycyB1bmlxdWUgaW4gYmVpbmcgYmFja3dh
-cmRzIGNvbXBhcmVkIHRvIApldmVyeSBvdGhlciBtdXggb2YgdGhvc2UgdHdvIGlucHV0cy4gSSdt
-IG5vdyB0ZW1wdGVkIHRvIHRlc3QgdGhpcyBvbiBteSAKYm9hcmQgdG9uaWdodCBhbmQgc2VlIGlm
-IEkgY2FuIHNlZSAyNE1IeiBvbiB0aGUgQ0VDIHBpbi4uLiA6KQoKUm9iaW4uCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Andy,
+
+On Mon, 14 Mar 2022 at 11:02, Andy Yan <andy.yan@rock-chips.com> wrote:
+>    Remember you said our downstream vop2 driver is very slow on weston.
+>
+> Would you please share the case you run ? or how can i test frame rate
+> on weston?
+
+We were able to observe this by just using either waylandsink (using
+dmabuf from the V4L2 rkvdec/rkvpu drivers), or even weston-simple-egl.
+I have not been able to do a full review of Sascha's submission, but
+from what I've seen of it, it should have fixed those issues. (I don't
+have RK3568 hardware to hand anymore.)
+
+Cheers,
+Daniel
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
