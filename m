@@ -4,67 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C97DFC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Mar 2022 08:00:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91735C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Mar 2022 08:17:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1Wp8uN51MEDvLchM5cvR7t2I8YZbZOvaP+IthFd8+6Y=; b=fGDPozz0dkuRh6
-	3nIML5C7b4Hike4Zj5MI2VRWCdgtzhrPZnOqQMFOJi/VhyxsmHfo5zyCJFXaYy7YnrvKZy+GjAJI/
-	R7J5MVa76+pfqsQrn6D5ht3xkBXbEq/xmq+f8/pSmPDfrSv7cOcgTal1XVPDVqWwBDBVMp5hpB1VM
-	YXn0IOUQYHLjEbYHpTMOPYrgK4fiXfHAAx23BQu5zwe4aEvi2xUE1QJClEThdbWKv48r8/wZAAjEk
-	hJNrKRgL99/+e+DP7xUSMZyj8r6LY3dHNJ/ZeAw5WLIS1q1fD7L06puJxfMxMGsaJ/ld8OMmsESqz
-	5BbwHCrVANe5vLhI2fpA==;
+	List-Owner; bh=Qz7nKl+ZOWI6UvHr7CuTEiX24/FLnozA5mLsZHaMC8U=; b=2RdcNDe8y9DG7w
+	O67tNsjjSVvmlVQm57AQevcS4jN+3jLPdtWwUN+kcsc2iUMsX7X0gLFCwtC4QomCPb+8Dhfrmm9u5
+	a41rTrsl046cs8Z8HvJL48+DPFf/hmdHktZKuSjD/hEDIn3xQqD3vPD8yxMj4MdWQ6yfTNgaZpptS
+	WySewIs5d4/bfvc5CFQ98s5nFp3GI5YdsrRbL56q1eSUxKh2xG6TKtVnjQVBZMKxk1U4pCUMcdN1O
+	OGghGVGNTXpAcl5FEzog7JEUL6cUwpTd/loA670tYVLc9dbPt9OkHboQFlp7p8muVBK72AeDD3QX0
+	LsSs7MPRHtJJnK6THpvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTfco-004HXI-IA; Mon, 14 Mar 2022 08:00:18 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nTftR-004PCj-A5; Mon, 14 Mar 2022 08:17:29 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTfYq-004Ff6-4Q; Mon, 14 Mar 2022 07:56:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 42D5061203;
- Mon, 14 Mar 2022 07:56:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6D57C36AEF;
- Mon, 14 Mar 2022 07:56:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1647244561;
- bh=51hp8/N8isUS3r9ozBiX9C2POg/EzKiP2L+ggV/SoW8=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=a/HV8Rq4eZDn/XlHOjEehVz01LxWiQWY1sn83jdo3mSSDrhX3CYDwRBARGrRRU2sg
- 5p0F06HYZuPSmpVigR79Ec/HmQYMxBlD5zzXTLQejNqOduTQC5ydVx2wkivfyKe6ky
- FaJ53guMR7tN6RHh9bDQJDDYzyjdEJBiCc9+uJ19HsYpjvSyJC7tvLMvifa418ElED
- Jv0IQy+dusW1rZWi57HB/GvcvKH3eXVNQWw3ivzA4gy0I66Bc+dsZ0+RpMh+6kNLWI
- tH9CA9T7vTiYAlfwEnAVzBX+sP1J0e/etWz4vT/xYapXXMY0bC72nW3QACJoTyZLah
- jg4IP9+oADBLQ==
-Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
- (envelope-from <mchehab@kernel.org>)
- id 1nTfYd-001kWF-K7; Mon, 14 Mar 2022 08:55:59 +0100
-From: Mauro Carvalho Chehab <mchehab@kernel.org>
-To: 
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- =?UTF-8?q?Niklas=20S=C3=B6derlund?= <niklas.soderlund+renesas@ragnatech.se>,
- Dafna Hirschfeld <dafna@fastmail.com>, Dmitry Osipenko <digetx@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Heiko Stuebner <heiko@sntech.de>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Ming Qian <ming.qian@nxp.com>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: [PATCH 32/64] media: platform: rkisp1: move config to its own file
-Date: Mon, 14 Mar 2022 08:55:24 +0100
-Message-Id: <9fd563626f13054b7c410af78f65f161376e488a.1647242579.git.mchehab@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <cover.1647242578.git.mchehab@kernel.org>
-References: <cover.1647242578.git.mchehab@kernel.org>
+ id 1nTfdk-004HzT-QW
+ for linux-rockchip@lists.infradead.org; Mon, 14 Mar 2022 08:01:22 +0000
+Received: by mail-wr1-x429.google.com with SMTP id j17so22540550wrc.0
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Mar 2022 01:01:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:organization:in-reply-to
+ :content-transfer-encoding;
+ bh=ZbQvHoyGIYzvUki2Rr3koBlbf8HphwGvoPoiGFCWjVI=;
+ b=Px/AIFSkS5xiQntL+czEDZNooaKyKwCT5+5oX3Dxiuaq0p2Muil6CAGE/yKjTcSPRk
+ zDe4uh38/LLZAeLwbHMGwjTg12kmpC6yeWSofKA0umP5cCfX9/OYY82Bw345RNYb0ncn
+ orCm5F+5ZfCmlxK+d1VXp7nIMCWzluoafQnmDOcfqWejvaYNcsBVEphbI2O0YMhV2/Sw
+ btjwvk4hgGfi1Ebtg7vyteqdSKhr8lp3tlnQhW8mViZOmcTxC9P84ODdx/3FeHEOfW8P
+ 6h58+Jo9NlVZHRXuw0qPEJXdJKCF5VgLcohK/rtJkyKSW2QSe8R2Hvd+nhg3g9Uwmmee
+ CRRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:organization:in-reply-to
+ :content-transfer-encoding;
+ bh=ZbQvHoyGIYzvUki2Rr3koBlbf8HphwGvoPoiGFCWjVI=;
+ b=ruKx63nMANjeftUq8SaehuOFHdV/2Dxmu7A8WG4Axvnvl2wSxQxmGwm3fH3Itz6suF
+ +SvFO+3odesGqa+THMxMfOOmWSFZcs3d7HBeMIFW3x3GktBRluu+/9CFz7cKyxKX9LT2
+ cY1chwNL+Bh/l8Cl/uzWdLk9rgsrl0ommPYjOPVPW+xEGEniLqm0iXmYFahaRkx0zb9U
+ TByUr+rwEFau/zFtnjdQIULgzysu7p6lFTqITp1/QQfVjNFZkcWTLIf6Zy4IsHWOoMRo
+ 5qLSO7XDdJ6okFMv4svFLAGFp9By/rQ7jXgOVY4OFDDixoJunpGP0nlhaxQFJhYrnQLa
+ XnlQ==
+X-Gm-Message-State: AOAM530Mle1gWTxW20/vcDbaVrv/ueeuX8/WdbuSocOe+mXX2NhyUHXD
+ f1ZQ7NiJLmoZCkJJLkuANUx8GwlO5jsFag==
+X-Google-Smtp-Source: ABdhPJztePfcEZyw3gKDCW6el7zVf+skc/7D+PKs0YU6FDvddmqBB//lsO2gITU97Xj5EZ5qC+/51g==
+X-Received: by 2002:adf:fb4e:0:b0:1e3:3e66:d5f6 with SMTP id
+ c14-20020adffb4e000000b001e33e66d5f6mr16194756wrs.615.1647244875196; 
+ Mon, 14 Mar 2022 01:01:15 -0700 (PDT)
+Received: from ?IPV6:2001:861:44c0:66c0:67f0:57f7:2185:6d18?
+ ([2001:861:44c0:66c0:67f0:57f7:2185:6d18])
+ by smtp.gmail.com with ESMTPSA id
+ v188-20020a1cacc5000000b00384b71a50d5sm14188253wme.24.2022.03.14.01.01.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Mar 2022 01:01:14 -0700 (PDT)
+Message-ID: <18f984ff-36c8-dbe5-6dd0-404c4fe9deab@baylibre.com>
+Date: Mon, 14 Mar 2022 09:01:19 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH 64/64] media: Kconfig: cleanup VIDEO_DEV dependencies
+Content-Language: en-US
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: alsa-devel@alsa-project.org, bcm-kernel-feedback-list@broadcom.com,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-aspeed@lists.ozlabs.org,
+ linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-staging@lists.linux.dev, linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-usb@vger.kernel.org, mjpeg-users@lists.sourceforge.net,
+ openbmc@lists.ozlabs.org
+References: <cover.1647242578.git.mchehab@kernel.org>
+ <decd26e90adc5c16470e4f738810f22fe6478b27.1647242579.git.mchehab@kernel.org>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Organization: Baylibre
+In-Reply-To: <decd26e90adc5c16470e4f738810f22fe6478b27.1647242579.git.mchehab@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_005612_282713_C6A4193A 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20220314_010117_030897_6598066E 
+X-CRM114-Status: GOOD (  21.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,92 +102,182 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In order to better organize the platform/Kconfig, place
-rkisp1-specific config stuff on a separate Kconfig file.
+On 14/03/2022 08:55, Mauro Carvalho Chehab wrote:
+> media Kconfig has two entries associated to V4L API:
+> VIDEO_DEV and VIDEO_V4L2.
+> 
+> On Kernel 2.6.x, there were two V4L APIs, each one with its own flag.
+> VIDEO_DEV were meant to:
+> 	1) enable Video4Linux and make its Kconfig options to appear;
+> 	2) it makes the Kernel build the V4L core.
+> 
+> while VIDEO_V4L2 where used to distinguish between drivers that
+> implement the newer API and drivers that implemented the former one.
+> 
+> With time, such meaning changed, specially after the removal of
+> all V4L version 1 drivers.
+> 
+> At the current implementation, VIDEO_DEV only does (1): it enables
+> the media options related to V4L, that now has:
+> 
+> 	menu "Video4Linux options"
+> 		visible if VIDEO_DEV
+> 
+> 	source "drivers/media/v4l2-core/Kconfig"
+> 	endmenu
+> 
+> but it doesn't affect anymore the V4L core drivers.
+> 
+> The rationale is that the V4L2 core has a "soft" dependency
+> at the I2C bus, and now requires to select a number of other
+> Kconfig options:
+> 
+> 	config VIDEO_V4L2
+> 		tristate
+> 		depends on (I2C || I2C=n) && VIDEO_DEV
+> 		select RATIONAL
+> 		select VIDEOBUF2_V4L2 if VIDEOBUF2_CORE
+> 		default (I2C || I2C=n) && VIDEO_DEV
+> 
+> In the past, merging them would be tricky, but it seems that it is now
+> possible to merge those symbols, in order to simplify V4L dependencies.
+> 
+> Let's keep VIDEO_DEV, as this one is used on some make *defconfig
+> configurations.
+> 
+> Suggested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+> ---
+> 
+> To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
+> See [PATCH 00/64] at: https://lore.kernel.org/all/cover.1647242578.git.mchehab@kernel.org/
+> 
+>   drivers/input/rmi4/Kconfig                    |   2 +-
+>   drivers/input/touchscreen/Kconfig             |   4 +-
+>   drivers/media/Kconfig                         |   3 +
+>   drivers/media/common/saa7146/Kconfig          |   2 +-
+>   drivers/media/dvb-core/Kconfig                |   2 +-
+>   drivers/media/dvb-frontends/Kconfig           |   4 +-
+>   drivers/media/i2c/Kconfig                     | 250 +++++++++---------
+>   drivers/media/i2c/ccs/Kconfig                 |   2 +-
+>   drivers/media/i2c/cx25840/Kconfig             |   2 +-
+>   drivers/media/i2c/et8ek8/Kconfig              |   2 +-
+>   drivers/media/i2c/m5mols/Kconfig              |   2 +-
+>   drivers/media/pci/Kconfig                     |   2 +-
+>   drivers/media/pci/bt8xx/Kconfig               |   2 +-
+>   drivers/media/pci/cobalt/Kconfig              |   2 +-
+>   drivers/media/pci/cx18/Kconfig                |   2 +-
+>   drivers/media/pci/dt3155/Kconfig              |   2 +-
+>   drivers/media/pci/intel/ipu3/Kconfig          |   2 +-
+>   drivers/media/pci/ivtv/Kconfig                |   2 +-
+>   drivers/media/pci/meye/Kconfig                |   2 +-
+>   drivers/media/pci/saa7146/Kconfig             |   6 +-
+>   drivers/media/pci/sta2x11/Kconfig             |   2 +-
+>   drivers/media/pci/tw5864/Kconfig              |   2 +-
+>   drivers/media/pci/tw68/Kconfig                |   2 +-
+>   drivers/media/pci/tw686x/Kconfig              |   2 +-
+>   drivers/media/platform/Kconfig                |   6 +-
+>   drivers/media/platform/allegro-dvt/Kconfig    |   2 +-
+>   .../platform/allwinner/sun4i-csi/Kconfig      |   2 +-
+>   .../platform/allwinner/sun6i-csi/Kconfig      |   2 +-
+>   .../media/platform/allwinner/sun8i-di/Kconfig |   2 +-
+>   .../platform/allwinner/sun8i-rotate/Kconfig   |   2 +-
+>   .../media/platform/amlogic/meson-ge2d/Kconfig |   2 +-
+>   drivers/media/platform/aspeed/Kconfig         |   2 +-
+>   drivers/media/platform/atmel/Kconfig          |   8 +-
+>   drivers/media/platform/cadence/Kconfig        |   4 +-
+>   drivers/media/platform/chips-media/Kconfig    |   2 +-
+>   drivers/media/platform/intel/Kconfig          |   2 +-
+>   drivers/media/platform/marvell/Kconfig        |   4 +-
+>   .../media/platform/mediatek/mtk-jpeg/Kconfig  |   2 +-
+>   .../media/platform/mediatek/mtk-mdp/Kconfig   |   2 +-
+>   .../platform/mediatek/mtk-vcodec/Kconfig      |   2 +-
+>   .../media/platform/mediatek/mtk-vpu/Kconfig   |   2 +-
+>   .../media/platform/nvidia/tegra-vde/Kconfig   |   2 +-
+>   drivers/media/platform/nxp/Kconfig            |   6 +-
+>   drivers/media/platform/nxp/amphion/Kconfig    |   2 +-
+>   drivers/media/platform/nxp/imx-jpeg/Kconfig   |   2 +-
+>   drivers/media/platform/qcom/camss/Kconfig     |   2 +-
+>   drivers/media/platform/qcom/venus/Kconfig     |   2 +-
+>   drivers/media/platform/renesas/Kconfig        |  30 +--
+>   .../media/platform/renesas/rcar-vin/Kconfig   |   4 +-
+>   drivers/media/platform/rockchip/rga/Kconfig   |   2 +-
+>   .../media/platform/rockchip/rkisp1/Kconfig    |   2 +-
+>   .../media/platform/samsung/exynos-gsc/Kconfig |   2 +-
+>   .../media/platform/samsung/exynos4-is/Kconfig |   2 +-
+>   .../media/platform/samsung/s3c-camif/Kconfig  |   2 +-
+>   .../media/platform/samsung/s5p-g2d/Kconfig    |   2 +-
+>   .../media/platform/samsung/s5p-jpeg/Kconfig   |   2 +-
+>   .../media/platform/samsung/s5p-mfc/Kconfig    |   2 +-
+>   drivers/media/platform/sti/bdisp/Kconfig      |   2 +-
+>   drivers/media/platform/sti/delta/Kconfig      |   2 +-
+>   drivers/media/platform/sti/hva/Kconfig        |   2 +-
+>   drivers/media/platform/sti/stm32/Kconfig      |   4 +-
+>   drivers/media/platform/ti/am437x/Kconfig      |   2 +-
+>   drivers/media/platform/ti/davinci/Kconfig     |  12 +-
+>   drivers/media/platform/ti/omap/Kconfig        |   2 +-
+>   drivers/media/platform/ti/omap3isp/Kconfig    |   2 +-
+>   drivers/media/platform/ti/vpe/Kconfig         |   4 +-
+>   drivers/media/platform/via/Kconfig            |   2 +-
+>   drivers/media/platform/xilinx/Kconfig         |   2 +-
+>   drivers/media/radio/Kconfig                   |  54 ++--
+>   drivers/media/radio/si470x/Kconfig            |   2 +-
+>   drivers/media/radio/wl128x/Kconfig            |   2 +-
+>   drivers/media/spi/Kconfig                     |   4 +-
+>   drivers/media/test-drivers/Kconfig            |   2 +-
+>   drivers/media/test-drivers/vicodec/Kconfig    |   2 +-
+>   drivers/media/test-drivers/vimc/Kconfig       |   2 +-
+>   drivers/media/test-drivers/vivid/Kconfig      |   2 +-
+>   drivers/media/tuners/Kconfig                  |   6 +-
+>   drivers/media/tuners/e4000.c                  |   6 +-
+>   drivers/media/tuners/fc2580.c                 |   6 +-
+>   drivers/media/usb/airspy/Kconfig              |   2 +-
+>   drivers/media/usb/au0828/Kconfig              |   6 +-
+>   drivers/media/usb/cpia2/Kconfig               |   2 +-
+>   drivers/media/usb/dvb-usb-v2/Kconfig          |   8 +-
+>   drivers/media/usb/dvb-usb/Kconfig             |   4 +-
+>   drivers/media/usb/gspca/Kconfig               |  96 +++----
+>   drivers/media/usb/gspca/gl860/Kconfig         |   2 +-
+>   drivers/media/usb/gspca/m5602/Kconfig         |   2 +-
+>   drivers/media/usb/hackrf/Kconfig              |   2 +-
+>   drivers/media/usb/hdpvr/Kconfig               |   2 +-
+>   drivers/media/usb/msi2500/Kconfig             |   2 +-
+>   drivers/media/usb/pvrusb2/Kconfig             |   2 +-
+>   drivers/media/usb/pwc/Kconfig                 |   2 +-
+>   drivers/media/usb/s2255/Kconfig               |   2 +-
+>   drivers/media/usb/stkwebcam/Kconfig           |   2 +-
+>   drivers/media/usb/usbtv/Kconfig               |   2 +-
+>   drivers/media/usb/uvc/Kconfig                 |   2 +-
+>   drivers/media/usb/zr364xx/Kconfig             |   2 +-
+>   drivers/media/v4l2-core/Kconfig               |  12 +-
+>   drivers/media/v4l2-core/Makefile              |   2 +-
+>   drivers/staging/media/atomisp/Kconfig         |   2 +-
+>   drivers/staging/media/atomisp/i2c/Kconfig     |  14 +-
+>   drivers/staging/media/hantro/Kconfig          |   2 +-
+>   drivers/staging/media/imx/Kconfig             |   2 +-
+>   drivers/staging/media/ipu3/Kconfig            |   2 +-
+>   drivers/staging/media/max96712/Kconfig        |   2 +-
+>   drivers/staging/media/meson/vdec/Kconfig      |   2 +-
+>   drivers/staging/media/omap4iss/Kconfig        |   2 +-
+>   drivers/staging/media/rkvdec/Kconfig          |   2 +-
+>   drivers/staging/media/sunxi/cedrus/Kconfig    |   2 +-
+>   drivers/staging/media/tegra-video/Kconfig     |   2 +-
+>   drivers/staging/media/zoran/Kconfig           |   2 +-
+>   drivers/staging/most/video/Kconfig            |   2 +-
+>   .../vc04_services/bcm2835-camera/Kconfig      |   2 +-
+>   drivers/usb/gadget/Kconfig                    |   2 +-
+>   drivers/usb/gadget/legacy/Kconfig             |   2 +-
+>   sound/pci/Kconfig                             |   4 +-
+>   116 files changed, 371 insertions(+), 376 deletions(-)
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
----
 
-To avoid mailbombing on a large number of people, only mailing lists were C/C on the cover.
-See [PATCH 00/64] at: https://lore.kernel.org/all/cover.1647242578.git.mchehab@kernel.org/
-
- drivers/media/platform/Kconfig                | 20 +------------------
- .../media/platform/rockchip/rkisp1/Kconfig    | 19 ++++++++++++++++++
- 2 files changed, 20 insertions(+), 19 deletions(-)
- create mode 100644 drivers/media/platform/rockchip/rkisp1/Kconfig
-
-diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index 228881ae0d22..29afef26cbe4 100644
---- a/drivers/media/platform/Kconfig
-+++ b/drivers/media/platform/Kconfig
-@@ -59,6 +59,7 @@ source "drivers/media/platform/qcom/venus/Kconfig"
- 
- source "drivers/media/platform/aspeed/Kconfig"
- source "drivers/media/platform/rockchip/rga/Kconfig"
-+source "drivers/media/platform/rockchip/rkisp1/Kconfig"
- source "drivers/media/platform/s3c-camif/Kconfig"
- source "drivers/media/platform/s5p-g2d/Kconfig"
- source "drivers/media/platform/sti/hva/Kconfig"
-@@ -82,25 +83,6 @@ config VIDEO_MUX
- 
- source "drivers/media/platform/intel/Kconfig"
- 
--config VIDEO_ROCKCHIP_ISP1
--	tristate "Rockchip Image Signal Processing v1 Unit driver"
--	depends on V4L_PLATFORM_DRIVERS
--	depends on VIDEO_V4L2 && OF
--	depends on ARCH_ROCKCHIP || COMPILE_TEST
--	select MEDIA_CONTROLLER
--	select VIDEO_V4L2_SUBDEV_API
--	select VIDEOBUF2_DMA_CONTIG
--	select VIDEOBUF2_VMALLOC
--	select V4L2_FWNODE
--	select GENERIC_PHY_MIPI_DPHY
--	default n
--	help
--	  Enable this to support the Image Signal Processing (ISP) module
--	  present in RK3399 SoCs.
--
--	  To compile this driver as a module, choose M here: the module
--	  will be called rockchip-isp1.
--
- source "drivers/media/platform/exynos4-is/Kconfig"
- source "drivers/media/platform/am437x/Kconfig"
- source "drivers/media/platform/xilinx/Kconfig"
-diff --git a/drivers/media/platform/rockchip/rkisp1/Kconfig b/drivers/media/platform/rockchip/rkisp1/Kconfig
-new file mode 100644
-index 000000000000..c2e464317929
---- /dev/null
-+++ b/drivers/media/platform/rockchip/rkisp1/Kconfig
-@@ -0,0 +1,19 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+config VIDEO_ROCKCHIP_ISP1
-+	tristate "Rockchip Image Signal Processing v1 Unit driver"
-+	depends on V4L_PLATFORM_DRIVERS
-+	depends on VIDEO_V4L2 && OF
-+	depends on ARCH_ROCKCHIP || COMPILE_TEST
-+	select MEDIA_CONTROLLER
-+	select VIDEO_V4L2_SUBDEV_API
-+	select VIDEOBUF2_DMA_CONTIG
-+	select VIDEOBUF2_VMALLOC
-+	select V4L2_FWNODE
-+	select GENERIC_PHY_MIPI_DPHY
-+	default n
-+	help
-+	  Enable this to support the Image Signal Processing (ISP) module
-+	  present in RK3399 SoCs.
-+
-+	  To compile this driver as a module, choose M here: the module
-+	  will be called rockchip-isp1.
--- 
-2.35.1
-
+Reviewed-by: Neil Armstrong <narmstrong@baylibre.com> # for meson-vdec & meson-ge2d
 
 _______________________________________________
 Linux-rockchip mailing list
