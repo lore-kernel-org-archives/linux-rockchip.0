@@ -4,81 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2642C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Mar 2022 21:50:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22ECFC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Mar 2022 22:12:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SFvRFAFWf5guLMYMCUkpYGce0AavEtcPJ/a+/Du2jOE=; b=2f1PtGmHQe4fXC
-	dUmSybZ6HUdUz6c1aifh2GycTedQLyQgF28zaVJLTYHFUQ25JgLzkoPMFS6uCWUp6vjBFtaFjFzJl
-	7NH2S85uWANfw6rgQTzNgQewTa9kH18KzvdApfimWhT6YUIyXxC2i88rHk2++dqMHGqnfCg5tssSj
-	v1aThyuVE+wG9eIQTTcBXTqcGwnNDBXl0Ezyes9g7hmy62OOO1e+P50AGQVZJ5M3dkdIk3y0KG+F1
-	S6evSYfVH9rGxxM2O/T9Do2VJPZfCPsqRALmtKpxZ5rVdtNWcayvzh+KibCvCqZV/qFfAaQd9zTbo
-	75LUTzkCQEXLsrPJrO3w==;
+	List-Owner; bh=aYVLL2xHd57OuQdfEJ55dgCjWjRuVxNzIhimfA0P7DM=; b=PHDDfsMvREa+0Q
+	PxKL3EJ0dAitgJv2u8lDz+Ol61Ccbk8//Ezq+3yiBO73PmRzP7RRDeiESGR/gfALBIPMLyOdkxLvk
+	K3BSh30m4fXi28YS/8Y4wTkTBaGbPHcPMXue/B5odVOlmJFNO2Rnrg3qUz6MXa8Lax5kHBOqwckaH
+	SEhobVk58CFAYNx7X24NekriOMump3eAV/hPto6xSTdDrvcVD/Eofh/TpqreSNuCxisL6njA1V+oW
+	+1wSMmD/ULH3ZNqSRXfJI4Ke++fyGfqbz1+Qu8eBSqRkukH/mejkPyK5YUfxiGurIyWdaYMhI2ZFc
+	ovfS8gO+HN9ZnHZeQtSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTsaP-006wvb-Fi; Mon, 14 Mar 2022 21:50:41 +0000
-Received: from mail-io1-f43.google.com ([209.85.166.43])
+	id 1nTsvV-006zbx-QF; Mon, 14 Mar 2022 22:12:29 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTsaD-006wsE-Hv; Mon, 14 Mar 2022 21:50:30 +0000
-Received: by mail-io1-f43.google.com with SMTP id w7so20056499ioj.5;
- Mon, 14 Mar 2022 14:50:29 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=CGEh5iCMps2XS5R44sd7XPYTqLJq0sP1C+L9zYhWYlI=;
- b=By1NhMokdUxy3vthWnNShlTJ5Km61ZgTTsos4hkH1ScwfxfGfcpzmIBhlZ0u39ny0o
- zRqn5+bKkPWWtnsxeP0czsWi7XLJ6B7NyPKgon5o27wOBtvcUDQLm/gUT6pb5VvzokL7
- N11Dj38XRNr+Ceb2nrD40WA1lCqYcgA9ESQBAGLYdXzle8f9jn8ak8x4e7enQ14NoK/A
- x4/DaC+9EVuiIZCw1NvxbJIZmH9GVxrnyfDsTTeiEPNux3VOlKQ3UbEIiAnIofTKHRdH
- MVYmi9PgbyhEG1DfQs11Qo0u/DsEmKRZkm6d4scb0rfD+rzPLZTcU76g2ye4ZBByV9tb
- we4g==
-X-Gm-Message-State: AOAM530zWCFUO3yaiRoAI70oRDnX3jVSz5wjfMxY3wlnr2wyhMlF1EiK
- bPtZopEF/71VTUWvucgeRw==
-X-Google-Smtp-Source: ABdhPJweO3VWhgxdwP7gQ1lIiOQaKbWSgKSaZY/XLgS/m78dLb5ar/Nckf4Npe8/Eq4Iw9CzsqdXRQ==
-X-Received: by 2002:a02:bb8c:0:b0:317:b015:1998 with SMTP id
- g12-20020a02bb8c000000b00317b0151998mr21388886jan.134.1647294628516; 
- Mon, 14 Mar 2022 14:50:28 -0700 (PDT)
-Received: from robh.at.kernel.org ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id
- c12-20020a056e02058c00b002c63f71c7dbsm9137733ils.56.2022.03.14.14.50.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Mar 2022 14:50:27 -0700 (PDT)
-Received: (nullmailer pid 623447 invoked by uid 1000);
- Mon, 14 Mar 2022 21:50:24 -0000
-Date: Mon, 14 Mar 2022 15:50:24 -0600
-From: Rob Herring <robh@kernel.org>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Viresh Kumar <viresh.kumar@linaro.org>, Frank Wunderlich <linux@fw-web.de>,
- devicetree@vger.kernel.org, Damien Le Moal <damien.lemoal@opensource.wdc.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Viresh Kumar <vireshk@kernel.org>,
- Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org,
- Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- Russell King <linux@armlinux.org.uk>, Heiko Stuebner <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Hans de Goede <hdegoede@redhat.com>, Jens Axboe <axboe@kernel.dk>,
- linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: Re: [PATCH v6 3/6] ARM: dts: spear13xx: Fix sata node name
-Message-ID: <Yi+4oN5xuS2pq0ru@robh.at.kernel.org>
-References: <20220311210357.222830-1-linux@fw-web.de>
- <20220311210357.222830-4-linux@fw-web.de>
- <20220314034940.rxkgue2kllnqhucp@vireshk-i7>
- <trinity-0f1389c2-6d2b-4499-a2fc-3cb93f4d09cb-1647272336831@3c-app-gmx-bap56>
+ id 1nTsv8-006zSZ-5j; Mon, 14 Mar 2022 22:12:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1647295926; x=1678831926;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=TmF4FvJhy8r4L46VPu1Ph2AwpXhixIyOHXK6V+ZN30g=;
+ b=ctMmG9QpJDihurcd/VXfdsPESxxo4Qew2LYDIcLXOMgD44czDm3GPZSr
+ QhumwLrjvNoEJ3qGkQlYOZS6rwHQ7I2w4WRmMQh1wVBWMpv/snfGIK3Ik
+ KRWjhen0V0OZRGD/Yh1kQE8X0y0I3JQzr2CkJ7pnlgO09HJMSHFVczKLb
+ 3Jib3F/A93xvF5m5ZW9Q/VYvOklCZ7dc6R/z9Z0mRLWGkBaEYGtrVMII2
+ mqsE1GPgWcA8CYfw5jJq64DyE66G43glbzKNHdOZNuTxZ/1msJJLgJoAv
+ el8oEjWxxJy8NdTsLGydrXp0qD5PecxjKWche2BqiLTiC41Xi4BKdssE+ Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10286"; a="238324735"
+X-IronPort-AV: E=Sophos;i="5.90,181,1643702400"; d="scan'208";a="238324735"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Mar 2022 15:11:55 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,181,1643702400"; d="scan'208";a="556641142"
+Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.151])
+ by orsmga008.jf.intel.com with SMTP; 14 Mar 2022 15:11:44 -0700
+Received: by stinkbox (sSMTP sendmail emulation);
+ Tue, 15 Mar 2022 00:11:43 +0200
+Date: Tue, 15 Mar 2022 00:11:43 +0200
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: dri-devel@lists.freedesktop.org
+Cc: intel-gfx@lists.freedesktop.org, Abhinav Kumar <quic_abhinavk@quicinc.com>,
+ Alain Volmat <alain.volmat@foss.st.com>,
+ Alex Deucher <alexander.deucher@amd.com>, amd-gfx@lists.freedesktop.org,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Aurabindo Pillai <aurabindo.pillai@amd.com>,
+ Chen Feng <puck.chen@hisilicon.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Emma Anholt <emma@anholt.net>, freedreno@lists.freedesktop.org,
+ Harry Wentland <harry.wentland@amd.com>,
+ Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ John Stultz <john.stultz@linaro.org>,
+ Jonas Karlman <jonas@kwiboo.se>, Jyri Sarha <jyri.sarha@iki.fi>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Leo Li <sunpeng.li@amd.com>, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Maxime Ripard <mripard@kernel.org>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Nikola Cornij <nikola.cornij@amd.com>,
+ Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Clark <robdclark@gmail.com>,
+ Robert Foss <robert.foss@linaro.org>,
+ Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>,
+ Sam Ravnborg <sam@ravnborg.org>, Sandy Huang <hjc@rock-chips.com>,
+ Sean Paul <sean@poorly.run>, Thierry Reding <thierry.reding@gmail.com>,
+ Tian Tao <tiantao6@hisilicon.com>, Tomi Valkeinen <tomba@kernel.org>,
+ Xinliang Liu <xinliang.liu@linaro.org>,
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>
+Subject: Re: [PATCH 00/22] drm: Review of mode copies
+Message-ID: <Yi+9n0eGn3rNKb4X@intel.com>
+References: <20220218100403.7028-1-ville.syrjala@linux.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <trinity-0f1389c2-6d2b-4499-a2fc-3cb93f4d09cb-1647272336831@3c-app-gmx-bap56>
+In-Reply-To: <20220218100403.7028-1-ville.syrjala@linux.intel.com>
+X-Patchwork-Hint: comment
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_145029_641328_7ECCD592 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20220314_151206_313740_44B7C0E3 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,44 +106,41 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 14, 2022 at 04:38:56PM +0100, Frank Wunderlich wrote:
-> Hi,
-> =
+On Fri, Feb 18, 2022 at 12:03:41PM +0200, Ville Syrjala wrote:
+>   drm: Add drm_mode_init()
+>   drm/bridge: Use drm_mode_copy()
+>   drm/imx: Use drm_mode_duplicate()
+>   drm/panel: Use drm_mode_duplicate()
+>   drm/vc4: Use drm_mode_copy()
+These have been pushed to drm-misc-next.
 
-> thanks for for checking the spear-patch.
-> =
+>   drm/amdgpu: Remove pointless on stack mode copies
+>   drm/amdgpu: Use drm_mode_init() for on-stack modes
+>   drm/amdgpu: Use drm_mode_copy()
+amdgpu ones are reviewed, but I'll leave them for the
+AMD folks to push to whichever tree they prefer.
 
-> > Gesendet: Montag, 14. M=E4rz 2022 um 04:49 Uhr
-> > Von: "Viresh Kumar" <viresh.kumar@linaro.org>
-> >
-> > On 11-03-22, 22:03, Frank Wunderlich wrote:
-> > > From: Frank Wunderlich <frank-w@public-files.de>
-> > > =
 
-> > > After converting the binding to yaml the node name does
-> > > not match the standard pattern, change it.
-> > > =
+The rest are still in need of review:
+>   drm/radeon: Use drm_mode_copy()
+>   drm/gma500: Use drm_mode_copy()
+>   drm/hisilicon: Use drm_mode_init() for on-stack modes
+>   drm/msm: Nuke weird on stack mode copy
+>   drm/msm: Use drm_mode_init() for on-stack modes
+>   drm/msm: Use drm_mode_copy()
+>   drm/mtk: Use drm_mode_init() for on-stack modes
+>   drm/rockchip: Use drm_mode_copy()
+>   drm/sti: Use drm_mode_copy()
+>   drm/tilcdc: Use drm_mode_copy()
+>   drm/i915: Use drm_mode_init() for on-stack modes
+>   drm/i915: Use drm_mode_copy()
+>   drm: Use drm_mode_init() for on-stack modes
+>   drm: Use drm_mode_copy()
 
-> > > arch/arm/boot/dts/spear1340-evb.dt.yaml: ahci@b1000000:
-> > > $nodename:0: 'ahci@b1000000' does not match '^sata(@.*)?$'
-> > > 	From schema: Documentation/devicetree/bindings/ata/ahci-platform.yaml
-> > > =
+-- =
 
-> > > Fixes: 07658d9a659b ("SPEAr13xx: Add dts and dtsi files")
-> > =
-
-> > I don't think this is correct. The above patch is correct. The first
-> > patch in this series changes the names and that's where things break.
-> =
-
-> it's right that my binding will break it, but the nodes are not named the=
- right way.
-> And i used the commit that introduces the wrong node-names.
-> Maybe fixes-tag is wrong in this case.
-
-I'm pretty sure Viresh just meant the Fixes tag is not right.
-
-Rob
+Ville Syrj=E4l=E4
+Intel
 
 _______________________________________________
 Linux-rockchip mailing list
