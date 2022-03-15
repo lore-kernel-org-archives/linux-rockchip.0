@@ -4,57 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F381DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Mar 2022 06:47:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EA5EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Mar 2022 07:00:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KbfhBawCYLjxeVO6G6wEBFdGEfahqvLqlWrgKDhIsPI=; b=GuYUVuHPr1NpNM
-	/q6tG8Ej9tCH9VfVZNFJzjmbMlGMuU+kjyacOYGagpzGAchQ8tBwouz7PaVGySIKQpjOSJQxg0BN9
-	Vf7rZ/qLebLuX1AhtjY0nUSdJgNhuHOvMXc2u8gxWdaNJngTY7njMRWSaES7GyAUz54o6s+RcbHor
-	PSVYHs3lIzULxeDL7z+3lKNLsZPKnL8bureuSe8E0MaTt0ffeS4w56aOSi3WJhyihM8qcFyYoYdNq
-	MJqYkZaCDzlMsv9voy6unr8EbRDOrqYxA8XTd0bq+HOtl6vnjjR/Y6sNWzxEFDaoYvteXkzy1Vb3O
-	SM54Gw0HKxlfQHqiR6jA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=q+nr/hvc1ENiZqe0RTyRp31xnlVEgZi5UzyQApW3s6A=; b=ZcGMTsZjGP++5w
+	edQm8rAELzGX6tqFN0w9qimypZtTRAGLu02DLysJ9CHDE4Lp91MQMWsJpJzYZdWx8DH2y5NvdReua
+	2HaWCjgwh/hQyTq3ZNbSA8U1RUJ63yfTA/I+cLj050LF1g2EqDn9+O9kEKxj/Ze/Qu9oP79dAzQnV
+	BrEGVGdGP3A25TfDFWnAPCpZXsyKrNMzBXTKt5tvnSlXsILg09dWwo1ivOH7G2WrJGYR+oMyW0Nyp
+	Ep5VLpFPGmaweRMfAyyOZaeYjSY32G0YuAu2VbdnEsICdFzLjQY/0t0g6h8ZQOo/kmrGb75dk0MI9
+	qTGgNU+vLn3k6hQgpY0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nU0xI-0080vp-2V; Tue, 15 Mar 2022 06:46:52 +0000
-Received: from mail-m121144.qiye.163.com ([115.236.121.144])
+	id 1nU1AG-0082ww-N4; Tue, 15 Mar 2022 07:00:17 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nU0x6-0080tz-0m; Tue, 15 Mar 2022 06:46:41 +0000
-Received: from [172.16.12.141] (unknown [58.22.7.114])
- by mail-m121144.qiye.163.com (Hmail) with ESMTPA id 713ECAC023E;
- Tue, 15 Mar 2022 14:46:36 +0800 (CST)
-Message-ID: <9ec29d9b-8197-98fb-c612-5c842e4212c4@rock-chips.com>
-Date: Tue, 15 Mar 2022 14:46:35 +0800
+ id 1nU1AD-0082w1-L2
+ for linux-rockchip@lists.infradead.org; Tue, 15 Mar 2022 07:00:15 +0000
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 22F3E09t015173; 
+ Tue, 15 Mar 2022 06:59:58 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
+ bh=3hB3h4dIjrPsOOxe0uPeRqer8F5pUyXXoLcjJznlUr4=;
+ b=sm52ZdFp8GWwtaa58LwhhLYIvHFir5lM1VBhi6G2sqKWJl4/RnTUaQS/bCRkGOzSI547
+ 2ySR8naU7T07QWn1v4SmTJOnVnIbQQJiXm9C0PjcrjcMsJTBjn8WOqiyndONaTcXKNjH
+ /bGQWh16WFHwci02AA4bOpB2uwap9gg5x9i06qRtjfJC/0D/T/FvGhdj4Z/KBgyjeE5H
+ zkzvDxx/xdZ+Xr79xf/Asa9XIqbeq06L7Jh6B2tXzHoJmqVQF4Ohu/KaniA6ppLbbDht
+ jCmvdmG1hHkOVkWzAELnmQrBAh6BQj2J697TxJEdSQ/ajn0HPBEBLscba1d2JmxHbJQi AA== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3et60rj6xy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 15 Mar 2022 06:59:58 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+ by aserp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 22F6tpa5007575;
+ Tue, 15 Mar 2022 06:59:57 GMT
+Received: from nam11-dm6-obe.outbound.protection.outlook.com
+ (mail-dm6nam11lp2174.outbound.protection.outlook.com [104.47.57.174])
+ by aserp3020.oracle.com with ESMTP id 3et64jpbnc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 15 Mar 2022 06:59:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GFP7NQlUFdmy1parmxZyri/Y77y6ida724iBQz2lHLu2oMa+cKa6RChgTdD1x9cmnuUTsQNCmLP3Rjbpe01CfLD4PiWuPpHQ9tBYjv4vr4Htqjz0GHYq8CXV/5G3MXehxY+zwffX8Yau4pEzgDYVekFevzfmdJxzyaSoacnndVlNd9m8SCSOIoE9pK6Puc5E+vL2yozbMQMgBPTNCexVWnaIZtrvVCWJ38bpEuD+XS5Kba9uHG553cY/ubkYkCsbb/8DOuiG2tvBz/hSP7XLM7v36TeTEgrHjBeui6xvo2k07lwOhD0pOD/z2McrNym7SzLZ4rO7SARhQnMa7aSfCw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3hB3h4dIjrPsOOxe0uPeRqer8F5pUyXXoLcjJznlUr4=;
+ b=oGarCkdAGB64t5X5r8qGprdjP0JwfLK14imNYItoW2qPbsrgX5o7M/tXIT4JryL1qbwHnTFl9o3WVENCYMhom6eAosStDN9awz/WCVSMG/B9eISU380jfxf8fM65kqtCEcPGK2tpet9spSvzYOXj7sB4IPWxMsrNN2zr8k5BR1cV4RcmnvwUWddgF+OQgMQhimJ1C/jzZtNZB4NlqLVAZzeXNMLEttAExfNGXoJxU1jTDD3Xg83jR6igeLkRfLCa8qDBeksJA0LSWmqWgfg37hewK1unVvCFy+sGH5KcUpOf5m8aNPqfft6ld+Nu6A1iFmJeuGNh7gq4hCZvopgpLw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3hB3h4dIjrPsOOxe0uPeRqer8F5pUyXXoLcjJznlUr4=;
+ b=WN/IlNTRPcHbGBurqVhrP9BYnGDDj5fnakEFXTjcjxbvzuQgEBeggFp19snb5g2X3ymSiBs0j/OKpd+LfATXBLc/vHbirq+EdqeRpwCInXLn3ci5XAZm1I6BiT6TKKUHdB1I5+wFBTsbmdmH5l9JqNSSafNAkBekXeZwVbcfu3I=
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by CH2PR10MB4149.namprd10.prod.outlook.com
+ (2603:10b6:610:a7::16) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5061.22; Tue, 15 Mar
+ 2022 06:59:55 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::2c3d:92b5:42b3:c1c5]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::2c3d:92b5:42b3:c1c5%4]) with mapi id 15.20.5061.022; Tue, 15 Mar 2022
+ 06:59:55 +0000
+Date: Tue, 15 Mar 2022 09:59:44 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
+ linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ kernel-janitors@vger.kernel.org
+Subject: [PATCH] PCI: rockchip: fix find_first_zero_bit() limit
+Message-ID: <20220315065944.GB13572@kili>
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ClientProxiedBy: ZR0P278CA0188.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:44::20) To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v8 22/24] drm: rockchip: Add VOP2 driver
-Content-Language: en-US
-To: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, kernel@pengutronix.de,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
- <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>
-References: <20220311083323.887372-1-s.hauer@pengutronix.de>
- <20220311083323.887372-23-s.hauer@pengutronix.de>
-From: Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <20220311083323.887372-23-s.hauer@pengutronix.de>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
- kWDxoPAgseWUFZKDYvK1lXWShZQUlKS0tKN1dZLVlBSVdZDwkaFQgSH1lBWUIaGh1WH0IfSE5OHx
- 1PQk5CVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWU9LSFVKSktISkNVS1kG
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PUk6Ezo*DD5NES9PCBQvEVYT
- AxJPCxBVSlVKTU9MSElNTEJMS09DVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
- WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSElJTTcG
-X-HM-Tid: 0a7f8c541bd1b039kuuu713ecac023e
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 020cdfed-3b95-43db-ab20-08da06516950
+X-MS-TrafficTypeDiagnostic: CH2PR10MB4149:EE_
+X-Microsoft-Antispam-PRVS: <CH2PR10MB41499176687BBA75B1B72C238E109@CH2PR10MB4149.namprd10.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Tv64KakBwq15fUEGG+AtOXg20DzIYoLkNmKFbQF6FIX2hjUq7plGlPrPDrhYFBjwJEZpsX6pjKsaRTQj8Mvn/RcMunidGTz1DDuVArjPQRjfBeBeUF6yIDBROGPFASBdtWkijREwCiQU7JMU4Ib5NS77R1sgRUHEAHAIU+Ef677QghjW5fKDg2pA5boXOt7LCnBlZQnF4axG4W8d1Sz0J0R72BEfFZgH6mQWJYSsjHUJBwTPoXzY+pD6Os0/frubssraAGphDKuJI+Rb+9lSOkOI6CQmvMjwVOVJ0aEnSdsfFUlFSD+27+YsB3NnrpzLXbtELDrvmcqF5kQ/cOOtL8CKPoN1SilkECF53PCm4sRNipZc+08N4sPzDDU1PVg4W25hG+wJFZD4iRn7tHSB4tjdMvQ5U2+Zgr17UVYNKc5Wn4qj9xYTUdL3z3X0HNeVpmeZ9OrnNFTcL2WGMsa/V/mAo2NxDmFRTDJ350b1UUxelk5ijgFOojzutHZHRJouFPWYh1JHNdhy+1Am6wFGmIgy0pNuq8ikn2YHSsZJeMMwQmVqh4tps5ccIaTkk6EBKJLkMVOq3soA/k0NUes4M9he0pHK8PSFMmW040OqiVF9yNti41BpiTZ8LcOBX0Cg+1yag7Z7wlKBA5cuW4a13JxuEnXTynjiHyqb2cYjnZE2RHuv2x9w3xwI65ZAEGMgjp6L9sr47h4svnnKDNiMug==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(7916004)(366004)(6916009)(54906003)(316002)(33656002)(66946007)(33716001)(508600001)(8936002)(44832011)(6486002)(4744005)(66476007)(5660300002)(2906002)(38100700002)(38350700002)(8676002)(4326008)(66556008)(86362001)(6666004)(9686003)(1076003)(26005)(6512007)(6506007)(83380400001)(186003)(52116002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ne+4RzvQIU253qqW29VBef6Emi5OOMV80eZf2h+1qjsYB5RtBcIgxUuDLTsz?=
+ =?us-ascii?Q?frS2fdz+xzYwg7VZuROFmv6/Lo6c0YlRVXmAk3KBlkt67staLTdTdp1gQASA?=
+ =?us-ascii?Q?ZCvIy+0d44/vIwze9wKVr7sp3OyFe7/QLwtwDc+m/nqvq1X0bRMIpCt/EMri?=
+ =?us-ascii?Q?hAHX9XjOtOcxRp+9CYO74TzSAGbFDEbSgOwEm4y/g3CaSW1dhLMNfEFYS85p?=
+ =?us-ascii?Q?HkRbCESMS2iau2DnGTO6kSFJPqnBC4No3LG7grLU7UgGLGpwpXVJMJBIraK1?=
+ =?us-ascii?Q?cOLPbmDeKcQVrjrJssbrSW4/I9X/NPKsLOhUkCnBUgJWwlXd7It0TFsFqZvX?=
+ =?us-ascii?Q?y75oJNy5cJwpnpY2kGsCXPDf5kQmFHDWt02CIyK8wcGlkh31PDUdk0zYCIOd?=
+ =?us-ascii?Q?cCXoTogITLgxkJYd6MZhvJ57mkUwmsu4haDMo+B20Jt5psWE6rgENlCA+xYv?=
+ =?us-ascii?Q?7qcToQvhTmLQV9rq+qOk4kia1KKEavDAfdxmbEw4EZXgKOtC+ElF+XKHE0EU?=
+ =?us-ascii?Q?M5FrkTZefD87+V2ejf2FR00mckhETnKBAdOTem09L/qFGypGH2bOftZghQJB?=
+ =?us-ascii?Q?MTJNw/klgRwR2gYKKIB4587h8blhSB29ybOGxYXjVq6deULdT+2/O4cSjNkz?=
+ =?us-ascii?Q?ggTSfB1IirgzM54wtxyOgY4mvPPIEgFWvbkimSiboTXm1pANgka7srOP4Gps?=
+ =?us-ascii?Q?+lsSNy4HY8lIwY1rCZVz4jULy3eKWOh/sxA7A3o1KbW+VP8Obwtm7sTjnduj?=
+ =?us-ascii?Q?4pAZqJjraf9XK5te1zIYxb9jcrFhsvfTdRLopZUVTrz3q545E0Wd9NurhnyP?=
+ =?us-ascii?Q?kiiKJ7luYz3rWhLc4LpTMHhldT+zDVW8WXi4H73jjpuylOSdIvYeKcoPqRPd?=
+ =?us-ascii?Q?9gOzVTGB5WEI3INCqRApu+rA/vWCq2FnWjPvJaNNXieLyQQmwieCS8uY5oaP?=
+ =?us-ascii?Q?AnNi9tXhn6/veNZA2hIHpmIL6fyEK/+CheRCd+FegDve19yRrXoJyXDT9fAw?=
+ =?us-ascii?Q?KV/uiGlJwKJd1kDyW+AXvGoTvbBdnz7wD86Pg3XoWuTrloP+er52+QFLTj2C?=
+ =?us-ascii?Q?ik+cJhqeTtlQYsesoTZioSEMslFL79JkvOrC6t0hxwv/WkUHTwm2v+q+nmG2?=
+ =?us-ascii?Q?J/JAZ3/C4GoiRvnIgRckEpITy+JbOgXONFB/USKyhP83OnUUVzctZmV+BeQ4?=
+ =?us-ascii?Q?n9k6NVqmL+xp8g8FdirIvEYDQs08OHU3eRys9Rnr7+FTU5cddt6hU9xoYPFu?=
+ =?us-ascii?Q?3lET50uoUpDwmDdMHj/ZCoONSG5758HuwzlqOSfj3UDhoDywKk+NMfEJ63K5?=
+ =?us-ascii?Q?TxK50QtsX4EMu9hIQX78C4qTi8Wfmnnm+5dVDm5iIhlUeEwi1HvFbAnON4Om?=
+ =?us-ascii?Q?T5vPcvnffCWkZUYJx4fnUQ/4CjGSIgt468txxvilhV0eNJ/sZ3Enm8O5Mcgv?=
+ =?us-ascii?Q?XSgyyZ/ID+IbUI5TpJoL54jzswcpYnay7Z5Jlmy1K5Ycy+j2jzViEw=3D=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 020cdfed-3b95-43db-ab20-08da06516950
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Mar 2022 06:59:55.8170 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2/9EI4DF3R0k/rJ9fSVnOqpXu3KWLQg9gYjcemYVN38V1CwAA3pOwy4+nvoSZZ4PSklpn8qZDdz9QZKF1Sh/Xe2eyVQhPGX/2PTnV1AwhAo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR10MB4149
+X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10286
+ signatures=693139
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ phishscore=0
+ malwarescore=0 mlxscore=0 suspectscore=0 spamscore=0 bulkscore=0
+ mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2202240000 definitions=main-2203150045
+X-Proofpoint-ORIG-GUID: BwjJLdgh8BBoEOpZQT52M9OeMzYuxalA
+X-Proofpoint-GUID: BwjJLdgh8BBoEOpZQT52M9OeMzYuxalA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_234640_255675_2541959F 
-X-CRM114-Status: GOOD (  15.68  )
+X-CRM114-CacheID: sfid-20220315_000013_855905_476A9086 
+X-CRM114-Status: GOOD (  13.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,48 +163,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sascha:
+The ep->ob_region_map bitmap is a long and it has BITS_PER_LONG bits.
 
-On 3/11/22 16:33, Sascha Hauer wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
->
-> The VOP2 unit is found on Rockchip SoCs beginning with rk3566/rk3568.
-> It replaces the VOP unit found in the older Rockchip SoCs.
->
-> This driver has been derived from the downstream Rockchip Kernel and
-> heavily modified:
->
-> - All nonstandard DRM properties have been removed
-> - dropped struct vop2_plane_state and pass around less data between
->    functions
-> - Dropped all DRM_FORMAT_* not known on upstream
-> - rework register access to get rid of excessively used macros
-> - Drop all waiting for framesyncs
->
-> The driver is tested with HDMI and MIPI-DSI display on a RK3568-EVB
-> board. Overlay support is tested with the modetest utility. AFBC support
-> on the cluster windows is tested with weston-simple-dmabuf-egl on
-> weston using the (yet to be upstreamed) panfrost driver support.
+Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ drivers/pci/controller/pcie-rockchip-ep.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Do we need some modification to test AFBC by weston-simple-dma-egl ?
-
-I have a buildroot system with weston-10.0.9 and mesa 21.3.5.
-
-After launch weston, I run weston-simple-dmabuf-egl, but from the output
-
-of sys/kernel/debug/dri/0/state, the weston is still use Smart0-win0, 
-which is
-
-a non-AFBC window.
-
-Do i need to modify the vop2 driver to set one Cluster window as primary 
-plane?
-
+diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
+index 5fb9ce6e536e..d1a200b93b2b 100644
+--- a/drivers/pci/controller/pcie-rockchip-ep.c
++++ b/drivers/pci/controller/pcie-rockchip-ep.c
+@@ -264,8 +264,7 @@ static int rockchip_pcie_ep_map_addr(struct pci_epc *epc, u8 fn, u8 vfn,
+ 	struct rockchip_pcie *pcie = &ep->rockchip;
+ 	u32 r;
+ 
+-	r = find_first_zero_bit(&ep->ob_region_map,
+-				sizeof(ep->ob_region_map) * BITS_PER_LONG);
++	r = find_first_zero_bit(&ep->ob_region_map, BITS_PER_LONG);
+ 	/*
+ 	 * Region 0 is reserved for configuration space and shouldn't
+ 	 * be used elsewhere per TRM, so leave it out.
+-- 
+2.20.1
 
 
 _______________________________________________
