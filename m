@@ -4,91 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22ECFC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Mar 2022 22:12:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B72BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Mar 2022 01:15:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aYVLL2xHd57OuQdfEJ55dgCjWjRuVxNzIhimfA0P7DM=; b=PHDDfsMvREa+0Q
-	PxKL3EJ0dAitgJv2u8lDz+Ol61Ccbk8//Ezq+3yiBO73PmRzP7RRDeiESGR/gfALBIPMLyOdkxLvk
-	K3BSh30m4fXi28YS/8Y4wTkTBaGbPHcPMXue/B5odVOlmJFNO2Rnrg3qUz6MXa8Lax5kHBOqwckaH
-	SEhobVk58CFAYNx7X24NekriOMump3eAV/hPto6xSTdDrvcVD/Eofh/TpqreSNuCxisL6njA1V+oW
-	+1wSMmD/ULH3ZNqSRXfJI4Ke++fyGfqbz1+Qu8eBSqRkukH/mejkPyK5YUfxiGurIyWdaYMhI2ZFc
-	ovfS8gO+HN9ZnHZeQtSQ==;
+	List-Owner; bh=CPm2ND7T8obh8VQZx2JZmSRNJNJcUrUaxOh7skzKAk0=; b=TKBlpFEjToUCEA
+	twp1F3o0CpeibBRVYzmb+S8ZIMm9it98M9M4OcpflU/9SQ1rQaJmcvtpy1j+VUki8QcpG+Tvl0SMT
+	5GoeIBbf9TteRh4Z9aGuvwteiYTMsXY5fwSa1tgZN8poKA29w0CA/SvESXsGLKT392uU2aysdio0b
+	uVy96ONLhQ3kWl4r4SV7RscbBaGEl02Yb5+K7Ia6qduTu6n2fFZv0EvDIwU1iUzHxN6tCy8eJ4WFV
+	GvRpkCFhEVXOk9hUzarAgu4J8uxdIXRqqx2z5dWmwkkwc3Y8ZWCBFD/EW/9KU1Z5Aq5XF59rQqAlW
+	2EzJOYUTvJCknxAkZNwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nTsvV-006zbx-QF; Mon, 14 Mar 2022 22:12:29 +0000
-Received: from mga18.intel.com ([134.134.136.126])
+	id 1nTvmt-007Spc-HM; Tue, 15 Mar 2022 01:15:47 +0000
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nTsv8-006zSZ-5j; Mon, 14 Mar 2022 22:12:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1647295926; x=1678831926;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=TmF4FvJhy8r4L46VPu1Ph2AwpXhixIyOHXK6V+ZN30g=;
- b=ctMmG9QpJDihurcd/VXfdsPESxxo4Qew2LYDIcLXOMgD44czDm3GPZSr
- QhumwLrjvNoEJ3qGkQlYOZS6rwHQ7I2w4WRmMQh1wVBWMpv/snfGIK3Ik
- KRWjhen0V0OZRGD/Yh1kQE8X0y0I3JQzr2CkJ7pnlgO09HJMSHFVczKLb
- 3Jib3F/A93xvF5m5ZW9Q/VYvOklCZ7dc6R/z9Z0mRLWGkBaEYGtrVMII2
- mqsE1GPgWcA8CYfw5jJq64DyE66G43glbzKNHdOZNuTxZ/1msJJLgJoAv
- el8oEjWxxJy8NdTsLGydrXp0qD5PecxjKWche2BqiLTiC41Xi4BKdssE+ Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10286"; a="238324735"
-X-IronPort-AV: E=Sophos;i="5.90,181,1643702400"; d="scan'208";a="238324735"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Mar 2022 15:11:55 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,181,1643702400"; d="scan'208";a="556641142"
-Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.151])
- by orsmga008.jf.intel.com with SMTP; 14 Mar 2022 15:11:44 -0700
-Received: by stinkbox (sSMTP sendmail emulation);
- Tue, 15 Mar 2022 00:11:43 +0200
-Date: Tue, 15 Mar 2022 00:11:43 +0200
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: dri-devel@lists.freedesktop.org
-Cc: intel-gfx@lists.freedesktop.org, Abhinav Kumar <quic_abhinavk@quicinc.com>,
- Alain Volmat <alain.volmat@foss.st.com>,
- Alex Deucher <alexander.deucher@amd.com>, amd-gfx@lists.freedesktop.org,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Aurabindo Pillai <aurabindo.pillai@amd.com>,
- Chen Feng <puck.chen@hisilicon.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Emma Anholt <emma@anholt.net>, freedreno@lists.freedesktop.org,
- Harry Wentland <harry.wentland@amd.com>,
- Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- John Stultz <john.stultz@linaro.org>,
- Jonas Karlman <jonas@kwiboo.se>, Jyri Sarha <jyri.sarha@iki.fi>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Leo Li <sunpeng.li@amd.com>, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Maxime Ripard <mripard@kernel.org>,
- Neil Armstrong <narmstrong@baylibre.com>,
- Nikola Cornij <nikola.cornij@amd.com>,
- Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Clark <robdclark@gmail.com>,
- Robert Foss <robert.foss@linaro.org>,
- Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>,
- Sam Ravnborg <sam@ravnborg.org>, Sandy Huang <hjc@rock-chips.com>,
- Sean Paul <sean@poorly.run>, Thierry Reding <thierry.reding@gmail.com>,
- Tian Tao <tiantao6@hisilicon.com>, Tomi Valkeinen <tomba@kernel.org>,
- Xinliang Liu <xinliang.liu@linaro.org>,
- Xinwei Kong <kong.kongxinwei@hisilicon.com>
-Subject: Re: [PATCH 00/22] drm: Review of mode copies
-Message-ID: <Yi+9n0eGn3rNKb4X@intel.com>
-References: <20220218100403.7028-1-ville.syrjala@linux.intel.com>
+ id 1nTvmq-007SpB-PE
+ for linux-rockchip@lists.infradead.org; Tue, 15 Mar 2022 01:15:46 +0000
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-2e2ca8d7812so123531537b3.13
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Mar 2022 18:15:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=pC8Myz4YlofSUNcp3puZ1GbZJ/dg5VjQ7/yDmBxn+eA=;
+ b=wmyEINKwLaGLsp3Ki3JguAJ/jOLaUneOi0kPsR2pL+v6EaMLHOoMDz9cA6K5Lc2X5W
+ sfmbgGis3Vx0uYHa5kqRjH3IcpQUGPDl06rOagZXNTO7SdPjHTOQhtnRHeKoM1EUmM/a
+ iKY+yzu8gmjwlmzQTifk5pteyiYOt/LBpFsMPg0ev7WLHKZkBtJFTlPa+8uCsyv7j1V5
+ KrU1fhvFBWRYQk1C9ii7yZW7xCspc98HtktJpcdz3NVfNMLBq6IrpDHmwiFQIhKJNcn4
+ +p+bS0ePnhxd5oqB2Y8ni+/a0/pjTsi72lE/DEt/MtnGc1UTMumCO+2vH/ehWr3CbpAX
+ C9Zg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=pC8Myz4YlofSUNcp3puZ1GbZJ/dg5VjQ7/yDmBxn+eA=;
+ b=2kIwMWLlPci8KUCEKrxhTUj6AXllBITmF4M5XMK8xgY0HmkiP8YCo9E0rMJBgjmPM3
+ ZQ4cUhJO3QFZnUYYnvAKqe6nuj4EngB0gXM5jVBaRBxcC+4y99LP8dyFpG10nUwYCQ/+
+ NBeVxbAcnhFXC5CJMICO7wAXoIa5kI4Rz0YdLf7PDcfPqCNwA0g41qLhmzr8XFSYE+vj
+ +GWnUCFwBPnOnW4sKGOpnx51Bc5sM1mU6BcEP2QQMAxSvF8zFScJll/AAJeH8XiEwHc5
+ shBkRTSMjGAVyN8LywZ0Tj0NUNLdE7FvWCr0oqNw9ci+hXVHjtFPBtnfFs0MuSu7ATy4
+ SAIw==
+X-Gm-Message-State: AOAM5335vSET3kiIuF7riV0tNYzrOKClyFhV2hXUtMwrLdAZY5CQmExE
+ Rr2ZVd8AWcKk3Uk4FGtXsb4qHEn1LkbwpmIygYl0RQ==
+X-Google-Smtp-Source: ABdhPJzJLFed474ofr89/LlN3suZJUh4S1f4LeorbhqHJKNv59eiwl+mQqd+K5WDPpoHwHT8u9koqgcq/TYVH7Oh4ww=
+X-Received: by 2002:a05:690c:9b:b0:2e4:da22:2a71 with SMTP id
+ be27-20020a05690c009b00b002e4da222a71mr15948649ywb.126.1647306943903; Mon, 14
+ Mar 2022 18:15:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220218100403.7028-1-ville.syrjala@linux.intel.com>
-X-Patchwork-Hint: comment
+References: <20220303062211.1378883-1-jay.xu@rock-chips.com>
+ <20220303062211.1378883-3-jay.xu@rock-chips.com>
+In-Reply-To: <20220303062211.1378883-3-jay.xu@rock-chips.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 15 Mar 2022 02:15:32 +0100
+Message-ID: <CACRpkdb1366vp6nK3K20kenLkwiy_1ebT8Wt+S93vdQ_Gjd_-g@mail.gmail.com>
+Subject: Re: [PATCH 2/2] gpio: rockchip: get pinctrl node from 'gpio-ranges'
+ property
+To: Jianqun Xu <jay.xu@rock-chips.com>
+Cc: heiko@sntech.de, linux-rockchip@lists.infradead.org, 
+ linux-gpio@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220314_151206_313740_44B7C0E3 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220314_181544_856145_42088B39 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,46 +81,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 18, 2022 at 12:03:41PM +0200, Ville Syrjala wrote:
->   drm: Add drm_mode_init()
->   drm/bridge: Use drm_mode_copy()
->   drm/imx: Use drm_mode_duplicate()
->   drm/panel: Use drm_mode_duplicate()
->   drm/vc4: Use drm_mode_copy()
-These have been pushed to drm-misc-next.
+On Thu, Mar 3, 2022 at 7:22 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
 
->   drm/amdgpu: Remove pointless on stack mode copies
->   drm/amdgpu: Use drm_mode_init() for on-stack modes
->   drm/amdgpu: Use drm_mode_copy()
-amdgpu ones are reviewed, but I'll leave them for the
-AMD folks to push to whichever tree they prefer.
+> The dt nodes for rockchip soc designes as
+>
+>         pinctrl: pinctrl {
+>                 gpio {
+>                         gpio-ranges = <&pinctrl xxx>;
+>                 };
+>         };
+>
+> Currently, we get the pinctrl dt node from parent of gpio, this patch
+> try to get pinctrl dt node from 'gpio-ranges' property.
+>
+> After this patch, the dt nodes possible to be
+>
+>         gpio {
+>                 gpio-ranges = <&pinctrl xxx>;
+>         };
+>
+>         pinctrl: pinctrl {
+>
+>         };
+>
+> then the gpio driver could register as platform device itself, but not
+> populate from pinctrl driver.
+>
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+(...)
+> -       if (!np || !pctlnp)
+> -               return -ENODEV;
+> +       pctlnp = of_parse_phandle(np, "gpio-ranges", 0);
+> +       if (!pctlnp)
+> +               pctlnp = of_get_parent(np);
 
+GPIO ranges can be several and point to several different pin controllers.
 
-The rest are still in need of review:
->   drm/radeon: Use drm_mode_copy()
->   drm/gma500: Use drm_mode_copy()
->   drm/hisilicon: Use drm_mode_init() for on-stack modes
->   drm/msm: Nuke weird on stack mode copy
->   drm/msm: Use drm_mode_init() for on-stack modes
->   drm/msm: Use drm_mode_copy()
->   drm/mtk: Use drm_mode_init() for on-stack modes
->   drm/rockchip: Use drm_mode_copy()
->   drm/sti: Use drm_mode_copy()
->   drm/tilcdc: Use drm_mode_copy()
->   drm/i915: Use drm_mode_init() for on-stack modes
->   drm/i915: Use drm_mode_copy()
->   drm: Use drm_mode_init() for on-stack modes
->   drm: Use drm_mode_copy()
+I understand it does not in your case, so I guess it is fine if Heiko
+is fine with it.
 
--- =
-
-Ville Syrj=E4l=E4
-Intel
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
