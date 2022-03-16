@@ -4,75 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A143AC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Mar 2022 06:10:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27C17C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Mar 2022 07:23:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D+1aKIL6dh7zM61BFaRj39Hso9B/fB7jxoP+fXEC9Vw=; b=UTvYDdNa9lAdk7
-	kJORA0y6//GtANIsn/yylQVDmbyEfeJ0Y86UDfuLKMv4EFjjigyVAdPuymVxaO3k/TFwpwioHDVat
-	eytzPq+Vu6TQoKBdfGlcIS7UpPROAC1yMy/anv0XtoV0oALnnl9cKlNpcjVEep3BlUF2r0ERRAKjc
-	P9qDQjR82IMuylPliYiQPCNsgnEBzPSJsKbseq27FMInBq0vqjg5zNCeFwn+B9SySfc5QYHEjNEJO
-	KeVrZ9mUfba/4+dGUpbNWWNG7YF0S7oP5wEKMgZM5OCc9fi0aaQerPMukvf83wfQVNxMzfQVkVAKH
-	Xxh0JmGttKfMZb8ZTmJA==;
+	List-Owner; bh=YEmKxxGm0ANShCqWNSyKltjEXDmRH58srn0wGBL3LfY=; b=2ep08oca1Q3oR2
+	4r+cUIUeOTreRPolE34PrOeNT7M0j8rCXR4St9pOLPMD9je4FKq2go74rqE7ArBkIYB5fdQo2ll6T
+	hhSiGPtPaccQvuszNre8nASv7/7fPoSvEeH8gkz9Fehz0F74SNL6luxOrpWm4b0MF3nY+E/iou6EF
+	dFX2d2ncNDMo3Ixk9/Ml3MfMqZJp24C+5NNVhp+sCZRqn9SW05+H72K101uuVZopzxHUi9PYMXQzF
+	Msei9x/iMp+8lYMYTQsiy2tWVeLxF5EltSCZqVanMeob/xNWOhLmosTaO+DOWZZI8qKioM9E4zoUA
+	jXQwEG9W3GA87jThoW2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUMr8-00BcjJ-Ot; Wed, 16 Mar 2022 06:09:58 +0000
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+	id 1nUO01-00BusE-Ti; Wed, 16 Mar 2022 07:23:13 +0000
+Received: from mail-m17662.qiye.163.com ([59.111.176.62])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUMr5-00BchX-Nk
- for linux-rockchip@lists.infradead.org; Wed, 16 Mar 2022 06:09:57 +0000
-Received: by mail-yb1-xb2e.google.com with SMTP id u3so2609337ybh.5
- for <linux-rockchip@lists.infradead.org>; Tue, 15 Mar 2022 23:09:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kP0LyTf+EiQY7fo4NN9fTawSgavBYcmQCB65qo3H3i8=;
- b=gWIFxN086BRLC08wt0RLKOoxxVt9OkQj3kIwI8jgVTjmMdVxCvAawkZ9mYjNcd7neI
- bA90gANRFYdD6d4kt/3S9EnuD6gvJjt3onlvvv9sx34rf/TOfPpgMq3C84eVZTvdVfMe
- yicsqqr5BFbBFuvNSsN3M8Qaxuy+oc0UDmPck=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kP0LyTf+EiQY7fo4NN9fTawSgavBYcmQCB65qo3H3i8=;
- b=601zvuUHCKIQRt6WlV41+gTS7bHqLEPY+knbnsQiuG5aUjsZP1q+32AeFwzFMvmGIo
- S4G8XTFAtsnr+QoUn6yQvoOf+6APBmAHa8CWfyep0V++ALU/Z7gI96M0uzhOgUFkGW6a
- eujFTv0VEFy1VUnLc0pEiXgEYZ3BRGtYkvr1AXDULeI2AdOUKT8o61QGUBd95L9hm3A4
- g9DceftUOPtbq1wwp5pzEBY6xjsL8b/4CeNHT0t3M+KliVR0nfp1jAdGAgX1jC7lBPzI
- wFLWo51SIj49IIGeqsNqal5V0JyibWKsnQUKJXDPbHfD4DQWAhSWrwD3k8erTNSIi31p
- Brlg==
-X-Gm-Message-State: AOAM533C8vC5IMRvmjYThp1lRbSZAak13erl0PMelUp2FrZwpaConA/0
- PrQG1AyzpZqD3hCkJIH0cP6jvjLztQUlL/yoK3xEMA==
-X-Google-Smtp-Source: ABdhPJzIGIFjLlDvvMTOWTCB9hIFczSOzUaQIahpV9y3ceIotV+ooWK3mFsz44hE5i2Mp0jREIT4vTJRATclSB5PsO4=
-X-Received: by 2002:a25:32c2:0:b0:628:86af:da05 with SMTP id
- y185-20020a2532c2000000b0062886afda05mr27569966yby.278.1647410993824; Tue, 15
- Mar 2022 23:09:53 -0700 (PDT)
+ id 1nUNkL-00Bn42-7i
+ for linux-rockchip@lists.infradead.org; Wed, 16 Mar 2022 07:07:04 +0000
+Received: from [172.16.12.93] (unknown [58.22.7.114])
+ by mail-m17662.qiye.163.com (Hmail) with ESMTPA id ADF58140228;
+ Wed, 16 Mar 2022 15:06:56 +0800 (CST)
+Message-ID: <08c411b1-fedc-26e3-894b-f5721662a284@rock-chips.com>
+Date: Wed, 16 Mar 2022 15:06:56 +0800
 MIME-Version: 1.0
-References: <20220301042225.1540019-1-wenst@chromium.org>
- <CAGXv+5F-Nir_OHbenYntDhOVFviLP1n-dZcaw07GohSc=YK6SA@mail.gmail.com>
- <CAAEAJfCdj1fbvt1Aj2SiH8HN=UoG8_F+TY99xVWDcZy2xnS8ew@mail.gmail.com>
-In-Reply-To: <CAAEAJfCdj1fbvt1Aj2SiH8HN=UoG8_F+TY99xVWDcZy2xnS8ew@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 16 Mar 2022 14:09:42 +0800
-Message-ID: <CAGXv+5HcpbvUEfgYQv0iEPBF=u-p+dk8=-vegf5D8D3rkEs6EQ@mail.gmail.com>
-Subject: Re: [PATCH v3] media: hantro: Implement support for encoder commands
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- linux-media <linux-media@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v3 1/6] rockchip: move ROCKCHIP_STIMER_BASE to Kconfig
+Content-Language: en-US
+To: Johan Jonker <jbx6244@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>
+Cc: sjg@chromium.org, philipp.tomsich@vrull.eu, u-boot@lists.denx.de,
+ =?UTF-8?Q?Pawe=c5=82_Jarosz?= <paweljarosz3691@gmail.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>
+References: <20211230164825.6489-1-jbx6244@gmail.com>
+ <CAMty3ZD67x5NEM3rgDfHYA3EztDC7f1ACpue1SKT_dFYTKYF3g@mail.gmail.com>
+ <d3e29dba-ae8f-bd0e-73f1-0912f8b5c4da@gmail.com>
+ <f3890647-ccf5-0333-045d-e9a5c698524c@rock-chips.com>
+ <e0d6908f-e69a-a437-4ff7-76efb2038af3@gmail.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+In-Reply-To: <e0d6908f-e69a-a437-4ff7-76efb2038af3@gmail.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
+ kWDxoPAgseWUFZKDYvK1lXWShZQUlKS0tKN1dZLVlBSVdZDwkaFQgSH1lBWUJKTR5WTkJDTx8fT0
+ IdHR4aVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWU9LSFVKSktISkNVS1kG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NTo6GRw6DD5CPy0#GQlDKxks
+ OAIaCxNVSlVKTU9MT0pPT0pMSU5JVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+ EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFMS0pNNwY+
+X-HM-Tid: 0a7f918d160eda2ckuwsadf58140228
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220315_230955_811941_20DF73AF 
-X-CRM114-Status: GOOD (  19.61  )
+X-CRM114-CacheID: sfid-20220316_000701_724080_87318114 
+X-CRM114-Status: GOOD (  31.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,56 +69,124 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 16, 2022 at 2:38 AM Ezequiel Garcia
-<ezequiel@vanguardiasur.com.ar> wrote:
+Hi Johan, Pawel,
+
+On 2022/3/14 23:36, Johan Jonker wrote:
 >
-> On Mon, Mar 14, 2022 at 3:59 AM Chen-Yu Tsai <wenst@chromium.org> wrote:
-> >
-> > Hi Ezequiel,
-> >
-> > On Tue, Mar 1, 2022 at 12:22 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
-> > >
-> > > The V4L2 stateful encoder uAPI specification requires that drivers
-> > > support the ENCODER_CMD ioctl to allow draining of buffers. This
-> > > however was not implemented, and causes issues for some userspace
-> > > applications.
-> > >
-> > > Implement support for the ENCODER_CMD ioctl using v4l2-mem2mem helpers.
-> > > This is entirely based on existing code found in the vicodec test
-> > > driver.
-> > >
-> > > Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
-> > > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > > Reviewed-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> >
-> > Gentle ping on this patch. Any comments?
-> >
+> On 3/12/22 15:39, Kever Yang wrote:
+>> Hi Johan,
+>>
+>> On 2022/3/12 18:01, Johan Jonker wrote:
+>>> On 3/12/22 09:51, Jagan Teki wrote:
+>>>> On Thu, Dec 30, 2021 at 10:18 PM Johan Jonker <jbx6244@gmail.com> wrote:
+>>>>> Move ROCKCHIP_STIMER_BASE to Kconfig.
+>>>>>
+>>>>> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+>>>>> ---
+>>>>>
+>>>>> Changed V3:
+>>>>>    add ROCKCHIP_STIMER
+>>>>> ---
+>>>>>   arch/arm/mach-rockchip/Kconfig        | 22 ++++++++++++++++++++++
+>>>>>   arch/arm/mach-rockchip/px30/Kconfig   |  3 +++
+>>>>>   arch/arm/mach-rockchip/rk3036/Kconfig |  3 +++
+>>>>>   arch/arm/mach-rockchip/rk3128/Kconfig |  3 +++
+>>>>>   arch/arm/mach-rockchip/rk322x/Kconfig |  3 +++
+>>>>>   arch/arm/mach-rockchip/rk3288/Kconfig |  3 +++
+>>>>>   arch/arm/mach-rockchip/rk3308/Kconfig | 10 ++++++----
+>>>>>   arch/arm/mach-rockchip/rk3328/Kconfig |  3 +++
+>>>>>   arch/arm/mach-rockchip/rk3368/Kconfig |  3 +++
+>>>>>   arch/arm/mach-rockchip/rk3399/Kconfig |  3 +++
+>>>>>   arch/arm/mach-rockchip/rk3568/Kconfig |  3 +++
+>>>>>   include/configs/px30_common.h         |  1 -
+>>>>>   include/configs/rk3036_common.h       |  1 -
+>>>>>   include/configs/rk3128_common.h       |  1 -
+>>>>>   include/configs/rk322x_common.h       |  1 -
+>>>>>   include/configs/rk3288_common.h       |  1 -
+>>>>>   include/configs/rk3308_common.h       |  1 -
+>>>>>   include/configs/rk3328_common.h       |  1 -
+>>>>>   include/configs/rk3368_common.h       |  1 -
+>>>>>   include/configs/rk3399_common.h       |  1 -
+>>>>>   include/configs/rk3568_common.h       |  1 -
+>>>>>   21 files changed, 55 insertions(+), 14 deletions(-)
+>>>>>
+>>>>> diff --git a/arch/arm/mach-rockchip/Kconfig
+> b/arch/arm/mach-rockchip/Kconfig
+>>>>> index da6871eb..7a624c64 100644
+>>>>> --- a/arch/arm/mach-rockchip/Kconfig
+>>>>> +++ b/arch/arm/mach-rockchip/Kconfig
+>>>>> @@ -343,6 +343,28 @@ config ROCKCHIP_BOOT_MODE_REG
+>>>>>            The Soc will enter to different boot mode(defined in
+> asm/arch-rockchip/boot_mode.h)
+>>>>>            according to the value from this register.
+>>>>>
+>>>>> +config ROCKCHIP_STIMER
+>>>>> +       bool "Rockchip STIMER support"
+>>>>> +       default y
+>>>>> +       depends on (ROCKCHIP_PX30||   \
+>>>>> +                   ROCKCHIP_RK3036|| \
+>>>>> +                   ROCKCHIP_RK3128|| \
+>>>>> +                   ROCKCHIP_RK322X|| \
+>>>>> +                   ROCKCHIP_RK3288|| \
+>>>>> +                   ROCKCHIP_RK3308|| \
+>>>>> +                   ROCKCHIP_RK3328|| \
+>>>>> +                   ROCKCHIP_RK3368|| \
+>>>>> +                   ROCKCHIP_RK3399|| \
+>>>>> +                   ROCKCHIP_RK3568)
+>>>> What if we select !(SOC-Which-don't-support-stimer). I believe the
+>>>> condition check here is much simpler.
+>>> The condition would be simpler that's correct, but this patch is made
+>>> with rk3066 in mind and there's no ROCKCHIP_RK3066 available yet.
+>>> The right approach is to only include SoC's that have a specific
+>>> property/functionality linked to there specific config tag.
+>>> U-boot should be generic. And we should not have to fix all dependencies
+>>> all over the place when a SoC doesn't have something.
+>>>
+>>> Please advise how to support other SoC's like rk3066.
+>> Thanks for you hard working on this, would you mind to share what's the
+>> motivation for support rk3066 and MK808 board?
+>> RK3066 is an SoC release at 2012, which has been EOL for a long time,
+>> and MK808 is a product at 2013, almost 10 years ago.
+> One of the advantages of open source is that a manufacturer doesn't
+> dictate where,
+> when and how long a product can be used.
+> It's about freedom of choice. No matter how many obstacles are put in
+> the way.
+> It works in two ways. Rockchip make use of free open source for there
+> products.
+> Users can add there own ideas/support based on manufacturer sources.
+> If that's not your thing then join a group of monopolists for software,
+> but don't sabotage things here.
+> It's part of the game.
 >
-> Pong. I have been a tad busy the past weeks and haven't been able
-> to review this yet. Sorry about that.
+> MK808 was one of the first products with a Rockchip SoC that hobbyists
+> where able
+> to run there own kernel on and still does, so we keep that heritage alive.
+>
+>>
+>> I'm not object for enable more SoC support on the mainline, and I know
+>> you have spend a lot
+>> of time on this, I have do something like this before, but to be honest
+>> I don't think it's a good idea to add support for
+>> rk3066 on mainline now.
+> If Linux is able to support the full product range then U-boot can do
+> that too.
+I agree with this point, my concern is the maintain of the source code 
+and the lifecycle after
+we add it.
+Since both Powel and you declare that still RK3066 device on the market 
+and some developers
+are working on it, I'm happy to get them in tree, I will land patches 
+after verify no broken for
+other platform.
 
-Got it.
-
-> Meanwhile, and given how delicate this code path is in our experience,
-> have you guys run regressions tests with this patch, in particular with decode?
-
-We landed it downstream two weeks ago [1], and so far nothing has failed.
-
-However, given that the driver doesn't support decoder commands either, the
-new code might not be exercised in the way you assumed? At least no failures
-indicates there aren't any incorrect code paths, i.e. decoder ending up in
-the encoder path or vice versa.
-
-
-Regards
-ChenYu
-
-[1] crrev.com/c/3456042
+Thanks,
+- Kever
 
 _______________________________________________
 Linux-rockchip mailing list
