@@ -4,59 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 761D4C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Mar 2022 07:40:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45BC6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Mar 2022 09:13:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dOyQnK2+rBTp1TIsPP4wL6PacQEmRjoUkBz0iXkmfys=; b=EDOkDgjUjPt97c
-	ZZrHVZ6B/+7w+s+Bded98qHx4QPXkxNcYGZdvOD8spxCZr+bF+5Fygonw1JdYO74Xg39HQip1s5zd
-	2K8FlPHf+ImknqCpPXvh2N1E2p4iF5PsBhYqoyf175e6BRdonVcY4Fvz3eO0P+GbMXeSFCgAUpy2V
-	HNUFywnuagL2IUNOp7lRN2PrY4xCO0A06rBbdF98co1MpoKquqxAP70Q3SScZhgW/73LwssRoAiqg
-	Y4EGH1u2Nrj2dPlGTbRmLzwiOOau2v/nk4tVeWGZGFaaqpvQmdYPrSe8FTR7vj9pAvlxHy+FdyuoK
-	WK28pHXSgVCIttnGCT2A==;
+	List-Owner; bh=3rWk+Fs0LVjzOVybjUOyxaK79QfOYVdt5o9Gg17BKbQ=; b=1YRt/g7HoIUZQr
+	WACwur4/1+vqcLTIW7YBg+0sKunoGGgs7da22Q2tWAEswLlXy4wOFDz38ZUKxH4o1n49G0zYfZqTr
+	GBJOkb0uZb+WEoOPBLQvLvsuZw1V92Klkz1xNuMRfAGfj+GjtO8q7YP+/WlHybUh4MzpztvIH5rQE
+	9zk8wiEPaUrQ3C0VKkl9dCjo30E7GLKLFkm8o/tunPXgdnwU/Qv6kCcRGpuIERWcNJzqjj5YFOf1m
+	OX1N/stx0TSFtjP4UTbf30LgyCM15EvRLKgkm1LTZ8G+V+TE1P85sIZ78xchB1zWc7fGbtz7lTQKd
+	gjqno/iZYTQtTfTfeCaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUOGh-00ByeC-Ko; Wed, 16 Mar 2022 07:40:27 +0000
+	id 1nUPia-00CHgl-Jl; Wed, 16 Mar 2022 09:13:20 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUOGN-00ByWV-4o
- for linux-rockchip@lists.infradead.org; Wed, 16 Mar 2022 07:40:10 +0000
+ id 1nUPiP-00CHeN-Nf
+ for linux-rockchip@lists.infradead.org; Wed, 16 Mar 2022 09:13:11 +0000
 Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nUOGJ-0003j1-OH; Wed, 16 Mar 2022 08:40:03 +0100
+ id 1nUPiC-0006To-24; Wed, 16 Mar 2022 10:12:56 +0100
 Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nUOGH-0007Ye-1L; Wed, 16 Mar 2022 08:40:01 +0100
-Date: Wed, 16 Mar 2022 08:40:01 +0100
+ id 1nUPi9-0005kX-PB; Wed, 16 Mar 2022 10:12:53 +0100
+Date: Wed, 16 Mar 2022 10:12:53 +0100
 From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+To: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+Cc: "elaine.zhang" <zhangqing@rock-chips.com>,
+ Robin Murphy <robin.murphy@arm.com>, devicetree@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Peter Geis <pgwipeout@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
+ linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH v8 22/24] drm: rockchip: Add VOP2 driver
-Message-ID: <20220316074001.GP405@pengutronix.de>
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+ linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org
+Subject: Re: [PATCH v8 09/24] drm/rockchip: dw_hdmi: Add support for niu clk
+Message-ID: <20220316091253.GQ405@pengutronix.de>
 References: <20220311083323.887372-1-s.hauer@pengutronix.de>
- <20220311083323.887372-23-s.hauer@pengutronix.de>
- <9ec29d9b-8197-98fb-c612-5c842e4212c4@rock-chips.com>
+ <20220311083323.887372-10-s.hauer@pengutronix.de>
+ <4712e128-8a14-e361-0819-911dc3453372@collabora.com>
+ <20220314081834.GK405@pengutronix.de>
+ <96e3682c-51ff-6af2-ca07-6ea1b952dd70@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <9ec29d9b-8197-98fb-c612-5c842e4212c4@rock-chips.com>
+In-Reply-To: <96e3682c-51ff-6af2-ca07-6ea1b952dd70@collabora.com>
 X-Sent-From: Pengutronix Hildesheim
 X-URL: http://www.pengutronix.de/
 X-IRC: #ptxdist @freenode
 X-Accept-Language: de,en
 X-Accept-Content-Type: text/plain
-X-Uptime: 08:35:30 up 95 days, 16:21, 82 users,  load average: 0.45, 0.47, 0.26
+X-Uptime: 08:40:05 up 95 days, 16:25, 82 users,  load average: 0.18, 0.25, 0.22
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
 X-SA-Exim-Mail-From: sha@pengutronix.de
@@ -64,8 +67,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220316_004007_205407_FF4CC873 
-X-CRM114-Status: GOOD (  33.12  )
+X-CRM114-CacheID: sfid-20220316_021309_790903_6C24AD2F 
+X-CRM114-Status: GOOD (  38.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,53 +86,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 15, 2022 at 02:46:35PM +0800, Andy Yan wrote:
-> Hi Sascha:
+On Mon, Mar 14, 2022 at 08:54:27PM +0300, Dmitry Osipenko wrote:
+> On 3/14/22 11:18, Sascha Hauer wrote:
+> > On Sun, Mar 13, 2022 at 12:07:56AM +0300, Dmitry Osipenko wrote:
+> >> On 3/11/22 11:33, Sascha Hauer wrote:
+> >>> The rk3568 HDMI has an additional clock that needs to be enabled for the
+> >>> HDMI controller to work. This clock is not needed for the HDMI
+> >>> controller itself, but to make the SoC internal bus logic work. From the
+> >>> reference manual:
+> >>>
+> >>>> 2.8.6 NIU Clock gating reliance
+> >>>>
+> >>>> A part of niu clocks have a dependence on another niu clock in order to
+> >>>> sharing the internal bus. When these clocks are in use, another niu
+> >>>> clock must be opened, and cannot be gated.  These clocks and the special
+> >>>> clock on which they are relied are as following:
+> >>>>
+> >>>> Clocks which have dependency     The clock which can not be gated
+> >>>> -----------------------------------------------------------------
+> >>>> ...
+> >>>> pclk_vo_niu, hclk_vo_s_niu       hclk_vo_niu
+> >>>> ...
+> >>> The clock framework does not support turning on a clock whenever another
+> >>> clock is turned on, so this patch adds support for the dependent clock
+> >>> to the HDMI driver. We call it "NIU", which is for "Native Interface
+> >>> Unit"
+> >>
+> >> This still doesn't make sense to me. You're saying that "pclk_vo_niu,
+> >> hclk_vo_s_niu" depend on "hclk_vo_niu", but HDMI doesn't use pclk_vo, it
+> >> uses pclk_hdmi.
+> > 
+> > pclk_hdmi_host is a child clock of pclk_vo:
+> > 
+> >      aclk_vo                  2        2        0   300000000          0     0  50000         Y
+> >         aclk_hdcp             0        0        0   300000000          0     0  50000         N
+> >         pclk_vo               2        3        0    75000000          0     0  50000         Y
+> >            pclk_edp_ctrl      0        0        0    75000000          0     0  50000         N
+> >            pclk_dsitx_1       0        0        0    75000000          0     0  50000         N
+> >            pclk_dsitx_0       1        2        0    75000000          0     0  50000         Y
+> >            pclk_hdmi_host     1        2        0    75000000          0     0  50000         Y
+> >            pclk_hdcp          0        0        0    75000000          0     0  50000         N
+> >         hclk_vo               2        5        0   150000000          0     0  50000         Y
+> >            hclk_hdcp          0        0        0   150000000          0     0  50000         N
+> >            hclk_vop           0        2        0   150000000          0     0  50000         N
 > 
-> On 3/11/22 16:33, Sascha Hauer wrote:
-> > From: Andy Yan <andy.yan@rock-chips.com>
-> > 
-> > The VOP2 unit is found on Rockchip SoCs beginning with rk3566/rk3568.
-> > It replaces the VOP unit found in the older Rockchip SoCs.
-> > 
-> > This driver has been derived from the downstream Rockchip Kernel and
-> > heavily modified:
-> > 
-> > - All nonstandard DRM properties have been removed
-> > - dropped struct vop2_plane_state and pass around less data between
-> >    functions
-> > - Dropped all DRM_FORMAT_* not known on upstream
-> > - rework register access to get rid of excessively used macros
-> > - Drop all waiting for framesyncs
-> > 
-> > The driver is tested with HDMI and MIPI-DSI display on a RK3568-EVB
-> > board. Overlay support is tested with the modetest utility. AFBC support
-> > on the cluster windows is tested with weston-simple-dmabuf-egl on
-> > weston using the (yet to be upstreamed) panfrost driver support.
+> It was unclear that the pclk_hdmi is the child of pclk_vo by looking at
+> the clk driver's code, thank you!
 > 
-> Do we need some modification to test AFBC by weston-simple-dma-egl ?
+> Won't be better if the implicit clk dependency would be handled
+> internally by the RK clk driver?
 
-By default weston-simple-dma-egl uses DRM_FORMAT_XRGB8888 which in the
-panfrost driver ends up as PIPE_FORMAT_B8G8R8_UNORM and
-panfrost_afbc_format() returns PIPE_FORMAT_NONE for that. Change the
-format to DRM_FORMAT_ABGR8888 using weston-simple-dma-egl -f 0x34324241.
-This ends up as PIPE_FORMAT_R8G8B8A8_UNORM in panfrost_afbc_format()
-which is a supported format.
+I have considered handling something like coupled clocks in the clock
+framework, but I have not yet considered handling this internally in the
+Rockchip clock driver.
 
-> 
-> I have a buildroot system with weston-10.0.9 and mesa 21.3.5.
-> 
-> After launch weston, I run weston-simple-dmabuf-egl, but from the output
-> 
-> of sys/kernel/debug/dri/0/state, the weston is still use Smart0-win0, which
-> is
-> 
-> a non-AFBC window.
-> 
-> Do i need to modify the vop2 driver to set one Cluster window as primary
-> plane?
+I just had a quick look at the driver. While it sounds like an easy task
+to enable gate A whenever gate B is enabled I haven't found a good way to
+integrate that into the clk driver. It seems to me that it's not easier
+to implement in the clk driver than it is to implement it in the clk
+framework where it could be used by others as well.
 
-I never used a Cluster window as primary plane.
+> For example, by making the common gate
+> shared/refcounted. Have you considered this variant? Then we won't need
+> to change the DT bindings.
+
+For the DT bindings it is just an additional clock. Should we have a
+better way to handle that case in the future we could simply ignore the
+additional clock. I wouldn't bother too much about this.
 
 Sascha
 
