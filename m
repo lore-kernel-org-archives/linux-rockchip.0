@@ -4,129 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 592EBC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Mar 2022 19:22:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC2D4C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Mar 2022 20:27:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	References:MIME-Version:Message-ID:In-Reply-To:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HYRMqWmTQEYf8nNLPfACGUemaxoAPoFhOn8Ne7WzQcw=; b=KqjPB/NPdpXFC2AcF55aOsFdQG
-	OdifPDN4LIht2KpuZ+aVVCNrIZXKBCXVW9ywb3WjyKl2tSo7bLZXKF/OQVx+oaQOFuHuGBan4KfMF
-	SFteK4QtubLifoE4CfQqep8x05LMzDjoTbVvxxMNG7pj75elk4XvDvEeHztNjvRRhtm44tQLVhEV5
-	EXCKkRH8jyTiJAvbm+GOJg0cmf2SAxTg1v2Sa12l+0fhBltFpnnwc0k4FhZUfSUF7WSFjrTaIqOpu
-	VjXecCvMT6D8IDYYXJlKVtHFsF0w3EGNSILkvYZQku/oiIpZk2YdDQgiK1UXPQbPv6PsK4vnlIVly
-	utVkJ74Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=eUi2PdTBymucRIqlfp301rHQYiODbSnfi/8pib3gqlU=; b=IQcTqZGeRAWnKQ
+	+6mm9yIkz3Mns72HUkbUuSNOqAUtvMjIuSnVRzxZAtdKWID6BnKTP+dmGZN6ZLCDJE/GpuPHBp9/K
+	Rod3xWWFak0h/j7tzkpBcX5gaXw4eexiqPSxZ1/jU9P2O3c03amwc13TwtrU54IZTWkLkwwMCr4UO
+	72eIuel5vsWxC6GKA5DgDiGvm8ETRaa+PH77H2U2e2wxEnS8hBgG5esDwP0RRsy5wF/smEIaAHLMC
+	6CDfOk0Eshb+uQJNlG50+UUWJ0ofnFsg3aEzyzv3rzc6v/mIs7RZXuJEUisiKFOdPKatxGMQhpqMd
+	Ij2IMoqpCR5tREPOFryA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUvhE-00HBTO-Qh; Thu, 17 Mar 2022 19:22:04 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1nUwim-00HHdm-HX; Thu, 17 Mar 2022 20:27:44 +0000
+Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUvgq-00HBLM-CW; Thu, 17 Mar 2022 19:21:42 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
- by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
- 20220317192137euoutp017e71ba0ed22d1b91ba2d8624c345a9c9~dQVr6851W0692706927euoutp01j;
- Thu, 17 Mar 2022 19:21:37 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
- 20220317192137euoutp017e71ba0ed22d1b91ba2d8624c345a9c9~dQVr6851W0692706927euoutp01j
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1647544897;
- bh=8AJD7LLy/THFDuNHTzws2WZ7Rh8dubqLenZAtO6y33w=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=SSsYA3sB8VCPS64sV7bKPBdT8Gs/9iazS1cVIbja0uftAb3Jtq7aVK0HmcrvM88Y1
- NoEJ9kl4mWA5MXUH10J7hVGyfodyRX1b5gMz1n+rN5J9woekIMHDbFexQ8XqDOWVDm
- SBXoHQ05p7Jo9XqAW4y1w7OlZTplPAkddYsl9vKc=
-Received: from eusmges2new.samsung.com (unknown [203.254.199.244]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTP id
- 20220317192137eucas1p26a509d5aaf346c7b64b070301bf61eb3~dQVrnVIS11741017410eucas1p2i;
- Thu, 17 Mar 2022 19:21:37 +0000 (GMT)
-Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
- eusmges2new.samsung.com (EUCPMTA) with SMTP id 08.B3.09887.14A83326; Thu, 17
- Mar 2022 19:21:37 +0000 (GMT)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
- 20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8~dQVqafbfc3134231342eucas1p1O;
- Thu, 17 Mar 2022 19:21:36 +0000 (GMT)
-Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
- eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20220317192136eusmtrp180d92f8748820fe9ee93ff913a9123e8~dQVqZWQ871868218682eusmtrp1x;
- Thu, 17 Mar 2022 19:21:36 +0000 (GMT)
-X-AuditID: cbfec7f4-45bff7000000269f-39-62338a41cdcf
-Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
- eusmgms2.samsung.com (EUCPMTA) with SMTP id C4.14.09404.F3A83326; Thu, 17
- Mar 2022 19:21:35 +0000 (GMT)
-Received: from localhost (unknown [106.120.51.46]) by eusmtip1.samsung.com
- (KnoxPortal) with ESMTPA id
- 20220317192135eusmtip11512036116a92f228b87ec99e1e8e94b~dQVqJMrcG1419214192eusmtip1r;
- Thu, 17 Mar 2022 19:21:35 +0000 (GMT)
-From: Lukasz Stelmach <l.stelmach@samsung.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: alsa-devel@alsa-project.org,  bcm-kernel-feedback-list@broadcom.com,
- linux-amlogic@lists.infradead.org,  linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org,  linux-aspeed@lists.ozlabs.org,
- linux-input@vger.kernel.org,  linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org,  linux-mediatek@lists.infradead.org,
- linux-renesas-soc@vger.kernel.org,  linux-rockchip@lists.infradead.org,
- linux-rpi-kernel@lists.infradead.org,  linux-samsung-soc@vger.kernel.org,
- linux-staging@lists.linux.dev,  linux-stm32@st-md-mailman.stormreply.com,
- linux-sunxi@lists.linux.dev,  linux-tegra@vger.kernel.org,
- linux-usb@vger.kernel.org,  mjpeg-users@lists.sourceforge.net,
- openbmc@lists.ozlabs.org
-Subject: Re: [PATCH v2 65/67] media: Kconfig: cleanup VIDEO_DEV dependencies
-Date: Thu, 17 Mar 2022 20:21:35 +0100
-In-Reply-To: <d5b6678363c4374436014137fecc22ff666e3ebc.1647274407.git.mchehab@kernel.org>
- (Mauro Carvalho Chehab's message of "Mon, 14 Mar 2022 17:35:00 +0100")
-Message-ID: <dleftj1qz0mlkw.fsf%l.stelmach@samsung.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+ id 1nUwii-00HHcn-M1
+ for linux-rockchip@lists.infradead.org; Thu, 17 Mar 2022 20:27:42 +0000
+Received: by mail-oo1-xc33.google.com with SMTP id
+ w3-20020a4ac183000000b0031d806bbd7eso7836796oop.13
+ for <linux-rockchip@lists.infradead.org>; Thu, 17 Mar 2022 13:27:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=iv/OJkHPaMnCc+U3vxZvDDpvOMmikwuG/jvKDsftmmo=;
+ b=eJfZvpUatIvQlZprLySpLAmwYGAn1xguiwhzBj+hV7P4ihNItwag7Ler9eSqAb+w8s
+ IdeWV2/c6NB8L6lqmGHpu5NQoql2iGWyD1Ry77lDAhFEU9dymBMd+2qowhXUHCNt0C13
+ ccbNHThybMfDizFHQmRHKoZn8eD/5FPCsFyYabBe1tpqfZ65yZNI3KEKKCNMbC/ciN6l
+ dkEi6KBMr+oTLbLl/XjSujmO18eR1cZfLCg6YkqIVxbucUPSHiRLHgZKn12GZY6LU6Yb
+ T7M2TcUdND2fqXfCcKKh0BWl1NcFruAQHTuGZqvT02U4ZJ0hZ0XIog6s/dfzjm6GItx7
+ 1IOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=iv/OJkHPaMnCc+U3vxZvDDpvOMmikwuG/jvKDsftmmo=;
+ b=6dE5F0ovH4fYHC/yEpF3pULUFz1MYkjvqrx6NOE75ZcjCAkJgbhEAtDxuFN/ZWdXOd
+ 5dgqxlY4bkDw59n0w+9Zrc828VZFY+ewUOAwDXs/FEfRyB9mggFSTZQ6+Yppqw5v4a6q
+ 6l6iQhz/3jUHJoA3cpWWGz05Zob5rHhJVqHDbpL7FyB79TOglnLQCcGmsIlJ1vk0sHmV
+ BK0YrDIQSyt/95E2Rl0CHhH/DKaxrXshoIONUOaHqVSIKgzlMWbYKg7qMy8jY5Q3S3r4
+ FYzC+555hbXA8B5JYGXIy231w1i0fjOggYFmsXiPbtAf7bUNynTUXIWL+IENBHQBqOg7
+ f3sA==
+X-Gm-Message-State: AOAM5325BVKD4Lzyg1I7Jtvgr1nv7E5ui6GRug3LfUVhAqCm5k+ANu98
+ c+KHVGx+TvSCRn84mGKdZ4bCvvC/2A187CaRcnppEEnC
+X-Google-Smtp-Source: ABdhPJzXe+gRGct7a7VxBZi+g6xbJD7JTGm5EBC04s62nAH1o2bgmpznmjNjkiS6gclAR/ftCllIbOMesTKa7Ak8CdQ=
+X-Received: by 2002:a05:6871:8ab:b0:dd:b74b:409a with SMTP id
+ r43-20020a05687108ab00b000ddb74b409amr1960073oaq.200.1647548858735; Thu, 17
+ Mar 2022 13:27:38 -0700 (PDT)
 MIME-Version: 1.0
-X-Brightmail-Tracker: H4sIAAAAAAAAA02Sf1DTZRzHe77f7777Dhw+DpDnlkfdMCo4QcPySQj0sLvvVWdcWnnVNSd8
- BY6xrf3IrDNmUMGaIAMvmJhACZ78aA5FI52JlqfEYETkgoSEFCe6k3GQhNC2L9753/vz+bzf
- r+f5PPcwpKSUljK5Kj2nVSmUMjqEav/lvnPVRlPSjtV/+8Jwv6uTwC37fqZw7cFQbB8dEODy
- c91CXNjkJLF7clqAf+uoobHZdtKvCl0An7x1l8CTIwskLh+0CXFVj4PAF30cNg2MCXClo4PG
- JVNWGtc3fE7iBvscgfsLXTS+UjRObVjO2nyf0ax1uJtm7cdKaLbtuwJ2vK0asD1VdYD9sdZH
- sOcda1ifPTpD9E5IShanzP2Q0yambg/JcR9Sac5lfOS746CMoDvZBEQMgmvR78YaygRCGAk8
- CtDtwQeLxZS/GHcL+cIH0I0+i/BhxHSiIqglsBGgQnsOb7oJ0IzxG2ACDEPDBNTSsi3gifDL
- m22uIJWEfQI0MlBOBQbh8DXU5hgMgij4FBo1zQoCWgTrAXowvzrAEcN16KuFjEA7Er6I5m7c
- C9rFcBm6XD0WxJAwH1X3TIAAH8FpESobHAP8RTehhVNzJK/DkefSicUFVqCuCjMV4CNYgCos
- L/BZM0DtNf9SvCcZDTlnaV5vRJMXviR4fxi6emcZf24YsrR/TfJtMSr+QsK7V6LWsjOLFCna
- 5zkKeAuLLjue4F+qGSBX6RC9HzxpfWQb6yPbWP0REj6Lvu9I5NvxqKHuNsnrl1Brq5eqBYJj
- IIoz6PKzOd1zKm5Xgk6RrzOoshMy1fl24P+mXfOXpk6DRs+9hE5AMKATrPSHr9uaeoGUUqlV
- nCxC/Ot44g6JOEux+2NOq5ZrDUpO1wkeZyhZlDgz16aQwGyFnsvjOA2nfTglGJHUSCz5jwiT
- Wuf7RPGMO0ZuT1txPm1XkdfIls/Id8rfDE9LuYqFOvnFmLzZvriu++7imOvc3U+lWUmHt2yO
- X/hpiIJdbrOtd/3zfzmUu/fH1Vz5IzZ9xHDw7AFxaDdXJd++NEUc++7a9brmptKYvMhrFq/y
- afVpvUEtK4YTinWV2Y/1vz165NVXNlSFbrFr0jPet+6xaupPSXGvfucz8tSRt6hts9NJwkNQ
- f2RJkbh55nikWd+YWnLGLV1aklz3AV7Vku6JOr75FpP5Hrd36z/RzuE3csctzJDn8ITrdW/l
- /IGXzw57DWWfwGvfOlMKNBfizVunueU/RPzp3rM32hs7kFMmo3Q5ijVxpFan+B+mhywbIQQA
- AA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFmplleLIzCtJLcpLzFFi42I5/e/4XV37LuMkg4XvLSyuXDzEZLG29yiL
- xYLZ3BabHl9jtZi4/yy7RfPqc8wWNz99Y7W4vGsOm0XPhq1AVvNFRoutL98xWXx68J/ZYuLt
- DewWM87vY7I48jnVouvaE1aLKft2sVl0fpnFZrFoWSuzxbJNf5gsrjRfZLM41fKCxUHMY8Pn
- JjaPWffPsnlsWtXJ5rF5Sb3Hi80zGT3Oz1jI6LF7wWcmj4P7DD0+b5IL4IzSsynKLy1JVcjI
- Ly6xVYo2tDDSM7S00DMysdQzNDaPtTIyVdK3s0lJzcksSy3St0vQy7g5N69gf0DF57f7WBoY
- z1p3MXJySAiYSHRtmcwOYgsJLGWU+Po2p4uRAyguJbFybjpEibDEn2tdbBAlTxklVr1yAClh
- E9CTWLs2AiQsAmQ+33yRpYuRi4NZ4A6rRPPBLUwgCWEBH4nN+25DjY+QeDT/ClicRUBV4nHX
- L1YQm1NgEaPE338GIDN5Bcwluv8HgIRFBSwl/jz7CNbKKyAocXLmExYQm1kgW+Lr6ufMExgF
- ZiFJzUKSmgU0iVlAU2L9Ln2IsLbEsoWvmSFsW4l1696zLGBkXcUoklpanJueW2ykV5yYW1ya
- l66XnJ+7iRGYBrYd+7llB+PKVx/1DjEycTAeYlQB6ny0YfUFRimWvPy8VCUR3jMv9JOEeFMS
- K6tSi/Lji0pzUosPMZoCfTaRWUo0OR+YoPJK4g3NDEwNTcwsDUwtzYyVxHk9CzoShQTSE0tS
- s1NTC1KLYPqYODilGphibDLLzno6a12RuDKlvcxuZvKmx2eWWB5gnB5gUWXGNVsodHGRqhCz
- Pg9XyWxtr7VzpZ9P3hNRbMCt65M2a2Ge2rfLJw5tj9m7M9oh9VdhTkTaD/uPSTwRbxS7jzSL
- B4vd17WZInhyi7znJvmJfHYZ0y9uzPf51et2rNRa7eyadRl3RJdb7c6dG5/5ZvPfVelu/OFy
- pQ0xXB+yAqOC/zGZPEqxNDt5IlYh/0Lr14P3pCMCd6oZ3JLTZbry59WdaRMc3e6+YHjx+I13
- 6cwlzY/az/VOm73l4jPeGON4HienzZ/YF5RyXNizpM3tTnXW/W13Xuzus3NWTZE+0dB6LGOj
- pbZ4/N24dTtW7mBSmajEUpyRaKjFXFScCABQmWVNmAMAAA==
-X-CMS-MailID: 20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8
-X-Msg-Generator: CA
-X-RootMTR: 20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8
-References: <d5b6678363c4374436014137fecc22ff666e3ebc.1647274407.git.mchehab@kernel.org>
- <CGME20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8@eucas1p1.samsung.com>
+References: <CAMdYzYptw9L=5SECtVkNZruTT-x57+03vj0A+5efvq8cESzLyQ@mail.gmail.com>
+ <CADnq5_NXmRr_Q7JuWZxJAjmavVkvJjNcWayQ1x8LhfcX5CS0uA@mail.gmail.com>
+ <CAMdYzYoamh-igvBbKaLSJ6bSc3wA29=8mooJDLMJkj9YQ=wj0A@mail.gmail.com>
+ <CADnq5_NXFZPA_z6413FDgr8WRObhCB+HdkHE5P=PAAMV4FiWiA@mail.gmail.com>
+ <20dffd4d-fa54-5bc3-c13b-f8ffbf0fb593@arm.com>
+ <599edb94-8294-c4c5-ff7f-84c7072af3dd@gmail.com>
+ <546bf682-565f-8384-ec80-201ce1c747f4@arm.com>
+ <8afb06c4-7601-d0d7-feae-ee5abc9c3641@amd.com>
+ <CAMdYzYqH57HuqMMydMtQw2Ep2A_Qhjg3N_gTw6GuO6Kuxd9chQ@mail.gmail.com>
+ <a62372c7-d274-a58a-0487-d199312fd7d6@amd.com>
+In-Reply-To: <a62372c7-d274-a58a-0487-d199312fd7d6@amd.com>
+From: Alex Deucher <alexdeucher@gmail.com>
+Date: Thu, 17 Mar 2022 16:27:27 -0400
+Message-ID: <CADnq5_NJftHTnVm+oHfftjxXGWRkiYkGsqZbL-cQn7O3qGa8UA@mail.gmail.com>
+Subject: Re: radeon ring 0 test failed on arm64
+To: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
+Cc: Peter Geis <pgwipeout@gmail.com>, Kever Yang <kever.yang@rock-chips.com>, 
+ Robin Murphy <robin.murphy@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, 
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <ckoenig.leichtzumerken@gmail.com>, 
+ "Deucher, Alexander" <alexander.deucher@amd.com>,
+ amd-gfx list <amd-gfx@lists.freedesktop.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_122140_809250_5315BA63 
-X-CRM114-Status: GOOD (  24.37  )
+X-CRM114-CacheID: sfid-20220317_132740_766097_AA6A0678 
+X-CRM114-Status: GOOD (  75.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,245 +93,216 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1873998716779613240=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============1873998716779613240==
-Content-Type: multipart/signed; boundary="=-=-="; micalg="pgp-sha256";
-	protocol="application/pgp-signature"
-
---=-=-=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-
-It was <2022-03-14 pon 17:35>, when Mauro Carvalho Chehab wrote:
-> media Kconfig has two entries associated to V4L API:
-> VIDEO_DEV and VIDEO_V4L2.
->
-> On Kernel 2.6.x, there were two V4L APIs, each one with its own flag.
-> VIDEO_DEV were meant to:
-> 	1) enable Video4Linux and make its Kconfig options to appear;
-> 	2) it makes the Kernel build the V4L core.
->
-> while VIDEO_V4L2 where used to distinguish between drivers that
-> implement the newer API and drivers that implemented the former one.
->
-> With time, such meaning changed, specially after the removal of
-> all V4L version 1 drivers.
->
-> At the current implementation, VIDEO_DEV only does (1): it enables
-> the media options related to V4L, that now has:
->
-> 	menu "Video4Linux options"
-> 		visible if VIDEO_DEV
->
-> 	source "drivers/media/v4l2-core/Kconfig"
-> 	endmenu
->
-> but it doesn't affect anymore the V4L core drivers.
->
-> The rationale is that the V4L2 core has a "soft" dependency
-> at the I2C bus, and now requires to select a number of other
-> Kconfig options:
->
-> 	config VIDEO_V4L2
-> 		tristate
-> 		depends on (I2C || I2C=3Dn) && VIDEO_DEV
-> 		select RATIONAL
-> 		select VIDEOBUF2_V4L2 if VIDEOBUF2_CORE
-> 		default (I2C || I2C=3Dn) && VIDEO_DEV
->
-> In the past, merging them would be tricky, but it seems that it is now
-> possible to merge those symbols, in order to simplify V4L dependencies.
->
-> Let's keep VIDEO_DEV, as this one is used on some make *defconfig
-> configurations.
->
-> Suggested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Reviewed-by: Jacopo Mondi <jacopo@jmondi.org>
-> Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
-> ---
->
-> To avoid mailbombing on a large number of people, only mailing lists were=
- C/C on the cover.
-> See [PATCH v2 00/67] at: https://lore.kernel.org/all/cover.1647274406.git=
-.mchehab@kernel.org/
->
->  drivers/input/rmi4/Kconfig                    |   2 +-
->  drivers/input/touchscreen/Kconfig             |   4 +-
->  drivers/media/Kconfig                         |   3 +
->  drivers/media/common/saa7146/Kconfig          |   2 +-
->  drivers/media/dvb-core/Kconfig                |   2 +-
->  drivers/media/dvb-frontends/Kconfig           |   4 +-
->  drivers/media/i2c/Kconfig                     | 250 +++++++++---------
->  drivers/media/i2c/ccs/Kconfig                 |   2 +-
->  drivers/media/i2c/cx25840/Kconfig             |   2 +-
->  drivers/media/i2c/et8ek8/Kconfig              |   2 +-
->  drivers/media/i2c/m5mols/Kconfig              |   2 +-
->  drivers/media/pci/Kconfig                     |   2 +-
->  drivers/media/pci/bt8xx/Kconfig               |   2 +-
->  drivers/media/pci/cobalt/Kconfig              |   2 +-
->  drivers/media/pci/cx18/Kconfig                |   2 +-
->  drivers/media/pci/dt3155/Kconfig              |   2 +-
->  drivers/media/pci/intel/ipu3/Kconfig          |   2 +-
->  drivers/media/pci/ivtv/Kconfig                |   2 +-
->  drivers/media/pci/meye/Kconfig                |   2 +-
->  drivers/media/pci/saa7146/Kconfig             |   6 +-
->  drivers/media/pci/sta2x11/Kconfig             |   2 +-
->  drivers/media/pci/tw5864/Kconfig              |   2 +-
->  drivers/media/pci/tw68/Kconfig                |   2 +-
->  drivers/media/pci/tw686x/Kconfig              |   2 +-
->  drivers/media/platform/Kconfig                |   6 +-
->  drivers/media/platform/allegro-dvt/Kconfig    |   2 +-
->  .../platform/allwinner/sun4i-csi/Kconfig      |   2 +-
->  .../platform/allwinner/sun6i-csi/Kconfig      |   2 +-
->  .../media/platform/allwinner/sun8i-di/Kconfig |   2 +-
->  .../platform/allwinner/sun8i-rotate/Kconfig   |   2 +-
->  .../media/platform/amlogic/meson-ge2d/Kconfig |   2 +-
->  drivers/media/platform/amphion/Kconfig        |   1 -
->  drivers/media/platform/aspeed/Kconfig         |   2 +-
->  drivers/media/platform/atmel/Kconfig          |   8 +-
->  drivers/media/platform/cadence/Kconfig        |   4 +-
->  drivers/media/platform/chips-media/Kconfig    |   2 +-
->  drivers/media/platform/intel/Kconfig          |   2 +-
->  drivers/media/platform/marvell/Kconfig        |   4 +-
->  .../media/platform/mediatek/mtk-jpeg/Kconfig  |   2 +-
->  .../media/platform/mediatek/mtk-mdp/Kconfig   |   2 +-
->  .../platform/mediatek/mtk-vcodec/Kconfig      |   2 +-
->  .../media/platform/mediatek/mtk-vpu/Kconfig   |   2 +-
->  .../media/platform/nvidia/tegra-vde/Kconfig   |   2 +-
->  drivers/media/platform/nxp/Kconfig            |   6 +-
->  drivers/media/platform/nxp/imx-jpeg/Kconfig   |   2 +-
->  drivers/media/platform/qcom/camss/Kconfig     |   2 +-
->  drivers/media/platform/qcom/venus/Kconfig     |   2 +-
->  drivers/media/platform/renesas/Kconfig        |  30 +--
->  .../media/platform/renesas/rcar-vin/Kconfig   |   4 +-
->  drivers/media/platform/rockchip/rga/Kconfig   |   2 +-
->  .../media/platform/rockchip/rkisp1/Kconfig    |   2 +-
->  .../media/platform/samsung/exynos-gsc/Kconfig |   2 +-
->  .../media/platform/samsung/exynos4-is/Kconfig |   2 +-
->  .../media/platform/samsung/s3c-camif/Kconfig  |   2 +-
->  .../media/platform/samsung/s5p-g2d/Kconfig    |   2 +-
->  .../media/platform/samsung/s5p-jpeg/Kconfig   |   2 +-
->  .../media/platform/samsung/s5p-mfc/Kconfig    |   2 +-
->  drivers/media/platform/stm/sti/bdisp/Kconfig  |   2 +-
->  drivers/media/platform/stm/sti/delta/Kconfig  |   2 +-
->  drivers/media/platform/stm/sti/hva/Kconfig    |   2 +-
->  drivers/media/platform/stm/stm32/Kconfig      |   4 +-
->  drivers/media/platform/ti/am437x/Kconfig      |   2 +-
->  drivers/media/platform/ti/davinci/Kconfig     |  12 +-
->  drivers/media/platform/ti/omap/Kconfig        |   2 +-
->  drivers/media/platform/ti/omap3isp/Kconfig    |   2 +-
->  drivers/media/platform/via/Kconfig            |   2 +-
->  drivers/media/platform/xilinx/Kconfig         |   2 +-
->  drivers/media/radio/Kconfig                   |  42 ++-
->  drivers/media/radio/si470x/Kconfig            |   2 +-
->  drivers/media/radio/wl128x/Kconfig            |   2 +-
->  drivers/media/spi/Kconfig                     |   4 +-
->  drivers/media/test-drivers/Kconfig            |   2 +-
->  drivers/media/test-drivers/vicodec/Kconfig    |   2 +-
->  drivers/media/test-drivers/vimc/Kconfig       |   2 +-
->  drivers/media/test-drivers/vivid/Kconfig      |   2 +-
->  drivers/media/tuners/Kconfig                  |   6 +-
->  drivers/media/tuners/e4000.c                  |   6 +-
->  drivers/media/tuners/fc2580.c                 |   6 +-
->  drivers/media/usb/airspy/Kconfig              |   2 +-
->  drivers/media/usb/au0828/Kconfig              |   6 +-
->  drivers/media/usb/cpia2/Kconfig               |   2 +-
->  drivers/media/usb/dvb-usb-v2/Kconfig          |   8 +-
->  drivers/media/usb/dvb-usb/Kconfig             |   4 +-
->  drivers/media/usb/gspca/Kconfig               |  96 +++----
->  drivers/media/usb/gspca/gl860/Kconfig         |   2 +-
->  drivers/media/usb/gspca/m5602/Kconfig         |   2 +-
->  drivers/media/usb/hackrf/Kconfig              |   2 +-
->  drivers/media/usb/hdpvr/Kconfig               |   2 +-
->  drivers/media/usb/msi2500/Kconfig             |   2 +-
->  drivers/media/usb/pvrusb2/Kconfig             |   2 +-
->  drivers/media/usb/pwc/Kconfig                 |   2 +-
->  drivers/media/usb/s2255/Kconfig               |   2 +-
->  drivers/media/usb/stkwebcam/Kconfig           |   2 +-
->  drivers/media/usb/usbtv/Kconfig               |   2 +-
->  drivers/media/usb/uvc/Kconfig                 |   2 +-
->  drivers/media/usb/zr364xx/Kconfig             |   2 +-
->  drivers/media/v4l2-core/Kconfig               |  12 +-
->  drivers/media/v4l2-core/Makefile              |   2 +-
->  drivers/staging/media/atomisp/Kconfig         |   2 +-
->  drivers/staging/media/atomisp/i2c/Kconfig     |  14 +-
->  drivers/staging/media/hantro/Kconfig          |   2 +-
->  drivers/staging/media/imx/Kconfig             |   2 +-
->  drivers/staging/media/ipu3/Kconfig            |   2 +-
->  drivers/staging/media/max96712/Kconfig        |   2 +-
->  drivers/staging/media/meson/vdec/Kconfig      |   2 +-
->  drivers/staging/media/omap4iss/Kconfig        |   2 +-
->  drivers/staging/media/rkvdec/Kconfig          |   2 +-
->  drivers/staging/media/sunxi/cedrus/Kconfig    |   2 +-
->  drivers/staging/media/tegra-video/Kconfig     |   2 +-
->  drivers/staging/media/zoran/Kconfig           |   2 +-
->  drivers/staging/most/video/Kconfig            |   2 +-
->  .../vc04_services/bcm2835-camera/Kconfig      |   2 +-
->  drivers/usb/gadget/Kconfig                    |   2 +-
->  drivers/usb/gadget/legacy/Kconfig             |   2 +-
->  sound/pci/Kconfig                             |   4 +-
->  115 files changed, 356 insertions(+), 374 deletions(-)
->
-
-Acked-by: =C5=81ukasz Stelmach <l.stelmach@samsung.com>
-
-[...]
-
-
-> diff --git a/drivers/media/platform/samsung/s5p-g2d/Kconfig b/drivers/med=
-ia/platform/samsung/s5p-g2d/Kconfig
-> index 9bc9d90a666a..28ab88fc2d7c 100644
-> --- a/drivers/media/platform/samsung/s5p-g2d/Kconfig
-> +++ b/drivers/media/platform/samsung/s5p-g2d/Kconfig
-> @@ -1,7 +1,7 @@
->  config VIDEO_SAMSUNG_S5P_G2D
->  	tristate "Samsung S5P and EXYNOS4 G2D 2d graphics accelerator driver"
->  	depends on V4L_MEM2MEM_DRIVERS
-> -	depends on VIDEO_DEV && VIDEO_V4L2
-> +	depends on VIDEO_DEV
->  	depends on ARCH_S5PV210 || ARCH_EXYNOS || COMPILE_TEST
->  	select VIDEOBUF2_DMA_CONTIG
->  	select V4L2_MEM2MEM_DEV
-
-[...]
-
-
-=2D-=20
-=C5=81ukasz Stelmach
-Samsung R&D Institute Poland
-Samsung Electronics
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEXpuyqjq9kGEVr9UQsK4enJilgBAFAmIzij8ACgkQsK4enJil
-gBBbcgf/aneuRLpVmb3t9XhFHinqWTwAHjmHijfM4Bxpeie5LGPD+ZODOQbbTHI/
-SXYJS3DSxcgXnRGiv7g4MNmazBgof2zjvt/C8g0cTWdthAC4RALkjvOFd+4JyyJP
-ozwCmesdus9emei4oZwgFKK914YZDEjYr8bWMicgALtwdnF7z9A00O5RwqaptPTX
-jSFQlpjo5s4gYR2xpQZaLPRwnr328DtW8oertBocpd32+OtNe+A2u1cjdxKuOPqt
-1iB2h/WFOgzqi5noKYu5eQ37WtWZsiPlUuEcrUXRddHEj/TYOFwBEclb+TtkaO0X
-ysdUvYWSGALn6XAUtaiDpl43o6bQ2A==
-=1sCe
------END PGP SIGNATURE-----
---=-=-=--
-
-
---===============1873998716779613240==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1873998716779613240==--
-
+T24gVGh1LCBNYXIgMTcsIDIwMjIgYXQgNToxNSBBTSBDaHJpc3RpYW4gS8O2bmlnCjxjaHJpc3Rp
+YW4ua29lbmlnQGFtZC5jb20+IHdyb3RlOgo+Cj4gSGkgUGV0ZXIsCj4KPiBBbSAxNy4wMy4yMiB1
+bSAwMToxNCBzY2hyaWViIFBldGVyIEdlaXM6Cj4gPiBHb29kIEV2ZW5pbmcsCj4gPgo+ID4gSSBh
+cG9sb2dpemUgZm9yIHJhaXNpbmcgdGhpcyBlbWFpbCBjaGFpbiBmcm9tIHRoZSBkZWFkLCBidXQg
+dGhlcmUgaGF2ZQo+ID4gYmVlbiBzb21lIGRldmVsb3BtZW50cyB0aGF0IGhhdmUgaW50cm9kdWNl
+ZCBldmVuIG1vcmUgcXVlc3Rpb25zLgo+ID4gSSd2ZSBsb29wZWQgdGhlIFJvY2tjaGlwIG1haWxp
+bmcgbGlzdCBpbnRvIHRoaXMgdG9vLCBhcyB0aGlzIGFmZmVjdHMKPiA+IHJrMzU2eCwgYW5kIGxp
+a2VseSB0aGUgdXBjb21pbmcgcmszNTg4IGlmIFsxXSBpcyB0byBiZSBiZWxpZXZlZC4KPiA+Cj4g
+PiBUTERSIGZvciB0aG9zZSBub3QgZmFtaWxpYXI6IEl0IHNlZW1zIHRoZSByazM1Nnggc2VyaWVz
+IChhbmQgcG9zc2libHkKPiA+IHRoZSByazM1ODgpIHdlcmUgYnVpbHQgd2l0aG91dCBhbnkgb3V0
+ZXIgY29oZXJlbnQgY2FjaGUuCj4gPiBUaGlzIG1lYW5zICh1bmxlc3MgUm9ja2NoaXAgd2FudHMg
+dG8gY2xhcmlmeSBoZXJlKSBkZXZpY2VzIHN1Y2ggYXMgdGhlCj4gPiBJVFMgYW5kIFBDSWUgY2Fu
+bm90IHV0aWxpemUgY2FjaGUgc25vb3BpbmcuCj4KPiB3ZWxsLCBhcyBmYXIgYXMgSSBrbm93IHRo
+YXQgaXMgYSBjbGVhciB2aW9sYXRpb24gb2YgdGhlIFBDSWUgc3BlY2lmaWNhdGlvbi4KPgo+IENv
+aGVyZW50IGFjY2VzcyB0byBzeXN0ZW0gbWVtb3J5IGlzIHNpbXBseSBhIG11c3QgaGF2ZS4KPgo+
+ID4gVGhpcyBpcyBiYXNlZCBvbiB0aGUgcmVzdWx0cyBvZiB0aGUgZW1haWwgY2hhaW4gWzJdLgo+
+ID4KPiA+IFRoZSBuZXcgY2lyY3Vtc3RhbmNlcyBhcmUgYXMgZm9sbG93czoKPiA+IFRoZSBSUGkg
+Q000IEFkdmVudHVyZSBUZWFtIGFzIEkndmUgdGFrZW4gdG8gY2FsbGluZyB0aGVtIGhhcyBiZWVu
+Cj4gPiBhdHRlbXB0aW5nIHRvIGdldCBhIGRHUFUgd29ya2luZyB3aXRoIHRoZSB2ZXJ5IGJyb2tl
+biBCcm9hZGNvbQo+ID4gY29udHJvbGxlciBpbiB0aGUgUlBpIENNNC4KPiA+IFJlY2VudGx5IHRo
+ZXkgYWNxdWlyZWQgYSBTb1F1YXJ0eiByazM1NjYgbW9kdWxlIHdoaWNoIGlzIHBpbgo+ID4gY29t
+cGF0aWJsZSB3aXRoIHRoZSBDTTQsIGFuZCBoYXZlIHRha2VuIHRvIHRyeWluZyBpdCBvdXQgYXMg
+d2VsbC4KPiA+Cj4gPiBUaGlzIGlzIGhvdyBJIGdvdCBpbnZvbHZlZC4KPiA+IEl0IHNlZW1zIHRo
+ZXkgZm91bmQgYSB0cml2aWFsIHdheSB0byBmb3JjZSB0aGUgUmFkZW9uIFI2MDAgZHJpdmVyIHRv
+Cj4gPiB1c2UgTm9uLUNhY2hlZCBtZW1vcnkgZm9yIGV2ZXJ5dGhpbmcuCj4KPiBZZWFoLCB5b3Ug
+YmFzaWNhbGx5IGp1c3QgZm9yY2UgaXQgaW50byBBR1AgbW9kZSA6KQo+Cj4gVGhlcmUgaXMganVz
+dCBhYnNvbHV0ZWx5IG5vIGd1YXJhbnRlZSB0aGF0IHRoaXMgd29ya3MgcmVsaWFibGUuCgpJdCBt
+aWdodCBub3QgYmUgdG9vIGJhZCBpZiB3ZSB1c2UgdGhlIGludGVybmFsIEdBUlQgcmF0aGVyIHRo
+YW4gQUdQLgpUaGUgY2hhbGxlbmdlIHdpbGwgYmUgYWxsb2NhdGluZyB1bmNhY2hlZCBzeXN0ZW0g
+bWVtb3J5LiAgSSB0aGluayB0aGF0CnRlbmRlZCB0byBiZSB0aGUgcHJvYmxlbSBvbiBtb3N0IG5v
+bi14ODYgcGxhdGZvcm1zLgoKQWxleAoKCj4KPiA+IFRoaXMgc2luZ2xlIGxpbmUgY2hhbmdlLCBj
+b21iaW5lZCB3aXRoIHVzaW5nIG1lbXNldF9pbyBpbnN0ZWFkIG9mCj4gPiBtZW1zZXQsIGFsbG93
+cyB0aGUgcmluZyB0ZXN0cyB0byBwYXNzIGFuZCB0aGUgY2FyZCBwcm9iZXMgc3VjY2Vzc2Z1bGx5
+Cj4gPiAobWludXMgdGhlIERNQSBsaW1pdGF0aW9ucyBvZiB0aGUgcmszNTZ4IGR1ZSB0byB0aGUg
+MzIgYml0Cj4gPiBpbnRlcmNvbm5lY3QpLgo+ID4gSSBkaXNjb3ZlcmVkIHVzaW5nIHRoaXMgbWV0
+aG9kIHRoYXQgd2Ugc3RhcnQgaGF2aW5nIHVuYWxpZ25lZCBpbwo+ID4gbWVtb3J5IGFjY2VzcyBm
+YXVsdHMgKGJ1cyBlcnJvcnMpIHdoZW4gcnVubmluZyBnbG1hcmsyLWRybSAocnVubmluZwo+ID4g
+Z2xtYXJrMiBkaXJlY3RseSB3YXMgaW1wb3NzaWJsZSwgYXMgYm90aCBYIGFuZCBXYXlsYW5kIGNy
+YXNoZWQgdG9vCj4gPiBlYXJseSkuCj4gPiBJIHRyYWNlZCB0aGlzIHRvIHVzaW5nIHdoYXQgSSB0
+aG91Z2h0IGF0IHRoZSB0aW1lIHdhcyBhbiB1bnNhZmUgbWVtY3B5Cj4gPiBpbiB0aGUgbWVzYSBz
+dGFjay4KPiA+IFJld3JpdGluZyB0aGlzIGZ1bmN0aW9uIHRvIGZvcmNlIGFsaWduZWQgd3JpdGVz
+IHNvbHZlZCB0aGUgcHJvYmxlbSBhbmQKPiA+IGFsbG93cyBnbG1hcmsyLWRybSB0byBydW4gdG8g
+Y29tcGxldGlvbi4KPiA+IFdpdGggc29tZSBleHRlbnNpdmUgZGVidWdnaW5nLCBJIGZvdW5kIGFi
+b3V0IGhhbGYgYSBkb3plbiBtZW1jcHkKPiA+IGZ1bmN0aW9ucyBpbiBtZXNhIHRoYXQgaWYgZm9y
+Y2VkIHRvIGJlIGFsaWduZWQgd291bGQgYWxsb3cgV2F5bGFuZCB0bwo+ID4gc3RhcnQsIGJ1dCB3
+aXRoIGhpbGFyaW91cyBkaXNwbGF5IGNvcnJ1cHRpb24gKHNlZSBbM10uIFs0XSkuCj4gPiBUaGUg
+Q000IHRlYW0gaXMgY29udmluY2VkIHRoaXMgaXMgYW4gaXNzdWUgd2l0aCBtZW1jcHkgaW4gZ2xp
+YmMsIGJ1dAo+ID4gSSdtIG5vdCBjb252aW5jZWQgaXQncyB0aGF0IHNpbXBsZS4KPgo+IFllcyBl
+eGFjdGx5IHRoYXQuCj4KPiBCb3RoIE9wZW5HTCBhbmQgVnVsa2FuIGFsbG93IHRoZSBhcHBsaWNh
+dGlvbiB0byBtbWFwKCkgZGV2aWNlIG1lbW9yeSBhbmQKPiBkbyBhbnkgbWVtb3J5IGFjY2VzcyB0
+aGV5IHdhbnQgd2l0aCB0aGF0Lgo+Cj4gVGhpcyBtZWFucyB0aGF0IGNoYW5naW5nIG1lbWNweSBp
+cyBqdXN0IGEgZnV0aWxlIGVmZm9ydCwgaXQncyBzdGlsbAo+IHBvc3NpYmxlIGZvciB0aGUgYXBw
+bGljYXRpb24gdG8gbWFrZSBhbiB1bmFsaWduZWQgbWVtb3J5IGFjY2VzcyBhbmQgdGhhdAo+IGlz
+IHBlcmZlY3RseSB2YWxpZC4KPgo+ID4gT24gbXkgdHdvIGhvdXIgZHJpdmUgaW4gdG8gd29yayB0
+aGlzIG1vcm5pbmcsIEkgZ290IHRvIHRoaW5raW5nLgo+ID4gSWYgdGhpcyB3YXMgYW4gbWVtY3B5
+IGZhdWx0LCB0aGlzIHdvdWxkIGJlIHVuaXZlcnNhbGx5IGJyb2tlbiBvbiBhcm02NAo+ID4gd2hp
+Y2ggaXMgb2J2aW91c2x5IG5vdCB0aGUgY2FzZS4KPiA+IFNvIEkgc3RhcnRlZCB0aGlua2luZywg
+d2hhdCBpcyBkaWZmZXJlbnQgaGVyZSB0aGFuIHdpdGggc3lzdGVtcyBrbm93biB0byB3b3JrOgo+
+ID4gMS4gTm8gSU9NTVUgZm9yIHRoZSBQQ0llIGNvbnRyb2xsZXIuCj4gPiAyLiBUaGUgT3V0ZXIg
+Q2FjaGUgSXNzdWUuCj4KPiBPaCwgdmVyeSBnb29kIHBvaW50LiBJIHdvdWxkIGJlIGludGVyZXN0
+ZWQgaW4gdGhhdCBhcyBhbnN3ZXIgYXMgd2VsbC4KPgo+IFJlZ2FyZHMsCj4gQ2hyaXN0aWFuLgo+
+Cj4gPgo+ID4gUm9iaW46Cj4gPiBNeSBxdWVzdGlvbnMgZm9yIHlvdSwgc2luY2UgeW91J3JlIHRo
+ZSBzbWFydGVzdCBwZXJzb24gSSBrbm93IGFib3V0Cj4gPiBhcm02NCBtZW1vcnkgbWFuYWdlbWVu
+dDoKPiA+IENvdWxkIGNhY2hlIHNub29waW5nIHBlcm1pdCB1bmFsaWduZWQgYWNjZXNzZXMgdG8g
+SU8gdG8gYmUgc2FmZT8KPiA+IE9yCj4gPiBJcyBpdCB0aGUgbGFjayBvZiBhbiBJT01NVSB0aGF0
+J3MgY2F1c2luZyB0aGUgYWxpZ25tZW50IGZhdWx0cyB0byBiZWNvbWUgZmF0YWw/Cj4gPiBPcgo+
+ID4gQW0gSSBpbnNhbmUgaGVyZT8KPiA+Cj4gPiBSb2NrY2hpcDoKPiA+IFBsZWFzZSB1cGRhdGUg
+b24gdGhlIHN0YXR1cyBmb3IgdGhlIE91dGVyIENhY2hlIGVycmF0YSBmb3IgSVRTIHNlcnZpY2Vz
+Lgo+ID4gUGxlYXNlIHByb3ZpZGUgYW4gYW5zd2VyIHRvIHRoZSBlcnJhdGEgb2YgdGhlIFBDSWUg
+Y29udHJvbGxlciwgaW4KPiA+IHJlZ2FyZCB0byBjYWNoZSBzbm9vcGluZyBhbmQgYnVmZmVyaW5n
+LCBmb3IgYm90aCB0aGUgcmszNTZ4IGFuZCB0aGUKPiA+IHVwY29taW5nIHJrMzU4OC4KPiA+Cj4g
+PiBbMV0gaHR0cHM6Ly9uYW0xMS5zYWZlbGlua3MucHJvdGVjdGlvbi5vdXRsb29rLmNvbS8/dXJs
+PWh0dHBzJTNBJTJGJTJGZ2l0aHViLmNvbSUyRkplZmZ5Q04lMkZtaXJyb3JzJTJGY29tbWl0JTJG
+MGI5ODVmMjkzMDRkY2I5ZDY0NDE3NGVkYWNiNjcyOThlODA0OWQ0ZiZhbXA7ZGF0YT0wNCU3QzAx
+JTdDY2hyaXN0aWFuLmtvZW5pZyU0MGFtZC5jb20lN0M0YWUyZGZhM2U4ZWM0YTc2NWY4YTA4ZGEw
+N2FiMWNiMiU3QzNkZDg5NjFmZTQ4ODRlNjA4ZTExYTgyZDk5NGUxODNkJTdDMCU3QzAlN0M2Mzc4
+MzA3Mjg3NjIwNDQ0NTAlN0NVbmtub3duJTdDVFdGcGJHWnNiM2Q4ZXlKV0lqb2lNQzR3TGpBd01E
+QWlMQ0pRSWpvaVYybHVNeklpTENKQlRpSTZJazFoYVd3aUxDSlhWQ0k2TW4wJTNEJTdDMzAwMCZh
+bXA7c2RhdGE9WkwzakEyVnJueW5XYlVkRkc2bmFhcXJacWNuS1JxMzM4biUyQmo1MERSYTc0JTNE
+JmFtcDtyZXNlcnZlZD0wCj4gPiBbMl0gaHR0cHM6Ly9uYW0xMS5zYWZlbGlua3MucHJvdGVjdGlv
+bi5vdXRsb29rLmNvbS8/dXJsPWh0dHBzJTNBJTJGJTJGbG9yZS5rZXJuZWwub3JnJTJGbGttbCUy
+Rjg3MXJiZHQ0dHUud2wtbWF6JTQwa2VybmVsLm9yZyUyRlQlMkYmYW1wO2RhdGE9MDQlN0MwMSU3
+Q2NocmlzdGlhbi5rb2VuaWclNDBhbWQuY29tJTdDNGFlMmRmYTNlOGVjNGE3NjVmOGEwOGRhMDdh
+YjFjYjIlN0MzZGQ4OTYxZmU0ODg0ZTYwOGUxMWE4MmQ5OTRlMTgzZCU3QzAlN0MwJTdDNjM3ODMw
+NzI4NzYyMDQ0NDUwJTdDVW5rbm93biU3Q1RXRnBiR1pzYjNkOGV5SldJam9pTUM0d0xqQXdNREFp
+TENKUUlqb2lWMmx1TXpJaUxDSkJUaUk2SWsxaGFXd2lMQ0pYVkNJNk1uMCUzRCU3QzMwMDAmYW1w
+O3NkYXRhPVFaeSUyQnQlMkZ1czVmM3l4d3JIbVhwemVyWG5nUHBLcDNpOVpzRjFVSiUyQkh2bFUl
+M0QmYW1wO3Jlc2VydmVkPTAKPiA+IFszXSBodHRwczovL25hbTExLnNhZmVsaW5rcy5wcm90ZWN0
+aW9uLm91dGxvb2suY29tLz91cmw9aHR0cHMlM0ElMkYlMkZjZG4uZGlzY29yZGFwcC5jb20lMkZh
+dHRhY2htZW50cyUyRjkyNjQ4Nzc5Nzg0NDU0MTUxMCUyRjk1MzQxNDc1NTk3MDg1MDgxNiUyRnVu
+a25vd24ucG5nJmFtcDtkYXRhPTA0JTdDMDElN0NjaHJpc3RpYW4ua29lbmlnJTQwYW1kLmNvbSU3
+QzRhZTJkZmEzZThlYzRhNzY1ZjhhMDhkYTA3YWIxY2IyJTdDM2RkODk2MWZlNDg4NGU2MDhlMTFh
+ODJkOTk0ZTE4M2QlN0MwJTdDMCU3QzYzNzgzMDcyODc2MjA0NDQ1MCU3Q1Vua25vd24lN0NUV0Zw
+Ykdac2IzZDhleUpXSWpvaU1DNHdMakF3TURBaUxDSlFJam9pVjJsdU16SWlMQ0pCVGlJNklrMWhh
+V3dpTENKWFZDSTZNbjAlM0QlN0MzMDAwJmFtcDtzZGF0YT1jMjliYzg3aHh5SXZuc0JLM0ZvN0Zi
+RjdSd0pjRnIlMkZqZ0JyTElpQmIlMkZ5WSUzRCZhbXA7cmVzZXJ2ZWQ9MAo+ID4gWzRdIGh0dHBz
+Oi8vbmFtMTEuc2FmZWxpbmtzLnByb3RlY3Rpb24ub3V0bG9vay5jb20vP3VybD1odHRwcyUzQSUy
+RiUyRmNkbi5kaXNjb3JkYXBwLmNvbSUyRmF0dGFjaG1lbnRzJTJGOTI2NDg3Nzk3ODQ0NTQxNTEw
+JTJGOTUzNDI0OTUyMDQyODUyNDIyJTJGdW5rbm93bi5wbmcmYW1wO2RhdGE9MDQlN0MwMSU3Q2No
+cmlzdGlhbi5rb2VuaWclNDBhbWQuY29tJTdDNGFlMmRmYTNlOGVjNGE3NjVmOGEwOGRhMDdhYjFj
+YjIlN0MzZGQ4OTYxZmU0ODg0ZTYwOGUxMWE4MmQ5OTRlMTgzZCU3QzAlN0MwJTdDNjM3ODMwNzI4
+NzYyMDQ0NDUwJTdDVW5rbm93biU3Q1RXRnBiR1pzYjNkOGV5SldJam9pTUM0d0xqQXdNREFpTENK
+UUlqb2lWMmx1TXpJaUxDSkJUaUk2SWsxaGFXd2lMQ0pYVkNJNk1uMCUzRCU3QzMwMDAmYW1wO3Nk
+YXRhPWZ3eWdUayUyQkR6ZGxhNjdyZEFZYjQ0dmxpdmxieTlsRnd0Y2dqTGZKRUg0QSUzRCZhbXA7
+cmVzZXJ2ZWQ9MAo+ID4KPiA+IFRoYW5rIHlvdSBldmVyeW9uZSBmb3IgeW91ciB0aW1lLgo+ID4K
+PiA+IFZlcnkgUmVzcGVjdGZ1bGx5LAo+ID4gUGV0ZXIgR2Vpcwo+ID4KPiA+IE9uIFdlZCwgTWF5
+IDI2LCAyMDIxIGF0IDc6MjEgQU0gQ2hyaXN0aWFuIEvDtm5pZwo+ID4gPGNocmlzdGlhbi5rb2Vu
+aWdAYW1kLmNvbT4gd3JvdGU6Cj4gPj4gSGkgUm9iaW4sCj4gPj4KPiA+PiBBbSAyNi4wNS4yMSB1
+bSAxMjo1OSBzY2hyaWViIFJvYmluIE11cnBoeToKPiA+Pj4gT24gMjAyMS0wNS0yNiAxMDo0Miwg
+Q2hyaXN0aWFuIEvDtm5pZyB3cm90ZToKPiA+Pj4+IEhpIFJvYmluLAo+ID4+Pj4KPiA+Pj4+IEFt
+IDI1LjA1LjIxIHVtIDIyOjA5IHNjaHJpZWIgUm9iaW4gTXVycGh5Ogo+ID4+Pj4+IE9uIDIwMjEt
+MDUtMjUgMTQ6MDUsIEFsZXggRGV1Y2hlciB3cm90ZToKPiA+Pj4+Pj4gT24gVHVlLCBNYXkgMjUs
+IDIwMjEgYXQgODo1NiBBTSBQZXRlciBHZWlzIDxwZ3dpcGVvdXRAZ21haWwuY29tPgo+ID4+Pj4+
+PiB3cm90ZToKPiA+Pj4+Pj4+IE9uIFR1ZSwgTWF5IDI1LCAyMDIxIGF0IDg6NDcgQU0gQWxleCBE
+ZXVjaGVyCj4gPj4+Pj4+PiA8YWxleGRldWNoZXJAZ21haWwuY29tPiB3cm90ZToKPiA+Pj4+Pj4+
+PiBPbiBUdWUsIE1heSAyNSwgMjAyMSBhdCA4OjQyIEFNIFBldGVyIEdlaXMgPHBnd2lwZW91dEBn
+bWFpbC5jb20+Cj4gPj4+Pj4+Pj4gd3JvdGU6Cj4gPj4+Pj4+Pj4+IEdvb2QgRXZlbmluZywKPiA+
+Pj4+Pj4+Pj4KPiA+Pj4+Pj4+Pj4gSSBhbSBzdHJlc3MgdGVzdGluZyB0aGUgcGNpZSBjb250cm9s
+bGVyIG9uIHRoZSByazM1NjYtcXVhcnR6NjQKPiA+Pj4+Pj4+Pj4gcHJvdG90eXBlIFNCQy4KPiA+
+Pj4+Pj4+Pj4gVGhpcyBkZXZpY2UgaGFzIDFHQiBhdmFpbGFibGUgYXQgPDB4MyAweDAwMDAwMDAw
+PiBmb3IgdGhlIFBDSWUKPiA+Pj4+Pj4+Pj4gY29udHJvbGxlciwgd2hpY2ggbWFrZXMgYSBkR1BV
+IHRoZW9yZXRpY2FsbHkgcG9zc2libGUuCj4gPj4+Pj4+Pj4+IFdoaWxlIGF0dGVtcHRpbmcgdG8g
+bGlnaHQgb2ZmIGEgSEQ3NTcwIGNhcmQgSSBtYW5hZ2UgdG8gZ2V0IGEKPiA+Pj4+Pj4+Pj4gbW9k
+ZXNldAo+ID4+Pj4+Pj4+PiBjb25zb2xlLCBidXQgcmluZzAgdGVzdCBmYWlscyBhbmQgZGlzYWJs
+ZXMgYWNjZWxlcmF0aW9uLgo+ID4+Pj4+Pj4+Pgo+ID4+Pj4+Pj4+PiBOb3RlLCB3ZSBkbyBub3Qg
+aGF2ZSBVRUZJLCBzbyBhbGwgUENJZSBzZXR1cCBpcyBmcm9tIHRoZSBMaW51eAo+ID4+Pj4+Pj4+
+PiBrZXJuZWwuCj4gPj4+Pj4+Pj4+IEFueSBpbnNpZ2h0IHlvdSBjYW4gcHJvdmlkZSB3b3VsZCBi
+ZSBtdWNoIGFwcHJlY2lhdGVkLgo+ID4+Pj4+Pj4+IERvZXMgeW91ciBwbGF0Zm9ybSBzdXBwb3J0
+IFBDSWUgY2FjaGUgY29oZXJlbmN5IHdpdGggdGhlIENQVT8gIEkuZS4sCj4gPj4+Pj4+Pj4gZG9l
+cyB0aGUgQ1BVIGFsbG93IGNhY2hlIHNub29wcyBmcm9tIFBDSWUgZGV2aWNlcz8gIFRoYXQgaXMg
+cmVxdWlyZWQKPiA+Pj4+Pj4+PiBmb3IgdGhlIGRyaXZlciB0byBvcGVyYXRlLgo+ID4+Pj4+Pj4g
+QWgsIG1vc3QgbGlrZWx5IG5vdC4KPiA+Pj4+Pj4+IFRoaXMgaXNzdWUgaGFzIGNvbWUgdXAgYWxy
+ZWFkeSBhcyB0aGUgR0lDIGlzbid0IHBlcm1pdHRlZCB0byBzbm9vcCBvbgo+ID4+Pj4+Pj4gdGhl
+IENQVXMsIHNvIEkgZG91YnQgdGhlIFBDSWUgY29udHJvbGxlciBjYW4gZWl0aGVyLgo+ID4+Pj4+
+Pj4KPiA+Pj4+Pj4+IElzIHRoZXJlIG5vIHdheSB0byB3b3JrIGFyb3VuZCB0aGlzIG9yIGlzIGl0
+IGRlYWQgaW4gdGhlIHdhdGVyPwo+ID4+Pj4+PiBJdCdzIHJlcXVpcmVkIGJ5IHRoZSBwY2llIHNw
+ZWMuICBZb3UgY291bGQgcG90ZW50aWFsbHkgd29yayBhcm91bmQgaXQKPiA+Pj4+Pj4gaWYgeW91
+IGNhbiBhbGxvY2F0ZSB1bmNhY2hlZCBtZW1vcnkgZm9yIERNQSwgYnV0IEkgZG9uJ3QgdGhpbmsg
+dGhhdCBpcwo+ID4+Pj4+PiBwb3NzaWJsZSBjdXJyZW50bHkuICBJZGVhbGx5IHdlJ2QgZmlndXJl
+IG91dCBzb21lIHdheSB0byBkZXRlY3QgaWYgYQo+ID4+Pj4+PiBwYXJ0aWN1bGFyIHBsYXRmb3Jt
+IHN1cHBvcnRzIGNhY2hlIHNub29waW5nIG9yIG5vdCBhcyB3ZWxsLgo+ID4+Pj4+IFRoZXJlJ3Mg
+ZGV2aWNlX2dldF9kbWFfYXR0cigpLCBhbHRob3VnaCBJIGRvbid0IHRoaW5rIGl0IHdpbGwgd29y
+awo+ID4+Pj4+IGN1cnJlbnRseSBmb3IgUENJIGRldmljZXMgd2l0aG91dCBhbiBPRiBvciBBQ1BJ
+IG5vZGUgLSB3ZSBjb3VsZAo+ID4+Pj4+IHBlcmhhcHMgZG8gd2l0aCBhIFBDSS1zcGVjaWZpYyB3
+cmFwcGVyIHdoaWNoIGNhbiB3YWxrIHVwIGFuZCBkZWZlcgo+ID4+Pj4+IHRvIHRoZSBob3N0IGJy
+aWRnZSdzIGZpcm13YXJlIGRlc2NyaXB0aW9uIGFzIG5lY2Vzc2FyeS4KPiA+Pj4+Pgo+ID4+Pj4+
+IFRoZSBjb21tb24gRE1BIG9wcyAqZG8qIGNvcnJlY3RseSBrZWVwIHRyYWNrIG9mIHBlci1kZXZp
+Y2UgY29oZXJlbmN5Cj4gPj4+Pj4gaW50ZXJuYWxseSwgYnV0IGRyaXZlcnMgYXJlbid0IHN1cHBv
+c2VkIHRvIGJlIHBva2luZyBhdCB0aGF0Cj4gPj4+Pj4gaW5mb3JtYXRpb24gZGlyZWN0bHkuCj4g
+Pj4+PiBUaGF0IHNvdW5kcyBsaWtlIHlvdSB1bmRlcmVzdGltYXRlIHRoZSBwcm9ibGVtLiBBUk0g
+aGFzIHVuZm9ydHVuYXRlbHkKPiA+Pj4+IG1hZGUgdGhlIGNvaGVyZW5jeSBmb3IgUENJIGFuIG9w
+dGlvbmFsIElQLgo+ID4+PiBTb3JyeSB0byBiZSB0aGF0IGd1eSwgYnV0IEknbSBpbnZvbHZlZCBh
+IGxvdCBpbnRlcm5hbGx5IHdpdGggb3VyCj4gPj4+IHN5c3RlbSBJUCBhbmQgaW50ZXJjb25uZWN0
+LCBhbmQgSSBwcm9iYWJseSB1bmRlcnN0YW5kIHRoZSBzaXR1YXRpb24KPiA+Pj4gYmV0dGVyIHRo
+YW4gOTklIG9mIHRoZSBjb21tdW5pdHkgOykKPiA+PiBJIG5lZWQgdG8gYXBvbG9naXplLCBkaWRu
+J3QgcmVhbGl6ZWQgd2hvIHdhcyBhbnN3ZXJpbmcgOikKPiA+Pgo+ID4+IEl0IGp1c3Qgc291bmRl
+ZCB0byBtZSB0aGF0IHlvdSB3YW50ZWQgdG8gc3VnZ2VzdCB0byB0aGUgZW5kIHVzZXIgdGhhdAo+
+ID4+IHRoaXMgaXMgZml4YWJsZSBpbiBzb2Z0d2FyZSBhbmQgSSByZWFsbHkgd2FudGVkIHRvIGF2
+b2lkIGV2ZW4gbW9yZQo+ID4+IGN1c3RvbWVycyBjb21pbmcgYXJvdW5kIGFza2luZyBob3cgdG8g
+ZG8gdGhpcy4KPiA+Pgo+ID4+PiBGb3IgdGhlIHJlY29yZCwgdGhlIFNCU0Egc3BlY2lmaWNhdGlv
+biAodGhlIGNsb3NldCB0aGluZyB3ZSBoYXZlIHRvIGEKPiA+Pj4gInN5c3RlbSBhcmNoaXRlY3R1
+cmUiKSBkb2VzIHJlcXVpcmUgdGhhdCBQQ0llIGlzIGludGVncmF0ZWQgaW4gYW4KPiA+Pj4gSS9P
+LWNvaGVyZW50IG1hbm5lciwgYnV0IHdlIGRvbid0IGhhdmUgYW55IGNvbnRyb2wgb3ZlciB3aGF0
+IHBlb3BsZSBkbwo+ID4+PiBpbiBlbWJlZGRlZCBhcHBsaWNhdGlvbnMgKG5vdGUgdGhhdCB3ZSBk
+b24ndCBtYWtlIFBDSWUgSVAgYXQgYWxsLCBhbmQKPiA+Pj4gdGhlcmUgaXMgcGxlbnR5IG9mIDNy
+ZC1wYXJ0eSBpbnRlcmNvbm5lY3QgSVApLgo+ID4+IFNvIGJhc2ljYWxseSBpdCBpcyBub3QgdGhl
+IGZhdWx0IG9mIHRoZSBBUk0gSVAtY29yZSwgYnV0IHBlb3BsZSBhcmUganVzdAo+ID4+IHN0aXRj
+aGluZyB0b2dldGhlciBQQ0llIGludGVyY29ubmVjdCBJUCB3aXRoIGEgY29yZSB3aGVyZSBpdCBp
+cyBub3QKPiA+PiBzdXBwb3NlZCB0byBiZSB1c2VkIHdpdGguCj4gPj4KPiA+PiBEbyBJIGdldCB0
+aGF0IGNvcnJlY3RseT8gVGhhdCdzIGFuIGludGVyZXN0aW5nIHB1enpsZSBwaWVjZSBpbiB0aGUg
+cGljdHVyZS4KPiA+Pgo+ID4+Pj4gU28gd2UgYXJlIHRhbGtpbmcgYWJvdXQgYSBoYXJkd2FyZSBs
+aW1pdGF0aW9uIHdoaWNoIHBvdGVudGlhbGx5IGNhbid0Cj4gPj4+PiBiZSBmaXhlZCB3aXRob3V0
+IHJlcGxhY2luZyB0aGUgaGFyZHdhcmUuCj4gPj4+IFlvdSBleHByZXNzZWQgaW50ZXJlc3QgaW4g
+InNvbWUgd2F5IHRvIGRldGVjdCBpZiBhIHBhcnRpY3VsYXIgcGxhdGZvcm0KPiA+Pj4gc3VwcG9y
+dHMgY2FjaGUgc25vb3Bpbmcgb3Igbm90IiwgYnkgd2hpY2ggSSBhc3N1bWVkIHlvdSBtZWFudCBh
+Cj4gPj4+IHNvZnR3YXJlIG1ldGhvZCBmb3IgdGhlIGFtZGdwdS9yYWRlb24gZHJpdmVycyB0byBj
+YWxsLCByYXRoZXIgdGhhbiwKPiA+Pj4gc2F5LCBhIHdlYnNpdGUgdGhhdCBkcml2ZXIgbWFpbnRh
+aW5lcnMgY2FuIGxvb2sgdXAgU29DIG5hbWVzIG9uLiBJJ20KPiA+Pj4gc2F5aW5nIHRoYXQgdGhh
+dCBBUEkgYWxyZWFkeSBleGlzdHMgKGp1c3QgbWF5IG5lZWQgYSBiaXQgbW9yZSB3b3JrKS4KPiA+
+Pj4gTm90ZSB0aGF0IGl0IGlzIGVtcGhhdGljYWxseSBub3QgYSBwbGF0Zm9ybS1sZXZlbCB0aGlu
+ZyBzaW5jZQo+ID4+PiBjb2hlcmVuY3kgY2FuIGFuZCBkb2VzIHZhcnkgcGVyIGRldmljZSB3aXRo
+aW4gYSBzeXN0ZW0uCj4gPj4gV2VsbCwgSSB0aGluayB0aGlzIGlzIG5vdCBzb21ldGhpbmcgYW4g
+aW5kaXZpZHVhbCBkcml2ZXIgc2hvdWxkIG1lc3MKPiA+PiB3aXRoLiBXaGF0IHRoZSBkcml2ZXIg
+c2hvdWxkIGRvIGlzIGp1c3QgZXhwcmVzcyB0aGF0IGl0IG5lZWRzIGNvaGVyZW50Cj4gPj4gYWNj
+ZXNzIHRvIGFsbCBvZiBzeXN0ZW0gbWVtb3J5IGFuZCBpZiB0aGF0IGlzIG5vdCBwb3NzaWJsZSBm
+YWlsIHRvIGxvYWQKPiA+PiB3aXRoIGEgd2FybmluZyB3aHkgaXQgaXMgbm90IHBvc3NpYmxlLgo+
+ID4+Cj4gPj4+IEkgd2Fzbid0IHN1Z2dlc3RpbmcgdGhhdCBMaW51eCBjb3VsZCBzb21laG93IG1h
+a2UgY29oZXJlbmN5IG1hZ2ljYWxseQo+ID4+PiB3b3JrIHdoZW4gdGhlIHNpZ25hbHMgZG9uJ3Qg
+cGh5c2ljYWxseSBleGlzdCBpbiB0aGUgaW50ZXJjb25uZWN0IC0gSQo+ID4+PiB3YXMgYXNzdW1p
+bmcgeW91J2QgbWVyZWx5IHdhbnQgdG8gZG8gc29tZXRoaW5nIGxpa2UgdGhyb3cgYSBiaWcKPiA+
+Pj4gd2FybmluZyBhbmQgdGFpbnQgdGhlIGtlcm5lbCB0byBoZWxwIHRyaWFnZSBidWcgcmVwb3J0
+cy4gU29tZSBkcml2ZXJzCj4gPj4+IGxpa2UgYWhjaV9xb3JpcSBhbmQgcGFuZnJvc3Qgc2ltcGx5
+IG5lZWQgdG8ga25vdyBzbyB0aGV5IGNhbiBwcm9ncmFtCj4gPj4+IHRoZWlyIGRldmljZSB0byBl
+bWl0IHRoZSBhcHByb3ByaWF0ZSBtZW1vcnkgYXR0cmlidXRlcyBlaXRoZXIgd2F5LCBhbmQKPiA+
+Pj4gcmVseSBvbiB0aGUgRE1BIEFQSSB0byBoaWRlIHRoZSByZXN0IG9mIHRoZSBkaWZmZXJlbmNl
+LCBidXQgaWYgeW91Cj4gPj4+IHdhbnQgdG8gdHJlYXQgbm9uLWNvaGVyZW50IHVzZSBhcyB1bnN1
+cHBvcnRlZCBiZWNhdXNlIGl0IHdvdWxkIHJlcXVpcmUKPiA+Pj4gdG9vIGludmFzaXZlIGNoYW5n
+ZXMgdGhhdCdzIGZpbmUgYnkgbWUuCj4gPj4gWWVzIGV4YWN0bHkgdGhhdCBwbGVhc2UuIEkgbWVh
+biBub3Qgc3VyZSBob3cgcGFuZnJvc3QgaXMgZG9pbmcgaXQsIGJ1dAo+ID4+IGF0IGxlYXN0IHRo
+ZSBWdWxrYW4gdXNlcnNwYWNlIEFQSSBzcGVjaWZpY2F0aW9uIHJlcXVpcmVzIGRldmljZXMgdG8g
+aGF2ZQo+ID4+IGNvaGVyZW50IGFjY2VzcyB0byBzeXN0ZW0gbWVtb3J5Lgo+ID4+Cj4gPj4gU28g
+ZXZlbiBpZiBJIHdvdWxkIHdhbnQgdG8gZG8gdGhpcyBpdCBpcyBzaW1wbHkgbm90IHBvc3NpYmxl
+IGJlY2F1c2UgdGhlCj4gPj4gYXBwbGljYXRpb24gZG9lc24ndCB0ZWxsIHRoZSBkcml2ZXIgd2hp
+Y2ggbWVtb3J5IGlzIGFjY2Vzc2VkIGJ5IHRoZQo+ID4+IGRldmljZSBhbmQgd2hpY2ggYnkgdGhl
+IENQVS4KPiA+Pgo+ID4+IENocmlzdGlhbi4KPiA+Pgo+ID4+PiBSb2Jpbi4KPgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
