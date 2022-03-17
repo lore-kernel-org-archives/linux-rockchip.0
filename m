@@ -4,89 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47CB7C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Mar 2022 14:22:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 592EBC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Mar 2022 19:22:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JAAeYSj1LEJXL5rMjALvtkWoNO3VCbS+qNx3sP9HSZI=; b=or9cwIMgnB+M/E
-	mjhvqZWbwhghi0zngGCCx4HDX0C2g4b6MmMtyV1TnGMjyBkUHa+soNR3VaPorTvVNqHTEblhYpSFE
-	JWbsSZ0/tVRGgdBvM2Ls5U98F/R1BLB86ugmESuYiOXitdsOmzBKEJJA5NGltg/fJdxxSBzlGed6T
-	hxMI6/RbA2/eS5Sk44rNcCDgXgP1Pkq44Hgl8ew04fbsdwGSt0piidKDL2OSaqQPNsvwUWkF7vmPi
-	T9gkR9bccQndeq/nql4+Va+MEoa3XiwOU+2a7YHXWD9rki5DsQRG0NEYlUp6n2N6GKRxNP2zYF+m0
-	Kq2vF8anSnY3zE2py3RA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	References:MIME-Version:Message-ID:In-Reply-To:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HYRMqWmTQEYf8nNLPfACGUemaxoAPoFhOn8Ne7WzQcw=; b=KqjPB/NPdpXFC2AcF55aOsFdQG
+	OdifPDN4LIht2KpuZ+aVVCNrIZXKBCXVW9ywb3WjyKl2tSo7bLZXKF/OQVx+oaQOFuHuGBan4KfMF
+	SFteK4QtubLifoE4CfQqep8x05LMzDjoTbVvxxMNG7pj75elk4XvDvEeHztNjvRRhtm44tQLVhEV5
+	EXCKkRH8jyTiJAvbm+GOJg0cmf2SAxTg1v2Sa12l+0fhBltFpnnwc0k4FhZUfSUF7WSFjrTaIqOpu
+	VjXecCvMT6D8IDYYXJlKVtHFsF0w3EGNSILkvYZQku/oiIpZk2YdDQgiK1UXPQbPv6PsK4vnlIVly
+	utVkJ74Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nUr19-00GPcB-5C; Thu, 17 Mar 2022 14:22:19 +0000
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+	id 1nUvhE-00HBTO-Qh; Thu, 17 Mar 2022 19:22:04 +0000
+Received: from mailout1.w1.samsung.com ([210.118.77.11])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nUr15-00GPax-Sm
- for linux-rockchip@lists.infradead.org; Thu, 17 Mar 2022 14:22:17 +0000
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-2e5ad7166f1so47273257b3.12
- for <linux-rockchip@lists.infradead.org>; Thu, 17 Mar 2022 07:22:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=jbzrEoZkh3IQyGP4Z/QZFnd3Nhw5QZGTt4HaViU1gk8=;
- b=SFiUBQTIojjILrohES4QijrGh/3sRD5oenIxtoQoURDyuF9AyNvYsaaGcHG7vL+gFN
- +kC2Kt0bu0d4mG3en7bhneeHvzvKimIVxYYPeD1GtZzquzwCkquhuektYYGWdqgJMsNO
- lihAh+8WAzE3DUd2sbWEDaxuP9cj6NyOE0M6WaVM5fo29LXeEy2TNL2dX3hD8wuwg/Nz
- LmTHX/PvxmICA1qvlqPHfIHsMFjazuV7PHtv/cexjui+mR4m4ylG1yAhO2x4qerN1IVr
- cAWcwn8q/0kUqwdXCNlc7AffsXnEGZUcher3lXVTjzN3TnfW8Z50qZDvGSiP7A6cF8KA
- kf8A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=jbzrEoZkh3IQyGP4Z/QZFnd3Nhw5QZGTt4HaViU1gk8=;
- b=yKIhZaG+p/Ql/kf3JrJoslUVox9ieWw3xoHmCMxLA6rRw+/1yPPVy0+9k8tNS1rn24
- qnPOzW8NpsiMfg4DG27EhjqN6nqgyjN387Z3AGY1xu0F1e6zYX7wKkUMyw3QXO52vWaA
- 1V0l7j/RKxwslCbLnPCnOo8WR9FcfLllVCzwczFn3astgpmYmgX8kwIxtX0/zVCi2nh1
- T7HwmmXJOw48nI3lRsc04VNadrdRXAP7S83v2arT5aTCD+qIuiw4Sl/NWtGstcdEFJnQ
- BP8GH1GcWlbOGbDPn5aFjVWAJXdnPiXvGXGVSIejh0SHoK3T/8py2ctKbA6N963Ij+da
- +LzA==
-X-Gm-Message-State: AOAM533JB/fEWMd4tAbdg6jlBHPM6NVo+5kKd2ao+u11dIrWHdk0zAtS
- YGB2zvvUvfCoAKrU0wTXDHN/Ww6wZ/sBf0LrK+M=
-X-Google-Smtp-Source: ABdhPJzaUJRyQ7NS7G9QBdOSwtwPWvllkyOA2eEI/Gn97gTGRfyV2+YERgdmbCwOkSV6TwYnhnCj5pefmUk9mw9mQb4=
-X-Received: by 2002:a0d:c947:0:b0:2e5:c4fa:b5ab with SMTP id
- l68-20020a0dc947000000b002e5c4fab5abmr1952351ywd.241.1647526934337; Thu, 17
- Mar 2022 07:22:14 -0700 (PDT)
+ id 1nUvgq-00HBLM-CW; Thu, 17 Mar 2022 19:21:42 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+ by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
+ 20220317192137euoutp017e71ba0ed22d1b91ba2d8624c345a9c9~dQVr6851W0692706927euoutp01j;
+ Thu, 17 Mar 2022 19:21:37 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
+ 20220317192137euoutp017e71ba0ed22d1b91ba2d8624c345a9c9~dQVr6851W0692706927euoutp01j
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1647544897;
+ bh=8AJD7LLy/THFDuNHTzws2WZ7Rh8dubqLenZAtO6y33w=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=SSsYA3sB8VCPS64sV7bKPBdT8Gs/9iazS1cVIbja0uftAb3Jtq7aVK0HmcrvM88Y1
+ NoEJ9kl4mWA5MXUH10J7hVGyfodyRX1b5gMz1n+rN5J9woekIMHDbFexQ8XqDOWVDm
+ SBXoHQ05p7Jo9XqAW4y1w7OlZTplPAkddYsl9vKc=
+Received: from eusmges2new.samsung.com (unknown [203.254.199.244]) by
+ eucas1p2.samsung.com (KnoxPortal) with ESMTP id
+ 20220317192137eucas1p26a509d5aaf346c7b64b070301bf61eb3~dQVrnVIS11741017410eucas1p2i;
+ Thu, 17 Mar 2022 19:21:37 +0000 (GMT)
+Received: from eucas1p1.samsung.com ( [182.198.249.206]) by
+ eusmges2new.samsung.com (EUCPMTA) with SMTP id 08.B3.09887.14A83326; Thu, 17
+ Mar 2022 19:21:37 +0000 (GMT)
+Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
+ eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+ 20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8~dQVqafbfc3134231342eucas1p1O;
+ Thu, 17 Mar 2022 19:21:36 +0000 (GMT)
+Received: from eusmgms2.samsung.com (unknown [182.198.249.180]) by
+ eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20220317192136eusmtrp180d92f8748820fe9ee93ff913a9123e8~dQVqZWQ871868218682eusmtrp1x;
+ Thu, 17 Mar 2022 19:21:36 +0000 (GMT)
+X-AuditID: cbfec7f4-45bff7000000269f-39-62338a41cdcf
+Received: from eusmtip1.samsung.com ( [203.254.199.221]) by
+ eusmgms2.samsung.com (EUCPMTA) with SMTP id C4.14.09404.F3A83326; Thu, 17
+ Mar 2022 19:21:35 +0000 (GMT)
+Received: from localhost (unknown [106.120.51.46]) by eusmtip1.samsung.com
+ (KnoxPortal) with ESMTPA id
+ 20220317192135eusmtip11512036116a92f228b87ec99e1e8e94b~dQVqJMrcG1419214192eusmtip1r;
+ Thu, 17 Mar 2022 19:21:35 +0000 (GMT)
+From: Lukasz Stelmach <l.stelmach@samsung.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: alsa-devel@alsa-project.org,  bcm-kernel-feedback-list@broadcom.com,
+ linux-amlogic@lists.infradead.org,  linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org,  linux-aspeed@lists.ozlabs.org,
+ linux-input@vger.kernel.org,  linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org,  linux-mediatek@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org,  linux-rockchip@lists.infradead.org,
+ linux-rpi-kernel@lists.infradead.org,  linux-samsung-soc@vger.kernel.org,
+ linux-staging@lists.linux.dev,  linux-stm32@st-md-mailman.stormreply.com,
+ linux-sunxi@lists.linux.dev,  linux-tegra@vger.kernel.org,
+ linux-usb@vger.kernel.org,  mjpeg-users@lists.sourceforge.net,
+ openbmc@lists.ozlabs.org
+Subject: Re: [PATCH v2 65/67] media: Kconfig: cleanup VIDEO_DEV dependencies
+Date: Thu, 17 Mar 2022 20:21:35 +0100
+In-Reply-To: <d5b6678363c4374436014137fecc22ff666e3ebc.1647274407.git.mchehab@kernel.org>
+ (Mauro Carvalho Chehab's message of "Mon, 14 Mar 2022 17:35:00 +0100")
+Message-ID: <dleftj1qz0mlkw.fsf%l.stelmach@samsung.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-References: <CAMdYzYptw9L=5SECtVkNZruTT-x57+03vj0A+5efvq8cESzLyQ@mail.gmail.com>
- <CADnq5_NXmRr_Q7JuWZxJAjmavVkvJjNcWayQ1x8LhfcX5CS0uA@mail.gmail.com>
- <CAMdYzYoamh-igvBbKaLSJ6bSc3wA29=8mooJDLMJkj9YQ=wj0A@mail.gmail.com>
- <CADnq5_NXFZPA_z6413FDgr8WRObhCB+HdkHE5P=PAAMV4FiWiA@mail.gmail.com>
- <20dffd4d-fa54-5bc3-c13b-f8ffbf0fb593@arm.com>
- <599edb94-8294-c4c5-ff7f-84c7072af3dd@gmail.com>
- <546bf682-565f-8384-ec80-201ce1c747f4@arm.com>
- <8afb06c4-7601-d0d7-feae-ee5abc9c3641@amd.com>
- <CAMdYzYqH57HuqMMydMtQw2Ep2A_Qhjg3N_gTw6GuO6Kuxd9chQ@mail.gmail.com>
- <c3bd7c08-f7e3-153e-8445-8e867916d03c@arm.com>
- <CAMdYzYpt1vOCXiDUHCnuVRKnQ51Qissj9-w75FB6nVrFWS-9iw@mail.gmail.com>
- <6f5aaddd-e793-e5f1-17aa-71e7804f035f@arm.com>
-In-Reply-To: <6f5aaddd-e793-e5f1-17aa-71e7804f035f@arm.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Thu, 17 Mar 2022 10:21:59 -0400
-Message-ID: <CAMdYzYrxM-+kt=4_zHX9Nfy_cW0jWfw9n30N=3VePkvMuKYyBA@mail.gmail.com>
-Subject: Re: radeon ring 0 test failed on arm64
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, 
- =?UTF-8?Q?Christian_K=C3=B6nig?= <ckoenig.leichtzumerken@gmail.com>, 
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- Alex Deucher <alexdeucher@gmail.com>, "Deucher,
- Alexander" <alexander.deucher@amd.com>, 
- amd-gfx list <amd-gfx@lists.freedesktop.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Jingoo Han <jingoohan1@gmail.com>, 
- Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
- Simon Xue <xxm@rock-chips.com>
+X-Brightmail-Tracker: H4sIAAAAAAAAA02Sf1DTZRzHe77f7777Dhw+DpDnlkfdMCo4QcPySQj0sLvvVWdcWnnVNSd8
+ BY6xrf3IrDNmUMGaIAMvmJhACZ78aA5FI52JlqfEYETkgoSEFCe6k3GQhNC2L9753/vz+bzf
+ r+f5PPcwpKSUljK5Kj2nVSmUMjqEav/lvnPVRlPSjtV/+8Jwv6uTwC37fqZw7cFQbB8dEODy
+ c91CXNjkJLF7clqAf+uoobHZdtKvCl0An7x1l8CTIwskLh+0CXFVj4PAF30cNg2MCXClo4PG
+ JVNWGtc3fE7iBvscgfsLXTS+UjRObVjO2nyf0ax1uJtm7cdKaLbtuwJ2vK0asD1VdYD9sdZH
+ sOcda1ifPTpD9E5IShanzP2Q0yambg/JcR9Sac5lfOS746CMoDvZBEQMgmvR78YaygRCGAk8
+ CtDtwQeLxZS/GHcL+cIH0I0+i/BhxHSiIqglsBGgQnsOb7oJ0IzxG2ACDEPDBNTSsi3gifDL
+ m22uIJWEfQI0MlBOBQbh8DXU5hgMgij4FBo1zQoCWgTrAXowvzrAEcN16KuFjEA7Er6I5m7c
+ C9rFcBm6XD0WxJAwH1X3TIAAH8FpESobHAP8RTehhVNzJK/DkefSicUFVqCuCjMV4CNYgCos
+ L/BZM0DtNf9SvCcZDTlnaV5vRJMXviR4fxi6emcZf24YsrR/TfJtMSr+QsK7V6LWsjOLFCna
+ 5zkKeAuLLjue4F+qGSBX6RC9HzxpfWQb6yPbWP0REj6Lvu9I5NvxqKHuNsnrl1Brq5eqBYJj
+ IIoz6PKzOd1zKm5Xgk6RrzOoshMy1fl24P+mXfOXpk6DRs+9hE5AMKATrPSHr9uaeoGUUqlV
+ nCxC/Ot44g6JOEux+2NOq5ZrDUpO1wkeZyhZlDgz16aQwGyFnsvjOA2nfTglGJHUSCz5jwiT
+ Wuf7RPGMO0ZuT1txPm1XkdfIls/Id8rfDE9LuYqFOvnFmLzZvriu++7imOvc3U+lWUmHt2yO
+ X/hpiIJdbrOtd/3zfzmUu/fH1Vz5IzZ9xHDw7AFxaDdXJd++NEUc++7a9brmptKYvMhrFq/y
+ afVpvUEtK4YTinWV2Y/1vz165NVXNlSFbrFr0jPet+6xaupPSXGvfucz8tSRt6hts9NJwkNQ
+ f2RJkbh55nikWd+YWnLGLV1aklz3AV7Vku6JOr75FpP5Hrd36z/RzuE3csctzJDn8ITrdW/l
+ /IGXzw57DWWfwGvfOlMKNBfizVunueU/RPzp3rM32hs7kFMmo3Q5ijVxpFan+B+mhywbIQQA
+ AA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFmplleLIzCtJLcpLzFFi42I5/e/4XV37LuMkg4XvLSyuXDzEZLG29yiL
+ xYLZ3BabHl9jtZi4/yy7RfPqc8wWNz99Y7W4vGsOm0XPhq1AVvNFRoutL98xWXx68J/ZYuLt
+ DewWM87vY7I48jnVouvaE1aLKft2sVl0fpnFZrFoWSuzxbJNf5gsrjRfZLM41fKCxUHMY8Pn
+ JjaPWffPsnlsWtXJ5rF5Sb3Hi80zGT3Oz1jI6LF7wWcmj4P7DD0+b5IL4IzSsynKLy1JVcjI
+ Ly6xVYo2tDDSM7S00DMysdQzNDaPtTIyVdK3s0lJzcksSy3St0vQy7g5N69gf0DF57f7WBoY
+ z1p3MXJySAiYSHRtmcwOYgsJLGWU+Po2p4uRAyguJbFybjpEibDEn2tdbBAlTxklVr1yAClh
+ E9CTWLs2AiQsAmQ+33yRpYuRi4NZ4A6rRPPBLUwgCWEBH4nN+25DjY+QeDT/ClicRUBV4nHX
+ L1YQm1NgEaPE338GIDN5Bcwluv8HgIRFBSwl/jz7CNbKKyAocXLmExYQm1kgW+Lr6ufMExgF
+ ZiFJzUKSmgU0iVlAU2L9Ln2IsLbEsoWvmSFsW4l1696zLGBkXcUoklpanJueW2ykV5yYW1ya
+ l66XnJ+7iRGYBrYd+7llB+PKVx/1DjEycTAeYlQB6ny0YfUFRimWvPy8VCUR3jMv9JOEeFMS
+ K6tSi/Lji0pzUosPMZoCfTaRWUo0OR+YoPJK4g3NDEwNTcwsDUwtzYyVxHk9CzoShQTSE0tS
+ s1NTC1KLYPqYODilGphibDLLzno6a12RuDKlvcxuZvKmx2eWWB5gnB5gUWXGNVsodHGRqhCz
+ Pg9XyWxtr7VzpZ9P3hNRbMCt65M2a2Ge2rfLJw5tj9m7M9oh9VdhTkTaD/uPSTwRbxS7jzSL
+ B4vd17WZInhyi7znJvmJfHYZ0y9uzPf51et2rNRa7eyadRl3RJdb7c6dG5/5ZvPfVelu/OFy
+ pQ0xXB+yAqOC/zGZPEqxNDt5IlYh/0Lr14P3pCMCd6oZ3JLTZbry59WdaRMc3e6+YHjx+I13
+ 6cwlzY/az/VOm73l4jPeGON4HienzZ/YF5RyXNizpM3tTnXW/W13Xuzus3NWTZE+0dB6LGOj
+ pbZ4/N24dTtW7mBSmajEUpyRaKjFXFScCABQmWVNmAMAAA==
+X-CMS-MailID: 20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8
+X-Msg-Generator: CA
+X-RootMTR: 20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8
+References: <d5b6678363c4374436014137fecc22ff666e3ebc.1647274407.git.mchehab@kernel.org>
+ <CGME20220317192136eucas1p185dfbf79e792ebdc4c5614a90c1b0cd8@eucas1p1.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220317_072215_982459_10BA6B51 
-X-CRM114-Status: GOOD (  48.36  )
+X-CRM114-CacheID: sfid-20220317_122140_809250_5315BA63 
+X-CRM114-Status: GOOD (  24.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,149 +139,245 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1873998716779613240=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 17, 2022 at 9:17 AM Robin Murphy <robin.murphy@arm.com> wrote:
+--===============1873998716779613240==
+Content-Type: multipart/signed; boundary="=-=-="; micalg="pgp-sha256";
+	protocol="application/pgp-signature"
+
+--=-=-=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+It was <2022-03-14 pon 17:35>, when Mauro Carvalho Chehab wrote:
+> media Kconfig has two entries associated to V4L API:
+> VIDEO_DEV and VIDEO_V4L2.
 >
-> On 2022-03-17 12:26, Peter Geis wrote:
-> > On Thu, Mar 17, 2022 at 6:37 AM Robin Murphy <robin.murphy@arm.com> wrote:
-> >>
-> >> On 2022-03-17 00:14, Peter Geis wrote:
-> >>> Good Evening,
-
-I've added the Designware driver maintainers, since the Rockchip host
-driver uses the dwc driver.
-
-> >>>
-> >>> I apologize for raising this email chain from the dead, but there have
-> >>> been some developments that have introduced even more questions.
-> >>> I've looped the Rockchip mailing list into this too, as this affects
-> >>> rk356x, and likely the upcoming rk3588 if [1] is to be believed.
-> >>>
-> >>> TLDR for those not familiar: It seems the rk356x series (and possibly
-> >>> the rk3588) were built without any outer coherent cache.
-> >>> This means (unless Rockchip wants to clarify here) devices such as the
-> >>> ITS and PCIe cannot utilize cache snooping.
-> >>> This is based on the results of the email chain [2].
-> >>>
-> >>> The new circumstances are as follows:
-> >>> The RPi CM4 Adventure Team as I've taken to calling them has been
-> >>> attempting to get a dGPU working with the very broken Broadcom
-> >>> controller in the RPi CM4.
-> >>> Recently they acquired a SoQuartz rk3566 module which is pin
-> >>> compatible with the CM4, and have taken to trying it out as well.
-> >>>
-> >>> This is how I got involved.
-> >>> It seems they found a trivial way to force the Radeon R600 driver to
-> >>> use Non-Cached memory for everything.
-> >>> This single line change, combined with using memset_io instead of
-> >>> memset, allows the ring tests to pass and the card probes successfully
-> >>> (minus the DMA limitations of the rk356x due to the 32 bit
-> >>> interconnect).
-> >>> I discovered using this method that we start having unaligned io
-> >>> memory access faults (bus errors) when running glmark2-drm (running
-> >>> glmark2 directly was impossible, as both X and Wayland crashed too
-> >>> early).
-> >>> I traced this to using what I thought at the time was an unsafe memcpy
-> >>> in the mesa stack.
-> >>> Rewriting this function to force aligned writes solved the problem and
-> >>> allows glmark2-drm to run to completion.
-> >>> With some extensive debugging, I found about half a dozen memcpy
-> >>> functions in mesa that if forced to be aligned would allow Wayland to
-> >>> start, but with hilarious display corruption (see [3]. [4]).
-> >>> The CM4 team is convinced this is an issue with memcpy in glibc, but
-> >>> I'm not convinced it's that simple.
-> >>>
-> >>> On my two hour drive in to work this morning, I got to thinking.
-> >>> If this was an memcpy fault, this would be universally broken on arm64
-> >>> which is obviously not the case.
-> >>> So I started thinking, what is different here than with systems known to work:
-> >>> 1. No IOMMU for the PCIe controller.
-> >>> 2. The Outer Cache Issue.
-> >>>
-> >>> Robin:
-> >>> My questions for you, since you're the smartest person I know about
-> >>> arm64 memory management:
-> >>> Could cache snooping permit unaligned accesses to IO to be safe?
-> >>
-> >> No.
-> >>
-> >>> Or
-> >>> Is it the lack of an IOMMU that's causing the alignment faults to become fatal?
-> >>
-> >> No.
-> >>
-> >>> Or
-> >>> Am I insane here?
-> >>
-> >> No. (probably)
-> >>
-> >> CPU access to PCIe has nothing to do with PCIe's access to memory. From
-> >> what you've described, my guess is that a GPU BAR gets put in a
-> >> non-prefetchable window, such that it ends up mapped as Device memory
-> >> (whereas if it were prefetchable it would be Normal Non-Cacheable).
-> >
-> > Okay, this is perfect and I think you just put me on the right track
-> > for identifying the exact issue. Thanks!
-> >
-> > I've sliced up the non-prefetchable window and given it a prefetchable window.
-> > The 256MB BAR now resides in that window.
-> > However I'm still getting bus errors, so it seems the prefetch isn't
-> > actually happening.
+> On Kernel 2.6.x, there were two V4L APIs, each one with its own flag.
+> VIDEO_DEV were meant to:
+> 	1) enable Video4Linux and make its Kconfig options to appear;
+> 	2) it makes the Kernel build the V4L core.
 >
-> Note that "prefetchable" really just means "no side-effects on reads",
-> i.e. we can map it with a Normal memory type that technically *allows*
-> the CPU to make speculative accesses because they will not be harmful,
-> but that's not to say the CPU will do so. Just that if it did, you
-> wouldn't notice anyway.
+> while VIDEO_V4L2 where used to distinguish between drivers that
+> implement the newer API and drivers that implemented the former one.
 >
-> It's entirely possible that the PCIe IP itself doesn't like unaligned
-> accesses, so changing the memory type just moves you from an alignment
-> fault to an external abort.
-
-Okay, I've tried setting up PL_COHERENCY_CONTROL_3_OFF, where AxCACHE
-can be forced from auto to predefined for reads and writes.
-As I understand it, the cache bit should permit characteristic
-mismatch to be accepted and prefetch to be enabled, when combined with
-the read/write bits.
-It doesn't seem to make a difference however.
-I got the idea to look for this from the Armada8K and Tegra drivers.
-
-It would be nice to know if dGPUs work at all on *any* DWC based PCIe
-controllers.
-We could use those as a starting point to find out what's broken here.
-
+> With time, such meaning changed, specially after the removal of
+> all V4L version 1 drivers.
 >
-> > The difference is now the GPU realizes that an error has happened and
-> > initiates recovery, vice before where it seemed to be clueless.
-> > If I understand everything correctly, that's because before the bus
-> > error was raised by the CPU due to the memory flag, vice now where
-> > it's actually the bus raising the alarm.
-> >
-> > My next question, is this something the driver should set and isn't,
-> > or is it just because of the broken cache coherency?
+> At the current implementation, VIDEO_DEV only does (1): it enables
+> the media options related to V4L, that now has:
 >
-> The general rule for userspace mmap()ing PCIe-attached memory and
-> handing it off to glibc or anyone else who might assume it's regular
-> system RAM is "don't do that". If it's not access size or alignment that
-> falls over, it could be atomic operations, MTE tags, or any other
-> new-fangled memory innovation. For the ultimate dream of just plugging
-> in a card full of RAM, you either need to look back to ISA or forward to
-> CXL ;)
-
-So either go back to the really old way of doing things, find and fix
-the underlying problem, or wait for the IP to catch up?
-
+> 	menu "Video4Linux options"
+> 		visible if VIDEO_DEV
 >
-> Robin.
+> 	source "drivers/media/v4l2-core/Kconfig"
+> 	endmenu
+>
+> but it doesn't affect anymore the V4L core drivers.
+>
+> The rationale is that the V4L2 core has a "soft" dependency
+> at the I2C bus, and now requires to select a number of other
+> Kconfig options:
+>
+> 	config VIDEO_V4L2
+> 		tristate
+> 		depends on (I2C || I2C=3Dn) && VIDEO_DEV
+> 		select RATIONAL
+> 		select VIDEOBUF2_V4L2 if VIDEOBUF2_CORE
+> 		default (I2C || I2C=3Dn) && VIDEO_DEV
+>
+> In the past, merging them would be tricky, but it seems that it is now
+> possible to merge those symbols, in order to simplify V4L dependencies.
+>
+> Let's keep VIDEO_DEV, as this one is used on some make *defconfig
+> configurations.
+>
+> Suggested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Reviewed-by: Jacopo Mondi <jacopo@jmondi.org>
+> Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
+> ---
+>
+> To avoid mailbombing on a large number of people, only mailing lists were=
+ C/C on the cover.
+> See [PATCH v2 00/67] at: https://lore.kernel.org/all/cover.1647274406.git=
+.mchehab@kernel.org/
+>
+>  drivers/input/rmi4/Kconfig                    |   2 +-
+>  drivers/input/touchscreen/Kconfig             |   4 +-
+>  drivers/media/Kconfig                         |   3 +
+>  drivers/media/common/saa7146/Kconfig          |   2 +-
+>  drivers/media/dvb-core/Kconfig                |   2 +-
+>  drivers/media/dvb-frontends/Kconfig           |   4 +-
+>  drivers/media/i2c/Kconfig                     | 250 +++++++++---------
+>  drivers/media/i2c/ccs/Kconfig                 |   2 +-
+>  drivers/media/i2c/cx25840/Kconfig             |   2 +-
+>  drivers/media/i2c/et8ek8/Kconfig              |   2 +-
+>  drivers/media/i2c/m5mols/Kconfig              |   2 +-
+>  drivers/media/pci/Kconfig                     |   2 +-
+>  drivers/media/pci/bt8xx/Kconfig               |   2 +-
+>  drivers/media/pci/cobalt/Kconfig              |   2 +-
+>  drivers/media/pci/cx18/Kconfig                |   2 +-
+>  drivers/media/pci/dt3155/Kconfig              |   2 +-
+>  drivers/media/pci/intel/ipu3/Kconfig          |   2 +-
+>  drivers/media/pci/ivtv/Kconfig                |   2 +-
+>  drivers/media/pci/meye/Kconfig                |   2 +-
+>  drivers/media/pci/saa7146/Kconfig             |   6 +-
+>  drivers/media/pci/sta2x11/Kconfig             |   2 +-
+>  drivers/media/pci/tw5864/Kconfig              |   2 +-
+>  drivers/media/pci/tw68/Kconfig                |   2 +-
+>  drivers/media/pci/tw686x/Kconfig              |   2 +-
+>  drivers/media/platform/Kconfig                |   6 +-
+>  drivers/media/platform/allegro-dvt/Kconfig    |   2 +-
+>  .../platform/allwinner/sun4i-csi/Kconfig      |   2 +-
+>  .../platform/allwinner/sun6i-csi/Kconfig      |   2 +-
+>  .../media/platform/allwinner/sun8i-di/Kconfig |   2 +-
+>  .../platform/allwinner/sun8i-rotate/Kconfig   |   2 +-
+>  .../media/platform/amlogic/meson-ge2d/Kconfig |   2 +-
+>  drivers/media/platform/amphion/Kconfig        |   1 -
+>  drivers/media/platform/aspeed/Kconfig         |   2 +-
+>  drivers/media/platform/atmel/Kconfig          |   8 +-
+>  drivers/media/platform/cadence/Kconfig        |   4 +-
+>  drivers/media/platform/chips-media/Kconfig    |   2 +-
+>  drivers/media/platform/intel/Kconfig          |   2 +-
+>  drivers/media/platform/marvell/Kconfig        |   4 +-
+>  .../media/platform/mediatek/mtk-jpeg/Kconfig  |   2 +-
+>  .../media/platform/mediatek/mtk-mdp/Kconfig   |   2 +-
+>  .../platform/mediatek/mtk-vcodec/Kconfig      |   2 +-
+>  .../media/platform/mediatek/mtk-vpu/Kconfig   |   2 +-
+>  .../media/platform/nvidia/tegra-vde/Kconfig   |   2 +-
+>  drivers/media/platform/nxp/Kconfig            |   6 +-
+>  drivers/media/platform/nxp/imx-jpeg/Kconfig   |   2 +-
+>  drivers/media/platform/qcom/camss/Kconfig     |   2 +-
+>  drivers/media/platform/qcom/venus/Kconfig     |   2 +-
+>  drivers/media/platform/renesas/Kconfig        |  30 +--
+>  .../media/platform/renesas/rcar-vin/Kconfig   |   4 +-
+>  drivers/media/platform/rockchip/rga/Kconfig   |   2 +-
+>  .../media/platform/rockchip/rkisp1/Kconfig    |   2 +-
+>  .../media/platform/samsung/exynos-gsc/Kconfig |   2 +-
+>  .../media/platform/samsung/exynos4-is/Kconfig |   2 +-
+>  .../media/platform/samsung/s3c-camif/Kconfig  |   2 +-
+>  .../media/platform/samsung/s5p-g2d/Kconfig    |   2 +-
+>  .../media/platform/samsung/s5p-jpeg/Kconfig   |   2 +-
+>  .../media/platform/samsung/s5p-mfc/Kconfig    |   2 +-
+>  drivers/media/platform/stm/sti/bdisp/Kconfig  |   2 +-
+>  drivers/media/platform/stm/sti/delta/Kconfig  |   2 +-
+>  drivers/media/platform/stm/sti/hva/Kconfig    |   2 +-
+>  drivers/media/platform/stm/stm32/Kconfig      |   4 +-
+>  drivers/media/platform/ti/am437x/Kconfig      |   2 +-
+>  drivers/media/platform/ti/davinci/Kconfig     |  12 +-
+>  drivers/media/platform/ti/omap/Kconfig        |   2 +-
+>  drivers/media/platform/ti/omap3isp/Kconfig    |   2 +-
+>  drivers/media/platform/via/Kconfig            |   2 +-
+>  drivers/media/platform/xilinx/Kconfig         |   2 +-
+>  drivers/media/radio/Kconfig                   |  42 ++-
+>  drivers/media/radio/si470x/Kconfig            |   2 +-
+>  drivers/media/radio/wl128x/Kconfig            |   2 +-
+>  drivers/media/spi/Kconfig                     |   4 +-
+>  drivers/media/test-drivers/Kconfig            |   2 +-
+>  drivers/media/test-drivers/vicodec/Kconfig    |   2 +-
+>  drivers/media/test-drivers/vimc/Kconfig       |   2 +-
+>  drivers/media/test-drivers/vivid/Kconfig      |   2 +-
+>  drivers/media/tuners/Kconfig                  |   6 +-
+>  drivers/media/tuners/e4000.c                  |   6 +-
+>  drivers/media/tuners/fc2580.c                 |   6 +-
+>  drivers/media/usb/airspy/Kconfig              |   2 +-
+>  drivers/media/usb/au0828/Kconfig              |   6 +-
+>  drivers/media/usb/cpia2/Kconfig               |   2 +-
+>  drivers/media/usb/dvb-usb-v2/Kconfig          |   8 +-
+>  drivers/media/usb/dvb-usb/Kconfig             |   4 +-
+>  drivers/media/usb/gspca/Kconfig               |  96 +++----
+>  drivers/media/usb/gspca/gl860/Kconfig         |   2 +-
+>  drivers/media/usb/gspca/m5602/Kconfig         |   2 +-
+>  drivers/media/usb/hackrf/Kconfig              |   2 +-
+>  drivers/media/usb/hdpvr/Kconfig               |   2 +-
+>  drivers/media/usb/msi2500/Kconfig             |   2 +-
+>  drivers/media/usb/pvrusb2/Kconfig             |   2 +-
+>  drivers/media/usb/pwc/Kconfig                 |   2 +-
+>  drivers/media/usb/s2255/Kconfig               |   2 +-
+>  drivers/media/usb/stkwebcam/Kconfig           |   2 +-
+>  drivers/media/usb/usbtv/Kconfig               |   2 +-
+>  drivers/media/usb/uvc/Kconfig                 |   2 +-
+>  drivers/media/usb/zr364xx/Kconfig             |   2 +-
+>  drivers/media/v4l2-core/Kconfig               |  12 +-
+>  drivers/media/v4l2-core/Makefile              |   2 +-
+>  drivers/staging/media/atomisp/Kconfig         |   2 +-
+>  drivers/staging/media/atomisp/i2c/Kconfig     |  14 +-
+>  drivers/staging/media/hantro/Kconfig          |   2 +-
+>  drivers/staging/media/imx/Kconfig             |   2 +-
+>  drivers/staging/media/ipu3/Kconfig            |   2 +-
+>  drivers/staging/media/max96712/Kconfig        |   2 +-
+>  drivers/staging/media/meson/vdec/Kconfig      |   2 +-
+>  drivers/staging/media/omap4iss/Kconfig        |   2 +-
+>  drivers/staging/media/rkvdec/Kconfig          |   2 +-
+>  drivers/staging/media/sunxi/cedrus/Kconfig    |   2 +-
+>  drivers/staging/media/tegra-video/Kconfig     |   2 +-
+>  drivers/staging/media/zoran/Kconfig           |   2 +-
+>  drivers/staging/most/video/Kconfig            |   2 +-
+>  .../vc04_services/bcm2835-camera/Kconfig      |   2 +-
+>  drivers/usb/gadget/Kconfig                    |   2 +-
+>  drivers/usb/gadget/legacy/Kconfig             |   2 +-
+>  sound/pci/Kconfig                             |   4 +-
+>  115 files changed, 356 insertions(+), 374 deletions(-)
+>
 
-Thanks!
-Peter
+Acked-by: =C5=81ukasz Stelmach <l.stelmach@samsung.com>
+
+[...]
+
+
+> diff --git a/drivers/media/platform/samsung/s5p-g2d/Kconfig b/drivers/med=
+ia/platform/samsung/s5p-g2d/Kconfig
+> index 9bc9d90a666a..28ab88fc2d7c 100644
+> --- a/drivers/media/platform/samsung/s5p-g2d/Kconfig
+> +++ b/drivers/media/platform/samsung/s5p-g2d/Kconfig
+> @@ -1,7 +1,7 @@
+>  config VIDEO_SAMSUNG_S5P_G2D
+>  	tristate "Samsung S5P and EXYNOS4 G2D 2d graphics accelerator driver"
+>  	depends on V4L_MEM2MEM_DRIVERS
+> -	depends on VIDEO_DEV && VIDEO_V4L2
+> +	depends on VIDEO_DEV
+>  	depends on ARCH_S5PV210 || ARCH_EXYNOS || COMPILE_TEST
+>  	select VIDEOBUF2_DMA_CONTIG
+>  	select V4L2_MEM2MEM_DEV
+
+[...]
+
+
+=2D-=20
+=C5=81ukasz Stelmach
+Samsung R&D Institute Poland
+Samsung Electronics
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEXpuyqjq9kGEVr9UQsK4enJilgBAFAmIzij8ACgkQsK4enJil
+gBBbcgf/aneuRLpVmb3t9XhFHinqWTwAHjmHijfM4Bxpeie5LGPD+ZODOQbbTHI/
+SXYJS3DSxcgXnRGiv7g4MNmazBgof2zjvt/C8g0cTWdthAC4RALkjvOFd+4JyyJP
+ozwCmesdus9emei4oZwgFKK914YZDEjYr8bWMicgALtwdnF7z9A00O5RwqaptPTX
+jSFQlpjo5s4gYR2xpQZaLPRwnr328DtW8oertBocpd32+OtNe+A2u1cjdxKuOPqt
+1iB2h/WFOgzqi5noKYu5eQ37WtWZsiPlUuEcrUXRddHEj/TYOFwBEclb+TtkaO0X
+ysdUvYWSGALn6XAUtaiDpl43o6bQ2A==
+=1sCe
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+
+--===============1873998716779613240==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============1873998716779613240==--
+
