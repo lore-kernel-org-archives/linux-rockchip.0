@@ -4,51 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97394C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Mar 2022 08:41:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1335AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Mar 2022 08:52:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=q54Q1ZKD2FEI89JO1m7uumOafB62cYJdAHOoWYCVfY8=; b=jcfYd6vQ0qbPnH
-	5SMzCBqnYc1/AOK6cIsQPNi69OiROwKK+5vO28tAERshDaknc4qxgrkJwukxrD8oN3uD9bx6ahkNO
-	xsqM1QfYeVhMf4qMBfxC0PPYVnNJxyyhCegBeobccLEU1LG6DcMUjlNeuokMNHk0lJigBvqWtbEgk
-	skeCekZK/cBujq6GIAFBoBW+NnHDWipkm0j7b6lHXYYjQCqap4ZxXILgDR6JrzPu3UMusL89LmIqA
-	ofsO9YehnrTHO3ZYs9C/28LHkGLLP0j9WoqNRoOryxciS/ZaxkIG9jlXqhxcjVvfH2NSqU2pb4fyd
-	Sz0o2pqJvUiFfpXKSpNw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NfWdllAv3uCFDpdgn576wjwMnomqDrBDzzNz53Jj/Mo=; b=1F/v9xWF/1xZ2M
+	3Qkdvp8FmeKOK1YPe0K6Udn5hIIAOnCbHm0KNOtRdOCanV2MeQyr2pVCKSkLxb141xtwCA+Q/csyy
+	+cgmyjN0MDcTIogpkxkbQukF7uuWXC78u64ZMp5ble3Al8lP1p+IsLKWU/Toj205x9Uxxfo21rEUx
+	L1wGm2pqZfDYLF3Evg6ZecU0hOj8V+rA4cmPrTuZKDXuHj+mAKvnIMuUKs26fzEEFwcpFwttdz2dy
+	mTMrnm9hcgJ2J+b4pKsuuV3TmgVIdBpqJ3dylgmwjGXz7qlsBjChiYa3bIZY7Q1jIg8OjsGaNQl3O
+	ZApmRUbcXZFbuF+1jFKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nV8Ab-000qn9-UI; Fri, 18 Mar 2022 08:41:13 +0000
-Received: from mail.postform.pl ([195.231.64.18])
+	id 1nV8LN-000snZ-Aq; Fri, 18 Mar 2022 08:52:21 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nV8AY-000qlY-AT
- for linux-rockchip@lists.infradead.org; Fri, 18 Mar 2022 08:41:11 +0000
-Received: by mail.postform.pl (Postfix, from userid 1001)
- id 5B3E2AACB8; Fri, 18 Mar 2022 08:37:47 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=postform.pl; s=mail;
- t=1647592747; bh=Cp7iEcBs6UYsUZoqwaSKv66JiG6VJnuY7Lx3D9vYwU4=;
- h=Date:From:To:Subject:From;
- b=d49wRF3sZ34dZjLyP1tu3wUle4Y58pFsmProAmKhVlOv2sCObGD98LuTxHNTKe8Dq
- 1bQMBh3DEAm1bqIG/rark+5/zzxPV6288wsISRfq+P/tFbKP6Dj4kJeqtR+nURk/UO
- rm9qV/rSc3lQ8AS8iGr/j/CJ4qIgMN9BijYxWB9731sxgQRH6JBCsfRI+TDt7ux+a/
- /dQSfIuiuZpp0wBMRfGKYVCGDLFpyaDAamjNZ204MxuSOo9k/YqiEz3hdvdHa+ulMd
- Ab+9ZHbgio9a+TOFrrqKIYTwxU1m/JE3xrBRW1tIBo93bZVBLOo2XiuHbjffBxjhPK
- nEkzUcH929hLQ==
-Received: by mail.postform.pl for <linux-rockchip@lists.infradead.org>;
- Fri, 18 Mar 2022 08:36:44 GMT
-Message-ID: <20220318074502-0.1.1i.jnyg.0.d4w58df7ib@postform.pl>
-Date: Fri, 18 Mar 2022 08:36:44 GMT
-From: "Norbert Karecki" <norbert.karecki@postform.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: Wycena paneli fotowoltaicznych
-X-Mailer: mail.postform.pl
+ id 1nV8LA-000sjE-Uo
+ for linux-rockchip@lists.infradead.org; Fri, 18 Mar 2022 08:52:10 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nV8L5-0005HN-Tp; Fri, 18 Mar 2022 09:52:03 +0100
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nV8L2-0004Z8-MF; Fri, 18 Mar 2022 09:52:00 +0100
+Date: Fri, 18 Mar 2022 09:52:00 +0100
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>, Daniel Stone <daniel@fooishbar.org>
+Subject: Re: [PATCH v8 22/24] drm: rockchip: Add VOP2 driver
+Message-ID: <20220318085200.GB12181@pengutronix.de>
+References: <20220311083323.887372-1-s.hauer@pengutronix.de>
+ <20220311083323.887372-23-s.hauer@pengutronix.de>
+ <9ec29d9b-8197-98fb-c612-5c842e4212c4@rock-chips.com>
+ <20220316074001.GP405@pengutronix.de>
+ <f9d57503-1ac6-61c6-5fda-1a78b6e7270a@rock-chips.com>
+ <e6ab5ce2-4177-9e45-a50f-9ea3abb08800@rock-chips.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <e6ab5ce2-4177-9e45-a50f-9ea3abb08800@rock-chips.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 09:48:51 up 97 days, 17:34, 77 users,  load average: 0.74, 0.24, 0.12
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220318_014110_570693_32CCB895 
-X-CRM114-Status: UNSURE (   1.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220318_015209_001339_94C5C30B 
+X-CRM114-Status: GOOD (  29.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,17 +81,102 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-15"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKZG9zdHJ6ZWdhbSBtb8W8bGl3b8WbxIcgd3Nww7PFgnByYWN5IHogUGHF
-hHN0d2EgZmlybcSFLgoKxZp3aWFkY3p5bXkga29tcGxla3Nvd8SFIG9ic8WCdWfEmSBpbndlc3R5
-Y2ppIHcgZm90b3dvbHRhaWvEmSwga3TDs3JhIG9ibmnFvGEga29zenR5IGVuZXJnaWkgZWxla3Ry
-eWN6bmVqIG5hd2V0IG8gOTAlLgoKQ3p5IHPEhSBQYcWEc3R3byB6YWludGVyZXNvd2FuaSB3ZXJ5
-ZmlrYWNqxIUgd3N0xJlwbnljaCBwcm9wb3p5Y2ppPwoKClBvemRyYXdpYW0KTm9yYmVydCBLYXJl
-Y2tpCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+Hi Andy,
+
+On Thu, Mar 17, 2022 at 03:23:12PM +0800, Andy Yan wrote:
+>    I found a obvious=A0 error in 0x604(OVERLAY_LAYER_SEL) register, the
+>    configuration value
+> =
+
+>    is 0x54763513.
+> =
+
+>    I am not sure if you know clearly about this register:
+> =
+
+>    Every four bits of this register select a Window(Cluster0,Cluster1,
+>    Esmart0, Esmart1, Smart0. Smart1)
+> =
+
+>    for layer0 to layer 5 from bottom to top.
+> =
+
+>    0: Cluster0
+> =
+
+>    1: Cluster1:
+> =
+
+>    2: Esmart0
+> =
+
+>    3: Smart0
+> =
+
+>    6: Esmart1
+> =
+
+>    7: Smart1
+> =
+
+>    And one window can only be selected by one layer at a time.
+> =
+
+>    So when I change this register to 0x54762513, the square draw by
+>    weston-simple-dmabuf-egl appeared on the top of the weston background =
+on
+>    screen.
+
+I can reproduce this here. It seems I have only tested overlays with two
+active VPs. With only one active VP I see the same behaviour as you do.
+
+The following patch fixes this, will include that in the next round.
+
+Sascha
+
+------------------------------8<-------------------------------
+From d07036753bd1496fa8a49c31eff004e927ce412b Mon Sep 17 00:00:00 2001
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Date: Fri, 18 Mar 2022 09:47:53 +0100
+Subject: [PATCH] fixup! drm: rockchip: Add VOP2 driver
+
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm=
+/rockchip/rockchip_drm_vop2.c
+index 81ff79eddb8a0..71bc8c11b8bcf 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1941,7 +1941,7 @@ static void vop2_setup_layer_mixer(struct vop2_video_=
+port *vp)
+ 	}
+ =
+
+ 	/* configure unused layers to 0x5 (reserved) */
+-	for (; nlayer < 3; nlayer++) {
++	for (; nlayer < vp->nlayers; nlayer++) {
+ 		layer_sel &=3D ~RK3568_OVL_LAYER_SEL__LAYER(nlayer + ofs, 0x7);
+ 		layer_sel |=3D RK3568_OVL_LAYER_SEL__LAYER(nlayer + ofs, 5);
+ 	}
+-- =
+
+2.30.2
+
+-- =
+
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
