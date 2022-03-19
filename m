@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C122C4167D
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Mar 2022 16:31:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E143C4167E
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Mar 2022 16:31:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5TGBKcY8pXHASpveJPkGsKcMT8vHrlCQV+XebGaM4IQ=; b=FQsLwZjoUsR9bx
-	qBaJ0YsK+QIJUR1q2pNKD/aaK4B0pAMzkenPyR6QBaTEW/cMvfJaNvZUKgEC3m57HkAgxzmEbkhI1
-	FAyV2A7P6oVdiYlGeDA3NjP+QlQ4kypdsJFyDl2qd/UlxafIOq0CYP2aLMq9u9YEOIaoX6/VNpURg
-	apSYhlaml2dyXWaSFu2GOMZ/rjFEwJyF3em27twIDq+cC+rLxn6IDzHCrq2PKuYTvJs1XhH9bB5NC
-	wKSRs3PPDHKAq2p0Yx3gbmJ33Bl6fq8tcHAgcnDTLRIj7BC1stK9rfTC5j319xMAhhf/htehna9lX
-	oe+9pWMKMXpcTJi8YiLA==;
+	List-Owner; bh=dIP/Rsp+QdSw5QevV+YXMrgBfyAPVo47HtSApDCu7hY=; b=iOCccmvkwkHp8e
+	ABfiWUKWiJggaGHo59cJejWrghSiRcAq9hjRItGqcb4fbNfnxFEmMlKPbdUTF3Fl2SnaK9Qt6mKlb
+	7XFEJzYBaY8/+5pkOAAXNh/ww7DBDgNAnIZlqMsXuCQEPD5LWzBrhYO2Pz9l4873SepGOag3HdK7Z
+	EvgtvtKXirXc93X3dSD1EEVdf/i280yYSCLyHy9cYo2Sap0BJ0kGr468V8GW8/4ZDP8MsieN9QM2o
+	VbI5g7CKs0Wn1RhPjRVGes9WJtLpFw7Ets//HaICXxeQM7756Dqw7i4NsHr1M3+hLjzngUfG9vcqy
+	ZwxljFoxIOUHNOB+x1sQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVbzO-0042oP-90; Sat, 19 Mar 2022 16:31:38 +0000
+	id 1nVbzM-0042n7-6v; Sat, 19 Mar 2022 16:31:36 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVbzH-0042jC-1S
+ id 1nVbzG-0042j5-E0
  for linux-rockchip@lists.infradead.org; Sat, 19 Mar 2022 16:31:33 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 3AB742A35;
- Sat, 19 Mar 2022 17:31:27 +0100 (CET)
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8DD58E51;
+ Sat, 19 Mar 2022 17:31:25 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1647707487;
- bh=qndOZ49rx5xr4fCumtbp33uFoQv3KFvDr2L2UUIs5YI=;
+ s=mail; t=1647707486;
+ bh=j4hkX6PH4+blXGF0tbTTGz04R+UcCuwp26s4lPuwk7Y=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=SgtiLxxxfEXdkwbOMFHR5sK0L0t67ZmZAW6AruOkC0Aj4wiD+SjZuVkYm2BL+e1jX
- 28Php1pjPW9bgSZYQQtS3rF/8GMLRJuj7kHBgmSZGoZeoPvxf+GFAT3sTrxqVszIuK
- dPY0G0Q0NRbP+OSTU31Idx8kqxexgxD20CiR+/6A=
+ b=pRx0L1Prz5LYN/ZTMLDZV86g241c0Hre4ae23h49BETjICPG6eWnbc9WeP09nOkMq
+ O8V45nZH+Io0UHpkoyFh0XR8JCMWva82KUuXYHAFHNGh1ZtQCr8fHorXrojnUaqozW
+ yTmBMWu5j184+clQQovLlWIxJNBhCxlaxz3yQsrw=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>,
  Paul Elder <paul.elder@ideasonboard.com>, Tomasz Figa <tfiga@google.com>,
  linux-rockchip@lists.infradead.org
-Subject: [PATCH v3 04/17] media: rkisp1: resizer: Fix and simplify
+Subject: [PATCH v3 02/17] media: rkisp1: capture: Fix and simplify
  (un)registration
-Date: Sat, 19 Mar 2022 18:30:47 +0200
-Message-Id: <20220319163100.3083-5-laurent.pinchart@ideasonboard.com>
+Date: Sat, 19 Mar 2022 18:30:45 +0200
+Message-Id: <20220319163100.3083-3-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220319163100.3083-1-laurent.pinchart@ideasonboard.com>
 References: <20220319163100.3083-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220319_093131_274221_C8A879A4 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20220319_093130_666627_B032C59C 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,98 +68,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rkisp1_rsz_register() and rkisp1_rsz_unregister() functions don't
-destroy the mutex (in the error path for the former). Fix this, simplify
-error handling at registration time as media_entity_cleanup() can be
-called on an uninitialized entity, and make rkisp1_rsz_unregister() and
-rkisp1_resizer_devs_unregister() safe to be called on an unregistered
-resizer subdev to prepare for simplification of error handling at probe
-time.
+The rkisp1_register_capture() and rkisp1_unregister_capture() functions
+don't destroy the mutex (in the error path for the former). Fix this and
+make rkisp1_unregister_capture() and rkisp1_capture_devs_unregister()
+safe to be called on an unregistered capture node to prepare for
+simplification of error handling at probe time.
+
+While at it, drop the double initialization of cap->rkisp1 in
+rkisp1_capture_devs_register() as the field is already initialized in
+rkisp1_capture_init().
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-resizer.c | 34 +++++++++----------
- 1 file changed, 17 insertions(+), 17 deletions(-)
+ .../platform/rockchip/rkisp1/rkisp1-capture.c | 30 +++++++++----------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-index 2070f4b06705..df2beee1be99 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-@@ -782,8 +782,12 @@ static const struct v4l2_subdev_ops rkisp1_rsz_ops = {
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+index e88749488969..6c54e95a529b 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+@@ -1326,8 +1326,12 @@ static const struct v4l2_file_operations rkisp1_fops = {
  
- static void rkisp1_rsz_unregister(struct rkisp1_resizer *rsz)
+ static void rkisp1_unregister_capture(struct rkisp1_capture *cap)
  {
-+	if (!rsz->rkisp1)
++	if (!video_is_registered(&cap->vnode.vdev))
 +		return;
 +
- 	v4l2_device_unregister_subdev(&rsz->sd);
- 	media_entity_cleanup(&rsz->sd.entity);
-+	mutex_destroy(&rsz->ops_lock);
+ 	media_entity_cleanup(&cap->vnode.vdev.entity);
+ 	vb2_video_unregister_device(&cap->vnode.vdev);
++	mutex_destroy(&cap->vnode.vlock);
  }
  
- static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
-@@ -821,47 +825,43 @@ static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
- 	mutex_init(&rsz->ops_lock);
- 	ret = media_entity_pads_init(&sd->entity, RKISP1_RSZ_PAD_MAX, pads);
+ void rkisp1_capture_devs_unregister(struct rkisp1_device *rkisp1)
+@@ -1381,14 +1385,14 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
+ 	if (ret) {
+ 		dev_err(cap->rkisp1->dev,
+ 			"vb2 queue init failed (err=%d)\n", ret);
+-		return ret;
++		goto error;
+ 	}
+ 
+ 	vdev->queue = q;
+ 
+ 	ret = media_entity_pads_init(&vdev->entity, 1, &node->pad);
  	if (ret)
 -		return ret;
 +		goto error;
  
- 	ret = v4l2_device_register_subdev(&rsz->rkisp1->v4l2_dev, sd);
+ 	ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
  	if (ret) {
- 		dev_err(sd->dev, "Failed to register resizer subdev\n");
--		goto err_cleanup_media_entity;
-+		goto error;
- 	}
+@@ -1404,6 +1408,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
  
- 	rkisp1_rsz_init_config(sd, &state);
- 	return 0;
- 
--err_cleanup_media_entity:
-+error:
- 	media_entity_cleanup(&sd->entity);
--
-+	mutex_destroy(&rsz->ops_lock);
+ error:
+ 	media_entity_cleanup(&vdev->entity);
++	mutex_destroy(&node->vlock);
  	return ret;
  }
  
- int rkisp1_resizer_devs_register(struct rkisp1_device *rkisp1)
+@@ -1439,26 +1444,21 @@ rkisp1_capture_init(struct rkisp1_device *rkisp1, enum rkisp1_stream_id id)
+ 
+ int rkisp1_capture_devs_register(struct rkisp1_device *rkisp1)
  {
--	struct rkisp1_resizer *rsz;
+-	struct rkisp1_capture *cap;
 -	unsigned int i, j;
 +	unsigned int i;
  	int ret;
  
- 	for (i = 0; i < ARRAY_SIZE(rkisp1->resizer_devs); i++) {
--		rsz = &rkisp1->resizer_devs[i];
-+		struct rkisp1_resizer *rsz = &rkisp1->resizer_devs[i];
+ 	for (i = 0; i < ARRAY_SIZE(rkisp1->capture_devs); i++) {
++		struct rkisp1_capture *cap = &rkisp1->capture_devs[i];
 +
- 		rsz->rkisp1 = rkisp1;
- 		rsz->id = i;
+ 		rkisp1_capture_init(rkisp1, i);
+-		cap = &rkisp1->capture_devs[i];
+-		cap->rkisp1 = rkisp1;
 +
- 		ret = rkisp1_rsz_register(rsz);
+ 		ret = rkisp1_register_capture(cap);
 -		if (ret)
--			goto err_unreg_resizer_devs;
+-			goto err_unreg_capture_devs;
 +		if (ret) {
-+			rsz->rkisp1 = NULL;
-+			rkisp1_resizer_devs_unregister(rkisp1);
++			rkisp1_capture_devs_unregister(rkisp1);
 +			return ret;
 +		}
  	}
  
  	return 0;
--
--err_unreg_resizer_devs:
+ 
+-err_unreg_capture_devs:
 -	for (j = 0; j < i; j++) {
--		rsz = &rkisp1->resizer_devs[j];
--		rkisp1_rsz_unregister(rsz);
+-		cap = &rkisp1->capture_devs[j];
+-		rkisp1_unregister_capture(cap);
 -	}
 -
 -	return ret;
  }
- 
- void rkisp1_resizer_devs_unregister(struct rkisp1_device *rkisp1)
 -- 
 Regards,
 
