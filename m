@@ -4,77 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 834FEC433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Mar 2022 12:37:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26E69C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Mar 2022 12:39:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2uSTYNXjo7OWstrEPv429Gu3GGiyCKhWygACq/1OHf4=; b=SFvHZoGrASLwax
-	WeJbGsLmWrESictVghapIwskDdpf1NvTbbkJbKzUp4zacuMHf1kMPXGma2mQXkczOCZFHF+1C6VNI
-	3TverREI/x2myvOaf8c2eWkLCCzGxYEWh7lDN2X3QOoNARP5Xdu2BQGI6xpip1zDZLPoftu52AFpw
-	g4/iQHKmfntZYHnby/UWEeppMUmj8ZH5yJYreImcEgvydgh+Ovwq8AbjuFda913UKRxCXq6RIEut+
-	0hirQ54QA8HsX9hkYwd4kJVI6EwP3rskN5m/MhzxWhEusPidMyieTZb21M7bO8h5W1fzQPqh2df9V
-	BO4/93Ws3wufm1uIYIlQ==;
+	List-Owner; bh=73WJRMUTv0Y14MylAnjmuyjXdbp8FB7HN5BIwb9pWKY=; b=CVMz5uDrLbJKfn
+	CTTKlimkjc3mzLPrk/TtbUyxF8XBe4PqhkQNOLWkPKrM6S7dS0VPOgC+dvO+CEwfj9nh+WqXiV9yB
+	fOLtRWtf9v83NAGLGlLqPIZ1a7s5koY5PzbUjZTvEF31l30+m24y9IYHRTVfSm/RCKZ2hLLyPZOkH
+	PWqqdZ9Xs2MCndxejk87QmMXGbF+ZThM9NtWCBus6howQ6O7EE6I4pJuQLQ6eKZUhNiq3LjaJrhnp
+	QpiRCJAMScEqwxW2z2Vmt/7rB2cj9ibXJrbNWZG1ojNOYciTejf/Sao9PZMd2rfexSH8zLzQYlBZf
+	ceh2/5oB7ER/KCI8Pq5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVuoZ-005Ef1-PW; Sun, 20 Mar 2022 12:37:43 +0000
-Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
+	id 1nVuqT-005Es3-W2; Sun, 20 Mar 2022 12:39:42 +0000
+Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVuoV-005EeH-Uv
- for Linux-rockchip@lists.infradead.org; Sun, 20 Mar 2022 12:37:41 +0000
-Received: by mail-oi1-x22d.google.com with SMTP id k10so2164002oia.0
- for <Linux-rockchip@lists.infradead.org>; Sun, 20 Mar 2022 05:37:39 -0700 (PDT)
+ id 1nVuqQ-005EqP-JJ
+ for Linux-rockchip@lists.infradead.org; Sun, 20 Mar 2022 12:39:40 +0000
+Received: by mail-oi1-x229.google.com with SMTP id j83so13714759oih.6
+ for <Linux-rockchip@lists.infradead.org>; Sun, 20 Mar 2022 05:39:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=XgEXsVncSVxZu1lWL68gFPTtf1cjMMavbj6IDx6Ws6I=;
- b=DNP52BwvYPqjh7/TIBd0FZwHVMVcpMnsQ1aKl0GLrEXLNGgo7I1yd8uoqf2K+7rCKr
- zAMIA9iZzMoDtsAKC1MCdek3ieLDce0Yhw/jC1KvBCynlMCX6etfLxjpp2kQ2t8KKZeK
- CXKJV1LXcaI3cVnrvv/LLSmJPpWjSl/jLs0FIdJVJXcn5RJ6BEIzG0qQxKJ6L8dXTSOZ
- rV0pchyEUPdiP0EZ2LSy47PHXi0S8IlU0AUxQTs249/P8mFqIMtK7GU72KKceeWr5mXN
- vXdXFY7oJv/CaYrSZOo6b9T3sez/EyYRIGTzKBgh4QLqfww9BIB2Iy7jaDj0zCVitB6h
- HZmg==
+ bh=VXZQ9cDhHIRkiRYLKMsYJJMv5OJo8ExgGi/KH8XAfZc=;
+ b=oNRh+7kdfH0XJdH7+TkgJ1N1Mt+B6Zdqf5Ip5o7qkmevPOzfXLHD8LkkDpz0ixkRIF
+ 3vIjZBvVzlbcXbe5BclnNubn3Pn+HXPEc1anB27w6/TnbPNB3yWG3Aka3DmQzi4eNjRY
+ 5Zp9Lcnj3TDQhGXXRTu0b2iN7UVDkm7kQRWrKuv2z2+wtGu5hqL+r9wR2vL1ihlPe1MZ
+ h3zO+nRUUR8kY5gwo1QqNdZqphH1yysr6z2XT/gUwrMlR0TH5kvK2ojSj1GXw8FgBCU+
+ 1Rox6yg3eLIM4Mt095ObKwlhu4VrgciFOR74MM5+oBKw5hwpgVAEGYCQf0V3JL52yQlM
+ 6Tvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=XgEXsVncSVxZu1lWL68gFPTtf1cjMMavbj6IDx6Ws6I=;
- b=xoPhNIxZX+lwPcSKXoFgg5Kqe07C0UR+Q67J71SLun7mXKyiR98Uc2sY9pJ4VNINnb
- /kDiZebdlCZ7aOQDUJNsrBVY28alYq5xkd8L2mBEAzcO+4jOBioIIL6a11ql64t97cSB
- /M9pL9HPGJJCjEvg/TCThRnMYw4QBjjr7be9psNDMj9ngzjHZrDEGVykz1zUilvI4SBQ
- D9fItxJI7W2AK8i/o5QgfQ08nk0g63osAfW0ur4G2GF5lkezNRuVDRTj6uM3QZjCpdKk
- JDJtc+6hsRsHg+PFG8PFXZlEs/Ik+zQ3vkAJVZ+j3mOidzhe8BhHS8/EptEKb/zkqVIz
- WnHQ==
-X-Gm-Message-State: AOAM533WgqtJOq5XZozQOqprmL0TvSh1HboiJs3VX16DuDVlptcq/k4T
- 6xFr1jXZogN1+D/6+jWQrRx6Aw==
-X-Google-Smtp-Source: ABdhPJxlGXpZHn7fvSYOkVOqSZxaMXy4FJXqMuAZNhyB1dPtoMP7+9pGthVPL91bPXqmxO1R0FntgQ==
-X-Received: by 2002:a54:4592:0:b0:2ec:aef5:e0ae with SMTP id
- z18-20020a544592000000b002ecaef5e0aemr11784386oib.21.1647779858796; 
- Sun, 20 Mar 2022 05:37:38 -0700 (PDT)
+ bh=VXZQ9cDhHIRkiRYLKMsYJJMv5OJo8ExgGi/KH8XAfZc=;
+ b=LWYyfuG6otuh6AFyfCiFk7VSbnrPSIdEuCJn4I++rJov/cKkuZC8xMdYbxY+DyjCgI
+ EsebU7LYlN0MdVK0zk0n1WpWymGffBKeCT/VyMYJsVwD3IJlNKKgUHV5fLso9+jn+3jN
+ xYZeXyknJtlW0CBReNZxSFJpEeUMzCG5kVXwuZVQ/sUT3u+KvxOFDLJ6O6hWbgD/IJyn
+ 7KI3TzayIrR5vJRZhtwdqD9HPEofVwNOQxfOYMf2qNNYdLgAHsiA9At53VV6xZIXm+Zg
+ SV0UBg0drsAfTiYMOAYxXRJRt5IWl2n1Fi7hvGyLka9ooSnESdCuaEVE2dIlqchPfRUD
+ C2eg==
+X-Gm-Message-State: AOAM5321xF4YHtWaFiu7560QdOW6O6Gpxrn1Cq8J7xWsdL5JZs/TpUOe
+ BVQ/mHj4ewvRoKNoOJNlN7+HiQ==
+X-Google-Smtp-Source: ABdhPJxZsRRfxgsibtCeV2kzOvAi8AUF3QtWGNroi4KM85J3+ZnZqUkCW7njnF8sqpLhanofO6L/xA==
+X-Received: by 2002:aca:ad15:0:b0:2da:692e:fe97 with SMTP id
+ w21-20020acaad15000000b002da692efe97mr11772950oie.26.1647779972622; 
+ Sun, 20 Mar 2022 05:39:32 -0700 (PDT)
 Received: from eze-laptop ([186.122.18.6]) by smtp.gmail.com with ESMTPSA id
- u14-20020a4ad0ce000000b0032174de7c2csm5933100oor.8.2022.03.20.05.37.35
+ v24-20020a9d5a18000000b005ad458facbdsm6329043oth.27.2022.03.20.05.39.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Mar 2022 05:37:38 -0700 (PDT)
-Date: Sun, 20 Mar 2022 09:37:31 -0300
+ Sun, 20 Mar 2022 05:39:32 -0700 (PDT)
+Date: Sun, 20 Mar 2022 09:39:26 -0300
 From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
 Cc: linux-media@vger.kernel.org, Linux-rockchip@lists.infradead.org,
- heiko@sntech.de, hverkuil@xs4all.nl
-Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: Add VPU support for
- RK3568/RK3566
-Message-ID: <YjcgC9HZeDQX1sNJ@eze-laptop>
+ devicetree@vger.kernel.org, heiko@sntech.de, hverkuil@xs4all.nl
+Subject: Re: [PATCH v2 3/3] dt-bindings: media: rockchip-vpu: Add RK3568
+ compatible
+Message-ID: <YjcgflUuQlFbVM/1@eze-laptop>
 References: <20220214212955.1178947-1-piotr.oniszczuk@gmail.com>
- <20220214212955.1178947-2-piotr.oniszczuk@gmail.com>
+ <20220214212955.1178947-3-piotr.oniszczuk@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220214212955.1178947-2-piotr.oniszczuk@gmail.com>
+In-Reply-To: <20220214212955.1178947-3-piotr.oniszczuk@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220320_053740_041036_18E9E7CE 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20220320_053938_646358_662C0381 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,14 +92,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 14, 2022 at 10:29:54PM +0100, Piotr Oniszczuk wrote:
+Hi Piotr,
+
+On Mon, Feb 14, 2022 at 10:29:55PM +0100, Piotr Oniszczuk wrote:
 > From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
 > 
 > RK356x has Hantro G1 video decoder capable to decode MPEG2/H.264/VP8
 > video formats.
 > 
-> This patch enables RK356x video decoder in RK356x device-tree
-> include.
+> This patch adds RK3568 compatible in rockchip-vpu dt-bindings.
 > 
 > Tested on [1] with FFmpeg v4l2_request code taken from [2]
 > with MPEG2, H.642 and VP8 samples with results [3].
@@ -112,44 +113,28 @@ On Mon, Feb 14, 2022 at 10:29:54PM +0100, Piotr Oniszczuk wrote:
 
 Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 
+This dt-binding change looks trivial, so I guess it's fine
+taking it directly via the media tree?
+
 Thanks,
 Ezequiel
 
 > ---
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 20 ++++++++++++++++++++
->  1 file changed, 20 insertions(+)
+>  Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> index a68033a23975..33ecaafa8cb7 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -390,6 +390,26 @@ power-domain@RK3568_PD_RKVENC {
->  		};
->  	};
->  
-> +	vpu: video-codec@fdea0400 {
-> +		compatible = "rockchip,rk3568-vpu";
-> +		reg = <0x0 0xfdea0000 0x0 0x800>;
-> +		interrupts = <GIC_SPI 139 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-> +		clock-names = "aclk", "hclk";
-> +		iommus = <&vdpu_mmu>;
-> +		power-domains = <&power RK3568_PD_VPU>;
-> +	};
-> +
-> +	vdpu_mmu: iommu@fdea0800 {
-> +		compatible = "rockchip,rk3568-iommu";
-> +		reg = <0x0 0xfdea0800 0x0 0x40>;
-> +		interrupts = <GIC_SPI 138 IRQ_TYPE_LEVEL_HIGH>;
-> +		clock-names = "aclk", "iface";
-> +		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-> +		power-domains = <&power RK3568_PD_VPU>;
-> +		#iommu-cells = <0>;
-> +	};
-> +
->  	sdmmc2: mmc@fe000000 {
->  		compatible = "rockchip,rk3568-dw-mshc", "rockchip,rk3288-dw-mshc";
->  		reg = <0x0 0xfe000000 0x0 0x4000>;
+> diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> index bacb60a34989..6cc4d3e5a61d 100644
+> --- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> +++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> @@ -23,6 +23,7 @@ properties:
+>            - rockchip,rk3328-vpu
+>            - rockchip,rk3399-vpu
+>            - rockchip,px30-vpu
+> +          - rockchip,rk3568-vpu
+>        - items:
+>            - const: rockchip,rk3188-vpu
+>            - const: rockchip,rk3066-vpu
 > -- 
 > 2.29.2
 > 
