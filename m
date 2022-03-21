@@ -4,77 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26E69C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 20 Mar 2022 12:39:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3F06C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Mar 2022 03:14:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
+	Date:Message-ID:From:Cc:To:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=73WJRMUTv0Y14MylAnjmuyjXdbp8FB7HN5BIwb9pWKY=; b=CVMz5uDrLbJKfn
-	CTTKlimkjc3mzLPrk/TtbUyxF8XBe4PqhkQNOLWkPKrM6S7dS0VPOgC+dvO+CEwfj9nh+WqXiV9yB
-	fOLtRWtf9v83NAGLGlLqPIZ1a7s5koY5PzbUjZTvEF31l30+m24y9IYHRTVfSm/RCKZ2hLLyPZOkH
-	PWqqdZ9Xs2MCndxejk87QmMXGbF+ZThM9NtWCBus6howQ6O7EE6I4pJuQLQ6eKZUhNiq3LjaJrhnp
-	QpiRCJAMScEqwxW2z2Vmt/7rB2cj9ibXJrbNWZG1ojNOYciTejf/Sao9PZMd2rfexSH8zLzQYlBZf
-	ceh2/5oB7ER/KCI8Pq5g==;
+	List-Owner; bh=Lg7HeEVDedAL+j8rq293H4CUSO7eowrWX+pVQ3zh3vY=; b=tUH1A/wB9f+Y2D
+	Y3Sacs5DtTVnt31b1azMj6Dhna/Tge+KMi8BCtgbJJHliYjYIDp2zSRSloODoq0uE4vDUj81+6T9W
+	52mGGNcrYELqoh99yvLsAaX3062Pa1uH9bF1+TOrMq8E47Dc8K+ht5i6NfPtlNMPVmyWhYqfvbfNm
+	VStNxp36U7EKj7oYZuMpQQBTM9ZRla4O2hrkKUfhZIJPHCh47hI0NtUt7/7Vh0/+vLbQHljSHN3wh
+	dPBhhEmQTYweDn0uiAlGW+P7ScWkg366GD4wtFLDdewx7T7589OtRVK730J6LBBp9N9Q33GnVKQqf
+	U+xb5TYJfVt9MZMjn0Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nVuqT-005Es3-W2; Sun, 20 Mar 2022 12:39:42 +0000
-Received: from mail-oi1-x229.google.com ([2607:f8b0:4864:20::229])
+	id 1nW8VN-006NCh-KK; Mon, 21 Mar 2022 03:14:49 +0000
+Received: from mailout1.samsung.com ([203.254.224.24])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nVuqQ-005EqP-JJ
- for Linux-rockchip@lists.infradead.org; Sun, 20 Mar 2022 12:39:40 +0000
-Received: by mail-oi1-x229.google.com with SMTP id j83so13714759oih.6
- for <Linux-rockchip@lists.infradead.org>; Sun, 20 Mar 2022 05:39:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=VXZQ9cDhHIRkiRYLKMsYJJMv5OJo8ExgGi/KH8XAfZc=;
- b=oNRh+7kdfH0XJdH7+TkgJ1N1Mt+B6Zdqf5Ip5o7qkmevPOzfXLHD8LkkDpz0ixkRIF
- 3vIjZBvVzlbcXbe5BclnNubn3Pn+HXPEc1anB27w6/TnbPNB3yWG3Aka3DmQzi4eNjRY
- 5Zp9Lcnj3TDQhGXXRTu0b2iN7UVDkm7kQRWrKuv2z2+wtGu5hqL+r9wR2vL1ihlPe1MZ
- h3zO+nRUUR8kY5gwo1QqNdZqphH1yysr6z2XT/gUwrMlR0TH5kvK2ojSj1GXw8FgBCU+
- 1Rox6yg3eLIM4Mt095ObKwlhu4VrgciFOR74MM5+oBKw5hwpgVAEGYCQf0V3JL52yQlM
- 6Tvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=VXZQ9cDhHIRkiRYLKMsYJJMv5OJo8ExgGi/KH8XAfZc=;
- b=LWYyfuG6otuh6AFyfCiFk7VSbnrPSIdEuCJn4I++rJov/cKkuZC8xMdYbxY+DyjCgI
- EsebU7LYlN0MdVK0zk0n1WpWymGffBKeCT/VyMYJsVwD3IJlNKKgUHV5fLso9+jn+3jN
- xYZeXyknJtlW0CBReNZxSFJpEeUMzCG5kVXwuZVQ/sUT3u+KvxOFDLJ6O6hWbgD/IJyn
- 7KI3TzayIrR5vJRZhtwdqD9HPEofVwNOQxfOYMf2qNNYdLgAHsiA9At53VV6xZIXm+Zg
- SV0UBg0drsAfTiYMOAYxXRJRt5IWl2n1Fi7hvGyLka9ooSnESdCuaEVE2dIlqchPfRUD
- C2eg==
-X-Gm-Message-State: AOAM5321xF4YHtWaFiu7560QdOW6O6Gpxrn1Cq8J7xWsdL5JZs/TpUOe
- BVQ/mHj4ewvRoKNoOJNlN7+HiQ==
-X-Google-Smtp-Source: ABdhPJxZsRRfxgsibtCeV2kzOvAi8AUF3QtWGNroi4KM85J3+ZnZqUkCW7njnF8sqpLhanofO6L/xA==
-X-Received: by 2002:aca:ad15:0:b0:2da:692e:fe97 with SMTP id
- w21-20020acaad15000000b002da692efe97mr11772950oie.26.1647779972622; 
- Sun, 20 Mar 2022 05:39:32 -0700 (PDT)
-Received: from eze-laptop ([186.122.18.6]) by smtp.gmail.com with ESMTPSA id
- v24-20020a9d5a18000000b005ad458facbdsm6329043oth.27.2022.03.20.05.39.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Mar 2022 05:39:32 -0700 (PDT)
-Date: Sun, 20 Mar 2022 09:39:26 -0300
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Cc: linux-media@vger.kernel.org, Linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, heiko@sntech.de, hverkuil@xs4all.nl
-Subject: Re: [PATCH v2 3/3] dt-bindings: media: rockchip-vpu: Add RK3568
- compatible
-Message-ID: <YjcgflUuQlFbVM/1@eze-laptop>
-References: <20220214212955.1178947-1-piotr.oniszczuk@gmail.com>
- <20220214212955.1178947-3-piotr.oniszczuk@gmail.com>
+ id 1nW8VA-006N9a-7O
+ for linux-rockchip@lists.infradead.org; Mon, 21 Mar 2022 03:14:39 +0000
+Received: from epcas1p2.samsung.com (unknown [182.195.41.46])
+ by mailout1.samsung.com (KnoxPortal) with ESMTP id
+ 20220321031431epoutp01087d21b69931a46edfcf302d9e984ed3~eRucOQ-9Z1125511255epoutp01a
+ for <linux-rockchip@lists.infradead.org>; Mon, 21 Mar 2022 03:14:31 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.samsung.com
+ 20220321031431epoutp01087d21b69931a46edfcf302d9e984ed3~eRucOQ-9Z1125511255epoutp01a
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1647832471;
+ bh=+sXwCEW3mW2sBV52D5/Cek7rU4aPA8/VK9Jgbz0yWmE=;
+ h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
+ b=aMuwgEgmYOk2N95z6soIGZmXdWabjttSamgvhvDhlZDOI9y9YmPxyRX5aTpFrqdly
+ iZ8gzxY0k2mzjubgUG+58ElUMY8JZ6QZL851IUlvqI3TCkrLw3yoo9eWTbEzJjY20e
+ c2BCNt+BHUEnjY1xT4JCRjZKqUUvNm1Jnpbuh55o=
+Received: from epsnrtp1.localdomain (unknown [182.195.42.162]) by
+ epcas1p3.samsung.com (KnoxPortal) with ESMTP id
+ 20220321031431epcas1p32f0935dc303f7369ceae86585dd9eed3~eRub3yE4x0183401834epcas1p3U;
+ Mon, 21 Mar 2022 03:14:31 +0000 (GMT)
+Received: from epsmges1p4.samsung.com (unknown [182.195.36.135]) by
+ epsnrtp1.localdomain (Postfix) with ESMTP id 4KMKTt1Dzpz4x9QB; Mon, 21 Mar
+ 2022 03:14:26 +0000 (GMT)
+Received: from epcas1p1.samsung.com ( [182.195.41.45]) by
+ epsmges1p4.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 3D.C5.21932.29DE7326; Mon, 21 Mar 2022 12:14:26 +0900 (KST)
+Received: from epsmtrp2.samsung.com (unknown [182.195.40.14]) by
+ epcas1p2.samsung.com (KnoxPortal) with ESMTPA id
+ 20220321031425epcas1p21cc0552e9712818d95b39747cfc3166a~eRuV55cd11508815088epcas1p20;
+ Mon, 21 Mar 2022 03:14:25 +0000 (GMT)
+Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
+ epsmtrp2.samsung.com (KnoxPortal) with ESMTP id
+ 20220321031425epsmtrp2bc3634279bd20ef71f9c17652dd7160d~eRuV5EIzW1070910709epsmtrp2-;
+ Mon, 21 Mar 2022 03:14:25 +0000 (GMT)
+X-AuditID: b6c32a38-929ff700000255ac-d3-6237ed92eba0
+Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
+ epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
+ D4.17.29871.09DE7326; Mon, 21 Mar 2022 12:14:24 +0900 (KST)
+Received: from [10.113.221.102] (unknown [10.113.221.102]) by
+ epsmtip2.samsung.com (KnoxPortal) with ESMTPA id
+ 20220321031424epsmtip26ce8e671a406bff7abd96a260df92c06~eRuVsX4lV1929219292epsmtip2K;
+ Mon, 21 Mar 2022 03:14:24 +0000 (GMT)
+Subject: Re: [PATCH v4 00/15] rk3399: Clean up and enable DDR DVFS
+To: Brian Norris <briannorris@chromium.org>, MyungJoo Ham
+ <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Rob
+ Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Derek Basehore <dbasehore@chromium.org>, devicetree@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Lin Huang
+ <hl@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
+ linux-pm@vger.kernel.org
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Organization: Samsung Electronics
+Message-ID: <c909b9ce-d787-e5fe-6a92-473cd24d0858@samsung.com>
+Date: Mon, 21 Mar 2022 12:39:38 +0900
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
+ Thunderbird/59.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220214212955.1178947-3-piotr.oniszczuk@gmail.com>
+In-Reply-To: <20220308190901.3144566-1-briannorris@chromium.org>
+Content-Language: en-US
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrNJsWRmVeSWpSXmKPExsWy7bCmru6kt+ZJBjMWcFhs+vie1eLV5j1s
+ FvOPnGO1+P/oNavFjw2nmC3ONr1ht9j0+BqrxeVdc9gsPvceYbT49OA/s8XtxhVsFq17j7A7
+ 8HjMbrjI4rFpVSebx+Yl9R5/Z+1n8ejbsorRY/u1ecwenzfJBbBHZdtkpCampBYppOYl56dk
+ 5qXbKnkHxzvHm5oZGOoaWlqYKynkJeam2iq5+AToumXmAB2qpFCWmFMKFApILC5W0rezKcov
+ LUlVyMgvLrFVSi1IySkwLdArTswtLs1L18tLLbEyNDAwMgUqTMjOWP//N3PBM/GK5ktXmBsY
+ W4S7GDk5JARMJN7fvs8CYgsJ7GCUONPi0MXIBWR/YpRof9vEAuF8Y5Q42XmDHabj+aYXrBCJ
+ vYwSOxoamSCc94wSn87uYwOpEhZwkpj0diMziC0icJxR4vjvPJAiZoF3jBKrm76DFbEJaEns
+ f3EDzOYXUJS4+uMxI4jNK2AnMWPaHiCbg4NFQFXi2rFCkLCoQJjEyW0tUCWCEidnPgG7m1PA
+ QeLEt0tg1zELiEvcejKfCcKWl9j+dg4zyF4JgQscEsv2dTFBvOAicfjYdihbWOLV8S1Qr0lJ
+ fH63lw2ioZlRouHFbUYIp4dR4uizPhaIKmOJ/UsnM4FcxyygKbF+lz5EWFFi5++5jBCb+STe
+ fe1hBSmREOCV6GgTgihRlrj84C7UXkmJxe2dbBMYlWYh+WcWkh9mIflhFsKyBYwsqxjFUguK
+ c9NTiw0LTODRnZyfu4kRnIq1LHYwzn37Qe8QIxMH4yFGCQ5mJRHef7+Nk4R4UxIrq1KL8uOL
+ SnNSiw8xmgIDeCKzlGhyPjAb5JXEG5pYGpiYGRmbWBiaGSqJ8/ZOPZ0oJJCeWJKanZpakFoE
+ 08fEwSnVwFRwf8G3MPnlAhoqP/a3JcR7TJzK9Y/z3NeYmmYOU7UZJ6s//CjLLF71d1PfySym
+ vbFJ8pKy4Qu8omWnaJ1fdcCzdUmCk6SJo3J008MqxsIJjxcvm2u1Y1W1lv6r6c/vVv8+s+K1
+ 8Jyj8UqTr2xdzlTv36p05dGNIHMXqedHarvjrnbM2Ncn+FNPJlW55qLO6+vrn3J9fb/2s1HU
+ Bc2SYttVpemnK92Sq+eY/5u6l9N0tYx3Rf6FtPYsK1c9zwepIuVvzcSjHmi2eeW/6tk9uTfh
+ aceeAC3P2slxV/QONXy9JfBsU9HUg/mKFUlzu2ynP2R5tvSzUszEfeLyG38tbXHVviRVlXXQ
+ V3meOkv6QSWW4oxEQy3mouJEABK45UlOBAAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrMIsWRmVeSWpSXmKPExsWy7bCSvO6Et+ZJBvcO2Fhs+vie1eLV5j1s
+ FvOPnGO1+P/oNavFjw2nmC3ONr1ht9j0+BqrxeVdc9gsPvceYbT49OA/s8XtxhVsFq17j7A7
+ 8HjMbrjI4rFpVSebx+Yl9R5/Z+1n8ejbsorRY/u1ecwenzfJBbBHcdmkpOZklqUW6dslcGWs
+ //+bueCZeEXzpSvMDYwtwl2MnBwSAiYSzze9YAWxhQR2M0qsPOoHEZeUmHbxKHMXIweQLSxx
+ +HBxFyMXUMlbRonlfxYwgdQICzhJTHq7kRnEFhE4ySix4pUQiM0s8I5RYuH3LIiGyYwSbw6f
+ AGtgE9CS2P/iBhuIzS+gKHH1x2NGEJtXwE5ixrQ9jCDLWARUJa4dKwQJiwqESexc8pgJokRQ
+ 4uTMJywgNqeAg8SJb5fYIXapS/yZd4kZwhaXuPVkPhOELS+x/e0c5gmMwrOQtM9C0jILScss
+ JC0LGFlWMUqmFhTnpucWGxYY5qWW6xUn5haX5qXrJefnbmIEx6OW5g7G7as+6B1iZOJgPMQo
+ wcGsJML777dxkhBvSmJlVWpRfnxRaU5q8SFGaQ4WJXHeC10n44UE0hNLUrNTUwtSi2CyTByc
+ Ug1Mez4HP5mq+bIrXNRWLkj5trvPKsNFZ2UDu3mzJT77V/yrr5N5nekkJPo2pa3uxoVbAT/m
+ 3ll1Rkwpwln98+TGOydZxeTbNEuzDx0XfWT68YH13puBNelNC4Tj6x3u763LWBN37/JE6Z/v
+ GB7civp6+/vM/QJLxIolH5m6zQjkuXSqvt1uxYRtkU61p8zM//1Y5mSZvE/eXH/TiUtJWeUq
+ CQoF4ssrI37Uv8jOKe0QnNrxgtGvtCFkzmuZAIZzvx9+36d0oe6ttPmk5btlLxUJ7ImZZ3el
+ LeY0N2tCvEOh3eFj2i8uez0WU//91dRox//+Hw8lflV+XHbnXGvelGUN23LuRE6KX/Y+btqc
+ PF03JZbijERDLeai4kQAdAGeuTYDAAA=
+X-CMS-MailID: 20220321031425epcas1p21cc0552e9712818d95b39747cfc3166a
+X-Msg-Generator: CA
+X-Sendblock-Type: SVC_REQ_APPROVE
+CMS-TYPE: 101P
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20220308190916epcas1p1baf4361cc5f33a90b38b01be7ffa748d
+References: <CGME20220308190916epcas1p1baf4361cc5f33a90b38b01be7ffa748d@epcas1p1.samsung.com>
+ <20220308190901.3144566-1-briannorris@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220320_053938_646358_662C0381 
-X-CRM114-Status: GOOD (  13.76  )
+X-CRM114-CacheID: sfid-20220320_201436_629009_9D326CF7 
+X-CRM114-Status: GOOD (  26.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,52 +144,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Piotr,
+Hi Brian,
 
-On Mon, Feb 14, 2022 at 10:29:55PM +0100, Piotr Oniszczuk wrote:
-> From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-> 
-> RK356x has Hantro G1 video decoder capable to decode MPEG2/H.264/VP8
-> video formats.
-> 
-> This patch adds RK3568 compatible in rockchip-vpu dt-bindings.
-> 
-> Tested on [1] with FFmpeg v4l2_request code taken from [2]
-> with MPEG2, H.642 and VP8 samples with results [3].
-> 
-> [1] https://github.com/warpme/minimyth2
-> [2] https://github.com/LibreELEC/LibreELEC.tv/blob/master/packages/multimedia/ffmpeg/patches/v4l2-request/ffmpeg-001-v4l2-request.patch
-> [3] https://github.com/warpme/minimyth2/blob/master/video-test-summary.txt
-> 
-> Signed-off-by: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
 
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-
-This dt-binding change looks trivial, so I guess it's fine
-taking it directly via the media tree?
-
-Thanks,
-Ezequiel
-
-> ---
->  Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 1 +
->  1 file changed, 1 insertion(+)
+On 3/9/22 4:08 AM, Brian Norris wrote:
+> This series covers 2 primary tasks:
 > 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> index bacb60a34989..6cc4d3e5a61d 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> @@ -23,6 +23,7 @@ properties:
->            - rockchip,rk3328-vpu
->            - rockchip,rk3399-vpu
->            - rockchip,px30-vpu
-> +          - rockchip,rk3568-vpu
->        - items:
->            - const: rockchip,rk3188-vpu
->            - const: rockchip,rk3066-vpu
-> -- 
-> 2.29.2
+> 1) Resubmit prior work:
 > 
+> [RESEND PATCH v5 3/4] arm64: dts: rockchip: Enable dmc and dfi nodes on gru.
+> https://lore.kernel.org/lkml/20210308233858.24741-2-daniel.lezcano@linaro.org/
+> [RESEND PATCH v5 2/4] arm64: dts: rk3399: Add dfi and dmc nodes.
+> https://lore.kernel.org/lkml/20210308233858.24741-3-daniel.lezcano@linaro.org/
+> 
+> This series was partially merged a while back, but the remaining 2
+> patches were blocked mostly on stylistic grounds (alpha/numerical
+> ordering).
+> 
+> 2) Integrate many updates, bugfixes, and clarifications that were done
+> by Rockchip and Google engineers when first launching this platform.
+> Many of these were not integrated in the earlier series (e.g., the OPPs
+> changed before production; earlier patchsets used pre-production
+> numbers).
+> 
+> Along the way, it seemed worthwhile to convert the binding docs to a
+> schema. Among other reasons, it actually helped catch several errors and
+> omissions in translation between downstream device trees and the version
+> that actually landed upstream.
+> 
+> See the patches for further details.
+> 
+> Regards,
+> Brian
+> 
+> Changes in v4:
+>  * Update .yaml to use more "default" entries, instead of free-form text
+>  * s/phandle-array/phandle/
+>  * Move to .../memory-controllers, update filename
+> 
+> Changes in v3:
+>  * Add |maxItems| for devfreq-events
+>  * Improve deprecation notes
+>  * Add Reviewed-by tags
+>  * Collect some Acked/Reviewed tags
+> 
+> Changes in v2:
+>  * Fix yamllint issues
+>  * Adapt to various review comments (use of *-hz, hyphens, node naming)
+>  * Add a few new bugfixes
+>  * Add some new properties (ported from downstream kernels) required for
+>    stability
+>  * Convert more properties from "cycles" to "nanoseconds"
+> 
+> Brian Norris (13):
+>   dt-bindings: devfreq: rk3399_dmc: Convert to YAML
+>   dt-bindings: devfreq: rk3399_dmc: Deprecate unused/redundant
+>     properties
+>   dt-bindings: devfreq: rk3399_dmc: Fix Hz units
+>   dt-bindings: devfreq: rk3399_dmc: Specify idle params in nanoseconds
+>   dt-bindings: devfreq: rk3399_dmc: Add more disable-freq properties
+>   PM / devfreq: rk3399_dmc: Drop undocumented ondemand DT props
+>   PM / devfreq: rk3399_dmc: Drop excess timing properties
+>   PM / devfreq: rk3399_dmc: Use bitfield macro definitions for ODT_PD
+>   PM / devfreq: rk3399_dmc: Support new disable-freq properties
+>   PM / devfreq: rk3399_dmc: Support new *-ns properties
+>   PM / devfreq: rk3399_dmc: Disable edev on remove()
+>   PM / devfreq: rk3399_dmc: Use devm_pm_opp_of_add_table()
+>   PM / devfreq: rk3399_dmc: Avoid static (reused) profile
+> 
+> Lin Huang (2):
+>   arm64: dts: rk3399: Add dfi and dmc nodes
+>   arm64: dts: rockchip: Enable dmc and dfi nodes on gru
+
+
+Applied them except for patch11/patch12 about dts patches.
+
+Thanks for your work.
+Chanwoo Choi
+
+
+
+
+-- 
+Best Regards,
+Chanwoo Choi
+Samsung Electronics
 
 _______________________________________________
 Linux-rockchip mailing list
