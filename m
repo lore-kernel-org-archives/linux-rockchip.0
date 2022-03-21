@@ -4,80 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61993C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Mar 2022 20:26:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7E47C433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Mar 2022 22:38:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0XzCnAJId5I4nelLHZ1TKoW46NGsBNOcDlepkJ+Caog=; b=pgljy76R8XrFyG
-	FyzUHRG6AxJcPgzD7ejlRXJmNehTMO01dHZcDYZWX7L9n2D6Vu05yxWWAyxYSb+oK+sTjFPr3MYph
-	APi9GQx0uG6aB3514gj0AnFdEYUDykNhKm3O3wlD8M1i/8JKPINodHNJAVthPEP0sAPcW/JJH2nWb
-	ITc/pLan/gT01RY+xHSBbHFS4hgkKr8SDPyzc/4FwPjMlrNXOebYv5MEVnfG5xDXLIVBTu/7EZXyy
-	gdM5gyQHddcADO6BKC30P830ccCutC80bb6HLyThIOgvckl2vlYtzXlVsmpZnazvg9OkaXdTp93eH
-	ju80DSmO9dbVT/KEm0Kw==;
+	List-Owner; bh=nX6pWzzSt4NhZqGDen7R0F66N6Sd8h1EIVhYfsJJ4gY=; b=hhzsj1vJXWLB7j
+	d97gLhmI8Elk6zBir8PBgeSvpcrYPXIc5Fqw2DhctKpiBuioc3EbkoTPYjfMZIU6RSrqhKkIzjpvd
+	oFrm/2M+Y45jgqKE3IUWTx0PrbiwPYWs6zlNHEf5T1OcypxoxHvrlQPDht5MKZxga5HbFvcVg+d09
+	EzjIY95cmuWsipcxjePQOePYdlQyqCddBbsBBt4m3siI/GHGSxU4AdXM5Yq8dUoqsa9bovHJ1EWbX
+	iTXI7i0ewqBFgZhSLq5UPlttIsSmSN2ATgh/MLmtljDuWDy9wKIOCuD/UlUz4paUOb7kXaJWD5N7Z
+	pmDQepcL1RHrJ7OOJFMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWOc4-00935W-79; Mon, 21 Mar 2022 20:26:48 +0000
-Received: from mail-wr1-f51.google.com ([209.85.221.51])
+	id 1nWQfb-009Glf-2C; Mon, 21 Mar 2022 22:38:35 +0000
+Received: from mga12.intel.com ([192.55.52.136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWOK4-008teR-6Z
- for linux-rockchip@lists.infradead.org; Mon, 21 Mar 2022 20:08:17 +0000
-Received: by mail-wr1-f51.google.com with SMTP id u16so21215113wru.4
- for <linux-rockchip@lists.infradead.org>; Mon, 21 Mar 2022 13:08:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=BLjOQyn7vWMkEPL3YYfpuMi7xJgnIr5nJYm6Y0L1/14=;
- b=jKZtZBoF+9D29LJdTrP/WOpH/cL6jYaJC9M0oJuNgOyTdPr1TJAPI1W2pBoz9Layd9
- 7uSO+zDYiRBUX0UM8LbbsPxXW91fIBcgIqvMT8eaf1xa2hWGc3CNRNq4CXuQ1Y6eu9eJ
- 6hqRRER8yr1rBhBksWX42igHEepCKJnCHaDZbl1Kp7FdNrkS4eBZohJS+YpYLOFo5z/p
- yrr3hOdZpAuRTTFF0I7rHrh+pqKRW7GmLAGgTcNBz/DiHtFUsoM0WMfltE7owv7QMGxZ
- jG9wL+y2FdunXMckttPckesTN2HvpfXNg9vM2yI26FsFxEqFPrWGb4NI9t1tVdn4jlPD
- oHXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=BLjOQyn7vWMkEPL3YYfpuMi7xJgnIr5nJYm6Y0L1/14=;
- b=IFeS2cWTZmJxArAjt4gHTBsOw2+vJrNrR7XQbdPXlVZO+UtlgqW7KrrsEy9P0yuNAc
- 3jsGYuzYyWEySw0huxN3vHuS1SDE7047ldzYDQW0b5+8iUbC/8o5aanRSn7qQB8/gqLg
- xH5KFEMRyrJ8HqhVtrgFtqnqE09eVp/429iFhN4Tpc/MEJ4Uy/woi49MVlWi4Mb4s9Gu
- +tMKuRB1pqEdq+gOsGuK9YCWQuN4iVMU0E6bqrt08CSUhY4qrbBEH51GiRnP/jg/au7/
- TZj4byFKG2lJtuxnO/s48N7YXCK1a92Rv/g5rUfRJdNhAiKzB7dbg5ufX2X1aYJ5PPpJ
- s9nw==
-X-Gm-Message-State: AOAM530LhVher+Z4f1nZrXbvoktQBkQ4Tdbirzfyka44rgXpPYHyVN37
- G8EMxT+P+kLRoqWFsBrylgI4VA==
-X-Google-Smtp-Source: ABdhPJw+15wozTaGAkfF7E2x/BPx9ctqPg1cM7rmgS855iWGEC3nUElEC3OQjcdUVIZxkSJwNtjFmw==
-X-Received: by 2002:a5d:59a1:0:b0:204:1777:fc08 with SMTP id
- p1-20020a5d59a1000000b002041777fc08mr3924749wrr.545.1647893289973; 
- Mon, 21 Mar 2022 13:08:09 -0700 (PDT)
-Received: from localhost.localdomain
- (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
- by smtp.googlemail.com with ESMTPSA id
- i14-20020a0560001ace00b00203da1fa749sm24426988wry.72.2022.03.21.13.08.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Mar 2022 13:08:09 -0700 (PDT)
-From: Corentin Labbe <clabbe@baylibre.com>
-To: heiko@sntech.de, herbert@gondor.apana.org.au, krzk+dt@kernel.org,
- mturquette@baylibre.com, robh+dt@kernel.org, sboyd@kernel.org
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-crypto@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Corentin Labbe <clabbe@baylibre.com>
-Subject: [PATCH v3 26/26] crypto: rockchip: use read_poll_timeout
-Date: Mon, 21 Mar 2022 20:07:39 +0000
-Message-Id: <20220321200739.3572792-27-clabbe@baylibre.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220321200739.3572792-1-clabbe@baylibre.com>
-References: <20220321200739.3572792-1-clabbe@baylibre.com>
+ id 1nWQfJ-009GgY-BH; Mon, 21 Mar 2022 22:38:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1647902297; x=1679438297;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=NGivaWeKRY3MksBC8EwXE84CdRJB3qnQz8+tE0sTF7w=;
+ b=MoYGydbEdNwtgdd7sSXBHPYBk9igFfYNhJZC7JX9UGHvXA804pM0OTFH
+ gUxkGtGi04X5nL114r8ErmUH0VPsx87Ik8L1FKdnQD/uC6z1CvUldxpeP
+ dcVfi3XW9FlJvXbj4blKB+ydgGXn4IL3vvqrn7nccL8JB0vibAmJDv0lq
+ c20Qmib0vHPYFhi/OIHgvhOZ1PDZuKj+X77YhFnOY4dUMZ/gAjkliW7Ct
+ ddox9S0lQUXdhlhZlhRnILwwSGM+fwCM7UPJPn+1BbKs14/9IMLyMs4H1
+ 0lPRQoxbDIOR7fYqnDXzWVli8sho4nOczYY/tlgSDePGiLRIZuboUn2al w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10293"; a="237605008"
+X-IronPort-AV: E=Sophos;i="5.90,199,1643702400"; d="scan'208";a="237605008"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Mar 2022 15:38:09 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,199,1643702400"; d="scan'208";a="560073382"
+Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.61])
+ by orsmga008.jf.intel.com with SMTP; 21 Mar 2022 15:37:58 -0700
+Received: by stinkbox (sSMTP sendmail emulation);
+ Tue, 22 Mar 2022 00:37:57 +0200
+Date: Tue, 22 Mar 2022 00:37:57 +0200
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: Alex Deucher <alexdeucher@gmail.com>
+Cc: Maling list - DRI developers <dri-devel@lists.freedesktop.org>,
+ Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ Emma Anholt <emma@anholt.net>, Neil Armstrong <narmstrong@baylibre.com>,
+ Xinliang Liu <xinliang.liu@linaro.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>, Sam Ravnborg <sam@ravnborg.org>,
+ Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>,
+ amd-gfx list <amd-gfx@lists.freedesktop.org>,
+ linux-rockchip@lists.infradead.org,
+ Xinwei Kong <kong.kongxinwei@hisilicon.com>,
+ Aurabindo Pillai <aurabindo.pillai@amd.com>,
+ Chen Feng <puck.chen@hisilicon.com>,
+ Alain Volmat <alain.volmat@foss.st.com>,
+ Harry Wentland <harry.wentland@amd.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Jonas Karlman <jonas@kwiboo.se>, Leo Li <sunpeng.li@amd.com>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+ Abhinav Kumar <quic_abhinavk@quicinc.com>,
+ Maxime Ripard <mripard@kernel.org>, Nikola Cornij <nikola.cornij@amd.com>,
+ John Stultz <john.stultz@linaro.org>, Sean Paul <sean@poorly.run>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ Tomi Valkeinen <tomba@kernel.org>, Jyri Sarha <jyri.sarha@iki.fi>,
+ Sandy Huang <hjc@rock-chips.com>, Robert Foss <robert.foss@linaro.org>,
+ Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
+ Rob Clark <robdclark@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Tian Tao <tiantao6@hisilicon.com>,
+ freedreno <freedreno@lists.freedesktop.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH 00/22] drm: Review of mode copies
+Message-ID: <Yjj+RSVBWk6UO2C7@intel.com>
+References: <20220218100403.7028-1-ville.syrjala@linux.intel.com>
+ <Yi+9n0eGn3rNKb4X@intel.com>
+ <CADnq5_NS07TPBWSnETRhjzqtX_oUuCu86ewurFT3MJO=PcLAuQ@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CADnq5_NS07TPBWSnETRhjzqtX_oUuCu86ewurFT3MJO=PcLAuQ@mail.gmail.com>
+X-Patchwork-Hint: comment
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220321_130812_269342_2BB611AD 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20220321_153817_411324_EECE94A5 
+X-CRM114-Status: GOOD (  17.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,43 +105,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use read_poll_timeout instead of open coding it.
+On Tue, Mar 15, 2022 at 02:52:38PM -0400, Alex Deucher wrote:
+> On Mon, Mar 14, 2022 at 6:12 PM Ville Syrj=E4l=E4
+> <ville.syrjala@linux.intel.com> wrote:
+> >
+> > On Fri, Feb 18, 2022 at 12:03:41PM +0200, Ville Syrjala wrote:
+> > >   drm: Add drm_mode_init()
+> > >   drm/bridge: Use drm_mode_copy()
+> > >   drm/imx: Use drm_mode_duplicate()
+> > >   drm/panel: Use drm_mode_duplicate()
+> > >   drm/vc4: Use drm_mode_copy()
+> > These have been pushed to drm-misc-next.
+> >
+> > >   drm/amdgpu: Remove pointless on stack mode copies
+> > >   drm/amdgpu: Use drm_mode_init() for on-stack modes
+> > >   drm/amdgpu: Use drm_mode_copy()
+> > amdgpu ones are reviewed, but I'll leave them for the
+> > AMD folks to push to whichever tree they prefer.
+> =
 
-Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
----
- drivers/crypto/rockchip/rk3288_crypto_ahash.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> I pulled patches 2, 4, 5 into my tree.
 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-index 1d20f58275f0..0ea47f50607e 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-@@ -9,6 +9,7 @@
-  * Some ideas are from marvell/cesa.c and s5p-sss.c driver.
-  */
- #include <linux/device.h>
-+#include <linux/iopoll.h>
- #include <asm/unaligned.h>
- #include "rk3288_crypto.h"
- 
-@@ -314,8 +315,7 @@ static int rk_hash_run(struct crypto_engine *engine, void *breq)
- 		 * efficiency, and make it response quickly when dma
- 		 * complete.
- 		 */
--	while (!readl(reg + RK_CRYPTO_HASH_STS))
--		udelay(10);
-+	read_poll_timeout(readl, v, v == 0, 10, 1000, false, reg + RK_CRYPTO_HASH_STS);
- 
- 	for (i = 0; i < crypto_ahash_digestsize(tfm) / 4; i++) {
- 		v = readl(reg + RK_CRYPTO_HASH_DOUT_0 + i * 4);
--- 
-2.34.1
+Thanks.
 
+> For 3, I'm happy to have it
+> land via drm-misc with the rest of the mode_init changes if you'd
+> prefer.
+
+Either way works for me. I don't yet have reviews yet for
+the other drivers, so I'll proably hold off for a bit more
+at least. And the i915 patch I'll be merging via drm-intel.
+
+> > >   drm/radeon: Use drm_mode_copy()
+> > >   drm/gma500: Use drm_mode_copy()
+> > >   drm/tilcdc: Use drm_mode_copy()
+> > >   drm/i915: Use drm_mode_copy()
+
+Those are now all in.
+
+Which leaves us with these stragglers:
+> > >   drm/hisilicon: Use drm_mode_init() for on-stack modes
+> > >   drm/msm: Nuke weird on stack mode copy
+> > >   drm/msm: Use drm_mode_init() for on-stack modes
+> > >   drm/msm: Use drm_mode_copy()
+> > >   drm/mtk: Use drm_mode_init() for on-stack modes
+> > >   drm/rockchip: Use drm_mode_copy()
+> > >   drm/sti: Use drm_mode_copy()
+> > >   drm: Use drm_mode_init() for on-stack modes
+> > >   drm: Use drm_mode_copy()
+
+-- =
+
+Ville Syrj=E4l=E4
+Intel
 
 _______________________________________________
 Linux-rockchip mailing list
