@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EF44C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Mar 2022 04:12:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFF00C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Mar 2022 12:12:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MVMPj7er08C6wXt7iXu8gAGSF3TybRyJ9E95ig9HWKk=; b=GIrgBJHCmf8Xxr
-	b/vWqi4A2SNtlS03HP5fgY8bUnr8MGztLh7/QE0j15KugXdn0X/85v81enD9FEcMG3EzaLhIRFCqf
-	+wQ02pLDIgVworsU2+XYUKWz192F5TOmg00mmR2YFZp9A3AAO24wNjDvZjYgCtRCjlJxhgAZfG76Q
-	2DXw0iImRtmjFvK0KR3VyqOXZQkvZ7lajqUn48CjKDucsm1MwTM03A3pQ/+SXtSSyK/yByf2oC6s6
-	FbPZKJccE9AFN90LN5vy8dcHKbA9GKimMRxVfUIp5IYqLZGeRmrDidon68KN3Q7JTyRDyQKZ8zal6
-	Ev9j8B9YY7fAAgO9jbUw==;
+	List-Owner; bh=lsMflJOWGsRD8GBOR2L6iXPDF2XUz5Oe1t829V5wCJ0=; b=q2m6pzuXDZTSC0
+	AKcMxsSCfRkCqxi7Em5szhP7jT+4Ut5X2Lr2XV7oMqC0ZVxu5HF1NrfxFCDydkKNF/0uRWJWDl+PW
+	EdBv9TW3EWPE3isnZK7l/aybmuB0aVxmFqAgYW2QEIgpXj8Wu3izIM5mDU8huUPSHlm8tZ1X0HT7D
+	P2qrnMSOrTpvO6F2mHiEqmP4FAkjT+s4WBwmuPjWQUJv59PsYpmu5a+hxKECTUFh9KvAdyC9QBWHZ
+	DsE5NAcmV5RnUnxYzA5/Umh0WMeoN9K/xc26c9iUioxDTbak0zqHq7Fnorq7fveKezM06ekfhLmtU
+	7Snex2+q4fUQRIv7MnxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nW9PJ-006RuG-6Z; Mon, 21 Mar 2022 04:12:37 +0000
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+	id 1nWGu4-007dtd-7m; Mon, 21 Mar 2022 12:12:52 +0000
+Received: from mga05.intel.com ([192.55.52.43])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nW9PG-006Rsw-DH
- for linux-rockchip@lists.infradead.org; Mon, 21 Mar 2022 04:12:36 +0000
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-2e5e31c34bfso63364887b3.10
- for <linux-rockchip@lists.infradead.org>; Sun, 20 Mar 2022 21:12:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=LQsN6lSw3r9N+Wo5F8+nkpqY3bZAfZCQQiLUYeHkfEA=;
- b=cmKxq/gn5+z1JzkYkiHfx3dWKJwTFIpkOVm41BDWc9xey8jA0/CXOVq8BW/6N9aKLL
- uR7H3DCwbwr4dHm/UzhjdYnI8M9bkX9hICFR9OFTq7n6Ci4JvfN6D6ovkOCLtgL3w1yz
- oVFncb+0gi4A8IdnjpZtsoun49Ppt9Fl3IqOk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=LQsN6lSw3r9N+Wo5F8+nkpqY3bZAfZCQQiLUYeHkfEA=;
- b=S4PQ5RZKA1JkAo3oot/q3N24NFxTv48LYqXxj5Up45q9gaP2FA411iqJelfTx7cMYF
- Qrz0pNV6TVcF6BpTImrgdHUYQuIMazjpL8iuVmPLr/k/37LfgP2ueuK29UJSCfPGWTtf
- C1n+bOP20WruM4+ArI/K44JOC4kjxryXtUx5do5+VGE8OATZqkgLgiTX862sx2xs2ijg
- ULTErYAJ85h/RNYmEYGjKHJeN52kjJjxhLiBmyjgte2Pwtx920T4UGq1kED0B7xREKS7
- SlvmvUIGVlPUZoUKl+XLwJMIB5Ty2gQ2mvlfdgGKWK48KjRL6pjTRbd3pi0wMtwyxCUY
- lAQQ==
-X-Gm-Message-State: AOAM5328EchAKh1ucn2eQI6zVBdvnWkHvljhIW/9gLCTI4N/E9E73c0M
- 6L55Cumi/WPi3fqRpfrRIXXvcdZ9HrNXulshyEzDVQ==
-X-Google-Smtp-Source: ABdhPJzgVWNYOdR//POqQHOr8YAZvGeBgucFc9r+lCwLsBryQwMayTD53/jijq8YQkIDO9GhkMW8OuUgUDagvfkY5G8=
-X-Received: by 2002:a0d:cc4f:0:b0:2e5:e8fa:6754 with SMTP id
- o76-20020a0dcc4f000000b002e5e8fa6754mr12086202ywd.295.1647835950140; Sun, 20
- Mar 2022 21:12:30 -0700 (PDT)
+ id 1nWGu0-007drX-WF
+ for linux-rockchip@lists.infradead.org; Mon, 21 Mar 2022 12:12:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1647864769; x=1679400769;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=/iwgWB/Pj95NOLmoCdhY/JB+QJX072TvB1rH1TC6F1A=;
+ b=mBDAEjgZ2QRZcwY5bCri8DM+uTbjdb4HJ8bQn6TeOWlRIlamKbkb6RdG
+ 2tAqasWwnnVptrDURECw5UDF1Riebw33QpU6109Fxw/YifEoCS0lsJvDx
+ 5yNlgBQgB5rLw7AFX92Vtvy5LONOP3yR1hT7+9ZI6au7g0arNHMZaOb3o
+ 7UMImw5TyPAQ/AVt6vTdSQdTlLGXl5v5xu5GS7DsDtFUtCueeiE2FNO37
+ 1lKVRv/EK8KzMrZpRgBNcmEn154pgw/VeRhXnykM/1rY6WYLNqNIFkOh5
+ /KYEkrJwvjyl9484m0BEEZCmbD+PjYYURPKT3Vh4tZJXGLYhjFrMoY4WL A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10292"; a="343963589"
+X-IronPort-AV: E=Sophos;i="5.90,198,1643702400"; d="scan'208";a="343963589"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Mar 2022 05:12:47 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,198,1643702400"; d="scan'208";a="716473331"
+Received: from lkp-server02.sh.intel.com (HELO 89b41b6ae01c) ([10.239.97.151])
+ by orsmga005.jf.intel.com with ESMTP; 21 Mar 2022 05:12:45 -0700
+Received: from kbuild by 89b41b6ae01c with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1nWGtw-000Hoo-Mz; Mon, 21 Mar 2022 12:12:44 +0000
+Date: Mon, 21 Mar 2022 20:11:57 +0800
+From: kernel test robot <lkp@intel.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-media@vger.kernel.org
+Cc: kbuild-all@lists.01.org, Dafna Hirschfeld <dafna@fastmail.com>,
+ Heiko Stuebner <heiko@sntech.de>, Paul Elder <paul.elder@ideasonboard.com>,
+ Tomasz Figa <tfiga@google.com>, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 13/17] media: rkisp1: Compile debugfs support
+ conditionally
+Message-ID: <202203212003.ngntIuxj-lkp@intel.com>
+References: <20220319163100.3083-14-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
-References: <20220301042225.1540019-1-wenst@chromium.org>
- <YjcbnmTUaWDtkIb/@eze-laptop>
-In-Reply-To: <YjcbnmTUaWDtkIb/@eze-laptop>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 21 Mar 2022 12:12:19 +0800
-Message-ID: <CAGXv+5Em4CAYYMfg0_9kzYaPHhu3w8fwpfArE5FFkShp8A2DtQ@mail.gmail.com>
-Subject: Re: [PATCH v3] media: hantro: Implement support for encoder commands
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
- linux-kernel@vger.kernel.org, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20220319163100.3083-14-laurent.pinchart@ideasonboard.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220320_211234_525351_234B6DC1 
-X-CRM114-Status: GOOD (  48.48  )
+X-CRM114-CacheID: sfid-20220321_051249_254070_7B44D427 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,261 +84,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Mar 20, 2022 at 8:18 PM Ezequiel Garcia
-<ezequiel@vanguardiasur.com.ar> wrote:
->
-> Hi Chen-Yu, Benjamin, Nicolas,
->
-> Sorry for the late review.
->
-> On Tue, Mar 01, 2022 at 12:22:25PM +0800, Chen-Yu Tsai wrote:
-> > The V4L2 stateful encoder uAPI specification requires that drivers
-> > support the ENCODER_CMD ioctl to allow draining of buffers. This
-> > however was not implemented, and causes issues for some userspace
-> > applications.
-> >
-> > Implement support for the ENCODER_CMD ioctl using v4l2-mem2mem helpers.
-> > This is entirely based on existing code found in the vicodec test
-> > driver.
-> >
-> > Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
-> > Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> > Reviewed-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > ---
-> >
-> > Changes since v2:
-> > - Dropped RFC tag
-> > - Added Reviewed-by from Benjamin
-> > - Replace direct access to vb->planes[i].bytesused with
-> >   vb2_set_plane_payload()
-> >
-> > Changes since v1:
-> > - Correctly handle last buffers that are empty
-> > - Correctly handle last buffers that just got queued
-> > - Disable (TRY_)ENCODER_CMD ioctls for hantro decoder
-> >
-> > This is based on linux-next-20220208, and was tested on RK3399 with
-> > Gstreamer running the JPEG encoder. It was also tested on ChromeOS
-> > 5.10 on Kevin with the video encoder used in ChromeOS ARC, which
-> > requires this. For ChromeOS, both encoder and decoder tests were run
-> > to check for regressions.
-> >
->
-> Sounds great, thanks for running those tests!
->
-> > Everything really works OK now, but since I'm not very familiar with
-> > the mem2mem framework, I might be missing something, causing resource
-> > leaks. Hence this patch is labeled RFC.
-> >
->
-> It would be great to apply this to a mainline-ish kernel,
-> and run some fluster and some stress-tests to ensure this is not
-> regressing decoding in some way.
+Hi Laurent,
 
-I can try to get the fluster suite running.
+I love your patch! Yet something to improve:
 
-Not sure what stress-tests you had in mind though? Upstream only has the
-JPEG encoder. Maybe multiple gstreamer encoding/decoding instances running
-in parallel? Or even multiple fluster runs in parallel?
+[auto build test ERROR on 71e6d0608e4d1b79069990c7dacb3600ced28a3b]
 
-I had just put my RK3399 device away though. Have to dig it out again.
+url:    https://github.com/0day-ci/linux/commits/Laurent-Pinchart/media-rkisp1-Misc-bug-fixes-and-cleanups/20220320-003349
+base:   71e6d0608e4d1b79069990c7dacb3600ced28a3b
+config: m68k-randconfig-r015-20220320 (https://download.01.org/0day-ci/archive/20220321/202203212003.ngntIuxj-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 11.2.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/0day-ci/linux/commit/11c5c07e897814001cfa8356922aeea602844787
+        git remote add linux-review https://github.com/0day-ci/linux
+        git fetch --no-tags linux-review Laurent-Pinchart/media-rkisp1-Misc-bug-fixes-and-cleanups/20220320-003349
+        git checkout 11c5c07e897814001cfa8356922aeea602844787
+        # save the config file to linux build tree
+        mkdir build_dir
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=m68k SHELL=/bin/bash drivers/media/platform/rockchip/rkisp1/
 
-> > Last, I suppose we could also add support for (TRY_)DECODER_CMD now?
-> >
-> >  drivers/staging/media/hantro/hantro_drv.c  | 17 +++++-
-> >  drivers/staging/media/hantro/hantro_v4l2.c | 68 +++++++++++++++++++++-
-> >  2 files changed, 81 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> > index bc9bcb4eaf46..99bc650a5a93 100644
-> > --- a/drivers/staging/media/hantro/hantro_drv.c
-> > +++ b/drivers/staging/media/hantro/hantro_drv.c
-> > @@ -56,6 +56,10 @@ dma_addr_t hantro_get_ref(struct hantro_ctx *ctx, u64 ts)
-> >       return hantro_get_dec_buf_addr(ctx, buf);
-> >  }
-> >
-> > +static const struct v4l2_event hantro_eos_event = {
-> > +     .type = V4L2_EVENT_EOS
-> > +};
-> > +
-> >  static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
-> >                                   struct hantro_ctx *ctx,
-> >                                   enum vb2_buffer_state result)
-> > @@ -73,6 +77,12 @@ static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
-> >       src->sequence = ctx->sequence_out++;
-> >       dst->sequence = ctx->sequence_cap++;
-> >
-> > +     if (v4l2_m2m_is_last_draining_src_buf(ctx->fh.m2m_ctx, src)) {
-> > +             dst->flags |= V4L2_BUF_FLAG_LAST;
-> > +             v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
-> > +             v4l2_m2m_mark_stopped(ctx->fh.m2m_ctx);
-> > +     }
-> > +
-> >       v4l2_m2m_buf_done_and_job_finish(ctx->dev->m2m_dev, ctx->fh.m2m_ctx,
-> >                                        result);
-> >  }
-> > @@ -807,10 +817,13 @@ static int hantro_add_func(struct hantro_dev *vpu, unsigned int funcid)
-> >       snprintf(vfd->name, sizeof(vfd->name), "%s-%s", match->compatible,
-> >                funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ? "enc" : "dec");
-> >
-> > -     if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER)
-> > +     if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER) {
-> >               vpu->encoder = func;
-> > -     else
-> > +     } else {
-> >               vpu->decoder = func;
-> > +             v4l2_disable_ioctl(vfd, VIDIOC_TRY_ENCODER_CMD);
-> > +             v4l2_disable_ioctl(vfd, VIDIOC_ENCODER_CMD);
-> > +     }
-> >
-> >       video_set_drvdata(vfd, vpu);
-> >
-> > diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-> > index 67148ba346f5..aa10ecd04c9c 100644
-> > --- a/drivers/staging/media/hantro/hantro_v4l2.c
-> > +++ b/drivers/staging/media/hantro/hantro_v4l2.c
-> > @@ -628,6 +628,39 @@ static int vidioc_s_selection(struct file *file, void *priv,
-> >       return 0;
-> >  }
-> >
-> > +static const struct v4l2_event hantro_eos_event = {
-> > +     .type = V4L2_EVENT_EOS
-> > +};
-> > +
-> > +static int vidioc_encoder_cmd(struct file *file, void *priv,
-> > +                           struct v4l2_encoder_cmd *ec)
-> > +{
-> > +     struct hantro_ctx *ctx = fh_to_ctx(priv);
-> > +     int ret;
-> > +
-> > +     ret = v4l2_m2m_ioctl_try_encoder_cmd(file, priv, ec);
-> > +     if (ret < 0)
-> > +             return ret;
-> > +
-> > +     if (!vb2_is_streaming(v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx)) ||
-> > +         !vb2_is_streaming(v4l2_m2m_get_dst_vq(ctx->fh.m2m_ctx)))
-> > +             return 0;
-> > +
-> > +     ret = v4l2_m2m_ioctl_encoder_cmd(file, priv, ec);
-> > +     if (ret < 0)
-> > +             return ret;
-> > +
-> > +     if (ec->cmd == V4L2_ENC_CMD_STOP &&
-> > +         v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
-> > +             v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
-> > +
-> > +     if (ec->cmd == V4L2_ENC_CMD_START &&
-> > +         v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
->
-> This looks odd. The has_stopped flag is cleared by calling
-> v4l2_m2m_ioctl_encoder_cmd so I can't see how it could be set here.
->
-> This same pattern is in the vicodec driver, the change was introduced
-> in d4d137de5f31d318ed9acdcdf359b9bd3920808b.
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
 
-Looking at the commit you pointed out, it seems the original intent was to
-check the prior state. So it looks like d4d137de5f31d318ed9acdcdf359b9bd3920808b
-introduced a bug.
+All errors (new ones prefixed by >>):
 
-I'll take care of both drivers.
-
-> > +             vb2_clear_last_buffer_dequeued(&ctx->fh.m2m_ctx->cap_q_ctx.q);
-> > +
-> > +     return 0;
-> > +}
-> > +
-> >  const struct v4l2_ioctl_ops hantro_ioctl_ops = {
-> >       .vidioc_querycap = vidioc_querycap,
-> >       .vidioc_enum_framesizes = vidioc_enum_framesizes,
-> > @@ -657,6 +690,9 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
-> >
-> >       .vidioc_g_selection = vidioc_g_selection,
-> >       .vidioc_s_selection = vidioc_s_selection,
-> > +
-> > +     .vidioc_try_encoder_cmd = v4l2_m2m_ioctl_try_encoder_cmd,
-> > +     .vidioc_encoder_cmd = vidioc_encoder_cmd,
-> >  };
-> >
-> >  static int
-> > @@ -733,8 +769,12 @@ static int hantro_buf_prepare(struct vb2_buffer *vb)
-> >        * (for OUTPUT buffers, if userspace passes 0 bytesused, v4l2-core sets
-> >        * it to buffer length).
-> >        */
-> > -     if (V4L2_TYPE_IS_CAPTURE(vq->type))
-> > -             vb2_set_plane_payload(vb, 0, pix_fmt->plane_fmt[0].sizeimage);
-> > +     if (V4L2_TYPE_IS_CAPTURE(vq->type)) {
-> > +             if (ctx->is_encoder)
-> > +                     vb2_set_plane_payload(vb, 0, 0);
->
-> This looks like some fix, that could be applied independently of this patch?
-
-Yes. I seem to have accidentally squashed that in. Of the top of my head,
-I think this was clearing the capture buffers to be empty, so unused
-buffers returned to userspace do look "unused".
-
-I'll split this out.
+>> drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c:16:6: error: redefinition of 'rkisp1_debug_init'
+      16 | void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+         |      ^~~~~~~~~~~~~~~~~
+   In file included from drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c:14:
+   drivers/media/platform/rockchip/rkisp1/rkisp1-common.h:525:20: note: previous definition of 'rkisp1_debug_init' with type 'void(struct rkisp1_device *)'
+     525 | static inline void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+         |                    ^~~~~~~~~~~~~~~~~
+>> drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c:47:6: error: redefinition of 'rkisp1_debug_cleanup'
+      47 | void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
+         |      ^~~~~~~~~~~~~~~~~~~~
+   In file included from drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c:14:
+   drivers/media/platform/rockchip/rkisp1/rkisp1-common.h:528:20: note: previous definition of 'rkisp1_debug_cleanup' with type 'void(struct rkisp1_device *)'
+     528 | static inline void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
+         |                    ^~~~~~~~~~~~~~~~~~~~
 
 
-Thanks
-ChenYu
+vim +/rkisp1_debug_init +16 drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
 
-> > +             else
-> > +                     vb2_set_plane_payload(vb, 0, pix_fmt->plane_fmt[0].sizeimage);
-> > +     }
-> >
-> >       return 0;
-> >  }
-> > @@ -744,6 +784,22 @@ static void hantro_buf_queue(struct vb2_buffer *vb)
-> >       struct hantro_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
-> >       struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-> >
-> > +     if (V4L2_TYPE_IS_CAPTURE(vb->vb2_queue->type) &&
-> > +         vb2_is_streaming(vb->vb2_queue) &&
-> > +         v4l2_m2m_dst_buf_is_last(ctx->fh.m2m_ctx)) {
-> > +             unsigned int i;
-> > +
-> > +             for (i = 0; i < vb->num_planes; i++)
-> > +                     vb2_set_plane_payload(vb, i, 0);
-> > +
-> > +             vbuf->field = V4L2_FIELD_NONE;
-> > +             vbuf->sequence = ctx->sequence_cap++;
-> > +
-> > +             v4l2_m2m_last_buffer_done(ctx->fh.m2m_ctx, vbuf);
-> > +             v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
-> > +             return;
-> > +     }
-> > +
-> >       v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
-> >  }
-> >
-> > @@ -759,6 +815,8 @@ static int hantro_start_streaming(struct vb2_queue *q, unsigned int count)
-> >       struct hantro_ctx *ctx = vb2_get_drv_priv(q);
-> >       int ret = 0;
-> >
-> > +     v4l2_m2m_update_start_streaming_state(ctx->fh.m2m_ctx, q);
-> > +
-> >       if (V4L2_TYPE_IS_OUTPUT(q->type))
-> >               ctx->sequence_out = 0;
-> >       else
-> > @@ -831,6 +889,12 @@ static void hantro_stop_streaming(struct vb2_queue *q)
-> >               hantro_return_bufs(q, v4l2_m2m_src_buf_remove);
-> >       else
-> >               hantro_return_bufs(q, v4l2_m2m_dst_buf_remove);
-> > +
-> > +     v4l2_m2m_update_stop_streaming_state(ctx->fh.m2m_ctx, q);
-> > +
-> > +     if (V4L2_TYPE_IS_OUTPUT(q->type) &&
-> > +         v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
-> > +             v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
-> >  }
-> >
-> >  static void hantro_buf_request_complete(struct vb2_buffer *vb)
-> > --
-> > 2.35.1.574.g5d30c73bfb-goog
-> >
->
-> Thanks,
-> Ezequiel
+2521809005c614 Laurent Pinchart 2022-03-19  15  
+2521809005c614 Laurent Pinchart 2022-03-19 @16  void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+2521809005c614 Laurent Pinchart 2022-03-19  17  {
+2521809005c614 Laurent Pinchart 2022-03-19  18  	struct rkisp1_debug *debug = &rkisp1->debug;
+2521809005c614 Laurent Pinchart 2022-03-19  19  
+2521809005c614 Laurent Pinchart 2022-03-19  20  	debug->debugfs_dir = debugfs_create_dir(dev_name(rkisp1->dev), NULL);
+2521809005c614 Laurent Pinchart 2022-03-19  21  
+2521809005c614 Laurent Pinchart 2022-03-19  22  	debugfs_create_ulong("data_loss", 0444, debug->debugfs_dir,
+2521809005c614 Laurent Pinchart 2022-03-19  23  			     &debug->data_loss);
+2521809005c614 Laurent Pinchart 2022-03-19  24  	debugfs_create_ulong("outform_size_err", 0444,  debug->debugfs_dir,
+2521809005c614 Laurent Pinchart 2022-03-19  25  			     &debug->outform_size_error);
+2521809005c614 Laurent Pinchart 2022-03-19  26  	debugfs_create_ulong("img_stabilization_size_error", 0444,
+2521809005c614 Laurent Pinchart 2022-03-19  27  			     debug->debugfs_dir,
+2521809005c614 Laurent Pinchart 2022-03-19  28  			     &debug->img_stabilization_size_error);
+2521809005c614 Laurent Pinchart 2022-03-19  29  	debugfs_create_ulong("inform_size_error", 0444,  debug->debugfs_dir,
+2521809005c614 Laurent Pinchart 2022-03-19  30  			     &debug->inform_size_error);
+2521809005c614 Laurent Pinchart 2022-03-19  31  	debugfs_create_ulong("irq_delay", 0444,  debug->debugfs_dir,
+2521809005c614 Laurent Pinchart 2022-03-19  32  			     &debug->irq_delay);
+2521809005c614 Laurent Pinchart 2022-03-19  33  	debugfs_create_ulong("mipi_error", 0444, debug->debugfs_dir,
+2521809005c614 Laurent Pinchart 2022-03-19  34  			     &debug->mipi_error);
+2521809005c614 Laurent Pinchart 2022-03-19  35  	debugfs_create_ulong("stats_error", 0444, debug->debugfs_dir,
+2521809005c614 Laurent Pinchart 2022-03-19  36  			     &debug->stats_error);
+2521809005c614 Laurent Pinchart 2022-03-19  37  	debugfs_create_ulong("mp_stop_timeout", 0444, debug->debugfs_dir,
+2521809005c614 Laurent Pinchart 2022-03-19  38  			     &debug->stop_timeout[RKISP1_MAINPATH]);
+2521809005c614 Laurent Pinchart 2022-03-19  39  	debugfs_create_ulong("sp_stop_timeout", 0444, debug->debugfs_dir,
+2521809005c614 Laurent Pinchart 2022-03-19  40  			     &debug->stop_timeout[RKISP1_SELFPATH]);
+2521809005c614 Laurent Pinchart 2022-03-19  41  	debugfs_create_ulong("mp_frame_drop", 0444, debug->debugfs_dir,
+2521809005c614 Laurent Pinchart 2022-03-19  42  			     &debug->frame_drop[RKISP1_MAINPATH]);
+2521809005c614 Laurent Pinchart 2022-03-19  43  	debugfs_create_ulong("sp_frame_drop", 0444, debug->debugfs_dir,
+2521809005c614 Laurent Pinchart 2022-03-19  44  			     &debug->frame_drop[RKISP1_SELFPATH]);
+2521809005c614 Laurent Pinchart 2022-03-19  45  }
+2521809005c614 Laurent Pinchart 2022-03-19  46  
+2521809005c614 Laurent Pinchart 2022-03-19 @47  void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
 _______________________________________________
 Linux-rockchip mailing list
