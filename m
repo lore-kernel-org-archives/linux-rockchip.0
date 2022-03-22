@@ -4,39 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51B26C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Mar 2022 12:00:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99A90C4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Mar 2022 18:05:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YJSjlxqDdnPXRRIlNJIQZdMM/XdNy49t9+i8vYAE6mw=; b=enQlmWXCTckP/v
-	v0ntIOUEL9pAKkzs0upBGN4PaunBxcxTMoBrL+FRvlMyJ+3yZ0RfpXEH1qbQBW48qLvNkGObhS98/
-	rvrjMU5fLSwYYhkwjIs8Zlrrd+XRTgDVpays/g03xXXc3ow4g5PxOQFYu2xol2PyLZqVGrs9PUrn5
-	sK28Rp4kIO0G1uZiMCinng5hsTrizoySurKLH0wcyngtdGrcoXZWLyEv+D++dx0yTJLnas+5cIn5H
-	5jrBJL0zduR+m2Ql56YXxMmb2mpT0qO6lP9w+zd+avnIoCZJ1wTqa1U6TiIU+3BcicCjL9IcqJiao
-	7/Q4sriy20Q4Q/Owz93A==;
+	List-Owner; bh=uCDllmmunXtOmoInOdRo3gD1Bm+gvc/8u2uUJBy1QWc=; b=wwgU+tHUbyFKIm
+	yXAmAcnT0wVQsGxgFAWAl4cCypA+btXhNudjUu4ksngMv/aSdliTxCuP5SPJ2muTMymHXuBZ4/Yvq
+	vsNqJLry7VSCxvmjxpGsBkc01Hk6nj33DwYfEr1uUOLaK+qn2wHhDkRIxr9X5yYVTpZaw4sFErG5g
+	iDySiskGkEdzAkhahCVLpD3lks1XZdDMObH7qVLpbiN7zu9QI1PLqoldAuJyDtSdUGUTAsV05sZVe
+	jrNAfcPHrGdv49Nd/38bwhFQy+a6Vg3qytZzm5uI+3v6Dm3gbmaMNs5xfV2feyHpVm3oUd6rzfkQV
+	dakYDymI0xfvXYxXoCPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWdBb-00Aswx-2l; Tue, 22 Mar 2022 12:00:27 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWdBO-00Ast2-7z; Tue, 22 Mar 2022 12:00:15 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 3A58D153B;
- Tue, 22 Mar 2022 05:00:11 -0700 (PDT)
-Received: from [10.57.43.230] (unknown [10.57.43.230])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 956A63F73B;
- Tue, 22 Mar 2022 05:00:08 -0700 (PDT)
-Message-ID: <70422777-a3f9-b2f1-5faa-94d24fe200ac@arm.com>
-Date: Tue, 22 Mar 2022 12:00:06 +0000
+	id 1nWisN-00Bojv-BS; Tue, 22 Mar 2022 18:04:59 +0000
+Received: from mail-ed1-f43.google.com ([209.85.208.43])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nWisB-00Bogl-Hl; Tue, 22 Mar 2022 18:04:49 +0000
+Received: by mail-ed1-f43.google.com with SMTP id b15so22687243edn.4;
+ Tue, 22 Mar 2022 11:04:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=yUGdPChqlMnmJr7+nT7tnY1D50Ebcwr3w5rWWrqf40w=;
+ b=I1D9N7/5Tlu5A8kMeD+QVhl4rGCMovf7gmkeEWBrxHmcNLSYzpeQ2Rl4RnYZGp2j04
+ Sh1yTy0iVIS5xbxVGcJZRduakJeQb/UGKr9XUs/5OxK5CjCY0DO35qnjiQqNe/mOi+lv
+ ucg5cFzp6ZZdfy4QWvWoDRNX5W1XGnYR28lgSdwXwU6uHqR/r3oZAD7zrXJMS2V33up+
+ mFNu+Y8pr4pGgNfTYCFj1vqDZWTzyfE8xYwFUUZAGDKlme4+Gs3vRVw0KJEXPT0XEIbB
+ Jph6NbDkFd1mIVKUlc0o1MxiKO48be1zX/OnBuYNPARw+czB6AM/AaIjRKRhIndE799T
+ 8ihg==
+X-Gm-Message-State: AOAM533iY/wIqoNrpctiC5Y+DUK9FEtYIb+YH1/EJFb21G51eLyC6o4X
+ I9qE9n95OtbOVQpV9+WxMYw=
+X-Google-Smtp-Source: ABdhPJxpvvbq796bCqV6STafM0YifNN5hFUdSKEsnrkQBhgt4VCbfYE88mVKE9CnC5U9f10Xh7Zkyg==
+X-Received: by 2002:aa7:d7cb:0:b0:419:43f:efa9 with SMTP id
+ e11-20020aa7d7cb000000b00419043fefa9mr25170220eds.75.1647972284741; 
+ Tue, 22 Mar 2022 11:04:44 -0700 (PDT)
+Received: from [192.168.0.17] (78-11-189-27.static.ip.netia.com.pl.
+ [78.11.189.27]) by smtp.googlemail.com with ESMTPSA id
+ hr13-20020a1709073f8d00b006dff3a69572sm3870244ejc.5.2022.03.22.11.04.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 22 Mar 2022 11:04:44 -0700 (PDT)
+Message-ID: <90ebea0b-1d67-98dc-2b49-a6e3b97a2c4a@kernel.org>
+Date: Tue, 22 Mar 2022 19:04:43 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v3 18/26] arm64: dts: rockchip: rk3399: add crypto node
-Content-Language: en-GB
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH v3 21/26] dt-bindings: crypto: convert rockchip-crypto to
+ yaml
+Content-Language: en-US
 To: Corentin Labbe <clabbe@baylibre.com>, heiko@sntech.de,
  herbert@gondor.apana.org.au, krzk+dt@kernel.org, mturquette@baylibre.com,
  robh+dt@kernel.org, sboyd@kernel.org
@@ -44,12 +64,12 @@ Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-clk@vger.kernel.org, linux-crypto@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 References: <20220321200739.3572792-1-clabbe@baylibre.com>
- <20220321200739.3572792-19-clabbe@baylibre.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20220321200739.3572792-19-clabbe@baylibre.com>
+ <20220321200739.3572792-22-clabbe@baylibre.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <20220321200739.3572792-22-clabbe@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_050014_402327_AB03DA69 
-X-CRM114-Status: GOOD (  20.53  )
+X-CRM114-CacheID: sfid-20220322_110447_629877_CB465D3A 
+X-CRM114-Status: GOOD (  19.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,68 +82,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-03-21 20:07, Corentin Labbe wrote:
-> The rk3399 has a crypto IP handled by the rk3288 crypto driver so adds a
-> node for it.
+On 21/03/2022 21:07, Corentin Labbe wrote:
+> Convert rockchip-crypto to yaml
 > 
 > Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 > ---
->   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 12 ++++++++++++
->   1 file changed, 12 insertions(+)
+>  .../crypto/rockchip,rk3288-crypto.yaml        | 84 +++++++++++++++++++
+>  .../bindings/crypto/rockchip-crypto.txt       | 28 -------
+>  2 files changed, 84 insertions(+), 28 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/crypto/rockchip-crypto.txt
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 88f26d89eea1..ca2c658371a5 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -573,6 +573,18 @@ saradc: saradc@ff100000 {
->   		status = "disabled";
->   	};
->   
-> +	crypto0: crypto@ff8b0000 {
-> +		compatible = "rockchip,rk3399-crypto";
-> +		reg = <0x0 0xff8b0000 0x0 0x4000>,
-> +		      <0x0 0xff8b8000 0x0 0x4000>;
-> +		interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH 0>,
-> +			     <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		clocks = <&cru SCLK_CRYPTO0>, <&cru HCLK_M_CRYPTO0>, <&cru HCLK_S_CRYPTO0>,
-> +			 <&cru SCLK_CRYPTO1>, <&cru HCLK_M_CRYPTO1>, <&cru HCLK_S_CRYPTO1>;
-> +		resets = <&cru SRST_CRYPTO0>, <&cru SRST_CRYPTO0_S>, <&cru SRST_CRYPTO0_M>,
-> +			 <&cru SRST_CRYPTO1>, <&cru SRST_CRYPTO1_S>, <&cru SRST_CRYPTO1_M>;
-> +	};
+> diff --git a/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml b/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
+> new file mode 100644
+> index 000000000000..a6be89a1c890
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
+> @@ -0,0 +1,84 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/crypto/rockchip,rk3288-crypto.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip Electronics And Security Accelerator
+> +
+> +maintainers:
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,rk3288-crypto
+> +      - rockchip,rk3328-crypto
+> +      - rockchip,rk3399-crypto
 
-What's going on here? If these are simply two instances of the same IP 
-block as the evidence suggests, why are they crammed into a single DT 
-node rather than simply being described as two separate instances? I was 
-rather wondering what all the confusing mess in patch #16 was about, 
-until I got here.
-
-If there's something in the crypto API that means the driver can't 
-simply naively register itself multiple times, there should be any 
-number of ways for the probe routine to keep track of whether it's 
-already registered something and associate any subsequent devices with 
-the first one internally if need be. Linux implementation details should 
-not leak out as non-standard DT weirdness.
-
-I know the Rockchip IOMMU driver does this, but in that case the two 
-IOMMU instances are closely coupled and sharing work such that they 
-effectively need to be programmed identically at all times, so it was a 
-bit more justifiable. I don't know the full story here, but it certainly 
-looks like rk_get_engine_number() is just a means to schedule work on 
-any available unit independently, so looks like it wouldn't take much to 
-select between distinct devices at that point, and actually end up a lot 
-simpler and cleaner overall.
-
-Robin.
+Waaaait, what? Only rockchip,rk3288-crypto is in original bindings.
 
 > +
->   	i2c1: i2c@ff110000 {
->   		compatible = "rockchip,rk3399-i2c";
->   		reg = <0x0 0xff110000 0x0 0x1000>;
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    minItems: 4
+> +
+> +  clock-names:
+> +    minItems: 4
+> +
+> +  resets:
+> +    maxItems: 1
+
+You missed reset-names.
+
+This patch is quite different than previous, in unexpected way. What
+happened here?
+
+> +
+> +if:
+
+Please define it after "allOf:", so it could be easily extended without
+changing indentation.
+
+> +  properties:
+> +    compatible:
+> +      const: rockchip,rk3399-crypto
+> +then:
+> +  properties:
+> +    reg:
+> +      minItems: 2
+> +    interrupts:
+> +      minItems: 2
+
+List interrupts. This is really different than your v1. It also looks
+different than original bindings and you did not mention any differences
+here, nor in the commit msg. Either explain in commit msg all
+differences (and why) or move them to separate commit.
+
+You seem to change the bindings a lot (new properties, different
+constraints, new compatibles), so this should all go to separate commit.
+Now it is just confusing.
+
+> +    clocks:
+> +      minItems: 6
+
+You need maxItems. Everywhere.
+
+> +    clock-names:
+> +      minItems: 6
+
+List all items.
+
+> +    resets:
+> +      minItems: 6
+> +else:
+> +  if:
+> +    properties:
+> +      compatible:
+> +        const: rockchip,rk3328-crypto
+> +  then:
+> +    properties:
+> +      clocks:
+> +        minItems: 3
+> +      clock-names:
+> +        minItems: 3
+> +
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
