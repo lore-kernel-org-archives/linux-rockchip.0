@@ -4,56 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA4F5C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Mar 2022 10:11:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AAC7C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Mar 2022 11:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xmdb/ixOmf1LzEABFgBDIJehJ5tcQFgm8zLQ1NjRvRo=; b=HDo8jF7RkTvRPG
-	e2je/cb/Y6iuKWHipkuygWcZ3E5hY9WRHMwrMfFVuyYJJJUMp4mqyB78U5wXlxM3kQPA9ALuLPkGQ
-	vvtU894nqqFxR1Jww74neeP8fwbtCRHh5UZKpRxwEiSDUlWT8mV1ONbmtTavUEU4P2s4EozOnRxco
-	im3dwqfOI/06yO9n1iUgXaM85CGgTioq8+5NcqxjbR/JJzogNCybWc96JS3E1oCNUGmhm2Wm8c+HF
-	hXMv86M9atdGFQuct+rk9JcbYpa7aWD1jQBPUJ4YKnGmknWd7t/BpPYF/kGiGdsGPEwcShWzuTdCY
-	V1e90xChW0vd7QV7WWKQ==;
+	List-Owner; bh=5EmAE6zK6nsykmrx2sD2rtGBqB85rgzDMfjYSVkLsZI=; b=2jt4b/Cwovz73p
+	/45guxrb+FxgYCsI+S4MXH9A7bSLxkuAonP0ZmZXcpvmmHtQmAOLUc2InqVfLWqv6MChuNfIeInrN
+	ysNOvO1u1+XGD27sLkBnqj1iQ3ZQSjX3PyFySX8sAYXytjst0xjOhJtZJMR8vRCK/pfn2F1v/jQyo
+	VECPYgOkLbuc6HyBw2jIY1XbSvqj1Rkb7Pu8/oIoYrQgVjY4B9aiskmp4kliHNYMhOdawfKGyfCoO
+	5UBvgfJ5epMQD7KKNHXmO/r9C06pMuhPHiKyVO3XaMMltjy6DOtGO4lKVtSqrio8u8RhCK5f6lz67
+	I7+NpXhqTBbDlCJ2XSDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWbTj-00AgOf-Ph; Tue, 22 Mar 2022 10:11:03 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWbTh-00AgOM-HS
- for linux-rockchip@lists.infradead.org; Tue, 22 Mar 2022 10:11:03 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
- [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id E8CD29DE;
- Tue, 22 Mar 2022 11:10:59 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1647943860;
- bh=jhOjXgr7UjDxRa31qbVXrKIbnaHfF09GzvEZrySRYpE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=m/tesoxdJm3wADkRIHfxnNxZZdwGx/1HvZQyg//ddrWSOoMDy+W+6pn+4Esef3hik
- BST2FaFKJd/KJyrVWbnoYOSXQlhe5kAVLnHwZ0vPQFMhwpaSg7jtVodieAoSVY9Zoi
- k8QH7RnTIdfAoJKemJdpy6TEAfDI1PKnHZ/XKTKA=
-Date: Tue, 22 Mar 2022 12:10:43 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>
-Cc: linux-media@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- Paul Elder <paul.elder@ideasonboard.com>,
- Tomasz Figa <tfiga@google.com>, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 16/17] media: rkisp1: debug: Move resizer register
- dump to debugfs
-Message-ID: <Yjmgo5YbLdQv8Nb/@pendragon.ideasonboard.com>
-References: <20220319163100.3083-1-laurent.pinchart@ideasonboard.com>
- <20220319163100.3083-17-laurent.pinchart@ideasonboard.com>
- <20220322052818.f7seus7fd5qdtl6p@guri>
+	id 1nWce3-00Aolb-Vy; Tue, 22 Mar 2022 11:25:47 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nWcds-00AojZ-1a; Tue, 22 Mar 2022 11:25:38 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7612D153B;
+ Tue, 22 Mar 2022 04:25:34 -0700 (PDT)
+Received: from [10.57.43.230] (unknown [10.57.43.230])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 93EEA3F66F;
+ Tue, 22 Mar 2022 04:25:30 -0700 (PDT)
+Message-ID: <c643c8a0-3ebc-519b-bc6e-f95362d43a69@arm.com>
+Date: Tue, 22 Mar 2022 11:25:25 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220322052818.f7seus7fd5qdtl6p@guri>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v3 06/26] crypto: rockchip: add fallback for cipher
+Content-Language: en-GB
+To: Corentin Labbe <clabbe@baylibre.com>, heiko@sntech.de,
+ herbert@gondor.apana.org.au, krzk+dt@kernel.org, mturquette@baylibre.com,
+ robh+dt@kernel.org, sboyd@kernel.org
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-crypto@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20220321200739.3572792-1-clabbe@baylibre.com>
+ <20220321200739.3572792-7-clabbe@baylibre.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20220321200739.3572792-7-clabbe@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_031101_778841_FDA1CE91 
-X-CRM114-Status: GOOD (  21.24  )
+X-CRM114-CacheID: sfid-20220322_042536_253016_289C4E59 
+X-CRM114-Status: GOOD (  22.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,159 +62,274 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dafna,
-
-On Tue, Mar 22, 2022 at 07:28:18AM +0200, Dafna Hirschfeld wrote:
-> On 19.03.2022 18:30, Laurent Pinchart wrote:
-> > The debugfs support already includes support to dump core and ISP
-> > registers. Move the resizer register dump there too to make the
-> > userspace interface consistent.
-> > 
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > ---
-> >  .../platform/rockchip/rkisp1/rkisp1-debug.c   | 48 +++++++++++++++++++
-> >  .../platform/rockchip/rkisp1/rkisp1-resizer.c | 37 --------------
-> >  2 files changed, 48 insertions(+), 37 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> > index 97be529a74e8..c89779daf319 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> > @@ -81,6 +81,50 @@ static int rkisp1_debug_dump_isp_regs_show(struct seq_file *m, void *p)
-> >  }
-> >  DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_isp_regs);
-> >  
-> > +#define RKISP1_DEBUG_RSZ_REG_DEC(name) { \
-> > +	RKISP1_CIF_##name, RKISP1_CIF_##name##_SHD, #name, false \
-> > +}
-> > +
-> > +#define RKISP1_DEBUG_RSZ_REG_HEX(name) { \
-> > +	RKISP1_CIF_##name, RKISP1_CIF_##name##_SHD, #name, true \
-> > +}
-> > +
-> > +static int rkisp1_debug_dump_rsz_regs_show(struct seq_file *m, void *p)
-> > +{
-> > +	static const struct {
-> > +		u32 reg;
-> > +		u32 shadow;
-> > +		const char * const name;
-> > +		bool hex;
-> > +	} registers[] = {
-> > +		RKISP1_DEBUG_RSZ_REG_HEX(RSZ_CTRL),
-> > +		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_SCALE_HY),
-> > +		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_SCALE_HCB),
-> > +		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_SCALE_HCR),
-> > +		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_SCALE_VY),
-> > +		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_SCALE_VC),
-> > +		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_PHASE_HY),
-> > +		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_PHASE_HC),
-> > +		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_PHASE_VY),
-> > +		RKISP1_DEBUG_RSZ_REG_DEC(RSZ_PHASE_VC),
-> > +		{ /* Sentinel */ },
-> > +	};
-> > +
-> > +	struct rkisp1_resizer *rsz = m->private;
-> > +	typeof(registers[0]) *reg;
-> > +	u32 val, shd;
-> > +
-> Why here we don't call the pm_runtime_get_if_in_use ?
+On 2022-03-21 20:07, Corentin Labbe wrote:
+> The hardware does not handle 0 size length request, let's add a
+> fallback.
+> Furthermore fallback will be used for all unaligned case the hardware
+> cannot handle.
 > 
-> > +	for (reg = registers; reg->name; ++reg) {
-> > +		val = rkisp1_read(rsz->rkisp1, rsz->regs_base + reg->reg);
-> > +		shd = rkisp1_read(rsz->rkisp1, rsz->regs_base + reg->shadow);
-> > +		seq_printf(m, reg->hex ? "%14s: 0x%08x/0x%08x\n" : "%14s: %u/%u\n",
-> > +			   reg->name, val, shd);
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_rsz_regs);
-> > +
-> >  #define RKISP1_DEBUG_DATA_COUNT_BINS	32
-> >  #define RKISP1_DEBUG_DATA_COUNT_STEP	(4096 / RKISP1_DEBUG_DATA_COUNT_BINS)
-> >  
-> > @@ -168,6 +212,10 @@ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
-> >  			    &rkisp1_debug_dump_core_regs_fops);
-> >  	debugfs_create_file("isp", 0444, regs_dir, rkisp1,
-> >  			    &rkisp1_debug_dump_isp_regs_fops);
-> > +	debugfs_create_file("mrsz", 0444, regs_dir, &rkisp1->resizer_devs[0],
-> > +			    &rkisp1_debug_dump_rsz_regs_fops);
-> > +	debugfs_create_file("srsz", 0444, regs_dir, &rkisp1->resizer_devs[1],
-> > +			    &rkisp1_debug_dump_rsz_regs_fops);
+> Fixes: ce0183cb6464b ("crypto: rockchip - switch to skcipher API")
+> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> ---
+>   drivers/crypto/Kconfig                        |   4 +
+>   drivers/crypto/rockchip/rk3288_crypto.h       |   2 +
+>   .../crypto/rockchip/rk3288_crypto_skcipher.c  | 105 +++++++++++++++---
+>   3 files changed, 98 insertions(+), 13 deletions(-)
 > 
-> s/resizer_devs[0]/resizer_devs[RKISP1_MAINPATH]/
-> s/resizer_devs[1]/resizer_devs[RKISP1_SELFPATH]/
+> diff --git a/drivers/crypto/Kconfig b/drivers/crypto/Kconfig
+> index 7b2d138bc83e..84ab14afcbd9 100644
+> --- a/drivers/crypto/Kconfig
+> +++ b/drivers/crypto/Kconfig
+> @@ -784,6 +784,10 @@ config CRYPTO_DEV_IMGTEC_HASH
+>   config CRYPTO_DEV_ROCKCHIP
+>   	tristate "Rockchip's Cryptographic Engine driver"
+>   	depends on OF && ARCH_ROCKCHIP
+> +	depends on PM
 
-Good point, will fix.
+This appears to belong to patch #13 rather than this one.
 
-> >  }
-> >  
-> >  void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> > index ac1b357a2a3a..1c07985c810d 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> > @@ -203,41 +203,6 @@ static void rkisp1_dcrop_config(struct rkisp1_resizer *rsz)
-> >   * Resizer hw configs
-> >   */
-> >  
-> > -static void rkisp1_rsz_dump_regs(struct rkisp1_resizer *rsz)
-> > -{
-> > -	dev_dbg(rsz->rkisp1->dev,
-> > -		"RSZ_CTRL 0x%08x/0x%08x\n"
-> > -		"RSZ_SCALE_HY %d/%d\n"
-> > -		"RSZ_SCALE_HCB %d/%d\n"
-> > -		"RSZ_SCALE_HCR %d/%d\n"
-> > -		"RSZ_SCALE_VY %d/%d\n"
-> > -		"RSZ_SCALE_VC %d/%d\n"
-> > -		"RSZ_PHASE_HY %d/%d\n"
-> > -		"RSZ_PHASE_HC %d/%d\n"
-> > -		"RSZ_PHASE_VY %d/%d\n"
-> > -		"RSZ_PHASE_VC %d/%d\n",
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_CTRL),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_CTRL_SHD),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HY),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HY_SHD),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HCB),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HCB_SHD),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HCR),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_HCR_SHD),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_VY),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_VY_SHD),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_VC),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_SCALE_VC_SHD),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_HY),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_HY_SHD),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_HC),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_HC_SHD),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_VY),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_VY_SHD),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_VC),
-> > -		rkisp1_rsz_read(rsz, RKISP1_CIF_RSZ_PHASE_VC_SHD));
-> > -}
-> > -
-> >  static void rkisp1_rsz_update_shadow(struct rkisp1_resizer *rsz,
-> >  				     enum rkisp1_shadow_regs_when when)
-> >  {
-> > @@ -386,8 +351,6 @@ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
-> >  
-> >  	/* set values in the hw */
-> >  	rkisp1_rsz_config_regs(rsz, &sink_y, &sink_c, &src_y, &src_c, when);
-> > -
-> > -	rkisp1_rsz_dump_regs(rsz);
-> >  }
-> >  
-> >  /* ----------------------------------------------------------------------------
+My initial thought was that it probably shouldn't be something for 
+random consumers to care about at all, but there do seem to be a handful 
+of other drivers relying on pm_runtime_resume to enable their clocks, so 
+I guess maybe it's an acceptable idiom :/
 
--- 
-Regards,
+Robin.
 
-Laurent Pinchart
+> +	select CRYPTO_ECB
+> +	select CRYPTO_CBC
+> +	select CRYPTO_DES
+>   	select CRYPTO_AES
+>   	select CRYPTO_LIB_DES
+>   	select CRYPTO_MD5
+> diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
+> index c919d9a43a08..8b1e15d8ddc6 100644
+> --- a/drivers/crypto/rockchip/rk3288_crypto.h
+> +++ b/drivers/crypto/rockchip/rk3288_crypto.h
+> @@ -246,10 +246,12 @@ struct rk_cipher_ctx {
+>   	struct rk_crypto_info		*dev;
+>   	unsigned int			keylen;
+>   	u8				iv[AES_BLOCK_SIZE];
+> +	struct crypto_skcipher *fallback_tfm;
+>   };
+>   
+>   struct rk_cipher_rctx {
+>   	u32				mode;
+> +	struct skcipher_request fallback_req;   // keep at the end
+>   };
+>   
+>   enum alg_type {
+> diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> index bbd0bf52bf07..c6b601086c04 100644
+> --- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> +++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> @@ -13,6 +13,71 @@
+>   
+>   #define RK_CRYPTO_DEC			BIT(0)
+>   
+> +static int rk_cipher_need_fallback(struct skcipher_request *req)
+> +{
+> +	struct scatterlist *sgs, *sgd;
+> +	unsigned int todo, len;
+> +	unsigned int bs = crypto_skcipher_blocksize(tfm);
+> +
+> +	if (!req->cryptlen)
+> +		return true;
+> +
+> +	len = req->cryptlen;
+> +	sgs = req->src;
+> +	while (sgs) {
+> +		if (!IS_ALIGNED(sgs->offset, sizeof(u32))) {
+> +			return true;
+> +		}
+> +		todo = min(len, sgs->length);
+> +		if (todo % bs) {
+> +			return true;
+> +		}
+> +		len -= todo;
+> +		sgs = sg_next(sgs);
+> +	}
+> +	len = req->cryptlen;
+> +	sgd = req->dst;
+> +	while (sgd) {
+> +		if (!IS_ALIGNED(sgd->offset, sizeof(u32))) {
+> +			return true;
+> +		}
+> +		todo = min(len, sgd->length);
+> +		if (todo % bs) {
+> +			return true;
+> +		}
+> +		len -= todo;
+> +		sgd = sg_next(sgd);
+> +	}
+> +	sgs = req->src;
+> +	sgd = req->dst;
+> +	while (sgs && sgd) {
+> +		if (sgs->length != sgd->length)
+> +			return true;
+> +		sgs = sg_next(sgs);
+> +		sgd = sg_next(sgd);
+> +	}
+> +	return false;
+> +}
+> +
+> +static int rk_cipher_fallback(struct skcipher_request *areq)
+> +{
+> +	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(areq);
+> +	struct rk_cipher_ctx *op = crypto_skcipher_ctx(tfm);
+> +	struct rk_cipher_rctx *rctx = skcipher_request_ctx(areq);
+> +	int err;
+> +
+> +	skcipher_request_set_tfm(&rctx->fallback_req, op->fallback_tfm);
+> +	skcipher_request_set_callback(&rctx->fallback_req, areq->base.flags,
+> +				      areq->base.complete, areq->base.data);
+> +	skcipher_request_set_crypt(&rctx->fallback_req, areq->src, areq->dst,
+> +				   areq->cryptlen, areq->iv);
+> +	if (rctx->mode & RK_CRYPTO_DEC)
+> +		err = crypto_skcipher_decrypt(&rctx->fallback_req);
+> +	else
+> +		err = crypto_skcipher_encrypt(&rctx->fallback_req);
+> +	return err;
+> +}
+> +
+>   static void rk_crypto_complete(struct crypto_async_request *base, int err)
+>   {
+>   	if (base->complete)
+> @@ -22,10 +87,10 @@ static void rk_crypto_complete(struct crypto_async_request *base, int err)
+>   static int rk_handle_req(struct rk_crypto_info *dev,
+>   			 struct skcipher_request *req)
+>   {
+> -	if (!IS_ALIGNED(req->cryptlen, dev->align_size))
+> -		return -EINVAL;
+> -	else
+> -		return dev->enqueue(dev, &req->base);
+> +	if (rk_cipher_need_fallback(req))
+> +		return rk_cipher_fallback(req);
+> +
+> +	return dev->enqueue(dev, &req->base);
+>   }
+>   
+>   static int rk_aes_setkey(struct crypto_skcipher *cipher,
+> @@ -39,7 +104,8 @@ static int rk_aes_setkey(struct crypto_skcipher *cipher,
+>   		return -EINVAL;
+>   	ctx->keylen = keylen;
+>   	memcpy_toio(ctx->dev->reg + RK_CRYPTO_AES_KEY_0, key, keylen);
+> -	return 0;
+> +
+> +	return crypto_skcipher_setkey(ctx->fallback_tfm, key, keylen);
+>   }
+>   
+>   static int rk_des_setkey(struct crypto_skcipher *cipher,
+> @@ -54,7 +120,8 @@ static int rk_des_setkey(struct crypto_skcipher *cipher,
+>   
+>   	ctx->keylen = keylen;
+>   	memcpy_toio(ctx->dev->reg + RK_CRYPTO_TDES_KEY1_0, key, keylen);
+> -	return 0;
+> +
+> +	return crypto_skcipher_setkey(ctx->fallback_tfm, key, keylen);
+>   }
+>   
+>   static int rk_tdes_setkey(struct crypto_skcipher *cipher,
+> @@ -69,7 +136,7 @@ static int rk_tdes_setkey(struct crypto_skcipher *cipher,
+>   
+>   	ctx->keylen = keylen;
+>   	memcpy_toio(ctx->dev->reg + RK_CRYPTO_TDES_KEY1_0, key, keylen);
+> -	return 0;
+> +	return crypto_skcipher_setkey(ctx->fallback_tfm, key, keylen);
+>   }
+>   
+>   static int rk_aes_ecb_encrypt(struct skcipher_request *req)
+> @@ -394,6 +461,7 @@ static int rk_ablk_init_tfm(struct crypto_skcipher *tfm)
+>   {
+>   	struct rk_cipher_ctx *ctx = crypto_skcipher_ctx(tfm);
+>   	struct skcipher_alg *alg = crypto_skcipher_alg(tfm);
+> +	const char *name = crypto_tfm_alg_name(&tfm->base);
+>   	struct rk_crypto_tmp *algt;
+>   
+>   	algt = container_of(alg, struct rk_crypto_tmp, alg.skcipher);
+> @@ -407,6 +475,16 @@ static int rk_ablk_init_tfm(struct crypto_skcipher *tfm)
+>   	if (!ctx->dev->addr_vir)
+>   		return -ENOMEM;
+>   
+> +	ctx->fallback_tfm = crypto_alloc_skcipher(name, 0, CRYPTO_ALG_NEED_FALLBACK);
+> +	if (IS_ERR(ctx->fallback_tfm)) {
+> +		dev_err(ctx->dev->dev, "ERROR: Cannot allocate fallback for %s %ld\n",
+> +			name, PTR_ERR(ctx->fallback_tfm));
+> +		return PTR_ERR(ctx->fallback_tfm);
+> +	}
+> +
+> +	tfm->reqsize = sizeof(struct rk_cipher_rctx) +
+> +		crypto_skcipher_reqsize(ctx->fallback_tfm);
+> +
+>   	return 0;
+>   }
+>   
+> @@ -415,6 +493,7 @@ static void rk_ablk_exit_tfm(struct crypto_skcipher *tfm)
+>   	struct rk_cipher_ctx *ctx = crypto_skcipher_ctx(tfm);
+>   
+>   	free_page((unsigned long)ctx->dev->addr_vir);
+> +	crypto_free_skcipher(ctx->fallback_tfm);
+>   }
+>   
+>   struct rk_crypto_tmp rk_ecb_aes_alg = {
+> @@ -423,7 +502,7 @@ struct rk_crypto_tmp rk_ecb_aes_alg = {
+>   		.base.cra_name		= "ecb(aes)",
+>   		.base.cra_driver_name	= "ecb-aes-rk",
+>   		.base.cra_priority	= 300,
+> -		.base.cra_flags		= CRYPTO_ALG_ASYNC,
+> +		.base.cra_flags		= CRYPTO_ALG_ASYNC | CRYPTO_ALG_NEED_FALLBACK,
+>   		.base.cra_blocksize	= AES_BLOCK_SIZE,
+>   		.base.cra_ctxsize	= sizeof(struct rk_cipher_ctx),
+>   		.base.cra_alignmask	= 0x0f,
+> @@ -445,7 +524,7 @@ struct rk_crypto_tmp rk_cbc_aes_alg = {
+>   		.base.cra_name		= "cbc(aes)",
+>   		.base.cra_driver_name	= "cbc-aes-rk",
+>   		.base.cra_priority	= 300,
+> -		.base.cra_flags		= CRYPTO_ALG_ASYNC,
+> +		.base.cra_flags		= CRYPTO_ALG_ASYNC | CRYPTO_ALG_NEED_FALLBACK,
+>   		.base.cra_blocksize	= AES_BLOCK_SIZE,
+>   		.base.cra_ctxsize	= sizeof(struct rk_cipher_ctx),
+>   		.base.cra_alignmask	= 0x0f,
+> @@ -468,7 +547,7 @@ struct rk_crypto_tmp rk_ecb_des_alg = {
+>   		.base.cra_name		= "ecb(des)",
+>   		.base.cra_driver_name	= "ecb-des-rk",
+>   		.base.cra_priority	= 300,
+> -		.base.cra_flags		= CRYPTO_ALG_ASYNC,
+> +		.base.cra_flags		= CRYPTO_ALG_ASYNC | CRYPTO_ALG_NEED_FALLBACK,
+>   		.base.cra_blocksize	= DES_BLOCK_SIZE,
+>   		.base.cra_ctxsize	= sizeof(struct rk_cipher_ctx),
+>   		.base.cra_alignmask	= 0x07,
+> @@ -490,7 +569,7 @@ struct rk_crypto_tmp rk_cbc_des_alg = {
+>   		.base.cra_name		= "cbc(des)",
+>   		.base.cra_driver_name	= "cbc-des-rk",
+>   		.base.cra_priority	= 300,
+> -		.base.cra_flags		= CRYPTO_ALG_ASYNC,
+> +		.base.cra_flags		= CRYPTO_ALG_ASYNC | CRYPTO_ALG_NEED_FALLBACK,
+>   		.base.cra_blocksize	= DES_BLOCK_SIZE,
+>   		.base.cra_ctxsize	= sizeof(struct rk_cipher_ctx),
+>   		.base.cra_alignmask	= 0x07,
+> @@ -513,7 +592,7 @@ struct rk_crypto_tmp rk_ecb_des3_ede_alg = {
+>   		.base.cra_name		= "ecb(des3_ede)",
+>   		.base.cra_driver_name	= "ecb-des3-ede-rk",
+>   		.base.cra_priority	= 300,
+> -		.base.cra_flags		= CRYPTO_ALG_ASYNC,
+> +		.base.cra_flags		= CRYPTO_ALG_ASYNC | CRYPTO_ALG_NEED_FALLBACK,
+>   		.base.cra_blocksize	= DES_BLOCK_SIZE,
+>   		.base.cra_ctxsize	= sizeof(struct rk_cipher_ctx),
+>   		.base.cra_alignmask	= 0x07,
+> @@ -535,7 +614,7 @@ struct rk_crypto_tmp rk_cbc_des3_ede_alg = {
+>   		.base.cra_name		= "cbc(des3_ede)",
+>   		.base.cra_driver_name	= "cbc-des3-ede-rk",
+>   		.base.cra_priority	= 300,
+> -		.base.cra_flags		= CRYPTO_ALG_ASYNC,
+> +		.base.cra_flags		= CRYPTO_ALG_ASYNC | CRYPTO_ALG_NEED_FALLBACK,
+>   		.base.cra_blocksize	= DES_BLOCK_SIZE,
+>   		.base.cra_ctxsize	= sizeof(struct rk_cipher_ctx),
+>   		.base.cra_alignmask	= 0x07,
 
 _______________________________________________
 Linux-rockchip mailing list
