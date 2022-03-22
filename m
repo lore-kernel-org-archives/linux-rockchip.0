@@ -4,84 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4239FC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Mar 2022 09:12:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B720C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Mar 2022 09:58:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X/mmSgKF3mFxAf38waAvb0qAPPnwwe2Jc/ML+V4iiL4=; b=Ld4YCGxlNEk6o/
-	RtojqI1AClCNqBPBk2vInai0MQ3L2xXUXX4ksKEFbKgZ5g+JJzyQtVM2fGNXjEubdrfy7r1k2KR/7
-	xAXsYyAn9slNjgvDiBil6TzaCI6UrVmLLFC/MEQD8rvmZjw2sXqfVlFynfIJvGGiaXltalEYwS+Yv
-	f3WM7C2l77QZPGqGXq2atBgYibZm+RILmIY0EOTJB//+GaCG4tLT3JFGoeKRGUmW85R1GyYjqczZa
-	Zn0Jb2momWMzrh8VfgdovtFM/W9HeJEymIX8iUx06sB2ZEFbuj0j49XWMljcVtqWrjyGJi2dLtxWC
-	mipp04igAEeBiUjVKQiQ==;
+	List-Owner; bh=y0boF31h2zaOO9izVsb0W3lmEEzzd5qN1idKN2bcsS8=; b=hE7Tjcmhnx7+Vr
+	M0ITLG4PLGXF+fdRSawJ748vgadH0TG/m+1MP/YuA5h8FzLfyoruLbsMj3PxiUc5kkIwQrsTadaNi
+	GmTeemPwFwmZeZFAN+N8ySXV4Ml+is6rQVf9OpY35KhlZcp5x6bYbIaFglPKubY3hGPgl91zu3JNK
+	SZqZyZOzaNxfllcufe7Tgef7aMCrgBCSfozpT1nr0prTvq7SmCZe/0605OFyv/DX/3hSK5mzc/Yjo
+	Fj0x241h1r3cx74Sr8X9Ss1/GuxN3y1uEEUXytlwGL3IahdQ9hY1XuLlwOAbkY7t6emcRuWbRmeU3
+	JrlKmvE5fdOxaE4qHV0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWaYn-00AYDh-3P; Tue, 22 Mar 2022 09:12:13 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1nWbHZ-00Aeuf-7x; Tue, 22 Mar 2022 09:58:29 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWaYj-00AYCB-RP
- for linux-rockchip@lists.infradead.org; Tue, 22 Mar 2022 09:12:12 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id p9so23943683wra.12
- for <linux-rockchip@lists.infradead.org>; Tue, 22 Mar 2022 02:12:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=qjT77DYYL/GJDwodJ6Rapm1bpiNcBpPlg2Vo7gCqJB8=;
- b=YHPUJUn3zIjNoMGTdwff2Vfop45kQtaHqwdMY6Nf8YYhoP7j4H4GyXGENtvzHBaohP
- F2MgM6pQidOA1F9Uq+q+SVMZR6AGKPBRf8tBeqoqe6Mdq2WTxk7cNHZ6zlePagEwmM91
- Yo3oMJuAk+OfT3Hp6pPqHN1iV5UhwJ7kJcjVRcnRF9bGo8WXBUr1dmWcuxv0rxlQ5WJx
- PRn8cHwW9Q2h2QVnvyff5uKC7pk3mUtYBsAzefyp7x9sdbToS2G+u8m4HdvZUkEXYVxS
- 5IAnOPoa+Rog0P93TZ+oXkPfUbVVnlAqf4smHVGah/4oE00rlX/6OLWizehJas3RtOyt
- KXtg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=qjT77DYYL/GJDwodJ6Rapm1bpiNcBpPlg2Vo7gCqJB8=;
- b=65/QcfVYg4wLa07LaCL1UG4Wzu7YXvuCxAEXZqloefo6HSreL1zwfuC1A94HtrFuT8
- 0/cSnC47F6c+Yiv55pE0QvJIpd+Wh1PDbxC0oLYkiMmYl1XbI2bSCVUkkCByk264gGbU
- QjEiQoY5UiWHo1KPURrrwOStbnbV6mRziRdG5rARTQeB7S25rIShgu41TubpBWwzVLHf
- KwRAa/wjLwIHAz5rUKY5Rp+7QDSAc8OAuXoYbZr0s8b/rxNXQ9yOTgXSTDQ7L2xRBmk5
- GULOHKqp4prYzl6L0PzZiz8ySXl5EG6aAPBXCrfBb12RG71WhbJy9a+0to2iXArG+UDe
- HXBg==
-X-Gm-Message-State: AOAM531FW1RR2N3qprij+bEvMMg3CG5vQHJ6jbRNilN5Vs06Eaopbuw5
- VXg2+C39ufjFsumf4IkhArPx2A==
-X-Google-Smtp-Source: ABdhPJwLrFHSs/rg59Z4qNL8r8Ak6OWe1nu8EXetVqZllyP8jhyj2fCHM/JwIgFdiBq/bbrEdWHwGA==
-X-Received: by 2002:a05:6000:2ca:b0:204:1e6a:d2a9 with SMTP id
- o10-20020a05600002ca00b002041e6ad2a9mr3768869wry.182.1647940327256; 
- Tue, 22 Mar 2022 02:12:07 -0700 (PDT)
-Received: from Red ([2a01:cb1d:3d5:a100:264b:feff:fe03:2806])
- by smtp.googlemail.com with ESMTPSA id
- u7-20020a5d6da7000000b00203d9d1875bsm17176008wrs.73.2022.03.22.02.12.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Mar 2022 02:12:06 -0700 (PDT)
-Date: Tue, 22 Mar 2022 10:12:04 +0100
-From: LABBE Corentin <clabbe@baylibre.com>
-To: Rob Herring <robh@kernel.org>
-Cc: sboyd@kernel.org, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- krzk+dt@kernel.org, mturquette@baylibre.com,
- linux-crypto@vger.kernel.org, heiko@sntech.de, robh+dt@kernel.org,
- herbert@gondor.apana.org.au, linux-clk@vger.kernel.org
-Subject: Re: [PATCH v3 21/26] dt-bindings: crypto: convert rockchip-crypto to
- yaml
-Message-ID: <YjmS5DE95xTuJMi7@Red>
-References: <20220321200739.3572792-1-clabbe@baylibre.com>
- <20220321200739.3572792-22-clabbe@baylibre.com>
- <1647913851.207213.941032.nullmailer@robh.at.kernel.org>
+ id 1nWbHW-00Aets-By
+ for linux-rockchip@lists.infradead.org; Tue, 22 Mar 2022 09:58:27 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
+ [62.78.145.57])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id CE8DB9DE;
+ Tue, 22 Mar 2022 10:58:22 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1647943103;
+ bh=DswX2kfrS856LewmIspY3LDA5hl7TTAsCqlFb8OGsXM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=i9p00CH3tl3GZbk78BA5JXsM8SvA5qcNbMrIZ2Tdfdb0HbClRSaSUFirifQ9lRBeV
+ d+f7qEJEMVIuy/lML9yAvaKw2BqtoFuavEy1u8UvDlVIhsx+4cEaBA9MdNl4DWzfX+
+ yKHh1GgPlsu4P7vsi0OcDZtsgtxiP3jFUUY1T8Tc=
+Date: Tue, 22 Mar 2022 11:58:06 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Dafna Hirschfeld <dafna@fastmail.com>
+Cc: linux-media@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ Paul Elder <paul.elder@ideasonboard.com>,
+ Tomasz Figa <tfiga@google.com>, linux-rockchip@lists.infradead.org,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Subject: Re: [PATCH v3 03/17] media: rkisp1: isp: Fix and simplify
+ (un)registration
+Message-ID: <Yjmdri0OAHOeaej0@pendragon.ideasonboard.com>
+References: <20220319163100.3083-1-laurent.pinchart@ideasonboard.com>
+ <20220319163100.3083-4-laurent.pinchart@ideasonboard.com>
+ <20220322042305.fcriktxrjd4vfbfo@guri>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1647913851.207213.941032.nullmailer@robh.at.kernel.org>
+In-Reply-To: <20220322042305.fcriktxrjd4vfbfo@guri>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220322_021209_980293_AF59743B 
-X-CRM114-Status: GOOD (  16.04  )
+X-CRM114-CacheID: sfid-20220322_025826_585362_45865CF3 
+X-CRM114-Status: GOOD (  24.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,77 +67,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Le Mon, Mar 21, 2022 at 08:50:51PM -0500, Rob Herring a =E9crit :
-> On Mon, 21 Mar 2022 20:07:34 +0000, Corentin Labbe wrote:
-> > Convert rockchip-crypto to yaml
-> > =
+Hi Dafna,
 
-> > Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+On Tue, Mar 22, 2022 at 06:23:05AM +0200, Dafna Hirschfeld wrote:
+> On 19.03.2022 18:30, Laurent Pinchart wrote:
+> > The rkisp1_isp_register() and rkisp1_isp_unregister() functions don't
+> > destroy the mutex (in the error path for the former). Fix this, simplify
+> > error handling at registration time as media_entity_cleanup() can be
+> > called on an uninitialized entity, and make rkisp1_isp_unregister() and
+> > safe to be called on an unregistered isp subdev to prepare for
+> > simplification of error handling at probe time.
+> > 
+> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 > > ---
-> >  .../crypto/rockchip,rk3288-crypto.yaml        | 84 +++++++++++++++++++
-> >  .../bindings/crypto/rockchip-crypto.txt       | 28 -------
-> >  2 files changed, 84 insertions(+), 28 deletions(-)
-> >  create mode 100644 Documentation/devicetree/bindings/crypto/rockchip,r=
-k3288-crypto.yaml
-> >  delete mode 100644 Documentation/devicetree/bindings/crypto/rockchip-c=
-rypto.txt
-> > =
+> >  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 20 ++++++++++++-------
+> >  1 file changed, 13 insertions(+), 7 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > index 2a35bf24e54e..f84e53b60ee1 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > @@ -1090,29 +1090,35 @@ int rkisp1_isp_register(struct rkisp1_device *rkisp1)
+> >  	mutex_init(&isp->ops_lock);
+> >  	ret = media_entity_pads_init(&sd->entity, RKISP1_ISP_PAD_MAX, pads);
+> >  	if (ret)
+> > -		return ret;
+> > +		goto error;
+> >  
+> >  	ret = v4l2_device_register_subdev(&rkisp1->v4l2_dev, sd);
+> >  	if (ret) {
+> >  		dev_err(rkisp1->dev, "Failed to register isp subdev\n");
+> > -		goto err_cleanup_media_entity;
+> > +		goto error;
+> >  	}
+> >  
+> >  	rkisp1_isp_init_config(sd, &state);
+> > +
+> >  	return 0;
+> >  
+> > -err_cleanup_media_entity:
+> > +error:
+> >  	media_entity_cleanup(&sd->entity);
+> 
+> I remember long ago that Ezequiel suggested removing that
+> 'media_entity_cleanup' since it was never implemented which
+> indicates there is probably no need for it.
 
-> =
+The function is empty indeed, but I'd rather keep it. If we happen to
+need to cleanup anything in the future, having to patch all drivers to
+add media_entity_cleanup() calls would be very painful.
 
-> Running 'make dtbs_check' with the schema in this patch gives the
-> following warnings. Consider if they are expected or the schema is
-> incorrect. These may not be new warnings.
-> =
+> > -
+> > +	mutex_destroy(&isp->ops_lock);
+> > +	isp->sd.flags = 0;
+> >  	return ret;
+> >  }
+> >  
+> >  void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
+> >  {
+> > -	struct v4l2_subdev *sd = &rkisp1->isp.sd;
+> > +	struct rkisp1_isp *isp = &rkisp1->isp;
+> >  
+> > -	v4l2_device_unregister_subdev(sd);
+> > -	media_entity_cleanup(&sd->entity);
+> > +	if (!isp->sd.flags)
+> 
+> We assume no flags means that the device is not registered. This might
+> stop working if we ever decide to remove the existing flags.
+> So better "if (!isp->sd.v4l2_dev)" ?
 
-> Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-> This will change in the future.
-> =
+Good point. I'll change that.
 
-> Full log is available here: https://patchwork.ozlabs.org/patch/1607887
-> =
+> > +		return;
+> > +
+> > +	v4l2_device_unregister_subdev(&isp->sd);
+> > +	media_entity_cleanup(&isp->sd.entity);
+> > +	mutex_destroy(&isp->ops_lock);
+> >  }
+> >  
+> >  /* ----------------------------------------------------------------------------
 
-> =
+-- 
+Regards,
 
-> cypto-controller@ff8a0000: 'reset-names' does not match any of the regexe=
-s: 'pinctrl-[0-9]+'
-> 	arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml
-> 	arch/arm/boot/dts/rk3288-evb-rk808.dt.yaml
-> 	arch/arm/boot/dts/rk3288-firefly-beta.dt.yaml
-> 	arch/arm/boot/dts/rk3288-firefly.dt.yaml
-> 	arch/arm/boot/dts/rk3288-firefly-reload.dt.yaml
-> 	arch/arm/boot/dts/rk3288-miqi.dt.yaml
-> 	arch/arm/boot/dts/rk3288-phycore-rdk.dt.yaml
-> 	arch/arm/boot/dts/rk3288-popmetal.dt.yaml
-> 	arch/arm/boot/dts/rk3288-r89.dt.yaml
-> 	arch/arm/boot/dts/rk3288-rock2-square.dt.yaml
-> 	arch/arm/boot/dts/rk3288-rock-pi-n8.dt.yaml
-> 	arch/arm/boot/dts/rk3288-tinker.dt.yaml
-> 	arch/arm/boot/dts/rk3288-tinker-s.dt.yaml
-> 	arch/arm/boot/dts/rk3288-veyron-brain.dt.yaml
-> 	arch/arm/boot/dts/rk3288-veyron-fievel.dt.yaml
-> 	arch/arm/boot/dts/rk3288-veyron-jaq.dt.yaml
-> 	arch/arm/boot/dts/rk3288-veyron-jerry.dt.yaml
-> 	arch/arm/boot/dts/rk3288-veyron-mickey.dt.yaml
-> 	arch/arm/boot/dts/rk3288-veyron-mighty.dt.yaml
-> 	arch/arm/boot/dts/rk3288-veyron-minnie.dt.yaml
-> 	arch/arm/boot/dts/rk3288-veyron-pinky.dt.yaml
-> 	arch/arm/boot/dts/rk3288-veyron-speedy.dt.yaml
-> 	arch/arm/boot/dts/rk3288-veyron-tiger.dt.yaml
-> 	arch/arm/boot/dts/rk3288-vyasa.dt.yaml
-> =
-
-
-Hello
-
-This should not happen since patch 20 remove it.
-
-Regards
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
