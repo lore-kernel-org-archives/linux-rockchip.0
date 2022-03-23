@@ -4,98 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8FC2C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Mar 2022 15:11:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F20EC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Mar 2022 16:28:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1oxRj+oSSzEw4q+zM8X5fq50+CEGMPcsK1QF/3sqe/M=; b=P8NRhHtUpSQXzx
-	rewotY3wyTwM1pXDce/1yk5u4/T0x8DLxagHep1nSG2SVGOQ4HUuzJZsheJowJjAW6nvpc5G1QmHL
-	Xyha9/Thn5f6NeVc+rK0ll2oV/7QailjfE4/pwM/vAAqmUbZJ5iD3f3UI9/vA0oaSHBY8ezp7cbJ8
-	zoayXLtd1jXfBJrUoLsRrkyNcwKjcLk4HX2PRdZoOhjNRn3DkAsUe2S68FMlLZFVn+eGxTN34hpjc
-	I7GMeR+PlZSi0c9Bu7oiD4wrDfNvNOkL+henFhEMKXCMMhwBZxzHZAeM+PMjhrtwihf8Vm+Fx9vFx
-	g3rDvx8B//j9+YG4NGmA==;
+	List-Owner; bh=gwd9VJoDwcxQZwuma135tVzZDqLOygLFieX0Ro73Qkk=; b=LD7e/p4xS3cfjs
+	iGPcwwmdNow7qyX9dfZTepz+mACN6H2s5YvUi2traItw6Y4zanNYIVs+40r3jNNdBQDnOPJeYiCXL
+	3mYF7V/SrGlrwioynnPQ2xk6yyYvJs4Ob+imhZi0dwpk23e/i4XR/dwdxr0WDnqFq8iW0gPAk2vCc
+	EkxcpF7/dyHC0xqI2dJV5EgWR1JOYXIOrFgLD4UyDWkCcPKqJeU/ePdyLpVStq1UjUXOzKKHzEvcJ
+	1qOTjhj4gQuSTwOjQqM8DvkpGo4f5p5zI4XJxOnCqATsRM9sg0PkeFYBUHdzWIDiBv8OXkQGTZ0lR
+	cfyiGVEkNw29gv7N8qig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nX2e0-00E1BD-V1; Wed, 23 Mar 2022 15:11:28 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1nX3qw-00EFPH-G7; Wed, 23 Mar 2022 16:28:54 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nX2do-00E18c-9j; Wed, 23 Mar 2022 15:11:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1648048276; x=1679584276;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=Ak6vruZ0s0jfULNjhGFGclYiId7Hr9OSzLl3ubjhZxA=;
- b=eRdDQKTTvN3RAoqYZQqpHLd6+P+e+CLfUu+y3N5iNHROn0SLU8zWRAYf
- USX7lzkp30ZIZW31QuKDo55ILPYag3Urc3Tmv8bIXgyAHnRq01p4nb2Qh
- sf+5ZDBK8xxblhxI0bWZp1UwOBqnEi4d0nT8GhMCIEa0KW3TLCB9RXBmZ
- yauzQzzIxBvDXSv0bIU3VWgZyFDXxZb6bAXCu3tlqiBa7tDmyjFJ4kIdI
- hfocWWG+fgwGkWLZvreJp5gkbKYm0BV4/4iC/ud/Xo9Q7l+ODfPV3JBSZ
- IvZ8XTnksQNPtVHO/FyccMI+2GHt1Q3qO3d6d/WGln05yox4VeIl0zddE A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10295"; a="258321553"
-X-IronPort-AV: E=Sophos;i="5.90,204,1643702400"; d="scan'208";a="258321553"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Mar 2022 08:11:07 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.90,204,1643702400"; d="scan'208";a="692975118"
-Received: from stinkpipe.fi.intel.com (HELO stinkbox) ([10.237.72.61])
- by fmsmga001.fm.intel.com with SMTP; 23 Mar 2022 08:10:57 -0700
-Received: by stinkbox (sSMTP sendmail emulation);
- Wed, 23 Mar 2022 17:10:56 +0200
-Date: Wed, 23 Mar 2022 17:10:56 +0200
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-Cc: Alex Deucher <alexdeucher@gmail.com>,
- Maling list - DRI developers <dri-devel@lists.freedesktop.org>,
- Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
- Emma Anholt <emma@anholt.net>, Neil Armstrong <narmstrong@baylibre.com>,
- Xinliang Liu <xinliang.liu@linaro.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>, Sam Ravnborg <sam@ravnborg.org>,
- Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>,
- amd-gfx list <amd-gfx@lists.freedesktop.org>,
- linux-rockchip@lists.infradead.org,
- Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Aurabindo Pillai <aurabindo.pillai@amd.com>,
- Chen Feng <puck.chen@hisilicon.com>,
- Alain Volmat <alain.volmat@foss.st.com>,
- Harry Wentland <harry.wentland@amd.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Jonas Karlman <jonas@kwiboo.se>, Leo Li <sunpeng.li@amd.com>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Abhinav Kumar <quic_abhinavk@quicinc.com>,
- Maxime Ripard <mripard@kernel.org>, Nikola Cornij <nikola.cornij@amd.com>,
- John Stultz <john.stultz@linaro.org>, Sean Paul <sean@poorly.run>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Tomi Valkeinen <tomba@kernel.org>, Jyri Sarha <jyri.sarha@iki.fi>,
- Sandy Huang <hjc@rock-chips.com>, Robert Foss <robert.foss@linaro.org>,
- Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
- Rob Clark <robdclark@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Alex Deucher <alexander.deucher@amd.com>,
- Tian Tao <tiantao6@hisilicon.com>,
- freedreno <freedreno@lists.freedesktop.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH 00/22] drm: Review of mode copies
-Message-ID: <Yjs4gIBuftRyLElE@intel.com>
-References: <20220218100403.7028-1-ville.syrjala@linux.intel.com>
- <Yi+9n0eGn3rNKb4X@intel.com>
- <CADnq5_NS07TPBWSnETRhjzqtX_oUuCu86ewurFT3MJO=PcLAuQ@mail.gmail.com>
- <Yjj+RSVBWk6UO2C7@intel.com>
- <e9937a37-70c8-cc6f-15f2-1dbbb7f1bfba@linaro.org>
+ id 1nX3qh-00EFIz-Ro; Wed, 23 Mar 2022 16:28:41 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1nX3qT-00030m-16; Wed, 23 Mar 2022 17:28:25 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Robin Murphy <robin.murphy@arm.com>, LABBE Corentin <clabbe@baylibre.com>
+Cc: herbert@gondor.apana.org.au, krzk+dt@kernel.org, mturquette@baylibre.com,
+ robh+dt@kernel.org, sboyd@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 18/26] arm64: dts: rockchip: rk3399: add crypto node
+Date: Wed, 23 Mar 2022 17:28:24 +0100
+Message-ID: <1898921.yKVeVyVuyW@diego>
+In-Reply-To: <YjsfIbLQRvoxkana@Red>
+References: <20220321200739.3572792-1-clabbe@baylibre.com>
+ <70422777-a3f9-b2f1-5faa-94d24fe200ac@arm.com> <YjsfIbLQRvoxkana@Red>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <e9937a37-70c8-cc6f-15f2-1dbbb7f1bfba@linaro.org>
-X-Patchwork-Hint: comment
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220323_081116_386189_B586A900 
-X-CRM114-Status: GOOD (  25.94  )
+X-CRM114-CacheID: sfid-20220323_092839_911836_93A88213 
+X-CRM114-Status: GOOD (  39.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,96 +63,156 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 23, 2022 at 01:39:44PM +0300, Dmitry Baryshkov wrote:
-> On 22/03/2022 01:37, Ville Syrj=E4l=E4 wrote:
-> > On Tue, Mar 15, 2022 at 02:52:38PM -0400, Alex Deucher wrote:
-> >> On Mon, Mar 14, 2022 at 6:12 PM Ville Syrj=E4l=E4
-> >> <ville.syrjala@linux.intel.com> wrote:
-> >>>
-> >>> On Fri, Feb 18, 2022 at 12:03:41PM +0200, Ville Syrjala wrote:
-> >>>>    drm: Add drm_mode_init()
-> >>>>    drm/bridge: Use drm_mode_copy()
-> >>>>    drm/imx: Use drm_mode_duplicate()
-> >>>>    drm/panel: Use drm_mode_duplicate()
-> >>>>    drm/vc4: Use drm_mode_copy()
-> >>> These have been pushed to drm-misc-next.
-> >>>
-> >>>>    drm/amdgpu: Remove pointless on stack mode copies
-> >>>>    drm/amdgpu: Use drm_mode_init() for on-stack modes
-> >>>>    drm/amdgpu: Use drm_mode_copy()
-> >>> amdgpu ones are reviewed, but I'll leave them for the
-> >>> AMD folks to push to whichever tree they prefer.
-> >>
-> >> I pulled patches 2, 4, 5 into my tree.
+Am Mittwoch, 23. M=E4rz 2022, 14:22:41 CET schrieb LABBE Corentin:
+> Le Tue, Mar 22, 2022 at 12:00:06PM +0000, Robin Murphy a =E9crit :
+> > On 2022-03-21 20:07, Corentin Labbe wrote:
+> > > The rk3399 has a crypto IP handled by the rk3288 crypto driver so add=
+s a
+> > > node for it.
+> > > =
+
+> > > Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> > > ---
+> > >   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 12 ++++++++++++
+> > >   1 file changed, 12 insertions(+)
+> > > =
+
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/bo=
+ot/dts/rockchip/rk3399.dtsi
+> > > index 88f26d89eea1..ca2c658371a5 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > > @@ -573,6 +573,18 @@ saradc: saradc@ff100000 {
+> > >   		status =3D "disabled";
+> > >   	};
+> > >   =
+
+> > > +	crypto0: crypto@ff8b0000 {
+> > > +		compatible =3D "rockchip,rk3399-crypto";
+> > > +		reg =3D <0x0 0xff8b0000 0x0 0x4000>,
+> > > +		      <0x0 0xff8b8000 0x0 0x4000>;
+> > > +		interrupts =3D <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH 0>,
+> > > +			     <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH 0>;
+> > > +		clocks =3D <&cru SCLK_CRYPTO0>, <&cru HCLK_M_CRYPTO0>, <&cru HCLK_=
+S_CRYPTO0>,
+> > > +			 <&cru SCLK_CRYPTO1>, <&cru HCLK_M_CRYPTO1>, <&cru HCLK_S_CRYPTO1=
+>;
+> > > +		resets =3D <&cru SRST_CRYPTO0>, <&cru SRST_CRYPTO0_S>, <&cru SRST_=
+CRYPTO0_M>,
+> > > +			 <&cru SRST_CRYPTO1>, <&cru SRST_CRYPTO1_S>, <&cru SRST_CRYPTO1_M=
+>;
+> > > +	};
 > > =
 
-> > Thanks.
+> > What's going on here? If these are simply two instances of the same IP =
+
+> > block as the evidence suggests, why are they crammed into a single DT =
+
+> > node rather than simply being described as two separate instances? I wa=
+s =
+
+> > rather wondering what all the confusing mess in patch #16 was about, =
+
+> > until I got here.
 > > =
 
-> >> For 3, I'm happy to have it
-> >> land via drm-misc with the rest of the mode_init changes if you'd
-> >> prefer.
+> > If there's something in the crypto API that means the driver can't =
+
+> > simply naively register itself multiple times, there should be any =
+
+> > number of ways for the probe routine to keep track of whether it's =
+
+> > already registered something and associate any subsequent devices with =
+
+> > the first one internally if need be. Linux implementation details shoul=
+d =
+
+> > not leak out as non-standard DT weirdness.
 > > =
 
-> > Either way works for me. I don't yet have reviews yet for
-> > the other drivers, so I'll proably hold off for a bit more
-> > at least. And the i915 patch I'll be merging via drm-intel.
-> > =
+> > I know the Rockchip IOMMU driver does this, but in that case the two =
 
-> >>>>    drm/radeon: Use drm_mode_copy()
-> >>>>    drm/gma500: Use drm_mode_copy()
-> >>>>    drm/tilcdc: Use drm_mode_copy()
-> >>>>    drm/i915: Use drm_mode_copy()
-> > =
+> > IOMMU instances are closely coupled and sharing work such that they =
 
-> > Those are now all in.
-> > =
+> > effectively need to be programmed identically at all times, so it was a =
 
-> > Which leaves us with these stragglers:
-> >>>>    drm/hisilicon: Use drm_mode_init() for on-stack modes
+> > bit more justifiable. I don't know the full story here, but it certainl=
+y =
+
+> > looks like rk_get_engine_number() is just a means to schedule work on =
+
+> > any available unit independently, so looks like it wouldn't take much t=
+o =
+
+> > select between distinct devices at that point, and actually end up a lo=
+t =
+
+> > simpler and cleaner overall.
 > =
 
-> >>>>    drm/msm: Nuke weird on stack mode copy
-> >>>>    drm/msm: Use drm_mode_init() for on-stack modes
-> >>>>    drm/msm: Use drm_mode_copy()
+> Yes rk3399 has 2 instances of the same IP (Exception: crypto1 does not ha=
+ve RSA).
 > =
 
-> These three patches went beneath my radar for some reason.
+> The problem is that only one drivername (like rk-md5) could exists.
+> If crypto0 and crypto1 register with different drivername (rk-md5-0/rk-md=
+5-1), only one will be used anyway.
+> So I merged them into only one instance.
+> I think this way will be easier, but you are right, this is not pretty.
 > =
 
-> I have just sent a replacement for the first patch ([1]). Other two =
+> I found another way with 2 nodes:
+> You could preview it at https://github.com/montjoie/linux/tree/cryptorock=
+chipv4
+> Basicly the crypto0 is a normal instance, and crypto1 "registers" itself =
+against crypto0.
+> So if crypto0 know another instance exists it will load balance requests.
 
-> patches can be pulled in msm/msm-next (or msm/msm-fixes) during the next =
+The DT-nodes in that branch are
 
-> development cycle if that works for you.
+@@ -573,6 +573,22 @@
+ 		status =3D "disabled";
+ 	};
+ =
 
-That'll do fine for me. Thanks.
++	crypto0: crypto@ff8b0000 {
++		compatible =3D "rockchip,rk3399-crypto0";
++		reg =3D <0x0 0xff8b0000 0x0 0x4000>;
++		interrupts =3D <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks =3D <&cru SCLK_CRYPTO0>, <&cru HCLK_M_CRYPTO0>, <&cru HCLK_S_CRYP=
+TO0>;
++		resets =3D <&cru SRST_CRYPTO0>, <&cru SRST_CRYPTO0_S>, <&cru SRST_CRYPTO=
+0_M>;
++	};
++
++	crypto1: crypto@ff8b8000 {
++		compatible =3D "rockchip,rk3399-crypto1";
++		reg =3D <0x0 0xff8b8000 0x0 0x4000>;
++		interrupts =3D <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks =3D <&cru SCLK_CRYPTO1>, <&cru HCLK_M_CRYPTO1>, <&cru HCLK_S_CRYP=
+TO1>;
++		resets =3D <&cru SRST_CRYPTO1>, <&cru SRST_CRYPTO1_S>, <&cru SRST_CRYPTO=
+1_M>;
++	};
++
+ 	i2c1: i2c@ff110000 {
+ 		compatible =3D "rockchip,rk3399-i2c";
+ 		reg =3D <0x0 0xff110000 0x0 0x1000>;
 
-> =
+which looks at lot better :-) .
 
-> [1] https://patchwork.freedesktop.org/series/101682/
-> =
+I'm not sure about the different compatibles yet, but as the blocks
+are really _not_ the same implementation that actually does make sense
+[i.e. one not having RSA]
 
-> >>>>    drm/mtk: Use drm_mode_init() for on-stack modes
-> >>>>    drm/rockchip: Use drm_mode_copy()
-> >>>>    drm/sti: Use drm_mode_copy()
-> >>>>    drm: Use drm_mode_init() for on-stack modes
-> >>>>    drm: Use drm_mode_copy()
-> > =
+Though I think you'll need to update the binding for them.
 
-> =
 
-> =
+Heiko
 
-> -- =
 
-> With best wishes
-> Dmitry
 
--- =
 
-Ville Syrj=E4l=E4
-Intel
 
 _______________________________________________
 Linux-rockchip mailing list
