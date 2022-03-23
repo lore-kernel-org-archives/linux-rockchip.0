@@ -4,108 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FA52C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Mar 2022 10:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1D61C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Mar 2022 13:07:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pofd75Um4B0ecO901T38YhYUJbAOrAEgH043IkpQZRU=; b=TZeyMNT/m5ontT
-	POUWAZgKdj/aAYM+KpzseP8e/aCFI9vdvFPlP1rp8UARR3FH/iJRBkIRCzAAvgU9XOhwopAl/paHg
-	PengJQCCKxRanhnY+vUy4OSpmfZtBPej7Ek3FQqtuhBQHu6iBRMwghkaFewuFqI32utxGJrw9ssgA
-	tOmkHaAcfXZZmySxnRjAIP2exVGQqWNkA7j0k5jdR8PiNYpm8rhLg33FiSdLTDPGt2eEEKR+zFEoV
-	CmVxv7bzKlt0JYc2ZOiHkJoV6ttafbTQQ2hJgAYENM85bpX2wffEhSJKPgemRmSkIANyo97+7PThq
-	Qby+2H+u2wYHx+tSniHA==;
+	List-Owner; bh=/o8Idq/FF4W3XgAh8xXN1jxVVNcz6L4jqFfuhTkRLtM=; b=X6x50X5O+iGksa
+	fXJ86qIfDktWhGvNVz7Et9NQM+ggXjLfJ3JhyqFUy5pkIv5o87P0j79ho6iHSNHm4H+HimZlV4o8y
+	ohLmvXxBTs+8NUCv10loBwIJhVsgJJBR3k5H5uHLH/6KB6r4aCo8mwCnarm2cyz14+Q1fTlIV3hzP
+	YvKdXoAoat3EguNTL9tWnBOqNQPvfOD0RumZq0Btl0jrmfQhvKkKI7pbRNLV/7dHT24BQb+TIph6T
+	G9XfALSqVY+CLBzCPNM3mHCp9HQwmAk0mfPHc7+f0eZ6BlTxVAzp9ms4w8et9IgEQHxv02HMSZbBc
+	nJ81vvURYWcW/HA9g1yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nWyPI-00DLgQ-V6; Wed, 23 Mar 2022 10:40:00 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1nX0i6-00DgCC-Ek; Wed, 23 Mar 2022 13:07:34 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nWyP6-00DLeD-W3
- for linux-rockchip@lists.infradead.org; Wed, 23 Mar 2022 10:39:50 +0000
-Received: by mail-lf1-x129.google.com with SMTP id w7so1959053lfd.6
- for <linux-rockchip@lists.infradead.org>; Wed, 23 Mar 2022 03:39:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=LJG6LchEWg7eLND4+i+6tV16qS1u0tcHKvRxEtTuG+w=;
- b=yAkPXvHZVB3DXiA6lnV3OJs4l7boHKACGrx2zNN0q0WdW4bDDBFu/J4udxtyTi4LnD
- EW5GVcRjYXzEeDLkpqeGo1qdR36WyqvDgbQswBau6NJctIIV72R0Wo2Kj1TEosLVpGaq
- UvO0sdl+erB80ekBTDMX7IEdiKF3ft8qxVaWiecxxSgBJsWhhrQHl5YOnjDD05TZdcGP
- GDOInQ2USvHXmJkV5XU+7gTi59xIrI9Dv6xe++mHYqDqDI5n+u4nmlN8qRthsqM0DM33
- fzmhSc0ONmXxs82ScbBBb79fjsbtQFhKXPJYW/HWmd9J56xvz4lQapq28hyricqZ/Ueu
- gp4A==
+ id 1nX0i2-00DgAn-Rn
+ for linux-rockchip@lists.infradead.org; Wed, 23 Mar 2022 13:07:33 +0000
+Received: by mail-wr1-x431.google.com with SMTP id h4so2014593wrc.13
+ for <linux-rockchip@lists.infradead.org>; Wed, 23 Mar 2022 06:07:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=/7GPfWTScrdUPxYCfpF4p4gmdocaWvB3DedYIkySiRQ=;
+ b=7EDiYHM0/mHUHNh2nAcUtV8Mo87BBMJDjh2R3QaAEXuxurVdInHyGhkLnwH6gL3bPY
+ ftLMYfyygow8mzkD5Dev2Iq+3cB/DbsVL3VVzYv3NYkRy77gO07thxxfnDuE/5vvFwiB
+ SnNZc9jBzd7JxXBaPe5MmyMhQ/dZvf5IJrjHbztF2VDxy+YSXfGCFsGy91bzu0dpwUVD
+ vLLzZ2UR7OCpthmgXf0+rBDgwrScxpIXhhh0aF66G9+NvYfooCnN6Ac965njTsu7vX7H
+ 5rK015KemhcLQmxFbNnPmlRfVnVllLsShyU6SyQvhK65gIf9XVzlSMG1ZoK1rbNLFDgk
+ 2K8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=LJG6LchEWg7eLND4+i+6tV16qS1u0tcHKvRxEtTuG+w=;
- b=Sx63M86smi/GucO4Krl5Bt1eUUmhaYk7JDMqP4wts1hkhCqcE6IaUFvs8llJcvs0Tp
- vgDw+BElVbKxqrHaOHhMCWq2J1N5vHeLyRA1GZz83s+NXtNi1OWGHqwh5w1Bh6B0G/3N
- eejBsGBd3vM6o9ATvcD9L/jIgQrQRqH0g2yiZKilHI6qDakxLCUD6LJCuls1U9OCu1in
- 85eLMheleveoxCa5uR8rMd3xMKyX/WMRinCrCEosNXnkD55QACVwMxs4tVs7K6aY5J5e
- fH5ylxtYnb3EQkHwv4dcPn8d7MbOyH637+mmjQJme7TSqFwLct80LevszicTqlsgVqZ/
- eRMA==
-X-Gm-Message-State: AOAM531KZAtso271y8YzLGOCtOrQXtQU9UQOYMEi/gXMgZzhaDikNgyV
- z6H1RDTVaGUdSAlDI3TUB0JHAw==
-X-Google-Smtp-Source: ABdhPJxdoE2MJzCwqFEPkOY+WggWU0jxIXl/lqXQbtd4rieBWf/meitV/U1e3m4J8NKMlt9q9m+iIA==
-X-Received: by 2002:a05:6512:34c7:b0:44a:37de:9d74 with SMTP id
- w7-20020a05651234c700b0044a37de9d74mr6436931lfr.314.1648031986613; 
- Wed, 23 Mar 2022 03:39:46 -0700 (PDT)
-Received: from [192.168.1.211] ([37.153.55.125])
- by smtp.gmail.com with ESMTPSA id
- x33-20020a0565123fa100b00443d3cffd89sm2479850lfa.210.2022.03.23.03.39.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Mar 2022 03:39:46 -0700 (PDT)
-Message-ID: <e9937a37-70c8-cc6f-15f2-1dbbb7f1bfba@linaro.org>
-Date: Wed, 23 Mar 2022 13:39:44 +0300
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=/7GPfWTScrdUPxYCfpF4p4gmdocaWvB3DedYIkySiRQ=;
+ b=qxXUpjnzjRHxupuam+kguZ4Ln+UhEHz+shVoNzIeLAwD8NwuecmxWvB0gflsx0bTsM
+ wodx6wILeeUQmi1JXCqrfM01+ZmWNF0dKEh7IQJ6jxhhJR4GMpxZQG+1bSeSOyf9BsBF
+ QPKB1aFBaAGiyEjLAcmIMYtNUlW9hJhxdOgP/dRE3eNpVh1jq/ehKXmLXCVilH5aDDEk
+ UuAwav5XHLfzs72yNIAjpDuTGBfRfExqUws7VTZXIa3dMxbEA26QMhPuQF0GNcanKMMt
+ gjjshTtVjNqPW+KL2EsHFElqTDSwzrVoP2YQ43T6wUSXNvfLWYSOeb57vjOxd/MWkKxB
+ y88g==
+X-Gm-Message-State: AOAM530cxg32J+9L3ikvP6FzOe80Qf4QgyIU+6FfYbeDJVlkJ8osgIWf
+ JmA+vW7mIpjiPpEFfL5a+yJ1Gg==
+X-Google-Smtp-Source: ABdhPJwlHTs/jXded6YR+bEyG9ABUfL/AlSP0pBeJMmhWDxUYvyYfFnDLfkgPcSrNXyLqFblB0f+cw==
+X-Received: by 2002:a5d:5509:0:b0:204:f77:c2d with SMTP id
+ b9-20020a5d5509000000b002040f770c2dmr13533390wrv.432.1648040848448; 
+ Wed, 23 Mar 2022 06:07:28 -0700 (PDT)
+Received: from Red ([2a01:cb1d:3d5:a100:264b:feff:fe03:2806])
+ by smtp.googlemail.com with ESMTPSA id
+ n20-20020a05600c4f9400b0038cbd13e06esm2794951wmq.2.2022.03.23.06.07.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 23 Mar 2022 06:07:27 -0700 (PDT)
+Date: Wed, 23 Mar 2022 14:07:25 +0100
+From: LABBE Corentin <clabbe@baylibre.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: heiko@sntech.de, herbert@gondor.apana.org.au, krzk+dt@kernel.org,
+ mturquette@baylibre.com, robh+dt@kernel.org, sboyd@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-crypto@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3 06/26] crypto: rockchip: add fallback for cipher
+Message-ID: <YjsbjaQrj2Y+cLmL@Red>
+References: <20220321200739.3572792-1-clabbe@baylibre.com>
+ <20220321200739.3572792-7-clabbe@baylibre.com>
+ <c643c8a0-3ebc-519b-bc6e-f95362d43a69@arm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.2
-Subject: Re: [PATCH 00/22] drm: Review of mode copies
-Content-Language: en-GB
-To: =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>,
- Alex Deucher <alexdeucher@gmail.com>
-Cc: Maling list - DRI developers <dri-devel@lists.freedesktop.org>,
- =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- Emma Anholt <emma@anholt.net>, Neil Armstrong <narmstrong@baylibre.com>,
- Xinliang Liu <xinliang.liu@linaro.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>, Sam Ravnborg <sam@ravnborg.org>,
- Rodrigo Siqueira <Rodrigo.Siqueira@amd.com>,
- amd-gfx list <amd-gfx@lists.freedesktop.org>,
- linux-rockchip@lists.infradead.org,
- Xinwei Kong <kong.kongxinwei@hisilicon.com>,
- Aurabindo Pillai <aurabindo.pillai@amd.com>,
- Chen Feng <puck.chen@hisilicon.com>, Alain Volmat
- <alain.volmat@foss.st.com>, Harry Wentland <harry.wentland@amd.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
- Leo Li <sunpeng.li@amd.com>, linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
- Abhinav Kumar <quic_abhinavk@quicinc.com>, Maxime Ripard
- <mripard@kernel.org>, Nikola Cornij <nikola.cornij@amd.com>,
- John Stultz <john.stultz@linaro.org>, Sean Paul <sean@poorly.run>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Tomi Valkeinen <tomba@kernel.org>, Jyri Sarha <jyri.sarha@iki.fi>,
- Sandy Huang <hjc@rock-chips.com>, Robert Foss <robert.foss@linaro.org>,
- Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
- Rob Clark <robdclark@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Alex Deucher <alexander.deucher@amd.com>, Tian Tao <tiantao6@hisilicon.com>,
- freedreno <freedreno@lists.freedesktop.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-References: <20220218100403.7028-1-ville.syrjala@linux.intel.com>
- <Yi+9n0eGn3rNKb4X@intel.com>
- <CADnq5_NS07TPBWSnETRhjzqtX_oUuCu86ewurFT3MJO=PcLAuQ@mail.gmail.com>
- <Yjj+RSVBWk6UO2C7@intel.com>
-From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
-In-Reply-To: <Yjj+RSVBWk6UO2C7@intel.com>
+Content-Disposition: inline
+In-Reply-To: <c643c8a0-3ebc-519b-bc6e-f95362d43a69@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220323_033949_038841_26FEFFC2 
-X-CRM114-Status: GOOD (  18.44  )
+X-CRM114-CacheID: sfid-20220323_060730_991102_96F93C81 
+X-CRM114-Status: GOOD (  17.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,49 +92,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjIvMDMvMjAyMiAwMTozNywgVmlsbGUgU3lyasOkbMOkIHdyb3RlOgo+IE9uIFR1ZSwgTWFy
-IDE1LCAyMDIyIGF0IDAyOjUyOjM4UE0gLTA0MDAsIEFsZXggRGV1Y2hlciB3cm90ZToKPj4gT24g
-TW9uLCBNYXIgMTQsIDIwMjIgYXQgNjoxMiBQTSBWaWxsZSBTeXJqw6Rsw6QKPj4gPHZpbGxlLnN5
-cmphbGFAbGludXguaW50ZWwuY29tPiB3cm90ZToKPj4+Cj4+PiBPbiBGcmksIEZlYiAxOCwgMjAy
-MiBhdCAxMjowMzo0MVBNICswMjAwLCBWaWxsZSBTeXJqYWxhIHdyb3RlOgo+Pj4+ICAgIGRybTog
-QWRkIGRybV9tb2RlX2luaXQoKQo+Pj4+ICAgIGRybS9icmlkZ2U6IFVzZSBkcm1fbW9kZV9jb3B5
-KCkKPj4+PiAgICBkcm0vaW14OiBVc2UgZHJtX21vZGVfZHVwbGljYXRlKCkKPj4+PiAgICBkcm0v
-cGFuZWw6IFVzZSBkcm1fbW9kZV9kdXBsaWNhdGUoKQo+Pj4+ICAgIGRybS92YzQ6IFVzZSBkcm1f
-bW9kZV9jb3B5KCkKPj4+IFRoZXNlIGhhdmUgYmVlbiBwdXNoZWQgdG8gZHJtLW1pc2MtbmV4dC4K
-Pj4+Cj4+Pj4gICAgZHJtL2FtZGdwdTogUmVtb3ZlIHBvaW50bGVzcyBvbiBzdGFjayBtb2RlIGNv
-cGllcwo+Pj4+ICAgIGRybS9hbWRncHU6IFVzZSBkcm1fbW9kZV9pbml0KCkgZm9yIG9uLXN0YWNr
-IG1vZGVzCj4+Pj4gICAgZHJtL2FtZGdwdTogVXNlIGRybV9tb2RlX2NvcHkoKQo+Pj4gYW1kZ3B1
-IG9uZXMgYXJlIHJldmlld2VkLCBidXQgSSdsbCBsZWF2ZSB0aGVtIGZvciB0aGUKPj4+IEFNRCBm
-b2xrcyB0byBwdXNoIHRvIHdoaWNoZXZlciB0cmVlIHRoZXkgcHJlZmVyLgo+Pgo+PiBJIHB1bGxl
-ZCBwYXRjaGVzIDIsIDQsIDUgaW50byBteSB0cmVlLgo+IAo+IFRoYW5rcy4KPiAKPj4gRm9yIDMs
-IEknbSBoYXBweSB0byBoYXZlIGl0Cj4+IGxhbmQgdmlhIGRybS1taXNjIHdpdGggdGhlIHJlc3Qg
-b2YgdGhlIG1vZGVfaW5pdCBjaGFuZ2VzIGlmIHlvdSdkCj4+IHByZWZlci4KPiAKPiBFaXRoZXIg
-d2F5IHdvcmtzIGZvciBtZS4gSSBkb24ndCB5ZXQgaGF2ZSByZXZpZXdzIHlldCBmb3IKPiB0aGUg
-b3RoZXIgZHJpdmVycywgc28gSSdsbCBwcm9hYmx5IGhvbGQgb2ZmIGZvciBhIGJpdCBtb3JlCj4g
-YXQgbGVhc3QuIEFuZCB0aGUgaTkxNSBwYXRjaCBJJ2xsIGJlIG1lcmdpbmcgdmlhIGRybS1pbnRl
-bC4KPiAKPj4+PiAgICBkcm0vcmFkZW9uOiBVc2UgZHJtX21vZGVfY29weSgpCj4+Pj4gICAgZHJt
-L2dtYTUwMDogVXNlIGRybV9tb2RlX2NvcHkoKQo+Pj4+ICAgIGRybS90aWxjZGM6IFVzZSBkcm1f
-bW9kZV9jb3B5KCkKPj4+PiAgICBkcm0vaTkxNTogVXNlIGRybV9tb2RlX2NvcHkoKQo+IAo+IFRo
-b3NlIGFyZSBub3cgYWxsIGluLgo+IAo+IFdoaWNoIGxlYXZlcyB1cyB3aXRoIHRoZXNlIHN0cmFn
-Z2xlcnM6Cj4+Pj4gICAgZHJtL2hpc2lsaWNvbjogVXNlIGRybV9tb2RlX2luaXQoKSBmb3Igb24t
-c3RhY2sgbW9kZXMKCj4+Pj4gICAgZHJtL21zbTogTnVrZSB3ZWlyZCBvbiBzdGFjayBtb2RlIGNv
-cHkKPj4+PiAgICBkcm0vbXNtOiBVc2UgZHJtX21vZGVfaW5pdCgpIGZvciBvbi1zdGFjayBtb2Rl
-cwo+Pj4+ICAgIGRybS9tc206IFVzZSBkcm1fbW9kZV9jb3B5KCkKClRoZXNlIHRocmVlIHBhdGNo
-ZXMgd2VudCBiZW5lYXRoIG15IHJhZGFyIGZvciBzb21lIHJlYXNvbi4KCkkgaGF2ZSBqdXN0IHNl
-bnQgYSByZXBsYWNlbWVudCBmb3IgdGhlIGZpcnN0IHBhdGNoIChbMV0pLiBPdGhlciB0d28gCnBh
-dGNoZXMgY2FuIGJlIHB1bGxlZCBpbiBtc20vbXNtLW5leHQgKG9yIG1zbS9tc20tZml4ZXMpIGR1
-cmluZyB0aGUgbmV4dCAKZGV2ZWxvcG1lbnQgY3ljbGUgaWYgdGhhdCB3b3JrcyBmb3IgeW91LgoK
-WzFdIGh0dHBzOi8vcGF0Y2h3b3JrLmZyZWVkZXNrdG9wLm9yZy9zZXJpZXMvMTAxNjgyLwoKPj4+
-PiAgICBkcm0vbXRrOiBVc2UgZHJtX21vZGVfaW5pdCgpIGZvciBvbi1zdGFjayBtb2Rlcwo+Pj4+
-ICAgIGRybS9yb2NrY2hpcDogVXNlIGRybV9tb2RlX2NvcHkoKQo+Pj4+ICAgIGRybS9zdGk6IFVz
-ZSBkcm1fbW9kZV9jb3B5KCkKPj4+PiAgICBkcm06IFVzZSBkcm1fbW9kZV9pbml0KCkgZm9yIG9u
-LXN0YWNrIG1vZGVzCj4+Pj4gICAgZHJtOiBVc2UgZHJtX21vZGVfY29weSgpCj4gCgoKLS0gCldp
-dGggYmVzdCB3aXNoZXMKRG1pdHJ5CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Le Tue, Mar 22, 2022 at 11:25:25AM +0000, Robin Murphy a =E9crit :
+> On 2022-03-21 20:07, Corentin Labbe wrote:
+> > The hardware does not handle 0 size length request, let's add a
+> > fallback.
+> > Furthermore fallback will be used for all unaligned case the hardware
+> > cannot handle.
+> > =
+
+> > Fixes: ce0183cb6464b ("crypto: rockchip - switch to skcipher API")
+> > Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> > ---
+> >   drivers/crypto/Kconfig                        |   4 +
+> >   drivers/crypto/rockchip/rk3288_crypto.h       |   2 +
+> >   .../crypto/rockchip/rk3288_crypto_skcipher.c  | 105 +++++++++++++++---
+> >   3 files changed, 98 insertions(+), 13 deletions(-)
+> > =
+
+> > diff --git a/drivers/crypto/Kconfig b/drivers/crypto/Kconfig
+> > index 7b2d138bc83e..84ab14afcbd9 100644
+> > --- a/drivers/crypto/Kconfig
+> > +++ b/drivers/crypto/Kconfig
+> > @@ -784,6 +784,10 @@ config CRYPTO_DEV_IMGTEC_HASH
+> >   config CRYPTO_DEV_ROCKCHIP
+> >   	tristate "Rockchip's Cryptographic Engine driver"
+> >   	depends on OF && ARCH_ROCKCHIP
+> > +	depends on PM
+> =
+
+> This appears to belong to patch #13 rather than this one.
+> =
+
+
+Hello
+
+Yes this is an error, I will move it this line on the right patch.
+
+> My initial thought was that it probably shouldn't be something for =
+
+> random consumers to care about at all, but there do seem to be a handful =
+
+> of other drivers relying on pm_runtime_resume to enable their clocks, so =
+
+> I guess maybe it's an acceptable idiom :/
+> =
+
+
+Depending on PM made the driver easier to understand (no more if PM/if not =
+PM).
+And anyway, since it's embedded device, PM should be always enabled.
+
+Thanks
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
