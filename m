@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71CB3C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Mar 2022 08:37:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0B66C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 24 Mar 2022 12:01:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=eehkpwt+oxbPzL+QY0QWVhr03kIJRPG3ignx2czvFOY=; b=vNG14tpAoNOfR4
-	mtdgZGKDqbHcu641UZqUWefvKJwHmoWxKrDkZL2odf/DPRZgp195q9UsDI/lkQwZNyFzpvJdN2p0e
-	4gxmpZ1GRN6qHhhj4YYM7NfBT20P7K1E7gv7lJnXrBtGEpk2yDJUF878HR9bGegWyQNNV5hPznVZB
-	SRsLEWYQma2iRBL75NW6vbHIw3y199hBoHm8nCGlNgy1FXpPOx7mmj1UjaeS4LUbohcjqF+6k1VzT
-	XzuKfQDK1a2YkTs/+VqBGlvuk2KzF7HajbXWONObdyGw2jkjBhi/ibL6lGiTA7Z5Rs/XocUEPkOZL
-	icRODSFnYlwFScGSjAkQ==;
+	List-Owner; bh=bnLD5fMOekC97YaIDdIxya33FJLJIEKl9So7fD9pAG4=; b=Uf6W84FGffB+tV
+	oxIfiiw6d9jOojaHSyBh/XzfTmio2HZCHXLVV7mH6223sRAwGGH4+Pp/4ESO6IHLSbWY6TuaAFZ/d
+	NwnB/UXQgc9aD9kX1bha+37HLxtGWq3I3qY+kXwO9jXWqIXFCPo7CFEDoviVCVtdh8Wl7pSWQRRN+
+	SviPr8oOjiRPQVz2V158xxYGdrrPSDdYtsFH+Gt79LI5XSH3frWgwPLng2zpGPpzmwALvoH1swTPw
+	TzH6d4GmhyXerpzB/UczBICaKMTv9zOHZfLm1khfbKrf2rCsq+/BFcO47hXaPsj7aRW2xbmU0Haev
+	vO5MKf5dMkU2bPkEYf/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nXIyU-00G3aJ-2e; Thu, 24 Mar 2022 08:37:42 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1nXMA2-00GPth-41; Thu, 24 Mar 2022 12:01:50 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nXIyR-00G3ZU-Jr; Thu, 24 Mar 2022 08:37:40 +0000
-Received: by mail-pl1-x641.google.com with SMTP id c23so4041515plo.0;
- Thu, 24 Mar 2022 01:37:38 -0700 (PDT)
+ id 1nXM9m-00GPpj-A4; Thu, 24 Mar 2022 12:01:38 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id d10so8649646eje.10;
+ Thu, 24 Mar 2022 05:01:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=IXhYQHS4VNqf/GV/cJxxnwtzAOHEaduwd81EzKtbsnI=;
- b=plSM3VwYch6XnDt4M+ew5Jpe3OJZ6zJCswrbKrS9FmEM0Zb8/LmCvz9x2sEqfvhWWO
- JPTMiRVUDSeL164vpn19/N2W56HYNrEbV5rWuaL25HxDHQS2bkmZzMNbp1CD+UujJ8an
- 4VtioyKhu5fi8LbZKbuWXuPviEJcCxQnyghYmIHIMfjaa4Kuav6hQgo4hlJRCEPVQHGh
- RZhQ1YA/BEzGiLGsiD2k38v0CBHl7gGTccZi321t9mF4ZEfsE6RBzWmI9E1/2paH7HML
- zWUWNX6glxtg3UHpm7lUz46qdgrkOEYzqn6f9uQjkFYLeYWl5ZLjICQ8UK/nHfQxvIN1
- s8Ng==
+ bh=nuEjM18NFC9m+DMIdfnC8bAfeSbsPDnsYC00cbxSyog=;
+ b=oGg85a/oNA32MV99mldPci1AdcqVmedXiLODuJTR+ISCXXfh+bU3SXxkfWg6fTrFix
+ FPTmUvlGN9DZMW1tD1v186I8W8gW+aY/xyJ0qdwQrml+ezB0+scHv4FSvmSi+Imcot1+
+ r/MKrFbG36Cb5YozzVu+6yxidvCOazpZ8iOqg6965Jh3qTtnVlmhDvd9lfQISGNFUP9A
+ wAQSWsLIkiIJQHpP7PihEC7AtKb7B86BvhGIsrrKEfpOcYywxD0a+xKoacGa+PHAWyfU
+ 2+Fl1Xq6E+1Yvfs6+oU6zz4SiS/JWWWSKtU+xw1e6SWSMc0h/0ixmApkRuil1qWrBzA3
+ CMZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=IXhYQHS4VNqf/GV/cJxxnwtzAOHEaduwd81EzKtbsnI=;
- b=c56bz6iDVbGAaxShSg0pPsqS3XnjAXc/OVJBWnsy+B+M4HhMgNgc2ElcTClKdxFeSh
- UEcxOsIcvi2wOOTnD0GIYUNFIlpkVTHiX31u9S6gX1EnY455JvVpmldhbknrgEN5fulJ
- VwK5Opccg5o9pjIVBq1pHmzzjl1grWVKRo5+f7hNnajNY3WUGvoZBBgA3vUKPrEqjOEJ
- k30ML/UKb/ffNAt3iD+j/w1v1P+yYzEIgqGXLwxcOFHuhEATZAEmQNexeGc+pfGBzqeQ
- lF3ZkC191JUwaem2oHuwfHzKOf36RvvFuglJbhItVhA9q8jo/mUArFpZCTDZ38EwPx3a
- S05Q==
-X-Gm-Message-State: AOAM533WPeaCKqTwajzOIqYmvQzq9uFsY24TjS/ZWv3GukC8+a5u67kM
- 3jcAKij7cGK8DGW85UOWod4=
-X-Google-Smtp-Source: ABdhPJyzShKJ4vQLUuiEeWac72aMhLVYjSSrsrD7Vm+92vH+ZI7xaWjZIOtvrtINE3EiKAW5oDFf3g==
-X-Received: by 2002:a17:902:f646:b0:151:d5b1:cbb4 with SMTP id
- m6-20020a170902f64600b00151d5b1cbb4mr4605810plg.150.1648111057790; 
- Thu, 24 Mar 2022 01:37:37 -0700 (PDT)
-Received: from slim.das-security.cn ([103.84.139.53])
+ bh=nuEjM18NFC9m+DMIdfnC8bAfeSbsPDnsYC00cbxSyog=;
+ b=5uqEygUqqTIy/YHuji+RlVUeDzKoj4S23K6MLXAyOrOxKTvJ3WK0vEsM3NLV02TXSr
+ tAwhKLO0MfFPRLY7ZypTyPVRlEVREJydvG/UM6/ZV1EIBH8Qk/hXg8A14+EoNggTOHVD
+ K6hUqg5AETZEhwFGY9lt5FWe5LsDYoRMAkXxSa0NfliSXGC7kB1do6WDnZsDI3qdur6t
+ vPvWemIAtp/hxrH7C0eomAJJcm3FuAkS1f6tcTRih0Iw+4Arj6NKnfCT0Kbju36l2jHB
+ My1Lek97OF5z2vUgSS7m/aSN4z738MasRQ2pecowsPHDNZCxOGNhM7oKixaPiqggg1Uf
+ lMzw==
+X-Gm-Message-State: AOAM530wtHRciUhBjOY6cgxBwgVuJKh7EA+jXTc1x0G/sVXZF8Kl+tjG
+ X0tktejhpSvaH0cMz/VDCCw=
+X-Google-Smtp-Source: ABdhPJzrW0qji+QJkSKZDeLk0VV+83wm1d4vZCMJ8ny5BJSXclaIGGWEwJcgWElkC7xZrak+JvNL0A==
+X-Received: by 2002:a17:906:9b85:b0:6db:ab80:7924 with SMTP id
+ dd5-20020a1709069b8500b006dbab807924mr5395242ejc.160.1648123291338; 
+ Thu, 24 Mar 2022 05:01:31 -0700 (PDT)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
  by smtp.gmail.com with ESMTPSA id
- z9-20020a63b909000000b003823389e47csm1881046pge.9.2022.03.24.01.37.34
+ u3-20020a17090657c300b006d01de78926sm1068822ejr.22.2022.03.24.05.01.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 24 Mar 2022 01:37:37 -0700 (PDT)
-From: Hangyu Hua <hbh25y@gmail.com>
-To: jacob-chen@iotwrt.com, ezequiel@vanguardiasur.com.ar, mchehab@kernel.org,
- heiko@sntech.de
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Hangyu Hua <hbh25y@gmail.com>
-Subject: [PATCH] media: rga: fix possible memory leak in rga_probe
-Date: Thu, 24 Mar 2022 16:37:24 +0800
-Message-Id: <20220324083724.42654-1-hbh25y@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ Thu, 24 Mar 2022 05:01:28 -0700 (PDT)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, krzk+dt@kernel.org, kishon@ti.com, vkoul@kernel.org,
+ yifeng.zhao@rock-chips.com, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v9] dt-bindings: soc: grf: add naneng combo phy register
+ compatible
+Date: Thu, 24 Mar 2022 13:01:22 +0100
+Message-Id: <20220324120122.1339-1-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220324_013739_675890_E6AC39B3 
-X-CRM114-Status: UNSURE (   9.89  )
+X-CRM114-CacheID: sfid-20220324_050134_369549_29C4BF17 
+X-CRM114-Status: UNSURE (   7.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,46 +91,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rga->m2m_dev needs to be freed when rga_probe fails.
+Add Naneng combo phy register compatible.
 
-Signed-off-by: Hangyu Hua <hbh25y@gmail.com>
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
- drivers/media/platform/rockchip/rga/rga.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 4de5e8d2b261..c2ce4fdcdb7f 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -865,7 +865,7 @@ static int rga_probe(struct platform_device *pdev)
- 
- 	ret = pm_runtime_resume_and_get(rga->dev);
- 	if (ret < 0)
--		goto rel_vdev;
-+		goto rel_m2m;
- 
- 	rga->version.major = (rga_read(rga, RGA_VERSION_INFO) >> 24) & 0xFF;
- 	rga->version.minor = (rga_read(rga, RGA_VERSION_INFO) >> 20) & 0x0F;
-@@ -881,7 +881,7 @@ static int rga_probe(struct platform_device *pdev)
- 					   DMA_ATTR_WRITE_COMBINE);
- 	if (!rga->cmdbuf_virt) {
- 		ret = -ENOMEM;
--		goto rel_vdev;
-+		goto rel_m2m;
- 	}
- 
- 	rga->src_mmu_pages =
-@@ -918,6 +918,8 @@ static int rga_probe(struct platform_device *pdev)
- free_dma:
- 	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
- 		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
-+rel_m2m:
-+	v4l2_m2m_release(rga->m2m_dev);
- rel_vdev:
- 	video_device_release(vfd);
- unreg_v4l2_dev:
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index b2ba7bed8..5079e9d24 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -15,6 +15,8 @@ properties:
+       - items:
+           - enum:
+               - rockchip,rk3288-sgrf
++              - rockchip,rk3568-pipe-grf
++              - rockchip,rk3568-pipe-phy-grf
+               - rockchip,rk3568-usb2phy-grf
+               - rockchip,rv1108-usbgrf
+           - const: syscon
 -- 
-2.25.1
+2.20.1
 
 
 _______________________________________________
