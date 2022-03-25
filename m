@@ -4,70 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11711C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Mar 2022 15:39:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEFA1C433FE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Mar 2022 16:52:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=REvXisvofKe+iW6n/a9LpsWQaZ76vocvzO1zgbKRWfg=; b=W8ZCRBTQn4DMUr
-	GZuxtayrg8qW0WsaIzmfflkHcNbgA0VBLbZBMYtQu2ox2ORTOWbnkWOb6gCdIt7MsPqQWauSXcPEh
-	CJxGIZdu+2exzXr6yFvKYX6/xZzOoc3O8QwsfxtlgW4WukQohKBUqiAbXq2UeAUgV88RhonKsDEiR
-	J4xRRkKJxJOrENnzOpgCge1vRtWZe7Z86OgDPouQqx5UTtqf/c8OUsbZBwy1lD5FPt3rNcAXKUHm3
-	140hKSECdIeXoZW76VVJkedHPuQbEij6fL8kA0udUGKUqd4b4VF5B6dhWcJNDXN+l5/yYai1DUYJI
-	LaIWyzsgR81F7l0qMzqA==;
+	List-Owner; bh=eSjSPOuNDbADZU7hS0GOOudQLaD8qJosCgjTeYIXOUg=; b=C5abuzUPhl3Ttv
+	HOHcPFPWo8q2xmMe10GQSTd3s9NjgqZwJoNb7uRXr7278K37Qf/YagAKesszTYcgzvY8KXmRLRkEh
+	jwJrGPB1mDQsi+s2QG5Uf3wDrL+0n0Jk1ceAQyBax8ZwV5faU20m3uThhYS/fP8Qjuxj+mE4UiOE0
+	x10h0hqocVYpvj6zR5DbODVcqiBsDoAnwzTfNOX3nLuzd9io0+EcETvFqC/nj+OLImJ+BjigZ63Zz
+	QytAe6J0Qvd4ECfWOuPJcu57czqB0HcvCNtAvNWTu1qeU9eV7xswaJSIaWapihfYgo/U9IQhnzagd
+	J5YfDqiTjNM1gAlaXQUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nXm25-002VY4-VR; Fri, 25 Mar 2022 15:39:21 +0000
-Received: from mail-ej1-f47.google.com ([209.85.218.47])
+	id 1nXnBH-002dvy-Al; Fri, 25 Mar 2022 16:52:55 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nXm1u-002VWt-D9; Fri, 25 Mar 2022 15:39:11 +0000
-Received: by mail-ej1-f47.google.com with SMTP id lr4so7713005ejb.11;
- Fri, 25 Mar 2022 08:39:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=2vdz+4IsKGSl/VaCF7VHXVQKmTtRzfU3MmHP/EXqhjE=;
- b=VSNBTSJoAyo8DbAij3wmveIJwXv52nzlOYHi2GPnz6ik5Jq217TFD5b2gUuUjKjGlL
- 6QKVN3sJDif0x/yW44sJQ9UN224fyvVeANcyJn7yCW1jPkzL8Y3ioxKgry4scqCDnstY
- 5ahVfQwSpel1OmPno/QHXgHEINRxQXPPHzH4k7kUg3APXuU9JN9LdSHO33n8Jg1AgYf5
- lpOFqUodcJe0PjQJtoSmazoQSS0/DmO1eR39VyDl0brkDpsA9hYv34dhqwCrXi8MHq3V
- hk1bdHhd5jg6HprsPrEHzCvwyX3MNbFyzrgDXr3LheoF7W8hEMqd6POIK4HueD9+lhcG
- ACag==
-X-Gm-Message-State: AOAM5304JTXgY/TgevCv61/OBmTQGRB634Eid+6oNMjmFOl314bOpBvw
- jpPjUu54oSysB8lICPuFmmc=
-X-Google-Smtp-Source: ABdhPJzFcQ7dPxMRO1kZd0xEII3KM8S2HW7kJRS0lJCQxfRv8r/lHFSFTAIcwqb4fv7ynnjkOxTXHQ==
-X-Received: by 2002:a17:907:9494:b0:6e0:ee8:4b29 with SMTP id
- dm20-20020a170907949400b006e00ee84b29mr12572625ejc.337.1648222747603; 
- Fri, 25 Mar 2022 08:39:07 -0700 (PDT)
-Received: from [192.168.0.162] (xdsl-188-155-201-27.adslplus.ch.
- [188.155.201.27]) by smtp.googlemail.com with ESMTPSA id
- n13-20020a170906724d00b006cedd6d7e24sm2435372ejk.119.2022.03.25.08.39.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Mar 2022 08:39:07 -0700 (PDT)
-Message-ID: <c56c4bd2-e985-f8b3-80c9-4b75fa3dde23@kernel.org>
-Date: Fri, 25 Mar 2022 16:39:06 +0100
+ id 1nXnB5-002duS-Hh; Fri, 25 Mar 2022 16:52:44 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 39F09B82980;
+ Fri, 25 Mar 2022 16:52:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9A6DC2BBE4;
+ Fri, 25 Mar 2022 16:52:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1648227160;
+ bh=Ra8ieuBzaiUMPlsrjMnh2eiTTbFJ7RF3zaiOYqpcWRY=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=Yc5KjUsXj0C3ePGmhyRuZJgrCSRp4+HyI1a7yErLlR/GcQnY5tNLV1BmC+enHzLg7
+ VkPDqNzov93jRYdDqfRphGZaqNe/6MrJKtu0chA542UYeMVcO+026KPHUvImpJHRy2
+ SSD8o8rU0W/9ZVKZ5jWypI28tPMm5CFeJHLQj6GiDSEMXIwcm1fA5Ibf42imrE9nnZ
+ uC1wRNKl95f+lsEt7efD2foDSsaT82ItZjSJdVJt0btni/gsKvvntazhgnpTDA3D9d
+ ljIaXMIYw1l6gpYSSETL24GOW5zcqJ+uT5dWsIDJpz4+X5/ekL/ToquYczoXPsnd+s
+ CQYhh6dO5mFPA==
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v2 1/2] dt-bindings: clock: convert
- rockchip,rk3188-cru.txt to YAML
-Content-Language: en-US
-To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
-Cc: robh+dt@kernel.org, krzk+dt@kernel.org, mturquette@baylibre.com,
- sboyd@kernel.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220325150146.18638-1-jbx6244@gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-In-Reply-To: <20220325150146.18638-1-jbx6244@gmail.com>
+In-Reply-To: <Yj1x5hJEKVL71JZ1@Red>
+References: <20220321200739.3572792-1-clabbe@baylibre.com>
+ <20220321200739.3572792-18-clabbe@baylibre.com>
+ <20220325004125.C80FDC340EC@smtp.kernel.org> <Yj1x5hJEKVL71JZ1@Red>
+Subject: Re: [PATCH v3 17/26] clk: rk3399: use proper crypto0 name
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: heiko@sntech.de, herbert@gondor.apana.org.au, krzk+dt@kernel.org,
+ mturquette@baylibre.com, robh+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+To: LABBE Corentin <clabbe@baylibre.com>
+Date: Fri, 25 Mar 2022 09:52:38 -0700
+User-Agent: alot/0.10
+Message-Id: <20220325165240.C9A6DC2BBE4@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220325_083910_485302_8B02CE9A 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20220325_095243_775677_1B6F9904 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,45 +72,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25/03/2022 16:01, Johan Jonker wrote:
-> Current dts files with RK3188/RK3066 'cru' nodes are manually verified.
-> In order to automate this process rockchip,rk3188-cru.txt has to be
-> converted to YAML.
-> 
-> Changed:
->   Add properties to fix notifications by clocks.yaml for example:
->     clocks
->     clock-names
-> 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
-> 
-> Changed V2:
->   change clocks maxItems
->   add clock-names
->   use clock-controller node name
->   remove assigned-xxx
-> ---
->  .../bindings/clock/rockchip,rk3188-cru.txt    | 61 ---------------
->  .../bindings/clock/rockchip,rk3188-cru.yaml   | 76 +++++++++++++++++++
->  2 files changed, 76 insertions(+), 61 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3188-cru.txt
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3188-cru.yaml
-> 
-
-
-Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
-
-
-Best regards,
-Krzysztof
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+UXVvdGluZyBMQUJCRSBDb3JlbnRpbiAoMjAyMi0wMy0yNSAwMDo0MDoyMikKPiBMZSBUaHUsIE1h
+ciAyNCwgMjAyMiBhdCAwNTo0MToyM1BNIC0wNzAwLCBTdGVwaGVuIEJveWQgYSDDqWNyaXQgOgo+
+ID4gUXVvdGluZyBDb3JlbnRpbiBMYWJiZSAoMjAyMi0wMy0yMSAxMzowNzozMCkKPiA+IAo+ID4g
+JCBnaXQgZ3JlcCBTUlNUX0NSWVBUTwo+ID4gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL2NyeXB0by9yb2NrY2hpcC1jcnlwdG8udHh0OiAgICAgICAgICAgcmVzZXRzID0gPCZjcnUg
+U1JTVF9DUllQVE8+Owo+ID4gYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LmR0c2k6ICAgICAgICAg
+IHJlc2V0cyA9IDwmY3J1IFNSU1RfQ1JZUFRPPjsKPiA+IAo+ID4gVWggb2guIEp1c3QgZG9uJ3Qg
+Y2hhbmdlIGl0IGFuZCB0aGluayBhYm91dCBzb21ldGhpbmcgZWxzZSB3aGVuIGl0Cj4gPiBzdGFy
+dHMgdG8gZmVlbCBpbmNvbnNpc3RlbnQuCj4gCj4gVGhpcyBpcyBvbiByazMyODgsIHNvIG5vdCBy
+ZWxhdGVkIHRvIHJrMzM5OS4KPiBFdmVuIG9uIHRoZSBSSzMzOTkgVFJNLCBhbGwgY3J5cHRvIGNs
+b2NrcyBhcmUgY2FsbGVkIGVpdGhlciBjcnlwdG8wIG9yIGNyeXB0bzEgKG5laXRoZXIganVzdCBj
+cnlwdG8pCj4gCgpPay4gUGxlYXNlIGFkZCBhIG5vdGUgaW4gdGhlIGNvbW1pdCB0ZXh0IHdoeSBp
+dCdzIE9LIHRvIGNoYW5nZSB0aGUKZGVmaW5lIG5hbWVzLgoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
+bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
