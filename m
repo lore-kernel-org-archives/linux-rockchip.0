@@ -4,69 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F20FAC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Mar 2022 17:28:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30628C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Mar 2022 20:00:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1BVmRIbXhc1CKTpRmDfPzBkBPshTuQKbmmCIS9PAKEA=; b=H5iJaJJHiDo8pE
-	uG5nQOAv3KrXoQ6Dvb7nEVxiorvDF/qpZcpa7apWrdocaU7MBQfJZu07XlGM2VDh1VXbJKBru4B8z
-	Ym0uV3JDo9RZF3u4bn4/kmTrlNNRyh5FpTRy5Ar9IbljRucL515LXOzzpdX9btxp2xEJ5SDrD8LMO
-	x9KnXy17Ji+lJLvqDAvDelXvfAiA1oxejZSLJRLN/zoCmJH0Xroz+gxtATmwFK2mZSmd274xQIPl+
-	0TKt/25DmfH2EI3OhROWfDzWG2rU50jMGJMuCwxtml6KuMAwWlkCCRp+l6VSBEdDM2+laPwFUWOnI
-	NK2MW3JMiz1aKRJTm5zQ==;
+	List-Owner; bh=DCN3RLZqDN/hR+KVeXheom0vuk43f2Gh2XKh5Z9o9wA=; b=QMfcCP7wG5kAp8
+	IeSvFQ4WFABFU4E7R+XMEJO5K3qiSNWUeAqvNTNuo3ULiPMUX0hQzfoCb+LUYsfmfd8z9vfgPMQ9K
+	Wk3r7HNZfTHKaVs4r7DgVOQ3eCPvlBl4TaDT5uEZjTaNXFwgwNLFfujufCZPPStojVYCzbhPFz82k
+	itmlDoIe6iERITRdZ0Q+tU8hs5fYWmNKEZ7La3MydI2DanBn8QiqceTnl2FAEISMdwier8/xyBWgI
+	CTP9bqYGMm6O9dSoF4L12GtbNBYg0wGp1s083aGDeOmdQjIPCF76p/NTKYPAinuzMXO79t0dTlLEy
+	nJRVkY+CZuZ12r4+bATQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYt9w-009dDU-9N; Mon, 28 Mar 2022 17:28:04 +0000
-Received: from mail-oi1-f173.google.com ([209.85.167.173])
+	id 1nYvWw-009z7W-Ec; Mon, 28 Mar 2022 19:59:58 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYt9t-009dCD-7z; Mon, 28 Mar 2022 17:28:02 +0000
-Received: by mail-oi1-f173.google.com with SMTP id k10so16353448oia.0;
- Mon, 28 Mar 2022 10:27:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=pKj0Gjvro8HTxjGPukTbqzqx9n4h/OXOk7/nuTgNznk=;
- b=5oaxUELwV6uB9G56udzRx7OGj295NnBgW2qWqdaEKHV6trwpv7yDkxY9l8qRqJkeUs
- /F8d5l9IjvJmmn+WH3gOMIViCZC3lxPd8pV3sB05ERRnMi7TsPzn6kU2+0WtH5gKYmPo
- t5svWqnwUYxgytOqeksd66LxIyadB02CeypboDtS7jEOJJRraKNkIR3lP4RPbksEd2yH
- BgXZJXwnLEbpfZKPCPNjGojaLMh6nEfmb6U/uzkeTty6DRt/Dy5evjh2ZY/j5c6xYykT
- 9M1vdctnxVETk83DfjeaX/CSX9tzHxZeau7yumw/sDWn2HEqA+xz+6K8UKBjsZxiDWom
- ENiw==
-X-Gm-Message-State: AOAM530ua2zvGTdxa9Mvgri6CdsFsl9zihewbS0YsuxKprEzo/IurBFr
- xdeqSC4yC1SSPZZ0J5dyJg==
-X-Google-Smtp-Source: ABdhPJy9zkdxb+G0m7ZY98qArUKWYEXV2InDfgYRh2KbJ2ffNuMS4F51mQaf1i8pp3e5obxjJ3g9Ng==
-X-Received: by 2002:a05:6808:308c:b0:2f7:5d2e:1a5e with SMTP id
- bl12-20020a056808308c00b002f75d2e1a5emr102483oib.209.1648488477125; 
- Mon, 28 Mar 2022 10:27:57 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- x65-20020a9d20c7000000b005cdaeec68d5sm7389911ota.37.2022.03.28.10.27.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Mar 2022 10:27:56 -0700 (PDT)
-Received: (nullmailer pid 2611453 invoked by uid 1000);
- Mon, 28 Mar 2022 17:27:55 -0000
-Date: Mon, 28 Mar 2022 12:27:55 -0500
-From: Rob Herring <robh@kernel.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: krzk+dt@kernel.org, mturquette@baylibre.com, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, heiko@sntech.de, sboyd@kernel.org
-Subject: Re: [PATCH v1 1/2] dt-bindings: clock: convert
- rockchip,rk3288-cru.txt to YAML
-Message-ID: <YkHwG5SaXchzeJ7o@robh.at.kernel.org>
-References: <20220326120942.24008-1-jbx6244@gmail.com>
+ id 1nYvWt-009z5B-LS
+ for linux-rockchip@lists.infradead.org; Mon, 28 Mar 2022 19:59:57 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nicolas) with ESMTPSA id D9B6F1F4384C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1648497591;
+ bh=juEkTDE+SY0qwuOHnUrLzTo/uQ/rPpurP5PmYNSVfck=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=iDK0M7FyPd5O9ZPH6cann5jLnLLjQxkwxZS6CxveFOrYR2TgBiSEl3kWREbifBLE5
+ HZRuUeEO9kEeU/TrdUJ9PrBWxVgDCny/0Y81gl86ehzEsOcPhiqoSaXJripdv6E71x
+ 0/25h8I8CAdgcpPLWjeE19aES5+LvahKaZ5cD1qVXJg+Zx8TeFAdwyMEPjV/k3svr+
+ lcehnmWXJt8Ck9Bmp0H1zf/LUbVDh/KbR2MIF9h2fOQBKaxcPWGqsLYOMxy1jFN4mH
+ 7U+Vs2qTQY+N/5Stg8DeyjEX6RuMi0RR/lqfzNFIq5yT+qFvI0KHGVelygcwbOopyu
+ SSNsN4gBJVs5Q==
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: kernel@collabora.com, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev
+Subject: [PATCH v1 01/24] media: h264: Increase reference lists size to 32
+Date: Mon, 28 Mar 2022 15:59:13 -0400
+Message-Id: <20220328195936.82552-2-nicolas.dufresne@collabora.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220328195936.82552-1-nicolas.dufresne@collabora.com>
+References: <20220328195936.82552-1-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220326120942.24008-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_102801_296631_48C86CF5 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20220328_125955_995544_B2FE788E 
+X-CRM114-Status: GOOD (  12.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,26 +72,113 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 26 Mar 2022 13:09:41 +0100, Johan Jonker wrote:
-> Current dts files with RK3288 'cru' nodes are manually verified.
-> In order to automate this process rockchip,rk3288-cru.txt has to be
-> converted to YAML.
-> 
-> Changed:
->   Add properties to fix notifications by clocks.yaml for example:
->     clocks
->     clock-names
-> 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
->  .../bindings/clock/rockchip,rk3288-cru.txt    | 67 ---------------
->  .../bindings/clock/rockchip,rk3288-cru.yaml   | 83 +++++++++++++++++++
->  2 files changed, 83 insertions(+), 67 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.yaml
-> 
+This is to accommodate support for field decoding, which splits the top
+and the bottom reference into the reference list.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+ drivers/media/v4l2-core/v4l2-h264.c        | 6 +++---
+ drivers/staging/media/hantro/hantro_hw.h   | 6 +++---
+ drivers/staging/media/rkvdec/rkvdec-h264.c | 6 +++---
+ include/media/v4l2-h264.h                  | 8 ++++----
+ 4 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/media/v4l2-core/v4l2-h264.c b/drivers/media/v4l2-core/v4l2-h264.c
+index 0618c6f52214..8d750ee69e74 100644
+--- a/drivers/media/v4l2-core/v4l2-h264.c
++++ b/drivers/media/v4l2-core/v4l2-h264.c
+@@ -210,7 +210,7 @@ static int v4l2_h264_b1_ref_list_cmp(const void *ptra, const void *ptrb,
+  * v4l2_h264_build_p_ref_list() - Build the P reference list
+  *
+  * @builder: reference list builder context
+- * @reflist: 16 sized array used to store the P reference list. Each entry
++ * @reflist: 32 sized array used to store the P reference list. Each entry
+  *	     is a v4l2_h264_reference structure
+  *
+  * This functions builds the P reference lists. This procedure is describe in
+@@ -233,9 +233,9 @@ EXPORT_SYMBOL_GPL(v4l2_h264_build_p_ref_list);
+  * v4l2_h264_build_b_ref_lists() - Build the B0/B1 reference lists
+  *
+  * @builder: reference list builder context
+- * @b0_reflist: 16 sized array used to store the B0 reference list. Each entry
++ * @b0_reflist: 32 sized array used to store the B0 reference list. Each entry
+  *		is a v4l2_h264_reference structure
+- * @b1_reflist: 16 sized array used to store the B1 reference list. Each entry
++ * @b1_reflist: 32 sized array used to store the B1 reference list. Each entry
+  *		is a v4l2_h264_reference structure
+  *
+  * This functions builds the B0/B1 reference lists. This procedure is described
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index 2bc6b8f088f5..292aaaabaf24 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -69,9 +69,9 @@ struct hantro_h264_dec_ctrls {
+  * @b1:		B1 reflist
+  */
+ struct hantro_h264_dec_reflists {
+-	struct v4l2_h264_reference p[HANTRO_H264_DPB_SIZE];
+-	struct v4l2_h264_reference b0[HANTRO_H264_DPB_SIZE];
+-	struct v4l2_h264_reference b1[HANTRO_H264_DPB_SIZE];
++	struct v4l2_h264_reference p[V4L2_H264_REF_LIST_LEN];
++	struct v4l2_h264_reference b0[V4L2_H264_REF_LIST_LEN];
++	struct v4l2_h264_reference b1[V4L2_H264_REF_LIST_LEN];
+ };
+ 
+ /**
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 3c7f3d87fab4..dff89732ddd0 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -100,9 +100,9 @@ struct rkvdec_h264_priv_tbl {
+ #define RKVDEC_H264_DPB_SIZE 16
+ 
+ struct rkvdec_h264_reflists {
+-	struct v4l2_h264_reference p[RKVDEC_H264_DPB_SIZE];
+-	struct v4l2_h264_reference b0[RKVDEC_H264_DPB_SIZE];
+-	struct v4l2_h264_reference b1[RKVDEC_H264_DPB_SIZE];
++	struct v4l2_h264_reference p[V4L2_H264_REF_LIST_LEN];
++	struct v4l2_h264_reference b0[V4L2_H264_REF_LIST_LEN];
++	struct v4l2_h264_reference b1[V4L2_H264_REF_LIST_LEN];
+ 	u8 num_valid;
+ };
+ 
+diff --git a/include/media/v4l2-h264.h b/include/media/v4l2-h264.h
+index ef9a894e3c32..e282fb16ac58 100644
+--- a/include/media/v4l2-h264.h
++++ b/include/media/v4l2-h264.h
+@@ -37,7 +37,7 @@ struct v4l2_h264_reflist_builder {
+ 		u16 longterm : 1;
+ 	} refs[V4L2_H264_NUM_DPB_ENTRIES];
+ 	s32 cur_pic_order_count;
+-	struct v4l2_h264_reference unordered_reflist[V4L2_H264_NUM_DPB_ENTRIES];
++	struct v4l2_h264_reference unordered_reflist[V4L2_H264_REF_LIST_LEN];
+ 	u8 num_valid;
+ };
+ 
+@@ -51,9 +51,9 @@ v4l2_h264_init_reflist_builder(struct v4l2_h264_reflist_builder *b,
+  * v4l2_h264_build_b_ref_lists() - Build the B0/B1 reference lists
+  *
+  * @builder: reference list builder context
+- * @b0_reflist: 16 sized array used to store the B0 reference list. Each entry
++ * @b0_reflist: 32 sized array used to store the B0 reference list. Each entry
+  *		is a v4l2_h264_reference structure
+- * @b1_reflist: 16 sized array used to store the B1 reference list. Each entry
++ * @b1_reflist: 32 sized array used to store the B1 reference list. Each entry
+  *		is a v4l2_h264_reference structure
+  *
+  * This functions builds the B0/B1 reference lists. This procedure is described
+@@ -70,7 +70,7 @@ v4l2_h264_build_b_ref_lists(const struct v4l2_h264_reflist_builder *builder,
+  * v4l2_h264_build_p_ref_list() - Build the P reference list
+  *
+  * @builder: reference list builder context
+- * @reflist: 16 sized array used to store the P reference list. Each entry
++ * @reflist: 32 sized array used to store the P reference list. Each entry
+  *	     is a v4l2_h264_reference structure
+  *
+  * This functions builds the P reference lists. This procedure is describe in
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
