@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BB39C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Mar 2022 15:21:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96C8AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Mar 2022 15:21:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fhzhj8f1zV4Gi/e8NYtxBUSYI5ntRytMU/0tmb+MxHc=; b=XzXEw7Chi8PGQ1
-	+ARzNoABwwhqFLR9W679ewUQrYxxqSxApvZMf0rn+z+SZVh+18EZMyXD5IIpAMsLtfV8ZiDHjMpZ+
-	qB9dvuVz8u9/X1vhbk8z9pFDSUIStB8f/2jazjN/yf+SDa4FoWuGW/AUofIO+lr6DZQUXE/ualK6Y
-	9Aljg1FyrhmK+Sz+ySl/FBjwQXBjc0Z200k/SruaZVzI3jwlz0SChLHdF2Oo1IeTNd3qDdXGwBkAc
-	ljs42R968+c6OhB3953DuWpUj8WREspjxfCmtQnLo4kz6YPNne4ts0pkPleKSkFWctbC7a5f3Y/IT
-	oeklxai2ycS7LbCYlVkw==;
+	List-Owner; bh=dvtXfOsb2aCNwbjCYSSvvlbLlw4yutH7B9WqgsxUyv8=; b=Y171CtT5Oa09JV
+	cYNBpX57VuoQyQD8GJnF6CNIXSbFymAR+L1HdJkJpVVO3VrEViTpaQgwhFmvt1ryFOQxTY1MWQIfy
+	A1Kl4Ydhu6vVqyEzkdFNPhOW0kq2pRNRhxt7WgEed/c1AHiWhKGDmgoIU0MvYxjlnMoND6qBw+wNA
+	PNWW1xOmKDMBA6+eXd4MMWuFNsa6AsznKBP3l02y/nj/bc0sbxNJy9xBIMrlPQxtvrUNq5c4fNlXA
+	bTEfcRzSBbbYV0JZXjT7yIqGjqUYOpQvh9YQGMkiP05OUd6qvULWI/abE9V9ZQRdgTsaRPWaFKOx2
+	oNu9BXw5tT6/3ZInCMaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYrAw-009IiS-HK; Mon, 28 Mar 2022 15:20:58 +0000
+	id 1nYrB3-009In7-KP; Mon, 28 Mar 2022 15:21:05 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYr21-009Dur-40
+ id 1nYr21-009Dux-Gf
  for linux-rockchip@bombadil.infradead.org; Mon, 28 Mar 2022 15:11:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
  :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=p75/r1Cwj8HqtATa44wihlQSP7jl+1nxqpzYh6m/jr0=; b=ZW+S9whJbdJu0nnNyfRJfye7nS
- jLiqLxlkuaUp/GXGXYV+NX24rYiPRDNFF71ILLGoOUBU84xY3QF8ZK53SWjBSbJhjTedwJkGd2LTH
- /5mV11EWPrzmdzuOZnT03LxNfE60AmZUfqKsmaFOTzW1aaabQOs1/xD/j7hrc3qxW/OhulSpYQvKv
- qpX9zj4MPWFPrfACESD3DxyH3dPn/OLtGXdE+ih9usaz0ZhfiZCBXycMFYrrnPcJEN3auq6os6BWJ
- Zi3BYa12+AdmuVa75QAD3O+hOfO3+CsCzgDhkOQaW65GLCCGsDet9G9WEPIl1jVpU9XWbf9w/FDB1
- 3+A6OxNg==;
+ bh=ZtW1FSE1b5CoWQlb7D/6VYKoQ6jlxRWdZtV0N2z6aeo=; b=LVm56k3RBpLQkMFo+IOEh5D1iL
+ MGFywj4Xvfsjd4w45BaHWZAUdGsbv+YHK+bMzxiXOAr0aa+gN3DhR6ljWK1IYTgPyGREb9G7qrJcM
+ LcwcY/kFHgs0bIwCsm6HvPTwn9tSUIJeKWTYb6XFTRaoES6kwI04Ray5AHnb+//4YVQ3tI2ThXONg
+ ztOYWA8Qfr3HFaX3fZBtk9sXCG9rDbPV7K5cF0T3FIiP6pVEZQJdxV/mYaeZ/A7WCnlkPYM0kK8B2
+ alfarvZyfQk3As/t2hSOGBgOImyWZVJ199d/nnGzlfZFZKr78NtNUZtIN5ewUv9nC+xSHoNjik6zE
+ jZ0xdjAQ==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYr1y-005TS5-0u
+ id 1nYr1y-005TS6-6x
  for linux-rockchip@lists.infradead.org; Mon, 28 Mar 2022 15:11:43 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nYr1f-00006C-Jf; Mon, 28 Mar 2022 17:11:23 +0200
+ id 1nYr1f-00006G-J5; Mon, 28 Mar 2022 17:11:23 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
  by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nYr1b-003cTL-0L; Mon, 28 Mar 2022 17:11:21 +0200
+ id 1nYr1b-003cTU-IP; Mon, 28 Mar 2022 17:11:22 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nYr1a-008XLX-H6; Mon, 28 Mar 2022 17:11:18 +0200
+ id 1nYr1a-008XLq-Kv; Mon, 28 Mar 2022 17:11:18 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -60,11 +60,11 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Douglas Anderson <dianders@chromium.org>,
- Yakir Yang <ykk@rock-chips.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v9 13/23] drm/rockchip: dw_hdmi: Set cur_ctr to 0 always
-Date: Mon, 28 Mar 2022 17:11:06 +0200
-Message-Id: <20220328151116.2034635-14-s.hauer@pengutronix.de>
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v9 19/23] arm64: dts: rockchip: enable vop2 and hdmi tx on
+ quartz64a
+Date: Mon, 28 Mar 2022 17:11:12 +0200
+Message-Id: <20220328151116.2034635-20-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220328151116.2034635-1-s.hauer@pengutronix.de>
 References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
@@ -75,8 +75,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_161142_153473_5AD0F1C3 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20220328_161142_306318_8661D9FE 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,52 +94,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Douglas Anderson <dianders@chromium.org>
+From: Michael Riesch <michael.riesch@wolfvision.net>
 
-Jitter was improved by lowering the MPLL bandwidth to account for high
-frequency noise in the rk3288 PLL.  In each case MPLL bandwidth was
-lowered only enough to get us a comfortable margin.  We believe that
-lowering the bandwidth like this is safe given sufficient testing.
+Enable the RK356x Video Output Processor (VOP) 2 on the Pine64
+Quartz64 Model A.
 
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Signed-off-by: Yakir Yang <ykk@rock-chips.com>
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
 
 Notes:
+    Changes since v5:
+    - Drop reg property from single endpoint node
+    
+    Changes since v4:
+    - Sort nodes alphabetically
+    
     Changes since v3:
-    - new patch
+    - Fix HDMI connector type
 
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 16 ++--------------
- 1 file changed, 2 insertions(+), 14 deletions(-)
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 47 +++++++++++++++++++
+ 1 file changed, 47 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 008ab20f39ee6..5be5d1d4963cd 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -180,20 +180,8 @@ static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
- static const struct dw_hdmi_curr_ctrl rockchip_cur_ctr[] = {
- 	/*      pixelclk    bpp8    bpp10   bpp12 */
- 	{
--		40000000,  { 0x0018, 0x0018, 0x0018 },
--	}, {
--		65000000,  { 0x0028, 0x0028, 0x0028 },
--	}, {
--		66000000,  { 0x0038, 0x0038, 0x0038 },
--	}, {
--		74250000,  { 0x0028, 0x0038, 0x0038 },
--	}, {
--		83500000,  { 0x0028, 0x0038, 0x0038 },
--	}, {
--		146250000, { 0x0038, 0x0038, 0x0038 },
--	}, {
--		148500000, { 0x0000, 0x0038, 0x0038 },
--	}, {
-+		600000000, { 0x0000, 0x0000, 0x0000 },
-+	},  {
- 		~0UL,      { 0x0000, 0x0000, 0x0000},
- 	}
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+index dd7f4b9b686b8..6504f7ab3ea77 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+@@ -4,6 +4,7 @@
+ 
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
+ #include "rk3566.dtsi"
+ 
+ / {
+@@ -35,6 +36,17 @@ fan: gpio_fan {
+ 		#cooling-cells = <2>;
+ 	};
+ 
++	hdmi-con {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi_con_in: endpoint {
++				remote-endpoint = <&hdmi_out_con>;
++			};
++		};
++	};
++
+ 	leds {
+ 		compatible = "gpio-leds";
+ 
+@@ -248,6 +260,24 @@ &gpu {
+ 	status = "okay";
  };
+ 
++&hdmi {
++	avdd-0v9-supply = <&vdda_0v9>;
++	avdd-1v8-supply = <&vcc_1v8>;
++	status = "okay";
++};
++
++&hdmi_in {
++	hdmi_in_vp0: endpoint {
++		remote-endpoint = <&vp0_out_hdmi>;
++	};
++};
++
++&hdmi_out {
++	hdmi_out_con: endpoint {
++		remote-endpoint = <&hdmi_con_in>;
++	};
++};
++
+ &i2c0 {
+ 	status = "okay";
+ 
+@@ -685,3 +715,20 @@ &usb2phy1_otg {
+ 	phy-supply = <&vcc5v0_usb20_host>;
+ 	status = "okay";
+ };
++
++&vop {
++	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
++	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vp0 {
++	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
++		remote-endpoint = <&hdmi_in_vp0>;
++	};
++};
 -- 
 2.30.2
 
