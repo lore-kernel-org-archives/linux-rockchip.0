@@ -4,53 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EC33C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Mar 2022 07:51:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E18C6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Mar 2022 07:57:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=McYQUF5m36z45c2niX/3nOV1MVRlSrYdGVL6G1kYFiI=; b=2s8oIGwmfQ/EiX
-	RGDidkM1jlh3oQMDV4wQQjFFjSOhagJf0fS+iasHmE2a+7wj4IkGjmE4ROtI6pLPfZK+5asGxk+UG
-	yJp5jmFIenZ1+JtJ0X0zD++GKmJ73R2YgzplSaEn1/h0oWD1tu2GjupMwUFn3lWM05b0kZM/Z+c9G
-	wlOTCfD4SrEzMYNvrZ6vnQMn4/w4bOAhnrxPGrFlpiay87VpUJWuLVRzlGmvWf1RrVwFkGyhP+QE6
-	WlZO1eUAmCL5jXMM7VHJaQRCBkEcdwX9YVE+0D86wgIrxwgMVN1ehKKubWpKuu9iOiAk21S20PnPQ
-	sVo3bwSC5OYCBn5TAzKQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:In-Reply-To:
+	Subject:cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=FsjOVAuDx/bCnIIKWivlw2xdUqY0gfHYM0Opt8x8p6w=; b=T42b8dU/tIAkxfbznr2aqTtEsA
+	Q51J3SZADFwP30KUGD1gyPpAxAQbuycL7YoVGhqwRT8IlN2GdGyvcr6r+MLM3Lhpa/504+M5W1pi4
+	zM73BzoGxozeLL8dzppkeNBTvoO2Lyy2EwwV6MMF5fDpXCpdyKXGK6A0M9t9hwqBZEqUmSD4DZgt9
+	dhH/a4tRr/tF9H40y8/IhD3rbAHWRqoBJbHuN/kAIKhHzsKCYCvdCFutF+Om1qSgoQWTjEW1BYYyo
+	qXGHVuZKvBu8AOD0j8pJVQ6bikpuv11/J5DNCFeq++oBMhza9OM9VP7Vso7m9jcPviAIU4813baul
+	ql+WvPtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYk9y-007gZ3-CA; Mon, 28 Mar 2022 07:51:30 +0000
-Received: from mail.ourpartnership.pl ([80.211.82.238])
+	id 1nYkFr-007hLf-72; Mon, 28 Mar 2022 07:57:35 +0000
+Received: from xavier.telenet-ops.be ([2a02:1800:120:4::f00:14])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYk9v-007gXq-CC
- for linux-rockchip@lists.infradead.org; Mon, 28 Mar 2022 07:51:28 +0000
-Received: by mail.ourpartnership.pl (Postfix, from userid 1001)
- id EDCF163158; Mon, 28 Mar 2022 08:46:42 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ourpartnership.pl;
- s=mail; t=1648453706;
- bh=M1ZVeu3q6Upppe+FUx/3rgI7MKJXh389NZDbgCK1SX4=;
- h=Date:From:To:Subject:From;
- b=cEsWGfuyRvVpkXsqZVp4V4rbX8JiZMJP2T3UKofMrqfilpc/IsAG0lGjlmZIzv68U
- YtMmwUaRTjT35jhbVZ/+L9CvYW8F5wQYCXiKbCTIpyQwXTSghqBoYOUzR6fg0yBvVT
- wDtIGKW+Eoa19whXibZ6IYF9a4Dm9tDjuCQbH8tOHZie/0zIyA8bMjHowG+agy249/
- hRe2dfi9YYVSgjXO/2IsJEtmBvY80HuYkNMZvOdldiRFka9Ep49wB74pjfuK0RFKKR
- jr+MVSfxyuvSeFlXrEY9ih+litucJJ9vQ67tJRHLV1aQaApvlMxwGg3Fcsb42HyZvM
- 5BkMUdUDrFjnA==
-Received: by mail.ourpartnership.pl for <linux-rockchip@lists.infradead.org>;
- Mon, 28 Mar 2022 07:46:04 GMT
-Message-ID: <20220328074501-0.1.9.2atw.0.31wpiikt70@ourpartnership.pl>
-Date: Mon, 28 Mar 2022 07:46:04 GMT
-From: =?UTF-8?Q?"Arkadiusz_Soko=C5=82owski"?=
- <arkadiusz.sokolowski@ourpartnership.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: Koszty instalacji fotowoltaicznej
-X-Mailer: mail.ourpartnership.pl
+ id 1nYkFo-007hIB-C0
+ for linux-rockchip@lists.infradead.org; Mon, 28 Mar 2022 07:57:34 +0000
+Received: from ramsan.of.borg ([IPv6:2a02:1810:ac12:ed40:e89f:bbc:3ef3:db3f])
+ by xavier.telenet-ops.be with bizsmtp
+ id Bjx82700v1mfJzQ01jx8mS; Mon, 28 Mar 2022 09:57:26 +0200
+Received: from geert (helo=localhost)
+ by ramsan.of.borg with local-esmtp (Exim 4.93)
+ (envelope-from <geert@linux-m68k.org>)
+ id 1nYkFQ-0074P3-Bn; Mon, 28 Mar 2022 09:57:08 +0200
+Date: Mon, 28 Mar 2022 09:57:08 +0200 (CEST)
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+X-X-Sender: geert@ramsan.of.borg
+To: Ansuel Smith <ansuelsmth@gmail.com>
+cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org, 
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com, 
+ linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, 
+ chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org, 
+ linux-samsung-soc@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com, 
+ linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
+ linux-tegra@vger.kernel.org, linux-oxnas@groups.io, 
+ linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org
+Subject: Re: [PATCH RFC 1/1] ARM/arm64: categorize dts in arm dir and fix
+ dependency in arm64
+In-Reply-To: <20220328000915.15041-2-ansuelsmth@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2203280956080.1685195@ramsan.of.borg>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <20220328000915.15041-2-ansuelsmth@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_005127_621650_2EAD5C64 
-X-CRM114-Status: UNSURE (   1.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220328_005732_574438_303C6237 
+X-CRM114-Status: GOOD (  15.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,20 +72,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKc3R3b3J6eWxpxZtteSBzcGVjamFsbsSFIG9mZXJ0xJkgZGxhIGZpcm0s
-IG5hIGtvbXBsZWtzb3fEhSBvYnPFgnVnxJkgaW53ZXN0eWNqaSB3IGZvdG93b2x0YWlrxJkuICAK
-ClNwZWNqYWxpenVqZW15IHNpxJkgdyB6YWtyZXNpZSBkb2JvcnUsIG1vbnRhxbx1IGkgc2Vyd2lz
-aWUgaW5zdGFsYWNqaSBmb3Rvd29sdGFpY3pueWNoLCBkeXNwb251amVteSBuYWpub3dvY3plxZtu
-aWVqc3p5bWkgcm96d2nEhXphbmlhLCBrdMOzcmUgemFwZXduacSFIFBhxYRzdHd1IG9jemVraXdh
-bmUgcmV6dWx0YXR5LgoKTW/FvGVteSBwcnp5Z290b3dhxIcgZGxhIFBhxYRzdHdhIHdzdMSZcG7E
-hSBrYWxrdWxhY2rEmSBpIHByemVhbmFsaXpvd2HEhyBlZmVrdHkgbW/FvGxpd2UgZG8gb3NpxIVn
-bmnEmWNpYS4KCkN6eSBzxIUgUGHFhHN0d28gb3R3YXJjaSBuYSB3c3TEmXBuxIUgcm96bW93xJkg
-dyB0eW0gdGVtYWNpZT8KCgpQb3pkcmF3aWFtCkFya2FkaXVzeiBTb2tvxYJvd3NraQoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+ 	Hi Ansuel,
+
+On Mon, 28 Mar 2022, Ansuel Smith wrote:
+> - Categorize every dts in arm directory in subdirectory
+> - Fix Makefile to address for the arm subdirectory
+> - Fix any arm64 dependency
+>
+> Signed-off-by: Ansuel Smith <ansuelsmth@gmail.com>
+
+Thanks for your patch!
+
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/renasas/Makefile
+
+s/renasas/renesas/
+
+The actual split for the Renesas parts LGTM.
+
+Gr{oetje,eeting}s,
+
+ 						Geert
+
+--
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+ 							    -- Linus Torvalds
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
