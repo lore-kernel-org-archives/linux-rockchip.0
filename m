@@ -4,58 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA256C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Mar 2022 20:00:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81D4FC43217
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Mar 2022 20:00:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2rydofhURID3YoSgb/bkXI8xf+3QfjgSlLhMLnPoYhI=; b=ZA0Pp/kJa3mjwl
-	pFH/KctcJOrpPderK7x/BtTGtDQhTWqmd4S4hTQbYitR7Oiuk0eb15zF+SrfksdxG+uSsz0VeSGah
-	q4a/76VH7HLJdDP2ttOPJ+dceteTslIEviQkakpabdy48z+LTB8jOVDTTe+Bkx48anIJrHFG1bLPV
-	8E3q3cBeGaokK2X9kpRKegCQHEZIrjabfatyuy/ELuSufT6wtHUez+i2Udh+Hm3qfXlB04gRZEcFM
-	/5WcTNnQczO2w2twmFsfsQQBs8v15cf0FBBF/4u+Ka2qit8cR0gx/dcxgRsjePzAuiZ69TEEY2ABR
-	xCnN39igM2pPUSMeyA4g==;
+	List-Owner; bh=iT6HgKsKwfvdPNfxCwXaysHhKeYW42gsxLDjZ7Y/xz8=; b=X4V1UGARdkexm7
+	yVw4+utN6WsJgcE0wtNe+nxT3P6xMb3AKtrfIX4E85UMVDHyZnMpOlkIcV7umVZU1ma7qCF4dIVd4
+	Bcxd+SkwidNZ9In8Zlj0doJPCVJnWmRAoxWsCDskmy8TkHuk2wXO6xKHYSG+RsPQYF41PvumgMOcc
+	HlEuQ+cVSWBgSOo7MQuMaJrX2VA7O2dXRuNvd0hAYO6aWzhkXJ2F/Lz+l2fj+ZxPYedMTx28wC7Vz
+	rHCfcqBJChS1or4rXQw/RV+3NNu9Oxwc97hje7pmjVA+Yj6qh9Zlf7yYbdj//B4CFxE9awBCf07lO
+	XkImkb+C4zJrY6wotkcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYvX9-009zGb-Gk; Mon, 28 Mar 2022 20:00:11 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nYvXB-009zIr-Bb; Mon, 28 Mar 2022 20:00:13 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYvX6-009zEZ-Lz
- for linux-rockchip@lists.infradead.org; Mon, 28 Mar 2022 20:00:10 +0000
+ id 1nYvX8-009zFO-Tq
+ for linux-rockchip@lists.infradead.org; Mon, 28 Mar 2022 20:00:12 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nicolas) with ESMTPSA id 359211F43874
+ (Authenticated sender: nicolas) with ESMTPSA id 26A8D1F43887
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1648497607;
- bh=Pb+CkJFTFCox4aOeKaVWm1HNnI9nYoASnBQM3lzgOEY=;
+ s=mail; t=1648497609;
+ bh=Ddp9raQj8UeMQfeTi2igopokBtztJ648lvZgYhxyu0w=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=nTUduKXw1HouhCvW/Gy+aJmHH6nF/jyB0cwwEPV6jAWA35xHLQXGqidD26RIhIOlw
- JZMquk0QFevH4YHJ+f8Vv5I6rdcV3SBm9EDQyplYLbC/FXI5WqFKeDgSpVdzMtcw8V
- 2g8gTxRcZuc9LpQbg8E3vYKY/OMQEhgdwBDUo0fNQkMLi9w41b3jmvIxwvb05jcPt0
- UtiOLD3nauFSK6vxXNMHvoVYWcMC1tREK+TQXFIGD8SYeIXvhNpU6yV6SlUDGR6+ro
- PijOsp8nb4HovgDIq9hnkG7AotFwRc5qqSNcvhCWjmw8ISiWJinaFJxMqVAvM9Rp60
- PnQtAyaXK9CKQ==
+ b=nmQHtGgp4cTLxB5/7cfkka6D2p/R8j+k0fG5AE62PwiZjhbYMp+XBvVXYf6MAMBEF
+ gtpf/XPG0eQ/TtjkZL9Ws602REUe23MVKQFmYJQSxE9ePgeVbWbPZwSxBjhmsTccES
+ c7o+P2K5q4AemDt88R8TIu+24NG68zJHoZ79An5i+i5bSTtKKBCa0jiaOtK9Heh881
+ nEfYfD26TdGGbbmfNgAweFFT7Cn0x4w6/h5hX5KrcScaXoi5f0oA9n1JlFpEMQqGA0
+ FsXccF9DGL8xmsN7T43zZyGFix0+NnOZuAqXyn/tF1jKwoegVlHYVTn+8ry+cZREsP
+ AfOu/ePtN/hlg==
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
- Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org,
+Cc: kernel@collabora.com, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v1 13/24] media: rkvdec: h264: Fix reference frame_num wrap
- for second field
-Date: Mon, 28 Mar 2022 15:59:25 -0400
-Message-Id: <20220328195936.82552-14-nicolas.dufresne@collabora.com>
+Subject: [PATCH v1 14/24] media: rkvdec: h264: Fix dpb_valid implementation
+Date: Mon, 28 Mar 2022 15:59:26 -0400
+Message-Id: <20220328195936.82552-15-nicolas.dufresne@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220328195936.82552-1-nicolas.dufresne@collabora.com>
 References: <20220328195936.82552-1-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_130008_874624_29936B06 
-X-CRM114-Status: GOOD (  11.17  )
+X-CRM114-CacheID: sfid-20220328_130011_161866_945B7772 
+X-CRM114-Status: GOOD (  16.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,36 +71,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+The ref builder only provided reference that are marked as valid in the
+dpb.  Thus the current implementation of dpb_valid would always set the
+flag to 1.  This is not representing missing frames (this is called
+'non-existing' pictures in the spec). In some context, these non-existing
+pictures still need occupy a slot in the reference list according to the
+spec.
 
-When decoding the second field in a complementary field pair the second
-field is sharing the same frame_num with the first field.
-
-Currently the frame_num for the first field is wrapped when it matches the
-field being decoded, this cause issues to decode the second field in a
-complementary field pair.
-
-Fix this by using inclusive comparison, less than or equal.
-
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- drivers/staging/media/rkvdec/rkvdec-h264.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/media/rkvdec/rkvdec-h264.c | 33 ++++++++++++++++------
+ 1 file changed, 24 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index dff89732ddd0..842d8cd80e90 100644
+index 842d8cd80e90..db1e762baee5 100644
 --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
 +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -752,7 +752,7 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
- 			continue;
+@@ -112,6 +112,7 @@ struct rkvdec_h264_run {
+ 	const struct v4l2_ctrl_h264_sps *sps;
+ 	const struct v4l2_ctrl_h264_pps *pps;
+ 	const struct v4l2_ctrl_h264_scaling_matrix *scaling_matrix;
++	int ref_buf_idx[V4L2_H264_NUM_DPB_ENTRIES];
+ };
  
- 		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM ||
--		    dpb[i].frame_num < dec_params->frame_num) {
-+		    dpb[i].frame_num <= dec_params->frame_num) {
- 			p[i] = dpb[i].frame_num;
- 			continue;
- 		}
+ struct rkvdec_h264_ctx {
+@@ -725,6 +726,26 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+ 	}
+ }
+ 
++static void lookup_ref_buf_idx(struct rkvdec_ctx *ctx,
++			       struct rkvdec_h264_run *run)
++{
++	const struct v4l2_ctrl_h264_decode_params *dec_params = run->decode_params;
++	u32 i;
++
++	for (i = 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
++		struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
++		const struct v4l2_h264_dpb_entry *dpb = run->decode_params->dpb;
++		struct vb2_queue *cap_q = &m2m_ctx->cap_q_ctx.q;
++		int buf_idx = -1;
++
++		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)
++			buf_idx = vb2_find_timestamp(cap_q,
++						     dpb[i].reference_ts, 0);
++
++		run->ref_buf_idx[i] = buf_idx;
++	}
++}
++
+ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
+ 			    struct rkvdec_h264_run *run)
+ {
+@@ -762,7 +783,7 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
+ 
+ 	for (j = 0; j < RKVDEC_NUM_REFLIST; j++) {
+ 		for (i = 0; i < h264_ctx->reflists.num_valid; i++) {
+-			u8 dpb_valid = 0;
++			u8 dpb_valid = run->ref_buf_idx[i] >= 0;
+ 			u8 idx = 0;
+ 
+ 			switch (j) {
+@@ -779,8 +800,6 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
+ 
+ 			if (idx >= ARRAY_SIZE(dec_params->dpb))
+ 				continue;
+-			dpb_valid = !!(dpb[idx].flags &
+-				       V4L2_H264_DPB_ENTRY_FLAG_ACTIVE);
+ 
+ 			set_ps_field(hw_rps, DPB_INFO(i, j),
+ 				     idx | dpb_valid << 4);
+@@ -859,13 +878,8 @@ get_ref_buf(struct rkvdec_ctx *ctx, struct rkvdec_h264_run *run,
+ 	    unsigned int dpb_idx)
+ {
+ 	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
+-	const struct v4l2_h264_dpb_entry *dpb = run->decode_params->dpb;
+ 	struct vb2_queue *cap_q = &m2m_ctx->cap_q_ctx.q;
+-	int buf_idx = -1;
+-
+-	if (dpb[dpb_idx].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)
+-		buf_idx = vb2_find_timestamp(cap_q,
+-					     dpb[dpb_idx].reference_ts, 0);
++	int buf_idx = run->ref_buf_idx[dpb_idx];
+ 
+ 	/*
+ 	 * If a DPB entry is unused or invalid, address of current destination
+@@ -1102,6 +1116,7 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
+ 
+ 	assemble_hw_scaling_list(ctx, &run);
+ 	assemble_hw_pps(ctx, &run);
++	lookup_ref_buf_idx(ctx, &run);
+ 	assemble_hw_rps(ctx, &run);
+ 	config_registers(ctx, &run);
+ 
 -- 
 2.34.1
 
