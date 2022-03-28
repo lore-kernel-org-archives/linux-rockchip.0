@@ -4,76 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE345C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Mar 2022 13:57:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24640C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Mar 2022 14:00:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8VapslLVaMY0+CmpH05IGbpBFsQ+T/5F46AzSZEx6TM=; b=yhCVyNqUlK3FT5
-	J+3rDYQA6xTuKTB9fqshZZOaM58FDHKZnkV9Mmw1k9otmmUjXFlz7c02nUA/a6ayb2ubgY9Nr8Yoa
-	MFCP1dExKDeEN5Z23zFQC9cgDNTdQz1M27L2WJoZHtqd+SbQy4AiC0gXetXHzHbmUZLp9wX0FRkJu
-	CZ8m/Izg2cy4U50p0wbZyEq0xivwGhHGTvMZrxMagyFAQ/mOdXTX5Emp1XJ/hjfsZhcD5hA2Nb67x
-	OtLuFHVdYrGzDFyWwOzgy5EbYNkO47hkRURkWiy8U71Ig8TPvNw54MLrYjwIXdXW/SQVThjqthjO9
-	lQiJ4pvAryTsxeVMH0lg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YRV7hKc82GhdQxF2B4XtZyg9NKaQVZ6fqwQ5+oOopJI=; b=gKXtM5M4R/tWfC
+	A0K5XQv+9kgJRVU5KWaX1GkMRJrHf/d7DZbm2SjSmy2Ux4iYwE+2XIhEWd1rW388MYSKQmzomAOQQ
+	ohSOZYS4CpZcoa69t0bb2Wzzc//xC/esm/KiX3uQlbnz9z7TIzQgyoG7HWMDHyjNPYXm55+/2+Oim
+	BC+UdlfnhFzDKuOLTt7gfGoRa7qDNSZOA4wUkmQFRYKRNz3xbXO5xoyG02WpNrLiLkib4Ucz+nB1J
+	CGGXpYNiplGvseyxKh09tnB/7y1U0SPOMasyzZWAc1xHapGZt4vkC1YQDdeyqoHWfTZn1XxAU5g3C
+	FAqWh82yzi+51CD6PwNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nYpsH-008xek-My; Mon, 28 Mar 2022 13:57:37 +0000
-Received: from mo4-p02-ob.smtp.rzone.de ([85.215.255.83])
+	id 1nYpvK-008yzi-Fw; Mon, 28 Mar 2022 14:00:46 +0000
+Received: from mx1.tq-group.com ([93.104.207.81])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nYpm3-008uvL-38; Mon, 28 Mar 2022 13:51:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1648475436;
- s=strato-dkim-0002; d=goldelico.com;
- h=To:References:Message-Id:Cc:Date:In-Reply-To:From:Subject:Cc:Date:
- From:Subject:Sender;
- bh=4ezCWy705CocHbi8RdHxAqN8vv3gv5SFt/Dzp2Yq4pw=;
- b=h67cVVRQQY22Ho6Oj4lqPV6bbZckg/sqlHJTvISuhhitSpD81WickIMTAt5h0AFRCu
- Qg+4KMYijDSN2sgiXaUl4mkWwL9szWD4xXIJNJkYGv3z88l0PTuJb0dZ/VHDeEbmgBID
- CBrquT4GkxLKaOV2BIp8osnHX+l3cX0/OHzhwCQzswvxR4LPQN6v+l5jOK8elenecZim
- yxdVkybdH/gWZLIWfRewxjT6C6qAdZGJSpqqZf7tPJGeXqzB/cGuyUHgPrRZx7Uc2aQt
- y0IhuWC0oSbH7Z+AuXQhtPgu/MgbvE1jvg6fxo79GX5ZqOVxt5WvtyeuH2CF7eSsjLBB
- +nnw==
-Authentication-Results: strato.com;
-    dkim=none
-X-RZG-AUTH: ":JGIXVUS7cutRB/49FwqZ7WcJeFKiMgPgp8VKxflSZ1P34KBj4Qpw9iZeHWElw43u32M="
-X-RZG-CLASS-ID: mo00
-Received: from imac.fritz.box by smtp.strato.de (RZmta 47.42.1 DYNA|AUTH)
- with ESMTPSA id u3e945y2SDoZ3IR
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (curve X9_62_prime256v1
- with 256 ECDH bits, eq. 3072 bits RSA))
- (Client did not present a certificate);
- Mon, 28 Mar 2022 15:50:35 +0200 (CEST)
-Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.21\))
-Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
-From: "H. Nikolaus Schaller" <hns@goldelico.com>
-In-Reply-To: <YkG2RPrtPaBNXb7a@latitude>
-Date: Mon, 28 Mar 2022 15:50:34 +0200
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS <devicetree@vger.kernel.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>,
- linux-actions@lists.infradead.org, linux-sunxi@lists.linux.dev,
- Linux-OMAP <linux-omap@vger.kernel.org>, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@axis.com, linux-aspeed@lists.ozlabs.org,
- linux-rpi-kernel@lists.infradead.org, chrome-platform@lists.linux.dev,
- linux-renesas-soc@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
- linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
- linux-tegra@vger.kernel.org, linux-oxnas@groups.io,
+ id 1nYpuj-008ylD-0U; Mon, 28 Mar 2022 14:00:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+ t=1648476009; x=1680012009;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=ayM215iKfS3RVxHHf6+6kiEWl9gC2cMSZOj/C1/hktk=;
+ b=U8/IvxCtevfYoGYrmAhmdvhsaSlpF29tUqtt73uDLA1mNqIdn9gAh5Px
+ LS3s2pIN8sFmOrO/atdnDsCnOk2QBkaCZTV5pGjo+XhXYYarAiIIzXbCI
+ KuAYCgpNsw2miPHYKSwBDdywOVa9743uWj5iGnEiCOVJIgtcJbuIArtuB
+ FiU0E0VJSlejFS+KsPWvPv6sxjL5m10MlkFYv8diGYs+wI7oYwi9BScOm
+ b1YQukNL5OvfmlbFPT95RwnRBykJWQqZ02S/dtSs24P6pyjcRpe4glG6y
+ b8YQyedffRPaJTs0VmLXut/QlvD30JS5tFylRtBCgwTcQfY5ZDcCWeQ0m A==;
+X-IronPort-AV: E=Sophos;i="5.90,217,1643670000"; d="scan'208";a="22935295"
+Received: from unknown (HELO tq-pgp-pr1.tq-net.de) ([192.168.6.15])
+ by mx1-pgp.tq-group.com with ESMTP; 28 Mar 2022 16:00:05 +0200
+Received: from mx1.tq-group.com ([192.168.6.7])
+ by tq-pgp-pr1.tq-net.de (PGP Universal service);
+ Mon, 28 Mar 2022 16:00:05 +0200
+X-PGP-Universal: processed;
+ by tq-pgp-pr1.tq-net.de on Mon, 28 Mar 2022 16:00:05 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=tq-group.com; i=@tq-group.com; q=dns/txt; s=key1;
+ t=1648476005; x=1680012005;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=ayM215iKfS3RVxHHf6+6kiEWl9gC2cMSZOj/C1/hktk=;
+ b=WuV252Nu+GZzN74VzCmlspBKd0dca8X2+xSzsUDOC+VBkSdAcRJKkpz9
+ V6ZhUvtyzJXo40EU/KoKsnsMA+udDgpFrmJjA0OOrI8Du6AE/IqQXvbD0
+ l7/oi3cIclt6kdqSsBk62dD3jTXzpYH4IITmDIWCq1j5VlQdR/7ht0rkB
+ UzXa+gf9sB2fMmE9Y4BJg30hxvVMBs2s+cV3pKJsYN741b+m12/z4LAVK
+ Ghd0BfGmPSMkfRYy9LlDPSTztxPRWJXf02LYJ3AALa7lqL+bNoPBea5QD
+ q3OLZ+wYdDSKr/JtyC5EC84xkLnc6lGkLWsLSzPCKdl/McKEhN7OLwWQj g==;
+X-IronPort-AV: E=Sophos;i="5.90,217,1643670000"; d="scan'208";a="22935294"
+Received: from vtuxmail01.tq-net.de ([10.115.0.20])
+ by mx1.tq-group.com with ESMTP; 28 Mar 2022 16:00:05 +0200
+Received: from steina-w.localnet (unknown [10.123.49.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
+ (No client certificate requested)
+ by vtuxmail01.tq-net.de (Postfix) with ESMTPSA id 20160280065;
+ Mon, 28 Mar 2022 16:00:04 +0200 (CEST)
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: Jonathan =?ISO-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>
+Cc: Ansuel Smith <ansuelsmth@gmail.com>, linux-arm-kernel@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
+ linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+ chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ kernel@dh-electronics.com, linux-mediatek@lists.infradead.org,
+ openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org, linux-oxnas@groups.io,
  linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org
-Message-Id: <D9AFAC3C-46CA-4C40-8559-FD6934411CAB@goldelico.com>
+Subject: Re: (EXT) Re: [RFC PATCH 0/1] Categorize ARM dts directory
+Date: Mon, 28 Mar 2022 16:00:02 +0200
+Message-ID: <2100132.irdbgypaU6@steina-w>
+Organization: TQ-Systems GmbH
+In-Reply-To: <YkG2RPrtPaBNXb7a@latitude>
 References: <20220328000915.15041-1-ansuelsmth@gmail.com>
  <YkG2RPrtPaBNXb7a@latitude>
-To: =?utf-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
- Ansuel Smith <ansuelsmth@gmail.com>
-X-Mailer: Apple Mail (2.3445.104.21)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220328_065111_351638_C669D1FE 
-X-CRM114-Status: UNSURE (   4.84  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220328_070009_483059_2BDE5E40 
+X-CRM114-Status: GOOD (  19.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,16 +102,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cgo+IEFtIDI4LjAzLjIwMjIgdW0gMTU6MjEgc2NocmllYiBKb25hdGhhbiBOZXVzY2jDpGZlciA8
-ai5uZXVzY2hhZWZlckBnbXgubmV0PjoKPiAKPiBPciBtYXliZSBiY20gaW5zdGVhZCBvZiBicm9h
-ZGNvbS4gTm90IHN1cmUgd2hpY2ggaXMgcHJlZmVycmVkIGJ5Cj4gQnJvYWRjb20gcGVvcGxlLgoK
-TWF5YmUgaXQgc2hvdWxkIGFsd2F5cyBmb2xsb3cgdGhlIGxpc3Qgb2YgdmVuZG9yIHByZWZpeGVz
-IGFzIHdlIGFyZSB0YWxraW5nIGFib3V0IERUUz8KCmp1c3QgbXkgMmN0cywKTmlrb2xhdXMKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Am Montag, 28. M=E4rz 2022, 15:21:08 CEST schrieb Jonathan Neusch=E4fer:
+> * PGP Signed by an unknown key
+> =
+
+> On Mon, Mar 28, 2022 at 02:09:14AM +0200, Ansuel Smith wrote:
+> > Hi,
+> > as the title say, the intention of this ""series"" is to finally
+> > categorize
+> > the ARM dts directory in subdirectory for each oem.
+> =
+
+> [...]
+> =
+
+> > [1] https://gist.github.com/Ansuel/47c49925ee7ef4b1dd035afc74679ab5
+> > [2] https://gist.github.com/Ansuel/19f61f1e583c49407ce35c10e770fbe0
+> =
+
+> Nice idea, thank you!
+> =
+
+> A few notes on categorization below.
+> [...]
+> >  create mode 100644 arch/arm/boot/dts/freescale/Makefile
+> =
+
+> Freescale has been part of NXP for a while, so it might make sense to
+> merge the freescale and nxp directories. I can't speak for
+> NXP-the-company, so that's just my view as a bystander.
+
+Please don't mix the names for arm and arm64. It's very confusing if the =
+
+vendor directory is named differently for each architecture.
+
+>[...]
+> >  create mode 120000 arch/arm/boot/dts/nxp/armv7-m.dtsi
+> =
+
+> armv7-m.dtsi is a bit confusing, because it contains a few devices at
+> fixed addresses, so it looks vendor-specific at a first glance into the
+> file. However, if it is actually as vendor-neutral as the name implies,
+> I think it should live dts/ directly, rather than in vendor
+> subdirectories.
+
+This seems to be some generic devices common for all ARMv7M CPUs used in =
+
+Cortex-M CPUs. It's also used by some stm32 .dtsi.
+
+Best regards,
+Alexander
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
