@@ -4,89 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51822C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 09:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC814C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 09:20:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BKRTgH0YlU+nR3cUvD4R9B0SofdR+5hfjLrXrIxTs8s=; b=YmiFJD4T11dzvA
-	nmweEFmwd+DxSOTgZjKRN10Vd8pyJvW5oyQ1YeQkIGbXnLou3AqcKGjdUKxYXHSpPGYzSX7YJ9Vgv
-	bmgfesx6oaUub110/rXnBHe3CnpOIyrtj6QApqgRLmDQb0/7fYvnwEfLZ1rMtgr55XBCiEJFZS4o0
-	EJmpNoCV/V7I2G01BfqYbhKpi5AJYubDfIBcTLgPlHUHrw+FBGhPXTS2WaQM9xo/bCDagd1vGSkFe
-	tMeAqkT/EHTJh4X/FMAh/kXgAOtLp7VFHNiUaUNXpyBwEGt0aAqjlFrqAurnuLzrgiRVwBOmHColl
-	2OYFQ0ekYYCWMUKTzqIg==;
+	List-Owner; bh=35IXeA1USfOUzDwWb5Nnwa1DA22ZEo9WP2dfOS0bU3Q=; b=ONhJcH2OUjJ1nC
+	6XtAFbO7vha/GY/B3VnNayvnpUwBMKQYw/CeBmxkkUbfjZvpIPBRC7hh/6UWkW6FXWUyVY3blmoaR
+	w1H411YBxDUCpeFKQZZpH0ca4MDbqv46S+LoTyUuvX1u59M+kyxkDMbUcFuSsN9HqF7o9dcjYZPeu
+	7taJhZ2E4LzXsyuzd+izCuK+0PUURE1hUOMdmgXu6jFFWuKLXE/IJLfKEjwIb1xYnHgw8IJ5q8iTW
+	wn9R5nhtAwDk9Wl8D8qZPM7TESF9dszj6aSCdgNGuzpq4Mjv118buaqZtHDWOjtsVwT/kRUnYSzDq
+	+lN9qzEDF8Q2DegVZC2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZ7mM-00BaHe-S2; Tue, 29 Mar 2022 09:04:42 +0000
-Received: from mail-qt1-f180.google.com ([209.85.160.180])
+	id 1nZ81O-00BeOM-D2; Tue, 29 Mar 2022 09:20:14 +0000
+Received: from relay10.mail.gandi.net ([2001:4b98:dc4:8::230])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZ7m7-00BaCg-Hz; Tue, 29 Mar 2022 09:04:28 +0000
-Received: by mail-qt1-f180.google.com with SMTP id s11so14690288qtc.3;
- Tue, 29 Mar 2022 02:04:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=7LLXUdiKn5zGolda6p6nU0L90Q8R5gkNG4kyWBHOgl4=;
- b=BsF7CrPUdzvdH7Ree8xyv/TBfmCxCvupTjY5RwBLO8axctk3JQQB22+3KpcuShkqW+
- rSHAzy45oA5yS1XrnhvqFzU5NsRNvgIX6sNqkM8oH+foNQ8Q3HUzRMIQvcfYuJq5EmCN
- 0uDGD7aEhxqL5gzOgwh4e6Vf9zbQZXc9NCvHlH2c3ITwYLfEQAyQKefjBS3ZvXbGrA08
- uBQJXxAKZRIRfGx69hj/KsX4kStN21KnYRUpYwD89iqQR7RRrpESUxpGAFs1mJzkBmFZ
- Cw6ICcAUPq1DhUYDWozy6TN/5PVksIqpJ2abHuN3z1YgQwpkuKf8vZGegK17DVRetcxh
- JGcA==
-X-Gm-Message-State: AOAM531u5x8Y+UxMSIDhwrP21IWmkqNVy1cppUnLd2D/zai621oMGruO
- 6BMOlCioFYBDhXurxjUfDEFDf9L6KPq+WQ==
-X-Google-Smtp-Source: ABdhPJzKUfBS9wwA2t5bSkI/jv9jjVcTtZn8Vg1KiZuQELGccecb9rhGRR/JpWgC5ZLZnMkERWQiYQ==
-X-Received: by 2002:a05:622a:1d6:b0:2e2:db3:17c9 with SMTP id
- t22-20020a05622a01d600b002e20db317c9mr26036686qtw.665.1648544664574; 
- Tue, 29 Mar 2022 02:04:24 -0700 (PDT)
-Received: from mail-yw1-f179.google.com (mail-yw1-f179.google.com.
- [209.85.128.179]) by smtp.gmail.com with ESMTPSA id
- e20-20020ac84e54000000b002e06753cf70sm16162457qtw.6.2022.03.29.02.04.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Mar 2022 02:04:24 -0700 (PDT)
-Received: by mail-yw1-f179.google.com with SMTP id
- 00721157ae682-2e6ceb45174so136291607b3.8; 
- Tue, 29 Mar 2022 02:04:23 -0700 (PDT)
-X-Received: by 2002:a81:24d6:0:b0:2e5:b253:f9fc with SMTP id
- k205-20020a8124d6000000b002e5b253f9fcmr30366724ywk.438.1648544663596; Tue, 29
- Mar 2022 02:04:23 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220328000915.15041-1-ansuelsmth@gmail.com>
- <CAFr9PXkgrRe-=E=GhNnZ4w1x_FMb97-_RmX6ND1vEd74_TbZSw@mail.gmail.com>
- <YkK691VG6ON/6Ysn@atomide.com>
-In-Reply-To: <YkK691VG6ON/6Ysn@atomide.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Tue, 29 Mar 2022 11:04:11 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdXDDNTgBdJTa8+H1H5v1gAarp07xxWu_E1JL8mXS8HPMg@mail.gmail.com>
-Message-ID: <CAMuHMdXDDNTgBdJTa8+H1H5v1gAarp07xxWu_E1JL8mXS8HPMg@mail.gmail.com>
+ id 1nZ80p-00BeBl-Tf; Tue, 29 Mar 2022 09:19:44 +0000
+Received: (Authenticated sender: alexandre.belloni@bootlin.com)
+ by mail.gandi.net (Postfix) with ESMTPSA id 17680240012;
+ Tue, 29 Mar 2022 09:19:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+ t=1648545573;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4OYEQcpxV5ZoCImFdldnCROqjeYEuOqk5lTqs4xQNOw=;
+ b=E0C2ytxPlV1W+Oe2MExHPN7L1HAoV5OikaBi/U7DewsMCqNtbPDqkZmi2EkEtqy1h9eSgE
+ iiefcHj+RmgZ+f+Nhg1dBvgQLIyFkVMlqvsI0mQLoe4LXrWKzoi2/xC4DJe0nxuepZkThU
+ FRyNwSRBCCVeRjb5oEYt0caD6HgzFm/e5R4zbhwmHQOWSB6a/GJnngaEUVODgCoYqdO+7g
+ DcfNnSRhpGEP/dmCe7VL2vFiRtpk1xrIevN5WpjBBTppF28IllsoBjw5Ux75BSFoUNa40U
+ iEy83TwJxTr5nOyIxsdHupHOzrfEzXzdR3N0Ts3ALvlLshPNCnGr1VoMVatfnA==
+Date: Tue, 29 Mar 2022 11:19:30 +0200
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+To: Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>
+Cc: Ansuel Smith <ansuelsmth@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
+ linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
+ chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
+ linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
+ linux-tegra@vger.kernel.org, linux-oxnas@groups.io,
+ linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org
 Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
-To: Tony Lindgren <tony@atomide.com>
-Cc: Daniel Palmer <daniel@0x0f.com>, Ansuel Smith <ansuelsmth@gmail.com>, 
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- DTML <devicetree@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-actions@lists.infradead.org, linux-sunxi@lists.linux.dev, 
- "open list:TI ETHERNET SWITCH DRIVER (CPSW)" <linux-omap@vger.kernel.org>, 
- "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
- linux-arm-kernel@axis.com, linux-aspeed@lists.ozlabs.org, 
- linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>,
- chrome-platform@lists.linux.dev, 
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>, 
- linux-samsung-soc <linux-samsung-soc@vger.kernel.org>, 
- linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com, 
- linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, 
- linux-tegra <linux-tegra@vger.kernel.org>, linux-oxnas@groups.io, 
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, linux-unisoc@lists.infradead.org,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-realtek-soc@lists.infradead.org
+Message-ID: <YkLPIgwClJAUc1Uf@piout.net>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <YkG2RPrtPaBNXb7a@latitude>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <YkG2RPrtPaBNXb7a@latitude>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_020427_642372_B712A560 
-X-CRM114-Status: GOOD (  24.32  )
+X-CRM114-CacheID: sfid-20220329_021940_535640_D2942877 
+X-CRM114-Status: GOOD (  18.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,44 +78,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Tony,
+Hi,
 
-On Tue, Mar 29, 2022 at 10:03 AM Tony Lindgren <tony@atomide.com> wrote:
-> * Daniel Palmer <daniel@0x0f.com> [220328 08:53]:
-> > On Mon, 28 Mar 2022 at 09:09, Ansuel Smith <ansuelsmth@gmail.com> wrote:
-> > > as the title say, the intention of this ""series"" is to finally categorize
-> > > the ARM dts directory in subdirectory for each oem.
-> >
-> > While I agree with this change and think it's for the good (browsing
-> > the ARM dts directory at the moment is frustrating..) I think
-> > buildroot and others need to be told about this as it'll potentially
-> > break their kernel build scripting for ARM and probably messes up the
-> > configs they have for existing boards.
->
-> Yeah.. And ideally this would be done in smaller steps as these will
-> conflict with all the other pending patches.
->
-> For example, I have a pile of pending omap clock clean-up dts patches
-> posted and tested waiting for v5.19-rc1 to apply. I'd rather not start
-> redoing or fixing up the patches with sed :)
+On 28/03/2022 15:21:08+0200, Jonathan Neusch=E4fer wrote:
+> On Mon, Mar 28, 2022 at 02:09:14AM +0200, Ansuel Smith wrote:
+> >  create mode 100644 arch/arm/boot/dts/freescale/Makefile
+> =
 
-Git merge/rebase/cherry-pick should handle renames fine?
+> Freescale has been part of NXP for a while, so it might make sense to
+> merge the freescale and nxp directories. I can't speak for
+> NXP-the-company, so that's just my view as a bystander.
+> =
 
-Gr{oetje,eeting}s,
 
-                        Geert
+Maybe we should wait for the market consolidation to end so we can put
+all the files in a single subfolder?
 
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+this would save us from all the bikeshedding ;)
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+> >  create mode 100644 arch/arm/boot/dts/kirkwood/Makefile
+> =
+
+> The Kirkwood family should probably be sorted into Marvell.
+> =
+
+> >  create mode 100644 arch/arm/boot/dts/layerscape/Makefile
+> >  rename arch/arm/boot/dts/{ =3D> layerscape}/ls1021a-moxa-uc-8410a.dts =
+(100%)
+> >  rename arch/arm/boot/dts/{ =3D> layerscape}/ls1021a-qds.dts (100%)
+> >  rename arch/arm/boot/dts/{ =3D> layerscape}/ls1021a-tsn.dts (100%)
+> >  rename arch/arm/boot/dts/{ =3D> layerscape}/ls1021a-twr.dts (100%)
+> >  rename arch/arm/boot/dts/{ =3D> layerscape}/ls1021a.dtsi (100%)
+> =
+
+> The Layerscape family is part of Freescale/NXP.
+> =
+
+> >  create mode 120000 arch/arm/boot/dts/nxp/armv7-m.dtsi
+> =
+
+> armv7-m.dtsi is a bit confusing, because it contains a few devices at
+> fixed addresses, so it looks vendor-specific at a first glance into the
+> file. However, if it is actually as vendor-neutral as the name implies,
+> I think it should live dts/ directly, rather than in vendor
+> subdirectories.
+> =
+
+> >  rename arch/arm/boot/dts/{ =3D> nxp}/lpc18xx.dtsi (100%)
+> =
+
+> Here we have the NXP LPCxxxx family, which is AFAIK unrelated to the
+> i.MX family (and thus the bulk of the Freescale legacy).
+> =
+
+> >  create mode 100644 arch/arm/boot/dts/vybrid/Makefile
+> =
+
+> Vybrid is another chip family of NXP, with a good deal of Freescale
+> legacy in it as evidenced by the "fsl," prefix in the devicetrees.
+> =
+
+> =
+
+> =
+
+> Thanks,
+> Jonathan
+
+
+
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+
+-- =
+
+Alexandre Belloni, co-owner and COO, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
