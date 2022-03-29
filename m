@@ -4,81 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B3E4C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 15:40:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F088EC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 15:41:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yNu9BU4OpTUHbteOGCUGSVrskjg2kRGskiT1q8wPMQo=; b=F44v3KlOECw5ka
-	G1sUZfi8jaF0IMqXpxezc4C5KpDbAg+npGTiIgySeCyripZpwixaYJ1A95Nz1fC9PPMel2RU7XtgX
-	vr6SxFfldnvzb+C+OShzmG+2g2yzC15UFsQelPTBG1X5S7ZOhZx5CCWB4huFqnZimLZVPKTXp1B0Q
-	0vnNn19plV2Qp3J1t95l2/EguyfBwNs/wak4+sgU/QxjwCuJwmB0OXGO2Vt1HZIHqKzLGumh32sKs
-	Cd0upWixlUz5VvcFiT+k/TRAbu6LO5z0zF6HyTERt9/1MNl5r9vYFWHah/7w4EDA9j/wr29gE2xAE
-	G31cIzLzAUDLxWyNJAZg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KrvP3bBqmUhoEC5gW5UUtPnZwHyz0b/fr7SgWBBmj6k=; b=1U2BOXnMj0JCVFdzeF/wha4gSW
+	IaN1RtVonv8+JxLZre83yBx52MkFXINAdJz8TVxAd5Lx/XvvAQHWeORQbALNglOzsq6v3IlBX7FEW
+	RuAQYLJqstTZ4BfPkVTV2VRvz8XSZlGtq3lY0HailDopkYhyCMz75Ks9NcWD+YvW9+I7i5glK6HgR
+	CpW9O3v2RuC8s1ytcMtuMD2bXOUvum5C8fDMtILgtznOOxt1vLRJsm++BCNZdfTpsxAzlt9dbPoXH
+	ad/nKngQfA/lv53quJAzQS6BXpRJd95sbLulCZ4vgJzw3wnPtD8gspIBu64/JBy1tiytVcRqXxDZH
+	5o57pNHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZDx1-00CkuI-Et; Tue, 29 Mar 2022 15:40:07 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1nZDyD-00ClO3-Dj; Tue, 29 Mar 2022 15:41:21 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZDoW-00CgdS-AN
- for linux-rockchip@lists.infradead.org; Tue, 29 Mar 2022 15:31:22 +0000
-Received: by mail-ej1-x636.google.com with SMTP id dr20so35887400ejc.6
- for <linux-rockchip@lists.infradead.org>; Tue, 29 Mar 2022 08:31:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=svO6+p4lvUcLP2B5A8gd9KTlZ89bA7C5UIQa69nPz94=;
- b=S7Q+7tEyKS92vmJzQdbwJTIdwM8IUJZQqVH5F4vBdWTA+Iss96J8tWXkSBxADDUrfJ
- MIV/aD22mrVCWixSz0ZY+tAddVj1ZD2+/5+cY7+pKABkqYfcr9x2TEeWsY1u5qEoI3p5
- 0rO0GU6t600WtUbDmO8lViKU9N6ApTLH7pTQ+2+qSnu8CLGnkIFAn9BuU2xyVEFbnV1V
- fDb8N62cIeygJH0mIScVDbQj5lHkEno/K9WR2/v87tPyhfnU7HCyf3EGqd7ydY6STih+
- dAzq+6RgEt1E3lak7pN1y6qANgoEpLPPoxrpX/geH4Pu+Pv7IR26P7NZy+HPgIfS1dm2
- tcbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=svO6+p4lvUcLP2B5A8gd9KTlZ89bA7C5UIQa69nPz94=;
- b=Jx5i3UWbqESwnq9KycCYf0DdR9NGpc+VVLGgH31BCGAOO82XFsEKELmh16wj9TXduK
- /Yz+jYj+BAF3206g2fDzB7x1FfmmYnfbY/6dcC9nMhM5RDLCJWmOAZYHyorN8GTY3WpG
- 8aGwjJ/DCkfW6RCh+f3XpT5wyVYJndVqyjEsmN77+D0EvlbngJP5Kjy0GH86kQ5PpN98
- AT4jIvsaZDxxzJcmBUJ7X6Bv+lDgRIzSlXLot9FtzBzJLLotTeU5JyGBK5UgCiaiAAiV
- OaUV7Thqvu9a3k2mOX6NvmiRBGHpsYjfl3c3LaiwRyMZ2BLxGq5PDJeRtk9JYmeeqzVp
- 6Hsg==
-X-Gm-Message-State: AOAM531lw1ILAZYyVqmypJ+gcvPmHCpVm2YOtnGgcrhcJlSiPuoYLqpG
- mL6kR10a1uOJ29DIJn8X1yqfKA==
-X-Google-Smtp-Source: ABdhPJyGbtpxFR4x01t7rTmHja9jPNp0Yhgf4v5BkuuQlt7LhCL0joyVH5KU90NB9zFEtkwk7g2rVg==
-X-Received: by 2002:a17:907:62a2:b0:6e0:e201:b94e with SMTP id
- nd34-20020a17090762a200b006e0e201b94emr19225728ejc.730.1648567878997; 
- Tue, 29 Mar 2022 08:31:18 -0700 (PDT)
-Received: from [192.168.0.162] (xdsl-188-155-201-27.adslplus.ch.
- [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
- c2-20020aa7d602000000b0041997b3ce40sm7143124edr.86.2022.03.29.08.31.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Mar 2022 08:31:18 -0700 (PDT)
-Message-ID: <f5bec960-3424-dd21-71fc-cab3a427cdb9@linaro.org>
-Date: Tue, 29 Mar 2022 17:31:17 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v2 1/6] dt-bindings: clock: fix some conversion style
- issues for rockchip, rk3399-cru.yaml
-Content-Language: en-US
-To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de, zhangqing@rock-chips.com
-Cc: robh+dt@kernel.org, krzk+dt@kernel.org, mturquette@baylibre.com,
- sboyd@kernel.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ id 1nZDrU-00CiGk-0S
+ for linux-rockchip@lists.infradead.org; Tue, 29 Mar 2022 15:34:25 +0000
+Received: from localhost (unknown [IPv6:2a02:3030:a:f397:f6bc:b726:2678:839f])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ (Authenticated sender: sebastianfricke)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 8CD3F1F44125;
+ Tue, 29 Mar 2022 16:34:22 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1648568062;
+ bh=nGX92UvfWgt2Qv/de13zxyDQ5ZWhrMUfiZ3gbHkaldY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=k2sQ2pq+IanUJcoPmS5cQ2dTSCNdmrop2QBRkMayanfPOvpqf4G1Vk3ibBPFQI08d
+ 9xZWHReZFrwyveeZ3QZ+Nd0ue4A3tukodjvm5IsdNhsGIwj6sL/W4FFoCRwIr57wP9
+ fP6SCna099Z1aCMb+P4klF15+KT+UhqTRYwep52fpbDtREnjNeaGY4FQfskQ07D/PG
+ j+0VA4o3E264anCZbpKv+7ZWvJJSYU9MAjd5eWp0EOn7uf9Hr6n1YEJIuSCOXKxHeN
+ f6Ja5nAoJnLO1gbtxd1rvZbgIMieoFHYUaSa1dTwYVnH5IVbxCmNJOZNviFTj9Wsd3
+ nKvMaCqOP1oPA==
+Date: Tue, 29 Mar 2022 17:34:19 +0200
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kernel@collabora.com, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
  linux-kernel@vger.kernel.org
-References: <20220329150742.22093-1-jbx6244@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220329150742.22093-1-jbx6244@gmail.com>
+Subject: Re: [PATCH v1 15/24] media: rkvdec: Enable capture buffer holding
+ for H264
+Message-ID: <20220329153419.2l67xawgabqefcao@basti-XPS-13-9310>
+References: <20220328195936.82552-1-nicolas.dufresne@collabora.com>
+ <20220328195936.82552-16-nicolas.dufresne@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220328195936.82552-16-nicolas.dufresne@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_083120_420168_DB61E16C 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20220329_083424_234140_C67F6EA4 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,28 +73,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 29/03/2022 17:07, Johan Jonker wrote:
-> With the conversion of rockchip,rk3399-cru.txt a table with external clocks
-> was copied. Make it a bit cleaner by aligning the columns. Also fix
-> a description. Phrases start with a capital.
-> 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
->  .../bindings/clock/rockchip,rk3399-cru.yaml        | 14 +++++++-------
->  1 file changed, 7 insertions(+), 7 deletions(-)
-> 
+Hey Nicolas,
 
+On 28.03.2022 15:59, Nicolas Dufresne wrote:
+>In order to support interlaced video decoding, the driver must
+>allow holding the capture buffer so that the second field can
+>be decoded into it.
+>
+>Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+>---
+> drivers/staging/media/rkvdec/rkvdec.c | 4 ++++
+> drivers/staging/media/rkvdec/rkvdec.h | 1 +
+> 2 files changed, 5 insertions(+)
+>
+>diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+>index 2df8cf4883e2..05824f1997f7 100644
+>--- a/drivers/staging/media/rkvdec/rkvdec.c
+>+++ b/drivers/staging/media/rkvdec/rkvdec.c
+>@@ -138,6 +138,7 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
+> 		.ops = &rkvdec_h264_fmt_ops,
+> 		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_vp9_decoded_fmts),
+> 		.decoded_fmts = rkvdec_h264_vp9_decoded_fmts,
+>+		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
+> 	},
+> 	{
+> 		.fourcc = V4L2_PIX_FMT_VP9_FRAME,
+>@@ -394,6 +395,9 @@ static int rkvdec_s_output_fmt(struct file *file, void *priv,
+> 	cap_fmt->fmt.pix_mp.ycbcr_enc = f->fmt.pix_mp.ycbcr_enc;
+> 	cap_fmt->fmt.pix_mp.quantization = f->fmt.pix_mp.quantization;
+>
+>+	/* Enable format specific queue feature */
 
+s/feature/features/
 
-Best regards,
-Krzysztof
+Greetings,
+Sebastian
+
+>+	vq->subsystem_flags |= desc->subsystem_flags;
+>+
+> 	return 0;
+> }
+>
+>diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
+>index 2f4ea1786b93..e37f1a015fa0 100644
+>--- a/drivers/staging/media/rkvdec/rkvdec.h
+>+++ b/drivers/staging/media/rkvdec/rkvdec.h
+>@@ -81,6 +81,7 @@ struct rkvdec_coded_fmt_desc {
+> 	const struct rkvdec_coded_fmt_ops *ops;
+> 	unsigned int num_decoded_fmts;
+> 	const u32 *decoded_fmts;
+>+	u32 subsystem_flags;
+> };
+>
+> struct rkvdec_dev {
+>-- 
+>2.34.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
