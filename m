@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD17BC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 15:37:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B3E4C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 15:40:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9mR2rcv3DcdZ45thf2FH0hl6oGHYb+e0nIczjio01So=; b=fIJ1LIxRa5GEiK
-	Vo5b9BfQKyiv8od0OjCQnmZBb0VbHGErXd6m+tuD2oxF4HPtsmqmG1zZOPFJNf0kEFf1vaV+WikFu
-	VkHo3yeXGRQLrtVuYcFAcqX+9KmIGhm9+Pl/o7tC2PHBXBT+KDZn2GaiORQDV/HCPRb3iRa8rsVcc
-	Y6FGEAa6X72pVvQGIjqUmfZNu8nUSuCpYa0dK4ZRh/FtpearPfOPCWCPK8G8JT/G1njOPO+053daQ
-	HTXQ+slRuTp4wm26Tc6cVNWJc7cKpETJg2R9mF03Ls53q8QXGUBB61zplRFqEp0AMbYs2/bcLlPMg
-	kX86DLJLehKFh25Wme1A==;
+	List-Owner; bh=yNu9BU4OpTUHbteOGCUGSVrskjg2kRGskiT1q8wPMQo=; b=F44v3KlOECw5ka
+	G1sUZfi8jaF0IMqXpxezc4C5KpDbAg+npGTiIgySeCyripZpwixaYJ1A95Nz1fC9PPMel2RU7XtgX
+	vr6SxFfldnvzb+C+OShzmG+2g2yzC15UFsQelPTBG1X5S7ZOhZx5CCWB4huFqnZimLZVPKTXp1B0Q
+	0vnNn19plV2Qp3J1t95l2/EguyfBwNs/wak4+sgU/QxjwCuJwmB0OXGO2Vt1HZIHqKzLGumh32sKs
+	Cd0upWixlUz5VvcFiT+k/TRAbu6LO5z0zF6HyTERt9/1MNl5r9vYFWHah/7w4EDA9j/wr29gE2xAE
+	G31cIzLzAUDLxWyNJAZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZDuS-00CjgD-UX; Tue, 29 Mar 2022 15:37:29 +0000
+	id 1nZDx1-00CkuI-Et; Tue, 29 Mar 2022 15:40:07 +0000
 Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZDnm-00CgKD-Nm
- for linux-rockchip@lists.infradead.org; Tue, 29 Mar 2022 15:30:36 +0000
-Received: by mail-ej1-x636.google.com with SMTP id c10so17503226ejs.13
- for <linux-rockchip@lists.infradead.org>; Tue, 29 Mar 2022 08:30:34 -0700 (PDT)
+ id 1nZDoW-00CgdS-AN
+ for linux-rockchip@lists.infradead.org; Tue, 29 Mar 2022 15:31:22 +0000
+Received: by mail-ej1-x636.google.com with SMTP id dr20so35887400ejc.6
+ for <linux-rockchip@lists.infradead.org>; Tue, 29 Mar 2022 08:31:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=9s4lhXjKpwZnBP5OBDO69JPVEpFDyvkrKT28ZSCHe50=;
- b=jDhWGvbg45hFMUc2H7L/PyMkYepJE8Brw9CTox76BJp6yPuVDBNvo5TZrS4eMek5wM
- pfF+gywAT7TFWN+4+Cdf1eifEK1m3Nx9NdlETbTn7GgWzKR94JYAG2cXI0DNc3OcR9Nd
- a6ZrUtyti5au1h8RnTM6R+4PgBaUbg3YdBQGPnn3CFd8x+6zA8NzLLBfoI6lX/CLAKJI
- lqk4JxyM6at65/JWMnEmDXl71Orl4KqnbVNzDDsMd8eZEUUkhHp/Rjwt4J0YhOqLzTMI
- HW9g8uZw7x7xTBDfheGd8qZlGxL6SK1cBCI8L/80jGmpbePGZBxplREsBaJPUJFdqZix
- ynNQ==
+ bh=svO6+p4lvUcLP2B5A8gd9KTlZ89bA7C5UIQa69nPz94=;
+ b=S7Q+7tEyKS92vmJzQdbwJTIdwM8IUJZQqVH5F4vBdWTA+Iss96J8tWXkSBxADDUrfJ
+ MIV/aD22mrVCWixSz0ZY+tAddVj1ZD2+/5+cY7+pKABkqYfcr9x2TEeWsY1u5qEoI3p5
+ 0rO0GU6t600WtUbDmO8lViKU9N6ApTLH7pTQ+2+qSnu8CLGnkIFAn9BuU2xyVEFbnV1V
+ fDb8N62cIeygJH0mIScVDbQj5lHkEno/K9WR2/v87tPyhfnU7HCyf3EGqd7ydY6STih+
+ dAzq+6RgEt1E3lak7pN1y6qANgoEpLPPoxrpX/geH4Pu+Pv7IR26P7NZy+HPgIfS1dm2
+ tcbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=9s4lhXjKpwZnBP5OBDO69JPVEpFDyvkrKT28ZSCHe50=;
- b=eNev1yttjM4sc7Fa/d1Nx3XoLdgsheAt9E8XahlDIa+gtD3tppxrxmzRmi4d/FiAHf
- Jn5//wcBSNjinGrBr/nI+3phGLUNpSLKqP6jxhRwoih4AB4FezRY5ooI44F+BsyFnVCo
- ydGcTafKHpuro1jL7nQeoPzuU5VKyhEVWv4KnByuV8OQRWo5uXwdZ5KaSoGc3z9kU1MW
- raWY9cvkF0k9jXx3qzU4XqzfG+GKlGhajE4C67kv2SHIZyOh22SXQCztMANv/Nkvxmzs
- +EwfRpK/ARaJQPJwE+2wGkSx5S/e65T0UEP2h3amXmtcmcyd+5dTW7QPwfTwYFDWmu50
- btoA==
-X-Gm-Message-State: AOAM533MrsrNEYB4fQKVZh9s/J+HXk5RlV6OzBFDOxAKTVT41zd9jeXK
- XbPpS7+6rtiYksoRkv9u+yXylQ==
-X-Google-Smtp-Source: ABdhPJyggpvt+L2mf4BO89ncYH14tsLLTo3h13rFb/YMGVlS4Lafq4DYQ0pjj0PQ8J9clwYcURhZ2Q==
-X-Received: by 2002:a17:906:dc8f:b0:6e0:5ce7:d80e with SMTP id
- cs15-20020a170906dc8f00b006e05ce7d80emr35826397ejc.435.1648567833374; 
- Tue, 29 Mar 2022 08:30:33 -0700 (PDT)
+ bh=svO6+p4lvUcLP2B5A8gd9KTlZ89bA7C5UIQa69nPz94=;
+ b=Jx5i3UWbqESwnq9KycCYf0DdR9NGpc+VVLGgH31BCGAOO82XFsEKELmh16wj9TXduK
+ /Yz+jYj+BAF3206g2fDzB7x1FfmmYnfbY/6dcC9nMhM5RDLCJWmOAZYHyorN8GTY3WpG
+ 8aGwjJ/DCkfW6RCh+f3XpT5wyVYJndVqyjEsmN77+D0EvlbngJP5Kjy0GH86kQ5PpN98
+ AT4jIvsaZDxxzJcmBUJ7X6Bv+lDgRIzSlXLot9FtzBzJLLotTeU5JyGBK5UgCiaiAAiV
+ OaUV7Thqvu9a3k2mOX6NvmiRBGHpsYjfl3c3LaiwRyMZ2BLxGq5PDJeRtk9JYmeeqzVp
+ 6Hsg==
+X-Gm-Message-State: AOAM531lw1ILAZYyVqmypJ+gcvPmHCpVm2YOtnGgcrhcJlSiPuoYLqpG
+ mL6kR10a1uOJ29DIJn8X1yqfKA==
+X-Google-Smtp-Source: ABdhPJyGbtpxFR4x01t7rTmHja9jPNp0Yhgf4v5BkuuQlt7LhCL0joyVH5KU90NB9zFEtkwk7g2rVg==
+X-Received: by 2002:a17:907:62a2:b0:6e0:e201:b94e with SMTP id
+ nd34-20020a17090762a200b006e0e201b94emr19225728ejc.730.1648567878997; 
+ Tue, 29 Mar 2022 08:31:18 -0700 (PDT)
 Received: from [192.168.0.162] (xdsl-188-155-201-27.adslplus.ch.
  [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
- o3-20020aa7dd43000000b00419db53ae65sm3024996edw.7.2022.03.29.08.30.31
+ c2-20020aa7d602000000b0041997b3ce40sm7143124edr.86.2022.03.29.08.31.17
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Mar 2022 08:30:32 -0700 (PDT)
-Message-ID: <7f3d8d2c-ec83-b79d-621c-312636285eee@linaro.org>
-Date: Tue, 29 Mar 2022 17:30:31 +0200
+ Tue, 29 Mar 2022 08:31:18 -0700 (PDT)
+Message-ID: <f5bec960-3424-dd21-71fc-cab3a427cdb9@linaro.org>
+Date: Tue, 29 Mar 2022 17:31:17 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.5.0
-Subject: Re: [PATCH v2 4/6] dt-bindings: clock: fix rk3399 cru clock issues
+Subject: Re: [PATCH v2 1/6] dt-bindings: clock: fix some conversion style
+ issues for rockchip, rk3399-cru.yaml
 Content-Language: en-US
 To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de, zhangqing@rock-chips.com
 Cc: robh+dt@kernel.org, krzk+dt@kernel.org, mturquette@baylibre.com,
@@ -73,12 +74,11 @@ Cc: robh+dt@kernel.org, krzk+dt@kernel.org, mturquette@baylibre.com,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20220329150742.22093-1-jbx6244@gmail.com>
- <20220329150742.22093-4-jbx6244@gmail.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220329150742.22093-4-jbx6244@gmail.com>
+In-Reply-To: <20220329150742.22093-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_083034_844623_98B51B2E 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20220329_083120_420168_DB61E16C 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,19 +97,14 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 29/03/2022 17:07, Johan Jonker wrote:
-> The current rk3399 cru DT node gives warnings like:
-> 'clocks' is a dependency of 'assigned-clocks'.
-> 
-> With the YAML conversion somehow "assigned-xxx" properties where added.
-> If a proper clock is added to the cru node these properties are no longer
-> needed, so removed them. Currently only one clock will be added, so limit
-> the clock maxItems to 1. Add a clock name to be able to differentiate
-> and filter bogus entries.
+> With the conversion of rockchip,rk3399-cru.txt a table with external clocks
+> was copied. Make it a bit cleaner by aligning the columns. Also fix
+> a description. Phrases start with a capital.
 > 
 > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > ---
->  .../bindings/clock/rockchip,rk3399-cru.yaml       | 15 +++------------
->  1 file changed, 3 insertions(+), 12 deletions(-)
+>  .../bindings/clock/rockchip,rk3399-cru.yaml        | 14 +++++++-------
+>  1 file changed, 7 insertions(+), 7 deletions(-)
 > 
 
 
