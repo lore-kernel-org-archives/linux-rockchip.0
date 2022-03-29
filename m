@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29967C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 15:08:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6A33C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 15:08:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zJaAyDMveWO3/LStYjdJxahcp7/8ibPMpijgaP5+yfg=; b=sk8D746ufAyBhn
-	OhWgO5nxGLtR6z9mznhiiUn/eOMitomZszi4NgUHLrostfDPi5rBrQ8Gn40Za/1qmgn6S+kVrTP+D
-	POOhsW7YUWja82EdZej5nsxiQZwQThLmUPqjVOOJDS3BjM7HEpYp17eYAaJDBG/H+n9BZ1ESONlCW
-	+5DHpPBUivrcrCiMiqcJuP2SGkaJNDTtyJxG6evKxy+feRK24dK3Cja26Lfack/zPuZqxkoHeguAC
-	tVk84+CtixLsMutP5uHNcZT2CcFEiY9KaYMu5F3uYXYIhKTxl7H6LJYCJBUaZkCPYpAaK9apMDpvv
-	Ha4KdK8/VySsYsJfqPew==;
+	List-Owner; bh=XjSIfdEkzjHUibxlZkP7XaE0zHXfr5Tjw2LHpw0ZJew=; b=heoO68JRFOaQ+5
+	6t7du5V5LP9fOTHF26eDVKHEmB1IIhZovkvlojjyIyfytX0SzkgOLUp2MVrrUi0LmvHDicbovETOG
+	cYel0fByplX0ew36cF2kmIWtPWCd1c/K1OeY5ASUDlvUYRKgIPwgZaALbVjQCrraE/rN2w89F2NHp
+	La8Iz2+UgShKrwrbxCDR5gRfZi/zoTnq2TONQHA2CxSvvvCvKvEwh/hLd6iYwlJucsbK1Y83Ri0wk
+	vj9ToX3/IXLmism9K2j9JKR784hY9XLf86jkio5MurRhbmrgJaXaeAzqZbbpRvrubaX0kQ4J4JRYg
+	ATocKf2+Ej5n3Zg7CpcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZDSC-00CZxC-6G; Tue, 29 Mar 2022 15:08:16 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1nZDSP-00Ca4f-7K; Tue, 29 Mar 2022 15:08:29 +0000
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZDRp-00CZmA-Cc; Tue, 29 Mar 2022 15:07:54 +0000
-Received: by mail-ej1-x636.google.com with SMTP id o10so35819652ejd.1;
- Tue, 29 Mar 2022 08:07:53 -0700 (PDT)
+ id 1nZDRs-00CZn0-6n; Tue, 29 Mar 2022 15:07:57 +0000
+Received: by mail-ej1-x633.google.com with SMTP id c10so17372720ejs.13;
+ Tue, 29 Mar 2022 08:07:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=JZrjecTc6isxOln40Vu5kdPXZSuYev7N4LqkSkVuX50=;
- b=S1TTstVm4PiS0psirN8/kUMX2zgzB6DwE+2dneSeDqtD7awdbNoysKhZ4GOpg6otnd
- 8m8SXbHJ090HjzoJ5eNg5hn3PkvxPmHkKNOmkusbHhr+L84Bp95S7sl/PTHa/6L5S7DN
- aZtbQVb8adDXcQsSeMpl8OIlZ4ybAL1Qh3yqA6nCf5/AmzYoikvKVPz4EcXr7rwryoWr
- EJL/pQFFW7aRMtIiC+8AvAzdGa1tanZv0h56i/C+XFJBsPoLtOUmekwb70Bkwp/QTFcO
- poNcczf7bw6t1PvoqnOgN7vSfI8LVcFV+xYlBs0wm8M02ggY+Ezrb6G/t2XYegW261zB
- mzzA==
+ bh=hIr5PvQf5fAOI0436U7wwcVh5jl/xQHKrpc6xbFom/g=;
+ b=fxKfzTApBxSRYrsYaJILMTwr/PE06U274HGvZsBw+QCZfWWgIfpfXExXXHsNFXHV7g
+ F1gWxlTF7mTpZjkF9S16CyiRvmrWnSdkSNlBO45OD+XX/Fq/JAcZYJlQwuWlh5hFS4Od
+ nkZic3NB4C25FqSWV7Nxgj9blOtLP9+3CHecdoelJvkoT4/qIEJu/K9dix6Zlvjwswti
+ ef9z35DzxkKXKxcx9TWipXeCNJiUM8jHk02SGr+1Ri4vDjQz2x5g+IvJFey/txsPumPU
+ 8ZlUJaKOI0S2DNNU128p+MwRNCiSg/0v++D1YJHyc6Hj4MdWWC+qUk1dEzCtYM5UhP5N
+ GYNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=JZrjecTc6isxOln40Vu5kdPXZSuYev7N4LqkSkVuX50=;
- b=xK/azm2cpT0Ig1bTJlonbRpMp4QkNkRjVIYs8iWDuA9D3LyxPOTpaJaJJK3SlCcHkv
- XIfqTOvCQGuEBpdog2erR5MIyXYQR1ZXgWCJCO9fvd98NhmqQ4ZK6XsWkmAbX8yinDLO
- w9rZY/FeyJFTX7VBPV3U+AUcYSIZNuG4XHSt1+1DlkJW48CdnhhvEGLolDmBvN2AFjsy
- 6Sy0e4uDxVtk58uHbCCvEpy+bCTRgB8QUUFHDY/wW9byKrEOtjuw3CK0j0Hs6Io8yW6p
- 1gQ51lfy9eKtpvie6e2IdebIp+aRLyKkkduwHxOEAiDwnLe2Bys3ywC5TrMB/qusEF4i
- fHAA==
-X-Gm-Message-State: AOAM532XHAjmSHbD5R9n3frRsFyZXgXwq7aQ4FXR6T7CqccufJY7Fv0+
- 9DkBsMOYNnVTHozmwqapcdc=
-X-Google-Smtp-Source: ABdhPJxK9uAZPCoQxiBP6Nxy0F/7WLolO7THdSnb7f/FIeDNldRKMS9uPvGarmj6h7tQk7InG9ETUA==
-X-Received: by 2002:a17:907:7204:b0:6df:6b63:cf49 with SMTP id
- dr4-20020a170907720400b006df6b63cf49mr34904315ejc.498.1648566471863; 
- Tue, 29 Mar 2022 08:07:51 -0700 (PDT)
+ bh=hIr5PvQf5fAOI0436U7wwcVh5jl/xQHKrpc6xbFom/g=;
+ b=sCH+oGxcjJmhZkI6boxILvYiHdZk24LY1LWE687BCqwiB4EWcJnkbryb7xHjWHgz3N
+ +t3W07FEPmMOQCUPfHQn46LZ4UE6o/ogFz7woPHIExR5MQ75R03ve1tfeAneeH0/TuS+
+ e8jk0N021FYdEa+JeN59NnXwFVXIzgqcapmOc4yM8QECnblPZvknAMTbDVxqbsHm/KiU
+ AAAMXca6oKeG34snSyhar4bKn5SydaJqUdNacvaq74zqj0Ny6le+cFvJD0Ya09ge8rRe
+ 1wBLFQl1g1DOgg62yPRSdlIkZWriJtHAbybtSyhC2JS722tb5oTkgLYdnZAMZ8QGFYe/
+ 25NA==
+X-Gm-Message-State: AOAM530iJHnSXITjz/ZvX7Gj/zDyAYkr3b8qW0yl1RyHaSL677HNsjgx
+ tlz7jnfiKZprya3b/DIO3Xc=
+X-Google-Smtp-Source: ABdhPJzdWuR/Ip7WHPKwZ8Ei1Ym2WuXobIb/szldrSwb7qxobdqcCVGvEeOwV4+Df3ERQcmyHFFWEA==
+X-Received: by 2002:a17:907:72c5:b0:6da:e99e:226c with SMTP id
+ du5-20020a17090772c500b006dae99e226cmr35385241ejc.515.1648566474746; 
+ Tue, 29 Mar 2022 08:07:54 -0700 (PDT)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
  by smtp.gmail.com with ESMTPSA id
- eq7-20020a056402298700b00419d8d46a8asm3261643edb.39.2022.03.29.08.07.50
+ eq7-20020a056402298700b00419d8d46a8asm3261643edb.39.2022.03.29.08.07.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Mar 2022 08:07:51 -0700 (PDT)
+ Tue, 29 Mar 2022 08:07:53 -0700 (PDT)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de,
 	zhangqing@rock-chips.com
@@ -65,17 +65,16 @@ Cc: robh+dt@kernel.org, krzk+dt@kernel.org, mturquette@baylibre.com,
  sboyd@kernel.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2 2/6] dt-bindings: clock: replace a maintainer for rockchip,
- rk3399-cru.yaml
-Date: Tue, 29 Mar 2022 17:07:38 +0200
-Message-Id: <20220329150742.22093-2-jbx6244@gmail.com>
+Subject: [PATCH v2 4/6] dt-bindings: clock: fix rk3399 cru clock issues
+Date: Tue, 29 Mar 2022 17:07:40 +0200
+Message-Id: <20220329150742.22093-4-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20220329150742.22093-1-jbx6244@gmail.com>
 References: <20220329150742.22093-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_080753_449543_0B7BF573 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20220329_080756_273807_D2856109 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,29 +92,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With the rk3399 cru YAML conversion the original text author was
-somehow added as a maintainer, but who's currently no longer involved
-on the subject. Replace this position with the Rockchip clock maintainer
-on her request.
+The current rk3399 cru DT node gives warnings like:
+'clocks' is a dependency of 'assigned-clocks'.
+
+With the YAML conversion somehow "assigned-xxx" properties where added.
+If a proper clock is added to the cru node these properties are no longer
+needed, so removed them. Currently only one clock will be added, so limit
+the clock maxItems to 1. Add a clock name to be able to differentiate
+and filter bogus entries.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- .../devicetree/bindings/clock/rockchip,rk3399-cru.yaml          | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../bindings/clock/rockchip,rk3399-cru.yaml       | 15 +++------------
+ 1 file changed, 3 insertions(+), 12 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.yaml
-index 76dd24d49..3cc8398fd 100644
+index 18a009311..54da1e31e 100644
 --- a/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.yaml
 +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.yaml
-@@ -7,7 +7,7 @@ $schema: http://devicetree.org/meta-schemas/core.yaml#
- title: Rockchip RK3399 Clock and Reset Unit
+@@ -46,19 +46,10 @@ properties:
+     const: 1
  
- maintainers:
--  - Xing Zheng <zhengxing@rock-chips.com>
-+  - Elaine Zhang <zhangqing@rock-chips.com>
-   - Heiko Stuebner <heiko@sntech.de>
+   clocks:
+-    minItems: 1
+-
+-  assigned-clocks:
+-    minItems: 1
+-    maxItems: 64
+-
+-  assigned-clock-parents:
+-    minItems: 1
+-    maxItems: 64
++    maxItems: 1
  
- description: |
+-  assigned-clock-rates:
+-    minItems: 1
+-    maxItems: 64
++  clock-names:
++    const: xin24m
+ 
+   rockchip,grf:
+     $ref: /schemas/types.yaml#/definitions/phandle
 -- 
 2.20.1
 
