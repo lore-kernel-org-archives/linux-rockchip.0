@@ -4,81 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FB4DC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 13:40:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 052EEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 15:08:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=drMayIQaNSq/xNpLJjhtSNWFfJKixocMIjyL/Vv/mXA=; b=nk0/I3HdiVHYKl
-	54eYz1KBGmMUfGhF+Qnpm0/Wio8wzEUDgQOc911jvGQe4kybtHfv7PXnRMztPZnnOAeDimCpN12nd
-	yGoY71spxjkAQ2kn/5O+E5/nXrJJEJxTksusLGX9WTwBIpH/9QndATkYUNyMefFYgUbOE7Yvp3LIk
-	cPn6NzZcXpRpdumdpoMWTses43tsVCQicVQsi7wk9Vuh44GOWPgLcKUcS5KObYXKbDHwLHaBo/1CN
-	ALdHBAxcSN1VWET7YUivkxw/YBq0tVS/89BsLMrbQl9R+muHb3cF18f3dpjv2FnIpMXdd2gLXDVxc
-	sBVJ/QATlbF5ho2S5nyw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jzkMzV5PrF4G48VduSETW59KDz7pIfeGVNCcEdmoO1k=; b=QRKCHXAAZeLN/r
+	8FaXR3xOfxdoyQnBBc5OJF9ABxmAVAvVelmxfRvm8NFvEjqaFT+/ETBgDqLj12k2RyoAkp3WM+3XZ
+	Vg5FSsWrbLQ3vZ+dVJ87fDYDbQZBWyqiGmxPV+rviWKJHwk4Oi2ydn4N+e0k9RBIp2NH8nQy6Hrat
+	Aw01hA0fsYIcn66HhPa3xiYUKPGb/+7iA8DIoSJBagz/O9Xx5CqnISXQVrIOaVjMP/639UJwA2aWH
+	cT+OkVIpmoS/vJctsrGIxHfRRcc2GSxcQakHbzVtrTz6AFz4CmqN/oES8m1YFRRQLw+kYiD/zva0Z
+	9TvXZMYnxOvhtj11U2AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZC5c-00COkS-PS; Tue, 29 Mar 2022 13:40:52 +0000
-Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
+	id 1nZDS1-00CZs1-6d; Tue, 29 Mar 2022 15:08:05 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZC5Z-00COix-VJ
- for linux-rockchip@lists.infradead.org; Tue, 29 Mar 2022 13:40:51 +0000
-Received: by mail-qv1-xf2f.google.com with SMTP id gh15so14357366qvb.8
- for <linux-rockchip@lists.infradead.org>; Tue, 29 Mar 2022 06:40:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ndufresne-ca.20210112.gappssmtp.com; s=20210112;
- h=message-id:subject:from:to:cc:date:in-reply-to:references
- :content-transfer-encoding:user-agent:mime-version;
- bh=OX8uzX6cgkseXeRBYjHM47D6ZNq3XzBbHTvAN/4NfGI=;
- b=sFtk4eBC34EHTFHpofTMUaiDbxm3jMEFknlxuJ7E8YKR0t/sJcRsdn4blofaCgMRYj
- BSUJ1+NAP6PulVGl9DMx8VZVRII71wc6m5gXub+QXqaqpVzvb45nwvJdC2pKVDRAsyuI
- WX7FopRIBjNrAM/Z9kYPOqTwAmE4vBHezRQBlMimsNC7JywP6zv6ViDsLIFo1sCOmNv8
- Yvmh2KNDpSyiBi4A2wziBEkiXZ2EhRC8Tn9hDjRFDFPwCmVTPF4viVZsJEcn125h7C91
- 7FlgWkdx8nflgF7VohVqBqGyhglYNolDunbrMkQFFpe7r0V2PuNlWLL81BzO8Si3EOfs
- kdkQ==
+ id 1nZDRo-00CZlh-5C; Tue, 29 Mar 2022 15:07:53 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id h1so21080326edj.1;
+ Tue, 29 Mar 2022 08:07:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=p9v27V0/JfuIbfFojrBajwITmYHf2b8Rf6L3R9h8DQQ=;
+ b=fGHjBdelOVCq0/HLdLy1UetI3cugft3sVAH5OtbM5CkxW6DAVq34oE5s3Zze28+2a8
+ U8QSzvPv0ufc5bZFWAdBpn6ZsuGhpWCJ98RxiwbEJK9luYn7m5qL/TwdXmNQfb3i1fbZ
+ yxVwcjDNcdoEXTVoRTHjU9CIfFTQze2w3UzVANnDwDZ7i1mcyBPW6OBQn0yAglHNdrPf
+ spLmwoo0vmcrRFEif1xOHSQmvd5vzS2jcEyRbaiQyFp3ixIJqTM4P1sr73pd9xSSlGi/
+ hcfMf/ZU5jLx6pUNmiAmEsUV0xbzpaK8oa4mEKdcLLJtlYy8xoB3VRZkUWscWMJxC8nZ
+ unPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
- :references:content-transfer-encoding:user-agent:mime-version;
- bh=OX8uzX6cgkseXeRBYjHM47D6ZNq3XzBbHTvAN/4NfGI=;
- b=VsTkAx0aO20ERhT1w25oSN0ZTThvjFjri+zHLr/BJPqGYET6O8Ejbz947KGA1VePjh
- rnYIWod+1BM1D7+YKXdBZbfV2mtzX1QF8Okm/6UMsv4fpn9RlnYg+KV+TmgHRP5/GBhp
- 4rYVuM9WcIKqzvteBzJ7QbPtY29aW7Mico3nG7+yOuktSTjQKC7isDHxSJXz4ciWvDJl
- xaCJeN5JH0+ucvswUCBuOiFqTAjkxprUTHv4tP8dgrya/sxMYZi3ajSgVJAUo1U8LfrB
- LDLeIXtgJ1rCeO6ZRKcUua6mAviF7B8uKoHVYkdZ0dceYZex+4P03RTw6nduqciqm4yv
- kAUQ==
-X-Gm-Message-State: AOAM530cX+TaEK274AdenxNmZBVtJ9JvmkDJ5UBojlQVPp58N9Udb+nt
- nWywIxk8uQ1ZIJkaIvF01WwkiQ==
-X-Google-Smtp-Source: ABdhPJwHaZa4QGYsWt/LUhJpekp72RsXv+ubveLeD4EjzM+7VH63XURE9ZZ3SS373zSjgJ9Nvbo+yQ==
-X-Received: by 2002:a05:6214:4112:b0:441:720:8434 with SMTP id
- kc18-20020a056214411200b0044107208434mr26593457qvb.23.1648561248500; 
- Tue, 29 Mar 2022 06:40:48 -0700 (PDT)
-Received: from nicolas-tpx395.localdomain (173-246-12-168.qc.cable.ebox.net.
- [173.246.12.168]) by smtp.gmail.com with ESMTPSA id
- y66-20020a37af45000000b0067dc0fc539fsm9684780qke.86.2022.03.29.06.40.47
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=p9v27V0/JfuIbfFojrBajwITmYHf2b8Rf6L3R9h8DQQ=;
+ b=xbTMbFm3JmebaDloem16hFQmKqdItARuxSo0NC0D3bVeGFhpSDy6OknIwzq6hO5Bxj
+ jq9xgT6qQuEBX6aQqMc3xnfTIFsTmUYpzqFWRU5s23quUEmqV3uLlatK3/o5Inz3KJBU
+ wHxRvzoJG4RytmMhKYE4FF7B5bTy2NZ+GQKWhjB/c+gMxepxISSir/vmlsbddNL5u6tD
+ uXkbi0ARURjy/roztmiSC4W/Nv+BcV/bzFCWLLw5b9sMeXiAvJ3UiOxgeA0/GlA8h6uv
+ UDAtKjj4IcKw3OUw3kYdM7FC61EdCKUbmQCVtlDBpUZDctG9MI4WGXTd0kZG5scbTsLZ
+ zeoQ==
+X-Gm-Message-State: AOAM530hfsO3WYMUv4ssziq/eEAD9MEdyOsj9Eos0uOCQ0NT3QaRx2bU
+ SokzYN93f6lOFS+qnUg8bQ8=
+X-Google-Smtp-Source: ABdhPJxso/UMv+vRLnya+BieCPXHQXWBIEBC2uFnNZ672GwfuzASripXLXTFP7UXiqKuRr4+8CDwLg==
+X-Received: by 2002:aa7:d58e:0:b0:419:c121:ea33 with SMTP id
+ r14-20020aa7d58e000000b00419c121ea33mr5012304edq.256.1648566470557; 
+ Tue, 29 Mar 2022 08:07:50 -0700 (PDT)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ eq7-20020a056402298700b00419d8d46a8asm3261643edb.39.2022.03.29.08.07.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Mar 2022 06:40:48 -0700 (PDT)
-Message-ID: <515bd7309493ef0b920bd8e20d856de2959ba3b7.camel@ndufresne.ca>
-Subject: Re: [PATCH] staging: media: rkvdec: Update TODO list
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Sebastian Fricke <sebastian.fricke@collabora.com>, 
- linux-media@vger.kernel.org
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Philipp Zabel
- <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, "open list:HANTRO VPU CODEC
- DRIVER" <linux-rockchip@lists.infradead.org>, "open list:STAGING SUBSYSTEM"
- <linux-staging@lists.linux.dev>, open list <linux-kernel@vger.kernel.org>
-Date: Tue, 29 Mar 2022 09:40:47 -0400
-In-Reply-To: <20220326183715.67332-2-sebastian.fricke@collabora.com>
-References: <20220326183715.67332-1-sebastian.fricke@collabora.com>
- <20220326183715.67332-2-sebastian.fricke@collabora.com>
-User-Agent: Evolution 3.44.0 (3.44.0-1.fc36) 
+ Tue, 29 Mar 2022 08:07:49 -0700 (PDT)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de,
+	zhangqing@rock-chips.com
+Cc: robh+dt@kernel.org, krzk+dt@kernel.org, mturquette@baylibre.com,
+ sboyd@kernel.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2 1/6] dt-bindings: clock: fix some conversion style issues
+ for rockchip, rk3399-cru.yaml
+Date: Tue, 29 Mar 2022 17:07:37 +0200
+Message-Id: <20220329150742.22093-1-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_064050_032909_3F182086 
-X-CRM114-Status: GOOD (  16.21  )
+X-CRM114-CacheID: sfid-20220329_080752_217085_706AB837 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,31 +86,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgc2FtZWRpIDI2IG1hcnMgMjAyMiDDoCAxOTozNyArMDEwMCwgU2ViYXN0aWFuIEZyaWNrZSBh
-IMOpY3JpdMKgOgo+IFZQOSBzdXBwb3J0IGhhcyBiZWVuIGFkZGVkIHRvIHRoZSBkcml2ZXIgYnkg
-ZjI1NzA5YzRmZjE1Lgo+IEFuZCB0aGUgVlA5IHVBQkkgd2FzIG1lcmdlZCB3aXRoIGI4OGRiZTM4
-ZGNhOC4KPiAKPiBUaGUgcmVtYWluaW5nIGNvZGVjIHRoYXQga2VlcHMgdGhpcyBkcml2ZXIgaW4g
-c3RhZ2luZyBpcyBIRVZDLgo+IFVwZGF0ZSB0aGUgVE9ETyBsaXN0IGFjY29yZGluZ2x5Lgo+IAo+
-IFNpZ25lZC1vZmYtYnk6IFNlYmFzdGlhbiBGcmlja2UgPHNlYmFzdGlhbi5mcmlja2VAY29sbGFi
-b3JhLmNvbT4KClJldmlld2VkLWJ5OiBOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1ZnJlc25l
-QGNvbGxhYm9yYS5jb20+Cgo+IC0tLQo+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL1RP
-RE8gfCA0ICsrLS0KPiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlv
-bnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9UT0RP
-IGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9UT0RPCj4gaW5kZXggZTBmMGYxMmYwYWM1
-Li4yYzA3NzkzODMyNzYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRl
-Yy9UT0RPCj4gKysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9UT0RPCj4gQEAgLTEs
-NiArMSw2IEBACj4gLSogU3VwcG9ydCBmb3IgVlA5IGlzIHBsYW5uZWQgZm9yIHRoaXMgZHJpdmVy
-Lgo+ICsqIFN1cHBvcnQgZm9yIEhFVkMgaXMgcGxhbm5lZCBmb3IgdGhpcyBkcml2ZXIuCj4gIAo+
-IC0gIEdpdmVuIHRoZSBWNEwgY29udHJvbHMgZm9yIHRob3NlIENPREVDcyB3aWxsIGJlIHBhcnQg
-b2YKPiArICBHaXZlbiB0aGUgVjRMIGNvbnRyb2xzIGZvciB0aGF0IENPREVDIHdpbGwgYmUgcGFy
-dCBvZgo+ICAgIHRoZSB1QUJJLCBpdCB3aWxsIGJlIHJlcXVpcmVkIHRvIGhhdmUgdGhlIGRyaXZl
-ciBpbiBzdGFnaW5nLgo+ICAKPiAgICBGb3IgdGhpcyByZWFzb24sIHdlIGFyZSBrZWVwaW5nIHRo
-aXMgZHJpdmVyIGluIHN0YWdpbmcgZm9yIG5vdy4KCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+With the conversion of rockchip,rk3399-cru.txt a table with external clocks
+was copied. Make it a bit cleaner by aligning the columns. Also fix
+a description. Phrases start with a capital.
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ .../bindings/clock/rockchip,rk3399-cru.yaml        | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.yaml
+index 72b286a1b..76dd24d49 100644
+--- a/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.yaml
++++ b/Documentation/devicetree/bindings/clock/rockchip,rk3399-cru.yaml
+@@ -22,11 +22,11 @@ description: |
+   There are several clocks that are generated outside the SoC. It is expected
+   that they are defined using standard clock bindings with following
+   clock-output-names:
+-    - "xin24m" - crystal input - required,
+-    - "xin32k" - rtc clock - optional,
+-    - "clkin_gmac" - external GMAC clock - optional,
+-    - "clkin_i2s" - external I2S clock - optional,
+-    - "pclkin_cif" - external ISP clock - optional,
++    - "xin24m"           - crystal input                          - required,
++    - "xin32k"           - rtc clock                              - optional,
++    - "clkin_gmac"       - external GMAC clock                    - optional,
++    - "clkin_i2s"        - external I2S clock                     - optional,
++    - "pclkin_cif"       - external ISP clock                     - optional,
+     - "clk_usbphy0_480m" - output clock of the pll in the usbphy0
+     - "clk_usbphy1_480m" - output clock of the pll in the usbphy1
+ 
+@@ -62,8 +62,8 @@ properties:
+ 
+   rockchip,grf:
+     $ref: /schemas/types.yaml#/definitions/phandle
+-    description: >
+-      phandle to the syscon managing the "general register files". It is used
++    description:
++      Phandle to the syscon managing the "general register files". It is used
+       for GRF muxes, if missing any muxes present in the GRF will not be
+       available.
+ 
+-- 
+2.20.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
