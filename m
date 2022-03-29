@@ -4,81 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6971C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 17:20:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3174C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 17:21:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YbdQ4rXOi0Gjx3Fakgf/L0U2966448YbG6wFfGMNF/Y=; b=lGqWmmpBhU3iT9
-	XNDwnhCoEcg63RR0X/KwCCZPO8r3tc7vPWqEtRNbb46uoU76mPAK+DsaH62NIIHp2Zhel34cq/h7p
-	+R0EKOsgb23QhThlE3e7Tr3ykx/9XV6GMUIaWsVWVRcTqHxui8cYMeaCNJdKiahfQEAstAO31e0K6
-	BWMK+relXsZ2ZskgSXyA+vQ0Q0MS06C+ujk4laQje/k70oM6NBvEOvexegz4EzmXyHNsM+l7I6QS8
-	vTGooBcIgTTqZxd8bVEQDyXCmIclK9a+AIrAEv1V1mDBCLfff8L2E3Szj/XLW+TYXFPWM3PjgA+gn
-	jauuIHsz6tGnZBdmG5sg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=97lOI+ohwjpDP5G/wrI+42bVhCcTcZJlMerz+svplzg=; b=vUlP3rPtmBmjNE
+	rFmS5SmO9jlF7Wt104ly+QFCygBCNkTWLfID1xuBDu8Wyks0H/unJ/meHTkCHHumys367S5JK7NEf
+	xQFy1XRZhDB7MLnSFxZMLlouo3SGhjNz9eA4Fj0KaVqueeku/SR1iHi0r6/g0++N7e2F2HVHIUV4O
+	xPhB0n++QCw8uZLM4oy0macUJWMaxwfGXbYXNddrBX45mgXao98vlLK8Iai6ug1/7GyVHDNBSZxVD
+	IWdYsXolykbKp+CsGJynXJJKaLRE97CJIWV+L44t6bHDvXwUI7XGf3oux1mz8eI6606DvFEpeysbz
+	p9wdPBZxcXRIFif/W1Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZFWC-00D2ra-MP; Tue, 29 Mar 2022 17:20:32 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1nZFXK-00D3AU-K9; Tue, 29 Mar 2022 17:21:42 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZFW0-00D2oY-AH
- for linux-rockchip@lists.infradead.org; Tue, 29 Mar 2022 17:20:21 +0000
-Received: by mail-ej1-x634.google.com with SMTP id a8so36373628ejc.8
- for <linux-rockchip@lists.infradead.org>; Tue, 29 Mar 2022 10:20:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=ROsQcUJTGNxUVGtLXxEiy/5+m8Zgw5SGAV2688lVg4g=;
- b=o/5vMuNiIBEAuZd0SjplKcjp4d+racjVgUESBlfA7iYult41e/OVKGwOCEAy0g7c/z
- +c4TtwYJM7xxJXIPEGKsjG2JI/W60wL58H1Ex3ebbr5vicEqqSeSRUqXK6i8F+7PnxCr
- XA+25ysr6U44Tp3sL0L8TMGMwO31zYmhOvetAvrGt/1NjtqLE49OUBtpw5G2bxUyg3rH
- cA2m5BVCkFXY4DtvCZ5oerGtLJ9Oo00/ByywRHHYmgL6t46w0NByYO+clPjtup72Vdr2
- GpdC+9GdcFUdCotzU2JNFHyJt+Ere370OakHWs5NR9tyAdWCdxd2egttVqvgHPmb9dJw
- aU4Q==
+ id 1nZFX6-00D355-9h; Tue, 29 Mar 2022 17:21:30 +0000
+Received: by mail-ed1-x532.google.com with SMTP id g22so10395937edz.2;
+ Tue, 29 Mar 2022 10:21:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=dDljKMlrQpXPG4bey5SGoE0JOK5HNsmM3vJrv4DzHk8=;
+ b=F84MM+21itZIJycDiuMdu8cRoM0/VPKjKnCR+vfPdlqUtCWtm6Q3RucKsQNyeQm7+7
+ pPBvlm61hZrEC7MYk9WJBGdUG0B+9ZWDJ1xf9Cw/vsLtVezZVwVBogyPYTwmqE/XTN6w
+ xrB1+lfWeav59NEx0oJV6Mj6ipRlFXcEkpN1h6x0bhSXal2k8iM0eq2TGtWmv2YD+Exp
+ 7kJU+ROGJ+BXQTmrSA1HnusBUsLY4u59eNjQ3KggdhxiBx4dxrtXLTznp+9Mo8tyCo8B
+ 63ZAaHUMLi83PGnA2cyIJwSNkhp0MF3+c8tbCJMiihf/TXXzBgPTuk5N+w78PjGTgu6G
+ i1sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=ROsQcUJTGNxUVGtLXxEiy/5+m8Zgw5SGAV2688lVg4g=;
- b=eZuJU3qadgOOoyOwnyurq5mjr7tY6MXqq+sfph9gE/9ArC6VkB1e3YEGREsX8FlDYG
- PtWY2jp4bG/Ynf7lcQkbTx3mEISvOlU6QFY2Q71rsAuW4tHKIook0ku7SLdpecKGvtLq
- s8JJ3ygIfPwID7AWfrijRWkGpO6NWZePsSudndoNiKm2kIQ8j43LuNA3hzlXtWpw5hmS
- GKON+pPU72L496dbSvfzQMhUXcRgs70OOvH2EgKxUZYRGw7+16s01UjbKR7gdvbk9bqo
- AKL4OftsbwNfxlFdez7aClCCIIzT3Yg82rk3milD7WAUuS3+Ext05DRjDoJROC4/8BkO
- MV2A==
-X-Gm-Message-State: AOAM532vs5LzJnde4wagUoF8ZjKNbP5mYEz7acSTv+U8eUt3A+Rqrz0W
- sklLPbsIwMicbxTHJ4dl9XkuPfJPc+NutZFO
-X-Google-Smtp-Source: ABdhPJxkbDZq562GC5mkdl0Wlt68amgyNMSrc+Yo4YTeVWsfVfweU8TsmgnU6j66uTFhrh1FbFO/8g==
-X-Received: by 2002:a17:906:c110:b0:6e0:dc2a:3393 with SMTP id
- do16-20020a170906c11000b006e0dc2a3393mr20631113ejc.512.1648574418760; 
- Tue, 29 Mar 2022 10:20:18 -0700 (PDT)
-Received: from [192.168.0.162] (xdsl-188-155-201-27.adslplus.ch.
- [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
- z21-20020a1709063a1500b006da6436819dsm7295462eje.173.2022.03.29.10.20.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Mar 2022 10:20:18 -0700 (PDT)
-Message-ID: <5e3ef437-82d3-ae4e-f8bb-0b508b45050d@linaro.org>
-Date: Tue, 29 Mar 2022 19:20:17 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v1 1/3] dt-bindings: clock: convert rockchip,
- rk3328-cru.txt to YAML
-Content-Language: en-US
-To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de, zhangqing@rock-chips.com
+ bh=dDljKMlrQpXPG4bey5SGoE0JOK5HNsmM3vJrv4DzHk8=;
+ b=1Z+KcZeKFK+izEyPcEFqh/iRpvW4UdS1XgQUS1t9hu0vnWIf4/DUH1kKxEmzMq5MpV
+ Wgicdgb7ZCorqYFJrIFwWa8f9AhrP48FjV8Ta/WBKsN7o0Z/PZaX1m75mR7nJay9LruF
+ d0/Gg6kUUtFaSK4HXFR6K8lq+llSuj0uF0ESZNzAwOrYcEumhRQMlwUnmAttEmAqzW6g
+ jyJhdcDvONUiNXRu3HS6RszkxLBjumXJDZW0v83/YEYA7oyJIdjYutYU58SvU17saBff
+ JD29DefE97OMFO10rWb+dpNISQW8ct8P/f9jYHLlMeZJDCtTf0xQwectPhGDD9Cj6ICy
+ z3Og==
+X-Gm-Message-State: AOAM533kgyp01i1XrZYGMigDSFcZIr/WrNCCJqg8t723SK7p0CxUKOye
+ 0wLjvmcAoQHxc7za1mY75NY=
+X-Google-Smtp-Source: ABdhPJxdmdkWpa+4lJWyFKErAHt0mYImapWztvdk0WoAkPdzBBiUyPLu+re9OSf1A0Lpr9XMZtQHLQ==
+X-Received: by 2002:a50:a41a:0:b0:419:d2b:8391 with SMTP id
+ u26-20020a50a41a000000b004190d2b8391mr5948365edb.390.1648574486790; 
+ Tue, 29 Mar 2022 10:21:26 -0700 (PDT)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ d4-20020a056402000400b00412d60fee38sm8707089edu.11.2022.03.29.10.21.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 29 Mar 2022 10:21:26 -0700 (PDT)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de,
+	zhangqing@rock-chips.com
 Cc: robh+dt@kernel.org, krzk+dt@kernel.org, mturquette@baylibre.com,
  sboyd@kernel.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-References: <20220329163016.27458-1-jbx6244@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220329163016.27458-1-jbx6244@gmail.com>
+Subject: [PATCH v1 1/2] dt-bindings: clock: convert rockchip,
+ rk3368-cru.txt to YAML
+Date: Tue, 29 Mar 2022 19:21:19 +0200
+Message-Id: <20220329172120.30328-1-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_102020_462188_4408174C 
-X-CRM114-Status: GOOD (  10.50  )
+X-CRM114-CacheID: sfid-20220329_102128_382981_0F578B1F 
+X-CRM114-Status: GOOD (  18.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,34 +91,177 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 29/03/2022 18:30, Johan Jonker wrote:
-> Current dts files with RK3328 'cru' nodes are manually verified.
-> In order to automate this process rockchip,rk3328-cru.txt has to be
-> converted to YAML.
+Current dts files with RK3368 'cru' nodes are manually verified.
+In order to automate this process rockchip,rk3368-cru.txt has to be
+converted to YAML.
 
-You know that this can be one or two lines max?
-"Convert RK3328 clock controller bindings to DT schema"
+Changed:
+  Add properties to fix notifications by clocks.yaml for example:
+    clocks
+    clock-names
 
-It's equal, because we all know the benefits of DT schema. :)
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ .../bindings/clock/rockchip,rk3368-cru.txt    | 61 ---------------
+ .../bindings/clock/rockchip,rk3368-cru.yaml   | 78 +++++++++++++++++++
+ 2 files changed, 78 insertions(+), 61 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.txt
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.yaml
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.txt
+deleted file mode 100644
+index 7c8bbcfed..000000000
+--- a/Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.txt
++++ /dev/null
+@@ -1,61 +0,0 @@
+-* Rockchip RK3368 Clock and Reset Unit
+-
+-The RK3368 clock controller generates and supplies clock to various
+-controllers within the SoC and also implements a reset controller for SoC
+-peripherals.
+-
+-Required Properties:
+-
+-- compatible: should be "rockchip,rk3368-cru"
+-- reg: physical base address of the controller and length of memory mapped
+-  region.
+-- #clock-cells: should be 1.
+-- #reset-cells: should be 1.
+-
+-Optional Properties:
+-
+-- rockchip,grf: phandle to the syscon managing the "general register files"
+-  If missing, pll rates are not changeable, due to the missing pll lock status.
+-
+-Each clock is assigned an identifier and client nodes can use this identifier
+-to specify the clock which they consume. All available clocks are defined as
+-preprocessor macros in the dt-bindings/clock/rk3368-cru.h headers and can be
+-used in device tree sources. Similar macros exist for the reset sources in
+-these files.
+-
+-External clocks:
+-
+-There are several clocks that are generated outside the SoC. It is expected
+-that they are defined using standard clock bindings with following
+-clock-output-names:
+- - "xin24m" - crystal input - required,
+- - "xin32k" - rtc clock - optional,
+- - "ext_i2s" - external I2S clock - optional,
+- - "ext_gmac" - external GMAC clock - optional
+- - "ext_hsadc" - external HSADC clock - optional,
+- - "ext_isp" - external ISP clock - optional,
+- - "ext_jtag" - external JTAG clock - optional
+- - "ext_vip" - external VIP clock - optional,
+- - "usbotg_out" - output clock of the pll in the otg phy
+-
+-Example: Clock controller node:
+-
+-	cru: clock-controller@ff760000 {
+-		compatible = "rockchip,rk3368-cru";
+-		reg = <0x0 0xff760000 0x0 0x1000>;
+-		rockchip,grf = <&grf>;
+-		#clock-cells = <1>;
+-		#reset-cells = <1>;
+-	};
+-
+-Example: UART controller node that consumes the clock generated by the clock
+-  controller:
+-
+-	uart0: serial@10124000 {
+-		compatible = "snps,dw-apb-uart";
+-		reg = <0x10124000 0x400>;
+-		interrupts = <GIC_SPI 34 IRQ_TYPE_LEVEL_HIGH>;
+-		reg-shift = <2>;
+-		reg-io-width = <1>;
+-		clocks = <&cru SCLK_UART0>;
+-	};
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.yaml
+new file mode 100644
+index 000000000..adb678777
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/rockchip,rk3368-cru.yaml
+@@ -0,0 +1,78 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/clock/rockchip,rk3368-cru.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip RK3368 Clock and Reset Unit (CRU)
++
++maintainers:
++  - Elaine Zhang <zhangqing@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++description: |
++  The RK3368 clock controller generates and supplies clocks to various
++  controllers within the SoC and also implements a reset controller for SoC
++  peripherals.
++  Each clock is assigned an identifier and client nodes can use this identifier
++  to specify the clock which they consume. All available clocks are defined as
++  preprocessor macros in the dt-bindings/clock/rk3368-cru.h headers and can be
++  used in device tree sources. Similar macros exist for the reset sources in
++  these files.
++  There are several clocks that are generated outside the SoC. It is expected
++  that they are defined using standard clock bindings with following
++  clock-output-names:
++    - "xin24m"     - crystal input                          - required
++    - "xin32k"     - rtc clock                              - optional
++    - "ext_i2s"    - external I2S clock                     - optional
++    - "ext_gmac"   - external GMAC clock                    - optional
++    - "ext_hsadc"  - external HSADC clock                   - optional
++    - "ext_isp"    - external ISP clock                     - optional
++    - "ext_jtag"   - external JTAG clock                    - optional
++    - "ext_vip"    - external VIP clock                     - optional
++    - "usbotg_out" - output clock of the pll in the otg phy
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3368-cru
++
++  reg:
++    maxItems: 1
++
++  "#clock-cells":
++    const: 1
++
++  "#reset-cells":
++    const: 1
++
++  clocks:
++    maxItems: 1
++
++  clock-names:
++    const: xin24m
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the syscon managing the "general register files" (GRF),
++      if missing pll rates are not changeable, due to the missing pll
++      lock status.
++
++required:
++  - compatible
++  - reg
++  - "#clock-cells"
++  - "#reset-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    cru: clock-controller@ff760000 {
++      compatible = "rockchip,rk3368-cru";
++      reg = <0xff760000 0x1000>;
++      rockchip,grf = <&grf>;
++      #clock-cells = <1>;
++      #reset-cells = <1>;
++    };
+-- 
+2.20.1
 
-> Changed:
->   Add properties to fix notifications by clocks.yaml for example:
->     clocks
->     clock-names
-> 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
->  .../bindings/clock/rockchip,rk3328-cru.txt    | 58 ---------------
->  .../bindings/clock/rockchip,rk3328-cru.yaml   | 74 +++++++++++++++++++
->  2 files changed, 74 insertions(+), 58 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3328-cru.txt
->  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3328-cru.yaml
-> 
-
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
