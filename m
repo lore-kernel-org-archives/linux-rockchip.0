@@ -4,71 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3411C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 13:20:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75FC1C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 13:23:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:Cc:References:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+oAWMp50sXKyO3CzRElKhBCGjP6exrwRuh6V5p50C9Q=; b=FJI/J33SLpBIcD
-	Wc0oObb2sjM6NsVUSkLqWPJ2KveOWkwmJL9wRwFWzrLd/z1vc7dzXtJBD1Ny6JZVWRHN2ulyKjWO1
-	R8k5Bh/u4MelGIDQUFimoRsGqBqPO3oYrKxs2S4laFVTtTg+SKnOlNsNjrjZhM3cIC4nYrpLorEBX
-	1TBHkkExNuyRdxInutpzUQ3H7Ax6gl/FenbTRTKH5kh53n8RgC1E4pDi5LsIno4u8AniHwWXCNc5j
-	5vhf5XMhlf13OSmR2Ys8L/dtiRF6gywp1wWgBrtQKx/ABDORqLK2IcsOPEwgNL+1Q8ca6IItCmwLg
-	7+HOy0w10boqMJQFVSdA==;
+	List-Owner; bh=ag/irPjI/AOSaZQ+4iM4jC8EIBMm3ORtKKT46xQMXcs=; b=Nwl/oRwQNei+MF
+	2uZt8lhdYshVckdqE40x8JpmQc1F3DXBP170m6bgAGcFQhadBnRHqOH8mPqa38+QwfKTfveS2cUzO
+	H+40Uydn/pTkWRExKYMN8eogTZSZpwWop6//5e2L7kVmcLUAFZLhJGX+AV3JDAdD4b2gVWt2Qzabl
+	wYMLskOb+epuZtUJ9klGcNeMUpO/kF0dmMeN/7F1l3tSP9rqvmEyiFEpNrfAhah2k9T6J78C+sDPy
+	nMbG8asbwtthibWeDAjAv08PKm/yZTUJuYNqLJb+wRa1pumHVMVFE/9W0sI0EUNU1h58b7FYm14+J
+	1QC2SugQsNvvsFcV3Hfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZBmD-00CKdT-AE; Tue, 29 Mar 2022 13:20:49 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nZBoQ-00CLCp-Rg; Tue, 29 Mar 2022 13:23:06 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZBlw-00CKWx-HN; Tue, 29 Mar 2022 13:20:34 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id A50A9B816FB;
- Tue, 29 Mar 2022 13:20:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 079B3C2BBE4;
- Tue, 29 Mar 2022 13:20:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648560029;
- bh=vcBGlG+sqaPt0UpTdoZ2lc9iEFALH1pzWeKYoBtVGc0=;
- h=Date:Subject:To:References:Cc:From:In-Reply-To:From;
- b=Lf6UdkMwpGMKF/bCzH0duecbGSrWXhu70CtFUq2mNv7IsC6370BCiPtfWXaI+yKF/
- UQxjxo/5ELIHPpruCIzbUN34wBvgy5Fc7eS22PnhD5aL+YcFYfFaN/O+tr+ZmUM+S5
- A/HxyRRfNmBU9vHwyfdDK7puvv8H+mPmsnx7QORDs2EqLL+mvW+oCz1joHCa6v9S30
- zZSq7JcFWt8iEt24hFmi80tnq5vNy7tr3oSE2yE/htc0EfUX3gZEr+PbO1Xh/RhzQv
- IsUb015h84Gz6Om/nGHx49iikUSPAbDyLFfT+LjbZl0E6DwqI3AOYIbHwd8W8xbJcf
- NtJzDPqA8j7Dw==
-Message-ID: <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
-Date: Tue, 29 Mar 2022 15:20:18 +0200
+ id 1nZBoE-00CLAB-Nl; Tue, 29 Mar 2022 13:22:56 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dmitry.osipenko) with ESMTPSA id 906B41F427D0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1648560166;
+ bh=fkYLreROLaT3/ibZDuXdX+BsL1eXrW9BPtkQObOUCLI=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=SH2cosC88mdr4JJm9YuIlwoNjheKrDyBxC/UwAl3gfENxnzbYLa3augL9iNYg7xcR
+ MVQC5j09cDSp6eId5pdWMsktMXaM4BK59ObEKqu4aq/z2WCvpBgbPt/NK7HNL4/jFs
+ AerULpX/HvC6XH0M6JmPJUGeQqC6RWuuyXNuQcokzL2Ic5Vgu0fuxkBfrjDCHlbWoS
+ f27WFyR/56vhRuHA7tyh/gOiC/V5sCHLVYAA5bzYLD7RvcOU5RgFp6FLXqLc6t7FYH
+ lTTkCeeDd8VbwmG4kstNqKmbOjE2GQJf07VKQhB98ciN4ZHprKweQVbaFk99KzrgGl
+ u26dLk8elbCww==
+Message-ID: <72850490-44aa-32b3-a963-6e1d38d35db7@collabora.com>
+Date: Tue, 29 Mar 2022 16:22:43 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v9 01/23] clk: rk3568: Mark hclk_vo as critical
 Content-Language: en-US
-To: Ansuel Smith <ansuelsmth@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
- linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
- chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- kernel@dh-electronics.com, linux-mediatek@lists.infradead.org,
- openbmc@lists.ozlabs.org, linux-tegra@vger.kernel.org,
- linux-oxnas@groups.io, linux-arm-msm@vger.kernel.org,
- linux-unisoc@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-realtek-soc@lists.infradead.org
-References: <20220328000915.15041-1-ansuelsmth@gmail.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-In-Reply-To: <20220328000915.15041-1-ansuelsmth@gmail.com>
+To: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org
+Cc: devicetree@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Peter Geis <pgwipeout@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
+ linux-rockchip@lists.infradead.org,
+ Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
+ Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org
+References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
+ <20220328151116.2034635-2-s.hauer@pengutronix.de>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <20220328151116.2034635-2-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_062032_891696_E13A23F9 
-X-CRM114-Status: GOOD (  38.21  )
+X-CRM114-CacheID: sfid-20220329_062254_940001_D4885187 
+X-CRM114-Status: GOOD (  24.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,84 +74,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 28/03/2022 02:09, Ansuel Smith wrote:
-> Hi,
-> as the title say, the intention of this ""series"" is to finally categorize
-> the ARM dts directory in subdirectory for each oem.
+On 3/28/22 18:10, Sascha Hauer wrote:
+> Whenever pclk_vo is enabled hclk_vo must be enabled as well. This is
+> described in the Reference Manual as:
 > 
-> The main reason for this is that it became unpractical to handle 2600
-> dts files and try to even understand/edit/check the situation for a
-> specific target.
+> | 2.8.6 NIU Clock gating reliance
+> |
+> | A part of niu clocks have a dependence on another niu clock in order to
+> | sharing the internal bus. When these clocks are in use, another niu
+> | clock must be opened, and cannot be gated.  These clocks and the special
+> | clock on which they are relied are as following:
+> |
+> | Clocks which have dependency     The clock which can not be gated
+> | -----------------------------------------------------------------
+> | ...
+> | pclk_vo_niu, hclk_vo_s_niu       hclk_vo_niu
+> | ...
 > 
-> In arm64 we already have this kind of separation and I honestly think
-> that this was never proposed for ARM due to the fact that there are
-> 2600+ files to sort and the fact that it will be a mess to merge this
-> entirely but IMHO with a little bit of effort we can finally solve this
-> problem and have a well organized directory just like arm64.
+> The clock framework doesn't offer a way to enable clock B whenever clock A is
+> enabled, at least not when B is not an ancestor of A. Workaround this by
+> marking hclk_vo as critical so it is never disabled. This is suboptimal in
+> terms of power consumption, but a stop gap solution until the clock framework
+> has a way to deal with this.
 > 
-> Some prerequisite on how this work was done:
-> - This comes entirely from a python script created by me for the task.
->   linked here [1]
-> - I had to manually categorize all the different arch in the makefile
->   based on the oem. I searched every arch on the internet trying to
->   understand the correct oem. I hope they are correct but I would love
->   some comments about them.
-> - This current ""series"" is all squashed in one big commit to better
->   receive comments for this. The final version ideally would have all
->   changes in separate commits. The script can already do this, it's just
->   commented.
+> We have this clock tree:
 > 
-> Here is a list of some discoveries while doing all the sorting.
-> These are totally additional reason why we need this.
+> |      aclk_vo                  2        2        0   300000000          0     0  50000         Y
+> |         aclk_hdcp             0        0        0   300000000          0     0  50000         N
+> |         pclk_vo               2        3        0    75000000          0     0  50000         Y
+> |            pclk_edp_ctrl      0        0        0    75000000          0     0  50000         N
+> |            pclk_dsitx_1       0        0        0    75000000          0     0  50000         N
+> |            pclk_dsitx_0       1        2        0    75000000          0     0  50000         Y
+> |            pclk_hdmi_host     1        2        0    75000000          0     0  50000         Y
+> |            pclk_hdcp          0        0        0    75000000          0     0  50000         N
+> |         hclk_vo               2        5        0   150000000          0     0  50000         Y
+> |            hclk_hdcp          0        0        0   150000000          0     0  50000         N
+> |            hclk_vop           0        2        0   150000000          0     0  50000         N
 > 
-> While creating the script I discovered some funny things:
-> - We have orphan dts! There are dts that are never compiled and are
->   there just for reference. We would never have noticed this without this
->   change and probably nobody noticed it. They are currently all listed
->   in the python script.
-> - We have dtsi shared across different oem. My current solution for them
->   is: NOT SORT THEM and leave them in the generic directory and create a
->   link in each oem dts that points to these dtsi. This is to try in
->   every way possible to skip any additional changes to the dts.
->   Current dtsi that suffers from this are only 3. (listed in the script)
-> - arm64 dts and dtsi reference ARM dts. Obviously this change would cause
->   broken include for these special dtsi. The script creates a dependency
->   table of the entire arm64 directory and fix every broken dependency
->   (hoping they all use a sane include logic... regex is used to parse
->   all the different dependency)
+> Without this patch the edp, dsitx, hdmi and hdcp driver would enable their
+> clocks which then enables pclk_vo, but hclk_vo stays disabled and register
+> accesses just hang. hclk_vo is enabled by the VOP2 driver, so reproducibility
+> of this issue depends on the probe order.
 > 
-> So in short the script does the following steps:
-> 1. Enumerate all the action to do... (dts to move, scan dependency for
->    the dts...)
-> 2. Generate the arm64 dependency
-> 3. Creates the Makefile
-> 4. Generate the Makefiles for the current oem
-> 5. Move all the related dts and dtsi for the current oem
-> 6. Check broken dependency and fix them by editing the dts and writing
->    the correct include (or fix any symbolic link)
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
 > 
-> This is an output that describes all the things done by the script [2]
+> Notes:
+>     Changes since v8:
+>     - new patch
 > 
-> I really hope I didn't commit any logic mistake in the script but most
-> of the work should be done.
+>  drivers/clk/rockchip/clk-rk3568.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
+> diff --git a/drivers/clk/rockchip/clk-rk3568.c b/drivers/clk/rockchip/clk-rk3568.c
+> index 63dfbeeeb06d9..62694d95173ab 100644
+> --- a/drivers/clk/rockchip/clk-rk3568.c
+> +++ b/drivers/clk/rockchip/clk-rk3568.c
+> @@ -1591,6 +1591,7 @@ static const char *const rk3568_cru_critical_clocks[] __initconst = {
+>  	"hclk_php",
+>  	"pclk_php",
+>  	"hclk_usb",
+> +	"hclk_vo",
+>  };
+>  
+>  static const char *const rk3568_pmucru_critical_clocks[] __initconst = {
 
-+Cc Arnd and Olof,
+Nice! That's much better than the DT hacks, IMO, thank you.
 
-Ansuel,
-Thanks for you patch. Please cc the SoC maintainers in such submissions.
-It seems that you got some quite nice discussion, but still the core
-folks are not Cced, so no one would be able to take your patch...
-
-I am pretty sure we were discussing such split idea in the past and it
-did not get traction, but I cannot recall the exact discussion.
-
-To me the idea is good but will cause huge `git am` conflicts.
-Cherry-picks, backports and merges should nicely detect path renames,
-but git am (and b4 am) I think cannot.
-
-Best regards,
-Krzysztof
+Reviewed-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
 
 _______________________________________________
 Linux-rockchip mailing list
