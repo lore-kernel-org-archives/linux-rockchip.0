@@ -4,100 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 149A1C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 10:07:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17745C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 11:14:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aEyZQhIgA0/BYjoNw+fynybJ5ekw4cB1bz0/K/RjnZ8=; b=xAuHHNQqxgH2Oi
-	s9z+wla0+OkAKUVD0LDS7W9rKvByGjIHXoN5Bqdcdq18J+4KHKAplbFCUIxwrwGZrqJxhIezOFIgX
-	aLB1fNDbthUdq1xoYgEYlxhga06n7WcpnHsdoW0IN6ZAAE/PuIx7qYv3+d7NU4EizEOC4xWhhcegc
-	MLs56tMAInAYwudG4J9REScVRp9dpG/jzcU5NJWQ8mmzhS4+3vYSPfo7JtWO56qKt1x5+TmfCrldN
-	MITa24xxUCpyP4zVdLP5nWpAPAhWLHgUZ5UZATQwdDUbsxGOS9vKpttusGur977NhkV0InB0RUnp1
-	AR0Qswrhpatcs8+x5F2g==;
+	List-Owner; bh=vhmLAK7KlmkgL4rMxCRGjJpsQInS82eSuaLm6ZKCMRI=; b=BHA+C3sb4B1oh6
+	Lj9kJqGstFOol2Iig01/qHoCUc/KeEyUz0YoWxWHi0eIRQugLBk71Dq06HwlJJna9IFE6EXeY+JLn
+	HAJps83uT6YJwJRq4fzu5Z3twW11euEsiH7sxN+RgcJnFyHfoFHiMihQvkeyJCsNIkrpJPj+KIoBR
+	35RiP+b9Kamjr7qCJnflvH0in/+ZsMj28ttf41opWo9IP7wY6ojCBv0s6Mrso7jQF0abFnKMGr3Q6
+	vUNO6aT1vYZAxVeWImAJFX36TbgV1VqvbML/nkPZsoKgWjrBr6+J2UzOZQZBlPq6SPFZpJzebKYDW
+	qw1348ND6oGxkmO4hU7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZ8kb-00Bltx-RR; Tue, 29 Mar 2022 10:06:57 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1nZ9no-00BwR7-BZ; Tue, 29 Mar 2022 11:14:20 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZ8kN-00BlqE-Au; Tue, 29 Mar 2022 10:06:44 +0000
-Received: by mail-wm1-x336.google.com with SMTP id
- i131-20020a1c3b89000000b0038ce25c870dso964776wma.1; 
- Tue, 29 Mar 2022 03:06:41 -0700 (PDT)
+ id 1nZ9nc-00BwO9-F3; Tue, 29 Mar 2022 11:14:09 +0000
+Received: by mail-ed1-x534.google.com with SMTP id r23so20311626edb.0;
+ Tue, 29 Mar 2022 04:14:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=gJYdJOur1iY6XbbeGXFj0ECGEHoJkzCeSnRWw+1akAE=;
- b=g1SGsbd/jLtCfDq6yzASjQLg1D1Di4TRzjMb5UiIfrE9WiDmnp4ps8sIblZUNtYLhl
- BEYp/E3cwcQ3Zx0+p3QoptHL3A/ppqsLefEG80tXSSwr+mpdP4i1AcDwb/671KD/V7Or
- SrBc47ULMLUb19cniOzsSHJIDLc2hutPluz+X07qok/90+UjDzhv6DSHFkWqgCReRafg
- 8hQGGxrcX5P2AlRlhAUeG7o275fLN5UY/luSiQ/PippZc5scePfD88DWfB5YY4mbajP2
- /wEv07hBPdodolgvcwPf/ryO4mcjf2pm6CqHleQKRp4LwbU9hZS+Lg1pg+jJITwfzWUK
- 5rMA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=9VcDy2eNu6zj3ojAJOI8YY4Y8u6xcG4aGKHl4udgapM=;
+ b=V5QsH+2onl3V2K7/qMMnP3xRE7D2OQSwXl+udTtOIeKGKu52DRJkFiQs9pRlTb9VXz
+ MUIL91319MYihfoMWGVum2bYCPSgWBUy6xbVZ18NfDwN7VpUroxuxcFaxkO/ckvIxkkc
+ LdbvnX1OrkJHaXzW4yscUl1oxvh9YvXS4Tu+hSRKa6kfy1iRouEfI/tB0n3IF8GYuUN9
+ 7Z09PAnMGQ6A3SIgNXVVsVSMrD6dqav7oCZQuNKV6BnnTkYo/cftyq9FxOPcxdqx6Qvb
+ aUhj/8KducT6DxqRjlUUUbGdD4YqCUmisPnGr3DS5tTKFvx3WKTN4o61RoBngQOXEzr2
+ np/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=gJYdJOur1iY6XbbeGXFj0ECGEHoJkzCeSnRWw+1akAE=;
- b=fYgjcfWRWNsFGZdOOHRpki1Xl9+cFawqmV6ttT7oSjRM71+ih7GgmzEvH2al+MWydd
- PAe6im/fko5BC9w9fFlLI1b4CWcxAuy6cCN84HpnnlYPEflW+lP+iYeW2vKlxDBRakYn
- rEFYWRLA71CqQkkR1Uoy+ClQbkyeT1Tp0hnxn4d6j/4Xnc24z8uFc4gxun0pxNzEiey4
- ipnM9Y7kahO8gLmVLeQfuIbM+gHda2KnUbntzwhYW33hETm3AS4v8ZNeb6PA73p0iSxJ
- O45kyC8wADxoiCs8GKSsYu3f130bbaUZZm1G7C/Xka46kMosn2JEhQuvvWaD5sU1fLKW
- 9G9A==
-X-Gm-Message-State: AOAM532DPQZRJj28dIdJH1EF2SuwWzE1Ae7/Co/f0e9RKZGpzfKOpuES
- I/iwNTohefsGi0cPvNStCGU=
-X-Google-Smtp-Source: ABdhPJw/yl37bo84CH0/pwnTrqSkLHICdBHbZfyNAKleJ5pkLbBWcMtajlzC2TVgbnU7tHyn6wt30Q==
-X-Received: by 2002:a05:600c:a47:b0:37c:965:2b6f with SMTP id
- c7-20020a05600c0a4700b0037c09652b6fmr5636166wmq.31.1648548400811; 
- Tue, 29 Mar 2022 03:06:40 -0700 (PDT)
-Received: from [192.168.1.145] ([207.188.167.132])
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=9VcDy2eNu6zj3ojAJOI8YY4Y8u6xcG4aGKHl4udgapM=;
+ b=7oe3V/h7JInob8+yXmZA8ozfbd2ugxI1iaVtNYQ0eDpblYYziu1zKQ/Wg4iDhNbJl3
+ i8V7/aCUAuqNaBxAS+cEyqmnV7a20okciD2leGKLAtGeCirLePMVCYj2W+Oxji6s4P8o
+ OOseA7Ug9NzJJBLvC0JzCKvmjhqeCCwZB36Mr/9TxD1ECt6nVnXeImD5cieK55fhiUfy
+ 33/l1qSxk0ZP7vRrdBa9ofxI5N6/13CckzmoSwpgzpPlO0xYL83mo3KKd2HjkUDgOqNA
+ lNr2S97PkpwvPcK0EeKxpDt926RAemdHz3H5BZQYiYOkb5MS0HS37VlinWQ1+P/u61RO
+ 54gQ==
+X-Gm-Message-State: AOAM531iF9ESeu+hIsqJDZMmUFpQaN55EWQFF05kOId7L9ODBQkSRHu+
+ 64ytJg4IyH4f81EOTLjKFsQ=
+X-Google-Smtp-Source: ABdhPJyGYRSeP/JOed6F3ZwWdEuBiK2pphyO1xSQQf4WX4orYSxfJ8d/HQYcUZ58o/BQHrXIji52Qg==
+X-Received: by 2002:a50:bac3:0:b0:418:edb0:4ae8 with SMTP id
+ x61-20020a50bac3000000b00418edb04ae8mr3749755ede.219.1648552446475; 
+ Tue, 29 Mar 2022 04:14:06 -0700 (PDT)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
  by smtp.gmail.com with ESMTPSA id
- a11-20020a5d456b000000b0020406ce0e06sm14201716wrc.94.2022.03.29.03.06.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Mar 2022 03:06:39 -0700 (PDT)
-Message-ID: <6dafde7d-17c6-bd25-dbe8-7f7acf80fd91@gmail.com>
-Date: Tue, 29 Mar 2022 12:06:38 +0200
+ u3-20020a17090657c300b006d01de78926sm7006844ejr.22.2022.03.29.04.14.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 29 Mar 2022 04:14:06 -0700 (PDT)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de,
+	zhangqing@rock-chips.com
+Cc: robh+dt@kernel.org, krzk+dt@kernel.org, mturquette@baylibre.com,
+ sboyd@kernel.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v3 2/2] ARM: dts: rockchip: add clocks property to cru node
+ rk3066a/rk3188
+Date: Tue, 29 Mar 2022 13:13:23 +0200
+Message-Id: <20220329111323.3569-2-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20220329111323.3569-1-jbx6244@gmail.com>
+References: <20220329111323.3569-1-jbx6244@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
-Content-Language: en-US
-To: Tony Lindgren <tony@atomide.com>, Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Daniel Palmer <daniel@0x0f.com>, Ansuel Smith <ansuelsmth@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- DTML <devicetree@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-actions@lists.infradead.org, linux-sunxi@lists.linux.dev,
- "open list:TI ETHERNET SWITCH DRIVER (CPSW)" <linux-omap@vger.kernel.org>,
- "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
- linux-arm-kernel@axis.com, linux-aspeed@lists.ozlabs.org,
- linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>,
- chrome-platform@lists.linux.dev,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
- linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
- linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
- linux-tegra <linux-tegra@vger.kernel.org>, linux-oxnas@groups.io,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- linux-unisoc@lists.infradead.org,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-realtek-soc@lists.infradead.org
-References: <20220328000915.15041-1-ansuelsmth@gmail.com>
- <CAFr9PXkgrRe-=E=GhNnZ4w1x_FMb97-_RmX6ND1vEd74_TbZSw@mail.gmail.com>
- <YkK691VG6ON/6Ysn@atomide.com>
- <CAMuHMdXDDNTgBdJTa8+H1H5v1gAarp07xxWu_E1JL8mXS8HPMg@mail.gmail.com>
- <YkLXTWdZ3zASxr4H@atomide.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <YkLXTWdZ3zASxr4H@atomide.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_030643_435410_27FD510C 
-X-CRM114-Status: GOOD (  11.40  )
+X-CRM114-CacheID: sfid-20220329_041408_554334_7303FA97 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,33 +88,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Add clocks property to rk3066a/rk3188 cru node to fix warnings like:
+'clocks' is a dependency of 'assigned-clocks'
 
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ arch/arm/boot/dts/rk3066a.dtsi | 3 ++-
+ arch/arm/boot/dts/rk3188.dtsi  | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-On 29/03/2022 11:54, Tony Lindgren wrote:
-> * Geert Uytterhoeven <geert@linux-m68k.org> [220329 09:02]:
->> On Tue, Mar 29, 2022 at 10:03 AM Tony Lindgren <tony@atomide.com> wrote:
->>> For example, I have a pile of pending omap clock clean-up dts patches
->>> posted and tested waiting for v5.19-rc1 to apply. I'd rather not start
->>> redoing or fixing up the patches with sed :)
->>
->> Git merge/rebase/cherry-pick should handle renames fine?
-> 
-> Possibly.. Not sure I'd count on that based on my earlier experiences
-> though :)
-> 
+diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+index c25b9695d..de9915d94 100644
+--- a/arch/arm/boot/dts/rk3066a.dtsi
++++ b/arch/arm/boot/dts/rk3066a.dtsi
+@@ -202,8 +202,9 @@
+ 	cru: clock-controller@20000000 {
+ 		compatible = "rockchip,rk3066a-cru";
+ 		reg = <0x20000000 0x1000>;
++		clocks = <&xin24m>;
++		clock-names = "xin24m";
+ 		rockchip,grf = <&grf>;
+-
+ 		#clock-cells = <1>;
+ 		#reset-cells = <1>;
+ 		assigned-clocks = <&cru PLL_CPLL>, <&cru PLL_GPLL>,
+diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
+index a94321e90..cdd4a0bd5 100644
+--- a/arch/arm/boot/dts/rk3188.dtsi
++++ b/arch/arm/boot/dts/rk3188.dtsi
+@@ -195,8 +195,9 @@
+ 	cru: clock-controller@20000000 {
+ 		compatible = "rockchip,rk3188-cru";
+ 		reg = <0x20000000 0x1000>;
++		clocks = <&xin24m>;
++		clock-names = "xin24m";
+ 		rockchip,grf = <&grf>;
+-
+ 		#clock-cells = <1>;
+ 		#reset-cells = <1>;
+ 	};
+-- 
+2.20.1
 
-Yes. If this could be split up in per silicon-vendor patches, the maintainer 
-could take them. Although it might be a pain to soc maintainers to resolve small 
-conflicts when merging that branches.
-
-Just my 5 cents.
-
-Matthias
 
 _______________________________________________
 Linux-rockchip mailing list
