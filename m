@@ -4,87 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA818C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 13:28:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91EB7C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 13:38:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kj8FVK0ujyVM+M6JM0m8r3/fP2wSfFaiKYU9Fgr3zcg=; b=DJ+Q594mYGp1br
-	8be1xzeTWUDC7kOiQgcB95ca4hIvzHwvajbAjhMvktYfaSQCsqSYnHMMamP4k9/kqYdjG7uurrNoW
-	Z3cxgLCBDEOI0iIoISwv+GEtLvjocV9ejlddPnkOmc8/x4DbtBfGtSw0Eegh+GUeZJbyVXqqbXgO/
-	idy/F9cEZ1PPfsm8Cmn771qezpyRK5UHNBnHVJGlPD95LmdPb47y4xid3+kG9xoWGQobkO6td7xLc
-	JCsDKYG/psC7D/BDJD5NlC3EsCtPaPHUrs2ugfHRPWXRE8C+J9n2dELgtC6y7OJUm4VVScnU7qMHy
-	b7Exn26D5zGvNxB2DxGw==;
+	List-Owner; bh=U4vIK7LeVB70Gby8whzXp9OcBrXQ5d2JGJSLlBhi8qY=; b=3qqjrZ8jH9bLPh
+	O49R2M48VJBze84Vx0y4kbIQtd2OZaOxEMgweVhZg31RDsRa/dkEViTsFROKOKzUDOR4y66y6t0tV
+	iahG1PH9mWjdAdMS9oYqJMx89yGoyDH0AH4J144oRhKiLPUevPn5AAfDW5FGlABFywK1X2GJUHiZr
+	pVDlp0PD/K82sv45WHqWjdqrLH/qlELbNeKCGmyfe1nEwQSODvBFLW1A0nUrU7i+kxVsQWCK2qkUf
+	924j6SnqJ4RhPq2zC31PDIKBAV2Ab53kSyBWmyeoG3+rYXbamYdWlEuIFdERtwh/IkKve8iGs6f3Z
+	DvCR6ztt3FaSW8VVRoOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZBtD-00CM2T-Q5; Tue, 29 Mar 2022 13:28:03 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1nZC3W-00COFo-9a; Tue, 29 Mar 2022 13:38:42 +0000
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZBsy-00CLxu-FX; Tue, 29 Mar 2022 13:27:50 +0000
-Received: by mail-wm1-x331.google.com with SMTP id n35so10293781wms.5;
- Tue, 29 Mar 2022 06:27:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=G7wKFxgcRTyIz5IG5tUGfB7pPXreJmvY/K1sYJIVl3I=;
- b=I00DfUbeycyG0Dw8STKxnaghIk9ou0vzsESvQVIMlrT8eVhJ76sub43aulNKFPwOcL
- UxrZOHCljyEJ/HaDNgCUIWBpBVJkWgK72ksZvBA9QY9H26c0L2pomM05DJyeVdODJT1L
- ZDfmiULPqoY2YzMsRX9s3BZ6fZr0wWScSEvGAiN9EQhsRv4ZtMXuYOhzvXy24lUBQ6bK
- U212hp2O1hlrhP4Lp/BXhgcuubNm0q3C4fqZCCg6NFMcEZcjVMCujqezRMtTGXjKH7oa
- 0ZByXf7N6pXKbL6bthUbJE+CpVy+hujtl+uEEi1+0UgZK+4eW7VFAsNQ9iZNA1q+EUqB
- EltA==
+ id 1nZC3U-00COEA-5G
+ for linux-rockchip@lists.infradead.org; Tue, 29 Mar 2022 13:38:41 +0000
+Received: by mail-qk1-x729.google.com with SMTP id b189so13995351qkf.11
+ for <linux-rockchip@lists.infradead.org>; Tue, 29 Mar 2022 06:38:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ndufresne-ca.20210112.gappssmtp.com; s=20210112;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :content-transfer-encoding:user-agent:mime-version;
+ bh=Ol3Hp+YMfuySWgvy8mFMxAXv90sbOTJsuyiieSGKpH0=;
+ b=uWtiNW8FCMmk0oKEj1lpvSj6VTxqSChA1CLjNhZgh4nNFksWEZJP3UhpiHRorzgYVS
+ GDKURNQ2RSYUcE1e/4lLkzfcxqdQRRan2aowWp6Rn9zo897pbtFCxhAKAqyxn7ci8e4T
+ AQhxJRFOLpBmd8WEdBUcGa6sJSWhPBQCcpHWmGTFlZYVstybbVayYQaMMh5GDO/AmjJq
+ EGAihYlBDg3YTxi6gETdllsFzYUw8a60NGW1+hFpj7gD7EUaZIQd4FwP1xl8pGBWXXGF
+ EsGq4yPW6ImAeQGFBiAV95QkDeQI8YZ7EZMTdnAJ7W8llq7qSib0w/U+dWwIFy9Sb295
+ H9OQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=G7wKFxgcRTyIz5IG5tUGfB7pPXreJmvY/K1sYJIVl3I=;
- b=y04Q0JPtoLJZc1kV4VojoeoR+WZp8uzqWJm6FAzFbz0b3XtqTtdf+1CbbCIulsCipz
- gyY2/gebx6x5l1kPNUN+++i+ui0950Y2VF/jQJSvmgxgsU8mV2nppNLqPCHpvpw5OTPL
- 2Tc2rgMWwLtIoL/X6WffHbTtzcZ4raf7mN43Y0Aq/wWHt7aW8BbG7K7ZQwapCUbG1+bM
- uoVIJjHL+OIhrMSGdWFJgm5VcuYHPoixZiHX7zjOVz9peUpnDeL7pAT00DBrHtGMBjO3
- R9+8qVybJa13HwlwJ/vqthPrUJ12SB8HbIQIOsuzb1xrCZL6eXrqmV8QtOGTjxdXwmv/
- aDzw==
-X-Gm-Message-State: AOAM530yHseu2T5J4uwukS6B31N+Zvt64qMzatZmL+H7QIVE17M+OU8g
- 97hkWIFIKCoon+o1l3UR0tE=
-X-Google-Smtp-Source: ABdhPJxIZSXxt+SSJ4Wc109LDmTnDkbhvm93ISr03t8O0S/WPjtqWVCeq9qxFzIweZuojWFD/xazLQ==
-X-Received: by 2002:a05:600c:4f82:b0:38c:9185:1ecd with SMTP id
- n2-20020a05600c4f8200b0038c91851ecdmr6880980wmq.130.1648560465761; 
- Tue, 29 Mar 2022 06:27:45 -0700 (PDT)
-Received: from Ansuel-xps.localdomain (93-42-66-93.ip85.fastwebnet.it.
- [93.42.66.93]) by smtp.gmail.com with ESMTPSA id
- 11-20020a05600c26cb00b0037ff53511f2sm2193197wmv.31.2022.03.29.06.27.43
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:content-transfer-encoding:user-agent:mime-version;
+ bh=Ol3Hp+YMfuySWgvy8mFMxAXv90sbOTJsuyiieSGKpH0=;
+ b=MW45Bc/AyS86tHImCfIa2+71QkdAnNYDY4w5/D6uJu1Ao6bVJgDgnzMvEJ5bLZHJte
+ wTZuAZ+DkYktkUlN7iO/5KftcTGPbcUvoko+yibNQsgwmtnPpjd2iWeV4wBZL8SBvYQF
+ Tfnuj/eCiVaQWCsuGZjaHYlTD5nNqnSV9UHnkVXswfhUJWnUfil2BuivyQDlBCqHkThn
+ TEaUwH/lbg1cCed25FxvEd25RLYbTxsQZ+NgOhzi5YDd7WaQ5WdsSJkcISzGVf3jn2MS
+ 3BQH0M0sjw5gn6UvMkK7HXDidc2d3WUqBXb27Yha4bQkT3l2sIBgx6Jv2/WpFCBORwIP
+ dU3A==
+X-Gm-Message-State: AOAM530RakJQi2Fahx4H9ijrnkcVRKqmtrKvE8l48PM/4fx/P2/4KROh
+ mXgpNuxP6iheXX6EZato8YKmrQ==
+X-Google-Smtp-Source: ABdhPJx2ys3r6Td+fhKB2RWe9KMZbIu2iD6bmzq/KiPUzkPdG2Oc2JFJ7L6ZgRrS826lRxgALCpzxw==
+X-Received: by 2002:a05:620a:4311:b0:67e:8a0f:4cd5 with SMTP id
+ u17-20020a05620a431100b0067e8a0f4cd5mr20367074qko.363.1648561118001; 
+ Tue, 29 Mar 2022 06:38:38 -0700 (PDT)
+Received: from nicolas-tpx395.localdomain (173-246-12-168.qc.cable.ebox.net.
+ [173.246.12.168]) by smtp.gmail.com with ESMTPSA id
+ g1-20020ae9e101000000b0067d4bfffc57sm9168660qkm.117.2022.03.29.06.38.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Mar 2022 06:27:44 -0700 (PDT)
-Date: Tue, 29 Mar 2022 06:56:02 +0200
-From: Ansuel Smith <ansuelsmth@gmail.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-actions@lists.infradead.org,
- linux-sunxi@lists.linux.dev, linux-omap@vger.kernel.org,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@axis.com,
- linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
- chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
- linux-samsung-soc@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
- linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
- linux-tegra@vger.kernel.org, linux-oxnas@groups.io,
- linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org,
- Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>
-Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
-Message-ID: <YkKRYnN84D9VZhGj@Ansuel-xps.localdomain>
-References: <20220328000915.15041-1-ansuelsmth@gmail.com>
- <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
+ Tue, 29 Mar 2022 06:38:37 -0700 (PDT)
+Message-ID: <cb6a47f29c8ff3b6259d8f4b25da6a2d8b57bfba.camel@ndufresne.ca>
+Subject: Re: [PATCH] staging: media: hantro: Fix typos
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Sebastian Fricke <sebastian.fricke@collabora.com>, 
+ linux-media@vger.kernel.org
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, "open list:HANTRO VPU CODEC
+ DRIVER" <linux-rockchip@lists.infradead.org>, "open list:STAGING SUBSYSTEM"
+ <linux-staging@lists.linux.dev>, open list <linux-kernel@vger.kernel.org>
+Date: Tue, 29 Mar 2022 09:38:36 -0400
+In-Reply-To: <20220326183603.66797-1-sebastian.fricke@collabora.com>
+References: <20220326183603.66797-1-sebastian.fricke@collabora.com>
+User-Agent: Evolution 3.44.0 (3.44.0-1.fc36) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <85eb14ec-f465-7447-ad77-a3dabc666f47@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_062748_589810_8544E4E6 
-X-CRM114-Status: GOOD (  51.31  )
+X-CRM114-CacheID: sfid-20220329_063840_224078_E03ACA59 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,117 +90,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 29, 2022 at 03:20:18PM +0200, Krzysztof Kozlowski wrote:
-> On 28/03/2022 02:09, Ansuel Smith wrote:
-> > Hi,
-> > as the title say, the intention of this ""series"" is to finally categorize
-> > the ARM dts directory in subdirectory for each oem.
-> > 
-> > The main reason for this is that it became unpractical to handle 2600
-> > dts files and try to even understand/edit/check the situation for a
-> > specific target.
-> > 
-> > In arm64 we already have this kind of separation and I honestly think
-> > that this was never proposed for ARM due to the fact that there are
-> > 2600+ files to sort and the fact that it will be a mess to merge this
-> > entirely but IMHO with a little bit of effort we can finally solve this
-> > problem and have a well organized directory just like arm64.
-> > 
-> > Some prerequisite on how this work was done:
-> > - This comes entirely from a python script created by me for the task.
-> >   linked here [1]
-> > - I had to manually categorize all the different arch in the makefile
-> >   based on the oem. I searched every arch on the internet trying to
-> >   understand the correct oem. I hope they are correct but I would love
-> >   some comments about them.
-> > - This current ""series"" is all squashed in one big commit to better
-> >   receive comments for this. The final version ideally would have all
-> >   changes in separate commits. The script can already do this, it's just
-> >   commented.
-> > 
-> > Here is a list of some discoveries while doing all the sorting.
-> > These are totally additional reason why we need this.
-> > 
-> > While creating the script I discovered some funny things:
-> > - We have orphan dts! There are dts that are never compiled and are
-> >   there just for reference. We would never have noticed this without this
-> >   change and probably nobody noticed it. They are currently all listed
-> >   in the python script.
-> > - We have dtsi shared across different oem. My current solution for them
-> >   is: NOT SORT THEM and leave them in the generic directory and create a
-> >   link in each oem dts that points to these dtsi. This is to try in
-> >   every way possible to skip any additional changes to the dts.
-> >   Current dtsi that suffers from this are only 3. (listed in the script)
-> > - arm64 dts and dtsi reference ARM dts. Obviously this change would cause
-> >   broken include for these special dtsi. The script creates a dependency
-> >   table of the entire arm64 directory and fix every broken dependency
-> >   (hoping they all use a sane include logic... regex is used to parse
-> >   all the different dependency)
-> > 
-> > So in short the script does the following steps:
-> > 1. Enumerate all the action to do... (dts to move, scan dependency for
-> >    the dts...)
-> > 2. Generate the arm64 dependency
-> > 3. Creates the Makefile
-> > 4. Generate the Makefiles for the current oem
-> > 5. Move all the related dts and dtsi for the current oem
-> > 6. Check broken dependency and fix them by editing the dts and writing
-> >    the correct include (or fix any symbolic link)
-> > 
-> > This is an output that describes all the things done by the script [2]
-> > 
-> > I really hope I didn't commit any logic mistake in the script but most
-> > of the work should be done.
-> > 
-> 
-> +Cc Arnd and Olof,
-> 
-> Ansuel,
-> Thanks for you patch. Please cc the SoC maintainers in such submissions.
-> It seems that you got some quite nice discussion, but still the core
-> folks are not Cced, so no one would be able to take your patch...
->
-
-I had some problem with gmail and sending mail too much users. I put Rob
-and You and all the various list to try to workaround the "gmail spam
-protection"
-
-> I am pretty sure we were discussing such split idea in the past and it
-> did not get traction, but I cannot recall the exact discussion.
-> 
-
-I think the main issue here is how to handle bot and how problematic is
-to merge this. As written in the cover letter the final version of this
-should be a big series of 50+ patch with every commit specific to each
-oem. In theory we should be able to merge the different oem separately
-and try to at least start the categorization. 
-Another idea I got to at least have a "migration path" is to convert
-every dts in the dts/ directory to a symbolic link that target the dts
-in the correct oem. But I assume that would fix only part of the problem
-and git am will still be problematic.
-
-> To me the idea is good but will cause huge `git am` conflicts.
-> Cherry-picks, backports and merges should nicely detect path renames,
-> but git am (and b4 am) I think cannot.
-> 
-
-I know but we should really consider this kind of change. The current
-state of the dts/ directory is embarassing and keeping it that way cause
-only more problems and makes this even more difficult.
-Hope we find a solution and fix this for good!
-
-> Best regards,
-> Krzysztof
-
--- 
-	Ansuel
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhhbmtzIFNlYmFzdGlhbi4KCkxlIHNhbWVkaSAyNiBtYXJzIDIwMjIgw6AgMTk6MzYgKzAxMDAs
+IFNlYmFzdGlhbiBGcmlja2UgYSDDqWNyaXTCoDoKPiBGaXggdHlwb3MgaW4gY29tbWVudHMgd2l0
+aGluIHRoZSBIYW50cm8gZHJpdmVyLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFNlYmFzdGlhbiBGcmlj
+a2UgPHNlYmFzdGlhbi5mcmlja2VAY29sbGFib3JhLmNvbT4KClJldmlld2VkLWJ5OiBOaWNvbGFz
+IER1ZnJlc25lIDxuaWNvbGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+Cgo+IC0tLQo+ICBkcml2
+ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9oZXZjX2RlYy5jIHwgMiArLQo+ICBk
+cml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19oZXZjLmMgICAgICAgIHwgMiArLQo+
+ICAyIGZpbGVzIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPiAKPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJfaGV2Y19k
+ZWMuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmMK
+PiBpbmRleCBjNTI0YWY0MWJhZjUuLmMwNjQ1ZTMzNWZjOSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9oZXZjX2RlYy5jCj4gKysrIGIvZHJpdmVy
+cy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJfaGV2Y19kZWMuYwo+IEBAIC00MDYsNyAr
+NDA2LDcgQEAgc3RhdGljIGludCBzZXRfcmVmKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpCj4gIAo+
+ICAJc2V0X3JlZl9waWNfbGlzdChjdHgpOwo+ICAKPiAtCS8qIFdlIHdpbGwgb25seSBrZWVwIHRo
+ZSByZWZlcmVuY2VzIHBpY3R1cmUgdGhhdCBhcmUgc3RpbGwgdXNlZCAqLwo+ICsJLyogV2Ugd2ls
+bCBvbmx5IGtlZXAgdGhlIHJlZmVyZW5jZSBwaWN0dXJlcyB0aGF0IGFyZSBzdGlsbCB1c2VkICov
+Cj4gIAljdHgtPmhldmNfZGVjLnJlZl9idWZzX3VzZWQgPSAwOwo+ICAKPiAgCS8qIFNldCB1cCBh
+ZGRyZXNzZXMgb2YgRFBCIGJ1ZmZlcnMgKi8KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5n
+L21lZGlhL2hhbnRyby9oYW50cm9faGV2Yy5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRy
+by9oYW50cm9faGV2Yy5jCj4gaW5kZXggYjQ5YTQxZDdhZTkxLi45YzM1MWY3ZmU2YmQgMTAwNjQ0
+Cj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faGV2Yy5jCj4gKysr
+IGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faGV2Yy5jCj4gQEAgLTU5LDcg
+KzU5LDcgQEAgZG1hX2FkZHJfdCBoYW50cm9faGV2Y19nZXRfcmVmX2J1ZihzdHJ1Y3QgaGFudHJv
+X2N0eCAqY3R4LAo+ICAJc3RydWN0IGhhbnRyb19oZXZjX2RlY19od19jdHggKmhldmNfZGVjID0g
+JmN0eC0+aGV2Y19kZWM7Cj4gIAlpbnQgaTsKPiAgCj4gLQkvKiBGaW5kIHRoZSByZWZlcmVuY2Ug
+YnVmZmVyIGluIGFscmVhZHkga25vdyBvbmVzICovCj4gKwkvKiBGaW5kIHRoZSByZWZlcmVuY2Ug
+YnVmZmVyIGluIGFscmVhZHkga25vd24gb25lcyAqLwo+ICAJZm9yIChpID0gMDsgIGkgPCBOVU1f
+UkVGX1BJQ1RVUkVTOyBpKyspIHsKPiAgCQlpZiAoaGV2Y19kZWMtPnJlZl9idWZzX3BvY1tpXSA9
+PSBwb2MpIHsKPiAgCQkJaGV2Y19kZWMtPnJlZl9idWZzX3VzZWQgfD0gMSA8PCBpOwoKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
