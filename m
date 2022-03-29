@@ -4,63 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA8F0C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 07:22:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29DBFC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 07:31:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lHqIDbiuRmYsOQLDxDqIWHWqQrY1fMzgX3BmDlx6eVw=; b=Sx89mhgcDKCBuRaoa0xqY5v/yK
-	BLcAKA3koEGOWkL7yRFXUbbs9tMLuhht1me5WZOJGDyhOMvE+PrGWfRrYMAi3ANpW8QzD4vanruK5
-	yJzYlEv6b9OIzt8V6PmL1kH+5NMFkJAP/K9FSppBfmb5IGWLFHN0G3M1nAH3CHa3fGdt+sTPEOt2S
-	edhMZyHMq+Mv5DgPveJXUhtEZf9ioFZ8lc6Zj+1AsTKBV9OPSQ7i27cpEYyFsAyU3B1OaWcEd/4wn
-	am7w3BGsgLrgP9CFE28vQ94ZWUKyw7ZHEVF/w/uiirJtrUFvsp457MVP03HTv8iAYaZEYA9veWMAN
-	ccHLcHUg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vtH89PYyy2O1nBC7LP/wnITDysp1gQQ9ViGF8kgB3lE=; b=eCOLbQxAy/MZNh
+	QEh6gtYfNtBbdxBwheSFGXEzTFJlIPo2Xzj3sSUeKkAVG9sFxMxBBGd4k3Jo97tua0eZYuP1JOjay
+	SMKLxO8IXydT/jZ8gMphVdLpBbZL05WPFJpFDQdvmqrGUmC28WoVLfTnzgCZPXPiIA6kv4g/mzLv7
+	lc56LBQiCUyVJBj4wg9W+m79HXTQx4h6V83hyRF3cAw9z9VxxN3RjYrARs9Wdsz7G2UoPouj57uwQ
+	e1HSBcunzrRmevYeFoy2nneBdHSI/vzv4zzK42N+nl86WQw4jxbuA+lu+rXmFYjBZCiJWtVB1fpO0
+	/N0v+IbTh/G+/oGCxKrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZ6BL-00BIoF-V5; Tue, 29 Mar 2022 07:22:23 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nZ6KD-00BL0d-K2; Tue, 29 Mar 2022 07:31:33 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZ6BI-00BIne-V1
- for linux-rockchip@lists.infradead.org; Tue, 29 Mar 2022 07:22:22 +0000
-Received: from localhost (unknown [IPv6:2a02:3030:a:f397:f6bc:b726:2678:839f])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- (Authenticated sender: sebastianfricke)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 617721F434C3;
- Tue, 29 Mar 2022 08:22:19 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1648538539;
- bh=/W5ETW3ilMG908aam2DSTA6zgd0fm+3tYbWwdkTwWRk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=nLF8BzyzhkdV7qtb7zyz8uOMfyvj6z1nQML/smXC3jCjwbbqt+AnC8ggo18xor1Ip
- aXFdV8uGzjQeh4Vy1AWCISf6kN2kITw+l83JbdQSL82l6ZOufzfaRzE+GXZTje0lZU
- oeLppJONQll4PG7lXm0LSfJlzn9Rj2aLKI9LVjPGCS5P21mSxWzg4nc3uJsFI8s7Oo
- OB6gi6bBXctow5FnNG2reIa9HKcgdclI0ad3Ol4JyFoNlGCZGjpEeTm7BcbYJZ2boW
- UtGtB9hHTXU4hn/sjWwwt97x4MBIGxmydRqk0exrPYyvLi4Q5JSh+5J0hmv0RWYUDu
- B/ju1nHdWNA1A==
-Date: Tue, 29 Mar 2022 09:22:16 +0200
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel@collabora.com, Alex Bee <knaerzche@gmail.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 24/24] media: rkvdec-h264: Don't hardcode SPS/PPS
- parameters
-Message-ID: <20220329072216.gqzcp6lowpfrweb7@basti-XPS-13-9310>
-References: <20220328195936.82552-1-nicolas.dufresne@collabora.com>
- <20220328195936.82552-25-nicolas.dufresne@collabora.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220328195936.82552-25-nicolas.dufresne@collabora.com>
+ id 1nZ6Jr-00BKpj-Sz; Tue, 29 Mar 2022 07:31:14 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id 17so22276790ljw.8;
+ Tue, 29 Mar 2022 00:31:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=XWnk+pKdZJqmV62/h657OWIHY82bAb8Z3BgjqTiOLz4=;
+ b=ZCavqCdVJwYtGfT81BfsVjv2DbWIBe15YHPAb2is2LlqnbovkJCrWB7jH14nRSJsbc
+ 1PeyPqzQYMIhT03U54XHuSToZmfYPBcMumixdH39LypobqzQ+YGKtqjXV/Hu9zm+Mgcv
+ 6gZyCzkU5ySSErh38hFZ8tOjr54LdLAsmBoW45UOoFqVTMOq0mG2Zq55SaaYQBPI1PIp
+ DQohnuBitjJ7L1+05TsrmaqyziJ5QwMZZFuVe+LAj6hxFW2gv8+ZjVg9zsMGdbV6Hiv5
+ NqQGtElNtHViCHkWeFk28wQyGb41x63um96QvtKx/rq3bXRIszv79P8E2F1rv7X2ODfS
+ +hfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=XWnk+pKdZJqmV62/h657OWIHY82bAb8Z3BgjqTiOLz4=;
+ b=60u4s0B8f6coqtT+/wP14CEDoJzK7D+GitbuxUClR2h0Ka3rXTUyybbbjsplCTqCA+
+ F2Kz/cEFh672JIqQs8Im5ZqgwqBNhIn2H80sAPR6SqLV8pqfN4j0CEL0ab5MDwEca84u
+ AiN5o7kJiBOAACnF7xHTjelvAqe9jqaLrpmtraKhI0dQf1ZVFvioc+q+GUYohTciHkwM
+ 828XAZfXBL5WOhdA39pkzISUbb0eNUi/m7OgQ9LCgCa7+dvKh4So00M0zPsRdTw1akYw
+ a43TsaL3Qra5fU3dyk5hbXd/mWP3YfW0pdwWz5MDBrtM4yvwTrOxJV7K684fshyUTOaA
+ GmgQ==
+X-Gm-Message-State: AOAM530ixmK7cDtFaAHj6ZzjIl+ThR54uvFe39vQqQhlps+KlZaIcw94
+ 3rveJhscfN+I5AfnbPBE5N0=
+X-Google-Smtp-Source: ABdhPJyT5tL6mJoGz4sCX2mi3mIH2uu0ICIFJhwPC75SzUetOpN8XKJFv4/ZDm10r94iaB6qmCbJlw==
+X-Received: by 2002:a2e:b179:0:b0:24a:d3da:8691 with SMTP id
+ a25-20020a2eb179000000b0024ad3da8691mr1412035ljm.392.1648539067518; 
+ Tue, 29 Mar 2022 00:31:07 -0700 (PDT)
+Received: from smtpclient.apple (31-178-191-245.dynamic.chello.pl.
+ [31.178.191.245]) by smtp.gmail.com with ESMTPSA id
+ l18-20020a194952000000b00445bf2c3b83sm1898047lfj.58.2022.03.29.00.31.05
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 29 Mar 2022 00:31:07 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
+Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
+From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+In-Reply-To: <20220328151116.2034635-1-s.hauer@pengutronix.de>
+Date: Tue, 29 Mar 2022 09:31:01 +0200
+Cc: dri-devel@lists.freedesktop.org,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>,
+ =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>
+Message-Id: <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
+References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+X-Mailer: Apple Mail (2.3654.120.0.1.13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_002221_159615_DC74E890 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20220329_003111_995201_925A5CB0 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,87 +93,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hey Nicolas,
-
-The patch series doesn't seem to apply on the latest media tree master
-branch. Looking at your tree I can see that you have commit: ba2c670a
-"media: nxp: Restrict VIDEO_IMX_MIPI_CSIS to ARCH_MXC or COMPILE_TEST
-Laurent Pinchart authored 1 week ago "
-
-But the current head of the media tree is: 71e6d0608e4d
-"media: platform: Remove unnecessary print function dev_err()
-Yang Li authored 13 days ago"
-
-On 28.03.2022 15:59, Nicolas Dufresne wrote:
->From: Alex Bee <knaerzche@gmail.com>
->
->Some SPS/PPS parameters are currently hardcoded in the driver
->even though so do exist in the uapi which is stable by now.
-
-s/even though so/even though they/
->
->Use them instead of hardcoding them.
->
->Conformance tests have shown there is no difference, but it might
->increase decoder performance.
-
-I think it would be great if we could add some performance metrics to
-the commit description to have a metric that following patches could
-compare themselves with.
-
-Greetings,
-Sebastian
-
->
->Signed-off-by: Alex Bee <knaerzche@gmail.com>
->---
-> drivers/staging/media/rkvdec/rkvdec-h264.c | 13 +++++++------
-> 1 file changed, 7 insertions(+), 6 deletions(-)
->
->diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
->index 891c48bf6a51..91f65d78e453 100644
->--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
->+++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
->@@ -655,13 +655,14 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
->
-> #define WRITE_PPS(value, field) set_ps_field(hw_ps->info, field, value)
-> 	/* write sps */
->-	WRITE_PPS(0xf, SEQ_PARAMETER_SET_ID);
->-	WRITE_PPS(0xff, PROFILE_IDC);
->-	WRITE_PPS(1, CONSTRAINT_SET3_FLAG);
->+	WRITE_PPS(sps->seq_parameter_set_id, SEQ_PARAMETER_SET_ID);
->+	WRITE_PPS(sps->profile_idc, PROFILE_IDC);
->+	WRITE_PPS((sps->constraint_set_flags & 1 << 3) ? 1 : 0, CONSTRAINT_SET3_FLAG);
-> 	WRITE_PPS(sps->chroma_format_idc, CHROMA_FORMAT_IDC);
-> 	WRITE_PPS(sps->bit_depth_luma_minus8, BIT_DEPTH_LUMA);
-> 	WRITE_PPS(sps->bit_depth_chroma_minus8, BIT_DEPTH_CHROMA);
->-	WRITE_PPS(0, QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG);
->+	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_QPPRIME_Y_ZERO_TRANSFORM_BYPASS),
->+		  QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG);
-> 	WRITE_PPS(sps->log2_max_frame_num_minus4, LOG2_MAX_FRAME_NUM_MINUS4);
-> 	WRITE_PPS(sps->max_num_ref_frames, MAX_NUM_REF_FRAMES);
-> 	WRITE_PPS(sps->pic_order_cnt_type, PIC_ORDER_CNT_TYPE);
->@@ -679,8 +680,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
-> 		  DIRECT_8X8_INFERENCE_FLAG);
->
-> 	/* write pps */
->-	WRITE_PPS(0xff, PIC_PARAMETER_SET_ID);
->-	WRITE_PPS(0x1f, PPS_SEQ_PARAMETER_SET_ID);
->+	WRITE_PPS(pps->pic_parameter_set_id, PIC_PARAMETER_SET_ID);
->+	WRITE_PPS(pps->seq_parameter_set_id, PPS_SEQ_PARAMETER_SET_ID);
-> 	WRITE_PPS(!!(pps->flags & V4L2_H264_PPS_FLAG_ENTROPY_CODING_MODE),
-> 		  ENTROPY_CODING_MODE_FLAG);
-> 	WRITE_PPS(!!(pps->flags & V4L2_H264_PPS_FLAG_BOTTOM_FIELD_PIC_ORDER_IN_FRAME_PRESENT),
->-- 
->2.34.1
->
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5n
+dXRyb25peC5kZT4gdyBkbml1IDI4LjAzLjIwMjIsIG8gZ29kei4gMTc6MTA6Cj4gCj4gCj4gQ2hh
+bmdlcyBzaW5jZSB2ODoKPiAtIG1ha2UgaGNsa192byBhIGNyaXRpY2FsIGNsb2NrIGluc3RlYWQg
+b2YgZW5hYmxpbmcgaXQgaW4gdGhlIGhkbWkgZHJpdmVyCj4gLSBGaXggdm9wMl9zZXR1cF9sYXll
+cl9taXhlcigpLCByZXBvcnRlZCBieSBBbmR5IFlhbgo+IC0gTGltaXQgcGxhbmVzIHBvc3NpYmxl
+X2NydGNzIHRvIGFjdHVhbGx5IGV4aXN0aW5nIGNydGNzCj4gCj4gCgpTYXNjaGEsCgpGWUk6Ckkg
+d2FzIGhvcGluZyB2OSB3aWxsIGZpeCBncmVlbiBzY3JlZW4gaXNzdWUgaSBzZWUgd2hlbiB2aWRl
+byBwbGF5ZXIgd2FudHMgdG8gZHJhdyB0byBudjEyIGNhcGFibGUgZHJtIHBsYW5lLgpJdCBsb29r
+IGlzc3VlIGlzIHN0aWxsIHByZXNlbnQgOi0oCgpZb3UgY2FuIGVhc2lseSByZXByb2R1Y2Ugd2l0
+aCBtb2RldGVzdCB1dGlsaXR5OgoKbW9kZXRlc3QgLVAgNDNANjc6MTkyMHgxMDgwQE5WMTIgCgpn
+aXZlcyBncmVlbiBzY3JlZW4uCgpob3dldmVyIGlmIHlvdSBkbzoKCm1vZGV0ZXN0ICM0MyAoZ3Jl
+ZW4gc2NyZWVuKQptb2RldGVzdCAjNDkgIChvaykKCnRoZW4KCm1vZGV0ZXN0ICM0MyAKCmdpdmVz
+IGV4cGVjdGVkIHJlc3VsdCAoInJhaW5ib3ciIHBpY3R1cmUgb24gc2NyZWVuKQoKbGV0IG1lIGtu
+b3cgaWYgaSBjYW4gZG8gYW55IGV4dHJhIHRlc3RzIGhlbHBpbmcgeW91IHRvIGZpeCBpc3N1ZQog
+CmJyCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
