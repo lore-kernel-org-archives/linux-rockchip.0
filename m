@@ -4,83 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29DBFC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 07:31:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4FADC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Mar 2022 07:53:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vtH89PYyy2O1nBC7LP/wnITDysp1gQQ9ViGF8kgB3lE=; b=eCOLbQxAy/MZNh
-	QEh6gtYfNtBbdxBwheSFGXEzTFJlIPo2Xzj3sSUeKkAVG9sFxMxBBGd4k3Jo97tua0eZYuP1JOjay
-	SMKLxO8IXydT/jZ8gMphVdLpBbZL05WPFJpFDQdvmqrGUmC28WoVLfTnzgCZPXPiIA6kv4g/mzLv7
-	lc56LBQiCUyVJBj4wg9W+m79HXTQx4h6V83hyRF3cAw9z9VxxN3RjYrARs9Wdsz7G2UoPouj57uwQ
-	e1HSBcunzrRmevYeFoy2nneBdHSI/vzv4zzK42N+nl86WQw4jxbuA+lu+rXmFYjBZCiJWtVB1fpO0
-	/N0v+IbTh/G+/oGCxKrQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SVZa+crr2bKiJuRBQhldpoZjKh3IIY1l7ZtxURr6qSw=; b=yH9BlztzmZ0NuC
+	SJeohcAn2g2cPd2/T0Em2j5qyo468M3LHq94c15C0+bwqYUbjV3UdBtml19Iq2jL/OveToBMmpQnh
+	+sn+EW8vMSk5XLu90QQ5JRia+FZv2K+gSDEI9uGg0mhnf4B3GbBQ0Dmpluz/kBYhQw8JvFdFFoIky
+	lOjFhUg3qpyxLiQqFVKUxcCWy8mxQA56UhIb+oHuKXv2pkAnwVGZoUesFuq8RT6OJo/t90xI9WqMZ
+	85us1KWLUWVJBcHeVu2HZycwerTaK4AmyUQlSFecIxUxlRF3J078ZQcTlrePRVovDG/ngd79Ym8YB
+	ZVaikCR9hNBDA/jc0w1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZ6KD-00BL0d-K2; Tue, 29 Mar 2022 07:31:33 +0000
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZ6Jr-00BKpj-Sz; Tue, 29 Mar 2022 07:31:14 +0000
-Received: by mail-lj1-x22b.google.com with SMTP id 17so22276790ljw.8;
- Tue, 29 Mar 2022 00:31:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=XWnk+pKdZJqmV62/h657OWIHY82bAb8Z3BgjqTiOLz4=;
- b=ZCavqCdVJwYtGfT81BfsVjv2DbWIBe15YHPAb2is2LlqnbovkJCrWB7jH14nRSJsbc
- 1PeyPqzQYMIhT03U54XHuSToZmfYPBcMumixdH39LypobqzQ+YGKtqjXV/Hu9zm+Mgcv
- 6gZyCzkU5ySSErh38hFZ8tOjr54LdLAsmBoW45UOoFqVTMOq0mG2Zq55SaaYQBPI1PIp
- DQohnuBitjJ7L1+05TsrmaqyziJ5QwMZZFuVe+LAj6hxFW2gv8+ZjVg9zsMGdbV6Hiv5
- NqQGtElNtHViCHkWeFk28wQyGb41x63um96QvtKx/rq3bXRIszv79P8E2F1rv7X2ODfS
- +hfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=XWnk+pKdZJqmV62/h657OWIHY82bAb8Z3BgjqTiOLz4=;
- b=60u4s0B8f6coqtT+/wP14CEDoJzK7D+GitbuxUClR2h0Ka3rXTUyybbbjsplCTqCA+
- F2Kz/cEFh672JIqQs8Im5ZqgwqBNhIn2H80sAPR6SqLV8pqfN4j0CEL0ab5MDwEca84u
- AiN5o7kJiBOAACnF7xHTjelvAqe9jqaLrpmtraKhI0dQf1ZVFvioc+q+GUYohTciHkwM
- 828XAZfXBL5WOhdA39pkzISUbb0eNUi/m7OgQ9LCgCa7+dvKh4So00M0zPsRdTw1akYw
- a43TsaL3Qra5fU3dyk5hbXd/mWP3YfW0pdwWz5MDBrtM4yvwTrOxJV7K684fshyUTOaA
- GmgQ==
-X-Gm-Message-State: AOAM530ixmK7cDtFaAHj6ZzjIl+ThR54uvFe39vQqQhlps+KlZaIcw94
- 3rveJhscfN+I5AfnbPBE5N0=
-X-Google-Smtp-Source: ABdhPJyT5tL6mJoGz4sCX2mi3mIH2uu0ICIFJhwPC75SzUetOpN8XKJFv4/ZDm10r94iaB6qmCbJlw==
-X-Received: by 2002:a2e:b179:0:b0:24a:d3da:8691 with SMTP id
- a25-20020a2eb179000000b0024ad3da8691mr1412035ljm.392.1648539067518; 
- Tue, 29 Mar 2022 00:31:07 -0700 (PDT)
-Received: from smtpclient.apple (31-178-191-245.dynamic.chello.pl.
- [31.178.191.245]) by smtp.gmail.com with ESMTPSA id
- l18-20020a194952000000b00445bf2c3b83sm1898047lfj.58.2022.03.29.00.31.05
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 29 Mar 2022 00:31:07 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
-Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
-From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-In-Reply-To: <20220328151116.2034635-1-s.hauer@pengutronix.de>
-Date: Tue, 29 Mar 2022 09:31:01 +0200
-Cc: dri-devel@lists.freedesktop.org,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Message-Id: <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
-References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-X-Mailer: Apple Mail (2.3654.120.0.1.13)
+	id 1nZ6fh-00BOGf-Op; Tue, 29 Mar 2022 07:53:45 +0000
+Received: from muru.com ([72.249.23.125])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nZ6fT-00BOCz-3n; Tue, 29 Mar 2022 07:53:32 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by muru.com (Postfix) with ESMTPS id 727F580F9;
+ Tue, 29 Mar 2022 07:51:24 +0000 (UTC)
+Date: Tue, 29 Mar 2022 10:53:27 +0300
+From: Tony Lindgren <tony@atomide.com>
+To: Daniel Palmer <daniel@0x0f.com>
+Cc: Ansuel Smith <ansuelsmth@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ DTML <devicetree@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-actions@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ linux-omap@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@axis.com, linux-aspeed@lists.ozlabs.org,
+ linux-rpi-kernel@lists.infradead.org,
+ chrome-platform@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+ linux-samsung-soc@vger.kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, kernel@dh-electronics.com,
+ linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org,
+ linux-tegra@vger.kernel.org, linux-oxnas@groups.io,
+ linux-arm-msm@vger.kernel.org, linux-unisoc@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-realtek-soc@lists.infradead.org
+Subject: Re: [RFC PATCH 0/1] Categorize ARM dts directory
+Message-ID: <YkK691VG6ON/6Ysn@atomide.com>
+References: <20220328000915.15041-1-ansuelsmth@gmail.com>
+ <CAFr9PXkgrRe-=E=GhNnZ4w1x_FMb97-_RmX6ND1vEd74_TbZSw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAFr9PXkgrRe-=E=GhNnZ4w1x_FMb97-_RmX6ND1vEd74_TbZSw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_003111_995201_925A5CB0 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220329_005331_237669_383133D7 
+X-CRM114-Status: GOOD (  18.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,26 +68,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5n
-dXRyb25peC5kZT4gdyBkbml1IDI4LjAzLjIwMjIsIG8gZ29kei4gMTc6MTA6Cj4gCj4gCj4gQ2hh
-bmdlcyBzaW5jZSB2ODoKPiAtIG1ha2UgaGNsa192byBhIGNyaXRpY2FsIGNsb2NrIGluc3RlYWQg
-b2YgZW5hYmxpbmcgaXQgaW4gdGhlIGhkbWkgZHJpdmVyCj4gLSBGaXggdm9wMl9zZXR1cF9sYXll
-cl9taXhlcigpLCByZXBvcnRlZCBieSBBbmR5IFlhbgo+IC0gTGltaXQgcGxhbmVzIHBvc3NpYmxl
-X2NydGNzIHRvIGFjdHVhbGx5IGV4aXN0aW5nIGNydGNzCj4gCj4gCgpTYXNjaGEsCgpGWUk6Ckkg
-d2FzIGhvcGluZyB2OSB3aWxsIGZpeCBncmVlbiBzY3JlZW4gaXNzdWUgaSBzZWUgd2hlbiB2aWRl
-byBwbGF5ZXIgd2FudHMgdG8gZHJhdyB0byBudjEyIGNhcGFibGUgZHJtIHBsYW5lLgpJdCBsb29r
-IGlzc3VlIGlzIHN0aWxsIHByZXNlbnQgOi0oCgpZb3UgY2FuIGVhc2lseSByZXByb2R1Y2Ugd2l0
-aCBtb2RldGVzdCB1dGlsaXR5OgoKbW9kZXRlc3QgLVAgNDNANjc6MTkyMHgxMDgwQE5WMTIgCgpn
-aXZlcyBncmVlbiBzY3JlZW4uCgpob3dldmVyIGlmIHlvdSBkbzoKCm1vZGV0ZXN0ICM0MyAoZ3Jl
-ZW4gc2NyZWVuKQptb2RldGVzdCAjNDkgIChvaykKCnRoZW4KCm1vZGV0ZXN0ICM0MyAKCmdpdmVz
-IGV4cGVjdGVkIHJlc3VsdCAoInJhaW5ib3ciIHBpY3R1cmUgb24gc2NyZWVuKQoKbGV0IG1lIGtu
-b3cgaWYgaSBjYW4gZG8gYW55IGV4dHJhIHRlc3RzIGhlbHBpbmcgeW91IHRvIGZpeCBpc3N1ZQog
-CmJyCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+Hi,
+
+* Daniel Palmer <daniel@0x0f.com> [220328 08:53]:
+> Hi Ansuel
+> 
+> On Mon, 28 Mar 2022 at 09:09, Ansuel Smith <ansuelsmth@gmail.com> wrote:
+> >
+> > Hi,
+> > as the title say, the intention of this ""series"" is to finally categorize
+> > the ARM dts directory in subdirectory for each oem.
+> 
+> While I agree with this change and think it's for the good (browsing
+> the ARM dts directory at the moment is frustrating..) I think
+> buildroot and others need to be told about this as it'll potentially
+> break their kernel build scripting for ARM and probably messes up the
+> configs they have for existing boards.
+
+Yeah.. And ideally this would be done in smaller steps as these will
+conflict with all the other pending patches.
+
+For example, I have a pile of pending omap clock clean-up dts patches
+posted and tested waiting for v5.19-rc1 to apply. I'd rather not start
+redoing or fixing up the patches with sed :)
+
+What I'd like to have see is that at some point when suitable we move
+one machine at a time with a script if possible.. Maybe the dtb files
+generated would need to remain in the current directory until all of
+the machine dts files are moved? That should help with the build
+scripting too probably :)
+
+In general I like the idea though and I think we should do it.
+
+Regards,
+
+Tony
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
