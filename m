@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89F15C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Mar 2022 10:21:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1BBAC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Mar 2022 10:39:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b+wUrkjyYf66fy6DPEfKmktLH3Pob6EIIgW0hbjMY38=; b=KPzXZ4nVplB5QT
-	v3GAsNZIr1lyi+I+ve/zTLZK74TROwJ7y2sHL0HbX7c2BUzbvFST8L4RTKIPHiT8lrMPq46qYaCW0
-	LECBAIltMH4rxVGB2Yw5/4sw+G+P4JrWmz2ALnWNjr1ObxjMnUoyWXA5cVjZesXGjGGCkbRuDYUWm
-	UwB49w2+daGZWE4tpg5+TvA+ilaP0zhV6tl3CnXh4OTYCL1c52YNPeRVxmvxcU/cHodlII73Ue2HF
-	JtT04X/WQYFoYGwsuiD/NCtWg87FExae1o8WuKoXngdserf08jlDRicfpuGiur0S2S0IEpAnLPBei
-	Q5pU0E/MmRgOmnbKafVw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=01dXRGp1mSVJe0ZIy5I6ZGPekjRtdp06hchAVUSwSx4=; b=Ri0JaTMaht5zMV
+	mpQkXl5Kge5CykAlOhkqq7NGgZMvp4cMgs43z+oPNXHlEDQ5Kg7nArVP6irD0AY9cEHcbPi2oRx8C
+	8S77uwGKZX5yc1jH6b12xudbYxYcrv/TmIEQRZhD2s66ZBOrCtx3J8hiE7qbmTsSXXvr1GVwFBKDG
+	47yMluZVohvzFW2mALR9b9BfntH4k7isT/tv08FKq6sLMl6AcA7jE09e8p/dymDqzc9hpbxNPhg3O
+	o+T8dSIv4qCu5qSj4vXKz2WYNEvMvHD7UrHWO1hpjanF/E7x9bBd9l2F3tB/Mj3zCzu5EEpS2c8GQ
+	qL/k6NgJIRi5yF+el4EQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZVRm-00FAiD-D9; Wed, 30 Mar 2022 10:21:02 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nZVjs-00FDDz-G8; Wed, 30 Mar 2022 10:39:44 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZVRb-00FAfT-VZ
- for linux-rockchip@lists.infradead.org; Wed, 30 Mar 2022 10:20:53 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nZVRY-0007qA-T7; Wed, 30 Mar 2022 12:20:48 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nZVRW-0004Wn-5Y; Wed, 30 Mar 2022 12:20:46 +0200
-Date: Wed, 30 Mar 2022 12:20:46 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: "piotro.oniszczuk@google.com" <piotr.oniszczuk@gmail.com>
-Cc: dri-devel@lists.freedesktop.org,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
-Message-ID: <20220330102046.GA12181@pengutronix.de>
-References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
- <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
- <20220330072822.GX12181@pengutronix.de>
- <0D8F5951-5375-46B5-BFF0-7ED410371EB7@gmail.com>
- <20220330094556.GZ12181@pengutronix.de>
- <D3DA14F9-C9C6-4927-B015-5B7D25689DAA@gmail.com>
+ id 1nZVjf-00FDAK-Fo; Wed, 30 Mar 2022 10:39:33 +0000
+Received: by mail-ej1-x629.google.com with SMTP id qa43so40582336ejc.12;
+ Wed, 30 Mar 2022 03:39:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HvmiSu9xAVWzXe/vos+wSBdt9erRcs0gCDQxB9pqVmU=;
+ b=Nb7h5fOcV9fCrQeAWHkS8H3GUTSFI6dj+3abP914pwFbJCEf7ezBG2jq6doiUOEcbe
+ pa3wmC0vMjABFZbMAHIXaVv6IeVopOomX9b+dpxVxHo71cZDh310hTYx1/1ko7o0s3Wp
+ iFMNo+MkBLx8SSrG2f9hOPk8A1Hy997E8Cy/TJmD3N0k/CNcf/JmQSZi3IjF04wF1mE7
+ SI0+u3vUxZUy1lPqtDl4H65+BHwMxjkE8tNRl4BV3yg2njbHnw3WElF/i9dY9HTGgaeW
+ yZrPM6dhgVTVIKd72i/ziGqdU6II96G2oYrGw+SKtaD4JYGnsesoAS64AL1iOYtpXaj2
+ ni8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HvmiSu9xAVWzXe/vos+wSBdt9erRcs0gCDQxB9pqVmU=;
+ b=CfDnSkXB0mEk0KwEcOYeKAulAWAuVGR3Tx9O9qw1d/N5EbLpwiIAyZLUZjLpObtd8D
+ ST0SSpKuHZSfCqEHKbwbGzOXybSznFDLnZ/RRWV9Fp1+DCx7PAE67IARKrldGJFbQ2m9
+ QJWtOb+vVwctrKyc2AFTyAs8V3NlLd+ps240nW+deOgad2DrzGCO/mvRErm+NzwQ+/cu
+ CCZ+XJFzFCBQ5OzPkJBUACRxJ7smcl6UkM7H5wU3oWA9fLBLM+Rr4b1jEqE3TdQMgVAW
+ Kd7P16AxQIaxHhkEmJaVMe3qO5Pd8zBN9tY9STtp2gxGeg69ULmZHgKPmCbGxKXh/DtN
+ 16xQ==
+X-Gm-Message-State: AOAM530AUdvPrjH4qNqGpioouJkhomVnl3fR2MjV5PHa4SEUOaeY2Ft6
+ nAZaw2Ql6HdcjsgjSygNGnM=
+X-Google-Smtp-Source: ABdhPJzj6PjRZfoG8CmLerET50pv3HRkg/iiOQK9o1YzQSFScT1rWeTxqTuKciAnHVoxRcNz3BT9Eg==
+X-Received: by 2002:a17:906:dc90:b0:6e0:1ef7:638f with SMTP id
+ cs16-20020a170906dc9000b006e01ef7638fmr39578624ejc.234.1648636769900; 
+ Wed, 30 Mar 2022 03:39:29 -0700 (PDT)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ hq15-20020a1709073f0f00b006dfc0fe42b1sm8264920ejc.177.2022.03.30.03.39.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 30 Mar 2022 03:39:29 -0700 (PDT)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de,
+	zhangqing@rock-chips.com
+Cc: robh+dt@kernel.org, krzk+dt@kernel.org, mturquette@baylibre.com,
+ sboyd@kernel.org, linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2] dt-bindings: clock: convert rockchip,px30-cru.txt to YAML
+Date: Wed, 30 Mar 2022 12:39:23 +0200
+Message-Id: <20220330103923.11063-1-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <D3DA14F9-C9C6-4927-B015-5B7D25689DAA@gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 12:17:21 up 109 days, 19:02, 75 users,  load average: 0.10, 0.15,
- 0.19
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220330_032052_026334_41D0CF61 
-X-CRM114-Status: GOOD (  30.57  )
+X-CRM114-CacheID: sfid-20220330_033931_559109_5BF1CA1E 
+X-CRM114-Status: GOOD (  19.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,73 +85,234 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBNYXIgMzAsIDIwMjIgYXQgMTI6MDE6MDVQTSArMDIwMCwgcGlvdHJvLm9uaXN6Y3p1
-a0Bnb29nbGUuY29tIHdyb3RlOgo+IAo+IAo+ID4gV2lhZG9tb8WbxIcgbmFwaXNhbmEgcHJ6ZXog
-U2FzY2hhIEhhdWVyIDxzLmhhdWVyQHBlbmd1dHJvbml4LmRlPiB3IGRuaXUgMzAuMDMuMjAyMiwg
-byBnb2R6LiAxMTo0NToKPiA+IAo+ID4gT24gV2VkLCBNYXIgMzAsIDIwMjIgYXQgMTA6NDE6NTZB
-TSArMDIwMCwgcGlvdHJvLm9uaXN6Y3p1a0Bnb29nbGUuY29tIHdyb3RlOgo+ID4gCj4gPiBMZXQg
-bWUgcmVwaHJhc2UgdGhpczogVGhlIGFib3ZlIHNldHMgYSBwbGFuZSwgYnV0IGl0IGRvZXNuJ3Qg
-c2V0IGEgbW9kZQo+ID4gb24gdGhlIGNydGMuIFdoZW4gbXkgc3lzdGVtIGJvb3RzIHVwIHRoZW4g
-dGhlIG91dHB1dCBvZiBtb2RldGVzdCBsb29rcwo+ID4gbGlrZSB0aGlzOgo+ID4gCj4gPiBFbmNv
-ZGVyczoKPiA+IGlkICAgICAgY3J0YyAgICB0eXBlICAgIHBvc3NpYmxlIGNydGNzICBwb3NzaWJs
-ZSBjbG9uZXMKPiA+IDY4ICAgICAgMCAgICAgICBUTURTICAgIDB4MDAwMDAwMDEgICAgICAweDAw
-MDAwMDAxCj4gPiBDb25uZWN0b3JzOgo+ID4gaWQgICAgICBlbmNvZGVyIHN0YXR1cyAgICAgICAg
-ICBuYW1lICAgICAgICAgICAgc2l6ZSAobW0pICAgICAgIG1vZGVzICBlbmNvZGVycwo+ID4gNjkg
-ICAgICAwICAgICAgIGNvbm5lY3RlZCAgICAgICBIRE1JLUEtMSAgICAgICAgNTMweDMwMCAgICAg
-ICAgIDkgICAgICA2OAo+ID4gQ1JUQ3M6Cj4gPiBpZCAgICAgIGZiICAgICAgcG9zICAgICBzaXpl
-Cj4gPiA2NyAgICAgIDAgICAgICAgKDAsMCkgICAoMHgwKQo+ID4gICMwICBuYW4gMCAwIDAgMCAw
-IDAgMCAwIDAgZmxhZ3M6IDsgdHlwZTogCj4gPiAKPiA+IE5vIG1vZGUgaXMgc2V0IG9uIHRoZSBD
-UlRDIGFuZCB0aGUgZW5jb2Rlci9jb25uZWN0b3IvY3J0YyBhcmUgbm90IGJvdW5kCj4gPiB0byBl
-YWNoIG90aGVyLCBjb25zZXF1ZW50bHkgdGhlIHNjcmVlbiBpcyBpbiBzdGFuZGJ5LiAibW9kZXRl
-c3QgLVAKPiA+IDQzQDY3OjE5MjB4MTA4MEBOVjEyIiBkb2Vzbid0IGNoYW5nZSB0aGlzLCBzdGls
-bCBubyBtb2RlIHNldC4gSGVuY2UgbXkKPiA+IHF1ZXN0aW9uOiBIb3cgZGlkIHlvdSBzZXQgYSBt
-b2RlIGluaXRpYWxseT8KPiAKPiBBaCBvay4gSSBzZWUgeW91ciBwb2ludC4KPiBtb2RlIGlzIHNl
-dCBieSBhcHAgKHBsYXllcikuIAo+IAo+IFNlcXVlbmNlIHdhcyBsaWtlIHRoaXM6Cj4gLWJvb3Qg
-Ym9hcmQKPiAtc3RhcnQgYXBwCj4gLW9uIFVJIHNlbGVjdCBwbGF5YmFjawo+IC1wbGF5YmFjayBo
-YXMgZ3JlZW4gc2NyZWVuCj4gLWV4aXQgYXBwCj4gLXJ1biBtb2RldGVzdCAtUCA0M0A2NzoxOTIw
-eDEwODBATlYxMiAodGhlIHNhbWUgZ3JlZW4gc2NyZWVuIGxpa2UgaW4gcGxheWJhY2spCj4gLXJ1
-biBtb2RldGVzdCAtUCA0OUA2NzoxOTIweDEwODBATlYxMiAod29ya3Mgb2spCj4gLXJ1biBtb2Rl
-dGVzdCAtUCA0M0A2NzoxOTIweDEwODBATlYxMiAobm93IHdvcmtzIG9rKQo+IAo+ID4gCj4gPj4+
-IAo+ID4+IAo+ID4+IEknbSBub3Qgc3VyZSB0aGF0IGFib3ZlIGNvbW1hbmQgb25seSBzZXRzIHBs
-YW5lLgo+ID4+IE9uIG90aGVyIFNvQ3MgaeKAmW0gdGVzdGluZyBpdCBnaXZlcyBleHBlY3RlZCBy
-ZXN1bHRzOiBkaWFnb25hbCBjb2xvcmVkIHN0cmlwZXMuCj4gPj4gVGhlcmUgaXMgc2luZ2xlIGV4
-Y2VwdGlvbjogcmszNTZ4IHdpdGggdm9wMiAtIHdoZXJlIHNjcmVlbiBpcyBncmVlbiB1bmxlc3Mg
-aSDigJ5maXgvZW5hYmxl4oCdIGJ5IHBsYXlpbmcgd2l0aCBwbGFuZSAjNjkgICAKPiA+PiAKPiA+
-Pj4gSSBkaWQgd2l0aCAibW9kZXRlc3QgLXMgNjlANjc6MTkyMHgxMDgwIC1kIiBhbmQgd2l0aCB0
-aGlzIGl0IHdvcmtzIGFzCj4gPj4+IGV4cGVjdGVkLCBJIGNhbid0IHJlcHJvZHVjZSBhbnkgZ3Jl
-ZW4gc2NyZWVuIGlzc3VlIGhlcmUuCj4gPj4gCj4gPj4gSSBzZWUgeW91IGFyZSB1c2luZyBwbGFu
-ZSAjNjkuCj4gPj4gV2h5IG5vdCAjNDM/Cj4gPiAKPiA+IEkgdXNlZCAibW9kZXRlc3QgLXMgNjlA
-Njc6MTkyMHgxMDgwIC1kIiB0byBzZXQgYSBtb2RlLiBUaGUgJzY5JyBpcyB0aGUKPiA+IGNvbm5l
-Y3RvciBpZCwgbm90IGEgcGxhbmUuCj4gCj4gYWNrLgo+IHR5cG8gZnJvbSBteSBzaWRlLgo+IAo+
-IGl0IHdhcwo+IG1vZGV0ZXN0IC1QIDQ5QDY3OjE5MjB4MTA4MEBOVjEyCj4gCj4gCj4gPiAKPiA+
-PiBJcyBwbGFuZSAjNDMgd29ya2luZyBvayBmb3IgeW91Pwo+ID4gCj4gPiBZZXMuCj4gCj4gU28g
-aXQgbG9va3MgeW91ciB0ZXN0aW5nIG1ldGhvZCBvZiAjNDMgaXMgbm90IG1lYW5pbmdmdWwgZm9y
-IHZlcmlmeWluZyBpc3N1ZSB3ZSBhcmUgZGlzY3Vzc2luZyBoZXJlLgo+IAo+IEluIG15IGNhc2U6
-Cj4gMTIgU09DIChleGNlcHQgcmszNTZ4IFZPUDIpIGdpdmVzIG1lOgo+IC1ib290IGJvYXJkCj4g
-LXN0YXJ0IGFwcAo+IC1vbiBVSSBzZWxlY3QgcGxheWJhY2sKPiAtcGxheWJhY2sgaXMgb2sKPiAt
-ZXhpdCBhcHAKPiAtcnVuIG1vZGV0ZXN0IC1QIFhYQFlZOjE5MjB4MTA4MEBOVjEyIChkaWFnb25h
-bCBzdHJpcGVzKQo+IAo+IChYWC9ZWSBhcmUgcGxhbmUvY29ubmVjdG9yIGVsZWN0ZWQgYnkgYXBw
-OiBwbGFuZUBjb25lY3RvciB3aXRoIGZvcm1hdCBtYXRjaGluZyBwcm92aWRlciBmb3JtYXQpIAo+
-IAo+IHJrMzU2eCB3aXRoIHZvcDIgdjk6Cj4gLWJvb3QgYm9hcmQKPiAtc3RhcnQgYXBwCj4gLW9u
-IFVJIHNlbGVjdCBwbGF5YmFjawo+IC1wbGF5YmFjayBoYXMgZ3JlZW4gc2NyZWVuCj4gLWV4aXQg
-YXBwCj4gLXJ1biBtb2RldGVzdCAtUCA0M0A2NzoxOTIweDEwODBATlYxMiAodGhlIHNhbWUgZ3Jl
-ZW4gc2NyZWVuIGxpa2UgaW4gcGxheWJhY2spCj4gLXJ1biBtb2RldGVzdCAtUCA0OUA2NzoxOTIw
-eDEwODBATlYxMiAod29ya3Mgb2spCj4gLXJ1biBtb2RldGVzdCAtUCA0M0A2NzoxOTIweDEwODBA
-TlYxMiAobm93IHdvcmtzIG9rKQoKRG9lcyBpdCBjaGFuZ2UgYW55dGhpbmcgaWYgeW91IGRvIGEg
-Im1vZGV0ZXN0IC1zIDY5QDY3OjE5MjB4MTA4MCIgYmVmb3JlCnN0YXJ0aW5nIHRoZSBhcHA/IE9y
-IGlmIHlvdSBydW4gIm1vZGV0ZXN0IC1QIDQzQDY3OjE5MjB4MTA4MEBOVjEyIgpiZWZvcmUgc3Rh
-cnRpbmcgdGhlIGFwcD8gT3Igb3RoZXIgY29tYmluYXRpb25zIHRoZXJlb2Y/CgpTYXNjaGEKCi0t
-IApQZW5ndXRyb25peCBlLksuICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgfApTdGV1ZXJ3YWxkZXIgU3RyLiAyMSAgICAgICAgICAgICAgICAg
-ICAgICAgfCBodHRwOi8vd3d3LnBlbmd1dHJvbml4LmRlLyAgfAozMTEzNyBIaWxkZXNoZWltLCBH
-ZXJtYW55ICAgICAgICAgICAgICAgICAgfCBQaG9uZTogKzQ5LTUxMjEtMjA2OTE3LTAgICAgfApB
-bXRzZ2VyaWNodCBIaWxkZXNoZWltLCBIUkEgMjY4NiAgICAgICAgICAgfCBGYXg6ICAgKzQ5LTUx
-MjEtMjA2OTE3LTU1NTUgfAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+Convert rockchip,px30-cru.txt to YAML.
+
+Changes against original bindings:
+  Use compatible string: "rockchip,px30-pmucru"
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+
+Changed V2:
+  add allOf:if:then: constraining
+---
+ .../bindings/clock/rockchip,px30-cru.txt      |  70 -----------
+ .../bindings/clock/rockchip,px30-cru.yaml     | 119 ++++++++++++++++++
+ 2 files changed, 119 insertions(+), 70 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/clock/rockchip,px30-cru.txt
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,px30-cru.yaml
+
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,px30-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,px30-cru.txt
+deleted file mode 100644
+index 55e78cdde..000000000
+--- a/Documentation/devicetree/bindings/clock/rockchip,px30-cru.txt
++++ /dev/null
+@@ -1,70 +0,0 @@
+-* Rockchip PX30 Clock and Reset Unit
+-
+-The PX30 clock controller generates and supplies clock to various
+-controllers within the SoC and also implements a reset controller for SoC
+-peripherals.
+-
+-Required Properties:
+-
+-- compatible: PMU for CRU should be "rockchip,px30-pmu-cru"
+-- compatible: CRU should be "rockchip,px30-cru"
+-- reg: physical base address of the controller and length of memory mapped
+-  region.
+-- clocks: A list of phandle + clock-specifier pairs for the clocks listed
+-          in clock-names
+-- clock-names: Should contain the following:
+-  - "xin24m" for both PMUCRU and CRU
+-  - "gpll" for CRU (sourced from PMUCRU)
+-- #clock-cells: should be 1.
+-- #reset-cells: should be 1.
+-
+-Optional Properties:
+-
+-- rockchip,grf: phandle to the syscon managing the "general register files"
+-  If missing, pll rates are not changeable, due to the missing pll lock status.
+-
+-Each clock is assigned an identifier and client nodes can use this identifier
+-to specify the clock which they consume. All available clocks are defined as
+-preprocessor macros in the dt-bindings/clock/px30-cru.h headers and can be
+-used in device tree sources. Similar macros exist for the reset sources in
+-these files.
+-
+-External clocks:
+-
+-There are several clocks that are generated outside the SoC. It is expected
+-that they are defined using standard clock bindings with following
+-clock-output-names:
+- - "xin24m" - crystal input - required,
+- - "xin32k" - rtc clock - optional,
+- - "i2sx_clkin" - external I2S clock - optional,
+- - "gmac_clkin" - external GMAC clock - optional
+-
+-Example: Clock controller node:
+-
+-	pmucru: clock-controller@ff2bc000 {
+-		compatible = "rockchip,px30-pmucru";
+-		reg = <0x0 0xff2bc000 0x0 0x1000>;
+-		#clock-cells = <1>;
+-		#reset-cells = <1>;
+-	};
+-
+-	cru: clock-controller@ff2b0000 {
+-		compatible = "rockchip,px30-cru";
+-		reg = <0x0 0xff2b0000 0x0 0x1000>;
+-		rockchip,grf = <&grf>;
+-		#clock-cells = <1>;
+-		#reset-cells = <1>;
+-	};
+-
+-Example: UART controller node that consumes the clock generated by the clock
+-  controller:
+-
+-	uart0: serial@ff030000 {
+-		compatible = "rockchip,px30-uart", "snps,dw-apb-uart";
+-		reg = <0x0 0xff030000 0x0 0x100>;
+-		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&pmucru SCLK_UART0_PMU>, <&pmucru PCLK_UART0_PMU>;
+-		clock-names = "baudclk", "apb_pclk";
+-		reg-shift = <2>;
+-		reg-io-width = <4>;
+-	};
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,px30-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,px30-cru.yaml
+new file mode 100644
+index 000000000..3eec381c7
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/rockchip,px30-cru.yaml
+@@ -0,0 +1,119 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/clock/rockchip,px30-cru.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip PX30 Clock and Reset Unit (CRU)
++
++maintainers:
++  - Elaine Zhang <zhangqing@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++description: |
++  The PX30 clock controller generates and supplies clocks to various
++  controllers within the SoC and also implements a reset controller for SoC
++  peripherals.
++  Each clock is assigned an identifier and client nodes can use this identifier
++  to specify the clock which they consume. All available clocks are defined as
++  preprocessor macros in the dt-bindings/clock/px30-cru.h headers and can be
++  used in device tree sources. Similar macros exist for the reset sources in
++  these files.
++  There are several clocks that are generated outside the SoC. It is expected
++  that they are defined using standard clock bindings with following
++  clock-output-names:
++    - "xin24m"     - crystal input       - required
++    - "xin32k"     - rtc clock           - optional
++    - "i2sx_clkin" - external I2S clock  - optional
++    - "gmac_clkin" - external GMAC clock - optional
++
++properties:
++  compatible:
++    enum:
++      - rockchip,px30-cru
++      - rockchip,px30-pmucru
++
++  reg:
++    maxItems: 1
++
++  "#clock-cells":
++    const: 1
++
++  "#reset-cells":
++    const: 1
++
++  clocks:
++    minItems: 1
++    items:
++      - description: Clock for both PMUCRU and CRU
++      - description: Clock for CRU (sourced from PMUCRU)
++
++  clock-names:
++    minItems: 1
++    items:
++      - const: xin24m
++      - const: gpll
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the syscon managing the "general register files" (GRF),
++      if missing pll rates are not changeable, due to the missing pll
++      lock status.
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - "#clock-cells"
++  - "#reset-cells"
++
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,px30-cru
++
++    then:
++      properties:
++        clocks:
++          minItems: 2
++
++        clock-names:
++          minItems: 2
++
++    else:
++      properties:
++        clocks:
++          maxItems: 1
++
++        clock-names:
++          maxItems: 1
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/px30-cru.h>
++
++    pmucru: clock-controller@ff2bc000 {
++      compatible = "rockchip,px30-pmucru";
++      reg = <0xff2bc000 0x1000>;
++      clocks = <&xin24m>;
++      clock-names = "xin24m";
++      rockchip,grf = <&grf>;
++      #clock-cells = <1>;
++      #reset-cells = <1>;
++    };
++
++    cru: clock-controller@ff2b0000 {
++      compatible = "rockchip,px30-cru";
++      reg = <0xff2b0000 0x1000>;
++      clocks = <&xin24m>, <&pmucru PLL_GPLL>;
++      clock-names = "xin24m", "gpll";
++      rockchip,grf = <&grf>;
++      #clock-cells = <1>;
++      #reset-cells = <1>;
++    };
+-- 
+2.20.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
