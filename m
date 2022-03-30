@@ -4,69 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27D34C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Mar 2022 06:39:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 159D4C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Mar 2022 06:48:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xv4lWprh6liWNrneVdcMGUnDKG8bRByOYKYlhiNOk24=; b=kx7FGeA/jYhFdA
-	6nD34DRMRwiPaU2Y/hkRkjcJ2+o+FDKmVyrmteZXrmJCQMQZJbQcyuEfZfMe3Ff/1/Cv0PxInP7sS
-	b3uLXqvNlfQ83xJx36GL34w+g2xO9b0vWsvxc4PgZav/Mpos+aKIQeF3zmh74MhNFksuIvJci+23l
-	Eh86MlcsofyLhbw8FD/PdayV6XSUYZx6OXASv7zZgvHvEE85c6X3zbGWM91AScb/H7Tzj3tAEhc6d
-	6jgDTnl/ykOoOIfn5lu5WcTfV3E3jGFQ1SLpGxWpfeBstrQe3BLc1rOAsdoWh7Po0WBr0xW31BCWA
-	0H+azOjl+V8WcsNR6h2Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RsjHPLzBPk3XvELeHPphZ7rxcweWSifeR1ljaQ1ZL70=; b=0KYnGinTYREUVudfuCpxDiw0JS
+	hCHUtbuGLiACB1J7DOrN6C+/+BP207O30wO8XWo1YDl1guP1FkkAcdJ2DeH6/IYZK3i/qMbBSpzA8
+	/pIXdz3CwYLlMAj92m1RIidAgblu58j8m5akJM0SIExycFmg4T/EpBxpNYqaMyv9oIoLDaB9EBhCw
+	8JshyALBeqvAPf8yIyT6TWi6VjDrSGIrRTPDSAPXhCIlm9ob657YL6McUJJRoI/+mdpLL/gkAJVBM
+	KKd828Ui44HCK4UjOTrwoGsysWIobYbHUjT5VIqnpadb1/6r9bE2bj39T1YyOHM9cy5Fd8Q1pg/mH
+	WgQ/obzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZRzW-00ERhL-60; Wed, 30 Mar 2022 06:39:38 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nZS84-00ESry-Mh; Wed, 30 Mar 2022 06:48:28 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZRzJ-00ERfT-Hq
- for linux-rockchip@lists.infradead.org; Wed, 30 Mar 2022 06:39:27 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nZRzE-0003Mk-RJ; Wed, 30 Mar 2022 08:39:20 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nZRz7-0006t9-9S; Wed, 30 Mar 2022 08:39:13 +0200
-Date: Wed, 30 Mar 2022 08:39:13 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH v9 20/23] drm/rockchip: Make VOP driver optional
-Message-ID: <20220330063913.GW12181@pengutronix.de>
-References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
- <20220328151116.2034635-21-s.hauer@pengutronix.de>
- <274a12a9-61f1-7d6a-e89c-52237621930b@rock-chips.com>
+ id 1nZS81-00ESqz-DF
+ for linux-rockchip@lists.infradead.org; Wed, 30 Mar 2022 06:48:27 +0000
+Received: from localhost (unknown [IPv6:2a02:3030:d:7e3f:91e1:4be5:4001:fd80])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ (Authenticated sender: sebastianfricke)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 380F81F4436E;
+ Wed, 30 Mar 2022 07:48:22 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1648622903;
+ bh=NV0u/ujs6yEEQh0kTYEkObgi+i8FUlA9532q4bfxkjs=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=RCxKIpchhx7t8R+goxSJEZGr6eq5EwaRlfaJbWNfsFAYukxWuwXZVDPGAIdmOCwy1
+ dt86+UwNNdNmgKc4Zh+eCCH7lKn2FgQuYS4piadVmMiGDfSIMpr/KfQvO5FTTcKNKh
+ TutLt6dqdEoCqpAocRI3D16VVytdKjjbPOYPI5x+nCgmK6fVr+y462STLcp23lHyFR
+ 89bNiRUNwNyDa8l9wnx1G4CH/TDPdB1pQM9N3SCueR76ZLLr158ZRQPbgQhyecg+re
+ w8f8XXZ5BPXYfZmUOCULy0aXBdJYidiyd/sV/lAJla8+4iGuQIx9Cph79aHi3ELxj8
+ IuYF/AHFLjxBw==
+Date: Wed, 30 Mar 2022 08:48:19 +0200
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 17/24] media: rkvdec: h264: Validate and use pic width
+ and height in mbs
+Message-ID: <20220330064819.42q5uouydvl5yqfg@basti-XPS-13-9310>
+References: <20220328195936.82552-1-nicolas.dufresne@collabora.com>
+ <20220328195936.82552-18-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <274a12a9-61f1-7d6a-e89c-52237621930b@rock-chips.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 08:32:41 up 109 days, 15:18, 66 users,  load average: 0.11, 0.15,
- 0.11
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+In-Reply-To: <20220328195936.82552-18-nicolas.dufresne@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220329_233925_617286_CF16418E 
-X-CRM114-Status: GOOD (  28.59  )
+X-CRM114-CacheID: sfid-20220329_234825_731727_F9B73CD3 
+X-CRM114-Status: GOOD (  16.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,72 +73,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-15"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
+Hey Nicolas,
 
-On Tue, Mar 29, 2022 at 07:56:27PM +0800, Andy Yan wrote:
-> Hi Sascha:
-> =
+On 28.03.2022 15:59, Nicolas Dufresne wrote:
+>From: Jonas Karlman <jonas@kwiboo.se>
+>
+>The width and height in mbs is currently configured based on OUTPUT buffer
+>resolution, this works for frame pictures but can cause issues for field
+>pictures.
 
-> On 3/28/22 23:11, Sascha Hauer wrote:
-> > With upcoming VOP2 support VOP won't be the only choice anymore, so make
-> > the VOP driver optional.
-> > =
+How about:
 
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > ---
-> >   drivers/gpu/drm/rockchip/Kconfig            | 8 ++++++++
-> >   drivers/gpu/drm/rockchip/Makefile           | 3 ++-
-> >   drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 2 +-
-> >   3 files changed, 11 insertions(+), 2 deletions(-)
-> > =
+"""
+The width and height measured in macroblocks (mbs) is currently
+configured based on the resolution of the OUTPUT buffer, this works for
+frame pictures but can cause issues for field pictures..
+"""
 
-> > diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchi=
-p/Kconfig
-> > index fa5cfda4e90e3..7d22e2997a571 100644
-> > --- a/drivers/gpu/drm/rockchip/Kconfig
-> > +++ b/drivers/gpu/drm/rockchip/Kconfig
-> > @@ -23,8 +23,16 @@ config DRM_ROCKCHIP
-> >   if DRM_ROCKCHIP
-> > +config ROCKCHIP_VOP
-> > +	bool "Rockchip VOP driver"
-> > +	default y
-> > +	help
-> > +	  This selects support for the VOP driver. You should enable it
-> > +	  on all older SoCs up to RK3399.
+(I think it improves readability to explain at least once what mbs means
+to anyone not aware)
 
-That reminds me that I wanted to rephrase this. Will change in next
-round.
+>
+>When frame_mbs_only_flag is 0 the height in mbs should be height of
+>the field instead of height of frame.
+>
+>Validate pic_width_in_mbs_minus1 and pic_height_in_map_units_minus1
+>against OUTPUT buffer resolution and use these values to configure HW.
 
-> > +
-> >   config ROCKCHIP_ANALOGIX_DP
-> >   	bool "Rockchip specific extensions for Analogix DP driver"
-> > +	depends on ROCKCHIP_VOP
-> =
+s/OUTPUT buffer resolution/the resolution of the OUTPUT buffer/
 
-> =
+>
+>Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 
-> Aanlogix dp is also on vop2 base soc such as=A0 rk356x and rk3588 .
-
-I added the dependency because analogix_dp-rockchip.c calls
-rockchip_drm_wait_vact_end() which is implemented in the VOP driver,
-so this driver currenty can't work with the VOP2 driver and can't
-be linked without the VOP driver being present.
-I'll add a few words to the commit message.
-
-Sascha
-
-
--- =
-
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Greetings,
+Sebastian
+>---
+> drivers/staging/media/rkvdec/rkvdec-h264.c |  4 ++--
+> drivers/staging/media/rkvdec/rkvdec.c      | 10 ++++++++++
+> 2 files changed, 12 insertions(+), 2 deletions(-)
+>
+>diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+>index db1e762baee5..847b8957dad3 100644
+>--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
+>+++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+>@@ -672,8 +672,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+> 		  LOG2_MAX_PIC_ORDER_CNT_LSB_MINUS4);
+> 	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_DELTA_PIC_ORDER_ALWAYS_ZERO),
+> 		  DELTA_PIC_ORDER_ALWAYS_ZERO_FLAG);
+>-	WRITE_PPS(DIV_ROUND_UP(ctx->coded_fmt.fmt.pix_mp.width, 16), PIC_WIDTH_IN_MBS);
+>-	WRITE_PPS(DIV_ROUND_UP(ctx->coded_fmt.fmt.pix_mp.height, 16), PIC_HEIGHT_IN_MBS);
+>+	WRITE_PPS(sps->pic_width_in_mbs_minus1 + 1, PIC_WIDTH_IN_MBS);
+>+	WRITE_PPS(sps->pic_height_in_map_units_minus1 + 1, PIC_HEIGHT_IN_MBS);
+> 	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY),
+> 		  FRAME_MBS_ONLY_FLAG);
+> 	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD),
+>diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+>index 22c0382c579e..67539f4bf382 100644
+>--- a/drivers/staging/media/rkvdec/rkvdec.c
+>+++ b/drivers/staging/media/rkvdec/rkvdec.c
+>@@ -29,8 +29,11 @@
+>
+> static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
+> {
+>+	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
+>+
+> 	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
+> 		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
+>+		unsigned int width, height;
+> 		/*
+> 		 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
+> 		 * but it's currently broken in the driver.
+>@@ -45,6 +48,13 @@ static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
+> 		if (sps->bit_depth_luma_minus8 != 0)
+> 			/* Only 8-bit is supported */
+> 			return -EINVAL;
+>+
+>+		width = (sps->pic_width_in_mbs_minus1 + 1) * 16;
+>+		height = (sps->pic_height_in_map_units_minus1 + 1) * 16;
+>+
+>+		if (width > ctx->coded_fmt.fmt.pix_mp.width ||
+>+		    height > ctx->coded_fmt.fmt.pix_mp.height)
+>+			return -EINVAL;
+> 	}
+> 	return 0;
+> }
+>-- 
+>2.34.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
