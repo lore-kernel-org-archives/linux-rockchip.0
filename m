@@ -4,93 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08A3FC433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Mar 2022 15:19:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 482A6C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Mar 2022 16:15:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QtnnUZbDgPjL0BLKdX3T4THIuZqJglYcMIm3NvG/QHk=; b=En53GHvX0lQxrE
-	Kiujq5NkkHANsYfqwBqP+wvvLyTsdNYjQDuU1i1dpvCIgg4fsZV8wPQNcr7dXByKQnkdg6IisN27c
-	+SCTaju+cAv8fhci98TPetDKJRiOfYK1GOhDEvkT69HrbfTAWgYznB/h4J1N6QwwNy468r9WG6qtY
-	QG9ctDMN6walOG9kGJffCfV43UHETxGHr31UFS+o+QLwypDVugAmPV4OMPj+s+C/Yft+nUNhFAJsT
-	2f4OxAkDyahlYFxF0FvYxE7LHBHu8jEy9y/vkw7wTtA/QHJM29tDs0+vngXFIQLWLiFUypc0sHFgH
-	eK4kB06OYX7pf8087Slg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+t/HHlxuwjAghITfpzgS35Z9QiJFUr5Qi/k1zyL8+WU=; b=kuPSN60mC9MpmN
+	GTIfva9/P/lhU3w7l2DFhJLMywBv6ifupgqTqli90cMMId1wPcfzHZK2XGuuvT0+RbhDTosIXqC88
+	ZGTlPGDkBIeoEVDq9kvnQSFXisFNDLPK8W/tbZF7eZA75MXk7IPFgb4C9DmfYvA2qiFbZ6NhovefP
+	hrHslgK7jb483LDc6HFihVjdeOjQ+HDtJ4wG9+03AITbsL4HTD8nDUzlJfXe9hRF09D6tP2CTIcBf
+	zNiFan9m3EPeBALW6pObziKSASTJ3Y2rRfuLUXhY0UUobBII9t4cNqh8zeB8uTisLEfEocB+XwfY3
+	3FwwGgPa8FWJ1SZejK8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZwZt-002hf2-Vb; Thu, 31 Mar 2022 15:19:14 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1nZxSH-002v7X-QK; Thu, 31 Mar 2022 16:15:25 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZwZr-002hdO-UB; Thu, 31 Mar 2022 15:19:13 +0000
-Received: by mail-lf1-x133.google.com with SMTP id d5so42109095lfj.9;
- Thu, 31 Mar 2022 08:19:09 -0700 (PDT)
+ id 1nZxS4-002v1Z-0C; Thu, 31 Mar 2022 16:15:13 +0000
+Received: by mail-ed1-x531.google.com with SMTP id x34so28726086ede.8;
+ Thu, 31 Mar 2022 09:15:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=I/zFD1UzYETukb9hPPQb6Vt1PfX3xGeKdTnoCcvEcdM=;
- b=qD1VG8gVzb0EQphdwGkUIE/ZCRoYKB8DLWm5mNbseSwOSW/IIIRQ67VHKNEQ7xStq6
- WUfjNUxp2EHzpmqNAOnHqZ1TNIUaTkl94CgW4p8FKyZ6Q905TMGfMsw9xK2v4yw+Kywv
- BjHcKNQzRaDYkSrW/0P217hlUUW4atYwpA6pAD2/8MsH9wOaiysZi5CuKK/tX7/TtWNO
- NVKN1pZIpbhU+qsCYVQIi90lEv6KqkQMpPrVqauF9kiOTonWkkPEr9u23QxewbShgwOZ
- ALEY10Fk0PXmg56J+MAJ9jUX5yXsU/EQFWBZgws5Hzg3G4aSulqT5lvu9SsSULAAR5ea
- yn0g==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=xjEyY3Y7idT2/xjZtTf3oO9KclkwZrkmMKAiZwZLsWQ=;
+ b=dqaf3H8pyJfqFWTnZGb7f7uCrEARjp8BxDSW24tcsT69J+NlH/EcQMF91tT7hBRJW7
+ eqOrkAsYEweGdXeAIcvlGVBV2u37BFdjYlQsY4yBwK5QhNsv9NkPLWP8QDMop+ZgxYy4
+ gU1+pIzf7ed7vK3EDnG4+g1eheaFKEK4k6heGdZWhaiLDVNwnxw1rxzQuWpY4mCXrI3v
+ ZlTaJHudv1Jliq5ZkQz8Tacroum5bOq4VxglFzzePVXvNG95n8T4uDSnxygD7dySVCPw
+ D5hz+ICtMJYyxUFhb7jMBqq5/WceTNE2/a3G2oYFfr6DSiMTL9qk3aF1oIRw10EfMPcb
+ fF5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
- :content-transfer-encoding:message-id:references:to;
- bh=I/zFD1UzYETukb9hPPQb6Vt1PfX3xGeKdTnoCcvEcdM=;
- b=GZIOzNYFhpINg3NcLTFW+OgLcLbZSlXJeSQ3pRfMSegZZ3DZ5HfklnTWT/aA/HVJRW
- 7ZkbvYplKDTEoH6wMVrzrgfEa7BGSeYm3u54etkYTJDaf6lOprnswWK/QzGNzcWgF51l
- NCk8xvwyizJPUFSVApm2QHSQurhaIEFfbRdTAn3pA9eedkO/agl0GHozo9dwnOrrv3mx
- F2GymcGEZ/wiYXbTKz5XxIYM1c1Ji8mTaRJ48TS4Uvmn46DXmmf5QfxDRnV8FJp+Gv69
- zSvE+D0Fi9sLX8Swt5ew/Uc4thjONCrjgpOigOJgg20B+hm90ZpEm0z5rcfDiW3gWHcd
- TJWg==
-X-Gm-Message-State: AOAM532RO0YmXsprYYmuUvf2rzSb5I3WqaEVP4n0L86kEX1VrSFBrnyu
- gbUhqnnu+W1JDYaK2G6sDGM=
-X-Google-Smtp-Source: ABdhPJyb/hrz6sQk0Vkca3U6ltTtxT0GjKK1mM9iqrHNcQIkEAcz5q9CA5B5t06ac/PGapOpjw7hpQ==
-X-Received: by 2002:a05:6512:3d9f:b0:44a:4960:5b79 with SMTP id
- k31-20020a0565123d9f00b0044a49605b79mr11090759lfv.413.1648739944644; 
- Thu, 31 Mar 2022 08:19:04 -0700 (PDT)
-Received: from smtpclient.apple (31-178-191-245.dynamic.chello.pl.
- [31.178.191.245]) by smtp.gmail.com with ESMTPSA id
- u2-20020a197902000000b00448a4a7cfc3sm2695712lfc.136.2022.03.31.08.19.03
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 31 Mar 2022 08:19:04 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
-Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
-From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-In-Reply-To: <3A5C5A71-0CE0-4072-9502-75385C1C43F7@gmail.com>
-Date: Thu, 31 Mar 2022 17:19:03 +0200
-Cc: Andy Yan <andy.yan@rock-chips.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
- dri-devel@lists.freedesktop.org,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Message-Id: <C06076CC-DA33-40DC-A443-15254E7F784E@gmail.com>
-References: <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
- <20220330072822.GX12181@pengutronix.de>
- <0D8F5951-5375-46B5-BFF0-7ED410371EB7@gmail.com>
- <20220330094556.GZ12181@pengutronix.de>
- <D3DA14F9-C9C6-4927-B015-5B7D25689DAA@gmail.com>
- <20220330102046.GA12181@pengutronix.de>
- <60601619-EF07-457B-91F2-64FEB598FEBE@gmail.com>
- <20220330192054.GA4012@pengutronix.de>
- <af8445e0-f4af-721b-709e-2eb7c488a8a4@rock-chips.com>
- <B7CD9D55-9F2D-42F4-9D04-17C6A5FEBB08@gmail.com>
- <20220331150056.GH4012@pengutronix.de>
- <3A5C5A71-0CE0-4072-9502-75385C1C43F7@gmail.com>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-X-Mailer: Apple Mail (2.3654.120.0.1.13)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=xjEyY3Y7idT2/xjZtTf3oO9KclkwZrkmMKAiZwZLsWQ=;
+ b=enfA/hkQt27W9h8geZ5w+CIgCnH11WBhygvx2Q/wS88rGJhcAjaMzV2Od4Rh5Yv7px
+ VToB0K2V3npCAjHv6jjNG1w7Gh5GfREYwEoxCJAn6RKizkMetHEA5RypKr7fgpuhPeCk
+ Du7uZhZUXHFLwTCPB8cKYi/cRbWqIfNndlqlls3wTJ5/O7YZlepYcQ5hALUJepXigHwN
+ e8GrWm2H58RkKTgsYFw2JxrJZ6syPIPf/5LvXeQYMY8Qv5WPIG1ZyKua5BqTbwZARula
+ R499JmpHIokQjXoLHDi9xsG40Z1q+s9hdOkbneejbjqjGZvs/j6kCPS66ki+aSHLLsfG
+ S7nA==
+X-Gm-Message-State: AOAM532jz+RtD9/vvhNzM0J3pItq5epRYZymgTLTSa6WcNbAU3wD6cfp
+ lyt1fyg6ZfL3T+uQ186mZ3w=
+X-Google-Smtp-Source: ABdhPJzXn3NJfsGVHSbXv3mgVWGnaMYgEFt6COE/RUp0EjdFoSNUhzEGELqshVrSMgw/HosvsoiNHg==
+X-Received: by 2002:a05:6402:270b:b0:419:3383:7a9f with SMTP id
+ y11-20020a056402270b00b0041933837a9fmr17248675edd.191.1648743310371; 
+ Thu, 31 Mar 2022 09:15:10 -0700 (PDT)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ g4-20020a170906520400b006e0b798a0b8sm7600302ejm.94.2022.03.31.09.15.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 31 Mar 2022 09:15:09 -0700 (PDT)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, krzk+dt@kernel.org, davem@davemloft.net,
+ kuba@kernel.org, pabeni@redhat.com, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v1 3/3] ARM: dts: rockchip: restyle emac nodes
+Date: Thu, 31 Mar 2022 18:14:59 +0200
+Message-Id: <20220331161459.16499-3-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20220331161459.16499-1-jbx6244@gmail.com>
+References: <20220331161459.16499-1-jbx6244@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_081911_997962_AFE6423B 
-X-CRM114-Status: UNSURE (   7.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220331_091512_086161_9486666C 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,20 +86,217 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFBpb3RyIE9uaXN6Y3p1ayA8cGlvdHIub25p
-c3pjenVrQGdtYWlsLmNvbT4gdyBkbml1IDMxLjAzLjIwMjIsIG8gZ29kei4gMTc6MDY6Cj4gCj4g
-Cj4gCj4+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFNhc2NoYSBIYXVlciA8cy5oYXVlckBw
-ZW5ndXRyb25peC5kZT4gdyBkbml1IDMxLjAzLjIwMjIsIG8gZ29kei4gMTc6MDA6Cj4+IAo+PiAK
-Pj4gSGF2ZSB5b3UgYXBwbGllZCB0aGUgYnVnZml4IEkgc2hhcmVkIHdpdGggeW91IGhlcmU6Cj4+
-IAo+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1hcm0ta2VybmVsLzIwMjIwMzMwMDcy
-ODIyLkdYMTIxODFAcGVuZ3V0cm9uaXguZGUvCj4+IAo+IAo+IG9vb29wcwo+IAo+IG5vb29vb28K
-PiBkaWRuJ3Qgbm90aWNlZCA6LSgKPiAKPiBsZXQgbWUgdHJ5IHdpdGggaXQhCj4gCgpvayAtIGkg
-dHJpZWQuCnVuZm9ydHVuYXRlbHkgbm8gYW55IGRpZmZlcmVuY2UgOi0oCgoKCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+The emac_rockchip.txt file is converted to YAML.
+Phy nodes are now a subnode of mdio, so restyle
+the emac nodes of rk3036/rk3066/rk3188.
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ arch/arm/boot/dts/rk3036-evb.dts        | 16 ++++++++++------
+ arch/arm/boot/dts/rk3036-kylin.dts      | 16 ++++++++++------
+ arch/arm/boot/dts/rk3036.dtsi           |  2 --
+ arch/arm/boot/dts/rk3066a-marsboard.dts | 19 +++++++++++--------
+ arch/arm/boot/dts/rk3066a-rayeager.dts  | 15 ++++++++++-----
+ arch/arm/boot/dts/rk3188-radxarock.dts  | 19 +++++++++++--------
+ arch/arm/boot/dts/rk3xxx.dtsi           |  2 --
+ 7 files changed, 52 insertions(+), 37 deletions(-)
+
+diff --git a/arch/arm/boot/dts/rk3036-evb.dts b/arch/arm/boot/dts/rk3036-evb.dts
+index 2a7e6624e..095e0821a 100644
+--- a/arch/arm/boot/dts/rk3036-evb.dts
++++ b/arch/arm/boot/dts/rk3036-evb.dts
+@@ -15,16 +15,20 @@
+ };
+ 
+ &emac {
++	phy-handle = <&phy0>;
++	phy-reset-duration = <10>; /* millisecond */
++	phy-reset-gpios = <&gpio2 RK_PC6 GPIO_ACTIVE_LOW>; /* PHY_RST */
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emac_xfer>, <&emac_mdio>;
+-	phy = <&phy0>;
+-	phy-reset-gpios = <&gpio2 RK_PC6 GPIO_ACTIVE_LOW>; /* PHY_RST */
+-	phy-reset-duration = <10>; /* millisecond */
+-
+ 	status = "okay";
+ 
+-	phy0: ethernet-phy@0 {
+-		reg = <0>;
++	mdio {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		phy0: ethernet-phy@0 {
++			reg = <0>;
++		};
+ 	};
+ };
+ 
+diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
+index e817eba8c..24c70e925 100644
+--- a/arch/arm/boot/dts/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rk3036-kylin.dts
+@@ -80,16 +80,20 @@
+ };
+ 
+ &emac {
++	phy-handle = <&phy0>;
++	phy-reset-duration = <10>; /* millisecond */
++	phy-reset-gpios = <&gpio2 RK_PC6 GPIO_ACTIVE_LOW>; /* PHY_RST */
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emac_xfer>, <&emac_mdio>;
+-	phy = <&phy0>;
+-	phy-reset-gpios = <&gpio2 RK_PC6 GPIO_ACTIVE_LOW>; /* PHY_RST */
+-	phy-reset-duration = <10>; /* millisecond */
+-
+ 	status = "okay";
+ 
+-	phy0: ethernet-phy@0 {
+-		reg = <0>;
++	mdio {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		phy0: ethernet-phy@0 {
++			reg = <0>;
++		};
+ 	};
+ };
+ 
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index e240b89b0..78686fc72 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -228,8 +228,6 @@
+ 		compatible = "rockchip,rk3036-emac";
+ 		reg = <0x10200000 0x4000>;
+ 		interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+ 		rockchip,grf = <&grf>;
+ 		clocks = <&cru HCLK_MAC>, <&cru SCLK_MACREF>, <&cru SCLK_MAC>;
+ 		clock-names = "hclk", "macref", "macclk";
+diff --git a/arch/arm/boot/dts/rk3066a-marsboard.dts b/arch/arm/boot/dts/rk3066a-marsboard.dts
+index a66d915aa..e70ba3ccf 100644
+--- a/arch/arm/boot/dts/rk3066a-marsboard.dts
++++ b/arch/arm/boot/dts/rk3066a-marsboard.dts
+@@ -150,18 +150,21 @@
+ #include "tps65910.dtsi"
+ 
+ &emac {
+-	status = "okay";
+-
+-	phy = <&phy0>;
++	phy-handle = <&phy0>;
+ 	phy-supply = <&vcc_rmii>;
+-
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emac_xfer>, <&emac_mdio>, <&phy_int>;
++	status = "okay";
++
++	mdio {
++		#address-cells = <1>;
++		#size-cells = <0>;
+ 
+-	phy0: ethernet-phy@0 {
+-		reg = <0>;
+-		interrupt-parent = <&gpio1>;
+-		interrupts = <RK_PD2 IRQ_TYPE_LEVEL_LOW>;
++		phy0: ethernet-phy@0 {
++			reg = <0>;
++			interrupt-parent = <&gpio1>;
++			interrupts = <RK_PD2 IRQ_TYPE_LEVEL_LOW>;
++		};
+ 	};
+ };
+ 
+diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts b/arch/arm/boot/dts/rk3066a-rayeager.dts
+index 12b2e59ae..600ada0d8 100644
+--- a/arch/arm/boot/dts/rk3066a-rayeager.dts
++++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
+@@ -142,15 +142,20 @@
+ };
+ 
+ &emac {
++	phy-handle = <&phy0>;
++	phy-supply = <&vcc_rmii>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emac_xfer>, <&emac_mdio>, <&rmii_rst>;
+-	phy = <&phy0>;
+-	phy-supply = <&vcc_rmii>;
+ 	status = "okay";
+ 
+-	phy0: ethernet-phy@0 {
+-		reg = <0>;
+-		reset-gpios = <&gpio1 RK_PD6 GPIO_ACTIVE_LOW>;
++	mdio {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		phy0: ethernet-phy@0 {
++			reg = <0>;
++			reset-gpios = <&gpio1 RK_PD6 GPIO_ACTIVE_LOW>;
++		};
+ 	};
+ };
+ 
+diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
+index 36c0945f4..e5ed0642d 100644
+--- a/arch/arm/boot/dts/rk3188-radxarock.dts
++++ b/arch/arm/boot/dts/rk3188-radxarock.dts
+@@ -126,18 +126,21 @@
+ };
+ 
+ &emac {
+-	status = "okay";
+-
++	phy-handle = <&phy0>;
++	phy-supply = <&vcc_rmii>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emac_xfer>, <&emac_mdio>, <&phy_int>;
++	status = "okay";
+ 
+-	phy = <&phy0>;
+-	phy-supply = <&vcc_rmii>;
++	mdio {
++		#address-cells = <1>;
++		#size-cells = <0>;
+ 
+-	phy0: ethernet-phy@0 {
+-		reg = <0>;
+-		interrupt-parent = <&gpio3>;
+-		interrupts = <RK_PD2 IRQ_TYPE_LEVEL_LOW>;
++		phy0: ethernet-phy@0 {
++			reg = <0>;
++			interrupt-parent = <&gpio3>;
++			interrupts = <RK_PD2 IRQ_TYPE_LEVEL_LOW>;
++		};
+ 	};
+ };
+ 
+diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
+index 616a828e0..bf285091a 100644
+--- a/arch/arm/boot/dts/rk3xxx.dtsi
++++ b/arch/arm/boot/dts/rk3xxx.dtsi
+@@ -186,8 +186,6 @@
+ 		compatible = "snps,arc-emac";
+ 		reg = <0x10204000 0x3c>;
+ 		interrupts = <GIC_SPI 19 IRQ_TYPE_LEVEL_HIGH>;
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+ 
+ 		rockchip,grf = <&grf>;
+ 
+-- 
+2.20.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
