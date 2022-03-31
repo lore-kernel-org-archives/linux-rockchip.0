@@ -4,80 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7025C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Mar 2022 17:08:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B307C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Mar 2022 18:26:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+I1MDYpSVsM2ukF6Sw7L7U0WKxyU8gEZmfekPX5bgnw=; b=YpGcNU6iFilMd+
-	wA6P8WXq8lPTpTDM0urSO4YsRNeeScNB6napcEgsRZixCGIomab306fujbpcGLBSKPZtgqlTvGLp9
-	/ECQWxrmXyutAW2UraQOUHZyv/PiM+CQh1Qsh5KS8N8Yi4Wad34qQn1ZYdIiGZpCPYBXoQ0/WfBcB
-	p5jv/IYuqXFGGPMFIaVlt0/kPRYHD7S7mvPlOeTpg8RV5P5zo0jY33vHGlE281Vomo2s7uV3DBiUU
-	aJZ3Qomumy38DdiPjXCNNLgg6TjcnExEvBhhDpeUmF+dLuCS8dkHFTh7Qd7i/YIbaD0gLN0cIfHGD
-	SLV6j48nVgOi1HLr369w==;
+	List-Owner; bh=70S8f2y5feAAYDtWDw4CWzEwMqYrD8hMn7MoWP9ZDak=; b=b/MopjP9Sfemnt
+	uf1FtVUgJrf2C+mkqpeQfhJBXBwcPXYOZOQyNTStETFTz6ZdSDOjN1DCPG6Paz5mC9oKxlp9DOhBK
+	xInouad12AbQltc0yndW2iu5wNKhuZRIt1QeWO27jNyScl5sGY+g+gmHYy0Mi3veTN5KsgYVNkVJ9
+	bWlZfEYgXIzJPuzvMFhGWsU7zabiZlpyuMvhEhogo0yjZ6il1bSuaNh+cJmLiu3kHyuorVmQz5MBT
+	TBFLnammTfhM9XE4wZSX7mkqAQV2S5YlNHMu8o50j7k+j8PyPq7VqwgCYiNsxPRLElMZxvuJUn+hi
+	vde7f1Rk2ZIgjBo0fXyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZyHW-0033Y7-7M; Thu, 31 Mar 2022 17:08:22 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1nZzUa-003Bvu-0k; Thu, 31 Mar 2022 18:25:56 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZyHT-0033Wz-CD
- for linux-rockchip@lists.infradead.org; Thu, 31 Mar 2022 17:08:21 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id i16so599508ejk.12
- for <linux-rockchip@lists.infradead.org>; Thu, 31 Mar 2022 10:08:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=kEqVFaQNVsirI19BzOWunmIWYpJUmcbYWL8iEQUsWPQ=;
- b=YzXEakKa9RntpJcjDKxIzuhwh1c/WC9cXqvtM8JcjpKzKUIGosE6f8TFF3rr+o4TzG
- y39yX9VOjnrK+FGfJxk39L5L9ePAWqPrSFE5KHai7sIzySNKqeNaTY2sgcqXzTAqGvPm
- 3cHmmlkB6ks9VSHjSx0+Mkr6Q6d/nQVIXtI9Smd3aRXBrgoVtr9qDVgzWFZHLP81vvxM
- lg3gajYoJnRe6neA0cl1wjXQ94g1qln68LKFBKRyaI8ZDE68RYGszL0fEgH2cvDO1oka
- nm5edvnYiMw6GCHHQZie9Ev9ULe0p34YDC3l+zHD0a6dLEzhqz+Qgqm1qTFUsgR1T+Wd
- 36OA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=kEqVFaQNVsirI19BzOWunmIWYpJUmcbYWL8iEQUsWPQ=;
- b=yxR+1Gw0VfKsUk1R7cK3WOt4a1ZAP0JIZFnlWFQiQuIps8ZlviguECVUm2u8/MBAkF
- EyVmXISB44/Cx/gDVaBOchx+17nyyYKJGV17HhnhBF1Jc9OD/VSPOr+GppQvf6960vSQ
- 610hiAXS+god+1mMkr0AQDTanSJzJ74nCc1sPKcMTW2JO/UW1PFoYpyUheyzwQ5ITbHX
- N5BCBKjqqPkrP0pZuwD+BTe4rl18g7zyTl5BT4nivP0NB3jQ+bnJwhCvNG+8GMfpX9sJ
- YkGSzd2659O0WF3PvxL3704Q8QZoRTDxyQbMZNHP/4UO9366j+XbaRIPxwFRgR2Epr7E
- BbSQ==
-X-Gm-Message-State: AOAM5300P/hHnRMrZiuYCY6Ci6ayZ8ELwkt/Q6txxu3V/Y+pZ3ZgPmxU
- c/ThS6VEL5MwKkGfUBhrSGQHScQWy1Ka5jtX
-X-Google-Smtp-Source: ABdhPJwPbLh5zS5vCrMs/t4eUy9456kE1Rj1C5TKr5bJKpEs1nTB5UEyCthua6vli7lcaN0oHpCaMg==
-X-Received: by 2002:a17:907:7899:b0:6e0:f285:a860 with SMTP id
- ku25-20020a170907789900b006e0f285a860mr5756132ejc.261.1648746496580; 
- Thu, 31 Mar 2022 10:08:16 -0700 (PDT)
-Received: from [192.168.0.167] (xdsl-188-155-201-27.adslplus.ch.
- [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
- jg15-20020a170907970f00b006e0466dcc42sm9622686ejc.134.2022.03.31.10.08.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 31 Mar 2022 10:08:16 -0700 (PDT)
-Message-ID: <25555081-ed80-bbca-b53a-c46a798d3f4d@linaro.org>
-Date: Thu, 31 Mar 2022 19:08:14 +0200
+ id 1nZzUV-003Bt3-Ta
+ for linux-rockchip@lists.infradead.org; Thu, 31 Mar 2022 18:25:53 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nicolas) with ESMTPSA id 117421F46814
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1648751149;
+ bh=ErKTvh7tRRQkBTG8doKmHes8bgpQTZV4rTW/0ZXc+Yw=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+ b=NBRHXXKVZxAl+xaiCWCRR4+w6p1ZJDeTI4ZeOzRiWPAHaDeHJlxIzvg2G3oVR1nIr
+ 9y5ve8cmXkGg+VcG5WZRbB2zHe2c4qfX5Ou4AuMilBElxuWV+X2XBCvT+v9rNbJVhB
+ A1A1EFFfJBCTjnNtTmgVSXDzDJLgcgApWdXvm5gqLjxXhFTvu9wYNOkU/AeLh9ZMhp
+ TtmMN8dxLtX/hTBnWMQoqschGT2p/kgqKYuy4fY57T3kugYB/W3HZ4kWzTAoqtRrtV
+ 2LeLHPZuvnt7lt9bKognP9FhxVsYSR7Aaj98g2hPZTV2cg70Z6+O8jjSmKq0g8g7za
+ GANHAbMwZ161A==
+Message-ID: <8a59875f62ac1a60aec91c9170c1471234e1b4db.camel@collabora.com>
+Subject: Re: [PATCH v1 20/24] media: hantro: Enable HOLD_CAPTURE_BUF for H.264
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Sebastian Fricke <sebastian.fricke@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, kernel@collabora.com,
+ linux-media@vger.kernel.org,  linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev,  linux-kernel@vger.kernel.org
+Date: Thu, 31 Mar 2022 14:25:37 -0400
+In-Reply-To: <20220330073600.crbi5wqlp4rimx2a@basti-XPS-13-9310>
+References: <20220328195936.82552-1-nicolas.dufresne@collabora.com>
+ <20220328195936.82552-21-nicolas.dufresne@collabora.com>
+ <20220330073600.crbi5wqlp4rimx2a@basti-XPS-13-9310>
+User-Agent: Evolution 3.44.0 (3.44.0-1.fc36) 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v1 1/3] dt-bindings: net: convert emac_rockchip.txt to YAML
-Content-Language: en-US
-To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
-Cc: robh+dt@kernel.org, krzk+dt@kernel.org, davem@davemloft.net,
- kuba@kernel.org, pabeni@redhat.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220331161459.16499-1-jbx6244@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220331161459.16499-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_100819_538936_18A0984E 
-X-CRM114-Status: GOOD (  25.56  )
+X-CRM114-CacheID: sfid-20220331_112552_361426_90865FE9 
+X-CRM114-Status: GOOD (  34.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,168 +68,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 31/03/2022 18:14, Johan Jonker wrote:
-> Convert emac_rockchip.txt to YAML.
-> 
-> Changes against original bindings:
->   Add mdio sub node.
-
-I see you replaced phy phandle with mdio node, but is it supported by
-the driver? arc_emac_probe() seems to look for "phy".
-
-> 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
->  .../devicetree/bindings/net/emac_rockchip.txt |  52 --------
->  .../bindings/net/emac_rockchip.yaml           | 112 ++++++++++++++++++
->  2 files changed, 112 insertions(+), 52 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/net/emac_rockchip.txt
->  create mode 100644 Documentation/devicetree/bindings/net/emac_rockchip.yaml
-
-rockchip,emac.yaml
-
-> 
-> diff --git a/Documentation/devicetree/bindings/net/emac_rockchip.txt b/Documentation/devicetree/bindings/net/emac_rockchip.txt
-> deleted file mode 100644
-> index 05bd7dafc..000000000
-> --- a/Documentation/devicetree/bindings/net/emac_rockchip.txt
-> +++ /dev/null
-> @@ -1,52 +0,0 @@
-> -* ARC EMAC 10/100 Ethernet platform driver for Rockchip RK3036/RK3066/RK3188 SoCs
-> -
-> -Required properties:
-> -- compatible: should be "rockchip,<name>-emac"
-> -   "rockchip,rk3036-emac": found on RK3036 SoCs
-> -   "rockchip,rk3066-emac": found on RK3066 SoCs
-> -   "rockchip,rk3188-emac": found on RK3188 SoCs
-> -- reg: Address and length of the register set for the device
-> -- interrupts: Should contain the EMAC interrupts
-> -- rockchip,grf: phandle to the syscon grf used to control speed and mode
-> -  for emac.
-> -- phy: see ethernet.txt file in the same directory.
-> -- phy-mode: see ethernet.txt file in the same directory.
-> -
-> -Optional properties:
-> -- phy-supply: phandle to a regulator if the PHY needs one
-> -
-> -Clock handling:
-> -- clocks: Must contain an entry for each entry in clock-names.
-> -- clock-names: Shall be "hclk" for the host clock needed to calculate and set
-> -  polling period of EMAC and "macref" for the reference clock needed to transfer
-> -  data to and from the phy.
-> -
-> -Child nodes of the driver are the individual PHY devices connected to the
-> -MDIO bus. They must have a "reg" property given the PHY address on the MDIO bus.
-> -
-> -Examples:
-> -
-> -ethernet@10204000 {
-> -	compatible = "rockchip,rk3188-emac";
-> -	reg = <0xc0fc2000 0x3c>;
-> -	interrupts = <6>;
-> -	mac-address = [ 00 11 22 33 44 55 ];
-> -
-> -	clocks = <&cru HCLK_EMAC>, <&cru SCLK_MAC>;
-> -	clock-names = "hclk", "macref";
-> -
-> -	pinctrl-names = "default";
-> -	pinctrl-0 = <&emac_xfer>, <&emac_mdio>, <&phy_int>;
-> -
-> -	rockchip,grf = <&grf>;
-> -
-> -	phy = <&phy0>;
-> -	phy-mode = "rmii";
-> -	phy-supply = <&vcc_rmii>;
-> -
-> -	#address-cells = <1>;
-> -	#size-cells = <0>;
-> -	phy0: ethernet-phy@0 {
-> -	      reg = <1>;
-> -	};
-> -};
-> diff --git a/Documentation/devicetree/bindings/net/emac_rockchip.yaml b/Documentation/devicetree/bindings/net/emac_rockchip.yaml
-> new file mode 100644
-> index 000000000..03173fa7b
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/emac_rockchip.yaml
-> @@ -0,0 +1,112 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/net/emac_rockchip.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip RK3036/RK3066/RK3188 Ethernet Media Access Controller (EMAC)
-> +
-> +maintainers:
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rk3036-emac
-> +      - rockchip,rk3066-emac
-> +      - rockchip,rk3188-emac
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 2
-> +    items:
-> +      - description: host clock
-> +      - description: reference clock
-> +      - description: mac TX/RX clock
-> +
-> +  clock-names:
-> +    minItems: 2
-> +    items:
-> +      - const: hclk
-> +      - const: macref
-> +      - const: macclk
-
-This is also a change, mention it briefly in the commit msg.
-
-> +
-> +  rockchip,grf:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      Phandle to the syscon GRF used to control speed and mode for the EMAC.
-> +
-> +  phy-supply:
-> +    description:
-> +      Phandle to a regulator if the PHY needs one.
-> +
-> +  mdio:
-> +    $ref: mdio.yaml#
-> +    unevaluatedProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +  - rockchip,grf
-
-phy-handle and phy-mode. Probably mdio as well?
-
-> +
-> +allOf:
-> +  - $ref: "ethernet-controller.yaml#"
-
-Best regards,
-Krzysztof
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+TGUgbWVyY3JlZGkgMzAgbWFycyAyMDIyIMOgIDA5OjM2ICswMjAwLCBTZWJhc3RpYW4gRnJpY2tl
+IGEgw6ljcml0wqA6Cj4gSGV5IE5pY29sYXMsCj4gCj4gT24gMjguMDMuMjAyMiAxNTo1OSwgTmlj
+b2xhcyBEdWZyZXNuZSB3cm90ZToKPiA+IFRoaXMgaXMgbmVlZGVkIHRvIG9wdGltaXppbmcgZmll
+bGQgZGVjb2RpbmcuIEVhY2ggZmllbGQgd2lsbCBiZQo+IAo+IHMvaXMgbmVlZGVkIHRvIG9wdGlt
+aXppbmcvaXMgbmVlZGVkIHRvIG9wdGltaXplLwo+IAo+ID4gZGVjb2RlZCBpbiB0aGUgc2FtZSBj
+YXB0dXJlIGJ1ZmZlciwgc28gdG8gbWFrZSB1c2Ugb2YgdGhlIHF1ZXVlcwo+IAo+IHMvaW4gdGhl
+IHNhbWUvaW50byB0aGUgc2FtZS8KPiAKPiA+IHdlIG5lZWQgdG8gYmUgYWJsZSB0byBhc2sgdGhl
+IGRyaXZlciB0byBrZWVwIHRoZSBjYXB0dXJlIGJ1ZmZlci4KPiAKPiBIb3cgYWJvdXQ6Cj4gIiIi
+Cj4gRHVyaW5nIGZpZWxkIGRlY29kaW5nIGVhY2ggZmllbGQgd2lsbCBiZSBkZWNvZGVkIGludG8g
+dGhlIHNhbWUgY2FwdHVyZQo+IGJ1ZmZlci4gT3B0aW1pc2UgdGhpcyBtb2RlIGJ5IGFza2luZyB0
+aGUgZHJpdmVyIHRvIGhvbGQgdGhlIGJ1ZmZlciB1bnRpbAo+IGFsbCBmaWVsZHMgYXJlIHdyaXR0
+ZW4gaW50byBpdC4KPiAiIiIKPiAKPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogTmljb2xhcyBEdWZy
+ZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJvcmEuY29tPgo+IFJldmlld2VkLWJ5OiBTZWJh
+c3RpYW4gRnJpY2tlIDxzZWJhc3RpYW4uZnJpY2tlQGNvbGxhYm9yYS5jb20+CgpQZXJoYXBzIGF2
+b2lkIGdpdmluZyBhIHJldmlld2VkIGJ5IGlmIHlvdSBhcmUgdG8gY29tbWVudCBhcm91bmQgbW9k
+aWZ5aW5nIHRoZQpjb2RlID8gSSB3aWxsIHRob3VnaCBrZWVwIHRoZSBjb2RlIGFzIGlzLCBJIGJl
+bGlldmUgdGhlcmUgaXMgbW9yZSBnb29kIHRoZW4gYmFkCmFyb3VuZCB0aGUgZm9ybS4KCj4gCj4g
+PiAtLS0KPiA+IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX3Y0bDIuYyB8IDI1
+ICsrKysrKysrKysrKysrKysrKysrKysKPiA+IDEgZmlsZSBjaGFuZ2VkLCAyNSBpbnNlcnRpb25z
+KCspCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hh
+bnRyb192NGwyLmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb192NGwyLmMK
+PiA+IGluZGV4IDY3MTQ4YmEzNDZmNS4uNTBkNjM2Njc4ZmYzIDEwMDY0NAo+ID4gLS0tIGEvZHJp
+dmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fdjRsMi5jCj4gPiArKysgYi9kcml2ZXJz
+L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb192NGwyLmMKPiA+IEBAIC00MDksNiArNDA5LDMw
+IEBAIGhhbnRyb191cGRhdGVfcmVxdWlyZXNfcmVxdWVzdChzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4
+LCB1MzIgZm91cmNjKQo+ID4gCX0KPiA+IH0KPiA+IAo+ID4gK3N0YXRpYyB2b2lkCj4gPiAraGFu
+dHJvX3VwZGF0ZV9yZXF1aXJlc19ob2xkX2NhcHR1cmVfYnVmKHN0cnVjdCBoYW50cm9fY3R4ICpj
+dHgsIHUzMiBmb3VyY2MpCj4gPiArewo+ID4gKwlzdHJ1Y3QgdmIyX3F1ZXVlICp2cTsKPiA+ICsK
+PiA+ICsJdnEgPSB2NGwyX20ybV9nZXRfdnEoY3R4LT5maC5tMm1fY3R4LAo+ID4gKwkJCSAgICAg
+VjRMMl9CVUZfVFlQRV9WSURFT19PVVRQVVRfTVBMQU5FKTsKPiA+ICsKPiA+ICsJc3dpdGNoIChm
+b3VyY2MpIHsKPiA+ICsJY2FzZSBWNEwyX1BJWF9GTVRfSlBFRzoKPiA+ICsJY2FzZSBWNEwyX1BJ
+WF9GTVRfTVBFRzJfU0xJQ0U6Cj4gPiArCWNhc2UgVjRMMl9QSVhfRk1UX1ZQOF9GUkFNRToKPiA+
+ICsJY2FzZSBWNEwyX1BJWF9GTVRfSEVWQ19TTElDRToKPiA+ICsJY2FzZSBWNEwyX1BJWF9GTVRf
+VlA5X0ZSQU1FOgo+ID4gKwkJdnEtPnN1YnN5c3RlbV9mbGFncyAmPSB+KFZCMl9WNEwyX0ZMX1NV
+UFBPUlRTX00yTV9IT0xEX0NBUFRVUkVfQlVGKTsKPiA+ICsJCWJyZWFrOwo+IAo+IE91dCBvZiBj
+dXJpb3NpdHksIHdoeSB3b3VsZCBpdCBiZSBiYWQgZm9yIHRoZSBvdGhlciBjb2RlY3MgdG8gaGF2
+ZQo+IHN1cHBvcnQgZm9yIHRoYXQgZmVhdHVyZSBhY3RpdmF0ZWQ/IEFzIHRoaXMgZG9lc24ndCBh
+Y3R1YWxseSBob2xkIHRoZQo+IGJ1ZmZlcnMgYnV0IG9ubHkgbWFrZXMgc3VyZSB0aGF0IHRoZXkg
+Y291bGQgYmUgaGVsZC4KPiAKPiA+ICsJY2FzZSBWNEwyX1BJWF9GTVRfSDI2NF9TTElDRToKPiA+
+ICsJCXZxLT5zdWJzeXN0ZW1fZmxhZ3MgfD0gVkIyX1Y0TDJfRkxfU1VQUE9SVFNfTTJNX0hPTERf
+Q0FQVFVSRV9CVUY7Cj4gCj4gSSB0aGluayBpdCBpcyB3b3J0aCBpdCB0byBoaWdobGlnaHQgd2l0
+aCBhIGNvbW1lbnQgd2h5IG9ubHkgdGhpcyBvbmUKPiByZWNlaXZlcyBzdXBwb3J0IGZvciBob2xk
+aW5nIHRoZSBidWZmZXIuIEFzIGl0IGlzIHF1aXRlIGNvbmZ1c2luZwo+IHdpdGhvdXQgYmFja2dy
+b3VuZCBpbmZvIGFuZCBqdXN0IHRoZSBjb2RlLgoKQXMgdGhpcyBjb2RlIGlzIHF1aXRlIHNlcGFy
+YXRlIGZyb20gdGhlIGFjdHVhbCBjb2RlYyBjb2RlLCBJIGJlbGlldmUgaXQgd2lsbCBiZQptb3Jl
+IHJvYnVzdCB0aGlzIHdheS4gSXQgY291bGQgaGFwcGVuIGluIHRoZSBmdXR1cmUgdGhhdCBjb2Rl
+IGdldCBtb2RpZmllZAp3aXRob3V0IHRha2luZyBpbnRvIGFjY291bnQgdGhhdCBhIGJ1ZmZlciBt
+YXkgYmUgaGVsZC4gVGhpcyBhbHNvIG1pbWljIGhvdyB0aGlzCndhcyBpbXBsZW1lbnRlZCBpbiBD
+ZWRydXMgZndpdy4KCk5vdGUgdGhhdCBpdCBuZWVkcyB0byBiZSBhZGRlZCBmb3IgTVBFRzIgZmll
+bGQgZGVjb2RpbmcgdG9vLCBidXQgSSBiZWxpZXZlIHRoaXMKaXMgdW5yZWxhdGVkIHRvIHRoaXMg
+cGF0Y2hzZXQsIHRoZSBmb3JtIGlzIG5pY2UgZm9yIGFkZGluZyBtb3JlIGluIHRoZSBmdXR1cmUu
+Cgo+IAo+IEhvdyBhYm91dDoKPiBgYGAKPiAvKgo+ICAgKiBEdXJpbmcgZmllbGQgZGVjb2Rpbmcg
+aW4gSDI2NCwgYWxsIGZpZWxkcyBhcmUgd3JpdHRlbiBpbnRvIHRoZQo+ICAgKiBzYW1lIGNhcHR1
+cmUgYnVmZmVyLCB0aHVzIHdlIG5lZWQgdG8gYmUgYWJsZSB0byBob2xkIHRoZSBidWZmZXIKPiAg
+ICogdW50aWwgYWxsIGZpZWxkcyBhcmUgd3JpdHRlbiB0byBpdAo+ICAgKi8KPiBgYGAKPiAKPiA+
+ICsJCWJyZWFrOwo+ID4gKwlkZWZhdWx0Ogo+IAo+IFRoZSBvbmx5IG90aGVyIGRlY29kaW5nIGZv
+cm1hdHMgcmVtYWluaW5nIGFyZToKPiAtIFY0TDJfUElYX0ZNVF9OVjEyXzRMNAo+IC0gVjRMMl9Q
+SVhfRk1UX05WMTIKCllvdSdsbCBuZXZlciBnZXQgcmF3IGZvcm1hdHMgaW4gdGhhdCBzd2l0Y2gu
+IFRoZSBjYXNlcyBhcmUgZXhoYXVzdGl2ZSBmb3IgdGhlCmNvbnRleHQsIHlldCB0aGUgY29tcGls
+ZXIgZG9lcyBub3QgdW5kZXJzdGFuZCB0aGF0IGNvbnRleHQuCgo+IAo+IEJvdGggaGF2ZSBjb2Rl
+YyBtb2RlIEhBTlRST19NT0RFX05PTkUuCj4gCj4gTXkgdGhvdWdodCBpczoKPiBJZiB3ZSBkb24n
+dCBjYXJlIGZvciB0aGVzZSB0d28sIHRoZSB3ZSBtaWdodCBhcyB3ZWxsIGRpc2FibGUgYnVmZmVy
+IGhvbGRpbmcKPiBzdXBwb3J0IGZvciB0aGVtIGFzIHdlbGwuIFNvLCB3ZSBjb3VsZCBtYWtlIHRo
+aXMgc2ltcGxpZXIKPiAoYnV0IGEgYml0IGxlc3MgZGVzY3JpcHRpdmUpOgo+IAo+IGBgYAo+IC8q
+Cj4gICAqIER1cmluZyBmaWVsZCBkZWNvZGluZyBpbiBIMjY0LCBhbGwgZmllbGRzIGFyZSB3cml0
+dGVuIGludG8gdGhlCj4gICAqIHNhbWUgY2FwdHVyZSBidWZmZXIsIHRodXMgd2UgbmVlZCB0byBi
+ZSBhYmxlIHRvIGhvbGQgdGhlIGJ1ZmZlcgo+ICAgKiB1bnRpbCBhbGwgZmllbGRzIGFyZSB3cml0
+dGVuIHRvIGl0Cj4gICAqLwo+IGlmIChmb3VyY2MgPT0gVjRMMl9QSVhfRk1UX0gyNjRfU0xJQ0Up
+Cj4gICAgICB2cS0+c3Vic3lzdGVtX2ZsYWdzIHw9IFZCMl9WNEwyX0ZMX1NVUFBPUlRTX00yTV9I
+T0xEX0NBUFRVUkVfQlVGOwo+IGVsc2UgCj4gCQl2cS0+c3Vic3lzdGVtX2ZsYWdzICY9IH4oVkIy
+X1Y0TDJfRkxfU1VQUE9SVFNfTTJNX0hPTERfQ0FQVFVSRV9CVUYpOwo+IGBgYAo+IAo+IEdyZWV0
+aW5ncywKPiBTZWJhc3RpYW4KPiAKPiA+ICsJCWJyZWFrOwo+ID4gKwl9Cj4gPiArfQo+ID4gKwo+
+ID4gc3RhdGljIGludCBoYW50cm9fc2V0X2ZtdF9vdXQoc3RydWN0IGhhbnRyb19jdHggKmN0eCwK
+PiA+IAkJCSAgICAgIHN0cnVjdCB2NGwyX3BpeF9mb3JtYXRfbXBsYW5lICpwaXhfbXApCj4gPiB7
+Cj4gPiBAQCAtNDcyLDYgKzQ5Niw3IEBAIHN0YXRpYyBpbnQgaGFudHJvX3NldF9mbXRfb3V0KHN0
+cnVjdCBoYW50cm9fY3R4ICpjdHgsCj4gPiAJY3R4LT5kc3RfZm10LnF1YW50aXphdGlvbiA9IHBp
+eF9tcC0+cXVhbnRpemF0aW9uOwo+ID4gCj4gPiAJaGFudHJvX3VwZGF0ZV9yZXF1aXJlc19yZXF1
+ZXN0KGN0eCwgcGl4X21wLT5waXhlbGZvcm1hdCk7Cj4gPiArCWhhbnRyb191cGRhdGVfcmVxdWly
+ZXNfaG9sZF9jYXB0dXJlX2J1ZihjdHgsIHBpeF9tcC0+cGl4ZWxmb3JtYXQpOwo+ID4gCj4gPiAJ
+dnB1X2RlYnVnKDAsICJPVVRQVVQgY29kZWMgbW9kZTogJWRcbiIsIGN0eC0+dnB1X3NyY19mbXQt
+PmNvZGVjX21vZGUpOwo+ID4gCXZwdV9kZWJ1ZygwLCAiZm10IC0gdzogJWQsIGg6ICVkXG4iLAo+
+ID4gLS0gCj4gPiAyLjM0LjEKPiA+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
