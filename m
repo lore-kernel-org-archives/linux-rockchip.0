@@ -4,49 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7076C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Mar 2022 15:01:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93D47C433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Mar 2022 15:06:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p8Co9XepnMRSa0uH7Bn7XfiLIbg3R7St0u7aEn9tTHY=; b=AK7Pmwhba4seMr
-	mydvHvPVv91UgsVmmdFL60dV/Yzr+vxdw42CK+9MUNSXN6CjPA+vLXtjbBKgV30EYhUdoeMU/oxtX
-	Da84qLXDim9fmuU/V8bAN4bg8Vu7yGHuKyy4KahGXVR4i8jHI0DXSSeeWaKc5tXizZ2wwBYamsgH7
-	yIHTEKJMh0/8lzkEgju15GyUCL/r/8ojuDx/Yo2D61rFG7ERP1hjQo2J1qzKfF45gGJNHGuzfORDm
-	bxx/r3EyHjEpF3uiN/JuiAXY7jz8+sDzoi1jajVMExeMiIy53T1dWcl11zt+JnMsukwbeTkDz0N6f
-	IURdhmf0tlNlSETQLQtw==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Aj5tVG6iISUZf470xWMQXsMzrCqcTOXLlaAVTMSOQx0=; b=aP21WnwpNtkYXK
+	FIxKJUIgiJPdV5/8uBPSfF7D5VOkaF3tLizPQ6xsQY1TsgaFOWgW45/KAbyaKYkKNpe//J3llzMXF
+	YbACKVmxygA9yunKnLs4MFkBV/b+yrlTeW0x/XV7Q+A78dYmRt5L84LZyuCPuKrDDVWV9p4t0Y18z
+	+cScjte9zxgof64r6BYnyGzseHoM3zCMrzuWCDzfyTDbiWjmmSkXdhe+M1XoXMBRLs98PYTh6Dh6q
+	VfFdc+uwIunKK/NJWyAKwotKJNWfh1Y11UZ+FuN6n5vl6se+L7QL9kLDdaXjv3lpJJgSjXAJv7wIY
+	MsXYbhiaZ9UOYUB+YKhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZwIV-002fLf-LB; Thu, 31 Mar 2022 15:01:15 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nZwNw-002gOv-4K; Thu, 31 Mar 2022 15:06:52 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZwIS-002fJp-JP
- for linux-rockchip@lists.infradead.org; Thu, 31 Mar 2022 15:01:14 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nZwIH-0003rZ-OK; Thu, 31 Mar 2022 17:01:01 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nZwIC-0001Hb-97; Thu, 31 Mar 2022 17:00:56 +0200
-Date: Thu, 31 Mar 2022 17:00:56 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+ id 1nZwNs-002gMD-Do; Thu, 31 Mar 2022 15:06:50 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id 5so42050321lfp.1;
+ Thu, 31 Mar 2022 08:06:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=iEeqXgqN7qNwmQ7SU0adYJu3zAo5+AxJKS/k66U7Uuw=;
+ b=cSdCZGdJoMjReN01pR3Q7RjqXLfM/ds+zF+IGB5HU994zhdMp0MUwm7zC4myMiGEIC
+ 8R5ssSK40FIlevjSNoHjC8kXgJFSILuT/JItQh4qmwXwKnutMvBXuiRdQBnp1jv0iemr
+ kYZR0Vrlwu9rj6pF+2LiP+biOfQkfK+kamY1vle2Ye0KNJpORClIuM25P/G9ndQMo3ka
+ Evb7/Q2iWADK9ySutmkfanI748dH8qelFdtI4CcrD8H4HJt4lWpqRuif896AdevqTW+B
+ ZCS+6ITiFb7poKmgiSIoEX9A+zj6J0QeufKFHyLIf563VeF3Kt0tf9WxGuhXAAS4zobe
+ F+vw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=iEeqXgqN7qNwmQ7SU0adYJu3zAo5+AxJKS/k66U7Uuw=;
+ b=z8E1VAXh93Ny9GqJegCAX1lSAJWgcAgAz48MYV0diuWz6BlLCzERgI/2QtyKDvxJhG
+ ZpyNcJt8LtU52BFY7eHa0egshsEhWGIFvHPe6ME67zp3hCLOVgWx7HeK2HOVIuh5iTTZ
+ HOgKcF+UrGO1ceVPfA2ycwq87Uhssg4rfZBHdqRM6AetBqWOMrxTG9NJwVvCCjxGU6nQ
+ VriZd2DZHWbZTCt3lmrvSkBOKPRkCVDNpGjYKYgDIvmommGJ1fnb2SgyainPlXi9gEgQ
+ 4pa09TvMI71KzO5QeHlHFYNgQU6KbpHoXX+9NHv/6EFi7ZDjj1+97uAvophTqPRjTT5W
+ bN4w==
+X-Gm-Message-State: AOAM532tmHYBcGL+0l7JWtM+oMqUTMtc44SEJGsU/17kuQ2z6UIiuqRe
+ A8+5N7EO9we6QtLJK78Wtxs=
+X-Google-Smtp-Source: ABdhPJwqfhKwVkGEAlyRMgBOZAf1wO/XCh9gwyq4jSKNAmK7zbJ0HROyx7wXfMKYpLhCy8ArHZKcZg==
+X-Received: by 2002:a05:6512:3f86:b0:448:9448:5561 with SMTP id
+ x6-20020a0565123f8600b0044894485561mr10757975lfa.489.1648739198577; 
+ Thu, 31 Mar 2022 08:06:38 -0700 (PDT)
+Received: from smtpclient.apple (31-178-191-245.dynamic.chello.pl.
+ [31.178.191.245]) by smtp.gmail.com with ESMTPSA id
+ e3-20020a196743000000b0044311216c42sm2694691lfj.307.2022.03.31.08.06.36
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 31 Mar 2022 08:06:37 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
+Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
+From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+In-Reply-To: <20220331150056.GH4012@pengutronix.de>
+Date: Thu, 31 Mar 2022 17:06:35 +0200
 Cc: Andy Yan <andy.yan@rock-chips.com>,
  "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
+ =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sandy Huang <hjc@rock-chips.com>,
  dri-devel@lists.freedesktop.org,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
  Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de,
  "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
-Message-ID: <20220331150056.GH4012@pengutronix.de>
+Message-Id: <3A5C5A71-0CE0-4072-9502-75385C1C43F7@gmail.com>
 References: <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
  <20220330072822.GX12181@pengutronix.de>
  <0D8F5951-5375-46B5-BFF0-7ED410371EB7@gmail.com>
@@ -57,24 +83,13 @@ References: <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
  <20220330192054.GA4012@pengutronix.de>
  <af8445e0-f4af-721b-709e-2eb7c488a8a4@rock-chips.com>
  <B7CD9D55-9F2D-42F4-9D04-17C6A5FEBB08@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <B7CD9D55-9F2D-42F4-9D04-17C6A5FEBB08@gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 17:00:25 up 1 day,  3:30, 52 users,  load average: 0.42, 0.22, 0.20
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+ <20220331150056.GH4012@pengutronix.de>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+X-Mailer: Apple Mail (2.3654.120.0.1.13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_080112_674991_F3A3A8CC 
-X-CRM114-Status: GOOD (  20.79  )
+X-CRM114-CacheID: sfid-20220331_080648_489974_DF4ED33A 
+X-CRM114-Status: UNSURE (   7.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,32 +107,12 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBNYXIgMzEsIDIwMjIgYXQgMDQ6NTM6MDVQTSArMDIwMCwgUGlvdHIgT25pc3pjenVr
-IHdyb3RlOgo+IAo+IAo+ID4gV2lhZG9tb8WbxIcgbmFwaXNhbmEgcHJ6ZXogQW5keSBZYW4gPGFu
-ZHkueWFuQHJvY2stY2hpcHMuY29tPiB3IGRuaXUgMzEuMDMuMjAyMiwgbyBnb2R6LiAxNDoxMzoK
-PiA+IAo+ID4gCj4gPiBQaW90cjoKPiA+IAo+ID4gV2hhdCBzb2MgaXMgb24geW91IGJvYXJkPyBy
-azM1NjYgb3IgcmszNTY4Pwo+IAo+IGl0IGlzIHJrMzU2NiBpbiB4OTYteDYgdHZib3gKPiAKPiAK
-PiA+IAo+ID4gSSBoYXZlIGEgc2NyaXB0c1swXSAgdXNlIGlvWzFdIGNvbW1hbmQgdG8gZHVtcCB0
-aGUgVk9QMiByZWdpc3RlciB5b3UgY2FuIHVzZSBpdCBkdW1wIHRoZSByZWdpc3RlciBjb25maWd1
-cmF0aW9uIHdoZW4geW91IG1lZXQgYSBkaXNwbGF5IGZhaWx1cmUsCj4gPiAKPiA+IHRoZW4gc2Vu
-ZCB0aGUgZHVtcCB0byBtZSwgbWF5YmUgSSBjYW4gZmlndXJlIG91dCBzb21ldGhpbmcuCj4gPiAK
-PiA+IFswXWh0dHBzOi8vZ2l0aHViLmNvbS9hbmR5c2hyay9idWlsZHJvb3QvYmxvYi8yMDIyL2Jv
-YXJkL2FuZHlzaHJrL3Jvb3Rmc19vdmVybGF5L3Vzci9iaW4vdm9wMl9kdW1wLnNoCj4gPiAKPiA+
-IFsxXSBodHRwczovL2dpdGh1Yi5jb20vYW5keXNocmsvaW8KPiAKPiBBbmR5Cj4gCj4gUGxzIHNl
-ZSBodHRwczovL3Bhc3RlYmluLmNvbS9DSG11OXMyMgo+IAo+IEkgcHV0IGR1bXBzIGZvciBmb2xs
-b3dpbmcgc2NlbmFyaW9zOgo+IAo+IDEuCj4gLWJvb3QKPiAtbW9kZXRlc3QgLXMgNjlANjc6MTky
-MHgxMDgwIC0+IG9rCj4gLW1vZGV0ZXN0IC1QIDQzQDY3OjE5MjB4MTA4MEBOVjEyIC0+IGdyZWVu
-IHNjcmVlbgo+IAo+IAo+IDIuCj4gLWJvb3QKPiAtbW9kZXRlc3QgLXMgNjlANjc6MTkyMHgxMDgw
-IC0+IG9rCj4gLW1vZGV0ZXN0IC1QIDQ5QDY3OjE5MjB4MTA4MEBOVjEyIC0+IG9rIChidXQgc2hp
-ZnRlZCBob3Jpem9udGFsbHkgYnkgYWJvdXQgNSUgb2Ygc2NyZWVuIHdpZHRoKQoKSGF2ZSB5b3Ug
-YXBwbGllZCB0aGUgYnVnZml4IEkgc2hhcmVkIHdpdGggeW91IGhlcmU6CgpodHRwczovL2xvcmUu
-a2VybmVsLm9yZy9saW51eC1hcm0ta2VybmVsLzIwMjIwMzMwMDcyODIyLkdYMTIxODFAcGVuZ3V0
-cm9uaXguZGUvCgpTYXNjaGEKCi0tIApQZW5ndXRyb25peCBlLksuICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfApTdGV1ZXJ3YWxkZXIgU3Ry
-LiAyMSAgICAgICAgICAgICAgICAgICAgICAgfCBodHRwOi8vd3d3LnBlbmd1dHJvbml4LmRlLyAg
-fAozMTEzNyBIaWxkZXNoZWltLCBHZXJtYW55ICAgICAgICAgICAgICAgICAgfCBQaG9uZTogKzQ5
-LTUxMjEtMjA2OTE3LTAgICAgfApBbXRzZ2VyaWNodCBIaWxkZXNoZWltLCBIUkEgMjY4NiAgICAg
-ICAgICAgfCBGYXg6ICAgKzQ5LTUxMjEtMjA2OTE3LTU1NTUgfAoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5n
+dXRyb25peC5kZT4gdyBkbml1IDMxLjAzLjIwMjIsIG8gZ29kei4gMTc6MDA6Cj4gCj4gCj4gSGF2
+ZSB5b3UgYXBwbGllZCB0aGUgYnVnZml4IEkgc2hhcmVkIHdpdGggeW91IGhlcmU6Cj4gCj4gaHR0
+cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtYXJtLWtlcm5lbC8yMDIyMDMzMDA3MjgyMi5HWDEy
+MTgxQHBlbmd1dHJvbml4LmRlLwo+IAoKb29vb3BzCgpub29vb29vCmRpZG4ndCBub3RpY2VkIDot
+KAoKbGV0IG1lIHRyeSB3aXRoIGl0IQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
