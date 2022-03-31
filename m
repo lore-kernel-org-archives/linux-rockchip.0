@@ -4,82 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EE4CC433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Mar 2022 20:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2897C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Mar 2022 22:38:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ln2zgqRbK8VM0nHcviWQvtZAO52iwL0JFvVnJBIGR3Q=; b=GOkQ8zONUgFCFM
-	XJscExb31im52vcYeOCTzdLIuLQU5nxhDvQbx00XDW+fzu2UZ5ljmbMzIWHlsMrOJEvU6R1bxKHx+
-	zplLk0nlm4CyQ1O98MmQeTR3Bz7NVLkQeNXzb6MKhKSEWHbPKr4MvGzOst2BnUwPALnEB7lAyRstP
-	mqKxrF+s5PzKewX3HKiW20zR18S6m0Kz6Fz5yM2hfBKINVeI9IF9SwtWs48rcHAjh5OIq3VUbji+z
-	pW0e9euoRdbeK3o6tmurJIHP1Re17n4t2mbKrkF1qpnRE9gwgodKL9remmkS7m2KmiaQgOV8cJC/a
-	VeGodvNzMVLMSUzJOWSg==;
+	List-Owner; bh=4Pv6cJIoYAC66m1qn8kBFeAdRgB6OJGVK8EqXnKxtM8=; b=nEuUQ7+N3odqOu
+	ZHi1cOp6SQsKiP506cvrsTwwbGkqkuaNKVJICKWcBZ24gT4FOzD6lM87fNGO9jpfRroAEAP94DthY
+	nM3w1PSS6+joz8OQPasKR7yRPgXxGaiY5Mhf4DHnZ9W7mux1p959LA/raCwNZvWZ5tLlqNhBto0EL
+	LUTEA6nHEX9o3t9ZpngA5G+4u6fda8W7JbmjmJVGIBaFCJNkH7scyMXzSz3sxbzMleSKpToce29gU
+	XOzEVmkCQ8yCLfP3j4o0PtzkhT5yJi3F1v81UBVl7YsV6rlb8b9tVF5rmkuW3e1BDWl4ROfDEo2JI
+	Xmx+2D66Jq/yc4zkGv5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1na1Fv-003XxH-EL; Thu, 31 Mar 2022 20:18:55 +0000
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
+	id 1na3Qk-003rtg-PV; Thu, 31 Mar 2022 22:38:14 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1na1Fs-003Xvj-Cj
- for linux-rockchip@lists.infradead.org; Thu, 31 Mar 2022 20:18:54 +0000
-Received: by mail-ot1-x32d.google.com with SMTP id
- x8-20020a9d6288000000b005b22c373759so668164otk.8
- for <linux-rockchip@lists.infradead.org>; Thu, 31 Mar 2022 13:18:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=wQjAfS7fQNP+0bjIIqmCMq8qsMvCY7R1nHBvhnmQNXI=;
- b=j10MlezzUpC9JiuA1DYXfc0p9tDkTlUyllrS2JSrfg+4az2Fea/Pxd3qOyo3vhFJAf
- sqTdXREuXvgAbMvHpqFgquPi4HC8CUWBpNp8qbTF6IbqDAm5vmnHhv89ecdqJx6oT7tH
- Bgn6QkG2lvJhZD6fOulEkF9TvlEIEx65uZJBmWP+D432fiawAc5E2i2zMsJr8DGZCCSj
- pxKArQyeFNkWcww1cZBcpb+vo4J13O3Oth9qR0YD9JzDNOHHXmCo+1JU75Z+Kj8m+wCQ
- fFcKsE82F2K2QllygTYgs0Fgb0NjwkiAYEc7z58T3fNWI2LIlajmTS45yKqpBMtYrrAa
- TFPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=wQjAfS7fQNP+0bjIIqmCMq8qsMvCY7R1nHBvhnmQNXI=;
- b=AkIGKbeGDGSvNgg5p4yMUYzTsrVI2q/x/fsL6jqrY5vDbT/EaAztvoLh+GWaxA/U63
- l9w+9E5qBOFRMUyeUBvYXXf3vSk56atNDSXiGI5JlF24wg7MqPfeIxHEkMSynGqldqJi
- 9Us52AIYK4sqpoV3nx6N6qN9qMqhOZyxReqqMD/bIewsfJar2OfMllw7TD7RehRw0Idh
- A0sH6zcudwxGHeoHRyaEBGVxIvH+Lp4OsvS5oxfJpQAXzTJ5oLXt1wE9eiKaA9e0s9pV
- 51e/LCn27LIl3c7NrWBAmyHwTWeBxC5RL3ANfZ7CLAV+v7LCWb8O9AR6GHMBGtq6x03Z
- jPiA==
-X-Gm-Message-State: AOAM531uGsNQZTNOWNuYOHNAQmxfN1pZKLYUDEA9Ir3gHBhMim3Lmzuv
- iA4LXdkm4hIehBR/R0iKsoykIQ==
-X-Google-Smtp-Source: ABdhPJyqCR7D5/odh4ouFQT5iXg7jswTv5MMl65YGWcRHy65MBuAgKtCob4+S4ePPn9YL9WlX0TwmQ==
-X-Received: by 2002:a05:6830:1dea:b0:5b2:3db5:1494 with SMTP id
- b10-20020a0568301dea00b005b23db51494mr6277005otj.169.1648757928806; 
- Thu, 31 Mar 2022 13:18:48 -0700 (PDT)
-Received: from eze-laptop ([190.194.87.200]) by smtp.gmail.com with ESMTPSA id
- x18-20020a056830245200b005ce01c28c77sm270635otr.1.2022.03.31.13.18.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 31 Mar 2022 13:18:48 -0700 (PDT)
-Date: Thu, 31 Mar 2022 17:18:43 -0300
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4] media: hantro: Implement support for encoder commands
-Message-ID: <YkYMo3cU2lqeDBu1@eze-laptop>
-References: <20220331091628.641915-1-wenst@chromium.org>
+ id 1na3QY-003rqG-P8; Thu, 31 Mar 2022 22:38:04 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 1BC94B82251;
+ Thu, 31 Mar 2022 22:38:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8B12C340ED;
+ Thu, 31 Mar 2022 22:37:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1648766279;
+ bh=0+cqxY3wgXl1ZxgBlYb2Pw1E+eA45qGlrrGxGV6BP4Q=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=KVubnGXunMJIF0ThNkEy70N0q5PMBLlBFHZtwDDlcF/LEM30o5NILdXywFFrb8Mfc
+ ky7xDb6uCD4Uq5P+YIK0JXy/82QVa7PNArud3iXwsD5Iau9k1s91+EARvK9nB8dHpe
+ 4vBaeI10JPTgNi+n1jcuDoQHMUkhMO1DNZQG5u/KveYKZBPKI+qcrYKLHXt7clQOH3
+ heENiVEo2e3zffwSV2wtufCT5wlmCKwc6wlvxoJs23Fa1vvMgHgyNR1B4RXf8/Z+St
+ 9/W6lO1dTqMP7gpPu7WhKM5soFhWTd+O3lsNeubAc0SwUOkZnQsP57x/LmzTDPgsww
+ ohHY7YDlIt5UA==
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220331091628.641915-1-wenst@chromium.org>
+In-Reply-To: <bf438af8-5969-73e4-009d-cb7d93095a5e@kernel.org>
+References: <20220324133229.24035-1-jbx6244@gmail.com>
+ <f7493d93-6c8a-efa9-1f2c-a0003a6d43b2@kernel.org>
+ <bf62ad40-6bcf-62ae-f56a-cdc8d17456ec@gmail.com>
+ <20220325005130.C45A3C340EC@smtp.kernel.org>
+ <bf438af8-5969-73e4-009d-cb7d93095a5e@kernel.org>
+Subject: Re: [PATCH v1] dt-bindings: clock: convert rockchip,
+ rk3188-cru.txt to YAML
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: robh+dt@kernel.org, krzk+dt@kernel.org, mturquette@baylibre.com,
+ linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+To: Johan Jonker <jbx6244@gmail.com>, Krzysztof Kozlowski <krzk@kernel.org>,
+ heiko@sntech.de
+Date: Thu, 31 Mar 2022 15:37:57 -0700
+User-Agent: alot/0.10
+Message-Id: <20220331223759.B8B12C340ED@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_131852_475496_1A414FE6 
-X-CRM114-Status: GOOD (  36.54  )
+X-CRM114-CacheID: sfid-20220331_153803_140125_CB1CC18E 
+X-CRM114-Status: GOOD (  22.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,222 +80,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 31, 2022 at 05:16:28PM +0800, Chen-Yu Tsai wrote:
-> The V4L2 stateful encoder uAPI specification requires that drivers
-> support the ENCODER_CMD ioctl to allow draining of buffers. This
-> however was not implemented, and causes issues for some userspace
-> applications.
+Quoting Krzysztof Kozlowski (2022-03-25 00:31:25)
+> On 25/03/2022 01:51, Stephen Boyd wrote:
+> > Quoting Johan Jonker (2022-03-24 12:51:36)
+> >> Hi Heiko, Krzysztof,
+> >>
+> >> Question for the Rockchip clock maintainer:
+> >> What clock should be used here and other SoCs with several clock parents
+> >> in the tree?
+> >>
+> >> The clock.yaml produces a lot off notifications like:
+> >>
+> >> /arch/arm/boot/dts/rk3036-evb.dtb: clock-controller@20000000: 'clocks'
+> >> is a dependency of 'assigned-clocks'
+> > 
+> > 'clocks' is not a dependency of 'assigned-clocks'. The dt-schema should
+> > be fixed to remove that requirement.
 > 
-> Implement support for the ENCODER_CMD ioctl using v4l2-mem2mem helpers.
-> This is entirely based on existing code found in the vicodec test
-> driver.
-> 
-> Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> If the driver does not have any clock inputs ("clocks" property), why
+> does it care about some clock frequencies and parents?
 
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Because it's a clock provider itself. In this case I suspect because
+this is a clock-controller node it was skipping describing some crystal
+input though. Maybe it wants to configure the various PLLs in the
+clock-controller for a particular board. I can imagine some node with
+#clock-cells may want to configure the frequency of the clock outputs or
+configure the clk parents for a certain board/SoC. In that case there
+may not be any clocks property, but we still want to configure things.
 
-I believe Nicolas tested the patch before the splitting,
-so this is probably Tested-by as well.
+> 
+> The clocks is the logical dependency of assigned-clocks, because
+> otherwise hardware description is not complete.
 
-Thanks!
-Ezequiel
+Sure, but also #clock-cells indicating that this is a clock-controller
+itself means something. The existing bindings are what they are so
+forcing bindings to be updated to comply with having a 'clocks' property
+doesn't seem very nice.
 
-> ---
 > 
-> This version was tested on RK3399 on mainline with fluster and gstreamer.
-> Fluster test scores for VP8 decoding remain the same. Gstreamer jpeg
-> encoding works without stalling or outputing extra frames.
+> What should be here for Rockhip? We had similar cases like this for many
+> drivers, I was fixing some of Exynos as well. In my case usually the
+> root/external clock was missing, so I supplied is as input clock to the
+> clock controller.
 > 
-> For stress testing, fluster by itself already runs six jobs concurrently.
-> At the same time, I also spawn a half-dozen gstreamer encoding jobs:
-> 
->     gst-launch-1.0 videotestsrc num-buffers=2000 ! v4l2jpegenc ! fakesink
-> 
-> It was also backported onto ChromeOS 5.10, and tested on kevin.
-> 
-> Everything seems to work ok, without anything stalling.
-> 
-> Changes since v3:
-> - Split out unrelated change into separate patch [1]
-> - Dropped invalid .has_stopped check after v4l2_m2m_ioctl_encoder_cmd()
->   was called. Issue raised by Ezequiel.
-> - Dropped reviewed-by from Benjamin due to code changes
-> 
-> [1] https://lore.kernel.org/linux-media/20220331084907.628349-1-wenst@chromium.org/
-> 
-> Changes since v2:
-> - Dropped RFC tag
-> - Added Reviewed-by from Benjamin
-> - Replace direct access to vb->planes[i].bytesused with
->   vb2_set_plane_payload()
-> 
-> Changes since v1:
-> - Correctly handle last buffers that are empty
-> - Correctly handle last buffers that just got queued
-> - Disable (TRY_)ENCODER_CMD ioctls for hantro decoder
-> 
-> This is based on linux-next-20220208, and was tested on RK3399 with
-> Gstreamer running the JPEG encoder. It was also tested on ChromeOS
-> 5.10 on Kevin with the video encoder used in ChromeOS ARC, which
-> requires this. For ChromeOS, both encoder and decoder tests were run
-> to check for regressions.
-> 
-> Everything really works OK now, but since I'm not very familiar with
-> the mem2mem framework, I might be missing something, causing resource
-> leaks. Hence this patch is labeled RFC.
-> 
-> Last, I suppose we could also add support for (TRY_)DECODER_CMD now?
-> 
->  drivers/staging/media/hantro/hantro_drv.c  | 17 ++++++-
->  drivers/staging/media/hantro/hantro_v4l2.c | 59 ++++++++++++++++++++++
->  2 files changed, 74 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> index dc768884cb79..bd7d11032c94 100644
-> --- a/drivers/staging/media/hantro/hantro_drv.c
-> +++ b/drivers/staging/media/hantro/hantro_drv.c
-> @@ -56,6 +56,10 @@ dma_addr_t hantro_get_ref(struct hantro_ctx *ctx, u64 ts)
->  	return hantro_get_dec_buf_addr(ctx, buf);
->  }
->  
-> +static const struct v4l2_event hantro_eos_event = {
-> +	.type = V4L2_EVENT_EOS
-> +};
-> +
->  static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
->  				    struct hantro_ctx *ctx,
->  				    enum vb2_buffer_state result)
-> @@ -73,6 +77,12 @@ static void hantro_job_finish_no_pm(struct hantro_dev *vpu,
->  	src->sequence = ctx->sequence_out++;
->  	dst->sequence = ctx->sequence_cap++;
->  
-> +	if (v4l2_m2m_is_last_draining_src_buf(ctx->fh.m2m_ctx, src)) {
-> +		dst->flags |= V4L2_BUF_FLAG_LAST;
-> +		v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
-> +		v4l2_m2m_mark_stopped(ctx->fh.m2m_ctx);
-> +	}
-> +
->  	v4l2_m2m_buf_done_and_job_finish(ctx->dev->m2m_dev, ctx->fh.m2m_ctx,
->  					 result);
->  }
-> @@ -809,10 +819,13 @@ static int hantro_add_func(struct hantro_dev *vpu, unsigned int funcid)
->  	snprintf(vfd->name, sizeof(vfd->name), "%s-%s", match->compatible,
->  		 funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER ? "enc" : "dec");
->  
-> -	if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER)
-> +	if (funcid == MEDIA_ENT_F_PROC_VIDEO_ENCODER) {
->  		vpu->encoder = func;
-> -	else
-> +	} else {
->  		vpu->decoder = func;
-> +		v4l2_disable_ioctl(vfd, VIDIOC_TRY_ENCODER_CMD);
-> +		v4l2_disable_ioctl(vfd, VIDIOC_ENCODER_CMD);
-> +	}
->  
->  	video_set_drvdata(vfd, vpu);
->  
-> diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-> index 261beb0c40f6..71a6279750bf 100644
-> --- a/drivers/staging/media/hantro/hantro_v4l2.c
-> +++ b/drivers/staging/media/hantro/hantro_v4l2.c
-> @@ -628,6 +628,38 @@ static int vidioc_s_selection(struct file *file, void *priv,
->  	return 0;
->  }
->  
-> +static const struct v4l2_event hantro_eos_event = {
-> +	.type = V4L2_EVENT_EOS
-> +};
-> +
-> +static int vidioc_encoder_cmd(struct file *file, void *priv,
-> +			      struct v4l2_encoder_cmd *ec)
-> +{
-> +	struct hantro_ctx *ctx = fh_to_ctx(priv);
-> +	int ret;
-> +
-> +	ret = v4l2_m2m_ioctl_try_encoder_cmd(file, priv, ec);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	if (!vb2_is_streaming(v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx)) ||
-> +	    !vb2_is_streaming(v4l2_m2m_get_dst_vq(ctx->fh.m2m_ctx)))
-> +		return 0;
-> +
-> +	ret = v4l2_m2m_ioctl_encoder_cmd(file, priv, ec);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	if (ec->cmd == V4L2_ENC_CMD_STOP &&
-> +	    v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
-> +		v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
-> +
-> +	if (ec->cmd == V4L2_ENC_CMD_START)
-> +		vb2_clear_last_buffer_dequeued(&ctx->fh.m2m_ctx->cap_q_ctx.q);
-> +
-> +	return 0;
-> +}
-> +
->  const struct v4l2_ioctl_ops hantro_ioctl_ops = {
->  	.vidioc_querycap = vidioc_querycap,
->  	.vidioc_enum_framesizes = vidioc_enum_framesizes,
-> @@ -657,6 +689,9 @@ const struct v4l2_ioctl_ops hantro_ioctl_ops = {
->  
->  	.vidioc_g_selection = vidioc_g_selection,
->  	.vidioc_s_selection = vidioc_s_selection,
-> +
-> +	.vidioc_try_encoder_cmd = v4l2_m2m_ioctl_try_encoder_cmd,
-> +	.vidioc_encoder_cmd = vidioc_encoder_cmd,
->  };
->  
->  static int
-> @@ -748,6 +783,22 @@ static void hantro_buf_queue(struct vb2_buffer *vb)
->  	struct hantro_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
->  	struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
->  
-> +	if (V4L2_TYPE_IS_CAPTURE(vb->vb2_queue->type) &&
-> +	    vb2_is_streaming(vb->vb2_queue) &&
-> +	    v4l2_m2m_dst_buf_is_last(ctx->fh.m2m_ctx)) {
-> +		unsigned int i;
-> +
-> +		for (i = 0; i < vb->num_planes; i++)
-> +			vb2_set_plane_payload(vb, i, 0);
-> +
-> +		vbuf->field = V4L2_FIELD_NONE;
-> +		vbuf->sequence = ctx->sequence_cap++;
-> +
-> +		v4l2_m2m_last_buffer_done(ctx->fh.m2m_ctx, vbuf);
-> +		v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
-> +		return;
-> +	}
-> +
->  	v4l2_m2m_buf_queue(ctx->fh.m2m_ctx, vbuf);
->  }
->  
-> @@ -763,6 +814,8 @@ static int hantro_start_streaming(struct vb2_queue *q, unsigned int count)
->  	struct hantro_ctx *ctx = vb2_get_drv_priv(q);
->  	int ret = 0;
->  
-> +	v4l2_m2m_update_start_streaming_state(ctx->fh.m2m_ctx, q);
-> +
->  	if (V4L2_TYPE_IS_OUTPUT(q->type))
->  		ctx->sequence_out = 0;
->  	else
-> @@ -835,6 +888,12 @@ static void hantro_stop_streaming(struct vb2_queue *q)
->  		hantro_return_bufs(q, v4l2_m2m_src_buf_remove);
->  	else
->  		hantro_return_bufs(q, v4l2_m2m_dst_buf_remove);
-> +
-> +	v4l2_m2m_update_stop_streaming_state(ctx->fh.m2m_ctx, q);
-> +
-> +	if (V4L2_TYPE_IS_OUTPUT(q->type) &&
-> +	    v4l2_m2m_has_stopped(ctx->fh.m2m_ctx))
-> +		v4l2_event_queue_fh(&ctx->fh, &hantro_eos_event);
->  }
->  
->  static void hantro_buf_request_complete(struct vb2_buffer *vb)
-> -- 
-> 2.35.1.1021.g381101b075-goog
-> 
+
+Can the schema consider either #clock-cells or clocks? I think that will
+work for most cases. It would also be good to have a comment in the
+schema or more detail around the definition of assigned-clocks in
+bindings/clock/clock-bindings.txt that clocks or #clock-cells are
+required. It would be super cool if assigned-clocks only applied if
+#clock-cells was present, otherwise clocks property applies, but I doubt
+we can do that anymore given how long the binding has been around.
 
 _______________________________________________
 Linux-rockchip mailing list
