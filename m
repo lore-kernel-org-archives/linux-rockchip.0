@@ -4,72 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22BC0C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Mar 2022 08:18:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABA69C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Mar 2022 08:49:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dUFFutw6wNiFKk0rKb+7/otJZchbf5EIFoUKWG1s7TM=; b=ulEKO9hevH4F6X
-	nDAvFpcZtvxkKEHM7bm78D6srH5hQ5BOuIhISrmCh1HdLaIxULz8dVdgOsNo3W0RNRPolIEuUUoYE
-	JTjoxfx+pj5cgpgmLdt3hggcI9mpmXEYr53XjsTZPEuNCfV9m9apNh+y/qSJlgAfq2eJ5TKo89q0S
-	hnReD1THasxFoypAq3ZfOG8p+/kWPInh9WJKUVKN0FZTICcdw0XM87aHK+ey1XxMyyBDsB0GQTfrK
-	D/g1lmktxERDIuqOFAYJRdCSvHi/na2q5IyV1qAeBTPijck3ViCLIa988eNiy4DHq5tX7atoCqhbm
-	jPHp0fEsog2rTMG8axfA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=st92MfHQAsEjbEG7VquLnqb9pEknwAzx0Dweppkp1mk=; b=G8s7Uv6co/mZ87
+	BhoE5SuVToq5xBh50/z/g8WElEaEvzF8xhZ0NJ6SdSgz8v4KxWdr8gveGbrH+QDqAbuoYDnzI5Lqf
+	1Skjbw02BTKwyMri+sVYRtOgjwV56QDMHlwx1+FVLMimid51EeQZSWivCS1nf7Ugb65C72XFtzmJq
+	qGIQfh7BoK7g7JTiD8W8qpKnpTf56HDrplnIY+K/5SSNlPVKFD+o1y9YeOaQT0NUMGSIBhqFyR4cr
+	ghb8LcECBZEee8IaVWGAmt5e7WFAdsTADtxKHDPSyFdp2iUOsirbfFqv5HDWppC9zIZVJzUVTrVnd
+	U04XyONAn2oNigod+yUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZq0o-001E4g-12; Thu, 31 Mar 2022 08:18:34 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nZqUg-001MPQ-Fn; Thu, 31 Mar 2022 08:49:26 +0000
+Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZq0b-001Dzw-El
- for linux-rockchip@lists.infradead.org; Thu, 31 Mar 2022 08:18:23 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nZq0Y-0004iA-3i; Thu, 31 Mar 2022 10:18:18 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nZq0V-0008Bi-59; Thu, 31 Mar 2022 10:18:15 +0200
-Date: Thu, 31 Mar 2022 10:18:15 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Kever Yang <Kever.yang@rock-chips.com>
-Subject: Re: [PATCH v9 20/23] drm/rockchip: Make VOP driver optional
-Message-ID: <20220331081815.GF4012@pengutronix.de>
-References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
- <20220328151116.2034635-21-s.hauer@pengutronix.de>
- <274a12a9-61f1-7d6a-e89c-52237621930b@rock-chips.com>
- <20220330063913.GW12181@pengutronix.de>
- <9619ce71-db59-d6cd-c254-2b67122fa245@rock-chips.com>
- <20220331070614.GD4012@pengutronix.de>
- <eebd2731-f18b-af1c-b0b9-09df669f5a3c@rock-chips.com>
+ id 1nZqUZ-001MKa-J7
+ for linux-rockchip@lists.infradead.org; Thu, 31 Mar 2022 08:49:21 +0000
+Received: by mail-pj1-x1029.google.com with SMTP id jx9so23400529pjb.5
+ for <linux-rockchip@lists.infradead.org>; Thu, 31 Mar 2022 01:49:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=W056jK4JO9Wem+3qlNSvwaayL2PwMR77g5EtZS2gUYw=;
+ b=WmCBHXFFuScgmmMGMP/VH609AxnAySmVJWaJZ62cOndAUFjHiwuhvCMbqdzYxL0PqJ
+ O8RwQn+EO5U1GQpLfh2uEeY3psnAoZeQKIzE53AC53docGkPbTd37tJD5jjYxV5T0jcV
+ 17l9p2c+I1LPqJo4fyJQjnK3ZbZE0HKbzk748=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=W056jK4JO9Wem+3qlNSvwaayL2PwMR77g5EtZS2gUYw=;
+ b=SXLeskIfgvSoJne6WbbGQ5IvYrtK4D3vnOtEKEUul3VcL22CqsAwZsplKL5i5oulQq
+ 6nuD6ruAew/cb9ibBk7zRZqp3tazecN1wB/b8gE2+yAH7DipIr1fHKHKzAoQ8MLreyFk
+ Mb2nRNB/fvG6EGfxs3IJbtbdXvCj0ZlKNp4dexYnW6kKX3vRka18B3n7iCg0HzpHZ6ql
+ xVE54f0M4tUl93t0qgjyn3oL7wKXHE0liGnmqhOLZC4jpuErrRBteNbH6H1hBcTycegZ
+ CHdShPJuHyXkzEu/nIvF3o7RkFVObILKCiDpdLfCTH70dB575pWQ/6LDucSIpE5QRrqz
+ S+jQ==
+X-Gm-Message-State: AOAM533qInzcHfNV2OGWJbeZrMgFhiXfKu4uRa3UfhxPBxwmN8X/cxud
+ sGy2M5jTVIVd/qAUmrwSij0IOw==
+X-Google-Smtp-Source: ABdhPJyIyUj9Alp436tInM7YNihHEEDUYPNgqt+AGVoPl3O5jctUXjLSQUMXrAN+OoCit0uHawL0gQ==
+X-Received: by 2002:a17:902:ea03:b0:154:4af3:bb5e with SMTP id
+ s3-20020a170902ea0300b001544af3bb5emr4124775plg.95.1648716553888; 
+ Thu, 31 Mar 2022 01:49:13 -0700 (PDT)
+Received: from wenstp920.tpe.corp.google.com
+ ([2401:fa00:1:10:deb3:b2d3:c33d:e877])
+ by smtp.gmail.com with ESMTPSA id
+ mw10-20020a17090b4d0a00b001c7cc82daabsm10408026pjb.1.2022.03.31.01.49.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 31 Mar 2022 01:49:13 -0700 (PDT)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: [PATCH] media: hantro: Empty encoder capture buffers by default
+Date: Thu, 31 Mar 2022 16:49:06 +0800
+Message-Id: <20220331084907.628349-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.35.1.1021.g381101b075-goog
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <eebd2731-f18b-af1c-b0b9-09df669f5a3c@rock-chips.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 10:11:42 up 20:41, 46 users,  load average: 0.12, 0.17, 0.21
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_011821_505495_E571605F 
-X-CRM114-Status: GOOD (  50.04  )
+X-CRM114-CacheID: sfid-20220331_014919_643511_F10A33FB 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,120 +87,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-15"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 31, 2022 at 03:20:37PM +0800, Andy Yan wrote:
-> Hi Sascha:
-> =
+The payload size for encoder capture buffers is set by the driver upon
+finishing encoding each frame, based on the encoded length returned from
+hardware, and whatever header and padding length used. Setting a
+non-zero default serves no real purpose, and also causes issues if the
+capture buffer is returned to userspace unused, confusing the
+application.
 
-> On 3/31/22 15:06, Sascha Hauer wrote:
-> > On Wed, Mar 30, 2022 at 08:50:09PM +0800, Andy Yan wrote:
-> > > Hi Sascha:
-> > > =
+Instead, always set the payload size to 0 for encoder capture buffers
+when preparing them.
 
-> > > On 3/30/22 14:39, Sascha Hauer wrote:
-> > > > Hi Andy,
-> > > > =
+Fixes: 775fec69008d ("media: add Rockchip VPU JPEG encoder driver")
+Fixes: 082aaecff35f ("media: hantro: Fix .buf_prepare")
+Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+---
 
-> > > > On Tue, Mar 29, 2022 at 07:56:27PM +0800, Andy Yan wrote:
-> > > > > Hi Sascha:
-> > > > > =
+This was previously incorrectly squashed into my Hantro encoder cmd
+patch [1].
 
-> > > > > On 3/28/22 23:11, Sascha Hauer wrote:
-> > > > > > With upcoming VOP2 support VOP won't be the only choice anymore=
-, so make
-> > > > > > the VOP driver optional.
-> > > > > > =
+[1] https://lore.kernel.org/linux-media/20220301042225.1540019-1-wenst@chromium.org/
 
-> > > > > > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > > > > > ---
-> > > > > >     drivers/gpu/drm/rockchip/Kconfig            | 8 ++++++++
-> > > > > >     drivers/gpu/drm/rockchip/Makefile           | 3 ++-
-> > > > > >     drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 2 +-
-> > > > > >     3 files changed, 11 insertions(+), 2 deletions(-)
-> > > > > > =
+ drivers/staging/media/hantro/hantro_v4l2.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-> > > > > > diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm=
-/rockchip/Kconfig
-> > > > > > index fa5cfda4e90e3..7d22e2997a571 100644
-> > > > > > --- a/drivers/gpu/drm/rockchip/Kconfig
-> > > > > > +++ b/drivers/gpu/drm/rockchip/Kconfig
-> > > > > > @@ -23,8 +23,16 @@ config DRM_ROCKCHIP
-> > > > > >     if DRM_ROCKCHIP
-> > > > > > +config ROCKCHIP_VOP
-> > > > > > +	bool "Rockchip VOP driver"
-> > > > > > +	default y
-> > > > > > +	help
-> > > > > > +	  This selects support for the VOP driver. You should enable =
-it
-> > > > > > +	  on all older SoCs up to RK3399.
-> > > > That reminds me that I wanted to rephrase this. Will change in next
-> > > > round.
-> > > > =
+diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+index 67148ba346f5..261beb0c40f6 100644
+--- a/drivers/staging/media/hantro/hantro_v4l2.c
++++ b/drivers/staging/media/hantro/hantro_v4l2.c
+@@ -733,8 +733,12 @@ static int hantro_buf_prepare(struct vb2_buffer *vb)
+ 	 * (for OUTPUT buffers, if userspace passes 0 bytesused, v4l2-core sets
+ 	 * it to buffer length).
+ 	 */
+-	if (V4L2_TYPE_IS_CAPTURE(vq->type))
+-		vb2_set_plane_payload(vb, 0, pix_fmt->plane_fmt[0].sizeimage);
++	if (V4L2_TYPE_IS_CAPTURE(vq->type)) {
++		if (ctx->is_encoder)
++			vb2_set_plane_payload(vb, 0, 0);
++		else
++			vb2_set_plane_payload(vb, 0, pix_fmt->plane_fmt[0].sizeimage);
++	}
+ 
+ 	return 0;
+ }
+-- 
+2.35.1.1021.g381101b075-goog
 
-> > > > > > +
-> > > > > >     config ROCKCHIP_ANALOGIX_DP
-> > > > > >     	bool "Rockchip specific extensions for Analogix DP driver"
-> > > > > > +	depends on ROCKCHIP_VOP
-> > > > > Aanlogix dp is also on vop2 base soc such as=A0 rk356x and rk3588.
-> > BTW I just looked at the downstream driver. Here we have the same
-> > situation that the analogix dp driver calls rockchip_drm_wait_vact_end()
-> > which is implemented in the VOP driver, so when the analogix dp driver
-> > is actually used on a VOP2 SoC then it is either used in a way that
-> > rockchip_drm_wait_vact_end() will never be called or it explodes in all
-> > colours.
-> > =
-
-> > > > I added the dependency because analogix_dp-rockchip.c calls
-> > > > rockchip_drm_wait_vact_end() which is implemented in the VOP driver,
-> > > > so this driver currenty can't work with the VOP2 driver and can't
-> > > > be linked without the VOP driver being present.
-> > > > I'll add a few words to the commit message.
-> > > =
-
-> > > Maybe a better direction is move rockchip_drm_wait_vact_end from the =
-VOP
-> > > driver to rockchip_drm_drv.c
-> > I am not sure if that's really worth it. Yes, the direction might be the
-> > right one, but I would really prefer when somebody does the change who
-> > can test and confirm that the analogix dp really works with VOP2 in the
-> > end.
-> =
-
-> If follow this point, the current DW_MIPI also has not been tested for
-> confirm that it
-> =
-
-> can really work with VOP2, so you should also make it depends on
-> ROCKCHIP_VOP.
-
-Well at least I have patches here which make DW_MIPI work with VOP2 ;)
-
-What about the others, like LVDS and RGB?
-> =
-
-> I think the current solution is just a workaround to make your patch pass
-> the kernel compile
-
-Indeed.
-
-I agree that it would be good to add a note somewhere which outputs
-work with the VOP2 driver (currently only HDMI), but I wonder if Kconfig
-dependencies is the right place for it, because only people who deliberately
-disable VOP support will see this information.
-Maybe we should rather add it to the Kconfig help text?
-
-Sascha
-
--- =
-
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
