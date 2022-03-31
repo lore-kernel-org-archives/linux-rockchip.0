@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25D8CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Mar 2022 12:19:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18A14C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 31 Mar 2022 12:57:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P6sDl8n+Wh7AIRM4WjwLTktbnKBKBSdpg/2CUo4Tdjk=; b=JuLwaz3YXdsKIz
-	WUAFO9n1Vj0vprj7vSLZs0y2iofOnM7y0Cicq8/vhEemHM/rn6GH0hFi2kFMt6elYAJ/26/7G+QET
-	qpmBegqha3yh1zJne//SdwqiXdzjvbBqVy3mCcSwFCTlnd02Vwir+K33BNZoetqSKraMGVigi96Vf
-	lDx/1cKBcwTO/IZhORMhQKTqqfSDrKdOKmVHkmgeQdL1L0u13WLgvIzB4CAj9a/1XatXkwOkYchQi
-	GK1NRF7mm3SXEc6DsOjt1ANkKDPKxh7boG/x/3twkgqN6tLMZ+IfrHJQAZfOnOYqD5dELm7fExFdU
-	wb9H6zZufNjmoremevGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pjlVxRd1pcgfOfcjLRvMk9v9wbM9B/e+STAF8rK/y20=; b=5A+j2MBEl+jRwf
+	+zW8CJj2Rs6+4khLYNCCkBi2DsBXE4kh2ZOIlkT7ucN6rLeZ8cmOn5yBhnTCYzNp6zZD+OSrNVHsF
+	LSLaEnKRZRDY125vcXWn67EsDo1ntMjBs/HmMt/GJB1XRaimwLTZAJp3k0epzqxlC+3nIDez9FXV6
+	AHQNHmIKyHMAmR1XAJ7o0fL1YQ4xyRue3Housg/2zlyp5kg2MkJfSb31QpHvkzXQWYL9BYXgEEi7K
+	/rxZlrpjUQOmEKz5nrxjCOXBUnI4RUU3muA9gpEKP/y2to1bRN2gcvW7G1gs0GU43SMpB9r52Fta6
+	iNMDUCh3KNgV2ONP3keA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nZtll-002ByE-Oo; Thu, 31 Mar 2022 12:19:17 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nZuMP-002K7U-Nz; Thu, 31 Mar 2022 12:57:09 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nZtli-002Bvl-8c
- for linux-rockchip@lists.infradead.org; Thu, 31 Mar 2022 12:19:15 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nZtlW-0000gs-Ff; Thu, 31 Mar 2022 14:19:02 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nZtlV-0008D1-0u; Thu, 31 Mar 2022 14:19:01 +0200
-Date: Thu, 31 Mar 2022 14:19:01 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Peter Geis <pgwipeout@gmail.com>, kernel@pengutronix.de,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
-Message-ID: <20220331121900.GG4012@pengutronix.de>
-References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
- <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
- <20220330072822.GX12181@pengutronix.de>
- <0D8F5951-5375-46B5-BFF0-7ED410371EB7@gmail.com>
- <20220330094556.GZ12181@pengutronix.de>
- <D3DA14F9-C9C6-4927-B015-5B7D25689DAA@gmail.com>
- <20220330102046.GA12181@pengutronix.de>
- <60601619-EF07-457B-91F2-64FEB598FEBE@gmail.com>
- <20220330192054.GA4012@pengutronix.de>
- <af8445e0-f4af-721b-709e-2eb7c488a8a4@rock-chips.com>
+ id 1nZuMB-002K4m-LL; Thu, 31 Mar 2022 12:57:00 +0000
+Received: by mail-ej1-x632.google.com with SMTP id yy13so47942909ejb.2;
+ Thu, 31 Mar 2022 05:56:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=UccPI0Vs3BzsfOsGfndf21BCZr1jQY6N7hAg1waRF/s=;
+ b=HfBw6vWTgOJCYdKg8YHaESl+8G04ToxxeF63XQSjns6Dk+LBjFpbBsyMKo8RR9icBD
+ +YR4nv9rtSCx5OGsTlaCwev6n1dE1syjwnmouQztZ2cmWQoA8hQrchrcjb/ebU9JgXOa
+ lIlY/nrjEoeJG5A+IvN9TEgvVoSUeyGUzsJd71GFxt6/tJkDuZgBTqMid0URZoE4V7Tk
+ H0mU6yhuHBdRwqlJ25JgCMpKt3BCBU4CCSkJAenBdHODIxshDWGsgjoLNQR32LvIoNwa
+ L31o07H/PXupHDCPC5pHjrI3doD7IcnH6SbMgZBSh9W0WAbk7K0YN5I/0HpeXO+fPN8p
+ BBFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=UccPI0Vs3BzsfOsGfndf21BCZr1jQY6N7hAg1waRF/s=;
+ b=hYriY1CB99+nIS4WeEVLqPqyMA1JLqA3H4XC1B4lY9ZVphpTX4uNn+PAPgAdcuUceb
+ uXwD1jjGrpnktufzza7AqkkZtaiie/iHxE+bdv2X8RpDdjufsZJYqeMZAKzH2TwItdMD
+ aBgZOK/HYzU7viKJke+pmovFbSKqjUJ8qYYQRMzyMjogfqgwC2lUMBXN9Urs2o06bLHc
+ T5hkEVW6xE3zsCCJY5AX6IpabsLbgnTCKLHIMHqSqbyDmY9rWzkC23PIkOmNs/1L9c8t
+ yyFxtJszHd5cZs+HHe3fXvi5UMldKtqT5/tDDL736afsciJK8EqH98PudxDAdQTqkh9E
+ Sp4A==
+X-Gm-Message-State: AOAM5305rRwU8ptwVyAQJaFgkuLz2Vwll/TeUkoHgB2IRE1fXVTh/2rY
+ JfFqtNZmASUkC/RKxRePBGI=
+X-Google-Smtp-Source: ABdhPJwB1bY+CLWE7b4PuZ+68hjf+J3CT+jsxTI7VrbqdpniDeNCJLs0u5gD62CZ6M9aKGk6OHNNVQ==
+X-Received: by 2002:a17:907:1606:b0:6df:f528:4033 with SMTP id
+ hb6-20020a170907160600b006dff5284033mr4847028ejc.433.1648731413350; 
+ Thu, 31 Mar 2022 05:56:53 -0700 (PDT)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ u4-20020aa7db84000000b004136c2c357csm11203745edt.70.2022.03.31.05.56.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 31 Mar 2022 05:56:52 -0700 (PDT)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, krzk+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2] ARM: dts: rockchip: use generic node name for dma
+ rk3036/rk322x
+Date: Thu, 31 Mar 2022 14:56:44 +0200
+Message-Id: <20220331125644.6841-1-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <af8445e0-f4af-721b-709e-2eb7c488a8a4@rock-chips.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 14:17:51 up 1 day, 47 min, 51 users, load average: 0.11, 0.15, 0.14
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220331_051914_376666_21412AEB 
-X-CRM114-Status: GOOD (  29.29  )
+X-CRM114-CacheID: sfid-20220331_055655_735038_330FD4B0 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,44 +84,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBNYXIgMzEsIDIwMjIgYXQgMDg6MTM6MDlQTSArMDgwMCwgQW5keSBZYW4gd3JvdGU6
-Cj4gSGkgUGlvdHI6Cj4gCj4gT24gMy8zMS8yMiAwMzoyMCwgU2FzY2hhIEhhdWVyIHdyb3RlOgo+
-ID4gT24gV2VkLCBNYXIgMzAsIDIwMjIgYXQgMDQ6NTI6MjJQTSArMDIwMCwgUGlvdHIgT25pc3pj
-enVrIHdyb3RlOgo+ID4gPiAKPiA+ID4gPiBXaWFkb21vxZvEhyBuYXBpc2FuYSBwcnpleiBTYXNj
-aGEgSGF1ZXIgPHMuaGF1ZXJAcGVuZ3V0cm9uaXguZGU+IHcgZG5pdSAzMC4wMy4yMDIyLCBvIGdv
-ZHouIDEyOjIwOgo+ID4gPiA+IAo+ID4gPiA+IERvZXMgaXQgY2hhbmdlIGFueXRoaW5nIGlmIHlv
-dSBkbyBhICJtb2RldGVzdCAtcyA2OUA2NzoxOTIweDEwODAiIGJlZm9yZQo+ID4gPiA+IHN0YXJ0
-aW5nIHRoZSBhcHA/IE9yIGlmIHlvdSBydW4gIm1vZGV0ZXN0IC1QIDQzQDY3OjE5MjB4MTA4MEBO
-VjEyIgo+ID4gPiA+IGJlZm9yZSBzdGFydGluZyB0aGUgYXBwPyBPciBvdGhlciBjb21iaW5hdGlv
-bnMgdGhlcmVvZj8KPiA+ID4gU28gaSB0cmllZCBmb2xsb3dpbmcgY29tYmluYXRpb25zCj4gPiA+
-IAo+ID4gPiAtYm9vdAo+ID4gPiAtbW9kZXRlc3QgLXMgNjlANjc6MTkyMHgxMDgwIC0+IG9rCj4g
-PiA+IC1tb2RldGVzdCAtUCA0M0A2NzoxOTIweDEwODBATlYxMiAtPiBncmVlbiBzY3JlZW4KPiA+
-IEkgaGF2ZSBubyBpZGVhIHdoYXQgaXMgZ29pbmcgb24gaGVyZS4gVGhlcmUgc2FtZSBjb21tYW5k
-cyB3b3JrIGZvciBtZS4KPiA+IFlvdSBjb3VsZCBwcm92aWRlIG1lIHlvdXIga2VybmVsIGNvbmZp
-ZyBhbmQgdXBzdHJlYW0gY29tbWl0aXNoIHlvdSBhcmUKPiA+IHdvcmtpbmcgb24sIG1heWJlIHRo
-YXQgZ2V0cyBtZSBjbG9zZXIgdG8geW91ciBzZXR1cC4KPiAKPiAKPiBJdCdzIGEgbGl0dGxlIHN0
-cmFuZ2UsIEkgY2FuJ3QgcmVwcm9kdWNlIHRoaXMgaXNzdWUgbmVpdGhlci4KPiAKPiBCdXQgSSBo
-YXZlIHByb2JsZW0gd2l0aCB0aGlzIHR3byBzdGVwIGNvbW1hbmQgc2VxdWVuY2UuCj4gCj4gc3Rl
-cCAxOsKgIG1vZGV0ZXN0IC1zIDY5QDY3OjE5MjB4MTA4MCAtPiBvawo+IAo+IHN0ZXAgMjrCoCBt
-b2RldGVzdCAtUCA0M0A2NzoxOTIweDEwODBATlYxMiwKPiAKPiBJIGdvdCB0aGUgZmFpbGVkIG1l
-c3NhZ2U6wqAgImZhaWxlZCB0byBlbmFibGUgcGxhbmU6IFBlcm1pc3Npb24gZGVuaWVkIgo+IAo+
-IEJlY2F1c2UgdGhlIGRybSBjb3JlIHdpbGwgc3RvcCBzdGVwMiBieSBkcm1faW9jdHJsX3Blcm1p
-dCBhcwo+IERSTV9JT0NUTF9TRVRQTEFORSBuZWVkIGEgbWFzdGVyLAo+IAo+IGJ1dCB0aGUgY3Vy
-cmVudCBtYXN0ZXIgaXMgdGhlIG1vZGV0ZXN0IHJ1biBieSBzdGVwMS4KPgoKWy4uLl0KCj4gCj4g
-U28gaG93IHlvdSB0d28gZ290IHN0ZXAgdHdvIHJ1biBzdWNjZXNzPwoKWW91IGhhdmUgdG8gc3Rv
-cCB0aGUgZmlyc3QgbW9kZXRlc3QgYnkgaGl0dGluZyByZXR1cm4uIEFsdGVybmF0aXZlbHkgeW91
-CmNvdWxkIHBhc3MgdGhlIC1kIG9wdGlvbiB0byB0aGUgZmlyc3QgbW9kZXRlc3QuCgpTYXNjaGEK
-Ci0tIApQZW5ndXRyb25peCBlLksuICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgfApTdGV1ZXJ3YWxkZXIgU3RyLiAyMSAgICAgICAgICAgICAg
-ICAgICAgICAgfCBodHRwOi8vd3d3LnBlbmd1dHJvbml4LmRlLyAgfAozMTEzNyBIaWxkZXNoZWlt
-LCBHZXJtYW55ICAgICAgICAgICAgICAgICAgfCBQaG9uZTogKzQ5LTUxMjEtMjA2OTE3LTAgICAg
-fApBbXRzZ2VyaWNodCBIaWxkZXNoZWltLCBIUkEgMjY4NiAgICAgICAgICAgfCBGYXg6ICAgKzQ5
-LTUxMjEtMjA2OTE3LTU1NTUgfAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+The node names should be generic, so fix this for the rk3036 and
+rk322x dma node and rename it to "dma-controller".
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ arch/arm/boot/dts/rk3036.dtsi | 2 +-
+ arch/arm/boot/dts/rk322x.dtsi | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index 24f868d06..9b0f04975 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -558,7 +558,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	pdma: pdma@20078000 {
++	pdma: dma-controller@20078000 {
+ 		compatible = "arm,pl330", "arm,primecell";
+ 		reg = <0x20078000 0x4000>;
+ 		interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index 2547f46fe..ffc16d6b9 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -503,7 +503,7 @@
+ 			<75000000>;
+ 	};
+ 
+-	pdma: pdma@110f0000 {
++	pdma: dma-controller@110f0000 {
+ 		compatible = "arm,pl330", "arm,primecell";
+ 		reg = <0x110f0000 0x4000>;
+ 		interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>,
+-- 
+2.20.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
