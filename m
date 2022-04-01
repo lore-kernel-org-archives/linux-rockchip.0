@@ -4,62 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55401C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Apr 2022 18:24:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD107C43219
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Apr 2022 20:18:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9b6VTD1GfLSBXsupf2tj16nilpmlwKHhDL/LdhEhXf0=; b=U4lIfBdeQ3S4sf
-	cPOSoU6aQGPaZDjwyIYVLnu4bu1hUUVNF9xMJtYHun+0P1K7idUni1tE5/ZmZKmO92MHqbrbYMEFE
-	w7WeCa+/YmbPYRlXzFsDiOS85pPczNzqLt3A9d/kHMzTHQZTpRc7+Z+cY9pLsKwux2i+St4jDuON3
-	n7W1UhwaJt7XdRpQJ1IN1r3GuG36JtWvbTV1B69LlGoOUoPQ4ihp6rE21DOLM9RgAkkHJMjpRIIKj
-	frLh8xxNYoZgB7AH7DR8HXxT88P6pz5WAlbPwFrTzJZdLvdwIdB7MCbKaIXYW0WYD3ons7IbqYpso
-	W419gWr5BkZ5PIWvmRkg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ceUlSKKrb2YgDGubaDgtIY7azxujD0whU/6LktJh0F4=; b=rk8E+0QCxb9uwK
+	oJtUjrB33ko5nyvowB0NORNxt2JP5REsCNO5MUPCx7OxSJIWqdi3JDu7YFF18RQEE/shChNKRcKVb
+	sGshLJLfnZQXpWnfVHAcfTJfI65cMxezsxeJ8KOoaHFgAkZKpZlzrrGsH4bd1j1QFX0xprZUO1BRg
+	FTwPmsw0rdlYQfFxH12Tzmzl6ZCmJeUStq9AAFqXmFjcyk89xH8QKYmHmQkpJayig9kDDaxUksTOk
+	MMOL3OhP1g2EhaBvCxKeKj5ngv5Z8xvfPk34/4iWX42ybsUUIILXj+f47TbJMYmvfg+P5L8MMUMUw
+	jYj8AUsLePCCIrU6qz+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1naLwe-006pTn-OB; Fri, 01 Apr 2022 18:24:24 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1naNiu-0074y3-LM; Fri, 01 Apr 2022 20:18:20 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1naLwU-006pRx-Fo; Fri, 01 Apr 2022 18:24:16 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 060E760C69;
- Fri,  1 Apr 2022 18:24:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 643DDC340EE;
- Fri,  1 Apr 2022 18:24:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1648837453;
- bh=rcBit4D+cJoPaMnAkofaQ1xtj/Y+I4p055Ym5x4wpfg=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=RHgJE8FS1xd73mO0tEcxy32mK8k0oW+n5FvSrRwp7qXoCHklunZnWADnIxsgwHIkx
- LSFEc8hkCjv6tHrZp8kOKfD3Sh34+R8VuWKmHeXT1cE9+Ru5aSOvubifCsmPUWgvO8
- 2uD8kjzvMZPcQY4IbzO3rIWu9T9GAZZ/tMn/GCx6AjvjJpf89wObMEcMxTt2OsGKwb
- EUn+Up6C/MUZjFApbX4rlQ0eOVEVMp+FXnwZ6RlkXKXXbcHM/Gh6+ZPaHQ3BmXmKcv
- 9ROrR2SNVB/R5DVLrk58YeiCLevP5lQsukCQRa5nAeojjWdmavQZzh4nHJF9mnSfag
- rybfMxJ6QHerQ==
+ id 1naNiq-0074r9-2z
+ for linux-rockchip@lists.infradead.org; Fri, 01 Apr 2022 20:18:18 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id b19so5760015wrh.11
+ for <linux-rockchip@lists.infradead.org>; Fri, 01 Apr 2022 13:18:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DGCkJrK8CjpNQTEj6b9xsgDCufMl9t/fhMg36upVCms=;
+ b=38Mjyy4PUG1qifiYjaGuBmEDmQ4cmC1Vw4iv4rSOVWiedsiaKCAgQ52NExOc1pE49w
+ Pfx10onQLS+nade8OH/OngJw8Mwhu+Igi6N4asQGVuij6Au/8vRUk1VPSSuCbGLTfMag
+ yO9pXlNGNQDXIcumWVkPfzz9S6fw2nwZs+tWyF5SpuvGQap4ze8OGlDit23nsgXqoQGU
+ 7sJqivbmofTw/UXVRw8mKCmrD7zdGL7U55yAaSrRoQqgNw2gp4CQeBGCDkPG2QRGFuaA
+ ebz16tPUHI/5QrSQP+zwxqlOw1tT3YDc1PqdAPFPwHtoo6LUJ62j4p0UQF3FZg7ygBar
+ 1Usg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=DGCkJrK8CjpNQTEj6b9xsgDCufMl9t/fhMg36upVCms=;
+ b=S0rcw7aFJa9DhE4qrLlGxHTr3GXB3t6dC96sn52nas3/g98YWazQX/YgeVx+Uxc1zE
+ u0b1gTyiXfCUkIhq/39WFgBVba7cn3O5s5keyTfuqRjdRG9Lk8gMZ3sQ4mlS993LtMUk
+ RKYXfme7c9EuLlpg+rAEJEq2KWjSgplT8R6z+roRSB5eDUwfinmasggRAw7PuRY62gkf
+ IN9FTWUKl6MySSn8aKD5DLdAXGlRByQ04436f4iGmb6qzJBN7mouyg8XYY4y/S5EHMNC
+ fbr1VWAU5P7mHBvgEZbC6glRFwUBFblKYN29kc+IS7HYK4UEA0eKlEoiyXogcP1ylbdb
+ GKqQ==
+X-Gm-Message-State: AOAM531GyCZz6hHr0PlLgTYwKrd99gnD7wOH6rua8YJGIeS6q6jSDaBC
+ epetrBRJfnMC6xnj7vCmtWr3Cw==
+X-Google-Smtp-Source: ABdhPJxCCclvL39vPD0mGH4xeRxi6oEYQtYAcXEue88joWnUg/FnejMfCx7WSBAmHhxBXfdea8nR1A==
+X-Received: by 2002:adf:d1e5:0:b0:205:85f5:656c with SMTP id
+ g5-20020adfd1e5000000b0020585f5656cmr8795652wrd.65.1648844290722; 
+ Fri, 01 Apr 2022 13:18:10 -0700 (PDT)
+Received: from localhost.localdomain
+ (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+ by smtp.googlemail.com with ESMTPSA id
+ j16-20020a05600c191000b0038ca3500494sm17823838wmq.27.2022.04.01.13.18.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 01 Apr 2022 13:18:10 -0700 (PDT)
+From: Corentin Labbe <clabbe@baylibre.com>
+To: heiko@sntech.de, herbert@gondor.apana.org.au, krzk+dt@kernel.org,
+ robh+dt@kernel.org
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Corentin Labbe <clabbe@baylibre.com>
+Subject: [PATCH v4 00/33] crypto: rockchip: permit to pass self-tests
+Date: Fri,  1 Apr 2022 20:17:31 +0000
+Message-Id: <20220401201804.2867154-1-clabbe@baylibre.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <3107512.vfdyTQepKt@diego>
-References: <20220329111323.3569-1-jbx6244@gmail.com>
- <20220331225134.7A0A9C340ED@smtp.kernel.org> <3107512.vfdyTQepKt@diego>
-Subject: Re: [PATCH v3 1/2] dt-bindings: clock: convert rockchip,
- rk3188-cru.txt to YAML
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: robh+dt@kernel.org, krzk+dt@kernel.org, mturquette@baylibre.com,
- linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-To: Heiko =?utf-8?q?St=C3=BCbner?= <heiko@sntech.de>,
- Johan Jonker <jbx6244@gmail.com>, zhangqing@rock-chips.com
-Date: Fri, 01 Apr 2022 11:24:11 -0700
-User-Agent: alot/0.10
-Message-Id: <20220401182413.643DDC340EE@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220401_112414_639828_10F9C380 
-X-CRM114-Status: GOOD (  24.68  )
+X-CRM114-CacheID: sfid-20220401_131816_391409_D1C76240 
+X-CRM114-Status: GOOD (  15.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,65 +87,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-UXVvdGluZyBIZWlrbyBTdMO8Ym5lciAoMjAyMi0wNC0wMSAwMDo1NTo1NSkKPiBIaSBTdGVwaGVu
-LAo+IAo+IEFtIEZyZWl0YWcsIDEuIEFwcmlsIDIwMjIsIDAwOjUxOjMyIENFU1Qgc2NocmllYiBT
-dGVwaGVuIEJveWQ6Cj4gPiBRdW90aW5nIEpvaGFuIEpvbmtlciAoMjAyMi0wMy0yOSAwNDoxMzoy
-MikKPiA+ID4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9j
-bG9jay9yb2NrY2hpcCxyazMxODgtY3J1LnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMTg4LWNydS55YW1sCj4gPiA+IG5ldyBmaWxlIG1v
-ZGUgMTAwNjQ0Cj4gPiA+IGluZGV4IDAwMDAwMDAwMC4uZGRkN2U0NmFmCj4gPiA+IC0tLSAvZGV2
-L251bGwKPiA+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2Nr
-L3JvY2tjaGlwLHJrMzE4OC1jcnUueWFtbAo+ID4gPiBAQCAtMCwwICsxLDc4IEBACj4gPiA+ICsj
-IFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wCj4gPiA+ICslWUFNTCAxLjIKPiA+ID4g
-Ky0tLQo+ID4gPiArJGlkOiBodHRwOi8vZGV2aWNldHJlZS5vcmcvc2NoZW1hcy9jbG9jay9yb2Nr
-Y2hpcCxyazMxODgtY3J1LnlhbWwjCj4gPiA+ICskc2NoZW1hOiBodHRwOi8vZGV2aWNldHJlZS5v
-cmcvbWV0YS1zY2hlbWFzL2NvcmUueWFtbCMKPiA+ID4gKwo+ID4gPiArdGl0bGU6IFJvY2tjaGlw
-IFJLMzE4OC9SSzMwNjYgQ2xvY2sgYW5kIFJlc2V0IFVuaXQgKENSVSkKPiA+ID4gKwo+ID4gPiAr
-bWFpbnRhaW5lcnM6Cj4gPiA+ICsgIC0gRWxhaW5lIFpoYW5nIDx6aGFuZ3FpbmdAcm9jay1jaGlw
-cy5jb20+Cj4gPiA+ICsgIC0gSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiA+ID4g
-Kwo+ID4gPiArZGVzY3JpcHRpb246IHwKPiA+ID4gKyAgVGhlIFJLMzE4OC9SSzMwNjYgY2xvY2sg
-Y29udHJvbGxlciBnZW5lcmF0ZXMgYW5kIHN1cHBsaWVzIGNsb2NrcyB0byB2YXJpb3VzCj4gPiA+
-ICsgIGNvbnRyb2xsZXJzIHdpdGhpbiB0aGUgU29DIGFuZCBhbHNvIGltcGxlbWVudHMgYSByZXNl
-dCBjb250cm9sbGVyIGZvciBTb0MKPiA+ID4gKyAgcGVyaXBoZXJhbHMuCj4gPiA+ICsgIEVhY2gg
-Y2xvY2sgaXMgYXNzaWduZWQgYW4gaWRlbnRpZmllciBhbmQgY2xpZW50IG5vZGVzIGNhbiB1c2Ug
-dGhpcyBpZGVudGlmaWVyCj4gPiA+ICsgIHRvIHNwZWNpZnkgdGhlIGNsb2NrIHdoaWNoIHRoZXkg
-Y29uc3VtZS4gQWxsIGF2YWlsYWJsZSBjbG9ja3MgYXJlIGRlZmluZWQgYXMKPiA+ID4gKyAgcHJl
-cHJvY2Vzc29yIG1hY3JvcyBpbiB0aGUgZHQtYmluZGluZ3MvY2xvY2svcmszMTg4LWNydS5oIGFu
-ZAo+ID4gPiArICBkdC1iaW5kaW5ncy9jbG9jay9yazMwNjYtY3J1LmggaGVhZGVycyBhbmQgY2Fu
-IGJlIHVzZWQgaW4gZGV2aWNlIHRyZWUgc291cmNlcy4KPiA+ID4gKyAgU2ltaWxhciBtYWNyb3Mg
-ZXhpc3QgZm9yIHRoZSByZXNldCBzb3VyY2VzIGluIHRoZXNlIGZpbGVzLgo+ID4gPiArICBUaGVy
-ZSBhcmUgc2V2ZXJhbCBjbG9ja3MgdGhhdCBhcmUgZ2VuZXJhdGVkIG91dHNpZGUgdGhlIFNvQy4g
-SXQgaXMgZXhwZWN0ZWQKPiA+ID4gKyAgdGhhdCB0aGV5IGFyZSBkZWZpbmVkIHVzaW5nIHN0YW5k
-YXJkIGNsb2NrIGJpbmRpbmdzIHdpdGggZm9sbG93aW5nCj4gPiA+ICsgIGNsb2NrLW91dHB1dC1u
-YW1lczoKPiA+ID4gKyAgICAtICJ4aW4yNG0iICAgIC0gY3J5c3RhbCBpbnB1dCAgICAgICAgICAg
-ICAgICAgLSByZXF1aXJlZAo+ID4gPiArICAgIC0gInhpbjMyayIgICAgLSBSVEMgY2xvY2sgICAg
-ICAgICAgICAgICAgICAgICAtIG9wdGlvbmFsCj4gPiA+ICsgICAgLSAieGluMjdtIiAgICAtIDI3
-bWh6IGNyeXN0YWwgaW5wdXQgb24gUkszMDY2IC0gb3B0aW9uYWwKPiA+ID4gKyAgICAtICJleHRf
-aHNhZGMiIC0gZXh0ZXJuYWwgSFNBREMgY2xvY2sgICAgICAgICAgLSBvcHRpb25hbAo+ID4gPiAr
-ICAgIC0gImV4dF9jaWYwIiAgLSBleHRlcm5hbCBjYW1lcmEgY2xvY2sgICAgICAgICAtIG9wdGlv
-bmFsCj4gPiA+ICsgICAgLSAiZXh0X3JtaWkiICAtIGV4dGVybmFsIFJNSUkgY2xvY2sgICAgICAg
-ICAgIC0gb3B0aW9uYWwKPiA+ID4gKyAgICAtICJleHRfanRhZyIgIC0gZXh0ZXJuYWwgSlRBRyBj
-bG9jayAgICAgICAgICAgLSBvcHRpb25hbAo+ID4gCj4gPiBJJ2QgZXhwZWN0IGFsbCB0aGVzZSBj
-bGtzIGhlcmUgdG8gYmUgaW5wdXRzIHRvIHRoaXMgbm9kZS4KPiAKPiBUaGUgb3B0aW9uYWwgY2xv
-Y2tzIGFyZSBhbGwgcGFydCBvZiBhIGNpcmN1bGFyIGRlcGVuZGVuY3kuCj4gCj4gU28gZm9yIGV4
-YW1wbGUgeGluMzJrIG5vcm1hbGx5IGlzIGdlbmVyYXRlZCBieSB0aGUgcG1pYyBhbmQgZmVkCj4g
-YmFjayBpbnRvIHRoZSBzeXN0ZW0sIHNvIHRvIGdldCB4aW4zMmssIHdlIG5lZWQgdGhlIHBtaWMg
-dG8gcHJvYmUsCj4gd2hpY2ggbmVlZHMgaTJjLCB3aGljaCBpbiB0dXJuIGFscmVhZHkgbmVlZHMg
-dGhlIGNsb2NrIGNvbnRyb2xsZXIuCj4gCj4gT3Igb3B0aW9uYWwgY2xvY2tzIG1heSBub3QgYmUg
-YXZhaWxhYmxlIGF0IGFsbC4KPiAKPiBTbyBmb3IgdGhlIHBhc3QgeWVhcnMgd2UgYWxyZWFkeSBy
-ZWxpZWQgb24gdGhlIGNsb2NrLXN5c3RlbSdzCj4gc2VsZiBhZGFwdGF0aW9uIGlmIGEgY2xvY2sg
-YmVjb21lcyBhdmFpbGFibGUgYXQgc29tZSBwb2ludAo+IGR1cmluZyBsYXRlciBib290IGFuZCBo
-ZW5jZSBkbyBub3QgaGF2ZSB0aG9zZSBpbiBhIGNsb2Nrcy1wcm9wZXJ0eS4KPiAKCkFyZSB5b3Ug
-c2F5aW5nIHRoYXQgd2UgY2FuJ3QgaGF2ZSB0aGVzZSBjbGtzIGluIHRoZSBjbG9ja3MgcHJvcGVy
-dHkKYmVjYXVzZSB0aGVyZSdzIGEgY2lyY3VsYXIgZHJpdmVyIHByb2JlIGRlcGVuZGVuY3k/IEkg
-ZG9uJ3Qgc2VlIGhvdyB0aGF0Cm1hdHRlcnMgZm9yIHRoZSBkdCBiaW5kaW5nLiBXaGF0IGlzIGJy
-b2tlbiBpZiB0aGV5J3JlIHB1dCBpbiB0aGUgYmluZGluZwphbmQgc3BlY2lmaWVkIGluIHRoZSBu
-b2RlPwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
-Y2hpcAo=
+Hello
+
+The rockchip crypto driver is broken and do not pass self-tests.
+This serie's goal is to permit to become usable and pass self-tests.
+
+This serie also adds support for 2 more SoCs.
+
+This whole serie is tested on a rk3328-rock64, rk3288-miqi with selftests (with
+CONFIG_CRYPTO_MANAGER_EXTRA_TESTS=y)
+The serie is also tested on a rk3399 by Hugh Cole-Baker
+<sigmaris@gmail.com> and Igor Velkov <iav@iav.lv>, Thanks to them for
+testing.
+
+Regards
+
+Changes since v1:
+- select CRYPTO_ENGINE
+- forgot to free fallbacks TFMs
+- fixed kernel test robots warning
+- add the PM patch
+
+Changes since v2:
+- Added DMA clock back to 3288 since it dont work without it
+- fallback needed to select CBC and ECB configs
+- Added support for rk3399
+- Added more patch (style, read_poll_timeout)
+
+Changes since v3:
+- full rewrite of support for RK3399
+- splited dt-binding patch in two
+
+Corentin Labbe (33):
+  crypto: rockchip: use dev_err for error message about interrupt
+  crypto: rockchip: do not use uninitialized variable
+  crypto: rockchip: do not do custom power management
+  crypto: rockchip: fix privete/private typo
+  crypto: rockchip: do not store mode globally
+  crypto: rockchip: add fallback for cipher
+  crypto: rockchip: add fallback for ahash
+  crypto: rockchip: better handle cipher key
+  crypto: rockchip: remove non-aligned handling
+  crypto: rockchip: rework by using crypto_engine
+  crypto: rockchip: rewrite type
+  crypto: rockchip: add debugfs
+  crypto: rockchip: introduce PM
+  crypto: rockchip: handle reset also in PM
+  crypto: rockchip: use clk_bulk to simplify clock management
+  crypto: rockchip: add myself as maintainer
+  crypto: rockchip: use read_poll_timeout
+  crypto: rockchip: fix style issue
+  crypto: rockchip: add support for rk3328
+  crypto: rockchip: rename ablk functions to cipher
+  crypto: rockchip: rework rk_handle_req function
+  crypto: rockchip: use a rk_crypto_info variable instead of lot of indirection
+  crypto: rockchip: use the rk_crypto_info given as parameter
+  crypto: rockchip: rename crypto_info to main in TFM context
+  crypto: rockchip: store crypto_info in request context
+  crypto: rockchip: Add support for rk3399
+  dt-bindings: crypto: convert rockchip-crypto to yaml
+  dt-bindings: crypto: rockchip: convert to new driver bindings
+  clk: rk3399: use proper crypto0 name
+  ARM: dts: rk3288: crypto does not need reset-names anymore
+  arm64: dts: rockchip: add rk3328 crypto node
+  arm64: dts: rockchip: rk3399: add crypto node
+  crypto: rockchip: Check for clocks numbers and their frequencies
+
+ .../crypto/rockchip,rk3288-crypto.yaml        | 117 ++++
+ .../bindings/crypto/rockchip-crypto.txt       |  28 -
+ MAINTAINERS                                   |   7 +
+ arch/arm/boot/dts/rk3288.dtsi                 |   1 -
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi      |  10 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  18 +
+ drivers/crypto/Kconfig                        |  15 +
+ drivers/crypto/rockchip/rk3288_crypto.c       | 505 ++++++++--------
+ drivers/crypto/rockchip/rk3288_crypto.h       |  99 +--
+ drivers/crypto/rockchip/rk3288_crypto_ahash.c | 256 +++++---
+ .../crypto/rockchip/rk3288_crypto_skcipher.c  | 571 ++++++++++--------
+ include/dt-bindings/clock/rk3399-cru.h        |   6 +-
+ 12 files changed, 959 insertions(+), 674 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
+ delete mode 100644 Documentation/devicetree/bindings/crypto/rockchip-crypto.txt
+
+-- 
+2.35.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
