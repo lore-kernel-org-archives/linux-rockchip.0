@@ -4,74 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73237C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Apr 2022 12:55:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDF59C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Apr 2022 13:05:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A+9QJtLbLKykzXuaYIaatPOqk0B0PfMYr90lu91ZI3Q=; b=ecgCtaNHOmsMtk
-	qbm3NXOcjr+c2aTDE0TE/8JrY3P/9aL1IW9/B6ZwolZW75Cp0TuzuRLfV8KgCmvZ9EhFZKITaaL2b
-	wwGsrH3bd+daeVSFIaSwyTJKGGpMVVCR+wTkFX9wnZ2aLeHmuiIc6OkeBGZKBC36uf4lzMnq++aXs
-	GnbyOdBznXik4ro/7ORhetCFZvRK085xw7QKNY8JRwfUmEIr5l2Gp3r5bFfLsLu8jF0xtTFAWWjTX
-	xb5A/MCWD1Tg3ruDyjF5E2RWbvW2c6OUDcbLdCv/45KrEzTIOS9dLW0nUA0eEYxEAVyhzaONjC8LB
-	QwazP45zIvBOyR1SeHaA==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xOYrbPvrltqJprWUndHKz/SukvWgGWVo/jPlRlKhgs4=; b=WxjKrFjgjzdlsN
+	46F18/O+cpaB7TfxDCL8Hrndl7pZbeb6MnhQpTOt2Fx2CAEyJTuKInXLHoG5ww27k6AcRck84ZfPH
+	uInZ7mOH+v6kT84c13LGqugE7TqVgUFw3csLS1idnF5zpIOwprE6xEtnBvQsBonvFJ6bxf6VhJW9R
+	mb7+7mZ4u+vNkaHiJUqnBkowxTxFA5RHLYc3j8ftak0gFJYfD6LmAh+Bilc9632wKpKipzoqgoS/K
+	fJQF4OGvbR+7nD1ystQIPZU2IeIUWOoih05C6rWTP9tz1cCPex+WsCoGhpszCHOtfMxl3RRgPqTrH
+	p9N5jjNbD6C7Je4wgKXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1naGoX-005gKc-E1; Fri, 01 Apr 2022 12:55:41 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1naGy9-005iNH-ST; Fri, 01 Apr 2022 13:05:37 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1naGoN-005gI4-Ah
- for linux-rockchip@lists.infradead.org; Fri, 01 Apr 2022 12:55:33 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1naGoK-000709-7q; Fri, 01 Apr 2022 14:55:28 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1naGoJ-0002ZA-D5; Fri, 01 Apr 2022 14:55:27 +0200
-Date: Fri, 1 Apr 2022 14:55:27 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ id 1naGxw-005iHd-NE; Fri, 01 Apr 2022 13:05:26 +0000
+Received: by mail-lf1-x134.google.com with SMTP id h7so4852828lfl.2;
+ Fri, 01 Apr 2022 06:05:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=0ucnjFKd28Tf+W0k0cKJLPb/VcjJsSWQNUvFfYSvuec=;
+ b=lwjqcDZowyUU8SuD8z2KZvDAD1mucsBt5qUOqYI/eoVYbRsRNjll6kgXkuvojbg5MI
+ UYk0eutBGy0i3pSAcp0GidT4aybG37Fqt86TTJVUeFDo7dr4eTrqnj7wZwSGCiMcMP7w
+ caFA/JAaHsx/PKVdUIx2D214DPjOaf0vmTYieL/8CJnG/GjRImDjedGWKlfL+XVtBgHi
+ R4zRaKmy04yuGg4XzDiM0Q5GBGqS7VUrrK6ysSTd9QcYnaHuLct+9KUkwQUswkYwJ+4h
+ rqOZD5pRnVJ3z2cUnsUVmJaFRUM1zShFtulA0SJXcb68tA72iU7cOqd2W+3iP1GbhqhR
+ gw3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=0ucnjFKd28Tf+W0k0cKJLPb/VcjJsSWQNUvFfYSvuec=;
+ b=5CH4BBo7HapeUEBASpCa9Xr5zrcRFHXVljspSzSRdvFfcvQpr82EqhIUCmINaQGzkt
+ k7NfFsZ2hDkZ/lb5pKSXKBPA33v4nBBLhqY2ShLSxf7DP8gYLWwRsw4SoXMG/cgVxzKa
+ eKnzkkRQHE94L1UM0gfDoq6VrHZhFvX4Mzgz+Sr+oWQh0BP/DgdnV3oF/ztIvNqM+6Ri
+ 3q+80FDzjFgdysaXEjjx0HcqlC11V/nkQ+FBNKKLQDHK9x9W2+xHa6V2/XsGiEC/MquD
+ II4SNT1lGdnYq7vDuskB69BBKFPRk4WNbbd6c2mFLlMRwQPBYKPmnWFoFqn3VFqm9K8A
+ dKLw==
+X-Gm-Message-State: AOAM53096xcMSYXNh1I8fgiRUdhpFblJbJ/RSrJwXmoJGY1yrmPfl3Xb
+ gs0lIFMoDkqBnuXFxlnQI8E=
+X-Google-Smtp-Source: ABdhPJyZ5PdSzE8MpJHh+wukQwEggZ85lWeSn46EcyF/aB7nRi7vu866Il+NdtIoeNpkflbb91DjMg==
+X-Received: by 2002:a19:5f16:0:b0:44a:2507:5e90 with SMTP id
+ t22-20020a195f16000000b0044a25075e90mr14520906lfb.24.1648818320442; 
+ Fri, 01 Apr 2022 06:05:20 -0700 (PDT)
+Received: from smtpclient.apple (31-178-191-245.dynamic.chello.pl.
+ [31.178.191.245]) by smtp.gmail.com with ESMTPSA id
+ i8-20020a0565123e0800b0044a74e0954dsm238724lfv.66.2022.04.01.06.05.19
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 01 Apr 2022 06:05:19 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
+Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
+From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+In-Reply-To: <20220401125205.GL4012@pengutronix.de>
+Date: Fri, 1 Apr 2022 15:05:16 +0200
+Cc: dri-devel@lists.freedesktop.org,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Kever Yang <Kever.yang@rock-chips.com>
-Subject: Re: [PATCH v9 20/23] drm/rockchip: Make VOP driver optional
-Message-ID: <20220401125527.GM4012@pengutronix.de>
+ =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>
+Message-Id: <5420D26D-34FD-4637-B602-F6271E38BB8D@gmail.com>
 References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
- <20220328151116.2034635-21-s.hauer@pengutronix.de>
- <274a12a9-61f1-7d6a-e89c-52237621930b@rock-chips.com>
- <20220330063913.GW12181@pengutronix.de>
- <9619ce71-db59-d6cd-c254-2b67122fa245@rock-chips.com>
- <20220331070614.GD4012@pengutronix.de>
- <eebd2731-f18b-af1c-b0b9-09df669f5a3c@rock-chips.com>
- <20220331081815.GF4012@pengutronix.de>
- <8aa9da47-d7ed-41bf-384c-103757c19fe2@rock-chips.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <8aa9da47-d7ed-41bf-384c-103757c19fe2@rock-chips.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 14:54:05 up 2 days, 1:23, 55 users, load average: 0.13, 0.21, 0.17
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+ <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
+ <20220401125205.GL4012@pengutronix.de>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+X-Mailer: Apple Mail (2.3654.120.0.1.13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220401_055531_394340_80A9C7E6 
-X-CRM114-Status: GOOD (  57.33  )
+X-CRM114-CacheID: sfid-20220401_060524_783681_845383BB 
+X-CRM114-Status: GOOD (  21.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,165 +94,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-15"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 31, 2022 at 07:00:34PM +0800, Andy Yan wrote:
-> Hi:
-> =
-
-> On 3/31/22 16:18, Sascha Hauer wrote:
-> > On Thu, Mar 31, 2022 at 03:20:37PM +0800, Andy Yan wrote:
-> > > Hi Sascha:
-> > > =
-
-> > > On 3/31/22 15:06, Sascha Hauer wrote:
-> > > > On Wed, Mar 30, 2022 at 08:50:09PM +0800, Andy Yan wrote:
-> > > > > Hi Sascha:
-> > > > > =
-
-> > > > > On 3/30/22 14:39, Sascha Hauer wrote:
-> > > > > > Hi Andy,
-> > > > > > =
-
-> > > > > > On Tue, Mar 29, 2022 at 07:56:27PM +0800, Andy Yan wrote:
-> > > > > > > Hi Sascha:
-> > > > > > > =
-
-> > > > > > > On 3/28/22 23:11, Sascha Hauer wrote:
-> > > > > > > > With upcoming VOP2 support VOP won't be the only choice any=
-more, so make
-> > > > > > > > the VOP driver optional.
-> > > > > > > > =
-
-> > > > > > > > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > > > > > > > ---
-> > > > > > > >      drivers/gpu/drm/rockchip/Kconfig            | 8 ++++++=
-++
-> > > > > > > >      drivers/gpu/drm/rockchip/Makefile           | 3 ++-
-> > > > > > > >      drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 2 +-
-> > > > > > > >      3 files changed, 11 insertions(+), 2 deletions(-)
-> > > > > > > > =
-
-> > > > > > > > diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu=
-/drm/rockchip/Kconfig
-> > > > > > > > index fa5cfda4e90e3..7d22e2997a571 100644
-> > > > > > > > --- a/drivers/gpu/drm/rockchip/Kconfig
-> > > > > > > > +++ b/drivers/gpu/drm/rockchip/Kconfig
-> > > > > > > > @@ -23,8 +23,16 @@ config DRM_ROCKCHIP
-> > > > > > > >      if DRM_ROCKCHIP
-> > > > > > > > +config ROCKCHIP_VOP
-> > > > > > > > +	bool "Rockchip VOP driver"
-> > > > > > > > +	default y
-> > > > > > > > +	help
-> > > > > > > > +	  This selects support for the VOP driver. You should ena=
-ble it
-> > > > > > > > +	  on all older SoCs up to RK3399.
-> > > > > > That reminds me that I wanted to rephrase this. Will change in =
-next
-> > > > > > round.
-> > > > > > =
-
-> > > > > > > > +
-> > > > > > > >      config ROCKCHIP_ANALOGIX_DP
-> > > > > > > >      	bool "Rockchip specific extensions for Analogix DP dr=
-iver"
-> > > > > > > > +	depends on ROCKCHIP_VOP
-> > > > > > > Aanlogix dp is also on vop2 base soc such as=A0 rk356x and rk=
-3588.
-> > > > BTW I just looked at the downstream driver. Here we have the same
-> > > > situation that the analogix dp driver calls rockchip_drm_wait_vact_=
-end()
-> > > > which is implemented in the VOP driver, so when the analogix dp dri=
-ver
-> > > > is actually used on a VOP2 SoC then it is either used in a way that
-> > > > rockchip_drm_wait_vact_end() will never be called or it explodes in=
- all
-> > > > colours.
-> > > > =
-
-> > > > > > I added the dependency because analogix_dp-rockchip.c calls
-> > > > > > rockchip_drm_wait_vact_end() which is implemented in the VOP dr=
-iver,
-> > > > > > so this driver currenty can't work with the VOP2 driver and can=
-'t
-> > > > > > be linked without the VOP driver being present.
-> > > > > > I'll add a few words to the commit message.
-> > > > > Maybe a better direction is move rockchip_drm_wait_vact_end from =
-the VOP
-> > > > > driver to rockchip_drm_drv.c
-> > > > I am not sure if that's really worth it. Yes, the direction might b=
-e the
-> > > > right one, but I would really prefer when somebody does the change =
-who
-> > > > can test and confirm that the analogix dp really works with VOP2 in=
- the
-> > > > end.
-> > > If follow this point, the current DW_MIPI also has not been tested for
-> > > confirm that it
-> > > =
-
-> > > can really work with VOP2, so you should also make it depends on
-> > > ROCKCHIP_VOP.
-> > Well at least I have patches here which make DW_MIPI work with VOP2 ;)
-> =
-
-> =
-
-> But you DW_MIPI patches for rk356x didn't come. So this is not keep
-> consistency with this point.
-> =
-
-> > =
-
-> > What about the others, like LVDS and RGB?
-> =
-
-> =
-
-> Yes, we also have other interface , RK356X has LVDS/RGB/BT1120/BT656, RK3=
-588
-> has BT1120/BT656, no LVDS or RGB.
-> =
-
-> > > I think the current solution is just a workaround to make your patch =
-pass
-> > > the kernel compile
-> > Indeed.
-> > =
-
-> > I agree that it would be good to add a note somewhere which outputs
-> > work with the VOP2 driver (currently only HDMI), but I wonder if Kconfig
-> > dependencies is the right place for it, because only people who deliber=
-ately
-> > disable VOP support will see this information.
-> > Maybe we should rather add it to the Kconfig help text?
-> =
-
-> =
-
-> If a device is supported for this soc, we will add dt node at the dtsi fi=
-le.
-> =
-
-> A Kconfig dependencies don't seems a good idea.
-
-Ok, this means we can keep my current approach with just letting
-ROCKCHIP_ANALOGIX_DP depend on ROCKCHIP_VOP to avoid having a non
-buildable kernel.
-
-Sascha
-
--- =
-
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5n
+dXRyb25peC5kZT4gdyBkbml1IDAxLjA0LjIwMjIsIG8gZ29kei4gMTQ6NTI6Cj4gCj4gQmFzZWQg
+b24gdGhlIGRpc2N1c3Npb24gd2l0aCBBbmR5IHBsZWFzZSB0cnkgdGhlIGZvbGxvd2luZyBwYXRj
+aCwgaXQKPiBzaG91bGQgZml4IHlvdXIgZ3JlZW4gc2NyZWVuIGlzc3VlLiBOb3RlIHRoYXQgd2l0
+aCB0aGlzIHBhdGNoIHRoZQo+IENSVEMgYW5kIHBsYW5lIGlkcyB3aWxsIGNoYW5nZSwgc28gdGhl
+IG1vZGV0ZXN0IGNvbW1hbmRzIG5lZWQgdG8gYmUKPiBhZGp1c3RlZCBhY2NvcmRpbmdseS4KPiAK
+PiBTYXNjaGEKPiAKPiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tODwtLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0KPiAKPiAtLSAKPiBGcm9tIGNiYzAzMDczNjIzYTcxODAyNDMzMzFhYzI0YzNh
+ZmFmOWRlYzc1MjIgTW9uIFNlcCAxNyAwMDowMDowMCAyMDAxCj4gRnJvbTogU2FzY2hhIEhhdWVy
+IDxzLmhhdWVyQHBlbmd1dHJvbml4LmRlPgo+IERhdGU6IEZyaSwgMSBBcHIgMjAyMiAxNDo0ODo0
+OSArMDIwMAo+IFN1YmplY3Q6IFtQQVRDSF0gZml4dXAhIGRybTogcm9ja2NoaXA6IEFkZCBWT1Ay
+IGRyaXZlcgo+IAo+IC0tLQo+IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1f
+dm9wMi5jIHwgMTQgKysrKysrKysrKysrKysKPiAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9u
+cygrKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBf
+ZHJtX3ZvcDIuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5j
+Cj4gaW5kZXggN2RiYTdiOWI2M2RjNi4uMTQyMWJmMmYxMzNmMSAxMDA2NDQKPiAtLS0gYS9kcml2
+ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIuYwo+ICsrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5jCj4gQEAgLTIyODcsNiArMjI4Nywy
+MCBAQCBzdGF0aWMgaW50IHZvcDJfY3JlYXRlX2NydGMoc3RydWN0IHZvcDIgKnZvcDIpCj4gCQkJ
+fQo+IAkJfQo+IAo+ICsJCWlmICh2b3AyLT5kYXRhLT5zb2NfaWQgPT0gMzU2Nikgewo+ICsJCQkv
+Kgo+ICsJCQkgKiBPbiBSSzM1NjYgdGhlc2Ugd2luZG93cyBkb24ndCBoYXZlIGFuIGluZGVwZW5k
+ZW50Cj4gKwkJCSAqIGZyYW1lYnVmZmVyLiBUaGV5IHNoYXJlIHRoZSBmcmFtZWJ1ZmZlciB3aXRo
+IHNtYXJ0MCwKPiArCQkJICogZXNtYXJ0MCBhbmQgY2x1c3RlcjAgcmVzcGVjdGl2ZWx5Lgo+ICsJ
+CQkgKi8KPiArCQkJc3dpdGNoICh3aW4tPmRhdGEtPnBoeXNfaWQpIHsKPiArCQkJY2FzZSBST0NL
+Q0hJUF9WT1AyX1NNQVJUMToKPiArCQkJY2FzZSBST0NLQ0hJUF9WT1AyX0VTTUFSVDE6Cj4gKwkJ
+CWNhc2UgUk9DS0NISVBfVk9QMl9DTFVTVEVSMToKPiArCQkJCWNvbnRpbnVlOwo+ICsJCQl9Cj4g
+KwkJfQo+ICsKPiAJCWlmICh3aW4tPnR5cGUgPT0gRFJNX1BMQU5FX1RZUEVfT1ZFUkxBWSkKPiAJ
+CQlwb3NzaWJsZV9jcnRjcyA9ICgxIDw8IG52cHMpIC0gMTsKPiAKPiAtLSAKPiAyLjMwLjIKPiAK
+PiBQZW5ndXRyb25peCBlLksuICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgfAo+IFN0ZXVlcndhbGRlciBTdHIuIDIxICAgICAgICAgICAgICAg
+ICAgICAgICB8IGh0dHA6Ly93d3cucGVuZ3V0cm9uaXguZGUvICB8Cj4gMzExMzcgSGlsZGVzaGVp
+bSwgR2VybWFueSAgICAgICAgICAgICAgICAgIHwgUGhvbmU6ICs0OS01MTIxLTIwNjkxNy0wICAg
+IHwKPiBBbXRzZ2VyaWNodCBIaWxkZXNoZWltLCBIUkEgMjY4NiAgICAgICAgICAgfCBGYXg6ICAg
+KzQ5LTUxMjEtMjA2OTE3LTU1NTUgfAoKU2FzY2hhCgpOb3cgd29ya3MgcGVyZmVjdGx5IQooaGQg
+cGxheWJhY2sgd2l0aCAzLjUuLi41LjUlIGNwdSB3aGlsZSByZW5kZXJpbmcgdG8gZHJtIHBsYW5l
+KQoKRmFudGFzdGljIHdvcmsgb2YgWW91IQoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
