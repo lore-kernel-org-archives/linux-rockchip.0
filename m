@@ -4,61 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CB36C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Apr 2022 01:37:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EB21C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Apr 2022 08:24:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yUNXFz81PyPyG3wIGuNcqKupDRec2VsMo5JtRMC/k2w=; b=Upv01xkXfoeP1L
-	Dw2ghMHZvF+GtRGZ9LSBaYcS/AQMHmUvzt7aTgibhZjkM6YdJiYtuHjtxnZheTsfkZrA5kIXm1WK1
-	V94YVW5eqPrHVjz67fiix0rfram2BWVPvBhAMyJ/vV0d4HKzxu0KV8vm2L5yzy5Ba3mwIDD+m7Bmr
-	5UkMqtjM1SfOj0Ksli3bjeQhy53E5cphihrFbMgOpkWdOd72OtWhUX9qjUyL9kV4RHmL6sTyuSL2+
-	PgPwPl5SOcy0fowCUC3V7KQAbG2Kpl6FAH8aatPiRfNiL+GyuWazLhfvk+M/xS1tw8WLhvEpokBXc
-	UVgXRfoaiHL/+H42stig==;
+	List-Owner; bh=oRo1TOddrGI5gcsFYVuzfenGsytAR2iuE1ygIe4Q3F0=; b=lrGsdRI4RwvOpH
+	ZT86SSFCtFe/367AtHs3numWE8LtdOeZPA3fcc6cYy26DeEkUny+FyRXjUQOvm+frOgYd4HcZceOZ
+	BL23KvndcWOq1AB8qU+TqA7mb51wgTCoDYJL6cb98JmiEoMbZtabLBVVDAv645Fc5EIvYq1ZWXuK8
+	jtyatPNhf/UnKrstZ44gwF77py3mo73aE+YR1kgPEA8h+L7Dckj0VdVNi9qtAsUS4qfzl9MKbLgd6
+	c/G8tN2ZK4c+cx17O8Ho0TqUlCbYWbS+NyWsjK1JlWe4wQmEpfM5JOufZ2XiiG4mshQpRQ8hv2AeN
+	H0kLVnfzIlXZPECUAe+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1naSho-007k3K-8C; Sat, 02 Apr 2022 01:37:32 +0000
-Received: from mail-m17637.qiye.163.com ([59.111.176.37])
+	id 1naZ3H-008K2U-8R; Sat, 02 Apr 2022 08:24:07 +0000
+Received: from mga07.intel.com ([134.134.136.100])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1naShd-007jwV-CG; Sat, 02 Apr 2022 01:37:23 +0000
-Received: from [172.16.12.141] (unknown [58.22.7.114])
- by mail-m17637.qiye.163.com (Hmail) with ESMTPA id DB99998029A;
- Sat,  2 Apr 2022 09:37:17 +0800 (CST)
-Message-ID: <1c0fbf4f-2e17-29f9-5c69-c80b53ff3d2f@rock-chips.com>
-Date: Sat, 2 Apr 2022 09:37:17 +0800
+ id 1naZ36-008Jzf-1W; Sat, 02 Apr 2022 08:23:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1648887835; x=1680423835;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=Gnc7Vq8A0AMWRP1SecSxWIcpYauRkoVdUdGm+VQNnk4=;
+ b=OepzJM+Myi4s1yCRR9fNhKMZVUKLmOZgfE9MDu3za8JQLxnBKBEym6oR
+ LVvgfuQc36kj46p2GPn6W1DmuFRMAPTBXFtcRL4q+MMJ8TTHuiU6+BJ1T
+ gpespaMVO033R8UOZtzuksLXEYza6EACfXgEWaAx7jPzGrxzhckHwfppq
+ OQCZlr3QBYh7pZ71e8alXOMFsA6CLqmxjw3f+OqSZiH+HRnN6doprX3mD
+ NXujRJyV6CRKHZmIecUFWI4JO8dg6HHzrgWbRYAvkeUvZhhrV3qdexBYp
+ 6B3wphKH5EkvRUfqv9y4R2ZYJIX/56l+3etigZhRwkLIW/uyn41RVhdJR g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10304"; a="323463076"
+X-IronPort-AV: E=Sophos;i="5.90,229,1643702400"; d="scan'208";a="323463076"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Apr 2022 01:23:53 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,229,1643702400"; d="scan'208";a="587101927"
+Received: from lkp-server02.sh.intel.com (HELO 3231c491b0e2) ([10.239.97.151])
+ by orsmga001.jf.intel.com with ESMTP; 02 Apr 2022 01:23:50 -0700
+Received: from kbuild by 3231c491b0e2 with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1naZ2z-00025L-9v;
+ Sat, 02 Apr 2022 08:23:49 +0000
+Date: Sat, 2 Apr 2022 16:22:56 +0800
+From: kernel test robot <lkp@intel.com>
+To: Corentin Labbe <clabbe@baylibre.com>, heiko@sntech.de,
+ herbert@gondor.apana.org.au, krzk+dt@kernel.org, robh+dt@kernel.org
+Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Corentin Labbe <clabbe@baylibre.com>
+Subject: Re: [PATCH v4 10/33] crypto: rockchip: rework by using crypto_engine
+Message-ID: <202204021634.IhyHrjoT-lkp@intel.com>
+References: <20220401201804.2867154-11-clabbe@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
-Content-Language: en-US
-To: Sascha Hauer <s.hauer@pengutronix.de>,
- Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
- <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>
-References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
- <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
- <20220401125205.GL4012@pengutronix.de>
-From: Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <20220401125205.GL4012@pengutronix.de>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
- kWDxoPAgseWUFZKDYvK1lXWShZQUlKS0tKN1dZLVlBSVdZDwkaFQgSH1lBWRodS0JWTBpMH08dHx
- hMTUpMVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWU9LSFVKSktITUpVS1kG
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MhA6HAw5Pj5WQgNOHU8QOAtW
- ExkKFDxVSlVKTU9DQ01IT0hDT0pLVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
- WUFZTkNVSUlVTFVKSk9ZV1kIAVlBT0tOTDcG
-X-HM-Tid: 0a7fe7eb6580d992kuwsdb99998029a
+Content-Disposition: inline
+In-Reply-To: <20220401201804.2867154-11-clabbe@baylibre.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220401_183721_625262_546F2F94 
-X-CRM114-Status: GOOD (  17.32  )
+X-CRM114-CacheID: sfid-20220402_012356_216590_C9D54B05 
+X-CRM114-Status: GOOD (  17.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,67 +78,186 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sacha:
+Hi Corentin,
 
-On 4/1/22 20:52, Sascha Hauer wrote:
-> -- 
-> >From cbc03073623a7180243331ac24c3afaf9dec7522 Mon Sep 17 00:00:00 2001
-> From: Sascha Hauer<s.hauer@pengutronix.de>
-> Date: Fri, 1 Apr 2022 14:48:49 +0200
-> Subject: [PATCH] fixup! drm: rockchip: Add VOP2 driver
->
-> ---
->   drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 14 ++++++++++++++
->   1 file changed, 14 insertions(+)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index 7dba7b9b63dc6..1421bf2f133f1 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -2287,6 +2287,20 @@ static int vop2_create_crtc(struct vop2 *vop2)
->   			}
->   		}
->   
-> +		if (vop2->data->soc_id == 3566) {
-> +			/*
-> +			 * On RK3566 these windows don't have an independent
-> +			 * framebuffer. They share the framebuffer with smart0,
-> +			 * esmart0 and cluster0 respectively.
-> +			 */
-> +			switch (win->data->phys_id) {
-> +			case ROCKCHIP_VOP2_SMART1:
-> +			case ROCKCHIP_VOP2_ESMART1:
-> +			case ROCKCHIP_VOP2_CLUSTER1:
-> +				continue;
-> +			}
+I love your patch! Perhaps something to improve:
+
+[auto build test WARNING on next-20220331]
+[also build test WARNING on v5.17]
+[cannot apply to rockchip/for-next herbert-cryptodev-2.6/master herbert-crypto-2.6/master v5.17 v5.17-rc8 v5.17-rc7]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Corentin-Labbe/crypto-rockchip-permit-to-pass-self-tests/20220402-042221
+base:    fdcbcd1348f4ef713668bae1b0fa9774e1811205
+config: arm64-buildonly-randconfig-r001-20220402 (https://download.01.org/0day-ci/archive/20220402/202204021634.IhyHrjoT-lkp@intel.com/config)
+compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project c4a1b07d0979e7ff20d7d541af666d822d66b566)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install arm64 cross compiling tool for clang build
+        # apt-get install binutils-aarch64-linux-gnu
+        # https://github.com/intel-lab-lkp/linux/commit/be381eb03ba20a6e06f0e880a9929d14a1e13064
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Corentin-Labbe/crypto-rockchip-permit-to-pass-self-tests/20220402-042221
+        git checkout be381eb03ba20a6e06f0e880a9929d14a1e13064
+        # save the config file to linux build tree
+        mkdir build_dir
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/crypto/rockchip/
+
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
+
+All warnings (new ones prefixed by >>):
+
+   drivers/crypto/rockchip/rk3288_crypto_skcipher.c:21:46: error: use of undeclared identifier 'tfm'
+           unsigned int bs = crypto_skcipher_blocksize(tfm);
+                                                       ^
+>> drivers/crypto/rockchip/rk3288_crypto_skcipher.c:328:6: warning: variable 'n' set but not used [-Wunused-but-set-variable]
+           int n = 0;
+               ^
+   1 warning and 1 error generated.
 
 
-Think about this , there maybe other upcoming vop2 base soc, they may 
-only have
+vim +/n +328 drivers/crypto/rockchip/rk3288_crypto_skcipher.c
 
-mirror window Smart1 Esmart1, or Smart1, Esmart1, Esmart2, Cluster1.
+   319	
+   320	static int rk_cipher_run(struct crypto_engine *engine, void *async_req)
+   321	{
+   322		struct skcipher_request *areq = container_of(async_req, struct skcipher_request, base);
+   323		struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(areq);
+   324		struct rk_cipher_ctx *ctx = crypto_skcipher_ctx(tfm);
+   325		struct rk_cipher_rctx *rctx = skcipher_request_ctx(areq);
+   326		struct scatterlist *sgs, *sgd;
+   327		int err = 0;
+ > 328		int n = 0;
+   329		int ivsize = crypto_skcipher_ivsize(tfm);
+   330		int offset;
+   331		u8 iv[AES_BLOCK_SIZE];
+   332		u8 biv[AES_BLOCK_SIZE];
+   333		u8 *ivtouse = areq->iv;
+   334		unsigned int len = areq->cryptlen;
+   335		unsigned int todo;
+   336	
+   337		ivsize = crypto_skcipher_ivsize(tfm);
+   338		if (areq->iv && crypto_skcipher_ivsize(tfm) > 0) {
+   339			if (rctx->mode & RK_CRYPTO_DEC) {
+   340				offset = areq->cryptlen - ivsize;
+   341				scatterwalk_map_and_copy(rctx->backup_iv, areq->src,
+   342							 offset, ivsize, 0);
+   343			}
+   344		}
+   345	
+   346		sgs = areq->src;
+   347		sgd = areq->dst;
+   348	
+   349		while (sgs && sgd && len) {
+   350			if (!sgs->length) {
+   351				sgs = sg_next(sgs);
+   352				sgd = sg_next(sgd);
+   353				continue;
+   354			}
+   355			if (rctx->mode & RK_CRYPTO_DEC) {
+   356				/* we backup last block of source to be used as IV at next step */
+   357				offset = sgs->length - ivsize;
+   358				scatterwalk_map_and_copy(biv, sgs, offset, ivsize, 0);
+   359			}
+   360			if (sgs == sgd) {
+   361				err = dma_map_sg(ctx->dev->dev, sgs, 1, DMA_BIDIRECTIONAL);
+   362				if (err <= 0) {
+   363					err = -EINVAL;
+   364					goto theend_iv;
+   365				}
+   366			} else {
+   367				err = dma_map_sg(ctx->dev->dev, sgs, 1, DMA_TO_DEVICE);
+   368				if (err <= 0) {
+   369					err = -EINVAL;
+   370					goto theend_iv;
+   371				}
+   372				err = dma_map_sg(ctx->dev->dev, sgd, 1, DMA_FROM_DEVICE);
+   373				if (err <= 0) {
+   374					err = -EINVAL;
+   375					goto theend_sgs;
+   376				}
+   377			}
+   378			err = 0;
+   379			rk_ablk_hw_init(ctx->dev, areq);
+   380			if (ivsize) {
+   381				if (ivsize == DES_BLOCK_SIZE)
+   382					memcpy_toio(ctx->dev->reg + RK_CRYPTO_TDES_IV_0, ivtouse, ivsize);
+   383				else
+   384					memcpy_toio(ctx->dev->reg + RK_CRYPTO_AES_IV_0, ivtouse, ivsize);
+   385			}
+   386			reinit_completion(&ctx->dev->complete);
+   387			ctx->dev->status = 0;
+   388	
+   389			todo = min(sg_dma_len(sgs), len);
+   390			len -= todo;
+   391			crypto_dma_start(ctx->dev, sgs, sgd, todo / 4);
+   392			wait_for_completion_interruptible_timeout(&ctx->dev->complete,
+   393								  msecs_to_jiffies(2000));
+   394			if (!ctx->dev->status) {
+   395				dev_err(ctx->dev->dev, "DMA timeout\n");
+   396				err = -EFAULT;
+   397				goto theend;
+   398			}
+   399			if (sgs == sgd) {
+   400				dma_unmap_sg(ctx->dev->dev, sgs, 1, DMA_BIDIRECTIONAL);
+   401			} else {
+   402				dma_unmap_sg(ctx->dev->dev, sgs, 1, DMA_TO_DEVICE);
+   403				dma_unmap_sg(ctx->dev->dev, sgd, 1, DMA_FROM_DEVICE);
+   404			}
+   405			if (rctx->mode & RK_CRYPTO_DEC) {
+   406				memcpy(iv, biv, ivsize);
+   407				ivtouse = iv;
+   408			} else {
+   409				offset = sgd->length - ivsize;
+   410				scatterwalk_map_and_copy(iv, sgd, offset, ivsize, 0);
+   411				ivtouse = iv;
+   412			}
+   413			sgs = sg_next(sgs);
+   414			sgd = sg_next(sgd);
+   415			n++;
+   416		}
+   417	
+   418		if (areq->iv && ivsize > 0) {
+   419			offset = areq->cryptlen - ivsize;
+   420			if (rctx->mode & RK_CRYPTO_DEC) {
+   421				memcpy(areq->iv, rctx->backup_iv, ivsize);
+   422				memzero_explicit(rctx->backup_iv, ivsize);
+   423			} else {
+   424				scatterwalk_map_and_copy(areq->iv, areq->dst, offset,
+   425							 ivsize, 0);
+   426			}
+   427		}
+   428	
+   429	theend:
+   430		local_bh_disable();
+   431		crypto_finalize_skcipher_request(engine, areq, err);
+   432		local_bh_enable();
+   433		return 0;
+   434	
+   435	theend_sgs:
+   436		if (sgs == sgd) {
+   437			dma_unmap_sg(ctx->dev->dev, sgs, 1, DMA_BIDIRECTIONAL);
+   438		} else {
+   439			dma_unmap_sg(ctx->dev->dev, sgs, 1, DMA_TO_DEVICE);
+   440			dma_unmap_sg(ctx->dev->dev, sgd, 1, DMA_FROM_DEVICE);
+   441		}
+   442	theend_iv:
+   443		return err;
+   444	}
+   445	
 
-I think this should add WIN_FEATURE at the platform description file 
-rockchip_vop2_reg.c, then
-
-check the FEATURE to decide whether the driver should give this window a 
-special treatment.
-
-this can make one code run for different soc with different platform 
-description. or we should add
-
-the same code logic for different soc again and again.
-
-> +		}
-> +
->   		if (win->type == DRM_PLANE_TYPE_OVERLAY)
->   			possible_crtcs = (1 << nvps) - 1;
->   
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
 _______________________________________________
 Linux-rockchip mailing list
