@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7D4DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Apr 2022 11:32:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF04CC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Apr 2022 11:34:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vu6tkJm0R2EsktM+BtbtSZ/0Be0X6MaNWViw55fMr/k=; b=ZVfuHIkLKZxuj0
-	uPPEacNbY5TSpxKQodI80Rqud7Qcsn4NayCspX6uCJMsmmpq5MO/6ApfnoTTWIAr25wgdxBxoWVL2
-	uBNObdxFus8NVaNAaLoUPCndO1uMFwahd3wzuVD9aciI7I2SRPO5FTPhRYkpvwD6huhOxHUFWZfSt
-	CulaW4tJwFMwGMpZ4HUi0o0NErRU4xcCzaU++0jVnE0m3bowapj8CEYQSPA23Sm/1L95uGucDtwyG
-	F1S1fRExbcmLXv081GIDY9PH4yUEk+IId1zq+1rCAeWPjfhZTOf3NvO2yHu5e0VDpkcd7o1+SCb9T
-	BzFM+2cyl1SbpWA037Tw==;
+	List-Owner; bh=coV92TBLwHGzbj/5i5zD2efYJ4+au6qGAn1DUrdEHGk=; b=k2yiqJw+uBjxMj
+	1j/7W7yWWgEhv0tHCikPMfmMH7qoFzHJF5qYoQ96CypPRM4egVIAwH8nUyzYqqKwj99KmRR08qLL/
+	OBk9q2rIhLIhiW1fv4kEdigw2Goi6IYoXkD6K9P7tfzf8S8IFqkbll5hgzkUM+UCt4kWwMFrhf+k0
+	PPSVEkN+q329PViG0pX2LcPBAuw/Kf/JB3QyxBxYjDxHio8vcpvTQI4wZeUePjw7PsVRzbcRVRcvS
+	99nUVs8qGchUzSNBryWy1BkrerEwxlOIDKZgCVt4Vv4S1D7b8V0jcBeRBBdYAqEmes3nafcH240Il
+	7LPg4fO0IHmBOME64SgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nabzZ-008btU-Mo; Sat, 02 Apr 2022 11:32:29 +0000
-Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
+	id 1nac16-008cBp-Ew; Sat, 02 Apr 2022 11:34:04 +0000
+Received: from mail-oa1-x33.google.com ([2001:4860:4864:20::33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nabzW-008bsB-Qi
- for linux-rockchip@lists.infradead.org; Sat, 02 Apr 2022 11:32:28 +0000
-Received: by mail-oa1-x36.google.com with SMTP id
- 586e51a60fabf-de48295467so5434869fac.2
- for <linux-rockchip@lists.infradead.org>; Sat, 02 Apr 2022 04:32:25 -0700 (PDT)
+ id 1nac14-008cAm-1A
+ for linux-rockchip@lists.infradead.org; Sat, 02 Apr 2022 11:34:03 +0000
+Received: by mail-oa1-x33.google.com with SMTP id
+ 586e51a60fabf-df02f7e2c9so5395735fac.10
+ for <linux-rockchip@lists.infradead.org>; Sat, 02 Apr 2022 04:34:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=96WWzGX1QlTdIs8fpY2JF8+JRT0XNwmjxbPhRBdEIc0=;
- b=ERAtDfAKGKIIovbquS2nNopqUl72XF1JBlIGtZseWZO1QPTuhHU10O6lEUF6QuUPQ6
- P2oPqeJL+8t7kkSSOLwpU2bfUUSCvz1GqEGICvc6+fNcs0kqQq0vfwk+iQYjdeYVmPaM
- Vy241epC7zQRTY/X6r8K2OsaT2kcc0EGv/SSQiDWOvFRd//22wWg9ASwNb9LmZntG6nH
- zTSW1BWhoB034is5QS8FmffsXOi7SrvfoNpteJnETXH4cx6qhe/g6PzjdrAJSO7hYELM
- ts8QQhwvwFXHy0dsemNqLCwguQO0ksg7vAMt+pfk98Lo3DwPKdehIwS9EKZqLUBOgdKj
- Bj4w==
+ bh=V3U+5UMiJybq7zY98DwsaSNVhzwSmjvGiJkV3X+RFBM=;
+ b=24BPX8VpvHlBMEx6hIWdtAG/9S/+iyZLlr/QAmp0Z+5yWJiGHzFhq/uIQdxSKyVYCP
+ enPRmYoZkbFQcW1HpQH8zrb3IRM4d0hYNTbwxbVgEBdL6AG2jt0/HSVAt9robgILFabJ
+ hPkLvUch+hB8OPL87o/mqnhm3QiZhrMUfdzGNvgyVWrVhnz/AJhfBVlruRn8eWEQNGCu
+ c4w8zQ0s4CUgcN34kZe+uGnqzOnVLeqA0YDWuGn26R8g+72dBvLyMw/s+cjtb5JCtN0k
+ NvTn7x2fWQ5Jv/xStKL7yXif078NOV/iO9/fHaI5S9fhUpkKVvCwnsGEVqWwzqQuIz4I
+ iIPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=96WWzGX1QlTdIs8fpY2JF8+JRT0XNwmjxbPhRBdEIc0=;
- b=Zphczp9MVLfixWyAtM6HiLQXn2dNCCMvv6JjlLJs+DZHcUcm9ERHtiY3IWfp/3wMyk
- 6vBRL7CE/cex7+L7YqUPPAwKm7R64hRAFc+yAuUu/ojOotaIVSDlivN5F8B/+ufw57xl
- 9q/n+wqzqz6kW0DVF3la+r3/0Pa59BP+5UoDtyg9pMWk7lIpDEeqOztKpbwZSeo8MCCn
- 1V1nht57RpMRqQ73AcoiNDQuZUV+t+Dfh+0lHqrcjp2Mf9P90B3Rl9phIG20SjzrFk5Z
- QhgkaQf/tVk3Bdiqd3JIRMWnuav/IYJbZ2VGGs7cpFp4FC8TFFigzGL3Vq9gCfXGf6Lh
- mTMw==
-X-Gm-Message-State: AOAM532dNTfCZm7jdpmKc4yqj4y+Z3ZS6Yc7JmKN2MspN0FrMNkFSUXM
- VYSbQX7OpBKEhlokPnoK1d1ICg==
-X-Google-Smtp-Source: ABdhPJwDqf1/vu0mXQ/9kj4+h/eGfG7Eay8+8AdlhYL1ehJJGnfvQl/Iq9fBv1/MaFLTnYrAIGY3tg==
-X-Received: by 2002:a05:6870:d0c4:b0:dd:c7f6:2d62 with SMTP id
- k4-20020a056870d0c400b000ddc7f62d62mr7021239oaa.99.1648899145085; 
- Sat, 02 Apr 2022 04:32:25 -0700 (PDT)
+ bh=V3U+5UMiJybq7zY98DwsaSNVhzwSmjvGiJkV3X+RFBM=;
+ b=lxZFUH1rH0RizXnk9EcmtOt9gBFaziUQOfNMdyT1MQJhim5iDbNui2R8k4zxQYjf7d
+ DIb0zEVKUQAVruZ3Ld61voyC/Ad0RvIXcdU20uNORId+7v0ZNRz/yWkcpC2ixRFR4RGS
+ bSz+ci2qgW6qY8mCelFfbpDMnFQl1Aj1TrFTCnwO3CE/HuRraEnVjYIRX6uoMg4jyYUx
+ jQQ3Hqo1HiJp1CrtjTZild4WTdAxpEpUVY4ywh9T5aLByZ/9KUYXCpkaHS7odb9Y15NR
+ 2W91Q3qWZkDJBkZVY9XQ1E1Oa9p5cDDq96FSx0gsA4YNr9xAgtmVgCRbR164IiMwKJ0Z
+ ucqQ==
+X-Gm-Message-State: AOAM530nDXOw9jAmSF9gH+80Udsge5kqYNoO2Hl0BFD8h3tHw8LHoDV8
+ RVLvYCMYl7F2Wt8Wa9lN23jguw==
+X-Google-Smtp-Source: ABdhPJy3rMJldwi8Tb/ncmzg6WyZ80EFa7bQd46QO9bii8Cw9gw35Jy6JhWEPjRky3sVVbphVckt4w==
+X-Received: by 2002:a05:6870:3488:b0:de:eaa5:260b with SMTP id
+ n8-20020a056870348800b000deeaa5260bmr6754153oah.281.1648899240576; 
+ Sat, 02 Apr 2022 04:34:00 -0700 (PDT)
 Received: from eze-laptop ([2803:9800:98c2:8470:9f4:8e2a:88e5:ec01])
  by smtp.gmail.com with ESMTPSA id
- f79-20020a4a5852000000b003291b52dc7csm1584506oob.15.2022.04.02.04.32.21
+ p16-20020a05680811d000b002d72ec3a921sm2098566oiv.21.2022.04.02.04.33.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 02 Apr 2022 04:32:24 -0700 (PDT)
-Date: Sat, 2 Apr 2022 08:32:19 -0300
+ Sat, 02 Apr 2022 04:34:00 -0700 (PDT)
+Date: Sat, 2 Apr 2022 08:33:54 -0300
 From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
  Sebastian Fricke <sebastian.fricke@collabora.com>,
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 15/23] media: rkvdec: h264: Validate and use pic width
- and height in mbs
-Message-ID: <Ykg0Qw24PuGCnbLT@eze-laptop>
+Subject: Re: [PATCH v2 16/23] media: rkvdec: h264: Fix reference frame_num
+ wrap for second field
+Message-ID: <Ykg0oqJOb/ExafB3@eze-laptop>
 References: <20220331193726.289559-1-nicolas.dufresne@collabora.com>
- <20220331193726.289559-16-nicolas.dufresne@collabora.com>
+ <20220331193726.289559-17-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220331193726.289559-16-nicolas.dufresne@collabora.com>
+In-Reply-To: <20220331193726.289559-17-nicolas.dufresne@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220402_043226_938141_6E548BB9 
-X-CRM114-Status: GOOD (  26.28  )
+X-CRM114-CacheID: sfid-20220402_043402_131543_4D4F9759 
+X-CRM114-Status: GOOD (  19.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,90 +101,48 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Nicolas,
 
-On Thu, Mar 31, 2022 at 03:37:17PM -0400, Nicolas Dufresne wrote:
+On Thu, Mar 31, 2022 at 03:37:18PM -0400, Nicolas Dufresne wrote:
 > From: Jonas Karlman <jonas@kwiboo.se>
 > 
-> The width and height in macroblocks is currently configured based on OUTPUT
-> buffer resolution, this works for frame pictures but can cause issues for
-> field pictures.
+> When decoding the second field in a complementary field pair the second
+> field is sharing the same frame_num with the first field.
 > 
-> When frame_mbs_only_flag is 0 the height in mbs should be height of
-> the field instead of height of frame.
+> Currently the frame_num for the first field is wrapped when it matches the
+> field being decoded, this cause issues to decode the second field in a
+> complementary field pair.
 > 
-> Validate pic_width_in_mbs_minus1 and pic_height_in_map_units_minus1
-> against OUTPUT buffer resolution and use these values to configure HW.
+> Fix this by using inclusive comparison, less than or equal.
 > 
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 > Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
-> ---
->  drivers/staging/media/rkvdec/rkvdec-h264.c |  4 ++--
->  drivers/staging/media/rkvdec/rkvdec.c      | 10 ++++++++++
->  2 files changed, 12 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-> index 8d44a884a52e..a42cf19bcc6d 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-> +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-> @@ -672,8 +672,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
->  		  LOG2_MAX_PIC_ORDER_CNT_LSB_MINUS4);
->  	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_DELTA_PIC_ORDER_ALWAYS_ZERO),
->  		  DELTA_PIC_ORDER_ALWAYS_ZERO_FLAG);
-> -	WRITE_PPS(DIV_ROUND_UP(ctx->coded_fmt.fmt.pix_mp.width, 16), PIC_WIDTH_IN_MBS);
-> -	WRITE_PPS(DIV_ROUND_UP(ctx->coded_fmt.fmt.pix_mp.height, 16), PIC_HEIGHT_IN_MBS);
 
-Please add a comment so we don't forget why we use the bitstream
-fields here.
-
-> +	WRITE_PPS(sps->pic_width_in_mbs_minus1 + 1, PIC_WIDTH_IN_MBS);
-> +	WRITE_PPS(sps->pic_height_in_map_units_minus1 + 1, PIC_HEIGHT_IN_MBS);
->  	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY),
->  		  FRAME_MBS_ONLY_FLAG);
->  	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD),
-> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-> index 2df8cf4883e2..1b805710e195 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec.c
-> +++ b/drivers/staging/media/rkvdec/rkvdec.c
-> @@ -29,8 +29,11 @@
->  
->  static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
->  {
-> +	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
-> +
->  	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
->  		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
-> +		unsigned int width, height;
->  		/*
->  		 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
->  		 * but it's currently broken in the driver.
-> @@ -45,6 +48,13 @@ static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
->  		if (sps->bit_depth_luma_minus8 != 0)
->  			/* Only 8-bit is supported */
->  			return -EINVAL;
-> +
-> +		width = (sps->pic_width_in_mbs_minus1 + 1) * 16;
-> +		height = (sps->pic_height_in_map_units_minus1 + 1) * 16;
-> +
-
-Let's please add a comment here, clarifying it's legal to check
-the coded format (OUTPUT queue format) at .try_ctrl time,
-because the stateless decoder specification [1] mandates
-S_FMT on the OUTPUT queue, before passing the SPS/PPS controls.
-
-[1] https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/dev-stateless-decoder.html
-
-> +		if (width > ctx->coded_fmt.fmt.pix_mp.width ||
-> +		    height > ctx->coded_fmt.fmt.pix_mp.height)
-
-Can you add a debug message or error message?
-These silent errors tend to get super hard to track.
-
-With these changes:
-
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+To complete the Signed-off-by chain, can you add your Signed-off-by: at
+the bottom?
 
 Thanks,
 Ezequiel
+
+> ---
+>  drivers/staging/media/rkvdec/rkvdec-h264.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+> index a42cf19bcc6d..730f8ebf7f58 100644
+> --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
+> +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+> @@ -773,7 +773,7 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
+>  			continue;
+>  
+>  		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM ||
+> -		    dpb[i].frame_num < dec_params->frame_num) {
+> +		    dpb[i].frame_num <= dec_params->frame_num) {
+>  			p[i] = dpb[i].frame_num;
+>  			continue;
+>  		}
+> -- 
+> 2.34.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
