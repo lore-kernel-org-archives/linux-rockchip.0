@@ -4,57 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB2F2C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Apr 2022 11:40:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66246C433FE
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Apr 2022 10:44:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CHO/PyMF0Hx0SPN0VGgb5HELtSzsvxjWnErUnMHNkIU=; b=JG6Zvc/tJCBzDD
-	cwo8FHZwxklhNFj0g3nyo6nXxX7IOtf+w7bIRgYiHeMRXy1tqhJ7HwbTu6HsVP/5st40PL1+GXt/d
-	SLGN1SmvuMYnUD1oX9WkNgZqoWGOkK/ajPqxg9oRhqS5m3qynOhWa3JfEbtJ5yJpBL3LEyVblV0Lo
-	XNS+NHlCqZPmhTxPguRJGImOsV8UxGu6rRdIrRd/OZEo3xjSqTjtq4XIzXi5bGhpaxuRB1FuSHsW1
-	FIhw4QSq10Ti/0DR2LofKY8Xud4klFS9eWeonKhWKdiBqcaSbalc7s3v7Iq5SrlxwW8yRIJ1cxPVr
-	oV1ds937JXS1K9zQuFYA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BVwtnWLGr7D5ewqZaf3S32wSkoif+pKXxEotm2ZG21Q=; b=szx/Gm3WLFeUnj
+	OxrwBykxPJZR3RBWkleO89l0cTZ7n6Pypq9HVZIGvajJF0Ry4NiJnsLROmiMsEwGhdbdLkNjiJpg6
+	J0XhafMcjzAeGS5DHS29DVTLXMZd4vWlx5oXmxZgHYWCJ7qlwsWIdyQgIT6Ue3aop8Zhf4uQTrDmJ
+	xAKnYtr3KPSdJ1GFtCytYB0rS/ql3ZFBQwrMFHrWpGAkuksXL0DqyBZovD/Zt+HAeCLxnAt3twIZm
+	2tEI9wkHhlcZq7zySSd/AmK2rNcKQZccvXZI3theyWjevA1z1kiccK26IVyQF/0FicIgHzpa8jtPO
+	mk1Zl1sxhI4g0qUsTJVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbL3x-00EkAC-Aa; Mon, 04 Apr 2022 11:40:01 +0000
-Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
+	id 1nabEx-008X2S-Ev; Sat, 02 Apr 2022 10:44:19 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbL3m-00Ek66-Kd; Mon, 04 Apr 2022 11:39:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=metanate.com; s=stronger; h=In-Reply-To:Content-Type:References:Message-ID:
- Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:Content-ID:
- Content-Description; bh=mkeyhSxyusAHKnALY1uDS0yoYbKp/eWJvkf6lcIQ/ow=; b=Fm5GA
- TBQNzVNjpeMf6PBUOAJ9pNHY3ubuipR2YgkdzmOpAhyPvBAigkYuaS6Bt0qztNTinj82y7cY5wrzk
- 8M49jVH8ViVvLkqvhIPegfDZSkhFhWx36ewZbiITh9OAsu/ycpVz5a+dHUtHxUCoYRX56bJiAK7Du
- 5/r0ZfI60FYkAuR0uw0E2vD0KLCxNiNvj0S/TFUIfUgPVBbwx1rf4dVqqyANjk28GnrUR1GqUamEM
- 1umr5Lxo//WXFEco/mu2E/pvtYSX3Ndk1cB0o5G+FHykx0xxC39HxCfCUddgMQnD4J8a0iDbj4wVh
- IyGkZNPCSsaO8V3OeZwvbDozc22qg==;
-Received: from [81.174.171.191] (helo=donbot)
- by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.93) (envelope-from <john@metanate.com>)
- id 1nbL3h-00054c-2I; Mon, 04 Apr 2022 12:39:45 +0100
-Date: Mon, 4 Apr 2022 12:39:43 +0100
-From: John Keeping <john@metanate.com>
-To: Corentin Labbe <clabbe@baylibre.com>
-Cc: heiko@sntech.de, herbert@gondor.apana.org.au, krzk+dt@kernel.org,
- robh+dt@kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 18/33] crypto: rockchip: fix style issue
-Message-ID: <YkrY/9xE702mqKR/@donbot>
-References: <20220401201804.2867154-1-clabbe@baylibre.com>
- <20220401201804.2867154-19-clabbe@baylibre.com>
+ id 1nabEc-008Wwf-GC; Sat, 02 Apr 2022 10:43:59 +0000
+Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
+ by mxout2.routing.net (Postfix) with ESMTP id 6B7CE5FED6;
+ Sat,  2 Apr 2022 10:43:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+ s=20200217; t=1648896231;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Rb93FZyk5VcvUPyEKX4EHnPX+8i+oZK4NouS1CY0eCI=;
+ b=qyTmWar7dxUWgSinj9fVZT4mxA+E6r8AzyoQg6qDoEnZoLk0/yW7rQ2vLVKcnJ0soQC9a1
+ Sv3n6QLJN59ve4F7CB6COWBwSGlWUyT9KIGU7F8pSmQ0hOFIVOFZoMUme8AkyFYhF4Z5d8
+ XAUg8pdBB/vw6L9FEOYDszI7oAo0F6E=
+Received: from localhost.localdomain (fttx-pool-80.245.79.107.bambit.de
+ [80.245.79.107])
+ by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 8191E403AC;
+ Sat,  2 Apr 2022 10:43:50 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-rockchip@lists.infradead.org
+Cc: Frank Wunderlich <frank-w@public-files.de>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: 
+Date: Sat,  2 Apr 2022 12:43:10 +0200
+Message-Id: <20220402104313.100333-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220401201804.2867154-19-clabbe@baylibre.com>
-X-Authenticated: YES
+X-Mail-ID: d7b3723d-f836-4d72-a170-ec15ef3cf76e
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220404_043950_707923_4721E586 
-X-CRM114-Status: GOOD (  10.51  )
+X-CRM114-CacheID: sfid-20220402_034358_716833_48FA37E2 
+X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,16 +74,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 01, 2022 at 08:17:49PM +0000, Corentin Labbe wrote:
-> This patch fixes some warning reported by checkpatch
-> 
-> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
-> ---
->  drivers/crypto/rockchip/rk3288_crypto_ahash.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
+From: Frank Wunderlich <frank-w@public-files.de>
 
-There's also a badly indented comment in rk_hash_run() which could be
-fixed in this patch.
+Subject: [PATCH v1 0/2] Change Bananapi-R2-Pro board to match V1.0
+
+Mainline Devicetree was created for v00 prototype that was not in
+public sale and only shipped to few developers. V1.0 of the board
+has some changes in io-domain and gmacs are swapped.
+
+Change mainline DTS to match the current hardware.
+
+Frank Wunderlich (2):
+  arm64: dts: rockchip: Change io-domains of bpi-r2-pro
+  arm64: dts: rockchip: Add gmac1 and change network settings
+
+ .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   | 40 ++++++++++++++++---
+ 1 file changed, 35 insertions(+), 5 deletions(-)
+
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
