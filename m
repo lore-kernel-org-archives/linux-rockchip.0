@@ -4,62 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0F60C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Apr 2022 11:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0446BC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Apr 2022 11:06:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YaDlBDwtorfG3mAF2yuAv1A5+CwZxHovn+teUNJ01nU=; b=ZFENwFuizPkNcR
-	V4/gwsN4IqeqX9nWvfamOVS2O85k4opSad64WW1j4oV2u5PSSR9IjJRnD8fPiHNrqLCTp1+z9mwTu
-	+rvCPVW8bSekPCCweh2vHRv5BUdHAB/+R7sF7VK8AFYIc279MCU/X6uaXJrMrFaDgsm04k+0JdgIZ
-	NHsLL9lp4q/6q34/SUv414kye+3HeZwdcPbZehdCSvp2vAUJlqFuRAsGm32fuAI3I37CxiRICKn9a
-	IKte6wk42jsTh6aRgwJ0HHtINdDcFAazZuHJPXHWWj3kHPc/tYHcg6pWV6Xdu9MFbY6TtU6wgfNJP
-	P1VXl9C+LKQ4dRzUb4zA==;
+	List-Owner; bh=foGgum7g83Xfi9BDkugsv1xmkLHljIy7ueNeuvtIFac=; b=cZhaVba64rIwm0
+	FmUbs4SLeTEGTaTGGCPsp/uJ7bOkRhUBJegb3GNKHzCJuE2otXhugtNDezKdyUCwy4dosq1pnpI6+
+	GzGWLO+RScZS7I4c+i8StBz13tdEcBpYvBkTxVgspnshTYcS/QyszN16i6lHp/dIKk/zJi3dPkzPp
+	wBNZg3kHNauw+YBuxNGbxJ5jjgsci+2tNyz4tP+NUXwosa4wYhgjSfV28GfbFF20WdzlfoN4+7zsa
+	SwIgpyj4pGTGzDHMi/LbCxNDfb14fYKJua71BtwWXw90WCVGOddUZXG9TT4R1Ci7LTnftOmd1uY16
+	22vikuWjH2u56vp5x0+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nabVX-008YjV-QX; Sat, 02 Apr 2022 11:01:27 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1nabZv-008Zju-D0; Sat, 02 Apr 2022 11:05:59 +0000
+Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nabV6-008Ydb-LP; Sat, 02 Apr 2022 11:01:02 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
- by mxout3.routing.net (Postfix) with ESMTP id C5B4C62646;
- Sat,  2 Apr 2022 11:00:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1648897258;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=rVlsNMjXQQ4jdCL0TbPne+ht1OtgQ3f4+EzKpSKvrX8=;
- b=swkdD0x3TBBMxA6IIt68vV136Ukio9/0J4qdADpFPOgGC+yP7O1HvdJCs96zAKFr2g/Fh9
- 6jdwMZk5w5cA/E7Sl2xHDRCPmfsQCk4zV0q8ThqFr3MGs0u//QGAO/2a37kI9r6owa9M38
- FF7gD4bup1CeOcB6+uvcAwQ1gV3Gzio=
-Received: from localhost.localdomain (fttx-pool-80.245.79.107.bambit.de
- [80.245.79.107])
- by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 211523602D1;
- Sat,  2 Apr 2022 11:00:58 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-rockchip@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v1 2/2] arm64: dts: rockchip: Add gmac1 and change network
- settings
-Date: Sat,  2 Apr 2022 13:00:45 +0200
-Message-Id: <20220402110045.104031-3-linux@fw-web.de>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220402110045.104031-1-linux@fw-web.de>
-References: <20220402110045.104031-1-linux@fw-web.de>
+ id 1nabZr-008Zht-DI
+ for linux-rockchip@lists.infradead.org; Sat, 02 Apr 2022 11:05:58 +0000
+Received: by mail-oi1-x22c.google.com with SMTP id q129so5265016oif.4
+ for <linux-rockchip@lists.infradead.org>; Sat, 02 Apr 2022 04:05:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=5nNjTIYgpRbZw5I/VzC+f5/bljYzlHsJFDDO5VmuXF4=;
+ b=ZALJ1zIYb+btHV9fF5mqAUH3lr58JYRyAtclQkdj24wtnkG8korJrsq6BGNI5Taa/8
+ htEUb9QhjwVs8pDoXQ8D825fh4TCbN9lA2RsR16RVoy+V2GEkSYWknnbbrlj/lxJJYzx
+ ztaOPs4SDSiKbekB8T5S9v/c/61//RT6Vj9FdlgCiVSItpqpz2M/vfS4p6mL3Uq2HGgF
+ y0hPIdsDiBvxoJP2XfTDyy1f1efPWcdAUhhbuej3SJHxjWEXSl1JH6ZJ+UJ0kwijEKcd
+ 10teOP1iedzJPBGcHLTOqSrbSJX6UiGjiaQ1//oCQfCEeEpuCSt0pkKN1oIvpEFGCHV6
+ j3Ig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=5nNjTIYgpRbZw5I/VzC+f5/bljYzlHsJFDDO5VmuXF4=;
+ b=NdpD4M1Hz9ODECzKDut6tUhFJrmMt8HdPYxkS6Zb+5bgN7jdzfxIvOXVbxFVyQvpdu
+ h8kiQt2pNZdVqHxZj4nIXkC076j2Q0bq3Ogkm4QK+4CWdaswTBTIe5ES4aZOKS3IHAef
+ 81Tn1B9s/6sK1yq+fdijVgs/FvNNCl/WHO+7wp92n5MTtoVfbzVntnCrSyEPxJCT4oA2
+ mXtKLUYUGlBfCnIqDAJPK5YPbqiDSWA6+ozyGJ0fJb36q7x/34HzXY6yZYTJYyVTXBhV
+ FHVjOjnQVWJhqy61l2v3Hi2iTDwcvAkjKLYOpLJ4IFH6t4lH9YK5peGXfRccC0pstXOV
+ XV9w==
+X-Gm-Message-State: AOAM530OLNBimvsvWANlweSBO71cRQeSxaFpBdCrmDvWCDgMkvz8LN9c
+ PmmTyzgPVWDJGvJwoOIYtVT0oA==
+X-Google-Smtp-Source: ABdhPJzPRczjH6KHvYSlj/i+EL+piiYu7Xx2mZo2CtSLq9y3JKUxXPusvcgWdoeQIGT46zZyG6a1GA==
+X-Received: by 2002:a05:6808:1413:b0:2ef:4a81:2ee8 with SMTP id
+ w19-20020a056808141300b002ef4a812ee8mr6278818oiv.125.1648897552507; 
+ Sat, 02 Apr 2022 04:05:52 -0700 (PDT)
+Received: from eze-laptop ([2803:9800:98c2:8470:9f4:8e2a:88e5:ec01])
+ by smtp.gmail.com with ESMTPSA id
+ m15-20020a9d644f000000b005ce0a146bfcsm2174508otl.59.2022.04.02.04.05.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 02 Apr 2022 04:05:51 -0700 (PDT)
+Date: Sat, 2 Apr 2022 08:05:46 -0300
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, kernel@collabora.com,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 12/23] media: rkvdec: Stop overclocking the decoder
+Message-ID: <YkguChEzVz7T9qZV@eze-laptop>
+References: <20220331193726.289559-1-nicolas.dufresne@collabora.com>
+ <20220331193726.289559-13-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
-X-Mail-ID: 97d707e2-b6e5-46ae-8685-faf5e876b31a
+Content-Disposition: inline
+In-Reply-To: <20220331193726.289559-13-nicolas.dufresne@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220402_040101_187970_BBB27532 
-X-CRM114-Status: GOOD (  12.08  )
+X-CRM114-CacheID: sfid-20220402_040555_501336_9BE5644C 
+X-CRM114-Status: GOOD (  19.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,95 +95,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+On Thu, Mar 31, 2022 at 03:37:14PM -0400, Nicolas Dufresne wrote:
+> While this overclock hack seems to work on some implementations
+> (some ChromeBooks, RockPi4) it also causes instability on other
+> implementations (notably LibreComputer Renegade, but there were more
+> reports in the LibreELEC project, where this has been removed). While
+> performance is indeed affected (tested with GStreamer), 4K playback
+> still works as long as you don't operate in lock step and keep at
+> least 1 frame ahead of time in the decode queue.
+> 
+> After discussion with ChromeOS members, it would seem that their
+> implementation indeed used to synchronously decode each frames, so
+> this hack was simply compensating for their code being less
+> efficient. In my opinion, this hack should not have been included
+> upstream.
+> 
+> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 
-New Version (v1.0) of R2 pro has swapped gmacs compared to the v00.
+Fixes: cd33c830448ba ("media: rkvdec: Add the rkvdec driver")
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 
-WAN-Port is now on gmac1 (RTL8211F) and lan-ports on gmac0 with mt7531
-switch.
+Thanks,
+Ezequiel
 
-There is already a mt7531 dsa driver in mainline, but it needs to be
-modified to work for this board.
-
-Fixes: f901aaadaa2a ("arm64: dts: rockchip: Add Bananapi R2 Pro")
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
- .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   | 36 +++++++++++++++++--
- 1 file changed, 33 insertions(+), 3 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-index a0388ff85ddf..067fe4a6b178 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-@@ -16,6 +16,7 @@ / {
- 
- 	aliases {
- 		ethernet0 = &gmac0;
-+		ethernet1 = &gmac1;
- 		mmc0 = &sdmmc0;
- 		mmc1 = &sdhci;
- 	};
-@@ -78,7 +79,6 @@ &gmac0 {
- 	assigned-clocks = <&cru SCLK_GMAC0_RX_TX>, <&cru SCLK_GMAC0>;
- 	assigned-clock-parents = <&cru SCLK_GMAC0_RGMII_SPEED>, <&cru CLK_MAC0_2TOP>;
- 	clock_in_out = "input";
--	phy-handle = <&rgmii_phy0>;
- 	phy-mode = "rgmii";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&gmac0_miim
-@@ -90,8 +90,38 @@ &gmac0_rgmii_clk
- 	snps,reset-active-low;
- 	/* Reset time is 20ms, 100ms for rtl8211f */
- 	snps,reset-delays-us = <0 20000 100000>;
-+	tx_delay = <0x4f>;
-+	rx_delay = <0x0f>;
-+	status = "okay";
-+
-+	fixed-link {
-+		speed = <1000>;
-+		full-duplex;
-+		pause;
-+	};
-+};
-+
-+&gmac1 {
-+	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
-+	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&cru CLK_MAC1_2TOP>;
-+	clock_in_out = "output";
-+	phy-handle = <&rgmii_phy1>;
-+	phy-mode = "rgmii";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&gmac1m1_miim
-+		     &gmac1m1_tx_bus2
-+		     &gmac1m1_rx_bus2
-+		     &gmac1m1_rgmii_clk
-+		     &gmac1m1_rgmii_bus>;
-+
-+	snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
-+	snps,reset-active-low;
-+	/* Reset time is 20ms, 100ms for rtl8211f */
-+	snps,reset-delays-us = <0 20000 100000>;
-+
- 	tx_delay = <0x3c>;
- 	rx_delay = <0x2f>;
-+
- 	status = "okay";
- };
- 
-@@ -315,8 +345,8 @@ &i2c5 {
- 	status = "disabled";
- };
- 
--&mdio0 {
--	rgmii_phy0: ethernet-phy@0 {
-+&mdio1 {
-+	rgmii_phy1: ethernet-phy@0 {
- 		compatible = "ethernet-phy-ieee802.3-c22";
- 		reg = <0x0>;
- 	};
--- 
-2.25.1
-
+> ---
+>  drivers/staging/media/rkvdec/rkvdec.c | 6 ------
+>  1 file changed, 6 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+> index c0cf3488f970..2df8cf4883e2 100644
+> --- a/drivers/staging/media/rkvdec/rkvdec.c
+> +++ b/drivers/staging/media/rkvdec/rkvdec.c
+> @@ -1027,12 +1027,6 @@ static int rkvdec_probe(struct platform_device *pdev)
+>  	if (ret)
+>  		return ret;
+>  
+> -	/*
+> -	 * Bump ACLK to max. possible freq. (500 MHz) to improve performance
+> -	 * When 4k video playback.
+> -	 */
+> -	clk_set_rate(rkvdec->clocks[0].clk, 500 * 1000 * 1000);
+> -
+>  	rkvdec->regs = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(rkvdec->regs))
+>  		return PTR_ERR(rkvdec->regs);
+> -- 
+> 2.34.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
