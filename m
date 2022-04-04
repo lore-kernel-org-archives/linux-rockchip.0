@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D411C43217
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Apr 2022 21:58:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30FF9C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Apr 2022 21:58:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wSM3riIj+DrMcyn5up/DihuaDv2/UqUekN6qPFLmgOI=; b=BDDiVQUMa0VI46
-	RV06VXcGc7WwNg4YCMv5MnQ/dLXTjWX4RtehvV/KdYYxF5homNgwBZdqutNJxpDCWrL46gsPp5BQt
-	Qyrr2Bd55Zm91N/LEQ3LKxU76p3Ay8s6O/52OEMnLEFM6V0NNReKKBVmi7n7hw9LAT3EaaV+oxoWY
-	4vnuPmhVn141EIvPYjQeuGuoCA3cx/VAekKobNFst83Nm9Qw73j+8eU1r/GOaUD1PSuddek8E4pT1
-	C5cfLqo4FfbdFfw1mPeJKg/P8azMYryIFvQdq/KUutJKmdQUB3sJbHwq16hteUEJa35zwfyIpUClD
-	xt1WSGI35HhHaau0a2lA==;
+	List-Owner; bh=DtkEPAzLTmYSKPLpx4CRtVcOJIOjJocMIwZ0a2qnfao=; b=SWSqGBjejGkgne
+	0iZUzGeyxwPkxt8UMhExy2bt3elw9d/WbNoXwzSluDuKppXT40FS/Kbga04jQVI4UeYX+Wk3Dd6d+
+	6mMgNZ0cItCtL86NhKs3bqUh0U0qzjZ/Fxa++WMJxMPxNxHpdCVi1hp1G3AL5gfT60F7213TjMwHH
+	pAXpxPA1NLcXy/vli58CLZf4sXsNgqlId3I+04YrsNUGRqp6EHzZD7a8yewAlSoUJZrAQK6o5t3dz
+	/Arhf5CZxVcXaPOxqO3VitYjdvDfeSPxpgiNFJCKj8jJRTgbO4YRfMmklg/BsSr8XJhMEiNbycP7h
+	ROtG7OPBqGdRKNb+wXUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbUiD-00GVd4-S4; Mon, 04 Apr 2022 21:58:13 +0000
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
+	id 1nbUi9-00GVbj-Lv; Mon, 04 Apr 2022 21:58:09 +0000
+Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbUiA-00GVbl-MH
- for linux-rockchip@lists.infradead.org; Mon, 04 Apr 2022 21:58:12 +0000
-Received: by mail-oi1-x22c.google.com with SMTP id e189so11476822oia.8
- for <linux-rockchip@lists.infradead.org>; Mon, 04 Apr 2022 14:58:09 -0700 (PDT)
+ id 1nbUi6-00GVal-IS
+ for linux-rockchip@lists.infradead.org; Mon, 04 Apr 2022 21:58:07 +0000
+Received: by mail-ot1-x32d.google.com with SMTP id
+ a17-20020a9d3e11000000b005cb483c500dso8144637otd.6
+ for <linux-rockchip@lists.infradead.org>; Mon, 04 Apr 2022 14:58:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=G8/ao70Lm7W7LQJ7XYuDco3ISGwUQ9Ikm03scRmzvCk=;
- b=QzKxHUfbXFnJ0u75nM7iGWvmbp24E+K30nc4qIlK7BpuWtE13E9O9btBlxzPyKx5eB
- xZi8uK0oi3i1UAYpZF/oo//B/iNz5bl6mXsptokTZi4+W5boVL0BRiVGU2ak6EXmZpq+
- 9mt7mUiSqZ4c69pUFmupJhsOZOlHeiSUV7LMe2Ean3773YnrgBpIOkboKUY9eExJIlt5
- 4WzehvMs20sJDpKGe8SyGCPHT/NV6XM2nMxFNC2Kom2TlRozTJTVDuy92eFmVuStCAld
- i19WsGv1f70cUeT383GkTOGfaH3IQ8T0lEDSkJ6zn1S0KgRX4j/EDlDoujopjUI5fJOp
- O+hA==
+ bh=I8SF98rfvfsECoLgv/3qDJ7dOWAbp3etpp0VBkgOEd4=;
+ b=llbe/jozSemX/Dt2sgIr8j+xJRQHaLnkhS58ESP4PGlU4YqQiTnWTLahrld27BPO/X
+ KNJCwjVviq7YOMboPvKdYhdBc4Vpb+Fz50XvHxFU6DcJXtg8LoSwAoG4AZYJpSuVNpZC
+ rJscq5/C56OUxWds9fod0ZorT/bPw0V+UC+VW99D0Cm7ftFerBHRtp6agVoCCxWLl6w2
+ UoXEe3ggD0wDv464QU5RMyAuzGfKfSGNYs5vABx30KicLVEx2p7/jORpRlopw3zO5nns
+ ZGib1aTQ4yIW9s1rDDYB6c2qt3wAJCcs4AHxZJI7elJ903QtaWSnUls4SCWPuC1Tg9Hv
+ lNVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=G8/ao70Lm7W7LQJ7XYuDco3ISGwUQ9Ikm03scRmzvCk=;
- b=rinj3DazchecQeQU1XLSmMTdgPjYuM+UIqyZqLDgW1qXNC/OQUCOx8BdbRzjbJXKeb
- rBqg0CcZr2tTPg0wA0AddNA5R7mVnBVHRVODqLFzJSjAAKGxCE5lnc8XqyHqsPMFYZit
- ruQ3DtRPV4CyBIeJs0AJjpN8WoX8DbuS/NGCkad7kLW/TOZqoa9YCQhiMbOgBmH5YxOP
- ZVQBCCJhIYYCdda4IjHlSkpD20ZbcJiWqRGwJ4dR9dU6MnwNYHTbSmKboh7jcVF6W7iI
- 8t8wKuek+MqPKzWHzLiOytN8E0Cq7t8gfIBvvoAhTQ/xXQ2TDul4XBveA+NOIZ8OUemY
- IS5Q==
-X-Gm-Message-State: AOAM5318xTicchJpf0+0Myxz19pY3ODJ8ENcoqyNreBAWGPLzJPUpbOm
- vSYeL+0NPXBtbaMbmPcgjcw=
-X-Google-Smtp-Source: ABdhPJxanMGtgrGVKdFhPJHAnQqqAFkMAGoD8rY/iWqoDaLegSP2H0jSXeIxrTGPvXEcKMpGtDZx3A==
-X-Received: by 2002:a05:6808:1b28:b0:2da:51e0:d10a with SMTP id
- bx40-20020a0568081b2800b002da51e0d10amr173327oib.186.1649109489428; 
- Mon, 04 Apr 2022 14:58:09 -0700 (PDT)
+ bh=I8SF98rfvfsECoLgv/3qDJ7dOWAbp3etpp0VBkgOEd4=;
+ b=i2iPi2xO5FKVg9hvEHM/s0kVJiqWsLS7bHY0/XSAllvpCp1i0sNqPmXdcg1qNtzjKk
+ WnFz4pWxXu5g6Z7tfn0LQAxmeNtER3eLjk5zq2DspUCFjRWJq3o/XQbm7Xq7nCzdFAdF
+ rbZWmtbu7NfF2YR6wNGKNXqsGhxO2OkF5SzplpUQqlScIZIJK0rTxinxjPvsgRPDhuo3
+ EzHjAmtQRUx7R3BaKnZ7ItXtfvRCtwsveT7J9KIG+pNSbOWdirV5busL2umoXD0jNqU2
+ GGMH/lAiPehfExji185Qa6NCEmhtOfiC/dkRgcJA9tB5dToR9Jkyd4zybjPXjNPDMhuC
+ ptgQ==
+X-Gm-Message-State: AOAM533S5XbkOTZd5caiQeq+++I6sg8BNMl2CVgVx8DGUy/DZeXRb2A2
+ Tsp9QU5SF9uzH08dA8uFpjA=
+X-Google-Smtp-Source: ABdhPJxNUEmI/HP0u5EwCfYA2HhDlWdo3pXzSO4krY1nKVPBsaB1PI+VnKEWcQ2aCzvkuu+6qWebTg==
+X-Received: by 2002:a05:6830:138d:b0:5b2:4b0a:a4fa with SMTP id
+ d13-20020a056830138d00b005b24b0aa4famr136564otq.380.1649109485376; 
+ Mon, 04 Apr 2022 14:58:05 -0700 (PDT)
 Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
  [76.183.134.35]) by smtp.gmail.com with ESMTPSA id
- r3-20020aca4403000000b002ecf4d70c83sm4646402oia.27.2022.04.04.14.58.08
+ r3-20020aca4403000000b002ecf4d70c83sm4646402oia.27.2022.04.04.14.58.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Apr 2022 14:58:08 -0700 (PDT)
+ Mon, 04 Apr 2022 14:58:04 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-pm@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
@@ -66,17 +67,16 @@ Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  maccraft123mc@gmail.com, sre@kernel.org, heiko@sntech.de,
  krzk+dt@kernel.org, robh+dt@kernel.org, lee.jones@linaro.org,
  Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 4/4 v5] arm64: dts: rockchip: add rk817 chg to Odroid Go
- Advance
-Date: Mon,  4 Apr 2022 16:57:54 -0500
-Message-Id: <20220404215754.30126-5-macroalpha82@gmail.com>
+Subject: [PATCH 1/4 v5] dt-bindings: Add Rockchip rk817 battery charger support
+Date: Mon,  4 Apr 2022 16:57:51 -0500
+Message-Id: <20220404215754.30126-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220404215754.30126-1-macroalpha82@gmail.com>
 References: <20220404215754.30126-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220404_145810_770336_8AF6AC0C 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20220404_145806_650059_EFAC46BC 
+X-CRM114-Status: GOOD (  13.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,61 +96,88 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add the new rk817 charger driver to the Odroid Go Advance. Create a
-monitored battery node as well for the charger to use. All values
-from monitored battery are gathered from the BSP kernel for the
-Odroid Go Advance provided by HardKernel.
+Create dt-binding documentation to document rk817 battery and charger
+usage. New device-tree properties have been added.
+
+- rockchip,resistor-sense-micro-ohms: The value in microohms of the
+                                      sample resistor.
+- rockchip,sleep-enter-current-microamp: The value in microamps of the
+                                         sleep enter current.
+- rockchip,sleep-filter-current: The value in microamps of the sleep
+                                 filter current.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
 ---
- .../boot/dts/rockchip/rk3326-odroid-go2.dts   | 26 +++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ .../bindings/mfd/rockchip,rk817.yaml          | 48 +++++++++++++++++++
+ 1 file changed, 48 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-index ea0695b51ecd..4ccdb6dffa88 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-@@ -52,6 +52,25 @@ backlight: backlight {
- 		pwms = <&pwm1 0 25000 0>;
- 	};
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+index bfc1720adc43..b949d406a487 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+@@ -117,6 +117,47 @@ properties:
+         description:
+           Describes if the microphone uses differential mode.
  
-+	battery_cell: battery-cell {
-+		compatible = "simple-battery";
-+		charge-full-design-microamp-hours = <3000000>;
-+		charge-term-current-microamp = <300000>;
-+		constant-charge-current-max-microamp = <2000000>;
-+		constant-charge-voltage-max-microvolt = <4200000>;
-+		factory-internal-resistance-micro-ohms = <180000>;
-+		voltage-max-design-microvolt = <4100000>;
-+		voltage-min-design-microvolt = <3500000>;
++  battery:
++    description: |
++      The child node for the charger to hold additional properties. If a
++      battery is not in use, this node can be omitted.
++    type: object
++    properties:
++      monitored-battery:
++        description: |
++          A phandle to a monitored battery node that contains a valid
++          value for:
++          charge-full-design-microamp-hours,
++          charge-term-current-microamp,
++          constant-charge-current-max-microamp,
++          constant-charge-voltage-max-microvolt,
++          voltage-max-design-microvolt,
++          voltage-min-design-microvolt,
++          and a valid ocv-capacity table.
 +
-+		ocv-capacity-celsius = <20>;
-+		ocv-capacity-table-0 =	<4046950 100>, <4001920 95>, <3967900 90>, <3919950 85>,
-+					<3888450 80>, <3861850 75>, <3831540 70>, <3799130 65>,
-+					<3768190 60>, <3745650 55>, <3726610 50>, <3711630 45>,
-+					<3696720 40>, <3685660 35>, <3674950 30>, <3663050 25>,
-+					<3649470 20>, <3635260 15>, <3616920 10>, <3592440 5>,
-+					<3574170 0>;
-+	};
++      rockchip,resistor-sense-micro-ohms:
++        description: |
++          Value in microohms of the battery sense resistor. This value is
++          used by the driver to set the correct divisor value to translate
++          ADC readings into the proper units of measure.
++        enum: [10000, 20000]
 +
- 	gpio-keys {
- 		compatible = "gpio-keys";
- 		pinctrl-names = "default";
-@@ -472,6 +491,13 @@ usb_midu: BOOST {
- 			};
- 		};
++      rockchip,sleep-enter-current-microamp:
++        description: |
++          Value in microamps of the sleep enter current for the charger.
++          Value is used by the driver to calibrate the relax threshold.
++
++      rockchip,sleep-filter-current-microamp:
++        description:
++          Value in microamps of the sleep filter current for the charger.
++          Value is used by the driver to derive the sleep sample current.
++
++    required:
++      - monitored-battery
++      - rockchip,resistor-sense-micro-ohms
++      - rockchip,sleep-enter-current-microamp
++      - rockchip,sleep-filter-current-microamp
++
+ allOf:
+   - if:
+       properties:
+@@ -323,6 +364,13 @@ examples:
+                 };
+             };
  
-+		rk817_battery: battery {
-+			monitored-battery = <&battery_cell>;
-+			rockchip,resistor-sense-micro-ohms = <10000>;
-+			rockchip,sleep-enter-current-microamp = <300000>;
-+			rockchip,sleep-filter-current-microamp = <100000>;
-+		};
++            rk817_battery: battery {
++                monitored-battery = <&battery_cell>;
++                rockchip,resistor-sense-micro-ohms = <10000>;
++                rockchip,sleep-enter-current-microamp = <300000>;
++                rockchip,sleep-filter-current-microamp = <100000>;
++            };
 +
- 		rk817_codec: codec {
- 			rockchip,mic-in-differential;
- 		};
+             rk817_codec: codec {
+                 rockchip,mic-in-differential;
+             };
 -- 
 2.25.1
 
