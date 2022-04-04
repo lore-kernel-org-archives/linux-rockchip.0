@@ -4,73 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21D7BC433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Apr 2022 09:02:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D489FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Apr 2022 11:26:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zg6iPiwzq0wMfq8UtxVJxhHNuBxNS7Jp95cD0577JKA=; b=G5Q4w4Wde9dLnY
-	QdEBdXQHxiTeAMppo3s0FFg/is+5PuRxeOC5KqstDrTB4lmHBpFQP8JgSGTQjoZtAnnHfUVcQa5uv
-	BE35TseFYzRMfpxGZpzotre8GZHXpty/3H/bGwlG48FPvmUlwX4F45CYB+7CkjTS9BKBYRgSMr3dr
-	9ExedVNIz1wlXz71VjokMdh+fSIKEIC3cRB2aiQCZiUU9dbOSih9jfaBsCGf20uJk6tJUWwp+5z61
-	NX6n6lbCML5ruYKTJYjz27myaklXvY7KIdorBv8+bf7OkaqQEB22/JuPo44Zze9NeG0gyedRQyxxw
-	M5UBVsrDGPEDcAcE2ZPA==;
+	List-Owner; bh=9FldbXH4if1xx5Hbv2EtiY6mHRDf37hhJLtbRqVPmWU=; b=pB8xUllfXIN0hX
+	YOWso+ps1f9bATP8jvj8FQ0Ihht+CLkA9y+DfcNirGxikGfN3PMse2k0JJYxDDbFkdPgNze6sW86R
+	QTf8YLBIKP2c+ZkgBaYfbmFcO574uQcAysBxOJLsD+Q4K3Q+2KEEiFb9SxpRlHM6CzUrRirmf1/4z
+	R34HyNkADXSiIePgEdZGg4rGlo1qUCo6x8XQULk5YvBYOA5WF1ZR2XS1wBKFchOvRhhwwOZNbqTGk
+	j3yQz/yw5vKDDPDpA1eGYlGAM0KfiiTxZLpVRkLjfXFWks2GlpXVy09txX1J+ToSe+Kh1VeyZASZw
+	hSEa4WryH0LxARh9TcDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbIbv-00E1bL-1m; Mon, 04 Apr 2022 09:02:55 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nbKr8-00EhcM-Ts; Mon, 04 Apr 2022 11:26:46 +0000
+Received: from [2001:8b0:1628:5005::111] (helo=metanate.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbIbV-00E1HY-Jd; Mon, 04 Apr 2022 09:02:31 +0000
-Received: from [IPV6:2a01:e0a:120:3210:52e1:bbc1:ca8:7fa9] (unknown
- [IPv6:2a01:e0a:120:3210:52e1:bbc1:ca8:7fa9])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id B7F841F459F5;
- Mon,  4 Apr 2022 10:02:24 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649062945;
- bh=Fq1cNgcG71vKarNXb1KWa+6C35UQPBCHFFeK77y16GU=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=hVG0HSDA8rE5xmxrpe4VsIiBt3wsvYi6+asdDW1r+DdHlUycVaXdd3/kjxQkbEG1e
- RQx8L6oOTNzvOcDD4TNaH03l7VDseaM0l8ceVPki+QpOBXuyClPIg5ac/Q/pSRWVV0
- ZK9JGt8sKkRmo09xfGYostker5HfHvm6SuS7re2kEjKxqbDc/WV+X7nvplqSiKDL7j
- 2hjZ1EZ7dWCsWX/dGFuBZmr6Y6QkkmrWx6qO5jxeCjY/746yANDLjSX0Mi04ar1ZO/
- N/KWL1f6OQERJdteXsAUNOM22dgkGMRz4k7Ivmuqo43Ehs9YuAI5hZ/1IpTw+BGE98
- SIUWJDIqvfC+Q==
-Message-ID: <fa40b40d-b599-ec03-b596-57be7017d2c7@collabora.com>
-Date: Mon, 4 Apr 2022 11:02:22 +0200
+ id 1nbKqy-00EhZA-Jb; Mon, 04 Apr 2022 11:26:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=metanate.com; s=stronger; h=In-Reply-To:Content-Type:References:Message-ID:
+ Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:Content-ID:
+ Content-Description; bh=LnoUpy8pxIXgWxR6IblJWmslcB05NK68pxcDoWJlSfk=; b=DS0Ou
+ KQrIxO23qLzQ+DvY1bPnIzGjxCX+gnmtE3eBpqcpIXxFZjFSi0XgG2mnhdIc4Ik7fv8qpH+1Rgp+N
+ bQAnGfv54pnAWgdwYR1UMrCb9NdGt+QiiVIqgiNUo92tROAqdINZ3OmjptNRJAHgYZjzg5ApcVHgF
+ 8qi5gA8zjgnPzlvpFLmA4qADwJOYI+N1gZVF1k9AmJVnnNoySJHIcnq0XUMJuDM7rDIdn+zyxYOyP
+ WRSJp0L+JBAhncHRrGKPhcBvUAs4WOLn31lJ2K4mOzr81hAXgB6yJ+DI8y9+qs/yI9COakF74xcid
+ XUYRM30D38syFfuDQtjFlGRJoQvXw==;
+Received: from [81.174.171.191] (helo=donbot)
+ by email.metanate.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.93) (envelope-from <john@metanate.com>)
+ id 1nbKqe-0004ue-SJ; Mon, 04 Apr 2022 12:26:16 +0100
+Date: Mon, 4 Apr 2022 12:26:15 +0100
+From: John Keeping <john@metanate.com>
+To: Corentin Labbe <clabbe@baylibre.com>
+Cc: heiko@sntech.de, herbert@gondor.apana.org.au, krzk+dt@kernel.org,
+ robh+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 06/33] crypto: rockchip: add fallback for cipher
+Message-ID: <YkrV1z5GPVXc+d/X@donbot>
+References: <20220401201804.2867154-1-clabbe@baylibre.com>
+ <20220401201804.2867154-7-clabbe@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [RFC PATCH 2/8] media: Add P010 format
-Content-Language: en-US
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Nicolas Dufresne <nicolas@ndufresne.ca>
-Cc: Jernej Skrabec <jernej.skrabec@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Greg KH
- <gregkh@linuxfoundation.org>, Chen-Yu Tsai <wens@csie.org>,
- Samuel Holland <samuel@sholland.org>,
- linux-media <linux-media@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-sunxi@lists.linux.dev
-References: <20220227144926.3006585-1-jernej.skrabec@gmail.com>
- <20220227144926.3006585-3-jernej.skrabec@gmail.com>
- <1b2ce01fb04f29cca58d40bd81d9f4cc46dcebf8.camel@ndufresne.ca>
- <CAAEAJfCA1ef5+KZHU4ZTJvuqdCAEUkvpDY9HTy1fp3M+0QxqPg@mail.gmail.com>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <CAAEAJfCA1ef5+KZHU4ZTJvuqdCAEUkvpDY9HTy1fp3M+0QxqPg@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20220401201804.2867154-7-clabbe@baylibre.com>
+X-Authenticated: YES
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220404_020229_795724_3515DA1A 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20220404_042636_670918_3B1DA914 
+X-CRM114-Status: GOOD (  19.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,28 +67,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDA0LzA0LzIwMjIgw6AgMDI6MDQsIEV6ZXF1aWVsIEdhcmNpYSBhIMOpY3JpdMKgOgo+IEhp
-IE5pY29sYXMsIEJlbmphbWluLAo+Cj4gT24gTW9uLCBGZWIgMjgsIDIwMjIgYXQgOTo0OCBBTSBO
-aWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzQG5kdWZyZXNuZS5jYT4gd3JvdGU6Cj4+IExlIGRpbWFu
-Y2hlIDI3IGbDqXZyaWVyIDIwMjIgw6AgMTU6NDkgKzAxMDAsIEplcm5laiBTa3JhYmVjIGEgw6lj
-cml0IDoKPj4+IEFkZCBQMDEwIGZvcm1hdCwgd2hpY2ggaXMgY29tbW9ubHkgdXNlZCBmb3IgMTAt
-Yml0IHZpZGVvcy4KPj4gVGhlcmUgaXMgYSBtdWNoIG1vcmUgY29tcGxldGUgcGF0Y2ggdGhhdCB3
-YXMgc2VudCBwcmV2aW91c2x5ICh3aXRoIGRvY3VtZW50YXRpb24KPj4gYW5kIGFsbCk6Cj4+Cj4+
-IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1yb2NrY2hpcC9wYXRj
-aC8yMDIxMDYxODEzMTUyNi41NjY3NjItNS1iZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEuY29t
-Lwo+Pgo+IEkgYmVsaWV2ZSAibWVkaWE6IEFkZCBQMDEwIHZpZGVvIGZvcm1hdCIgc2hvdWxkIGJl
-IGdvb2QgdG8gZ28sIEkgdGhpbmsKPiB3ZSBjb3VsZCBtZXJnZSBpdC4KPgo+IEkgY2FuJ3QgZmlu
-ZCBpdCBvbiBteSBnbWFpbCBpbmJveCwgZm9yIHNvbWUgcmVhc29uLi4gY2FuIHlvdSBndXlzCj4g
-cGxlYXNlIHJlcG9zdCBpdCwKPiBhbmQvb3IgcmVwbHkgdG8gd2l0aCBhIGdlbnRseSBwaW5nIGZv
-ciBIYW5zIChhbmQgcGxlYXNlIENjIG1lIG9uIHRoaXMgbWFpbCkgPwoKSSBoYXZlIHJlYmFzZWQg
-aXQgb24gdjUtMTgtcmMxIHRhZyBhbmQgc2VuZCBpdC4KWW91IHNob3VsZCBoYXZlIGl0IGluIHlv
-dXIgbWFpbGJveCBub3cuCgpSZWdhcmRzLApCZW5qYW1pbgoKPgo+IFRoYW5rcyEKPiBFemVxdWll
-bAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+On Fri, Apr 01, 2022 at 08:17:37PM +0000, Corentin Labbe wrote:
+> The hardware does not handle 0 size length request, let's add a
+> fallback.
+> Furthermore fallback will be used for all unaligned case the hardware
+> cannot handle.
+> 
+> Fixes: ce0183cb6464b ("crypto: rockchip - switch to skcipher API")
+> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> ---
+> diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> index bbd0bf52bf07..c6b601086c04 100644
+> --- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> +++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> @@ -13,6 +13,71 @@
+>  
+>  #define RK_CRYPTO_DEC			BIT(0)
+>  
+> +static int rk_cipher_need_fallback(struct skcipher_request *req)
+> +{
+> +	struct scatterlist *sgs, *sgd;
+> +	unsigned int todo, len;
+> +	unsigned int bs = crypto_skcipher_blocksize(tfm);
+> +
+> +	if (!req->cryptlen)
+> +		return true;
+> +
+> +	len = req->cryptlen;
+> +	sgs = req->src;
+> +	while (sgs) {
+> +		if (!IS_ALIGNED(sgs->offset, sizeof(u32))) {
+> +			return true;
+> +		}
+> +		todo = min(len, sgs->length);
+> +		if (todo % bs) {
+> +			return true;
+> +		}
+> +		len -= todo;
+> +		sgs = sg_next(sgs);
+> +	}
+> +	len = req->cryptlen;
+> +	sgd = req->dst;
+> +	while (sgd) {
+> +		if (!IS_ALIGNED(sgd->offset, sizeof(u32))) {
+> +			return true;
+> +		}
+> +		todo = min(len, sgd->length);
+> +		if (todo % bs) {
+> +			return true;
+> +		}
+> +		len -= todo;
+> +		sgd = sg_next(sgd);
+> +	}
+> +	sgs = req->src;
+> +	sgd = req->dst;
+> +	while (sgs && sgd) {
+> +		if (sgs->length != sgd->length)
+
+This check still seems to be triggering the fallback when it is not
+needed.
+
+I've done some testing with fscrypt and the series is working great, but
+the stats show the fallback triggering more than I'd expect.  With some
+extra logging here I see output like:
+
+	sgs->length=32 sgd->length=255 req->cryptlen=16
+
+In this case sgs and sgd are both the first (and only) entries in the
+list.  Should this take account of req->cryptlen as well?
+
+In fact, can't this whole function be folded into one loop over src and
+dst at the same time, since all the checks must be the same?  Something
+like this (untested):
+
+	while (sgs && sgd) {
+		if (!IS_ALIGNED(sgs->offset, sizeof(u32)) ||
+		    !IS_ALIGNED(sgd->offset, sizeof(u32)))
+			return true;
+
+		todo = min(len, sgs->length);
+		if (todo % bs)
+			return true;
+
+		if (sgd->length < todo)
+			return true;
+
+		len -= todo;
+		sgs = sg_next(sgs);
+		sgd = sg_next(sgd);
+	}
+
+	if (len)
+		return true;
+
+> +			return true;
+> +		sgs = sg_next(sgs);
+> +		sgd = sg_next(sgd);
+> +	}
+> +	return false;
+> +}
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
