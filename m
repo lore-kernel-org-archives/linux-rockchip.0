@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC2B6C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Apr 2022 09:01:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21D7BC433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Apr 2022 09:02:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d/VyfcSQWbVBzlFQBhQkabjTNI1ofdveLRYzHHmTuC0=; b=45GXRnqsQTY74n
-	20ZyNhbGagjWbiUQLxp5kJjRGY6lny0Ol86gs7JlcHXXxcJupTlw35X0nq47THIrkkkkuIeueNU8K
-	LaaKLcPJFolV6W3ezVk6GwPYiER2CjKJm/kx95kwgFsZPverf5yZHi5wG7fuhbQzgMKb0m4BNsDaV
-	KbhEsy3rFbkNs9Yzz/a8tctNfZR0ToIyAgcQZVf9USBl8lD4y9Pr2Qr0sAbb6/c5itKB+yR+XcJ/5
-	Rx0/pAPwk2yYCK13WIpAofIfWNN+f+svQN2cRuM9oPLRRvCX1GsIAKIVe4BrH3qlHtbMg2ZN+fSvb
-	Rhax0ufhYIBUWBlda6xQ==;
+	List-Owner; bh=zg6iPiwzq0wMfq8UtxVJxhHNuBxNS7Jp95cD0577JKA=; b=G5Q4w4Wde9dLnY
+	QdEBdXQHxiTeAMppo3s0FFg/is+5PuRxeOC5KqstDrTB4lmHBpFQP8JgSGTQjoZtAnnHfUVcQa5uv
+	BE35TseFYzRMfpxGZpzotre8GZHXpty/3H/bGwlG48FPvmUlwX4F45CYB+7CkjTS9BKBYRgSMr3dr
+	9ExedVNIz1wlXz71VjokMdh+fSIKEIC3cRB2aiQCZiUU9dbOSih9jfaBsCGf20uJk6tJUWwp+5z61
+	NX6n6lbCML5ruYKTJYjz27myaklXvY7KIdorBv8+bf7OkaqQEB22/JuPo44Zze9NeG0gyedRQyxxw
+	M5UBVsrDGPEDcAcE2ZPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbIae-00E0eu-0Y; Mon, 04 Apr 2022 09:01:36 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1nbIbv-00E1bL-1m; Mon, 04 Apr 2022 09:02:55 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbIaK-00E0PP-LZ; Mon, 04 Apr 2022 09:01:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
- :MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
- Sender:Reply-To:Content-ID:Content-Description;
- bh=g7XH8SebslabhEHGcvgtkCEtE1j9cs8yE+tlo/rZDWw=; b=c6GWf9RHYfyoz7iAWm2P4KTgaV
- QKkxg9dYDWvWD9VdBt05wwCza28tQ6LRDi5cxgymefGgbEvlwEhD3xD1PMCG2kZfWClrmYJE5pDpO
- 1Wk01e80IaqCb2WnFXkIYRJsp1oLaRWxjSkN35o34cDkUTMuKIE9w1l6SZRatPP89ch5je6ZV3zfp
- GuLI6tpbV8ctwEeSGw0gw2Agbwl+5cv1iLRSSE1j67tuhdXTI2522pREPiINyIHe/XifVHR7i4wf5
- 5g3e26dW1kFReUWhb/1Uqs8JDy5TvkqdqUw7e/vjfsi3aU69rCIlVoz7A85IRGK3I3xW2bjOmtBMP
- rGU5UMJw==;
-Received: from gloria.sntech.de ([185.11.138.130])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbIZM-001UG1-Dh; Mon, 04 Apr 2022 09:01:14 +0000
-Received: from wf0416.dip.tu-dresden.de ([141.76.181.160]
- helo=phil.dip.tu-dresden.de)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nbIZB-0008Ew-WA; Mon, 04 Apr 2022 11:00:06 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Michael Riesch <michael.riesch@wolfvision.net>, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>, Sascha Hauer <s.hauer@pengutronix.de>,
- Peter Geis <pgwipeout@gmail.com>, Tianling Shen <cnsztl@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Levin Du <djw@t-chip.com.cn>,
- Liang Chen <cl@rock-chips.com>, Alex Bee <knaerzche@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Subject: Re: [PATCH v2 0/3] (partial) arm64: dts: rockchip: add basic dts for
- the radxa rock3 model a
-Date: Mon,  4 Apr 2022 11:00:00 +0200
-Message-Id: <164906273050.1398682.18343164633060967077.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220310210352.451136-1-michael.riesch@wolfvision.net>
-References: <20220310210352.451136-1-michael.riesch@wolfvision.net>
+ id 1nbIbV-00E1HY-Jd; Mon, 04 Apr 2022 09:02:31 +0000
+Received: from [IPV6:2a01:e0a:120:3210:52e1:bbc1:ca8:7fa9] (unknown
+ [IPv6:2a01:e0a:120:3210:52e1:bbc1:ca8:7fa9])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id B7F841F459F5;
+ Mon,  4 Apr 2022 10:02:24 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649062945;
+ bh=Fq1cNgcG71vKarNXb1KWa+6C35UQPBCHFFeK77y16GU=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=hVG0HSDA8rE5xmxrpe4VsIiBt3wsvYi6+asdDW1r+DdHlUycVaXdd3/kjxQkbEG1e
+ RQx8L6oOTNzvOcDD4TNaH03l7VDseaM0l8ceVPki+QpOBXuyClPIg5ac/Q/pSRWVV0
+ ZK9JGt8sKkRmo09xfGYostker5HfHvm6SuS7re2kEjKxqbDc/WV+X7nvplqSiKDL7j
+ 2hjZ1EZ7dWCsWX/dGFuBZmr6Y6QkkmrWx6qO5jxeCjY/746yANDLjSX0Mi04ar1ZO/
+ N/KWL1f6OQERJdteXsAUNOM22dgkGMRz4k7Ivmuqo43Ehs9YuAI5hZ/1IpTw+BGE98
+ SIUWJDIqvfC+Q==
+Message-ID: <fa40b40d-b599-ec03-b596-57be7017d2c7@collabora.com>
+Date: Mon, 4 Apr 2022 11:02:22 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [RFC PATCH 2/8] media: Add P010 format
+Content-Language: en-US
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Nicolas Dufresne <nicolas@ndufresne.ca>
+Cc: Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Greg KH
+ <gregkh@linuxfoundation.org>, Chen-Yu Tsai <wens@csie.org>,
+ Samuel Holland <samuel@sholland.org>,
+ linux-media <linux-media@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-sunxi@lists.linux.dev
+References: <20220227144926.3006585-1-jernej.skrabec@gmail.com>
+ <20220227144926.3006585-3-jernej.skrabec@gmail.com>
+ <1b2ce01fb04f29cca58d40bd81d9f4cc46dcebf8.camel@ndufresne.ca>
+ <CAAEAJfCA1ef5+KZHU4ZTJvuqdCAEUkvpDY9HTy1fp3M+0QxqPg@mail.gmail.com>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <CAAEAJfCA1ef5+KZHU4ZTJvuqdCAEUkvpDY9HTy1fp3M+0QxqPg@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220404_100016_767151_558BC376 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20220404_020229_795724_3515DA1A 
+X-CRM114-Status: GOOD (  15.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,34 +83,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 10 Mar 2022 22:03:49 +0100, Michael Riesch wrote:
-> This series introduces basic support for the Radxa ROCK3 Model A
-> featuring the Rockchip RK3568 SoC. The basic support includes Ethernet,
-> USB2 and the headphone connector.
-> 
-> Patch 3 adds support for the Video Output Processor (VOP) 2 and the
-> HDMI output. It requires the VOP2/HDMI TX patches (which are discussed
-> on the list) and can be considered as RFC.
-> 
-> [...]
-
-(partial) Applied, thanks!
-
-[1/3] dt-bindings: arm: rockchip: add radxa rock3 model a
-      commit: 65a31b5abb7f4c373ce0de52eca75348156c87d2
-[2/3] arm64: dts: rockchip: add basic dts for the radxa rock3 model a
-      commit: 056ef970c434a572f81eae199846bf3f521a8303
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDA0LzA0LzIwMjIgw6AgMDI6MDQsIEV6ZXF1aWVsIEdhcmNpYSBhIMOpY3JpdMKgOgo+IEhp
+IE5pY29sYXMsIEJlbmphbWluLAo+Cj4gT24gTW9uLCBGZWIgMjgsIDIwMjIgYXQgOTo0OCBBTSBO
+aWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzQG5kdWZyZXNuZS5jYT4gd3JvdGU6Cj4+IExlIGRpbWFu
+Y2hlIDI3IGbDqXZyaWVyIDIwMjIgw6AgMTU6NDkgKzAxMDAsIEplcm5laiBTa3JhYmVjIGEgw6lj
+cml0IDoKPj4+IEFkZCBQMDEwIGZvcm1hdCwgd2hpY2ggaXMgY29tbW9ubHkgdXNlZCBmb3IgMTAt
+Yml0IHZpZGVvcy4KPj4gVGhlcmUgaXMgYSBtdWNoIG1vcmUgY29tcGxldGUgcGF0Y2ggdGhhdCB3
+YXMgc2VudCBwcmV2aW91c2x5ICh3aXRoIGRvY3VtZW50YXRpb24KPj4gYW5kIGFsbCk6Cj4+Cj4+
+IGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1yb2NrY2hpcC9wYXRj
+aC8yMDIxMDYxODEzMTUyNi41NjY3NjItNS1iZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEuY29t
+Lwo+Pgo+IEkgYmVsaWV2ZSAibWVkaWE6IEFkZCBQMDEwIHZpZGVvIGZvcm1hdCIgc2hvdWxkIGJl
+IGdvb2QgdG8gZ28sIEkgdGhpbmsKPiB3ZSBjb3VsZCBtZXJnZSBpdC4KPgo+IEkgY2FuJ3QgZmlu
+ZCBpdCBvbiBteSBnbWFpbCBpbmJveCwgZm9yIHNvbWUgcmVhc29uLi4gY2FuIHlvdSBndXlzCj4g
+cGxlYXNlIHJlcG9zdCBpdCwKPiBhbmQvb3IgcmVwbHkgdG8gd2l0aCBhIGdlbnRseSBwaW5nIGZv
+ciBIYW5zIChhbmQgcGxlYXNlIENjIG1lIG9uIHRoaXMgbWFpbCkgPwoKSSBoYXZlIHJlYmFzZWQg
+aXQgb24gdjUtMTgtcmMxIHRhZyBhbmQgc2VuZCBpdC4KWW91IHNob3VsZCBoYXZlIGl0IGluIHlv
+dXIgbWFpbGJveCBub3cuCgpSZWdhcmRzLApCZW5qYW1pbgoKPgo+IFRoYW5rcyEKPiBFemVxdWll
+bAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
