@@ -4,71 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86498C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Apr 2022 19:23:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64220C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Apr 2022 21:58:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x2CRnSFK1QcN4zolpbr/7VcEZaqGUZf9y8CEi/c4YXc=; b=eVuSkUmGuAgFse
-	JYWkXgSr7dbv3Xo8EDZ5g09/47nkZThr6r0R1Otwib4KPGHgnAZ7cMOtWRCD0Uf+QALqt6S6KeN+E
-	l/Ll7GiIAB2yVgJhSe4zVb1it4eTdAtDEtBTb8BT3//2ZmR9zkxtnedN9PfhotcAql5hoXvxrM1kQ
-	32IC0yAdbBHOTq5uVxg+H2vp3ADxzZUroYyloiboLxiIWCshxsBPuFYcG8+csCkWO23TjKpwLdhND
-	LXxAglpBJHRC9Z9bBgNMhJRQwQ+P0B0oKhx75n6fktNC7zmSMh9JFTPtmAtJXq1e24wGerJqMdtZ3
-	as8lqxtopJ4sW3h7qaXw==;
+	List-Owner; bh=t12FTutfE1IsQ/FHYA0rqJfgeADOaE8rRVlzWTvXSB8=; b=MFYgeOHGOJUM8i
+	Gj8Ck23GziHB0ZpXTA9pBIBP9VWYRGqrkGvfIbeneCFgnV1K5PBz6BZO2KV1h0JFL9EbspynWKCHH
+	FHjTvdJzycy8Jct/FzrDUX7LGOxPtz6UAhqeMouqvIDb2tjYi91/0AknOC7zgTCvrAJ4bcQRV+d5l
+	I8dBOnkTD/hu8ny0tfNsyDnYYi29O5O9jQQ+rNV5E7APPNQgdMuoL3sk7I2qlGn7ryAo9gDhEgT+h
+	IpZi9OV5Ed5EbHoIU3SU2mPQHFzZoEAvjXDQ/BDPECQ2uTxLgn1QOyDT/FocxTEjTMWqTRmYEC73m
+	DuM9rASQRwGsOsCRdq9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbSID-00GGXf-0I; Mon, 04 Apr 2022 19:23:13 +0000
-Received: from mail-oa1-f53.google.com ([209.85.160.53])
+	id 1nbUiB-00GVcJ-5f; Mon, 04 Apr 2022 21:58:11 +0000
+Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbSIA-00GGWm-QV; Mon, 04 Apr 2022 19:23:11 +0000
-Received: by mail-oa1-f53.google.com with SMTP id
- 586e51a60fabf-d6ca46da48so11868169fac.12; 
- Mon, 04 Apr 2022 12:23:09 -0700 (PDT)
+ id 1nbUi8-00GVbE-3D
+ for linux-rockchip@lists.infradead.org; Mon, 04 Apr 2022 21:58:09 +0000
+Received: by mail-oa1-x29.google.com with SMTP id
+ 586e51a60fabf-de3ca1efbaso12370500fac.9
+ for <linux-rockchip@lists.infradead.org>; Mon, 04 Apr 2022 14:58:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=eGxcFia+56uzVoruJ6OmLxji9P6kTMXtUnj8BikXIyE=;
+ b=qCWYNAU/0iVLV6gyGTe+dM8os88Oa+cNWiGAgoMANtm8ADXMkYND0uGX9qR35qa1gF
+ lLBZq0G8lQFH0Szhvik60iNCaicuuJSZQgYkIvnEd+EAgk8EVRftOgxLHzZz0aJywSol
+ VOeXtuMVe1WZO4cZ9SYgCdLlZO/UfCFUHH28DAeAESDktIQQ/bzhBlCFTnqhVYDrxVfs
+ hAy4aFQukQ2gWN/3b1kdnTzsbp67zYkU05ArvW6hcbSw0TvI24Yf9TFrXIGOUNzG5Myc
+ iHiCCyfIp1tnjIUcxoheoB6by0Z6NaNDKTYOUOHLIa1oevKstDqkLqhtn0oEyrxlQcq7
+ iTQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=wIFxnat34WFgpybFJIb4ucsy9v2GfYyVlHzTRVzu9II=;
- b=RX+FaLiQA1jUlyAaYmOSas5U6nwIouPxYp3xVNEFfICkGjEEWEeINrx8U0/ZnHL5dm
- PxNyWnNpl0pIsnI8bKkiPnLR8fW/jx87z/F5GqsmdW7SeTwbCPIHFCgpcxEN3ouSAcmE
- McN0hgkGaRJzKXkpJAUULNilcYs2qosQONB8FR2mgAGik4rULNmj+a+HHLtT19iC82Ue
- A16rDFMC/YRB8uBzTS1PbbXmX0lBhkWUSkKH4LNmZ13yon7JFTe3LA0a77XFxnrPvlZ6
- F4KZ+cFYY2o828xT2oiaE/MgK2/OB5u3oqAzOONjS5QwOuu7xfbqZrTnnt0EFZzxE9JU
- MptA==
-X-Gm-Message-State: AOAM533muSGPNmNmDScm3ketZ5vhVJw4psok1acIPbONReKXMbg31dNQ
- NyTnpLrBBm0e2iN5tjlIDEehr1jAdA==
-X-Google-Smtp-Source: ABdhPJxGvYRMISdRC5MROfVxG4x2VQDddPAJcrf4fiX749Isc/0j1TL+GUY/U5TzrMlxzPaIiijgSg==
-X-Received: by 2002:a05:6870:46a4:b0:e1:f307:c1a2 with SMTP id
- a36-20020a05687046a400b000e1f307c1a2mr412329oap.238.1649100188792; 
- Mon, 04 Apr 2022 12:23:08 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- k8-20020a544688000000b002f90678740esm4638093oic.37.2022.04.04.12.23.08
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=eGxcFia+56uzVoruJ6OmLxji9P6kTMXtUnj8BikXIyE=;
+ b=TZ2eFgK1FUkyaxsgwEHfv+N9TyA7G+e42hKM+lLchHpfzFszV909o/L0hguE+uGuXB
+ F1UAyyrq01A7Vm11wQLXVPSFr2ogemFg4mdiIVqY8PROWnG3Wma1QvrKzkKFnR8Kprvt
+ 6RBvy1bLJl8W0dmf9qL9EnVyQYOUwZOghwca44BGqeAjOg2Rgia3H8/f9snv51Vvw6bd
+ FDywfyKncU+91U45N8Sr3Q+k33c9rHrgYwzl4Vp2J7vhOy9Z3f0N0QtVGrp+V35ZW98K
+ E+B/cfd9C1ImNSThWXKmLT3ld8Dm4Wq4HH+ce1FutdN5XgqmA+be7XVXCRzxPwlHSGq6
+ j1dA==
+X-Gm-Message-State: AOAM531bWsf1o3E6HXnwEjMcTJMAAQahTdPzyuQve1m/D5L4DX/xporM
+ ECUfiBiT6uB6cHNQ04Cghz8=
+X-Google-Smtp-Source: ABdhPJyuhz0Mc8KfSHfQ+EYbcXE4OWMTcdljbBqWDZovte9WbmnzAeq+7tOqrjlD3kIl4ElvVJvZww==
+X-Received: by 2002:a05:6870:f20e:b0:e1:c609:74d8 with SMTP id
+ t14-20020a056870f20e00b000e1c60974d8mr169469oao.34.1649109486597; 
+ Mon, 04 Apr 2022 14:58:06 -0700 (PDT)
+Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
+ [76.183.134.35]) by smtp.gmail.com with ESMTPSA id
+ r3-20020aca4403000000b002ecf4d70c83sm4646402oia.27.2022.04.04.14.58.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Apr 2022 12:23:08 -0700 (PDT)
-Received: (nullmailer pid 1802528 invoked by uid 1000);
- Mon, 04 Apr 2022 19:23:07 -0000
-Date: Mon, 4 Apr 2022 14:23:07 -0500
-From: Rob Herring <robh@kernel.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linus.walleij@linaro.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- heiko@sntech.de, linux-gpio@vger.kernel.org, krzk+dt@kernel.org,
- devicetree@vger.kernel.org, robh+dt@kernel.org
-Subject: Re: [PATCH v1 1/2] dt-bindings: pinctrl: add rockchip, rk3036-pinctrl
- compatible string
-Message-ID: <YktFmxYK76/W1N2A@robh.at.kernel.org>
-References: <20220330133952.1949-1-jbx6244@gmail.com>
+ Mon, 04 Apr 2022 14:58:06 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-pm@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ zhangqing@rock-chips.com, zyw@rock-chips.com, jon.lin@rock-chips.com,
+ maccraft123mc@gmail.com, sre@kernel.org, heiko@sntech.de,
+ krzk+dt@kernel.org, robh+dt@kernel.org, lee.jones@linaro.org,
+ Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH 2/4 v5] mfd: Add Rockchip rk817 battery charger support
+Date: Mon,  4 Apr 2022 16:57:52 -0500
+Message-Id: <20220404215754.30126-3-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220404215754.30126-1-macroalpha82@gmail.com>
+References: <20220404215754.30126-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220330133952.1949-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220404_122310_897429_E225BE27 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220404_145808_178398_ED2FE396 
+X-CRM114-Status: GOOD (  12.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,17 +94,182 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 30 Mar 2022 15:39:51 +0200, Johan Jonker wrote:
-> Add the compatible string "rockchip,rk3036-pinctrl" in already
-> in use in rk3036.dtsi to rockchip,pinctrl.yaml.
-> 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
->  Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
+From: Chris Morgan <macromorgan@hotmail.com>
 
-Acked-by: Rob Herring <robh@kernel.org>
+Add rk817 charger support cell to rk808 mfd driver.
+
+Acked-for-mfd-by: Lee Jones <lee.jones@linaro.org>
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+---
+ drivers/mfd/rk808.c       | 16 ++++++-
+ include/linux/mfd/rk808.h | 91 +++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 106 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index 4142b638e5fa..283a65b64d2c 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -67,6 +67,10 @@ static bool rk817_is_volatile_reg(struct device *dev, unsigned int reg)
+ 	case RK817_SECONDS_REG ... RK817_WEEKS_REG:
+ 	case RK817_RTC_STATUS_REG:
+ 	case RK817_CODEC_DTOP_LPT_SRST:
++	case RK817_GAS_GAUGE_ADC_CONFIG0 ... RK817_GAS_GAUGE_CUR_ADC_K0:
++	case RK817_PMIC_CHRG_STS:
++	case RK817_PMIC_CHRG_OUT:
++	case RK817_PMIC_CHRG_IN:
+ 	case RK817_INT_STS_REG0:
+ 	case RK817_INT_STS_REG1:
+ 	case RK817_INT_STS_REG2:
+@@ -74,7 +78,7 @@ static bool rk817_is_volatile_reg(struct device *dev, unsigned int reg)
+ 		return true;
+ 	}
+ 
+-	return true;
++	return false;
+ }
+ 
+ static const struct regmap_config rk818_regmap_config = {
+@@ -127,6 +131,11 @@ static const struct resource rk817_pwrkey_resources[] = {
+ 	DEFINE_RES_IRQ(RK817_IRQ_PWRON_FALL),
+ };
+ 
++static const struct resource rk817_charger_resources[] = {
++	DEFINE_RES_IRQ(RK817_IRQ_PLUG_IN),
++	DEFINE_RES_IRQ(RK817_IRQ_PLUG_OUT),
++};
++
+ static const struct mfd_cell rk805s[] = {
+ 	{ .name = "rk808-clkout", },
+ 	{ .name = "rk808-regulator", },
+@@ -166,6 +175,11 @@ static const struct mfd_cell rk817s[] = {
+ 		.resources = &rk817_rtc_resources[0],
+ 	},
+ 	{ .name = "rk817-codec",},
++	{
++		.name = "rk817-charger",
++		.num_resources = ARRAY_SIZE(rk817_charger_resources),
++		.resources = &rk817_charger_resources[0],
++	},
+ };
+ 
+ static const struct mfd_cell rk818s[] = {
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index 58602032e642..9af1f3105f80 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -519,6 +519,77 @@ enum rk809_reg_id {
+ #define MIC_DIFF_DIS			(0x0 << 7)
+ #define MIC_DIFF_EN			(0x1 << 7)
+ 
++/* RK817 Battery Registers */
++#define RK817_GAS_GAUGE_ADC_CONFIG0	0x50
++#define RK817_GG_EN			(0x1 << 7)
++#define RK817_SYS_VOL_ADC_EN		(0x1 << 6)
++#define RK817_TS_ADC_EN			(0x1 << 5)
++#define RK817_USB_VOL_ADC_EN		(0x1 << 4)
++#define RK817_BAT_VOL_ADC_EN		(0x1 << 3)
++#define RK817_BAT_CUR_ADC_EN		(0x1 << 2)
++
++#define RK817_GAS_GAUGE_ADC_CONFIG1	0x55
++
++#define RK817_VOL_CUR_CALIB_UPD		BIT(7)
++
++#define RK817_GAS_GAUGE_GG_CON		0x56
++#define RK817_GAS_GAUGE_GG_STS		0x57
++
++#define RK817_BAT_CON			(0x1 << 4)
++#define RK817_RELAX_VOL_UPD		(0x3 << 2)
++#define RK817_RELAX_STS			(0x1 << 1)
++
++#define RK817_GAS_GAUGE_RELAX_THRE_H	0x58
++#define RK817_GAS_GAUGE_RELAX_THRE_L	0x59
++#define RK817_GAS_GAUGE_OCV_THRE_VOL	0x62
++#define RK817_GAS_GAUGE_OCV_VOL_H	0x63
++#define RK817_GAS_GAUGE_OCV_VOL_L	0x64
++#define RK817_GAS_GAUGE_PWRON_VOL_H	0x6b
++#define RK817_GAS_GAUGE_PWRON_VOL_L	0x6c
++#define RK817_GAS_GAUGE_PWRON_CUR_H	0x6d
++#define RK817_GAS_GAUGE_PWRON_CUR_L	0x6e
++#define RK817_GAS_GAUGE_OFF_CNT		0x6f
++#define RK817_GAS_GAUGE_Q_INIT_H3	0x70
++#define RK817_GAS_GAUGE_Q_INIT_H2	0x71
++#define RK817_GAS_GAUGE_Q_INIT_L1	0x72
++#define RK817_GAS_GAUGE_Q_INIT_L0	0x73
++#define RK817_GAS_GAUGE_Q_PRES_H3	0x74
++#define RK817_GAS_GAUGE_Q_PRES_H2	0x75
++#define RK817_GAS_GAUGE_Q_PRES_L1	0x76
++#define RK817_GAS_GAUGE_Q_PRES_L0	0x77
++#define RK817_GAS_GAUGE_BAT_VOL_H	0x78
++#define RK817_GAS_GAUGE_BAT_VOL_L	0x79
++#define RK817_GAS_GAUGE_BAT_CUR_H	0x7a
++#define RK817_GAS_GAUGE_BAT_CUR_L	0x7b
++#define RK817_GAS_GAUGE_USB_VOL_H	0x7e
++#define RK817_GAS_GAUGE_USB_VOL_L	0x7f
++#define RK817_GAS_GAUGE_SYS_VOL_H	0x80
++#define RK817_GAS_GAUGE_SYS_VOL_L	0x81
++#define RK817_GAS_GAUGE_Q_MAX_H3	0x82
++#define RK817_GAS_GAUGE_Q_MAX_H2	0x83
++#define RK817_GAS_GAUGE_Q_MAX_L1	0x84
++#define RK817_GAS_GAUGE_Q_MAX_L0	0x85
++#define RK817_GAS_GAUGE_SLEEP_CON_SAMP_CUR_H	0x8f
++#define RK817_GAS_GAUGE_SLEEP_CON_SAMP_CUR_L	0x90
++#define RK817_GAS_GAUGE_CAL_OFFSET_H	0x91
++#define RK817_GAS_GAUGE_CAL_OFFSET_L	0x92
++#define RK817_GAS_GAUGE_VCALIB0_H	0x93
++#define RK817_GAS_GAUGE_VCALIB0_L	0x94
++#define RK817_GAS_GAUGE_VCALIB1_H	0x95
++#define RK817_GAS_GAUGE_VCALIB1_L	0x96
++#define RK817_GAS_GAUGE_IOFFSET_H	0x97
++#define RK817_GAS_GAUGE_IOFFSET_L	0x98
++#define RK817_GAS_GAUGE_BAT_R1		0x9a
++#define RK817_GAS_GAUGE_BAT_R2		0x9b
++#define RK817_GAS_GAUGE_BAT_R3		0x9c
++#define RK817_GAS_GAUGE_DATA0		0x9d
++#define RK817_GAS_GAUGE_DATA1		0x9e
++#define RK817_GAS_GAUGE_DATA2		0x9f
++#define RK817_GAS_GAUGE_DATA3		0xa0
++#define RK817_GAS_GAUGE_DATA4		0xa1
++#define RK817_GAS_GAUGE_DATA5		0xa2
++#define RK817_GAS_GAUGE_CUR_ADC_K0	0xb0
++
+ #define RK817_POWER_EN_REG(i)		(0xb1 + (i))
+ #define RK817_POWER_SLP_EN_REG(i)	(0xb5 + (i))
+ 
+@@ -544,10 +615,30 @@ enum rk809_reg_id {
+ #define RK817_LDO_ON_VSEL_REG(idx)	(0xcc + (idx) * 2)
+ #define RK817_BOOST_OTG_CFG		(0xde)
+ 
++#define RK817_PMIC_CHRG_OUT		0xe4
++#define RK817_CHRG_VOL_SEL		(0x07 << 4)
++#define RK817_CHRG_CUR_SEL		(0x07 << 0)
++
++#define RK817_PMIC_CHRG_IN		0xe5
++#define RK817_USB_VLIM_EN		(0x01 << 7)
++#define RK817_USB_VLIM_SEL		(0x07 << 4)
++#define RK817_USB_ILIM_EN		(0x01 << 3)
++#define RK817_USB_ILIM_SEL		(0x07 << 0)
++#define RK817_PMIC_CHRG_TERM		0xe6
++#define RK817_CHRG_TERM_ANA_DIG		(0x01 << 2)
++#define RK817_CHRG_TERM_ANA_SEL		(0x03 << 0)
++#define RK817_CHRG_EN			(0x01 << 6)
++
++#define RK817_PMIC_CHRG_STS		0xeb
++#define RK817_BAT_EXS			BIT(7)
++#define RK817_CHG_STS			(0x07 << 4)
++
+ #define RK817_ID_MSB			0xed
+ #define RK817_ID_LSB			0xee
+ 
+ #define RK817_SYS_STS			0xf0
++#define RK817_PLUG_IN_STS		(0x1 << 6)
++
+ #define RK817_SYS_CFG(i)		(0xf1 + (i))
+ 
+ #define RK817_ON_SOURCE_REG		0xf5
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
