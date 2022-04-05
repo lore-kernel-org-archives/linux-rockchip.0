@@ -4,47 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FE42C433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Apr 2022 14:33:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1501BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Apr 2022 15:11:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=kG4YFi5isOzBEcEfNHPTa7FJyOuM4JNE4wbe0KGRV9k=; b=x2iNf1Iab0QKYI
-	cxtUBSn+subRv53tWJljwe9YhVzvsfho32DaCPJjujxG+WfgaGl/DmgQTquUoWuPgL/6TqYVqL2DL
-	st4Hr0hiD9Y0u1EbpDponCkuVRsqta8rp2VeSxRqaiOkif/kT4I6Lip+g+ySqPFvjjMmZvAo/mDyE
-	RqPIdWQA/Mk0FeiQePRFutlM/pKe8LxiWH+2tnwUcPVqaajS77E9lb/mx7lVC6lv7IDsnFtlihloY
-	KmeIyrLx3wK3C3gptTcpFHm/E6HNIENZP5WD6ZJuuaIUi5liDeAUosv99TaQp63jPU1leeDX793MZ
-	d2otchiPkD9MPdww4ksA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VRPNvy2ahO4y1E6dO10CaljHaeUjKTzm4yMrtspeCMc=; b=JtkedMOVrYJe/w
+	hVg9IFH8E2P5rJ3locjI/ICUOYsn6UsnzKvQ+9Q0Im8Kwud1uHItqtuPrF3e033ywK+GMzREv2p50
+	BssCjJDyJYGRH8sN6GmLS+ia7ptyVGMs9pEOV1ZA41Yh1ftoHhXNBj+pe09PGJpqVdnDVKig9vhii
+	UTqMorp7LgQPDJgfJOqa/KGQE/gCb6VlQWPjFWOZXDyi6ju198YB2hybKLrQlPG46PvaUhpgZ2rax
+	eoXsh2e2cKNwHSon1U5DKHeBWAsSyT78CpqGpLET1maYCOI0fbThgtAdc1KzXfgyj4g6GhTacH/m1
+	4Bl9h0kK666AbFeZt/dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbkF1-001T1O-4T; Tue, 05 Apr 2022 14:33:07 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbkEr-001SxM-2m
- for linux-rockchip@lists.infradead.org; Tue, 05 Apr 2022 14:32:58 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5E0A623A;
- Tue,  5 Apr 2022 07:32:56 -0700 (PDT)
-Received: from e121345-lin.cambridge.arm.com (e121345-lin.cambridge.arm.com
- [10.1.196.40])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 7AB513F5A1;
- Tue,  5 Apr 2022 07:32:55 -0700 (PDT)
-From: Robin Murphy <robin.murphy@arm.com>
-To: hjc@rock-chips.com,
-	heiko@sntech.de
-Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- iommu@lists.linux-foundation.org, s.hauer@pengutronix.de
-Subject: [PATCH] drm/rockchip: Refactor IOMMU initialisation
-Date: Tue,  5 Apr 2022 15:32:50 +0100
-Message-Id: <94eee7ab434fe11eb0787f691e9f1ab03a2e91be.1649168685.git.robin.murphy@arm.com>
-X-Mailer: git-send-email 2.28.0.dirty
+	id 1nbkpw-001cyR-96; Tue, 05 Apr 2022 15:11:16 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nbkps-001cvO-No
+ for linux-rockchip@lists.infradead.org; Tue, 05 Apr 2022 15:11:14 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nicolas) with ESMTPSA id 14BC11F450DD
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649171468;
+ bh=D+PPyG+d8bSZBQUHvuUVVhH3F9DHPinWPY0RxBOGLSk=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+ b=fXHyX2PGLz0ROYpReWRUYVsjVnAwYs4vGBfotmSL/S9PIaEyt6ZIvhSApwIsBmKNq
+ u5HY49fCocaxlJF+2UNGHXJdHdioG6Tbxdnd7Z/E0SAMQODKgYIzrLsMRI+gghk96s
+ 5OLzd5Yt6pPZzXW+U8m1u+3hbk6iUTt9PWDaKT195nwD9pJE1GAafVEzuW6OuiCrY6
+ d+GKTUpMH3nsIEeGyC2tKIGM8RRuy5Dfm1JgzFP+S7vM7Kjj2slaYaFvlu4NZlXHmd
+ Fjlf7E0rFIbcgVx+gQQji44T+NHsmwh6QRGBJXBGuqzo0Q7MQvYKvdexH6nzhfa7wL
+ N6TFMwTeJ9ArQ==
+Message-ID: <92001085580ac1005596b34f79f1dadcc4b3f3c9.camel@collabora.com>
+Subject: Re: [PATCH v2 13/23] media: rkvdec: h264: Fix dpb_valid implementation
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, kernel@collabora.com, Sebastian Fricke
+ <sebastian.fricke@collabora.com>, linux-media@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
+ linux-kernel@vger.kernel.org
+Date: Tue, 05 Apr 2022 11:10:57 -0400
+In-Reply-To: <YkgwmwTMa83RysKB@eze-laptop>
+References: <20220331193726.289559-1-nicolas.dufresne@collabora.com>
+ <20220331193726.289559-14-nicolas.dufresne@collabora.com>
+ <YkgwmwTMa83RysKB@eze-laptop>
+User-Agent: Evolution 3.44.0 (3.44.0-1.fc36) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_073257_252620_27D8D09F 
-X-CRM114-Status: GOOD (  19.33  )
+X-CRM114-CacheID: sfid-20220405_081113_072223_52D99976 
+X-CRM114-Status: GOOD (  30.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,227 +68,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Defer the IOMMU domain setup until after successfully binding
-components, so we can figure out IOMMU support directly from the VOP
-devices themselves, rather than manually inferring it from the DT (which
-also fails to account for whether the IOMMU driver is actually loaded).
-Although this is somewhat of a logical cleanup, the main motivation is
-to prepare for a change in the iommu_domain_alloc() interface.
-
-Signed-off-by: Robin Murphy <robin.murphy@arm.com>
----
-
-Lightly tested on RK3288. This does stand to collide with the in-flight
-VOP2 driver a little, if only that that will want an equivalent
-rockchip_drm_dma_init_device() call too be able to use its IOMMU. I'm
-happy to help sort that out either way, it just depends on what we want
-to merge first.
-
-Thanks,
-Robin.
-
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 60 +++++++++------------
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h |  3 ++
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  2 +
- 3 files changed, 31 insertions(+), 34 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index 4eaeb430c83a..7efd12312354 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -7,7 +7,6 @@
-  */
- 
- #include <linux/dma-mapping.h>
--#include <linux/dma-iommu.h>
- #include <linux/pm_runtime.h>
- #include <linux/module.h>
- #include <linux/of_graph.h>
-@@ -34,7 +33,6 @@
- #define DRIVER_MAJOR	1
- #define DRIVER_MINOR	0
- 
--static bool is_support_iommu = true;
- static const struct drm_driver rockchip_drm_driver;
- 
- /*
-@@ -48,7 +46,7 @@ int rockchip_drm_dma_attach_device(struct drm_device *drm_dev,
- 	struct rockchip_drm_private *private = drm_dev->dev_private;
- 	int ret;
- 
--	if (!is_support_iommu)
-+	if (!private->domain)
- 		return 0;
- 
- 	ret = iommu_attach_device(private->domain, dev);
-@@ -64,12 +62,22 @@ void rockchip_drm_dma_detach_device(struct drm_device *drm_dev,
- 				    struct device *dev)
- {
- 	struct rockchip_drm_private *private = drm_dev->dev_private;
--	struct iommu_domain *domain = private->domain;
- 
--	if (!is_support_iommu)
-+	if (!private->domain)
- 		return;
- 
--	iommu_detach_device(domain, dev);
-+	iommu_detach_device(private->domain, dev);
-+}
-+
-+void rockchip_drm_dma_init_device(struct drm_device *drm_dev,
-+				  struct device *dev)
-+{
-+	struct rockchip_drm_private *private = drm_dev->dev_private;
-+
-+	if (!device_iommu_mapped(dev))
-+		private->iommu_dev = ERR_PTR(-ENODEV);
-+	else if (!private->iommu_dev)
-+		private->iommu_dev = dev;
- }
- 
- static int rockchip_drm_init_iommu(struct drm_device *drm_dev)
-@@ -78,10 +86,10 @@ static int rockchip_drm_init_iommu(struct drm_device *drm_dev)
- 	struct iommu_domain_geometry *geometry;
- 	u64 start, end;
- 
--	if (!is_support_iommu)
-+	if (IS_ERR_OR_NULL(private->iommu_dev))
- 		return 0;
- 
--	private->domain = iommu_domain_alloc(&platform_bus_type);
-+	private->domain = iommu_domain_alloc(private->iommu_dev->bus);
- 	if (!private->domain)
- 		return -ENOMEM;
- 
-@@ -101,7 +109,7 @@ static void rockchip_iommu_cleanup(struct drm_device *drm_dev)
- {
- 	struct rockchip_drm_private *private = drm_dev->dev_private;
- 
--	if (!is_support_iommu)
-+	if (!private->domain)
- 		return;
- 
- 	drm_mm_takedown(&private->mm);
-@@ -137,24 +145,24 @@ static int rockchip_drm_bind(struct device *dev)
- 
- 	drm_dev->dev_private = private;
- 
--	ret = rockchip_drm_init_iommu(drm_dev);
--	if (ret)
--		goto err_free;
--
- 	ret = drmm_mode_config_init(drm_dev);
- 	if (ret)
--		goto err_iommu_cleanup;
-+		goto err_free;
- 
- 	rockchip_drm_mode_config_init(drm_dev);
- 
- 	/* Try to bind all sub drivers. */
- 	ret = component_bind_all(dev, drm_dev);
- 	if (ret)
--		goto err_iommu_cleanup;
-+		goto err_free;
-+
-+	ret = rockchip_drm_init_iommu(drm_dev);
-+	if (ret)
-+		goto err_unbind_all;
- 
- 	ret = drm_vblank_init(drm_dev, drm_dev->mode_config.num_crtc);
- 	if (ret)
--		goto err_unbind_all;
-+		goto err_iommu_cleanup;
- 
- 	drm_mode_config_reset(drm_dev);
- 
-@@ -170,10 +178,10 @@ static int rockchip_drm_bind(struct device *dev)
- 	return 0;
- err_kms_helper_poll_fini:
- 	drm_kms_helper_poll_fini(drm_dev);
--err_unbind_all:
--	component_unbind_all(dev, drm_dev);
- err_iommu_cleanup:
- 	rockchip_iommu_cleanup(drm_dev);
-+err_unbind_all:
-+	component_unbind_all(dev, drm_dev);
- err_free:
- 	drm_dev_put(drm_dev);
- 	return ret;
-@@ -342,8 +350,6 @@ static int rockchip_drm_platform_of_probe(struct device *dev)
- 		return -ENODEV;
- 
- 	for (i = 0;; i++) {
--		struct device_node *iommu;
--
- 		port = of_parse_phandle(np, "ports", i);
- 		if (!port)
- 			break;
-@@ -353,21 +359,7 @@ static int rockchip_drm_platform_of_probe(struct device *dev)
- 			continue;
- 		}
- 
--		iommu = of_parse_phandle(port->parent, "iommus", 0);
--		if (!iommu || !of_device_is_available(iommu)) {
--			DRM_DEV_DEBUG(dev,
--				      "no iommu attached for %pOF, using non-iommu buffers\n",
--				      port->parent);
--			/*
--			 * if there is a crtc not support iommu, force set all
--			 * crtc use non-iommu buffer.
--			 */
--			is_support_iommu = false;
--		}
--
- 		found = true;
--
--		of_node_put(iommu);
- 		of_node_put(port);
- 	}
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-index 143a48330f84..008c44aef400 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-@@ -44,6 +44,7 @@ struct rockchip_crtc_state {
-  */
- struct rockchip_drm_private {
- 	struct iommu_domain *domain;
-+	struct device *iommu_dev;
- 	struct mutex mm_lock;
- 	struct drm_mm mm;
- };
-@@ -52,6 +53,8 @@ int rockchip_drm_dma_attach_device(struct drm_device *drm_dev,
- 				   struct device *dev);
- void rockchip_drm_dma_detach_device(struct drm_device *drm_dev,
- 				    struct device *dev);
-+void rockchip_drm_dma_init_device(struct drm_device *drm_dev,
-+				  struct device *dev);
- int rockchip_drm_wait_vact_end(struct drm_crtc *crtc, unsigned int mstimeout);
- 
- int rockchip_drm_endpoint_is_subdriver(struct device_node *ep);
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 3e8d9e2d1b67..4c38c53e9f65 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -2175,6 +2175,8 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
- 		}
- 	}
- 
-+	rockchip_drm_dma_init_device(drm_dev, dev);
-+
- 	return 0;
- 
- err_disable_pm_runtime:
--- 
-2.28.0.dirty
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+TGUgc2FtZWRpIDAyIGF2cmlsIDIwMjIgw6AgMDg6MTYgLTAzMDAsIEV6ZXF1aWVsIEdhcmNpYSBh
+IMOpY3JpdMKgOgo+IE9uIFRodSwgTWFyIDMxLCAyMDIyIGF0IDAzOjM3OjE1UE0gLTA0MDAsIE5p
+Y29sYXMgRHVmcmVzbmUgd3JvdGU6Cj4gPiBUaGUgcmVmIGJ1aWxkZXIgb25seSBwcm92aWRlZCBy
+ZWZlcmVuY2VzIHRoYXQgYXJlIG1hcmtlZCBhcyB2YWxpZCBpbiB0aGUKPiA+IGRwYi4gVGh1cyB0
+aGUgY3VycmVudCBpbXBsZW1lbnRhdGlvbiBvZiBkcGJfdmFsaWQgd291bGQgYWx3YXlzIHNldCB0
+aGUKPiA+IGZsYWcgdG8gMS4gVGhpcyBpcyBub3QgcmVwcmVzZW50aW5nIG1pc3NpbmcgZnJhbWVz
+ICh0aGlzIGlzIGNhbGxlZAo+ID4gJ25vbi1leGlzdGluZycgcGljdHVyZXMgaW4gdGhlIHNwZWMp
+LiBJbiBzb21lIGNvbnRleHQsIHRoZXNlIG5vbi1leGlzdGluZwo+ID4gcGljdHVyZXMgc3RpbGwg
+bmVlZCB0byBvY2N1cHkgYSBzbG90IGluIHRoZSByZWZlcmVuY2UgbGlzdCBhY2NvcmRpbmcgdG8K
+PiA+IHRoZSBzcGVjLgo+ID4gCj4gCj4gR29vZCBjYXRjaCEgT09DLCBkaWQgeW91IGZpbmQgdGhp
+cyBiZWNhdXNlIGl0IHdhcyBmYWlsaW5nIGEgdGVzdCB2ZWN0b3I/CgpUaGUgZWZmZWN0IGlzIGNv
+bXBsZXgsIHNvIEkgY291bGQgbm90IGNvcnJlbGF0ZSB0byBzcGVjaWZpYyB0ZXN0cy4gQWxzbywg
+d2hhdCBJCndhbnRlZCB0byBmaXggaXNuJ3QgY292ZXJlZCBieSB0aGUgSVRVIGNvbmZvcm1hbmNl
+LCBpdHMgbW9zdGx5IHJlc2lsaWFuY2UKcmVxdWlyZW1lbnQuIEJ1dCB0aGlzIHNob3VsZCByZW1v
+dmUgc29tZSBvZiB0aGUgSU9NTVUgZmF1bHQgb24gYnJva2VuIHN0cmVhbXMKYW5kIG1ha2UgaXQg
+bGVzcyBsaWtlbHkgdG8gdXNlIHJlZmVyZW5jZXMgdGhhdCBkb24ndCBleGlzdHMgb3IgYXJlbid0
+IHNldCB3aGF0CndlIGV4cGVjdC4gQWZ0ZXIgdGhpcyBjaGFuZ2UsIHRoZSBkcml2ZXIgd2FzIGdl
+dHRpbmcgbW9yZSBzdGFibGUsIGFuZCByZXN1bHRzCndhcyBhbHNvIG1vcmUgcmVwcm9kdWNpYmxl
+IChzcGVjaWFsbHkgaW4gcGFyYWxsZWwgZGVjb2RlIGNhc2UsIHdoaWNoIEkgdXNlIHRvCnNwZWVk
+IHVwIHRlc3RpbmcpLgoKPiAKPiA+IFNpZ25lZC1vZmYtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5p
+Y29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbT4KPiA+IFJldmlld2VkLWJ5OiBTZWJhc3RpYW4g
+RnJpY2tlIDxzZWJhc3RpYW4uZnJpY2tlQGNvbGxhYm9yYS5jb20+Cj4gCj4gRml4ZXM6IGNkMzNj
+ODMwNDQ4YmEgKCJtZWRpYTogcmt2ZGVjOiBBZGQgdGhlIHJrdmRlYyBkcml2ZXIiKQo+IFJldmll
+d2VkLWJ5OiBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVsQHZhbmd1YXJkaWFzdXIuY29tLmFyPgoK
+VGhhbmtzIGZvciB0aGUgcmV2aWV3LgoKPiAKPiBUaGFua3MsCj4gRXplcXVpZWwKPiAKPiA+IC0t
+LQo+ID4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLWgyNjQuYyB8IDMzICsr
+KysrKysrKysrKysrKystLS0tLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygr
+KSwgOSBkZWxldGlvbnMoLSkKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9t
+ZWRpYS9ya3ZkZWMvcmt2ZGVjLWgyNjQuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMv
+cmt2ZGVjLWgyNjQuYwo+ID4gaW5kZXggZGZmODk3MzJkZGQwLi5iY2RlMzdkNzIyNDQgMTAwNjQ0
+Cj4gPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy1oMjY0LmMKPiA+
+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLWgyNjQuYwo+ID4gQEAg
+LTExMiw2ICsxMTIsNyBAQCBzdHJ1Y3Qgcmt2ZGVjX2gyNjRfcnVuIHsKPiA+ICAJY29uc3Qgc3Ry
+dWN0IHY0bDJfY3RybF9oMjY0X3NwcyAqc3BzOwo+ID4gIAljb25zdCBzdHJ1Y3QgdjRsMl9jdHJs
+X2gyNjRfcHBzICpwcHM7Cj4gPiAgCWNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfaDI2NF9zY2FsaW5n
+X21hdHJpeCAqc2NhbGluZ19tYXRyaXg7Cj4gPiArCWludCByZWZfYnVmX2lkeFtWNEwyX0gyNjRf
+TlVNX0RQQl9FTlRSSUVTXTsKPiA+ICB9Owo+ID4gIAo+ID4gIHN0cnVjdCBya3ZkZWNfaDI2NF9j
+dHggewo+ID4gQEAgLTcyNSw2ICs3MjYsMjYgQEAgc3RhdGljIHZvaWQgYXNzZW1ibGVfaHdfcHBz
+KHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgsCj4gPiAgCX0KPiA+ICB9Cj4gPiAgCj4gPiArc3RhdGlj
+IHZvaWQgbG9va3VwX3JlZl9idWZfaWR4KHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgsCj4gPiArCQkJ
+ICAgICAgIHN0cnVjdCBya3ZkZWNfaDI2NF9ydW4gKnJ1bikKPiA+ICt7Cj4gPiArCWNvbnN0IHN0
+cnVjdCB2NGwyX2N0cmxfaDI2NF9kZWNvZGVfcGFyYW1zICpkZWNfcGFyYW1zID0gcnVuLT5kZWNv
+ZGVfcGFyYW1zOwo+ID4gKwl1MzIgaTsKPiA+ICsKPiA+ICsJZm9yIChpID0gMDsgaSA8IEFSUkFZ
+X1NJWkUoZGVjX3BhcmFtcy0+ZHBiKTsgaSsrKSB7Cj4gPiArCQlzdHJ1Y3QgdjRsMl9tMm1fY3R4
+ICptMm1fY3R4ID0gY3R4LT5maC5tMm1fY3R4Owo+ID4gKwkJY29uc3Qgc3RydWN0IHY0bDJfaDI2
+NF9kcGJfZW50cnkgKmRwYiA9IHJ1bi0+ZGVjb2RlX3BhcmFtcy0+ZHBiOwo+ID4gKwkJc3RydWN0
+IHZiMl9xdWV1ZSAqY2FwX3EgPSAmbTJtX2N0eC0+Y2FwX3FfY3R4LnE7Cj4gPiArCQlpbnQgYnVm
+X2lkeCA9IC0xOwo+ID4gKwo+ID4gKwkJaWYgKGRwYltpXS5mbGFncyAmIFY0TDJfSDI2NF9EUEJf
+RU5UUllfRkxBR19BQ1RJVkUpCj4gPiArCQkJYnVmX2lkeCA9IHZiMl9maW5kX3RpbWVzdGFtcChj
+YXBfcSwKPiA+ICsJCQkJCQkgICAgIGRwYltpXS5yZWZlcmVuY2VfdHMsIDApOwo+ID4gKwo+ID4g
+KwkJcnVuLT5yZWZfYnVmX2lkeFtpXSA9IGJ1Zl9pZHg7Cj4gPiArCX0KPiA+ICt9Cj4gPiArCj4g
+PiAgc3RhdGljIHZvaWQgYXNzZW1ibGVfaHdfcnBzKHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgsCj4g
+PiAgCQkJICAgIHN0cnVjdCBya3ZkZWNfaDI2NF9ydW4gKnJ1bikKPiA+ICB7Cj4gPiBAQCAtNzYy
+LDcgKzc4Myw3IEBAIHN0YXRpYyB2b2lkIGFzc2VtYmxlX2h3X3JwcyhzdHJ1Y3Qgcmt2ZGVjX2N0
+eCAqY3R4LAo+ID4gIAo+ID4gIAlmb3IgKGogPSAwOyBqIDwgUktWREVDX05VTV9SRUZMSVNUOyBq
+KyspIHsKPiA+ICAJCWZvciAoaSA9IDA7IGkgPCBoMjY0X2N0eC0+cmVmbGlzdHMubnVtX3ZhbGlk
+OyBpKyspIHsKPiA+IC0JCQl1OCBkcGJfdmFsaWQgPSAwOwo+ID4gKwkJCWJvb2wgZHBiX3ZhbGlk
+ID0gcnVuLT5yZWZfYnVmX2lkeFtpXSA+PSAwOwo+ID4gIAkJCXU4IGlkeCA9IDA7Cj4gPiAgCj4g
+PiAgCQkJc3dpdGNoIChqKSB7Cj4gPiBAQCAtNzc5LDggKzgwMCw2IEBAIHN0YXRpYyB2b2lkIGFz
+c2VtYmxlX2h3X3JwcyhzdHJ1Y3Qgcmt2ZGVjX2N0eCAqY3R4LAo+ID4gIAo+ID4gIAkJCWlmIChp
+ZHggPj0gQVJSQVlfU0laRShkZWNfcGFyYW1zLT5kcGIpKQo+ID4gIAkJCQljb250aW51ZTsKPiA+
+IC0JCQlkcGJfdmFsaWQgPSAhIShkcGJbaWR4XS5mbGFncyAmCj4gPiAtCQkJCSAgICAgICBWNEwy
+X0gyNjRfRFBCX0VOVFJZX0ZMQUdfQUNUSVZFKTsKPiA+ICAKPiA+ICAJCQlzZXRfcHNfZmllbGQo
+aHdfcnBzLCBEUEJfSU5GTyhpLCBqKSwKPiA+ICAJCQkJICAgICBpZHggfCBkcGJfdmFsaWQgPDwg
+NCk7Cj4gPiBAQCAtODU5LDEzICs4NzgsOCBAQCBnZXRfcmVmX2J1ZihzdHJ1Y3Qgcmt2ZGVjX2N0
+eCAqY3R4LCBzdHJ1Y3Qgcmt2ZGVjX2gyNjRfcnVuICpydW4sCj4gPiAgCSAgICB1bnNpZ25lZCBp
+bnQgZHBiX2lkeCkKPiA+ICB7Cj4gPiAgCXN0cnVjdCB2NGwyX20ybV9jdHggKm0ybV9jdHggPSBj
+dHgtPmZoLm0ybV9jdHg7Cj4gPiAtCWNvbnN0IHN0cnVjdCB2NGwyX2gyNjRfZHBiX2VudHJ5ICpk
+cGIgPSBydW4tPmRlY29kZV9wYXJhbXMtPmRwYjsKPiA+ICAJc3RydWN0IHZiMl9xdWV1ZSAqY2Fw
+X3EgPSAmbTJtX2N0eC0+Y2FwX3FfY3R4LnE7Cj4gPiAtCWludCBidWZfaWR4ID0gLTE7Cj4gPiAt
+Cj4gPiAtCWlmIChkcGJbZHBiX2lkeF0uZmxhZ3MgJiBWNEwyX0gyNjRfRFBCX0VOVFJZX0ZMQUdf
+QUNUSVZFKQo+ID4gLQkJYnVmX2lkeCA9IHZiMl9maW5kX3RpbWVzdGFtcChjYXBfcSwKPiA+IC0J
+CQkJCSAgICAgZHBiW2RwYl9pZHhdLnJlZmVyZW5jZV90cywgMCk7Cj4gPiArCWludCBidWZfaWR4
+ID0gcnVuLT5yZWZfYnVmX2lkeFtkcGJfaWR4XTsKPiA+ICAKPiA+ICAJLyoKPiA+ICAJICogSWYg
+YSBEUEIgZW50cnkgaXMgdW51c2VkIG9yIGludmFsaWQsIGFkZHJlc3Mgb2YgY3VycmVudCBkZXN0
+aW5hdGlvbgo+ID4gQEAgLTExMDIsNiArMTExNiw3IEBAIHN0YXRpYyBpbnQgcmt2ZGVjX2gyNjRf
+cnVuKHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgpCj4gPiAgCj4gPiAgCWFzc2VtYmxlX2h3X3NjYWxp
+bmdfbGlzdChjdHgsICZydW4pOwo+ID4gIAlhc3NlbWJsZV9od19wcHMoY3R4LCAmcnVuKTsKPiA+
+ICsJbG9va3VwX3JlZl9idWZfaWR4KGN0eCwgJnJ1bik7Cj4gPiAgCWFzc2VtYmxlX2h3X3Jwcyhj
+dHgsICZydW4pOwo+ID4gIAljb25maWdfcmVnaXN0ZXJzKGN0eCwgJnJ1bik7Cj4gPiAgCj4gPiAt
+LSAKPiA+IDIuMzQuMQo+ID4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
