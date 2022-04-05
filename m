@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEB83C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Apr 2022 20:45:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74327C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Apr 2022 20:45:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l08GbY938rRxQe9S9QFL9RG7vnsgiPElEHecfiOZ5c8=; b=h9Iq/VHzo4DYN5
-	JNxj/DAvdC1jI/7KnDGydqjtyKEQqGTPqrlKvD7MS6pj7pfHfF2ngYhAZqM030pRCb4eDx054B4SY
-	S7u3f5g/fB4Eqfz7JTfCp28yR1IrSNleGM34sEwKhSZHGv4phGEXn7UX4jDpEPxc8ak/l7gKuCuR1
-	vTPIDd7hJwbHDKBUuFKsXSDAEScpjHDaQD1tMerT8V22Cya5gaSJ+XwOUbSFetAMbXdwUzeMdUUEp
-	KmYIKOs+RJAMEPg9gaYd/p4vLOikxUANS7ARX46i99+rZSV9RvTxRVAP7H2BPnkW8Syh0nxyWKOLZ
-	9wk6J3BZUkjpIqbKyjVA==;
+	List-Owner; bh=YQw5/4VCCvtNKTqT0MH1c1tOK9oTh2kKI2pVgCdk04Q=; b=c1Qftp+L3F7N29
+	A7h4IW23nbGulAOm0rXUy1AqeAAQbnVHknPNRrRclacYvQqbpABXdAfIf5Iw+8bIwXDLEMb0f97+N
+	PEBIfh9WJfcdiHquI6BVBJRvY+b7/gDpqYDFWYfPxyJIjz1AoeWxdHZ6Gj2XgGQDm5B35yi4IWavw
+	ML/RWF3upxFhPZ7p7DGzmQUSls4lA8HWjU/aT0cLf94yL/LM4DI6Fy0xiRYc1Iic251wyYwKORJeZ
+	wKBgmu3MGF6fy1bQbhbk/T1TwUHlWBfxUH2w4Wax+bHvDOvDK4F6hP1byUP724SRPTbqBhHYJCEF5
+	HR94sBmQgH9BN3WpsY6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbq3J-002dQh-JV; Tue, 05 Apr 2022 20:45:25 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nbq3M-002dUe-Vd; Tue, 05 Apr 2022 20:45:29 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbq39-002dDS-AE
- for linux-rockchip@lists.infradead.org; Tue, 05 Apr 2022 20:45:18 +0000
+ id 1nbq3B-002dG0-6t
+ for linux-rockchip@lists.infradead.org; Tue, 05 Apr 2022 20:45:19 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nicolas) with ESMTPSA id 1B9041F448BD
+ (Authenticated sender: nicolas) with ESMTPSA id D871B1F448CB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649191514;
- bh=EBiSjqkXo2c3hkPGX7BwCqg++QBc8XyeV1CCcGY09D4=;
+ s=mail; t=1649191516;
+ bh=MTyE9QSy2RUy2J+DqczMQkzQ2U7CksfjNGFIrOd9SV8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=bvjReUCSoTw3rNiyYOT/Yl7uSz/RBAsB3McArZ2SLHmvnF4URblCp7apfeW3nYIEH
- amW3JIT/zr6iSrSn/Fc1BADdhSRYEfASnj4UpswB6SC7M5DRS6l13Geuo6qqleq8GW
- Gaxjasc09W77XYG9306A347ET5BIbuB/H4LZLvwhOtHhE27aThMH6oYni1A9hmLDY9
- GVaOawFo/itXFrIZ21g6q5iXqzl5LjL5Ttrwj1cSdn2BA8j9RGN/n9bPkugeCm9ibW
- zgEYF5NjT1yUlhzemN6hanC5rQzDJR8PjIhRLILB1GxujvwPgbbtQa46QaM6nE9D2I
- 7w+xJyGzpAuaA==
+ b=MTXu3z2Sz1/ihUk9LZChVIPAu71KKvYLI63WUFsq4V+t+dI6Wag5rJC/4VfrlWEAt
+ SHCFbLtM0ElNJ6q/LTy8Fka4/R7QxDjtFb5b2ys/ylpAgiNd09Dthhs3i6RlAzF2+8
+ KkrLLA3Vc5wQaRElF9X6hTJ3mZagl5aRNxB+Pse30ELEthfHEuCEyA6Vtb81yvHYcB
+ KDLbKeGdvxSwFIel+bibpclOtNwo47xv/L+eLMFcyCiaBxeUMKoYJUzLRZdnZQg2l2
+ QE35nAKfteTRgyw5P75CyRJkYNcCG2otWffSBriRi2X6QkJrsNNUQDZnl8v22Q8s6z
+ aQ2K4uCfvjT+A==
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -45,16 +45,16 @@ Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
  Sebastian Fricke <sebastian.fricke@collabora.com>,
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev
-Subject: [PATCH v3 19/24] media: rkvdec-h264: Add field decoding support
-Date: Tue,  5 Apr 2022 16:44:20 -0400
-Message-Id: <20220405204426.259074-20-nicolas.dufresne@collabora.com>
+Subject: [PATCH v3 20/24] media: rkvdec: Enable capture buffer holding for H264
+Date: Tue,  5 Apr 2022 16:44:21 -0400
+Message-Id: <20220405204426.259074-21-nicolas.dufresne@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220405204426.259074-1-nicolas.dufresne@collabora.com>
 References: <20220405204426.259074-1-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_134515_717440_F42FD829 
-X-CRM114-Status: GOOD (  17.54  )
+X-CRM114-CacheID: sfid-20220405_134517_441084_E1FD0EE5 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,144 +72,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This makes use of the new feature in the reference builder to program
-up to 32 references when doing field decoding. It also signals the
-parity (top or bottom) of the field to the hardware.
+In order to support interlaced video decoding, the driver must
+allow holding the capture buffer so that the second field can
+be decoded into it.
 
 Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 ---
- drivers/staging/media/rkvdec/rkvdec-h264.c | 48 ++++++++++------------
- 1 file changed, 21 insertions(+), 27 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec.c | 4 ++++
+ drivers/staging/media/rkvdec/rkvdec.h | 1 +
+ 2 files changed, 5 insertions(+)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index 60eaf06b6e25..ef74a556c916 100644
---- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-+++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -97,13 +97,10 @@ struct rkvdec_h264_priv_tbl {
- 	u8 err_info[RKV_ERROR_INFO_SIZE];
- };
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index 2bc4b1a40989..7bab7586918c 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -127,6 +127,7 @@ static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
+ 		.ops = &rkvdec_h264_fmt_ops,
+ 		.num_decoded_fmts = ARRAY_SIZE(rkvdec_h264_vp9_decoded_fmts),
+ 		.decoded_fmts = rkvdec_h264_vp9_decoded_fmts,
++		.subsystem_flags = VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF,
+ 	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_VP9_FRAME,
+@@ -385,6 +386,9 @@ static int rkvdec_s_output_fmt(struct file *file, void *priv,
+ 	cap_fmt->fmt.pix_mp.ycbcr_enc = f->fmt.pix_mp.ycbcr_enc;
+ 	cap_fmt->fmt.pix_mp.quantization = f->fmt.pix_mp.quantization;
  
--#define RKVDEC_H264_DPB_SIZE 16
--
- struct rkvdec_h264_reflists {
- 	struct v4l2_h264_reference p[V4L2_H264_REF_LIST_LEN];
- 	struct v4l2_h264_reference b0[V4L2_H264_REF_LIST_LEN];
- 	struct v4l2_h264_reference b1[V4L2_H264_REF_LIST_LEN];
--	u8 num_valid;
- };
- 
- struct rkvdec_h264_run {
-@@ -746,23 +743,26 @@ static void lookup_ref_buf_idx(struct rkvdec_ctx *ctx,
- 		struct vb2_queue *cap_q = &m2m_ctx->cap_q_ctx.q;
- 		int buf_idx = -1;
- 
--		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)
-+		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE) {
- 			buf_idx = vb2_find_timestamp(cap_q,
- 						     dpb[i].reference_ts, 0);
-+			if (buf_idx < 0)
-+				pr_debug("No buffer for reference_ts %llu",
-+					 dpb[i].reference_ts);
-+		}
- 
- 		run->ref_buf_idx[i] = buf_idx;
- 	}
- }
- 
- static void assemble_hw_rps(struct rkvdec_ctx *ctx,
-+			    struct v4l2_h264_reflist_builder *builder,
- 			    struct rkvdec_h264_run *run)
- {
- 	const struct v4l2_ctrl_h264_decode_params *dec_params = run->decode_params;
- 	const struct v4l2_h264_dpb_entry *dpb = dec_params->dpb;
- 	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
--	const struct v4l2_ctrl_h264_sps *sps = run->sps;
- 	struct rkvdec_h264_priv_tbl *priv_tbl = h264_ctx->priv_tbl.cpu;
--	u32 max_frame_num = 1 << (sps->log2_max_frame_num_minus4 + 4);
- 
- 	u32 *hw_rps = priv_tbl->rps;
- 	u32 i, j;
-@@ -780,37 +780,36 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
- 		if (!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE))
- 			continue;
- 
--		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM ||
--		    dpb[i].frame_num <= dec_params->frame_num) {
--			p[i] = dpb[i].frame_num;
--			continue;
--		}
--
--		p[i] = dpb[i].frame_num - max_frame_num;
-+		p[i] = builder->refs[i].frame_num;
- 	}
- 
- 	for (j = 0; j < RKVDEC_NUM_REFLIST; j++) {
--		for (i = 0; i < h264_ctx->reflists.num_valid; i++) {
--			bool dpb_valid = run->ref_buf_idx[i] >= 0;
--			u8 idx = 0;
-+		for (i = 0; i < builder->num_valid; i++) {
-+			struct v4l2_h264_reference *ref;
-+			bool dpb_valid;
-+			bool bottom;
- 
- 			switch (j) {
- 			case 0:
--				idx = h264_ctx->reflists.p[i].index;
-+				ref = &h264_ctx->reflists.p[i];
- 				break;
- 			case 1:
--				idx = h264_ctx->reflists.b0[i].index;
-+				ref = &h264_ctx->reflists.b0[i];
- 				break;
- 			case 2:
--				idx = h264_ctx->reflists.b1[i].index;
-+				ref = &h264_ctx->reflists.b1[i];
- 				break;
- 			}
- 
--			if (idx >= ARRAY_SIZE(dec_params->dpb))
-+			if (WARN_ON(ref->index >= ARRAY_SIZE(dec_params->dpb)))
- 				continue;
- 
-+			dpb_valid = run->ref_buf_idx[ref->index] >= 0;
-+			bottom = ref->fields == V4L2_H264_BOTTOM_FIELD_REF;
++	/* Enable format specific queue features */
++	vq->subsystem_flags |= desc->subsystem_flags;
 +
- 			set_ps_field(hw_rps, DPB_INFO(i, j),
--				     idx | dpb_valid << 4);
-+				     ref->index | dpb_valid << 4);
-+			set_ps_field(hw_rps, BOTTOM_FLAG(i, j), bottom);
- 		}
- 	}
+ 	return 0;
  }
-@@ -998,10 +997,6 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 				       rkvdec->regs + RKVDEC_REG_H264_BASE_REFER15);
- 	}
  
--	/*
--	 * Since support frame mode only
--	 * top_field_order_cnt is the same as bottom_field_order_cnt
--	 */
- 	reg = RKVDEC_CUR_POC(dec_params->top_field_order_cnt);
- 	writel_relaxed(reg, rkvdec->regs + RKVDEC_REG_CUR_POC0);
+diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
+index 9df0fba799a4..633335ebb9c4 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.h
++++ b/drivers/staging/media/rkvdec/rkvdec.h
+@@ -82,6 +82,7 @@ struct rkvdec_coded_fmt_desc {
+ 	const struct rkvdec_coded_fmt_ops *ops;
+ 	unsigned int num_decoded_fmts;
+ 	const u32 *decoded_fmts;
++	u32 subsystem_flags;
+ };
  
-@@ -1163,7 +1158,6 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
- 	/* Build the P/B{0,1} ref lists. */
- 	v4l2_h264_init_reflist_builder(&reflist_builder, run.decode_params,
- 				       run.sps, run.decode_params->dpb);
--	h264_ctx->reflists.num_valid = reflist_builder.num_valid;
- 	v4l2_h264_build_p_ref_list(&reflist_builder, h264_ctx->reflists.p);
- 	v4l2_h264_build_b_ref_lists(&reflist_builder, h264_ctx->reflists.b0,
- 				    h264_ctx->reflists.b1);
-@@ -1171,7 +1165,7 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
- 	assemble_hw_scaling_list(ctx, &run);
- 	assemble_hw_pps(ctx, &run);
- 	lookup_ref_buf_idx(ctx, &run);
--	assemble_hw_rps(ctx, &run);
-+	assemble_hw_rps(ctx, &reflist_builder, &run);
- 	config_registers(ctx, &run);
- 
- 	rkvdec_run_postamble(ctx, &run.base);
+ struct rkvdec_dev {
 -- 
 2.34.1
 
