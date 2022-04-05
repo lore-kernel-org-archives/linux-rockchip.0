@@ -4,59 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59137C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Apr 2022 20:45:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F55C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Apr 2022 20:45:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ppuUOnHEfELHAIkkpSn36MxB1B/S6mBkuWMi4hW2vvE=; b=XxBntHLYKI3Y1w
-	Jo+lgAJOPH6VdqF5861D+068TuTzNt6W9CwVPZnybcjQ/ZHvJawrz2DA4XHZ7TYCgD9vhCRKX7giQ
-	URQ3zu74EUgLwNVLolGLAVtSvC20WQtcycLNM2nQBQld+qJr6nnqHHTMOF0NJfSCyjMSjAPPhqbv5
-	AFf/t9f+8Jpt1ph9d4bu66qpG60fMujUj4y+oCI+ZYQdGXgXMxkdjVDfbhy1N3T0KnIXFY5m6D0XF
-	XCgNia97wvNTocCWU58RFSGoMQT8X+sTz6I/EY3/bC3D1UEawqTAzNw/bU440V9DmzjQmuqnXX/nW
-	O0ODlNlBMzKUyN1rpEzw==;
+	List-Owner; bh=GHZ5f+fUUVNEJZM3gonoS/rsoBSs6dTXw4VF2XoHKwM=; b=Q9u/AUTDRLo6FW
+	k2tzYZQuFVwBqf2yx/jqNVK6pxtth5NXYMO9+Ms1Qr9H+1/IcxWKyWdUpkdWIbJn/5/meXLSJspmO
+	RT+FQ7d32Y1GgRBv7IlmcbFrnHYd+ZnWvXzZh4CEvogM0aQWBYL9b3M3m/lkk5GjCgYtWza/4pDF3
+	LHMAgFOoTyIQNhXBaCgW+P2f4wnOkKvoKpzEOMc5y9WInPhLx9wQ5o5XJ1NpeRIjhoEAEm/d/n9ER
+	XHeAPa9zBkCIiZTjyfBRK9/eDA2dvkq01yOXOMmgD89ZHhgCfY8sEi2hcaUXJOMcEbB0NT/1MeINS
+	uZ1FveLq/DmVIDVJcVZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbq3B-002dGr-Mh; Tue, 05 Apr 2022 20:45:17 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nbq3F-002dLa-GW; Tue, 05 Apr 2022 20:45:21 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbq35-002d9D-Rp
- for linux-rockchip@lists.infradead.org; Tue, 05 Apr 2022 20:45:13 +0000
+ id 1nbq37-002dBO-JR
+ for linux-rockchip@lists.infradead.org; Tue, 05 Apr 2022 20:45:15 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nicolas) with ESMTPSA id 47B301F448A1
+ (Authenticated sender: nicolas) with ESMTPSA id 44DB71F448AC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649191510;
- bh=t6w6zh2urP7UBHlWH5GWukchWArbLK9mbtqizbdraAY=;
+ s=mail; t=1649191512;
+ bh=mlmVguJcq18q2C5FsZYpROZPrzKGkqiR80YOa10U0rQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=TkK+aVQN462OFzg3kXJMyyDzO9T5YZP4amtnyD+IC682s9lJt9HfFWJIqL5686Ljz
- /JF9E3x+CLnwgJ8byoIc1gLKjhAYVf5LLJvnskfXyFbE0nNpttYv4gxOg1s9CsRTNs
- AwdTGwxXdcxGIx/YlfnIu7+3Za8p8RI0he0Yu3Pa62uJ73r6KAHWnd+2NyYoKq+xfR
- vULVmlkefvGmBpcWiLzWObKsI1+YnxZxTF0muf+/GqNSWumbYdHjzwdySXF38cSXGe
- eWSRYf7IRpZi0MWDeZfFszhSmt7gZWD2MD7j0ZuG/oZyTGQAwwt26oDn+Fis6PS2GV
- ylea4nyVQ09Pw==
+ b=cuG1CSJZKgn64YomMpEzZ8tvvSWpKLfGOmMVqaMxRdcSC280sF3qjfiRtm8SZfnsc
+ oDIyMMunNmiYNk+GRcGtaiwuUk/jTZkO1ErSmKQnvA66wdhT2cCvOV9HSD+J2RHWBt
+ TSLnRP2fwVjaK5Zt/5P4WDqJAxX1USTkyI88cGP5cXewlSGKUBzpuiyPnpFbJgr6H5
+ e505TFfynD0h6YBztLgGCQB64ot1b+E28/yzdzHGH28aAbxMa7eZXAz6oTErCH1vH4
+ vnOEjZk5+e2J++7gbnEU4t841y1GAZfwoTAxZvv4ImcRoq8U+WGYt2OaOf8fMPziZQ
+ ar0q8v8A2R/DA==
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
- Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@collabora.com>,
+ Jonas Karlman <jonas@kwiboo.se>,
  Sebastian Fricke <sebastian.fricke@collabora.com>,
  linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev
-Subject: [PATCH v3 17/24] media: rkvdec: h264: Fix reference frame_num wrap
- for second field
-Date: Tue,  5 Apr 2022 16:44:18 -0400
-Message-Id: <20220405204426.259074-18-nicolas.dufresne@collabora.com>
+Subject: [PATCH v3 18/24] media: rkvdec: Ensure decoded resolution fit coded
+ resolution
+Date: Tue,  5 Apr 2022 16:44:19 -0400
+Message-Id: <20220405204426.259074-19-nicolas.dufresne@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220405204426.259074-1-nicolas.dufresne@collabora.com>
 References: <20220405204426.259074-1-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_134512_104582_86664DA1 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20220405_134513_860909_D347AF14 
+X-CRM114-Status: UNSURE (   8.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,36 +77,29 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Jonas Karlman <jonas@kwiboo.se>
 
-When decoding the second field in a complementary field pair the second
-field is sharing the same frame_num with the first field.
-
-Currently the frame_num for the first field is wrapped when it matches the
-field being decoded, this cause issues to decode the second field in a
-complementary field pair.
-
-Fix this by using inclusive comparison, less than or equal.
+Ensure decoded CAPTURE buffer resolution is larger or equal to the coded
+OUTPUT buffer resolution.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
 ---
- drivers/staging/media/rkvdec/rkvdec-h264.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/media/rkvdec/rkvdec.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index f081b476340f..60eaf06b6e25 100644
---- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-+++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -781,7 +781,7 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
- 			continue;
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index e3d44d5b35f3..2bc4b1a40989 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -257,6 +257,8 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+ 		pix_mp->pixelformat = coded_desc->decoded_fmts[0];
  
- 		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM ||
--		    dpb[i].frame_num < dec_params->frame_num) {
-+		    dpb[i].frame_num <= dec_params->frame_num) {
- 			p[i] = dpb[i].frame_num;
- 			continue;
- 		}
+ 	/* Always apply the frmsize constraint of the coded end. */
++	pix_mp->width = max(pix_mp->width, ctx->coded_fmt.fmt.pix_mp.width);
++	pix_mp->height = max(pix_mp->height, ctx->coded_fmt.fmt.pix_mp.height);
+ 	v4l2_apply_frmsize_constraints(&pix_mp->width,
+ 				       &pix_mp->height,
+ 				       &coded_desc->frmsize);
 -- 
 2.34.1
 
