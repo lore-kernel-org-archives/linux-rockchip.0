@@ -4,79 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A09EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Apr 2022 18:41:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45B7EC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Apr 2022 20:45:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eoxgJPlcOJG+6dVTH+AOlQAfd1/nLBd4wkIe0HREgY0=; b=s671lLzv0RWV9T
-	2oPn4zg8dmEpFJvdWVWYKKdc02QVA5NDCH9MmsFRlTGJHQsg/+75+0WrixbT1+9H6NzXkywVmLKpr
-	MoyMFhd8w/f7p6X7gQH077JfA2XEGkAKzwnq5HEKRZ9uksls/sx7MyuVENBbWxyBIroi+omUvHdMP
-	Uby+sYslgl6TKRe95zGGd9XLUYDnVki5cRRWNi68zG2kuh+HzTW7dNBscC+qknOfE5ZS2wghNH0zj
-	wEX7qJrnP4Ngbd5fvOjsuAwwjhXMpzz4az/xwBCuPI9VRbRlcCmLRn6pb5+wV4065L0X8rPJV8YgB
-	UwHnp8qf49qkOUQ67i8g==;
+	List-Owner; bh=65e3e0TEfmaWy+/yj+k9Tm5AG+qCaUQbi4ED/K4KRdc=; b=feFNNnD0m4jv9Z
+	ZIhYeCvd5totGSTSTYeqnGiCORlmy8iD4KrslrKoVzPGePpOblrGDFW7T/4NxtV0WmKKGcOoyDTt6
+	EYGGV8biFt2AvTLF7jkK5z5/M1OinzUEeWtHHl2zccfCuVXq6cZuipf9HdfHd90wv/5Lp2RS7Vs50
+	O9iIVRS37eNnoWulxEMDWqvWJ/t7XuCA9sbuwNAuiWQf3pjKWDcEFDQdTbpJSuFfXOJzy0AI/OwP2
+	2OedY10ccxcYoBUh3pZj3Pgm7dsaLWrphJ3EZx/Artb0HiM5QSR2UMUQwrfTO/5ZfSiZbIGb3qT0q
+	bn4QbZymVhFjGOTb7eyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbo7O-002EuF-T8; Tue, 05 Apr 2022 18:41:30 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1nbq30-002d4f-PW; Tue, 05 Apr 2022 20:45:06 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbo7L-002Esl-Ni; Tue, 05 Apr 2022 18:41:29 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id b24so15936712edu.10;
- Tue, 05 Apr 2022 11:41:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=m8+gZUwdiEE5qvl2VnmW6rVS2LU3YP93jBijbUtmgIU=;
- b=XYbsuW/9J3w3AJ5TIXJONDZppci86m75YL2FDgn0BaMCRRL3EXnp4ebuaOd1zQIy0u
- XLnuET7H+rFD/Ge1BZsJmxmLwTUc/fEkgd9s71790cxoRZRMM9rqpIbga772wTCLoc2W
- QlfVKF9CjwpkoJ7CvrAUQdS1nyxawahdgwr1MOw4b6QC7D83s62JBwP+7IdTAjZ1KyD9
- I4zOGbI8xhi7aHYcAeKU3T7PRfBICAw0yN2UUOMNk5Cvdd17gHRT/NAa82rOWg+AUVh9
- GxoGY0GayTi7hetZuDPDQcxFwi45JPJUAMgSiHDW2ERr9LYChHTYTzbDFGEwF2u9iZBF
- s0PQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=m8+gZUwdiEE5qvl2VnmW6rVS2LU3YP93jBijbUtmgIU=;
- b=vOKlTmUeVA13X8ToKsu+/73olWWD0sxiOfJck+GPY1djgKRlehEgXDkxLzIj/SvFo7
- DPYV8lS/cXwbtSIokivoUJcpGEYeV665mtHmYAU3D/Y4PrBlD0RxNIUnGdYajw3H8JCY
- Dl5OG6XuyUe+gG1qJmVYcRB77omT9wWgn3QKd4kzhkOHyfphcXY8qhD6cBCYD7Iuggut
- n0HQyLDYdjYUbWAJcVNGtBo0g7+4yLchtElQiOWh11wOEyCHai86gQ8yOyDSmLPTfwak
- esbirbkptbX09nbzlyjqm9y5kS/iybGhpKxMYbKTYaVw7tthyPtYLSO6fXT6v347kzkK
- 5lqQ==
-X-Gm-Message-State: AOAM533iRWlXAL6ByxolzKMZ48c4Zy83d6ls3qTXPCYSmzICOUWt26Bv
- 0XTsHgnl78gdjapDx7c0mjI=
-X-Google-Smtp-Source: ABdhPJz/BDSth3cyv5w1yUkWvK/7raS2HQuG5NyF9YhgGRBDVIEl5pHryGirWcHzIO89O4eDdGT19g==
-X-Received: by 2002:a05:6402:b3a:b0:41c:dcf9:ca65 with SMTP id
- bo26-20020a0564020b3a00b0041cdcf9ca65mr4980860edb.208.1649184084319; 
- Tue, 05 Apr 2022 11:41:24 -0700 (PDT)
-Received: from jernej-laptop.localnet (cpe-86-58-32-107.static.triera.net.
- [86.58.32.107]) by smtp.gmail.com with ESMTPSA id
- o21-20020a170906289500b006d144662b24sm5730375ejd.152.2022.04.05.11.41.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Apr 2022 11:41:24 -0700 (PDT)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, nicolas@ndufresne.ca, hverkuil-cisco@xs4all.nl,
- gregkh@linuxfoundation.org, wens@csie.org, samuel@sholland.org,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: Re: [RFC PATCH 3/8] media: hantro: Support format filtering by depth
-Date: Tue, 05 Apr 2022 20:41:22 +0200
-Message-ID: <4699374.GXAFRqVoOG@jernej-laptop>
-In-Reply-To: <7972feba-221c-9960-68d0-ee15ad2a4f1a@collabora.com>
-References: <20220227144926.3006585-1-jernej.skrabec@gmail.com>
- <20220227144926.3006585-4-jernej.skrabec@gmail.com>
- <7972feba-221c-9960-68d0-ee15ad2a4f1a@collabora.com>
+ id 1nbq2v-002d1Q-V0
+ for linux-rockchip@lists.infradead.org; Tue, 05 Apr 2022 20:45:03 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nicolas) with ESMTPSA id 6DE231F4483B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649191500;
+ bh=8oDcE7AuYklwa6l0DYob/jQnR/CVHnofWCWQW3y5gNM=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=DeZjdI7imYZZvg+kDC9pPL5dARx83mv65wa5gmDuf9DQMxc84BSLeXsvjKegBDTEG
+ QxDtbC7egcV8QQKplljF4VoJ48UeaFvL6qeYM2UwGF4RtA9iybZkC1BvpSBDZdinR8
+ XxhklC8SPZdW0mJ8roUeqszepUv4NLbJAoyUtWfjfFP2x2WiV/DvXCmF5x8lkF+Mqi
+ JGQtSRra6PkqVtB3wI/QaJsCcRCziJg+Z+MWX6gMs7O5Of5xgTwg6MakmbmtSRFRNv
+ GqK7eR6CPoHbDtM8mPIih6JGxLihDTd0T+yEh5l0yphROBYovOiL0BUYmP696QUvoo
+ MgKhyNr2bBJww==
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
+ Sebastian Fricke <sebastian.fricke@collabora.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev
+Subject: [PATCH v3 12/24] media: rkvdec: Stop overclocking the decoder
+Date: Tue,  5 Apr 2022 16:44:13 -0400
+Message-Id: <20220405204426.259074-13-nicolas.dufresne@collabora.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220405204426.259074-1-nicolas.dufresne@collabora.com>
+References: <20220405204426.259074-1-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_114127_834052_63D9E6C5 
-X-CRM114-Status: GOOD (  26.52  )
+X-CRM114-CacheID: sfid-20220405_134502_172760_BDDBD6EB 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,291 +70,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Dne torek, 05. april 2022 ob 18:09:03 CEST je Benjamin Gaignard napisal(a):
-> Le 27/02/2022 =E0 15:49, Jernej Skrabec a =E9crit :
-> > In preparation for supporting 10-bit formats, add mechanism which will
-> > filter formats based on pixel depth.
-> > =
-
-> > Hantro G2 supports only one decoding format natively and that is based
-> > on bit depth of current video frame. Additionally, it makes no sense to
-> > upconvert bitness, so filter those out too.
-> > =
-
-> > Signed-off-by: Jernej Skrabec <jernej.skrabec@gmail.com>
-> > ---
-> > =
-
-> >   drivers/staging/media/hantro/hantro.h      |  4 ++
-> >   drivers/staging/media/hantro/hantro_v4l2.c | 48 ++++++++++++++++++++--
-> >   drivers/staging/media/hantro/hantro_v4l2.h |  1 +
-> >   3 files changed, 50 insertions(+), 3 deletions(-)
-> > =
-
-> > diff --git a/drivers/staging/media/hantro/hantro.h
-> > b/drivers/staging/media/hantro/hantro.h index 06d0f3597694..c6525ee8d89a
-> > 100644
-> > --- a/drivers/staging/media/hantro/hantro.h
-> > +++ b/drivers/staging/media/hantro/hantro.h
-> > @@ -227,6 +227,7 @@ struct hantro_dev {
-> > =
-
-> >    *
-> >    * @ctrl_handler:	Control handler used to register controls.
-> >    * @jpeg_quality:	User-specified JPEG compression quality.
-> > =
-
-> > + * @bit_depth:		Bit depth of current frame
-> > =
-
-> >    *
-> >    * @codec_ops:		Set of operations related to codec mode.
-> >    * @postproc:		Post-processing context.
-> > =
-
-> > @@ -252,6 +253,7 @@ struct hantro_ctx {
-> > =
-
-> >   	struct v4l2_ctrl_handler ctrl_handler;
-> >   	int jpeg_quality;
-> > =
-
-> > +	int bit_depth;
-> > =
-
-> >   	const struct hantro_codec_ops *codec_ops;
-> >   	struct hantro_postproc_ctx postproc;
-> > =
-
-> > @@ -278,6 +280,7 @@ struct hantro_ctx {
-> > =
-
-> >    * @enc_fmt:	Format identifier for encoder registers.
-> >    * @frmsize:	Supported range of frame sizes (only for bitstream
-> >    formats).
-> >    * @postprocessed: Indicates if this format needs the post-processor.
-> > =
-
-> > + * @match_depth: Indicates if format bit depth must match video bit de=
-pth
-> > =
-
-> >    */
-> >   =
-
-> >   struct hantro_fmt {
-> >   =
-
-> >   	char *name;
-> > =
-
-> > @@ -288,6 +291,7 @@ struct hantro_fmt {
-> > =
-
-> >   	enum hantro_enc_fmt enc_fmt;
-> >   	struct v4l2_frmsize_stepwise frmsize;
-> >   	bool postprocessed;
-> > =
-
-> > +	bool match_depth;
-> > =
-
-> >   };
-> >   =
-
-> >   struct hantro_reg {
-> > =
-
-> > diff --git a/drivers/staging/media/hantro/hantro_v4l2.c
-> > b/drivers/staging/media/hantro/hantro_v4l2.c index
-> > e595905b3bd7..1214fa2f64ae 100644
-> > --- a/drivers/staging/media/hantro/hantro_v4l2.c
-> > +++ b/drivers/staging/media/hantro/hantro_v4l2.c
-> > @@ -64,6 +64,42 @@ hantro_get_postproc_formats(const struct hantro_ctx
-> > *ctx,> =
-
-> >   	return ctx->dev->variant->postproc_fmts;
-> >   =
-
-> >   }
-> > =
-
-> > +int hantro_get_formath_depth(u32 fourcc)
-> =
-
-> Just a typo here:
-> =
-
-> s/hantro_get_formath_depth -> hantro_get_format_depth
-
-Good catch! I'll fix it in new series.
-
-Best regards,
-Jernej
-
-> =
-
-> regards
-> Benjamin
-> =
-
-> > +{
-> > +	switch (fourcc) {
-> > +	case V4L2_PIX_FMT_P010:
-> > +	case V4L2_PIX_FMT_P010_4L4:
-> > +		return 10;
-> > +	default:
-> > +		return 8;
-> > +	}
-> > +}
-> > +
-> > +static bool
-> > +hantro_check_depth_match(const struct hantro_ctx *ctx,
-> > +			 const struct hantro_fmt *fmt)
-> > +{
-> > +	int fmt_depth, ctx_depth =3D 8;
-> > +
-> > +	if (!fmt->match_depth && !fmt->postprocessed)
-> > +		return true;
-> > +
-> > +	/* 0 means default depth, which is 8 */
-> > +	if (ctx->bit_depth)
-> > +		ctx_depth =3D ctx->bit_depth;
-> > +
-> > +	fmt_depth =3D hantro_get_formath_depth(fmt->fourcc);
-> > +
-> > +	/*
-> > +	 * Allow only downconversion for postproc formats for now.
-> > +	 * It may be possible to relax that on some HW.
-> > +	 */
-> > +	if (!fmt->match_depth)
-> > +		return fmt_depth <=3D ctx_depth;
-> > +
-> > +	return fmt_depth =3D=3D ctx_depth;
-> > +}
-> > +
-> > =
-
-> >   static const struct hantro_fmt *
-> >   hantro_find_format(const struct hantro_ctx *ctx, u32 fourcc)
-> >   {
-> > =
-
-> > @@ -91,7 +127,8 @@ hantro_get_default_fmt(const struct hantro_ctx *ctx,
-> > bool bitstream)> =
-
-> >   	formats =3D hantro_get_formats(ctx, &num_fmts);
-> >   	for (i =3D 0; i < num_fmts; i++) {
-> >   	=
-
-> >   		if (bitstream =3D=3D (formats[i].codec_mode !=3D
-> > =
-
-> > -				  HANTRO_MODE_NONE))
-> > +				  HANTRO_MODE_NONE) &&
-> > +		    hantro_check_depth_match(ctx, &formats[i]))
-> > =
-
-> >   			return &formats[i];
-> >   	=
-
-> >   	}
-> >   	return NULL;
-> > =
-
-> > @@ -163,11 +200,13 @@ static int vidioc_enum_fmt(struct file *file, void
-> > *priv,> =
-
-> >   	formats =3D hantro_get_formats(ctx, &num_fmts);
-> >   	for (i =3D 0; i < num_fmts; i++) {
-> >   	=
-
-> >   		bool mode_none =3D formats[i].codec_mode =3D=3D =
-
-HANTRO_MODE_NONE;
-> > =
-
-> > +		fmt =3D &formats[i];
-> > =
-
-> >   		if (skip_mode_none =3D=3D mode_none)
-> >   		=
-
-> >   			continue;
-> > =
-
-> > +		if (!hantro_check_depth_match(ctx, fmt))
-> > +			continue;
-> > =
-
-> >   		if (j =3D=3D f->index) {
-> > =
-
-> > -			fmt =3D &formats[i];
-> > =
-
-> >   			f->pixelformat =3D fmt->fourcc;
-> >   			return 0;
-> >   		=
-
-> >   		}
-> > =
-
-> > @@ -183,8 +222,11 @@ static int vidioc_enum_fmt(struct file *file, void
-> > *priv,> =
-
-> >   		return -EINVAL;
-> >   	=
-
-> >   	formats =3D hantro_get_postproc_formats(ctx, &num_fmts);
-> >   	for (i =3D 0; i < num_fmts; i++) {
-> > =
-
-> > +		fmt =3D &formats[i];
-> > +
-> > +		if (!hantro_check_depth_match(ctx, fmt))
-> > +			continue;
-> > =
-
-> >   		if (j =3D=3D f->index) {
-> > =
-
-> > -			fmt =3D &formats[i];
-> > =
-
-> >   			f->pixelformat =3D fmt->fourcc;
-> >   			return 0;
-> >   		=
-
-> >   		}
-> > =
-
-> > diff --git a/drivers/staging/media/hantro/hantro_v4l2.h
-> > b/drivers/staging/media/hantro/hantro_v4l2.h index
-> > 18bc682c8556..f4a5905ed518 100644
-> > --- a/drivers/staging/media/hantro/hantro_v4l2.h
-> > +++ b/drivers/staging/media/hantro/hantro_v4l2.h
-> > @@ -22,5 +22,6 @@ extern const struct v4l2_ioctl_ops hantro_ioctl_ops;
-> > =
-
-> >   extern const struct vb2_ops hantro_queue_ops;
-> >   =
-
-> >   void hantro_reset_fmts(struct hantro_ctx *ctx);
-> > =
-
-> > +int hantro_get_formath_depth(u32 fourcc);
-> > =
-
-> >   #endif /* HANTRO_V4L2_H_ */
-
-
-
+While this overclock hack seems to work on some implementations
+(some ChromeBooks, RockPi4) it also causes instability on other
+implementations (notably LibreComputer Renegade, but there were more
+reports in the LibreELEC project, where this has been removed). While
+performance is indeed affected (tested with GStreamer), 4K playback
+still works as long as you don't operate in lock step and keep at
+least 1 frame ahead of time in the decode queue.
+
+After discussion with ChromeOS members, it would seem that their
+implementation indeed used to synchronously decode each frames, so
+this hack was simply compensating for their code being less
+efficient. In my opinion, this hack should not have been included
+upstream.
+
+Fixes: cd33c830448ba ("media: rkvdec: Add the rkvdec driver")
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+---
+ drivers/staging/media/rkvdec/rkvdec.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index c0cf3488f970..2df8cf4883e2 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -1027,12 +1027,6 @@ static int rkvdec_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
+ 
+-	/*
+-	 * Bump ACLK to max. possible freq. (500 MHz) to improve performance
+-	 * When 4k video playback.
+-	 */
+-	clk_set_rate(rkvdec->clocks[0].clk, 500 * 1000 * 1000);
+-
+ 	rkvdec->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(rkvdec->regs))
+ 		return PTR_ERR(rkvdec->regs);
+-- 
+2.34.1
 
 
 _______________________________________________
