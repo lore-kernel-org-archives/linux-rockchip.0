@@ -4,81 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3B64C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Apr 2022 05:18:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ADFAC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Apr 2022 06:54:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1DPojYiJuiDNj6RD0pKTyxZIr18VKdCs4Fam+7ezAro=; b=bNMsMXfcDZLrBa
-	Vl5une1YrCXymeEl0R6kVNTL/BTGBrx+xTQviiruDBQRahgDL0Cuf1bHwvtwnHYTyfayveYbzoKD1
-	o3EVOv0uyxS2eNF7NJjvd2LSC7E3lnxey/2f68h5t1x+ejmJkrDN7ylWuGDwg+GKb25Pv8ygSDl9f
-	0hheL0LqJJU4OjbCsU53GV4J6xeQLWsMBHXmRVUO3gjrAhEhqGyS8YhLiM1ldvrHsoQO1PWMYVSV6
-	F8qVyK9tZ09CysAhRt4ILfWtZ7KoLDTKSUJlatAlw+5ljFCjyqPsqeHtUpO/y4sYny6mmsmrYBWJe
-	OX60jkiZP/X+c5IupcJw==;
+	List-Owner; bh=GKDtuCn7O1/eluJecYfGibgRQODZc3uidbFFgIaJwLM=; b=eDDpiFCpi5CDRa
+	OPHOhJYXarmz4PEMI92uWXUsWUhExl5Z+r6WVZqLQIjDp3cPbNLAJfprqFrOA7sv7z8uC8uDRbw4O
+	j1yrZBMkwrRLTfOlLXpShOKK1OHgXjuMCeNXaMh0FXO/ZlUm0GdR9tDDjRnUsPyMENL0CJZZYryv4
+	B3w3jKzX1kta67MldF5lGRD9jHo0XAk7+WzUlSTaVar9nBMCMVsXL7MFbI0Kcj9KJ1RuJvhlhYsIr
+	FfZEfsSNFN6Ts40o4XX1rLIEhESqJb/2NwFkTFWlvnZ1kJD5pU3MHwwmTsazznVmP14I1n4O/FqJc
+	BbsOVqHeN7F/FLm/HAHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nby3L-003nze-Dw; Wed, 06 Apr 2022 05:17:59 +0000
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+	id 1nbzYe-004IDC-Dy; Wed, 06 Apr 2022 06:54:24 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nby3J-003nyd-1S
- for linux-rockchip@lists.infradead.org; Wed, 06 Apr 2022 05:17:58 +0000
-Received: by mail-oi1-x22a.google.com with SMTP id i7so1337042oie.7
- for <linux-rockchip@lists.infradead.org>; Tue, 05 Apr 2022 22:17:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=EaYNgx8KbJOaAquzTTA9wZHzyzdVTdSankAvb1CZzyQ=;
- b=x5n6cdCJEE/VCj3mLhng1qEaAEHHuW6CnLjYyMKJ8C5R5ZP0Q7JKSOAngNXZvEssT6
- qYwF0nXkMrFHlG642wUJQ96R8zpKlbaA/iAu1W8vgASVZWN7754Y3hfqO2OLH7MlHlKO
- ME6PI4A7vIvIay1Q1f8uJsQT4BK9tIPX8xmd/ugQJKSMeeEZPAKla6chmuZzSlbn/t7P
- mGKdo/EHI/X1JEU3CvMq6WouABaUMJBGUExshvChDadmSyo+WH+DcM5YIqYJa+roV5UP
- F0HGy42FpfZK4jAnq9YXXQQ5XGQc9/lIKTTMJwH4O9fdpI4TOuVX59WoOrmEpLxIWeL0
- B4Ig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=EaYNgx8KbJOaAquzTTA9wZHzyzdVTdSankAvb1CZzyQ=;
- b=V+M0rdt8A7DPXHhEndlALDZ1dQADQU72qOyKXduB6HnS8KUw6401UcksSSKEKJl1Cx
- 4R/ZWjyaI1U+oBliCOsEEDFCjE4hRRdvDJKjl4rZND0XwInGJkwNB6CfvLPrkidWv554
- gdCwXH6SYuByzbhXdOwQk/M8BJwVgD0xHjSWyTy+n89Ai2wInw/VH6YvG10DAPJpLFEP
- DvCxcmI38l1xLKEHMolIdUnct8eyqCyALeHmNgfNjzY/0DPHE71PWC90sSqbY+be3M/7
- A8Q9rqn8IizwwrkcnOZPck2aKSrVeZydXr3Xgj1VDG9QV4OJMgbVM+bi7NsEOnc8659p
- FUFw==
-X-Gm-Message-State: AOAM530Tl/wpQpHT4cZYwtHkNuElZYGX7C0BFi+eC9xBruP9j0Z0uMWF
- cNzgZxE2XUWKDXY9El6rEeZXIw==
-X-Google-Smtp-Source: ABdhPJznshMWCCRKhfXQIHf+0aM9ZllfI4xIqhhI3AR7UIbt17C0rKLn8MOFpYfzpZrwKU3Nu8zULQ==
-X-Received: by 2002:aca:f286:0:b0:2da:58ba:c578 with SMTP id
- q128-20020acaf286000000b002da58bac578mr2846902oih.127.1649222274622; 
- Tue, 05 Apr 2022 22:17:54 -0700 (PDT)
-Received: from eze-laptop ([2803:9800:98c2:8470:9f4:8e2a:88e5:ec01])
- by smtp.gmail.com with ESMTPSA id
- gk6-20020a0568703c0600b000de4880b357sm6038605oab.50.2022.04.05.22.17.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Apr 2022 22:17:53 -0700 (PDT)
-Date: Wed, 6 Apr 2022 02:17:48 -0300
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- kernel@collabora.com, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev
-Subject: Re: [PATCH v3 15/24] media: rkvdec: Move H264 SPS validation in
- rkvdec-h264
-Message-ID: <Yk0ifIfQmk9n5vyu@eze-laptop>
-References: <20220405204426.259074-1-nicolas.dufresne@collabora.com>
- <20220405204426.259074-16-nicolas.dufresne@collabora.com>
+ id 1nbzYS-004I7k-90; Wed, 06 Apr 2022 06:54:14 +0000
+Received: from [IPV6:2a01:e0a:120:3210:ff63:de1f:2a77:5241] (unknown
+ [IPv6:2a01:e0a:120:3210:ff63:de1f:2a77:5241])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 8091E1F44519;
+ Wed,  6 Apr 2022 07:54:09 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1649228050;
+ bh=tqnMuI8tFUvTxaTXTOvtQ2qzTn9cKLNn18CehTYmq8w=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=hpbelg9ITQRa7aKF8ZvmRAihh+Xif2IZ1f80s4ReZW/+hjfUjbf6YDv0q+uTSAAyU
+ +hp+8WaicFUXLVxHALbFU932x/O6gAmvj2w3STI3dwKIPTyEQbU63eAFAijijUcX5a
+ 7QQB0Ed4hvVe1vByawUjFE1muivhK0HdFyqeMdjcToNxpvOg5X90+fExd/Atfomwox
+ XZS4lRr3b+/3cIbpuJgdJqsqjK55zAYRosi7aupAcwRd/Yluf91gLoLCkZzmWhfLeK
+ P00ix/kzuCyg8he3Oxjp8uUq1LYP4VLO5WrBtyecAbkLYNBxowyjPZXPkQXSvLTRWR
+ g/RXf+JtfVQaw==
+Message-ID: <bf938b83-2b57-95b3-4bcb-f967bbb46413@collabora.com>
+Date: Wed, 6 Apr 2022 08:54:07 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220405204426.259074-16-nicolas.dufresne@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [RFC PATCH 0/8] media: hantro: Add 10-bit support
+Content-Language: en-US
+To: =?UTF-8?Q?Jernej_=c5=a0krabec?= <jernej.skrabec@gmail.com>,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de
+Cc: mchehab@kernel.org, nicolas@ndufresne.ca, hverkuil-cisco@xs4all.nl,
+ gregkh@linuxfoundation.org, wens@csie.org, samuel@sholland.org,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev
+References: <20220227144926.3006585-1-jernej.skrabec@gmail.com>
+ <b6987a9a-56af-f63f-b60a-37df141d6e89@collabora.com>
+ <4386971.LvFx2qVVIh@jernej-laptop>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <4386971.LvFx2qVVIh@jernej-laptop>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_221757_481032_AE1E6B24 
-X-CRM114-Status: GOOD (  24.38  )
+X-CRM114-CacheID: sfid-20220405_235412_484920_9A594E2C 
+X-CRM114-Status: GOOD (  18.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,114 +75,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 05, 2022 at 04:44:16PM -0400, Nicolas Dufresne wrote:
-> No function change, this moves H264 specific validation into the H264
-> specific code. This is in preparation of improving this validation and
-> reusing at streamone.
-> 
-> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-
-> ---
->  drivers/staging/media/rkvdec/rkvdec-h264.c | 23 ++++++++++++++++++++++
->  drivers/staging/media/rkvdec/rkvdec.c      | 23 ++++++----------------
->  drivers/staging/media/rkvdec/rkvdec.h      |  1 +
->  3 files changed, 30 insertions(+), 17 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-> index 8d44a884a52e..0dcbcb1bac80 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-> +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-> @@ -1137,9 +1137,32 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
->  	return 0;
->  }
->  
-> +static int rkvdec_h264_try_ctrl(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl)
-> +{
-> +	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
-> +		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
-> +		/*
-> +		 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
-> +		 * but it's currently broken in the driver.
-> +		 * Reject them for now, until it's fixed.
-> +		 */
-> +		if (sps->chroma_format_idc > 1)
-> +			/* Only 4:0:0 and 4:2:0 are supported */
-> +			return -EINVAL;
-> +		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
-> +			/* Luma and chroma bit depth mismatch */
-> +			return -EINVAL;
-> +		if (sps->bit_depth_luma_minus8 != 0)
-> +			/* Only 8-bit is supported */
-> +			return -EINVAL;
-> +	}
-> +	return 0;
-> +}
-> +
->  const struct rkvdec_coded_fmt_ops rkvdec_h264_fmt_ops = {
->  	.adjust_fmt = rkvdec_h264_adjust_fmt,
->  	.start = rkvdec_h264_start,
->  	.stop = rkvdec_h264_stop,
->  	.run = rkvdec_h264_run,
-> +	.try_ctrl = rkvdec_h264_try_ctrl,
->  };
-> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-> index 2df8cf4883e2..e3d44d5b35f3 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec.c
-> +++ b/drivers/staging/media/rkvdec/rkvdec.c
-> @@ -29,23 +29,12 @@
->  
->  static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
->  {
-> -	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
-> -		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
-> -		/*
-> -		 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
-> -		 * but it's currently broken in the driver.
-> -		 * Reject them for now, until it's fixed.
-> -		 */
-> -		if (sps->chroma_format_idc > 1)
-> -			/* Only 4:0:0 and 4:2:0 are supported */
-> -			return -EINVAL;
-> -		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
-> -			/* Luma and chroma bit depth mismatch */
-> -			return -EINVAL;
-> -		if (sps->bit_depth_luma_minus8 != 0)
-> -			/* Only 8-bit is supported */
-> -			return -EINVAL;
-> -	}
-> +	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
-> +	const struct rkvdec_coded_fmt_desc *desc = ctx->coded_fmt_desc;
-> +
-> +	if (desc->ops->try_ctrl)
-> +		return desc->ops->try_ctrl(ctx, ctrl);
-> +
->  	return 0;
->  }
->  
-> diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
-> index 2f4ea1786b93..9df0fba799a4 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec.h
-> +++ b/drivers/staging/media/rkvdec/rkvdec.h
-> @@ -72,6 +72,7 @@ struct rkvdec_coded_fmt_ops {
->  	void (*done)(struct rkvdec_ctx *ctx, struct vb2_v4l2_buffer *src_buf,
->  		     struct vb2_v4l2_buffer *dst_buf,
->  		     enum vb2_buffer_state result);
-> +	int (*try_ctrl)(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl);
->  };
->  
->  struct rkvdec_coded_fmt_desc {
-> -- 
-> 2.34.1
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDA1LzA0LzIwMjIgw6AgMjA6NDAsIEplcm5laiDFoGtyYWJlYyBhIMOpY3JpdMKgOgo+IEhp
+IEJlbmphbWluIQo+Cj4gRG5lIHRvcmVrLCAwNS4gYXByaWwgMjAyMiBvYiAxODowNzo0MSBDRVNU
+IGplIEJlbmphbWluIEdhaWduYXJkIG5hcGlzYWwoYSk6Cj4+IExlIDI3LzAyLzIwMjIgw6AgMTU6
+NDksIEplcm5laiBTa3JhYmVjIGEgw6ljcml0IDoKPj4+IEZpcnN0IHR3byBwYXRjaGVzIGFkZCAx
+MC1iaXQgZm9ybWF0cyB0byBVQVBJLCB0aGlyZCBleHRlbmRzIGZpbHRlcmluZwo+Pj4gbWVjaGFu
+aXNtLCBmb3VydGggZml4ZXMgaW5jb3JyZWN0IGFzc3VtcHRpb24sIGZpZnRoIG1vdmVzIHJlZ2lz
+dGVyCj4+PiBjb25maWd1cmF0aW9uIGNvZGUgdG8gcHJvcGVyIHBsYWNlLCBzaXh0aCBhbmQgc2V2
+ZW50aCBlbmFibGUgMTAtYml0Cj4+PiBWUDkgZGVjb2Rpbmcgb24gQWxsd2lubmVyIEg2IGFuZCBs
+YXN0IGluY3JlYXNlcyBjb3JlIGZyZXF1ZW5jeSBvbgo+Pj4gQWxsd2lubmVyIEg2Lgo+Pj4KPj4+
+IEknbSBzZW5kaW5nIHRoaXMgYXMgUkZDIHRvIGdldCBzb21lIGNvbW1lbnRzOgo+Pj4gMS4gZm9y
+bWF0IGRlZmluaXRpb25zIC0gYXJlIGZvdXJjYydzIG9rPyBhcmUgY29tbWVudHMvZGVzY3JpcHRp
+b25zIG9rPwo+Pj4gMi4gaXMgZXh0ZW5kZWQgZmlsdGVyaW5nIG1lY2hhbmlzbSBvaz8KPj4+Cj4+
+PiBJIHdvdWxkIGFsc28gbGlrZSBpZiB0aGVzZSBwYXRjaGVzIGFyZSB0ZXN0ZWQgb24gc29tZSBt
+b3JlIEhXLgo+Pj4gQWRkaXRpb25hbGx5LCBjYW4gc29tZW9uZSB0ZXN0IHRpbGVkIFAwMTA/Cj4+
+Pgo+Pj4gUGxlYXNlIHRha2UgYSBsb29rLgo+PiBIaSBKZXJuZWosCj4+Cj4+IEkgaGF2ZSBjcmVh
+dGUgYSBicmFuY2ggdG8gdGVzdCB0aGlzIHNlcmllcyB3aXRoIFZQOSBhbmQgSEVWQzoKPj4gaHR0
+cHM6Ly9naXRsYWIuY29sbGFib3JhLmNvbS9iZW5qYW1pbi5nYWlnbmFyZC9mb3ItdXBzdHJlYW0v
+LS90cmVlLzEwYml0X2lteAo+PiA4bSBGZWVsIGZyZWUgdG8gcGljayB3aGF0IEkgbWF5IG5lZWQg
+aW4gaXQuCj4+Cj4+IFRoYXQgZG9lc24ndCBpbXByb3ZlIGZsdXN0ZXIgc2NvcmVzLCBJIHRoaW5r
+IG1vcmUgZGV2IGFyZSBzdGlsbCBuZWVkZWQgaW4KPj4gR1NUIGJlZm9yZSBnZXR0aW5nIHNvbWV0
+aGluZyBmdWxseSBmdW5jdGlvbmFsLgo+PiBBbnl3YXkgSSBhYmxlIHRvIHNlbGVjdCBQMDEwIHBp
+eGVsIGZvcm1hdCBpZiB0aGUgaW5wdXQgaXMgYSAxMGJpdCBiaXRzdHJlYW0uCj4gV2hhdCBraW5k
+IG9mIGltcHJvdmVtZW50cyBkbyB5b3UgZXhwZWN0PyBBY3R1YWxseSwgdGhpcyBzZXJpZXMgaXMg
+ZGVzaWduZWQgdG8KPiBjaGFuZ2Ugbm90aGluZyBmb3IgcGxhdGZvcm1zLCB3aGVyZSAxMC1iaXQg
+Zm9ybWF0IGlzIG5vdCBhZGRlZCBpbnRvIHRoZSBsaXN0Cj4gb2Ygc3VwcG9ydGVkIGZvcm1hdHMu
+IEkgdGhpbmsgcmVhc29ucyBhcmUgcXVpdGUgb2J2aW91cy4gRmlyc3QsIG5vdCBldmVyeQo+IGRl
+dmljZSBtYXkgc3VwcG9ydCAxMC1iaXQgb3V0cHV0LiBTZWNvbmQsIGFzIHlvdSBtaWdodCBhbHJl
+YWR5IGZpZ3VyZWQgaXQgb3V0LAo+IHJlZ2lzdGVycyBpbiB0aGlzIHNlcmllcyBhcmUgc2V0IG9u
+bHkgZm9yIGxlZ2FjeSBjb3Jlcy4gSSBoYXZlIG5vIGlkZWEsIHdoYXQKPiBuZWVkcyB0byBiZSBk
+b25lIGZvciBuZXdlciBvbmVzLCBzaW5jZSBJIGRvbid0IGhhdmUgdGhlbS4gQW55d2F5LCBJIHRl
+c3RlZAo+IHRoaXMgd2l0aCBmbHVzdGVyIGFuZCBvbmx5IG9uZSBhZGRpdGlvbmFsIHRlc3QgcGFz
+c2VzLCBiZWNhdXNlIGl0IGlzIHRoZSBvbmx5Cj4gb25lIGZvciAxMC1iaXQgWVVWNDIwLgoKSW4g
+dGhpcyBzZXJpZXMgeW91IHdpbGwgZmluZCB0aGF0IEkgaGF2ZSBhZGRlZCB0aGUgcmVnaXN0ZXJz
+IGZvciB0aGUgbmV3IGNvcmVzLApmaXggaGV2YyB0byBiZSBhYmxlIHRvIHVzZSAxMC1iaXQsIGFu
+ZCBlbmFibGUgdGhhdCBpbiBJTVg4TS4KClJlZ2FyZHMsCkJlbmphbWluCgo+Cj4gQmVzdCByZWdh
+cmRzLAo+IEplcm5lago+Cj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
