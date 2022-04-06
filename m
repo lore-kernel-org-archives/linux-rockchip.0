@@ -4,57 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 705F7C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Apr 2022 13:11:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5EC0C43217
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Apr 2022 13:13:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eRu6La9NeO5NX4GliXFwL+taanJkdvfQMGZI1FM0cXQ=; b=z5xFEhQIon8lF0
-	/0SubwVHTpLLP87Ohr8Vlinh7chmeWlypYpP4zwsN3j0601L6NRiea12ir7dwuyocVwe9JXsp9jX6
-	wW7fZwzqH8Z5dZGFmesoI/yO7PzcYiu7DuJkOhc9paVdG3ORqHMDu06vsx/hjtkiJu8YgbaOsIWYo
-	p8dIBLdAyMt8S5PuHUUjvRoAbCwsr1QzdT4uvZ3e6xJQRJO98qG8VzGsM/c8myJQplnjCFbvlQKnX
-	b8W2cN5dxaSx71GJwtIiEfK0PuSdgJhz6j3/iqZ+Ek4ifZwOBb1U8v15JEQt5ZkrI1eEeuB6EGkI9
-	UD0r+FhlVbKTLfJY38Gg==;
+	List-Owner; bh=xNY2gcqzeSEtI/ZC7AlFYi4k1e8rhibKp3ZyX1yTYA8=; b=aHxzTF65IAX/nt
+	MOv9YEMCRzQ+ha1t7O00Ile/04Q6QuV1oAML1ekEWkbLEVPa/khKBU299iiHYpRqA90scFomeuESs
+	Q5R9yZOl3HC/BFuq9D6/hyku3j0A5XtrKzFXSZDc7J/WHfzQ9mCsV5b9QUIS2no+qsTzcrS14adLk
+	TLUlg0dts4b3+N9wwUQMqiGZysS/bOXEgujmUX9mb/xLBGnSZwSfu2aY1C5YdhXlZlm23IObQT+Ot
+	ax1wlnvYLWszSJovRRqqpT3SKCHmwFrxt55qhJRA0EkOp/axTv4jg6ezBUD5UIJL8+rhm0vBdSBcs
+	J41itZRl4PZUL7f8Duig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nc5RL-006DBC-O9; Wed, 06 Apr 2022 13:11:15 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1nc5T0-006DYE-Ui; Wed, 06 Apr 2022 13:12:58 +0000
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nc5RI-006DAR-OJ
- for linux-rockchip@lists.infradead.org; Wed, 06 Apr 2022 13:11:14 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nicolas) with ESMTPSA id BEA0F1F448EB
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649250670;
- bh=HVSLEwbeNCSnRDzdZpPEXUqj6thaF6OV8UOGSpYxWow=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=bnzTxJwSJGH38S+tVlH2/LWfpFQRa8MkqadrdJk7uV06gDjC0GlSM2NVRglux42NV
- tuxRCa1kNAg0oi4QNgrmt3IYCh2/qOF8EvGVHgUz9KJ7OZQrxhz8tLIcBqpOHtPdK7
- AThjvWR2o13f7jSoM64oPaZ/wtOQ0w9E0EEo9eabO3rE1lqwdYwviswIeWHTmaM3hz
- 0ILNcmyL3s1xG7U3BmjSefSwqfXyWkABUnvCvW7orNHgW2b70zHrMJOKvjaePD2BUZ
- q2ZPIOwElLBrjIdQCeb8q2t/YQZH1+ph7zP7t1dl6UKY7jpvx4BqDFaOhKdsw8Gr/4
- cUsebuoZ/K9pw==
-Message-ID: <d8a737d52aa93f559123ab795ba67c668c81163e.camel@collabora.com>
-Subject: Re: [PATCH v3 16/24] media: rkvdec: h264: Validate and use pic
- width and height in mbs
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, Jonas Karlman
- <jonas@kwiboo.se>, linux-media@vger.kernel.org, 
+ id 1nc5Sx-006DVi-Rm
+ for linux-rockchip@lists.infradead.org; Wed, 06 Apr 2022 13:12:57 +0000
+Received: by mail-ot1-x32a.google.com with SMTP id
+ o20-20020a9d7194000000b005cb20cf4f1bso1666633otj.7
+ for <linux-rockchip@lists.infradead.org>; Wed, 06 Apr 2022 06:12:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=s4UyoymKo0MiCMqo3D+Ez+F5rfIje+Ebwuy8rUwudOc=;
+ b=5AgWHpt/wFkkkhRVPiGRh2h5NWqz7wgeP6+v9hoeFWMimCKpOvsFJj/TJ1hH7xyr0s
+ mHCIbT5UCrP0c1G238A06Tm63Yx4XF5XpXtIEmsuagWRRg4kp9dhxP0EVmasUMY5KYl1
+ hNsMM8PO6ckRIPVFYodk/Dd53TQTCFKNjMBvdavRBFyplW1GGROcvUW/Ah0ERVsoK50F
+ O4Tx1iP/trhe7bJwoOzsPokuj1yAKbuDvlm4Up6eJjTvcFayUTnISLPemlEEteKjHo+S
+ xGjwj1CHR6VMGK2CXMk5mwLMm6+ZAzoxWEUpDOS+Fm3+mQK86lNpEltD3k+bpnHx2oYg
+ a41Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=s4UyoymKo0MiCMqo3D+Ez+F5rfIje+Ebwuy8rUwudOc=;
+ b=u3DpPTbWcpIKDbdOnlVRuvatMKuPXYYHs40rlNEOSGAOXmljm0RBgK+yYvctMb8A6t
+ 2kewmeDiq0H1Y5p13ZabGLCD3ppyL2sDUKyf3dg/TjV47VQROJLT5ptu/xZcJTSW8nPG
+ Y8baGrOlqt4cQMzcLUYuOA0du06PppNAeAtaB6ucsKQLAAXSbUHBld+Lsuee6jMh+J7l
+ j9+h0ugKBLjg93x8RcsRWQzZry0BBYdH99plGnoKVrS7vuqnaPFQ4Kjll673WBcAeYXm
+ Gqwf0o992thQfU5wsyVdAmaBL23+Owj5pBcUd+SLKndGbdfpsuiY4aoUsEZIjxAT4+K4
+ x+Lw==
+X-Gm-Message-State: AOAM531lr89ypd7sIMh9iX24LZuZqHKsMo9MwMiFp6w5/L7bS1MgLeEA
+ Q5DIvn2X+At7LCZJfvukupCDdw==
+X-Google-Smtp-Source: ABdhPJzjVmDCX/NGQsNm7peF0uT2TgG0ug/jXOoWpZ33ZfKWn24G5Q30lQrniT8uYl9jb0xZ58UTWQ==
+X-Received: by 2002:a05:6830:241d:b0:5ce:94f4:203a with SMTP id
+ j29-20020a056830241d00b005ce94f4203amr2900784ots.241.1649250773502; 
+ Wed, 06 Apr 2022 06:12:53 -0700 (PDT)
+Received: from eze-laptop ([2803:9800:98c2:8470:9f4:8e2a:88e5:ec01])
+ by smtp.gmail.com with ESMTPSA id
+ y18-20020a056871011200b000e1f5910d45sm3894141oab.7.2022.04.06.06.12.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 06 Apr 2022 06:12:52 -0700 (PDT)
+Date: Wed, 6 Apr 2022 10:12:47 -0300
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ kernel@collabora.com, linux-kernel@vger.kernel.org,
+ Jonas Karlman <jonas@kwiboo.se>, linux-media@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev
-Date: Wed, 06 Apr 2022 09:10:59 -0400
-In-Reply-To: <20220405204426.259074-17-nicolas.dufresne@collabora.com>
+Subject: Re: [PATCH v3 16/24] media: rkvdec: h264: Validate and use pic width
+ and height in mbs
+Message-ID: <Yk2Rzzpye8KUodmu@eze-laptop>
 References: <20220405204426.259074-1-nicolas.dufresne@collabora.com>
  <20220405204426.259074-17-nicolas.dufresne@collabora.com>
-User-Agent: Evolution 3.44.0 (3.44.0-1.fc36) 
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220405204426.259074-17-nicolas.dufresne@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_061113_096184_C861AE11 
-X-CRM114-Status: GOOD (  32.02  )
+X-CRM114-CacheID: sfid-20220406_061256_265734_4DDBEFDD 
+X-CRM114-Status: GOOD (  33.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,107 +92,151 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgbWFyZGkgMDUgYXZyaWwgMjAyMiDDoCAxNjo0NCAtMDQwMCwgTmljb2xhcyBEdWZyZXNuZSBh
-IMOpY3JpdMKgOgo+IEZyb206IEpvbmFzIEthcmxtYW4gPGpvbmFzQGt3aWJvby5zZT4KPiAKPiBU
-aGUgd2lkdGggYW5kIGhlaWdodCBpbiBtYWNyb2Jsb2NrcyBpcyBjdXJyZW50bHkgY29uZmlndXJl
-ZCBiYXNlZCBvbiBPVVRQVVQKPiBidWZmZXIgcmVzb2x1dGlvbiwgdGhpcyB3b3JrcyBmb3IgZnJh
-bWUgcGljdHVyZXMgYnV0IGNhbiBjYXVzZSBpc3N1ZXMgZm9yCj4gZmllbGQgcGljdHVyZXMuCj4g
-Cj4gV2hlbiBmcmFtZV9tYnNfb25seV9mbGFnIGlzIDAgdGhlIGhlaWdodCBpbiBtYnMgc2hvdWxk
-IGJlIGhlaWdodCBvZgo+IHRoZSBmaWVsZCBpbnN0ZWFkIG9mIGhlaWdodCBvZiBmcmFtZS4KPiAK
-PiBWYWxpZGF0ZSBwaWNfd2lkdGhfaW5fbWJzX21pbnVzMSBhbmQgcGljX2hlaWdodF9pbl9tYXBf
-dW5pdHNfbWludXMxCj4gYWdhaW5zdCBPVVRQVVQgYnVmZmVyIHJlc29sdXRpb24gYW5kIHVzZSB0
-aGVzZSB2YWx1ZXMgdG8gY29uZmlndXJlIEhXLgo+IFRoZSB2YWxpZGF0aW9uIGlzIGhhcHBlbmlu
-ZyBpbiBib3RoIHRyeV9jdHJ0KCkgYW5kIHN0YXJ0KCkgc2luY2UgaXQgaXMKPiBvdGhlcndpc2Ug
-cG9zc2libGUgdG8gdHJpY2sgdGhlIGRyaXZlciBkdXJpbmcgaW5pdGlhbGl6YXRpb24gYnkgY2hh
-bmdpbmcKPiB0aGUgT1VUUFVUIGZvcm1hdCBhZnRlciBoYXZpbmcgc2V0IGEgdmFsaWQgY29udHJv
-bC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKb25hcyBLYXJsbWFuIDxqb25hc0Brd2lib28uc2U+Cj4g
-U2lnbmVkLW9mZi1ieTogTmljb2xhcyBEdWZyZXNuZSA8bmljb2xhcy5kdWZyZXNuZUBjb2xsYWJv
-cmEuY29tPgo+IC0tLQo+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy1oMjY0
-LmMgfCA3OCArKysrKysrKysrKysrKysrLS0tLS0tCj4gIDEgZmlsZSBjaGFuZ2VkLCA1OSBpbnNl
-cnRpb25zKCspLCAxOSBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFn
-aW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMtaDI2NC5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3Jr
-dmRlYy9ya3ZkZWMtaDI2NC5jCj4gaW5kZXggMGRjYmNiMWJhYzgwLi5mMDgxYjQ3NjM0MGYgMTAw
-NjQ0Cj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMtaDI2NC5jCj4g
-KysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMtaDI2NC5jCj4gQEAgLTY3
-Miw4ICs2NzIsMTYgQEAgc3RhdGljIHZvaWQgYXNzZW1ibGVfaHdfcHBzKHN0cnVjdCBya3ZkZWNf
-Y3R4ICpjdHgsCj4gIAkJICBMT0cyX01BWF9QSUNfT1JERVJfQ05UX0xTQl9NSU5VUzQpOwo+ICAJ
-V1JJVEVfUFBTKCEhKHNwcy0+ZmxhZ3MgJiBWNEwyX0gyNjRfU1BTX0ZMQUdfREVMVEFfUElDX09S
-REVSX0FMV0FZU19aRVJPKSwKPiAgCQkgIERFTFRBX1BJQ19PUkRFUl9BTFdBWVNfWkVST19GTEFH
-KTsKPiAtCVdSSVRFX1BQUyhESVZfUk9VTkRfVVAoY3R4LT5jb2RlZF9mbXQuZm10LnBpeF9tcC53
-aWR0aCwgMTYpLCBQSUNfV0lEVEhfSU5fTUJTKTsKPiAtCVdSSVRFX1BQUyhESVZfUk9VTkRfVVAo
-Y3R4LT5jb2RlZF9mbXQuZm10LnBpeF9tcC5oZWlnaHQsIDE2KSwgUElDX0hFSUdIVF9JTl9NQlMp
-Owo+ICsKPiArCS8qIFVzZSB0aGUgU1BTIHZhbHVlcyBzaW5jZSB0aGV5IGFyZSBhbHJlYWR5IGlu
-IG1hY3JvYmxvY2tzCj4gKwkgKiBkaW1lbnNpb25zLCBoZWlnaHQgY2FuIGJlIGZpZWxkIGhlaWdo
-dCAoaGFsdmVkKSBpZgo+ICsJICogVjRMMl9IMjY0X1NQU19GTEFHX0ZSQU1FX01CU19PTkxZIGlz
-IG5vdCBzZXQgYW5kIGFsc28gaXQgYWxsb3dzCj4gKwkgKiBkZWNvZGluZyBzbWFsbGVyIGltYWdl
-cyBpbnRvIGxhcmdlciBhbGxvY2F0aW9uIHdoaWNoIGNhbiBiZSB1c2VkCj4gKwkgKiB0byBpbXBs
-ZW1lbnRpbmcgU1ZDIHNwYXRpYWwgbGF5ZXIgc3VwcG9ydC4KPiArCSAqLwo+ICsJV1JJVEVfUFBT
-KHNwcy0+cGljX3dpZHRoX2luX21ic19taW51czEgKyAxLCBQSUNfV0lEVEhfSU5fTUJTKTsKPiAr
-CVdSSVRFX1BQUyhzcHMtPnBpY19oZWlnaHRfaW5fbWFwX3VuaXRzX21pbnVzMSArIDEsIFBJQ19I
-RUlHSFRfSU5fTUJTKTsKPiArCj4gIAlXUklURV9QUFMoISEoc3BzLT5mbGFncyAmIFY0TDJfSDI2
-NF9TUFNfRkxBR19GUkFNRV9NQlNfT05MWSksCj4gIAkJICBGUkFNRV9NQlNfT05MWV9GTEFHKTsK
-PiAgCVdSSVRFX1BQUyghIShzcHMtPmZsYWdzICYgVjRMMl9IMjY0X1NQU19GTEFHX01CX0FEQVBU
-SVZFX0ZSQU1FX0ZJRUxEKSwKPiBAQCAtMTAzNSwxMyArMTA0Myw1OSBAQCBzdGF0aWMgaW50IHJr
-dmRlY19oMjY0X2FkanVzdF9mbXQoc3RydWN0IHJrdmRlY19jdHggKmN0eCwKPiAgCXJldHVybiAw
-Owo+ICB9Cj4gIAo+ICtzdGF0aWMgaW50IHJrdmRlY19oMjY0X3ZhbGlkYXRlX3NwcyhzdHJ1Y3Qg
-cmt2ZGVjX2N0eCAqY3R4LAo+ICsJCQkJICAgIGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfaDI2NF9z
-cHMgKnNwcykKPiArewo+ICsJdW5zaWduZWQgaW50IHdpZHRoLCBoZWlnaHQ7Cj4gKwkvKgo+ICsJ
-ICogVE9ETzogVGhlIGhhcmR3YXJlIHN1cHBvcnRzIDEwLWJpdCBhbmQgNDoyOjIgcHJvZmlsZXMs
-Cj4gKwkgKiBidXQgaXQncyBjdXJyZW50bHkgYnJva2VuIGluIHRoZSBkcml2ZXIuCj4gKwkgKiBS
-ZWplY3QgdGhlbSBmb3Igbm93LCB1bnRpbCBpdCdzIGZpeGVkLgo+ICsJICovCj4gKwlpZiAoc3Bz
-LT5jaHJvbWFfZm9ybWF0X2lkYyA+IDEpCj4gKwkJLyogT25seSA0OjA6MCBhbmQgNDoyOjAgYXJl
-IHN1cHBvcnRlZCAqLwo+ICsJCXJldHVybiAtRUlOVkFMOwo+ICsJaWYgKHNwcy0+Yml0X2RlcHRo
-X2x1bWFfbWludXM4ICE9IHNwcy0+Yml0X2RlcHRoX2Nocm9tYV9taW51czgpCj4gKwkJLyogTHVt
-YSBhbmQgY2hyb21hIGJpdCBkZXB0aCBtaXNtYXRjaCAqLwo+ICsJCXJldHVybiAtRUlOVkFMOwo+
-ICsJaWYgKHNwcy0+Yml0X2RlcHRoX2x1bWFfbWludXM4ICE9IDApCj4gKwkJLyogT25seSA4LWJp
-dCBpcyBzdXBwb3J0ZWQgKi8KPiArCQlyZXR1cm4gLUVJTlZBTDsKPiArCj4gKwl3aWR0aCA9IChz
-cHMtPnBpY193aWR0aF9pbl9tYnNfbWludXMxICsgMSkgKiAxNjsKPiArCWhlaWdodCA9IChzcHMt
-PnBpY19oZWlnaHRfaW5fbWFwX3VuaXRzX21pbnVzMSArIDEpICogMTY7Cj4gKwo+ICsJLyogd2hl
-biBmcmFtZV9tYnNfb25seV9mbGFnIGlzIG5vdCBzZXQsIHRoaXMgaXMgZmllbGQgaGVpZ2h0LAo+
-ICsJICogd2hpY2ggaXMgaGFsZiB0aGUgZmluYWwgaGVpZ2h0IChzZWUgKDctMTgpIGluIHRoZQo+
-ICsJICogc3BlY2lmaWNhdGlvbikKPiArCSAqLwo+ICsJaWYgKCEoc3BzLT5mbGFncyAmIFY0TDJf
-SDI2NF9TUFNfRkxBR19GUkFNRV9NQlNfT05MWSkpCj4gKwkJaGVpZ2h0ICo9IDI7Cj4gKwo+ICsJ
-aWYgKHdpZHRoID4gY3R4LT5jb2RlZF9mbXQuZm10LnBpeF9tcC53aWR0aCB8fAo+ICsJICAgIGhl
-aWdodCA+IGN0eC0+Y29kZWRfZm10LmZtdC5waXhfbXAuaGVpZ2h0KQo+ICsJCXJldHVybiAtRUlO
-VkFMOwoKSSBmb3Jnb3QgdG8gYWRkIHRyYWNlcyBmb3IgdGhlc2UgYXMgc3VnZ2VzdGlvbiBieSBF
-emVxdWllbCBpbiBteSByZXZpZXcuIEkgdGhpbmsKdGhlIHBhdGNoIGlzIHN0aWxsIGFjY2VwdGFi
-bGUgYXMtaXMsIEkgY2FuIGxhdGVyIG1ha2UgYSBwYXRjaHNldCBvbiB0aGF0CnNwZWNpZmljIHN1
-YmplY3QuIEknbGwgd291bGQgYWRkIHRyYWNlIGZvciB2YWxpZGF0aW9uIHRha2luZyBwbGFjZSBp
-biB0aGUKZ2VuZXJpYyBjb250cm9sIGNvZGUsIG1ha2luZyB0aGlzIGFsbCBtdWNoIG1vcmUgY29u
-c2lzdGVudCAoYW5kIGEgc21vb3RoZXIKZXhwZXJpZW5jZSBmb3IgZGV2ZWxvcGVycykuCgo+ICsK
-PiArCXJldHVybiAwOwo+ICt9Cj4gKwo+ICBzdGF0aWMgaW50IHJrdmRlY19oMjY0X3N0YXJ0KHN0
-cnVjdCBya3ZkZWNfY3R4ICpjdHgpCj4gIHsKPiAgCXN0cnVjdCBya3ZkZWNfZGV2ICpya3ZkZWMg
-PSBjdHgtPmRldjsKPiAgCXN0cnVjdCBya3ZkZWNfaDI2NF9wcml2X3RibCAqcHJpdl90Ymw7Cj4g
-IAlzdHJ1Y3Qgcmt2ZGVjX2gyNjRfY3R4ICpoMjY0X2N0eDsKPiArCXN0cnVjdCB2NGwyX2N0cmwg
-KmN0cmw7Cj4gIAlpbnQgcmV0Owo+ICAKPiArCWN0cmwgPSB2NGwyX2N0cmxfZmluZCgmY3R4LT5j
-dHJsX2hkbCwKPiArCQkJICAgICAgVjRMMl9DSURfU1RBVEVMRVNTX0gyNjRfU1BTKTsKPiArCWlm
-ICghY3RybCkKPiArCQlyZXR1cm4gLUVJTlZBTDsKPiArCj4gKwlyZXQgPSBya3ZkZWNfaDI2NF92
-YWxpZGF0ZV9zcHMoY3R4LCBjdHJsLT5wX25ldy5wX2gyNjRfc3BzKTsKPiArCWlmIChyZXQpCj4g
-KwkJcmV0dXJuIHJldDsKPiArCj4gIAloMjY0X2N0eCA9IGt6YWxsb2Moc2l6ZW9mKCpoMjY0X2N0
-eCksIEdGUF9LRVJORUwpOwo+ICAJaWYgKCFoMjY0X2N0eCkKPiAgCQlyZXR1cm4gLUVOT01FTTsK
-PiBAQCAtMTEzOSwyMyArMTE5Myw5IEBAIHN0YXRpYyBpbnQgcmt2ZGVjX2gyNjRfcnVuKHN0cnVj
-dCBya3ZkZWNfY3R4ICpjdHgpCj4gIAo+ICBzdGF0aWMgaW50IHJrdmRlY19oMjY0X3RyeV9jdHJs
-KHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgsIHN0cnVjdCB2NGwyX2N0cmwgKmN0cmwpCj4gIHsKPiAt
-CWlmIChjdHJsLT5pZCA9PSBWNEwyX0NJRF9TVEFURUxFU1NfSDI2NF9TUFMpIHsKPiAtCQljb25z
-dCBzdHJ1Y3QgdjRsMl9jdHJsX2gyNjRfc3BzICpzcHMgPSBjdHJsLT5wX25ldy5wX2gyNjRfc3Bz
-Owo+IC0JCS8qCj4gLQkJICogVE9ETzogVGhlIGhhcmR3YXJlIHN1cHBvcnRzIDEwLWJpdCBhbmQg
-NDoyOjIgcHJvZmlsZXMsCj4gLQkJICogYnV0IGl0J3MgY3VycmVudGx5IGJyb2tlbiBpbiB0aGUg
-ZHJpdmVyLgo+IC0JCSAqIFJlamVjdCB0aGVtIGZvciBub3csIHVudGlsIGl0J3MgZml4ZWQuCj4g
-LQkJICovCj4gLQkJaWYgKHNwcy0+Y2hyb21hX2Zvcm1hdF9pZGMgPiAxKQo+IC0JCQkvKiBPbmx5
-IDQ6MDowIGFuZCA0OjI6MCBhcmUgc3VwcG9ydGVkICovCj4gLQkJCXJldHVybiAtRUlOVkFMOwo+
-IC0JCWlmIChzcHMtPmJpdF9kZXB0aF9sdW1hX21pbnVzOCAhPSBzcHMtPmJpdF9kZXB0aF9jaHJv
-bWFfbWludXM4KQo+IC0JCQkvKiBMdW1hIGFuZCBjaHJvbWEgYml0IGRlcHRoIG1pc21hdGNoICov
-Cj4gLQkJCXJldHVybiAtRUlOVkFMOwo+IC0JCWlmIChzcHMtPmJpdF9kZXB0aF9sdW1hX21pbnVz
-OCAhPSAwKQo+IC0JCQkvKiBPbmx5IDgtYml0IGlzIHN1cHBvcnRlZCAqLwo+IC0JCQlyZXR1cm4g
-LUVJTlZBTDsKPiAtCX0KPiArCWlmIChjdHJsLT5pZCA9PSBWNEwyX0NJRF9TVEFURUxFU1NfSDI2
-NF9TUFMpCj4gKwkJcmV0dXJuIHJrdmRlY19oMjY0X3ZhbGlkYXRlX3NwcyhjdHgsIGN0cmwtPnBf
-bmV3LnBfaDI2NF9zcHMpOwo+ICsKPiAgCXJldHVybiAwOwo+ICB9Cj4gIAo+IC0tIAo+IDIuMzQu
-MQo+IAo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+On Tue, Apr 05, 2022 at 04:44:17PM -0400, Nicolas Dufresne wrote:
+> From: Jonas Karlman <jonas@kwiboo.se>
+> 
+> The width and height in macroblocks is currently configured based on OUTPUT
+> buffer resolution, this works for frame pictures but can cause issues for
+> field pictures.
+> 
+> When frame_mbs_only_flag is 0 the height in mbs should be height of
+> the field instead of height of frame.
+> 
+> Validate pic_width_in_mbs_minus1 and pic_height_in_map_units_minus1
+> against OUTPUT buffer resolution and use these values to configure HW.
+> The validation is happening in both try_ctrt() and start() since it is
+> otherwise possible to trick the driver during initialization by changing
+> the OUTPUT format after having set a valid control.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+
+> ---
+>  drivers/staging/media/rkvdec/rkvdec-h264.c | 78 ++++++++++++++++------
+>  1 file changed, 59 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+> index 0dcbcb1bac80..f081b476340f 100644
+> --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
+> +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+> @@ -672,8 +672,16 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+>  		  LOG2_MAX_PIC_ORDER_CNT_LSB_MINUS4);
+>  	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_DELTA_PIC_ORDER_ALWAYS_ZERO),
+>  		  DELTA_PIC_ORDER_ALWAYS_ZERO_FLAG);
+> -	WRITE_PPS(DIV_ROUND_UP(ctx->coded_fmt.fmt.pix_mp.width, 16), PIC_WIDTH_IN_MBS);
+> -	WRITE_PPS(DIV_ROUND_UP(ctx->coded_fmt.fmt.pix_mp.height, 16), PIC_HEIGHT_IN_MBS);
+> +
+> +	/* Use the SPS values since they are already in macroblocks
+> +	 * dimensions, height can be field height (halved) if
+> +	 * V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY is not set and also it allows
+> +	 * decoding smaller images into larger allocation which can be used
+> +	 * to implementing SVC spatial layer support.
+> +	 */
+> +	WRITE_PPS(sps->pic_width_in_mbs_minus1 + 1, PIC_WIDTH_IN_MBS);
+> +	WRITE_PPS(sps->pic_height_in_map_units_minus1 + 1, PIC_HEIGHT_IN_MBS);
+> +
+>  	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY),
+>  		  FRAME_MBS_ONLY_FLAG);
+>  	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD),
+> @@ -1035,13 +1043,59 @@ static int rkvdec_h264_adjust_fmt(struct rkvdec_ctx *ctx,
+>  	return 0;
+>  }
+>  
+> +static int rkvdec_h264_validate_sps(struct rkvdec_ctx *ctx,
+> +				    const struct v4l2_ctrl_h264_sps *sps)
+> +{
+> +	unsigned int width, height;
+> +	/*
+> +	 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
+> +	 * but it's currently broken in the driver.
+> +	 * Reject them for now, until it's fixed.
+> +	 */
+> +	if (sps->chroma_format_idc > 1)
+> +		/* Only 4:0:0 and 4:2:0 are supported */
+> +		return -EINVAL;
+> +	if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
+> +		/* Luma and chroma bit depth mismatch */
+> +		return -EINVAL;
+> +	if (sps->bit_depth_luma_minus8 != 0)
+> +		/* Only 8-bit is supported */
+> +		return -EINVAL;
+> +
+> +	width = (sps->pic_width_in_mbs_minus1 + 1) * 16;
+> +	height = (sps->pic_height_in_map_units_minus1 + 1) * 16;
+> +
+> +	/* when frame_mbs_only_flag is not set, this is field height,
+> +	 * which is half the final height (see (7-18) in the
+> +	 * specification)
+> +	 */
+> +	if (!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY))
+> +		height *= 2;
+> +
+> +	if (width > ctx->coded_fmt.fmt.pix_mp.width ||
+> +	    height > ctx->coded_fmt.fmt.pix_mp.height)
+> +		return -EINVAL;
+> +
+> +	return 0;
+> +}
+> +
+>  static int rkvdec_h264_start(struct rkvdec_ctx *ctx)
+>  {
+>  	struct rkvdec_dev *rkvdec = ctx->dev;
+>  	struct rkvdec_h264_priv_tbl *priv_tbl;
+>  	struct rkvdec_h264_ctx *h264_ctx;
+> +	struct v4l2_ctrl *ctrl;
+>  	int ret;
+>  
+> +	ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl,
+> +			      V4L2_CID_STATELESS_H264_SPS);
+> +	if (!ctrl)
+> +		return -EINVAL;
+> +
+> +	ret = rkvdec_h264_validate_sps(ctx, ctrl->p_new.p_h264_sps);
+> +	if (ret)
+> +		return ret;
+> +
+>  	h264_ctx = kzalloc(sizeof(*h264_ctx), GFP_KERNEL);
+>  	if (!h264_ctx)
+>  		return -ENOMEM;
+> @@ -1139,23 +1193,9 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
+>  
+>  static int rkvdec_h264_try_ctrl(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl)
+>  {
+> -	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
+> -		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
+> -		/*
+> -		 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
+> -		 * but it's currently broken in the driver.
+> -		 * Reject them for now, until it's fixed.
+> -		 */
+> -		if (sps->chroma_format_idc > 1)
+> -			/* Only 4:0:0 and 4:2:0 are supported */
+> -			return -EINVAL;
+> -		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
+> -			/* Luma and chroma bit depth mismatch */
+> -			return -EINVAL;
+> -		if (sps->bit_depth_luma_minus8 != 0)
+> -			/* Only 8-bit is supported */
+> -			return -EINVAL;
+> -	}
+> +	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS)
+> +		return rkvdec_h264_validate_sps(ctx, ctrl->p_new.p_h264_sps);
+> +
+>  	return 0;
+>  }
+>  
+> -- 
+> 2.34.1
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
