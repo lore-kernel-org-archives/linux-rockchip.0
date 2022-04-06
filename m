@@ -4,75 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC015C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Apr 2022 07:04:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51352C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Apr 2022 07:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m5D+LhlY6H6fIsdsoK9p6GNz4OlYnic23IAfquvxQAU=; b=005OZNsD+Js2qh
-	8ZutOMVaU1nwunASgAFSzW70Fi4FF/ljJFE4IaZRz4xxhZ+GsQJVckFJ8iRKSznV5v/r8WUtgAo0R
-	QUTbDU7YAc4Eet+rtZ7Fwu+ktRTuPUkKwZvOxNAdSUu8HUV2uKqGLrO3nyduMlhPJCxBUDM8q2z4b
-	b/QyuNeRTnQYlss4k0HbSIf18TgrBF1ZRd6bUnJ8ppClwZCCd9TkrqhUdp4a1BZPuOakBr6aRS9K7
-	7IaE9cTO0lZdac+XW2yieLxGh21kKecdBsKttr2k0vMYSKNqdQ55hxaReixQE31ZBeZ4j2uGUHWus
-	5CtHICC4l6P43XnhZvgw==;
+	List-Owner; bh=vK/t9y2OKdZB3OLYateq/XH7xrybc+j+L+lIrLfZjfI=; b=r8L6e6tp7B5vYn
+	TIA2AefFXM9fJqfv/5PelCIwX0g4cHJ7fjStKJFmo4Q65X0m2Hi7fA0/g+I1etJmZfkX6xrbGYr9Q
+	yfkyuUneNIaFzILdbFk0fsGzUrdUgQbHe01bb0cu5eQqe9fqi/V5A4bVeU5sz0k2D/B+ahykv9DsN
+	YKkiGudsH6ueP3EgUf0OzkE0ykiRJXy0kZEGVpXQtb+qmJnGOmfCxPADz8EvBAJLo2R30/jXS8AZb
+	8B0kZJNHBp+TyLHi93fNYkQPCt7zj3IlKWYvnOV+pY3+XbDOLeAOPeGV0M+FfnT4UWqOYd6hl20W2
+	ev3K3KEpRf6rOuNWw6BA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbziG-004Kp4-Nl; Wed, 06 Apr 2022 07:04:20 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nc065-004TEW-9V; Wed, 06 Apr 2022 07:28:57 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbzi5-004Klh-6K
- for linux-rockchip@lists.infradead.org; Wed, 06 Apr 2022 07:04:12 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nbzi1-0003pO-VL; Wed, 06 Apr 2022 09:04:05 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nbzhz-0000mm-JG; Wed, 06 Apr 2022 09:04:03 +0200
-Date: Wed, 6 Apr 2022 09:04:03 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Kever Yang <Kever.yang@rock-chips.com>
-Subject: Re: [PATCH v9 20/23] drm/rockchip: Make VOP driver optional
-Message-ID: <20220406070403.GS4012@pengutronix.de>
-References: <20220330063913.GW12181@pengutronix.de>
- <9619ce71-db59-d6cd-c254-2b67122fa245@rock-chips.com>
- <20220331070614.GD4012@pengutronix.de>
- <eebd2731-f18b-af1c-b0b9-09df669f5a3c@rock-chips.com>
- <20220331081815.GF4012@pengutronix.de>
- <8aa9da47-d7ed-41bf-384c-103757c19fe2@rock-chips.com>
- <20220401125527.GM4012@pengutronix.de>
- <7b2630d8-0575-5d65-dd81-3ef336ad5ba7@rock-chips.com>
- <20220405090509.GP4012@pengutronix.de>
- <93001a4c-b009-202f-7b04-34e1a9e617ec@rock-chips.com>
+ id 1nc061-004TD2-VH
+ for linux-rockchip@lists.infradead.org; Wed, 06 Apr 2022 07:28:55 +0000
+Received: by mail-ed1-x534.google.com with SMTP id b15so1546099edn.4
+ for <linux-rockchip@lists.infradead.org>; Wed, 06 Apr 2022 00:28:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=zfHXA8UAAQX4RF73thwSZRYnZdelw1yPWiu9aRHf/5U=;
+ b=sRlNXAIhYZfcBgj085AxwI95B959EZC2rbFo4zQvux7+LNOHdEB+J7w34JxBHYswyy
+ 46G/Xuam31mr20ExEuNXcjIdgmAIba/CTgpy+OiFNGBfcJelAqNjMXySngvQDRy+sX3f
+ 92tRLrowZxmcRbu11Iu67HmPBj7oELITbixV4rZYMaW4Ro3l7SCFi9d18JvsfVUswfTy
+ zXo1UaukAl1rxUxms66ZeDhVBpObMmmvW/XzY2F+1MLZ1krD5STxk1f37Jj5nL1lPnYp
+ atwhkk8fpbaNxluHgBLeTslioN3dtKT0QxwyTmN3Kj3UEq1thbwYdCC2EokLlcNCxZsO
+ fgRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=zfHXA8UAAQX4RF73thwSZRYnZdelw1yPWiu9aRHf/5U=;
+ b=aRlbIdxU0VIKQRwMQXbYQ0GpTcWrPFDefcIrt3TM/yiDxowV2FbQsN8U36faXu1DYR
+ xvZ8ukSOEbrYHuKJaKzajWqZ1wmHA0aHapM23bsnFq+EcYq/tueBd8mMYtmqcwO4Kr0p
+ ALCWdq3By108eMHVS2MRgCrVg09Z0lUiWsQ1HwCEErJGBFokTQV1XKEGDrI4fP1UHw9k
+ cYi5FkClzlEBA7tNK0PqIxoE20/9qR+KtiVNbuRoejhXNPi+EMcq/P4zy+vfdaK5OJLb
+ 8TrfbDEX5+LZnxs7Ybacs10jnBvdt52kpfkxmMQIX8UPo4JjVkP7Ko2Vgkug+RJheorH
+ scSA==
+X-Gm-Message-State: AOAM530beNy+PveFK5vIbgzJh3iCGF/gyQi7MW9AsKHkCCUmo3cTMLit
+ iNuOLvd23z1f13/g5jF60i5/ew==
+X-Google-Smtp-Source: ABdhPJx9Kc7JEu8MNluYQlHCl+KsXiLVSaLgbOFo4Yy7DOp05A2hNUvsp+G3jvpeGP2g0JBkLL+2XA==
+X-Received: by 2002:a05:6402:332:b0:41c:d2d0:d7c3 with SMTP id
+ q18-20020a056402033200b0041cd2d0d7c3mr7498281edw.296.1649230131737; 
+ Wed, 06 Apr 2022 00:28:51 -0700 (PDT)
+Received: from [192.168.0.182] (xdsl-188-155-201-27.adslplus.ch.
+ [188.155.201.27]) by smtp.gmail.com with ESMTPSA id
+ c13-20020a17090654cd00b006e0db351d01sm6315639ejp.124.2022.04.06.00.28.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 06 Apr 2022 00:28:51 -0700 (PDT)
+Message-ID: <44ae23a3-c3a1-7d34-8af2-cbc8c1c9db2b@linaro.org>
+Date: Wed, 6 Apr 2022 09:28:50 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <93001a4c-b009-202f-7b04-34e1a9e617ec@rock-chips.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 08:46:32 up 6 days, 19:16, 52 users, load average: 0.14, 0.10, 0.09
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH 1/4 v5] dt-bindings: Add Rockchip rk817 battery charger
+ support
+Content-Language: en-US
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, zhangqing@rock-chips.com, zyw@rock-chips.com,
+ jon.lin@rock-chips.com, maccraft123mc@gmail.com, sre@kernel.org,
+ heiko@sntech.de, krzk+dt@kernel.org, robh+dt@kernel.org,
+ lee.jones@linaro.org, Chris Morgan <macromorgan@hotmail.com>
+References: <20220404215754.30126-1-macroalpha82@gmail.com>
+ <20220404215754.30126-2-macroalpha82@gmail.com>
+ <74f445c2-3194-80a6-6d52-21368eb6172a@linaro.org>
+ <20220405131228.GA20@wintermute.localdomain>
+ <ac2b29c2-b3ec-eb03-595f-b0328e40015c@linaro.org>
+ <20220405135424.GA20@wintermute.localdomain>
+ <b269be83-3e45-fb36-75ab-e1c20ad6906f@linaro.org>
+ <20220405140428.GA72@wintermute.localdomain>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220405140428.GA72@wintermute.localdomain>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_000409_418083_B0942E9F 
-X-CRM114-Status: GOOD (  77.46  )
+X-CRM114-CacheID: sfid-20220406_002854_064437_D37CB656 
+X-CRM114-Status: GOOD (  18.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,259 +99,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-15"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 06, 2022 at 09:43:49AM +0800, Andy Yan wrote:
-> Hi Sacha:
-> =
+On 05/04/2022 16:04, Chris Morgan wrote:
+>>> The driver itself is named rk817_charger. If you think I should change
+>>> this from battery to "fuel gauge" or "charger" let me know and I can
+>>> resubmit. Whatever makes it clearer for everyone.
+>>
+>> Yeah, the property name and bindings should describe the hardware, so in
+>> such case the hardware is rather a "charger" or "fuel-gauge". Your
+>> "battery-cell" from DTS is probably just a "battery" (unless you expect
+>> multiple cells?).
+>>
+>> Best regards,
+>> Krzysztof
+> 
+> Okay, when v6 comes around I'll change it to be "charger" instead of
+> "battery" to make it more clear. There should only be a single battery
+> instead of multiple cells, and according to the documentation I should
+> be okay with describing the battery in the devicetree since it's not
+> something easy for the end-user to change.
 
-> On 4/5/22 17:05, Sascha Hauer wrote:
-> > On Sat, Apr 02, 2022 at 09:25:33AM +0800, Andy Yan wrote:
-> > > Hi Sascha:
-> > > =
+Yes,the description of battery fits the purpose of DT.
 
-> > > On 4/1/22 20:55, Sascha Hauer wrote:
-> > > > On Thu, Mar 31, 2022 at 07:00:34PM +0800, Andy Yan wrote:
-> > > > > Hi:
-> > > > > =
+> 
+> I'd like to get someone to look at the meat and potatoes of the series
+> before I submit a v6... I did a fairly substantial rewrite of the
+> actual rk817_charger.c to solve for several problems and fix several
+> bugs I found in extended testing. One of the major changes was to
+> mirror the BSP in that I poll the PMIC every 8 seconds for updates
+> and then store it in the driver struct rather than pull each value
+> on demand as requested. I see other drivers doing this but I want
+> to make sure that's acceptable upstream.
 
-> > > > > On 3/31/22 16:18, Sascha Hauer wrote:
-> > > > > > On Thu, Mar 31, 2022 at 03:20:37PM +0800, Andy Yan wrote:
-> > > > > > > Hi Sascha:
-> > > > > > > =
 
-> > > > > > > On 3/31/22 15:06, Sascha Hauer wrote:
-> > > > > > > > On Wed, Mar 30, 2022 at 08:50:09PM +0800, Andy Yan wrote:
-> > > > > > > > > Hi Sascha:
-> > > > > > > > > =
-
-> > > > > > > > > On 3/30/22 14:39, Sascha Hauer wrote:
-> > > > > > > > > > Hi Andy,
-> > > > > > > > > > =
-
-> > > > > > > > > > On Tue, Mar 29, 2022 at 07:56:27PM +0800, Andy Yan wrot=
-e:
-> > > > > > > > > > > Hi Sascha:
-> > > > > > > > > > > =
-
-> > > > > > > > > > > On 3/28/22 23:11, Sascha Hauer wrote:
-> > > > > > > > > > > > With upcoming VOP2 support VOP won't be the only ch=
-oice anymore, so make
-> > > > > > > > > > > > the VOP driver optional.
-> > > > > > > > > > > > =
-
-> > > > > > > > > > > > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > > > > > > > > > > > ---
-> > > > > > > > > > > >        drivers/gpu/drm/rockchip/Kconfig            =
-| 8 ++++++++
-> > > > > > > > > > > >        drivers/gpu/drm/rockchip/Makefile           =
-| 3 ++-
-> > > > > > > > > > > >        drivers/gpu/drm/rockchip/rockchip_drm_drv.c =
-| 2 +-
-> > > > > > > > > > > >        3 files changed, 11 insertions(+), 2 deletio=
-ns(-)
-> > > > > > > > > > > > =
-
-> > > > > > > > > > > > diff --git a/drivers/gpu/drm/rockchip/Kconfig b/dri=
-vers/gpu/drm/rockchip/Kconfig
-> > > > > > > > > > > > index fa5cfda4e90e3..7d22e2997a571 100644
-> > > > > > > > > > > > --- a/drivers/gpu/drm/rockchip/Kconfig
-> > > > > > > > > > > > +++ b/drivers/gpu/drm/rockchip/Kconfig
-> > > > > > > > > > > > @@ -23,8 +23,16 @@ config DRM_ROCKCHIP
-> > > > > > > > > > > >        if DRM_ROCKCHIP
-> > > > > > > > > > > > +config ROCKCHIP_VOP
-> > > > > > > > > > > > +	bool "Rockchip VOP driver"
-> > > > > > > > > > > > +	default y
-> > > > > > > > > > > > +	help
-> > > > > > > > > > > > +	  This selects support for the VOP driver. You sh=
-ould enable it
-> > > > > > > > > > > > +	  on all older SoCs up to RK3399.
-> > > > > > > > > > That reminds me that I wanted to rephrase this. Will ch=
-ange in next
-> > > > > > > > > > round.
-> > > > > > > > > > =
-
-> > > > > > > > > > > > +
-> > > > > > > > > > > >        config ROCKCHIP_ANALOGIX_DP
-> > > > > > > > > > > >        	bool "Rockchip specific extensions for Anal=
-ogix DP driver"
-> > > > > > > > > > > > +	depends on ROCKCHIP_VOP
-> > > > > > > > > > > Aanlogix dp is also on vop2 base soc such as=A0 rk356=
-x and rk3588.
-> > > > > > > > BTW I just looked at the downstream driver. Here we have th=
-e same
-> > > > > > > > situation that the analogix dp driver calls rockchip_drm_wa=
-it_vact_end()
-> > > > > > > > which is implemented in the VOP driver, so when the analogi=
-x dp driver
-> > > > > > > > is actually used on a VOP2 SoC then it is either used in a =
-way that
-> > > > > > > > rockchip_drm_wait_vact_end() will never be called or it exp=
-lodes in all
-> > > > > > > > colours.
-> > > > > > > > =
-
-> > > > > > > > > > I added the dependency because analogix_dp-rockchip.c c=
-alls
-> > > > > > > > > > rockchip_drm_wait_vact_end() which is implemented in th=
-e VOP driver,
-> > > > > > > > > > so this driver currenty can't work with the VOP2 driver=
- and can't
-> > > > > > > > > > be linked without the VOP driver being present.
-> > > > > > > > > > I'll add a few words to the commit message.
-> > > > > > > > > Maybe a better direction is move rockchip_drm_wait_vact_e=
-nd from the VOP
-> > > > > > > > > driver to rockchip_drm_drv.c
-> > > > > > > > I am not sure if that's really worth it. Yes, the direction=
- might be the
-> > > > > > > > right one, but I would really prefer when somebody does the=
- change who
-> > > > > > > > can test and confirm that the analogix dp really works with=
- VOP2 in the
-> > > > > > > > end.
-> > > > > > > If follow this point, the current DW_MIPI also has not been t=
-ested for
-> > > > > > > confirm that it
-> > > > > > > =
-
-> > > > > > > can really work with VOP2, so you should also make it depends=
- on
-> > > > > > > ROCKCHIP_VOP.
-> > Here you are suggesting to add even more Kconfig dependencies.
-> > =
-
-> > > > > > Well at least I have patches here which make DW_MIPI work with =
-VOP2 ;)
-> > > > > But you DW_MIPI patches for rk356x didn't come. So this is not ke=
-ep
-> > > > > consistency with this point.
-> > > > > =
-
-> > > > > > What about the others, like LVDS and RGB?
-> > > > > Yes, we also have other interface , RK356X has LVDS/RGB/BT1120/BT=
-656, RK3588
-> > > > > has BT1120/BT656, no LVDS or RGB.
-> > > > > =
-
-> > > > > > > I think the current solution is just a workaround to make you=
-r patch pass
-> > > > > > > the kernel compile
-> > > > > > Indeed.
-> > > > > > =
-
-> > > > > > I agree that it would be good to add a note somewhere which out=
-puts
-> > > > > > work with the VOP2 driver (currently only HDMI), but I wonder i=
-f Kconfig
-> > > > > > dependencies is the right place for it, because only people who=
- deliberately
-> > > > > > disable VOP support will see this information.
-> > > > > > Maybe we should rather add it to the Kconfig help text?
-> > > > > If a device is supported for this soc, we will add dt node at the=
- dtsi file.
-> > > > > =
-
-> > > > > A Kconfig dependencies don't seems a good idea.
-> > Here you say Kconfig dependencies are no good idea.
-> =
-
-> =
-
-> Yes. It's not a good idea. So I don't want to see you use a Kcofig
-> dependence
-> =
-
-> to disable a module to avoid compile which introduced by your patch.
-> =
-
-> > =
-
-> > > > Ok, this means we can keep my current approach with just letting
-> > > > ROCKCHIP_ANALOGIX_DP depend on ROCKCHIP_VOP to avoid having a non
-> > > Excuse me? How do you get this conclusion ?
-> > Given that you say that you want to have both more and less Kconfig
-> > dependencies I came to the conclusion that I only add one where it's
-> > necessary to compile the driver.
-> > =
-
-> > > I said before,=A0 vop and vop2 based platforms both have ROCKCHIP_ANA=
-LOGIX_DP.
-> > Maybe, but vop2 with ROCKCHIP_ANALOGIX_DP doesn't even work in the
-> > Rockchip downstream kernel, so I wonder how relevant this usecase really
-> > is.
-> =
-
-> =
-
-> No, this is not the truth. Rockchip_ANALOGIX_DP of course work with the
-> vendor kernel. We have many rk356x based products shipped with edp.
-> Even the VGA output interface on RK3568_EVB1 is drived by
-> ROCKCHIP_ANALOGIX_DP with a RTD2166 eDP to VGA convert
-> chip.
-> =
-
-> =
-
-> So how do you get conclusion that ROCKCHIP_ANALOGIX_DP can't work with
-> the Rockchip downstream kernel? Is it because you can't make the DP work =
-on
-> your board? If it is, please contact the supplier who gave you the board.
-
-In the downstream kernel I have available (which is a 5.10.66)
-analogix_dp-rockchip.c calls rockchip_drm_wait_vact_end() which is
-implemented in rockchip_drm_vop.c and assumes that the passed struct
-drm_crtc * can be converted to a struct vop *. Basically it's the same
-situation we have right now with the mainline kernel, just that the
-linker issues won't show up because the VOP driver can't be disabled
-in the downstream kernel.
-
-> =
-
-> =
-
-> Do you have a RK3568_EVB1 that has a VGA output interface on board?
-> =
-
-> If you have it, I can offer you image to verify the DP.
-> =
-
-> =
-
-> > > If this patch will cause the compile error, please do a real fix, not=
- a
-> > I can't, because I don't have any hardware to test the Analogix DP on a
-> > VOP hardware, and given that Analogix DP in conjunction with VOP2 hardw=
-are is
-> > not even supported in the downstream Kernel I am not sure if it's really
-> > worth doing that.
-> =
-
-> =
-
-> Again, this is not the truth, see above.
-> I am not ask you support the ROCKCHIP_ANALOGIX_DP on upstream, I just
-> want you can give a better solution when you patch cause the compile erro=
-r.
-> Disable a module when it conflict with your patch is too rough.
-
-It does not conflict with my patch. The dependency only means that you can't
-enable the Analogix DP driver when the VOP driver is disabled. That
-doesn't hurt, because currently you can't do anything with the Analogix
-DP driver without the VOP driver. With the added dependency the Analogix DP
-driver can still be used with the VOP driver, even when the VOP2 driver
-is enabled. I really can't see a problem with that.
-
-Sascha
-
--- =
-
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
