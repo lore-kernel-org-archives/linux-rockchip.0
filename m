@@ -4,65 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ADFAC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Apr 2022 06:54:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC015C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Apr 2022 07:04:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GKDtuCn7O1/eluJecYfGibgRQODZc3uidbFFgIaJwLM=; b=eDDpiFCpi5CDRa
-	OPHOhJYXarmz4PEMI92uWXUsWUhExl5Z+r6WVZqLQIjDp3cPbNLAJfprqFrOA7sv7z8uC8uDRbw4O
-	j1yrZBMkwrRLTfOlLXpShOKK1OHgXjuMCeNXaMh0FXO/ZlUm0GdR9tDDjRnUsPyMENL0CJZZYryv4
-	B3w3jKzX1kta67MldF5lGRD9jHo0XAk7+WzUlSTaVar9nBMCMVsXL7MFbI0Kcj9KJ1RuJvhlhYsIr
-	FfZEfsSNFN6Ts40o4XX1rLIEhESqJb/2NwFkTFWlvnZ1kJD5pU3MHwwmTsazznVmP14I1n4O/FqJc
-	BbsOVqHeN7F/FLm/HAHQ==;
+	List-Owner; bh=m5D+LhlY6H6fIsdsoK9p6GNz4OlYnic23IAfquvxQAU=; b=005OZNsD+Js2qh
+	8ZutOMVaU1nwunASgAFSzW70Fi4FF/ljJFE4IaZRz4xxhZ+GsQJVckFJ8iRKSznV5v/r8WUtgAo0R
+	QUTbDU7YAc4Eet+rtZ7Fwu+ktRTuPUkKwZvOxNAdSUu8HUV2uKqGLrO3nyduMlhPJCxBUDM8q2z4b
+	b/QyuNeRTnQYlss4k0HbSIf18TgrBF1ZRd6bUnJ8ppClwZCCd9TkrqhUdp4a1BZPuOakBr6aRS9K7
+	7IaE9cTO0lZdac+XW2yieLxGh21kKecdBsKttr2k0vMYSKNqdQ55hxaReixQE31ZBeZ4j2uGUHWus
+	5CtHICC4l6P43XnhZvgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nbzYe-004IDC-Dy; Wed, 06 Apr 2022 06:54:24 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nbziG-004Kp4-Nl; Wed, 06 Apr 2022 07:04:20 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nbzYS-004I7k-90; Wed, 06 Apr 2022 06:54:14 +0000
-Received: from [IPV6:2a01:e0a:120:3210:ff63:de1f:2a77:5241] (unknown
- [IPv6:2a01:e0a:120:3210:ff63:de1f:2a77:5241])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 8091E1F44519;
- Wed,  6 Apr 2022 07:54:09 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1649228050;
- bh=tqnMuI8tFUvTxaTXTOvtQ2qzTn9cKLNn18CehTYmq8w=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=hpbelg9ITQRa7aKF8ZvmRAihh+Xif2IZ1f80s4ReZW/+hjfUjbf6YDv0q+uTSAAyU
- +hp+8WaicFUXLVxHALbFU932x/O6gAmvj2w3STI3dwKIPTyEQbU63eAFAijijUcX5a
- 7QQB0Ed4hvVe1vByawUjFE1muivhK0HdFyqeMdjcToNxpvOg5X90+fExd/Atfomwox
- XZS4lRr3b+/3cIbpuJgdJqsqjK55zAYRosi7aupAcwRd/Yluf91gLoLCkZzmWhfLeK
- P00ix/kzuCyg8he3Oxjp8uUq1LYP4VLO5WrBtyecAbkLYNBxowyjPZXPkQXSvLTRWR
- g/RXf+JtfVQaw==
-Message-ID: <bf938b83-2b57-95b3-4bcb-f967bbb46413@collabora.com>
-Date: Wed, 6 Apr 2022 08:54:07 +0200
+ id 1nbzi5-004Klh-6K
+ for linux-rockchip@lists.infradead.org; Wed, 06 Apr 2022 07:04:12 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nbzi1-0003pO-VL; Wed, 06 Apr 2022 09:04:05 +0200
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nbzhz-0000mm-JG; Wed, 06 Apr 2022 09:04:03 +0200
+Date: Wed, 6 Apr 2022 09:04:03 +0200
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Andy Yan <andy.yan@rock-chips.com>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ kernel@pengutronix.de, Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>, Kever Yang <Kever.yang@rock-chips.com>
+Subject: Re: [PATCH v9 20/23] drm/rockchip: Make VOP driver optional
+Message-ID: <20220406070403.GS4012@pengutronix.de>
+References: <20220330063913.GW12181@pengutronix.de>
+ <9619ce71-db59-d6cd-c254-2b67122fa245@rock-chips.com>
+ <20220331070614.GD4012@pengutronix.de>
+ <eebd2731-f18b-af1c-b0b9-09df669f5a3c@rock-chips.com>
+ <20220331081815.GF4012@pengutronix.de>
+ <8aa9da47-d7ed-41bf-384c-103757c19fe2@rock-chips.com>
+ <20220401125527.GM4012@pengutronix.de>
+ <7b2630d8-0575-5d65-dd81-3ef336ad5ba7@rock-chips.com>
+ <20220405090509.GP4012@pengutronix.de>
+ <93001a4c-b009-202f-7b04-34e1a9e617ec@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [RFC PATCH 0/8] media: hantro: Add 10-bit support
-Content-Language: en-US
-To: =?UTF-8?Q?Jernej_=c5=a0krabec?= <jernej.skrabec@gmail.com>,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de
-Cc: mchehab@kernel.org, nicolas@ndufresne.ca, hverkuil-cisco@xs4all.nl,
- gregkh@linuxfoundation.org, wens@csie.org, samuel@sholland.org,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev
-References: <20220227144926.3006585-1-jernej.skrabec@gmail.com>
- <b6987a9a-56af-f63f-b60a-37df141d6e89@collabora.com>
- <4386971.LvFx2qVVIh@jernej-laptop>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <4386971.LvFx2qVVIh@jernej-laptop>
+Content-Disposition: inline
+In-Reply-To: <93001a4c-b009-202f-7b04-34e1a9e617ec@rock-chips.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 08:46:32 up 6 days, 19:16, 52 users, load average: 0.14, 0.10, 0.09
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220405_235412_484920_9A594E2C 
-X-CRM114-Status: GOOD (  18.83  )
+X-CRM114-CacheID: sfid-20220406_000409_418083_B0942E9F 
+X-CRM114-Status: GOOD (  77.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,47 +85,261 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-15"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDA1LzA0LzIwMjIgw6AgMjA6NDAsIEplcm5laiDFoGtyYWJlYyBhIMOpY3JpdMKgOgo+IEhp
-IEJlbmphbWluIQo+Cj4gRG5lIHRvcmVrLCAwNS4gYXByaWwgMjAyMiBvYiAxODowNzo0MSBDRVNU
-IGplIEJlbmphbWluIEdhaWduYXJkIG5hcGlzYWwoYSk6Cj4+IExlIDI3LzAyLzIwMjIgw6AgMTU6
-NDksIEplcm5laiBTa3JhYmVjIGEgw6ljcml0IDoKPj4+IEZpcnN0IHR3byBwYXRjaGVzIGFkZCAx
-MC1iaXQgZm9ybWF0cyB0byBVQVBJLCB0aGlyZCBleHRlbmRzIGZpbHRlcmluZwo+Pj4gbWVjaGFu
-aXNtLCBmb3VydGggZml4ZXMgaW5jb3JyZWN0IGFzc3VtcHRpb24sIGZpZnRoIG1vdmVzIHJlZ2lz
-dGVyCj4+PiBjb25maWd1cmF0aW9uIGNvZGUgdG8gcHJvcGVyIHBsYWNlLCBzaXh0aCBhbmQgc2V2
-ZW50aCBlbmFibGUgMTAtYml0Cj4+PiBWUDkgZGVjb2Rpbmcgb24gQWxsd2lubmVyIEg2IGFuZCBs
-YXN0IGluY3JlYXNlcyBjb3JlIGZyZXF1ZW5jeSBvbgo+Pj4gQWxsd2lubmVyIEg2Lgo+Pj4KPj4+
-IEknbSBzZW5kaW5nIHRoaXMgYXMgUkZDIHRvIGdldCBzb21lIGNvbW1lbnRzOgo+Pj4gMS4gZm9y
-bWF0IGRlZmluaXRpb25zIC0gYXJlIGZvdXJjYydzIG9rPyBhcmUgY29tbWVudHMvZGVzY3JpcHRp
-b25zIG9rPwo+Pj4gMi4gaXMgZXh0ZW5kZWQgZmlsdGVyaW5nIG1lY2hhbmlzbSBvaz8KPj4+Cj4+
-PiBJIHdvdWxkIGFsc28gbGlrZSBpZiB0aGVzZSBwYXRjaGVzIGFyZSB0ZXN0ZWQgb24gc29tZSBt
-b3JlIEhXLgo+Pj4gQWRkaXRpb25hbGx5LCBjYW4gc29tZW9uZSB0ZXN0IHRpbGVkIFAwMTA/Cj4+
-Pgo+Pj4gUGxlYXNlIHRha2UgYSBsb29rLgo+PiBIaSBKZXJuZWosCj4+Cj4+IEkgaGF2ZSBjcmVh
-dGUgYSBicmFuY2ggdG8gdGVzdCB0aGlzIHNlcmllcyB3aXRoIFZQOSBhbmQgSEVWQzoKPj4gaHR0
-cHM6Ly9naXRsYWIuY29sbGFib3JhLmNvbS9iZW5qYW1pbi5nYWlnbmFyZC9mb3ItdXBzdHJlYW0v
-LS90cmVlLzEwYml0X2lteAo+PiA4bSBGZWVsIGZyZWUgdG8gcGljayB3aGF0IEkgbWF5IG5lZWQg
-aW4gaXQuCj4+Cj4+IFRoYXQgZG9lc24ndCBpbXByb3ZlIGZsdXN0ZXIgc2NvcmVzLCBJIHRoaW5r
-IG1vcmUgZGV2IGFyZSBzdGlsbCBuZWVkZWQgaW4KPj4gR1NUIGJlZm9yZSBnZXR0aW5nIHNvbWV0
-aGluZyBmdWxseSBmdW5jdGlvbmFsLgo+PiBBbnl3YXkgSSBhYmxlIHRvIHNlbGVjdCBQMDEwIHBp
-eGVsIGZvcm1hdCBpZiB0aGUgaW5wdXQgaXMgYSAxMGJpdCBiaXRzdHJlYW0uCj4gV2hhdCBraW5k
-IG9mIGltcHJvdmVtZW50cyBkbyB5b3UgZXhwZWN0PyBBY3R1YWxseSwgdGhpcyBzZXJpZXMgaXMg
-ZGVzaWduZWQgdG8KPiBjaGFuZ2Ugbm90aGluZyBmb3IgcGxhdGZvcm1zLCB3aGVyZSAxMC1iaXQg
-Zm9ybWF0IGlzIG5vdCBhZGRlZCBpbnRvIHRoZSBsaXN0Cj4gb2Ygc3VwcG9ydGVkIGZvcm1hdHMu
-IEkgdGhpbmsgcmVhc29ucyBhcmUgcXVpdGUgb2J2aW91cy4gRmlyc3QsIG5vdCBldmVyeQo+IGRl
-dmljZSBtYXkgc3VwcG9ydCAxMC1iaXQgb3V0cHV0LiBTZWNvbmQsIGFzIHlvdSBtaWdodCBhbHJl
-YWR5IGZpZ3VyZWQgaXQgb3V0LAo+IHJlZ2lzdGVycyBpbiB0aGlzIHNlcmllcyBhcmUgc2V0IG9u
-bHkgZm9yIGxlZ2FjeSBjb3Jlcy4gSSBoYXZlIG5vIGlkZWEsIHdoYXQKPiBuZWVkcyB0byBiZSBk
-b25lIGZvciBuZXdlciBvbmVzLCBzaW5jZSBJIGRvbid0IGhhdmUgdGhlbS4gQW55d2F5LCBJIHRl
-c3RlZAo+IHRoaXMgd2l0aCBmbHVzdGVyIGFuZCBvbmx5IG9uZSBhZGRpdGlvbmFsIHRlc3QgcGFz
-c2VzLCBiZWNhdXNlIGl0IGlzIHRoZSBvbmx5Cj4gb25lIGZvciAxMC1iaXQgWVVWNDIwLgoKSW4g
-dGhpcyBzZXJpZXMgeW91IHdpbGwgZmluZCB0aGF0IEkgaGF2ZSBhZGRlZCB0aGUgcmVnaXN0ZXJz
-IGZvciB0aGUgbmV3IGNvcmVzLApmaXggaGV2YyB0byBiZSBhYmxlIHRvIHVzZSAxMC1iaXQsIGFu
-ZCBlbmFibGUgdGhhdCBpbiBJTVg4TS4KClJlZ2FyZHMsCkJlbmphbWluCgo+Cj4gQmVzdCByZWdh
-cmRzLAo+IEplcm5lago+Cj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+On Wed, Apr 06, 2022 at 09:43:49AM +0800, Andy Yan wrote:
+> Hi Sacha:
+> =
+
+> On 4/5/22 17:05, Sascha Hauer wrote:
+> > On Sat, Apr 02, 2022 at 09:25:33AM +0800, Andy Yan wrote:
+> > > Hi Sascha:
+> > > =
+
+> > > On 4/1/22 20:55, Sascha Hauer wrote:
+> > > > On Thu, Mar 31, 2022 at 07:00:34PM +0800, Andy Yan wrote:
+> > > > > Hi:
+> > > > > =
+
+> > > > > On 3/31/22 16:18, Sascha Hauer wrote:
+> > > > > > On Thu, Mar 31, 2022 at 03:20:37PM +0800, Andy Yan wrote:
+> > > > > > > Hi Sascha:
+> > > > > > > =
+
+> > > > > > > On 3/31/22 15:06, Sascha Hauer wrote:
+> > > > > > > > On Wed, Mar 30, 2022 at 08:50:09PM +0800, Andy Yan wrote:
+> > > > > > > > > Hi Sascha:
+> > > > > > > > > =
+
+> > > > > > > > > On 3/30/22 14:39, Sascha Hauer wrote:
+> > > > > > > > > > Hi Andy,
+> > > > > > > > > > =
+
+> > > > > > > > > > On Tue, Mar 29, 2022 at 07:56:27PM +0800, Andy Yan wrot=
+e:
+> > > > > > > > > > > Hi Sascha:
+> > > > > > > > > > > =
+
+> > > > > > > > > > > On 3/28/22 23:11, Sascha Hauer wrote:
+> > > > > > > > > > > > With upcoming VOP2 support VOP won't be the only ch=
+oice anymore, so make
+> > > > > > > > > > > > the VOP driver optional.
+> > > > > > > > > > > > =
+
+> > > > > > > > > > > > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> > > > > > > > > > > > ---
+> > > > > > > > > > > >        drivers/gpu/drm/rockchip/Kconfig            =
+| 8 ++++++++
+> > > > > > > > > > > >        drivers/gpu/drm/rockchip/Makefile           =
+| 3 ++-
+> > > > > > > > > > > >        drivers/gpu/drm/rockchip/rockchip_drm_drv.c =
+| 2 +-
+> > > > > > > > > > > >        3 files changed, 11 insertions(+), 2 deletio=
+ns(-)
+> > > > > > > > > > > > =
+
+> > > > > > > > > > > > diff --git a/drivers/gpu/drm/rockchip/Kconfig b/dri=
+vers/gpu/drm/rockchip/Kconfig
+> > > > > > > > > > > > index fa5cfda4e90e3..7d22e2997a571 100644
+> > > > > > > > > > > > --- a/drivers/gpu/drm/rockchip/Kconfig
+> > > > > > > > > > > > +++ b/drivers/gpu/drm/rockchip/Kconfig
+> > > > > > > > > > > > @@ -23,8 +23,16 @@ config DRM_ROCKCHIP
+> > > > > > > > > > > >        if DRM_ROCKCHIP
+> > > > > > > > > > > > +config ROCKCHIP_VOP
+> > > > > > > > > > > > +	bool "Rockchip VOP driver"
+> > > > > > > > > > > > +	default y
+> > > > > > > > > > > > +	help
+> > > > > > > > > > > > +	  This selects support for the VOP driver. You sh=
+ould enable it
+> > > > > > > > > > > > +	  on all older SoCs up to RK3399.
+> > > > > > > > > > That reminds me that I wanted to rephrase this. Will ch=
+ange in next
+> > > > > > > > > > round.
+> > > > > > > > > > =
+
+> > > > > > > > > > > > +
+> > > > > > > > > > > >        config ROCKCHIP_ANALOGIX_DP
+> > > > > > > > > > > >        	bool "Rockchip specific extensions for Anal=
+ogix DP driver"
+> > > > > > > > > > > > +	depends on ROCKCHIP_VOP
+> > > > > > > > > > > Aanlogix dp is also on vop2 base soc such as=A0 rk356=
+x and rk3588.
+> > > > > > > > BTW I just looked at the downstream driver. Here we have th=
+e same
+> > > > > > > > situation that the analogix dp driver calls rockchip_drm_wa=
+it_vact_end()
+> > > > > > > > which is implemented in the VOP driver, so when the analogi=
+x dp driver
+> > > > > > > > is actually used on a VOP2 SoC then it is either used in a =
+way that
+> > > > > > > > rockchip_drm_wait_vact_end() will never be called or it exp=
+lodes in all
+> > > > > > > > colours.
+> > > > > > > > =
+
+> > > > > > > > > > I added the dependency because analogix_dp-rockchip.c c=
+alls
+> > > > > > > > > > rockchip_drm_wait_vact_end() which is implemented in th=
+e VOP driver,
+> > > > > > > > > > so this driver currenty can't work with the VOP2 driver=
+ and can't
+> > > > > > > > > > be linked without the VOP driver being present.
+> > > > > > > > > > I'll add a few words to the commit message.
+> > > > > > > > > Maybe a better direction is move rockchip_drm_wait_vact_e=
+nd from the VOP
+> > > > > > > > > driver to rockchip_drm_drv.c
+> > > > > > > > I am not sure if that's really worth it. Yes, the direction=
+ might be the
+> > > > > > > > right one, but I would really prefer when somebody does the=
+ change who
+> > > > > > > > can test and confirm that the analogix dp really works with=
+ VOP2 in the
+> > > > > > > > end.
+> > > > > > > If follow this point, the current DW_MIPI also has not been t=
+ested for
+> > > > > > > confirm that it
+> > > > > > > =
+
+> > > > > > > can really work with VOP2, so you should also make it depends=
+ on
+> > > > > > > ROCKCHIP_VOP.
+> > Here you are suggesting to add even more Kconfig dependencies.
+> > =
+
+> > > > > > Well at least I have patches here which make DW_MIPI work with =
+VOP2 ;)
+> > > > > But you DW_MIPI patches for rk356x didn't come. So this is not ke=
+ep
+> > > > > consistency with this point.
+> > > > > =
+
+> > > > > > What about the others, like LVDS and RGB?
+> > > > > Yes, we also have other interface , RK356X has LVDS/RGB/BT1120/BT=
+656, RK3588
+> > > > > has BT1120/BT656, no LVDS or RGB.
+> > > > > =
+
+> > > > > > > I think the current solution is just a workaround to make you=
+r patch pass
+> > > > > > > the kernel compile
+> > > > > > Indeed.
+> > > > > > =
+
+> > > > > > I agree that it would be good to add a note somewhere which out=
+puts
+> > > > > > work with the VOP2 driver (currently only HDMI), but I wonder i=
+f Kconfig
+> > > > > > dependencies is the right place for it, because only people who=
+ deliberately
+> > > > > > disable VOP support will see this information.
+> > > > > > Maybe we should rather add it to the Kconfig help text?
+> > > > > If a device is supported for this soc, we will add dt node at the=
+ dtsi file.
+> > > > > =
+
+> > > > > A Kconfig dependencies don't seems a good idea.
+> > Here you say Kconfig dependencies are no good idea.
+> =
+
+> =
+
+> Yes. It's not a good idea. So I don't want to see you use a Kcofig
+> dependence
+> =
+
+> to disable a module to avoid compile which introduced by your patch.
+> =
+
+> > =
+
+> > > > Ok, this means we can keep my current approach with just letting
+> > > > ROCKCHIP_ANALOGIX_DP depend on ROCKCHIP_VOP to avoid having a non
+> > > Excuse me? How do you get this conclusion ?
+> > Given that you say that you want to have both more and less Kconfig
+> > dependencies I came to the conclusion that I only add one where it's
+> > necessary to compile the driver.
+> > =
+
+> > > I said before,=A0 vop and vop2 based platforms both have ROCKCHIP_ANA=
+LOGIX_DP.
+> > Maybe, but vop2 with ROCKCHIP_ANALOGIX_DP doesn't even work in the
+> > Rockchip downstream kernel, so I wonder how relevant this usecase really
+> > is.
+> =
+
+> =
+
+> No, this is not the truth. Rockchip_ANALOGIX_DP of course work with the
+> vendor kernel. We have many rk356x based products shipped with edp.
+> Even the VGA output interface on RK3568_EVB1 is drived by
+> ROCKCHIP_ANALOGIX_DP with a RTD2166 eDP to VGA convert
+> chip.
+> =
+
+> =
+
+> So how do you get conclusion that ROCKCHIP_ANALOGIX_DP can't work with
+> the Rockchip downstream kernel? Is it because you can't make the DP work =
+on
+> your board? If it is, please contact the supplier who gave you the board.
+
+In the downstream kernel I have available (which is a 5.10.66)
+analogix_dp-rockchip.c calls rockchip_drm_wait_vact_end() which is
+implemented in rockchip_drm_vop.c and assumes that the passed struct
+drm_crtc * can be converted to a struct vop *. Basically it's the same
+situation we have right now with the mainline kernel, just that the
+linker issues won't show up because the VOP driver can't be disabled
+in the downstream kernel.
+
+> =
+
+> =
+
+> Do you have a RK3568_EVB1 that has a VGA output interface on board?
+> =
+
+> If you have it, I can offer you image to verify the DP.
+> =
+
+> =
+
+> > > If this patch will cause the compile error, please do a real fix, not=
+ a
+> > I can't, because I don't have any hardware to test the Analogix DP on a
+> > VOP hardware, and given that Analogix DP in conjunction with VOP2 hardw=
+are is
+> > not even supported in the downstream Kernel I am not sure if it's really
+> > worth doing that.
+> =
+
+> =
+
+> Again, this is not the truth, see above.
+> I am not ask you support the ROCKCHIP_ANALOGIX_DP on upstream, I just
+> want you can give a better solution when you patch cause the compile erro=
+r.
+> Disable a module when it conflict with your patch is too rough.
+
+It does not conflict with my patch. The dependency only means that you can't
+enable the Analogix DP driver when the VOP driver is disabled. That
+doesn't hurt, because currently you can't do anything with the Analogix
+DP driver without the VOP driver. With the added dependency the Analogix DP
+driver can still be used with the VOP driver, even when the VOP2 driver
+is enabled. I really can't see a problem with that.
+
+Sascha
+
+-- =
+
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
