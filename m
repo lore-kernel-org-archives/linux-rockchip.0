@@ -4,82 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FF48C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Apr 2022 00:18:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1A47C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Apr 2022 04:53:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
+	Date:Message-ID:From:Cc:To:Subject:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R//chpLieOzW3F1THzyLztASCmYoaXOKZINUDCVnOwE=; b=1qrc41fuDIpBWh
-	fU5K4/4ZLTlcPnE6t7pG8yQpQwIKtUDJVIxUs9GiADKH4S0iYw0SpbNDn156QPrOW4EmU6uSAoTOO
-	xd+f3m1ZQtyW+/yy6OwUQtOnv1qYGL8IxJ2uxMORZMhT+KRh1gJWLy3L4xeqEAlN93rvhDkOkynOP
-	SLo96+MjHbsmPipbJkAviaG97MnJWHFCy9ubi3UVNQ6D9lTUc+vwZg5+7cd1cGB4ewapBK3A55Pe2
-	/Dpc8YWvwE2zLVxThB3U7rALc5nzR0CmdVlMLyfjPSfBPAAP+jCpg3J/n+LRBim/tj1o+yvgU5OVr
-	Jsdd5xgBqkgPhlIegjrQ==;
+	List-Owner; bh=j09AFWrxc2Me3kd32J0cW/tOixU8czxZ2xHJ1jSD3U4=; b=FF/MG74fDrrMuZ
+	bb5yxPd4MutClRymFLGkI/Ytkjpq8qgzC1tRsvMPJNnaDUPAwUFROMavk5yZL7mqnrCrpY6MHMrnm
+	kvxzhjMjqnVc5h1YczWfsMF2QpAEGDNCoGjEFQfITuvC8KMTGPdtCzi7gmXmpyZJ3amPjVPpL0kM+
+	gcql945yIsnqTjeLVuTx9kqH1Y67SVzsz0590+pIbbuv7gqXAaFRqfzu2cxUvf5QTHGCcwbfv9uwV
+	uxHayL5U6JmSs9P62pEekAOVhYhI+hT3UOgsG05hV5Su8d52hKdyYCZaTuSV1117YJsLAlRp7Bbj1
+	WHK+ahTpX9peo8bHbGqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncFrJ-008O8l-90; Thu, 07 Apr 2022 00:18:45 +0000
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+	id 1ncK9U-009PtB-8a; Thu, 07 Apr 2022 04:53:48 +0000
+Received: from mailout3.samsung.com ([203.254.224.33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncFrG-008O7U-5C; Thu, 07 Apr 2022 00:18:43 +0000
-Received: by mail-yb1-xb2e.google.com with SMTP id g9so6922058ybf.1;
- Wed, 06 Apr 2022 17:18:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ZtOF1nVWWzBfSRUWOWe7k3Yt8TMXFfwKhuj0f8PfubU=;
- b=EO5VUUX/W80B+fBVBJsYEDOCsFaQiNMDW5beaVeF9HSLky0j1AS9GTxVJheOdMOmc1
- e/YsuilJIpJgpKvlE3bhGyG/BoK3T1QmAUvesn40GV6dArXl0Ji+HMvymm+6OZF1QIui
- 4gKNuBn1B3ag4M2qJFi5LWntGs+gRmnFOdTOVqppF6ynv0O6+lh/BYwJzRyXjF3JZYQ4
- GHmF676qHtNSB14Ee/jsNZc2nzC3Xukq0DGB5s8mOlBxgAS7nkBQVnOl+hNTSrSSBYHS
- 1/IVCQtj1+d5ryZJqWVHkr/zGCESn9s62AF2hVf6Gn/nNkNzi6A4zreq7lwRYLYzbxlS
- ZkOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ZtOF1nVWWzBfSRUWOWe7k3Yt8TMXFfwKhuj0f8PfubU=;
- b=JQqFFp7H+NKcrwmlgHOXHa3GP8jhHfT7tfMyBqWSyd88Jt8d2ItwjWyCVl4bHrqiQJ
- cCwT508WwxKVgn4ELnFOnyL6cpPNJJG7QlZ3wHmlX8qERYqCl8cCT8Krai6DBTRrIXxF
- wR5DFsCXdMLiDCbMCyE1qZ1B3Q9wzYeGsPMk2MlOX2MeQdaK3uWkdSExnqc87R7sMIHs
- Zdab1Ge4TzDHAmisR8XSrzp4MvU8Aw3AIbYhlk4zC9vfw2YChThubSO5bBb1RjQyLrcZ
- pjtEjJBDY7sZ/hk+psKWZpVxyPaDkIjWseEJNHRF+/NeCQXpSB11wbvVdqTxk+LDUWrI
- URtg==
-X-Gm-Message-State: AOAM533YHUx8GrIUIOpkd8fd1hs0lsb545GfljtdzmT9rTluKpouDTrQ
- e6o3pLUOzTF41elhPANY2fXGRDVtJUz34X2OfzE=
-X-Google-Smtp-Source: ABdhPJwGTD192XDItbqnehwipWiszl88YKBj1/cCr8hW4ZcNNOR8Sh6kCNkZIWb8KmZt+rOlkcFI2tjFSvu2qaUleTw=
-X-Received: by 2002:a25:fc27:0:b0:634:65f8:a757 with SMTP id
- v39-20020a25fc27000000b0063465f8a757mr8121122ybd.228.1649290717522; Wed, 06
- Apr 2022 17:18:37 -0700 (PDT)
+ id 1ncJut-009MZF-9c
+ for linux-rockchip@lists.infradead.org; Thu, 07 Apr 2022 04:38:49 +0000
+Received: from epcas1p4.samsung.com (unknown [182.195.41.48])
+ by mailout3.samsung.com (KnoxPortal) with ESMTP id
+ 20220407043837epoutp034ebc001f881cbc48b3dd9a9ab9501704~jg1tfo-Eb3076530765epoutp032
+ for <linux-rockchip@lists.infradead.org>; Thu,  7 Apr 2022 04:38:37 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com
+ 20220407043837epoutp034ebc001f881cbc48b3dd9a9ab9501704~jg1tfo-Eb3076530765epoutp032
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1649306317;
+ bh=VHmiI3d9Xut6qR1GYICSsDU2ZZOA18eRLKHPPyc307U=;
+ h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
+ b=gsLIui/26xmkGg1aggE86NzFbPATs+W5xDdBC7PqVyhV9A8IItAFFbyCp5m3ig1oQ
+ HrSE8zos0LU7JVxVlQhTLVesGxXIgoH2/N86f0tjDlarHycEODlt3LJlcAeYAPpLJp
+ 3UMZmlu6EWdyBhKkn0UDHkFSCAGvD2g0l4dSXiMQ=
+Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
+ epcas1p1.samsung.com (KnoxPortal) with ESMTP id
+ 20220407043836epcas1p13f0f98ede8308b35b0f47a79dfa6b61b~jg1szUUrR0490404904epcas1p1P;
+ Thu,  7 Apr 2022 04:38:36 +0000 (GMT)
+Received: from epsmges1p2.samsung.com (unknown [182.195.38.235]) by
+ epsnrtp4.localdomain (Postfix) with ESMTP id 4KYpY61BKFz4x9QC; Thu,  7 Apr
+ 2022 04:38:34 +0000 (GMT)
+Received: from epcas1p2.samsung.com ( [182.195.41.46]) by
+ epsmges1p2.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 77.DB.08277.9CA6E426; Thu,  7 Apr 2022 13:38:33 +0900 (KST)
+Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
+ epcas1p4.samsung.com (KnoxPortal) with ESMTPA id
+ 20220407043833epcas1p4c3282e9e8cfcff21a51689e6d2293050~jg1qYaJLo2685326853epcas1p4M;
+ Thu,  7 Apr 2022 04:38:33 +0000 (GMT)
+Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
+ epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20220407043833epsmtrp1a1bcb069d063580f30896571bb102714~jg1qXh0UA0407204072epsmtrp1R;
+ Thu,  7 Apr 2022 04:38:33 +0000 (GMT)
+X-AuditID: b6c32a36-1edff70000002055-71-624e6ac9a435
+Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
+ epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
+ D7.30.24342.9CA6E426; Thu,  7 Apr 2022 13:38:33 +0900 (KST)
+Received: from [10.113.221.102] (unknown [10.113.221.102]) by
+ epsmtip2.samsung.com (KnoxPortal) with ESMTPA id
+ 20220407043833epsmtip2893e9265cfc281b777249027ed4cd0b3~jg1qDrOc40096900969epsmtip2c;
+ Thu,  7 Apr 2022 04:38:33 +0000 (GMT)
+Subject: Re: [RFC PATCH 1/2] soc: rockchip: power-domain: Manage resource
+ conflicts with firmware
+To: Brian Norris <briannorris@chromium.org>, MyungJoo Ham
+ <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Heiko
+ Stuebner <heiko@sntech.de>
+Cc: linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>,
+ linux-pm@vger.kernel.org, Doug Anderson <dianders@chromium.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Organization: Samsung Electronics
+Message-ID: <c8664eae-4a10-bd1a-8898-01b96c05331e@samsung.com>
+Date: Thu, 7 Apr 2022 14:04:09 +0900
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
+ Thunderbird/59.0
 MIME-Version: 1.0
-References: <20220127230727.3369358-1-briannorris@chromium.org>
- <20220127150615.v2.12.I3a5c7f21ecd8221b42c2dbcd618386bce7b3e9a6@changeid>
- <CAMdYzYo9Y_pEAAtreQU0B9DVzGsbUgpTA2g7HGRyUXcSBjMy4g@mail.gmail.com>
- <CA+ASDXP46bVqZAyzgUQkZAqqVf6Yc5Zg9CZ_1k0XCYUSYq_QLg@mail.gmail.com>
-In-Reply-To: <CA+ASDXP46bVqZAyzgUQkZAqqVf6Yc5Zg9CZ_1k0XCYUSYq_QLg@mail.gmail.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Wed, 6 Apr 2022 20:18:26 -0400
-Message-ID: <CAMdYzYqvjin-S0mKFZJ5pwe4yNhG9ZH77-VMNpnL3W2HSQ6gNQ@mail.gmail.com>
-Subject: Re: [PATCH v2 12/15] arm64: dts: rockchip: Enable dmc and dfi nodes
- on gru
-To: Brian Norris <briannorris@chromium.org>
-Cc: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>, 
- Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Lin Huang <hl@rock-chips.com>, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- Derek Basehore <dbasehore@chromium.org>,
- devicetree <devicetree@vger.kernel.org>, 
- linux-pm <linux-pm@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- =?UTF-8?B?R2HDq2wgUE9SVEFZ?= <gael.portay@collabora.com>, 
- Daniel Lezcano <daniel.lezcano@linaro.org>
+In-Reply-To: <20220405184816.RFC.1.Ib865f199d15221eab4ff77f70bd7e9e2eb04d32f@changeid>
+Content-Language: en-US
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrDJsWRmVeSWpSXmKPExsWy7bCmnu6pLL8kg/vWFps+vme1OLvsIJvF
+ /0evgaymN+wWmx5fY7W4vGsOm8Xn3iOMFp8e/Ge2uN24gs3i1sSbTA5cHrMbLrJ4bF5S7/F3
+ 1n4Wj74tqxg9tl+bx+zxeZNcAFtUtk1GamJKapFCal5yfkpmXrqtkndwvHO8qZmBoa6hpYW5
+ kkJeYm6qrZKLT4CuW2YO0GFKCmWJOaVAoYDE4mIlfTubovzSklSFjPziElul1IKUnALTAr3i
+ xNzi0rx0vbzUEitDAwMjU6DChOyM2atWsRW8CKy4NIGrgXGqYxcjJ4eEgInE4ScnmbsYuTiE
+ BHYwSrRM/cYO4XxilPi19iArhPONUaJzwk5WmJa2F0uhWvYySvTuXsMI4bxnlDg+v40JpEpY
+ IFni+7FGsCoRgaWMEje2vwNLMAvcYJTonqEEYrMJaEnsf3GDDcTmF1CUuPrjMSOIzStgJzH3
+ 4Ad2EJtFQEVi1sz5LCC2qECYxMltLVA1ghInZz4Bi3MCxc8972SEmC8ucevJfKhd8hLb384B
+ O0JCYAuHxN1bc5khfnCR2HhvKhuELSzx6vgWdghbSuJlfxs7REMzo0TDi9uMEE4Po8TRZ30s
+ EFXGEvuXTgZawQG0QlNi/S59iLCixM7fc6Gu4JN497WHFaREQoBXoqNNCKJEWeLyg7tMELak
+ xOL2TrYJjEqzkPwzC8kPs5D8MAth2QJGllWMYqkFxbnpqcWGBUbw+E7Oz93ECE62WmY7GCe9
+ /aB3iJGJg/EQowQHs5IIb1WuT5IQb0piZVVqUX58UWlOavEhRlNgCE9klhJNzgem+7ySeEMT
+ SwMTMyNjEwtDM0Mlcd5V004nCgmkJ5akZqemFqQWwfQxcXBKNTCZ98RWyP6uMzspcHQKq4WG
+ 5cF/565P/rP/pezSGe/N4loy70vd3z3rfijT2bv+gosnMPr/FuBgaMsrs97xe7UJY63qXgPr
+ JrNtfQqnQtoYKsR36nIqsVeHbWm4K/s4MmR6XG3EZPsY/j16pb7TDrcquspmGH3eLTWFoTTF
+ Y87lOXVKS478au6f8HnlJM7f0sWmGmdX5/crij5vrS971pjkLOAkMit5X+Xd99YO3l9N67gc
+ 79+xW8257dJkXpOEH9P+35j4mnXy8+OXfhiYS++vsBGyyn7253XG8S++AS0HT8m1hKdldz5w
+ Xv55kWdmeVWW4cqz04wClmcvXW/8ZcahExJFy+S8F7G8XlmptE+JpTgj0VCLuag4EQBlqM7u
+ PwQAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprOIsWRmVeSWpSXmKPExsWy7bCSvO7JLL8kgyVT5C02fXzPanF22UE2
+ i/+PXgNZTW/YLTY9vsZqcXnXHDaLz71HGC0+PfjPbHG7cQWbxa2JN5kcuDxmN1xk8di8pN7j
+ 76z9LB59W1Yxemy/No/Z4/MmuQC2KC6blNSczLLUIn27BK6M2atWsRW8CKy4NIGrgXGqYxcj
+ J4eEgIlE24ulzF2MXBxCArsZJS5sWMgOkZCUmHbxKFCCA8gWljh8uBii5i1QzaxmFpAaYYFk
+ ie/HGsGaRQSWMkr07//FBuIwC9xglJh+fBsLRMt9RonuyT+YQVrYBLQk9r+4wQZi8wsoSlz9
+ 8ZgRxOYVsJOYe/AD2GoWARWJWTPng60QFQiT2LnkMRNEjaDEyZlPwOKcQPFzzzvBepkF1CX+
+ zLvEDGGLS9x6Mp8JwpaX2P52DvMERuFZSNpnIWmZhaRlFpKWBYwsqxglUwuKc9Nziw0LDPNS
+ y/WKE3OLS/PS9ZLzczcxguNOS3MH4/ZVH/QOMTJxMB5ilOBgVhLhrcr1SRLiTUmsrEotyo8v
+ Ks1JLT7EKM3BoiTOe6HrZLyQQHpiSWp2ampBahFMlomDU6qByXBP+fkK6V0dK1fIq0nMFNlS
+ NHG2zONtxcqzzEO9/nyL+jI74XFc8bKm88fqKjJzl91ZHfB/9bvtJsvPMisGxIlXSe5ViRPl
+ VNwj/vKuxfyctiqXsjVnRQpvPg+Y/ay7sbn+6ckNW//8tbJJuR08L+ihaOMF8fbC2Ny5Alu2
+ ztv4NyjfRVmlny3xHcPnKIOnHZL1fFGmJrnPvRM/uBYH75q7k+HpgicJq7obZc1+GjO+dOMV
+ /1uxdM6px63ld+aoSE14M6dmX9ztnx8EmFISUsQlJ3AEbJ1iHLQqXH3ixhmB74+yHjW1FDPI
+ e9mgZ5vxSlfwyGVztyl99jqb9347elA1Wd577a/DfyvnvExQVGIpzkg01GIuKk4EAIyYoecq
+ AwAA
+X-CMS-MailID: 20220407043833epcas1p4c3282e9e8cfcff21a51689e6d2293050
+X-Msg-Generator: CA
+X-Sendblock-Type: SVC_REQ_APPROVE
+CMS-TYPE: 101P
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20220406094558epcas1p4fa0c77a5acd6b73c192f6b19136cd5f9
+References: <20220406014842.2771799-1-briannorris@chromium.org>
+ <CGME20220406094558epcas1p4fa0c77a5acd6b73c192f6b19136cd5f9@epcas1p4.samsung.com>
+ <20220405184816.RFC.1.Ib865f199d15221eab4ff77f70bd7e9e2eb04d32f@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_171842_254601_7FBA7D26 
-X-CRM114-Status: GOOD (  21.66  )
+X-CRM114-CacheID: sfid-20220406_213843_749714_7B7C89FF 
+X-CRM114-Status: GOOD (  60.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,42 +145,307 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 5, 2022 at 10:05 PM Brian Norris <briannorris@chromium.org> wrote:
->
-> Hello again Peter,
->
-> On Fri, Mar 4, 2022 at 6:47 AM Peter Geis <pgwipeout@gmail.com> wrote:
-> > Transitions anywhere from the default 800mhz cause a lock.
-> >
-> > I'm digging deeper, but I'm hoping you can answer some questions in
-> > the meantime:
-> > 1. Does this require something from firmware that isn't available on
-> > Mainline ATF? (AKA special firmware to the Chromebook line)
-> > 2. If not, do you have any recommendations off the top of your head?
->
-> I may have a better answer for you now. In the intervening time
-> period, I've discovered a potentially-relevant bug, involving
-> interactions between the kernel power-domain driver and ATF. See this
-> series for my current fixes:
->
-> https://lore.kernel.org/linux-rockchip/20220406014842.2771799-1-briannorris@chromium.org/
-> [RFC PATCH 0/2] rockchip / devfreq: Coordinate DRAM controller
-> resources between ATF and kernel
->
-> If that happens to help you (it may help, for instance, if your system
-> was toggling NPLL off/on like mine was; it also may help if you're
-> hitting a race on PMU_BUS_IDLE_REQ like noticed in patch 1), I'd love
-> your feedback there.
->
-> It's still possible your problems are completely unrelated though.
+Hi Brian,
 
-Thank you, that is certainly possible to be the problem here as well.
-I won't have time to test them till this weekend, but you can count on
-my feedback as soon as I get the time to do so.
+Thanks for very detailed description.
+I understand this issue.
 
->
-> Regards,
-> Brian
+Instead of adding the specific function for only rockchip,
+how about adding new function pointer (like block/unblock or start/stop and others)
+into 'struct generic_pm_domain'? And add new pm_genpd_* function
+to control the power domain. Because it is better to use subsystem interface.
+
+Best Regards,
+Chanwoo Choi
+
+
+On 4/6/22 10:48 AM, Brian Norris wrote:
+> On RK3399 platforms, power domains are managed mostly by the kernel
+> (drivers/soc/rockchip/pm_domains.c), but there are a few exceptions
+> where ARM Trusted Firmware has to be involved:
+> 
+> (1) system suspend/resume
+> (2) DRAM DVFS (a.k.a., "ddrfreq")
+> 
+> Exception (1) does not cause much conflict, since the kernel has
+> quiesced itself by the time we make the relevant PSCI call.
+> 
+> Exception (2) can cause conflict, because of two actions:
+> 
+> (a) ARM Trusted Firmware needs to read/modify/write the PMU_BUS_IDLE_REQ
+>     register to idle the memory controller domain; the kernel driver
+>     also has to touch this register for other domains.
+> (b) ARM Trusted Firmware needs to manage the clocks associated with
+>     these domains.
+> 
+> To elaborate on (b): idling a power domain has always required ungating
+> an array of clocks; see this old explanation from Rockchip:
+> https://lore.kernel.org/linux-arm-kernel/54503C19.9060607@rock-chips.com/
+> 
+> Historically, ARM Trusted Firmware has avoided this issue by using a
+> special PMU_CRU_GATEDIS_CON0 register -- this register ungates all the
+> necessary clocks -- when idling the memory controller. Unfortunately,
+> we've found that this register is not 100% sufficient; it does not turn
+> the relevant PLLs on [0].
+> 
+> So it's possible to trigger issues with something like the following:
+> 
+> 1. enable a power domain (e.g., RK3399_PD_VDU) -- kernel will
+>    temporarily enable relevant clocks/PLLs, then turn them back off
+>    2. a PLL (e.g., PLL_NPLL) is part of the clock tree for
+>       RK3399_PD_VDU's clocks but otherwise unused; NPLL is disabled
+> 3. perform a ddrfreq transition (rk3399_dmcfreq_target() -> ...
+>    drivers/clk/rockchip/clk-ddr.c / ROCKCHIP_SIP_DRAM_FREQ)
+>    4. ARM Trusted Firmware unagates VDU clocks (via PMU_CRU_GATEDIS_CON0)
+>    5. ARM Trusted firmware idles the memory controller domain
+>    6. Step 5 waits on the VDU domain/clocks, but NPLL is still off
+> 
+> i.e., we hang the system.
+> 
+> So for (b), we need to at a minimum manage the relevant PLLs on behalf
+> of firmware. It's easier to simply manage the whole clock tree, in a
+> similar way we do in rockchip_pd_power().
+> 
+> For (a), we need to provide mutual exclusion betwen rockchip_pd_power()
+> and firmware. To resolve that, we simply grab the PMU mutex and release
+> it when ddrfreq is done.
+> 
+> The Chromium OS kernel has been carrying versions of part of this hack
+> for a while, based on some new custom notifiers [1]. I've rewritten as a
+> simple function call between the drivers, which is OK because:
+> 
+>  * the PMU driver isn't enabled, and we don't have this problem at all
+>    (the firmware should have left us in an OK state, and there are no
+>    runtime conflicts); or
+>  * the PMU driver is present, and is a single instance.
+> 
+> And the power-domain driver cannot be removed, so there's no lifetime
+> management to worry about.
+> 
+> For completeness, there's a 'dmc_pmu_mutex' to guard (likely
+> theoretical?) probe()-time races. It's OK for the memory controller
+> driver to start running before the PMU, because the PMU will avoid any
+> critical actions during the block() sequence.
+> 
+> [0] The RK3399 TRM for PMU_CRU_GATEDIS_CON0 only talks about ungating
+>     clocks. Based on experimentation, we've found that it does not power
+>     up the necessary PLLs.
+> 
+> [1] CHROMIUM: soc: rockchip: power-domain: Add notifier to dmc driver
+>     https://chromium-review.googlesource.com/q/I242dbd706d352f74ff706f5cbf42ebb92f9bcc60
+>     Notably, the Chromium solution only handled conflict (a), not (b).
+>     In practice, item (b) wasn't a problem in many cases because we
+>     never managed to fully power off PLLs. Now that the (upstream) video
+>     decoder driver performs runtime clock management, we often power off
+>     NPLL.
+> 
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
+> ---
+> 
+>  drivers/soc/rockchip/pm_domains.c | 118 ++++++++++++++++++++++++++++++
+>  include/soc/rockchip/pm_domains.h |  25 +++++++
+>  2 files changed, 143 insertions(+)
+>  create mode 100644 include/soc/rockchip/pm_domains.h
+> 
+> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+> index 1b029e494274..bc0afc52299b 100644
+> --- a/drivers/soc/rockchip/pm_domains.c
+> +++ b/drivers/soc/rockchip/pm_domains.c
+> @@ -8,6 +8,7 @@
+>  #include <linux/io.h>
+>  #include <linux/iopoll.h>
+>  #include <linux/err.h>
+> +#include <linux/mutex.h>
+>  #include <linux/pm_clock.h>
+>  #include <linux/pm_domain.h>
+>  #include <linux/of_address.h>
+> @@ -16,6 +17,7 @@
+>  #include <linux/clk.h>
+>  #include <linux/regmap.h>
+>  #include <linux/mfd/syscon.h>
+> +#include <soc/rockchip/pm_domains.h>
+>  #include <dt-bindings/power/px30-power.h>
+>  #include <dt-bindings/power/rk3036-power.h>
+>  #include <dt-bindings/power/rk3066-power.h>
+> @@ -139,6 +141,109 @@ struct rockchip_pmu {
+>  #define DOMAIN_RK3568(name, pwr, req, wakeup)		\
+>  	DOMAIN_M(name, pwr, pwr, req, req, req, wakeup)
+>  
+> +/*
+> + * Dynamic Memory Controller may need to coordinate with us -- see
+> + * rockchip_pmu_block().
+> + *
+> + * dmc_pmu_mutex protects registration-time races, so DMC driver doesn't try to
+> + * block() while we're initializing the PMU.
+> + */
+> +static DEFINE_MUTEX(dmc_pmu_mutex);
+> +static struct rockchip_pmu *dmc_pmu;
+> +
+> +/*
+> + * Block PMU transitions and make sure they don't interfere with ARM Trusted
+> + * Firmware operations. There are two conflicts, noted in the comments below.
+> + *
+> + * Caller must unblock PMU transitions via rockchip_pmu_unblock().
+> + */
+> +int rockchip_pmu_block(void)
+> +{
+> +	struct rockchip_pmu *pmu;
+> +	struct generic_pm_domain *genpd;
+> +	struct rockchip_pm_domain *pd;
+> +	int i, ret;
+> +
+> +	mutex_lock(&dmc_pmu_mutex);
+> +
+> +	/* No PMU (yet)? Then we just block rockchip_pmu_probe(). */
+> +	if (!dmc_pmu)
+> +		return 0;
+> +	pmu = dmc_pmu;
+> +
+> +	/*
+> +	 * mutex blocks all idle transitions: we can't touch the
+> +	 * PMU_BUS_IDLE_REQ (our ".idle_offset") register while ARM Trusted
+> +	 * Firmware might be using it.
+> +	 */
+> +	mutex_lock(&pmu->mutex);
+> +
+> +	/*
+> +	 * Power domain clocks: Per Rockchip, we *must* keep certain clocks
+> +	 * enabled for the duration of power-domain transitions. Most
+> +	 * transitions are handled by this driver, but some cases (in
+> +	 * particular, DRAM DVFS / memory-controller idle) must be handled by
+> +	 * firmware. Firmware can handle most clock management via a special
+> +	 * "ungate" register (PMU_CRU_GATEDIS_CON0), but unfortunately, this
+> +	 * doesn't handle PLLs. We can assist this transition by doing the
+> +	 * clock management on behalf of firmware.
+> +	 */
+> +	for (i = 0; i < pmu->genpd_data.num_domains; i++) {
+> +		genpd = pmu->genpd_data.domains[i];
+> +		if (genpd) {
+> +			pd = to_rockchip_pd(genpd);
+> +			ret = clk_bulk_enable(pd->num_clks, pd->clks);
+> +			if (ret < 0) {
+> +				dev_err(pmu->dev,
+> +					"failed to enable clks for domain '%s': %d\n",
+> +					genpd->name, ret);
+> +				goto err;
+> +			}
+> +		}
+> +	}
+> +
+> +	return 0;
+> +
+> +err:
+> +	for (i = i - 1; i >= 0; i--) {
+> +		genpd = pmu->genpd_data.domains[i];
+> +		if (genpd) {
+> +			pd = to_rockchip_pd(genpd);
+> +			clk_bulk_disable(pd->num_clks, pd->clks);
+> +		}
+> +	}
+> +	mutex_unlock(&pmu->mutex);
+> +	mutex_unlock(&dmc_pmu_mutex);
+> +
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(rockchip_pmu_block);
+> +
+> +/* Unblock PMU transitions. */
+> +void rockchip_pmu_unblock(void)
+> +{
+> +	struct rockchip_pmu *pmu;
+> +	struct generic_pm_domain *genpd;
+> +	struct rockchip_pm_domain *pd;
+> +	int i;
+> +
+> +	if (dmc_pmu) {
+> +		pmu = dmc_pmu;
+> +		for (i = 0; i < pmu->genpd_data.num_domains; i++) {
+> +			genpd = pmu->genpd_data.domains[i];
+> +			if (genpd) {
+> +				pd = to_rockchip_pd(genpd);
+> +				clk_bulk_disable(pd->num_clks, pd->clks);
+> +			}
+> +		}
+> +
+> +		mutex_unlock(&pmu->mutex);
+> +	}
+> +
+> +	mutex_unlock(&dmc_pmu_mutex);
+> +}
+> +EXPORT_SYMBOL_GPL(rockchip_pmu_unblock);
+> +
+>  static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *pd)
+>  {
+>  	struct rockchip_pmu *pmu = pd->pmu;
+> @@ -690,6 +795,12 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
+>  
+>  	error = -ENODEV;
+>  
+> +	/*
+> +	 * Prevent any rockchip_pmu_block() from racing with the remainder of
+> +	 * setup (clocks, register initialization).
+> +	 */
+> +	mutex_lock(&dmc_pmu_mutex);
+> +
+>  	for_each_available_child_of_node(np, node) {
+>  		error = rockchip_pm_add_one_domain(pmu, node);
+>  		if (error) {
+> @@ -719,10 +830,17 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
+>  		goto err_out;
+>  	}
+>  
+> +	/* We only expect one PMU. */
+> +	if (!WARN_ON_ONCE(dmc_pmu))
+> +		dmc_pmu = pmu;
+> +
+> +	mutex_unlock(&dmc_pmu_mutex);
+> +
+>  	return 0;
+>  
+>  err_out:
+>  	rockchip_pm_domain_cleanup(pmu);
+> +	mutex_unlock(&dmc_pmu_mutex);
+>  	return error;
+>  }
+>  
+> diff --git a/include/soc/rockchip/pm_domains.h b/include/soc/rockchip/pm_domains.h
+> new file mode 100644
+> index 000000000000..7dbd941fc937
+> --- /dev/null
+> +++ b/include/soc/rockchip/pm_domains.h
+> @@ -0,0 +1,25 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright 2022, The Chromium OS Authors. All rights reserved.
+> + */
+> +
+> +#ifndef __SOC_ROCKCHIP_PM_DOMAINS_H__
+> +#define __SOC_ROCKCHIP_PM_DOMAINS_H__
+> +
+> +#ifdef CONFIG_ROCKCHIP_PM_DOMAINS
+> +
+> +int rockchip_pmu_block(void);
+> +void rockchip_pmu_unblock(void);
+> +
+> +#else /* CONFIG_ROCKCHIP_PM_DOMAINS */
+> +
+> +static inline int rockchip_pmu_block(void)
+> +{
+> +	return 0;
+> +}
+> +
+> +static inline void rockchip_pmu_unblock(void) { }
+> +
+> +#endif /* CONFIG_ROCKCHIP_PM_DOMAINS */
+> +
+> +#endif /* __SOC_ROCKCHIP_PM_DOMAINS_H__ */
+> 
+
+
+-- 
+Best Regards,
+Chanwoo Choi
+Samsung Electronics
 
 _______________________________________________
 Linux-rockchip mailing list
