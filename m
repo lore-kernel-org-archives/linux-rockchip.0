@@ -4,130 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1A47C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Apr 2022 04:53:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34785C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Apr 2022 10:17:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
-	Date:Message-ID:From:Cc:To:Subject:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j09AFWrxc2Me3kd32J0cW/tOixU8czxZ2xHJ1jSD3U4=; b=FF/MG74fDrrMuZ
-	bb5yxPd4MutClRymFLGkI/Ytkjpq8qgzC1tRsvMPJNnaDUPAwUFROMavk5yZL7mqnrCrpY6MHMrnm
-	kvxzhjMjqnVc5h1YczWfsMF2QpAEGDNCoGjEFQfITuvC8KMTGPdtCzi7gmXmpyZJ3amPjVPpL0kM+
-	gcql945yIsnqTjeLVuTx9kqH1Y67SVzsz0590+pIbbuv7gqXAaFRqfzu2cxUvf5QTHGCcwbfv9uwV
-	uxHayL5U6JmSs9P62pEekAOVhYhI+hT3UOgsG05hV5Su8d52hKdyYCZaTuSV1117YJsLAlRp7Bbj1
-	WHK+ahTpX9peo8bHbGqg==;
+	List-Owner; bh=XYzkMqoQPshYhIju5/OMgXSLJ5G9yLJhXwqRLbNWWeY=; b=eeXkowRW3BzBzF
+	SN3WuuFUFtf7GjEBieGNEI1+tWDwSf+7CBYyvDWCsJJk8dsxHKxulGX+LQV3iEwkswvVMl/HzV/IZ
+	lWuHqFGQJ5Th3pGj00gKDJyyQVSODDonNCVaAXovp/jSSuvGRGKK5fzMMZmB++SptH9kgtLrlqgas
+	BdBXXrljia3jQN62z7zu0zA0eYm7GeJsI7s2gD09D/3cW++qih22UGRAoIX6f1V6erPfL7/r6F/l+
+	Kp1S/WiOi5oV00681T80HAOxtwI9KcF/75c+Wcsuu56XyAVJTNRYROgRmXp/yLSL6Dnutr4F9O1MI
+	xcREkMktNz4DMnFoB8CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncK9U-009PtB-8a; Thu, 07 Apr 2022 04:53:48 +0000
-Received: from mailout3.samsung.com ([203.254.224.33])
+	id 1ncPCL-00BAiP-Ed; Thu, 07 Apr 2022 10:17:05 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncJut-009MZF-9c
- for linux-rockchip@lists.infradead.org; Thu, 07 Apr 2022 04:38:49 +0000
-Received: from epcas1p4.samsung.com (unknown [182.195.41.48])
- by mailout3.samsung.com (KnoxPortal) with ESMTP id
- 20220407043837epoutp034ebc001f881cbc48b3dd9a9ab9501704~jg1tfo-Eb3076530765epoutp032
- for <linux-rockchip@lists.infradead.org>; Thu,  7 Apr 2022 04:38:37 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com
- 20220407043837epoutp034ebc001f881cbc48b3dd9a9ab9501704~jg1tfo-Eb3076530765epoutp032
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1649306317;
- bh=VHmiI3d9Xut6qR1GYICSsDU2ZZOA18eRLKHPPyc307U=;
- h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
- b=gsLIui/26xmkGg1aggE86NzFbPATs+W5xDdBC7PqVyhV9A8IItAFFbyCp5m3ig1oQ
- HrSE8zos0LU7JVxVlQhTLVesGxXIgoH2/N86f0tjDlarHycEODlt3LJlcAeYAPpLJp
- 3UMZmlu6EWdyBhKkn0UDHkFSCAGvD2g0l4dSXiMQ=
-Received: from epsnrtp4.localdomain (unknown [182.195.42.165]) by
- epcas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20220407043836epcas1p13f0f98ede8308b35b0f47a79dfa6b61b~jg1szUUrR0490404904epcas1p1P;
- Thu,  7 Apr 2022 04:38:36 +0000 (GMT)
-Received: from epsmges1p2.samsung.com (unknown [182.195.38.235]) by
- epsnrtp4.localdomain (Postfix) with ESMTP id 4KYpY61BKFz4x9QC; Thu,  7 Apr
- 2022 04:38:34 +0000 (GMT)
-Received: from epcas1p2.samsung.com ( [182.195.41.46]) by
- epsmges1p2.samsung.com (Symantec Messaging Gateway) with SMTP id
- 77.DB.08277.9CA6E426; Thu,  7 Apr 2022 13:38:33 +0900 (KST)
-Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
- epcas1p4.samsung.com (KnoxPortal) with ESMTPA id
- 20220407043833epcas1p4c3282e9e8cfcff21a51689e6d2293050~jg1qYaJLo2685326853epcas1p4M;
- Thu,  7 Apr 2022 04:38:33 +0000 (GMT)
-Received: from epsmgms1p1new.samsung.com (unknown [182.195.42.41]) by
- epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20220407043833epsmtrp1a1bcb069d063580f30896571bb102714~jg1qXh0UA0407204072epsmtrp1R;
- Thu,  7 Apr 2022 04:38:33 +0000 (GMT)
-X-AuditID: b6c32a36-1edff70000002055-71-624e6ac9a435
-Received: from epsmtip2.samsung.com ( [182.195.34.31]) by
- epsmgms1p1new.samsung.com (Symantec Messaging Gateway) with SMTP id
- D7.30.24342.9CA6E426; Thu,  7 Apr 2022 13:38:33 +0900 (KST)
-Received: from [10.113.221.102] (unknown [10.113.221.102]) by
- epsmtip2.samsung.com (KnoxPortal) with ESMTPA id
- 20220407043833epsmtip2893e9265cfc281b777249027ed4cd0b3~jg1qDrOc40096900969epsmtip2c;
- Thu,  7 Apr 2022 04:38:33 +0000 (GMT)
-Subject: Re: [RFC PATCH 1/2] soc: rockchip: power-domain: Manage resource
- conflicts with firmware
-To: Brian Norris <briannorris@chromium.org>, MyungJoo Ham
- <myungjoo.ham@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, Heiko
- Stuebner <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>,
- linux-pm@vger.kernel.org, Doug Anderson <dianders@chromium.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Organization: Samsung Electronics
-Message-ID: <c8664eae-4a10-bd1a-8898-01b96c05331e@samsung.com>
-Date: Thu, 7 Apr 2022 14:04:09 +0900
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
- Thunderbird/59.0
+ id 1ncPC4-00BAb4-4m
+ for linux-rockchip@lists.infradead.org; Thu, 07 Apr 2022 10:16:50 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1ncPC1-0003YL-0L; Thu, 07 Apr 2022 12:16:45 +0200
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1ncPBy-0007PN-7B; Thu, 07 Apr 2022 12:16:42 +0200
+Date: Thu, 7 Apr 2022 12:16:42 +0200
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Cc: dri-devel@lists.freedesktop.org,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
+Message-ID: <20220407101642.GE4012@pengutronix.de>
+References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
+ <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
+ <20220401125205.GL4012@pengutronix.de>
+ <5420D26D-34FD-4637-B602-F6271E38BB8D@gmail.com>
+ <BA4C591F-D115-43D2-BF59-A75B29889E50@gmail.com>
+ <20220406145847.GX4012@pengutronix.de>
+ <1A6985CC-CBEB-44B2-AA61-3005D204C023@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20220405184816.RFC.1.Ib865f199d15221eab4ff77f70bd7e9e2eb04d32f@changeid>
-Content-Language: en-US
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrDJsWRmVeSWpSXmKPExsWy7bCmnu6pLL8kg/vWFps+vme1OLvsIJvF
- /0evgaymN+wWmx5fY7W4vGsOm8Xn3iOMFp8e/Ge2uN24gs3i1sSbTA5cHrMbLrJ4bF5S7/F3
- 1n4Wj74tqxg9tl+bx+zxeZNcAFtUtk1GamJKapFCal5yfkpmXrqtkndwvHO8qZmBoa6hpYW5
- kkJeYm6qrZKLT4CuW2YO0GFKCmWJOaVAoYDE4mIlfTubovzSklSFjPziElul1IKUnALTAr3i
- xNzi0rx0vbzUEitDAwMjU6DChOyM2atWsRW8CKy4NIGrgXGqYxcjJ4eEgInE4ScnmbsYuTiE
- BHYwSrRM/cYO4XxilPi19iArhPONUaJzwk5WmJa2F0uhWvYySvTuXsMI4bxnlDg+v40JpEpY
- IFni+7FGsCoRgaWMEje2vwNLMAvcYJTonqEEYrMJaEnsf3GDDcTmF1CUuPrjMSOIzStgJzH3
- 4Ad2EJtFQEVi1sz5LCC2qECYxMltLVA1ghInZz4Bi3MCxc8972SEmC8ucevJfKhd8hLb384B
- O0JCYAuHxN1bc5khfnCR2HhvKhuELSzx6vgWdghbSuJlfxs7REMzo0TDi9uMEE4Po8TRZ30s
- EFXGEvuXTgZawQG0QlNi/S59iLCixM7fc6Gu4JN497WHFaREQoBXoqNNCKJEWeLyg7tMELak
- xOL2TrYJjEqzkPwzC8kPs5D8MAth2QJGllWMYqkFxbnpqcWGBUbw+E7Oz93ECE62WmY7GCe9
- /aB3iJGJg/EQowQHs5IIb1WuT5IQb0piZVVqUX58UWlOavEhRlNgCE9klhJNzgem+7ySeEMT
- SwMTMyNjEwtDM0Mlcd5V004nCgmkJ5akZqemFqQWwfQxcXBKNTCZ98RWyP6uMzspcHQKq4WG
- 5cF/565P/rP/pezSGe/N4loy70vd3z3rfijT2bv+gosnMPr/FuBgaMsrs97xe7UJY63qXgPr
- JrNtfQqnQtoYKsR36nIqsVeHbWm4K/s4MmR6XG3EZPsY/j16pb7TDrcquspmGH3eLTWFoTTF
- Y87lOXVKS478au6f8HnlJM7f0sWmGmdX5/crij5vrS971pjkLOAkMit5X+Xd99YO3l9N67gc
- 79+xW8257dJkXpOEH9P+35j4mnXy8+OXfhiYS++vsBGyyn7253XG8S++AS0HT8m1hKdldz5w
- Xv55kWdmeVWW4cqz04wClmcvXW/8ZcahExJFy+S8F7G8XlmptE+JpTgj0VCLuag4EQBlqM7u
- PwQAAA==
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprOIsWRmVeSWpSXmKPExsWy7bCSvO7JLL8kgyVT5C02fXzPanF22UE2
- i/+PXgNZTW/YLTY9vsZqcXnXHDaLz71HGC0+PfjPbHG7cQWbxa2JN5kcuDxmN1xk8di8pN7j
- 76z9LB59W1Yxemy/No/Z4/MmuQC2KC6blNSczLLUIn27BK6M2atWsRW8CKy4NIGrgXGqYxcj
- J4eEgIlE24ulzF2MXBxCArsZJS5sWMgOkZCUmHbxKFCCA8gWljh8uBii5i1QzaxmFpAaYYFk
- ie/HGsGaRQSWMkr07//FBuIwC9xglJh+fBsLRMt9RonuyT+YQVrYBLQk9r+4wQZi8wsoSlz9
- 8ZgRxOYVsJOYe/AD2GoWARWJWTPng60QFQiT2LnkMRNEjaDEyZlPwOKcQPFzzzvBepkF1CX+
- zLvEDGGLS9x6Mp8JwpaX2P52DvMERuFZSNpnIWmZhaRlFpKWBYwsqxglUwuKc9Nziw0LDPNS
- y/WKE3OLS/PS9ZLzczcxguNOS3MH4/ZVH/QOMTJxMB5ilOBgVhLhrcr1SRLiTUmsrEotyo8v
- Ks1JLT7EKM3BoiTOe6HrZLyQQHpiSWp2ampBahFMlomDU6qByXBP+fkK6V0dK1fIq0nMFNlS
- NHG2zONtxcqzzEO9/nyL+jI74XFc8bKm88fqKjJzl91ZHfB/9bvtJsvPMisGxIlXSe5ViRPl
- VNwj/vKuxfyctiqXsjVnRQpvPg+Y/ay7sbn+6ckNW//8tbJJuR08L+ihaOMF8fbC2Ny5Alu2
- ztv4NyjfRVmlny3xHcPnKIOnHZL1fFGmJrnPvRM/uBYH75q7k+HpgicJq7obZc1+GjO+dOMV
- /1uxdM6px63ld+aoSE14M6dmX9ztnx8EmFISUsQlJ3AEbJ1iHLQqXH3ixhmB74+yHjW1FDPI
- e9mgZ5vxSlfwyGVztyl99jqb9347elA1Wd577a/DfyvnvExQVGIpzkg01GIuKk4EAIyYoecq
- AwAA
-X-CMS-MailID: 20220407043833epcas1p4c3282e9e8cfcff21a51689e6d2293050
-X-Msg-Generator: CA
-X-Sendblock-Type: SVC_REQ_APPROVE
-CMS-TYPE: 101P
-DLP-Filter: Pass
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20220406094558epcas1p4fa0c77a5acd6b73c192f6b19136cd5f9
-References: <20220406014842.2771799-1-briannorris@chromium.org>
- <CGME20220406094558epcas1p4fa0c77a5acd6b73c192f6b19136cd5f9@epcas1p4.samsung.com>
- <20220405184816.RFC.1.Ib865f199d15221eab4ff77f70bd7e9e2eb04d32f@changeid>
+Content-Disposition: inline
+In-Reply-To: <1A6985CC-CBEB-44B2-AA61-3005D204C023@gmail.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 12:03:24 up 7 days, 22:33, 69 users, load average: 0.45, 0.37, 0.25
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220406_213843_749714_7B7C89FF 
-X-CRM114-Status: GOOD (  60.15  )
+X-CRM114-CacheID: sfid-20220407_031648_227876_97BD3E86 
+X-CRM114-Status: GOOD (  31.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,314 +85,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Brian,
-
-Thanks for very detailed description.
-I understand this issue.
-
-Instead of adding the specific function for only rockchip,
-how about adding new function pointer (like block/unblock or start/stop and others)
-into 'struct generic_pm_domain'? And add new pm_genpd_* function
-to control the power domain. Because it is better to use subsystem interface.
-
-Best Regards,
-Chanwoo Choi
-
-
-On 4/6/22 10:48 AM, Brian Norris wrote:
-> On RK3399 platforms, power domains are managed mostly by the kernel
-> (drivers/soc/rockchip/pm_domains.c), but there are a few exceptions
-> where ARM Trusted Firmware has to be involved:
-> 
-> (1) system suspend/resume
-> (2) DRAM DVFS (a.k.a., "ddrfreq")
-> 
-> Exception (1) does not cause much conflict, since the kernel has
-> quiesced itself by the time we make the relevant PSCI call.
-> 
-> Exception (2) can cause conflict, because of two actions:
-> 
-> (a) ARM Trusted Firmware needs to read/modify/write the PMU_BUS_IDLE_REQ
->     register to idle the memory controller domain; the kernel driver
->     also has to touch this register for other domains.
-> (b) ARM Trusted Firmware needs to manage the clocks associated with
->     these domains.
-> 
-> To elaborate on (b): idling a power domain has always required ungating
-> an array of clocks; see this old explanation from Rockchip:
-> https://lore.kernel.org/linux-arm-kernel/54503C19.9060607@rock-chips.com/
-> 
-> Historically, ARM Trusted Firmware has avoided this issue by using a
-> special PMU_CRU_GATEDIS_CON0 register -- this register ungates all the
-> necessary clocks -- when idling the memory controller. Unfortunately,
-> we've found that this register is not 100% sufficient; it does not turn
-> the relevant PLLs on [0].
-> 
-> So it's possible to trigger issues with something like the following:
-> 
-> 1. enable a power domain (e.g., RK3399_PD_VDU) -- kernel will
->    temporarily enable relevant clocks/PLLs, then turn them back off
->    2. a PLL (e.g., PLL_NPLL) is part of the clock tree for
->       RK3399_PD_VDU's clocks but otherwise unused; NPLL is disabled
-> 3. perform a ddrfreq transition (rk3399_dmcfreq_target() -> ...
->    drivers/clk/rockchip/clk-ddr.c / ROCKCHIP_SIP_DRAM_FREQ)
->    4. ARM Trusted Firmware unagates VDU clocks (via PMU_CRU_GATEDIS_CON0)
->    5. ARM Trusted firmware idles the memory controller domain
->    6. Step 5 waits on the VDU domain/clocks, but NPLL is still off
-> 
-> i.e., we hang the system.
-> 
-> So for (b), we need to at a minimum manage the relevant PLLs on behalf
-> of firmware. It's easier to simply manage the whole clock tree, in a
-> similar way we do in rockchip_pd_power().
-> 
-> For (a), we need to provide mutual exclusion betwen rockchip_pd_power()
-> and firmware. To resolve that, we simply grab the PMU mutex and release
-> it when ddrfreq is done.
-> 
-> The Chromium OS kernel has been carrying versions of part of this hack
-> for a while, based on some new custom notifiers [1]. I've rewritten as a
-> simple function call between the drivers, which is OK because:
-> 
->  * the PMU driver isn't enabled, and we don't have this problem at all
->    (the firmware should have left us in an OK state, and there are no
->    runtime conflicts); or
->  * the PMU driver is present, and is a single instance.
-> 
-> And the power-domain driver cannot be removed, so there's no lifetime
-> management to worry about.
-> 
-> For completeness, there's a 'dmc_pmu_mutex' to guard (likely
-> theoretical?) probe()-time races. It's OK for the memory controller
-> driver to start running before the PMU, because the PMU will avoid any
-> critical actions during the block() sequence.
-> 
-> [0] The RK3399 TRM for PMU_CRU_GATEDIS_CON0 only talks about ungating
->     clocks. Based on experimentation, we've found that it does not power
->     up the necessary PLLs.
-> 
-> [1] CHROMIUM: soc: rockchip: power-domain: Add notifier to dmc driver
->     https://chromium-review.googlesource.com/q/I242dbd706d352f74ff706f5cbf42ebb92f9bcc60
->     Notably, the Chromium solution only handled conflict (a), not (b).
->     In practice, item (b) wasn't a problem in many cases because we
->     never managed to fully power off PLLs. Now that the (upstream) video
->     decoder driver performs runtime clock management, we often power off
->     NPLL.
-> 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
-> 
->  drivers/soc/rockchip/pm_domains.c | 118 ++++++++++++++++++++++++++++++
->  include/soc/rockchip/pm_domains.h |  25 +++++++
->  2 files changed, 143 insertions(+)
->  create mode 100644 include/soc/rockchip/pm_domains.h
-> 
-> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-> index 1b029e494274..bc0afc52299b 100644
-> --- a/drivers/soc/rockchip/pm_domains.c
-> +++ b/drivers/soc/rockchip/pm_domains.c
-> @@ -8,6 +8,7 @@
->  #include <linux/io.h>
->  #include <linux/iopoll.h>
->  #include <linux/err.h>
-> +#include <linux/mutex.h>
->  #include <linux/pm_clock.h>
->  #include <linux/pm_domain.h>
->  #include <linux/of_address.h>
-> @@ -16,6 +17,7 @@
->  #include <linux/clk.h>
->  #include <linux/regmap.h>
->  #include <linux/mfd/syscon.h>
-> +#include <soc/rockchip/pm_domains.h>
->  #include <dt-bindings/power/px30-power.h>
->  #include <dt-bindings/power/rk3036-power.h>
->  #include <dt-bindings/power/rk3066-power.h>
-> @@ -139,6 +141,109 @@ struct rockchip_pmu {
->  #define DOMAIN_RK3568(name, pwr, req, wakeup)		\
->  	DOMAIN_M(name, pwr, pwr, req, req, req, wakeup)
->  
-> +/*
-> + * Dynamic Memory Controller may need to coordinate with us -- see
-> + * rockchip_pmu_block().
-> + *
-> + * dmc_pmu_mutex protects registration-time races, so DMC driver doesn't try to
-> + * block() while we're initializing the PMU.
-> + */
-> +static DEFINE_MUTEX(dmc_pmu_mutex);
-> +static struct rockchip_pmu *dmc_pmu;
-> +
-> +/*
-> + * Block PMU transitions and make sure they don't interfere with ARM Trusted
-> + * Firmware operations. There are two conflicts, noted in the comments below.
-> + *
-> + * Caller must unblock PMU transitions via rockchip_pmu_unblock().
-> + */
-> +int rockchip_pmu_block(void)
-> +{
-> +	struct rockchip_pmu *pmu;
-> +	struct generic_pm_domain *genpd;
-> +	struct rockchip_pm_domain *pd;
-> +	int i, ret;
-> +
-> +	mutex_lock(&dmc_pmu_mutex);
-> +
-> +	/* No PMU (yet)? Then we just block rockchip_pmu_probe(). */
-> +	if (!dmc_pmu)
-> +		return 0;
-> +	pmu = dmc_pmu;
-> +
-> +	/*
-> +	 * mutex blocks all idle transitions: we can't touch the
-> +	 * PMU_BUS_IDLE_REQ (our ".idle_offset") register while ARM Trusted
-> +	 * Firmware might be using it.
-> +	 */
-> +	mutex_lock(&pmu->mutex);
-> +
-> +	/*
-> +	 * Power domain clocks: Per Rockchip, we *must* keep certain clocks
-> +	 * enabled for the duration of power-domain transitions. Most
-> +	 * transitions are handled by this driver, but some cases (in
-> +	 * particular, DRAM DVFS / memory-controller idle) must be handled by
-> +	 * firmware. Firmware can handle most clock management via a special
-> +	 * "ungate" register (PMU_CRU_GATEDIS_CON0), but unfortunately, this
-> +	 * doesn't handle PLLs. We can assist this transition by doing the
-> +	 * clock management on behalf of firmware.
-> +	 */
-> +	for (i = 0; i < pmu->genpd_data.num_domains; i++) {
-> +		genpd = pmu->genpd_data.domains[i];
-> +		if (genpd) {
-> +			pd = to_rockchip_pd(genpd);
-> +			ret = clk_bulk_enable(pd->num_clks, pd->clks);
-> +			if (ret < 0) {
-> +				dev_err(pmu->dev,
-> +					"failed to enable clks for domain '%s': %d\n",
-> +					genpd->name, ret);
-> +				goto err;
-> +			}
-> +		}
-> +	}
-> +
-> +	return 0;
-> +
-> +err:
-> +	for (i = i - 1; i >= 0; i--) {
-> +		genpd = pmu->genpd_data.domains[i];
-> +		if (genpd) {
-> +			pd = to_rockchip_pd(genpd);
-> +			clk_bulk_disable(pd->num_clks, pd->clks);
-> +		}
-> +	}
-> +	mutex_unlock(&pmu->mutex);
-> +	mutex_unlock(&dmc_pmu_mutex);
-> +
-> +	return ret;
-> +}
-> +EXPORT_SYMBOL_GPL(rockchip_pmu_block);
-> +
-> +/* Unblock PMU transitions. */
-> +void rockchip_pmu_unblock(void)
-> +{
-> +	struct rockchip_pmu *pmu;
-> +	struct generic_pm_domain *genpd;
-> +	struct rockchip_pm_domain *pd;
-> +	int i;
-> +
-> +	if (dmc_pmu) {
-> +		pmu = dmc_pmu;
-> +		for (i = 0; i < pmu->genpd_data.num_domains; i++) {
-> +			genpd = pmu->genpd_data.domains[i];
-> +			if (genpd) {
-> +				pd = to_rockchip_pd(genpd);
-> +				clk_bulk_disable(pd->num_clks, pd->clks);
-> +			}
-> +		}
-> +
-> +		mutex_unlock(&pmu->mutex);
-> +	}
-> +
-> +	mutex_unlock(&dmc_pmu_mutex);
-> +}
-> +EXPORT_SYMBOL_GPL(rockchip_pmu_unblock);
-> +
->  static bool rockchip_pmu_domain_is_idle(struct rockchip_pm_domain *pd)
->  {
->  	struct rockchip_pmu *pmu = pd->pmu;
-> @@ -690,6 +795,12 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
->  
->  	error = -ENODEV;
->  
-> +	/*
-> +	 * Prevent any rockchip_pmu_block() from racing with the remainder of
-> +	 * setup (clocks, register initialization).
-> +	 */
-> +	mutex_lock(&dmc_pmu_mutex);
-> +
->  	for_each_available_child_of_node(np, node) {
->  		error = rockchip_pm_add_one_domain(pmu, node);
->  		if (error) {
-> @@ -719,10 +830,17 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
->  		goto err_out;
->  	}
->  
-> +	/* We only expect one PMU. */
-> +	if (!WARN_ON_ONCE(dmc_pmu))
-> +		dmc_pmu = pmu;
-> +
-> +	mutex_unlock(&dmc_pmu_mutex);
-> +
->  	return 0;
->  
->  err_out:
->  	rockchip_pm_domain_cleanup(pmu);
-> +	mutex_unlock(&dmc_pmu_mutex);
->  	return error;
->  }
->  
-> diff --git a/include/soc/rockchip/pm_domains.h b/include/soc/rockchip/pm_domains.h
-> new file mode 100644
-> index 000000000000..7dbd941fc937
-> --- /dev/null
-> +++ b/include/soc/rockchip/pm_domains.h
-> @@ -0,0 +1,25 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * Copyright 2022, The Chromium OS Authors. All rights reserved.
-> + */
-> +
-> +#ifndef __SOC_ROCKCHIP_PM_DOMAINS_H__
-> +#define __SOC_ROCKCHIP_PM_DOMAINS_H__
-> +
-> +#ifdef CONFIG_ROCKCHIP_PM_DOMAINS
-> +
-> +int rockchip_pmu_block(void);
-> +void rockchip_pmu_unblock(void);
-> +
-> +#else /* CONFIG_ROCKCHIP_PM_DOMAINS */
-> +
-> +static inline int rockchip_pmu_block(void)
-> +{
-> +	return 0;
-> +}
-> +
-> +static inline void rockchip_pmu_unblock(void) { }
-> +
-> +#endif /* CONFIG_ROCKCHIP_PM_DOMAINS */
-> +
-> +#endif /* __SOC_ROCKCHIP_PM_DOMAINS_H__ */
-> 
-
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBBcHIgMDYsIDIwMjIgYXQgMDY6MDA6MDBQTSArMDIwMCwgUGlvdHIgT25pc3pjenVr
+IHdyb3RlOgo+IAo+IAo+ID4gV2lhZG9tb8WbxIcgbmFwaXNhbmEgcHJ6ZXogU2FzY2hhIEhhdWVy
+IDxzLmhhdWVyQHBlbmd1dHJvbml4LmRlPiB3IGRuaXUgMDYuMDQuMjAyMiwgbyBnb2R6LiAxNjo1
+ODoKPiA+IAo+ID4gT24gV2VkLCBBcHIgMDYsIDIwMjIgYXQgMTE6NDc6MjJBTSArMDIwMCwgUGlv
+dHIgT25pc3pjenVrIHdyb3RlOgo+ID4+IAo+ID4+IAo+ID4+IFNhc2NoYSwKPiA+PiAKPiA+PiBI
+YXZpbmcgdm9wMiBmaW5hbGx5IHdvcmtpbmcgd2l0aCBkcm0gcGxhbmVzIHJlbmRlcmluZyBpIGRp
+c2NvdmVyZWQgYW5vdGhlciBpc3N1ZTogb3ZlcmxheSBvc2QgaXMgaW52aXNpYmxlIGF0IHBsYXli
+YWNrLiAKPiA+PiAKPiA+PiBjb250ZXh0OiBwbGF5ZXIgZHJhd3MgdmlkZW8gb24gcGxhbmUgI1gg
+YW5kIG9zZCBvbiBvdmVybGF5IHBsYW5lICNZCj4gPj4gV2hlbiB1c2VyIGRvIGkuZS4gc2VlayBh
+dCBwbGF5YmFjayAtIGFwcCB1c2VzIG92ZXJsYXkgT1NEIHBsYW5lIHRvIGRpc3BsYXkgT1NEIHRv
+IHVzZXIuIFRoaXMgYXBwcm9hY2ggaXMgdXNlZCBieSBtYWpvcml0eSBvZiBwbGF5ZXJzIChLT0RJ
+LCBldGMuKQo+ID4+IAo+ID4+IFRoaXMgd29ya3Mgd2VsbCBvbiBhbGwgcGxhdGZvcm1zIGkgaGF2
+ZSAgLSBleGNlcHQgcmszNTY2IAo+ID4+IAo+ID4+IEZvciBtZSBpdCBsb29rcyBsaWtlIHotb3Jk
+ZXIgdm9wMiBpc3N1ZSBvciBhbHBoYSBibGVuZGluZyBpc3N1ZS4KPiA+PiBBcyB0aGlzIGlzIG9u
+bHkgb24gcmszNTY2IGFuZCBvbmx5IG9uIGRybS1wbGFuZXMgbW9kZSAtIGlzc3VlIGlzIHZvcDIg
+cmVsYXRlZCBpbWhvLgo+ID4gCj4gPiBEdXJpbmcgbXkgdGVzdGluZyBJIGhhdmVuJ3Qgc2VlbiBh
+bnkgei1vcmRlciBpc3N1ZXMsIGJ1dCB0aGF0IGRvZXNuJ3QKPiA+IG1lYW4gbXVjaC4gV2l0aCBX
+ZXN0b24gSSBjYW4gY3VycmVudGx5IG9ubHkgdXNlIHRoZSBBRkJDIGVuYWJsZWQgY2x1c3Rlcgo+
+ID4gd2luZG93cyBhbmQgd2l0aCBtb2RldGVzdCBJIGNhbiBvbmx5IHVzZSB0aGUgbm9uLWNsdXN0
+ZXIgd2luZG93cy4gQXJlCj4gPiB5b3UgYWJsZSB0byBmaW5kIG91dCB3aGljaCB3aW5kb3cgaXMg
+dXNlZCBmb3IgdGhlIE9TRD8KPiA+IAo+ID4gU2FzY2hhCj4gPiAKPiA+IC0tIAo+ID4gUGVuZ3V0
+cm9uaXggZS5LLiAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgIHwKPiA+IFN0ZXVlcndhbGRlciBTdHIuIDIxICAgICAgICAgICAgICAgICAgICAg
+ICB8IGh0dHA6Ly93d3cucGVuZ3V0cm9uaXguZGUvICB8Cj4gPiAzMTEzNyBIaWxkZXNoZWltLCBH
+ZXJtYW55ICAgICAgICAgICAgICAgICAgfCBQaG9uZTogKzQ5LTUxMjEtMjA2OTE3LTAgICAgfAo+
+ID4gQW10c2dlcmljaHQgSGlsZGVzaGVpbSwgSFJBIDI2ODYgICAgICAgICAgIHwgRmF4OiAgICs0
+OS01MTIxLTIwNjkxNy01NTU1IHwKPiAKPiBXaUlsIHRoaXMgYW5zd2VyIHRvIHlvdXIgUT8KClll
+cywgYW5kIGl0IHJhaXNlcyBhIGZldyBtb3JlIDspCgo+IAo+IHBsYXllcjoKPiAKPiAyMDIyLTA0
+LTA2IDE3OjUyOjI2LjQyNDQ4NyBJIERpc3BsYXk6IEdlb21ldHJ5OiAxOTIweDEwODArMCswIFNp
+emUoUXQpOiA5MzBtbXg1MzBtbQo+IDIwMjItMDQtMDYgMTc6NTI6MjYuNDI0OTIyIEkgL2Rldi9k
+cmkvY2FyZDAgUXQgRUdMRlMvS01TIEZkOjUgQ3J0YyBpZDo0OSBDb25uZWN0b3IgaWQ6NTEgQXRv
+bWljOiAxCj4gMjAyMi0wNC0wNiAxNzo1MjoyNi40MjUwNjEgSSAvZGV2L2RyaS9jYXJkMDogQXV0
+aGVudGljYXRlZAo+IDIwMjItMDQtMDYgMTc6NTI6MjYuNTM0MzYyIEkgL2Rldi9kcmkvY2FyZDA6
+IEZvdW5kIDMgcGxhbmVzOyAzIGZvciB0aGlzIENSVEMKPiAyMDIyLTA0LTA2IDE3OjUyOjI2LjUz
+NDM4NCBJIC9kZXYvZHJpL2NhcmQwOiBTZWxlY3RlZCBQbGFuZSAjMzcgT3ZlcmxheSBmb3Igdmlk
+ZW8KPiAyMDIyLTA0LTA2IDE3OjUyOjI2LjUzNDQzMCBJIC9kZXYvZHJpL2NhcmQwOiBTdXBwb3J0
+ZWQgRFJNIHZpZGVvIGZvcm1hdHM6IE5WMTIsTlYxNixOVjI0LFlWWVUsVllVWQo+IDIwMjItMDQt
+MDYgMTc6NTI6MjYuNTM0NDM3IEkgL2Rldi9kcmkvY2FyZDA6IFNlbGVjdGVkIFBsYW5lICM0MyBP
+dmVybGF5IGZvciBHVUkKPiAyMDIyLTA0LTA2IDE3OjUyOjI2LjUzNDQ4MCBJIC9kZXYvZHJpL2Nh
+cmQwOiBEUk0gZGV2aWNlIHJldHJpZXZlZCBmcm9tIFF0Cj4gMjAyMi0wNC0wNiAxNzo1MjoyNi41
+MzQ0ODkgSSAvZGV2L2RyaS9jYXJkMDogTXVsdGktcGxhbmUgc2V0dXA6IFJlcXVlc3RlZDogMSBT
+ZXR1cDogMQo+IAo+IHNvOgo+IHBsYW5lICMzNyBpcyB3aGVyZSB2aWRlbyBpcyBkcmF3aW5nCj4g
+cGxhbmUgIzQzIGlzIEdVSS9PU0QKPiAKPiAKPiBkcmkgc3RhdGU6Cj4gCj4gcm9vdEBNeXRoLUZy
+b250ZW5kLTA2YzdlOTczYzJmMTp+ICMgY2F0IC9zeXMva2VybmVsL2RlYnVnL2RyaS8wL3N0YXRl
+Cj4gcGxhbmVbMzFdOiBTbWFydDAtd2luMAo+ICAgICAgICAgY3J0Yz12aWRlb19wb3J0MAo+ICAg
+ICAgICAgZmI9NTgKPiAgICAgICAgICAgICAgICAgYWxsb2NhdGVkIGJ5ID0gbXl0aGZyb250ZW5k
+Cj4gICAgICAgICAgICAgICAgIHJlZmNvdW50PTIKPiAgICAgICAgICAgICAgICAgZm9ybWF0PVhS
+MjQgbGl0dGxlLWVuZGlhbiAoMHgzNDMyNTI1OCkKPiAgICAgICAgICAgICAgICAgbW9kaWZpZXI9
+MHgwCj4gICAgICAgICAgICAgICAgIHNpemU9MTkyMHgxMDgwCj4gICAgICAgICAgICAgICAgIGxh
+eWVyczoKPiAgICAgICAgICAgICAgICAgICAgICAgICBzaXplWzBdPTE5MjB4MTA4MAo+ICAgICAg
+ICAgICAgICAgICAgICAgICAgIHBpdGNoWzBdPTc2ODAKPiAgICAgICAgICAgICAgICAgICAgICAg
+ICBvZmZzZXRbMF09MAo+ICAgICAgICAgICAgICAgICAgICAgICAgIG9ialswXToKPiAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIG5hbWU9MAo+ICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgcmVmY291bnQ9NAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3Rh
+cnQ9MDAwMDAwMDAKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHNpemU9ODI5NDQw
+MAo+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaW1wb3J0ZWQ9bm8KPiAgICAgICAg
+IGNydGMtcG9zPTE5MjB4MTA4MCswKzAKPiAgICAgICAgIHNyYy1wb3M9MTkyMC4wMDAwMDB4MTA4
+MC4wMDAwMDArMC4wMDAwMDArMC4wMDAwMDAKPiAgICAgICAgIHJvdGF0aW9uPTEKPiAgICAgICAg
+IG5vcm1hbGl6ZWQtenBvcz0wCj4gICAgICAgICBjb2xvci1lbmNvZGluZz1JVFUtUiBCVC42MDEg
+WUNiQ3IKPiAgICAgICAgIGNvbG9yLXJhbmdlPVlDYkNyIGxpbWl0ZWQgcmFuZ2UKCk9rLCB0aGlz
+IHNlZW1zIHRvIGJlIHRoZSBiYXNlIHBsYW5lLgoKPiBwbGFuZVszN106IEVzbWFydDAtd2luMAo+
+ICAgICAgICAgY3J0Yz0obnVsbCkKCmNydGM9bnVsbD8gRGlkIHlvdSBjYXB0dXJlIHRoZSBzdGF0
+ZSB3aXRob3V0IGEgdmlkZW8gcGxheWluZz8gT3RoZXJ3aXNlCkkgd291bGQgZXhwZWN0IGEgY3J0
+YyBhc3NvY2lhdGVkIGhlcmUuCgo+ICAgICAgICAgZmI9MAo+ICAgICAgICAgY3J0Yy1wb3M9MTky
+MHgxMDgwKzArMAo+ICAgICAgICAgc3JjLXBvcz0xOTIwLjAwMDAwMHgxMDgwLjAwMDAwMCswLjAw
+MDAwMCswLjAwMDAwMAo+ICAgICAgICAgcm90YXRpb249MQo+ICAgICAgICAgbm9ybWFsaXplZC16
+cG9zPTAKPiAgICAgICAgIGNvbG9yLWVuY29kaW5nPUlUVS1SIEJULjYwMSBZQ2JDcgo+ICAgICAg
+ICAgY29sb3ItcmFuZ2U9WUNiQ3IgbGltaXRlZCByYW5nZQo+IHBsYW5lWzQzXTogQ2x1c3RlcjAt
+d2luMAo+ICAgICAgICAgY3J0Yz0obnVsbCkKClRoaXMgcGxhbmUgaXMgc2VsZWN0ZWQgZm9yIE9T
+RCBieSB5b3VyIGFwcGxpY2F0aW9uLiBUaGUgY2x1c3RlciB3aW5kb3dzCmNhbid0IHNob3cgYSBy
+ZWd1bGFyIGxpbmVhciBmcmFtZWJ1ZmZlciwgdGhleSBjYW4gb25seSBkbyBBRkJDLiBZb3UnbGwK
+c2VlIHRoYXQgaW4gbW9kZXRlc3Q6CgoJaW5fZm9ybWF0cyBibG9iIGRlY29kZWQ6CiAgICAgICAg
+ICAgICAgICAgWFIyNDogIEFSTV9CTE9DS19TSVpFPTE2eDE2LAoJCQkgQVJNX0JMT0NLX1NJWkU9
+MTZ4MTYsTU9ERT1TUEFSU0UKCQkJIEFSTV9CTE9DS19TSVpFPTE2eDE2LE1PREU9WVRSCgkJCSBB
+Uk1fQkxPQ0tfU0laRT0xNngxNixNT0RFPUNCUgoJCQkgQVJNX0JMT0NLX1NJWkU9MTZ4MTYsTU9E
+RT1ZVFJ8U1BBUlNFCgkJCSBBUk1fQkxPQ0tfU0laRT0xNngxNixNT0RFPVNQQVJTRXxDQlIKCQkJ
+IEFSTV9CTE9DS19TSVpFPTE2eDE2LE1PREU9WVRSfENCUgoJCQkgQVJNX0JMT0NLX1NJWkU9MTZ4
+MTYsTU9ERT1ZVFJ8U1BBUlNFfENCUgoJCQkgQVJNX0JMT0NLX1NJWkU9MTZ4MTYsTU9ERT1ZVFJ8
+U1BMSVR8U1BBUlNFCgkJLi4uCgpUaGUgb3RoZXIgd2luZG93cyBzaG93ICJYUjI0OiBMSU5FQVIi
+IGhlcmUuIERvZXMgeW91ciBhcHBsaWNhdGlvbiB1c2UKdGhlIEdQVSB0byByZW5kZXIgdGhlIE9T
+RD8gT3RoZXJ3aXNlIEkgZG91YnQgeW91ciBhcHBsaWNhdGlvbiBjYW4KaGFuZGxlIHRoaXMgZm9y
+bWF0LCBzbyBpdCBzaG91bGQgbm90IHVzZSB0aGlzIGxheWVyLgoKPiAgICAgICAgIGZiPTAKPiAg
+ICAgICAgIGNydGMtcG9zPTB4MCswKzAKPiAgICAgICAgIHNyYy1wb3M9MC4wMDAwMDB4MC4wMDAw
+MDArMC4wMDAwMDArMC4wMDAwMDAKPiAgICAgICAgIHJvdGF0aW9uPTEKPiAgICAgICAgIG5vcm1h
+bGl6ZWQtenBvcz0wCgpJIHdvdWxkIGJlIGludGVyZXN0ZWQgaW4gdGhpcyBvdXRwdXQgd2hlbiB0
+aGUgcGxheWVyIGlzIGFjdHVhbGx5IHBsYXlpbmcKc29tZXRoaW5nLiBUaGlzIG5vcm1hbGl6ZWQt
+enBvcyBwdXp6bGVzIG1lIGEgYml0LiBOb3JtYWxseSBpdCBzaG91bGQgYmUKdW5pcXVlIG92ZXIg
+YWxsIGVuYWJsZWQgcGxhbmVzIGZvciBhIENSVEMuIE1heWJlIDAgaXMgb2sgaGVyZSBiZWNhdXNl
+Cml0J3MgY3VycmVudGx5IG5vdCBhc3NvY2lhdGVkIHRvIGFueSBDUlRDLgoKU2FzY2hhCgoKLS0g
+ClBlbmd1dHJvbml4IGUuSy4gICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICB8ClN0ZXVlcndhbGRlciBTdHIuIDIxICAgICAgICAgICAgICAgICAg
+ICAgICB8IGh0dHA6Ly93d3cucGVuZ3V0cm9uaXguZGUvICB8CjMxMTM3IEhpbGRlc2hlaW0sIEdl
+cm1hbnkgICAgICAgICAgICAgICAgICB8IFBob25lOiArNDktNTEyMS0yMDY5MTctMCAgICB8CkFt
+dHNnZXJpY2h0IEhpbGRlc2hlaW0sIEhSQSAyNjg2ICAgICAgICAgICB8IEZheDogICArNDktNTEy
+MS0yMDY5MTctNTU1NSB8CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
