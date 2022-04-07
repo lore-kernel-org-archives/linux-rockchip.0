@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7A2AC433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Apr 2022 15:59:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40F2AC433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Apr 2022 15:59:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2IJKjpVL3sw8kw4OCYIOsle3Oi05mDR2j0xCrSKagqI=; b=Oxe6GIUgU2zW5h
-	eMXFH04ueTTTS3jF32xtTT2ZBCMZNu7xo3B/4J17FZNNgWmnW0qjtZ5OWzUe4c6RXnfT0+vOA/7TH
-	gvHQe6d7apgtXngnTLPiacnAnPxce/PuuqB0oKuhn/kH3M2KPdxSme3wOcdANil3tEKTr1HfMdLEx
-	+yTJW6YoBjsHrpVcMPxJpT/5tZiZRJHvz5p0mUms7zkVP8r3CBTlESCyP0GKzc25I7nC7jd6Ksm73
-	10uh94CPrz7bL3vhGUQqWHkPK62eBVk1tlC2AAmwNafJzHBEnMw/XFw7SIEyTCyuTe3X48ffvw8Bh
-	dR1dSXAYy9MFtMMNArmA==;
+	List-Owner; bh=ukYiKWPTuaQlkA2CdT5PbOcsffNxw8Gb161qrUvy8+Y=; b=p2ZDGihwgWoX/f
+	TjuTP5lM3dkjQEaTuNbT4fHmoEvwZOsmWnBTfgPq5oBn6nOfsANfGk6Z6rGfJIFy8QKmIFwwohwe5
+	kVv0sSZAHzv7ml+hDA0a/2sJTDYA8+/B/0rK2Apryazng2QA1U8P7ONSvCSLiT6jrEzWkRRz383WY
+	yvFhJ2PiOdnzsMpf6lJYeZIQXoA48NZkAA5x2WaVaQTEpnQUCStsUQI04pyjqeGL5OQ8khTAp4aoV
+	4ivuGwuNFkmARK3ydeRKXBr+/RyS+JmhwtubYwPHp+DiX2B50gEbWjvmONC5QTBUPR6acoGmvaGmv
+	EzRs93uNXAI2ERRsrh9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncUXF-00CsqM-5o; Thu, 07 Apr 2022 15:59:01 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1ncUXI-00CssW-8M; Thu, 07 Apr 2022 15:59:04 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncU5C-00ChfE-R3; Thu, 07 Apr 2022 15:30:09 +0000
+ id 1ncU5C-00Chf5-Pn; Thu, 07 Apr 2022 15:30:09 +0000
 Received: from benjamin-XPS-13-9310.. (unknown
  [IPv6:2a01:e0a:120:3210:4da4:8da5:b6b4:93c])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
  (Authenticated sender: benjamin.gaignard)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 9E6051F467BC;
- Thu,  7 Apr 2022 16:29:56 +0100 (BST)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 44C981F467BD;
+ Thu,  7 Apr 2022 16:29:57 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
  s=mail; t=1649345397;
- bh=KvZLsQUppWj4xIkkXbkpLHZvTj++QLRrkWvezh2Rqfk=;
+ bh=n2Zh05VvSrnCl7VF3YOgsJdQk2392OPK4yLZuTAqs04=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eKNWT+p0jlTvMHxWVAN+hB0lbs64Rh2brRL9tOkNDvzK1ZlbOVn4z5VBhNkki2fLX
- k8ZxXqI0ju/ckyEJT6l5B/Rx8fHpHt6WA5milgXS4m81CLzy2zIdLMWIRcRP3MeLr7
- KP+0xQmSFC67tylvTAt9ALX7ZxHyLk6Aj7EvXqvoJ+TtyRpbjmy7NuWncC6utgSHjC
- CLtIrAhBU6fOAh86gjY785AgCGHWGXRdX0LEURG+53PoLxiB2d6NAmoVz0defivDk7
- HywmHgvkgzMi5m5tdx6ewX4DQuzNdCgX3/2pbHuLJjDZ1TpLpxh2O02SQ2Vft8IrzM
- jRE0en8TS02Og==
+ b=HtLXdQK5H31ryXtySaIagzBDyxKXEEBvPOKnRbi6fW/bITdvoMwzI88/R9VgMIdw1
+ DTK9EThv3GYjMnxacEr8thLAWywxTKugMUYGPYGeHfzt4gnypUp8aSETX+NKXpJI5o
+ EoLTdPV/Sf1Ozv95cfvmcZn8mD3BXuQoIu/W03IT+ghjM+g1IGY6cR/JFQj1hVTOIB
+ IFm6fkDn2rKqW/u9Do+/nWNvIw/mEURrY1X6MDTfe4Yn8WerkO4P51Fouyz8Mknnue
+ oR6N7D1raoDGuqtdq39bTs/+Z/ZHGNHDF/g6DqmfDrOi8C1Lvo0y6thjjsK5ed42jU
+ otdF5kVgrZ8ZQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org, hverkuil@xs4all.nl, ezequiel@vanguardiasur.com.ar,
  p.zabel@pengutronix.de, gregkh@linuxfoundation.org, mripard@kernel.org,
@@ -51,18 +51,17 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
  sebastian.fricke@collabora.com,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v5 13/17] media: controls: Log HEVC stateless control in
- .std_log
-Date: Thu,  7 Apr 2022 17:29:36 +0200
-Message-Id: <20220407152940.738159-14-benjamin.gaignard@collabora.com>
+Subject: [PATCH v5 14/17] media: uapi: Create a dedicated header for Hantro
+ control
+Date: Thu,  7 Apr 2022 17:29:37 +0200
+Message-Id: <20220407152940.738159-15-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220407152940.738159-1-benjamin.gaignard@collabora.com>
 References: <20220407152940.738159-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220407_083003_072526_8B61062B 
-X-CRM114-Status: UNSURE (   8.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220407_083003_228946_5CDE6BC2 
+X-CRM114-Status: GOOD (  19.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,39 +79,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Simply print the type of the control.
+Hantro hardware needs a dedicated v4l2 control to perform HEVC
+decoding. Move it to a dedicated header file to prepare HEVC
+uAPI un-staging.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/media/v4l2-core/v4l2-ctrls-core.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ .../userspace-api/media/drivers/hantro.rst    |  5 -----
+ drivers/staging/media/hantro/hantro_drv.c     |  1 +
+ include/media/hevc-ctrls.h                    | 13 -------------
+ include/uapi/linux/hantro-media.h             | 19 +++++++++++++++++++
+ include/uapi/linux/v4l2-controls.h            |  5 +++++
+ 5 files changed, 25 insertions(+), 18 deletions(-)
+ create mode 100644 include/uapi/linux/hantro-media.h
 
-diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-index cb709c74e01e..6a48c9022b74 100644
---- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-+++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-@@ -307,6 +307,21 @@ static void std_log(const struct v4l2_ctrl *ctrl)
- 	case V4L2_CTRL_TYPE_VP9_FRAME:
- 		pr_cont("VP9_FRAME");
- 		break;
-+	case V4L2_CTRL_TYPE_HEVC_SPS:
-+		pr_cont("HEVC_SPS");
-+		break;
-+	case V4L2_CTRL_TYPE_HEVC_PPS:
-+		pr_cont("HEVC_PPS");
-+		break;
-+	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
-+		pr_cont("HEVC_SLICE_PARAMS");
-+		break;
-+	case V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX:
-+		pr_cont("HEVC_SCALING_MATRIX");
-+		break;
-+	case V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS:
-+		pr_cont("HEVC_DECODE_PARAMS");
-+		break;
- 	default:
- 		pr_cont("unknown type %d", ctrl->type);
- 		break;
+diff --git a/Documentation/userspace-api/media/drivers/hantro.rst b/Documentation/userspace-api/media/drivers/hantro.rst
+index cd9754b4e005..78dcd2a44a03 100644
+--- a/Documentation/userspace-api/media/drivers/hantro.rst
++++ b/Documentation/userspace-api/media/drivers/hantro.rst
+@@ -12,8 +12,3 @@ The Hantro video decoder driver implements the following driver-specific control
+     to before syntax element "slice_temporal_mvp_enabled_flag".
+     If IDR, the skipped bits are just "pic_output_flag"
+     (separate_colour_plane_flag is not supported).
+-
+-.. note::
+-
+-        This control is not yet part of the public kernel API and
+-        it is expected to change.
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index 6f58c259d8fc..783a92a38c8e 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -11,6 +11,7 @@
+  */
+ 
+ #include <linux/clk.h>
++#include <linux/hantro-media.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
+diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+index d84edb7b8182..63be1a174516 100644
+--- a/include/media/hevc-ctrls.h
++++ b/include/media/hevc-ctrls.h
+@@ -459,17 +459,4 @@ struct v4l2_ctrl_hevc_scaling_matrix {
+ 	__u8	scaling_list_dc_coef_32x32[2];
+ };
+ 
+-/*  MPEG-class control IDs specific to the Hantro driver as defined by V4L2 */
+-#define V4L2_CID_CODEC_HANTRO_BASE				(V4L2_CTRL_CLASS_CODEC | 0x1200)
+-/*
+- * V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP -
+- * the number of data (in bits) to skip in the
+- * slice segment header.
+- * If non-IDR, the bits to be skipped go from syntax element "pic_output_flag"
+- * to before syntax element "slice_temporal_mvp_enabled_flag".
+- * If IDR, the skipped bits are just "pic_output_flag"
+- * (separate_colour_plane_flag is not supported).
+- */
+-#define V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP	(V4L2_CID_CODEC_HANTRO_BASE + 0)
+-
+ #endif
+diff --git a/include/uapi/linux/hantro-media.h b/include/uapi/linux/hantro-media.h
+new file mode 100644
+index 000000000000..d0d48fd7de9c
+--- /dev/null
++++ b/include/uapi/linux/hantro-media.h
+@@ -0,0 +1,19 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
++
++#ifndef __UAPI_HANTRO_MEDIA_H__
++#define __UAPI_HANTRO_MEDIA_H__
++
++#include <linux/v4l2-controls.h>
++
++/*
++ * V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP -
++ * the number of data (in bits) to skip in the
++ * slice segment header.
++ * If non-IDR, the bits to be skipped go from syntax element "pic_output_flag"
++ * to before syntax element "slice_temporal_mvp_enabled_flag".
++ * If IDR, the skipped bits are just "pic_output_flag"
++ * (separate_colour_plane_flag is not supported).
++ */
++#define V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP	(V4L2_CID_USER_HANTRO_BASE + 0)
++
++#endif /* __UAPI_HANTRO_MEDIA_H__ */
+diff --git a/include/uapi/linux/v4l2-controls.h b/include/uapi/linux/v4l2-controls.h
+index bb40129446d4..17c6df3e9c0b 100644
+--- a/include/uapi/linux/v4l2-controls.h
++++ b/include/uapi/linux/v4l2-controls.h
+@@ -218,6 +218,11 @@ enum v4l2_colorfx {
+  * We reserve 16 controls for this driver.
+  */
+ #define V4L2_CID_USER_ALLEGRO_BASE		(V4L2_CID_USER_BASE + 0x1170)
++/*
++ * The base for Hantro driver controls.
++ * We reserve 128 controls for this driver.
++ */
++#define V4L2_CID_USER_HANTRO_BASE		(V4L2_CID_USER_BASE + 0x1180)
+ 
+ /*
+  * The base for the isl7998x driver controls.
 -- 
 2.32.0
 
