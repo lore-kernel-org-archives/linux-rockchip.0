@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10658C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Apr 2022 11:28:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12128C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Apr 2022 11:28:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=27awp+35/z9U3KBoo+2FShkTOZHxymJkJzyVwcP0uGs=; b=vQWipB47IT3qFW
-	K8mvBF6m2GV37hiCr87QN4YRC29VxfmA8EWXyf+vi6pq1yOekGjDFt+SwhYDAz0lMStVM/n/rnVF9
-	YixKUz15dljh9qEKa9ZDWKdzXEGPNx38qn6NMhIEXuvF4ac86xYj0E8EqOQ3gsM9oMSARE1tbEUog
-	3gjmzt6JvjEPqzieY/ma70WmzHe0xkClIoiM4pwsrWwNiKpI3VY0FmC6OHVX88bXLBZ9Ugl0xJ0FG
-	zw//2sia42Cf9aMFAq5bT9+UFoBu3AsuEK0xn3SviDroZPPv1OW+kk1uaotqdLcfpNvgHYSY3QTT8
-	aLneO5szTuMsF6cEhLXg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yT5zHMtiX1Uq8xM7TC/xW6ueEKS1ln1pYBfGhjuDB/s=; b=AOUHprbKn6XBOw
+	wszmwAeP0pY0DCtLzW+Togrh920TKhvO0iyNirWKNj3N0dFApzra/jE3oAymqWQGBdf/q/iXcALgm
+	erjgeHNKBOeD21FdJz7A7pZYSavVnstRvLDscKlP9CgBis8cyUNIsiTfhInK7eOL1vV4hXczf6jhK
+	2TMDSVf96hoX79gtMl7VIJSrF5T6F0GPiqrIISl2jlY/0g/31tVqzhzPsl/vrqAo4gRbwVxKNb6L/
+	LuZL1+uiAtFDq7G0yKhoDXZO9kCIeswOwWsDfCO5cABwMfd8gpByZ0ZVrfxsEpdrNQQwm1Q1an+IQ
+	GPplrueKh22pvFMWb0ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncmnL-00GbmH-AI; Fri, 08 Apr 2022 11:28:51 +0000
-Received: from desiato.infradead.org ([90.155.92.199])
+	id 1ncmnN-00GbnP-NE; Fri, 08 Apr 2022 11:28:53 +0000
+Received: from casper.infradead.org ([90.155.50.34])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncmhj-00GYDj-5p
+ id 1ncmhj-00GYEA-FS
  for linux-rockchip@bombadil.infradead.org; Fri, 08 Apr 2022 11:23:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
- :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
- Content-Type:Content-ID:Content-Description;
- bh=A+i1Y4jdDscYZtf19nPGwZLPXsFOSiOzMUuS2impoZU=; b=a1H23R5E/KyK8+6bX3x6x3tVoA
- V+pLvIUmyYjuu5ShKh7H5h7lPmQReQVohBkMEiNg7rU70M1SBv2HN+/5xQ/DaeUD4PGrOYqmuTt6F
- evJf0zVDj1kCOwUbGSIh5LUNiBusK/fheFV3ArmOrV9NSXNRw/rxCUwm86ILeh8XreJaYkPzDQ0cx
- w81RyXhAzdE54XUSV4SqBYEHn92QcxB7zRiUmchVnsZrsfVSA6cFfxRVgbH4Ui82DEBP3X2Apk9Dv
- 1gcs/5DADKnGUP5sNJvumusMqsD5Ekg3vAsNJ+iChmmJ3Zrkp4WVEwwIqSJ/JIF2mquvDl8ppbF8R
- 5i8Z/1zA==;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+ Content-Description:In-Reply-To:References;
+ bh=5UxsyUu+JvEKPbEcuO3uD2LU6e43Ctl6+wjP7h04OSw=; b=g4E+1IujEJliWzewj/u+sv+io3
+ m8Hdwx8VFbG9gNWqW/eUNG9eQ7hjlVSZo8+ESp/9AYPmM4IYheiAsM2uA846rj+JIACgNkmOATKrI
+ Z+iRkU6T6+mGh0ntTQzdC1Z9jfkRhG46njP5btbscqs/pAyxcBvrLSAM1n7B/HVZmEqHiDerrWsvQ
+ brZMBpZ+Uk5rSZXfmDF4h+r5CnChgRxbrrXP7/ffEVEIvkjrM2ajdVLlY8DeGDahDnsZWReK1OsDL
+ btr9IloIfFFpaTjiwrl9y7nsV5NdYEL47KdtlpWxasmyxx23//sFyPUfM+UEAUHcmiWgeN3RfL84l
+ cNw3G/Pg==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
- by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncmhc-002t9e-RZ
- for linux-rockchip@lists.infradead.org; Fri, 08 Apr 2022 11:23:00 +0000
+ by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1ncmhc-009lFA-QQ
+ for linux-rockchip@lists.infradead.org; Fri, 08 Apr 2022 11:23:02 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1ncmhS-0002Hw-4H; Fri, 08 Apr 2022 13:22:46 +0200
+ id 1ncmhS-0002HR-4K; Fri, 08 Apr 2022 13:22:46 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
  by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1ncmhS-001n42-44; Fri, 08 Apr 2022 13:22:44 +0200
+ id 1ncmhQ-001n3l-CT; Fri, 08 Apr 2022 13:22:42 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1ncmhO-005Z4S-I5; Fri, 08 Apr 2022 13:22:42 +0200
+ id 1ncmhO-005Z3b-5C; Fri, 08 Apr 2022 13:22:42 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -61,13 +61,10 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v10 18/24] arm64: dts: rockchip: rk3568-evb: Enable VOP2 and
- hdmi
-Date: Fri,  8 Apr 2022 13:22:32 +0200
-Message-Id: <20220408112238.1274817-19-s.hauer@pengutronix.de>
+Subject: [PATCH v10 00/24] drm/rockchip: RK356x VOP2 support
+Date: Fri,  8 Apr 2022 13:22:14 +0200
+Message-Id: <20220408112238.1274817-1-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220408112238.1274817-1-s.hauer@pengutronix.de>
-References: <20220408112238.1274817-1-s.hauer@pengutronix.de>
 MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: sha@pengutronix.de
@@ -75,8 +72,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_122257_044363_DC07A1F5 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20220408_122256_871417_DFDF4A4E 
+X-CRM114-Status: GOOD (  18.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,102 +91,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This enabled the VOP2 display controller along with hdmi and the
-required port routes which is enough to get a picture out of the
-hdmi port of the board.
+This is v10 finally. The series is rebased to v5.18-rc1 which means that
+it no longer depends on the clk patches, but there are new dependencies:
 
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
----
+drm/rockchip: Refactor IOMMU initialisation (https://lists.freedesktop.org/archives/dri-devel/2022-April/349548.html)
+arm64: dts: rockchip: add basic dts for the radxa rock3 model a
 
-Notes:
-    Changes since v5:
-    - Drop reg property from single endpoint node
-    
-    Changes since v4:
-    - Sort nodes alphabetically
-    
-    Changes since v3:
-    - Fix HDMI connector type
+The latter is only necessary for adding VOP2 support for that board. It should
+be in Heikos tree already.
 
- .../boot/dts/rockchip/rk3568-evb1-v10.dts     | 47 +++++++++++++++++++
- 1 file changed, 47 insertions(+)
+Highlight in this series is that it now works properly on a RK3566. Also
+z-ordering of the planes is fixed.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-index a794a0ea5c701..096b66d7697e2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
-@@ -8,6 +8,7 @@
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/leds/common.h>
- #include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/soc/rockchip,vop2.h>
- #include "rk3568.dtsi"
- 
- / {
-@@ -34,6 +35,17 @@ dc_12v: dc-12v {
- 		regulator-max-microvolt = <12000000>;
- 	};
- 
-+	hdmi-con {
-+		compatible = "hdmi-connector";
-+		type = "a";
-+
-+		port {
-+			hdmi_con_in: endpoint {
-+				remote-endpoint = <&hdmi_out_con>;
-+			};
-+		};
-+	};
-+
- 	leds {
- 		compatible = "gpio-leds";
- 
-@@ -189,6 +201,24 @@ &gpu {
- 	status = "okay";
- };
- 
-+&hdmi {
-+	avdd-0v9-supply = <&vdda0v9_image>;
-+	avdd-1v8-supply = <&vcca1v8_image>;
-+	status = "okay";
-+};
-+
-+&hdmi_in {
-+	hdmi_in_vp0: endpoint {
-+		remote-endpoint = <&vp0_out_hdmi>;
-+	};
-+};
-+
-+&hdmi_out {
-+	hdmi_out_con: endpoint {
-+		remote-endpoint = <&hdmi_con_in>;
-+	};
-+};
-+
- &i2c0 {
- 	status = "okay";
- 
-@@ -589,3 +619,20 @@ &usb2phy1_otg {
- 	phy-supply = <&vcc5v0_usb_host>;
- 	status = "okay";
- };
-+
-+&vop {
-+	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
-+	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
-+};
-+
-+&vp0 {
-+	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
-+		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
-+		remote-endpoint = <&hdmi_in_vp0>;
-+	};
-+};
+Sascha
+
+Changes since v9:
+- rebase on v5.18-rc1
+- Do not register windows which don't have its own framebuffer on RK3566
+- fix mixed up register writes in vop2_setup_dly_for_windows()
+- move call to rockchip_drm_dma_attach_device() from vop2_bind() to vop2_enable()
+- Fix zpos handling
+
+Changes since v8:
+- make hclk_vo a critical clock instead of enabling it in the hdmi driver
+- Fix vop2_setup_layer_mixer(), reported by Andy Yan
+- Limit planes possible_crtcs to actually existing crtcs
+- simplify vop2_create_crtc() a bit
+
+Changes since v7:
+- rename hclk to niu
+
+Changes since v6:
+- Move of_graph parsing out of runtime code to initialization
+
+Changes since v5:
+- Add new patch to fix dw-hdmi of_graph binding
+- Drop "drm/encoder: Add of_graph port to struct drm_encoder" and solve
+  issue internally in the driver
+- make checkpatch cleaner
+
+Changes since v4:
+- Reorder patches in a way that binding/dts/driver patches are closer together
+- Drop clk patches already applied by Heiko
+
+Changes since v3:
+- added changelog to each patch
+- Add 4k support to hdmi driver
+- rebase on v5.17-rc1
+
+Changes since v2:
+- Add pin names to HDMI supply pin description
+- Add hclk support to HDMI driver
+- Dual license rockchip-vop2 binding, update binding
+- Add HDMI connector to board dts files
+- drop unnecessary gamma_lut registers from vop2
+- Update dclk_vop[012] clock handling, no longer hacks needed
+- Complete regmap conversion
+
+Changes since v1:
+- drop all unnecessary waiting for frames within atomic modeset and plane update
+- Cluster subwin support removed
+- gamma support removed
+- unnecessary irq_lock removed
+- interrupt handling simplified
+- simplified zpos handling
+- drop is_alpha_support(), use fb->format->has_alpha instead
+- use devm_regulator_get() rather than devm_regulator_get_optional() for hdmi regulators
+- Use fixed number of planes per video port
+- Drop homegrown regmap code from vop2 driver (not complete yet)
+- Add separate include file for vop2 driver to not pollute the vop include
+
+Andy Yan (1):
+  drm: rockchip: Add VOP2 driver
+
+Benjamin Gaignard (1):
+  dt-bindings: display: rockchip: dw-hdmi: Add compatible for rk3568
+    HDMI
+
+Douglas Anderson (2):
+  drm/rockchip: dw_hdmi: Use auto-generated tables
+  drm/rockchip: dw_hdmi: Set cur_ctr to 0 always
+
+Michael Riesch (2):
+  arm64: dts: rockchip: enable vop2 and hdmi tx on quartz64a
+  arm64: dts: rockchip: enable vop2 and hdmi tx on rock-3a
+
+Nickey Yang (1):
+  drm/rockchip: dw_hdmi: add default 594Mhz clk for 4K@60hz
+
+Sascha Hauer (17):
+  clk: rk3568: Mark hclk_vo as critical
+  drm/rockchip: Embed drm_encoder into rockchip_decoder
+  drm/rockchip: Add crtc_endpoint_id to rockchip_encoder
+  drm/rockchip: dw_hdmi: rename vpll clock to reference clock
+  dt-bindings: display: rockchip: dw-hdmi: use "ref" as clock name
+  arm64: dts: rockchip: rk3399: rename HDMI ref clock to 'ref'
+  drm/rockchip: dw_hdmi: add rk3568 support
+  drm/rockchip: dw_hdmi: add regulator support
+  dt-bindings: display: rockchip: dw-hdmi: Add regulator support
+  drm/rockchip: dw_hdmi: drop mode_valid hook
+  dt-bindings: display: rockchip: dw-hdmi: Make unwedge pinctrl optional
+  arm64: dts: rockchip: rk356x: Add VOP2 nodes
+  arm64: dts: rockchip: rk356x: Add HDMI nodes
+  arm64: dts: rockchip: rk3568-evb: Enable VOP2 and hdmi
+  drm/rockchip: Make VOP driver optional
+  dt-bindings: display: rockchip: Add binding for VOP2
+  dt-bindings: display: rockchip: dw-hdmi: fix ports description
+
+ .../display/rockchip/rockchip,dw-hdmi.yaml    |   46 +-
+ .../display/rockchip/rockchip-vop2.yaml       |  140 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      |    2 +-
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   |   47 +
+ arch/arm64/boot/dts/rockchip/rk3566.dtsi      |    4 +
+ .../boot/dts/rockchip/rk3568-evb1-v10.dts     |   47 +
+ .../boot/dts/rockchip/rk3568-rock-3a.dts      |   47 +
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi      |    4 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   83 +
+ drivers/clk/rockchip/clk-rk3568.c             |    1 +
+ drivers/gpu/drm/rockchip/Kconfig              |   14 +
+ drivers/gpu/drm/rockchip/Makefile             |    4 +-
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c   |   32 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c        |   18 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.h        |    2 +-
+ .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |   17 +-
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c   |  276 +-
+ drivers/gpu/drm/rockchip/inno_hdmi.c          |   32 +-
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c        |   34 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |   36 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |   20 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_fb.c    |    2 +
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h   |   15 +
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 2706 +++++++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h  |  477 +++
+ drivers/gpu/drm/rockchip/rockchip_lvds.c      |   26 +-
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c  |  281 ++
+ include/dt-bindings/soc/rockchip,vop2.h       |   14 +
+ 28 files changed, 4232 insertions(+), 195 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+ create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+ create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+ create mode 100644 drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+ create mode 100644 include/dt-bindings/soc/rockchip,vop2.h
+
 -- 
 2.30.2
 
