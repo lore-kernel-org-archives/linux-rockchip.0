@@ -4,39 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F39FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Apr 2022 11:26:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7CE5C4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Apr 2022 11:27:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0KkWwnijp2DPsGuiexvqRN06rQtKGuzx5OTQ34OSatQ=; b=VBXV4YJx8wsBtv
-	NZFNLxxHjJ0s7RY26qQS+svmyF5Tkdp5Ybc4JiDs0/YVZBEJrZja8BMqNzqfxL4ufbnYOUVt/43hr
-	RKQNJ7Ecp+YhicSaQhh2Hk6pqcZBkq1tTvTph2kCJRpY2UkiffhttNIpsr+DsP/F1FTgcCHZbjHqz
-	eHeXxJlYzvCTa6OIRKRHyRDTnzio0sEK9xiqgRpbJObdUE4aGirSOBfKbj8Tb7FvuAkUQLijxb29a
-	NWd34fIUwilAxYxZj+Fk+3imr42j95iqoexJ3ZExn90BrBN14HGSCeP6u5v2izoEK8PtFVgvhWZAB
-	6nB66ZNAehYzMjZAxFWg==;
+	List-Owner; bh=A19lQWjZCyciEm8ny2uO0kl1E7MrEavmQ4zd5TjEKYM=; b=wnmUrev5/qk5+t
+	7gVliTmEkBJAsuAD4NShx4l8wKoiLNSTLhCuxuA2iJqg2SksBWcv71XmaAGf3mneot/j19thtjC8l
+	jAcC451s8NNvh58Aped6Om3lRM8QsxWhXc7ZEyLfbpy2VJOXwtbsDZ7Jap6jvnMI6DlFFw3hvG4vf
+	E4op79mYiJA0Qm7FNzFtGTquhUkhUUHHkzLkvM14NbuwC09i0lfvCzLcLFNT+7YUUNZzfL9TfA3Fu
+	PaV6dgYc20AJ+36Lyqdid8YbH+/OJgEvVzyY9j7FP+ZYGxyLmo22d1XiJGptcafYjTIUttiKzFyF8
+	ZWFgryr0nZOtCvVS/yvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncml9-00GaUG-T6; Fri, 08 Apr 2022 11:26:35 +0000
-Received: from metis.ext.pengutronix.de ([85.220.165.71])
+	id 1ncmlX-00GajB-9l; Fri, 08 Apr 2022 11:26:59 +0000
+Received: from casper.infradead.org ([90.155.50.34])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncmhd-00GY9d-2I
- for linux-rockchip@lists.infradead.org; Fri, 08 Apr 2022 11:23:01 +0000
+ id 1ncmhg-00GYBy-R4
+ for linux-rockchip@bombadil.infradead.org; Fri, 08 Apr 2022 11:23:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+ References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=JysSaahtGHi+24rKiUkeynt5EFh7+MEwmNpuYFkpxUk=; b=ueUFBjKDL74k23nH7hnAAy8nc2
+ epqkLYK3TAC09sQoTLqEudlAYyNVPHp2+l1F512Z1uhZ8Qc+X5CjimGbjhCLyocRw+0qPXmaz0OTI
+ A9ycRsFqlyb2DibYW8RezKD2dAXJNZ4xuW9vTWomkE0j3qfckgptviHJM39KLBMFvv+GxL7GuUCQA
+ 2ycZn0iqvOXLBNk2hmi0ziVutfyDh8Wn2cceavJtb7Dp8RdSThbzrJ0sQF6TRDLz0t60Kgb7k24Ht
+ xN2IBkhF+7om5NNDM/akflZYzMOb8Dt3UJ4Zc67+2KTtbKbnOSe/L1rPjrBeW4FLBbCF4TCCbJF3J
+ au1PSq9Q==;
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+ by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1ncmha-009lCN-NQ
+ for linux-rockchip@lists.infradead.org; Fri, 08 Apr 2022 11:22:59 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1ncmhS-0002Hl-5e; Fri, 08 Apr 2022 13:22:46 +0200
+ id 1ncmhT-0002KU-BY; Fri, 08 Apr 2022 13:22:47 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
  by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1ncmhR-001n3s-73; Fri, 08 Apr 2022 13:22:43 +0200
+ id 1ncmhT-001n4q-Q0; Fri, 08 Apr 2022 13:22:46 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1ncmhO-005Z3p-99; Fri, 08 Apr 2022 13:22:42 +0200
+ id 1ncmhO-005Z47-D2; Fri, 08 Apr 2022 13:22:42 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -46,12 +60,11 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Rob Herring <robh@kernel.org>
-Subject: [PATCH v10 05/24] dt-bindings: display: rockchip: dw-hdmi: use "ref"
- as clock name
-Date: Fri,  8 Apr 2022 13:22:19 +0200
-Message-Id: <20220408112238.1274817-6-s.hauer@pengutronix.de>
+ Peter Geis <pgwipeout@gmail.com>, Douglas Anderson <dianders@chromium.org>,
+ Yakir Yang <ykk@rock-chips.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v10 11/24] drm/rockchip: dw_hdmi: Use auto-generated tables
+Date: Fri,  8 Apr 2022 13:22:25 +0200
+Message-Id: <20220408112238.1274817-12-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220408112238.1274817-1-s.hauer@pengutronix.de>
 References: <20220408112238.1274817-1-s.hauer@pengutronix.de>
@@ -62,8 +75,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_042257_160822_3306D12C 
-X-CRM114-Status: GOOD (  11.54  )
+X-CRM114-CacheID: sfid-20220408_122254_781990_8C653DCB 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,55 +94,195 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-"vpll" is a misnomer. A clock input to a device should be named after
-the usage in the device, not after the clock that drives it. On the
-rk3568 the same clock is driven by the HPLL.
-This patch adds "ref" as a new alternative clock name for "vpll"
+From: Douglas Anderson <dianders@chromium.org>
 
+The previous tables for mpll_cfg and curr_ctrl were created using the
+20-pages of example settings provided by the PHY vendor.  Those
+example settings weren't particularly dense, so there were places
+where we were guessing what the settings would be for 10-bit and
+12-bit (not that we use those anyway).  It was also always a lot of
+extra work every time we wanted to add a new clock rate since we had
+to cross-reference several tables.
+
+In <https://crrev.com/c/285855> I've gone through the work to figure
+out how to generate this table automatically.  Let's now use the
+automatically generated table and then we'll never need to look at it
+again.
+
+We only support 8-bit mode right now and only support a small number
+of clock rates and I've verified that the only 8-bit rate that was
+affected was 148.5.  That mode appears to have been wrong in the old
+table.
+
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Signed-off-by: Yakir Yang <ykk@rock-chips.com>
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-Acked-by: Rob Herring <robh@kernel.org>
 ---
 
 Notes:
-    Changes since v4:
-    - Add Robs Ack
+    Changes since v5:
+    - Add missing Signed-off-by me
     
     Changes since v3:
-    - Keep old clock name for compatibility reasons
+    - new patch
 
- .../bindings/display/rockchip/rockchip,dw-hdmi.yaml      | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 130 +++++++++++---------
+ 1 file changed, 69 insertions(+), 61 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-index da3b889ad8fcd..0400f67e5f2c9 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-@@ -36,7 +36,8 @@ properties:
-       # order when present.
-       - description: The HDMI CEC controller main clock
-       - description: Power for GRF IO
--      - description: External clock for some HDMI PHY
-+      - description: External clock for some HDMI PHY (old clock name, deprecated)
-+      - description: External clock for some HDMI PHY (new name)
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index fe4f9556239ac..cb43e7b47157d 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -91,80 +91,88 @@ static struct rockchip_hdmi *to_rockchip_hdmi(struct drm_encoder *encoder)
  
-   clock-names:
-     minItems: 2
-@@ -47,10 +48,14 @@ properties:
-           - cec
-           - grf
-           - vpll
-+          - ref
-       - enum:
-           - grf
-           - vpll
--      - const: vpll
-+          - ref
-+      - enum:
-+          - vpll
-+          - ref
- 
-   ddc-i2c-bus:
-     $ref: /schemas/types.yaml#/definitions/phandle
+ static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
+ 	{
+-		27000000, {
+-			{ 0x00b3, 0x0000},
+-			{ 0x2153, 0x0000},
+-			{ 0x40f3, 0x0000}
++		30666000, {
++			{ 0x00b3, 0x0000 },
++			{ 0x2153, 0x0000 },
++			{ 0x40f3, 0x0000 },
+ 		},
+-	}, {
+-		36000000, {
+-			{ 0x00b3, 0x0000},
+-			{ 0x2153, 0x0000},
+-			{ 0x40f3, 0x0000}
++	},  {
++		36800000, {
++			{ 0x00b3, 0x0000 },
++			{ 0x2153, 0x0000 },
++			{ 0x40a2, 0x0001 },
+ 		},
+-	}, {
+-		40000000, {
+-			{ 0x00b3, 0x0000},
+-			{ 0x2153, 0x0000},
+-			{ 0x40f3, 0x0000}
++	},  {
++		46000000, {
++			{ 0x00b3, 0x0000 },
++			{ 0x2142, 0x0001 },
++			{ 0x40a2, 0x0001 },
+ 		},
+-	}, {
+-		54000000, {
+-			{ 0x0072, 0x0001},
+-			{ 0x2142, 0x0001},
+-			{ 0x40a2, 0x0001},
++	},  {
++		61333000, {
++			{ 0x0072, 0x0001 },
++			{ 0x2142, 0x0001 },
++			{ 0x40a2, 0x0001 },
+ 		},
+-	}, {
+-		65000000, {
+-			{ 0x0072, 0x0001},
+-			{ 0x2142, 0x0001},
+-			{ 0x40a2, 0x0001},
++	},  {
++		73600000, {
++			{ 0x0072, 0x0001 },
++			{ 0x2142, 0x0001 },
++			{ 0x4061, 0x0002 },
+ 		},
+-	}, {
+-		66000000, {
+-			{ 0x013e, 0x0003},
+-			{ 0x217e, 0x0002},
+-			{ 0x4061, 0x0002}
++	},  {
++		92000000, {
++			{ 0x0072, 0x0001 },
++			{ 0x2145, 0x0002 },
++			{ 0x4061, 0x0002 },
+ 		},
+-	}, {
+-		74250000, {
+-			{ 0x0072, 0x0001},
+-			{ 0x2145, 0x0002},
+-			{ 0x4061, 0x0002}
++	},  {
++		122666000, {
++			{ 0x0051, 0x0002 },
++			{ 0x2145, 0x0002 },
++			{ 0x4061, 0x0002 },
+ 		},
+-	}, {
+-		83500000, {
+-			{ 0x0072, 0x0001},
++	},  {
++		147200000, {
++			{ 0x0051, 0x0002 },
++			{ 0x2145, 0x0002 },
++			{ 0x4064, 0x0003 },
+ 		},
+-	}, {
+-		108000000, {
+-			{ 0x0051, 0x0002},
+-			{ 0x2145, 0x0002},
+-			{ 0x4061, 0x0002}
++	},  {
++		184000000, {
++			{ 0x0051, 0x0002 },
++			{ 0x214c, 0x0003 },
++			{ 0x4064, 0x0003 },
+ 		},
+-	}, {
+-		106500000, {
+-			{ 0x0051, 0x0002},
+-			{ 0x2145, 0x0002},
+-			{ 0x4061, 0x0002}
++	},  {
++		226666000, {
++			{ 0x0040, 0x0003 },
++			{ 0x214c, 0x0003 },
++			{ 0x4064, 0x0003 },
+ 		},
+-	}, {
+-		146250000, {
+-			{ 0x0051, 0x0002},
+-			{ 0x2145, 0x0002},
+-			{ 0x4061, 0x0002}
++	},  {
++		272000000, {
++			{ 0x0040, 0x0003 },
++			{ 0x214c, 0x0003 },
++			{ 0x5a64, 0x0003 },
+ 		},
+-	}, {
+-		148500000, {
+-			{ 0x0051, 0x0003},
+-			{ 0x214c, 0x0003},
+-			{ 0x4064, 0x0003}
++	},  {
++		340000000, {
++			{ 0x0040, 0x0003 },
++			{ 0x3b4c, 0x0003 },
++			{ 0x5a64, 0x0003 },
+ 		},
+-	}, {
++	},  {
++		600000000, {
++			{ 0x1a40, 0x0003 },
++			{ 0x3b4c, 0x0003 },
++			{ 0x5a64, 0x0003 },
++		},
++	},  {
+ 		~0UL, {
+-			{ 0x00a0, 0x000a },
+-			{ 0x2001, 0x000f },
+-			{ 0x4002, 0x000f },
++			{ 0x0000, 0x0000 },
++			{ 0x0000, 0x0000 },
++			{ 0x0000, 0x0000 },
+ 		},
+ 	}
+ };
 -- 
 2.30.2
 
