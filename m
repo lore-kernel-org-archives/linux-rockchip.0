@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B26F0C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Apr 2022 11:25:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13E06C433FE
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Apr 2022 11:25:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xMGW7LhDdu+a9rwlWKc1M7fIEDR36IozMFpSIA7VcsY=; b=betGAwF7QBm0n8
-	5Xv7DWHSWgZtejpxtDsCVSs294WCoSreEGihFzxou05gabFB77QFYSFnrwpLPSDF4bvZNZMJAQa8j
-	B0v9kTkYfvVK4sCUvqN4mcYxP8/NSISCGzz60NiJZpOE7mJl+Jeau6HOM8i+thqzYA8joi7cmu6ko
-	/Hvn1Kzi9wWXU4OTDiRJwvG9GuK6ZyK+WS6Co34V2QhnqKEN1BSui9zEWEOon7XpsXoeUv2EtKgSR
-	z9M5k/K6ZQxoILjRd1d/N2vHnUFnBzRpYV6H1qWC8teTqkZWvWkAXqvtIzZ6NPmO+4beaKOFZumcC
-	c0Uu/KeRvMd1HntaECYQ==;
+	List-Owner; bh=NBeoc3/pbRtYvkgJXnoaWOyXdKOkgd3cyzfeRN2o8I8=; b=zo49x7mokGRWMf
+	+y30WSZeGpcL9r9STq3suZo5xIkW+3E+uxEM672au5/mvL48q1cfXhJ0TIad8+4i1DfG61JwOL/LD
+	+bC/Y6zpFr1bREI/iYzvrzXciDwKq+nlP9wsLwT6cB3hlPhetwX0Wx318BRP8CxGZmOz81JePfSHn
+	2UMMGxyvlVudn5xSl+tYXsNsTm9m+R4R1o78Nj3TFJQQrWUse3L4FjwDWuzSM8xs+1qrqdngwE+c5
+	+5mlDWAZFc3rw96aCccwmZgJjxYmUL4yvmRWKbePNNojKhApMc20xwozROhnejtnSeH4HY8BKK/u7
+	tzejc5+c33dqL/cyOzrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncmkR-00GZxl-C7; Fri, 08 Apr 2022 11:25:51 +0000
+	id 1ncmkS-00GZyb-FL; Fri, 08 Apr 2022 11:25:52 +0000
 Received: from casper.infradead.org ([90.155.50.34])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncmhg-00GYBy-A1
- for linux-rockchip@bombadil.infradead.org; Fri, 08 Apr 2022 11:23:00 +0000
+ id 1ncmhf-00GYBk-VU
+ for linux-rockchip@bombadil.infradead.org; Fri, 08 Apr 2022 11:22:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=kurjWBLfr+vikzJOwxOtx0QPUYcd8xAHT8TG7IzBheA=; b=O8wGA96vnZ81+Ez7A5jWyvBKIw
- B1os0yyRg8N8b1thgUaJuIEgTNvoWOioLgO6pcxwa4DbngKtKYdMVYEiNE6FIjxfJhxAoHJB5/crI
- MGR/Z8Z6xfBHhhfsXmMvfoiP1s4aaY2CWMeFlpmK9pkpR8QMdjkOkyUU/CDLSKZzSVcBq9lQboFt5
- YFLXyoIZcPqGJEXQO/cFbMybiO4PM3k/nxtnPyLRK3eRT+wZsVnvrAHyUEUe1x37T2k/seRg0bv29
- n3vs8jXyLhIUKK01UVUQ3MzNuPI3HVAGG23FGcOoPv7tGEb2xSe1U+KExDrfC/LWge6H6zwbkK3Vw
- ymBTypfg==;
+ bh=T+hNotGvUiDJgymMdk/poUhfK98rsDFQToYM9JeTR/U=; b=q1JpeQprX4TxPtVWc4tIPzdw0w
+ vwv6dKQNZeILeY/NmuNJlFktiXPo0zFlN8eyfHXlT7yC9cEMGTKQsQ4uwW6leZTtGkVl2SJlkNkLm
+ +LlSgehkZiEWq84op5MelH7uk7yT1JptimphfMlCp6vqad/GRoyhYYWxTGa4Mj9TIuBrFWzeHh0qY
+ 9xARpnWZ9gZAn+DziSlB7tmFvigaJ4XbWVb9wEC8SOyD9dTCY5dW6CnSk4p2dgEQBmMIzl1ZsBfcx
+ yOMj4Sv88AmLJOviZ4vMcX1fOHoR++4iIyNA6wAxxyG+lf28y8ATw8+r0JA+eagKOKAo/ckv4kf0L
+ yV46+H5A==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncmha-009lCQ-MK
+ id 1ncmha-009lCP-OV
  for linux-rockchip@lists.infradead.org; Fri, 08 Apr 2022 11:22:58 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1ncmhT-0002LV-SC; Fri, 08 Apr 2022 13:22:47 +0200
+ id 1ncmhT-0002L1-EM; Fri, 08 Apr 2022 13:22:47 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
  by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1ncmhU-001n54-9M; Fri, 08 Apr 2022 13:22:46 +0200
+ id 1ncmhU-001n4v-1t; Fri, 08 Apr 2022 13:22:46 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1ncmhO-005Z4h-Oq; Fri, 08 Apr 2022 13:22:42 +0200
+ id 1ncmhO-005Z4M-Gk; Fri, 08 Apr 2022 13:22:42 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -62,9 +62,9 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
  Rob Herring <robh@kernel.org>
-Subject: [PATCH v10 23/24] dt-bindings: display: rockchip: Add binding for VOP2
-Date: Fri,  8 Apr 2022 13:22:37 +0200
-Message-Id: <20220408112238.1274817-24-s.hauer@pengutronix.de>
+Subject: [PATCH v10 16/24] arm64: dts: rockchip: rk356x: Add VOP2 nodes
+Date: Fri,  8 Apr 2022 13:22:30 +0200
+Message-Id: <20220408112238.1274817-17-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220408112238.1274817-1-s.hauer@pengutronix.de>
 References: <20220408112238.1274817-1-s.hauer@pengutronix.de>
@@ -75,8 +75,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_122254_751573_24931ECD 
-X-CRM114-Status: GOOD (  16.65  )
+X-CRM114-CacheID: sfid-20220408_122254_809510_EAEC7DB0 
+X-CRM114-Status: GOOD (  15.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,178 +94,146 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The VOP2 is found on newer Rockchip SoCs like the rk3568 or the rk3566.
-The binding differs slightly from the existing VOP binding, so add a new
-binding file for it.
+The VOP2 is the display output controller on the RK3568. Add the node
+for it to the dtsi file along with the required display-subsystem node
+and the iommu node.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
 
 Notes:
-    Changes since v5:
-    - Add Robs Reviewed-by:
+    Changes since v6:
+    - Change RK3568_ prefix to ROCKCHIP_ prefix
+    - start counting from one instead of zero
     
     Changes since v4:
-    - Fix clk names in example
-    - Drop unnecessary assigned-clocks, assigned-clock-rates and assigned-clock-parents
+    - Add Robs Ack
     
     Changes since v3:
-    - drop redundant _vop suffix from clock names
-    
-    Changes since v3:
-    - new patch
+    - Bring back gamma_lut regs
+    - Drop redundant _vop suffix from clock names
 
- .../display/rockchip/rockchip-vop2.yaml       | 140 ++++++++++++++++++
- 1 file changed, 140 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+ arch/arm64/boot/dts/rockchip/rk3566.dtsi |  4 ++
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi |  4 ++
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 51 ++++++++++++++++++++++++
+ include/dt-bindings/soc/rockchip,vop2.h  | 14 +++++++
+ 4 files changed, 73 insertions(+)
+ create mode 100644 include/dt-bindings/soc/rockchip,vop2.h
 
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566.dtsi b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+index 3839eef5e4f76..595fa2562cb8e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3566.dtsi
+@@ -18,3 +18,7 @@ power-domain@RK3568_PD_PIPE {
+ 		#power-domain-cells = <0>;
+ 	};
+ };
++
++&vop {
++	compatible = "rockchip,rk3566-vop";
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+index 5b0f528d68180..4deab90e83834 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+@@ -114,3 +114,7 @@ power-domain@RK3568_PD_PIPE {
+ 		#power-domain-cells = <0>;
+ 	};
+ };
++
++&vop {
++	compatible = "rockchip,rk3568-vop";
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index 7cdef800cb3ce..fdb7a9a6ca743 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -129,6 +129,11 @@ opp-1800000000 {
+ 		};
+ 	};
+ 
++	display_subsystem: display-subsystem {
++		compatible = "rockchip,display-subsystem";
++		ports = <&vop_out>;
++	};
++
+ 	firmware {
+ 		scmi: scmi {
+ 			compatible = "arm,scmi-smc";
+@@ -569,6 +574,52 @@ gmac1_mtl_tx_setup: tx-queues-config {
+ 		};
+ 	};
+ 
++	vop: vop@fe040000 {
++		reg = <0x0 0xfe040000 0x0 0x3000>, <0x0 0xfe044000 0x0 0x1000>;
++		reg-names = "regs", "gamma_lut";
++		interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>, <&cru DCLK_VOP0>,
++			 <&cru DCLK_VOP1>, <&cru DCLK_VOP2>;
++		clock-names = "aclk", "hclk", "dclk_vp0", "dclk_vp1", "dclk_vp2";
++		iommus = <&vop_mmu>;
++		power-domains = <&power RK3568_PD_VO>;
++		rockchip,grf = <&grf>;
++		status = "disabled";
++
++		vop_out: ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			vp0: port@0 {
++				reg = <0>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++			};
++
++			vp1: port@1 {
++				reg = <1>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++			};
++
++			vp2: port@2 {
++				reg = <2>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++			};
++		};
++	};
++
++	vop_mmu: iommu@fe043e00 {
++		compatible = "rockchip,rk3568-iommu";
++		reg = <0x0 0xfe043e00 0x0 0x100>, <0x0 0xfe043f00 0x0 0x100>;
++		interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>;
++		clock-names = "aclk", "iface";
++		#iommu-cells = <0>;
++		status = "disabled";
++	};
++
+ 	qos_gpu: qos@fe128000 {
+ 		compatible = "rockchip,rk3568-qos", "syscon";
+ 		reg = <0x0 0xfe128000 0x0 0x20>;
+diff --git a/include/dt-bindings/soc/rockchip,vop2.h b/include/dt-bindings/soc/rockchip,vop2.h
 new file mode 100644
-index 0000000000000..655d9b327f7d3
+index 0000000000000..6e66a802b96a5
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
-@@ -0,0 +1,140 @@
-+# SPDX-License-Identifier: GPL-2.0-only or BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/rockchip/rockchip-vop2.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/include/dt-bindings/soc/rockchip,vop2.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: GPL-2.0 OR BSD-2-Clause */
 +
-+title: Rockchip SoC display controller (VOP2)
++#ifndef __DT_BINDINGS_ROCKCHIP_VOP2_H
++#define __DT_BINDINGS_ROCKCHIP_VOP2_H
 +
-+description:
-+  VOP2 (Video Output Processor v2) is the display controller for the Rockchip
-+  series of SoCs which transfers the image data from a video memory
-+  buffer to an external LCD interface.
++#define ROCKCHIP_VOP2_EP_RGB0	1
++#define ROCKCHIP_VOP2_EP_HDMI0	2
++#define ROCKCHIP_VOP2_EP_EDP0	3
++#define ROCKCHIP_VOP2_EP_MIPI0	4
++#define ROCKCHIP_VOP2_EP_LVDS0	5
++#define ROCKCHIP_VOP2_EP_MIPI1	6
++#define ROCKCHIP_VOP2_EP_LVDS1	7
 +
-+maintainers:
-+  - Sandy Huang <hjc@rock-chips.com>
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3566-vop
-+      - rockchip,rk3568-vop
-+
-+  reg:
-+    minItems: 1
-+    items:
-+      - description:
-+          Must contain one entry corresponding to the base address and length
-+          of the register space.
-+      - description:
-+          Can optionally contain a second entry corresponding to
-+          the CRTC gamma LUT address.
-+
-+  interrupts:
-+    maxItems: 1
-+    description:
-+      The VOP interrupt is shared by several interrupt sources, such as
-+      frame start (VSYNC), line flag and other status interrupts.
-+
-+  clocks:
-+    items:
-+      - description: Clock for ddr buffer transfer.
-+      - description: Clock for the ahb bus to R/W the phy regs.
-+      - description: Pixel clock for video port 0.
-+      - description: Pixel clock for video port 1.
-+      - description: Pixel clock for video port 2.
-+
-+  clock-names:
-+    items:
-+      - const: aclk
-+      - const: hclk
-+      - const: dclk_vp0
-+      - const: dclk_vp1
-+      - const: dclk_vp2
-+
-+  rockchip,grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      Phandle to GRF regs used for misc control
-+
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          Output endpoint of VP0
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          Output endpoint of VP1
-+
-+      port@2:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          Output endpoint of VP2
-+
-+  iommus:
-+    maxItems: 1
-+
-+  power-domains:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+  - ports
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+        #include <dt-bindings/clock/rk3568-cru.h>
-+        #include <dt-bindings/interrupt-controller/arm-gic.h>
-+        #include <dt-bindings/power/rk3568-power.h>
-+        bus {
-+            #address-cells = <2>;
-+            #size-cells = <2>;
-+            vop: vop@fe040000 {
-+                compatible = "rockchip,rk3568-vop";
-+                reg = <0x0 0xfe040000 0x0 0x3000>, <0x0 0xfe044000 0x0 0x1000>;
-+                interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
-+                clocks = <&cru ACLK_VOP>,
-+                         <&cru HCLK_VOP>,
-+                         <&cru DCLK_VOP0>,
-+                         <&cru DCLK_VOP1>,
-+                         <&cru DCLK_VOP2>;
-+                clock-names = "aclk",
-+                              "hclk",
-+                              "dclk_vp0",
-+                              "dclk_vp1",
-+                              "dclk_vp2";
-+                power-domains = <&power RK3568_PD_VO>;
-+                iommus = <&vop_mmu>;
-+                vop_out: ports {
-+                    #address-cells = <1>;
-+                    #size-cells = <0>;
-+                    vp0: port@0 {
-+                        reg = <0>;
-+                        #address-cells = <1>;
-+                        #size-cells = <0>;
-+                    };
-+                    vp1: port@1 {
-+                        reg = <1>;
-+                        #address-cells = <1>;
-+                        #size-cells = <0>;
-+                    };
-+                    vp2: port@2 {
-+                        reg = <2>;
-+                        #address-cells = <1>;
-+                        #size-cells = <0>;
-+                    };
-+                };
-+            };
-+        };
++#endif /* __DT_BINDINGS_ROCKCHIP_VOP2_H */
 -- 
 2.30.2
 
