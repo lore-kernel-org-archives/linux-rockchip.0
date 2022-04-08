@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A891EC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Apr 2022 11:32:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29139C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Apr 2022 11:33:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/sro/zOZa3ZuPVjfRaQnQBx1TQJo8Vc0Ewyx89Dl7uU=; b=Hqgz8Oe4+UIhcP
-	93zmik/YqV/TWKbT9WSzTzigY39knHg5FcKUb1cPn+leLZspVuZlda5p55zuvjDn4D1CaN66/SiT0
-	b9sgMAeswZlwO7pGFVLtgnSmk33WLhxuvegeo91ZMB4rIObuSnAEyR/58R2vmcpmXKVEQVlJjnNfo
-	nROMx2tRW1/8+GOxVvkWGvxYm8qbG9YpwdZj/qb/BVUa0LDO2s0WXgHLd7TWBqA5q9kyqHAknvqUx
-	gKCXr8iJy/Qxw3FZkvcmiHa9Tp/KQ+nqVznzckOn5EGSTanLViLw8p507I1KdByMZi6NQ71PyNiKV
-	u6BqPQQrWDKHgSQYSEkA==;
+	List-Owner; bh=IvbBaU3Sxg+YELGG+HgsH07RWFHL5aEwbhqD8zU0cB0=; b=ba5olLLs1nODb5
+	On1vQQE337ZowbS4AOlrri+jGVyYP3YHttELUiure6cjyruvJLoforIqbBtwFA+x9QkwdOUXItwQD
+	xldaGBlsF1uQStSWkiMAxoSVd/IEiwmMQmsSlLe2mSX7KxQn8W7VaGwKgKOsc8XE6rQDhKrLDRKRB
+	J2wXAYM7AWb1o/Y21CtFXXm+jJF9iphQZ7fIXizAKYd1yzE8+SQEJX10AgoFrVTcAmd2wbpypYKz2
+	rEtsb7zC8YQHCRiIdOWUC16Zrg//CQdPpEE8rX1EcjOpHS61n4B9Q3u7oJtp+XQF0SwfeAJUj+slU
+	CjmYVhc2qBjax/04JRXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ncmqV-00GdPy-Lc; Fri, 08 Apr 2022 11:32:07 +0000
+	id 1ncmrZ-00Gdx1-FE; Fri, 08 Apr 2022 11:33:13 +0000
 Received: from desiato.infradead.org ([90.155.92.199])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncmhq-00GYH4-5P
- for linux-rockchip@bombadil.infradead.org; Fri, 08 Apr 2022 11:23:10 +0000
+ id 1ncmhs-00GYH4-Hz
+ for linux-rockchip@bombadil.infradead.org; Fri, 08 Apr 2022 11:23:12 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
  :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=Bo7b9pFxKvRl7NFQCY/ss2wEmJJAHGQ47nIYoH5+/3E=; b=Wd5aJ1wvPFpKonucMD8AwTIMUi
- xa2erl1Y2TCWpmS8lKirsVHVJp/gnSMjHzFxpxgzgzSaeRVtnd54cDR4hjW3OaoYfRgID/+wMARju
- OzIjBPDYcllHwbU+MuGQTV5JalK4ndoZDPFncaj/cICKLJ0c0xgKUuGJ28Pl6WpueWBylErvOkZ09
- Oz/TGAlIT5dAiOkNS0FqujfxJVqbcgD/J3Oyrvzn2CVMCA8Kle6uN7aVejPKjo88Bd4/EdW17qGJn
- XksPZAMvnblKCr845vOJ73t18hr7WgBPa/ZW2701+xLM0AcKYz/ZRVV3VYAcV5v5tdPepFd4ddq4J
- JQ2WZ8TA==;
+ bh=goIWxbd9Bz+SeCLZ4ErLs4RbnRDoipttbCLkJo7czW0=; b=QBzeSvebWCsgAHLGRuBA8Ucr2l
+ LVOSjVF1cfxv4kEy7p0s3tLCFp14LmfU6nKRncbJmTPSkwPnvC9gu2BI/WHLEZmb4OvRjYBPiZ7Ae
+ qa6xxn+JXUAbAXbWVkQFruMac2z9NtlmPzqb4f1FywZTYF68VTmVLjNizfmN3Q6gEWTsefR5iiOW5
+ Bk9ynyvaDVcW/ZtiyOSDIzoWMIInePfryKvxnfxihW8dDbDrkqS7cQ+l6zXTCcrzJUKjgCDb/z3+I
+ EHvZPSas/Px7nRQ/yIBwK4wX2WzvO+ptsRLrft/uAJ7QaLKKhSd/yBGFx+tc0X0QPwfRjKunn4qt7
+ jU2SHg3g==;
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ncmhe-002t9p-Ks
- for linux-rockchip@lists.infradead.org; Fri, 08 Apr 2022 11:23:05 +0000
+ id 1ncmhm-002t9Y-0J
+ for linux-rockchip@lists.infradead.org; Fri, 08 Apr 2022 11:23:09 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1ncmhT-0002J4-5L; Fri, 08 Apr 2022 13:22:47 +0200
+ id 1ncmhX-0002I1-0l; Fri, 08 Apr 2022 13:22:51 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
  by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1ncmhT-001n4Y-G4; Fri, 08 Apr 2022 13:22:46 +0200
+ id 1ncmhS-001n4G-Gj; Fri, 08 Apr 2022 13:22:45 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1ncmhO-005Z4k-Pb; Fri, 08 Apr 2022 13:22:42 +0200
+ id 1ncmhO-005Z3y-B6; Fri, 08 Apr 2022 13:22:42 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -60,12 +60,12 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Michael Riesch <michael.riesch@wolfvision.net>,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Rob Herring <robh@kernel.org>
-Subject: [PATCH v10 24/24] dt-bindings: display: rockchip: dw-hdmi: fix ports
- description
-Date: Fri,  8 Apr 2022 13:22:38 +0200
-Message-Id: <20220408112238.1274817-25-s.hauer@pengutronix.de>
+ Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH v10 08/24] dt-bindings: display: rockchip: dw-hdmi: Add
+ compatible for rk3568 HDMI
+Date: Fri,  8 Apr 2022 13:22:22 +0200
+Message-Id: <20220408112238.1274817-9-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220408112238.1274817-1-s.hauer@pengutronix.de>
 References: <20220408112238.1274817-1-s.hauer@pengutronix.de>
@@ -76,8 +76,9 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220408_122258_961327_9A95D692 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20220408_122307_091921_905B743B 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,75 +96,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Current port description doesn't cover all possible cases. It currently
-expects one single port with two endpoints.
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 
-When the HDMI connector is described in the device tree there can be two
-ports, first one going to the VOP and the second one going to the connector.
+Define a new compatible for rk3568 HDMI.
+This version of HDMI hardware block needs two new clocks hclk_vio and hclk
+to provide phy reference clocks.
 
-Also on SoCs which only have a single VOP there will be only one
-endpoint instead of two.
-
-This patch addresses both issues. With this there can either be a single
-port ("port") , or two of them ("port@0", "port@1") when the connector
-is also in the device tree. Also the first or only port can either have
-one endpoint ("endpoint") for single VOP SoCs or two ("endpoint@0",
-"endpoint@1") for dual VOP SoCs.
-
-Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Reviewed-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
-
-Notes:
-    Changes since v6:
-    - Add Reviewed-by: Rob Herring <robh@kernel.org>
-    Changes since v5:
-    - new patch
-
- .../display/rockchip/rockchip,dw-hdmi.yaml    | 24 +++++++------------
- 1 file changed, 9 insertions(+), 15 deletions(-)
+ .../devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml   | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-index d7cb2b2be60e8..7e59dee15a5f4 100644
+index 0400f67e5f2c9..e6b8437a1e2d1 100644
 --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
 +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-hdmi.yaml
-@@ -97,27 +97,21 @@ properties:
-   ports:
-     $ref: /schemas/graph.yaml#/properties/ports
+@@ -23,6 +23,7 @@ properties:
+       - rockchip,rk3288-dw-hdmi
+       - rockchip,rk3328-dw-hdmi
+       - rockchip,rk3399-dw-hdmi
++      - rockchip,rk3568-dw-hdmi
  
--    properties:
--      port:
--        $ref: /schemas/graph.yaml#/$defs/port-base
--        unevaluatedProperties: false
-+    patternProperties:
-+      "^port(@0)?$":
-+        $ref: /schemas/graph.yaml#/properties/port
-         description: Input of the DWC HDMI TX
--
-         properties:
-+          endpoint:
-+            description: Connection to the VOP
-           endpoint@0:
--            $ref: /schemas/graph.yaml#/properties/endpoint
-             description: Connection to the VOPB
--
-           endpoint@1:
--            $ref: /schemas/graph.yaml#/properties/endpoint
-             description: Connection to the VOPL
--
--        required:
--          - endpoint@0
--          - endpoint@1
--
--    required:
--      - port
-+    properties:
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Output of the DWC HDMI TX
- 
-   rockchip,grf:
-     $ref: /schemas/types.yaml#/definitions/phandle
+   reg-io-width:
+     const: 4
 -- 
 2.30.2
 
