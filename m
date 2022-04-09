@@ -1,85 +1,81 @@
 Return-Path: <linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
-Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
+Received: from bombadil.infradead.org (unknown [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07612C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Apr 2022 11:57:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DED67C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Apr 2022 15:21:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7gRxM1CB66JQNbXireI2xPP4YKqnZl7vf8fO5JnXk5w=; b=kAEoSsgKcQiJ/S
-	wpiY4rrDaeA/J/zhXEmssDYBRYpcF2OY36xOTlrFiR1ZUVR+eQ3rhk1+CgYp1uLuBg/hUNNTiH9E1
-	LYJghsKxl6/uTTtYKKbPrtblIT/BSSM7CnwytcHGU6tBYQKS7WSgz/Wm0A2mcXCizYtdST+7t4j+5
-	3K8dYuD+bctB6tK/bldpi/29Tt/e4x+O1eTpDCvJjtVlSseSVBGBReWvDv9fbaynk6l3x6aysPtvE
-	NO4iMsljqJkiPfPoWqtn5wBj+GuIaX6UFMp+AK57o5fFgTTxzsGk6jrLwUqzF1U2Po0mQKyVSSmTt
-	QbNtVneSRQyzdDQke4yQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WpqEHCGpMTSEt9mZce0kY9+HV8U6nz5uT7GLGrguEb0=; b=Y4w1eWGhf62Kr3
+	yjtJAx17iONLB2q7nFqRt+sjM2G56BSL96tSTy+hNmbQyUtBPzFzVD1eAVZJ8BTBvtzOfHlXET453
+	6ewlLf2LHOUB+Kk4ns4x1wJggmEjyE4DAgy4rGzjU6SgQ2NdkV/zxXnjZpaBnu2zvnZZuVWuXHqj0
+	R6xoTAwsnhnJNEPFVvmD2F6PvmIdRxdO4k4h5hp07rl7pEE8dSonU2EAC8kmq+pWctee6uG9f3kh/
+	TWxm2/HGQZq5QFVxzyr0+cufOkDRR3l6bBFv5eQP4k+INcuyhJsamHJec6QAk9Hx9zDY13Ih+iY+m
+	3sxueqlyB9koywh+kTxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nd9iO-0030L5-WF; Sat, 09 Apr 2022 11:57:17 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1ndCu0-003OT9-RA; Sat, 09 Apr 2022 15:21:28 +0000
+Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nd9iC-0030J7-W0; Sat, 09 Apr 2022 11:57:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1649505409;
- bh=v2/xJ7yto9BmCfd00GAKmMJNCuq5Souzk3hwnLPMWcc=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=LSTwAdCroFkqACPFFmDVbWXFphpW6RBq59c1ddGthV5a/ryIhbxB4UvHzJm0ixyeR
- U9ssmsJVX0yX6vOnYjezwFRwd75+qIDzTP9za5D4dNr1uNCf26A4cdn515FxaEo0Lc
- gJgxTWdWZUyBRgV4jFn7SssmIslCxPNi//G8IXsM=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.154.105] ([217.61.154.105]) by web-mail.gmx.net
- (3c-app-gmx-bap35.server.lan [172.19.172.105]) (via HTTP); Sat, 9 Apr 2022
- 13:56:49 +0200
+ id 1ndCtw-003ORI-4v
+ for linux-rockchip@lists.infradead.org; Sat, 09 Apr 2022 15:21:26 +0000
+Received: by mail-qv1-xf32.google.com with SMTP id p8so9771675qvv.5
+ for <linux-rockchip@lists.infradead.org>; Sat, 09 Apr 2022 08:21:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+cC35jZSMuibIlbDfx38vUrrgkq1N8fYAn9zrEEF/JE=;
+ b=iRKCQqnjzJgB+zMSPLNUcVi3w7xZfYU4XFOCFdbHx9ZJbcgAXtmiMl1765xlDsSMFM
+ 7W6oTqvODYt7tqyJ7u7WGLGQnhCSgmBFKRsaVqanlqzRUml38wAsOxsPNelcpZlWftD/
+ lJFwAXfEXYgHEIjyypUMHJ+O67J5lMMB8G2ONqA+mGQhFZe/wyso+wxRwseEHiEKM5lQ
+ +EHSqF9A1t3usbtK2yemn4UR5+16nBVQoeLW3Q4x9xTH039VJe83Nvg/Mc7YFhD5VXHw
+ Mm+q+hfzDxbo850ovcxJNCNBHXdWxyclmpGoJ60BJ3JadZqknRgQUPOkshgedYWTXQ3L
+ ZJvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+cC35jZSMuibIlbDfx38vUrrgkq1N8fYAn9zrEEF/JE=;
+ b=zxxp+O65KgVBboODfcNvNu5iFLRdSbXk2vggXLAQj767LzW9pGtWXyb6jTkiSc0CTS
+ vxF2743F/k7kxLxxy84ucQS5qlCLasqmU+piVYtatXxA/C+mRx1p4tHy3PQXQac/uz7C
+ xRJQbA0zZTgejcPrF48CPkqHXpH3kZLMCeCviPZKQDqpayKbLXvvKqwuhmk3+u2rOG8n
+ d4U0AaxT99n+r0OgjAbJ5D5MeK7bHOQYE+M1fyL6PJpJgzhlf6Pr5XxF6d7dxcJ0NZiV
+ f32OpSy4LA9+nv+A/MJmP84/Sd3zuuT+jw4rUBK+Q+qWub8SfK7QzD6uphyBcUhg4ne9
+ TVOg==
+X-Gm-Message-State: AOAM533hmN28zijteCAUKhKS68RaDRFbQjCtwxqQ4yxxkWgtw906QzSi
+ yRuKXlspAVccb5Kbaa7dtQI=
+X-Google-Smtp-Source: ABdhPJxKeuEAwnxh2dOIZwzzkEhGTq6QJurUZWwxAy7CtPbPSue+U0zKtCm1RK04b4VUUu42u3Eibw==
+X-Received: by 2002:a05:6214:c2a:b0:440:f702:2195 with SMTP id
+ a10-20020a0562140c2a00b00440f7022195mr20338466qvd.37.1649517681090; 
+ Sat, 09 Apr 2022 08:21:21 -0700 (PDT)
+Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
+ by smtp.gmail.com with ESMTPSA id
+ az17-20020a05620a171100b00680af0db559sm16559516qkb.127.2022.04.09.08.21.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 09 Apr 2022 08:21:20 -0700 (PDT)
+From: Peter Geis <pgwipeout@gmail.com>
+To: Felipe Balbi <balbi@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Robert Hancock <robert.hancock@calian.com>,
+ Sean Anderson <sean.anderson@seco.com>
+Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
+ Peter Geis <pgwipeout@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] usb: dwc3: fix backwards compat with rockchip devices
+Date: Sat,  9 Apr 2022 11:21:15 -0400
+Message-Id: <20220409152116.3834354-1-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Message-ID: <trinity-da7d86cc-5703-4657-858c-f241e5f0a6fd-1649505409042@3c-app-gmx-bap35>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Peter Geis <pgwipeout@gmail.com>, Dan Johansen <strit@manjaro.org>,
- Frank Wunderlich <linux@fw-web.de>, "open list:ARM/Rockchip SoC..."
- <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Michael Riesch
- <michael.riesch@wolfvision.net>, devicetree <devicetree@vger.kernel.org>,
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing
- List <linux-kernel@vger.kernel.org>
-Subject: Aw: Re:  Re: Re: [PATCH] arm64: dts: rockchip: Fix clocks for
- rk356x usb
-Date: Sat, 9 Apr 2022 13:56:49 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <4232341.5fSG56mABF@phil>
-References: <20220409075147.136187-1-linux@fw-web.de>
- <CAMdYzYqx1iUuEe9FPpUTgL0L2i=Q5Sq2+0oiSYzqkV6noQ8BFw@mail.gmail.com>
- <CAMdYzYqaGe9_GbRCvG3kvLpNsVfVqGNkg=YYgbVR90Qtcs9YSA@mail.gmail.com>
- <4232341.5fSG56mABF@phil>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:IpO6iEatWIxd338hHRF5AGz8rNo4DAr/13bwlpwbcBkjfcy7yL02zG1I+1zX3LCi0/8hi
- 7sG089SdN79CJ/5wSouKpXJDvRGXCITX9wP7etALmwlmAgqOlRx21lzg/RKhxs6Mf0Eke9hJIlld
- pYnlXHihiP84w6FXkQNhA8VgaikP+U3oQw4mdiJqasbJ/bB9q8R1UEkBLHWRbMP9GRb/FpzERBc7
- a3G947ISBK5Wk9PpklhxJTQS3Pr567bwyBn7HiLPkDuCwuLilXxgQWZDd263cthJ1YIKeB8jkeUX
- 7M=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ceG3UwnHoAs=:pHlwaSspH0+O9pfaynPKeo
- yNyGFkpxcEYItEbLIMbUVEltaghh2bMXdz4mHqGZcwBwDXVL6BgXJaVgCGHXVo/SFZlmyRk7S
- ND55sSTK60b50Gwm237kOYG/z3PWbhNXAyKs1fB9keZEi34sRrppkUJxIqyC7zY1tMF297eH4
- OiXPYfLYywBJhNSGSfOUPeX0rHcprgeW7NzsDMqZP8hFWQ8xagObZc8TpN0vRVHLpfbOQBGO6
- Faf0CbFxDSNZV9Uy4p14m6fcK+PTDsZ/udzeZDcNbMgVpLA492ak28LKEYY7xDvVwgdv3MxYV
- xDxY3pOKmJjgoHZb1zGuQRhR2olXEv5y4bsdQGdbNXAwpIafdC9b9h72El4llkfhrpvUqF9Sf
- ey6sKnXhH36lH7zOgKZ3KLk+wILkPT9q0shOxbH7U6J4or0vWsQdZLHbbfto/eLoUQKgriU3t
- yXvFpO5IzKiVXQeJS5d0+GA8HkCkoIW3Zzlbybslrk5P8mRdtCNhzKuqYvi4yRfWoz0VZ+xlF
- hmFDWuMnDoxqeaMK8XGqVvWqJ8Zptwo3PDf2Bt7tqG4MJhMwdhq+IxhTWZbWGkl4BcSmMCZWw
- LMKJFeUTPFiaD1r2Ijh+FYHm/iwJSRHTJ3o/j5BKaFhzIykRklsbJrY1Bsmg0WDJwBuV0sj6c
- gZjfua55wlVNCFjAIDIK2x8t2gabCiHqZTZqpJeGqOo8kAxGtKH8KFixaoi9YChvkwNpfDKm6
- tbp1ryMg+IP1baF+sRp8Nwqfz62GDpRE/RmTNGaBbT2UXPjeme+UpNOzEBe4zJDvUxyj+IALN
- JenhYhU
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220409_045705_356868_1363A214 
-X-CRM114-Status: UNSURE (   9.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220409_082124_249466_FD1077E3 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,40 +93,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Commit 33fb697ec7e5 ("usb: dwc3: Get clocks individually") moved from
+the clk_bulk api to individual clocks, following the snps,dwc3.yaml
+dt-binding for clock names.
+Unfortunately the rk3328 (and upcoming rk356x support) use the
+rockchip,dwc3.yaml which has different clock names, which are common on
+devices using the glue layer.
+The rk3328 does not use a glue layer, but attaches directly to the dwc3
+core driver.
+The offending patch series failed to account for this, thus dwc3 was
+broken on rk3328.
 
-so to not break the binding and other boards the right Patch should be like this
+To retain backwards compatibility with rk3328 device trees we must also
+check for the alternate clock names.
 
+Fixes: 33fb697ec7e5 ("usb: dwc3: Get clocks individually")
+
+Reported-by: Frank Wunderlich <frank-w@public-files.de>
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+
+This patch is standalone to fix the backwards compatibility, and is
+necessary no matter if we decide to retain the clock names in
+rockchip,dwc3.yaml as is or align with snps,dwc3.yaml.
+
+ drivers/usb/dwc3/core.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
+index 1170b800acdc..5bfd3e88af35 100644
+--- a/drivers/usb/dwc3/core.c
 +++ b/drivers/usb/dwc3/core.c
-@@ -1691,17 +1691,17 @@ static int dwc3_probe(struct platform_device *pdev)
-                 * Clocks are optional, but new DT platforms should support all
-                 * clocks as required by the DT-binding.
-                 */
--               dwc->bus_clk = devm_clk_get_optional(dev, "bus_early");
-+               dwc->bus_clk = devm_clk_get_optional(dev, "bus_clk");
-                if (IS_ERR(dwc->bus_clk))
-                        return dev_err_probe(dev, PTR_ERR(dwc->bus_clk),
-                                             "could not get bus clock\n");
+@@ -1690,21 +1690,44 @@ static int dwc3_probe(struct platform_device *pdev)
+ 		/*
+ 		 * Clocks are optional, but new DT platforms should support all
+ 		 * clocks as required by the DT-binding.
++		 * Some devices have different clock names in legacy device trees,
++		 * check for them to retain backwards compatibility.
+ 		 */
+ 		dwc->bus_clk = devm_clk_get_optional(dev, "bus_early");
+ 		if (IS_ERR(dwc->bus_clk))
+ 			return dev_err_probe(dev, PTR_ERR(dwc->bus_clk),
+ 					     "could not get bus clock\n");
+ 
++		if (dwc->bus_clk == NULL) {
++			dwc->bus_clk = devm_clk_get_optional(dev, "bus_clk");
++			if (IS_ERR(dwc->bus_clk))
++				return dev_err_probe(dev, PTR_ERR(dwc->bus_clk),
++						     "could not get bus clock\n");
++		}
++
+ 		dwc->ref_clk = devm_clk_get_optional(dev, "ref");
+ 		if (IS_ERR(dwc->ref_clk))
+ 			return dev_err_probe(dev, PTR_ERR(dwc->ref_clk),
+ 					     "could not get ref clock\n");
+ 
++		if (dwc->ref_clk == NULL) {
++			dwc->ref_clk = devm_clk_get_optional(dev, "ref_clk");
++			if (IS_ERR(dwc->ref_clk))
++				return dev_err_probe(dev, PTR_ERR(dwc->ref_clk),
++						     "could not get ref clock\n");
++		}
++
+ 		dwc->susp_clk = devm_clk_get_optional(dev, "suspend");
+ 		if (IS_ERR(dwc->susp_clk))
+ 			return dev_err_probe(dev, PTR_ERR(dwc->susp_clk),
+ 					     "could not get suspend clock\n");
++
++		if (dwc->susp_clk == NULL) {
++			dwc->susp_clk = devm_clk_get_optional(dev, "suspend_clk");
++			if (IS_ERR(dwc->susp_clk))
++				return dev_err_probe(dev, PTR_ERR(dwc->susp_clk),
++						     "could not get suspend clock\n");
++		}
+ 	}
+ 
+ 	ret = reset_control_deassert(dwc->reset);
+-- 
+2.25.1
 
--               dwc->ref_clk = devm_clk_get_optional(dev, "ref");
-+               dwc->ref_clk = devm_clk_get_optional(dev, "ref_clk");
-                if (IS_ERR(dwc->ref_clk))
-                        return dev_err_probe(dev, PTR_ERR(dwc->ref_clk),
-                                             "could not get ref clock\n");
-
--               dwc->susp_clk = devm_clk_get_optional(dev, "suspend");
-+               dwc->susp_clk = devm_clk_get_optional(dev, "suspend_clk");
-                if (IS_ERR(dwc->susp_clk))
-                        return dev_err_probe(dev, PTR_ERR(dwc->susp_clk),
-                                             "could not get suspend clock\n");
-
-but this needs fixing dts using the new clock names
-
-this is a link to the series moving from bulk_clk to named clocks:
-
-https://patchwork.kernel.org/project/linux-usb/patch/20220127200636.1456175-3-sean.anderson@seco.com/
-
-regards Frank
 
 _______________________________________________
 Linux-rockchip mailing list
