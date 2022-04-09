@@ -1,82 +1,80 @@
 Return-Path: <linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
-Received: from bombadil.infradead.org (unknown [198.137.202.133])
+Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA98EC433F5
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Apr 2022 15:26:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5067FC433FE
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Apr 2022 15:33:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bJrN6oAC7ScnzdquV4KwGqGEuxSipIzZGFcpkFHLt+0=; b=o+MnH+6xATxoJu
-	vkIwfUd2cyYdLOtycrj4akZmOo+U/FhblVLH+Ue8XacIJsTkdcRBMf0xsFq1xtGGkrmu8aTBepCND
-	bJgRpaml7PbB5JtwyrOpuPGHsAC3r190HWdM8SjfGw8bE8m+J4jL01A8hqlf8Kb2ol5j4EtODQRFW
-	MTG6Nwur7GEzD8sjnR/2rYx9AK8HGaS4/bIQ2qRJGKyvniWwM5w8yuqmamOhPTRs8MQC0f6ypASTi
-	8auA4kWWJsAPvOV1F5e7DSWhEVC8cFLtlJxgvQbP5VRF7SJtVHR4wushf1Vp35mvxGnsdfahCrwk9
-	hcd/aGw5ouKDWIZJUibw==;
+	List-Owner; bh=2MT6IIBMj1ByTwXI0BUQ7c9pVj22R3Njmey3qvn0j0w=; b=bGlHFPzykEV2HV
+	JV8aYWgdNXva/Spot3UQgKVpQ1qP51vTNeB0BoL9K5OszqBwPkbfSrllYnAeYQh+gKoD0b6vM/WmZ
+	XFGVYoDaqDETVhdC+Jko1NXQewCaJ+iotR5t9VspZN8UDXEPGaKQc1rfWyaKmEhfc+aQsijIjrDov
+	rvdZJX7ppfMOiww+CAspxNKhPsPrfGaXFIjyAH+DOIcTicWx1/GRP4RCj/CVs7saN73sAupZIamlZ
+	qW6xfy29sp2B3j+OrxdaGpBg+QHnrHUoCDIhrQaEBvYLZnJ1ryePTwHyoiFd+3hkrbwVky7eSTh59
+	UAEsMHxU7qoe6tF5woyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndCye-003OpF-Q4; Sat, 09 Apr 2022 15:26:16 +0000
-Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
+	id 1ndD5O-003Po1-PX; Sat, 09 Apr 2022 15:33:14 +0000
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndCyc-003Oo6-1r; Sat, 09 Apr 2022 15:26:15 +0000
-Received: by mail-yb1-xb36.google.com with SMTP id v77so1920975ybi.12;
- Sat, 09 Apr 2022 08:26:13 -0700 (PDT)
+ id 1ndD5M-003PnL-0H; Sat, 09 Apr 2022 15:33:13 +0000
+Received: by mail-yb1-xb29.google.com with SMTP id x21so20028624ybd.6;
+ Sat, 09 Apr 2022 08:33:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cR2pF5s8t+OdbSSxVuJNcvAN3V/unWJTiAFDdZ/69qU=;
- b=GiGHHDgOsTCZkVZ3qA13Sb6FvHIZGDKjASv/UYR1gRUxpg4ro6pgjjruE+1alUxjvw
- 9c/GDyeCONs+IqKo2Ih6w8bnMsIo3HpqNprf4VdbfduInTTJVOYRdlsuQNfouTh3AD+W
- oOafjH2YZ3EJJU8zCNpPqoWpjPHxfyXlgRhWtfbj801Fd8hgas74RpAPB0r1aO7h0fiu
- wyajkNmZl/hfF9qj8hc5k/C3IQLGwg5B1AkVm1FtHRV1RkaOF0L02PV+pU2fgqHzLGyu
- qLpT8KDMV5s7LckQ8unn6h6/eZdhs2+bxCxX/tMdPRnPWl+Z1U11qi8OZamegXOW0g7y
- skmQ==
+ :cc; bh=5CNNYXuOr2RcG8eSzPuXT83KGiDGSucj1aFS0r5c1ZA=;
+ b=dc+l+QFt+ZkI4ADTsbh1RkzZ7R3GKYOGpQPN5INmbHlFKc7ns4gaQ8MzsnTZxHC9VZ
+ sbB+msnC5t+3A0if7JaXZ36vTXMRQDtmmNtdcUvAsD1GXSfjPe0XqX40aVc8WaaCdXR3
+ FKbS96lEEYq8OvHfAKySYgRQOCU13wtfmO2z3cW4WuEOX/uFIHm22Bbt8NKrZTXdd5zn
+ 6Krcdg+Zap+0/M3Ee0533KHqgEnbVS/gOg93P/KNY4YLpf8ezcXDX6JTxgibmW/+PIEs
+ IjtMFpEt+lHA9MZi3/RZ1SHRC7/jYdMqTmE6qz+mbwfHMbAv4TcYcVYzdKffy/eR2a9W
+ nLxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=cR2pF5s8t+OdbSSxVuJNcvAN3V/unWJTiAFDdZ/69qU=;
- b=SYUpVuoHlayGR68kX6xfNOekGH0+kW7URXAax66DDrafnX/NZpaDJYYryKfZwMMYjO
- sfvFfJsBnZ7MXsw/tTTlbzm7Z5qSpR7WPtQfPrDcLgK+1JlCebVpu4OEHBqJO1hp783D
- jAy+GPzluqRp55aciF3CBod4g/ECJAdYtAfCV8JFJQz+mS2x7SrY6tZOtghuzTgA3Sot
- 3hK73WhIj5pA4AkinJgSecSmbsYpeSTIhLNAXOtToHGww6W40aHsg5QwR/7VAtaspRQ5
- e9LxZHIZ5odyxtxvlHYRJVpeCazoeQ0+EfFee14FknImcvQ/xLSUxZJef4LwGk6bT0Os
- aetw==
-X-Gm-Message-State: AOAM532oJaROM/CssAT9vU4BQAWOjJNrhm7At94c3gpTSbCRxpj3FEnI
- zCpPNNlqu6rpldIuRQ1DMNVHvzk37wzxf6ALn+I=
-X-Google-Smtp-Source: ABdhPJwy9sT5pq4yY8qB+CnoQCmzTDVQInXJDJPL7q9XcmDqn8nFU9sVdEpR/0bq+uPrEm63H0VHbIoKc8s4gNZqods=
-X-Received: by 2002:a05:6902:143:b0:628:7cf1:f2a9 with SMTP id
- p3-20020a056902014300b006287cf1f2a9mr16357436ybh.51.1649517972377; Sat, 09
- Apr 2022 08:26:12 -0700 (PDT)
+ bh=5CNNYXuOr2RcG8eSzPuXT83KGiDGSucj1aFS0r5c1ZA=;
+ b=0hyfzjk8/wDUz9d8bzzXs/weF53vlbb93gjf7RCM3j9any9JeT3fmfv7l1XzN7pU+L
+ 2xEJ7wir0G55haOEKEeNcVknMPqGz73YAgPoBQk/P5nvwQrjieEeZ+sXPm2HFwe54WsU
+ FtQ+3+9Fi8T59wvjoWcAiY8cx/xNPtFFNxNndrsAM65QnLtZpmJBHjYnAFB5j8eEBTnZ
+ 6gyZFKkWkyTRsv4QJW4oFaFcrN8e5NafCwaCNt66zzbrPCAC7haaMlrXgsB/ko3qirvO
+ Vs+XGKSAKiE1Ncpmliz8lJtrxd8pk79wosFWMUFky6pDC8lCm1Xh+WFdUOK74ELsdOyJ
+ HOIw==
+X-Gm-Message-State: AOAM533B7hU9ZSkuwrJDp1sdn2UTUg7W90DCcnUIlqSLtTKGllg1xQdq
+ IpTqN8I/i+XnF93ueYMRivfiPxZK2Kis7NOY/D4=
+X-Google-Smtp-Source: ABdhPJz+u2vMB6vK+JAGuD+cHl3/9qosUF8iC3kUhZx4Qftx7dvTPzvltpLQ174kmxzW5MzbnQt7E8oPwm5+FKTFhMA=
+X-Received: by 2002:a5b:ac7:0:b0:633:cf3f:6d1b with SMTP id
+ a7-20020a5b0ac7000000b00633cf3f6d1bmr17740849ybr.585.1649518390548; Sat, 09
+ Apr 2022 08:33:10 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220409075147.136187-1-linux@fw-web.de>
- <CAMdYzYqx1iUuEe9FPpUTgL0L2i=Q5Sq2+0oiSYzqkV6noQ8BFw@mail.gmail.com>
- <CAMdYzYqaGe9_GbRCvG3kvLpNsVfVqGNkg=YYgbVR90Qtcs9YSA@mail.gmail.com>
- <4232341.5fSG56mABF@phil>
- <trinity-da7d86cc-5703-4657-858c-f241e5f0a6fd-1649505409042@3c-app-gmx-bap35>
-In-Reply-To: <trinity-da7d86cc-5703-4657-858c-f241e5f0a6fd-1649505409042@3c-app-gmx-bap35>
+References: <20220408151237.3165046-1-pgwipeout@gmail.com>
+ <20220408151237.3165046-4-pgwipeout@gmail.com>
+ <trinity-3ae2b0d1-a3f0-4c64-acb6-2fb4fa0b36b3-1649434480623@3c-app-gmx-bap48>
+ <CAMdYzYrK2KV1svrHS=zMjGYh=dUis-JKjgYHaeOB4LQWXM1+4A@mail.gmail.com>
+ <trinity-7dbd5148-923f-479b-9eed-a75f000456e5-1649489032880@3c-app-gmx-bap35>
+ <trinity-75c90ab6-a336-4f5d-972a-364b7f32c597-1649489861756@3c-app-gmx-bap35>
+In-Reply-To: <trinity-75c90ab6-a336-4f5d-972a-364b7f32c597-1649489861756@3c-app-gmx-bap35>
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Sat, 9 Apr 2022 11:26:01 -0400
-Message-ID: <CAMdYzYpK-RTf_8FVte2QLJawCKCjU6efgkRjsBj6quWGSSE6xA@mail.gmail.com>
-Subject: Re: Re: Re: Re: [PATCH] arm64: dts: rockchip: Fix clocks for rk356x
- usb
+Date: Sat, 9 Apr 2022 11:32:59 -0400
+Message-ID: <CAMdYzYqHLVnu7nwnGHAFGTEctnZuaRx515usYqeGmGnEpBb8Gg@mail.gmail.com>
+Subject: Re: Re: [PATCH v5 3/5] arm64: dts: rockchip: add rk356x dwc3 usb3
+ nodes
 To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Heiko Stuebner <heiko@sntech.de>, Dan Johansen <strit@manjaro.org>, 
- Frank Wunderlich <linux@fw-web.de>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Michael Riesch <michael.riesch@wolfvision.net>, 
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
  devicetree <devicetree@vger.kernel.org>, 
  arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220409_082614_156472_3BFE9AAC 
-X-CRM114-Status: GOOD (  17.77  )
+X-CRM114-CacheID: sfid-20220409_083312_161959_09BC00C3 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,51 +92,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Apr 9, 2022 at 7:56 AM Frank Wunderlich <frank-w@public-files.de> wrote:
+On Sat, Apr 9, 2022 at 3:37 AM Frank Wunderlich <frank-w@public-files.de> wrote:
 >
-> Hi,
+> Got it,
+> these Patches require different clock names
 >
-> so to not break the binding and other boards the right Patch should be like this
+> ref_clk => ref
+> bus_clk => bus_early
 >
-> +++ b/drivers/usb/dwc3/core.c
-> @@ -1691,17 +1691,17 @@ static int dwc3_probe(struct platform_device *pdev)
->                  * Clocks are optional, but new DT platforms should support all
->                  * clocks as required by the DT-binding.
->                  */
-> -               dwc->bus_clk = devm_clk_get_optional(dev, "bus_early");
-> +               dwc->bus_clk = devm_clk_get_optional(dev, "bus_clk");
->                 if (IS_ERR(dwc->bus_clk))
->                         return dev_err_probe(dev, PTR_ERR(dwc->bus_clk),
->                                              "could not get bus clock\n");
+> after renaming usb works on my board
 >
-> -               dwc->ref_clk = devm_clk_get_optional(dev, "ref");
-> +               dwc->ref_clk = devm_clk_get_optional(dev, "ref_clk");
->                 if (IS_ERR(dwc->ref_clk))
->                         return dev_err_probe(dev, PTR_ERR(dwc->ref_clk),
->                                              "could not get ref clock\n");
->
-> -               dwc->susp_clk = devm_clk_get_optional(dev, "suspend");
-> +               dwc->susp_clk = devm_clk_get_optional(dev, "suspend_clk");
->                 if (IS_ERR(dwc->susp_clk))
->                         return dev_err_probe(dev, PTR_ERR(dwc->susp_clk),
->                                              "could not get suspend clock\n");
->
-> but this needs fixing dts using the new clock names
->
-> this is a link to the series moving from bulk_clk to named clocks:
->
-> https://patchwork.kernel.org/project/linux-usb/patch/20220127200636.1456175-3-sean.anderson@seco.com/
+> will send an follow-up patch for this series
 >
 > regards Frank
+>
+>
+> > Gesendet: Samstag, 09. April 2022 um 09:23 Uhr
+> > Von: "Frank Wunderlich" <frank-w@public-files.de>
+> >
+> > at least i nailed it down to these 2 commits in drivers/usb/dwc3/core.c, without them it works
+> >
+> > 5114c3ee2487 2022-01-27 usb: dwc3: Calculate REFCLKPER based on reference clock
+> > 33fb697ec7e5 2022-01-27 usb: dwc3: Get clocks individually
+>
 
-I've submitted a fix for the backwards compatibility issue.
+I've submitted a fix for the dwc3 issue.
 https://patchwork.kernel.org/project/linux-rockchip/patch/20220409152116.3834354-1-pgwipeout@gmail.com/
+The offending commit was: 33fb697ec7e5 ("usb: dwc3: Get clocks individually").
+It breaks backwards compatibility with rk3328, which follows the
+rockchip,dwc3.yaml dt-binding, and thus this series as well.
 
 This fix is standalone and necessary no matter which route we decide
 to go with this series (and the rk3328/rk3399 support as well).
 With this patch, dwc3 is functional on the rk356x as the series was
 submitted, so if we decide to fix everything all at once, that is a
 viable option.
+
+For those not following the other conversation, here is the TLDR:
+- rockchip,dwc3.yaml has different clock names than snps,dwc3.yaml
+- rk3328 and rk356x attach directly to the dwc3 core driver
+- rk3399 uses the dwc3-simple driver, which still uses the clk_bulk api.
+- commit 33fb697ec7e5 changed to individual clocks, which follow
+snps,dwc3.yaml naming
+- to correct this beyond my fix patch, we would need to align
+rockchip,dwc3.yaml with snps,dwc3.yaml, which means rk3328, rk3399,
+and rk356x will move to the snps clock naming scheme.
+
+I think we need Rob Herring to weigh in here, as this is a rather
+uncomfortable dt-binding issue.
 
 _______________________________________________
 Linux-rockchip mailing list
