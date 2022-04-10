@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8183C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Apr 2022 16:24:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCA0FC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Apr 2022 16:48:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3U5xTyZIo5c99iVoM/dHjewFV1sUHEzsz9bke1NKpj0=; b=OEHLWP5K84NmZt
-	kaczrjL54xASQ7mPGqtS6AtUpWuVfs6xVP3iXf5S1T6Rj9CWEaEcxzwNCK9qKhA6oOrcX2O6NlN27
-	RfTr6fGFVv5cx9laXcd/LD/Dc8YsU3SMcMjEaxwwwhjjW+GpwDLC6NM4pyiRLatwFbdSO0uqXQ984
-	yRxQLxtFQVN+oGTCYhVRLhX1WQ4NLejbZmrO9I4xFPnXP+nehU8E1diOPyA/NPVjQi1E2XePeqSWg
-	uDZ9YJurARNdIh4Vc12Ci6yLeV69taMJNLQ1si/sk7GAsKSMI7bMaLmL+BrUxkmjDMu8RMA+w/Yt6
-	cGzbd0kERLBueZX9dEyQ==;
+	List-Owner; bh=s3NPwdlng2DcoUOnteyNcifeMyY2+lji7h2TRjL7NfQ=; b=yJUJAHymzdYL0v
+	zI/uYyPEunRuwQIWt6CJzz7e+gIsRLC3/EE2r8frR2LVWsSsoA1mYqA48pCxlr9Fs0ggkkJimRZrb
+	ivP7yUkAzVyAr7xgJDe///xLZw4ADBDeMwCeGww4POeWWrZfQYxLoUS87HNct3340pd1iqW7QqbBw
+	E3icZJPHJ5eYatjtLT2m44O04aUsHPQ3ftqOjrdBl41da77QSFw9DLwxPQctbKYjad0ua+AUYjxQt
+	Pcwnhdkr3lnecO7lr5wrzOQof71UrTmQBYAjsYStl78p2jMBBFXJwSfBGMATk0BpVQnjTHipPiVvS
+	AFNbks/nLf9i+iBQFPsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndaMB-0056l7-7F; Sun, 10 Apr 2022 16:24:07 +0000
+	id 1ndajh-0058Ka-Dd; Sun, 10 Apr 2022 16:48:25 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndaM8-0056kY-9E
- for linux-rockchip@lists.infradead.org; Sun, 10 Apr 2022 16:24:05 +0000
+ id 1ndaje-0058K7-EL; Sun, 10 Apr 2022 16:48:23 +0000
 Received: from p508fdda7.dip0.t-ipconnect.de ([80.143.221.167]
  helo=phil.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1ndaLz-0006WK-1f; Sun, 10 Apr 2022 18:23:55 +0200
+ id 1ndajc-0006bM-FX; Sun, 10 Apr 2022 18:48:20 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Felipe Balbi <balbi@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Robert Hancock <robert.hancock@calian.com>,
- Sean Anderson <sean.anderson@seco.com>, Peter Geis <pgwipeout@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>,
- Frank Wunderlich <frank-w@public-files.de>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] usb: dwc3: fix backwards compat with rockchip devices
-Date: Sun, 10 Apr 2022 18:23:54 +0200
-Message-ID: <12992587.uLZWGnKmhe@phil>
-In-Reply-To: <20220409152116.3834354-1-pgwipeout@gmail.com>
-References: <20220409152116.3834354-1-pgwipeout@gmail.com>
+To: linux-rockchip@lists.infradead.org, Frank Wunderlich <linux@fw-web.de>
+Cc: Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Frank Wunderlich <frank-w@public-files.de>
+Subject: Re: [PATCH v1 0/2] Change Bananapi-R2-Pro board to match V1.0
+Date: Sun, 10 Apr 2022 18:48:19 +0200
+Message-ID: <3163720.aeNJFYEL58@phil>
+In-Reply-To: <7EC83317-29EA-4464-9C24-27A78FB77911@fw-web.de>
+References: <20220402110045.104031-1-linux@fw-web.de>
+ <164906273049.1398682.587469799631775473.b4-ty@sntech.de>
+ <7EC83317-29EA-4464-9C24-27A78FB77911@fw-web.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220410_092404_457321_47FB8706 
-X-CRM114-Status: GOOD (  25.77  )
+X-CRM114-CacheID: sfid-20220410_094822_530349_258B1FD7 
+X-CRM114-Status: GOOD (  15.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,89 +63,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Samstag, 9. April 2022, 17:21:15 CEST schrieb Peter Geis:
-> Commit 33fb697ec7e5 ("usb: dwc3: Get clocks individually") moved from
-> the clk_bulk api to individual clocks, following the snps,dwc3.yaml
-> dt-binding for clock names.
-> Unfortunately the rk3328 (and upcoming rk356x support) use the
-> rockchip,dwc3.yaml which has different clock names, which are common on
-> devices using the glue layer.
-> The rk3328 does not use a glue layer, but attaches directly to the dwc3
-> core driver.
-> The offending patch series failed to account for this, thus dwc3 was
-> broken on rk3328.
-> 
-> To retain backwards compatibility with rk3328 device trees we must also
-> check for the alternate clock names.
-> 
-> Fixes: 33fb697ec7e5 ("usb: dwc3: Get clocks individually")
-> 
-> Reported-by: Frank Wunderlich <frank-w@public-files.de>
-> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+Hi Frank,
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Am Dienstag, 5. April 2022, 08:09:43 CEST schrieb Frank Wunderlich:
+> Am 4. April 2022 10:59:59 MESZ schrieb Heiko Stuebner <heiko@sntech.de>:
+> >On Sat, 2 Apr 2022 13:00:43 +0200, Frank Wunderlich wrote:
+> >> Mainline Devicetree was created for v00 prototype that was not in
+> >> public sale and only shipped to few developers. V1.0 of the board
+> >> has some changes in io-domain and gmacs are swapped.
+> >> 
+> >> Change mainline DTS to match the current hardware.
+> >> 
+> >> Frank Wunderlich (2):
+> >>   arm64: dts: rockchip: Change io-domains of bpi-r2-pro
+> >>   arm64: dts: rockchip: Add gmac1 and change network settings
+> >> 
+> >> [...]
+> >
+> >Applied, thanks!
+> >
+> >[1/2] arm64: dts: rockchip: Change io-domains of bpi-r2-pro
+> >      commit: 34fc952867aa2a2e257bf2bcbbaac97ac91f8bd1
+> >[2/2] arm64: dts: rockchip: Add gmac1 and change network settings
+> >      commit: 5c8e82ed3a4a5c8023b2959d8f3292f7291e7227
+> >
+> >Best regards,
+> 
+> Hi Heiko,
+> 
+> Thanks for fast apply.
+> 
+> Can you treat it as fix (for 5.18). At least io-domain will damage board if someone use 5.18. Network will simply not work.
 
-> ---
-> 
-> This patch is standalone to fix the backwards compatibility, and is
-> necessary no matter if we decide to retain the clock names in
-> rockchip,dwc3.yaml as is or align with snps,dwc3.yaml.
-> 
->  drivers/usb/dwc3/core.c | 23 +++++++++++++++++++++++
->  1 file changed, 23 insertions(+)
-> 
-> diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-> index 1170b800acdc..5bfd3e88af35 100644
-> --- a/drivers/usb/dwc3/core.c
-> +++ b/drivers/usb/dwc3/core.c
-> @@ -1690,21 +1690,44 @@ static int dwc3_probe(struct platform_device *pdev)
->  		/*
->  		 * Clocks are optional, but new DT platforms should support all
->  		 * clocks as required by the DT-binding.
-> +		 * Some devices have different clock names in legacy device trees,
-> +		 * check for them to retain backwards compatibility.
->  		 */
->  		dwc->bus_clk = devm_clk_get_optional(dev, "bus_early");
->  		if (IS_ERR(dwc->bus_clk))
->  			return dev_err_probe(dev, PTR_ERR(dwc->bus_clk),
->  					     "could not get bus clock\n");
->  
-> +		if (dwc->bus_clk == NULL) {
-> +			dwc->bus_clk = devm_clk_get_optional(dev, "bus_clk");
-> +			if (IS_ERR(dwc->bus_clk))
-> +				return dev_err_probe(dev, PTR_ERR(dwc->bus_clk),
-> +						     "could not get bus clock\n");
-> +		}
-> +
->  		dwc->ref_clk = devm_clk_get_optional(dev, "ref");
->  		if (IS_ERR(dwc->ref_clk))
->  			return dev_err_probe(dev, PTR_ERR(dwc->ref_clk),
->  					     "could not get ref clock\n");
->  
-> +		if (dwc->ref_clk == NULL) {
-> +			dwc->ref_clk = devm_clk_get_optional(dev, "ref_clk");
-> +			if (IS_ERR(dwc->ref_clk))
-> +				return dev_err_probe(dev, PTR_ERR(dwc->ref_clk),
-> +						     "could not get ref clock\n");
-> +		}
-> +
->  		dwc->susp_clk = devm_clk_get_optional(dev, "suspend");
->  		if (IS_ERR(dwc->susp_clk))
->  			return dev_err_probe(dev, PTR_ERR(dwc->susp_clk),
->  					     "could not get suspend clock\n");
-> +
-> +		if (dwc->susp_clk == NULL) {
-> +			dwc->susp_clk = devm_clk_get_optional(dev, "suspend_clk");
-> +			if (IS_ERR(dwc->susp_clk))
-> +				return dev_err_probe(dev, PTR_ERR(dwc->susp_clk),
-> +						     "could not get suspend clock\n");
-> +		}
->  	}
->  
->  	ret = reset_control_deassert(dwc->reset);
-> 
+I've moved both over to fixes now.
 
+It's clear for the io-domain but also the second patch probably makes
+the 1.0 board actually work where it wasn't before I guess, so that
+also counts as a fix :-)
 
+Heiko
 
 
 
