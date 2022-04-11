@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 834ABC433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Apr 2022 08:33:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17D1DC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Apr 2022 08:42:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GsLtgXaV3Zg4KKja0gI+nEQ1QmadRRGz2/gdQ1Qcp6c=; b=2kv+rOASmoni20
-	1clk50R+8w3vqd2Sso7m0b3EtHfjPNc9/2+Mp2XNVAQzhEPKb8ZmTwnPRCCeIzrp74SDhlQnQ7cDd
-	eZHdEefn4/OSSkou3gtNJPun45LLQVYLTZrThkxQFtOKbeiP7Wl4jnMTMzeIVkY86xcB72JlhWinN
-	eRtjiFj36qH3EQEI+t68JDoN2Cr/+ZRO8NVTR7beBXljFKDoybkai7e5qynmxyZOjrdvxT9OzeTnm
-	3zyT3gvqih/jy4qf8Foxegwv6Wa30kJPfSgCXbfCbJi3Am+nBe0b7kpWu2A+/XExzvEx8B92B4l1x
-	mi/YIH4LDpd8M6ra8aTA==;
+	List-Owner; bh=YeuHPs/RbGEbuPbBz1Oaum0kGJG4b3/AQlxzP0CybUM=; b=n6DyTtB66P6CWL
+	XpnbLa/585I0tNWMmgJSgdymKh08tE3mvnpQMMglpNRV15i7wG/PnHU+zzXy8hBhVWrzH0sifiZHC
+	37fa4NBIbUUqQlApmVQCz4UtqQqRUoTKSvCnsGvPKc+MjFubf+cxHHfnk5iAcGcmXSii13rNetVVi
+	qAurQF5EVl5i3S123s6iu3FI06ShmUfO8smnM8UghuRf0sSuzrryVyumkd2mnfpeyibq4qHb7F/+v
+	FWCuMmsoQkc+jqRLDoS2UGv4/MyIZuo/LdUZlOsLEjbTmgxIR1+O2K5hceIgLcnuY9pTKOj64DG2m
+	du/bcEqR4bCsyK8349FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndpUV-007Zd7-C6; Mon, 11 Apr 2022 08:33:43 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1ndpdD-007boX-Um; Mon, 11 Apr 2022 08:42:43 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndpUH-007Za5-EK
- for linux-rockchip@lists.infradead.org; Mon, 11 Apr 2022 08:33:31 +0000
-Received: by mail-wr1-x431.google.com with SMTP id u3so21880490wrg.3
- for <linux-rockchip@lists.infradead.org>; Mon, 11 Apr 2022 01:33:26 -0700 (PDT)
+ id 1ndpd1-007bkQ-BL
+ for linux-rockchip@lists.infradead.org; Mon, 11 Apr 2022 08:42:32 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id b19so21859421wrh.11
+ for <linux-rockchip@lists.infradead.org>; Mon, 11 Apr 2022 01:42:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:content-transfer-encoding:in-reply-to;
- bh=27lr1TeRoTWAFLVF9iWjZf9oxGgkBi1ijJ2WmnDVaWw=;
- b=FCiOpWwMz1l33QbeB+Jtt4vgr1FQhMBvYuXg9CwxMEZsIcuVknweKFjUN7iW+2i9cK
- 6icNeAlKmv9KMrFKBYTeJzTuTaLQrqAz87rGMry1dWZXm4WaTRZD8qkPhMoBRQIgboJq
- gkDMBZ4Iywc5c8AWFqttqw8Mf9H62DLQn1ShJ5V1P9YTxEyxOqX6P+22Zz2p+H8QQk7b
- 72SKN7Xp2UiqKy1gotmgGVAH985FbXgT7oZ+HcB5XzDQ6YLW+zqHRxDP9MiZ9FTJ2hbG
- /qFhqT7Bdal9IeLusenPQiG3Pw7Ma5BF2J+9ynOn0iiNwFlEPSEVFRAdzuuhc8ZgZNrz
- 60Yw==
+ bh=8C/eYgaWADBmXGolQTtkrHTLecaGjlBMq7BNuIlcZ8Q=;
+ b=xeJcy/KGJE8E9dTJtbqIY8xwk3sT+9zWBdf3lwNQ3wiHwbo4fFi8C+BojzWUb7Nts5
+ YPHs4k4QJ+0sAnvMgpBPi22mDZOONbSIFtlnjK/F59s/8G5mPCd2VtQv5dvyliQPsxYp
+ KmY7lSTcYSkZjPO7nyfaPW2MGED205fey3U79yIsgipqxg9s588DuLwxZoS624dnuMgM
+ MHMyVZLpuUay/uFgMoPsgbusEwXdLTEqSSHSIgL/tziKq/jixkyvnP9IpacQh9Y4GqEV
+ Rm3sXKIwUpMR9FpWp1I6M9UhCnaMeQFSP4Q/dXQ3qck3BCxgik8RLUyCr26oF7Q4kt7N
+ JBRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:content-transfer-encoding
  :in-reply-to;
- bh=27lr1TeRoTWAFLVF9iWjZf9oxGgkBi1ijJ2WmnDVaWw=;
- b=f+p5pBfBpNoOo8mr6wd9+36EfNHvQzHnE0/ftbHSMLppSqnvqycofEPrQkTL60ZlTc
- kopXvANDTcg9R391wZPDHKYnZmnZibt8h7RouNiNeEPUwmiCPtxbr5SHZKY3bp/i4HO0
- fCfAGcG/EedY/l5cgI2pJ6rjy2Sx85cvNWEcXrmhAwboOSM9ROzoLgCrSKCvPNPfYFCy
- nOR/NEeEyLHuSaBJyppOJQ0KTpnfvbHydLFRQmVMUKIfypC85jTvIOetTAtGq/0BR8P5
- rpnG/LSf6+fbcZmPAVWXVSF7EaCAxHmeNqtTb61A2jvaMybgLfc3kkaZ/7hxr/IALMtx
- 6TCg==
-X-Gm-Message-State: AOAM533HnLQTH9IMf3Td/PQR9RLIyTbsiXx2v0RzSEJiSY/Tu2EE2LYY
- kaE/UAxj45I1aqFU5wLdHsKA4g==
-X-Google-Smtp-Source: ABdhPJyMduce5eskJ2Cz9CC/3y6wawMSFNfIrfesrt3XjKQQPdmm+A6C+5gLz1aqtTxhi5MfzzLSUg==
-X-Received: by 2002:a05:6000:1c14:b0:207:9988:2af0 with SMTP id
- ba20-20020a0560001c1400b0020799882af0mr11267923wrb.324.1649666005486; 
- Mon, 11 Apr 2022 01:33:25 -0700 (PDT)
+ bh=8C/eYgaWADBmXGolQTtkrHTLecaGjlBMq7BNuIlcZ8Q=;
+ b=FmQcLqVua0zbT9TrjqpD5Un4lmWxUmsNm+MM1GZ3mGLT92J1ySnF+FWnyrqMlrkhgr
+ j7QQC0zCGAv8S0CJFantxCHjHb6OcX3YNHuRkap37FZUoy2ZCA9hKD2DqtyuNVZIk6Lq
+ yBefZTX1fqpycy5B9ny3ucvtGKCzFJFAFuWuT6Ea7sfRF823lcg3qFhXm2DH2dG6xBtG
+ 5bjtU8qxgsjb+4YtMDlde+aWGtrGiafavVA5jHCgdq4TnLh4o2nYE/1Kv45tnikpvxQU
+ G9jK0M5Nz0AamtxmHwo0r8qeJ3VBv73+lFg3EQ56zFBC6xnn4DDEhHgYpM+vpJEHQgNg
+ OdgQ==
+X-Gm-Message-State: AOAM530YWl68L2sLzjwhsdbOPnr6IMNI2kXahS+ZJQJ0gz1NkzpRWGpX
+ aNzuKLXPnkwxmsC1eQQcA5XxhA==
+X-Google-Smtp-Source: ABdhPJwj2GX5sxFvKfF2plvDXxPFsbnq+9QtCMe/UP3BTx6ywnM8X9ZtvNekIgx0mHUmfcedMxPk8Q==
+X-Received: by 2002:a5d:5406:0:b0:205:a2c2:3530 with SMTP id
+ g6-20020a5d5406000000b00205a2c23530mr23927622wrv.587.1649666549614; 
+ Mon, 11 Apr 2022 01:42:29 -0700 (PDT)
 Received: from Red ([2a01:cb1d:3d5:a100:264b:feff:fe03:2806])
  by smtp.googlemail.com with ESMTPSA id
- z5-20020a05600c0a0500b0037fa93193a8sm20206956wmp.44.2022.04.11.01.33.24
+ c4-20020a056000184400b00207a55f712asm3337327wri.37.2022.04.11.01.42.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Apr 2022 01:33:24 -0700 (PDT)
-Date: Mon, 11 Apr 2022 10:33:22 +0200
+ Mon, 11 Apr 2022 01:42:29 -0700 (PDT)
+Date: Mon, 11 Apr 2022 10:42:26 +0200
 From: LABBE Corentin <clabbe@baylibre.com>
 To: John Keeping <john@metanate.com>
 Cc: heiko@sntech.de, herbert@gondor.apana.org.au, krzk+dt@kernel.org,
  robh+dt@kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 17/33] crypto: rockchip: use read_poll_timeout
-Message-ID: <YlPn0nevX6zdYWwG@Red>
+Subject: Re: [PATCH v4 06/33] crypto: rockchip: add fallback for cipher
+Message-ID: <YlPp8rkH7B742TZM@Red>
 References: <20220401201804.2867154-1-clabbe@baylibre.com>
- <20220401201804.2867154-18-clabbe@baylibre.com>
- <YkrYs87bgWs7+tOm@donbot>
+ <20220401201804.2867154-7-clabbe@baylibre.com>
+ <YkrV1z5GPVXc+d/X@donbot>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <YkrYs87bgWs7+tOm@donbot>
+In-Reply-To: <YkrV1z5GPVXc+d/X@donbot>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_013329_507284_F4FD369B 
-X-CRM114-Status: GOOD (  19.14  )
+X-CRM114-CacheID: sfid-20220411_014231_399986_D062A9A5 
+X-CRM114-Status: GOOD (  24.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,57 +96,118 @@ Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Le Mon, Apr 04, 2022 at 12:38:27PM +0100, John Keeping a =E9crit :
-> On Fri, Apr 01, 2022 at 08:17:48PM +0000, Corentin Labbe wrote:
-> > Use read_poll_timeout instead of open coding it
+Le Mon, Apr 04, 2022 at 12:26:15PM +0100, John Keeping a =E9crit :
+> On Fri, Apr 01, 2022 at 08:17:37PM +0000, Corentin Labbe wrote:
+> > The hardware does not handle 0 size length request, let's add a
+> > fallback.
+> > Furthermore fallback will be used for all unaligned case the hardware
+> > cannot handle.
 > > =
 
+> > Fixes: ce0183cb6464b ("crypto: rockchip - switch to skcipher API")
 > > Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 > > ---
-> >  drivers/crypto/rockchip/rk3288_crypto_ahash.c | 5 +++--
-> >  1 file changed, 3 insertions(+), 2 deletions(-)
-> > =
-
-> > diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/cr=
-ypto/rockchip/rk3288_crypto_ahash.c
-> > index 137013bd4410..21c9a0327ddf 100644
-> > --- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-> > +++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-> > @@ -10,6 +10,7 @@
-> >   */
-> >  #include <linux/device.h>
-> >  #include <asm/unaligned.h>
-> > +#include <linux/iopoll.h>
-> >  #include "rk3288_crypto.h"
+> > diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers=
+/crypto/rockchip/rk3288_crypto_skcipher.c
+> > index bbd0bf52bf07..c6b601086c04 100644
+> > --- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> > +++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+> > @@ -13,6 +13,71 @@
 > >  =
 
-> >  /*
-> > @@ -305,8 +306,8 @@ static int rk_hash_run(struct crypto_engine *engine=
-, void *breq)
-> >  		 * efficiency, and make it response quickly when dma
-> >  		 * complete.
-> >  		 */
-> > -	while (!CRYPTO_READ(tctx->dev, RK_CRYPTO_HASH_STS))
-> > -		udelay(10);
-> > +	read_poll_timeout(readl, v, v =3D=3D 0, 10, 1000, false,
-> > +			  tctx->dev->dev + RK_CRYPTO_HASH_STS);
+> >  #define RK_CRYPTO_DEC			BIT(0)
+> >  =
+
+> > +static int rk_cipher_need_fallback(struct skcipher_request *req)
+> > +{
+> > +	struct scatterlist *sgs, *sgd;
+> > +	unsigned int todo, len;
+> > +	unsigned int bs =3D crypto_skcipher_blocksize(tfm);
+> > +
+> > +	if (!req->cryptlen)
+> > +		return true;
+> > +
+> > +	len =3D req->cryptlen;
+> > +	sgs =3D req->src;
+> > +	while (sgs) {
+> > +		if (!IS_ALIGNED(sgs->offset, sizeof(u32))) {
+> > +			return true;
+> > +		}
+> > +		todo =3D min(len, sgs->length);
+> > +		if (todo % bs) {
+> > +			return true;
+> > +		}
+> > +		len -=3D todo;
+> > +		sgs =3D sg_next(sgs);
+> > +	}
+> > +	len =3D req->cryptlen;
+> > +	sgd =3D req->dst;
+> > +	while (sgd) {
+> > +		if (!IS_ALIGNED(sgd->offset, sizeof(u32))) {
+> > +			return true;
+> > +		}
+> > +		todo =3D min(len, sgd->length);
+> > +		if (todo % bs) {
+> > +			return true;
+> > +		}
+> > +		len -=3D todo;
+> > +		sgd =3D sg_next(sgd);
+> > +	}
+> > +	sgs =3D req->src;
+> > +	sgd =3D req->dst;
+> > +	while (sgs && sgd) {
+> > +		if (sgs->length !=3D sgd->length)
 > =
 
-> This can be simplified to:
+> This check still seems to be triggering the fallback when it is not
+> needed.
 > =
 
-> 	readl_poll_timeout(tctx->dev->dev + RK_CRYPTO_HASH_STS,
-> 			   v, v =3D=3D 0, 10, 1000);
-
-Thanks, this is better.
-
+> I've done some testing with fscrypt and the series is working great, but
+> the stats show the fallback triggering more than I'd expect.  With some
+> extra logging here I see output like:
 > =
 
-> But shouldn't this be tctx->dev->reg ?!
+> 	sgs->length=3D32 sgd->length=3D255 req->cryptlen=3D16
+> =
 
-Yes, I will fix it.
+> In this case sgs and sgd are both the first (and only) entries in the
+> list.  Should this take account of req->cryptlen as well?
+> =
 
-Thanks
+> In fact, can't this whole function be folded into one loop over src and
+> dst at the same time, since all the checks must be the same?  Something
+> like this (untested):
+> =
+
+> 	while (sgs && sgd) {
+> 		if (!IS_ALIGNED(sgs->offset, sizeof(u32)) ||
+> 		    !IS_ALIGNED(sgd->offset, sizeof(u32)))
+> 			return true;
+> =
+
+> 		todo =3D min(len, sgs->length);
+> 		if (todo % bs)
+> 			return true;
+> =
+
+> 		if (sgd->length < todo)
+> 			return true;
+> =
+
+> 		len -=3D todo;
+> 		sgs =3D sg_next(sgs);
+> 		sgd =3D sg_next(sgd);
+> 	}
+> =
+
+> 	if (len)
+> 		return true;
+> =
+
+
+Thanks, for this hint, I will use it.
+
 Regards
 
 _______________________________________________
