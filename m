@@ -4,69 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 550BFC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Apr 2022 07:54:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 834ABC433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Apr 2022 08:33:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HC+59HAD60h8smSh/VT1Ww+Zw5sImGq9bCNA3z3k7Hw=; b=19m6jEnMsjvOSm
-	iKceztiW4sGrr8iwd1m5SZr3GxmHWXI2gyny+a3otGwvpI9e21xYYpjZxg9qbFoGqz0SA1D9cOB+M
-	HgsPSSWP084oDQFNaRsD7R0ht4HXceXPooidLmZLsiAAOEiNRj+3A2srQvB7RkKxkiFnsZhyuXCn1
-	vXL+Z7NfbzUfT+F4fjiKqbc+jIavMqC6SFIOeCEi8Et5IS1lGOgK/ksW3CPaw1r2S2U+zmdjgZTkG
-	njzmmKqVEefUJgNgRYmf6L8H/sCt2MDw5+dUWYm9MrJQFeT3TM/Y3aUedy8KcN4rrFQWxJqd4NaFB
-	bNau5lKH4gXZYk2Lw/BQ==;
+	List-Owner; bh=GsLtgXaV3Zg4KKja0gI+nEQ1QmadRRGz2/gdQ1Qcp6c=; b=2kv+rOASmoni20
+	1clk50R+8w3vqd2Sso7m0b3EtHfjPNc9/2+Mp2XNVAQzhEPKb8ZmTwnPRCCeIzrp74SDhlQnQ7cDd
+	eZHdEefn4/OSSkou3gtNJPun45LLQVYLTZrThkxQFtOKbeiP7Wl4jnMTMzeIVkY86xcB72JlhWinN
+	eRtjiFj36qH3EQEI+t68JDoN2Cr/+ZRO8NVTR7beBXljFKDoybkai7e5qynmxyZOjrdvxT9OzeTnm
+	3zyT3gvqih/jy4qf8Foxegwv6Wa30kJPfSgCXbfCbJi3Am+nBe0b7kpWu2A+/XExzvEx8B92B4l1x
+	mi/YIH4LDpd8M6ra8aTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndosN-007Org-RB; Mon, 11 Apr 2022 07:54:19 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1ndpUV-007Zd7-C6; Mon, 11 Apr 2022 08:33:43 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndosA-007Omn-Qq
- for linux-rockchip@lists.infradead.org; Mon, 11 Apr 2022 07:54:09 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1ndos4-00080i-BK; Mon, 11 Apr 2022 09:54:00 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1ndos1-0007qZ-Jk; Mon, 11 Apr 2022 09:53:57 +0200
-Date: Mon, 11 Apr 2022 09:53:57 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Alex Bee <knaerzche@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH v10 12/24] drm/rockchip: dw_hdmi: drop mode_valid hook
-Message-ID: <20220411075357.GQ4012@pengutronix.de>
-References: <20220408112238.1274817-1-s.hauer@pengutronix.de>
- <20220408112238.1274817-13-s.hauer@pengutronix.de>
- <8fac5d72-c635-521c-e7d1-a3980a4ed719@gmail.com>
+ id 1ndpUH-007Za5-EK
+ for linux-rockchip@lists.infradead.org; Mon, 11 Apr 2022 08:33:31 +0000
+Received: by mail-wr1-x431.google.com with SMTP id u3so21880490wrg.3
+ for <linux-rockchip@lists.infradead.org>; Mon, 11 Apr 2022 01:33:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=27lr1TeRoTWAFLVF9iWjZf9oxGgkBi1ijJ2WmnDVaWw=;
+ b=FCiOpWwMz1l33QbeB+Jtt4vgr1FQhMBvYuXg9CwxMEZsIcuVknweKFjUN7iW+2i9cK
+ 6icNeAlKmv9KMrFKBYTeJzTuTaLQrqAz87rGMry1dWZXm4WaTRZD8qkPhMoBRQIgboJq
+ gkDMBZ4Iywc5c8AWFqttqw8Mf9H62DLQn1ShJ5V1P9YTxEyxOqX6P+22Zz2p+H8QQk7b
+ 72SKN7Xp2UiqKy1gotmgGVAH985FbXgT7oZ+HcB5XzDQ6YLW+zqHRxDP9MiZ9FTJ2hbG
+ /qFhqT7Bdal9IeLusenPQiG3Pw7Ma5BF2J+9ynOn0iiNwFlEPSEVFRAdzuuhc8ZgZNrz
+ 60Yw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=27lr1TeRoTWAFLVF9iWjZf9oxGgkBi1ijJ2WmnDVaWw=;
+ b=f+p5pBfBpNoOo8mr6wd9+36EfNHvQzHnE0/ftbHSMLppSqnvqycofEPrQkTL60ZlTc
+ kopXvANDTcg9R391wZPDHKYnZmnZibt8h7RouNiNeEPUwmiCPtxbr5SHZKY3bp/i4HO0
+ fCfAGcG/EedY/l5cgI2pJ6rjy2Sx85cvNWEcXrmhAwboOSM9ROzoLgCrSKCvPNPfYFCy
+ nOR/NEeEyLHuSaBJyppOJQ0KTpnfvbHydLFRQmVMUKIfypC85jTvIOetTAtGq/0BR8P5
+ rpnG/LSf6+fbcZmPAVWXVSF7EaCAxHmeNqtTb61A2jvaMybgLfc3kkaZ/7hxr/IALMtx
+ 6TCg==
+X-Gm-Message-State: AOAM533HnLQTH9IMf3Td/PQR9RLIyTbsiXx2v0RzSEJiSY/Tu2EE2LYY
+ kaE/UAxj45I1aqFU5wLdHsKA4g==
+X-Google-Smtp-Source: ABdhPJyMduce5eskJ2Cz9CC/3y6wawMSFNfIrfesrt3XjKQQPdmm+A6C+5gLz1aqtTxhi5MfzzLSUg==
+X-Received: by 2002:a05:6000:1c14:b0:207:9988:2af0 with SMTP id
+ ba20-20020a0560001c1400b0020799882af0mr11267923wrb.324.1649666005486; 
+ Mon, 11 Apr 2022 01:33:25 -0700 (PDT)
+Received: from Red ([2a01:cb1d:3d5:a100:264b:feff:fe03:2806])
+ by smtp.googlemail.com with ESMTPSA id
+ z5-20020a05600c0a0500b0037fa93193a8sm20206956wmp.44.2022.04.11.01.33.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 Apr 2022 01:33:24 -0700 (PDT)
+Date: Mon, 11 Apr 2022 10:33:22 +0200
+From: LABBE Corentin <clabbe@baylibre.com>
+To: John Keeping <john@metanate.com>
+Cc: heiko@sntech.de, herbert@gondor.apana.org.au, krzk+dt@kernel.org,
+ robh+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 17/33] crypto: rockchip: use read_poll_timeout
+Message-ID: <YlPn0nevX6zdYWwG@Red>
+References: <20220401201804.2867154-1-clabbe@baylibre.com>
+ <20220401201804.2867154-18-clabbe@baylibre.com>
+ <YkrYs87bgWs7+tOm@donbot>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <8fac5d72-c635-521c-e7d1-a3980a4ed719@gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 09:14:52 up 11 days, 19:44, 70 users,  load average: 0.07, 0.26, 0.26
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+In-Reply-To: <YkrYs87bgWs7+tOm@donbot>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_005406_921156_57123479 
-X-CRM114-Status: GOOD (  29.52  )
+X-CRM114-CacheID: sfid-20220411_013329_507284_F4FD369B 
+X-CRM114-Status: GOOD (  19.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,74 +91,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Apr 10, 2022 at 01:31:23PM +0200, Alex Bee wrote:
-> Am 08.04.22 um 13:22 schrieb Sascha Hauer:
-> > The driver checks if the pixel clock of the given mode matches an entry
-> > in the mpll config table. The frequencies in the mpll table are meant as
-> > a frequency range up to which the entry works, not as a frequency that
-> > must match the pixel clock. The downstream Kernel also does not have
-> > this check, so drop it to allow for more display resolutions.
-> > 
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+Le Mon, Apr 04, 2022 at 12:38:27PM +0100, John Keeping a =E9crit :
+> On Fri, Apr 01, 2022 at 08:17:48PM +0000, Corentin Labbe wrote:
+> > Use read_poll_timeout instead of open coding it
+> > =
+
+> > Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 > > ---
-> > 
-> You're correct: That frequency is meant to be greater or equal. But I'm
-> not sure if it makes sense to completely drop it - what happens for
-> clocks rates > 600 MHz which might be supported by later generation
-> sinks (HDMI 2.1 or later)?
-> As these are not supported by the IPs/PHYs currently supported by that
-> driver a reason a simple
-> 
->         int i;
-> 
-> 
-> 
->         for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
-> 
-> -               if (pclk == mpll_cfg[i].mpixelclock) {
-> 
-> +               if (pclk >= mpll_cfg[i].mpixelclock) {
+> >  drivers/crypto/rockchip/rk3288_crypto_ahash.c | 5 +++--
+> >  1 file changed, 3 insertions(+), 2 deletions(-)
+> > =
 
-Should be <=
+> > diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/cr=
+ypto/rockchip/rk3288_crypto_ahash.c
+> > index 137013bd4410..21c9a0327ddf 100644
+> > --- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+> > +++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+> > @@ -10,6 +10,7 @@
+> >   */
+> >  #include <linux/device.h>
+> >  #include <asm/unaligned.h>
+> > +#include <linux/iopoll.h>
+> >  #include "rk3288_crypto.h"
+> >  =
 
-No other user currently in the tree has this check.
-hdmi_phy_configure_dwc_hdmi_3d_tx() has this:
+> >  /*
+> > @@ -305,8 +306,8 @@ static int rk_hash_run(struct crypto_engine *engine=
+, void *breq)
+> >  		 * efficiency, and make it response quickly when dma
+> >  		 * complete.
+> >  		 */
+> > -	while (!CRYPTO_READ(tctx->dev, RK_CRYPTO_HASH_STS))
+> > -		udelay(10);
+> > +	read_poll_timeout(readl, v, v =3D=3D 0, 10, 1000, false,
+> > +			  tctx->dev->dev + RK_CRYPTO_HASH_STS);
+> =
 
-> 	/* PLL/MPLL Cfg - always match on final entry */
-> 	for (; mpll_config->mpixelclock != ~0UL; mpll_config++)
-> 		if (mpixelclock <= mpll_config->mpixelclock)
-> 			break;
-> 
-> 	for (; curr_ctrl->mpixelclock != ~0UL; curr_ctrl++)
-> 		if (mpixelclock <= curr_ctrl->mpixelclock)
-> 			break;
-> 
-> 	for (; phy_config->mpixelclock != ~0UL; phy_config++)
-> 		if (mpixelclock <= phy_config->mpixelclock)
-> 			break;
-> 
-> 	if (mpll_config->mpixelclock == ~0UL ||
-> 	    curr_ctrl->mpixelclock == ~0UL ||
-> 	    phy_config->mpixelclock == ~0UL)
-> 		return -EINVAL;
+> This can be simplified to:
+> =
 
-This means we already have this check and others already in the generic
-part of the dw-hdmi driver. Should we maybe do the above in
-dw_hdmi_bridge_mode_valid() instead of doing it in the users?
+> 	readl_poll_timeout(tctx->dev->dev + RK_CRYPTO_HASH_STS,
+> 			   v, v =3D=3D 0, 10, 1000);
 
-Sascha
+Thanks, this is better.
 
+> =
 
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+> But shouldn't this be tctx->dev->reg ?!
+
+Yes, I will fix it.
+
+Thanks
+Regards
 
 _______________________________________________
 Linux-rockchip mailing list
