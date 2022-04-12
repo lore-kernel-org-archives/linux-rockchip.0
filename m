@@ -4,86 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D799C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Apr 2022 17:01:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CC02C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Apr 2022 07:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nsjyPQFTyq3oW7P7uzwXDgSzPX0279KSyEwrp3CrH6g=; b=jJHZatLTr2n0eB
-	ksgteWAar3rnmiG6v8QWLtvchSSlU4c5tNPBX7FZaZqHRVmAt2yau85WHMDcikCYinMiIvx0BKil8
-	a0CBg0GmJ+SW8QX0LEUMZk0dB7/goV6IUNlVR0UlscSoXLUMkYofJL9+mzKEDeUgpeinY52pqG4w2
-	5E9GpSxi3hB674eMJgqU9g9OClAKTKgZC9zBE51xh3SV6t4A68LD3DSUocvWae0km07aBuEO7PW/j
-	p+k1G7PqhWiZXNClM8nqd8yoFlRitWhI27DP9n+NDNzCLTydYFJquE1FXL34+VUwyXixSSKB6zgOa
-	2mmNifM9UTzqQYnxLHeA==;
+	List-Owner; bh=DM6zC0h5U2rgRTX2d+VcS2RKAF8EK/RUyslBVY/qvEc=; b=qEAcCAnyo/qB8f
+	mICdmKlMGhLySiOELXvh/ZrR7yU2k9E3BGoEZTdzGq8btXVsIs/ypkVuOVxPqrwpvMDoQuxKOCUnQ
+	7dreYXL96aiAYlcHmE4/VfbtfKdQzEHzFa5C5SQnG8BsvguhfW4Livci6Ha2TRELA1adSrs5ibMd6
+	PwFO/BvPeYC00uBgM4TohlKYvfbOJJomao8z8RSqSP00WL62A08fxthsm7NINuAlLEyuW85672/N6
+	pvgPhy5lP2vgvQfm2Sf+49VDZxcf1GnkpyFaWO+MvrxuykHp4KMrK11puOmRwlozfso9p9dzx5sHi
+	vB95WLH8Og9g6lmWLLSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ndxPX-009p8A-KC; Mon, 11 Apr 2022 17:01:07 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1neBPy-00COFK-5c; Tue, 12 Apr 2022 07:58:30 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ndxPM-009p5e-MM; Mon, 11 Apr 2022 17:00:58 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id b24so19221879edu.10;
- Mon, 11 Apr 2022 10:00:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=xpy+Tnj7CSKL3X1uy9b/hDN/vNkE2wdoaTq7+ca8M10=;
- b=EUuImKaaNnPaaTkG6bKXr8HOXsakGzjtj6MwQzcNNnCginsQOkhcLw9musbZzPcwCe
- u/pmx4TtJXQiMiWhwLmH5iZdX/6DYIV6uC/0MNnhRCFMdbgb/lc/0w6ImKxbKK3tGSzd
- R/ZDMG3P7uYw8upLYen3/7m1Bfp4iNS02kMgCGC3iumIcsrqsvr9p2qKXzC575Tmsh2h
- lIWUGabTR//BgAc8VJhfGNOXEiMgWtvkbqepKY5ThE/EOCsLFXpUpjF/GEaCI/67XY75
- 61TpHI9o3ut2YGuuQYIt8oIE/9FyeD7Og0PA+rzwmvGt2NAH3NnhVcET6AQyQm6TyxIS
- 8wjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=xpy+Tnj7CSKL3X1uy9b/hDN/vNkE2wdoaTq7+ca8M10=;
- b=DlSYNrNiZnn5IY9MAz4S6OEBc4rUfiUHlqpbSsdauQr+VneA38O5HRongkhswxNLgT
- +rSxdokii6QGASzVs41Qwfk/nUyrgJcnekJoXZpS3EpdO8KZy8u7KIe9BJM5S8tFKlQR
- Ky6khwuDXqbn/WVl6ec5Cp6lrQMrJac8biMlA+i7f368NuS2/82Qm+w9Mfcmcw2ZlDq3
- V/+sIQy8SxF3tsEqrip4N6sWX7f9cuROdNu1E/tq/UGfTIdEyYAyK1xhnM9sCsbR8X9J
- FPXX5MVTgX5DyvQtm6b+g2YQl9I2bOOeK+/qAA7EpRcvKWIwy+cdM4zG5yPB5NQr1wae
- 4frA==
-X-Gm-Message-State: AOAM530nIc1Yhd7AbArqe7dO6O/Rn3H9LsRi7n8fMu6io219ir9N5S7G
- lPqEa33m9fM6GtiUUi1GxA==
-X-Google-Smtp-Source: ABdhPJyZWh5pBitjWq97qA691BTkI6+vlnwnK/ZRRj/OfjGkLZqOhhIF8UGk3ef12YyoZgHpQrbEiQ==
-X-Received: by 2002:aa7:d682:0:b0:419:3b78:e489 with SMTP id
- d2-20020aa7d682000000b004193b78e489mr34615358edr.372.1649696453246; 
- Mon, 11 Apr 2022 10:00:53 -0700 (PDT)
-Received: from ?IPV6:2001:16b8:e9a0:2b00:12ab:3410:473c:e8ef?
- ([2001:16b8:e9a0:2b00:12ab:3410:473c:e8ef])
- by smtp.gmail.com with ESMTPSA id
- f13-20020a50bf0d000000b0041cdd9c9147sm10371016edk.40.2022.04.11.10.00.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 Apr 2022 10:00:52 -0700 (PDT)
-Message-ID: <2b0f0eba-87fe-e2c4-d951-2b090b827ca6@gmail.com>
-Date: Mon, 11 Apr 2022 19:00:51 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH v10 12/24] drm/rockchip: dw_hdmi: drop mode_valid hook
-Content-Language: en-US
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ id 1neBIS-00CKUX-Pq
+ for linux-rockchip@bombadil.infradead.org; Tue, 12 Apr 2022 07:50:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description;
+ bh=XGnJ0pFNBfXpULCNAs16jNAT2wu1aAN1zXaMVwVJbl8=; b=JfbXwieHE4s5ML8ufNYtbcSWYe
+ a3tIGhTnpMRCTLw6FOIqxLsNWCHv1R1IpT7QuhPskOEvo9MN/4EOBXvgbqiP5cwW1n28e1+VMTsFD
+ AgXbNHlC88WrTKfpoc39VgivHWTWdL6jGiZPgGN0HvBBek1+D/s2z+ny5dJ+xrcD3gK6Duj/eCah/
+ x3m6R/RGManSzrE5EhkcJz/3dBHSFNhDCJv9GZHW1zJoAqvkJmnhHWFeWQjzQNNJjC3xMq6bmrf/g
+ B3EXyE7bxR3Gp95OwKZecN7RH+HisBggRD9ERwsiTDfT09ORQxv/Xwh3ZDA2CuhQ9sQqAYkjBAy7p
+ d/tB+2CQ==;
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+ by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1neBIO-004FgC-4O
+ for linux-rockchip@lists.infradead.org; Tue, 12 Apr 2022 07:50:43 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1neBIL-0001w7-Eo; Tue, 12 Apr 2022 09:50:37 +0200
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1neBII-0007M1-Dw; Tue, 12 Apr 2022 09:50:34 +0200
+Date: Tue, 12 Apr 2022 09:50:34 +0200
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Cc: dri-devel@lists.freedesktop.org,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
  kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
- <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>
-References: <20220408112238.1274817-1-s.hauer@pengutronix.de>
- <20220408112238.1274817-13-s.hauer@pengutronix.de>
- <8fac5d72-c635-521c-e7d1-a3980a4ed719@gmail.com>
- <20220411075357.GQ4012@pengutronix.de>
-From: Alex Bee <knaerzche@gmail.com>
-In-Reply-To: <20220411075357.GQ4012@pengutronix.de>
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>, Lucas Stach <lst@pengutronix.de>
+Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
+Message-ID: <20220412075034.GS4012@pengutronix.de>
+References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
+ <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
+ <20220401125205.GL4012@pengutronix.de>
+ <5420D26D-34FD-4637-B602-F6271E38BB8D@gmail.com>
+ <BA4C591F-D115-43D2-BF59-A75B29889E50@gmail.com>
+ <20220408080748.GA2387@pengutronix.de>
+ <20220408120021.GO4012@pengutronix.de>
+ <B3E76A7A-9B62-4E6F-9472-00B6298689C5@gmail.com>
+ <20220411090800.GR4012@pengutronix.de>
+ <5929E7A7-776E-4BCB-92C8-A1CE05774FE3@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <5929E7A7-776E-4BCB-92C8-A1CE05774FE3@gmail.com>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 09:28:34 up 12 days, 19:58, 64 users,  load average: 0.17, 0.16, 0.17
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220411_100056_784931_CFBE7482 
-X-CRM114-Status: GOOD (  22.86  )
+X-CRM114-CacheID: sfid-20220412_085040_697149_6B5BABDD 
+X-CRM114-Status: GOOD (  28.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,84 +107,139 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am 11.04.22 um 09:53 schrieb Sascha Hauer:
-> On Sun, Apr 10, 2022 at 01:31:23PM +0200, Alex Bee wrote:
->> Am 08.04.22 um 13:22 schrieb Sascha Hauer:
->>> The driver checks if the pixel clock of the given mode matches an entry
->>> in the mpll config table. The frequencies in the mpll table are meant as
->>> a frequency range up to which the entry works, not as a frequency that
->>> must match the pixel clock. The downstream Kernel also does not have
->>> this check, so drop it to allow for more display resolutions.
->>>
->>> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
->>> ---
->>>
->> You're correct: That frequency is meant to be greater or equal. But I'm
->> not sure if it makes sense to completely drop it - what happens for
->> clocks rates > 600 MHz which might be supported by later generation
->> sinks (HDMI 2.1 or later)?
->> As these are not supported by the IPs/PHYs currently supported by that
->> driver a reason a simple
->>
->>         int i;
->>
->>
->>
->>         for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
->>
->> -               if (pclk == mpll_cfg[i].mpixelclock) {
->>
->> +               if (pclk >= mpll_cfg[i].mpixelclock) {
+On Mon, Apr 11, 2022 at 01:07:56PM +0200, Piotr Oniszczuk wrote:
+> this is DRI state when there is no any Qt.vars overwrites.
+> (so all is autodetected/setup like in other  working SoCs; VOP2 gives here black screen UI):
 > 
-> Should be <=
+> 2022-04-08 17:47:57.035668 I /dev/dri/card0 Qt EGLFS/KMS Fd:5 Crtc id:49 Connector id:51 Atomic: 1
+> 2022-04-08 17:47:57.035806 I /dev/dri/card0: Authenticated
+> 2022-04-08 17:47:57.145447 I /dev/dri/card0: Found 3 planes; 3 for this CRTC
+> 2022-04-08 17:47:57.145469 I /dev/dri/card0: Selected Plane #37 Overlay for video
+> 2022-04-08 17:47:57.145515 I /dev/dri/card0: Supported DRM video formats: NV12,NV16,NV24,YVYU,VYUY
+> 2022-04-08 17:47:57.145523 I /dev/dri/card0: Selected Plane #43 Overlay for GUI
+> 2022-04-08 17:47:57.145567 I /dev/dri/card0: DRM device retrieved from Qt
+> 2022-04-08 17:47:57.145574 I /dev/dri/card0: Multi-plane setup: Requested: 1 Setup: 1
+> 
+> plane[31]: Smart0-win0
+>         crtc=video_port0
+>         fb=53
+>                 allocated by = [fbcon]
+>                 refcount=2
+>                 format=XR24 little-endian (0x34325258)
+>                 modifier=0x0
+>                 size=1920x1080
+>                 layers:
+>                         size[0]=1920x1080
+>                         pitch[0]=7680
+>                         offset[0]=0
+>                         obj[0]:
+>                                 name=0
+>                                 refcount=3
+>                                 start=00000000
+>                                 size=8294400
+>                                 imported=no
+>         crtc-pos=1920x1080+0+0
+>         src-pos=1920.000000x1080.000000+0.000000+0.000000
+>         rotation=1
+>         normalized-zpos=0
+>         color-encoding=ITU-R BT.601 YCbCr
+>         color-range=YCbCr limited range
+> plane[37]: Esmart0-win0
+>         crtc=(null)
+>         fb=0
+>         crtc-pos=0x0+0+0
+>         src-pos=0.000000x0.000000+0.000000+0.000000
+>         rotation=1
+>         normalized-zpos=0
+>         color-encoding=ITU-R BT.601 YCbCr
+>         color-range=YCbCr limited range
+> plane[43]: Cluster0-win0
+>         crtc=video_port0
+>         fb=58
+>                 allocated by = mythfrontend
+>                 refcount=2
+>                 format=AR24 little-endian (0x34325241)
 
-Sure, sorry 'bout that.
-> 
-> No other user currently in the tree has this check.
-I dont't think that's true - it might not be checked against mpll table,
-but max pixelclocks are checked in meson_encoder_hdmi_mode_valid for
-amlogic, in sun8i_dw_hdmi_mode_valid_a83t and
-sun8i_dw_hdmi_mode_valid_h6 for allwinner and rcar_hdmi_mode_valid for
-rcar platform. There is no other point in rockchip dw-hdmi platform
-driver where this is currently checked.
+Here is your problem. The cluster windows only allow AFBC compressed
+formats. AR24 is supported by the cluster windows, but not by the GPU,
+see panfrost_afbc_format() in Mesa:
 
-> hdmi_phy_configure_dwc_hdmi_3d_tx() has this:
+> enum pipe_format
+> panfrost_afbc_format(const struct panfrost_device *dev, enum pipe_format format)
+> {
+>         /* Don't allow swizzled formats on v7 */
+>         switch (format) {
+>         case PIPE_FORMAT_B8G8R8A8_UNORM:
+>         case PIPE_FORMAT_B8G8R8X8_UNORM:
+>         case PIPE_FORMAT_A8R8G8B8_UNORM:
+>         case PIPE_FORMAT_X8R8G8B8_UNORM:
+>         case PIPE_FORMAT_X8B8G8R8_UNORM:
+>         case PIPE_FORMAT_A8B8G8R8_UNORM:
+>         case PIPE_FORMAT_B8G8R8_UNORM:
+>         case PIPE_FORMAT_B5G6R5_UNORM:
+>                 if (dev->arch >= 7)
+>                         return PIPE_FORMAT_NONE;
 > 
->> 	/* PLL/MPLL Cfg - always match on final entry */
->> 	for (; mpll_config->mpixelclock != ~0UL; mpll_config++)
->> 		if (mpixelclock <= mpll_config->mpixelclock)
->> 			break;
->>
->> 	for (; curr_ctrl->mpixelclock != ~0UL; curr_ctrl++)
->> 		if (mpixelclock <= curr_ctrl->mpixelclock)
->> 			break;
->>
->> 	for (; phy_config->mpixelclock != ~0UL; phy_config++)
->> 		if (mpixelclock <= phy_config->mpixelclock)
->> 			break;
->>
->> 	if (mpll_config->mpixelclock == ~0UL ||
->> 	    curr_ctrl->mpixelclock == ~0UL ||
->> 	    phy_config->mpixelclock == ~0UL)
->> 		return -EINVAL;
-> 
-> This means we already have this check and others already in the generic
-> part of the dw-hdmi driver. Should we maybe do the above in
-> dw_hdmi_bridge_mode_valid() instead of doing it in the users?
-I guess that's not possible, due to the different kind of phys which are
-used for dw-hdmi. The checks you are refering to, are only done for dw
-hdmi tx phys, but not for "vendor phys" (like for RK3328 and RK3228, for
-example) - those have have own drivers which are handled only in dw-hdmi
-platform driver.
-Therefore this check should remain here for Rockchip also.
-
-Regards,
-Alex
-> 
-> Sascha
-> 
+>                 break;
+>         default:
+>                 break;
+>         }
 > 
 
+Somehow negotiation of the format goes wrong. Applications shouldn't
+pick these formats when the GPU is used for rendering. I don't know how
+and where this should be fixed properly, but your application should use
+DRM_FORMAT_ABGR8888 aka AB24 aka PIPE_FORMAT_R8G8B8A8_UNORM instead of
+DRM_FORMAT_ARGB8888 aka AR24 aka PIPE_FORMAT_B8G8R8A8_UNORM.
+
+Could you try the following patch? It removed the formats in question
+from the list of supported formats in the hope that your application
+then picks one of the supported formats.
+
+Sascha
+
+-----------------------8<-----------------------------
+
+From 7427109cfd16803902b55cd5536b9212abd09665 Mon Sep 17 00:00:00 2001
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Date: Tue, 12 Apr 2022 09:42:32 +0200
+Subject: [PATCH] fixup! drm: rockchip: Add VOP2 driver
+
+The cluster windows only allow AFBC compressed formats. Not all of the
+offered formats are supported by the GPU though. Applications pick one
+of the formats and assume that this is also supported by the GPU they
+use to render on them, but this is not the case for all formats.
+Particularly DRM_FORMAT_XRGB8888 and DRM_FORMAT_ARGB8888 are not
+supported by the GPU and choosing them results in a black screen.
+Drop these formats for now.
+
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index 9bf0637bf8e26..38412766e3659 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -16,8 +16,6 @@
+ #include "rockchip_drm_vop2.h"
+ 
+ static const uint32_t formats_win_full_10bit[] = {
+-	DRM_FORMAT_XRGB8888,
+-	DRM_FORMAT_ARGB8888,
+ 	DRM_FORMAT_XBGR8888,
+ 	DRM_FORMAT_ABGR8888,
+ 	DRM_FORMAT_RGB888,
+-- 
+2.30.2
+
+
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
