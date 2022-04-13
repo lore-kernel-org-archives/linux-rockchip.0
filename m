@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A78EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 12:10:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D35A8C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 13:38:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mpf+vwJu2UxlOBV4UmGuDC2w2eMoGavkEURaY5qt1BA=; b=hh3o+ee8Dzw40G
-	CQAtAmiW2eJT2P2I5MMXjDZO6dzReCL2TqUMo+/RPZYT8+u6wOCke/vivSpJfGBbV0KN9VVcDvDY5
-	Xj1JXvH/zuneKUXTgqxi+hYsfaXsi/dQRQ+9UBnrIGyV19VilfEpN/f4zu2KrgyMWb0wG5Lcf19uG
-	CfiVV/0sTPjPjjWlr8k+v5AxI080oOu5eWNvkjbk2WOGpsFrbIZyXBn+uvUx2XQbTeWr3I4B5Y+kp
-	QizKiUDvU5c4/aIKEaZAUmKmqZUQOi/EcYbjE51J8feu70RbSjwRADk/B5TJLvr87Fr3fCx65D0wm
-	7K3ibZxyMxXX4zHhG6rA==;
+	List-Owner; bh=zWVvXH0QvMsJlu1B3TB6f+qe7YThuhEbD1tmfHplhh4=; b=tmaY1TH2uVEzvd
+	Z2Nsnuc9pCDRQQSQopVi8PaDk14pcW+Nfbxbko6Px9hZ3k3OqoUjXUPNbRzV8t+YjdgD1yHBpnjLw
+	xI1ppROzNijTSOJ3rZy1DIi0pqva8B5DtRnhJDhR4IWuCDVhDF5SUs2XgjTG9CNLBV2UuFjSFFxa/
+	7qc5TF3Qu8kM9xzcXhW5+RmImP75b80i47suoctY2xbJOE4+qVkBMARkVjfAHq156BLyOg5Vt0eao
+	2z9mPotcvGqPucqHSynR9GA12GOOCPqCUy4qUl6o3+2FsObJK9mM5416XKiy2l58kVKmUkvWtcKIf
+	6AN6bNaL0MDQ5by3jVMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neboo-000vd2-2j; Wed, 13 Apr 2022 12:09:54 +0000
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+	id 1nedCE-001COb-9j; Wed, 13 Apr 2022 13:38:10 +0000
+Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nebok-000vaO-EO; Wed, 13 Apr 2022 12:09:51 +0000
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-2ef5380669cso2729807b3.9; 
- Wed, 13 Apr 2022 05:09:48 -0700 (PDT)
+ id 1nedCB-001CLH-KA; Wed, 13 Apr 2022 13:38:09 +0000
+Received: by mail-qv1-xf29.google.com with SMTP id b17so1600503qvp.6;
+ Wed, 13 Apr 2022 06:38:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=uHgjRJ5n7gxa3U8bHk8ZxYgUPiikIG3e7D0EHXtK/WI=;
- b=Bu0b0Y/KrqMGaQ4XJKkH1snEUiP5tOPA+/pDExEqKjnvrtenziyOmLtOByO8yMXuLz
- vPf6g56ZQ4o6xcz7/UTrb6IvkeJIhqpA7ATKqKSPVVqO/k33/xFJ4Aed/FocWMs2WUN2
- 0xXheoOV9fn4KwKnhOc3foPFRav+bDee4afUyrIyRksibz+ruSPBSV5AbpzjtlqrMzZR
- 2xB5e8PvEx6vA3cAEDbuAViP/fmX07uF+XyZTZ31Ij0vssvoggpeuX6Z2JEuNeJkMrn4
- a2aKUJ2/jXxmFnQw0+1zMapR577dUDxf0G9Kem3oDSZquoK9lNXdGMO405vjkV39C+Fm
- J7/g==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=9ukbT/4wlnr3bIKYOPfr/n68CEs+SDNJ8K2aJyw0K+g=;
+ b=XUAIAMw9S2V928uTmqLYIWLIV4lwhS/XskmlSdJ29LdBhmNKksLHmw1HGydwdozR3e
+ bdKZP2E/buiXCezZV8tydFHIrnpBAl9EmC3/eNXmudwJ7190AhzB7PBMmT9RZ5tic6Ne
+ eEaUPKexSmOOABvCagElipJe2pKQClPnMjtvzYgT5z3e8s5M0pb7e1g65YrYjP7l5HLR
+ rwx1MPiSetCOUe7PP5c9Cqt3czTKzA5fGPdVtDGDWa1FJW2NpvZ1O5QmdAG8oHOrRXTC
+ Bgo6MtHLbDomydMXdlJDVKm0et8gZ1hsT/cOz7yYWUsXr5xTXmU/cMvx6/3794RTfzAb
+ Uu+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=uHgjRJ5n7gxa3U8bHk8ZxYgUPiikIG3e7D0EHXtK/WI=;
- b=Zx0wLldZvG9z2n18KPNmTi9emKQPud160JTs5wmLn3iNFWeMj/oiYj4h8RKNnOfDD7
- KEhJ9E3hdN/la6/TiNy2i6EWvexaFXoYMxWhnZe2DQHUGTeI6/geFqeBZVCB1+8qOGl/
- t4tTVKINZ7jrVbaF3X7RdgCbdT7Jy/x/n++v3RTtk4DiDZ24faJBPvOyu/JTk7D3Oth9
- 6zfkrqrb2zORMaor3gmyKPkKcM12qAMrl+KR2q6bCymgaWOyqt/HbZsxwOUBwqZol4m6
- OoJpPdyJxHdCpUFB5Mhg394CrbgWraRGfZd0fkTqz/XGRsuJFS7Id0yMEWb9NVI1LTUO
- 1HIA==
-X-Gm-Message-State: AOAM533aUylZeWQHf/gMSWQpcyM/epZocyJQvFHD3tQByNL12dZdjEQb
- b7UXJ1wwrfB7ZGd9RzbwUg3AY7vwYEV+NJLOksQ=
-X-Google-Smtp-Source: ABdhPJwMJK0m2bHfAT/ZqxMVu8kycGcqPLvMYcqzO9MiUl1ZsR/O2Xc/2lRjo9G2u4vlQIt0yFuVlD/CuSh3WZ381yg=
-X-Received: by 2002:a81:578c:0:b0:2e6:2488:7ef8 with SMTP id
- l134-20020a81578c000000b002e624887ef8mr34012300ywb.519.1649851787737; Wed, 13
- Apr 2022 05:09:47 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220412185751.124783-1-pgwipeout@gmail.com>
- <20220412185751.124783-3-pgwipeout@gmail.com>
- <0cf83ec0-29d3-fbde-0b7d-9d58d210f0a4@rock-chips.com>
-In-Reply-To: <0cf83ec0-29d3-fbde-0b7d-9d58d210f0a4@rock-chips.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=9ukbT/4wlnr3bIKYOPfr/n68CEs+SDNJ8K2aJyw0K+g=;
+ b=pPF1/MOXMBn0n2VN+Vh9DRKpURuiGWcbTjbJ3K3kqKDhnjSuUpCw957x3NW9lEEedd
+ Gy5ds8ONXOP8ItP4s9utFwK7LJRw3USvTwhyoACkI57NYRvFU/Lw7W0cWswlG74bY2xl
+ vouJCm/L17UYhbtUZwth8boMdMQwWy6MZXlMY9wR9rd/rnrzQul/VkVwBKq/VYF51JRT
+ /b5V/brnEDYjnLIbA0xlGxqprroR+i+I6ha5U0s7w02k6JooozYRCFDHyYcm4NCrNO3S
+ Gt0hgBnmxOgrQDZ5d7J82/ncTCSj2QVUKQWE8NjxFvA9csm29T388p6sZ+ellomzQtfi
+ P4Bw==
+X-Gm-Message-State: AOAM533kELcVETEYU99awv2BdESGWZsu6jPwll+xAIpC9ttVcYFka+xt
+ cBFozQbj/TSRoY+S6Ur4lWQ=
+X-Google-Smtp-Source: ABdhPJz/KePNJSlcz8aYHVEZ4KgjrAunzkrxnD1+4FJPD9C/60EKr4EhfAeg9cW19bi2ok5YAJ+WHQ==
+X-Received: by 2002:a05:6214:f0b:b0:444:5757:87f7 with SMTP id
+ gw11-20020a0562140f0b00b00444575787f7mr7549283qvb.82.1649857081686; 
+ Wed, 13 Apr 2022 06:38:01 -0700 (PDT)
+Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
+ by smtp.gmail.com with ESMTPSA id
+ 143-20020a370795000000b0069c59e1b8eesm790584qkh.10.2022.04.13.06.38.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 Apr 2022 06:38:01 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Wed, 13 Apr 2022 08:09:36 -0400
-Message-ID: <CAMdYzYoX=4a_nMfNJ++nVTm18896g6jDngPrq36mRs8e2kj7tA@mail.gmail.com>
-Subject: Re: [PATCH v1 2/4] PCI: dwc: rockchip: add legacy interrupt support
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>, 
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- PCI <linux-pci@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>,
+ linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v2 3/4] arm64: dts: rockchip: add rk3568 pcie2x1 controller
+Date: Wed, 13 Apr 2022 09:37:30 -0400
+Message-Id: <20220413133731.242870-4-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220413133731.242870-1-pgwipeout@gmail.com>
+References: <20220413133731.242870-1-pgwipeout@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_050950_560473_C8DC5820 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20220413_063807_684553_D8AEE2DA 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,38 +86,111 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBBcHIgMTIsIDIwMjIgYXQgMTA6NTQgUE0gU2hhd24gTGluIDxzaGF3bi5saW5Acm9j
-ay1jaGlwcy5jb20+IHdyb3RlOgo+Cj4gSGkgUGV0ZXIsCj4KPiDlnKggMjAyMi80LzEzIDI6NTcs
-IFBldGVyIEdlaXMg5YaZ6YGTOgo+ID4gVGhlIGxlZ2FjeSBpbnRlcnJ1cHRzIG9uIHRoZSByazM1
-NnggcGNpZSBjb250cm9sbGVyIGFyZSBoYW5kbGVkIGJ5IGEKPiA+IHNpbmdsZSBtdXhlZCBpbnRl
-cnJ1cHQuIEFkZCBpcnEgZG9tYWluIHN1cHBvcnQgdG8gdGhlIHBjaWUtZHctcm9ja2NoaXAgPgo+
-ID4gK3N0YXRpYyB2b2lkIHJvY2tjaGlwX3BjaWVfbGVnYWN5X2ludF9oYW5kbGVyKHN0cnVjdCBp
-cnFfZGVzYyAqZGVzYykKPiA+ICt7Cj4gPiArICAgICBzdHJ1Y3QgaXJxX2NoaXAgKmNoaXAgPSBp
-cnFfZGVzY19nZXRfY2hpcChkZXNjKTsKPiA+ICsgICAgIHN0cnVjdCByb2NrY2hpcF9wY2llICpy
-b2NrY2hpcCA9IGlycV9kZXNjX2dldF9oYW5kbGVyX2RhdGEoZGVzYyk7Cj4gPiArICAgICBzdHJ1
-Y3QgZGV2aWNlICpkZXYgPSByb2NrY2hpcC0+cGNpLmRldjsKPiA+ICsgICAgIHUzMiByZWc7Cj4g
-PiArICAgICB1MzIgaHdpcnE7Cj4gPiArICAgICB1MzIgdmlycTsKPiA+ICsKPiA+ICsgICAgIGNo
-YWluZWRfaXJxX2VudGVyKGNoaXAsIGRlc2MpOwo+ID4gKwo+ID4gKyAgICAgcmVnID0gcm9ja2No
-aXBfcGNpZV9yZWFkbF9hcGIocm9ja2NoaXAsIDB4OCk7Cj4gPiArCj4KPgo+IE92ZXJhbGwgaXQg
-bG9va3MgZ29vZCBleGNlcHQgdGhhdCAweDggaGFzIGEgbmFtZSwKPiBQQ0lFX0NMSUVOVF9JTlRS
-X1NUQVRVU19MRUdBQ1kuIEJUVywgSWYgeW91IGNvbnNpZGVyIGFkZGluZyBtb3JlIHN1cHBvcnQK
-PiB0byBpdCwgZm9yIGluc3RhbmNlLCBlbmFibGUvZGlzYWJsZS9hZmZpbml0eT8gIFRoZSBkb3du
-c3RyZWFtIGtlcm5lbAo+IGZpbmlzaGVkIHRoZXNlIGZvciBiZXR0ZXIgZml0dGluZyBmb3IgZnVu
-Y3Rpb24gZHJpdmVyIHVzYWdlLgoKR29vZCBjYXRjaCwgdGhhbmtzLgoKVGhpcyBwYXRjaCBoYXMg
-cmVtYWluZWQgbGFyZ2VseSB1bmNoYW5nZWQgZnJvbSB3aGVuIEkgZmlyc3QgY3JlYXRlZCBpdApw
-cmlvciB0byBhc2tpbmcgZm9yIFJvY2tjaGlwIHRvIGluY2x1ZGUgc3VwcG9ydCBmb3IgaXQgaW4g
-dGhlIGluaXRpYWwKc2VyaWVzLgpJIHdvdWxkIGhhdmUgbGVmdCBpdCBvdXQgYmFzZWQgb24gdGhl
-IG9yaWdpbmFsIGNvdW50ZXIgYXJndW1lbnRzLApleGNlcHQgaW4gdGVzdGluZyB3ZSBoYXZlIGRp
-c2NvdmVyZWQgdHdvIGlzc3VlczoKQSBzdXJwcmlzaW5nIG51bWJlciBvZiBjYXJkcyBkbyBub3Qg
-c3VwcG9ydCBNU0lzLgpUaGUgY3VycmVudCBNU0kgaW1wbGVtZW50YXRpb24gaGFzIHBvb3IgY29t
-cGF0aWJpbGl0eS4KCkkgd2lsbCBsb29rIGF0IHRoZSBkb3duc3RyZWFtIGltcGxlbWVudGF0aW9u
-IGFuZCBjb25zaWRlciBwb3NzaWJsZQpjaGFuZ2VzLCBidXQgZm9yIHRoZSB0aW1lIGJlaW5nIHRo
-aXMgZG9lcyB0aGUgam9iLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+The pcie2x1 controller is commong between the rk3568 and rk3566. It is a
+single lane pcie2 compliant controller.
+
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 68 ++++++++++++++++++++++--
+ 1 file changed, 65 insertions(+), 3 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index ca20d7b91fe5..d5131f5aaf73 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -270,10 +270,17 @@ gic: interrupt-controller@fd400000 {
+ 		      <0x0 0xfd460000 0 0x80000>; /* GICR */
+ 		interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+ 		interrupt-controller;
++		ranges;
+ 		#interrupt-cells = <3>;
+-		mbi-alias = <0x0 0xfd410000>;
+-		mbi-ranges = <296 24>;
+-		msi-controller;
++		#address-cells = <2>;
++		#size-cells = <2>;
++
++		its: interrupt-controller@fd440000 {
++			compatible = "arm,gic-v3-its";
++			reg = <0x0 0xfd440000 0x0 0x20000>;
++			msi-controller;
++			#msi-cells = <1>;
++		};
+ 	};
+ 
+ 	usb_host0_ehci: usb@fd800000 {
+@@ -722,6 +729,61 @@ qos_vop_m1: qos@fe1a8100 {
+ 		reg = <0x0 0xfe1a8100 0x0 0x20>;
+ 	};
+ 
++	pcie2x1: pcie@fe260000 {
++		compatible = "rockchip,rk3568-pcie";
++		#address-cells = <3>;
++		#size-cells = <2>;
++		bus-range = <0x0 0xf>;
++		assigned-clocks = <&cru ACLK_PCIE20_MST>, <&cru ACLK_PCIE20_SLV>,
++			 <&cru ACLK_PCIE20_DBI>, <&cru PCLK_PCIE20>,
++			 <&cru CLK_PCIE20_AUX_NDFT>;
++		clocks = <&cru ACLK_PCIE20_MST>, <&cru ACLK_PCIE20_SLV>,
++			 <&cru ACLK_PCIE20_DBI>, <&cru PCLK_PCIE20>,
++			 <&cru CLK_PCIE20_AUX_NDFT>;
++		clock-names = "aclk_mst", "aclk_slv",
++			      "aclk_dbi", "pclk", "aux";
++		device_type = "pci";
++		interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>,
++			     <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>,
++			     <GIC_SPI 73 IRQ_TYPE_LEVEL_HIGH>,
++			     <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>,
++			     <GIC_SPI 71 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "sys", "pmc", "msi", "legacy", "err";
++		#interrupt-cells = <1>;
++		interrupt-map-mask = <0 0 0 7>;
++		interrupt-map = <0 0 0 1 &pcie_intc 0>,
++				<0 0 0 2 &pcie_intc 1>,
++				<0 0 0 3 &pcie_intc 2>,
++				<0 0 0 4 &pcie_intc 3>;
++		linux,pci-domain = <0>;
++		num-ib-windows = <6>;
++		num-ob-windows = <2>;
++		max-link-speed = <2>;
++		msi-map = <0x0 &its 0x0 0x1000>;
++		num-lanes = <1>;
++		phys = <&combphy2 PHY_TYPE_PCIE>;
++		phy-names = "pcie-phy";
++		power-domains = <&power RK3568_PD_PIPE>;
++		reg = <0x3 0xc0000000 0x0 0x00400000>,
++		      <0x0 0xfe260000 0x0 0x00010000>,
++		      <0x3 0x00000000 0x0 0x01000000>;
++		ranges = <0x01000000 0x0 0x01000000 0x3 0x01000000 0x0 0x00100000
++			  0x02000000 0x0 0x02000000 0x3 0x02000000 0x0 0x3e000000>;
++		reg-names = "dbi", "apb", "config";
++		resets = <&cru SRST_PCIE20_POWERUP>;
++		reset-names = "pipe";
++		status = "disabled";
++
++		pcie_intc: legacy-interrupt-controller {
++			#address-cells = <0>;
++			#interrupt-cells = <1>;
++			interrupt-controller;
++			interrupt-parent = <&gic>;
++			interrupts = <GIC_SPI 72 IRQ_TYPE_EDGE_RISING>;
++		};
++
++	};
++
+ 	sdmmc0: mmc@fe2b0000 {
+ 		compatible = "rockchip,rk3568-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x0 0xfe2b0000 0x0 0x4000>;
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
