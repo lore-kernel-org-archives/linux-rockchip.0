@@ -4,82 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64D24C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 22:15:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A44DC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 22:20:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KdMhTiIlkd/p9aiCqCl1PFo3TmZqNU81gTTcm4hKZRI=; b=bsaOcaFEH5bOKg
-	F2/AYDBQ6OPzCXoZ8TPGJonK+0i93b0vZDEBxsoXyPG5R904wxWZh3H4m3vys2d2QmvWJD6veRyu4
-	UEqwm85hPJG55UF6mOeBqEz6Jv8GIPEQDOb+X/8zQLiqJPRudfwNeUu1OHz9FLz6QqjqRHpQAAYjH
-	RoxUDcHDRH1/ryGFPPF0nrOyOGkUCqnOfM3WE3vRG/GDuHOOSoAxGJtJaBX2ITx+k4LAfAgAZMBQ2
-	S2Zx+sSUPbwzVHCaDUbEHV+42GUeFwXb2U87+R4q5acRj6Xmn1GGYl0CUEGz+6R4Qoz/w/h74ha1J
-	aI+tVbWLTmQ38cpFJ1NQ==;
+	List-Owner; bh=81pH5OTCvXBK9aYc0fWkzP9E8ShNl32S2rWA9d0ge8c=; b=bV1ijogry0cZYg
+	CWBxipzAzUGrcchwty8WdyXT+9VQWDEIUfdzoo9mXwu2CfQRNlglCokDWrKX1XU+COsDkwH1ngyay
+	tpnJVfjfrT+GtbgtwUAWZfegAPZT+2Y/dT0+WDFrHdZo4nRAL4zjLtK4nylFzmflq8EMEJniCNJZ4
+	CjNQfDtmtIEVey96pCX5RqFVcn0vfeBREv+XGM7f+2c7i+EPTCULJbvmVHpw+h2JV2lW68wzK7/ta
+	Iy1j4eBX3VDAqZOmB6rTnj9gnNUeTxnBvgVQvsI9elBCq4vQ1eDx/A3twdPE+vDQriD0rhXYkXLKd
+	4eAkFhX3j8yM+6oESZ2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nelGM-002p8z-HD; Wed, 13 Apr 2022 22:14:58 +0000
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+	id 1nelLD-002qAz-In; Wed, 13 Apr 2022 22:19:59 +0000
+Received: from out5-smtp.messagingengine.com ([66.111.4.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nelGA-002p51-HN; Wed, 13 Apr 2022 22:14:47 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id k29so3025594pgm.12;
- Wed, 13 Apr 2022 15:14:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=U9y1xoKzi02K/KnzJqfCTRkpP8q7PpqYFALghM4TId8=;
- b=WHgwByVV1RUv7aJq7PxxHS5+DaJFT9PzTJaJhniYsvxQqLFqcPp2hDVz999kDd7vu3
- CjVbSt81zORisRmsW9gXahpb3c3ziXg9hHo663C43uN4/rPCbumAQke/1mm8xCNlo8lu
- 3DvNKjJ2G0LK8A9qFz56QGlz47thjGOTnwsl+pbxODQNglbfXk+Y7oHy6b7/G819w1Dv
- wEIY0hgHpj2qc9LpHZANSjabckL/kEeU0IBgg09/UT1Er/307UGc8NliyD6VsBmYQB6S
- G8c2apc5K7csOHOcvKXSnjbmGRC2niOz20Kbq3ku/q1BudhYFOOmEzfCpOPFpI1aN7XX
- 8/Yw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=U9y1xoKzi02K/KnzJqfCTRkpP8q7PpqYFALghM4TId8=;
- b=OlvV0wP2s9Cajl3DKMBNqCBTEgXkRPYeG2zYio+CSneXVt/X0DifLLMIbHfUJcemzt
- gQct/dqNy8920x6tuU6D5u4OpP/49Ud+Oq10E5kJz9cZ5gfPjS0/4VzEY0HTPyFvhyEJ
- PALGiAvzJKkTkWbWbh3W725iLQpfJl5276uLPUr5pjAJIzD+tiYJ6+fti6cmDfQsX/8E
- 42ULO4H97rR23RuLLg7Ww9fu1/7W8o24ZZ96GBXqB5PMNR7lst2xMDp/on6onxBBH0lB
- L/OforPdylHxfPip/dC3tFJ30UlY0u3/3r1qCk0FADTSC1j97RkRNSoKCL/q0EZPpnzM
- 9m/Q==
-X-Gm-Message-State: AOAM533ml/S4jhQhccK3NmaNgzar91Ggs+u9P/MGaZ00YKc2bWBMFmO8
- pyW+6zhJXFWRKb2lrZCIIuuZPxfhvQI=
-X-Google-Smtp-Source: ABdhPJyY1TsLoUDvb6KhWIvp7Qylv1Fv5V+fCqMHoC51LSRiMTMZvWW9nXh99rAA0KINjL5zhr4QqQ==
-X-Received: by 2002:a05:6a00:248e:b0:506:1dce:fcba with SMTP id
- c14-20020a056a00248e00b005061dcefcbamr910301pfv.21.1649888084545; 
- Wed, 13 Apr 2022 15:14:44 -0700 (PDT)
-Received: from [172.30.1.44] ([14.32.163.5]) by smtp.gmail.com with ESMTPSA id
- q5-20020a17090a68c500b001cb651fffdbsm4086194pjj.8.2022.04.13.15.14.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Apr 2022 15:14:44 -0700 (PDT)
-Message-ID: <8824147c-5512-a7a5-9e89-60b510111500@gmail.com>
-Date: Thu, 14 Apr 2022 07:14:40 +0900
+ id 1nelKj-002psG-6N; Wed, 13 Apr 2022 22:19:33 +0000
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+ by mailout.nyi.internal (Postfix) with ESMTP id 928445C029A;
+ Wed, 13 Apr 2022 18:19:26 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute2.internal (MEProxy); Wed, 13 Apr 2022 18:19:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
+ cc:cc:content-transfer-encoding:date:date:from:from:in-reply-to
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm2; t=1649888366; x=1649974766; bh=DL
+ jgBEQ1+1vq/nXxADtpNaSm7RE9fz3MOj06zwzz+gk=; b=tGxVfhfS18dInH3xbp
+ 5sviT7voXBlvIfsRKOFqahGWxhmQ0I45KaxXfmZrHrvHAI05e1mxWLpAcwrTVpE9
+ l3a2QvebuXT9NEDuEezPLQ0nB722xgb3y6501RJVOo69DNmP+9Dg1wGY1oDbnRBZ
+ zMn6SHaJT4E5Pwvjqixxh2K80zMdS/3Z2etec2NBayR/DE/AEbZFBI1Ao+u5fP4w
+ OBrC0QKxFuerB3CDqoNN6A4srQ9s3g4mCvmgDhm6/yXANvKt0ZRc4U2CrgWi1FQN
+ u40mCxuovnafzAF0kapGjr/WOtXT775Rk3z7LsVDMCUAVkLAgkYLmKvoKATXJ2WN
+ J3zw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+ 1649888366; x=1649974766; bh=DLjgBEQ1+1vq/nXxADtpNaSm7RE9fz3MOj0
+ 6zwzz+gk=; b=eURCH2ejrVMvU8WXiCnab0H5zIEDr6JEIyVuXiSKv3CudCl48P6
+ 0LwWY57vou4hK7qbUaxAk4P31aGRd8p0CgKQg1QHgk/wHBFIasUqKwLNJVREf4uy
+ 0YYkediuIGp29mM79xkN6LbUMANoKLMeAvdeTI/S5IKxhDQjo3XXhnyMGpblWpwS
+ Q8JRniJQn0OzYPhuxUX5zpT0dtnE+8aehBaypiJns0b+coPG2yPqEvXQlp8437W/
+ vaAJAP2z49t4RFJg8Hvx2QaN9F9pBx5PdLQ5GY2dFr2wxwm1Gmf9peRg70tWviNo
+ N0MkLfh9OLevW1TeGUAyQZhc9iq4W9HFgLA==
+X-ME-Sender: <xms:bkxXYvc_gAHJKat4FMaoHz7qVPTSj6E3yXq1ABgighFcSYNoj8BgMQ>
+ <xme:bkxXYlNCvU511UW8JQqhqpxJBqQ5t83JQqLpBtM96VCWhsrknRn7xaGKIoI7lDhmS
+ uduXr9purq56CUYnA>
+X-ME-Received: <xmr:bkxXYognEKYQAGXN942R7VtmUuRJWYHgoyDThqL0TzCYzdLh_weIDeMcb94wYRQTHpgYAnMxywao8ZCzHKii8F4tm37K7RYW8b2rteCNZkz-s3RI26KXSBMDXhbKbXfcdmJSoA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudelvddguddtucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhephffvufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpefurghmuhgv
+ lhcujfholhhlrghnugcuoehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhgqeenucggtf
+ frrghtthgvrhhnpeelueelgeettdfggfeuffevkefhuddtteeigfevhfdtffdtjefgteeg
+ leeggedvudenucffohhmrghinhepuggvvhhitggvthhrvggvrdhorhhgnecuvehluhhsth
+ gvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepshgrmhhuvghlsehshhho
+ lhhlrghnugdrohhrgh
+X-ME-Proxy: <xmx:bkxXYg9xqN6_BuvO1Am-faxh7r-7UcMd9zJPebU-esVS0ZabuEj-nw>
+ <xmx:bkxXYrthY5td_qXNpJ4L6ecrenxLGs1vCmE725IV6kLyT0dKGaAgTA>
+ <xmx:bkxXYvE6aTYH850TctEpf2-ikCMTl__sp8a58JQIqjweKkBq-sXKOA>
+ <xmx:bkxXYsvXKGDpmiCCd91N0aQRyvHkhWjD0T_vPAFHx5PjBgUDHnsRoQ>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 13 Apr 2022 18:19:25 -0400 (EDT)
+From: Samuel Holland <samuel@sholland.org>
+To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+ Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org
+Cc: linux-rockchip@lists.infradead.org,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Ond=C5=99ej=20Jirman?= <x@xff.cz>,
+ Andreas Kemnade <andreas@kemnade.info>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, Geert Uytterhoeven <geert@linux-m68k.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Liang Chen <cl@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Sam Ravnborg <sam@ravnborg.org>, Thierry Reding <thierry.reding@gmail.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [RFC PATCH 02/16] dt-bindings: display: rockchip: Add EBC binding
+Date: Wed, 13 Apr 2022 17:19:02 -0500
+Message-Id: <20220413221916.50995-3-samuel@sholland.org>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220413221916.50995-1-samuel@sholland.org>
+References: <20220413221916.50995-1-samuel@sholland.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [RFC PATCH 2/2] PM / devfreq: rk3399_dmc: Block PMU during
- transitions
-Content-Language: en-US
-To: Brian Norris <briannorris@chromium.org>,
- MyungJoo Ham <myungjoo.ham@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>,
- linux-pm@vger.kernel.org, Doug Anderson <dianders@chromium.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-References: <20220406014842.2771799-1-briannorris@chromium.org>
- <20220405184816.RFC.2.I2d73b403944f0b8b5871a77585b73f31ccc62999@changeid>
-From: Chanwoo Choi <cwchoi00@gmail.com>
-In-Reply-To: <20220405184816.RFC.2.I2d73b403944f0b8b5871a77585b73f31ccc62999@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_151446_644409_3B01D588 
-X-CRM114-Status: GOOD (  21.00  )
+X-CRM114-CacheID: sfid-20220413_151929_349259_E6F519FF 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,73 +111,142 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Brian,
+The Rockchip E-Book Controller (EBC) is a controller for Electrophoretic
+Displays (EPDs). It is self-contained; it does not interact directly
+with the VOP or the RGA.
 
-On 22. 4. 6. 10:48, Brian Norris wrote:
-> See the previous patch ("soc: rockchip: power-domain: Manage resource
-> conflicts with firmware") for a thorough explanation of the conflicts.
-> While ARM Trusted Firmware may be modifying memory controller and
-> power-domain states, we need to block the kernel's power-domain driver.
-> 
-> If the power-domain driver is disabled, there is no resource conflict
-> and this becomes a no-op.
-> 
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
-> ---
-> 
->   drivers/devfreq/rk3399_dmc.c | 13 +++++++++++++
->   1 file changed, 13 insertions(+)
-> 
-> diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
-> index e494d1497d60..daff40702615 100644
-> --- a/drivers/devfreq/rk3399_dmc.c
-> +++ b/drivers/devfreq/rk3399_dmc.c
-> @@ -21,6 +21,7 @@
->   #include <linux/rwsem.h>
->   #include <linux/suspend.h>
->   
-> +#include <soc/rockchip/pm_domains.h>
->   #include <soc/rockchip/rk3399_grf.h>
->   #include <soc/rockchip/rockchip_sip.h>
->   
-> @@ -93,6 +94,16 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
->   
->   	mutex_lock(&dmcfreq->lock);
->   
-> +	/*
-> +	 * Ensure power-domain transitions don't interfere with ARM Trusted
-> +	 * Firmware power-domain idling.
-> +	 */
-> +	err = rockchip_pmu_block();
-> +	if (err) {
-> +		dev_err(dev, "Failed to block PMU: %d\n", err);
-> +		goto out_unlock;
-> +	}
-> +
->   	/*
->   	 * Some idle parameters may be based on the DDR controller clock, which
->   	 * is half of the DDR frequency.
-> @@ -198,6 +209,8 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
->   	dmcfreq->volt = target_volt;
->   
->   out:
-> +	rockchip_pmu_unblock();
-> +out_unlock:
->   	mutex_unlock(&dmcfreq->lock);
->   	return err;
->   }
+While two of the regulator consumers here actually power the display
+panel, not the EBC hardware, they are consumed here because they are
+only needed during display refreshes. They do not match the normal
+panel prepare/enable lifecycle.
 
-Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
+Signed-off-by: Samuel Holland <samuel@sholland.org>
+---
 
+ .../display/rockchip/rockchip,rk3568-ebc.yaml | 106 ++++++++++++++++++
+ 1 file changed, 106 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,rk3568-ebc.yaml
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3568-ebc.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3568-ebc.yaml
+new file mode 100644
+index 000000000000..957ca874ab02
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3568-ebc.yaml
+@@ -0,0 +1,106 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/rockchip/rockchip,rk3568-ebc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip SoC E-Book Controller (EBC)
++
++description:
++  Rockchip EBC is a controller for Electrophoretic Displays (EPDs).
++
++maintainers:
++  - Samuel Holland <samuel@sholland.org>
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3568-ebc
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: AHB register clock
++      - description: Pixel clock
++
++  clock-names:
++    items:
++      - const: hclk
++      - const: dclk
++
++  resets:
++    items:
++      - description: hclk domain reset
++      - description: dclk domain reset
++
++  reset-names:
++    items:
++      - const: hclk
++      - const: dclk
++
++  io-channels:
++    maxItems: 1
++    description: I/O channel for panel temperature measurement
++
++  panel-supply:
++    description: Regulator supplying the panel's logic voltage
++
++  power-domains:
++    maxItems: 1
++
++  vcom-supply:
++    description: Regulator supplying the panel's compensation voltage
++
++  vdrive-supply:
++    description: Regulator supplying the panel's gate and source drivers
++
++  port:
++    $ref: /schemas/graph.yaml#/properties/port
++    description: OF graph port for the attached display panel
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - resets
++  - reset-names
++  - power-domains
++  - panel-supply
++  - vcom-supply
++  - vdrive-supply
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3568-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/rk3568-power.h>
++
++    ebc: ebc@fdec0000 {
++      compatible = "rockchip,rk3568-ebc";
++      reg = <0x0 0xfdec0000 0x0 0x5000>;
++      interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&cru HCLK_EBC>, <&cru DCLK_EBC>;
++      clock-names = "hclk", "dclk";
++      resets = <&cru SRST_H_EBC>, <&cru SRST_D_EBC>;
++      reset-names = "hclk", "dclk";
++      power-domains = <&power RK3568_PD_RGA>;
++
++      panel-supply = <&v3p3>;
++      vcom-supply = <&vcom>;
++      vdrive-supply = <&vdrive>;
++
++      port {
++        ebc_out_panel: endpoint {
++          remote-endpoint = <&panel_in_ebc>;
++        };
++      };
++    };
 -- 
-Best Regards,
-Samsung Electronics
-Chanwoo Choi
+2.35.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
