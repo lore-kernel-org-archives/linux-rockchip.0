@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9347C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 22:27:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CF7EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 22:28:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S+noCwBXtOzSKQHje/PAzJVtqRezFoF3ijUIp46Q+cQ=; b=roqbf2BKxPvAYD
-	Uzf3whigeKleZqCY+cy1hCVHFCMHMFAuIVrvwb5qvniz0FX3GL/+PnfkH+LnJAj6Gl+snyu/9EDqc
-	CP5mBPoLgiNtQla6j7Ybd6vHVNltn8oS+q3aJxxOocL5IoVEZPEnvfnWCsdp31XUYl8UitYyNr8l1
-	fRqjc2CGbrl8MwlBbH8jK3EZAChl88Vm0vAP4wVRVj6nzpN1Tj+XhHvEEdEY+DUWTNgnFWObdxtzL
-	Y5P4sdlniwo59EIFxfMS34pfdiiPMJvDYtdX8FbzWYrTvJNwyUeIflo8bEMLZ4CYEnJRnWBFPYjoG
-	yWyNsioFOdQfZOLpsY4w==;
+	List-Owner; bh=W90iI1ZS8oUqr69J4qajvCntcuevt9yBoJ0s/5o+Dlk=; b=n9xA87lIq90HIO
+	JU5hqXPCbyuBr43DKt2UpxsdPw2ImOMIJnA4N1NOZJ96cKwj2UAe9pASBvUXQEz0LDq6CJ9J4i47Q
+	z3fd0mXbTceZ4sDspoqEq/7uhE5BDHgTig+WRzCg+OGvfjqCVTkc1F9bAp3CmzGgxJzmilpbOuzjg
+	olufkF0onmvqXmT1VLTLkdNhs198rb4PcEmfC/G7bD5ydrpoh/RUPGZ/pZBPGWdDKn0M6zGYUjw6C
+	9p0eYKMLWyN9w17EV1aySqremr/vG2gv9LSkHqapbrIqCoHt1VV06Ers0VqYUuPVtyZwfGABrMHma
+	/2jC1MsZBN3WrHVp9bww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nelSm-002tnn-51; Wed, 13 Apr 2022 22:27:48 +0000
+	id 1nelTT-002u5q-0m; Wed, 13 Apr 2022 22:28:31 +0000
 Received: from out5-smtp.messagingengine.com ([66.111.4.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nelL4-002q5V-FC; Wed, 13 Apr 2022 22:19:56 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id C2EC85C0347;
- Wed, 13 Apr 2022 18:19:49 -0400 (EDT)
+ id 1nelL6-002q6Q-Cn; Wed, 13 Apr 2022 22:19:57 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id B5DB05C029F;
+ Wed, 13 Apr 2022 18:19:51 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Wed, 13 Apr 2022 18:19:49 -0400
+ by compute4.internal (MEProxy); Wed, 13 Apr 2022 18:19:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
  cc:cc:content-transfer-encoding:date:date:from:from:in-reply-to
  :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm2; t=1649888389; x=1649974789; bh=Ix
- LBprYD2crzgvrunvWymMhkE+BNBrBvN21E3wbwSFs=; b=F0pVSeeJEeN1Z2J7WT
- 2sMD/Ww3ziFwKcYXwvLoicHMtLPYxUv98wFKu8AoOtsK00YNmglvA8b++NZ/DxLg
- OtcCt2AZjZfa/qVRgVDqwPyCOFuKEeKof/AiOp8kgUnZof16PdUbH+X/t5gmHLuv
- s6p7OrBqffK+IT8QVY32iD+oyVNWFnkma9/q9mLy4sZq/IuukJmv7IhPS09/j/Mq
- cJbaT3w2lH9pQPmThQhf4ir3Ka5IL0rK+uc7DQkx7n/8OajV8Y4TAOzEFPjheBdo
- G0Tum5uKE+RSsr3yr/OAFoKtlSMeiGpTqvndwMHSWzGURbvbT2OKxGRzhQottMaF
- 2IBg==
+ :subject:subject:to:to; s=fm2; t=1649888391; x=1649974791; bh=r6
+ 8Xnm3H33EQgdbz7LYraAskJdNQ1ivO7aFZEAoIKAI=; b=i1JMYe+VYvdvr43zkv
+ rDuNGZ58Ro3xDHMyKyBN4OnEAlxiHGLPtCA4+O4bdMEUCj14lZE8046cnZCJ9jnD
+ 8DLeXDbxxpqVN2xqdlD4cKBi3N/KFWK+l2jmNrrj3TD2wIAfJcE+PH1IyjO7KMkA
+ 5h+nsE12K6BGbwmLolsUNvj7e1/0ZVxxEcd2LrhvLve6b2Hd2ZGPkb10J8DTfg1N
+ n/4Il/14MsUqiF4LmQ15q2tSfeI+3eEab/HWqd5/OY5Bttbjkf7zkhJtr37YIF+d
+ 1/S+sHJdKWT9rxKu/K2a0xb/s1bpv5XsegcU6zMXBylPARz6LyaWebpxLNBunYxI
+ 0qYQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
  :from:from:in-reply-to:in-reply-to:message-id:mime-version
  :references:reply-to:sender:subject:subject:to:to:x-me-proxy
  :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
- 1649888389; x=1649974789; bh=IxLBprYD2crzgvrunvWymMhkE+BNBrBvN21
- E3wbwSFs=; b=WHBYwoeJdEcfsRY7exrnwpuzazuw+st4toSxu0pPTvq2UaKL/+a
- hyzHJM1H4mohKKXkkyM0NOygsRl1XqqIGjwSX7Jj5s7F8R58wWbVSQye0psNMAnd
- +U7TZYi053Tk13RPWLCP/EqiahCyQteZk+dB3FMgOhzQ3nfTI1DHcjEUndB7tbza
- reNqUjwq8EmnHJpDPGZYg04pAnFYH8oBlvJACrrlB3eoDI8RjURVYckVxKwQPe1H
- ziPmtc1FZTC5exk5RP9I7iiW2VzYsW4Q40QH4pm7wii4LsJdUuXTsPJY5PiYVNAZ
- vtj8D14l++mzYOgkQ6DYfgEK22Qc3O3sphQ==
-X-ME-Sender: <xms:hUxXYpviu3SplvEBuzVQzCxj24wSzkkb3cPrkmcMqquTXkZzBm2N2Q>
- <xme:hUxXYifacBrxLBK_zklbk_BlLX8F6du3M0-ha3STfxLuffbb80Wrkws23DwXeIsRv
- JTm9x19gI6E254Scg>
-X-ME-Received: <xmr:hUxXYsxEYIs_KwvGV7BKkf5udtjZFV8QOkleoGfeKBalk-OqfXFOjVM76Te_-kWXcVM5apxcizGh9ybnUlOpj86p4n73TQF5GMCmMy0gmNpVoYZN-j0RH7x0DK-y2HuAkG2Scg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudelvddguddtucetufdoteggodetrfdotf
+ 1649888391; x=1649974791; bh=r68Xnm3H33EQgdbz7LYraAskJdNQ1ivO7aF
+ ZEAoIKAI=; b=oJmZjkvbs64pHexVyL74MFyo9GHxVwHCiDfNn4xRbkQq4HDfreq
+ QStpQ8heF6cB14ziPQPfc/GPgN0wbD6qAgc8KvyZjnTrDvsTtUFzBqRiKW81EBu1
+ 7K2TUQ8fm84JxB/xtYY2MvqGO3ln2axczz8UPpfY9/kNAb7Zw3hl9HyYGFK1U+lD
+ 2RXkZTz9/V3qRhIRgvqtU/VPh6ZWwm34BSY5LkJn7y9cw5IwT08i7kHCgzmZj8oD
+ QecYDvudLylKTpyEDTqNAIpHTwMelF+BocUpWdFy1MT+BPSQsEJrx1ew9ksbQS0Y
+ akqFdJqTkcpdv7usqoKqzH4oLDWqxd0mNTg==
+X-ME-Sender: <xms:h0xXYr_0kS_F0wycl6-5Oe5zb3iylMP3AjT5qD2-O-CDdemnxZUqPg>
+ <xme:h0xXYnvrEu3BVvUcrngelESvvNLqMaJ94oUD81ZWqQNT0dWLoNEgk5_LsTKQMvdyp
+ vmJEmrSB5VtgDm9tA>
+X-ME-Received: <xmr:h0xXYpAdY6cBxnSldvsjmitlYMaIIvBgkB21yxcYqv9qLombZaeMJMp9uuJHQYFP522krfsjECkdKeY3VnSsviy7u9nuzb1kG5JmdQLGm3Ww5H0u1Y34WmKMSZ0Te3pCLIiuKw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudelvddgtdelucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
  cujfgurhephffvufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpefurghmuhgv
  lhcujfholhhlrghnugcuoehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhgqeenucggtf
- frrghtthgvrhhnpefhvddvjeevleduteevveeiieetudejheetgeevgefhveehtdegieet
- jeevgeduveenucffohhmrghinhepphhinhgvieegrdhorhhgnecuvehluhhsthgvrhfuih
- iivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepshgrmhhuvghlsehshhholhhlrghn
- ugdrohhrgh
-X-ME-Proxy: <xmx:hUxXYgP_v27Gd3MKzFtDqt2kVC3JGeqelAOByojBEsBMJoSpO9ibXQ>
- <xmx:hUxXYp8K5JPfkOl_4YkzTZKl4Cd_UvJ8PGSXBD5eSAyMR-G6JSj4dQ>
- <xmx:hUxXYgX8HQdle_OqA-eBsXLQqvGcAfEgQJ9OIR6qsKmz0rNZ6C9s8A>
- <xmx:hUxXYp_pyOQeLmYo3hEfuOCGDXR-rM59OZmdIQ4to7qpz5SM2bT-xw>
+ frrghtthgvrhhnpeduhfejfedvhffgfeehtefghfeiiefgfeehgfdvvdevfeegjeehjedv
+ gfejheeuieenucevlhhushhtvghrufhiiigvpedunecurfgrrhgrmhepmhgrihhlfhhroh
+ hmpehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhg
+X-ME-Proxy: <xmx:h0xXYndiZrcC_2nDLoKdaqIpEktczpH-hXSLG887NJidp0Dsd4RfVQ>
+ <xmx:h0xXYgObBkd1TDUaMvi5vg8La8vBp12YPY5uVC65iPvkKxi5cBq_cQ>
+ <xmx:h0xXYplOvy4QEZxBl-r2Ea6WdGZtASpsnB1gqNovxZxul-bTqK8VaA>
+ <xmx:h0xXYvM0kgTVrC8H6SQTFQi8hJNrZQEQUyJIaApc1MO8MsBDCEndPg>
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 13 Apr 2022 18:19:48 -0400 (EDT)
+ 13 Apr 2022 18:19:50 -0400 (EDT)
 From: Samuel Holland <samuel@sholland.org>
 To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org
@@ -89,16 +88,17 @@ Cc: linux-rockchip@lists.infradead.org,
  Sam Ravnborg <sam@ravnborg.org>, Thierry Reding <thierry.reding@gmail.com>,
  Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [RFC PATCH 14/16] drm/panel-simple: Add eInk ED103TC2
-Date: Wed, 13 Apr 2022 17:19:14 -0500
-Message-Id: <20220413221916.50995-15-samuel@sholland.org>
+Subject: [RFC PATCH 15/16] arm64: dts: rockchip: rk356x: Add EBC node
+Date: Wed, 13 Apr 2022 17:19:15 -0500
+Message-Id: <20220413221916.50995-16-samuel@sholland.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220413221916.50995-1-samuel@sholland.org>
 References: <20220413221916.50995-1-samuel@sholland.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_151950_656723_68D7FFA5 
-X-CRM114-Status: GOOD (  14.05  )
+X-CRM114-CacheID: sfid-20220413_151952_573450_41F2352F 
+X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,86 +116,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-ED103TC2 is a 10.3" 1872x1404 eInk panel which supports up to 16 levels
-of grayscale and an 85 Hz frame rate. The timings and polarities here
-were taken from the manufacturer's datasheet.
+The RK356x SoCs contain an EBC. Add its node.
 
-Since this panel is an electrophoretic display (EPD), the color depth is
-independent from the bus width. Instead, it is largely determined by the
-number of frames in the selected waveform. Each pixel uses two parallel
-data lines to specify one of only three states each frame: positive,
-negative, or no voltage.
-
-This specific panel has a 16-bit data bus, allowing it to update 8
-pixels during each source driver (horizontal) clock cycle. As a result,
-the horizontal timings given in the datasheet were all multiplied by 8
-to convert the units from clock cycles to pixels.
-
-Since the 16-bit data bus is double the width of the usual 8-bit bus
-used by eInk panels, the source driver clock will be half the usual
-frequency. This is signified by the DRM_MODE_FLAG_CLKDIV2 flag.
-
-The hskew parameter provides the spacing between the horizontal sync
-puls and the gate driver (vertical) clock pulse. This spacing is
-symmetrical on both sides, so it can be used to compute the gate
-driver clock pulse width.
-
-Datasheet: https://files.pine64.org/doc/quartz64/Eink%20P-511-828-V1_ED103TC2%20Formal%20Spec%20V1.0_20190514.pdf
 Signed-off-by: Samuel Holland <samuel@sholland.org>
 ---
 
- drivers/gpu/drm/panel/panel-simple.c | 31 ++++++++++++++++++++++++++++
- 1 file changed, 31 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-diff --git a/drivers/gpu/drm/panel/panel-simple.c b/drivers/gpu/drm/panel/panel-simple.c
-index a34f4198a534..c6b104ba01ee 100644
---- a/drivers/gpu/drm/panel/panel-simple.c
-+++ b/drivers/gpu/drm/panel/panel-simple.c
-@@ -1686,6 +1686,34 @@ static const struct panel_desc edt_etmv570g2dhu = {
- 	.connector_type = DRM_MODE_CONNECTOR_DPI,
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index 7cdef800cb3c..58c26f240af0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -508,6 +508,20 @@ gpu: gpu@fde60000 {
+ 		status = "disabled";
+ 	};
  
-+static const struct drm_display_mode eink_ed103tc2_mode = {
-+	.clock = 266693,
-+	.hdisplay = 1872,
-+	.hsync_start = 1872 + 184,
-+	.hsync_end = 1872 + 184 + 88,
-+	.htotal = 1872 + 184 + 88 + 64,
-+	.hskew = 136,
-+	.vdisplay = 1404,
-+	.vsync_start = 1404 + 12,
-+	.vsync_end = 1404 + 12 + 1,
-+	.vtotal = 1404 + 12 + 1 + 4,
-+	.flags = DRM_MODE_FLAG_PHSYNC | DRM_MODE_FLAG_NVSYNC |
-+		 DRM_MODE_FLAG_HSKEW | DRM_MODE_FLAG_CLKDIV2,
-+};
++	ebc: ebc@fdec0000 {
++		compatible = "rockchip,rk3568-ebc";
++		reg = <0x0 0xfdec0000 0x0 0x5000>;
++		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru HCLK_EBC>, <&cru DCLK_EBC>;
++		clock-names = "hclk", "dclk";
++		pinctrl-0 = <&ebc_pins>;
++		pinctrl-names = "default";
++		power-domains = <&power RK3568_PD_RGA>;
++		resets = <&cru SRST_H_EBC>, <&cru SRST_D_EBC>;
++		reset-names = "hclk", "dclk";
++		status = "disabled";
++	};
 +
-+static const struct panel_desc eink_ed103tc2 = {
-+	.modes = &eink_ed103tc2_mode,
-+	.num_modes = 1,
-+	.bpc = 4,
-+	.size = {
-+		.width = 210,
-+		.height = 157,
-+	},
-+	.bus_format = MEDIA_BUS_FMT_FIXED,
-+	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_SAMPLE_POSEDGE,
-+	.connector_type = DRM_MODE_CONNECTOR_DPI,
-+};
-+
- static const struct display_timing eink_vb3300_kca_timing = {
- 	.pixelclock = { 40000000, 40000000, 40000000 },
- 	.hactive = { 334, 334, 334 },
-@@ -3807,6 +3835,9 @@ static const struct of_device_id platform_of_match[] = {
- 	}, {
- 		.compatible = "edt,etmv570g2dhu",
- 		.data = &edt_etmv570g2dhu,
-+	}, {
-+		.compatible = "eink,ed103tc2",
-+		.data = &eink_ed103tc2,
- 	}, {
- 		.compatible = "eink,vb3300-kca",
- 		.data = &eink_vb3300_kca,
+ 	sdmmc2: mmc@fe000000 {
+ 		compatible = "rockchip,rk3568-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x0 0xfe000000 0x0 0x4000>;
 -- 
 2.35.1
 
