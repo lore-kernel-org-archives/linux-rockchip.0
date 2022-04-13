@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4383C4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 22:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9C90C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 22:27:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u60aRnGuCYu6Ddf8a4g1ls6rK5fByvLZqDVNk6KXwxk=; b=mqPFyAlo90VnML
-	71RRRMUI4FXKIiQMqcTEuObtUWKa/CDQNZXjkIendp213Mqxkqb1xt7iQ3qyUrtEdxCJ70V5/Eawk
-	oXfAChmal0NV78t97i+UzdgDoijrX0eYTx/LBPyymA/DwnqEuq8xWrZvpGbczf6tP3NDgxlX+ElHI
-	zURKEmK7Zp8Cb8gchSGJZgQxGEWyjrhWFdsO/+0WCbTI0G4+xcg3PVQLydSiZ81rcb5IQRxaipQti
-	xjZW7d3QIavhrDHSr/tZtrCPGQOB9N/Tpb1hXCCcdTynLDuDRzkLiWkWCq5ziFp7tgIlssKrsg+ga
-	lX/8gPWX0hQStx6ZlxWw==;
+	List-Owner; bh=XvGDrrG3t4Y8RE4eLVQelV22nCBvB5yYPt+u17BCTDQ=; b=01CZuuTrjhWh3D
+	/PsuAVAG4o3uupwsY1oSgMzmGZTaP/VE5MEe7HHcpJWqLgvhEJ9nRZvGdEDfdlBqJzdWGfQIRVxc+
+	GaMk471ST/qkkAJxPGfaw1kfOPqGny8Gr4I6ejXRSkLJH1Gy6zDlAnKBbUa4AoZYXP8I+Zkrl5zmr
+	MLqAgPT+qGdO1w4jqwOke+wlStehj3v9qZwXbRlT+7JM1K5btgn5FTTjHgZuewaADf1AIsj3EC2Kp
+	qOSYdvGqCuK6/zVqG/YJmJxLzjiqSU7XD/sJ4pVViwHSCfzkNwHcFjvRhlnTxVdSwzZjBGqCB/cMp
+	V7l1wIffusmvYtkVdC0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nelQV-002skm-2l; Wed, 13 Apr 2022 22:25:27 +0000
+	id 1nelRw-002tR0-R9; Wed, 13 Apr 2022 22:26:56 +0000
 Received: from out5-smtp.messagingengine.com ([66.111.4.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nelKy-002q2d-Ip; Wed, 13 Apr 2022 22:19:51 +0000
+ id 1nelL0-002q3V-Ik; Wed, 13 Apr 2022 22:19:53 +0000
 Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailout.nyi.internal (Postfix) with ESMTP id DA9EB5C0340;
- Wed, 13 Apr 2022 18:19:43 -0400 (EDT)
+ by mailout.nyi.internal (Postfix) with ESMTP id D15815C033E;
+ Wed, 13 Apr 2022 18:19:45 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Wed, 13 Apr 2022 18:19:43 -0400
+ by compute5.internal (MEProxy); Wed, 13 Apr 2022 18:19:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
  cc:cc:content-transfer-encoding:date:date:from:from:in-reply-to
  :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm2; t=1649888383; x=1649974783; bh=Qt
- Ox4T0HCpftqJcX0VmKkuT5uvDIfTobCkM4Jig4EYE=; b=XDrAt+uvDf0VTBvnBx
- xV6fY/r43+56hVhxGIinMCoZBALz9K+MTpsGGOGYZcgk6X8fxFKUdcKfo7hvoAw3
- rlmpRXK+IAxkbSMnxfTd5+xXfl+VKP+V2S4O6kLq/ucyEQM3VfupIPIbBFd9hLcV
- ZPMPME1EXUQFiCr7H4thhG4/vKr/pnP9lQ5WurO3wV5w3bhhxKYZj0yAxN2DZzwT
- 734mWh478oLDkTKIL4oh18DtNtf7b+LmWjZeUnJg5wzMJZCOJGrpn6KbsQ/Z545+
- xSsE2wb6d1r/o65h9a8LVKYox9AM16nKNg8n6vcf8teN9UjOhVNU2t+c/tlrhQxo
- /N0A==
+ :subject:subject:to:to; s=fm2; t=1649888385; x=1649974785; bh=yM
+ jDNZk22ts1QSeZuHA3iHwk+1FDAWv58BJ1pfqsy94=; b=whdq+uqQW2un1gyfjq
+ QH/YN4888u9WajBX6vFAnjzIXIm/0H3dnT7DmqEnv87XNVxuQAICx/F0JRuxFrvd
+ jBoSJYdsPUeZ3VtIuzLd7+W5IC2xlLLWIDR30BHtuL6zjv5ydSTpOzE7Czl3L/QH
+ V90CyPj8z5UYaSPfAHCySnGFxjtfxBrHaXUv74TwKHQmynfgrlCWE4JZHynJbUeH
+ gifbwQA52NroLRoKZqU+rCtB6va60KonAfmTE3ohwg36qb3Xsjjt90XwmMRFpdIJ
+ 88yXZ8u57UFZnxNQhEwLraXeT4/bjSA3xsXeV3gyVMvB7ttGj7bse4a9xYVKWaRR
+ hy5g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
  :from:from:in-reply-to:in-reply-to:message-id:mime-version
  :references:reply-to:sender:subject:subject:to:to:x-me-proxy
  :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
- 1649888383; x=1649974783; bh=QtOx4T0HCpftqJcX0VmKkuT5uvDIfTobCkM
- 4Jig4EYE=; b=bZiOfd0iJLPlzQ2/ZVIL+ux8BJZtFvN7R7gXr9xO4tjFQReZG6S
- PgjGn2fxUzoxC4EUae30tFI2E3IIlAJjwYk204JoEi8fOaHmUYXaVarSrzf4o1Lk
- WuV6x7ne4j1UEmh/ke9qXMgHI1xMjhChma1ajoNjlDIXfx0oNu3ylhRnU/frmSXf
- +YyXpunm+zqpYIyFdAE7Ou1dKKfBWdWuJIxq81ihfgbEh3fvkehvdFA5X/LmuswJ
- wBIlg5Tjgs5+1kezxWtkNFRGBxwuo7fRQUeT2lDBmlJqXVWvjYkfgkNz/C0tbg6b
- YH1bkCZVzhPu3XJtnw2OAMA3UMV8iBJi0Jg==
-X-ME-Sender: <xms:f0xXYozxT0hPaWizky0griKB_VlXctdoFZPmKXktbSTS00WIOESg7g>
- <xme:f0xXYsS8E_rmV4rffQTp9RbNdY0ZHtZypbvnQ0Klyp74pIpOHPhPR9UqUJQUEa8iO
- vGngG1dNdSJfIP81Q>
-X-ME-Received: <xmr:f0xXYqXPDyooGXLL3izYL36jOXAy7VLm7Akyfe_kjvotrLlZRlijp2sp1XGpJoXvnP3w5xWGEDXigRSd8xsjEJXtiIlVdNUJ74-QTV_cHbLnPv6a_xHJDQo0ndzQdXa6S0ezAg>
+ 1649888385; x=1649974785; bh=yMjDNZk22ts1QSeZuHA3iHwk+1FDAWv58BJ
+ 1pfqsy94=; b=o/8Pde0ihVf9vakWSJ1n68tyevicS+zcAaZm7XMY10IOCxXE/3k
+ po4pyR51AAUrVHwYmXCbHsyrMxJOQfmkwukTuGlIo6QbPXPrceg0K3/VD5R5H1oW
+ A9fkmmqGST3jlFXnqfEtq9CWDhz0FHG/0KtkRZsokjhNbKCxKxlN029jZyTJcPO4
+ L1XuIOZkPtNTI9GGBy2OtRtu6NaOhDu051UnsDAmJzfP6O2BIARGPw9REoFYlT2Q
+ Rg9GZ3+KiK0YlR5BhYR96LwzxvRzMNvyF3KBEviqET3TYoEbDqL5ZUTi4Zjymd7g
+ IpXOgxYuYM1gt4Zw43gmmnfJkpaRF+sfC8A==
+X-ME-Sender: <xms:gUxXYmlzzmd5E_pGapCyclHwlRi7EyOIlSvSfpgd4DO0QWEmUfjsIg>
+ <xme:gUxXYt2VWWmV0BCM14pETKtdijxEicp53B9w1vINterkFgexd_4a12NKPODrzHR-U
+ MQH3Xztx02q0jCWaA>
+X-ME-Received: <xmr:gUxXYkq15RwDtSiJ4r7PhexTbsaPKnXpKpMfuJBNsi60wJTPKPNsW8L48QZTsnkfmGXlMcjGPrZfsxt7Zv7TIwe4rYV_sAkWfqvaO8bVk2qrxe1pZRUAU1E1PCrivsDogpss0g>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudelvddgtdelucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
@@ -64,12 +64,12 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudelvddgtdelucetufdoteggod
  frrghtthgvrhhnpeduhfejfedvhffgfeehtefghfeiiefgfeehgfdvvdevfeegjeehjedv
  gfejheeuieenucevlhhushhtvghrufhiiigvpeehnecurfgrrhgrmhepmhgrihhlfhhroh
  hmpehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhg
-X-ME-Proxy: <xmx:f0xXYmgTSeSENXT-8jeQwdynlTukA9CaUiSbDuXcg3mDG6V1SfSc8A>
- <xmx:f0xXYqB3sCrTT5SxqqwkuaKXNsuYe3JQ0cL4OegqjoT59wLVJhf4fw>
- <xmx:f0xXYnJLA0FO0fajsgT8KYErBD0uizJmtIbwoCxLwfieAUlzy_3bnw>
- <xmx:f0xXYrxe6vxM-fF8bKXvEmDdLmBnxZnWBe_yDcz6F2dbz3-toB1_ew>
+X-ME-Proxy: <xmx:gUxXYqkYyj82kfXzZO_ipJbVaQadtaZuhrgheaTCrSJm0ZtWQEQiKA>
+ <xmx:gUxXYk0aREGZQ7JjmQeIqQZo7Yc5aauSviaP2xNvGiVMq-N2tnz0pA>
+ <xmx:gUxXYhv9gn-xAXk8Zcb5b1UfIM5ilXUky45x4-IbTBxp3i1GKxqLcw>
+ <xmx:gUxXYlW4NzoEqoBeR7b5ZHajiF0QBmyXDrOU_oYAI4K101oDvC1BTg>
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 13 Apr 2022 18:19:42 -0400 (EDT)
+ 13 Apr 2022 18:19:44 -0400 (EDT)
 From: Samuel Holland <samuel@sholland.org>
 To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org
@@ -88,17 +88,16 @@ Cc: linux-rockchip@lists.infradead.org,
  Sam Ravnborg <sam@ravnborg.org>, Thierry Reding <thierry.reding@gmail.com>,
  Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [RFC PATCH 11/16] drm/rockchip: ebc: Enable diff mode for partial
- refreshes
-Date: Wed, 13 Apr 2022 17:19:11 -0500
-Message-Id: <20220413221916.50995-12-samuel@sholland.org>
+Subject: [RFC PATCH 12/16] drm/rockchip: ebc: Add support for direct mode
+Date: Wed, 13 Apr 2022 17:19:12 -0500
+Message-Id: <20220413221916.50995-13-samuel@sholland.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220413221916.50995-1-samuel@sholland.org>
 References: <20220413221916.50995-1-samuel@sholland.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_151944_782195_39B7C8B2 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20220413_151946_766923_D1CFF8FD 
+X-CRM114-Status: GOOD (  19.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,47 +115,174 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some waveforms, such as GC16, cause the display to flash even when the
-previous and next pixel values are the same. This can be helpful,
-because it produces more consistent brightness, but usually it is more
-distracting. Add an option, enabled by default, for the hardware to
-ignore the LUT and always send zeroes for pixels with unchanged values.
+Currently, 3-window mode causes some artifacting. Until the cause is
+determined, provide an option to use direct mode instead. Direct mode
+does the waveform lookups in software, so it has much higher CPU usage.
+This limits the frame rate below the panel's ideal 85 Hz, so it leads to
+slightly lower brightness accuracy. On the other hand, it doesn't leave
+random lines all over the screen.
 
 Signed-off-by: Samuel Holland <samuel@sholland.org>
 ---
 
- drivers/gpu/drm/rockchip/rockchip_ebc.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_ebc.c | 97 ++++++++++++++++++++++---
+ 1 file changed, 88 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_ebc.c b/drivers/gpu/drm/rockchip/rockchip_ebc.c
-index c3e4b65bdee6..dcd8c8e8208e 100644
+index dcd8c8e8208e..93d689ff0933 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_ebc.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_ebc.c
-@@ -158,6 +158,10 @@ static int default_waveform = DRM_EPD_WF_GC16;
- module_param(default_waveform, int, 0644);
- MODULE_PARM_DESC(default_waveform, "waveform to use for display updates");
+@@ -162,6 +162,10 @@ static bool diff_mode = true;
+ module_param(diff_mode, bool, 0644);
+ MODULE_PARM_DESC(diff_mode, "only compute waveforms for changed pixels");
  
-+static bool diff_mode = true;
-+module_param(diff_mode, bool, 0644);
-+MODULE_PARM_DESC(diff_mode, "only compute waveforms for changed pixels");
++static bool direct_mode = true;
++module_param(direct_mode, bool, 0444);
++MODULE_PARM_DESC(direct_mode, "compute waveforms in software (software LUT)");
 +
  static bool skip_reset;
  module_param(skip_reset, bool, 0444);
  MODULE_PARM_DESC(skip_reset, "skip the initial display reset");
-@@ -582,11 +586,14 @@ static void rockchip_ebc_refresh(struct rockchip_ebc *ebc,
+@@ -370,6 +374,59 @@ static bool rockchip_ebc_schedule_area(struct list_head *areas,
+ 	return true;
+ }
+ 
++static void rockchip_ebc_blit_direct(const struct rockchip_ebc_ctx *ctx,
++				     u8 *dst, u8 phase,
++				     const struct drm_epd_lut *lut,
++				     const struct drm_rect *clip)
++{
++	const u32 *phase_lut = (const u32 *)lut->buf + 16 * phase;
++	unsigned int dst_pitch = ctx->phase_pitch / 4;
++	unsigned int src_pitch = ctx->gray4_pitch;
++	unsigned int x, y;
++	u8 *dst_line;
++	u32 src_line;
++
++	dst_line = dst + clip->y1 * dst_pitch + clip->x1 / 4;
++	src_line = clip->y1 * src_pitch + clip->x1 / 2;
++
++	for (y = clip->y1; y < clip->y2; y++) {
++		u32 src_offset = src_line;
++		u8 *dbuf = dst_line;
++
++		for (x = clip->x1; x < clip->x2; x += 4) {
++			u8 prev0 = ctx->prev[src_offset];
++			u8 next0 = ctx->next[src_offset++];
++			u8 prev1 = ctx->prev[src_offset];
++			u8 next1 = ctx->next[src_offset++];
++
++			/*
++			 * The LUT is 256 phases * 16 next * 16 previous levels.
++			 * Each value is two bits, so the last dimension neatly
++			 * fits in a 32-bit word.
++			 */
++			u8 data = ((phase_lut[next0 & 0xf] >> ((prev0 & 0xf) << 1)) & 0x3) << 0 |
++				  ((phase_lut[next0 >>  4] >> ((prev0 >>  4) << 1)) & 0x3) << 2 |
++				  ((phase_lut[next1 & 0xf] >> ((prev1 & 0xf) << 1)) & 0x3) << 4 |
++				  ((phase_lut[next1 >>  4] >> ((prev1 >>  4) << 1)) & 0x3) << 6;
++
++			/* Diff mode ignores pixels that did not change brightness. */
++			if (diff_mode) {
++				u8 mask = ((next0 ^ prev0) & 0x0f ? 0x03 : 0) |
++					  ((next0 ^ prev0) & 0xf0 ? 0x0c : 0) |
++					  ((next1 ^ prev1) & 0x0f ? 0x30 : 0) |
++					  ((next1 ^ prev1) & 0xf0 ? 0xc0 : 0);
++
++				data &= mask;
++			}
++
++			*dbuf++ = data;
++		}
++
++		dst_line += dst_pitch;
++		src_line += src_pitch;
++	}
++}
++
+ static void rockchip_ebc_blit_phase(const struct rockchip_ebc_ctx *ctx,
+ 				    u8 *dst, u8 phase,
+ 				    const struct drm_rect *clip)
+@@ -472,8 +529,13 @@ static void rockchip_ebc_partial_refresh(struct rockchip_ebc *ebc,
+ 			 * be neutral for every waveform.
+ 			 */
+ 			phase = frame_delta >= last_phase ? 0xff : frame_delta;
+-			rockchip_ebc_blit_phase(ctx, phase_buffer, phase,
+-						&area->clip);
++			if (direct_mode)
++				rockchip_ebc_blit_direct(ctx, phase_buffer,
++							 phase, &ebc->lut,
++							 &area->clip);
++			else
++				rockchip_ebc_blit_phase(ctx, phase_buffer,
++							phase, &area->clip);
+ 
+ 			/*
+ 			 * Copy ctx->next to ctx->prev after the last phase.
+@@ -513,7 +575,8 @@ static void rockchip_ebc_partial_refresh(struct rockchip_ebc *ebc,
+ 		if (list_empty(&areas))
+ 			break;
+ 
+-		regmap_write(ebc->regmap, EBC_WIN_MST2,
++		regmap_write(ebc->regmap,
++			     direct_mode ? EBC_WIN_MST0 : EBC_WIN_MST2,
+ 			     phase_handle);
+ 		regmap_write(ebc->regmap, EBC_CONFIG_DONE,
+ 			     EBC_CONFIG_DONE_REG_CONFIG_DONE);
+@@ -581,10 +644,12 @@ static void rockchip_ebc_refresh(struct rockchip_ebc *ebc,
+ 	/*
+ 	 * The hardware has a separate bit for each mode, with some priority
+ 	 * scheme between them. For clarity, only set one bit at a time.
++	 *
++	 * NOTE: In direct mode, no mode bits are set.
+ 	 */
+ 	if (global_refresh) {
  		dsp_ctrl |= EBC_DSP_CTRL_DSP_LUT_MODE;
- 	} else {
+-	} else {
++	} else if (!direct_mode) {
  		epd_ctrl |= EBC_EPD_CTRL_DSP_THREE_WIN_MODE;
-+		if (diff_mode)
-+			dsp_ctrl |= EBC_DSP_CTRL_DSP_DIFF_MODE;
- 	}
- 	regmap_update_bits(ebc->regmap, EBC_EPD_CTRL,
- 			   EBC_EPD_CTRL_DSP_THREE_WIN_MODE,
- 			   epd_ctrl);
- 	regmap_update_bits(ebc->regmap, EBC_DSP_CTRL,
-+			   EBC_DSP_CTRL_DSP_DIFF_MODE |
- 			   EBC_DSP_CTRL_DSP_LUT_MODE,
- 			   dsp_ctrl);
+ 		if (diff_mode)
+ 			dsp_ctrl |= EBC_DSP_CTRL_DSP_DIFF_MODE;
+@@ -647,8 +712,12 @@ static int rockchip_ebc_refresh_thread(void *data)
+ 		 */
+ 		memset(ctx->prev, 0xff, ctx->gray4_size);
+ 		memset(ctx->next, 0xff, ctx->gray4_size);
+-		memset(ctx->phase[0], 0xff, ctx->phase_size);
+-		memset(ctx->phase[1], 0xff, ctx->phase_size);
++		/*
++		 * NOTE: In direct mode, the phase buffers are repurposed for
++		 * source driver polarity data, where the no-op value is 0.
++		 */
++		memset(ctx->phase[0], direct_mode ? 0 : 0xff, ctx->phase_size);
++		memset(ctx->phase[1], direct_mode ? 0 : 0xff, ctx->phase_size);
+ 
+ 		/*
+ 		 * LUTs use both the old and the new pixel values as inputs.
+@@ -1048,12 +1117,22 @@ static void rockchip_ebc_plane_atomic_update(struct drm_plane *plane,
+ 		/* Convert from plane coordinates to CRTC coordinates. */
+ 		drm_rect_translate(dst_clip, translate_x, translate_y);
+ 
+-		/* Adjust the clips to always process full bytes (2 pixels). */
+-		adjust = dst_clip->x1 & 1;
++		/*
++		 * Adjust the clips to always process full bytes (2 pixels).
++		 *
++		 * NOTE: in direct mode, the minimum block size is 4 pixels.
++		 */
++		if (direct_mode)
++			adjust = dst_clip->x1 & 3;
++		else
++			adjust = dst_clip->x1 & 1;
+ 		dst_clip->x1 -= adjust;
+ 		src_clip.x1  -= adjust;
+ 
+-		adjust = dst_clip->x2 & 1;
++		if (direct_mode)
++			adjust = ((dst_clip->x2 + 3) ^ 3) & 3;
++		else
++			adjust = dst_clip->x2 & 1;
+ 		dst_clip->x2 += adjust;
+ 		src_clip.x2  += adjust;
  
 -- 
 2.35.1
