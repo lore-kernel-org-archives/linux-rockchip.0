@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1FCAC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 03:56:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 529AAC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 03:57:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DcqhHBRYPRM3yTOpWT9UI1KSAMdJMh6t8H+MzYBgalo=; b=XyqLNW/+NYDIjD
-	uF2dDVF04AZw8ewq6JY7hwTj218dEJlbA/lWij7GPU+dZTC+GddPhNK080nvT/qoPSw5ZJyNYO1si
-	ELH2RRpbeq5WQleoJhFn7HOkcT3lNZqoc9qzn9/IALnhusu1n8l9mI4qAaUT5sCH1ur4HdOsZ7dV9
-	QBQceBmw7rjsUr1Kut9fVdkXPZm/5/3Wo00kfVNVa7LifF0MT9d1/9S6cPQmSMamG6RfcjTbRjLj9
-	Q4nf9HP1Yr6xxhwksUlCoIYUIrlhCFLKfkGLd0w6HgKeRiOwm0tcVgBY2UTlUe8grnHe7AIbvesB9
-	c7wG8jmb917bZ2HifS0w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EhwM4iEUQ0++NYAQqy5oihcV/E2qt4Bx22MGs/vCnis=; b=nW4+G1iShNeSX3
+	Ac9nNoVH3bY9d2GzK/y0RNOwnE+Po/IXIE7RK/YG1Q/dIcAl93jkWPxdKxqzyfkv9wjR83qKRXLoq
+	huyXQVmW73SqjCn8pltcedKwx9AEbDu9SeMOjrj8hpCc82rB5YUDn1kKVRZqd5oMVGoHXvoBqrcsj
+	32J52Bfs/eh1SZID/26fSHed1SR7KdjQV1h7Fye0do9t4xsrcANPh49pEm5JPVf3uDLbh6sfVQ6N+
+	lca7x85e7WE7A4qlpFVsIhd+y2WTisPtl86rmMsFuB7uLg5TCgpYIP99DRw6KIVIcX1P8m5qIlMvF
+	KsMe/abdWLu6RrooH7Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neU7e-00Gdrn-FZ; Wed, 13 Apr 2022 03:56:50 +0000
+	id 1neU7t-00Ge14-Uq; Wed, 13 Apr 2022 03:57:05 +0000
 Received: from out2-smtp.messagingengine.com ([66.111.4.26])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neU7A-00GdcP-ID; Wed, 13 Apr 2022 03:56:22 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id A3DDB5C01EB;
- Tue, 12 Apr 2022 23:56:16 -0400 (EDT)
+ id 1neU7A-00GddU-II; Wed, 13 Apr 2022 03:56:23 +0000
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.nyi.internal (Postfix) with ESMTP id 7E8CD5C0219;
+ Tue, 12 Apr 2022 23:56:19 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
- by compute4.internal (MEProxy); Tue, 12 Apr 2022 23:56:16 -0400
+ by compute5.internal (MEProxy); Tue, 12 Apr 2022 23:56:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
  cc:cc:content-transfer-encoding:date:date:from:from:in-reply-to
- :message-id:mime-version:reply-to:sender:subject:subject:to:to;
- s=fm2; t=1649822176; x=1649908576; bh=fRGpBGjSVcQ6tiwpq8TxsX90l
- LVaDJpSbkukOVqXDTw=; b=L6S1WLsskO/cv/yisL4TmjWXOC31pQPCvtwkCVWCH
- 2xY1/4PxmaTD/x2ZYNM2417xgPAPSBO+iU/fDqK0LXpFEV1+LrWxJM8jRiNtkRa5
- sqlihAXp3oKqIm6gcrqvq9prxf+9vSO2h12UE41MOfWbt5mAs0IJpOCVEsGz6MS9
- 7hnBFv2eFhRZv/YTR5mNmIVtCZpWVwtBZFMoast3Hmljz2aMDoWdNO3O2J5h2f7B
- GS/5Kz2vOxP5gNEmFVNZ6Xn0YBrqans5hkHc/WOFLcjvKgHMQK11rZ85+h4UWU5q
- MpMykS2YbzryXxZXVkhUZpeT4aALDn4H+CYzg9mp1pSYQ==
+ :in-reply-to:message-id:mime-version:references:reply-to:sender
+ :subject:subject:to:to; s=fm2; t=1649822179; x=1649908579; bh=Fp
+ hEGeu2TKs5vrPfK6f45SzuLyN0QBXdvH1zTwhivJo=; b=baW0b+RpuNN2H2Vxi1
+ MMXpw+XcqM1AgkazBgfVkZRH9ktKe+N5FE7XeC6QmyQS0I9WEq5xm+UIw0dbU1nL
+ da4P7mBqCmCFgXxz6lVDcVSLJ17t3cW/wIl2ReOP64hrMPl8EjkcRy6Yef+fGBwg
+ o49/Oj0vHLzv9T5h3DtK28MbjHY3q9gHOge2SJPQLhZEUb2ciaTCY2wUlXFBNKYR
+ XZopA10DQyLLVnXTCtOuXbxyRpdq282+/7coM0Vsd9my9O4CnS+avvv2wjXiu1Pc
+ w8dtxapyWRAeVb7fJI4+mb6pTDUEnoJqiAnMqe8T4w3YI6g+VC/9yYqjmNJiiprT
+ qD5A==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :from:from:in-reply-to:message-id:mime-version:reply-to:sender
- :subject:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender
- :x-me-sender:x-sasl-enc; s=fm1; t=1649822176; x=1649908576; bh=f
- RGpBGjSVcQ6tiwpq8TxsX90lLVaDJpSbkukOVqXDTw=; b=wNIbUQ1sB2KJytUC0
- QhGpepVZPg57KFnRt/4BVqSszESDSWZ8eS2xJgfQHORgJO8vNwiVabolif38T3j9
- FpGcVAavQ1DHufGfpYM7w6Sgc/oH0FKVXd8Ts1HPGQIXu5MhTFdCiEVQDXr1x9g5
- G9EnkCh5i9lOyqwwi/H8zCG/U5LG2/Q8emq6f4+xR7Bwk18JVmru9c6JIW5xOnLo
- uJtU/gJT641x1M4nG6Lt16Htq2dzeRh/OI0xYdb9v3I/TWwSNA2gZoAWHN8ivHsi
- tJ2z9549u0QOVE8u3zxOF4t6ZLWbeDIJmcY8m+81TOx1f5fIrZ6CAK5/+HEFiXhi
- iJzPQ==
-X-ME-Sender: <xms:4ElWYvfsLLVHt7b1DzSaMS9ShVOR1hk2MRGwmmei5qMwxsv_jwIKKw>
- <xme:4ElWYlPrsG6LooY_Fs3smteeKm30GnrUaO6XwPSxEwLd77k0Sl8pJnTnKe-y587k5
- gHivXvMLXUYMi-UCQ>
-X-ME-Received: <xmr:4ElWYogcpfaIxKHwec1fnadco4S_jy6l1mGdax00yzD1SEkrN9TQxZeI1CmoKryp06Jq5M-syLd6SN44Y_2cQbWXfovCzYs1Z_1m2VcnlssrKzrrQzkZ-e8hqKTMB_CKkpAqBg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudekledgjeejucetufdoteggodetrfdotf
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+ 1649822179; x=1649908579; bh=FphEGeu2TKs5vrPfK6f45SzuLyN0QBXdvH1
+ zTwhivJo=; b=OrzQU1+t/IQ4ke5pVMjODv71ZUVAmqgKqvBNR+Wt1JA0fU24j49
+ yZozH6FvFa0IX4nIQKZD/s7yt0Fh7D0ABvslJqHZ2f6/a8lZbE/nRzPOa2URBueW
+ AbdDuH1oENdc/zlhuws4OtDWlCbPtJX+XUHvsyDhD8+rHSIMQPJvfu2rr2vY1Oak
+ POzstT2lQ4Il+mQLZl7F9Oo/dKbX2IZe4YkNu/0+E/0leHiE0b/Af0+PkkXIPJdY
+ Uhw3rslX5XIqHf7FqD5IaZHaOVSFugi0XmzJPlOF40I4G2Nu+Hz7jyPa05Y9lMak
+ epjGoGaxdpUKTHIc8SaxQSD14aeS9xEZ8cw==
+X-ME-Sender: <xms:40lWYpJDiSXEt7WysQlbDDjtq6Z9QH5QH2U9gKeY5_Ta3kwg0nG97A>
+ <xme:40lWYlINtXwSFJvfkh3hiH5lCrJuT8nC0wpHERITiVETyrQ7WtlQrWukyM7RnY11K
+ mi4eVg15vJbGK3HkA>
+X-ME-Received: <xmr:40lWYhuwBh4ZVKbztHIbH6_LASuoA5rcFNqCG1D9FQA3anuiBTShkx31Np1pJmfrOVZrurq8NNZuaMcu6iNGUXTeN0WU0UaoQXwc6_dez1wRNZOKLM4fevJ-l4eLqCppN3Hz_Q>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudekledgjeeiucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhephffvufffkffoggfgsedtkeertdertddtnecuhfhrohhmpefurghmuhgvlhcu
- jfholhhlrghnugcuoehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhgqeenucggtffrrg
- htthgvrhhnpeeiteekhfehuddugfeltddufeejjeefgeevheekueffhffhjeekheeiffdt
- vedtveenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
- hsrghmuhgvlhesshhhohhllhgrnhgurdhorhhg
-X-ME-Proxy: <xmx:4ElWYg_CMt6ZLY5Fdmhcfd-9iSD8_hxO9WeYAv8EZg2WBhEkUzB_fA>
- <xmx:4ElWYrveDVrnLXmYk6R9T3wxex9ZoMRmRqS3jtwC-5tEjRvBzM77Gg>
- <xmx:4ElWYvFzTs02XINMclpQoLns6K33H2jB70XXVV83bcdw1rvCxJAoZQ>
- <xmx:4ElWYvh9mwUaaTbtuw8qRyf-SqTywapvUEYUy0y_xCWhJowdxlYTmA>
+ cujfgurhephffvufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpefurghmuhgv
+ lhcujfholhhlrghnugcuoehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhgqeenucggtf
+ frrghtthgvrhhnpeduhfejfedvhffgfeehtefghfeiiefgfeehgfdvvdevfeegjeehjedv
+ gfejheeuieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
+ hmpehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhg
+X-ME-Proxy: <xmx:40lWYqap2NKEUJt1dX3UELB7Trah-pG9ux2Vz8irTslCNIHBUcdgmA>
+ <xmx:40lWYgYk9wPIb_NThFm3tZy2SVRbuksyPOoOtaN7yBJHr1VG8havkw>
+ <xmx:40lWYuBWBqXiegJXWpjZnBT7PYHgreZVp6OApiNdnV9-2z3tgJvEfw>
+ <xmx:40lWYlOx9qPtDW69LBwZttykHQoYNAmQnh1wUrIQtqiPo8TDwhUbGQ>
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 12 Apr 2022 23:56:16 -0400 (EDT)
+ 12 Apr 2022 23:56:18 -0400 (EDT)
 From: Samuel Holland <samuel@sholland.org>
 To: Heiko Stuebner <heiko@sntech.de>,
 	linux-rockchip@lists.infradead.org
@@ -76,15 +77,16 @@ Cc: Samuel Holland <samuel@sholland.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh+dt@kernel.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 0/2] arm64: dts: rockchip: pinenote: Enable more hardware
-Date: Tue, 12 Apr 2022 22:56:12 -0500
-Message-Id: <20220413035614.31045-1-samuel@sholland.org>
+Subject: [PATCH 2/2] arm64: dts: rockchip: pinenote: Add USB and TCPC
+Date: Tue, 12 Apr 2022 22:56:14 -0500
+Message-Id: <20220413035614.31045-3-samuel@sholland.org>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220413035614.31045-1-samuel@sholland.org>
+References: <20220413035614.31045-1-samuel@sholland.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_205621_149600_5AD0CAAB 
-X-CRM114-Status: UNSURE (   6.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220412_205621_129331_16896E0E 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,17 +104,96 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds support for some features in the PineNote that had
-devicetree bindings or SoC support merged since the board was added.
+PineNote has a USB Type-C port connected to the first USB 2.0 OTG PHY
+and XHCI controller via a Willsemi WUSB3801 Type-C port controller.
+Add support for it.
 
+Signed-off-by: Samuel Holland <samuel@sholland.org>
+---
 
-Samuel Holland (2):
-  arm64: dts: rockchip: pinenote: Add accelerometer
-  arm64: dts: rockchip: pinenote: Add USB and TCPC
+ .../boot/dts/rockchip/rk3566-pinenote.dtsi    | 58 +++++++++++++++++++
+ 1 file changed, 58 insertions(+)
 
- .../boot/dts/rockchip/rk3566-pinenote.dtsi    | 80 +++++++++++++++++++
- 1 file changed, 80 insertions(+)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
+index adc0e7d39fb3..e01668e6e5f9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
+@@ -466,6 +466,39 @@ led@1 {
+ 			default-brightness = <0>;
+ 		};
+ 	};
++
++	wusb3801: tcpc@60 {
++		compatible = "willsemi,wusb3801";
++		reg = <0x60>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA4 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-0 = <&tcpc_int_l>;
++		pinctrl-names = "default";
++
++		connector {
++			compatible = "usb-c-connector";
++			label = "USB-C";
++			vbus-supply = <&otg_switch>;
++			power-role = "dual";
++			try-power-role = "sink";
++			data-role = "dual";
++			typec-power-opmode = "default";
++			pd-disable;
++
++			ports {
++				#address-cells = <0x1>;
++				#size-cells = <0x0>;
++
++				port@0 {
++					reg = <0x0>;
++
++					typec_hs_usb2phy0: endpoint {
++						remote-endpoint = <&usb2phy0_typec_hs>;
++					};
++				};
++			};
++		};
++	};
+ };
+ 
+ &i2c5 {
+@@ -572,6 +605,12 @@ wifi_enable_h: wifi-enable-h {
+ 		};
+ 	};
+ 
++	tcpc {
++		tcpc_int_l: tcpc-int-l {
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++
+ 	vcc-wl {
+ 		vcc_wl_pin: vcc-wl-pin {
+ 			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -659,3 +698,22 @@ bluetooth {
+ &uart2 {
+ 	status = "okay";
+ };
++
++&usb_host0_xhci {
++	dr_mode = "otg";
++	status = "okay";
++};
++
++&usb2phy0 {
++	status = "okay";
++};
++
++&usb2phy0_otg {
++	status = "okay";
++
++	port {
++		usb2phy0_typec_hs: endpoint {
++			remote-endpoint = <&typec_hs_usb2phy0>;
++		};
++	};
++};
 -- 
 2.35.1
 
