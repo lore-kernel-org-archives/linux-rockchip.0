@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7024C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 19:15:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 199C1C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 19:18:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SWEwBxa/02ur9jMLRMh7ePrqvM9IPLPvdcWBaotx7Oc=; b=zeEv7Ukq6YXwZM
-	vqlivVSSk3PePikLVgErPoUayk+z68e+xBodMn8kZG9uZn2Oo7V3QfQyxidigpKjetSjEye7A1k2o
-	Q6eWBmwc99sjnApauGu99iJAHIkb5/5IjXpViWx9NwHwPEgouw3UrMayPUHnRybFulvXR61aogQuY
-	CVzn8TcbXipCdRdgq7tFhem9XoW/MtuOitgh89O/w0+rZJ5kZrrKndTq2Ih/KTnPZojSCaz1S1asg
-	jdb5VWtFs8D18Vd9NPED0ZdSy7gHp7bTfp5jRmH+t5LHQqHAuXLFaJXDgEALG69w4ASYWCBOTpRzx
-	q3kN3x6Re9Pd59JgAb3Q==;
+	List-Owner; bh=7oLDbhvnf5SSH4LhKyPtJnrgMqXQ+rbMJ0rd04bjulA=; b=v4ZUXz12GZ4fvF
+	WYOItnLXOUEiFW5Z/5uJ2vN1U+4fWYYiwEU+DG1j2z6fJSkekLv+iQOhDkzwAxk7QgpSWdB9AK39Z
+	mfTdXcDb9Cohf4MAOB5by1IazeyDCQOXIwh+R8cf6KJtbpx+G191kZEmYluCQklQzyk/zDyIIuIyi
+	W+YhcwM8+br2XO/IBTU3wArSYcziTFYiPpXQ8HTKamZWb+ZNeGFGeQ51/OwBodxw+I9QVySZseN28
+	ubkFJfzlCqNJmPpVRe9DAXooI4ycJ2iouFl8qCi5D4sML/ROuzOphlI3pxKuz25L3CW8clnhIj14s
+	wCduPSlEJkkdI28lGjiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neiSp-002MLX-7I; Wed, 13 Apr 2022 19:15:39 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1neiV4-002NEB-FR; Wed, 13 Apr 2022 19:17:58 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neiL4-002I86-VH
- for linux-rockchip@lists.infradead.org; Wed, 13 Apr 2022 19:07:44 +0000
-Received: by mail-wr1-x436.google.com with SMTP id c7so4045066wrd.0
- for <linux-rockchip@lists.infradead.org>; Wed, 13 Apr 2022 12:07:38 -0700 (PDT)
+ id 1neiL7-002I8a-0S
+ for linux-rockchip@lists.infradead.org; Wed, 13 Apr 2022 19:07:45 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id i20so3951560wrb.13
+ for <linux-rockchip@lists.infradead.org>; Wed, 13 Apr 2022 12:07:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=pUlPI4V8y0jA00wHnfC+uOcvlIsr/c356N4se7BTI1o=;
- b=kaqUlONhyx9cavl0+1jUARPWZu8+kqvYpSOtXO5NchGgWTX8rOYI8S8+7LgKQRiBxO
- cDIgjV7erbeqpVB6G1XGgpCzVrAQewtUGhdDun1SMfzb4Wz7FKZ6VHB4fUUoRcPLDEQp
- l90/ePE0eLUWvC5wo1+WpkU8vBMvRKj1xmqK4BPNyz+QvcAOqGo6L0P4t3SlGmwMFKyC
- APirbiu+GgH+ZUIYq6OROX1RxScDO/96Ua0qLqZ6qMj7q/H2/Rbg7cDyvT0HA2GPzsME
- MpOiJJ1qtCHZfl4iH556FHInYGSONtla2J6oloykRL7lR3O2eFWaK2Y3+j7RAEzEP2gt
- pLWQ==
+ bh=/EUIIfE60m4fjWffrZnRhJkHwQAH6pvzsFNjcyOjc+M=;
+ b=OhXrjpQ7TkqgTzvU861G+Pk5dZhNtBHUkuXDGbH/m5gtuoYcPwFTR4OwwwHQTCSKnD
+ rPUg/K6BusXVCrYS2aYITzkfnsnby/5ACm8IjqxOvp+N/WtQlZzLgtr+ERFpOuZAy7j6
+ JTmNcjTrMIlelYCRL7+TiZ2qyNnWRVxPjoPu27CGJfbpn6TgSTYAsv3coIediTDo62Y9
+ qxRqoonC/Mrw0nd2Oj6/4ZvTPgKdn+XVoXOkqZbWuvyANRDY9ph8dUjF0mAYCTL59Soi
+ oa2+pkJhoxKe9lPo9VOtwZCvEs4niAxAe6+tepMftrJO6m2TmL995WBhKtSdLTumifXf
+ 0ojA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=pUlPI4V8y0jA00wHnfC+uOcvlIsr/c356N4se7BTI1o=;
- b=PhKn84xCY6x6KuavQRz7G8nW29NrgX80MQDQsthgob6dt7/DyKSTZ44Jh9NcUePQrJ
- Bq7BCUym071226KZPZlTxRzv0OSZiDiN8zsni2a7rdKcUiX3itGrjlf+Sf+3o8CY7+/x
- UiY2jwxerkVA4Flk93zD7u3y78do6LMWDKM90RBtEuPul6aki3qq81jPOiDl7B32zBta
- 5lmTAwKeWYUDO4cnbcew8HBr5c7GJlOVKjojrxk8V6yvOWAMc63KS4kyOsvMAfVD7IXr
- 3MnFChVq/MxeFHqosB7tePOkrG4/g/uw7Od5mMRxWlsCUr8TW7GkFXilpG4UJJ0ttmCc
- dFrQ==
-X-Gm-Message-State: AOAM533Col2LUcF7Z4iJbfyn9Du9kCEd4ruc39yoUsLPVgR/aN/bJfxo
- 51aoUJJVGhMdKKHgh7c/DoI5fQ==
-X-Google-Smtp-Source: ABdhPJyXZQpkSnpF4qCWLxizP4wUA0XleFzj0R/b1bvsAkayD0Z9xg0HH1v7cXPmmxc2Px5bN1OYPA==
-X-Received: by 2002:a5d:591c:0:b0:207:a060:426c with SMTP id
- v28-20020a5d591c000000b00207a060426cmr230689wrd.305.1649876857615; 
- Wed, 13 Apr 2022 12:07:37 -0700 (PDT)
+ bh=/EUIIfE60m4fjWffrZnRhJkHwQAH6pvzsFNjcyOjc+M=;
+ b=et1aRYAG1TxJylUgC/EirTYTRUOdPmSs7A3Po8T/R43/CqG4QeUtETE8BflQa5Gzgd
+ HaWqk856YJs+N2bZzf7/G8aVm4K9D1yhAI+y4prjGXU8jQvHcfRQxaljS7Wh093se0NN
+ 9Dnoo5YyIwbOm0LtrprEXRgn/VzjjuDfY6/DWgCx+N5cznlQA//SFD11kXmFA+ppQVw+
+ qSioIW8zKeZ+xUL34G6noNwY8NVB2ZpK0/bSbcGryfu5wE+jOMT+dZPJ6ZH9bGWzJu41
+ cVVzygEDlv6Kc6rGvmmdndchQV3JD8Ux6tl/3kVDAPC5F25VTHShgZb9dWblQIxHQ0Pw
+ hOVQ==
+X-Gm-Message-State: AOAM533U3WYP/wR6UdBXhigRFQdqFjt3x/jmIPH69pwDpuElZ2UwLqiG
+ gMssrLSRYWJOJ/BCGQIy5WBtIg==
+X-Google-Smtp-Source: ABdhPJyd7sC1T0PJCNTlLw2E2XQeYDeV+5s9CziMq9ZGLP70JZ+RghahoRyCVXcIK5APO0x4BRk/MQ==
+X-Received: by 2002:a5d:558e:0:b0:206:f7e:4634 with SMTP id
+ i14-20020a5d558e000000b002060f7e4634mr242269wrv.662.1649876858616; 
+ Wed, 13 Apr 2022 12:07:38 -0700 (PDT)
 Received: from localhost.localdomain
  (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
  by smtp.googlemail.com with ESMTPSA id
- o29-20020a05600c511d00b0038e3532b23csm3551852wms.15.2022.04.13.12.07.36
+ o29-20020a05600c511d00b0038e3532b23csm3551852wms.15.2022.04.13.12.07.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Apr 2022 12:07:37 -0700 (PDT)
+ Wed, 13 Apr 2022 12:07:38 -0700 (PDT)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: heiko@sntech.de, herbert@gondor.apana.org.au,
  krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, Corentin Labbe <clabbe@baylibre.com>
-Subject: [PATCH v5 15/33] crypto: rockchip: use clk_bulk to simplify clock
- management
-Date: Wed, 13 Apr 2022 19:06:55 +0000
-Message-Id: <20220413190713.1427956-16-clabbe@baylibre.com>
+Subject: [PATCH v5 16/33] crypto: rockchip: add myself as maintainer
+Date: Wed, 13 Apr 2022 19:06:56 +0000
+Message-Id: <20220413190713.1427956-17-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220413190713.1427956-1-clabbe@baylibre.com>
 References: <20220413190713.1427956-1-clabbe@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_120739_096363_4685895C 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20220413_120741_136012_54222FB4 
+X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,121 +95,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk3328 does not have the same clock names than rk3288, instead of using a complex
-clock management, let's use clk_bulk to simplify their handling.
+Nobody is set as maintainer of rockchip crypto, I propose to do it as I
+have already reworked lot of this code.
 
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- drivers/crypto/rockchip/rk3288_crypto.c | 66 ++++---------------------
- drivers/crypto/rockchip/rk3288_crypto.h |  6 +--
- 2 files changed, 11 insertions(+), 61 deletions(-)
+ MAINTAINERS | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
-index a11a92e1f3fd..97ef59a36be6 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto.c
-@@ -22,47 +22,16 @@ static int rk_crypto_enable_clk(struct rk_crypto_info *dev)
- {
- 	int err;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1699bb7cc867..4df40a40bcdf 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -16966,6 +16966,13 @@ F:	Documentation/ABI/*/sysfs-driver-hid-roccat*
+ F:	drivers/hid/hid-roccat*
+ F:	include/linux/hid-roccat*
  
--	err = clk_prepare_enable(dev->sclk);
--	if (err) {
--		dev_err(dev->dev, "[%s:%d], Couldn't enable clock sclk\n",
--			__func__, __LINE__);
--		goto err_return;
--	}
--	err = clk_prepare_enable(dev->aclk);
--	if (err) {
--		dev_err(dev->dev, "[%s:%d], Couldn't enable clock aclk\n",
--			__func__, __LINE__);
--		goto err_aclk;
--	}
--	err = clk_prepare_enable(dev->hclk);
--	if (err) {
--		dev_err(dev->dev, "[%s:%d], Couldn't enable clock hclk\n",
--			__func__, __LINE__);
--		goto err_hclk;
--	}
--	err = clk_prepare_enable(dev->dmaclk);
--	if (err) {
--		dev_err(dev->dev, "[%s:%d], Couldn't enable clock dmaclk\n",
--			__func__, __LINE__);
--		goto err_dmaclk;
--	}
--	return err;
--err_dmaclk:
--	clk_disable_unprepare(dev->hclk);
--err_hclk:
--	clk_disable_unprepare(dev->aclk);
--err_aclk:
--	clk_disable_unprepare(dev->sclk);
--err_return:
-+	err = clk_bulk_prepare_enable(dev->num_clks, dev->clks);
-+	if (err)
-+		dev_err(dev->dev, "Could not enable clock clks\n");
++ROCKCHIP CRYPTO DRIVERS
++M:	Corentin Labbe <clabbe@baylibre.com>
++L:	linux-crypto@vger.kernel.org
++S:	Maintained
++F:	Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
++F:	drivers/crypto/rockchip/
 +
- 	return err;
- }
- 
- static void rk_crypto_disable_clk(struct rk_crypto_info *dev)
- {
--	clk_disable_unprepare(dev->dmaclk);
--	clk_disable_unprepare(dev->hclk);
--	clk_disable_unprepare(dev->aclk);
--	clk_disable_unprepare(dev->sclk);
-+	clk_bulk_disable_unprepare(dev->num_clks, dev->clks);
- }
- 
- /*
-@@ -257,27 +226,10 @@ static int rk_crypto_probe(struct platform_device *pdev)
- 		goto err_crypto;
- 	}
- 
--	crypto_info->aclk = devm_clk_get(&pdev->dev, "aclk");
--	if (IS_ERR(crypto_info->aclk)) {
--		err = PTR_ERR(crypto_info->aclk);
--		goto err_crypto;
--	}
--
--	crypto_info->hclk = devm_clk_get(&pdev->dev, "hclk");
--	if (IS_ERR(crypto_info->hclk)) {
--		err = PTR_ERR(crypto_info->hclk);
--		goto err_crypto;
--	}
--
--	crypto_info->sclk = devm_clk_get(&pdev->dev, "sclk");
--	if (IS_ERR(crypto_info->sclk)) {
--		err = PTR_ERR(crypto_info->sclk);
--		goto err_crypto;
--	}
--
--	crypto_info->dmaclk = devm_clk_get(&pdev->dev, "apb_pclk");
--	if (IS_ERR(crypto_info->dmaclk)) {
--		err = PTR_ERR(crypto_info->dmaclk);
-+	crypto_info->num_clks = devm_clk_bulk_get_all(&pdev->dev,
-+						      &crypto_info->clks);
-+	if (crypto_info->num_clks < 3) {
-+		err = -EINVAL;
- 		goto err_crypto;
- 	}
- 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
-index ddbb9246ce16..28bf09fe1c1d 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.h
-+++ b/drivers/crypto/rockchip/rk3288_crypto.h
-@@ -190,10 +190,8 @@
- 
- struct rk_crypto_info {
- 	struct device			*dev;
--	struct clk			*aclk;
--	struct clk			*hclk;
--	struct clk			*sclk;
--	struct clk			*dmaclk;
-+	struct clk_bulk_data		*clks;
-+	int num_clks;
- 	struct reset_control		*rst;
- 	void __iomem			*reg;
- 	int				irq;
+ ROCKCHIP I2S TDM DRIVER
+ M:	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+ L:	linux-rockchip@lists.infradead.org
 -- 
 2.35.1
 
