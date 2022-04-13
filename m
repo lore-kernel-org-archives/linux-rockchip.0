@@ -4,101 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D45B6C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 22:29:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06532C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 22:45:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YeB7jKY75JUz4Jwc2w/W3JaqKVy3wEfIkpKgiaYsq14=; b=W8CbHyz5WFPMFR
-	Gquoto85QEuhuDw15oktHP/2y0wJMQREMQg2Ep4xcCJG8+jXyBLr32rvv1xdqLkO/m/at/ENAIzfA
-	RCalVUVv8I0cpX4UUMQqn4VjBYBE6rwoX42R4YDPE8pAbwwn2eZKShm2gZwPecUoRbxr2JyZ1yYVc
-	gdqMrM3bXcTP6NxVy+i6dMl/XC1UbKuAOtp/Dm9HmrdrqJX0Du/6wI4YL9BlmsrSuw70HylP4s2LL
-	Z2x5J0PgycnFOjeZmJ+3QT9viKfqfoG4r5qvVNQo09rmprHO2mAAXWAjMiOFCcEw0T2+ACIxyUNWR
-	qePhqc+Vtp96UobHX+Ig==;
+	List-Owner; bh=Ua3r3tSlSlhPAO2IXIFh9fB64ptMiomz2K31K0xLsHw=; b=tZLTK/DkgnQPPW
+	OGsLXkwAri6+EdbHaxzwoVNrDJDZK4E0JieDMy3DHm+LcBy7f0TYIi9ORcOh9QVTztjYOmE8JD/X3
+	szb+lrT2uuHVzs2aVIHFkmQK9kchse0OVw2xaY2lBLbWq9C1vHpWwI4Llymrj0iCBFqoCr0WOcsl0
+	jDndZsRqXt53EZY9b6aojpfKtPnbTeN4YnONO75OrPl+bVxKsLTJzBHua1Bv8sIImzV4AE3801MHB
+	l6Khy40BPyF4NhRLxaN39JTKDQPL3o/Nu/rtDy1dORKBmLGy9SoL0H37mzCy89V4oEv6yW94XvMzC
+	d8el1ZGLGV0bKJwUe5HA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nelUN-002uS4-Hb; Wed, 13 Apr 2022 22:29:27 +0000
-Received: from out5-smtp.messagingengine.com ([66.111.4.29])
+	id 1neljy-002zig-Vk; Wed, 13 Apr 2022 22:45:35 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nelL8-002q7Q-BN; Wed, 13 Apr 2022 22:19:58 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
- by mailout.nyi.internal (Postfix) with ESMTP id A2E4E5C034D;
- Wed, 13 Apr 2022 18:19:53 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute2.internal (MEProxy); Wed, 13 Apr 2022 18:19:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
- cc:cc:content-transfer-encoding:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:sender:subject:subject:to:to; s=fm2; t=1649888393; x=
- 1649974793; bh=hsDsSOvCiPnQ5iI1qwr559UylC5AhqoZAQgmwuaC8k8=; b=k
- Xb3zpUzSFboY38A9QsINY8zApMK7WgMQOw4Ng9USwQlBfyE0MVR1tylfrDy1I+qT
- g6Ae3V2zcIx2tvVyWavFpOefn02gLujLxskrpAgB2ouD6bVYY/TyCEtU75OJgzuQ
- CtDJ1zFxURn+0MoLRdIN9C5oEb8rS2PPEtEpqdLe9pzkjMDfbS3gbsHqCpwyVtr3
- wkSz6DEc0SZGuSDZdhgr84lkYnQBSwUn0BiU2neopyrN2eKfYhL7P8/EGsNz5vgo
- g3LS5Q5MwFtxZK393zFQkVhuycwBfDKjq6aUHmXoKC26Z9uZCOxMyUUcQG0H4Pir
- 6UwhlIZrILTqi9yBgtJzQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:date:date:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; t=1649888393; x=1649974793; bh=hsDsSOvCiPnQ5
- iI1qwr559UylC5AhqoZAQgmwuaC8k8=; b=n79GBWEz27CFo3CUyVTIM2mlJvVB4
- GWqkXbvRylHmhP1oBQmf9fho/teYBHdDOG4ciwUJa76OD4mn4/2Vhv88prKdzsW0
- zJZZJ90LMSOxjMeMr3hYVNwNmiyuzpPExJw5afj7suKgWw1VCOJyy/makbfugb+K
- At/hXMNATMZE+gAq/ptOXpa5IUQeFYzeaphTCFZw6othu5L1LkG/H4rnOPr816Lq
- +BWxhlisnGN2dshkh4kdJYtxilmZRcY4DX37I3Jn2eIzIVZ1xcauxjM8hy8VMMca
- mSptsN/8SF34KnI+sG6ZJsOzf3i1xJmQ9kB6W3R0ecCzGd4JlhpKzLmhg==
-X-ME-Sender: <xms:iUxXYgSbu83lW-FusmWhDNn1xp4p3JJL4SMK3lYZlvQC7VtBNTKfQQ>
- <xme:iUxXYty0zM1tfOCIY0Dx0V9K30inxIO9vvPdHjWC3XXK90PkznD-4cFmFBMq0Tqg7
- gmdymYHbIedqknF3g>
-X-ME-Received: <xmr:iUxXYt0B1wQVfsntMAb2AoiKqdRfoDQTv16_LRggZCoMxh6uA63f8KtSakvfFewAM1o5ZjZ89td24YB5jowZTKUaIjNK8yHpJzhn2smqRiNOAvW5Va9qRFte94GjPmKjbA0jew>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudelvddguddtucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhephffvufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepufgrmhhu
- vghlucfjohhllhgrnhguuceoshgrmhhuvghlsehshhholhhlrghnugdrohhrgheqnecugg
- ftrfgrthhtvghrnhepfedvffetgeduiedtfffgleelvdfhheekkeduffetuddvgeeffedu
- fefhgeehueejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrh
- homhepshgrmhhuvghlsehshhholhhlrghnugdrohhrgh
-X-ME-Proxy: <xmx:iUxXYkDF191GxSw6_CviUvn75FZDJqFmn1I70ugGY9FnrvQx_qJbvg>
- <xmx:iUxXYphAWuNOnJL-oPswsx6CO0P-zhyCyG1WGz_lE-8DtOWJdz7Dzw>
- <xmx:iUxXYgqtfMBa34tVIA184caUhC4WeVe81paCYPoFaQ8rfllnQT8aEA>
- <xmx:iUxXYtRCub4d5reKlxmAsasjqljRGRzUuc1UmKA3p15Lc-E7Q376bg>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 13 Apr 2022 18:19:52 -0400 (EDT)
-From: Samuel Holland <samuel@sholland.org>
-To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org
-Cc: linux-rockchip@lists.infradead.org,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Ond=C5=99ej=20Jirman?= <x@xff.cz>,
- Andreas Kemnade <andreas@kemnade.info>, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, Geert Uytterhoeven <geert@linux-m68k.org>,
- Samuel Holland <samuel@sholland.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Liang Chen <cl@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Sam Ravnborg <sam@ravnborg.org>, Thierry Reding <thierry.reding@gmail.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [RFC PATCH 16/16] [DO NOT MERGE] arm64: dts: rockchip: pinenote:
- Enable EBC display pipeline
-Date: Wed, 13 Apr 2022 17:19:16 -0500
-Message-Id: <20220413221916.50995-17-samuel@sholland.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220413221916.50995-1-samuel@sholland.org>
-References: <20220413221916.50995-1-samuel@sholland.org>
+ id 1neljn-002zfb-Mm; Wed, 13 Apr 2022 22:45:25 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1neljf-0006LW-0U; Thu, 14 Apr 2022 00:45:15 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Brian Norris <briannorris@chromium.org>,
+ MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Chanwoo Choi <cwchoi00@gmail.com>
+Cc: linux-kernel@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>,
+ linux-pm@vger.kernel.org, Doug Anderson <dianders@chromium.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [RFC PATCH 2/2] PM / devfreq: rk3399_dmc: Block PMU during
+ transitions
+Date: Thu, 14 Apr 2022 00:45:14 +0200
+Message-ID: <3484357.R56niFO833@diego>
+In-Reply-To: <8824147c-5512-a7a5-9e89-60b510111500@gmail.com>
+References: <20220406014842.2771799-1-briannorris@chromium.org>
+ <20220405184816.RFC.2.I2d73b403944f0b8b5871a77585b73f31ccc62999@changeid>
+ <8824147c-5512-a7a5-9e89-60b510111500@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_151954_539532_A20BEFBF 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20220413_154523_793940_0BF5F12A 
+X-CRM114-Status: GOOD (  24.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,129 +66,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The PineNote contains an eInk ED103TC2 panel connected to the EBC,
-powered by a TI TPS651851 PMIC.
+Hi,
 
-Signed-off-by: Samuel Holland <samuel@sholland.org>
----
+Am Donnerstag, 14. April 2022, 00:14:40 CEST schrieb Chanwoo Choi:
+> On 22. 4. 6. 10:48, Brian Norris wrote:
+> > See the previous patch ("soc: rockchip: power-domain: Manage resource
+> > conflicts with firmware") for a thorough explanation of the conflicts.
+> > While ARM Trusted Firmware may be modifying memory controller and
+> > power-domain states, we need to block the kernel's power-domain driver.
+> > 
+> > If the power-domain driver is disabled, there is no resource conflict
+> > and this becomes a no-op.
+> > 
+> > Signed-off-by: Brian Norris <briannorris@chromium.org>
+> > ---
+> > 
+> >   drivers/devfreq/rk3399_dmc.c | 13 +++++++++++++
+> >   1 file changed, 13 insertions(+)
+> > 
+> > diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
+> > index e494d1497d60..daff40702615 100644
+> > --- a/drivers/devfreq/rk3399_dmc.c
+> > +++ b/drivers/devfreq/rk3399_dmc.c
+> > @@ -21,6 +21,7 @@
+> >   #include <linux/rwsem.h>
+> >   #include <linux/suspend.h>
+> >   
+> > +#include <soc/rockchip/pm_domains.h>
+> >   #include <soc/rockchip/rk3399_grf.h>
+> >   #include <soc/rockchip/rockchip_sip.h>
+> >   
+> > @@ -93,6 +94,16 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
+> >   
+> >   	mutex_lock(&dmcfreq->lock);
+> >   
+> > +	/*
+> > +	 * Ensure power-domain transitions don't interfere with ARM Trusted
+> > +	 * Firmware power-domain idling.
+> > +	 */
+> > +	err = rockchip_pmu_block();
+> > +	if (err) {
+> > +		dev_err(dev, "Failed to block PMU: %d\n", err);
+> > +		goto out_unlock;
+> > +	}
+> > +
+> >   	/*
+> >   	 * Some idle parameters may be based on the DDR controller clock, which
+> >   	 * is half of the DDR frequency.
+> > @@ -198,6 +209,8 @@ static int rk3399_dmcfreq_target(struct device *dev, unsigned long *freq,
+> >   	dmcfreq->volt = target_volt;
+> >   
+> >   out:
+> > +	rockchip_pmu_unblock();
+> > +out_unlock:
+> >   	mutex_unlock(&dmcfreq->lock);
+> >   	return err;
+> >   }
+> 
+> Acked-by: Chanwoo Choi <cw00.choi@samsung.com>
 
- .../boot/dts/rockchip/rk3566-pinenote.dtsi    | 80 +++++++++++++++++++
- 1 file changed, 80 insertions(+)
+so I guess you're ok with me picking up both patches, right?
+[Just making sure :-) ]
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-index fea748adfa90..4a53931c3f92 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-@@ -72,6 +72,16 @@ led-0 {
- 		};
- 	};
- 
-+	panel {
-+		compatible = "eink,ed103tc2";
-+
-+		port {
-+			panel_in_ebc: endpoint {
-+				remote-endpoint = <&ebc_out_panel>;
-+			};
-+		};
-+	};
-+
- 	sdio_pwrseq: sdio-pwrseq {
- 		compatible = "mmc-pwrseq-simple";
- 		clocks = <&rk817 1>;
-@@ -213,6 +223,20 @@ &cpu3 {
- 	cpu-supply = <&vdd_cpu>;
- };
- 
-+&ebc {
-+	io-channels = <&ebc_pmic 0>;
-+	panel-supply = <&v3p3>;
-+	vcom-supply = <&vcom>;
-+	vdrive-supply = <&vdrive>;
-+	status = "okay";
-+
-+	port {
-+		ebc_out_panel: endpoint {
-+			remote-endpoint = <&panel_in_ebc>;
-+		};
-+	};
-+};
-+
- &i2c0 {
- 	status = "okay";
- 
-@@ -466,6 +490,47 @@ led@1 {
- 			default-brightness = <0>;
- 		};
- 	};
-+
-+	/* TODO: write binding */
-+	ebc_pmic: pmic@68 {
-+		compatible = "ti,tps65185";
-+		reg = <0x68>;
-+		interrupt-parent = <&gpio3>;
-+		interrupts = <RK_PA6 IRQ_TYPE_LEVEL_LOW>;
-+		#io-channel-cells = <1>;
-+		pinctrl-0 = <&ebc_pmic_pins>;
-+		pinctrl-names = "default";
-+		powerup-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_HIGH>;
-+		pwr_good-gpios = <&gpio3 RK_PA7 GPIO_ACTIVE_HIGH>;
-+		vcom_ctrl-gpios = <&gpio4 RK_PB2 GPIO_ACTIVE_HIGH>;
-+		vin-supply = <&vcc_bat>;
-+		vin3p3-supply = <&vcc_3v3>;
-+		wakeup-gpios = <&gpio3 RK_PA5 GPIO_ACTIVE_HIGH>;
-+		ti,up-sequence = <1>, <0>, <2>, <3>;
-+		ti,up-delay-ms = <3>, <3>, <3>, <3>;
-+		ti,down-sequence = <2>, <3>, <1>, <0>;
-+		ti,down-delay-ms = <3>, <6>, <6>, <6>;
-+
-+		regulators {
-+			v3p3: v3p3 {
-+				regulator-name = "v3p3";
-+				regulator-always-on;
-+				regulator-min-microvolt = <3300000>;
-+				regulator-max-microvolt = <3300000>;
-+			};
-+
-+			vcom: vcom {
-+				regulator-name = "vcom";
-+				/* voltage range is board-specific */
-+			};
-+
-+			vdrive: vdrive {
-+				regulator-name = "vdrive";
-+				regulator-min-microvolt = <15000000>;
-+				regulator-max-microvolt = <15000000>;
-+			};
-+		};
-+	};
- };
- 
- &i2s1_8ch {
-@@ -508,6 +573,21 @@ bt_wake_h: bt-wake-h {
- 		};
- 	};
- 
-+	ebc-pmic {
-+		ebc_pmic_pins: ebc-pmic-pins {
-+			rockchip,pins = /* wakeup */
-+					<3 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>,
-+					/* int */
-+					<3 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>,
-+					/* pwr_good */
-+					<3 RK_PA7 RK_FUNC_GPIO &pcfg_pull_none>,
-+					/* pwrup */
-+					<3 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>,
-+					/* vcom_ctrl */
-+					<4 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	led {
- 		led_pin: led-pin {
- 			rockchip,pins = <3 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
--- 
-2.35.1
+Thanks
+Heiko
+
 
 
 _______________________________________________
