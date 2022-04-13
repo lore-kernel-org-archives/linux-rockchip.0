@@ -4,75 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E05DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 13:38:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76FC8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 19:07:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RrpmkdzEFXMMu0EMH6tnF6IOHnLQrVcC5u3pkfE5twE=; b=OzeWcIKtTyq+jj
-	leM3jt0kjwetXYYmIimmXSOunSm4tU/jTnkUKxdgKzn1RQ5m0itli+OIeWYSMH4C3LN6u6AvfSxpw
-	2X3VnJuMv3Rccs4BdgnvmuCGJvTUr1ayYnjdaviYGQHic6VyIp7ncSmVBYNKSmITCMXwNywklkKgr
-	JDdHlGCYe4sbvaU2RjmffKXpnO0WJcSTWefQQv2cs+ctbhXWxXiLcRgRfgJfPwwOBAsQAd6a1cUQe
-	UC+/loRmYlfmNiVWhtwUgbTWVOkh/JA7cg6KCqY9z0MfnaAFnOHSHcUJ5VBg2eQNR+Zg2FtySKK1o
-	SWVtm0v5GJlxSI1T/PGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XIUu6K97ax5On4xx6QCx/auxVxlxcHWhasuL92XPKPQ=; b=qygc/e+iM9iRn7
+	lPWo0Z++geeIC0WB9LwGJyt5EwnlKZyIh+UnnW+mcINdsPn0Ep8A2nXbyGvRKtKR1mBTO/xXKA677
+	Pl+/B0aI4a0djykel/4z09+K98PUGpyxFLAPSEMOEQxS9ayU1T5PHByB6rFC6paz4lb5nAKKBsfuG
+	DSO01NjCjsv2JbxcHHkQsbqqxwsufe1TfjCqTg4FCenB68e52xeriWfqDUbuVQXybaP0I3SzERhht
+	V1TovC81yNnuTeEtUQs46cuy0S1LEzPVFHN/H/IKmgSeho/wVXgzCYjldcucCvEhNg4b3JHk9cEd4
+	WUQWi3NNbwZ2EVPsTV9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nedCu-001Ck9-Oj; Wed, 13 Apr 2022 13:38:52 +0000
-Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
+	id 1neiL9-002IBZ-Mi; Wed, 13 Apr 2022 19:07:43 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nedCC-001CKw-8e; Wed, 13 Apr 2022 13:38:10 +0000
-Received: by mail-qk1-x72a.google.com with SMTP id 3so1402251qkj.5;
- Wed, 13 Apr 2022 06:37:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=obH3d/S2lYaSS3WRVgxjm06UjcTOK/XeI/fbZ8tvhu0=;
- b=p0rEdTVHqEwUjYkBCxSFHcimffPFsmL7M+fvAGh4R/FEqKk184GdIfe4UKgalRYNo3
- YVdI+ZOyOgZDfikqiwW0SfsWDA4Xc+n2iIufyo9ucCztXMJmXTq5CJS4y08rR4aWw4WB
- lfDAO8XL8mjMO/pSvRwKBmpt2aQJmC7JkeigeC6BAwhYX6UDJYMeDzF7mtiKXdKaabcJ
- brhRCPFfYP3YCPTMor8G3FsOliN6954u6kvYZ1pYL0rggFF0b+KR010tuFhsD2xp/ak8
- 0+XAt6fronujGCN9wBx7fcVzGvokG9bobJkG/0o2IUs5qVXC6b3jYmMbwka9Ld6/+VLV
- 5KqA==
+ id 1neiKq-002Hyq-Vw
+ for linux-rockchip@lists.infradead.org; Wed, 13 Apr 2022 19:07:28 +0000
+Received: by mail-wr1-x433.google.com with SMTP id t1so3995517wra.4
+ for <linux-rockchip@lists.infradead.org>; Wed, 13 Apr 2022 12:07:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=6k9bKJA41frCR0pmOk9SA+9AKNxBSbRS1tpgQTa/e4I=;
+ b=VYNvVfTkDsS2GrZecgJ4GpodMXD4vwGRpH5f6fSEdCuOongHsWNf84yDBtLMfZpCh/
+ bP/TUsh0Q4kp2FgAq1vxWG8dYmA5buAK9Bg3fehnNA3oI0F/SBENezK39wwQD04oKScC
+ j2wf+dGY8pzeVQe/CungYvO95ijHs+X1EwbGHZLyXNi6ja4lwh2vCN3REwR60vJey/Ql
+ llTjFB5wnjf4SQ3m8/Mm5oPJm/CsXvGqWgVOIoeu4BUZmuUYKUu+z/kiSyxz2at8nCsx
+ eKm/1okCDZUsEjkQPL1p7RKhjElkzqlXXMKPQULRiNSzh9V+pKAuGw2ZScnfcKA8HQvS
+ Hd4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=obH3d/S2lYaSS3WRVgxjm06UjcTOK/XeI/fbZ8tvhu0=;
- b=leglvDozrRQuLGvgFg9B72uXufTxUozyygtQuX4FA3rV2OL/u87Iua4/EVDjHYqVUR
- RQFJCLnHL6qtttkb9fl/uQ/00wW0ZwNds4BPJ4fn4G55xYi9iQ7KXoI1i03MdOHeyIdB
- O2ORK+k+8kNj+ftfFuZ9oPSEwCdK8wxTX6tGmY1lkpbmphqPsJn8iXsbJpagZEBLB4VS
- up33FdeaJUGjvNUWOZ7mfO/ShbDoN4EtWEwPRYyDCMvNn4lVIm24e4Kkzbzy6VjTn5e5
- 11WCVI1qKsSQPz5S7Dt7YaLa+kaZ/Cv6Sfgw0hQBbrcz0D2ejQ8UFidkvTwjie7mJoEk
- qJpQ==
-X-Gm-Message-State: AOAM531KqKCzwVd+P/ElDm5qwnyZaOYp22giITAYwCMkERkCI7p8gMRC
- X+AdgNVqRFW8FdzLqyEtneKbBUgCEthJPKcq
-X-Google-Smtp-Source: ABdhPJwoNltjyMwmDwC9a/qTbbRk6RRmZyCNXPt32NI15GQs+mxl++8piNnzqINFOdcavlai9Lgx/Q==
-X-Received: by 2002:a37:614c:0:b0:69a:d30:e936 with SMTP id
- v73-20020a37614c000000b0069a0d30e936mr6632280qkb.667.1649857078596; 
- Wed, 13 Apr 2022 06:37:58 -0700 (PDT)
-Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
- by smtp.gmail.com with ESMTPSA id
- 143-20020a370795000000b0069c59e1b8eesm790584qkh.10.2022.04.13.06.37.58
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=6k9bKJA41frCR0pmOk9SA+9AKNxBSbRS1tpgQTa/e4I=;
+ b=eg5Qvb+Qza+2Tk0JAcVrjFJsRqP4gcpLYSS8YfFvNFDIO1qcP/l2hCeOzfQidvYmHd
+ 9bnjDd+VzHOFMq/wrTqQSG+4MCm0c2pL11O+I8pBVQw1NK4wakJ6UeWxeqZFxdUQq5xh
+ /SEkakgnqRRCiO9noH//zFPOB9CC9JhNcmQquWKGYrGclQ9mLeQou+IsFPsdwPI/HG5w
+ Hwp61TQ2jODBHsBbaRZr3EEDWvXO8RONg3jpc5L4VeQug6dazdndWkjRgPV3EKUNVS3u
+ eZrNxmuJL1S3q1ZXhqmxOehYYzh2QBZ5KZSviaBhk3mmqg/gOV9JSQKLnjQh584P6U/E
+ HVUg==
+X-Gm-Message-State: AOAM530v4584nD7nqfVuiDHcXRyL8SdFMvIOkPzkk13cAegT3ybia041
+ Dhn8V37U08etZ5bC6ydRnPpTxQ==
+X-Google-Smtp-Source: ABdhPJyII1J5W8VWBLKAspEHoqtylYWUh8tT0Az0Bc4V8OU2/VVFPwdptvVPdB1L4uaAVEEjl9swvg==
+X-Received: by 2002:a05:6000:70a:b0:207:a120:bfbd with SMTP id
+ bs10-20020a056000070a00b00207a120bfbdmr258416wrb.142.1649876842619; 
+ Wed, 13 Apr 2022 12:07:22 -0700 (PDT)
+Received: from localhost.localdomain
+ (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+ by smtp.googlemail.com with ESMTPSA id
+ o29-20020a05600c511d00b0038e3532b23csm3551852wms.15.2022.04.13.12.07.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Apr 2022 06:37:58 -0700 (PDT)
-From: Peter Geis <pgwipeout@gmail.com>
-To: 
-Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
- Peter Geis <pgwipeout@gmail.com>, linux-pci@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/4] Enable rk356x PCIe controller
-Date: Wed, 13 Apr 2022 09:37:27 -0400
-Message-Id: <20220413133731.242870-1-pgwipeout@gmail.com>
+ Wed, 13 Apr 2022 12:07:22 -0700 (PDT)
+From: Corentin Labbe <clabbe@baylibre.com>
+To: heiko@sntech.de, herbert@gondor.apana.org.au,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Corentin Labbe <clabbe@baylibre.com>
+Subject: [PATCH v5 01/33] crypto: rockchip: use dev_err for error message
+ about interrupt
+Date: Wed, 13 Apr 2022 19:06:41 +0000
+Message-Id: <20220413190713.1427956-2-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220413190713.1427956-1-clabbe@baylibre.com>
+References: <20220413190713.1427956-1-clabbe@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_063808_332462_73C3814D 
-X-CRM114-Status: UNSURE (   9.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220413_120725_061404_AA8FD101 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,39 +95,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series enables the DesignWare based PCIe controller on the rk356x
-series of chips.
-We drop the fallback to the core driver due to compatibility issues.
-We add support for legacy interrupts for cards that lack MSI support
-(which is partially broken currently).
-We then add the device tree nodes to enable PCIe on the Quartz64 Model
-A.
+Interrupt is mandatory so the message should be printed as error.
 
-Patch 1 drops the snps,dw,pcie fallback from the dt-binding
-Patch 2 adds legacy interrupt support to the driver
-Patch 3 adds the device tree binding to the rk356x.dtsi
-Patch 4 enables the PCIe controller on the Quartz64-A
+Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+---
+ drivers/crypto/rockchip/rk3288_crypto.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Changelog:
-v2:
-- Define PCIE_CLIENT_INTR_STATUS_LEGACY
-- Fix PCIE_LEGACY_INT_ENABLE to only enable the RC interrupts
-- Add legacy interrupt enable/disable support
-
-Peter Geis (4):
-  dt-bindings: pci: remove fallback from Rockchip DesignWare binding
-  PCI: dwc: rockchip: add legacy interrupt support
-  arm64: dts: rockchip: add rk3568 pcie2x1 controller
-  arm64: dts: rockchip: enable pcie controller on quartz64-a
-
- .../bindings/pci/rockchip-dw-pcie.yaml        |   3 +-
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   |  34 +++++
- arch/arm64/boot/dts/rockchip/rk356x.dtsi      |  68 +++++++++-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 123 +++++++++++++++++-
- 4 files changed, 221 insertions(+), 7 deletions(-)
-
+diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
+index 35d73061d156..45cc5f766788 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto.c
++++ b/drivers/crypto/rockchip/rk3288_crypto.c
+@@ -371,8 +371,7 @@ static int rk_crypto_probe(struct platform_device *pdev)
+ 
+ 	crypto_info->irq = platform_get_irq(pdev, 0);
+ 	if (crypto_info->irq < 0) {
+-		dev_warn(crypto_info->dev,
+-			 "control Interrupt is not available.\n");
++		dev_err(&pdev->dev, "control Interrupt is not available.\n");
+ 		err = crypto_info->irq;
+ 		goto err_crypto;
+ 	}
 -- 
-2.25.1
+2.35.1
 
 
 _______________________________________________
