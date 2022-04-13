@@ -4,89 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 529AAC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 03:57:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 194BEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 09:54:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EhwM4iEUQ0++NYAQqy5oihcV/E2qt4Bx22MGs/vCnis=; b=nW4+G1iShNeSX3
-	Ac9nNoVH3bY9d2GzK/y0RNOwnE+Po/IXIE7RK/YG1Q/dIcAl93jkWPxdKxqzyfkv9wjR83qKRXLoq
-	huyXQVmW73SqjCn8pltcedKwx9AEbDu9SeMOjrj8hpCc82rB5YUDn1kKVRZqd5oMVGoHXvoBqrcsj
-	32J52Bfs/eh1SZID/26fSHed1SR7KdjQV1h7Fye0do9t4xsrcANPh49pEm5JPVf3uDLbh6sfVQ6N+
-	lca7x85e7WE7A4qlpFVsIhd+y2WTisPtl86rmMsFuB7uLg5TCgpYIP99DRw6KIVIcX1P8m5qIlMvF
-	KsMe/abdWLu6RrooH7Dw==;
+	List-Owner; bh=bqgZs9KYdsD6wcSbHDm5vEnxiXscmywWwqFlkCZWp/g=; b=SZS2HBunflg9le
+	p2fermTI5vUQPjRYe2q/XBYDd7o9b/CPiR22ECvbMQVGh3f8eN3z0kL+DX6cWaRf+cgsQn0vkVb8e
+	EVTDmBFlW9HQkfFINjqaGBZI/8y3ZVfArrRKyfTEKgtpR9mP/aoT0iOUBa+b9aWojD6HCpAR0x+9/
+	m27wXDRBhRrxCr7441so+SG2u7p/bJ/hB6sthL6A6zG07zqw78znDk9HNxriO1lsuVIdYvfqH1Lsm
+	r4MzJziMyN6u9HcUXFR6AEMlkeFViTHuhVvm3ScsoDgoxetY9fc+KSBAOBn4MLA1QXXUFXcMR8FCG
+	GzeE2VNznnNpjrJ2KrQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neU7t-00Ge14-Uq; Wed, 13 Apr 2022 03:57:05 +0000
-Received: from out2-smtp.messagingengine.com ([66.111.4.26])
+	id 1neZhG-000ReR-93; Wed, 13 Apr 2022 09:53:58 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neU7A-00GddU-II; Wed, 13 Apr 2022 03:56:23 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
- by mailout.nyi.internal (Postfix) with ESMTP id 7E8CD5C0219;
- Tue, 12 Apr 2022 23:56:19 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute5.internal (MEProxy); Tue, 12 Apr 2022 23:56:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
- cc:cc:content-transfer-encoding:date:date:from:from:in-reply-to
- :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm2; t=1649822179; x=1649908579; bh=Fp
- hEGeu2TKs5vrPfK6f45SzuLyN0QBXdvH1zTwhivJo=; b=baW0b+RpuNN2H2Vxi1
- MMXpw+XcqM1AgkazBgfVkZRH9ktKe+N5FE7XeC6QmyQS0I9WEq5xm+UIw0dbU1nL
- da4P7mBqCmCFgXxz6lVDcVSLJ17t3cW/wIl2ReOP64hrMPl8EjkcRy6Yef+fGBwg
- o49/Oj0vHLzv9T5h3DtK28MbjHY3q9gHOge2SJPQLhZEUb2ciaTCY2wUlXFBNKYR
- XZopA10DQyLLVnXTCtOuXbxyRpdq282+/7coM0Vsd9my9O4CnS+avvv2wjXiu1Pc
- w8dtxapyWRAeVb7fJI4+mb6pTDUEnoJqiAnMqe8T4w3YI6g+VC/9yYqjmNJiiprT
- qD5A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
- :from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:sender:subject:subject:to:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
- 1649822179; x=1649908579; bh=FphEGeu2TKs5vrPfK6f45SzuLyN0QBXdvH1
- zTwhivJo=; b=OrzQU1+t/IQ4ke5pVMjODv71ZUVAmqgKqvBNR+Wt1JA0fU24j49
- yZozH6FvFa0IX4nIQKZD/s7yt0Fh7D0ABvslJqHZ2f6/a8lZbE/nRzPOa2URBueW
- AbdDuH1oENdc/zlhuws4OtDWlCbPtJX+XUHvsyDhD8+rHSIMQPJvfu2rr2vY1Oak
- POzstT2lQ4Il+mQLZl7F9Oo/dKbX2IZe4YkNu/0+E/0leHiE0b/Af0+PkkXIPJdY
- Uhw3rslX5XIqHf7FqD5IaZHaOVSFugi0XmzJPlOF40I4G2Nu+Hz7jyPa05Y9lMak
- epjGoGaxdpUKTHIc8SaxQSD14aeS9xEZ8cw==
-X-ME-Sender: <xms:40lWYpJDiSXEt7WysQlbDDjtq6Z9QH5QH2U9gKeY5_Ta3kwg0nG97A>
- <xme:40lWYlINtXwSFJvfkh3hiH5lCrJuT8nC0wpHERITiVETyrQ7WtlQrWukyM7RnY11K
- mi4eVg15vJbGK3HkA>
-X-ME-Received: <xmr:40lWYhuwBh4ZVKbztHIbH6_LASuoA5rcFNqCG1D9FQA3anuiBTShkx31Np1pJmfrOVZrurq8NNZuaMcu6iNGUXTeN0WU0UaoQXwc6_dez1wRNZOKLM4fevJ-l4eLqCppN3Hz_Q>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudekledgjeeiucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhephffvufffkffojghfggfgsedtkeertdertddtnecuhfhrohhmpefurghmuhgv
- lhcujfholhhlrghnugcuoehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhgqeenucggtf
- frrghtthgvrhhnpeduhfejfedvhffgfeehtefghfeiiefgfeehgfdvvdevfeegjeehjedv
- gfejheeuieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
- hmpehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhg
-X-ME-Proxy: <xmx:40lWYqap2NKEUJt1dX3UELB7Trah-pG9ux2Vz8irTslCNIHBUcdgmA>
- <xmx:40lWYgYk9wPIb_NThFm3tZy2SVRbuksyPOoOtaN7yBJHr1VG8havkw>
- <xmx:40lWYuBWBqXiegJXWpjZnBT7PYHgreZVp6OApiNdnV9-2z3tgJvEfw>
- <xmx:40lWYlOx9qPtDW69LBwZttykHQoYNAmQnh1wUrIQtqiPo8TDwhUbGQ>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 12 Apr 2022 23:56:18 -0400 (EDT)
-From: Samuel Holland <samuel@sholland.org>
-To: Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org
-Cc: Samuel Holland <samuel@sholland.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] arm64: dts: rockchip: pinenote: Add USB and TCPC
-Date: Tue, 12 Apr 2022 22:56:14 -0500
-Message-Id: <20220413035614.31045-3-samuel@sholland.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220413035614.31045-1-samuel@sholland.org>
-References: <20220413035614.31045-1-samuel@sholland.org>
+ id 1neZh5-000Rbc-CB; Wed, 13 Apr 2022 09:53:48 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id BA3CAB8216F;
+ Wed, 13 Apr 2022 09:53:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB5E9C385A3;
+ Wed, 13 Apr 2022 09:53:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1649843624;
+ bh=6r3fkXMzd8g99ogF3ht/l19Cw3uTqx/4BgPVQdUQkk0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=iafrXM5mzK/c592vRQLkWV3sKdyBpujiiNfjdHBT10mt/cEaDhRzj9MDoAyCO4C0I
+ pQjQb6AcaZkPqW/KmaQ70t322bvLg6Th4GjOHC9UxfJdRBs3EharNlcvTKHXZFmKsL
+ B+4cTdmdl+Vd8w6UCl+YzMNP2HyyDBXYAA2d0KQXmJq+DK+lyF7sJn6NO+aSHfBRi6
+ NJGVGqtBR4MdY4i39vO2p7z/R9njWlcteYPsYgWZ4eEyM1PbjNtLDczJTpcUAeGghm
+ XSeYEo6DmBJCq4EZAQzYU8ifup5Zy7ucUHsYF52+sBoAaoqukX+MNxby6j1WgTeB5y
+ sUWUPTXZt6vYA==
+Date: Wed, 13 Apr 2022 15:23:40 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: cgel.zte@gmail.com
+Cc: kishon@ti.com, heiko@sntech.de, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Minghao Chi <chi.minghao@zte.com.cn>, Zeal Robot <zealci@zte.com.cn>
+Subject: Re: [PATCH] phy/rockchip: Use of_device_get_match_data()
+Message-ID: <YladpACp1FiLkmXh@matsya>
+References: <20220303014406.2059140-1-chi.minghao@zte.com.cn>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220303014406.2059140-1-chi.minghao@zte.com.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220412_205621_129331_16896E0E 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20220413_025347_586653_60348991 
+X-CRM114-Status: UNSURE (   6.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,99 +75,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-PineNote has a USB Type-C port connected to the first USB 2.0 OTG PHY
-and XHCI controller via a Willsemi WUSB3801 Type-C port controller.
-Add support for it.
+On 03-03-22, 01:44, cgel.zte@gmail.com wrote:
+> From: Minghao Chi (CGEL ZTE) <chi.minghao@zte.com.cn>
+> 
+> Use of_device_get_match_data() to simplify the code.
 
-Signed-off-by: Samuel Holland <samuel@sholland.org>
----
+Applied, thanks
 
- .../boot/dts/rockchip/rk3566-pinenote.dtsi    | 58 +++++++++++++++++++
- 1 file changed, 58 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-index adc0e7d39fb3..e01668e6e5f9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-@@ -466,6 +466,39 @@ led@1 {
- 			default-brightness = <0>;
- 		};
- 	};
-+
-+	wusb3801: tcpc@60 {
-+		compatible = "willsemi,wusb3801";
-+		reg = <0x60>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA4 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-0 = <&tcpc_int_l>;
-+		pinctrl-names = "default";
-+
-+		connector {
-+			compatible = "usb-c-connector";
-+			label = "USB-C";
-+			vbus-supply = <&otg_switch>;
-+			power-role = "dual";
-+			try-power-role = "sink";
-+			data-role = "dual";
-+			typec-power-opmode = "default";
-+			pd-disable;
-+
-+			ports {
-+				#address-cells = <0x1>;
-+				#size-cells = <0x0>;
-+
-+				port@0 {
-+					reg = <0x0>;
-+
-+					typec_hs_usb2phy0: endpoint {
-+						remote-endpoint = <&usb2phy0_typec_hs>;
-+					};
-+				};
-+			};
-+		};
-+	};
- };
- 
- &i2c5 {
-@@ -572,6 +605,12 @@ wifi_enable_h: wifi-enable-h {
- 		};
- 	};
- 
-+	tcpc {
-+		tcpc_int_l: tcpc-int-l {
-+			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
- 	vcc-wl {
- 		vcc_wl_pin: vcc-wl-pin {
- 			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-@@ -659,3 +698,22 @@ bluetooth {
- &uart2 {
- 	status = "okay";
- };
-+
-+&usb_host0_xhci {
-+	dr_mode = "otg";
-+	status = "okay";
-+};
-+
-+&usb2phy0 {
-+	status = "okay";
-+};
-+
-+&usb2phy0_otg {
-+	status = "okay";
-+
-+	port {
-+		usb2phy0_typec_hs: endpoint {
-+			remote-endpoint = <&typec_hs_usb2phy0>;
-+		};
-+	};
-+};
 -- 
-2.35.1
-
+~Vinod
 
 _______________________________________________
 Linux-rockchip mailing list
