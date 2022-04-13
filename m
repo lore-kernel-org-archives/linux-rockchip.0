@@ -4,77 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21FB8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 13:38:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C078C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Apr 2022 13:38:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GvQJ2zQLCEYUqGw1Y6Txp5HQldQEL/+FfVLUdvCYBXQ=; b=fOl5x93OBD7mmi
-	jdZQNOO7ZrrjXlKRB32nZjT5GxFfZr7XThGUMLWyUJVc5oBcvGPV0KE6DniflTqsaJDiQbdFxfrP2
-	JXtCXXwy7/Q96+NULFfUS6KIQEdeKyX4bXUPxjeuJdiiLhTIwmwLB1K41J84Se+7l+3D9GL+YOZ00
-	H/ijfHdt5cWlitYnWzsjNnlz1Xw9GYeB2LZo26eW6DTiuLuKT1k31XzkdyudSP5K2bqFAlNpfiot4
-	QrK3eB80tgZllUlaDDU8nXUB7g5xIjnhxsY/AWechwImNLkVPtVz8eWP+aNu5PLSBzH15q4XekjN/
-	pe48qPhjfAlel6NooHNA==;
+	List-Owner; bh=rOSnToSZwrYBVEPPgPijJO+bYN/pdD6dXyXFW5OJrys=; b=OVVVMaeepGT8/f
+	LkbahdkbbHXF82QTPTP6CnN1BnJWA4ZEGM+NFhgqYAGz31sCIVqBE6dNUXPZzG7kUZZvCrW67XvJH
+	iRnVt1su03/+HTpgQTPDhrp0SAhV2ssnR177+fXYAnpDIP+D8ofNLei7kynP9rVJui6mwSWSX3gXg
+	w9Jm+vRboJxzl496TL6IfhtDjrgDUCKeXK2aMQQtkCFTXdaQnkhVHKrGnntDcaNUz8irW18KLG3Tq
+	36B5x8x8JYxy4dm6w2xvhzcTCGpTm/8XXe+Qtem6TZe8JFMnseapZ9B8Nv4KTW/gsB1pyS/bcfbBe
+	lQsBGgADiPYREkcHnPBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nedCO-001CSV-9i; Wed, 13 Apr 2022 13:38:20 +0000
+	id 1nedCi-001Cdd-5Q; Wed, 13 Apr 2022 13:38:40 +0000
 Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nedCB-001CLK-KC; Wed, 13 Apr 2022 13:38:09 +0000
-Received: by mail-qv1-xf29.google.com with SMTP id i14so1567100qvk.13;
- Wed, 13 Apr 2022 06:38:03 -0700 (PDT)
+ id 1nedCB-001CL3-KH; Wed, 13 Apr 2022 13:38:09 +0000
+Received: by mail-qv1-xf29.google.com with SMTP id a10so1587911qvm.8;
+ Wed, 13 Apr 2022 06:38:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=IqOtlYyePRN/r4aPym/C6r8euVVGX9fSqK0zMFP5Scg=;
- b=QVWku54j+UAXoEMpnZ1vv7gQuCMEln37OGTReSXY+KDFySd2yXriskDocWaYYDoi16
- R1DEchhdtrw58TIj16nF4Dake/0VNdzRAcLysRzLCKefxLPM+NTyY1AnatI3Z8J6kf6P
- nzAdeh7SEeO5UvvljFB+hk7xxCTMbx6F15dTzaYRd9NzML2taBWSDbEao2JJ2VQxwufs
- +sq/41Pb95oMjpJ11dOfj9VP7pD4a21gDC7qdQIEYIPfyUQwAzWOWkE1AMOmowxi0lPh
- FSUGLYWqw6tZQDkzeuReqlLMOoqQUaRqXJx1vlfO71j0EoccWOCwE6Cu8pOSnqBKDcaL
- lGVA==
+ bh=BG2CzCPsxTacBK2Hm53pzASbB7sL/kn/FNomuFfzr4s=;
+ b=GCUNnePEjrXP7EsqiO7hJ0SYR2SMrq2z9jcgA//gFjxr0v5s2jE2o68g+9Cc0LRM6I
+ tIXhsLHNJilFnPkNTrNY5zNjpA/Y22cgvAykzHKJKux2R6kE9ozK2xHjnizUW+bbQ0aN
+ aaXOl4XM2Aq5hfWHiq6F06A2dbZURvoZt3lT/0U62thvkuTUz6k1l+M1uXTlctCHEoE/
+ bsXsuYSa9AMtCEIvZeP9tXC9MK/a2FINyFvfBmbYciT25058gwhqbdF6v9QHPTT35bf1
+ 74IElBS/My/TUTCp3aC3wuKki1dBC1qR9XozrYvLTKbZ3Ukry6/qUd5yDjp/02+0eYHk
+ 3u7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=IqOtlYyePRN/r4aPym/C6r8euVVGX9fSqK0zMFP5Scg=;
- b=b/ZL24DUwrAaxfG/q+EJ+tw+So6YnwaIvsJc/7J6iaMXog4XMDD5S83oxgaW4MQLU6
- XWurjHNSeaHwgR7qrYALv2lclq2t2vJh9j5I6HHHC0SlYhmPeUVoKJs02aLEmVXKPiHJ
- QOtomTdWiF5i866varZzljV5YH+18Q8wQuX05oPv3OdlZaNRVw8bvuMqu9XkRp5RbOY4
- dVI8qUB4/gSD6KHtlnNUyqrReTGsDGA71Y78BidGiGz442h7crQpcKsoBvevxVnbX53K
- oigT1U6/DHxF95pz/iztr1CshhZSVy656FWGWqZ+zFzhRu821ehv5sPOGYqF3eDp2Fbn
- j1PA==
-X-Gm-Message-State: AOAM531MC8DhXqXeQRBjzcHZsA2pZBBf+2DgE8zxM8za/Mm4wDQ4pYSo
- sV8axjM63Zrl4Kx4+6I7HhY=
-X-Google-Smtp-Source: ABdhPJxvhXF0hMoO3IPsR9ctAISTuf1qYFUU0vcqTreM1lIvwx2wqzJSVw45r9E3LRkANSxrLVws9Q==
-X-Received: by 2002:a05:6214:e4f:b0:442:88d4:ecc0 with SMTP id
- o15-20020a0562140e4f00b0044288d4ecc0mr35807143qvc.47.1649857082566; 
- Wed, 13 Apr 2022 06:38:02 -0700 (PDT)
+ bh=BG2CzCPsxTacBK2Hm53pzASbB7sL/kn/FNomuFfzr4s=;
+ b=GC3DYxdIY7HDC907qbc4E64VzYIEmVkv1VZ9abyfW0U/03XJ+nOPiHirQT9f+M0vrQ
+ z1J8PdwaQh6/DMF+0nxLPMV+g17CAsgIPrZj1z+diGHRKXaUqyBEabEuoLEjH9cncpAu
+ Qat0LBS81bbYPUniw+X493AEk76rQ2drbQPA9uPoj4wbDfQ0jb9Yn9npEJoTf0uVgIG9
+ qnWOqckPxODJEJM7OkH/MjQ8viz4z3QlmlzFTkElpyamEWai6LocJJ1fjZZvbj2VCuGF
+ prYBgUB9QR9mceonE/cqILKrKaEIDhPWa+ykUjvuAg/YWp7fxFA3W5Sb6r87OIglR2VZ
+ y47Q==
+X-Gm-Message-State: AOAM533V5QuILEoapcSi1kMrPgPYedFM9VC8mnGbwOEaN41ZUOh2iVEA
+ HUX/Bh+DruGqvaiwlwc4uXs=
+X-Google-Smtp-Source: ABdhPJxtrkeHLH5/aBPflSAvm/9GsIMSUWd9xlXbmNLpZwXqAxEI9l7arktBHaS14DMzxpoxQR9X7g==
+X-Received: by 2002:a0c:c692:0:b0:443:f22e:520 with SMTP id
+ d18-20020a0cc692000000b00443f22e0520mr33358025qvj.96.1649857080634; 
+ Wed, 13 Apr 2022 06:38:00 -0700 (PDT)
 Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
  by smtp.gmail.com with ESMTPSA id
- 143-20020a370795000000b0069c59e1b8eesm790584qkh.10.2022.04.13.06.38.02
+ 143-20020a370795000000b0069c59e1b8eesm790584qkh.10.2022.04.13.06.38.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Apr 2022 06:38:02 -0700 (PDT)
+ Wed, 13 Apr 2022 06:38:00 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>,
+ =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>,
  linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 4/4] arm64: dts: rockchip: enable pcie controller on
- quartz64-a
-Date: Wed, 13 Apr 2022 09:37:31 -0400
-Message-Id: <20220413133731.242870-5-pgwipeout@gmail.com>
+Subject: [PATCH v2 2/4] PCI: dwc: rockchip: add legacy interrupt support
+Date: Wed, 13 Apr 2022 09:37:29 -0400
+Message-Id: <20220413133731.242870-3-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220413133731.242870-1-pgwipeout@gmail.com>
 References: <20220413133731.242870-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220413_063807_688901_1F73997B 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20220413_063807_692356_D97C4B83 
+X-CRM114-Status: GOOD (  19.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,80 +93,183 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the nodes to enable the pcie controller on the quartz64 model a
-board.
+The legacy interrupts on the rk356x pcie controller are handled by a
+single muxed interrupt. Add irq domain support to the pcie-dw-rockchip
+driver to support the virtual domain.
 
 Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 ---
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 34 +++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 123 +++++++++++++++++-
+ 1 file changed, 121 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index 141a433429b5..85926d46337d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -125,6 +125,18 @@ vbus: vbus {
- 		vin-supply = <&vcc12v_dcin>;
- 	};
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index c9b341e55cbb..a8b1dc03d3cc 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -10,9 +10,12 @@
  
-+	vcc3v3_pcie_p: vcc3v3_pcie_p {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pcie_enable_h>;
-+		regulator-name = "vcc3v3_pcie_p";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc_3v3>;
-+	};
-+
- 	vcc5v0_usb: vcc5v0_usb {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc5v0_usb";
-@@ -201,6 +213,10 @@ &combphy1 {
- 	status = "okay";
+ #include <linux/clk.h>
+ #include <linux/gpio/consumer.h>
++#include <linux/irqchip/chained_irq.h>
++#include <linux/irqdomain.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+ #include <linux/of_device.h>
++#include <linux/of_irq.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+@@ -36,10 +39,13 @@
+ #define PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
+ #define PCIE_L0S_ENTRY			0x11
+ #define PCIE_CLIENT_GENERAL_CONTROL	0x0
++#define PCIE_CLIENT_INTR_STATUS_LEGACY	0x8
++#define PCIE_CLIENT_INTR_MASK_LEGACY	0x1c
+ #define PCIE_CLIENT_GENERAL_DEBUG	0x104
+-#define PCIE_CLIENT_HOT_RESET_CTRL      0x180
++#define PCIE_CLIENT_HOT_RESET_CTRL	0x180
+ #define PCIE_CLIENT_LTSSM_STATUS	0x300
+-#define PCIE_LTSSM_ENABLE_ENHANCE       BIT(4)
++#define PCIE_LEGACY_INT_ENABLE		GENMASK(3, 0)
++#define PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
+ #define PCIE_LTSSM_STATUS_MASK		GENMASK(5, 0)
+ 
+ struct rockchip_pcie {
+@@ -51,6 +57,8 @@ struct rockchip_pcie {
+ 	struct reset_control		*rst;
+ 	struct gpio_desc		*rst_gpio;
+ 	struct regulator                *vpcie3v3;
++	struct irq_domain		*irq_domain;
++	raw_spinlock_t			irq_lock;
  };
  
-+&combphy2 {
-+	status = "okay";
+ static int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip,
+@@ -65,6 +73,105 @@ static void rockchip_pcie_writel_apb(struct rockchip_pcie *rockchip,
+ 	writel_relaxed(val, rockchip->apb_base + reg);
+ }
+ 
++static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
++{
++	struct irq_chip *chip = irq_desc_get_chip(desc);
++	struct rockchip_pcie *rockchip = irq_desc_get_handler_data(desc);
++	struct device *dev = rockchip->pci.dev;
++	u32 reg;
++	u32 hwirq;
++	u32 virq;
++
++	chained_irq_enter(chip, desc);
++
++	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_LEGACY);
++
++	while (reg) {
++		hwirq = ffs(reg) - 1;
++		reg &= ~BIT(hwirq);
++
++		virq = irq_find_mapping(rockchip->irq_domain, hwirq);
++		if (virq)
++			generic_handle_irq(virq);
++		else
++			dev_err(dev, "unexpected IRQ, INT%d\n", hwirq);
++	}
++
++	chained_irq_exit(chip, desc);
++}
++
++static void rockchip_intx_mask(struct irq_data *data)
++{
++	struct rockchip_pcie *rockchip = irq_data_get_irq_chip_data(data);
++	unsigned long flags;
++	u32 val;
++
++	/* disable legacy interrupts */
++	raw_spin_lock_irqsave(&rockchip->irq_lock, flags);
++	val = HIWORD_UPDATE_BIT(PCIE_LEGACY_INT_ENABLE);
++	val |= PCIE_LEGACY_INT_ENABLE;
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_LEGACY);
++	raw_spin_unlock_irqrestore(&rockchip->irq_lock, flags);
 +};
 +
- &cpu0 {
- 	cpu-supply = <&vdd_cpu>;
- };
-@@ -509,6 +525,14 @@ rgmii_phy1: ethernet-phy@0 {
- 	};
- };
- 
-+&pcie2x1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_reset_h>;
-+	reset-gpios = <&gpio1 RK_PB2 GPIO_ACTIVE_HIGH>;
-+	status = "okay";
-+	vpcie3v3-supply = <&vcc3v3_pcie_p>;
++static void rockchip_intx_unmask(struct irq_data *data)
++{
++	struct rockchip_pcie *rockchip = irq_data_get_irq_chip_data(data);
++	unsigned long flags;
++	u32 val;
++
++	/* enable legacy interrupts */
++	raw_spin_lock_irqsave(&rockchip->irq_lock, flags);
++	val = HIWORD_UPDATE_BIT(PCIE_LEGACY_INT_ENABLE);
++	val &= ~PCIE_LEGACY_INT_ENABLE;
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_LEGACY);
++	raw_spin_unlock_irqrestore(&rockchip->irq_lock, flags);
 +};
 +
- &pinctrl {
- 	bt {
- 		bt_enable_h: bt-enable-h {
-@@ -534,6 +558,16 @@ diy_led_enable_h: diy-led-enable-h {
- 		};
- 	};
++static struct irq_chip rockchip_intx_irq_chip = {
++	.flags			= IRQCHIP_SKIP_SET_WAKE | IRQCHIP_MASK_ON_SUSPEND,
++	.irq_mask		= rockchip_intx_mask,
++	.irq_unmask		= rockchip_intx_unmask,
++	.name			= "INTx",
++};
++
++static int rockchip_pcie_intx_map(struct irq_domain *domain, unsigned int irq,
++				  irq_hw_number_t hwirq)
++{
++	irq_set_chip_and_handler(irq, &rockchip_intx_irq_chip, handle_simple_irq);
++	irq_set_chip_data(irq, domain->host_data);
++
++	return 0;
++}
++
++static const struct irq_domain_ops intx_domain_ops = {
++	.map = rockchip_pcie_intx_map,
++};
++
++static int rockchip_pcie_init_irq_domain(struct rockchip_pcie *rockchip)
++{
++	struct device *dev = rockchip->pci.dev;
++	struct device_node *intc;
++
++	raw_spin_lock_init(&rockchip->irq_lock);
++
++	intc = of_get_child_by_name(dev->of_node, "legacy-interrupt-controller");
++	if (!intc) {
++		dev_err(dev, "missing child interrupt-controller node\n");
++		return -EINVAL;
++	}
++
++	rockchip->irq_domain = irq_domain_add_linear(intc, PCI_NUM_INTX,
++						    &intx_domain_ops, rockchip);
++	of_node_put(intc);
++	if (!rockchip->irq_domain) {
++		dev_err(dev, "failed to get a INTx IRQ domain\n");
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
+ {
+ 	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
+@@ -111,7 +218,19 @@ static int rockchip_pcie_host_init(struct pcie_port *pp)
+ {
+ 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
+ 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
++	struct device *dev = rockchip->pci.dev;
+ 	u32 val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
++	int irq, ret;
++
++	irq = of_irq_get_byname(dev->of_node, "legacy");
++	if (irq < 0)
++		return irq;
++
++	irq_set_chained_handler_and_data(irq, rockchip_pcie_legacy_int_handler, rockchip);
++
++	ret = rockchip_pcie_init_irq_domain(rockchip);
++	if (ret < 0)
++		dev_err(dev, "failed to init irq domain\n");
  
-+	pcie {
-+		pcie_enable_h: pcie-enable-h {
-+			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		pcie_reset_h: pcie-reset-h {
-+			rockchip,pins = <1 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
+ 	/* LTSSM enable control mode */
+ 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
 -- 
 2.25.1
 
