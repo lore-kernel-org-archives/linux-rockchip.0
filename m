@@ -4,71 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECAB1C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Apr 2022 08:13:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEA02C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Apr 2022 08:16:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DA80TTvKS9EiqEf1ZdFaLvR3ehsrdjowRLhTv9BD+6Y=; b=gwqpVsOQv6kLde
-	ZArDYrtN+UVrZGlZZxIcvY/Ojhp78Act8ZrL/LLn7cL8l8vOpamye8aRSFczD8lBCeUuWpX4I2VCB
-	WCaz0tDg1GSDbabhuHHXc8Fdirllh1s3GYszk6CBUj2komFfMuQLp+r8ApUdfcbI9KF5vgvZ4i3Mu
-	7KvMBQZl+DAfhfBYhwBY8PhnGsw+fgCzX4gB87bZTyb8cV+bgHV9H5EaCQzMm4gO8eifCvCYexEqN
-	omlZGxR9yzL2zhKXcUlBHYekwIZkfy9jrs3A0+R+7gmUjG7Dfw7fpgAw/jyCC+DGn5EQg+gTg47B6
-	KplQshGmEIZ6ARrsi8gg==;
+	List-Owner; bh=xcr4NOAIHpr2WHHUWqNDlxYA0xmejmoQbrCT1UEo0PI=; b=trsRO+MxNuXcRS
+	5AmABCcbicNLYgHpwwIXuvkenNz/SvdFjjU7q0l6/9F6qng8w02Hn45MWu5t4XMSBZy5WXptpEdE8
+	SIf4fmXsylX/XKE9iFt0RSF4mOawYmNj6BWX+XoyBLyTX4qQ7aDi02ZM0m40SNp/nH74scbbvwvTZ
+	oMtO8c3MbfzVB6aIjc0lLIp47RcGS7sBlyqbgoDkzuRlcx4VYDeZNILZuvLJAlDJ0FYSSB8tVeMPM
+	NQTJz+AOLDKORseiYFa8h6zJPI5nh2Vy8tD1N2tfXXknWoxqk4g2Dn1JerSsDHV0uRqXgGOpUUhUh
+	UKyk2Sw1+7tq9gJ0wprQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1neubM-004U7N-Pd; Thu, 14 Apr 2022 08:13:16 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1neueU-004Uor-3t; Thu, 14 Apr 2022 08:16:30 +0000
+Received: from mail.andi.de1.cc ([2a01:238:4321:8900:456f:ecd6:43e:202c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1neubB-004U0v-Bm
- for linux-rockchip@lists.infradead.org; Thu, 14 Apr 2022 08:13:07 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1neub8-0005xp-0N; Thu, 14 Apr 2022 10:13:02 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1neub6-0002oL-38; Thu, 14 Apr 2022 10:13:00 +0200
-Date: Thu, 14 Apr 2022 10:13:00 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Alex Bee <knaerzche@gmail.com>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [PATCH v10 12/24] drm/rockchip: dw_hdmi: drop mode_valid hook
-Message-ID: <20220414081300.GI4012@pengutronix.de>
-References: <20220408112238.1274817-1-s.hauer@pengutronix.de>
- <20220408112238.1274817-13-s.hauer@pengutronix.de>
- <8fac5d72-c635-521c-e7d1-a3980a4ed719@gmail.com>
- <20220411075357.GQ4012@pengutronix.de>
- <2b0f0eba-87fe-e2c4-d951-2b090b827ca6@gmail.com>
+ id 1neueQ-004UnE-Gr; Thu, 14 Apr 2022 08:16:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=kemnade.info; s=20180802; h=Content-Transfer-Encoding:Content-Type:
+ MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:From:Date:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=6YMpm44acphdMuRGEx9DBy3vdiDjBzEpIjiQ/MN8cI8=; b=V9L2VcKqDpUCMVFPhIRU+cC5lb
+ oAwHcN+Gl9Km7FecMITzEBk68MACkuskRzc8YFegR19juSR6D5IlIy5TMpvyvvxryCW3ez4S9ohqW
+ LCCE67T+Osu8LzvuSYSKaMbSy7iJByDg7CZ4WXB2mTnx6fIz2AHiV8wXfEoNWuRPB1Fc=;
+Received: from p200300ccff1771001a3da2fffebfd33a.dip0.t-ipconnect.de
+ ([2003:cc:ff17:7100:1a3d:a2ff:febf:d33a] helo=aktux)
+ by mail.andi.de1.cc with esmtpsa (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.89) (envelope-from <andreas@kemnade.info>)
+ id 1neudp-0001ui-UW; Thu, 14 Apr 2022 10:15:50 +0200
+Date: Thu, 14 Apr 2022 10:15:48 +0200
+From: Andreas Kemnade <andreas@kemnade.info>
+To: Samuel Holland <samuel@sholland.org>
+Cc: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>, Sandy Huang
+ <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, Alistair Francis
+ <alistair@alistair23.me>, =?UTF-8?B?T25kxZllag==?= Jirman <x@xff.cz>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>, Geert
+ Uytterhoeven <geert@linux-m68k.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Liang Chen <cl@rock-chips.com>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Michael Riesch <michael.riesch@wolfvision.net>, Nicolas Frattaroli
+ <frattaroli.nicolas@gmail.com>, Peter Geis <pgwipeout@gmail.com>, Rob
+ Herring <robh+dt@kernel.org>, Sam Ravnborg <sam@ravnborg.org>, Thierry
+ Reding <thierry.reding@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH 02/16] dt-bindings: display: rockchip: Add EBC binding
+Message-ID: <20220414101548.2b9c3dad@aktux>
+In-Reply-To: <20220413221916.50995-3-samuel@sholland.org>
+References: <20220413221916.50995-1-samuel@sholland.org>
+ <20220413221916.50995-3-samuel@sholland.org>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2b0f0eba-87fe-e2c4-d951-2b090b827ca6@gmail.com>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 10:11:46 up 14 days, 20:41, 60 users,  load average: 0.48, 0.29, 0.21
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_011305_436530_E8624D4F 
-X-CRM114-Status: GOOD (  39.09  )
+X-CRM114-CacheID: sfid-20220414_011626_744464_C8EA9DE0 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,88 +82,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 11, 2022 at 07:00:51PM +0200, Alex Bee wrote:
-> Am 11.04.22 um 09:53 schrieb Sascha Hauer:
-> > On Sun, Apr 10, 2022 at 01:31:23PM +0200, Alex Bee wrote:
-> >> Am 08.04.22 um 13:22 schrieb Sascha Hauer:
-> >>> The driver checks if the pixel clock of the given mode matches an entry
-> >>> in the mpll config table. The frequencies in the mpll table are meant as
-> >>> a frequency range up to which the entry works, not as a frequency that
-> >>> must match the pixel clock. The downstream Kernel also does not have
-> >>> this check, so drop it to allow for more display resolutions.
-> >>>
-> >>> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> >>> ---
-> >>>
-> >> You're correct: That frequency is meant to be greater or equal. But I'm
-> >> not sure if it makes sense to completely drop it - what happens for
-> >> clocks rates > 600 MHz which might be supported by later generation
-> >> sinks (HDMI 2.1 or later)?
-> >> As these are not supported by the IPs/PHYs currently supported by that
-> >> driver a reason a simple
-> >>
-> >>         int i;
-> >>
-> >>
-> >>
-> >>         for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
-> >>
-> >> -               if (pclk == mpll_cfg[i].mpixelclock) {
-> >>
-> >> +               if (pclk >= mpll_cfg[i].mpixelclock) {
-> > 
-> > Should be <=
-> 
-> Sure, sorry 'bout that.
-> > 
-> > No other user currently in the tree has this check.
-> I dont't think that's true - it might not be checked against mpll table,
-> but max pixelclocks are checked in meson_encoder_hdmi_mode_valid for
-> amlogic, in sun8i_dw_hdmi_mode_valid_a83t and
-> sun8i_dw_hdmi_mode_valid_h6 for allwinner and rcar_hdmi_mode_valid for
-> rcar platform. There is no other point in rockchip dw-hdmi platform
-> driver where this is currently checked.
-> 
-> > hdmi_phy_configure_dwc_hdmi_3d_tx() has this:
-> > 
-> >> 	/* PLL/MPLL Cfg - always match on final entry */
-> >> 	for (; mpll_config->mpixelclock != ~0UL; mpll_config++)
-> >> 		if (mpixelclock <= mpll_config->mpixelclock)
-> >> 			break;
-> >>
-> >> 	for (; curr_ctrl->mpixelclock != ~0UL; curr_ctrl++)
-> >> 		if (mpixelclock <= curr_ctrl->mpixelclock)
-> >> 			break;
-> >>
-> >> 	for (; phy_config->mpixelclock != ~0UL; phy_config++)
-> >> 		if (mpixelclock <= phy_config->mpixelclock)
-> >> 			break;
-> >>
-> >> 	if (mpll_config->mpixelclock == ~0UL ||
-> >> 	    curr_ctrl->mpixelclock == ~0UL ||
-> >> 	    phy_config->mpixelclock == ~0UL)
-> >> 		return -EINVAL;
-> > 
-> > This means we already have this check and others already in the generic
-> > part of the dw-hdmi driver. Should we maybe do the above in
-> > dw_hdmi_bridge_mode_valid() instead of doing it in the users?
-> I guess that's not possible, due to the different kind of phys which are
-> used for dw-hdmi. The checks you are refering to, are only done for dw
-> hdmi tx phys, but not for "vendor phys" (like for RK3328 and RK3228, for
-> example) - those have have own drivers which are handled only in dw-hdmi
-> platform driver.
-> Therefore this check should remain here for Rockchip also.
+Hi Samuel,
 
-Ok, agreed. I'll keep the check for the next round and just replace
-the == with <=.
+for comparison, here is my submission for the IMX EPDC bindings:
 
-Sascha
+https://lore.kernel.org/linux-devicetree/20220206080016.796556-2-andreas@kemnade.info/
 
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+On Wed, 13 Apr 2022 17:19:02 -0500
+Samuel Holland <samuel@sholland.org> wrote:
+
+[...]
+we have sy7636a driver in kernel which should be suitable for powering a EPD
+and temperature measurement. So I would expect that to be 
+> +  io-channels:
+> +    maxItems: 1
+> +    description: I/O channel for panel temperature measurement
+> +
+so how would I reference the hwmon/thermal(-zone) of the sy7636a here?
+
+> +  panel-supply:
+> +    description: Regulator supplying the panel's logic voltage
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  vcom-supply:
+> +    description: Regulator supplying the panel's compensation voltage
+> +
+> +  vdrive-supply:
+> +    description: Regulator supplying the panel's gate and source drivers
+> +
+SY7636a has only one logical regulator in kernel for for the latter two.
+
+If we have a separate panel node, than maybe these regulators should go
+there as they belong to the panel as they are powering the panel and
+not the EBC.
+
+> +  port:
+> +    $ref: /schemas/graph.yaml#/properties/port
+> +    description: OF graph port for the attached display panel
+> +
+In my approach for the IMX EPDC, (I will send a better commented one
+soon) I have no separate subnode to avoid messing with additional
+display parameters. Not sure what is really better here.
+
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +  - resets
+> +  - reset-names
+> +  - power-domains
+> +  - panel-supply
+> +  - vcom-supply
+> +  - vdrive-supply
+
+If things differ how the different phyiscally existing regulators are
+mapped into logical ones (even the vdrive supply is still a bunch of
+physical regulators mapped into one logical one), then not everything
+can be required.
+
+Regards,
+Andreas
 
 _______________________________________________
 Linux-rockchip mailing list
