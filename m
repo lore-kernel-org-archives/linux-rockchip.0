@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA409C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Apr 2022 10:51:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2A4AC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Apr 2022 10:54:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F9oLN1LeDlhlSFGbxeSurgNwFbukZDksQLB7Y/EVMXU=; b=WLzgD8HyiOmeHC
-	OlDMQFv99IO1PkpeqJ5Kt2FLaXhbYyZOboQTKqOVw3uuxJuMAKmFPinC4VsFzv6VBXLzQWaAgo/Zz
-	sAlxM9NrsODORUmJSjIioZ4yZ2Q4zkaFtuRB8k+0eON+HiOH/R/Va1jxZM8duqt7re1QLOkttXMuh
-	4A1mDW5KOdHq8oj33E1AQQlkwvTcABaEPghNsb/0LpRm5mKD1UkT22CTZgr+huTNUS61L3qwvtlBL
-	SO3rZLxrBt3iTRp5FEhtX/t9EwVnFm9KtHbKAQpuRc8qBgVsSjjrr448s3VU/bVkeORXkfD2hfcO8
-	VvqhQQPkbo0Nj/UYak1A==;
+	List-Owner; bh=kw4BmKZITWlnbej7SZUmtjm8bJ9S87i9GZTkPoUOfVI=; b=rN5XCbaozwueXL
+	FVZ9tVI5fVseIJselMIFfhYQvkrKxj/BOkPUgDEeNKt7RTwQAhey7dgmTjv3k4Vveox102+U0BNki
+	aq9kNwYedSZvsutYU5cH8o9HGHa0nonQgB1qTKSvxr3VZHM73P1tHIPAI+Oel+ECkr++OvwfqbS2z
+	sgeuEHOycyaoCzUeMx93WMwVDJDv0IoX+mP2HLyX6d5N6oLyScWGiseSS3i9fUl2y6LbgzZhbhTZ9
+	+324kXRTfP+08yKZTeV6OCf1MAp8W5I8WWiWIpPsNa2MWxuzvS0aSOYdwrxPrOVJ3RuzvuLljwnG6
+	88Ri4vZEkfQGaYblZMQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfJXX-009i2L-1W; Fri, 15 Apr 2022 10:50:59 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1nfJax-009jFx-NV; Fri, 15 Apr 2022 10:54:31 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfJWr-009hfM-4k; Fri, 15 Apr 2022 10:50:20 +0000
+ id 1nfJaj-009hfR-DO; Fri, 15 Apr 2022 10:54:18 +0000
 Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
- by mxout3.routing.net (Postfix) with ESMTP id 58A216046B;
- Fri, 15 Apr 2022 10:50:11 +0000 (UTC)
+ by mxout4.routing.net (Postfix) with ESMTP id 676DA100770;
+ Fri, 15 Apr 2022 10:50:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1650019811;
+ s=20200217; t=1650019812;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=5/r9DJSM9esswD1O3AzR1QO335XskjFIKH/yz95f+Oo=;
- b=q1nObm52xIBoPNRhN+q/auCKEUXd4PFVqo11iXybCFUGnQt9STlVnRFZeQZ2hU2eLIna+h
- HZzRNAsE3nmZnzbed15gt4u8ymY7aFnJRB221ITCRvbJ1IXgkxSKEIxv3q6vx7l3Zt6utN
- v75mWpqkg4IOxlNKS2mYWmyEx4Momp4=
+ bh=LB1Fy7OsMtsEl7x4ThJWUnVjP7eO5zGGMTmEHLEcvp0=;
+ b=UiSFVDiHH0VKsEEJGo1JRnjUxdWuyg3ksgL7cYQKeyUcjIQz8d1IiEg7KUXVV+Lh0F5ToZ
+ CU4S6dh4FvXTDBr+so0ftw6g5PmWBTCSzn7yqlDWOONPWAe1CE6Iooax2dPv/AaPD88aoO
+ uQs05isNeVhkl7gNnP/hKh+V1OCF0Sk=
 Received: from localhost.localdomain (fttx-pool-217.61.153.244.bambit.de
  [217.61.153.244])
- by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 25BEA100501;
- Fri, 15 Apr 2022 10:50:10 +0000 (UTC)
+ by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 4FC3610074F;
+ Fri, 15 Apr 2022 10:50:11 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Frank Wunderlich <frank-w@public-files.de>,
@@ -48,19 +48,18 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
  Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 1/3] arm64: dts: rockchip: set display regulators to always-on
- on BPI-R2-Pro
-Date: Fri, 15 Apr 2022 12:49:49 +0200
-Message-Id: <20220415104951.27104-2-linux@fw-web.de>
+Subject: [PATCH 2/3] arm64: dts: rockchip: enable vop2 and hdmi tx on
+ BPI-R2-Pro
+Date: Fri, 15 Apr 2022 12:49:50 +0200
+Message-Id: <20220415104951.27104-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220415104951.27104-1-linux@fw-web.de>
 References: <20220415104951.27104-1-linux@fw-web.de>
 MIME-Version: 1.0
-X-Mail-ID: a209ccd2-0066-4cf5-b936-ad920be5a2a8
+X-Mail-ID: 65da6b53-325e-43b0-a251-c92be1d4911d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220415_035017_374120_B48EBAA2 
-X-CRM114-Status: UNSURE (   8.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220415_035417_638359_616207AB 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,42 +79,90 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Set display related regulators to always-on on Banana PI R2 Pro
-board.
+Enable the RK356x Video Output Processor (VOP) 2 on the
+BananaPi R2 Pro board.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts | 3 +++
- 1 file changed, 3 insertions(+)
+ .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   | 47 +++++++++++++++++++
+ 1 file changed, 47 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-index 2700fb18a3bc..0950f9659bb4 100644
+index 0950f9659bb4..cc3591251bab 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-@@ -225,6 +225,7 @@ regulator-state-mem {
+@@ -8,6 +8,7 @@
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/leds/common.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/soc/rockchip,vop2.h>
+ #include "rk3568.dtsi"
  
- 			vdd_gpu: DCDC_REG2 {
- 				regulator-name = "vdd_gpu";
-+				regulator-always-on;
- 				regulator-init-microvolt = <900000>;
- 				regulator-initial-mode = <0x2>;
- 				regulator-min-microvolt = <500000>;
-@@ -274,6 +275,7 @@ regulator-state-mem {
+ / {
+@@ -54,6 +55,17 @@ dc_12v: dc-12v {
+ 		regulator-max-microvolt = <12000000>;
+ 	};
  
- 			vdda0v9_image: LDO_REG1 {
- 				regulator-name = "vdda0v9_image";
-+				regulator-always-on;
- 				regulator-min-microvolt = <900000>;
- 				regulator-max-microvolt = <900000>;
++	hdmi-con {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi_con_in: endpoint {
++				remote-endpoint = <&hdmi_out_con>;
++			};
++		};
++	};
++
+ 	vcc3v3_sys: vcc3v3-sys {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc3v3_sys";
+@@ -184,6 +196,24 @@ &gmac1m1_rgmii_clk
+ 	status = "okay";
+ };
  
-@@ -369,6 +371,7 @@ regulator-state-mem {
++&hdmi {
++	avdd-0v9-supply = <&vdda0v9_image>;
++	avdd-1v8-supply = <&vcca1v8_image>;
++	status = "okay";
++};
++
++&hdmi_in {
++	hdmi_in_vp0: endpoint {
++		remote-endpoint = <&vp0_out_hdmi>;
++	};
++};
++
++&hdmi_out {
++	hdmi_out_con: endpoint {
++		remote-endpoint = <&hdmi_con_in>;
++	};
++};
++
+ &i2c0 {
+ 	status = "okay";
  
- 			vcca1v8_image: LDO_REG9 {
- 				regulator-name = "vcca1v8_image";
-+				regulator-always-on;
- 				regulator-min-microvolt = <1800000>;
- 				regulator-max-microvolt = <1800000>;
- 
+@@ -600,3 +630,20 @@ &usb2phy0_otg {
+ 	phy-supply = <&vcc5v0_usb_otg>;
+ 	status = "okay";
+ };
++
++&vop {
++	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
++	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
++	status = "okay";
++};
++
++&vop_mmu {
++	status = "okay";
++};
++
++&vp0 {
++	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
++		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
++		remote-endpoint = <&hdmi_in_vp0>;
++	};
++};
 -- 
 2.25.1
 
