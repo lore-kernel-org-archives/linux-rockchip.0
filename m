@@ -4,77 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CF39C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Apr 2022 20:37:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93FA9C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Apr 2022 03:00:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:Cc:To:From
-	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zXceG7OJZssJPmJRTqHOD1bzMaGzVsMMzEQ8ZggNaYA=; b=XaMDIyoiqbgmZKuo2G2fsGPhX8
-	ljFLIckUnetrUuupNMfKod4bt52tGF6Rx5j8LvAlE1p3k8OvFgYRMqv3qs4d4HCsol1/BK/r7agRd
-	hY2F2PNe/TTso1ezMALTBcj0iqlvOMmlJ/CrpMb28aY6VlgI6fPpKHEZ7l4f2dfA7fokyDIMGDSxS
-	+NtVDeBsN0FphMevfTUi5ip3C0nJ9yGVP3YfftBA+fpzGucaxch1BOFJHTZ+4XRoSALGX2h7zrXPD
-	F4qIZn+ogUOX9mG63i1eSdwqMUTJMrpqmbJh4npz+4tuWR6+U8BWYnB7h+SVxq+49cOLUOP4X6raF
-	2ur4o2UQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=JCqajQRWAMKIk6Mmh4N8HmC/BST/cFAk147aSPLjIic=; b=z8zUl8v6Ae7dDrzpqKYQJeKDB3
+	wXCb8lt18c4o4rY8ynNZrtQi4aTOYUS58E7V3cNW+O9SuUAP/qqvhzaggmiZby41KZAjT2m9ooAjR
+	7MbCjBUA1Wn9r5nUDfI2j8FP7rXJZvMDMOz+2y0JT4ctKYkqmBcSttUsyHBXTQg/zryslzVrt7nzs
+	vFgLDJFTsNB6rZREHK6Ra3ZXAZvyUDjpVfZRNW0RX+sN5lrbLYhf6vz5DGI6h7FxvgVpKnS+G2Xrz
+	y4TNACF7vDyhPO86oK28MPnB7Z49jATtFbgoetmDbfv1zYRaDHOw1zoJzzyYEW2q7htvg3HMgGcQM
+	5cQM9BBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nf6D4-007Dko-Bl; Thu, 14 Apr 2022 20:36:58 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nfCCJ-008CwY-Bk; Fri, 15 Apr 2022 03:00:35 +0000
+Received: from out2-smtp.messagingengine.com ([66.111.4.26])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nf6Cr-007Df5-JP; Thu, 14 Apr 2022 20:36:47 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 23FED61ED8;
- Thu, 14 Apr 2022 20:36:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 573B5C385A1;
- Thu, 14 Apr 2022 20:36:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1649968599;
- bh=0YOUcX1s+MakPztIpP6ZGkf5l+r7N3LY6huJ438u3gE=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=SFX8IfO7A6lIiz20UEEOHyavGrH//NtmZf0Ki54L0u4FBuu5DKoqH/kehrkh27AVX
- 98xok0tBD6AEAas5XX5Sgpdyk3twGgLijE02NDR2v592aVnwgTy8aLP4QqtXdA15KC
- ERLxPe/ELkNJTC9Aa1SSSNi++YTHjPlHClLG4IGlEi6yA/MowGfDalYMPsFKSgv2UN
- 3/cTPrR5UFZqvgC5UVZZRD5n5EB9vOisR22/6vFU+N+R2/TAKkdsArjAvMuzD8kZaW
- 7b8YMnA/FL511ONoM+vvpFI2BCIFUY1YdTeS2wzh9+QjsZCGiaFgIVFBJYYyZFVGg/
- ElBSRk35oOUsA==
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <maz@kernel.org>)
- id 1nf6Ci-004Phs-Sn; Thu, 14 Apr 2022 21:36:36 +0100
+ id 1nfCC6-008CsL-Al; Fri, 15 Apr 2022 03:00:24 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 29FA15C041A;
+ Thu, 14 Apr 2022 23:00:16 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute4.internal (MEProxy); Thu, 14 Apr 2022 23:00:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
+ cc:cc:content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm2; t=1649991616; x=
+ 1650078016; bh=c81yb4gs4vPSvD09caO+6Yh4HWFmhE1EIrMR6dpWA9c=; b=t
+ yGizZNogSZlwapKZkW4ul/XSusQCdTds7uhVdlmC7AqjVX83+bKQCCz8sg9TENlj
+ aWcCoP/GhO7wX9h2etdwWJHbQOV3fzuWPHVlZEZn3idqTvT4p8pjYMtg883C0fCa
+ wvjhYKnpA04UBKkM2REo9yTo3Q62cqRmk9UZM8mmoama2hmQTYEentAqClfFaHnh
+ F73LI5cHoj+RSSsqOzul49X/0t/PXaxmPAuB/f4X18nzLWfWH1SHWJDbEFQuGFNS
+ VYmWBHACBIVSEn7RX03Pafe++I84LGPfW3NZBFzFLEAL7abEmaN1FtwrzVzWVuzQ
+ 2H5BkWFj6V2ab6Kg2NVSA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; t=1649991616; x=1650078016; bh=c81yb4gs4vPSv
+ D09caO+6Yh4HWFmhE1EIrMR6dpWA9c=; b=fY3/lAHe5+LXFHbnZ0Jgndtqzw/aj
+ 6aceJj43ShQvYVUBeq33RVKuDbwdJKFuK09VJjIH0oJ6rxA5l1y/2bZ6RKOaoAh+
+ kJtYARddl5AIc/a2lN7V6ZmaJS91YYEgWm/aMWAWs4ckrqefc+NKxZRYGpJFd4Kk
+ GEhKeScQVBXRDbKh9Lij1jlooMLUnnqjvpoh+6WgxyTGPMmcVDuuvGjbTIlp24MV
+ yt0lZ0LchhR3xf6keXRau9WYStEGNVqFgmUfbR17UmNs4YwRqr0k3zUEN1PGoKV3
+ nqUX8qW1pkEX1ob7xTIo05zyjtAHu9TQ9FqJ3Tu6+kMBjoI4w+qgwx9kQ==
+X-ME-Sender: <xms:vd9YYr3fdwtncq4w3peEI4MlPNiaTJjTgXREm6_HnlNpwES_3nL_xQ>
+ <xme:vd9YYqEtQAUk2vRE5PawjIFbxJ00glfQY7N9vLPuD7yuFVA2tUrF349v9Kyz8l2-z
+ KgGq7M73Q6WffRwNQ>
+X-ME-Received: <xmr:vd9YYr5rHouGfjOujOG6gurE9f7cgGTOL61nh-1yx4kFVvfUscmkzYcL100KlvaaCaHvTv0DMhlZDsZCnfMO85hOiKMd51SG6YCWYdwRF5EjzZiVM73-U0W6cw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvvddrudelgedgieegucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepuffvfhfhkffffgggjggtgfesthejredttdefjeenucfhrhhomhepufgrmhhu
+ vghlucfjohhllhgrnhguuceoshgrmhhuvghlsehshhholhhlrghnugdrohhrgheqnecugg
+ ftrfgrthhtvghrnhepffefvdfhhefhkeefteeiheeftdevuddvleeileegtedtfeejhfej
+ kedtffdtjeeknecuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghruf
+ hiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehsrghmuhgvlhesshhhohhllhgr
+ nhgurdhorhhg
+X-ME-Proxy: <xmx:vd9YYg0AzOwwaOB0AjoWklyD3hn2NyhFl_Nt8ojypyDXj4eyPITPGg>
+ <xmx:vd9YYuF3J6mrSwsKYP4lPb5tc52shr221YkRS53v4hpPwIAYBj6rjA>
+ <xmx:vd9YYh_N1J2eCMsNOLmvfXn7DsEFGtm1bghrGmRY9Xxftq8YhqhXew>
+ <xmx:wN9YYn2c0PSx7fI1dR7ordmD_RVUIGP7cEySgSlm4S-egPtkfDnSEQ>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 14 Apr 2022 23:00:12 -0400 (EDT)
+Subject: Re: [RFC PATCH 02/16] dt-bindings: display: rockchip: Add EBC binding
+To: Andreas Kemnade <andreas@kemnade.info>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, Alistair Francis
+ <alistair@alistair23.me>, =?UTF-8?Q?Ond=c5=99ej_Jirman?= <x@xff.cz>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Liang Chen <cl@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Sam Ravnborg <sam@ravnborg.org>, Thierry Reding <thierry.reding@gmail.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220413221916.50995-1-samuel@sholland.org>
+ <20220413221916.50995-3-samuel@sholland.org> <20220414101548.2b9c3dad@aktux>
+From: Samuel Holland <samuel@sholland.org>
+Message-ID: <d5bb060e-5964-db0d-ca93-5f73ee9277a3@sholland.org>
+Date: Thu, 14 Apr 2022 22:00:09 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-Date: Thu, 14 Apr 2022 21:36:36 +0100
-From: Marc Zyngier <maz@kernel.org>
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring
- <robh@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
- linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/4] PCI: dwc: rockchip: add legacy interrupt support
-In-Reply-To: <20220413133731.242870-3-pgwipeout@gmail.com>
-References: <20220413133731.242870-1-pgwipeout@gmail.com>
- <20220413133731.242870-3-pgwipeout@gmail.com>
-User-Agent: Roundcube Webmail/1.4.13
-Message-ID: <c493261cef27714181a523545dab6d0e@kernel.org>
-X-Sender: maz@kernel.org
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: pgwipeout@gmail.com, lorenzo.pieralisi@arm.com,
- robh@kernel.org, kw@linux.com, bhelgaas@google.com, heiko@sntech.de,
- linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+In-Reply-To: <20220414101548.2b9c3dad@aktux>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220414_133645_771085_47C161F2 
-X-CRM114-Status: GOOD (  29.62  )
+X-CRM114-CacheID: sfid-20220414_200022_960223_CF4530AF 
+X-CRM114-Status: GOOD (  26.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,226 +114,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-04-13 14:37, Peter Geis wrote:
-> The legacy interrupts on the rk356x pcie controller are handled by a
-> single muxed interrupt. Add irq domain support to the pcie-dw-rockchip
-> driver to support the virtual domain.
+Hi Andreas,
+
+Thanks for the comments.
+
+On 4/14/22 3:15 AM, Andreas Kemnade wrote:
+> Hi Samuel,
 > 
-> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> ---
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 123 +++++++++++++++++-
->  1 file changed, 121 insertions(+), 2 deletions(-)
+> for comparison, here is my submission for the IMX EPDC bindings:
 > 
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index c9b341e55cbb..a8b1dc03d3cc 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -10,9 +10,12 @@
+> https://lore.kernel.org/linux-devicetree/20220206080016.796556-2-andreas@kemnade.info/
 > 
->  #include <linux/clk.h>
->  #include <linux/gpio/consumer.h>
-> +#include <linux/irqchip/chained_irq.h>
-> +#include <linux/irqdomain.h>
->  #include <linux/mfd/syscon.h>
->  #include <linux/module.h>
->  #include <linux/of_device.h>
-> +#include <linux/of_irq.h>
->  #include <linux/phy/phy.h>
->  #include <linux/platform_device.h>
->  #include <linux/regmap.h>
-> @@ -36,10 +39,13 @@
->  #define PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
->  #define PCIE_L0S_ENTRY			0x11
->  #define PCIE_CLIENT_GENERAL_CONTROL	0x0
-> +#define PCIE_CLIENT_INTR_STATUS_LEGACY	0x8
-> +#define PCIE_CLIENT_INTR_MASK_LEGACY	0x1c
->  #define PCIE_CLIENT_GENERAL_DEBUG	0x104
-> -#define PCIE_CLIENT_HOT_RESET_CTRL      0x180
-> +#define PCIE_CLIENT_HOT_RESET_CTRL	0x180
->  #define PCIE_CLIENT_LTSSM_STATUS	0x300
-> -#define PCIE_LTSSM_ENABLE_ENHANCE       BIT(4)
-> +#define PCIE_LEGACY_INT_ENABLE		GENMASK(3, 0)
-> +#define PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
->  #define PCIE_LTSSM_STATUS_MASK		GENMASK(5, 0)
+> On Wed, 13 Apr 2022 17:19:02 -0500
+> Samuel Holland <samuel@sholland.org> wrote:
 > 
->  struct rockchip_pcie {
-> @@ -51,6 +57,8 @@ struct rockchip_pcie {
->  	struct reset_control		*rst;
->  	struct gpio_desc		*rst_gpio;
->  	struct regulator                *vpcie3v3;
-> +	struct irq_domain		*irq_domain;
-> +	raw_spinlock_t			irq_lock;
->  };
-> 
->  static int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip,
-> @@ -65,6 +73,105 @@ static void rockchip_pcie_writel_apb(struct
-> rockchip_pcie *rockchip,
->  	writel_relaxed(val, rockchip->apb_base + reg);
->  }
-> 
-> +static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
-> +{
-> +	struct irq_chip *chip = irq_desc_get_chip(desc);
-> +	struct rockchip_pcie *rockchip = irq_desc_get_handler_data(desc);
-> +	struct device *dev = rockchip->pci.dev;
-> +	u32 reg;
-> +	u32 hwirq;
-> +	u32 virq;
-> +
-> +	chained_irq_enter(chip, desc);
-> +
-> +	reg = rockchip_pcie_readl_apb(rockchip, 
-> PCIE_CLIENT_INTR_STATUS_LEGACY);
-> +
-> +	while (reg) {
-> +		hwirq = ffs(reg) - 1;
-> +		reg &= ~BIT(hwirq);
+> [...]
+> we have sy7636a driver in kernel which should be suitable for powering a EPD
+> and temperature measurement. So I would expect that to be 
+>> +  io-channels:
+>> +    maxItems: 1
+>> +    description: I/O channel for panel temperature measurement
+>> +
+> so how would I reference the hwmon/thermal(-zone) of the sy7636a here?
 
-The whole construct would be better served by for_each_set_bit().
+It seems the consensus is to use a thermal zone for panel temperature, so I will
+need to change this.
 
-> +
-> +		virq = irq_find_mapping(rockchip->irq_domain, hwirq);
-> +		if (virq)
-> +			generic_handle_irq(virq);
+I think it's best to reference the thermal zone by phandle, not by name, even if
+it requires extending the thermal zone API to support this.
 
-Please replace this with generic_handle_domain_irq().
+>> +  panel-supply:
+>> +    description: Regulator supplying the panel's logic voltage
+>> +
+>> +  power-domains:
+>> +    maxItems: 1
+>> +
+>> +  vcom-supply:
+>> +    description: Regulator supplying the panel's compensation voltage
+>> +
+>> +  vdrive-supply:
+>> +    description: Regulator supplying the panel's gate and source drivers
+>> +
+> SY7636a has only one logical regulator in kernel for for the latter two.
 
-> +		else
-> +			dev_err(dev, "unexpected IRQ, INT%d\n", hwirq);
+Both properties could point to the same regulator node if there are more
+consumers than regulators. I don't know of a clean way to handle the opposite
+situation.
 
-This hardly serves any purpose. At best, this is a debug statement.
-At worse, this is a DoS. In any case, please remove it.
+The other benefit of separating out VCOM is that the controller or panel driver
+can set a calibrated voltage from e.g. NVMEM or the panel's DT node.
 
-> +	}
-> +
-> +	chained_irq_exit(chip, desc);
-> +}
-> +
-> +static void rockchip_intx_mask(struct irq_data *data)
-> +{
-> +	struct rockchip_pcie *rockchip = irq_data_get_irq_chip_data(data);
-> +	unsigned long flags;
-> +	u32 val;
-> +
-> +	/* disable legacy interrupts */
-> +	raw_spin_lock_irqsave(&rockchip->irq_lock, flags);
-> +	val = HIWORD_UPDATE_BIT(PCIE_LEGACY_INT_ENABLE);
-> +	val |= PCIE_LEGACY_INT_ENABLE;
-> +	rockchip_pcie_writel_apb(rockchip, val, 
-> PCIE_CLIENT_INTR_MASK_LEGACY);
-> +	raw_spin_unlock_irqrestore(&rockchip->irq_lock, flags);
-> +};
-> +
-> +static void rockchip_intx_unmask(struct irq_data *data)
-> +{
-> +	struct rockchip_pcie *rockchip = irq_data_get_irq_chip_data(data);
-> +	unsigned long flags;
-> +	u32 val;
-> +
-> +	/* enable legacy interrupts */
-> +	raw_spin_lock_irqsave(&rockchip->irq_lock, flags);
-> +	val = HIWORD_UPDATE_BIT(PCIE_LEGACY_INT_ENABLE);
-> +	val &= ~PCIE_LEGACY_INT_ENABLE;
-> +	rockchip_pcie_writel_apb(rockchip, val, 
-> PCIE_CLIENT_INTR_MASK_LEGACY);
-> +	raw_spin_unlock_irqrestore(&rockchip->irq_lock, flags);
-> +};
-> +
-> +static struct irq_chip rockchip_intx_irq_chip = {
-> +	.flags			= IRQCHIP_SKIP_SET_WAKE | IRQCHIP_MASK_ON_SUSPEND,
-> +	.irq_mask		= rockchip_intx_mask,
-> +	.irq_unmask		= rockchip_intx_unmask,
-> +	.name			= "INTx",
+> If we have a separate panel node, than maybe these regulators should go
+> there as they belong to the panel as they are powering the panel and
+> not the EBC.
 
-For consistency, please place 'name' at the top, and 'flags' at the end.
+I agree on this. It doesn't work with panel-simple, but as Maxime points out, we
+have more flexibility with a custom panel driver.
 
-> +};
-> +
-> +static int rockchip_pcie_intx_map(struct irq_domain *domain, unsigned 
-> int irq,
-> +				  irq_hw_number_t hwirq)
-> +{
-> +	irq_set_chip_and_handler(irq, &rockchip_intx_irq_chip, 
-> handle_simple_irq);
+>> +  port:
+>> +    $ref: /schemas/graph.yaml#/properties/port
+>> +    description: OF graph port for the attached display panel
+>> +
+> In my approach for the IMX EPDC, (I will send a better commented one
+> soon) I have no separate subnode to avoid messing with additional
+> display parameters. Not sure what is really better here.
 
-Why isn't this a *level* handler, as per the PCI spec?
+I tried to match the existing abstractions as much as possible, and I saw there
+was already an "eink,vb3300-kca" display in panel-simple. I believe that one was
+added for the reMarkable 2, where the existing LCD controller driver already
+depends on the DRM panel code (although I have concerns about hooking that up to
+a driver that doesn't understand EPDs).
 
-> +	irq_set_chip_data(irq, domain->host_data);
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct irq_domain_ops intx_domain_ops = {
-> +	.map = rockchip_pcie_intx_map,
-> +};
-> +
-> +static int rockchip_pcie_init_irq_domain(struct rockchip_pcie 
-> *rockchip)
-> +{
-> +	struct device *dev = rockchip->pci.dev;
-> +	struct device_node *intc;
-> +
-> +	raw_spin_lock_init(&rockchip->irq_lock);
-> +
-> +	intc = of_get_child_by_name(dev->of_node, 
-> "legacy-interrupt-controller");
-> +	if (!intc) {
-> +		dev_err(dev, "missing child interrupt-controller node\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	rockchip->irq_domain = irq_domain_add_linear(intc, PCI_NUM_INTX,
-> +						    &intx_domain_ops, rockchip);
-> +	of_node_put(intc);
-> +	if (!rockchip->irq_domain) {
-> +		dev_err(dev, "failed to get a INTx IRQ domain\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->  static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
->  {
->  	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
-> @@ -111,7 +218,19 @@ static int rockchip_pcie_host_init(struct 
-> pcie_port *pp)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
->  	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-> +	struct device *dev = rockchip->pci.dev;
->  	u32 val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
-> +	int irq, ret;
-> +
-> +	irq = of_irq_get_byname(dev->of_node, "legacy");
-> +	if (irq < 0)
-> +		return irq;
-> +
-> +	irq_set_chained_handler_and_data(irq,
-> rockchip_pcie_legacy_int_handler, rockchip);
-> +
+My thought here is that the timings for a given panel should be the same across
+controllers, both dedicated EPD controllers and LCD controllers. Or at least it
+should be possible to derive the timings from some common set of parameters.
 
-Installing the handler before the domain is instantiated is
-unlikely to end well if you have a pending interrupt...
+The panel node also usually hooks up to the backlight, although I am not sure
+that is the right thing to do for EPDs. (And the PineNote has a separate issue
+of having two backlights [warm/cool] for one display.)
 
-> +	ret = rockchip_pcie_init_irq_domain(rockchip);
-> +	if (ret < 0)
-> +		dev_err(dev, "failed to init irq domain\n");
-> 
->  	/* LTSSM enable control mode */
->  	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
-
-Thanks,
-
-         M.
--- 
-Jazz is not dead. It just smells funny...
+Regards,
+Samuel
 
 _______________________________________________
 Linux-rockchip mailing list
