@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E536C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Apr 2022 20:15:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38150C43219
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Apr 2022 21:06:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M3hZSdlBNc9ForKhUYV+PPx87AWKeCFXCheEqYoOLgE=; b=SBB7qcljWpv1hQ
-	6Grx31Y9MzYGwFak4ZZwnPgpWn7pzcpeuKFpRvAM95/cz6F/aUeF01xDiwpLk1QbGk7p9W22cgKl0
-	r6WKzLCujyH9eCsq9pZ9y/OSGzbqNxWu6/MwmJAVioMiY/DLLy8wlWOl+0EbAAyBx3rdUuYQsIt9w
-	qu9XmpL5dVNF4G5BcFoPLGGbWbtsDcggX6dqO1Ii5OTdu8GbZ84nm8BRYZXqYRnBjD7g/ZbsfHdVc
-	3I8BfkcxREgBUF4Joc4HyFNzIzqhqnbmDqIUMZQGMlky7xA/VbNFku5eIj6/jykqMA4m9wPeITIOq
-	9AWczLj4so9oAmTOJBNw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=r/kaDJmXQPzOtQn3FQPKZERnewEq7c6xjUno+Vm5vvo=; b=FVYC6JTzuuZid2
+	FV5QNLj4AXq4Wzgu30Tw9t4mLV4A9BohlvncFtiS3uDPLCH0uXkWeRY18dQkSKXWmR+Wf2k5rYhmR
+	6FWUVDSdkhhV/bUmXVKYvjyaLF4ObZZJLazSKU0S+X5/7REdD9mFMqEc4LlNRs2++nGHJNJlaSFEC
+	Uyd14217/lu4sm8ezg+WnyPtXwYWkxNvi87rZhoDMBjC+WUWfx+5NUt7JyL7wqOk3jbcn4F35dH0C
+	j7lkmXJcgDTrKISOM2BPr7nY8ccQEdQs7BlImnONjvGKGXOI3bfVt45fDtoUi0pKUvQdT2xqJm91h
+	SRhrWhpN/dcWyUhYTpow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfSLM-00BFf8-Lj; Fri, 15 Apr 2022 20:15:00 +0000
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+	id 1nfT9C-00BJgt-QX; Fri, 15 Apr 2022 21:06:30 +0000
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfSLJ-00BFeS-HX; Fri, 15 Apr 2022 20:14:58 +0000
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-2ebebe631ccso92624807b3.4; 
- Fri, 15 Apr 2022 13:14:56 -0700 (PDT)
+ id 1nfT9A-00BJfc-3k
+ for linux-rockchip@lists.infradead.org; Fri, 15 Apr 2022 21:06:29 +0000
+Received: by mail-qk1-x731.google.com with SMTP id d198so4226607qkc.12
+ for <linux-rockchip@lists.infradead.org>; Fri, 15 Apr 2022 14:06:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QfGuix9eHPmBVHieE98IkajLKskzJOMJS9YG04aHQEc=;
- b=iGv/flgytSZZleWCwY3NfgAeABaSuaArYoDgbbyezprnLZw33y0kzKJpeR9Gx9v9j8
- yFRmIdUedGm0HRsRtV32in/5wzKY3OEwLQz0XdDCGaSuyHnCwh72egU+U4iwYcbW9th9
- ZKICA5oZfdknC+kjfvqFyYCN3GWi4iRmsOk63DjRkDu+7T/iy/EytvEQwti6DLvBD5EM
- qrgBDVWoJ/xAybNrqyt7gzEuEQiprAYuNDk0mr8bIFllnk7Bs/wkqO/jKC/DCEGuEmnx
- evxd5S5zqC0gxcUIul8XvHC2vxr4NXxCVHg+Ns2XXdM+3Mz5FuN2MbmRBzdVzZtJIrjw
- /TSw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=a4nsrukBt8/qYfpBVgNViUnWTj44aDVVHk116XxwMTc=;
+ b=ei02RGO8B4GvbxIFXYGiVe3bBCji+AT5TQNK1eyZirSvHjzPg+gt04xDt50VkbrTLQ
+ NWqVitJN3rGlZHXg7unJLqg1MlO4rt8q/xSpmGO3C4PbjawMaCJpTm0WeDQzXmq+OxCI
+ zMf6V67rKIYHNjUBzwbrtBhDzSiIR2z0YZx8ik2kA9HrqQQWk0v7ArdgG3mtDFp+N0iz
+ Btd8lhA2h8weiSEtyLX7ApLvRCxPaBehAScdlAqXVBiy2bhucY+KBGYFOwb8rZzCo1mY
+ qfjqAwuvo1tYrxKfr9vSVdKpKEsD2ZmkATfBRSJ/2LWjGCyAVrYbQfyLcE7Y8+QfhEjJ
+ bCIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QfGuix9eHPmBVHieE98IkajLKskzJOMJS9YG04aHQEc=;
- b=4CWSQhxgeMb0QyzjFczNFFu3iq+5K4xxAlGTtVLKs4X6zNWJbvz+UPV3Lf549UfPNO
- aMgNzN1KePdlasm2VQ3lf/2lKIHAOyOmKYbTvSL1OWJXrugfKCLPMNtxAcA/LnH6iCLT
- CPtGoBOr1TSYTE6zMcY5P3e0rpVRNkH4froKhlX+BSHsnn4LSAjiUGbRnuCkmA/QImQp
- jRFIwSbwPlpgN9cWs49vX74p1+fRKc8ulMc+rMHiEB4mM7ukmak74GTuJkZ+rBnhCa9v
- 4BDM9XYSk1bq5HwEVB1rxtL0rSV06pHZ/6Gt0Oa7B2bTDNj8hG/qlz/jOZ4/egpm9HdA
- aPKA==
-X-Gm-Message-State: AOAM5305pXfAQOSG8IP35Aguc+3SqgSu5FBhNsZl9PuSaa17wH+XxMkS
- qey4Vo0OsTrwhv4qJho4kX66kMPJ6rgtJvG41fzpZjfW24A=
-X-Google-Smtp-Source: ABdhPJzcXxbnRTmhCv9tZrtZ2aIi9BPp22b40umIvHYfXdY0pL99IaBj4TVrT7UkE5UtWBG4pMeIorfwsGjNVX/TrWw=
-X-Received: by 2002:a81:3a8f:0:b0:2e8:7e2c:95a5 with SMTP id
- h137-20020a813a8f000000b002e87e2c95a5mr589827ywa.241.1650053695984; Fri, 15
- Apr 2022 13:14:55 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220413133731.242870-1-pgwipeout@gmail.com>
- <20220413133731.242870-2-pgwipeout@gmail.com>
- <Ylhfr51RME+YAjOG@robh.at.kernel.org>
-In-Reply-To: <Ylhfr51RME+YAjOG@robh.at.kernel.org>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=a4nsrukBt8/qYfpBVgNViUnWTj44aDVVHk116XxwMTc=;
+ b=lOSwPCy4NvxhP4+9MhRATLmsEqOrPRa475aypUghUiDSa5K8HBkhKn+CTj9o6h4/Ts
+ E302gKCyr95cL2pmALcVjMUfEuW5hELd/Wm0eR17BOv4iyw2PKfilt1LoJILTON6KcCk
+ sJ4OZ+8Ze6mjMsll+X+65cwIuom/tYBDa/k1FDtD4TAdjdJKay5b+VcLHHP2MGhDTU8F
+ /p3+5M8Afxe8dzlk4zxjAxT7OHp2bIIYuJYdoHxQy+QDmnFdzkllSbALFb2+FFIMw/T3
+ 6UcvEJ7DJdhMKwDb+8SWfesytXgwribOMhWcmjgO7aedL8rYhQQKmlW/P9Sd0uk/3qBq
+ Zw1Q==
+X-Gm-Message-State: AOAM530Cyi9cndYgnCmMCW/twH+ny+Onfs2b1at5I7ebwDzjA/7E3b+Z
+ QNAvSQ8cWRZpOXZZdEx+BfimwRHhhwU7Vg==
+X-Google-Smtp-Source: ABdhPJy5paJwGqLgwegpBrj7lXfC6W9ZFoG5/teOzaYWm0ly1dRkE7I4QgVypeRqjrYgvqhTvfEB5A==
+X-Received: by 2002:a05:620a:6d1:b0:69c:3806:8655 with SMTP id
+ 17-20020a05620a06d100b0069c38068655mr524820qky.154.1650056786476; 
+ Fri, 15 Apr 2022 14:06:26 -0700 (PDT)
+Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
+ by smtp.gmail.com with ESMTPSA id
+ w8-20020a05620a148800b0069c4884c990sm2838664qkj.108.2022.04.15.14.06.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 15 Apr 2022 14:06:26 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Fri, 15 Apr 2022 16:14:43 -0400
-Message-ID: <CAMdYzYpwKE3cCPZfDehnN0Lv1k7DstUh2y4PoEv6=6e6ejAtSQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/4] dt-bindings: pci: remove fallback from Rockchip
- DesignWare binding
-To: Rob Herring <robh@kernel.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, 
- Simon Xue <xxm@rock-chips.com>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- PCI <linux-pci@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+To: 
+Cc: linux-rockchip@lists.infradead.org, heiko@sntech.de,
+ Peter Geis <pgwipeout@gmail.com>
+Subject: [PATCH v3 0/4] Enable rk356x PCIe controller
+Date: Fri, 15 Apr 2022 17:06:17 -0400
+Message-Id: <20220415210621.538109-1-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220415_131457_640127_12D8158F 
-X-CRM114-Status: GOOD (  19.39  )
+X-CRM114-CacheID: sfid-20220415_140628_190330_99969AD5 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,51 +88,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 14, 2022 at 1:53 PM Rob Herring <robh@kernel.org> wrote:
->
-> On Wed, Apr 13, 2022 at 09:37:28AM -0400, Peter Geis wrote:
-> > The snps,dw-pcie binds to a standalone driver.
-> > It is not fully compatible with the Rockchip implementation and causes a
-> > hang if it binds to the device.
-> >
-> > Remove this binding as a valid fallback.
-> >
-> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> > ---
-> >  Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml | 3 +--
-> >  1 file changed, 1 insertion(+), 2 deletions(-)
-> >
-> > diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> > index 142bbe577763..8dc11fed8a3c 100644
-> > --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> > +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> > @@ -32,7 +32,6 @@ properties:
-> >    compatible:
-> >      items:
-> >        - const: rockchip,rk3568-pcie
-> > -      - const: snps,dw-pcie
->
-> With this, you no longer need 'select' so please drop it too.
+Cc: heiko@sntech.de,
+    linux-rockchip@lists.infradead.org,
+    linux-pci@vger.kernel.org,
+    devicetree@vger.kernel.org,
+    linux-arm-kernel@lists.infradead.org,
+    linux-kernel@vger.kernel.org
 
-Thanks! Will do.
+This series enables the DesignWare based PCIe controller on the rk356x
+series of chips.
+We drop the fallback to the core driver due to compatibility issues.
+We add support for legacy interrupts for cards that lack MSI support
+(which is partially broken currently).
+We then add the device tree nodes to enable PCIe on the Quartz64 Model
+A.
 
->
-> >
-> >    reg:
-> >      items:
-> > @@ -110,7 +109,7 @@ examples:
-> >          #size-cells = <2>;
-> >
-> >          pcie3x2: pcie@fe280000 {
-> > -            compatible = "rockchip,rk3568-pcie", "snps,dw-pcie";
-> > +            compatible = "rockchip,rk3568-pcie";
-> >              reg = <0x3 0xc0800000 0x0 0x390000>,
-> >                    <0x0 0xfe280000 0x0 0x10000>,
-> >                    <0x3 0x80000000 0x0 0x100000>;
-> > --
-> > 2.25.1
-> >
-> >
+Patch 1 drops the snps,dw,pcie fallback from the dt-binding
+Patch 2 adds legacy interrupt support to the driver
+Patch 3 adds the device tree binding to the rk356x.dtsi
+Patch 4 enables the PCIe controller on the Quartz64-A
+
+Changelog:
+v3:
+- drop select node from dt-binding
+- convert to for_each_set_bit
+- convert to generic_handle_domain_irq
+- drop unncessary dev_err
+- reorder irq_chip items
+- change to level_irq
+- install the handler after initializing the domain
+
+v2:
+- Define PCIE_CLIENT_INTR_STATUS_LEGACY
+- Fix PCIE_LEGACY_INT_ENABLE to only enable the RC interrupts
+- Add legacy interrupt enable/disable support
+
+
+Peter Geis (4):
+  dt-bindings: pci: remove fallback from Rockchip DesignWare binding
+  PCI: dwc: rockchip: add legacy interrupt support
+  arm64: dts: rockchip: add rk3568 pcie2x1 controller
+  arm64: dts: rockchip: enable pcie controller on quartz64-a
+
+ .../bindings/pci/rockchip-dw-pcie.yaml        |  12 +-
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   |  34 ++++++
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |  68 ++++++++++-
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 112 +++++++++++++++++-
+ 4 files changed, 210 insertions(+), 16 deletions(-)
+
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
