@@ -4,76 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C1C4C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Apr 2022 09:10:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DCB7C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Apr 2022 09:10:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5seweErg71nwDQVfqtsOSM1KrrY3nm1bhpWCXmH/tx4=; b=cW7tYQQnZesOgt
-	AtrUBKkK9wjv2WScLxdCIsuS/CuI0AkgPxtEHVLMoO5P7V2XIMV8xXKxCzNSohIdfSQ02lPmjTHxZ
-	OIMWJ57iJgZ6GiF6nAQsZ8+rKHXzquFZB2J2QxgJB4muVRFIHhDi6pKV0W3Ut6vKvNUlSiSyvTKdO
-	uoeqh5NEAvikgwNO2pIpnOKXHziIg84rsL9C4yso2V7ZYantJm5wJCI/xoMAun/bHp1YUdEQU+8g9
-	TIRq+5KTecGW9RLNebS4+Mu11Grg0/79t/ZkNJBL2Um5ouVMgE9/oTG93FghqrcgRjV1z5YLDjCa0
-	W0lJ7k4Jl94jCLfnldZw==;
+	List-Owner; bh=GvQJ2zQLCEYUqGw1Y6Txp5HQldQEL/+FfVLUdvCYBXQ=; b=M8m30szA+V9F2R
+	eTKzweMl6cZ+QhKCeqTm0+20597TyMnHsGz7PP83S5ag8brXJ0Pwg+/6jF9ZVu5YmyLIwT2BirjT2
+	yliChOPwgCtXaErAiSyMuidVPV5zEfTZLsLeOL5hImlQ3POmNMfDmRWSOOomAfiPbh4vTaxL9J4kB
+	IISUDhnNzBFA8dZEfJjZluTaTFHlNjwd88bBysEJYzL84KNihMWGzmTokP/Tteo7YODcpwypQpGCO
+	j/b6+qov1dZVPoj8FgDR+zuTTiyslW9kbC/3QIZr3fTK+zxyBhs28YOIks66icf1LrUI+0XiA/3v2
+	K6J7SUj5h1/Nwm+yT6QA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nfeRN-00CazX-W3; Sat, 16 Apr 2022 09:10:02 +0000
-Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
+	id 1nfeRm-00CbCO-CN; Sat, 16 Apr 2022 09:10:26 +0000
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nfeQN-00CaSv-0Z; Sat, 16 Apr 2022 09:09:00 +0000
-Received: by mail-qt1-x829.google.com with SMTP id t2so5266313qta.5;
- Sat, 16 Apr 2022 02:08:58 -0700 (PDT)
+ id 1nfeQN-00CaTL-Ce; Sat, 16 Apr 2022 09:09:00 +0000
+Received: by mail-qk1-x72c.google.com with SMTP id b68so3292063qkc.4;
+ Sat, 16 Apr 2022 02:08:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=hOTwp/EOJfvnikKCMdwuTDokMTrvRKo561UbGIFybNc=;
- b=SMFRv5LuFZdQHNzzwLG++T3oIQqej8cJelrAmkeD2oNAGaUH/5sWK7pbS34qVcBIf8
- ZqTSismicAoIcGF7RZujdwM9Aad159W/f1VRdD28cM94lbDc+BYZoNJAMovWupCoGk0P
- hvRLEHM1GqPdCakI7CUWJrJ3AquJZ2NK1aI7PiC8u4el2FBf7OI+FrjvDfVCQ3YPI6Ki
- 0y50WSK+g2IKIDXSDqLvVJ5wXGSSWn3qiogA5yU831pONtIjiFcn+ZDiydXTt+8F2ixi
- XxHE3sqaHqQmJHLSrjH0Sck02RyQ8JScRCHSphSKWwsDHNqRm2oNCZHQ8IWpYcYH11rh
- IRgw==
+ bh=IqOtlYyePRN/r4aPym/C6r8euVVGX9fSqK0zMFP5Scg=;
+ b=QIYrB+ufrI3T77S1O/NAar0XMF8MWIL8WyVbqQv2bTO+Oz1DcaXdylO9KKKyG8tc9G
+ BZIqFJ2OkO1DLaWKXWmQFdOpj3tLWkhW06GhcWRyUyqHxIonqFxTnCmmduRvI2CFzyk9
+ s/QWB/9zjPTy6RRKJUFKq995GZLnr++d1p2ne+dsbQvIjjGi0+odNLiCsE7ErKa5BCXi
+ rKzXSlQlXPT84qI18xw0YhnoRkTUfPPcXhwZn2v3Ettu0nuBIIuFCDhL1zFK6xEXFF8i
+ YECwsiZ0gnVqQvhxpq1CyjkyzBBevGjCwJdzxcgj8glWSdVoqD63lvLyU7pnrY9kMad/
+ ZOIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=hOTwp/EOJfvnikKCMdwuTDokMTrvRKo561UbGIFybNc=;
- b=tou2N5AV6Bfu8ZcK3+M4p42ZXnLywiAhJNXGWQt0KoaI+WrCaJNVIBU6ubYbSHRkm3
- hSG3Su+5AmEVw7Xpru2MG79R5bv1d4ONEhr3JgUn+/4m+qhAX02ZfZ0zqWToep1qHZ/x
- +7YHU/JWkn11YhFFs0UO5OXyCdypH8CNjr9YhtI1e8rwztSaFe43rUnkxQzo9MWGP0MA
- pYL8asTPvtSRehEdQxn5zG8iy/hYLbz0ltRlCQ7JVUDrckioFlNfoaH1xs4OAUjP0X8L
- BWA1lafZFqLqoUWb0Lqc5F1KR+pgiTRWJzRZbscE84m4wDQ/i7Gy0lxjLPSKkcdUmBkq
- neFQ==
-X-Gm-Message-State: AOAM530Bbj+f6pJugx8cI+H5hDlcrQDl0QrQJlj3/9vNyeF8eATU9+Mk
- GqsxncMgpDepponzwV0nC5s=
-X-Google-Smtp-Source: ABdhPJx3AgJFIiHicGmJXxIoqRGlY6ezrdRGRHxGeX1r/YCifYMQscPj3aJ+Z6CthiW9ZcR2pgepOw==
-X-Received: by 2002:ac8:5c09:0:b0:2e1:a64d:6f89 with SMTP id
- i9-20020ac85c09000000b002e1a64d6f89mr1701477qti.452.1650100137708; 
- Sat, 16 Apr 2022 02:08:57 -0700 (PDT)
+ bh=IqOtlYyePRN/r4aPym/C6r8euVVGX9fSqK0zMFP5Scg=;
+ b=BX0Ilg4+WFjsE0ShFs9YhUlENoxGBQBczDJF6mqU4Ijz2PsmePVJQ9YHIxN0w+PhRN
+ nku/cmqdXIddOL3hMLdl4KYWUTxwhutCZyl8WUbbeaQZroLb6U5nN7SVWu4QhKwXpOji
+ qiAl4xg+OYSlCdEDihBK7OfcKNjjuKj+kzVzxU7Av6Sz7jRf9mubrj/vGGv8AU2gOAdt
+ xKVoclvuaR9KJLHilgEAqutJg8G8ueWukOZld7e0TsxRf6LWdZ/dwfYZdRvZtbkpsLrf
+ IVepYnELPWDBCY4qsYotbD92Ddg9la9nRjZl8Tj7zf6CLgCJN2vJgymDMcaww7rlXJ9j
+ k2BQ==
+X-Gm-Message-State: AOAM533aB2xye1+MnmDzWh6eaSBgtRdRCSHy3wO8KqKokMfnlssVndSy
+ v9KqMINT/pyiInuH3U4MyIY=
+X-Google-Smtp-Source: ABdhPJyPYMTVfW8c/yxfv8fb57FPal3ZuOQEqxZIO+3LQq9LNDTFZHwCRW39ds1hX7LAEZbebsxdFw==
+X-Received: by 2002:a05:620a:1654:b0:69c:7035:b31f with SMTP id
+ c20-20020a05620a165400b0069c7035b31fmr1513161qko.546.1650100138616; 
+ Sat, 16 Apr 2022 02:08:58 -0700 (PDT)
 Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
  by smtp.gmail.com with ESMTPSA id
- t19-20020ac85893000000b002e1afa26591sm4630394qta.52.2022.04.16.02.08.57
+ t19-20020ac85893000000b002e1afa26591sm4630394qta.52.2022.04.16.02.08.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 16 Apr 2022 02:08:57 -0700 (PDT)
+ Sat, 16 Apr 2022 02:08:58 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Heiko Stuebner <heiko@sntech.de>
 Cc: linux-rockchip@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>,
  linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v5 3/4] arm64: dts: rockchip: add rk3568 pcie2x1 controller
-Date: Sat, 16 Apr 2022 05:08:43 -0400
-Message-Id: <20220416090844.597470-4-pgwipeout@gmail.com>
+Subject: [PATCH v5 4/4] arm64: dts: rockchip: enable pcie controller on
+ quartz64-a
+Date: Sat, 16 Apr 2022 05:08:44 -0400
+Message-Id: <20220416090844.597470-5-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220416090844.597470-1-pgwipeout@gmail.com>
 References: <20220416090844.597470-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220416_020859_096048_7291B728 
-X-CRM114-Status: GOOD (  10.15  )
+X-CRM114-CacheID: sfid-20220416_020859_460507_41320953 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,80 +92,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The pcie2x1 controller is common between the rk3568 and rk3566. It is a
-single lane pcie2 compliant controller.
+Add the nodes to enable the pcie controller on the quartz64 model a
+board.
 
 Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 55 ++++++++++++++++++++++++
- 1 file changed, 55 insertions(+)
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 34 +++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index ca20d7b91fe5..b2f91aaacca5 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -722,6 +722,61 @@ qos_vop_m1: qos@fe1a8100 {
- 		reg = <0x0 0xfe1a8100 0x0 0x20>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+index 141a433429b5..85926d46337d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+@@ -125,6 +125,18 @@ vbus: vbus {
+ 		vin-supply = <&vcc12v_dcin>;
  	};
  
-+	pcie2x1: pcie@fe260000 {
-+		compatible = "rockchip,rk3568-pcie";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x0 0xf>;
-+		assigned-clocks = <&cru ACLK_PCIE20_MST>, <&cru ACLK_PCIE20_SLV>,
-+			 <&cru ACLK_PCIE20_DBI>, <&cru PCLK_PCIE20>,
-+			 <&cru CLK_PCIE20_AUX_NDFT>;
-+		clocks = <&cru ACLK_PCIE20_MST>, <&cru ACLK_PCIE20_SLV>,
-+			 <&cru ACLK_PCIE20_DBI>, <&cru PCLK_PCIE20>,
-+			 <&cru CLK_PCIE20_AUX_NDFT>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk", "aux";
-+		device_type = "pci";
-+		interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 73 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 72 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 71 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "sys", "pmc", "msi", "legacy", "err";
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie_intc 0>,
-+				<0 0 0 2 &pcie_intc 1>,
-+				<0 0 0 3 &pcie_intc 2>,
-+				<0 0 0 4 &pcie_intc 3>;
-+		linux,pci-domain = <0>;
-+		num-ib-windows = <6>;
-+		num-ob-windows = <2>;
-+		max-link-speed = <2>;
-+		msi-map = <0x0 &its 0x0 0x1000>;
-+		num-lanes = <1>;
-+		phys = <&combphy2 PHY_TYPE_PCIE>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3568_PD_PIPE>;
-+		reg = <0x3 0xc0000000 0x0 0x00400000>,
-+		      <0x0 0xfe260000 0x0 0x00010000>,
-+		      <0x3 0x00000000 0x0 0x01000000>;
-+		ranges = <0x01000000 0x0 0x01000000 0x3 0x01000000 0x0 0x00100000
-+			  0x02000000 0x0 0x02000000 0x3 0x02000000 0x0 0x3e000000>;
-+		reg-names = "dbi", "apb", "config";
-+		resets = <&cru SRST_PCIE20_POWERUP>;
-+		reset-names = "pipe";
-+		status = "disabled";
-+
-+		pcie_intc: legacy-interrupt-controller {
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+			interrupt-controller;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 72 IRQ_TYPE_EDGE_RISING>;
-+		};
-+
++	vcc3v3_pcie_p: vcc3v3_pcie_p {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pcie_enable_h>;
++		regulator-name = "vcc3v3_pcie_p";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc_3v3>;
 +	};
 +
- 	sdmmc0: mmc@fe2b0000 {
- 		compatible = "rockchip,rk3568-dw-mshc", "rockchip,rk3288-dw-mshc";
- 		reg = <0x0 0xfe2b0000 0x0 0x4000>;
+ 	vcc5v0_usb: vcc5v0_usb {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc5v0_usb";
+@@ -201,6 +213,10 @@ &combphy1 {
+ 	status = "okay";
+ };
+ 
++&combphy2 {
++	status = "okay";
++};
++
+ &cpu0 {
+ 	cpu-supply = <&vdd_cpu>;
+ };
+@@ -509,6 +525,14 @@ rgmii_phy1: ethernet-phy@0 {
+ 	};
+ };
+ 
++&pcie2x1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie_reset_h>;
++	reset-gpios = <&gpio1 RK_PB2 GPIO_ACTIVE_HIGH>;
++	status = "okay";
++	vpcie3v3-supply = <&vcc3v3_pcie_p>;
++};
++
+ &pinctrl {
+ 	bt {
+ 		bt_enable_h: bt-enable-h {
+@@ -534,6 +558,16 @@ diy_led_enable_h: diy-led-enable-h {
+ 		};
+ 	};
+ 
++	pcie {
++		pcie_enable_h: pcie-enable-h {
++			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		pcie_reset_h: pcie-reset-h {
++			rockchip,pins = <1 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	pmic {
+ 		pmic_int_l: pmic-int-l {
+ 			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
 -- 
 2.25.1
 
