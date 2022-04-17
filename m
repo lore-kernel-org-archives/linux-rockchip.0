@@ -4,81 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E6B5C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Apr 2022 09:54:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84E1FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Apr 2022 17:46:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J7vYLJLfY4RKApkvOww9nBn9IRF7vE3asEGpqkDvgp8=; b=m1wfgHJYP0l1b3
-	Db8c/u4WQUQey8Rs+HHYvoZjjUREp+aHm5n13tlGe+RfHwJl1V3WaXs+b1dOoUDnSDggov1t0VX5P
-	TGs2D/h/pBMtueLL+AU10GCUCXZppTAZUPLCuRLU1kcLMJNiLsPdbyXTNfBFx6plQfLtVjddTTUy8
-	bPDSEaScEtwU/zMtSsCMoOqjsOgHS6L4ZeuJ8EvAyz4VLJjjY+cFIzRYbXjlU4azp7wD6L6WSachC
-	Vq/4nN738TAKDaw0JBfBNfBC8+p3IgpwGhUdrNsXRDu126GuxkLZE0someepg3dkQ14n1ghXOPfAn
-	18et1rVId4Qh3BEDqtHA==;
+	List-Owner; bh=bM8MW7bmPNYPgo3OyBz8IWAGCiECewHAPM2c0gpygpM=; b=JhfgjxCc1MBQ2T
+	O/0bc5jqOLZ6MDv3XQh/iZZEiU7FfLb1bfhzuYmuHVQIlvvrCzsBOt35oCwqii4PpgggbQ+NzY/G+
+	6cWJAVlMmUfXhG2Tzdgt18lN9S6hXTLP3UNnL9W7bDzDcJtZKLfRmKSggSHD6iOfGV7yq7A6ggDvt
+	tSceTxkpgdXd40f+0rDFW8FFJNhm3K/NxTmKKPXjmFLFMH1hzzFpZykqBqFwv/aVmSqTUpqBCeUZ0
+	hptYh3/YYlRbIqG28+2f6b0KiREPPZnnqc62AOJBUoLdEqqkwgC8cHJdJSLZ4j8bo2U8DKnYhKuWN
+	K3hZAgRK8qvV6mc1d3Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ng1bQ-00ECUt-D4; Sun, 17 Apr 2022 09:53:56 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1ng8yR-00EkT1-G9; Sun, 17 Apr 2022 17:46:11 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ng1bE-00ECSU-5U; Sun, 17 Apr 2022 09:53:46 +0000
+ id 1ng8yG-00EkRR-PO; Sun, 17 Apr 2022 17:46:02 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 20E2FB80B51;
- Sun, 17 Apr 2022 09:53:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ACD52C385A4;
- Sun, 17 Apr 2022 09:53:38 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 4ADF860A1A;
+ Sun, 17 Apr 2022 17:45:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A800BC385A4;
+ Sun, 17 Apr 2022 17:45:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1650189218;
- bh=FPGOhka1OfYKDPNYUqhjOQxntwkCKuERgN9/gaL5oSg=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=HgDNqPoSVC6yUBvDb277MAk2tXdnzWa6RDRmSgAORvgkQfuPFpApvZ0sgp/RrpPPB
- l/7G+BKz6qFBbS574Ug2iPK7+nZJkkIEtpSE0T9Syr+PnjYZTqrp0aQf9YGuw3Of+1
- HKGD5zISkwWiOVzzSKG2+ENb9mxUY2QMNUDhxeXtTlEXlYdSAByXbS50tM7lRxwveW
- vt4xYdCdD4OnBY4RTpySsDELcQJB2IrP2Ejm5285ueuY5SVixjUypbLldxZDLSIN5q
- W+jqV12QHWnO5GKPMj/0S/0ebhdH2CPxFz9WRXh7tPSWbgmbsylbH5WCwuCWMUSiEP
- EGzwP8E8UWf6A==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
- by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <maz@kernel.org>)
- id 1ng1b6-004qUr-8n; Sun, 17 Apr 2022 10:53:36 +0100
-Date: Sun, 17 Apr 2022 10:53:35 +0100
-Message-ID: <87zgkk9gtc.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
+ s=k20201202; t=1650217558;
+ bh=VkPYYsr5x5r7c4+l7JlyJX/Yd5KqB5sSgJ/zXSaOseo=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=JCo6nyxiiUA2mR2upbI050ANjFm/PZqRuitD4XzsWQ62DVGmvDyU9lmz9oKwjG2ly
+ +AtIeoriiNAQqQf4tvR+REkdHneBKmWe2oGcqpqMMNEUsQeWyyz0CJVsWXZSwjqs07
+ zn8Tcc+5pf0ZBzF6vfRA6OszCn18n0NUFYI9C178YvncinZZ9tycRORNxmKUBwrI7A
+ ZIuWzTgM1Sfjwn1SteNZhiLG1V1u1xOm2XWuIPyOWSUUye+zX6WvQVRoOTJFc+SdSb
+ nWQQD+DR3SnSCSGB0nl2i4DWJKgIn/XQm2A99RYneN6pi6h/cJMXF5jhlv8FUT23Xb
+ 6iE6LAzUqB6yQ==
+Message-ID: <ff0135dc-da30-18b5-f5f4-cefdb0455c6b@kernel.org>
+Date: Sun, 17 Apr 2022 19:45:52 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Hardkernel ODROID-M1 board
+Content-Language: en-US
 To: Peter Geis <pgwipeout@gmail.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,	Rob Herring
- <robh@kernel.org>,	Krzysztof =?UTF-8?B?V2lsY3p5xYRza2k=?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>,	Heiko Stuebner <heiko@sntech.de>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,	PCI
- <linux-pci@vger.kernel.org>,	devicetree <devicetree@vger.kernel.org>,
- arm-mail-list <linux-arm-kernel@lists.infradead.org>,	Linux Kernel Mailing
- List <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v7 2/4] PCI: dwc: rockchip: add legacy interrupt support
-In-Reply-To: <CAMdYzYo+YeAgT92baMOoWpra230wro_WynRcajL-__9RNkeE9Q@mail.gmail.com>
-References: <20220416110507.642398-1-pgwipeout@gmail.com>
- <20220416110507.642398-3-pgwipeout@gmail.com>
- <308e9c47197d4f7ae5a31cfcb5a10886@kernel.org>
- <CAMdYzYo+YeAgT92baMOoWpra230wro_WynRcajL-__9RNkeE9Q@mail.gmail.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
- (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: pgwipeout@gmail.com, lorenzo.pieralisi@arm.com,
- robh@kernel.org, kw@linux.com, bhelgaas@google.com, heiko@sntech.de,
- linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+Cc: Dongjin Kim <tobetter@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree <devicetree@vger.kernel.org>,
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+References: <20220329094446.415219-1-tobetter@gmail.com>
+ <20220329094446.415219-2-tobetter@gmail.com>
+ <2a5f002f-8a61-e5b0-a574-ee99591c4c12@kernel.org>
+ <CAMdYzYrCZtfDiB6O20Jtp56YQhHj3jMVhCt9aCYNLbD_xwFc3g@mail.gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+In-Reply-To: <CAMdYzYrCZtfDiB6O20Jtp56YQhHj3jMVhCt9aCYNLbD_xwFc3g@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220417_025344_546086_DBF38874 
-X-CRM114-Status: GOOD (  46.29  )
+X-CRM114-CacheID: sfid-20220417_104600_910666_443D0872 
+X-CRM114-Status: GOOD (  15.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,185 +80,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 16 Apr 2022 14:24:26 +0100,
-Peter Geis <pgwipeout@gmail.com> wrote:
+On 16/04/2022 14:07, Peter Geis wrote:
+
+>>> +     dc_12v: dc-12v {
+>>
+>> Generic node name, so "regulator" or "regulator-0"
 > 
-> On Sat, Apr 16, 2022 at 8:54 AM Marc Zyngier <maz@kernel.org> wrote:
-> >
-> > Peter,
-> >
-> > May I suggest that you slow down on the number of versions you send?
-> > This is the 7th in 5 days, the 3rd today.
-> >
-> > At this stage, this is entirely counterproductive.
-> 
-> Apologies, I'll be sure to be at least one cup of coffee in before
-> doing early morning code.
+> Unfortunately, this advice breaks the regulator-fixed driver, which it
+> seems cannot cope with a bunch of nodes all named "regulator".
 
-Even with a steady intake of coffee, there is a pretty clear policy
-around the frequency of patch submission, see [1].
+What exactly cannot cope? You cannot have different device nodes with
+the same name but this is not a limitation of regulator but devicetree spec.
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst#n337
+> Setting the regulators as regulator-0 -1 -2 leads to fun issues where
+> the regulator numbering in the kernel doesn't match the node numbers.
 
-There is no hard enforcement of this process, but that should give you
-an idea of how to deal with it. In any case, 7 series in less than a
-week is a clear sign that this series should be *ignored*, as the
-author is likely to post yet another one in the next few hours.
+There are no "node numbers"... maybe you mean unit addresses? But there
+are none here.
 
-> 
-> >
-> > On 2022-04-16 12:05, Peter Geis wrote:
-> > > The legacy interrupts on the rk356x pcie controller are handled by a
-> > > single muxed interrupt. Add irq domain support to the pcie-dw-rockchip
-> > > driver to support the virtual domain.
-> > >
-> > > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> > > ---
-> > >  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 112 +++++++++++++++++-
-> > >  1 file changed, 110 insertions(+), 2 deletions(-)
-> > >
-> > > diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> > > b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> > > index c9b341e55cbb..863374604fb1 100644
-> > > --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> > > +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> > > @@ -10,9 +10,12 @@
-> > >
-> > >  #include <linux/clk.h>
-> > >  #include <linux/gpio/consumer.h>
-> > > +#include <linux/irqchip/chained_irq.h>
-> > > +#include <linux/irqdomain.h>
-> > >  #include <linux/mfd/syscon.h>
-> > >  #include <linux/module.h>
-> > >  #include <linux/of_device.h>
-> > > +#include <linux/of_irq.h>
-> > >  #include <linux/phy/phy.h>
-> > >  #include <linux/platform_device.h>
-> > >  #include <linux/regmap.h>
-> > > @@ -36,10 +39,13 @@
-> > >  #define PCIE_LINKUP                  (PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
-> > >  #define PCIE_L0S_ENTRY                       0x11
-> > >  #define PCIE_CLIENT_GENERAL_CONTROL  0x0
-> > > +#define PCIE_CLIENT_INTR_STATUS_LEGACY       0x8
-> > > +#define PCIE_CLIENT_INTR_MASK_LEGACY 0x1c
-> > >  #define PCIE_CLIENT_GENERAL_DEBUG    0x104
-> > > -#define PCIE_CLIENT_HOT_RESET_CTRL      0x180
-> > > +#define PCIE_CLIENT_HOT_RESET_CTRL   0x180
-> > >  #define PCIE_CLIENT_LTSSM_STATUS     0x300
-> > > -#define PCIE_LTSSM_ENABLE_ENHANCE       BIT(4)
-> > > +#define PCIE_LEGACY_INT_ENABLE               GENMASK(3, 0)
-> > > +#define PCIE_LTSSM_ENABLE_ENHANCE    BIT(4)
-> > >  #define PCIE_LTSSM_STATUS_MASK               GENMASK(5, 0)
-> > >
-> > >  struct rockchip_pcie {
-> > > @@ -51,6 +57,8 @@ struct rockchip_pcie {
-> > >       struct reset_control            *rst;
-> > >       struct gpio_desc                *rst_gpio;
-> > >       struct regulator                *vpcie3v3;
-> > > +     struct irq_domain               *irq_domain;
-> > > +     raw_spinlock_t                  irq_lock;
-> > >  };
-> > >
-> > >  static int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip,
-> > > @@ -65,6 +73,94 @@ static void rockchip_pcie_writel_apb(struct
-> > > rockchip_pcie *rockchip,
-> > >       writel_relaxed(val, rockchip->apb_base + reg);
-> > >  }
-> > >
-> > > +static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
-> > > +{
-> > > +     struct irq_chip *chip = irq_desc_get_chip(desc);
-> > > +     struct rockchip_pcie *rockchip = irq_desc_get_handler_data(desc);
-> > > +     unsigned long reg, hwirq;
-> > > +
-> > > +     chained_irq_enter(chip, desc);
-> > > +
-> > > +     reg = rockchip_pcie_readl_apb(rockchip,
-> > > PCIE_CLIENT_INTR_STATUS_LEGACY);
-> > > +
-> > > +     for_each_set_bit(hwirq, &reg, 8)
-> >
-> > 8? And yet:
-> >
-> > #define PCI_NUM_INTX        4
-> >
-> > So whatever bits are set above bit 3, you are feeding garbage
-> > to the irqdomain code.
-> 
-> There are 8 bits in total, the top four are for the TX interrupts, for
-> which EP mode is not yet supported by the driver.
+> It also makes it more fun when additional regulators need to be added
+> and everything gets shuffled around.
 
-So why aren't they excluded from the set of bits that you look at?
+Usually adding - in subsequent DTS files - means increasing the numbers
+so if you have regulator-[012] then just use regulator-[345] in other
+files. I see potential mess when you combine several DTSI files, each
+defining regulators, so in such case "some-name-regulator" (or reversed)
+is also popular approach.
 
-> I can constrain this further and let it be expanded when that support
-> is added, if that works for you?
+> If naming these uniquely to avoid confusion and collisions is such an
+> issue, why is it not caught by make W=1 dtbs_check?
 
-Well, you can't have INTx interrupts in EP mode (that's a TLP going
-out of the device, and not something that is signalled *to* the
-CPU). So the two should be mutually exclusive.
+Patches are welcome. :)
 
-> 
-> >
-> > > +             generic_handle_domain_irq(rockchip->irq_domain, hwirq);
-> > > +
-> > > +     chained_irq_exit(chip, desc);
-> > > +}
-> > > +
-> > > +static void rockchip_intx_mask(struct irq_data *data)
-> > > +{
-> > > +     struct rockchip_pcie *rockchip = irq_data_get_irq_chip_data(data);
-> > > +     unsigned long flags;
-> > > +     u32 val;
-> > > +
-> > > +     /* disable legacy interrupts */
-> > > +     raw_spin_lock_irqsave(&rockchip->irq_lock, flags);
-> > > +     val = HIWORD_UPDATE_BIT(PCIE_LEGACY_INT_ENABLE);
-> > > +     val |= PCIE_LEGACY_INT_ENABLE;
-> > > +     rockchip_pcie_writel_apb(rockchip, val,
-> > > PCIE_CLIENT_INTR_MASK_LEGACY);
-> > > +     raw_spin_unlock_irqrestore(&rockchip->irq_lock, flags);
-> >
-> > This is completely busted. INTx lines must be controlled individually.
-> > If I disable one device's INTx output, I don't want to see the
-> > interrupt firing because another one has had its own enabled.
-> 
-> Okay, that makes sense. I'm hitting the entire block when it should be
-> the individual IRQ.
-> I also notice some drivers protect this with a spinlock while others
-> do not, how should this be handled?
-
-It obviously depends on how the HW. works. If this is a shared
-register using a RMW sequence, then you need some form of mutual
-exclusion in order to preserve the atomicity of the update.
-
-If the HW supports updating the masks using a set of hot bits (with
-separate clear/set registers), than there is no need for locking.  In
-your case PCIE_CLIENT_INTR_MASK_LEGACY seems to support this odd
-"write-enable" feature which can probably be used to implement a
-lockless access, something like:
-
-	void mask(struct irq_data *d)
-	{
-		u32 val = BIT(d->hwirq + 16) | BIT(d->hwirq);
-		writel_relaxed(val, ...);
-	}
-
-	void mask(struct irq_data *d)
-	{
-		u32 val = BIT(d->hwirq + 16);
-		writel_relaxed(val, ...);
-	}
-
-Another thing is that it is completely unclear to me what initialises
-these interrupts the first place (INTR_MASK_LEGACY, INTR_EN_LEGACY).
-Are you relying on the firmware to do that for you?
-
-Thanks,
-
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
