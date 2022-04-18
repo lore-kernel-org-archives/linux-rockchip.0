@@ -4,74 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06A02C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Apr 2022 11:46:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5722BC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Apr 2022 12:34:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9wzsn1g7/wG8GjB2FKPZnUV4HGaG3SMuJ3aUZaRmZew=; b=3uZviEnHS3CW28
-	fmq5hVmhZM365bDx/S6NonAv0sSPZ7Z3EGlrIMvbIPi6T+VmAvrEtgwSjN6QxKBdpuW+WonRKRHM6
-	scl1t9/MBSjFRDZx7vjyPkwauoAVGRKqwW+KhmI+/xlIdojB8WMkb6HFbBEI5iMusLgevS+WMj23/
-	UF+yyz2zP3jSaPBGu+t1S+OmgrtX2WPY2DsTnhOaR73sH6Y3vemk85ELIBKy2x7rk5sUM3SyGfQGi
-	mVX1U/A1kZHsfOIyOBm1M4rukuv4JO6fbLmdbIt1+hppbMvdOG2F3V3DFFSRW6bMkcIbJ32xwz2ez
-	8/kEKvXWpfvbOQ1pjwpw==;
+	List-Owner; bh=VhALSMsjCJjn0mkUWocOiQ0AuJMx5ZDyePItkrLzU8Q=; b=Ubjht5NPzeYApa
+	6GZkTLIS26nhNO9Sn9ICtzqhOxE7uM7h85u/9yyHk6rtwsSwcjse6jsZUhW4fm5t8TJHwZu40Ucf4
+	5mM1XPqghS2yg1p0K1G32+WYGe6ORQjPZNAx+wUfsIvEgNdv5gsKrwFGl5R/2+SWNCbc1vkOx8+8b
+	AFSpxC99dNovto1D9ifnR8EKTTtvsa60GaTipdXTwULJpYO3PHd1Rl4ZBDXQSOrXtRq+UTdPb/58q
+	I/BubVuGa9SZzedUzYs7jGN4ZizgJhJct9w3MoKLOJHkzL7z1awJDiyHrc9aW5yw8wW8429T0vi+s
+	vtHc2o8ApH/19k7LDCNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngPq2-00GWj9-B9; Mon, 18 Apr 2022 11:46:38 +0000
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+	id 1ngQae-00GnAn-5P; Mon, 18 Apr 2022 12:34:48 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngPpl-00GWcb-BR; Mon, 18 Apr 2022 11:46:22 +0000
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-2ec05db3dfbso136545907b3.7; 
- Mon, 18 Apr 2022 04:46:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=R+k5R+6Tf+kVP5/jwUVVJcqexRzi8y2ZOUAjpeAiUi4=;
- b=Ce5lUboHlt/gmpUKC++rrBFPSCnQ9wxILvj8LVkvjt0FOXtEEJUt8jEE2p/+9xEXrX
- AGEhhymndfCana7cViuokWV7Um9RmFBZjENGfgzG7eyBVYy62vB6s4ilKjGc+rfJXTQe
- pAqrR9cf3zEDv/Y0t39vAsx6ptucgIysTn7d0pEIcrOk4xjwsuyDMAt47QfQ5aaBQoug
- a7y+fNQYoNbUHae8C9QBgSzxRYnafMZjkFX1M7iI5OimZch5nzLHI8nJ7czhhtbBsmRJ
- 0ppqCtGxFQHePbG1lMZToT2EfPEmBK6/TNedmw9WpRxcnxYpYQa6xqqeAj+2jcoMTrdX
- AfuQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=R+k5R+6Tf+kVP5/jwUVVJcqexRzi8y2ZOUAjpeAiUi4=;
- b=6WZ/J12PDnBPwKf7vQsHNRd+x8s2m80zTKsnY/ZkwS74GrEXOi3Hh5+jH5pzDjsfSB
- 1W6TDeptbAxO2GebVtKuHXvF4HKo9uMolDii5nMPGXoJAOkvWOa1sBg2IrcaawtFfKp0
- Uxmv3Pcy+Z4Mss+b35MOQDfo+N/r9MxvMwxgyV6i9N1hO0xiy0CgayWBAZizpSTqWmbp
- P+I3/RhQmIb9uDuXplzlmFaFAGX3U//5F/gJ/g5UqfZTk2T/DlMDxZcIhAko1rq0E66d
- bXwfLnWXBVZqoaW8CsVR23BbwuEkvIPbVKKeaQIO10f1vu9s6Tc64L5V/h8DPOGDrW4i
- vmHA==
-X-Gm-Message-State: AOAM531msC4bDdZTZ4NSmrPCIm1XgAHeRGnfsFUsLxzXvzEhZir5hAIG
- 0wEj39wWcaJOgJetrbyVMVtAXdyoPX0XRx2O42c=
-X-Google-Smtp-Source: ABdhPJye5yqT98SnUYRLXzqx8takuFC8eq2pX1Rbb4eUcIiR85AzHfMDt6Qbgw4uG0I1YL+4XsFc6rnW3OecwaE1v5A=
-X-Received: by 2002:a81:5904:0:b0:2eb:f900:882e with SMTP id
- n4-20020a815904000000b002ebf900882emr9347609ywb.281.1650282378263; Mon, 18
- Apr 2022 04:46:18 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220329094446.415219-1-tobetter@gmail.com>
- <CAMdYzYrCZtfDiB6O20Jtp56YQhHj3jMVhCt9aCYNLbD_xwFc3g@mail.gmail.com>
- <ff0135dc-da30-18b5-f5f4-cefdb0455c6b@kernel.org> <12089439.O9o76ZdvQC@phil>
- <d3cb233a-1962-af6b-2663-c057e7823a2b@kernel.org>
-In-Reply-To: <d3cb233a-1962-af6b-2663-c057e7823a2b@kernel.org>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Mon, 18 Apr 2022 07:46:07 -0400
-Message-ID: <CAMdYzYr6ONFiuA7dhYEdjTXHAN90=NBCEGK3gOY=BBLzf7P-4A@mail.gmail.com>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Hardkernel ODROID-M1 board
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Dongjin Kim <tobetter@gmail.com>, 
- devicetree <devicetree@vger.kernel.org>, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+ id 1ngQZw-00Gmqz-Om; Mon, 18 Apr 2022 12:34:06 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 3CC716118B;
+ Mon, 18 Apr 2022 12:34:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0766C385A1;
+ Mon, 18 Apr 2022 12:34:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1650285243;
+ bh=L5R/v4sHI6rV04SHHUZi5wOoFWpDnT4xqKF6/3cKyl4=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=u9bOvlRUZMy7+ggYsfFYV/4ulLBPFYISduMjTDTx0mtTvKrvcRIwf6iz5gWfzCMD/
+ Px6Q+BoHmUtcnNA0N18/6gGzqvAkP4FsWBvRMBnwiCJ8/kRKDsqF3EgWNmRDK8Tior
+ jRx1WLtN6tBQHGGnmk0rSK+hyIg9VDNluecSBtwaSWIV0Wi6AwkQzzNgU/zjJxHj+9
+ nCfu3t4xKSJrz3XbV/KsNCoBZkJQB+m5nW5YoZe0mJ2MWeXVRL03qXSjyo6kWq3O4K
+ 81V92uuN6sxiVVhYe6LkBFhbD2Vph5+XJo+T4CvX7pH2EvNbxRJgfDHs67nlyALgOk
+ hz1vwedtdYVGw==
+Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
+ by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <maz@kernel.org>)
+ id 1ngQZt-0050pH-7a; Mon, 18 Apr 2022 13:34:01 +0100
+Date: Mon, 18 Apr 2022 13:34:00 +0100
+Message-ID: <87sfqaa7uv.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,	Rob Herring
+ <robh@kernel.org>,	Krzysztof =?UTF-8?B?V2lsY3p5xYRza2k=?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>,	Heiko Stuebner <heiko@sntech.de>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,	PCI
+ <linux-pci@vger.kernel.org>,	devicetree <devicetree@vger.kernel.org>,
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>,	Linux Kernel Mailing
+ List <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v7 2/4] PCI: dwc: rockchip: add legacy interrupt support
+In-Reply-To: <CAMdYzYo_+7rakc=GCTueEZvH_F4Co6+=eKAUztJaafiDXSKKXQ@mail.gmail.com>
+References: <20220416110507.642398-1-pgwipeout@gmail.com>
+ <20220416110507.642398-3-pgwipeout@gmail.com>
+ <308e9c47197d4f7ae5a31cfcb5a10886@kernel.org>
+ <CAMdYzYo+YeAgT92baMOoWpra230wro_WynRcajL-__9RNkeE9Q@mail.gmail.com>
+ <87zgkk9gtc.wl-maz@kernel.org>
+ <CAMdYzYo_+7rakc=GCTueEZvH_F4Co6+=eKAUztJaafiDXSKKXQ@mail.gmail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/27.1
+ (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+X-SA-Exim-Connect-IP: 185.219.108.64
+X-SA-Exim-Rcpt-To: pgwipeout@gmail.com, lorenzo.pieralisi@arm.com,
+ robh@kernel.org, kw@linux.com, bhelgaas@google.com, heiko@sntech.de,
+ linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220418_044621_443554_3DC2BCA8 
-X-CRM114-Status: GOOD (  25.30  )
+X-CRM114-CacheID: sfid-20220418_053404_960408_0D01C3E3 
+X-CRM114-Status: GOOD (  35.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,47 +98,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 18, 2022 at 7:21 AM Krzysztof Kozlowski <krzk@kernel.org> wrote:
->
-> On 17/04/2022 22:55, Heiko Stuebner wrote:
-> >> Usually adding - in subsequent DTS files - means increasing the numbers
-> >> so if you have regulator-[012] then just use regulator-[345] in other
-> >> files. I see potential mess when you combine several DTSI files, each
-> >> defining regulators, so in such case "some-name-regulator" (or reversed)
-> >> is also popular approach.
+On Mon, 18 Apr 2022 12:37:00 +0100,
+Peter Geis <pgwipeout@gmail.com> wrote:
+> 
+> On Sun, Apr 17, 2022 at 5:53 AM Marc Zyngier <maz@kernel.org> wrote:
 > >
-> > so going with
+> > On Sat, 16 Apr 2022 14:24:26 +0100,
+> > Peter Geis <pgwipeout@gmail.com> wrote:
+> > >
+> > > Okay, that makes sense. I'm hitting the entire block when it should be
+> > > the individual IRQ.
+> > > I also notice some drivers protect this with a spinlock while others
+> > > do not, how should this be handled?
 > >
-> >       dc_12v: dc-12v-regulator {
-> >       };
+> > It obviously depends on how the HW. works. If this is a shared
+> > register using a RMW sequence, then you need some form of mutual
+> > exclusion in order to preserve the atomicity of the update.
 > >
-> > i.e. doing a some-name-regulator would be an in-spec way to go?
+> > If the HW supports updating the masks using a set of hot bits (with
+> > separate clear/set registers), than there is no need for locking.  In
+> > your case PCIE_CLIENT_INTR_MASK_LEGACY seems to support this odd
+> > "write-enable" feature which can probably be used to implement a
+> > lockless access, something like:
 > >
-> > In this case I would definitely prefer this over doing a numbered thing.
-> >
-> > I.e. regulator-0 can create really hard to debug issues, when you have
-> > another accidential regulator-0 for a different regulator in there, which
-> > then would create some sort of merged node.
->
-> I don't think such case happens frequently, because all regulators are
-> usually used by something (as a phandle) thus they should have a label.
-> This label should be descriptive, so if one can assign same label to
-> entirely different regulators, then the same chances are that same
-> descriptive node will be used.
->
-> IOW, if you think such mistake with regulator names can happen, then the
-> same can happen with the label...
->
-> Anyway, answering the question - "dc-12v-regulator" is still not
-> matching exactly the Devicetree spec recommendation, but it's okay for
-> me. :)
+> >         void mask(struct irq_data *d)
+> >         {
+> >                 u32 val = BIT(d->hwirq + 16) | BIT(d->hwirq);
+> 
+> This is what HIWORD_UPDATE_BIT does, it's rather common in Rockchip code.
+> I believe I can safely drop the spinlock when enabling/disabling
+> individual interrupts.
 
-This seems like an excellent compromise, thanks!
+Yes.
 
->
->
-> Best regards,
-> Krzysztof
+> 
+> >                 writel_relaxed(val, ...);
+> >         }
+> >
+> >         void mask(struct irq_data *d)
+> >         {
+> >                 u32 val = BIT(d->hwirq + 16);
+> >                 writel_relaxed(val, ...);
+> >         }
+> >
+> > Another thing is that it is completely unclear to me what initialises
+> > these interrupts the first place (INTR_MASK_LEGACY, INTR_EN_LEGACY).
+> > Are you relying on the firmware to do that for you?
+> 
+> There is no dedicated mask or enable/disable for the legacy interrupt
+> line (unless it's undocumented).
+
+I'm talking about the INTR_MASK_LEGACY and INTR_EN_LEGACY registers,
+which control the INTx (although the latter seems to default to some
+reserved values). I don't see where you initialise them to a state
+where they are enabled and masked, which should be the initial state
+once this driver has probed. The output interrupt itself is obviously
+controlled by the GIC driver.
+
+> It appears to be enabled via an "or" function with the emulated interrupts.
+> As far as I can tell this is common for dw-pcie, looking at the other drivers.
+
+I think we're talking past each other. I'm solely concerned with the
+initialisation of the input control registers, for which I see no code
+in this patch.
+
+	M.
+
+-- 
+Without deviation from the norm, progress is not possible.
 
 _______________________________________________
 Linux-rockchip mailing list
