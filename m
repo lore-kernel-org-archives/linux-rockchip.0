@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8798C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Apr 2022 13:10:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9F50C433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Apr 2022 17:40:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XDlWMi2pOhSrbc1K8e2widGcn4hnT26MTZFlPerXPXg=; b=VBEp6IsvxD8/MR
-	6UOsnVSAcYRhvg1s0gO6QJk9RIMBfy8H3vmQYeRFT4Se/RJ4wox7bYblN2DdPYLuhgzi2H/dR1YR3
-	Js6xObhCMcHm9kPKHbvyFfK8HcBhsi2o2NjtoAMOAI/pcITxhv7GbzTUvMDAnnIagHek+ze/dKgmE
-	ZaZ8kcYngKItb/DQUMlW8cg9ZkBsG0J1y8WPeOJP+RbJfQ5I1THcjBDqwpr9IKW9sGSgAgg65ybtH
-	7B05w+9ft5DGMQEY2uFYvq0BtrtpcqJDvPXjIwS0mM3jDQZ25wreRXDkoBwDzF8BmqR/cQqU9ErfA
-	xAb3Ye9fgql9UuHP3pPw==;
+	List-Owner; bh=SBBqZ6pZUdJqLyjPUCBjPvdxXuhYkzKnI8HyhRQE0SQ=; b=omfT6gnkxgoP3f
+	sv6zuC9VdkML0Kfh2Sqvhf1I3ISjxYaC+4tsVAANjt6O0VYeLzhaxi6DllYf8NSTh8MJ2LwLT9Lo0
+	e8QoeL5t9Xzp8kPMIq74G1PWehbhIJ3719C0MG1e0CG4WnljRLyfMX2ROTRuMCNQCee1A1E2AgYKG
+	d+M5ITRm7bW7z24Nrb4sWw9md+l0ZKJDZpNm/nQM/Vz7g02wwHryBg99uXmjJ6T/zV9obk8s4RxJN
+	G/vJjTrnf5h6NarfMYoWgCTKXGCfWoqgiC32yneTENm7FgH5eQRCmzCcxMuq2eHC+8AYJ60OsP0v3
+	D8aqK7ktzMMbGyKL77/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngncS-003jHJ-G6; Tue, 19 Apr 2022 13:10:12 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1ngrpq-005OTj-DQ; Tue, 19 Apr 2022 17:40:18 +0000
+Received: from mout.gmx.net ([212.227.17.22])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngmRe-003HOL-9S
- for linux-rockchip@lists.infradead.org; Tue, 19 Apr 2022 11:54:59 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id z12so20932708edl.2
- for <linux-rockchip@lists.infradead.org>; Tue, 19 Apr 2022 04:54:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=nfsMBJ2xALLgOjM4oOlK5BSYjJIFPGL8NAkh/N0/6yg=;
- b=ZyjMtC8vDpunrZ/RnPfYn6O9lMWHMhEmyFxdKg41YVJvyDuwtoxrmOfkHUt26wLrf0
- 8Vra8yynqYlFbnTVedtpqXhG3EjBrNLGB0d4IE5S7o6A2XMii46/SNSAWK0yXDPm10up
- 7CSFHusMxjfK2TCkeN6FCjVfhsJgIRRzP6n8gHvMuQZ8OcTpG2OHJft/fq1Cnw0gIVOr
- OwYI8aF1erqTvLAp3Urtm0zi7uAfXiutEQwIOjVKoyHnALBOzadlbILaB2ILvfYmzI4U
- M3lD7DO+wmXjYcJC83REAy8fnhkz/1nN5Q5gW8yGlB64nU3tnbXxpG4SUtR3hFvlovKD
- pfjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=nfsMBJ2xALLgOjM4oOlK5BSYjJIFPGL8NAkh/N0/6yg=;
- b=J/KDEpz8qYU9SrBxw8loVZk+qlSF+JRGPmc5liur8ac/LkF3vsnx3lYFpFlu9aYKbH
- TpqkLDl6SQ4iwse0lXuadjbddQqn5DU2yV+0EJZzCmP86nqOj493BLflGsFYcehu0oD6
- tIW2rJlFff+8n81wsv8cIVFvZ1sFZ7yKnS0DNAEg4tK/0qnl33fOo8GIghhDRtzGD4Ap
- zT+YpmtLXDpIabBYI8AJCC41jOedmr6Nylt5A5kIvcv2glHCQyfVp3c2hg5va7rhM2tL
- t6pLuNIuB9kJzyeTjAIQGYnXLHHymd3aSrl2YjELuXnjoV7jyReKg+uHJ0NKVEru3zbt
- Y/tA==
-X-Gm-Message-State: AOAM531Z9RzgMxOAdZjTyQhUwW56sK7lq3Vj8TKMeUjbzc2Rk+RSyjH7
- EKAwRpDGY01mrTYTNkymXW7XyA==
-X-Google-Smtp-Source: ABdhPJwTmG5NGqJbQnGnpk+8S5HiLxzmh4OPgLZyw4Ghg8byqWFSS06JiSgvvJYqgbuxen9bp911BA==
-X-Received: by 2002:a05:6402:3046:b0:420:120e:ef2c with SMTP id
- bs6-20020a056402304600b00420120eef2cmr17002877edb.160.1650369296744; 
- Tue, 19 Apr 2022 04:54:56 -0700 (PDT)
-Received: from [192.168.0.217] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- r24-20020aa7c158000000b00423fd948d56sm952196edp.3.2022.04.19.04.54.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Apr 2022 04:54:56 -0700 (PDT)
-Message-ID: <07d7fa69-dd2f-3e10-f959-474814105d3b@linaro.org>
-Date: Tue, 19 Apr 2022 13:54:55 +0200
+ id 1ngrfT-005JjB-Vc; Tue, 19 Apr 2022 17:29:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1650389348;
+ bh=KwXzkV0B3f5e2tIrsLC+AOdAfv7m88ysNXObwXd6YFU=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=C3r0DjATYEqweUN70N+KSWm8s2Civ07dEeM21QTrj5r1m5ZISvnKT7EL2fK8jKQcG
+ YCjlBNclMYyRmEK6ZfE9at59azUaeOCjiGBJ+iM3/boiWJlrweKhokDKsRGFHpVm44
+ syEqyK5OLmSSqMe8pekmtoe+yOUERDkEvLQKcVvs=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.157.75] ([217.61.157.75]) by web-mail.gmx.net
+ (3c-app-gmx-bap70.server.lan [172.19.172.170]) (via HTTP); Tue, 19 Apr 2022
+ 19:29:08 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v5 24/33] dt-bindings: crypto: convert rockchip-crypto to
- YAML
-Content-Language: en-US
-To: LABBE Corentin <clabbe@baylibre.com>
-Cc: heiko@sntech.de, herbert@gondor.apana.org.au,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20220413190713.1427956-1-clabbe@baylibre.com>
- <20220413190713.1427956-25-clabbe@baylibre.com>
- <44efe8b6-1712-5b87-f030-2f1328533ee8@linaro.org> <Yl6YV9nLVI4qYsPP@Red>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <Yl6YV9nLVI4qYsPP@Red>
+Message-ID: <trinity-c60358c4-ebd1-47bf-91e0-9ae0beefd39f-1650389348418@3c-app-gmx-bap70>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-rockchip@lists.infradead.org,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Rob
+ Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Lorenzo Pieralisi
+ <lorenzo.pieralisi@arm.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Johan Jonker <jbx6244@gmail.com>, Peter Geis
+ <pgwipeout@gmail.com>, Michael Riesch <michael.riesch@wolfvision.net>,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pci@vger.kernel.org
+Subject: Aw: Re: [RFC/RFT 2/6] dt-bindings: soc: grf: add pcie30-{phy,pipe}-grf
+Date: Tue, 19 Apr 2022 19:29:08 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <02b3fe1c-12f9-8f96-a9b5-df44ca001825@linaro.org>
+References: <20220416135458.104048-1-linux@fw-web.de>
+ <20220416135458.104048-3-linux@fw-web.de>
+ <02b3fe1c-12f9-8f96-a9b5-df44ca001825@linaro.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:GSNIHIUWA/GRgjok62B+UG3JpReIUrnZJW4cJo6k+0piMPNyKFMYLVAFWEh1wrHmC12r3
+ jNiJtMLDXSgz8acJ/aJzo+jHp/laJRu0OT7D+X3jpnmIx10ZRP1JqBS5CgsRVh/9IdoFFvDn3g/d
+ rj15Lid9nt0dWx9ntE2Vb5tFhLn/8safPKxQPqCoi0HjiXWlBT+34uxmGYQ7RC1juT0PrxVRNTqc
+ +QTAlJ8jBUmU1xE8ALgCLTfOHz6M+dTJ9/YjpIsyksZMR+MkqhSHhbwhX6bzXV0vtETyR9yddXOr
+ u4=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:5J5RBFRzPTA=:MMjlPLuedJCMlAG5z+h8Bd
+ CK5NFPEE5BVigaDy2laiQ3hRh0HImsKvp9cX2T3LIVYqMkqSsdHqKNBebEb9780iJzIt8QM/K
+ y9CLpFPNgTk0uM/rfb3lgNeOPYy+VVHhEX/pWsHHxtLSpMVOZ9kppKDncbHeK2pBCqzqbBABV
+ 4Hq6qMPtbDPsmgM9C+lq8lfBsoCDZpGQltXuR+4tcZ0Da3h6jUHz2/UBW1FT1KHOA+laYVvMk
+ Riyj53Nwe+OUPmsJs7mnYI2iLWL6L/tUaf5WEUva+1mUYPHoJRbRcCeHcRQJDSOCmqBrYAbYF
+ +3s76mG4HUhtZ+cBaMiYRj3eeg8vHx0s6BybOeU3XzkVVYavGi/jCADVnpZYoCtxL4B66wO58
+ gjuekbExgepHeqNRmYJS+H+5VFOiH3YJLw4pwg/Q9OAiLjfe7XWTtdNO4nAN8eI9Ed0RIRNkp
+ gHPIBavKmNjNsvReK1OGzG2oGnejY7gC5GuhCvFYoAbLXF1/sndvItKF7jMz1MBMPBq8XWDD7
+ 1cQLVwUR/fFS0cW9+ozbdCHKY3I/95TDHgeGdXd93tAoRhBryWoYjZkSr8yFglnePJThlEqwR
+ 0pq235DHr7bdkoQieORurzxhhH4+Drw7BaTzq40uEnMMZMcPBhf26ZU45rosLjOpGUyJEJJM3
+ YTRUlTdc5HFiT33FAqSB83j9MTWyHTmUZJVzHrHq6mSdnFZOm7XeSsY6ZzxfPpgLX1VvmxbNe
+ 2z7dslB3GZNBFZ3wpYcTO44+RvZB9DlwXuzmx2QQVHRT5fbtdA1uaNeTflN5aK5nvUU03Wpe+
+ L6o34tm
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_045458_372694_CC1859C2 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20220419_102936_603039_97E65169 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,44 +99,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 19/04/2022 13:09, LABBE Corentin wrote:
->> This is not needed and dt_bindings_check should complain.
->>
->>> +    items:
->>> +      const: aclk
->>> +      const: hclk
->>> +      const: sclk
->>> +      const: apb_pclk
->>> +
->>> +  resets:
->>> +    maxItems: 1
->>> +
->>> +  reset-names:
->>> +    maxItems: 1
->>
->> The same.
->>
-> 
-> I forgot to test the intermediate patch...
-> Before I send a new version, does the final document is okay ?
+> Gesendet: Montag, 18. April 2022 um 17:54 Uhr
+> Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
 
-Looks ok, if it works. :) I don't remember if dtschema likes the cases:
-clock-names:
-  minItems:3
-  maxItems:4
-if:
- ...
-clock-names:
-  items:
-    - ...
-     ...
-  maxItems:3
+> > --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> > +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+> > @@ -14,6 +14,8 @@ properties:
+> >      oneOf:
+> >        - items:
+> >            - enum:
+> > +              - rockchip,pcie30-phy-grf
+> > +              - rockchip,pcie30-pipe-grf
+>
+> These are without SoC parts. Are these PCIe v3 General Register Files
+> part of some PCIe spec?
 
-This should work correctly, but dtschema has checks for unneeded
-min/maxItems so be sure they are not complaining.
+imho they are shared across SoCs rk3568 and rk3588, but have only seen rk3568 implementation yet.
+PCIe driver currently supports these 2 Soc (different offsets in the Phy-GRF), but can only test rk3568.
 
-Best regards,
-Krzysztof
+pipe-grf seems only be used for rk35688 (offset used in probe is defined for this SoC), which i cannot test.
+
+so i have left them SoC independed.
+
+> >                - rockchip,rk3288-sgrf
+> >                - rockchip,rk3566-pipe-grf
+> >                - rockchip,rk3568-usb2phy-grf
+
+regards Frank
 
 _______________________________________________
 Linux-rockchip mailing list
