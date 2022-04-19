@@ -4,84 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 762E8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Apr 2022 20:38:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78FC0C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Apr 2022 20:48:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K2IDBBEptPGf7HRSe9U1A7McyaBDo63d0NoCjd6l1B8=; b=pFS7bF+ZIMms6k
-	iZIytHYV2ojzXzXnzKF6xhN9JAlGW5NYh6GZpsIibu0dwHiRBv7KBYZGbeVow6CSM0CcJgUA2Hk8u
-	Yk8G9rxzuto+C/aefihKbxh7Enem/k7919xNZhntX/tXWd2Ta+CIpfxM/U9x4DAMeqtxUrVUsY5Iu
-	KcaCIs4lXxYrLpnyhNYk0ZClzlgXEDTO732WbrdrJFUVOyp+FOlN5cBHxMNy3Cy+JKmFMZVhoXgtY
-	2hOQkjCxKSgMrA7oBLH6Cx5YRERXv3lgZVfos1YnZd63cp++biy9ViL0fYlBS826YnjmCkFhWms+P
-	/x4ni0eA+VOc50uX5CBA==;
+	List-Owner; bh=yWxEKVeCrrFmYCn1wJVnDl9vkRhqZeLCjfJyVh/3Imc=; b=J7oSoHwq12P7tR
+	oJv/GUrFWOEwESJJELszC0ef4m4Fno7GBmWig0il2/DPvwVGWKPlsiWp0Vl6XdMBNVjTc3XeUoCsh
+	wVS4ADwccIoAoTJYvctmkaelXwfwRazDuwMt4cAWcr/PjHYr4548fPKXSQEIhvFbXalTMnzgZNWYV
+	0MnwaxYsa/oIXb0EqDGw7cBOmmOgltJ15jqeqIPiwaLH6/L0v3wAF5Gfrxp0CtsSrA6j1HDue1aT5
+	3TrUpGDoWDTPjtrlknpmvt19GW7zap7VjGjHt96aBXhSHBZjAZiCX6nl8i0TlUVI7gME1RWDMzvB+
+	K7ZO2T8oXJl9vSX9zZRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngubn-0068IR-5W; Tue, 19 Apr 2022 20:37:59 +0000
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+	id 1ngum2-0069lG-4o; Tue, 19 Apr 2022 20:48:34 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ngubk-0068Hi-Ga; Tue, 19 Apr 2022 20:37:57 +0000
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-2eba37104a2so186443307b3.0; 
- Tue, 19 Apr 2022 13:37:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cHxhl2p9BcyJjH5gP5zVW7eAlhTagXkGJ068+53FUhc=;
- b=cuMa2lRM+x87AKopkE+LfRRbGktPpPk3lfwa+cfelKQe/jqguClWdey6LgUgAgxETM
- aeKV/GVjim7yFQDJKZqVRfQQzQDHakZ9OUH9+6/eBmRmdxBPJHeyJO8gZYn3sSLglK4E
- S/HrYwEYBVZ8QKREvANtDkP3f6m2hjX8gsrNlVziYOR+Tc1kbx56s1rDZCA/UkV5KXhr
- 42HooZesHEbRupzG68QWbWVkgwUuJRQT9BLqVyhQtsMJH6ug1NbiN9wD1M0ETLCJ5msX
- 8xXjrAP9FWio4X9h4hwhBsOeWxSF6efSN4kN4Q+Ul1L4LjDB3QUKVxUUnz6Sp43cv4s0
- leWg==
+ id 1ngulz-0069jj-AH
+ for linux-rockchip@lists.infradead.org; Tue, 19 Apr 2022 20:48:32 +0000
+Received: by mail-ej1-x629.google.com with SMTP id r13so35355991ejd.5
+ for <linux-rockchip@lists.infradead.org>; Tue, 19 Apr 2022 13:48:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=CJf6mwEn+nVa2WZGxE3mxgQWoFOnhgooJvM6BUiZrIU=;
+ b=sadS+dg/MUv2FK1jNv4oLA4r90msuWn07eu+YnpcnwBkvjXKjO6ovMpPDB4WX89vRZ
+ Zp1LuWysBPu4wG2p3ssLPAi/GQs4kZqU4H1VDgTVidl981CgDIxKMKFQinTJBI4I+yYW
+ +0cOWB42lZ8nODDHXFHvfhNqDuWS9vmNUXhpVaaxc+Oc/oCltiOaLTAzHkyq4DtXDwXk
+ BzYB9hk0fGEU2BJg6zqmWAJRDRpytwPPLr5LLYQv39gWv2eTN/AY2gr3/BWHrglqfIZG
+ r34urJSf9o8CynG4VHbozLBcWTW0S+j6HzQPCeUOhvXYqe+V4somhsvQ6+oG4RPFWDr/
+ cxDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=cHxhl2p9BcyJjH5gP5zVW7eAlhTagXkGJ068+53FUhc=;
- b=r/dW7yHL50AL63sADuzBQODSv/fOHx+UVjEUeoGTKDQKeEcJN7v78fWdrQqQV97+Fi
- LYXB6A5dbg38rYlTShdxhRP7Oc/saazn5x74pwbHkkpHjJT2VMCPEBL25HEoAWQmDycn
- 7uqqelvqS22qzNWii/HAcEXxQG850XeTBozB2y6CqLwHe3nyvOzJcgYmTzHaWFCXIy21
- nKAAFkqs9ye50kCRGzIXHx293xMQhmp0Mf9v9UT8C/jKkwfp4kir63Yc053fzAddrQEn
- yw1hRznjHWP3oZnkftjUONCnbCUGycAuWWzYrkgLUy/C3WTvS2U9LYyvBX6qxY+SfIEY
- P5cA==
-X-Gm-Message-State: AOAM532jPlgs2bd+hvCZfGz3sNUnKx1G9a90XsMo+Hi7zdxZ1nmdj6OJ
- PubbxW29lBdob7vq5Bc60hkEFSZahp1MVtC5eSM=
-X-Google-Smtp-Source: ABdhPJzhJDLqDzfN8OElgAf4e+hinhCr3LANIeefHr67lZzbulARP8TD/SxudgC1vRbV5b5gsLvHoIiWb7GjhAg99xc=
-X-Received: by 2002:a0d:ef84:0:b0:2f1:ac72:6e05 with SMTP id
- y126-20020a0def84000000b002f1ac726e05mr9156226ywe.241.1650400674442; Tue, 19
- Apr 2022 13:37:54 -0700 (PDT)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=CJf6mwEn+nVa2WZGxE3mxgQWoFOnhgooJvM6BUiZrIU=;
+ b=D6+dKEO6afzuQ8D8kgkQxBTTw8DWhweP7sIN3y5GUNQXRD+ngN1k5rYtIq6j5bvG33
+ ZAaYaN22DQgrAbu8j/egaP7Knu7vKmW6I3BCc0DF7/2pzoy1jv8w08MIcFTWVad/9LMW
+ Ut44CFfxc8HskGQk1oVCq4ok8k/17uMUUi83G7j8huZwm5J3vBHyArfrn/3t4DJmHwaw
+ FGZvRINdKsDHybjYmG2mYxFlwh7yQLEq9dqR8c6Gvjr5dHhXBNWZRiKZV6iy1R1g/8FK
+ cFLE36Ha+kqZF9FjdEFJCUvzuVr/zYH+qeimh1I62CGXi4icE0BGFe4P0qVigkjBw6pv
+ MI9g==
+X-Gm-Message-State: AOAM5327aJE/l7N9bw/ePcz3yBdF/y/EzK7jPFp64dHJ0+qUh+ZII7K6
+ lauzzkTd2JbNpbrDCESFlcLBwA==
+X-Google-Smtp-Source: ABdhPJyQtcbsYxBk301NPuwUiPCLtudHHdOKEJcHue01td/XXGeGWYHsjUmYm8cYC0OuP1gllTZtKQ==
+X-Received: by 2002:a17:907:9005:b0:6da:81ae:a798 with SMTP id
+ ay5-20020a170907900500b006da81aea798mr4214344ejc.699.1650401307466; 
+ Tue, 19 Apr 2022 13:48:27 -0700 (PDT)
+Received: from [192.168.0.222] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ wi17-20020a170906fd5100b006e8b945ab94sm5905360ejb.216.2022.04.19.13.48.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 19 Apr 2022 13:48:26 -0700 (PDT)
+Message-ID: <09339568-8901-991d-a3a4-1061fe5c90fa@linaro.org>
+Date: Tue, 19 Apr 2022 22:48:25 +0200
 MIME-Version: 1.0
-References: <20220416110507.642398-1-pgwipeout@gmail.com>
- <20220416110507.642398-3-pgwipeout@gmail.com>
- <308e9c47197d4f7ae5a31cfcb5a10886@kernel.org>
- <CAMdYzYo+YeAgT92baMOoWpra230wro_WynRcajL-__9RNkeE9Q@mail.gmail.com>
- <87zgkk9gtc.wl-maz@kernel.org>
- <CAMdYzYo_+7rakc=GCTueEZvH_F4Co6+=eKAUztJaafiDXSKKXQ@mail.gmail.com>
- <87sfqaa7uv.wl-maz@kernel.org>
- <CAMdYzYouLoYX89EWjQTRAjd-1bvJEJtfYQa2KrtFH22Kp-4Efw@mail.gmail.com>
- <878rs2c8ay.wl-maz@kernel.org>
- <CAMdYzYqfitnPYSUEeeUB=x9=L9xzAu6o0SBmEdF8WKeb-+b6uQ@mail.gmail.com>
- <87r15ta469.wl-maz@kernel.org>
-In-Reply-To: <87r15ta469.wl-maz@kernel.org>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Tue, 19 Apr 2022 16:37:42 -0400
-Message-ID: <CAMdYzYrskyNXYiwKY-O=+_69x7T4asjrfo5KNGao-_6PCwq-gw@mail.gmail.com>
-Subject: Re: [PATCH v7 2/4] PCI: dwc: rockchip: add legacy interrupt support
-To: Marc Zyngier <maz@kernel.org>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>, 
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- PCI <linux-pci@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: Aw: Re: Re: [RFC/RFT 1/6] dt-bindings: phy: rockchip: add pcie3
+ phy
+Content-Language: en-US
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-rockchip@lists.infradead.org,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Johan Jonker <jbx6244@gmail.com>, Peter Geis <pgwipeout@gmail.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-pci@vger.kernel.org
+References: <20220416135458.104048-1-linux@fw-web.de>
+ <20220416135458.104048-2-linux@fw-web.de>
+ <38e60bb2-123b-09cf-d6ef-3a07c6984108@linaro.org>
+ <trinity-597cf8a3-2ad4-41e6-b3c9-b949f8610533-1650390552136@3c-app-gmx-bap70>
+ <fce0337a-0c71-a040-0a01-f20b55eb568b@linaro.org>
+ <trinity-a5ae4007-e6e3-4869-80ad-3783109b6d4c-1650400612809@3c-app-gmx-bap70>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <trinity-a5ae4007-e6e3-4869-80ad-3783109b6d4c-1650400612809@3c-app-gmx-bap70>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220419_133756_607240_362FA2D6 
-X-CRM114-Status: GOOD (  28.85  )
+X-CRM114-CacheID: sfid-20220419_134831_423154_ACD1EAF7 
+X-CRM114-Status: UNSURE (   9.57  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,76 +110,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 19, 2022 at 4:05 AM Marc Zyngier <maz@kernel.org> wrote:
->
-> On Tue, 19 Apr 2022 01:23:23 +0100,
-> Peter Geis <pgwipeout@gmail.com> wrote:
-> >
-> > > My only ask is that you properly initialise the HW. This will save
-> > > countless amount of head-scratching once you have a decent firmware or
-> > > kexec.
-> >
-> > The only way to ensure that in a sane way is to trigger the resets at
-> > driver probe.
->
-> If that can be done, that'd be great.
+On 19/04/2022 22:36, Frank Wunderlich wrote:
+>> Just use default as I wrote above.
+> 
+> so like this?
+> 
+>   rockchip,pcie30-phymode:
+>     $ref: '/schemas/types.yaml#/definitions/uint32'
+>     description: |
+>       set the phy-mode for enabling bifurcation
+>       bit0: bifurcation for port 0
+>       bit1: bifurcation for port 1
+>       bit2: aggregation
+>       constants are defined in the dt-bindings/phy/phy-rockchip-pcie3.h
+>     minimum: 0x0
+>     maximum: 0x4
+>     default: 0x4
 
-Okay, I'll work on implementing this then.
+Yes.
 
->
-> > Can that be safely done without causing other issues with an already
-> > configured card or should I power cycle it as well?
->
-> Well, you are already renegotiating the link anyway, so that's a very
-> moot point.
 
-Understood, thank you.
-
->
-> > This is starting to feature creep from the original intention of this
-> > series, since a pre-configured controller would affect more than just
-> > interrupts.
->
-> Configuring the HW is not exactly a feature creep. If your intention
-> is to keep everything as it was left, then you don't have much of a
-> driver, but instead a time bomb. And we can do without another one in
-> the tree.
-
-Understood, I apologize if I'm being difficult here, I just want to
-make sure I completely understand the assignment.
-Your comment about kexec made it clear for me, thank you.
-
->
-> > If you wish, as a compromise I can ensure all INTx interrupts are
-> > masked at probe (which would hilariously be the opposite of
-> > downstream).
->
-> As far as I'm concerned, downstream doesn't exist. If someone wants
-> the downstream code, they can use it directly and we don't need to
-> merge this code.
-
-Once again, you'll have no argument from me in this regard.
-I've had several blocks of hardware enablement sitting out of tree
-waiting for the phy code to land.
-As much testing as my branch has seen, it's still only a drop in the
-bucket compared to finally being mainlined.
-I appreciate all of your effort and review here and I absolutely want
-this done correctly.
-
->
-> If, on the other hand, you want this driver to be useful and to be
-> maintained upstream, initialising the interrupt mask is the absolute
-> bare minimum.
-
-I think resetting the whole core is the best move, since it's the only
-way we can guarantee a sane configuration with the documentation we
-have.
-
->
->         M.
->
-> --
-> Without deviation from the norm, progress is not possible.
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
