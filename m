@@ -4,86 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6045CC433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Apr 2022 13:05:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEBB7C433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Apr 2022 14:25:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7zici0NTJ83tnnJL0hYuU3vrmUfUorMqqvsc2RcCZM8=; b=cNIBAZC6dfuLj/
-	PnGCNLOHNVuEqupNklTE4RoJP3ui/NcetHiCPz79r07UaBNSl5uhlBAvE0c2V/mFb7rOzAQt0YNI4
-	8l4OabHCp4/w7ZAXXmAaXT0EBr0kSSoS0ibTbmrqe9MZozRaWV1s/zXzGPLCij96XI5heQJ8iVtne
-	LguyFs1cIWeCxausu+HZVJ2wi8BBdMXove1TY9Dk3bQdQM/wzHm5n/YgmJyqiBQeDRcd1aCvL1YLO
-	QnfbwBFZAeZHIOfbPH8smqyMUuoqe+o+SgbE7yCLTyuNOXtqAs7RX9RrfRAN8henXBm3ed+E3TN9K
-	uxkFM9YYc7/Xi7mQox+A==;
+	List-Owner; bh=rVARgGAwy3DuyBFNXwiT6KUcayz38Lr6rBm1jaik1Eg=; b=P1Su0oTrZgptDj
+	BA68IcO1KMjr4KO6O55lxCGoHSPTPZWdGrg34QM13lscnWZB/pYMo130EWho0jJJ9htiESRuVSzDq
+	IegPTsvfnSbrIMkRm4iLAwHy4LzWFYt88bsudAVfHUxakSRvQO4qiZHdQ47bZEAo/ivTquC+vZJ2r
+	4GyLwAi5BgBmjbj/Xvk+WGP9Nu9aNUu3heep6W84jRXEMwt7ZpjbsMog7uGug9RTqPCN8dEk8WnmF
+	C/oN11O6U7+oETq0n+6Tbsc3Ce/O95b1+CxRfK4yUugbeUq+tjXsQhr6rFoL8/FA2fgbIiMoBHoGb
+	vOaXjI3C6EMV0T6uk3bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhA1H-0094SI-03; Wed, 20 Apr 2022 13:05:19 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1nhBGk-009OB4-LF; Wed, 20 Apr 2022 14:25:22 +0000
+Received: from relay2-d.mail.gandi.net ([217.70.183.194])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhA13-0094O7-9R; Wed, 20 Apr 2022 13:05:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1650459879;
- bh=wOmewmRrbd5TBpBZqdHt25VeQoHFPRad0GP83DFE/KA=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=KnsycIGSKRyZ0zSYB26Acbmgps+aknmDjPdrIVk97n9wZCzqTb9JUdQPb+kLOgW9s
- 1eiGH1oOYrToBBcafHSbdNfR0kCycUlJ8Mltx4UTkg8M3VmXVzi+V0E9A3d0zyMJmy
- 6TXFZ+TQ3Lk+jyJLchu4+Lw+zbDqL7teMZ1oh1rs=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.147.126] ([217.61.147.126]) by web-mail.gmx.net
- (3c-app-gmx-bap05.server.lan [172.19.172.75]) (via HTTP); Wed, 20 Apr 2022
- 15:04:38 +0200
+ id 1nhBGQ-009O5P-5E; Wed, 20 Apr 2022 14:25:03 +0000
+Received: from melee.fritz.box (unknown [77.244.183.192])
+ (Authenticated sender: luca.ceresoli@bootlin.com)
+ by mail.gandi.net (Postfix) with ESMTPA id 3E61A4000C;
+ Wed, 20 Apr 2022 14:24:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+ t=1650464699;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/lpWbOBK6IO2z3uDyg+lEKla8M6bLRGjKIKLiN7eH2A=;
+ b=UeGls1/Nu2/pL7jtBXGf/ZoBeCVa/JvdTjAuW+gH9Ej7jbnWCWt34wJbLgkK9IWVhATAvM
+ pbXjbYpwNtP1Sa5qXZ53HPl2riukmqPZzLwtr1WFd64nHqTL2lKaeKFGp84fDyJ1uq/DQF
+ 5uCyJJ9r/ha/zbKmTQX5LuLskUGTzZP780UQAqmvmtlOgZYQhsPbSt1/cgWnk3J/k3mVaJ
+ 2xCQ6Yu3OnUD6BJm7FZ1ePfaNzzGR/XFXL6uyujvCQcShh6anII3lySicjPq6fOz9EP+MP
+ MXAcuwbhITaUwB6FJF5l7lVYB4DdxFpzctNL0irx/7RxGRrT2vuRIQn+EBPw3Q==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: linux-gpio@vger.kernel.org
+Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jianqun Xu <jay.xu@rock-chips.com>, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 2/2] pinctrl: rockchip: sort the rk3308_mux_recalced_data
+ entries
+Date: Wed, 20 Apr 2022 16:24:32 +0200
+Message-Id: <20220420142432.248565-2-luca.ceresoli@bootlin.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220420142432.248565-1-luca.ceresoli@bootlin.com>
+References: <20220420142432.248565-1-luca.ceresoli@bootlin.com>
 MIME-Version: 1.0
-Message-ID: <trinity-bf1af823-9e46-4da7-bec5-6e749a4dc2e3-1650459878842@3c-app-gmx-bap05>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-rockchip@lists.infradead.org,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Rob
- Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Lorenzo Pieralisi
- <lorenzo.pieralisi@arm.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
- <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>, Philipp Zabel
- <p.zabel@pengutronix.de>, Johan Jonker <jbx6244@gmail.com>, Peter Geis
- <pgwipeout@gmail.com>, Michael Riesch <michael.riesch@wolfvision.net>,
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-pci@vger.kernel.org
-Subject: Aw: Re:  Re: [RFC/RFT 2/6] dt-bindings: soc: grf: add
- pcie30-{phy,pipe}-grf
-Date: Wed, 20 Apr 2022 15:04:38 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <8b9ad0a6-acc0-aad9-c49d-e4a4b38374bb@linaro.org>
-References: <20220416135458.104048-1-linux@fw-web.de>
- <20220416135458.104048-3-linux@fw-web.de>
- <02b3fe1c-12f9-8f96-a9b5-df44ca001825@linaro.org>
- <trinity-c60358c4-ebd1-47bf-91e0-9ae0beefd39f-1650389348418@3c-app-gmx-bap70>
- <8b9ad0a6-acc0-aad9-c49d-e4a4b38374bb@linaro.org>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:9xmgXgx0V9zQ9oJQ2v4jyZ8k5GDOHaZWDau5uvMohn+mtj1rU3a888flYq5JkzAbi24mD
- FHd6jW/TzjLC2M3aDwNp3kInEFdlDMp+mq2ha/0uYCNocwhoVXzNtHCUDW7cXu16sKCUH7D36rOs
- Ew8bePdsiJqO5iuOwaJ7KZfa213xpuyDOaVzLGmQW0VEb7L3Qr3ka6J3KZZOLDxdbz0DTagUk4HL
- FwkqjHfbMegxDqz0IhXu0RQO3z9bvFV+F2dOOCG/bw04UaHRR/FCH+hlHTqequG6P/qVknBwxrSN
- Gs=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:3yJGss0AXv8=:3z9IDXCNImRErPGVveLkWg
- 9FT2mUQ/uub+5d3eCaoGXd8z2JJQJ/cbe3gPEp1CpWlXoCK1YZu2z2vCf8SSfXIL1vfVKLsa9
- uZU/9l50P7Fzg+caJijuhBzryf2tfXTOUVtRuT/nxeYZbwOBle3xBUqNdyqqI975vBwyydTan
- BDBPMZm4975M4ANAAYxWJQ0XFVy9wdpSuE02aTa/9q96WzGnyTeiwkIV3pKE9btu+H1eidmcL
- NVYNXBWtRxfs/WMYzclPMAgrKHAqRyP9TcaUtEkCiaPG23o6UPHdlWj0sB8xSGYk0go2NPbH6
- 2npwGihW0ljkW+dulz39OoBpJmnAPzjJltc/9A8E42yXqB1N0qcATtrTE0BNTMQB0/R+5GyFP
- Gp/kgCGlpHQEw+kkHMXi9m9byjZu4qjgBlOR5KsHxgZv0pgI3yiwg2FSVQAgzQ7ADvqp3On+G
- 5pGfPsM0nZLXqHwjBEeOTSl/i3s5SNw1WiNnXEH3GesYaBvMRPWwzAIyPrJlAGPLaPyI14Izl
- +Q8adU+ytcdUVAtt9bFmjJqfHOg755J1UDNVsBOSeHMnopes1sP6LIkrcqQi7DNjKDVtTVgmi
- qs8w2EXFR/n5kqKO3AkdVso57wm/v3dxxGErPIQkuCEg3JE/52lrMITvVODGmWkewej5Y/jfX
- 3uBxui4FFo3Vv0RUVTD3k3/gj0hV4diJ5Zp4jCf5RyWfmssGdNL6/an0zz/sVu7wbNRBGjxzv
- FbDUW7w2OuiN+EVheyKLggtZM2QoweeZGeiUdz9rh8IAbHNuPgK5qxCt4tt6ogkiIeEj4jZ7C
- UBYIbbG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220420_060505_911139_35D1D611 
-X-CRM114-Status: GOOD (  14.17  )
+X-CRM114-CacheID: sfid-20220420_072502_375233_F7E49D3B 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,47 +74,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Dienstag, 19. April 2022 um 21:40 Uhr
-> Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
-> On 19/04/2022 19:29, Frank Wunderlich wrote:
-> >> Gesendet: Montag, 18. April 2022 um 17:54 Uhr
-> >> Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
-> >
-> >>> --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> >>> +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-> >>> @@ -14,6 +14,8 @@ properties:
-> >>>      oneOf:
-> >>>        - items:
-> >>>            - enum:
-> >>> +              - rockchip,pcie30-phy-grf
-> >>> +              - rockchip,pcie30-pipe-grf
-> >>
-> >> These are without SoC parts. Are these PCIe v3 General Register Files
-> >> part of some PCIe spec?
-> >
-> > imho they are shared across SoCs rk3568 and rk3588, but have only seen rk3568 implementation yet.
-> > PCIe driver currently supports these 2 Soc (different offsets in the Phy-GRF), but can only test rk3568.
-> >
-> > pipe-grf seems only be used for rk35688 (offset used in probe is defined for this SoC), which i cannot test.
-> >
-> > so i have left them SoC independed.
->
-> Compatibles should be SoC dependent, with some exceptions. Lack of
-> documentation or lack of possibility of testing is actually argument
-> against any exception, so they should be SoC specific/dependent.
+All the entries are sorted according to num/pin except for two
+entries. Sort them too.
 
-so i will change to
+Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
 
-              - rockchip,rk3568-pcie30-phy-grf
-              - rockchip,rk3588-pcie30-pipe-grf
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 65fa305b5f59..2cb79e649fcf 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -512,20 +512,6 @@ static struct rockchip_mux_recalced_data rk3308_mux_recalced_data[] = {
+ 		.reg = 0x34,
+ 		.bit = 8,
+ 		.mask = 0xf
+-	}, {
+-		/* gpio3b4_sel */
+-		.num = 3,
+-		.pin = 12,
+-		.reg = 0x68,
+-		.bit = 8,
+-		.mask = 0xf
+-	}, {
+-		/* gpio3b5_sel */
+-		.num = 3,
+-		.pin = 13,
+-		.reg = 0x68,
+-		.bit = 12,
+-		.mask = 0xf
+ 	}, {
+ 		/* gpio2a2_sel */
+ 		.num = 2,
+@@ -561,6 +547,20 @@ static struct rockchip_mux_recalced_data rk3308_mux_recalced_data[] = {
+ 		.reg = 0x68,
+ 		.bit = 6,
+ 		.mask = 0x3
++	}, {
++		/* gpio3b4_sel */
++		.num = 3,
++		.pin = 12,
++		.reg = 0x68,
++		.bit = 8,
++		.mask = 0xf
++	}, {
++		/* gpio3b5_sel */
++		.num = 3,
++		.pin = 13,
++		.reg = 0x68,
++		.bit = 12,
++		.mask = 0xf
+ 	},
+ };
+ 
+-- 
+2.25.1
 
-and maybe add
-
-              - rockchip,rk3588-pcie30-phy-grf
-
-these compatibles are not directly taken by any driver as the nodes be linked via phandle (rockchip,phy-grf property) from the phy driver (rockchip,rk3568-pcie3-phy / rockchip,rk3588-pcie3-phy). So these compatibles are only in the yaml and dts present.
-
-regards Frank
 
 _______________________________________________
 Linux-rockchip mailing list
