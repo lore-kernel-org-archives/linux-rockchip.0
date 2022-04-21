@@ -4,49 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFDACC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Apr 2022 20:31:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12428C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Apr 2022 21:34:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=yYZiqK2G+oI8T8uGLhh/WRAKQ0U4N5iVpLYgOygth7k=; b=A7d+ENyweSXp23
-	3GWVCaq6q/l5Cq7nCWvaEBiuG3s4ySyic+43+T1k7YfCbHjppjiG26kQaKGtW7x2jrAnfRKm+vf4D
-	GTzO5GK/aS+V7TvAQh4q19xaD5ortq2B+ceyhO6kUVj8HhbRESpwLw8l4UW5yAikh3aHMNLKTyJRB
-	iHEb8iTzdOt7IVlNmgGpe4B3FYTde0DQ44u/Oz5ua19WMrg4FCK0i1H3PKCdtb4b4KTirWyEfS8SW
-	5WHBYefslNbJuO0o3REVCmhCSCN+c0XM+f2A/vXlDQOsDJWXGxamM8iNRwWRdm6jOsvzjfYGeK/6+
-	Zgcl2nSrBMusqgLc4NLQ==;
+	List-Owner; bh=uBnxiIiE7Hp+ANO3Wj8KxrY5eITT0Jl6rjnFEjClq5I=; b=pbsZ5u5GQnJKI6
+	bxGNWC9/HW46mDS0elTeUNlMegL3aTsvjfxBhIDOTLbz5lw73oDi1fJ61M8YexZhWvRw3p65i7XFC
+	m9Any37WYITel3WrfYA+uLTuEnPKAQTaKrjTztoxIJLWrbTSNXkBUTk6jkves2IHazAMl+V+4Mzc3
+	iVW6kFZU3FIYVqTnbjzl426rK9w55gzIo9nKKWr80YJjPqfTtu4Ipe4U5479ent6S2B/mqLkvTSqi
+	w1G7nluK/GFMJf3vRrfrA0iFzgRJrdSLjhGjpBrs5dCpnjWuFKjxts9ixnr2tT3TxrNgtxevLKHF9
+	gWeJ577uW4WpfiPxVCeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhdSD-00Eu3Q-8F; Thu, 21 Apr 2022 20:31:05 +0000
-Received: from out30-131.freemail.mail.aliyun.com ([115.124.30.131])
+	id 1nheRD-00F3dL-6J; Thu, 21 Apr 2022 21:34:07 +0000
+Received: from relay3-d.mail.gandi.net ([2001:4b98:dc4:8::223])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhdS2-00Eu1j-7Q; Thu, 21 Apr 2022 20:30:55 +0000
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R901e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04407;
- MF=jiapeng.chong@linux.alibaba.com; NM=1; PH=DS; RN=9; SR=0;
- TI=SMTPD_---0VAhNpK0_1650573041; 
-Received: from localhost(mailfrom:jiapeng.chong@linux.alibaba.com
- fp:SMTPD_---0VAhNpK0_1650573041) by smtp.aliyun-inc.com(127.0.0.1);
- Fri, 22 Apr 2022 04:30:46 +0800
-From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-To: kishon@ti.com
-Cc: vkoul@kernel.org, heiko@sntech.de, linux-phy@lists.infradead.org,
+ id 1nheR1-00F3ZT-Ti; Thu, 21 Apr 2022 21:33:58 +0000
+Received: from melee.fritz.box (unknown [77.244.183.192])
+ (Authenticated sender: luca.ceresoli@bootlin.com)
+ by mail.gandi.net (Postfix) with ESMTPA id A93E760004;
+ Thu, 21 Apr 2022 21:33:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+ t=1650576830;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=H1SCxsyir0yk12O74c3/slnu+DY/q/kHFuNIUrrfPek=;
+ b=llanma7UwoiWXapTlRDnbMcAwLIiConDmuSs+6G2cs7QkoRu+9RoLDI1H5nFuuUG2fqm89
+ j2RVWDIIwQqPOoxWN+wpWlgJIfMKBgHZ+RnbcGDoBi26WGrgC5tw/1km48rbzFGxqXAvVX
+ 5fCIIJ+EXKIPiulUfuomVxw8MJsVdCZbBqOfmNcC0AzN4Lwqw/Ppao7CGdkz6j+G9bbf8r
+ JX678bAwQ9T5C18Gd4pV89DKf+3iTPV4nf1mhv8nveuZZhCHE7zTvKBPQGWaAxGX2gaN/T
+ C26/bx0Q1TBb9oq9WL7+D9gMVnVHAMnR5d3CsI5TkPg8Vt5l093unA6EtiaO5A==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: linux-spi@vger.kernel.org
+Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>, Mark Brown <broonie@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Chris Ruehl <chris.ruehl@gtsys.com.hk>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
- Abaci Robot <abaci@linux.alibaba.com>
-Subject: [PATCH] phy: rockchip-inno-usb2: Clean up some inconsistent indenting
-Date: Fri, 22 Apr 2022 04:30:38 +0800
-Message-Id: <20220421203038.4550-1-jiapeng.chong@linux.alibaba.com>
-X-Mailer: git-send-email 2.20.1.7.g153144c
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] spi: rockchip: fix missing error on unsupported SPI_CS_HIGH
+Date: Thu, 21 Apr 2022 23:32:51 +0200
+Message-Id: <20220421213251.1077899-1-luca.ceresoli@bootlin.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_133054_463043_81DB22E6 
-X-CRM114-Status: UNSURE (   8.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220421_143356_308682_27D41062 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,34 +70,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Eliminate the follow smatch warning:
+The hardware (except for the ROCKCHIP_SPI_VER2_TYPE2 version) does not
+support active-high native chip selects. However if such a CS is configured
+the core does not error as it normally should, because the
+'ctlr->use_gpio_descriptors = true' line in rockchip_spi_probe() makes the
+core set SPI_CS_HIGH in ctlr->mode_bits.
 
-drivers/phy/rockchip/phy-rockchip-inno-usb2.c:1203
-rockchip_usb2phy_probe() warn: inconsistent indenting.
+In such a case the spi-rockchip driver operates normally but produces an
+active-low chip select signal without notice.
 
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+There is no provision in the current core code to handle this
+situation. Fix by adding a check in the ctlr->setup function (similarly to
+what spi-atmel.c does).
+
+This cannot be done reading the SPI_CS_HIGH but in ctlr->mode_bits because
+that bit gets always set by the core for master mode (see above).
+
+Fixes: eb1262e3cc8b ("spi: spi-rockchip: use num-cs property and ctlr->enable_gpiods")
+Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/spi/spi-rockchip.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index e377b958d9b6..6711659f727c 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -1200,8 +1200,8 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index cdc16eecaf6b..a08215eb9e14 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -196,6 +196,8 @@ struct rockchip_spi {
  
- 	else {
- 		rphy->grf = syscon_node_to_regmap(dev->parent->of_node);
--			if (IS_ERR(rphy->grf))
--				return PTR_ERR(rphy->grf);
-+		if (IS_ERR(rphy->grf))
-+			return PTR_ERR(rphy->grf);
- 	}
+ 	bool slave_abort;
+ 	bool cs_inactive; /* spi slave tansmition stop when cs inactive */
++	bool cs_high_supported; /* native CS supports active-high polarity */
++
+ 	struct spi_transfer *xfer; /* Store xfer temporarily */
+ };
  
- 	if (of_device_is_compatible(np, "rockchip,rv1108-usb2phy")) {
+@@ -719,6 +721,11 @@ static int rockchip_spi_setup(struct spi_device *spi)
+ 	struct rockchip_spi *rs = spi_controller_get_devdata(spi->controller);
+ 	u32 cr0;
+ 
++	if (!spi->cs_gpiod && (spi->mode & SPI_CS_HIGH) && !rs->cs_high_supported) {
++		dev_warn(&spi->dev, "setup: non GPIO CS can't be active-high\n");
++		return -EINVAL;
++	}
++
+ 	pm_runtime_get_sync(rs->dev);
+ 
+ 	cr0 = readl_relaxed(rs->regs + ROCKCHIP_SPI_CTRLR0);
+@@ -899,6 +906,7 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 
+ 	switch (readl_relaxed(rs->regs + ROCKCHIP_SPI_VERSION)) {
+ 	case ROCKCHIP_SPI_VER2_TYPE2:
++		rs->cs_high_supported = true;
+ 		ctlr->mode_bits |= SPI_CS_HIGH;
+ 		if (ctlr->can_dma && slave_mode)
+ 			rs->cs_inactive = true;
 -- 
-2.20.1.7.g153144c
+2.25.1
 
 
 _______________________________________________
