@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00B38C4167B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Apr 2022 23:42:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83CA4C4167D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Apr 2022 23:43:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EciSUO263z+imLo4FW8RMaeOzXcKm14dFHeNIQ8vbZo=; b=dYUpZE4XkRCure
-	EBeKobzfCUNY5WEkiO23PFpol3awexcXHBAabfzfBGoG/xdIWpfJFTFcjeftnHjzHjpGYpGe6r+Ak
-	JK4FsuyK3QbLX9wySxutRTMQqjpeePe9NzKKbofgX6BHjmoKmwr/nGSCePOwlR2o2vu1gGtBFylBv
-	t//m9kCj/yUCsjQ9RgYbhayuGREiPmoF+5iTxGXQj3pIwnGGv53JhSGtqZ+ybRxxspHOdEHI4CsOw
-	9EJKvD5y2yRFJ25/u7/+WlYd+DDj2IGFzn85ns/SlGFd3N7XC2xBNDzwRS+iDzzwBc0vFNLfFcgTC
-	YrV3++5Is1LAQ85GbU0Q==;
+	List-Owner; bh=Vucrutz/e4yRvLBcv4YCt27WB3TWhzltFWNWOghXFBw=; b=0SdctLcFdAJJ5C
+	1Ux2XkkTAxRB5DyN1ITENG6aW3/XpzRETA6mvBaQlat8CSDWrOyNsfkB0N0axQzgFIB/SoQFQXIND
+	lm7YNztkpmV66WXDTWUiMX2FoCZFww4I5WCOSonYqNBRahTO49rUUvcsTwRM4Z6i3+MaY7AfwAXPo
+	0j85EEPggZDOmqR3Rjs/7K0KfOJDMv2tHBetXzuof/E+C7Xklt4V4TbObEykIw1rissBkzm84N36c
+	+W/e9LrYRguN9hb+3yCs1NE7CsDye1eEtADh09O5g7OVd4QO4zD7c8VGIp7/6aeF/ADGjWPdDimo9
+	L4u9HBG+YVASkZ6hTi4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhgRs-00FNtd-9X; Thu, 21 Apr 2022 23:42:56 +0000
+	id 1nhgRt-00FNul-Nq; Thu, 21 Apr 2022 23:42:57 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhgRl-00FNn3-L9
- for linux-rockchip@lists.infradead.org; Thu, 21 Apr 2022 23:42:51 +0000
+ id 1nhgRn-00FNoY-8c
+ for linux-rockchip@lists.infradead.org; Thu, 21 Apr 2022 23:42:52 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id D4D0789F;
- Fri, 22 Apr 2022 01:42:45 +0200 (CEST)
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 52C978F1;
+ Fri, 22 Apr 2022 01:42:47 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1650584566;
- bh=uZPujRp7E7W/iQCSCQ3gxv5X2Ebp3Ib+BLDqmiEubbc=;
+ s=mail; t=1650584567;
+ bh=EKwBdOKXYBSAZo7eHku3+WttxLQM6TlB105HlkuT1PU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=utA6a7K/VKXCg+1FpKdxhc56B8dCunkj7Nw6gFQ22pvT80dVEJcvjZHSqt7Joq6e+
- 7XT7TlvrDAs/dPoIHNcY5mwY4r/0HSHQwy5MYsYRpmW7LYywrQMKOH9QRTJhkFsfMz
- TbILlfbdNOjIYlpgJp9w+jKEq6CvW6NeVohwrY0s=
+ b=T2OriKuvVSp8YK8Y2KIadOJECuDJ5CKXUPaVT8HoryUTKBVNMyAhkjXKCdSBL1UL/
+ qI49P7vati9KyjM1YMd9JAuooNXQhMO4Zu6Q7SqlN+1yZEqXh49wbpGG+Ax933HgEQ
+ SYz5GnjYA9yh6jyAL4afxBqqLyBuke2Iz7TsFVNA=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>,
  Paul Elder <paul.elder@ideasonboard.com>, Tomasz Figa <tfiga@google.com>,
  linux-rockchip@lists.infradead.org
-Subject: [PATCH v4 04/21] media: rkisp1: resizer: Fix and simplify
- (un)registration
-Date: Fri, 22 Apr 2022 02:42:23 +0300
-Message-Id: <20220421234240.1694-5-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v4 06/21] media: rkisp1: stats: Simplify (un)registration
+Date: Fri, 22 Apr 2022 02:42:25 +0300
+Message-Id: <20220421234240.1694-7-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220421234240.1694-1-laurent.pinchart@ideasonboard.com>
 References: <20220421234240.1694-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_164249_876649_A98E5B7B 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20220421_164251_519291_66FA88DC 
+X-CRM114-Status: UNSURE (   8.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,102 +68,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rkisp1_rsz_register() and rkisp1_rsz_unregister() functions don't
-destroy the mutex (in the error path for the former). Fix this, simplify
-error handling at registration time as media_entity_cleanup() can be
-called on an uninitialized entity, and make rkisp1_rsz_unregister() and
-rkisp1_resizer_devs_unregister() safe to be called on an unregistered
-resizer subdev to prepare for simplification of error handling at probe
-time.
+Simplify error handling at registration time as media_entity_cleanup()
+can be called on an uninitialized entity, and make
+rkisp1_stats_unregister() safe to be called on an unregistered stats
+node to prepare for simplification of error handling at probe time.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
 ---
-Changes since v1:
+ drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-- Reset rsz->rkisp1 in rkisp1_resizer_devs_register()
----
- .../platform/rockchip/rkisp1/rkisp1-resizer.c | 34 +++++++++----------
- 1 file changed, 17 insertions(+), 17 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-index 2070f4b06705..df2beee1be99 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-@@ -782,8 +782,12 @@ static const struct v4l2_subdev_ops rkisp1_rsz_ops = {
- 
- static void rkisp1_rsz_unregister(struct rkisp1_resizer *rsz)
- {
-+	if (!rsz->rkisp1)
-+		return;
-+
- 	v4l2_device_unregister_subdev(&rsz->sd);
- 	media_entity_cleanup(&rsz->sd.entity);
-+	mutex_destroy(&rsz->ops_lock);
- }
- 
- static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
-@@ -821,47 +825,43 @@ static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
- 	mutex_init(&rsz->ops_lock);
- 	ret = media_entity_pads_init(&sd->entity, RKISP1_RSZ_PAD_MAX, pads);
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
+index be5777c65bfb..26ef3bbe43d0 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
+@@ -463,21 +463,21 @@ int rkisp1_stats_register(struct rkisp1_device *rkisp1)
+ 	node->pad.flags = MEDIA_PAD_FL_SINK;
+ 	ret = media_entity_pads_init(&vdev->entity, 1, &node->pad);
  	if (ret)
--		return ret;
+-		goto err_mutex_destroy;
 +		goto error;
  
- 	ret = v4l2_device_register_subdev(&rsz->rkisp1->v4l2_dev, sd);
+ 	ret = video_register_device(vdev, VFL_TYPE_VIDEO, -1);
  	if (ret) {
- 		dev_err(sd->dev, "Failed to register resizer subdev\n");
+ 		dev_err(&vdev->dev,
+ 			"failed to register %s, ret=%d\n", vdev->name, ret);
 -		goto err_cleanup_media_entity;
 +		goto error;
  	}
  
- 	rkisp1_rsz_init_config(sd, &state);
  	return 0;
  
 -err_cleanup_media_entity:
 +error:
- 	media_entity_cleanup(&sd->entity);
--
-+	mutex_destroy(&rsz->ops_lock);
+ 	media_entity_cleanup(&vdev->entity);
+-err_mutex_destroy:
+ 	mutex_destroy(&node->vlock);
++	stats->rkisp1 = NULL;
  	return ret;
  }
  
- int rkisp1_resizer_devs_register(struct rkisp1_device *rkisp1)
- {
--	struct rkisp1_resizer *rsz;
--	unsigned int i, j;
-+	unsigned int i;
- 	int ret;
+@@ -487,6 +487,9 @@ void rkisp1_stats_unregister(struct rkisp1_device *rkisp1)
+ 	struct rkisp1_vdev_node *node = &stats->vnode;
+ 	struct video_device *vdev = &node->vdev;
  
- 	for (i = 0; i < ARRAY_SIZE(rkisp1->resizer_devs); i++) {
--		rsz = &rkisp1->resizer_devs[i];
-+		struct rkisp1_resizer *rsz = &rkisp1->resizer_devs[i];
++	if (!stats->rkisp1)
++		return;
 +
- 		rsz->rkisp1 = rkisp1;
- 		rsz->id = i;
-+
- 		ret = rkisp1_rsz_register(rsz);
--		if (ret)
--			goto err_unreg_resizer_devs;
-+		if (ret) {
-+			rsz->rkisp1 = NULL;
-+			rkisp1_resizer_devs_unregister(rkisp1);
-+			return ret;
-+		}
- 	}
- 
- 	return 0;
--
--err_unreg_resizer_devs:
--	for (j = 0; j < i; j++) {
--		rsz = &rkisp1->resizer_devs[j];
--		rkisp1_rsz_unregister(rsz);
--	}
--
--	return ret;
- }
- 
- void rkisp1_resizer_devs_unregister(struct rkisp1_device *rkisp1)
+ 	vb2_video_unregister_device(vdev);
+ 	media_entity_cleanup(&vdev->entity);
+ 	mutex_destroy(&node->vlock);
 -- 
 Regards,
 
