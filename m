@@ -4,74 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 707D4C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Apr 2022 11:13:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FB97C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Apr 2022 14:43:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XYMkKfninuS20CElBEwhlcgw2FaptAXXOm784TW9BWY=; b=p5a0y8uZiCgJPi
-	hdgVAhX3cxM37s0jV8vu0KEB1BhkUZahQBrntfHNtPUB6sYLSW1e/o6L6WcuwLzeFKZTS2rXDlx6m
-	5x+62uClNAmskvLumopPLFE8jbSGlry/teGulo/jallaeh9+L7QikR9CRq0wDzMNFTcetDmAg6QuA
-	YqeCpVUL5voMY9xBz1pnM+phpaXO6lc+9dSgazO9iKx5ALqnWbYhtYO8WHClm379zcjVDOJEBrsyG
-	1yfDBPGjaHhKXgI/NVZs2rqrB/VwSQxS3csa9ktyVOzy+vwpNisK81LZDBqBM3uFpqnzMBRZ1PCbz
-	xIeALUdSpPUnfDSvvfew==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5Wb9geLSW5/xb9MYdMZimWOgmGhzRIYlCv2UpyNtapw=; b=5EPuPDFP97H3R3
+	1vLIeqA5EzXXIs+u2zYm9wI61X5mFJuO0zkwwiuG+5O8Y06aJ9XP6b0SK/ZHzE7zy1DhbnU6GmJbe
+	pUbdKz2M2nWi8jM9qL/T4O1+R6VWY/1+EW6hPuxmevrAyl6soOiAJN34U4UQeMwAyqv7c9bEcDB1m
+	GXBTjTLtMAe0W2ZzbpxDwQSHRuGOubaexr7ZVOBnCuyLfbBfST09wNre3YOknRSrbtBn+vy2kgHoB
+	e1ipnGXIuGlHKPxmuMyMjyH0BZ31aXgJxonnt9YIdrV3mJc89SefvYq67O4K8kdk/AJ5AhvUPwom7
+	pbgCgiHG9qbKL91T18oQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhUkb-00DA3r-GE; Thu, 21 Apr 2022 11:13:29 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1nhY1z-00DqH3-5E; Thu, 21 Apr 2022 14:43:39 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhUkY-00DA31-MR
- for Linux-rockchip@lists.infradead.org; Thu, 21 Apr 2022 11:13:28 +0000
-Received: by mail-ej1-x629.google.com with SMTP id l7so9346660ejn.2
- for <Linux-rockchip@lists.infradead.org>; Thu, 21 Apr 2022 04:13:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SUZ3fmbbA3bW+6zlBXPCxl05NBgb1lVxlBnVpWEBW8Y=;
- b=165sJL8oUoSSjr0w3OKtQLsIzRyJtxgQO7Ej8MD0RONhhe+wZvJoWARDnarA4pE5mW
- dxDv0NfSmc6XUShEeeSHLi/lcyDpEbgzRQp3UJESdvpkp+HXkemP7mJMWFAADnC6BmiH
- 1yMwmIVTl6zGW5nXLjhvh2ESkuxc6FbbP/+VFTb+EBxfBtso8BTnBMTq4m1nXMvn1/EB
- o35K8aowKfLNe5bAqe7tJ/jO8DpoApgR5pkX/lTugxb46tgc9moGS69SYERptJgDTRbV
- Rsi+E8ivE2xlMFgN4vAUEenD8Gp+Kur8tqosOY3liV1O4YkrTvO2+fb8i5qB8uvNFYqO
- 0tZQ==
+ id 1nhY1g-00DqAn-AJ
+ for linux-rockchip@lists.infradead.org; Thu, 21 Apr 2022 14:43:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1650552196;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ePPTKrCMwADglYVO5peeQ4QQVf5OFLO0wZ8LDZ1O6g8=;
+ b=aXWgJ2aoIt1bqE9O9vEi9cV/N+G6Ze72TBxP14ydES+gWE66VTiSkCOdwHRgL6S89iYxjI
+ +O8CaJugJ3QW4sCHpJaT23/toiu1CzhjRTjHYDZ1tWRm2FwFdtKPh9g4idOADKwBu48B79
+ UMtxdpSscZzx94winbYIQT863wAR+qM=
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-582-QJ2-nFxKNEyglzj1E-ybLg-1; Thu, 21 Apr 2022 10:43:15 -0400
+X-MC-Unique: QJ2-nFxKNEyglzj1E-ybLg-1
+Received: by mail-qk1-f200.google.com with SMTP id
+ m23-20020a05620a221700b006809e1fa4fdso3445788qkh.6
+ for <linux-rockchip@lists.infradead.org>; Thu, 21 Apr 2022 07:43:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SUZ3fmbbA3bW+6zlBXPCxl05NBgb1lVxlBnVpWEBW8Y=;
- b=xVeLHYvBldg5qHmXK6kySq6G91wzrTOuoFnotC0c1QMsvXAsnjikQJlg48MHVF6f3p
- 6U/r8tUhLVsoe24tf2URATBg9Fkn6oXDPfKpBrH3fyur/iE5XiGkyvoeGYwTqFL46snb
- T8WbPDCKl7MgYa1x6KIvSFWHS0jEcZWvXaAqfoUPT27oEektchIJhhMD2TaAiodjpQvT
- XK1rJGC2s6BJWuws50XoRxaG2mkoz9n7SB6SDdEWHYAr13yicVOK2dLTyRzBwoSq+6Tb
- jZ85+1J1ViNSAVFyTKbfymVd4EUJWNnwqkrcbMa0i3Fln5kxGSgiRztqUtu8K1MJTTkz
- mq/w==
-X-Gm-Message-State: AOAM531D8Q5D1wrkuHU6tL4qGFwMPuIW4l1Uf1TwlImTblSf46aarugB
- mXvYtYU0aWH/3k4vxg308qmXPN2q7UQpGHZ3XP1U3/PT4n5NFQ==
-X-Google-Smtp-Source: ABdhPJwYj4HYIF7yTu7IcNHJEvCknc1WCtKnvOQbaKxO1PFNL7fkQ1E6VSwYW8S5yMxMaQ5lM86zEwR0ovbipUvw0xo=
-X-Received: by 2002:a17:907:2a53:b0:6ce:e4fe:3f92 with SMTP id
- fe19-20020a1709072a5300b006cee4fe3f92mr22534469ejc.389.1650539603270; Thu, 21
- Apr 2022 04:13:23 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=ePPTKrCMwADglYVO5peeQ4QQVf5OFLO0wZ8LDZ1O6g8=;
+ b=nhlSl/HRLqrqLUvUv8jENB/hFlmaq1C6EDTCi029ihyx5EhauzyHyj5XufjtDdwsqz
+ +gSCEdvB1OeHn1TaO/LXKyfR3TkHXinPfop7CRtDI4jLHxxbpbIVUQ2OlspCBXOZbVTf
+ caxJyDRqW3hsY6bq3sRmKap3qXYg2jdVMM0I7kFSuSd/geuKzsYatNkwAkkUacJ1GqHY
+ buz8y/DRSdunWI4wwV+XzawSGmsxZFRaWANc5jLPyQNfBltnHAmu4jAfgZSPQNuMWVkP
+ S+NRzQNh/OmkrxpmN3KTgu12iID971isDXbP4nFX3nz1RczV53wAfCTwK7N2zQulFsxD
+ W6PQ==
+X-Gm-Message-State: AOAM530CRa5R9EVcK6mDnZIrdb/tZrdIT99SSqIzk/HSDwqkW6pTkvuK
+ 1xpzIRVG5qNKFopRNd4F4oWbRQoKg212tCQIxQoQD6QtMExZk7P6nFbSJPuyNSdLkHAyycuOiYq
+ iVzjdl6nzXwHjkxCsVg+jxctmmbzooyLz
+X-Received: by 2002:ad4:5bc1:0:b0:42d:758c:f694 with SMTP id
+ t1-20020ad45bc1000000b0042d758cf694mr19026792qvt.99.1650552194916; 
+ Thu, 21 Apr 2022 07:43:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx2jn3q9z234SvBuh9QXKIyb+5gtFlLQqL5BZmnHLuyhZev75JSd04yeLJ/gjoODjM5Sghq+Q==
+X-Received: by 2002:ad4:5bc1:0:b0:42d:758c:f694 with SMTP id
+ t1-20020ad45bc1000000b0042d758cf694mr19026774qvt.99.1650552194715; 
+ Thu, 21 Apr 2022 07:43:14 -0700 (PDT)
+Received: from dell-per740-01.7a2m.lab.eng.bos.redhat.com
+ (nat-pool-bos-t.redhat.com. [66.187.233.206])
+ by smtp.gmail.com with ESMTPSA id
+ o14-20020a05622a138e00b002f335c3dbf2sm3538660qtk.37.2022.04.21.07.43.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 Apr 2022 07:43:14 -0700 (PDT)
+From: Tom Rix <trix@redhat.com>
+To: hjc@rock-chips.com,
+	heiko@sntech.de,
+	airlied@linux.ie,
+	daniel@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Tom Rix <trix@redhat.com>
+Subject: [PATCH] drm/rockchip: cdn-dp: change rk3399_cdn_dp from global to
+ static
+Date: Thu, 21 Apr 2022 10:43:04 -0400
+Message-Id: <20220421144304.586396-1-trix@redhat.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-References: <20220214212955.1178947-1-piotr.oniszczuk@gmail.com>
- <20220214212955.1178947-3-piotr.oniszczuk@gmail.com>
- <YjcgflUuQlFbVM/1@eze-laptop>
-In-Reply-To: <YjcgflUuQlFbVM/1@eze-laptop>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Thu, 21 Apr 2022 08:13:11 -0300
-Message-ID: <CAAEAJfAh60QB4JvtR8WfsykRit7RqE=XZ290u8jBOQ-7y7+P7g@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] dt-bindings: media: rockchip-vpu: Add RK3568
- compatible
-To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Cc: linux-media <linux-media@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <Linux-rockchip@lists.infradead.org>, 
- devicetree <devicetree@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Hans Verkuil <hverkuil@xs4all.nl>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=trix@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_041327_007256_A08C0BA7 
-X-CRM114-Status: GOOD (  17.88  )
+X-CRM114-CacheID: sfid-20220421_074320_475289_AEB1B9C1 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,63 +107,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Hans,
+Smatch reports this issue
+cdn-dp-core.c:51:20: warning: symbol 'rk3399_cdn_dp' was not declared. Should it be static?
 
-On Sun, Mar 20, 2022 at 9:39 AM Ezequiel Garcia
-<ezequiel@vanguardiasur.com.ar> wrote:
->
-> Hi Piotr,
->
-> On Mon, Feb 14, 2022 at 10:29:55PM +0100, Piotr Oniszczuk wrote:
-> > From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-> >
-> > RK356x has Hantro G1 video decoder capable to decode MPEG2/H.264/VP8
-> > video formats.
-> >
-> > This patch adds RK3568 compatible in rockchip-vpu dt-bindings.
-> >
-> > Tested on [1] with FFmpeg v4l2_request code taken from [2]
-> > with MPEG2, H.642 and VP8 samples with results [3].
-> >
-> > [1] https://github.com/warpme/minimyth2
-> > [2] https://github.com/LibreELEC/LibreELEC.tv/blob/master/packages/multimedia/ffmpeg/patches/v4l2-request/ffmpeg-001-v4l2-request.patch
-> > [3] https://github.com/warpme/minimyth2/blob/master/video-test-summary.txt
-> >
-> > Signed-off-by: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
->
-> Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
->
-> This dt-binding change looks trivial, so I guess it's fine
-> taking it directly via the media tree?
->
+rk3399_cdn_dp is only used in cdn-dp-core.c so change
+its storge-class specifier to static.
 
-I believe this series is ready for you to review.
+Signed-off-by: Tom Rix <trix@redhat.com>
+---
+ drivers/gpu/drm/rockchip/cdn-dp-core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks!
-Ezequiel
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index d3e6c93739bf..ce67c9daa2b1 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -48,7 +48,7 @@ struct cdn_dp_data {
+ 	u8 max_phy;
+ };
+ 
+-struct cdn_dp_data rk3399_cdn_dp = {
++static struct cdn_dp_data rk3399_cdn_dp = {
+ 	.max_phy = 2,
+ };
+ 
+-- 
+2.27.0
 
-> Thanks,
-> Ezequiel
->
-> > ---
-> >  Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 1 +
-> >  1 file changed, 1 insertion(+)
-> >
-> > diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> > index bacb60a34989..6cc4d3e5a61d 100644
-> > --- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> > +++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> > @@ -23,6 +23,7 @@ properties:
-> >            - rockchip,rk3328-vpu
-> >            - rockchip,rk3399-vpu
-> >            - rockchip,px30-vpu
-> > +          - rockchip,rk3568-vpu
-> >        - items:
-> >            - const: rockchip,rk3188-vpu
-> >            - const: rockchip,rk3066-vpu
-> > --
-> > 2.29.2
-> >
 
 _______________________________________________
 Linux-rockchip mailing list
