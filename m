@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 440A0C433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Apr 2022 23:43:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24F4FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Apr 2022 23:43:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q1Pbbqxl8EQ2XZfdLAtYb2YZfgPSPnNsoLzpQnHwg0A=; b=tKkVmQkQUnRU0P
-	UQicpCp5Vg/gyqwXbaI8OVcU8h9duP7QuneVdff6j7fZV1vvAo8LDiU5GdyGHg4NPYoRKc6U30d9l
-	JyUhEp1F1ntmYBbPcT8F8ai0SONM6PHmPvwtdpuz5CVy7WOOlYjtq3+0KL5deZOZsPOjnIvb5T1Se
-	BbvSbDDPIbYstBvrZBWzjaaOx0xMJ5bf5riP/WBVRWzLkN+kTMoAa97eQenS2jOHwoCyGh3xRZtyA
-	5HSVYEiEjGgZ8oy0in8KNhkS6iXgwbup5t6PgJvUlKHRCL19AZKpMjs4QBRvaQyrPc17A8v/TsQj+
-	4J7pxR19z0hJ7OyWMXxw==;
+	List-Owner; bh=xqV618JCPWMpljUMZ6hEuV/Q8gJUlneOXlJMJUSVjcA=; b=JGn+kVmYOqwc79
+	/puVTkN41n/B8RNyWGyJOYhRIsDo0PwUupgN8OviZYUrH8J+OqH4+1l65AbMhDW2kwh410ZDp8bTK
+	SWEBtMZDMmDCEIXGDw8kP2kBJrd4lihv7LPmpCkWwRVqOXpf+Gp2q98rkMrKCn3nevplZEe5+WbRF
+	DzZALQwdYco/LKAoOw4/iIajkxnvMTP8gSRjpLhftfbVE0fZpgWh/ZPItNfZ61X3BSeWzLl2fhtkl
+	c/iQ26iOY6TKDdow1KHOb3Fv/fP7ihcwQwvQ6IFWFRwsyD4iwTMVtElu3dPcal3m3nPoMr1qybA55
+	sypSuygF1oHtPcOcodnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhgS4-00FO7h-60; Thu, 21 Apr 2022 23:43:08 +0000
+	id 1nhgS5-00FO9s-SU; Thu, 21 Apr 2022 23:43:09 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhgRr-00FNsI-CF
- for linux-rockchip@lists.infradead.org; Thu, 21 Apr 2022 23:42:57 +0000
+ id 1nhgRq-00FNrE-Iw
+ for linux-rockchip@lists.infradead.org; Thu, 21 Apr 2022 23:42:58 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7330689F;
- Fri, 22 Apr 2022 01:42:53 +0200 (CEST)
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id C71A9596;
+ Fri, 22 Apr 2022 01:42:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
  s=mail; t=1650584573;
- bh=5ihQ0b41LLBnlfo9nAonsbRRbGzYvm/FlPDOYWs4HGY=;
+ bh=pirSyBFOL31RVkRImTODXcoQGNtpBs867Kg/KPIRbIc=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=BpqM8KYtp4SfH+Hvng4FgaHxZePgw+9aD9e/2Bf9qc6Zsj/pKy68JsdUF6qDUInFs
- mDkZNmB412cgBNFtwDD7qAuEOsdb5UcD7YtrBcSZnZKMQr07fhPOMK8GCeh+4RPkaW
- a/16oGQpC/WhUsJccZAHcSULqvnciIkWTl3/SlWo=
+ b=q5UdeoZOmwlxf0WXkHIkQhKKmz8gi5vGyTRVhTm2lVw1GLfA1hY6xBWPaPxzJ+iv/
+ AoOFJ/be0vBQwKWxCv9zSMw5usHikuI0i5rpOFSCa12I/z01vhujGiEnfVtHwsn//M
+ 4vdIj4gZGpaFxQY6vspoFBhwXSkbCCfGlzBd2wEs=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>,
  Paul Elder <paul.elder@ideasonboard.com>, Tomasz Figa <tfiga@google.com>,
  linux-rockchip@lists.infradead.org
-Subject: [PATCH v4 15/21] media: rkisp1: debug: Add debugfs files to dump core
- and ISP registers
-Date: Fri, 22 Apr 2022 02:42:34 +0300
-Message-Id: <20220421234240.1694-16-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v4 14/21] media: rkisp1: debug: Collect input status by
+ sampling ISP_FLAGS_SHD
+Date: Fri, 22 Apr 2022 02:42:33 +0300
+Message-Id: <20220421234240.1694-15-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220421234240.1694-1-laurent.pinchart@ideasonboard.com>
 References: <20220421234240.1694-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_164255_656243_96E4A303 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20220421_164254_815249_E8FC9E7C 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,133 +63,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-It's useful to dumb the value of registers for debugging purpose. Add
-two debugfs files to dump key core and ISP registers.
-
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
----
-Changes since v3:
-
-- Fix pm_runtime_get_if_in_use() return value handling
-- Rename rkisp1_debug_register offset field to reg
-
-Changes since v2:
-
-- Handle runtime PM
----
- .../platform/rockchip/rkisp1/rkisp1-debug.c   | 72 +++++++++++++++++++
- 1 file changed, 72 insertions(+)
-
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-index 782a696ac587..63aa81553178 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-@@ -17,6 +17,70 @@
- #include "rkisp1-common.h"
- #include "rkisp1-regs.h"
- 
-+struct rkisp1_debug_register {
-+	u32 reg;
-+	const char * const name;
-+};
-+
-+#define RKISP1_DEBUG_REG(name)	{ RKISP1_CIF_##name, #name }
-+
-+static int rkisp1_debug_dump_regs(struct seq_file *m,
-+				  const struct rkisp1_debug_register *regs)
-+{
-+	struct rkisp1_device *rkisp1 = m->private;
-+	u32 val;
-+	int ret;
-+
-+	ret = pm_runtime_get_if_in_use(rkisp1->dev);
-+	if (ret <= 0)
-+		return ret ? : -ENODATA;
-+
-+	for ( ; regs->name; ++regs) {
-+		val = rkisp1_read(rkisp1, regs->reg);
-+		seq_printf(m, "%14s: 0x%08x\n", regs->name, val);
-+	}
-+
-+	pm_runtime_put(rkisp1->dev);
-+
-+	return 0;
-+}
-+
-+static int rkisp1_debug_dump_core_regs_show(struct seq_file *m, void *p)
-+{
-+	static const struct rkisp1_debug_register registers[] = {
-+		RKISP1_DEBUG_REG(VI_CCL),
-+		RKISP1_DEBUG_REG(VI_ICCL),
-+		RKISP1_DEBUG_REG(VI_IRCL),
-+		RKISP1_DEBUG_REG(VI_DPCL),
-+		RKISP1_DEBUG_REG(MI_CTRL),
-+		RKISP1_DEBUG_REG(MI_BYTE_CNT),
-+		RKISP1_DEBUG_REG(MI_CTRL_SHD),
-+		RKISP1_DEBUG_REG(MI_RIS),
-+		RKISP1_DEBUG_REG(MI_STATUS),
-+		RKISP1_DEBUG_REG(MI_DMA_CTRL),
-+		RKISP1_DEBUG_REG(MI_DMA_STATUS),
-+		{ /* Sentinel */ },
-+	};
-+
-+	return rkisp1_debug_dump_regs(m, registers);
-+}
-+DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_core_regs);
-+
-+static int rkisp1_debug_dump_isp_regs_show(struct seq_file *m, void *p)
-+{
-+	static const struct rkisp1_debug_register registers[] = {
-+		RKISP1_DEBUG_REG(ISP_CTRL),
-+		RKISP1_DEBUG_REG(ISP_ACQ_PROP),
-+		RKISP1_DEBUG_REG(ISP_FLAGS_SHD),
-+		RKISP1_DEBUG_REG(ISP_RIS),
-+		RKISP1_DEBUG_REG(ISP_ERR),
-+		{ /* Sentinel */ },
-+	};
-+
-+	return rkisp1_debug_dump_regs(m, registers);
-+}
-+DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_isp_regs);
-+
- #define RKISP1_DEBUG_DATA_COUNT_BINS	32
- #define RKISP1_DEBUG_DATA_COUNT_STEP	(4096 / RKISP1_DEBUG_DATA_COUNT_BINS)
- 
-@@ -68,6 +132,7 @@ DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_input_status);
- void rkisp1_debug_init(struct rkisp1_device *rkisp1)
- {
- 	struct rkisp1_debug *debug = &rkisp1->debug;
-+	struct dentry *regs_dir;
- 
- 	debug->debugfs_dir = debugfs_create_dir(dev_name(rkisp1->dev), NULL);
- 
-@@ -96,6 +161,13 @@ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
- 			     &debug->frame_drop[RKISP1_SELFPATH]);
- 	debugfs_create_file("input_status", 0444, debug->debugfs_dir, rkisp1,
- 			    &rkisp1_debug_input_status_fops);
-+
-+	regs_dir = debugfs_create_dir("regs", debug->debugfs_dir);
-+
-+	debugfs_create_file("core", 0444, regs_dir, rkisp1,
-+			    &rkisp1_debug_dump_core_regs_fops);
-+	debugfs_create_file("isp", 0444, regs_dir, rkisp1,
-+			    &rkisp1_debug_dump_isp_regs_fops);
- }
- 
- void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
--- 
-Regards,
-
-Laurent Pinchart
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlIElTUF9GTEFHU19TSEQgcmVnaXN0ZXIgZXhwb3NlcyB0aGUgSVNQIHBhcmFsbGVsIGlucHV0
+IHNpZ25hbHMgKGRhdGEKYW5kIHN5bmNocm9uaXphdGlvbikgaW4gcmVhbCB0aW1lLiBUaGlzIGNh
+biBoZWxwIGRlYnVnZ2luZyB3aGVuIHRoZQpkZXZpY2UgZG9lc24ndCBvdXRwdXQgYW55IGltYWdl
+LiBTYW1wbGUgdGhlIHJlZ2lzdGVyIDEwMDAwIHRpbWVzIHdpdGggYQoxwrVzIGRlbGF5IGFuZCBl
+eHBvc2UgdGhlIHJlc3VsdCB0aHJvdWdoIGRlYnVnZnMuCgpTaWduZWQtb2ZmLWJ5OiBMYXVyZW50
+IFBpbmNoYXJ0IDxsYXVyZW50LnBpbmNoYXJ0QGlkZWFzb25ib2FyZC5jb20+ClNpZ25lZC1vZmYt
+Ynk6IFBhdWwgRWxkZXIgPHBhdWwuZWxkZXJAaWRlYXNvbmJvYXJkLmNvbT4KLS0tCkNoYW5nZXMg
+c2luY2UgdjM6CgotIEZpeCBwbV9ydW50aW1lX2dldF9pZl9pbl91c2UoKSByZXR1cm4gdmFsdWUg
+aGFuZGxpbmcKCkNoYW5nZXMgc2luY2UgdjI6CgotIEhhbmRsZSBydW50aW1lIFBNCi0tLQogLi4u
+L3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtZGVidWcuYyAgIHwgNTQgKysrKysrKysr
+KysrKysrKysrKwogLi4uL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtcmVncy5oICAg
+IHwgIDkgKysrKwogMiBmaWxlcyBjaGFuZ2VkLCA2MyBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRlYnVnLmMg
+Yi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtZGVidWcuYwpp
+bmRleCA2NGIzMzc3NGNiZGYuLjc4MmE2OTZhYzU4NyAxMDA2NDQKLS0tIGEvZHJpdmVycy9tZWRp
+YS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRlYnVnLmMKKysrIGIvZHJpdmVycy9t
+ZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLWRlYnVnLmMKQEAgLTksOSArOSw2
+MSBAQAogICovCiAKICNpbmNsdWRlIDxsaW51eC9kZWJ1Z2ZzLmg+CisjaW5jbHVkZSA8bGludXgv
+ZGVsYXkuaD4KICNpbmNsdWRlIDxsaW51eC9kZXZpY2UuaD4KKyNpbmNsdWRlIDxsaW51eC9wbV9y
+dW50aW1lLmg+CisjaW5jbHVkZSA8bGludXgvc2VxX2ZpbGUuaD4KIAogI2luY2x1ZGUgInJraXNw
+MS1jb21tb24uaCIKKyNpbmNsdWRlICJya2lzcDEtcmVncy5oIgorCisjZGVmaW5lIFJLSVNQMV9E
+RUJVR19EQVRBX0NPVU5UX0JJTlMJMzIKKyNkZWZpbmUgUktJU1AxX0RFQlVHX0RBVEFfQ09VTlRf
+U1RFUAkoNDA5NiAvIFJLSVNQMV9ERUJVR19EQVRBX0NPVU5UX0JJTlMpCisKK3N0YXRpYyBpbnQg
+cmtpc3AxX2RlYnVnX2lucHV0X3N0YXR1c19zaG93KHN0cnVjdCBzZXFfZmlsZSAqbSwgdm9pZCAq
+cCkKK3sKKwlzdHJ1Y3Qgcmtpc3AxX2RldmljZSAqcmtpc3AxID0gbS0+cHJpdmF0ZTsKKwl1MTYg
+ZGF0YV9jb3VudFtSS0lTUDFfREVCVUdfREFUQV9DT1VOVF9CSU5TXSA9IHsgfTsKKwl1bnNpZ25l
+ZCBpbnQgaHN5bmNfY291bnQgPSAwOworCXVuc2lnbmVkIGludCB2c3luY19jb3VudCA9IDA7CisJ
+dW5zaWduZWQgaW50IGk7CisJdTMyIGRhdGE7CisJdTMyIHZhbDsKKwlpbnQgcmV0OworCisJcmV0
+ID0gcG1fcnVudGltZV9nZXRfaWZfaW5fdXNlKHJraXNwMS0+ZGV2KTsKKwlpZiAocmV0IDw9IDAp
+CisJCXJldHVybiByZXQgPyA6IC1FTk9EQVRBOworCisJLyogU2FtcGxlIHRoZSBJU1AgaW5wdXQg
+cG9ydCBzdGF0dXMgMTAwMDAgdGltZXMgd2l0aCBhIDHCtXMgaW50ZXJ2YWwuICovCisJZm9yIChp
+ID0gMDsgaSA8IDEwMDAwOyArK2kpIHsKKwkJdmFsID0gcmtpc3AxX3JlYWQocmtpc3AxLCBSS0lT
+UDFfQ0lGX0lTUF9GTEFHU19TSEQpOworCisJCWRhdGEgPSAodmFsICYgUktJU1AxX0NJRl9JU1Bf
+RkxBR1NfU0hEX1NfREFUQV9NQVNLKQorCQkgICAgID4+IFJLSVNQMV9DSUZfSVNQX0ZMQUdTX1NI
+RF9TX0RBVEFfU0hJRlQ7CisJCWRhdGFfY291bnRbZGF0YSAvIFJLSVNQMV9ERUJVR19EQVRBX0NP
+VU5UX1NURVBdKys7CisKKwkJaWYgKHZhbCAmIFJLSVNQMV9DSUZfSVNQX0ZMQUdTX1NIRF9TX0hT
+WU5DKQorCQkJaHN5bmNfY291bnQrKzsKKwkJaWYgKHZhbCAmIFJLSVNQMV9DSUZfSVNQX0ZMQUdT
+X1NIRF9TX1ZTWU5DKQorCQkJdnN5bmNfY291bnQrKzsKKworCQl1ZGVsYXkoMSk7CisJfQorCisJ
+cG1fcnVudGltZV9wdXQocmtpc3AxLT5kZXYpOworCisJc2VxX3ByaW50ZihtLCAidnN5bmM6ICV1
+LCBoc3luYzogJXVcbiIsIHZzeW5jX2NvdW50LCBoc3luY19jb3VudCk7CisJc2VxX3B1dHMobSwg
+ImRhdGE6XG4iKTsKKwlmb3IgKGkgPSAwOyBpIDwgQVJSQVlfU0laRShkYXRhX2NvdW50KTsgKytp
+KQorCQlzZXFfcHJpbnRmKG0sICItIFslMDR1OiUwNHVdOiAldVxuIiwKKwkJCSAgIGkgKiBSS0lT
+UDFfREVCVUdfREFUQV9DT1VOVF9TVEVQLAorCQkJICAgKGkgKyAxKSAqIFJLSVNQMV9ERUJVR19E
+QVRBX0NPVU5UX1NURVAgLSAxLAorCQkJICAgZGF0YV9jb3VudFtpXSk7CisKKwlyZXR1cm4gMDsK
+K30KK0RFRklORV9TSE9XX0FUVFJJQlVURShya2lzcDFfZGVidWdfaW5wdXRfc3RhdHVzKTsKIAog
+dm9pZCBya2lzcDFfZGVidWdfaW5pdChzdHJ1Y3Qgcmtpc3AxX2RldmljZSAqcmtpc3AxKQogewpA
+QCAtNDIsNiArOTQsOCBAQCB2b2lkIHJraXNwMV9kZWJ1Z19pbml0KHN0cnVjdCBya2lzcDFfZGV2
+aWNlICpya2lzcDEpCiAJCQkgICAgICZkZWJ1Zy0+ZnJhbWVfZHJvcFtSS0lTUDFfTUFJTlBBVEhd
+KTsKIAlkZWJ1Z2ZzX2NyZWF0ZV91bG9uZygic3BfZnJhbWVfZHJvcCIsIDA0NDQsIGRlYnVnLT5k
+ZWJ1Z2ZzX2RpciwKIAkJCSAgICAgJmRlYnVnLT5mcmFtZV9kcm9wW1JLSVNQMV9TRUxGUEFUSF0p
+OworCWRlYnVnZnNfY3JlYXRlX2ZpbGUoImlucHV0X3N0YXR1cyIsIDA0NDQsIGRlYnVnLT5kZWJ1
+Z2ZzX2Rpciwgcmtpc3AxLAorCQkJICAgICZya2lzcDFfZGVidWdfaW5wdXRfc3RhdHVzX2ZvcHMp
+OwogfQogCiB2b2lkIHJraXNwMV9kZWJ1Z19jbGVhbnVwKHN0cnVjdCBya2lzcDFfZGV2aWNlICpy
+a2lzcDEpCmRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNw
+MS9ya2lzcDEtcmVncy5oIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEv
+cmtpc3AxLXJlZ3MuaAppbmRleCBhOTNkMDEyN2I4MTMuLjJiMzIyZGI5NzI1MiAxMDA2NDQKLS0t
+IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLXJlZ3MuaAor
+KysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtcmVncy5o
+CkBAIC00NTQsNiArNDU0LDE1IEBACiAjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX0RFTU9TQUlDX0JZ
+UEFTUwkJCUJJVCgxMCkKICNkZWZpbmUgUktJU1AxX0NJRl9JU1BfREVNT1NBSUNfVEgoeCkJCQko
+KHgpICYgMHhGRikKIAorLyogSVNQX0ZMQUdTX1NIRCAqLworI2RlZmluZSBSS0lTUDFfQ0lGX0lT
+UF9GTEFHU19TSERfSVNQX0VOQUJMRV9TSEQJCUJJVCgwKQorI2RlZmluZSBSS0lTUDFfQ0lGX0lT
+UF9GTEFHU19TSERfSVNQX0VOQUJMRV9JTkZPUk1fU0hECUJJVCgxKQorI2RlZmluZSBSS0lTUDFf
+Q0lGX0lTUF9GTEFHU19TSERfSU5GT1JNX0ZJRUxECQlCSVQoMikKKyNkZWZpbmUgUktJU1AxX0NJ
+Rl9JU1BfRkxBR1NfU0hEX1NfREFUQV9NQVNLCQlHRU5NQVNLKDI3LCAxNikKKyNkZWZpbmUgUktJ
+U1AxX0NJRl9JU1BfRkxBR1NfU0hEX1NfREFUQV9TSElGVAkJMTYKKyNkZWZpbmUgUktJU1AxX0NJ
+Rl9JU1BfRkxBR1NfU0hEX1NfVlNZTkMJCUJJVCgzMCkKKyNkZWZpbmUgUktJU1AxX0NJRl9JU1Bf
+RkxBR1NfU0hEX1NfSFNZTkMJCUJJVCgzMSkKKwogLyogQVdCICovCiAvKiBJU1BfQVdCX1BST1Ag
+Ki8KICNkZWZpbmUgUktJU1AxX0NJRl9JU1BfQVdCX1lNQVhfQ01QX0VOCQkJQklUKDIpCi0tIApS
+ZWdhcmRzLAoKTGF1cmVudCBQaW5jaGFydAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
