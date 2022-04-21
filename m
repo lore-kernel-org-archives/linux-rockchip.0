@@ -4,92 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FB97C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Apr 2022 14:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1401AC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Apr 2022 15:42:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5Wb9geLSW5/xb9MYdMZimWOgmGhzRIYlCv2UpyNtapw=; b=5EPuPDFP97H3R3
-	1vLIeqA5EzXXIs+u2zYm9wI61X5mFJuO0zkwwiuG+5O8Y06aJ9XP6b0SK/ZHzE7zy1DhbnU6GmJbe
-	pUbdKz2M2nWi8jM9qL/T4O1+R6VWY/1+EW6hPuxmevrAyl6soOiAJN34U4UQeMwAyqv7c9bEcDB1m
-	GXBTjTLtMAe0W2ZzbpxDwQSHRuGOubaexr7ZVOBnCuyLfbBfST09wNre3YOknRSrbtBn+vy2kgHoB
-	e1ipnGXIuGlHKPxmuMyMjyH0BZ31aXgJxonnt9YIdrV3mJc89SefvYq67O4K8kdk/AJ5AhvUPwom7
-	pbgCgiHG9qbKL91T18oQ==;
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lslWUlzGaMCyMdvA3R2L8YVNBQGiFCs4pdagYSbxt7Q=; b=PzuA8EKzlnPAK2
+	EzjvNVaqyuUkEYbem4WJnmU2/mRyvo3iM8upVqxoFhq6Y/VvJnxiy2+OhNBJrFq/ziV3n7QCnQYhO
+	ByaWjXsSHWOJj3WaVAyjVElL3mzvdGs+HjfpSy5soRWUlx4ozbL+BaMYyr+hXGRFxepQP01oTH6bp
+	MA4wvtosLvGOsuvj0ZDC+/vLHCOKQk3Oi+v5lTUqx4dhvIO/Xu6t/Lkcq9ckAXG1ZMj3LX/MEj8TC
+	ef6fj5I2mVI1/gFB32ijTTOalWQ9VNPT3q8QhAlZJRZ1oQHNUTGNxO6E+vAALN0zmhubJaEINuVLv
+	pGHHVHOZ7MsczDmTnshw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhY1z-00DqH3-5E; Thu, 21 Apr 2022 14:43:39 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1nhYww-00E4X1-Hj; Thu, 21 Apr 2022 15:42:30 +0000
+Received: from mout.gmx.net ([212.227.17.21])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhY1g-00DqAn-AJ
- for linux-rockchip@lists.infradead.org; Thu, 21 Apr 2022 14:43:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1650552196;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=ePPTKrCMwADglYVO5peeQ4QQVf5OFLO0wZ8LDZ1O6g8=;
- b=aXWgJ2aoIt1bqE9O9vEi9cV/N+G6Ze72TBxP14ydES+gWE66VTiSkCOdwHRgL6S89iYxjI
- +O8CaJugJ3QW4sCHpJaT23/toiu1CzhjRTjHYDZ1tWRm2FwFdtKPh9g4idOADKwBu48B79
- UMtxdpSscZzx94winbYIQT863wAR+qM=
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-582-QJ2-nFxKNEyglzj1E-ybLg-1; Thu, 21 Apr 2022 10:43:15 -0400
-X-MC-Unique: QJ2-nFxKNEyglzj1E-ybLg-1
-Received: by mail-qk1-f200.google.com with SMTP id
- m23-20020a05620a221700b006809e1fa4fdso3445788qkh.6
- for <linux-rockchip@lists.infradead.org>; Thu, 21 Apr 2022 07:43:15 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ePPTKrCMwADglYVO5peeQ4QQVf5OFLO0wZ8LDZ1O6g8=;
- b=nhlSl/HRLqrqLUvUv8jENB/hFlmaq1C6EDTCi029ihyx5EhauzyHyj5XufjtDdwsqz
- +gSCEdvB1OeHn1TaO/LXKyfR3TkHXinPfop7CRtDI4jLHxxbpbIVUQ2OlspCBXOZbVTf
- caxJyDRqW3hsY6bq3sRmKap3qXYg2jdVMM0I7kFSuSd/geuKzsYatNkwAkkUacJ1GqHY
- buz8y/DRSdunWI4wwV+XzawSGmsxZFRaWANc5jLPyQNfBltnHAmu4jAfgZSPQNuMWVkP
- S+NRzQNh/OmkrxpmN3KTgu12iID971isDXbP4nFX3nz1RczV53wAfCTwK7N2zQulFsxD
- W6PQ==
-X-Gm-Message-State: AOAM530CRa5R9EVcK6mDnZIrdb/tZrdIT99SSqIzk/HSDwqkW6pTkvuK
- 1xpzIRVG5qNKFopRNd4F4oWbRQoKg212tCQIxQoQD6QtMExZk7P6nFbSJPuyNSdLkHAyycuOiYq
- iVzjdl6nzXwHjkxCsVg+jxctmmbzooyLz
-X-Received: by 2002:ad4:5bc1:0:b0:42d:758c:f694 with SMTP id
- t1-20020ad45bc1000000b0042d758cf694mr19026792qvt.99.1650552194916; 
- Thu, 21 Apr 2022 07:43:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx2jn3q9z234SvBuh9QXKIyb+5gtFlLQqL5BZmnHLuyhZev75JSd04yeLJ/gjoODjM5Sghq+Q==
-X-Received: by 2002:ad4:5bc1:0:b0:42d:758c:f694 with SMTP id
- t1-20020ad45bc1000000b0042d758cf694mr19026774qvt.99.1650552194715; 
- Thu, 21 Apr 2022 07:43:14 -0700 (PDT)
-Received: from dell-per740-01.7a2m.lab.eng.bos.redhat.com
- (nat-pool-bos-t.redhat.com. [66.187.233.206])
- by smtp.gmail.com with ESMTPSA id
- o14-20020a05622a138e00b002f335c3dbf2sm3538660qtk.37.2022.04.21.07.43.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Apr 2022 07:43:14 -0700 (PDT)
-From: Tom Rix <trix@redhat.com>
-To: hjc@rock-chips.com,
-	heiko@sntech.de,
-	airlied@linux.ie,
-	daniel@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Tom Rix <trix@redhat.com>
-Subject: [PATCH] drm/rockchip: cdn-dp: change rk3399_cdn_dp from global to
- static
-Date: Thu, 21 Apr 2022 10:43:04 -0400
-Message-Id: <20220421144304.586396-1-trix@redhat.com>
-X-Mailer: git-send-email 2.27.0
+ id 1nhYwZ-00E4Pa-B0; Thu, 21 Apr 2022 15:42:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1650555699;
+ bh=qO7WWncsu8pqavraYehTZbqYkoK5x7r8ZxY5T97XoXw=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=b+ULn39b+bj0QXQCBw1ebteDuTea9undETS0F3wjN4eLKsi4JB2YQXogVfc83LBez
+ yKNmLOcb21RK7yGdjB5m6CjS2/vj+M6UcAbEkV7RpYjgtYRIZWuVVONj+tsRzKG1F3
+ prFeyU+w5t492/e8TZXuRN8Tb0BY4Vy5259dV3Uc=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.79.123] ([80.245.79.123]) by web-mail.gmx.net
+ (3c-app-gmx-bap38.server.lan [172.19.172.108]) (via HTTP); Thu, 21 Apr 2022
+ 17:41:39 +0200
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=trix@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Message-ID: <trinity-1c858470-8354-4ecd-ace7-a6e437cb5923-1650555699148@3c-app-gmx-bap38>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Frank Wunderlich <linux@fw-web.de>, "open list:ARM/Rockchip SoC..."
+ <linux-rockchip@lists.infradead.org>, Kishon Vijay Abraham I
+ <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Lorenzo Pieralisi
+ <lorenzo.pieralisi@arm.com>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
+ <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Johan Jonker <jbx6244@gmail.com>, Michael Riesch
+ <michael.riesch@wolfvision.net>, "open list:GENERIC PHY FRAMEWORK"
+ <linux-phy@lists.infradead.org>, devicetree <devicetree@vger.kernel.org>,
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, Linux Kernel Mailing
+ List <linux-kernel@vger.kernel.org>, PCI <linux-pci@vger.kernel.org>
+Subject: Aw: Re: Re: [RFC/RFT 4/6] PCI: rockchip-dwc: add pcie bifurcation
+Date: Thu, 21 Apr 2022 17:41:39 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <CAMdYzYpydGyQZT2n9Tf+ccQMLHzfhOgoyamMgspQDcjzm3Umdg@mail.gmail.com>
+References: <trinity-a220fd81-2ee9-474d-bd65-505b9ed904b2-1650186482865@3c-app-gmx-bs58>
+ <20220418155313.GA1101563@bhelgaas>
+ <CAMdYzYpydGyQZT2n9Tf+ccQMLHzfhOgoyamMgspQDcjzm3Umdg@mail.gmail.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:fMhCkXFkWk6jz1YC+ACHfChGGaYlwtUgwWcAnA0jyPbYw+1++3n2PWOoruUedVEe3O/nQ
+ hDXeXjlmBChv+exHvKh31aXoT2WMSGUsSsGWqskuolAgm32mb16s6bTyLBSYtyP5Sg25cf0JPmXJ
+ 1pePEo7O+SI/2Uh8PWKiMger7oxtNy0YJJqYI+mBRs1lneD0he6ep57APIq3Euail8eSb3oQ1N1t
+ QJ0n5Muonbp6RS4DYQMXP774RwDlOzQRQsjzLD/mjxpPK7b1IV/OtbmUTj8gaCQgDDN5tUv+dMym
+ H4=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:2nkMVzuz8fg=:WjCZA2rE/qwwh+MU3sEN/r
+ je5+6b+/RRLEZWWlafKstjYHv9f42eqbK6znP181CwuscNFSZjPl+ZR0HKMM7EydWaRcZe/ll
+ BCl+krEEXdZUBXvWxN7pl11y0YtJRF/i6dPA75W2WcZOp3+4A65+kN9+ny41jIuUEDMs74lhH
+ mlr1cKsf35glpeo45jO6pK6jJcuXVlctuuf0NAvA2rMuAzjHtYFAbYULFQ4NMMKgwDzge1yo8
+ j4Lyb7g1uK+V0PwRFsRsWTFrrgK7r3KeHAoy0yjxVTw10wa9hQaRqyS6AYEBnA9MKhCECi6BF
+ IooRgAAog8qUceYmla24ULXMV52boFDwi50i7zQFDUn2JUCVw2wJIli0TtSDY76YvVfG16Rqe
+ kRZ7vXEtrSLD0eBvjy9o1qoZ+XuRbzMvLC2uxvGwG4uKTT6R1jd59YbrosallEcZqsmO5+Kr5
+ xi3NoAXZsdYMYVWQoOFYguVwJlJ05EaBIgoUYtmUx1SDO4JLZhypXT2uoKccQlEIwOS4KlvZO
+ 9HfdqR+WKJAllWAbVUtSrhGjQ+yaNXPWNmSv8K+1dqKdbXF65ccZxnET97oWwubt3p67rR0jQ
+ affk8sssrapLyMlQ6zJ5CA2iC7h6xRXYxkwV0nYiaobtjCYLLwMOSvupflLa4xyk9lrgEXZt4
+ aHim3uq8km4fyBx7FG4mygswCimCKLaiNJWINxGFUzliPO1i23YRcWaZKKUA7LGnEBdO0lazI
+ V+/cc0pXMdiZYEG0k/hxV4sGCzUUphJ4RWxS+GvuKGrOQCGk+otFOoyS2Ncv4BdrqvmOOdXuh
+ ALV1zmu
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220421_074320_475289_AEB1B9C1 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20220421_084207_882027_B3D90D50 
+X-CRM114-Status: GOOD (  24.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,33 +99,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Smatch reports this issue
-cdn-dp-core.c:51:20: warning: symbol 'rk3399_cdn_dp' was not declared. Should it be static?
+> Gesendet: Montag, 18. April 2022 um 18:17 Uhr
+> Von: "Peter Geis" <pgwipeout@gmail.com>
+> > On Sun, Apr 17, 2022 at 11:08:02AM +0200, Frank Wunderlich wrote:
+> > > > On Sat, Apr 16, 2022 at 03:54:56PM +0200, Frank Wunderlich wrote:
+> > > > > From: Frank Wunderlich <frank-w@public-files.de>
+> > > > >
+> > > > > PCIe Lanes can be split to 2 slots with bifurcation.
+> > > > > Add support for this in existing pcie driver.
+> >
+> > > > Is the "rockchip,bifurcation" DT property something that should be
+> > > > generalized so it's not rockchip-specific?  Other controllers are
+> > > > likely to support similar functionality.
+> > >
+> > > I do not know if other controllers support similar functionality,
+> > > but i ack a property without vendor prefix is better. Should i use
+> > > "bifurcation" as name or do you think about a different name which
+> > > is more generic?
+> >
+> > Really a question for Rob about what name would be good and where it
+> > should go.
+>
+> It might be good to define this as a lane map.
+> In the Rockchip implementation it's only 2+0 or 1+1, but that isn't
+> guaranteed if this is made into a standard definition.
+> So perhaps:
+> pcie-bifurcation-map = <0>, <1>;
+> pcie-bifurcation-map = <1>;
+> pcie-bifurcation-map = <4>, <5>, <6>, <7>;
 
-rk3399_cdn_dp is only used in cdn-dp-core.c so change
-its storge-class specifier to static.
+how about a lane-map like this (from controllers point of view):
 
-Signed-off-by: Tom Rix <trix@redhat.com>
----
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+rockchip with only 2 lanes (like rk3568):
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index d3e6c93739bf..ce67c9daa2b1 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -48,7 +48,7 @@ struct cdn_dp_data {
- 	u8 max_phy;
- };
- 
--struct cdn_dp_data rk3399_cdn_dp = {
-+static struct cdn_dp_data rk3399_cdn_dp = {
- 	.max_phy = 2,
- };
- 
--- 
-2.27.0
+controller 1:
+lane-map = <1 0>;
 
+controller 2:
+lane-map = <0 1>;
+
+here bifurcation is set if a controller does not aquire all lanes.Afaik rk3568 cannot select specific lanes so i end up with bifurcation = true/false (an aggregation-mode on phy) again. but it makes dts-property more usable for other devices/SoC.
+
+this contains the maximum of lanes and as mask the lanes to take by the current controller. It is scalable to support more pcie-lanes (x2 x4 x8)
+
+example for 2 controllers with PCIe x4 (with 8 lanes available):
+
+lane-map=<0 0 0 0 1 1 1 1>;
+lane-map=<1 1 1 1 0 0 0 0>;
+
+of course they can be mixed, if driver supports this.
+
+lane-map=<0 1 0 1 0 1 0 1>;
+lane-map=<1 0 1 0 1 0 1 0>;
+
+such lane-map is more flexible
+
+regards Frank
 
 _______________________________________________
 Linux-rockchip mailing list
