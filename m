@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75B66C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Apr 2022 17:13:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 810A2C433FE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Apr 2022 17:13:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3xc2aoRONWbVovxF1KdMIMzPYkKtUcJl3BrTwN6ktTc=; b=N2F3v1Xn9eYj2a
-	UK+gC/ngXI2o8lM63vjdAh+IpquJ2x8KB2FbL7M5sR4SBnVVH0kGIwKFkwZnpP1OuIink/dd5olyK
-	jsuUSwWrh0YbIzUSre46o3erK5I6UszMj8MDFdRo7QJ3FWI3GXn4/Boisig7TWVZYxD4X2fKB49RL
-	XtN0mYy9UPATIJNYzen8u49K4zswesWX+o4oqDKqOkFlcXPNWdRlV6JoDEAmumkT3JCxPSN1Jw1oh
-	WGP0a5IDJHdit4ak33wZxs9crbZWqZ2jeaWbZxeyGUg/eE4E58MyneYqgrZnvU60ATlmjlT/Zb2a3
-	nVStf/N9aOhZm5y+WqSA==;
+	List-Owner; bh=TvRG/lvNMcBmCNQQhN/Edrl37Xp55VfC1RLZBsTzq4w=; b=T5skjz/NTo6NdM
+	2N4BEqySsvJzzBQpYtUAcyDyToIgY0kD7/23U8Z+jWTgFS0kHXXd9p4M1jUGHSfJEgGic619jR5sg
+	CYnMokiH6d0x9mjdOpSIqHXJ+Ps3j94YHiHdsIEIB7QKpOo2qD+myyknpZ7tR+WTUoAllD13xcCSN
+	yEIiDzSK73XVsS8sqs1HVGR0TPNYvsUCdsyruLxScl6QUmJUS6UJ5U3w0VrftZOY3YDuAbW4XH64Q
+	kH0VMo+WtGdBkiGSZebqr/1C0Bf8QLUmezN91Y0JzCxXKFaiaPPVTgNaLZzlDpxyfsbop7HYOk1rk
+	Q3OOJpCof1C6YK5CH4Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhwqY-001fMT-B1; Fri, 22 Apr 2022 17:13:30 +0000
+	id 1nhwqZ-001fN2-4z; Fri, 22 Apr 2022 17:13:31 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhwms-001dU5-5l; Fri, 22 Apr 2022 17:09:44 +0000
+ id 1nhwms-001dU4-4v; Fri, 22 Apr 2022 17:09:44 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1]) (Authenticated sender: sre)
- with ESMTPSA id 482381F468F5
+ with ESMTPSA id 5AB581F468E1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
  s=mail; t=1650647377;
- bh=Lzk2WxbwgXoGe6LfQ+DwZ4F1e/aMgGuJ31kR4qwkhZs=;
+ bh=L5ffVrUyiRyEyz8/dXMbZK/gbExriWNNFMGcGjD0I/4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=OWEva+EjadbXN0HpKtZw8n7qdqo2Ks3wZYFEL12wYZePzq6XNCDdtxqhftiRW7/O9
- Jpo7iTcZafNqHcKQjoVCLs4ROGcsxhotrgXuAlm3WWZQuBDQTVK4+YK7AGQvU7wIXc
- VUtt4z+V+IWMuJkJwquSa7QMm6TOe+gcgonqgVYkBa6pRIosPGgqzSVA1mbhJIZ5Lr
- OGubn7x1RS8UB0XxUKdUQkCVDPwuIc4qYbyywo+ozXiJvEPuI9JWrF0WEwUurMQFes
- PrLKDkbZpq2z05uD/AqXSHp+QcJywOmtfm95JYsxMlypmzdjjISvu8UsyFxKqpIbWq
- UOLHhpB0hNpEA==
+ b=FSFZFDyRU3uadrUNlkaC6KlpTMW641KXOq7QErIl0zC+E+xAp+WojeFgUnlhHdEqQ
+ ZxJDjBFVXOWXmz4MNx8mHJtaSV48vDiHDSGyS4+/s6Vt7hmfBH1TPYiZ3BYTMD+h1O
+ UCqmq+22hbI09ZqNstLCVxMdI4tcSK80UiyIoLTcHx92faS0ogGdllWjBn6TqohKjY
+ dh7MY8Fdnws/VzZdrZUNO1Y/FVUufYkoPk0idFwrr5r5XBC9TEa+GJBYg3/i6yi4H5
+ vzZgvcSlC+ExyCpVOtTcwpa0rFLw1IT5sAqJNMOf3u30xYMePBaBHacUGoB1E12coG
+ mO0v95snkqvCg==
 Received: by jupiter.universe (Postfix, from userid 1000)
- id D48AA4807F9; Fri, 22 Apr 2022 19:09:32 +0200 (CEST)
+ id D6DE74807FB; Fri, 22 Apr 2022 19:09:32 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -51,19 +51,18 @@ Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- kernel@lists.collabora.co.uk, Yifeng Zhao <yifeng.zhao@rock-chips.com>,
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCHv1 08/19] mmc: sdhci-of-dwcmshc: add reset call back for
- rockchip Socs
-Date: Fri, 22 Apr 2022 19:09:09 +0200
-Message-Id: <20220422170920.401914-9-sebastian.reichel@collabora.com>
+ kernel@lists.collabora.co.uk,
+ Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com
+Subject: [PATCHv1 09/19] mmc: sdhci-of-dwcmshc: rename rk3568 to rk35xx
+Date: Fri, 22 Apr 2022 19:09:10 +0200
+Message-Id: <20220422170920.401914-10-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220422170920.401914-1-sebastian.reichel@collabora.com>
 References: <20220422170920.401914-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_100942_376095_9AED94DC 
-X-CRM114-Status: GOOD (  17.50  )
+X-CRM114-CacheID: sfid-20220422_100942_518362_CBCCDF64 
+X-CRM114-Status: GOOD (  17.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,87 +80,194 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Prepare driver for rk3588 support by renaming the internal data
+structures.
 
-The reset function build in the SDHCI will not reset the logic
-circuit related to the tuning function, which may cause data
-reading errors. Resetting the complete SDHCI controller through
-the reset controller fixes the issue.
-
-Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-[rebase]
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/mmc/host/sdhci-of-dwcmshc.c | 28 +++++++++++++++++++++++++++-
- 1 file changed, 27 insertions(+), 1 deletion(-)
+ drivers/mmc/host/sdhci-of-dwcmshc.c | 46 ++++++++++++++---------------
+ 1 file changed, 23 insertions(+), 23 deletions(-)
 
 diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
-index bac874ab0b33..d95ae6ca1256 100644
+index d95ae6ca1256..54ae0268e002 100644
 --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
 +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-@@ -15,6 +15,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/reset.h>
- #include <linux/sizes.h>
+@@ -56,14 +56,14 @@
+ #define DLL_LOCK_WO_TMOUT(x) \
+ 	((((x) & DWCMSHC_EMMC_DLL_LOCKED) == DWCMSHC_EMMC_DLL_LOCKED) && \
+ 	(((x) & DWCMSHC_EMMC_DLL_TIMEOUT) == 0))
+-#define RK3568_MAX_CLKS 3
++#define RK35xx_MAX_CLKS 3
  
- #include "sdhci-pltfm.h"
-@@ -63,6 +64,7 @@
- struct rk3568_priv {
+ #define BOUNDARY_OK(addr, len) \
+ 	((addr | (SZ_128M - 1)) == ((addr + len - 1) | (SZ_128M - 1)))
+ 
+-struct rk3568_priv {
++struct rk35xx_priv {
  	/* Rockchip specified optional clocks */
- 	struct clk_bulk_data rockchip_clks[RK3568_MAX_CLKS];
-+	struct reset_control *reset;
+-	struct clk_bulk_data rockchip_clks[RK3568_MAX_CLKS];
++	struct clk_bulk_data rockchip_clks[RK35xx_MAX_CLKS];
+ 	struct reset_control *reset;
  	u8 txclk_tapnum;
  };
- 
-@@ -255,6 +257,23 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
- 	sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_STRBIN);
- }
- 
-+static void rk35xx_sdhci_reset(struct sdhci_host *host, u8 mask)
-+{
-+	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
-+	struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
+@@ -178,7 +178,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+ {
+ 	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
+ 	struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
+-	struct rk3568_priv *priv = dwc_priv->priv;
 +	struct rk35xx_priv *priv = dwc_priv->priv;
-+
-+	if (mask & SDHCI_RESET_ALL) {
-+		if (!IS_ERR_OR_NULL(priv->reset)) {
-+			reset_control_assert(priv->reset);
-+			udelay(1);
-+			reset_control_deassert(priv->reset);
-+		}
-+	}
-+
-+	sdhci_reset(host, mask);
-+}
-+
- static const struct sdhci_ops sdhci_dwcmshc_ops = {
- 	.set_clock		= sdhci_set_clock,
- 	.set_bus_width		= sdhci_set_bus_width,
-@@ -269,7 +288,7 @@ static const struct sdhci_ops sdhci_dwcmshc_rk3568_ops = {
- 	.set_bus_width		= sdhci_set_bus_width,
- 	.set_uhs_signaling	= dwcmshc_set_uhs_signaling,
- 	.get_max_clock		= sdhci_pltfm_clk_get_max_clock,
--	.reset			= sdhci_reset,
-+	.reset			= rk35xx_sdhci_reset,
+ 	u8 txclk_tapnum = DLL_TXCLK_TAPNUM_DEFAULT;
+ 	u32 extra, reg;
+ 	int err;
+@@ -283,7 +283,7 @@ static const struct sdhci_ops sdhci_dwcmshc_ops = {
  	.adma_write_desc	= dwcmshc_adma_write_desc,
  };
  
-@@ -292,6 +311,13 @@ static int dwcmshc_rk3568_init(struct sdhci_host *host, struct dwcmshc_priv *dwc
- 	int err;
- 	struct rk3568_priv *priv = dwc_priv->priv;
+-static const struct sdhci_ops sdhci_dwcmshc_rk3568_ops = {
++static const struct sdhci_ops sdhci_dwcmshc_rk35xx_ops = {
+ 	.set_clock		= dwcmshc_rk3568_set_clock,
+ 	.set_bus_width		= sdhci_set_bus_width,
+ 	.set_uhs_signaling	= dwcmshc_set_uhs_signaling,
+@@ -298,18 +298,18 @@ static const struct sdhci_pltfm_data sdhci_dwcmshc_pdata = {
+ 	.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN,
+ };
  
-+	priv->reset = devm_reset_control_array_get_exclusive(mmc_dev(host->mmc));
-+	if (IS_ERR_OR_NULL(priv->reset)) {
-+		err = PTR_ERR(priv->reset);
-+		dev_err(mmc_dev(host->mmc), "failed to get reset control %d\n", err);
-+		return err;
-+	}
-+
+-static const struct sdhci_pltfm_data sdhci_dwcmshc_rk3568_pdata = {
+-	.ops = &sdhci_dwcmshc_rk3568_ops,
++static const struct sdhci_pltfm_data sdhci_dwcmshc_rk35xx_pdata = {
++	.ops = &sdhci_dwcmshc_rk35xx_ops,
+ 	.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
+ 		  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
+ 	.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
+ 		   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
+ };
+ 
+-static int dwcmshc_rk3568_init(struct sdhci_host *host, struct dwcmshc_priv *dwc_priv)
++static int dwcmshc_rk35xx_init(struct sdhci_host *host, struct dwcmshc_priv *dwc_priv)
+ {
+ 	int err;
+-	struct rk3568_priv *priv = dwc_priv->priv;
++	struct rk35xx_priv *priv = dwc_priv->priv;
+ 
+ 	priv->reset = devm_reset_control_array_get_exclusive(mmc_dev(host->mmc));
+ 	if (IS_ERR_OR_NULL(priv->reset)) {
+@@ -321,14 +321,14 @@ static int dwcmshc_rk3568_init(struct sdhci_host *host, struct dwcmshc_priv *dwc
  	priv->rockchip_clks[0].id = "axi";
  	priv->rockchip_clks[1].id = "block";
  	priv->rockchip_clks[2].id = "timer";
+-	err = devm_clk_bulk_get_optional(mmc_dev(host->mmc), RK3568_MAX_CLKS,
++	err = devm_clk_bulk_get_optional(mmc_dev(host->mmc), RK35xx_MAX_CLKS,
+ 					 priv->rockchip_clks);
+ 	if (err) {
+ 		dev_err(mmc_dev(host->mmc), "failed to get clocks %d\n", err);
+ 		return err;
+ 	}
+ 
+-	err = clk_bulk_prepare_enable(RK3568_MAX_CLKS, priv->rockchip_clks);
++	err = clk_bulk_prepare_enable(RK35xx_MAX_CLKS, priv->rockchip_clks);
+ 	if (err) {
+ 		dev_err(mmc_dev(host->mmc), "failed to enable clocks %d\n", err);
+ 		return err;
+@@ -350,7 +350,7 @@ static int dwcmshc_rk3568_init(struct sdhci_host *host, struct dwcmshc_priv *dwc
+ static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
+ 	{
+ 		.compatible = "rockchip,rk3568-dwcmshc",
+-		.data = &sdhci_dwcmshc_rk3568_pdata,
++		.data = &sdhci_dwcmshc_rk35xx_pdata,
+ 	},
+ 	{
+ 		.compatible = "snps,dwcmshc-sdhci",
+@@ -373,7 +373,7 @@ static int dwcmshc_probe(struct platform_device *pdev)
+ 	struct sdhci_pltfm_host *pltfm_host;
+ 	struct sdhci_host *host;
+ 	struct dwcmshc_priv *priv;
+-	struct rk3568_priv *rk_priv = NULL;
++	struct rk35xx_priv *rk_priv = NULL;
+ 	const struct sdhci_pltfm_data *pltfm_data;
+ 	int err;
+ 	u32 extra;
+@@ -428,8 +428,8 @@ static int dwcmshc_probe(struct platform_device *pdev)
+ 	host->mmc_host_ops.request = dwcmshc_request;
+ 	host->mmc_host_ops.hs400_enhanced_strobe = dwcmshc_hs400_enhanced_strobe;
+ 
+-	if (pltfm_data == &sdhci_dwcmshc_rk3568_pdata) {
+-		rk_priv = devm_kzalloc(&pdev->dev, sizeof(struct rk3568_priv), GFP_KERNEL);
++	if (pltfm_data == &sdhci_dwcmshc_rk35xx_pdata) {
++		rk_priv = devm_kzalloc(&pdev->dev, sizeof(struct rk35xx_priv), GFP_KERNEL);
+ 		if (!rk_priv) {
+ 			err = -ENOMEM;
+ 			goto err_clk;
+@@ -437,7 +437,7 @@ static int dwcmshc_probe(struct platform_device *pdev)
+ 
+ 		priv->priv = rk_priv;
+ 
+-		err = dwcmshc_rk3568_init(host, priv);
++		err = dwcmshc_rk35xx_init(host, priv);
+ 		if (err)
+ 			goto err_clk;
+ 	}
+@@ -454,7 +454,7 @@ static int dwcmshc_probe(struct platform_device *pdev)
+ 	clk_disable_unprepare(pltfm_host->clk);
+ 	clk_disable_unprepare(priv->bus_clk);
+ 	if (rk_priv)
+-		clk_bulk_disable_unprepare(RK3568_MAX_CLKS,
++		clk_bulk_disable_unprepare(RK35xx_MAX_CLKS,
+ 					   rk_priv->rockchip_clks);
+ free_pltfm:
+ 	sdhci_pltfm_free(pdev);
+@@ -466,14 +466,14 @@ static int dwcmshc_remove(struct platform_device *pdev)
+ 	struct sdhci_host *host = platform_get_drvdata(pdev);
+ 	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
+ 	struct dwcmshc_priv *priv = sdhci_pltfm_priv(pltfm_host);
+-	struct rk3568_priv *rk_priv = priv->priv;
++	struct rk35xx_priv *rk_priv = priv->priv;
+ 
+ 	sdhci_remove_host(host, 0);
+ 
+ 	clk_disable_unprepare(pltfm_host->clk);
+ 	clk_disable_unprepare(priv->bus_clk);
+ 	if (rk_priv)
+-		clk_bulk_disable_unprepare(RK3568_MAX_CLKS,
++		clk_bulk_disable_unprepare(RK35xx_MAX_CLKS,
+ 					   rk_priv->rockchip_clks);
+ 	sdhci_pltfm_free(pdev);
+ 
+@@ -486,7 +486,7 @@ static int dwcmshc_suspend(struct device *dev)
+ 	struct sdhci_host *host = dev_get_drvdata(dev);
+ 	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
+ 	struct dwcmshc_priv *priv = sdhci_pltfm_priv(pltfm_host);
+-	struct rk3568_priv *rk_priv = priv->priv;
++	struct rk35xx_priv *rk_priv = priv->priv;
+ 	int ret;
+ 
+ 	ret = sdhci_suspend_host(host);
+@@ -498,7 +498,7 @@ static int dwcmshc_suspend(struct device *dev)
+ 		clk_disable_unprepare(priv->bus_clk);
+ 
+ 	if (rk_priv)
+-		clk_bulk_disable_unprepare(RK3568_MAX_CLKS,
++		clk_bulk_disable_unprepare(RK35xx_MAX_CLKS,
+ 					   rk_priv->rockchip_clks);
+ 
+ 	return ret;
+@@ -509,7 +509,7 @@ static int dwcmshc_resume(struct device *dev)
+ 	struct sdhci_host *host = dev_get_drvdata(dev);
+ 	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
+ 	struct dwcmshc_priv *priv = sdhci_pltfm_priv(pltfm_host);
+-	struct rk3568_priv *rk_priv = priv->priv;
++	struct rk35xx_priv *rk_priv = priv->priv;
+ 	int ret;
+ 
+ 	ret = clk_prepare_enable(pltfm_host->clk);
+@@ -523,7 +523,7 @@ static int dwcmshc_resume(struct device *dev)
+ 	}
+ 
+ 	if (rk_priv) {
+-		ret = clk_bulk_prepare_enable(RK3568_MAX_CLKS,
++		ret = clk_bulk_prepare_enable(RK35xx_MAX_CLKS,
+ 					      rk_priv->rockchip_clks);
+ 		if (ret)
+ 			return ret;
 -- 
 2.35.1
 
