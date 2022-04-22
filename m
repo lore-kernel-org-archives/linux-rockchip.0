@@ -4,83 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3712FC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Apr 2022 16:49:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C86C3C43217
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Apr 2022 17:10:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XZerw5zNETDW0DQwDNPi/H7cF10DTjNTMJ5Nfl2Qcb4=; b=kxQkuCCxYCNc+a
-	+DyOTrZB8p9Znb+OWjnoafTYAvmBlSgCZ0257BCKeFk5rXLYCZIOWG8jyvi4CmtizdUfLIjWdW4OF
-	vInUW5i+pwpMoq6xHzg1hcNpcUvJNU52yoA3lzaC610xmCIDoK7e0vOJFZTd51+CvVFGQcESAL76M
-	FsVrliG3Bd5lNwRhFLshEQ7u4H4iYyjIzK6ZytK1zSEcecI3L77+3xzteK7vu4WhdmNfwhiyV/Udy
-	Sj/FhLQKf0H0vPShHjH80vCOKCQ0Z+Vhks1HiYUZSipfKT2W4eYFi1ltQc9qhb4tGsse6GvaHwUzo
-	DZeM4+WdiR3HU+LV9FNw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UPvo7tGrTZqgXUbWbfffYVM3JTF1X+WeDlqktYWka0U=; b=HokH/Kr19XHORR
+	cfMxhq9l8VQhQCmPOteXU0VwWJgwenimT/KrsYekLCmks1B96Y24i//R6n39InJ0TGSIaOt9TVXvI
+	Y7N/K5E8kyZajR2mHXpu7brF/Jkgwh5VvXVE4YTXFJ0bFK5pPJh7AefN4b/4hMtOfgb/qYL6LOLtO
+	OdUtDVhZ/QeUBJZ18xvJ1nLSIa/QHyjjXyc9K1UtR4Q6nVgKre+bFfGVWqYshx5Ul/pRjlnjN7loK
+	hzl213e3UzPipYRuq3yidxIWlp5lTD/ulXh3v2X4sV7EXMUTb4bTKhpiFkgCKwxT1K+yVM0TQnRFI
+	flnExp6pLEH0+FsltC3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhwT2-001Xh3-BZ; Fri, 22 Apr 2022 16:49:12 +0000
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
+	id 1nhwnM-001df5-VB; Fri, 22 Apr 2022 17:10:13 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhwSr-001Xe9-AU
- for linux-rockchip@lists.infradead.org; Fri, 22 Apr 2022 16:49:02 +0000
-Received: by mail-oi1-x231.google.com with SMTP id s16so9714266oie.0
- for <linux-rockchip@lists.infradead.org>; Fri, 22 Apr 2022 09:48:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=ukFSZ0c+ZlmfrRD+7vq2cqrIQ4lRoIzajrLlyX5Lu4g=;
- b=Ko7IVhOybo3oW8GcTV9klMNb4wS2aNSv/IHABXacdZBm3j4YlxTS2QOM/md2P+JrvV
- ewg3rUtGygI5ryu1EbC/tGsL0N4knwtpTLjshcEpoi/NUxjr4gsUNZjFomkuzd8ZoL5E
- NN7nCFWZnnqIsSIRlSYwS0XRoajXMtgdQzI+M7u4Th7Ecd4tRFbRoNDtWDGMt5duxNVK
- xcvD6tPp3n1ENZnD9JkBuSBqbALvyiQlWEakZhSi5gwEdsIh2st1t8gr2E2G0i90qUxR
- dztWeqcPeFDEp1NPENXcWBFN165vrqWOIYzw5GU4jsRB1q/XhgSjgv9kIShTtLCBENca
- QkPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ukFSZ0c+ZlmfrRD+7vq2cqrIQ4lRoIzajrLlyX5Lu4g=;
- b=SLv4t1yZH9FJDnFZcSsl+4YCFxitIsNZHI0Mhs+lv+TAJBtv1E9WJX6Ssu6iKWFGeF
- O6YVb5bjnYcFdCKIlSSr4m8mR8eoelSkWbEHG2NKpdvxgt5Y020vz6j8e4/CuQ6NjR/r
- E1RPUMtzmX6Rhucek2e4Yb3A7eEct+haYwRxM+0FIsUa+Af+RPrY17gCmtUWD8EnaRBk
- M1XT0BSxFdmNlmLKKyGFS1vwXOYFX1+JETNaFJUT/StIDhAphasX/cJf7RQSuhZkI2Qv
- ew1N+4sAAtdnfbqCPibKHeLo3oHOQuwOeDyS2foV+kQQfNEc9jciYu/OaFuhgNk+jdKB
- 5Raw==
-X-Gm-Message-State: AOAM530SFqOHOU38+0Eiwj5xD240rW9AyKu9s8DHQthXbkGNnlcypJSH
- LrglAMqs04wsxK1EWaWw2pqMlA==
-X-Google-Smtp-Source: ABdhPJzZq1ctYQzQcwS6nlBbCYuC0/Mqp0MY5N3po+2Ix7V/5FCCzS9mfLS1toZrRPv+JdwbyI9pGQ==
-X-Received: by 2002:a05:6808:2189:b0:322:e874:e8f2 with SMTP id
- be9-20020a056808218900b00322e874e8f2mr2731537oib.289.1650646138946; 
- Fri, 22 Apr 2022 09:48:58 -0700 (PDT)
-Received: from eze-laptop ([190.190.187.68]) by smtp.gmail.com with ESMTPSA id
- s14-20020a0568302a8e00b006054e841915sm910651otu.73.2022.04.22.09.48.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 Apr 2022 09:48:58 -0700 (PDT)
-Date: Fri, 22 Apr 2022 13:48:52 -0300
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Christopher Obbard <chris.obbard@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Johan Jonker <jbx6244@gmail.com>,
- Alex Bee <knaerzche@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH 1/3] media: dt-bindings: media: rockchip-vdec: Add RK3328
- compatible
-Message-ID: <YmLcdCridA6AKd51@eze-laptop>
-References: <20220422133803.989256-1-chris.obbard@collabora.com>
- <20220422133803.989256-2-chris.obbard@collabora.com>
+ id 1nhwmp-001dS9-8H; Fri, 22 Apr 2022 17:09:40 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) (Authenticated sender: sre)
+ with ESMTPSA id 14D901F468DC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1650647375;
+ bh=oZKU0pLxTu4eVBBy9OBJG6OyeGYOH15W+nncmVc3P1o=;
+ h=From:To:Cc:Subject:Date:From;
+ b=PZRjf+EM6Q3qjjvrKN+isMXE6vt1nVnGaQPm8Gg+kr6cNy5RI04nwk8pAliz8c7T4
+ FGuBGONwuEUjOM19nrQaMWe0PRbGLeMaD3v6vsm9RDrkFfjHhb1lqKjbMObqtqrFe7
+ 3WvjnMs6QevTk2jSWHdhoQrQ5+yI904o7NBUmfDzZqxGwMkg/MA+CuLCFKFahpsesz
+ tk/Nd65KAoGu1Pp8SXbifaBbnsZekKD5X8W4gT9qMTHx6oexqKzKrZX1+wBbgtDUOw
+ psC7tcatCK27uy8BlwhUuqCZ/Ff2daz5grnooRxRm9CPIei++8xE1pZEf0RenmmsLC
+ Ys6beOeO5uf3g==
+Received: by jupiter.universe (Postfix, from userid 1000)
+ id BE2394807DF; Fri, 22 Apr 2022 19:09:32 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
+ linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ kernel@lists.collabora.co.uk,
+ Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com
+Subject: [PATCHv1 00/19] Basic RK3588 Support
+Date: Fri, 22 Apr 2022 19:09:01 +0200
+Message-Id: <20220422170920.401914-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220422133803.989256-2-chris.obbard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_094901_406400_DFFD5978 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20220422_100939_493980_F2198338 
+X-CRM114-Status: GOOD (  15.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,32 +78,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 22, 2022 at 02:38:01PM +0100, Christopher Obbard wrote:
-> Document the RK3328 compatible for rockchip-vdec.
-> 
-> Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
+Hi,
 
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+This patchset adds initial rudimentary support for the rk3588 SoC using
+Rockchip's evaluation board for platform bringup. With this patchset it
+is possible to boot into stock Debian, if it has been previously installed
+on the eMMC in some way (e.g. pre-installed vendor OS) using the Debug UART
+as interface. Apart from the eMMC, the boot CPU and the UART. Apart from
+that nothing works and will be added separately on top step-by-step.
 
-> ---
->  Documentation/devicetree/bindings/media/rockchip,vdec.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> index 089f11d21b25..23f9687d862c 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> @@ -19,6 +19,7 @@ properties:
->        - const: rockchip,rk3399-vdec
->        - items:
->            - const: rockchip,rk3228-vdec
-> +          - const: rockchip,rk3328-vdec
->            - const: rockchip,rk3399-vdec
->  
->    reg:
-> -- 
-> 2.34.1
-> 
+The patch series is based on v4.18-rc1.
+
+-- Sebastian
+
+Elaine Zhang (6):
+  dt-binding: clock: Document rockchip,rk3588-cru bindings
+  clk: rockchip: add register offset of the cores select parent
+  clk: rockchip: add pll type for RK3588
+  clk: rockchip: clk-cpu: add mux setting for cpu change frequency
+  clk: rockchip: add dt-binding header for rk3588
+  clk: rockchip: Add clock controller for the RK3588
+
+Jianqun Xu (3):
+  pinctrl/rockchip: add rk3588 support
+  gpio: rockchip: add support for rk3588
+  arm64: dts: rockchip: Add rk3588s pinctrl data
+
+Kever Yang (2):
+  arm64: dts: rockchip: Add base DT for rk3588 SoC
+  arm64: dts: rockchip: Add rk3588-evb1 board
+
+Sebastian Reichel (6):
+  dt-bindings: mmc: sdhci-of-dwcmhsc: Add rk3588
+  mmc: sdhci-of-dwcmshc: rename rk3568 to rk35xx
+  dt-bindings: pinctrl: rockchip: add rk3588
+  pinctrl/rockchip: add error handling for pull/drive register getters
+  dt-bindings: serial: snps-dw-apb-uart: Add Rockchip RK3588
+  dt-bindings: soc: rockchip: add initial rk3588 syscon compatibles
+
+Yifeng Zhao (2):
+  mmc: sdhci-of-dwcmshc: add reset call back for rockchip Socs
+  mmc: sdhci-of-dwcmshc: add support for rk3588
+
+ .../devicetree/bindings/arm/rockchip.yaml     |    5 +
+ .../bindings/clock/rockchip,rk3588-cru.yaml   |   63 +
+ .../bindings/mmc/snps,dwcmshc-sdhci.yaml      |    1 +
+ .../bindings/pinctrl/rockchip,pinctrl.yaml    |    1 +
+ .../bindings/serial/snps-dw-apb-uart.yaml     |    1 +
+ .../devicetree/bindings/soc/rockchip/grf.yaml |    2 +
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../boot/dts/rockchip/rk3588-evb1-v10.dts     |   34 +
+ arch/arm64/boot/dts/rockchip/rk3588.dtsi      |    6 +
+ .../boot/dts/rockchip/rk3588s-pinctrl.dtsi    | 3403 +++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  501 +++
+ drivers/clk/rockchip/Kconfig                  |    7 +
+ drivers/clk/rockchip/Makefile                 |    1 +
+ drivers/clk/rockchip/clk-cpu.c                |   69 +-
+ drivers/clk/rockchip/clk-pll.c                |  287 +-
+ drivers/clk/rockchip/clk-rk3588.c             | 2496 ++++++++++++
+ drivers/clk/rockchip/clk.h                    |   65 +
+ drivers/gpio/gpio-rockchip.c                  |    3 +-
+ drivers/mmc/host/sdhci-of-dwcmshc.c           |  187 +-
+ drivers/pinctrl/pinctrl-rockchip.c            |  468 ++-
+ drivers/pinctrl/pinctrl-rockchip.h            |  170 +-
+ include/dt-bindings/clock/rk3588-cru.h        | 1492 ++++++++
+ 22 files changed, 9148 insertions(+), 115 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s.dtsi
+ create mode 100644 drivers/clk/rockchip/clk-rk3588.c
+ create mode 100644 include/dt-bindings/clock/rk3588-cru.h
+
+-- 
+2.35.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
