@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1607AC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Apr 2022 20:44:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 865A9C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Apr 2022 20:45:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mKsGYHn0XgU9/HzrheVO72V+F7z+mYMK+HF0g9zwsmc=; b=wRgRtHZyZ0zsFy
-	UdlrfBxvEzBDuDnqNWvmj75tsU5VRMmP5ttJw3aBtOjPnvtOUd5qxXutgqNJKuI4QSODZwTYvtdEy
-	biIoqcjfUSl6CntytM79y/nJ/bq7/FVz0JGExmPv36tFKV0Y8VZmenbGXpKHNmtGZZnQ9u7BvQApx
-	p5N7rTao3PBVOQdU7pl2F5JH2XhNiBwVtvA9nLFZDDe4vGO7WJykpjS4t2vqkqVU297K2/+XEERc6
-	YQwZKbwgeNaBPOgVQ8/7+xp4SqGPRBD1IcirdcYaIC+15feLXpxkC0Rm8u9Mzty8PIiowWVZV7Ypb
-	f8M3ti+gBSAsUrCZmUaQ==;
+	List-Owner; bh=hb/02ziO9Pu4yAdR8wfw0OrR18XKnRBVzOJ41xJlF9k=; b=Q7PHRA4RtJItbT
+	P8wcp2HaGmyoDBXOYkljGzntEyNdC3+AdBL8smfp6MCn9QhoJEzHtQvcuLCNji+cSY8jQv4VMtCsH
+	6RdvcjATsoD6h9L2lYJ7T/fKczHMqbr+2w0V62TxPIq/AMm0hLDrUskL4UkPUv8RZpypSAvyyvFeZ
+	rkNUa+YyDW83iZEkleQaMhaE0pHKWMcEPzRya3uCRKP9QYo/xZUgRHT3BVG/r/XNwsmnt/NFdJYZj
+	rWC2oPIUHKHIO9fmkTZeZzxgJSFh1L6Jil9cihvDJjfcvVBVKxnWLxJyq0d+PSoMjrCKzozfPtepL
+	ros99BftZ5Dp7jLrrAUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ni08g-002HJx-5c; Fri, 22 Apr 2022 20:44:26 +0000
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+	id 1ni0A5-002HZK-AT; Fri, 22 Apr 2022 20:45:53 +0000
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ni08d-002HJ6-K4
- for linux-rockchip@lists.infradead.org; Fri, 22 Apr 2022 20:44:24 +0000
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-2ec0bb4b715so97539857b3.5
- for <linux-rockchip@lists.infradead.org>; Fri, 22 Apr 2022 13:44:23 -0700 (PDT)
+ id 1ni0A2-002HXk-8F
+ for linux-rockchip@lists.infradead.org; Fri, 22 Apr 2022 20:45:51 +0000
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-2f7c57ee6feso2863927b3.2
+ for <linux-rockchip@lists.infradead.org>; Fri, 22 Apr 2022 13:45:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3nksj5w518uht/ItCyi8i36nhvCePscNQgV5FEz9z6Q=;
- b=g8SpyRq0EokUtq2/Ruex3k4GJpsldwiFN7s5Td1NqBB/1sz4PB8PW77PoDjmVO+nIV
- MNQj5/DSO2n1/Wz0+1wehuJuhtgZZtPgCi02BTQ+DzLRVOuxdJXKsrFnimec3440YOCx
- aMWk2YcE0ez7iqYmhzyvdHPEEGnBPTAyOx5MtBGNjLo5yFXy1qBo3Np8+V9Lcmr90Vqu
- 3Go3gRPSj/N4C2WNTnoup9V1vLlPLvsNLjgzulBImOdHMHyw4upus4kqIm+keotH/wCa
- fthPpMr4yok3sBlZ0N6p+9P6PlUZYF234f+2TwubO7vilza5bWaaNFNrZePSxKwoP06H
- 5Tmg==
+ :cc; bh=qTYVVxfz08ji7LisN1HyvD8Q42QQWkxJnHZuQ3wrXDI=;
+ b=CyZGYcQdOD77c4tnXXyDM7egLNC+xD5Lfbo++f/oEd6Mc7YuF4nZcSJzO8litplCwO
+ 9Hl8ANPegA2yhs1atnyTv3F2IXhNasW6GYJwzObOkSp1IUpm00J+fxtkzcorapDPlSjB
+ wP2YAOJ0YRS/HVWxrNoRy+JCkpS9b9oEy7h2uDzLPAXyBisQ4AOVV6l0b5CYEBGu8Lm+
+ hCH9vb+4DKR1/NV539hOeSudxUu6kTO+2/+GzaVxDlMjEv3oolcffR8KWHlMwU0FjbN1
+ Xjh3xCynw6y1akW6P75hxoxD98mqku4I6Zw+cZjnySE4cxkqbK+/qalL6jdwhx8TQlTl
+ zheA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=3nksj5w518uht/ItCyi8i36nhvCePscNQgV5FEz9z6Q=;
- b=2XhJN+mg+VwBFWdtMWP/rz8ko2gyuj6DNc0IUNNEPzhyP5Vha7HgR/pAtaeJwHbwIC
- 1syLwlDZEKHtTRd/KvmnU10RWhgGs4Ef7C5eKwv+ws/NLSDXRTNcMpvIDf5HVyTYUTmc
- proAaEnavB2Fm4xXp9rPAgZn50CzTaGBJmcYZe850u+RgwP/fA1l5byp4919dl0WJZL0
- 6tYB1fPQUEDkU6CjSi564GyPrg52Hj8Gp0M+zNA33XE0gz1enBADr99ObJOsJX/cnpyb
- SDkOZxMVRzuQ082adWJuxeAPdO1I3qzam6RNfMNDyLLKn4RcWfduoTJGGxMxhnCsSDAk
- k86A==
-X-Gm-Message-State: AOAM531CCdpazCrfK48J6T/o12CTREmOKerWqV8xW7FzNIjsSitYbeCE
- Am4LCyXCBKMahc999Ibn9DMx7o1d3lX0Nvii+IbSSog3O9lyQg==
-X-Google-Smtp-Source: ABdhPJxrjqv5Iz21jqbGZ2f13VLgcMjHToddZ0hzGtc4gakrrg1G6y+n2H78NeXCdSnLQdm+z3HHZa/1M+m0MoBLEAs=
-X-Received: by 2002:a81:2108:0:b0:2f5:6938:b2b8 with SMTP id
- h8-20020a812108000000b002f56938b2b8mr5029519ywh.151.1650660262703; Fri, 22
- Apr 2022 13:44:22 -0700 (PDT)
+ bh=qTYVVxfz08ji7LisN1HyvD8Q42QQWkxJnHZuQ3wrXDI=;
+ b=Ybs297hONxkfb2QqtvEeB8ktOHc0W6HEu5zf0smqsAl3IQjjPlaNK6h5uBtUWkjp6A
+ d+2aX5sk64QqZfcnKmuQMjlbNo9ErVPGMflie7c7PtwxaClFH9xNJhXA04xmNKYFd0VT
+ ygklFik079kukB8bEKA9f9WBR+TB5lmJ/qU2vnCQbM0zQ+8+ohzkjWFz+ISNFV4i0+EQ
+ 26pQsuHKPUUAkDkrMSlHUTxAOMcCiuaKekOtlM1Q2UYhBJ5VqES0dOBL8e2g9Soc0Yr/
+ XIpdXJD+q0NnbcxPg8eZViLCHcGxPec388cVIhE2zyn4/ttBEULmEyKI3Ky2JSTfbT8i
+ 8d4A==
+X-Gm-Message-State: AOAM53047EFdnAoM9HorC/rrjcQqQh6rlrykQnPvY3rEjXlIdypAKyXZ
+ dGJ/xsyyyTkRzapw6DfREBh/hWGExB7j+ijXFS/TwA==
+X-Google-Smtp-Source: ABdhPJzq86ruhOqEYU+8gN4yyBiknGW6LZI+KGiMSXNBWuHztdTVyCg6yrBXJo6ofvLK9zohuzrwA6ko4NYCiLa0wzQ=
+X-Received: by 2002:a0d:c4c2:0:b0:2f1:6c00:9eb4 with SMTP id
+ g185-20020a0dc4c2000000b002f16c009eb4mr6900986ywd.448.1650660348505; Fri, 22
+ Apr 2022 13:45:48 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220422170920.401914-1-sebastian.reichel@collabora.com>
-In-Reply-To: <20220422170920.401914-1-sebastian.reichel@collabora.com>
+ <20220422170920.401914-18-sebastian.reichel@collabora.com>
+In-Reply-To: <20220422170920.401914-18-sebastian.reichel@collabora.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 22 Apr 2022 22:44:11 +0200
-Message-ID: <CACRpkdZbRbRcFz-SQ0yNf4aAmuwrQKTKjS1QceTCvKE=W0kyqA@mail.gmail.com>
-Subject: Re: [PATCHv1 00/19] Basic RK3588 Support
+Date: Fri, 22 Apr 2022 22:45:37 +0200
+Message-ID: <CACRpkdaBixtCX=rdMCVJb6QgFhBRZxEnPpDYDzsznx93TL4Jgg@mail.gmail.com>
+Subject: Re: [PATCHv1 17/19] arm64: dts: rockchip: Add rk3588s pinctrl data
 To: Sebastian Reichel <sebastian.reichel@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, 
@@ -72,10 +73,13 @@ Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
  linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
  linux-kernel@vger.kernel.org, kernel@lists.collabora.co.uk, 
- kernel@collabora.com
+ Jianqun Xu <jay.xu@rock-chips.com>, kernel@collabora.com, 
+ Shengfei Xu <xsf@rock-chips.com>, Damon Ding <damon.ding@rock-chips.com>, 
+ Steven Liu <steven.liu@rock-chips.com>, Jon Lin <jon.lin@rock-chips.com>, 
+ Finley Xiao <finley.xiao@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_134423_717623_23320A68 
-X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-CacheID: sfid-20220422_134550_368443_7F56B773 
+X-CRM114-Status: UNSURE (   9.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,24 +98,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
-
-thanks for the patches,
-
-On Fri, Apr 22, 2022 at 7:09 PM Sebastian Reichel
+On Fri, Apr 22, 2022 at 7:14 PM Sebastian Reichel
 <sebastian.reichel@collabora.com> wrote:
 
->   pinctrl/rockchip: add rk3588 support
->   pinctrl/rockchip: add error handling for pull/drive register getters
+> From: Jianqun Xu <jay.xu@rock-chips.com>
+>
+> This adds the pin controller data for rk3588.
+>
+> Signed-off-by: Shengfei Xu <xsf@rock-chips.com>
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> Signed-off-by: Steven Liu <steven.liu@rock-chips.com>
+> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> [port from vendor tree merging all fixes]
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-I expect I can just apply these two to the pinctrl tree after giving
-Heiko some time to look at it? (And he is happy with them)
-No dependencies I think?
-
-> Sebastian Reichel (6):
->   dt-bindings: pinctrl: rockchip: add rk3588
-
-I just applied this patch since it is trivial and evidently correct.
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+Please funnel this through the SoC tree.
 
 Yours,
 Linus Walleij
