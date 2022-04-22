@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E645C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Apr 2022 13:39:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B2A6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Apr 2022 13:39:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hRn6gpfaakiOcNoCwEVDJvrl0usNL12Z+jmd4Js/ckM=; b=PYbkKm3JGYEmFb
-	ZYzDbwKghvaUHtk3qfuoqt/3GOkrQ1oMOdDRYuIM5u7lwQUgJvpnYUw+WO/4tfbBec389W4ExW7Y+
-	aVVEEE3boDv9k4fUfsL7F5Lrrz7yLsOyZDIKcpSMOY6GGJaWkRMHBdqpKeEDMNDjPX34aNmtPEKNa
-	IZ2+UwfCMLa1g0BHfSlNpi4WWi0HFYtiKTy/aHbb+2XPj/d0he89ZD8HIYdnGOaEYCC/FGt+/WeUj
-	uukYRphhOYWGrwYTPtA80IHYnN8/J8ZEwTY3FlWUi8VxX4jqpoWZdEavMsH91eo+ilRGphS9vjgsK
-	8fK3VU/icf/AYLy1fqYQ==;
+	List-Owner; bh=orV/+FRfPWcTR665q7Wcd15jGJ3x/xbZDEn9+DhukJk=; b=Skusb64C3Q2liN
+	7rAw0v/J2TNLa0wL4HT/424OIluvkLzXIyJD30rPgMAGoGxHEr9m0abfV8JzNOJWxHqsEzTAxx7vQ
+	SXPGuLZx0L0olhXVRGV5i5BdH+yucjQ+Bu8GIhzZiCDuFBLmoVrmYUSd64KWMYvwgSBA/72EwawEz
+	apdnDzgbOJTobIIkK9BzN1kYzn8cSbwFZ62Q6bAhmYWVtm/kG3FV/lHFJMK+iCGA1CnoqmCnl6a88
+	irqGqrLm+nyO5RayblIXrdJCwLQoRwQfpjsO1EkiGkiY1nbWgj2X8Z7ZPRWczNgocYch1Yace+VeH
+	bB8N/cJcV6AkRCrsJV0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhtV6-000d8e-6G; Fri, 22 Apr 2022 13:39:08 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nhtVJ-000dHJ-Oq; Fri, 22 Apr 2022 13:39:21 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhtUT-000ct0-R0; Fri, 22 Apr 2022 13:38:32 +0000
+ id 1nhtUU-000csx-5o; Fri, 22 Apr 2022 13:38:33 +0000
 Received: from obbardc-laptop.home (unknown
  [IPv6:2a00:23c7:6883:e501:cf51:f3a2:10b5:accf])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: obbardc)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 9175D1F468BF;
- Fri, 22 Apr 2022 14:38:26 +0100 (BST)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id BA8401F468B3;
+ Fri, 22 Apr 2022 14:38:25 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650634706;
- bh=F/N33suZ77vOK1o4zWmW6EAlNmYs0vZALu+fdpoKBn8=;
+ s=mail; t=1650634705;
+ bh=ksNotgvEvQzUrT0m8LzCraEdRg4X/Z2VoTeJH+OzRw4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=FYM0+91MXQGSStUj5wF0DajRh/uP2ylbKZaBRh53X1FEO4cKQ9mcQvaLHx/fIN6pn
- NBkADb9AqxcVCwKSsrQoiyEFXc1pCfvX/SLaAHkb4GLSxA5DZXk6f3UnOUM3npE+/+
- yW9KVrSyKxP+gsBk8Nd/VFXCZtThlbZ+EXNXe3+7L4owQ9pKNqNC+HE1wtQcQMxDia
- i7ejhbKi9xOYxBNEJ/Dko/YDNZYr/SpVGN6w2uycwCmtyh/5g3bqu2Ogqz+6Dffhuh
- nZNmjpOpeCpNeziEEZV4Hz6WThFPA6W7NyB1oWAKfybMtzClPMRu+2OvGanaZHjE3i
- 7Nu5vpsyUORuA==
+ b=at69pO7OY8TutnNMW2RTCCNAY228SrD8Yfs7Ip+lZMSsOsauLe7Laq06l8lH9XgLH
+ cHdqKPAeALmd23foj+rrQQD6E16r20RksQLaAekmZYn8OOSnd4nvKGe85gR+Ps2k1J
+ +2WraCW4yUs91z9RLhnRrzDnpiFQTufrvm4HWVgyawZF31C95u3z4RAlRJ7v7GMp33
+ CLPtVM5lPNzCF9DGO63WDrc7yyJWcYUYIhipN5TJuV9sZJwwupn43tOuvYtw42obQk
+ 8CMYrhBPOmq0d9UuSV91/2HojaQs0Vn3+PQGtbSPFIW8dHXUdcJE5tL9O+P9nA+Xu8
+ 5OkykuMqIZx3A==
 From: Christopher Obbard <chris.obbard@collabora.com>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -51,16 +51,16 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, kernel@collabora.com,
  Christopher Obbard <chris.obbard@collabora.com>
-Subject: [PATCH 3/3] arm64: dts: rockchip: Add vdec support for RK3328
-Date: Fri, 22 Apr 2022 14:38:03 +0100
-Message-Id: <20220422133803.989256-4-chris.obbard@collabora.com>
+Subject: [PATCH 2/3] arm64: dts: rockchip: Rename vdec_mmu node for RK3328
+Date: Fri, 22 Apr 2022 14:38:02 +0100
+Message-Id: <20220422133803.989256-3-chris.obbard@collabora.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220422133803.989256-1-chris.obbard@collabora.com>
 References: <20220422133803.989256-1-chris.obbard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_063830_050753_7FF07C67 
-X-CRM114-Status: GOOD (  13.28  )
+X-CRM114-CacheID: sfid-20220422_063830_405008_EBDBEE4A 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,65 +78,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3328 has an vdec device with dedicated iommu.
-Describe the device and required power-domains in the
-devicetree.
+All other rockchip devices which have vdec nodes do not
+have an rk prefix. Remove the prefix from the (currently
+unused) rkvdec_mmu node for consistency with other
+devices.
 
 Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 25 +++++++++++++++++++++++-
- 1 file changed, 24 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index f8ef149fedad..390e1e4a8fc9 100644
+index b822533dc7f1..f8ef149fedad 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -306,6 +306,10 @@ power-domain@RK3328_PD_HEVC {
- 			};
- 			power-domain@RK3328_PD_VIDEO {
- 				reg = <RK3328_PD_VIDEO>;
-+				clocks = <&cru ACLK_RKVDEC>,
-+					 <&cru HCLK_RKVDEC>,
-+					 <&cru SCLK_VDEC_CABAC>,
-+					 <&cru SCLK_VDEC_CORE>;
- 				#power-domain-cells = <0>;
- 			};
- 			power-domain@RK3328_PD_VPU {
-@@ -660,6 +664,25 @@ vpu_mmu: iommu@ff350800 {
+@@ -660,7 +660,7 @@ vpu_mmu: iommu@ff350800 {
  		power-domains = <&power RK3328_PD_VPU>;
  	};
  
-+	vdec: video-codec@ff360000 {
-+		compatible = "rockchip,rk3328-vdec", "rockchip,rk3399-vdec";
-+		reg = <0x0 0xff360000 0x0 0x400>;
-+		interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>,
-+			 <&cru SCLK_VDEC_CABAC>, <&cru SCLK_VDEC_CORE>;
-+		clock-names = "axi", "ahb", "cabac", "core";
-+		assigned-clocks = <&cru ACLK_RKVDEC>, <&cru SCLK_VDEC_CABAC>,
-+				  <&cru SCLK_VDEC_CORE>;
-+		assigned-clock-rates = <400000000>, <400000000>, <300000000>;
-+		resets = <&cru SRST_VDEC_A>, <&cru SRST_VDEC_H>,
-+			 <&cru SRST_VDEC_CABAC>, <&cru SRST_VDEC_CORE>,
-+			 <&cru SRST_VDEC_NIU_A>, <&cru SRST_VDEC_NIU_H>;
-+		reset-names = "video_a", "video_h", "video_cabac", "video_core",
-+			"niu_a", "niu_h";
-+		iommus = <&vdec_mmu>;
-+		power-domains = <&power RK3328_PD_VIDEO>;
-+	};
-+
- 	vdec_mmu: iommu@ff360480 {
+-	rkvdec_mmu: iommu@ff360480 {
++	vdec_mmu: iommu@ff360480 {
  		compatible = "rockchip,iommu";
  		reg = <0x0 0xff360480 0x0 0x40>, <0x0 0xff3604c0 0x0 0x40>;
-@@ -667,7 +690,7 @@ vdec_mmu: iommu@ff360480 {
- 		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
- 		clock-names = "aclk", "iface";
- 		#iommu-cells = <0>;
--		status = "disabled";
-+		power-domains = <&power RK3328_PD_VIDEO>;
- 	};
- 
- 	vop: vop@ff370000 {
+ 		interrupts = <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>;
 -- 
 2.34.1
 
