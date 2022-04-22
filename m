@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C86C3C43217
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A17FFC4332F
 	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Apr 2022 17:10:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UPvo7tGrTZqgXUbWbfffYVM3JTF1X+WeDlqktYWka0U=; b=HokH/Kr19XHORR
-	cfMxhq9l8VQhQCmPOteXU0VwWJgwenimT/KrsYekLCmks1B96Y24i//R6n39InJ0TGSIaOt9TVXvI
-	Y7N/K5E8kyZajR2mHXpu7brF/Jkgwh5VvXVE4YTXFJ0bFK5pPJh7AefN4b/4hMtOfgb/qYL6LOLtO
-	OdUtDVhZ/QeUBJZ18xvJ1nLSIa/QHyjjXyc9K1UtR4Q6nVgKre+bFfGVWqYshx5Ul/pRjlnjN7loK
-	hzl213e3UzPipYRuq3yidxIWlp5lTD/ulXh3v2X4sV7EXMUTb4bTKhpiFkgCKwxT1K+yVM0TQnRFI
-	flnExp6pLEH0+FsltC3A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EP9HAEbKjSCZDPcpN549u2wYVWSGpNDUN2DMpVK01zU=; b=P1hFuSyFp6SxHI
+	q5TtRrEdIDG4IFmHpmHVRJNEy/lsYd212qvL8U2CkR5RqT9uwfMyLYlLhnHXiw7E8Acgth/JwqnCq
+	j1lI6bbWktdpaKYdVf7jA77N8Gt6UlWquNEN6NE22/cappPMuPqJfH0xk+iPyLcem4EKBn6toQJ74
+	6LayCmvJpjWOZipXe2fXC+A5z1hncqCboFXvhU5cXWglpLSxEeM9Djsjr6RBMWvf/+JktnuSIGTBH
+	OgI6Pj6J3DzZKQtshIA/gqMNnclWa/utWrJJqXCuX8Tiv8DV3YRQ+clqpjqX2desQ1szjiVZc9CtY
+	/BfMNCNK9ZLwEBFSjnxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nhwnM-001df5-VB; Fri, 22 Apr 2022 17:10:13 +0000
+	id 1nhwnL-001deQ-Da; Fri, 22 Apr 2022 17:10:11 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nhwmp-001dS9-8H; Fri, 22 Apr 2022 17:09:40 +0000
+ id 1nhwmp-001dS4-8M; Fri, 22 Apr 2022 17:09:41 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1]) (Authenticated sender: sre)
- with ESMTPSA id 14D901F468DC
+ with ESMTPSA id 063301F4684B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
  s=mail; t=1650647375;
- bh=oZKU0pLxTu4eVBBy9OBJG6OyeGYOH15W+nncmVc3P1o=;
- h=From:To:Cc:Subject:Date:From;
- b=PZRjf+EM6Q3qjjvrKN+isMXE6vt1nVnGaQPm8Gg+kr6cNy5RI04nwk8pAliz8c7T4
- FGuBGONwuEUjOM19nrQaMWe0PRbGLeMaD3v6vsm9RDrkFfjHhb1lqKjbMObqtqrFe7
- 3WvjnMs6QevTk2jSWHdhoQrQ5+yI904o7NBUmfDzZqxGwMkg/MA+CuLCFKFahpsesz
- tk/Nd65KAoGu1Pp8SXbifaBbnsZekKD5X8W4gT9qMTHx6oexqKzKrZX1+wBbgtDUOw
- psC7tcatCK27uy8BlwhUuqCZ/Ff2daz5grnooRxRm9CPIei++8xE1pZEf0RenmmsLC
- Ys6beOeO5uf3g==
+ bh=TnIdNrpuxC9G+/dcTYgeKYN/nQW+pYpEjAihkygqdxs=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=cGw0GubNhgROE6TLDJPojVfCfb0ArWNA9nHL6ZyLFzE2GJqHKPjgRpUPiMWQQr6Ct
+ dM9d3QjX7pT3XN+Jm57+qX+S1JlBBelOoySvtemfwRaQJiodFGMH17U7YOsmMKgAfN
+ USRATS6jKb2BEBXSRHwJJwE6oxjzZYfG6mGvuHtD8GaB3CPAOveSAAnBNzCRae7Wx1
+ z+6w6j1rk18S0c+M5ehTTakHa5ekMGxOg9W52lpKFMH7k6E7H+eeWVbHPkbztUmcWq
+ l6TKcjUv6UoI9S8Ed03f+EutQxDxHfZ/zPmaf704yIiSFDLx0ijZkVBDCXm5Xr03zn
+ Xj2jzh7C68zBg==
 Received: by jupiter.universe (Postfix, from userid 1000)
- id BE2394807DF; Fri, 22 Apr 2022 19:09:32 +0200 (CEST)
+ id C18D24807E0; Fri, 22 Apr 2022 19:09:32 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -51,16 +51,19 @@ Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- kernel@lists.collabora.co.uk,
- Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com
-Subject: [PATCHv1 00/19] Basic RK3588 Support
-Date: Fri, 22 Apr 2022 19:09:01 +0200
-Message-Id: <20220422170920.401914-1-sebastian.reichel@collabora.com>
+ kernel@lists.collabora.co.uk, Elaine Zhang <zhangqing@rock-chips.com>,
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCHv1 01/19] dt-binding: clock: Document rockchip,
+ rk3588-cru bindings
+Date: Fri, 22 Apr 2022 19:09:02 +0200
+Message-Id: <20220422170920.401914-2-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220422170920.401914-1-sebastian.reichel@collabora.com>
+References: <20220422170920.401914-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_100939_493980_F2198338 
-X-CRM114-Status: GOOD (  15.86  )
+X-CRM114-CacheID: sfid-20220422_100939_493210_9D5B5723 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,79 +81,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Elaine Zhang <zhangqing@rock-chips.com>
 
-This patchset adds initial rudimentary support for the rk3588 SoC using
-Rockchip's evaluation board for platform bringup. With this patchset it
-is possible to boot into stock Debian, if it has been previously installed
-on the eMMC in some way (e.g. pre-installed vendor OS) using the Debug UART
-as interface. Apart from the eMMC, the boot CPU and the UART. Apart from
-that nothing works and will be added separately on top step-by-step.
+Document the device tree bindings of the rockchip Rk3588 SoC
+clock driver.
 
-The patch series is based on v4.18-rc1.
-
--- Sebastian
-
-Elaine Zhang (6):
-  dt-binding: clock: Document rockchip,rk3588-cru bindings
-  clk: rockchip: add register offset of the cores select parent
-  clk: rockchip: add pll type for RK3588
-  clk: rockchip: clk-cpu: add mux setting for cpu change frequency
-  clk: rockchip: add dt-binding header for rk3588
-  clk: rockchip: Add clock controller for the RK3588
-
-Jianqun Xu (3):
-  pinctrl/rockchip: add rk3588 support
-  gpio: rockchip: add support for rk3588
-  arm64: dts: rockchip: Add rk3588s pinctrl data
-
-Kever Yang (2):
-  arm64: dts: rockchip: Add base DT for rk3588 SoC
-  arm64: dts: rockchip: Add rk3588-evb1 board
-
-Sebastian Reichel (6):
-  dt-bindings: mmc: sdhci-of-dwcmhsc: Add rk3588
-  mmc: sdhci-of-dwcmshc: rename rk3568 to rk35xx
-  dt-bindings: pinctrl: rockchip: add rk3588
-  pinctrl/rockchip: add error handling for pull/drive register getters
-  dt-bindings: serial: snps-dw-apb-uart: Add Rockchip RK3588
-  dt-bindings: soc: rockchip: add initial rk3588 syscon compatibles
-
-Yifeng Zhao (2):
-  mmc: sdhci-of-dwcmshc: add reset call back for rockchip Socs
-  mmc: sdhci-of-dwcmshc: add support for rk3588
-
- .../devicetree/bindings/arm/rockchip.yaml     |    5 +
- .../bindings/clock/rockchip,rk3588-cru.yaml   |   63 +
- .../bindings/mmc/snps,dwcmshc-sdhci.yaml      |    1 +
- .../bindings/pinctrl/rockchip,pinctrl.yaml    |    1 +
- .../bindings/serial/snps-dw-apb-uart.yaml     |    1 +
- .../devicetree/bindings/soc/rockchip/grf.yaml |    2 +
- arch/arm64/boot/dts/rockchip/Makefile         |    1 +
- .../boot/dts/rockchip/rk3588-evb1-v10.dts     |   34 +
- arch/arm64/boot/dts/rockchip/rk3588.dtsi      |    6 +
- .../boot/dts/rockchip/rk3588s-pinctrl.dtsi    | 3403 +++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3588s.dtsi     |  501 +++
- drivers/clk/rockchip/Kconfig                  |    7 +
- drivers/clk/rockchip/Makefile                 |    1 +
- drivers/clk/rockchip/clk-cpu.c                |   69 +-
- drivers/clk/rockchip/clk-pll.c                |  287 +-
- drivers/clk/rockchip/clk-rk3588.c             | 2496 ++++++++++++
- drivers/clk/rockchip/clk.h                    |   65 +
- drivers/gpio/gpio-rockchip.c                  |    3 +-
- drivers/mmc/host/sdhci-of-dwcmshc.c           |  187 +-
- drivers/pinctrl/pinctrl-rockchip.c            |  468 ++-
- drivers/pinctrl/pinctrl-rockchip.h            |  170 +-
- include/dt-bindings/clock/rk3588-cru.h        | 1492 ++++++++
- 22 files changed, 9148 insertions(+), 115 deletions(-)
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ .../bindings/clock/rockchip,rk3588-cru.yaml   | 63 +++++++++++++++++++
+ 1 file changed, 63 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-pinctrl.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s.dtsi
- create mode 100644 drivers/clk/rockchip/clk-rk3588.c
- create mode 100644 include/dt-bindings/clock/rk3588-cru.h
 
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml
+new file mode 100644
+index 000000000000..dec2ae8c7970
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml
+@@ -0,0 +1,63 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/clock/rockchip,rk3588-cru.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: ROCKCHIP rk3588 Family Clock Control Module Binding
++
++maintainers:
++  - Elaine Zhang <zhangqing@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++description: |
++  The RK3588 clock controller generates the clock and also implements a
++  reset controller for SoC peripherals.
++  (examples: provide SCLK_UART2\PCLK_UART2 and SRST_P_UART2\SRST_S_UART2 for UART module)
++  Each clock is assigned an identifier and client nodes can use this identifier
++  to specify the clock which they consume. All available clocks are defined as
++  preprocessor macros in the dt-bindings/clock/rk3588-cru.h headers and can be
++  used in device tree sources.
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3588-cru
++
++  reg:
++    maxItems: 1
++
++  "#clock-cells":
++    const: 1
++
++  "#reset-cells":
++    const: 1
++
++  clocks: true
++
++  assigned-clocks:
++    minItems: 1
++
++  assigned-clock-parents:
++    minItems: 1
++
++  assigned-clock-rates:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - "#clock-cells"
++  - "#reset-cells"
++
++additionalProperties: false
++
++examples:
++  # Clock Control Module node:
++  - |
++    cru: clock-controller@fd7c0000 {
++      compatible = "rockchip,rk3588-cru";
++      reg = <0xfd7c0000 0x5c000>;
++      #clock-cells = <1>;
++      #reset-cells = <1>;
++    };
 -- 
 2.35.1
 
