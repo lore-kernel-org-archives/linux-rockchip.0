@@ -4,56 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17701C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Apr 2022 07:50:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA2E5C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 Apr 2022 10:36:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JyHEaBtGcehC14hP+c83dqFH1nnDUINb2Ix7xOc1YjQ=; b=y5hinYddZ/Tm3N
-	Wiapyx0vOPUxhbhS2qMJrGmdF6CNeeHhWo0Kt3kJ6kW/5AkS7aZSoKnEZa53FoKbfxlZYkSg1mshZ
-	HshtafKkV87ZBCKNuoHLqiBUKEsaHF53ZsSCxFuc4eYqDIw1+vhZxjBzraWTI9eJfJxagZQ2Lwk8N
-	0LXL+UfQFmm3nAp8JUjcD6Omi6y7H0l5tW8OKb/7aF8fZHUncLULiMqkYhGow2Qv5OZKW4h/bIdgv
-	JIrNsHESrxNkwVO6LV3mGuG6+P4kdFXMk5Dl4Kpu4PevCdrEnBnUeVPu3c+Vmj80FPrfXkpcr7fdl
-	F4Lg/XAsLWMJUNsZ3ncQ==;
+	List-Owner; bh=BMsAtaRsR5knhjhhvfVeXxvTAqVWMdSeC2MJuE+5u3g=; b=CIWFYKjfrQPVeW
+	oolEozj4tYyRJxOkfMskTDaVTYizF1VSxFhGqSYCaGlXAiwPtWw/uEgO1g1Xo1f2hwLy64nYF8IG3
+	c7yNRN+efYRg9wzHx9FBivDIrewyY7Vqz0vMGelnjfRA7cYZGCaTcGsba7OK8SZeSgJziTflrQE+e
+	s7QQwT1NStqUSDQZ4LOiV+JtZI4MXX7VOuRGHDBOV0wIi7UT4nptlVd2PDEJDP3DvGYqioSQej3RT
+	w0Ihgk9AYnwfMTeapuoXYxpoqKEc7rcS1lw20SEzRs+1CByUdb4tc5BZSxKZmEZre0NNdvwd1HGON
+	HItaZgzvVSL3urhp53lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nho3O-00GzHb-BD; Fri, 22 Apr 2022 07:50:10 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nhqdv-0002dI-1O; Fri, 22 Apr 2022 10:36:03 +0000
+Received: from new3-smtp.messagingengine.com ([66.111.4.229])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nho2l-00Gyy2-Hv
- for linux-rockchip@lists.infradead.org; Fri, 22 Apr 2022 07:49:37 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id D89BAB829DC;
- Fri, 22 Apr 2022 07:49:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C121CC385A0;
- Fri, 22 Apr 2022 07:49:26 +0000 (UTC)
-Message-ID: <dee64492-079a-3c72-09f2-a3b1d1a66843@xs4all.nl>
-Date: Fri, 22 Apr 2022 09:49:25 +0200
+ id 1nhqdi-0002ZP-Hw; Fri, 22 Apr 2022 10:35:52 +0000
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 34867580055;
+ Fri, 22 Apr 2022 06:35:44 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+ by compute3.internal (MEProxy); Fri, 22 Apr 2022 06:35:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
+ :cc:content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm3; t=1650623744; x=
+ 1650630944; bh=sialgZLQyO92Jzz731mhx4P39e8kWtOeqoXhw0cCtXY=; b=W
+ xTSy59TGhUVrDTR5ZZ9AihUZQI4ztc0COij2niyKHFseYaXY1k1iijFElgMlbzjj
+ IgW79/RwLv6Fp4X6u1RNldYGUTYXAc3mckrXYDpkxLD8Z0+bSam6DaOQn6RH8JJV
+ Qurrb/7pXjRhV6hrBlyosxRCFXsVsKBzWSBUFBCKC76wZdJrkGNy/PnPSeGc6ESL
+ uS9PQ4Df7oGGULaYujEqbEX0gkpBXi38nCiC253MjtXIcEU+DlXgHhcSk5SLyWR8
+ DMCfpqY0+5d3saPZJOXn8wIeAiyRKjBJE3kBwqEP2fTi0gJ5AUl4LXi/x+9R7+KU
+ HwyrBchREXwkM8JuhkQ5w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:from:from:in-reply-to:in-reply-to
+ :message-id:mime-version:references:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm1; t=1650623744; x=1650630944; bh=sialgZLQyO92J
+ zz731mhx4P39e8kWtOeqoXhw0cCtXY=; b=xCGQhbzjwFiulmF6LlwEI2cPB3bBF
+ 0ZqiYsKEqcIu5ZJxYH0mF7KEYuIof1NLNHoW4TtCBHWDqwK+z2RZi+HgbfH1FOpb
+ 5nEg/us+9DLek/Br6MvB1IWNoskzsjdYAysFTHU1OckKOZaOQbqHZyDf//HLon6T
+ d7mcQhAcY1FFLvkEiygt802ZKh7zDfaBMBxNldjoO4kRqUQb6whLZwd8ZmEBlIhp
+ ctpWULiSYUe0CMhkaloAbV6hB/Gu4jw3+6LjXHWnZntyvDNrP/WiB1ZJOf9x6Xwc
+ 3WHrccx3rtfbAlPOI3TziqtZIPUOpSkUOAhqS5u+rspah0ghgnBo8a+Ew==
+X-ME-Sender: <xms:_oRiYlIPkSce9J_iB2dx7YVzLXKxS60W4-Vyw3zmLO4U1aLiaFmmbg>
+ <xme:_oRiYhJOFbCsPLyYHVGGL4uD5HM-gey6IrG0BNy0SHfJOB4Q2dzZGy0EfuD4xixYV
+ 3YhQ9CUuNJWy7-W19Q>
+X-ME-Received: <xmr:_oRiYtvBLqnHwVb37WFesVwZ0PMShNb6BvWXvV8Vm7Y4HetLslo-SvwCRTZi3P3Uu5oZYU4g5GlpHVUV0fb323r_rgqp4WPTvpHVZpo>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrtdeggddvkecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpefhvfevufffkffojghfgggtgfesthekredtredtjeenucfhrhhomhepofgrgihi
+ mhgvucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrg
+ htthgvrhhnpeeuieeggffhffffieefheduieeuvdetgeeufeffvefgtedvffehheekffev
+ udefieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpe
+ hmrgigihhmvgestggvrhhnohdrthgvtghh
+X-ME-Proxy: <xmx:_oRiYma42u8bFsyuaEoHigJkGAD8rHqS6b6IrkpHQB1N2nS1P6TckQ>
+ <xmx:_oRiYsbrF1C3QRv8Y5kK58OXIM5reFvVFe9fVe3wBCRWdmYHf-Yu9g>
+ <xmx:_oRiYqDjcSeHlAIkkqXF6PNc-gW-JT9Geogu1FY8mL5VO4njDgDJWQ>
+ <xmx:AIViYlRpbFTOma7kkn3FGWD0v6WQLAHvvXHX_xxmOtMZ2RMdHubTSg>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 22 Apr 2022 06:35:42 -0400 (EDT)
+From: Maxime Ripard <maxime@cerno.tech>
+To: =?UTF-8?q?Jos=C3=A9=20Exp=C3=B3sito?= <jose.exposito89@gmail.com>,
+ inki.dae@samsung.com
+Cc: Maxime Ripard <maxime@cerno.tech>, daniel@ffwll.ch,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ laurent.pinchart@ideasonboard.com, linux-arm-kernel@lists.infradead.org,
+ alain.volmat@foss.st.com, lgirdwood@gmail.com, broonie@kernel.org,
+ samuel@sholland.org, linux-samsung-soc@vger.kernel.org,
+ p.zabel@pengutronix.de, airlied@linux.ie, kyungmin.park@samsung.com,
+ mripard@kernel.org, jernej.skrabec@gmail.com, jy0922.shim@samsung.com,
+ alim.akhtar@samsung.com, krzk@kernel.org, heiko@sntech.de,
+ linux-sunxi@lists.linux.dev, hjc@rock-chips.com, wens@csie.org,
+ dri-devel@lists.freedesktop.org, sw0312.kim@samsung.com
+Subject: Re: (subset) [PATCH 5/5] drm/sun4i: hdmi: Replace
+ drm_detect_hdmi_monitor() with is_hdmi
+Date: Fri, 22 Apr 2022 12:35:38 +0200
+Message-Id: <165062373584.1462930.6032469942386231983.b4-ty@cerno.tech>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220421170725.903361-6-jose.exposito89@gmail.com>
+References: <20220421170725.903361-1-jose.exposito89@gmail.com>
+ <20220421170725.903361-6-jose.exposito89@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v3 23/24] media: hantro: Add H.264 field decoding support
-Content-Language: en-US
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org,
- Jonas Karlman <jonas@kwiboo.se>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev
-References: <20220405204426.259074-1-nicolas.dufresne@collabora.com>
- <20220405204426.259074-24-nicolas.dufresne@collabora.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <20220405204426.259074-24-nicolas.dufresne@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220422_004931_957406_D346576B 
-X-CRM114-Status: GOOD (  35.64  )
+X-CRM114-CacheID: sfid-20220422_033551_505352_E4BB44FF 
+X-CRM114-Status: UNSURE (   6.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,228 +108,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 05/04/2022 22:44, Nicolas Dufresne wrote:
-> This adds the required code to support field decoding. While most of
-> the code is derived from Rockchip and VSI reference code, the
-> reduction of the reference list to 16 entries was found by
-> trial and errors. The list consists of all the references with the
-> opposite field parity.
-> 
-> The strategy is to deduplicate the reference picture that points
-> to the same storage (same index). The choice of opposite parity has
-> been made to keep the other field of the current field pair in the
-> list. This method may not be robust if a field was lost.
-
-Should this 'not robust if field is lost' be mentioned in a comment with
-the code?
-
-> 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> ---
->  drivers/staging/media/hantro/hantro_h264.c | 107 ++++++++++++++++++---
->  drivers/staging/media/hantro/hantro_hw.h   |   1 +
->  2 files changed, 94 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/staging/media/hantro/hantro_h264.c b/drivers/staging/media/hantro/hantro_h264.c
-> index 7377fc26f780..f6fc939aa726 100644
-> --- a/drivers/staging/media/hantro/hantro_h264.c
-> +++ b/drivers/staging/media/hantro/hantro_h264.c
-> @@ -22,6 +22,11 @@
->  #define POC_BUFFER_SIZE			34
->  #define SCALING_LIST_SIZE		(6 * 16 + 2 * 64)
->  
-> +/* For valid and long term reference marking, index are reversed, so bit 31
-
-Keep /* on a line by its own.
-
-> + * indicates the status of the picture 0.
-> + */
-> +#define REF_BIT(i)			BIT(32 - 1 - (i))
-> +
->  /* Data structure describing auxiliary buffer format. */
->  struct hantro_h264_dec_priv_tbl {
->  	u32 cabac_table[CABAC_INIT_BUFFER_SIZE];
-> @@ -227,6 +232,7 @@ static void prepare_table(struct hantro_ctx *ctx)
->  {
->  	const struct hantro_h264_dec_ctrls *ctrls = &ctx->h264_dec.ctrls;
->  	const struct v4l2_ctrl_h264_decode_params *dec_param = ctrls->decode;
-> +	const struct v4l2_ctrl_h264_sps *sps = ctrls->sps;
->  	struct hantro_h264_dec_priv_tbl *tbl = ctx->h264_dec.priv.cpu;
->  	const struct v4l2_h264_dpb_entry *dpb = ctx->h264_dec.dpb;
->  	u32 dpb_longterm = 0;
-> @@ -237,20 +243,45 @@ static void prepare_table(struct hantro_ctx *ctx)
->  		tbl->poc[i * 2] = dpb[i].top_field_order_cnt;
->  		tbl->poc[i * 2 + 1] = dpb[i].bottom_field_order_cnt;
->  
-> +		if (!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_VALID))
-> +			continue;
-> +
->  		/*
->  		 * Set up bit maps of valid and long term DPBs.
-> -		 * NOTE: The bits are reversed, i.e. MSb is DPB 0.
-> +		 * NOTE: The bits are reversed, i.e. MSb is DPB 0. For frame
-> +		 * decoding, bit 31 to 15 are used, while for field decoding,
-> +		 * all bits are used, with bit 31 being a top field, 30 a bottom
-> +		 * field and so on.
->  		 */
-> -		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)
-> -			dpb_valid |= BIT(HANTRO_H264_DPB_SIZE - 1 - i);
-> -		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
-> -			dpb_longterm |= BIT(HANTRO_H264_DPB_SIZE - 1 - i);
-> +		if (dec_param->flags & V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC) {
-> +			if (dpb[i].fields & V4L2_H264_TOP_FIELD_REF)
-> +				dpb_valid |= REF_BIT(i * 2);
-> +
-> +			if (dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF)
-> +				dpb_valid |= REF_BIT(i * 2 + 1);
-> +
-> +			if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM) {
-> +				dpb_longterm |= REF_BIT(i * 2);
-> +				dpb_longterm |= REF_BIT(i * 2 + 1);
-> +			}
-> +		} else {
-> +			dpb_valid |= REF_BIT(i);
-> +
-> +			if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
-> +				dpb_longterm |= REF_BIT(i);
-> +		}
-> +	}
-> +	ctx->h264_dec.dpb_valid = dpb_valid;
-> +	ctx->h264_dec.dpb_longterm = dpb_longterm;
-> +
-> +	if ((dec_param->flags & V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC) ||
-> +	    !(sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD)) {
-> +		tbl->poc[32] = ctx->h264_dec.cur_poc;
-> +		tbl->poc[33] = 0;
-> +	} else {
-> +		tbl->poc[32] = dec_param->top_field_order_cnt;
-> +		tbl->poc[33] = dec_param->bottom_field_order_cnt;
->  	}
-> -	ctx->h264_dec.dpb_valid = dpb_valid << 16;
-> -	ctx->h264_dec.dpb_longterm = dpb_longterm << 16;
-> -
-> -	tbl->poc[32] = dec_param->top_field_order_cnt;
-> -	tbl->poc[33] = dec_param->bottom_field_order_cnt;
->  
->  	assemble_scaling_list(ctx);
->  }
-> @@ -326,6 +357,8 @@ dma_addr_t hantro_h264_get_ref_buf(struct hantro_ctx *ctx,
->  {
->  	struct v4l2_h264_dpb_entry *dpb = ctx->h264_dec.dpb;
->  	dma_addr_t dma_addr = 0;
-> +	s32 cur_poc = ctx->h264_dec.cur_poc;
-> +	u32 flags;
->  
->  	if (dpb[dpb_idx].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)
->  		dma_addr = hantro_get_ref(ctx, dpb[dpb_idx].reference_ts);
-> @@ -343,7 +376,12 @@ dma_addr_t hantro_h264_get_ref_buf(struct hantro_ctx *ctx,
->  		dma_addr = hantro_get_dec_buf_addr(ctx, buf);
->  	}
->  
-> -	return dma_addr;
-> +	flags = dpb[dpb_idx].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD ? 0x2 : 0;
-> +	flags |= abs(dpb[dpb_idx].top_field_order_cnt - cur_poc) <
-> +		 abs(dpb[dpb_idx].bottom_field_order_cnt - cur_poc) ?
-> +		 0x1 : 0;
-> +
-> +	return dma_addr | flags;
->  }
->  
->  u16 hantro_h264_get_ref_nbr(struct hantro_ctx *ctx, unsigned int dpb_idx)
-> @@ -355,6 +393,34 @@ u16 hantro_h264_get_ref_nbr(struct hantro_ctx *ctx, unsigned int dpb_idx)
->  	return dpb->frame_num;
->  }
->  
-> +static void deduplicate_reflist(struct v4l2_h264_reflist_builder *b,
-> +				struct v4l2_h264_reference *reflist)
-> +{
-> +	int write_idx = 0;
-> +	int i;
-> +
-> +	if (b->cur_pic_fields == V4L2_H264_FRAME_REF) {
-> +		write_idx = b->num_valid;
-> +		goto done;
-> +	}
-> +
-> +	for (i = 0; i < b->num_valid; i++) {
-> +		if (!(b->cur_pic_fields == reflist[i].fields)) {
-> +			reflist[write_idx++] = reflist[i];
-> +			continue;
-> +		}
-> +	}
-> +
-> +done:
-> +	/* Should not happen unless we have a bug in the reflist builder. */
-> +	if (WARN_ON(write_idx > 16))
-> +		write_idx = 16;
-> +
-> +	/* Clear the remaining, some streams fails otherwise */
-> +	for (; write_idx < 16; write_idx++)
-> +		reflist[write_idx].index = 15;
-> +}
-> +
->  int hantro_h264_dec_prepare_run(struct hantro_ctx *ctx)
->  {
->  	struct hantro_h264_dec_hw_ctx *h264_ctx = &ctx->h264_dec;
-> @@ -386,15 +452,28 @@ int hantro_h264_dec_prepare_run(struct hantro_ctx *ctx)
->  	/* Update the DPB with new refs. */
->  	update_dpb(ctx);
->  
-> -	/* Prepare data in memory. */
-> -	prepare_table(ctx);
-> -
->  	/* Build the P/B{0,1} ref lists. */
->  	v4l2_h264_init_reflist_builder(&reflist_builder, ctrls->decode,
->  				       ctrls->sps, ctx->h264_dec.dpb);
-> +	h264_ctx->cur_poc = reflist_builder.cur_pic_order_count;
-> +
-> +	/* Prepare data in memory. */
-> +	prepare_table(ctx);
-> +
->  	v4l2_h264_build_p_ref_list(&reflist_builder, h264_ctx->reflists.p);
->  	v4l2_h264_build_b_ref_lists(&reflist_builder, h264_ctx->reflists.b0,
->  				    h264_ctx->reflists.b1);
-> +
-> +	/* Reduce ref lists to at most 16 entries, Hantro hardware will deduce
-
-/* on a line by its own.
-
-> +	 * the actual picture lists in field through the dpb_valid,
-> +	 * dpb_longterm bitmap along with the current frame parity.
-> +	 */
-> +	if (reflist_builder.cur_pic_fields != V4L2_H264_FRAME_REF) {
-> +		deduplicate_reflist(&reflist_builder, h264_ctx->reflists.p);
-> +		deduplicate_reflist(&reflist_builder, h264_ctx->reflists.b0);
-> +		deduplicate_reflist(&reflist_builder, h264_ctx->reflists.b1);
-> +	}
-> +
->  	return 0;
->  }
->  
-> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-> index 292aaaabaf24..fd869369fb97 100644
-> --- a/drivers/staging/media/hantro/hantro_hw.h
-> +++ b/drivers/staging/media/hantro/hantro_hw.h
-> @@ -91,6 +91,7 @@ struct hantro_h264_dec_hw_ctx {
->  	struct hantro_h264_dec_ctrls ctrls;
->  	u32 dpb_longterm;
->  	u32 dpb_valid;
-> +	s32 cur_poc;
->  };
->  
->  /**
-
-Regards,
-
-	Hans
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCAyMSBBcHIgMjAyMiAxOTowNzoyNSArMDIwMCwgSm9zw6kgRXhww7NzaXRvIHdyb3Rl
+Ogo+IE9uY2UgRURJRCBpcyBwYXJzZWQsIHRoZSBtb25pdG9yIEhETUkgc3VwcG9ydCBpbmZvcm1h
+dGlvbiBpcyBhdmFpbGFibGUKPiB0aHJvdWdoIGRybV9kaXNwbGF5X2luZm8uaXNfaGRtaS4KPiAK
+PiBUaGlzIGRyaXZlciBjYWxscyBkcm1fZGV0ZWN0X2hkbWlfbW9uaXRvcigpIHRvIHJlY2VpdmUg
+dGhlIHNhbWUKPiBpbmZvcm1hdGlvbiBhbmQgc3RvcmVzIGl0cyBvd24gY2FjaGVkIHZhbHVlLCB3
+aGljaCBpcyBsZXNzIGVmZmljaWVudC4KPiAKPiBBdm9pZCBjYWxsaW5nIGRybV9kZXRlY3RfaGRt
+aV9tb25pdG9yKCkgYW5kIHVzZSBkcm1fZGlzcGxheV9pbmZvLmlzX2hkbWkKPiBpbnN0ZWFkIGFu
+ZCBhbHNvIHJlbW92ZSBzdW40aV9oZG1pLmhkbWlfbW9uaXRvciBhcyBpdCBpcyBubyBsb25nZXIK
+PiBuZWNlc3NhcnkuCj4gCj4gWy4uLl0KCkFwcGxpZWQgdG8gZHJtL2RybS1taXNjIChkcm0tbWlz
+Yy1uZXh0KS4KClRoYW5rcyEKTWF4aW1lCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
