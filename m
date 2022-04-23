@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9110C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Apr 2022 10:04:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3664DC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Apr 2022 10:08:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l4yZ6ay1JicGAHNRDKGP3p9LqCGmfdhHv2osC4jbRSw=; b=qlD1yQMOxzl7P3
-	swpNJfDphW/HZh8G6tJDIZAsJw2tFpD4UnEo6clGwUwExOgdQvKK2iUee48oO4g7nwriM4xeepEQI
-	AWq2p/jC4gSKeSIxnN7pINTUnHZbD9WdCq8IsSfx9CfJQV9JcZRCyuQFBo99ck+YhO7kdCEL0Hfby
-	cQGvcoHLeOigsq5RL6dwmLZ6iGS2RK/d2O/6lp2FQddQT7zAGdOScjVNV1xdQdSCW3K9LQr9+GWyS
-	6zY/4xNU5MGZs4Tkl0zbiLhFVZgtCCTMjUZrWWPHs4/IS62yz4I7YDGgg1Bx17lM+t4IbaBM0OmMO
-	oTRJ7uNubmf+CpCsQzow==;
+	List-Owner; bh=7TEkSc/Ze9MZSV1MYzNGJsvurDsPtgQThM7mNy2fZf0=; b=BO3cHM6orMjZTV
+	ZyJxvoDg559IGRpTHxPrYkwAd8X+W3mfcS2lMdDsbnqN26QLGraKXrjkdBctXvn5mhq9RHCSCTZGN
+	dNat3Juyv1PmZu9cxsverUuk9PgdFImxFYQlVktuS+KbTFz1hkYa+g1vikCUOmlGW7A5f4s4cssob
+	vMz8S5df7fVbVvwVwSGSGoOh07nEM/plnFE/Mke0GZYGfItpoGE+RpVQ/43HDcXdvqMphWkNSK5gX
+	4BdCakaa90N25M03ZwqQrfhrvBVzdeyYBrTIu9rPHVcQqGniwFeUZuOLuFppHccI4eMWmLkWFCPFi
+	OPHgSSCGTfJGSqsytXnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1niCcR-0040vi-Rg; Sat, 23 Apr 2022 10:03:59 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1niCgP-0042Lt-4m; Sat, 23 Apr 2022 10:08:05 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1niCcL-0040qL-77
- for linux-rockchip@lists.infradead.org; Sat, 23 Apr 2022 10:03:58 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id k23so20738405ejd.3
- for <linux-rockchip@lists.infradead.org>; Sat, 23 Apr 2022 03:03:48 -0700 (PDT)
+ id 1niCg1-0042CM-V8
+ for linux-rockchip@lists.infradead.org; Sat, 23 Apr 2022 10:07:44 +0000
+Received: by mail-ed1-x533.google.com with SMTP id t25so13149555edt.9
+ for <linux-rockchip@lists.infradead.org>; Sat, 23 Apr 2022 03:07:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=0Icd0QAbAtveEL91sUdo5gIKdYCb50RUGDVuACnzMBA=;
- b=y0U6kKeTSJrRSx3RwWcQ0eQL1CpI9mjhmBG/0ir83Tb/3Sauck6I4DwtmPT3GdkTEM
- TEff/fbyESPUovuRvnrVa21nS49D6kctnFlvdJtJ/UA+aLOez9oCL7OQCK4jKpCmSQj3
- v6qTIkhxDTPoWAXQUOxfzHkr6Kj6vVHIMZYE7404AUgjroqkDNZhtwGmp06SGYIEVp0a
- Nj37KgaVzGivlCYYk3c8mq0mdDvBxGMKordQJoxkFliqPA2+TVFfPxmzf0AfcPOY8b3R
- edjDlnq0ZusqEQfdvu9VCC0Zbx7uoTPRUEKJQ3xKbOypA6S02LhE2Na9Z66E0Aibb8Ta
- 1Otg==
+ bh=fg4f1I3ghx0/KVyE5VZCYPv9D9SX7g8jd1zZokiQ29A=;
+ b=uSBMpS/AKQcMFs2W4M1dofXhfEhs3MYXdjs3RAb+3mi/UsnNu/k3utDpyE38B2euWP
+ 1uIFkxNvv0Iu6dkaoCw0vAEVT1haxPoLhjrOb8p6HV6NEEpSmSRnMfe95NecMS+kR5Ig
+ eKVZ6Y8eubZt5o95ybwH442YWPy/fD5WyzeGlBeR76ivgM7LJaUomaJ2CKpShDHz+iB4
+ 2ZLDefsrnklOZS1BqwhIzunq8dQ99Fm8iAqW7wyPd3QbJ/0bqbw1LMorZsy4HigGEXW8
+ TMSlRS/D7EnXd55cIJxJKc6I009HsW9iK4zTh/PvkelqtoVQhf+YhI0CYKKpxXD1+lWC
+ 8fow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=0Icd0QAbAtveEL91sUdo5gIKdYCb50RUGDVuACnzMBA=;
- b=2WLefEUnKigKtrbdUmYi3tGEJwr1MLrukjwDkFHz58eUmZoNMOM86ylltEbdUH7CW9
- tcimSkLnejXmsB77EsJqvkctkbszCHY9JjbvBXYSru0BzUTa1a3yT6CiAXGoeltu8Dg5
- /Xq/ZpRLuSZbilWjdlGNJsewxt6sBd4WLfHrfFXsTXpvXr8FVP2g64lvzwCbpKho3ip8
- gzmjV7k5SUMNH9MGSVnzqLQL0UQ3USuRemc0NtTSGT1yyemtsas+UWKIYARZ9F8o53zA
- geSRDI5vxySZ5AF37/wS/Vwv+4BMoQGBxO3UCKoOSf71zkpIfo669RvnrORnbWr+vpdu
- Y8nw==
-X-Gm-Message-State: AOAM5325Pcpqcwj4BUOJQxvQtzrKAfnq3RlpZZdrY0I+BIl1/lWFF+fh
- AH0xlBISSlGAvVer0DRUof47aA==
-X-Google-Smtp-Source: ABdhPJwwvzUM3czsC7y+DnJmlUATBP02rRRtHr6o+QLgSRIt2B1L09BhY9Em2/0XG1XFFaH+X/rp5A==
-X-Received: by 2002:a17:907:168a:b0:6da:9177:9fdd with SMTP id
- hc10-20020a170907168a00b006da91779fddmr7833441ejc.757.1650708227007; 
- Sat, 23 Apr 2022 03:03:47 -0700 (PDT)
+ bh=fg4f1I3ghx0/KVyE5VZCYPv9D9SX7g8jd1zZokiQ29A=;
+ b=wIw6pISONe0PhruSkH6S03EvWB44NCFMtd6rU2lshVVg640ZqmyDL31DPBhrw8n29D
+ BTaA7F4qOdG71mX3FQGnjsa8gP9eCFEb6ZhQ+wa2CB37SXAhre8sLgMdhQn55YkiX7yX
+ LV1ONSOpmP4yZWPNBDHs2Xnosy3JUqzSrFGUsJPuqOc3sB7d9t3PwCE7Q8pg/8WOki03
+ gdJS72l++o9FUtU6DgBuC/Q2syBkOFKSABdfTtaaCz9kF2WhoBJNTZpaHPn2ysl7Mag2
+ AZiXtiujSHyc3rd5UndIXAFE6H/mGk/LVM+3rEQsJ3idKrvfaAa7YnkXZEIesKWBwwR+
+ TQ5Q==
+X-Gm-Message-State: AOAM530uwPwR67jsjfYXTXeN/2AmBX8uvG/iKLYedY7opkOwQNSEX7MT
+ ZIjeoh0J7P6431cb15/MocYNcQ==
+X-Google-Smtp-Source: ABdhPJyKnnAzcHVAg01zAFGOji92P8ff6zdAF/h+x/p/Sln8gc+Fxos95ajNoWv34ODIv1qu01zEwg==
+X-Received: by 2002:a05:6402:2318:b0:413:7645:fa51 with SMTP id
+ l24-20020a056402231800b004137645fa51mr9539154eda.201.1650708457556; 
+ Sat, 23 Apr 2022 03:07:37 -0700 (PDT)
 Received: from [192.168.0.234] (xdsl-188-155-176-92.adslplus.ch.
  [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- g3-20020a1709063b0300b006e8872f6585sm1564265ejf.175.2022.04.23.03.03.45
+ kw5-20020a170907770500b006db075e5358sm1549268ejc.66.2022.04.23.03.07.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 23 Apr 2022 03:03:46 -0700 (PDT)
-Message-ID: <2e2f5a33-0286-7a89-3842-10d8cd3fdc65@linaro.org>
-Date: Sat, 23 Apr 2022 12:03:45 +0200
+ Sat, 23 Apr 2022 03:07:37 -0700 (PDT)
+Message-ID: <bb988637-ecdd-008b-8a28-80d5c94cfd8d@linaro.org>
+Date: Sat, 23 Apr 2022 12:07:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCHv1 16/19] dt-bindings: soc: rockchip: add initial rk3588
- syscon compatibles
+Subject: Re: [PATCHv1 18/19] arm64: dts: rockchip: Add base DT for rk3588 SoC
 Content-Language: en-US
 To: Sebastian Reichel <sebastian.reichel@collabora.com>,
  Heiko Stuebner <heiko@sntech.de>
@@ -80,15 +79,17 @@ Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
  linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, kernel@lists.collabora.co.uk,
- kernel@collabora.com
+ Kever Yang <kever.yang@rock-chips.com>, kernel@collabora.com,
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ Sugar Zhang <sugar.zhang@rock-chips.com>
 References: <20220422170920.401914-1-sebastian.reichel@collabora.com>
- <20220422170920.401914-17-sebastian.reichel@collabora.com>
+ <20220422170920.401914-19-sebastian.reichel@collabora.com>
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220422170920.401914-17-sebastian.reichel@collabora.com>
+In-Reply-To: <20220422170920.401914-19-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220423_030353_359167_1D005740 
-X-CRM114-Status: UNSURE (   6.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220423_030742_034630_C84E60EE 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,12 +108,182 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 22/04/2022 19:09, Sebastian Reichel wrote:
-> Add IOC and PHP GRF syscon compatibles for RK3588.
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
 
-You don't need to adjust anything in allOf:if:then: parts?
+Thank you for your patch. There is something to discuss/improve.
+
+> +
+> +	clocks {
+> +		compatible = "simple-bus";
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+
+There are no children with unit addresses... this should not be a simple
+bus.
+
+> +
+> +		spll: spll {
+
+Generic node names please, so either "clock-0" or "spll-clock" etc.
+
+> +			compatible = "fixed-clock";
+> +			#clock-cells = <0>;
+> +			clock-frequency = <702000000>;
+> +			clock-output-names = "spll";
+> +		};
+> +
+> +		xin24m: xin24m {
+> +			compatible = "fixed-clock";
+> +			#clock-cells = <0>;
+> +			clock-frequency = <24000000>;
+> +			clock-output-names = "xin24m";
+> +		};
+> +
+> +		xin32k: xin32k {
+> +			compatible = "fixed-clock";
+> +			#clock-cells = <0>;
+> +			clock-frequency = <32768>;
+> +			clock-output-names = "xin32k";
+> +		};
+> +	};
+> +
+> +	cpus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		cpu-map {
+> +			cluster0 {
+> +				core0 {
+> +					cpu = <&cpu_l0>;
+> +				};
+> +			};
+> +		};
+> +
+> +		cpu_l0: cpu@0 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a55";
+> +			reg = <0x0>;
+> +			enable-method = "psci";
+> +			capacity-dmips-mhz = <530>;
+> +			clocks = <&scmi_clk SCMI_CLK_CPUL>;
+> +			i-cache-size = <32768>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <128>;
+> +			d-cache-size = <32768>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <128>;
+> +			next-level-cache = <&l2_cache_l0>;
+> +			#cooling-cells = <2>;
+> +			dynamic-power-coefficient = <228>;
+> +		};
+> +
+> +		l2_cache_l0: l2-cache-l0 {
+> +			compatible = "cache";
+> +			cache-size = <131072>;
+> +			cache-line-size = <64>;
+> +			cache-sets = <512>;
+> +			next-level-cache = <&l3_cache>;
+> +		};
+> +
+> +		l3_cache: l3-cache {
+> +			compatible = "cache";
+> +			cache-size = <3145728>;
+> +			cache-line-size = <64>;
+> +			cache-sets = <4096>;
+> +		};
+> +	};
+> +
+> +	arm-pmu {
+
+Generic node name, so just "pmu" unless there is goign to be a another
+PMU node?
+
+> +		compatible = "arm,armv8-pmuv3";
+> +		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-affinity = <&cpu_l0>;
+> +	};
+> +
+> +	firmware {
+> +		optee: optee {
+> +			compatible = "linaro,optee-tz";
+> +			method = "smc";
+> +		};
+> +
+> +		scmi: scmi {
+> +			compatible = "arm,scmi-smc";
+> +			shmem = <&scmi_shmem>;
+> +			arm,smc-id = <0x82000010>;
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			scmi_clk: protocol@14 {
+> +				reg = <0x14>;
+> +				#clock-cells = <1>;
+> +
+> +				assigned-clocks = <&scmi_clk SCMI_SPLL>;
+> +				assigned-clock-rates = <700000000>;
+> +			};
+> +
+> +			scmi_reset: protocol@16 {
+> +				reg = <0x16>;
+> +				#reset-cells = <1>;
+> +			};
+> +		};
+> +
+> +		sdei: sdei {
+> +			compatible = "arm,sdei-1.0";
+> +			method = "smc";
+> +		};
+> +	};
+> +
+> +	psci {
+> +		compatible = "arm,psci-1.0";
+> +		method = "smc";
+> +	};
+> +
+> +	timer {
+> +		compatible = "arm,armv8-timer";
+> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+> +			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
+> +			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+> +	};
+> +
+> +	sram@10f000 {
+> +		compatible = "mmio-sram";
+> +		reg = <0x0 0x0010f000 0x0 0x100>;
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +		ranges = <0 0x0 0x0010f000 0x100>;
+> +
+> +		scmi_shmem: sram@0 {
+> +			compatible = "arm,scmi-shmem";
+> +			reg = <0x0 0x100>;
+> +		};
+> +	};
+> +
+> +	php_grf: syscon@fd5b0000 {
+> +		compatible = "rockchip,rk3588-php-grf", "syscon";
+> +		reg = <0x0 0xfd5b0000 0x0 0x1000>;
+> +	};
+> +
+> +	ioc: syscon@fd5f0000 {
+> +		compatible = "rockchip,rk3588-ioc", "syscon";
+> +		reg = <0x0 0xfd5f0000 0x0 0x10000>;
+> +	};
+> +
+> +	syssram: sram@fd600000 {
+> +		compatible = "mmio-sram";
+> +		reg = <0x0 0xfd600000 0x0 0x100000>;
+> +
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +		ranges = <0x0 0x0 0xfd600000 0x100000>;
+
+No children here, so why do you need it?
+
+> +	};
+> +
 
 Best regards,
 Krzysztof
