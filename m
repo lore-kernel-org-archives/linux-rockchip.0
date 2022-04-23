@@ -4,78 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 204D6C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Apr 2022 15:25:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B280C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Apr 2022 17:32:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Hkkv6L+97glSXUXC6M8vqacaL3xwi3PtRxES3zgmKjg=; b=hgKDhxku4ZKQYH
-	fElqD5bW6IEVvtt0MqzFPNh9QPJKETK26CbO75QU+s80rmxX+IvdT35/jfvyw1Kbe983YQqUNwQkt
-	YHWGbydM0Dop8EUK22aJxJ5yUfM9PZInIT2sxmuvOG53GL28dwTdd28Poa6Wt1Ilw3cSOfmXOlmzj
-	GU3Pg1sTj+OboD7eGqsh+862D55eTX7cAJEJS9D0UwwsIGDzMroWW9f0Br+ivtHNLDTZ4TbUB8+4O
-	ZlDSrF0g2oRIyRwOiLiD0sp4ReVTgW08JPPxTs1xE8q3qFwvfHU2Omsh5gzw/21JsKYXCMxPnX4yw
-	36iXSr76EmY7G9GH35sw==;
+	List-Owner; bh=yhbo1wDtKWx0hhDiXaeM5Ju3jBwDyEx0ltnpN51oByM=; b=jzXOkf6KeTEEC7
+	USXli1seVbwKJA5vhq2G1xLIXoyL60O3XYHYg5TKC6P89724/IrM1jV9utRV0ZyGJSiK2x3PB4N6D
+	KwDGi4LgDbwh8UUDZA6nqkED1ufPBTbdTz/U/RvudZo2O2wJCCUGF+WZz9zU6oYdaW6Lw7Pw9NHAt
+	fSXQzz55T/MhdCPEuuNfomshJaTn6Rh09vbDATjjRB0n1ICSs6eSsHDs4zWdeQEqbe7yvy68o+XpV
+	3VBFmoKkEpKBAMcerixYYH+wP9DtTRzQNgnxwfDUILQGLykpzNGoCrYUb7u6uNU7oeaMDokQOI0IS
+	jPs2L7UlIAERPUTilLaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1niHdb-004X2y-PV; Sat, 23 Apr 2022 15:25:31 +0000
-Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
+	id 1niJbw-004jyv-BX; Sat, 23 Apr 2022 17:31:56 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1niHcL-004WJZ-5z; Sat, 23 Apr 2022 15:24:15 +0000
-Received: by mail-qt1-x829.google.com with SMTP id f14so7569379qtq.1;
- Sat, 23 Apr 2022 08:24:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=DB27knfDqQc7OD0leI6JmLLgT8Ml329OWNhxU2Af7WI=;
- b=V8Ya5SEin/5zgbYymNln3A+hUT/anyCJ1fnyD17zBLO17TQ74WliCoBmaeGiCG4OXO
- 8F3JWIHBR5EvaNlpP62NmBJqNTvnC8ke21pI39iJRqZMdNqaoFVGLfsJXBGt0q1galOl
- 0FpPTXf4fCwgWjgx0vpmMBSREtgn4o4OFLwHKklq/eq43A1eF9MU8Ssh52jRbp3tPMbs
- KL0nLbjUuM/AzfqyVRtdAjGbeiTyQZKm6z6AUeZeV82wuw40IOGY0YM73AFQHJKamgua
- b45Z3yNhEtB7ObbJ+T1HpaT0UxBszaHaNhx+/iQC8/7EWVi7eFj/V7phkzF1j8ZfUkMA
- 0iJQ==
+ id 1niJbl-004jwY-LG
+ for linux-rockchip@lists.infradead.org; Sat, 23 Apr 2022 17:31:47 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id s18so22121151ejr.0
+ for <linux-rockchip@lists.infradead.org>; Sat, 23 Apr 2022 10:31:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language
+ :from:to:cc:references:in-reply-to:content-transfer-encoding;
+ bh=bKsmqXRYpqUwhmofQJ981p6h75uLhrlYANKDZeRH3Yw=;
+ b=AsyhZT5G7Rn1USmiBSUJqjC54KlsVFEdM+LUYDHVCYDWT2uMibekpBmYtuUoUApjvC
+ li+cxCy+MjPt4k5Ly6BP1nKgLPiYO92qskFvBmO/yu01Q9G6ftIaVnxSI1NJZITAr5SZ
+ RVmU6IQltV8QyJEf99e1IAw3H725Z4goBXgzN6F//2aTelMEMiC4hlyJ9b5+PRpt+rhq
+ hzHeDco0ztmw+YZQO/dST6kcgF+EMNWwq/5zp1DsdcD9h5zdr6ETU1d4hnygyqKBNVuU
+ wI1XEl9420F6q7aTcQLGUsmajZha053Y5YikkHxdDHh97bARDumge1nYnfW/hWHkBefk
+ 4bqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=DB27knfDqQc7OD0leI6JmLLgT8Ml329OWNhxU2Af7WI=;
- b=QYsRKE7wLOl0gc59FSGtrUxh/4hz8qJtbL1b9Z1OAl6vQsdoDv31uQQXA8ujFxLfNU
- szoMAPnvKKpAjefFUlNDL0+YKbosu8j3rlSghFygdtYE58ZcZa7jRJRhj8aFYy8TOhi7
- LH0Mu+EFxKmfTyNYw+ctgDWv5ghFJNSO96AkYWEd/K556oLu4VZjr2Z3wpb0aPRKUnXN
- aVSeKiNKSoURHbD0gSTkbmgbG9r9+QNvRM/JSfewVCwKlo4Dee4jh0MwZ6BjXUH+KQLu
- DMW54+H7WybyqUIPn1mu0V18qsQT+hwsJr5gDYYdupK5QN5yWk3g1UWWE5zkI5GPhM5u
- hXrg==
-X-Gm-Message-State: AOAM532W2SE3bNShbS77oNmqUyjeOgegVxaNoSJY0OWgLn+OjRL1dj8p
- THXo6xXxmLiJSPIUxQU89NQ=
-X-Google-Smtp-Source: ABdhPJybRjaMCkQ7fMxW5I3iMYatbJOQ+l0qY41y/qN0g1LtLCGvGnPRdyP5lvab9ohjC4EXH6prwA==
-X-Received: by 2002:ac8:4d51:0:b0:2f1:ec64:cf90 with SMTP id
- x17-20020ac84d51000000b002f1ec64cf90mr6789779qtv.53.1650727451831; 
- Sat, 23 Apr 2022 08:24:11 -0700 (PDT)
-Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
- by smtp.gmail.com with ESMTPSA id
- y6-20020a05622a004600b002f33ba280cbsm3184165qtw.8.2022.04.23.08.24.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 23 Apr 2022 08:24:11 -0700 (PDT)
-From: Peter Geis <pgwipeout@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>,
- Marc Zyngier <maz@kernel.org>, linux-pci@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v8 5/5] arm64: dts: rockchip: enable pcie controller on
- quartz64-a
-Date: Sat, 23 Apr 2022 11:24:03 -0400
-Message-Id: <20220423152403.1681222-6-pgwipeout@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220423152403.1681222-1-pgwipeout@gmail.com>
-References: <20220423152403.1681222-1-pgwipeout@gmail.com>
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:from:to:cc:references:in-reply-to
+ :content-transfer-encoding;
+ bh=bKsmqXRYpqUwhmofQJ981p6h75uLhrlYANKDZeRH3Yw=;
+ b=F44vW301V8SJI9bRa4ujf4h72rnIovaxIYu8uUYNsjxaIrUSanhuVE8UVj65NCMSxF
+ tZXEubdXlX4JnUoZPRt8/mtTWjY8vNlFcXJOv4FLttMpyJJ19WZ+D5aAGGWMaM87a8zF
+ LNVJlEwwryMN9SrC+iwbt2K9Xx4HYL0fL8YcxPcVqU65R/bE/FcwVoyoZhte2bpvAkjv
+ Lu3LFFm28FQfEpktNetP4CZJdnKg4pH09Nj0tWLf/jl1iF7IzbgGcMR6iwltUZq+mILn
+ T1AZJlcQX0Eapu2vITDm9sNgiMmeRqsCDLmJFgbabcQJNKEfEP+auF+LzmoGhjvmN/Y8
+ SvDQ==
+X-Gm-Message-State: AOAM532+mXVylQ9tRJS0T7mG0Zh+9Q363Od2UlO57XMZL3Mu5v2/s+kZ
+ O/TttH2huvV0eRZT2J6Q5Y17LQ==
+X-Google-Smtp-Source: ABdhPJxUIwgdy6uOQIKxuP9OG0OknA6P6MQwfXJgUv6/3CSZgK3CreXhlN5R95v7e9nLbVweqm/4xA==
+X-Received: by 2002:a17:906:6a0f:b0:6f0:1d08:3640 with SMTP id
+ qw15-20020a1709066a0f00b006f01d083640mr9294977ejc.264.1650735103121; 
+ Sat, 23 Apr 2022 10:31:43 -0700 (PDT)
+Received: from [192.168.0.234] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ r16-20020a056402019000b00418ed60c332sm2422395edv.65.2022.04.23.10.31.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 23 Apr 2022 10:31:42 -0700 (PDT)
+Message-ID: <34819690-5cb7-bbce-a2f5-3f6e66661049@linaro.org>
+Date: Sat, 23 Apr 2022 19:31:40 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH 1/3] media: dt-bindings: media: rockchip-vdec: Add RK3328
+ compatible
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Christopher Obbard <chris.obbard@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Johan Jonker <jbx6244@gmail.com>, Alex Bee <knaerzche@gmail.com>,
+ Elaine Zhang <zhangqing@rock-chips.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20220422133803.989256-1-chris.obbard@collabora.com>
+ <20220422133803.989256-2-chris.obbard@collabora.com>
+ <ff87d5cb-b0d4-95a2-90b0-7827a2a34d05@linaro.org>
+In-Reply-To: <ff87d5cb-b0d4-95a2-90b0-7827a2a34d05@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220423_082413_281808_8F96ABEA 
-X-CRM114-Status: GOOD (  10.07  )
+X-CRM114-CacheID: sfid-20220423_103145_721766_5EFDDF33 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,83 +104,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the nodes to enable the pcie controller on the quartz64 model a
-board.
+On 23/04/2022 13:10, Krzysztof Kozlowski wrote:
+> On 22/04/2022 15:38, Christopher Obbard wrote:
+>> Document the RK3328 compatible for rockchip-vdec.
+>>
+>> Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
+>> ---
+>>  Documentation/devicetree/bindings/media/rockchip,vdec.yaml | 1 +
+>>  1 file changed, 1 insertion(+)
+> 
+> 
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
----
- .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 34 +++++++++++++++++++
- 1 file changed, 34 insertions(+)
+I acked this but Johan pointed out that your intention was different and
+missing patch context is quite important here. Please explain what
+exactly you wanted in the patch? Now it looks actually wrong, so my ack
+is not correct.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index dd7f4b9b686b..8b0537744a60 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -125,6 +125,18 @@ vbus: vbus {
- 		vin-supply = <&vcc12v_dcin>;
- 	};
- 
-+	vcc3v3_pcie_p: vcc3v3_pcie_p {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pcie_enable_h>;
-+		regulator-name = "vcc3v3_pcie_p";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc_3v3>;
-+	};
-+
- 	vcc5v0_usb: vcc5v0_usb {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc5v0_usb";
-@@ -187,6 +199,10 @@ vcc_wl: vcc_wl {
- 	};
- };
- 
-+&combphy2 {
-+	status = "okay";
-+};
-+
- &cpu0 {
- 	cpu-supply = <&vdd_cpu>;
- };
-@@ -495,6 +511,14 @@ rgmii_phy1: ethernet-phy@0 {
- 	};
- };
- 
-+&pcie2x1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_reset_h>;
-+	reset-gpios = <&gpio1 RK_PB2 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_pcie_p>;
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	bt {
- 		bt_enable_h: bt-enable-h {
-@@ -520,6 +544,16 @@ diy_led_enable_h: diy-led-enable-h {
- 		};
- 	};
- 
-+	pcie {
-+		pcie_enable_h: pcie-enable-h {
-+			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		pcie_reset_h: pcie-reset-h {
-+			rockchip,pins = <1 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
--- 
-2.25.1
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
