@@ -4,64 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E98DFC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 15:35:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9E03C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 15:47:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gpEt8ZG05mA8AQ7azr1XqZZiXl8aRS58ijhjreH+HvQ=; b=qG+JdXUq2gZzso
-	0FnV7//s85GjpkP061tdpd5lUmGJ1cxjfOwX+clMkqyIMN9DPZzDIY6SEQTTBOz/N37pAVit5Ve2M
-	HJ/ubpZAsnSSysntnjYLg310PHg1eoIVz5lwwf6SgxCQH5SVoTpJU7OKEPuLA+fB/KTUp169WB1OM
-	OogGpL3K/kn8qQ72MjmhyNvTbUwJxDizfTUdyB8qiVM3pgwCNWodmxA06ge2okHOd6sJjTC8qlZzU
-	OJ4zs2htGVz5sjjvYUAOHI19/tT4UKjnri/qRnWhsT3U5G3/UM2xlaW/oLzp6ceTiCEO/XxmAL8Iw
-	yhuvKKPfVrykKwLEJkTA==;
+	List-Owner; bh=+md1+z1TQnFIZNNsJsO3/hEOVDc8lKpcU7laZynYpGc=; b=zJZj7eX5H8gW6v
+	zsx5lDYTaHO/MqjK6yysDqXwIA+nVSBpVaHloabgkfezoD0S82m814P5BsHKfsF4jOs9wb6Ev+h1/
+	X6otfu34BWKEXgj4KGYaxYaeJB0ghc88/nrx9wyMHEAqIHNTsm1LoTxgEKYGZ+5RTIu7ezmtDaGLx
+	JIILTs7QBnJe4iBfEBOuYR6e5SZkNwb5rI2v7WfaO802vBYFb8CB8F5obtmUqAnRDGtcXjRCfBwLH
+	8IR5N68j2T9PUDfBZFtRbM5uKK1EbAZ3BEcw8dOpgpeI3oEwpd/eCBvtwC0sThjDA7bBOb4vF7n4m
+	kzZmXRfWaPQGZOHFLuhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nj0jy-00A7Zq-BM; Mon, 25 Apr 2022 15:35:06 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nj0vq-00AAII-Al; Mon, 25 Apr 2022 15:47:22 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nj0jv-00A7YX-CE
- for linux-rockchip@lists.infradead.org; Mon, 25 Apr 2022 15:35:05 +0000
-Received: from gallifrey.ext.pengutronix.de
- ([2001:67c:670:201:5054:ff:fe8d:eefb] helo=[IPv6:::1])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <l.stach@pengutronix.de>)
- id 1nj0jW-0001it-Ip; Mon, 25 Apr 2022 17:34:38 +0200
-Message-ID: <4b958892ba788a0e9e73a9135c305aacbe33294d.camel@pengutronix.de>
-Subject: Re: [PATCH V4 07/11] arm64: dts: imx8mq: Enable both G1 and G2
- VPU's with vpu-blk-ctrl
-From: Lucas Stach <l.stach@pengutronix.de>
-To: Martin Kepplinger <martin.kepplinger@puri.sm>, Adam Ford
- <aford173@gmail.com>, linux-media@vger.kernel.org
-Cc: aford@beaconembedded.com, cphealy@gmail.com, kernel test robot
- <lkp@intel.com>,  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Philipp
- Zabel <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh@kernel.org>, Shawn Guo <shawnguo@kernel.org>, Sascha
- Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team
- <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team
- <linux-imx@nxp.com>,  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-staging@lists.linux.dev
-Date: Mon, 25 Apr 2022 17:34:34 +0200
-In-Reply-To: <d6c5c5663f8ae904d409240063295cf516e17dd1.camel@puri.sm>
+ id 1nj0vn-00AAGy-9K; Mon, 25 Apr 2022 15:47:20 +0000
+Received: by mail-ej1-x635.google.com with SMTP id w16so9179825ejb.13;
+ Mon, 25 Apr 2022 08:47:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=5KITNKAeusqSJT+zGPV95UI61fvHf3AksSLlo//4H/Q=;
+ b=d7uAgAim/QSjpWLL4BURUV2Si8I60jzsnYs2S3tONGckunmoXtdjA902DjChkWq72c
+ rLwZOZmIce/HQITo2GaeS/xFbW4v2Tq6mkph1dTXANmave6YJy6TmWlJmHSxyN8MZ7qu
+ XjhOwxiHG+LSZN3ygBiCtnD5Hv+YqIwvQenwihMzSBaumjllUhtO9S30C9hxEZMDQeiV
+ Dq+7WIH01DSmv5R7svnr15yQW2D4Z9Ks5W6lh6rkbKFg+lXGaXUR3yWEdlaXlXAi8++I
+ pwsg3w8TRb3MXeiBovxikYA02bC1yMObEFYkyRTJdqXO93mODKzGuHYYWTybG9zqxCIn
+ TbDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=5KITNKAeusqSJT+zGPV95UI61fvHf3AksSLlo//4H/Q=;
+ b=tWNnm8Z6QRJTnofs+B9Xwua/VxGW9UYEhdq+TfPPrLtvdGCoW2Lq9Jvan+TfbL9AQ3
+ ugjshvBpwxY0BbuHC2z/chFQcA5LydTq64Lto1pY2k7CJ0+hxuHKUTE604sgnzo/R4SH
+ diaaGWRemb6BR557Zpk6wJeOsqDtpPdbFJf9PRz1q+vKE7t1/IONmWV6xK5boQ4R/B0M
+ aiYAFp6smsVsG0Bdzsg6rIFxCC5fLkkE2HmZ/RHMjwEPf8unJKlOn3FNByOgOAQpgp8U
+ jr8VB3xJ+bpzZu5QsTlcKXC4FqF/JAbq9CMDkRC4ZqC+S9wg8Zc9nHFGuWvzZObQ9p9s
+ 2Fxg==
+X-Gm-Message-State: AOAM531ZdxoXizz9MzylLoXHaBDhNMAA4a5CBeqsfo/fCWkYmPuaeOxa
+ T7fZYwlm4NyWAlVQ+sGT+yJZUJlJ8YOzxudqf/I=
+X-Google-Smtp-Source: ABdhPJxnpP2VO5mNc14SXisGfERyPGY2gcFajNEbPhdVi7a7lKySSEX3vu6h8QfBzgmg3c6qhkbSumGBtJ0kug5rh48=
+X-Received: by 2002:a17:907:7704:b0:6cf:48ac:b4a8 with SMTP id
+ kw4-20020a170907770400b006cf48acb4a8mr16675736ejc.305.1650901636036; Mon, 25
+ Apr 2022 08:47:16 -0700 (PDT)
+MIME-Version: 1.0
 References: <20220125171129.472775-1-aford173@gmail.com>
  <20220125171129.472775-8-aford173@gmail.com>
  <d6c5c5663f8ae904d409240063295cf516e17dd1.camel@puri.sm>
-User-Agent: Evolution 3.40.4 (3.40.4-1.fc34) 
-MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2001:67c:670:201:5054:ff:fe8d:eefb
-X-SA-Exim-Mail-From: l.stach@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+ <4b958892ba788a0e9e73a9135c305aacbe33294d.camel@pengutronix.de>
+In-Reply-To: <4b958892ba788a0e9e73a9135c305aacbe33294d.camel@pengutronix.de>
+From: Adam Ford <aford173@gmail.com>
+Date: Mon, 25 Apr 2022 10:47:04 -0500
+Message-ID: <CAHCN7xKEWT=-ujUD0KC9O=VUyCDSGzwbB1_dC51_k=Hx3i6+bg@mail.gmail.com>
+Subject: Re: [PATCH V4 07/11] arm64: dts: imx8mq: Enable both G1 and G2 VPU's
+ with vpu-blk-ctrl
+To: Lucas Stach <l.stach@pengutronix.de>
+Cc: Martin Kepplinger <martin.kepplinger@puri.sm>,
+ linux-media <linux-media@vger.kernel.org>, 
+ Adam Ford-BE <aford@beaconembedded.com>, Chris Healy <cphealy@gmail.com>, 
+ kernel test robot <lkp@intel.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ "open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>, 
+ devicetree <devicetree@vger.kernel.org>,
+ arm-soc <linux-arm-kernel@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_083503_608672_DAB41922 
-X-CRM114-Status: GOOD (  23.43  )
+X-CRM114-CacheID: sfid-20220425_084719_390382_78A4E71B 
+X-CRM114-Status: GOOD (  30.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,182 +96,177 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTWFydGluLAoKQW0gTW9udGFnLCBkZW0gMjUuMDQuMjAyMiB1bSAxNzoyMiArMDIwMCBzY2hy
-aWViIE1hcnRpbiBLZXBwbGluZ2VyOgo+IEFtIERpZW5zdGFnLCBkZW0gMjUuMDEuMjAyMiB1bSAx
-MToxMSAtMDYwMCBzY2hyaWViIEFkYW0gRm9yZDoKPiA+IFdpdGggdGhlIEhhbnRybyBHMSBhbmQg
-RzIgbm93IHNldHVwIHRvIHJ1biBpbmRlcGVuZGVudGx5LCB1cGRhdGUKPiA+IHRoZSBkZXZpY2Ug
-dHJlZSB0byBhbGxvdyBib3RoIHRvIG9wZXJhdGUuwqAgVGhpcyByZXF1aXJlcyB0aGUKPiA+IHZw
-dS1ibGstY3RybCBub2RlIHRvIGJlIGNvbmZpZ3VyZWQuwqAgU2luY2UgdnB1LWJsay1jdHJsIG5l
-ZWRzCj4gPiBjZXJ0YWluIGNsb2NrIGVuYWJsZWQgdG8gaGFuZGxlIHRoZSBnYXRpbmcgb2YgdGhl
-IEcxIGFuZCBHMgo+ID4gZnVzZXMsIHRoZSBjbG9jay1wYXJlbnRzIGFuZCBjbG9jay1yYXRlcyBm
-b3IgdGhlIHZhcmlvdXMgVlBVJ3MKPiA+IHRvIGJlIG1vdmVkIGludG8gdGhlIHBnY192cHUgYmVj
-YXVzZSB0aGV5IGNhbm5vdCBnZXQgcmUtcGFyZW50ZWQKPiA+IG9uY2UgZW5hYmxlZCwgYW5kIHRo
-ZSBwZ2NfdnB1IGlzIHRoZSBoaWdoZXN0IGluIHRoZSBjaGFpbi4KPiA+IAo+ID4gU2lnbmVkLW9m
-Zi1ieTogQWRhbSBGb3JkIDxhZm9yZDE3M0BnbWFpbC5jb20+Cj4gPiBSZXBvcnRlZC1ieToga2Vy
-bmVsIHRlc3Qgcm9ib3QgPGxrcEBpbnRlbC5jb20+Cj4gPiBSZXZpZXdlZC1ieTogRXplcXVpZWwg
-R2FyY2lhIDxlemVxdWllbEB2YW5ndWFyZGlhc3VyLmNvbS5hcj4KPiA+IAo+ID4gZGlmZiAtLWdp
-dCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvZnJlZXNjYWxlL2lteDhtcS5kdHNpCj4gPiBiL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvZnJlZXNjYWxlL2lteDhtcS5kdHNpCj4gPiBpbmRleCAyZGYyNTEwZDAx
-MTguLjU0OWIyNDQwZjU1ZCAxMDA2NDQKPiA+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvZnJl
-ZXNjYWxlL2lteDhtcS5kdHNpCj4gPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL2ZyZWVzY2Fs
-ZS9pbXg4bXEuZHRzaQo+ID4gQEAgLTczNyw3ICs3MzcsMjEgQEAgcGdjX2dwdTogcG93ZXItZG9t
-YWluQDUgewo+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBwZ2NfdnB1OiBwb3dlci1kb21haW5A
-NiB7Cj4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAjcG93ZXItZG9t
-YWluLWNlbGxzID0KPiA+IDwwPjsKPiA+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoHJlZyA9Cj4gPiA8SU1YOE1fUE9XRVJfRE9NQUlOX1ZQVT47Cj4gPiAtwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGNsb2NrcyA9IDwmY2xrCj4gPiBJTVg4TVFfQ0xL
-X1ZQVV9ERUNfUk9PVD47Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oGNsb2NrcyA9IDwmY2xrCj4gPiBJTVg4TVFfQ0xLX1ZQVV9ERUNfUk9PVD4sCj4gPiArwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPCZjbGsKPiA+
-IElNWDhNUV9DTEtfVlBVX0cxX1JPT1Q+LAo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrCj4gPiBJTVg4TVFfQ0xLX1ZQVV9HMl9S
-T09UPjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgYXNzaWduZWQt
-Y2xvY2tzID0KPiA+IDwmY2xrIElNWDhNUV9DTEtfVlBVX0cxPiwKPiA+ICvCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oAo+ID4gPCZjbGsgSU1YOE1RX0NMS19WUFVfRzI+LAo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgCj4gPiA8
-JmNsayBJTVg4TVFfQ0xLX1ZQVV9CVVM+LAo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgCj4gPiA8JmNsayBJ
-TVg4TVFfVlBVX1BMTF9CWVBBU1M+Owo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqBhc3NpZ25lZC1jbG9jay0KPiA+IHBhcmVudHMgPSA8JmNsayBJTVg4TVFfVlBVX1BM
-TF9PVVQ+LAo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAKPiA+IMKgwqDCoCA8JmNsayBJTVg4
-TVFfVlBVX1BMTF9PVVQ+LAo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAKPiA+IMKgwqDCoCA8
-JmNsayBJTVg4TVFfU1lTMV9QTExfODAwTT4sCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoAo+
-ID4gwqDCoMKgIDwmY2xrIElNWDhNUV9WUFVfUExMPjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgYXNzaWduZWQtY2xvY2stcmF0ZXMKPiA+ID0gPDYwMDAwMDAwMD4s
-Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoAo+ID4gwqAgPDYwMDAwMDAwMD4sCj4gPiArwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoAo+ID4gwqAgPDgwMDAwMDAwMD4sCj4gPiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoAo+ID4gwqAgPDA+Owo+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB9Owo+ID4g
-wqAKPiA+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcGdjX2Rpc3A6IHBvd2VyLWRvbWFpbkA3IHsK
-PiA+IEBAIC0xNDU3LDMwICsxNDcxLDMxIEBAIHVzYjNfcGh5MTogdXNiLXBoeUAzODJmMDA0MCB7
-Cj4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBzdGF0
-dXMgPSAiZGlzYWJsZWQiOwo+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB9Owo+
-ID4gwqAKPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2cHU6IHZpZGVvLWNvZGVj
-QDM4MzAwMDAwIHsKPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgY29tcGF0aWJsZSA9ICJueHAsaW14OG1xLXZwdSI7Cj4gPiAtwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHJlZyA9IDwweDM4MzAwMDAwIDB4MTAwMDA+
-LAo+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIDwweDM4MzEwMDAwIDB4MTAwMDA+LAo+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwweDM4MzIwMDAwIDB4MTAwMDA+Owo+
-ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqByZWctbmFt
-ZXMgPSAiZzEiLCAiZzIiLCAiY3RybCI7Cj4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoGludGVycnVwdHMgPSA8R0lDX1NQSSA3IElSUV9UWVBFX0xFVkVM
-X0hJR0g+LAo+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPEdJQ19TUEkgOCBJUlFfVFlQRV9MRVZFTF9ISUdI
-PjsKPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaW50
-ZXJydXB0LW5hbWVzID0gImcxIiwgImcyIjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqB2cHVfZzE6IHZpZGVvLWNvZGVjQDM4MzAwMDAwIHsKPiA+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgY29tcGF0aWJsZSA9ICJueHAsaW14OG1xLXZw
-dS1nMSI7Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oHJlZyA9IDwweDM4MzAwMDAwIDB4MTAwMDA+Owo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpbnRlcnJ1cHRzID0gPEdJQ19TUEkgNyBJUlFfVFlQRV9M
-RVZFTF9ISUdIPjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgY2xvY2tzID0gPCZjbGsgSU1YOE1RX0NMS19WUFVfRzFfUk9PVD47Cj4gPiArwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHBvd2VyLWRvbWFpbnMgPSA8
-JnZwdV9ibGtfY3RybAo+ID4gSU1YOE1RX1ZQVUJMS19QRF9HMT47Cj4gPiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgfTsKPiA+ICsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqB2cHVfZzI6IHZpZGVvLWNvZGVjQDM4MzEwMDAwIHsKPiA+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgY29tcGF0aWJsZSA9ICJueHAsaW14OG1xLXZw
-dS1nMiI7Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oHJlZyA9IDwweDM4MzEwMDAwIDB4MTAwMDA+Owo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpbnRlcnJ1cHRzID0gPEdJQ19TUEkgOCBJUlFfVFlQRV9M
-RVZFTF9ISUdIPjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgY2xvY2tzID0gPCZjbGsgSU1YOE1RX0NMS19WUFVfRzJfUk9PVD47Cj4gPiArwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHBvd2VyLWRvbWFpbnMgPSA8
-JnZwdV9ibGtfY3RybAo+ID4gSU1YOE1RX1ZQVUJMS19QRF9HMj47Cj4gPiArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgfTsKPiA+ICsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqB2cHVfYmxrX2N0cmw6IGJsay1jdHJsQDM4MzIwMDAwIHsKPiA+ICvCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgY29tcGF0aWJsZSA9ICJmc2wsaW14OG1x
-LXZwdS1ibGstY3RybCI7Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoHJlZyA9IDwweDM4MzIwMDAwIDB4MTAwPjsKPiA+ICvCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcG93ZXItZG9tYWlucyA9IDwmcGdjX3ZwdT4s
-IDwmcGdjX3ZwdT4sCj4gPiA8JnBnY192cHU+Owo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBwb3dlci1kb21haW4tbmFtZXMgPSAiYnVzIiwgImcxIiwg
-ImcyIjsKPiA+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oGNsb2NrcyA9IDwmY2xrIElNWDhNUV9DTEtfVlBVX0cxX1JPT1Q+LAo+ID4gLcKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xr
-IElNWDhNUV9DTEtfVlBVX0cyX1JPT1Q+LAo+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrIElNWDhNUV9DTEtfVlBV
-X0RFQ19ST09UPjsKPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgY2xvY2stbmFtZXMgPSAiZzEiLCAiZzIiLCAiYnVzIjsKPiA+IC3CoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgYXNzaWduZWQtY2xvY2tzID0gPCZjbGsg
-SU1YOE1RX0NMS19WUFVfRzE+LAo+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrIElN
-WDhNUV9DTEtfVlBVX0cyPiwKPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JmNsayBJTVg4
-TVFfQ0xLX1ZQVV9CVVM+LAo+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrCj4gPiBJ
-TVg4TVFfVlBVX1BMTF9CWVBBU1M+Owo+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqBhc3NpZ25lZC1jbG9jay1wYXJlbnRzID0gPCZjbGsKPiA+IElNWDhN
-UV9WUFVfUExMX09VVD4sCj4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCA8JmNsawo+ID4gSU1YOE1RX1ZQVV9QTExfT1VUPiwKPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrCj4gPiBJTVg4TVFfU1lTMV9QTExfODAwTT4sCj4gPiAt
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JmNsawo+ID4gSU1YOE1RX1ZQ
-VV9QTEw+Owo+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqBhc3NpZ25lZC1jbG9jay1yYXRlcyA9IDw2MDAwMDAwMDA+LAo+ID4gPDYwMDAwMDAwMD4sCj4g
-PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDw4MDAwMDAwMDA+LCA8MD47Cj4g
-PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHBvd2VyLWRv
-bWFpbnMgPSA8JnBnY192cHU+Owo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrIElNWDhNUV9DTEtfVlBVX0cyX1JP
-T1Q+Owo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBj
-bG9jay1uYW1lcyA9ICJnMSIsICJnMiI7Cj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCNwb3dlci1kb21haW4tY2VsbHMgPSA8MT47Cj4gPiDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoH07Cj4gPiDCoAo+ID4gwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqBwY2llMDogcGNpZUAzMzgwMDAwMCB7Cj4gCj4gV2l0aCB0aGlzIHVwZGF0
-ZSwgd2hlbiB0ZXN0aW5nIHN1c3BlbmQgdG8gcmFtIG9uIGlteDhtcSwgSSBnZXQ6Cj4gCj4gYnVj
-azQ6IGZhaWxlZCB0byBkaXNhYmxlOiAtRVRJTUVET1VUCj4gCj4gd2hlcmUgYnVjazQgaXMgcG93
-ZXItc3VwcGx5IG9mIHBnY192cHUuIEFuZCB0aHVzIHRoZSB0cmFuc2l0aW9uIHRvCj4gc3VzcGVu
-ZCAoYW5kIHJlc3VtaW5nKSBmYWlscy4KPiAKPiBIYXZlIHlvdSB0ZXN0ZWQgc3lzdGVtIHN1c3Bl
-bmQgYWZ0ZXIgdGhlIGlteDhtLWJsay1jdHJsIHVwZGF0ZSBvbgo+IGlteDhtcT8KCkkgaGF2ZW4n
-dCB0ZXN0ZWQgc3lzdGVtIHN1c3BlbmQsIGRvbid0IGtub3cgaWYgYW55b25lIGVsc2UgZGlkLiBI
-b3dldmVyCkkgZ3Vlc3MgdGhhdCB0aGlzIGlzIGp1c3QgdW5jb3ZlcmluZyBhIHByZWV4aXN0aW5n
-IGlzc3VlIGluIHRoZSBzeXN0ZW0Kc3VzcGVuZCBzZXF1ZW5jaW5nLCB3aGljaCB5b3Ugd291bGQg
-YWxzbyBoaXQgaWYgdGhlIHZpZGVvIGRlY29kZXJzIHdlcmUKYWN0aXZlIGF0IHN5c3RlbSBzdXNw
-ZW5kIHRpbWUuCgpNeSBndWVzcyBpcyB0aGF0IHRoZSByZWd1bGF0b3IgZGlzYWJsZSBmYWlscywg
-ZHVlIHRvIHRoZSBwb3dlciBkb21haW5zCmJlaW5nIGRpc2FibGVkIHF1aXRlIGxhdGUgaW4gdGhl
-IHN1c3BlbmQgc2VxdWVuY2UsIHdoZXJlIGkyYwpjb21tdW5pY2F0aW9uIHdpdGggdGhlIFBNSUMg
-aXMgbm8gbG9uZ2VyIHBvc3NpYmxlIGR1ZSB0byBpMmMgYmVpbmcKc3VzcGVuZGVkIGFscmVhZHkg
-b3Igc29tZXRoaW5nIGxpa2UgdGhhdC4gTWF5YmUgeW91IGNhbiBkaWcgaW4gYSBiaXQgb24KdGhl
-IGFjdHVhbCBzZXF1ZW5jZSBvbiB5b3VyIHN5c3RlbSBhbmQgd2UgY2FuIHNlZSBob3cgd2UgY2Fu
-IHJld29yawp0aGluZ3MgdG8gc3VzcGVuZCB0aGUgcG93ZXIgZG9tYWlucyBhdCBhIHRpbWUgd2hl
-cmUgY29tbXVuaWNhdGlvbiB3aXRoCnRoZSBQTUlDIGlzIHN0aWxsIHBvc3NpYmxlPwoKUmVnYXJk
-cywKTHVjYXMKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+On Mon, Apr 25, 2022 at 10:34 AM Lucas Stach <l.stach@pengutronix.de> wrote:
+>
+> Hi Martin,
+>
+> Am Montag, dem 25.04.2022 um 17:22 +0200 schrieb Martin Kepplinger:
+> > Am Dienstag, dem 25.01.2022 um 11:11 -0600 schrieb Adam Ford:
+> > > With the Hantro G1 and G2 now setup to run independently, update
+> > > the device tree to allow both to operate.  This requires the
+> > > vpu-blk-ctrl node to be configured.  Since vpu-blk-ctrl needs
+> > > certain clock enabled to handle the gating of the G1 and G2
+> > > fuses, the clock-parents and clock-rates for the various VPU's
+> > > to be moved into the pgc_vpu because they cannot get re-parented
+> > > once enabled, and the pgc_vpu is the highest in the chain.
+> > >
+> > > Signed-off-by: Adam Ford <aford173@gmail.com>
+> > > Reported-by: kernel test robot <lkp@intel.com>
+> > > Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+> > >
+> > > diff --git a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+> > > b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+> > > index 2df2510d0118..549b2440f55d 100644
+> > > --- a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+> > > +++ b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+> > > @@ -737,7 +737,21 @@ pgc_gpu: power-domain@5 {
+> > >                                         pgc_vpu: power-domain@6 {
+> > >                                                 #power-domain-cells =
+> > > <0>;
+> > >                                                 reg =
+> > > <IMX8M_POWER_DOMAIN_VPU>;
+> > > -                                               clocks = <&clk
+> > > IMX8MQ_CLK_VPU_DEC_ROOT>;
+> > > +                                               clocks = <&clk
+> > > IMX8MQ_CLK_VPU_DEC_ROOT>,
+> > > +                                                        <&clk
+> > > IMX8MQ_CLK_VPU_G1_ROOT>,
+> > > +                                                        <&clk
+> > > IMX8MQ_CLK_VPU_G2_ROOT>;
+> > > +                                               assigned-clocks =
+> > > <&clk IMX8MQ_CLK_VPU_G1>,
+> > > +
+> > > <&clk IMX8MQ_CLK_VPU_G2>,
+> > > +
+> > > <&clk IMX8MQ_CLK_VPU_BUS>,
+> > > +
+> > > <&clk IMX8MQ_VPU_PLL_BYPASS>;
+> > > +                                               assigned-clock-
+> > > parents = <&clk IMX8MQ_VPU_PLL_OUT>,
+> > > +
+> > >     <&clk IMX8MQ_VPU_PLL_OUT>,
+> > > +
+> > >     <&clk IMX8MQ_SYS1_PLL_800M>,
+> > > +
+> > >     <&clk IMX8MQ_VPU_PLL>;
+> > > +                                               assigned-clock-rates
+> > > = <600000000>,
+> > > +
+> > >   <600000000>,
+> > > +
+> > >   <800000000>,
+> > > +
+> > >   <0>;
+> > >                                         };
+> > >
+> > >                                         pgc_disp: power-domain@7 {
+> > > @@ -1457,30 +1471,31 @@ usb3_phy1: usb-phy@382f0040 {
+> > >                         status = "disabled";
+> > >                 };
+> > >
+> > > -               vpu: video-codec@38300000 {
+> > > -                       compatible = "nxp,imx8mq-vpu";
+> > > -                       reg = <0x38300000 0x10000>,
+> > > -                             <0x38310000 0x10000>,
+> > > -                             <0x38320000 0x10000>;
+> > > -                       reg-names = "g1", "g2", "ctrl";
+> > > -                       interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>,
+> > > -                                    <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+> > > -                       interrupt-names = "g1", "g2";
+> > > +               vpu_g1: video-codec@38300000 {
+> > > +                       compatible = "nxp,imx8mq-vpu-g1";
+> > > +                       reg = <0x38300000 0x10000>;
+> > > +                       interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
+> > > +                       clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>;
+> > > +                       power-domains = <&vpu_blk_ctrl
+> > > IMX8MQ_VPUBLK_PD_G1>;
+> > > +               };
+> > > +
+> > > +               vpu_g2: video-codec@38310000 {
+> > > +                       compatible = "nxp,imx8mq-vpu-g2";
+> > > +                       reg = <0x38310000 0x10000>;
+> > > +                       interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>;
+> > > +                       clocks = <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
+> > > +                       power-domains = <&vpu_blk_ctrl
+> > > IMX8MQ_VPUBLK_PD_G2>;
+> > > +               };
+> > > +
+> > > +               vpu_blk_ctrl: blk-ctrl@38320000 {
+> > > +                       compatible = "fsl,imx8mq-vpu-blk-ctrl";
+> > > +                       reg = <0x38320000 0x100>;
+> > > +                       power-domains = <&pgc_vpu>, <&pgc_vpu>,
+> > > <&pgc_vpu>;
+> > > +                       power-domain-names = "bus", "g1", "g2";
+> > >                         clocks = <&clk IMX8MQ_CLK_VPU_G1_ROOT>,
+> > > -                                <&clk IMX8MQ_CLK_VPU_G2_ROOT>,
+> > > -                                <&clk IMX8MQ_CLK_VPU_DEC_ROOT>;
+> > > -                       clock-names = "g1", "g2", "bus";
+> > > -                       assigned-clocks = <&clk IMX8MQ_CLK_VPU_G1>,
+> > > -                                         <&clk IMX8MQ_CLK_VPU_G2>,
+> > > -                                         <&clk IMX8MQ_CLK_VPU_BUS>,
+> > > -                                         <&clk
+> > > IMX8MQ_VPU_PLL_BYPASS>;
+> > > -                       assigned-clock-parents = <&clk
+> > > IMX8MQ_VPU_PLL_OUT>,
+> > > -                                                <&clk
+> > > IMX8MQ_VPU_PLL_OUT>,
+> > > -                                                <&clk
+> > > IMX8MQ_SYS1_PLL_800M>,
+> > > -                                                <&clk
+> > > IMX8MQ_VPU_PLL>;
+> > > -                       assigned-clock-rates = <600000000>,
+> > > <600000000>,
+> > > -                                              <800000000>, <0>;
+> > > -                       power-domains = <&pgc_vpu>;
+> > > +                                <&clk IMX8MQ_CLK_VPU_G2_ROOT>;
+> > > +                       clock-names = "g1", "g2";
+> > > +                       #power-domain-cells = <1>;
+> > >                 };
+> > >
+> > >                 pcie0: pcie@33800000 {
+> >
+> > With this update, when testing suspend to ram on imx8mq, I get:
+> >
+> > buck4: failed to disable: -ETIMEDOUT
+> >
+> > where buck4 is power-supply of pgc_vpu. And thus the transition to
+> > suspend (and resuming) fails.
+> >
+> > Have you tested system suspend after the imx8m-blk-ctrl update on
+> > imx8mq?
+>
+> I haven't tested system suspend, don't know if anyone else did. However
+> I guess that this is just uncovering a preexisting issue in the system
+> suspend sequencing, which you would also hit if the video decoders were
+> active at system suspend time.
+
+I have not tested it either.
+
+>
+> My guess is that the regulator disable fails, due to the power domains
+> being disabled quite late in the suspend sequence, where i2c
+> communication with the PMIC is no longer possible due to i2c being
+> suspended already or something like that. Maybe you can dig in a bit on
+> the actual sequence on your system and we can see how we can rework
+> things to suspend the power domains at a time where communication with
+> the PMIC is still possible?
+
+In the meantime, should we mark the regulator with regulator-always-on
+so it doesn't attempt to power it down?  It might not be ideal,but it
+might be enough to let it suspend.
+
+adam
+>
+> Regards,
+> Lucas
+>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
