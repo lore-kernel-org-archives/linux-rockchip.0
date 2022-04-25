@@ -4,91 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EBC9C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 14:54:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B00FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 15:17:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hRXiI5mlPxfy3Vh0KX+AeV+Xm6yTkk6R0kGxsYEaCLE=; b=u1CC1JKBwnUffY
-	xM/hrAf4orDJVbHc3gAt6mj+7cMLWXrHPUyxInUw9rI3qnD94vLyVYbtpCavc1+iyU2XT8raasyLu
-	A5pd6dZp+8ClXNmak629chZFkl5hB7SobThqF6/waifQFHyXXC0feH17T7vXJKthSALyLC3kj3Zc3
-	56im+hv2Mus8g/lT/WdPb31fwLHHCqKe4rWxHXvJ5X8iZYH9EzT3EMFo9QQ8sEErcwZi/7lfryM3w
-	epx2ZB804OguTYrlfPtb9txLPXlt+09sKvxx3WBYLe6kJ438x3uop6Rm6z0Mpt2/uqSWFsJx5CbS1
-	7k7l2x4EyWeJZ486+t1g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tdWZgNNxdoS4Kvq7f4fjvP4kUIddr1ItcXnaERKEDkM=; b=yw1s1ccVy4IYMLhmW5Ya6qwDEz
+	NeTWeb97IuQhy8Z46F2defkUnOT1mBbRjl8dPti2RkElB7WwLwkl9irO2Zy9TdfRdH9OIE4xVKCCh
+	Inia0gnC/rOrYTEx7zkrowyGM45kUnZNU1kBOC0wK8OYXLLyuEbvbqB2XlAxIGhdD9E/4Hwzx5cEv
+	/HMnil14MkFZmBh7iLhViKImehNPRZ1eSCrFcedO40wQDqgCjw4K5nwxGDFqejIAxU3Lz9KZRyUla
+	T2SKDqmG/dDgYWV/1SIU6XMtPlGDrgAeqqP5LY5/a5Sf7ugO5zCFOfZeuBzdj391MHzw/JYUSTUcA
+	R6GApocA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nj06X-009zdC-NK; Mon, 25 Apr 2022 14:54:21 +0000
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+	id 1nj0Sh-00A4Qp-9N; Mon, 25 Apr 2022 15:17:15 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nj06U-009zbx-G1
- for linux-rockchip@lists.infradead.org; Mon, 25 Apr 2022 14:54:20 +0000
-Received: by mail-yb1-xb35.google.com with SMTP id p65so27458656ybp.9
- for <linux-rockchip@lists.infradead.org>; Mon, 25 Apr 2022 07:54:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fooishbar-org.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wQZr9eh6feQtr/PZGtNf/LwMxvChFvbqt8/adktEEqQ=;
- b=gvIHaqnv6jfS42c36lLY6lisW4tYxSJgC1bTWmctt6ctqmPC4yh/WevUQTlEOZdI5k
- iKEf45GKpMA2KJHUmu04NoMBcWDtNez8gHafIfCPBRl6zdLICRclaXXynym83ujfH+z7
- EiXxhQO2pDc5eBG3+oXjotsvo/CfBLkR8CrGKNbJj45USajufyAl7BWfcyqUmN/G/N9L
- vMf4WEIxb9v1mNvhDuecuXhnWAB75QB1fqToyxcVtDDaxfiGzs+xNh4f+Ou8yomoWdu/
- 5Fxz2aPBNxBlYwWaXqDvoO1LHSRtT3Jc59+WwYgMlabS6DaiRYwuc1GXJGTfVEBvHGfz
- 4fCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wQZr9eh6feQtr/PZGtNf/LwMxvChFvbqt8/adktEEqQ=;
- b=BxJquVdtG7jO9wZuAJtaSdhuVqfRtwVJguK1FSklUJLCtl9hA8Oy9UbhfajUmNTYMi
- FVYygkCUHhPWLrAEygEtr1hdVL66DU/B9pzb79dKrlzjbKWeR98H5V8fqXz1X0R6Xsre
- z8SyYArJIEamtRoKpu3xgvAOc/1xWnXhv+FIjGJNlOJvncRANRBEydFKZQqLjLTcc4gu
- A43m7r2M+XhyocHGuhDGrzwVwpKL+a4tXNLsRuTXj2t54ji3IkBu1iW0oSvjo1mOxulk
- 8xpvnDFQcikEP/a8PapHhUOe0itH7wL2l8W3qU+Zz1sWInwThTTypLesAJVMIny1r4xD
- QbUw==
-X-Gm-Message-State: AOAM530ojRB8TWX1zoS2n/CWHyX2ozK2z6fnKfjriu0J9I6DaZTDY+wf
- +lJhdHTfx8GNkXtgcsLp8Z4LKMEBk8yTvvc8M62w7w==
-X-Google-Smtp-Source: ABdhPJyrElEV7qCG3Q1FuffDboG6sUDbDbsFKP8JYu6HsO7gvchyUgm7pO59ejDQ+UjRitA9ybuc0WtMrtVOmkH2LI4=
-X-Received: by 2002:a25:1585:0:b0:63d:de88:5aa6 with SMTP id
- 127-20020a251585000000b0063dde885aa6mr16508102ybv.201.1650898455071; Mon, 25
- Apr 2022 07:54:15 -0700 (PDT)
+ id 1nj0SV-00A4Mm-3f; Mon, 25 Apr 2022 15:17:05 +0000
+Received: from localhost (unknown [IPv6:2a02:3030:e:60d7:2277:ba57:a2c0:3])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ (Authenticated sender: sebastianfricke)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 114AF1F431C4;
+ Mon, 25 Apr 2022 16:16:59 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1650899819;
+ bh=UmvIinIkuSWeMLIsxuIACv1w2HkCY+hYynbPsEzqCY8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=VrWg80IjgoqHrYPMdAIK4XgC7ycga10CVgMzJSwUh6/MpAlc7ThUdiaTXJHmypMcs
+ b3HRPJfCvhSVl+Ys8lOD/D8kxYV6nooBiZrscn1TC1J5mH/gikDYaHruqMPoSbNLs1
+ sU2DBsc5RVJdSw/98MRJfCYvTqz3pXhtBXYHK4OZYg2bCbLHIgjfbbZFpmI7QCyyRI
+ aVr4eIz5CHYFfYtvLiMNZo4gBsPPv0g7lTA3VHV2Slc9fCwAZ5aq8foJxORMaIJ/yp
+ rF9kwHq4HYbOnABwHmNRLBNemitd8/rBqYhJfFH7HKdOyGNzJ7TXL7kTL7kAoE6DUC
+ Aktb2kdzr77WA==
+Date: Mon, 25 Apr 2022 17:16:56 +0200
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: mchehab@kernel.org, hverkuil@xs4all.nl, ezequiel@vanguardiasur.com.ar,
+ p.zabel@pengutronix.de, gregkh@linuxfoundation.org,
+ mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
+ jernej.skrabec@gmail.com, samuel@sholland.org,
+ nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH v5 06/17] media: uapi: HEVC: Change pic_order_cnt
+ definition in v4l2_hevc_dpb_entry
+Message-ID: <20220425151656.pphta4u6qa5kymoa@basti-XPS-13-9310>
+References: <20220407152940.738159-1-benjamin.gaignard@collabora.com>
+ <20220407152940.738159-7-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
- <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
- <20220401125205.GL4012@pengutronix.de>
- <5420D26D-34FD-4637-B602-F6271E38BB8D@gmail.com>
- <BA4C591F-D115-43D2-BF59-A75B29889E50@gmail.com>
- <20220408080748.GA2387@pengutronix.de> <20220408120021.GO4012@pengutronix.de>
- <B3E76A7A-9B62-4E6F-9472-00B6298689C5@gmail.com>
- <20220411090800.GR4012@pengutronix.de>
- <5929E7A7-776E-4BCB-92C8-A1CE05774FE3@gmail.com>
- <20220412075034.GS4012@pengutronix.de>
- <e2ef484b60fe9c5fc077240a26bd18275974dc4a.camel@pengutronix.de>
- <EF0F8E87-2618-4E5E-807D-259FEEC0FB24@gmail.com>
- <CAPj87rNatQ9KjDSnYQTh4+FOUcPTerbzH3m8AuAF_BPbM1xxGg@mail.gmail.com>
- <EE789168-EEFD-4231-96D5-9E62AED6D08C@gmail.com>
-In-Reply-To: <EE789168-EEFD-4231-96D5-9E62AED6D08C@gmail.com>
-From: Daniel Stone <daniel@fooishbar.org>
-Date: Mon, 25 Apr 2022 15:54:03 +0100
-Message-ID: <CAPj87rNr4c=xpp2XSsQ17da-gOoGBzf6scA1pZCOO_5CTqLjwg@mail.gmail.com>
-Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
-To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Cc: Lucas Stach <l.stach@pengutronix.de>, 
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Peter Geis <pgwipeout@gmail.com>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Sandy Huang <hjc@rock-chips.com>, 
- dri-devel@lists.freedesktop.org, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Lucas Stach <lst@pengutronix.de>, 
- Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de, 
- Andy Yan <andy.yan@rock-chips.com>, 
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20220407152940.738159-7-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_075418_600198_9A848BCA 
-X-CRM114-Status: GOOD (  23.87  )
+X-CRM114-CacheID: sfid-20220425_081703_574145_0185710F 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,93 +74,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Piotr,
-
-On Fri, 15 Apr 2022 at 12:11, Piotr Oniszczuk <piotr.oniszczuk@gmail.com> wrote:
-> Looking on Qt sources it looks to me this format should be supported:
->
-> https://code.qt.io/cgit/qt/qtbase.git/tree/src/platformsupport/kmsconvenience/qkmsdevice.cpp?h=5.15.2#n380
->
-> Interesting that with custom Qt config1: "format": "argb8888",
-> DRI state shows: format=AR24 little-endian (0x34325241)
->
-> UI is OK, playback is OK. OSD not visible (*)
->
-> custom config2: "format": "abgr8888"
-> Qt crashes with EGL_BAD_MATCH
->
-> So it looks forcing some Qt formats works while other - not.
->
-> Looking why this:
->
-> Qt logging says nothing.
-> export MESA_DEBUG=1 gives no any message. I'm a lost here a bit...
-
-I bet if you dumped the gbm_surface format (passed by Qt as a
-parameter to gbm_surface_create_with_modifiers or gbm_surface_create)
-and the EGLConfig's EGL_NATIVE_VISUAL_ID (from eglQueryConfig), you
-would see that the format tokens are different. Which is a Qt coding
-error.
-
-> But from a bit more distant perspective:
->
-> 1. Sascha concludes in (*) that issue is most probably in format negotiation by app.
->
-> 2. imho app probably correctly negotiates accordingly to inputs it gets from providers (DRM) and clients (mesa).
-> Test with patch excluding
-> DRM_FORMAT_XRGB8888,
-> DRM_FORMAT_ARGB8888,
-> shows imho proper app reaction on this (new format elected; but Qt fails with this format). Indirectly i conclude app logic is ok....
->
-> 3. Sum of p1 & p2 tells me:
-> i need to add extra logic in format election to specifically deal with constrains of rk356x (see explanation in (*))
-
-I disagree. I looked at a clone of Qt, and I could not see a coherent
-path that ensured that the gbm_surface format chosen by Qt matched the
-EGLConfig format used on that EGLSurface. A mismatch is an error.
-
-There are some workarounds allowing you to specify a format, however
-those only work by coincidence sometimes. Even with the explicit
-format specification, Qt never makes any attempt to match gbm_surface
-and EGLConfig formats; it just hopes that they will match by
-coincidence.
-
-There is no additional complexity or strangeness that RK356x is
-introducing here. It only works by pure luck on other platforms.
-
-> 4. Even if i implement p3 - then user world - (this using Qt) - will be not happy as:
-> - majority users are using pre-build Qt
-> - I don't believe Trolltech will fix this soon
->
-> So i see following path:
->
-> we will verify is issue of Qt with abgr8888 an Qt root cause issue,
->
-> If Yes - then:
->         - Investigate is there reasonable way to workaround with this outside of Qt?
-> If not - then:
->         - conclude: vop2 - due Qt bug - will not work ok with Qt until Qt will be fixed.
->
->
-> If you think this make sense - i need some help with: verify is issue of Qt with abgr8888 an Qt root cause issue
-
-Unfortunately there is no reasonable workaround outside of Qt. Looking
-at the Qt/QPA source tree, it looks like the usual way of 'fixing'
-this is to hack platform specific configuration into the Qt backend.
-If Qt won't be fixed to use generic APIs correctly, then I guess your
-best option is to just hack up yet another platform-specific backend.
-Which is a shame, but there is no reasonable workaround we can do in
-low-level code for toolkits doing the wrong thing and hoping it works.
-
-Cheers,
-Daniel
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGV5IEJlbmphbWluLAoKT24gMDcuMDQuMjAyMiAxNzoyOSwgQmVuamFtaW4gR2FpZ25hcmQgd3Jv
+dGU6Cj5IRVZDIHNwZWNpZmljYXRpb25zIHNheSB0aGF0OgoKcy9IRVZDIHNwZWNpZmljYXRpb25z
+IHNheSB0aGF0Oi8KICAgVGhlIEhFVkMgc3BlY2lmaWNhdGlvbiBkZXNjcmliZXMgdGhlIGZvbGxv
+d2luZzovCgpHcmVldGluZ3MsClNlYmFzdGlhbgoKPiJQaWNPcmRlckNudFZhbCBpcyBkZXJpdmVk
+IGFzIGZvbGxvd3M6Cj5QaWNPcmRlckNudFZhbCA9IFBpY09yZGVyQ250TXNiICsgc2xpY2VfcGlj
+X29yZGVyX2NudF9sc2IKPlRoZSB2YWx1ZSBvZiBQaWNPcmRlckNudFZhbCBzaGFsbCBiZSBpbiB0
+aGUgcmFuZ2Ugb2Yg4oiSMjMxIHRvIDIzMSDiiJIgMSwgaW5jbHVzaXZlLiIKPgo+VG8gbWF0Y2gg
+d2l0aCB0aGVzZSBkZWZpbml0aW9ucyBjaGFuZ2UgX191MTYgcGljX29yZGVyX2NudFsyXQo+aW50
+byBfX3MzMiBwaWNfb3JkZXJfY250X3ZhbC4KPgo+U2lnbmVkLW9mZi1ieTogQmVuamFtaW4gR2Fp
+Z25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+Cj4tLS0KPnZlcnNpb24gNToK
+Pi0gY2hhbmdlIF9fdTE2IHBpY19vcmRlcl9jbnRbMl0gaW50byBfX3MzMiBwaWNfb3JkZXJfY250
+X3ZhbAo+IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmMg
+fCA0ICsrLS0KPiBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19oZXZjLmMgICAg
+ICAgIHwgMiArLQo+IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmggICAg
+ICAgICAgfCA0ICsrLS0KPiBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1
+c19oMjY1LmMgIHwgNCArKy0tCj4gaW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxzLmggICAgICAgICAg
+ICAgICAgICAgICAgICB8IDIgKy0KPiA1IGZpbGVzIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKSwg
+OCBkZWxldGlvbnMoLSkKPgo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50
+cm8vaGFudHJvX2cyX2hldmNfZGVjLmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hh
+bnRyb19nMl9oZXZjX2RlYy5jCj5pbmRleCBjNTI0YWY0MWJhZjUuLjZmM2M3NzRhYTNkOSAxMDA2
+NDQKPi0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVj
+LmMKPisrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVj
+LmMKPkBAIC0zODYsNyArMzg2LDcgQEAgc3RhdGljIGludCBzZXRfcmVmKHN0cnVjdCBoYW50cm9f
+Y3R4ICpjdHgpCj4gCSAqIHBpY19vcmRlcl9jbnRbMF0gYW5kIGlnbm9yZSBwaWNfb3JkZXJfY250
+WzFdIHVzZWQgaW4gZmllbGQtY29kaW5nLgo+IAkgKi8KPiAJZm9yIChpID0gMDsgaSA8IGRlY29k
+ZV9wYXJhbXMtPm51bV9hY3RpdmVfZHBiX2VudHJpZXMgJiYgaSA8IEFSUkFZX1NJWkUoY3VyX3Bv
+Yyk7IGkrKykgewo+LQkJY2hhciBwb2NfZGlmZiA9IGRlY29kZV9wYXJhbXMtPnBpY19vcmRlcl9j
+bnRfdmFsIC0gZHBiW2ldLnBpY19vcmRlcl9jbnRbMF07Cj4rCQljaGFyIHBvY19kaWZmID0gZGVj
+b2RlX3BhcmFtcy0+cGljX29yZGVyX2NudF92YWwgLSBkcGJbaV0ucGljX29yZGVyX2NudF92YWw7
+Cj4KPiAJCWhhbnRyb19yZWdfd3JpdGUodnB1LCAmY3VyX3BvY1tpXSwgcG9jX2RpZmYpOwo+IAl9
+Cj5AQCAtNDEzLDcgKzQxMyw3IEBAIHN0YXRpYyBpbnQgc2V0X3JlZihzdHJ1Y3QgaGFudHJvX2N0
+eCAqY3R4KQo+IAlkcGJfbG9uZ3Rlcm1fZSA9IDA7Cj4gCWZvciAoaSA9IDA7IGkgPCBkZWNvZGVf
+cGFyYW1zLT5udW1fYWN0aXZlX2RwYl9lbnRyaWVzICYmCj4gCSAgICAgaSA8IChWNEwyX0hFVkNf
+RFBCX0VOVFJJRVNfTlVNX01BWCAtIDEpOyBpKyspIHsKPi0JCWx1bWFfYWRkciA9IGhhbnRyb19o
+ZXZjX2dldF9yZWZfYnVmKGN0eCwgZHBiW2ldLnBpY19vcmRlcl9jbnRbMF0pOwo+KwkJbHVtYV9h
+ZGRyID0gaGFudHJvX2hldmNfZ2V0X3JlZl9idWYoY3R4LCBkcGJbaV0ucGljX29yZGVyX2NudF92
+YWwpOwo+IAkJaWYgKCFsdW1hX2FkZHIpCj4gCQkJcmV0dXJuIC1FTk9NRU07Cj4KPmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19oZXZjLmMgYi9kcml2ZXJz
+L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19oZXZjLmMKPmluZGV4IGI2ZWM4NmQwM2Q5MS4u
+ZmFkZDQwNzY4NTc5IDEwMDY0NAo+LS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9o
+YW50cm9faGV2Yy5jCj4rKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19o
+ZXZjLmMKPkBAIC01NCw3ICs1NCw3IEBAIHN0YXRpYyB2b2lkIGhhbnRyb19oZXZjX3JlZl9pbml0
+KHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpCj4gfQo+Cj4gZG1hX2FkZHJfdCBoYW50cm9faGV2Y19n
+ZXRfcmVmX2J1ZihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LAo+LQkJCQkgICBpbnQgcG9jKQo+KwkJ
+CQkgICBzMzIgcG9jKQo+IHsKPiAJc3RydWN0IGhhbnRyb19oZXZjX2RlY19od19jdHggKmhldmNf
+ZGVjID0gJmN0eC0+aGV2Y19kZWM7Cj4gCWludCBpOwo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3Rh
+Z2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmggYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFu
+dHJvL2hhbnRyb19ody5oCj5pbmRleCBlZDAxOGUyOTNiYTAuLmE2NDhjNTI5NjYyYiAxMDA2NDQK
+Pi0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmgKPisrKyBiL2Ry
+aXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmgKPkBAIC0xMzEsNyArMTMxLDcg
+QEAgc3RydWN0IGhhbnRyb19oZXZjX2RlY19od19jdHggewo+IAlzdHJ1Y3QgaGFudHJvX2F1eF9i
+dWYgdGlsZV9ic2Q7Cj4gCXN0cnVjdCBoYW50cm9fYXV4X2J1ZiByZWZfYnVmc1tOVU1fUkVGX1BJ
+Q1RVUkVTXTsKPiAJc3RydWN0IGhhbnRyb19hdXhfYnVmIHNjYWxpbmdfbGlzdHM7Cj4tCWludCBy
+ZWZfYnVmc19wb2NbTlVNX1JFRl9QSUNUVVJFU107Cj4rCXMzMiByZWZfYnVmc19wb2NbTlVNX1JF
+Rl9QSUNUVVJFU107Cj4gCXUzMiByZWZfYnVmc191c2VkOwo+IAlzdHJ1Y3QgaGFudHJvX2hldmNf
+ZGVjX2N0cmxzIGN0cmxzOwo+IAl1bnNpZ25lZCBpbnQgbnVtX3RpbGVfY29sc19hbGxvY2F0ZWQ7
+Cj5AQCAtMzM3LDcgKzMzNyw3IEBAIGludCBoYW50cm9faGV2Y19kZWNfaW5pdChzdHJ1Y3QgaGFu
+dHJvX2N0eCAqY3R4KTsKPiB2b2lkIGhhbnRyb19oZXZjX2RlY19leGl0KHN0cnVjdCBoYW50cm9f
+Y3R4ICpjdHgpOwo+IGludCBoYW50cm9fZzJfaGV2Y19kZWNfcnVuKHN0cnVjdCBoYW50cm9fY3R4
+ICpjdHgpOwo+IGludCBoYW50cm9faGV2Y19kZWNfcHJlcGFyZV9ydW4oc3RydWN0IGhhbnRyb19j
+dHggKmN0eCk7Cj4tZG1hX2FkZHJfdCBoYW50cm9faGV2Y19nZXRfcmVmX2J1ZihzdHJ1Y3QgaGFu
+dHJvX2N0eCAqY3R4LCBpbnQgcG9jKTsKPitkbWFfYWRkcl90IGhhbnRyb19oZXZjX2dldF9yZWZf
+YnVmKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgsIHMzMiBwb2MpOwo+IGludCBoYW50cm9faGV2Y19h
+ZGRfcmVmX2J1ZihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LCBpbnQgcG9jLCBkbWFfYWRkcl90IGFk
+ZHIpOwo+IHZvaWQgaGFudHJvX2hldmNfcmVmX3JlbW92ZV91bnVzZWQoc3RydWN0IGhhbnRyb19j
+dHggKmN0eCk7Cj4gc2l6ZV90IGhhbnRyb19oZXZjX2Nocm9tYV9vZmZzZXQoY29uc3Qgc3RydWN0
+IHY0bDJfY3RybF9oZXZjX3NwcyAqc3BzKTsKPmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcv
+bWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19oMjY1LmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEv
+c3VueGkvY2VkcnVzL2NlZHJ1c19oMjY1LmMKPmluZGV4IDQ0ZjM4NWJlOWY2Yy4uZDA0NTIxZmZk
+OTIwIDEwMDY0NAo+LS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRy
+dXNfaDI2NS5jCj4rKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1
+c19oMjY1LmMKPkBAIC0xNDMsOCArMTQzLDggQEAgc3RhdGljIHZvaWQgY2VkcnVzX2gyNjVfZnJh
+bWVfaW5mb193cml0ZV9kcGIoc3RydWN0IGNlZHJ1c19jdHggKmN0eCwKPiAJZm9yIChpID0gMDsg
+aSA8IG51bV9hY3RpdmVfZHBiX2VudHJpZXM7IGkrKykgewo+IAkJaW50IGJ1ZmZlcl9pbmRleCA9
+IHZiMl9maW5kX3RpbWVzdGFtcCh2cSwgZHBiW2ldLnRpbWVzdGFtcCwgMCk7Cj4gCQl1MzIgcGlj
+X29yZGVyX2NudFsyXSA9IHsKPi0JCQlkcGJbaV0ucGljX29yZGVyX2NudFswXSwKPi0JCQlkcGJb
+aV0ucGljX29yZGVyX2NudFsxXQo+KwkJCWRwYltpXS5waWNfb3JkZXJfY250X3ZhbCAmIDB4ZmZm
+ZiwKPisJCQkoZHBiW2ldLnBpY19vcmRlcl9jbnRfdmFsID4+IDE2KSAmIDB4ZmZmZgo+IAkJfTsK
+Pgo+IAkJY2VkcnVzX2gyNjVfZnJhbWVfaW5mb193cml0ZV9zaW5nbGUoY3R4LCBpLCBkcGJbaV0u
+ZmllbGRfcGljLAo+ZGlmZiAtLWdpdCBhL2luY2x1ZGUvbWVkaWEvaGV2Yy1jdHJscy5oIGIvaW5j
+bHVkZS9tZWRpYS9oZXZjLWN0cmxzLmgKPmluZGV4IGIzNTQwMTY3ZGY5ZS4uMjgxMjc3OGI0MWY0
+IDEwMDY0NAo+LS0tIGEvaW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxzLmgKPisrKyBiL2luY2x1ZGUv
+bWVkaWEvaGV2Yy1jdHJscy5oCj5AQCAtMTM4LDcgKzEzOCw3IEBAIHN0cnVjdCB2NGwyX2hldmNf
+ZHBiX2VudHJ5IHsKPiAJX191NjQJdGltZXN0YW1wOwo+IAlfX3U4CWZsYWdzOwo+IAlfX3U4CWZp
+ZWxkX3BpYzsKPi0JX191MTYJcGljX29yZGVyX2NudFsyXTsKPisJX19zMzIJcGljX29yZGVyX2Nu
+dF92YWw7Cj4gCV9fdTgJcGFkZGluZ1syXTsKPiB9Owo+Cj4tLSAKPjIuMzIuMAo+CgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
