@@ -4,64 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D225FC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 13:55:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EBC9C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 14:54:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CfwdvXxul30aujplnXULb+LEwOx94SVJf7tZ+jgec1o=; b=MxCO9/FPNd3rqEHSRc2CPOXeQE
-	Z1cT0GGwCuHF2nmYESV429EUQi2wI+ScfpflgIuhuQftPvX/Yv9gEuz5nrIQnWzVp1xnSj3pIjTZF
-	yv2nv+sQ1OCWx2Bmv3YhCHZOiwgyOB4pwIK/kn3BG5Wq9DG82DhAaJbVgRnJqrfTOoOAQPQ3RGWy7
-	lh8ImVvzCoXkjRFYz50zwILSVnPbLO3ZS/wZM1yLM6awqymyheUTgH6naQCwKf3ILXkX/4YWsAjQk
-	lC3fsvVSCfD7VzwSAis5nNgUsxqEDw625fV93wq93TVVd+e70etPYCYpMcTn7IOByDju4AwoULgsW
-	41G5U6GA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=hRXiI5mlPxfy3Vh0KX+AeV+Xm6yTkk6R0kGxsYEaCLE=; b=u1CC1JKBwnUffY
+	xM/hrAf4orDJVbHc3gAt6mj+7cMLWXrHPUyxInUw9rI3qnD94vLyVYbtpCavc1+iyU2XT8raasyLu
+	A5pd6dZp+8ClXNmak629chZFkl5hB7SobThqF6/waifQFHyXXC0feH17T7vXJKthSALyLC3kj3Zc3
+	56im+hv2Mus8g/lT/WdPb31fwLHHCqKe4rWxHXvJ5X8iZYH9EzT3EMFo9QQ8sEErcwZi/7lfryM3w
+	epx2ZB804OguTYrlfPtb9txLPXlt+09sKvxx3WBYLe6kJ438x3uop6Rm6z0Mpt2/uqSWFsJx5CbS1
+	7k7l2x4EyWeJZ486+t1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nizBK-009nD2-J2; Mon, 25 Apr 2022 13:55:14 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nj06X-009zdC-NK; Mon, 25 Apr 2022 14:54:21 +0000
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nizB4-009n6y-G8; Mon, 25 Apr 2022 13:55:00 +0000
-Received: from localhost (unknown [IPv6:2a02:3030:e:60d7:2277:ba57:a2c0:3])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- (Authenticated sender: sebastianfricke)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id D98E61F41B44;
- Mon, 25 Apr 2022 14:54:52 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650894893;
- bh=KOusw7cXs3MDqJINDlnUk/U6BRhfalYdRnA/nyjvGXI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=XhVxhs220pUU9U1AKATihNKU0yq5EJ3iWzgQnq0u6iLmGqcIOjPH6rk/dy7hKcunm
- T0KGfYQ7YpWCjjbLRmekISI/RIgw7CR8le0yXDYKeArrOoJs8FH9g+yWx3MAvXJAyM
- yy7PEa9lvNtxmtp5BJqVrEYjSgZ61hZuOvbVkFGGmdCSPVfBAFqykZcZa/ZyvYWVvv
- P2LGPB3gv4dtDdq5fxPZ8n44vKqtMU+nkL3QCmMAmPsYiKF7Lq7So/QbxupEIN+EIB
- CJIhVMQ+FAvfQ7NzdxY7LI7srXIvfHnRmfyqswESFG1f5yYGnWtaVwgcktvrcuCYRs
- WNdnBJ1qWzD2A==
-Date: Mon, 25 Apr 2022 15:54:49 +0200
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, hverkuil@xs4all.nl, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de, gregkh@linuxfoundation.org,
- mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
- jernej.skrabec@gmail.com, samuel@sholland.org,
- nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH v5 04/17] media: uapi: HEVC: Add missing fields in HEVC
- controls
-Message-ID: <20220425135449.oapsrqqyq34s2ii3@basti-XPS-13-9310>
-References: <20220407152940.738159-1-benjamin.gaignard@collabora.com>
- <20220407152940.738159-5-benjamin.gaignard@collabora.com>
+ id 1nj06U-009zbx-G1
+ for linux-rockchip@lists.infradead.org; Mon, 25 Apr 2022 14:54:20 +0000
+Received: by mail-yb1-xb35.google.com with SMTP id p65so27458656ybp.9
+ for <linux-rockchip@lists.infradead.org>; Mon, 25 Apr 2022 07:54:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=fooishbar-org.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=wQZr9eh6feQtr/PZGtNf/LwMxvChFvbqt8/adktEEqQ=;
+ b=gvIHaqnv6jfS42c36lLY6lisW4tYxSJgC1bTWmctt6ctqmPC4yh/WevUQTlEOZdI5k
+ iKEf45GKpMA2KJHUmu04NoMBcWDtNez8gHafIfCPBRl6zdLICRclaXXynym83ujfH+z7
+ EiXxhQO2pDc5eBG3+oXjotsvo/CfBLkR8CrGKNbJj45USajufyAl7BWfcyqUmN/G/N9L
+ vMf4WEIxb9v1mNvhDuecuXhnWAB75QB1fqToyxcVtDDaxfiGzs+xNh4f+Ou8yomoWdu/
+ 5Fxz2aPBNxBlYwWaXqDvoO1LHSRtT3Jc59+WwYgMlabS6DaiRYwuc1GXJGTfVEBvHGfz
+ 4fCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=wQZr9eh6feQtr/PZGtNf/LwMxvChFvbqt8/adktEEqQ=;
+ b=BxJquVdtG7jO9wZuAJtaSdhuVqfRtwVJguK1FSklUJLCtl9hA8Oy9UbhfajUmNTYMi
+ FVYygkCUHhPWLrAEygEtr1hdVL66DU/B9pzb79dKrlzjbKWeR98H5V8fqXz1X0R6Xsre
+ z8SyYArJIEamtRoKpu3xgvAOc/1xWnXhv+FIjGJNlOJvncRANRBEydFKZQqLjLTcc4gu
+ A43m7r2M+XhyocHGuhDGrzwVwpKL+a4tXNLsRuTXj2t54ji3IkBu1iW0oSvjo1mOxulk
+ 8xpvnDFQcikEP/a8PapHhUOe0itH7wL2l8W3qU+Zz1sWInwThTTypLesAJVMIny1r4xD
+ QbUw==
+X-Gm-Message-State: AOAM530ojRB8TWX1zoS2n/CWHyX2ozK2z6fnKfjriu0J9I6DaZTDY+wf
+ +lJhdHTfx8GNkXtgcsLp8Z4LKMEBk8yTvvc8M62w7w==
+X-Google-Smtp-Source: ABdhPJyrElEV7qCG3Q1FuffDboG6sUDbDbsFKP8JYu6HsO7gvchyUgm7pO59ejDQ+UjRitA9ybuc0WtMrtVOmkH2LI4=
+X-Received: by 2002:a25:1585:0:b0:63d:de88:5aa6 with SMTP id
+ 127-20020a251585000000b0063dde885aa6mr16508102ybv.201.1650898455071; Mon, 25
+ Apr 2022 07:54:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220407152940.738159-5-benjamin.gaignard@collabora.com>
+References: <20220328151116.2034635-1-s.hauer@pengutronix.de>
+ <FB201567-AE5A-4242-82F1-7C55D8F111EA@gmail.com>
+ <20220401125205.GL4012@pengutronix.de>
+ <5420D26D-34FD-4637-B602-F6271E38BB8D@gmail.com>
+ <BA4C591F-D115-43D2-BF59-A75B29889E50@gmail.com>
+ <20220408080748.GA2387@pengutronix.de> <20220408120021.GO4012@pengutronix.de>
+ <B3E76A7A-9B62-4E6F-9472-00B6298689C5@gmail.com>
+ <20220411090800.GR4012@pengutronix.de>
+ <5929E7A7-776E-4BCB-92C8-A1CE05774FE3@gmail.com>
+ <20220412075034.GS4012@pengutronix.de>
+ <e2ef484b60fe9c5fc077240a26bd18275974dc4a.camel@pengutronix.de>
+ <EF0F8E87-2618-4E5E-807D-259FEEC0FB24@gmail.com>
+ <CAPj87rNatQ9KjDSnYQTh4+FOUcPTerbzH3m8AuAF_BPbM1xxGg@mail.gmail.com>
+ <EE789168-EEFD-4231-96D5-9E62AED6D08C@gmail.com>
+In-Reply-To: <EE789168-EEFD-4231-96D5-9E62AED6D08C@gmail.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Mon, 25 Apr 2022 15:54:03 +0100
+Message-ID: <CAPj87rNr4c=xpp2XSsQ17da-gOoGBzf6scA1pZCOO_5CTqLjwg@mail.gmail.com>
+Subject: Re: [PATCH v9 00/23] drm/rockchip: RK356x VOP2 support
+To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Cc: Lucas Stach <l.stach@pengutronix.de>, 
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Peter Geis <pgwipeout@gmail.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Sandy Huang <hjc@rock-chips.com>, 
+ dri-devel@lists.freedesktop.org, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Lucas Stach <lst@pengutronix.de>, 
+ Michael Riesch <michael.riesch@wolfvision.net>, kernel@pengutronix.de, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_065458_956874_66D17CDE 
-X-CRM114-Status: GOOD (  17.78  )
+X-CRM114-CacheID: sfid-20220425_075418_600198_9A848BCA 
+X-CRM114-Status: GOOD (  23.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,131 +101,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07.04.2022 17:29, Benjamin Gaignard wrote:
->Complete the HEVC controls with missing fields from H.265 specifications.
->Even if these fields aren't used by the current mainlined drivers
->they will be need for (at least) rkvdec driver.
+Hi Piotr,
 
-s/be need/be required/
-or
-s/be need/be needed/
-
-s/rkvdec/the rkvdec/
-
+On Fri, 15 Apr 2022 at 12:11, Piotr Oniszczuk <piotr.oniszczuk@gmail.com> wrote:
+> Looking on Qt sources it looks to me this format should be supported:
 >
->Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->---
-> .../media/v4l/ext-ctrls-codec.rst             | 19 +++++++++++++++++++
-> include/media/hevc-ctrls.h                    |  6 +++++-
-> 2 files changed, 24 insertions(+), 1 deletion(-)
+> https://code.qt.io/cgit/qt/qtbase.git/tree/src/platformsupport/kmsconvenience/qkmsdevice.cpp?h=5.15.2#n380
 >
->diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
->index 4cd7c541fc30..dbb08603217b 100644
->--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
->+++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
->@@ -2661,6 +2661,16 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->     :stub-columns: 0
->     :widths:       1 1 2
+> Interesting that with custom Qt config1: "format": "argb8888",
+> DRI state shows: format=AR24 little-endian (0x34325241)
 >
->+    * - __u8
->+      - ``video_parameter_set_id``
->+      - Specifies the value of the vps_video_parameter_set_id of the active VPS
->+        as descibed in section "7.4.3.2.1 General sequence parameter set RBSP semantics"
->+        of H.265 specifications.
->+    * - __u8
->+      - ``seq_parameter_set_id``
->+      - Provides an identifier for the SPS for reference by other syntax elements
->+        as descibed in section "7.4.3.2.1 General sequence parameter set RBSP semantics"
->+        of H.265 specifications.
->     * - __u16
->       - ``pic_width_in_luma_samples``
->       -
->@@ -2800,6 +2810,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->     :stub-columns: 0
->     :widths:       1 1 2
+> UI is OK, playback is OK. OSD not visible (*)
 >
->+    * - __u8
->+      - ``pic_parameter_set_id``
->+      - Identifies the PPS for reference by other syntax elements.
->     * - __u8
->       - ``num_extra_slice_header_bits``
->       -
->@@ -3026,6 +3039,12 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->     * - __u8
->       - ``ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
->       - The list of L1 reference elements as indices in the DPB.
->+    * - __u16
->+      - ``short_term_ref_pic_set_size``
->+      - Specifies the size of short-term reference pictures set included in the SPS.
-
-s/size of/size of the/
-
-Section 7.4.8 depicts that the st_ref_pic_set syntax
-structure can be part of the SPS or the slice header.
-
-I think we should mention that we talk about the size of the st_ref_pic_set
-syntax structure from section 7.4.8 of the specification. 
-
->+    * - __u16
->+      - ``long_term_ref_pic_set_size``
->+      - Specifies the size of long-term reference pictures set include in the SPS.
-
-s/size of/size of the/
-
-Can we make this a bit more helpful? The specification doesn't contain
-a similar structure to `st_ref_pic_set` for long term pictures. So, as a
-programmer this leaves me guessing:
-- Which syntax structure's size are we talking about?
-- Does this correlate to any of the existing sections of the
-specification?
-Because in the end, I feel like this documentation should be able to
-help a programmer to provide the correct data for the uABI.
-
-Greetings,
-Sebastian
-
->     * - __u8
->       - ``padding``
->       - Applications and drivers must set this to zero.
->diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
->index 01ccda48d8c5..a329e086a89a 100644
->--- a/include/media/hevc-ctrls.h
->+++ b/include/media/hevc-ctrls.h
->@@ -58,6 +58,8 @@ enum v4l2_mpeg_video_hevc_start_code {
-> /* The controls are not stable at the moment and will likely be reworked. */
-> struct v4l2_ctrl_hevc_sps {
-> 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Sequence parameter set */
->+	__u8	video_parameter_set_id;
->+	__u8	seq_parameter_set_id;
-> 	__u16	pic_width_in_luma_samples;
-> 	__u16	pic_height_in_luma_samples;
-> 	__u8	bit_depth_luma_minus8;
->@@ -108,6 +110,7 @@ struct v4l2_ctrl_hevc_sps {
+> custom config2: "format": "abgr8888"
+> Qt crashes with EGL_BAD_MATCH
 >
-> struct v4l2_ctrl_hevc_pps {
-> 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture parameter set */
->+	__u8	pic_parameter_set_id;
-> 	__u8	num_extra_slice_header_bits;
-> 	__u8	num_ref_idx_l0_default_active_minus1;
-> 	__u8	num_ref_idx_l1_default_active_minus1;
->@@ -199,7 +202,8 @@ struct v4l2_ctrl_hevc_slice_params {
-> 	__u32	slice_segment_addr;
-> 	__u8	ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
-> 	__u8	ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
->-
->+	__u16	short_term_ref_pic_set_size;
->+	__u16	long_term_ref_pic_set_size;
-> 	__u8	padding;
+> So it looks forcing some Qt formats works while other - not.
 >
-> 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction parameter */
->-- 
->2.32.0
+> Looking why this:
 >
+> Qt logging says nothing.
+> export MESA_DEBUG=1 gives no any message. I'm a lost here a bit...
+
+I bet if you dumped the gbm_surface format (passed by Qt as a
+parameter to gbm_surface_create_with_modifiers or gbm_surface_create)
+and the EGLConfig's EGL_NATIVE_VISUAL_ID (from eglQueryConfig), you
+would see that the format tokens are different. Which is a Qt coding
+error.
+
+> But from a bit more distant perspective:
+>
+> 1. Sascha concludes in (*) that issue is most probably in format negotiation by app.
+>
+> 2. imho app probably correctly negotiates accordingly to inputs it gets from providers (DRM) and clients (mesa).
+> Test with patch excluding
+> DRM_FORMAT_XRGB8888,
+> DRM_FORMAT_ARGB8888,
+> shows imho proper app reaction on this (new format elected; but Qt fails with this format). Indirectly i conclude app logic is ok....
+>
+> 3. Sum of p1 & p2 tells me:
+> i need to add extra logic in format election to specifically deal with constrains of rk356x (see explanation in (*))
+
+I disagree. I looked at a clone of Qt, and I could not see a coherent
+path that ensured that the gbm_surface format chosen by Qt matched the
+EGLConfig format used on that EGLSurface. A mismatch is an error.
+
+There are some workarounds allowing you to specify a format, however
+those only work by coincidence sometimes. Even with the explicit
+format specification, Qt never makes any attempt to match gbm_surface
+and EGLConfig formats; it just hopes that they will match by
+coincidence.
+
+There is no additional complexity or strangeness that RK356x is
+introducing here. It only works by pure luck on other platforms.
+
+> 4. Even if i implement p3 - then user world - (this using Qt) - will be not happy as:
+> - majority users are using pre-build Qt
+> - I don't believe Trolltech will fix this soon
+>
+> So i see following path:
+>
+> we will verify is issue of Qt with abgr8888 an Qt root cause issue,
+>
+> If Yes - then:
+>         - Investigate is there reasonable way to workaround with this outside of Qt?
+> If not - then:
+>         - conclude: vop2 - due Qt bug - will not work ok with Qt until Qt will be fixed.
+>
+>
+> If you think this make sense - i need some help with: verify is issue of Qt with abgr8888 an Qt root cause issue
+
+Unfortunately there is no reasonable workaround outside of Qt. Looking
+at the Qt/QPA source tree, it looks like the usual way of 'fixing'
+this is to hack platform specific configuration into the Qt backend.
+If Qt won't be fixed to use generic APIs correctly, then I guess your
+best option is to just hack up yet another platform-specific backend.
+Which is a shame, but there is no reasonable workaround we can do in
+low-level code for toolkits doing the wrong thing and hoping it works.
+
+Cheers,
+Daniel
 
 _______________________________________________
 Linux-rockchip mailing list
