@@ -4,86 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE808C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 19:38:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3542CC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 19:44:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nbmuqpiJp4a7NkKavotEDGGYP1yam2a9jD1njE/Sqco=; b=SzFzrfGUf2qpDC
-	yPMZWE8O+Rx+NIDBV2B881CVzi3unY1zS/1tRQHIs5bbQw03XQhA6yA5nTkJz9NDW16eeyo0LF0jD
-	rwMOXHpofMw88BmjrqXQr19bZfB5IKZMXiewlbIRmrk3sctp2L6s0D6gImXw0+GrFYP4wfZdC2HeO
-	e9vJAIWISNB7XJ+I6EJrxOPps1Z5KNlckFqlD+kj9RoPN+kFfZx67NmOWa55GHRB+HxFnJUm5tiOT
-	/luzsc2+3CEDawCEBuxlFTLcp/CM1JuDdp6GfZklP60SggRZBpMzpdSk8PdHMbE+wYMKCSrw/p/cy
-	UhFU/0vuZ10PMwGXz34g==;
+	List-Owner; bh=VCLexrzm7Jyk2Sx1dY8UYebwjIB4+IxBUyMxK1d3yPM=; b=L0XSAMMAigjWSh
+	c1j9WXdiMBx4LmIJnK+qJeCvvHsbrqUuIzndatAYvYAXBSWCIegCZdbz0y24Tr0ttMwXwD3gZWSGp
+	UoA9Mp9xAYlhmIgNqtflqNE55gvpqb1YulK7Xl1kTP1cCSjpXB5k3+f9QdhFll2oWx1SbdMTHQs3M
+	P7Hd68knloJSegE1bUfARg/+jPKCVDOEb2HMmHBhCDCtnAfV+aQMW2FHDWXN+4eW+FoQq/sJ+IqKu
+	IP4gZUvr/Z9FZZHk7+CkLLYFEURqPdBEyGSoi7AFIe0fnMHHsCPzDrFzaBZQHLSVDNJDRqhhu3IHH
+	6Q6tp8nigD4y98xj22pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nj4X8-00B58m-3F; Mon, 25 Apr 2022 19:38:06 +0000
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+	id 1nj4d7-00B6Aq-Kk; Mon, 25 Apr 2022 19:44:17 +0000
+Received: from mail-oo1-f41.google.com ([209.85.161.41])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nj4Wv-00B54P-Tj; Mon, 25 Apr 2022 19:37:55 +0000
-Received: by mail-yb1-xb32.google.com with SMTP id d12so9753990ybc.4;
- Mon, 25 Apr 2022 12:37:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Sv8hAStxtYZLA7ttjMHDmBWNkg9R0he6yilL9E/on7U=;
- b=Rm3XivQgs/+qfHTgBRxz6EnqsR5YnGqXNq6SpUmHifFzrPauwn6vlgLyAEZRxGkVne
- NUaFb6Sw7lnrNY59Nk0EjE1hAHqwuQPTmDo19XR5IhO9RnkLG4gEUzH50njFyZm9sc/f
- jvwRM/jT2L4tq7uFD9+qrAOKMFp1CSeZaenkXELOGulEVO6y8F3JIEPpR/CxTkQAkYQC
- Bn8QW/c2vyY6sgOjIsJil8UIhvRGlwr0XIW0Eh+tA2qHxqrdyFdT0uTnK1X2ShxEq2zh
- le/736GlWszQIlmHgbntrvfmZVq9ZvbRkwcHcQlj4cvpTv5jCIiCYxxyl4ELBG6OhXzW
- jxdA==
+ id 1nj4cv-00B67R-Jn; Mon, 25 Apr 2022 19:44:07 +0000
+Received: by mail-oo1-f41.google.com with SMTP id
+ f2-20020a4a8f42000000b0035e74942d42so32105ool.13; 
+ Mon, 25 Apr 2022 12:44:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Sv8hAStxtYZLA7ttjMHDmBWNkg9R0he6yilL9E/on7U=;
- b=IapvQ6KgykokB68vB8u9l1kVSdF8zU9Dv9aNSbJIP6YFQhshnrPB3x109Z5/b1h1R/
- +r21uUaphELvi24tFeWdRAgNq0bYYwYbnRLqRyK2cxtFh43GHot0Bir7L7XM8mCtuur0
- OP2DQROYxULgQMzkVeu4FF6IiMxDSkENFD7NsAlkKX2iIPfhESH4JecvCg73Z2dNHTvR
- BZUmUdcLLdUCrkVF23hcPmKQzrsloZSsG9hxgAbP5wBkhJySrm9RoYqIcLRAHAeth06K
- sbfoOXQuYiz/JuLxcZfYxaxELH0q4o9Mo2XIJosDRqqpJ90v2iypGA4F7SjNMYL4MBey
- ysPA==
-X-Gm-Message-State: AOAM533ufFtyFiXVF0shP6FkAb0E8ksbiIbfTtWZ6O3H1SQyHq1AaAfZ
- JpWXdaG6Nv0U7vp52SXsfqB1kV71WnwU8IAhgoA=
-X-Google-Smtp-Source: ABdhPJx+MAl3lvFKD1Qba4L7n1K5/ljEL1sT3HVJgvt1iDEvua5oqXeT4ma4s6OJVaASqyJ8hlGCcxr5ZDsfp4axFO8=
-X-Received: by 2002:a25:af14:0:b0:645:36f1:c584 with SMTP id
- a20-20020a25af14000000b0064536f1c584mr17794206ybh.366.1650915472252; Mon, 25
- Apr 2022 12:37:52 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220422170920.401914-1-sebastian.reichel@collabora.com>
- <20220422170920.401914-19-sebastian.reichel@collabora.com>
- <36551341-60f5-8b61-59d1-176ece8204d6@arm.com>
- <20220425181407.lknemxqooz7yidcz@mercury.elektranox.org>
-In-Reply-To: <20220425181407.lknemxqooz7yidcz@mercury.elektranox.org>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Mon, 25 Apr 2022 15:37:41 -0400
-Message-ID: <CAMdYzYr4ZNDzLGn-ArT4dW+F5c598rsWpACNMpuJRMY7a0yb=A@mail.gmail.com>
-Subject: Re: [PATCHv1 18/19] arm64: dts: rockchip: Add base DT for rk3588 SoC
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, 
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, 
- Adrian Hunter <adrian.hunter@intel.com>, Ulf Hansson <ulf.hansson@linaro.org>, 
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=3MgO8upGLQIT7MA1c1wZtenkS69Cr8OOjspSzkPpmss=;
+ b=d0HjTrWDPMnQ36mcVvx5q7B600iAoaIsRkVxI+7kXKNGPQXgCGEPituXYoBqsOarwD
+ yStMNGiaIHcWJsS+/FKG0e5bLGzBZz9y7k+iTshvadG09CR8IshGjooH4OqvhT5dz8yo
+ 1k05cUM16iXk/hArhgBZA1YRFNMbko5flzH/e4Mx+UUDxUq2GD5oZaPflkCCPC8QbMUe
+ jfCbbac1P7PDvpAvMIYHhwLVwnLPf5PhrGh/CR95etfrCne4cmdMarxvwHM21Ff/5mSQ
+ am5hmT+5ch8y+7ZLhFdBy4DFptHZLM6VMOAuz95TFK3seqzMPyFjGqG4JX7wB25c/6/1
+ upIQ==
+X-Gm-Message-State: AOAM533ChZ0ynGi7Ogl0uNQQI7Z81PvBQ9McPy8NzQn0yNnXa2f+d4t1
+ cz5yyWuVkfVhjNSGjCkkQQ==
+X-Google-Smtp-Source: ABdhPJwf4Xyx+/VQ5kGcMOPdAcQfh7fvYOnVekrEwwDVyJaLDX2aks6e0Ho5r/lUEmXwJDUSbQPsMg==
+X-Received: by 2002:a4a:dfd7:0:b0:35e:499c:7bb5 with SMTP id
+ p23-20020a4adfd7000000b0035e499c7bb5mr4695942ood.36.1650915843421; 
+ Mon, 25 Apr 2022 12:44:03 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ f63-20020a9d2c45000000b005e973e22081sm4115852otb.37.2022.04.25.12.44.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 25 Apr 2022 12:44:02 -0700 (PDT)
+Received: (nullmailer pid 141172 invoked by uid 1000);
+ Mon, 25 Apr 2022 19:44:01 -0000
+Date: Mon, 25 Apr 2022 14:44:01 -0500
+From: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Adrian Hunter <adrian.hunter@intel.com>, Ulf Hansson <ulf.hansson@linaro.org>,
  Philipp Zabel <p.zabel@pengutronix.de>,
- Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
- linux-mmc@vger.kernel.org, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- devicetree <devicetree@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- kernel@lists.collabora.co.uk, 
- Kever Yang <kever.yang@rock-chips.com>, kernel@collabora.com, 
- Yifeng Zhao <yifeng.zhao@rock-chips.com>,
- Elaine Zhang <zhangqing@rock-chips.com>, 
- Sugar Zhang <sugar.zhang@rock-chips.com>
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ linux-clk@vger.kernel.org, linux-mmc@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, kernel@lists.collabora.co.uk,
+ Kever Yang <kever.yang@rock-chips.com>, kernel@collabora.com
+Subject: Re: [PATCHv1 19/19] arm64: dts: rockchip: Add rk3588-evb1 board
+Message-ID: <Ymb6AWcLkUnqsslp@robh.at.kernel.org>
+References: <20220422170920.401914-1-sebastian.reichel@collabora.com>
+ <20220422170920.401914-20-sebastian.reichel@collabora.com>
+ <46e72600-b96a-03a9-134d-28a0cb4bc078@linaro.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <46e72600-b96a-03a9-134d-28a0cb4bc078@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_123754_016273_3FA48C6C 
-X-CRM114-Status: GOOD (  23.33  )
+X-CRM114-CacheID: sfid-20220425_124405_733148_7229E35E 
+X-CRM114-Status: GOOD (  23.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,70 +93,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 25, 2022 at 2:14 PM Sebastian Reichel
-<sebastian.reichel@collabora.com> wrote:
->
-> Hi,
->
-> Thanks for having a look.
->
-> On Fri, Apr 22, 2022 at 07:16:13PM +0100, Robin Murphy wrote:
-> > On 2022-04-22 18:09, Sebastian Reichel wrote:
-> > > ...
-> > > +           cpu_l0: cpu@0 {
-> > > +                   device_type = "cpu";
-> > > +                   compatible = "arm,cortex-a55";
-> > > +                   reg = <0x0>;
-> > > +                   enable-method = "psci";
-> > > +                   capacity-dmips-mhz = <530>;
-> > > +                   clocks = <&scmi_clk SCMI_CLK_CPUL>;
-> > > +                   i-cache-size = <32768>;
-> > > +                   i-cache-line-size = <64>;
-> > > +                   i-cache-sets = <128>;
-> > > +                   d-cache-size = <32768>;
-> > > +                   d-cache-line-size = <64>;
-> > > +                   d-cache-sets = <128>;
-> > > +                   next-level-cache = <&l2_cache_l0>;
-> > > +                   #cooling-cells = <2>;
-> > > +                   dynamic-power-coefficient = <228>;
-> > > +           };
-> >
-> > Is there any particular reason for not including more of the CPUs?
->
-> Yes, see below.
->
-> > > +           its: interrupt-controller@fe640000 {
-> > > +                   compatible = "arm,gic-v3-its";
-> > > +                   msi-controller;
-> > > +                   #msi-cells = <1>;
-> > > +                   reg = <0x0 0xfe640000 0x0 0x20000>;
-> > > +           };
-> > > +   };
-> >
-> > Does the ITS (and other bits related to GIC memory accesses) actually work,
-> > or will we have more of the same issues as RK356x?
->
-> The GIC in RK3588 is has the same shareability limitation as the RK356x,
-> but fixed the 32bit limitation. That's why I just added the boot cpu core
-> for now; adding any other cpu core breaks the boot without the downstream
-> shareability patch and I'm still investigating.
+On Sat, Apr 23, 2022 at 12:09:21PM +0200, Krzysztof Kozlowski wrote:
+> On 22/04/2022 19:09, Sebastian Reichel wrote:
+> > From: Kever Yang <kever.yang@rock-chips.com>
+> > 
+> > Add board file for the RK3588 evaluation board. While the hardware
+> > offers plenty of peripherals and connectivity this basic implementation
+> > just handles things required to successfully boot Linux from eMMC
+> > and connect via UART.
+> > 
+> > Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> > [rebase, update commit message, use EVB1 for SoC bringup]
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > ---
+> >  .../devicetree/bindings/arm/rockchip.yaml     |  5 +++
+> >  arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+> >  .../boot/dts/rockchip/rk3588-evb1-v10.dts     | 34 +++++++++++++++++++
+> >  3 files changed, 40 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> > 
+> > diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> > index eece92f83a2d..b14d0c84c69b 100644
+> > --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> > +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> > @@ -664,6 +664,11 @@ properties:
+> >            - const: rockchip,rk3568-bpi-r2pro
+> >            - const: rockchip,rk3568
+> >  
+> > +      - description: Rockchip RK3588 Evaluation board
+> > +        items:
+> > +          - const: rockchip,rk3588-evb1-v10
+> > +          - const: rockchip,rk3588
+> > +
+> >  additionalProperties: true
+> >  
+> >  ...
+> > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> > index 4ae9f35434b8..8a53ab6d37a1 100644
+> > --- a/arch/arm64/boot/dts/rockchip/Makefile
+> > +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> > @@ -61,3 +61,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.2.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-a.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
+> > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-evb1-v10.dtb
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> > new file mode 100644
+> > index 000000000000..68b19acb1550
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts
+> > @@ -0,0 +1,34 @@
+> > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> > +/*
+> > + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
+> > + *
+> > + */
+> > +
+> > +/dts-v1/;
+> > +
+> > +#include "rk3588.dtsi"
+> > +
+> > +/ {
+> > +	model = "Rockchip RK3588 EVB1 V10 Board";
+> > +	compatible = "rockchip,rk3588-evb1-v10", "rockchip,rk3588";
+> > +
+> > +	chosen {
+> > +		stdout-path = "serial2:1500000n8";
+> > +	};
+> > +};
+> > +
+> > +&sdhci {
+> > +	bus-width = <8>;
+> > +	no-sdio;
+> > +	no-sd;
+> > +	non-removable;
+> > +	max-frequency = <200000000>;
+> > +	mmc-hs400-1_8v;
+> > +	mmc-hs400-enhanced-strobe;
+> > +	status = "ok";
+> > +};
+> > +
+> > +&uart2 {
+> > +	status = "ok";
+> 
+> Usually status goes at the end of properties and rockchip sources use
+> "okay" instead of "ok".
 
-There's no way to avoid this issue unfortunately.
-See my awful hacked together patch:
-https://gitlab.com/pine64-org/quartz-bsp/linux-next/-/commit/8b34fd2a74321f8f5d7731b63eee0f9e03d1393b
+"okay" is what's documented in the spec and in the schemas, so please 
+fix. 
 
-Considering the ITS exists pretty much just for MSIs, and my PCIe
-series introduces support for legacy interrupts, you may get away with
-doing the mbi-alias currently implemented in rk356x.
-Note, there are *some* compatibility issues with mbi-alias MSIs,
-particularly with high IRQ cards like the Intel x520.
+No need for reviewers to tell you this though, please run 'make 
+dtbs_checks' on the dts file and don't add new warnings.
 
->
-> -- Sebastian
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
