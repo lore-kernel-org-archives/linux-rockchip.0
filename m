@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C573AC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 12:33:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB23EC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 12:33:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jx4tIuju/8Rju1UHua5+KcY3nRRFFVMrSP7GzsA5Auk=; b=ucQwZY3r0VKtqd
-	KhKUVPPOW1XDXtBY7hbPNzArAPkWgx4U2sgQcjqipjvsF8emPMOCOc+vEzSZmv7B3KY7VPb/uAtQn
-	m9RNW6eBDvZNcVompzfNvc37W9Y1+A1HDmPExTbSBuM7wXM/d4Y9jUcifimu7j083MRWHowuPbZs6
-	ouT+pNQqApgowlNIxV4M+hmyPXx7T9M6OXRI1elqKIOqyuYg4WjWjL+HVfMTFQBiv+s2a7ORaOCSD
-	fETT28TRZqpASwxo48V+ksizszv8Dadi7wj+BG1HHoQAgYyxqAw4m5bCCtEUIeQ9h2Mv4yZ96xsl3
-	sJr76R6/fJUXySvCTrrg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+MOZYfUSxnKk/SyX/bkIViIm7ZhW/ad0Jsjl88O0F2I=; b=e+qWo1i17erTZg
+	FOY9e96x9v6QCivtWqDGrwvL7Lnv920zkdjb56jjMktRen6YbDUk20h/2+J5YlKkI6P8IWuT1gsEw
+	HPIgZf4LG+8HkVOMFtcpW3biDiiSZmbNgDNmCc8TlOckyFnTQWlyH1/JNs3kBYWmPYH8Ozov5VdJE
+	GjJn89rYxrj7GwTPPF4EEkBY6PR/CWE+mA+zcD7aD9QYeEOWZ61TzzO+bXiAecptc7lWs/xND8uc3
+	HJrH/3Q04wlSZqoJ48Ye2fkXYcSPKr3nf65nVSZhTZxbzJTYgvQxrJ92uclYkLCufvNwgMwUfI+bm
+	+fOO4GYRH0jXnKR0hF5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nixtv-009VBK-Kc; Mon, 25 Apr 2022 12:33:11 +0000
+	id 1nixuP-009VRI-A4; Mon, 25 Apr 2022 12:33:41 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nixtO-009Uyd-3C; Mon, 25 Apr 2022 12:32:39 +0000
+ id 1nixtO-009Uyc-3B; Mon, 25 Apr 2022 12:32:39 +0000
 Received: from obbardc-laptop.home (unknown
  [IPv6:2a00:23c7:6883:e501:cf51:f3a2:10b5:accf])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: obbardc)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 19F0C1F43534;
- Mon, 25 Apr 2022 13:32:32 +0100 (BST)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id BDF171F43529;
+ Mon, 25 Apr 2022 13:32:27 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
  s=mail; t=1650889952;
- bh=6dPC6V3Efid0jyddZB9luhvds1hVGmHlsOLFj8lBtIY=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Hq9Ww1b9ymuOpIy6SMSdokQoqUUWPdVbTgXkuvcx+OjHvQUp3xWiI04H1bFlselRV
- zXLbCxo9S4vpiqN7dqxbrMDaBLC7Cyw3m0VV48e1NkyVG75LchfGRp9Hp0TzcOILlh
- STH5I9CWMCNFo0Xr5LFxqS6ztZx9L5R8QrYzGCIW6Nbj0lQa+aQ6FJPEzqainNm2O+
- MVXCb7A4KFceoBG/aVh9S0S1t7XxqKN5kYdSWXpcfuD+7tIahf5tCH4DWDldnLJJVv
- nMqLobUK1G7ZpAhQ0y0PRxtKlUAsGGBzAmQwp+NKl07CZhLmvKfcUhb7ROcaOv3lIW
- nR1hLOK6pUKAg==
+ bh=0RLY0AvODmXKcFUYfeALdqinoBMAga8pPmBnDWL/Q9c=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Tq6rlV8r1JqEu97gVwaJB9UdEYlq9wCw7JiKFMPpSz3vLyPVfX2bH+HJ0csLD6Yvs
+ xmSAhkXuKNC0NRr+5mltd+e7npsSqR3SltJBnwE5gemWwzFx4Drf+FMkJMMAspeD3g
+ Yji0Boiq1TNqd61WAoT0XXJRMJpMyN7kr7uJdL/xgOWe9n/G4tuTwBPmV3XmXk1gpF
+ pNc7MwhxzWKNsd4OI0VEpduju95YZkR0SzSRwmZumTub8gBd4cdQTLcHbwSXgiW9p4
+ Q6p1HU4imNOgVDYhLW2BvP2GP3iiAcjlcez13DNfLVfhS5DwUP8ZunRJsrjrUABYv0
+ 35p7J+rtMJhKQ==
 From: Christopher Obbard <chris.obbard@collabora.com>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
@@ -51,17 +51,14 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, kernel@collabora.com,
  Christopher Obbard <chris.obbard@collabora.com>
-Subject: [PATCH v2 1/3] media: dt-bindings: media: rockchip-vdec: Add RK3328
- compatible
-Date: Mon, 25 Apr 2022 13:32:13 +0100
-Message-Id: <20220425123215.1055251-2-chris.obbard@collabora.com>
+Subject: [PATCH v2 0/3] Rockchip RK3328 VDEC support
+Date: Mon, 25 Apr 2022 13:32:12 +0100
+Message-Id: <20220425123215.1055251-1-chris.obbard@collabora.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220425123215.1055251-1-chris.obbard@collabora.com>
-References: <20220425123215.1055251-1-chris.obbard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_053238_302535_A108252D 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20220425_053238_312294_93574B9C 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,27 +76,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document the RK3328 compatible for rockchip-vdec.
+This series adds VDEC support for the Rockchip RK3328 SoC which
+uses the staging rkvdec driver.
 
-Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
----
- Documentation/devicetree/bindings/media/rockchip,vdec.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+Testing was performed using both v4l-compliance and (mainline) gstreamer
+using the fluster framework:
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-index 089f11d21b25..ce06835e8d61 100644
---- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-@@ -20,6 +20,9 @@ properties:
-       - items:
-           - const: rockchip,rk3228-vdec
-           - const: rockchip,rk3399-vdec
-+      - items:
-+          - const: rockchip,rk3328-vdec
-+          - const: rockchip,rk3399-vdec
- 
-   reg:
-     maxItems: 1
+    $ v4l2-compliance -m0
+    v4l2-compliance 1.22.1, 64 bits, 64-bit time_t
+    ...
+    Grand Total for rkvdec device /dev/media0: 54, Succeeded: 54, Failed: 0, Warnings: 0
+
+
+    $ python3 fluster.py run -j1 -ts JVT-AVC_V1 -d GStreamer-H.264-V4L2SL-Gst1.0
+    ...
+    Ran 111/135 tests successfully               in 392.885 secs
+
+
+    $ python3 fluster.py run -j1 -ts VP9-TEST-VECTORS -d GStreamer-VP9-V4L2SL-Gst1.0
+    ...
+    Ran 206/303 tests successfully               in 1170.120 secs
+
+
+Changes in v2:
+ - Fix mistake in dt-binding compatible documentation
+ - Remove unused reset nodes from devicetree
+ - Improve some commit messages
+ - Check all dts files against dtbs_check
+ - Collect review tags on unchanged patches
+
+Christopher Obbard (3):
+  media: dt-bindings: media: rockchip-vdec: Add RK3328 compatible
+  arm64: dts: rockchip: Rename vdec_mmu node for RK3328
+  arm64: dts: rockchip: Add vdec support for RK3328
+
+ .../bindings/media/rockchip,vdec.yaml         |  3 +++
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi      | 22 +++++++++++++++++--
+ 2 files changed, 23 insertions(+), 2 deletions(-)
+
 -- 
 2.34.1
 
