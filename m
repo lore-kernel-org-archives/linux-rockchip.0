@@ -4,73 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B4FAC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 17:19:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18C77C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 17:27:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=im2a7ZzkAtyAPj5H0Y5HInS069N4zgqAbA4jIbvsGuI=; b=eb4eVwLS9xyx3w
-	IWP08vhmhkDUOdvIdwNqZcUsbvq5aIqiWQX1PtI439YdRSCsrjafhlTAPBQ2I34VJJppo/JXx6X9Z
-	Yl2LnnZZjmUSyiued91jvDS6JGjQJnF59l5VItDlpLhWK9Yb3EhPrUOalQQ+fFRT7EG7h1mWaqSCH
-	KUQyv+FvcQtOKXlsQ1RREqyFJ5Bv9EGMuPNYJYs/ajlwEjKqRLdNjbPN7OiFk42Nqmxc/fTAQPUA/
-	5a9Pxynjwr59PWD30zV4u4y8+S21QXKY/8iW2YdkB1cvbvaTbpDYTiHZA6bl+aw07FKUkTKJbxQrF
-	ZShZLX2g85MDr5XwKevQ==;
+	List-Owner; bh=HEIQuBbDqXHyPa5fegmrIFWLW7d9RZy3jS8GixhF53E=; b=s1UmWLI2wRknQD
+	dOeKt0NaRrD6aVCay4Hb4J/9jcmTLro9uzItDD7P1jd0yTKVLPzQYzBl+lHrhjPgXcXsAiwdjs9bB
+	AaqTGsklJdYoU9zLsfA7kP1uh+NkwWBaoNzUQLSQpT6dwxaaKqMAU0adsmwT6zFg8FOAnwiS6sdtC
+	aNQqofR1UigCmGFiE/MYoCuBwkzcr5YjKtIwzOsmnmm7zf1kHysaVZAFzgCo8hJjfYNUGeUFdXxBC
+	YFDdbSXEdw0IPUTsN2+LM4bWA5S4R+qqkU+IKsPlwlWy1VCWDyxelXvuh/RMpivz/yRI1YbQGkZtR
+	XRmFtVFuifXSGHyd0r2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nj2Ml-00Abmc-Ba; Mon, 25 Apr 2022 17:19:15 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1nj2Uc-00AfDj-MV; Mon, 25 Apr 2022 17:27:22 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nj2LU-00Ab7Y-AK
- for linux-rockchip@lists.infradead.org; Mon, 25 Apr 2022 17:17:57 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id a11so4168760pff.1
- for <linux-rockchip@lists.infradead.org>; Mon, 25 Apr 2022 10:17:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=LB+mmEmtSM6N/iMNtUelrgbgK3X940eJfV3qLOHCqJ4=;
- b=cZTNmb7GwCW+IZWsIPO1vgRVD3FnUtDriF1O9qu9/UbUYS26dkKEtaLGcELgRCS/hH
- H08NYddXndDAKi5uEjRfS43PQ8rW2hCBndV4UbwTnYO8r1beyLeaJxnn2mZREIfeOkVH
- bThY/Q1PtUPFRH2ZCl2adO8d24xCmd7iLCEzE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=LB+mmEmtSM6N/iMNtUelrgbgK3X940eJfV3qLOHCqJ4=;
- b=FoQQ/NG/2zt0Gq8M2SUYlUwMp97kp1l21ih9Sq8sxVV8wGxxyli4QFfrPKgvM1Od8j
- t9Ao+FUpRiiZkZH8Vyd2GHG85VRfVyjem20++8K9FheqyWP16pjVExobWdBzf3XA60zi
- OfgOk7f6hvrWrM8qLlXNsf6RiEQJ2zOvVSZP9y1VW61ywThxz7swgmHgEjoZxGgJoZxS
- /MFz/wXuDW8kXym4iruh1hEjWZGfM47753HTb1h+lxkJfr4/Ej3ePvanTI0tRFPtDzP+
- EWPmbYMk7incHLNDFhJV5DuPNVuhCHo4iLp/4j0Q/smYO4CTPhO+T3fk8GnDzBQ6Ow3/
- 8U9g==
-X-Gm-Message-State: AOAM5316wfPLGeRn1Vi7+s82guUZxJ/utkb8RDaW55Mne6gNc5gQrpDW
- ZAkBAmOCHTkMksfuOcsGkA4XSQ==
-X-Google-Smtp-Source: ABdhPJznoB/9Z0WWQLZbk3TSWrZBwAo/tkD3Ukr5vZ9klzHak9BNDS/s+EzAwjs3AK8oT+ejZ9QrNw==
-X-Received: by 2002:a62:b50d:0:b0:50d:43b8:f2cb with SMTP id
- y13-20020a62b50d000000b0050d43b8f2cbmr4708758pfe.13.1650907071876; 
- Mon, 25 Apr 2022 10:17:51 -0700 (PDT)
-Received: from localhost ([2620:15c:202:201:3897:4488:e7c2:f2a1])
- by smtp.gmail.com with UTF8SMTPSA id
- c11-20020a62f84b000000b0050d33b253a0sm5774878pfm.112.2022.04.25.10.17.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 Apr 2022 10:17:51 -0700 (PDT)
-From: Brian Norris <briannorris@chromium.org>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Arnd Bergmann <arnd@arndb.de>
-Cc: linux-kernel@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>,
- linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>
-Subject: [PATCH v2 2/2] soc: rockchip: Fix compile-testing SoC drivers
-Date: Mon, 25 Apr 2022 10:17:37 -0700
-Message-Id: <20220425101646.v2.2.Id5f16dec920f620120c0a143a97a12e16d401760@changeid>
-X-Mailer: git-send-email 2.36.0.rc2.479.g8af0fa9b8e-goog
-In-Reply-To: <20220425171737.321813-1-briannorris@chromium.org>
-References: <20220425171737.321813-1-briannorris@chromium.org>
+ id 1nj2SG-00Adzn-FY; Mon, 25 Apr 2022 17:24:59 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 02CA961583;
+ Mon, 25 Apr 2022 17:24:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68287C385A4;
+ Mon, 25 Apr 2022 17:24:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1650907495;
+ bh=+80wHVodptz//ofhkGGYWEEAicTPsSLWn5+WM/nG7v4=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=hG4sh8Adq815IjPH7rdRf8US4h3Qr/fh9BekQURg5sIFT5j1PUnNmtAmQ1hcPTche
+ W8tzXKnhlZDoQj7LcED+fVZas8hrZORY2tafZ8QKSJ7kJVCfr9Yj1Kbm8aYsy5PVtl
+ Q68P+Oa9HpGK3mUcmaph7kAGU+ANM4rFFUFP3zpTH3cgdMDZjXdjQpyNi5VWRsNgLJ
+ zYTsJ39bHxbmx0bRoJseuv7+ci/2zOVLI74GnLxRQs4tAI9iwYvkIbeE6N3H9Cmb0T
+ kDm3SXSzhuzM/Ztgn6rMjatmKiRjfosh2bjJP291O9WehxRP4IVl03vQt7R+vUHR9F
+ qKFBDKd5cpz6w==
+From: Mark Brown <broonie@kernel.org>
+To: luca.ceresoli@bootlin.com, linux-spi@vger.kernel.org
+Cc: chris.ruehl@gtsys.com.hk, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ heiko@sntech.de
+In-Reply-To: <20220421213251.1077899-1-luca.ceresoli@bootlin.com>
+References: <20220421213251.1077899-1-luca.ceresoli@bootlin.com>
+Subject: Re: [PATCH] spi: rockchip: fix missing error on unsupported
+ SPI_CS_HIGH
+Message-Id: <165090749413.584172.1969660470967557422.b4-ty@kernel.org>
+Date: Mon, 25 Apr 2022 18:24:54 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_101756_397014_79039E5F 
-X-CRM114-Status: GOOD (  14.46  )
+X-CRM114-CacheID: sfid-20220425_102456_628439_A15B1256 
+X-CRM114-Status: GOOD (  14.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,67 +73,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Similar to commit 7f94b69ece51 ("ARM: ixp4xx: fix compile-testing soc
-drivers").
+On Thu, 21 Apr 2022 23:32:51 +0200, Luca Ceresoli wrote:
+> The hardware (except for the ROCKCHIP_SPI_VER2_TYPE2 version) does not
+> support active-high native chip selects. However if such a CS is configured
+> the core does not error as it normally should, because the
+> 'ctlr->use_gpio_descriptors = true' line in rockchip_spi_probe() makes the
+> core set SPI_CS_HIGH in ctlr->mode_bits.
+> 
+> In such a case the spi-rockchip driver operates normally but produces an
+> active-low chip select signal without notice.
+> 
+> [...]
 
-drivers/soc/rockchip/Kconfig makes plenty of provision for configuring
-drivers either for ARCH_ROCKCHIP or for COMPILE_TEST. But
-drivers/soc/Makefile pulls the rug out from under us, by refusing to
-build anything if we specified COMPILE_TEST but not ARCH_ROCKCHIP.
+Applied to
 
-Currently, I'm not aware of anything that breaks without this patch, but
-it certainly makes for confusing builds (CONFIG_ROCKCHIP_PM_DOMAINS=y,
-but we didn't actually compile the driver?) and leaves room for future
-error (I have pending patches that break confusingly with COMPILE_TEST=y
-even though their Kconfig dependencies seem correct [1]).
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
-Defer to drivers/soc/rockchip/{Makefile,Kconfig} to do the right thing.
+Thanks!
 
-We also need to force ARM/ARM64 dependencies for ROCKCHIP_PM_DOMAINS,
-because it uses ARM-specific macros (dsb()).
+[1/1] spi: rockchip: fix missing error on unsupported SPI_CS_HIGH
+      commit: d5d933f09ac326aebad85bfb787cc786ad477711
 
-[1] e.g.,
-https://lore.kernel.org/linux-rockchip/20220405184816.RFC.2.I2d73b403944f0b8b5871a77585b73f31ccc62999@changeid/
-[RFC PATCH 2/2] PM / devfreq: rk3399_dmc: Block PMU during transitions
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-Changes in v2:
- * Depend on ARM||ARM64
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
- drivers/soc/Makefile         | 2 +-
- drivers/soc/rockchip/Kconfig | 1 +
- 2 files changed, 2 insertions(+), 1 deletion(-)
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-diff --git a/drivers/soc/Makefile b/drivers/soc/Makefile
-index fd7717d597fc..4c91705a8bb3 100644
---- a/drivers/soc/Makefile
-+++ b/drivers/soc/Makefile
-@@ -23,7 +23,7 @@ obj-y				+= pxa/
- obj-y				+= amlogic/
- obj-y				+= qcom/
- obj-y				+= renesas/
--obj-$(CONFIG_ARCH_ROCKCHIP)	+= rockchip/
-+obj-y				+= rockchip/
- obj-$(CONFIG_SOC_SAMSUNG)	+= samsung/
- obj-$(CONFIG_SOC_SIFIVE)	+= sifive/
- obj-y				+= sunxi/
-diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
-index aff2f7e95237..785e1798d286 100644
---- a/drivers/soc/rockchip/Kconfig
-+++ b/drivers/soc/rockchip/Kconfig
-@@ -25,6 +25,7 @@ config ROCKCHIP_IODOMAIN
- config ROCKCHIP_PM_DOMAINS
- 	bool "Rockchip generic power domain"
- 	depends on PM
-+	depends on ARM || ARM64
- 	select PM_GENERIC_DOMAINS
- 	help
- 	  Say y here to enable power domain support.
--- 
-2.36.0.rc2.479.g8af0fa9b8e-goog
-
+Thanks,
+Mark
 
 _______________________________________________
 Linux-rockchip mailing list
