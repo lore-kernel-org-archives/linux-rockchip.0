@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EC7DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 11:52:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1248AC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 12:12:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r3IQ6/AAZE1mrJsoPkbbOKQlaDGvcD7SVV56t3mn4lw=; b=FAN2UJmGbT5W+A
-	wDdI/GnPMvEzxtBUCDzsgzeNQPcCPuFkND7mTDHPje+qUmEHcl67oT4HoDraMg+f1n9NYs/8kfrEU
-	MFfwZwV2X3UtAKkYhhPEuDjXnLWwzQPyH/Dzo8OTPvSxzeLTOzZLGnnpXBvQErmSuRlJs86hY/WVa
-	JrYvfuAWdUdpIneC2JXq97gBDCy0sfGfyZNFs0QCMcvhpIAXWFjwV2CoM6yUoNadzSN+sPpx3siOp
-	nUlCdlIIIc6eW+8iBQgJ4gZFoc1tvKT6FRGzyQ+it+59mfIGkanLZGhdshA1Gbc474xLGcT+kbYSE
-	cTMtakPT8C3XVMxERX7Q==;
+	List-Owner; bh=m28qTd8UzrX3FKekOIQ5IURvLhbH+iU2tbJIEKh8InA=; b=y/I+iJlQKveAU7
+	uk3LaxlCEPUJr9t5kbrAh6yt4Zh4mKrxxfuxnUeLQzy7hmZmXhbNWDM/mSYfYITi9mdotYYLuSNH4
+	Agn74WLyYLYfK+iTq4r473miq6BNzNCWZ4qkz40bDdOYFVOCDBzQuj7wyVzw6OB6Ss7Vvl0o8xcVj
+	754xF8AOI/u6+qTT9BMxhrlhZOnwGxHVoNt62LRVCo8MDHDwBy0i357ctUqR66GT2iLR5s7Yo+U4F
+	nboKcHA6oUbMShMYy3nt/HIKdtuNY14ViE3VaqaybvQS+WvmPSvP51DRowv/Q1elTdtYsN3QOPWpr
+	JqBOKAXzY8kk7xxclzbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nixGh-009NPg-BT; Mon, 25 Apr 2022 11:52:39 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1nixa5-009RyZ-6n; Mon, 25 Apr 2022 12:12:41 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nixGe-009NNz-4g
- for linux-rockchip@lists.infradead.org; Mon, 25 Apr 2022 11:52:37 +0000
-Received: by mail-ej1-x634.google.com with SMTP id l7so29138024ejn.2
- for <linux-rockchip@lists.infradead.org>; Mon, 25 Apr 2022 04:52:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=EF9uo8DAJAgucJr2sOJJIteNlLGTCrdyTxetLoJ3Wzc=;
- b=G4t+3akTuo6RNho9wE/xnBMRkZaEAxo8Aa1nPauY8BmZJHY1rICJ8+LvvnLLW7oJx9
- AE9sowddd97dz1loNTIzlb2KqsEyChCCPfJqus7jzZ1iOKOviMyRGIU9yvkHJiuD2GI2
- R+qv1MQp/DDhcIGUrLulDJHcRCMzzHMzjI9t0=
+ id 1nixa0-009RvF-9U
+ for linux-rockchip@lists.infradead.org; Mon, 25 Apr 2022 12:12:39 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id a1so12474933edt.3
+ for <linux-rockchip@lists.infradead.org>; Mon, 25 Apr 2022 05:12:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=u8jWkC3uGhpIesYWEXYlUoa6QOg8WMwc/6eHbmnOET0=;
+ b=z8IQnKw/QCUVdEhGIPQl+8KO75rfqTMoiKMA3BB9sFazxr+viuAmkDtOFAjYYeqiOc
+ BICBVB5W2S7RFYNSYuiQ6npvOUj18cyj24dNXTVDLHF+Df1i3nrw0JfwTe3/UGJ4/wUE
+ Qca2+w5QoifM49TBcyBSRvgIievMdF2gdAJds31r60IivrAwNdzi3MI849ffzBimYtZG
+ vwDiY04IZruTc3NDSAl4XfavEBJ1vfBwMPdlEkYSVfnOVY15MH9gH0F7JHLbs43U8yMf
+ h/8JO4jyVbPJnAS414pRuAsGdZ9Da+iWc9gku4zBIfYqxQSrDaaccKm2crCoDnSsiUne
+ u/Pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=EF9uo8DAJAgucJr2sOJJIteNlLGTCrdyTxetLoJ3Wzc=;
- b=ba7JP5I2Oy5O52Wltrr+Ngc+Q8fRmRYAFF3RAqKafDOw3pd/BZQNLjOb9Mw+SgF3at
- +gd27bcW5W3Q2DIy3ZpM/w6U5bH1rXNZFbHHhYahh2TZYBn74LbGrc2pQRRovqqTbQad
- FTzpFADG7r8EnDdspQYry0p6/yiGWGAyVHyIEZ3QYqsMQdezSm4HrF9BYsOdz9U/XMgR
- 0IY+a8rHeuB3pE4Bi4Bn1I+UcD+fbM9znbUoS+0bhw3hqlJA4OkGKk7+z3kxrYRbnv6B
- 0XAQ+8sI/C54hH5TSdjwI9CunTWuSPo7KRF4J0nCO53N96mpAvFfrdO+MMTgKcISOIUW
- OEbw==
-X-Gm-Message-State: AOAM532fvz0fw0rbxF44nscG0tpyIW6TEZjJ8d7WJHSzU5ix6Z59O3J+
- Q1QEG4Cu3Qbmdu/8vHo50ROpwAwwwmAdRw==
-X-Google-Smtp-Source: ABdhPJzzCkz28sGq97VxSslhlPAPWiEiq0fmx9EE+E28YxrTRIHS8xpl9G9437Kq5OUuZXwDdBeVgw==
-X-Received: by 2002:a17:907:a412:b0:6f0:1071:25ac with SMTP id
- sg18-20020a170907a41200b006f0107125acmr16019319ejc.261.1650887552584; 
- Mon, 25 Apr 2022 04:52:32 -0700 (PDT)
-Received: from gmail.com ([100.104.168.197]) by smtp.gmail.com with ESMTPSA id
- t15-20020a1709064f0f00b006f00349c4c3sm3481279eju.122.2022.04.25.04.52.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Apr 2022 04:52:32 -0700 (PDT)
-Date: Mon, 25 Apr 2022 13:52:14 +0200
-From: Ricardo Ribalda <ribalda@chromium.org>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
- Heiko Stuebner <heiko@sntech.de>, Paul Elder <paul.elder@ideasonboard.com>,
- Tomasz Figa <tfiga@google.com>, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 20/21] media: rkisp1: Align macro definitions
-Message-ID: <YmaLbhEArcbCC/Ho@gmail.com>
-References: <20220421234240.1694-1-laurent.pinchart@ideasonboard.com>
- <20220421234240.1694-21-laurent.pinchart@ideasonboard.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=u8jWkC3uGhpIesYWEXYlUoa6QOg8WMwc/6eHbmnOET0=;
+ b=ML4MfhGD9tTedHn5AZFzOOSKnGHhR8OMAIu64ia4atyqUsryiZxRw8Z6OCMkM8CFIa
+ Mh9Y/A8mWAvZNLxxhRDMRVddilOH8EO5BnNWxbKZpuba861Cn3EZrwP9yCtQWy1FHJzX
+ /Z5JkeSX6UR4KnlKccoyg3UkSOgkzaDNqyaaXstZUWo/bivY12/O6NfMLDiZEKZLbOpD
+ 9luPhDWcCSapTAuctwyvyZ5/pQFz2hYyGh6YCCE4AOos3A2rxpu2FXWBQLgQfgqJDo2j
+ fQ/WmzD/MjGo29rue81Yicv2uo09oKD/GAv5kkfDEiqhOdItrzIs22wWFw/DIxofnpnA
+ wFoQ==
+X-Gm-Message-State: AOAM531kaplZQQfB36/N28Yv6W0FQni5mfX7B6ShL/ucEOso7TQZ+cKG
+ N/UQy3hhmxbEEHl35r+DcROdC6eNInPpMRrL262DHw==
+X-Google-Smtp-Source: ABdhPJyaFAHnaHfcxF9oK2zzYsY2EtPh/uGq+12bC7Ho7eUw/yPfwKq2bJmWpg53blCYTMA1ROMhpC7iIBK74ygqh2U=
+X-Received: by 2002:aa7:c789:0:b0:413:605d:8d17 with SMTP id
+ n9-20020aa7c789000000b00413605d8d17mr18351707eds.100.1650888752051; Mon, 25
+ Apr 2022 05:12:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220421234240.1694-21-laurent.pinchart@ideasonboard.com>
+References: <20220425105346.324864-1-benjamin.gaignard@collabora.com>
+In-Reply-To: <20220425105346.324864-1-benjamin.gaignard@collabora.com>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Mon, 25 Apr 2022 09:12:20 -0300
+Message-ID: <CAAEAJfA2K2-YOruDMUjHixaPa1wfTSwpb3K5A-y_i3H6BF7oKQ@mail.gmail.com>
+Subject: Re: [PATCH] media: hantro: HEVC: unconditionnaly set
+ pps_{cb/cr}_qp_offset values
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Greg KH <gregkh@linuxfoundation.org>, linux-media <linux-media@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, jon@nanocrew.net, 
+ Adam Ford <aford173@gmail.com>, Collabora Kernel ML <kernel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_045236_245784_5574760A 
-X-CRM114-Status: GOOD (  18.70  )
+X-CRM114-CacheID: sfid-20220425_051237_986838_D9A5AED7 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,78 +90,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Laurent Pinchart wrote:
+On Mon, Apr 25, 2022 at 7:53 AM Benjamin Gaignard
+<benjamin.gaignard@collabora.com> wrote:
+>
+> Always set pps_cb_qp_offset and pps_cr_qp_offset values in Hantro/G2
+> register whatever is V4L2_HEVC_PPS_FLAG_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT
+> flag value.
+> This fix a couple of tests in fluster.
+>
 
-> Make the code more readable by using the same alignment for all macros
-> in rkisp1-common.h.
-> 
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Reviewed-by: Ricardo Ribalda <ribalda@chromium.org>
+Which tests?
+
+Thanks,
+Ezequiel
+
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 > ---
->  .../platform/rockchip/rkisp1/rkisp1-common.h  | 30 +++++++++----------
->  1 file changed, 15 insertions(+), 15 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index a7ffe2830fa8..4243ff5e2197 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> @@ -29,14 +29,14 @@ struct dentry;
->   * flags on the 'direction' field in struct 'rkisp1_isp_mbus_info' that indicate
->   * on which pad the media bus format is supported
->   */
-> -#define RKISP1_ISP_SD_SRC BIT(0)
-> -#define RKISP1_ISP_SD_SINK BIT(1)
-> +#define RKISP1_ISP_SD_SRC			BIT(0)
-> +#define RKISP1_ISP_SD_SINK			BIT(1)
->  
->  /* min and max values for the widths and heights of the entities */
-> -#define RKISP1_ISP_MAX_WIDTH		4032
-> -#define RKISP1_ISP_MAX_HEIGHT		3024
-> -#define RKISP1_ISP_MIN_WIDTH		32
-> -#define RKISP1_ISP_MIN_HEIGHT		32
-> +#define RKISP1_ISP_MAX_WIDTH			4032
-> +#define RKISP1_ISP_MAX_HEIGHT			3024
-> +#define RKISP1_ISP_MIN_WIDTH			32
-> +#define RKISP1_ISP_MIN_HEIGHT			32
->  
->  #define RKISP1_RSZ_MP_SRC_MAX_WIDTH		4416
->  #define RKISP1_RSZ_MP_SRC_MAX_HEIGHT		3312
-> @@ -46,20 +46,20 @@ struct dentry;
->  #define RKISP1_RSZ_SRC_MIN_HEIGHT		16
->  
->  /* the default width and height of all the entities */
-> -#define RKISP1_DEFAULT_WIDTH		800
-> -#define RKISP1_DEFAULT_HEIGHT		600
-> +#define RKISP1_DEFAULT_WIDTH			800
-> +#define RKISP1_DEFAULT_HEIGHT			600
->  
-> -#define RKISP1_DRIVER_NAME	"rkisp1"
-> -#define RKISP1_BUS_INFO		"platform:" RKISP1_DRIVER_NAME
-> +#define RKISP1_DRIVER_NAME			"rkisp1"
-> +#define RKISP1_BUS_INFO				"platform:" RKISP1_DRIVER_NAME
->  
->  /* maximum number of clocks */
-> -#define RKISP1_MAX_BUS_CLK	8
-> +#define RKISP1_MAX_BUS_CLK			8
->  
->  /* a bitmask of the ready stats */
-> -#define RKISP1_STATS_MEAS_MASK		(RKISP1_CIF_ISP_AWB_DONE |	\
-> -					 RKISP1_CIF_ISP_AFM_FIN |	\
-> -					 RKISP1_CIF_ISP_EXP_END |	\
-> -					 RKISP1_CIF_ISP_HIST_MEASURE_RDY)
-> +#define RKISP1_STATS_MEAS_MASK			(RKISP1_CIF_ISP_AWB_DONE |	\
-> +						 RKISP1_CIF_ISP_AFM_FIN |	\
-> +						 RKISP1_CIF_ISP_EXP_END |	\
-> +						 RKISP1_CIF_ISP_HIST_MEASURE_RDY)
->  
->  /* enum for the resizer pads */
->  enum rkisp1_rsz_pad {
-> -- 
-> Regards,
-> 
-> Laurent Pinchart
-> 
-> 
+>  drivers/staging/media/hantro/hantro_g2_hevc_dec.c | 9 ++-------
+>  1 file changed, 2 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> index 2c8eb0720db8..bb512389c1a5 100644
+> --- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> +++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> @@ -194,13 +194,8 @@ static void set_params(struct hantro_ctx *ctx)
+>                 hantro_reg_write(vpu, &g2_max_cu_qpd_depth, 0);
+>         }
+>
+> -       if (pps->flags & V4L2_HEVC_PPS_FLAG_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT) {
+> -               hantro_reg_write(vpu, &g2_cb_qp_offset, pps->pps_cb_qp_offset);
+> -               hantro_reg_write(vpu, &g2_cr_qp_offset, pps->pps_cr_qp_offset);
+> -       } else {
+> -               hantro_reg_write(vpu, &g2_cb_qp_offset, 0);
+> -               hantro_reg_write(vpu, &g2_cr_qp_offset, 0);
+> -       }
+> +       hantro_reg_write(vpu, &g2_cb_qp_offset, pps->pps_cb_qp_offset);
+> +       hantro_reg_write(vpu, &g2_cr_qp_offset, pps->pps_cr_qp_offset);
+>
+>         hantro_reg_write(vpu, &g2_filt_offset_beta, pps->pps_beta_offset_div2);
+>         hantro_reg_write(vpu, &g2_filt_offset_tc, pps->pps_tc_offset_div2);
+> --
+> 2.32.0
+>
 
 _______________________________________________
 Linux-rockchip mailing list
