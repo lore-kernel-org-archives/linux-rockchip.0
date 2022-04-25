@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BD3DC43219
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 17:13:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA551C433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 17:14:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wPpJakffMt8bFBna0OALkE6r/y+8Xl+NyGOiUnZM/O0=; b=K4K4zSoM1FhcjK
-	0t8fVK3FAfYihuFJnpqN5/m+wp1683hZiM9D+ZDkNMYy2oub2tKIlYdPIu0JEOAVTXJ0JERE2wi9J
-	06J1pSN8EQt/0EGYJDdYGJq2J/zm/FmafN4vRbSjnWkJi3EDzqggtPm+FZO7nExxxZ1KjEW3grRrh
-	j4wIqKNXLne89euLGAp0YO8G90SHuJx0XqS116yzEYTLyoht6wI5Xg/gmc23BRK/g9ii0YsjleLOI
-	7WSIfNlmO58/tjWO+SLIgrH4N1c+lRNKsASkPbex5Lgcq7bqgCBUUgwhjR1ff+GIt5wITGtc1lKl7
-	nAfolxe1hNMQJvhG6AsA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ds4Qe48KX1RxeA57XdA9+1ya6OAtZIGsomevTaoENWA=; b=tT0GU4ES5QKeWe
+	/2scN69U5yttggsAQvTbnrSjE8gaKpZLig1SkGYn2YG9Ox18O2b2WD5cBGx5XCSppiuIRTkyN6zxD
+	7j8JSETsdFfDtR6tHI5Gyz15nVw7lSGUGMVL/sqq1ewrifNxl7jgloJbaTb/Z8ndldE8Ezm93xFJz
+	1CuCMo3N2MNBsBjWtostZ0NbW2qzdgOZEViu8NWErl2hM6qWvM4+TWHfKbhrZnMkZh/W79ItBoUOp
+	wY+jb7YrznKdIywNcdMnwKCkmr1KQpMJcD3uPay16xjlAIfjJO2C5Vtxw34Tv0YwwvxCMpoYRMNfr
+	Lh2NaDX/aNp+IgBXXvJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nj2Ha-00AYv3-HF; Mon, 25 Apr 2022 17:13:54 +0000
-Received: from mail-qk1-x72a.google.com ([2607:f8b0:4864:20::72a])
+	id 1nj2IC-00AZDv-Sk; Mon, 25 Apr 2022 17:14:32 +0000
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nj2HW-00AYrb-NQ; Mon, 25 Apr 2022 17:13:52 +0000
-Received: by mail-qk1-x72a.google.com with SMTP id e128so11259080qkd.7;
- Mon, 25 Apr 2022 10:13:47 -0700 (PDT)
+ id 1nj2HX-00AYsI-7z; Mon, 25 Apr 2022 17:13:53 +0000
+Received: by mail-qk1-x730.google.com with SMTP id 204so11265902qkg.5;
+ Mon, 25 Apr 2022 10:13:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+japc2t+wot5+BSTXiQ5huwoEirJRSQFwasvOhZa43s=;
- b=P17sJtcPbya+arEjYzIf9eJ0Vmt77u/n8PikxlHSV731+iMxLKqMw1fsDM0fxfyTkp
- ws5xYKolRE/l0fbzmjA8jsRE6khpEyF+3R6mLXlTo5i63n8sG/jUBpX3xP5LyCUH8xxM
- mVLUS/KlgpZotG+j96lvJydzF57TMfpcTy6BJT9HOguNj3sDS/0QljNyEanew1mw+2/m
- ji1afJOmx82YpEOR0TNcadGAUEbtc1gE7D2DjUx25jxTVW6Pm+uN34DUAjLjYuarnLTj
- RBrqHk6XPqjsgDNXyI5qE0K8kGueY7IpPApyKVJYMDC6As3VjGNh4Hw8/XzDs+7fcM9d
- pP+Q==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=zdBkDQmKoIggvVv+9nKr+EG7gevAiBpcUOqfYxzGhEU=;
+ b=paxMNbaCwj5l3BgZd9lXV3mk+YDHGTTipw58Fdv/lu3cA8wVeGSVFUT4BcRfYY7TJ8
+ KFmWRn8nG2Z29rqjm72k8XN1HnSVkIxfZprfp3gH84s9xECBZ+J26J2jiJxI8WzAeS/P
+ 9YGQ5pOgxCJC0sL7bhLQuIEN0f/bX+7KXfINO2VPnaVXTr3ByI2AIWkL846sovb6hhhn
+ Uz9dP4c4CmE0FsHMmXXrVFIBKV+Wq7/BRbKRbnxie9kBXcoOdERewQkGzBLkUQs4G+E+
+ KvdMqn+Gl7HWGDzlC3t2CsoRUyQRIsHlN5dlyJ2nIbI8ri+GwpIpPt8241yPRxtuxDCP
+ JxJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=+japc2t+wot5+BSTXiQ5huwoEirJRSQFwasvOhZa43s=;
- b=ZcXB553px3UYefD+++RSaskrRjGB1VxfmUvlwdFthgK3RjwDggx05WLeRzhcGeJrWw
- xfCp9hH0ZLOSMZqac4pnue6MgBTbNn9ALopQd5AUPFTdnekzwXzEIA231WV4Oa3pvpwA
- X2aa89qBbzfJkNcC38broHjhjNUl9YIaN8OU9xb6ItUgc9WyywWxLfagAO+HXIsdVnFz
- EsklSbTGVbHmtYe9PhsbPmWA2ghBhFGAotQgo8JuxxVSXktqN6GsJ7PtwKHnzZsr4ybk
- nYOs+JxxvJ9zFmV/9GTV+gi1Urq4Ig9mpMWXAAXNvFPen/rhWG97FKUQezOTmF2rFmqO
- CzGw==
-X-Gm-Message-State: AOAM533vBSOp/QnKvIAXCvUngHbaOX+3qzuoHnWqNQDchwFHT9deHxRk
- Vy6e1WnngwMFHeu9L7C57LjTK/i9ukd8qw==
-X-Google-Smtp-Source: ABdhPJxkllM4++LB6/9J4wC5bXxDX3s8LLt4srPcIdugcklZ6pg7vea5I8GIU8fS4b8lp8Cm9CHPiw==
-X-Received: by 2002:a05:620a:2847:b0:67d:2bad:422f with SMTP id
- h7-20020a05620a284700b0067d2bad422fmr10702993qkp.559.1650906826798; 
- Mon, 25 Apr 2022 10:13:46 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=zdBkDQmKoIggvVv+9nKr+EG7gevAiBpcUOqfYxzGhEU=;
+ b=0b5MAMOSVSw9OH4KEhvxIz1p1dAkfhO2U/m44inDr088xUQTrj+V8l65jcbuY3kTkA
+ CnLr8jMynB+LTM3acLD0Z8IbjXMrvepsGFG1nHtMb3kR9ZkWpQLLhs0VeXUWhWPnYu8g
+ XCXydVhOlN3aKhFAYN/iEbaARpKJ/4bxRgxYquPVev2NapdM0rUum56PI0qi+fAWNRH4
+ mxwGgsOETb3cNgY7aYFnBiAWJjNOu8dudzCeCKYvxVBI9eU4OT89CTvKG3iw9Gag8cCp
+ JYBZHqnPD92AZDPu7H1tGOliE0LR1QHnxsKdoVGcWPjcnb5W42b7DtCBPQqd/Qp0bZ5K
+ LPqQ==
+X-Gm-Message-State: AOAM531Qgn6Liir+1jU1ZoXj5F01/CdcPKETgdsoalAWq6CvH5B9SS7P
+ S+Kh3DeZ72QD/0+MJ7hA37wI5dj+lJCclQ==
+X-Google-Smtp-Source: ABdhPJxb2SXF9ciMnaHs12z+YBgFKGrTWnGOCo6+3US1a6jJS7uDHVoqaFxdI5yGP+IDlmXKOilTYQ==
+X-Received: by 2002:a37:b686:0:b0:69e:99ba:4ce2 with SMTP id
+ g128-20020a37b686000000b0069e99ba4ce2mr10728313qkf.721.1650906830113; 
+ Mon, 25 Apr 2022 10:13:50 -0700 (PDT)
 Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
  by smtp.gmail.com with ESMTPSA id
- v3-20020a05622a014300b002e1dcd4cfa9sm7154928qtw.64.2022.04.25.10.13.46
+ v3-20020a05622a014300b002e1dcd4cfa9sm7154928qtw.64.2022.04.25.10.13.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Apr 2022 10:13:46 -0700 (PDT)
+ Mon, 25 Apr 2022 10:13:49 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de, Peter Geis <pgwipeout@gmail.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v1 0/7] Add support for several new rk3566 SBCs
-Date: Mon, 25 Apr 2022 13:13:37 -0400
-Message-Id: <20220425171344.1924057-1-pgwipeout@gmail.com>
+To: linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v1 4/7] arm64: dts: rockchip: add rk356x sfc support
+Date: Mon, 25 Apr 2022 13:13:41 -0400
+Message-Id: <20220425171344.1924057-5-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220425171344.1924057-1-pgwipeout@gmail.com>
+References: <20220425171344.1924057-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_101350_796573_AE05046F 
-X-CRM114-Status: GOOD (  10.92  )
+X-CRM114-CacheID: sfid-20220425_101351_319812_CB9F97B6 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,47 +90,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The following series adds support for the following single board
-computers:
-- Pine64 Quartz64 Model B
-- Pine64 SoQuartz SoM with RPi CM4IO carrier board
-- Firefly Station M2
+Add the sfc node to the rk356x device tree. This enables spi flash
+support for this soc.
 
-Patches 1, 2, and 3 add the requisite dt-bindings.
-Patch 4 adds support for the SFC to the rk356x device tree.
-Patch 5 adds the Quartz64 Model B device tree.
-Patch 6 adds the SoQuartz CM4IO device tree.
-Patch 7 adds the Firefly Station M2 device tree.
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-Please review and apply at your convenience.
-
-Very Respectfully,
-Peter Geis
-
-Furkan Kardame (1):
-  arm64: dts: rockchip: add dts for Firefly Station M2 rk3566
-
-Peter Geis (6):
-  dt-bindings: arm: rockchip: Add Pine64 Quartz64 Model B
-  dt-bindings: arm: rockchip: Add Pine64 SoQuartz SoM
-  dt-bindings: arm: rockchip: Add Firefly Station M2
-  arm64: dts: rockchip: add rk356x sfc support
-  arm64: dts: rockchip: add Pine64 Quartz64-B device tree
-  arm64: dts: rockchip: add SoQuartz CM4IO dts
-
- .../devicetree/bindings/arm/rockchip.yaml     |  17 +
- arch/arm64/boot/dts/rockchip/Makefile         |   3 +
- .../boot/dts/rockchip/rk3566-quartz64-b.dts   | 615 ++++++++++++++++++
- .../arm64/boot/dts/rockchip/rk3566-roc-pc.dts | 580 +++++++++++++++++
- .../boot/dts/rockchip/rk3566-soquartz-cm4.dts | 167 +++++
- .../boot/dts/rockchip/rk3566-soquartz.dtsi    | 607 +++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk356x.dtsi      |  11 +
- 7 files changed, 2000 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index ca20d7b91fe5..61a6d9d4c8a0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -750,6 +750,17 @@ sdmmc1: mmc@fe2c0000 {
+ 		status = "disabled";
+ 	};
+ 
++	sfc: spi@fe300000 {
++		compatible = "rockchip,sfc";
++		reg = <0x0 0xfe300000 0x0 0x4000>;
++		interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru SCLK_SFC>, <&cru HCLK_SFC>;
++		clock-names = "clk_sfc", "hclk_sfc";
++		pinctrl-0 = <&fspi_pins>;
++		pinctrl-names = "default";
++		status = "disabled";
++	};
++
+ 	sdhci: mmc@fe310000 {
+ 		compatible = "rockchip,rk3568-dwcmshc";
+ 		reg = <0x0 0xfe310000 0x0 0x10000>;
 -- 
 2.25.1
 
