@@ -4,61 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 350AAC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 19:00:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D94EAC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 19:05:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mnvN42YCcdWzK3yxB4mPOS2vt8yCxmpAPYJMPZ9dzOo=; b=KHRbfA/nf6WZ3X
-	APhyK3r/hyRRqPag1fZ+mrzzg8lGeivaqNX100x7bNYMfj0iNCUCmAH+6LXYfMy8KAFmOh3uvxn8v
-	e7l1R19HkgiRFYnNphC78+ZkGKysc5+itFcjetpScMw6HEHgUDoU+SUeOQ5AdiCxqHiYlyF8bTlkI
-	1x6HLH0Y5u9h6YS3meb6roZX59qIBxwOwyJUrf1wODdL+4Xenk6k5MfmtgjecjkVruOIyyvh0KQa0
-	frbOFdAiCMtWKUcM3FhdUGbVDUMX5uNfoMrOefnRR0n3vURaMKS5sAhIKqZMPOIi6lhnAaiiE5ZsD
-	NzRR2chc0Rrz18/LhT9Q==;
+	List-Owner; bh=LJcI2Bpp+Js8uPcf6Ndgtj2zwziblo4HmoUBunHuKJo=; b=xqNNjU39/S+YWL
+	x7PGoy/Sq8pigKzmbCHjboPZvxJVPkFnuIy/D0AoeYeRVHAl4o2+keTpzzqtX4om6w7ukoBVRo+8j
+	LMyFU+gieR494wUwF3NQS/InwYfi8RwZI4RDpGqkQU1BkgTid0sjRsg+Qc87X0/JjfP43H6wDo1YJ
+	sEN2KDyUr1wlQJArwfnf0abkQ3xEDHNVnInqZAN77KllEw3BbYdc3hFqX6YrV1SgdRWWKjBWjpkDF
+	sMlOfIxy01KATJFXJMXaqxGP4SOC/B4eUvnziKyPaeDVELmTXPz/Gr1ah7OblNORI9iWzMkBbqNaW
+	csjIw2EFp7fe/8tXtN7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nj3wY-00B0aI-F7; Mon, 25 Apr 2022 19:00:18 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nj41M-00B1xs-Rw; Mon, 25 Apr 2022 19:05:16 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nj3wV-00B0Xf-Gh
- for linux-rockchip@lists.infradead.org; Mon, 25 Apr 2022 19:00:17 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nicolas) with ESMTPSA id 1E5471F43028
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650913214;
- bh=bg3UhcnZlvv3RfrkW9O8KrBoXkIZozgniP3zQSLLpV8=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
- b=d5YlbhJaQYcd9qYuNgr2Vyn2VsGsbRYC+8jKl1De+8+TUvzBWleYXbUZ1AG9OitPd
- pvSYmNX2z65O2svMCx6vRTO2M3XGqYWk9d12Dm2rR1vuzt9nWfxnUeJ52SMO5WAxcq
- DBLxwG/cdHjqnCEdgXPehtCkD82vJFeJJBnOZ9ObNg7IKsw29i+lFh5pcLiK72Uowj
- mwUbQMLl3JxPvmfppZHKAQoXmOt6vmduM9KXDgV0TOte/RjBDdzt4+5inUiymAi3CZ
- IXCCeNZsVUEwvI6kuZjy/9sEaHiZ1uqj4K90d6rwWCs8OoRCFzRPCO1MA9JwgrSwHG
- aSK8R5YCKraVg==
-Message-ID: <bd0b59212d16af5b54c1ad5d89de5ba7b8794fac.camel@collabora.com>
-Subject: Re: [PATCH v3 17/24] media: rkvdec: h264: Fix reference frame_num
- wrap for second field
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Hans Verkuil <hverkuil@xs4all.nl>, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
- <mchehab@kernel.org>,  Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, Jonas Karlman
- <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@collabora.com>, Sebastian
- Fricke <sebastian.fricke@collabora.com>, linux-media@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev
-Date: Mon, 25 Apr 2022 15:00:02 -0400
-In-Reply-To: <0780cc3ddd985f580a5513e5222cdde852e6aaab.camel@collabora.com>
-References: <20220405204426.259074-1-nicolas.dufresne@collabora.com>
- <20220405204426.259074-18-nicolas.dufresne@collabora.com>
- <8f6c8a5c-200d-fbbd-0b8a-966d94467aad@xs4all.nl>
- <0780cc3ddd985f580a5513e5222cdde852e6aaab.camel@collabora.com>
-User-Agent: Evolution 3.44.0 (3.44.0-1.fc36) 
+ id 1nj41J-00B1x6-EM
+ for linux-rockchip@lists.infradead.org; Mon, 25 Apr 2022 19:05:15 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
+ [62.78.145.57])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id 91ACD496;
+ Mon, 25 Apr 2022 21:05:11 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1650913511;
+ bh=brv8uvar2hDXmnnSF8W8qT0Sm4xD7jV1+a9oWEQBAa8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=L2rhVhab2ZLrzNrfdu8qNxcFRGRmRkbVvu/B4wGUEtrkgXwDKTPRNvKaa1cCAPlIe
+ 1hhSpDe4CmtN1OLF5M7TohGF1as1lwfui29b7kNj8dE3lei2kFPhIxqO1MBsdlswGl
+ M/ODSQ2RCcpuOhHs4HRJhm5Z5IoTmELXtdDTMn80=
+Date: Mon, 25 Apr 2022 22:05:11 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Ricardo Ribalda <ribalda@chromium.org>
+Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
+ Heiko Stuebner <heiko@sntech.de>, Paul Elder <paul.elder@ideasonboard.com>,
+ Tomasz Figa <tfiga@google.com>, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v4 18/21] media: rkisp1: debug: Compute max register
+ length name dynamically
+Message-ID: <Ymbw52EF+Pcvkclz@pendragon.ideasonboard.com>
+References: <20220421234240.1694-1-laurent.pinchart@ideasonboard.com>
+ <20220421234240.1694-19-laurent.pinchart@ideasonboard.com>
+ <YmaK5XHQbKkfH6uR@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <YmaK5XHQbKkfH6uR@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_120015_720770_C0ECD4F1 
-X-CRM114-Status: GOOD (  25.55  )
+X-CRM114-CacheID: sfid-20220425_120513_674230_D9F553A0 
+X-CRM114-Status: GOOD (  21.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,65 +66,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgbHVuZGkgMjUgYXZyaWwgMjAyMiDDoCAxNDo1NSAtMDQwMCwgTmljb2xhcyBEdWZyZXNuZSBh
-IMOpY3JpdMKgOgo+IExlIHZlbmRyZWRpIDIyIGF2cmlsIDIwMjIgw6AgMDk6NDMgKzAyMDAsIEhh
-bnMgVmVya3VpbCBhIMOpY3JpdMKgOgo+ID4gT24gMDUvMDQvMjAyMiAyMjo0NCwgTmljb2xhcyBE
-dWZyZXNuZSB3cm90ZToKPiA+ID4gRnJvbTogSm9uYXMgS2FybG1hbiA8am9uYXNAa3dpYm9vLnNl
-Pgo+ID4gPiAKPiA+ID4gV2hlbiBkZWNvZGluZyB0aGUgc2Vjb25kIGZpZWxkIGluIGEgY29tcGxl
-bWVudGFyeSBmaWVsZCBwYWlyIHRoZSBzZWNvbmQKPiA+ID4gZmllbGQgaXMgc2hhcmluZyB0aGUg
-c2FtZSBmcmFtZV9udW0gd2l0aCB0aGUgZmlyc3QgZmllbGQuCj4gPiA+IAo+ID4gPiBDdXJyZW50
-bHkgdGhlIGZyYW1lX251bSBmb3IgdGhlIGZpcnN0IGZpZWxkIGlzIHdyYXBwZWQgd2hlbiBpdCBt
-YXRjaGVzIHRoZQo+ID4gPiBmaWVsZCBiZWluZyBkZWNvZGVkLCB0aGlzIGNhdXNlIGlzc3VlcyB0
-byBkZWNvZGUgdGhlIHNlY29uZCBmaWVsZCBpbiBhCj4gPiAKPiA+IGNhdXNlIGlzc3VlcyB0byBk
-ZWNvZGUgLT4gY2F1c2VkIGlzc3VlcyBkZWNvZGluZwo+ID4gCj4gPiA+IGNvbXBsZW1lbnRhcnkg
-ZmllbGQgcGFpci4KPiA+ID4gCj4gPiA+IEZpeCB0aGlzIGJ5IHVzaW5nIGluY2x1c2l2ZSBjb21w
-YXJpc29uLCBsZXNzIHRoYW4gb3IgZXF1YWwuCj4gPiAKPiA+IEkgd291bGQgY2hhbmdlIHRoaXMg
-bGFzdCBzZW50ZW5jZSB0bzoKPiA+IAo+ID4gCUZpeCB0aGlzIGJ5IHVzaW5nIGluY2x1c2l2ZSBj
-b21wYXJpc29uOiAnbGVzcyB0aGFuIG9yIGVxdWFsJy4KPiA+IAo+ID4gSXQgbWFrZXMgaXQgYSBi
-aXQgZWFzaWVyIHRvIHBhcnNlLgo+ID4gCj4gPiA+IAo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBKb25h
-cyBLYXJsbWFuIDxqb25hc0Brd2lib28uc2U+Cj4gPiA+IFNpZ25lZC1vZmYtYnk6IE5pY29sYXMg
-RHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNvbT4KPiA+ID4gUmV2aWV3ZWQt
-Ynk6IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4KPiA+ID4gUmV2aWV3
-ZWQtYnk6IFNlYmFzdGlhbiBGcmlja2UgPHNlYmFzdGlhbi5mcmlja2VAY29sbGFib3JhLmNvbT4K
-PiA+ID4gLS0tCj4gPiA+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy1oMjY0
-LmMgfCAyICstCj4gPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRp
-b24oLSkKPiA+ID4gCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2
-ZGVjL3JrdmRlYy1oMjY0LmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy1o
-MjY0LmMKPiA+ID4gaW5kZXggZjA4MWI0NzYzNDBmLi42MGVhZjA2YjZlMjUgMTAwNjQ0Cj4gPiA+
-IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLWgyNjQuYwo+ID4gPiAr
-KysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy1oMjY0LmMKPiA+ID4gQEAg
-LTc4MSw3ICs3ODEsNyBAQCBzdGF0aWMgdm9pZCBhc3NlbWJsZV9od19ycHMoc3RydWN0IHJrdmRl
-Y19jdHggKmN0eCwKPiA+ID4gIAkJCWNvbnRpbnVlOwo+ID4gPiAgCj4gPiA+ICAJCWlmIChkcGJb
-aV0uZmxhZ3MgJiBWNEwyX0gyNjRfRFBCX0VOVFJZX0ZMQUdfTE9OR19URVJNIHx8Cj4gPiA+IC0J
-CSAgICBkcGJbaV0uZnJhbWVfbnVtIDwgZGVjX3BhcmFtcy0+ZnJhbWVfbnVtKSB7Cj4gPiA+ICsJ
-CSAgICBkcGJbaV0uZnJhbWVfbnVtIDw9IGRlY19wYXJhbXMtPmZyYW1lX251bSkgewo+ID4gCj4g
-PiBJIHdvbmRlciBpZiBhIGNvbW1lbnQgc2hvdWxkIGJlIGFkZGVkIGhlcmUsIGV4cGxhaW5pbmcg
-dGhlIHJlYXNvbiBmb3IgJzw9Jy4KPiA+IAo+ID4gSXQgZG9lc24ndCBzZWVtIG9idmlvdXMgdG8g
-bWUuIFVwIHRvIHlvdSwgdGhvdWdoLgo+IAo+IEkgZ3Vlc3MgSSBjb3VsZCwgdGhlIGFsZ28gZm9y
-IHdyYXBwaW5nIGluIHRoZSBzcGVjIGlzIChmb3JtdWxhIDgtMjcpOgo+IAo+ICAgICBpZiggRnJh
-bWVOdW0gPiBmcmFtZV9udW0gKQo+ICAgICAgICAgRnJhbWVOdW1XcmFwID0gRnJhbWVOdW0g4oiS
-IE1heEZyYW1lTnVtCj4gICAgIGVsc2UKPiAgICAgICAgIEZyYW1lTnVtV3JhcCA9IEZyYW1lTnVt
-Cj4gCj4gT3VyIGltcGxlbWVudGF0aW9uIGhhcyB0aGUgYnJhbmNoIGNvbmRpdGlvbiBmbGlwIG92
-ZXIsIGFuZCB0aGUgZmxpcHBlZCB2ZXJzaW9uIG9mIHRoYXQgaXM6Cj4gCj4gICAgIGlmKCBGcmFt
-ZU51bSA8PSBmcmFtZV9udW0gKQo+ICAgICAgICAgRnJhbWVOdW1XcmFwID0gRnJhbWVOdW0KPiAg
-ICAgZWxzZQo+ICAgICAgICAgRnJhbWVOdW1XcmFwID0gRnJhbWVOdW0g4oiSIE1heEZyYW1lTnVt
-Cj4gCj4gVGhlcmUgaXMgbm8gZGVlcGVyIHJhdGlvbmFsZSBzaW5jZSB3ZSBzaW1wbHkgZm9sbG93
-IHRoZSByZWNpcGUgZGVzY3JpYmVkIGluIHRoZQo+IHNwZWMuIFRoaXMgaXMgZG9uZSBzbyB0aGF0
-IHdlIGNhbiBzaGFyZSB0aGF0IGNvbmRpdGlvbiB3aXRoIHRoYXQgbG9uZyB0ZXJtCj4gcmVmZXJl
-bmNlIGhhbmRsaW5nLgoKTm93IEkgY29tZSB0byByZWFsaXplIHRoYXQgaW4gcGF0Y2ggIlt2Mywx
-OS8yNF0gbWVkaWE6IHJrdmRlYy1oMjY0OiBBZGQgZmllbGQKZGVjb2Rpbmcgc3VwcG9ydCIgYWxs
-IHRoaXMgY29kZSBpcyByZW1vdmVkLiBUaGlzIGlzIGJlY2F1c2UgdGhlIHdyYXBwaW5nIGlzCmFs
-cmVhZHkgZG9uZSBieSB0aGUgcmVmLWJ1aWxkZXIsIHNvIHdoaWxlIGVuYWJsaW5nIGZpZWxkIGRl
-Y29kaW5nLCBJIG5vdyB1c2UgdGhlCndyYXBwZWQgdmFsdWUgZnJvbSB0aGUgcmVmIGJ1aWxkZXIu
-IEknbSBtb3N0bHkga2VlcGluZyB0aGUgcGF0Y2ggc28gdGhhdCB0aGlzCmZpeCBpcyB3ZWxsIGRv
-Y3VtZW50ZWQuIEkgd2lsbCBsZWF2ZSBpdCBsaWtlIHRoaXMgdGhlbi4KCj4gCj4gPiAKPiA+ID4g
-IAkJCXBbaV0gPSBkcGJbaV0uZnJhbWVfbnVtOwo+ID4gPiAgCQkJY29udGludWU7Cj4gPiA+ICAJ
-CX0KPiA+IAo+ID4gUmVnYXJkcywKPiA+IAo+ID4gCUhhbnMKPiAKCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Ricardo,
+
+On Mon, Apr 25, 2022 at 01:49:57PM +0200, Ricardo Ribalda wrote:
+> Laurent Pinchart wrote:
+> 
+> > Don't hardcode the register name maximum length (used for alignment
+> > purposes) to 14, but compute it dynamically. The small performance
+> > impact isn't an issue as this is debugging code.
+> 
+> Not sure if we want this. Different files will have different alignment,
+> which will look ugly if we cat them.
+
+That's a good point. I wrote this patch to avoid maintaining the maximum
+register name length manually, but I'm fine moving it to a macro instead
+if that's preferred. It's debug code, so I don't mind much.
+
+> Besides that, the code looks correct.
+>
+> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> 
+> Reviewed-by: Ricardo Ribalda <ribalda@chromium.org>
+> 
+> > ---
+> >  .../platform/rockchip/rkisp1/rkisp1-debug.c   | 21 +++++++++++++------
+> >  1 file changed, 15 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> > index 2c226f20f525..28a69323cb38 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> > @@ -11,8 +11,10 @@
+> >  #include <linux/debugfs.h>
+> >  #include <linux/delay.h>
+> >  #include <linux/device.h>
+> > +#include <linux/minmax.h>
+> >  #include <linux/pm_runtime.h>
+> >  #include <linux/seq_file.h>
+> > +#include <linux/string.h>
+> >  
+> >  #include "rkisp1-common.h"
+> >  #include "rkisp1-regs.h"
+> > @@ -32,22 +34,29 @@ static int rkisp1_debug_dump_regs(struct rkisp1_device *rkisp1,
+> >  				  struct seq_file *m, unsigned int offset,
+> >  				  const struct rkisp1_debug_register *regs)
+> >  {
+> > +	const struct rkisp1_debug_register *reg;
+> > +	int width = 0;
+> >  	u32 val, shd;
+> >  	int ret;
+> >  
+> > +	for (reg = regs; reg->name; ++reg)
+> > +		width = max_t(int, width, strlen(reg->name));
+> > +
+> > +	width += 1;
+> > +
+> >  	ret = pm_runtime_get_if_in_use(rkisp1->dev);
+> >  	if (ret <= 0)
+> >  		return ret ? : -ENODATA;
+> >  
+> > -	for ( ; regs->name; ++regs) {
+> > -		val = rkisp1_read(rkisp1, offset + regs->reg);
+> > +	for (reg = regs; reg->name; ++reg) {
+> > +		val = rkisp1_read(rkisp1, offset + reg->reg);
+> >  
+> > -		if (regs->shd) {
+> > -			shd = rkisp1_read(rkisp1, offset + regs->shd);
+> > -			seq_printf(m, "%14s: 0x%08x/0x%08x\n", regs->name,
+> > +		if (reg->shd) {
+> > +			shd = rkisp1_read(rkisp1, offset + reg->shd);
+> > +			seq_printf(m, "%*s: 0x%08x/0x%08x\n", width, reg->name,
+> >  				   val, shd);
+> >  		} else {
+> > -			seq_printf(m, "%14s: 0x%08x\n", regs->name, val);
+> > +			seq_printf(m, "%*s: 0x%08x\n", width, reg->name, val);
+> >  		}
+> >  	}
+> >  
+
+-- 
+Regards,
+
+Laurent Pinchart
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
