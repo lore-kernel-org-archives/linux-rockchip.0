@@ -4,75 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1248AC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 12:12:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CBB5C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 12:33:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m28qTd8UzrX3FKekOIQ5IURvLhbH+iU2tbJIEKh8InA=; b=y/I+iJlQKveAU7
-	uk3LaxlCEPUJr9t5kbrAh6yt4Zh4mKrxxfuxnUeLQzy7hmZmXhbNWDM/mSYfYITi9mdotYYLuSNH4
-	Agn74WLyYLYfK+iTq4r473miq6BNzNCWZ4qkz40bDdOYFVOCDBzQuj7wyVzw6OB6Ss7Vvl0o8xcVj
-	754xF8AOI/u6+qTT9BMxhrlhZOnwGxHVoNt62LRVCo8MDHDwBy0i357ctUqR66GT2iLR5s7Yo+U4F
-	nboKcHA6oUbMShMYy3nt/HIKdtuNY14ViE3VaqaybvQS+WvmPSvP51DRowv/Q1elTdtYsN3QOPWpr
-	JqBOKAXzY8kk7xxclzbA==;
+	List-Owner; bh=uzp5x6pHFTuymOe9UjhPVPGz5UJCPJ65J59iygSw3tw=; b=AkOBEcpdIlnVki
+	nl8CCzyRk/l+69PDJJoehLQdEHZ/KfxcdAkyWykqXWluc+6Pc1pEDpbXNPH5XSq8i+dYAFkYoyjRl
+	3t6lpknU9aiKanIV3L0aMEichzrLvmMKIieiGe54Pg9z2lPdbEajOCoziKFA3dVg4LPrs12GjSGHV
+	/BePGJy8VqLDzFRYj/9+AsE2iFKXj3cUSHGT1mFzMDAG7DkimYprAkBceF8Mtr+3ssr/ptfeYqb/O
+	VoxWO/hpWxOb5ZKL6FNHBvZEerlS9jLpBL3KdssKsLQZgWeM/paS/arlR0afDgdrNtruBmSWxx9Rh
+	71DGUqNHp+jgHgEfcUtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nixa5-009RyZ-6n; Mon, 25 Apr 2022 12:12:41 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1nixtd-009V5P-Oc; Mon, 25 Apr 2022 12:32:58 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nixa0-009RvF-9U
- for linux-rockchip@lists.infradead.org; Mon, 25 Apr 2022 12:12:39 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id a1so12474933edt.3
- for <linux-rockchip@lists.infradead.org>; Mon, 25 Apr 2022 05:12:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=u8jWkC3uGhpIesYWEXYlUoa6QOg8WMwc/6eHbmnOET0=;
- b=z8IQnKw/QCUVdEhGIPQl+8KO75rfqTMoiKMA3BB9sFazxr+viuAmkDtOFAjYYeqiOc
- BICBVB5W2S7RFYNSYuiQ6npvOUj18cyj24dNXTVDLHF+Df1i3nrw0JfwTe3/UGJ4/wUE
- Qca2+w5QoifM49TBcyBSRvgIievMdF2gdAJds31r60IivrAwNdzi3MI849ffzBimYtZG
- vwDiY04IZruTc3NDSAl4XfavEBJ1vfBwMPdlEkYSVfnOVY15MH9gH0F7JHLbs43U8yMf
- h/8JO4jyVbPJnAS414pRuAsGdZ9Da+iWc9gku4zBIfYqxQSrDaaccKm2crCoDnSsiUne
- u/Pw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=u8jWkC3uGhpIesYWEXYlUoa6QOg8WMwc/6eHbmnOET0=;
- b=ML4MfhGD9tTedHn5AZFzOOSKnGHhR8OMAIu64ia4atyqUsryiZxRw8Z6OCMkM8CFIa
- Mh9Y/A8mWAvZNLxxhRDMRVddilOH8EO5BnNWxbKZpuba861Cn3EZrwP9yCtQWy1FHJzX
- /Z5JkeSX6UR4KnlKccoyg3UkSOgkzaDNqyaaXstZUWo/bivY12/O6NfMLDiZEKZLbOpD
- 9luPhDWcCSapTAuctwyvyZ5/pQFz2hYyGh6YCCE4AOos3A2rxpu2FXWBQLgQfgqJDo2j
- fQ/WmzD/MjGo29rue81Yicv2uo09oKD/GAv5kkfDEiqhOdItrzIs22wWFw/DIxofnpnA
- wFoQ==
-X-Gm-Message-State: AOAM531kaplZQQfB36/N28Yv6W0FQni5mfX7B6ShL/ucEOso7TQZ+cKG
- N/UQy3hhmxbEEHl35r+DcROdC6eNInPpMRrL262DHw==
-X-Google-Smtp-Source: ABdhPJyaFAHnaHfcxF9oK2zzYsY2EtPh/uGq+12bC7Ho7eUw/yPfwKq2bJmWpg53blCYTMA1ROMhpC7iIBK74ygqh2U=
-X-Received: by 2002:aa7:c789:0:b0:413:605d:8d17 with SMTP id
- n9-20020aa7c789000000b00413605d8d17mr18351707eds.100.1650888752051; Mon, 25
- Apr 2022 05:12:32 -0700 (PDT)
+ id 1nixtN-009Uyf-DC; Mon, 25 Apr 2022 12:32:38 +0000
+Received: from obbardc-laptop.home (unknown
+ [IPv6:2a00:23c7:6883:e501:cf51:f3a2:10b5:accf])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: obbardc)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 96F101F43553;
+ Mon, 25 Apr 2022 13:32:32 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1650889952;
+ bh=hSDAXRypJ/Z4HhJhylWfvqB1KkaymD9gTFsthsCapJw=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=W9/PsLcXtG01Bhrekqx6eBoE2aNTbSa/do5zzv6WiKHJ23ya8u1xJ5tJSXLyeqWEX
+ xlP9nxXmiaIHq2/y2zkVxl9d5AoR/6mC6r4AsKYZBUJBx2N8q16LnN0JWmu13vG24e
+ JhJt0DtwSIlLSfW4H/ZY40fBUVDiwbS8c0ZAAS48OzVtA2b0YSvmdk97cCzChpratl
+ aXkuV1eUWMb07D/h2MpF4XZnD50qezVCxEKxbtP8RmlWzEB26842lBoqiS2BVb1nnY
+ byk/CyFPGLgU089nacef9TjA6oxF1fIoIS7l9E2IZnoHmOXWOsYhf33kuEJgU3Cb0V
+ Pf0Y8rgeZ5iLQ==
+From: Christopher Obbard <chris.obbard@collabora.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Johan Jonker <jbx6244@gmail.com>,
+ Elaine Zhang <zhangqing@rock-chips.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com,
+ Christopher Obbard <chris.obbard@collabora.com>
+Subject: [PATCH v2 3/3] arm64: dts: rockchip: Add vdec support for RK3328
+Date: Mon, 25 Apr 2022 13:32:15 +0100
+Message-Id: <20220425123215.1055251-4-chris.obbard@collabora.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220425123215.1055251-1-chris.obbard@collabora.com>
+References: <20220425123215.1055251-1-chris.obbard@collabora.com>
 MIME-Version: 1.0
-References: <20220425105346.324864-1-benjamin.gaignard@collabora.com>
-In-Reply-To: <20220425105346.324864-1-benjamin.gaignard@collabora.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Mon, 25 Apr 2022 09:12:20 -0300
-Message-ID: <CAAEAJfA2K2-YOruDMUjHixaPa1wfTSwpb3K5A-y_i3H6BF7oKQ@mail.gmail.com>
-Subject: Re: [PATCH] media: hantro: HEVC: unconditionnaly set
- pps_{cb/cr}_qp_offset values
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Greg KH <gregkh@linuxfoundation.org>, linux-media <linux-media@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- "open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, jon@nanocrew.net, 
- Adam Ford <aford173@gmail.com>, Collabora Kernel ML <kernel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_051237_986838_D9A5AED7 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20220425_053237_617157_E915F2C1 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,48 +78,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 25, 2022 at 7:53 AM Benjamin Gaignard
-<benjamin.gaignard@collabora.com> wrote:
->
-> Always set pps_cb_qp_offset and pps_cr_qp_offset values in Hantro/G2
-> register whatever is V4L2_HEVC_PPS_FLAG_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT
-> flag value.
-> This fix a couple of tests in fluster.
->
+The RK3328 has an vdec device with dedicated iommu.
+Describe the vdec device, the required power-domains
+and enable the iommu in the devicetree.
 
-Which tests?
+Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
 
-Thanks,
-Ezequiel
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index f8ef149fedad..49ae15708a0b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -306,6 +306,10 @@ power-domain@RK3328_PD_HEVC {
+ 			};
+ 			power-domain@RK3328_PD_VIDEO {
+ 				reg = <RK3328_PD_VIDEO>;
++				clocks = <&cru ACLK_RKVDEC>,
++					 <&cru HCLK_RKVDEC>,
++					 <&cru SCLK_VDEC_CABAC>,
++					 <&cru SCLK_VDEC_CORE>;
+ 				#power-domain-cells = <0>;
+ 			};
+ 			power-domain@RK3328_PD_VPU {
+@@ -660,6 +664,20 @@ vpu_mmu: iommu@ff350800 {
+ 		power-domains = <&power RK3328_PD_VPU>;
+ 	};
+ 
++	vdec: video-codec@ff360000 {
++		compatible = "rockchip,rk3328-vdec", "rockchip,rk3399-vdec";
++		reg = <0x0 0xff360000 0x0 0x400>;
++		interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>,
++			 <&cru SCLK_VDEC_CABAC>, <&cru SCLK_VDEC_CORE>;
++		clock-names = "axi", "ahb", "cabac", "core";
++		assigned-clocks = <&cru ACLK_RKVDEC>, <&cru SCLK_VDEC_CABAC>,
++				  <&cru SCLK_VDEC_CORE>;
++		assigned-clock-rates = <400000000>, <400000000>, <300000000>;
++		iommus = <&vdec_mmu>;
++		power-domains = <&power RK3328_PD_VIDEO>;
++	};
++
+ 	vdec_mmu: iommu@ff360480 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff360480 0x0 0x40>, <0x0 0xff3604c0 0x0 0x40>;
+@@ -667,7 +685,7 @@ vdec_mmu: iommu@ff360480 {
+ 		clocks = <&cru ACLK_RKVDEC>, <&cru HCLK_RKVDEC>;
+ 		clock-names = "aclk", "iface";
+ 		#iommu-cells = <0>;
+-		status = "disabled";
++		power-domains = <&power RK3328_PD_VIDEO>;
+ 	};
+ 
+ 	vop: vop@ff370000 {
+-- 
+2.34.1
 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  drivers/staging/media/hantro/hantro_g2_hevc_dec.c | 9 ++-------
->  1 file changed, 2 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-> index 2c8eb0720db8..bb512389c1a5 100644
-> --- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-> +++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-> @@ -194,13 +194,8 @@ static void set_params(struct hantro_ctx *ctx)
->                 hantro_reg_write(vpu, &g2_max_cu_qpd_depth, 0);
->         }
->
-> -       if (pps->flags & V4L2_HEVC_PPS_FLAG_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT) {
-> -               hantro_reg_write(vpu, &g2_cb_qp_offset, pps->pps_cb_qp_offset);
-> -               hantro_reg_write(vpu, &g2_cr_qp_offset, pps->pps_cr_qp_offset);
-> -       } else {
-> -               hantro_reg_write(vpu, &g2_cb_qp_offset, 0);
-> -               hantro_reg_write(vpu, &g2_cr_qp_offset, 0);
-> -       }
-> +       hantro_reg_write(vpu, &g2_cb_qp_offset, pps->pps_cb_qp_offset);
-> +       hantro_reg_write(vpu, &g2_cr_qp_offset, pps->pps_cr_qp_offset);
->
->         hantro_reg_write(vpu, &g2_filt_offset_beta, pps->pps_beta_offset_div2);
->         hantro_reg_write(vpu, &g2_filt_offset_tc, pps->pps_tc_offset_div2);
-> --
-> 2.32.0
->
 
 _______________________________________________
 Linux-rockchip mailing list
