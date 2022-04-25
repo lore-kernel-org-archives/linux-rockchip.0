@@ -4,56 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 802CFC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 19:08:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE808C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 19:38:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W61ELte52TtgavVL39m9rzQ5+zbJ6drioRH7TPzx+6w=; b=SwDcCbeDq5gCIH
-	Z+CxNQl06dnYDFC+LjNuooNtOhWYTQzPJlERGKRGo4uZMBrVBYJLGcL7d5egUEQUFkb+NJooxeyjz
-	68OFnUPeWNW/5mAyjBpaqQnBnHFiWA2c0Z4P1mxfYv0r5FosgkK3m2Qy2R1Cbeph2nUyW0u/VqSWd
-	xmhtCcM6u5srSg5PQrfjXSi7a4dxjXEqmialKXA1bb2S7NUg5ymNNFl7OUXBKo/7zFRnKEe2cQY+W
-	8U0ByS8vtzpldplZdH+Eaqd8GI8PJk0VOhieCWN9/YK1BVhQto9uwp9u41kXRKq5i/lpxXCbglLZb
-	XIkhe9yGLAB1GSq0MXkg==;
+	List-Owner; bh=nbmuqpiJp4a7NkKavotEDGGYP1yam2a9jD1njE/Sqco=; b=SzFzrfGUf2qpDC
+	yPMZWE8O+Rx+NIDBV2B881CVzi3unY1zS/1tRQHIs5bbQw03XQhA6yA5nTkJz9NDW16eeyo0LF0jD
+	rwMOXHpofMw88BmjrqXQr19bZfB5IKZMXiewlbIRmrk3sctp2L6s0D6gImXw0+GrFYP4wfZdC2HeO
+	e9vJAIWISNB7XJ+I6EJrxOPps1Z5KNlckFqlD+kj9RoPN+kFfZx67NmOWa55GHRB+HxFnJUm5tiOT
+	/luzsc2+3CEDawCEBuxlFTLcp/CM1JuDdp6GfZklP60SggRZBpMzpdSk8PdHMbE+wYMKCSrw/p/cy
+	UhFU/0vuZ10PMwGXz34g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nj44e-00B2JK-Gb; Mon, 25 Apr 2022 19:08:40 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1nj4X8-00B58m-3F; Mon, 25 Apr 2022 19:38:06 +0000
+Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nj44a-00B2I6-PT
- for linux-rockchip@lists.infradead.org; Mon, 25 Apr 2022 19:08:38 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
- [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id DFEFF496;
- Mon, 25 Apr 2022 21:08:34 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1650913715;
- bh=w84GdN8TE6etnU+RLgVIIiz/BXWBEgYswbqQDCCTozY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=i3joH+vsRoL3SiIf5gt6SGHDUtE5YLke5SNHWnp/GCK8IBcHJDoq+3lYtdYUM5xXw
- SLkta4oB8gupozn3y7LOZuATjW0kNbPoUwoNjqWXdja1oHnKDziSc5JS9VZSMIY/Bo
- /or6hcVfj23a74FMaxwzYNHOZnK9ZCIat+1hMKIY=
-Date: Mon, 25 Apr 2022 22:08:35 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Ricardo Ribalda <ribalda@chromium.org>
-Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
- Heiko Stuebner <heiko@sntech.de>, Paul Elder <paul.elder@ideasonboard.com>,
- Tomasz Figa <tfiga@google.com>, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4 13/21] media: rkisp1: Compile debugfs support
- conditionally
-Message-ID: <Ymbxs2p9Tuf331qM@pendragon.ideasonboard.com>
-References: <20220421234240.1694-1-laurent.pinchart@ideasonboard.com>
- <20220421234240.1694-14-laurent.pinchart@ideasonboard.com>
- <YmZ+89lToRXl4vFB@gmail.com>
+ id 1nj4Wv-00B54P-Tj; Mon, 25 Apr 2022 19:37:55 +0000
+Received: by mail-yb1-xb32.google.com with SMTP id d12so9753990ybc.4;
+ Mon, 25 Apr 2022 12:37:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Sv8hAStxtYZLA7ttjMHDmBWNkg9R0he6yilL9E/on7U=;
+ b=Rm3XivQgs/+qfHTgBRxz6EnqsR5YnGqXNq6SpUmHifFzrPauwn6vlgLyAEZRxGkVne
+ NUaFb6Sw7lnrNY59Nk0EjE1hAHqwuQPTmDo19XR5IhO9RnkLG4gEUzH50njFyZm9sc/f
+ jvwRM/jT2L4tq7uFD9+qrAOKMFp1CSeZaenkXELOGulEVO6y8F3JIEPpR/CxTkQAkYQC
+ Bn8QW/c2vyY6sgOjIsJil8UIhvRGlwr0XIW0Eh+tA2qHxqrdyFdT0uTnK1X2ShxEq2zh
+ le/736GlWszQIlmHgbntrvfmZVq9ZvbRkwcHcQlj4cvpTv5jCIiCYxxyl4ELBG6OhXzW
+ jxdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Sv8hAStxtYZLA7ttjMHDmBWNkg9R0he6yilL9E/on7U=;
+ b=IapvQ6KgykokB68vB8u9l1kVSdF8zU9Dv9aNSbJIP6YFQhshnrPB3x109Z5/b1h1R/
+ +r21uUaphELvi24tFeWdRAgNq0bYYwYbnRLqRyK2cxtFh43GHot0Bir7L7XM8mCtuur0
+ OP2DQROYxULgQMzkVeu4FF6IiMxDSkENFD7NsAlkKX2iIPfhESH4JecvCg73Z2dNHTvR
+ BZUmUdcLLdUCrkVF23hcPmKQzrsloZSsG9hxgAbP5wBkhJySrm9RoYqIcLRAHAeth06K
+ sbfoOXQuYiz/JuLxcZfYxaxELH0q4o9Mo2XIJosDRqqpJ90v2iypGA4F7SjNMYL4MBey
+ ysPA==
+X-Gm-Message-State: AOAM533ufFtyFiXVF0shP6FkAb0E8ksbiIbfTtWZ6O3H1SQyHq1AaAfZ
+ JpWXdaG6Nv0U7vp52SXsfqB1kV71WnwU8IAhgoA=
+X-Google-Smtp-Source: ABdhPJx+MAl3lvFKD1Qba4L7n1K5/ljEL1sT3HVJgvt1iDEvua5oqXeT4ma4s6OJVaASqyJ8hlGCcxr5ZDsfp4axFO8=
+X-Received: by 2002:a25:af14:0:b0:645:36f1:c584 with SMTP id
+ a20-20020a25af14000000b0064536f1c584mr17794206ybh.366.1650915472252; Mon, 25
+ Apr 2022 12:37:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YmZ+89lToRXl4vFB@gmail.com>
+References: <20220422170920.401914-1-sebastian.reichel@collabora.com>
+ <20220422170920.401914-19-sebastian.reichel@collabora.com>
+ <36551341-60f5-8b61-59d1-176ece8204d6@arm.com>
+ <20220425181407.lknemxqooz7yidcz@mercury.elektranox.org>
+In-Reply-To: <20220425181407.lknemxqooz7yidcz@mercury.elektranox.org>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Mon, 25 Apr 2022 15:37:41 -0400
+Message-ID: <CAMdYzYr4ZNDzLGn-ArT4dW+F5c598rsWpACNMpuJRMY7a0yb=A@mail.gmail.com>
+Subject: Re: [PATCHv1 18/19] arm64: dts: rockchip: Add base DT for rk3588 SoC
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Robin Murphy <robin.murphy@arm.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, 
+ Adrian Hunter <adrian.hunter@intel.com>, Ulf Hansson <ulf.hansson@linaro.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Michael Turquette <mturquette@baylibre.com>, 
+ Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
+ linux-mmc@vger.kernel.org, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ devicetree <devicetree@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ kernel@lists.collabora.co.uk, 
+ Kever Yang <kever.yang@rock-chips.com>, kernel@collabora.com, 
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+ Elaine Zhang <zhangqing@rock-chips.com>, 
+ Sugar Zhang <sugar.zhang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_120837_016466_05130EB5 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20220425_123754_016273_3FA48C6C 
+X-CRM114-Status: GOOD (  23.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,81 +101,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Ricardo,
+On Mon, Apr 25, 2022 at 2:14 PM Sebastian Reichel
+<sebastian.reichel@collabora.com> wrote:
+>
+> Hi,
+>
+> Thanks for having a look.
+>
+> On Fri, Apr 22, 2022 at 07:16:13PM +0100, Robin Murphy wrote:
+> > On 2022-04-22 18:09, Sebastian Reichel wrote:
+> > > ...
+> > > +           cpu_l0: cpu@0 {
+> > > +                   device_type = "cpu";
+> > > +                   compatible = "arm,cortex-a55";
+> > > +                   reg = <0x0>;
+> > > +                   enable-method = "psci";
+> > > +                   capacity-dmips-mhz = <530>;
+> > > +                   clocks = <&scmi_clk SCMI_CLK_CPUL>;
+> > > +                   i-cache-size = <32768>;
+> > > +                   i-cache-line-size = <64>;
+> > > +                   i-cache-sets = <128>;
+> > > +                   d-cache-size = <32768>;
+> > > +                   d-cache-line-size = <64>;
+> > > +                   d-cache-sets = <128>;
+> > > +                   next-level-cache = <&l2_cache_l0>;
+> > > +                   #cooling-cells = <2>;
+> > > +                   dynamic-power-coefficient = <228>;
+> > > +           };
+> >
+> > Is there any particular reason for not including more of the CPUs?
+>
+> Yes, see below.
+>
+> > > +           its: interrupt-controller@fe640000 {
+> > > +                   compatible = "arm,gic-v3-its";
+> > > +                   msi-controller;
+> > > +                   #msi-cells = <1>;
+> > > +                   reg = <0x0 0xfe640000 0x0 0x20000>;
+> > > +           };
+> > > +   };
+> >
+> > Does the ITS (and other bits related to GIC memory accesses) actually work,
+> > or will we have more of the same issues as RK356x?
+>
+> The GIC in RK3588 is has the same shareability limitation as the RK356x,
+> but fixed the 32bit limitation. That's why I just added the boot cpu core
+> for now; adding any other cpu core breaks the boot without the downstream
+> shareability patch and I'm still investigating.
 
-On Mon, Apr 25, 2022 at 12:58:59PM +0200, Ricardo Ribalda wrote:
-> Laurent Pinchart wrote:
-> 
-> > When CONFIG_DEBUGFS is disabled, there's no need to compile the debugfs
-> > support in. Make it conditional.
-> > 
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
-> > ---
-> > Changes since v3:
-> > 
-> > - Fix double mention of rkisp1-debug.o in Makefile
-> > ---
-> >  .../media/platform/rockchip/rkisp1/Makefile    | 18 ++++++++++--------
-> >  .../platform/rockchip/rkisp1/rkisp1-common.h   |  9 +++++++++
-> >  2 files changed, 19 insertions(+), 8 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/Makefile b/drivers/media/platform/rockchip/rkisp1/Makefile
-> > index 1a39bdcc608e..f7543a82aa10 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/Makefile
-> > +++ b/drivers/media/platform/rockchip/rkisp1/Makefile
-> > @@ -1,11 +1,13 @@
-> >  # SPDX-License-Identifier: GPL-2.0
-> 
-> Are you sure that this work when rockchip is built as module?
+There's no way to avoid this issue unfortunately.
+See my awful hacked together patch:
+https://gitlab.com/pine64-org/quartz-bsp/linux-next/-/commit/8b34fd2a74321f8f5d7731b63eee0f9e03d1393b
 
-I'm fairly confident it does, as I build the driver as a module :-)
+Considering the ITS exists pretty much just for MSIs, and my PCIe
+series introduces support for legacy interrupts, you may get away with
+doing the mbi-alias currently implemented in rk356x.
+Note, there are *some* compatibility issues with mbi-alias MSIs,
+particularly with high IRQ cards like the Intel x520.
 
-> > +rockchip-isp1-y := rkisp1-capture.o \
-> > +		   rkisp1-common.o \
-> > +		   rkisp1-dev.o \
-> > +		   rkisp1-isp.o \
-> > +		   rkisp1-resizer.o \
-> > +		   rkisp1-stats.o \
-> > +		   rkisp1-params.o
-> > +
-> > +rockchip-isp1-$(CONFIG_DEBUG_FS) += rkisp1-debug.o
-> > +
-> >  obj-$(CONFIG_VIDEO_ROCKCHIP_ISP1) += rockchip-isp1.o
-> > -rockchip-isp1-objs += 	rkisp1-capture.o \
-> > -			rkisp1-common.o \
-> > -			rkisp1-debug.o \
-> > -			rkisp1-dev.o \
-> > -			rkisp1-isp.o \
-> > -			rkisp1-resizer.o \
-> > -			rkisp1-stats.o \
-> > -			rkisp1-params.o
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > index 07a92ed8bdc8..a7ffe2830fa8 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > @@ -518,7 +518,16 @@ void rkisp1_stats_unregister(struct rkisp1_device *rkisp1);
-> >  int rkisp1_params_register(struct rkisp1_device *rkisp1);
-> >  void rkisp1_params_unregister(struct rkisp1_device *rkisp1);
-> >  
-> > +#if IS_ENABLED(CONFIG_DEBUG_FS)
-> >  void rkisp1_debug_init(struct rkisp1_device *rkisp1);
-> >  void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1);
-> > +#else
-> > +static inline void rkisp1_debug_init(struct rkisp1_device *rkisp1)
-> > +{
-> > +}
-> > +static inline void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
-> > +{
-> > +}
-> > +#endif
-> >  
-> >  #endif /* _RKISP1_COMMON_H */
-
--- 
-Regards,
-
-Laurent Pinchart
+>
+> -- Sebastian
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
