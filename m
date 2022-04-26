@@ -4,62 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CDF2C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 15:08:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8277EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 15:42:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l0NUzqwkhBa9cqB5WrJI6xfzWOAHw7988QgqrUqKQFs=; b=r6tBUPG38C2m4qAJGKAXqtAZcJ
-	Fn0x/nTR8HyTmUnWoLkTZq9MUhq1X/JxD8c4u8H21BXUYY4lCO2Yvg4+VRJtldG7cb4cmoYLgJedi
-	W54gu+vas/lPc2vvOyjRBcb1QsOohAAUhKICuxfLq/vPOzpoMyXhjLAzxDGVkEQWyRQwX3QbjCB9I
-	qSCNnOgod4Z6vPV3OIU+pKo65s12rvjQDbW1EXlZB7A6ntqXseVkx8m2Lm1DKCA2m8evbN6BbbtKa
-	9+DOtKlMZWCf2IWeldpF/JF3JMoIRPJMjv2gusw++JlExLZDrIdbNDB999JHFpoVzQiPSfIeD0NHc
-	e5vonJng==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9/c/wnaXtHglcbMBDfQmB9+MBhuQpzhcwgjBSiSJKOo=; b=C1R7+v5HyReZ/W
+	UCICpIK7se7JPDS4c4vKKGcg0P698sk5Q9/7dR2KjWhTwaul5IG44GUX3jiCgBy86sM50GCSBE6Wp
+	6eL8joSktyWSXzJJoEBK/jaIRTX3khAuGJv0NmJpoyb4XJ8xPMob9gl5usNE26Mqd0VYmnaHsN0It
+	CC2VzyPkVljD7Ux5I8yxy6bOnE3ZWub7L59hlvv/SGol2uRFj/pmIvCwICo2+gcGrLBH976aEVmHA
+	V9kP8bAtV2JMMd3CIPjYAFeW4eSSem5tKtxZjxydCaISchIbFZ+DyO5c0s6YTCLnLRKjTWcYQGwUB
+	sWe/+LtbDdJibDk79+Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njMnQ-00F73H-Ap; Tue, 26 Apr 2022 15:08:08 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1njNKs-00FBgV-0A; Tue, 26 Apr 2022 15:42:42 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njMnN-00F6zO-Le
- for linux-rockchip@lists.infradead.org; Tue, 26 Apr 2022 15:08:07 +0000
-Received: from localhost (unknown [IPv6:2a02:3030:3:7d2:2277:ba57:a2c0:3])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- (Authenticated sender: sebastianfricke)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 2EF7F1F43AF8;
- Tue, 26 Apr 2022 16:08:00 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650985680;
- bh=/9X+6WyLqs1GN7OeFO40lgmlj/Imhhsr/HAhx6cMuHY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Tc3VgAmsk+pe98NajtEuMllc5Pcw0UM1wLnGZ1T8PjqjkbE7ZfbPQwO6mEmGUS5Hi
- Ncshj9lg+j+fFJ0A44gEapJq9As4255mgQl+3d+hb7PTdsdFKhpkc4bnODLtss15is
- zwk55+lo8K4c4rXWIocsYlhaCb95EzdMxCsPtYwgcYasa6Dl7LxqvmlCl2a7ZbvGRC
- VxgwXyKAEqj+MclS9dBu7Vr/8EoTdzPH6ygL5EniVWaOeGzx3L9YyoOLmNvrrdokvT
- SFxSX2OkzbLwRk41JN71XewFNkWxSDuhvjiEh4ihoh34xa1XhjVRAUBjfTDufzosXQ
- cZE+Nu3JDBzbQ==
-Date: Tue, 26 Apr 2022 17:07:56 +0200
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- mchehab@kernel.org, gregkh@linuxfoundation.org,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- jon@nanocrew.net, aford173@gmail.com, kernel@collabora.com
-Subject: Re: [PATCH v2] media: hantro: HEVC: unconditionnaly set
- pps_{cb/cr}_qp_offset values
-Message-ID: <20220426150756.ecjc4q5ncxzy3lva@basti-XPS-13-9310>
-References: <20220426135034.694655-1-benjamin.gaignard@collabora.com>
+ id 1njNKo-00FBeW-C6; Tue, 26 Apr 2022 15:42:39 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id c23so30619703plo.0;
+ Tue, 26 Apr 2022 08:42:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=mkAiWyPhdlD7e1Z/gpT9jMCqV3vsrhfRYPhRMfnvJO0=;
+ b=TaHATRTJwJHqsCqS2xEBlv6yBrYs0VJr0ClZJaLQBGwXZBJagebc+1vGjE+iPkNmEu
+ AfQg/LzWmCdvqI1dDWaDBGJYfmGPOQ2HJWGzcp2EneKB5omeAPGrlvMsiTly0xwPOl9+
+ ZtJ4gZm1iZQpFGDYYtTUjn6XoMfZjg0f3ILxFQ0HkXlL4vsGaHlJrZiGol2Kf9z7+YK4
+ KFQlKVFZp73718XauWKHrGCVSAsh33cMygLQ7ka4LZKHM5nmcsf86L23B/nl/H/t6SIc
+ xsvqrdf07KEtHyfU5EoRjvP9XkDcJZgW0zl/gX1h4DBYTpTYQCqRpo9EaRX9QeJdLNPN
+ JgZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=mkAiWyPhdlD7e1Z/gpT9jMCqV3vsrhfRYPhRMfnvJO0=;
+ b=JcDxj2DDIE2dUA+jewacpNIgP9oGbUzi0bnXt3XptxLngvkI34swBQMFoXHi0igTlB
+ LcUUAwbYOj9u0rmXPasGWJgtyfzmmXbvsEROcuf2u15peSvosVs1c+ztZHp7Up7ceigI
+ SIAsbO+tgAHYF9tJcWcUKXtP4Zf2Xha4JCmsHJAuh/PYm5y9RTC42YidJVMTo1z7d2Kv
+ 6CUZXpPYqBucQhgOQZCR6Rd+2SN79kSzwPooaGqvEPCJh5SLG024uMS5yLKKzO2m2936
+ KFz3OIa9PVIhlydB7i34kw9Z0tD6HBWt35WuQuX5IFOUvPZFSq0r2vWulnnRKqzl5rSc
+ JsBQ==
+X-Gm-Message-State: AOAM533OA4YpIoTyV0CahUi105qnHzgIsW4OdKimlOojuHc8p9w2nXFx
+ e4FHjez6OOCv3F6W8eBqUKk=
+X-Google-Smtp-Source: ABdhPJyo24E6WK3N7Y00h2mZM57XuguDl+o2a2UTKmV8d5ty3eJrQIQ9E7G31XihG1HfqrPrfocGrw==
+X-Received: by 2002:a17:902:d545:b0:15d:4a7:d3c1 with SMTP id
+ z5-20020a170902d54500b0015d04a7d3c1mr13148473plf.52.1650987755650; 
+ Tue, 26 Apr 2022 08:42:35 -0700 (PDT)
+Received: from [10.67.48.245] ([192.19.223.252])
+ by smtp.googlemail.com with ESMTPSA id
+ j9-20020aa78009000000b004fde2dd78b0sm15040858pfi.109.2022.04.26.08.42.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 26 Apr 2022 08:42:35 -0700 (PDT)
+Message-ID: <b2f06a62-6ad7-ea92-7035-2a29f0e6affd@gmail.com>
+Date: Tue, 26 Apr 2022 08:42:32 -0700
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220426135034.694655-1-benjamin.gaignard@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [RFC v1 1/3] net: dsa: mt753x: make reset optional
+Content-Language: en-US
+To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Cc: Frank Wunderlich <frank-w@public-files.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org
+References: <20220426134924.30372-1-linux@fw-web.de>
+ <20220426134924.30372-2-linux@fw-web.de>
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <20220426134924.30372-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_080805_945428_2624F811 
-X-CRM114-Status: UNSURE (   8.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220426_084238_468880_2C252B91 
+X-CRM114-Status: GOOD (  12.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,48 +104,25 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hey Benjamin,
+On 4/26/22 06:49, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Currently a reset line is required, but on BPI-R2-Pro board
+> this reset is shared with the gmac and prevents the switch to
+> be initialized because mdio is not ready fast enough after
+> the reset.
+> 
+> So make the reset optional to allow shared reset lines.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
-On 26.04.2022 15:50, Benjamin Gaignard wrote:
->Always set pps_cb_qp_offset and pps_cr_qp_offset values in Hantro/G2
->register whatever is V4L2_HEVC_PPS_FLAG_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT
->flag value.
->This fix CAINIT_G_SHARP_3 test in fluster.
-
-just a small typo:
-s/fix/fixes the/
-
-Greetings,
-Sebastian
->
->Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->---
-> drivers/staging/media/hantro/hantro_g2_hevc_dec.c | 9 ++-------
-> 1 file changed, 2 insertions(+), 7 deletions(-)
->
->diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
->index 6deb31b7b993..503f4b028bc5 100644
->--- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
->+++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
->@@ -194,13 +194,8 @@ static void set_params(struct hantro_ctx *ctx)
-> 		hantro_reg_write(vpu, &g2_max_cu_qpd_depth, 0);
-> 	}
->
->-	if (pps->flags & V4L2_HEVC_PPS_FLAG_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT) {
->-		hantro_reg_write(vpu, &g2_cb_qp_offset, pps->pps_cb_qp_offset);
->-		hantro_reg_write(vpu, &g2_cr_qp_offset, pps->pps_cr_qp_offset);
->-	} else {
->-		hantro_reg_write(vpu, &g2_cb_qp_offset, 0);
->-		hantro_reg_write(vpu, &g2_cr_qp_offset, 0);
->-	}
->+	hantro_reg_write(vpu, &g2_cb_qp_offset, pps->pps_cb_qp_offset);
->+	hantro_reg_write(vpu, &g2_cr_qp_offset, pps->pps_cr_qp_offset);
->
-> 	hantro_reg_write(vpu, &g2_filt_offset_beta, pps->pps_beta_offset_div2);
-> 	hantro_reg_write(vpu, &g2_filt_offset_tc, pps->pps_tc_offset_div2);
->-- 
->2.32.0
->
+This looks fine however 
+Documentation/devicetree/bindings/net/dsa/mt7530.txt still has some 
+verbiage that suggests that the 'reset' property is mandatory, so you 
+might need to update the binding (and as a separate patch we should make 
+it YAML).
+-- 
+Florian
 
 _______________________________________________
 Linux-rockchip mailing list
