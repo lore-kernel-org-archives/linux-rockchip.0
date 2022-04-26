@@ -4,74 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38A76C433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 01:46:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06B1CC433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 07:13:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CfNcjpGg0LJv2Nl1fn/FpesIGB2LyumotvnoRm5zLmM=; b=RC0ctyw9YzikFX
-	7E0aVVZFPqBpK68TY3Sq/WxIzmqKtg9GRLKJkHsvtCnkeygKym0h8+X6GhFsI9foxHuEa3iWTorfd
-	7KP+CDy7m5raT95lpQaEDwZgTXWrcaJQ6WJSFCkekvTY/BI2ayCefyS7oUYywfp1QvpsxvVUhQuXO
-	wzbx2SjIlz0A7o6BvjzRA/7BUkEHGwTy5bGmdvgS2HrXIER8uQfVLHMLI9371dvl4v4BNtEFhLf8g
-	C4lDrDqTYCFdUBW9Z0AM6OPHLfwyKwBMFc3JEQNde2Ks8YkeNJWCdKp7RgTYBHVbZOyws4JnwNpt4
-	Cjcvgwm2Q7MmYBfLaXcQ==;
+	List-Owner; bh=bpy/wGzTl3iXTTgVvaBm+ftSvfM0RNDpmOLXVgDkDwE=; b=5DWALhg0Vxd4ix
+	stccCZMLMxhcP1twTJ2wGUS+qgc8+5wurwWuLxyVQ/X9YNqAVWMOPpv46tvF8+wXLAu4Rp4u8AmvG
+	ByNkrL3cvwmFTZwHw959FT91pPe9RZ0LXyz/X+LKanSSRcZty8InGKC+pI3CBpqxxZ1Qby9LLPpQu
+	p4uPwZFgSRtPKKU58YGS6OWtJNoinSHCiLrVpAt/2JPAHnQVL0QFGbrHZBVIFsbfA6T0oHtAwO7HO
+	nqHmBFzzUV9txDT38bK2jVSI1GALFZV3MoESpFSEpb/UyNBs1y9mGJJmZxxXux9ZZOhkYlFmoMpTa
+	iLR7HzUo+WVszTeH7STw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njAHF-00C73u-6R; Tue, 26 Apr 2022 01:46:05 +0000
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+	id 1njFOA-00Ctt3-7N; Tue, 26 Apr 2022 07:13:34 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njAHA-00C71e-5e
- for linux-rockchip@lists.infradead.org; Tue, 26 Apr 2022 01:46:01 +0000
-Received: by mail-pg1-x530.google.com with SMTP id 15so6453894pgf.4
- for <linux-rockchip@lists.infradead.org>; Mon, 25 Apr 2022 18:45:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=xEcNsOmWiSoMZTJZ9nDIHZwHU/nM01fZp19mgcJHcnc=;
- b=ONlUfnCtqgajUOOJkNwU0AWXmkQNY0M6ASjQrMi7sBEcTY6YbOGE9cr9gSq9Rnynkz
- Lqzeh4bhQp6RVjA4EVSy3nblPtdnIEnjq0dpmRKb5y/xXqc42zOPX5y5hot4QWmXxdT6
- sAS+g1sGOgn8Va5e0kzERx2NuZaFGV235DLok=
+ id 1njFO7-00Ctrp-8C
+ for linux-rockchip@lists.infradead.org; Tue, 26 Apr 2022 07:13:32 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id i19so2472996eja.11
+ for <linux-rockchip@lists.infradead.org>; Tue, 26 Apr 2022 00:13:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=796okj7fUhfEo6Z+Bxk5e2KE1IFo6Dc7db5MBQ6gCi4=;
+ b=Xg8xaGl3qOynNGE6l19Z5REqd7o4IHyJY6pnHNqA2NQsZ4xuKKdM1MOZnQkyw5w+VL
+ uY9s5qBh0MgEdIl6r8Yf0gT9CeJpbE4TX73rynqCDd7GkJBn5mhNSyDDHlH4B0qoXJCw
+ SHZFY47RNajDkrMT+nMKMGyjSNdEg1lJ7Iun3uHI0FfbdgbQpXn7tZrCTC5VDWguNnGY
+ Cv4Kms5dcMhE0XTNVOEN1OYATjIVXwBS0Zc8qsFuuIgal5KQHmx9yrWxDSQbXwbXPGBF
+ /gI3vMXFNJrnUlR3CxzLcvIOswGFemjF+HqCsOBWXAomC1nyc00/T4tB4Oedxl77m/w4
+ IDiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=xEcNsOmWiSoMZTJZ9nDIHZwHU/nM01fZp19mgcJHcnc=;
- b=BhN91TWVQ9/ix3nW/XfY8l7jJCIgHqcVajHQQvaec26cc0z/NA3nrGH6oJT2jnHNMb
- cbajWFdHIm444WdHTuY/GuZepyuzmIAkuFMm/ueo1jQ6/tSegXu9BahpmVrMhgzH4wcg
- kOATstfv9Fss3SniULO4kwKH7Lqh/FGUHDoSA+woz30v6mMWvw9FTO4ztkzTBRH/067C
- VLgJNQtbHLAnT4SiDvVhbL3e32Tvxu/DjzQ7wC8HgufihkyJZ2cBodsoeb8J86z8T8QL
- tdq82IwKhGc+2ES10peJ8ASh8jc3zyQ5vJmBO5qfIEUoGYPTgoCdsjbabKdXt/UpHBkX
- j7WA==
-X-Gm-Message-State: AOAM533bTA+ose91G0dVXOt+EwoUE3um4U7puoZpkTtx22FzIN7YsBwF
- PucJ3ntQVjmmzhZCdbMrVOQFg90lHDw1QA==
-X-Google-Smtp-Source: ABdhPJwxk4NagGqjyQ1Zjt4Y7KAzZSTlHKc6kbk46QcFNRRhLXNdVkKJpLaKkEUeZMQ8aJNP/sLzpg==
-X-Received: by 2002:a63:a61:0:b0:39c:b654:b753 with SMTP id
- z33-20020a630a61000000b0039cb654b753mr17149715pgk.117.1650937558631; 
- Mon, 25 Apr 2022 18:45:58 -0700 (PDT)
-Received: from localhost ([2620:15c:202:201:84c6:2d6d:c16:1a1b])
- by smtp.gmail.com with UTF8SMTPSA id
- c7-20020a62f847000000b0050bb32e3b8dsm10251134pfm.179.2022.04.25.18.45.57
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=796okj7fUhfEo6Z+Bxk5e2KE1IFo6Dc7db5MBQ6gCi4=;
+ b=a+Hw4jKG6LpsN1Z6m07iduJtjsT/fDgiColPnOA0p56Y3HJewuZKabX+rtZptwuEX1
+ sSvx5KBw8ICZFi7YHvLnyPio76LBSv1dDGl3MI1fG/2238OkQI8qR5Zqh0lf80A+uswn
+ EhT8PX9KIRuInFmueNNSAeLUBFUYs0fXHiAu6dylQ3BMs/K2T0uqErL5uQ1vNo3p2o2F
+ 3CMkQBbtrZ4dgoja7klHWd17cfqicQrR2hLG91gbaDzS+wn3sjUFn5e8qI0JWnPXDA40
+ BPb9DMfNIBd1xq4uJVz22gocrzs0Eq44Lwj0fq3H89o+C+8urWWI+LFA0OWyzUdfpaSc
+ qEDg==
+X-Gm-Message-State: AOAM531LgKPkTVPbmdEXxH51FFes64hIGrr1IduA4xaw1xmblVa1swTs
+ rJNPwzqbYLiDt+u0X8pPtYwWFQ==
+X-Google-Smtp-Source: ABdhPJzX1cqLrcHhd4KQ3AKjehHP29V8LYMhJeuJd1XE420U3ovR0yd62G4tmz9dpqk/GrepN+5mwg==
+X-Received: by 2002:a17:907:c243:b0:6f3:953d:6e2 with SMTP id
+ tj3-20020a170907c24300b006f3953d06e2mr8363720ejc.506.1650957209401; 
+ Tue, 26 Apr 2022 00:13:29 -0700 (PDT)
+Received: from [192.168.0.244] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ kx5-20020a170907774500b006e1382b8192sm4499892ejc.147.2022.04.26.00.13.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 Apr 2022 18:45:58 -0700 (PDT)
-From: Brian Norris <briannorris@chromium.org>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Arnd Bergmann <arnd@arndb.de>
-Cc: Robin Murphy <robin.murphy@arm.com>, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>,
- Brian Norris <briannorris@chromium.org>
-Subject: [PATCH v3 3/3] soc: rockchip: Fix compile-testing SoC drivers
-Date: Mon, 25 Apr 2022 18:45:44 -0700
-Message-Id: <20220425184503.v3.3.Id5f16dec920f620120c0a143a97a12e16d401760@changeid>
-X-Mailer: git-send-email 2.36.0.rc2.479.g8af0fa9b8e-goog
-In-Reply-To: <20220426014545.628100-1-briannorris@chromium.org>
-References: <20220426014545.628100-1-briannorris@chromium.org>
+ Tue, 26 Apr 2022 00:13:28 -0700 (PDT)
+Message-ID: <ebdc9fe8-f54c-9b11-a167-54219b124cde@linaro.org>
+Date: Tue, 26 Apr 2022 09:13:27 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v6 24/33] dt-bindings: crypto: convert rockchip-crypto to
+ YAML
+Content-Language: en-US
+To: Corentin Labbe <clabbe@baylibre.com>, heiko@sntech.de,
+ herbert@gondor.apana.org.au, krzysztof.kozlowski+dt@linaro.org,
+ robh+dt@kernel.org
+Cc: linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org
+References: <20220425202119.3566743-1-clabbe@baylibre.com>
+ <20220425202119.3566743-25-clabbe@baylibre.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220425202119.3566743-25-clabbe@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_184600_250483_D02520D7 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20220426_001331_355600_A087BA8D 
+X-CRM114-Status: UNSURE (   6.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,54 +99,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Similar to commit 7f94b69ece51 ("ARM: ixp4xx: fix compile-testing soc
-drivers").
+On 25/04/2022 22:21, Corentin Labbe wrote:
+> Convert rockchip-crypto to YAML.
+> 
+> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> ---
 
-drivers/soc/rockchip/Kconfig makes plenty of provision for configuring
-drivers either for ARCH_ROCKCHIP or for COMPILE_TEST. But
-drivers/soc/Makefile pulls the rug out from under us, by refusing to
-build anything if we specified COMPILE_TEST but not ARCH_ROCKCHIP.
 
-Currently, I'm not aware of anything that breaks without this patch, but
-it certainly makes for confusing builds (CONFIG_ROCKCHIP_PM_DOMAINS=y,
-but we didn't actually compile the driver?) and leaves room for future
-error (I have pending patches that break confusingly with COMPILE_TEST=y
-even though their Kconfig dependencies seem correct [1]).
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Defer to drivers/soc/rockchip/{Makefile,Kconfig} to do the right thing.
 
-[1] e.g.,
-https://lore.kernel.org/linux-rockchip/20220405184816.RFC.2.I2d73b403944f0b8b5871a77585b73f31ccc62999@changeid/
-[RFC PATCH 2/2] PM / devfreq: rk3399_dmc: Block PMU during transitions
-
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
-
-Changes in v3:
- * Drop ARM||ARM64 dependency, now that bare dsb()s have been removed
-
-Changes in v2:
- * Depend on ARM||ARM64
-
- drivers/soc/Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/soc/Makefile b/drivers/soc/Makefile
-index fd7717d597fc..4c91705a8bb3 100644
---- a/drivers/soc/Makefile
-+++ b/drivers/soc/Makefile
-@@ -23,7 +23,7 @@ obj-y				+= pxa/
- obj-y				+= amlogic/
- obj-y				+= qcom/
- obj-y				+= renesas/
--obj-$(CONFIG_ARCH_ROCKCHIP)	+= rockchip/
-+obj-y				+= rockchip/
- obj-$(CONFIG_SOC_SAMSUNG)	+= samsung/
- obj-$(CONFIG_SOC_SIFIVE)	+= sifive/
- obj-y				+= sunxi/
--- 
-2.36.0.rc2.479.g8af0fa9b8e-goog
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
