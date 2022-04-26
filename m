@@ -4,83 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B090EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 07:17:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 029AAC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 07:34:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ag8zjBgcxAiJ3hEHKvvBu/YicK4nT7gH601puIuvL3g=; b=Qchmmqbdbe0mw6
-	j3GL4wAagzkxp4jMULLAydEB3gQO5k0R+lEU5pPEXab037CxDRD+UuikuSVk11FzmxnwUhdpFW/7g
-	3jvkajI9AiC+Urff5I/xqVbNP5ibOYrQ+wJO2LpWIiF7WxF4QzLA98+dWtXWfXko+UldPlrstrAYu
-	HoeIAtnAtOElUXPGLDBC/KXwCY66Ui+qOEJ9Y9oIeQLVLITAL42CPMvacgXAkNqTpbY5dKtIj30hn
-	bmiSCFqHCU7Cm+E4MQAmcxknhN+/TmO6FhsNfLG/sTYKS1h6DZSO/iGlWNuT/zRbwNMEs4vSBTvM5
-	y10SzLbZ4HXfB7jmDKvQ==;
+	List-Owner; bh=WycCMZqERNbtK4LW/B11bgGHnZuOaftOKd0U4ZzFdec=; b=wKr/Mz+IARyPLa
+	oHQ8VSGPAM/4ofXygF1/Jz7t15DNb+Gm+ducOrPFJxJbm97oJdBFqIUFxWxEiqBwZYdFWXKeiWoZm
+	SIYcLlegHhuAeIwZEXBtHLtnS5omINscJ01Pdd3tMdoaEJWUZpzvC4BRxr9qSBIRFnPX95DzrWCrK
+	v9Bu36xjCu4b9TrFjVMm6ykksk9zViKcvY3iN/euP6WMFX+1LlPXodZeAD0eWXx+Bt3CzBSQ62zXW
+	6kOuwt5YVOLSNTFah/TScO0rmjnepkGs28nCisYEjKJ2Xd1pBkXuFzI/5/h93ZSk9RmB+Vub4U+P5
+	ZTGSaeQ3MvDd8u/teOCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njFRi-00CuxA-HH; Tue, 26 Apr 2022 07:17:14 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1njFiA-00CzEz-Er; Tue, 26 Apr 2022 07:34:14 +0000
+Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njFRf-00Cuso-0l
- for linux-rockchip@lists.infradead.org; Tue, 26 Apr 2022 07:17:13 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id g20so21175105edw.6
- for <linux-rockchip@lists.infradead.org>; Tue, 26 Apr 2022 00:17:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=shX4IM4IxXnZAwFkwJE2OgpC7RVVTATTpnGlocR5V84=;
- b=nkwegCQ8EKFVIPs5hZHXdpuhv8bMa7YtQcYyd/qrqIn4Hq2RKrB8ZQdqteOE7+cVh6
- FGpvuTrZzgWr3rd1cUdkI1eWBB+lYlJPS7gZdWeDO9i/PEtl1ea17FvJqh8UpU41Wubj
- fnyRVEUvKUiob7yUIL9tXqvAATdXlSSFwQkuxJ/BCX3d3H2WAx0RWWM1GejeF3A0bn+F
- dnSy9lA82Juycz5a59AOaj0pbHf2AHfBLos0JCLkT9AuB4ONriuURNuZBctckj5pn0Io
- c2f0Q16rnyOjSZCcfAVSIZNzfnwcV1KGB4kuC9xq6oItQ5gZnbbzT+r6zL2Cn0EuST1P
- 8dpQ==
+ id 1njFi7-00CzEB-Js
+ for linux-rockchip@lists.infradead.org; Tue, 26 Apr 2022 07:34:13 +0000
+Received: by mail-oa1-x34.google.com with SMTP id
+ 586e51a60fabf-d6e29fb3d7so18548975fac.7
+ for <linux-rockchip@lists.infradead.org>; Tue, 26 Apr 2022 00:34:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=8ehkV6mnvrvV8SRKl9qJVoHX/FUhbl1B+R3BHH6VqTQ=;
+ b=IFg5A0uJyXIlurj2BEpddgPQTCt+WAocY1pf0uopzmWUPh8MCSQAMMoWPJs/2IBMAV
+ LbFa3qSXaY2O16ruF4Y4Pj+aVn9OFWLJypF6Skhbp+GmjZfQA4ZOC/532b9gfVO17bCG
+ dxTdApJv9xHfEig22JVVq57zkc9d+KIn875Zg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=shX4IM4IxXnZAwFkwJE2OgpC7RVVTATTpnGlocR5V84=;
- b=UHbBNpZp7jShY+HUvTmPAMvGDDEp/e4CrmyCyA/tBSfWi7pLJjVAn2Fw9ClxQlTeQc
- xziU9aOOeaAaBY+CFekcl7rkwgS/BrqTMS1hbUCxK8zK9Nk1FIxe39HZTZedHV5h23Ul
- Fm3uiqfTeRJfWVQNScNn2NiO3XCRqCFid6msCNr04VOgEqrbAKMYUQo+R6fXg7fRU8tx
- wk7QwwmvCqj2ggVMBxket1vCqJrTTkOpzdvHA2/qmuBbu2uWivPb8pZyNK8mI9INGGI2
- 3WVUcathrINawkKkZgn+I++P9kGzEvIxlcXxG1g9gTzWm8HbwDFwu6slUEUHMILRo3ls
- tsDw==
-X-Gm-Message-State: AOAM530moF/L2TWV0BM1HAbMMg1QCsV56le/+5hhUVrENgM6Y+RKanqN
- t2Bw/5RJGs9opUcF3kLbPLnO+A==
-X-Google-Smtp-Source: ABdhPJzsDgilI6y9JHqYWD8OWuHEuuSPGf6T7DrE8s9gbzU5nzA3PXCrFJQcPnXqIIM0+lzgdBiksQ==
-X-Received: by 2002:a05:6402:84a:b0:423:fe99:8c53 with SMTP id
- b10-20020a056402084a00b00423fe998c53mr22805247edz.195.1650957427148; 
- Tue, 26 Apr 2022 00:17:07 -0700 (PDT)
-Received: from [192.168.0.244] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- c3-20020a17090654c300b006e4e1a3e9d5sm4507003ejp.144.2022.04.26.00.17.06
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=8ehkV6mnvrvV8SRKl9qJVoHX/FUhbl1B+R3BHH6VqTQ=;
+ b=JXs7IZLQBsdjNNzMiG/7V00bivePpsOJwmt1X8blEHgbmtEZTCIhllrXW9C6J9L/OS
+ DGgpE2IyJ3kbHKPie9igY5dr0EPh0/1VZDl7C4ivlO/3G4PqCRbON6Gm7SKO96m3Cf+i
+ Frh6dgEA4A3xn53FLPFisD9lVoP6GJBzrFDdiDUxEgkcy1vJx7yjA1cgrC8jK4OisXVT
+ dlq17SVYiS5ALSM47iXxbzlv1FOYbShf5wYTelPaJueIs/zeXGhbliQ61hzJ/AU/Mo8i
+ cLLbP9gFWwKXl45Cj2SOPqX5L2mNmcVggit5ecAcZs3Ia8i1lhndZ3YjvFVD0ewpIGfi
+ cRvA==
+X-Gm-Message-State: AOAM533FfmQDTz3qXbMyYE+8KPx4l7sAp+QTVhTZXPR/Vo0w+NLcqhPR
+ RBsbx/dKxOmSvIT80+im5tT65zqMblxBWDJ+
+X-Google-Smtp-Source: ABdhPJw4gsE0sOXhNwGiObWk74+yLtE2hTuetsajVTZaueM0Qwvfb+3u8ZOP2iBhXfkS3yQeDHE1ag==
+X-Received: by 2002:a05:6870:5b9e:b0:cf:f6de:3e89 with SMTP id
+ em30-20020a0568705b9e00b000cff6de3e89mr13018595oab.94.1650958444551; 
+ Tue, 26 Apr 2022 00:34:04 -0700 (PDT)
+Received: from mail-oi1-f172.google.com (mail-oi1-f172.google.com.
+ [209.85.167.172]) by smtp.gmail.com with ESMTPSA id
+ q34-20020a056808202200b0032545864b89sm1307924oiw.14.2022.04.26.00.34.03
+ for <linux-rockchip@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Apr 2022 00:17:06 -0700 (PDT)
-Message-ID: <262fa922-0564-7dec-9558-b680480d0e67@linaro.org>
-Date: Tue, 26 Apr 2022 09:17:05 +0200
+ Tue, 26 Apr 2022 00:34:03 -0700 (PDT)
+Received: by mail-oi1-f172.google.com with SMTP id b188so19740555oia.13
+ for <linux-rockchip@lists.infradead.org>; Tue, 26 Apr 2022 00:34:03 -0700 (PDT)
+X-Received: by 2002:a05:6808:e88:b0:2fa:72da:55d4 with SMTP id
+ k8-20020a0568080e8800b002fa72da55d4mr14275514oil.66.1650958442683; Tue, 26
+ Apr 2022 00:34:02 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v6 25/33] dt-bindings: crypto: rockchip: convert to new
- driver bindings
-Content-Language: en-US
-To: Corentin Labbe <clabbe@baylibre.com>, heiko@sntech.de,
- herbert@gondor.apana.org.au, krzysztof.kozlowski+dt@linaro.org,
- robh+dt@kernel.org
-Cc: linux-crypto@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20220425202119.3566743-1-clabbe@baylibre.com>
- <20220425202119.3566743-26-clabbe@baylibre.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220425202119.3566743-26-clabbe@baylibre.com>
+References: <20220421234240.1694-1-laurent.pinchart@ideasonboard.com>
+ <20220421234240.1694-14-laurent.pinchart@ideasonboard.com>
+ <YmZ+89lToRXl4vFB@gmail.com> <Ymbxs2p9Tuf331qM@pendragon.ideasonboard.com>
+In-Reply-To: <Ymbxs2p9Tuf331qM@pendragon.ideasonboard.com>
+From: Ricardo Ribalda <ribalda@chromium.org>
+Date: Tue, 26 Apr 2022 09:33:52 +0200
+X-Gmail-Original-Message-ID: <CANiDSCvuWRfRDc7DhwESN_Z9+CCrQ_ofS=DZjMyV-=sojb=-Vw@mail.gmail.com>
+Message-ID: <CANiDSCvuWRfRDc7DhwESN_Z9+CCrQ_ofS=DZjMyV-=sojb=-Vw@mail.gmail.com>
+Subject: Re: [PATCH v4 13/21] media: rkisp1: Compile debugfs support
+ conditionally
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>, 
+ Heiko Stuebner <heiko@sntech.de>, Paul Elder <paul.elder@ideasonboard.com>, 
+ Tomasz Figa <tfiga@google.com>, linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_001711_123024_B1560AB3 
-X-CRM114-Status: GOOD (  14.43  )
+X-CRM114-CacheID: sfid-20220426_003411_708629_04D16B57 
+X-CRM114-Status: GOOD (  23.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,75 +97,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25/04/2022 22:21, Corentin Labbe wrote:
-> The latest addition to the rockchip crypto driver need to update the
-> driver bindings.
-> 
-> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
-> ---
->  .../crypto/rockchip,rk3288-crypto.yaml        | 85 +++++++++++++++++--
->  1 file changed, 77 insertions(+), 8 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml b/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
-> index 8a219d439d02..ad604d7e4bc0 100644
-> --- a/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
-> +++ b/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
-> @@ -13,6 +13,8 @@ properties:
->    compatible:
->      enum:
->        - rockchip,rk3288-crypto
-> +      - rockchip,rk3328-crypto
-> +      - rockchip,rk3399-crypto
->  
->    reg:
->      maxItems: 1
-> @@ -21,21 +23,88 @@ properties:
->      maxItems: 1
->  
->    clocks:
-> +    minItems: 3
->      maxItems: 4
->  
->    clock-names:
-> -    items:
-> -      - const: aclk
-> -      - const: hclk
-> -      - const: sclk
-> -      - const: apb_pclk
-> +    minItems: 3
-> +    maxItems: 4
->  
->    resets:
-> -    maxItems: 1
-> +    minItems: 1
-> +    maxItems: 3
->  
->    reset-names:
-> -    items:
-> -      - const: crypto-rst
-> +    minItems: 1
-> +    maxItems: 3
-> +
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3288-crypto
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 4
-> +        clock-names:
-> +          items:
-> +            - const: "aclk"
+On Mon, 25 Apr 2022 at 21:08, Laurent Pinchart
+<laurent.pinchart@ideasonboard.com> wrote:
+>
+> Hi Ricardo,
+>
+> On Mon, Apr 25, 2022 at 12:58:59PM +0200, Ricardo Ribalda wrote:
+> > Laurent Pinchart wrote:
+> >
+> > > When CONFIG_DEBUGFS is disabled, there's no need to compile the debugfs
+> > > support in. Make it conditional.
+> > >
+> > > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > > Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
+> > > ---
+> > > Changes since v3:
+> > >
+> > > - Fix double mention of rkisp1-debug.o in Makefile
+> > > ---
+> > >  .../media/platform/rockchip/rkisp1/Makefile    | 18 ++++++++++--------
+> > >  .../platform/rockchip/rkisp1/rkisp1-common.h   |  9 +++++++++
+> > >  2 files changed, 19 insertions(+), 8 deletions(-)
+> > >
+> > > diff --git a/drivers/media/platform/rockchip/rkisp1/Makefile b/drivers/media/platform/rockchip/rkisp1/Makefile
+> > > index 1a39bdcc608e..f7543a82aa10 100644
+> > > --- a/drivers/media/platform/rockchip/rkisp1/Makefile
+> > > +++ b/drivers/media/platform/rockchip/rkisp1/Makefile
+> > > @@ -1,11 +1,13 @@
+> > >  # SPDX-License-Identifier: GPL-2.0
+> >
+> > Are you sure that this work when rockchip is built as module?
+>
+> I'm fairly confident it does, as I build the driver as a module :-)
 
-No quotes (here and other places).
+I am not qualified to review Kconfig :)
 
-Rest looks good.
+Thanks :)
 
-Best regards,
-Krzysztof
+>
+> > > +rockchip-isp1-y := rkisp1-capture.o \
+> > > +              rkisp1-common.o \
+> > > +              rkisp1-dev.o \
+> > > +              rkisp1-isp.o \
+> > > +              rkisp1-resizer.o \
+> > > +              rkisp1-stats.o \
+> > > +              rkisp1-params.o
+> > > +
+> > > +rockchip-isp1-$(CONFIG_DEBUG_FS) += rkisp1-debug.o
+> > > +
+> > >  obj-$(CONFIG_VIDEO_ROCKCHIP_ISP1) += rockchip-isp1.o
+> > > -rockchip-isp1-objs +=      rkisp1-capture.o \
+> > > -                   rkisp1-common.o \
+> > > -                   rkisp1-debug.o \
+> > > -                   rkisp1-dev.o \
+> > > -                   rkisp1-isp.o \
+> > > -                   rkisp1-resizer.o \
+> > > -                   rkisp1-stats.o \
+> > > -                   rkisp1-params.o
+> > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > > index 07a92ed8bdc8..a7ffe2830fa8 100644
+> > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > > @@ -518,7 +518,16 @@ void rkisp1_stats_unregister(struct rkisp1_device *rkisp1);
+> > >  int rkisp1_params_register(struct rkisp1_device *rkisp1);
+> > >  void rkisp1_params_unregister(struct rkisp1_device *rkisp1);
+> > >
+> > > +#if IS_ENABLED(CONFIG_DEBUG_FS)
+> > >  void rkisp1_debug_init(struct rkisp1_device *rkisp1);
+> > >  void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1);
+> > > +#else
+> > > +static inline void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+> > > +{
+> > > +}
+> > > +static inline void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
+> > > +{
+> > > +}
+> > > +#endif
+> > >
+> > >  #endif /* _RKISP1_COMMON_H */
+>
+> --
+> Regards,
+>
+> Laurent Pinchart
+
+
+
+-- 
+Ricardo Ribalda
 
 _______________________________________________
 Linux-rockchip mailing list
