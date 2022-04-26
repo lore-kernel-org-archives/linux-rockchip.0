@@ -4,73 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6987DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 23:55:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20DCBC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 23:57:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RrJ5gLLMnU/xJqMgFgA3IfoBcjz+1G3lUOO008hakrc=; b=zWrbTehGmQNPWX
-	Ksjo63a26gjVNC6+UZxJx3eNLNJq4Shpdl6VJVNVCxRDVaI+a0FEtjLcrlVajmRZGj6Wzt66MFq8R
-	0pApAbeYA8CxGp8aljzDmvEBt+o5166X8Y6O0P2rh3+vmPq95EMDbOz6f4w5TXIHRl+Wx3r6N8z3i
-	aZE+OVsxE5gP57AyenzdJWxZelLr+crrZuKxAolnV/UxPCidF2961yLkjY16rb6b03i19Qzjr/TrZ
-	TqvyGsvv2B8sY3LECvolsL6KL6khOb+LWsqGYPR6+hD6pHsx6xsT2Kf4nSoade6JmFIo3r5OABnbY
-	2uqRU6+heMNqo9PzzJjw==;
+	List-Owner; bh=BHb4QuXYOPBoCdDR1hOj2I2g2ViWPSwgrFoaa5akDEQ=; b=p8bO9FF4CzVRwJ
+	MVlx+MzUYU0QBcYKH0RsCPe0Q4QoiQKbHUr1UjL3meW+DSL7Zqt1WNEWkFIe74UfNeFyroIq0818Y
+	DbqdCvOXUBA14+nZtSgIYTJtI97U02YZ5RjsXos/VJd6/pHM62JMu3wHBCkXzpMuKQ7hgC3l2OC3D
+	6QH88cPS6PDaUfzyKkJoPSuYB0pii73rnUTh3jKYCMdiUPc20ShexcQjGpSHAmL38zBPlrggzePDh
+	E8uZ+fiptbe+04RblZuxRdBKXXyFTRjspGZCEWznlykVAJn/4//QOwg8h23EdChwEmFfholBup3JG
+	9ooX7VPLVLAkpeFg7sCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njV1c-00GiF2-2P; Tue, 26 Apr 2022 23:55:20 +0000
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+	id 1njV3a-00GiVP-GF; Tue, 26 Apr 2022 23:57:22 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njV1Y-00GiEh-VU
- for linux-rockchip@lists.infradead.org; Tue, 26 Apr 2022 23:55:18 +0000
-Received: by mail-yb1-xb35.google.com with SMTP id w17so485486ybh.9
- for <linux-rockchip@lists.infradead.org>; Tue, 26 Apr 2022 16:55:15 -0700 (PDT)
+ id 1njV3X-00GiU8-0X; Tue, 26 Apr 2022 23:57:20 +0000
+Received: by mail-ej1-x636.google.com with SMTP id i27so160787ejd.9;
+ Tue, 26 Apr 2022 16:57:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Nlt5qC+wvX5QcXEUX3mdcdWLCql1FNsd3/g2ToCHKcU=;
- b=aO9N7IfdWDlkYSXheT2CnTYqLmWETHZgTvHopWHBxHIRPnCHtG+d2P8fseumLmleiK
- XCjpLuWHvHtP3sAvSblNcRUz36ij1Ka+uhe4+hxA0JyF8nJWfkSWPLa/K+cqk8VbyoXl
- qh1AjswHxttcFaICPkdy5Zs8ecRYAZjidd543EcpsqmWRLE7mnlzXwe1OJpMKzYQPKgy
- KA72QY9Nx0woIqJKKvLZn4dEOoT5ex3klxZv7Ld+xzXikBITIqHj3PryMn/rYTtPmS8y
- AIg34upVQalYNavbxTu49mipu5FLybaW2WgXFAvQ7hMJGW4DWTXCIDT8Ijct5QZOp6RT
- MwLQ==
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=226dFbtrPQIoFHWbTajhuZZyDWbBc2bREA3l7+aGRpU=;
+ b=Jyzw4HuxsKM7Hu+oPvA2i5DvNqRk3iJheUk8PsqA2PIrvnvNCRSR1hzW0XzAc4d3Le
+ r086uigB4IgWOAazr7oCU9tIV0vsFl06lDNlg18LnTCGFDA852D5XoskoSHo8ejGhIWC
+ xi2CzU6rAlrTnAzIs7Zd2LqyjaSpLSL3McpZMconGThl3h091s0deH9lAok66IdeNwmE
+ VbyNguKPd5AiQxpyicpPG5HbyJn2NqXd7lgVhrW/yaDlv4e2kocDGkfPzhMO7McgROyK
+ wyn/6fOfCWxVtCtS/1yoy3m3RTFFc3tFxTZkbbr18tQ4wQCGzNorRBFZQ+qXcWDvgwqr
+ 3bgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Nlt5qC+wvX5QcXEUX3mdcdWLCql1FNsd3/g2ToCHKcU=;
- b=ng7ppo9IdERZ0sECEjkPcGhHl5A0avxv4qFOPt54k2ZtbVjKv1pIwrw7gIviIl5qMl
- Xx/uCRTSlO55GnKayio/wTM7svxTBIPDGhYVNz+EYJPed9erT+FvauqbM6kCObNbZ6LN
- s56mrUNqR9cW/PXKj0GLPwZsd1e39R0w0jqd6Fzy78WXAFESqAuO5v+nwUPMLaMWYSjS
- yFkYCHisnxpWSoKLSugAP/px01asHK7rGJjPNuJ6+P+75F4yjJN8UGYqQKyVgUb3d3F/
- vEbDilol2Jumkzil4qYDhIz1rhXiBmxsG+p7pFaXnS0XbMdRaELQPVNG0a+MZ/d5IhDj
- wSAA==
-X-Gm-Message-State: AOAM5323PxTCI0TLwCUboCmnrkSTtG5E73yfNNWNHnrT7pGrREcTmMIr
- fyBLruH8AToaiuvZ9hKhw7ZB9sPE1zyOpOd5ahM=
-X-Google-Smtp-Source: ABdhPJw1e5UpoiyY0rnTzfkQyWo+TP1DNsQS+nw0hkXS+1iwawNqWqm0B17hT9qfFi7HJuY7QKDXpWEhpwzdtzMLkOQ=
-X-Received: by 2002:a05:6902:1249:b0:644:d8bb:e741 with SMTP id
- t9-20020a056902124900b00644d8bbe741mr24530799ybu.585.1651017314763; Tue, 26
- Apr 2022 16:55:14 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=226dFbtrPQIoFHWbTajhuZZyDWbBc2bREA3l7+aGRpU=;
+ b=5E5x+ThiwlJfu8YzDbkE2DO+0firIZa5NMFDV/1ei1gawli/DaZRRsz8G3TE25l2zS
+ PlABR1fZzqO6H8GjwMATt26FwwJ6K4KXO7S4p5+18h0sWAKbc8+9buS58R+F1QEJq6Zy
+ 07dGR73LG+zTxmg8DdjrJtKKaTW74hzyC2nju/9qKCLeRFMajW8pLj8WBr9qlPvDxpW8
+ 32CzJD8Npa/Sj7rSZV23yjGL/nDxEiMMqkYmYMrv/oRXLc2F80QTbhz0mspcNP/ti5ol
+ KT7VPf2Jb+C5xrMjJ9kNjh8g7E7ab2ygYZyaDTfmyV8q/nmijBzczezTwrZLPdqfKAM9
+ ZgBg==
+X-Gm-Message-State: AOAM533gh7XnZCLzo409sJ7PNr0Qku6FMfecq9gr/raFZu8fjr5Q5+Jj
+ YMW8OtRpFsBflXn/758Q4Vw=
+X-Google-Smtp-Source: ABdhPJyMFeRbcOlg0p93A4LH81VJTxOaIx6gVJpFUK3HMs+pAGtQLor2HZVvCnGiP8TcxEb+T95y8Q==
+X-Received: by 2002:a17:906:7c96:b0:6f3:b6c4:7b2 with SMTP id
+ w22-20020a1709067c9600b006f3b6c407b2mr4497132ejo.676.1651017436376; 
+ Tue, 26 Apr 2022 16:57:16 -0700 (PDT)
+Received: from skbuf ([188.25.160.86]) by smtp.gmail.com with ESMTPSA id
+ r13-20020a508d8d000000b00425d3555fc6sm5934416edh.30.2022.04.26.16.57.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Apr 2022 16:57:15 -0700 (PDT)
+Date: Wed, 27 Apr 2022 02:57:13 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>,
+ Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org
+Subject: Re: [RFC v1 1/3] net: dsa: mt753x: make reset optional
+Message-ID: <20220426235713.engzue7ujwqjdyjc@skbuf>
+References: <20220426134924.30372-1-linux@fw-web.de>
+ <20220426134924.30372-2-linux@fw-web.de>
 MIME-Version: 1.0
-References: <20220426014545.628100-1-briannorris@chromium.org>
- <20220426014545.628100-2-briannorris@chromium.org>
-In-Reply-To: <20220426014545.628100-2-briannorris@chromium.org>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Tue, 26 Apr 2022 19:55:02 -0400
-Message-ID: <CAMdYzYqyDr1HFYB4p8NK8ssq60qfjR2jyoSJ=tcRn8CWsZr16g@mail.gmail.com>
-Subject: Re: [PATCH v3 2/3] soc: rockchip: power-domain: Replace dsb() with
- smb()
-To: Brian Norris <briannorris@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>,
- Robin Murphy <robin.murphy@arm.com>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Guenter Roeck <linux@roeck-us.net>
+Content-Disposition: inline
+In-Reply-To: <20220426134924.30372-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_165517_072761_D293AB42 
-X-CRM114-Status: GOOD (  21.65  )
+X-CRM114-CacheID: sfid-20220426_165719_094908_7D275FBB 
+X-CRM114-Status: GOOD (  21.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,63 +102,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 25, 2022 at 9:46 PM Brian Norris <briannorris@chromium.org> wrote:
->
-> It's unclear if these are really needed at all, but seemingly their
-> purpose is only as a write barrier. Use the general macro instead of the
-> ARM-specific one.
->
-> This driver is partially marked for COMPILE_TEST'ing, but it doesn't
-> build under non-ARM architectures. Fix this up before *really* enabling
-> it for COMPILE_TEST.
->
-> Signed-off-by: Brian Norris <briannorris@chromium.org>
+On Tue, Apr 26, 2022 at 03:49:22PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Currently a reset line is required, but on BPI-R2-Pro board
+> this reset is shared with the gmac and prevents the switch to
+> be initialized because mdio is not ready fast enough after
+> the reset.
+> 
+> So make the reset optional to allow shared reset lines.
+
+What does it mean "to allow shared reset lines"? Allow as in "allow them
+to sit there, unused"?
+
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 > ---
->
-> Changes in v3:
->  * New in v3
->
->  drivers/soc/rockchip/pm_domains.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
-> index 1b029e494274..cf16ff9b73b3 100644
-> --- a/drivers/soc/rockchip/pm_domains.c
-> +++ b/drivers/soc/rockchip/pm_domains.c
-> @@ -178,7 +178,7 @@ static int rockchip_pmu_set_idle_request(struct rockchip_pm_domain *pd,
->                 regmap_update_bits(pmu->regmap, pmu->info->req_offset,
->                                    pd_info->req_mask, idle ? -1U : 0);
->
-> -       dsb(sy);
-> +       wmb();
+>  drivers/net/dsa/mt7530.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index 19f0035d4410..ccf4cb944167 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -2134,7 +2134,7 @@ mt7530_setup(struct dsa_switch *ds)
+>  		reset_control_assert(priv->rstc);
+>  		usleep_range(1000, 1100);
+>  		reset_control_deassert(priv->rstc);
+> -	} else {
+> +	} else if (priv->reset) {
 
-Just curious, shouldn't this be mb() instead of wmb()?
-From the arm64 barrier.h:
+I don't really understand this patch. gpiod_set_value_cansleep() can
+tolerate NULL GPIO descriptors.
 
-#define mb() dsb(sy)
-#define wmb() dsb(st)
+>  		gpiod_set_value_cansleep(priv->reset, 0);
+>  		usleep_range(1000, 1100);
+>  		gpiod_set_value_cansleep(priv->reset, 1);
+> @@ -2276,7 +2276,7 @@ mt7531_setup(struct dsa_switch *ds)
+>  		reset_control_assert(priv->rstc);
+>  		usleep_range(1000, 1100);
+>  		reset_control_deassert(priv->rstc);
+> -	} else {
+> +	} else if (priv->reset) {
+>  		gpiod_set_value_cansleep(priv->reset, 0);
+>  		usleep_range(1000, 1100);
+>  		gpiod_set_value_cansleep(priv->reset, 1);
+> @@ -3272,8 +3272,7 @@ mt7530_probe(struct mdio_device *mdiodev)
+>  		priv->reset = devm_gpiod_get_optional(&mdiodev->dev, "reset",
+>  						      GPIOD_OUT_LOW);
+>  		if (IS_ERR(priv->reset)) {
+> -			dev_err(&mdiodev->dev, "Couldn't get our reset line\n");
+> -			return PTR_ERR(priv->reset);
+> +			dev_warn(&mdiodev->dev, "Couldn't get our reset line\n");
 
+I certainly don't understand why you're suppressing the pointer-encoded
+errors here. The function used is devm_gpiod_get_optional(), which
+returns NULL for a missing reset-gpios, not IS_ERR(something). The
+IS_ERR(something) is actually important to not ignore, maybe it's
+IS_ERR(-EPROBE_DEFER). And this change breaks waiting for the descriptor
+to become available.
 
->
->         /* Wait util idle_ack = 1 */
->         target_ack = idle ? pd_info->ack_mask : 0;
-> @@ -285,7 +285,7 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
->                 regmap_update_bits(pmu->regmap, pmu->info->pwr_offset,
->                                    pd->info->pwr_mask, on ? 0 : -1U);
->
-> -       dsb(sy);
-> +       wmb();
->
->         if (readx_poll_timeout_atomic(rockchip_pmu_domain_is_on, pd, is_on,
->                                       is_on == on, 0, 10000)) {
-> --
-> 2.36.0.rc2.479.g8af0fa9b8e-goog
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>  		}
+>  	}
+>  
+> -- 
+> 2.25.1
+> 
+
+So what doesn't work without this patch, exactly?
 
 _______________________________________________
 Linux-rockchip mailing list
