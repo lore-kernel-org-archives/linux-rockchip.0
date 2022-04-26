@@ -4,53 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 313F4C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Apr 2022 21:01:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3833EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 01:46:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KyMXFmVpwzO9mtnkNIpHhwoGZtQcWIIvDPb3zld+e8s=; b=wlunGWpg1RfJfK
-	Y2flIrkPv1Oy94QiP5l8sn8MStcGZ4N9+LNt6tGArYJGs0DC2+v9VR3pAamI4OvQ90i2T7y8aWOZM
-	Jv6MO/lpQjo/1DTY3ojGu5viWkREBUZovu96NOnJAzXtOfEc2QcsHTiHpRqdlAvygM7czEfqf4WRm
-	SyS5kJGOMVuBhrbfA154z2t+1TA8BT07zhI1qHZEew3BWBos73+3LcXtscu+IprM4Z+Oe8/k34C3i
-	EfrWjhjdmhGgacDWcOEdH/SiRlwEwm5hQgmnH76AkL1yxzdlLWAijbrV91gna7wLbZnH+4ZC0pIT3
-	/etaGsahrARIsDt3hOKA==;
+	List-Owner; bh=E9a/N1KgpMmO0u8i6wZU9TpPgTzZ7T4wMKS3V89QPLA=; b=B4KmHBITiPPqy4
+	Itz6dbxinPGXY8UYu/Sq8hwaV1HbLbjYyT6q76sjFfgABEy8Sz9imwsx1RxVTFGVtzhCrz/hrRIz0
+	M7EZbAUrDiJgt3kUKkz5PgbOHOEO83iaU/fWsawN/sFcx+jHzUimiwxkhDOVbfMa0QQaSl0vANwkI
+	bxlknCQrK60lyFUkBdsRG1Jh2lU3C6SMYm7yfaF6CjVpM8Y0V4bqyLtnbSTgKFJucB549FUcUUA7V
+	pu4wWqqaYDku8rdSu27ke+AT5KtZmv1aJaLCVhYiAHUhGqJ4/nz/PnrWRsVHU033iWlMS6bbVOxC8
+	A20cMvUAehyHzOrONt5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nj5pY-00BRW2-Nf; Mon, 25 Apr 2022 21:01:12 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1njAHC-00C72y-J8; Tue, 26 Apr 2022 01:46:02 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nj5pW-00BRVO-1B
- for linux-rockchip@lists.infradead.org; Mon, 25 Apr 2022 21:01:12 +0000
-Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9E465496;
- Mon, 25 Apr 2022 23:01:07 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1650920468;
- bh=KlG0z4fR6YwQgD2L410Xq9NMkO7Ubkh2YbuSrfD9CB4=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=SUWe8je4NCg8kTbalv9YSJQC+TOVnSzBvL6rgXRjqjSuO0fpb2eA0xnW8ATdHMsNh
- 22ajKoL6Xu5Yi7Vmg3IpFJ3QwvQYnPvdb2p8Dx0DdqMqTDhvitVjL8XuBpJ6Al39um
- Ot4gjaro50r43O3dBoUytG1tZ4ZpuGNkL0Yk3m0g=
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, Dafna Hirschfeld <dafna@fastmail.com>,
- Heiko Stuebner <heiko@sntech.de>, Paul Elder <paul.elder@ideasonboard.com>,
- Tomasz Figa <tfiga@google.com>, Ricardo Ribalda <ribalda@chromium.org>
-Subject: [PATCH v4.1 18/21] media: rkisp1: debug: Update max register name
- length
-Date: Tue, 26 Apr 2022 00:01:04 +0300
-Message-Id: <20220425210104.31964-1-laurent.pinchart@ideasonboard.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <Ymbw52EF+Pcvkclz@pendragon.ideasonboard.com>
-References: <Ymbw52EF+Pcvkclz@pendragon.ideasonboard.com>
+ id 1njAH7-00C71L-SE
+ for linux-rockchip@lists.infradead.org; Tue, 26 Apr 2022 01:45:59 +0000
+Received: by mail-pf1-x429.google.com with SMTP id y38so785776pfa.6
+ for <linux-rockchip@lists.infradead.org>; Mon, 25 Apr 2022 18:45:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=3d3BRK+rsV0H1MEivwe2mn7frrdSPcB90v4KWuBBaQM=;
+ b=ej1HcqsW5KLOqLNaCI4dLiEgQGM6O8Sfb90ZyxBBlRzwTORd8VmkMrjWYneM4Mc/X0
+ 6BgPOZ3i7s2PP3A12OBzv+lLyJJGIhm+pJtczgpiXmD2gQA6tnidUruHBfeY9f0iM3aS
+ S/exhv1wqe+HQQjOWOak11BEW/weBv32YC2ws=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=3d3BRK+rsV0H1MEivwe2mn7frrdSPcB90v4KWuBBaQM=;
+ b=mmULxbiMmq01Vm7FJxo4A0gHnt5jrH1FoNMYkfcSI538aKOrkn5LzIqkVCczrGIpJu
+ WD54KZegW/r0J/4vk781mO/UZqc/fnGQEdkx2Q7UU+aG/Xgg424FZgQ/lZOXlEUY3KTK
+ MSYm0A3H2qhw7LEFZwhMVWT2eO2B4daY56H1EDAfoc5zXV1u8ZuAi0q5vOaoHxuXFt9r
+ mUXjQzyM9HMIucJssvm9/X5fU4hvhfL8fxBX3GvK9POgHBbTy8afaMhsxpEkhCkZj7Y0
+ GCDhUum3whXa+GpcTMdRe/VXDDIVLXLGLe3QoudRFIPcI/V+GlNmKDZEGWdcD7/ewLya
+ xpqw==
+X-Gm-Message-State: AOAM532rgxVIUFS/gskbWBt6vJOSs/9ZUEfswK0b2PpW4H+dkQUDOXJo
+ ijZebWSqSunW2NCFOFnHqtUJyTF6vANJZQ==
+X-Google-Smtp-Source: ABdhPJw/aUTO4Volur0lD5eMJniKHG/Naw8BdeIAI9Zc5hYF0pNjW/rmonH1Z7xjPgDTBUflvk6nlg==
+X-Received: by 2002:a05:6a00:138e:b0:50a:9503:44a7 with SMTP id
+ t14-20020a056a00138e00b0050a950344a7mr22021953pfg.75.1650937556699; 
+ Mon, 25 Apr 2022 18:45:56 -0700 (PDT)
+Received: from localhost ([2620:15c:202:201:84c6:2d6d:c16:1a1b])
+ by smtp.gmail.com with UTF8SMTPSA id
+ i11-20020a654d0b000000b0039d82c3e68csm11169010pgt.55.2022.04.25.18.45.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 25 Apr 2022 18:45:56 -0700 (PDT)
+From: Brian Norris <briannorris@chromium.org>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Arnd Bergmann <arnd@arndb.de>
+Cc: Robin Murphy <robin.murphy@arm.com>, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Guenter Roeck <linux@roeck-us.net>,
+ Brian Norris <briannorris@chromium.org>
+Subject: [PATCH v3 2/3] soc: rockchip: power-domain: Replace dsb() with smb()
+Date: Mon, 25 Apr 2022 18:45:43 -0700
+Message-Id: <20220426014545.628100-2-briannorris@chromium.org>
+X-Mailer: git-send-email 2.36.0.rc2.479.g8af0fa9b8e-goog
+In-Reply-To: <20220426014545.628100-1-briannorris@chromium.org>
+References: <20220426014545.628100-1-briannorris@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220425_140110_269022_C926A9D0 
-X-CRM114-Status: GOOD (  11.73  )
+X-CRM114-CacheID: sfid-20220425_184557_947892_4E92CBF9 
+X-CRM114-Status: GOOD (  13.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,72 +89,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Update the maximum register name length to match all the registers being
-printed. This helps getting a consistent alignment of register dumps
-when concatenating multiple debugfs files.
+It's unclear if these are really needed at all, but seemingly their
+purpose is only as a write barrier. Use the general macro instead of the
+ARM-specific one.
 
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+This driver is partially marked for COMPILE_TEST'ing, but it doesn't
+build under non-ARM architectures. Fix this up before *really* enabling
+it for COMPILE_TEST.
+
+Signed-off-by: Brian Norris <briannorris@chromium.org>
 ---
-Changes since v4:
 
-- Replace dynamic per-file register length with global maximum length
----
- .../media/platform/rockchip/rkisp1/rkisp1-debug.c    | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+Changes in v3:
+ * New in v3
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-index 2c226f20f525..e76dc2b164b6 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-@@ -11,8 +11,10 @@
- #include <linux/debugfs.h>
- #include <linux/delay.h>
- #include <linux/device.h>
-+#include <linux/minmax.h>
- #include <linux/pm_runtime.h>
- #include <linux/seq_file.h>
-+#include <linux/string.h>
+ drivers/soc/rockchip/pm_domains.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index 1b029e494274..cf16ff9b73b3 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -178,7 +178,7 @@ static int rockchip_pmu_set_idle_request(struct rockchip_pm_domain *pd,
+ 		regmap_update_bits(pmu->regmap, pmu->info->req_offset,
+ 				   pd_info->req_mask, idle ? -1U : 0);
  
- #include "rkisp1-common.h"
- #include "rkisp1-regs.h"
-@@ -28,10 +30,14 @@ struct rkisp1_debug_register {
- 	RKISP1_CIF_##name, RKISP1_CIF_##name##_SHD, #name \
- }
+-	dsb(sy);
++	wmb();
  
-+/* Keep this up-to-date when adding new registers. */
-+#define RKISP1_MAX_REG_LENGTH		21
-+
- static int rkisp1_debug_dump_regs(struct rkisp1_device *rkisp1,
- 				  struct seq_file *m, unsigned int offset,
- 				  const struct rkisp1_debug_register *regs)
- {
-+	const int width = RKISP1_MAX_REG_LENGTH;
- 	u32 val, shd;
- 	int ret;
+ 	/* Wait util idle_ack = 1 */
+ 	target_ack = idle ? pd_info->ack_mask : 0;
+@@ -285,7 +285,7 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
+ 		regmap_update_bits(pmu->regmap, pmu->info->pwr_offset,
+ 				   pd->info->pwr_mask, on ? 0 : -1U);
  
-@@ -39,15 +45,15 @@ static int rkisp1_debug_dump_regs(struct rkisp1_device *rkisp1,
- 	if (ret <= 0)
- 		return ret ? : -ENODATA;
+-	dsb(sy);
++	wmb();
  
--	for ( ; regs->name; ++regs) {
-+	for (; regs->name; ++regs) {
- 		val = rkisp1_read(rkisp1, offset + regs->reg);
- 
- 		if (regs->shd) {
- 			shd = rkisp1_read(rkisp1, offset + regs->shd);
--			seq_printf(m, "%14s: 0x%08x/0x%08x\n", regs->name,
-+			seq_printf(m, "%*s: 0x%08x/0x%08x\n", width, regs->name,
- 				   val, shd);
- 		} else {
--			seq_printf(m, "%14s: 0x%08x\n", regs->name, val);
-+			seq_printf(m, "%*s: 0x%08x\n", width, regs->name, val);
- 		}
- 	}
- 
+ 	if (readx_poll_timeout_atomic(rockchip_pmu_domain_is_on, pd, is_on,
+ 				      is_on == on, 0, 10000)) {
 -- 
-Regards,
-
-Laurent Pinchart
+2.36.0.rc2.479.g8af0fa9b8e-goog
 
 
 _______________________________________________
