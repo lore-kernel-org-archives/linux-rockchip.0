@@ -4,57 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 838CEC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 13:08:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E1CBC433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 13:22:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kl/QOYAO8yhyefO/QSED589pC+Blez31UX76tPxvUmE=; b=RZU4VXBSe/mlFN
-	UmWKv5leEYCLkvGRwXXWc21TLl3SoIj4FvPakPfBGjWSZWBdkN9Sp43XyKRgQJmn4SvV4Aos7Abn3
-	V3QF5ZqJlMxjBKCphvGw8i0c65q3ej4rvDH8I+JaVllP/o/quKw9fa0Dkon8ld6wJJIvqw7kqC6ZD
-	vJ6QXfcgw6YksDuj7eEBmTwCezvxEAldEzAtbaNPCi7rSzbsiwd9KDXNaV9t5tb1bKUd8PuaRrZnw
-	Gm9a8obfkTLn1Ctu3xR4lKVQNH7pqCOMF8q0Q/HwXYQy9mgnrz2QOy6ts4JP4jVAn+sQ+CbNmkHUq
-	IXW+B61GrwL7ZDKKxHsg==;
+	List-Owner; bh=MXSHVABc/G3ci2ftwdMMI+i/a2FwIMxJaRdkCOf2lgA=; b=gGdzzp+fDN7CYy
+	KqZatxd+MbnaxGkBa6OAe5OHLqyC7jwPZNq5XdCz0ASEnI8ikjkNCx19I609eLduvJWfygP6yIFmd
+	JqAYs5rkQXSdUVICW/BQ0FNteDPQd/Rf7pyaTcWgl10wkjV8vyDV7eTgoD9VkMFURJ0yyAKxHr6jH
+	/Y7ZxqAv3yUhpZIvYm0MnuRCYXmTvPBhJyxKx+tC5+jYZtY9wYFdV5MD13wf+V8pc8EWUdg8BCavz
+	G8RM6kBdcXQAczQEA+9ayQRliRm8rKODIIo97Yvw0HYg4u1T184x6D0n4JqsCqfnrdfoOrimkkDLo
+	YytP+MfCiA5WRCbbn1GQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njKvk-00EUAk-BW; Tue, 26 Apr 2022 13:08:36 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1njL8z-00EXvw-4S; Tue, 26 Apr 2022 13:22:17 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njKmE-00EPNX-Fs
- for linux-rockchip@lists.infradead.org; Tue, 26 Apr 2022 12:58:49 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: nicolas) with ESMTPSA id 165331F4399E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650977920;
- bh=pVl8tjC66altjb15PP079+w75QgIf0TKWek+rq3jsWY=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=LXCJPO6QrlKwvHosSiRMLPaOQ9AFK/j3CKMJ3oDEVEAuOIEpoHuepVI48IN9MMswv
- xQhVumfQMc6WzxJTwsz0XL7QuZgAEl4ffOOVljx6BxBdEu6SoM/vmhX0glj8wuCHcM
- b2bCStl/OHiGD6TXCi8Ha7QwKYfbG+TtvxS6ThO0s/n69E9zWAva+WRXD7nrbWjInU
- 6DQUWRFY/y8WwWdzvQejVOJxkIgAVqiNqHb4Su69fVwwfmiynRJa5o0QFQ05roxmp5
- +2EnYp78w9c9HyuUZOexRLse1c+lpgtGGllcbGVE60qYZfsscOljJu5uxsXdh6lcpP
- QIFWv5CiLJM1g==
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: nicolas@ndufresne.ca, linux-media@vger.kernel.org,
- Jonas Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: [PATCH v4 23/24] media: hantro: Add H.264 field decoding support
-Date: Tue, 26 Apr 2022 08:57:49 -0400
-Message-Id: <20220426125751.108293-24-nicolas.dufresne@collabora.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220426125751.108293-1-nicolas.dufresne@collabora.com>
-References: <20220426125751.108293-1-nicolas.dufresne@collabora.com>
+ id 1njL8j-00EXkX-Ul; Tue, 26 Apr 2022 13:22:03 +0000
+Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
+ by mxout3.routing.net (Postfix) with ESMTP id CDA2F600EB;
+ Tue, 26 Apr 2022 13:21:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+ s=20200217; t=1650979317;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0XQG5DLhB+jNApDK1YIKuO1LF1Y97r9eKhU3JEKU6y4=;
+ b=WdPC0Bwg8MQ/iu87CcwMkOs3SAjgXEwdAmyyXziI6sTAlCrqaBCfz+MGvkhGjEJmDMLb+D
+ 1Uo/0yVjC5gdUQlyP1TBfXwP6FvcSYyg+NLxN8CSmdtTRXcqe73U5mQX3e9qQjZIUfjfSc
+ IJq7GMLBCpOl9perOomcZc8U5g2OB1U=
+Received: from localhost.localdomain (fttx-pool-80.245.77.37.bambit.de
+ [80.245.77.37])
+ by mxbox1.masterlogin.de (Postfix) with ESMTPSA id CF9C2405FE;
+ Tue, 26 Apr 2022 13:21:55 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-rockchip@lists.infradead.org
+Cc: Frank Wunderlich <frank-w@public-files.de>,
+ Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Vinod Koul <vkoul@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Johan Jonker <jbx6244@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>, linux-pci@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org
+Subject: [RFC/RFT v2 02/11] dt-bindings: soc: grf: add pcie30-{phy,pipe}-grf
+Date: Tue, 26 Apr 2022 15:21:30 +0200
+Message-Id: <20220426132139.26761-3-linux@fw-web.de>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220426132139.26761-1-linux@fw-web.de>
+References: <20220426132139.26761-1-linux@fw-web.de>
 MIME-Version: 1.0
+X-Mail-ID: 83805134-6690-4eb9-bcc4-f816f2fbb981
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_055846_897256_20883E57 
-X-CRM114-Status: GOOD (  26.47  )
+X-CRM114-CacheID: sfid-20220426_062202_196239_55217325 
+X-CRM114-Status: UNSURE (   7.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,223 +84,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds the required code to support field decoding. While most of
-the code is derived from Rockchip and VSI reference code, the
-reduction of the reference list to 16 entries was found by
-trial and errors. The list consists of all the references with the
-opposite field parity.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-The strategy is to deduplicate the reference picture that points
-to the same storage (same index). The choice of opposite parity has
-been made to keep the other field of the current field pair in the
-list. This method may not be robust if a field was lost.
+Add compatibles for PCIe v3 General Register Files.
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+
 ---
- drivers/staging/media/hantro/hantro_h264.c | 122 ++++++++++++++++++---
- drivers/staging/media/hantro/hantro_hw.h   |   1 +
- 2 files changed, 109 insertions(+), 14 deletions(-)
+changes in v2:
+- add soc-part to pcie3-phy-grf
+---
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/staging/media/hantro/hantro_h264.c b/drivers/staging/media/hantro/hantro_h264.c
-index 7377fc26f780..7502dddb324c 100644
---- a/drivers/staging/media/hantro/hantro_h264.c
-+++ b/drivers/staging/media/hantro/hantro_h264.c
-@@ -22,6 +22,12 @@
- #define POC_BUFFER_SIZE			34
- #define SCALING_LIST_SIZE		(6 * 16 + 2 * 64)
- 
-+/*
-+ * For valid and long term reference marking, index are reversed, so bit 31
-+ * indicates the status of the picture 0.
-+ */
-+#define REF_BIT(i)			BIT(32 - 1 - (i))
-+
- /* Data structure describing auxiliary buffer format. */
- struct hantro_h264_dec_priv_tbl {
- 	u32 cabac_table[CABAC_INIT_BUFFER_SIZE];
-@@ -227,6 +233,7 @@ static void prepare_table(struct hantro_ctx *ctx)
- {
- 	const struct hantro_h264_dec_ctrls *ctrls = &ctx->h264_dec.ctrls;
- 	const struct v4l2_ctrl_h264_decode_params *dec_param = ctrls->decode;
-+	const struct v4l2_ctrl_h264_sps *sps = ctrls->sps;
- 	struct hantro_h264_dec_priv_tbl *tbl = ctx->h264_dec.priv.cpu;
- 	const struct v4l2_h264_dpb_entry *dpb = ctx->h264_dec.dpb;
- 	u32 dpb_longterm = 0;
-@@ -237,20 +244,45 @@ static void prepare_table(struct hantro_ctx *ctx)
- 		tbl->poc[i * 2] = dpb[i].top_field_order_cnt;
- 		tbl->poc[i * 2 + 1] = dpb[i].bottom_field_order_cnt;
- 
-+		if (!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_VALID))
-+			continue;
-+
- 		/*
- 		 * Set up bit maps of valid and long term DPBs.
--		 * NOTE: The bits are reversed, i.e. MSb is DPB 0.
-+		 * NOTE: The bits are reversed, i.e. MSb is DPB 0. For frame
-+		 * decoding, bit 31 to 15 are used, while for field decoding,
-+		 * all bits are used, with bit 31 being a top field, 30 a bottom
-+		 * field and so on.
- 		 */
--		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)
--			dpb_valid |= BIT(HANTRO_H264_DPB_SIZE - 1 - i);
--		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
--			dpb_longterm |= BIT(HANTRO_H264_DPB_SIZE - 1 - i);
-+		if (dec_param->flags & V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC) {
-+			if (dpb[i].fields & V4L2_H264_TOP_FIELD_REF)
-+				dpb_valid |= REF_BIT(i * 2);
-+
-+			if (dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF)
-+				dpb_valid |= REF_BIT(i * 2 + 1);
-+
-+			if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM) {
-+				dpb_longterm |= REF_BIT(i * 2);
-+				dpb_longterm |= REF_BIT(i * 2 + 1);
-+			}
-+		} else {
-+			dpb_valid |= REF_BIT(i);
-+
-+			if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
-+				dpb_longterm |= REF_BIT(i);
-+		}
-+	}
-+	ctx->h264_dec.dpb_valid = dpb_valid;
-+	ctx->h264_dec.dpb_longterm = dpb_longterm;
-+
-+	if ((dec_param->flags & V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC) ||
-+	    !(sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD)) {
-+		tbl->poc[32] = ctx->h264_dec.cur_poc;
-+		tbl->poc[33] = 0;
-+	} else {
-+		tbl->poc[32] = dec_param->top_field_order_cnt;
-+		tbl->poc[33] = dec_param->bottom_field_order_cnt;
- 	}
--	ctx->h264_dec.dpb_valid = dpb_valid << 16;
--	ctx->h264_dec.dpb_longterm = dpb_longterm << 16;
--
--	tbl->poc[32] = dec_param->top_field_order_cnt;
--	tbl->poc[33] = dec_param->bottom_field_order_cnt;
- 
- 	assemble_scaling_list(ctx);
- }
-@@ -326,6 +358,8 @@ dma_addr_t hantro_h264_get_ref_buf(struct hantro_ctx *ctx,
- {
- 	struct v4l2_h264_dpb_entry *dpb = ctx->h264_dec.dpb;
- 	dma_addr_t dma_addr = 0;
-+	s32 cur_poc = ctx->h264_dec.cur_poc;
-+	u32 flags;
- 
- 	if (dpb[dpb_idx].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)
- 		dma_addr = hantro_get_ref(ctx, dpb[dpb_idx].reference_ts);
-@@ -343,7 +377,12 @@ dma_addr_t hantro_h264_get_ref_buf(struct hantro_ctx *ctx,
- 		dma_addr = hantro_get_dec_buf_addr(ctx, buf);
- 	}
- 
--	return dma_addr;
-+	flags = dpb[dpb_idx].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD ? 0x2 : 0;
-+	flags |= abs(dpb[dpb_idx].top_field_order_cnt - cur_poc) <
-+		 abs(dpb[dpb_idx].bottom_field_order_cnt - cur_poc) ?
-+		 0x1 : 0;
-+
-+	return dma_addr | flags;
- }
- 
- u16 hantro_h264_get_ref_nbr(struct hantro_ctx *ctx, unsigned int dpb_idx)
-@@ -355,6 +394,47 @@ u16 hantro_h264_get_ref_nbr(struct hantro_ctx *ctx, unsigned int dpb_idx)
- 	return dpb->frame_num;
- }
- 
-+/*
-+ * Removes all references with he same parity as current picture from the
-+ * reference list. The remaining list will have references with the opposite
-+ * parity. This is effectively a deduplication of references since each buffer
-+ * stores two fields. For this eason, each buffer are found twice in the
-+ * reference list.
-+ *
-+ * This technique has been chosen through trial and error. This simple approach
-+ * resulted in the highest conformance score. Note that this method may suffer
-+ * worse quality in the case an opposite reference frame has been lost. If this
-+ * becomes a problem in the future, it should be possible to add a preprocessing
-+ * to identify un-paired fields and avoid removing them.
-+ */
-+static void deduplicate_reflist(struct v4l2_h264_reflist_builder *b,
-+				struct v4l2_h264_reference *reflist)
-+{
-+	int write_idx = 0;
-+	int i;
-+
-+	if (b->cur_pic_fields == V4L2_H264_FRAME_REF) {
-+		write_idx = b->num_valid;
-+		goto done;
-+	}
-+
-+	for (i = 0; i < b->num_valid; i++) {
-+		if (!(b->cur_pic_fields == reflist[i].fields)) {
-+			reflist[write_idx++] = reflist[i];
-+			continue;
-+		}
-+	}
-+
-+done:
-+	/* Should not happen unless we have a bug in the reflist builder. */
-+	if (WARN_ON(write_idx > 16))
-+		write_idx = 16;
-+
-+	/* Clear the remaining, some streams fails otherwise */
-+	for (; write_idx < 16; write_idx++)
-+		reflist[write_idx].index = 15;
-+}
-+
- int hantro_h264_dec_prepare_run(struct hantro_ctx *ctx)
- {
- 	struct hantro_h264_dec_hw_ctx *h264_ctx = &ctx->h264_dec;
-@@ -386,15 +466,29 @@ int hantro_h264_dec_prepare_run(struct hantro_ctx *ctx)
- 	/* Update the DPB with new refs. */
- 	update_dpb(ctx);
- 
--	/* Prepare data in memory. */
--	prepare_table(ctx);
--
- 	/* Build the P/B{0,1} ref lists. */
- 	v4l2_h264_init_reflist_builder(&reflist_builder, ctrls->decode,
- 				       ctrls->sps, ctx->h264_dec.dpb);
-+	h264_ctx->cur_poc = reflist_builder.cur_pic_order_count;
-+
-+	/* Prepare data in memory. */
-+	prepare_table(ctx);
-+
- 	v4l2_h264_build_p_ref_list(&reflist_builder, h264_ctx->reflists.p);
- 	v4l2_h264_build_b_ref_lists(&reflist_builder, h264_ctx->reflists.b0,
- 				    h264_ctx->reflists.b1);
-+
-+	/*
-+	 * Reduce ref lists to at most 16 entries, Hantro hardware will deduce
-+	 * the actual picture lists in field through the dpb_valid,
-+	 * dpb_longterm bitmap along with the current frame parity.
-+	 */
-+	if (reflist_builder.cur_pic_fields != V4L2_H264_FRAME_REF) {
-+		deduplicate_reflist(&reflist_builder, h264_ctx->reflists.p);
-+		deduplicate_reflist(&reflist_builder, h264_ctx->reflists.b0);
-+		deduplicate_reflist(&reflist_builder, h264_ctx->reflists.b1);
-+	}
-+
- 	return 0;
- }
- 
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index 292aaaabaf24..fd869369fb97 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -91,6 +91,7 @@ struct hantro_h264_dec_hw_ctx {
- 	struct hantro_h264_dec_ctrls ctrls;
- 	u32 dpb_longterm;
- 	u32 dpb_valid;
-+	s32 cur_poc;
- };
- 
- /**
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index 3be3cfd52f7b..4564ff0bfd7a 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -14,6 +14,9 @@ properties:
+     oneOf:
+       - items:
+           - enum:
++              - rockchip,rk3568-pcie3-phy-grf
++              - rockchip,rk3588-pcie3-phy-grf
++              - rockchip,rk3588-pcie3-pipe-grf
+               - rockchip,rk3288-sgrf
+               - rockchip,rk3566-pipe-grf
+               - rockchip,rk3568-usb2phy-grf
 -- 
-2.34.1
+2.25.1
 
 
 _______________________________________________
