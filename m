@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5402C43217
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 13:52:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58532C433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 13:53:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mvSLhrPFmv4OFecgVrJ4H3+KYPUc46ano2dcm/by0uM=; b=2CuLWB0yaNZKxC
-	ZjsX5X09/YJpCyAba5NpsjcG7LDm97fYNldp+K/WtMApT9cBiqPsHMFYozggAMZoYVR2dxnVZcVHa
-	//z2k03hL5vYvr3o+u8enlfVod0m0zzFIMXdOMZ3YXiJv0xUS0VyJnnUOLZn3lv8o0uMJl1HZ0eh5
-	ujEMT/1/c/Tr42sYhVdxKUbcfvXKiOImm48ZE8QDPj3jKyoF4lG5Dl3fstDz6UbC3YEycRBZUirVM
-	y9ISnYh76JFKS8WT2mRAiLm4FV8eC2CBBCZATOTy/giA2j0FzJ8xlDsma9Z68pPLf4omnppyajjS5
-	zCdB1siQggIzRURAleng==;
+	List-Owner; bh=sWXEXbbK2h1dpuuJRuzGnquawvsYfQ+lB5ShfRcdoTo=; b=nTZyx9YgXNAMdT
+	1aqkjUiTPksxuAetB+hH8W4ls3LEIC3cERPinuaf+OBB0eLneX4bMKATkhtwarej2U7jNzguowg8k
+	HFpsZx0oe09cWOlRl+JHQV1rbe4j6q4URGelII9jea5rWfamzKy6e2LtG3neKRudGaB/4NCaOUclJ
+	05Dwlo6OxDiPpbZbQbzNy6QXH+qYeNAKbdUc3/C3fkji4MwIdIccxrtkX0VetOUv0WpIzgvIPZ+vB
+	TKry0vWs2mpvAZCtSgpDoyh+AQZnwDDaSjoTJal8Gy6FFFMsf7gEdL7S8KMaE8QcQNxb1OdAyWIDe
+	habSu8A+6fdZwViNZLdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njLcW-00ElNh-5Y; Tue, 26 Apr 2022 13:52:48 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1njLce-00ElSx-SS; Tue, 26 Apr 2022 13:52:56 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njLZQ-00Ek4v-Ka; Tue, 26 Apr 2022 13:49:45 +0000
+ id 1njLZS-00Ek6c-IC; Tue, 26 Apr 2022 13:49:47 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
- by mxout3.routing.net (Postfix) with ESMTP id 9AB776046E;
- Tue, 26 Apr 2022 13:49:34 +0000 (UTC)
+ by mxout1.routing.net (Postfix) with ESMTP id 8B1DB41AB6;
+ Tue, 26 Apr 2022 13:49:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1650980974;
+ s=20200217; t=1650980976;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9T6dfbFLzZWVvyVq0SMrDb0x/bFX4493F6lZIKD4BEA=;
- b=OXU/sxWXuSmpwGApm8WL8UWVW0Ylkm4b6uGIlOgLznGJkjdEf7iZ6FSy73KLWP11Ped9KD
- A7QpM75eZfHPjBbszJU8auHURDDMg6eKmhH24qbOWDiJPXAUd3sum4P5y9WRk+MytqVlu0
- pYEm+l7TIpM6Sr4VVbC6BybBtFBrkm0=
+ bh=W9YFDeB1vAOyE3A+Y0JZmaaZXSj1AvnNU8FrNEZ0qvQ=;
+ b=X/Bt3gWM8t1Rvbuq6JHlOPd0TqwdQfkqFU9yKtQQq0BYZMx6RtKGH9dCOqJoRhek1953UM
+ ld9OLTddA5AjlzSC3wVQl8CVry7J3alRuLTGSJ3Dqy63eLVKFy2Gahz19eGbcdPxTVwOjE
+ 9OaJZoboADC0+5erTRonl6OuD+PUmQw=
 Received: from localhost.localdomain (fttx-pool-80.245.77.37.bambit.de
  [80.245.77.37])
- by mxbox3.masterlogin.de (Postfix) with ESMTPSA id A01D936065C;
- Tue, 26 Apr 2022 13:49:33 +0000 (UTC)
+ by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 6D1293602E7;
+ Tue, 26 Apr 2022 13:49:35 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-mediatek@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
@@ -57,17 +57,19 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
  Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  netdev@vger.kernel.org
-Subject: [RFC v1 1/3] net: dsa: mt753x: make reset optional
-Date: Tue, 26 Apr 2022 15:49:22 +0200
-Message-Id: <20220426134924.30372-2-linux@fw-web.de>
+Subject: [RFC v1 3/3] arm64: dts: rockchip: Add mt7531 dsa node to BPI-R2-Pro
+ board
+Date: Tue, 26 Apr 2022 15:49:24 +0200
+Message-Id: <20220426134924.30372-4-linux@fw-web.de>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220426134924.30372-1-linux@fw-web.de>
 References: <20220426134924.30372-1-linux@fw-web.de>
 MIME-Version: 1.0
-X-Mail-ID: 136ca4f9-f5c5-40e4-a2e3-6f99f2bf827a
+X-Mail-ID: 1e443bb6-0a05-4b43-a42b-1ffe031028fa
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_064936_883805_893068E0 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20220426_064938_807995_6E424B3C 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,50 +89,73 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Currently a reset line is required, but on BPI-R2-Pro board
-this reset is shared with the gmac and prevents the switch to
-be initialized because mdio is not ready fast enough after
-the reset.
-
-So make the reset optional to allow shared reset lines.
+Add Device Tree node for mt7531 switch connected to gmac0.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- drivers/net/dsa/mt7530.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   | 49 +++++++++++++++++++
+ 1 file changed, 49 insertions(+)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 19f0035d4410..ccf4cb944167 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2134,7 +2134,7 @@ mt7530_setup(struct dsa_switch *ds)
- 		reset_control_assert(priv->rstc);
- 		usleep_range(1000, 1100);
- 		reset_control_deassert(priv->rstc);
--	} else {
-+	} else if (priv->reset) {
- 		gpiod_set_value_cansleep(priv->reset, 0);
- 		usleep_range(1000, 1100);
- 		gpiod_set_value_cansleep(priv->reset, 1);
-@@ -2276,7 +2276,7 @@ mt7531_setup(struct dsa_switch *ds)
- 		reset_control_assert(priv->rstc);
- 		usleep_range(1000, 1100);
- 		reset_control_deassert(priv->rstc);
--	} else {
-+	} else if (priv->reset) {
- 		gpiod_set_value_cansleep(priv->reset, 0);
- 		usleep_range(1000, 1100);
- 		gpiod_set_value_cansleep(priv->reset, 1);
-@@ -3272,8 +3272,7 @@ mt7530_probe(struct mdio_device *mdiodev)
- 		priv->reset = devm_gpiod_get_optional(&mdiodev->dev, "reset",
- 						      GPIOD_OUT_LOW);
- 		if (IS_ERR(priv->reset)) {
--			dev_err(&mdiodev->dev, "Couldn't get our reset line\n");
--			return PTR_ERR(priv->reset);
-+			dev_warn(&mdiodev->dev, "Couldn't get our reset line\n");
- 		}
- 	}
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+index e091f0407460..ea5b01a90ee0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+@@ -437,6 +437,55 @@ &i2c5 {
+ 	status = "disabled";
+ };
  
++&mdio0 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++
++	switch@0 {
++		compatible = "mediatek,mt7531";
++		reg = <0>;
++		status = "disabled";
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			port@1 {
++				reg = <1>;
++				label = "lan0";
++			};
++
++			port@2 {
++				reg = <2>;
++				label = "lan1";
++			};
++
++			port@3 {
++				reg = <3>;
++				label = "lan2";
++			};
++
++			port@4 {
++				reg = <4>;
++				label = "lan3";
++			};
++
++			port@5 {
++				reg = <5>;
++				label = "cpu";
++				ethernet = <&gmac0>;
++				phy-mode = "rgmii";
++
++				fixed-link {
++					speed = <1000>;
++					full-duplex;
++					pause;
++				};
++			};
++		};
++	};
++};
++
+ &mdio1 {
+ 	rgmii_phy1: ethernet-phy@0 {
+ 		compatible = "ethernet-phy-ieee802.3-c22";
 -- 
 2.25.1
 
