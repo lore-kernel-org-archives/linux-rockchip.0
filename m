@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 426EBC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 07:57:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BE19C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 08:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pYPRQ2LMb8c2oLd+rxBmMpFkJFLCLXcCHKgw9Hl1aD0=; b=DVLMPeCgqCSUHhGJOhZ3pY4m08
-	GD+LPgCYNgt3h6xWzHJhzeu1Pl49f4AE8vogr3wPh7vju+RdVRUZryTSiFqJrvmomKJXj4OguwClt
-	aYNinPFXJ/zVVLonKSTMcbiMHkfJ9DVnFoFNNv1qyEKaeyD/wO9qwSid0QiGSPWUcZJngVOBzvvII
-	XnWrnrdJZ/IkGpv4bB76jV2p/fmF76jpzzzlN3MRXtuQXTD1J9Rt+MLaGriS4a76LGRHj6hBsqycS
-	R5i6oUmzxDmsWUsYgWV3Gb+LsR3zIon3o8HlMcoQ//DrREZJPx9JLAIgGFeCoqKjJUAA+vD4SDQyH
-	7cPY5XNw==;
+	bh=0FVfVZWTp49Cyege+t0mE9dLwdqjpXYOkNQ47XPW18k=; b=Qe+owCM5nnQrmUpPbVxTQc6FQx
+	SlnI1C/O8QimFCe4gLYyEf1kBN3vn0pKLNztPtEzwf/rKTwtOlRp/cUlxJ3Cz0U6T9wejkD3m+Fgo
+	eFvaKOPbXXKDrtIdlibl7nwF1RY0f2XkzxJ3vIqllbYbt2VYpaF8uZZDYD8StN2tXJi+/acwALbAp
+	ybYaso+AvIESCTTHgtTnV1N27c9OvYD2oDpqiFBTFTc2acO7eZZWhM3e/PxpECLVV0QzvkgtFmeu8
+	0KtZ8zXvevi5j6rLud8fUrIOtVSBqmMxzqwZl4qTyFJDfFopI3Qc1dMW/3Y/DLfCnWdtB0cwzEOme
+	CkcnP64g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njG4C-00D8jc-Kg; Tue, 26 Apr 2022 07:57:00 +0000
+	id 1njGH0-00DCX8-95; Tue, 26 Apr 2022 08:10:14 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njG00-00D6Md-Cu; Tue, 26 Apr 2022 07:52:42 +0000
+ id 1njGGp-00DCV3-Be; Tue, 26 Apr 2022 08:10:05 +0000
 Received: from localhost (unknown [IPv6:2a02:3030:3:7d2:2277:ba57:a2c0:3])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
  (Authenticated sender: sebastianfricke)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id C0BDA1F4303D;
- Tue, 26 Apr 2022 08:52:38 +0100 (BST)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 893721F40485;
+ Tue, 26 Apr 2022 09:10:01 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650959559;
- bh=VRkHoSHCz52DTaL/qaCteKvrAnpJI0RuwyC1ISlouJ0=;
+ s=mail; t=1650960601;
+ bh=i+FUcR1yvMR0JAh3EWthKUWKQAVviGQ0EBgzu83bkeE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=WAJLm96S2y2alDNhtlVBzVYe2YB/5EVq1ztnOv76XGDfc7rYOHIWci6n4s6rf0L4t
- epUN9lCjqVxsKya6qEFd+P3RDZBHDe/irdU3NJVarqxbNBX1cUdczH0WfLTQVxNcws
- QxCPZVV5TuG+EzPweuhFC9GuL75alRy9/Or6dZcojhdX9+oLpkx39Vd2G/z3uKuwH1
- wMQw1x11DZ76Np9rormwiFemVT+AGqOi6ph2A/Eu4sHjI8mPeDjIN1sw8UIbAGJfDS
- UO43scq2lWfoLksxlby9bZXh5SBH2I3IJ3/LS+74uDNsQsvVuObeK3ijrh0jEapcoA
- XrB8fzFpOEKgg==
-Date: Tue, 26 Apr 2022 09:52:34 +0200
+ b=YEX8AtMHUqkK901YYtQWvEpja2AB+QNqVrVNoaxRSY54EhLsIfsUyrx7nj/0okXOU
+ tomUaws7UWBWilioZnaoECwy/eu4DqogNNLiJyISvrSCYy2AgeSiKBd/muMm4RgxGt
+ rzaFis0dGPtJstQm4G0HNcQG6Nggh8HMiIzG+R1G2RO/JtCeTOpkXQsOoyOB4PTtZo
+ 8uZ0gcTlNaeTWqxbQPNfxWn4AtSJFB3XVMahtqaRKvSEH/nnCoehkdGqF09rHHTo7A
+ p5l/yIltwyCkYF1Dp/Mw+dqYdMrukinXju7PhGvXp3GvNZ01/JafOgLUURhfNcC8vw
+ qo1YhxRKwqxhg==
+Date: Tue, 26 Apr 2022 10:09:57 +0200
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: mchehab@kernel.org, hverkuil@xs4all.nl, ezequiel@vanguardiasur.com.ar,
@@ -51,19 +51,17 @@ Cc: mchehab@kernel.org, hverkuil@xs4all.nl, ezequiel@vanguardiasur.com.ar,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
  linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH v5 04/17] media: uapi: HEVC: Add missing fields in HEVC
- controls
-Message-ID: <20220426075234.6gk72hzf2bgaxwqw@basti-XPS-13-9310>
+Subject: Re: [PATCH v5 11/17] media: uapi: Add
+ V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
+Message-ID: <20220426080957.2x3ci4tx6bsaiuwc@basti-XPS-13-9310>
 References: <20220407152940.738159-1-benjamin.gaignard@collabora.com>
- <20220407152940.738159-5-benjamin.gaignard@collabora.com>
- <20220425135449.oapsrqqyq34s2ii3@basti-XPS-13-9310>
- <d1ba4e57-2f13-ab3b-f79a-dc812cd4c2bf@collabora.com>
+ <20220407152940.738159-12-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <d1ba4e57-2f13-ab3b-f79a-dc812cd4c2bf@collabora.com>
+In-Reply-To: <20220407152940.738159-12-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_005240_826959_D7AD8C50 
-X-CRM114-Status: GOOD (  18.85  )
+X-CRM114-CacheID: sfid-20220426_011003_705884_D57246AB 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,124 +74,124 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGV5IEJlbmphbWluLAoKT24gMjUuMDQuMjAyMiAxODoxNiwgQmVuamFtaW4gR2FpZ25hcmQgd3Jv
-dGU6Cj4KPkxlIDI1LzA0LzIwMjIgw6AgMTU6NTQsIFNlYmFzdGlhbiBGcmlja2UgYSDDqWNyaXTC
-oDoKPj5PbiAwNy4wNC4yMDIyIDE3OjI5LCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToKPj4+Q29t
-cGxldGUgdGhlIEhFVkMgY29udHJvbHMgd2l0aCBtaXNzaW5nIGZpZWxkcyBmcm9tIEguMjY1IAo+
-Pj5zcGVjaWZpY2F0aW9ucy4KPj4+RXZlbiBpZiB0aGVzZSBmaWVsZHMgYXJlbid0IHVzZWQgYnkg
-dGhlIGN1cnJlbnQgbWFpbmxpbmVkIGRyaXZlcnMKPj4+dGhleSB3aWxsIGJlIG5lZWQgZm9yIChh
-dCBsZWFzdCkgcmt2ZGVjIGRyaXZlci4KPj4KPj5zL2JlIG5lZWQvYmUgcmVxdWlyZWQvCj4+b3IK
-Pj5zL2JlIG5lZWQvYmUgbmVlZGVkLwo+Pgo+PnMvcmt2ZGVjL3RoZSBya3ZkZWMvCj4+Cj4+Pgo+
-Pj5TaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAY29s
-bGFib3JhLmNvbT4KPj4+LS0tCj4+Pi4uLi9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8IDE5ICsrKysrKysrKysrKysrKysrKysKPj4+aW5jbHVk
-ZS9tZWRpYS9oZXZjLWN0cmxzLmjCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCB8wqAgNiArKysrKy0KPj4+MiBmaWxlcyBjaGFuZ2VkLCAyNCBpbnNlcnRpb25zKCspLCAxIGRl
-bGV0aW9uKC0pCj4+Pgo+Pj5kaWZmIC0tZ2l0IAo+Pj5hL0RvY3VtZW50YXRpb24vdXNlcnNwYWNl
-LWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdCAKPj4+Yi9Eb2N1bWVudGF0aW9uL3Vz
-ZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QKPj4+aW5kZXggNGNkN2M1
-NDFmYzMwLi5kYmIwODYwMzIxN2IgMTAwNjQ0Cj4+Pi0tLSBhL0RvY3VtZW50YXRpb24vdXNlcnNw
-YWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdAo+Pj4rKysgYi9Eb2N1bWVudGF0
-aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QKPj4+QEAgLTI2
-NjEsNiArMjY2MSwxNiBAQCBlbnVtIHY0bDJfbXBlZ192aWRlb19oZXZjX3NpemVfb2ZfbGVuZ3Ro
-X2ZpZWxkIC0KPj4+wqDCoMKgIDpzdHViLWNvbHVtbnM6IDAKPj4+wqDCoMKgIDp3aWR0aHM6wqDC
-oMKgwqDCoMKgIDEgMSAyCj4+Pgo+Pj4rwqDCoMKgICogLSBfX3U4Cj4+PivCoMKgwqDCoMKgIC0g
-YGB2aWRlb19wYXJhbWV0ZXJfc2V0X2lkYGAKPj4+K8KgwqDCoMKgwqAgLSBTcGVjaWZpZXMgdGhl
-IHZhbHVlIG9mIHRoZSB2cHNfdmlkZW9fcGFyYW1ldGVyX3NldF9pZCBvZiAKPj4+dGhlIGFjdGl2
-ZSBWUFMKPj4+K8KgwqDCoMKgwqDCoMKgIGFzIGRlc2NpYmVkIGluIHNlY3Rpb24gIjcuNC4zLjIu
-MSBHZW5lcmFsIHNlcXVlbmNlIAo+Pj5wYXJhbWV0ZXIgc2V0IFJCU1Agc2VtYW50aWNzIgo+Pj4r
-wqDCoMKgwqDCoMKgwqAgb2YgSC4yNjUgc3BlY2lmaWNhdGlvbnMuCj4+PivCoMKgwqAgKiAtIF9f
-dTgKPj4+K8KgwqDCoMKgwqAgLSBgYHNlcV9wYXJhbWV0ZXJfc2V0X2lkYGAKPj4+K8KgwqDCoMKg
-wqAgLSBQcm92aWRlcyBhbiBpZGVudGlmaWVyIGZvciB0aGUgU1BTIGZvciByZWZlcmVuY2UgYnkg
-b3RoZXIgCj4+PnN5bnRheCBlbGVtZW50cwo+Pj4rwqDCoMKgwqDCoMKgwqAgYXMgZGVzY2liZWQg
-aW4gc2VjdGlvbiAiNy40LjMuMi4xIEdlbmVyYWwgc2VxdWVuY2UgCj4+PnBhcmFtZXRlciBzZXQg
-UkJTUCBzZW1hbnRpY3MiCj4+PivCoMKgwqDCoMKgwqDCoCBvZiBILjI2NSBzcGVjaWZpY2F0aW9u
-cy4KPj4+wqDCoMKgICogLSBfX3UxNgo+Pj7CoMKgwqDCoMKgIC0gYGBwaWNfd2lkdGhfaW5fbHVt
-YV9zYW1wbGVzYGAKPj4+wqDCoMKgwqDCoCAtCj4+PkBAIC0yODAwLDYgKzI4MTAsOSBAQCBlbnVt
-IHY0bDJfbXBlZ192aWRlb19oZXZjX3NpemVfb2ZfbGVuZ3RoX2ZpZWxkIC0KPj4+wqDCoMKgIDpz
-dHViLWNvbHVtbnM6IDAKPj4+wqDCoMKgIDp3aWR0aHM6wqDCoMKgwqDCoMKgIDEgMSAyCj4+Pgo+
-Pj4rwqDCoMKgICogLSBfX3U4Cj4+PivCoMKgwqDCoMKgIC0gYGBwaWNfcGFyYW1ldGVyX3NldF9p
-ZGBgCj4+PivCoMKgwqDCoMKgIC0gSWRlbnRpZmllcyB0aGUgUFBTIGZvciByZWZlcmVuY2UgYnkg
-b3RoZXIgc3ludGF4IGVsZW1lbnRzLgo+Pj7CoMKgwqAgKiAtIF9fdTgKPj4+wqDCoMKgwqDCoCAt
-IGBgbnVtX2V4dHJhX3NsaWNlX2hlYWRlcl9iaXRzYGAKPj4+wqDCoMKgwqDCoCAtCj4+PkBAIC0z
-MDI2LDYgKzMwMzksMTIgQEAgZW51bSB2NGwyX21wZWdfdmlkZW9faGV2Y19zaXplX29mX2xlbmd0
-aF9maWVsZCAtCj4+PsKgwqDCoCAqIC0gX191OAo+Pj7CoMKgwqDCoMKgIC0gYGByZWZfaWR4X2wx
-W1Y0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1fTUFYXWBgCj4+PsKgwqDCoMKgwqAgLSBUaGUgbGlz
-dCBvZiBMMSByZWZlcmVuY2UgZWxlbWVudHMgYXMgaW5kaWNlcyBpbiB0aGUgRFBCLgo+Pj4rwqDC
-oMKgICogLSBfX3UxNgo+Pj4rwqDCoMKgwqDCoCAtIGBgc2hvcnRfdGVybV9yZWZfcGljX3NldF9z
-aXplYGAKPj4+K8KgwqDCoMKgwqAgLSBTcGVjaWZpZXMgdGhlIHNpemUgb2Ygc2hvcnQtdGVybSBy
-ZWZlcmVuY2UgcGljdHVyZXMgc2V0IAo+Pj5pbmNsdWRlZCBpbiB0aGUgU1BTLgo+Pgo+PnMvc2l6
-ZSBvZi9zaXplIG9mIHRoZS8KPj4KPj5TZWN0aW9uIDcuNC44IGRlcGljdHMgdGhhdCB0aGUgc3Rf
-cmVmX3BpY19zZXQgc3ludGF4Cj4+c3RydWN0dXJlIGNhbiBiZSBwYXJ0IG9mIHRoZSBTUFMgb3Ig
-dGhlIHNsaWNlIGhlYWRlci4KPj4KPj5JIHRoaW5rIHdlIHNob3VsZCBtZW50aW9uIHRoYXQgd2Ug
-dGFsayBhYm91dCB0aGUgc2l6ZSBvZiB0aGUgCj4+c3RfcmVmX3BpY19zZXQKPj5zeW50YXggc3Ry
-dWN0dXJlIGZyb20gc2VjdGlvbiA3LjQuOCBvZiB0aGUgc3BlY2lmaWNhdGlvbi4KPj4+K8KgwqDC
-oCAqIC0gX191MTYKPj4+K8KgwqDCoMKgwqAgLSBgYGxvbmdfdGVybV9yZWZfcGljX3NldF9zaXpl
-YGAKPj4+K8KgwqDCoMKgwqAgLSBTcGVjaWZpZXMgdGhlIHNpemUgb2YgbG9uZy10ZXJtIHJlZmVy
-ZW5jZSBwaWN0dXJlcyBzZXQgCj4+PmluY2x1ZGUgaW4gdGhlIFNQUy4KPj4KPj5zL3NpemUgb2Yv
-c2l6ZSBvZiB0aGUvCj4+Cj4+Q2FuIHdlIG1ha2UgdGhpcyBhIGJpdCBtb3JlIGhlbHBmdWw/IFRo
-ZSBzcGVjaWZpY2F0aW9uIGRvZXNuJ3QgY29udGFpbgo+PmEgc2ltaWxhciBzdHJ1Y3R1cmUgdG8g
-YHN0X3JlZl9waWNfc2V0YCBmb3IgbG9uZyB0ZXJtIHBpY3R1cmVzLiBTbywgYXMgYQo+PnByb2dy
-YW1tZXIgdGhpcyBsZWF2ZXMgbWUgZ3Vlc3Npbmc6Cj4+LSBXaGljaCBzeW50YXggc3RydWN0dXJl
-J3Mgc2l6ZSBhcmUgd2UgdGFsa2luZyBhYm91dD8KPj4tIERvZXMgdGhpcyBjb3JyZWxhdGUgdG8g
-YW55IG9mIHRoZSBleGlzdGluZyBzZWN0aW9ucyBvZiB0aGUKPj5zcGVjaWZpY2F0aW9uPwo+PkJl
-Y2F1c2UgaW4gdGhlIGVuZCwgSSBmZWVsIGxpa2UgdGhpcyBkb2N1bWVudGF0aW9uIHNob3VsZCBi
-ZSBhYmxlIHRvCj4+aGVscCBhIHByb2dyYW1tZXIgdG8gcHJvdmlkZSB0aGUgY29ycmVjdCBkYXRh
-IGZvciB0aGUgdUFCSS4KPgo+SSB3aWxsIHJld29yZCBpdCBsaWtlIHRoYXQ6Cj4KPsKgICogLSBf
-X3UxNgo+wqDCoMKgIC0gYGBzaG9ydF90ZXJtX3JlZl9waWNfc2V0X3NpemVgYAo+wqDCoMKgIC0g
-U3BlY2lmaWVzIHRoZSBzaXplLCBpbiBiaXRzLCBvZiB0aGUgc2hvcnQtdGVybSByZWZlcmVuY2Ug
-cGljdHVyZXMgc2V0LCBkZXNjcmliZWQgYXMgc3RfcmVmX3BpY19zZXQoKQoKSnVzdCAuLi4KCnMv
-cmVmZXJlbmNlIHBpY3R1cmVzIHNldC9yZWZlcmVuY2UgcGljdHVyZSBzZXQvCgo+ICAgICAgaW4g
-dGhlIHNwZWNpZmljYXRpb24sIGluY2x1ZGVkIGluIHRoZSBzbGljZSBoZWFkZXIgKHNlY3Rpb24g
-Ny4zLjYuMSkuCgpzL3NsaWNlIGhlYWRlci9zbGljZSBoZWFkZXIgb3IgU1BTLwoKCj4KPiAqIC0g
-X191MTYKPsKgwqAgLSBgYGxvbmdfdGVybV9yZWZfcGljX3NldF9zaXplYGAKPsKgwqAgLSBTcGVj
-aWZpZXMgdGhlIHNpemUsIGluIGJpdHMsIG9mIHRoZSBsb25nLXRlcm0gcmVmZXJlbmNlIHBpY3R1
-cmVzIHNldCBpbmNsdWRlIGluIHRoZSBzbGljZSBoZWFkZXIuCgpzL3JlZmVyZW5jZSBwaWN0dXJl
-cyBzZXQvcmVmZXJlbmNlIHBpY3R1cmUgc2V0LwoKTG9va2luZyBhdCB0aGUgZG9jdW1lbnRhdGlv
-biBpdCBsb29rcyBsaWtlOiBzL3NsaWNlIGhlYWRlci9zbGljZSBoZWFkZXIgb3IgU1BTLwooRm9y
-IGV4YW1wbGUgaW4gc2VjdGlvbiA3LjMuNi4xOgpgYGAKaWYoIGxvbmdfdGVybV9yZWZfcGljc19w
-cmVzZW50X2ZsYWcgKSB7CiAgIGlmKCBudW1fbG9uZ190ZXJtX3JlZl9waWNzX3NwcyA+IDAgKQog
-ICAgIG51bV9sb25nX3Rlcm1fc3BzCiAgIG51bV9sb25nX3Rlcm1fcGljcwogICBmb3IoIGkgPSAw
-OyBpIDwgbnVtX2xvbmdfdGVybV9zcHMgKyBudW1fbG9uZ190ZXJtX3BpY3M7IGkrKyApIHsKICAg
-ICAuLi4KYGBgCikKCi4uLiBhbmQgdGhlbiBpdCBsb29rcyB2ZXJ5IGdvb2QhCgpHcmVldGluZ3Ms
-ClNlYmFzdGlhbgoKPsKgwqDCoMKgIEl0IGlzIHRoZSBudW1iZXIgb2YgYml0cyBpbiB0aGUgY29u
-ZGl0aW9uYWwgYmxvY2sgaWYoIGxvbmdfdGVybV9yZWZfcGljc19wcmVzZW50X2ZsYWcgKSB7Li4u
-fQo+wqDCoMKgwqAgaW4gc2VjdGlvbiA3LjMuNi4xIG9mIHRoZSBzcGVjaWZpY2F0aW9uLgo+Cj5C
-ZW5qYW1pbgo+Cj4KPj4KPj5HcmVldGluZ3MsCj4+U2ViYXN0aWFuCj4+Cj4+PsKgwqDCoCAqIC0g
-X191OAo+Pj7CoMKgwqDCoMKgIC0gYGBwYWRkaW5nYGAKPj4+wqDCoMKgwqDCoCAtIEFwcGxpY2F0
-aW9ucyBhbmQgZHJpdmVycyBtdXN0IHNldCB0aGlzIHRvIHplcm8uCj4+PmRpZmYgLS1naXQgYS9p
-bmNsdWRlL21lZGlhL2hldmMtY3RybHMuaCBiL2luY2x1ZGUvbWVkaWEvaGV2Yy1jdHJscy5oCj4+
-PmluZGV4IDAxY2NkYTQ4ZDhjNS4uYTMyOWUwODZhODlhIDEwMDY0NAo+Pj4tLS0gYS9pbmNsdWRl
-L21lZGlhL2hldmMtY3RybHMuaAo+Pj4rKysgYi9pbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaAo+
-Pj5AQCAtNTgsNiArNTgsOCBAQCBlbnVtIHY0bDJfbXBlZ192aWRlb19oZXZjX3N0YXJ0X2NvZGUg
-ewo+Pj4vKiBUaGUgY29udHJvbHMgYXJlIG5vdCBzdGFibGUgYXQgdGhlIG1vbWVudCBhbmQgd2ls
-bCBsaWtlbHkgYmUgCj4+PnJld29ya2VkLiAqLwo+Pj5zdHJ1Y3QgdjRsMl9jdHJsX2hldmNfc3Bz
-IHsKPj4+wqDCoMKgwqAvKiBJU08vSUVDIDIzMDA4LTIsIElUVS1UIFJlYy4gSC4yNjU6IFNlcXVl
-bmNlIHBhcmFtZXRlciBzZXQgKi8KPj4+K8KgwqDCoCBfX3U4wqDCoMKgIHZpZGVvX3BhcmFtZXRl
-cl9zZXRfaWQ7Cj4+PivCoMKgwqAgX191OMKgwqDCoCBzZXFfcGFyYW1ldGVyX3NldF9pZDsKPj4+
-wqDCoMKgwqBfX3UxNsKgwqDCoCBwaWNfd2lkdGhfaW5fbHVtYV9zYW1wbGVzOwo+Pj7CoMKgwqDC
-oF9fdTE2wqDCoMKgIHBpY19oZWlnaHRfaW5fbHVtYV9zYW1wbGVzOwo+Pj7CoMKgwqDCoF9fdTjC
-oMKgwqAgYml0X2RlcHRoX2x1bWFfbWludXM4Owo+Pj5AQCAtMTA4LDYgKzExMCw3IEBAIHN0cnVj
-dCB2NGwyX2N0cmxfaGV2Y19zcHMgewo+Pj4KPj4+c3RydWN0IHY0bDJfY3RybF9oZXZjX3BwcyB7
-Cj4+PsKgwqDCoMKgLyogSVNPL0lFQyAyMzAwOC0yLCBJVFUtVCBSZWMuIEguMjY1OiBQaWN0dXJl
-IHBhcmFtZXRlciBzZXQgKi8KPj4+K8KgwqDCoCBfX3U4wqDCoMKgIHBpY19wYXJhbWV0ZXJfc2V0
-X2lkOwo+Pj7CoMKgwqDCoF9fdTjCoMKgwqAgbnVtX2V4dHJhX3NsaWNlX2hlYWRlcl9iaXRzOwo+
-Pj7CoMKgwqDCoF9fdTjCoMKgwqAgbnVtX3JlZl9pZHhfbDBfZGVmYXVsdF9hY3RpdmVfbWludXMx
-Owo+Pj7CoMKgwqDCoF9fdTjCoMKgwqAgbnVtX3JlZl9pZHhfbDFfZGVmYXVsdF9hY3RpdmVfbWlu
-dXMxOwo+Pj5AQCAtMTk5LDcgKzIwMiw4IEBAIHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19zbGljZV9w
-YXJhbXMgewo+Pj7CoMKgwqDCoF9fdTMywqDCoMKgIHNsaWNlX3NlZ21lbnRfYWRkcjsKPj4+wqDC
-oMKgwqBfX3U4wqDCoMKgIHJlZl9pZHhfbDBbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhd
-Owo+Pj7CoMKgwqDCoF9fdTjCoMKgwqAgcmVmX2lkeF9sMVtWNEwyX0hFVkNfRFBCX0VOVFJJRVNf
-TlVNX01BWF07Cj4+Pi0KPj4+K8KgwqDCoCBfX3UxNsKgwqDCoCBzaG9ydF90ZXJtX3JlZl9waWNf
-c2V0X3NpemU7Cj4+PivCoMKgwqAgX191MTbCoMKgwqAgbG9uZ190ZXJtX3JlZl9waWNfc2V0X3Np
-emU7Cj4+PsKgwqDCoMKgX191OMKgwqDCoCBwYWRkaW5nOwo+Pj4KPj4+wqDCoMKgwqAvKiBJU08v
-SUVDIDIzMDA4LTIsIElUVS1UIFJlYy4gSC4yNjU6IFdlaWdodGVkIHByZWRpY3Rpb24gCj4+PnBh
-cmFtZXRlciAqLwo+Pj4tLSAKPj4+Mi4zMi4wCj4+PgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hey Benjamin,
+
+On 07.04.2022 17:29, Benjamin Gaignard wrote:
+>The number of 'entry point offset' could be very variable.
+
+s/could be/can be/
+
+>Rather than use a large static array define a v4l2 dynamic array
+
+s/Rather than use/Instead of using/
+
+Greetings,
+Sebastian
+
+>of U32 (V4L2_CTRL_TYPE_U32).
+>The number of entry point offsets is reported by the elems field
+>and in struct v4l2_ctrl_hevc_slice_params.num_entry_point_offsets
+>field.
+>
+>Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+>---
+> .../userspace-api/media/v4l/ext-ctrls-codec.rst       | 11 +++++++++++
+> drivers/media/v4l2-core/v4l2-ctrls-defs.c             |  5 +++++
+> include/media/hevc-ctrls.h                            |  5 ++++-
+> 3 files changed, 20 insertions(+), 1 deletion(-)
+>
+>diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+>index 1aaf3b84b584..a604dedce17c 100644
+>--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+>+++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+>@@ -2988,6 +2988,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>     * - __u32
+>       - ``data_bit_offset``
+>       - Offset (in bits) to the video data in the current slice data.
+>+    * - __u32
+>+      - ``num_entry_point_offsets``
+>+      - Specifies the number of entry point offset syntax elements in the slice header.
+>     * - __u8
+>       - ``nal_unit_type``
+>       - Specifies the coding type of the slice (B, P or I).
+>@@ -3125,6 +3128,14 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>
+>     \normalsize
+>
+>+``V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (integer)``
+>+    Specifies entry point offsets in bytes.
+>+    This control is a dynamically sized array. The number of entry point
+>+    offsets is reported by the ``elems`` field.
+>+    This bitstream parameter is defined according to :ref:`hevc`.
+>+    They are described in section 7.4.7.1 "General slice segment header
+>+    semantics" of the specification.
+>+
+> ``V4L2_CID_STATELESS_HEVC_SCALING_MATRIX (struct)``
+>     Specifies the HEVC scaling matrix parameters used for the scaling process
+>     for transform coefficients.
+>diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>index 4b68cbe23309..48d385b776b1 100644
+>--- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>+++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+>@@ -1180,6 +1180,7 @@ const char *v4l2_ctrl_get_name(u32 id)
+> 	case V4L2_CID_STATELESS_HEVC_DECODE_PARAMS:		return "HEVC Decode Parameters";
+> 	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
+> 	case V4L2_CID_STATELESS_HEVC_START_CODE:		return "HEVC Start Code";
+>+	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:	return "HEVC Entry Point Offsets";
+>
+> 	/* Colorimetry controls */
+> 	/* Keep the order of the 'case's the same as in v4l2-controls.h! */
+>@@ -1508,6 +1509,10 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
+> 	case V4L2_CID_STATELESS_HEVC_DECODE_PARAMS:
+> 		*type = V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS;
+> 		break;
+>+	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:
+>+		*type = V4L2_CTRL_TYPE_U32;
+>+		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
+>+		break;
+> 	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:
+> 		*type = V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR;
+> 		break;
+>diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+>index 00abbf930235..97e049ccb966 100644
+>--- a/include/media/hevc-ctrls.h
+>+++ b/include/media/hevc-ctrls.h
+>@@ -20,6 +20,7 @@
+> #define V4L2_CID_STATELESS_HEVC_DECODE_PARAMS	(V4L2_CID_CODEC_BASE + 1012)
+> #define V4L2_CID_STATELESS_HEVC_DECODE_MODE	(V4L2_CID_CODEC_BASE + 1015)
+> #define V4L2_CID_STATELESS_HEVC_START_CODE	(V4L2_CID_CODEC_BASE + 1016)
+>+#define V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (V4L2_CID_CODEC_BASE + 1017)
+>
+> /* enum v4l2_ctrl_type type values */
+> #define V4L2_CTRL_TYPE_HEVC_SPS 0x0120
+>@@ -316,6 +317,8 @@ struct v4l2_hevc_pred_weight_table {
+>  *
+>  * @bit_size: size (in bits) of the current slice data
+>  * @data_bit_offset: offset (in bits) to the video data in the current slice data
+>+ * @num_entry_point_offsets: specifies the number of entry point offset syntax
+>+ *			     elements in the slice header.
+>  * @nal_unit_type: specifies the coding type of the slice (B, P or I)
+>  * @nuh_temporal_id_plus1: minus 1 specifies a temporal identifier for the NAL unit
+>  * @slice_type: see V4L2_HEVC_SLICE_TYPE_{}
+>@@ -358,7 +361,7 @@ struct v4l2_hevc_pred_weight_table {
+> struct v4l2_ctrl_hevc_slice_params {
+> 	__u32	bit_size;
+> 	__u32	data_bit_offset;
+>-
+>+	__u32	num_entry_point_offsets;
+> 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: NAL unit header */
+> 	__u8	nal_unit_type;
+> 	__u8	nuh_temporal_id_plus1;
+>-- 
+>2.32.0
+>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
