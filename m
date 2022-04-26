@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DE1DC433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 16:04:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D78DDC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 16:07:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=vlu/Xh32Uf6B06+feyDE+3h1YEZ60PvJ0SszaClf9V0=; b=EZ8ZFBZGBy5l50
-	ChjtR8yEnr8Jqta82utM+CpLqldSyqDYnBHq8e/vOOUvLX9q9IYwJXGLafMLlR2/t2oIT0av/+Wjr
-	ld5Bkc881pjyOldT/LBIoMMiHdd88KHcqXUDcxaNj9HOWXbqr4GwMpFHhiMitIYHTf03/qU6tRIlO
-	nlVQ4la9F27C+hMW1TMK/uLSYc/aeHrLvL0AAfSToccKLLJsOJo/UT3WAeU8UNPoOrJ4YnD3KiWBp
-	OiBheWDSHHc6WTmKIlCtOkuY2qZghWw+i/2w59bjyKREnFf9xKRnmM8RizAXS/FJZePyC60nFBJ2I
-	qpkc36skVw+uARMiA9nw==;
+	List-Owner; bh=vVFOFjZcGVgu4I2d9tlKVTQIr2esQEvkTrfluSoFkH4=; b=RuodL3q8Og6ZrM
+	QfQ06UGbQrOkWdP2pbJZcWL1fy/n+QvBfO7RsO8iolVGvVEzWSlARUD8EyA5iCi6M6o0JFzwpP8iJ
+	Eye6X0X6P/zzSa1jkPxUrCO+WslYJFy0h+peOtAICM9S22OrWyc+YD8O42zOqCKu0lbXBlIQxagUo
+	uWiyjEgRwHkAp+u19IphHLF+4DaSQtvDey33W9EXi3Qxs5Sh7XkHw8KFd+xWmhlwzC+zDHzhiDBna
+	4WQ/HmGBW9hCVxFT9mqUQo1QZ9UcVOCC6aW/gC1WI/zt2rpsqHvJ+Z8C8R184jYMn2YoDo9tZ8dxH
+	xigCNk+0X/po3edtln0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njNg4-00FH12-IC; Tue, 26 Apr 2022 16:04:36 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1njNik-00FHvR-F6; Tue, 26 Apr 2022 16:07:22 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njNfl-00FGsA-AR; Tue, 26 Apr 2022 16:04:19 +0000
+ id 1njNiU-00FHmY-0T; Tue, 26 Apr 2022 16:07:09 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 62101CE1F71;
- Tue, 26 Apr 2022 16:04:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A7CCC385AA;
- Tue, 26 Apr 2022 16:04:11 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 32B0BB820FC;
+ Tue, 26 Apr 2022 16:07:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F804C385AA;
+ Tue, 26 Apr 2022 16:07:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1650989051;
- bh=DF6HiaHX+dY5oLx+lPOr2QI/LdmMgjcLKt3ZE8J8gK8=;
+ s=k20201202; t=1650989222;
+ bh=SIWK/mgrwqvjb745XCumZL2zEALgs20U9FUZGDkZgPQ=;
  h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=fUz4dsSHHsZ0RthaQqqNVleFK3yj7u6ZWZ3AqxjSzYd816B8v5+wSSrUlbJhbQPxI
- 2EEb+sLh/UV0OfQxxkG/by3e08H39Z/H0OtgKBsYiEz6tkjRb2PAFpSYbUpWSRe7KA
- JufQJb17P6X/yy0AyPKoNLs+yGdUns/bEH9USJGBTMejgYFh/jRoEaRiI8+AQMoT2Q
- VYQaIYj+rIqNuf2JVNoZvg/wKfz8LJ0yIr9q3R6MfilJysBWIHdYYBGuk8JaZfTQg/
- gY9v9s6a0774Gr953EHhaOe6amXWYY43lNAm1Kg8Aq3PDuVB5b/n9+mJjCrBoJiwdH
- j1/oGcEXQmUhA==
-Date: Tue, 26 Apr 2022 11:04:09 -0500
+ b=bDD8Qpj/XMzt4mZm2S8D6NQD6THckGoxgByTgj3daSgFZVM4539iQYEwYMrK9dPlJ
+ VzzeBe2gPmT/q0hqRxKMxeJPpG5HsJFHEG0ETh8C+WVHjSGYThzXg12HdWQFbGpsSZ
+ r5j+rsaD2/QPUdXOcF5pTsoxNr9iJC72Nfv6cRtmBB+N9epJuH1TGMkD3Fia3caX03
+ 12JNYyKQCSxnduaISxloJdlOLsUPJ4cTTTMCSwkq/DZPyerS49WLCDqOcHKaPzXG5N
+ /PjXCP/1yBHKGVD3GTwpLffVDYC7u/tVov1UaoyVaBRRqPO+AnPMgWk2mdAWv3WFGB
+ P+E8ag50dBtRw==
+Date: Tue, 26 Apr 2022 11:07:00 -0500
 From: Bjorn Helgaas <helgaas@kernel.org>
 To: Frank Wunderlich <linux@fw-web.de>
 Cc: linux-rockchip@lists.infradead.org,
@@ -58,15 +58,15 @@ Cc: linux-rockchip@lists.infradead.org,
  linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-phy@lists.infradead.org
-Subject: Re: [RFC/RFT v2 09/11] dt-bindings: pci: add lane-map to rockchip
- PCIe binding
-Message-ID: <20220426160409.GA1731042@bhelgaas>
+Subject: Re: [RFC/RFT v2 10/11] PCI: rockchip: add a lane-map to rockchip
+ pcie driver
+Message-ID: <20220426160700.GA1731141@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220426132139.26761-10-linux@fw-web.de>
+In-Reply-To: <20220426132139.26761-11-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_090417_744125_874FC8CD 
-X-CRM114-Status: GOOD (  29.02  )
+X-CRM114-CacheID: sfid-20220426_090706_392770_7E164C6B 
+X-CRM114-Status: GOOD (  33.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,16 +84,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 26, 2022 at 03:21:37PM +0200, Frank Wunderlich wrote:
+The subject line should be "PCI: rockchip-dwc: Add ..." so there's no
+need to mention "rockchip" again.  No need to mention "pcie driver"
+either,  because that's obvious from the context, so just something
+like:
+
+  PCI: rockchip-dwc: Add lane-map support
+
+On Tue, Apr 26, 2022 at 03:21:38PM +0200, Frank Wunderlich wrote:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Create new property for (rockchip) PCIe controller binding to
-> define lane mapping.
+> Add a basic lane-map to define which PCIe lanes should be
+> used with this controller.
 > 
 > Rockchip driver uses this for bifurcation (true/false) based
 > on lanes should be splitted across controllers or not.
 > 
-> On rk3568 there are 2 PCIe Controllers which share 2 PCIe lanes.
+> On rk3568 there are 2 PCIe Controllers which share PCIe lanes.
 > 
 > pcie3x1: pcie@fe270000 //lane1 when using 1+1
 > pcie3x2: pcie@fe280000 //lane0 when using 1+1
@@ -105,67 +112,62 @@ On Tue, Apr 26, 2022 at 03:21:37PM +0200, Frank Wunderlich wrote:
 > is mapped to the first controller, the other one is used on the other
 > controller.
 > 
-> In rockchip PCIe driver the lane-map is simply converted to the
-> bifurcation bool instead of direct mapping a specific lane to a
-> controller.
-> 
-> There is not yet any slot mapping below one controller.
-> But for binding this may be possible like:
-> 
-> lane-map = <1 2 3 3 4 4 4 4>;
->             | | | ...
->         lane0 | |
->           lane1 |
->             lane2
-> 
-> on a 8-lane phy.
-> 
-> This can map lane0 to port1 (number used at this position),
-> lane1 to port2, lanes 2+3 to port 3 and lanes 4,5,6,7 to port 4.
+> In this driver the lane-map is simply converted to the bifurcation
+> bool instead of direct mapping a specific lane to a controller.
 > 
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 > ---
 > v2:
 > - new patch
 > ---
->  Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 15 +++++++++++++--
+>  1 file changed, 13 insertions(+), 2 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> index a992970e8b85..998b20b3a9dc 100644
-> --- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> @@ -52,6 +52,8 @@ properties:
->        - const: pclk
->        - const: aux
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index 79e909df241c..21cb697a5be1 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -60,6 +60,7 @@ struct rockchip_pcie {
+>  	struct regulator                *vpcie3v3;
+>  	struct irq_domain		*irq_domain;
+>  	bool				bifurcation;
+> +	u32				lane_map[2];
+>  };
 >  
-> +  lane-map: true
+>  static int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip,
+> @@ -293,8 +294,10 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+>  	struct rockchip_pcie *rockchip;
+> +	unsigned int lanecnt = 0;
+>  	struct pcie_port *pp;
+>  	int ret;
+> +	int len;
+>  
+>  	rockchip = devm_kzalloc(dev, sizeof(*rockchip), GFP_KERNEL);
+>  	if (!rockchip)
+> @@ -327,8 +330,16 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  		}
+>  	}
+>  
+> -	if (device_property_read_bool(dev, "bifurcation"))
+> -		rockchip->bifurcation = true;
+
+Skip adding the "bifurcation" DT support completely if you can.
+
+> +	len = of_property_read_variable_u32_array(dev->of_node, "lane-map", rockchip->lane_map,
+> +						  2, ARRAY_SIZE(rockchip->lane_map));
 > +
->    msi-map: true
+> +	for (int i = 0; i < len; i++)
+> +		if (rockchip->lane_map[i])
+> +			lanecnt++;
+> +
+> +	rockchip->bifurcation = ((lanecnt > 0) && (lanecnt != len));
+> +
+> +	dev_info(dev, "bifurcation: %s\n", rockchip->bifurcation ? "true" : "false");
 >  
->    num-lanes: true
-> @@ -74,8 +76,6 @@ properties:
->    reset-names:
->      const: pipe
->  
-> -  bifurcation: true
-> -
-
-Why are you adding "bifurcation" earlier in the series, then
-immediately removing it?  Why not just add "lane-map" directly and
-never mention "bifurcation" in the DT at all?
-
->    vpcie3v3-supply: true
->  
->  required:
-> @@ -115,6 +115,7 @@ examples:
->                            "aclk_dbi", "pclk",
->                            "aux";
->              device_type = "pci";
-> +            lane-map = <0 1>;
->              linux,pci-domain = <2>;
->              max-link-speed = <2>;
->              msi-map = <0x2000 &its 0x2000 0x1000>;
+>  	ret = rockchip_pcie_phy_init(rockchip);
+>  	if (ret)
 > -- 
 > 2.25.1
 > 
