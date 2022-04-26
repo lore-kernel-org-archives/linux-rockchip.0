@@ -4,63 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47DC8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 08:15:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BB62C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 08:50:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0Gj6xX1REnRczY4dOSH7gmMx9Fw0rb6v+oxkKxjdXiA=; b=escsgHeG9T8w/qZgxNANVGPXZ2
-	3NkylbEKAPje1vokWzldPtzdMAZ+zK9k54WmykQhzr9eM3KJw/OrPBpc/X6S3ws65Qj7frior7dwP
-	tIgE+X6DY8DqurmftKQ34hPVXIWxEb7Tl4Dy7PECJldRwrjrEyg0BrmrRatbxshBmu8cQbHVsr1Yb
-	CiOh5Op3bEMjIo/Ltw7EEexMfWkx4zubYxbEccn1vSQg5u68owxMVKx+aN/2KGSbldMAyomz9PggS
-	+tjJ+h3ROkxD67szdulqe6+y/G0urYCcZiwAev8D6r+0MimNA4xEWjQD604BXm2IUNDHYv9d7I7dQ
-	ezMabW+g==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WfG0G3IHJTzQA6tP9tFnoy7nhLUx93lRGZzqDpDQ5cc=; b=SAkMYaijLhEnAT
+	vJktNUT2CnOGrCXVLm9a2cGZot59ANMrRwyf+T9YLkbhwHMjtEEjAotp4D3gQWBzWJe4xYE41pL2Q
+	nd/BkfDI4REihfY8B6vOoFEjMBdPI4Cp/HUGzKZxtkzq9s9zOjy1P4kgsF1bGqDJGJf4Szm4lxZTT
+	EnYZ4Asd31+IRzhshkAz0YNPIV3CBIGmLQihmdTw2iRYRW/7lzpREmVIEaeIEF52Qj/VOxDEl9FEU
+	YUoNxVU2giMF78Ongd9aRlfjIbgy+ygb2kQbRNR/C/OXfwmnEIvgAcY83sPMjAgb7teUJ2Ik0uZ5U
+	Z86xovCLfNBFIAnIlZlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njGM5-00DDmn-Dm; Tue, 26 Apr 2022 08:15:29 +0000
+	id 1njGuE-00DRj9-P8; Tue, 26 Apr 2022 08:50:46 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njGLs-00DDjC-J5; Tue, 26 Apr 2022 08:15:18 +0000
-Received: from localhost (unknown [IPv6:2a02:3030:3:7d2:2277:ba57:a2c0:3])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ id 1njGu1-00DRar-2n; Tue, 26 Apr 2022 08:50:35 +0000
+Received: from [IPV6:2a01:e0a:120:3210:8ccc:428d:6d90:c434] (unknown
+ [IPv6:2a01:e0a:120:3210:8ccc:428d:6d90:c434])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- (Authenticated sender: sebastianfricke)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id A0ADA1F43043;
- Tue, 26 Apr 2022 09:15:14 +0100 (BST)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 5B6521F432A5;
+ Tue, 26 Apr 2022 09:50:28 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1650960914;
- bh=WikNeAiMUuFevJFNxJ9ZvKK3TNnSjJXOJ0Tm9TNw6dw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=nfUscDjbkgZ9S/6KekwrdIL3o6nzuly/WFrdCBENr4uWH8i+IRxUUe1ThlLm3jRzV
- TXiom6WORSOf+tLUFA2p0XCr7A12RbXml5f8Yhb1NXkQDzJHzS+pqgLlR+hXjqgOuD
- Eh2tVyU7WOl+xK/imJ4mLATjjKh/jB32FjiF8XX3L/qw44tSMsu497RLFihOd736MJ
- 98sX/HtyR879R4btw3lOpbqB0G57WWyxZmV98/qqD2rrrt/qLlQ0/E6n8cbYBst9wT
- n23ZBU7HwjQoYnf4a+7La41DaCa9AviD3v/ajgGThUjjxUgx24zzq5hHJEaAv5JskQ
- GfEEqHIjVnfRw==
-Date: Tue, 26 Apr 2022 10:15:11 +0200
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, hverkuil@xs4all.nl, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de, gregkh@linuxfoundation.org,
- mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
- jernej.skrabec@gmail.com, samuel@sholland.org,
- nicolas.dufresne@collabora.com, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH v5 16/17] media: uapi: Change data_bit_offset definition
-Message-ID: <20220426081511.etk5blic75sygjny@basti-XPS-13-9310>
-References: <20220407152940.738159-1-benjamin.gaignard@collabora.com>
- <20220407152940.738159-17-benjamin.gaignard@collabora.com>
+ s=mail; t=1650963028;
+ bh=18a60e/DwgY4enKZwDEyBFnNVeOwXwEzJ1HC9CbWJlk=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=joBJi5gC5PsBMnd80pUct5A2XyeH/CkWCHoEGTT3Zeiqgg0/4MstrlrVikCErKRd8
+ y1YQ6dlgFGmK7aJb9m+gBuJziQ37mSx4w9V/CdzPc/ZXQ3I2qXIIlAm7eg/9ZnQ8qK
+ 2AO8QE3mPeRL7Fi6wspO4JAVR9hvr7jHxjUlxJelSRcMnAnx/hyL874Em0W5/4y+3/
+ M5aw0+jxmPJ34K6Z+nDV7nL6h87aJyeS+kWZxCx1GH7E986ZdZRab5ICZ++avl0Xnp
+ RSU9G4bRYqUkc64DuhdW2Zk0woeWKGOOWpcYQyO7ZydLQw2ex1m05zTFtqFirAedB4
+ Z+JQA7TRFg0WA==
+Message-ID: <8e6977ac-53bb-53f0-3fdc-75aa2643cb77@collabora.com>
+Date: Tue, 26 Apr 2022 10:50:25 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220407152940.738159-17-benjamin.gaignard@collabora.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v5 04/17] media: uapi: HEVC: Add missing fields in HEVC
+ controls
+Content-Language: en-US
+To: Sebastian Fricke <sebastian.fricke@collabora.com>
+Cc: mchehab@kernel.org, hverkuil@xs4all.nl, ezequiel@vanguardiasur.com.ar,
+ p.zabel@pengutronix.de, gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@gmail.com,
+ samuel@sholland.org, nicolas.dufresne@collabora.com,
+ linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev
+References: <20220407152940.738159-1-benjamin.gaignard@collabora.com>
+ <20220407152940.738159-5-benjamin.gaignard@collabora.com>
+ <20220425135449.oapsrqqyq34s2ii3@basti-XPS-13-9310>
+ <d1ba4e57-2f13-ab3b-f79a-dc812cd4c2bf@collabora.com>
+ <20220426075234.6gk72hzf2bgaxwqw@basti-XPS-13-9310>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <20220426075234.6gk72hzf2bgaxwqw@basti-XPS-13-9310>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_011516_799838_BD7C7EB9 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20220426_015033_529300_516CFCB6 
+X-CRM114-Status: GOOD (  26.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,92 +79,134 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07.04.2022 17:29, Benjamin Gaignard wrote:
->'F.7.3.6.1 General slice segment header syntax' section of HEVC
->specification describes that a slice header always end byte aligned,
-
-s/always end byte aligned/always aligns on the end-byte/
-or
-s/always end byte aligned/always aligns on the last byte/
-?
-
->therefore we only need to provide the data offset in byte.
-
-s/byte/bytes/
-
-Greetings,
-Sebastian
-
->
->Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->---
->version 5:
->- Fix numbers of bits computation in cedrus_h265_skip_bits() parameters
-> Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst | 4 ++--
-> drivers/staging/media/sunxi/cedrus/cedrus_h265.c          | 2 +-
-> include/media/hevc-ctrls.h                                | 4 ++--
-> 3 files changed, 5 insertions(+), 5 deletions(-)
->
->diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
->index a3b1a063deba..48b3f533bc17 100644
->--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
->+++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
->@@ -2986,8 +2986,8 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->       - ``bit_size``
->       - Size (in bits) of the current slice data.
->     * - __u32
->-      - ``data_bit_offset``
->-      - Offset (in bits) to the video data in the current slice data.
->+      - ``data_byte_offset``
->+      - Offset (in bytes) to the video data in the current slice data.
->     * - __u32
->       - ``num_entry_point_offsets``
->       - Specifies the number of entry point offset syntax elements in the slice header.
->diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
->index d04521ffd920..4f31f2f3b745 100644
->--- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
->+++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
->@@ -405,7 +405,7 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
-> 	/* Initialize bitstream access. */
-> 	cedrus_write(dev, VE_DEC_H265_TRIGGER, VE_DEC_H265_TRIGGER_INIT_SWDEC);
->
->-	cedrus_h265_skip_bits(dev, slice_params->data_bit_offset);
->+	cedrus_h265_skip_bits(dev, slice_params->data_byte_offset * 8);
->
-> 	/* Bitstream parameters. */
->
->diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
->index e6cdd122726c..1834072c0a43 100644
->--- a/include/media/hevc-ctrls.h
->+++ b/include/media/hevc-ctrls.h
->@@ -310,7 +310,7 @@ struct v4l2_hevc_pred_weight_table {
->  * V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag must be set when using it.
->  *
->  * @bit_size: size (in bits) of the current slice data
->- * @data_bit_offset: offset (in bits) to the video data in the current slice data
->+ * @data_byte_offset: offset (in bytes) to the video data in the current slice data
->  * @num_entry_point_offsets: specifies the number of entry point offset syntax
->  *			     elements in the slice header.
->  * @nal_unit_type: specifies the coding type of the slice (B, P or I)
->@@ -354,7 +354,7 @@ struct v4l2_hevc_pred_weight_table {
->  */
-> struct v4l2_ctrl_hevc_slice_params {
-> 	__u32	bit_size;
->-	__u32	data_bit_offset;
->+	__u32	data_byte_offset;
-> 	__u32	num_entry_point_offsets;
-> 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: NAL unit header */
-> 	__u8	nal_unit_type;
->-- 
->2.32.0
->
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDI2LzA0LzIwMjIgw6AgMDk6NTIsIFNlYmFzdGlhbiBGcmlja2UgYSDDqWNyaXTCoDoKPiBI
+ZXkgQmVuamFtaW4sCj4KPiBPbiAyNS4wNC4yMDIyIDE4OjE2LCBCZW5qYW1pbiBHYWlnbmFyZCB3
+cm90ZToKPj4KPj4gTGUgMjUvMDQvMjAyMiDDoCAxNTo1NCwgU2ViYXN0aWFuIEZyaWNrZSBhIMOp
+Y3JpdMKgOgo+Pj4gT24gMDcuMDQuMjAyMiAxNzoyOSwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6
+Cj4+Pj4gQ29tcGxldGUgdGhlIEhFVkMgY29udHJvbHMgd2l0aCBtaXNzaW5nIGZpZWxkcyBmcm9t
+IEguMjY1IAo+Pj4+IHNwZWNpZmljYXRpb25zLgo+Pj4+IEV2ZW4gaWYgdGhlc2UgZmllbGRzIGFy
+ZW4ndCB1c2VkIGJ5IHRoZSBjdXJyZW50IG1haW5saW5lZCBkcml2ZXJzCj4+Pj4gdGhleSB3aWxs
+IGJlIG5lZWQgZm9yIChhdCBsZWFzdCkgcmt2ZGVjIGRyaXZlci4KPj4+Cj4+PiBzL2JlIG5lZWQv
+YmUgcmVxdWlyZWQvCj4+PiBvcgo+Pj4gcy9iZSBuZWVkL2JlIG5lZWRlZC8KPj4+Cj4+PiBzL3Jr
+dmRlYy90aGUgcmt2ZGVjLwo+Pj4KPj4+Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6IEJlbmphbWluIEdh
+aWduYXJkIDxiZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEuY29tPgo+Pj4+IC0tLQo+Pj4+IC4u
+Li9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8
+IDE5ICsrKysrKysrKysrKysrKysrKysKPj4+PiBpbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCA2ICsrKysrLQo+Pj4+IDIg
+ZmlsZXMgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+Pj4+Cj4+Pj4g
+ZGlmZiAtLWdpdCAKPj4+PiBhL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwv
+ZXh0LWN0cmxzLWNvZGVjLnJzdCAKPj4+PiBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9t
+ZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdAo+Pj4+IGluZGV4IDRjZDdjNTQxZmMzMC4uZGJi
+MDg2MDMyMTdiIDEwMDY0NAo+Pj4+IC0tLSBhL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9t
+ZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdAo+Pj4+ICsrKyBiL0RvY3VtZW50YXRpb24vdXNl
+cnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdAo+Pj4+IEBAIC0yNjYxLDYg
+KzI2NjEsMTYgQEAgZW51bSAKPj4+PiB2NGwyX21wZWdfdmlkZW9faGV2Y19zaXplX29mX2xlbmd0
+aF9maWVsZCAtCj4+Pj4gwqDCoMKgIDpzdHViLWNvbHVtbnM6IDAKPj4+PiDCoMKgwqAgOndpZHRo
+czrCoMKgwqDCoMKgwqAgMSAxIDIKPj4+Pgo+Pj4+ICvCoMKgwqAgKiAtIF9fdTgKPj4+PiArwqDC
+oMKgwqDCoCAtIGBgdmlkZW9fcGFyYW1ldGVyX3NldF9pZGBgCj4+Pj4gK8KgwqDCoMKgwqAgLSBT
+cGVjaWZpZXMgdGhlIHZhbHVlIG9mIHRoZSB2cHNfdmlkZW9fcGFyYW1ldGVyX3NldF9pZCBvZiAK
+Pj4+PiB0aGUgYWN0aXZlIFZQUwo+Pj4+ICvCoMKgwqDCoMKgwqDCoCBhcyBkZXNjaWJlZCBpbiBz
+ZWN0aW9uICI3LjQuMy4yLjEgR2VuZXJhbCBzZXF1ZW5jZSAKPj4+PiBwYXJhbWV0ZXIgc2V0IFJC
+U1Agc2VtYW50aWNzIgo+Pj4+ICvCoMKgwqDCoMKgwqDCoCBvZiBILjI2NSBzcGVjaWZpY2F0aW9u
+cy4KPj4+PiArwqDCoMKgICogLSBfX3U4Cj4+Pj4gK8KgwqDCoMKgwqAgLSBgYHNlcV9wYXJhbWV0
+ZXJfc2V0X2lkYGAKPj4+PiArwqDCoMKgwqDCoCAtIFByb3ZpZGVzIGFuIGlkZW50aWZpZXIgZm9y
+IHRoZSBTUFMgZm9yIHJlZmVyZW5jZSBieSBvdGhlciAKPj4+PiBzeW50YXggZWxlbWVudHMKPj4+
+PiArwqDCoMKgwqDCoMKgwqAgYXMgZGVzY2liZWQgaW4gc2VjdGlvbiAiNy40LjMuMi4xIEdlbmVy
+YWwgc2VxdWVuY2UgCj4+Pj4gcGFyYW1ldGVyIHNldCBSQlNQIHNlbWFudGljcyIKPj4+PiArwqDC
+oMKgwqDCoMKgwqAgb2YgSC4yNjUgc3BlY2lmaWNhdGlvbnMuCj4+Pj4gwqDCoMKgICogLSBfX3Ux
+Ngo+Pj4+IMKgwqDCoMKgwqAgLSBgYHBpY193aWR0aF9pbl9sdW1hX3NhbXBsZXNgYAo+Pj4+IMKg
+wqDCoMKgwqAgLQo+Pj4+IEBAIC0yODAwLDYgKzI4MTAsOSBAQCBlbnVtIHY0bDJfbXBlZ192aWRl
+b19oZXZjX3NpemVfb2ZfbGVuZ3RoX2ZpZWxkIC0KPj4+PiDCoMKgwqAgOnN0dWItY29sdW1uczog
+MAo+Pj4+IMKgwqDCoCA6d2lkdGhzOsKgwqDCoMKgwqDCoCAxIDEgMgo+Pj4+Cj4+Pj4gK8KgwqDC
+oCAqIC0gX191OAo+Pj4+ICvCoMKgwqDCoMKgIC0gYGBwaWNfcGFyYW1ldGVyX3NldF9pZGBgCj4+
+Pj4gK8KgwqDCoMKgwqAgLSBJZGVudGlmaWVzIHRoZSBQUFMgZm9yIHJlZmVyZW5jZSBieSBvdGhl
+ciBzeW50YXggZWxlbWVudHMuCj4+Pj4gwqDCoMKgICogLSBfX3U4Cj4+Pj4gwqDCoMKgwqDCoCAt
+IGBgbnVtX2V4dHJhX3NsaWNlX2hlYWRlcl9iaXRzYGAKPj4+PiDCoMKgwqDCoMKgIC0KPj4+PiBA
+QCAtMzAyNiw2ICszMDM5LDEyIEBAIGVudW0gCj4+Pj4gdjRsMl9tcGVnX3ZpZGVvX2hldmNfc2l6
+ZV9vZl9sZW5ndGhfZmllbGQgLQo+Pj4+IMKgwqDCoCAqIC0gX191OAo+Pj4+IMKgwqDCoMKgwqAg
+LSBgYHJlZl9pZHhfbDFbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhdYGAKPj4+PiDCoMKg
+wqDCoMKgIC0gVGhlIGxpc3Qgb2YgTDEgcmVmZXJlbmNlIGVsZW1lbnRzIGFzIGluZGljZXMgaW4g
+dGhlIERQQi4KPj4+PiArwqDCoMKgICogLSBfX3UxNgo+Pj4+ICvCoMKgwqDCoMKgIC0gYGBzaG9y
+dF90ZXJtX3JlZl9waWNfc2V0X3NpemVgYAo+Pj4+ICvCoMKgwqDCoMKgIC0gU3BlY2lmaWVzIHRo
+ZSBzaXplIG9mIHNob3J0LXRlcm0gcmVmZXJlbmNlIHBpY3R1cmVzIHNldCAKPj4+PiBpbmNsdWRl
+ZCBpbiB0aGUgU1BTLgo+Pj4KPj4+IHMvc2l6ZSBvZi9zaXplIG9mIHRoZS8KPj4+Cj4+PiBTZWN0
+aW9uIDcuNC44IGRlcGljdHMgdGhhdCB0aGUgc3RfcmVmX3BpY19zZXQgc3ludGF4Cj4+PiBzdHJ1
+Y3R1cmUgY2FuIGJlIHBhcnQgb2YgdGhlIFNQUyBvciB0aGUgc2xpY2UgaGVhZGVyLgo+Pj4KPj4+
+IEkgdGhpbmsgd2Ugc2hvdWxkIG1lbnRpb24gdGhhdCB3ZSB0YWxrIGFib3V0IHRoZSBzaXplIG9m
+IHRoZSAKPj4+IHN0X3JlZl9waWNfc2V0Cj4+PiBzeW50YXggc3RydWN0dXJlIGZyb20gc2VjdGlv
+biA3LjQuOCBvZiB0aGUgc3BlY2lmaWNhdGlvbi4KPj4+PiArwqDCoMKgICogLSBfX3UxNgo+Pj4+
+ICvCoMKgwqDCoMKgIC0gYGBsb25nX3Rlcm1fcmVmX3BpY19zZXRfc2l6ZWBgCj4+Pj4gK8KgwqDC
+oMKgwqAgLSBTcGVjaWZpZXMgdGhlIHNpemUgb2YgbG9uZy10ZXJtIHJlZmVyZW5jZSBwaWN0dXJl
+cyBzZXQgCj4+Pj4gaW5jbHVkZSBpbiB0aGUgU1BTLgo+Pj4KPj4+IHMvc2l6ZSBvZi9zaXplIG9m
+IHRoZS8KPj4+Cj4+PiBDYW4gd2UgbWFrZSB0aGlzIGEgYml0IG1vcmUgaGVscGZ1bD8gVGhlIHNw
+ZWNpZmljYXRpb24gZG9lc24ndCBjb250YWluCj4+PiBhIHNpbWlsYXIgc3RydWN0dXJlIHRvIGBz
+dF9yZWZfcGljX3NldGAgZm9yIGxvbmcgdGVybSBwaWN0dXJlcy4gU28sIAo+Pj4gYXMgYQo+Pj4g
+cHJvZ3JhbW1lciB0aGlzIGxlYXZlcyBtZSBndWVzc2luZzoKPj4+IC0gV2hpY2ggc3ludGF4IHN0
+cnVjdHVyZSdzIHNpemUgYXJlIHdlIHRhbGtpbmcgYWJvdXQ/Cj4+PiAtIERvZXMgdGhpcyBjb3Jy
+ZWxhdGUgdG8gYW55IG9mIHRoZSBleGlzdGluZyBzZWN0aW9ucyBvZiB0aGUKPj4+IHNwZWNpZmlj
+YXRpb24/Cj4+PiBCZWNhdXNlIGluIHRoZSBlbmQsIEkgZmVlbCBsaWtlIHRoaXMgZG9jdW1lbnRh
+dGlvbiBzaG91bGQgYmUgYWJsZSB0bwo+Pj4gaGVscCBhIHByb2dyYW1tZXIgdG8gcHJvdmlkZSB0
+aGUgY29ycmVjdCBkYXRhIGZvciB0aGUgdUFCSS4KPj4KPj4gSSB3aWxsIHJld29yZCBpdCBsaWtl
+IHRoYXQ6Cj4+Cj4+IMKgICogLSBfX3UxNgo+PiDCoMKgwqAgLSBgYHNob3J0X3Rlcm1fcmVmX3Bp
+Y19zZXRfc2l6ZWBgCj4+IMKgwqDCoCAtIFNwZWNpZmllcyB0aGUgc2l6ZSwgaW4gYml0cywgb2Yg
+dGhlIHNob3J0LXRlcm0gcmVmZXJlbmNlIAo+PiBwaWN0dXJlcyBzZXQsIGRlc2NyaWJlZCBhcyBz
+dF9yZWZfcGljX3NldCgpCj4KPiBKdXN0IC4uLgo+Cj4gcy9yZWZlcmVuY2UgcGljdHVyZXMgc2V0
+L3JlZmVyZW5jZSBwaWN0dXJlIHNldC8KPgo+PiDCoMKgwqDCoCBpbiB0aGUgc3BlY2lmaWNhdGlv
+biwgaW5jbHVkZWQgaW4gdGhlIHNsaWNlIGhlYWRlciAoc2VjdGlvbiAKPj4gNy4zLjYuMSkuCj4K
+PiBzL3NsaWNlIGhlYWRlci9zbGljZSBoZWFkZXIgb3IgU1BTLwo+Cj4KPj4KPj4gKiAtIF9fdTE2
+Cj4+IMKgwqAgLSBgYGxvbmdfdGVybV9yZWZfcGljX3NldF9zaXplYGAKPj4gwqDCoCAtIFNwZWNp
+ZmllcyB0aGUgc2l6ZSwgaW4gYml0cywgb2YgdGhlIGxvbmctdGVybSByZWZlcmVuY2UgcGljdHVy
+ZXMgCj4+IHNldCBpbmNsdWRlIGluIHRoZSBzbGljZSBoZWFkZXIuCj4KPiBzL3JlZmVyZW5jZSBw
+aWN0dXJlcyBzZXQvcmVmZXJlbmNlIHBpY3R1cmUgc2V0Lwo+Cj4gTG9va2luZyBhdCB0aGUgZG9j
+dW1lbnRhdGlvbiBpdCBsb29rcyBsaWtlOiBzL3NsaWNlIGhlYWRlci9zbGljZSAKPiBoZWFkZXIg
+b3IgU1BTLwo+IChGb3IgZXhhbXBsZSBpbiBzZWN0aW9uIDcuMy42LjE6Cj4gYGBgCj4gaWYoIGxv
+bmdfdGVybV9yZWZfcGljc19wcmVzZW50X2ZsYWcgKSB7Cj4gwqAgaWYoIG51bV9sb25nX3Rlcm1f
+cmVmX3BpY3Nfc3BzID4gMCApCj4gwqDCoMKgIG51bV9sb25nX3Rlcm1fc3BzCj4gwqAgbnVtX2xv
+bmdfdGVybV9waWNzCj4gwqAgZm9yKCBpID0gMDsgaSA8IG51bV9sb25nX3Rlcm1fc3BzICsgbnVt
+X2xvbmdfdGVybV9waWNzOyBpKysgKSB7Cj4gwqDCoMKgIC4uLgo+IGBgYAo+ICkKPgo+IC4uLiBh
+bmQgdGhlbiBpdCBsb29rcyB2ZXJ5IGdvb2QhCgpJIGRvbid0IGtub3cgdGhlIHN5bnRheCB0byBp
+bnNlcnQgdGhpcyBraW5kIG9mIGNvbW1lbnQgaW5zaWRlIGFuIGFycmF5IGluIHRoZSBkb2N1bWVu
+dGF0aW9uCnNvIGl0IHdpbGwgcmVtYWluIGFzIGJlZm9yZSA6LSkKCkJlbmphbWluCgo+Cj4gR3Jl
+ZXRpbmdzLAo+IFNlYmFzdGlhbgo+Cj4+IMKgwqDCoMKgIEl0IGlzIHRoZSBudW1iZXIgb2YgYml0
+cyBpbiB0aGUgY29uZGl0aW9uYWwgYmxvY2sgaWYoIAo+PiBsb25nX3Rlcm1fcmVmX3BpY3NfcHJl
+c2VudF9mbGFnICkgey4uLn0KPj4gwqDCoMKgwqAgaW4gc2VjdGlvbiA3LjMuNi4xIG9mIHRoZSBz
+cGVjaWZpY2F0aW9uLgo+Pgo+PiBCZW5qYW1pbgo+Pgo+Pgo+Pj4KPj4+IEdyZWV0aW5ncywKPj4+
+IFNlYmFzdGlhbgo+Pj4KPj4+PiDCoMKgwqAgKiAtIF9fdTgKPj4+PiDCoMKgwqDCoMKgIC0gYGBw
+YWRkaW5nYGAKPj4+PiDCoMKgwqDCoMKgIC0gQXBwbGljYXRpb25zIGFuZCBkcml2ZXJzIG11c3Qg
+c2V0IHRoaXMgdG8gemVyby4KPj4+PiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9tZWRpYS9oZXZjLWN0
+cmxzLmggYi9pbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaAo+Pj4+IGluZGV4IDAxY2NkYTQ4ZDhj
+NS4uYTMyOWUwODZhODlhIDEwMDY0NAo+Pj4+IC0tLSBhL2luY2x1ZGUvbWVkaWEvaGV2Yy1jdHJs
+cy5oCj4+Pj4gKysrIGIvaW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxzLmgKPj4+PiBAQCAtNTgsNiAr
+NTgsOCBAQCBlbnVtIHY0bDJfbXBlZ192aWRlb19oZXZjX3N0YXJ0X2NvZGUgewo+Pj4+IC8qIFRo
+ZSBjb250cm9scyBhcmUgbm90IHN0YWJsZSBhdCB0aGUgbW9tZW50IGFuZCB3aWxsIGxpa2VseSBi
+ZSAKPj4+PiByZXdvcmtlZC4gKi8KPj4+PiBzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfc3BzIHsKPj4+
+PiDCoMKgwqDCoC8qIElTTy9JRUMgMjMwMDgtMiwgSVRVLVQgUmVjLiBILjI2NTogU2VxdWVuY2Ug
+cGFyYW1ldGVyIHNldCAqLwo+Pj4+ICvCoMKgwqAgX191OMKgwqDCoCB2aWRlb19wYXJhbWV0ZXJf
+c2V0X2lkOwo+Pj4+ICvCoMKgwqAgX191OMKgwqDCoCBzZXFfcGFyYW1ldGVyX3NldF9pZDsKPj4+
+PiDCoMKgwqDCoF9fdTE2wqDCoMKgIHBpY193aWR0aF9pbl9sdW1hX3NhbXBsZXM7Cj4+Pj4gwqDC
+oMKgwqBfX3UxNsKgwqDCoCBwaWNfaGVpZ2h0X2luX2x1bWFfc2FtcGxlczsKPj4+PiDCoMKgwqDC
+oF9fdTjCoMKgwqAgYml0X2RlcHRoX2x1bWFfbWludXM4Owo+Pj4+IEBAIC0xMDgsNiArMTEwLDcg
+QEAgc3RydWN0IHY0bDJfY3RybF9oZXZjX3NwcyB7Cj4+Pj4KPj4+PiBzdHJ1Y3QgdjRsMl9jdHJs
+X2hldmNfcHBzIHsKPj4+PiDCoMKgwqDCoC8qIElTTy9JRUMgMjMwMDgtMiwgSVRVLVQgUmVjLiBI
+LjI2NTogUGljdHVyZSBwYXJhbWV0ZXIgc2V0ICovCj4+Pj4gK8KgwqDCoCBfX3U4wqDCoMKgIHBp
+Y19wYXJhbWV0ZXJfc2V0X2lkOwo+Pj4+IMKgwqDCoMKgX191OMKgwqDCoCBudW1fZXh0cmFfc2xp
+Y2VfaGVhZGVyX2JpdHM7Cj4+Pj4gwqDCoMKgwqBfX3U4wqDCoMKgIG51bV9yZWZfaWR4X2wwX2Rl
+ZmF1bHRfYWN0aXZlX21pbnVzMTsKPj4+PiDCoMKgwqDCoF9fdTjCoMKgwqAgbnVtX3JlZl9pZHhf
+bDFfZGVmYXVsdF9hY3RpdmVfbWludXMxOwo+Pj4+IEBAIC0xOTksNyArMjAyLDggQEAgc3RydWN0
+IHY0bDJfY3RybF9oZXZjX3NsaWNlX3BhcmFtcyB7Cj4+Pj4gwqDCoMKgwqBfX3UzMsKgwqDCoCBz
+bGljZV9zZWdtZW50X2FkZHI7Cj4+Pj4gwqDCoMKgwqBfX3U4wqDCoMKgIHJlZl9pZHhfbDBbVjRM
+Ml9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhdOwo+Pj4+IMKgwqDCoMKgX191OMKgwqDCoCByZWZf
+aWR4X2wxW1Y0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1fTUFYXTsKPj4+PiAtCj4+Pj4gK8KgwqDC
+oCBfX3UxNsKgwqDCoCBzaG9ydF90ZXJtX3JlZl9waWNfc2V0X3NpemU7Cj4+Pj4gK8KgwqDCoCBf
+X3UxNsKgwqDCoCBsb25nX3Rlcm1fcmVmX3BpY19zZXRfc2l6ZTsKPj4+PiDCoMKgwqDCoF9fdTjC
+oMKgwqAgcGFkZGluZzsKPj4+Pgo+Pj4+IMKgwqDCoMKgLyogSVNPL0lFQyAyMzAwOC0yLCBJVFUt
+VCBSZWMuIEguMjY1OiBXZWlnaHRlZCBwcmVkaWN0aW9uIAo+Pj4+IHBhcmFtZXRlciAqLwo+Pj4+
+IC0tIAo+Pj4+IDIuMzIuMAo+Pj4+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
