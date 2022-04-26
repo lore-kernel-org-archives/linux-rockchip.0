@@ -4,91 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DD12C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 15:56:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 241A4C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 16:02:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ag2RORKbR0ywQCVF+FxTq5h5/OAzddvCC81HEA/ik9U=; b=NfcQOgXvSZ6yCC
-	t/l5Re/ElrHhzFe6k63vJfpiyPtMDwP1dcKiaHtlBiFSbtBQxJrTxNtZGTs4iU/ome+scyYrOpC/Z
-	OkrEh1VUo0f/hyvSmM4bJheMYLEoEjlm8EwJFFAhMVo5eUz7jz1uYDm5oSq2FtFNTbHreR0a6FOny
-	toa3tCVIK4ivh7CLSHqaPr7BvIzrwa02pvi3jI5ceW07V4jRREc0vYEm6xrTY0qd9bXcpVZ8+w3IS
-	jUmB+paXVf8uBvoxqjLXMkutXP0KLapojsJtPdl5QTxi3CRntnw8AuQXYdI5zPhE91Y6W+TaEElC5
-	pcUJZg5suMRLW4d+UpRQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=czUXH5+fz6tcBmOGRpmvNMood95uFWn8t/UVxHCB3jU=; b=Ni9FD4igfxrWfF
+	L30AftZY84NZTAwJiPsVWI1lml7zK3vc/2xzP1d7t7Xoz5RrF3LI1jiBk7WPUjInkN9H2YhVT8Svu
+	Eh6tSI4+B0NalikIiMGnyW7XXeyK3SbWWYO8nyRkgZXWqOHl4WvQOwRFjvBG1zWet8xw2idy6rJaN
+	FY4SarnBlddiou03Uehb9UPePwuKZK0QPnSCcuWJxYTF+vT/3cE2gEOZwF27HZriG2LKWPHM1S/42
+	+QeI/J+yzPTN60lT/TxWdjp8KoCphddPWGLvZ0WfHeIWRZ0x/+X1tVvA73FR9vyOjEI7R3M6y0AAv
+	Q81sTliX0dmMkusRXqqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njNY9-00FDv0-8s; Tue, 26 Apr 2022 15:56:25 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1njNdg-00FG8u-1A; Tue, 26 Apr 2022 16:02:08 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njNY3-00FDsM-Uq; Tue, 26 Apr 2022 15:56:21 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id
- w5-20020a17090aaf8500b001d74c754128so2571707pjq.0; 
- Tue, 26 Apr 2022 08:56:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=gKqBWnCkDhPa/9nmFO0gA+P1ct06PRzyrAfrgkwdtZQ=;
- b=cdtB0ZKQh5fHXEtqwKZRdRpRpNlc2FA7fzabvWnVsZEh471IpBAHTzhJ0Hmz6aKWju
- iGjJYFQtjxcn2O+CnbAXLs21Io7RfvyAqUieYCysQE9eqKrhLrmTs6IgnPQ05LEoKoSa
- mGb/AaJ1wjDcALrwlcoyeqSGW0PSQBfyDAaV1hi6bDju+mYxVqgE6lxoKN62zd+fJ9O4
- iPU8jjQWHVocjekVmqX3dSl1+stabdTaARusTK8LuCUIxqsZKdGbEIM3iIEtAtkwquPR
- jtRMz31oDlntY4KAFFP2KyW7KzMcwE3W55d28blpe24GvF4APEchTykTMObnsJMELQls
- A2bQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=gKqBWnCkDhPa/9nmFO0gA+P1ct06PRzyrAfrgkwdtZQ=;
- b=gyBhcNFQlJdyhCgDNQrGwqFrbkPXekYsnbrJie3DQ4BUjlcFNVqZYoNaFJteHadbIj
- le0ry6p4jS/UB4t9RuEElpRWhZ63iG0rwaiVP7NOuplqvUE9QrSV4JCYFlyONMvO9NIz
- g2aZjv6maN53uJH/TRqfEaRu1bus77A7ITaBvJ1AyMwehy8oXpOyVX+s6DzV4VPexwm/
- cmCXKEts96OwiUsz6jW6eXwra+VUYM2DOfjvauGZMbJYEmQW0Fv9BEG8DzdRGCsDE4jc
- fg9IqSniZ44/ufsVa+dN65UVrzhrE88z6yvNcZIfYfFfYqvlimopiOTHGGGJZof22ERg
- 6nvw==
-X-Gm-Message-State: AOAM533sof52ht4ypkn00XHHt3pfDDVZQM3V5r0ggieRFmbFFM9hkyw0
- 2P8T1VkNSfsOQSoLlxvyxv35qlUm+m4=
-X-Google-Smtp-Source: ABdhPJyqc/8SuGr06eAq/HSXJtEMhzP9i+HVQg66AphhwWBy205v6vp9EPzuIdT3+m0E5GQumrVzcQ==
-X-Received: by 2002:a17:90b:1251:b0:1d7:f7ae:9f1 with SMTP id
- gx17-20020a17090b125100b001d7f7ae09f1mr26323671pjb.65.1650988578270; 
- Tue, 26 Apr 2022 08:56:18 -0700 (PDT)
-Received: from [10.67.48.245] ([192.19.223.252])
- by smtp.googlemail.com with ESMTPSA id
- v18-20020a62c312000000b0050d56ae29d4sm3246368pfg.29.2022.04.26.08.56.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Apr 2022 08:56:17 -0700 (PDT)
-Message-ID: <944ffc2f-9f5a-a008-95b8-6812d5895b6d@gmail.com>
-Date: Tue, 26 Apr 2022 08:56:15 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: Aw: Re: [RFC v1 2/3] net: dsa: mt753x: make CPU-Port dynamic
-Content-Language: en-US
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ id 1njNdB-00FFyE-Mj; Tue, 26 Apr 2022 16:01:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 34702B820FA;
+ Tue, 26 Apr 2022 16:01:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AEC57C385AA;
+ Tue, 26 Apr 2022 16:01:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1650988894;
+ bh=V9bqxROuLoIKwO7jBdqPsf9/DBBXipHAZ1xgMxIrwxc=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=lZkoCILrM0a540ltNPfzBZw+KIGbs4o67Vfcqb0kEq1d0i/snNsZGdNE1pSmcf0mB
+ h/yCk72Itf+O/wLTMqFm3kJI54aKe+D4p/cj1tb7N2+V0jZI9NfMZV/7Ti5nPCe4Sj
+ kzzxrWTvu5dDz9ZKFQrwD+p5luJrRL6LeZmddGgW0RIHci4pmO8VQzk1hYdugZSNOm
+ 1MfYeJ1JfhhAqZZ/nk0yGl3w35hrzh2EkbiaVlrbo4H/T16ki0b1yapu+31ippsUcZ
+ dXnjDP3s9gSSOEF96HbzT8CS2uMK4400Q5gUS2RMUsFuuxDEJf78veGXM12WkVsG19
+ cfVESoP/NLSIQ==
+Date: Tue, 26 Apr 2022 11:01:32 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-rockchip@lists.infradead.org,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
- <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ Heiko Stuebner <heiko@sntech.de>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Vinod Koul <vkoul@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Johan Jonker <jbx6244@gmail.com>, Peter Geis <pgwipeout@gmail.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
-References: <20220426134924.30372-1-linux@fw-web.de>
- <20220426134924.30372-3-linux@fw-web.de>
- <046a334b-d972-6ab9-5127-f845cef72751@gmail.com>
- <trinity-5fd6da8c-15f6-488d-a332-0ce7625f41e0-1650988498781@3c-app-gmx-bs69>
-From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <trinity-5fd6da8c-15f6-488d-a332-0ce7625f41e0-1650988498781@3c-app-gmx-bs69>
+ linux-phy@lists.infradead.org
+Subject: Re: [RFC/RFT v2 00/11] RK3568 PCIe V3 support
+Message-ID: <20220426160132.GA1724099@bhelgaas>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220426132139.26761-1-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_085620_098172_26C27BA1 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20220426_090138_123645_F500C86B 
+X-CRM114-Status: GOOD (  23.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,37 +78,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 4/26/22 08:54, Frank Wunderlich wrote:
-> Hi
+On Tue, Apr 26, 2022 at 03:21:28PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> thanks for fast review.
+> This series adds Rockchip PCIe V3 support found on rk3568 SOC.
 > 
->> Gesendet: Dienstag, 26. April 2022 um 17:45 Uhr
->> Von: "Florian Fainelli" <f.fainelli@gmail.com>
->> On 4/26/22 06:49, Frank Wunderlich wrote:
->>> From: Frank Wunderlich <frank-w@public-files.de>
+> It is based on "Enable rk356x PCIe controller" series of Peter Geis
+> v8: https://patchwork.kernel.org/project/linux-rockchip/list/?series=634925
 > 
->>> @@ -1190,8 +1191,8 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
->>>    			struct netlink_ext_ack *extack)
->>>    {
->>>    	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
->>> -	u32 port_bitmap = BIT(MT7530_CPU_PORT);
->>>    	struct mt7530_priv *priv = ds->priv;
->>> +	u32 port_bitmap = BIT(priv->cpu_port);
->>
->> No need to re-order these two lines.
+> Compared to PCIeV2 which uses the Naneng combphy, pciev3
+> uses a dedicated pci-phy.
 > 
-> imho it is needed as i now access priv-struct now ;) which is not available at the "old" position
+> This Version is still an RFC/RFT because i cannot only test PCIe-slot on R2Pro
+> as the other is a M.2 Key-E where i don't have any Hardware.
+> 
+> last 3 Patches show a replacement for bifurcation setting to make it more
+> useful for vendor-indepent lane-mapping.
+> 
+> Frank Wunderlich (11):
+>   dt-bindings: phy: rockchip: add PCIe v3 phy
+>   dt-bindings: soc: grf: add pcie30-{phy,pipe}-grf
+>   dt-bindings: phy: rockchip: add PCIe v3 constants
+>   phy: rockchip: Support PCIe v3
+>   dt-bindings: pci: add bifurcation option to Rockchip DesignWare
+>     binding
+>   PCI: rockchip-dwc: add PCIe bifurcation
+>   arm64: dts: rockchip: rk3568: Add PCIe v3 nodes
+>   arm64: dts: rockchip: Add PCIe v3 nodes to BPI-R2-Pro
+>   dt-bindings: pci: add lane-map to rockchip PCIe binding
+>   PCI: rockchip: add a lane-map to rockchip pcie driver
+>   arm64: dts: rockchip: add basic lane-map and drop bifurcation from
+>     r2pro
 
-My bad, yes, I was concerned with preserving the reserve christmas tree 
-style, never mind.
--- 
-Florian
+Don't just make up new prefixes; copy what's been done in the past.
+
+  PCI: rockchip-dwc: add PCIe bifurcation
+  PCI: rockchip: add a lane-map to rockchip pcie driver
+
+I think we decided [1] to use "rockchip-dwc" for this driver to
+distinguish it from the pcie-rockchip-host.c driver.
+
+So both of these should use "PCI: rockchip-dwc:" as the prefix.
+
+At least for the drivers/pci/ patches, capitalize the first word of
+the subject, i.e., "Add PCIe bifurcation" and "Add lane-map ..."  I
+don't know the dt-bindings convention (I would use "git log --oneline"
+to find out).
+
+s/pcie/PCIe/ in subjects, commit logs, comments, etc.
+
+Wrap commit logs to fill 75 columns and add blank lines between
+paragraphs.  Readers should not need to wonder "oh, the previous line
+was shorter than usual; is this one a new paragraph?"
+
+[1] https://lore.kernel.org/r/20210624180723.GA3543267@bjorn-Precision-5520
+
+>  .../bindings/pci/rockchip-dw-pcie.yaml        |   3 +
+>  .../bindings/phy/rockchip,pcie3-phy.yaml      |  84 ++++++
+>  .../devicetree/bindings/soc/rockchip/grf.yaml |   3 +
+>  .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   |  79 +++++
+>  arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 122 ++++++++
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c |  22 ++
+>  drivers/phy/rockchip/Kconfig                  |   9 +
+>  drivers/phy/rockchip/Makefile                 |   1 +
+>  .../phy/rockchip/phy-rockchip-snps-pcie3.c    | 278 ++++++++++++++++++
+>  include/dt-bindings/phy/phy-rockchip-pcie3.h  |  21 ++
+>  include/linux/phy/pcie.h                      |  12 +
+>  11 files changed, 634 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
+>  create mode 100644 drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
+>  create mode 100644 include/dt-bindings/phy/phy-rockchip-pcie3.h
+>  create mode 100644 include/linux/phy/pcie.h
+> 
+> -- 
+> 2.25.1
+> 
+> 
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
 
 _______________________________________________
 Linux-rockchip mailing list
