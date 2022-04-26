@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E0E4C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 20:14:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54E4BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Apr 2022 20:14:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xoVTpg0vbOUxeDbmD+CBkWFy+WU1MWUUCp6Gmb4iHiw=; b=DPCoyYt8CWY+Pr
-	RPMsvKnya7flZ1pKGA9iNYdfEkdR8O3mbKqlosAgmBsBtc6GdB6srz/XjeMdOp8IATTKs4HYRvHrn
-	tT5GzvoKvHvJWA3S2+0AxS4it8tfjBJ65k+BKR+Pt19Xm6vImqIWtmolPPR5mrh85+Y2UFTudaLZ9
-	9My6nQgV4IU/MOkQYmCgad44OOTKKVINWgpeAVnIXfGzpSweF26GdDyL8d+f/zkN/0c24tnNtY2ha
-	KZ+n81EBPqiAsYF8UYJBCF2mUYGyYGGdk4cRpqr729rpPgOXjtGSu3fzLqWweJIh7zVJmtV+XU23z
-	l74U32G1JgPaQx79YQag==;
+	List-Owner; bh=WUxPWDZwvLTVhuo17RsvyYERmJVTbj2kE7077xIfKjQ=; b=OefbIMOoqvseJd
+	Mw6xq3uE0f5AtQ2zqw3VfpWFNALEkX8mBqchri7a7xREQDsMclKGu6o1z5GnAoaHc2Htlnek6EEX8
+	In5TJXccbrZCrpa5rV1/QoCHKTjl5Kzl3uPjchB6fgrI5p7pe84NSyQFfQw0Ssgy5PReUK0vIx4Rz
+	FFijt4INn0wX/aHTDqBWyKtCeQ2JH7kiwuB7BsJn+ZgG9XKS8T16aW6iqaat+7S6CW+xOu21g3pKM
+	086Ln6lwGpWyjjXm6Vil5n8O2j+71rqmzpi/60c7ihbaBn4HbHjhhv1M93XD0uajNV6zVq71dvXMp
+	yNYRmNPBZU7m4OEsIwZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njRZW-00G4XL-1i; Tue, 26 Apr 2022 20:14:06 +0000
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+	id 1njRZp-00G4eu-Kt; Tue, 26 Apr 2022 20:14:25 +0000
+Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njRZT-00G4WV-Tm
- for linux-rockchip@lists.infradead.org; Tue, 26 Apr 2022 20:14:05 +0000
-Received: by mail-oi1-x22a.google.com with SMTP id e189so21946952oia.8
- for <linux-rockchip@lists.infradead.org>; Tue, 26 Apr 2022 13:14:02 -0700 (PDT)
+ id 1njRZm-00G4cw-HL
+ for linux-rockchip@lists.infradead.org; Tue, 26 Apr 2022 20:14:23 +0000
+Received: by mail-oa1-x36.google.com with SMTP id
+ 586e51a60fabf-d6e29fb3d7so20574168fac.7
+ for <linux-rockchip@lists.infradead.org>; Tue, 26 Apr 2022 13:14:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=sender:date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=LOF/swU7ri17HNXlnT7ndFuNSzBTT2l6UmX2G8t0fao=;
- b=EpcCQfcX8t4tCHTkCeCt7XTlaO4cJlPlfOe5Yq7QXrx+iwdOvURAOX3BenP9I9NxTg
- dxO/zHL+D8q3dmjsHi87Pdtco459mLR9p9OL/vn5z9V87y+JLthD7h+5QS7o/Ev9QVb6
- Ent0ow9LRg9IIvmt7SzKVKoGIGHxpuYarl32h1juJi82dBm9lDtLlurW2ZR6Ba6RD9Ue
- LIfoQyWAteLcdB3NIj/h/kUle8V3gcyyKJaw7xydnZ2151CuDvqL8JiNl7pYO2eFhPbk
- bchpvdCVkot+QjLIVBwUzcjYYoR9aQn16BHusvPq4TDN+eCmTdoZRFyeXXuWeCl9J6DY
- NBIg==
+ bh=eEFl4B1FbvWCN+VcPB75wKYhR64TSlqT3NDBP8YMG6w=;
+ b=pvQykELPdAYRIv4n3PF2TsQ0zl3cWJBZFPdpWAvODxpyPvY0m8eq9jfCqlyvYeD4yU
+ fJO2Kj0707/bgK0QRNynPZcxMgxbiVtImKpWUG1TJN9ZvqnQWnYVFydmcCQH8rBdDyA0
+ djLWVhC5EtDPU1qCrvoV0Gny4+uBED4ZOTDNPdJE0xcKzbLs6bdvqbiBhxzA+hCwPI86
+ sDooyuCIr2JOdt+bDBI6hWALksoGSGQH/oNyn/kKLf4Ne3EgBezKvYCfI5mQm3y8HIWv
+ 5GF36UvMNNEfcL+sRyfrXLE27TzxLJRMuRJ2p0VcRdbUya3paTwwe0le8ag8EEO1/wsH
+ 2Nxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
  :references:mime-version:content-disposition:in-reply-to;
- bh=LOF/swU7ri17HNXlnT7ndFuNSzBTT2l6UmX2G8t0fao=;
- b=K08gtokcFl/mr/F4JrwAI6o7XApuoXc0vOJeoAq7nrQphiaYLg91DwLWk9L8zbnTyT
- gIleg4K5fZdk9RzofYksnir991C+Kls1DvGS9WcN3wF/iTtVIRhj6Ntulx16sspUU/eJ
- iSHz3kq+2POXvggRwhDX/fmRsF8lS6b8S7z26ouhQfqaJrD5Iak2ybRMPC3Ic9ZZfNj6
- q5zQvhS9o0SNh45tw3LpuRmxacqaLYwN9pGtcyupdYjaXqxO9ePQUK6k2tdqUc4DNZDl
- f3OIEoRc/iFIcrBwlm23q2NvcREj9Nbxx0HCeB+DghIWWTUlOZCbHDiJnJEYJqbvOcyU
- 8m/g==
-X-Gm-Message-State: AOAM532vhrI4yaAq0hks1WtWupVLRdwLyz0ShBjMFnBG54jmePoeRZQP
- 7LL2MN49Rj6U3p8YCUdKk7k=
-X-Google-Smtp-Source: ABdhPJz7ZBRrPySGNSDh4uQ3vrQ+SI3TKBgjip8c1iucs6eTt4im6RhPCVdr+b7FmdPmTtUdABULTg==
-X-Received: by 2002:a05:6808:118f:b0:2d9:a01a:48be with SMTP id
- j15-20020a056808118f00b002d9a01a48bemr15280519oil.265.1651004042074; 
- Tue, 26 Apr 2022 13:14:02 -0700 (PDT)
+ bh=eEFl4B1FbvWCN+VcPB75wKYhR64TSlqT3NDBP8YMG6w=;
+ b=7yeTsYLf+W7e8qjIjAEUos8CxeOYyeVDQadG6kBrTWMyXb4Tpwh/HzlDW+7ef/g663
+ 5EANNoYAfPnJVMUPyzM/lqJ9FiRWGADSVNISHg7Gpj7EaAn6yII9qJzeYTuJaab3Tiph
+ 4ohjP/TIl++ghQwVWr9LrHT1x6g6oVS7UKUD5DEKplWej6ctL/p0h8Nea6vpc1jinkyR
+ LG6w5fiASMrZP7t65vnI02cT69zbZ0sZfqmpKrLWDKjNznM9kFSMFWEpD/cBtdTx3U02
+ 3PpHE71BIEaERO50lyo2/LSubjvKNMWnmjcztewqtIfkDckFMfzal7AIOacL8uc+K5Ax
+ FDeA==
+X-Gm-Message-State: AOAM53365xKrWkDjggjTMj1uTN/YBybxpIgCQ+q1eb+A9WwvUqrHMvVp
+ 2ABxlqDzJLVqZC3tM4dpe7o=
+X-Google-Smtp-Source: ABdhPJyEF26vNitwwhdzPEF5PDBAWD8n5cbVdb9adbklFjpzJS6fIM6S9OxFvJuSXIVZPIFkuAS/Bw==
+X-Received: by 2002:a05:6870:5896:b0:e6:6c21:3584 with SMTP id
+ be22-20020a056870589600b000e66c213584mr9849841oab.220.1651004060310; 
+ Tue, 26 Apr 2022 13:14:20 -0700 (PDT)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- l96-20020a9d1b69000000b00605db61f2f4sm62293otl.49.2022.04.26.13.14.00
+ r23-20020a056830237700b005b2610517c8sm5410175oth.56.2022.04.26.13.14.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Apr 2022 13:14:01 -0700 (PDT)
-Date: Tue, 26 Apr 2022 13:13:59 -0700
+ Tue, 26 Apr 2022 13:14:19 -0700 (PDT)
+Date: Tue, 26 Apr 2022 13:14:18 -0700
 From: Guenter Roeck <linux@roeck-us.net>
 To: Brian Norris <briannorris@chromium.org>
 Cc: Heiko Stuebner <heiko@sntech.de>, Arnd Bergmann <arnd@arndb.de>,
  Robin Murphy <robin.murphy@arm.com>,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 1/3] soc: rockchip: Clean up Kconfig whitespace
-Message-ID: <20220426201359.GH4093517@roeck-us.net>
+Subject: Re: [PATCH v3 2/3] soc: rockchip: power-domain: Replace dsb() with
+ smb()
+Message-ID: <20220426201418.GI4093517@roeck-us.net>
 References: <20220426014545.628100-1-briannorris@chromium.org>
+ <20220426014545.628100-2-briannorris@chromium.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220426014545.628100-1-briannorris@chromium.org>
+In-Reply-To: <20220426014545.628100-2-briannorris@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220426_131404_005570_E04649A3 
-X-CRM114-Status: GOOD (  21.21  )
+X-CRM114-CacheID: sfid-20220426_131422_610266_91AAEEF0 
+X-CRM114-Status: GOOD (  20.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,8 +94,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 25, 2022 at 06:45:42PM -0700, Brian Norris wrote:
-> There are spaces instead of tabs, and other inconsistent indentation.
+On Mon, Apr 25, 2022 at 06:45:43PM -0700, Brian Norris wrote:
+> It's unclear if these are really needed at all, but seemingly their
+> purpose is only as a write barrier. Use the general macro instead of the
+> ARM-specific one.
+> 
+> This driver is partially marked for COMPILE_TEST'ing, but it doesn't
+> build under non-ARM architectures. Fix this up before *really* enabling
+> it for COMPILE_TEST.
 > 
 > Signed-off-by: Brian Norris <briannorris@chromium.org>
 
@@ -100,54 +109,34 @@ Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 
 > ---
 > 
-> (no changes since v2)
+> Changes in v3:
+>  * New in v3
 > 
-> Changes in v2:
->  * New patch
+>  drivers/soc/rockchip/pm_domains.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
->  drivers/soc/rockchip/Kconfig | 24 ++++++++++++------------
->  1 file changed, 12 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
-> index 156ac0e0c8fe..aff2f7e95237 100644
-> --- a/drivers/soc/rockchip/Kconfig
-> +++ b/drivers/soc/rockchip/Kconfig
-> @@ -23,23 +23,23 @@ config ROCKCHIP_IODOMAIN
->  	  voltage supplied by the regulators.
+> diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+> index 1b029e494274..cf16ff9b73b3 100644
+> --- a/drivers/soc/rockchip/pm_domains.c
+> +++ b/drivers/soc/rockchip/pm_domains.c
+> @@ -178,7 +178,7 @@ static int rockchip_pmu_set_idle_request(struct rockchip_pm_domain *pd,
+>  		regmap_update_bits(pmu->regmap, pmu->info->req_offset,
+>  				   pd_info->req_mask, idle ? -1U : 0);
 >  
->  config ROCKCHIP_PM_DOMAINS
-> -        bool "Rockchip generic power domain"
-> -        depends on PM
-> -        select PM_GENERIC_DOMAINS
-> -        help
-> -          Say y here to enable power domain support.
-> -          In order to meet high performance and low power requirements, a power
-> -          management unit is designed or saving power when RK3288 in low power
-> -          mode. The RK3288 PMU is dedicated for managing the power of the whole chip.
-> +	bool "Rockchip generic power domain"
-> +	depends on PM
-> +	select PM_GENERIC_DOMAINS
-> +	help
-> +	  Say y here to enable power domain support.
-> +	  In order to meet high performance and low power requirements, a power
-> +	  management unit is designed or saving power when RK3288 in low power
-> +	  mode. The RK3288 PMU is dedicated for managing the power of the whole chip.
+> -	dsb(sy);
+> +	wmb();
 >  
-> -          If unsure, say N.
-> +	  If unsure, say N.
+>  	/* Wait util idle_ack = 1 */
+>  	target_ack = idle ? pd_info->ack_mask : 0;
+> @@ -285,7 +285,7 @@ static void rockchip_do_pmu_set_power_domain(struct rockchip_pm_domain *pd,
+>  		regmap_update_bits(pmu->regmap, pmu->info->pwr_offset,
+>  				   pd->info->pwr_mask, on ? 0 : -1U);
 >  
->  config ROCKCHIP_DTPM
->  	tristate "Rockchip DTPM hierarchy"
->  	depends on DTPM && m
->  	help
-> -	 Describe the hierarchy for the Dynamic Thermal Power
-> -	 Management tree on this platform. That will create all the
-> -	 power capping capable devices.
-> +	  Describe the hierarchy for the Dynamic Thermal Power Management tree
-> +	  on this platform. That will create all the power capping capable
-> +	  devices.
+> -	dsb(sy);
+> +	wmb();
 >  
->  endif
+>  	if (readx_poll_timeout_atomic(rockchip_pmu_domain_is_on, pd, is_on,
+>  				      is_on == on, 0, 10000)) {
 > -- 
 > 2.36.0.rc2.479.g8af0fa9b8e-goog
 > 
