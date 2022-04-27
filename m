@@ -4,83 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FCEBC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Apr 2022 07:06:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00D17C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Apr 2022 07:51:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WfJM0u3OEp1E+4xeulGi26GCondpSiGB2hN1GDexQ/g=; b=EsfrHh3CqFeg+U
-	g7SMjIVqdIokY2b9p8KCeAu+vTm4j1IUNlhZDvNGoEiFGcs8PsV1qohAQr46aEyZBoWqgsTIh64Ny
-	Jm0272ovfSsWDmbdVeKk0t3SVQYzO15tL7XUIjHdCKxT70nYbGgcDMv3i1V/nH9FjqChyKkO1OU4a
-	EH7KFYdLLyIwTnx2mQ3k466YMPhJfWqKZ/X4tCHNXU3JDg82PH/59THI2P7NSFUE/oneDwTOry6Ag
-	9COH6StB5LcHBlgh+Jbspw+uXDjDIAdB05fApLaxgRr5xTAjFuT5shaOhXHGUbCc5/8sEWsYxUsEj
-	CMrWqjAqj6bUnuBKs0kg==;
+	List-Owner; bh=ypf+CodFVei7d/gxLjFRpgAaBb43iUEj0mI60++5amA=; b=TD/8PLKE7yByh7
+	eAK9iRWeqdyei/jFr6sCeYfV+9jZ8DhziSKlUNCHiFYw1fx6D32gKS27UIC7BlpG3/E9DvpMJdYPe
+	u3YXEMDrj2vuHGWlUPklwxU6e2HFAWrzfz+BpXN9Qf/1N1wthHlgvNgN5zn7qjyka59nxJ/RXzBBM
+	/dPE7hyHgkHiCFsmwGqUHpP2ygkcKPH3Ua8h5PrUCU2DTuVA0itoFKCf+a2xOAUM29AR5x/wLVX9N
+	xfc+UlUMe0/Ym31OulOwY6M575920f7qBQxFH2CqU0CacuW7R1NP9DJcY2utfIuPUwOLWYN7CmJxh
+	pKxMW5mWlz6Az1r7MI/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njbky-000A1A-HR; Wed, 27 Apr 2022 07:06:36 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1njcS1-000OTB-6g; Wed, 27 Apr 2022 07:51:05 +0000
+Received: from mga12.intel.com ([192.55.52.136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njbkV-0009je-H5; Wed, 27 Apr 2022 07:06:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1651043134;
- bh=E31kil/RNvUPQgFAepzSBEELBXvKZrRDE3N9X6PH5T8=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=DjGNxyUD+bf4zvIFNz83qx3GE4Yvs5YLCQhUJ6l6Y9gGcU0a83Afo3A5hHD4aVhvY
- /Ax2SBesyOiMJXLpWyF8sGln6GLim0PTIW/W5aAFWK6guzToaoczP9HdTcMDSUppcU
- CFDxK3UdNucMrIOOjoj2JGyE5NOEba+Jpt3hmdm0=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.148.41] ([217.61.148.41]) by web-mail.gmx.net
- (3c-app-gmx-bap04.server.lan [172.19.172.74]) (via HTTP); Wed, 27 Apr 2022
- 09:05:34 +0200
+ id 1njcRn-000OOj-Oq; Wed, 27 Apr 2022 07:50:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1651045851; x=1682581851;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=GGOTDAFzwuzwMxFsrqdMQraFAoaOmt/NogVcz01weJU=;
+ b=Zk3BkOku6dZZ+/pJZsF1Z11cjOr5FjeenvNcOFiebSIPeSVoi22WkVfe
+ qPE4C2EzP0jUOgS+4Z6qvEd5KN/NgJH46+3/lcv5uf7Fmm37uwtXoQeWf
+ 1Ca+4d79e9CeHE7U53ka75dLZloKlXXaxXSmCOhyh8VNrdTfKryzdPoj3
+ rZ8vEfNjf+hRRNxy0NT+vvKVTgoYouBNBkUr19UdTipMAqrExEkdpuPWf
+ eEDD6/YBpxU7Z2i0LTaU1pbrgLGhhW65FbwaS4K6XIoZPEqFMWaKuSVtn
+ aQnGPu3iGjlDL/tR4vrXCvcKXscsOLZupDwgHrNdoNv79IWGLRQijRse/ Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10329"; a="245773837"
+X-IronPort-AV: E=Sophos;i="5.90,292,1643702400"; d="scan'208";a="245773837"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Apr 2022 00:50:50 -0700
+X-IronPort-AV: E=Sophos;i="5.90,292,1643702400"; d="scan'208";a="580450624"
+Received: from ahunter6-mobl1.ger.corp.intel.com (HELO [10.0.2.15])
+ ([10.252.60.122])
+ by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Apr 2022 00:50:44 -0700
+Message-ID: <65b64001-0b85-8524-64c4-67eafed54697@intel.com>
+Date: Wed, 27 Apr 2022 10:50:39 +0300
 MIME-Version: 1.0
-Message-ID: <trinity-ba152dbe-5a7c-4098-acff-3e7b225f0349-1651043134680@3c-app-gmx-bap04>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Vladimir Oltean <olteanv@gmail.com>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner
- <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Andrew Lunn
- <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>, Florian
- Fainelli <f.fainelli@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, Peter Geis <pgwipeout@gmail.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org
-Subject: Aw: Re: [RFC v1 1/3] net: dsa: mt753x: make reset optional
-Date: Wed, 27 Apr 2022 09:05:34 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20220426235713.engzue7ujwqjdyjc@skbuf>
-References: <20220426134924.30372-1-linux@fw-web.de>
- <20220426134924.30372-2-linux@fw-web.de>
- <20220426235713.engzue7ujwqjdyjc@skbuf>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:BgK3bwwwsZyAlEyB2njy500W/y0pBdlhH28Qhy54gfqNlVJPhRCXN1L7fzbHRwm2NhWIt
- wtsoVISknJP68kmlU/Ne3LPu27zqumySiroUKNvD3n3rqoWlVnHOi13drtzrr6X+TADx7uJfTn1t
- 9FuVVDgSJikg8OKzG6Ux/wmOpd2+Ha4EsuNnk/1NAUt6D0GiQ8XJ2/0ptYYgJM35Iogc9LRnTDY9
- 0tQmjj2r9F5tJ1GixD+w366AYglq49w0uwB4bgYnAXf/7SZ/5cdOEZKx84mARgM8OEku6HY7ilQS
- po=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BfBhc8THtNQ=:FmPM6Sbgg35utsLpoBVKWj
- RhwN3n5dcfttYrYGD3nUUmgyz76ELiRfChWBqtFpLRf+MYrR5Ovp4+BqDcC26HH6JKvRQbPA7
- RY/gZe/B3B0VSfioY+L02yptu7tp9RvbtU7AWa5JSX+XWhozJufzh3yqru38GrlZVSZ9Q5M2B
- cfEonm56YX4DHY19Gr7L6RooIe9tEZsITo4k60kO0NMGOFKJWkXUp9zVug4rxzq8oVAnpQQAj
- nWiljo9mOsuXrzJh4PXopgPEnxOL1GvFzn/l2UPX6nYp3RDn/oyMJl433iPbJPdjv+NBNwNiX
- jz89CSuXtv3yPSBI4jx6Jp1Gwbc9JV0CpiROCbLdPcUHTdBmMTZEl4J0s35pE4pLX23aOIZo8
- oU1E6gOG0Lj4xYRAuxWIIGuaTEuYW/rc462iUD0AKSkJBpO0SQ5Gq/V89G5VTPlhdfdZqrFH5
- YpRQV5TIUS4pzKIWDsuvQ4ol0910PCH3+EpUOQLVv83DVHqSyLdwbScd6q1MX+GAvNzrDrtvS
- r/AJEaZWNqnyCnWnMUQKqWGPC0fBDfbn5Fp0+XC9NZrZQLDnVmXruO5sImrB6WskfJKLmlXgF
- U/+iex/+cLAuPWqcCSir5czEZDNBdMUdqnDU8pynYFW26/3/UZfgdFpaZQ7qLfwqc/bsChUmQ
- 13DrwQHm3aFthJPqAnRJ8IcCKf/VPY1sa/o6vlLRVs4cd4wZ5J3yNxXmda1BRDVMMEbzO58zR
- BwFBEfj5Rhax1Vm1nW1RhOAs8hKEO1XC6T+7tcn5n1OQ8jY0bu7oKg3w5ky/Di554zjAphU7V
- hfikbdB
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Firefox/91.0 Thunderbird/91.7.0
+Subject: Re: [PATCHv1 08/19] mmc: sdhci-of-dwcmshc: add reset call back for
+ rockchip Socs
+Content-Language: en-US
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-mmc@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, kernel@lists.collabora.co.uk,
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>, kernel@collabora.com
+References: <20220422170920.401914-1-sebastian.reichel@collabora.com>
+ <20220422170920.401914-9-sebastian.reichel@collabora.com>
+From: Adrian Hunter <adrian.hunter@intel.com>
+Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
+ Business Identity Code: 0357606 - 4, Domiciled in Helsinki
+In-Reply-To: <20220422170920.401914-9-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_000608_137794_2C177765 
-X-CRM114-Status: GOOD (  24.23  )
+X-CRM114-CacheID: sfid-20220427_005051_870462_7D9BB268 
+X-CRM114-Status: GOOD (  21.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,69 +92,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 22/04/22 20:09, Sebastian Reichel wrote:
+> From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> 
+> The reset function build in the SDHCI will not reset the logic
+> circuit related to the tuning function, which may cause data
+> reading errors. Resetting the complete SDHCI controller through
+> the reset controller fixes the issue.
+> 
+> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> [rebase]
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-you're right, reset is already optional...
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
 
-idk why it was failing before the patch...i guess i had always defined the reset in dts on switch-side and dropped it same time with this patch.
+> ---
+>  drivers/mmc/host/sdhci-of-dwcmshc.c | 28 +++++++++++++++++++++++++++-
+>  1 file changed, 27 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
+> index bac874ab0b33..d95ae6ca1256 100644
+> --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
+> +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
+> @@ -15,6 +15,7 @@
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+>  #include <linux/of_device.h>
+> +#include <linux/reset.h>
+>  #include <linux/sizes.h>
+>  
+>  #include "sdhci-pltfm.h"
+> @@ -63,6 +64,7 @@
+>  struct rk3568_priv {
+>  	/* Rockchip specified optional clocks */
+>  	struct clk_bulk_data rockchip_clks[RK3568_MAX_CLKS];
+> +	struct reset_control *reset;
+>  	u8 txclk_tapnum;
+>  };
+>  
+> @@ -255,6 +257,23 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+>  	sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_STRBIN);
+>  }
+>  
+> +static void rk35xx_sdhci_reset(struct sdhci_host *host, u8 mask)
+> +{
+> +	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
+> +	struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
+> +	struct rk35xx_priv *priv = dwc_priv->priv;
+> +
+> +	if (mask & SDHCI_RESET_ALL) {
+> +		if (!IS_ERR_OR_NULL(priv->reset)) {
+> +			reset_control_assert(priv->reset);
+> +			udelay(1);
+> +			reset_control_deassert(priv->reset);
+> +		}
+> +	}
+> +
+> +	sdhci_reset(host, mask);
+> +}
+> +
+>  static const struct sdhci_ops sdhci_dwcmshc_ops = {
+>  	.set_clock		= sdhci_set_clock,
+>  	.set_bus_width		= sdhci_set_bus_width,
+> @@ -269,7 +288,7 @@ static const struct sdhci_ops sdhci_dwcmshc_rk3568_ops = {
+>  	.set_bus_width		= sdhci_set_bus_width,
+>  	.set_uhs_signaling	= dwcmshc_set_uhs_signaling,
+>  	.get_max_clock		= sdhci_pltfm_clk_get_max_clock,
+> -	.reset			= sdhci_reset,
+> +	.reset			= rk35xx_sdhci_reset,
+>  	.adma_write_desc	= dwcmshc_adma_write_desc,
+>  };
+>  
+> @@ -292,6 +311,13 @@ static int dwcmshc_rk3568_init(struct sdhci_host *host, struct dwcmshc_priv *dwc
+>  	int err;
+>  	struct rk3568_priv *priv = dwc_priv->priv;
+>  
+> +	priv->reset = devm_reset_control_array_get_exclusive(mmc_dev(host->mmc));
+> +	if (IS_ERR_OR_NULL(priv->reset)) {
+> +		err = PTR_ERR(priv->reset);
+> +		dev_err(mmc_dev(host->mmc), "failed to get reset control %d\n", err);
+> +		return err;
+> +	}
+> +
+>  	priv->rockchip_clks[0].id = "axi";
+>  	priv->rockchip_clks[1].id = "block";
+>  	priv->rockchip_clks[2].id = "timer";
 
-Reset on both nodes (gmac+switch) blocks in switch driver because of exclusive (error message "could not get our reset line") and after dropping the reset on gmac-side the mdio-bus does not come up after switch driver resets gmac+switch (in loop with edefer).
-
-> Gesendet: Mittwoch, 27. April 2022 um 01:57 Uhr
-> Von: "Vladimir Oltean" <olteanv@gmail.com>
-> On Tue, Apr 26, 2022 at 03:49:22PM +0200, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
-> >
-> > Currently a reset line is required, but on BPI-R2-Pro board
-> > this reset is shared with the gmac and prevents the switch to
-> > be initialized because mdio is not ready fast enough after
-> > the reset.
-> >
-> > So make the reset optional to allow shared reset lines.
->
-> What does it mean "to allow shared reset lines"? Allow as in "allow them
-> to sit there, unused"?
-
-for switch part unused right, but reset-line is used by gmac. If switch does the reset, it resets the gmac too and so the mdio goes down. It took longer to get up than the wait-poll after the reset and so i got mdio read errors.
-
-> > -	} else {
-> > +	} else if (priv->reset) {
->
-> I don't really understand this patch. gpiod_set_value_cansleep() can
-> tolerate NULL GPIO descriptors.
-
-had not looked for NULL-tolerance, so i precautionary added the check.
-
-> >  		gpiod_set_value_cansleep(priv->reset, 0);
-> >  		usleep_range(1000, 1100);
-> >  		gpiod_set_value_cansleep(priv->reset, 1);
-
-> > @@ -3272,8 +3272,7 @@ mt7530_probe(struct mdio_device *mdiodev)
-> >  		priv->reset = devm_gpiod_get_optional(&mdiodev->dev, "reset",
-> >  						      GPIOD_OUT_LOW);
-> >  		if (IS_ERR(priv->reset)) {
-> > -			dev_err(&mdiodev->dev, "Couldn't get our reset line\n");
-> > -			return PTR_ERR(priv->reset);
-> > +			dev_warn(&mdiodev->dev, "Couldn't get our reset line\n");
->
-> I certainly don't understand why you're suppressing the pointer-encoded
-> errors here. The function used is devm_gpiod_get_optional(), which
-> returns NULL for a missing reset-gpios, not IS_ERR(something). The
-> IS_ERR(something) is actually important to not ignore, maybe it's
-> IS_ERR(-EPROBE_DEFER). And this change breaks waiting for the descriptor
-> to become available.
-
-you're right...the intention was to not leave the probe function if not reset was defined...but yes, devm_gpiod_get_optional is called so reset is already optional.
-
-> So what doesn't work without this patch, exactly?
-
-reverted the Patch in my repo and it is still working :)
-
-just ignore it. something went wrong during my tests...
-
-sorry for the inconvenience.
-
-regards Frank
 
 _______________________________________________
 Linux-rockchip mailing list
