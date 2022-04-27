@@ -4,87 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 244A1C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Apr 2022 11:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07586C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Apr 2022 13:36:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=48Icgm+VVx1SAfzceXXUhkrHnQjWNMFDk8FrWDPNE3I=; b=BksWVEZS8ii0+m
-	WDklLTy6Mt+2fdb8qmn4UJoxbz0fyiKyKqwac5Gd/M9ZPG2nNf3qUOdVGwPe9nDpflkSZrO/RXXLe
-	adsclMXf1U44LcE/WGpXjY3cu1IxA/2udC4s0RjM4hpRK/JHQQC5CSzXe8poqU3+lKeEuf7TTCT8Q
-	xvcJQGbSK+/PYyoS2uMMIw9hyOW+lBA78Izc+l2HqXGl+uSILkDbLQE8XXwmLhqY1HS9fJbKgJTVh
-	VtPLypE36nVayDSjRi5dXBh7w8IHZA14eEed66/CrdjXpvDXkDJ1fcFPEpXEpslY4/vuippk5vMVP
-	NqHdAgcnx0Sf7G23Ym3Q==;
+	List-Owner; bh=g4ETa7ToCSxM4dJnjBjBBE/7vXlPB51uONU4LOO2OZc=; b=p5yzQDNILJ8D+p
+	u75vrpw2dg7+XQsO4HaQiyNZhj+8fajhCLQoYj5PwpFyTNf+fZ+wOPWwzpXXhtA1tCEKJccAFd9v4
+	jLsTfX1//RBxa4GJqdJNFojcjJZYop5OPz7//80m4jcSZr8NHa2MvsNVY2ZeY0BduiFOLWjVcdT+r
+	4qiQziphf33IsPqHAdOdg8kx+PbwzMuh5Yax+Ubqu5Au0kIEDmNOzK/LqSi/63g82Z0718aJCruu3
+	2Rvmbg3EWZlbuCLgrhq1MKaTCNtaJq+K3ww7e5hFOJEevgwDCQKpy4tGx/BRb4Hdd/XYwUoxldozg
+	Y6p1AtfJ0ihSdMNY2rxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njfrH-0016AY-0Q; Wed, 27 Apr 2022 11:29:23 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1njhqd-001azA-Ke; Wed, 27 Apr 2022 13:36:51 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njfqx-0015yI-1j; Wed, 27 Apr 2022 11:29:10 +0000
-Received: by mail-ed1-x534.google.com with SMTP id z19so1555152edx.9;
- Wed, 27 Apr 2022 04:29:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=NkJteM65W6zQPWRXCAleN3D0FlNTwOT7i0Kr6m0yEgc=;
- b=hC4TnU/qm3AqQ6GI5lr3KG3Cj5VkamVGPz+q/U1eyBScp9bw/KWsnAH8+n7A+2E3At
- ez32w2p4cC7TZSv29GvtK5mzZYK9pqNUDUx6zKC2iz1nfxsceYqKPcJhUquPKba/cBO5
- /BwxPwNpWvy4ooeuRYTMGCMQmt2sarLOWfRQb0DBS7LQM7coTG89EE1fft9ye05dADj9
- JHikId7CW/lHnk13j8vmg9QUngIMMo+Arfze530vf7rV9ygEEGGB3e75UGiUekGvJi/X
- CtiCdsVb1H2rpC9djz/6T38ag5ERSrrObBLYQDI2B7Kk8Cq5YqRpfX2IAEHRmAri8Yw3
- ZuNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=NkJteM65W6zQPWRXCAleN3D0FlNTwOT7i0Kr6m0yEgc=;
- b=rQDv7omYB7bGOA+ADaRGbm+i2WM+WK5leGCNEMynNO9nP8DXexWKAJRpe/FbudHWSP
- 48LdjhUhe0BCKiH8WhzwddzSXsEMbjdWvU82Mjuhl2KkzoCDXZCp8u4ClFP35ZYxQ8Yx
- s6urOQRUxqrqw33CafmzYsxtyltFJZwcy3trzgKUl1V5V/y8/3MqNZMC8LKzyII7lqeI
- 0w9AWS4lndkmqa4VCL7IabgfbZd9ZGOuj/8YcLWZXnN5HwBP9uZmMIoECNxGeJQywNQh
- GIB14n+w1oDwDxOg0cx4nGuqWs87GKZGSafI4H3gXq15zOUtQboyQqSL8bLen7+JxIsd
- AS4Q==
-X-Gm-Message-State: AOAM533RbVsXtKRFr1JS218ZXH7+5/e6TlHLkBpK9x1J/e5TqJccEid7
- 4HkhkFLpmCdIth+k6Gi0hoE=
-X-Google-Smtp-Source: ABdhPJzLYggzhFJDDA2zXYNCKiXxnqxYBEgVeqOwRyJRgRoaJdh3iPZd2PqxHUdp1VRgRIQo8kZA4g==
-X-Received: by 2002:a05:6402:2932:b0:425:d7b3:e0d1 with SMTP id
- ee50-20020a056402293200b00425d7b3e0d1mr20731767edb.141.1651058939732; 
- Wed, 27 Apr 2022 04:28:59 -0700 (PDT)
-Received: from skbuf ([188.25.160.86]) by smtp.gmail.com with ESMTPSA id
- h22-20020a056402281600b004206bd9d0c6sm8813509ede.8.2022.04.27.04.28.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Apr 2022 04:28:58 -0700 (PDT)
-Date: Wed, 27 Apr 2022 14:28:56 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Frank Wunderlich <linux@fw-web.de>
-Cc: linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Frank Wunderlich <frank-w@public-files.de>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>,
- Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
-Subject: Re: [RFC v1 2/3] net: dsa: mt753x: make CPU-Port dynamic
-Message-ID: <20220427112856.vzlxnmgm4el4yynj@skbuf>
-References: <20220426134924.30372-1-linux@fw-web.de>
- <20220426134924.30372-3-linux@fw-web.de>
+ id 1njhqJ-001aqg-Rs; Wed, 27 Apr 2022 13:36:34 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nicolas) with ESMTPSA id 65A931F44777
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651066588;
+ bh=IWzXLtS9cVu8yK22quZ5GFOORsY31Ichreqxak0QuoQ=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+ b=dxGzCIweZOMEYZdU41U+tpWLq5IBp9YNnc/+QnH+uXo1gLNrL/70T6ly1drL1tKh6
+ CbHOf8Jp/WctAMEb7N1+5nMq6OZA3+mA3iDSI/7ZwsbjyYEY/3Ijy+GZd+vmD9ioEP
+ YyHTwjCJpjgL22Ek3SSHZuaRfgC1YyGR29eSnV1C/S0Ta1h2MwaGxgntN5VrvsLmni
+ ukoB/NVaty0pwdW+r8szrtJaQMFUMBvPlzWp389k5GM3W+VvZiUbDIln8/tg9id1Zq
+ sqtqp4fchKPKUNoI73hEo+gRsAIP1pt/1Jt0FqOMmWgtY9PRLNvc+KROFfcFfki8zz
+ qHpHXs0f1t8yw==
+Message-ID: <05f60b83065a7e39c04f71c6b769a205e1953f41.camel@collabora.com>
+Subject: Re: [PATCHv1 03/19] clk: rockchip: add pll type for RK3588
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>, Heiko Stuebner
+ <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>,  Linus Walleij <linus.walleij@linaro.org>, Bartosz
+ Golaszewski <brgl@bgdev.pl>, Adrian Hunter <adrian.hunter@intel.com>, Ulf
+ Hansson <ulf.hansson@linaro.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Michael Turquette <mturquette@baylibre.com>,  Stephen Boyd
+ <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-mmc@vger.kernel.org, 
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, kernel@lists.collabora.co.uk, Elaine Zhang
+ <zhangqing@rock-chips.com>, kernel@collabora.com
+Date: Wed, 27 Apr 2022 09:36:17 -0400
+In-Reply-To: <20220422170920.401914-4-sebastian.reichel@collabora.com>
+References: <20220422170920.401914-1-sebastian.reichel@collabora.com>
+ <20220422170920.401914-4-sebastian.reichel@collabora.com>
+User-Agent: Evolution 3.44.0 (3.44.0-1.fc36) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220426134924.30372-3-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_042903_199547_0D0DA6BC 
-X-CRM114-Status: GOOD (  52.81  )
+X-CRM114-CacheID: sfid-20220427_063632_210425_A2824E2D 
+X-CRM114-Status: GOOD (  30.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,355 +72,238 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 26, 2022 at 03:49:23PM +0200, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Currently CPU-Port is hardcoded to Port 6.
-> 
-> On BPI-R2-Pro board this port is not connected and only Port 5 is
-> connected to gmac of SoC.
-> 
-> Replace this hardcoded CPU-Port with a member in mt7530_priv struct
-> which is set in mt753x_cpu_port_enable to the right port.
-> 
-> I defined a default in probe (in case no CPU-Port will be setup) and
-> if both cpu-port were setup port 6 will be used like the const prior
-> this patch.
-> 
-> In mt7531_setup first access is before we know which port should be used
-> (mt753x_cpu_port_enable) so section "BPDU to CPU port" needs to be moved
-> down.
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->  drivers/net/dsa/mt7530.c | 46 ++++++++++++++++++++++------------------
->  drivers/net/dsa/mt7530.h |  2 +-
->  2 files changed, 26 insertions(+), 22 deletions(-)
-> 
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index ccf4cb944167..4789105b8137 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -1004,6 +1004,7 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
->  			return ret;
->  	}
->  
-> +	priv->cpu_port = port;
->  	/* Enable Mediatek header mode on the cpu port */
->  	mt7530_write(priv, MT7530_PVC_P(port),
->  		     PORT_SPEC_TAG);
-> @@ -1041,7 +1042,7 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
->  	 * restore the port matrix if the port is the member of a certain
->  	 * bridge.
->  	 */
-> -	priv->ports[port].pm |= PCR_MATRIX(BIT(MT7530_CPU_PORT));
-> +	priv->ports[port].pm |= PCR_MATRIX(BIT(priv->cpu_port));
-
-This is called with an "int port" argument, so could you please do:
-
-	struct dsa_port *dp = dsa_to_port(ds, port);
-
-	if (dsa_port_is_user(dp)) {
-		struct dsa_port *cpu_dp = dp->cpu_dp;
-
-		priv->ports[port].pm |= PCR_MATRIX(BIT(cpu_dp->index));
-	}
-
->  	priv->ports[port].enable = true;
->  	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
->  		   priv->ports[port].pm);
-> @@ -1190,8 +1191,8 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
->  			struct netlink_ext_ack *extack)
->  {
->  	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
-> -	u32 port_bitmap = BIT(MT7530_CPU_PORT);
->  	struct mt7530_priv *priv = ds->priv;
-> +	u32 port_bitmap = BIT(priv->cpu_port);
-
-Here we know for certain that "port" is a user port, so could you please:
-
-	struct dsa_port *cpu_dp = dp->cpu_dp;
-	u32 port_bitmap = BIT(cpu_dp->index);
-
->  
->  	mutex_lock(&priv->reg_mutex);
->  
-> @@ -1267,9 +1268,9 @@ mt7530_port_set_vlan_unaware(struct dsa_switch *ds, int port)
->  	 * the CPU port get out of VLAN filtering mode.
->  	 */
->  	if (all_user_ports_removed) {
-> -		mt7530_write(priv, MT7530_PCR_P(MT7530_CPU_PORT),
-> +		mt7530_write(priv, MT7530_PCR_P(priv->cpu_port),
->  			     PCR_MATRIX(dsa_user_ports(priv->ds)));
-> -		mt7530_write(priv, MT7530_PVC_P(MT7530_CPU_PORT), PORT_SPEC_TAG
-> +		mt7530_write(priv, MT7530_PVC_P(priv->cpu_port), PORT_SPEC_TAG
->  			     | PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
->  	}
->  }
-
-Same idea here, go through dp->cpu_dp.
-
-> @@ -1335,8 +1336,8 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
->  	 */
->  	if (priv->ports[port].enable)
->  		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
-> -			   PCR_MATRIX(BIT(MT7530_CPU_PORT)));
-> -	priv->ports[port].pm = PCR_MATRIX(BIT(MT7530_CPU_PORT));
-> +			   PCR_MATRIX(BIT(priv->cpu_port)));
-> +	priv->ports[port].pm = PCR_MATRIX(BIT(priv->cpu_port));
-
-Same.
-
->  
->  	/* When a port is removed from the bridge, the port would be set up
->  	 * back to the default as is at initial boot which is a VLAN-unaware
-> @@ -1503,6 +1504,7 @@ static int
->  mt7530_port_vlan_filtering(struct dsa_switch *ds, int port, bool vlan_filtering,
->  			   struct netlink_ext_ack *extack)
->  {
-> +	struct mt7530_priv *priv = ds->priv;
->  	if (vlan_filtering) {
->  		/* The port is being kept as VLAN-unaware port when bridge is
->  		 * set up with vlan_filtering not being set, Otherwise, the
-> @@ -1510,7 +1512,7 @@ mt7530_port_vlan_filtering(struct dsa_switch *ds, int port, bool vlan_filtering,
->  		 * for becoming a VLAN-aware port.
->  		 */
->  		mt7530_port_set_vlan_aware(ds, port);
-> -		mt7530_port_set_vlan_aware(ds, MT7530_CPU_PORT);
-> +		mt7530_port_set_vlan_aware(ds, priv->cpu_port);
->  	} else {
->  		mt7530_port_set_vlan_unaware(ds, port);
->  	}
-
-Same.
-
-> @@ -1526,7 +1528,7 @@ mt7530_hw_vlan_add(struct mt7530_priv *priv,
->  	u32 val;
->  
->  	new_members = entry->old_members | BIT(entry->port) |
-> -		      BIT(MT7530_CPU_PORT);
-> +		      BIT(priv->cpu_port);
->  
->  	/* Validate the entry with independent learning, create egress tag per
->  	 * VLAN and joining the port as one of the port members.
-> @@ -1550,8 +1552,8 @@ mt7530_hw_vlan_add(struct mt7530_priv *priv,
->  	 * DSA tag.
->  	 */
->  	mt7530_rmw(priv, MT7530_VAWD2,
-> -		   ETAG_CTRL_P_MASK(MT7530_CPU_PORT),
-> -		   ETAG_CTRL_P(MT7530_CPU_PORT,
-> +		   ETAG_CTRL_P_MASK(priv->cpu_port),
-> +		   ETAG_CTRL_P(priv->cpu_port,
->  			       MT7530_VLAN_EGRESS_STACK));
->  }
-
-This one is interesting. For some reason, the driver author felt the
-need to explicitly add BIT(MT7530_CPU_PORT) to new_members, even though
-mt7530_port_vlan_add() will be called on the CPU port too
-
-bridge vlan add dev swp0 vid 100
-bridge vlan add dev br0 vid 100 self		# here
-
-I would first make a patch that leaves it up to DSA to call
-port_vlan_add for the CPU port, rather than doing it implicitly.
-There is a certain advantage to that too. You can do autonomous
-forwarding in a certain VLAN, but not add br0 to that VLAN, and then,
-you could avoid flooding the CPU with those packets, if you know that
-software doesn't need to process them.
-
-The modified function would look like this:
-
-static void
-mt7530_hw_vlan_add(struct mt7530_priv *priv,
-		   struct mt7530_hw_vlan_entry *entry)
-{
-	struct dsa_port *dp = dsa_to_port(priv->ds, entry->port);
-	u8 new_members;
-	u32 val;
-
-	new_members = entry->old_members | BIT(entry->port);
-
-	/* Validate the entry with independent learning, create egress tag per
-	 * VLAN and joining the port as one of the port members.
-	 */
-	val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) | FID(FID_BRIDGED) |
-	      VLAN_VALID;
-	mt7530_write(priv, MT7530_VAWD1, val);
-
-	/* Decide whether adding tag or not for those outgoing packets from the
-	 * port inside the VLAN.
-	 * CPU port is always taken as a tagged port for serving more than one
-	 * VLANs across and also being applied with egress type stack mode for
-	 * that VLAN tags would be appended after hardware special tag used as
-	 * DSA tag.
-	 */
-	if (dsa_port_is_cpu(dp))
-		val = MT7530_VLAN_EGRESS_STACK;
-	else if (entry->untagged)
-		val = MT7530_VLAN_EGRESS_UNTAG;
-	else
-		val = MT7530_VLAN_EGRESS_TAG;
-	mt7530_rmw(priv, MT7530_VAWD2,
-		   ETAG_CTRL_P_MASK(entry->port),
-		   ETAG_CTRL_P(entry->port, val));
-}
-
-Then please confirm that there aren't regressions in local traffic
-termination for a VLAN-aware bridge. Pinging over a bridge with
-vlan_filtering=1 should be sufficient, since that is done in the default
-pvid of 1.
-
-With this change, you no longer need to concern yourself about the fixed
-value of MT7530_CPU_PORT.
-
->  
-> @@ -1575,7 +1577,7 @@ mt7530_hw_vlan_del(struct mt7530_priv *priv,
->  	 * the entry would be kept valid. Otherwise, the entry is got to be
->  	 * disabled.
->  	 */
-> -	if (new_members && new_members != BIT(MT7530_CPU_PORT)) {
-> +	if (new_members && new_members != BIT(priv->cpu_port)) {
->  		val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) |
->  		      VLAN_VALID;
->  		mt7530_write(priv, MT7530_VAWD1, val);
-
-Here the logic is again too convoluted for its own good. Let's think
-before changing.
-
-What I think was happening was this. DSA used to be super blind when
-adding a VLAN to the CPU port. Since there is no netdev for the CPU
-port, then what DSA used to do was to implicitly program a bridge VLAN to
-the CPU port whenever that VLAN was programmed on a user port. The
-downside is that you never know when you can remove that VLAN, since the
-CPU port is shared between multiple user ports and refcounting was
-impossible due to technical switchdev API details.
-
-Here, the mt7530 driver tries to outsmart DSA by saying "hey, if the CPU
-port is the only remaining member of the VLAN, this VLAN is garbage,
-let's remove it". Which, I mean, fair point.
-
-But since commit 134ef2388e7f ("net: dsa: add explicit support for host
-bridge VLANs"), DSA does a better job of keeping track of VLANs added on
-CPU ports, and it doesn't leave dangling VLANs behind. You need to trust it.
-
-So in this case, you would have to change the code like this:
-
-	if (new_members) {
-		val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) |
-		      VLAN_VALID;
-		mt7530_write(priv, MT7530_VAWD1, val);
-	} else {
-		mt7530_write(priv, MT7530_VAWD1, 0);
-		mt7530_write(priv, MT7530_VAWD2, 0);
-	}
-
-and then delete the comment, it isn't relevant any longer.
-
-> @@ -2105,7 +2107,7 @@ mt7530_setup(struct dsa_switch *ds)
->  	 * controller also is the container for two GMACs nodes representing
->  	 * as two netdev instances.
->  	 */
-> -	dn = dsa_to_port(ds, MT7530_CPU_PORT)->master->dev.of_node->parent;
-> +	dn = dsa_to_port(ds, priv->cpu_port)->master->dev.of_node->parent;
-
-Holy ####, this is convoluted. This gets us the OF node of the container
-of the DSA master, alright.
-
-Could you do something more generic? Something like this:
-
-	struct device_node *dn = NULL;
-	struct dsa_port *cpu_dp;
-
-	dsa_switch_for_each_cpu_port(cpu_dp, ds) {
-		dn = cpu_dp->master->dev.of_node->parent;
-		/* It doesn't matter which CPU port is found first,
-		 * their masters should share the same parent OF node
-		 */
-		break;
-	}
-
-	if (!dn) {
-		ERROR ERROR ERROR, no CPU port
-	}
-
->  	ds->assisted_learning_on_cpu_port = true;
->  	ds->mtu_enforcement_ingress = true;
->  
-> @@ -2337,15 +2339,6 @@ mt7531_setup(struct dsa_switch *ds)
->  	mt7531_ind_c45_phy_write(priv, MT753X_CTRL_PHY_ADDR, MDIO_MMD_VEND2,
->  				 CORE_PLL_GROUP4, val);
->  
-> -	/* BPDU to CPU port */
-> -	mt7530_rmw(priv, MT7531_CFC, MT7531_CPU_PMAP_MASK,
-> -		   BIT(MT7530_CPU_PORT));
-> -	mt7530_rmw(priv, MT753X_BPC, MT753X_BPDU_PORT_FW_MASK,
-> -		   MT753X_BPDU_CPU_ONLY);
-> -
-> -	/* Enable and reset MIB counters */
-> -	mt7530_mib_reset(ds);
-> -
->  	for (i = 0; i < MT7530_NUM_PORTS; i++) {
->  		/* Disable forwarding by default on all ports */
->  		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
-> @@ -2373,6 +2366,15 @@ mt7531_setup(struct dsa_switch *ds)
->  			   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
->  	}
->  
-> +	/* BPDU to CPU port */
-> +	mt7530_rmw(priv, MT7531_CFC, MT7531_CPU_PMAP_MASK,
-> +		   BIT(priv->cpu_port));
-> +	mt7530_rmw(priv, MT753X_BPC, MT753X_BPDU_PORT_FW_MASK,
-> +		   MT753X_BPDU_CPU_ONLY);
-> +
-> +	/* Enable and reset MIB counters */
-> +	mt7530_mib_reset(ds);
-> +
->  	/* Setup VLAN ID 0 for VLAN-unaware bridges */
->  	ret = mt7530_setup_vlan0(priv);
->  	if (ret)
-> @@ -3213,6 +3215,8 @@ mt7530_probe(struct mdio_device *mdiodev)
->  	if (!priv)
->  		return -ENOMEM;
->  
-> +	priv->cpu_port = 6;
-> +
->  	priv->ds = devm_kzalloc(&mdiodev->dev, sizeof(*priv->ds), GFP_KERNEL);
->  	if (!priv->ds)
->  		return -ENOMEM;
-> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-> index 91508e2feef9..62df8d10f6d4 100644
-> --- a/drivers/net/dsa/mt7530.h
-> +++ b/drivers/net/dsa/mt7530.h
-> @@ -8,7 +8,6 @@
->  
->  #define MT7530_NUM_PORTS		7
->  #define MT7530_NUM_PHYS			5
-> -#define MT7530_CPU_PORT			6
->  #define MT7530_NUM_FDB_RECORDS		2048
->  #define MT7530_ALL_MEMBERS		0xff
->  
-> @@ -823,6 +822,7 @@ struct mt7530_priv {
->  	u8			mirror_tx;
->  
->  	struct mt7530_port	ports[MT7530_NUM_PORTS];
-> +	int			cpu_port;
-
-And this should no longer be needed.
-
->  	/* protect among processes for registers access*/
->  	struct mutex reg_mutex;
->  	int irq;
-> -- 
-> 2.25.1
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+TGUgdmVuZHJlZGkgMjIgYXZyaWwgMjAyMiDDoCAxOTowOSArMDIwMCwgU2ViYXN0aWFuIFJlaWNo
+ZWwgYSDDqWNyaXTCoDoKPiBGcm9tOiBFbGFpbmUgWmhhbmcgPHpoYW5ncWluZ0Byb2NrLWNoaXBz
+LmNvbT4KPiAKPiBBZGQgUkszNTg4IFBMTCBzdXBwb3J0IGluY2x1ZGluZyBjYWxjdWxhdGlvbiBv
+ZiBQTEwgcGFyYW1ldGVycwo+IGZvciBhcmJpdHJhcnkgZnJlcXVlbmNpZXMuCj4gCj4gU2lnbmVk
+LW9mZi1ieTogRWxhaW5lIFpoYW5nIDx6aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+Cj4gW3JlYmFz
+ZSBhbmQgcGFydGlhbGx5IHJld3JpdGUgY29kZV0KPiBTaWduZWQtb2ZmLWJ5OiBTZWJhc3RpYW4g
+UmVpY2hlbCA8c2ViYXN0aWFuLnJlaWNoZWxAY29sbGFib3JhLmNvbT4KPiAtLS0KPiAgZHJpdmVy
+cy9jbGsvcm9ja2NoaXAvY2xrLXBsbC5jIHwgMjg3ICsrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrLQo+ICBkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGsuaCAgICAgfCAgMTggKysrCj4gIDIg
+ZmlsZXMgY2hhbmdlZCwgMzA0IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZm
+IC0tZ2l0IGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXBsbC5jIGIvZHJpdmVycy9jbGsvcm9j
+a2NoaXAvY2xrLXBsbC5jCj4gaW5kZXggZjc4MjdiM2I3ZmMxLi4wMTBlNDdlYjUxYjggMTAwNjQ0
+Cj4gLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXBsbC5jCj4gKysrIGIvZHJpdmVycy9j
+bGsvcm9ja2NoaXAvY2xrLXBsbC5jCj4gQEAgLTE1LDYgKzE1LDcgQEAKPiAgI2luY2x1ZGUgPGxp
+bnV4L2lvcG9sbC5oPgo+ICAjaW5jbHVkZSA8bGludXgvcmVnbWFwLmg+Cj4gICNpbmNsdWRlIDxs
+aW51eC9jbGsuaD4KPiArI2luY2x1ZGUgPGxpbnV4L3VuaXRzLmg+Cj4gICNpbmNsdWRlICJjbGsu
+aCIKPiAgCj4gICNkZWZpbmUgUExMX01PREVfTUFTSwkJMHgzCj4gQEAgLTQ3LDYgKzQ4LDY3IEBA
+IHN0cnVjdCByb2NrY2hpcF9jbGtfcGxsIHsKPiAgI2RlZmluZSB0b19yb2NrY2hpcF9jbGtfcGxs
+X25iKG5iKSBcCj4gIAkJCWNvbnRhaW5lcl9vZihuYiwgc3RydWN0IHJvY2tjaGlwX2Nsa19wbGws
+IGNsa19uYikKPiAgCj4gK3N0YXRpYyBpbnQKPiArcm9ja2NoaXBfcmszNTg4X2dldF9wbGxfc2V0
+dGluZ3Moc3RydWN0IHJvY2tjaGlwX2Nsa19wbGwgKnBsbCwKPiArCQkJCSB1bnNpZ25lZCBsb25n
+IGZpbl9oeiwKPiArCQkJCSB1bnNpZ25lZCBsb25nIGZvdXRfaHosCj4gKwkJCQkgc3RydWN0IHJv
+Y2tjaGlwX3BsbF9yYXRlX3RhYmxlICpyYXRlX3RhYmxlKQo+ICt7Cj4gKwl1NjQgZnZjb19taW4g
+PSAyMjUwICogSFpfUEVSX01IWiwgZnZjb19tYXggPSA0NTAwICogSFpfUEVSX01IWjsKPiArCXU2
+NCBmb3V0X21pbiA9IDM3ICogSFpfUEVSX01IWiwgZm91dF9tYXggPSA0NTAwICogSFpfUEVSX01I
+WjsKPiArCXUzMiBwLCBtLCBzOwo+ICsJdTY0IGZ2Y28sIGZyZWYsIGZvdXQsIGZmcmFjOwo+ICsK
+PiArCWlmIChmaW5faHogPT0gMCB8fCBmb3V0X2h6ID09IDAgfHwgZm91dF9oeiA9PSBmaW5faHop
+Cj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwo+ICsJaWYgKGZvdXRfaHogPiBmb3V0X21heCB8fCBm
+b3V0X2h6IDwgZm91dF9taW4pCj4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gKwo+ICsJaWYgKGZpbl9o
+eiAvIEhaX1BFUl9NSFogKiBIWl9QRVJfTUhaID09IGZpbl9oeiAmJgo+ICsJICAgIGZvdXRfaHog
+LyBIWl9QRVJfTUhaICogSFpfUEVSX01IWiA9PSBmb3V0X2h6KSB7Cj4gKwkJZm9yIChzID0gMDsg
+cyA8PSA2OyBzKyspIHsKPiArCQkJZnZjbyA9IGZvdXRfaHogPDwgczsKPiArCQkJaWYgKGZ2Y28g
+PCBmdmNvX21pbiB8fCBmdmNvID4gZnZjb19tYXgpCj4gKwkJCQljb250aW51ZTsKPiArCQkJZm9y
+IChwID0gMjsgcCA8PSA0OyBwKyspIHsKPiArCQkJCWZvciAobSA9IDY0OyBtIDw9IDEwMjM7IG0r
+Kykgewo+ICsJCQkJCWlmIChmdmNvID09IG0gKiBmaW5faHogLyBwKSB7Cj4gKwkJCQkJCXJhdGVf
+dGFibGUtPnAgPSBwOwo+ICsJCQkJCQlyYXRlX3RhYmxlLT5tID0gbTsKPiArCQkJCQkJcmF0ZV90
+YWJsZS0+cyA9IHM7Cj4gKwkJCQkJCXJhdGVfdGFibGUtPmsgPSAwOwo+ICsJCQkJCQlyZXR1cm4g
+MDsKPiArCQkJCQl9Cj4gKwkJCQl9Cj4gKwkJCX0KPiArCQl9Cj4gKwl9IGVsc2Ugewo+ICsJCWZv
+dXQgPSAoZm91dF9oeiAvIEhaX1BFUl9NSFopICogSFpfUEVSX01IWjsKPiArCQlmZnJhYyA9IChm
+b3V0X2h6ICUgSFpfUEVSX01IWik7Cj4gKwkJZm9yIChzID0gMDsgcyA8PSA2OyBzKyspIHsKPiAr
+CQkJZnZjbyA9IGZvdXQgPDwgczsKPiArCQkJaWYgKGZ2Y28gPCBmdmNvX21pbiB8fCBmdmNvID4g
+ZnZjb19tYXgpCj4gKwkJCQljb250aW51ZTsKPiArCQkJZm9yIChwID0gMTsgcCA8PSA0OyBwKysp
+IHsKPiArCQkJCWZvciAobSA9IDY0OyBtIDw9IDEwMjM7IG0rKykgewo+ICsJCQkJCWlmIChmdmNv
+ID09IG0gKiBmaW5faHogLyBwKSB7Cj4gKwkJCQkJCXJhdGVfdGFibGUtPnAgPSBwOwo+ICsJCQkJ
+CQlyYXRlX3RhYmxlLT5tID0gbTsKPiArCQkJCQkJcmF0ZV90YWJsZS0+cyA9IHM7Cj4gKwkJCQkJ
+CWZyZWYgPSBmaW5faHogLyBwOwo+ICsJCQkJCQlmb3V0ID0gKGZmcmFjIDw8IHMpICogNjU1MzU7
+Cj4gKwkJCQkJCXJhdGVfdGFibGUtPmsgPSBmb3V0IC8gZnJlZjsKPiArCQkJCQkJcmV0dXJuIDA7
+Cj4gKwkJCQkJfQo+ICsJCQkJfQo+ICsJCQl9Cj4gKwkJfQo+ICsJfQo+ICsKPiArCXJldHVybiAt
+RUlOVkFMOwo+ICt9Cj4gKwo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IHJvY2tjaGlwX3BsbF9yYXRl
+X3RhYmxlICpyb2NrY2hpcF9nZXRfcGxsX3NldHRpbmdzKAo+ICAJCQkgICAgc3RydWN0IHJvY2tj
+aGlwX2Nsa19wbGwgKnBsbCwgdW5zaWduZWQgbG9uZyByYXRlKQo+ICB7Cj4gQEAgLTY4LDYgKzEz
+MCwxNCBAQCBzdGF0aWMgbG9uZyByb2NrY2hpcF9wbGxfcm91bmRfcmF0ZShzdHJ1Y3QgY2xrX2h3
+ICpodywKPiAgCWNvbnN0IHN0cnVjdCByb2NrY2hpcF9wbGxfcmF0ZV90YWJsZSAqcmF0ZV90YWJs
+ZSA9IHBsbC0+cmF0ZV90YWJsZTsKPiAgCWludCBpOwo+ICAKPiArCWlmIChwbGwtPnR5cGUgPT0g
+cGxsX3JrMzU4OCB8fCBwbGwtPnR5cGUgPT0gcGxsX3JrMzU4OF9jb3JlKSB7Cj4gKwkJbG9uZyBw
+YXJlbnRfcmF0ZSA9IHByYXRlID8gKnByYXRlIDogMjQgKiBIWl9QRVJfTUhaOwo+ICsJCXN0cnVj
+dCByb2NrY2hpcF9wbGxfcmF0ZV90YWJsZSBwbGxfc2V0dGluZ3M7Cj4gKwo+ICsJCWlmIChyb2Nr
+Y2hpcF9yazM1ODhfZ2V0X3BsbF9zZXR0aW5ncyhwbGwsIHBhcmVudF9yYXRlLCBkcmF0ZSwgJnBs
+bF9zZXR0aW5ncykgPj0gMCkKPiArCQkJcmV0dXJuIHBsbF9zZXR0aW5ncy5yYXRlOwo+ICsJfQo+
+ICsKCkkgd2FzIHJlYWRpbmcgc29tZSBvZiBwcmV2aW91cyBiYWNrbG9nIG9uIHdoeSB0aGVzZSBm
+b3JtdWxhIGhhdmUgbmV2ZXIgYmVlbgptYWlubGluZXMgWzBdLiBJdCBsb29rcyBsaWtlIHNvIGZh
+ciB0aGUgc3RhdHUgcXVvIHdhcyBhZG9wdGVkLiBCdXQgaWYgdGhhdCB3YXMKdG8gY2hhbmdlLCBJ
+IHRoaW5rIHRoaXMgaW1wbGVtZW50YXRpb24gaXMgbm90IGFsaWduZWQgd2l0aCB0aGUgaW50ZW50
+LiBJZiBteQp1bmRlcnN0YW5kaW5nIGlzIHJpZ2h0LCB0aGUgcmF0ZV90YWJsZVtdIChpZiBpdCBl
+eGlzdHMpIHNob3VsZCBiZSBsb29rZWQgdXAKZmlyc3QgYW5kIHRoZSBmb3JtdWxhIHVzZSBhcyBh
+IGZhbGxiYWNrLgoKWzBdIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51
+eC1yb2NrY2hpcC9wYXRjaC8xNDcwMTQ0ODUyLTIwNzA4LTEtZ2l0LXNlbmQtZW1haWwtemhlbmd4
+aW5nQHJvY2stY2hpcHMuY29tLyMxOTU0ODc2NQoKPiAgCS8qIEFzc3VtbWluZyByYXRlX3RhYmxl
+IGlzIGluIGRlc2NlbmRpbmcgb3JkZXIgKi8KPiAgCWZvciAoaSA9IDA7IGkgPCBwbGwtPnJhdGVf
+Y291bnQ7IGkrKykgewo+ICAJCWlmIChkcmF0ZSA+PSByYXRlX3RhYmxlW2ldLnJhdGUpCj4gQEAg
+LTg0Miw2ICs5MTIsMjEyIEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgY2xrX29wcyByb2NrY2hpcF9y
+azMzOTlfcGxsX2Nsa19vcHMgPSB7Cj4gIAkuaW5pdCA9IHJvY2tjaGlwX3JrMzM5OV9wbGxfaW5p
+dCwKPiAgfTsKPiAgCj4gKy8qKgo+ICsgKiBQTEwgdXNlZCBpbiBSSzM1ODgKPiArICovCj4gKwo+
+ICsjZGVmaW5lIFJLMzU4OF9QTExDT04oaSkgICAgICAgICAgICAgICAoaSAqIDB4NCkKPiArI2Rl
+ZmluZSBSSzM1ODhfUExMQ09OMF9NX01BU0sgICAgICAgICAgMHgzZmYKPiArI2RlZmluZSBSSzM1
+ODhfUExMQ09OMF9NX1NISUZUICAgICAgICAgMAo+ICsjZGVmaW5lIFJLMzU4OF9QTExDT04xX1Bf
+TUFTSyAgICAgICAgICAweDNmCj4gKyNkZWZpbmUgUkszNTg4X1BMTENPTjFfUF9TSElGVCAgICAg
+ICAgIDAKPiArI2RlZmluZSBSSzM1ODhfUExMQ09OMV9TX01BU0sgICAgICAgICAgMHg3Cj4gKyNk
+ZWZpbmUgUkszNTg4X1BMTENPTjFfU19TSElGVCAgICAgICAgIDYKPiArI2RlZmluZSBSSzM1ODhf
+UExMQ09OMl9LX01BU0sgICAgICAgICAgMHhmZmZmCj4gKyNkZWZpbmUgUkszNTg4X1BMTENPTjJf
+S19TSElGVCAgICAgICAgIDAKPiArI2RlZmluZSBSSzM1ODhfUExMQ09OMV9QV1JET1dOICAgICAg
+ICAgQklUKDEzKQo+ICsjZGVmaW5lIFJLMzU4OF9QTExDT042X0xPQ0tfU1RBVFVTICAgICBCSVQo
+MTUpCj4gKwo+ICtzdGF0aWMgaW50IHJvY2tjaGlwX3JrMzU4OF9wbGxfd2FpdF9sb2NrKHN0cnVj
+dCByb2NrY2hpcF9jbGtfcGxsICpwbGwpCj4gK3sKPiArCXUzMiBwbGxjb247Cj4gKwlpbnQgcmV0
+Owo+ICsKPiArCS8qCj4gKwkgKiBMb2NrIHRpbWUgdHlwaWNhbCAyNTAsIG1heCA1MDAgaW5wdXQg
+Y2xvY2sgY3ljbGVzIEAyNE1Iego+ICsJICogU28gZGVmaW5lIGEgdmVyeSBzYWZlIG1heGltdW0g
+b2YgMTAwMHVzLCBtZWFuaW5nIDI0MDAwIGN5Y2xlcy4KPiArCSAqLwo+ICsJcmV0ID0gcmVhZGxf
+cmVsYXhlZF9wb2xsX3RpbWVvdXQocGxsLT5yZWdfYmFzZSArIFJLMzU4OF9QTExDT04oNiksCj4g
+KwkJCQkJIHBsbGNvbiwKPiArCQkJCQkgcGxsY29uICYgUkszNTg4X1BMTENPTjZfTE9DS19TVEFU
+VVMsCj4gKwkJCQkJIDAsIDEwMDApOwo+ICsJaWYgKHJldCkKPiArCQlwcl9lcnIoIiVzOiB0aW1l
+b3V0IHdhaXRpbmcgZm9yIHBsbCB0byBsb2NrXG4iLCBfX2Z1bmNfXyk7Cj4gKwo+ICsJcmV0dXJu
+IHJldDsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQgcm9ja2NoaXBfcmszNTg4X3BsbF9nZXRfcGFy
+YW1zKHN0cnVjdCByb2NrY2hpcF9jbGtfcGxsICpwbGwsCj4gKwkJCQkJICAgc3RydWN0IHJvY2tj
+aGlwX3BsbF9yYXRlX3RhYmxlICpyYXRlKQo+ICt7Cj4gKwl1MzIgcGxsY29uOwo+ICsKPiArCXBs
+bGNvbiA9IHJlYWRsX3JlbGF4ZWQocGxsLT5yZWdfYmFzZSArIFJLMzU4OF9QTExDT04oMCkpOwo+
+ICsJcmF0ZS0+bSA9ICgocGxsY29uID4+IFJLMzU4OF9QTExDT04wX01fU0hJRlQpICYgUkszNTg4
+X1BMTENPTjBfTV9NQVNLKTsKPiArCj4gKwlwbGxjb24gPSByZWFkbF9yZWxheGVkKHBsbC0+cmVn
+X2Jhc2UgKyBSSzM1ODhfUExMQ09OKDEpKTsKPiArCXJhdGUtPnAgPSAoKHBsbGNvbiA+PiBSSzM1
+ODhfUExMQ09OMV9QX1NISUZUKSAmIFJLMzU4OF9QTExDT04xX1BfTUFTSyk7Cj4gKwlyYXRlLT5z
+ID0gKChwbGxjb24gPj4gUkszNTg4X1BMTENPTjFfU19TSElGVCkgJiBSSzM1ODhfUExMQ09OMV9T
+X01BU0spOwo+ICsKPiArCXBsbGNvbiA9IHJlYWRsX3JlbGF4ZWQocGxsLT5yZWdfYmFzZSArIFJL
+MzU4OF9QTExDT04oMikpOwo+ICsJcmF0ZS0+ayA9ICgocGxsY29uID4+IFJLMzU4OF9QTExDT04y
+X0tfU0hJRlQpICYgUkszNTg4X1BMTENPTjJfS19NQVNLKTsKPiArfQo+ICsKPiArc3RhdGljIHVu
+c2lnbmVkIGxvbmcgcm9ja2NoaXBfcmszNTg4X3BsbF9yZWNhbGNfcmF0ZShzdHJ1Y3QgY2xrX2h3
+ICpodywgdW5zaWduZWQgbG9uZyBwcmF0ZSkKPiArewo+ICsJc3RydWN0IHJvY2tjaGlwX2Nsa19w
+bGwgKnBsbCA9IHRvX3JvY2tjaGlwX2Nsa19wbGwoaHcpOwo+ICsJc3RydWN0IHJvY2tjaGlwX3Bs
+bF9yYXRlX3RhYmxlIGN1cjsKPiArCXU2NCByYXRlNjQgPSBwcmF0ZSwgcG9zdGRpdjsKPiArCj4g
+Kwlyb2NrY2hpcF9yazM1ODhfcGxsX2dldF9wYXJhbXMocGxsLCAmY3VyKTsKPiArCj4gKwlyYXRl
+NjQgKj0gY3VyLm07Cj4gKwlkb19kaXYocmF0ZTY0LCBjdXIucCk7Cj4gKwo+ICsJaWYgKGN1ci5r
+KSB7Cj4gKwkJLyogZnJhY3Rpb25hbCBtb2RlICovCj4gKwkJdTY0IGZyYWNfcmF0ZTY0ID0gcHJh
+dGUgKiBjdXIuazsKPiArCj4gKwkJcG9zdGRpdiA9IGN1ci5wICogNjU1MzU7Cj4gKwkJZG9fZGl2
+KGZyYWNfcmF0ZTY0LCBwb3N0ZGl2KTsKPiArCQlyYXRlNjQgKz0gZnJhY19yYXRlNjQ7Cj4gKwl9
+Cj4gKwlyYXRlNjQgPSByYXRlNjQgPj4gY3VyLnM7Cj4gKwo+ICsJcmV0dXJuICh1bnNpZ25lZCBs
+b25nKXJhdGU2NDsKPiArfQo+ICsKPiArc3RhdGljIGludCByb2NrY2hpcF9yazM1ODhfcGxsX3Nl
+dF9wYXJhbXMoc3RydWN0IHJvY2tjaGlwX2Nsa19wbGwgKnBsbCwKPiArCQkJCQkgIGNvbnN0IHN0
+cnVjdCByb2NrY2hpcF9wbGxfcmF0ZV90YWJsZSAqcmF0ZSkKPiArewo+ICsJY29uc3Qgc3RydWN0
+IGNsa19vcHMgKnBsbF9tdXhfb3BzID0gcGxsLT5wbGxfbXV4X29wczsKPiArCXN0cnVjdCBjbGtf
+bXV4ICpwbGxfbXV4ID0gJnBsbC0+cGxsX211eDsKPiArCXN0cnVjdCByb2NrY2hpcF9wbGxfcmF0
+ZV90YWJsZSBjdXI7Cj4gKwlpbnQgcmF0ZV9jaGFuZ2VfcmVtdXhlZCA9IDA7Cj4gKwlpbnQgY3Vy
+X3BhcmVudDsKPiArCWludCByZXQ7Cj4gKwo+ICsJcHJfZGVidWcoIiVzOiByYXRlIHNldHRpbmdz
+IGZvciAlbHUgcDogJWQsIG06ICVkLCBzOiAlZCwgazogJWRcbiIsCj4gKwkJIF9fZnVuY19fLCBy
+YXRlLT5yYXRlLCByYXRlLT5wLCByYXRlLT5tLCByYXRlLT5zLCByYXRlLT5rKTsKPiArCj4gKwly
+b2NrY2hpcF9yazM1ODhfcGxsX2dldF9wYXJhbXMocGxsLCAmY3VyKTsKPiArCWN1ci5yYXRlID0g
+MDsKPiArCj4gKwlpZiAocGxsLT50eXBlID09IHBsbF9yazM1ODgpIHsKPiArCQljdXJfcGFyZW50
+ID0gcGxsX211eF9vcHMtPmdldF9wYXJlbnQoJnBsbF9tdXgtPmh3KTsKPiArCQlpZiAoY3VyX3Bh
+cmVudCA9PSBQTExfTU9ERV9OT1JNKSB7Cj4gKwkJCXBsbF9tdXhfb3BzLT5zZXRfcGFyZW50KCZw
+bGxfbXV4LT5odywgUExMX01PREVfU0xPVyk7Cj4gKwkJCXJhdGVfY2hhbmdlX3JlbXV4ZWQgPSAx
+Owo+ICsJCX0KPiArCX0KPiArCj4gKwkvKiBzZXQgcGxsIHBvd2VyIGRvd24gKi8KPiArCXdyaXRl
+bChISVdPUkRfVVBEQVRFKFJLMzU4OF9QTExDT04xX1BXUkRPV04sCj4gKwkJCSAgICAgUkszNTg4
+X1BMTENPTjFfUFdSRE9XTiwgMCksCj4gKwkgICAgICAgcGxsLT5yZWdfYmFzZSArIFJLMzM5OV9Q
+TExDT04oMSkpOwo+ICsKPiArCS8qIHVwZGF0ZSBwbGwgdmFsdWVzICovCj4gKwl3cml0ZWxfcmVs
+YXhlZChISVdPUkRfVVBEQVRFKHJhdGUtPm0sIFJLMzU4OF9QTExDT04wX01fTUFTSywgUkszNTg4
+X1BMTENPTjBfTV9TSElGVCksCj4gKwkJICAgICAgIHBsbC0+cmVnX2Jhc2UgKyBSSzMzOTlfUExM
+Q09OKDApKTsKPiArCj4gKwl3cml0ZWxfcmVsYXhlZChISVdPUkRfVVBEQVRFKHJhdGUtPnAsIFJL
+MzU4OF9QTExDT04xX1BfTUFTSywgUkszNTg4X1BMTENPTjFfUF9TSElGVCkgfAo+ICsJCSAgICAg
+ICBISVdPUkRfVVBEQVRFKHJhdGUtPnMsIFJLMzU4OF9QTExDT04xX1NfTUFTSywgUkszNTg4X1BM
+TENPTjFfU19TSElGVCksCj4gKwkJICAgICAgIHBsbC0+cmVnX2Jhc2UgKyBSSzMzOTlfUExMQ09O
+KDEpKTsKPiArCj4gKwl3cml0ZWxfcmVsYXhlZChISVdPUkRfVVBEQVRFKHJhdGUtPmssIFJLMzU4
+OF9QTExDT04yX0tfTUFTSywgUkszNTg4X1BMTENPTjJfS19TSElGVCksCj4gKwkJICAgICAgIHBs
+bC0+cmVnX2Jhc2UgKyBSSzMzOTlfUExMQ09OKDIpKTsKPiArCj4gKwkvKiBzZXQgcGxsIHBvd2Vy
+IHVwICovCj4gKwl3cml0ZWwoSElXT1JEX1VQREFURSgwLCBSSzM1ODhfUExMQ09OMV9QV1JET1dO
+LCAwKSwKPiArCSAgICAgICBwbGwtPnJlZ19iYXNlICsgUkszNTg4X1BMTENPTigxKSk7Cj4gKwo+
+ICsJLyogd2FpdCBmb3IgdGhlIHBsbCB0byBsb2NrICovCj4gKwlyZXQgPSByb2NrY2hpcF9yazM1
+ODhfcGxsX3dhaXRfbG9jayhwbGwpOwo+ICsJaWYgKHJldCkgewo+ICsJCXByX3dhcm4oIiVzOiBw
+bGwgdXBkYXRlIHVuc3VjY2Vzc2Z1bCwgdHJ5aW5nIHRvIHJlc3RvcmUgb2xkIHBhcmFtc1xuIiwK
+PiArCQkJX19mdW5jX18pOwo+ICsJCXJvY2tjaGlwX3JrMzU4OF9wbGxfc2V0X3BhcmFtcyhwbGws
+ICZjdXIpOwo+ICsJfQo+ICsKPiArCWlmICgocGxsLT50eXBlID09IHBsbF9yazM1ODgpICYmIHJh
+dGVfY2hhbmdlX3JlbXV4ZWQpCj4gKwkJcGxsX211eF9vcHMtPnNldF9wYXJlbnQoJnBsbF9tdXgt
+Pmh3LCBQTExfTU9ERV9OT1JNKTsKPiArCj4gKwlyZXR1cm4gcmV0Owo+ICt9Cj4gKwo+ICtzdGF0
+aWMgaW50IHJvY2tjaGlwX3JrMzU4OF9wbGxfc2V0X3JhdGUoc3RydWN0IGNsa19odyAqaHcsIHVu
+c2lnbmVkIGxvbmcgZHJhdGUsCj4gKwkJCQkJdW5zaWduZWQgbG9uZyBwcmF0ZSkKPiArewo+ICsJ
+c3RydWN0IHJvY2tjaGlwX2Nsa19wbGwgKnBsbCA9IHRvX3JvY2tjaGlwX2Nsa19wbGwoaHcpOwo+
+ICsJc3RydWN0IHJvY2tjaGlwX3BsbF9yYXRlX3RhYmxlIHJhdGU7Cj4gKwl1bnNpZ25lZCBsb25n
+IG9sZF9yYXRlID0gcm9ja2NoaXBfcmszNTg4X3BsbF9yZWNhbGNfcmF0ZShodywgcHJhdGUpOwo+
+ICsKPiArCXByX2RlYnVnKCIlczogY2hhbmdpbmcgJXMgZnJvbSAlbHUgdG8gJWx1IHdpdGggYSBw
+YXJlbnQgcmF0ZSBvZiAlbHVcbiIsCj4gKwkJIF9fZnVuY19fLCBfX2Nsa19nZXRfbmFtZShody0+
+Y2xrKSwgb2xkX3JhdGUsIGRyYXRlLCBwcmF0ZSk7Cj4gKwo+ICsJaWYgKHJvY2tjaGlwX3JrMzU4
+OF9nZXRfcGxsX3NldHRpbmdzKHBsbCwgcHJhdGUsIGRyYXRlLCAmcmF0ZSkgPCAwKSB7Cj4gKwkJ
+cHJfZXJyKCIlczogSW52YWxpZCByYXRlIDogJWx1IGZvciBwbGwgY2xrICVzXG4iLCBfX2Z1bmNf
+XywKPiArCQkgICAgICAgZHJhdGUsIF9fY2xrX2dldF9uYW1lKGh3LT5jbGspKTsKPiArCQlyZXR1
+cm4gLUVJTlZBTDsKPiArCX0KPiArCj4gKwlyZXR1cm4gcm9ja2NoaXBfcmszNTg4X3BsbF9zZXRf
+cGFyYW1zKHBsbCwgJnJhdGUpOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IHJvY2tjaGlwX3JrMzU4
+OF9wbGxfZW5hYmxlKHN0cnVjdCBjbGtfaHcgKmh3KQo+ICt7Cj4gKwlzdHJ1Y3Qgcm9ja2NoaXBf
+Y2xrX3BsbCAqcGxsID0gdG9fcm9ja2NoaXBfY2xrX3BsbChodyk7Cj4gKwo+ICsJd3JpdGVsKEhJ
+V09SRF9VUERBVEUoMCwgUkszNTg4X1BMTENPTjFfUFdSRE9XTiwgMCksCj4gKwkgICAgICAgcGxs
+LT5yZWdfYmFzZSArIFJLMzU4OF9QTExDT04oMSkpOwo+ICsJcm9ja2NoaXBfcmszNTg4X3BsbF93
+YWl0X2xvY2socGxsKTsKPiArCj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiArc3RhdGljIHZvaWQg
+cm9ja2NoaXBfcmszNTg4X3BsbF9kaXNhYmxlKHN0cnVjdCBjbGtfaHcgKmh3KQo+ICt7Cj4gKwlz
+dHJ1Y3Qgcm9ja2NoaXBfY2xrX3BsbCAqcGxsID0gdG9fcm9ja2NoaXBfY2xrX3BsbChodyk7Cj4g
+Kwo+ICsJd3JpdGVsKEhJV09SRF9VUERBVEUoUkszNTg4X1BMTENPTjFfUFdSRE9XTiwgUkszNTg4
+X1BMTENPTjFfUFdSRE9XTiwgMCksCj4gKwkgICAgICAgcGxsLT5yZWdfYmFzZSArIFJLMzU4OF9Q
+TExDT04oMSkpOwo+ICt9Cj4gKwo+ICtzdGF0aWMgaW50IHJvY2tjaGlwX3JrMzU4OF9wbGxfaXNf
+ZW5hYmxlZChzdHJ1Y3QgY2xrX2h3ICpodykKPiArewo+ICsJc3RydWN0IHJvY2tjaGlwX2Nsa19w
+bGwgKnBsbCA9IHRvX3JvY2tjaGlwX2Nsa19wbGwoaHcpOwo+ICsJdTMyIHBsbGNvbiA9IHJlYWRs
+KHBsbC0+cmVnX2Jhc2UgKyBSSzM1ODhfUExMQ09OKDEpKTsKPiArCj4gKwlyZXR1cm4gIShwbGxj
+b24gJiBSSzM1ODhfUExMQ09OMV9QV1JET1dOKTsKPiArfQo+ICsKPiArc3RhdGljIGludCByb2Nr
+Y2hpcF9yazM1ODhfcGxsX2luaXQoc3RydWN0IGNsa19odyAqaHcpCj4gK3sKPiArCXN0cnVjdCBy
+b2NrY2hpcF9jbGtfcGxsICpwbGwgPSB0b19yb2NrY2hpcF9jbGtfcGxsKGh3KTsKPiArCj4gKwlp
+ZiAoIShwbGwtPmZsYWdzICYgUk9DS0NISVBfUExMX1NZTkNfUkFURSkpCj4gKwkJcmV0dXJuIDA7
+Cj4gKwo+ICsJcmV0dXJuIDA7Cj4gK30KPiArCj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgY2xrX29w
+cyByb2NrY2hpcF9yazM1ODhfcGxsX2Nsa19ub3JhdGVfb3BzID0gewo+ICsJLnJlY2FsY19yYXRl
+ID0gcm9ja2NoaXBfcmszNTg4X3BsbF9yZWNhbGNfcmF0ZSwKPiArCS5lbmFibGUgPSByb2NrY2hp
+cF9yazM1ODhfcGxsX2VuYWJsZSwKPiArCS5kaXNhYmxlID0gcm9ja2NoaXBfcmszNTg4X3BsbF9k
+aXNhYmxlLAo+ICsJLmlzX2VuYWJsZWQgPSByb2NrY2hpcF9yazM1ODhfcGxsX2lzX2VuYWJsZWQs
+Cj4gK307Cj4gKwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IGNsa19vcHMgcm9ja2NoaXBfcmszNTg4
+X3BsbF9jbGtfb3BzID0gewo+ICsJLnJlY2FsY19yYXRlID0gcm9ja2NoaXBfcmszNTg4X3BsbF9y
+ZWNhbGNfcmF0ZSwKPiArCS5yb3VuZF9yYXRlID0gcm9ja2NoaXBfcGxsX3JvdW5kX3JhdGUsCj4g
+Kwkuc2V0X3JhdGUgPSByb2NrY2hpcF9yazM1ODhfcGxsX3NldF9yYXRlLAo+ICsJLmVuYWJsZSA9
+IHJvY2tjaGlwX3JrMzU4OF9wbGxfZW5hYmxlLAo+ICsJLmRpc2FibGUgPSByb2NrY2hpcF9yazM1
+ODhfcGxsX2Rpc2FibGUsCj4gKwkuaXNfZW5hYmxlZCA9IHJvY2tjaGlwX3JrMzU4OF9wbGxfaXNf
+ZW5hYmxlZCwKPiArCS5pbml0ID0gcm9ja2NoaXBfcmszNTg4X3BsbF9pbml0LAo+ICt9Owo+ICsK
+PiAgLyoKPiAgICogQ29tbW9uIHJlZ2lzdGVyaW5nIG9mIHBsbCBjbG9ja3MKPiAgICovCj4gQEAg
+LTg5MCw3ICsxMTY2LDggQEAgc3RydWN0IGNsayAqcm9ja2NoaXBfY2xrX3JlZ2lzdGVyX3BsbChz
+dHJ1Y3Qgcm9ja2NoaXBfY2xrX3Byb3ZpZGVyICpjdHgsCj4gIAlpZiAocGxsX3R5cGUgPT0gcGxs
+X3JrMzAzNiB8fAo+ICAJICAgIHBsbF90eXBlID09IHBsbF9yazMwNjYgfHwKPiAgCSAgICBwbGxf
+dHlwZSA9PSBwbGxfcmszMzI4IHx8Cj4gLQkgICAgcGxsX3R5cGUgPT0gcGxsX3JrMzM5OSkKPiAr
+CSAgICBwbGxfdHlwZSA9PSBwbGxfcmszMzk5IHx8Cj4gKwkgICAgcGxsX3R5cGUgPT0gcGxsX3Jr
+MzU4OCkKPiAgCQlwbGxfbXV4LT5mbGFncyB8PSBDTEtfTVVYX0hJV09SRF9NQVNLOwo+ICAKPiAg
+CS8qIHRoZSBhY3R1YWwgbXV4aW5nIGlzIHhpbjI0bSwgcGxsLW91dHB1dCwgeGluMzJrICovCj4g
+QEAgLTk1Nyw2ICsxMjM0LDE0IEBAIHN0cnVjdCBjbGsgKnJvY2tjaGlwX2Nsa19yZWdpc3Rlcl9w
+bGwoc3RydWN0IHJvY2tjaGlwX2Nsa19wcm92aWRlciAqY3R4LAo+ICAJCWVsc2UKPiAgCQkJaW5p
+dC5vcHMgPSAmcm9ja2NoaXBfcmszMzk5X3BsbF9jbGtfb3BzOwo+ICAJCWJyZWFrOwo+ICsJY2Fz
+ZSBwbGxfcmszNTg4Ogo+ICsJY2FzZSBwbGxfcmszNTg4X2NvcmU6Cj4gKwkJaWYgKCFwbGwtPnJh
+dGVfdGFibGUpCj4gKwkJCWluaXQub3BzID0gJnJvY2tjaGlwX3JrMzU4OF9wbGxfY2xrX25vcmF0
+ZV9vcHM7Cj4gKwkJZWxzZQo+ICsJCQlpbml0Lm9wcyA9ICZyb2NrY2hpcF9yazM1ODhfcGxsX2Ns
+a19vcHM7Cj4gKwkJaW5pdC5mbGFncyA9IGZsYWdzOwo+ICsJCWJyZWFrOwo+ICAJZGVmYXVsdDoK
+PiAgCQlwcl93YXJuKCIlczogVW5rbm93biBwbGwgdHlwZSBmb3IgcGxsIGNsayAlc1xuIiwKPiAg
+CQkJX19mdW5jX18sIG5hbWUpOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9j
+bGsuaCBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay5oCj4gaW5kZXggNmFlY2U3ZjA3YTdkLi5i
+ZjdjOGQwODJmZGUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLmgKPiAr
+KysgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGsuaAo+IEBAIC0yMjEsNiArMjIxLDggQEAgZW51
+bSByb2NrY2hpcF9wbGxfdHlwZSB7Cj4gIAlwbGxfcmszMDY2LAo+ICAJcGxsX3JrMzMyOCwKPiAg
+CXBsbF9yazMzOTksCj4gKwlwbGxfcmszNTg4LAo+ICsJcGxsX3JrMzU4OF9jb3JlLAo+ICB9Owo+
+ICAKPiAgI2RlZmluZSBSSzMwMzZfUExMX1JBVEUoX3JhdGUsIF9yZWZkaXYsIF9mYmRpdiwgX3Bv
+c3RkaXYxLAlcCj4gQEAgLTI1Myw2ICsyNTUsMTUgQEAgZW51bSByb2NrY2hpcF9wbGxfdHlwZSB7
+Cj4gIAkubmIgPSBfbmIsCQkJCQkJXAo+ICB9Cj4gIAo+ICsjZGVmaW5lIFJLMzU4OF9QTExfUkFU
+RShfcmF0ZSwgX3AsIF9tLCBfcywgX2spCQkJXAo+ICt7CQkJCQkJCQlcCj4gKwkucmF0ZSAgID0g
+X3JhdGUjI1UsCQkJCQlcCj4gKwkucCA9IF9wLAkJCQkJCVwKPiArCS5tID0gX20sCQkJCQkJXAo+
+ICsJLnMgPSBfcywJCQkJCQlcCj4gKwkuayA9IF9rLAkJCQkJCVwKPiArfQo+ICsKPiAgLyoqCj4g
+ICAqIHN0cnVjdCByb2NrY2hpcF9jbGtfcHJvdmlkZXIgLSBpbmZvcm1hdGlvbiBhYm91dCBjbG9j
+ayBwcm92aWRlcgo+ICAgKiBAcmVnX2Jhc2U6IHZpcnR1YWwgYWRkcmVzcyBmb3IgdGhlIHJlZ2lz
+dGVyIGJhc2UuCj4gQEAgLTI4OCw2ICsyOTksMTMgQEAgc3RydWN0IHJvY2tjaGlwX3BsbF9yYXRl
+X3RhYmxlIHsKPiAgCQkJdW5zaWduZWQgaW50IGRzbXBkOwo+ICAJCQl1bnNpZ25lZCBpbnQgZnJh
+YzsKPiAgCQl9Owo+ICsJCXN0cnVjdCB7Cj4gKwkJCS8qIGZvciBSSzM1ODggKi8KPiArCQkJdW5z
+aWduZWQgaW50IG07Cj4gKwkJCXVuc2lnbmVkIGludCBwOwo+ICsJCQl1bnNpZ25lZCBpbnQgczsK
+PiArCQkJdW5zaWduZWQgaW50IGs7Cj4gKwkJfTsKPiAgCX07Cj4gIH07Cj4gIAo+IC0tIAo+IDIu
+MzUuMQo+IAo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
