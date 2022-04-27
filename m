@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E421C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Apr 2022 07:51:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44974C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Apr 2022 07:52:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nia4sfnNHIW7G2oHqbzAOBM4GUyDPM8+N1pwdUlHD+I=; b=z34QwgQuUqZovG
-	8r+G+R4RUFU4aYy3YVXzNBN6kCvEhKKMxvA1AZJylYZVzDhT81qOMBiKxv5iKIfAqL7V2lbenBUpF
-	BBAZqa2cABPJe2vFGrWG0MVQmyI6i6bzoGkuPouH2pBdoU1O81LYHdhm4bQPtPKY2EsWGcJOIIfKv
-	cq8CUv5w/Rilu7DIyF5Xp+JHKHkUSkVUD1O+lBDLyixtwM0H98qGZ9PaB/v6ZA9XyOalqoEx2VIq4
-	lJf4JOaEeHNb+39eolEV8fnIQmVAnVBiuRsdxTtgKsesMqz7lMQlUfuvF83UWpX/pdXkGfeABXohi
-	amofFNs3WlC0IH9jLPEg==;
+	List-Owner; bh=ktUfgYmyPm/R2+6eBonfXX5eymUJG0LSRmDFTX3QRRI=; b=Yf2glQKTHEJNhs
+	Z7Blck8ZFGvOdjy+BAQ/QffOOnohrTlszHQXAe0nsIqXGVDUthNTpPzWM9eYYXYg2LXIFU8ZWHxo1
+	zDEFW5ip/s1e521UXwcsMjhSmqQtVspcdLxIhv97D4AH4HaMNYPsDC9FLY/2cRQSTsfI/4zDnvLSx
+	JUf9LOlc2javyVPjCmQeL2w5DgkiASpas+RQHv1qZPW9iZoMxsxaFVbTblEUbLambfl/t3YNAzLIe
+	xyCO7HFH5BslwPqVpC4ChiyGQ+u0WJmN/EwZ9Ym5/NT1TXrECdcekIycQg6ImgoTNB3aCHoZvbmw5
+	lgzwJzDdbuMKCivLJ56Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njcSX-000Oj2-Ty; Wed, 27 Apr 2022 07:51:37 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1njcTD-000P6M-RZ; Wed, 27 Apr 2022 07:52:19 +0000
+Received: from mga03.intel.com ([134.134.136.65])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njcSG-000ObY-Nn; Wed, 27 Apr 2022 07:51:22 +0000
+ id 1njcSz-000Ots-RD; Wed, 27 Apr 2022 07:52:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1651045880; x=1682581880;
+ t=1651045925; x=1682581925;
  h=message-id:date:mime-version:subject:to:cc:references:
  from:in-reply-to:content-transfer-encoding;
- bh=Hv6fHgeIQZHcenF/6YwhqZqdu/V0rQKHOkVPgpJ76XE=;
- b=GqTemwow4jEGWiqmm3kheKzC8hFxQdILF/oXvPk56ABMkQVb+/BIIMZJ
- vsoKJoPUgu5c1tZ2lLQa7Wa2okKKwYyr8C7K8h4kGD3+ce4Hq1fJ7IDmd
- hEga5rvjCO+3HQhKRd8pmyjGO7QT76ASz4MBTGFE4Okh05kY2Np4uIm8o
- GaAvRA8gy21ABesT7YFjOPkPGOnnRoy6MlqRsdID1wQJPoNWG6JMXamai
- NPECrR2CnRiS5CPysO3nikkQopILeWDD9RGWaIaD5FK36UAWm9EtWa7l+
- PswAcbuefqHnpkPGqfKB5uKOFOR3Nxc6oEidpfGzgn6Pe3iyp2IDcnpP4 Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10329"; a="266012671"
-X-IronPort-AV: E=Sophos;i="5.90,292,1643702400"; d="scan'208";a="266012671"
+ bh=kHEYCuupGjrrRD+V/W1xr234pxONkXoJXwGYNFi1AnY=;
+ b=c11h9QW7R8P/rt6e1Yuy2VjV7IzMUipKpzJcphKyHoRl/9PqaItkboDk
+ q57bjwEH3j1Eg2wIihcTWxnhoCQj+RawqBAp5L3/EjgJNfL/wCDkE8WSi
+ PRwOyFC8rlEV4dO5uE7lpqMjlLvE1AWfoH//ClsWhwLQEUoaVN/I1vReb
+ QKq+WXyHIjmEvGPjvbY5+oS/R5gAuaBZHJ2B17C7tNGx9WYslIOt+pfUo
+ oVhcIxioQ5ND2Mtzx/NnlY6DDs3YzGeg71KCaQDykT17i5p5xjrAuEYP5
+ JxIPkOuAA37ECIasggwH7JkiGCG2v/jSO15u71ZqhQgfjA6LWp7G0f3Ga Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10329"; a="265661361"
+X-IronPort-AV: E=Sophos;i="5.90,292,1643702400"; d="scan'208";a="265661361"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Apr 2022 00:51:19 -0700
-X-IronPort-AV: E=Sophos;i="5.90,292,1643702400"; d="scan'208";a="580450828"
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Apr 2022 00:51:47 -0700
+X-IronPort-AV: E=Sophos;i="5.90,292,1643702400"; d="scan'208";a="580450929"
 Received: from ahunter6-mobl1.ger.corp.intel.com (HELO [10.0.2.15])
  ([10.252.60.122])
  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Apr 2022 00:51:14 -0700
-Message-ID: <f94d82bb-297b-e1cd-9dd1-b25eccc64744@intel.com>
-Date: Wed, 27 Apr 2022 10:51:10 +0300
+ 27 Apr 2022 00:51:41 -0700
+Message-ID: <cf0b7980-e58d-e5f8-682c-c5defdffb872@intel.com>
+Date: Wed, 27 Apr 2022 10:51:38 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Firefox/91.0 Thunderbird/91.7.0
-Subject: Re: [PATCHv1 09/19] mmc: sdhci-of-dwcmshc: rename rk3568 to rk35xx
+Subject: Re: [PATCHv1 10/19] mmc: sdhci-of-dwcmshc: add support for rk3588
 Content-Language: en-US
 To: Sebastian Reichel <sebastian.reichel@collabora.com>,
  Heiko Stuebner <heiko@sntech.de>
@@ -64,16 +64,16 @@ Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
  linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, kernel@lists.collabora.co.uk,
- kernel@collabora.com
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>, kernel@collabora.com
 References: <20220422170920.401914-1-sebastian.reichel@collabora.com>
- <20220422170920.401914-10-sebastian.reichel@collabora.com>
+ <20220422170920.401914-11-sebastian.reichel@collabora.com>
 From: Adrian Hunter <adrian.hunter@intel.com>
 Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
  Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-In-Reply-To: <20220422170920.401914-10-sebastian.reichel@collabora.com>
+In-Reply-To: <20220422170920.401914-11-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_005120_840194_6D152962 
-X-CRM114-Status: GOOD (  20.85  )
+X-CRM114-CacheID: sfid-20220427_005205_990837_6D6D7047 
+X-CRM114-Status: GOOD (  33.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,197 +92,251 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 22/04/22 20:09, Sebastian Reichel wrote:
-> Prepare driver for rk3588 support by renaming the internal data
-> structures.
+> From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
 > 
+> Add support for RK3588's DWCMSHC controller, which is used for
+> providing the rootfs on the RK3588 evaluation board.
+> 
+> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> [port from vendor BSP]
 > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+One comment otherwise:
 
 Acked-by: Adrian Hunter <adrian.hunter@intel.com>
 
+
 > ---
->  drivers/mmc/host/sdhci-of-dwcmshc.c | 46 ++++++++++++++---------------
->  1 file changed, 23 insertions(+), 23 deletions(-)
+>  drivers/mmc/host/sdhci-of-dwcmshc.c | 113 +++++++++++++++++++++++-----
+>  1 file changed, 96 insertions(+), 17 deletions(-)
 > 
 > diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> index d95ae6ca1256..54ae0268e002 100644
+> index 54ae0268e002..bc365767e66c 100644
 > --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
 > +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> @@ -56,14 +56,14 @@
+> @@ -31,6 +31,7 @@
+>  /* Offset inside the  vendor area 1 */
+>  #define DWCMSHC_HOST_CTRL3		0x8
+>  #define DWCMSHC_EMMC_CONTROL		0x2c
+> +#define DWCMSHC_CARD_IS_EMMC		BIT(0)
+>  #define DWCMSHC_ENHANCED_STROBE		BIT(8)
+>  #define DWCMSHC_EMMC_ATCTRL		0x40
+>  
+> @@ -39,7 +40,7 @@
+>  #define DWCMSHC_EMMC_DLL_RXCLK		0x804
+>  #define DWCMSHC_EMMC_DLL_TXCLK		0x808
+>  #define DWCMSHC_EMMC_DLL_STRBIN		0x80c
+> -#define DLL_STRBIN_TAPNUM_FROM_SW	BIT(24)
+> +#define DECMSHC_EMMC_DLL_CMDOUT		0x810
+>  #define DWCMSHC_EMMC_DLL_STATUS0	0x840
+>  #define DWCMSHC_EMMC_DLL_START		BIT(0)
+>  #define DWCMSHC_EMMC_DLL_LOCKED		BIT(8)
+> @@ -48,11 +49,21 @@
+>  #define DWCMSHC_EMMC_DLL_START_POINT	16
+>  #define DWCMSHC_EMMC_DLL_INC		8
+>  #define DWCMSHC_EMMC_DLL_DLYENA		BIT(27)
+> -#define DLL_TXCLK_TAPNUM_DEFAULT	0x8
+> -#define DLL_STRBIN_TAPNUM_DEFAULT	0x8
+> +#define DLL_TXCLK_TAPNUM_DEFAULT	0x10
+> +#define DLL_TXCLK_TAPNUM_90_DEGREES	0xA
+>  #define DLL_TXCLK_TAPNUM_FROM_SW	BIT(24)
+> +#define DLL_STRBIN_TAPNUM_DEFAULT	0x8
+> +#define DLL_STRBIN_TAPNUM_FROM_SW	BIT(24)
+> +#define DLL_STRBIN_DELAY_NUM_SEL	BIT(26)
+> +#define DLL_STRBIN_DELAY_NUM_OFFSET	16
+> +#define DLL_STRBIN_DELAY_NUM_DEFAULT	0x16
+>  #define DLL_RXCLK_NO_INVERTER		1
+>  #define DLL_RXCLK_INVERTER		0
+> +#define DLL_CMDOUT_TAPNUM_90_DEGREES	0x8
+> +#define DLL_CMDOUT_TAPNUM_FROM_SW	BIT(24)
+> +#define DLL_CMDOUT_SRC_CLK_NEG		BIT(28)
+> +#define DLL_CMDOUT_EN_SRC_CLK_NEG	BIT(29)
+> +
 >  #define DLL_LOCK_WO_TMOUT(x) \
 >  	((((x) & DWCMSHC_EMMC_DLL_LOCKED) == DWCMSHC_EMMC_DLL_LOCKED) && \
 >  	(((x) & DWCMSHC_EMMC_DLL_TIMEOUT) == 0))
-> -#define RK3568_MAX_CLKS 3
-> +#define RK35xx_MAX_CLKS 3
->  
+> @@ -61,10 +72,16 @@
 >  #define BOUNDARY_OK(addr, len) \
 >  	((addr | (SZ_128M - 1)) == ((addr + len - 1) | (SZ_128M - 1)))
 >  
-> -struct rk3568_priv {
-> +struct rk35xx_priv {
+> +enum dwcmshc_rk_type {
+> +	DWCMSHC_RK3568,
+> +	DWCMSHC_RK3588,
+> +};
+> +
+>  struct rk35xx_priv {
 >  	/* Rockchip specified optional clocks */
-> -	struct clk_bulk_data rockchip_clks[RK3568_MAX_CLKS];
-> +	struct clk_bulk_data rockchip_clks[RK35xx_MAX_CLKS];
+>  	struct clk_bulk_data rockchip_clks[RK35xx_MAX_CLKS];
 >  	struct reset_control *reset;
+> +	enum dwcmshc_rk_type devtype;
 >  	u8 txclk_tapnum;
 >  };
-> @@ -178,7 +178,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+>  
+> @@ -133,7 +150,9 @@ static void dwcmshc_request(struct mmc_host *mmc, struct mmc_request *mrq)
+>  static void dwcmshc_set_uhs_signaling(struct sdhci_host *host,
+>  				      unsigned int timing)
 >  {
->  	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
->  	struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
-> -	struct rk3568_priv *priv = dwc_priv->priv;
-> +	struct rk35xx_priv *priv = dwc_priv->priv;
->  	u8 txclk_tapnum = DLL_TXCLK_TAPNUM_DEFAULT;
->  	u32 extra, reg;
->  	int err;
-> @@ -283,7 +283,7 @@ static const struct sdhci_ops sdhci_dwcmshc_ops = {
->  	.adma_write_desc	= dwcmshc_adma_write_desc,
->  };
+> -	u16 ctrl_2;
+> +	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
+> +	struct dwcmshc_priv *priv = sdhci_pltfm_priv(pltfm_host);
+> +	u16 ctrl, ctrl_2;
 >  
-> -static const struct sdhci_ops sdhci_dwcmshc_rk3568_ops = {
-> +static const struct sdhci_ops sdhci_dwcmshc_rk35xx_ops = {
->  	.set_clock		= dwcmshc_rk3568_set_clock,
->  	.set_bus_width		= sdhci_set_bus_width,
->  	.set_uhs_signaling	= dwcmshc_set_uhs_signaling,
-> @@ -298,18 +298,18 @@ static const struct sdhci_pltfm_data sdhci_dwcmshc_pdata = {
->  	.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN,
->  };
+>  	ctrl_2 = sdhci_readw(host, SDHCI_HOST_CONTROL2);
+>  	/* Select Bus Speed Mode for host */
+> @@ -151,8 +170,15 @@ static void dwcmshc_set_uhs_signaling(struct sdhci_host *host,
+>  	else if ((timing == MMC_TIMING_UHS_DDR50) ||
+>  		 (timing == MMC_TIMING_MMC_DDR52))
+>  		ctrl_2 |= SDHCI_CTRL_UHS_DDR50;
+> -	else if (timing == MMC_TIMING_MMC_HS400)
+> +	else if (timing == MMC_TIMING_MMC_HS400) {
+> +		/* set CARD_IS_EMMC bit to enable Data Strobe for HS400 */
+> +		ctrl = sdhci_readw(host, priv->vendor_specific_area1 + DWCMSHC_EMMC_CONTROL);
+> +		ctrl |= DWCMSHC_CARD_IS_EMMC;
+> +		sdhci_writew(host, ctrl, priv->vendor_specific_area1 + DWCMSHC_EMMC_CONTROL);
+> +
+>  		ctrl_2 |= DWCMSHC_CTRL_HS400;
+> +	}
+> +
+>  	sdhci_writew(host, ctrl_2, SDHCI_HOST_CONTROL2);
+>  }
 >  
-> -static const struct sdhci_pltfm_data sdhci_dwcmshc_rk3568_pdata = {
-> -	.ops = &sdhci_dwcmshc_rk3568_ops,
-> +static const struct sdhci_pltfm_data sdhci_dwcmshc_rk35xx_pdata = {
-> +	.ops = &sdhci_dwcmshc_rk35xx_ops,
->  	.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
->  		  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
->  	.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
->  		   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
->  };
+> @@ -185,17 +211,11 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
 >  
-> -static int dwcmshc_rk3568_init(struct sdhci_host *host, struct dwcmshc_priv *dwc_priv)
-> +static int dwcmshc_rk35xx_init(struct sdhci_host *host, struct dwcmshc_priv *dwc_priv)
->  {
->  	int err;
-> -	struct rk3568_priv *priv = dwc_priv->priv;
-> +	struct rk35xx_priv *priv = dwc_priv->priv;
+>  	host->mmc->actual_clock = 0;
 >  
->  	priv->reset = devm_reset_control_array_get_exclusive(mmc_dev(host->mmc));
->  	if (IS_ERR_OR_NULL(priv->reset)) {
-> @@ -321,14 +321,14 @@ static int dwcmshc_rk3568_init(struct sdhci_host *host, struct dwcmshc_priv *dwc
->  	priv->rockchip_clks[0].id = "axi";
->  	priv->rockchip_clks[1].id = "block";
->  	priv->rockchip_clks[2].id = "timer";
-> -	err = devm_clk_bulk_get_optional(mmc_dev(host->mmc), RK3568_MAX_CLKS,
-> +	err = devm_clk_bulk_get_optional(mmc_dev(host->mmc), RK35xx_MAX_CLKS,
->  					 priv->rockchip_clks);
->  	if (err) {
->  		dev_err(mmc_dev(host->mmc), "failed to get clocks %d\n", err);
->  		return err;
+> -	/*
+> -	 * DO NOT TOUCH THIS SETTING. RX clk inverter unit is enabled
+> -	 * by default, but it shouldn't be enabled. We should anyway
+> -	 * disable it before issuing any cmds.
+> -	 */
+> -	extra = DWCMSHC_EMMC_DLL_DLYENA |
+> -		DLL_RXCLK_NO_INVERTER << DWCMSHC_EMMC_DLL_RXCLK_SRCSEL;
+> -	sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_RXCLK);
+> -
+> -	if (clock == 0)
+> +	if (clock == 0) {
+> +		/* Disable interface clock at initial state. */
+> +		sdhci_set_clock(host, clock);
+>  		return;
+> +	}
+>  
+>  	/* Rockchip platform only support 375KHz for identify mode */
+>  	if (clock <= 400000)
+> @@ -213,9 +233,21 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+>  	extra &= ~BIT(0);
+>  	sdhci_writel(host, extra, reg);
+>  
+> -	if (clock <= 400000) {
+> -		/* Disable DLL to reset sample clock */
+> +	if (clock <= 52000000) {
+> +		/* Disable DLL and reset both of sample and drive clock */
+>  		sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_CTRL);
+> +		sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_RXCLK);
+> +		sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_TXCLK);
+> +		sdhci_writel(host, 0, DECMSHC_EMMC_DLL_CMDOUT);
+> +		/*
+> +		 * Before switching to hs400es mode, the driver will enable
+> +		 * enhanced strobe first. PHY needs to configure the parameters
+> +		 * of enhanced strobe first.
+> +		 */
+> +		extra = DWCMSHC_EMMC_DLL_DLYENA |
+> +			DLL_STRBIN_DELAY_NUM_SEL |
+> +			DLL_STRBIN_DELAY_NUM_DEFAULT << DLL_STRBIN_DELAY_NUM_OFFSET;
+> +		sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_STRBIN);
+>  		return;
 >  	}
 >  
-> -	err = clk_bulk_prepare_enable(RK3568_MAX_CLKS, priv->rockchip_clks);
-> +	err = clk_bulk_prepare_enable(RK35xx_MAX_CLKS, priv->rockchip_clks);
->  	if (err) {
->  		dev_err(mmc_dev(host->mmc), "failed to enable clocks %d\n", err);
->  		return err;
-> @@ -350,7 +350,7 @@ static int dwcmshc_rk3568_init(struct sdhci_host *host, struct dwcmshc_priv *dwc
+> @@ -224,6 +256,15 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+>  	udelay(1);
+>  	sdhci_writel(host, 0x0, DWCMSHC_EMMC_DLL_CTRL);
+>  
+> +	/*
+> +	 * We shouldn't set DLL_RXCLK_NO_INVERTER for identify mode but
+> +	 * we must set it in higher speed mode.
+> +	 */
+> +	extra = DWCMSHC_EMMC_DLL_DLYENA;
+> +	if (priv->devtype == DWCMSHC_RK3568)
+> +		extra |= DLL_RXCLK_NO_INVERTER << DWCMSHC_EMMC_DLL_RXCLK_SRCSEL;
+> +	sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_RXCLK);
+> +
+>  	/* Init DLL settings */
+>  	extra = 0x5 << DWCMSHC_EMMC_DLL_START_POINT |
+>  		0x2 << DWCMSHC_EMMC_DLL_INC |
+> @@ -246,8 +287,20 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+>  	    host->mmc->ios.timing == MMC_TIMING_MMC_HS400)
+>  		txclk_tapnum = priv->txclk_tapnum;
+>  
+> +	if ((priv->devtype == DWCMSHC_RK3588) && host->mmc->ios.timing == MMC_TIMING_MMC_HS400) {
+> +		txclk_tapnum = DLL_TXCLK_TAPNUM_90_DEGREES;
+> +
+> +		extra = DLL_CMDOUT_SRC_CLK_NEG |
+> +			DLL_CMDOUT_EN_SRC_CLK_NEG |
+> +			DWCMSHC_EMMC_DLL_DLYENA |
+> +			DLL_CMDOUT_TAPNUM_90_DEGREES |
+> +			DLL_CMDOUT_TAPNUM_FROM_SW;
+> +		sdhci_writel(host, extra, DECMSHC_EMMC_DLL_CMDOUT);
+> +	}
+> +
+>  	extra = DWCMSHC_EMMC_DLL_DLYENA |
+>  		DLL_TXCLK_TAPNUM_FROM_SW |
+> +		DLL_RXCLK_NO_INVERTER << DWCMSHC_EMMC_DLL_RXCLK_SRCSEL |
+>  		txclk_tapnum;
+>  	sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_TXCLK);
+>  
+> @@ -347,7 +400,25 @@ static int dwcmshc_rk35xx_init(struct sdhci_host *host, struct dwcmshc_priv *dwc
+>  	return 0;
+>  }
+>  
+> +static void dwcmshc_rk35xx_postinit(struct sdhci_host *host, struct dwcmshc_priv *dwc_priv)
+> +{
+> +	/*
+> +	 * Don't support highspeed bus mode with low clk speed as we
+> +	 * cannot use DLL for this condition.
+> +	 */
+> +	if (host->mmc->f_max <= 52000000) {
+> +		dev_info(mmc_dev(host->mmc), "Disabling HS200/HS400, frequency too low (%d)\n",
+> +			 host->mmc->f_max);
+> +		host->mmc->caps2 &= ~(MMC_CAP2_HS200 | MMC_CAP2_HS400);
+> +		host->mmc->caps &= ~(MMC_CAP_3_3V_DDR | MMC_CAP_1_8V_DDR);
+
+Ideally, this should be done before mmc_add_host(), for example by using
+sdhci_setup_host() + __sdhci_add_host() instead of sdhci_add_host(), and
+putting dwcmshc_rk35xx_postinit() between sdhci_setup_host() and
+__sdhci_add_host().
+
+> +	}
+> +}
+> +
 >  static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
+> +	{
+> +		.compatible = "rockchip,rk3588-dwcmshc",
+> +		.data = &sdhci_dwcmshc_rk35xx_pdata,
+> +	},
 >  	{
 >  		.compatible = "rockchip,rk3568-dwcmshc",
-> -		.data = &sdhci_dwcmshc_rk3568_pdata,
-> +		.data = &sdhci_dwcmshc_rk35xx_pdata,
->  	},
->  	{
->  		.compatible = "snps,dwcmshc-sdhci",
-> @@ -373,7 +373,7 @@ static int dwcmshc_probe(struct platform_device *pdev)
->  	struct sdhci_pltfm_host *pltfm_host;
->  	struct sdhci_host *host;
->  	struct dwcmshc_priv *priv;
-> -	struct rk3568_priv *rk_priv = NULL;
-> +	struct rk35xx_priv *rk_priv = NULL;
->  	const struct sdhci_pltfm_data *pltfm_data;
->  	int err;
->  	u32 extra;
-> @@ -428,8 +428,8 @@ static int dwcmshc_probe(struct platform_device *pdev)
->  	host->mmc_host_ops.request = dwcmshc_request;
->  	host->mmc_host_ops.hs400_enhanced_strobe = dwcmshc_hs400_enhanced_strobe;
->  
-> -	if (pltfm_data == &sdhci_dwcmshc_rk3568_pdata) {
-> -		rk_priv = devm_kzalloc(&pdev->dev, sizeof(struct rk3568_priv), GFP_KERNEL);
-> +	if (pltfm_data == &sdhci_dwcmshc_rk35xx_pdata) {
-> +		rk_priv = devm_kzalloc(&pdev->dev, sizeof(struct rk35xx_priv), GFP_KERNEL);
->  		if (!rk_priv) {
->  			err = -ENOMEM;
+>  		.data = &sdhci_dwcmshc_rk35xx_pdata,
+> @@ -435,6 +506,11 @@ static int dwcmshc_probe(struct platform_device *pdev)
 >  			goto err_clk;
-> @@ -437,7 +437,7 @@ static int dwcmshc_probe(struct platform_device *pdev)
+>  		}
 >  
+> +		if (of_device_is_compatible(pdev->dev.of_node, "rockchip,rk3588-dwcmshc"))
+> +			rk_priv->devtype = DWCMSHC_RK3588;
+> +		else
+> +			rk_priv->devtype = DWCMSHC_RK3568;
+> +
 >  		priv->priv = rk_priv;
 >  
-> -		err = dwcmshc_rk3568_init(host, priv);
-> +		err = dwcmshc_rk35xx_init(host, priv);
->  		if (err)
->  			goto err_clk;
->  	}
-> @@ -454,7 +454,7 @@ static int dwcmshc_probe(struct platform_device *pdev)
->  	clk_disable_unprepare(pltfm_host->clk);
->  	clk_disable_unprepare(priv->bus_clk);
->  	if (rk_priv)
-> -		clk_bulk_disable_unprepare(RK3568_MAX_CLKS,
-> +		clk_bulk_disable_unprepare(RK35xx_MAX_CLKS,
->  					   rk_priv->rockchip_clks);
->  free_pltfm:
->  	sdhci_pltfm_free(pdev);
-> @@ -466,14 +466,14 @@ static int dwcmshc_remove(struct platform_device *pdev)
->  	struct sdhci_host *host = platform_get_drvdata(pdev);
->  	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
->  	struct dwcmshc_priv *priv = sdhci_pltfm_priv(pltfm_host);
-> -	struct rk3568_priv *rk_priv = priv->priv;
-> +	struct rk35xx_priv *rk_priv = priv->priv;
+>  		err = dwcmshc_rk35xx_init(host, priv);
+> @@ -448,6 +524,9 @@ static int dwcmshc_probe(struct platform_device *pdev)
+>  	if (err)
+>  		goto err_clk;
 >  
->  	sdhci_remove_host(host, 0);
+> +	if (rk_priv)
+> +		dwcmshc_rk35xx_postinit(host, priv);
+> +
+>  	return 0;
 >  
->  	clk_disable_unprepare(pltfm_host->clk);
->  	clk_disable_unprepare(priv->bus_clk);
->  	if (rk_priv)
-> -		clk_bulk_disable_unprepare(RK3568_MAX_CLKS,
-> +		clk_bulk_disable_unprepare(RK35xx_MAX_CLKS,
->  					   rk_priv->rockchip_clks);
->  	sdhci_pltfm_free(pdev);
->  
-> @@ -486,7 +486,7 @@ static int dwcmshc_suspend(struct device *dev)
->  	struct sdhci_host *host = dev_get_drvdata(dev);
->  	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
->  	struct dwcmshc_priv *priv = sdhci_pltfm_priv(pltfm_host);
-> -	struct rk3568_priv *rk_priv = priv->priv;
-> +	struct rk35xx_priv *rk_priv = priv->priv;
->  	int ret;
->  
->  	ret = sdhci_suspend_host(host);
-> @@ -498,7 +498,7 @@ static int dwcmshc_suspend(struct device *dev)
->  		clk_disable_unprepare(priv->bus_clk);
->  
->  	if (rk_priv)
-> -		clk_bulk_disable_unprepare(RK3568_MAX_CLKS,
-> +		clk_bulk_disable_unprepare(RK35xx_MAX_CLKS,
->  					   rk_priv->rockchip_clks);
->  
->  	return ret;
-> @@ -509,7 +509,7 @@ static int dwcmshc_resume(struct device *dev)
->  	struct sdhci_host *host = dev_get_drvdata(dev);
->  	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
->  	struct dwcmshc_priv *priv = sdhci_pltfm_priv(pltfm_host);
-> -	struct rk3568_priv *rk_priv = priv->priv;
-> +	struct rk35xx_priv *rk_priv = priv->priv;
->  	int ret;
->  
->  	ret = clk_prepare_enable(pltfm_host->clk);
-> @@ -523,7 +523,7 @@ static int dwcmshc_resume(struct device *dev)
->  	}
->  
->  	if (rk_priv) {
-> -		ret = clk_bulk_prepare_enable(RK3568_MAX_CLKS,
-> +		ret = clk_bulk_prepare_enable(RK35xx_MAX_CLKS,
->  					      rk_priv->rockchip_clks);
->  		if (ret)
->  			return ret;
+>  err_clk:
 
 
 _______________________________________________
