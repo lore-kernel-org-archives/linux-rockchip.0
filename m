@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C92CC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Apr 2022 17:32:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 116F0C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Apr 2022 17:51:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/3UDW+bunejEd4f5iYRLzZ3wDye9tKjaKivBbJrFHiI=; b=AS7ImCiKNf7qZ7
-	M79coitdnJSxf/kzdlAydpuWPHzHiZ/kCq2ph9aSwZVpKEWJghCsMRpFFPM3Woj8LHTJ1CriyQvJV
-	lCZ6sSwptQWe0L8huEhZULD1g/dMdwYx+LkqeuhHHYa7LfjIUkTt1Yvw2EjRVmgTP6aWxQGM6FUCy
-	AK5tYzmDswQKp8zmOb1R2ng1MkqqBXzXoSdZEMkw4PmcV5lHcb+P4LZ8LzQvHBKuneDR7N0jamFNe
-	7qhn4tjsOCrGYef099kVXsUN5tEZp8HVSJGaqdUkGKpTfdvogA8Ox1WfgqI/nTwrF/DljfRFzRqPY
-	2guUf2SVosNqBiQrwDYw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MRzJnxXcMzMDfCIlkMu2kfLYfvGjwL/SoBuVSDHkDhM=; b=nis9mJbP2RLsfA
+	gz+fSCSrvIBAfViAcIq0oKBddUTpKAFVhR9ylbt3IGEeCHyGH74U6VjqINnjtyLONVEE5OlgaG4H+
+	J9aa3crQ63MfX+c1gzxypkDHIjCJoRQyDDPA3YxTFN8nAYNQ0IQ6/byl46Q+JIM+sQLWERyZ2937g
+	MR7nON3i54z3xBtBVag8tXFWKMjCBoqwyc2EGnGh2sTNyAcxTjyuGFGxfSSy69W1ypaMPW8bkEZZ3
+	cuLpx8BM9qYqHbvljhSTYteiH0Z6sDhznXctcn5kpqk2+ny9qq1S8fZSGi51R3yS/4VU1oY1PdnD9
+	aeYRBc2sTmzYfCMxpGBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njlWc-002gsF-VT; Wed, 27 Apr 2022 17:32:27 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1njlpR-002oDw-4p; Wed, 27 Apr 2022 17:51:53 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njlPT-002e42-6F
- for linux-rockchip@lists.infradead.org; Wed, 27 Apr 2022 17:25:04 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id l7so4808094ejn.2
- for <linux-rockchip@lists.infradead.org>; Wed, 27 Apr 2022 10:24:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=P52XUlnvWCDbdpSO0eow56ta8BYIoktLvffWsEefpbg=;
- b=EYyIJudDhVOE7nkfQP1R77baA7wbkc6ve+j0cW06+oPnAeLrfHkIPvjhM8VSs9RP54
- WUrZl2qV8Hp9WrdgrHudUuNOmQAsSwugxTKF0zdZhb98lU01+kJ0uTZZHDnfHo23KF8f
- 7vJtUWbeJBZ48O+Rcz70/expiyA/HgPVGjOqzUyb1HzVmRkKPtKel1pAC8TrwJeDHSMa
- FR7WouWdsXS4BTgy5cayvj6E92lge1vx0YVkzM6lujQbbz75L2BvdPJnKRJVjEZyZTx5
- j8y1AT6+O7co6I6cll+Za0mbqMSTkEYbhG2ewGuphRI4UjAVKzM2+G71/z2L2pwD7pCt
- Lhrw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=P52XUlnvWCDbdpSO0eow56ta8BYIoktLvffWsEefpbg=;
- b=6IR1CVPLeW/8ZEgMAK7QNiPwsin7htgFYvUknyVZV5eE1fs1AaPGE8ISmJz48el/YV
- Gaqz6+iqPP14JvlQhgOiL+J8wvXouSPe/lWI0xlsCuZ0gzoL6qsstm+dGnW8sM2P1rdq
- ReltE9042+3H04+MZ6hMEnNC0KXK9A352zXNLCISXJQFkHHBCcBw0Xoi3vWiQqntSHps
- ZiBaNwIZr2xxwG7MIZTr8dfIOJ1zHGPPxW68Rdas7Bhp/EKsjqz7EBeqXMw4SV6j6vg0
- 5gFxzvEZE1KIEw6Fo97v4QAa1qTW/izuNE5Riusa4prX6CMF8uBMpy3YH/iCvNzozxK9
- YgfA==
-X-Gm-Message-State: AOAM5337w76uAS2hv32ugpKNP4fpoxn4TSnpk1jCBbNB1eBjMgkac1D3
- EjYIcMdMXX5p5YjOcACxDXQ=
-X-Google-Smtp-Source: ABdhPJwtWnz45yI608lXspTGLXjHmcLI45v3raOCKlRDG2j3PHMzL3wk9KyjzWEraDNpDJY3BuR5sg==
-X-Received: by 2002:a17:907:97c9:b0:6db:ab53:1fdf with SMTP id
- js9-20020a17090797c900b006dbab531fdfmr27725391ejc.406.1651080298559; 
- Wed, 27 Apr 2022 10:24:58 -0700 (PDT)
-Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84]) by smtp.gmail.com with ESMTPSA id
- z2-20020a05640235c200b00425fff78dbbsm3328443edc.49.2022.04.27.10.24.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Apr 2022 10:24:57 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] ASoC: rk3328: fix disabling mclk on pclk probe failure
-Date: Wed, 27 Apr 2022 19:23:11 +0200
-Message-Id: <20220427172310.138638-1-frattaroli.nicolas@gmail.com>
-X-Mailer: git-send-email 2.36.0
+ id 1njlcY-002itS-Tf
+ for linux-rockchip@lists.infradead.org; Wed, 27 Apr 2022 17:38:36 +0000
+Received: from [IPV6:2a01:e0a:120:3210:2c00:b769:f52a:a984] (unknown
+ [IPv6:2a01:e0a:120:3210:2c00:b769:f52a:a984])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 3F3731F44BC0;
+ Wed, 27 Apr 2022 18:38:31 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651081111;
+ bh=DKHT+3N2E30sQ+PZIQ0blxIyuVP2/Uome7ooaaXpxNA=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=mmK1gZ/wxcjHozltOtbc3hRng/GwOYfuG/Pnj9Xq2dBsnswthlPxyldLcJrowabzC
+ Fi2JheDigb5BfzflWWDexy2+1gNIzpebO8BOM0jyt2vE3ZbyeN4C2DApqp1yizIS14
+ BUkQ2WHtPfKs1OUbtPKyAEtO/7G86oBDY3rVmrnUhijupep3tM+jdelh0pDyG+afgx
+ KL8ri5g+NpURL3VN4zEMCS5suUjcnTXLs+eHPj+D5ZWH0uXyUN3rNnO5I52WfiFRpm
+ PN8Cy5Zeo13kMm8gUuvfUZpXXIOfh8U9PFxrO9n9UH9sosfGWBuy2zVGjfQz+yVu9m
+ 0cbzH8JuILEbw==
+Message-ID: <5091e44e-6b44-be2e-f53e-29368009f30d@collabora.com>
+Date: Wed, 27 Apr 2022 19:38:28 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH] media: hantro: HEVC: Fix tile info buffer value
+ computation
+Content-Language: en-US
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ mchehab@kernel.org, gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, jon@nanocrew.net, aford173@gmail.com,
+ kernel@collabora.com
+References: <20220427135517.381959-1-benjamin.gaignard@collabora.com>
+ <20220427142233.GS2462@kadam>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <20220427142233.GS2462@kadam>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_102503_281128_B9C466CF 
-X-CRM114-Status: GOOD (  13.18  )
+X-CRM114-CacheID: sfid-20220427_103835_249753_8AEB5457 
+X-CRM114-Status: GOOD (  17.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,39 +75,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If preparing/enabling the pclk fails, the probe function should
-unprepare and disable the previously prepared and enabled mclk,
-which it doesn't do. This commit rectifies this.
-
-Fixes: c32759035ad2 ("ASoC: rockchip: support ACODEC for rk3328")
-Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
----
- sound/soc/codecs/rk3328_codec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/sound/soc/codecs/rk3328_codec.c b/sound/soc/codecs/rk3328_codec.c
-index 758d439e8c7a..86b679cf7aef 100644
---- a/sound/soc/codecs/rk3328_codec.c
-+++ b/sound/soc/codecs/rk3328_codec.c
-@@ -481,7 +481,7 @@ static int rk3328_platform_probe(struct platform_device *pdev)
- 	ret = clk_prepare_enable(rk3328->pclk);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "failed to enable acodec pclk\n");
--		return ret;
-+		goto err_unprepare_mclk;
- 	}
- 
- 	base = devm_platform_ioremap_resource(pdev, 0);
--- 
-2.36.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDI3LzA0LzIwMjIgw6AgMTY6MjIsIERhbiBDYXJwZW50ZXIgYSDDqWNyaXTCoDoKPiBPbiBX
+ZWQsIEFwciAyNywgMjAyMiBhdCAwMzo1NToxN1BNICswMjAwLCBCZW5qYW1pbiBHYWlnbmFyZCB3
+cm90ZToKPj4gVXNlIHBwcy0+Y29sdW1uX3dpZHRoX21pbnVzMVtqXSArIDEgYXMgdmFsdWUgZm9y
+IHRoZSB0aWxlIGluZm8gYnVmZmVyCj4+IGluc3RlYWQgb2YgcHBzLT5jb2x1bW5fd2lkdGhfbWlu
+dXMxW2ogKyAxXS4KPj4gVGhlIHBhdGNoIGZpeCBEQkxLX0VfVklYU18yLCBEQkxLX0ZfVklYU18y
+LCBEQkxLX0dfVklYU18yLAo+PiBTQU9fQl9NZWRpYVRla181LCBUSUxFU19BX0Npc2NvXzIgYW5k
+IFRJTEVTX0JfQ2lzY29fMSB0ZXN0cyBpbiBmbHVzdGVyLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBC
+ZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4KPiBGaXhl
+czogY2I1ZGQ1YTBmYTUxICgibWVkaWE6IGhhbnRybzogSW50cm9kdWNlIEcyL0hFVkMgZGVjb2Rl
+ciIpCj4KPj4gLS0tCj4+ICAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJf
+aGV2Y19kZWMuYyB8IDIgKy0KPj4gICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEg
+ZGVsZXRpb24oLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50
+cm8vaGFudHJvX2cyX2hldmNfZGVjLmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hh
+bnRyb19nMl9oZXZjX2RlYy5jCj4+IGluZGV4IGJiNTEyMzg5YzFhNS4uZmZlYjJmYmVlZmQyIDEw
+MDY0NAo+PiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9oZXZj
+X2RlYy5jCj4+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hl
+dmNfZGVjLmMKPj4gQEAgLTc0LDcgKzc0LDcgQEAgc3RhdGljIHZvaWQgcHJlcGFyZV90aWxlX2lu
+Zm9fYnVmZmVyKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpCj4+ICAgCQkJCQlub19jaHJvbWEgPSAx
+Owo+PiAgIAkJCQlmb3IgKGogPSAwLCB0bXBfdyA9IDA7IGogPCBudW1fdGlsZV9jb2xzIC0gMTsg
+aisrKSB7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIF5eXl4KPiBJcyB0aGlzICItIDEiIHN0aWxsIHJlcXVp
+cmVkPyAgSSB3b3VsZCBoYXZlIGFzc3VtZWQgdGhlICItIDEiIGhlcmUgd2FzCj4gY29ubmVjdGVk
+IHdpdGggdGhlIFtqICsgMV0uICBXaGF0IGlzIHN0b3JlZCBpbiB0aGUgbGFzdCBlbGVtZW50IG9m
+IHRoZQo+IC0+Y29sdW1uX3dpZHRoX21pbnVzMSBhcnJheT8KCk5vICItIDEiIGNvbWVzIGZyb20g
+dGhlIGRlZmluaXRpb24gb2YgdGhlIGZpZWxkIGluIEguMjY1IHdoaWNoIGlzIHBwcy0+bnVtX3Rp
+bGVfY29sdW1uc19taW51czEKV2UgYWRkIDEgdG8gZmlsbCB0aGUgcmVnaXN0ZXJzIHNvIHdlIG5l
+ZWQgdGhlICItIDEiIGluIHRoZSBsb29wLgpEYXRhIG9yZGVyaW5nIGlzbid0IGRvY3VtZW50ZWQg
+YW55d2hlcmUgc28gdGhhdCBwYXJ0IGlzIGRpcmVjdGx5IGluc3BpcmVkIGJ5CkhhbnRyby9HMiBw
+cm9wcmlldGFyeSBzdGFjay4KClJlZ2FyZHMsCkJlbmphbWluCgo+Cj4+ICAgCQkJCQl0bXBfdyAr
+PSBwcHMtPmNvbHVtbl93aWR0aF9taW51czFbal0gKyAxOwo+PiAtCQkJCQkqcCsrID0gcHBzLT5j
+b2x1bW5fd2lkdGhfbWludXMxW2ogKyAxXTsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXl5eXl4KPgo+PiAr
+CQkJCQkqcCsrID0gcHBzLT5jb2x1bW5fd2lkdGhfbWludXMxW2pdICsgMTsKPj4gICAJCQkJCSpw
+KysgPSBoOwo+PiAgIAkJCQkJaWYgKGkgPT0gMCAmJiBoID09IDEgJiYgY3RiX3NpemUgPT0gMTYp
+Cj4+ICAgCQkJCQkJbm9fY2hyb21hID0gMTsKPiByZWdhcmRzLAo+IGRhbiBjYXJwZW50ZXIKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
