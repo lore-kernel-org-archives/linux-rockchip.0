@@ -4,61 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDE24C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Apr 2022 14:46:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C92CC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Apr 2022 17:32:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X5zsNrrEx6hT1jc2zetDqv93y4TYS6uz0sgGrreFNso=; b=Xl9weGUDveRwh4ULMT1Kh4xP/h
-	qo0UdcT61GbbOy2s99PLqkxUVk/VZ9LADGoFnm7uKyp/IRjBSXQGLBMgUpJCS1Y1KVHgP/HkEDzHI
-	Mw+EXLQIxbRlQwVEgb8USX3K8kKcx7Bm4XQIyr7mUziFYbvn8g01v0xontRFHvC7DWp5p+Izr3MDn
-	omr5cSbN3DlKaLT0g0DxLDY4qKtP1duexyrRz3qJLYFSHdxburXV1cB14Bnuz9n6STUSn+V9lOjjc
-	LkjMuSJUy0ZmUK7d5CVglWSYqlCwyb5ttouDc/otFVuEB7cVJqexafdWnp+6qUHhc5VAQ2tReK1x1
-	oEQZVNAQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/3UDW+bunejEd4f5iYRLzZ3wDye9tKjaKivBbJrFHiI=; b=AS7ImCiKNf7qZ7
+	M79coitdnJSxf/kzdlAydpuWPHzHiZ/kCq2ph9aSwZVpKEWJghCsMRpFFPM3Woj8LHTJ1CriyQvJV
+	lCZ6sSwptQWe0L8huEhZULD1g/dMdwYx+LkqeuhHHYa7LfjIUkTt1Yvw2EjRVmgTP6aWxQGM6FUCy
+	AK5tYzmDswQKp8zmOb1R2ng1MkqqBXzXoSdZEMkw4PmcV5lHcb+P4LZ8LzQvHBKuneDR7N0jamFNe
+	7qhn4tjsOCrGYef099kVXsUN5tEZp8HVSJGaqdUkGKpTfdvogA8Ox1WfgqI/nTwrF/DljfRFzRqPY
+	2guUf2SVosNqBiQrwDYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njiw5-001rEz-EA; Wed, 27 Apr 2022 14:46:33 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1njlWc-002gsF-VT; Wed, 27 Apr 2022 17:32:27 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njiw2-001rDp-PZ
- for linux-rockchip@lists.infradead.org; Wed, 27 Apr 2022 14:46:32 +0000
-Received: from localhost (unknown [IPv6:2a02:3030:0:1e3e:2277:ba57:a2c0:4])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- (Authenticated sender: sebastianfricke)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 58FD21F40898;
- Wed, 27 Apr 2022 15:46:28 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651070788;
- bh=uPnBJqA7/3gJZoazRFRY0NtvrjeKFWjy3algIjYxiJ4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Kb/UkQ70CysqS726R9AKoHGmM2vrUsQj4301/n25YMFbnt8gVDogsJWgBYF0P4N+S
- CtMFfmQJExEjX/w3NGl0Hk+PGJkIsit+NgRt5rKj5/GK19XRjMNpdnuI5UkuNml3m5
- 4CC33j4iQ/ONoUKoQL5rkSz+BaYb2B4p5DCqaDD35NAl3lEaL/LfD5FLmLEIluG5q+
- vmpzVa6sfhojxQ55yQ6SpRnYAQNH40HC/oJspHik+EFWgywbsiSE+B4JTcUGoLlVTz
- n5HOzibcc3Rtg/ceBDKRV8PX1Xc/RaW4hDJ88TrzK+nIoPqHCm6IcWM7Arsnk2d1Z5
- kS4ILsXt1lGTw==
-Date: Wed, 27 Apr 2022 16:46:24 +0200
-From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- mchehab@kernel.org, gregkh@linuxfoundation.org,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- jon@nanocrew.net, aford173@gmail.com, kernel@collabora.com
-Subject: Re: [PATCH] media: hantro: HEVC: Fix tile info buffer value
- computation
-Message-ID: <20220427144624.vtbdlczmykflccut@basti-XPS-13-9310>
-References: <20220427135517.381959-1-benjamin.gaignard@collabora.com>
+ id 1njlPT-002e42-6F
+ for linux-rockchip@lists.infradead.org; Wed, 27 Apr 2022 17:25:04 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id l7so4808094ejn.2
+ for <linux-rockchip@lists.infradead.org>; Wed, 27 Apr 2022 10:24:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=P52XUlnvWCDbdpSO0eow56ta8BYIoktLvffWsEefpbg=;
+ b=EYyIJudDhVOE7nkfQP1R77baA7wbkc6ve+j0cW06+oPnAeLrfHkIPvjhM8VSs9RP54
+ WUrZl2qV8Hp9WrdgrHudUuNOmQAsSwugxTKF0zdZhb98lU01+kJ0uTZZHDnfHo23KF8f
+ 7vJtUWbeJBZ48O+Rcz70/expiyA/HgPVGjOqzUyb1HzVmRkKPtKel1pAC8TrwJeDHSMa
+ FR7WouWdsXS4BTgy5cayvj6E92lge1vx0YVkzM6lujQbbz75L2BvdPJnKRJVjEZyZTx5
+ j8y1AT6+O7co6I6cll+Za0mbqMSTkEYbhG2ewGuphRI4UjAVKzM2+G71/z2L2pwD7pCt
+ Lhrw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=P52XUlnvWCDbdpSO0eow56ta8BYIoktLvffWsEefpbg=;
+ b=6IR1CVPLeW/8ZEgMAK7QNiPwsin7htgFYvUknyVZV5eE1fs1AaPGE8ISmJz48el/YV
+ Gaqz6+iqPP14JvlQhgOiL+J8wvXouSPe/lWI0xlsCuZ0gzoL6qsstm+dGnW8sM2P1rdq
+ ReltE9042+3H04+MZ6hMEnNC0KXK9A352zXNLCISXJQFkHHBCcBw0Xoi3vWiQqntSHps
+ ZiBaNwIZr2xxwG7MIZTr8dfIOJ1zHGPPxW68Rdas7Bhp/EKsjqz7EBeqXMw4SV6j6vg0
+ 5gFxzvEZE1KIEw6Fo97v4QAa1qTW/izuNE5Riusa4prX6CMF8uBMpy3YH/iCvNzozxK9
+ YgfA==
+X-Gm-Message-State: AOAM5337w76uAS2hv32ugpKNP4fpoxn4TSnpk1jCBbNB1eBjMgkac1D3
+ EjYIcMdMXX5p5YjOcACxDXQ=
+X-Google-Smtp-Source: ABdhPJwtWnz45yI608lXspTGLXjHmcLI45v3raOCKlRDG2j3PHMzL3wk9KyjzWEraDNpDJY3BuR5sg==
+X-Received: by 2002:a17:907:97c9:b0:6db:ab53:1fdf with SMTP id
+ js9-20020a17090797c900b006dbab531fdfmr27725391ejc.406.1651080298559; 
+ Wed, 27 Apr 2022 10:24:58 -0700 (PDT)
+Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
+ [84.72.105.84]) by smtp.gmail.com with ESMTPSA id
+ z2-20020a05640235c200b00425fff78dbbsm3328443edc.49.2022.04.27.10.24.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 Apr 2022 10:24:57 -0700 (PDT)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] ASoC: rk3328: fix disabling mclk on pclk probe failure
+Date: Wed, 27 Apr 2022 19:23:11 +0200
+Message-Id: <20220427172310.138638-1-frattaroli.nicolas@gmail.com>
+X-Mailer: git-send-email 2.36.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220427135517.381959-1-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_074631_106797_A5AFF143 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20220427_102503_281128_B9C466CF 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,46 +86,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hey Benjamin,
+If preparing/enabling the pclk fails, the probe function should
+unprepare and disable the previously prepared and enabled mclk,
+which it doesn't do. This commit rectifies this.
 
-On 27.04.2022 15:55, Benjamin Gaignard wrote:
->Use pps->column_width_minus1[j] + 1 as value for the tile info buffer
->instead of pps->column_width_minus1[j + 1].
->The patch fix DBLK_E_VIXS_2, DBLK_F_VIXS_2, DBLK_G_VIXS_2,
+Fixes: c32759035ad2 ("ASoC: rockchip: support ACODEC for rk3328")
+Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+---
+ sound/soc/codecs/rk3328_codec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-s/fix/fixes/
+diff --git a/sound/soc/codecs/rk3328_codec.c b/sound/soc/codecs/rk3328_codec.c
+index 758d439e8c7a..86b679cf7aef 100644
+--- a/sound/soc/codecs/rk3328_codec.c
++++ b/sound/soc/codecs/rk3328_codec.c
+@@ -481,7 +481,7 @@ static int rk3328_platform_probe(struct platform_device *pdev)
+ 	ret = clk_prepare_enable(rk3328->pclk);
+ 	if (ret < 0) {
+ 		dev_err(&pdev->dev, "failed to enable acodec pclk\n");
+-		return ret;
++		goto err_unprepare_mclk;
+ 	}
+ 
+ 	base = devm_platform_ioremap_resource(pdev, 0);
+-- 
+2.36.0
 
-Greetings,
-Sebastian
-
->SAO_B_MediaTek_5, TILES_A_Cisco_2 and TILES_B_Cisco_1 tests in fluster.
->
->Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
->---
-> drivers/staging/media/hantro/hantro_g2_hevc_dec.c | 2 +-
-> 1 file changed, 1 insertion(+), 1 deletion(-)
->
->diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
->index bb512389c1a5..ffeb2fbeefd2 100644
->--- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
->+++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
->@@ -74,7 +74,7 @@ static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
-> 					no_chroma = 1;
-> 				for (j = 0, tmp_w = 0; j < num_tile_cols - 1; j++) {
-> 					tmp_w += pps->column_width_minus1[j] + 1;
->-					*p++ = pps->column_width_minus1[j + 1];
->+					*p++ = pps->column_width_minus1[j] + 1;
-> 					*p++ = h;
-> 					if (i == 0 && h == 1 && ctb_size == 16)
-> 						no_chroma = 1;
->-- 
->2.32.0
->
 
 _______________________________________________
 Linux-rockchip mailing list
