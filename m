@@ -4,76 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44974C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Apr 2022 07:52:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 244A1C433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 27 Apr 2022 11:29:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ktUfgYmyPm/R2+6eBonfXX5eymUJG0LSRmDFTX3QRRI=; b=Yf2glQKTHEJNhs
-	Z7Blck8ZFGvOdjy+BAQ/QffOOnohrTlszHQXAe0nsIqXGVDUthNTpPzWM9eYYXYg2LXIFU8ZWHxo1
-	zDEFW5ip/s1e521UXwcsMjhSmqQtVspcdLxIhv97D4AH4HaMNYPsDC9FLY/2cRQSTsfI/4zDnvLSx
-	JUf9LOlc2javyVPjCmQeL2w5DgkiASpas+RQHv1qZPW9iZoMxsxaFVbTblEUbLambfl/t3YNAzLIe
-	xyCO7HFH5BslwPqVpC4ChiyGQ+u0WJmN/EwZ9Ym5/NT1TXrECdcekIycQg6ImgoTNB3aCHoZvbmw5
-	lgzwJzDdbuMKCivLJ56Q==;
+	List-Owner; bh=48Icgm+VVx1SAfzceXXUhkrHnQjWNMFDk8FrWDPNE3I=; b=BksWVEZS8ii0+m
+	WDklLTy6Mt+2fdb8qmn4UJoxbz0fyiKyKqwac5Gd/M9ZPG2nNf3qUOdVGwPe9nDpflkSZrO/RXXLe
+	adsclMXf1U44LcE/WGpXjY3cu1IxA/2udC4s0RjM4hpRK/JHQQC5CSzXe8poqU3+lKeEuf7TTCT8Q
+	xvcJQGbSK+/PYyoS2uMMIw9hyOW+lBA78Izc+l2HqXGl+uSILkDbLQE8XXwmLhqY1HS9fJbKgJTVh
+	VtPLypE36nVayDSjRi5dXBh7w8IHZA14eEed66/CrdjXpvDXkDJ1fcFPEpXEpslY4/vuippk5vMVP
+	NqHdAgcnx0Sf7G23Ym3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njcTD-000P6M-RZ; Wed, 27 Apr 2022 07:52:19 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1njfrH-0016AY-0Q; Wed, 27 Apr 2022 11:29:23 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njcSz-000Ots-RD; Wed, 27 Apr 2022 07:52:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1651045925; x=1682581925;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=kHEYCuupGjrrRD+V/W1xr234pxONkXoJXwGYNFi1AnY=;
- b=c11h9QW7R8P/rt6e1Yuy2VjV7IzMUipKpzJcphKyHoRl/9PqaItkboDk
- q57bjwEH3j1Eg2wIihcTWxnhoCQj+RawqBAp5L3/EjgJNfL/wCDkE8WSi
- PRwOyFC8rlEV4dO5uE7lpqMjlLvE1AWfoH//ClsWhwLQEUoaVN/I1vReb
- QKq+WXyHIjmEvGPjvbY5+oS/R5gAuaBZHJ2B17C7tNGx9WYslIOt+pfUo
- oVhcIxioQ5ND2Mtzx/NnlY6DDs3YzGeg71KCaQDykT17i5p5xjrAuEYP5
- JxIPkOuAA37ECIasggwH7JkiGCG2v/jSO15u71ZqhQgfjA6LWp7G0f3Ga Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10329"; a="265661361"
-X-IronPort-AV: E=Sophos;i="5.90,292,1643702400"; d="scan'208";a="265661361"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Apr 2022 00:51:47 -0700
-X-IronPort-AV: E=Sophos;i="5.90,292,1643702400"; d="scan'208";a="580450929"
-Received: from ahunter6-mobl1.ger.corp.intel.com (HELO [10.0.2.15])
- ([10.252.60.122])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Apr 2022 00:51:41 -0700
-Message-ID: <cf0b7980-e58d-e5f8-682c-c5defdffb872@intel.com>
-Date: Wed, 27 Apr 2022 10:51:38 +0300
+ id 1njfqx-0015yI-1j; Wed, 27 Apr 2022 11:29:10 +0000
+Received: by mail-ed1-x534.google.com with SMTP id z19so1555152edx.9;
+ Wed, 27 Apr 2022 04:29:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=NkJteM65W6zQPWRXCAleN3D0FlNTwOT7i0Kr6m0yEgc=;
+ b=hC4TnU/qm3AqQ6GI5lr3KG3Cj5VkamVGPz+q/U1eyBScp9bw/KWsnAH8+n7A+2E3At
+ ez32w2p4cC7TZSv29GvtK5mzZYK9pqNUDUx6zKC2iz1nfxsceYqKPcJhUquPKba/cBO5
+ /BwxPwNpWvy4ooeuRYTMGCMQmt2sarLOWfRQb0DBS7LQM7coTG89EE1fft9ye05dADj9
+ JHikId7CW/lHnk13j8vmg9QUngIMMo+Arfze530vf7rV9ygEEGGB3e75UGiUekGvJi/X
+ CtiCdsVb1H2rpC9djz/6T38ag5ERSrrObBLYQDI2B7Kk8Cq5YqRpfX2IAEHRmAri8Yw3
+ ZuNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=NkJteM65W6zQPWRXCAleN3D0FlNTwOT7i0Kr6m0yEgc=;
+ b=rQDv7omYB7bGOA+ADaRGbm+i2WM+WK5leGCNEMynNO9nP8DXexWKAJRpe/FbudHWSP
+ 48LdjhUhe0BCKiH8WhzwddzSXsEMbjdWvU82Mjuhl2KkzoCDXZCp8u4ClFP35ZYxQ8Yx
+ s6urOQRUxqrqw33CafmzYsxtyltFJZwcy3trzgKUl1V5V/y8/3MqNZMC8LKzyII7lqeI
+ 0w9AWS4lndkmqa4VCL7IabgfbZd9ZGOuj/8YcLWZXnN5HwBP9uZmMIoECNxGeJQywNQh
+ GIB14n+w1oDwDxOg0cx4nGuqWs87GKZGSafI4H3gXq15zOUtQboyQqSL8bLen7+JxIsd
+ AS4Q==
+X-Gm-Message-State: AOAM533RbVsXtKRFr1JS218ZXH7+5/e6TlHLkBpK9x1J/e5TqJccEid7
+ 4HkhkFLpmCdIth+k6Gi0hoE=
+X-Google-Smtp-Source: ABdhPJzLYggzhFJDDA2zXYNCKiXxnqxYBEgVeqOwRyJRgRoaJdh3iPZd2PqxHUdp1VRgRIQo8kZA4g==
+X-Received: by 2002:a05:6402:2932:b0:425:d7b3:e0d1 with SMTP id
+ ee50-20020a056402293200b00425d7b3e0d1mr20731767edb.141.1651058939732; 
+ Wed, 27 Apr 2022 04:28:59 -0700 (PDT)
+Received: from skbuf ([188.25.160.86]) by smtp.gmail.com with ESMTPSA id
+ h22-20020a056402281600b004206bd9d0c6sm8813509ede.8.2022.04.27.04.28.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 Apr 2022 04:28:58 -0700 (PDT)
+Date: Wed, 27 Apr 2022 14:28:56 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>,
+ Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org
+Subject: Re: [RFC v1 2/3] net: dsa: mt753x: make CPU-Port dynamic
+Message-ID: <20220427112856.vzlxnmgm4el4yynj@skbuf>
+References: <20220426134924.30372-1-linux@fw-web.de>
+ <20220426134924.30372-3-linux@fw-web.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Firefox/91.0 Thunderbird/91.7.0
-Subject: Re: [PATCHv1 10/19] mmc: sdhci-of-dwcmshc: add support for rk3588
-Content-Language: en-US
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Bartosz Golaszewski <brgl@bgdev.pl>, Ulf Hansson <ulf.hansson@linaro.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-mmc@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, kernel@lists.collabora.co.uk,
- Yifeng Zhao <yifeng.zhao@rock-chips.com>, kernel@collabora.com
-References: <20220422170920.401914-1-sebastian.reichel@collabora.com>
- <20220422170920.401914-11-sebastian.reichel@collabora.com>
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: PL 281, 00181 Helsinki,
- Business Identity Code: 0357606 - 4, Domiciled in Helsinki
-In-Reply-To: <20220422170920.401914-11-sebastian.reichel@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20220426134924.30372-3-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220427_005205_990837_6D6D7047 
-X-CRM114-Status: GOOD (  33.72  )
+X-CRM114-CacheID: sfid-20220427_042903_199547_0D0DA6BC 
+X-CRM114-Status: GOOD (  52.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,252 +102,347 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 22/04/22 20:09, Sebastian Reichel wrote:
-> From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+On Tue, Apr 26, 2022 at 03:49:23PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Add support for RK3588's DWCMSHC controller, which is used for
-> providing the rootfs on the RK3588 evaluation board.
+> Currently CPU-Port is hardcoded to Port 6.
 > 
-> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> [port from vendor BSP]
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-One comment otherwise:
-
-Acked-by: Adrian Hunter <adrian.hunter@intel.com>
-
-
+> On BPI-R2-Pro board this port is not connected and only Port 5 is
+> connected to gmac of SoC.
+> 
+> Replace this hardcoded CPU-Port with a member in mt7530_priv struct
+> which is set in mt753x_cpu_port_enable to the right port.
+> 
+> I defined a default in probe (in case no CPU-Port will be setup) and
+> if both cpu-port were setup port 6 will be used like the const prior
+> this patch.
+> 
+> In mt7531_setup first access is before we know which port should be used
+> (mt753x_cpu_port_enable) so section "BPDU to CPU port" needs to be moved
+> down.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 > ---
->  drivers/mmc/host/sdhci-of-dwcmshc.c | 113 +++++++++++++++++++++++-----
->  1 file changed, 96 insertions(+), 17 deletions(-)
+>  drivers/net/dsa/mt7530.c | 46 ++++++++++++++++++++++------------------
+>  drivers/net/dsa/mt7530.h |  2 +-
+>  2 files changed, 26 insertions(+), 22 deletions(-)
 > 
-> diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> index 54ae0268e002..bc365767e66c 100644
-> --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
-> +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> @@ -31,6 +31,7 @@
->  /* Offset inside the  vendor area 1 */
->  #define DWCMSHC_HOST_CTRL3		0x8
->  #define DWCMSHC_EMMC_CONTROL		0x2c
-> +#define DWCMSHC_CARD_IS_EMMC		BIT(0)
->  #define DWCMSHC_ENHANCED_STROBE		BIT(8)
->  #define DWCMSHC_EMMC_ATCTRL		0x40
->  
-> @@ -39,7 +40,7 @@
->  #define DWCMSHC_EMMC_DLL_RXCLK		0x804
->  #define DWCMSHC_EMMC_DLL_TXCLK		0x808
->  #define DWCMSHC_EMMC_DLL_STRBIN		0x80c
-> -#define DLL_STRBIN_TAPNUM_FROM_SW	BIT(24)
-> +#define DECMSHC_EMMC_DLL_CMDOUT		0x810
->  #define DWCMSHC_EMMC_DLL_STATUS0	0x840
->  #define DWCMSHC_EMMC_DLL_START		BIT(0)
->  #define DWCMSHC_EMMC_DLL_LOCKED		BIT(8)
-> @@ -48,11 +49,21 @@
->  #define DWCMSHC_EMMC_DLL_START_POINT	16
->  #define DWCMSHC_EMMC_DLL_INC		8
->  #define DWCMSHC_EMMC_DLL_DLYENA		BIT(27)
-> -#define DLL_TXCLK_TAPNUM_DEFAULT	0x8
-> -#define DLL_STRBIN_TAPNUM_DEFAULT	0x8
-> +#define DLL_TXCLK_TAPNUM_DEFAULT	0x10
-> +#define DLL_TXCLK_TAPNUM_90_DEGREES	0xA
->  #define DLL_TXCLK_TAPNUM_FROM_SW	BIT(24)
-> +#define DLL_STRBIN_TAPNUM_DEFAULT	0x8
-> +#define DLL_STRBIN_TAPNUM_FROM_SW	BIT(24)
-> +#define DLL_STRBIN_DELAY_NUM_SEL	BIT(26)
-> +#define DLL_STRBIN_DELAY_NUM_OFFSET	16
-> +#define DLL_STRBIN_DELAY_NUM_DEFAULT	0x16
->  #define DLL_RXCLK_NO_INVERTER		1
->  #define DLL_RXCLK_INVERTER		0
-> +#define DLL_CMDOUT_TAPNUM_90_DEGREES	0x8
-> +#define DLL_CMDOUT_TAPNUM_FROM_SW	BIT(24)
-> +#define DLL_CMDOUT_SRC_CLK_NEG		BIT(28)
-> +#define DLL_CMDOUT_EN_SRC_CLK_NEG	BIT(29)
-> +
->  #define DLL_LOCK_WO_TMOUT(x) \
->  	((((x) & DWCMSHC_EMMC_DLL_LOCKED) == DWCMSHC_EMMC_DLL_LOCKED) && \
->  	(((x) & DWCMSHC_EMMC_DLL_TIMEOUT) == 0))
-> @@ -61,10 +72,16 @@
->  #define BOUNDARY_OK(addr, len) \
->  	((addr | (SZ_128M - 1)) == ((addr + len - 1) | (SZ_128M - 1)))
->  
-> +enum dwcmshc_rk_type {
-> +	DWCMSHC_RK3568,
-> +	DWCMSHC_RK3588,
-> +};
-> +
->  struct rk35xx_priv {
->  	/* Rockchip specified optional clocks */
->  	struct clk_bulk_data rockchip_clks[RK35xx_MAX_CLKS];
->  	struct reset_control *reset;
-> +	enum dwcmshc_rk_type devtype;
->  	u8 txclk_tapnum;
->  };
->  
-> @@ -133,7 +150,9 @@ static void dwcmshc_request(struct mmc_host *mmc, struct mmc_request *mrq)
->  static void dwcmshc_set_uhs_signaling(struct sdhci_host *host,
->  				      unsigned int timing)
->  {
-> -	u16 ctrl_2;
-> +	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
-> +	struct dwcmshc_priv *priv = sdhci_pltfm_priv(pltfm_host);
-> +	u16 ctrl, ctrl_2;
->  
->  	ctrl_2 = sdhci_readw(host, SDHCI_HOST_CONTROL2);
->  	/* Select Bus Speed Mode for host */
-> @@ -151,8 +170,15 @@ static void dwcmshc_set_uhs_signaling(struct sdhci_host *host,
->  	else if ((timing == MMC_TIMING_UHS_DDR50) ||
->  		 (timing == MMC_TIMING_MMC_DDR52))
->  		ctrl_2 |= SDHCI_CTRL_UHS_DDR50;
-> -	else if (timing == MMC_TIMING_MMC_HS400)
-> +	else if (timing == MMC_TIMING_MMC_HS400) {
-> +		/* set CARD_IS_EMMC bit to enable Data Strobe for HS400 */
-> +		ctrl = sdhci_readw(host, priv->vendor_specific_area1 + DWCMSHC_EMMC_CONTROL);
-> +		ctrl |= DWCMSHC_CARD_IS_EMMC;
-> +		sdhci_writew(host, ctrl, priv->vendor_specific_area1 + DWCMSHC_EMMC_CONTROL);
-> +
->  		ctrl_2 |= DWCMSHC_CTRL_HS400;
-> +	}
-> +
->  	sdhci_writew(host, ctrl_2, SDHCI_HOST_CONTROL2);
->  }
->  
-> @@ -185,17 +211,11 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
->  
->  	host->mmc->actual_clock = 0;
->  
-> -	/*
-> -	 * DO NOT TOUCH THIS SETTING. RX clk inverter unit is enabled
-> -	 * by default, but it shouldn't be enabled. We should anyway
-> -	 * disable it before issuing any cmds.
-> -	 */
-> -	extra = DWCMSHC_EMMC_DLL_DLYENA |
-> -		DLL_RXCLK_NO_INVERTER << DWCMSHC_EMMC_DLL_RXCLK_SRCSEL;
-> -	sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_RXCLK);
-> -
-> -	if (clock == 0)
-> +	if (clock == 0) {
-> +		/* Disable interface clock at initial state. */
-> +		sdhci_set_clock(host, clock);
->  		return;
-> +	}
->  
->  	/* Rockchip platform only support 375KHz for identify mode */
->  	if (clock <= 400000)
-> @@ -213,9 +233,21 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
->  	extra &= ~BIT(0);
->  	sdhci_writel(host, extra, reg);
->  
-> -	if (clock <= 400000) {
-> -		/* Disable DLL to reset sample clock */
-> +	if (clock <= 52000000) {
-> +		/* Disable DLL and reset both of sample and drive clock */
->  		sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_CTRL);
-> +		sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_RXCLK);
-> +		sdhci_writel(host, 0, DWCMSHC_EMMC_DLL_TXCLK);
-> +		sdhci_writel(host, 0, DECMSHC_EMMC_DLL_CMDOUT);
-> +		/*
-> +		 * Before switching to hs400es mode, the driver will enable
-> +		 * enhanced strobe first. PHY needs to configure the parameters
-> +		 * of enhanced strobe first.
-> +		 */
-> +		extra = DWCMSHC_EMMC_DLL_DLYENA |
-> +			DLL_STRBIN_DELAY_NUM_SEL |
-> +			DLL_STRBIN_DELAY_NUM_DEFAULT << DLL_STRBIN_DELAY_NUM_OFFSET;
-> +		sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_STRBIN);
->  		return;
+> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+> index ccf4cb944167..4789105b8137 100644
+> --- a/drivers/net/dsa/mt7530.c
+> +++ b/drivers/net/dsa/mt7530.c
+> @@ -1004,6 +1004,7 @@ mt753x_cpu_port_enable(struct dsa_switch *ds, int port)
+>  			return ret;
 >  	}
 >  
-> @@ -224,6 +256,15 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
->  	udelay(1);
->  	sdhci_writel(host, 0x0, DWCMSHC_EMMC_DLL_CTRL);
+> +	priv->cpu_port = port;
+>  	/* Enable Mediatek header mode on the cpu port */
+>  	mt7530_write(priv, MT7530_PVC_P(port),
+>  		     PORT_SPEC_TAG);
+> @@ -1041,7 +1042,7 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
+>  	 * restore the port matrix if the port is the member of a certain
+>  	 * bridge.
+>  	 */
+> -	priv->ports[port].pm |= PCR_MATRIX(BIT(MT7530_CPU_PORT));
+> +	priv->ports[port].pm |= PCR_MATRIX(BIT(priv->cpu_port));
+
+This is called with an "int port" argument, so could you please do:
+
+	struct dsa_port *dp = dsa_to_port(ds, port);
+
+	if (dsa_port_is_user(dp)) {
+		struct dsa_port *cpu_dp = dp->cpu_dp;
+
+		priv->ports[port].pm |= PCR_MATRIX(BIT(cpu_dp->index));
+	}
+
+>  	priv->ports[port].enable = true;
+>  	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
+>  		   priv->ports[port].pm);
+> @@ -1190,8 +1191,8 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
+>  			struct netlink_ext_ack *extack)
+>  {
+>  	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
+> -	u32 port_bitmap = BIT(MT7530_CPU_PORT);
+>  	struct mt7530_priv *priv = ds->priv;
+> +	u32 port_bitmap = BIT(priv->cpu_port);
+
+Here we know for certain that "port" is a user port, so could you please:
+
+	struct dsa_port *cpu_dp = dp->cpu_dp;
+	u32 port_bitmap = BIT(cpu_dp->index);
+
 >  
-> +	/*
-> +	 * We shouldn't set DLL_RXCLK_NO_INVERTER for identify mode but
-> +	 * we must set it in higher speed mode.
-> +	 */
-> +	extra = DWCMSHC_EMMC_DLL_DLYENA;
-> +	if (priv->devtype == DWCMSHC_RK3568)
-> +		extra |= DLL_RXCLK_NO_INVERTER << DWCMSHC_EMMC_DLL_RXCLK_SRCSEL;
-> +	sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_RXCLK);
-> +
->  	/* Init DLL settings */
->  	extra = 0x5 << DWCMSHC_EMMC_DLL_START_POINT |
->  		0x2 << DWCMSHC_EMMC_DLL_INC |
-> @@ -246,8 +287,20 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
->  	    host->mmc->ios.timing == MMC_TIMING_MMC_HS400)
->  		txclk_tapnum = priv->txclk_tapnum;
+>  	mutex_lock(&priv->reg_mutex);
 >  
-> +	if ((priv->devtype == DWCMSHC_RK3588) && host->mmc->ios.timing == MMC_TIMING_MMC_HS400) {
-> +		txclk_tapnum = DLL_TXCLK_TAPNUM_90_DEGREES;
-> +
-> +		extra = DLL_CMDOUT_SRC_CLK_NEG |
-> +			DLL_CMDOUT_EN_SRC_CLK_NEG |
-> +			DWCMSHC_EMMC_DLL_DLYENA |
-> +			DLL_CMDOUT_TAPNUM_90_DEGREES |
-> +			DLL_CMDOUT_TAPNUM_FROM_SW;
-> +		sdhci_writel(host, extra, DECMSHC_EMMC_DLL_CMDOUT);
-> +	}
-> +
->  	extra = DWCMSHC_EMMC_DLL_DLYENA |
->  		DLL_TXCLK_TAPNUM_FROM_SW |
-> +		DLL_RXCLK_NO_INVERTER << DWCMSHC_EMMC_DLL_RXCLK_SRCSEL |
->  		txclk_tapnum;
->  	sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_TXCLK);
->  
-> @@ -347,7 +400,25 @@ static int dwcmshc_rk35xx_init(struct sdhci_host *host, struct dwcmshc_priv *dwc
->  	return 0;
+> @@ -1267,9 +1268,9 @@ mt7530_port_set_vlan_unaware(struct dsa_switch *ds, int port)
+>  	 * the CPU port get out of VLAN filtering mode.
+>  	 */
+>  	if (all_user_ports_removed) {
+> -		mt7530_write(priv, MT7530_PCR_P(MT7530_CPU_PORT),
+> +		mt7530_write(priv, MT7530_PCR_P(priv->cpu_port),
+>  			     PCR_MATRIX(dsa_user_ports(priv->ds)));
+> -		mt7530_write(priv, MT7530_PVC_P(MT7530_CPU_PORT), PORT_SPEC_TAG
+> +		mt7530_write(priv, MT7530_PVC_P(priv->cpu_port), PORT_SPEC_TAG
+>  			     | PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
+>  	}
 >  }
->  
-> +static void dwcmshc_rk35xx_postinit(struct sdhci_host *host, struct dwcmshc_priv *dwc_priv)
-> +{
-> +	/*
-> +	 * Don't support highspeed bus mode with low clk speed as we
-> +	 * cannot use DLL for this condition.
-> +	 */
-> +	if (host->mmc->f_max <= 52000000) {
-> +		dev_info(mmc_dev(host->mmc), "Disabling HS200/HS400, frequency too low (%d)\n",
-> +			 host->mmc->f_max);
-> +		host->mmc->caps2 &= ~(MMC_CAP2_HS200 | MMC_CAP2_HS400);
-> +		host->mmc->caps &= ~(MMC_CAP_3_3V_DDR | MMC_CAP_1_8V_DDR);
 
-Ideally, this should be done before mmc_add_host(), for example by using
-sdhci_setup_host() + __sdhci_add_host() instead of sdhci_add_host(), and
-putting dwcmshc_rk35xx_postinit() between sdhci_setup_host() and
-__sdhci_add_host().
+Same idea here, go through dp->cpu_dp.
 
-> +	}
-> +}
+> @@ -1335,8 +1336,8 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
+>  	 */
+>  	if (priv->ports[port].enable)
+>  		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
+> -			   PCR_MATRIX(BIT(MT7530_CPU_PORT)));
+> -	priv->ports[port].pm = PCR_MATRIX(BIT(MT7530_CPU_PORT));
+> +			   PCR_MATRIX(BIT(priv->cpu_port)));
+> +	priv->ports[port].pm = PCR_MATRIX(BIT(priv->cpu_port));
+
+Same.
+
+>  
+>  	/* When a port is removed from the bridge, the port would be set up
+>  	 * back to the default as is at initial boot which is a VLAN-unaware
+> @@ -1503,6 +1504,7 @@ static int
+>  mt7530_port_vlan_filtering(struct dsa_switch *ds, int port, bool vlan_filtering,
+>  			   struct netlink_ext_ack *extack)
+>  {
+> +	struct mt7530_priv *priv = ds->priv;
+>  	if (vlan_filtering) {
+>  		/* The port is being kept as VLAN-unaware port when bridge is
+>  		 * set up with vlan_filtering not being set, Otherwise, the
+> @@ -1510,7 +1512,7 @@ mt7530_port_vlan_filtering(struct dsa_switch *ds, int port, bool vlan_filtering,
+>  		 * for becoming a VLAN-aware port.
+>  		 */
+>  		mt7530_port_set_vlan_aware(ds, port);
+> -		mt7530_port_set_vlan_aware(ds, MT7530_CPU_PORT);
+> +		mt7530_port_set_vlan_aware(ds, priv->cpu_port);
+>  	} else {
+>  		mt7530_port_set_vlan_unaware(ds, port);
+>  	}
+
+Same.
+
+> @@ -1526,7 +1528,7 @@ mt7530_hw_vlan_add(struct mt7530_priv *priv,
+>  	u32 val;
+>  
+>  	new_members = entry->old_members | BIT(entry->port) |
+> -		      BIT(MT7530_CPU_PORT);
+> +		      BIT(priv->cpu_port);
+>  
+>  	/* Validate the entry with independent learning, create egress tag per
+>  	 * VLAN and joining the port as one of the port members.
+> @@ -1550,8 +1552,8 @@ mt7530_hw_vlan_add(struct mt7530_priv *priv,
+>  	 * DSA tag.
+>  	 */
+>  	mt7530_rmw(priv, MT7530_VAWD2,
+> -		   ETAG_CTRL_P_MASK(MT7530_CPU_PORT),
+> -		   ETAG_CTRL_P(MT7530_CPU_PORT,
+> +		   ETAG_CTRL_P_MASK(priv->cpu_port),
+> +		   ETAG_CTRL_P(priv->cpu_port,
+>  			       MT7530_VLAN_EGRESS_STACK));
+>  }
+
+This one is interesting. For some reason, the driver author felt the
+need to explicitly add BIT(MT7530_CPU_PORT) to new_members, even though
+mt7530_port_vlan_add() will be called on the CPU port too
+
+bridge vlan add dev swp0 vid 100
+bridge vlan add dev br0 vid 100 self		# here
+
+I would first make a patch that leaves it up to DSA to call
+port_vlan_add for the CPU port, rather than doing it implicitly.
+There is a certain advantage to that too. You can do autonomous
+forwarding in a certain VLAN, but not add br0 to that VLAN, and then,
+you could avoid flooding the CPU with those packets, if you know that
+software doesn't need to process them.
+
+The modified function would look like this:
+
+static void
+mt7530_hw_vlan_add(struct mt7530_priv *priv,
+		   struct mt7530_hw_vlan_entry *entry)
+{
+	struct dsa_port *dp = dsa_to_port(priv->ds, entry->port);
+	u8 new_members;
+	u32 val;
+
+	new_members = entry->old_members | BIT(entry->port);
+
+	/* Validate the entry with independent learning, create egress tag per
+	 * VLAN and joining the port as one of the port members.
+	 */
+	val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) | FID(FID_BRIDGED) |
+	      VLAN_VALID;
+	mt7530_write(priv, MT7530_VAWD1, val);
+
+	/* Decide whether adding tag or not for those outgoing packets from the
+	 * port inside the VLAN.
+	 * CPU port is always taken as a tagged port for serving more than one
+	 * VLANs across and also being applied with egress type stack mode for
+	 * that VLAN tags would be appended after hardware special tag used as
+	 * DSA tag.
+	 */
+	if (dsa_port_is_cpu(dp))
+		val = MT7530_VLAN_EGRESS_STACK;
+	else if (entry->untagged)
+		val = MT7530_VLAN_EGRESS_UNTAG;
+	else
+		val = MT7530_VLAN_EGRESS_TAG;
+	mt7530_rmw(priv, MT7530_VAWD2,
+		   ETAG_CTRL_P_MASK(entry->port),
+		   ETAG_CTRL_P(entry->port, val));
+}
+
+Then please confirm that there aren't regressions in local traffic
+termination for a VLAN-aware bridge. Pinging over a bridge with
+vlan_filtering=1 should be sufficient, since that is done in the default
+pvid of 1.
+
+With this change, you no longer need to concern yourself about the fixed
+value of MT7530_CPU_PORT.
+
+>  
+> @@ -1575,7 +1577,7 @@ mt7530_hw_vlan_del(struct mt7530_priv *priv,
+>  	 * the entry would be kept valid. Otherwise, the entry is got to be
+>  	 * disabled.
+>  	 */
+> -	if (new_members && new_members != BIT(MT7530_CPU_PORT)) {
+> +	if (new_members && new_members != BIT(priv->cpu_port)) {
+>  		val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) |
+>  		      VLAN_VALID;
+>  		mt7530_write(priv, MT7530_VAWD1, val);
+
+Here the logic is again too convoluted for its own good. Let's think
+before changing.
+
+What I think was happening was this. DSA used to be super blind when
+adding a VLAN to the CPU port. Since there is no netdev for the CPU
+port, then what DSA used to do was to implicitly program a bridge VLAN to
+the CPU port whenever that VLAN was programmed on a user port. The
+downside is that you never know when you can remove that VLAN, since the
+CPU port is shared between multiple user ports and refcounting was
+impossible due to technical switchdev API details.
+
+Here, the mt7530 driver tries to outsmart DSA by saying "hey, if the CPU
+port is the only remaining member of the VLAN, this VLAN is garbage,
+let's remove it". Which, I mean, fair point.
+
+But since commit 134ef2388e7f ("net: dsa: add explicit support for host
+bridge VLANs"), DSA does a better job of keeping track of VLANs added on
+CPU ports, and it doesn't leave dangling VLANs behind. You need to trust it.
+
+So in this case, you would have to change the code like this:
+
+	if (new_members) {
+		val = IVL_MAC | VTAG_EN | PORT_MEM(new_members) |
+		      VLAN_VALID;
+		mt7530_write(priv, MT7530_VAWD1, val);
+	} else {
+		mt7530_write(priv, MT7530_VAWD1, 0);
+		mt7530_write(priv, MT7530_VAWD2, 0);
+	}
+
+and then delete the comment, it isn't relevant any longer.
+
+> @@ -2105,7 +2107,7 @@ mt7530_setup(struct dsa_switch *ds)
+>  	 * controller also is the container for two GMACs nodes representing
+>  	 * as two netdev instances.
+>  	 */
+> -	dn = dsa_to_port(ds, MT7530_CPU_PORT)->master->dev.of_node->parent;
+> +	dn = dsa_to_port(ds, priv->cpu_port)->master->dev.of_node->parent;
+
+Holy ####, this is convoluted. This gets us the OF node of the container
+of the DSA master, alright.
+
+Could you do something more generic? Something like this:
+
+	struct device_node *dn = NULL;
+	struct dsa_port *cpu_dp;
+
+	dsa_switch_for_each_cpu_port(cpu_dp, ds) {
+		dn = cpu_dp->master->dev.of_node->parent;
+		/* It doesn't matter which CPU port is found first,
+		 * their masters should share the same parent OF node
+		 */
+		break;
+	}
+
+	if (!dn) {
+		ERROR ERROR ERROR, no CPU port
+	}
+
+>  	ds->assisted_learning_on_cpu_port = true;
+>  	ds->mtu_enforcement_ingress = true;
+>  
+> @@ -2337,15 +2339,6 @@ mt7531_setup(struct dsa_switch *ds)
+>  	mt7531_ind_c45_phy_write(priv, MT753X_CTRL_PHY_ADDR, MDIO_MMD_VEND2,
+>  				 CORE_PLL_GROUP4, val);
+>  
+> -	/* BPDU to CPU port */
+> -	mt7530_rmw(priv, MT7531_CFC, MT7531_CPU_PMAP_MASK,
+> -		   BIT(MT7530_CPU_PORT));
+> -	mt7530_rmw(priv, MT753X_BPC, MT753X_BPDU_PORT_FW_MASK,
+> -		   MT753X_BPDU_CPU_ONLY);
+> -
+> -	/* Enable and reset MIB counters */
+> -	mt7530_mib_reset(ds);
+> -
+>  	for (i = 0; i < MT7530_NUM_PORTS; i++) {
+>  		/* Disable forwarding by default on all ports */
+>  		mt7530_rmw(priv, MT7530_PCR_P(i), PCR_MATRIX_MASK,
+> @@ -2373,6 +2366,15 @@ mt7531_setup(struct dsa_switch *ds)
+>  			   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
+>  	}
+>  
+> +	/* BPDU to CPU port */
+> +	mt7530_rmw(priv, MT7531_CFC, MT7531_CPU_PMAP_MASK,
+> +		   BIT(priv->cpu_port));
+> +	mt7530_rmw(priv, MT753X_BPC, MT753X_BPDU_PORT_FW_MASK,
+> +		   MT753X_BPDU_CPU_ONLY);
 > +
->  static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
-> +	{
-> +		.compatible = "rockchip,rk3588-dwcmshc",
-> +		.data = &sdhci_dwcmshc_rk35xx_pdata,
-> +	},
->  	{
->  		.compatible = "rockchip,rk3568-dwcmshc",
->  		.data = &sdhci_dwcmshc_rk35xx_pdata,
-> @@ -435,6 +506,11 @@ static int dwcmshc_probe(struct platform_device *pdev)
->  			goto err_clk;
->  		}
->  
-> +		if (of_device_is_compatible(pdev->dev.of_node, "rockchip,rk3588-dwcmshc"))
-> +			rk_priv->devtype = DWCMSHC_RK3588;
-> +		else
-> +			rk_priv->devtype = DWCMSHC_RK3568;
+> +	/* Enable and reset MIB counters */
+> +	mt7530_mib_reset(ds);
 > +
->  		priv->priv = rk_priv;
+>  	/* Setup VLAN ID 0 for VLAN-unaware bridges */
+>  	ret = mt7530_setup_vlan0(priv);
+>  	if (ret)
+> @@ -3213,6 +3215,8 @@ mt7530_probe(struct mdio_device *mdiodev)
+>  	if (!priv)
+>  		return -ENOMEM;
 >  
->  		err = dwcmshc_rk35xx_init(host, priv);
-> @@ -448,6 +524,9 @@ static int dwcmshc_probe(struct platform_device *pdev)
->  	if (err)
->  		goto err_clk;
->  
-> +	if (rk_priv)
-> +		dwcmshc_rk35xx_postinit(host, priv);
+> +	priv->cpu_port = 6;
 > +
->  	return 0;
+>  	priv->ds = devm_kzalloc(&mdiodev->dev, sizeof(*priv->ds), GFP_KERNEL);
+>  	if (!priv->ds)
+>  		return -ENOMEM;
+> diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+> index 91508e2feef9..62df8d10f6d4 100644
+> --- a/drivers/net/dsa/mt7530.h
+> +++ b/drivers/net/dsa/mt7530.h
+> @@ -8,7 +8,6 @@
 >  
->  err_clk:
+>  #define MT7530_NUM_PORTS		7
+>  #define MT7530_NUM_PHYS			5
+> -#define MT7530_CPU_PORT			6
+>  #define MT7530_NUM_FDB_RECORDS		2048
+>  #define MT7530_ALL_MEMBERS		0xff
+>  
+> @@ -823,6 +822,7 @@ struct mt7530_priv {
+>  	u8			mirror_tx;
+>  
+>  	struct mt7530_port	ports[MT7530_NUM_PORTS];
+> +	int			cpu_port;
+
+And this should no longer be needed.
+
+>  	/* protect among processes for registers access*/
+>  	struct mutex reg_mutex;
+>  	int irq;
+> -- 
+> 2.25.1
+> 
 
 
 _______________________________________________
