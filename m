@@ -4,57 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2BEDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Apr 2022 08:25:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3181C433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Apr 2022 08:50:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ULMdjZE32Or8QlMeRCdWT/SCn9ckbUN80T0JQOsOscA=; b=bW7NZfgsrjkxGK
-	nDkv+7myfkE+Y8o4hBua7+NWffaPCtENotdnJ5JVzQMTcTX10gJCYHloJeROa9GMI3rzfHaaIfQ+s
-	dUXN/SEp+ANKAGoTZyG1bCw9bHK+PIUczxkwt6jL/BpYfOlgDOkUmlYOMgszLN/NbF55gc389lZE2
-	ZSg9A2Yn8rfHlnnnI2axfK17bK9XIHMh7z36w542HOdd1/Tf6i+cGUZiwb/gTJbi/3hOjxWz/vVGV
-	K2OLICwzu0pnw8LKKTipq08yjLYEamvoEXdXEcgPiJuT0fR3bJvtaAWiOKrRMvzRwaUTlxUdOpANW
-	t6iB2pW/Jgmc4B1CZFjg==;
+	List-Owner; bh=8t/6IfSzz2Cc/aEW7dVcLj/DzroN5hO65ySdsNBWoiw=; b=aV4bjy7ir0/+7d
+	+k6Mo6awAg2C5TSIP59rFJrCinJ6qsDwdEpCkP+XUxpPA89P2amwNwG7+uKXFMMuwVatIMuWVGniM
+	Yacpaxz9c8O0AJkgAjgHEoQpmpRyYWG+vaLVLjwo+FS1TAjjm6BtuQ6fZa007g+z95WIJSR60SfvF
+	OFodaWir8FUVUCrIiL8xp40KEfkqiT4dbgCG4yTFVJHOIK66WtrKdngxrLIVIya3avtSJxtkAuLoU
+	/64PRH0ReAAeBV0OALvdupbPzNRabBiCuAlUn1zauRFvMs5aACTt96XCvl1Kt8dgb4xRl49fStAva
+	zx6pcR0kGtInG8Ttm3PA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1njzSk-005Vi7-Gx; Thu, 28 Apr 2022 08:25:22 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1njzqo-005b4H-Rz; Thu, 28 Apr 2022 08:50:14 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1njzSV-005Vca-FJ; Thu, 28 Apr 2022 08:25:08 +0000
+ id 1njzql-005b23-LP
+ for linux-rockchip@lists.infradead.org; Thu, 28 Apr 2022 08:50:14 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 280C8B81BF0;
- Thu, 28 Apr 2022 08:25:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6174FC385AF;
- Thu, 28 Apr 2022 08:25:02 +0000 (UTC)
-Message-ID: <a7772b0c-a326-6ec3-31fc-d0c172264cf9@xs4all.nl>
-Date: Thu, 28 Apr 2022 10:25:00 +0200
+ by dfw.source.kernel.org (Postfix) with ESMTPS id CAA0261FF9;
+ Thu, 28 Apr 2022 08:50:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE94DC385A9;
+ Thu, 28 Apr 2022 08:50:07 +0000 (UTC)
+Message-ID: <5daa1dcd-a3a7-f508-e731-3a013ebc82ea@xs4all.nl>
+Date: Thu, 28 Apr 2022 10:50:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.7.0
-Subject: Re: [PATCH v3 1/3] media: dt-bindings: media: rockchip-vdec: Add
- RK3328 compatible
+Subject: Re: [PATCH v4 23/24] media: hantro: Add H.264 field decoding support
 Content-Language: en-US
-To: Christopher Obbard <chris.obbard@collabora.com>,
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Johan Jonker <jbx6244@gmail.com>, Elaine Zhang <zhangqing@rock-chips.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20220425184510.1138446-1-chris.obbard@collabora.com>
- <20220425184510.1138446-2-chris.obbard@collabora.com>
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: nicolas@ndufresne.ca, linux-media@vger.kernel.org,
+ Jonas Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <20220426125751.108293-1-nicolas.dufresne@collabora.com>
+ <20220426125751.108293-24-nicolas.dufresne@collabora.com>
 From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <20220425184510.1138446-2-chris.obbard@collabora.com>
+In-Reply-To: <20220426125751.108293-24-nicolas.dufresne@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220428_012507_715209_19CFBA24 
-X-CRM114-Status: GOOD (  18.11  )
+X-CRM114-CacheID: sfid-20220428_015011_830891_8335DF49 
+X-CRM114-Status: GOOD (  41.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,39 +71,237 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25/04/2022 20:45, Christopher Obbard wrote:
-> Document the RK3328 compatible for rockchip-vdec. The driver shares
-> the same base functionality as the RK3399 hardware so make sure that
-> the RK3399 compatible is also included in the device tree.
+On 26/04/2022 14:57, Nicolas Dufresne wrote:
+> This adds the required code to support field decoding. While most of
+> the code is derived from Rockchip and VSI reference code, the
+> reduction of the reference list to 16 entries was found by
+> trial and errors. The list consists of all the references with the
+> opposite field parity.
 > 
-> Signed-off-by: Christopher Obbard <chris.obbard@collabora.com>
+> The strategy is to deduplicate the reference picture that points
+> to the same storage (same index). The choice of opposite parity has
+> been made to keep the other field of the current field pair in the
+> list. This method may not be robust if a field was lost.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> ---
+>  drivers/staging/media/hantro/hantro_h264.c | 122 ++++++++++++++++++---
+>  drivers/staging/media/hantro/hantro_hw.h   |   1 +
+>  2 files changed, 109 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/staging/media/hantro/hantro_h264.c b/drivers/staging/media/hantro/hantro_h264.c
+> index 7377fc26f780..7502dddb324c 100644
+> --- a/drivers/staging/media/hantro/hantro_h264.c
+> +++ b/drivers/staging/media/hantro/hantro_h264.c
+> @@ -22,6 +22,12 @@
+>  #define POC_BUFFER_SIZE			34
+>  #define SCALING_LIST_SIZE		(6 * 16 + 2 * 64)
+>  
+> +/*
+> + * For valid and long term reference marking, index are reversed, so bit 31
+> + * indicates the status of the picture 0.
+> + */
+> +#define REF_BIT(i)			BIT(32 - 1 - (i))
+> +
+>  /* Data structure describing auxiliary buffer format. */
+>  struct hantro_h264_dec_priv_tbl {
+>  	u32 cabac_table[CABAC_INIT_BUFFER_SIZE];
+> @@ -227,6 +233,7 @@ static void prepare_table(struct hantro_ctx *ctx)
+>  {
+>  	const struct hantro_h264_dec_ctrls *ctrls = &ctx->h264_dec.ctrls;
+>  	const struct v4l2_ctrl_h264_decode_params *dec_param = ctrls->decode;
+> +	const struct v4l2_ctrl_h264_sps *sps = ctrls->sps;
+>  	struct hantro_h264_dec_priv_tbl *tbl = ctx->h264_dec.priv.cpu;
+>  	const struct v4l2_h264_dpb_entry *dpb = ctx->h264_dec.dpb;
+>  	u32 dpb_longterm = 0;
+> @@ -237,20 +244,45 @@ static void prepare_table(struct hantro_ctx *ctx)
+>  		tbl->poc[i * 2] = dpb[i].top_field_order_cnt;
+>  		tbl->poc[i * 2 + 1] = dpb[i].bottom_field_order_cnt;
+>  
+> +		if (!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_VALID))
+> +			continue;
+> +
+>  		/*
+>  		 * Set up bit maps of valid and long term DPBs.
+> -		 * NOTE: The bits are reversed, i.e. MSb is DPB 0.
+> +		 * NOTE: The bits are reversed, i.e. MSb is DPB 0. For frame
+> +		 * decoding, bit 31 to 15 are used, while for field decoding,
+> +		 * all bits are used, with bit 31 being a top field, 30 a bottom
+> +		 * field and so on.
+>  		 */
+> -		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)
+> -			dpb_valid |= BIT(HANTRO_H264_DPB_SIZE - 1 - i);
+> -		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
+> -			dpb_longterm |= BIT(HANTRO_H264_DPB_SIZE - 1 - i);
+> +		if (dec_param->flags & V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC) {
+> +			if (dpb[i].fields & V4L2_H264_TOP_FIELD_REF)
+> +				dpb_valid |= REF_BIT(i * 2);
+> +
+> +			if (dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF)
+> +				dpb_valid |= REF_BIT(i * 2 + 1);
+> +
+> +			if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM) {
+> +				dpb_longterm |= REF_BIT(i * 2);
+> +				dpb_longterm |= REF_BIT(i * 2 + 1);
+> +			}
+> +		} else {
+> +			dpb_valid |= REF_BIT(i);
+> +
+> +			if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
+> +				dpb_longterm |= REF_BIT(i);
+> +		}
+> +	}
+> +	ctx->h264_dec.dpb_valid = dpb_valid;
+> +	ctx->h264_dec.dpb_longterm = dpb_longterm;
+> +
+> +	if ((dec_param->flags & V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC) ||
+> +	    !(sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD)) {
+> +		tbl->poc[32] = ctx->h264_dec.cur_poc;
+> +		tbl->poc[33] = 0;
+> +	} else {
+> +		tbl->poc[32] = dec_param->top_field_order_cnt;
+> +		tbl->poc[33] = dec_param->bottom_field_order_cnt;
+>  	}
+> -	ctx->h264_dec.dpb_valid = dpb_valid << 16;
+> -	ctx->h264_dec.dpb_longterm = dpb_longterm << 16;
+> -
+> -	tbl->poc[32] = dec_param->top_field_order_cnt;
+> -	tbl->poc[33] = dec_param->bottom_field_order_cnt;
+>  
+>  	assemble_scaling_list(ctx);
+>  }
+> @@ -326,6 +358,8 @@ dma_addr_t hantro_h264_get_ref_buf(struct hantro_ctx *ctx,
+>  {
+>  	struct v4l2_h264_dpb_entry *dpb = ctx->h264_dec.dpb;
+>  	dma_addr_t dma_addr = 0;
+> +	s32 cur_poc = ctx->h264_dec.cur_poc;
+> +	u32 flags;
+>  
+>  	if (dpb[dpb_idx].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)
+>  		dma_addr = hantro_get_ref(ctx, dpb[dpb_idx].reference_ts);
+> @@ -343,7 +377,12 @@ dma_addr_t hantro_h264_get_ref_buf(struct hantro_ctx *ctx,
+>  		dma_addr = hantro_get_dec_buf_addr(ctx, buf);
+>  	}
+>  
+> -	return dma_addr;
+> +	flags = dpb[dpb_idx].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD ? 0x2 : 0;
+> +	flags |= abs(dpb[dpb_idx].top_field_order_cnt - cur_poc) <
+> +		 abs(dpb[dpb_idx].bottom_field_order_cnt - cur_poc) ?
+> +		 0x1 : 0;
+> +
+> +	return dma_addr | flags;
+>  }
+>  
+>  u16 hantro_h264_get_ref_nbr(struct hantro_ctx *ctx, unsigned int dpb_idx)
+> @@ -355,6 +394,47 @@ u16 hantro_h264_get_ref_nbr(struct hantro_ctx *ctx, unsigned int dpb_idx)
+>  	return dpb->frame_num;
+>  }
+>  
+> +/*
+> + * Removes all references with he same parity as current picture from the
+> + * reference list. The remaining list will have references with the opposite
+> + * parity. This is effectively a deduplication of references since each buffer
+> + * stores two fields. For this eason, each buffer are found twice in the
+> + * reference list.
+> + *
+> + * This technique has been chosen through trial and error. This simple approach
+> + * resulted in the highest conformance score. Note that this method may suffer
+> + * worse quality in the case an opposite reference frame has been lost. If this
+> + * becomes a problem in the future, it should be possible to add a preprocessing
+> + * to identify un-paired fields and avoid removing them.
+> + */
+> +static void deduplicate_reflist(struct v4l2_h264_reflist_builder *b,
+> +				struct v4l2_h264_reference *reflist)
+> +{
+> +	int write_idx = 0;
+> +	int i;
+> +
+> +	if (b->cur_pic_fields == V4L2_H264_FRAME_REF) {
+> +		write_idx = b->num_valid;
+> +		goto done;
+> +	}
+> +
+> +	for (i = 0; i < b->num_valid; i++) {
+> +		if (!(b->cur_pic_fields == reflist[i].fields)) {
+> +			reflist[write_idx++] = reflist[i];
+> +			continue;
+> +		}
+> +	}
+> +
+> +done:
+> +	/* Should not happen unless we have a bug in the reflist builder. */
+> +	if (WARN_ON(write_idx > 16))
+> +		write_idx = 16;
+> +
+> +	/* Clear the remaining, some streams fails otherwise */
+> +	for (; write_idx < 16; write_idx++)
+> +		reflist[write_idx].index = 15;
+> +}
+> +
+>  int hantro_h264_dec_prepare_run(struct hantro_ctx *ctx)
+>  {
+>  	struct hantro_h264_dec_hw_ctx *h264_ctx = &ctx->h264_dec;
+> @@ -386,15 +466,29 @@ int hantro_h264_dec_prepare_run(struct hantro_ctx *ctx)
+>  	/* Update the DPB with new refs. */
+>  	update_dpb(ctx);
+>  
+> -	/* Prepare data in memory. */
+> -	prepare_table(ctx);
+> -
+>  	/* Build the P/B{0,1} ref lists. */
+>  	v4l2_h264_init_reflist_builder(&reflist_builder, ctrls->decode,
+>  				       ctrls->sps, ctx->h264_dec.dpb);
+> +	h264_ctx->cur_poc = reflist_builder.cur_pic_order_count;
+> +
+> +	/* Prepare data in memory. */
+> +	prepare_table(ctx);
+> +
+>  	v4l2_h264_build_p_ref_list(&reflist_builder, h264_ctx->reflists.p);
+>  	v4l2_h264_build_b_ref_lists(&reflist_builder, h264_ctx->reflists.b0,
+>  				    h264_ctx->reflists.b1);
+> +
+> +	/*
+> +	 * Reduce ref lists to at most 16 entries, Hantro hardware will deduce
+> +	 * the actual picture lists in field through the dpb_valid,
+> +	 * dpb_longterm bitmap along with the current frame parity.
+> +	 */
+> +	if (reflist_builder.cur_pic_fields != V4L2_H264_FRAME_REF) {
+> +		deduplicate_reflist(&reflist_builder, h264_ctx->reflists.p);
+> +		deduplicate_reflist(&reflist_builder, h264_ctx->reflists.b0);
+> +		deduplicate_reflist(&reflist_builder, h264_ctx->reflists.b1);
+> +	}
+> +
+>  	return 0;
+>  }
+>  
+> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+> index 292aaaabaf24..fd869369fb97 100644
+> --- a/drivers/staging/media/hantro/hantro_hw.h
+> +++ b/drivers/staging/media/hantro/hantro_hw.h
+> @@ -91,6 +91,7 @@ struct hantro_h264_dec_hw_ctx {
+>  	struct hantro_h264_dec_ctrls ctrls;
+>  	u32 dpb_longterm;
+>  	u32 dpb_valid;
+> +	s32 cur_poc;
 
-I'm merging this bindings change in the media subsystem, so the other two
-patches can be be merged for 5.19 by whoever maintains those dts files.
+This field isn't documented in kerneldoc.
+
+I've added this:
+
++ * @cur_poc:   Current picture order count
+
+Is that a correct description? If not, let me know what it should be.
+
+I'll update the patch manually, no need to repost.
 
 Regards,
 
 	Hans
 
-> ---
->  Documentation/devicetree/bindings/media/rockchip,vdec.yaml | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> index 089f11d21b25..3bcfb8e12333 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> @@ -18,7 +18,9 @@ properties:
->      oneOf:
->        - const: rockchip,rk3399-vdec
->        - items:
-> -          - const: rockchip,rk3228-vdec
-> +          - enum:
-> +              - rockchip,rk3228-vdec
-> +              - rockchip,rk3328-vdec
->            - const: rockchip,rk3399-vdec
+>  };
 >  
->    reg:
+>  /**
 
 
 _______________________________________________
