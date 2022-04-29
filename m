@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFA54C433FE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Apr 2022 11:53:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBABCC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Apr 2022 11:53:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Rk6B3pHuBl+6LTxRptrF37Trx7U6Gf9mDDHpzxORInw=; b=MzdJE7fov0qBUz
-	mikdUtdq/HqQ5XxKUSEt7C1XoNSSC4TTEyq30nidxyZXM250x0z2/II2QYO4pihkFbXuBJ5AXPhzo
-	BTZRB4z5maIct58ZS2JSK2Olo+gsY4RMC26YIHRQ+6abaArodMI2kxmcbtBxjkwkUGTIf8SrRf6y/
-	UTEM3KgG4AeiLPnH/SPLOgDmx1HgBzTCJuI7swmQmmdk2M1cUCQ33rlUR5L5A8C+xMofoszTAM2bw
-	vsloM3VD0mIFLw1JFNtVNcHekE9ybYyym3ozCxeC1PxfrIflm9/wguaRjR44OGRweiri3kbcmS447
-	YmarYRDc5Egfb7/+LHzQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=U3MlKhkOFXalV6HTQf9KqRDB9TywRlDaIB1n1Cjvijk=; b=jn0oExgUiDInEW
+	Y/dPuTtRbANlz9S5HtE09iN3DC/WmRMThxUDbg0bS9Or7RRc64RI3wn1Dowy4c9kJMYpa/RIW4oqQ
+	dOmhLGrRLWJT1kR09SLKy9NuxELbQsDfebdsrX/ZrntZbRtuBNnegMq+ksePSC3X3tlRsO0fqwLE+
+	K8HZysJdwMUpZvLjMPANl8NC++tMhZ8JZrwQbZNJ3tEhdJgzA/4Ko2SPTzeVd8yLOReb24nnZv/X9
+	U54Pa5hSwDt6avrXK7XqO/mPFBzINIlFYueQx40leY78kjO3PQ4du7eA4aTrmWBI4x1ZgDtSoka+1
+	k9/Uhc5Kp5yAhlco3WoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkPBR-00B169-6v; Fri, 29 Apr 2022 11:53:13 +0000
-Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
+	id 1nkPBb-00B1BY-P7; Fri, 29 Apr 2022 11:53:23 +0000
+Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkPBO-00B155-Sd; Fri, 29 Apr 2022 11:53:12 +0000
-Received: by mail-qv1-xf31.google.com with SMTP id b17so5137559qvf.12;
+ id 1nkPBP-00B156-EP; Fri, 29 Apr 2022 11:53:12 +0000
+Received: by mail-qv1-xf2c.google.com with SMTP id q13so5154376qvk.3;
  Fri, 29 Apr 2022 04:53:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=KV4krtbeGPg3XtA9N0Vc8Z5tufyrmUvw/0E9B0OLsiM=;
- b=bCg9/ayXoHRN9e6lsctLLef7ix2gfMMKa/r4qdO+HNeS55VwVPCYqz8uXCcjK/iA7N
- prqAXk0pQeyCk4gTT8MesUWBka9IN/hQY8Mi8XtV7w8yYW4n2jRmnQCq0W4WeoPMQEKe
- f4S7jC3c0no7ev4gGIfv3+OueOO7896ImFwOma5vS+NXamSEsABgTguZbe2AWKGYvLo1
- vGFPw76l0o9pqrpkzsD0v5JfvgbVk6h2w3HToY/vHlac6g270OsvzqIMuaMbZZvmgSj6
- ITU6mkl8Qdlznxb4LLzxe7WeZaUqqeMEBY9SsNQ+Ede04cAE1+f2iZIiLMGMpbsqc6bn
- ZEjQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=/0BzL8B3OkyLX9kPF01T/3su20f1yiIHSqjn4IIxTHE=;
+ b=EWQyr3BtXtid12435zlUXMdpotNXe7nlWXj21MJoKVVQ0kdevcfwpx9/gTwuT+d4n3
+ ZlmSRcLRaOVwcQHYDZmpsqyhyWCyAKpy5CXg0CLKxF/TsK3iTPrZUZCAIWYtFbJdF8Oy
+ 2L/7EWvQMVU3UHIRS6ApD0VCHvQGcoWTpJxi2IF8b8hQL9DKh39G5OO0prIEcyu0LhVF
+ p1vGUTpZDQllC+jW0+1pNKvD20+P4wf13knEF1aBjVhqLIMZQ8BdRAxLtjaAn7vmY8Vk
+ O/s1KiUdbmD/BS8r5haUjw6uX/QfU/a9Ekw08kKtk6fHc1eMfd/43RhTn87fiuo1VbGW
+ +IfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=KV4krtbeGPg3XtA9N0Vc8Z5tufyrmUvw/0E9B0OLsiM=;
- b=PZHheJ279VYTjEua7P1p+iO2kMD882pQ5SI3of4O+FFnGYBeCAAcIA7bQfywo93Gzo
- yGivLWhUzbbS2SBwniEl1IXrOHF6aKdUvLHu8/gH5vxYAGyHMyoQt5aLRLpV91f5OGd9
- IKwsrOzxSdBJR2tZIKmFILJHuIax1xuyVWgvoElIDYVqT7M8zfQMZ9XbjnbnhhZnWGGw
- Ht7gc9dIja+ngMYgPY8aZ6m+2CNtIAcHSYBZ1GGcQYaO3BW7kfJv+LyhBPbgUSfFRbkk
- GAutPfQNB2IGkq/mqYJgSrmiZkn0mtlOdr+fxsozLc/uyjkT7qti6G3RTJvvZ5AsyfeM
- PLvA==
-X-Gm-Message-State: AOAM5312oiThL9hLe67z23TOA0UEERamDnEMz4rgf12knpWVyYAPDUgI
- prr3A2mpoE83/Y2/J2VGMYokrH73eE72uw==
-X-Google-Smtp-Source: ABdhPJyndl9VV7x3EmnaA3IRvanqu204IsjralKYKEmODgRhfVALtn1dA1ft8TDBZ0kzHckZzoJw6w==
-X-Received: by 2002:ad4:5b85:0:b0:458:1192:77c2 with SMTP id
- 5-20020ad45b85000000b00458119277c2mr1772036qvp.124.1651233188084; 
- Fri, 29 Apr 2022 04:53:08 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=/0BzL8B3OkyLX9kPF01T/3su20f1yiIHSqjn4IIxTHE=;
+ b=PghrXHGoKiiUgVMtlu4rjGr7J8+4r0oo6hW3q6rI3L2+p19gKKp8uAenE3u6NEP1rO
+ wWMUva2IOiZ1JK/aLKIA0I+kOTXtN/X+W5xBxJtGHglwB9sf1KcaVWM27D2v7lL9m0sE
+ 9enN+S/018Z9cJ7QnllTGvbIJS9us3+NbdI/xCGs/VjEY/z3SZGttX+rjwVorx3ylrM/
+ X4ZEyx7R2gHvsBBE/M8MGAiONVvRVFCT9vVoxCsLo7ifXKnunO0Cn6NIcBmWdj9B5CD2
+ h6Nx1zj2IfzTuxDW4J6hDrSQGecp7YQ9oUOCRRzby9a+18X57enk2rjD4chZZhgRFNwq
+ gSXw==
+X-Gm-Message-State: AOAM533jKilc3eILwlNP0UoCCwJ0haKSx3TxBp+YG3jSFgf+Z1zBDIgj
+ Ew93WfIlzDfX62jv9JL71ik7Ji21DawfFQ==
+X-Google-Smtp-Source: ABdhPJw1Q6hPXonGtQBvISs/6ZWPt5hrKsKtiTrqr280rT/+R3hNuoup9aJuXugDkKrDlFCrNeUAWw==
+X-Received: by 2002:a05:6214:4104:b0:42c:1db0:da28 with SMTP id
+ kc4-20020a056214410400b0042c1db0da28mr27420668qvb.67.1651233189032; 
+ Fri, 29 Apr 2022 04:53:09 -0700 (PDT)
 Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
  by smtp.gmail.com with ESMTPSA id
- 123-20020a370c81000000b0069fa408fdb7sm1382505qkm.24.2022.04.29.04.53.07
+ 123-20020a370c81000000b0069fa408fdb7sm1382505qkm.24.2022.04.29.04.53.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Apr 2022 04:53:07 -0700 (PDT)
+ Fri, 29 Apr 2022 04:53:08 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de, Peter Geis <pgwipeout@gmail.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/7] Add support for several new rk3566 SBCs
-Date: Fri, 29 Apr 2022 07:52:45 -0400
-Message-Id: <20220429115252.2360496-1-pgwipeout@gmail.com>
+To: linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v2 1/7] dt-bindings: arm: rockchip: Add Pine64 Quartz64 Model B
+Date: Fri, 29 Apr 2022 07:52:46 -0400
+Message-Id: <20220429115252.2360496-2-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220429115252.2360496-1-pgwipeout@gmail.com>
+References: <20220429115252.2360496-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220429_045310_958442_196796E0 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20220429_045311_517610_1356545B 
+X-CRM114-Status: GOOD (  10.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,52 +90,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The following series adds support for the following single board
-computers:
-- Pine64 Quartz64 Model B
-- Pine64 SoQuartz SoM with RPi CM4IO carrier board
-- Firefly Station M2
+The Quartz64 Model B is a compact single board computer from Pine64
+based on the rk3566 SoC. It outputs on uart2 for the debug console.
 
-Patches 1, 2, and 3 add the requisite dt-bindings.
-Patch 4 adds support for the SFC to the rk356x device tree.
-Patch 5 adds the Quartz64 Model B device tree.
-Patch 6 adds the SoQuartz CM4IO device tree.
-Patch 7 adds the Firefly Station M2 device tree.
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-Please review and apply at your convenience.
-
-Very Respectfully,
-Peter Geis
-
-Changelog:
-v2:
-- squash Model B into Model A binding
-- collect acks
-
-Furkan Kardame (1):
-  arm64: dts: rockchip: add dts for Firefly Station M2 rk3566
-
-Peter Geis (6):
-  dt-bindings: arm: rockchip: Add Pine64 Quartz64 Model B
-  dt-bindings: arm: rockchip: Add Pine64 SoQuartz SoM
-  dt-bindings: arm: rockchip: Add Firefly Station M2
-  arm64: dts: rockchip: add rk356x sfc support
-  arm64: dts: rockchip: add Pine64 Quartz64-B device tree
-  arm64: dts: rockchip: add SoQuartz CM4IO dts
-
- .../devicetree/bindings/arm/rockchip.yaml     |  18 +-
- arch/arm64/boot/dts/rockchip/Makefile         |   3 +
- .../boot/dts/rockchip/rk3566-quartz64-b.dts   | 615 ++++++++++++++++++
- .../arm64/boot/dts/rockchip/rk3566-roc-pc.dts | 580 +++++++++++++++++
- .../boot/dts/rockchip/rk3566-soquartz-cm4.dts | 167 +++++
- .../boot/dts/rockchip/rk3566-soquartz.dtsi    | 607 +++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk356x.dtsi      |  11 +
- 7 files changed, 1999 insertions(+), 2 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index eece92f83a2d..beb5b0ac1a2a 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -502,9 +502,11 @@ properties:
+           - const: pine64,rockpro64
+           - const: rockchip,rk3399
+ 
+-      - description: Pine64 Quartz64 Model A
++      - description: Pine64 Quartz64 Model A/B
+         items:
+-          - const: pine64,quartz64-a
++          - enum:
++              - pine64,quartz64-a
++              - pine64,quartz64-b
+           - const: rockchip,rk3566
+ 
+       - description: Radxa Rock
 -- 
 2.25.1
 
