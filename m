@@ -4,78 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82C84C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Apr 2022 19:32:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEA7EC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Apr 2022 23:21:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JhlFbYCj/BPtm/tzRh3KESJqbziiYBSLS9W+NAlc6oM=; b=zQHOCIoKHlDXvI
-	YxbYbHjjARftBamsgMhqZb+CUCl2XFSzenSboRCSGumVUIJHWLhlEFDoxwabM8vNWRx7OJGtL9C7B
-	cxKV/nAskxk4X374c6NID6/sZ0HXlHsiW5AHUW9L5TnTTAAUCYeHqyIUGia08uACFwS/8Dl4lT0x0
-	hGm7TZG1GMSrDTK1MdeeVkYzlCH8Wmq50MOt2MaF31xQ7UjPF/OVf0wy+c5xWE/0PlFxbzM440FlE
-	PKvYAuEwSd0RW7X7almgMEvUDZV27WiVlvB2TO4zYc/E1Q0w9Wt1f8YnmqWb5d1jgsGUBgE7GI3bJ
-	mnwy6j5Quk+0JF23DpMw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yCG8c/DhzyOn/0koAxgwlWYqRyMC2XZhTjg6NwXRQmY=; b=Ik8KqyFoVhfYyz8twBBYcaIjwd
+	fXVSFjylBDlhV59n15z9HS8spLxfs8Frw/MzB7LoFSbg2kdwVZn22U5bBIt53SelqxMiCrWhSem0u
+	yillkg1TN5TMOECDzYAIssBeuVExP2t7cLL4wcxqny1pfPvSKfYaSPJ2c/L8Kn+UKphpWHjwcMj0j
+	CHXfYEyJkB+NDMIcHLvSeAWCErnJAHy3RsDeI6d5bKrRlLp4XFebJevsGRxM5Ts5b6xmXsAKkL8c1
+	72ZVctsQnejcn8flA99ixDiahy7HPIvdPU4MtZA54bs+bV8FrMDJe3KQ92KRwGEgZtbc/QRw2zNds
+	Pc//yKgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkWMH-00CM79-8y; Fri, 29 Apr 2022 19:32:53 +0000
-Received: from mga17.intel.com ([192.55.52.151])
+	id 1nkZvP-00D1KW-P9; Fri, 29 Apr 2022 23:21:23 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkWM4-00CM20-4Q; Fri, 29 Apr 2022 19:32:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1651260760; x=1682796760;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=JndYmvyDHGDJ5FLMtua0mbKv4qhsfh22QdXtZJJmVlQ=;
- b=mUWs+TG+Ko6yPFVzW7BjWDz30uAjWAtaBu06fevONyV/WHKbIE0A0O97
- tOj79W0cL7VxSWDm81IQo7O7pIV1XY1XMzYMM6Ybzlr8fFavHUhYjBp83
- 813YAzDQc4M7lM2i7W8pHSAHoGZSt75aLoHy2iDQ8LjL69uIqTemUFRnl
- 66J54WTtGqyy9HBUtV2un2C7TtJ4DWEeezR2JnyYBEdbjPGVL2lAj73Hb
- MhSlLqDLCz7WisZQK+KWWrE8bDy9AMdmb4tJYR6rbuAtABuOxJKeCVAu1
- jRK8nGTe44kjXHjkZnN62iM/096OwtSwaMNMYcgmb1SUAOAazpnA2d96J A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10332"; a="247310760"
-X-IronPort-AV: E=Sophos;i="5.91,186,1647327600"; d="scan'208";a="247310760"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Apr 2022 12:32:26 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,186,1647327600"; d="scan'208";a="566287859"
-Received: from lkp-server01.sh.intel.com (HELO 5056e131ad90) ([10.239.97.150])
- by fmsmga007.fm.intel.com with ESMTP; 29 Apr 2022 12:32:21 -0700
-Received: from kbuild by 5056e131ad90 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nkWLk-0006a3-Gm;
- Fri, 29 Apr 2022 19:32:20 +0000
-Date: Sat, 30 Apr 2022 03:31:43 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: kbuild-all@lists.01.org, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Bartosz Golaszewski <brgl@bgdev.pl>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Ulf Hansson <ulf.hansson@linaro.org>,
+ id 1nkZvC-00D1Gp-Eg
+ for linux-rockchip@lists.infradead.org; Fri, 29 Apr 2022 23:21:12 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <mgr@pengutronix.de>)
+ id 1nkZuw-0002MG-FN; Sat, 30 Apr 2022 01:20:54 +0200
+Received: from mgr by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <mgr@pengutronix.de>)
+ id 1nkZup-0004od-7p; Sat, 30 Apr 2022 01:20:47 +0200
+Date: Sat, 30 Apr 2022 01:20:47 +0200
+From: Michael Grzeschik <mgr@pengutronix.de>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Philipp Zabel <p.zabel@pengutronix.de>,
- Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
- linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, kernel@lists.collabora.co.uk,
- Elaine Zhang <zhangqing@rock-chips.com>, kernel@collabora.com,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCHv1 06/19] clk: rockchip: Add clock controller for the RK3588
-Message-ID: <202204300329.BL2rwfwr-lkp@intel.com>
-References: <20220422170920.401914-7-sebastian.reichel@collabora.com>
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Peter Geis <pgwipeout@gmail.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Liang Chen <cl@rock-chips.com>, Nicolas Dufresne <nicolas@ndufresne.ca>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev,
+ Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 0/3] Enable JPEG Encoder on RK3566/RK3568
+Message-ID: <20220429232047.GG7671@pengutronix.de>
+References: <20220427224438.335327-1-frattaroli.nicolas@gmail.com>
+ <198ce3981ad15844627581f9519cab67ed2a81c1.camel@ndufresne.ca>
+ <2438841.KJ31GcehEG@archbook>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220422170920.401914-7-sebastian.reichel@collabora.com>
+In-Reply-To: <2438841.KJ31GcehEG@archbook>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 00:27:06 up 30 days, 10:56, 58 users,  load average: 0.04, 0.10, 0.09
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: mgr@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220429_123240_196289_A59ED63C 
-X-CRM114-Status: GOOD (  14.35  )
+X-CRM114-CacheID: sfid-20220429_162110_680658_EDC00198 
+X-CRM114-Status: GOOD (  42.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,105 +84,198 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2098908467609769705=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
 
-Thank you for the patch! Perhaps something to improve:
-
-[auto build test WARNING on robh/for-next]
-[also build test WARNING on linusw-pinctrl/devel linus/master v5.18-rc4 next-20220429]
-[cannot apply to rockchip/for-next]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Sebastian-Reichel/Basic-RK3588-Support/20220423-013425
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
-config: arm64-defconfig (https://download.01.org/0day-ci/archive/20220430/202204300329.BL2rwfwr-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 11.3.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/6736e6f1e32bb98780b77b5aa64fe5ac5dfaae26
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Sebastian-Reichel/Basic-RK3588-Support/20220423-013425
-        git checkout 6736e6f1e32bb98780b77b5aa64fe5ac5dfaae26
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/clk/rockchip/ drivers/media/platform/qcom/venus/
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-All warnings (new ones prefixed by >>):
-
-   drivers/clk/rockchip/clk-rk3588.c: In function 'rk3588_clk_init':
->> drivers/clk/rockchip/clk-rk3588.c:2408:22: warning: variable 'clks' set but not used [-Wunused-but-set-variable]
-    2408 |         struct clk **clks;
-         |                      ^~~~
+--===============2098908467609769705==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="9Iq5ULCa7nGtWwZS"
+Content-Disposition: inline
 
 
-vim +/clks +2408 drivers/clk/rockchip/clk-rk3588.c
+--9Iq5ULCa7nGtWwZS
+Content-Type: text/plain; charset=iso-8859-15; format=flowed
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-  2403	
-  2404	static void __init rk3588_clk_init(struct device_node *np)
-  2405	{
-  2406		struct rockchip_clk_provider *ctx;
-  2407		void __iomem *reg_base;
-> 2408		struct clk **clks;
-  2409	
-  2410		reg_base = of_iomap(np, 0);
-  2411		if (!reg_base) {
-  2412			pr_err("%s: could not map cru region\n", __func__);
-  2413			return;
-  2414		}
-  2415	
-  2416		ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-  2417		if (IS_ERR(ctx)) {
-  2418			pr_err("%s: rockchip clk init failed\n", __func__);
-  2419			iounmap(reg_base);
-  2420			return;
-  2421		}
-  2422		clks = ctx->clk_data.clks;
-  2423	
-  2424		rockchip_clk_register_plls(ctx, rk3588_pll_clks,
-  2425					   ARRAY_SIZE(rk3588_pll_clks),
-  2426					   RK3588_GRF_SOC_STATUS0);
-  2427	
-  2428		rockchip_clk_register_armclk(ctx, ARMCLK_L, "armclk_l",
-  2429				mux_armclkl_p, ARRAY_SIZE(mux_armclkl_p),
-  2430				&rk3588_cpulclk_data, rk3588_cpulclk_rates,
-  2431				ARRAY_SIZE(rk3588_cpulclk_rates));
-  2432		rockchip_clk_register_armclk(ctx, ARMCLK_B01, "armclk_b01",
-  2433				mux_armclkb01_p, ARRAY_SIZE(mux_armclkb01_p),
-  2434				&rk3588_cpub0clk_data, rk3588_cpub0clk_rates,
-  2435				ARRAY_SIZE(rk3588_cpub0clk_rates));
-  2436		rockchip_clk_register_armclk(ctx, ARMCLK_B23, "armclk_b23",
-  2437				mux_armclkb23_p, ARRAY_SIZE(mux_armclkb23_p),
-  2438				&rk3588_cpub1clk_data, rk3588_cpub1clk_rates,
-  2439				ARRAY_SIZE(rk3588_cpub1clk_rates));
-  2440	
-  2441		rockchip_clk_register_branches(ctx, rk3588_clk_branches,
-  2442					       ARRAY_SIZE(rk3588_clk_branches));
-  2443	
-  2444		rockchip_register_softrst(np, 49158, reg_base + RK3588_SOFTRST_CON(0),
-  2445					  ROCKCHIP_SOFTRST_HIWORD_MASK);
-  2446	
-  2447		rockchip_register_restart_notifier(ctx, RK3588_GLB_SRST_FST, NULL);
-  2448	
-  2449		rockchip_clk_of_add_provider(np, ctx);
-  2450	}
-  2451	
+Hi,
 
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+On Fri, Apr 29, 2022 at 05:28:35PM +0200, Nicolas Frattaroli wrote:
+>On Freitag, 29. April 2022 16:46:01 CEST Nicolas Dufresne wrote:
+>> Le jeudi 28 avril 2022 =E0 00:44 +0200, Nicolas Frattaroli a =E9crit :
+>> > the following series adds support for and enables the hardware JPEG
+>> > encoder on the RK3566 and RK3568 line of SoCs by Rockchip.
+>> >
+>> > The JPEG encoder is its own little Hantro instance with seemingly just
+>> > the encode functionality.
+>>
+>> I'm a little suspicious about this statement. I believe the Hantro combo=
+ is
+>> identical to RK3399 and that you are confusing with Rockchip JPEG encode=
+r here.
+>> Here's the source of my suspicion:
+>>
+>> https://github.com/JeffyCN/rockchip_mirrors/blob/mpp/osal/mpp_soc.cpp#L6=
+37
+>>
+>> As this get burnt into DT, we really need to get this right. Perhaps we =
+need to
+>> run the reference software to verify ? Ping me if you need help with tha=
+t.
+>
+>I believe there's three separate questions here:
+>
+>A) is this a Hantro instance with more than just JPEG encoding?
+>B) is this the same as the other[1] Hantro instance, just with a bigger
+>   offset for the encoder?
+>C) if A is true and B is false, does this also have decoders?
+>
+>I think I can only answer B). I do not think fdee0000 is the same hardware
+>instance as fdea0400. They are in different power domains (yes, this one
+>being in the RGA PD is correct according to downstream code, TRM and my
+>own testing). They also have their own MMU each.
+
+>Your findings point towards A) being true. I'd love to be able to just
+>throw a mainline VP8 or H.264 driver at it to check, but that sadly does
+>not exist yet.
+
+Not Mainline, but for the the RK3399 Encoder there is some initial work
+available made by bootlin.
+
+https://github.com/bootlin/linux bootlin/hantro/h264-encoding-v5.11
+
+They also implemented some initial userspace tool to test this.
+
+https://github.com/bootlin/v4l2-hantro-h264-encoder
+
+If you have some time on your hands, it would be great if we could test
+this on the RK3568 with the VEPU121 core.
+
+>Upon checking the TRM again, it seems it documents registers for H.264 as =
+well.
+
+I would like to describe the whole sitation a little bit more in detail.
+
+In the Datasheet of the RK3568 there are several decoder and encoder
+entities documented. This encoder instance is called VEPU121 in the
+TRM.
+
+RK3568:
+-------
+
+Look into "Chapter 10 Multi-format Video Encoder and Decoder" (Page 463)
+of RK3568 TRM Part2.
+
+https://dl.radxa.com/rock3/docs/hw/datasheet/Rockchip%20RK3568%20TRM%20Part=
+2%20V1.1-20210301.pdf
+
+We also find some mentionioning of JPEG encoding in the RK3399
+datasheet.
+
+RK3399:
+-------
+
+Look into "Chapter 5 Multi-format Video Decoder And Encoder" (Page 297)
+of RK3399 TRM Part 3.
+
+http://www.netbsd.org/~mrg/rk3399/Rockchip%20RK3399TRM%20V1.1%20Part3%20201=
+60728.pdf
+
+* Supports encoding of the following standards:
+  * H.264: up to HP level 4.1
+  * JPEG: Baseline (DCT sequential)
+
+Which probably refers to the core that is also available on the RK3399.
+
+
+Comparing the register layout of VEPU121 of the RK3568 with the
+encoder part in RK3399 we find nearly the same register description.
+
+10.5.21 VEPU121 Detail Registers Description (Page 704 of RK3568 TRM Part2)
+
+vs.
+
+5.5.4 VEPU Registers Summary (Page 443 of RK3399 TRM Part3)
+
+However this is just the documentation, this could mean nothing to
+the real world. Getting the core tested with the bootlin stack
+or getting feedback from Kever would probably tell the whole story.
+
+>However I can do this to answer C), and I will once I get the time.
+>It would be somewhat surprising if there was a hidden third H.264
+>decoder on this chip.
+
+The corresponding decoder world on the RK3568 is also very unclear.
+
+It supports RKVDEC (referd as VDPU346 in the TRM), that is probably also
+supported by the mainline code you can find in drivers/staging/media/rkvdec=
+/.
+
+Then there is VDPU121 which seems to be just the same G1 as in RK3399,
+regarding to these patches:
+
+https://lore.kernel.org/all/20220213195316.4149106-3-piotr.oniszczuk@gmail.=
+com/T/
+
+The last Core you probably refer to is called VDPU720 JPEG Decoder
+located at 0xFDED0000. I also really don't know where to put this in
+at the moment.
+
+>I'll also CC Kever Yang from rockchip, maybe he can shine some light on
+>this.
+
+Since the RK3568 seems to get more and more of attention at the moment
+I would like to ask if somebody is planning to write support the RKVENC
+in mainline. That is the VEPU540 core refered to in the RK3568 TRM.
+
+I would start with that in the next weeks, taking the bootlin H1 support
+as an reference to handle the request_api for the encoder part. Which is
+currently completely untouched in mainline AFAIK.
+
+Regards,
+Michael
+
+--=20
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+
+--9Iq5ULCa7nGtWwZS
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEElXvEUs6VPX6mDPT8C+njFXoeLGQFAmJscsoACgkQC+njFXoe
+LGSbiRAAwCISPC4Va5HEdBHABLuRteCTtHhDhkuYj8/IMqOrN8S8vIYEpo+TRY2+
+hkt0QkY06mgDwmcUhiw3plaMGnAMMgvZMSQwS4YTS5LelpsbugQS3gSaznQq7cc5
+zvznuZlNFfY85Kz7HrPrtWiCHbZOyRNb3IH42uwFB0c4dqAr58C/eA1bMuoxj4jN
+xxQ8e2lU8h8BpvNSvy1GwkojITWK4S3U4t52ZnfeQCXImy332kIWBcXmPC+8JSnT
+SgU2t2F94E0v5l5HSbm+FGqugn/ALt3PWF+PFin4Ux5KSUnLiYWhOp28HC8wMIiw
+3LCWjqknc3PUL6MKw2/7PqIlXB0uPVgpR9my+aXn3dpHoFRLkM4rQ+FxvjnRzW1H
+CRhgvoUukFDQsYwT5UndJhEMHPBnG+4n+6aE7AqI2HKjPdnSoXaEqpz1Qij1Jgb4
+BQ0S9R5oa1WZk7GMA/9WCgIevOtn4bGFGCTZQPAWAqubVZQ9SvBEuTjPsDQX0F6l
+Dt03o+hUzL3yYFJZjhWUBcf9rs4dG4oKwdPbqz72IPzfb/xxc9iZLR12cqzgwwci
+lYdH/5VVDrTFbjCnLrMahw+EHN3OXqtP97fjTgfHkyAyzw5ksjnTqzJ6QFdVO4BI
+Nth/At4dnJeCPAWrEiOFd6XY1q06YHxgOBvnzE8KIURGBHeUdFU=
+=OhKV
+-----END PGP SIGNATURE-----
+
+--9Iq5ULCa7nGtWwZS--
+
+
+--===============2098908467609769705==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2098908467609769705==--
+
