@@ -4,79 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23F0DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Apr 2022 12:40:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6E91C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Apr 2022 12:52:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dp3WXFxhUwtw4vmgpzWXFb64cxzcpfaPlCCzO7avrtc=; b=C5w5ujaJv/VuvW
-	8lr0z0Bj4x97rY9q8+5rtElHdpl+YkvrAJOPYb43BDWd065l6WumM5pVrZOmbxMuxKb9Eeq1gO8tj
-	eJ7Zu2dWghOvslhUb0fMkOd2W44EtSJv0Ag3GfR3WRpCHeJ1jcKniIJFPDve4Vrsc8OsoB7i581Av
-	QzgXEHMTVPeuXKVGr56AYgUq8Ub71vr3heblMtqmjUu7lzFfwG5kGS8f9aF2Qk0njDEv9uhtODbgd
-	iLO7pM3i3Pj71FnHGFHjd4o1Jdnb0326sJtZUc5NDM7GRvlASQTxxRzZZk6bSrjdxMDi2Uxm69GoA
-	GKovqS5cni9sxPRQSzTg==;
+	List-Owner; bh=PPc/yvk7hK1dD/6moUuNyHJzMTdsBDl4MkpokOLdTPw=; b=oZ+HIzt+JPOZIA
+	lAHbtPliNFwMeTEn8tdhZb7tVarj0Tewm2P/zXJUiEq53XqRpn/bdbgkS+/KntZFb/8TI9uLmCFan
+	3XASeWN+59DWv4Cc+z4cWxrVPgAm5V8PXrQHxvRJaNO66OX5HGbLpjbz0bRe5DF53rcPZYloTEwDm
+	hcE8UyXLoj1tS15SFlj6VkzIC+a2Vzb6Ozn54wYg+emK+8DsDyE8URFj3Odj1WchOD9LDLPT9f05Z
+	AgN1+0RyQsG42IQfv1PPxe4JRDuEZHyvF0Nq2Aox/vcGrr0RvxGa0rhM23o2L5vsPM4B25PLABzVD
+	z/2AHzItxEIng+WRsQLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkPud-00BBue-Pn; Fri, 29 Apr 2022 12:39:55 +0000
-Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
+	id 1nkQ6Y-00BG3D-A4; Fri, 29 Apr 2022 12:52:14 +0000
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkPth-00BBIK-8f; Fri, 29 Apr 2022 12:39:01 +0000
-Received: by mail-qt1-x82d.google.com with SMTP id x9so5548737qts.6;
- Fri, 29 Apr 2022 05:38:42 -0700 (PDT)
+ id 1nkQ6U-00BG0Z-15
+ for linux-rockchip@lists.infradead.org; Fri, 29 Apr 2022 12:52:13 +0000
+Received: by mail-yb1-xb31.google.com with SMTP id i38so14235534ybj.13
+ for <linux-rockchip@lists.infradead.org>; Fri, 29 Apr 2022 05:52:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=Uyq1i2Lv45qND56ozQ1y5y+nAN5qNeoyHNd4iCmSY9Q=;
- b=a6T1aHav6KL+N7p+22s3IuPT5LE1w3optua0IqYhm7t2kvBuFrYEgst8eqnyt5TWHr
- Be6QDxXiIXnXFAHayNvMITcgShi/ByKV1ZZlsMMe2gLFv5ZJYiIvZZ9/fLX+EuGVP1WY
- 7klJjRFUahKIk+PsN20ET2GmxGrtvCSnyGAznEQRXe3sUQ9HZElrxMD/XNx9gqlDMMMz
- kLGS3lnBkh6uFg6ve9unSWLOXOqhtfNvIYp7djFX30+A3FMibCkpWw5oB9IcNfRdKKR+
- yHc4OlNjT/D8+BkC6e3v3yKxLwW8pLezH3YBe3CsyTMPu7dAlCOsXbn+SJiy2Mf8rGV9
- XQHw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=FZ/8JNTm7vpbFc2YOEAMd+Fo9SryLJ8pTwtRQk4/FOk=;
+ b=WpO4+NLt8Ukw2ZwcrHbAnQOpf98OVlUhSt5NXSdanwU6n/UsXzPSEXnAhaRaWv+umA
+ oNaoj/qqNLSY1rADzGLWH33peBDOWAbfw07ezxxVLrnvFkQ2VJ5sm05LM/1AB+12Ayfp
+ vwPoaUdjKMiHlXSnxykyEnD+dNeN69tef5GI2MYDqqbM45RC2sU7A5E+jHLaOD5MOV8S
+ cXdlSabecyTUnhGXGC51P+VKEBPjw+L7YB+JN1bbywbd1s2/ikRZV8PJnZAWGHcFKVIr
+ t9l+jgDRDnCXoB7q+rwC6kfur/qnMXQCxKXf6/mrUbNcpF2ov8+un6as/MfOks3OBGhw
+ GhSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=Uyq1i2Lv45qND56ozQ1y5y+nAN5qNeoyHNd4iCmSY9Q=;
- b=araRDwuw00MQOgJUAlB9lhLRtw+hf59vhvOLzSWZz3+VwaLMdlbUyB1tuzjWgN4dKI
- Ou3a9Yx+UW2G307cMD+9Mf0EgNst8vCRq1+liorDBiaKeKAcnuf8mh6gYYeFTUwd9tx5
- xYtbVl3kYwfrTVr5GHJ9Vmna0t+iYjcXaNw0JdZVyxFgvB1bgzW5OlZvLH89C9aJhJw0
- C3bXYmS9iZwM49e5rGAv8dyi6IME+76hA8x1zpTCHi8s9E4g9e1rdYCot4cjMht/g+a1
- hm6PatUu3ZGVkqa4HQ8w0iIAo9EwLg+cWv1GYHKEzvBem9odEoaePaG5AgHbcHnGBXlv
- /pnQ==
-X-Gm-Message-State: AOAM532B1NpGGcuvbzs7MeNHXQcS2x2IGdgjH23BU8lNJDsPIjsXGYkV
- P3mXh1C71J/10zJMv7SgAjeOUVfFrru94Rij
-X-Google-Smtp-Source: ABdhPJzDkJgvQVaAO6dhxr1s7kOmbkUNFZ1A52IXb9BTaBOf3HQt4KptqT3SUNW951XEIT/Y8ba3lw==
-X-Received: by 2002:a05:622a:34c:b0:2f3:94ee:b208 with SMTP id
- r12-20020a05622a034c00b002f394eeb208mr1307922qtw.132.1651235921958; 
- Fri, 29 Apr 2022 05:38:41 -0700 (PDT)
-Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
- by smtp.gmail.com with ESMTPSA id
- v126-20020a37dc84000000b0069f9c375519sm1431644qki.46.2022.04.29.05.38.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Apr 2022 05:38:41 -0700 (PDT)
-From: Peter Geis <pgwipeout@gmail.com>
-To: linux-rockchip@lists.infradead.org,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>,
- =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Peter Geis <pgwipeout@gmail.com>, Marc Zyngier <maz@kernel.org>,
- linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v9 3/5] PCI: rockchip-dwc: Add legacy interrupt support
-Date: Fri, 29 Apr 2022 08:38:29 -0400
-Message-Id: <20220429123832.2376381-4-pgwipeout@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220429123832.2376381-1-pgwipeout@gmail.com>
-References: <20220429123832.2376381-1-pgwipeout@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=FZ/8JNTm7vpbFc2YOEAMd+Fo9SryLJ8pTwtRQk4/FOk=;
+ b=pgrtSW7DbuhRELi98r+0w3rLaHTGhOzuDPfC2JvYR/EYxtUhMlJQwXq21MUtYAtLFg
+ u6nIiQj8xm8b9QN/1gWQIudMXwfhnYyC6hdbF/C9GlrS5UJyC/NH/sDN67mUNS13n5us
+ W222l0We8CSj/y7yrq5qTmzk5nasNKEoE4FhnVMWNEQfyJ0Y6XOrVuGZlH3q3WgPyKQE
+ kfJFnrAi6b45WPZdCRbHfOZhBApnOp3rIFaURmqJL6g4Hj64zK9jVnW6GgTVBi+w/hV8
+ m6PtRd3E94i19Fi3pyOpIA1O8/7ENAl/YGfDjk25sFUnH2ft4OoPXcbQuhG+4QVhj2FL
+ Nn/g==
+X-Gm-Message-State: AOAM5316PPPPYGFYSSkRxc6El2pEWWucjIIYPipj27GagWMyICYDRJzC
+ hRToquKF1owb0TPeVOF1qrAeyzuDFdcsC06//34TLBaclhThu5N1
+X-Google-Smtp-Source: ABdhPJzRNlEiq1/vYE5gH25u17jZRFLjz3wbD2iYLzU01FlXhl/FlC+A6HDjYY9XS8w8L6gcw/IvaA0gnNC3PgK0txQ=
+X-Received: by 2002:a25:600b:0:b0:648:ef9b:172d with SMTP id
+ u11-20020a25600b000000b00648ef9b172dmr9893719ybb.585.1651236726660; Fri, 29
+ Apr 2022 05:52:06 -0700 (PDT)
 MIME-Version: 1.0
+References: <20220228233057.1140817-1-pgwipeout@gmail.com>
+ <Yh1lboz7VDiuYuZV@shell.armlinux.org.uk>
+ <CAMdYzYrNvUUMom4W4uD9yf9LtFK1h5Xw+9GYc54hB5+iqVmJtw@mail.gmail.com>
+In-Reply-To: <CAMdYzYrNvUUMom4W4uD9yf9LtFK1h5Xw+9GYc54hB5+iqVmJtw@mail.gmail.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Fri, 29 Apr 2022 08:51:54 -0400
+Message-ID: <CAMdYzYrFuMw4aj_9L698ZhL7Xqy8=NeXhy9HDz4ug-v3=f4fpw@mail.gmail.com>
+Subject: Re: [PATCH v1] net: phy: fix motorcomm module automatic loading
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>, 
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux Kernel Network Developers <netdev@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220429_053857_358789_41DE1AC1 
-X-CRM114-Status: GOOD (  19.53  )
+X-CRM114-CacheID: sfid-20220429_055210_148326_BC4AC3D2 
+X-CRM114-Status: GOOD (  37.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,166 +88,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The legacy interrupts on the rk356x PCIe controller are handled by a
-single muxed interrupt. Add IRQ domain support to the pcie-dw-rockchip
-driver to support the virtual domain.
+On Mon, Feb 28, 2022 at 7:44 PM Peter Geis <pgwipeout@gmail.com> wrote:
+>
+> On Mon, Feb 28, 2022 at 7:14 PM Russell King (Oracle)
+> <linux@armlinux.org.uk> wrote:
+> >
+> > On Mon, Feb 28, 2022 at 06:30:57PM -0500, Peter Geis wrote:
+> > > The sentinel compatible entry whitespace causes automatic module loading
+> > > to fail with certain userspace utilities. Fix this by removing the
+> > > whitespace and sentinel comment, which is unnecessary.
+> >
+> > Umm. How does it fail?
+>
+> It simply does not auto load the module by device id match.
+> Manually loading the module after the fact works fine.
+>
+> >
+> > >  static const struct mdio_device_id __maybe_unused motorcomm_tbl[] = {
+> > >       { PHY_ID_MATCH_EXACT(PHY_ID_YT8511) },
+> > > -     { /* sentinal */ }
+> > > +     {}
+> >
+> > These two should be 100% identical in terms of the object code produced,
+> > and thus should have no bearing on the ability for the module to be
+> > loaded.
+> >
+> > Have you investigated the differences in the produced object code?
+>
+> Yes, you are correct, I just compared the produced files and they are identical.
+> This patch can get dropped then.
+> I'm curious now why it seemed to make a difference.
+>
+> I am not familiar enough with how the various userspace elements
+> decide to match the modules to determine exactly why this is failing.
+> It seems to be hit or miss if userspace decides to auto load this, for
+> instance Ubuntu 20.04 was happy to load my kernel module built with
+> the arm64 official toolchain, but Manjaro will not load their self
+> built kernel module.
+> I originally suspected it was due to the manufacturer id being all zeros.
+> Unless there's some weird compiler optimization that I'm not seeing in
+> my configuration.
+>
+> Any ideas would be appreciated.
+> Thanks!
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 96 ++++++++++++++++++-
- 1 file changed, 94 insertions(+), 2 deletions(-)
+Good Morning,
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index faedbd6ebc20..8c5bb9d7cc36 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -10,9 +10,12 @@
- 
- #include <linux/clk.h>
- #include <linux/gpio/consumer.h>
-+#include <linux/irqchip/chained_irq.h>
-+#include <linux/irqdomain.h>
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-+#include <linux/of_irq.h>
- #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-@@ -26,6 +29,7 @@
-  */
- #define HIWORD_UPDATE(mask, val) (((mask) << 16) | (val))
- #define HIWORD_UPDATE_BIT(val)	HIWORD_UPDATE(val, val)
-+#define HIWORD_DISABLE_BIT(val)	HIWORD_UPDATE(val, ~val)
- 
- #define to_rockchip_pcie(x) dev_get_drvdata((x)->dev)
- 
-@@ -36,10 +40,12 @@
- #define PCIE_LINKUP			(PCIE_SMLH_LINKUP | PCIE_RDLH_LINKUP)
- #define PCIE_L0S_ENTRY			0x11
- #define PCIE_CLIENT_GENERAL_CONTROL	0x0
-+#define PCIE_CLIENT_INTR_STATUS_LEGACY	0x8
-+#define PCIE_CLIENT_INTR_MASK_LEGACY	0x1c
- #define PCIE_CLIENT_GENERAL_DEBUG	0x104
--#define PCIE_CLIENT_HOT_RESET_CTRL      0x180
-+#define PCIE_CLIENT_HOT_RESET_CTRL	0x180
- #define PCIE_CLIENT_LTSSM_STATUS	0x300
--#define PCIE_LTSSM_ENABLE_ENHANCE       BIT(4)
-+#define PCIE_LTSSM_ENABLE_ENHANCE	BIT(4)
- #define PCIE_LTSSM_STATUS_MASK		GENMASK(5, 0)
- 
- struct rockchip_pcie {
-@@ -51,6 +57,7 @@ struct rockchip_pcie {
- 	struct reset_control		*rst;
- 	struct gpio_desc		*rst_gpio;
- 	struct regulator                *vpcie3v3;
-+	struct irq_domain		*irq_domain;
- };
- 
- static int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip,
-@@ -65,6 +72,78 @@ static void rockchip_pcie_writel_apb(struct rockchip_pcie *rockchip,
- 	writel_relaxed(val, rockchip->apb_base + reg);
- }
- 
-+static void rockchip_pcie_legacy_int_handler(struct irq_desc *desc)
-+{
-+	struct irq_chip *chip = irq_desc_get_chip(desc);
-+	struct rockchip_pcie *rockchip = irq_desc_get_handler_data(desc);
-+	unsigned long reg, hwirq;
-+
-+	chained_irq_enter(chip, desc);
-+
-+	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_LEGACY);
-+
-+	for_each_set_bit(hwirq, &reg, 4)
-+		generic_handle_domain_irq(rockchip->irq_domain, hwirq);
-+
-+	chained_irq_exit(chip, desc);
-+}
-+
-+static void rockchip_intx_mask(struct irq_data *data)
-+{
-+	rockchip_pcie_writel_apb(irq_data_get_irq_chip_data(data),
-+				 HIWORD_UPDATE_BIT(BIT(data->hwirq)),
-+				 PCIE_CLIENT_INTR_MASK_LEGACY);
-+};
-+
-+static void rockchip_intx_unmask(struct irq_data *data)
-+{
-+	rockchip_pcie_writel_apb(irq_data_get_irq_chip_data(data),
-+				 HIWORD_DISABLE_BIT(BIT(data->hwirq)),
-+				 PCIE_CLIENT_INTR_MASK_LEGACY);
-+};
-+
-+static struct irq_chip rockchip_intx_irq_chip = {
-+	.name			= "INTx",
-+	.irq_mask		= rockchip_intx_mask,
-+	.irq_unmask		= rockchip_intx_unmask,
-+	.flags			= IRQCHIP_SKIP_SET_WAKE | IRQCHIP_MASK_ON_SUSPEND,
-+};
-+
-+static int rockchip_pcie_intx_map(struct irq_domain *domain, unsigned int irq,
-+				  irq_hw_number_t hwirq)
-+{
-+	irq_set_chip_and_handler(irq, &rockchip_intx_irq_chip, handle_level_irq);
-+	irq_set_chip_data(irq, domain->host_data);
-+
-+	return 0;
-+}
-+
-+static const struct irq_domain_ops intx_domain_ops = {
-+	.map = rockchip_pcie_intx_map,
-+};
-+
-+static int rockchip_pcie_init_irq_domain(struct rockchip_pcie *rockchip)
-+{
-+	struct device *dev = rockchip->pci.dev;
-+	struct device_node *intc;
-+
-+	intc = of_get_child_by_name(dev->of_node, "legacy-interrupt-controller");
-+	if (!intc) {
-+		dev_err(dev, "missing child interrupt-controller node\n");
-+		return -EINVAL;
-+	}
-+
-+	rockchip->irq_domain = irq_domain_add_linear(intc, PCI_NUM_INTX,
-+						    &intx_domain_ops, rockchip);
-+	of_node_put(intc);
-+	if (!rockchip->irq_domain) {
-+		dev_err(dev, "failed to get a INTx IRQ domain\n");
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
- static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
- {
- 	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
-@@ -111,7 +190,20 @@ static int rockchip_pcie_host_init(struct pcie_port *pp)
- {
- 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
- 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
-+	struct device *dev = rockchip->pci.dev;
- 	u32 val = HIWORD_UPDATE_BIT(PCIE_LTSSM_ENABLE_ENHANCE);
-+	int irq, ret;
-+
-+	irq = of_irq_get_byname(dev->of_node, "legacy");
-+	if (irq < 0)
-+		return irq;
-+
-+	ret = rockchip_pcie_init_irq_domain(rockchip);
-+	if (ret < 0)
-+		dev_err(dev, "failed to init irq domain\n");
-+
-+	irq_set_chained_handler_and_data(irq, rockchip_pcie_legacy_int_handler,
-+					 rockchip);
- 
- 	/* LTSSM enable control mode */
- 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
--- 
-2.25.1
+After testing various configurations I found what is actually
+happening here. When libphy is built in but the phy drivers are
+modules and not available in the initrd, the generic phy driver binds
+here. This allows the phy to come up but it is not functional. It also
+prevents the module driver from binding when it becomes available.
+https://elixir.bootlin.com/linux/v5.18-rc4/source/drivers/net/phy/phy_device.c#L1383
 
+It seems there is an implicit dependency between phy_device and the
+device specific drivers that isn't realized in the configuration.
+
+I can think of a few ways to fix this, but I think the simplest is to
+make the device specific drivers have a kconfig dependency on libphy
+(which builds phy_device). This means that the only time the device
+specific phy drivers can be modules is if libphy is as well, otherwise
+if libphy is built in, the device specific drivers would need to be as
+well. There are more elegant and complicated solutions I can think of
+here, such as breaking out the generic driver as a module or having a
+device-tree flag that annotates that we need a device specific driver.
+
+This isn't realized with most of the common devices such as the
+Realtek driver because they have cross dependencies that ensure they
+are likely to be built in.
+
+Very Respectfully,
+Peter Geis
+
+
+>
+> > If not, please do so, and describe what they were. Thanks.
+> >
+> > --
+> > RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+> > FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-rockchip mailing list
