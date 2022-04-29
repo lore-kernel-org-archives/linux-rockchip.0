@@ -4,62 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBD1EC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Apr 2022 12:15:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88DFAC43219
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Apr 2022 12:38:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AFpH924YVuMLGzNTTzTrqIL3GhLwcTA2vT5vZcAfztM=; b=VY4aW8oKCITuN2
-	v50Jxienaebd4/ZNTzUmfdrwR5VJqcaS5gLTTC11FaRxFDJ25+0qCQwzcXvZCxBGk9C0YdIqi5GJ4
-	uIjjutgTUoxYbKbvr7W1o6NVpBvFRdobdNRDlUQE/qxWYF4UEjMBU4326+vYCJeSD1O3TGKR7MuoT
-	W3Ej1j0SiQi/+LVSgkJOtzXg+RblFO2yo3ymKE4yMklyERrLvAjkSs+KEUFFKtZyh5pFCd4mJAzHJ
-	vWuPovhxjX2NCJg/LcBIXFqGwBDA8eGRjL6ux7FQTfMj+1EKJ93AFHmlpIIhQ7Mwrx7tOQd//JMeM
-	at5PBGDVmYpUqlAv05Aw==;
+	List-Owner; bh=kO03w9ltfK4vG0eTKXkyjlrCyaT4Lr+vdO+2IuEDh/U=; b=hfK2+ucPLy8xPM
+	3vpix0QZ50eJ84af8M48Y35AnrSZleW/E9VhHERbqG9NjZnfvOJ/ryRFCyHEzuF6/ykIzuXZgX9ET
+	x16EYNsABxGAcZeDnMdz8xQIoFGipMsfRyetZKxZS7EXt1pe1FsWTv/46TzgEc6sZpU7fLYsE/FMU
+	J3qPoZbk6594+xwe1tURMbavaZHIidd+c91XXJXR2Nq8Kmh8Pbl8n6kVwF9lhuERN4BPoc0KJ09PI
+	dHIgldaUBSPmfV4cB2mzhKMXl4yhdjYkuROYcokBCZBwGxLPaLNCzyaPxTfRs28FvZYp4aL4RzwLR
+	YtdFQnPTHyqPZXlTNz2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkPWx-00B61B-Gq; Fri, 29 Apr 2022 12:15:27 +0000
-Received: from vps0.lunn.ch ([185.16.172.187])
+	id 1nkPtV-00BBJY-1k; Fri, 29 Apr 2022 12:38:45 +0000
+Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkPWm-00B5yX-Cu; Fri, 29 Apr 2022 12:15:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
- s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
- Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
- Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
- In-Reply-To:References; bh=nJbZKj7+pWCDUFlNUm1wgYBm08byh6iVe5oLUsV2N0I=; b=5S
- j/EYV/8pbsLLSu8n1/uFFbh2LWnTM81hBfk5ByckrGFEz/Rzm0HXbq8JtQJgO5q8+P9NvMdC1CJYr
- pRPj16atkhl+PJjTdufp6ZRrDM4Le5t3OVL/LfORBPTg8OyraEq2jc4EYMRjWXLyKwzmhkOZxajJq
- SdpcKlQ30SYXps4=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1nkPWS-000TZv-69; Fri, 29 Apr 2022 14:14:56 +0200
-Date: Fri, 29 Apr 2022 14:14:56 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
-Cc: kuba <kuba@kernel.org>, davem <davem@davemloft.net>,
- joabreu <joabreu@synopsys.com>,
- "alexandre.torgue" <alexandre.torgue@st.com>,
- "peppe.cavallaro" <peppe.cavallaro@st.com>,
- netdev <netdev@vger.kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Device Tree <devicetree@vger.kernel.org>
-Subject: Re: Re: [PATCH V2] ethernet: stmmac: support driver work for DTs
- without child queue node
-Message-ID: <YmvWwIgE71iwZhgp@lunn.ch>
-References: <20220428010927.526310-1-jay.xu@rock-chips.com>
- <20220429004605.1010751-1-jay.xu@rock-chips.com>
- <Yms3ynT8RGmldAkm@lunn.ch> <2022042909545741446644@rock-chips.com>
+ id 1nkPtS-00BBHc-3s; Fri, 29 Apr 2022 12:38:43 +0000
+Received: by mail-qv1-xf31.google.com with SMTP id a5so5240687qvx.1;
+ Fri, 29 Apr 2022 05:38:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=201AgYs6wxZXn0CiA5WtaZGJH3IgZsAjitKsl1zeggo=;
+ b=bt8ayZxMHw4laYtEaAyGgX7330rJVK1ajlU2d7QFoy4B+KP+smWpbI+Wwy2NmAvgCJ
+ 7PfJV5I4EOSb0DQk4hXHy6CeFgeD5azjLC7j8waIAkAAG/v7EXQ7fv081l6lydsgyzms
+ tRKu1FUzyOnfPfQ3gTTWN4pO1V7Dfla+jZa7B2NPrGiFVjxMTK9qU76IPJK8mJI7QzAg
+ RXnsuDeet4J4L3lFY6gbnQWbfvKfl5jRZ+pTK3Y3VWjQeabU4a6xQ0NfnYNMfiMYVxtU
+ 08h8XTxaiw0Si7GdIGZNvcgGGLn0s6IL8FXwYjYubMwQVpq5Mlp1aCWleRm/gz3AwpTL
+ CEng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=201AgYs6wxZXn0CiA5WtaZGJH3IgZsAjitKsl1zeggo=;
+ b=Ym8haizYwkIdap2YVaVufhYjQSnBMuT9VAFtIf2jCtL2aD0ep9pCV5zkLeUE+TCtMa
+ 1XKR+25h1dzQKPV0M7wWvApPpCNkiId6RN5/4FjanmTzrADGK1WL2bhewyjhaC2i1fFK
+ 2G2dbMUpylRgQlDtnv6aABoQCOs6g00fx/EL9ykyEsexU/1HdNs8/YdYIvmUbpcQpDXs
+ NtU1zeU6WbJishcwv+YKU8/KrOSW5MR7xaDvJEmXgtQNZDXMpE3m1x3l1hNswbqgw0oG
+ DKFA6LV3qgGyYtmU48M3TdqgdKQxDIeYiughWISwMuP04KjNtgituj/ft8CgBbe5IGqq
+ eW/w==
+X-Gm-Message-State: AOAM533Vu4V4t8cqTbbSmwNczD9/v6tBH4GfwYOfTPHUjGD1Hmd93j8F
+ O5jzxY2AdvVhDzkpQuwZoK85E7oyQzFYH3JP
+X-Google-Smtp-Source: ABdhPJyeoCUg6N0c4WPfHjvyCADXc9l4KxtqZKYvz7SV8mcxhCCx3m1zBH5DBIY79I69gcfQpeQ6ww==
+X-Received: by 2002:a05:6214:519b:b0:456:48f2:a1b1 with SMTP id
+ kl27-20020a056214519b00b0045648f2a1b1mr12840340qvb.4.1651235920957; 
+ Fri, 29 Apr 2022 05:38:40 -0700 (PDT)
+Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
+ by smtp.gmail.com with ESMTPSA id
+ v126-20020a37dc84000000b0069f9c375519sm1431644qki.46.2022.04.29.05.38.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Apr 2022 05:38:40 -0700 (PDT)
+From: Peter Geis <pgwipeout@gmail.com>
+To: linux-rockchip@lists.infradead.org,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>,
+ =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Peter Geis <pgwipeout@gmail.com>, Marc Zyngier <maz@kernel.org>,
+ linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Subject: [PATCH v9 2/5] PCI: rockchip-dwc: Reset core at driver probe
+Date: Fri, 29 Apr 2022 08:38:28 -0400
+Message-Id: <20220429123832.2376381-3-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220429123832.2376381-1-pgwipeout@gmail.com>
+References: <20220429123832.2376381-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2022042909545741446644@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220429_051516_459899_9633E914 
-X-CRM114-Status: GOOD (  19.79  )
+X-CRM114-CacheID: sfid-20220429_053842_207522_D08377CB 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,50 +91,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Adding device tree list.
+The PCIe controller is in an unknown state at driver probe. This can
+lead to undesireable effects when the driver attempts to configure the
+controller.
 
-This is mostly a device tree issue, so the device tree Maintainers
-should be part of the discussion.
+Prevent issues in the future by resetting the core during probe.
 
-> >On Fri, Apr 29, 2022 at 08:46:05AM +0800, Jianqun Xu wrote:
-> >> The driver use the value of property 'snps,rx-queues-to-use' to loop
-> >> same numbers child nodes as queues, such as:
-> >>
-> >>=A0=A0=A0=A0 gmac {
-> >>=A0=A0=A0=A0=A0=A0=A0=A0 rx-queues-config {
-> >>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 snps,rx-queues-to-use =3D <1>;
-> >>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 queue0 {
-> >>=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 // nothing need here.
-> >> =A0=A0=A0 };
-> >> };
-> >>=A0=A0=A0=A0 };
-> >>
-> >> Since a patch for dtc from rockchip will delete all node without any
-> >> properties or child node, the queue0 node will be deleted, that caused
-> >> the driver fail to probe:
-> >
-> >Is this the in tree dtc? Do you have a commit hash for it? That should
-> >probably be used as a Fixes: tag. Or that change to dtc needs
-> >reverting because it breaks stuff.
-> > =
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 23 ++++++++-----------
+ 1 file changed, 10 insertions(+), 13 deletions(-)
 
-> The patch is a hack patch for some products and have not in tree dtc, I s=
-aid that to
-> explain a possible case how things happed, it's only a case of no child q=
-ueue node.
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index c9b341e55cbb..faedbd6ebc20 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -152,6 +152,11 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
+ 	if (IS_ERR(rockchip->rst_gpio))
+ 		return PTR_ERR(rockchip->rst_gpio);
+ 
++	rockchip->rst = devm_reset_control_array_get_exclusive(&pdev->dev);
++	if (IS_ERR(rockchip->rst))
++		return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->rst),
++				     "failed to get reset lines\n");
++
+ 	return 0;
+ }
+ 
+@@ -182,18 +187,6 @@ static void rockchip_pcie_phy_deinit(struct rockchip_pcie *rockchip)
+ 	phy_power_off(rockchip->phy);
+ }
+ 
+-static int rockchip_pcie_reset_control_release(struct rockchip_pcie *rockchip)
+-{
+-	struct device *dev = rockchip->pci.dev;
+-
+-	rockchip->rst = devm_reset_control_array_get_exclusive(dev);
+-	if (IS_ERR(rockchip->rst))
+-		return dev_err_probe(dev, PTR_ERR(rockchip->rst),
+-				     "failed to get reset lines\n");
+-
+-	return reset_control_deassert(rockchip->rst);
+-}
+-
+ static const struct dw_pcie_ops dw_pcie_ops = {
+ 	.link_up = rockchip_pcie_link_up,
+ 	.start_link = rockchip_pcie_start_link,
+@@ -222,6 +215,10 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
+ 
++	ret = reset_control_assert(rockchip->rst);
++	if (ret)
++		return ret;
++
+ 	/* DON'T MOVE ME: must be enable before PHY init */
+ 	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+ 	if (IS_ERR(rockchip->vpcie3v3)) {
+@@ -241,7 +238,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		goto disable_regulator;
+ 
+-	ret = rockchip_pcie_reset_control_release(rockchip);
++	ret = reset_control_deassert(rockchip->rst);
+ 	if (ret)
+ 		goto deinit_phy;
+ 
+-- 
+2.25.1
 
-So this has nothing to do with the kernel dtc, or the upstream
-dtc. This is only a 'vendor crap' dtc which has been hacked?
-
-Why should mainline care? Is there anything in the DT standard which
-says the compiler can optimise out empty properties?
-
-     Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
