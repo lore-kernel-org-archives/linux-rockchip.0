@@ -4,74 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEA7EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 Apr 2022 23:21:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2AECC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Apr 2022 00:02:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yCG8c/DhzyOn/0koAxgwlWYqRyMC2XZhTjg6NwXRQmY=; b=Ik8KqyFoVhfYyz8twBBYcaIjwd
-	fXVSFjylBDlhV59n15z9HS8spLxfs8Frw/MzB7LoFSbg2kdwVZn22U5bBIt53SelqxMiCrWhSem0u
-	yillkg1TN5TMOECDzYAIssBeuVExP2t7cLL4wcxqny1pfPvSKfYaSPJ2c/L8Kn+UKphpWHjwcMj0j
-	CHXfYEyJkB+NDMIcHLvSeAWCErnJAHy3RsDeI6d5bKrRlLp4XFebJevsGRxM5Ts5b6xmXsAKkL8c1
-	72ZVctsQnejcn8flA99ixDiahy7HPIvdPU4MtZA54bs+bV8FrMDJe3KQ92KRwGEgZtbc/QRw2zNds
-	Pc//yKgA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=U98b1hXx/fimNoipD42d+Tt9BK1Aef+lTpRF+o5IumU=; b=nyNsSlS2gUO8l5
+	N6acQ4YwOLBx+oZ/HLUkgtvUkphqBanS8H3sXqn++Vs0Ntjf7ylxyiID520Ct18qr5zryRWwW1oPX
+	VpsimHFMZRtv7FJRu1nsJf81bkDyjZXs6QeeyttzTmtoFu9l0eJzDHAm8QLIBTTRg1Hihs+pX7mkj
+	F8rGM+xjrBTIdhzm3pcbd9AVjG5z4HxWeiqmEOkUYmnln2v/Tv9uSVcGfn5fnYtRiyrZhmyIewR11
+	OrGBnKfiUSs3F3XuOiWqKo/gX6ftCBXhJdEF/sB5iboKuHEwcW/pLe/UJhln6Nxkm24npdQF/0ShL
+	EbxeH8uKc6JYPBolGHew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkZvP-00D1KW-P9; Fri, 29 Apr 2022 23:21:23 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nkaZM-00D8TY-TX; Sat, 30 Apr 2022 00:02:40 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkZvC-00D1Gp-Eg
- for linux-rockchip@lists.infradead.org; Fri, 29 Apr 2022 23:21:12 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <mgr@pengutronix.de>)
- id 1nkZuw-0002MG-FN; Sat, 30 Apr 2022 01:20:54 +0200
-Received: from mgr by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <mgr@pengutronix.de>)
- id 1nkZup-0004od-7p; Sat, 30 Apr 2022 01:20:47 +0200
-Date: Sat, 30 Apr 2022 01:20:47 +0200
-From: Michael Grzeschik <mgr@pengutronix.de>
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ id 1nkaZ9-00D8CP-Bt; Sat, 30 Apr 2022 00:02:30 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1nkaYv-0006fZ-1x; Sat, 30 Apr 2022 02:02:13 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Adrian Hunter <adrian.hunter@intel.com>, Ulf Hansson <ulf.hansson@linaro.org>,
  Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Peter Geis <pgwipeout@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Liang Chen <cl@rock-chips.com>, Nicolas Dufresne <nicolas@ndufresne.ca>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev,
- Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 0/3] Enable JPEG Encoder on RK3566/RK3568
-Message-ID: <20220429232047.GG7671@pengutronix.de>
-References: <20220427224438.335327-1-frattaroli.nicolas@gmail.com>
- <198ce3981ad15844627581f9519cab67ed2a81c1.camel@ndufresne.ca>
- <2438841.KJ31GcehEG@archbook>
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>,
+ linux-clk@vger.kernel.org, linux-mmc@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, kernel@lists.collabora.co.uk,
+ Elaine Zhang <zhangqing@rock-chips.com>, kernel@collabora.com
+Subject: Re: [PATCHv1 03/19] clk: rockchip: add pll type for RK3588
+Date: Sat, 30 Apr 2022 02:02:11 +0200
+Message-ID: <2180345.iZASKD2KPV@diego>
+In-Reply-To: <05f60b83065a7e39c04f71c6b769a205e1953f41.camel@collabora.com>
+References: <20220422170920.401914-1-sebastian.reichel@collabora.com>
+ <20220422170920.401914-4-sebastian.reichel@collabora.com>
+ <05f60b83065a7e39c04f71c6b769a205e1953f41.camel@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <2438841.KJ31GcehEG@archbook>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 00:27:06 up 30 days, 10:56, 58 users,  load average: 0.04, 0.10, 0.09
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: mgr@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220429_162110_680658_EDC00198 
-X-CRM114-Status: GOOD (  42.48  )
+X-CRM114-CacheID: sfid-20220429_170227_739750_F7A3A4BA 
+X-CRM114-Status: GOOD (  35.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,198 +65,477 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2098908467609769705=="
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Am Mittwoch, 27. April 2022, 15:36:17 CEST schrieb Nicolas Dufresne:
+> Le vendredi 22 avril 2022 =E0 19:09 +0200, Sebastian Reichel a =E9crit :
+> > From: Elaine Zhang <zhangqing@rock-chips.com>
+> > =
 
---===============2098908467609769705==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="9Iq5ULCa7nGtWwZS"
-Content-Disposition: inline
+> > Add RK3588 PLL support including calculation of PLL parameters
+> > for arbitrary frequencies.
+> > =
 
+> > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> > [rebase and partially rewrite code]
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > ---
+> >  drivers/clk/rockchip/clk-pll.c | 287 ++++++++++++++++++++++++++++++++-
+> >  drivers/clk/rockchip/clk.h     |  18 +++
+> >  2 files changed, 304 insertions(+), 1 deletion(-)
+> > =
 
---9Iq5ULCa7nGtWwZS
-Content-Type: text/plain; charset=iso-8859-15; format=flowed
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> > diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-=
+pll.c
+> > index f7827b3b7fc1..010e47eb51b8 100644
+> > --- a/drivers/clk/rockchip/clk-pll.c
+> > +++ b/drivers/clk/rockchip/clk-pll.c
+> > @@ -15,6 +15,7 @@
+> >  #include <linux/iopoll.h>
+> >  #include <linux/regmap.h>
+> >  #include <linux/clk.h>
+> > +#include <linux/units.h>
+> >  #include "clk.h"
+> >  =
 
-Hi,
+> >  #define PLL_MODE_MASK		0x3
+> > @@ -47,6 +48,67 @@ struct rockchip_clk_pll {
+> >  #define to_rockchip_clk_pll_nb(nb) \
+> >  			container_of(nb, struct rockchip_clk_pll, clk_nb)
+> >  =
 
-On Fri, Apr 29, 2022 at 05:28:35PM +0200, Nicolas Frattaroli wrote:
->On Freitag, 29. April 2022 16:46:01 CEST Nicolas Dufresne wrote:
->> Le jeudi 28 avril 2022 =E0 00:44 +0200, Nicolas Frattaroli a =E9crit :
->> > the following series adds support for and enables the hardware JPEG
->> > encoder on the RK3566 and RK3568 line of SoCs by Rockchip.
->> >
->> > The JPEG encoder is its own little Hantro instance with seemingly just
->> > the encode functionality.
->>
->> I'm a little suspicious about this statement. I believe the Hantro combo=
- is
->> identical to RK3399 and that you are confusing with Rockchip JPEG encode=
-r here.
->> Here's the source of my suspicion:
->>
->> https://github.com/JeffyCN/rockchip_mirrors/blob/mpp/osal/mpp_soc.cpp#L6=
-37
->>
->> As this get burnt into DT, we really need to get this right. Perhaps we =
-need to
->> run the reference software to verify ? Ping me if you need help with tha=
-t.
->
->I believe there's three separate questions here:
->
->A) is this a Hantro instance with more than just JPEG encoding?
->B) is this the same as the other[1] Hantro instance, just with a bigger
->   offset for the encoder?
->C) if A is true and B is false, does this also have decoders?
->
->I think I can only answer B). I do not think fdee0000 is the same hardware
->instance as fdea0400. They are in different power domains (yes, this one
->being in the RGA PD is correct according to downstream code, TRM and my
->own testing). They also have their own MMU each.
+> > +static int
+> > +rockchip_rk3588_get_pll_settings(struct rockchip_clk_pll *pll,
+> > +				 unsigned long fin_hz,
+> > +				 unsigned long fout_hz,
+> > +				 struct rockchip_pll_rate_table *rate_table)
+> > +{
+> > +	u64 fvco_min =3D 2250 * HZ_PER_MHZ, fvco_max =3D 4500 * HZ_PER_MHZ;
+> > +	u64 fout_min =3D 37 * HZ_PER_MHZ, fout_max =3D 4500 * HZ_PER_MHZ;
+> > +	u32 p, m, s;
+> > +	u64 fvco, fref, fout, ffrac;
+> > +
+> > +	if (fin_hz =3D=3D 0 || fout_hz =3D=3D 0 || fout_hz =3D=3D fin_hz)
+> > +		return -EINVAL;
+> > +
+> > +	if (fout_hz > fout_max || fout_hz < fout_min)
+> > +		return -EINVAL;
+> > +
+> > +	if (fin_hz / HZ_PER_MHZ * HZ_PER_MHZ =3D=3D fin_hz &&
+> > +	    fout_hz / HZ_PER_MHZ * HZ_PER_MHZ =3D=3D fout_hz) {
+> > +		for (s =3D 0; s <=3D 6; s++) {
+> > +			fvco =3D fout_hz << s;
+> > +			if (fvco < fvco_min || fvco > fvco_max)
+> > +				continue;
+> > +			for (p =3D 2; p <=3D 4; p++) {
+> > +				for (m =3D 64; m <=3D 1023; m++) {
+> > +					if (fvco =3D=3D m * fin_hz / p) {
+> > +						rate_table->p =3D p;
+> > +						rate_table->m =3D m;
+> > +						rate_table->s =3D s;
+> > +						rate_table->k =3D 0;
+> > +						return 0;
+> > +					}
+> > +				}
+> > +			}
+> > +		}
+> > +	} else {
+> > +		fout =3D (fout_hz / HZ_PER_MHZ) * HZ_PER_MHZ;
+> > +		ffrac =3D (fout_hz % HZ_PER_MHZ);
+> > +		for (s =3D 0; s <=3D 6; s++) {
+> > +			fvco =3D fout << s;
+> > +			if (fvco < fvco_min || fvco > fvco_max)
+> > +				continue;
+> > +			for (p =3D 1; p <=3D 4; p++) {
+> > +				for (m =3D 64; m <=3D 1023; m++) {
+> > +					if (fvco =3D=3D m * fin_hz / p) {
+> > +						rate_table->p =3D p;
+> > +						rate_table->m =3D m;
+> > +						rate_table->s =3D s;
+> > +						fref =3D fin_hz / p;
+> > +						fout =3D (ffrac << s) * 65535;
+> > +						rate_table->k =3D fout / fref;
+> > +						return 0;
+> > +					}
+> > +				}
+> > +			}
+> > +		}
+> > +	}
+> > +
+> > +	return -EINVAL;
+> > +}
+> > +
+> >  static const struct rockchip_pll_rate_table *rockchip_get_pll_settings(
+> >  			    struct rockchip_clk_pll *pll, unsigned long rate)
+> >  {
+> > @@ -68,6 +130,14 @@ static long rockchip_pll_round_rate(struct clk_hw *=
+hw,
+> >  	const struct rockchip_pll_rate_table *rate_table =3D pll->rate_table;
+> >  	int i;
+> >  =
 
->Your findings point towards A) being true. I'd love to be able to just
->throw a mainline VP8 or H.264 driver at it to check, but that sadly does
->not exist yet.
+> > +	if (pll->type =3D=3D pll_rk3588 || pll->type =3D=3D pll_rk3588_core) {
+> > +		long parent_rate =3D prate ? *prate : 24 * HZ_PER_MHZ;
+> > +		struct rockchip_pll_rate_table pll_settings;
+> > +
+> > +		if (rockchip_rk3588_get_pll_settings(pll, parent_rate, drate, &pll_s=
+ettings) >=3D 0)
+> > +			return pll_settings.rate;
+> > +	}
+> > +
+> =
 
-Not Mainline, but for the the RK3399 Encoder there is some initial work
-available made by bootlin.
+> I was reading some of previous backlog on why these formula have never be=
+en
+> mainlines [0]. It looks like so far the statu quo was adopted. But if tha=
+t was
+> to change, I think this implementation is not aligned with the intent. If=
+ my
+> understanding is right, the rate_table[] (if it exists) should be looked =
+up
+> first and the formula use as a fallback.
 
-https://github.com/bootlin/linux bootlin/hantro/h264-encoding-v5.11
+real life products like the Chromebooks using rk3288 and rk3399 had
+a lot of fun with PLL rates (jitter and whatnot) and even had the underlying
+parameters of some rates changed (same rate but using different parameters
+to achive it) to reduce effects.
 
-They also implemented some initial userspace tool to test this.
+When doing this rate-table + dynamic calculation you never really know
+which one will be taken I guess. When you hit the exact rate as in the
+table you might get an optimized one but when round-rate ends up like 1kHz
+above, you would then get a non-optimized calculated one.
 
-https://github.com/bootlin/v4l2-hantro-h264-encoder
-
-If you have some time on your hands, it would be great if we could test
-this on the RK3568 with the VEPU121 core.
-
->Upon checking the TRM again, it seems it documents registers for H.264 as =
-well.
-
-I would like to describe the whole sitation a little bit more in detail.
-
-In the Datasheet of the RK3568 there are several decoder and encoder
-entities documented. This encoder instance is called VEPU121 in the
-TRM.
-
-RK3568:
--------
-
-Look into "Chapter 10 Multi-format Video Encoder and Decoder" (Page 463)
-of RK3568 TRM Part2.
-
-https://dl.radxa.com/rock3/docs/hw/datasheet/Rockchip%20RK3568%20TRM%20Part=
-2%20V1.1-20210301.pdf
-
-We also find some mentionioning of JPEG encoding in the RK3399
-datasheet.
-
-RK3399:
--------
-
-Look into "Chapter 5 Multi-format Video Decoder And Encoder" (Page 297)
-of RK3399 TRM Part 3.
-
-http://www.netbsd.org/~mrg/rk3399/Rockchip%20RK3399TRM%20V1.1%20Part3%20201=
-60728.pdf
-
-* Supports encoding of the following standards:
-  * H.264: up to HP level 4.1
-  * JPEG: Baseline (DCT sequential)
-
-Which probably refers to the core that is also available on the RK3399.
-
-
-Comparing the register layout of VEPU121 of the RK3568 with the
-encoder part in RK3399 we find nearly the same register description.
-
-10.5.21 VEPU121 Detail Registers Description (Page 704 of RK3568 TRM Part2)
-
-vs.
-
-5.5.4 VEPU Registers Summary (Page 443 of RK3399 TRM Part3)
-
-However this is just the documentation, this could mean nothing to
-the real world. Getting the core tested with the bootlin stack
-or getting feedback from Kever would probably tell the whole story.
-
->However I can do this to answer C), and I will once I get the time.
->It would be somewhat surprising if there was a hidden third H.264
->decoder on this chip.
-
-The corresponding decoder world on the RK3568 is also very unclear.
-
-It supports RKVDEC (referd as VDPU346 in the TRM), that is probably also
-supported by the mainline code you can find in drivers/staging/media/rkvdec=
-/.
-
-Then there is VDPU121 which seems to be just the same G1 as in RK3399,
-regarding to these patches:
-
-https://lore.kernel.org/all/20220213195316.4149106-3-piotr.oniszczuk@gmail.=
-com/T/
-
-The last Core you probably refer to is called VDPU720 JPEG Decoder
-located at 0xFDED0000. I also really don't know where to put this in
-at the moment.
-
->I'll also CC Kever Yang from rockchip, maybe he can shine some light on
->this.
-
-Since the RK3568 seems to get more and more of attention at the moment
-I would like to ask if somebody is planning to write support the RKVENC
-in mainline. That is the VEPU540 core refered to in the RK3568 TRM.
-
-I would start with that in the next weeks, taking the bootlin H1 support
-as an reference to handle the request_api for the encoder part. Which is
-currently completely untouched in mainline AFAIK.
-
-Regards,
-Michael
-
---=20
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-
---9Iq5ULCa7nGtWwZS
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEElXvEUs6VPX6mDPT8C+njFXoeLGQFAmJscsoACgkQC+njFXoe
-LGSbiRAAwCISPC4Va5HEdBHABLuRteCTtHhDhkuYj8/IMqOrN8S8vIYEpo+TRY2+
-hkt0QkY06mgDwmcUhiw3plaMGnAMMgvZMSQwS4YTS5LelpsbugQS3gSaznQq7cc5
-zvznuZlNFfY85Kz7HrPrtWiCHbZOyRNb3IH42uwFB0c4dqAr58C/eA1bMuoxj4jN
-xxQ8e2lU8h8BpvNSvy1GwkojITWK4S3U4t52ZnfeQCXImy332kIWBcXmPC+8JSnT
-SgU2t2F94E0v5l5HSbm+FGqugn/ALt3PWF+PFin4Ux5KSUnLiYWhOp28HC8wMIiw
-3LCWjqknc3PUL6MKw2/7PqIlXB0uPVgpR9my+aXn3dpHoFRLkM4rQ+FxvjnRzW1H
-CRhgvoUukFDQsYwT5UndJhEMHPBnG+4n+6aE7AqI2HKjPdnSoXaEqpz1Qij1Jgb4
-BQ0S9R5oa1WZk7GMA/9WCgIevOtn4bGFGCTZQPAWAqubVZQ9SvBEuTjPsDQX0F6l
-Dt03o+hUzL3yYFJZjhWUBcf9rs4dG4oKwdPbqz72IPzfb/xxc9iZLR12cqzgwwci
-lYdH/5VVDrTFbjCnLrMahw+EHN3OXqtP97fjTgfHkyAyzw5ksjnTqzJ6QFdVO4BI
-Nth/At4dnJeCPAWrEiOFd6XY1q06YHxgOBvnzE8KIURGBHeUdFU=
-=OhKV
------END PGP SIGNATURE-----
-
---9Iq5ULCa7nGtWwZS--
+So I'm personally really in favor of just sticking with a curated rate-tabl=
+e.
 
 
---===============2098908467609769705==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Heiko
+
+
+
+> [0] https://patchwork.kernel.org/project/linux-rockchip/patch/1470144852-=
+20708-1-git-send-email-zhengxing@rock-chips.com/#19548765
+> =
+
+> >  	/* Assumming rate_table is in descending order */
+> >  	for (i =3D 0; i < pll->rate_count; i++) {
+> >  		if (drate >=3D rate_table[i].rate)
+> > @@ -842,6 +912,212 @@ static const struct clk_ops rockchip_rk3399_pll_c=
+lk_ops =3D {
+> >  	.init =3D rockchip_rk3399_pll_init,
+> >  };
+> >  =
+
+> > +/**
+> > + * PLL used in RK3588
+> > + */
+> > +
+> > +#define RK3588_PLLCON(i)               (i * 0x4)
+> > +#define RK3588_PLLCON0_M_MASK          0x3ff
+> > +#define RK3588_PLLCON0_M_SHIFT         0
+> > +#define RK3588_PLLCON1_P_MASK          0x3f
+> > +#define RK3588_PLLCON1_P_SHIFT         0
+> > +#define RK3588_PLLCON1_S_MASK          0x7
+> > +#define RK3588_PLLCON1_S_SHIFT         6
+> > +#define RK3588_PLLCON2_K_MASK          0xffff
+> > +#define RK3588_PLLCON2_K_SHIFT         0
+> > +#define RK3588_PLLCON1_PWRDOWN         BIT(13)
+> > +#define RK3588_PLLCON6_LOCK_STATUS     BIT(15)
+> > +
+> > +static int rockchip_rk3588_pll_wait_lock(struct rockchip_clk_pll *pll)
+> > +{
+> > +	u32 pllcon;
+> > +	int ret;
+> > +
+> > +	/*
+> > +	 * Lock time typical 250, max 500 input clock cycles @24MHz
+> > +	 * So define a very safe maximum of 1000us, meaning 24000 cycles.
+> > +	 */
+> > +	ret =3D readl_relaxed_poll_timeout(pll->reg_base + RK3588_PLLCON(6),
+> > +					 pllcon,
+> > +					 pllcon & RK3588_PLLCON6_LOCK_STATUS,
+> > +					 0, 1000);
+> > +	if (ret)
+> > +		pr_err("%s: timeout waiting for pll to lock\n", __func__);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static void rockchip_rk3588_pll_get_params(struct rockchip_clk_pll *pl=
+l,
+> > +					   struct rockchip_pll_rate_table *rate)
+> > +{
+> > +	u32 pllcon;
+> > +
+> > +	pllcon =3D readl_relaxed(pll->reg_base + RK3588_PLLCON(0));
+> > +	rate->m =3D ((pllcon >> RK3588_PLLCON0_M_SHIFT) & RK3588_PLLCON0_M_MA=
+SK);
+> > +
+> > +	pllcon =3D readl_relaxed(pll->reg_base + RK3588_PLLCON(1));
+> > +	rate->p =3D ((pllcon >> RK3588_PLLCON1_P_SHIFT) & RK3588_PLLCON1_P_MA=
+SK);
+> > +	rate->s =3D ((pllcon >> RK3588_PLLCON1_S_SHIFT) & RK3588_PLLCON1_S_MA=
+SK);
+> > +
+> > +	pllcon =3D readl_relaxed(pll->reg_base + RK3588_PLLCON(2));
+> > +	rate->k =3D ((pllcon >> RK3588_PLLCON2_K_SHIFT) & RK3588_PLLCON2_K_MA=
+SK);
+> > +}
+> > +
+> > +static unsigned long rockchip_rk3588_pll_recalc_rate(struct clk_hw *hw=
+, unsigned long prate)
+> > +{
+> > +	struct rockchip_clk_pll *pll =3D to_rockchip_clk_pll(hw);
+> > +	struct rockchip_pll_rate_table cur;
+> > +	u64 rate64 =3D prate, postdiv;
+> > +
+> > +	rockchip_rk3588_pll_get_params(pll, &cur);
+> > +
+> > +	rate64 *=3D cur.m;
+> > +	do_div(rate64, cur.p);
+> > +
+> > +	if (cur.k) {
+> > +		/* fractional mode */
+> > +		u64 frac_rate64 =3D prate * cur.k;
+> > +
+> > +		postdiv =3D cur.p * 65535;
+> > +		do_div(frac_rate64, postdiv);
+> > +		rate64 +=3D frac_rate64;
+> > +	}
+> > +	rate64 =3D rate64 >> cur.s;
+> > +
+> > +	return (unsigned long)rate64;
+> > +}
+> > +
+> > +static int rockchip_rk3588_pll_set_params(struct rockchip_clk_pll *pll,
+> > +					  const struct rockchip_pll_rate_table *rate)
+> > +{
+> > +	const struct clk_ops *pll_mux_ops =3D pll->pll_mux_ops;
+> > +	struct clk_mux *pll_mux =3D &pll->pll_mux;
+> > +	struct rockchip_pll_rate_table cur;
+> > +	int rate_change_remuxed =3D 0;
+> > +	int cur_parent;
+> > +	int ret;
+> > +
+> > +	pr_debug("%s: rate settings for %lu p: %d, m: %d, s: %d, k: %d\n",
+> > +		 __func__, rate->rate, rate->p, rate->m, rate->s, rate->k);
+> > +
+> > +	rockchip_rk3588_pll_get_params(pll, &cur);
+> > +	cur.rate =3D 0;
+> > +
+> > +	if (pll->type =3D=3D pll_rk3588) {
+> > +		cur_parent =3D pll_mux_ops->get_parent(&pll_mux->hw);
+> > +		if (cur_parent =3D=3D PLL_MODE_NORM) {
+> > +			pll_mux_ops->set_parent(&pll_mux->hw, PLL_MODE_SLOW);
+> > +			rate_change_remuxed =3D 1;
+> > +		}
+> > +	}
+> > +
+> > +	/* set pll power down */
+> > +	writel(HIWORD_UPDATE(RK3588_PLLCON1_PWRDOWN,
+> > +			     RK3588_PLLCON1_PWRDOWN, 0),
+> > +	       pll->reg_base + RK3399_PLLCON(1));
+> > +
+> > +	/* update pll values */
+> > +	writel_relaxed(HIWORD_UPDATE(rate->m, RK3588_PLLCON0_M_MASK, RK3588_P=
+LLCON0_M_SHIFT),
+> > +		       pll->reg_base + RK3399_PLLCON(0));
+> > +
+> > +	writel_relaxed(HIWORD_UPDATE(rate->p, RK3588_PLLCON1_P_MASK, RK3588_P=
+LLCON1_P_SHIFT) |
+> > +		       HIWORD_UPDATE(rate->s, RK3588_PLLCON1_S_MASK, RK3588_PLLCON1_=
+S_SHIFT),
+> > +		       pll->reg_base + RK3399_PLLCON(1));
+> > +
+> > +	writel_relaxed(HIWORD_UPDATE(rate->k, RK3588_PLLCON2_K_MASK, RK3588_P=
+LLCON2_K_SHIFT),
+> > +		       pll->reg_base + RK3399_PLLCON(2));
+> > +
+> > +	/* set pll power up */
+> > +	writel(HIWORD_UPDATE(0, RK3588_PLLCON1_PWRDOWN, 0),
+> > +	       pll->reg_base + RK3588_PLLCON(1));
+> > +
+> > +	/* wait for the pll to lock */
+> > +	ret =3D rockchip_rk3588_pll_wait_lock(pll);
+> > +	if (ret) {
+> > +		pr_warn("%s: pll update unsuccessful, trying to restore old params\n=
+",
+> > +			__func__);
+> > +		rockchip_rk3588_pll_set_params(pll, &cur);
+> > +	}
+> > +
+> > +	if ((pll->type =3D=3D pll_rk3588) && rate_change_remuxed)
+> > +		pll_mux_ops->set_parent(&pll_mux->hw, PLL_MODE_NORM);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static int rockchip_rk3588_pll_set_rate(struct clk_hw *hw, unsigned lo=
+ng drate,
+> > +					unsigned long prate)
+> > +{
+> > +	struct rockchip_clk_pll *pll =3D to_rockchip_clk_pll(hw);
+> > +	struct rockchip_pll_rate_table rate;
+> > +	unsigned long old_rate =3D rockchip_rk3588_pll_recalc_rate(hw, prate);
+> > +
+> > +	pr_debug("%s: changing %s from %lu to %lu with a parent rate of %lu\n=
+",
+> > +		 __func__, __clk_get_name(hw->clk), old_rate, drate, prate);
+> > +
+> > +	if (rockchip_rk3588_get_pll_settings(pll, prate, drate, &rate) < 0) {
+> > +		pr_err("%s: Invalid rate : %lu for pll clk %s\n", __func__,
+> > +		       drate, __clk_get_name(hw->clk));
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	return rockchip_rk3588_pll_set_params(pll, &rate);
+> > +}
+> > +
+> > +static int rockchip_rk3588_pll_enable(struct clk_hw *hw)
+> > +{
+> > +	struct rockchip_clk_pll *pll =3D to_rockchip_clk_pll(hw);
+> > +
+> > +	writel(HIWORD_UPDATE(0, RK3588_PLLCON1_PWRDOWN, 0),
+> > +	       pll->reg_base + RK3588_PLLCON(1));
+> > +	rockchip_rk3588_pll_wait_lock(pll);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static void rockchip_rk3588_pll_disable(struct clk_hw *hw)
+> > +{
+> > +	struct rockchip_clk_pll *pll =3D to_rockchip_clk_pll(hw);
+> > +
+> > +	writel(HIWORD_UPDATE(RK3588_PLLCON1_PWRDOWN, RK3588_PLLCON1_PWRDOWN, =
+0),
+> > +	       pll->reg_base + RK3588_PLLCON(1));
+> > +}
+> > +
+> > +static int rockchip_rk3588_pll_is_enabled(struct clk_hw *hw)
+> > +{
+> > +	struct rockchip_clk_pll *pll =3D to_rockchip_clk_pll(hw);
+> > +	u32 pllcon =3D readl(pll->reg_base + RK3588_PLLCON(1));
+> > +
+> > +	return !(pllcon & RK3588_PLLCON1_PWRDOWN);
+> > +}
+> > +
+> > +static int rockchip_rk3588_pll_init(struct clk_hw *hw)
+> > +{
+> > +	struct rockchip_clk_pll *pll =3D to_rockchip_clk_pll(hw);
+> > +
+> > +	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
+> > +		return 0;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static const struct clk_ops rockchip_rk3588_pll_clk_norate_ops =3D {
+> > +	.recalc_rate =3D rockchip_rk3588_pll_recalc_rate,
+> > +	.enable =3D rockchip_rk3588_pll_enable,
+> > +	.disable =3D rockchip_rk3588_pll_disable,
+> > +	.is_enabled =3D rockchip_rk3588_pll_is_enabled,
+> > +};
+> > +
+> > +static const struct clk_ops rockchip_rk3588_pll_clk_ops =3D {
+> > +	.recalc_rate =3D rockchip_rk3588_pll_recalc_rate,
+> > +	.round_rate =3D rockchip_pll_round_rate,
+> > +	.set_rate =3D rockchip_rk3588_pll_set_rate,
+> > +	.enable =3D rockchip_rk3588_pll_enable,
+> > +	.disable =3D rockchip_rk3588_pll_disable,
+> > +	.is_enabled =3D rockchip_rk3588_pll_is_enabled,
+> > +	.init =3D rockchip_rk3588_pll_init,
+> > +};
+> > +
+> >  /*
+> >   * Common registering of pll clocks
+> >   */
+> > @@ -890,7 +1166,8 @@ struct clk *rockchip_clk_register_pll(struct rockc=
+hip_clk_provider *ctx,
+> >  	if (pll_type =3D=3D pll_rk3036 ||
+> >  	    pll_type =3D=3D pll_rk3066 ||
+> >  	    pll_type =3D=3D pll_rk3328 ||
+> > -	    pll_type =3D=3D pll_rk3399)
+> > +	    pll_type =3D=3D pll_rk3399 ||
+> > +	    pll_type =3D=3D pll_rk3588)
+> >  		pll_mux->flags |=3D CLK_MUX_HIWORD_MASK;
+> >  =
+
+> >  	/* the actual muxing is xin24m, pll-output, xin32k */
+> > @@ -957,6 +1234,14 @@ struct clk *rockchip_clk_register_pll(struct rock=
+chip_clk_provider *ctx,
+> >  		else
+> >  			init.ops =3D &rockchip_rk3399_pll_clk_ops;
+> >  		break;
+> > +	case pll_rk3588:
+> > +	case pll_rk3588_core:
+> > +		if (!pll->rate_table)
+> > +			init.ops =3D &rockchip_rk3588_pll_clk_norate_ops;
+> > +		else
+> > +			init.ops =3D &rockchip_rk3588_pll_clk_ops;
+> > +		init.flags =3D flags;
+> > +		break;
+> >  	default:
+> >  		pr_warn("%s: Unknown pll type for pll clk %s\n",
+> >  			__func__, name);
+> > diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+> > index 6aece7f07a7d..bf7c8d082fde 100644
+> > --- a/drivers/clk/rockchip/clk.h
+> > +++ b/drivers/clk/rockchip/clk.h
+> > @@ -221,6 +221,8 @@ enum rockchip_pll_type {
+> >  	pll_rk3066,
+> >  	pll_rk3328,
+> >  	pll_rk3399,
+> > +	pll_rk3588,
+> > +	pll_rk3588_core,
+> >  };
+> >  =
+
+> >  #define RK3036_PLL_RATE(_rate, _refdiv, _fbdiv, _postdiv1,	\
+> > @@ -253,6 +255,15 @@ enum rockchip_pll_type {
+> >  	.nb =3D _nb,						\
+> >  }
+> >  =
+
+> > +#define RK3588_PLL_RATE(_rate, _p, _m, _s, _k)			\
+> > +{								\
+> > +	.rate   =3D _rate##U,					\
+> > +	.p =3D _p,						\
+> > +	.m =3D _m,						\
+> > +	.s =3D _s,						\
+> > +	.k =3D _k,						\
+> > +}
+> > +
+> >  /**
+> >   * struct rockchip_clk_provider - information about clock provider
+> >   * @reg_base: virtual address for the register base.
+> > @@ -288,6 +299,13 @@ struct rockchip_pll_rate_table {
+> >  			unsigned int dsmpd;
+> >  			unsigned int frac;
+> >  		};
+> > +		struct {
+> > +			/* for RK3588 */
+> > +			unsigned int m;
+> > +			unsigned int p;
+> > +			unsigned int s;
+> > +			unsigned int k;
+> > +		};
+> >  	};
+> >  };
+> >  =
+
+> =
+
+> =
+
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2098908467609769705==--
-
