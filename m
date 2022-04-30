@@ -4,86 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49434C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Apr 2022 14:18:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A8DDC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Apr 2022 14:46:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:From:CC:To:Subject
-	:MIME-Version:References:In-Reply-To:Date:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4tpyEI6l9+KxyFsRcuzMShMDg7Hb7TAj6ij7BEm65iA=; b=fS0AwDzakhbSS1
-	ciziFRfF0weNU7XUIdRjBcn9qDxdjqXOOfRW4r0oDhH+fcLJzbTNLqSfmux4yJXmEWDcNgfRiZuUd
-	7s4P73vPtwC6ChFZ0oMOBRc1YuyxKzc3BF9Ji+S2mASBDT97qJNykoJTbAqmKxEyim7SH4PFfohuT
-	rAx2pyeRnzUg7slQuGMzgfKFuLo7ptJa8Kaj+Ysl7DS4+tlJHAW+l5JaRfp6cmAhJdIM3hXmPf34m
-	6PwE7bNJYus1dv8NjVSpxogUiAVsU6NPM8nxi8PHBLeYrBB3flL2c1uv57W5fF3KZhhR/b9USXTU+
-	4Pb8E14e8ixFu/YAO4QA==;
+	List-Owner; bh=h/TtWQnz9zGYJePUepFEB3+CBh/1NuUCcBeWHoKl7a0=; b=Bq87snWhvbGns7
+	Iw3u9N065tQ41ejCyAEPEnbcnrBQ1B93Sd8QZDRKkQc3ixZj65RuuNLgRw+4SxQkJT9uT83n0LDcO
+	vX0Ts+/SsrJtTIbuEMRHoF9GYsDKkV5rErWTFb89/6eDvPTmpYy7N7OYqUpJnNhBtDCkYYcH8vLd4
+	6JeBN4rtHV4CMhjlpkx9zYhhGW1f8qceWcv9kQh/n0qqMzBSKu52FDA95n/UKB5aKldQmR/GTMpSI
+	EKJYv7F/BZmJb3yWitIIAnl6M1wLCu+ozSVTaKU6uLyx2wLbJJ3UXpOkRbxpjORBFoBJvFPbjrhl6
+	aSD955FSDUi/gMhCi9Ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nknvW-00ETo5-8Y; Sat, 30 Apr 2022 14:18:26 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1nkoMx-00EWEB-U9; Sat, 30 Apr 2022 14:46:47 +0000
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nknvJ-00ETlA-PN; Sat, 30 Apr 2022 14:18:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1651328265;
- bh=RpZTpQKzzOTn3ZLA/Gs5VRQkp2uGMos0GOqltACh2Ns=;
- h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:Reply-to:To:
- CC:From;
- b=dhlfNF1jBeDlco4SgSmA4nCwK1HgNjGr+6piBTy9qIRiFS33Iuzs22AkCnocq+SmT
- MptW0h6/ri3N0UYhXdVzdYZ8Hpqp8tH2HcgqL5QmvmjjgP5R5fUrmgUiKVskW3Wthz
- p6HZ3R1MJjh1lNgKkFssVrI9pTaLdwK9EvBns1/4=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from frank-s9 ([80.245.72.211]) by mail.gmx.net (mrgmx004
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MnJhO-1oAGqb0I9k-00jJBp; Sat, 30
- Apr 2022 16:17:45 +0200
-Date: Sat, 30 Apr 2022 16:17:35 +0200
-User-Agent: K-9 Mail for Android
-In-Reply-To: <3557249.iIbC2pHGDl@phil>
-References: <20220430130347.15190-1-linux@fw-web.de>
- <20220430130347.15190-5-linux@fw-web.de> <3557249.iIbC2pHGDl@phil>
+ id 1nkoMv-00EWDl-2E; Sat, 30 Apr 2022 14:46:46 +0000
+Received: by mail-yb1-xb29.google.com with SMTP id w17so19180202ybh.9;
+ Sat, 30 Apr 2022 07:46:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=UDYTvI6znr01rMdYpkDq6Ypp0H3WErEbHLUo/gJSeUU=;
+ b=gizhXjlc4dddGAyXHCWUzeJ2Gi8/5XiA/tllzFIGgLQLafptQfYoOodtweAYj0rvze
+ UGRH4LGXjIdFMmtdfuO0xctNhDVa6ekPvB+sXgVvL1LQ1vHncJXqKSWZa4hxPWa7n4wh
+ sfqBSFbOQQTcFmeRztpT42/kcsStIAFO/NTPd2e5zRjDTTqdY+gH2Kb4M9P1Mxl5uEen
+ gl2fooV8ozixScBRzt4R7vrP8B2L21cfyCLKq0fDAROsZhYVJ+oMMKi++ZiR8tCm/LPO
+ 4qjxN5RCUri22u42lcBPBTTwyLuj5ReqZzMaCONCqDXaGz6xNxfBLmiWT3pABclT3ITy
+ eiqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=UDYTvI6znr01rMdYpkDq6Ypp0H3WErEbHLUo/gJSeUU=;
+ b=eux1So3zpdbF3Gkq6YjI3eOP0z6YJTd7p3KHTd0D0WFH99LQz6LYl4qtBCF+0qD6+G
+ LcIfba0sjEsJROTSQoMrlcF8qFub2MQJcKNkMzChEwWBi7D/mgslpLKXwh0T98ybwehg
+ PyY4SUN5Clh0DzXvaERibEbMJwVEzDHm7kGANCDfb5WmKPdgAGMpczndREfkyGF9V7cX
+ 4rx7knc74MCxGElOP+XVciFqaQBX1ZM5sqWkNfJJxB09kMnkwvumnX+0JTIuvNosRGOj
+ 3OLpXKNFAPO7eqVXpwGSJTVLCMY2t7WglomCB5hMK5TTaIrC0tU2doV1bt4GqDgA0aN5
+ RqSw==
+X-Gm-Message-State: AOAM5331w+Jllundp/iaFe/6KNOwr//PGSmWHjSu4VZP9dOjWPkSR+Vq
+ /t6b3Thn3oRqx4U0HQOC0z01RjYCJAbE8hbd3tQ=
+X-Google-Smtp-Source: ABdhPJwjjBnxPwFO1b856aj8QWPk0F9kl/t1qCkPl+APt841wQfOimBoRG8A9Q9/kWZxIcl4i5IH+KuoR7LSGuIZ3lA=
+X-Received: by 2002:a05:6902:cf:b0:641:32bb:53fc with SMTP id
+ i15-20020a05690200cf00b0064132bb53fcmr4141174ybs.232.1651330002683; Sat, 30
+ Apr 2022 07:46:42 -0700 (PDT)
 MIME-Version: 1.0
-Subject: Re: [RFC v2 4/4] arm64: dts: rockchip: Add mt7531 dsa node to
- BPI-R2-Pro board
-To: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
- linux-mediatek@lists.infradead.org, Frank Wunderlich <linux@fw-web.de>
-CC: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
-From: Frank Wunderlich <frank-w@public-files.de>
-Message-ID: <40BC9D9E-3E30-4779-9131-E101CDE993BC@public-files.de>
-X-Provags-ID: V03:K1:ZlgyTVYfgWBO1Wy+cVSo2lW0VxJ02caKG+q8L7RxX6xFCXGwzKS
- 9Udx4qBl3JfeZ447LxlY29/NnBY4gMmLSnSByEDXRWCScdrLF7Xpqq4av3NGuhFbRaMWYkK
- PkHBk3TrnU78Afq0SL++aWQVkDjqc1ghvD4bSJKSzF9ao9N6UNNApaFP05dCg0HANSYgHZO
- ye2WgAO7g1iw0nykgZxfA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:AgGhclNko/8=:aCrBet2od/8wC2RSNSK+oT
- a5aRnnJfwRSgWlKkxzCYOVhXI/79O8rT1THVM0MnbzHJCLI4Fvh8OqgLQBFT8KGUMsDt8CCBF
- /ZIuhrnsKwVevPZ+dOIZvsaZAt98lXRiMREzssZlZx1nPn+bBCpvM5CHll4nBR9xV6dsw19rR
- SXVyg90NhXFOe2TaHGck4JIe2kLiAqWqMd9z9H5BmBozxYzi/yqwoZjOb1F4tfsUOHKd/Cp5a
- vuxK04OjaSDcljtOhPHp8yJdUQ+a4X9IB9mGYju+X/SOtToT3sGOPzh1+lIDxO1PxB+ytorEc
- r+M0C0+BY9huBsLtEmv/APjzY96z1nl+Rnr/GiuL65LTyVTxSr/LCNNyngEQ5WbX84PH89QSH
- GXrbMz6poJ5w8ByUMq6Nohi3NhQL6UMV2ulKD2VBEZlF2Gzht2eU73/8nvBOx3m31YL/fRMWh
- zlAEXxeDg50H/FzGYJ8/j+/Y8KYI85DNVDfa+hjSZBbc2kZ9wPEs0tm2m3HuSR2yIln5zbf97
- xYbCnmcx7f4/ImNwuGKnP6rZYm/jitVu0BjGavWVDxzpjsdiBoEnMFnWLFbFCvWdtvDF/WKW6
- O+DwrDISWIGQ/9LRY+RRCKCnqNQ+lOJO3Qi2p2PlblYBJR/IKfhBFQOrWWLHiKAXSIbc2Gy41
- I8v+/4kJEGzo0S2HdK91aL9V51374tvnB6/md4i73yH48vbBJqjUSrl5t/jlg7ru8qtaU1zJF
- UKkxHQzD2TI3ynd9iYzd1QaOR4QCy+3fm08Uq6mbcuRqYNNpU6oRTH1kXAbwOiWFcuu2dKbCb
- Gkihb7baqLrmIoPm1hymk45EqW5vY8YHb5/h+NYgPL408xkD29786S9YtKR6DWdjiRj8borBO
- yi9VwYvK/bCqBNF7dueG2BpVsQpphPcfyQwARyUgJehMnMlUdFDc7PuQLTLH7wChdMNy8VHX8
- JIeFEFN+LRmk/nVjSM63E/eyvQ0+Rgqp8u6aBTZO5RleS7mdXk0isgrPFa/pR4K6uy5KSkKHU
- Fd1cX0xpUxzNAn9BDCqcRcoxK0uNC+dNjmTJfUAHT5qXvVxnW9RGrWELoUPbS3l/QC59ubvVr
- WK7GT44+uDZSpA=
+References: <20220429115252.2360496-6-pgwipeout@gmail.com>
+ <202204300850.X97CRcO6-lkp@intel.com>
+In-Reply-To: <202204300850.X97CRcO6-lkp@intel.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Sat, 30 Apr 2022 10:46:31 -0400
+Message-ID: <CAMdYzYoBgeTthb8-uycis+BPDmSC5OGVHz2doKYLeh3OY1m_vQ@mail.gmail.com>
+Subject: Re: [PATCH v2 5/7] arm64: dts: rockchip: add Pine64 Quartz64-B device
+ tree
+To: kernel test robot <lkp@intel.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ llvm@lists.linux.dev, 
+ kbuild-all@lists.01.org, devicetree <devicetree@vger.kernel.org>, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220430_071814_322740_7B072267 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220430_074645_165849_AD3D5E67 
+X-CRM114-Status: GOOD (  19.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,44 +84,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am 30. April 2022 16:05:06 MESZ schrieb Heiko Stuebner <heiko@sntech.de>:
->Am Samstag, 30. April 2022, 15:03:47 CEST schrieb Frank Wunderlich:
-
->> --- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
->> @@ -437,6 +437,54 @@ &i2c5 {
->>  	status = "disabled";
->>  };
->>  
-
->> +			port@5 {
->> +				reg = <5>;
->> +				label = "cpu";
->> +				ethernet = <&gmac0>;
->> +				phy-mode = "rgmii";
->- phy-mode: String, the following values are acceptable for port
->labeled
->	"cpu":
->	If compatible mediatek,mt7530 or mediatek,mt7621 is set,
->	must be either "trgmii" or "rgmii"
->	If compatible mediatek,mt7531 is set,
->	must be either "sgmii", "1000base-x" or "2500base-x"
+On Fri, Apr 29, 2022 at 8:17 PM kernel test robot <lkp@intel.com> wrote:
 >
->So I guess the phy-mode needs to change?
+> Hi Peter,
+>
+> I love your patch! Yet something to improve:
+>
+> [auto build test ERROR on robh/for-next]
+> [also build test ERROR on arm/for-next arm64/for-next/core clk/clk-next kvmarm/next shawnguo/for-next soc/for-next v5.18-rc4]
+> [cannot apply to rockchip/for-next xilinx-xlnx/master keystone/next next-20220429]
+> [If your patch is applied to the wrong git tree, kindly drop us a note.
+> And when submitting patch, we suggest to use '--base' as documented in
+> https://git-scm.com/docs/git-format-patch]
 
-This results from current (before my cpu-port patches) implementation in driver where cpu-port is fixed to port 6.
+The three new device trees are dependent on my usb series which was
+accepted through Heiko's tree.
+I can drop the xhci dependency, but this will just happen again adding
+it back in if it's done in this RC series.
 
-On Mt7530 port 6 supports rgmii and trgmii. On mt7531 port6 only supports sgmii (which is basicly 2500base-x). Afaik it does not support 1G. Port 5 on mt7531 supports rgmii or sgmii (dual sgmii mode) but seems not reflected yet in txt.
-
-On thing more to change when converting txt to yaml.
-
-regards Frank
+>
+> url:    https://github.com/intel-lab-lkp/linux/commits/Peter-Geis/Add-support-for-several-new-rk3566-SBCs/20220429-195433
+> base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+> config: arm64-randconfig-r021-20220428 (https://download.01.org/0day-ci/archive/20220430/202204300850.X97CRcO6-lkp@intel.com/config)
+> compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project 400775649969b9baf3bc2a510266e7912bb16ae9)
+> reproduce (this is a W=1 build):
+>         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>         chmod +x ~/bin/make.cross
+>         # install arm64 cross compiling tool for clang build
+>         # apt-get install binutils-aarch64-linux-gnu
+>         # https://github.com/intel-lab-lkp/linux/commit/d933bfeea016da20a99bce012bbf071f9d86e2bf
+>         git remote add linux-review https://github.com/intel-lab-lkp/linux
+>         git fetch --no-tags linux-review Peter-Geis/Add-support-for-several-new-rk3566-SBCs/20220429-195433
+>         git checkout d933bfeea016da20a99bce012bbf071f9d86e2bf
+>         # save the config file
+>         mkdir build_dir && cp config build_dir/.config
+>         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash
+>
+> If you fix the issue, kindly add following tag as appropriate
+> Reported-by: kernel test robot <lkp@intel.com>
+>
+> All errors (new ones prefixed by >>):
+>
+> >> Error: arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts:601.1-16 Label or path usb_host0_xhci not found
+> >> Error: arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts:605.1-16 Label or path usb_host1_xhci not found
+>    FATAL ERROR: Syntax error parsing input tree
+>
+> --
+> 0-DAY CI Kernel Test Service
+> https://01.org/lkp
 
 _______________________________________________
 Linux-rockchip mailing list
