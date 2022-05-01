@@ -4,88 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E565C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 Apr 2022 20:19:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A04AFC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 May 2022 01:41:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:
-	To:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SZ5oJcMGMwPDxHvReZ/8GX9TvJnot0nCtQlscFgFCPY=; b=XNcbcF5q3hqcmS
-	UTwcZnslo4quUKclA5YDLnMRTTh77R8m9Z/NWvzfgK0TymNcAoLZQKBNnBTgeBzS+GPx4FT/npiF/
-	1R1HBg5IYd4keKd4t/8UsF+w7DentXC2b8/AxxmhruSfX3NoqAj3LKrKM+01PF0kbDmLlODzId0wj
-	IxIWwKEBmVD5Qe8SdxkOC48vklIb7N+PzXVnknylRJ9CjSLM3tbXoeiJVZgJANC4ETNOEyIe2cToC
-	H/+f5MNswKMeli9leK5vH65RkpxNIShS7GNhgSabUWlHHiHbCWC4X+Kd8H0V5iqsxs/vJAa83ePaL
-	QR6o/WbxBWARtsMFzPJQ==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Mime-Version:References:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	List-Owner; bh=xieuXMjDWa2Q+Nzvx7bx7nq3YrhFuSYYTtronj0NoJU=; b=l2/d0OU2e2HXoq
+	N9pdqRsVjyRvmFC1CxaoFJbLeQmvEZzW3F9wkbbsYx8vbaJ3sSs2TtKAUOCftDL3Ndk8vhHz+okfu
+	LYUtQ00Y6XxbY16lVMY9r7N95CUr7tRhNMsUYWh7kXw5Fcig7I8ZE62Zb6D1Ergga341g39JM9Zue
+	y0iAPV9R0SAOwIlEtN7At2lWH94suE4W+8dkqjElvyV+2eqaAK9qX0Cj5uLjwXVxj4vhOpzUCqWAD
+	An4ZTAosLqdji3eHSy6bqrHJUvKX/3ppMctTzwipb3Nx7NpPD8u88tl78aJH839+G/CCRD2FhkdCc
+	qLjkiFLfex0NPRzZ04RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nktZ5-00F28k-Fb; Sat, 30 Apr 2022 20:19:39 +0000
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+	id 1nkya4-00FRfN-7u; Sun, 01 May 2022 01:41:00 +0000
+Received: from mail-m121145.qiye.163.com ([115.236.121.145])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nktZ2-00F28C-OX
- for linux-rockchip@lists.infradead.org; Sat, 30 Apr 2022 20:19:38 +0000
-Received: by mail-ej1-x634.google.com with SMTP id n10so3861024ejk.5
- for <linux-rockchip@lists.infradead.org>; Sat, 30 Apr 2022 13:19:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:content-language:to:cc
- :references:from:subject:in-reply-to:content-transfer-encoding;
- bh=POF+6d8762FMOUGJIUlV1M6qmWu0Pr8vnEd2cruJn/Q=;
- b=GguguRy2ohBkyOzRgJXUL5P1WS54HQv7SPDnAuU7MEYfgc73wwidWcB5/eCDb/o6qN
- RK12GmeHg9/VmD61o9af2NbQ9uApw9HDDRPRLLjnHlku63WdF6wo5YZ3+nS8sUEbaKzp
- gwbn0LuvD7IrUoboyREiqHJxwTvSFuyqDWFxDM1AL3PILyrtXXKPOUANo9R48aPRwnfD
- LBnNNTm1vKERAJTVJJSxc4w1M5l/pom72Bzfb13uLsz/FA667wgnnI3N5RtPhuf6NTnk
- hsb7Mqfbonu6IQri7w05qGQFVDZxszD+9MgW7ANf4flb1fSFYbIEWB4IjQsoL4O65c7p
- Ov/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent
- :content-language:to:cc:references:from:subject:in-reply-to
- :content-transfer-encoding;
- bh=POF+6d8762FMOUGJIUlV1M6qmWu0Pr8vnEd2cruJn/Q=;
- b=AnUi3vzjbsJlStkD1joPUzh4eRHqDmeFsXWwqbuAKE5ePeTUSiUJ6/S1ARltCHvQje
- 9uZQ7wlcmyfFQ6EXqhMpGadoDR/8N3t/YA5d2cz71wLSbTINOgjSeIaPEUi2+2tGl3zS
- wJcijtkaT9rKRfNrP1UJQwe+Lq6H1A4keaSmwrPX8HfyIQUwae4FAs38EIFIFmMEJieM
- vDzBmXU18JeQIGfgLPjHKffUye6uj9jP/Coh6eBcI0RaPMikve8PloN9GuKHzS8WYUux
- gN39rGsgbV633ppEIUi8YD3McNzRMkWl4d8oAqBeAnOTdayWsSvaPA7j/IKyQ+VPhEo6
- atng==
-X-Gm-Message-State: AOAM533Bx1fS4Js5K1N3DBtN4RKpjpEQ4+27Uh6MAhKtXwIZzUIT3xgo
- eQ78P66RyHCje7nI7fQjMME0J6Lv1Ew=
-X-Google-Smtp-Source: ABdhPJzvyvxchjnijiU3tXHOtd78aybClSnMqXpfP33YYcQnledJ3xLrAykgTzMo+dqTSywxOtIW9g==
-X-Received: by 2002:a17:907:1b10:b0:6e4:bac5:f080 with SMTP id
- mp16-20020a1709071b1000b006e4bac5f080mr5052303ejc.24.1651349972319; 
- Sat, 30 Apr 2022 13:19:32 -0700 (PDT)
-Received: from ?IPV6:2a01:c22:6f21:fd00:3167:a16c:5aa:91c3?
- (dynamic-2a01-0c22-6f21-fd00-3167-a16c-05aa-91c3.c22.pool.telefonica.de.
- [2a01:c22:6f21:fd00:3167:a16c:5aa:91c3])
- by smtp.googlemail.com with ESMTPSA id
- hg8-20020a1709072cc800b006f3ef214db1sm1904785ejc.23.2022.04.30.13.19.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 30 Apr 2022 13:19:31 -0700 (PDT)
-Message-ID: <f68dfd23-ae83-e4d9-cb08-51a097bac06b@gmail.com>
-Date: Sat, 30 Apr 2022 22:19:25 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Content-Language: en-US
-To: Peter Geis <pgwipeout@gmail.com>, Andrew Lunn <andrew@lunn.ch>
-Cc: "Russell King (Oracle)" <linux@armlinux.org.uk>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Linux Kernel Network Developers <netdev@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
-References: <20220228233057.1140817-1-pgwipeout@gmail.com>
- <Yh1lboz7VDiuYuZV@shell.armlinux.org.uk>
- <CAMdYzYrNvUUMom4W4uD9yf9LtFK1h5Xw+9GYc54hB5+iqVmJtw@mail.gmail.com>
- <CAMdYzYrFuMw4aj_9L698ZhL7Xqy8=NeXhy9HDz4ug-v3=f4fpw@mail.gmail.com>
- <Ym1bWHNj0p6L9lY8@lunn.ch>
- <CAMdYzYq41TndbJK-=ah31=vECisgRbPmtFYwOLQQ7yn4L=JVYw@mail.gmail.com>
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Subject: Re: [PATCH v1] net: phy: fix motorcomm module automatic loading
-In-Reply-To: <CAMdYzYq41TndbJK-=ah31=vECisgRbPmtFYwOLQQ7yn4L=JVYw@mail.gmail.com>
+ id 1nkyZs-00FReR-Nn; Sun, 01 May 2022 01:40:50 +0000
+Received: from DESKTOP-SG5V5EA (unknown [58.22.7.114])
+ by mail-m121145.qiye.163.com (Hmail) with ESMTPA id 7953D80026D;
+ Sun,  1 May 2022 09:40:37 +0800 (CST)
+Date: Sun, 1 May 2022 09:40:37 +0800
+From: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
+To: "Andrew Lunn" <andrew@lunn.ch>
+Cc: kuba <kuba@kernel.org>, davem <davem@davemloft.net>, 
+ joabreu <joabreu@synopsys.com>, 
+ alexandre.torgue <alexandre.torgue@st.com>, 
+ peppe.cavallaro <peppe.cavallaro@st.com>, 
+ netdev <netdev@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "Linux Kernel Mailing List" <linux-kernel@vger.kernel.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ devicetree <devicetree@vger.kernel.org>
+Subject: Re: Re: [PATCH V2] ethernet: stmmac: support driver work for DTs
+ without child queue node
+References: <20220428010927.526310-1-jay.xu@rock-chips.com>, 
+ <20220429004605.1010751-1-jay.xu@rock-chips.com>, 
+ <Yms3ynT8RGmldAkm@lunn.ch>, 
+ <2022042909545741446644@rock-chips.com>, 
+ <YmvWwIgE71iwZhgp@lunn.ch>
+X-Priority: 3
+X-Has-Attach: no
+X-Mailer: Foxmail 7.2.19.158[cn]
+Mime-Version: 1.0
+Message-ID: <2022050109403682292448@rock-chips.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
+ kWDxoPAgseWUFZKDYvK1lXWShZQUlKS0tKN1dZLVlBSVdZDwkaFQgSH1lBWRofQ0pWGE8YQxhLTh
+ 5NQkNCVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWU9LSFVKSktISkxVS1kG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pkk6TDo5GT05FBYLGQ9INTRK
+ FUkwCklVSlVKTU5KSE1CSUhDS0tKVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
+ WU5DVUlJVUxVSkpPWVdZCAFZQU9OSEk3Bg++
+X-HM-Tid: 0a807d46dcfab03akuuu7953d80026d
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220430_131936_868577_22772D92 
-X-CRM114-Status: GOOD (  29.32  )
+X-CRM114-CacheID: sfid-20220430_184048_964509_DB3C91B2 
+X-CRM114-Status: GOOD (  14.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,78 +73,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 30.04.2022 18:31, Peter Geis wrote:
-> On Sat, Apr 30, 2022 at 11:52 AM Andrew Lunn <andrew@lunn.ch> wrote:
->>
->>> Good Morning,
->>>
->>> After testing various configurations I found what is actually
->>> happening here. When libphy is built in but the phy drivers are
->>> modules and not available in the initrd, the generic phy driver binds
->>> here. This allows the phy to come up but it is not functional.
->>
->> What MAC are you using?
-> 
-> Specifically Motorcomm, but I've discovered it can happen with any of
-> the phy drivers with the right kconfig.
-> 
->>
->> Why is you interface being brought up by the initramfs? Are you using
->> NFS root from within the initramfs?
-> 
-> This was discovered with embedded programming. It's common to have a
-> small initramfs, or forgo an initramfs altogether. Another cause is a
-> mismatch in kernel config where phylib is built in because of a
-> dependency, but the rest of the phy drivers are modular.
-> The key is:
-> - phylib is built in
-> - ethernet driver is built in
-> - the phy driver is a module
-> - modules aren't available at probe time (for any reason).
-> 
-> In this case phylib assumes there is no driver, when the vast majority
-> of phys now have device specific drivers.It seems this is an unsafe
-> assumption as this means there is now an implicit dependency of the
-> device specific phy drivers and phylib. It just so happens to work
-> simply because both broadcom and realtek, some of the more common
-> phys, have explicit dependencies elsewhere that cause them to be built
-> in as well.
-> 
-Because you mention the realtek phy driver:
-Users reported similar issues like you if r8169 MAC driver is built-in
-(or r8169 module is in initramfs) but realtek phy driver is not.
-There's no direct code dependency between r8169 and realtek phy driver,
-therefore initramfs-creating tools sometimes missed to automatically
-include the phy driver in initramfs. To mitigate this r8169 has the following:
-MODULE_SOFTDEP("pre: realtek");
-This isn't strictly needed but some initramfs-creating tools consider
-such soft dependencies when checking what should be included in initramfs.
-If some other MAC is used with a Realtek PHY, then you may still see the
-described issue.
-As Andrew wrote: Eventually it's a userspace responsibility to ensure that
-all needed modules are included in initramfs.
-
->>>> What normally happens is that the kernel loads, maybe with the MAC
->> driver and phylib loading, as part of the initramfs. The other modules
->> in the initramfs allow the root filesystem to be found, mounted, and
->> pivoted into it. The MAC driver is then brought up by the initscripts,
->> which causes phylib to request the needed PHY driver modules, it loads
->> and all is good.
->>
->> If you are using NFS root, then the load of the PHY driver happens
->> earlier, inside the initramfs. If this is you situation, maybe the
->> correct fix is to teach the initramfs tools to include the PHY drivers
->> when NFS root is being used?
->>
->>      Andrew
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQW5kcmV3CgotLS0tLS0tLS0tLS0tLQpqYXkueHVAcm9jay1jaGlwcy5jb20KPkFkZGluZyBk
+ZXZpY2UgdHJlZSBsaXN0Lgo+Cj5UaGlzIGlzIG1vc3RseSBhIGRldmljZSB0cmVlIGlzc3VlLCBz
+byB0aGUgZGV2aWNlIHRyZWUgTWFpbnRhaW5lcnMKPnNob3VsZCBiZSBwYXJ0IG9mIHRoZSBkaXNj
+dXNzaW9uLgo+Cj4+ID5PbiBGcmksIEFwciAyOSwgMjAyMiBhdCAwODo0NjowNUFNICswODAwLCBK
+aWFucXVuIFh1IHdyb3RlOgo+PiA+PiBUaGUgZHJpdmVyIHVzZSB0aGUgdmFsdWUgb2YgcHJvcGVy
+dHkgJ3NucHMscngtcXVldWVzLXRvLXVzZScgdG8gbG9vcAo+PiA+PiBzYW1lIG51bWJlcnMgY2hp
+bGQgbm9kZXMgYXMgcXVldWVzLCBzdWNoIGFzOgo+PiA+Pgo+PiA+PsKgwqDCoMKgIGdtYWMgewo+
+PiA+PsKgwqDCoMKgwqDCoMKgwqAgcngtcXVldWVzLWNvbmZpZyB7Cj4+ID4+wqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIHNucHMscngtcXVldWVzLXRvLXVzZSA9IDwxPjsKPj4gPj7CoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgcXVldWUwIHsKPj4gPj7CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoCAvLyBub3RoaW5nIG5lZWQgaGVyZS4KPj4gPj4gwqDCoMKgIH07Cj4+ID4+IH07Cj4+ID4+
+wqDCoMKgwqAgfTsKPj4gPj4KPj4gPj4gU2luY2UgYSBwYXRjaCBmb3IgZHRjIGZyb20gcm9ja2No
+aXAgd2lsbCBkZWxldGUgYWxsIG5vZGUgd2l0aG91dCBhbnkKPj4gPj4gcHJvcGVydGllcyBvciBj
+aGlsZCBub2RlLCB0aGUgcXVldWUwIG5vZGUgd2lsbCBiZSBkZWxldGVkLCB0aGF0IGNhdXNlZAo+
+PiA+PiB0aGUgZHJpdmVyIGZhaWwgdG8gcHJvYmU6Cj4+ID4KPj4gPklzIHRoaXMgdGhlIGluIHRy
+ZWUgZHRjPyBEbyB5b3UgaGF2ZSBhIGNvbW1pdCBoYXNoIGZvciBpdD8gVGhhdCBzaG91bGQKPj4g
+PnByb2JhYmx5IGJlIHVzZWQgYXMgYSBGaXhlczogdGFnLiBPciB0aGF0IGNoYW5nZSB0byBkdGMg
+bmVlZHMKPj4gPnJldmVydGluZyBiZWNhdXNlIGl0IGJyZWFrcyBzdHVmZi4KPj4gPgo+PiBUaGUg
+cGF0Y2ggaXMgYSBoYWNrIHBhdGNoIGZvciBzb21lIHByb2R1Y3RzIGFuZCBoYXZlIG5vdCBpbiB0
+cmVlIGR0YywgSSBzYWlkIHRoYXQgdG8KPj4gZXhwbGFpbiBhIHBvc3NpYmxlIGNhc2UgaG93IHRo
+aW5ncyBoYXBwZWQsIGl0J3Mgb25seSBhIGNhc2Ugb2Ygbm8gY2hpbGQgcXVldWUgbm9kZS4KPgo+
+U28gdGhpcyBoYXMgbm90aGluZyB0byBkbyB3aXRoIHRoZSBrZXJuZWwgZHRjLCBvciB0aGUgdXBz
+dHJlYW0KPmR0Yy4gVGhpcyBpcyBvbmx5IGEgJ3ZlbmRvciBjcmFwJyBkdGMgd2hpY2ggaGFzIGJl
+ZW4gaGFja2VkPwo+Cj5XaHkgc2hvdWxkIG1haW5saW5lIGNhcmU/IElzIHRoZXJlIGFueXRoaW5n
+IGluIHRoZSBEVCBzdGFuZGFyZCB3aGljaAo+c2F5cyB0aGUgY29tcGlsZXIgY2FuIG9wdGltaXNl
+IG91dCBlbXB0eSBwcm9wZXJ0aWVzPyAKClllcywgaXQndCBub3RoaW5nIGFib3V0IHdoYXQga2lu
+ZCBvZiBkdGMsIGRvZXMgYWJvdXQgd2hhdCBydWxlIGZvciBwcm9wZXJ0aWVzLCBub3cgdGhlIG9u
+ZSBwcm9wZXJ0eQpyZXF1ZXN0IGFub3RoZXIgY2hpbGQgbm9kZSBtdXN0IGV4aXN0IGFuZCBudW1i
+ZXIgb2YgY2hpbGQgbm9kZSBtdXN0IGVxdWFsIHRvIHRoZSB2YWx1ZSBvZiB0aGUgcHJvcGVydHks
+CnRoZcKgCiNhZGRyZXNzLWNlbGxzID0gPDE+Owojc2l6ZS1jZWxscyA9IDwxPjsKZG9lcyB0aGlz
+IGJ1dCB0aGV5IGFyZSBpbiBzcGVjaWFsIGtleSB3b3JkcywgdGhlIGdtYWMgaGFzIG5vIGxpa2Vs
+eSBrZXkgd29yZC4KCj4KPsKgwqDCoMKgIEFuZHJldwpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
