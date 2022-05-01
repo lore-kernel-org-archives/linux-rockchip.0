@@ -4,63 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A04AFC433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 May 2022 01:41:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FA68C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 May 2022 06:24:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Mime-Version:References:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	List-Owner; bh=xieuXMjDWa2Q+Nzvx7bx7nq3YrhFuSYYTtronj0NoJU=; b=l2/d0OU2e2HXoq
-	N9pdqRsVjyRvmFC1CxaoFJbLeQmvEZzW3F9wkbbsYx8vbaJ3sSs2TtKAUOCftDL3Ndk8vhHz+okfu
-	LYUtQ00Y6XxbY16lVMY9r7N95CUr7tRhNMsUYWh7kXw5Fcig7I8ZE62Zb6D1Ergga341g39JM9Zue
-	y0iAPV9R0SAOwIlEtN7At2lWH94suE4W+8dkqjElvyV+2eqaAK9qX0Cj5uLjwXVxj4vhOpzUCqWAD
-	An4ZTAosLqdji3eHSy6bqrHJUvKX/3ppMctTzwipb3Nx7NpPD8u88tl78aJH839+G/CCRD2FhkdCc
-	qLjkiFLfex0NPRzZ04RA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ob/2/E6kmy6Lsu71W3fnBKfJ2w2EPok6MY32gS1xsNw=; b=gcyM5Cb/YwT//W
+	c/a1qqtyYIBhQupflfgs9hrFzW9IQBPBeQDsXhwPrIHZe1EVNh0R8db+h/Z07KLLStN58M7fwpqUg
+	CwFMmihOPqaLncM3FDhD316UP4ntwoIGWkQlLKazJqPQ5sj6/EVFAgoQVVvsUmfXUQs1BG1P6Yo97
+	5e60lc1v6FiSgpQoqffndgFGgm3y8729jYAFCxADn6ZQTrT3pQkJ6Qv1y5AdJwToJpT13HATskzX0
+	M/2X5eGnFnTaDZqnfWdXCALS3cgEhDsQ3SYtp8DWvvBMyXJWnFlhcGRC8a5+cNvNosW0FAvhUcgfX
+	pci2RPwP0SutnWjFim9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nkya4-00FRfN-7u; Sun, 01 May 2022 01:41:00 +0000
-Received: from mail-m121145.qiye.163.com ([115.236.121.145])
+	id 1nl30P-00FeqA-5V; Sun, 01 May 2022 06:24:29 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nkyZs-00FReR-Nn; Sun, 01 May 2022 01:40:50 +0000
-Received: from DESKTOP-SG5V5EA (unknown [58.22.7.114])
- by mail-m121145.qiye.163.com (Hmail) with ESMTPA id 7953D80026D;
- Sun,  1 May 2022 09:40:37 +0800 (CST)
-Date: Sun, 1 May 2022 09:40:37 +0800
-From: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
-To: "Andrew Lunn" <andrew@lunn.ch>
-Cc: kuba <kuba@kernel.org>, davem <davem@davemloft.net>, 
- joabreu <joabreu@synopsys.com>, 
- alexandre.torgue <alexandre.torgue@st.com>, 
- peppe.cavallaro <peppe.cavallaro@st.com>, 
- netdev <netdev@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "Linux Kernel Mailing List" <linux-kernel@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- devicetree <devicetree@vger.kernel.org>
-Subject: Re: Re: [PATCH V2] ethernet: stmmac: support driver work for DTs
- without child queue node
-References: <20220428010927.526310-1-jay.xu@rock-chips.com>, 
- <20220429004605.1010751-1-jay.xu@rock-chips.com>, 
- <Yms3ynT8RGmldAkm@lunn.ch>, 
- <2022042909545741446644@rock-chips.com>, 
- <YmvWwIgE71iwZhgp@lunn.ch>
-X-Priority: 3
-X-Has-Attach: no
-X-Mailer: Foxmail 7.2.19.158[cn]
-Mime-Version: 1.0
-Message-ID: <2022050109403682292448@rock-chips.com>
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
- kWDxoPAgseWUFZKDYvK1lXWShZQUlKS0tKN1dZLVlBSVdZDwkaFQgSH1lBWRofQ0pWGE8YQxhLTh
- 5NQkNCVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWU9LSFVKSktISkxVS1kG
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pkk6TDo5GT05FBYLGQ9INTRK
- FUkwCklVSlVKTU5KSE1CSUhDS0tKVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
- WU5DVUlJVUxVSkpPWVdZCAFZQU9OSEk3Bg++
-X-HM-Tid: 0a807d46dcfab03akuuu7953d80026d
+ id 1nl30N-00FeQN-3x
+ for linux-rockchip@lists.infradead.org; Sun, 01 May 2022 06:24:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+ Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=3+qzA7PHMmDHNHuNIiXNUOUy8rzwaRd3MaO7YujuXCQ=; b=xXWvZRUz+UeJyVHlrRbK9vEEWU
+ kc13z1UURFsemmhkm8BX2rGCOM6oSATTMIpaHZkI0Clvngr4KK9i0rMgFKxoy+8CjVUVp3CNvGtUO
+ koMDmQsRLXiXKAxNVVjGlD0sk0A7biSGGwTs3dcmWh8ivQkfXXh3mxHnpJXaxnfCmgZMGUeFWVMVN
+ T+/OKD2uj9nKchkGTuBuevzcr8ph2nfMCtvB7A0vobMrOVwsEq1qIxfJvpt45TIMu9I8/Vs/HKbeH
+ gb09Y8J9r/CtQcN56LflJToxs3TxQhnYdpUk1/H3POiJ3/BZH2m7oReSWZLRelFIC+Rv3g6d9vbuO
+ o0yR0hgw==;
+Received: from shell.armlinux.org.uk
+ ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:58468)
+ by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1nl2yF-0005yo-0i; Sun, 01 May 2022 07:22:14 +0100
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1nl2yC-0003fG-Os; Sun, 01 May 2022 07:22:12 +0100
+Date: Sun, 1 May 2022 07:22:12 +0100
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Linux Kernel Network Developers <netdev@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v1] net: phy: fix motorcomm module automatic loading
+Message-ID: <Ym4nFLqOsozrb+HM@shell.armlinux.org.uk>
+References: <20220228233057.1140817-1-pgwipeout@gmail.com>
+ <Yh1lboz7VDiuYuZV@shell.armlinux.org.uk>
+ <CAMdYzYrNvUUMom4W4uD9yf9LtFK1h5Xw+9GYc54hB5+iqVmJtw@mail.gmail.com>
+ <CAMdYzYrFuMw4aj_9L698ZhL7Xqy8=NeXhy9HDz4ug-v3=f4fpw@mail.gmail.com>
+ <Ym1bWHNj0p6L9lY8@lunn.ch>
+ <CAMdYzYq41TndbJK-=ah31=vECisgRbPmtFYwOLQQ7yn4L=JVYw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAMdYzYq41TndbJK-=ah31=vECisgRbPmtFYwOLQQ7yn4L=JVYw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220430_184048_964509_DB3C91B2 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20220430_232427_186839_9299D050 
+X-CRM114-Status: GOOD (  21.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,43 +80,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQW5kcmV3CgotLS0tLS0tLS0tLS0tLQpqYXkueHVAcm9jay1jaGlwcy5jb20KPkFkZGluZyBk
-ZXZpY2UgdHJlZSBsaXN0Lgo+Cj5UaGlzIGlzIG1vc3RseSBhIGRldmljZSB0cmVlIGlzc3VlLCBz
-byB0aGUgZGV2aWNlIHRyZWUgTWFpbnRhaW5lcnMKPnNob3VsZCBiZSBwYXJ0IG9mIHRoZSBkaXNj
-dXNzaW9uLgo+Cj4+ID5PbiBGcmksIEFwciAyOSwgMjAyMiBhdCAwODo0NjowNUFNICswODAwLCBK
-aWFucXVuIFh1IHdyb3RlOgo+PiA+PiBUaGUgZHJpdmVyIHVzZSB0aGUgdmFsdWUgb2YgcHJvcGVy
-dHkgJ3NucHMscngtcXVldWVzLXRvLXVzZScgdG8gbG9vcAo+PiA+PiBzYW1lIG51bWJlcnMgY2hp
-bGQgbm9kZXMgYXMgcXVldWVzLCBzdWNoIGFzOgo+PiA+Pgo+PiA+PsKgwqDCoMKgIGdtYWMgewo+
-PiA+PsKgwqDCoMKgwqDCoMKgwqAgcngtcXVldWVzLWNvbmZpZyB7Cj4+ID4+wqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHNucHMscngtcXVldWVzLXRvLXVzZSA9IDwxPjsKPj4gPj7CoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgcXVldWUwIHsKPj4gPj7CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCAvLyBub3RoaW5nIG5lZWQgaGVyZS4KPj4gPj4gwqDCoMKgIH07Cj4+ID4+IH07Cj4+ID4+
-wqDCoMKgwqAgfTsKPj4gPj4KPj4gPj4gU2luY2UgYSBwYXRjaCBmb3IgZHRjIGZyb20gcm9ja2No
-aXAgd2lsbCBkZWxldGUgYWxsIG5vZGUgd2l0aG91dCBhbnkKPj4gPj4gcHJvcGVydGllcyBvciBj
-aGlsZCBub2RlLCB0aGUgcXVldWUwIG5vZGUgd2lsbCBiZSBkZWxldGVkLCB0aGF0IGNhdXNlZAo+
-PiA+PiB0aGUgZHJpdmVyIGZhaWwgdG8gcHJvYmU6Cj4+ID4KPj4gPklzIHRoaXMgdGhlIGluIHRy
-ZWUgZHRjPyBEbyB5b3UgaGF2ZSBhIGNvbW1pdCBoYXNoIGZvciBpdD8gVGhhdCBzaG91bGQKPj4g
-PnByb2JhYmx5IGJlIHVzZWQgYXMgYSBGaXhlczogdGFnLiBPciB0aGF0IGNoYW5nZSB0byBkdGMg
-bmVlZHMKPj4gPnJldmVydGluZyBiZWNhdXNlIGl0IGJyZWFrcyBzdHVmZi4KPj4gPgo+PiBUaGUg
-cGF0Y2ggaXMgYSBoYWNrIHBhdGNoIGZvciBzb21lIHByb2R1Y3RzIGFuZCBoYXZlIG5vdCBpbiB0
-cmVlIGR0YywgSSBzYWlkIHRoYXQgdG8KPj4gZXhwbGFpbiBhIHBvc3NpYmxlIGNhc2UgaG93IHRo
-aW5ncyBoYXBwZWQsIGl0J3Mgb25seSBhIGNhc2Ugb2Ygbm8gY2hpbGQgcXVldWUgbm9kZS4KPgo+
-U28gdGhpcyBoYXMgbm90aGluZyB0byBkbyB3aXRoIHRoZSBrZXJuZWwgZHRjLCBvciB0aGUgdXBz
-dHJlYW0KPmR0Yy4gVGhpcyBpcyBvbmx5IGEgJ3ZlbmRvciBjcmFwJyBkdGMgd2hpY2ggaGFzIGJl
-ZW4gaGFja2VkPwo+Cj5XaHkgc2hvdWxkIG1haW5saW5lIGNhcmU/IElzIHRoZXJlIGFueXRoaW5n
-IGluIHRoZSBEVCBzdGFuZGFyZCB3aGljaAo+c2F5cyB0aGUgY29tcGlsZXIgY2FuIG9wdGltaXNl
-IG91dCBlbXB0eSBwcm9wZXJ0aWVzPyAKClllcywgaXQndCBub3RoaW5nIGFib3V0IHdoYXQga2lu
-ZCBvZiBkdGMsIGRvZXMgYWJvdXQgd2hhdCBydWxlIGZvciBwcm9wZXJ0aWVzLCBub3cgdGhlIG9u
-ZSBwcm9wZXJ0eQpyZXF1ZXN0IGFub3RoZXIgY2hpbGQgbm9kZSBtdXN0IGV4aXN0IGFuZCBudW1i
-ZXIgb2YgY2hpbGQgbm9kZSBtdXN0IGVxdWFsIHRvIHRoZSB2YWx1ZSBvZiB0aGUgcHJvcGVydHks
-CnRoZcKgCiNhZGRyZXNzLWNlbGxzID0gPDE+Owojc2l6ZS1jZWxscyA9IDwxPjsKZG9lcyB0aGlz
-IGJ1dCB0aGV5IGFyZSBpbiBzcGVjaWFsIGtleSB3b3JkcywgdGhlIGdtYWMgaGFzIG5vIGxpa2Vs
-eSBrZXkgd29yZC4KCj4KPsKgwqDCoMKgIEFuZHJldwpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Sat, Apr 30, 2022 at 12:31:27PM -0400, Peter Geis wrote:
+> On Sat, Apr 30, 2022 at 11:52 AM Andrew Lunn <andrew@lunn.ch> wrote:
+> >
+> > > Good Morning,
+> > >
+> > > After testing various configurations I found what is actually
+> > > happening here. When libphy is built in but the phy drivers are
+> > > modules and not available in the initrd, the generic phy driver binds
+> > > here. This allows the phy to come up but it is not functional.
+> >
+> > What MAC are you using?
+> 
+> Specifically Motorcomm, but I've discovered it can happen with any of
+> the phy drivers with the right kconfig.
+> 
+> >
+> > Why is you interface being brought up by the initramfs? Are you using
+> > NFS root from within the initramfs?
+> 
+> This was discovered with embedded programming. It's common to have a
+> small initramfs, or forgo an initramfs altogether.
+
+If you're talking about embedded, it makes more sense to have the PHY
+drivers built-in. They will take up less text and data space that way.
+Typically, PHY drivers have very small amounts of text and data, and
+both of these end up being rounded up to a page size when loaded as a
+module.
+
+> Another cause is a
+> mismatch in kernel config where phylib is built in because of a
+> dependency, but the rest of the phy drivers are modular.
+> The key is:
+> - phylib is built in
+> - ethernet driver is built in
+> - the phy driver is a module
+> - modules aren't available at probe time (for any reason).
+
+This is why many ethernet drivers connect with their PHY in their
+.ndo_open method, rather than at probe time.
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
