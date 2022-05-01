@@ -4,83 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F2F6C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 May 2022 08:13:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87D4CC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 May 2022 11:31:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vv9wJap8d6G9dwnRI8S7Uvom+C3IAVr5TPQ0rcL4iCE=; b=DNB3EudfiG8hG3
-	57X+MSij7UnoyOrAO/yzrbrWsvLx7AXG4n5BkTb8zIeQIdJXvC3xyREi3ZxvAvVSN6SGBiVGBJ6Jq
-	oOcN15Ip1wf7dQiG7czTNQGfhpNeChoITzVNYiJnS7v2wvTKXMhgtA5K8rfcvc1C8CW3ahZppU4jh
-	kzEgx6Rk1+569EQH6ZWKk0RYNv0ymoyrHKjiIxcuZ5ugxzPRbZVoIQbf4ETpew0pyZm+oBKUFb2YX
-	oRaRXm/lg0IPl5x9KyNPwTZ/sNgO9HqyEHJM/ivhvmb328zZTx9gu7SIEDis/1RrYs0G1ZqjMBLqU
-	/YN7kPknr4tiaR1bxS3A==;
+	List-Owner; bh=hq81Y7A7T/EyOyoIgOkJ45lO/ZujDxRRLEjgbFzWg8I=; b=e8H5oyQlhYusnI
+	yddPLU1cL+jLMKGJJg1Ok3sokNoDASIecSOouUX229GeIq2CPZnDIBQprHvH3uDRgxHaFC8veLrEi
+	s/JmsC4PaESyBZm62ToZ4gj7KlC+omEz0JJuvP84e+lucH/mG273CuxjpbmPwfCYOq9Wswp10IUxh
+	EHYUAgH65/uzQlr5dKPsTYUjd797OVNJOt86TQNknIRv9iT5kkhmSBbJCR3PGV0E9nXiJBvpP/Dgb
+	TgqCciB8hXMUl7/9IoEAA9GCpfm3JnlXgPpGMotQO2n0AAgsLETjs2QfTMrEur39pXrG1OAXLu66x
+	/3rDP27CzOvz492br+Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nl4hm-00Fsr9-4q; Sun, 01 May 2022 08:13:22 +0000
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+	id 1nl7nY-00G8UQ-8W; Sun, 01 May 2022 11:31:32 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nl4hb-00FspY-ER
- for linux-rockchip@lists.infradead.org; Sun, 01 May 2022 08:13:13 +0000
-Received: by mail-ej1-x631.google.com with SMTP id m20so22724696ejj.10
- for <linux-rockchip@lists.infradead.org>; Sun, 01 May 2022 01:13:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=XrKlK/wlEuAV8r4Uf6E1ukYjJx77nczax1aunKH5Q+4=;
- b=YXINqYqsI0H9E96YUKV9+Mjzm52tkYI1g7ZqF8iLgJkMSH9V6NboFQLX3+U09VaasC
- 1Cis79Ded3Ql2O3zeNDUdojx0Lryo2uqklTYBces9JIway60hBgeHf0G7HNFSEt4RTgp
- gCxNhm2+SZSmmsiSd6Xe3OXN6pleuh9F8IywWLaGMoKLJBl+7sUdYSx/9jzHA/lxnrH+
- ZWN8pAKLurFJ0gg/ayepSUraNgr8/zPGPWQQeNr3OxdDhaW4EVfD4rsjiw/8qyAKDJ3G
- tSqSTe8ey/7N+6DEAEFV4b71o382zMgdXAqxyZQ9Mo0rDLaIwGFLoDHx2dCm3K/01bt2
- m7cA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=XrKlK/wlEuAV8r4Uf6E1ukYjJx77nczax1aunKH5Q+4=;
- b=Q4kH2qHzBwIKV6aoF53GuK2zPb2Rnv8bjE69INKJ/Mnq/pUIZrF+ni1Oly1af+PPQk
- bB3hD1dtOSMHiQ3aHHqj8hf1PN2pUpFvR2Nek/KiutmchXzg68NNof9hbTjO44HSRzcM
- XNdBQyZwWkOGiAp39NfU0kJdaq3BRALGwhMe+r5LdObPghvJMscBXUP70ucUplwgHVMZ
- mfov9/8mVM8D+mgJVpgZAjgN5w6937GdTGpVE1GJ6ORPDlJ0j10XviVb35Jo1qA3Q+bq
- iipwdhdnj2H3EoSRblNH/7Q12YPx2ZyiLNlfwZTj2Bxj1mMBAmgCzvxsPoVC9lIFZE79
- eJBQ==
-X-Gm-Message-State: AOAM530sNrQG9+hOq9SIHy2vvuJRv9ZrmvPx5/WdUcIHWkOH71pPVLDG
- HUScnc0+JPlE5lNQM1JTVrd9WA==
-X-Google-Smtp-Source: ABdhPJwXuUt0sftDa1TvYqXx+d7cm+eB/BhcX08Oq5n1MDafYYfJxDamHA1BTbHyE/MfVzuLR/AHJw==
-X-Received: by 2002:a17:906:2319:b0:6f3:ad55:8fee with SMTP id
- l25-20020a170906231900b006f3ad558feemr6692397eja.26.1651392786726; 
- Sun, 01 May 2022 01:13:06 -0700 (PDT)
-Received: from [192.168.0.182] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- j12-20020aa7c40c000000b0042617ba63cbsm5047785edq.85.2022.05.01.01.13.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 01 May 2022 01:13:06 -0700 (PDT)
-Message-ID: <c58c2d00-2b07-8873-2146-738199855492@linaro.org>
-Date: Sun, 1 May 2022 10:13:05 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v2 1/7] dt-bindings: arm: rockchip: Add Pine64 Quartz64
- Model B
-Content-Language: en-US
+ id 1nl7nV-00G8Ti-Je; Sun, 01 May 2022 11:31:31 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1nl7nP-0005rq-Um; Sun, 01 May 2022 13:31:23 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Peter Geis <pgwipeout@gmail.com>, linux-rockchip@lists.infradead.org,
  Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>
+ Johan Jonker <jbx6244@gmail.com>
 Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 5/7] arm64: dts: rockchip: add Pine64 Quartz64-B device
+ tree
+Date: Sun, 01 May 2022 13:31:23 +0200
+Message-ID: <3428030.iIbC2pHGDl@diego>
+In-Reply-To: <46548c93-4e6d-858c-8b79-03be9326c92a@gmail.com>
 References: <20220429115252.2360496-1-pgwipeout@gmail.com>
- <20220429115252.2360496-2-pgwipeout@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220429115252.2360496-2-pgwipeout@gmail.com>
+ <20220429115252.2360496-6-pgwipeout@gmail.com>
+ <46548c93-4e6d-858c-8b79-03be9326c92a@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220501_011311_550554_2BC4EBE7 
-X-CRM114-Status: UNSURE (   8.55  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220501_043129_693649_BC6613AD 
+X-CRM114-Status: GOOD (  23.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,18 +64,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 29/04/2022 13:52, Peter Geis wrote:
-> The Quartz64 Model B is a compact single board computer from Pine64
-> based on the rk3566 SoC. It outputs on uart2 for the debug console.
+Am Sonntag, 1. Mai 2022, 09:06:33 CEST schrieb Johan Jonker:
 > 
-> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> On 4/29/22 13:52, Peter Geis wrote:
+> > Add a device tree for the Pine64 Quartz64 Model B single board computer.
+> > This board ouputs debug on uart2 and supports the following components:
+> > Gigabit Ethernet
+> > USB2 x2 (one port otg capable)
+> > USB3
+> > PCIe/SATA M2
+> > HDMI
+> > DSI (RPi compatible pinout)
+> > CSI (RPi compatible pinout)
+> > A/B/G/N WiFi
+> > Bluetooth
+> > SDMMC
+> > eMMC
+> > SPI Flash
+> > PI-40 compatible pin header
+> > 
+> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+> >  .../boot/dts/rockchip/rk3566-quartz64-b.dts   | 615 ++++++++++++++++++
+> >  2 files changed, 616 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> > index 4ae9f35434b8..252ee47b8a1d 100644
+> > --- a/arch/arm64/boot/dts/rockchip/Makefile
+> > +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> > @@ -59,5 +59,6 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399pro-rock-pi-n10.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.1.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.2.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-a.dtb
+> > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-b.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+> > new file mode 100644
+> > index 000000000000..184ab7e1d178
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+> > @@ -0,0 +1,615 @@
+> > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> > +/*
+> > + *
+> > + */
+> > +
+> > +/dts-v1/;
+> > +
+> > +#include <dt-bindings/gpio/gpio.h>
+> > +#include <dt-bindings/pinctrl/rockchip.h>
+> > +#include "rk3566.dtsi"
+> > +
+> > +/ {
+> > +	model = "Pine64 RK3566 Quartz64-B Board";
+> > +	compatible = "pine64,quartz64-b", "rockchip,rk3566";
+> > +
+> 
+> [..]
+> 
+> > +
+> > +&mdio1 {
+> 
+> > +	rgmii_phy1: ethernet-phy@0 {
+> > +		compatible = "ethernet-phy-ieee802.3-c22";
+> > +		reg = <0x1>;
+> 
+> Hi,
+> 
+> The reg value doesn't match the node name.
+> Other 2 boards use "reg = <0>" with label "rgmii_phy1".
+> Could you check?
+
+I do have an older Quartz-B in my boardfarm and in that older
+devicetree the phy-reg also is "0" instead of the "1" used here.
+
+Is that a hardware-change?
+
+Thanks
+Heiko
 
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
