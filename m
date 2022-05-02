@@ -4,46 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D3A1C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 May 2022 13:05:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68731C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 May 2022 06:46:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Leb3UPuks9GFp8oBPrydQCFEIQdBke/HnPTOiTEmd24=; b=pk0hbP5t1ik8jb
-	27SpgzYO63FaVb8/LhMXmidsgzlY4WCRGgrfIZ81wdCvWl4G8uvd3znRUxz3aeN1gcRxZls+orBwQ
-	Qda8Mix6CJ2b6TSMIlDQMSQvTBwzNz/hDXp9HRcE7qnUgfZLbPscIsZdKi22R0VZ+KM47s8rzzlUf
-	NNfzYrb0bKOg39SPzWIAnXoA5yjL0G1y2dM1sKJNSiDuCqNY4sG2HTGTrzDeb9qMdzi5L+2dH4wye
-	U74xo/QNrJogJevIPar1uWNsVURjKAVknNy1TpNrc5CbrRK9btNbZbXWA1lB85nH2lAKx6GSLqi5h
-	zBNcW6gLauATVgr4Etig==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SEbV8ovAkSG3CF0QXBdI2RuUo44H/Per77efOnhPQUo=; b=ZOvoFynuSKUUj4
+	tQFJhm36itSv1WXpmmpTX4Gtr9cKxcZqTAgdJTkHf2TMNOSuIpQKd7YncW9JZ4pR3Tx/rR9bPaLcD
+	TxXT/ZMv4oGAtI843Lse61h8m+Q0EM/3ZwAM11jg48aQqQsbJUxINQa4i3Z1gVrZF/+E+WtsS458R
+	meZwBpuqUfD1TbCUlqfGHyNiTibUPIRo32nGk1GzkPxvjSk2b6Dlih+m/PiHTeAs4yDXOulgCgQ6D
+	BLRIOnCFJxvqGh2IZhlG3DUnFAH4RJqVRhzNIXhIY4Wf9KZ5WSvKKBAPanRFnzxbzlyuDrhejfD7z
+	JuhJBcpeW+MGRe3+EOvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nl9Gk-00GNvA-7X; Sun, 01 May 2022 13:05:46 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1nlPpB-0004pz-5B; Mon, 02 May 2022 06:46:25 +0000
+Received: from mail-db8eur05on2062c.outbound.protection.outlook.com
+ ([2a01:111:f400:7e1a::62c]
+ helo=EUR05-DB8-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nl9Gi-00GNuc-4L; Sun, 01 May 2022 13:05:45 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
- helo=phil.lan)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nl9Ge-0006BV-1w; Sun, 01 May 2022 15:05:40 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	Peter Geis <pgwipeout@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: (subset) [PATCH v2 0/7] Add support for several new rk3566 SBCs
-Date: Sun,  1 May 2022 15:05:38 +0200
-Message-Id: <165141025789.655760.7485683050420620213.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220429115252.2360496-1-pgwipeout@gmail.com>
-References: <20220429115252.2360496-1-pgwipeout@gmail.com>
+ id 1nlPox-0004ml-UR; Mon, 02 May 2022 06:46:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=a8of7JKJ8WajbO7iEaQdEJtnPaET27D73gG7glYcbyHeqOCMiIQtZdbIOVLEd5TFzvLBcSzQht4pL3nlYQ/neg6qhBLhSazRJBXhncCxb/vA1nHq8AT3h1Xb+8ZcHbeoMcE0OJ1hJ8Me1U8ZPhdni3UKnqr5u7taajowBh2htn8ZHibBK54C9LhXn8d0PY5U5GTZWPIDs0rk3xez7dWFpDkLPUHNA8OcH0FNtEH0AqNIi5V+6GO4DNPMmaEnw3WelSy+2SeqxR23rHcwUcANrgbx9WvViD/NLKGI6s0gBmvroVBLFRXn+jbdRTMbjUYtlf3f9Wqeo1zMFhz0aHy7uw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=YcHxIlP47SjL8DUajpla9eRJDZIVYLstav6t1q7csS4=;
+ b=XlHs5r9bs6+Ccqc2uMmuozm2NBQsF55pv1hvzDk5PwIFWRVCEnDYLzRfN9QlTJolvvwetHj8WAK2EMFOdKH0/8PYBnybIfK+OQPg5JLqAAi3b5oTIRd5xKO8m/sG0sbzhsVfkh+pDEa3I0A6nCzyRS/Ad/HqwAJTXmRxqvYz+fmCTaf2xNB51mmPdqgGlNMnrY0/Z9441929vHL4/iH+q0tmZcW8pNEhtC9vKT9fbKYQVJUdsIzgWNaC0Jws08oEiSNy/REdNi/xthWSwwMqDxdztUPs5r046aR4HKEEmdPactoBoIH7r3w3Fv+mfx/Bh1TR0+pCie8Sx8ELh+OTBg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YcHxIlP47SjL8DUajpla9eRJDZIVYLstav6t1q7csS4=;
+ b=lSGLY3J/tPONK9F3atb3TnHrCYS5uVkgyr1g0aVlaNTevKBtvyWeRPPGzblu7h7CAW1104oy4ZanwyHDF0xmI6o2o6AMbo23eDL2sh5ilZxga+/IhZqERdGNAKVNOXIfXsf6t0LbNP2xLCMIgak/DSIj80puuNe4Mp7Ft8EMXu4=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com (2603:10a6:3:e1::23)
+ by AS8PR08MB6407.eurprd08.prod.outlook.com (2603:10a6:20b:33e::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5186.15; Mon, 2 May
+ 2022 06:46:03 +0000
+Received: from HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::3de2:62a:3915:9d6d]) by HE1PR0802MB2426.eurprd08.prod.outlook.com
+ ([fe80::3de2:62a:3915:9d6d%7]) with mapi id 15.20.5186.028; Mon, 2 May 2022
+ 06:46:02 +0000
+From: Michael Riesch <michael.riesch@wolfvision.net>
+To: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Liang Chen <cl@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>
+Subject: [PATCH v2] arm64: dts: rockchip: enable otg/drd operation of
+ usb_host0_xhci in rk3568
+Date: Mon,  2 May 2022 08:45:51 +0200
+Message-Id: <20220502064551.202613-1-michael.riesch@wolfvision.net>
+X-Mailer: git-send-email 2.30.2
+X-ClientProxiedBy: ZR0P278CA0144.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:40::23) To HE1PR0802MB2426.eurprd08.prod.outlook.com
+ (2603:10a6:3:e1::23)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 76a4449e-b62e-4c90-3089-08da2c076c62
+X-MS-TrafficTypeDiagnostic: AS8PR08MB6407:EE_
+X-Microsoft-Antispam-PRVS: <AS8PR08MB6407A8AA10546C6CEE36B60AF2C19@AS8PR08MB6407.eurprd08.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: eiWqEH4FEk6QCrWuhNOs3CobnOtPto4GXsId+GtXrZeKtiPNJ6qPG5sxsEXAh3KS7diTuy8/MJvFhUk6TPKqn/9ztn2SnlluhUb+OTOLvjh2A5Yo61XQBha/Xj+UX6Pp7BbTHqC0wE5vysfwxOcPfBJTMCIuzeehY6HiSyz0WKNYf/DSZWBe5zyAj8ChRC9lf2D3qnEWFYErVB9qUXnztFgZioc//LYvWMgMqxxtP1WDvVc7BbDx3FwL+WV1Uni0eTdnrpxRmFHIGcmnerYVz3ddIsyK8Ut31xOP7BSMvNqJ5l8Bn+6VPlQBJgRXHpT8PMAuvXh6GOTA9lV2xL0z9+iC5M3VNvKwGpwU3CLB5pkq9pmjGES2z+jJW6gxveHDvfDFshwxrDrbf+zJKmHQYRE1hTZIgoFxmQdFv5v22Gj2BFQiGO4W5VP+NUfAC4XzagSLQK1yjboGIDrUNXKfub/FG1Es1ytZKTyPS2VVXy51GLlqJ8kxeEi1xkBpD53MOw6tJyuNORY/FR9HLjbbQAALLlC2Hl7Df1lyz9sDQTTjTnBTIQm+71LH9UsZ3wHSJHcMaz5f6s01M2uWFOQoVxT5Pc8iCcxZtwrzQi4Ql8Xm5L/cGt9yWSWkeycisMVuFOtw2ReKAohk61tCFpZhqw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:HE1PR0802MB2426.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(346002)(376002)(136003)(39830400003)(366004)(396003)(2616005)(54906003)(508600001)(6486002)(6506007)(6512007)(52116002)(186003)(1076003)(86362001)(36756003)(66476007)(66556008)(66946007)(4326008)(8676002)(2906002)(44832011)(8936002)(5660300002)(4744005)(7416002)(38100700002)(316002)(6666004);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?tms4058hipIzToqYeWaumFXGfUS6RMoh03N3jUT4MMlLkjPCQW3l3DtzSbvD?=
+ =?us-ascii?Q?zCvpaXvy7GNyA3yK5DlA2P8a1OqnzMuiQFQncf6oeW3PwbXDs5+4BXQrOvzf?=
+ =?us-ascii?Q?cE7arofZp7gsInvRnW0LYRUhhvi8YqXbf5sTa0FkU8BpBO4tiI91EekU8dm8?=
+ =?us-ascii?Q?VhitvT/eLY0peGJNx7ppwluRux4FeTM8a0rb/ce7MPBysV0vQC4Ow5u0/csi?=
+ =?us-ascii?Q?6gzkQ1PH3ZXlwW3w8TaTc75eX4v6zld0UoKrvSMBe7YuCAIl7lZMSfNOWVXb?=
+ =?us-ascii?Q?JcWWPE6QaLMUwpBirL/krOlUm6D16vbUtPCPZ0+vyHDGNQx9TOdXLmfJsDn5?=
+ =?us-ascii?Q?EdljshjAVbeC8ISFWspvQl14kwoUa5/McsmH4KhVfp4ndqq415b808mEQHFU?=
+ =?us-ascii?Q?8qDom2G7VXUyGHyor9TcwkqwzG96apD8t0/nVbEVzmVSzRk6sQZ1MGbj1Geo?=
+ =?us-ascii?Q?+T83oPrsBtZ+uBnQTu+q2rj6+BLd7iNug4NJodtDgS13DSLheVN4M9V1cZAF?=
+ =?us-ascii?Q?wdhlhvjQalIejJStOX7deI6RcJcW5M6qinm0ToAzGrGrfNGcKgClUE0ydMDV?=
+ =?us-ascii?Q?fOqmkwS4cL0QlgD6QX31z+UZQezvgVPEPXDE+UDdkswFcUAywrCMJZURUV39?=
+ =?us-ascii?Q?iUtvNnyJPfij3ifJWGhz7YhTfMIz5aEm8xKHY9StJaZ+0O96kNlJ3VDUcmuu?=
+ =?us-ascii?Q?YPouWun/nYe1o4dZQvEhy3uFRBXG7GJ2nC/tgFp764lhtptrQTnOoeGdK597?=
+ =?us-ascii?Q?p3dWvdb+LIXp9f+qH0arvHcFlB9afynwgs12hDMIX1PxNAuho9kbMlnkZUeT?=
+ =?us-ascii?Q?l47ZbNJgDWSM+2zrg6PntX4RwSWPPAI+sqikgGNQHc6I6BBphp+kkZB0rjeL?=
+ =?us-ascii?Q?FwA+IqML9qBEPlpLCzMWGK/wrv4dVmobJseYv0LvzRYJIKk33iGtg5J96Inr?=
+ =?us-ascii?Q?mYiq8g6+vGj/3UBfX0T4ZOkwK/P83HoY7iOXuzuv7YHGnXdn2shCXvoB/6TR?=
+ =?us-ascii?Q?PcHHbZyhsT+Y0/He6Wanu89nUqGh0WsTIIBNwUHuBv/dMlMUxJz89vEI/gps?=
+ =?us-ascii?Q?qw5DsKetJ0RcFR8ll/EMF/lA1qn0jmbYu2HownJXtxw1qg8nRe60zpgUqlKr?=
+ =?us-ascii?Q?IgQC6qUNj+8vW6GEpSacdRlyxqTzY+1QJOD6FVVEF0FWsHQTD09MCcVW2DD9?=
+ =?us-ascii?Q?JBjGF69WA/Rq+vxPKjJxrH3YAz+IfuQtMfCc6zhNh7LcWoiagAs94lmEj/MI?=
+ =?us-ascii?Q?JCSDhsb1+K9n0OodGVQteWBsbhgGJXDbwU/rrDnISkOg2DNqFAfu1UI9Snb8?=
+ =?us-ascii?Q?LMfMRLgvtUfrWDM8jXNGGNwmt5nnCZz9Wi87jFb8BncktTE0KPSUDu5I8rKt?=
+ =?us-ascii?Q?r75ZiBPFTAnRA25z5vays1yO6xGlcwkgXWr9/FW29WBXQvi/EpGic+p/ARAh?=
+ =?us-ascii?Q?YoVPsDz+QrnZWGVL5pGcTgwSrB+nNKD5iSl80Icwm8eqkcKOjXErPE0DlMAy?=
+ =?us-ascii?Q?UryP7O/1GuujSjdpu/wT1WVOWYjF1NjRwuyBF711YU3fwiwJSpPcUEVcUWTr?=
+ =?us-ascii?Q?mGIvkkEx2hxKJNajp75dtWqthQLEQzaavXPTDJWK1mal0YofCaLvF8vRUfF1?=
+ =?us-ascii?Q?0JLFdRMoBxLHmgC7udiVnXVLPAGYCcCk8901fZJv7+W0Quj/jpbTQU1PipK0?=
+ =?us-ascii?Q?H2iSp/0q76MdcxTfHBpmISFnh9+OyiGL9WI21WUzZtqcfvO7Clb6Grdx/8uX?=
+ =?us-ascii?Q?FpbnGUlKI8Dq0vpYx55r+Z6zpapJd95+Lewq5Wjj2u+bRC1UfsRjREhe2JSF?=
+X-MS-Exchange-AntiSpam-MessageData-1: jtMTmOuaVkUIb4Mh39hjS9d62tOxPKomQrmhbupK+tcOTHCFgZLLHpQG
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: 76a4449e-b62e-4c90-3089-08da2c076c62
+X-MS-Exchange-CrossTenant-AuthSource: HE1PR0802MB2426.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 May 2022 06:46:02.5176 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: NoyY/btp6ems/yy60LJvKX1ZKSJACQjE19lAW1LFcwxpb4A7Cwrfuv8SKsXa+QAsTiSCM4CXGtIW31K49vSXDR9dSx6ggXWazSXusEuTc4w=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB6407
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220501_060544_210718_CE65D0E6 
-X-CRM114-Status: GOOD (  11.74  )
+X-CRM114-CacheID: sfid-20220501_234613_164375_46B86607 
+X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,42 +145,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 29 Apr 2022 07:52:45 -0400, Peter Geis wrote:
-> The following series adds support for the following single board
-> computers:
-> - Pine64 Quartz64 Model B
-> - Pine64 SoQuartz SoM with RPi CM4IO carrier board
-> - Firefly Station M2
-> 
-> Patches 1, 2, and 3 add the requisite dt-bindings.
-> Patch 4 adds support for the SFC to the rk356x device tree.
-> Patch 5 adds the Quartz64 Model B device tree.
-> Patch 6 adds the SoQuartz CM4IO device tree.
-> Patch 7 adds the Firefly Station M2 device tree.
-> 
-> [...]
+This USB 3.0 controller of the Rockchip RK3568 is capable of OTG/DRD
+operation. Enable it in the device tree.
 
-Applied, thanks!
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+---
+v2:
+ - As pointed out by Nicolas, this is RK3568 specific. Moved change to
+   rk3568.dtsi.
 
-[1/7] dt-bindings: arm: rockchip: Add Pine64 Quartz64 Model B
-      commit: c37415f55bdadffe5b4c0e7981e9fc7e8b96beea
-[2/7] dt-bindings: arm: rockchip: Add Pine64 SoQuartz SoM
-      commit: c466828fb3ba8cb7f5c3bf28766da9b70bf9745e
-[3/7] dt-bindings: arm: rockchip: Add Firefly Station M2
-      commit: e52ded5543708e0382f236ce35372a63f4568341
-[5/7] arm64: dts: rockchip: add Pine64 Quartz64-B device tree
-      commit: dcc8c66bef79befa6c9ebe7d7d62b0ce66983c20
-[6/7] arm64: dts: rockchip: add SoQuartz CM4IO dts
-      commit: 5859b5a9c3ac92d831bed164374cb837519524ad
-[7/7] arm64: dts: rockchip: add dts for Firefly Station M2 rk3566
-      commit: 30ac9b4e25d8cece00d32c7419f9d919f55421fe
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-I've adjusted the styling of comments a bit, also dropped one double
-newline as well as fixed the node name for the ethernet-phy for QuartzB.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+index 5eafddf62edc..bbfe8f3d68b7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+@@ -134,6 +134,7 @@ power-domain@RK3568_PD_PIPE {
+ };
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+ &usb_host0_xhci {
++	dr_mode = "otg";
+ 	phys = <&usb2phy0_otg>, <&combphy0 PHY_TYPE_USB3>;
+ 	phy-names = "usb2-phy", "usb3-phy";
+ };
+--
+2.30.2
 
 _______________________________________________
 Linux-rockchip mailing list
