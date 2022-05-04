@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CF92C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 May 2022 15:22:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4654FC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 May 2022 15:25:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lwxbrHPdjVXnCn4PcNLRtfcXqQYJM8eChT+4Slb2W3U=; b=D2NUzITuHQLoS3
-	C5Nw7TkxMa2uTcxWJ/XDnwozx3cm7NFTbK5FaI4IS5LVMnwDCMdPOy14Bu7q/mMfhHlAvP77+bUta
-	3jExCwq0StSzg1YmRrGJ86CcLlji8cKDsoYccxz0sKHXqvJxqV+EAq1WG98UxPcc28UcK4HXedn9p
-	xGQBuBa9NjohsSiQccDy+VPZmJeJOwJOj6pgyVw3fLS0JUy1W/nU3Qztck+jl21HGLpgqtBLGeZPC
-	3FENelAStxBW/CEzzma3YAd1nL+jKQPxAhEyExjKuVZ9vh9XlaMM5glrOyL/+eb0osbeazXp3DbRL
-	NksqXNJCi3u2h0MY+Zcg==;
+	List-Owner; bh=UaMGSNEJXYPHJH5YkEgJgWzVfEDOd1EDk0pbWC7a0iY=; b=NAOqJh+d1YtIMv
+	yHHbsnppXgruL+KWM486WXMTl0kDMysHTUR1mPJd/HOspBQBnRbG+dewDBRVCU07+ZWTg4RlvORvo
+	3YpTVU8eGiUUok44QPDcKG18roAClToURPPhOEj7GHBZDMHSGplb0wcwbfyqn9QBDO6CT9e+iUD5V
+	wGJvgBazRYMJp0rwm4CoXrxzIayoWCs9XZGPl0u3pjldOeZsqW5nycMRpJ57S9Q1yT+facHkzIr2g
+	3IUfF2ZVcJMcVY/Jh9c5AF5gP1Ki6n/r0tJV7M45xUVII2AQPhyEJboDVkxq0wetdG+y1v6w5Nksu
+	DVtA+2rtRwXptPVm+2aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmGpe-00BQ6Z-Tg; Wed, 04 May 2022 15:22:26 +0000
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+	id 1nmGsB-00BQsY-IO; Wed, 04 May 2022 15:25:03 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmGpa-00BQ2a-6w; Wed, 04 May 2022 15:22:24 +0000
-Received: by mail-ed1-x534.google.com with SMTP id be20so2064734edb.12;
- Wed, 04 May 2022 08:22:19 -0700 (PDT)
+ id 1nmGs4-00BQqL-C8; Wed, 04 May 2022 15:25:01 +0000
+Received: by mail-ed1-x530.google.com with SMTP id p4so2126320edx.0;
+ Wed, 04 May 2022 08:24:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=xTYBUgx4sIq3qSVsjgl0przbRExfOFSCf3/4HQ5y1Uc=;
- b=Tg8Bx/C6xSkcoO2dnyBeqWLtw2X4t7JrowzuBljo19KkSRX3m38bUXkupa3z1LKIYj
- lDc8dTcPIaGDiX8W5KxFNIyHS5gvtVITsZz5B0sxg6t6qFqj8XmvaUZKitBipDise3vG
- zloRxSRT4SrmBSzVIvtpBZBpluOGNuOOCbkwR9MDxZxTkD56RomzQqgffTRXpUBZ8ege
- EWkhyLiMvel0CWoo7osXQxbTKp1qYa/QYtC3hy4j59fctlVsilNKhTrkP7lM+JRKigJF
- OGROArQqHuYpH/tamBr4G2HaA24v8QKypOjDCBqglcJNUxpg+C9EJEyksuZJ2hV58FKV
- GXRA==
+ bh=wOYVxYLL6+BG3TePrLsXdWjDVPS5GIUfbLWvSKSl8h4=;
+ b=E7T0aF/BXgKfjiVEfL+S2vuOTV2X2yNSlckCr6+J5M7W+t5VoAN+Og/Yv5P36CGu74
+ VvkDxRjgzUKvk2WA0JTA5u6U/m+zPkvpUSM+bFtCUQNpjrhvSusOBZAipF95jlUXSeid
+ oZ1vPEHG/g/L1B4fu1ZmNQjZlqqUv13WaosS+SE2TWD24vArT8f8QwQ1uFAliabkCjSQ
+ S7HStKY/EqJRikDQe1JuWbZdS0JxTZrL5Iu4AFJTkhE3CQDiB8JRyoIr2f6YTzBwQUGM
+ nVE4bRY+sKyuRdsof4VCxH9EtrcwyOcKFWC5vdaDWVbtygWvvchlxdy60RA6dKapoO6Z
+ 2aaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=xTYBUgx4sIq3qSVsjgl0przbRExfOFSCf3/4HQ5y1Uc=;
- b=uOK5IekRPq6Q3kx2e25wwvlIXxsgwjzntWBpg17kTfFyZiZzahn/P3OLxWR1PlFo6A
- ccvmPGYeyz4W1ZkkgSabmsZXVupIublfBiybQaHRoJyoaHyiQY5ctCxDt1sH2vBnhn4l
- dz9SZav6IKJujHqJy8ijbVBcW62fddDE7YcZ/p+uze33nSkwaIlRKnt8na7o+AcqGWx/
- Ahb48QL9SKiHkeRgWtbBcXunJcKGSW0JAkPuDzawere6WoDzRK6m2OcwDZB5MTlnnM78
- UPrZbnd1cNriS9Ai08wwh0gqpf0TCpZ2Jz2g28+xmidqO9qSsmsyRPGRA0A3657YQK7o
- qFRQ==
-X-Gm-Message-State: AOAM533WcSffS6oKZoc7FrAJ09hPfv0I7SZ5NHoTPJops28U8e5WRYC3
- KtYDVvyvo9fCR37I+LfDK4U=
-X-Google-Smtp-Source: ABdhPJwQSHC3W2lpy/MOReI9kMJhEDuuR09hgP0Zb7GTtVs88FaRrxHsHhn/RqOQZsC5VpzSXtF99w==
-X-Received: by 2002:a05:6402:12cd:b0:426:16f:c135 with SMTP id
- k13-20020a05640212cd00b00426016fc135mr23796449edx.297.1651677738235; 
- Wed, 04 May 2022 08:22:18 -0700 (PDT)
+ bh=wOYVxYLL6+BG3TePrLsXdWjDVPS5GIUfbLWvSKSl8h4=;
+ b=hXVLOA/UcAKySpcaQc2ObAOQp2tNoqGfmmf/1LrLmSRva52crp33eEvnPEpwudvrkM
+ hn+v/OFj11DYzojirlLkVoHIsGRoytIUOJQb1g3VGoc7t3jstpgC+z4hKGziWg2nPFzV
+ SiI0qMvURzU4xzb4q51JotyGh/c56zXTjYPJzKyrUwSo3bAS0JYcQI662IWihtWKcZNQ
+ p8xzoys1Dw9UcdJj5joMgp/sVCpAizh7f3RPCAUC8fqFcWT9bhVKt7gHE+GEILQaKHGn
+ F5tDLdJUH/8JU5eJfolfelu8t1n4Y3iZUmKc9ka3RHFy/kM2s9vAbGlfmEjVke+WAi5O
+ l0mA==
+X-Gm-Message-State: AOAM530wH3vDAKoeuuarG4AfZMihFZrYFagPFvOIVrBGNHHTbjGjtMNY
+ vn5cBhKJzYPUTQ/gyWPXDhI=
+X-Google-Smtp-Source: ABdhPJxEFFzGhqnPOG0Za6rPtdUf8ua0dRw2gu36H+cAyAv37Oe0WTmKKVlESwvCZomBMQkRM2P7XA==
+X-Received: by 2002:aa7:dcc1:0:b0:427:e1ae:d822 with SMTP id
+ w1-20020aa7dcc1000000b00427e1aed822mr9129036edu.353.1651677892502; 
+ Wed, 04 May 2022 08:24:52 -0700 (PDT)
 Received: from skbuf ([188.25.160.86]) by smtp.gmail.com with ESMTPSA id
- jx4-20020a170907760400b006f3ef214da3sm5739421ejc.9.2022.05.04.08.22.16
+ k6-20020aa7d8c6000000b0042617ba63d0sm9311741eds.90.2022.05.04.08.24.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 May 2022 08:22:17 -0700 (PDT)
-Date: Wed, 4 May 2022 18:22:16 +0300
+ Wed, 04 May 2022 08:24:51 -0700 (PDT)
+Date: Wed, 4 May 2022 18:24:50 +0300
 From: Vladimir Oltean <olteanv@gmail.com>
 To: Frank Wunderlich <linux@fw-web.de>
 Cc: linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -75,17 +75,17 @@ Cc: linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  netdev@vger.kernel.org
-Subject: Re: [RFC v2 3/4] net: dsa: mt7530: get cpu-port via dp->cpu_dp
- instead of constant
-Message-ID: <20220504152216.747ckl3km7vbep4s@skbuf>
+Subject: Re: [RFC v2 4/4] arm64: dts: rockchip: Add mt7531 dsa node to
+ BPI-R2-Pro board
+Message-ID: <20220504152450.cs2afa4hwkqp5b5m@skbuf>
 References: <20220430130347.15190-1-linux@fw-web.de>
- <20220430130347.15190-4-linux@fw-web.de>
+ <20220430130347.15190-5-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220430130347.15190-4-linux@fw-web.de>
+In-Reply-To: <20220430130347.15190-5-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_082222_325499_113B9940 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20220504_082456_449902_7FD6774E 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,19 +103,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Apr 30, 2022 at 03:03:46PM +0200, Frank Wunderlich wrote:
+On Sat, Apr 30, 2022 at 03:03:47PM +0200, Frank Wunderlich wrote:
 > From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Replace last occurences of hardcoded cpu-port by cpu_dp member of
-> dsa_port struct.
+> Add Device Tree node for mt7531 switch connected to gmac0.
 > 
-> Now the constant can be dropped.
-> 
-> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
 > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 > ---
+> v2:
+> - drop status=disabled
+> ---
+>  .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   | 48 +++++++++++++++++++
+>  1 file changed, 48 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+> index ed2f2bd9a016..f0ffbe818170 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+> @@ -437,6 +437,54 @@ &i2c5 {
+>  	status = "disabled";
+>  };
+>  
+> +&mdio0 {
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +
+> +	switch@0 {
+
+I think the preferable names are the newer "ethernet-switch@0",
+"ethernet-ports", "ethernet-port@0".
+
+Otherwise
 
 Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+
+> +		compatible = "mediatek,mt7531";
+> +		reg = <0>;
+> +
+> +		ports {
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
+> +
+> +			port@1 {
+> +				reg = <1>;
+> +				label = "lan0";
+> +			};
+> +
+> +			port@2 {
+> +				reg = <2>;
+> +				label = "lan1";
+> +			};
+> +
+> +			port@3 {
+> +				reg = <3>;
+> +				label = "lan2";
+> +			};
+> +
+> +			port@4 {
+> +				reg = <4>;
+> +				label = "lan3";
+> +			};
+> +
+> +			port@5 {
+> +				reg = <5>;
+> +				label = "cpu";
+> +				ethernet = <&gmac0>;
+> +				phy-mode = "rgmii";
+> +
+> +				fixed-link {
+> +					speed = <1000>;
+> +					full-duplex;
+> +					pause;
+> +				};
+> +			};
+> +		};
+> +	};
+> +};
+> +
+>  &mdio1 {
+>  	rgmii_phy1: ethernet-phy@0 {
+>  		compatible = "ethernet-phy-ieee802.3-c22";
+> -- 
+> 2.25.1
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
