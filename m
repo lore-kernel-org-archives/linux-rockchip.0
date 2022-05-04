@@ -4,78 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFB59C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 May 2022 17:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9AD7C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 May 2022 20:23:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iYEwnc2Wso3NI9aREWYf4efgWu3Hsd3YmO5b1t38E2A=; b=24V63a839s3rjA
-	0+dowcisBQv7DhOGFVNOadhMubUBat+jI0g6BxRtQhn4v8NIkdp0BziGIJnCIF8yddlewtiK00BUY
-	MayHINklU+ZZ7nfCiFyvCGXh2QIBnTCcH6WRU2nhRhJDewb7M4tjo2Iu1oxapdC51kfaXqBmvej9j
-	4RsjlqYFe2s9n4z3Sk2ESbGKzU3EgtuYjM0jq8jv4vsvxHXW2tXMAvK4EJP7C6a/Rl2FhHXq9C49v
-	fLtlBEMe9+LwJjM9VRlV2D9XvODtn1+hBgkccSoIjdlTet9mHxmJK+DFBlsQKK5/mLLhS1OSoR9s1
-	wcFTCeOCs81tEcgL6Q6g==;
+	List-Owner; bh=4QBw/qN6If7Xir4cG72rbvEyBc6+0GjVnVYEnNjeACA=; b=OQa6XKt8jEw3kf
+	L/YHNS0AD765NsSUJxT31avCp59do1fz45ZB88a/eGxMZO5ihyBZoj4T6AArAwan/xHe1HcqmjuuE
+	TYF5sj3+zF1w1thC0FP1G7ZGU4LCfYU2y1/k9QC6FdkGSzernBQW3sUgTAEdWXcwOrh4IedJZ2b8K
+	TvD7SuQXk89EGQO1sbWdK/o4HmTF+PJG2XLGLMe+LLlmGDF5YoysdRPTI7/HjlLSpe+oeRYKvOYy2
+	cHPscM/bo+41zgEYLP8N84dEqj1A903zp0YdRR9F1/R6ToaqO45UBw+fEGUg0y14GBrYerqQkEeBj
+	CEXmMkdOBQ1AgVo6aHaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmJAR-00C2Vc-1D; Wed, 04 May 2022 17:52:03 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1nmLWx-00CX46-Pd; Wed, 04 May 2022 20:23:27 +0000
+Received: from mail-oi1-f171.google.com ([209.85.167.171])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmJAF-00C2TW-9H; Wed, 04 May 2022 17:51:53 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id a1so2561369edt.3;
- Wed, 04 May 2022 10:51:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=M6OQETHjxsNPeiQwlJ9nRZ0Zhe1S3npqCHoNCu8Hhwc=;
- b=GuABBy4VBrNuYj0GTLVz/YET1IoX938bnOFRsEwutc/h7zSzR4dRfAO8DubT+Ycc7Q
- rgRvClsWH2sRR8KX1Gwf5zL13W5RB/j1SXnCeb8jMywk2ivpZMfUxUUVFnf1JL6onVZx
- QCrLPkTIRIpnTUl5XJomzEGsDth7d8nnnty+4ctCa7GAZ1aKdM4/aiad/5MareclwqAT
- OZSRqcnYlqKfObymPQlEIMNpud145TBInDS+uQBK4MRep0DOOLPks5PpKMdvN8+ufPkL
- 1u+Bgxbsr4eDXZU8yv3hauZpSNYtEeZpljR0Y7KmMEEsylm5MG+3N0U9A/lHyz/nXYdP
- VwbQ==
+ id 1nmLWk-00CWw9-BX; Wed, 04 May 2022 20:23:15 +0000
+Received: by mail-oi1-f171.google.com with SMTP id w194so1121813oie.9;
+ Wed, 04 May 2022 13:23:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=M6OQETHjxsNPeiQwlJ9nRZ0Zhe1S3npqCHoNCu8Hhwc=;
- b=Chv7F+JGH69VuUWK7jZKZtpr9Y3nSs8I439a1kRFTkhJqFr+eLR6Y/3TdrSxgGr9SY
- WijpOqChDA06W5Yc/Hq7iaQSiK3o+01eu+FCv5WNwoXssFq0KteSMHsRH3MJdJGcm9yX
- fXJeyFjPezsWszxF91EjLyvZhDlkzEYfX+fI2vcVbY6p3ke2ZXTmj7D77uSCONjDuFNr
- X1kStkoqk0X6OUTqzU4Sh8/AvIqb0fKmjvrUG0OHnFZFGpd/mSr+CoetmAQi7H23okOD
- Jfbw6M7VK8r8dDJm0CnOKRKZRJ9iDruazWBtzviq8M/zOIk0s+3C0JWfmqUoahpcZ8Yr
- bJjg==
-X-Gm-Message-State: AOAM53197fCxx6aaXsTQpQmq04D2oaVxsZ5bglLXjtW91F5CZ0nXWSMD
- 0FDHC/AQQT7m6ZmqJHPf4I8=
-X-Google-Smtp-Source: ABdhPJz0hb6SOgdPZdyzU9O0kQKQPCTbTz0FGLWDIVrCS5K5zZNt1y5LFDTv1pG707NEZlnJ2W5OEA==
-X-Received: by 2002:aa7:d393:0:b0:425:a8f8:663a with SMTP id
- x19-20020aa7d393000000b00425a8f8663amr24212615edq.323.1651686707464; 
- Wed, 04 May 2022 10:51:47 -0700 (PDT)
-Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84]) by smtp.gmail.com with ESMTPSA id
- ci18-20020a170907267200b006f3ef214e0esm5914003ejc.116.2022.05.04.10.51.46
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=ySBOubiPulo913haM4WoQ1mv/TU5CEHMQ1toV9XVhMc=;
+ b=IGwD02L+/tKB6Mr6UG2BCRVJOXpLwbzUhmFpqEwLIMXNUiuJFjlzTCw9Ug9bqWMyLu
+ YlBXaOYK6CB5YbnqXNeeGPtYzBYlGwJJrYGBWY6BxnnkAPn82mgQvA/NemfKL26N4j64
+ BYct00nISjrYOEHVBZXx9l/EpFv6aRA5dKzvWQ/UuBHb3/u+L658P+cQL3evtntoUJWk
+ S7GvX+SHZe5/OFa1oraPzJIE8dDdCR43eg2icnPesRH7XyeaoqtCiHXkWHzoWQ97HCga
+ dlMIoEI3IR1t5136KNy/2+RD84/tQv3CagihPFO3Glv9cm7ywAPYqioaH7xFxJuy9NlA
+ DbXw==
+X-Gm-Message-State: AOAM530bxBC41HNL49Nptx4Halw3KqnbuyQ2tZ3WfEP3iSefr8kn8Ldh
+ bjahvPw3T/z92gN4srsNNQFG1h5EfQ==
+X-Google-Smtp-Source: ABdhPJzACW6AvH0oEJr8UNPH9HL8vuoKqEyRonyCY12D3tqsWHQUGMaQ5zgSLXG56C5vPug6oW5P/A==
+X-Received: by 2002:a05:6808:d48:b0:326:2d1f:1c0f with SMTP id
+ w8-20020a0568080d4800b003262d1f1c0fmr637501oik.43.1651695790838; 
+ Wed, 04 May 2022 13:23:10 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ o14-20020a0568080f8e00b00325cda1ff8bsm4649538oiw.10.2022.05.04.13.23.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 May 2022 10:51:46 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Sudeep Holla <sudeep.holla@arm.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Cristian Marussi <cristian.marussi@arm.com>, Heiko Stuebner <heiko@sntech.de>,
- Liang Chen <cl@rock-chips.com>, linux-kernel@vger.kernel.org,
- Kever Yang <kever.yang@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>,
- Peter Geis <pgwipeout@gmail.com>
-Subject: Re: [BUG] New arm scmi check in linux-next causing rk3568 not to boot
- due to firmware bug
-Date: Wed, 04 May 2022 19:51:45 +0200
-Message-ID: <3764923.NsmnsBrXv5@archbook>
-In-Reply-To: <20220504132130.wmmmge6qjc675jw6@bogus>
-References: <1698297.NAKyZzlH2u@archbook>
- <20220504132130.wmmmge6qjc675jw6@bogus>
+ Wed, 04 May 2022 13:23:10 -0700 (PDT)
+Received: (nullmailer pid 2163645 invoked by uid 1000);
+ Wed, 04 May 2022 20:23:09 -0000
+Date: Wed, 4 May 2022 15:23:09 -0500
+From: Rob Herring <robh@kernel.org>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Ezequiel Garcia <ezequiel@collabora.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/3] dt-bindings: media: rockchip-vpu: Add RK3568 JPEG
+ compatible
+Message-ID: <YnLgrVJcdkYgNvEO@robh.at.kernel.org>
+References: <20220427224438.335327-1-frattaroli.nicolas@gmail.com>
+ <20220427224438.335327-2-frattaroli.nicolas@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220427224438.335327-2-frattaroli.nicolas@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_105151_395406_CB62BC4C 
-X-CRM114-Status: GOOD (  46.21  )
+X-CRM114-CacheID: sfid-20220504_132314_424981_BD541C33 
+X-CRM114-Status: GOOD (  16.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,121 +89,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mittwoch, 4. Mai 2022 15:21:30 CEST Sudeep Holla wrote:
-> + Cristian
+On Thu, Apr 28, 2022 at 12:44:36AM +0200, Nicolas Frattaroli wrote:
+> The RK3568 and RK3566 have a VPU node solely dedicated to JPEG
+> encoding. This patch adds a compatible for it, and also allows
+> the bindings to only come with a vepu interrupt.
+
+Sounds like this might be more than just JPEG, so I'm assuming this will 
+get sent again.
+ 
+> Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
-> Hi Nicolas,
+> diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> index bacb60a34989..cd62b44c34c3 100644
+> --- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> +++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> @@ -22,6 +22,7 @@ properties:
+>            - rockchip,rk3288-vpu
+>            - rockchip,rk3328-vpu
+>            - rockchip,rk3399-vpu
+> +          - rockchip,rk3568-jpeg-vepu
+>            - rockchip,px30-vpu
+>        - items:
+>            - const: rockchip,rk3188-vpu
+> @@ -40,6 +41,7 @@ properties:
+>    interrupt-names:
+>      oneOf:
+>        - const: vdpu
+> +      - const: vepu
+>        - items:
+>            - const: vepu
+>            - const: vdpu
+> -- 
+> 2.36.0
 > 
-> Thanks for the formal report.
 > 
-> On Wed, May 04, 2022 at 02:49:07PM +0200, Nicolas Frattaroli wrote:
-> > Good day,
-> > 
-> > a user on the #linux-rockchip channel on the Libera.chat IRC network
-> > reported that their RK3568 was no longer getting a CPU and GPU clock
-> > from scmi and consequently not booting when using linux-next. This
-> > was bisected down to the following commit:
-> > 
-> > https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/firmware/arm_scmi/base.c?h=next-20220503&id=3b0041f6e10e5bdbb646d98172be43e88734ed62
-> > 
-> > The error message in the log is as follows:
-> > 
-> > arm-scmi firmware:scmi: Malformed reply - real_sz:8  calc_sz:4, t->rx.len is 12, sizeof(u32) is 4, loop_num_ret is 3
-> > 
-> > The rockchip firmware (bl31) being used was v1.32, from here:
-> > 
-> > https://github.com/JeffyCN/rockchip_mirrors/blob/rkbin/bin/rk35/rk3568_bl31_v1.32.elf
-> >
-> 
-> So this platform is not supported in upstream TF-A like its predecessors ?
-
-Hello,
-
-it is not yet supported by upstream. Rockchip plans to release the sources
-for it at some point if I recall correctly, but I believe their software
-team has been very busy due to new hardware releases, so it hasn't happened
-yet. I hope we'll see an open source release of the TF-A sources eventually,
-so that for bugs like this we can always fix them without the vendor needing
-to do it for us.
-
-> 
-> > This seems like a non-fatal firmware bug, for which a kernel workaround is
-> > certainly possible, but it would be good if rockchip could fix this in their
-> > firmware.
-> >
-> 
-> Indeed, we added this check finding issue in one of our tests. Luckily
-> it helped to unearth the same issue on this platform, but due to the
-> nature of its f/w release, it is bit unfortunate that it can't be fixed
-> easily and quickly. But I really wish this gets fixed in the firmware.
-> Are there any other f/w bugs reported so far ? If so how are they fixed
-> as I don't expect all such bugs can be worked around in the kernel though
-> this might be. I would like to hear details there if possible.
-
-I'm not aware of how the rockchip bug report workflow works. They seemingly
-did update the firmware multiple times, last in October of 2021.
-
-The official rockchip repository at [1] hasn't been kept as up to date as
-the mirror by a rockchip employee at [2], so most people seem to have been
-using the latter. Speaking of which, I'll add the owner of that repo to 
-the CC of this thread to make sure this doesn't get lost.
-
-Rockchip lists an e-mail at [3] for reporting issues at, but this seems to
-relate to their open-source documentation. The official github repository
-of "rkbin" on the "rockchip-linux" organisation does not have issues
-enabled, so submitting a bug report through that is unfortunately not
-possible.
-
-> 
-> > The user going by "amazingfate" reported that commenting out the
-> >   ret = -EPROTO; break;
-> > fixes the issue for them.
-> >
-> 
-> Sure, or we could relax the check as calc_sz <= real_sz or something so
-> that the reverse is still caught and handled as OS might read junk data in
-> the later case.
-
-This seems like a good solution, that way we're unlikely to ever run into a
-situation where the kernel does the wrong thing here even if we're less
-strict about the check. In either case, it should print a dev_err though,
-it's still an error even if we can tolerate it in some cases.
-
-> 
-> > I'm writing here to get the discussion started on how we can resolve this
-> > before the Linux 5.19 release.
-> >
-> 
-> Agreed, I just sent by pull request for this literally few hours ago.
-> 
-> > Sudeep Holla has already told me they'll gladly add a workaround before
-> > the 5.19 release, but would rather see this fixed in the vendor firmware
-> > first. Would rockchip be able and willing to fix it and publish a new
-> > bl31 for rk3568?
-> >
-> 
-> Indeed and as mentioned above details on how other such f/w bugs are dealt
-> in general esp that the firmware is blob release and one can't fix it easily.
-> Do we have a bugzilla kind of setup to report and get the bugs fixed ?
-
-It's worth mentioning that I think even if we get Rockchip to fix the bug in
-the firmware, I believe Linux should still add a workaround, as otherwise
-people running older firmware who are upgrading their kernels could suddenly
-have unbootable systems and don't know why that happened.
-
-Regards,
-Nicolas Frattaroli
-
-PS: I've also CC'd Peter Geis as he has worked on the RK356x support in
-    mainline a bunch and I believe he has been in contact with Rockchip
-    about releasing the TF-A sources before.
-
-[1]: https://github.com/rockchip-linux/rkbin
-[2]: https://github.com/JeffyCN/rockchip_mirrors/tree/rkbin
-[3]: http://opensource.rock-chips.com/wiki_Main_Page
-
-
-
 
 _______________________________________________
 Linux-rockchip mailing list
