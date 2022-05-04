@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B40EC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 May 2022 21:41:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C167C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 May 2022 21:41:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HQ8vo6Vk5c7D5tBnI95E5vxbWEGcMAHNK+jjPh9GHEg=; b=Ae1XH3Y39pBb+y
-	tOY5JOdNSuPG/6gGmopSiB0hoC+Xu3bX84ADNX+x8sUW3nFRURD2qJqnaHvoLGaTzShQn+axDAFi2
-	scXieLQy7j+nlmbGkG8LZprVxGKc8mYkSgeVSdkdtfZqNOY+NyPD1SIsY99AO8RibDkoIa/NqEnH3
-	dVjUYHeuLHmepjNGREmdiNEA6HOzOsSVxbDhLvRwLbPo180lE1KpWxIUIoSVG/BuyNMl1toIYwbaE
-	lX8x2AUBMz9QJ9R9x5LqMOhJtNiuG5VoZrHXIzA1tGNbfmK4oD1KhyVGebsZ07GIPu5jLqXXug9UF
-	ONjAm02e56Uks9BdYFpA==;
+	List-Owner; bh=9rJ3hjoqgP6vHm7b9kMny0Q1ljsH1eyG2LkhXR/VZNM=; b=ch9Ukm4ut/I4No
+	5pB3K94DKlH5JJaaXFYSUBS2NLYSEhsL4VXAz9thLzaX/0yYy/vbXiJszUqIGcxRUYWJkJW67DBeC
+	KQUyx0V8D3+k7Hc4U9iDxZs9roiLdRHMyRuI0Gr3FE+OJHMFQFFPbIQlSheuMXK9w+sMt/Ehfl1qq
+	8askLmfTEhf5cnKLoKjxHZInHKXI5fCFRObDUhN6Lvx33jpNdyVbDIONTdLljotxXdyOwu4rYyC6b
+	A+/MXA0dp1fH08Ksft1ssK8cxx8F1xY8TOPISDuGF7kyeSN89Bo2ApNMDo4L07mxkMy/sarDV05sW
+	rx/FRsO75kNwhDevck/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmMkM-00CtZi-2N; Wed, 04 May 2022 21:41:22 +0000
+	id 1nmMkP-00Ctaz-8R; Wed, 04 May 2022 21:41:25 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmMcU-00Coyl-VQ; Wed, 04 May 2022 21:33:26 +0000
+ id 1nmMcT-00Coy2-3n; Wed, 04 May 2022 21:33:26 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1]) (Authenticated sender: sre)
- with ESMTPSA id 695F81F44BE4
+ with ESMTPSA id 19DE51F44B23
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1651699980;
- bh=jvWlCqU5BM5uSfYkfGx9KIBVQnJo5rwQWZiOEIDmon8=;
+ s=mail; t=1651699976;
+ bh=tTOCToDJjcLzI14JLadsZVSZ4cSn/2Or8RPivrlFg50=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=MdPuIIeZWYeMSIgJd1Opz7ab7G2fZdI/z0515K9zE6Cxp51bWVmcTBn4XUY7wYzWb
- Fa7/oLxckC7J1pW7p/Syb5ZEJPPel+FGbXjrLC9egcj1s862t/+EtItN/CYPo0IbQ9
- ytXOM1Pa8fxrrb73gSTR26UGTPrQHUCjsf4m/q8/UPgWNZM+sZTZaGfi+NlBw7vIby
- odk8yJ+RM1E/uOB/pJgYqtBPw32Se4gkONQ+Lhtp4BZVoVSLWVqo57oI+rFCOzM/CX
- O8lHJp84UZX+LhJ7lW7PLKbQz7YhM/SbXHboqEfI8qH3Tz+POotft66+BgoxCgveAr
- hocrE8MtVAMug==
+ b=EcTJlEeXn/3yGCqwKlHwkXxaPxW6VGqzOOWwhVrqCVyQ9nv7s/l0CTy8PTxa1koXy
+ murAKLg/9vyshQeGztHDkachfZCErGhPGEQhkPESyyGBp0Z2g3PrBKMx8aY0a75t4B
+ 9PaifsRzvlcBDmBilm2tKWeA9h67DwGS+jrdXSnyyns6l3dFbqZqZSQ6a6FBYoJ7q5
+ pUOc1MprGBzsPeB3WwgToFQQu/vFLUlDYdkB6X73Ke0A8zFWxkVbRo9NF3n5tFRcjO
+ GPyP4X3pF/PW1VfbHxRtjGg4xIpOpHblAsClfHorMAYlRSuSj1minAkh2ctYbVzgmB
+ CnbVkkddX/ExQ==
 Received: by jupiter.universe (Postfix, from userid 1000)
- id 573344819D6; Wed,  4 May 2022 23:32:53 +0200 (CEST)
+ id 363634819C9; Wed,  4 May 2022 23:32:53 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -51,18 +51,19 @@ Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- kernel@lists.collabora.co.uk,
- Sebastian Reichel <sebastian.reichel@collabora.com>, kernel@collabora.com
-Subject: [PATCHv2 17/21] dt-bindings: gpio: rockchip: add gpio-ranges
-Date: Wed,  4 May 2022 23:32:47 +0200
-Message-Id: <20220504213251.264819-18-sebastian.reichel@collabora.com>
+ kernel@lists.collabora.co.uk, Elaine Zhang <zhangqing@rock-chips.com>,
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCHv2 04/21] clk: rockchip: add register offset of the cores
+ select parent
+Date: Wed,  4 May 2022 23:32:34 +0200
+Message-Id: <20220504213251.264819-5-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220504213251.264819-1-sebastian.reichel@collabora.com>
 References: <20220504213251.264819-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_143315_250480_2925A407 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20220504_143313_367838_8F827A46 
+X-CRM114-Status: GOOD (  16.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,28 +81,84 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Allow usage of gpio-ranges with the rockchip gpio controller. The driver
-already had support for this since it has been added to the mainline kernel
-in the first place.
+From: Elaine Zhang <zhangqing@rock-chips.com>
 
+The cores select parent register is special on RK3588.
+
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/clk/rockchip/clk-cpu.c | 28 ++++++++++++++++++++--------
+ drivers/clk/rockchip/clk.h     |  3 +++
+ 2 files changed, 23 insertions(+), 8 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-index d4e42c2b995b..affd823c881d 100644
---- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-+++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-@@ -27,6 +27,8 @@ properties:
-       - description: APB interface clock source
-       - description: GPIO debounce reference clock source
+diff --git a/drivers/clk/rockchip/clk-cpu.c b/drivers/clk/rockchip/clk-cpu.c
+index 47288197c9d7..11aa2259b532 100644
+--- a/drivers/clk/rockchip/clk-cpu.c
++++ b/drivers/clk/rockchip/clk-cpu.c
+@@ -166,10 +166,16 @@ static int rockchip_cpuclk_pre_rate_change(struct rockchip_cpuclk *cpuclk,
+ 		}
+ 	}
+ 	/* select alternate parent */
+-	writel(HIWORD_UPDATE(reg_data->mux_core_alt,
+-			     reg_data->mux_core_mask,
+-			     reg_data->mux_core_shift),
+-	       cpuclk->reg_base + reg_data->core_reg[0]);
++	if (reg_data->mux_core_reg)
++		writel(HIWORD_UPDATE(reg_data->mux_core_alt,
++				     reg_data->mux_core_mask,
++				     reg_data->mux_core_shift),
++		       cpuclk->reg_base + reg_data->mux_core_reg);
++	else
++		writel(HIWORD_UPDATE(reg_data->mux_core_alt,
++				     reg_data->mux_core_mask,
++				     reg_data->mux_core_shift),
++		       cpuclk->reg_base + reg_data->core_reg[0]);
  
-+  gpio-ranges: true
-+
-   gpio-controller: true
+ 	spin_unlock_irqrestore(cpuclk->lock, flags);
+ 	return 0;
+@@ -202,10 +208,16 @@ static int rockchip_cpuclk_post_rate_change(struct rockchip_cpuclk *cpuclk,
+ 	 * primary parent by the extra dividers that were needed for the alt.
+ 	 */
  
-   gpio-line-names: true
+-	writel(HIWORD_UPDATE(reg_data->mux_core_main,
+-			     reg_data->mux_core_mask,
+-			     reg_data->mux_core_shift),
+-	       cpuclk->reg_base + reg_data->core_reg[0]);
++	if (reg_data->mux_core_reg)
++		writel(HIWORD_UPDATE(reg_data->mux_core_main,
++				     reg_data->mux_core_mask,
++				     reg_data->mux_core_shift),
++		       cpuclk->reg_base + reg_data->mux_core_reg);
++	else
++		writel(HIWORD_UPDATE(reg_data->mux_core_main,
++				     reg_data->mux_core_mask,
++				     reg_data->mux_core_shift),
++		       cpuclk->reg_base + reg_data->core_reg[0]);
+ 
+ 	/* remove dividers */
+ 	for (i = 0; i < reg_data->num_cores; i++) {
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 7aa45cc70287..6aece7f07a7d 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -370,6 +370,8 @@ struct rockchip_cpuclk_rate_table {
+  * @div_core_shift[]:	cores divider offset used to divide the pll value
+  * @div_core_mask[]:	cores divider mask
+  * @num_cores:	number of cpu cores
++ * @mux_core_reg:       register offset of the cores select parent
++ * @mux_core_alt:       mux value to select alternate parent
+  * @mux_core_main:	mux value to select main parent of core
+  * @mux_core_shift:	offset of the core multiplexer
+  * @mux_core_mask:	core multiplexer mask
+@@ -379,6 +381,7 @@ struct rockchip_cpuclk_reg_data {
+ 	u8	div_core_shift[ROCKCHIP_CPUCLK_MAX_CORES];
+ 	u32	div_core_mask[ROCKCHIP_CPUCLK_MAX_CORES];
+ 	int	num_cores;
++	int	mux_core_reg;
+ 	u8	mux_core_alt;
+ 	u8	mux_core_main;
+ 	u8	mux_core_shift;
 -- 
 2.35.1
 
