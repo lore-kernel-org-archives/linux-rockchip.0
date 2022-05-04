@@ -4,89 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65ABFC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 May 2022 15:47:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFB59C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 May 2022 17:52:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I4Zy/vw6CXliR5gFKwb89ZZYs3KLTfiD8N6CDvzy72U=; b=nnNUZk7MSIzdC2
-	XkO/kHy7MQi88ZdolVxVZT8l0h8q7eE5sQvFAkgyJw9WAqAgxvMmmpRPheyVK+FtBs/UWs33zGbyE
-	/Z9o6n9CZjdR/igMFe0vat0JGvhi+k/afgoMoJMUmbrqLQBSIRz3TVEmC2lGB9te9YK2hwTbThuCJ
-	cEW0zksCuKH9qqlPq2QVs+EwgJCoBK+2FLuQKBoa0sUMuhVTwteKMzKyzLkZlNmyNTkbSkNg7u04X
-	AVbM2le+d7Oz8+4lMkSta6h3x2Hn+oeF70yqeIyszIr8I7Klylc488QLjwbzBtPvE9KXS2PJZpY1W
-	1P9dX5eKU5WKmwOojDsg==;
+	List-Owner; bh=iYEwnc2Wso3NI9aREWYf4efgWu3Hsd3YmO5b1t38E2A=; b=24V63a839s3rjA
+	0+dowcisBQv7DhOGFVNOadhMubUBat+jI0g6BxRtQhn4v8NIkdp0BziGIJnCIF8yddlewtiK00BUY
+	MayHINklU+ZZ7nfCiFyvCGXh2QIBnTCcH6WRU2nhRhJDewb7M4tjo2Iu1oxapdC51kfaXqBmvej9j
+	4RsjlqYFe2s9n4z3Sk2ESbGKzU3EgtuYjM0jq8jv4vsvxHXW2tXMAvK4EJP7C6a/Rl2FhHXq9C49v
+	fLtlBEMe9+LwJjM9VRlV2D9XvODtn1+hBgkccSoIjdlTet9mHxmJK+DFBlsQKK5/mLLhS1OSoR9s1
+	wcFTCeOCs81tEcgL6Q6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmHDu-00BVLo-Ro; Wed, 04 May 2022 15:47:30 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1nmJAR-00C2Vc-1D; Wed, 04 May 2022 17:52:03 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmHDq-00BVJ9-NH; Wed, 04 May 2022 15:47:28 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id y3so3648828ejo.12;
- Wed, 04 May 2022 08:47:23 -0700 (PDT)
+ id 1nmJAF-00C2TW-9H; Wed, 04 May 2022 17:51:53 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id a1so2561369edt.3;
+ Wed, 04 May 2022 10:51:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=TqM11B6n/7I4zpUs+ecH9iPi5qiIZecTmzEvJnM7wU0=;
- b=bSkNvN6Pr0ZvSu4SsAwum52J8rN9eabMzdmB8P0U2GTCvGWXaPNftMyHxDWI3IGj70
- fBTwXRdfHaMCWAr4BbTw9WRr5DDhPiMcLvcQM3v6DsuPIXFLTQ3tE1vN1E0BTQCTfobz
- S/RfYHceQFtTiLLrMqXmZ7IvbrinJ6GAu2zaYMhzgKGQQADxcSvKZxpPhX2mPQKSpsdj
- XcfhBm4uB5VVfkzeVLrYD3azxjvH1JYgCLFWWrxAlhnyUYrD8KgDFtrs5KmIiGpPNkb3
- v6tvtHeOARnIGvXz18jMVC173P1pT6cuLuY+o5ORR7bVmCdAbAlqLN9Y+l4Csmh1AWJp
- kt7Q==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=M6OQETHjxsNPeiQwlJ9nRZ0Zhe1S3npqCHoNCu8Hhwc=;
+ b=GuABBy4VBrNuYj0GTLVz/YET1IoX938bnOFRsEwutc/h7zSzR4dRfAO8DubT+Ycc7Q
+ rgRvClsWH2sRR8KX1Gwf5zL13W5RB/j1SXnCeb8jMywk2ivpZMfUxUUVFnf1JL6onVZx
+ QCrLPkTIRIpnTUl5XJomzEGsDth7d8nnnty+4ctCa7GAZ1aKdM4/aiad/5MareclwqAT
+ OZSRqcnYlqKfObymPQlEIMNpud145TBInDS+uQBK4MRep0DOOLPks5PpKMdvN8+ufPkL
+ 1u+Bgxbsr4eDXZU8yv3hauZpSNYtEeZpljR0Y7KmMEEsylm5MG+3N0U9A/lHyz/nXYdP
+ VwbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=TqM11B6n/7I4zpUs+ecH9iPi5qiIZecTmzEvJnM7wU0=;
- b=Km+2LGqHcqXa/QkY07bCWS26Uc9FyJ3BIUMXM8gbhPpx27wUGzh5U2OcJBX4BnZ7Yu
- Wa8C/61j4RywOl5V+3z1X4GPLT195Zo6kYn0yhfwkn0MSHMP43NyYLaSRF8ITutSzFmg
- ltaahoXxugtTzq1FhW9xIPJsgV9GszAPd5CccZasXRM+s6QIwUoqmyjLItCTpkCa67t8
- EeuZwx+3W/eXdwQUMnVc381lQU9J7Ay0llWJ7G/7J8GGopZ3zw92T75UPXPn9x+mXt8X
- BSXVSHEsLl+lzKjIcPw7GX5/U5aCzZ7/Y3heWRJQWLLEfSa4U7MMlWNAE/qM2vff2n0m
- sk2A==
-X-Gm-Message-State: AOAM530TcyOq/Y94Bj/PRmdWewsL0iz6YhTiA7GcNAASfW2k06yNINRk
- v20QQDQmRqCn7teM64fAt4Y=
-X-Google-Smtp-Source: ABdhPJyGEcz4aR+WhVvTIsoabj98eWOZrMv6CT4IGXSZM1VRBB9wbW/hJn0VXJoJH/dyxMRBM4lC1Q==
-X-Received: by 2002:a17:906:ad9:b0:6f3:da10:1389 with SMTP id
- z25-20020a1709060ad900b006f3da101389mr20710873ejf.32.1651679242735; 
- Wed, 04 May 2022 08:47:22 -0700 (PDT)
-Received: from skbuf ([188.25.160.86]) by smtp.gmail.com with ESMTPSA id
- b13-20020aa7df8d000000b0042617ba638asm9388190edy.20.2022.05.04.08.47.20
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=M6OQETHjxsNPeiQwlJ9nRZ0Zhe1S3npqCHoNCu8Hhwc=;
+ b=Chv7F+JGH69VuUWK7jZKZtpr9Y3nSs8I439a1kRFTkhJqFr+eLR6Y/3TdrSxgGr9SY
+ WijpOqChDA06W5Yc/Hq7iaQSiK3o+01eu+FCv5WNwoXssFq0KteSMHsRH3MJdJGcm9yX
+ fXJeyFjPezsWszxF91EjLyvZhDlkzEYfX+fI2vcVbY6p3ke2ZXTmj7D77uSCONjDuFNr
+ X1kStkoqk0X6OUTqzU4Sh8/AvIqb0fKmjvrUG0OHnFZFGpd/mSr+CoetmAQi7H23okOD
+ Jfbw6M7VK8r8dDJm0CnOKRKZRJ9iDruazWBtzviq8M/zOIk0s+3C0JWfmqUoahpcZ8Yr
+ bJjg==
+X-Gm-Message-State: AOAM53197fCxx6aaXsTQpQmq04D2oaVxsZ5bglLXjtW91F5CZ0nXWSMD
+ 0FDHC/AQQT7m6ZmqJHPf4I8=
+X-Google-Smtp-Source: ABdhPJz0hb6SOgdPZdyzU9O0kQKQPCTbTz0FGLWDIVrCS5K5zZNt1y5LFDTv1pG707NEZlnJ2W5OEA==
+X-Received: by 2002:aa7:d393:0:b0:425:a8f8:663a with SMTP id
+ x19-20020aa7d393000000b00425a8f8663amr24212615edq.323.1651686707464; 
+ Wed, 04 May 2022 10:51:47 -0700 (PDT)
+Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch.
+ [84.72.105.84]) by smtp.gmail.com with ESMTPSA id
+ ci18-20020a170907267200b006f3ef214e0esm5914003ejc.116.2022.05.04.10.51.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 May 2022 08:47:22 -0700 (PDT)
-Date: Wed, 4 May 2022 18:47:20 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>,
- Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
-Subject: Re: [RFC v2 4/4] arm64: dts: rockchip: Add mt7531 dsa node to
- BPI-R2-Pro board
-Message-ID: <20220504154720.62cwrz7frjkjbb7u@skbuf>
-References: <20220430130347.15190-1-linux@fw-web.de>
- <20220430130347.15190-5-linux@fw-web.de>
- <20220504152450.cs2afa4hwkqp5b5m@skbuf>
- <trinity-9f557027-8e00-4a4a-bc19-bc576e163f7b-1651678399970@3c-app-gmx-bs42>
+ Wed, 04 May 2022 10:51:46 -0700 (PDT)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: Sudeep Holla <sudeep.holla@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Cristian Marussi <cristian.marussi@arm.com>, Heiko Stuebner <heiko@sntech.de>,
+ Liang Chen <cl@rock-chips.com>, linux-kernel@vger.kernel.org,
+ Kever Yang <kever.yang@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>,
+ Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [BUG] New arm scmi check in linux-next causing rk3568 not to boot
+ due to firmware bug
+Date: Wed, 04 May 2022 19:51:45 +0200
+Message-ID: <3764923.NsmnsBrXv5@archbook>
+In-Reply-To: <20220504132130.wmmmge6qjc675jw6@bogus>
+References: <1698297.NAKyZzlH2u@archbook>
+ <20220504132130.wmmmge6qjc675jw6@bogus>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <trinity-9f557027-8e00-4a4a-bc19-bc576e163f7b-1651678399970@3c-app-gmx-bs42>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_084726_815803_F3889568 
-X-CRM114-Status: GOOD (  16.11  )
+X-CRM114-CacheID: sfid-20220504_105151_395406_CB62BC4C 
+X-CRM114-Status: GOOD (  46.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,40 +93,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 04, 2022 at 05:33:20PM +0200, Frank Wunderlich wrote:
-> Hi,
+On Mittwoch, 4. Mai 2022 15:21:30 CEST Sudeep Holla wrote:
+> + Cristian
 > 
-> thanks for review
+> Hi Nicolas,
 > 
-> > Gesendet: Mittwoch, 04. Mai 2022 um 17:24 Uhr
-> > Von: "Vladimir Oltean" <olteanv@gmail.com>
+> Thanks for the formal report.
 > 
-> > > +&mdio0 {
-> > > +	#address-cells = <1>;
-> > > +	#size-cells = <0>;
-> > > +
-> > > +	switch@0 {
+> On Wed, May 04, 2022 at 02:49:07PM +0200, Nicolas Frattaroli wrote:
+> > Good day,
+> > 
+> > a user on the #linux-rockchip channel on the Libera.chat IRC network
+> > reported that their RK3568 was no longer getting a CPU and GPU clock
+> > from scmi and consequently not booting when using linux-next. This
+> > was bisected down to the following commit:
+> > 
+> > https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/firmware/arm_scmi/base.c?h=next-20220503&id=3b0041f6e10e5bdbb646d98172be43e88734ed62
+> > 
+> > The error message in the log is as follows:
+> > 
+> > arm-scmi firmware:scmi: Malformed reply - real_sz:8  calc_sz:4, t->rx.len is 12, sizeof(u32) is 4, loop_num_ret is 3
+> > 
+> > The rockchip firmware (bl31) being used was v1.32, from here:
+> > 
+> > https://github.com/JeffyCN/rockchip_mirrors/blob/rkbin/bin/rk35/rk3568_bl31_v1.32.elf
 > >
-> > I think the preferable names are the newer "ethernet-switch@0",
-> > "ethernet-ports", "ethernet-port@0".
-> >
-> > Otherwise
-> >
-> > Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
 > 
-> current device-tree nodes using "switch" and "ports"
-> 
-> see discussioon here about make it fixed to "ports" property instead of PatternProperties including optional "ethernet-"
-> 
-> https://patchwork.kernel.org/project/linux-mediatek/patch/20220502153238.85090-1-linux@fw-web.de/#24843155
+> So this platform is not supported in upstream TF-A like its predecessors ?
 
-Hmm, I don't get why Krzysztof said to just keep what is used in
-existing device trees. The schema validator should describe what is
-valid, and since the mt7530 driver does not care one way or another
-(some drivers do explicitly parse the "ports"/"ethernet-ports" node),
-then whatever is valid for the DSA core is also valid for the mt7530
-bindings. And "ethernet-ports" is valid too, so I think it should be
-accepted by mediatek.yaml...
+Hello,
+
+it is not yet supported by upstream. Rockchip plans to release the sources
+for it at some point if I recall correctly, but I believe their software
+team has been very busy due to new hardware releases, so it hasn't happened
+yet. I hope we'll see an open source release of the TF-A sources eventually,
+so that for bugs like this we can always fix them without the vendor needing
+to do it for us.
+
+> 
+> > This seems like a non-fatal firmware bug, for which a kernel workaround is
+> > certainly possible, but it would be good if rockchip could fix this in their
+> > firmware.
+> >
+> 
+> Indeed, we added this check finding issue in one of our tests. Luckily
+> it helped to unearth the same issue on this platform, but due to the
+> nature of its f/w release, it is bit unfortunate that it can't be fixed
+> easily and quickly. But I really wish this gets fixed in the firmware.
+> Are there any other f/w bugs reported so far ? If so how are they fixed
+> as I don't expect all such bugs can be worked around in the kernel though
+> this might be. I would like to hear details there if possible.
+
+I'm not aware of how the rockchip bug report workflow works. They seemingly
+did update the firmware multiple times, last in October of 2021.
+
+The official rockchip repository at [1] hasn't been kept as up to date as
+the mirror by a rockchip employee at [2], so most people seem to have been
+using the latter. Speaking of which, I'll add the owner of that repo to 
+the CC of this thread to make sure this doesn't get lost.
+
+Rockchip lists an e-mail at [3] for reporting issues at, but this seems to
+relate to their open-source documentation. The official github repository
+of "rkbin" on the "rockchip-linux" organisation does not have issues
+enabled, so submitting a bug report through that is unfortunately not
+possible.
+
+> 
+> > The user going by "amazingfate" reported that commenting out the
+> >   ret = -EPROTO; break;
+> > fixes the issue for them.
+> >
+> 
+> Sure, or we could relax the check as calc_sz <= real_sz or something so
+> that the reverse is still caught and handled as OS might read junk data in
+> the later case.
+
+This seems like a good solution, that way we're unlikely to ever run into a
+situation where the kernel does the wrong thing here even if we're less
+strict about the check. In either case, it should print a dev_err though,
+it's still an error even if we can tolerate it in some cases.
+
+> 
+> > I'm writing here to get the discussion started on how we can resolve this
+> > before the Linux 5.19 release.
+> >
+> 
+> Agreed, I just sent by pull request for this literally few hours ago.
+> 
+> > Sudeep Holla has already told me they'll gladly add a workaround before
+> > the 5.19 release, but would rather see this fixed in the vendor firmware
+> > first. Would rockchip be able and willing to fix it and publish a new
+> > bl31 for rk3568?
+> >
+> 
+> Indeed and as mentioned above details on how other such f/w bugs are dealt
+> in general esp that the firmware is blob release and one can't fix it easily.
+> Do we have a bugzilla kind of setup to report and get the bugs fixed ?
+
+It's worth mentioning that I think even if we get Rockchip to fix the bug in
+the firmware, I believe Linux should still add a workaround, as otherwise
+people running older firmware who are upgrading their kernels could suddenly
+have unbootable systems and don't know why that happened.
+
+Regards,
+Nicolas Frattaroli
+
+PS: I've also CC'd Peter Geis as he has worked on the RK356x support in
+    mainline a bunch and I believe he has been in contact with Rockchip
+    about releasing the TF-A sources before.
+
+[1]: https://github.com/rockchip-linux/rkbin
+[2]: https://github.com/JeffyCN/rockchip_mirrors/tree/rkbin
+[3]: http://opensource.rock-chips.com/wiki_Main_Page
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
