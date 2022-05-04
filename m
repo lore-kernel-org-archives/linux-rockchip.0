@@ -4,49 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BD1EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 May 2022 13:22:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47FC8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 May 2022 15:21:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LSFCU+yM2EfW/hODaHLi+YaR8b5iJt0zUl6kalVDFWk=; b=WwtvKMYvyT2Xmh
-	NyvftZX0FQh3y+zheipj8DkdrhJ6EIJlxIpi/EYbB54JtrDmuOOJj4K02dVJ918/9lfnWr4TsDcu0
-	2aq8rInIwEcy0pY8wS0gfi19Bq5OkCxk898EiAoBpsAKfZFGv6LhqXl6wxVxMG3q3NkS16uLkgvQR
-	RF0F6HAkkcsE7WD0kX7WesGqAR9noI9YAZTKgv689xkCddyn29RUncHW1RnTd/Vcx1vZnQW44NtkT
-	z0yPyzOlbe/UWZvKOYQcfBzAZesM7frrvOHvS/wsEmaAi0zFwQqiavFZOr+GLG53Mvz3WfIDb8AxI
-	Ckd2gGiK+BOZnudHIZnw==;
+	List-Owner; bh=6+lz7S1OgsMYBmKrXn3RCI2I5NQaMKn3wsCENF6eno0=; b=YZjyOZmGpPPaOE
+	2V5k8EBcoGc1AvoHHNPx6pERgN4XJ+hOF/gin17zgctA7LUwCOJAnr14dbUnTyPzKSPMX+fT763Gb
+	XLjv9RH/WMwfnSS0H/O8bc18RH6yNxs9Ff5Pwd+ym8MWvUfHtGtYskJ9cjfHj6SMndn7fvZ2Vulcc
+	3gaLLKVmLt9Z/uIfe052QaXxanBx/wTVCVCWBc427828VMn5iJcsS71LuoF9iB1LuZjLwTpMwWvga
+	U89NELllclXqIhbYtZvXpci7VfCfAmnIAkmpl6yzwh60tLYu3zAFbp6gw+LFRq+3NZ42LGOQH2/9C
+	dpifYZ+CIpCrsB/1sYhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmEx6-00B2hl-FD; Wed, 04 May 2022 13:22:00 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmEwh-00B2Uh-Sa; Wed, 04 May 2022 13:21:37 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 141F21042;
- Wed,  4 May 2022 06:21:34 -0700 (PDT)
-Received: from bogus (e103737-lin.cambridge.arm.com [10.1.197.49])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E5FA33FA49;
- Wed,  4 May 2022 06:21:32 -0700 (PDT)
-Date: Wed, 4 May 2022 14:21:30 +0100
-From: Sudeep Holla <sudeep.holla@arm.com>
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Cristian Marussi <cristian.marussi@arm.com>,
- Heiko Stuebner <heiko@sntech.de>, Liang Chen <cl@rock-chips.com>,
- linux-kernel@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [BUG] New arm scmi check in linux-next causing rk3568 not to
- boot due to firmware bug
-Message-ID: <20220504132130.wmmmge6qjc675jw6@bogus>
-References: <1698297.NAKyZzlH2u@archbook>
+	id 1nmGoR-00BPUy-BA; Wed, 04 May 2022 15:21:11 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nmGoN-00BPTV-U2; Wed, 04 May 2022 15:21:09 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id n10so3544284ejk.5;
+ Wed, 04 May 2022 08:21:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=LAHAvyI6ZnoSXv+X/gfsslQYBTBEo6ls5kRk7sRimNQ=;
+ b=d2zLTEfxiFW8IHkGbm+yF8OyirFjLdhxSjhT022lHH3p4j3lqZegdJRmOF7k73ramv
+ BMogGRR85t5Rl95au7I8Hes3qTx+i+viaO6tKgMdx4rG9HPoX5gKwW1oPK3d162VkOGo
+ Mis72JEjdTrJMjrO/iTgIm/uQ6MrgEahwrVodKf9deWDreacy5g3h/GK9jtxofo0Q3OZ
+ TlAM4Y4eoZs/iuLUkSRGzxIdXzsU0QS2V6t6H0495LmLh9lMOQfKEe/HTR4YC3+cQQk+
+ Mw2OPi89yh5BJu8O3Zay0fyQJThboCs8+JiEGPG60JVHUYrhRcXNJ+EJFqrOLQbBGkr2
+ rSLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=LAHAvyI6ZnoSXv+X/gfsslQYBTBEo6ls5kRk7sRimNQ=;
+ b=sRc+fAaYqew//DznCoxL82967tQIiPJpZRiXw0FCCtIzb1y6VEMtSO1ilnRx5KwpIU
+ vyez/6ATwVmnuJcGxtoaTimck7SibuRG0hKrpKlBhRnQZ1pCmF4Fv3bXgEXZRchOVTdB
+ zO6kuo1tsBzV5DwMBMogyyVslvOmDx+KnEmx0x5ddCNcbEazEgLuqjEuyZ7v+tmC1ivd
+ iP9ByzehP+CEGfUAqQ+YoNi18wFSwxBC2VyvFsUfh/rbgPQPkveDh1aweyBjsQVn232E
+ PGI+U3NKvXRnp1nQ9WVA5pTU+KmFZ9eniVci03DVA2zA8Mte78ATxKyFJpH3qW/Xh+SX
+ RHsw==
+X-Gm-Message-State: AOAM531Co9PJVJRHseRtie/gf8zPCf1sxj5kORzhN8jof01uN/qBf0N4
+ I4iysJdAN/65nIeIyWGn7m8=
+X-Google-Smtp-Source: ABdhPJytXMsaNpSUTjcFGT9EV1QZ2w1xoQzIzDdeblj/sRBxFnmF0qT47s3Tb29DCb7pIUYkg6tCWw==
+X-Received: by 2002:a17:907:7e91:b0:6f4:3b93:1f6e with SMTP id
+ qb17-20020a1709077e9100b006f43b931f6emr16167776ejc.91.1651677665407; 
+ Wed, 04 May 2022 08:21:05 -0700 (PDT)
+Received: from skbuf ([188.25.160.86]) by smtp.gmail.com with ESMTPSA id
+ ca19-20020aa7cd73000000b0042617ba63c3sm9264323edb.77.2022.05.04.08.21.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 May 2022 08:21:04 -0700 (PDT)
+Date: Wed, 4 May 2022 18:21:02 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>,
+ Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org
+Subject: Re: [RFC v2 1/4] net: dsa: mt7530: rework mt7530_hw_vlan_{add,del}
+Message-ID: <20220504152102.cj3fwae5anahthku@skbuf>
+References: <20220430130347.15190-1-linux@fw-web.de>
+ <20220430130347.15190-2-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1698297.NAKyZzlH2u@archbook>
+In-Reply-To: <20220430130347.15190-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220504_062136_043712_B111C4FA 
-X-CRM114-Status: GOOD (  27.28  )
+X-CRM114-CacheID: sfid-20220504_082108_011597_EFE0B831 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,74 +102,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-+ Cristian
-
-Hi Nicolas,
-
-Thanks for the formal report.
-
-On Wed, May 04, 2022 at 02:49:07PM +0200, Nicolas Frattaroli wrote:
-> Good day,
+On Sat, Apr 30, 2022 at 03:03:44PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> a user on the #linux-rockchip channel on the Libera.chat IRC network
-> reported that their RK3568 was no longer getting a CPU and GPU clock
-> from scmi and consequently not booting when using linux-next. This
-> was bisected down to the following commit:
+> Rework vlan_add/vlan_del functions in preparation for dynamic cpu port.
 > 
-> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/firmware/arm_scmi/base.c?h=next-20220503&id=3b0041f6e10e5bdbb646d98172be43e88734ed62
+> Currently BIT(MT7530_CPU_PORT) is added to new_members, even though
+> mt7530_port_vlan_add() will be called on the CPU port too.
 > 
-> The error message in the log is as follows:
+> Let DSA core decide when to call port_vlan_add for the CPU port, rather
+> than doing it implicitly.
 > 
-> arm-scmi firmware:scmi: Malformed reply - real_sz:8  calc_sz:4, t->rx.len is 12, sizeof(u32) is 4, loop_num_ret is 3
+> We can do autonomous forwarding in a certain VLAN, but not add br0 to that
+> VLAN and avoid flooding the CPU with those packets, if software knows it
+> doesn't need to process them.
 > 
-> The rockchip firmware (bl31) being used was v1.32, from here:
-> 
-> https://github.com/JeffyCN/rockchip_mirrors/blob/rkbin/bin/rk35/rk3568_bl31_v1.32.elf
->
+> Suggested-by: Vladimir Oltean <olteanv@gmail.com>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
 
-So this platform is not supported in upstream TF-A like its predecessors ?
-
-> This seems like a non-fatal firmware bug, for which a kernel workaround is
-> certainly possible, but it would be good if rockchip could fix this in their
-> firmware.
->
-
-Indeed, we added this check finding issue in one of our tests. Luckily
-it helped to unearth the same issue on this platform, but due to the
-nature of its f/w release, it is bit unfortunate that it can't be fixed
-easily and quickly. But I really wish this gets fixed in the firmware.
-Are there any other f/w bugs reported so far ? If so how are they fixed
-as I don't expect all such bugs can be worked around in the kernel though
-this might be. I would like to hear details there if possible.
-
-> The user going by "amazingfate" reported that commenting out the
->   ret = -EPROTO; break;
-> fixes the issue for them.
->
-
-Sure, or we could relax the check as calc_sz <= real_sz or something so
-that the reverse is still caught and handled as OS might read junk data in
-the later case.
-
-> I'm writing here to get the discussion started on how we can resolve this
-> before the Linux 5.19 release.
->
-
-Agreed, I just sent by pull request for this literally few hours ago.
-
-> Sudeep Holla has already told me they'll gladly add a workaround before
-> the 5.19 release, but would rather see this fixed in the vendor firmware
-> first. Would rockchip be able and willing to fix it and publish a new
-> bl31 for rk3568?
->
-
-Indeed and as mentioned above details on how other such f/w bugs are dealt
-in general esp that the firmware is blob release and one can't fix it easily.
-Do we have a bugzilla kind of setup to report and get the bugs fixed ?
-
--- 
-Regards,
-Sudeep
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
 
 _______________________________________________
 Linux-rockchip mailing list
