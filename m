@@ -4,53 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48B31C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 May 2022 09:07:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A06C6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 May 2022 09:24:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:From:CC:To:Subject
-	:MIME-Version:References:In-Reply-To:Date:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LwiCoNjBC+q1Zlvhy6aBCHs6Kd5ajrlVhcy6WoOe+EM=; b=nMJBKBwLI1dx4T
-	ZgSzNTOJA9rfCpELHxyj7KvdSb+dJMRnjqmGJbG8TW8HIx2ZSlt2/uaQaru3tToLUSZAqhaeN96Er
-	t4gw1ewAkFNdSv8Fu4QLv23j2JcTyv447hPw3J/FCumKsVOw6PCZn3squJ5ZcqU7YzrFMca8zq9wz
-	FVdEBeSVmoCjgQ65/coRNbAzHoQxv0x+ET+GCwEEYdD1MJqkxhF7pbFcS2/2q2ftEsSmQEycDyGbD
-	OoQ9G/U7Arx9TZpz5z5h2l54R8WR+YE+S3kCDDm2bAu9KHCpSF3lQ5K7NE5d0VfMW8lOH1Ntol1uv
-	vjXmtYqDZ+8ApUyvKcJw==;
+	List-Owner; bh=I9V+rzDpsls/FrwtjGnV2W6+N8rT1YljONu3DoikASk=; b=pi1BDn2M3Zncvq
+	SJ46e52b4NRJdQCji9ixjdQzmHNg6x0nrdqKko7wo9SGkumT/QfhoffRXOrrNeW0N3AbsznvZZGis
+	RX4Tk5b2RyCUMHXrNv/8TNAmR9jnYJUo6bTiPsG4/1Eypb67NujvX0ZUCF/nHLX2qnWx9TGMUQjSr
+	cOdEGvbSjvynUHhguMMkQYxEK3exfsOShrsUwxy9qy1XNGiVqVlLiI870F1JpxDJ5lVsETfKuEOkC
+	KkNcRTaG0ZPNRC98cgrLxBSurTeJzKJImB8+50Pt/bDP2e4kTQoN1YPN11GmdtbCDeIUgIiuEdfTM
+	UjD02VxV3r9DOTJ9T+oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmXRi-00EvD4-8u; Thu, 05 May 2022 09:06:50 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1nmXiO-00F0dB-2K; Thu, 05 May 2022 09:24:04 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmXRe-00EvBG-FT; Thu, 05 May 2022 09:06:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1651741573;
- bh=PE49ljxOaJbEZXi8zE0UMbSilxTIkum0Hyl9KtNCWhk=;
- h=X-UI-Sender-Class:Date:In-Reply-To:References:Subject:Reply-to:To:
- CC:From;
- b=VUzb45/7jJ0QvY1LxJ8fGd5PIAHk5tdZv7WCsWGN7HfaLTECfsZkWen2XvyKS2Gcj
- 8kH0TsJ3fjICqkzk+WMAkUiLt9Bn1doMlT+h/XRlLyxtX+9DYHnXTl42I6LxeNibw+
- Z5m/D4xAVI5EUTEwdTqGLboOd5OI7EtfGKKkEX84=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from frank-s9 ([217.61.145.208]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1MO9z7-1nSWYG34kz-00OWh0; Thu, 05
- May 2022 11:06:13 +0200
-Date: Thu, 05 May 2022 11:06:05 +0200
-User-Agent: K-9 Mail for Android
-In-Reply-To: <313a5b2e-c571-a13f-3447-b1cd7200f4c9@linaro.org>
-References: <20220430130347.15190-1-linux@fw-web.de>
- <20220430130347.15190-5-linux@fw-web.de>
- <20220504152450.cs2afa4hwkqp5b5m@skbuf>
- <trinity-9f557027-8e00-4a4a-bc19-bc576e163f7b-1651678399970@3c-app-gmx-bs42>
- <20220504154720.62cwrz7frjkjbb7u@skbuf>
- <313a5b2e-c571-a13f-3447-b1cd7200f4c9@linaro.org>
+ id 1nmXgo-00Ezf3-5P
+ for linux-rockchip@lists.infradead.org; Thu, 05 May 2022 09:22:27 +0000
+Received: by mail-wr1-x432.google.com with SMTP id b19so5247324wrh.11
+ for <linux-rockchip@lists.infradead.org>; Thu, 05 May 2022 02:22:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=YZkhX8VdSbRZKmQIOzgkSfpmToAIJcyGhKGvONZeKPM=;
+ b=wgm3Tdzap7kkOBihTP6T0IhnT9G6Oc8Ge/5nUNlrSnTPInQoGJ98CKanFTwb6sMccZ
+ 9d4KCxdg9LCYphRKvE9rvwU1++xkoof4loKmHyCYfxAY0gBFhMA3oPXw7NTjEqqxyHfC
+ cNwAxA8oRijMoUjff4ROoa9YilWt5ieCB4F7ZaDx7bZ5NBlRq1XEjDizZ9ItDHbBrDJw
+ rdCoDCQ1En6Y5bGPfqpHlZRcg2m4vS6Y/g4KRAX51Favpx55TneHi7u6O0EF4FPDa2B0
+ NZ6FEyOLhsL2fcnruWZj5H0x5LOeT1KGIGqo+XJU4paF90d6jjbgSv1wgUCBUHYfU45r
+ HmpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=YZkhX8VdSbRZKmQIOzgkSfpmToAIJcyGhKGvONZeKPM=;
+ b=xkaU4iUii6/2ObbyUIWoLEuY9E/Prm9Z2RsOT38iD6hvM+KgHJMtLlqTZASFedIL/q
+ H3Nn03Y1H/k0jdIYMESXK37qAViDdpRoQ/tZvSZsT8Sad7wkoeGFVQXyAnhQG0WSWFeW
+ b/RcCkHrvbBMujcIKpQPKGAuz2ZejbGmmaKfd7TJOu77b0Iwt+ri0WUDnM9OsiH6b0Po
+ 873FWqHsCZbwzBBPux4NrmpNjUUbhMaBEjYV1gnjIDq1BCUstnQgpYiPEt0N9bdx/fF/
+ txaRxqB9VtgjreZl1Zs/iQkO318/m/B1meuwtkTS6RTRCLbYGfhrlLkEeujLZwbSvLky
+ GpzA==
+X-Gm-Message-State: AOAM5308ThsViD9hAucQgA/uth6xNCYOd2VfJw72tOtcD5+d+Nb2i+Er
+ lv66VUeblPohBAflXBfbEdSaSg==
+X-Google-Smtp-Source: ABdhPJwfam1b9VUuK2KiSROtjJ68KFyfCyHnaJU4kSRx96x9vSh8DG8UHpeSy1pcGwoX3pIR2XLwyg==
+X-Received: by 2002:a05:6000:1110:b0:20a:e113:8221 with SMTP id
+ z16-20020a056000111000b0020ae1138221mr19276809wrw.271.1651742541836; 
+ Thu, 05 May 2022 02:22:21 -0700 (PDT)
+Received: from [192.168.0.217] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ o9-20020a5d4089000000b0020c5253d8d2sm779379wrp.30.2022.05.05.02.22.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 May 2022 02:22:21 -0700 (PDT)
+Message-ID: <e9e03c19-cf65-28b8-a81a-10995b1f262f@linaro.org>
+Date: Thu, 5 May 2022 11:22:20 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
 Subject: Re: [RFC v2 4/4] arm64: dts: rockchip: Add mt7531 dsa node to
  BPI-R2-Pro board
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
- Vladimir Oltean <olteanv@gmail.com>
-CC: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+Content-Language: en-US
+To: frank-w@public-files.de, Vladimir Oltean <olteanv@gmail.com>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
  linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Heiko Stuebner <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>,
@@ -62,32 +81,18 @@ CC: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
  Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  netdev@vger.kernel.org
-From: Frank Wunderlich <frank-w@public-files.de>
-Message-ID: <D201CE50-280C-4089-BB9F-053FEA28FE9A@public-files.de>
-X-Provags-ID: V03:K1:fswHZVyF/lRZd8JVwCdyHBJTeHXeAmwGzgMDMSGIdz0hDXO4adf
- 6DNQ7Hdu1vjFnafdsMjLokD96/xSHtW4P+JlwGF2ydVvccgeJQBGyVtf7/ZDzMAqCho34s6
- sqGM3PaZ3PFndCo6VMXLcocAJLEHxA55eeaTeLXVgZvDzQ8Eq5RrHCw/S+odtiUpd+qjGwv
- hU0vAPDjw5yIm6bXegJYA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:j9Ro5GzlgnE=:y3PubMXQ+/zpI4KYSQDupN
- oJQ4JRWONcKWVYZCKX5H33jQSFgLL0YuSvZjmf5jpfD9ZjxI1yRt3sXo5C6rRn34aoaYXcKP5
- /4H0dcXerNyfkv11BLsVwX2VgZQOxaQjNLpXLl3aGa3zNBYwqcSzz/EdExVhA9cuEf8sEgCfn
- 0wnFgq+SwuViwDNEq/HpuRQQaFDuxy1QDlx+o2nvYr3Hz788H0tqJwVfEMaWelJU+mtfwaBe6
- NzkUsrZ2U2B9dvCi+VSuW/GkhIMUw1KQlWZ4UKCNFtJAZmcwrMSIxIFOvJPEwDUaXgtE10z50
- 7Fiv/v8B6y2qiSGvW/ReSyVbVgmgZhe1YtU8E2XzI5TXrt7rFOQw87hJkp/crzLFShocXerQ7
- zm4WJks0YVv+1oltOdPUFIspJjubkzbv6XYiF6BdA+1CMEaKHrstBYrKXswB30nDsqcWhzjrw
- /kfzpB34G2xm9xqFsI5fuR9s77kfUsVeA4d6UFGAhBhHRaclbOsFaHtbFhSIhSHIwg9bwKVIh
- 92vmwoTI+2PqW/yiSDF3TKfSwd/vsdlZzF0+C3hwSi8Ko6/PFLXSWUVCWgA6nexfzcs1aVEqx
- 0I4/Z32mTAh00UsfdTLvjzeqkIgzoNRB74Sjxg+mFyaD/zrL38u74bF3LB109QcvBTTxYlG9y
- NKZZ0Zue4kRVXXJ6jMvnCicYjwWrdHSKgW4nTT6d0Q9LhQb0mHnA0HN/m+BJRQLa7q2oQQHKz
- 0lwS8B3plWBqraGPjKNqjhvTh/56cN9zvWWnXKNGA62Iayo5NAHKrVcuLPVUF1JFtbX4RVL3+
- rYbffYZn8AWErO/QSmfeoOWLPRiCSw5iQs214Qy7h2QgFe2mQb+BXSiZxLW1fQag1q+c3QUwT
- JRy7cyct7nh15eyCpady/PJZVyrV2v1SdKAZz2u5iF4aPZfy1qvV5C/lyUwqqEz/Q3Uael2IP
- M5nkUJKzCP6lIJUeLYU0LtyfFwZAAF/cyKyNAcZ3UvmQ8Rh1OFJadwYuyxLyRXiP3Wi6XDTAT
- gia7QCQap4UUaPAopLvQFtwWb0Gm66A9uYYycp2oQfnUWkuMSVGRNbufUVlKGNuB9pIvr8uQE
- 88aNqbN5kytPzg=
+References: <20220430130347.15190-1-linux@fw-web.de>
+ <20220430130347.15190-5-linux@fw-web.de>
+ <20220504152450.cs2afa4hwkqp5b5m@skbuf>
+ <trinity-9f557027-8e00-4a4a-bc19-bc576e163f7b-1651678399970@3c-app-gmx-bs42>
+ <20220504154720.62cwrz7frjkjbb7u@skbuf>
+ <313a5b2e-c571-a13f-3447-b1cd7200f4c9@linaro.org>
+ <D201CE50-280C-4089-BB9F-053FEA28FE9A@public-files.de>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <D201CE50-280C-4089-BB9F-053FEA28FE9A@public-files.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_020646_882857_2BD48D65 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20220505_022226_224898_04EF5BF4 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,51 +105,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: frank-w@public-files.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am 5. Mai 2022 10:46:55 MESZ schrieb Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>:
->On 04/05/2022 17:47, Vladimir Oltean wrote:
->>>
->>> current device-tree nodes using "switch" and "ports"
->>>
->>> see discussioon here about make it fixed to "ports" property instead
->of PatternProperties including optional "ethernet-"
->>>
->>>
->https://patchwork.kernel.org/project/linux-mediatek/patch/20220502153238.85090-1-linux@fw-web.de/#24843155
->> 
->> Hmm, I don't get why Krzysztof said to just keep what is used in
->> existing device trees. The schema validator should describe what is
->> valid, 
->
->These were talks about bindings which describe hardware. The node name,
->except Devicetree spec asking for generic names, does not matter here
->actually.
->
->> and since the mt7530 driver does not care one way or another
->> (some drivers do explicitly parse the "ports"/"ethernet-ports" node),
->> then whatever is valid for the DSA core is also valid for the mt7530
->> bindings. And "ethernet-ports" is valid too, so I think it should be
->> accepted by mediatek.yaml...
->
->You can make it "(ethernet-)?ports" as well. My comment was purely to
->make it simpler, for bindings (goes into properties, not
->patternProperties) and for us. If you prefer to keep it like DSA core,
->also fine.
+On 05/05/2022 11:06, Frank Wunderlich wrote:
+>> You can make it "(ethernet-)?ports" as well. My comment was purely to
+>> make it simpler, for bindings (goes into properties, not
+>> patternProperties) and for us. If you prefer to keep it like DSA core,
+>> also fine.
+> 
+> Ok, i'm also thinking, the dsa-definition will be the right way (pattern-properties with optional "ethernet-") in binding.
+> 
+> Should i use "ethernet-ports" instead of "ports" here? Current dts with mt7530/mt7531 switches using "ports" so i would use it here too. If dsa prefer ethernet-ports now it should be changed in other files too.
 
-Ok, i'm also thinking, the dsa-definition will be the right way (pattern-properties with optional "ethernet-") in binding.
+I think bindings allow both, so choose something consistent with
+existing DTS sources.
 
-Should i use "ethernet-ports" instead of "ports" here? Current dts with mt7530/mt7531 switches using "ports" so i would use it here too. If dsa prefer ethernet-ports now it should be changed in other files too.
-
->Best regards,
->Krzysztof
-
-Hi,
-regards Frank
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
