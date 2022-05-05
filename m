@@ -4,94 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C0F2C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 May 2022 08:47:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0E76C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 May 2022 09:06:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VLNkKgep3n2PqnNeSzP1INXSV8MfZnPHYu18/YAxldU=; b=uK0veS7RKosZCq
-	gOdn+bSFIrdkB2eHcQL3DgNq/F1XBujk7n+gTX29M/NB30tR6EBREDUuKIAwxldUB7zoib1EJLDaU
-	GjpibtTl2qMPCQRIGI+awCuZY7DVO6uLQNSfOyC+/OeZAxK4uPOx1QdHtS2fz6arH6q8iPIiCIb8z
-	txgcZqS+O7FtUJqsHwG2DH2lYeQ4sAC7ghk9q3hBT1++x5CKkOZORyl3qNz7/B+pYELavQakceexi
-	xm9sB2/YSufXNiwaTl1aR2s83zREHOlhVEavTUwM+UojxokXIELVxjwe2duGof82VBZY9pqsD68Dl
-	xcnzVgjBxJYKmmagO2JA==;
+	List-Owner; bh=Ycgd69mWCklzpmt77bCey+Cjq6D5Wr14ihz9jnwqUoM=; b=ZQrz//5dDhi9mG
+	Xwuvx5rCOIPzACw92Z0wH2ViIrQn3mryDCtUqtAF4x66x69nb8BcRneYDnFFJe1hESnxWOIPd/sm9
+	ShJNcNb4QCQmzaMilid0xFOVIDJGS6GfdPeyPqgcDJK76G2SW8QjzCchmPIzI8sbMdlqatffQCHf9
+	PD3XbKg4hTNUShoFfWf8xboRBGgAF0SMKU5v83xKtj7zKP8FINGRXssl6gw1ViduNFevB3uSdvBNg
+	X7gzfkNmFA+A+MEjLnOGOzB9Qw9fdSuNe0+mPE3wW8cpmaYwaHd0cvWO90spyorl+noXares/EjqI
+	a/LckxqPh17I0XjgtJEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmX8c-00Eomt-Ao; Thu, 05 May 2022 08:47:06 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1nmXQt-00Eux0-B0; Thu, 05 May 2022 09:05:59 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmX8Y-00EoiO-MW
- for linux-rockchip@lists.infradead.org; Thu, 05 May 2022 08:47:04 +0000
-Received: by mail-wr1-x436.google.com with SMTP id b19so5121904wrh.11
- for <linux-rockchip@lists.infradead.org>; Thu, 05 May 2022 01:46:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=KAi9SgYYEJZdQCddUzbx52lypx3cIglFyl/qHafebhw=;
- b=tkNfdzaaxw1oNzzHEFi5PsCP9pSRB2g18WUgVkc6DnnNJz4opSwgzEVFoUUkq98Kud
- DmFNXaVYExw1NuJr8DqujznLa2az0lWDiTc0qWvNUCAP5r5OW9iSR8QEqSlWZJONTS4P
- F30VkUEk9v9uHoJqLqcvFr87lcceheNYz87udcrXOAHtFnIyEOvlcZaxaIZkOdNhT30Y
- dB4ud6EWIxegH+EYbtLr/2s0zJ21Uw2TaCRSfxNT1dPyuAPqkA2Ti2WZXu8bcR/8mxNC
- eMgh7vO/iGZwuEnOROZ+GPB0E6E/imyXgauO3i4m/vz/qEwWxwP3ttMVK1mz2Ist0shg
- sbpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=KAi9SgYYEJZdQCddUzbx52lypx3cIglFyl/qHafebhw=;
- b=tY9QIQSmIibRPxuSewfvB/cnqP7F5WMUmAWiDx9WgkRczuevvflR5c+XfOkSRn7oon
- WqtgwPRBwLGsTClvtNKtGe/7hLLv/n2rhTvpCbpPAqclNYfqOc1jdOzO9wB5JP96hcJ+
- YSZ59FfzcH6fNkDudCowEt3kEWAbvpTDtcbo/a9dKewhB66wtx6s/+3uLvKgp5wTPAXO
- E7EIP0+prUnF59oF2VlOmCDs3YIj71+o1Vsjn3lFRO4vAyvlReZ0ulQ+gQYlCv2V61TV
- 5IQcY8PxfBdEmDuMFzC4x+6c0g+zwWTAV8GCi7zOtZPg2BjREFavcwRloxGLQhqXIBv8
- 4ZLA==
-X-Gm-Message-State: AOAM530/ftUUh+6OhV9F8pcxbpLIOiy/MS1oUvIGRx5LPIYmdWsmqtVf
- tHgj4uNYLby5hWTk+i2cg+yOQA==
-X-Google-Smtp-Source: ABdhPJx0cG82J35HyxF+U/lAjaHUyieUfdukDsGukXiyDflYgKWosvfKkWmN+5Kvijh4a8XoYMPHpw==
-X-Received: by 2002:a5d:6551:0:b0:20a:e23c:a7fa with SMTP id
- z17-20020a5d6551000000b0020ae23ca7famr19657153wrv.535.1651740417622; 
- Thu, 05 May 2022 01:46:57 -0700 (PDT)
-Received: from [192.168.0.217] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- 67-20020a1c1946000000b003942a244f2csm6771728wmz.5.2022.05.05.01.46.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 May 2022 01:46:57 -0700 (PDT)
-Message-ID: <313a5b2e-c571-a13f-3447-b1cd7200f4c9@linaro.org>
-Date: Thu, 5 May 2022 10:46:55 +0200
+ id 1nmXQh-00EutD-K6
+ for linux-rockchip@lists.infradead.org; Thu, 05 May 2022 09:05:49 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nmXQe-0001Q4-00; Thu, 05 May 2022 11:05:44 +0200
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nmXQb-0007lM-D7; Thu, 05 May 2022 11:05:41 +0200
+Date: Thu, 5 May 2022 11:05:41 +0200
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [PATCH v11 17/24] arm64: dts: rockchip: rk356x: Add HDMI nodes
+Message-ID: <20220505090541.GN4012@pengutronix.de>
+References: <20220422072841.2206452-1-s.hauer@pengutronix.de>
+ <20220422072841.2206452-18-s.hauer@pengutronix.de>
+ <trinity-bfbffcba-d1ed-40f7-8f37-0c8ad9245e3c-1651740303894@3c-app-gmx-bs47>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [RFC v2 4/4] arm64: dts: rockchip: Add mt7531 dsa node to
- BPI-R2-Pro board
-Content-Language: en-US
-To: Vladimir Oltean <olteanv@gmail.com>,
- Frank Wunderlich <frank-w@public-files.de>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>,
- Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
-References: <20220430130347.15190-1-linux@fw-web.de>
- <20220430130347.15190-5-linux@fw-web.de>
- <20220504152450.cs2afa4hwkqp5b5m@skbuf>
- <trinity-9f557027-8e00-4a4a-bc19-bc576e163f7b-1651678399970@3c-app-gmx-bs42>
- <20220504154720.62cwrz7frjkjbb7u@skbuf>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220504154720.62cwrz7frjkjbb7u@skbuf>
+Content-Disposition: inline
+In-Reply-To: <trinity-bfbffcba-d1ed-40f7-8f37-0c8ad9245e3c-1651740303894@3c-app-gmx-bs47>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 11:03:13 up 35 days, 21:32, 83 users,  load average: 0.45, 0.31, 0.18
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_014702_800571_12984693 
-X-CRM114-Status: GOOD (  14.92  )
+X-CRM114-CacheID: sfid-20220505_020547_701685_089B1D1C 
+X-CRM114-Status: GOOD (  30.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,35 +84,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 04/05/2022 17:47, Vladimir Oltean wrote:
->>
->> current device-tree nodes using "switch" and "ports"
->>
->> see discussioon here about make it fixed to "ports" property instead of PatternProperties including optional "ethernet-"
->>
->> https://patchwork.kernel.org/project/linux-mediatek/patch/20220502153238.85090-1-linux@fw-web.de/#24843155
+On Thu, May 05, 2022 at 10:45:03AM +0200, Frank Wunderlich wrote:
+> Hi,
 > 
-> Hmm, I don't get why Krzysztof said to just keep what is used in
-> existing device trees. The schema validator should describe what is
-> valid, 
+> > Gesendet: Freitag, 22. April 2022 um 09:28 Uhr
+> > Von: "Sascha Hauer" <s.hauer@pengutronix.de>
+> > Betreff: [PATCH v11 17/24] arm64: dts: rockchip: rk356x: Add HDMI nodes
+> >
+> > Add support for the HDMI port found on RK3568.
+> >
+> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> > ---
+> >
+> > Notes:
+> >     Changes since v7:
+> >     - Rename hclk to niu
+> 
+> clock-name no more present since v9, see below
+> 
+> >     Changes since v5:
+> >     - Drop unnecessary #size-cells/#address-cells from nodes with only single endpoint
+> >
+> ...
+> > --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > @@ -620,6 +620,38 @@ vop_mmu: iommu@fe043e00 {
+> >  		status = "disabled";
+> >  	};
+> >
+> > +	hdmi: hdmi@fe0a0000 {
+> > +		compatible = "rockchip,rk3568-dw-hdmi";
+> > +		reg = <0x0 0xfe0a0000 0x0 0x20000>;
+> > +		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
+> > +		clocks = <&cru PCLK_HDMI_HOST>,
+> > +			 <&cru CLK_HDMI_SFR>,
+> > +			 <&cru CLK_HDMI_CEC>,
+> > +			 <&pmucru CLK_HDMI_REF>,
+> > +			 <&cru HCLK_VO>;
+> > +		clock-names = "iahb", "isfr", "cec", "ref";
+> 
+> noticed there are still 5 clocks, but only 4 clock-names. So i added "niu" after ref.
+> maybe missing clock-name was causing my iommu page-faults...on a quick test i have not got it,
+> but they came not every time.
 
-These were talks about bindings which describe hardware. The node name,
-except Devicetree spec asking for generic names, does not matter here
-actually.
+The clock is not handled by the HDMI driver, so it shouldn't be the
+cause for any failure. It should be dropped here.
 
-> and since the mt7530 driver does not care one way or another
-> (some drivers do explicitly parse the "ports"/"ethernet-ports" node),
-> then whatever is valid for the DSA core is also valid for the mt7530
-> bindings. And "ethernet-ports" is valid too, so I think it should be
-> accepted by mediatek.yaml...
+Heiko, could you apply the below patch or squash it into the original
+one?
 
-You can make it "(ethernet-)?ports" as well. My comment was purely to
-make it simpler, for bindings (goes into properties, not
-patternProperties) and for us. If you prefer to keep it like DSA core,
-also fine.
+Sascha
 
-Best regards,
-Krzysztof
+-------------------------------8<---------------------------
+
+From 8e5f90273401d98b2202676aafd49a350c9c4abd Mon Sep 17 00:00:00 2001
+From: Sascha Hauer <s.hauer@pengutronix.de>
+Date: Thu, 5 May 2022 10:59:48 +0200
+Subject: [PATCH] arm64: dts: rockchip: rk356x: remove extra hdmi clock
+
+HCLK_VO is not handled by the HDMI driver. This is a leftover from
+earlier VOP2 series. Remove it.
+
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index 1a359bbf65300..49eb45e23f8c9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -627,8 +627,7 @@ hdmi: hdmi@fe0a0000 {
+ 		clocks = <&cru PCLK_HDMI_HOST>,
+ 			 <&cru CLK_HDMI_SFR>,
+ 			 <&cru CLK_HDMI_CEC>,
+-			 <&pmucru CLK_HDMI_REF>,
+-			 <&cru HCLK_VO>;
++			 <&pmucru CLK_HDMI_REF>;
+ 		clock-names = "iahb", "isfr", "cec", "ref";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&hdmitx_scl &hdmitx_sda &hdmitxm0_cec>;
+-- 
+2.30.2
+
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
