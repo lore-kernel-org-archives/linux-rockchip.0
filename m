@@ -4,76 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 750B7C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 May 2022 09:40:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33FA5C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 May 2022 10:11:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/Ym5iq+6JmprAwbOxtcfb2nEkXfFcSGjWSEN2jKPM2Q=; b=Ud1RTunoQSt8vv
-	FzrCx85l4coMFaibH7OgytMf4U5HCjCeDwE5k1LrQqCdFSXp9XtW1vUjhy535k7LAz63zHrBLR28r
-	AeAZQG20C1RYBGu4kAZOwJPD89ZhAL08AHW1hMiZvHuE04XA0s9dDkEGzCiNjDANS4mrl+De84Zb8
-	07avQpjU2vzBC6n5kXgRmc98LrxEeg4oU5Cjpql5L3hEYGdQTRjkU+5/ImIe67aTtjzp6jZNWe8Se
-	V96rvis3nbOfvy82DvTgTjVbxoRdVu0dcc17V+CWqpdYoh7alEdEtKyDh2RbGZ25JfnEylbPRE6E6
-	zOks4D0IAoJpLgLnwffQ==;
+	List-Owner; bh=rBTN6mVQxlJ8q4pUcs8VxuxyCEEDwNOhuInIjaJw884=; b=z3q/hd7LhLgj9i
+	3oq66ZCfCIzruFO2cIgbVz9UiYuG5uHl5RRIm0HkPICBOtyoh5cdUQlH3N80v89POFoO86o6q0Cm9
+	goVq27g4UNOdQ9MdgsmhDN9NQCfqIXefTIVK71ct9gLRN1v1QMtn6jeJcwX5fBU1lSLDxiHpLwFu1
+	4ZckoNF7XsbJH21FMhSdLq4vQ7UZ/eimi2eKC34O2O59LuFMnONHzonej1CnxQcj8q8L+Mt91SMuc
+	Jx+fr5jYqBQJNs88L9gGuHZ3BdUWsliRjucemGv1IesAnzqUwKeI5/XycrlkZFPPrsNpGxFDCUpcN
+	WNX54wYqieyMuQZK8tIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmXyF-00F4u5-1B; Thu, 05 May 2022 09:40:27 +0000
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmXyB-00F4sl-Pk
- for linux-rockchip@lists.infradead.org; Thu, 05 May 2022 09:40:25 +0000
-Received: by mail-oi1-x22c.google.com with SMTP id w194so2557685oie.9
- for <linux-rockchip@lists.infradead.org>; Thu, 05 May 2022 02:40:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=maqNc6X60AFk82c5W+wK5qE87dDXvqWe3bNnG5yGS3A=;
- b=cWWuKz++JgE1mA8d4j+xQNByLn8gBMVpHgGuBxoX8NY7UlT2Zy96279STSSDOXcFuC
- NkHQYWhH18BMkGba2qayHlvSVha0gQGK02vmBzUgF0SUg9MdcGZtj+CpJ1NcYOk7Z2ss
- lRV5Dv3oNvtn0mrbYd2hWIxDOpbYnwbRPibmgOVERe9VvN25/WPGFuleUoj4QN1TaMLP
- vrL+tFUmuhRmjXkF6Hz0pwBd6taDYjyYdXufuYNxkqpybjkQbc8rJSQubwqjr/5scSjf
- vhgXWBVxFlxBewIMEzmT3JBjSzPYLpf1fSn1nZ7tjFplcsRc3QX/09ez8p89lm2b9Pf8
- SPsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=maqNc6X60AFk82c5W+wK5qE87dDXvqWe3bNnG5yGS3A=;
- b=52IzLXIOuFJnFo/SnRa8APmghmC73kI603v5PUKB1xeWoPTsXjyyaZrFtqQ3vpew87
- 1m7vcFVwq9INTzfwhiWBDY9cxrxgGtJ0rvxUFDWWANJM6Zw1sCwH5OxIS/m6HRnxmaYD
- m66vZkjYEeGRc61/HzrQq0h3BEe9e4eW09de3iNQ5sRIrFW7L7rgWcq+1KVAVGehkL54
- Fe4xdo9e+7bSyHvkySQInelRKs4rpCeEA60AnRZTiO6YIshWfTSJd9wMiS0V2/6+UaR1
- WJSTf1ptnQhTzY1mnwj5Xs4eOWPaIaN8Qtzwfr11pbh/3u8QUUFpR1ktcmZN0xB+renl
- jJ2Q==
-X-Gm-Message-State: AOAM532sJ5jie0AlQGjeNt4pHHacJbeTPAi+Wa/8AYg2WbkNXvy2G+UC
- HW11CjfjNhqjWJGnohYWLkuGJMQ5yNYaFspVhX+iLw==
-X-Google-Smtp-Source: ABdhPJy0XuV7JaPY0mxu7wXL7UTpaUWMS6RJeJeo49dJ5lOJZ/MtDLF8CL4veT/4tofFYwGBrWAkpK494YBfJUVIGs8=
-X-Received: by 2002:a05:6808:1527:b0:326:3427:c2b1 with SMTP id
- u39-20020a056808152700b003263427c2b1mr1824129oiw.217.1651743620905; Thu, 05
- May 2022 02:40:20 -0700 (PDT)
-MIME-Version: 1.0
+	id 1nmYRg-00FBx7-Rr; Thu, 05 May 2022 10:10:52 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nmYRV-00FBux-PY; Thu, 05 May 2022 10:10:43 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B8FDF106F;
+ Thu,  5 May 2022 03:10:36 -0700 (PDT)
+Received: from bogus (e103737-lin.cambridge.arm.com [10.1.197.49])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 3F5F73FA27;
+ Thu,  5 May 2022 03:10:35 -0700 (PDT)
+Date: Thu, 5 May 2022 11:10:32 +0100
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Cc: Cristian Marussi <cristian.marussi@arm.com>,
+ Etienne Carriere <etienne.carriere@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Heiko Stuebner <heiko@sntech.de>, Liang Chen <cl@rock-chips.com>,
+ linux-kernel@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>,
+ Jeffy Chen <jeffy.chen@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [BUG] New arm scmi check in linux-next causing rk3568 not to
+ boot due to firmware bug
+Message-ID: <20220505101032.icqb2hau4dhj3afr@bogus>
 References: <1698297.NAKyZzlH2u@archbook>
  <20220504132130.wmmmge6qjc675jw6@bogus>
  <3764923.NsmnsBrXv5@archbook> <YnOEwuuyO2/h7c1G@e120937-lin>
-In-Reply-To: <YnOEwuuyO2/h7c1G@e120937-lin>
-From: Etienne Carriere <etienne.carriere@linaro.org>
-Date: Thu, 5 May 2022 11:40:09 +0200
-Message-ID: <CAN5uoS_MgBiTVZCRSZyYCH4cnUZD_bHj2+mZu661bFV8TKWScw@mail.gmail.com>
-Subject: Re: [BUG] New arm scmi check in linux-next causing rk3568 not to boot
- due to firmware bug
-To: Cristian Marussi <cristian.marussi@arm.com>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Sudeep Holla <sudeep.holla@arm.com>, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- Heiko Stuebner <heiko@sntech.de>, Liang Chen <cl@rock-chips.com>,
- linux-kernel@vger.kernel.org, 
- Kever Yang <kever.yang@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>,
- Peter Geis <pgwipeout@gmail.com>
+ <CAN5uoS_MgBiTVZCRSZyYCH4cnUZD_bHj2+mZu661bFV8TKWScw@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAN5uoS_MgBiTVZCRSZyYCH4cnUZD_bHj2+mZu661bFV8TKWScw@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_024023_882436_5674E5F5 
-X-CRM114-Status: GOOD (  67.36  )
+X-CRM114-CacheID: sfid-20220505_031041_912643_20DECBE0 
+X-CRM114-Status: GOOD (  15.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,211 +69,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Nicolas, Cristian,
+> > > > On Wed, May 04, 2022 at 02:49:07PM +0200, Nicolas Frattaroli wrote:
+> > > > > Good day,
+> > > > >
+> > > > > a user on the #linux-rockchip channel on the Libera.chat IRC network
+> > > > > reported that their RK3568 was no longer getting a CPU and GPU clock
+> > > > > from scmi and consequently not booting when using linux-next. This
+> > > > > was bisected down to the following commit:
 
-On Thu, 5 May 2022 at 10:03, Cristian Marussi <cristian.marussi@arm.com> wrote:
->
-> On Wed, May 04, 2022 at 07:51:45PM +0200, Nicolas Frattaroli wrote:
-> > On Mittwoch, 4. Mai 2022 15:21:30 CEST Sudeep Holla wrote:
-> > > + Cristian
->
-> +Etieenne
->
-> Hi Nicolas,
->
-> > >
-> > > Hi Nicolas,
-> > >
-> > > Thanks for the formal report.
-> > >
-> > > On Wed, May 04, 2022 at 02:49:07PM +0200, Nicolas Frattaroli wrote:
-> > > > Good day,
-> > > >
-> > > > a user on the #linux-rockchip channel on the Libera.chat IRC network
-> > > > reported that their RK3568 was no longer getting a CPU and GPU clock
-> > > > from scmi and consequently not booting when using linux-next. This
-> > > > was bisected down to the following commit:
-> > > >
-> > > > https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/firmware/arm_scmi/base.c?h=next-20220503&id=3b0041f6e10e5bdbb646d98172be43e88734ed62
-> > > >
-> > > > The error message in the log is as follows:
-> > > >
-> > > > arm-scmi firmware:scmi: Malformed reply - real_sz:8  calc_sz:4, t->rx.len is 12, sizeof(u32) is 4, loop_num_ret is 3
-> > > >
-> > > > The rockchip firmware (bl31) being used was v1.32, from here:
-> > > >
-> > > > https://github.com/JeffyCN/rockchip_mirrors/blob/rkbin/bin/rk35/rk3568_bl31_v1.32.elf
-> > > >
-> > >
-> > > So this platform is not supported in upstream TF-A like its predecessors ?
-> >
-> > Hello,
-> >
-> > it is not yet supported by upstream. Rockchip plans to release the sources
-> > for it at some point if I recall correctly, but I believe their software
-> > team has been very busy due to new hardware releases, so it hasn't happened
-> > yet. I hope we'll see an open source release of the TF-A sources eventually,
-> > so that for bugs like this we can always fix them without the vendor needing
-> > to do it for us.
-> >
-> > >
-> > > > This seems like a non-fatal firmware bug, for which a kernel workaround is
-> > > > certainly possible, but it would be good if rockchip could fix this in their
-> > > > firmware.
-> > > >
-> > >
-> > > Indeed, we added this check finding issue in one of our tests. Luckily
-> > > it helped to unearth the same issue on this platform, but due to the
-> > > nature of its f/w release, it is bit unfortunate that it can't be fixed
-> > > easily and quickly. But I really wish this gets fixed in the firmware.
-> > > Are there any other f/w bugs reported so far ? If so how are they fixed
-> > > as I don't expect all such bugs can be worked around in the kernel though
-> > > this might be. I would like to hear details there if possible.
-> >
-> > I'm not aware of how the rockchip bug report workflow works. They seemingly
-> > did update the firmware multiple times, last in October of 2021.
-> >
-> > The official rockchip repository at [1] hasn't been kept as up to date as
-> > the mirror by a rockchip employee at [2], so most people seem to have been
-> > using the latter. Speaking of which, I'll add the owner of that repo to
-> > the CC of this thread to make sure this doesn't get lost.
-> >
-> > Rockchip lists an e-mail at [3] for reporting issues at, but this seems to
-> > relate to their open-source documentation. The official github repository
-> > of "rkbin" on the "rockchip-linux" organisation does not have issues
-> > enabled, so submitting a bug report through that is unfortunately not
-> > possible.
->
-> Having a quick look at TF-A SCMI code in charge of this message (at least in
-> the upstream):
->
-> https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/tree/drivers/scmi-msg/base.c#n136
->
-> it seems to me that the bug lies in the fact that the BASE_DISCOVER_PROTOCOLS
-> response message built by the function above is not properly sized: the trailing
-> message payload carrying the list of protocols (after returned_protos field) returns
-> always a fixed arbitrarily sized payload, possibly zeroed if fewer protocols are
-> carried.
->
-> IOW, even though the answer in this case carries 3 items/protocols, the payload
-> is anyway 8 bytes (with the last 5 bytes zeroed), while by the spec it should have
-> been just 4 bytes.
->
-> (in fact testing the kernel fix on a JUNO with last SCP fw release did NOT expose
-> any issue...)
->
-> I think a fix FW side could be something along these lines (UNTESTED NOR
-> BUILT ! ... I Cc'ed Etienne that seems the author of this bit)
->
-> This basically mirrors the same checks introduced in kernel...if someone
-> is fancy/able to test it....
+OK I missed to read the above properly earlier. If scmi probe failure is
+resulting in Linux boot failure, then that is another bug that needs fixing.
+Why does not getting CPU clock block the boot. I would like to see the boot
+logs. I considered this issue to be non-fatal and must be just ending up
+disabling all SCMI communication. But the reported issue is boot failure
+which sounds like another/different bug and I would like that to be fixed
+first before we push the workaround for the reported issue so that it is
+not ignored.
 
-Indeed the firmware implementation is wrong in TF-A.
-And also in OP-TEE by the way:
-https://github.com/OP-TEE/optee_os/blob/3.17.0/core/drivers/scmi-msg/base.c#L163-L166
+Has anyone analysed why the absence of CPU clock results in boot failure ?
+Are you running the upstream kernel itself ?
 
-@Nicoals, do you want to send a patch to TF-A, or do you want me to do it?
-
-I can fix the optee_os implementation. I'll tell you when I'll have
-created a P-R.
-The fix is the same for TF-A and OP-TEE.
-Proposal from Cristian looks good to me, maybe simplified:
-
-```patch
-         memcpy(outargs, &p2a, sizeof(p2a));
-         memcpy(outargs + sizeof(p2a), list + a2p->skip, count);
-
--        scmi_write_response(msg, outargs, sizeof(outargs));
-+        list_sz = (1 + (count - 1) / sizeof(uint32_t)) * sizeof(uint32_t);
-+        scmi_write_response(msg, outargs, sizeof(p2a) + list_sz);
-```
-
-
->
-> diff --git a/drivers/scmi-msg/base.c b/drivers/scmi-msg/base.c
-> index 2d7203451..35c99e308 100644
-> --- a/drivers/scmi-msg/base.c
-> +++ b/drivers/scmi-msg/base.c
-> @@ -142,6 +142,7 @@ static void discover_list_protocols(struct scmi_msg *msg)
->         uint8_t outargs[sizeof(p2a) + MAX_PROTOCOL_IN_LIST] = { 0U };
->         const uint8_t *list = NULL;
->         unsigned int count = 0U;
-> +       size_t list_sz = 0U;
->
->         if (msg->in_size != sizeof(*a2p)) {
->                 scmi_status_response(msg, SCMI_PROTOCOL_ERROR);
-> @@ -163,9 +164,12 @@ static void discover_list_protocols(struct scmi_msg *msg)
->         p2a.num_protocols = count;
->
->         memcpy(outargs, &p2a, sizeof(p2a));
-> -       memcpy(outargs + sizeof(p2a), list + a2p->skip, count);
-> -
-> -       scmi_write_response(msg, outargs, sizeof(outargs));
-> +       if (count) {
-> +               memcpy(outargs + sizeof(p2a), list + a2p->skip, count);
-> +               list_sz = (1 + (count - 1) / sizeof(uint32_t)) *
-> +                          sizeof(uint32_t);
-> +       }
-> +       scmi_write_response(msg, outargs, sizeof(p2a) + list_sz);
->  }
->
->
-> >
-> > >
-> > > > The user going by "amazingfate" reported that commenting out the
-> > > >   ret = -EPROTO; break;
-> > > > fixes the issue for them.
-> > > >
-> > >
-> > > Sure, or we could relax the check as calc_sz <= real_sz or something so
-> > > that the reverse is still caught and handled as OS might read junk data in
-> > > the later case.
-> >
-> > This seems like a good solution, that way we're unlikely to ever run into a
-> > situation where the kernel does the wrong thing here even if we're less
-> > strict about the check. In either case, it should print a dev_err though,
-> > it's still an error even if we can tolerate it in some cases.
-> >
-> > >
->
-> Beside fixing the FW, adding a workaround like the one Sudeep mentioned to
-> avoid killing old fw plaform seems reasonable: we can just _err() as long as
-> Kernel is not put into peril (i.e. calc_sz <= real_sz ) without
-> necessarily bail out if an out of spec, but harmless, message is
-> spotted.
->
-> > > > I'm writing here to get the discussion started on how we can resolve this
-> > > > before the Linux 5.19 release.
-> > > >
-> > >
-> > > Agreed, I just sent by pull request for this literally few hours ago.
-> > >
-> > > > Sudeep Holla has already told me they'll gladly add a workaround before
-> > > > the 5.19 release, but would rather see this fixed in the vendor firmware
-> > > > first. Would rockchip be able and willing to fix it and publish a new
-> > > > bl31 for rk3568?
-> > > >
-> > >
-> > > Indeed and as mentioned above details on how other such f/w bugs are dealt
-> > > in general esp that the firmware is blob release and one can't fix it easily.
-> > > Do we have a bugzilla kind of setup to report and get the bugs fixed ?
-> >
-> > It's worth mentioning that I think even if we get Rockchip to fix the bug in
-> > the firmware, I believe Linux should still add a workaround, as otherwise
-> > people running older firmware who are upgrading their kernels could suddenly
-> > have unbootable systems and don't know why that happened.
-> >
->
-> Agree.
-
-Agree also. Sorry for that bug in TF-A/OP-TEE.
-
-BR,
-Etienne
-
->
-> Thanks,
-> Cristian
+-- 
+Regards,
+Sudeep
 
 _______________________________________________
 Linux-rockchip mailing list
