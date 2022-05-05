@@ -4,79 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95B3CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 May 2022 08:46:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C0F2C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 May 2022 08:47:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LMKY5nwv1p9BkAO9Mfg4n8tbcqs+uG0jeJKOZUz3aQw=; b=XOGVysvFvvp7uE
-	B8RKNLgw2joNHJOKwlsGI1bOTDqX08Gsz71P3XZThM0XI5fiILn+MU8rm2LgwPdoXde/5u3OmbVvc
-	6Vgbt6ihKDtjVMwVMPDtylCvoyf+bu2jV0+d8xQqTrZpnzkihWVJ+rd6MPUJpTTxnoSIOUMTFmr9Q
-	XhTTC+iuPUl3yhqH8fFssYTUaKlS+HgUacssgdpn4k9uTxDiSWFY0Izg6VOZXI7Bamy0eRUiGClyj
-	5N/cE/i2EaTx7aYKvXhxBsnOpmNaxuSsvl+Y+y6qsZRIWkT+VAMiZkuW0SOWInvVZ99VFw8UvTmE8
-	jIvxo58StqDVRfsdbiNg==;
+	List-Owner; bh=VLNkKgep3n2PqnNeSzP1INXSV8MfZnPHYu18/YAxldU=; b=uK0veS7RKosZCq
+	gOdn+bSFIrdkB2eHcQL3DgNq/F1XBujk7n+gTX29M/NB30tR6EBREDUuKIAwxldUB7zoib1EJLDaU
+	GjpibtTl2qMPCQRIGI+awCuZY7DVO6uLQNSfOyC+/OeZAxK4uPOx1QdHtS2fz6arH6q8iPIiCIb8z
+	txgcZqS+O7FtUJqsHwG2DH2lYeQ4sAC7ghk9q3hBT1++x5CKkOZORyl3qNz7/B+pYELavQakceexi
+	xm9sB2/YSufXNiwaTl1aR2s83zREHOlhVEavTUwM+UojxokXIELVxjwe2duGof82VBZY9pqsD68Dl
+	xcnzVgjBxJYKmmagO2JA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmX7H-00EoLv-Ul; Thu, 05 May 2022 08:45:44 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1nmX8c-00Eomt-Ao; Thu, 05 May 2022 08:47:06 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmX78-00EoJB-TL
- for linux-rockchip@lists.infradead.org; Thu, 05 May 2022 08:45:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1651740304;
- bh=xx/4O0ev2h+cTTB8VZtp7yVZgwGZrAIwxUX58uMFqq0=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=GeGv5ooBNOUCELJdyhcGPi5AxDeLQCnfHp3QiXcKhJzX3b9D8/fJcMn1t/ATvpd3E
- VUrTifK62rAZzyK3nwmHXtJb0DwDSl+bfLGvccxI8O9IytezT49YOQQD9lL4FIkamo
- fHsJ4HY+UhrAFI35Nh0sRUP3ViKytEhycutq0pQc=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.145.208] ([217.61.145.208]) by web-mail.gmx.net
- (3c-app-gmx-bs47.server.lan [172.19.170.99]) (via HTTP); Thu, 5 May 2022
- 10:45:03 +0200
+ id 1nmX8Y-00EoiO-MW
+ for linux-rockchip@lists.infradead.org; Thu, 05 May 2022 08:47:04 +0000
+Received: by mail-wr1-x436.google.com with SMTP id b19so5121904wrh.11
+ for <linux-rockchip@lists.infradead.org>; Thu, 05 May 2022 01:46:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=KAi9SgYYEJZdQCddUzbx52lypx3cIglFyl/qHafebhw=;
+ b=tkNfdzaaxw1oNzzHEFi5PsCP9pSRB2g18WUgVkc6DnnNJz4opSwgzEVFoUUkq98Kud
+ DmFNXaVYExw1NuJr8DqujznLa2az0lWDiTc0qWvNUCAP5r5OW9iSR8QEqSlWZJONTS4P
+ F30VkUEk9v9uHoJqLqcvFr87lcceheNYz87udcrXOAHtFnIyEOvlcZaxaIZkOdNhT30Y
+ dB4ud6EWIxegH+EYbtLr/2s0zJ21Uw2TaCRSfxNT1dPyuAPqkA2Ti2WZXu8bcR/8mxNC
+ eMgh7vO/iGZwuEnOROZ+GPB0E6E/imyXgauO3i4m/vz/qEwWxwP3ttMVK1mz2Ist0shg
+ sbpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=KAi9SgYYEJZdQCddUzbx52lypx3cIglFyl/qHafebhw=;
+ b=tY9QIQSmIibRPxuSewfvB/cnqP7F5WMUmAWiDx9WgkRczuevvflR5c+XfOkSRn7oon
+ WqtgwPRBwLGsTClvtNKtGe/7hLLv/n2rhTvpCbpPAqclNYfqOc1jdOzO9wB5JP96hcJ+
+ YSZ59FfzcH6fNkDudCowEt3kEWAbvpTDtcbo/a9dKewhB66wtx6s/+3uLvKgp5wTPAXO
+ E7EIP0+prUnF59oF2VlOmCDs3YIj71+o1Vsjn3lFRO4vAyvlReZ0ulQ+gQYlCv2V61TV
+ 5IQcY8PxfBdEmDuMFzC4x+6c0g+zwWTAV8GCi7zOtZPg2BjREFavcwRloxGLQhqXIBv8
+ 4ZLA==
+X-Gm-Message-State: AOAM530/ftUUh+6OhV9F8pcxbpLIOiy/MS1oUvIGRx5LPIYmdWsmqtVf
+ tHgj4uNYLby5hWTk+i2cg+yOQA==
+X-Google-Smtp-Source: ABdhPJx0cG82J35HyxF+U/lAjaHUyieUfdukDsGukXiyDflYgKWosvfKkWmN+5Kvijh4a8XoYMPHpw==
+X-Received: by 2002:a5d:6551:0:b0:20a:e23c:a7fa with SMTP id
+ z17-20020a5d6551000000b0020ae23ca7famr19657153wrv.535.1651740417622; 
+ Thu, 05 May 2022 01:46:57 -0700 (PDT)
+Received: from [192.168.0.217] (xdsl-188-155-176-92.adslplus.ch.
+ [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
+ 67-20020a1c1946000000b003942a244f2csm6771728wmz.5.2022.05.05.01.46.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 May 2022 01:46:57 -0700 (PDT)
+Message-ID: <313a5b2e-c571-a13f-3447-b1cd7200f4c9@linaro.org>
+Date: Thu, 5 May 2022 10:46:55 +0200
 MIME-Version: 1.0
-Message-ID: <trinity-bfbffcba-d1ed-40f7-8f37-0c8ad9245e3c-1651740303894@3c-app-gmx-bs47>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>, Benjamin
- Gaignard <benjamin.gaignard@collabora.com>, Michael Riesch
- <michael.riesch@wolfvision.net>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Peter Geis
- <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Aw: [PATCH v11 17/24] arm64: dts: rockchip: rk356x: Add HDMI nodes
-Date: Thu, 5 May 2022 10:45:03 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20220422072841.2206452-18-s.hauer@pengutronix.de>
-References: <20220422072841.2206452-1-s.hauer@pengutronix.de>
- <20220422072841.2206452-18-s.hauer@pengutronix.de>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:jhHeBB0cVrPpmyuSV8dkcZkfMMoOV6qVeNwsgrvv2BcHyrAD72naC0el219Z5ID+Z/Re/
- 5cFt0p836fqtEg3/WBhTIHvozZg+qauPcPv2V/HiN+36OxKfXenbX8mkMkS9cP2hLcbpAH94/XF2
- Ee6ya9jarBvfYFc40yW1cB6jkU4h5+hrxI+2CoRz8QUdvDTl7CO0aKJbcxroi4icmuounMlaKfuM
- CBLLu9ZCJdj7X2zTm/5V/04h2hTpMkujwQRLAsZ33x0MlM6NRmewtbu3BWtKgTAXxCzJT8uuXB02
- xo=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:hc0JSv9jgAE=:bZXSWIrFTtqezeF/jRdgdZ
- NnwkpgZMZnJuCsrlkdUy8btjwq8ZoV/0Xpzcs13FWuCtYIPQ5ro64TS6dvgTFIyyJL2ZmtUJd
- DihkaR+cIKek7YXrjROayUF89hAclkSKAyqQ+HC51L+Pl0i4jY5UwJHPUGFX1dzVcPZMz72vT
- vKQmQ5AGX+Nda0LKrhWy7NRmp0WrhAmp6tamK/ijygEGCEntUpUImUs8v8eOB/ASyDfWEKEuM
- +I8gNabAR0sp3exIaWqR7m9GUtRzkJOAVgiM2tPqp8nuo0nhBDHyBUwqofFQ3T8QwXt9hQlwd
- aB2iYe9EjootdPpT72SaiouyXDQHLmoL0zo18RxhNnA0sGA7c+n4B699M70TcVmU7pT7czuV6
- 8+Lyw+tnzm8iONWsrJS+rngS2zf0rTzq0TbZdHJUxZSZgF9Z26AfaDrOGBz0awRvW/rYrFb7M
- vZiYKM4W/6K1a5V5AecMf+c7wVgaXrJw6HgVztSLSs1IjEU1jIgfP/pKAk4/KrZxgvIm/PLTw
- 1G9roRVpNQHHPORfBRHtEiQwUxMzYbcxKTikfPtOmRWGJyNtsMDSbucb9sd2dJoLS0MBotOMn
- h+x49mJ/hzTZvm97DeV3rKLun0mwW/ezhcQ9wX4BbcUQDCis79x/3UGtgCgaMIS6uEspEFSvJ
- mU+nX3CGpBFSV9b7n6woeUNzrIUThfayn+fcngw+HFO14azzOp7jZet2vblY8uB+Fpvh1YUuc
- mKfsXjtnm9WsaLRT4/uGFfzfZWLDY/JBRfYQhbqc4/sEj/1ZmeYZqOH4imOhm97W0keilCxFM
- eG5inPC
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [RFC v2 4/4] arm64: dts: rockchip: Add mt7531 dsa node to
+ BPI-R2-Pro board
+Content-Language: en-US
+To: Vladimir Oltean <olteanv@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org
+References: <20220430130347.15190-1-linux@fw-web.de>
+ <20220430130347.15190-5-linux@fw-web.de>
+ <20220504152450.cs2afa4hwkqp5b5m@skbuf>
+ <trinity-9f557027-8e00-4a4a-bc19-bc576e163f7b-1651678399970@3c-app-gmx-bs42>
+ <20220504154720.62cwrz7frjkjbb7u@skbuf>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220504154720.62cwrz7frjkjbb7u@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220505_014535_266131_26D44F7C 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20220505_014702_800571_12984693 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,55 +109,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On 04/05/2022 17:47, Vladimir Oltean wrote:
+>>
+>> current device-tree nodes using "switch" and "ports"
+>>
+>> see discussioon here about make it fixed to "ports" property instead of PatternProperties including optional "ethernet-"
+>>
+>> https://patchwork.kernel.org/project/linux-mediatek/patch/20220502153238.85090-1-linux@fw-web.de/#24843155
+> 
+> Hmm, I don't get why Krzysztof said to just keep what is used in
+> existing device trees. The schema validator should describe what is
+> valid, 
 
-> Gesendet: Freitag, 22. April 2022 um 09:28 Uhr
-> Von: "Sascha Hauer" <s.hauer@pengutronix.de>
-> Betreff: [PATCH v11 17/24] arm64: dts: rockchip: rk356x: Add HDMI nodes
->
-> Add support for the HDMI port found on RK3568.
->
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->
-> Notes:
->     Changes since v7:
->     - Rename hclk to niu
+These were talks about bindings which describe hardware. The node name,
+except Devicetree spec asking for generic names, does not matter here
+actually.
 
-clock-name no more present since v9, see below
+> and since the mt7530 driver does not care one way or another
+> (some drivers do explicitly parse the "ports"/"ethernet-ports" node),
+> then whatever is valid for the DSA core is also valid for the mt7530
+> bindings. And "ethernet-ports" is valid too, so I think it should be
+> accepted by mediatek.yaml...
 
->     Changes since v5:
->     - Drop unnecessary #size-cells/#address-cells from nodes with only single endpoint
->
-...
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -620,6 +620,38 @@ vop_mmu: iommu@fe043e00 {
->  		status = "disabled";
->  	};
->
-> +	hdmi: hdmi@fe0a0000 {
-> +		compatible = "rockchip,rk3568-dw-hdmi";
-> +		reg = <0x0 0xfe0a0000 0x0 0x20000>;
-> +		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
-> +		clocks = <&cru PCLK_HDMI_HOST>,
-> +			 <&cru CLK_HDMI_SFR>,
-> +			 <&cru CLK_HDMI_CEC>,
-> +			 <&pmucru CLK_HDMI_REF>,
-> +			 <&cru HCLK_VO>;
-> +		clock-names = "iahb", "isfr", "cec", "ref";
+You can make it "(ethernet-)?ports" as well. My comment was purely to
+make it simpler, for bindings (goes into properties, not
+patternProperties) and for us. If you prefer to keep it like DSA core,
+also fine.
 
-noticed there are still 5 clocks, but only 4 clock-names. So i added "niu" after ref.
-maybe missing clock-name was causing my iommu page-faults...on a quick test i have not got it,
-but they came not every time.
-
-what do you think?
-
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&hdmitx_scl &hdmitx_sda &hdmitxm0_cec>;
-> +		power-domains = <&power RK3568_PD_VO>;
-
-regards Frank
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
