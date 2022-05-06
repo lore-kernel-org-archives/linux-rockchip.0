@@ -4,50 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C79DC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 May 2022 08:54:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45716C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 May 2022 09:19:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IgXmAtK6BTsa6ZQtJHRaqelleqhn0rRsz1SMJ9aFnrc=; b=pneKmkLkNBJPl5
-	M5EylNiOWhtRHcBaezaGSL/qSUCFxT/KUP5ktUx+AdvXbJu5VSeLy5oGtaHM4rY9qfmI9md0tFOn+
-	NC/ydIhBFH25rvglqH/um72qtB8Dj9tE7rC1f3shHq+8M9UGAcyINmZLfzdrO69J3vS+0zumKR00D
-	I2+teqppaZYmflZp5sceGXovPZcurqEu+49NLaKclN2001KyymeNpX1vQkD39SQwZkeaz0QnMU0Dy
-	HNLXlVOjRGjfMwnrWQB0gLxPgp98YyddvZqaLX5QX278x4FeeK8rhFjtSoAQGRj/8T2s8buPtEVoQ
-	HOzuiwf9YJtgvq/JMEzg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qzqTSbmUicFpqCjfqvnAMTWyRWKcwYa3UjsiGa1y4gY=; b=M6V6raOYZOviAi5r1VmU9bPIGm
+	/MLZjFtN83ovdqCFZX5TpiLPv9NcI/cLfL/17Qw44/tYc9tiCK5hOQJDob2z68I7z5+p28EYyw/F1
+	H+TnDRAwGINu/1gf2cv6bH2I2ijrqf1PDKKNIsYmPHCn1h0NrUK1KIPDRU0Tw74n756Rzy5v7YSdO
+	Sqa61IUZTlZLAD44PPnKO4M327pC91DinoTo/JjHROATX06kRQ9wUd1TaeHLnj4BqEl15b/ib2PD6
+	vTi6etTNXgaLWlaJvXuWOkc5uMcXjsmwz+TjVsK1tfyqvWkhu2AbYPzKk37WRZvWURLpXBKmCaeKE
+	q6Dr5r4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nmtjV-002DX9-F0; Fri, 06 May 2022 08:54:41 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1nmu6x-002IUY-KR; Fri, 06 May 2022 09:18:55 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nmtjI-002DQ8-NL; Fri, 06 May 2022 08:54:30 +0000
-Received: from p508fcb34.dip0.t-ipconnect.de ([80.143.203.52]
- helo=phil.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nmtjD-0005t9-LO; Fri, 06 May 2022 10:54:23 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ id 1nmu6k-002INb-TM; Fri, 06 May 2022 09:18:44 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) (Authenticated sender: sre)
+ with ESMTPSA id 8DAA31F4608C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1651828719;
+ bh=LagxlbknCNKZ/XfP0so1ZIDtnMrlAsXXeHWaGvHTB4Q=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=cM39Y7h+YdmaL5+yQdLEp+AHGdUEQriZx4EHdV2GwT//rXc7oQCQL3lcs+g8cdL39
+ hK882V/9z4a67vzdMiSeYx9uDsMCiTQgG409tJAEhWWFMJw9NhB3noO08myQXsJtsy
+ BsYPT5MNWPG0R7vjPwUDn/cPhZiytcZw39GZaoZkJsaY7RjKXjvHNh39B2G1ThifMv
+ Kw8Ud/gBiaJnCjHR4v0TOurkPw8ICP6lAIoGV8iA3esDMgEdUslAcabn1vupUfC7ow
+ TQzEjuF7haew1hme03M4bAqfbqajucOj6mCPqWMkCsz5E/PJKS6nhRybyDKxwe9omI
+ H64n/RkSM7ELA==
+Received: by mercury (Postfix, from userid 1000)
+ id 0DAAE1060437; Fri,  6 May 2022 11:18:37 +0200 (CEST)
+Date: Fri, 6 May 2022 11:18:37 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Rob Herring <robh+dt@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linus.walleij@linaro.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org,
+ linux-mmc@vger.kernel.org, linux-gpio@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
- Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v11 16/24] arm64: dts: rockchip: rk356x: Add VOP2 nodes
-Date: Fri, 06 May 2022 10:54:18 +0200
-Message-ID: <8099476.NyiUUSuA9g@phil>
-In-Reply-To: <20220506071028.GS4012@pengutronix.de>
-References: <20220422072841.2206452-1-s.hauer@pengutronix.de>
- <2508329.Lt9SDvczpP@diego> <20220506071028.GS4012@pengutronix.de>
+ linux-kernel@vger.kernel.org,
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>, kernel@collabora.com
+Subject: Re: [PATCHv2 09/21] mmc: sdhci-of-dwcmshc: add reset call back for
+ rockchip Socs
+Message-ID: <20220506091837.bbwupigb4f3hwgp4@mercury.elektranox.org>
+References: <20220504213251.264819-1-sebastian.reichel@collabora.com>
+ <20220504213251.264819-10-sebastian.reichel@collabora.com>
+ <CAPDyKFqLn4LfPRbhoWw_9BF26Lgmzq_1j=RB31NDGn9YvMnB5w@mail.gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <CAPDyKFqLn4LfPRbhoWw_9BF26Lgmzq_1j=RB31NDGn9YvMnB5w@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220506_015428_802577_E2B190C8 
-X-CRM114-Status: GOOD (  27.09  )
+X-CRM114-CacheID: sfid-20220506_021843_255645_1AD5300C 
+X-CRM114-Status: GOOD (  29.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,75 +76,167 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/mixed; boundary="===============7766223702072954733=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 6. Mai 2022, 09:10:28 CEST schrieb Sascha Hauer:
-> On Thu, May 05, 2022 at 09:23:03AM +0200, Heiko St=FCbner wrote:
-> > Am Donnerstag, 5. Mai 2022, 08:41:31 CEST schrieb Sascha Hauer:
-> > > On Thu, May 05, 2022 at 02:28:24AM +0200, Heiko St=FCbner wrote:
-> > > > Am Freitag, 22. April 2022, 09:28:33 CEST schrieb Sascha Hauer:
-> > > > > The VOP2 is the display output controller on the RK3568. Add the =
-node
-> > > > > for it to the dtsi file along with the required display-subsystem=
- node
-> > > > > and the iommu node.
-> > > > > =
 
-> > > > > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > > > > Acked-by: Rob Herring <robh@kernel.org>
-> > > > > ---
-> > > > > +	vop: vop@fe040000 {
-> > > > > +		reg =3D <0x0 0xfe040000 0x0 0x3000>, <0x0 0xfe044000 0x0 0x100=
-0>;
-> > > > > +		reg-names =3D "regs", "gamma_lut";
-> > > > =
-
-> > > > reg-names does not seem to be part of the dt-binding.
-> > > > Though now in the vop2-driver I see that the code uses that naming.
-> > > > =
-
-> > > > I guess we might want to just go the vop1-way by using numbered
-> > > > platform-resources via a follow-up patch and drop the regnames here?
-> > > =
-
-> > > Or we could document the reg-names properties in a follow-up patch.
-> > > Wouldn't that be better?
-> > =
-
-> > Also a possibility. Although that of course leads us into the naming
-> > bike-shed ;-) ... i.e. for reg-names I'd do "vop" + "gamme-lut" (dash i=
-nstead
-> > of underscore) - instead of the ones used right now.
-> =
-
-> I also like dashes better than underscores and "vop" describes it better
-> than the generic "reg" name, so at least the two of us don't need to
-> dive deeper into the naming bike-shed ;)
-
-:-D ... one problem solved already
-
-> > While using numbered resources would keep the commonality between
-> > both vops
-> =
-
-> I like the named resources better, but I'll leave it up to you. You
-> decide, I'll create fixup patches in either direction.
-
-ok, then let's go with the named-resources. As we'll need an Ack from
-DT-people, we should probably expedite this.
-
-Ideally I guess, do the dt-binding fixup + resend the fixed dt-node patches
-with it. From the original series those dt-nodes + the hdmi rate stuff
-is the only thing missing and the rates can be a separate thing.
-
-Heiko
+--===============7766223702072954733==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="xt2hfq4oogyrqves"
+Content-Disposition: inline
 
 
+--xt2hfq4oogyrqves
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Fri, May 06, 2022 at 10:52:42AM +0200, Ulf Hansson wrote:
+> On Wed, 4 May 2022 at 23:33, Sebastian Reichel
+> <sebastian.reichel@collabora.com> wrote:
+> >
+> > From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> >
+> > The reset function build in the SDHCI will not reset the logic
+> > circuit related to the tuning function, which may cause data
+> > reading errors. Resetting the complete SDHCI controller through
+> > the reset controller fixes the issue.
+> >
+> > Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> > [rebase, use optional variant of reset getter]
+> > Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+>=20
+> I think this needs a corresponding update of the DT docs. Otherwise
+> this looks good to me.
+
+I do have 'resets' and 'reset-names' properties in the rk3588s.dtsi
+for the sdhci interface and 'make dtbs_check' did not complain about
+anything but missing 'arm,sdei-1.0' compatible for the rk3588 EVB
+(sdei binding has not yet been converted to yaml). Thus I assume the
+resets property is inferred from somewhere?
+
+-- Sebastian
+
+>=20
+> Kind regards
+> Uffe
+>=20
+> > ---
+> >  drivers/mmc/host/sdhci-of-dwcmshc.c | 26 +++++++++++++++++++++++++-
+> >  1 file changed, 25 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdh=
+ci-of-dwcmshc.c
+> > index bac874ab0b33..3a1b5ba36405 100644
+> > --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
+> > +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
+> > @@ -15,6 +15,7 @@
+> >  #include <linux/module.h>
+> >  #include <linux/of.h>
+> >  #include <linux/of_device.h>
+> > +#include <linux/reset.h>
+> >  #include <linux/sizes.h>
+> >
+> >  #include "sdhci-pltfm.h"
+> > @@ -63,6 +64,7 @@
+> >  struct rk3568_priv {
+> >         /* Rockchip specified optional clocks */
+> >         struct clk_bulk_data rockchip_clks[RK3568_MAX_CLKS];
+> > +       struct reset_control *reset;
+> >         u8 txclk_tapnum;
+> >  };
+> >
+> > @@ -255,6 +257,21 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_=
+host *host, unsigned int clock
+> >         sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_STRBIN);
+> >  }
+> >
+> > +static void rk35xx_sdhci_reset(struct sdhci_host *host, u8 mask)
+> > +{
+> > +       struct sdhci_pltfm_host *pltfm_host =3D sdhci_priv(host);
+> > +       struct dwcmshc_priv *dwc_priv =3D sdhci_pltfm_priv(pltfm_host);
+> > +       struct rk35xx_priv *priv =3D dwc_priv->priv;
+> > +
+> > +       if (mask & SDHCI_RESET_ALL && priv->reset) {
+> > +               reset_control_assert(priv->reset);
+> > +               udelay(1);
+> > +               reset_control_deassert(priv->reset);
+> > +       }
+> > +
+> > +       sdhci_reset(host, mask);
+> > +}
+> > +
+> >  static const struct sdhci_ops sdhci_dwcmshc_ops =3D {
+> >         .set_clock              =3D sdhci_set_clock,
+> >         .set_bus_width          =3D sdhci_set_bus_width,
+> > @@ -269,7 +286,7 @@ static const struct sdhci_ops sdhci_dwcmshc_rk3568_=
+ops =3D {
+> >         .set_bus_width          =3D sdhci_set_bus_width,
+> >         .set_uhs_signaling      =3D dwcmshc_set_uhs_signaling,
+> >         .get_max_clock          =3D sdhci_pltfm_clk_get_max_clock,
+> > -       .reset                  =3D sdhci_reset,
+> > +       .reset                  =3D rk35xx_sdhci_reset,
+> >         .adma_write_desc        =3D dwcmshc_adma_write_desc,
+> >  };
+> >
+> > @@ -292,6 +309,13 @@ static int dwcmshc_rk3568_init(struct sdhci_host *=
+host, struct dwcmshc_priv *dwc
+> >         int err;
+> >         struct rk3568_priv *priv =3D dwc_priv->priv;
+> >
+> > +       priv->reset =3D devm_reset_control_array_get_optional_exclusive=
+(mmc_dev(host->mmc));
+> > +       if (IS_ERR(priv->reset)) {
+> > +               err =3D PTR_ERR(priv->reset);
+> > +               dev_err(mmc_dev(host->mmc), "failed to get reset contro=
+l %d\n", err);
+> > +               return err;
+> > +       }
+> > +
+> >         priv->rockchip_clks[0].id =3D "axi";
+> >         priv->rockchip_clks[1].id =3D "block";
+> >         priv->rockchip_clks[2].id =3D "timer";
+> > --
+> > 2.35.1
+> >
+
+--xt2hfq4oogyrqves
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmJ059oACgkQ2O7X88g7
++pp5Cw/9G072+IU/K2eJWP6MsQoWNwQMA5mqxId7SEACncdb+5ywvkilvq4UOtHM
+s2MHQxKpMxWKQFQEYFXh48Dn6OeVElkrO7kIGRSR0M8KuXXKQ4eQm0Q5a0jbryFl
+YqwRShmGpd4urXNhsCRjRjL/u/jTvhYKIzz2AiwFKgiHTZFB6fifmy67KIzAe8lx
+F8v57BW994hmYpABPnybuvMk1VGOJqw9xXrC/mTiGd1HyDBjot1KrIVvWpT9Q3ZL
+nwTP3EzJGIsrCQi9/YOuPCifjxJI2CppJZhy5Hd3aG8H9cZog9yEUalsd7x2sVih
+/eeVopGR+fhM/qwVV4Swya7QL/4/0ZjXCGP5HApLqzewQc6UGkAHkcZTfJ+78Yfc
+upAIXzL4CSJItDkZ2IT1O4hgwEW+933ol4z7gOA3yhvGQ7drLtnrXt65qTrw5k5P
+xt1ouOL76Ru8D9Xm8fMBzcHXOz+9xwLgtDnHHBzIr535biqqhTtRlu6CTbDxEGEn
+UZxNxg2punmcQ82ODHw0cvmGmiCkqPPUYEFxS/5a1P4hyUZE6PSXve+V6Hp21mNL
+jC1TXbbjVeroh11HGuz9yqC/wMvV5U3+951r79DODpIS6rXMIFzVFtTHyHs1kUSw
+WtfO28lxaTfaq7jwpyAvxAs1mIJl7POoaXODSCna+T3lf21nDaM=
+=UBWn
+-----END PGP SIGNATURE-----
+
+--xt2hfq4oogyrqves--
+
+
+--===============7766223702072954733==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7766223702072954733==--
+
