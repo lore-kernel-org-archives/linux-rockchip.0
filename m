@@ -4,80 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86842C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 May 2022 16:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8909EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 May 2022 17:05:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F1vyn4CSEGE/1ZWU8z1qYS5RuV68qsXh/eP6ir2jBSA=; b=2r+Zydbemxz1Rw
-	f9ENeM63ubAQ1Hvvzu94/IbjgkQHbzd70M00IaUyBTw3gOMP/G6LaWULF+8gygpwD73IfvGDlrLYA
-	16hFMOok0IVztIqlT9n75V2HNW8UCeDnhLuX3OpYAOikNQbe0zLAsZII1NJWOu0mmU+Vro1Y+5+UK
-	rK9Es8QYMmxoGq0hKBzlzqUag1KXI0quERVINdjxtUc5KZGih2z8Sv78DlYXWNcDvFsYVlQJbjzWo
-	/f7CwWujhaeiJbNqhX/y3jodW1FkzovReV5yYu/94ba0tHYDetq+2RKJA8JuAEzPzWAgb35z9GZRB
-	ax8pHqzweG1LdNZXNNmA==;
+	List-Owner; bh=GpE8GAlwegmjAtclBsZChpX8oj+nH7kHWROmQPWvpME=; b=zpS+I8HUJFNbIl
+	ZLLlzDwobi99AyCyB5BihUd22Np0WHVTy1/+7U+OCM/VlD+7pfZ45mWoeglY8Aqk1So5qlFIKhvKJ
+	U51+/ZX99PgM47VAs7C7RbLr+uN8KqdHNw3hv0iNJ74qGK0wlrJ4T+KqGIUyEFB0gjAijb72RmGCs
+	EyRUdxMK+XKZlBkuNFAJgeC8rebb4LqpU2z0jPyNm3uDFLOvwEKDyNCMDWIEziYrJuX636UQfIAih
+	Q8oY8L+bXbnRsz3iCayFhzEXQf4b8OtfWnWmuny8cYjxnkJTNmBEu+JaNSnTgFctKdpBcLAxY+afi
+	sKlRo7UnuAHGGePPrWPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnkAE-00AgM2-1y; Sun, 08 May 2022 16:53:46 +0000
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
+	id 1nnkLI-00Ahkc-AK; Sun, 08 May 2022 17:05:12 +0000
+Received: from mail-yb1-xb36.google.com ([2607:f8b0:4864:20::b36])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnkA2-00AgIZ-QY; Sun, 08 May 2022 16:53:36 +0000
-Received: by mail-yb1-xb32.google.com with SMTP id v59so21021412ybi.12;
- Sun, 08 May 2022 09:53:33 -0700 (PDT)
+ id 1nnkLF-00Ahjl-TX; Sun, 08 May 2022 17:05:11 +0000
+Received: by mail-yb1-xb36.google.com with SMTP id j2so21164928ybu.0;
+ Sun, 08 May 2022 10:05:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=3F1Pq3gU9pnrxqbFtjzJI31YKJjKY/6sCWthpC+SyWI=;
- b=q2EaRXL/xo0X/zpAUJ6IwW1+vmpwhySxUV7v1BtjeUlLo3iVY5vWnLI4MskoSMxSsj
- Ijo22uXDT092q3OsT6chJ5bTvTwuwigVs9EL9zR0o37oloNz2mvTmVzoPVezk/urE/EA
- Tk/VyNd2NJ1o5ts2dA2oMv79C01GzafvKPMB6bRtHQjbkarTERkCF8NF4m8ErTmsWCYc
- ff5yTbpTwrEDaaATRj0SRlB2kuMCbwDHryLZiNnyleK2gGYxmZug2n0T09vvF2Cz+QyH
- RHKzXG15FP7sronSdF7OZqMDosStkaCvDt1mF/93HLAh/SpsZeriMXa6OJr4lyt61asn
- qkBg==
+ :cc; bh=W7Hl8BOx+adgs6geATfRW0o3lLPBvMogTGQ28EqLWaA=;
+ b=lkgMS1iIMVf9Fy72wcDl3MPVgbNj/S+8G4i7KuAJf12aCIWl55+lPEek3+Cenow8nR
+ 9MKVshPKYtnCcMk0rVsRWXFDArby9lCwKFGx4DgqDTMfaDG5QVPNOwZkTwC9Jxkj/nIJ
+ Fk8j//X0r1kVv6Hg9udaF6oXWF5ny36hAwfrx01HEKaXznS6k51vQHJcyrclwvM51Y4F
+ P8dDk9/UJdLMJqBB3t106A3sIj91Zja4D7bj+rVDqRf4X/8WxBR2+t5oR05XYbHwr0OD
+ gMrsjh8hipq/WHjgIOHvgegA/bDIyxTeulYWnzhA1fAHcwgksc4HHVHiPW2o6Mx4XIQL
+ KsfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=3F1Pq3gU9pnrxqbFtjzJI31YKJjKY/6sCWthpC+SyWI=;
- b=ry5Z6kGhvAGLYlGVbfN/PtN/4yJofPf55Wan8irg97qm5NCalccHExe9iSQhhOCLb7
- xd2De06H6Bq5ARSuyUvsDRbAdyliM13dD4yBy4pClLK6FYPtNpOjia2UjrFJEMhBzit5
- tP2tvQURAn/Cg4bVGERD8bJhlQQh2ncuuyytxmqQ6e6CVEODogDXyVYeccAhh3cgbEl9
- +58pWbWQjLb82oZGS/xjrkM7euiVALZoNFii0a4KSwkdB/EpRV904S9i0c4k9MCRelng
- Dyudv80CI0vl8/llie7/qS8GRNKKZS5VwVKGY1gwlZI24NUOqidzfIzVQj8HA/0B1WM1
- +gbQ==
-X-Gm-Message-State: AOAM5320wSQ9QXP/TiW3STxcRLdAnbp9xmc6mydOgzcUozlP19ImA7jb
- N7pGcrf9cEdjFQf8gv9fauyzYmsfN9gz78fsKq8=
-X-Google-Smtp-Source: ABdhPJwI9hCRzsuCfUL5+MI7byJrBIXIu6HCctuZjDYDKgqhMNsR/VFPkVCJcslqOpQCZ2iRWjaE+azUpqF8YwMnSVE=
-X-Received: by 2002:a5b:64c:0:b0:64a:684a:2369 with SMTP id
- o12-20020a5b064c000000b0064a684a2369mr10146433ybq.173.1652028812891; Sun, 08
- May 2022 09:53:32 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=W7Hl8BOx+adgs6geATfRW0o3lLPBvMogTGQ28EqLWaA=;
+ b=pTcPnZAhedekuvu04aqDUO3v9w8VbZHwfjJpZTZiYZIJ7lpfnlHZGv6WBco0AQzMGU
+ IgYGoAK+BLlgm4LERfAbLlEBUSw0Ux4qoOtP77RPGT+jXQXFsQ+tGxWKadxdx+Q50VDo
+ kx2iBF9cgXl7r19zOrIam4CYICMHMN08FFWhSbAS07rAbYmc9I4XEuRfvXO6i0bjViPd
+ cjjm5xvZkguKq4z4CnzmBVID7z8yJk94jMAMPNuCCx1WwNVgcsOB7v5OKvGepYRNQbEg
+ HrzPDgUqlQUXU3Jw0rRQpsI4zCcCW2YsEDwYNF2+/xNDD9lMxn2aex9oEWDIBsRwD3db
+ sRmQ==
+X-Gm-Message-State: AOAM533Mln4SLIu4YrUnr3fMrxhoeLpkG1f8vop2KdxzUfLRaXwI3bTE
+ N+6KgTMTYi/odHxUsRLSCL2jsLNFPh44V0NsTEQ=
+X-Google-Smtp-Source: ABdhPJy+9aAnBuxa0JfhTFZ4aaqwddQqqO8njeM70HqTBYBOqN1hLMd22aoooSxKWRQg+5rhDWM0uUI6VEpipsrsGMI=
+X-Received: by 2002:a05:6902:143:b0:628:7cf1:f2a9 with SMTP id
+ p3-20020a056902014300b006287cf1f2a9mr9464807ybh.51.1652029508882; Sun, 08 May
+ 2022 10:05:08 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220422072841.2206452-1-s.hauer@pengutronix.de>
- <20220422072841.2206452-21-s.hauer@pengutronix.de>
- <A86359EC-5291-41BD-966E-EB7890644731@gmail.com>
-In-Reply-To: <A86359EC-5291-41BD-966E-EB7890644731@gmail.com>
+References: <20220507170440.64005-1-linux@fw-web.de>
+ <06157623-4b9c-6f26-e963-432c75cfc9e5@linaro.org>
+ <DC0D3996-DFFE-4E71-B843-8D34C613D498@public-files.de>
+ <2509116.Lt9SDvczpP@phil>
+ <trinity-7f04b598-0300-4f3c-80e7-0c2145e8ba8f-1652011928036@3c-app-gmx-bap68>
+In-Reply-To: <trinity-7f04b598-0300-4f3c-80e7-0c2145e8ba8f-1652011928036@3c-app-gmx-bap68>
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Sun, 8 May 2022 12:53:21 -0400
-Message-ID: <CAMdYzYoFG3wCQaWXQNJd7mE20OMCj=ZeuewwZfaCJyoCBT-kQQ@mail.gmail.com>
-Subject: Re: [PATCH v11 20/24] arm64: dts: rockchip: enable vop2 and hdmi tx
- on rock-3a
-To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>,
- Michael Riesch <michael.riesch@wolfvision.net>, 
- dri-devel@lists.freedesktop.org, 
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+Date: Sun, 8 May 2022 13:04:56 -0400
+Message-ID: <CAMdYzYrG8bK-Yo15RjhhCQKS4ZQW53ePu1q4gbGxVVNKPJHBWg@mail.gmail.com>
+Subject: Re: Re: [PATCH v3 5/6] dt-bindings: net: dsa: make reset optional and
+ add rgmii-mode to mt7531
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Heiko Stuebner <heiko@sntech.de>, 
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>, 
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- kernel test robot <lkp@intel.com>
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Frank Wunderlich <linux@fw-web.de>, 
+ linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>, 
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller" <davem@davemloft.net>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, 
+ Linux Kernel Network Developers <netdev@vger.kernel.org>,
+ devicetree <devicetree@vger.kernel.org>, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Greg Ungerer <gerg@kernel.org>, 
+ =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>, 
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220508_095334_903918_87D3E1DB 
-X-CRM114-Status: GOOD (  18.86  )
+X-CRM114-CacheID: sfid-20220508_100509_998295_62C98750 
+X-CRM114-Status: GOOD (  38.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,45 +100,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU3VuLCBNYXkgOCwgMjAyMiBhdCA5OjQwIEFNIFBpb3RyIE9uaXN6Y3p1awo8cGlvdHIub25p
-c3pjenVrQGdtYWlsLmNvbT4gd3JvdGU6Cj4KPgo+Cj4gPiBXaWFkb21vxZvEhyBuYXBpc2FuYSBw
-cnpleiBTYXNjaGEgSGF1ZXIgPHMuaGF1ZXJAcGVuZ3V0cm9uaXguZGU+IHcgZG5pdSAyMi4wNC4y
-MDIyLCBvIGdvZHouIDA5OjI4Ogo+ID4KPiA+IEZyb206IE1pY2hhZWwgUmllc2NoIDxtaWNoYWVs
-LnJpZXNjaEB3b2xmdmlzaW9uLm5ldD4KPiA+Cj4gPiBFbmFibGUgdGhlIFJLMzU2eCBWaWRlbyBP
-dXRwdXQgUHJvY2Vzc29yIChWT1ApIDIgb24gdGhlIFJhZHhhCj4gPiBST0NLMyBNb2RlbCBBLgo+
-ID4KPiA+IFNpZ25lZC1vZmYtYnk6IE1pY2hhZWwgUmllc2NoIDxtaWNoYWVsLnJpZXNjaEB3b2xm
-dmlzaW9uLm5ldD4KPiA+IFJlcG9ydGVkLWJ5OiBrZXJuZWwgdGVzdCByb2JvdCA8bGtwQGludGVs
-LmNvbT4KPiA+IExpbms6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3IvMjAyMjAzMTAyMTAzNTIu
-NDUxMTM2LTQtbWljaGFlbC5yaWVzY2hAd29sZnZpc2lvbi5uZXQKPiA+IFNpZ25lZC1vZmYtYnk6
-IFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5ndXRyb25peC5kZT4KPiA+IC0tLQo+Cj4gU2FzY2hh
-LCBNaWNoYWVsLAoKR29vZCBBZnRlcm5vb24sCj4KPiBJJ20gdXNpbmcgdjExIHNlcmllcyBvbiA1
-LjE4LXJjNSBvbiByazM1NjYgdHZib3ggd2l0aCBncmVhdCBzdWNjZXNzLgo+IFJlY2VudGx5IGkg
-c3RhcnRlZCB0byB3b3JrIG9uIHJvY2szLWEgKHJrMzU2OCkuCj4gdjExIGdpdmVzIG1lIHZpZGVv
-LCBhdWRpbyAtIGJ1dCBjZWMgaXMgbm90IHdvcmtpbmcgb24gcm9jazMtYS4KPgo+IEkgd2FzIHRv
-bGQ6Cj4KPiAzMmsgY2xvY2sgbmVlZGVkIGZvciBjZWMgYW5kIHRoaXMgY2xvY2sgaXMgZ2VuZXJh
-dGVkIGJ5IHRoZSBydGMgd2hpY2ggaXMgZW1iZWRkZWQgaW4gdGhlIHJrOHh4IHJlZ3VsYXRvci4K
-PiBTbyB5b3Ugc2hvdWxkIG1ha2Ugc3VyZSBpdCBpcyBlbmFibGVkIHdoZW4gaGRtaSBpcyBwb3dl
-cmQgb24sIGVnIGFkZGluZyBpdCB0byB0aGUgUkszNTY4X1BEX1ZPIHBvd2VyZG9tYWluIHNob3Vs
-ZCBoZWxwCj4KPiBJIHdhcyB0cnlpbmcgdG8gZG8gdGhpcyBpbiBkdHMgaHR0cHM6Ly9wYXN0ZWJp
-bi5jb20vNjd3dTlRckggYnV0IGNlYyBpcyBzdGlsbCBub24tZnVuY3Rpb25hbAo+Cj4gTWF5YmUg
-WW91IGhhdmUgc29tZSBoaW50cy9wb2ludGVycyBoZXJlPwoKQWRkIHRoZSBmb2xsb3dpbmcgdG8g
-dGhlIEhETUkgbm9kZToKYXNzaWduZWQtY2xvY2tzID0gPCZjcnUgQ0xLX0hETUlfQ0VDPjsKYXNz
-aWduZWQtY2xvY2stcmF0ZXMgPSA8MzI3Njg+OwoKVGhlIGlzc3VlIGlzIHRoZSBjbGtfcnRjMzJr
-X2ZyYWMgY2xvY2sgdGhhdCBmZWVkcyBjbGtfcnRjXzMyayB3aGljaApmZWVkcyBjbGtfaGRtaV9j
-ZWMgaXMgMjRtaHogYXQgYm9vdCwgd2hpY2ggaXMgdG9vIGhpZ2ggZm9yIENFQyB0bwpmdW5jdGlv
-bi4KSSBzdWJtaXR0ZWQgYSBwYXRjaCB0byBoYXZlIHRoZSBoZG1pIGRyaXZlciBoYW5kbGUgdGhp
-cywgYnV0IGl0IGJyb2tlCm90aGVyIFNvQ3MgYmVjYXVzZSAzMmsgaXMgYW4gb3B0aW9uYWwgY2xv
-Y2suClNpbmNlIHRoaXMgaXMgdGhlIGNhc2UsIEknZCBsaWtlIFJvYmluIHRvIHdlaWdoIGluIG9u
-IGdvaW5nIHRoZQphc3NpZ25lZC1jbG9jayByb3V0ZSBhZ2Fpbi4KCj4KPiBicgo+Cj4gYnR3OiBt
-eSBkdHMgZ2l2ZXMgbWUgd29ya2luZyB1c2IyIHBvcnQwL3BvcnQxIGFuZCB1c2IzIHBvcnQwLiBi
-dXQgdXNiMyBwb3J0MSBpcyBub24td29ya2luZwo+IG1heWJlIHlvdSBrbm93IHdoYXQgaXMgbWlz
-c2luZz8KCllvdSdyZSBtaXNzaW5nICZ1c2IycGh5MF9vdGcuCgpWZXJ5IFJlc3BlY3RmdWxseSwK
-UGV0ZXIgR2VpcwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1yb2NrY2hpcAo=
+On Sun, May 8, 2022 at 8:12 AM Frank Wunderlich <frank-w@public-files.de> wrote:
+>
+> Hi Heiko
+>
+> > Gesendet: Sonntag, 08. Mai 2022 um 11:41 Uhr
+> > Von: "Heiko Stuebner" <heiko@sntech.de>
+> > Am Sonntag, 8. Mai 2022, 08:24:37 CEST schrieb Frank Wunderlich:
+> > > Am 7. Mai 2022 22:01:22 MESZ schrieb Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>:
+> > > >On 07/05/2022 19:04, Frank Wunderlich wrote:
+> > > >> From: Frank Wunderlich <frank-w@public-files.de>
+> > > >>
+> > > >> Make reset optional as driver already supports it,
+> > > >
+> > > >I do not see the connection between hardware needing or not needing a
+> > > >reset GPIO and a driver supporting it or not... What does it mean?
+> > >
+> > > My board has a shared gpio-reset between gmac and switch, so both will resetted if it
+> > > is asserted. Currently it is set to the gmac and is aquired exclusive. Adding it to switch results in 2 problems:
+> > >
+> > > - due to exclusive and already mapped to gmac, switch driver exits as it cannot get the reset-gpio again.
+> > > - if i drop the reset from gmac and add to switch, it resets the gmac and this takes too long for switch
+> > > to get up. Of course i can increase the wait time after reset,but dropping reset here was the easier way.
+> > >
+> > > Using reset only on gmac side brings the switch up.
+> >
+> > I think the issue is more for the description itself.
+> >
+> > Devicetree is only meant to describe the hardware and does in general don't
+> > care how any firmware (Linux-kernel, *BSD, etc) handles it. So going with
+> > "the kernel does it this way" is not a valid reason for a binding change ;-) .
+> >
+> > Instead in general want to reason that there are boards without this reset
+> > facility and thus make it optional for those.
+>
+> if only the wording is the problem i try to rephrase it from hardware PoV.
+>
+> maybe something like this?
+>
+> https://github.com/frank-w/BPI-R2-4.14/commits/5.18-mt7531-mainline2/Documentation/devicetree/bindings/net/dsa/mediatek%2Cmt7530.yaml
+>
+> Another way is maybe increasing the delay after the reset (to give more time all
+> come up again), but imho it is no good idea resetting the gmac/mdio-bus from the
+> child device.
+>
+> have not looked into the gmac driver if this always  does the initial reset to
+> have a "clean state". In this initial reset the switch will be resetted too
+> and does not need an additional one which needs the gmac/mdio initialization
+> to be done again.
+
+For clarification, the reset gpio line is purely to reset the phy.
+If having the switch driver own the reset gpio instead of the gmac
+breaks initialization that means there's a bug in the gmac driver
+handling phy init.
+In testing I've seen issues moving the reset line to the mdio node
+with other phys and the stmmac gmac driver, so I do believe this is
+the case.
+
+>
+> > > >> allow port 5 as
+> > > >> cpu-port
+> > > >
+> > > >How do you allow it here?
+> > >
+> > > Argh, seems i accidentally removed this part and have not recognized while checking :(
+> > >
+> > > It should only change description of reg for ports to:
+> > >
+> > > "Port address described must be 5 or 6 for CPU port and from 0 to 5 for user ports."
+>
+> noticed that the target-phase is not removed but squashed in the first bindings-patch.
+> This was a rebasing error and not intented...will fix in next version.
+>
+> regards Frank
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
