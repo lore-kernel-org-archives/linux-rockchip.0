@@ -4,88 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2189C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 May 2022 12:13:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F80DC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 May 2022 13:40:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HBfmK6umX/38cFUOHPm317k3cYz0dzhptoSOv/j7fy0=; b=FWzKW+Pr2nmVNe
-	F3xuFZ+7jeNE2p7IsSSYcoNXwFddB7E77NViZRxToBxJ0ce4wjTPYc/JXL4K+8pOE9DExOFUwUXbh
-	m7xXHfNWOfl6ex/WTnvPt7Kz0W2FMiIyNGRUrw3k9SD4tWRWmNNIBqcZJQUBJiQAihBbUvbrVcZJF
-	7nEwbax/GpOAsrOK/se23JelFidVRZkCQvk9YHMiCUggLXF9RPuL/VTCGfxI8b1cWZvo8ssO1msBt
-	6PXoTCJhJGM+pcKBQdA7qDmK4gmOf10+quXgRakeEtQgegyljTbvdMNLMesWXqUGLMjZRQZxt2ls6
-	orP41QrkaNd8f6Fz43QQ==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EZgjdGtg8whCrFtYxgtn8iUSf+Y7bwGUfbdO3uJB1Qc=; b=ds/8UI3Kj+E+St
+	WYn/WieNA62w9M4AhL7szyvTjhUxTjekETqC6bE8AEruMpwFIvq53U5RbvPNS5V35X5arE+D7fMsH
+	mf077We/kdSikhJVd2y4wKDVGkkxoBgNFkoNZEkt4bOsYzN2XosBnwo6+IlhTZCwzxs/tdhj7BDUO
+	f/r8ET1F+AhX94LqeXIB6LQXgUlZBXVBG3b4TiqO8ZDt/p4/4jj4GlFB8ZsI6Wg7yULe3UeNsVnqE
+	18BGMSOk+RuvoqkWKH8gJBU5IndXICDDUQc12grjUnXkH5Of384HHjaohzDCNPzIOgTmOyrTXqqDj
+	a1s0kmKDDxSBZ5rPcdGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnfmZ-00A5OI-Bj; Sun, 08 May 2022 12:13:03 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1nnh98-00AGYP-HQ; Sun, 08 May 2022 13:40:26 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnfmM-00A5F7-3J; Sun, 08 May 2022 12:12:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1652011928;
- bh=urf/6grh3HJinL6V+chc5QjAaSNuRTaSFnBMrsEERZQ=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=dp3haL9EMAb+d40ThGLw2NcWomb7pYltQytDtNfkzAZ5gbjPBwiMDhhB4553s+/q0
- Pxh1T0BrletMfoS6DkhrAbGjRG4PG0gsNFQWX7e5yKIwBy618RmnHkIIlK0h1I4HcI
- H85tzNqlGG9U35ba2U7mUc0CTXvpFE96DppUj+wg=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.158.76] ([217.61.158.76]) by web-mail.gmx.net
- (3c-app-gmx-bap68.server.lan [172.19.172.68]) (via HTTP); Sun, 8 May 2022
- 14:12:08 +0200
-MIME-Version: 1.0
-Message-ID: <trinity-7f04b598-0300-4f3c-80e7-0c2145e8ba8f-1652011928036@3c-app-gmx-bap68>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, Krzysztof Kozlowski
- <krzysztof.kozlowski@linaro.org>, Frank Wunderlich <linux@fw-web.de>,
- linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>, Vivien
- Didelot <vivien.didelot@gmail.com>, Florian Fainelli
- <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S.
- Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof
- Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Landen Chao
- <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>, Peter Geis
- <pgwipeout@gmail.com>, netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Greg
- Ungerer <gerg@kernel.org>, =?UTF-8?Q?Ren=C3=A9_van_Dorst?=
- <opensource@vdorst.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Subject: Aw: Re: [PATCH v3 5/6] dt-bindings: net: dsa: make reset optional
- and add rgmii-mode to mt7531
-Date: Sun, 8 May 2022 14:12:08 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <2509116.Lt9SDvczpP@phil>
-References: <20220507170440.64005-1-linux@fw-web.de>
- <06157623-4b9c-6f26-e963-432c75cfc9e5@linaro.org>
- <DC0D3996-DFFE-4E71-B843-8D34C613D498@public-files.de>
- <2509116.Lt9SDvczpP@phil>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:5zepZXQ7VM3wRIvl1omrRkcQYRbWljpPdOn3rctdJ68EDLRb/Q24a0AfByhcEpmThRrM9
- XDXoxnndTJTTB8ftDLsJbKlbc/RsJfe6tPnM5q19yQJOp+qsA7fAHwMjuCMXI9X42gFBFwc9hJ1n
- MClWkUTW6eDQ9zRklCIDhuiIkrkRWPrpwjuJCghQ4jaxS14SEjcpUFVvsttTXFg/v+izpHP9rjHG
- 5K8t4XzErdhMlTCH/eYhANMQV5xXm3aJlb+YL7E9gNFRtINKVGPK7vVv/4Tn/zZ3M303CC9DAAen
- ZY=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:kpgB8WD7jB0=:31o1l/JqXaifC2Kwk5BnA5
- VGzswJjo2yL+aKgrRVCfdD4clXFY0s+2dA8zSb0Vh49KYvyC17eChYgUHcpi8OIef/2dV+w/9
- Pn58j/Uc6nV6fII/bnOQ0NZIANmW21dXO6FgCMPHzMtNZPfONtGm+Pewx4XryZ0xFc0rqeUQw
- j4VlKJzc3cdZR3uPToufdhdpNVStsXL6BwLujp9kNQM5aPO/CZuZrlrM9rrWj2s23czwi53mv
- /wsWJzP+pUbjpqYXhr/8Pn1vU3L8HugYQBKVTHjAFBWf1p41wBY9xHvR/Mkzgj2nefCXPQtNn
- RLjR/a+3JA7eKzEBPDgduFS4gW1pL6rNKcBowGKzAWDOvM2rxJnd+TqmduYBthZcoyfw4r2QW
- N8oLlea5BdJN8H19WlnIrG/pQd5AsuPzHhUjS2hJehG+cbKqy/m0KCJroKtJ1mAMl+0PpIdQA
- Mb5eH9x+wFs/kUo73f3RuX+rGzXWV3CQjX2V88tuFVK85Y+XIxIYZ6rIFT3zjAe2nUcltGX6K
- mYYsBLQNqpnBuz7V5tHDOtWTM8MqDxTNy/7oZl8M/ngQO1Q8HZbxBYBXnBE+AmOFclPa5Rut9
- KEzRKol37E3i7GDtMH1woyZoLJVzFHMvU0o1/C9NFlnqyxtVAKNlOnSHfzOesXq8iCFwrcQlU
- vST0akrfSHJYXuZwP1YJoC25O+/6mSWBhtfyyzDO55reVS3f1ojxNGEhm7+W8hQgyq5nGJa9W
- lT8FIVab+rrge0tW0xSpkVXBLFFiI1lo0YLKzu/jhjzzMSCQKKlUo5AKOn89KsW1W4q7cCnVx
- igaLZ1o
+ id 1nnh8w-00AGVf-Fs; Sun, 08 May 2022 13:40:16 +0000
+Received: by mail-lf1-x132.google.com with SMTP id p10so19751987lfa.12;
+ Sun, 08 May 2022 06:40:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=hNugHMH0gYmqiT8RdngvmmaCgPBmeqCOezfX1bTdgH8=;
+ b=a1ogE+DV8vt9+H0Mi/fvKmsEtgHDkVWC6eL/ssTxk9jTpRU8qV9U1aspYnGFQdwcgI
+ C+xErjn9SZz3POxD7CLBteDeYzigHg34lyctj8PGHI1w+tVJchdJnfMuqCR0fRI8xD0g
+ XPjOZ4FoEMFvNYhjoXg2IBC5COwrSs9XJdpWAkhq7lDcf5oQFCvgjkc6Cc2S7sGtu+Y1
+ kEywFIW4LF9eQ7UOyHiLaI0HV/ex22GTuipSC+WUFlAYwGPhhWzIyEZc4IEwotgwDZ7c
+ NgIONcyoaugrNAaMmvOpeHNPr0sTcZBfZf1X+g8OHjbzv6uky8kuKgpXBdgdLFkfCnht
+ yjpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=hNugHMH0gYmqiT8RdngvmmaCgPBmeqCOezfX1bTdgH8=;
+ b=fy55BhT5hzqgu4GwN2UVPpvMOyeKojCOnPGQ6wrss/3rkURObdnlaoo87bHq2mCj/x
+ 15UKI40/NWyLUzTR1wIgo6SKelhVVBR4HBY27SKZeQjAMDXn6/+qY7T5PT3iurUdZ+Bn
+ qFGscbWY6W42dr7dqEw6oQPfa1p4cu5bNGhrkqESENZM+YoqxsiDFCxJ+ffO/MwFMcOV
+ lP1dUaIMsmrCwY2duTJp4shRjFbuamgg+VHXd6H5ke0YSN3PktwOSwIdoNQ9r25AgF5z
+ OeKcHYh5uzUMyAUEC9erwfh1Vhtrmhby7egKl1JiFvJ8cw8HueI2s8OYF6J8JwZsXXLJ
+ JXfA==
+X-Gm-Message-State: AOAM533krUhKB77i856xA8yb2MUb7b4Hblnxaxj/9nLZ6P2GGrHcuRj5
+ CB11Em7JOueKUMFhWbadnvU=
+X-Google-Smtp-Source: ABdhPJzCr7fHU4OjHw+Q2jcxaaAzu3hQtbMSZZC/N9bd3qImeaOgf1Hf2ZyLOdRp09ZiftoRQ44XVg==
+X-Received: by 2002:ac2:57c7:0:b0:472:208d:926f with SMTP id
+ k7-20020ac257c7000000b00472208d926fmr9029878lfo.224.1652017211328; 
+ Sun, 08 May 2022 06:40:11 -0700 (PDT)
+Received: from smtpclient.apple (31-178-191-245.dynamic.chello.pl.
+ [31.178.191.245]) by smtp.gmail.com with ESMTPSA id
+ a21-20020a2e88d5000000b00250a09889a1sm1035233ljk.16.2022.05.08.06.40.10
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 08 May 2022 06:40:10 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
+Subject: Re: [PATCH v11 20/24] arm64: dts: rockchip: enable vop2 and hdmi tx
+ on rock-3a
+From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+In-Reply-To: <20220422072841.2206452-21-s.hauer@pengutronix.de>
+Date: Sun, 8 May 2022 15:40:09 +0200
+Cc: dri-devel@lists.freedesktop.org,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>, kernel test robot <lkp@intel.com>
+Message-Id: <A86359EC-5291-41BD-966E-EB7890644731@gmail.com>
+References: <20220422072841.2206452-1-s.hauer@pengutronix.de>
+ <20220422072841.2206452-21-s.hauer@pengutronix.de>
+To: Sascha Hauer <s.hauer@pengutronix.de>,
+ Michael Riesch <michael.riesch@wolfvision.net>
+X-Mailer: Apple Mail (2.3654.120.0.1.13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220508_051250_724310_8BD50DAE 
-X-CRM114-Status: GOOD (  31.03  )
+X-CRM114-CacheID: sfid-20220508_064014_584134_F7D65867 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,75 +94,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko
-
-> Gesendet: Sonntag, 08. Mai 2022 um 11:41 Uhr
-> Von: "Heiko Stuebner" <heiko@sntech.de>
-> Am Sonntag, 8. Mai 2022, 08:24:37 CEST schrieb Frank Wunderlich:
-> > Am 7. Mai 2022 22:01:22 MESZ schrieb Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>:
-> > >On 07/05/2022 19:04, Frank Wunderlich wrote:
-> > >> From: Frank Wunderlich <frank-w@public-files.de>
-> > >>
-> > >> Make reset optional as driver already supports it,
-> > >
-> > >I do not see the connection between hardware needing or not needing a
-> > >reset GPIO and a driver supporting it or not... What does it mean?
-> >
-> > My board has a shared gpio-reset between gmac and switch, so both will resetted if it
-> > is asserted. Currently it is set to the gmac and is aquired exclusive. Adding it to switch results in 2 problems:
-> >
-> > - due to exclusive and already mapped to gmac, switch driver exits as it cannot get the reset-gpio again.
-> > - if i drop the reset from gmac and add to switch, it resets the gmac and this takes too long for switch
-> > to get up. Of course i can increase the wait time after reset,but dropping reset here was the easier way.
-> >
-> > Using reset only on gmac side brings the switch up.
->
-> I think the issue is more for the description itself.
->
-> Devicetree is only meant to describe the hardware and does in general don't
-> care how any firmware (Linux-kernel, *BSD, etc) handles it. So going with
-> "the kernel does it this way" is not a valid reason for a binding change ;-) .
->
-> Instead in general want to reason that there are boards without this reset
-> facility and thus make it optional for those.
-
-if only the wording is the problem i try to rephrase it from hardware PoV.
-
-maybe something like this?
-
-https://github.com/frank-w/BPI-R2-4.14/commits/5.18-mt7531-mainline2/Documentation/devicetree/bindings/net/dsa/mediatek%2Cmt7530.yaml
-
-Another way is maybe increasing the delay after the reset (to give more time all
-come up again), but imho it is no good idea resetting the gmac/mdio-bus from the
-child device.
-
-have not looked into the gmac driver if this always  does the initial reset to
-have a "clean state". In this initial reset the switch will be resetted too
-and does not need an additional one which needs the gmac/mdio initialization
-to be done again.
-
-> > >> allow port 5 as
-> > >> cpu-port
-> > >
-> > >How do you allow it here?
-> >
-> > Argh, seems i accidentally removed this part and have not recognized while checking :(
-> >
-> > It should only change description of reg for ports to:
-> >
-> > "Port address described must be 5 or 6 for CPU port and from 0 to 5 for user ports."
-
-noticed that the target-phase is not removed but squashed in the first bindings-patch.
-This was a rebasing error and not intented...will fix in next version.
-
-regards Frank
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5n
+dXRyb25peC5kZT4gdyBkbml1IDIyLjA0LjIwMjIsIG8gZ29kei4gMDk6Mjg6Cj4gCj4gRnJvbTog
+TWljaGFlbCBSaWVzY2ggPG1pY2hhZWwucmllc2NoQHdvbGZ2aXNpb24ubmV0Pgo+IAo+IEVuYWJs
+ZSB0aGUgUkszNTZ4IFZpZGVvIE91dHB1dCBQcm9jZXNzb3IgKFZPUCkgMiBvbiB0aGUgUmFkeGEK
+PiBST0NLMyBNb2RlbCBBLgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1pY2hhZWwgUmllc2NoIDxtaWNo
+YWVsLnJpZXNjaEB3b2xmdmlzaW9uLm5ldD4KPiBSZXBvcnRlZC1ieToga2VybmVsIHRlc3Qgcm9i
+b3QgPGxrcEBpbnRlbC5jb20+Cj4gTGluazogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDIy
+MDMxMDIxMDM1Mi40NTExMzYtNC1taWNoYWVsLnJpZXNjaEB3b2xmdmlzaW9uLm5ldAo+IFNpZ25l
+ZC1vZmYtYnk6IFNhc2NoYSBIYXVlciA8cy5oYXVlckBwZW5ndXRyb25peC5kZT4KPiAtLS0KClNh
+c2NoYSwgTWljaGFlbCwKCkknbSB1c2luZyB2MTEgc2VyaWVzIG9uIDUuMTgtcmM1IG9uIHJrMzU2
+NiB0dmJveCB3aXRoIGdyZWF0IHN1Y2Nlc3MuClJlY2VudGx5IGkgc3RhcnRlZCB0byB3b3JrIG9u
+IHJvY2szLWEgKHJrMzU2OCkuCnYxMSBnaXZlcyBtZSB2aWRlbywgYXVkaW8gLSBidXQgY2VjIGlz
+IG5vdCB3b3JraW5nIG9uIHJvY2szLWEuCgpJIHdhcyB0b2xkOgoKMzJrIGNsb2NrIG5lZWRlZCBm
+b3IgY2VjIGFuZCB0aGlzIGNsb2NrIGlzIGdlbmVyYXRlZCBieSB0aGUgcnRjIHdoaWNoIGlzIGVt
+YmVkZGVkIGluIHRoZSByazh4eCByZWd1bGF0b3IuClNvIHlvdSBzaG91bGQgbWFrZSBzdXJlIGl0
+IGlzIGVuYWJsZWQgd2hlbiBoZG1pIGlzIHBvd2VyZCBvbiwgZWcgYWRkaW5nIGl0IHRvIHRoZSBS
+SzM1NjhfUERfVk8gcG93ZXJkb21haW4gc2hvdWxkIGhlbHAKCkkgd2FzIHRyeWluZyB0byBkbyB0
+aGlzIGluIGR0cyBodHRwczovL3Bhc3RlYmluLmNvbS82N3d1OVFySCBidXQgY2VjIGlzIHN0aWxs
+IG5vbi1mdW5jdGlvbmFsCgpNYXliZSBZb3UgaGF2ZSBzb21lIGhpbnRzL3BvaW50ZXJzIGhlcmU/
+CgpicgoKYnR3OiBteSBkdHMgZ2l2ZXMgbWUgd29ya2luZyB1c2IyIHBvcnQwL3BvcnQxIGFuZCB1
+c2IzIHBvcnQwLiBidXQgdXNiMyBwb3J0MSBpcyBub24td29ya2luZwptYXliZSB5b3Uga25vdyB3
+aGF0IGlzIG1pc3Npbmc/IAogIApfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
