@@ -4,83 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6370C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 May 2022 18:00:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ACE0C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 May 2022 18:22:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UftmkcGv0dX/3euBJhzYtv3wOoe7BF/8msr/M/JH3Tw=; b=qHScn8dvc9o9rl
-	TCWlsNnHkd8Yx+SrqS54eJFvzGnpJiUA7L4JP+g9iiFrWTh2MzguuO/gZsRGOoY/RNqhovITHsuuK
-	3JUZhbqsjlBySb6tRJWlLDKgBQcQN75edQNsiYADPNZmSGt5ynUHItk7u2D7jFRJi1LVWf5JX0dRE
-	S1MPoXCC4e+8uZa/rKtON1gaM7UyFU+j04IhfIz+WvxL3AgYvzRmMfd2PmcpB+B86pbEDZV/stwb/
-	JsVMalUG4KxWPQ3gqkGRa+P6JwjY/k5qB6ILLLyUVULYVNJfhv3GJm2qNAFlyP6CQtC/4juw4J9EU
-	I6icLq4mLYrgQE7oPOKw==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5fs8vj6S6uhvNqbGOgapWtNQ+fGRjKaQIOf/iqZ6OLA=; b=c9ROvnetdaWiVm
+	3iSrx7yHNge28jRFNLnZ8Pp16SwkW42uWyb0Xkj/jSFLGGciaGyIzUnUTxCeWP5DiNKTWoJUt3/S3
+	hEff+VM4jcdix09z/ZpEdPj38Gei/yVWiwqQSOo71UztHDrV38lavBA5gaVL74EEJE5jgD4Hada0b
+	hXRIoEflZSAfRKXEJp69LGo56n9mTk98xrBGD2sRZmmxxtxxgLYGhkp0E5jMVR4ysOtmuZL8Q9hPB
+	fslePTElnCTvu0F578NxPQX0A7/aujhMbpDdd6wgPs9PgtHLRxoHv0zldgmhYZNW8+ksaOIMS1uuI
+	fjtydbIdkZ2Mt6ozVdcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnlCo-00AoEV-BN; Sun, 08 May 2022 18:00:30 +0000
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+	id 1nnlXe-00Ar84-RY; Sun, 08 May 2022 18:22:02 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnlCd-00AoC7-Ni; Sun, 08 May 2022 18:00:21 +0000
-Received: by mail-yw1-x1130.google.com with SMTP id
- 00721157ae682-2ef5380669cso123694787b3.9; 
- Sun, 08 May 2022 11:00:14 -0700 (PDT)
+ id 1nnlXS-00Ar4u-Su; Sun, 08 May 2022 18:21:52 +0000
+Received: by mail-lf1-x132.google.com with SMTP id j4so20405872lfh.8;
+ Sun, 08 May 2022 11:21:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=+njCfc3VDaggbjwDxdQjFEEmHvGRLPJb/PQlC1knYZ4=;
- b=JbmHMLbkqurs+zTb73d03fNNXr6ZITEAjgQkchJHaLLeV1DVKVzhzD7UEhKg3VPbKA
- ceuyEntVPt77r9m6WzOJF3pFpxN/Eo//hadGctVx1WKWC5WgAuaGaVN46Y5CEtHqjB/0
- KzNsW2kFmyMscNDk5aJSNTXnPNbR1G50K+LddsfxFSg/HLdp+VVOVfFpWKqcNkZyP8x0
- edntJZDQbSywzUBXiYyP84hCD5s3Ne7G8xqE6qEEsfx/C+AfM00vNkLw3DajxzRNlqJI
- wpnv9XfG3sJsW2Ziy+b1SoeDugyiubck9t1q1y0karRrgZHa0caNpEOzbIx/GA8Z0tdd
- WVsw==
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=gyfkQnrJlNHhAn6+9MG49Hx9MQwFFjJbOEXow1boMqI=;
+ b=PJBywVQEh/EUzbIhvMu64wUdOWF2cmbXHh0JnXzJXkAuV+42wjQglPMCE1qFVdXWYF
+ vmFGr2Wn/YHIfRy1BJQK7GiQq37gSfM9tGVwtxvn67nKjMHD+HkYTxXjUZLd69FImpv9
+ upbo2GbF6LHXoioPNPUjeE4lsjqASAe1FUwBXU2cIJrKF4wegJ3aUA6nfp4t+gVHHjn9
+ 5kqFazBC+8Xhx1jbEZxNIphfhxQoO0ZszDShCfPyRSGJ0UpaXCKT4729FK5NUuygIxFK
+ 2xxBXVvwTLnBBDyFuaMCPhIlYenWhcGcL306ddr0iaj65AUVI63976wAqqwKbXEblEDz
+ b88A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=+njCfc3VDaggbjwDxdQjFEEmHvGRLPJb/PQlC1knYZ4=;
- b=SbPCm1rYoPcW7hKpIWMFlim2c0lUkdqCcUIeV/ssJsmfmKUby1+LLxB3o32ou/gIE6
- IDXwODY9DVsQEFqsLd0wIqvQ5yaPZAWhHJVkLlUGq0l8rlYsmRqIQlSl08blQORVcN3G
- C5cuyzBi2ijVnOF765q6a+/oZ22sDayVzoMuKb9NcslhM2iFARL6m1bgY5LpZx6cx3FL
- +D+J7xy5Lhr1iBTvjErZ80yZ1csc5/E7Qomel0GFgk5in/6lYN8mkAAGCz3+IDdBgn3W
- WDu/ZtGaRHtCY8apMpEQKKOXUX4GRGT4MYmru/asz/4S3Hklzagnwgm4RaSMi2/3Zbo7
- 4K5Q==
-X-Gm-Message-State: AOAM533f7N1rqMyYyNQktgGgsGBDJpbFWJpkNXPe3C7TY4vvH+z/MRQN
- qG+lrI37YRupl/tAnbN25eS10K3AuRNmMojQOjo=
-X-Google-Smtp-Source: ABdhPJw6cIDfypX3SJ4uKoT1hkXtYscVELpETof/gkGzQRhiepnFiY8aYzYSXcHxPEDoaxJB1B18+S8SDTmmtaYjBHg=
-X-Received: by 2002:a81:488b:0:b0:2f7:cc43:ae4c with SMTP id
- v133-20020a81488b000000b002f7cc43ae4cmr11119913ywa.414.1652032814263; Sun, 08
- May 2022 11:00:14 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=gyfkQnrJlNHhAn6+9MG49Hx9MQwFFjJbOEXow1boMqI=;
+ b=CrrVs5bKUr+S6uLU5Y25Vg1AQ5iq0IpbPvnUlcp+jCLXrZ1f4RB4ZU9td4MdSdbuuc
+ Hc/1S56LBCqI620if383CJQLipaItqVOE5h3laH/WJbGRc4GXEzw/QPsGOSvWzq9cX7X
+ Qx/jVrYjtyctawtMGdC4oUkGLNmXdB3J5W7aRX1s570KNb3+6Bj3yAEHJT6iWCPRyCyP
+ h/w5r4E+cQ8DU2yiNlQ1WsDdZS5yd6iEf0DdQ0LioqoLw3p5hAgf50YEnJ8wUuhp9dPg
+ TWljklnd0DsZS5jC9JJ4PDdbAWtmXVq/0D3pY3floKkTBXJXfl6ynbmcLW8LweeI7BYk
+ 7VIA==
+X-Gm-Message-State: AOAM5332CeM+i44BHHXuBxju9799IVAlumwIPt+a+W4D3FbAYfA+BUZf
+ 5c32xsA1Y5dNBiHZkDCuHiE=
+X-Google-Smtp-Source: ABdhPJwHID2ULTkNdIKhwTDRPaqsf8010Sn55bgPPznVD4x9VKvT+I0iZjMERyNXkPZlng4SwMwzdw==
+X-Received: by 2002:a05:6512:3090:b0:473:a636:dbee with SMTP id
+ z16-20020a056512309000b00473a636dbeemr9917513lfd.119.1652034108135; 
+ Sun, 08 May 2022 11:21:48 -0700 (PDT)
+Received: from smtpclient.apple (31-178-191-245.dynamic.chello.pl.
+ [31.178.191.245]) by smtp.gmail.com with ESMTPSA id
+ h10-20020a2e530a000000b0024f3d1daee4sm1447782ljb.108.2022.05.08.11.21.46
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 08 May 2022 11:21:47 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
+Subject: Re: [PATCH v11 20/24] arm64: dts: rockchip: enable vop2 and hdmi tx
+ on rock-3a
+From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+In-Reply-To: <CAMdYzYobfJ7WGN+UQ7t5e1Zy9knjfHLse8KzrGrHPfeMkkG0gw@mail.gmail.com>
+Date: Sun, 8 May 2022 20:21:44 +0200
+Cc: Sascha Hauer <s.hauer@pengutronix.de>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ dri-devel@lists.freedesktop.org,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ kernel test robot <lkp@intel.com>
+Message-Id: <9F2D8CFF-1EAE-4586-9EE9-82A9D67840BB@gmail.com>
 References: <20220422072841.2206452-1-s.hauer@pengutronix.de>
  <20220422072841.2206452-21-s.hauer@pengutronix.de>
  <A86359EC-5291-41BD-966E-EB7890644731@gmail.com>
  <CAMdYzYoFG3wCQaWXQNJd7mE20OMCj=ZeuewwZfaCJyoCBT-kQQ@mail.gmail.com>
  <0E6FE020-C95E-47CF-A9D6-AC3F2B2D334F@gmail.com>
-In-Reply-To: <0E6FE020-C95E-47CF-A9D6-AC3F2B2D334F@gmail.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Sun, 8 May 2022 14:00:02 -0400
-Message-ID: <CAMdYzYobfJ7WGN+UQ7t5e1Zy9knjfHLse8KzrGrHPfeMkkG0gw@mail.gmail.com>
-Subject: Re: [PATCH v11 20/24] arm64: dts: rockchip: enable vop2 and hdmi tx
- on rock-3a
-To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>,
- Michael Riesch <michael.riesch@wolfvision.net>, 
- dri-devel@lists.freedesktop.org, 
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>, 
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- kernel test robot <lkp@intel.com>
+ <CAMdYzYobfJ7WGN+UQ7t5e1Zy9knjfHLse8KzrGrHPfeMkkG0gw@mail.gmail.com>
+To: Peter Geis <pgwipeout@gmail.com>
+X-Mailer: Apple Mail (2.3654.120.0.1.13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220508_110019_799212_B908415D 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20220508_112150_972466_E098C718 
+X-CRM114-Status: UNSURE (   9.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,31 +100,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU3VuLCBNYXkgOCwgMjAyMiBhdCAxOjM2IFBNIFBpb3RyIE9uaXN6Y3p1awo8cGlvdHIub25p
-c3pjenVrQGdtYWlsLmNvbT4gd3JvdGU6Cj4KPgo+Cj4gPiBXaWFkb21vxZvEhyBuYXBpc2FuYSBw
-cnpleiBQZXRlciBHZWlzIDxwZ3dpcGVvdXRAZ21haWwuY29tPiB3IGRuaXUgMDguMDUuMjAyMiwg
-byBnb2R6LiAxODo1MzoKPiA+Cj4gPj4KPiA+PiBJIHdhcyB0cnlpbmcgdG8gZG8gdGhpcyBpbiBk
-dHMgaHR0cHM6Ly9wYXN0ZWJpbi5jb20vNjd3dTlRckggYnV0IGNlYyBpcyBzdGlsbCBub24tZnVu
-Y3Rpb25hbAo+ID4+Cj4gPj4gTWF5YmUgWW91IGhhdmUgc29tZSBoaW50cy9wb2ludGVycyBoZXJl
-Pwo+ID4KPiA+IEFkZCB0aGUgZm9sbG93aW5nIHRvIHRoZSBIRE1JIG5vZGU6Cj4gPiBhc3NpZ25l
-ZC1jbG9ja3MgPSA8JmNydSBDTEtfSERNSV9DRUM+Owo+ID4gYXNzaWduZWQtY2xvY2stcmF0ZXMg
-PSA8MzI3Njg+Owo+Cj4gSSB0aGluayBpIGhhdmUgdGhpcyBhbHJlYWR5IChwbHMgc2VlIEwyMzEv
-TDIzMiBpbiBodHRwczovL3Bhc3RlYmluLmNvbS82N3d1OVFySCApCgpJIHNlZSB5b3UgaGF2ZSBo
-ZG1pdHhtMV9jZWMgYXMgdGhlIGVuYWJsZWQgcGluLiBBcmUgeW91IGNlcnRhaW4gaXQncwp0aGUg
-bTEgcGluIGFuZCBub3QgdGhlIG0wIHBpbj8KCj4KPiA+Cj4gPj4KPiA+PiBicgo+ID4+Cj4gPj4g
-YnR3OiBteSBkdHMgZ2l2ZXMgbWUgd29ya2luZyB1c2IyIHBvcnQwL3BvcnQxIGFuZCB1c2IzIHBv
-cnQwLiBidXQgdXNiMyBwb3J0MSBpcyBub24td29ya2luZwo+ID4+IG1heWJlIHlvdSBrbm93IHdo
-YXQgaXMgbWlzc2luZz8KPiA+Cj4gPiBZb3UncmUgbWlzc2luZyAmdXNiMnBoeTBfb3RnLgo+Cj4g
-TWF5YmUgaSBtaXNzIHNvbWV0aGluZyBidXQgYWRkaW5nOgo+Cj4gJnVzYjJwaHkwX290ZyB7Cj4g
-ICAgICAgICBwaHktc3VwcGx5ID0gPCZ2Y2M1djBfdXNiX2hvc3Q+Owo+ICAgICAgICAgc3RhdHVz
-ID0gIm9rYXkiOwo+IH07Cj4KPiBicmVha3Mgd29ya2luZyB1c2IzIHBvcnQwCj4gKHNvIG5vbmUg
-b2YgdXNiMyBwb3J0cyBhcmUgd29ya2luZykKClBsZWFzZSBwYXNzIGFsb25nIGEgZnVsbCBkbWVz
-ZyBpbiB0aGlzIGNvbmZpZ3VyYXRpb24uCgo+Cj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+>> 
+>> I think i have this already (pls see L231/L232 in https://pastebin.com/67wu9QrH )
+> 
+> I see you have hdmitxm1_cec as the enabled pin. Are you certain it's
+> the m1 pin and not the m0 pin?
+
+It depends on board ver.
+pls look: https://github.com/radxa/kernel/commit/c1d727692e85c0a265913a72e517cf2bd71131ba
+
+>> 
+>> Maybe i miss something but adding:
+>> 
+>> &usb2phy0_otg {
+>>        phy-supply = <&vcc5v0_usb_host>;
+>>        status = "okay";
+>> };
+>> 
+>> breaks working usb3 port0
+>> (so none of usb3 ports are working)
+> 
+> Please pass along a full dmesg in this configuration.
+
+Here it is: https://pastebin.com/uArtBLaZ
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
