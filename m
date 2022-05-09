@@ -4,49 +4,161 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9705C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 May 2022 08:44:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81080C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 May 2022 09:05:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wpEk6Ulu0SjWCLszra3K9RSG7y1FU9WoUTUt9dFDBjM=; b=Xyz6IwdgsRjxTj
-	HvujSljI24I75Nfw6Q3leMeyAkXXDwTUw54lUKTj/5gcw2gmj+3TPJPtb7K35ZbjQpTEKrO59+9cQ
-	f6dJBanOBzUZfQRjg1iauGWqrk+3GeTvsZ0R9wQBKQMh5DPMXjwQs5SMBSyUJJyIoqN8B1tMfGutw
-	T5bQ0ck8y/CylW3DK0gqgAgKNIKxYLOdsy815lF9pHvMAvQ7pzqXEgdwKoYhFl5VTZL+R58uEd2yh
-	lkgavGToZM7udZrPsbBo72nE9hfrnF0IoQoaJUAVCXzz85dVJfyZkbznamwwOcuSd4wFOF16R0ifl
-	yeg2+ph+0Ng0Jt0XHYkQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ym5hmF+Xc2+wBvkpmnpLf4TL2XBR00kTO0XzT08LzV8=; b=ZAcZyLT6iwdaak
+	8G6oKy2gQIEKfGcuJkOx836CuAmdA/qTeI8S6Chk4pMz6y36ASoz1czc/ng1m161qY9QFcqGUllY3
+	t3e1e2NP/xhkjZM7YF9IzGqWuceL8Oun5Do/k3gl/4qq6pr2mqvNs8btYIpivLHHrFkcBecUUaMpI
+	5UooUvnJh4Mna5VZHvTvXXHP5Sp3JXbqXTMY7Jgdyxd+wKzJ2DkWEAVfhYNCIGuZn2sa5GLj5KZi1
+	J2UJX96tRMGHPyfujDDXm0iw9XKOvfYQvfeoJzV9Yombmt0flO04QkRvpFFrSvr/9wFNPzLyUJkVW
+	ohqxWnPB+oTpCFM5myQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnz0O-00DBCo-MH; Mon, 09 May 2022 08:44:36 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1nnzKt-00DKqW-3Q; Mon, 09 May 2022 09:05:47 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnz0C-00DB7Z-6k; Mon, 09 May 2022 08:44:25 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1nnz06-0004q6-4v; Mon, 09 May 2022 10:44:18 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: dri-devel@lists.freedesktop.org, Sascha Hauer <s.hauer@pengutronix.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, kernel@pengutronix.de,
- Andy Yan <andy.yan@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
- Sascha Hauer <s.hauer@pengutronix.de>
-Subject: Re: [PATCH v12 0/3] drm/rockchip: RK356x VOP2 support last fixups
-Date: Mon, 09 May 2022 10:44:17 +0200
-Message-ID: <5819111.lOV4Wx5bFT@diego>
-In-Reply-To: <20220509083738.1246866-1-s.hauer@pengutronix.de>
-References: <20220509083738.1246866-1-s.hauer@pengutronix.de>
+ id 1nnzKd-00DKl2-BO; Mon, 09 May 2022 09:05:32 +0000
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 2497Fvc7023549;
+ Mon, 9 May 2022 09:05:19 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
+ bh=5SSwTdTLuJBqL28bW9KaxhtSZdL6NO0EMvJVmUNHpZA=;
+ b=NS6s8A7UcY9U8+x9QbFwfgGAg3K/g6Rtv2gGYLcWKFcaYiOuQfGLNKh9wmdugyk0DJsj
+ jhvJxJNJW1KzLzCt+NW6gZ93+/4kMijjL44WHxqLmt4ZcPrGDOXkZq8S2OMkvrfLbdhG
+ rryk0ApihRi5wgzUTw3k1RZBpIwRq3COv8ApfrAj2sFIadVN2tlP7gZbBWD6T4fnA9Zd
+ lst6BfYbfjcrluU4ogFE0NnTrEqne0wdAY7dcKooS65jHv+WOtJeVNOY5xHSnfD96ZXa
+ QVC6qytBzL/Jx5B6ciwTwUtPqbe2PJQkVOBv6YlKCQHHbfgUqCDCMdtPm9g5nD3lC0ru xA== 
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3fwgcsjtt1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 09 May 2022 09:05:19 +0000
+Received: from pps.filterd
+ (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.16.1.2/8.16.1.2)
+ with SMTP id 2498tX9r003914; Mon, 9 May 2022 09:05:18 GMT
+Received: from nam12-mw2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12lp2048.outbound.protection.outlook.com [104.47.66.48])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com with ESMTP id
+ 3fwf77twjr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 09 May 2022 09:05:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=LmEfDkacwKcH322CWd9C/Goeoz7foZxYdEmOn+A8kx5CwaatLAeSXrvvrvl3jwHR2mFXQ6Z6iBWHSj86ACGubjAveY7qw38GYG3eC0InnV5D5XtqtK/72hNEkRd2WPSK0z0F5cQ6hODKMk1uMpnG06n+8l6vhSoBrzg3sLZnZ6LnCFn3z4vmyQDSOVHKd6M2qawhDoPWVeRTXta8sMbYURERmjNDgDgJgJqOFEkIK/lbCf/ZtAzqanUAYiTYvpDhPof3fKRi2FAzh6zQqTVDGgA6djRSYddZflNcLFSFyJzpIFirEEdBdZIUbaGwy1L8zoNVycziupkMeK7nxsLD5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=5SSwTdTLuJBqL28bW9KaxhtSZdL6NO0EMvJVmUNHpZA=;
+ b=F2sFmFZL1Ar2c82Ls4odTDhALbQ6YKNx9XuqfhAif3EC7m/8wjnbVSy0nbCp/Ct79MuiQBCGi8wOcXN4k1vgvxWYGNEBr9KnQ4faP4j4HRZ8anFfQD/b4c4sXzEbpcsTQi70ZVqsrsdmwrxbP9BHp6LpBcMLaSVTeN3Kz7tFaQb6d2n0a0xmY90szcPCaqEMaVB+xPzlW7mYVOeIm7wJtt4EmwjDrfmzh+q5a2CvzVU/cB0jN9I6GkVsLbSc4JqeYM7OVCpXSJRKd20X3832kmfLe/B5jNd+LId7UlOY2Jb8maW2C26dZeyRYVXWmvAzzvO9gYYfMWF1E9vTn8gGlg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=5SSwTdTLuJBqL28bW9KaxhtSZdL6NO0EMvJVmUNHpZA=;
+ b=SsinmHjflwWiYV1lYIaCvpTmkGSbNWPqmShdOtimtdJQ2KTVF7PgI9YnN8Yp3+y6uK97I7BmvbdKOs/N2p96XH/d7s4S1ugvrT+Awpg3xoKwOBoOzAaC7d9GYHHagsWHfH7H+rEqpqAEqDYxrR/V6XtCx1kZYaWt84i0zhcyUR0=
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by SJ0PR10MB4542.namprd10.prod.outlook.com
+ (2603:10b6:a03:2da::19) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5227.21; Mon, 9 May
+ 2022 09:05:16 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::c053:117c:bd99:89ba]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::c053:117c:bd99:89ba%5]) with mapi id 15.20.5227.020; Mon, 9 May 2022
+ 09:05:16 +0000
+Date: Mon, 9 May 2022 12:05:05 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Sandy Huang <hjc@rock-chips.com>
+Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
+ Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org
+Subject: [PATCH] drm/rockchip: vop2: unlock on error path in
+ vop2_crtc_atomic_enable()
+Message-ID: <YnjZQRV9lpub2ET8@kili>
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
+X-ClientProxiedBy: ZR0P278CA0033.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:1c::20) To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: a828c4b3-49e0-442f-63e1-08da319b08be
+X-MS-TrafficTypeDiagnostic: SJ0PR10MB4542:EE_
+X-Microsoft-Antispam-PRVS: <SJ0PR10MB454259BC1D3958C2301942F78EC69@SJ0PR10MB4542.namprd10.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 0cyATGFonWxSOqvgBS6kEjj4aBB+85JBqqvW7ZS4oTacD6F2M+I4VW5C3kunxt8NL8Im1BvbuWjlXQvhD9fX/5WYZmKLQRPs96p/Yq+sarr8sDEW3bgo8E6f9ThP+yJubuQXiW8UDC9XaHY5Jobh3CDaS4mCG59wUq4uJFz/e90K+ZWEwM/+w6HS9S7wvZ2g5aWIoByGZPztJrq6kzowtYGaTAKDqPP1cRcfSVWKE7CShSS5lf/jdCW+Kiy7Xz8CaHaTpvmTAtG3C9D75TRV6aAs1FR5/M4QG+oru4ceVH1WQobhgGSSTK1R6iKL5YTIXEdbsx+EPufb9R5DZUPaomCb4hneO4F7kQ464pOVk5buCsXfCElJz8+rLXn568V/KxoCCgfnYr4aWu1uet/LsbZowV5ec9VATJjAacpz4h2cyBDPu4tLkMKXWvH4bwLPIL5NmMqAvmzULp9siz+3l8DogAGGzVPod3lO9N1MpgF6mDerV1Ye+kDCrrEzVziGFZgdR8OnYU3qRK6hRljY6cwF7+ts6h13hIWdqd3hxwinb1FyQwe6tG8/a0O/7DnWVytVtOhkoJOkogK7TSJ7EjFIBA4cKpci8KS3hSh8Zy5GSozSwl3LbEituaVgfUDPS2PipgSberF53SzfFIfoQeZVrnaRYf++I4J+C/95JtN/dPu2x2KmiocKPF5/8UghWCKXgboYv4hzfXxjUK6rhQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(7916004)(366004)(33716001)(38350700002)(38100700002)(5660300002)(83380400001)(8936002)(6506007)(7416002)(86362001)(66556008)(44832011)(9686003)(508600001)(4744005)(6512007)(6666004)(26005)(66946007)(6486002)(316002)(66476007)(4326008)(54906003)(8676002)(6916009)(186003)(52116002)(2906002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?i04hvylEO0w1cQFGFzJl6ED7y9hhUBiz+cY0lmt9KXMZPNMvZ/Dpwr9WY5wM?=
+ =?us-ascii?Q?y6xwdvLeNMz0wVuj7r5Jql1Br99ekL0Jz7KENdwalCLIjFBLE99VCZIgYUrO?=
+ =?us-ascii?Q?s3Pv34zmAXlj68JMYmLq2uE7m/TA+m9LzrAbQRY6VTwSxA3c/cTaOxD5JVwo?=
+ =?us-ascii?Q?zJzq1F10IPedDOoiy//yMvHeKfsIJZblWd+H1lwulhDEjXgir8rpMbhSvbIb?=
+ =?us-ascii?Q?tmFnZH8ebtMDROE3ElMHWZPLpbJdiIcuwseC3XeBuTSrekgWvxq+Gt1fOCIL?=
+ =?us-ascii?Q?Xc6WMsR+JrXQoNWQxVzi4o3x7Hvk0eUfikVfkRswfElxd85phf1JdB3WRRqr?=
+ =?us-ascii?Q?8ao2bINJgErHJJj0GGlnqxLA0OA5Bh+vZIdpYXglsoGio0VSZTc+kFnby+aJ?=
+ =?us-ascii?Q?S3hZunyJop27AW6hfXNMzUrG4vJm/DxMUSRlLbXw6/2M5IhLHOE7zRuZSRvZ?=
+ =?us-ascii?Q?U59uYyqwV7hgVqWOhCUx44vjM1GfqbRs2U+JF0TTWCmnqA/gMWMaIBUHs7fr?=
+ =?us-ascii?Q?Slo16nCd556XgPyS36lFMtIO051xko5lCeLlVVBO7/oJpqDXIVdH6b+RWsKD?=
+ =?us-ascii?Q?T8GkytayVKu1RO+ErCE16L8cjlWdMTh5M37ctZd/UYFWuIxuPirPcYf7AaHX?=
+ =?us-ascii?Q?5d91Hjoeo0bssMsC3OgQahyuBZl0p9g55mVH8Wj0uOY0eUaGanzPblV93mov?=
+ =?us-ascii?Q?fugYrdMxsngWWhl9I+5eTQRziv3dfNnpJO4mK4tUTnE+S0uFyozsS2OrPqwt?=
+ =?us-ascii?Q?bDJK0ql6QoGFg5V4vaATZNEeel1J+5Ra69AOeRHwajDxGpT1Rtieuv55lcgJ?=
+ =?us-ascii?Q?xK21ylCE83+NOqC7HGJ7FVQ5yHozUdVu4cHMl6ASn0iy+C55Ge1Oq8YmSwv2?=
+ =?us-ascii?Q?FarHqfePJWjCNVGbu3+uwDh6HqbcWFoCz9ZtwZXXBoS369BpD5sASRXEB9MU?=
+ =?us-ascii?Q?UkwkaAy/5TjV5auY/+p6CdSAA2DU/A5jX0Ua3jn8E9uZBGu9wFz/CTvg/0IJ?=
+ =?us-ascii?Q?GxuarWWhOC+qnKkzGZKQlPtx4i5FhruxAoTBF2lX/+ytGo6ub/C6HzElkoyR?=
+ =?us-ascii?Q?XOPxZxZRBt4Nu4LjMicIppdc/ezS1H8SJARdx3Mli0hQuHlYGxJ8trjyJG10?=
+ =?us-ascii?Q?antvpAtCclypA0nUd4Hur6gVqV+1VlAaRAZ1FaetlMJ2lKOtA+AyMfd94aY2?=
+ =?us-ascii?Q?UV09d/0z0PUWEvnpTyy0WvRjr6MTBaV304H3fzcgxcNzgItX0mQb9Hgf+w4K?=
+ =?us-ascii?Q?3ACN8smlU/smbaSY9sWt8IRWL9Dj1vkXI2IQfThjmNz5zvr66D0krhccV74g?=
+ =?us-ascii?Q?Pl2BNdXXuVa9+j/lwN4gVaUrNGMh22RXNe04a0KeJzC7C4ZwvDNKOesueHv7?=
+ =?us-ascii?Q?BResyolMho/WKDYa7BRZtxeCc/7vRjKm7CncXopOKTuT9SWp8F5Vu7D7XTLg?=
+ =?us-ascii?Q?MAGTrRskS4PlgtNTCIfXNZUGvkEoLOvtFnw12oXrWNWxgYeU+5jziq8QJiQl?=
+ =?us-ascii?Q?EnUxcRj1G50ECFtVdkjBQTLVBsTCBTg5bZHST3HK1OdvS7OQdVxJ6OK8VETn?=
+ =?us-ascii?Q?3jlayF7dtRDoyTmGMr942Kj9ptECUVmK30zrlcDNw4ewb6VQYbR2BrpfIJ56?=
+ =?us-ascii?Q?2Ov731uy5I3FXM56Zf5NpHqxWUtzIprCF97TtxDGOd1s0MRW3WqLB5mcfdbz?=
+ =?us-ascii?Q?b5m+L4COeCUzV6sZVvQF22GN7/FvUM5b3h0ezDD5F/zOvG/6YIcJp/mIeW5/?=
+ =?us-ascii?Q?TpwWfos+DMvlWDx6vU28BFfTE6PoYEA=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a828c4b3-49e0-442f-63e1-08da319b08be
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 May 2022 09:05:16.4764 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: DPT3XljoJfzvc8A8VMBa6tY4XpoePsDBwHQtwN/s/q1gE+iGfhwUeWZweXucERkvYAPw86/3Hxzxn1iVDMZJL1548gTRDfUKUarlZF96X5M=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR10MB4542
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.486, 18.0.858
+ definitions=2022-05-09_02:2022-05-09,
+ 2022-05-09 signatures=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxlogscore=999
+ spamscore=0 bulkscore=0 adultscore=0 suspectscore=0 mlxscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2202240000 definitions=main-2205090051
+X-Proofpoint-GUID: 7oBZw99b3myKqHWRvVsJ_vB6cUy5G029
+X-Proofpoint-ORIG-GUID: 7oBZw99b3myKqHWRvVsJ_vB6cUy5G029
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_014424_295197_5B0C3CA2 
-X-CRM114-Status: GOOD (  17.90  )
+X-CRM114-CacheID: sfid-20220509_020531_550809_92766139 
+X-CRM114-Status: GOOD (  14.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,63 +176,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sascha,
+This error path needs an unlock before returning.
 
-Am Montag, 9. Mai 2022, 10:37:35 CEST schrieb Sascha Hauer:
-> This is not the full series, if you want that, look for v11.
-> 
-> This series merely has a last-minute change: The VOP2 driver used
-> platform_get_resource_byname() to get its registers, but the reg-names
-> property hasn't been documented in the binding. This series adds the
-> missing documentation and along the way renames the generic "regs"
-> name to "vop" and "gamma_lut" to "gamma-lut".
+Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-we need a fixup-series though. Both the original binding + vop2 driver
-already made it into drm-misc [0]. As this is a shared tree, this can't be
-changed anymore ;-) .
-
-(Just ignore that the vop2-header moved to the driver-patch, I'll
-fix that up when applying to not cause conflicts)
-
-
-Heiko
-
-[0] https://cgit.freedesktop.org/drm/drm-misc/commit/?id=604be85547ce4d61b89292d2f9a78c721b778c16
-    https://cgit.freedesktop.org/drm/drm-misc/commit/?id=74015e2650bad641a02100cdf0ac23a96c1a2553
-
-
-> Andy Yan (1):
->   drm: rockchip: Add VOP2 driver
-> 
-> Sascha Hauer (2):
->   arm64: dts: rockchip: rk356x: Add VOP2 nodes
->   dt-bindings: display: rockchip: Add binding for VOP2
-> 
->  .../display/rockchip/rockchip-vop2.yaml       |  146 +
->  arch/arm64/boot/dts/rockchip/rk3566.dtsi      |    4 +
->  arch/arm64/boot/dts/rockchip/rk3568.dtsi      |    4 +
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi      |   51 +
->  drivers/gpu/drm/rockchip/Kconfig              |    6 +
->  drivers/gpu/drm/rockchip/Makefile             |    1 +
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |    1 +
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.h   |    6 +-
->  drivers/gpu/drm/rockchip/rockchip_drm_fb.c    |    2 +
->  drivers/gpu/drm/rockchip/rockchip_drm_vop.h   |   15 +
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c  | 2706 +++++++++++++++++
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.h  |  477 +++
->  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c  |  281 ++
->  include/dt-bindings/soc/rockchip,vop2.h       |   14 +
->  14 files changed, 3713 insertions(+), 1 deletion(-)
->  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
->  create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
->  create mode 100644 drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
->  create mode 100644 drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
->  create mode 100644 include/dt-bindings/soc/rockchip,vop2.h
-> 
-> 
-
-
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 0b49fed16535..b68922943825 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1524,6 +1524,7 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+ 	if (ret < 0) {
+ 		drm_err(vop2->drm, "failed to enable dclk for video port%d - %d\n",
+ 			vp->id, ret);
++		vop2_unlock(vop2);
+ 		return;
+ 	}
+ 
+-- 
+2.35.1
 
 
 _______________________________________________
