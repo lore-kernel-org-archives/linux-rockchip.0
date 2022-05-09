@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4247C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 May 2022 09:52:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08EE1C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 May 2022 09:54:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1ZOeuQ1vdJ2O7ty4AbZMaAgWdOFUxZ9XdNaqmnNC6ZE=; b=WuPz3EFn5JqDDm
-	0oZN90dp4BsLBki9Cs43qd/CZf0YlE4rSHhgpwOBskeR0KEoGpWxdOKS32TBH+keby6ZFq4mvz9DO
-	whmc3WAh0DvCiIE84/7WTMKuUX24aeeSR2PrDkd0Y7u2x3bkoD7tdGossSjF+GhN9nQPePgAQOpxR
-	ftI2WfTzhP6Zmb5NpExYEq4KS6UuYKCfPru23e0HhTqqZcGr0+ciMDovHYhXajOSPMGWTrePw/1Ck
-	hwdwpbeRuydcEXSf+QPr7Fz0uwuAoEHKexrseUmDDVBoIKJki9uXKz/Db8tQ+VLaF9zHMpu+b/QYn
-	ePYbrdG4xz9cMqe5xUfA==;
+	List-Owner; bh=iMBCxMyHu568wenNkYPf2GfkInv2D9Q8yWtmsbdYHas=; b=0KriZztM8dUdkc
+	Wfp4KLDnFHmAw8RNxuvctvorR06QtDqOfkqL0zU6nbftvD7ww1E2qpNet2Sx28S9jvnesJriOaA3U
+	N6uV2kmlndBUdaokDkLFEWYZvKjxfN+CUwjNxC9EWZIQXCgszFQOmBjOg7bbU35p/Tv/MMU5A5KQ+
+	Rfio8MVWfjampl1NAcWWTctKqOGtsT8muomRQgjq3fMXN6McLCI+AUrMP8gm7yfZxNfEklJHBtCmT
+	8AIejzNLV4zWnr/c3sIHF1X9qkHwMlXnjt4QN1gDnLHBmv4rbfRlKb3xZJqxEKhpdqkK7A1YutxJX
+	mBr6BIuOkDWXbiGpVgTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1no03t-00DaRI-3o; Mon, 09 May 2022 09:52:17 +0000
+	id 1no05n-00Das5-8O; Mon, 09 May 2022 09:54:15 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1no03h-00DaOS-8A
- for linux-rockchip@lists.infradead.org; Mon, 09 May 2022 09:52:07 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ id 1no05N-00Dajy-8q
+ for linux-rockchip@lists.infradead.org; Mon, 09 May 2022 09:53:55 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1no03W-0001WQ-Nt; Mon, 09 May 2022 11:51:54 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+ id 1no05K-0001iF-C3; Mon, 09 May 2022 11:53:46 +0200
+Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
+ by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1no03T-0007qR-OY; Mon, 09 May 2022 11:51:51 +0200
-Date: Mon, 9 May 2022 11:51:51 +0200
+ id 1no05K-001Gdk-Fq; Mon, 09 May 2022 11:53:45 +0200
+Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
+ (envelope-from <sha@pengutronix.de>)
+ id 1no05I-005ReW-Cf; Mon, 09 May 2022 11:53:44 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: Sandy Huang <hjc@rock-chips.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Rob Herring <robh@kernel.org>, Andy Yan <andy.yan@rock-chips.com>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org
-Subject: Re: [PATCH] drm/rockchip: vop2: unlock on error path in
- vop2_crtc_atomic_enable()
-Message-ID: <20220509095151.GB4012@pengutronix.de>
-References: <YnjZQRV9lpub2ET8@kili>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@pengutronix.de,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [PATCH 3/3] fixup! arm64: dts: rockchip: rk356x: Add VOP2 nodes
+Date: Mon,  9 May 2022 11:53:19 +0200
+Message-Id: <20220509095319.1297885-3-s.hauer@pengutronix.de>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220509095319.1297885-1-s.hauer@pengutronix.de>
+References: <20220509083738.1246866-1-s.hauer@pengutronix.de>
+ <20220509095319.1297885-1-s.hauer@pengutronix.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YnjZQRV9lpub2ET8@kili>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 11:51:12 up 39 days, 22:20, 93 users,  load average: 0.10, 0.11, 0.14
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: sha@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_025205_323668_BC2488C6 
-X-CRM114-Status: GOOD (  22.72  )
+X-CRM114-CacheID: sfid-20220509_025349_357196_03DAE999 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,45 +80,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 09, 2022 at 12:05:05PM +0300, Dan Carpenter wrote:
-> This error path needs an unlock before returning.
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Indeed.
-
-> 
-> Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
-
-Acked-by: Sascha Hauer <s.hauer@pengutronix.de>
-
-Sascha
-
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> index 0b49fed16535..b68922943825 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -1524,6 +1524,7 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
->  	if (ret < 0) {
->  		drm_err(vop2->drm, "failed to enable dclk for video port%d - %d\n",
->  			vp->id, ret);
-> +		vop2_unlock(vop2);
->  		return;
->  	}
->  
-> -- 
-> 2.35.1
-> 
-> 
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index 49eb45e23f8c9..646e60ee48c99 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -576,7 +576,7 @@ gmac1_mtl_tx_setup: tx-queues-config {
+ 
+ 	vop: vop@fe040000 {
+ 		reg = <0x0 0xfe040000 0x0 0x3000>, <0x0 0xfe044000 0x0 0x1000>;
+-		reg-names = "regs", "gamma_lut";
++		reg-names = "vop", "gamma-lut";
+ 		interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>, <&cru DCLK_VOP0>,
+ 			 <&cru DCLK_VOP1>, <&cru DCLK_VOP2>;
 -- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+2.30.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
