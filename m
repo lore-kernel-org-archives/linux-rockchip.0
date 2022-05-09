@@ -4,161 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81080C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 May 2022 09:05:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4376CC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 May 2022 09:25:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ym5hmF+Xc2+wBvkpmnpLf4TL2XBR00kTO0XzT08LzV8=; b=ZAcZyLT6iwdaak
-	8G6oKy2gQIEKfGcuJkOx836CuAmdA/qTeI8S6Chk4pMz6y36ASoz1czc/ng1m161qY9QFcqGUllY3
-	t3e1e2NP/xhkjZM7YF9IzGqWuceL8Oun5Do/k3gl/4qq6pr2mqvNs8btYIpivLHHrFkcBecUUaMpI
-	5UooUvnJh4Mna5VZHvTvXXHP5Sp3JXbqXTMY7Jgdyxd+wKzJ2DkWEAVfhYNCIGuZn2sa5GLj5KZi1
-	J2UJX96tRMGHPyfujDDXm0iw9XKOvfYQvfeoJzV9Yombmt0flO04QkRvpFFrSvr/9wFNPzLyUJkVW
-	ohqxWnPB+oTpCFM5myQQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=yPE4VbNIYgRLA+4LnLrq9YKhmaPMV4EXhEnOVnW71Ss=; b=vyAjUy6kJr1W12
+	FZU37Y0I3cHB0x7THzKPFe9uMf86SQV6CAF24vMyhqMw8avOirxBYpc6DupZ7lb//cmUORIzWWhl+
+	vsvrSPgaQ65oemSE/02y4TdkCpsz/fyW6huU4K2qCj9gkQ47ep4q2VYdme68eUpS/5w9+3CKsH6Ey
+	H1MtYGe/05IRkWvYl7NDbONhEMXUzq7xrPb89tILOXQTcdl4bJO6gfr83U+XpZtIShNlo9gD9z/tW
+	nVs7/VJQPhL52iWlwhCddbjuQ/X5p23hMLXbbK4zHqOmxSTwI5dEfUnd33luUlfplxodsS4E/qyyl
+	VGB3XpsisQJzRbIVqcUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnzKt-00DKqW-3Q; Mon, 09 May 2022 09:05:47 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1nnzdS-00DQ5Z-Vd; Mon, 09 May 2022 09:24:59 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnzKd-00DKl2-BO; Mon, 09 May 2022 09:05:32 +0000
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 2497Fvc7023549;
- Mon, 9 May 2022 09:05:19 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
- bh=5SSwTdTLuJBqL28bW9KaxhtSZdL6NO0EMvJVmUNHpZA=;
- b=NS6s8A7UcY9U8+x9QbFwfgGAg3K/g6Rtv2gGYLcWKFcaYiOuQfGLNKh9wmdugyk0DJsj
- jhvJxJNJW1KzLzCt+NW6gZ93+/4kMijjL44WHxqLmt4ZcPrGDOXkZq8S2OMkvrfLbdhG
- rryk0ApihRi5wgzUTw3k1RZBpIwRq3COv8ApfrAj2sFIadVN2tlP7gZbBWD6T4fnA9Zd
- lst6BfYbfjcrluU4ogFE0NnTrEqne0wdAY7dcKooS65jHv+WOtJeVNOY5xHSnfD96ZXa
- QVC6qytBzL/Jx5B6ciwTwUtPqbe2PJQkVOBv6YlKCQHHbfgUqCDCMdtPm9g5nD3lC0ru xA== 
-Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
- (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3fwgcsjtt1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 09 May 2022 09:05:19 +0000
-Received: from pps.filterd
- (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.16.1.2/8.16.1.2)
- with SMTP id 2498tX9r003914; Mon, 9 May 2022 09:05:18 GMT
-Received: from nam12-mw2-obe.outbound.protection.outlook.com
- (mail-mw2nam12lp2048.outbound.protection.outlook.com [104.47.66.48])
- by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com with ESMTP id
- 3fwf77twjr-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 09 May 2022 09:05:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LmEfDkacwKcH322CWd9C/Goeoz7foZxYdEmOn+A8kx5CwaatLAeSXrvvrvl3jwHR2mFXQ6Z6iBWHSj86ACGubjAveY7qw38GYG3eC0InnV5D5XtqtK/72hNEkRd2WPSK0z0F5cQ6hODKMk1uMpnG06n+8l6vhSoBrzg3sLZnZ6LnCFn3z4vmyQDSOVHKd6M2qawhDoPWVeRTXta8sMbYURERmjNDgDgJgJqOFEkIK/lbCf/ZtAzqanUAYiTYvpDhPof3fKRi2FAzh6zQqTVDGgA6djRSYddZflNcLFSFyJzpIFirEEdBdZIUbaGwy1L8zoNVycziupkMeK7nxsLD5A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5SSwTdTLuJBqL28bW9KaxhtSZdL6NO0EMvJVmUNHpZA=;
- b=F2sFmFZL1Ar2c82Ls4odTDhALbQ6YKNx9XuqfhAif3EC7m/8wjnbVSy0nbCp/Ct79MuiQBCGi8wOcXN4k1vgvxWYGNEBr9KnQ4faP4j4HRZ8anFfQD/b4c4sXzEbpcsTQi70ZVqsrsdmwrxbP9BHp6LpBcMLaSVTeN3Kz7tFaQb6d2n0a0xmY90szcPCaqEMaVB+xPzlW7mYVOeIm7wJtt4EmwjDrfmzh+q5a2CvzVU/cB0jN9I6GkVsLbSc4JqeYM7OVCpXSJRKd20X3832kmfLe/B5jNd+LId7UlOY2Jb8maW2C26dZeyRYVXWmvAzzvO9gYYfMWF1E9vTn8gGlg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5SSwTdTLuJBqL28bW9KaxhtSZdL6NO0EMvJVmUNHpZA=;
- b=SsinmHjflwWiYV1lYIaCvpTmkGSbNWPqmShdOtimtdJQ2KTVF7PgI9YnN8Yp3+y6uK97I7BmvbdKOs/N2p96XH/d7s4S1ugvrT+Awpg3xoKwOBoOzAaC7d9GYHHagsWHfH7H+rEqpqAEqDYxrR/V6XtCx1kZYaWt84i0zhcyUR0=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by SJ0PR10MB4542.namprd10.prod.outlook.com
- (2603:10b6:a03:2da::19) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5227.21; Mon, 9 May
- 2022 09:05:16 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::c053:117c:bd99:89ba]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::c053:117c:bd99:89ba%5]) with mapi id 15.20.5227.020; Mon, 9 May 2022
- 09:05:16 +0000
-Date: Mon, 9 May 2022 12:05:05 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Sandy Huang <hjc@rock-chips.com>
-Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
- Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org
-Subject: [PATCH] drm/rockchip: vop2: unlock on error path in
- vop2_crtc_atomic_enable()
-Message-ID: <YnjZQRV9lpub2ET8@kili>
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-X-ClientProxiedBy: ZR0P278CA0033.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:1c::20) To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+ id 1nnzdQ-00DQ3p-Cf; Mon, 09 May 2022 09:24:57 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id a21so15540409edb.1;
+ Mon, 09 May 2022 02:24:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=LFcgVVJ7bK726HSSPtE+r4B2aXmQmGmr8tjtETzF3YE=;
+ b=SCk+kS+aXSHUKOVJ2iBIKunz+vcKeLZXVRZZHJfW4513NoPDMHM/BlO9OtZ7pastdC
+ W/17ymo2ZabbKF5AqescJlLZ70aU1Y97l5qpVLrA18jRc0OHqWQv8jc26EcjZrcOWJgx
+ dHj0tCBpALYRpyVM+ddvFgwFOppJimHwgMIcd7eh5EABQOJIUoZWVsSh9zUzOph1salq
+ 27jvi086X5pbvzJgzxj/oTtHN9/bkaCl2rc7R84n0hivnm28KWv6VgNhxEqHfcwFy1Km
+ FZvm+nMTTAeT0s1Qlvuzm7IvUgUETmh90LwK2vTHxI9i5QZ6N26z1U30HAg3ur85Fc7A
+ avug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=LFcgVVJ7bK726HSSPtE+r4B2aXmQmGmr8tjtETzF3YE=;
+ b=qcJa2vsaGnBw1/8UzCAaXq6hJMu0fK+1xkBWUIAssiCbygINwSibnjz4JalWFubMdw
+ AXWeBZVDO6JRleaqGfT2Pa6WXRYEsCFs04Su2UFuMdQ2yu7XKcXq6tAxqhVx/myjgGPe
+ Zf2H/Xgn4UDQsiGT2AH6Rn+2VLCDjGz6NDtnj5CkVJf2Q8i5kaV7k28zxk6bdViDtQuX
+ N0oAX3+725eJJ34QF5c+IZvhxQn9BU9kNwSaAQb5QE7KDbsRkoGNvbIXFU0VgbKTWlZG
+ LTW7C0EBT7sQjkSpX/xWVuk9NQarhG4vQ6xmb1Bmfvz21l9lIVFIxlBhy3PrI/bXfmMI
+ rJvw==
+X-Gm-Message-State: AOAM530YRdY392t3+FT/fv5AWDGDu/E7u8yzBPNxYnnHDCTk1IDzOHVO
+ v7J+2aaMAx15+FHrJ07QgIU=
+X-Google-Smtp-Source: ABdhPJx86XxIR0CMtq+ONANDVnTdQClivXE2E+RefrUi2Gb8ihwn5DKx9ngWTXM2K4DIENT7/NS20A==
+X-Received: by 2002:a05:6402:4384:b0:427:b5c0:4bf with SMTP id
+ o4-20020a056402438400b00427b5c004bfmr16757704edc.127.1652088292537; 
+ Mon, 09 May 2022 02:24:52 -0700 (PDT)
+Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch.
+ [84.72.105.84]) by smtp.gmail.com with ESMTPSA id
+ gz14-20020a170907a04e00b006f3ef214e62sm4869938ejc.200.2022.05.09.02.24.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 09 May 2022 02:24:52 -0700 (PDT)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/3] dt-bindings: media: rockchip-vpu: Add RK3568 VEPU
+ compatible
+Date: Mon, 09 May 2022 11:24:50 +0200
+Message-ID: <3594222.Ivq9XVSPaC@archbook>
+In-Reply-To: <422bf3bc-7787-97dd-6ab4-7570e5ce2ed8@linaro.org>
+References: <20220508202544.501981-1-frattaroli.nicolas@gmail.com>
+ <20220508202544.501981-2-frattaroli.nicolas@gmail.com>
+ <422bf3bc-7787-97dd-6ab4-7570e5ce2ed8@linaro.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: a828c4b3-49e0-442f-63e1-08da319b08be
-X-MS-TrafficTypeDiagnostic: SJ0PR10MB4542:EE_
-X-Microsoft-Antispam-PRVS: <SJ0PR10MB454259BC1D3958C2301942F78EC69@SJ0PR10MB4542.namprd10.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 0cyATGFonWxSOqvgBS6kEjj4aBB+85JBqqvW7ZS4oTacD6F2M+I4VW5C3kunxt8NL8Im1BvbuWjlXQvhD9fX/5WYZmKLQRPs96p/Yq+sarr8sDEW3bgo8E6f9ThP+yJubuQXiW8UDC9XaHY5Jobh3CDaS4mCG59wUq4uJFz/e90K+ZWEwM/+w6HS9S7wvZ2g5aWIoByGZPztJrq6kzowtYGaTAKDqPP1cRcfSVWKE7CShSS5lf/jdCW+Kiy7Xz8CaHaTpvmTAtG3C9D75TRV6aAs1FR5/M4QG+oru4ceVH1WQobhgGSSTK1R6iKL5YTIXEdbsx+EPufb9R5DZUPaomCb4hneO4F7kQ464pOVk5buCsXfCElJz8+rLXn568V/KxoCCgfnYr4aWu1uet/LsbZowV5ec9VATJjAacpz4h2cyBDPu4tLkMKXWvH4bwLPIL5NmMqAvmzULp9siz+3l8DogAGGzVPod3lO9N1MpgF6mDerV1Ye+kDCrrEzVziGFZgdR8OnYU3qRK6hRljY6cwF7+ts6h13hIWdqd3hxwinb1FyQwe6tG8/a0O/7DnWVytVtOhkoJOkogK7TSJ7EjFIBA4cKpci8KS3hSh8Zy5GSozSwl3LbEituaVgfUDPS2PipgSberF53SzfFIfoQeZVrnaRYf++I4J+C/95JtN/dPu2x2KmiocKPF5/8UghWCKXgboYv4hzfXxjUK6rhQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230001)(7916004)(366004)(33716001)(38350700002)(38100700002)(5660300002)(83380400001)(8936002)(6506007)(7416002)(86362001)(66556008)(44832011)(9686003)(508600001)(4744005)(6512007)(6666004)(26005)(66946007)(6486002)(316002)(66476007)(4326008)(54906003)(8676002)(6916009)(186003)(52116002)(2906002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?i04hvylEO0w1cQFGFzJl6ED7y9hhUBiz+cY0lmt9KXMZPNMvZ/Dpwr9WY5wM?=
- =?us-ascii?Q?y6xwdvLeNMz0wVuj7r5Jql1Br99ekL0Jz7KENdwalCLIjFBLE99VCZIgYUrO?=
- =?us-ascii?Q?s3Pv34zmAXlj68JMYmLq2uE7m/TA+m9LzrAbQRY6VTwSxA3c/cTaOxD5JVwo?=
- =?us-ascii?Q?zJzq1F10IPedDOoiy//yMvHeKfsIJZblWd+H1lwulhDEjXgir8rpMbhSvbIb?=
- =?us-ascii?Q?tmFnZH8ebtMDROE3ElMHWZPLpbJdiIcuwseC3XeBuTSrekgWvxq+Gt1fOCIL?=
- =?us-ascii?Q?Xc6WMsR+JrXQoNWQxVzi4o3x7Hvk0eUfikVfkRswfElxd85phf1JdB3WRRqr?=
- =?us-ascii?Q?8ao2bINJgErHJJj0GGlnqxLA0OA5Bh+vZIdpYXglsoGio0VSZTc+kFnby+aJ?=
- =?us-ascii?Q?S3hZunyJop27AW6hfXNMzUrG4vJm/DxMUSRlLbXw6/2M5IhLHOE7zRuZSRvZ?=
- =?us-ascii?Q?U59uYyqwV7hgVqWOhCUx44vjM1GfqbRs2U+JF0TTWCmnqA/gMWMaIBUHs7fr?=
- =?us-ascii?Q?Slo16nCd556XgPyS36lFMtIO051xko5lCeLlVVBO7/oJpqDXIVdH6b+RWsKD?=
- =?us-ascii?Q?T8GkytayVKu1RO+ErCE16L8cjlWdMTh5M37ctZd/UYFWuIxuPirPcYf7AaHX?=
- =?us-ascii?Q?5d91Hjoeo0bssMsC3OgQahyuBZl0p9g55mVH8Wj0uOY0eUaGanzPblV93mov?=
- =?us-ascii?Q?fugYrdMxsngWWhl9I+5eTQRziv3dfNnpJO4mK4tUTnE+S0uFyozsS2OrPqwt?=
- =?us-ascii?Q?bDJK0ql6QoGFg5V4vaATZNEeel1J+5Ra69AOeRHwajDxGpT1Rtieuv55lcgJ?=
- =?us-ascii?Q?xK21ylCE83+NOqC7HGJ7FVQ5yHozUdVu4cHMl6ASn0iy+C55Ge1Oq8YmSwv2?=
- =?us-ascii?Q?FarHqfePJWjCNVGbu3+uwDh6HqbcWFoCz9ZtwZXXBoS369BpD5sASRXEB9MU?=
- =?us-ascii?Q?UkwkaAy/5TjV5auY/+p6CdSAA2DU/A5jX0Ua3jn8E9uZBGu9wFz/CTvg/0IJ?=
- =?us-ascii?Q?GxuarWWhOC+qnKkzGZKQlPtx4i5FhruxAoTBF2lX/+ytGo6ub/C6HzElkoyR?=
- =?us-ascii?Q?XOPxZxZRBt4Nu4LjMicIppdc/ezS1H8SJARdx3Mli0hQuHlYGxJ8trjyJG10?=
- =?us-ascii?Q?antvpAtCclypA0nUd4Hur6gVqV+1VlAaRAZ1FaetlMJ2lKOtA+AyMfd94aY2?=
- =?us-ascii?Q?UV09d/0z0PUWEvnpTyy0WvRjr6MTBaV304H3fzcgxcNzgItX0mQb9Hgf+w4K?=
- =?us-ascii?Q?3ACN8smlU/smbaSY9sWt8IRWL9Dj1vkXI2IQfThjmNz5zvr66D0krhccV74g?=
- =?us-ascii?Q?Pl2BNdXXuVa9+j/lwN4gVaUrNGMh22RXNe04a0KeJzC7C4ZwvDNKOesueHv7?=
- =?us-ascii?Q?BResyolMho/WKDYa7BRZtxeCc/7vRjKm7CncXopOKTuT9SWp8F5Vu7D7XTLg?=
- =?us-ascii?Q?MAGTrRskS4PlgtNTCIfXNZUGvkEoLOvtFnw12oXrWNWxgYeU+5jziq8QJiQl?=
- =?us-ascii?Q?EnUxcRj1G50ECFtVdkjBQTLVBsTCBTg5bZHST3HK1OdvS7OQdVxJ6OK8VETn?=
- =?us-ascii?Q?3jlayF7dtRDoyTmGMr942Kj9ptECUVmK30zrlcDNw4ewb6VQYbR2BrpfIJ56?=
- =?us-ascii?Q?2Ov731uy5I3FXM56Zf5NpHqxWUtzIprCF97TtxDGOd1s0MRW3WqLB5mcfdbz?=
- =?us-ascii?Q?b5m+L4COeCUzV6sZVvQF22GN7/FvUM5b3h0ezDD5F/zOvG/6YIcJp/mIeW5/?=
- =?us-ascii?Q?TpwWfos+DMvlWDx6vU28BFfTE6PoYEA=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a828c4b3-49e0-442f-63e1-08da319b08be
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 May 2022 09:05:16.4764 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: DPT3XljoJfzvc8A8VMBa6tY4XpoePsDBwHQtwN/s/q1gE+iGfhwUeWZweXucERkvYAPw86/3Hxzxn1iVDMZJL1548gTRDfUKUarlZF96X5M=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR10MB4542
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.486, 18.0.858
- definitions=2022-05-09_02:2022-05-09,
- 2022-05-09 signatures=0
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- mlxlogscore=999
- spamscore=0 bulkscore=0 adultscore=0 suspectscore=0 mlxscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2202240000 definitions=main-2205090051
-X-Proofpoint-GUID: 7oBZw99b3myKqHWRvVsJ_vB6cUy5G029
-X-Proofpoint-ORIG-GUID: 7oBZw99b3myKqHWRvVsJ_vB6cUy5G029
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_020531_550809_92766139 
-X-CRM114-Status: GOOD (  14.19  )
+X-CRM114-CacheID: sfid-20220509_022456_480558_E12A240E 
+X-CRM114-Status: GOOD (  23.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -176,28 +97,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This error path needs an unlock before returning.
+On Montag, 9. Mai 2022 09:25:23 CEST Krzysztof Kozlowski wrote:
+> On 08/05/2022 22:25, Nicolas Frattaroli wrote:
+> > The RK3568 and RK3566 have a Hantro VPU node solely dedicated to
+> > encoding. This patch adds a compatible for it, and also allows
+> > the bindings to only come with a vepu interrupt.
+> > 
+> > Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> > ---
+> >  Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 2 ++
+> >  1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> > index bacb60a34989..4045f107ca4e 100644
+> > --- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> > +++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> > @@ -22,6 +22,7 @@ properties:
+> >            - rockchip,rk3288-vpu
+> >            - rockchip,rk3328-vpu
+> >            - rockchip,rk3399-vpu
+> > +          - rockchip,rk3568-vepu
+> >            - rockchip,px30-vpu
+> >        - items:
+> >            - const: rockchip,rk3188-vpu
+> > @@ -40,6 +41,7 @@ properties:
+> >    interrupt-names:
+> >      oneOf:
+> >        - const: vdpu
+> > +      - const: vepu
+> 
+> This should be enum (for both lines above) and you should add
+> allOf:if:then with a constraints which variant can have which interrupts.
+> 
+> 
+> Best regards,
+> Krzysztof
+> 
 
-Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 1 +
- 1 file changed, 1 insertion(+)
+So something like this?
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 0b49fed16535..b68922943825 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1524,6 +1524,7 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
- 	if (ret < 0) {
- 		drm_err(vop2->drm, "failed to enable dclk for video port%d - %d\n",
- 			vp->id, ret);
-+		vop2_unlock(vop2);
- 		return;
- 	}
- 
--- 
-2.35.1
+  interrupt-names:
+    oneOf:
+      - enum:
+         - vdpu
+         - vepu
+      - items:
+          - const: vepu
+          - const: vdpu
+
+What's the difference between a list of consts and an enum here?
+I'm not very familiar with dt-schema, my apologies.
+
+Also, since I don't know which of the other variants can have
+the encoding interrupt and this wasn't brought up until now, I think
+my solution will be to have a check for -vepu in the compatible and in
+that case require that only the vepu interrupt is present, if that's
+alright with you.
+
+Regards,
+Nicolas Frattaroli
+
 
 
 _______________________________________________
