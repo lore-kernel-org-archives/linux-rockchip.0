@@ -4,76 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07BEBC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 May 2022 14:17:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8D9AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 May 2022 16:00:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q9of6OIqMkXJut961MVVElhbBBVhrpQeiauAuQ7bkzU=; b=OdBvduQIni5scY
-	7FK9ZylkJE39pBQWIX9R50tX38BjpZy3i5qnU+V2qNHNkru1DkaQtrZwLmSMm8NlH8SCIYqrKUqv3
-	6xjk/NWQKYcdURNPm86bthkOUGei9JAv71rWfHE45JRrbDID51omjCaGksDlki7vU6cHxkTXffRRW
-	kKs4Pi2Ki7nxuBz0O1ip6kRtBnUZZbNfBXYcw+e55kMsS1vImRL0wqW0FTJHJODTvDwFV7qOOz/xr
-	jM36jb9S0Cz3+XlCQhz+ySf8TrIrwZp90J6CYgx1Vbg8XDpXAlWz7GBiLUM7DeNg88VA1YhMfp/87
-	DEaa9RKhLLiBuDsOOyzg==;
+	List-Owner; bh=M3dQ02vU1yMz+OBeATqisJeSdinfQm7WSOHmJe7yRR8=; b=qxZrrxy1+4Y9Wh
+	bC/HtDu2CJx6wt6FLIglhpWdntLFoeYw6ZQlIrGWg2RPycEWknHpoXvMfG+UHPwHJqC6pSd/AKVO4
+	Piq6SF6Z5xf2p4lkooA0iyjbUpPYg2VTqUtUe2jtglw7gfopJVyvvPs/ihgYWRcVke7FSZr8iOWPU
+	hmMnoFy+/T5M+zUNtfF94tVqCK/D1t5yd3xwK3OtgAKQ1QgukVrslWlNA20Y3CDMHTmmBp4902T2I
+	6nuSW+OmmN0RoH4gqvmm810uIO4gR+EKgDO3mw8rKu0RKdDfNZ/GBoVd7C4rJ+jB++FGhWruW2rPR
+	1QIXDl+CUZcy1iIJAvQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1no4Cb-00Elh3-Oo; Mon, 09 May 2022 14:17:33 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1no5oG-00FFrQ-MW; Mon, 09 May 2022 16:00:32 +0000
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1no4CN-00ElZb-Us
- for linux-rockchip@lists.infradead.org; Mon, 09 May 2022 14:17:21 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id ks9so20692971ejb.2
- for <linux-rockchip@lists.infradead.org>; Mon, 09 May 2022 07:17:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+ id 1no5o5-00FFni-8G; Mon, 09 May 2022 16:00:22 +0000
+Received: by mail-yb1-xb33.google.com with SMTP id g28so25749508ybj.10;
+ Mon, 09 May 2022 09:00:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+8+QqXVKL5wTk1USxhSJy91rHhDM1q+WdZU6lGP6JQ4=;
- b=Se5eMb8Ygo8+NTsu2WGGmLwSiZe3RssFpzMyc+7jXSDykSJnAVSZVnd/OngGPWZciL
- TqOhSSgSmDT040EiixkOlRjSjs+ukuyf54/dNj07uwd2adCU7iAHQeyZ6NPWcbIYVPwR
- pnseMj0cI03Ui9b5xM9w/yOlvf2/OlxlznUm1jexmSPMmaEiax93PQoJ/G6Q+n7fow9z
- IeuitDasdXBRSpB+6VIA+P3OanKlTTP+m6n8bakAwn+q9cJfZqwF1lR8LLdZPHpM+15i
- QZvAmWZBOy2/SBull0eHOksCzYbIomn1nr2T6ttdbSEDr1YAhsbO0VVKPlHOwot8XrnA
- S8LA==
+ :cc; bh=knnW3YdGHU3dQmhoQ/TIt12Wud5O9OTp/LrpDaN4GjM=;
+ b=gBo755tMf9Osy5tffBppRj7GfJn4ql1mKymzn97tMmsCY7Ovgg3Kvs3yRy3+4Aalcc
+ 7KUYzLx4mobr7QA0sQjmav3JM0lT4HGbe90OVpKyYL6B8SqhIMEsUOTQ8KsM8Juyeuoj
+ TCRbl+PuQ1y0LWQOfM8m53FgLypONm6ia1cr2XMvW1Y6NxfAOmb49oqvIxGLafkafPj1
+ oazllSGRNd9UaEK/q76XMrqpgxNvlTLZIoshpDQmPfdewjNWyw5XGAJdDPu2RrosDaW/
+ P1pW1xWg026bNkocIWIl4BBR6IqIgvItap/A6KrxDBotH0mbvIo/KaIyCPpLt0drClE7
+ FxkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=+8+QqXVKL5wTk1USxhSJy91rHhDM1q+WdZU6lGP6JQ4=;
- b=N1DWMRX4zSgcdy/EomMz9/KLN/DWg39dnt8T3LQMz9LceWxZ3mfSelHzGWh6N3QVi1
- Lkr3mfGKsYz92JYwEOR+ffdTaR7I/ss1YgclmiSLXZAOPCjFbwrrrasNgYx4egCKGA9B
- PeuGfhg1Z428gK3jI9aVn+uBJ0X+JuR5ugTdnIZasDpRvI/rgYaWYoUcbKX8TASdGwhI
- +8H9sVQd+qMiQdcOkv+TOwn7vZIkInbTynw0GkzoZnOc+cG6IE/eKFifjDygN7Mbf68V
- bYpUqV6sX3zeO688SWkU7NyJELLJKpGeCXF1GaVgdWd5ewZUEva0I+G8r6JWsZcUyZVy
- TZLw==
-X-Gm-Message-State: AOAM532r1rQYMuzmOLli/G/VkA1ePImxasPNyIbpgoL2RPYPx3FibIa/
- SzMwDzr7MwXAwHUF9+3sO/Q5KHAzB2ZyCSQspPcCrQ==
-X-Google-Smtp-Source: ABdhPJz4oPKheaglIPZCKrUFsKejt51Mh50V9/DGs7u8F7syBlw3wHnbVvg9K8d9bl9luUK/vJye5kZrXA5cwi3Keig=
-X-Received: by 2002:a17:907:a0c8:b0:6f7:492e:e74c with SMTP id
- hw8-20020a170907a0c800b006f7492ee74cmr11393092ejc.670.1652105834875; Mon, 09
- May 2022 07:17:14 -0700 (PDT)
+ bh=knnW3YdGHU3dQmhoQ/TIt12Wud5O9OTp/LrpDaN4GjM=;
+ b=U0S5MgAIPk0AJZvAxrNharu1R0k945mJW7qg1tThFaA5C6y15Z+0tKDyLiYUCHbwPY
+ rgwWTvtTerimuEQqUeG+eWcJTggbaEtcz/lY3/56IvEHMNDr2WhDdtCvSCrv40oCDc4u
+ MM8yGhRtSpzllTE9zY2pbpp2VH2dBjgIdSRrSrkGj7bJxVOkNEFRRw8P834KXqHL97mi
+ x4NNj7+iCJ6fSjOd3mbqIzJlR+BXgUU9Y1bukeHMPYcw2lk14TfzPwDjggrq1Mcesmmg
+ t+pggfrG9XKmFCCrMF8zzHmnB2HX8olZmoWNvmykZJH4pp0pWOq5Ylkfoho/28eRh465
+ WDhw==
+X-Gm-Message-State: AOAM530+LWdky7KG8Ze2Mcoauz1xiEBM0aBwOh6CmH5Kzekian5mZYOX
+ gkre+Ldcf4297S0tCoyKiUIlwRW3QKyeegqMUHc=
+X-Google-Smtp-Source: ABdhPJzE0yuDYQajfmjTVe+xPs9zcVxiG4bkyGXxUy+igdOw39M2htAP7fLlOx0fjjDMxhJ38jlzCt8sXC0uyVUM7Aw=
+X-Received: by 2002:a05:6902:706:b0:649:daee:ada1 with SMTP id
+ k6-20020a056902070600b00649daeeada1mr14322790ybt.366.1652112020072; Mon, 09
+ May 2022 09:00:20 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220508202544.501981-1-frattaroli.nicolas@gmail.com>
- <20220508202544.501981-4-frattaroli.nicolas@gmail.com>
-In-Reply-To: <20220508202544.501981-4-frattaroli.nicolas@gmail.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Mon, 9 May 2022 11:17:03 -0300
-Message-ID: <CAAEAJfC5aoFmk7hKZ-CSv1=RhzO8YU38Abz8PhD26MvV+X0r-Q@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: Add Hantro encoder node to
- rk356x
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, 
- devicetree <devicetree@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+References: <20220422072841.2206452-1-s.hauer@pengutronix.de>
+ <20220422072841.2206452-21-s.hauer@pengutronix.de>
+ <A86359EC-5291-41BD-966E-EB7890644731@gmail.com>
+ <CAMdYzYoFG3wCQaWXQNJd7mE20OMCj=ZeuewwZfaCJyoCBT-kQQ@mail.gmail.com>
+ <0E6FE020-C95E-47CF-A9D6-AC3F2B2D334F@gmail.com>
+ <CAMdYzYobfJ7WGN+UQ7t5e1Zy9knjfHLse8KzrGrHPfeMkkG0gw@mail.gmail.com>
+ <9F2D8CFF-1EAE-4586-9EE9-82A9D67840BB@gmail.com>
+In-Reply-To: <9F2D8CFF-1EAE-4586-9EE9-82A9D67840BB@gmail.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Mon, 9 May 2022 12:00:08 -0400
+Message-ID: <CAMdYzYrz7DRj7F9hGaAPaTSiZkQ4eMNujAp8uPuE9geL6kAz4g@mail.gmail.com>
+Subject: Re: [PATCH v11 20/24] arm64: dts: rockchip: enable vop2 and hdmi tx
+ on rock-3a
+To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>,
+ Michael Riesch <michael.riesch@wolfvision.net>, 
+ dri-devel@lists.freedesktop.org, 
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ kernel test robot <lkp@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_071720_394570_3F8EF2FF 
-X-CRM114-Status: GOOD (  19.87  )
+X-CRM114-CacheID: sfid-20220509_090021_336032_F8BF1F8C 
+X-CRM114-Status: GOOD (  18.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,75 +98,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
-
-On Sun, May 8, 2022 at 5:26 PM Nicolas Frattaroli
-<frattaroli.nicolas@gmail.com> wrote:
->
-> The RK3566 and RK3568 come with a dedicated Hantro instance solely for
-> encoding. This patch adds a node for this to the device tree, along with
-> a node for its MMU.
->
-> Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 21 +++++++++++++++++++++
->  1 file changed, 21 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> index 7cdef800cb3c..2e3c9e1887e3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -508,6 +508,27 @@ gpu: gpu@fde60000 {
->                 status = "disabled";
->         };
->
-> +       vepu: video-codec@fdee0000 {
-> +               compatible = "rockchip,rk3568-vepu";
-> +               reg = <0x0 0xfdee0000 0x0 0x800>;
-> +               interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
-> +               interrupt-names = "vepu";
-
-It this block "encoder only" and if so, maybe we should remove the
-"interrupt-names" [1]?
-
-The driver is able to handle it. See:
-
-https://elixir.bootlin.com/linux/latest/source/drivers/staging/media/hantro/hantro_drv.c#L962
-
-You might have to adjust the dt-bindings for this.
-
-[1] https://lore.kernel.org/linux-media/20210324151715.GA3070006@robh.at.kernel.org/
-
-Thanks,
-Ezequiel
-
-> +               clocks = <&cru ACLK_JENC>, <&cru HCLK_JENC>;
-> +               clock-names = "aclk", "hclk";
-> +               iommus = <&vepu_mmu>;
-> +               power-domains = <&power RK3568_PD_RGA>;
-> +       };
-> +
-> +       vepu_mmu: iommu@fdee0800 {
-> +               compatible = "rockchip,rk3568-iommu";
-> +               reg = <0x0 0xfdee0800 0x0 0x40>;
-> +               interrupts = <GIC_SPI 63 IRQ_TYPE_LEVEL_HIGH>;
-> +               clocks = <&cru ACLK_JENC>, <&cru HCLK_JENC>;
-> +               clock-names = "aclk", "iface";
-> +               power-domains = <&power RK3568_PD_RGA>;
-> +               #iommu-cells = <0>;
-> +       };
-> +
->         sdmmc2: mmc@fe000000 {
->                 compatible = "rockchip,rk3568-dw-mshc", "rockchip,rk3288-dw-mshc";
->                 reg = <0x0 0xfe000000 0x0 0x4000>;
-> --
-> 2.36.0
+On Sun, May 8, 2022 at 2:21 PM Piotr Oniszczuk
+<piotr.oniszczuk@gmail.com> wrote:
 >
 >
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> >>
+> >> I think i have this already (pls see L231/L232 in https://pastebin.com/67wu9QrH )
+> >
+> > I see you have hdmitxm1_cec as the enabled pin. Are you certain it's
+> > the m1 pin and not the m0 pin?
+>
+> It depends on board ver.
+> pls look: https://github.com/radxa/kernel/commit/c1d727692e85c0a265913a72e517cf2bd71131ba
+
+If you want to confirm the hardware is configured correctly you can
+remove the cec pin from the hdmi node and set up a cec-gpio node.
+https://elixir.bootlin.com/linux/v5.18-rc5/source/Documentation/devicetree/bindings/media/cec-gpio.txt
+
+For some reason the board developers decided to make this selectable,
+check the location of R90652 and R90653.
+
+>
+> >>
+> >> Maybe i miss something but adding:
+> >>
+> >> &usb2phy0_otg {
+> >>        phy-supply = <&vcc5v0_usb_host>;
+> >>        status = "okay";
+> >> };
+> >>
+> >> breaks working usb3 port0
+> >> (so none of usb3 ports are working)
+> >
+> > Please pass along a full dmesg in this configuration.
+>
+> Here it is: https://pastebin.com/uArtBLaZ
+
+I have some concerns about the DTS you've built here. For instance how
+come you are modifying the power domains?
+USB3 is broken because the rock3-a is a rk3568 device and you're
+missing combophy0.
+
+>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
