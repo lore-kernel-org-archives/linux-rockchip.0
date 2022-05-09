@@ -4,82 +4,146 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4376CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 May 2022 09:25:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BD01C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 May 2022 09:49:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yPE4VbNIYgRLA+4LnLrq9YKhmaPMV4EXhEnOVnW71Ss=; b=vyAjUy6kJr1W12
-	FZU37Y0I3cHB0x7THzKPFe9uMf86SQV6CAF24vMyhqMw8avOirxBYpc6DupZ7lb//cmUORIzWWhl+
-	vsvrSPgaQ65oemSE/02y4TdkCpsz/fyW6huU4K2qCj9gkQ47ep4q2VYdme68eUpS/5w9+3CKsH6Ey
-	H1MtYGe/05IRkWvYl7NDbONhEMXUzq7xrPb89tILOXQTcdl4bJO6gfr83U+XpZtIShNlo9gD9z/tW
-	nVs7/VJQPhL52iWlwhCddbjuQ/X5p23hMLXbbK4zHqOmxSTwI5dEfUnd33luUlfplxodsS4E/qyyl
-	VGB3XpsisQJzRbIVqcUg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=v98rbpF8nLQcM6IcAV36WqlukDm6TxP3iaUFFeeZ23Q=; b=VOUjjBWEp5EecqCJTXYb1oxrPf
+	3v52/aXyg1KgsDG8qFH9FPEQ0nS4CEAukm3w8YiPLBnN8gn4WO8T4afXtf6+mQgick8WMBeBld6H0
+	A7QS3ewpS6D7PifZhNrjFX/qklecq7m11l7zRgZwEDQUglP8pzL46cFeiCWC0v15lPzCf1smc32YY
+	FLV7GvKPcRvvp5oyniYgCfJv44cV1s85eWhiFmR73GijTKkZ1E7eeFe4GPNMTaB5zWplslY2Vl4/5
+	cGyA5aAcy9vnAHSRlBKwPeaHBPgv61UA24ss9Tt16uIlD3ohY4aQqLvHMQuhFGV/sj7eg2/vf6dVD
+	F++6CknA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nnzdS-00DQ5Z-Vd; Mon, 09 May 2022 09:24:59 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1no01J-00DZqg-HK; Mon, 09 May 2022 09:49:37 +0000
+Received: from mail-ve1eur01on0603.outbound.protection.outlook.com
+ ([2a01:111:f400:fe1f::603]
+ helo=EUR01-VE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nnzdQ-00DQ3p-Cf; Mon, 09 May 2022 09:24:57 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id a21so15540409edb.1;
- Mon, 09 May 2022 02:24:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=LFcgVVJ7bK726HSSPtE+r4B2aXmQmGmr8tjtETzF3YE=;
- b=SCk+kS+aXSHUKOVJ2iBIKunz+vcKeLZXVRZZHJfW4513NoPDMHM/BlO9OtZ7pastdC
- W/17ymo2ZabbKF5AqescJlLZ70aU1Y97l5qpVLrA18jRc0OHqWQv8jc26EcjZrcOWJgx
- dHj0tCBpALYRpyVM+ddvFgwFOppJimHwgMIcd7eh5EABQOJIUoZWVsSh9zUzOph1salq
- 27jvi086X5pbvzJgzxj/oTtHN9/bkaCl2rc7R84n0hivnm28KWv6VgNhxEqHfcwFy1Km
- FZvm+nMTTAeT0s1Qlvuzm7IvUgUETmh90LwK2vTHxI9i5QZ6N26z1U30HAg3ur85Fc7A
- avug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=LFcgVVJ7bK726HSSPtE+r4B2aXmQmGmr8tjtETzF3YE=;
- b=qcJa2vsaGnBw1/8UzCAaXq6hJMu0fK+1xkBWUIAssiCbygINwSibnjz4JalWFubMdw
- AXWeBZVDO6JRleaqGfT2Pa6WXRYEsCFs04Su2UFuMdQ2yu7XKcXq6tAxqhVx/myjgGPe
- Zf2H/Xgn4UDQsiGT2AH6Rn+2VLCDjGz6NDtnj5CkVJf2Q8i5kaV7k28zxk6bdViDtQuX
- N0oAX3+725eJJ34QF5c+IZvhxQn9BU9kNwSaAQb5QE7KDbsRkoGNvbIXFU0VgbKTWlZG
- LTW7C0EBT7sQjkSpX/xWVuk9NQarhG4vQ6xmb1Bmfvz21l9lIVFIxlBhy3PrI/bXfmMI
- rJvw==
-X-Gm-Message-State: AOAM530YRdY392t3+FT/fv5AWDGDu/E7u8yzBPNxYnnHDCTk1IDzOHVO
- v7J+2aaMAx15+FHrJ07QgIU=
-X-Google-Smtp-Source: ABdhPJx86XxIR0CMtq+ONANDVnTdQClivXE2E+RefrUi2Gb8ihwn5DKx9ngWTXM2K4DIENT7/NS20A==
-X-Received: by 2002:a05:6402:4384:b0:427:b5c0:4bf with SMTP id
- o4-20020a056402438400b00427b5c004bfmr16757704edc.127.1652088292537; 
- Mon, 09 May 2022 02:24:52 -0700 (PDT)
-Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84]) by smtp.gmail.com with ESMTPSA id
- gz14-20020a170907a04e00b006f3ef214e62sm4869938ejc.200.2022.05.09.02.24.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 May 2022 02:24:52 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] dt-bindings: media: rockchip-vpu: Add RK3568 VEPU
- compatible
-Date: Mon, 09 May 2022 11:24:50 +0200
-Message-ID: <3594222.Ivq9XVSPaC@archbook>
-In-Reply-To: <422bf3bc-7787-97dd-6ab4-7570e5ce2ed8@linaro.org>
-References: <20220508202544.501981-1-frattaroli.nicolas@gmail.com>
- <20220508202544.501981-2-frattaroli.nicolas@gmail.com>
- <422bf3bc-7787-97dd-6ab4-7570e5ce2ed8@linaro.org>
+ id 1no016-00DZn5-GY; Mon, 09 May 2022 09:49:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=IHj3mI+S5XPwTE/GlAlCyr/gd2rnkNmyr27mSKSeTKbg42eLans9zF5RaKN8hW6Q6xiRzu4OSLR/hzRkSABDHpLVOAR8z9hX72KZPxMeCJUs1y+lb13Rlk1RnNtNbueDtyDbnUUCoFNl/XyFsxJZQza9W/GPMtLwBLAjODXLbdpP+k9TOoRb+o35jwF9LO7eysLymcFSKD0fB7DKavl/8kyokwivOd5WFMGT7OYeGpZf9X0iKFicd2kMmXl+eZprwWYlA6twEjJnIuOfvM2JHSYFBRg3qinRczxO1+MC1FD1A19HxNzPFePpX9hTSJ0jQ9NxXYF8cMBuxpyppHNljA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Ip0mRyuhTr9hIOFtbzqhroARC+gojYgKNMJf1XeMrWE=;
+ b=KO6bQGvv9SNEC60jNd3LisRdqu+dJIpK1Jda01a0QYQx4zuYU4mi7SqKOndrKOWDM9Av4ZEzPF8CONThBIb1mU3N4b+Dv1OBlyjaBxOOCw9bChfnN4JUltVlEB8vDv1My3jTOInNuVUaiISYUl+YHJJVd9bYLMLkId2ZyN2GhQfcKtb8okYG3NnrK9/97iIM9iBhu5Fid3A/uqns6NGguU7kebDyMJ8jloztJyC4SuME72dF3nfI7+YLLYqPCKrd2W9TZQYXmVTkeqAlwxXXCe1PltRsOim/OhW4rZgIHRp4LpurDzcrqwL/vkop+YkKO9dryCrI0hyy4wRVYDGMNg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ip0mRyuhTr9hIOFtbzqhroARC+gojYgKNMJf1XeMrWE=;
+ b=itZGvdN51IZ3p5QTgHx6C/X7g8LXawFpmGyKfRA6n8nS7vU3R7SPapLFYtxCRmMzgnIu+NU7cXKZAEXfNE12rihBCrwkTOIV1mCo9KKdYkFc9R9JllljHQWbhIHjcRBAo3cq5BhO+/h1uo53r4x9/sJSAgfOW14ZsCunb/NwML8=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from DBBPR08MB4348.eurprd08.prod.outlook.com (2603:10a6:10:cc::10)
+ by VI1PR08MB3423.eurprd08.prod.outlook.com (2603:10a6:803:7c::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5227.20; Mon, 9 May
+ 2022 09:49:11 +0000
+Received: from DBBPR08MB4348.eurprd08.prod.outlook.com
+ ([fe80::fdf6:eff9:d68:ea9]) by DBBPR08MB4348.eurprd08.prod.outlook.com
+ ([fe80::fdf6:eff9:d68:ea9%5]) with mapi id 15.20.5227.023; Mon, 9 May 2022
+ 09:49:10 +0000
+Message-ID: <aecc866c-685b-8def-a197-d1246070aa54@wolfvision.net>
+Date: Mon, 9 May 2022 11:49:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH v2] arm64: dts: rockchip: enable otg/drd operation of
+ usb_host0_xhci in rk3568
+Content-Language: en-US
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: devicetree <devicetree@vger.kernel.org>,
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Liang Chen <cl@rock-chips.com>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Frank Wunderlich <frank-w@public-files.de>
+References: <20220502064551.202613-1-michael.riesch@wolfvision.net>
+ <CAMdYzYrChKVwuGj=VEc=T4Gez-Bs647GxaeMsdbgvU_6p3FeEg@mail.gmail.com>
+From: Michael Riesch <michael.riesch@wolfvision.net>
+In-Reply-To: <CAMdYzYrChKVwuGj=VEc=T4Gez-Bs647GxaeMsdbgvU_6p3FeEg@mail.gmail.com>
+X-ClientProxiedBy: ZR0P278CA0184.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:44::19) To DBBPR08MB4348.eurprd08.prod.outlook.com
+ (2603:10a6:10:cc::10)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 7d3285f8-b303-44a4-9c61-08da31a12aa9
+X-MS-TrafficTypeDiagnostic: VI1PR08MB3423:EE_
+X-Microsoft-Antispam-PRVS: <VI1PR08MB342370401AEF73DA75CF4D8BF2C69@VI1PR08MB3423.eurprd08.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: cTUsexml5xqsrtcUotKy9Sk2i8+A3vdsn5Xrm8Q9fvP0OkE6f0evYY63P8uCbu9W/yU/Vied4KI2l6qAGj236+idMWfbWi5chWCwwzxUhAv8Il1E9ZXeyHdyTgMx5qkuOu+nJ1tAWxT4oinSAhXjLToGJBr8K72E/8a+YjEGuXoyZPpdYMltUEDdaN+t8QUKcJYv7zFpy1ix4Hor8aCg8kVVyHO0fYuvsq8qvKywChrUxypjks0fgxFllWf+umj3O51ZI/tYmyVEqz141XRgKSBIritC2E35y1c9p/s0ZMsRodI/dBJfprJRzWSp++U1sSav6PEe37fkQ3zdm5IZA1eOs1SYagt6JLZ4AumLyNnQDnWR5WJ/RX0e+7KtxtX+Wlf3RsbGTYtGBdQCiWbsQ8MPZcUWUBqX7rvphZU44rT2AyGkWt1guCH+EON+yWw6LzLxTCI9QyDCy1WDWSmki/JNWXhktCqSI8m44pFSeSLO4Bq3ExtBz0y84IJqbK5Ii7/oILAD3bX/QxbYntJj2v1MZtNwgiSMY9uMougJwhZMgIK+qN1jpTlFTbE9ZUdt0QLvp8r5GEgRZ7HMCtcJTWMvH5bcXR/ChSw6I+InQHfCxfc2sCZ+pkAjjsk5vWjNDqnFive7EGHBY4datwC+47C0XG4T4W7/E0KXpKBQ060P3j8TDKTSaNdMD3gTBagjIxinzAmpui14kb8Hufrtq4y2sWGRwm+B/fwTcB3Ga08=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DBBPR08MB4348.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230001)(4636009)(366004)(36756003)(4326008)(6506007)(316002)(186003)(53546011)(2906002)(7416002)(6512007)(66556008)(66476007)(6916009)(8676002)(66946007)(54906003)(31686004)(508600001)(6486002)(52116002)(2616005)(83380400001)(5660300002)(31696002)(8936002)(86362001)(44832011)(38100700002)(45980500001)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?S2lhRnM5UFdRZnVxZVhvRGs4TWF4NTB0ZkdOU2o0RFl1cUpieDNhaDNHbVRw?=
+ =?utf-8?B?YWZZaUtGbUQ1c2NWRklwb0NKeExHd2kvK0hCdytJS29hbk9udWdkVEFnL3RQ?=
+ =?utf-8?B?aUhJbHNYQWZzbVE5SHNPVEZCd1YrVDdQT203MUprY1NScWd6TllUU2hVcS9l?=
+ =?utf-8?B?TzlWQXBXRnM2MExHei9nTElsbVVjS2JjMkpSV1IxbFN6WExuU0RTekd0aUNU?=
+ =?utf-8?B?SmF4ZTBVWDB5TjRuRTJOWmhXdWZ0WlNPUTBaem9pRklNd0E2V0N5cU43b3Fs?=
+ =?utf-8?B?UEdEVGQ4OTFsaGVyQkVPS0QxcU9TTEkyODBWWUpOYVdvaU1OK3dBUTFWanI0?=
+ =?utf-8?B?dGtkeDlsdEdtT25xK0NLbVFUYU1FZzZ1SjhYY2JZWFRHcVZwYXhHbDliQTBK?=
+ =?utf-8?B?dkd3YTIxSXA3ZWFYZ1lQWkhwZjIzdkdpa2hkOTdPUTRGTC9wWHlFb0VVZmY4?=
+ =?utf-8?B?ZHJhZVp4QXpUM1FBcFJCbWJkMmpHeG1lWFk5M3FqaUxpbVRwdisxQnB5SUtX?=
+ =?utf-8?B?azJ6RXh0MkNvYlhTWSt1TlpUSTNjbVBESHdnejhQMnVtMnB5QlQ1eHpoZmo0?=
+ =?utf-8?B?UFFaNk1xL2FFZkRmNUN2MFFTSXBHcjhCU0F5ek11TmVicFVBWTJPVWZiU1JB?=
+ =?utf-8?B?bVBIY1Q4NEtGb092YTNpVXJnVktQT3creFJ2bE51VjJMYjBLZmQ2TDVudkFP?=
+ =?utf-8?B?SkZxSUlmeW51RkZqYm9SeXViMUtyYWcydzFabTJVS09NLzEwUlRVZlNwNkhq?=
+ =?utf-8?B?cEJCVmNUMWtzSWk2akU2QWwxQlF3c3czTGZHcDM0ZTVDbHIrbHJFOHY0WGJq?=
+ =?utf-8?B?c1FJQW9HMzFXNllyOFNSSElXQnB3WFMzVW5xME8vMHg2dXljUnRySUV0V2xP?=
+ =?utf-8?B?OUFxYVFVRThQNGxXU0h2L0tiZGZFdWN2ZXQzYjE5NVJnTldKZTdLVUoxK1hR?=
+ =?utf-8?B?U3hBWEZ2ZlVqeG1hVk9pOTlIQnNwYzBWZm1CTnpuU0l0SVJzRTYzMEFpdkRs?=
+ =?utf-8?B?bHprV0pCdkN2cHk1Z3diNURjb3V2RGtjZHRTZTZ3ejU2YVh5eVI2L3pnMysv?=
+ =?utf-8?B?UmFhOVJkQWQwaGp6WFVqMUtRZ09hZFlXbXY5dHFJUG1Ta09RczRlcDlGaUNl?=
+ =?utf-8?B?QlBwOHpVSW5hS1R6NjBiNnhxYlNXV0dGdXo0OTdScENjbmE0ZnBBSEFGK0hx?=
+ =?utf-8?B?VjVXY1M0Y3lxZFVwRFBCUEsxL0xqbUpKbEdrdEgrdHB0d1ZMTU5wTkVMeHMx?=
+ =?utf-8?B?Qmp2Y3B2K1JaRkhZdWxVMFpGa3VIeVRtOXBTd3lxeUZxb2c4WlR2YkRqejFp?=
+ =?utf-8?B?MTB5KytEUjZrb1g4VEtJZjhDdWRRSGxQbEh0Y0FSTXNOOCtZQ3M3SWpaeU9E?=
+ =?utf-8?B?UFpYb1RCTjdiUk5LZnV6am1iSXQ0YzJuK0owK0pQVkYwWnZlL2RRWDZMMGt0?=
+ =?utf-8?B?OU5sTFdLeEdPYTZEbEZnWXRiQjVKVXhlNWswTjhHZW9TNkFETkJpbmUxVFl3?=
+ =?utf-8?B?VUZrRXk2Z1cxOGkxbzRWcW5vZnpzTFlyQVFneGM3UGFRaVhlbnpTWlExZG5n?=
+ =?utf-8?B?RElYc3JTTlZuZUJTMkNaN0dSSk5jSVNVcHBBMWdkRXgwZTZTZnF6QjdXR2x3?=
+ =?utf-8?B?T05xY1Y2eFlrRmdqa2FyQWdiZXAvekVyQWdZcFBlbTVMdFJ1V0xPWnRmNmky?=
+ =?utf-8?B?VUVjQVQ3M09aTEk0bHgxTkVKaVlxVmx0d3ZONGVWaVdPeFVEU1VUb3FIVjB3?=
+ =?utf-8?B?c0I4RVNrZUVSR01aVk5yQk8zV1lwbEYvSWdERDVrcy9zNzhUV3N1YWdEUEtE?=
+ =?utf-8?B?VU4zWXNkTGRITkNxcTFicEFVWXI2QkJ3alhGaTRMMkVWbVZMcnRkR3dnWStm?=
+ =?utf-8?B?R2MrOFMrMTVLVXZMMm1vOWFnY1RhNytIeDJUNjhwVG5uajlXd2lJYThkUCt0?=
+ =?utf-8?B?NDhJaGdZbEhqV3JpZGplU1IzRVBySGoxaTFtNHl0NmJhMjJWWVpRRlpTZ3F5?=
+ =?utf-8?B?ZnMrN1F0Q1pTYUhqanAvSUZ6dHJYNjFQaXA2QlNqV1k1RC85NmR4L04rVm1h?=
+ =?utf-8?B?alM2V2I3QUxYL2I5OUhRK2FYRFJkcXNzQ3JsTlJtYktnTzA2cU9sN1Z3UEJQ?=
+ =?utf-8?B?RUR1MWlKRnNaUzZiT0ZxTkFBTzVQWHRFNS9MNkZuNk1hZzllVGZ2SWU3emI5?=
+ =?utf-8?B?NTdLSGpxcit5OFFpelZaZTJPSTVPcmVmMmQvWHhQSjZRRGxTVHdsZWFBNnpK?=
+ =?utf-8?B?QlZQVDhGbFE3MVZjYUJadWNORG5uUnBWeitDc0hLSGJEL1EzYU1NbHBUbG5m?=
+ =?utf-8?B?RllONFplemxsWHRRL0dvZitZbUNLU01tU1hjZitUMkt1M21PdkFOaHlOS2U4?=
+ =?utf-8?Q?MA+1vgO0ay2g0bxRGPRTdLo9TtZh+ZL4lxMnjgjEdGszb?=
+X-MS-Exchange-AntiSpam-MessageData-1: i7jmXHfOwptdShIRVb09G/+icEZlmHAazizBQ4fbXyqFbQx6MQqjnZdf
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7d3285f8-b303-44a4-9c61-08da31a12aa9
+X-MS-Exchange-CrossTenant-AuthSource: DBBPR08MB4348.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 May 2022 09:49:10.3631 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: dq3ggTC7gaTvTv8U4N4/VEFxt33Tyk3qq4K8USbv8AAl8v8J6f1z8RhUIsyEEOgDxpDXPEqeWTN2Hv2k6WSsFg57bRmVV00DTuZMEcXzOhQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB3423
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220509_022456_480558_E12A240E 
-X-CRM114-Status: GOOD (  23.64  )
+X-CRM114-CacheID: sfid-20220509_024924_796946_04C9ED3F 
+X-CRM114-Status: GOOD (  22.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,67 +161,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Montag, 9. Mai 2022 09:25:23 CEST Krzysztof Kozlowski wrote:
-> On 08/05/2022 22:25, Nicolas Frattaroli wrote:
-> > The RK3568 and RK3566 have a Hantro VPU node solely dedicated to
-> > encoding. This patch adds a compatible for it, and also allows
-> > the bindings to only come with a vepu interrupt.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-> > ---
-> >  Documentation/devicetree/bindings/media/rockchip-vpu.yaml | 2 ++
-> >  1 file changed, 2 insertions(+)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> > index bacb60a34989..4045f107ca4e 100644
-> > --- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> > +++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> > @@ -22,6 +22,7 @@ properties:
-> >            - rockchip,rk3288-vpu
-> >            - rockchip,rk3328-vpu
-> >            - rockchip,rk3399-vpu
-> > +          - rockchip,rk3568-vepu
-> >            - rockchip,px30-vpu
-> >        - items:
-> >            - const: rockchip,rk3188-vpu
-> > @@ -40,6 +41,7 @@ properties:
-> >    interrupt-names:
-> >      oneOf:
-> >        - const: vdpu
-> > +      - const: vepu
+Hello Peter,
+
+On 5/2/22 11:54, Peter Geis wrote:
+> On Mon, May 2, 2022 at 2:46 AM Michael Riesch
+> <michael.riesch@wolfvision.net> wrote:
+>>
+>> This USB 3.0 controller of the Rockchip RK3568 is capable of OTG/DRD
+>> operation. Enable it in the device tree.
 > 
-> This should be enum (for both lines above) and you should add
-> allOf:if:then with a constraints which variant can have which interrupts.
+> I think I missed a conversation here, the xhci0 controller is the otg
+> port for both rk3566 and rk3568. The only difference is on rk3566 it
+> is a usb2 only controller, where on rk3568 it is also a usb3
+> controller. It was set to host only because my original phy patches
+> didn't support otg mode. Since then Samuel's series fixed that.
 > 
+> Your original patch was correct.
+
+I have already replied to v1, but at this point I would like to
+ - thank you for pointing this out
+ - and send a friendly reminder to Heiko: please apply v1 of this
+   patch :-)
+
+Thanks and best regards,
+Michael
+
 > 
-> Best regards,
-> Krzysztof
+> Always,
+> Peter
 > 
-
-So something like this?
-
-  interrupt-names:
-    oneOf:
-      - enum:
-         - vdpu
-         - vepu
-      - items:
-          - const: vepu
-          - const: vdpu
-
-What's the difference between a list of consts and an enum here?
-I'm not very familiar with dt-schema, my apologies.
-
-Also, since I don't know which of the other variants can have
-the encoding interrupt and this wasn't brought up until now, I think
-my solution will be to have a check for -vepu in the compatible and in
-that case require that only the vepu interrupt is present, if that's
-alright with you.
-
-Regards,
-Nicolas Frattaroli
-
-
+>>
+>> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+>> ---
+>> v2:
+>>  - As pointed out by Nicolas, this is RK3568 specific. Moved change to
+>>    rk3568.dtsi.
+>>
+>>  arch/arm64/boot/dts/rockchip/rk3568.dtsi | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+>> index 5eafddf62edc..bbfe8f3d68b7 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+>> @@ -134,6 +134,7 @@ power-domain@RK3568_PD_PIPE {
+>>  };
+>>
+>>  &usb_host0_xhci {
+>> +       dr_mode = "otg";
+>>         phys = <&usb2phy0_otg>, <&combphy0 PHY_TYPE_USB3>;
+>>         phy-names = "usb2-phy", "usb3-phy";
+>>  };
+>> --
+>> 2.30.2
 
 _______________________________________________
 Linux-rockchip mailing list
