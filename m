@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B94CC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 May 2022 07:10:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A227C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 May 2022 07:10:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=PlWJLwmd3sGrnRafQWxTxXoskUC16jcNv6T+38EtDnA=; b=FioYL3uc8CN5h+
-	h61cW5qIooYe3er0n6b/B88f7p99QgYgHRVIaSyio/DeQDmmko7yE8QMMPs9MpbrQopcd0Q5g6Ynr
-	TPJ25HwvDWkg+a/RQsaTw7X+N2t7CEJi+a4fc3bmPj0lzjJJJVxNj762HGTK+FL2Qyj+iTe9GQQy0
-	5lrvvsw7SbaRclIfbnDpZPKgWSFIMBgZsvF6W4Zctaq1yqlzGlCiMmFURntpeqfMYfy3Y64ieTM0u
-	aNJhv7plI8SoSmbxfkfR0LbzAWLRywMD7SRcI+L1kgBu15OVi94eqbqPl7RrB7QwJFXmQkLo9jN/i
-	oGkie59FFXnetn3woxHA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6EuYd2O4RXpJowo8VYcHlVQxUCYVhjkpFJZu4dmEke8=; b=RBw7abf8jvb/wj
+	RkfWsJsCHVVNxgoseUuS4N4quiNoy3k3uY0fwdbZPaY6C1EEMhkXFMYTPKv7MicfxrX8AOwJRfr/I
+	92W1F8+ZjbkiXF3k4qMT9xgFfo5QTVjgESSSL7H2QJnaDHWsMTtdAT6KKOydHlsM1ffLCOk2JNNMP
+	UnczjertsqE38WG02IAXMsdMPlqMjbeCzU5UXY5uhSXMa3mdLWYZXi3MCEo+xLY4P8+Zt1/8xMiVZ
+	ZYiTJacGkyG9qwcRmkBQIzw91S5gfYhmGfbLQWmv647yRc/wd74vblTQoxJyO+oLjTSkev2WlcRMd
+	DYu5sM0SVq4xtI/UB+eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noK0i-000I08-Dj; Tue, 10 May 2022 07:10:20 +0000
+	id 1noK0k-000I0w-6f; Tue, 10 May 2022 07:10:22 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noJzv-000Hcq-P3
+ id 1noJzv-000Hcs-OJ
  for linux-rockchip@lists.infradead.org; Tue, 10 May 2022 07:09:33 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1noJzk-0007T2-Ks; Tue, 10 May 2022 09:09:20 +0200
+ id 1noJzk-0007T1-Ks; Tue, 10 May 2022 09:09:20 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
  by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1noJzi-001RkD-AF; Tue, 10 May 2022 09:09:16 +0200
+ id 1noJzi-001RkA-3O; Tue, 10 May 2022 09:09:16 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1noJzf-009qKA-Pf; Tue, 10 May 2022 09:09:15 +0200
+ id 1noJzf-009qKF-R2; Tue, 10 May 2022 09:09:15 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -47,10 +47,12 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH 0/3] RK356x VOP2: Change register space names
-Date: Tue, 10 May 2022 09:09:11 +0200
-Message-Id: <20220510070914.2346011-1-s.hauer@pengutronix.de>
+Subject: [PATCH 2/3] drm: rockchip: Change register space names
+Date: Tue, 10 May 2022 09:09:13 +0200
+Message-Id: <20220510070914.2346011-3-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220510070914.2346011-1-s.hauer@pengutronix.de>
+References: <20220510070914.2346011-1-s.hauer@pengutronix.de>
 MIME-Version: 1.0
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: sha@pengutronix.de
@@ -58,9 +60,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_000931_825001_2C50877D 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220510_000931_837780_D3B51556 
+X-CRM114-Status: GOOD (  12.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,22 +79,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The VOP2 driver sitting in next uses named register spaces, but the
-binding lacks documentation for that. Add the missing documentation
-and while at it take the opportunity to rename the register spaces
-from too generic "regs" to "vop" and from "gamma_lut" to better looking
+"regs" seems to generic when there are multiple register spaces, so
+rename that one to "vop". Also change "gamma_lut" to better looking
 "gamma-lut".
 
-Sascha Hauer (3):
-  dt-bindings: display: rockchip: make reg-names mandatory for VOP2
-  drm: rockchip: Change register space names
-  arm64: dts: rockchip: rk356x: Change VOP2 register space names
+Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- .../bindings/display/rockchip/rockchip-vop2.yaml          | 8 +++++++-
- arch/arm64/boot/dts/rockchip/rk356x.dtsi                  | 2 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c              | 4 ++--
- 3 files changed, 10 insertions(+), 4 deletions(-)
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 8d1323a47f822..d463ea80b6569 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -2620,7 +2620,7 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+ 
+ 	dev_set_drvdata(dev, vop2);
+ 
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "regs");
++	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "vop");
+ 	if (!res) {
+ 		drm_err(vop2->drm, "failed to get vop2 register byname\n");
+ 		return -EINVAL;
+@@ -2637,7 +2637,7 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+ 	if (ret)
+ 		return ret;
+ 
+-	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "gamma_lut");
++	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "gamma-lut");
+ 	if (res) {
+ 		vop2->lut_regs = devm_ioremap_resource(dev, res);
+ 		if (IS_ERR(vop2->lut_regs))
 -- 
 2.30.2
 
