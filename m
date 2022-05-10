@@ -4,48 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AA7FC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 May 2022 21:15:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC7D5C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 May 2022 22:50:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V7zDahSaydH1MqAS1ZsmUmcEOzbhiEj30+J/QvMV6TU=; b=HF9olN48dJ5BWX
-	/VeaifAEfUTW9gyc259eQvO6ApQZCo9nt/xck/I/UmWcetCWyrHirGxHhQfdCVWHvt1ykXg6Pv0pj
-	zMYnhV6L8K7uy6eWdWPvHAEsnjoscHUaERmcchBOFfeIY5JhkpIuH3/VcStixzcwau/JPMI/x0WBE
-	OL2QdCHPbaLRIn3mKldgwhdPVvwECIEpDcT3B9vABCjfu+25jq9anCHGSCRFxFD9mLbLpjvagAPD/
-	3CRYYnNW71RauvN0tNfa4AnRSMaSn9oqV/h6B78XprurTY/BeLkDM4BW0SuDpAKlv+qs+Wn1E5tDG
-	se2jsVx/GuwuJcLAn3wg==;
+	List-Owner; bh=Px8K2VSzXZ712UGRF7zPg5pUhtJclAv1WfBD+/H75L8=; b=ZH4LE/KJOIH2Hi
+	qY/JxxmuNiAH4h8RgQSpAT577oOnwONxHRSSPhgce07pscyQlL9+H/wP0I3IZU/6FqRreO4QS7upT
+	ThowP8SFezq91q/Xk6pSRe6QSZ8xPlKnyMlQgNDF9jTQBHASrpQ53QHVN8OaY77UV58hopCBGpRqi
+	oHYMI7k6xwKNeJeA2jvKCWp/LFVmlWOjvOwWen26l1Vgg8oWGDE5j5ik5iE7qZoYLt5+4poC7M45y
+	geSpxTfHKD+r1NTS8L3/fzqa4th8c6wZ70eE4RYGOdQx31aSXzJE3FPTrR70/q4t2VooCQ/QUdvvt
+	C/gHrvs3AGumN0HjljDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noXCM-0044Kf-4z; Tue, 10 May 2022 21:15:14 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1noYgD-004GJN-Hz; Tue, 10 May 2022 22:50:09 +0000
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noXCJ-0044K0-O7; Tue, 10 May 2022 21:15:13 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1noXCC-0007Ms-0L; Tue, 10 May 2022 23:15:04 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Peter Geis <pgwipeout@gmail.com>
-Cc: Marc Zyngier <maz@kernel.org>, PCI <linux-pci@vger.kernel.org>,
- devicetree <devicetree@vger.kernel.org>,
- arm-mail-list <linux-arm-kernel@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v9 0/5] Enable rk356x PCIe controller
-Date: Tue, 10 May 2022 23:15:03 +0200
-Message-ID: <2109328.Mh6RI2rZIc@diego>
-In-Reply-To: <CAMdYzYrzq5C61T2NYmHr0g_P7Mm25TUfaDV3iz2LkV8-jpV4kA@mail.gmail.com>
-References: <20220429123832.2376381-1-pgwipeout@gmail.com>
- <CAMdYzYrzq5C61T2NYmHr0g_P7Mm25TUfaDV3iz2LkV8-jpV4kA@mail.gmail.com>
+ id 1noYg2-004GEX-9A; Tue, 10 May 2022 22:49:59 +0000
+Received: by mail-yw1-x1129.google.com with SMTP id
+ 00721157ae682-2f7bb893309so1842037b3.12; 
+ Tue, 10 May 2022 15:49:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=odDeWEQn+dxMMnpuDr3wrpKOZqaMz1USU4YdJsifEC0=;
+ b=mGVIIGo48qdJEBmeO1w/NaPfd+/U0PrKZm7SDFU3SbN7Tp7fphiRm+JQu+KqHJe2ie
+ A9SMDftsnzoqZy0qpCjmn2sSb2MR8pC0t8MMonMGB7SbLRK5I12zJrppZ+BPhQds6RHQ
+ gyyWUuip7bqEn6IfkDfLGaaIVAYN7ncFxF6mSn+mMjlFuKpSx+BNYie+9RoAdawsOTw4
+ FYC05egW3X6pivH7vAsOtytkHVozGLIrsnIAYf/Xu8Jbo0WvA7A8Xh8Yxb424mtt34A3
+ MdXYP9HgwK8uoFD9JXwrriiS962iJ1i2ZpHTmpKV3zMskjx6oEMq+cEgNXVtTt+Or2RR
+ jF/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=odDeWEQn+dxMMnpuDr3wrpKOZqaMz1USU4YdJsifEC0=;
+ b=ObxDWXe+UB1AawFCpG3pFPBXlr9KxS8Fz5dlg6IA8mACE5kmASVtigMR0tjju16WSl
+ pExMjmNMS3LhAX0YP0XkXdq9WwN5rDhezHvUvc1CmMDA6LWGevmiBpoM6ILF2RKtBOJK
+ oKmABPCKkVHK4t+4220zwHp/z2lcXArbN8sLw1YOb6qxl3S47ymp9MeHAFAi36o3u85a
+ e6gmR++0GV1EDfWXXWptp4ShJ+1kVNO2QCk1h6+3+GPfyYzA76sWK6kmHNJ0E4qxglTU
+ NWfiJJ7NdtiD1UHBpZxbQMk1s5OTPlWAGG7OGy/vAeMDJQ8zCot9rJrBJRRQsoG9yBSX
+ ALlA==
+X-Gm-Message-State: AOAM533Lxn8Ef3WCqbjdMV1WlVy62gDp0vrt9RNhQdMrentvr0fuo7RR
+ gL+lT/St4bd4cDYW8OfWMQOKjcSs7gecrCo6g3k=
+X-Google-Smtp-Source: ABdhPJxpA6vOK4J63qUlZcvu8ChGp7/HgqyK3YgIAo7vg2rmQB/NK0dbW3F6axhto0qt7DPlk2lMhcktAMM3vIHK8OE=
+X-Received: by 2002:a81:488b:0:b0:2f7:cc43:ae4c with SMTP id
+ v133-20020a81488b000000b002f7cc43ae4cmr22414095ywa.414.1652222995163; Tue, 10
+ May 2022 15:49:55 -0700 (PDT)
 MIME-Version: 1.0
+References: <20220422072841.2206452-1-s.hauer@pengutronix.de>
+ <20220422072841.2206452-21-s.hauer@pengutronix.de>
+ <A86359EC-5291-41BD-966E-EB7890644731@gmail.com>
+ <CAMdYzYoFG3wCQaWXQNJd7mE20OMCj=ZeuewwZfaCJyoCBT-kQQ@mail.gmail.com>
+ <0E6FE020-C95E-47CF-A9D6-AC3F2B2D334F@gmail.com>
+ <CAMdYzYobfJ7WGN+UQ7t5e1Zy9knjfHLse8KzrGrHPfeMkkG0gw@mail.gmail.com>
+ <9F2D8CFF-1EAE-4586-9EE9-82A9D67840BB@gmail.com>
+ <CAMdYzYrz7DRj7F9hGaAPaTSiZkQ4eMNujAp8uPuE9geL6kAz4g@mail.gmail.com>
+ <812AC0DB-A6D0-4DA3-BCDC-7743E8F61821@gmail.com>
+ <CAMdYzYozewYUbM=Q+iJ2wdM5TrB6dGrjS6zh0qmVgWD4XPVR+Q@mail.gmail.com>
+ <ABC61229-B851-4BB7-8B55-688F8A8D841A@gmail.com>
+ <CAMdYzYrsaNED+oMj+z2b4fK7pt32Qg=nXDk3SA0KFDDCJ2XY0g@mail.gmail.com>
+ <F1728C93-CFF8-4C51-B95C-A5049E0DC46A@gmail.com>
+ <CAMdYzYpRVZ2hrGiYeQLqSduOZyKuZenw9bViS7oW7d3MWN7Z8g@mail.gmail.com>
+In-Reply-To: <CAMdYzYpRVZ2hrGiYeQLqSduOZyKuZenw9bViS7oW7d3MWN7Z8g@mail.gmail.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Tue, 10 May 2022 18:49:43 -0400
+Message-ID: <CAMdYzYpujdqejDz_K2M0aUhPYNFVgTuqnUwkOA6jcxgDdJ+RoA@mail.gmail.com>
+Subject: Re: [PATCH v11 20/24] arm64: dts: rockchip: enable vop2 and hdmi tx
+ on rock-3a
+To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Cc: Sascha Hauer <s.hauer@pengutronix.de>,
+ Michael Riesch <michael.riesch@wolfvision.net>, 
+ dri-devel@lists.freedesktop.org, 
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ kernel test robot <lkp@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_141511_837995_8E321872 
-X-CRM114-Status: GOOD (  27.81  )
+X-CRM114-CacheID: sfid-20220510_154958_355791_90567100 
+X-CRM114-Status: GOOD (  18.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,105 +102,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Dienstag, 10. Mai 2022, 23:11:18 CEST schrieb Peter Geis:
-> On Fri, Apr 29, 2022 at 8:38 AM Peter Geis <pgwipeout@gmail.com> wrote:
-> >
-> > This series enables the DesignWare based PCIe controller on the rk356x
-> > series of chips. We drop the fallback to the core driver due to
-> > compatibility issues. We reset the PCIe controller at driver probe to
-> > prevent issues in the future when firmware / kexec leaves the controller
-> > in an unknown state. We add support for legacy interrupts for cards that
-> > lack MSI support (which is partially broken currently). We then add the
-> > device tree nodes to enable PCIe on the Quartz64 Model A.
-> 
-> Good Evening,
-> 
-> Just a gentle ping to see if there's anything outstanding here.
-
-From my side it looks good. I'll take patches 4+5 once the binding-change
-from patch1 has been applied to some tree.
-
-
-Heiko
-
-
-> >
-> > Patch 1 drops the snps,dw,pcie fallback from the dt-binding
-> > Patch 2 resets the PCIe controller to prevent configuration bugs
-> > Patch 3 adds legacy interrupt support to the driver
-> > Patch 4 adds the device tree binding to the rk356x.dtsi
-> > Patch 5 enables the PCIe controller on the Quartz64-A
-> >
-> > Changelog:
-> > v9:
-> > - move reset_control_assert out of rockchip_pcie_resource_get
-> > - fix various formatting mistakes
-> > - fix a checkpatch warning
-> >
-> > v8:
-> > - add core reset patch
-> > - simplify IRQ enable/disable functions
-> > - drop spinlock
-> > - only enable/disable IRQ requested
-> > - only pass the IRQ register bits used to irq functions
-> >
-> > v7:
-> > - drop assigned-clocks
-> >
-> > v6:
-> > - fix a ranges issue
-> > - point to GIC instead of ITS
-> >
-> > v5:
-> > - fix incorrect series (apologies for the v4 spam)
-> >
-> > v4:
-> > - drop the ITS modification, poor compatibility is better than
-> >   completely broken
-> >
-> > v3:
-> > - drop select node from dt-binding
-> > - convert to for_each_set_bit
-> > - convert to generic_handle_domain_irq
-> > - drop unncessary dev_err
-> > - reorder irq_chip items
-> > - change to level_irq
-> > - install the handler after initializing the domain
-> >
-> > v2:
-> > - Define PCIE_CLIENT_INTR_STATUS_LEGACY
-> > - Fix PCIE_LEGACY_INT_ENABLE to only enable the RC interrupts
-> > - Add legacy interrupt enable/disable support
-> >
-> >
-> > Peter Geis (5):
-> >   dt-bindings: PCI: Remove fallback from Rockchip DesignWare binding
-> >   PCI: rockchip-dwc: Reset core at driver probe
-> >   PCI: rockchip-dwc: Add legacy interrupt support
-> >   arm64: dts: rockchip: Add rk3568 PCIe2x1 controller
-> >   arm64: dts: rockchip: Enable PCIe controller on quartz64-a
-> >
-> >  .../bindings/pci/rockchip-dw-pcie.yaml        |  12 +-
-> >  .../boot/dts/rockchip/rk3566-quartz64-a.dts   |  34 +++++
-> >  arch/arm64/boot/dts/rockchip/rk356x.dtsi      |  52 ++++++++
-> >  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 119 +++++++++++++++---
-> >  4 files changed, 191 insertions(+), 26 deletions(-)
-> >
-> > --
-> > 2.25.1
-> >
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBNYXkgMTAsIDIwMjIgYXQgNDo1NCBQTSBQZXRlciBHZWlzIDxwZ3dpcGVvdXRAZ21h
+aWwuY29tPiB3cm90ZToKPgo+IE9uIFR1ZSwgTWF5IDEwLCAyMDIyIGF0IDk6NDkgQU0gUGlvdHIg
+T25pc3pjenVrCj4gPHBpb3RyLm9uaXN6Y3p1a0BnbWFpbC5jb20+IHdyb3RlOgo+ID4KPiA+Cj4g
+Pgo+ID4gPiBXaWFkb21vxZvEhyBuYXBpc2FuYSBwcnpleiBQZXRlciBHZWlzIDxwZ3dpcGVvdXRA
+Z21haWwuY29tPiB3IGRuaXUgMTAuMDUuMjAyMiwgbyBnb2R6LiAxNDowODoKPiA+ID4KPiA+ID4K
+PiA+ID4gWW91IGFyZSBvbiB0aGUgY2xrX3J0YzMya19mcmFjIHdoaWNoIGlzIGEgZnJhY3Rpb25h
+bCBkaXZpZGVyIHRoYXQgaXMKPiA+ID4gZmVkIGZyb20gdGhlIDI0bSBjbG9jay4gWW91ciBjbG9j
+ayBsaWtlbHkgaXNuJ3QgdGhlIGlzc3VlIGhlcmUuIEknZAo+ID4gPiByZWNvbW1lbmQgc2V0dGlu
+ZyB1cCB0aGUgY2VjLWdwaW8gbm9kZSB0byB2YWxpZGF0ZSB5b3VyIGhhcmR3YXJlCj4gPiA+IHdv
+cmtzLgo+ID4KPiA+IFBldGVyLAo+ID4KPiA+IEhlcmUgaXMgd2hhdCBpIGRvbmUgdG8gdmVyaWZ5
+IG15IHJvY2szLWEgSFc6Cj4gPgo+ID4gMS5kb3dubG9hZCAmIGJ1cm4gb24gU0QgUmFkeGEgVWJ1
+bnR1Cj4gPiAyLmJvb3QgYW5kIGluc3RhbGwgdjRsLXV0aWxzCj4gPiAzLnJ1biBjZWMtY29tcGxp
+YW5jZSAtdiAtVC4gSXQgZmFpbHMgd2l0aCBlcnJvciAtMjIKPiA+IDQuZGVjb21waWxlIFVidW5u
+dHUgRFQuCj4gPiA1LkNoZWNrIHdoYXQgSERNSVRYX0NFQ19NIGhkbWkgdXNlcy4gSXQgd2FzIE0w
+Cj4gPiA2LkNoZW5nZSB0byBIRE1JVFhfQ0VDX00xOyBjb21waWxlIGR0YjsgaW5zdGFsbCBvbiBz
+ZAo+ID4gNy5yZWJvb3QuCj4gPiA4LmNlYy1jb21wbGlhbmNlIC12IC1UIGdpdmVzIGFsbCB0ZXN0
+cyBPSwo+ID4gOS5jZWMtY3RsIC0taW1hZ2Utdmlldy1vbiAtdDAgdHVybnMtb24gbXkgVFYKPiA+
+Cj4gPiBob3BlIHRoaXMgcHJvdmVzIG15IEhXIGlzIG9rPwo+ID4KPgo+IFRoYXQgZG9lcyBzaG93
+IHRoYXQgdGhlIGhhcmR3YXJlIHdvcmtzIHdpdGggdGhlIG9lbSBpbWFnZS4gSXQgZG9lcyBub3QK
+PiB1bmZvcnR1bmF0ZWx5IHByb3ZlIGlmIGl0IHdvcmtzIHdpdGggeW91ciBjdXJyZW50IGR0cy4g
+Y2VjLWdwaW8gd2lsbAo+IHNob3cgaWYgaXQncyBhbiBpc3N1ZSB3aXRoIHRoZSBjZWMgY29udHJv
+bGxlciBvciBhbiBleHRlcm5hbCBwcm9ibGVtLgoKSSd2ZSBwdWxsZWQgeW91ciBkdHMgYW5kIHdp
+dGggYSBmZXcgZml4ZXMgZ290IGEgd29ya2luZyBzeXN0ZW0gZnJvbQppdC4gQXQgbGVhc3Qgb24g
+dGhlIHYxLjEgYm9hcmQgY2VjIGlzIGZ1bmN0aW9uYWw6ClRvdGFsIGZvciBkd2hkbWktcm9ja2No
+aXAgZGV2aWNlIC9kZXYvY2VjMDogMSwgU3VjY2VlZGVkOiAxLCBGYWlsZWQ6CjAsIFdhcm5pbmdz
+OiAwCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
