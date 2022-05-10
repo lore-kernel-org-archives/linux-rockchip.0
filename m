@@ -4,76 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13FBAC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 May 2022 17:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A676C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 May 2022 18:45:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CjOa1sOXZEXYB7KfbDebmn+46s63gfb42nKTyhFFzL0=; b=PFLbzrFt7TV3JM
-	bhD9xVSRWvh694ghBfPXyTFLgW7b07UmXVWXs/qhSdjRNC23KdmKr6p8E6c5eIcSUPPsOnGjLsfFR
-	rj8cElSwNIsV2YJSGcVBLoEV2DRU5HyJLXLD7WHK8yACBOZGo0Qs9GL2RU8Me+tIOB8CTyq7/72t1
-	npqtnilef5Ud33ggtLVzy5B1Elg6ZzADBmoevodY4DuIslPAqAzsenK6Ei+D8+xCB3KVfnJT45Q1s
-	DSuq/j/N5k/tAVHs8UDF7oJr/ZtISgRBpLWzMDUyvKlvbAUDNhp00hQBlmPbewgRevw5Y0ct/n1Sn
-	etWxw4Tr6c5BqgX6wqVg==;
+	List-Owner; bh=a04HroX+0BF/lx90/NnZA94j217s7FXuG3Uugr/14+w=; b=AURVn6M46xHlEr
+	n5e1Gut9yGhzpiRYRwcf+laRbrr5aI7dJxFl5myBXmTV3Gp54YksGC+YJvRlTq1T3WzdB7CGFk+rR
+	rdzOwp2glP0HAyHGy2pKt1/fp21V9hppZinTB30fwfCWvh/b6HvrZmTbQyegEhhEFJySJDIHeyA7/
+	MEk8t/ZZd8mz0xl+F5uWwDRx9/S17nnFOrd+m10XK0Q4RSnwrJpVOyW0F3rk/lBEFYHRT1eazhgif
+	jhOUb+B1VFfDe3wZvOqJHfHiLLp8apTgKLYTEsD32VLHHSWMCxtiaAav8cRd94YW89gb43p+j8gSk
+	YRsOt44AtZ1AOXC4KYJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noTXg-003LDt-MD; Tue, 10 May 2022 17:21:00 +0000
-Received: from mail-oi1-f169.google.com ([209.85.167.169])
+	id 1noUqr-003hbw-KT; Tue, 10 May 2022 18:44:53 +0000
+Received: from mail-oa1-f51.google.com ([209.85.160.51])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1noTXT-003L53-FP; Tue, 10 May 2022 17:20:48 +0000
-Received: by mail-oi1-f169.google.com with SMTP id l16so19238141oil.6;
- Tue, 10 May 2022 10:20:41 -0700 (PDT)
+ id 1noUqo-003hYG-M8; Tue, 10 May 2022 18:44:52 +0000
+Received: by mail-oa1-f51.google.com with SMTP id
+ 586e51a60fabf-edf3b6b0f2so35190fac.9; 
+ Tue, 10 May 2022 11:44:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=Hl+EeVfg1SG/ItNk+3j3E/1KiMEoNYf4v98cMSThK0w=;
- b=WhGJc+4duuX6xbVtlhU56G7J7iipaWXQb1WFoAdPlOzIgWFN1bEk2iqO/eKdmkST2F
- zek788LcRs6ndtwwKUG1gZ/Noix/T9L76IAHkep4B7Duqpk51X2+qWOEKqtziKo1nE1V
- BvJNNASduXPBPqfAqHzBH4tAsjK/vFUOEL/IXP+W4MFSMcVKFJOrXgjrvsl48XO93U7g
- 7D1h9c8oQB8TC1Kbu5TZRdRzW1EdPuwCeAFisAMFnwPcV+mUqgAtYwVMZ/h27sUYo+hP
- 6oNW4dI7d4QWPVnSSHF6nz4rBRkU6pktH0i2lAiFWVTdfU/LKEBjXjVTtfnfUHXhq+bJ
- 4dWA==
-X-Gm-Message-State: AOAM531sWy00AqEXfrfpb32GKQLhw2bXDZ+38Eq2JqGFcnCRbF71Htav
- zhvRall34L9azuWtTvs+YQ==
-X-Google-Smtp-Source: ABdhPJwOTBdtvBdyjzF02XoaWDp7j9xraOoLUddz7oDSgLQpivKx7ligBzBxctKoqc23aW5jjq4W7w==
-X-Received: by 2002:aca:ab54:0:b0:326:af63:7a7f with SMTP id
- u81-20020acaab54000000b00326af637a7fmr570106oie.26.1652203240858; 
- Tue, 10 May 2022 10:20:40 -0700 (PDT)
+ :mime-version:content-disposition:in-reply-to;
+ bh=MPXufwJAh41IRd4r3GKaRJRRh2QCesjvbaZhsgLi68g=;
+ b=rMnciGRuZ3ZNSPlU9HxCnBIMDAHm87LxxWlpLpzvOOXABufevGMxXlpEw/6sgmVMkY
+ ECt4AnzsO3SrZ0NFv8SdZlLnICTahY1LCVaKEv76SrJnF7JTxuEebfEZFZjZ3Lp6cFqu
+ g54cXpzdydM3zhyCN/0qtth+1ePsgrl24UBNooImZ4XRNLv5nX/aMYLYI4SfgOX6He8J
+ aytxS+XfkIJ6jFvsFORHS4IKiYKARmXuYMhOYW4gLJ+6qbKZSznaUt8NhvZC1SaVZ936
+ t5UWKJMdCvcDsObQoFAcnYFBN1oy5rYCANrwhQpR4fqtUmJbjeTeYl0wSFNzMyz1cHKO
+ XK2A==
+X-Gm-Message-State: AOAM533rG01K3/5TJfvG7aCVECvPeIPW61uI6D+uT+DWwQu+W4ER62hs
+ Rax4Z5Rq5M06CNtnrksQBQ==
+X-Google-Smtp-Source: ABdhPJzEeQ30XaAC+XdOP/iCCrqRWxt4H+g5o3r0bi8VUx/PK0GuMt+t8NV0yPKGTMCLEYpNeWLYhQ==
+X-Received: by 2002:a05:6870:80cb:b0:ed:aaeb:27e0 with SMTP id
+ r11-20020a05687080cb00b000edaaeb27e0mr883725oab.187.1652208285415; 
+ Tue, 10 May 2022 11:44:45 -0700 (PDT)
 Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
  [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- i10-20020a9d624a000000b0060603221267sm5934704otk.55.2022.05.10.10.20.39
+ b7-20020aca1b07000000b0032698578409sm4324592oib.38.2022.05.10.11.44.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 May 2022 10:20:40 -0700 (PDT)
-Received: (nullmailer pid 2230997 invoked by uid 1000);
- Tue, 10 May 2022 17:20:39 -0000
-Date: Tue, 10 May 2022 12:20:39 -0500
+ Tue, 10 May 2022 11:44:44 -0700 (PDT)
+Received: (nullmailer pid 2376194 invoked by uid 1000);
+ Tue, 10 May 2022 18:44:43 -0000
+Date: Tue, 10 May 2022 13:44:43 -0500
 From: Rob Herring <robh@kernel.org>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, Sascha Hauer <s.hauer@pengutronix.de>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, kernel@pengutronix.de,
- Andy Yan <andy.yan@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Sandy Huang <hjc@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
- krzk+dt@kernel.org
-Subject: Re: [PATCH 1/3] dt-bindings: display: rockchip: make reg-names
- mandatory for VOP2
-Message-ID: <Ynqe5zcWZw8KJMl1@robh.at.kernel.org>
-References: <20220510070914.2346011-1-s.hauer@pengutronix.de>
- <20220510070914.2346011-2-s.hauer@pengutronix.de>
- <3353209.QJadu78ljV@diego>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Frank Wunderlich <frank-w@public-files.de>, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Peter Geis <pgwipeout@gmail.com>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Greg Ungerer <gerg@kernel.org>,
+ =?iso-8859-1?Q?Ren=E9?= van Dorst <opensource@vdorst.com>,
+ Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Subject: Re: [PATCH v3 1/6] dt-bindings: net: dsa: convert binding for
+ mediatek switches
+Message-ID: <YnqymzCbabEjV7GQ@robh.at.kernel.org>
+References: <20220507170440.64005-1-linux@fw-web.de>
+ <20220507170440.64005-2-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <3353209.QJadu78ljV@diego>
+In-Reply-To: <20220507170440.64005-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220510_102047_560511_A4E3F738 
-X-CRM114-Status: GOOD (  15.76  )
+X-CRM114-CacheID: sfid-20220510_114450_774353_30906708 
+X-CRM114-Status: GOOD (  37.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,42 +92,273 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 10, 2022 at 04:08:02PM +0200, Heiko St=FCbner wrote:
-> Hi Sascha,
-> =
+On Sat, May 07, 2022 at 07:04:35PM +0200, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Convert txt binding to yaml binding for Mediatek switches.
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> v3:
+> - include standalone patch in mt7530 series
+> - drop some descriptions (gpio-cells,reset-gpios,reset-names)
+> - drop | from descriptions
+> - move patternProperties above allOf
+> 
+> v2:
+> - rename mediatek.yaml => mediatek,mt7530.yaml
+> - drop "boolean" in description
+> - drop description for interrupt-properties
+> - drop #interrupt-cells as requirement
+> - example: eth=>ethernet,mdio0=>mdio,comment indention
+> - replace 0 by GPIO_ACTIVE_HIGH in first example
+> - use port(s)-pattern from dsa.yaml
+> - adress/size-cells not added to required because this
+>   is defined at mdio-level inc current dts , not switch level
+> ---
+>  .../bindings/net/dsa/mediatek,mt7530.yaml     | 423 ++++++++++++++++++
+>  .../devicetree/bindings/net/dsa/mt7530.txt    | 327 --------------
+>  2 files changed, 423 insertions(+), 327 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/net/dsa/mt7530.txt
+> 
+> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> new file mode 100644
+> index 000000000000..a7696d1b4a8c
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+> @@ -0,0 +1,423 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/net/dsa/mediatek,mt7530.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek MT7530 Ethernet switch
+> +
+> +maintainers:
+> +  - Sean Wang <sean.wang@mediatek.com>
+> +  - Landen Chao <Landen.Chao@mediatek.com>
+> +  - DENG Qingfang <dqfext@gmail.com>
+> +
+> +description: |
+> +  Port 5 of mt7530 and mt7621 switch is muxed between:
+> +  1. GMAC5: GMAC5 can interface with another external MAC or PHY.
+> +  2. PHY of port 0 or port 4: PHY interfaces with an external MAC like 2nd GMAC
+> +     of the SOC. Used in many setups where port 0/4 becomes the WAN port.
+> +     Note: On a MT7621 SOC with integrated switch: 2nd GMAC can only connected to
+> +       GMAC5 when the gpios for RGMII2 (GPIO 22-33) are not used and not
+> +       connected to external component!
+> +
+> +  Port 5 modes/configurations:
+> +  1. Port 5 is disabled and isolated: An external phy can interface to the 2nd
+> +     GMAC of the SOC.
+> +     In the case of a build-in MT7530 switch, port 5 shares the RGMII bus with 2nd
+> +     GMAC and an optional external phy. Mind the GPIO/pinctl settings of the SOC!
+> +  2. Port 5 is muxed to PHY of port 0/4: Port 0/4 interfaces with 2nd GMAC.
+> +     It is a simple MAC to PHY interface, port 5 needs to be setup for xMII mode
+> +     and RGMII delay.
+> +  3. Port 5 is muxed to GMAC5 and can interface to an external phy.
+> +     Port 5 becomes an extra switch port.
+> +     Only works on platform where external phy TX<->RX lines are swapped.
+> +     Like in the Ubiquiti ER-X-SFP.
+> +  4. Port 5 is muxed to GMAC5 and interfaces with the 2nd GAMC as 2nd CPU port.
+> +     Currently a 2nd CPU port is not supported by DSA code.
+> +
+> +  Depending on how the external PHY is wired:
+> +  1. normal: The PHY can only connect to 2nd GMAC but not to the switch
+> +  2. swapped: RGMII TX, RX are swapped; external phy interface with the switch as
+> +     a ethernet port. But can't interface to the 2nd GMAC.
+> +
+> +    Based on the DT the port 5 mode is configured.
+> +
+> +  Driver tries to lookup the phy-handle of the 2nd GMAC of the master device.
+> +  When phy-handle matches PHY of port 0 or 4 then port 5 set-up as mode 2.
+> +  phy-mode must be set, see also example 2 below!
+> +  * mt7621: phy-mode = "rgmii-txid";
+> +  * mt7623: phy-mode = "rgmii";
+> +
+> +  CPU-Ports need a phy-mode property:
+> +    Allowed values on mt7530 and mt7621:
+> +      - "rgmii"
+> +      - "trgmii"
+> +    On mt7531:
+> +      - "1000base-x"
+> +      - "2500base-x"
+> +      - "sgmii"
+> +
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - mediatek,mt7530
+> +      - mediatek,mt7531
+> +      - mediatek,mt7621
+> +
 
-> Am Dienstag, 10. Mai 2022, 09:09:12 CEST schrieb Sascha Hauer:
-> > The VOP2 driver relies on reg-names properties, but these are not
-> > documented. Add the missing documentation, make reg-names mandatory
-> > and increase minItems to 2 as always both register spaces are needed.
-> > =
+> +  "#address-cells":
+> +    const: 1
+> +
+> +  "#size-cells":
+> +    const: 0
 
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> =
+I don't see any child nodes with addresses, so these can be removed.
 
-> I'm not sure how the DT-people work - if they only track the devicetree l=
-ist
-> or their x+dt@kernel.org accounts or some mixture, but the patch was
-> missing the maintainer email addresses - I've added them here now :-) .
+> +
+> +  core-supply:
+> +    description:
+> +      Phandle to the regulator node necessary for the core power.
+> +
+> +  "#gpio-cells":
+> +    const: 2
+> +
+> +  gpio-controller:
+> +    type: boolean
+> +    description:
+> +      if defined, MT7530's LED controller will run on GPIO mode.
+> +
+> +  "#interrupt-cells":
+> +    const: 1
+> +
+> +  interrupt-controller:
+> +    type: boolean
 
-I only see what is in DT PW. Since I'm copied on almost everything that =
+Already has a type. Just:
 
-goes to the DT list, CC'ing me has almost no effect.
+interrupt-controller: true
 
-> The change looks good to me and as I merged the original binding
-> into drm-misc only some days ago, we also don't have a backwards-
-> compat issue yet, so hopefully DT-people will think similarly .
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  io-supply:
+> +    description:
+> +      Phandle to the regulator node necessary for the I/O power.
+> +      See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
+> +      for details for the regulator setup on these boards.
+> +
+> +  mediatek,mcm:
+> +    type: boolean
+> +    description:
+> +      if defined, indicates that either MT7530 is the part on multi-chip
+> +      module belong to MT7623A has or the remotely standalone chip as the
+> +      function MT7623N reference board provided for.
+> +
+> +  reset-gpios:
+> +    maxItems: 1
+> +
+> +  reset-names:
+> +    const: mcm
+> +
+> +  resets:
+> +    description:
+> +      Phandle pointing to the system reset controller with line index for
+> +      the ethsys.
+> +    maxItems: 1
+> +
+> +patternProperties:
+> +  "^(ethernet-)?ports$":
+> +    type: object
 
-It will fail checks... I can't run them as this doesn't apply, so =
+       additionalProperties: false
 
-hopefully someone does. Or I can complain when next breaks.
+> +
+> +    patternProperties:
+> +      "^(ethernet-)?port@[0-9]+$":
+> +        type: object
+> +        description: Ethernet switch ports
+> +
+> +        unevaluatedProperties: false
+> +
+> +        properties:
+> +          reg:
+> +            description:
+> +              Port address described must be 5 or 6 for CPU port and from 0
+> +              to 5 for user ports.
+> +
+> +        allOf:
+> +          - $ref: dsa-port.yaml#
+> +          - if:
+> +              properties:
+> +                label:
+> +                  items:
+> +                    - const: cpu
+> +            then:
+> +              required:
+> +                - reg
+> +                - phy-mode
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +allOf:
+> +  - $ref: "dsa.yaml#"
+> +  - if:
+> +      required:
+> +        - mediatek,mcm
+> +    then:
+> +      required:
+> +        - resets
+> +        - reset-names
+> +    else:
+> +      required:
+> +        - reset-gpios
+> +
+> +  - if:
+> +      required:
+> +        - interrupt-controller
+> +    then:
+> +      required:
+> +        - interrupts
 
-Rob
+This can be expressed as:
+
+dependencies:
+  interrupt-controller: [ interrupts ]
+    
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          items:
+> +            - const: mediatek,mt7530
+> +    then:
+> +      required:
+> +        - core-supply
+> +        - io-supply
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/gpio/gpio.h>
+> +    mdio {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +        switch@0 {
+> +            compatible = "mediatek,mt7530";
+> +            #address-cells = <1>;
+> +            #size-cells = <0>;
+> +            reg = <0>;
+> +
+> +            core-supply = <&mt6323_vpa_reg>;
+> +            io-supply = <&mt6323_vemc3v3_reg>;
+> +            reset-gpios = <&pio 33 GPIO_ACTIVE_HIGH>;
+> +
+> +            ports {
+
+Use the preferred form: ethernet-ports
+
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +                port@0 {
+
 
 _______________________________________________
 Linux-rockchip mailing list
