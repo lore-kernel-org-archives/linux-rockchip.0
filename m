@@ -4,87 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6705FC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 08:03:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15DF1C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 08:10:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=is/H/kXpVhzAP4RNRe/T8DcvASQF9+bbg7X9i0ik4FE=; b=DEfqvqgJ8yg6ce
-	CQ9LeFOdW3DiFNqSfUyvFGmu5GdIwybh5lnpdV8cJ1KdGFwc17+dJJgZ+iC5IfmcNytHVH0PGaLgA
-	9lfQplJMpNwh0Fd88I5va/uOZHbL0B/57R4xSBjlDUE2EmuXf48tQct6Fy3y7wAGFOAuA+VGIIA0l
-	Td3fbGy5CnSA8axVPBeTBcgrxf7yymGDK3LYWaJRdGRkMpAEOa5gVTSFhX066xCt0hLG/eggbh+Xt
-	TeAP/BqS+ju9OVTH717PIycFqXQCHY3LoBJ1+KdrQTe+XSb1wpcKUluPHWBy5hhu5m8XGaZG8oVUD
-	PnGb4Vtd3e+ndiXN+N9g==;
+	List-Owner; bh=phAtotW19ninNppzuj2etnlKz3ddrbXKKIu0sAo2qcc=; b=IDFLv+mr0srWMR
+	VoF36b5/RR3OvjlmUwt9Tn6FBK5+/FEZh7JW+KTZLBElGhAqoZYbtjdLhlCM8ghSpXxGuw4eTS0DU
+	Cw1GMnTrYhbnZKjLS2bqBuzV+pHFuAVb3C8hXEY8sY/XdtJJ3Q5IXwOnZcj3iZI4ajt2lFItPrfRh
+	k5XcC1XuhlV5QL/Ze274+Dqa0AQKHp3zRJM1yJosh6S4sIHmKywb2azTuu849PCC9+/RnrzbMzi/J
+	kExR5bkosbjyXMxNlZfHy4HacBynySR//dFL0DWKgLEACBvhS+1bWlXxahqBladBQTviBqOI8Mym5
+	jnQ24/95qIUalSuVlpBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nohJv-005nk3-Om; Wed, 11 May 2022 08:03:43 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1nohQe-005qQw-Vv; Wed, 11 May 2022 08:10:41 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nohJe-005ndI-MH; Wed, 11 May 2022 08:03:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1652256165;
- bh=B8FTFbkEKSq9FU1nYtmjnKVxghiXhAC0tTT4mBqiWNo=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=aJuH3WpsbGssY0jxWTz6NtSsyJj/F0xB3cw1/JLXp51ddDUIpUqmQD5Wdp4TqBz2q
- CyjAL6KdVYo2Ky8npof7tVC9Rz3ydTCsz0+V5soEV9cGcl3c5snAF9lfbdd+Oqk7jz
- o3Dv6CHPzzSk2VO22pirR0DPXkoP6QVPNaqeZdlQ=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [80.245.76.65] ([80.245.76.65]) by web-mail.gmx.net
- (3c-app-gmx-bap47.server.lan [172.19.172.117]) (via HTTP); Wed, 11 May 2022
- 10:02:45 +0200
-MIME-Version: 1.0
-Message-ID: <trinity-68761fe5-fcca-456b-ba50-ead759f0fb54-1652256165646@3c-app-gmx-bap47>
-From: Frank Wunderlich <frank-w@public-files.de>
+ id 1nohQR-005qK5-0F
+ for linux-rockchip@lists.infradead.org; Wed, 11 May 2022 08:10:28 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nohQK-0000iA-UW; Wed, 11 May 2022 10:10:20 +0200
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nohQI-0004fS-D0; Wed, 11 May 2022 10:10:18 +0200
+Date: Wed, 11 May 2022 10:10:18 +0200
+From: Sascha Hauer <s.hauer@pengutronix.de>
 To: Rob Herring <robh@kernel.org>
-Cc: Frank Wunderlich <linux@fw-web.de>, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Andrew Lunn <andrew@lunn.ch>, Vivien
- Didelot <vivien.didelot@gmail.com>, Florian Fainelli
- <f.fainelli@gmail.com>, Vladimir Oltean <olteanv@gmail.com>, "David S.
- Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sean Wang
- <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>, DENG
- Qingfang <dqfext@gmail.com>, Peter Geis <pgwipeout@gmail.com>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Greg
- Ungerer <gerg@kernel.org>, =?UTF-8?Q?Ren=C3=A9_van_Dorst?=
- <opensource@vdorst.com>, Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
-Subject: Aw: Re: [PATCH v3 1/6] dt-bindings: net: dsa: convert binding for
- mediatek switches
-Date: Wed, 11 May 2022 10:02:45 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <YnqymzCbabEjV7GQ@robh.at.kernel.org>
-References: <20220507170440.64005-1-linux@fw-web.de>
- <20220507170440.64005-2-linux@fw-web.de>
- <YnqymzCbabEjV7GQ@robh.at.kernel.org>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:eV/uQqPXza9IH9Y6Gv0NJsaSRebtJEgsDYaeyvL96Y4T6fYpr0o3B2H8VkA557m4XfuMP
- EJm8YxcfAdgzGs60GWOyMLLyOLwpHUmbcx+QBI57BblTcXBCv083UmF50AdAZIM3kIVCwTi/9e6S
- RZ31tWDNSxRFhYErWSOsYivD8eVR/a8PeaGq7XD3uTo325JmaNm68SgIKTNEqUSN38nYYXYf2/KT
- mxvT4xypcXMmCQ4hX3DmI53H0fBjFxbp3EhsginVvb+AQXve2LPZbAm22l28+vdqt1gTW2Vyz3jw
- 7s=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:IOaqh5ngyBI=:d3wI83YyXXlAM5qDVFD0Bx
- cMUtUb2TC50x2gRAAJG8+Zg6pLpPDiDW9a92hECLC/VqDTv6yKkWZBeDp/qwthXNsa9xm6kVR
- LkII6/vwvDGV3DD1wFHaWMKvAH18z0Ufgo41xshVPfGu2lmUbxzjT3RaBtSXyvKTopRWP3gsx
- sPnFcGXfaVmXoA0AN9//S+VV/PVQ90jQ+9dTtsPEkgTpiGVgCs6FIWGjcyQ7u3tVEaCkNSUyi
- 6RjE/M2Bo17O3Jb282h/qPFdHf4GS4k2Rq+BaBq7teOgLe/Y8oVScC45CVtGe2j/0XkJ1dbNM
- LBk4Ts7/2cO8h6hX9BydCCEiX5lwqRNX1rDXTgVxqwdFdpbnnw/l2Pm6Kst1VA2ba4zjjKgJw
- ZbrTNSqpt2lqPQiymgBt/e5NLYYn4GaUcTofI0j7jaGTiz0UOUMGzZg0uQwWCQoPtuf0afZHR
- HvYfLGzpoYO3eEkT6DkOM2l4GOQdTADBRzPPl5ExffJfpBVk+rCMG1ZIwsLnBnwz/aOvUv+Hz
- kctcK4jKKYPSSY+6LgGRFcR/wL2v7ZPEClOrrQE4GJgK0mN8lN66cTCSCP6eVNLjQsd8EuwhD
- RrKqo97HwEmf5fMgTpUYoefC1aQi9DTIRS3RTk6o82BI9ay5kJO5zy428FX+UX8EVPmZzOC/+
- 22GIwYHZnZnJrLv7AQAjNoYXx4ZxcMo207iAE1fbEPbcrm6gSuWWnUAdW0VmdjnmFYt4aZ6g5
- E668W/8r4WDOpD8roFZvuJ12jZJ9N8wm0OhM2CsyQ0j2006xHt3m5PC63Ej5TtMF0KO2MgWMp
- nupH2rG
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
+ Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [PATCH 1/3] dt-bindings: display: rockchip: make reg-names
+ mandatory for VOP2
+Message-ID: <20220511081018.GL4012@pengutronix.de>
+References: <20220510070914.2346011-1-s.hauer@pengutronix.de>
+ <20220510070914.2346011-2-s.hauer@pengutronix.de>
+ <YnqdsbYk+XzkVLe9@robh.at.kernel.org>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <YnqdsbYk+XzkVLe9@robh.at.kernel.org>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 10:05:32 up 41 days, 20:35, 73 users,  load average: 0.28, 0.34, 0.27
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_010327_289143_2B500170 
-X-CRM114-Status: GOOD (  16.41  )
+X-CRM114-CacheID: sfid-20220511_011027_068182_A0CE72C5 
+X-CRM114-Status: GOOD (  25.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,112 +85,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi
+On Tue, May 10, 2022 at 12:15:29PM -0500, Rob Herring wrote:
+> On Tue, May 10, 2022 at 09:09:12AM +0200, Sascha Hauer wrote:
+> > The VOP2 driver relies on reg-names properties, but these are not
+> > documented. Add the missing documentation, make reg-names mandatory
+> > and increase minItems to 2 as always both register spaces are needed.
+> > 
+> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> > ---
+> >  .../bindings/display/rockchip/rockchip-vop2.yaml          | 8 +++++++-
+> >  1 file changed, 7 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> > index 655d9b327f7d3..7238cdec9eb8a 100644
+> > --- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> > +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop2.yaml
+> > @@ -22,7 +22,7 @@ properties:
+> >        - rockchip,rk3568-vop
+> >  
+> >    reg:
+> > -    minItems: 1
+> > +    minItems: 2
+> 
+> You ran the dt checks, right?
 
-thanks for review
+Well, almost... I did run dtbs_check, but I should have ran
+dt_binding_check.
 
-> Gesendet: Dienstag, 10. Mai 2022 um 20:44 Uhr
-> Von: "Rob Herring" <robh@kernel.org>
-> On Sat, May 07, 2022 at 07:04:35PM +0200, Frank Wunderlich wrote:
-> > From: Frank Wunderlich <frank-w@public-files.de>
+> This should give you a warning. The 
+> correct thing is drop minItems if there's always 2 entries.
 
-> > +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+Indeed this gives me a warning.
 
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      - mediatek,mt7530
-> > +      - mediatek,mt7531
-> > +      - mediatek,mt7621
-> > +
->
-> > +  "#address-cells":
-> > +    const: 1
-> > +
-> > +  "#size-cells":
-> > +    const: 0
->
-> I don't see any child nodes with addresses, so these can be removed.
+Sascha
 
-dropping this (and address-cells/size-cells from examples) causes errors like this (address-/size-cells set in mdio
-node, so imho it should inherite):
-
-Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.example.dts:34.25-35: Warning (reg_format):
-/example-0/mdio/switch@0/ports/port@0:reg: property has invalid length (4 bytes) (#address-cells == 2, #size-cells == 1)
-Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.example.dtb: Warning (pci_device_reg): Failed prerequisite 'reg_format'
-
-> > +  interrupt-controller:
-> > +    type: boolean
->
-> Already has a type. Just:
->
-> interrupt-controller: true
->
-> > +
-> > +  interrupts:
-> > +    maxItems: 1
-
-> > +patternProperties:
-> > +  "^(ethernet-)?ports$":
-> > +    type: object
->
->        additionalProperties: false
-
-imho this will block address-/size-cells from this level too. looks like it is needed here too (for port-regs).
-
-> > +
-> > +    patternProperties:
-> > +      "^(ethernet-)?port@[0-9]+$":
-> > +        type: object
-> > +        description: Ethernet switch ports
-> > +
-> > +        unevaluatedProperties: false
-> > +
-> > +        properties:
-> > +          reg:
-> > +            description:
-> > +              Port address described must be 5 or 6 for CPU port and from 0
-> > +              to 5 for user ports.
-> > +
-> > +        allOf:
-> > +          - $ref: dsa-port.yaml#
-> > +          - if:
-> > +              properties:
-> > +                label:
-> > +                  items:
-> > +                    - const: cpu
-> > +            then:
-> > +              required:
-> > +                - reg
-> > +                - phy-mode
-> > +
-
-> > +  - if:
-> > +      required:
-> > +        - interrupt-controller
-> > +    then:
-> > +      required:
-> > +        - interrupts
->
-> This can be expressed as:
->
-> dependencies:
->   interrupt-controller: [ interrupts ]
-
-ok, i will change this
-
-> > +            ports {
->
-> Use the preferred form: ethernet-ports
-
-current implementation in all existing dts and examples from old binding are "ports" only.
-should they changed too?
-
-> > +                #address-cells = <1>;
-> > +                #size-cells = <0>;
-> > +                port@0 {
-
-regards Frank
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
