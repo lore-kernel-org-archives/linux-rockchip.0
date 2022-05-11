@@ -4,79 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 503CFC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 11:35:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 455C8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 11:36:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QveAlHGmcS16EEXZxq9yDa3Wn0+eyQJDOK2OmXigEhg=; b=qq+Fa4fazv4mNO
-	Akg30rR1ieMEOSgzF0K5EOdT06frU28fIcZ7ATEkqQPwX5AppuR2QSWTeEZnsvUVrrwRVMHTACxlU
-	8o5IeKMjzU7cOnyV+XG7qUYsBomWt14HnV7i+HZW9M+D2gIvkhwqcGc4UmG8H0HRT0BA7LP3m3muq
-	YqRpGoTj57MS90uxF+q2jVraMA3GMbjkKp90aUzHg8SD0bKbMgDQDUH6xuNRz2x25O6AOaIAxYsQe
-	dzaSJQSphb9OOezX2dRWw9Ip/roqmNMDFXc4iNgKSHdhue71sbQ8I3/KpuqFALHmGdd6ink3EwQBB
-	E6l0j/oKiDTzKEO78GkQ==;
+	List-Owner; bh=kdOlwVFNxCLQgyUmQ3sNqL0SN2Ug2qSl4y43A2eFTUk=; b=XPEyWch0rmuR4x
+	odCXLoF/VZ2TIQ2tntSZpKI57ppuubzs4UGQWb8ic22PvtS69INh12Enz+PZ8uE3YFRn4maLULqe7
+	n2Mfnn3eu04FQ2Hj4Z/s04/5GTIn7yBtfFhA1+u7asRsF4ePTb9+71iFemHlvr7QL9lne2k+A0R9c
+	sOEBY2InpIiFv9LU/cqlfAQKjw4jbopfPWzGwNS7ds7iTOM2pvsTRcbnMrG/6bSQsay30wQiJonG5
+	f0wAQ6LBB9OQkjjf2Y/S/2vyXL7QffNwft+AgVxPAoRlDwLZiyXmzko0yLU9viK0p5YJEgqXvpCq3
+	ENEKbKBmQaRwEwWJbqWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nokd9-006Wp8-9g; Wed, 11 May 2022 11:35:47 +0000
-Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
+	id 1nokdJ-006WvV-7C; Wed, 11 May 2022 11:35:57 +0000
+Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nokcn-006WZi-UI; Wed, 11 May 2022 11:35:27 +0000
-Received: by mail-qk1-x730.google.com with SMTP id a22so2030265qkl.5;
- Wed, 11 May 2022 04:35:23 -0700 (PDT)
+ id 1nokco-006WaS-1V; Wed, 11 May 2022 11:35:27 +0000
+Received: by mail-qk1-x735.google.com with SMTP id a76so2000395qkg.12;
+ Wed, 11 May 2022 04:35:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=onb5iDrr9AZU/Apv2XZLPoTcQR9Y3vPO5TDtvXQcOxQ=;
- b=oVqrjx29MINK52QwG0IJPDvlqXIqV1zPBJuiMpjtBXE/hIPoGg2X0+50kTplBxthYH
- D8vgtq7PprMfds50WIs0tN7TVvobuqfjnLIvdWXISuIiqeyE14SDl6KP700a2MzxgN9U
- KmHV6SKRcvfFxc5H0gQFg8kXvtmVCbsfGZAqc8bMksmhSlQaFXrPcvPZBevEYfcwda2m
- jHnGyRIfPk7F7REPHZz6eG3+tIEv+Cpt7/NgiuVGUr8fWtzNw+WwdCOKvKoZ2RXTTMxv
- mLVsvIBTP+s6aq5z94/ajvYjXSudDUOeXLMEHNAvjE26Ie5qRTNfXMVAcxU3Li5u7xdI
- vKbQ==
+ bh=TASe7e8staripPUTtHYJHBu8o4s+0xu3fkgvGutfur4=;
+ b=lfpwdTliBUFOuGKLeYuoJowajrhtcHVr4wNf3BxOcCnDMTdpPbKWlJSo7e9o8Rai1T
+ VcO1sP33hQT8oOxhrpLl2MOcwLeEoqdhNQPurF3O7u4ummg09F2ns8Qx/N+3nFy9JAKt
+ V314hh0UmgQpeRXzKI6bw2l+Ez4uatHRJFopqlAMUvVieftkxyb3OjBwFYStV1KiK53L
+ 2SPZfEd7UKpwbBGfCPfbDvXX5tfTsMzP84EtZcX20o+GwRzPZjFjELnCBt9d+auGUVyl
+ X1xLUvxmHK3Ux9bx6eQ4M2z2V2BXkIaW7Uq/7tTmXSxkA0uw+yppuWwWMQT6eGVcLwDu
+ qapA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=onb5iDrr9AZU/Apv2XZLPoTcQR9Y3vPO5TDtvXQcOxQ=;
- b=4bcUEygGqmikkvfCd/45/SjuJEuzfP6NnvWro8EdWTQwuDa5Yq7ih2cLlcnG4g8m4O
- ypiSdE5uo3NdFU+b38jkVYPpbrHtyJO/BBrUrybChCCn7mGYy2hxmzok1VHLdMfKAbAW
- ie/w4aK6CZMq+n/G2LMoT/QVJJWrEZumHfXN/w1bFWLMrMNwjwFcUC6nD/OyQU5sOcJm
- 2NenAhNyFAZXTo3FPaUwaP5TSfp1Vv3fPB9+FHnV+uv8KVRMH/tLo/vMwhvwfYV35idY
- Zimaz243IWwRlfdwv5H0iB1E3AWrsqJqw/3Mu3pqlyObklHn1bslwofzHsmdBKqrijNI
- Wsrg==
-X-Gm-Message-State: AOAM530TlMsswqUI/S7euwhd1CuXtH+oLRkt5Pu7xaHJpHqG0dSUsPqG
- s6oheQE1VgvR7FE1VZtN8rGnNIz/NE67nw==
-X-Google-Smtp-Source: ABdhPJxvEn0z8OWVAW1knWQ+gSB6bMqF0l8ZwTwgkUjNFMazkzowO+pRO9zxox34S+7OYWmauNF4wg==
-X-Received: by 2002:a05:620a:2407:b0:6a0:5027:f4d5 with SMTP id
- d7-20020a05620a240700b006a05027f4d5mr16378491qkn.318.1652268922439; 
- Wed, 11 May 2022 04:35:22 -0700 (PDT)
+ bh=TASe7e8staripPUTtHYJHBu8o4s+0xu3fkgvGutfur4=;
+ b=Fdy706i3NsFN95aTS5IXml77eJS0TjbppXZGgNrkw/45ld+Y8Zd9hBM1reuP5GEb8G
+ kOorf5GKk7zz1VwyyRCxok2EuPp7geQx+OzK/R9h0EsL3bjf1wIgJN/IDVzHhw3HuSMt
+ 3bPFnyFBgkWnx75mjBSMLZccVV+AgL55w9VXkmsEkY+/avCeodFayL6rialcw/gDRfLv
+ CPjOxu8fPpJr+fJweKNaSfUQ9OZQ8uP6xVYAbv7Al6o8aFMu4hDPi8mu5tPZ3NcnQsUI
+ eqxNQaxbIItAatTXnmK4KHJZT+En8lmhdZQnr24rgt5HHmyFBzWUWsx41NVTbgVoxCXx
+ Gj+A==
+X-Gm-Message-State: AOAM531Ap4dkri9VNkmGorA2LIUtKlZhezQgTDh0XHNK6jtUB4JheWQv
+ Q/1yrAap8APkTWA0ytonXvEaRU79wMpLQg==
+X-Google-Smtp-Source: ABdhPJzKRwT45sGp+GMJgGVh5netETKrJdksDPYQxG4bvZtdsZuc4PeQRazYRe767WcLk6MecTlgVA==
+X-Received: by 2002:a37:ad16:0:b0:6a0:1468:4513 with SMTP id
+ f22-20020a37ad16000000b006a014684513mr18321635qkm.96.1652268923469; 
+ Wed, 11 May 2022 04:35:23 -0700 (PDT)
 Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
  by smtp.gmail.com with ESMTPSA id
- bw26-20020a05622a099a00b002f39b99f6basm953377qtb.84.2022.05.11.04.35.21
+ bw26-20020a05622a099a00b002f39b99f6basm953377qtb.84.2022.05.11.04.35.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 May 2022 04:35:22 -0700 (PDT)
+ Wed, 11 May 2022 04:35:23 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
-To: linux-rockchip@lists.infradead.org,
- Jagan Teki <jagan@amarulasolutions.com>,
- Thierry Reding <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Cc: Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>
-Subject: [PATCH v2 2/3] drm/panel: feiyang-fy07024di26a30d: make reset gpio
- optional
-Date: Wed, 11 May 2022 07:35:15 -0400
-Message-Id: <20220511113517.4172962-3-pgwipeout@gmail.com>
+To: linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Peter Geis <pgwipeout@gmail.com>
+Subject: [PATCH v2 3/3] arm64: dts: rockchip: add pine64 touch panel display
+ to rockpro64
+Date: Wed, 11 May 2022 07:35:16 -0400
+Message-Id: <20220511113517.4172962-4-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220511113517.4172962-1-pgwipeout@gmail.com>
 References: <20220511113517.4172962-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_043525_997450_A87206C0 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20220511_043526_159548_E2E1C1AD 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,27 +92,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some implementations do not use the reset signal, instead tying it to dvdd.
-Make the reset gpio optional to permit this.
+The Pine64 touch panel is a panel consisting of the Feiyang fy07024di26a30d
+panel with a Goodix gt911 touch screen. Add the device tree nodes to the
+rockpro64 to permit attaching this display to the device.
 
 Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 ---
- drivers/gpu/drm/panel/panel-feiyang-fy07024di26a30d.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../boot/dts/rockchip/rk3399-rockpro64.dtsi   | 80 ++++++++++++++++++-
+ 1 file changed, 76 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/panel/panel-feiyang-fy07024di26a30d.c b/drivers/gpu/drm/panel/panel-feiyang-fy07024di26a30d.c
-index a9cd7135cb51..ee61d60eceae 100644
---- a/drivers/gpu/drm/panel/panel-feiyang-fy07024di26a30d.c
-+++ b/drivers/gpu/drm/panel/panel-feiyang-fy07024di26a30d.c
-@@ -209,7 +209,7 @@ static int feiyang_dsi_probe(struct mipi_dsi_device *dsi)
- 		return dev_err_probe(&dsi->dev, PTR_ERR(ctx->avdd),
- 				     "Couldn't get avdd regulator\n");
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+index 45e77f86d329..f0fb450ddba6 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+@@ -20,6 +20,15 @@ chosen {
+ 		stdout-path = "serial2:1500000n8";
+ 	};
  
--	ctx->reset = devm_gpiod_get(&dsi->dev, "reset", GPIOD_OUT_LOW);
-+	ctx->reset = devm_gpiod_get_optional(&dsi->dev, "reset", GPIOD_OUT_LOW);
- 	if (IS_ERR(ctx->reset))
- 		return dev_err_probe(&dsi->dev, PTR_ERR(ctx->reset),
- 				     "Couldn't get our reset GPIO\n");
++	/* enable for panel backlight support */
++	backlight: backlight {
++		compatible = "pwm-backlight";
++		pwms = <&pwm0 0 1000000 0>;
++		brightness-levels = <0 4 8 16 32 64 128 255>;
++		default-brightness-level = <5>;
++		status = "disabled";
++	};
++
+ 	clkin_gmac: external-gmac-clock {
+ 		compatible = "fixed-clock";
+ 		clock-frequency = <125000000>;
+@@ -220,6 +229,14 @@ vdd_log: vdd-log {
+ 		regulator-min-microvolt = <800000>;
+ 		regulator-max-microvolt = <1700000>;
+ 	};
++
++	avdd: avdd {
++		compatible = "regulator-fixed";
++		regulator-name = "avdd";
++		regulator-min-microvolt = <11000000>;
++		regulator-max-microvolt = <11000000>;
++		vin-supply = <&vcc3v3_s0>;
++	};
+ };
+ 
+ &cpu_l0 {
+@@ -301,6 +318,11 @@ &hdmi {
+ 	status = "okay";
+ };
+ 
++/* force hdmi to vopb */
++&hdmi_in_vopl {
++	status = "disabled";
++};
++
+ &hdmi_sound {
+ 	status = "okay";
+ };
+@@ -400,8 +422,6 @@ regulator-state-mem {
+ 
+ 			vcc3v0_touch: LDO_REG2 {
+ 				regulator-name = "vcc3v0_touch";
+-				regulator-always-on;
+-				regulator-boot-on;
+ 				regulator-min-microvolt = <3000000>;
+ 				regulator-max-microvolt = <3000000>;
+ 				regulator-state-mem {
+@@ -490,8 +510,6 @@ regulator-state-mem {
+ 
+ 			vcc3v3_s0: SWITCH_REG2 {
+ 				regulator-name = "vcc3v3_s0";
+-				regulator-always-on;
+-				regulator-boot-on;
+ 				regulator-state-mem {
+ 					regulator-off-in-suspend;
+ 				};
+@@ -565,6 +583,19 @@ fusb0: typec-portc@22 {
+ 		vbus-supply = <&vcc5v0_typec>;
+ 		status = "okay";
+ 	};
++
++	/* enable for pine64 touch screen support */
++	touch: touchscreen@5d {
++		compatible = "goodix,gt911";
++		reg = <0x5d>;
++		AVDD28-supply = <&vcc3v0_touch>;
++		VDDIO-supply = <&vcc3v0_touch>;
++		interrupt-parent = <&gpio4>;
++		interrupts = <RK_PD5 IRQ_TYPE_EDGE_FALLING>;
++		irq-gpios = <&gpio4 RK_PD5 GPIO_ACTIVE_HIGH>;
++		reset-gpios = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
++		status = "disabled";
++	};
+ };
+ 
+ &i2s0 {
+@@ -600,6 +631,47 @@ &io_domains {
+ 	gpio1830-supply = <&vcc_3v0>;
+ };
+ 
++/* enable for pine64 panel display support */
++&mipi_dsi {
++	status = "disabled";
++	clock-master;
++
++	ports {
++		mipi_out: port@1 {
++			reg = <1>;
++
++			mipi_out_panel: endpoint {
++				remote-endpoint = <&mipi_in_panel>;
++			};
++		};
++	};
++
++	mipi_panel: panel@0 {
++		compatible = "feiyang,fy07024di26a30d";
++		reg = <0>;
++		avdd-supply = <&avdd>;
++		backlight = <&backlight>;
++		dvdd-supply = <&vcc3v3_s0>;
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			port@0 {
++				reg = <0>;
++
++				mipi_in_panel: endpoint {
++					remote-endpoint = <&mipi_out_panel>;
++				};
++			};
++		};
++	};
++};
++
++/* force dsi to vopl */
++&mipi_in_vopb {
++	status="disabled";
++};
++
+ &pcie0 {
+ 	ep-gpios = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
+ 	num-lanes = <4>;
 -- 
 2.25.1
 
