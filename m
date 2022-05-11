@@ -4,77 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 455C8C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 11:36:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78E7EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 13:50:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kdOlwVFNxCLQgyUmQ3sNqL0SN2Ug2qSl4y43A2eFTUk=; b=XPEyWch0rmuR4x
-	odCXLoF/VZ2TIQ2tntSZpKI57ppuubzs4UGQWb8ic22PvtS69INh12Enz+PZ8uE3YFRn4maLULqe7
-	n2Mfnn3eu04FQ2Hj4Z/s04/5GTIn7yBtfFhA1+u7asRsF4ePTb9+71iFemHlvr7QL9lne2k+A0R9c
-	sOEBY2InpIiFv9LU/cqlfAQKjw4jbopfPWzGwNS7ds7iTOM2pvsTRcbnMrG/6bSQsay30wQiJonG5
-	f0wAQ6LBB9OQkjjf2Y/S/2vyXL7QffNwft+AgVxPAoRlDwLZiyXmzko0yLU9viK0p5YJEgqXvpCq3
-	ENEKbKBmQaRwEwWJbqWA==;
+	List-Owner; bh=iPqOzC0LHZaKUNK2fgE5LCCJmcMHD4rT21iHaqn43N4=; b=1BdMOAjg8YZsJQ
+	BtORxlMnuZbcFa4PrXB1jPQdxSPs431Mt5ZhO0eqnIoNQX/hA0TA2cJgwumegZc9POWLt+dninU6E
+	7hNAWoIIj/RKYNDPbyjUjYAcJolb5YQLJ9oZEh39CKGWXEDihiwPDqk8knfRDkgvIq7tWxxTY5BHK
+	ge6PLKA41D/F9Gm+g9zDFY0yQ0iXhbME+G66o6W3ubEKfJzcxfzJ0KHMHdWECIZ5C+3F76XqsT22l
+	VkW5NVSCLRuOZ+Rxt2/kcRpHdGca3gPvN97IWfEbKVtNoLivL3zz3Yt4oFtDpmXOEhCShrUXKqmAY
+	UueIUFiNp3B3bAl29Hhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nokdJ-006WvV-7C; Wed, 11 May 2022 11:35:57 +0000
-Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nokco-006WaS-1V; Wed, 11 May 2022 11:35:27 +0000
-Received: by mail-qk1-x735.google.com with SMTP id a76so2000395qkg.12;
- Wed, 11 May 2022 04:35:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=TASe7e8staripPUTtHYJHBu8o4s+0xu3fkgvGutfur4=;
- b=lfpwdTliBUFOuGKLeYuoJowajrhtcHVr4wNf3BxOcCnDMTdpPbKWlJSo7e9o8Rai1T
- VcO1sP33hQT8oOxhrpLl2MOcwLeEoqdhNQPurF3O7u4ummg09F2ns8Qx/N+3nFy9JAKt
- V314hh0UmgQpeRXzKI6bw2l+Ez4uatHRJFopqlAMUvVieftkxyb3OjBwFYStV1KiK53L
- 2SPZfEd7UKpwbBGfCPfbDvXX5tfTsMzP84EtZcX20o+GwRzPZjFjELnCBt9d+auGUVyl
- X1xLUvxmHK3Ux9bx6eQ4M2z2V2BXkIaW7Uq/7tTmXSxkA0uw+yppuWwWMQT6eGVcLwDu
- qapA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=TASe7e8staripPUTtHYJHBu8o4s+0xu3fkgvGutfur4=;
- b=Fdy706i3NsFN95aTS5IXml77eJS0TjbppXZGgNrkw/45ld+Y8Zd9hBM1reuP5GEb8G
- kOorf5GKk7zz1VwyyRCxok2EuPp7geQx+OzK/R9h0EsL3bjf1wIgJN/IDVzHhw3HuSMt
- 3bPFnyFBgkWnx75mjBSMLZccVV+AgL55w9VXkmsEkY+/avCeodFayL6rialcw/gDRfLv
- CPjOxu8fPpJr+fJweKNaSfUQ9OZQ8uP6xVYAbv7Al6o8aFMu4hDPi8mu5tPZ3NcnQsUI
- eqxNQaxbIItAatTXnmK4KHJZT+En8lmhdZQnr24rgt5HHmyFBzWUWsx41NVTbgVoxCXx
- Gj+A==
-X-Gm-Message-State: AOAM531Ap4dkri9VNkmGorA2LIUtKlZhezQgTDh0XHNK6jtUB4JheWQv
- Q/1yrAap8APkTWA0ytonXvEaRU79wMpLQg==
-X-Google-Smtp-Source: ABdhPJzKRwT45sGp+GMJgGVh5netETKrJdksDPYQxG4bvZtdsZuc4PeQRazYRe767WcLk6MecTlgVA==
-X-Received: by 2002:a37:ad16:0:b0:6a0:1468:4513 with SMTP id
- f22-20020a37ad16000000b006a014684513mr18321635qkm.96.1652268923469; 
- Wed, 11 May 2022 04:35:23 -0700 (PDT)
-Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
- by smtp.gmail.com with ESMTPSA id
- bw26-20020a05622a099a00b002f39b99f6basm953377qtb.84.2022.05.11.04.35.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 May 2022 04:35:23 -0700 (PDT)
-From: Peter Geis <pgwipeout@gmail.com>
-To: linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Peter Geis <pgwipeout@gmail.com>
-Subject: [PATCH v2 3/3] arm64: dts: rockchip: add pine64 touch panel display
- to rockpro64
-Date: Wed, 11 May 2022 07:35:16 -0400
-Message-Id: <20220511113517.4172962-4-pgwipeout@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220511113517.4172962-1-pgwipeout@gmail.com>
-References: <20220511113517.4172962-1-pgwipeout@gmail.com>
+	id 1nomjU-0073lm-My; Wed, 11 May 2022 13:50:28 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nomjG-0073h7-UV; Wed, 11 May 2022 13:50:18 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 931D7ED1;
+ Wed, 11 May 2022 06:50:13 -0700 (PDT)
+Received: from lpieralisi (unknown [10.57.1.148])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9FF783F66F;
+ Wed, 11 May 2022 06:50:11 -0700 (PDT)
+Date: Wed, 11 May 2022 14:50:07 +0100
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, Rob Herring <robh@kernel.org>,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Marc Zyngier <maz@kernel.org>, linux-pci@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Subject: Re: [PATCH v9 2/5] PCI: rockchip-dwc: Reset core at driver probe
+Message-ID: <Ynu/D4hXTRVy9IBF@lpieralisi>
+References: <20220429123832.2376381-1-pgwipeout@gmail.com>
+ <20220429123832.2376381-3-pgwipeout@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220429123832.2376381-3-pgwipeout@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_043526_159548_E2E1C1AD 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20220511_065015_109465_F2289583 
+X-CRM114-Status: GOOD (  21.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,151 +68,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Pine64 touch panel is a panel consisting of the Feiyang fy07024di26a30d
-panel with a Goodix gt911 touch screen. Add the device tree nodes to the
-rockpro64 to permit attaching this display to the device.
+On Fri, Apr 29, 2022 at 08:38:28AM -0400, Peter Geis wrote:
+> The PCIe controller is in an unknown state at driver probe. This can
+> lead to undesireable effects when the driver attempts to configure the
+> controller.
+> 
+> Prevent issues in the future by resetting the core during probe.
+> 
+> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> ---
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 23 ++++++++-----------
+>  1 file changed, 10 insertions(+), 13 deletions(-)
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
----
- .../boot/dts/rockchip/rk3399-rockpro64.dtsi   | 80 ++++++++++++++++++-
- 1 file changed, 76 insertions(+), 4 deletions(-)
+I fear that the controller reset behaviour is bootloader/firmware
+dependent.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-index 45e77f86d329..f0fb450ddba6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-@@ -20,6 +20,15 @@ chosen {
- 		stdout-path = "serial2:1500000n8";
- 	};
- 
-+	/* enable for panel backlight support */
-+	backlight: backlight {
-+		compatible = "pwm-backlight";
-+		pwms = <&pwm0 0 1000000 0>;
-+		brightness-levels = <0 4 8 16 32 64 128 255>;
-+		default-brightness-level = <5>;
-+		status = "disabled";
-+	};
-+
- 	clkin_gmac: external-gmac-clock {
- 		compatible = "fixed-clock";
- 		clock-frequency = <125000000>;
-@@ -220,6 +229,14 @@ vdd_log: vdd-log {
- 		regulator-min-microvolt = <800000>;
- 		regulator-max-microvolt = <1700000>;
- 	};
-+
-+	avdd: avdd {
-+		compatible = "regulator-fixed";
-+		regulator-name = "avdd";
-+		regulator-min-microvolt = <11000000>;
-+		regulator-max-microvolt = <11000000>;
-+		vin-supply = <&vcc3v3_s0>;
-+	};
- };
- 
- &cpu_l0 {
-@@ -301,6 +318,11 @@ &hdmi {
- 	status = "okay";
- };
- 
-+/* force hdmi to vopb */
-+&hdmi_in_vopl {
-+	status = "disabled";
-+};
-+
- &hdmi_sound {
- 	status = "okay";
- };
-@@ -400,8 +422,6 @@ regulator-state-mem {
- 
- 			vcc3v0_touch: LDO_REG2 {
- 				regulator-name = "vcc3v0_touch";
--				regulator-always-on;
--				regulator-boot-on;
- 				regulator-min-microvolt = <3000000>;
- 				regulator-max-microvolt = <3000000>;
- 				regulator-state-mem {
-@@ -490,8 +510,6 @@ regulator-state-mem {
- 
- 			vcc3v3_s0: SWITCH_REG2 {
- 				regulator-name = "vcc3v3_s0";
--				regulator-always-on;
--				regulator-boot-on;
- 				regulator-state-mem {
- 					regulator-off-in-suspend;
- 				};
-@@ -565,6 +583,19 @@ fusb0: typec-portc@22 {
- 		vbus-supply = <&vcc5v0_typec>;
- 		status = "okay";
- 	};
-+
-+	/* enable for pine64 touch screen support */
-+	touch: touchscreen@5d {
-+		compatible = "goodix,gt911";
-+		reg = <0x5d>;
-+		AVDD28-supply = <&vcc3v0_touch>;
-+		VDDIO-supply = <&vcc3v0_touch>;
-+		interrupt-parent = <&gpio4>;
-+		interrupts = <RK_PD5 IRQ_TYPE_EDGE_FALLING>;
-+		irq-gpios = <&gpio4 RK_PD5 GPIO_ACTIVE_HIGH>;
-+		reset-gpios = <&gpio4 RK_PD6 GPIO_ACTIVE_HIGH>;
-+		status = "disabled";
-+	};
- };
- 
- &i2s0 {
-@@ -600,6 +631,47 @@ &io_domains {
- 	gpio1830-supply = <&vcc_3v0>;
- };
- 
-+/* enable for pine64 panel display support */
-+&mipi_dsi {
-+	status = "disabled";
-+	clock-master;
-+
-+	ports {
-+		mipi_out: port@1 {
-+			reg = <1>;
-+
-+			mipi_out_panel: endpoint {
-+				remote-endpoint = <&mipi_in_panel>;
-+			};
-+		};
-+	};
-+
-+	mipi_panel: panel@0 {
-+		compatible = "feiyang,fy07024di26a30d";
-+		reg = <0>;
-+		avdd-supply = <&avdd>;
-+		backlight = <&backlight>;
-+		dvdd-supply = <&vcc3v3_s0>;
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+
-+				mipi_in_panel: endpoint {
-+					remote-endpoint = <&mipi_out_panel>;
-+				};
-+			};
-+		};
-+	};
-+};
-+
-+/* force dsi to vopl */
-+&mipi_in_vopb {
-+	status="disabled";
-+};
-+
- &pcie0 {
- 	ep-gpios = <&gpio2 RK_PD4 GPIO_ACTIVE_HIGH>;
- 	num-lanes = <4>;
--- 
-2.25.1
+Are we sure we are not triggering any regressions by resetting the
+controller in the middle of probe (aka is the driver implicitly
+relying on existing behaviour on systems that are not the ones
+you are testing on) ?
 
+Just asking, the rockchip maintainers should be able to answer this
+question.
+
+Thanks,
+Lorenzo
+
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index c9b341e55cbb..faedbd6ebc20 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -152,6 +152,11 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
+>  	if (IS_ERR(rockchip->rst_gpio))
+>  		return PTR_ERR(rockchip->rst_gpio);
+>  
+> +	rockchip->rst = devm_reset_control_array_get_exclusive(&pdev->dev);
+> +	if (IS_ERR(rockchip->rst))
+> +		return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->rst),
+> +				     "failed to get reset lines\n");
+> +
+>  	return 0;
+>  }
+>  
+> @@ -182,18 +187,6 @@ static void rockchip_pcie_phy_deinit(struct rockchip_pcie *rockchip)
+>  	phy_power_off(rockchip->phy);
+>  }
+>  
+> -static int rockchip_pcie_reset_control_release(struct rockchip_pcie *rockchip)
+> -{
+> -	struct device *dev = rockchip->pci.dev;
+> -
+> -	rockchip->rst = devm_reset_control_array_get_exclusive(dev);
+> -	if (IS_ERR(rockchip->rst))
+> -		return dev_err_probe(dev, PTR_ERR(rockchip->rst),
+> -				     "failed to get reset lines\n");
+> -
+> -	return reset_control_deassert(rockchip->rst);
+> -}
+> -
+>  static const struct dw_pcie_ops dw_pcie_ops = {
+>  	.link_up = rockchip_pcie_link_up,
+>  	.start_link = rockchip_pcie_start_link,
+> @@ -222,6 +215,10 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  	if (ret)
+>  		return ret;
+>  
+> +	ret = reset_control_assert(rockchip->rst);
+> +	if (ret)
+> +		return ret;
+> +
+>  	/* DON'T MOVE ME: must be enable before PHY init */
+>  	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+>  	if (IS_ERR(rockchip->vpcie3v3)) {
+> @@ -241,7 +238,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+>  	if (ret)
+>  		goto disable_regulator;
+>  
+> -	ret = rockchip_pcie_reset_control_release(rockchip);
+> +	ret = reset_control_deassert(rockchip->rst);
+>  	if (ret)
+>  		goto deinit_phy;
+>  
+> -- 
+> 2.25.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
