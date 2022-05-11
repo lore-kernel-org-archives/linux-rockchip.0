@@ -4,53 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78E7EC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 13:50:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73F04C433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 14:27:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iPqOzC0LHZaKUNK2fgE5LCCJmcMHD4rT21iHaqn43N4=; b=1BdMOAjg8YZsJQ
-	BtORxlMnuZbcFa4PrXB1jPQdxSPs431Mt5ZhO0eqnIoNQX/hA0TA2cJgwumegZc9POWLt+dninU6E
-	7hNAWoIIj/RKYNDPbyjUjYAcJolb5YQLJ9oZEh39CKGWXEDihiwPDqk8knfRDkgvIq7tWxxTY5BHK
-	ge6PLKA41D/F9Gm+g9zDFY0yQ0iXhbME+G66o6W3ubEKfJzcxfzJ0KHMHdWECIZ5C+3F76XqsT22l
-	VkW5NVSCLRuOZ+Rxt2/kcRpHdGca3gPvN97IWfEbKVtNoLivL3zz3Yt4oFtDpmXOEhCShrUXKqmAY
-	UueIUFiNp3B3bAl29Hhw==;
+	List-Owner; bh=QI2sJltqPBK6amNi0lAGoABqaGRnemCwTENx/apVIlQ=; b=XyH3F07TKWfGBQ
+	7xAEX9PvFU/u4298r4cQBbPZWkxTZa8rsLEZsY5aWSOp2fsTV4jmmM1eBiX7nelDidE191SSwCsrn
+	Bwjc5cMg2MBIUsN83EVr4JyYDagcX7cjv64XxjsMyPRwnG2kfMTFSD2G8qJ/spzdh9cgui4KrUEeS
+	DcCPeJEBgPOoJlwXjixLJh5x1yFZV/j+3bl/HmRbSHUPdoqfGgfYXKVscABtI7D/0hX/b5yd+PvBa
+	aaU9xip1t/35TOgfjCVktSkr91f2TosqF6abVG+N82qtivps9f+jhXGByxLLQix/Hk7SBIObzsp2m
+	ADOEGbduEltdSN1OM+SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nomjU-0073lm-My; Wed, 11 May 2022 13:50:28 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nomjG-0073h7-UV; Wed, 11 May 2022 13:50:18 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 931D7ED1;
- Wed, 11 May 2022 06:50:13 -0700 (PDT)
-Received: from lpieralisi (unknown [10.57.1.148])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9FF783F66F;
- Wed, 11 May 2022 06:50:11 -0700 (PDT)
-Date: Wed, 11 May 2022 14:50:07 +0100
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, Rob Herring <robh@kernel.org>,
- Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Marc Zyngier <maz@kernel.org>, linux-pci@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Subject: Re: [PATCH v9 2/5] PCI: rockchip-dwc: Reset core at driver probe
-Message-ID: <Ynu/D4hXTRVy9IBF@lpieralisi>
+	id 1nonIe-007As5-JD; Wed, 11 May 2022 14:26:48 +0000
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1nonIc-007AnJ-5f; Wed, 11 May 2022 14:26:47 +0000
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-2ef5380669cso22795177b3.9; 
+ Wed, 11 May 2022 07:26:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=N+G+1F2bko9t4hU/+1Xb4IfFtS046K7mBmLmG7KLIwI=;
+ b=RyJjpnDleChRSXg2AZ14MuEalc0yTz97bE/R5PqLRSFtSJlQiCuRc5sJv2+aflzUqN
+ JUNrGKjMy25ntO47VJbYHeq/coAI00K5tvvceNU0HXlQAPA02Rlma4gkRHaCe5yFoi7g
+ eXgbWjX/Kpi7WBtlcjMAxMA/MEFNEu7nikdph+iO0W0vFPR18epG7CwmbVm2Wl2gdZ2z
+ //fvmDc4tgkMrFy6qugrHqHTECqR2GRJYVRsWu8uD9xRdfegqzvOfxux1TZxIMpeOPz8
+ NQLVC1bP2a5El5ecbg3WbvACHAuMvTHk/6bzN8ylRZiWYo2+tCcIRUPx56gSPwuF0Auj
+ LBBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=N+G+1F2bko9t4hU/+1Xb4IfFtS046K7mBmLmG7KLIwI=;
+ b=DMkGtjG5U5vztzSfEHBxtPPE7Gl8t0wukJhMr6HFHRZp6MJkMq8/yqmjQ0zxlmA8In
+ vJTYcNzPiXRNsjTiZQiarOpVjwIx5vHaA1gW1WyFO3naVEVqCAdozQiGy/nJKjJq9iiL
+ Wp0pD1mHVPRMMHQHxO/3V16RockBvp1wWtmRvL1bDgg77mxkQnecvBbtw6GuNw98UXhs
+ b1yZ5c8lSHOUYY4frCGQGEZE9VwRWE3PczjT60y1CJLTP7UJxMo4nw/fA4D15ja15lU0
+ elGpeSXskZdqi6yYrcQuUEempUgjoaamYVrx97aWwxPJqQS6PB5k0XGU8Rg9Y1/RW5hf
+ 7gYA==
+X-Gm-Message-State: AOAM5336dQhL2dYjwb0LfXn6dwVleaT08OMjMOLRzAL63w1S8bNKj43W
+ QJ3slF5YGLH5z9xgSMUsdx9bxNkh6vbDLZaEQ0E=
+X-Google-Smtp-Source: ABdhPJybwJw6ZZcx4u2vxPwqvJS4odhX0N1WECLM3hHbUER7xDfWeRgnIfz2/m7ulVYUFAsckCvGL1v0zfwnuDHF/7o=
+X-Received: by 2002:a81:32c1:0:b0:2f7:cda8:50e1 with SMTP id
+ y184-20020a8132c1000000b002f7cda850e1mr25481799ywy.519.1652279193361; Wed, 11
+ May 2022 07:26:33 -0700 (PDT)
+MIME-Version: 1.0
 References: <20220429123832.2376381-1-pgwipeout@gmail.com>
  <20220429123832.2376381-3-pgwipeout@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220429123832.2376381-3-pgwipeout@gmail.com>
+ <Ynu/D4hXTRVy9IBF@lpieralisi>
+In-Reply-To: <Ynu/D4hXTRVy9IBF@lpieralisi>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Wed, 11 May 2022 10:26:20 -0400
+Message-ID: <CAMdYzYqdDPUFPhAZqA71dLaf6rT9CwFqQ1dFMRbGpVMyzgT8bg@mail.gmail.com>
+Subject: Re: [PATCH v9 2/5] PCI: rockchip-dwc: Reset core at driver probe
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Rob Herring <robh@kernel.org>, 
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, 
+ Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, Marc Zyngier <maz@kernel.org>,
+ PCI <linux-pci@vger.kernel.org>, devicetree <devicetree@vger.kernel.org>, 
+ arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_065015_109465_F2289583 
-X-CRM114-Status: GOOD (  21.84  )
+X-CRM114-CacheID: sfid-20220511_072646_257628_C14E0DB9 
+X-CRM114-Status: GOOD (  30.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,91 +92,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 29, 2022 at 08:38:28AM -0400, Peter Geis wrote:
-> The PCIe controller is in an unknown state at driver probe. This can
-> lead to undesireable effects when the driver attempts to configure the
-> controller.
-> 
-> Prevent issues in the future by resetting the core during probe.
-> 
-> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-> ---
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 23 ++++++++-----------
->  1 file changed, 10 insertions(+), 13 deletions(-)
+On Wed, May 11, 2022 at 9:50 AM Lorenzo Pieralisi
+<lorenzo.pieralisi@arm.com> wrote:
+>
+> On Fri, Apr 29, 2022 at 08:38:28AM -0400, Peter Geis wrote:
+> > The PCIe controller is in an unknown state at driver probe. This can
+> > lead to undesireable effects when the driver attempts to configure the
+> > controller.
+> >
+> > Prevent issues in the future by resetting the core during probe.
+> >
+> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> > Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> > ---
+> >  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 23 ++++++++-----------
+> >  1 file changed, 10 insertions(+), 13 deletions(-)
+>
+> I fear that the controller reset behaviour is bootloader/firmware
+> dependent.
+>
+> Are we sure we are not triggering any regressions by resetting the
+> controller in the middle of probe (aka is the driver implicitly
+> relying on existing behaviour on systems that are not the ones
+> you are testing on) ?
+>
+> Just asking, the rockchip maintainers should be able to answer this
+> question.
 
-I fear that the controller reset behaviour is bootloader/firmware
-dependent.
+This is a new driver with no current users, this series enables the
+first user. It does not support ACPI nor any sort of handoff at this
+time.
 
-Are we sure we are not triggering any regressions by resetting the
-controller in the middle of probe (aka is the driver implicitly
-relying on existing behaviour on systems that are not the ones
-you are testing on) ?
-
-Just asking, the rockchip maintainers should be able to answer this
-question.
-
-Thanks,
-Lorenzo
-
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index c9b341e55cbb..faedbd6ebc20 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -152,6 +152,11 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
->  	if (IS_ERR(rockchip->rst_gpio))
->  		return PTR_ERR(rockchip->rst_gpio);
->  
-> +	rockchip->rst = devm_reset_control_array_get_exclusive(&pdev->dev);
-> +	if (IS_ERR(rockchip->rst))
-> +		return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->rst),
-> +				     "failed to get reset lines\n");
-> +
->  	return 0;
->  }
->  
-> @@ -182,18 +187,6 @@ static void rockchip_pcie_phy_deinit(struct rockchip_pcie *rockchip)
->  	phy_power_off(rockchip->phy);
->  }
->  
-> -static int rockchip_pcie_reset_control_release(struct rockchip_pcie *rockchip)
-> -{
-> -	struct device *dev = rockchip->pci.dev;
-> -
-> -	rockchip->rst = devm_reset_control_array_get_exclusive(dev);
-> -	if (IS_ERR(rockchip->rst))
-> -		return dev_err_probe(dev, PTR_ERR(rockchip->rst),
-> -				     "failed to get reset lines\n");
-> -
-> -	return reset_control_deassert(rockchip->rst);
-> -}
-> -
->  static const struct dw_pcie_ops dw_pcie_ops = {
->  	.link_up = rockchip_pcie_link_up,
->  	.start_link = rockchip_pcie_start_link,
-> @@ -222,6 +215,10 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	if (ret)
->  		return ret;
->  
-> +	ret = reset_control_assert(rockchip->rst);
-> +	if (ret)
-> +		return ret;
-> +
->  	/* DON'T MOVE ME: must be enable before PHY init */
->  	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
->  	if (IS_ERR(rockchip->vpcie3v3)) {
-> @@ -241,7 +238,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
->  	if (ret)
->  		goto disable_regulator;
->  
-> -	ret = rockchip_pcie_reset_control_release(rockchip);
-> +	ret = reset_control_deassert(rockchip->rst);
->  	if (ret)
->  		goto deinit_phy;
->  
-> -- 
-> 2.25.1
-> 
+>
+> Thanks,
+> Lorenzo
+>
+> > diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > index c9b341e55cbb..faedbd6ebc20 100644
+> > --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> > @@ -152,6 +152,11 @@ static int rockchip_pcie_resource_get(struct platform_device *pdev,
+> >       if (IS_ERR(rockchip->rst_gpio))
+> >               return PTR_ERR(rockchip->rst_gpio);
+> >
+> > +     rockchip->rst = devm_reset_control_array_get_exclusive(&pdev->dev);
+> > +     if (IS_ERR(rockchip->rst))
+> > +             return dev_err_probe(&pdev->dev, PTR_ERR(rockchip->rst),
+> > +                                  "failed to get reset lines\n");
+> > +
+> >       return 0;
+> >  }
+> >
+> > @@ -182,18 +187,6 @@ static void rockchip_pcie_phy_deinit(struct rockchip_pcie *rockchip)
+> >       phy_power_off(rockchip->phy);
+> >  }
+> >
+> > -static int rockchip_pcie_reset_control_release(struct rockchip_pcie *rockchip)
+> > -{
+> > -     struct device *dev = rockchip->pci.dev;
+> > -
+> > -     rockchip->rst = devm_reset_control_array_get_exclusive(dev);
+> > -     if (IS_ERR(rockchip->rst))
+> > -             return dev_err_probe(dev, PTR_ERR(rockchip->rst),
+> > -                                  "failed to get reset lines\n");
+> > -
+> > -     return reset_control_deassert(rockchip->rst);
+> > -}
+> > -
+> >  static const struct dw_pcie_ops dw_pcie_ops = {
+> >       .link_up = rockchip_pcie_link_up,
+> >       .start_link = rockchip_pcie_start_link,
+> > @@ -222,6 +215,10 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+> >       if (ret)
+> >               return ret;
+> >
+> > +     ret = reset_control_assert(rockchip->rst);
+> > +     if (ret)
+> > +             return ret;
+> > +
+> >       /* DON'T MOVE ME: must be enable before PHY init */
+> >       rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
+> >       if (IS_ERR(rockchip->vpcie3v3)) {
+> > @@ -241,7 +238,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+> >       if (ret)
+> >               goto disable_regulator;
+> >
+> > -     ret = rockchip_pcie_reset_control_release(rockchip);
+> > +     ret = reset_control_deassert(rockchip->rst);
+> >       if (ret)
+> >               goto deinit_phy;
+> >
+> > --
+> > 2.25.1
+> >
 
 _______________________________________________
 Linux-rockchip mailing list
