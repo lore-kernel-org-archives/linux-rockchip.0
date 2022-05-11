@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD91FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 15:53:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66244C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 15:53:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tVnzLprqTbPSZ9XhrzBGfWjfz1r3NzuynDLFpJXRItA=; b=uMyu6tZgNc3PMU
-	5bCpzGp2GR5T06XyoHYcfalrYv5oq6uhFmHW1CObHQFJ8ATlJnRxritXVD85JlrWZmKrUuFDqd5BL
-	fK6vc9yptLp7dJOWuWp2FbEgQAld9w/kXzSeBJIUNnuVBr+ArVyR/MyyxYsWn1tI4aGDGgs9PHOru
-	+yuonlbJjpc65ZZgvmo51SjfqS+QKzOX3JMRWY2q17KjSRFXWZL0DUzBfupahA1f+/8ksgwLydCMw
-	wWkZZYbM5EPF8Sq13gE+4zn2H1ugJ6/xE0hxyM/3NEgfsemXzQl5ptTxRSZZhvRfVXL+/pvZQ6KrZ
-	5EMQJIWyBiBZtHYY+VZw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6VOKrc6gMY2wQsgHDF/dN1qf5ubUtep9PR01WQypbH0=; b=Wtyox7turjwHc3
+	xXmLuhmcKIwHbauMGs+BcsSbQB8uVAFeI0YEms/2USXfe6BjMLp7hKdSgS/nytw0Kt82m14sW8INe
+	ugYi09xBwpDs9B9EUIL/dq+qQaWP2fJzRXk21Bo+iB3rrvvETfPO1QHkwOg1OlssDWfKgIBGlnJH3
+	kaf6/GsDQe+/Qp0jLiJoQ3o2DQUm7VgC99c8bWHf6pujbPZZ05AtobmObO/vqb9WBlx2S1n8+mvgP
+	xDreOSbv8xdce/28GCJoaYxnssyAK+6hCE/14vPlDhH4UPDJ3DL5LyR4EeO9/KN6DWdf5joucBxot
+	x7D9fuYC44xzb4MBWaHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nooeb-007edK-Tl; Wed, 11 May 2022 15:53:33 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1nooel-007ehU-EM; Wed, 11 May 2022 15:53:43 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nooeZ-007ecc-0K; Wed, 11 May 2022 15:53:32 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id kq17so4961326ejb.4;
- Wed, 11 May 2022 08:53:30 -0700 (PDT)
+ id 1nooec-007ed6-J0; Wed, 11 May 2022 15:53:35 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id n10so4951450ejk.5;
+ Wed, 11 May 2022 08:53:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ChBlo8JgQztQyDOjW7CP34CCFtQT8Hz2+dkYQmQof/E=;
- b=nS/TpcRwwFbflyet94bFc5CcjxVk6t+j5NOxzBIdlm7hFfnejEQ8BOzTywqf4YVfAu
- m2A/gL/WWUrYgsduw7j6fczHanwiY8cEZorN6VhHQ1fGKx1ZBrZ6I1LcwYufNn7CqR8U
- /HHJQrGPO9Lx/xcdmPoGwbKUtbcZ1V+ToVFnBHHq75nGjZ6s1oF4fH4WUS0G+AmFOCub
- pD1qQCaNC2yCwS2gSNfVTvr70v98+/W58T4G9hQajqW70Gnj5ivXCs650AtLPwoZxLSA
- S1pspjYl3XFJsIxwdmGD115D0QyHJIjAmb4dDTUFlkZ+ov8Q1w+7zOUBOdxKUHl6sznT
- 20uA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=yjOB8oqEwj9sflBfsTrbSM5ZU+W2PCPtGpyHnXQbiBE=;
+ b=DEe5lwmx+2gl2/ljAQlEQrJ1PN8mf3JLE2GLEOI8Pc10Qd60sdbvlnNgdIjftPFcXU
+ DjMiBmrvgwzcqgEkOqHilryRors0zI0ldL3Yrz9TqPC/H0ia7astUlcXSIkhwqLsOKX8
+ ydamXn4CY3Wq5lQyHaXMsRP/r+dRITClHBqwhXbAPBuz5M0m4JEs3VQq+KS0cr/in9Z5
+ yrwtOrC8B5SzGtAcs75Ng6wkqTfkEqnOQRrlrgqKbX/IR2ngEwu30fa+NPrd2iowUIoA
+ PwMFHrGVXoaQMgmu3pxfqseLOSfk1dX9ay2Gfm8VKHB8Rfhf41cAX2yYbe9EgU7EB4tq
+ BwYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ChBlo8JgQztQyDOjW7CP34CCFtQT8Hz2+dkYQmQof/E=;
- b=Xs4TuG9jrXatjWmOu0a9oKz6VbZLEOaLgdooNhDaDvNukag+LtwKSQgbreGvnGZtK9
- eFZVBvLCectRxeyefqepIzlh/jii8u/jG9D/gB6x8EbbauyHiFHwMmAIRPZ0VJFrUDTU
- EIPvVhF+IaDuCDKGYtnh5TXS/kY9E5ychJbTu6Gvybq0bFhn2Rqqsl6ZGLAT4MLe7GrE
- OjcxJrXPlshz34dCCzHbdcCvJAybmXvOBZrZ+JhzmZVteP0kLk28KujC9sTBb2ADIEo3
- shCbL3E5+ZqeI/DSRAPgqoWfUq6eeDJs7IK0dDjZ9OKVo0u+QeMUlAI6dhPyLtDD0eZw
- GzAA==
-X-Gm-Message-State: AOAM532JJfkz4f0pn6tOTOhjaEdP7vp2H8IoGIFlDqaBmRpnVLyGSFNK
- dhTN3PSDS1LXch0i221/2pE=
-X-Google-Smtp-Source: ABdhPJx+gLv9qZMLtZ6TZVHw/+QL36jRAthkyIcW+H3mR5CsVPUeHqXkxzrfYIjIcR+1soMD/SYmlQ==
-X-Received: by 2002:a17:906:4313:b0:6b8:b3e5:a46 with SMTP id
- j19-20020a170906431300b006b8b3e50a46mr24525324ejm.417.1652284408880; 
- Wed, 11 May 2022 08:53:28 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=yjOB8oqEwj9sflBfsTrbSM5ZU+W2PCPtGpyHnXQbiBE=;
+ b=qfCsykYmGI+XTubmDc6Qhf+aie5JKW4H3Px1wIDTNFn2MPyrBE2YWWw63IXQ1/ZA85
+ Plu4ureYn0s3hGkeI7ODRY7qRzQ4wK9xcd3J8/YopXLZesKpcH48famqRFccFN+eWpnL
+ HmC4RFtR+yq3piBnWqSrrm8Ov1ohl3yZtSRAYgLbeg5WyEtbwgv6VkrqTNvLVMlqKwbV
+ BJMC8RJOLLc451hDpTS7mrh+4cXsxhzX2Ccq8qpXT6QhFDy8ItHpagrmyfIHBgGbr1QU
+ l1MSzZ/UgyxlGMA6Apu3DuRj0JyPDc+vau9irwvGiK23rhkF/MI0jk1hutZwJkjomrq0
+ d+Eg==
+X-Gm-Message-State: AOAM53274/FAMTK7AKWKQLTsoqqr0C32nBNj4GygEBmTkMJh9JUp+c9Z
+ QCBIUoTEY3g76xulz0JMq/M=
+X-Google-Smtp-Source: ABdhPJyWSUkwh8FQB0XXOTQIraeUsjzWhAMctVfXQSgsFRY6m2slte57mkSqtEgbc+2cMTXMJL4F1A==
+X-Received: by 2002:a17:907:1623:b0:6f6:e9ce:9926 with SMTP id
+ hb35-20020a170907162300b006f6e9ce9926mr21965119ejc.360.1652284413040; 
+ Wed, 11 May 2022 08:53:33 -0700 (PDT)
 Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
  [84.72.105.84]) by smtp.gmail.com with ESMTPSA id
- fb21-20020a1709073a1500b006f3ef214e1fsm1072458ejc.133.2022.05.11.08.53.27
+ fb21-20020a1709073a1500b006f3ef214e1fsm1072458ejc.133.2022.05.11.08.53.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 May 2022 08:53:28 -0700 (PDT)
+ Wed, 11 May 2022 08:53:32 -0700 (PDT)
 From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Liang Chen <cl@rock-chips.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
+ Heiko Stuebner <heiko@sntech.de>
 Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev,
- Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v3 0/3] Enable JPEG Encoder on RK3566/RK3568
-Date: Wed, 11 May 2022 17:53:05 +0200
-Message-Id: <20220511155309.2637-1-frattaroli.nicolas@gmail.com>
+ Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v3 1/3] dt-bindings: media: rockchip-vpu: Add RK3568 VEPU
+ compatible
+Date: Wed, 11 May 2022 17:53:06 +0200
+Message-Id: <20220511155309.2637-2-frattaroli.nicolas@gmail.com>
 X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220511155309.2637-1-frattaroli.nicolas@gmail.com>
+References: <20220511155309.2637-1-frattaroli.nicolas@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_085331_091188_02473CA0 
-X-CRM114-Status: GOOD (  20.45  )
+X-CRM114-CacheID: sfid-20220511_085334_666858_E6CF611A 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,80 +97,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
+The RK3568 and RK3566 have a Hantro VPU node solely dedicated to
+encoding. This patch adds a compatible for it, and also allows
+the bindings to only come with a vepu interrupt.
 
-the following series adds support for and enables one of the hardware
-video encoders on the RK3566 and RK3568 line of SoCs by Rockchip,
-initially just for the JPEG format in line with what the kernel supports.
+Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+---
+ .../devicetree/bindings/media/rockchip-vpu.yaml | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
 
-The encoder block is separate from the Hantro decoder instance, as they
-are in different power domains and have wildly different memory addresses
-as well.
-
-The encoder hardware seemingly also supports VP8 and H.264 in addition
-to just JPEG, as is evident from both the downstream vendor stack and the
-register listing in the TRM. The hantro driver in Linux, however, does
-not yet support encoding these formats.
-
-The first patch modifies the bindings with a new compatible, and adds
-the ability to just have a vepu interrupt without a vdpu interrupt.
-
-The second patch makes the actual driver changes to support this variant.
-
-The third and final patch makes the necessary device tree changes for
-the rk356x device tree file to add both the node for the encoder and
-its MMU.
-
-The series has been tested on a PINE64 Quartz64 Model A with an RK3566
-SoC using GStreamer.
-
-Below you'll also find an interdiff against V2.
-
-Regards,
-Nicolas Frattaroli
-
-Changes in v3:
- - bindings: change consts to an enum
- - bindings: add check to make sure devices with a -vepu compatible only
-   have the vepu interrupt
-
-Changes in v2:
- - rename compatible as it's not JPEG only
- - rename device tree nodes as it's not JPEG only
- - reword commits as it's not JPEG only
- - get rid of a whole bunch of redundant struct definitions, as, you
-   guessed it, it's not JPEG only
-
-Nicolas Frattaroli (3):
-  dt-bindings: media: rockchip-vpu: Add RK3568 VEPU compatible
-  media: hantro: Add support for RK356x encoder
-  arm64: dts: rockchip: Add Hantro encoder node to rk356x
-
- .../bindings/media/rockchip-vpu.yaml          | 17 ++++++++++++-
- arch/arm64/boot/dts/rockchip/rk356x.dtsi      | 21 ++++++++++++++++
- drivers/staging/media/hantro/hantro_drv.c     |  1 +
- drivers/staging/media/hantro/hantro_hw.h      |  1 +
- .../staging/media/hantro/rockchip_vpu_hw.c    | 25 +++++++++++++++++++
- 5 files changed, 64 insertions(+), 1 deletion(-)
-
-Interdiff against v2:
 diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-index 4045f107ca4e..965ca80b5cea 100644
+index bacb60a34989..965ca80b5cea 100644
 --- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
 +++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-@@ -40,8 +40,9 @@ properties:
+@@ -22,6 +22,7 @@ properties:
+           - rockchip,rk3288-vpu
+           - rockchip,rk3328-vpu
+           - rockchip,rk3399-vpu
++          - rockchip,rk3568-vepu
+           - rockchip,px30-vpu
+       - items:
+           - const: rockchip,rk3188-vpu
+@@ -39,7 +40,9 @@ properties:
  
    interrupt-names:
      oneOf:
 -      - const: vdpu
--      - const: vepu
 +      - enum:
 +          - vdpu
 +          - vepu
        - items:
            - const: vepu
            - const: vdpu
-@@ -78,6 +79,18 @@ required:
+@@ -76,6 +79,18 @@ required:
  
  additionalProperties: false
  
