@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00D4FC433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 08:21:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B62DC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 08:21:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6EuYd2O4RXpJowo8VYcHlVQxUCYVhjkpFJZu4dmEke8=; b=J/mcZ9PAlD7GQ5
-	kiCH/PRMoACcdzONop98+XyYsdI28/wBnN5QuB19UBZEE1m9zDqhCWzhQwCxzA1wJxaqcWK8FrKeE
-	b0G74G7h0YE3Fy+3aPCn/Nsq3tUqnJVLfyGFbqtjeEl1YachiqCX1wzq6UUdzFiGAl5K3DKCgXJN2
-	1TNR97xrIj047xu5mZVKh1hPLiEvLTKJGOn5OUTR1FhascopxoUOGRSjlkukZViYHbakodrVwiviE
-	n6fNkRJyZnH+1pK8ifhIl0vh+wMw7COfiTkLgk+UDOEVH9N9FfyDjmdfZZozlYdB4Bf+mjIzkI1dN
-	4o7E4vCx0/oe8d2sNEnQ==;
+	List-Owner; bh=QUXB1mljRTmSdjPERlNANiMe3QlG05zpKtPBLCI5AHc=; b=Nvra8Jc3tbLHt7
+	VkranTv7Nhkd7CsYWR0TNwRxJfTIuctlu601U2WGYqIoy8ga+xJY0o5zVc3SnrdAXYLYj3u/EOjhY
+	YOlnwz7+g17eHhK7qSoGa9YGJk4H0Ba+LoCAsvV5BHZJ+Y4/VZF+1o/KApS/dVJzxSHt6NDy7N5UT
+	39uWpUE0XJA0aoPS4v9PRv65LG5Rrpe0PJQOI1Gb/7z66XlShULPvVAjKS9mfVetVymhsZCaGje2V
+	n2nsqAf3NQQmlGOGYMy8EUTuEiAVLPwd7aPIjmPOM6WXueUuqNaGEDQeGjUCYkEVb2TeOu91qET9b
+	v/c62gicZE5npSVyr6pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nohbF-005t45-Qq; Wed, 11 May 2022 08:21:37 +0000
+	id 1nohbS-005tD3-Fi; Wed, 11 May 2022 08:21:50 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nohb3-005swY-Vi
- for linux-rockchip@lists.infradead.org; Wed, 11 May 2022 08:21:27 +0000
+ id 1nohbB-005t0S-VJ
+ for linux-rockchip@lists.infradead.org; Wed, 11 May 2022 08:21:35 +0000
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
  by metis.ext.pengutronix.de with esmtps
  (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
  (envelope-from <sha@pengutronix.de>)
- id 1nohat-0002Us-0i; Wed, 11 May 2022 10:21:15 +0200
+ id 1nohat-0002Uu-0i; Wed, 11 May 2022 10:21:15 +0200
 Received: from [2a0a:edc0:0:1101:1d::28] (helo=dude02.red.stw.pengutronix.de)
  by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nohaq-001eQN-Nn; Wed, 11 May 2022 10:21:11 +0200
+ id 1nohaq-001eQU-Te; Wed, 11 May 2022 10:21:11 +0200
 Received: from sha by dude02.red.stw.pengutronix.de with local (Exim 4.94.2)
  (envelope-from <sha@pengutronix.de>)
- id 1nohao-004lV3-My; Wed, 11 May 2022 10:21:10 +0200
+ id 1nohao-004lW3-Nd; Wed, 11 May 2022 10:21:10 +0200
 From: Sascha Hauer <s.hauer@pengutronix.de>
 To: dri-devel@lists.freedesktop.org
 Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
@@ -47,9 +47,10 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  Peter Geis <pgwipeout@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [PATCH v2 2/3] drm: rockchip: Change register space names
-Date: Wed, 11 May 2022 10:21:08 +0200
-Message-Id: <20220511082109.1110043-3-s.hauer@pengutronix.de>
+Subject: [PATCH v2 3/3] arm64: dts: rockchip: rk356x: Change VOP2 register
+ space names
+Date: Wed, 11 May 2022 10:21:09 +0200
+Message-Id: <20220511082109.1110043-4-s.hauer@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220511082109.1110043-1-s.hauer@pengutronix.de>
 References: <20220511082109.1110043-1-s.hauer@pengutronix.de>
@@ -60,8 +61,8 @@ X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
  SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_012126_043467_2A8C056F 
-X-CRM114-Status: GOOD (  12.46  )
+X-CRM114-CacheID: sfid-20220511_012134_031743_E94DC435 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,36 +81,28 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 "regs" seems to generic when there are multiple register spaces, so
-rename that one to "vop". Also change "gamma_lut" to better looking
-"gamma-lut".
+rename to "vop". Also, replace "gamma_lut" with better looking
+"gamma-lut". This has been changed in the driver and binding
+documentation as well.
 
 Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index 8d1323a47f822..d463ea80b6569 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -2620,7 +2620,7 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index 49eb45e23f8c9..646e60ee48c99 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -576,7 +576,7 @@ gmac1_mtl_tx_setup: tx-queues-config {
  
- 	dev_set_drvdata(dev, vop2);
- 
--	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "regs");
-+	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "vop");
- 	if (!res) {
- 		drm_err(vop2->drm, "failed to get vop2 register byname\n");
- 		return -EINVAL;
-@@ -2637,7 +2637,7 @@ static int vop2_bind(struct device *dev, struct device *master, void *data)
- 	if (ret)
- 		return ret;
- 
--	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "gamma_lut");
-+	res = platform_get_resource_byname(pdev, IORESOURCE_MEM, "gamma-lut");
- 	if (res) {
- 		vop2->lut_regs = devm_ioremap_resource(dev, res);
- 		if (IS_ERR(vop2->lut_regs))
+ 	vop: vop@fe040000 {
+ 		reg = <0x0 0xfe040000 0x0 0x3000>, <0x0 0xfe044000 0x0 0x1000>;
+-		reg-names = "regs", "gamma_lut";
++		reg-names = "vop", "gamma-lut";
+ 		interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru ACLK_VOP>, <&cru HCLK_VOP>, <&cru DCLK_VOP0>,
+ 			 <&cru DCLK_VOP1>, <&cru DCLK_VOP2>;
 -- 
 2.30.2
 
