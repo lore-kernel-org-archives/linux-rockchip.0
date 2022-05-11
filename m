@@ -4,83 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDDFEC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 21:01:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2420FC433F5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 23:41:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NSsmfgGEcjjUOUPzX/JV5U/37qF3UUJ/9UFIyc55+D0=; b=Sm5lsrE2fD3mvv
-	kdHfXJvX6r4AjPPowfn0o9QfbfxPBAK9IZDOegIjjP/pmqO8L+ufE8HmYqN1j9L4zId/8G9JP7vOo
-	/MMXNsUXjHFsNUNEPF6AKR5+8HIMfc/OFDmDKZwrCUk7yk0UiDKkK1+IezzK9ACRQ368o0XwcKKru
-	MjftPYcbmQN3SxrA1IajgAaS6DIuxKyUoUE0cScn/xffR+tM2H1EKot2eZqkT5J2lYy6mt6ar12GN
-	X9rh04AmmtQZEDFRDuLYEjFhCnrfQ+Uc7X4GKkbMKo+0u0jIg+JDFrgOZzL8mjrkaZMvenN0/VLJm
-	kv91BULq9KP859xDtvNA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FY3jTyxBjRaxDXUbZ7SPsjC+ppSHh5/LIjs1s3prVqA=; b=SfRlu+JwxJdiQF
+	s8v7SWiFbSlILNLTwB101r/KddiaHB13xiLjIckxwFhTZDU3pgxpfNsGmRCpuuY+/NvmbuUiIMuv+
+	dWp/HuE9dpU+BkX4qL4HAOCGRzFkjJoSNeKuhivab81L2f81YarcZdhJUwhxrRupFSZz36mF5U5WM
+	IfHRb/ZqEpa38RkJni2Fsy/kMi+5Bk0/hiHxdS6o1Pp+1v5AKxcyp8GGGCahimebGygM6HosLF3Pw
+	L3nbxryostF0HCzpyoj1ZTgXOrgJu78IvW9OaG52qiqnhglwdrvtCDOXHnjTgVZC8WNlLMpF+TO6s
+	T94PinQaCw8JivqR5AIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1notST-008e6K-Ug; Wed, 11 May 2022 21:01:21 +0000
-Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
+	id 1novxV-0095T4-Vr; Wed, 11 May 2022 23:41:34 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1notSP-008e47-NV
- for linux-rockchip@lists.infradead.org; Wed, 11 May 2022 21:01:19 +0000
-Received: by mail-oi1-x22e.google.com with SMTP id w123so4176520oiw.5
- for <linux-rockchip@lists.infradead.org>; Wed, 11 May 2022 14:01:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Liqad/zEjO4owGRvsF06yHturrZoCWiadtMW9YDcK7c=;
- b=ZqfBOUlvhs6OKpanNWcJHJd8Ui2ebmZ56D/ffy3DR05BcxnHuF8MUze2jfyF76+1PO
- w+EOxIOnno5zi8LdsZOqAv4uHy5zULFOpBzfiYPF+khaq2NEp0/xwgLX0VDEMmyTCk2D
- cxCT/tL5T6qKRRM7Bzg/OJl2yaaBvLQXt5/eI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Liqad/zEjO4owGRvsF06yHturrZoCWiadtMW9YDcK7c=;
- b=EkOIWN6NTeXVhHl4EjnxRqJnnN1sOQ7zBneyOEy/gdrKk6J09mnA9UtjYKhvzQ8qYO
- +LCmnvZP8xRg5+yvJ9lf1OxqHruNvHyFPDrjJ097ewA2Aw63VFuih+ujoor05ECFb5yX
- UdfqIzPH4Fh+QSrKw386zjPTLf7uxPxV9wAXhM8KuwM/G4A6oP0lSWQrbAfnwF7x5k/t
- 9Qqif6XUHbLDoXXiFdBcssPIlMpXkgDtIGgUZGQspazY43Wposb/d/2fcmQcmJAbuGgo
- 1Qz1oRDT66W+QQlhqbMcwuid2j5skDAnu+Lq2Xqx+mgGtLBwJtcTzAzwo5Yk5jyQ/pmZ
- MoHg==
-X-Gm-Message-State: AOAM5305cK85kL2WzLnquBm+owiW6iqoZ3GiWbcGcyHgfF4NVdpiEviG
- Y86ZARtj23bH8YxY7k6jiLlauo8vbAfFGQ==
-X-Google-Smtp-Source: ABdhPJw00LdvAsbLGktulyWoaLONzf15V8JQc462Gwq2+l0PfC9F9D0KZBdy4rSJeZnQj6WhRsyDDQ==
-X-Received: by 2002:a05:6808:1b08:b0:326:6b6b:91ce with SMTP id
- bx8-20020a0568081b0800b003266b6b91cemr3513459oib.206.1652302874491; 
- Wed, 11 May 2022 14:01:14 -0700 (PDT)
-Received: from mail-ot1-f47.google.com (mail-ot1-f47.google.com.
- [209.85.210.47]) by smtp.gmail.com with ESMTPSA id
- ek17-20020a056870f61100b000d6c86ea98dsm1044254oab.1.2022.05.11.14.01.13
- for <linux-rockchip@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 May 2022 14:01:13 -0700 (PDT)
-Received: by mail-ot1-f47.google.com with SMTP id
- y14-20020a9d460e000000b00605ee347da1so1317198ote.8
- for <linux-rockchip@lists.infradead.org>; Wed, 11 May 2022 14:01:13 -0700 (PDT)
-X-Received: by 2002:a9d:22e9:0:b0:605:d008:c1d7 with SMTP id
- y96-20020a9d22e9000000b00605d008c1d7mr1549783ota.186.1652302872756; Wed, 11
- May 2022 14:01:12 -0700 (PDT)
+ id 1novxT-0095Sb-La; Wed, 11 May 2022 23:41:33 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88]
+ helo=phil.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1novxQ-0006Sy-4n; Thu, 12 May 2022 01:41:28 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 5.19 #1
+Date: Thu, 12 May 2022 01:41:27 +0200
+Message-ID: <7748558.DvuYhMxLoT@phil>
 MIME-Version: 1.0
-References: <202205120335.LzAksOZI-lkp@intel.com>
-In-Reply-To: <202205120335.LzAksOZI-lkp@intel.com>
-From: Brian Norris <briannorris@chromium.org>
-Date: Wed, 11 May 2022 14:01:01 -0700
-X-Gmail-Original-Message-ID: <CA+ASDXO1JDKf-vBB0gWdYKD9vMMoMXYRL2E42HJtnbOvMP7jPA@mail.gmail.com>
-Message-ID: <CA+ASDXO1JDKf-vBB0gWdYKD9vMMoMXYRL2E42HJtnbOvMP7jPA@mail.gmail.com>
-Subject: Re: [linux-next:master 9518/11094] ERROR: modpost:
- "rockchip_pmu_unblock" [drivers/devfreq/rk3399_dmc.ko] undefined!
-To: kernel test robot <lkp@intel.com>
-Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org, 
- Linux Memory Management List <linux-mm@kvack.org>,
- Chanwoo Choi <cw00.choi@samsung.com>, 
- Douglas Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_140117_826270_390B943F 
-X-CRM114-Status: UNSURE (   9.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220511_164131_754380_17C4D718 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,24 +57,138 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 11, 2022 at 12:53 PM kernel test robot <lkp@intel.com> wrote:
-> Note: the linux-next/master HEAD 6107040c99d5dfc920721c198d45ed2d639b113a builds fine.
->       It may have been fixed somewhere.
+Hi Arnd, Kevin, Olof,
 
-Indeed, I think it has been. That's what this was for:
+please find below and in subsequent pull-requests
+Rockchip changes for for 5.19 .
 
-add9f6f30e54 soc: rockchip: Fix compile-testing SoC drivers
-https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?h=v5.19-armsoc/drivers&id=add9f6f30e54b5c07e7a0260cda459ef1d9646b7
+As always the 64bit DTS part is the big one.
 
-I discovered it in parallel to this submission, so they weren't queued
-together as preparation or Fixes.
+Please pull!
 
-Brian
+Thanks
+Heiko
 
-> All errors (new ones prefixed by >>, old ones prefixed by <<):
->
-> >> ERROR: modpost: "rockchip_pmu_unblock" [drivers/devfreq/rk3399_dmc.ko] undefined!
-> >> ERROR: modpost: "rockchip_pmu_block" [drivers/devfreq/rk3399_dmc.ko] undefined!
+
+The following changes since commit 3123109284176b1532874591f7c81f3837bbdc17:
+
+  Linux 5.18-rc1 (2022-04-03 14:08:21 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.19-rockchip-dts64-1
+
+for you to fetch changes up to bc405bb3eeee4b711830ab569e7f3811b92196ab:
+
+  arm64: dts: rockchip: enable otg/drd operation of usb_host0_xhci in rk356x (2022-05-11 06:09:55 +0200)
+
+----------------------------------------------------------------
+New peripherals supported on rk356x: sfc, usb3, sata and
+the video-decoder on rk3328.
+RK3399 received some improvements and nodes for the memory controller.
+Additional peripherals for PineNote, Gru and BananaPi-R2-Pro.
+New boards are the Firefly Station M2, Pine64 SoQuartz SOM and
+Quartz64 model B as well as the Radxa Rock3 model A.
+
+----------------------------------------------------------------
+Caleb Connolly (1):
+      arm64: dts: rockchip: add an input enable pinconf to rk3399
+
+Christopher Obbard (2):
+      arm64: dts: rockchip: Rename vdec_mmu node for RK3328
+      arm64: dts: rockchip: Add vdec support for RK3328
+
+Frank Wunderlich (3):
+      arm64: dts: rockchip: Add sata nodes to rk356x
+      arm64: dts: rockchip: Add USB nodes for BPI-R2-Pro
+      arm64: dts: rockchip: Add SATA support to BPI-R2-Pro
+
+Furkan Kardame (1):
+      arm64: dts: rockchip: add dts for Firefly Station M2 rk3566
+
+Heiko Stuebner (1):
+      arm64: dts: rockchip: fix Makefile sorting for BananaPi R2 Pro
+
+Johan Jonker (2):
+      arm64: dts: rockchip: use generic node name for pmucru on rk3399
+      arm64: dts: rockchip: add clocks property to cru nodes rk3399
+
+Krzysztof Kozlowski (1):
+      arm64: dts: rockchip: correct interrupt flags on rk3399 boards
+
+Lin Huang (2):
+      arm64: dts: rockchip: Add dfi and dmc nodes to rk3399
+      arm64: dts: rockchip: Enable dmc and dfi nodes on gru
+
+Michael Riesch (6):
+      dt-bindings: arm: rockchip: add radxa rock3 model a
+      arm64: dts: rockchip: add basic dts for the radxa rock3 model a
+      arm64: dts: rockchip: add usb3 support to rk3568-evb1-v10
+      arm64: dts: rockchip: add usb3 support to the radxa rock3 model a
+      arm64: dts: rockchip: enable usb hub on the radxa rock3 model a
+      arm64: dts: rockchip: enable otg/drd operation of usb_host0_xhci in rk356x
+
+Peter Geis (8):
+      arm64: dts: rockchip: add rk356x dwc3 usb3 nodes
+      arm64: dts: rockchip: enable dwc3 on quartz64-a
+      arm64: dts: rockchip: add rk356x sfc support
+      dt-bindings: arm: rockchip: Add Pine64 Quartz64 Model B
+      dt-bindings: arm: rockchip: Add Pine64 SoQuartz SoM
+      dt-bindings: arm: rockchip: Add Firefly Station M2
+      arm64: dts: rockchip: add Pine64 Quartz64-B device tree
+      arm64: dts: rockchip: add SoQuartz CM4IO dts
+
+Robin Murphy (1):
+      arm64: dts: rockchip: Add some pins for NanoPi4
+
+Samuel Holland (2):
+      arm64: dts: rockchip: Add accelerometer to rk3566-pinenote
+      arm64: dts: rockchip: Add USB and TCPC to rk3566-pinenote
+
+Sascha Hauer (1):
+      arm64: dts: rockchip: rename HDMI ref clock to 'ref' on rk3399
+
+Shawn Lin (1):
+      arm64: dts: rockchip: Move drive-impedance-ohm to emmc phy on rk3399
+
+ .../devicetree/bindings/arm/rockchip.yaml          |  23 +-
+ arch/arm64/boot/dts/rockchip/Makefile              |   6 +-
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  22 +-
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    |   3 +-
+ .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi   |   7 +
+ .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi      |  12 +
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi       |  28 +
+ arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts |   3 +-
+ .../boot/dts/rockchip/rk3399-khadas-edge.dtsi      |   3 +-
+ arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts  |   3 +-
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi   |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-op1-opp.dtsi   |  25 +
+ arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts   |   3 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi   |   3 +-
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  45 +-
+ arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi  |  80 +++
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts |  37 ++
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts | 615 ++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts     | 579 +++++++++++++++++++
+ .../boot/dts/rockchip/rk3566-soquartz-cm4.dts      | 177 ++++++
+ arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi  | 616 +++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3566.dtsi           |  11 +
+ arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts | 102 ++++
+ arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts   |  46 ++
+ arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts    | 562 +++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi           |  23 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi           |  74 ++-
+ 29 files changed, 3096 insertions(+), 18 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-soquartz.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
