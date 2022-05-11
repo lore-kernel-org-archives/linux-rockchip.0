@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 235F9C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 15:11:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AD44C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 15:11:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=INo/BDcSpQdzio4dFPD8utOTtNMVhp6oKv2DAjna5Ns=; b=c7TqLqdc/uC2kF
-	uv8Ro5EhzXTWGqs4frtO3QxGoTfG+FMY+t+LgqIMflR+bX/5UYU4ejgc+F1ad45mcSPIBzBTG/p/F
-	B6nQY0Roa24sj16B58uMn87oFXk7OSaqRdcYrLRlo9JU1quQf1x3kG0yaDYn3jpGUsWZxxBoOegpm
-	+pMGXLI8/HLqOogpH32rEKyYNLum0E8vHZQJSrMwD7OVwH6DdleR2XdWaCoC9rsxDG9Q2wKhnM/p6
-	llRdMKKNZX0C/zvdm9iZgbn2qLkOdoBMz4WyjLjgpOGEBovKaW09UuP4QqARVwSak7e5/Ag4sotih
-	S2wX++DUBmgBAf1zNDVQ==;
+	List-Owner; bh=t/COd2nmHbpvLSElZIlCiQYTtxvuUHg4NDJ/Eg1ibIQ=; b=z4nBnOFMQ2aQcs
+	q5U15m/t6am4t461jVYOFXYmUazPb2m0bFW9uQbE9z1d3mJDjIZURVMHtRJ96pRV0j+AwN6uOHz8t
+	MXqEXRSHxu5xXrZcn3ycQ5bOpOAACxrRp32g2z4D1WZfy6+75RQlxmswa2wajhUBY0unPWqDXrUpX
+	Kf/4X+TWTU5ii6aSIRZdmOm7QjXxjyxCOdg0NYGGx3AT618KsUhNL428Rqjs5Vz1O03fraw0qGSyB
+	qyofINBHruxrPSLpC9iiTREUN9hwR/axyvCshINxtuRdeDRhDvm4oUjfeRFkFgFavjjIT6k1qIMK+
+	3b/ZPNQjE507eo9cZq+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nonzQ-007RlP-7r; Wed, 11 May 2022 15:11:00 +0000
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
+	id 1nonzN-007RkD-7z; Wed, 11 May 2022 15:10:57 +0000
+Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nonqB-007NjZ-JC; Wed, 11 May 2022 15:01:28 +0000
-Received: by mail-qt1-x836.google.com with SMTP id hf18so2211543qtb.0;
- Wed, 11 May 2022 08:01:26 -0700 (PDT)
+ id 1nonqB-007Nj2-Jv; Wed, 11 May 2022 15:01:30 +0000
+Received: by mail-qt1-x832.google.com with SMTP id hf18so2211504qtb.0;
+ Wed, 11 May 2022 08:01:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ipDuBEhFw2DyeLXG/FGMhARGVjkT9bgP/MDyzET/qKc=;
- b=VqceqPLS+1htYwbnkdB1KBG2uG8SPVKbSfknbCr7putJwxx2cf4O1v6nSo207w8Kfk
- mRwrH00M1xaanbcOw8aB6vSJfgrOybPgim2cr4NaasjycYeaOsZy/RM3naCj5jy8hl44
- UHIJ8TFs9MghONZDytS/GtSeZYibpyRbzeXrzHHeCbqCAK6ThohEfj6Fyw7tPU49UKs3
- Md+mXvivlDeSsQkXR7b1yuJskVs7+nMz9LUOoBQ8gkX0lcOHu8nO1joX3gtpEfhg+0/O
- 9FKWuMrl78hOvqVRXoLP6dPaeZWs53md1YdoqzeYomqSXNMBnNLu7CkkGiagycu9Or43
- FZ9w==
+ bh=ehskEIe5iN8y7k3SRy7I7dQU1KrIdtzHbsW6vH/ZN2w=;
+ b=p+m2+5cZMBniorHS3GIpR5fpXoDkYGG8xLXaQI5ZyZrrYVzvKJfMbWdNgfbQBW9BJm
+ CWAOE/jjuSGI+LAPyHLvLjWt0tQEaOO1RNObnvOsdmBOvkXb5xVT9PZetOnv4V76kGc2
+ wGImIK49xn7/XLmSs+VJ6iWiCurKjCkoN0mpiecPfvfbER99SsCfqgrREiRIrEKCtGpx
+ +nqPBopag/k3Nv60vRBoHudK4tgmCOEI1lAek2gKZinwniEZiaLwlTbX3spmb8pJxoMa
+ NEMbR8PK0UwFoFArz73iw4NnKeMornPM9600Fz9ksxXkA5K/dhdvwHpGNz9I2GGjYRRo
+ /ylQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ipDuBEhFw2DyeLXG/FGMhARGVjkT9bgP/MDyzET/qKc=;
- b=Izu82SlJXE8OU0taDCAwP9qMBZdSeD3MjL8JnFINZf3b5HqiweY1T22+sUgZOWPuYw
- HmpQYZOuLzCU8LFGx7hzL7Hi61bPqSQLdF7HXKurzVQxrBugrVCkNjo15A+F0nuHBY26
- 3g4WWfgTtlXjvsdIhcZmrRjUcsXXkn+K18cm8Ga11DZxuZ7t//EZDIHbDODqemhDl4Nk
- 5pluSaYMBqmjF2rhRW8r67Jh+DAVV8MrK3ticg5asAS0/tXvgVjf+vp67qP5/47cKMoP
- c8SGnd1E1EJ3htJHTTw/vvT8JMgctSSLN7AE/FzY7N8FP2M+1uoOiSIJUnM5gfXPURb1
- KGVw==
-X-Gm-Message-State: AOAM533f8nrPFUC9Nj+lyLc71OdkLAA4j+AmXqjgWlbrfAt3GQzhHr2R
- ugRR1TZwnTA4GrTPO/m5rOE=
-X-Google-Smtp-Source: ABdhPJxQDBcvlYHhaql84573qZ07O8V9rUoBzOAlGDd772zbH2KQTV4gZdCmubxlDvAK9RPHKFpbtA==
-X-Received: by 2002:ac8:5fc9:0:b0:2f3:9bc9:e174 with SMTP id
- k9-20020ac85fc9000000b002f39bc9e174mr24002632qta.51.1652281285192; 
- Wed, 11 May 2022 08:01:25 -0700 (PDT)
+ bh=ehskEIe5iN8y7k3SRy7I7dQU1KrIdtzHbsW6vH/ZN2w=;
+ b=zUnLVvpCmQ9z8j8nBtyRU0KTbxGnWsIenGxQduDKYViP/eWWJjYIKuvmLWIY+/zET9
+ vEcrBRP0YTDC2C6YeBZ6Lfbp7GTjMkuB5Xpo6pR7d8pyJdvb0k1ZFaiA3RE9qX0hXERO
+ K9ykoyfwhZz4+R8KiCHA5W2qkJqWr2QYrGzbrS3+CURSm65kl3ABYCWOAammf1JIBMdn
+ AhyyqlPUBd8DqSmo4ZPk+AqcmvlKhS9V6yrzwZpfFbqfcYgmEQo6Ga24tMkLN4CwE6JU
+ Z8uFLFIatxJ2BtElE37cHUyueydmp5CHL4PCpPD5p41oNbXnSnZi1QegbAn2rhrH3CSu
+ 5heg==
+X-Gm-Message-State: AOAM532c3iQ2whnPVf4fmJ2nWsavSC9YaC4lbPhcM6XaSKas3LxoLnN2
+ knruEgHMVfup/FJBifuCDi4=
+X-Google-Smtp-Source: ABdhPJzBYLGJuTwDEA7mH2iU4A6z3+FF6sNsnM9AaKOzjq2Fi0ZGfMGf2i1hpmWPKX4Ry36ludi3BA==
+X-Received: by 2002:ac8:5e0b:0:b0:2f3:c8c6:da87 with SMTP id
+ h11-20020ac85e0b000000b002f3c8c6da87mr23035259qtx.130.1652281283131; 
+ Wed, 11 May 2022 08:01:23 -0700 (PDT)
 Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
  by smtp.gmail.com with ESMTPSA id
- h1-20020a05620a244100b0069fc6484c06sm1487134qkn.23.2022.05.11.08.01.24
+ h1-20020a05620a244100b0069fc6484c06sm1487134qkn.23.2022.05.11.08.01.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 May 2022 08:01:24 -0700 (PDT)
+ Wed, 11 May 2022 08:01:22 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Heiko Stuebner <heiko@sntech.de>
 Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, Peter Geis <pgwipeout@gmail.com>
-Subject: [PATCH v1 5/6] arm64: dts: rockchip: enable sdr-104 on sdmmc
-Date: Wed, 11 May 2022 11:01:16 -0400
-Message-Id: <20220511150117.113070-6-pgwipeout@gmail.com>
+Subject: [PATCH v1 3/6] arm64: dts: rockchip: rename Quartz64-A bluetooth gpios
+Date: Wed, 11 May 2022 11:01:14 -0400
+Message-Id: <20220511150117.113070-4-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220511150117.113070-1-pgwipeout@gmail.com>
 References: <20220511150117.113070-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_080127_708887_10E07F8D 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220511_080127_763545_A6E09F4B 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,32 +91,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Now that we have working io-domain support, we can enable higher date
-rates on the sdmmc card.
-
-Before:
-Timing buffered disk reads:  68 MB in  3.08 seconds =  22.07 MB/sec
-
-After:
-Timing buffered disk reads: 188 MB in  3.02 seconds =  62.29 MB/sec
+The bluetooth binding for the Quartz64 Model A has incorrectly named
+host-wakeup and device-wakeup gpios. Rename them to clear some dtbs_check
+warnings.
 
 Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index 991b7b1b8443..71df64655de5 100644
+index dd7f4b9b686b..ca0b92795d95 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -582,6 +582,7 @@ &sdmmc0 {
- 	disable-wp;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdmmc0_bus4 &sdmmc0_clk &sdmmc0_cmd &sdmmc0_det>;
-+	sd-uhs-sdr104;
- 	vmmc-supply = <&vcc3v3_sd>;
- 	vqmmc-supply = <&vccio_sd>;
- 	status = "okay";
+@@ -638,8 +638,8 @@ bluetooth {
+ 		compatible = "brcm,bcm43438-bt";
+ 		clocks = <&rk817 1>;
+ 		clock-names = "lpo";
+-		device-wake-gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
+-		host-wake-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
++		device-wakeup-gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
+ 		shutdown-gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
 -- 
 2.25.1
 
