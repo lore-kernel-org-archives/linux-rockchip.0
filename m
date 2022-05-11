@@ -4,80 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B363C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 15:54:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EECBC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 May 2022 16:18:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4677hjD8hBdHbKp5fvIDOA6XB2347mUvLGx5XF9k+ag=; b=OofLzWGRK/Pry9
-	LNZFn8dRgUCcBuVoIIT+Inif49/6NaMbGLFyEZs+soHIpzLrx26fMkJqQiol0AqpPV+aB5hFUOaXg
-	UT99GAGZqvwzfADZeL9D9IJ6hi3jLaKRa5P6lK1ZNjzdEst6H1pn4xBWUHMMfl3kdniFrakugE5lt
-	idLoxR7XJIgZMqhPFtmOYIwCvkAjmDC2GkMuT07XtGJIvrFEGMsfsQZtOmDtn14eWyMNb6U/WqMmR
-	RHiAJMp/mm3xzQ8k37eQYzBujRr8M6UtyeDMjFyvJbjE4QT1/AHe2QbHdTklHD85JPH8h9hB/bxmy
-	2yWlWiaszpUzlTMY+BlQ==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=57/ytZZuUcB+RKDf22M8ewETJSepS6xLSOs2SKRbQWs=; b=dsnncXaN48qkQ5
+	V4cVoRUjTOpcEhiMgXULiQph+fr09KTLO1oGOcZLpP9beB4Nhh/k+R63ykCD5NdtH2fNHN0vjfPhC
+	F9IDmK9zlCLlixVmBbzBn1vDJ5/2CW5+EmNDPZzsOXJ9OMO3ArUpSebv++TQyDmw2hrhVksl8z9WC
+	9QV0W5PsL3TiRnYKh1tHsCR2kL1uCe+NbTIEu1pQ4lJ57loas04S1T9cAVWv/xq3RBnaCIncG+F+j
+	TtYfpOX8Q2o0y31otgtnT9ySjMwi7WFwZlHYtS2erQyCckhGKtsT84PLO+vSR75EzX0LLeacJ3ec/
+	OPBOusHPgbP9/6w/SqVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1noof9-007esY-W0; Wed, 11 May 2022 15:54:08 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1nop2D-007kgt-Hx; Wed, 11 May 2022 16:17:57 +0000
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nooey-007elq-40; Wed, 11 May 2022 15:54:00 +0000
-Received: by mail-ej1-x629.google.com with SMTP id i19so4900598eja.11;
- Wed, 11 May 2022 08:53:55 -0700 (PDT)
+ id 1nop1p-007kWe-0u; Wed, 11 May 2022 16:17:38 +0000
+Received: by mail-lj1-x231.google.com with SMTP id a30so3241307ljq.9;
+ Wed, 11 May 2022 09:17:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=dUweJsekqn20RiGCHeTdxpbDFbYhVgStBTWjqPTC0OA=;
- b=cyTtogAdcREKIftueghnF0sDVo//N1OZwgehStWkfnvKyI8bEyee2moKrfR+WWVvMI
- lv9zRWQUappmQK2ic6Eir90cj93KO5VDwRvEzBtFDBbcjgbHEh/PHlM78eDcL+7JrQ9X
- qGw4O3RS8gLpgcqGv7JkWeaKkl4JWCyO9ddzvZjUUR4aPyZ6sgwc25U2WodEJu6cZoI0
- SenLc7N90eX0AuY3idnywtZwF8PwlSIhSPOq7rlKzj1GIvA8h5eRoaubsbWWmQCG4vLP
- fLz2phzw3vaR5jCz2x9zy4r4PLUA5Br3sjHeXzkxnZl9up7OCowgLhCw44QsX8qokhnX
- QQ5g==
+ h=mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=puEukUMjobRiu6VL4L2nI73nB+b0/MudIIsYaS8fpK8=;
+ b=J+dK9tuSgD/x1t0dwVrjJfXL5UaO3A7d5vlUYx478jq3ok51XqRUx9H/VrmwRYye+C
+ uBL5/cDIQ7QoeCOds2mtpbN4jjbxPExHy3iDVbpjWLWb+05R2XU0SC8XV9HsHW+tnAbc
+ P5gaNF4RRm9nmX0FyZI1/uWZ5vMBWTc1xG9+tiCf3XgK8JfryN6cJGvp2KtHKPZOMCWC
+ m9zXabiy1Jz0ke1Et97sVtOFYyploht1/HI8JvRtzDqMSYKFm81ss3+2eJ8FMnNKEGz6
+ uercJY6mwV2kCN9EKNg3TXU6ORLncUS44t6TcuNfiruW4OkvtUZuKr5LUFakg0+mGQd0
+ YiNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=dUweJsekqn20RiGCHeTdxpbDFbYhVgStBTWjqPTC0OA=;
- b=hPKhJM1k7q/gmuO1aGjT2x490EjyZpnZQI0gnCkddng6iy3+7blV2dhbnoYsm2FPX1
- LG6P0pwM84QGWpGJSOKqGQ51lJ09aDlIJU8zC1p3Her/6MWtTU8bVNjyuf1fl4CrAvs1
- 8at6dOnWyKyNjNg7I1sGImD4V4701lBf4A2a8qmS63lbP1xtsugftT5x1jPPuHUAOd3G
- Ha2R9qVtFNp968mTwbZLomIDrdiJz+n3RELGfbr/3gCM4gLbzt848mbAS6vfPtqyDLxp
- n+KnoI3k0fJaWwFF/Ri9o/6nq+jLoTw2oux3A12Hyr3w0zIL/04Y8OO9kG4wv83SZSL1
- g88w==
-X-Gm-Message-State: AOAM532snpoy7ovgW47VCVpR5GfRtOergWoutFdbJ/OLveRtV9VjVzvj
- UfS5utOCdZXxZfVzx89UCTk=
-X-Google-Smtp-Source: ABdhPJx56wlYGNygo2oYyc1gSjL/5348c7Sgrxk0TlJvf62vEm+dYrg4aJ1wLPgNm73KSMvWOPdJFQ==
-X-Received: by 2002:a17:906:b74b:b0:6f4:cd08:6fec with SMTP id
- fx11-20020a170906b74b00b006f4cd086fecmr27063368ejb.155.1652284419934; 
- Wed, 11 May 2022 08:53:39 -0700 (PDT)
-Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84]) by smtp.gmail.com with ESMTPSA id
- fb21-20020a1709073a1500b006f3ef214e1fsm1072458ejc.133.2022.05.11.08.53.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 May 2022 08:53:36 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v3 2/3] media: hantro: Add support for RK356x encoder
-Date: Wed, 11 May 2022 17:53:07 +0200
-Message-Id: <20220511155309.2637-3-frattaroli.nicolas@gmail.com>
-X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220511155309.2637-1-frattaroli.nicolas@gmail.com>
-References: <20220511155309.2637-1-frattaroli.nicolas@gmail.com>
-MIME-Version: 1.0
+ h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+ :content-transfer-encoding:message-id:references:to;
+ bh=puEukUMjobRiu6VL4L2nI73nB+b0/MudIIsYaS8fpK8=;
+ b=dmSX40l0xGdThilNEuerTBY7JZ1TvGkx0bwqy1ke7IOssWUgwTCZ6H2N20D/fTGuIY
+ ZP1dksAk/30r1cUjhP71a0XRFPsu64izHbCgGPTd0GSRcBrBa4MNzoF6iVLviOP72C7z
+ imLQO47G1MsAPnLqcG8myzPG5iZ2VL6AUfXpfz9+a9PIhlJJgWr29sEVZe9BxXHSNS4H
+ iQL96DxdbNd4mz3ZGLfQ2IV0t8enu3/l+RoBei1LUcT0oMS2Q16+Tx0MBqxSEjP6+BXZ
+ FAyMN23ZXchQiGw7zu4BxjI1z+sPElhTg6DtNTY5/Ce4AIwKLGlWJwD7U+hSxdk0S5Da
+ jw9Q==
+X-Gm-Message-State: AOAM532MT+YH335tWoZJ8V3ADcheJUei4wU3yQ8lz4te8+LHzXDXQnpI
+ +vDn21VpAoamb1x1y3q0X6VEROinDr0=
+X-Google-Smtp-Source: ABdhPJwdsU3w0YALq/Qkp/LIqwDvsMOn4fl+sXvw/dZ3txf5at4nGBDWtKQ44tHcUKawwQUnIFAwQA==
+X-Received: by 2002:a2e:9d97:0:b0:250:85c2:1072 with SMTP id
+ c23-20020a2e9d97000000b0025085c21072mr17377573ljj.501.1652285846734; 
+ Wed, 11 May 2022 09:17:26 -0700 (PDT)
+Received: from smtpclient.apple (31-178-191-245.dynamic.chello.pl.
+ [31.178.191.245]) by smtp.gmail.com with ESMTPSA id
+ z26-20020a2eb53a000000b002509c3290efsm409113ljm.105.2022.05.11.09.17.25
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 11 May 2022 09:17:26 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
+Subject: Re: [PATCH v11 20/24] arm64: dts: rockchip: enable vop2 and hdmi tx
+ on rock-3a
+From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+In-Reply-To: <CAMdYzYpujdqejDz_K2M0aUhPYNFVgTuqnUwkOA6jcxgDdJ+RoA@mail.gmail.com>
+Date: Wed, 11 May 2022 18:17:24 +0200
+Cc: Sascha Hauer <s.hauer@pengutronix.de>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ dri-devel@lists.freedesktop.org,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ kernel@pengutronix.de, Andy Yan <andy.yan@rock-chips.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ kernel test robot <lkp@intel.com>
+Message-Id: <90DDF759-AF9B-40FD-BACA-AD1E76BF4C8E@gmail.com>
+References: <20220422072841.2206452-1-s.hauer@pengutronix.de>
+ <20220422072841.2206452-21-s.hauer@pengutronix.de>
+ <A86359EC-5291-41BD-966E-EB7890644731@gmail.com>
+ <CAMdYzYoFG3wCQaWXQNJd7mE20OMCj=ZeuewwZfaCJyoCBT-kQQ@mail.gmail.com>
+ <0E6FE020-C95E-47CF-A9D6-AC3F2B2D334F@gmail.com>
+ <CAMdYzYobfJ7WGN+UQ7t5e1Zy9knjfHLse8KzrGrHPfeMkkG0gw@mail.gmail.com>
+ <9F2D8CFF-1EAE-4586-9EE9-82A9D67840BB@gmail.com>
+ <CAMdYzYrz7DRj7F9hGaAPaTSiZkQ4eMNujAp8uPuE9geL6kAz4g@mail.gmail.com>
+ <812AC0DB-A6D0-4DA3-BCDC-7743E8F61821@gmail.com>
+ <CAMdYzYozewYUbM=Q+iJ2wdM5TrB6dGrjS6zh0qmVgWD4XPVR+Q@mail.gmail.com>
+ <ABC61229-B851-4BB7-8B55-688F8A8D841A@gmail.com>
+ <CAMdYzYrsaNED+oMj+z2b4fK7pt32Qg=nXDk3SA0KFDDCJ2XY0g@mail.gmail.com>
+ <F1728C93-CFF8-4C51-B95C-A5049E0DC46A@gmail.com>
+ <CAMdYzYpRVZ2hrGiYeQLqSduOZyKuZenw9bViS7oW7d3MWN7Z8g@mail.gmail.com>
+ <CAMdYzYpujdqejDz_K2M0aUhPYNFVgTuqnUwkOA6jcxgDdJ+RoA@mail.gmail.com>
+To: Peter Geis <pgwipeout@gmail.com>
+X-Mailer: Apple Mail (2.3654.120.0.1.13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220511_085356_233811_DB6DC9A2 
-X-CRM114-Status: GOOD (  16.29  )
+X-CRM114-CacheID: sfid-20220511_091733_104715_D603A72D 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,110 +109,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK3566 and RK3568 SoCs come with a small Hantro instance which is
-solely dedicated to encoding. This patch adds the necessary structs to
-the Hantro driver to allow the JPEG encoder of it to function.
-
-Through some sleuthing through the vendor's MPP source code and after
-closer inspection of the TRM, it was determined that the hardware likely
-supports VP8 and H.264 as well.
-
-Tested with the following GStreamer command:
-
-gst-launch-1.0 videotestsrc ! v4l2jpegenc ! matroskamux ! \
-               filesink location=foo.mkv
-
-Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
----
- drivers/staging/media/hantro/hantro_drv.c     |  1 +
- drivers/staging/media/hantro/hantro_hw.h      |  1 +
- .../staging/media/hantro/rockchip_vpu_hw.c    | 25 +++++++++++++++++++
- 3 files changed, 27 insertions(+)
-
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index dc768884cb79..0b38b41136e2 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -628,6 +628,7 @@ static const struct of_device_id of_hantro_match[] = {
- 	{ .compatible = "rockchip,rk3288-vpu", .data = &rk3288_vpu_variant, },
- 	{ .compatible = "rockchip,rk3328-vpu", .data = &rk3328_vpu_variant, },
- 	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
-+	{ .compatible = "rockchip,rk3568-vepu", .data = &rk3568_vepu_variant, },
- #endif
- #ifdef CONFIG_VIDEO_HANTRO_IMX8M
- 	{ .compatible = "nxp,imx8mm-vpu-g1", .data = &imx8mm_vpu_g1_variant, },
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index ed018e293ba0..b312da654d38 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -300,6 +300,7 @@ extern const struct hantro_variant rk3066_vpu_variant;
- extern const struct hantro_variant rk3288_vpu_variant;
- extern const struct hantro_variant rk3328_vpu_variant;
- extern const struct hantro_variant rk3399_vpu_variant;
-+extern const struct hantro_variant rk3568_vepu_variant;
- extern const struct hantro_variant sama5d4_vdec_variant;
- extern const struct hantro_variant sunxi_vpu_variant;
- 
-diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-index 163cf92eafca..a97a4ea8ede4 100644
---- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
-+++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-@@ -417,6 +417,14 @@ static const struct hantro_codec_ops rk3399_vpu_codec_ops[] = {
- 	},
- };
- 
-+static const struct hantro_codec_ops rk3568_jpeg_enc_codec_ops[] = {
-+	[HANTRO_MODE_JPEG_ENC] = {
-+		.run = rockchip_vpu2_jpeg_enc_run,
-+		.reset = rockchip_vpu2_enc_reset,
-+		.done = rockchip_vpu2_jpeg_enc_done,
-+	},
-+};
-+
- /*
-  * VPU variant.
-  */
-@@ -439,6 +447,10 @@ static const struct hantro_irq rockchip_vpu2_irqs[] = {
- 	{ "vdpu", rockchip_vpu2_vdpu_irq },
- };
- 
-+static const struct hantro_irq rk3568_vepu_irqs[] = {
-+	{ "vepu", rockchip_vpu2_vepu_irq },
-+};
-+
- static const char * const rk3066_vpu_clk_names[] = {
- 	"aclk_vdpu", "hclk_vdpu",
- 	"aclk_vepu", "hclk_vepu"
-@@ -545,6 +557,19 @@ const struct hantro_variant rk3399_vpu_variant = {
- 	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
- };
- 
-+const struct hantro_variant rk3568_vepu_variant = {
-+	.enc_offset = 0x0,
-+	.enc_fmts = rockchip_vpu_enc_fmts,
-+	.num_enc_fmts = ARRAY_SIZE(rockchip_vpu_enc_fmts),
-+	.codec = HANTRO_JPEG_ENCODER,
-+	.codec_ops = rk3568_jpeg_enc_codec_ops,
-+	.irqs = rk3568_vepu_irqs,
-+	.num_irqs = ARRAY_SIZE(rk3568_vepu_irqs),
-+	.init = rockchip_vpu_hw_init,
-+	.clk_names = rockchip_vpu_clk_names,
-+	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
-+};
-+
- const struct hantro_variant px30_vpu_variant = {
- 	.enc_offset = 0x0,
- 	.enc_fmts = rockchip_vpu_enc_fmts,
--- 
-2.36.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFBldGVyIEdlaXMgPHBnd2lwZW91dEBnbWFp
+bC5jb20+IHcgZG5pdSAxMS4wNS4yMDIyLCBvIGdvZHouIDAwOjQ5Ogo+IAo+IEkndmUgcHVsbGVk
+IHlvdXIgZHRzIGFuZCB3aXRoIGEgZmV3IGZpeGVzIGdvdCBhIHdvcmtpbmcgc3lzdGVtIGZyb20K
+PiBpdC4gQXQgbGVhc3Qgb24gdGhlIHYxLjEgYm9hcmQgY2VjIGlzIGZ1bmN0aW9uYWw6Cj4gVG90
+YWwgZm9yIGR3aGRtaS1yb2NrY2hpcCBkZXZpY2UgL2Rldi9jZWMwOiAxLCBTdWNjZWVkZWQ6IDEs
+IEZhaWxlZDoKPiAwLCBXYXJuaW5nczogMAoKUGV0ZXIsCgpUaHggZm9yIHRoaXMuClRoaXMgaXMg
+Z29vZCBuZXdzLgoKSSBzZWUgNCBwb3RlbnRpYWwgcm9vdCBjYXVzZXMgd2h5IGl0IG5vdCB3b3Jr
+cyBmb3IgbWU6Cm5vdCBtdXR1YWwtZXhjbHVzaXZlOgoxXG15IERUUyBoYXMgZXJyb3JzIG5lZWRl
+ZCBmaXgKMlxteSBrZXJuZWwgY29uZmlnIG5lZWRzIHR3ZWFraW5nIGZvciBjZWMgb24gcmszNTY4
+CjNcbXkgcm9jazMgdjEuMzEgaHcgbmVlZHMgc29tZSBleHRyYSBkdCBsb3ZlIChvdmVyIHlvdXJz
+IHYxLjEpIHRvIGdldCBjZWMgd29ya2luZwo0XG15IGJvb3Rsb2FkZXIgcGFzc2VzIGh3IHRvIGtl
+cm5lbCBpbiBzdGF0ZSB0aGF0IGNlYyBpcyBub24tZnVuY3Rpb25hbCAKICAKTWF5IHlvdSBwbHMg
+c2VuZCBtZSB2aWEgUE0gdG8gcGlvdHIub25pc3pjenVrQGdtYWlsLmNvbSB5b3VycyBrZXJuZWwg
+Y29uZmlnICYgd29ya2luZyBmb3IgeW91IGR0cz8KSWYgaSBmYWlsIHdpdGggMS8yLzMgdGhlbiBp
+J2xsIG5lZWQgZ28gd2l0aCB5b3VycyBib29sb2FkZXIuLi4KCmxldHMgdHJ5IHNlZSBpcyAxLzIv
+MyB3aXRoIHlvdXIgZHQgYW5kIC5jb25maWcgcGxlYXNlPwoKCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
