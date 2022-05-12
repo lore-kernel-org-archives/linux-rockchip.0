@@ -4,85 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1FB1C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 May 2022 14:21:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05599C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 May 2022 14:35:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CTgCu8n1jpdBaN5yw14mmidVwqz97WhIfNpc53lO+Fw=; b=T9gz/yZplrFWTz
-	BP1Dvv7/n/sDW32N63g3CJ0w/ugd+P1NQE9cooxcH0g+WBEMBVqaxsUajoTarJE5Ik/mAjMbZnjjJ
-	rEJw2Y6vbekxOy4OvQGB8R7zBJOH0h5Sws1Fb1mWlZu3CYNRXVCTDn5W/IF5KEBrSTiggaMINZjZ9
-	y+YzJllOO5ItjsW51kt0KuXtNV/uGPhx89f8tEdkm1U+2ykBwJJZ0uyMqXnHcAUXyV3Zl0lWwI45u
-	teIK6hNKqqtxr8XjdEVH9ob3LsG4d+Mk1JQ2JqQ6TOAsNQASWzE0kN7md3tWpHcC+hYaSY3GiRsKd
-	ilXzuCaLlFXPLgjd5miA==;
+	List-Owner; bh=i5vMgUMdmOYbgCgLHU2XxLQBVrXow5Ndi5kb6X0zz6A=; b=P52Ccz0fxF8hA9
+	oY9ZkaAMxNbe54kFjAN9mlw9POQSeY5T5c7UhDFmET6owo55VAU8L5SHuh6I1fHq9NYRsGqlo94Qe
+	7uPz/D5cw4n9hOiU+QGhdxVn87H9EIOcasqkG/ddXk5TPwRA7GkAJXytjFMw3y7y/PJunMk1sZ7p6
+	9CmTN5t87ihBkWeCcyYiAW7zHUqSG8OTdzdLBdhJY+PdrENy07RODLA+LRdC1VgF9MEXJmesbm+su
+	aiA6IfWSFKWu5tRIKU3wuXJ1H5/0B4XS4FuvDiym2TGYgk+v8B3Hckl4TQ0V04BzsEAjDGS2xzjFv
+	jcXiD/9yNziZbx3HQ+bA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1np9h6-00CKun-0W; Thu, 12 May 2022 14:21:32 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1np9gi-00CKhz-SK
- for linux-rockchip@lists.infradead.org; Thu, 12 May 2022 14:21:10 +0000
-Received: by mail-ej1-x633.google.com with SMTP id m20so10517853ejj.10
- for <linux-rockchip@lists.infradead.org>; Thu, 12 May 2022 07:21:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=gwwa4KEdZsBSVIiZ/u69uGht/OG8CUxR+7OXw5afM9A=;
- b=kKpsHtTMFWb7QKuSduAjkuTKGuBKLnVZAlGB9pHwkmj6zu0GHNa1piAzog2sZfXWVq
- SsykJv5I7rqCnx2C5Vu+umu7lKGRXsEEwkCZL/JpNSj4vKZqhHYvD+GCPOpT7Gz+O9s3
- q4fuVJINtOwaBuGubVBqax1UabAvSVWiKKzHEC8/DAxcE/UURqPoKahqVCtEETIT8bIC
- ihn0OOTZ0ZjHgcIdy48yrBvSKR47PW/NMP/fMPcqiTDqbdGlO51GtijSmARDMsuhyuwN
- 00ADURgTXmcFTpeqM56tT/7R/tGxRxrjRLwpe59SIX+gbavbR9GvxVGJ534dhRomN8wR
- fy/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=gwwa4KEdZsBSVIiZ/u69uGht/OG8CUxR+7OXw5afM9A=;
- b=r5TP/3oJCMLoEPUgPXqz01CWkxzy8102et7Jur7geVLmxHMboIUxmZlFAHBy0tzB7/
- CnQ8S/DdTpFpqScg6+CqmTye5ZnE8MeRdxXnEYq5tkoQf2J8W+8AgmgEaKw7CwgqLOPt
- cWdiwBfYIMXjCbgoLHngO0LHUT9yiysA4EbOGktrmyFR+DhIU8CHLX0kYJUjkDAY3u0T
- +bxZq+X57H//8pxEb7zUnilUfmqCnqp28pKeD2W7bwIFNfoR2qLZ0stF160egChkL4po
- PwL3KYy2VogzvVI9qfMTMmQ9mM7ViEHZkqlXR3OC2DSUzBB7degPVgHx1VuVk+AlELXQ
- R8Nw==
-X-Gm-Message-State: AOAM531nIzIm/XFKb+3qWVoM/8qNk6y211IvSVS0khRUhM0JZPm8WP1H
- KJDiN0o7jQr7ZdZfQjevupjlsg==
-X-Google-Smtp-Source: ABdhPJy6oM6zHB6ogbyacVZojXHJSVoOXoEbk7yyqF8wbuQPWR8uijnU02sDtFjZFSsAMWEdcDB8xQ==
-X-Received: by 2002:a17:906:58d2:b0:6fd:daa7:3a6e with SMTP id
- e18-20020a17090658d200b006fddaa73a6emr176871ejs.0.1652365265105; 
- Thu, 12 May 2022 07:21:05 -0700 (PDT)
-Received: from [192.168.0.161] (xdsl-188-155-176-92.adslplus.ch.
- [188.155.176.92]) by smtp.gmail.com with ESMTPSA id
- ws20-20020a170907705400b006f3ef214e5bsm2150543ejb.193.2022.05.12.07.21.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 May 2022 07:21:04 -0700 (PDT)
-Message-ID: <82a89be7-ea69-992b-ec66-3fba0c0103e1@linaro.org>
-Date: Thu, 12 May 2022 16:21:03 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH v1 1/6] dt-binding: clock: Add missing rk3568 cru bindings
-Content-Language: en-US
-To: Peter Geis <pgwipeout@gmail.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Elaine Zhang <zhangqing@rock-chips.com>
-Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+	id 1np9u5-00CQSK-T5; Thu, 12 May 2022 14:34:57 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1np9ts-00CQLn-12; Thu, 12 May 2022 14:34:45 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AC4C9106F;
+ Thu, 12 May 2022 07:34:34 -0700 (PDT)
+Received: from bogus (e103737-lin.cambridge.arm.com [10.1.197.49])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 36B4B3F73D;
+ Thu, 12 May 2022 07:34:33 -0700 (PDT)
+Date: Thu, 12 May 2022 15:34:30 +0100
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Cc: Cristian Marussi <cristian.marussi@arm.com>,
+ Etienne Carriere <etienne.carriere@linaro.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220511150117.113070-1-pgwipeout@gmail.com>
- <20220511150117.113070-2-pgwipeout@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220511150117.113070-2-pgwipeout@gmail.com>
+ Heiko Stuebner <heiko@sntech.de>, Liang Chen <cl@rock-chips.com>,
+ linux-kernel@vger.kernel.org, Kever Yang <kever.yang@rock-chips.com>,
+ Jeffy Chen <jeffy.chen@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [BUG] New arm scmi check in linux-next causing rk3568 not to
+ boot due to firmware bug
+Message-ID: <Yn0a9nSD7Yu6aOkt@bogus>
+References: <1698297.NAKyZzlH2u@archbook> <YnOEwuuyO2/h7c1G@e120937-lin>
+ <CAN5uoS_MgBiTVZCRSZyYCH4cnUZD_bHj2+mZu661bFV8TKWScw@mail.gmail.com>
+ <6587375.6lpfYT6tjA@archbook>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <6587375.6lpfYT6tjA@archbook>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220512_072108_971218_DB47A192 
-X-CRM114-Status: UNSURE (   9.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220512_073444_150418_B0883170 
+X-CRM114-Status: GOOD (  20.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,22 +68,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11/05/2022 17:01, Peter Geis wrote:
-> The rk3568 cru requires a clock input and a phandle to the grf node. Add
-> these bindings to clear some dtbs_check warnings.
+On Thu, May 12, 2022 at 01:11:22PM +0200, Nicolas Frattaroli wrote:
+> Hello,
 > 
-> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> ---
->  .../bindings/clock/rockchip,rk3568-cru.yaml         | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
+> sorry for the late reply, completely missed that there was a question
+> for me in this mail.
+> 
+> On Donnerstag, 5. Mai 2022 11:40:09 CEST Etienne Carriere wrote:
+> > Hello Nicolas, Cristian,
+> > [...]
+> > 
+> > Indeed the firmware implementation is wrong in TF-A.
+> > And also in OP-TEE by the way:
+> > https://github.com/OP-TEE/optee_os/blob/3.17.0/core/drivers/scmi-msg/base.c#L163-L166
+> > 
+> > @Nicoals, do you want to send a patch to TF-A, or do you want me to do it?
+> 
+> I have no experience with TF-A, so I'd prefer if you could do it.
+> 
+> In good news, Rockchip has confirmed they're preparing to release RK356x
+> TF-A sources, so I'll be able to port the patch over to their sources once
+> they are released, if they don't already apply it themselves.
 > 
 
+So, there is no way to get a blob release with the patch applied ?
+We know it is a bug in TF-A and if Rockchip is using that codebase, it
+will be the same bug there too causing this issue. Waiting until the
+code is released and the proper TF-A port is done may not be acceptable
+for many developers. So someone from the rockchip doing these tf-a blob
+release must get involved here, understand the situation and get the fixed.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+We can workaround, but I want to hear that it will be fixed instead of
+getting ignored until proper port is available.
 
+Etienne, are you not the author for the related TF-A code ? How can we
+get that fixed in the TF-A code base. If you are not, then I will try to
+get my repo login credentials sorted so that I can only push TF-A change.
 
-Best regards,
-Krzysztof
+-- 
+Regards,
+Sudeep
 
 _______________________________________________
 Linux-rockchip mailing list
