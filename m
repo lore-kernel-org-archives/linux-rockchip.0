@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8571DC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 May 2022 08:58:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F64C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 May 2022 13:08:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9Jhk4b6VBO5bYhazMFo/iA89GrW5FqwsdZAyaUe1E5A=; b=tIVGbABtS/c/cN
-	Io3h1mf88gmqD0DKvTpEdzy3QKPNAc71ZAQQZlaO0XXipRoxtJc5b+MVqenU1YUIHcvR2JFTfIXxr
-	UNOY5Eq/9pMsE1CvNycVn57NIYCFjn9haIPH8o20YnD1XsQaCGs6fQu2lR1Cg2I6Um4K0QoNS18qw
-	31MO0/pWKxsEPJ3jUIdGDibPrmp8vSFphA2QyxyiKc7jDEaEPMzvrBf5XQr7fmHiTNno5xxnlW7q2
-	WRZqcLGJo/3+u6Vc24Jg5anqEMaMpCdo3PR4NNE+pClD18HQVMEitX1I9ajcc3nk4oxCgxxY3aYPX
-	F1bJEhA0EExcE+hEh2LA==;
+	List-Owner; bh=XvkTxHxx1C6OP08IksiejZ4153y75ec46AN8knuS7KI=; b=nmRbAImV5Sip0o
+	7MAmYoNwUw9jE9NkgEwtv27WxPR/2RZXGSfxFpi/yMlkMybmBevuf7F066Y/BAUoINhK6r6FW1i1N
+	VuM2z4GCi4WC3YedhCBP+IFY65/LdtFs1BWM0NHGsVh+ruhLvxNbWWFxI2lyuKG7Q3q0OwqBkq5mD
+	HQ04MDje9CkmUdDBsMrAEpsoay2li7bUgthrxbKojjEqONAXv9e8Ksag/eOlF9BsYMvRmbCLWmb1j
+	vL7nh5bn7+Q61nigyFqJDqexsfsKLk+BV5qmeC7PZgqGovmLXXJLNumOlN2qaQ/IY66qN/z6UG7sQ
+	oWXd7uP/omHrHYMisAsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npR8F-00FDaz-Bj; Fri, 13 May 2022 08:58:43 +0000
-Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
+	id 1npV1g-00GAwu-QH; Fri, 13 May 2022 13:08:12 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npR84-00FDYc-24
- for linux-rockchip@lists.infradead.org; Fri, 13 May 2022 08:58:33 +0000
-Received: by mail-oi1-x22f.google.com with SMTP id j12so9430559oie.1
- for <linux-rockchip@lists.infradead.org>; Fri, 13 May 2022 01:58:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ id 1npV1b-00GAvU-BL
+ for linux-rockchip@lists.infradead.org; Fri, 13 May 2022 13:08:11 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id p18so9896943edr.7
+ for <linux-rockchip@lists.infradead.org>; Fri, 13 May 2022 06:08:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=NpSINpDETSbqQ8kuCYB8/3th0pcSa+77c/avszgXaYU=;
- b=oVgumAXJ+VQc7CQO3qYv73vAoQnhh0vFgw3BxSBiCr2EYIifreB+9BrI6ZNmnhIKBx
- 92Uc0Gpwu1ET19ShHNwi4x3AsOWl3s7NSQILJ0J+IdAnhwortPYFAoDGWIRmg+5GxQHw
- 2xxGUqcIotThN96zCVpp7grCwO6X/NIohPfQZEYmiX21UMcniP4hAHvp/fEubjP1cfh/
- cEEmCGT4ja2naAQGleImvN0huyjfCQlzr2P1MYg8bRfn95MALtdvPMIOB+AJGoqCgL/5
- Rd6mUvUB7QhIyHuZHfBebJqxyN7wksjrjF02Ah/+0OZQWJlSi1wyYqvQqtHkJ//4fAdb
- lFwA==
+ :cc; bh=8JktyQozRr2Cz4cFwzIQ+UMGCdPh43AUYY4NAypHDM8=;
+ b=OlZEX0vwTmT/AVPyyiSYeEOgYbGnJ5u5RGlJ6GCRSMsjYKh438OlW2YHs6KXaG/TnK
+ jxCYA43qQGHdbN+rZn3Mn4hSirivnlHQmlAXGFrU5yCAZp22dxQ4oZCt/2EWLYWkdq4x
+ ByrAYG6gLnXHm7/UMvHvAmn7jyIfraHOQvsbMdvYwiJSt8f7StttRhNrArLYBjxHIukc
+ 28zxck6d0qDXQrcQcVQRwEh4wVgO6FVmMbKyZfAN7QriMS+sK1ox2J0mL8J/z3n1JuGP
+ WbCvY+LBBnSnYRFgrdYJnusAswfaB244GYYonL7BhNo5DzZcuix/lpZ2JQr6qvXMFGWc
+ qH9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=NpSINpDETSbqQ8kuCYB8/3th0pcSa+77c/avszgXaYU=;
- b=40IashJEM1jApK4e8qR6y47IbKkWHmBrcxhAwjBtL1Ke2MsHwOVO/Xvlv5qzBdqH6+
- y0xzpPyElTT6uL9pvS58TScU29/PItMtUvSK7O+nMPIWEuIkne70Rw+3z2U8nru1lgjL
- c6J0LwrP0isKkDi8M74/ALiO0Ngp+rTfsh+w8JpZTQ+aZzJaOBu689WgoFw6zjmWC84W
- tnBLDhshgDK+JD53+x3AYKy7d6Fc2dKZ2Anr5c1z4EWc90G+Tjv7qUv+XufffsIsBRpk
- HOArpz6I86l6L6h9nAlwqRBx8TOQqIxum8OrJ0P9yAJF41F5EBEQNSOc+YJupKgm9q3c
- nOng==
-X-Gm-Message-State: AOAM530cac/cRPDIy9GK9GPtVeuWvRdDa0Rhjbmkt8LixXvRUhM0kfn7
- xoE4jNDRKWv57H3zn30R53y2TwRwgJO//zTZ0Z8mcw==
-X-Google-Smtp-Source: ABdhPJwiCK0EUi1xGHK6lBz/6ilajF8YcQlrhGJneXXIEE1Iymq3Olk69LvLfn6/mYieWW2CC7eBLTUy7riubBnnF+U=
-X-Received: by 2002:a05:6808:114d:b0:328:aaa2:10c9 with SMTP id
- u13-20020a056808114d00b00328aaa210c9mr1828896oiu.217.1652432307735; Fri, 13
- May 2022 01:58:27 -0700 (PDT)
+ bh=8JktyQozRr2Cz4cFwzIQ+UMGCdPh43AUYY4NAypHDM8=;
+ b=gyXxNxO7OHCUmf5HH5aQr/pt+xxS/CR3XuHSLG1vc5LDPga/eJQFzfu+g/Dks7vdqA
+ 0H0asn1SIJ5SA4k+XrHq1qBV/I6L1L5CLF/CUGAOZc13s9T24tQP0jaSJiTSe0VxPegR
+ lqwPIljS+aAuWQalRxH5EYG6dJ1ou3H3LJAYgqmZVspbtm0DtLh/H4ikAzrdgj9vBZkg
+ OlInDa+sgFxflvnMr3GwKws3/qpq6qLpRjXS6uU9hyIylJK6HFE/czocyPzB+RQw9OBC
+ YMvQwJRcOgPM24wdoOi0vV9VHOBt+jPEWrhIdMCNRfLUdAiXK2JUampzyhsMf3AW9H/B
+ kyRg==
+X-Gm-Message-State: AOAM530NJOHFWOGpuKG+ZzM+wfon/NgkGUEYjkqtR3hrHin191B6e8uG
+ v/9qYQ/6VeAHbXV6UAmCww6Bja86IYBEPRkkGjX/pQ==
+X-Google-Smtp-Source: ABdhPJyfxwGtIJZMHH2WpAkNEyRxYWQL3F2ojW2wNv6Zi8EZx7txNXsxSsoin0OhW1qhA99x2EvKq2+tokJC30JUB6Q=
+X-Received: by 2002:a05:6402:2c4:b0:425:ac5c:4376 with SMTP id
+ b4-20020a05640202c400b00425ac5c4376mr40621823edx.10.1652447283775; Fri, 13
+ May 2022 06:08:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <1698297.NAKyZzlH2u@archbook> <YnOEwuuyO2/h7c1G@e120937-lin>
- <CAN5uoS_MgBiTVZCRSZyYCH4cnUZD_bHj2+mZu661bFV8TKWScw@mail.gmail.com>
- <6587375.6lpfYT6tjA@archbook> <Yn0a9nSD7Yu6aOkt@bogus>
-In-Reply-To: <Yn0a9nSD7Yu6aOkt@bogus>
-From: Etienne Carriere <etienne.carriere@linaro.org>
-Date: Fri, 13 May 2022 10:58:17 +0200
-Message-ID: <CAN5uoS8KXJZS52eys-ko0e_UpQCwiTvg42h-hJ3=ZAbvit99Qg@mail.gmail.com>
-Subject: Re: [BUG] New arm scmi check in linux-next causing rk3568 not to boot
- due to firmware bug
-To: Sudeep Holla <sudeep.holla@arm.com>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
- Cristian Marussi <cristian.marussi@arm.com>,
- linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, 
- Liang Chen <cl@rock-chips.com>, linux-kernel@vger.kernel.org, 
- Kever Yang <kever.yang@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>,
- Peter Geis <pgwipeout@gmail.com>
+References: <20220508202544.501981-1-frattaroli.nicolas@gmail.com>
+ <14624530.8YKtBhKLIE@archbook>
+ <CAAEAJfBczhKTmRQfteacN4rYmJPRSuWZBs1LUuVnMKJ_z0EUwQ@mail.gmail.com>
+ <2024120.v6J0oxdlOP@archbook>
+In-Reply-To: <2024120.v6J0oxdlOP@archbook>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Fri, 13 May 2022 10:07:51 -0300
+Message-ID: <CAAEAJfDMG9ykJQHUf6oB5gjV_J0M+eycCqiUvDv2WjpC3g8dKQ@mail.gmail.com>
+Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: Add Hantro encoder node to
+ rk356x
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, 
+ devicetree <devicetree@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220513_015832_124936_1232C691 
-X-CRM114-Status: GOOD (  28.12  )
+X-CRM114-CacheID: sfid-20220513_060807_626805_5BD52137 
+X-CRM114-Status: GOOD (  74.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,67 +93,300 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello all,
+Hi Nicolas,
 
-On Thu, 12 May 2022 at 16:34, Sudeep Holla <sudeep.holla@arm.com> wrote:
+On Fri, May 13, 2022 at 3:23 AM Nicolas Frattaroli
+<frattaroli.nicolas@gmail.com> wrote:
 >
-> On Thu, May 12, 2022 at 01:11:22PM +0200, Nicolas Frattaroli wrote:
-> > Hello,
-> >
-> > sorry for the late reply, completely missed that there was a question
-> > for me in this mail.
-> >
-> > On Donnerstag, 5. Mai 2022 11:40:09 CEST Etienne Carriere wrote:
-> > > Hello Nicolas, Cristian,
-> > > [...]
+> On Donnerstag, 12. Mai 2022 23:33:03 CEST Ezequiel Garcia wrote:
+> > On Thu, May 12, 2022 at 5:00 PM Nicolas Frattaroli
+> > <frattaroli.nicolas@gmail.com> wrote:
 > > >
-> > > Indeed the firmware implementation is wrong in TF-A.
-> > > And also in OP-TEE by the way:
-> > > https://github.com/OP-TEE/optee_os/blob/3.17.0/core/drivers/scmi-msg/base.c#L163-L166
+> > > On Donnerstag, 12. Mai 2022 16:16:52 CEST Ezequiel Garcia wrote:
+> > > > On Tue, May 10, 2022 at 12:28 PM Nicolas Frattaroli
+> > > > <frattaroli.nicolas@gmail.com> wrote:
+> > > > >
+> > > > > Hi Ezequiel,
+> > > > >
+> > > > > On Montag, 9. Mai 2022 16:17:03 CEST Ezequiel Garcia wrote:
+> > > > > > Hi Nicolas,
+> > > > > >
+> > > > > > On Sun, May 8, 2022 at 5:26 PM Nicolas Frattaroli
+> > > > > > <frattaroli.nicolas@gmail.com> wrote:
+> > > > > > >
+> > > > > > > The RK3566 and RK3568 come with a dedicated Hantro instance solely for
+> > > > > > > encoding. This patch adds a node for this to the device tree, along with
+> > > > > > > a node for its MMU.
+> > > > > > >
+> > > > > > > Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> > > > > > > ---
+> > > > > > >  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 21 +++++++++++++++++++++
+> > > > > > >  1 file changed, 21 insertions(+)
+> > > > > > >
+> > > > > > > diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > > > > > > index 7cdef800cb3c..2e3c9e1887e3 100644
+> > > > > > > --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > > > > > > +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+> > > > > > > @@ -508,6 +508,27 @@ gpu: gpu@fde60000 {
+> > > > > > >                 status = "disabled";
+> > > > > > >         };
+> > > > > > >
+> > > > > > > +       vepu: video-codec@fdee0000 {
+> > > > > > > +               compatible = "rockchip,rk3568-vepu";
+> > > > > > > +               reg = <0x0 0xfdee0000 0x0 0x800>;
+> > > > > > > +               interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>;
+> > > > > > > +               interrupt-names = "vepu";
+> > > > > >
+> > > > > > It this block "encoder only" and if so, maybe we should remove the
+> > > > > > "interrupt-names" [1]?
+> > > > > >
+> > > > > > The driver is able to handle it. See:
+> > > > > >
+> > > > > > https://elixir.bootlin.com/linux/latest/source/drivers/staging/media/hantro/hantro_drv.c#L962
+> > > > > >
+> > > > > > You might have to adjust the dt-bindings for this.
+> > > > > >
+> > > > > > [1] https://lore.kernel.org/linux-media/20210324151715.GA3070006@robh.at.kernel.org/
+> > > > >
+> > > > > What the Linux driver can handle should not matter to the device tree;
+> > > > > device trees are independent of drivers and kernels.
+> > > > >
+> > > >
+> > > > I guess my message wasn't clear, no need to lecture me on Device
+> > > > Trees, although I appreciate
+> > > > your friendly reminder of what a Device Tree is.
+> > > >
+> > > > Having said that, the binding is designed to support both decoders and encoders
+> > > > for instance:
+> > > >
+> > > >         vpu: video-codec@ff9a0000 {
+> > > >                 compatible = "rockchip,rk3288-vpu";
+> > > >                 reg = <0x0 0xff9a0000 0x0 0x800>;
+> > > >                 interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
+> > > >                              <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+> > > >                 interrupt-names = "vepu", "vdpu";
+> > > >                 clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
+> > > >                 clock-names = "aclk", "hclk";
+> > > >                 iommus = <&vpu_mmu>;
+> > > >                 power-domains = <&power RK3288_PD_VIDEO>;
+> > > >         };
+> > > >
+> > > > Hence the question is why do you splitted the encoder to its own node?
 > > >
-> > > @Nicoals, do you want to send a patch to TF-A, or do you want me to do it?
+> > > It has its own IOMMU and is in a different power domain than the decoder.
+> > > I think I have mentioned this multiple times before, including in the
+> > > cover letter.
+> > >
+> > > Assuming you do not believe me, feel free to check the TRM, of which I
+> > > am sure you also have a copy: page 475 of Part 1 shows the VPU being in
+> > > PD_VPU while the JPEG encoder is in PD_RGA. Pages 478 and 479 of Part 2,
+> > > Section 10.5, shows that the JPEG encoder (VEPU121)'s base is not the
+> > > same as the Hantro decoder (VDPU121)'s base, and their IOMMUs which are
+> > > based relative to their base offset are therefore also not at the same
+> > > address. If you think the TRM must be wrong then, consider the fact that
+> > > I have actually run this patch set, presumably being the only person to
+> > > do so, and found that it works, so no, the addresses and power domains
+> > > are correct.
+> > >
+> > > I do not see any way in which it would make sense to put this into the
+> > > same node as the decoder. It would not even be possible to do this in
+> > > your bindings, as they specify a maxItems for power-domains and iommus
+> > > of 1. Even if I modified them the driver wouldn't know which PD and
+> > > IOMMU belongs to decoder and encoder.
+> > >
+> > > I think if we put this encoder in the same node as the decoder, we
+> > > might as well take this to its natural conclusion and put the entire
+> > > device tree into a single very large node. It's not the same hardware,
+> > > it cannot be modelled as being the same hardware, just because the
+> > > bindings lets people model some separate hardware as the same hardware
+> > > doesn't mean this applies to this hardware.
+> > >
+> > > Long story short, why did I split the encoder to its own node? The
+> > > answer is that I didn't. I simply refused to combine it into a node
+> > > that it has nothing to do with.
+> > >
 > >
-> > I have no experience with TF-A, so I'd prefer if you could do it.
+> > As I've mentioned:
 > >
-> > In good news, Rockchip has confirmed they're preparing to release RK356x
-> > TF-A sources, so I'll be able to port the patch over to their sources once
-> > they are released, if they don't already apply it themselves.
+> > """
+> > the current binding models the idea of decoder and encoder
+> > being the same device. This has never been really really accurate,
+> > as the encoder and decoders have always been more or less independent.
+> >
+> > The reason for having them on a single device are mostly historical,
+> > some old devices shared some resource. I don't think this is the case anymore,
+> > but the binding was still modeled to support that.
+> > """
+> >
+> > The PX30 and RK3399 VPUs are probably pretty independent as well,
+> > and in retrospective, we should have done separated Device Tree nodes.
+> > For historical reasons, we didn't, and we introduced those weird "enc_offset"
+> > and "dec_offset" fields:
+> >
+> > const struct hantro_variant px30_vpu_variant = {
+> >         .enc_offset = 0x0,
+> >         .enc_fmts = rockchip_vpu_enc_fmts,
+> >         .num_enc_fmts = ARRAY_SIZE(rockchip_vpu_enc_fmts),
+> >         .dec_offset = 0x400,
+> >         .dec_fmts = rk3399_vpu_dec_fmts,
 > >
 >
-> So, there is no way to get a blob release with the patch applied ?
-> We know it is a bug in TF-A and if Rockchip is using that codebase, it
-> will be the same bug there too causing this issue. Waiting until the
-> code is released and the proper TF-A port is done may not be acceptable
-> for many developers. So someone from the rockchip doing these tf-a blob
-> release must get involved here, understand the situation and get the fixed.
+> As I've mentioned: that doesn't work for this hardware. It's not just the
+> memory addresses. You literally quoted the part where I explain this, and
+> then decided to completely ignore it.
+
+I didn't ignore anything. I was just trying to explain you,
+how the decoder and the encoder could have been separated for almost
+all the other Rockchip devices, just like you are doing here.
+
+> I will not explain it again, you
+> have the explanation once more right in this e-mail. Read it.
 >
-> We can workaround, but I want to hear that it will be fixed instead of
-> getting ignored until proper port is available.
+> Not to mention that you've also ignored that I disagree with rob's
+> assessment about interrupt-names.
 >
-> Etienne, are you not the author for the related TF-A code ? How can we
-> get that fixed in the TF-A code base. If you are not, then I will try to
-> get my repo login credentials sorted so that I can only push TF-A change.
 
-Yes, I'm the author of the code.
-I have created a gerrit change in TF-A to fix the issue:
-https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/15196
+I didn't ignore it, I just didn't reply to it. You think this is about
+changing a dt-binding, but you are actually introducing a new dt-binding
+since you are adding a new compatible string.
 
-OP-TEE implementation also embeds the same scmi-msg drivers and have
-the same issue.
-I should be fixed by P-R: https://github.com/OP-TEE/optee_os/pull/5334
-I will ask TF-A if this specific change can hit TF-A release v2.7 tag,
-if posisble.
+You are doing so by extending an existing dt-binding.
 
-Feedbacks are welcome on these 2 forums.
+I am explaining you the _existing_ dt-binding models the (incorrect) idea
+of a combined decoder and encoder. Since your device is encoder-only
+and has a single interrupt line, you should omit the interrupt-names,
+because it doesn't not add anything.
 
-Regards,
-etienne
+(About your dislike for the "default" string in /proc,  that is a
+driver thing, which can be changed. It is not related to the
+dt-binding).
 
-
+> I'm actually done arguing with you, this is going in circles. v4 will not
+> address any of your concerns, because it's either literally impossible or
+> because I disagree with your concern and you did not actually address my
+> disagreement.
 >
-> --
-> Regards,
-> Sudeep
+
+Let's just wait for a Device Tree maintainer then. If you get a +1
+from a DT maintainer for your dt-binding change, then I'll review and
+consider how the rest of the patches look like.
+
+However, it is very important that you moderate your communication,
+you have been very pedantic and rude since your first reply.
+
+Hope you can do that!
+Thanks,
+Ezequiel
+
+
+> >
+> > > > If we have good reasons to have separated Device Tree nodes,
+> > > > then having interrupt-names = "vepu" for its only interrupt line
+> > > > doesn't make sense.
+> > >
+> > > How does it not make sense? The bindings allow for a vdpu only
+> > > interrupt-names, which in my understanding makes the same amount
+> > > of sense.
+> > >
+> >
+> > That applies for the binding for the previous existing compatible strings.
+> >
+> > You are adding a new compatible string, so just change the binding
+> > so it no longer requires "interrupt-names", for its single interrupt line.
+> >
+> > Quoting devicetree maintainer [1]:
+> >
+> > """
+> >  *-names are used to distinguish multiple entries
+> > and don't add anything if only a single entry.
+> > """
+> >
+> > [1] https://lore.kernel.org/linux-media/20210324151715.GA3070006@robh.at.kernel.org/
+> >
+> > Thanks!
+> > Ezequiel
+> >
+> > > Regards,
+> > > Nicolas Frattaroli
+> > >
+> > > >
+> > > > > What does matter though is to be consistent in the bindings.
+> > > > > interrupt-names is a required property even if there's only a vdpu
+> > > > > interrupt. I modelled my vepu-only binding after this case.
+> > > > >
+> > > >
+> > > > The current binding models the idea of decoder and encoder
+> > > > being the same device. This has never been really really accurate,
+> > > > as the encoder and decoders have always been more or less independent.
+> > > >
+> > > > The reason for having them on a single device are mostly historical,
+> > > > some old devices shared some resource. I don't think this is the case anymore,
+> > > > but the binding was still modeled to support that.
+> > > >
+> > > > Hopefully this makes sense!
+> > > > Thanks,
+> > > > Ezequiel
+> > > >
+> > > >
+> > > > > If robh thinks there is no value to having the interrupt show up
+> > > > > as anything other than "default" in /proc/interrupts, then I respectfully
+> > > > > disagree with that opinion and point out that this should have been brought
+> > > > > up when the vdpu-only case in the bindings was made to require
+> > > > > interrupt-names also.
+> > > > >
+> > > > > Changing the binding now that there theoretically could be drivers out
+> > > > > in the wild (though I doubt it) that do require interrupt-names, because
+> > > > > the binding told them that this is okay to do, seems unwise to me.
+> > > > >
+> > > > > Regards,
+> > > > > Nicolas Frattaroli
+> > > > >
+> > > > > >
+> > > > > > Thanks,
+> > > > > > Ezequiel
+> > > > > >
+> > > > > > > +               clocks = <&cru ACLK_JENC>, <&cru HCLK_JENC>;
+> > > > > > > +               clock-names = "aclk", "hclk";
+> > > > > > > +               iommus = <&vepu_mmu>;
+> > > > > > > +               power-domains = <&power RK3568_PD_RGA>;
+> > > > > > > +       };
+> > > > > > > +
+> > > > > > > +       vepu_mmu: iommu@fdee0800 {
+> > > > > > > +               compatible = "rockchip,rk3568-iommu";
+> > > > > > > +               reg = <0x0 0xfdee0800 0x0 0x40>;
+> > > > > > > +               interrupts = <GIC_SPI 63 IRQ_TYPE_LEVEL_HIGH>;
+> > > > > > > +               clocks = <&cru ACLK_JENC>, <&cru HCLK_JENC>;
+> > > > > > > +               clock-names = "aclk", "iface";
+> > > > > > > +               power-domains = <&power RK3568_PD_RGA>;
+> > > > > > > +               #iommu-cells = <0>;
+> > > > > > > +       };
+> > > > > > > +
+> > > > > > >         sdmmc2: mmc@fe000000 {
+> > > > > > >                 compatible = "rockchip,rk3568-dw-mshc", "rockchip,rk3288-dw-mshc";
+> > > > > > >                 reg = <0x0 0xfe000000 0x0 0x4000>;
+> > > > > > > --
+> > > > > > > 2.36.0
+> > > > > > >
+> > > > > > >
+> > > > > > > _______________________________________________
+> > > > > > > Linux-rockchip mailing list
+> > > > > > > Linux-rockchip@lists.infradead.org
+> > > > > > > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> > > > > >
+> > > > >
+> > > > >
+> > > > >
+> > > > >
+> > > >
+> > >
+> > >
+> > >
+> > >
+> >
+>
+>
+>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
