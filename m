@@ -4,63 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 787FCC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 May 2022 14:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74B1AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 May 2022 15:24:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ujv32yfP+zRoDtA1mquQsoLwaoG9Oppi26eTS1w8EGw=; b=1eB8UNF1tQVpmX
-	89fDXx0XiUJnBC+DRdN8fcER1Pq1H9MNdS461u8mUC3mCvArQNt6rtjqSG9rUyveQR43MrfyTvvZm
-	bdNcmMhugk+9hXyT7xh2G4w/ydl7IeT1CJuHJcVsIHu33ITGxZlULvX44HZoGb+5+EVRuVjdo6pmU
-	POQYX/uS3+lglCsLPJCDjpof8joZuGw7oBMw8HP481l5Jr5HTE7ueaMKhf5wkEinJigdAOFxvKkrl
-	BFQ9bMGB0gWTKiJzzbjzLcB0cpdrzXiQ2wR+U+D1Yz0a4Symq77PifzpiaMGEazOnTRjDsk8fdPwq
-	GI858nP9NwE+toux1rgg==;
+	List-Owner; bh=g47iJfShHELwUM0MeCXSGZ7ctqrINququrebg3YjuAU=; b=fqxiBit75zQ/00
+	rN3RscN8iosII7Kgnxdo/Y7DaTljhMv6Fzz7L848JxkrRNRrauR/1VIJKHkZFPOj8BPqNpt1MV94y
+	wyVKGRoplhX7Ugs+6G5i9LUJhogkl4WmcHHf/mLv9UroWNbKvMbTmIeHzXn55A7e0wufIs7rp0fDk
+	gxOSGWelMXf4IvN9f8mmpThMOiZNUS4cL3uyJ1aD/Aa3gSTMcTOByKB9Z26+r6m7En9xEYqnCiVgN
+	qephEGIifxa1a2tAQlROoWeij35pjEM8/beOCOM6eoFrUarc28/iic5q3hS6vYBhUTutHXijr+5N/
+	7ilwbGl+EOXqIUCUVZcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npWX6-00GUh1-Ol; Fri, 13 May 2022 14:44:44 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1npX9L-00GghA-BQ; Fri, 13 May 2022 15:24:15 +0000
+Received: from mail-oi1-f177.google.com ([209.85.167.177])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npWWu-00GUaz-MR; Fri, 13 May 2022 14:44:35 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id p4so10316624edx.0;
- Fri, 13 May 2022 07:44:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=YxEnNWzlcx5a8owz740OSScsKHcGSZgc9wb2LqPs1Rk=;
- b=W3XI+pf98XF1W0HLZ9oQDVIuPMPdwARPAsF2He6pzQJ95DLHnc/A3N6ShtvYQmjpN4
- nMjEXGCEeML8Izrnu1Uxx1X2h4MVUsTmAAGRKwusRE8k1tqEuD/+F/8BL3dCDrz7k9QX
- 8+PIbDUn9le/YnEJTUFhsicEK0T4jpRu5XIOEjHk7yC6bCS4z5Foq+Wmq9YlCDnOkjFw
- fGiVbWlsRxCXyanOVB9TkjzVDEjJNIkwAaxej4Gdxxzd7awkE+0YQj3IItXAt7YYVLxv
- jR67TZV/td4H2Nhrah1zxI3HXkTyfki5AEtxsEyj39/guJnayWiVVY4VisvXtgWieUqj
- w7wQ==
+ id 1npX98-00GgR2-6E; Fri, 13 May 2022 15:24:04 +0000
+Received: by mail-oi1-f177.google.com with SMTP id e189so10489646oia.8;
+ Fri, 13 May 2022 08:24:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=YxEnNWzlcx5a8owz740OSScsKHcGSZgc9wb2LqPs1Rk=;
- b=vB7EUAr7X8ZGo6IbH+kQAKEOZHx5RS3BOJGodq2CWO+CFDyzlbYHf/kF5Fys7W/5zs
- H50nYalNxgGWvdZXBjki/j5ARzcpIzvWW6EO2wJ000gte9EgnZvc7rh48VHNd5Wju47V
- wrhllrMQaZv7L9Vf9AFYboePoBCmx4pDXEz2gK/Lht2anoKIQOtukdvFmBpKOdF2kOr9
- UuYBchOzGXx3/AAT4CkAH/r+PIc2y/6P7sqpFZo1PCfNhozBHb/AZpb6zHCimb+DM6dN
- DLjM17ZnxGQXJ4if3E9KCWtYCK+hO+V+zh4xPuzviebjtpxmnOPPnY/8J9F8NcCfATNE
- IkuA==
-X-Gm-Message-State: AOAM530eLHyaUtNPuJpwl9J9ao99qefbD2XGtfg/v5WOIcMQcEkFV9t/
- vFSpOiFiyngKiSNxba3oSvE=
-X-Google-Smtp-Source: ABdhPJwSdGCFqXRriUvzd0RzTkwQ2dVuRFC6MZHmOMtOBoKbeOZQR5WW1Xre6+J27p4IOYdCMo/6Ug==
-X-Received: by 2002:a05:6402:22ef:b0:428:1037:b0d5 with SMTP id
- dn15-20020a05640222ef00b004281037b0d5mr40262036edb.60.1652453070210; 
- Fri, 13 May 2022 07:44:30 -0700 (PDT)
-Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84]) by smtp.gmail.com with ESMTPSA id
- gz13-20020a170907a04d00b006f3ef214deasm835310ejc.80.2022.05.13.07.44.28
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=1J6Zu4Y3tOCa7n+k1s3WdHdTjmsh4OIORv9TDHyhOcA=;
+ b=XjHyE1bOweRXTWd+X/ApN2i+Ti5a5mUEj+wgWGySTW5jEPPRItlDP2vi9EzGACxSQA
+ gCVXoUCsCjveLZAuhV8/AL3JSpeQOnrMSttklcdQL7QwVNTzyagERWY4Zk/XENc6Tmp+
+ PF+EIVUkztmjK4VxB5Pe4bZ4HMbYmCHGZ63WwHRWOYA5owGNxZDE54SOzZ3wMe2+zzq/
+ gVIJAPa1412fCi67wK6P7E2j7auTHmwlCXhpI0cS6icK5D34SJOq4NtaLoTPofQqbaxg
+ i7Hd/VjzTPiF5X3vo5PHBxt8TDn97bvkX8smM35eABHDVJBaNjg7sXled55I5pTPUGXh
+ VHJg==
+X-Gm-Message-State: AOAM531pKFZOAuwo9tiixBoEMDyFtzZWBJpGYUPLgAxtYAmcmZddX+sd
+ 3JYKi4awkNutW1ib9HekqQ==
+X-Google-Smtp-Source: ABdhPJzk7/dBLs+2vZIqFSUcjyOfATh31/401J+2A7wbSC1AORySmWax4qvXEnqYgRlz796HZj7exg==
+X-Received: by 2002:aca:4154:0:b0:322:7a9c:7daa with SMTP id
+ o81-20020aca4154000000b003227a9c7daamr7908697oia.52.1652455439736; 
+ Fri, 13 May 2022 08:23:59 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ e2-20020a056870a60200b000e99b1909d4sm1064987oam.25.2022.05.13.08.23.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 May 2022 07:44:29 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+ Fri, 13 May 2022 08:23:59 -0700 (PDT)
+Received: (nullmailer pid 363506 invoked by uid 1000);
+ Fri, 13 May 2022 15:23:58 -0000
+Date: Fri, 13 May 2022 10:23:58 -0500
+From: Rob Herring <robh@kernel.org>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: Rob Herring <robh+dt@kernel.org>,
+Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
  Heiko Stuebner <heiko@sntech.de>, devicetree <devicetree@vger.kernel.org>,
  linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
@@ -68,16 +61,18 @@ Cc: Rob Herring <robh+dt@kernel.org>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: Add Hantro encoder node to
  rk356x
-Date: Fri, 13 May 2022 16:44:28 +0200
-Message-ID: <9445203.RYAX2qA09r@archbook>
-In-Reply-To: <CAAEAJfDMG9ykJQHUf6oB5gjV_J0M+eycCqiUvDv2WjpC3g8dKQ@mail.gmail.com>
+Message-ID: <20220513152358.GA334264-robh@kernel.org>
 References: <20220508202544.501981-1-frattaroli.nicolas@gmail.com>
+ <14624530.8YKtBhKLIE@archbook>
+ <CAAEAJfBczhKTmRQfteacN4rYmJPRSuWZBs1LUuVnMKJ_z0EUwQ@mail.gmail.com>
  <2024120.v6J0oxdlOP@archbook>
  <CAAEAJfDMG9ykJQHUf6oB5gjV_J0M+eycCqiUvDv2WjpC3g8dKQ@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAAEAJfDMG9ykJQHUf6oB5gjV_J0M+eycCqiUvDv2WjpC3g8dKQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220513_074432_818440_D7F995B3 
-X-CRM114-Status: GOOD (  78.34  )
+X-CRM114-CacheID: sfid-20220513_082402_286166_83F39733 
+X-CRM114-Status: GOOD (  65.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,7 +90,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Freitag, 13. Mai 2022 15:07:51 CEST Ezequiel Garcia wrote:
+On Fri, May 13, 2022 at 10:07:51AM -0300, Ezequiel Garcia wrote:
 > Hi Nicolas,
 > 
 > On Fri, May 13, 2022 at 3:23 AM Nicolas Frattaroli
@@ -142,6 +137,10 @@ On Freitag, 13. Mai 2022 15:07:51 CEST Ezequiel Garcia wrote:
 > > > > > > >
 > > > > > > > It this block "encoder only" and if so, maybe we should remove the
 > > > > > > > "interrupt-names" [1]?
+
+Please raise binding design questions on binding patches. I don't 
+regularly review dts files.
+
 > > > > > > >
 > > > > > > > The driver is able to handle it. See:
 > > > > > > >
@@ -158,7 +157,11 @@ On Freitag, 13. Mai 2022 15:07:51 CEST Ezequiel Garcia wrote:
 > > > > > I guess my message wasn't clear, no need to lecture me on Device
 > > > > > Trees, although I appreciate
 > > > > > your friendly reminder of what a Device Tree is.
-> > > > >
+
+The independence is not universally known, understood, nor liked, so not 
+unreasonable to point out. Your tone here is not any better.
+
+
 > > > > > Having said that, the binding is designed to support both decoders and encoders
 > > > > > for instance:
 > > > > >
@@ -259,155 +262,18 @@ On Freitag, 13. Mai 2022 15:07:51 CEST Ezequiel Garcia wrote:
 > of a combined decoder and encoder. Since your device is encoder-only
 > and has a single interrupt line, you should omit the interrupt-names,
 > because it doesn't not add anything.
-> 
-> (About your dislike for the "default" string in /proc,  that is a
-> driver thing, which can be changed. It is not related to the
-> dt-binding).
-> 
-> > I'm actually done arguing with you, this is going in circles. v4 will not
-> > address any of your concerns, because it's either literally impossible or
-> > because I disagree with your concern and you did not actually address my
-> > disagreement.
-> >
-> 
-> Let's just wait for a Device Tree maintainer then. If you get a +1
-> from a DT maintainer for your dt-binding change, then I'll review and
-> consider how the rest of the patches look like.
-> 
-> However, it is very important that you moderate your communication,
-> you have been very pedantic and rude since your first reply.
-> 
-> Hope you can do that!
-> Thanks,
-> Ezequiel
 
-I apologise for my rude and pedantic communication, I misread your
-replies as you repeatedly suggesting I merge the nodes into one. Had
-I understood that this wasn't your intention, and you were trying to
-explain to me how the old model worked, I would have been less grumpy
-about this. However, I already did know how the old model worked, and
-your explanation registered as you trying to make me use it to me as
-I did not realise you generally agreed with me separating the encoder
-into its own node.
+While in general I agree on single entries don't need -names, given just 
+'vdpu' is already allowed I would go with symmetry here and allow it for 
+the encoder.
 
-Regards,
-Nicolas Frattaroli
+If you wanted to mark 'vdpu' alone as deprecated, then that would be 
+fine too. No need for an if/then schema to disallow interrupt-names 
+either. Eventually, I plan to (optionally) remove deprecated schemas 
+from validation and that would have the effect of requiring 
+interrupt-names to have 2 entries here.
 
-> 
-> 
-> > >
-> > > > > If we have good reasons to have separated Device Tree nodes,
-> > > > > then having interrupt-names = "vepu" for its only interrupt line
-> > > > > doesn't make sense.
-> > > >
-> > > > How does it not make sense? The bindings allow for a vdpu only
-> > > > interrupt-names, which in my understanding makes the same amount
-> > > > of sense.
-> > > >
-> > >
-> > > That applies for the binding for the previous existing compatible strings.
-> > >
-> > > You are adding a new compatible string, so just change the binding
-> > > so it no longer requires "interrupt-names", for its single interrupt line.
-> > >
-> > > Quoting devicetree maintainer [1]:
-> > >
-> > > """
-> > >  *-names are used to distinguish multiple entries
-> > > and don't add anything if only a single entry.
-> > > """
-> > >
-> > > [1] https://lore.kernel.org/linux-media/20210324151715.GA3070006@robh.at.kernel.org/
-> > >
-> > > Thanks!
-> > > Ezequiel
-> > >
-> > > > Regards,
-> > > > Nicolas Frattaroli
-> > > >
-> > > > >
-> > > > > > What does matter though is to be consistent in the bindings.
-> > > > > > interrupt-names is a required property even if there's only a vdpu
-> > > > > > interrupt. I modelled my vepu-only binding after this case.
-> > > > > >
-> > > > >
-> > > > > The current binding models the idea of decoder and encoder
-> > > > > being the same device. This has never been really really accurate,
-> > > > > as the encoder and decoders have always been more or less independent.
-> > > > >
-> > > > > The reason for having them on a single device are mostly historical,
-> > > > > some old devices shared some resource. I don't think this is the case anymore,
-> > > > > but the binding was still modeled to support that.
-> > > > >
-> > > > > Hopefully this makes sense!
-> > > > > Thanks,
-> > > > > Ezequiel
-> > > > >
-> > > > >
-> > > > > > If robh thinks there is no value to having the interrupt show up
-> > > > > > as anything other than "default" in /proc/interrupts, then I respectfully
-> > > > > > disagree with that opinion and point out that this should have been brought
-> > > > > > up when the vdpu-only case in the bindings was made to require
-> > > > > > interrupt-names also.
-> > > > > >
-> > > > > > Changing the binding now that there theoretically could be drivers out
-> > > > > > in the wild (though I doubt it) that do require interrupt-names, because
-> > > > > > the binding told them that this is okay to do, seems unwise to me.
-> > > > > >
-> > > > > > Regards,
-> > > > > > Nicolas Frattaroli
-> > > > > >
-> > > > > > >
-> > > > > > > Thanks,
-> > > > > > > Ezequiel
-> > > > > > >
-> > > > > > > > +               clocks = <&cru ACLK_JENC>, <&cru HCLK_JENC>;
-> > > > > > > > +               clock-names = "aclk", "hclk";
-> > > > > > > > +               iommus = <&vepu_mmu>;
-> > > > > > > > +               power-domains = <&power RK3568_PD_RGA>;
-> > > > > > > > +       };
-> > > > > > > > +
-> > > > > > > > +       vepu_mmu: iommu@fdee0800 {
-> > > > > > > > +               compatible = "rockchip,rk3568-iommu";
-> > > > > > > > +               reg = <0x0 0xfdee0800 0x0 0x40>;
-> > > > > > > > +               interrupts = <GIC_SPI 63 IRQ_TYPE_LEVEL_HIGH>;
-> > > > > > > > +               clocks = <&cru ACLK_JENC>, <&cru HCLK_JENC>;
-> > > > > > > > +               clock-names = "aclk", "iface";
-> > > > > > > > +               power-domains = <&power RK3568_PD_RGA>;
-> > > > > > > > +               #iommu-cells = <0>;
-> > > > > > > > +       };
-> > > > > > > > +
-> > > > > > > >         sdmmc2: mmc@fe000000 {
-> > > > > > > >                 compatible = "rockchip,rk3568-dw-mshc", "rockchip,rk3288-dw-mshc";
-> > > > > > > >                 reg = <0x0 0xfe000000 0x0 0x4000>;
-> > > > > > > > --
-> > > > > > > > 2.36.0
-> > > > > > > >
-> > > > > > > >
-> > > > > > > > _______________________________________________
-> > > > > > > > Linux-rockchip mailing list
-> > > > > > > > Linux-rockchip@lists.infradead.org
-> > > > > > > > http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> > > > > > >
-> > > > > >
-> > > > > >
-> > > > > >
-> > > > > >
-> > > > >
-> > > >
-> > > >
-> > > >
-> > > >
-> > >
-> >
-> >
-> >
-> >
-> 
-
-
-
-
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
