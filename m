@@ -4,43 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37EA0C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 May 2022 12:00:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FBDBC433FE
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 May 2022 12:00:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BAZffQMVGkO5HV0HpujyQW2WgQWCmyACPyTZ1GJ7IPY=; b=0RFZ+NcOP/18bo
-	KdTct4Zn3NMPy2BUtXgh3f5ejWNlzEfZh8pOIBvAvxt1nGcmm81KqTplO0Uf737h6t3M9p0Rcavsu
-	WaJSfh9JKDbONeUXz6VOW61ghHcu+b3QEdsi+J1NQ1BJbqS1gCFKpuTUiaoKi8jvCB99E0e7IFZkB
-	wl+hMie1oJiDkSQLdZp3N/3A1IB6fONV6rHrTNwCVJ3gmdYF9sPbIwNTSTKwnpKzWzdTPkR5ec7lu
-	O4fMrOwejVOthP5TZaYoAG9KCSfMyj8DoNsqIgVBNFtW93GXLwwfveuKvwXNh3+55X4x1ptbG5FRa
-	EXE75TPphclb/+fBxgww==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=urTrkk2ZYYHYlcBBMshaA63k3G8WrFZvpPNm6MSesEs=; b=px35JAdgN8BLKI
+	lpdVD9+aGTGnrrN1EpKwYFUyQ4AL5QuoVqOtDIEBlzzWOPTJVIPkOOcvDqHk4Y6TNddHkppUV7HO1
+	2kfZF3YZ/bgKDyPP25Rx8KkTQJwOGTPZfRqdN9BQ89GuiXHGMVWgi9+PzHIg4vbPHhGtAuIVeSHOX
+	7fH+FGgIEtSamScsScDow6OJ8/Vt505/56mwUc5wV6DSJdqkMRPxaIjyycwSuZ6DHLrb+P+PptrhG
+	8GjjGtHDrAgHHB+YxApFrp8/E59dup1aqsiaoYKKBpax8M0DlhgTmKfUCpUjVhlaL7XJnf0ZO8R4E
+	4gw6QM6JeMiZEGpwegJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npqRw-001LVD-Fd; Sat, 14 May 2022 12:00:44 +0000
-Received: from mxout3.routing.net ([2a03:2900:1:a::8])
+	id 1npqRv-001LUn-PO; Sat, 14 May 2022 12:00:43 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npqRH-001LDP-SI; Sat, 14 May 2022 12:00:06 +0000
+ id 1npqRG-001LDK-L4; Sat, 14 May 2022 12:00:05 +0000
 Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
- by mxout3.routing.net (Postfix) with ESMTP id B362F6049E;
- Sat, 14 May 2022 11:59:59 +0000 (UTC)
+ by mxout4.routing.net (Postfix) with ESMTP id F10191007E5;
+ Sat, 14 May 2022 11:59:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1652529599;
+ s=20200217; t=1652529596;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Glmetg7VOhUPL0qlQ0pXRU7sW/p0R4UTZM6rOzVK5Ic=;
- b=uRWvSIF4M6FmsdmXD9PU2XUA8Fku6R03zp55SuQtQlgeEwW+oxKES8tD/dSOByJtss/kcb
- DiKF72paQQd+bjmnrBqTcSKO1q8aJna233fgBoEpjZHpU5MjL/RnkfReeKnz1lBE2Ntuj3
- BTiMxOnHq7gyWSe6eAH6TTqC1A32PvA=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Jp8Teq4Isc+9gmZReRzppDgzK1yE9IJ/3uRsTw6ryLw=;
+ b=oCp832NTVPSaEBRhBlPm8aZYMaEUSpQPU/3kx6pVPlYzmwxzuydQkVam2N3UHmA7WayaLP
+ 386fK61d5ybZKWQhuwRJCw6PQnrjGPWO1rVJNW169kEYrOA2UhSI+6vmcW2QzTkGXKt9Nr
+ 3yaSAdNYIG7ojFg4fXLYuLl69NgLFRc=
 Received: from localhost.localdomain (fttx-pool-217.61.148.252.bambit.de
  [217.61.148.252])
- by mxbox3.masterlogin.de (Postfix) with ESMTPSA id B0CAA360696;
- Sat, 14 May 2022 11:59:58 +0000 (UTC)
+ by mxbox3.masterlogin.de (Postfix) with ESMTPSA id B4D82360502;
+ Sat, 14 May 2022 11:59:54 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-rockchip@lists.infradead.org
 Cc: Frank Wunderlich <frank-w@public-files.de>,
@@ -55,18 +54,15 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
  Michael Riesch <michael.riesch@wolfvision.net>, linux-pci@vger.kernel.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org
-Subject: [RFC v3 4/5] arm64: dts: rockchip: rk3568: Add PCIe v3 nodes
-Date: Sat, 14 May 2022 13:59:45 +0200
-Message-Id: <20220514115946.8858-5-linux@fw-web.de>
+Subject: [RFC v3 0/5] RK3568 PCIe V3 support
+Date: Sat, 14 May 2022 13:59:41 +0200
+Message-Id: <20220514115946.8858-1-linux@fw-web.de>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220514115946.8858-1-linux@fw-web.de>
-References: <20220514115946.8858-1-linux@fw-web.de>
 MIME-Version: 1.0
-X-Mail-ID: 4b31d101-afdf-45c9-8480-3aef5d99b3fc
+X-Mail-ID: c0d866d5-96cb-4e67-abe9-7c9f9293d3cc
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220514_050004_240368_4F822B0C 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220514_050003_337655_DE809F4E 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,155 +82,44 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add nodes to rk356x devicetree to support PCIe v3.
+This series adds Rockchip PCIe V3 support found on rk3568 SOC.
 
-Co-developed-by: Peter Geis <pgwipeout@gmail.com>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
-v3:
-- fix from Peter: change bus-range and msi-map, msi-map needs
-  to start from 0x0
+It is based on "Enable rk356x PCIe controller" series of Peter Geis
+v9: https://patchwork.kernel.org/project/linux-rockchip/list/?series=636944
 
-v2:
-- change to compatible with soc-part
-- change rockchip,bifurcation to vendor unspecific bifurcation
----
- arch/arm64/boot/dts/rockchip/rk3568.dtsi | 122 +++++++++++++++++++++++
- 1 file changed, 122 insertions(+)
+Compared to PCIeV2 which uses the Naneng combphy, PCIe v3 uses a dedicated
+PCI-phy.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-index 5eafddf62edc..6dbe73c9cddf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -42,6 +42,128 @@ qos_sata0: qos@fe190200 {
- 		reg = <0x0 0xfe190200 0x0 0x20>;
- 	};
- 
-+	pcie30_phy_grf: syscon@fdcb8000 {
-+		compatible = "rockchip,rk3568-pcie3-phy-grf", "syscon";
-+		reg = <0x0 0xfdcb8000 0x0 0x10000>;
-+	};
-+
-+	pcie30phy: phy@fe8c0000 {
-+		compatible = "rockchip,rk3568-pcie3-phy";
-+		reg = <0x0 0xfe8c0000 0x0 0x20000>;
-+		#phy-cells = <0>;
-+		clocks = <&pmucru CLK_PCIE30PHY_REF_M>, <&pmucru CLK_PCIE30PHY_REF_N>,
-+			 <&cru PCLK_PCIE30PHY>;
-+		clock-names = "refclk_m", "refclk_n", "pclk";
-+		resets = <&cru SRST_PCIE30PHY>;
-+		reset-names = "phy";
-+		rockchip,phy-grf = <&pcie30_phy_grf>;
-+		status = "disabled";
-+	};
-+
-+	pcie3x1: pcie@fe270000 {
-+		compatible = "rockchip,rk3568-pcie";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x0 0xf>;
-+		clocks = <&cru ACLK_PCIE30X1_MST>, <&cru ACLK_PCIE30X1_SLV>,
-+			 <&cru ACLK_PCIE30X1_DBI>, <&cru PCLK_PCIE30X1>,
-+			 <&cru CLK_PCIE30X1_AUX_NDFT>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk", "aux";
-+		device_type = "pci";
-+		interrupts = <GIC_SPI 160 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 159 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 158 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 157 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 156 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie3x1_intc 0>,
-+				<0 0 0 2 &pcie3x1_intc 1>,
-+				<0 0 0 3 &pcie3x1_intc 2>,
-+				<0 0 0 4 &pcie3x1_intc 3>;
-+		linux,pci-domain = <1>;
-+		num-ib-windows = <6>;
-+		num-ob-windows = <2>;
-+		max-link-speed = <3>;
-+		msi-map = <0x0 &gic 0x1000 0x1000>;
-+		num-lanes = <1>;
-+		phys = <&pcie30phy>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3568_PD_PIPE>;
-+		reg = <0x3 0xc0400000 0x0 0x00400000>,
-+		      <0x0 0xfe270000 0x0 0x00010000>,
-+		      <0x3 0x40000000 0x0 0x01000000>;
-+		ranges = <0x01000000 0x0 0x01000000 0x3 0x41000000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0x02000000 0x3 0x41100000 0x0 0x3ef00000>;
-+		reg-names = "dbi", "apb", "config";
-+		resets = <&cru SRST_PCIE30X1_POWERUP>;
-+		reset-names = "pipe";
-+		/* bifurcation; lane1 when using 1+1 */
-+		status = "disabled";
-+
-+		pcie3x1_intc: legacy-interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 157 IRQ_TYPE_EDGE_RISING>;
-+		};
-+	};
-+
-+	pcie3x2: pcie@fe280000 {
-+		compatible = "rockchip,rk3568-pcie";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x0 0xf>;
-+		clocks = <&cru ACLK_PCIE30X2_MST>, <&cru ACLK_PCIE30X2_SLV>,
-+			 <&cru ACLK_PCIE30X2_DBI>, <&cru PCLK_PCIE30X2>,
-+			 <&cru CLK_PCIE30X2_AUX_NDFT>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk", "aux";
-+		device_type = "pci";
-+		interrupts = <GIC_SPI 165 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 164 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 163 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 162 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 161 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie3x2_intc 0>,
-+				<0 0 0 2 &pcie3x2_intc 1>,
-+				<0 0 0 3 &pcie3x2_intc 2>,
-+				<0 0 0 4 &pcie3x2_intc 3>;
-+		linux,pci-domain = <2>;
-+		num-ib-windows = <6>;
-+		num-ob-windows = <2>;
-+		max-link-speed = <3>;
-+		msi-map = <0x0 &gic 0x2000 0x1000>;
-+		num-lanes = <2>;
-+		phys = <&pcie30phy>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3568_PD_PIPE>;
-+		reg = <0x3 0xc0800000 0x0 0x00400000>,
-+		      <0x0 0xfe280000 0x0 0x00010000>,
-+		      <0x3 0x80000000 0x0 0x01000000>;
-+		ranges = <0x01000000 0x0 0x01000000 0x3 0x81000000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0x02000000 0x3 0x81100000 0x0 0x3ef00000>;
-+		reg-names = "dbi", "apb", "config";
-+		resets = <&cru SRST_PCIE30X2_POWERUP>;
-+		reset-names = "pipe";
-+		/* bifurcation; lane0 when using 1+1 */
-+		status = "disabled";
-+
-+		pcie3x2_intc: legacy-interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 162 IRQ_TYPE_EDGE_RISING>;
-+		};
-+	};
-+
- 	gmac0: ethernet@fe2a0000 {
- 		compatible = "rockchip,rk3568-gmac", "snps,dwmac-4.20a";
- 		reg = <0x0 0xfe2a0000 0x0 0x10000>;
+New in this version is that lane-map is no separate patch and moved from
+PCIe- to phy-driver.
+
+Peter has tested m2-slot too and so the bifurcation.
+
+The Phy-Patch is now changed to original author, but our changes are
+squashed in.
+
+Frank Wunderlich (4):
+  dt-bindings: phy: rockchip: add PCIe v3 phy
+  dt-bindings: soc: grf: add pcie30-{phy,pipe}-grf
+  arm64: dts: rockchip: rk3568: Add PCIe v3 nodes
+  arm64: dts: rockchip: Add PCIe v3 nodes to BPI-R2-Pro
+
+Shawn Lin (1):
+  phy: rockchip: Support PCIe v3
+
+ .../bindings/phy/rockchip,pcie3-phy.yaml      |  82 +++++
+ .../devicetree/bindings/soc/rockchip/grf.yaml |   3 +
+ .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   |  90 +++++
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 122 +++++++
+ drivers/phy/rockchip/Kconfig                  |   9 +
+ drivers/phy/rockchip/Makefile                 |   1 +
+ .../phy/rockchip/phy-rockchip-snps-pcie3.c    | 317 ++++++++++++++++++
+ include/linux/phy/pcie.h                      |  12 +
+ 8 files changed, 636 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
+ create mode 100644 drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
+ create mode 100644 include/linux/phy/pcie.h
+
 -- 
 2.25.1
 
