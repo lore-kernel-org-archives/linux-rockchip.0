@@ -4,68 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FADFC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 May 2022 12:01:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C764BC43217
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 May 2022 13:36:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PomnJ/4xDubtW+pHqRjAm9Q1WIXsV2AwprJYFd4TOqc=; b=jYw5uE89z7ezvg
-	c/P/uq9oZ16n54R2ZiMAkxgPS7AQRZth9AzYDXoyL3HC58y/IIA0YvZl/FZrCcsJ/BTeSIFRktZdH
-	8cOhyA1EPOlnlp/MJkjwlft4keDyshcO+DpPR+mL6XOjuErpAm3UqNNHFkfKbw0Y4kHlPEWsdtKn8
-	mwaS18BjIGwqVt6HjP7j4hBT7/tL3D6ezyMMb1ZlnQrKoyGhjv6yoP+llYe3NlY2Pn4Sot40xP8Bh
-	AhzJUMCpb8GcLCCcmXb6Y5SrIluOR0D4/iZ2gUct/4haGoZ1T1vedEPHpLkqn2QVDLndvV82i0LIc
-	J95r2GM9HTDXH+doJEjw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EwuXa3yB0DizWu7Ca0x34SECPnK313ydGi14PfpdG1c=; b=XCYxj7rlQbXxeb
+	Gsiw2hFf6pFnIlaEb7uvH+rLj1emhNyU9AyMHTdxeLUf95oEs/YQdQ8SbHgYMrFGYNRGuYjsAyOVn
+	sfu/3WlDqCCXr5pDvDsb9UBeo1RIO6lvMfO2G8IoXuVVhDspEzVVU88RjI8FnOzci76VQ1vzJCI+4
+	RnAIlJGvmGsNuEimpiaeTRf2KJR0HihknKz8Liayf/CLEczt1o0lPB5jNeKWqsYocO69smaSGfTYY
+	oESr7CQFgZoSAOGk99sg860u1XrRkwUcX3Ibrm6ot8ngOeV1xru/KFexKofYH0cM2iWqUOMpFhjOF
+	S26k/Ca8YeBybHyzCBpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1npqSL-001LnJ-VT; Sat, 14 May 2022 12:01:10 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1nprwj-001VEO-FO; Sat, 14 May 2022 13:36:37 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1npqRL-001LFn-8d; Sat, 14 May 2022 12:00:09 +0000
-Received: from mxbox3.masterlogin.de (unknown [192.168.10.78])
- by mxout4.routing.net (Postfix) with ESMTP id 812C41012C4;
- Sat, 14 May 2022 12:00:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
- s=20200217; t=1652529600;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=R1iKpFJztxIvimr5HKEKJzhie/gJm0tJviBrqgPMha8=;
- b=xAk2rCfGwRHOwk+k32G5T+WjQm0v4hoywVEz1tsYLGFNMjnoya9HWx1q4Lt306v/Vf75JW
- i5Zr6kk3Y3UZ2Rk8NeDHk6Jh+vwSdbsYMcxpsPFVwgKnymipp8Wjmr+XBlWV7NNGyK91HI
- x+v4zjS+NdWqZLTKd4zS4pFnUdLm3C4=
-Received: from localhost.localdomain (fttx-pool-217.61.148.252.bambit.de
- [217.61.148.252])
- by mxbox3.masterlogin.de (Postfix) with ESMTPSA id 9A1FC360502;
- Sat, 14 May 2022 11:59:59 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-rockchip@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
- Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
+ id 1nprwg-001VDX-QY; Sat, 14 May 2022 13:36:36 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id gh6so21059318ejb.0;
+ Sat, 14 May 2022 06:36:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VymNsO9H8vXev+tiyOhAo/oE9mXI2dXizsJGlsEEQ7M=;
+ b=U0xcrl1+33ooDeGyYEvLTuxZUiFJ1G+F6tNH+a/Fe79ebH4D0fHhkPMbgtrS1CYRY9
+ AmHE8zmyq8CiNb6QbKt0TU9ISdTI7yul4Y9S5MM78mj2f6aSE73srHj0llzFWm+heX+n
+ vxjj6E0n30bMybxyDegia7GDYgQpIIt8sIn/e3mHagwRhF+IStAKE3d6pPkLlhZh1hiu
+ BV3VThfgOaSirer8YLww/6OGCP7sb9gUdBbdzVgIoH9vh3TtntZKc139P5g+iNBquf32
+ gxcl1lvrcTThP/igiSd5r8SZIoH5IgOP+Pm/xuEsCsm6Dh7EEOMYJ7kgTFkI7TLrokPc
+ bo0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=VymNsO9H8vXev+tiyOhAo/oE9mXI2dXizsJGlsEEQ7M=;
+ b=QJnJlkN1SaxDMXQ7KUYcQn0o1cTg0x5sqgVeHMV8hMqzuToPwcBWE5TR0AnTX7JZFt
+ voucmlzdVcbJKVgAMpbkZ5r5Q+fAfjHb7ZvoqCrKNXQ//n811BSjmPmx1Yc6NiMHGGRX
+ RQpHp+4oJbOn1SROkwiTChcbxCKyivGo6czES0Q47cEyR6SlaGSxmgPpR6WHXz7yZRdy
+ N1ojt2EUhcyRXq3zDxZP28p0NTpqoOJmP/MCmX0npQLtPE2S/oWl2ssNZMES2tjTr0A6
+ HlmVFQBG/hzPaGrCbDBM673WMy1TXZPw+EFuquWW1mJhycGqRlccG/2Kct1YxWyWD2kt
+ smIw==
+X-Gm-Message-State: AOAM5326o7gHI1lkuZJz6nbv4/4Kz/c5D+wlRgozqI5eFnMfrf7sP4B7
+ a0mUsJLMamF0fUdmLKZhz1s=
+X-Google-Smtp-Source: ABdhPJyvEAUNi0SNhPPHnm5cy2aKmPXeX+3XH6wYj1nL4AKXica1uFiPnVGsop4zTWEUFMhY/meH2w==
+X-Received: by 2002:a17:907:948c:b0:6f5:183f:eb6 with SMTP id
+ dm12-20020a170907948c00b006f5183f0eb6mr8055998ejc.112.1652535392262; 
+ Sat, 14 May 2022 06:36:32 -0700 (PDT)
+Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch.
+ [84.72.105.84]) by smtp.gmail.com with ESMTPSA id
+ ci18-20020a170907267200b006f3ef214e49sm1736739ejc.175.2022.05.14.06.36.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 14 May 2022 06:36:31 -0700 (PDT)
+From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Kishon Vijay Abraham I <kishon@ti.com>,
- Vinod Koul <vkoul@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Johan Jonker <jbx6244@gmail.com>,
- Peter Geis <pgwipeout@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>, linux-pci@vger.kernel.org,
+ Heiko Stuebner <heiko@sntech.de>, Peter Geis <pgwipeout@gmail.com>,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Liang Chen <cl@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org
-Subject: [RFC v3 5/5] arm64: dts: rockchip: Add PCIe v3 nodes to BPI-R2-Pro
-Date: Sat, 14 May 2022 13:59:46 +0200
-Message-Id: <20220514115946.8858-6-linux@fw-web.de>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220514115946.8858-1-linux@fw-web.de>
-References: <20220514115946.8858-1-linux@fw-web.de>
+ linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
+Subject: [PATCH v4 0/3] Enable JPEG Encoder on RK3566/RK3568
+Date: Sat, 14 May 2022 15:36:01 +0200
+Message-Id: <20220514133604.174905-1-frattaroli.nicolas@gmail.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
-X-Mail-ID: 090e248d-fa9b-43c5-9787-98c61156afdf
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220514_050007_638851_683A39C0 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20220514_063634_916347_963D99BA 
+X-CRM114-Status: GOOD (  19.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,147 +95,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+Hello,
 
-Add Nodes to Bananapi-R2-Pro board to support PCIe v3 and
-set PCIe related regulators to always on.
+this is v4 of my RK356x JPEG encoder patch set. It enables the Hantro
+hardware encoder of the RK3566 and RK3568 line of SoCs, with JPEG being
+the only format the driver currently supports encoding for.
 
-Suggested-by: Peter Geis <pgwipeout@gmail.com>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
-v3:
-- squash lane-map over bifurcation property
-- add comment which slot is M2 and which one if mPCIe
-- fixes from Peter:
-  - drop regulator-always-on/regulator-boot-on from regulators
-  - increase startup-delay-us for regulators
-  - set phy-mode on PCIe3-phy
-  - add num-lanes to PCIe overrides
-  - add usb node for to PCIe/m2
-  - move lane-map from PCIe controller to PCIe-phy
+The first patch adds a new binding, the rockchip-vepu binding, to
+describe this kind of hardware. The reason for going with a new binding
+instead of modifying the vpu binding as the previous versions did is
+that the vpu binding is getting quite long, and Ezequiel Garcia suggested
+(on IRC) that we could document encoder only instances in their own
+binding. This makes sense to me, especially considering that RK3588 will
+have more Hantro instances like this to document.
 
-v2:
-- underscores in nodenames
-- rockchip,bifurcation to vendor unspecific bifurcation
-- fix trailing space
----
- .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   | 90 +++++++++++++++++++
- 1 file changed, 90 insertions(+)
+The second patch makes the actual driver changes to support this variant.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-index 2700fb18a3bc..8b3b774a9dac 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-@@ -74,6 +74,62 @@ vcc5v0_sys: vcc5v0-sys {
- 		vin-supply = <&dc_12v>;
- 	};
- 
-+	pcie30_avdd0v9: pcie30-avdd0v9 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pcie30_avdd0v9";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <900000>;
-+		regulator-max-microvolt = <900000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	pcie30_avdd1v8: pcie30-avdd1v8 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pcie30_avdd1v8";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	/* pi6c pcie clock generator feeds both ports */
-+	vcc3v3_pi6c_05: vcc3v3-pi6c-05-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_pcie";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		enable-active-high;
-+		gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
-+		startup-delay-us = <200000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	/* actually fed by vcc3v3_sys, dependent on pi6c clock generator */
-+	vcc3v3_minipcie: vcc3v3-minipcie-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_minipcie";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		startup-delay-us = <50000>;
-+		vin-supply = <&vcc3v3_pi6c_05>;
-+	};
-+
-+	/* actually fed by vcc3v3_sys, dependent on pi6c clock generator */
-+	vcc3v3_ngff: vcc3v3-ngff-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_ngff";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		enable-active-high;
-+		gpio = <&gpio4 RK_PC1 GPIO_ACTIVE_HIGH>;
-+		startup-delay-us = <50000>;
-+		vin-supply = <&vcc3v3_pi6c_05>;
-+	};
-+
- 	vbus: vbus {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vbus";
-@@ -411,6 +467,27 @@ rgmii_phy1: ethernet-phy@0 {
- 	};
- };
- 
-+&pcie30phy {
-+	lane-map = /bits/ 8 <1 2>;
-+	status = "okay";
-+};
-+
-+&pcie3x1 {
-+	/* M.2 slot */
-+	num-lanes = <1>;
-+	reset-gpios = <&gpio3 RK_PA1 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_ngff>;
-+	status = "okay";
-+};
-+
-+&pcie3x2 {
-+	/* mPCIe slot */
-+	num-lanes = <1>;
-+	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_minipcie>;
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	leds {
- 		blue_led_pin: blue-led-pin {
-@@ -597,3 +674,16 @@ &usb2phy0_otg {
- 	phy-supply = <&vcc5v0_usb_otg>;
- 	status = "okay";
- };
-+
-+&usb2phy1 {
-+	/* USB for PCIe/M2 */
-+	status = "okay";
-+};
-+
-+&usb2phy1_host {
-+	status = "okay";
-+};
-+
-+&usb2phy1_otg {
-+	status = "okay";
-+};
+The third and final patch makes the necessary device tree changes for
+the rk356x device tree file to add both the node for the encoder and
+its MMU.
+
+The series has been tested on a PINE64 Quartz64 Model A with an RK3566
+SoC using GStreamer.
+
+No interdiff this time around, I discovered that it breaks patchwork.
+
+Regards,
+Nicolas Frattaroli
+
+Changes in v4:
+ - bindings: move vepu to its own binding, also add it to MAINTAINERS
+ - driver: rename a stray rk3568_jpeg_enc_codec_ops to
+   rk3568_vepu_codec_ops
+ - devicetree: remove interrupt-names property
+ - rebase onto linux-next
+
+Changes in v3:
+ - bindings: change consts to an enum
+ - bindings: add check to make sure devices with a -vepu compatible only
+   have the vepu interrupt
+
+Changes in v2:
+ - rename compatible as it's not JPEG only
+ - rename device tree nodes as it's not JPEG only
+ - reword commits as it's not JPEG only
+ - get rid of a whole bunch of redundant struct definitions, as, you
+   guessed it, it's not JPEG only
+
+Nicolas Frattaroli (3):
+  media: dt-binding: media: Add rockchip-vepu binding
+  media: hantro: Add support for RK356x encoder
+  arm64: dts: rockchip: Add Hantro encoder node to rk356x
+
+ .../bindings/media/rockchip-vepu.yaml         | 64 +++++++++++++++++++
+ MAINTAINERS                                   |  1 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      | 20 ++++++
+ drivers/staging/media/hantro/hantro_drv.c     |  1 +
+ drivers/staging/media/hantro/hantro_hw.h      |  1 +
+ .../staging/media/hantro/rockchip_vpu_hw.c    | 25 ++++++++
+ 6 files changed, 112 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip-vepu.yaml
+
 -- 
-2.25.1
+2.36.1
 
 
 _______________________________________________
