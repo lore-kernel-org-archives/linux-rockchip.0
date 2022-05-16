@@ -4,71 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 303D5C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 May 2022 17:09:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAECFC433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 May 2022 17:35:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7WV6pjm/s8uP4pXcQ01g/Zt9MY+56R31PGIG4+GVOTo=; b=fb3PBKpYZPSc5M
-	dkdkqey49XQkVAVw4OQ2W7U4ugYzLTb3N+wJ5z34/vRTjQXqMUuoLpL1h8oRq6lFAChT1D3gAtSEY
-	x146xIGPNJjHWYmAS2uow83zDfrvZ86mAJX2SlIxtzD8q4WrPIUNZQIqjzU9Tlutw1SKr3UR4ktfe
-	Bm4QjbPtW+gAo4S4UJTN/QrEe6DRb5GcBwlykthzIJCsNODu0hZGbOuYE0gtteKhtxI5IGKsflJlR
-	muaf03aCG4bwGiJBS+ETiN7qFhcDw3eNAST39fW+7H/dTFKnSDnZmLibwQlSQNZGyLqYTDacRvDBn
-	lM+Ed1WI4J6+i5DnbDPw==;
+	List-Owner; bh=z58NYDy1xbDzVOHsfD9Nez9smVLyhHkFigWT22CWoBo=; b=fChoSP1iHjOH9L
+	0aaowKjYCLjmcJHCKmM2/d73cEJqjLFRl+ktJups3h5vfkjUPwoGNlPMqMO0B4V0WW8GSFxgr5fKC
+	eNbrPORMdZH2GWtoKG6PGX71XWmMAmgxfdNRWemQdX0aMwm3cnwEeAkpmcBpZnpJtM5TDf1VnIIny
+	biazkzNYAKvMjHBmUJ+GKi7NgkRKARzt0RiAyPDh/dqfjx3e/40CVCoq3NN92XLMz1ImyyvxGQECs
+	y8+DgsB10+MnW9eOBF7DvsZ29fiPBkvk9fAveImX/INOXn0RRxOAqiObANleNDcVuxuT2FUGmTBHT
+	jiYE/Q/TjoRdNOgS50Sg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqeDN-009HMi-7o; Mon, 16 May 2022 17:09:01 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1nqedD-009N70-Ji; Mon, 16 May 2022 17:35:43 +0000
+Received: from mail-oi1-f170.google.com ([209.85.167.170])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqeDJ-009HJ0-4w
- for linux-rockchip@lists.infradead.org; Mon, 16 May 2022 17:08:59 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nqeD4-0005c8-R7; Mon, 16 May 2022 19:08:42 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
- (envelope-from <sha@pengutronix.de>)
- id 1nqeD2-0004CX-Bh; Mon, 16 May 2022 19:08:40 +0200
-Date: Mon, 16 May 2022 19:08:40 +0200
-From: Sascha Hauer <s.hauer@pengutronix.de>
-To: Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
- Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org,
- Michael Riesch <michael.riesch@wolfvision.net>,
- Peter Geis <pgwipeout@gmail.com>,
- Andy Yan <andy.yan@rock-chips.com>, kernel@pengutronix.de,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 1/3] dt-bindings: display: rockchip: make reg-names
- mandatory for VOP2
-Message-ID: <20220516170840.GO25578@pengutronix.de>
-References: <20220511082109.1110043-1-s.hauer@pengutronix.de>
- <20220511082109.1110043-2-s.hauer@pengutronix.de>
- <20220516151226.GA2653888-robh@kernel.org>
+ id 1nqedA-009N5t-9I; Mon, 16 May 2022 17:35:42 +0000
+Received: by mail-oi1-f170.google.com with SMTP id v66so19486772oib.3;
+ Mon, 16 May 2022 10:35:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=yRCFWuG9Oqb4uyJxObAmt3C9VXrpqbJosiPlLmLl9sI=;
+ b=cY5/phDNkhgEnbYvxsUetBKegrIl47DHkZPGRJxTjcnRjPxvTYOP8mpF9fbhyZQ04h
+ rp6ahnEUOUPfixzORglfPz3Lo6gHBoVkhoLA3u/nY4aApRXdcUocqa08cCa5GB84vqtb
+ YkYNbmy9Mp8HQ8iugYhZ5OP1oL7d+ERoLYIudM1MwauojtIWm7WjYbR5e7n0NGSdDBMV
+ JBSF/I1ZdbzdAYbBoA8oV8H4wSVOhpCVElWvdMhHgSSpSzZS2sreZkLAfXqsEuXqy39H
+ 3/GxDedT+4gbP3ona0aT33Jkomxtnh1vEBZdt9/lm0GLZot3xjjawN3DL8+22kG+dkT1
+ KdkQ==
+X-Gm-Message-State: AOAM530y626j+MstvbB9rOGGC/k4Bq3evd3fhpN1+Ac2lDJQymzcBRpZ
+ txy7safc0qMk4X7ny1BKzQ==
+X-Google-Smtp-Source: ABdhPJxuclwaDZzyOItOmmGD3yThwcNVeOZQs+WOMuvGRRbmejydML51xYl4owmx8halO8SP4Fl2pw==
+X-Received: by 2002:a05:6808:1703:b0:2f9:cd2d:41c5 with SMTP id
+ bc3-20020a056808170300b002f9cd2d41c5mr14114818oib.77.1652722539072; 
+ Mon, 16 May 2022 10:35:39 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ v2-20020a056870310200b000e686d1386csm5670158oaa.6.2022.05.16.10.35.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 May 2022 10:35:38 -0700 (PDT)
+Received: (nullmailer pid 2952486 invoked by uid 1000);
+ Mon, 16 May 2022 17:35:37 -0000
+Date: Mon, 16 May 2022 12:35:37 -0500
+From: Rob Herring <robh@kernel.org>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>,
+ Michael Riesch <michael.riesch@wolfvision.net>, Vinod Koul <vkoul@kernel.org>,
+ Johan Jonker <jbx6244@gmail.com>, linux-rockchip@lists.infradead.org,
+ linux-pci@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+ Bjorn Helgaas <bhelgaas@google.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Peter Geis <pgwipeout@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+Subject: Re: Re: [RFC v3 1/5] dt-bindings: phy: rockchip: add PCIe v3 phy
+Message-ID: <20220516173537.GA2942634-robh@kernel.org>
+References: <20220514115946.8858-1-linux@fw-web.de>
+ <20220514115946.8858-2-linux@fw-web.de>
+ <1652570081.002742.3276245.nullmailer@robh.at.kernel.org>
+ <trinity-02ad648c-f6f8-4383-b389-a0578d5a02d2-1652615387162@3c-app-gmx-bap15>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220516151226.GA2653888-robh@kernel.org>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-IRC: #ptxdist @freenode
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-X-Uptime: 19:07:40 up 47 days,  5:37, 74 users,  load average: 0.02, 0.12, 0.14
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+In-Reply-To: <trinity-02ad648c-f6f8-4383-b389-a0578d5a02d2-1652615387162@3c-app-gmx-bap15>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220516_100857_223014_8BAB12D3 
-X-CRM114-Status: GOOD (  22.32  )
+X-CRM114-CacheID: sfid-20220516_103540_362044_0F3E8F17 
+X-CRM114-Status: GOOD (  24.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,41 +93,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Heiko,
-
-On Mon, May 16, 2022 at 10:12:26AM -0500, Rob Herring wrote:
-> On Wed, 11 May 2022 10:21:07 +0200, Sascha Hauer wrote:
-> > The VOP2 driver relies on reg-names properties, but these are not
-> > documented. Add the missing documentation, make reg-names mandatory
-> > and increase minItems to 2 as always both register spaces are needed.
-
-Could you drop the minItems part while applying? That is no longer
-correct.
-
-Sascha
-
-> > 
-> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> > ---
-> > 
-> > Notes:
-> >     Changes since v1:
-> >     - Drop minItems
-> >     - Add reg-names properties to example
-> > 
-> >  .../bindings/display/rockchip/rockchip-vop2.yaml          | 8 +++++++-
-> >  1 file changed, 7 insertions(+), 1 deletion(-)
-> > 
+On Sun, May 15, 2022 at 01:49:47PM +0200, Frank Wunderlich wrote:
+> Hi
 > 
-> Reviewed-by: Rob Herring <robh@kernel.org>
+> > Gesendet: Sonntag, 15. Mai 2022 um 01:14 Uhr
+> > Von: "Rob Herring" <robh@kernel.org>
 > 
+> > On Sat, 14 May 2022 13:59:42 +0200, Frank Wunderlich wrote:
+> > > From: Frank Wunderlich <frank-w@public-files.de>
+> > >
+> > > Add a new binding file for Rockchip PCIe v3 phy driver.
+> > >
+> > > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > >
+> > > ---
+> > > v3:
+> > > - drop quotes
+> > > - drop rk3588
+> > > - make clockcount fixed to 3
+> > > - full path for binding header file
+> > > - drop phy-mode and its header and add lane-map
+> > >
+> > > v2:
+> > > dt-bindings: rename yaml for PCIe v3
+> > > rockchip-pcie3-phy.yaml => rockchip,pcie3-phy.yaml
+> > >
+> > > changes in pcie3 phy yaml
+> > > - change clock names to ordered const list
+> > > - extend pcie30-phymode description
+> > > - add phy-cells to required properties
+> > > - drop unevaluatedProperties
+> > > - example with 1 clock each line
+> > > - use default property instead of text describing it
+> > > - update license
+> > > ---
+> > >  .../bindings/phy/rockchip,pcie3-phy.yaml      | 82 +++++++++++++++++++
+> > >  1 file changed, 82 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
+> > >
+> >
+> > My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+> > on your patch (DT_CHECKER_FLAGS is new in v5.13):
+> >
+> > yamllint warnings/errors:
+> >
+> > dtschema/dtc warnings/errors:
+> > /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml: properties:clock-names: 'oneOf' conditional failed, one must be fixed:
+> > 	[{'const': 'refclk_m'}, {'const': 'refclk_n'}, {'const': 'pclk'}] is too long
+> > 	[{'const': 'refclk_m'}, {'const': 'refclk_n'}, {'const': 'pclk'}] is too short
+> > 	False schema does not allow 3
+> > 	1 was expected
+> > 	3 is greater than the maximum of 2
+> > 	hint: "minItems" is only needed if less than the "items" list length
+> > 	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+> > /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml: ignoring, error in schema: properties: clock-names
+> > Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.example.dtb:0:0: /example-0/phy@fe8c0000: failed to match any schema with compatible: ['rockchip,rk3568-pcie3-phy']
 > 
+> seems this is fixed when i remove the "minItems: 3" from clock names 
+> (which is already fixed length because of the list).
 
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Yes.
+
+> needed to change type of lane-map to this:
+> 
+> $ref: /schemas/types.yaml#/definitions/uint8-array
+
+Why? That's not a standard property though, so needs a 'rockchip' 
+prefix. Though maybe a common property would be appropriate here.
+
+> then it looks clean for it....
+> 
+> -m causes many errors unrelated to this schema-file even if i pass
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
+
+The fix is fixing the remaining 40 or so '-m' errors.
+
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
