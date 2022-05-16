@@ -4,60 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5504C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 May 2022 16:47:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 303D5C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 May 2022 17:09:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4V5hDeZvGoAVelssAYTXR2/vO/8CiF4/CGoYy0HHo3I=; b=cG1Eyd29fE7XlC
-	Fc5btWmMlHLtp+H8bZhpSrZZ1GxufT5hsGsmsA4SboCREq0fofR4VoDT+8DxyoUQ0PK+ilEoN9nE1
-	Q7W1QqslPoaZF6kAkNq22ipv4SU81Qf50GmwdXc7ZQjz8hIR3+IK23J73YdL4eoEp34ybDryMXtly
-	IMlb2INv/Ui18lEDYwCeUvzJIbT2AkWxMsn1u1fDNJRJzDKjTU1MmOEAU/2gknW3IWFD8Ax0pg3pJ
-	gRV8s1jwt4jv7173Upqtg3Hy4Hm5zvlKbIRIfoZNcp1LNKSQzlp0HpiMviSRS34A4BMOLVozHM3wx
-	NN7eSpAw6wyp07WR6qkw==;
+	List-Owner; bh=7WV6pjm/s8uP4pXcQ01g/Zt9MY+56R31PGIG4+GVOTo=; b=fb3PBKpYZPSc5M
+	dkdkqey49XQkVAVw4OQ2W7U4ugYzLTb3N+wJ5z34/vRTjQXqMUuoLpL1h8oRq6lFAChT1D3gAtSEY
+	x146xIGPNJjHWYmAS2uow83zDfrvZ86mAJX2SlIxtzD8q4WrPIUNZQIqjzU9Tlutw1SKr3UR4ktfe
+	Bm4QjbPtW+gAo4S4UJTN/QrEe6DRb5GcBwlykthzIJCsNODu0hZGbOuYE0gtteKhtxI5IGKsflJlR
+	muaf03aCG4bwGiJBS+ETiN7qFhcDw3eNAST39fW+7H/dTFKnSDnZmLibwQlSQNZGyLqYTDacRvDBn
+	lM+Ed1WI4J6+i5DnbDPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqdsV-00990P-Oq; Mon, 16 May 2022 16:47:27 +0000
-Received: from relay3-d.mail.gandi.net ([217.70.183.195])
+	id 1nqeDN-009HMi-7o; Mon, 16 May 2022 17:09:01 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqdpx-0097p7-Qp; Mon, 16 May 2022 16:44:51 +0000
-Received: (Authenticated sender: miquel.raynal@bootlin.com)
- by mail.gandi.net (Postfix) with ESMTPSA id 7554660006;
- Mon, 16 May 2022 16:44:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
- t=1652719485;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FUjbQlS3O1i0rkDnApT2NyN4So3rWaikhG7cYVbOcXM=;
- b=m2smwsK1yyTpi5NGCuIYbWpu4vQMX+9RzY8/NP6JJ1sx91tTxqivT0YlcTxG6Ub2QLFVFH
- nK8Fn+snRVBStsJNryq2Jx4IMGwYsBDiF/dlEUqNXeLJ07r8pg1N6hsDYOprBQ4X6k8vrS
- ue2IZG+QxPypoAAuzFcWQW95ijWe9kONqqptE6M0XqBgWvzCVVAQyNfKwcvPdy8OH2OGgk
- VqKWcOJJJL82KEl398SiMl1bc+uMbmkYS4vKITWhXRdXegqaEuQJ+yDOtgXYx0D9QtfRgB
- 7Dsr45VDjFU5dIY7FPN3k0jmRZ0FlZ0RFSoUX1x3GsBkKghRqSSWY37rsVaLpA==
-Date: Mon, 16 May 2022 18:44:43 +0200
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Phil Edworthy <phil.edworthy@renesas.com>
-Cc: Vignesh Raghavendra <vigneshr@ti.com>, Heiko Stuebner <heiko@sntech.de>,
- Richard Weinberger <richard@nod.at>, Yihao Han <hanyihao@vivo.com>,
- linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] mtd: rawnand: rockchip: Check before
- clk_disable_unprepare() not needed
-Message-ID: <20220516184443.25827c24@xps-13>
-In-Reply-To: <20220512184558.45966-1-phil.edworthy@renesas.com>
-References: <20220512184558.45966-1-phil.edworthy@renesas.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
+ id 1nqeDJ-009HJ0-4w
+ for linux-rockchip@lists.infradead.org; Mon, 16 May 2022 17:08:59 +0000
+Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nqeD4-0005c8-R7; Mon, 16 May 2022 19:08:42 +0200
+Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
+ (envelope-from <sha@pengutronix.de>)
+ id 1nqeD2-0004CX-Bh; Mon, 16 May 2022 19:08:40 +0200
+Date: Mon, 16 May 2022 19:08:40 +0200
+From: Sascha Hauer <s.hauer@pengutronix.de>
+To: Rob Herring <robh@kernel.org>
+Cc: devicetree@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Heiko =?iso-8859-15?Q?St=FCbner?= <heiko@sntech.de>,
+ Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org,
+ Michael Riesch <michael.riesch@wolfvision.net>,
+ Peter Geis <pgwipeout@gmail.com>,
+ Andy Yan <andy.yan@rock-chips.com>, kernel@pengutronix.de,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 1/3] dt-bindings: display: rockchip: make reg-names
+ mandatory for VOP2
+Message-ID: <20220516170840.GO25578@pengutronix.de>
+References: <20220511082109.1110043-1-s.hauer@pengutronix.de>
+ <20220511082109.1110043-2-s.hauer@pengutronix.de>
+ <20220516151226.GA2653888-robh@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220516151226.GA2653888-robh@kernel.org>
+X-Sent-From: Pengutronix Hildesheim
+X-URL: http://www.pengutronix.de/
+X-IRC: #ptxdist @freenode
+X-Accept-Language: de,en
+X-Accept-Content-Type: text/plain
+X-Uptime: 19:07:40 up 47 days,  5:37, 74 users,  load average: 0.02, 0.12, 0.14
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
+X-SA-Exim-Mail-From: sha@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220516_094450_082161_9903A16A 
-X-CRM114-Status: UNSURE (   8.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220516_100857_223014_8BAB12D3 
+X-CRM114-Status: GOOD (  22.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,19 +81,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUGhpbCwKCnBoaWwuZWR3b3J0aHlAcmVuZXNhcy5jb20gd3JvdGUgb24gVGh1LCAxMiBNYXkg
-MjAyMiAxOTo0NTo1OCArMDEwMDoKCj4gQWxsIGNvZGUgaW4gY2xrX2Rpc2FibGVfdW5wcmVwYXJl
-KCkgYWxyZWFkeSBjaGVja3MgdGhlIGNsayBwdHIgdXNpbmcKPiBJU19FUlJfT1JfTlVMTCBzbyB0
-aGVyZSBpcyBubyBuZWVkIHRvIGNoZWNrIGl0IGFnYWluIGJlZm9yZSBjYWxsaW5nIGl0Lgo+IEEg
-bG90IG9mIG90aGVyIGRyaXZlcnMgYWxyZWFkeSByZWx5IG9uIHRoaXMgYmVoYXZpb3VyLCBzbyBp
-dCdzIHNhZmUKPiB0byBkbyBzbyBoZXJlLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFBoaWwgRWR3b3J0
-aHkgPHBoaWwuZWR3b3J0aHlAcmVuZXNhcy5jb20+CgpCb3RoIHBhdGNoZXMgaGF2ZSBiZWVuIGFw
-cGxpZWQgdG8gbmFuZC9uZXh0LgoKVGhhbmtzLApNaXF1w6hsCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Heiko,
+
+On Mon, May 16, 2022 at 10:12:26AM -0500, Rob Herring wrote:
+> On Wed, 11 May 2022 10:21:07 +0200, Sascha Hauer wrote:
+> > The VOP2 driver relies on reg-names properties, but these are not
+> > documented. Add the missing documentation, make reg-names mandatory
+> > and increase minItems to 2 as always both register spaces are needed.
+
+Could you drop the minItems part while applying? That is no longer
+correct.
+
+Sascha
+
+> > 
+> > Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> > ---
+> > 
+> > Notes:
+> >     Changes since v1:
+> >     - Drop minItems
+> >     - Add reg-names properties to example
+> > 
+> >  .../bindings/display/rockchip/rockchip-vop2.yaml          | 8 +++++++-
+> >  1 file changed, 7 insertions(+), 1 deletion(-)
+> > 
+> 
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> 
+> 
+
+-- 
+Pengutronix e.K.                           |                             |
+Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
+31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
