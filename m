@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FA8BC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 May 2022 22:19:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AE0EC433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 May 2022 22:20:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/Z9DtK2HQIOcLW0PJt1R7NOBtSWtoIbSCKe6uN9SUno=; b=ucZMD9krLyh1vm
-	ORiq9WzqhrxNlTyS4H0XLmQyyNzhDUI3aJn8aYFDTQVzgogJZvUvr1tWRjRCHKzFCLfidZif1Lx6x
-	uXdADkaErqz3wMJprIKe7Ra5ZOidEKB2L8w+Q4HAeaxms8NFW4TjaRBs27XQ4gISjmURD5roQf/L2
-	G8BSjAxPvvPtVjT5ocilQ5V4IA6mwJvHEtVmnK3aO4zonUV5Xkp/uFGiR8QHC6qc3ZIrIcIh35YTG
-	lpYnbi5NdKytKwdPKjyB7w2j0EflmxDLcUn3yWfBrkBjcsEjokxRoKSsC964bAgIaR9vc/scby1Qy
-	DjDKW5LAa234wHewgqbQ==;
+	List-Owner; bh=TP02QOOxJfQGZNtGmBnSFmh2xdPJjfLBAGTOVJTpNWo=; b=U5GY9Q032zUANI
+	PsRtpXn5pSkzL7Dbp3qkdOVtY84zqdbxxfAPcxxJCBuHDxdvPgJj0ZNukHsizMjdB0WgceNfg9Ukp
+	NveVKJHfb09c51NIT3R/RHeSNBkX0mqI6L+0aYaTX8FeVIyH+Y/JAQa2LjQz7luCG8KxG47JdZ0Q1
+	xXr03oe4GZbhGmgqntIhpePaQFKMaid90zEZWI4iECT04KwuydfnfaNj4E5GZm05n/bFLowDi/VdY
+	mRfHb8jSDb4niAP2oHIVTe273uhb9EZYVmUS43EsHH9eKDFIm5qRfyQOw2aV7B/kBoe81V5S0+JGM
+	ryK0a4dNPGoV3wM01ysg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nr5XR-00G6XO-PU; Tue, 17 May 2022 22:19:33 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nr5Y7-00G6eQ-9n; Tue, 17 May 2022 22:20:15 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nr5XO-00G6Wt-Um
- for linux-rockchip@lists.infradead.org; Tue, 17 May 2022 22:19:32 +0000
+ id 1nr5Y5-00G6cs-4M
+ for linux-rockchip@lists.infradead.org; Tue, 17 May 2022 22:20:14 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 85575B81D0F;
- Tue, 17 May 2022 22:19:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E5B7C34118;
- Tue, 17 May 2022 22:19:28 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id A07E061182;
+ Tue, 17 May 2022 22:20:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07254C385B8;
+ Tue, 17 May 2022 22:20:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652825968;
- bh=mFLGnAFNfhDLPFt9oeV7FYWUbLbyyvFH3zlUGOjfHTA=;
+ s=k20201202; t=1652826010;
+ bh=Hm6hGfPLWJYm61EHZ6aIWw45gmrr1esWofkKxNx8RPc=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=LsAYhuWnAE492gwWLqYiH8Jhn3K1W+EzQ0PIk58eD2KsBTnliRDQrDrMH2dmOL4pN
- TFMxVxYeqJEIH+WA2/8zmNALR1MjO6P88l2wYbXUUs91CfFcGrsk5G+C3zBAJmYWh9
- nvgbH7mqzMTE9mDagb6vRQxPtLMhPYP8HYFGWQobSfzWR7h7SnuZhy9GGIKMXV73CG
- IykPUG8/KrjErokgSpLZkbmZ3Eb19IZFeTr6wvXz8zdsvA1ejNWUn1DBrXqifxlVVv
- MA01OQDj/JBpZ7sJ4h4IfuVFPpnzqf1di6F06t9sH183naDmnLlBI9ayoADPtw8L7p
- 40vUIXP9Er6lg==
+ b=FmNLSV4DRYIpWd5uUfa90jMjHCEGZzyUWKVLpipaIP1mABdKdhWpZZjx4G8lN/Ac8
+ /rotbcRyorSK7GDloyY6OpygPJyKNG6D85cLuDrUKUdpIV6ghwLDXOqZDrNHq3f0rN
+ gqrhjXzTRE6aLYGT4aKMF/wMFwHuLz8O22+Y3t2l+2NzC5rjO+a/QK4xlfxaxh9/RK
+ yyGFAqfseAmttxb3iPqC5WBYtexiWZ9GG7js6uph7vhdr/lVZUAOGuhsBFufyp6BTu
+ CBN2ZX/odYfB23khL9Kt24H5jbkxvEJAFusx5wMYWrzKbXsbefJ4fUN64elugd4zYw
+ JCk0fBaHcek7A==
 MIME-Version: 1.0
-In-Reply-To: <8148508.MhkbZ0Pkbq@phil>
-References: <8148508.MhkbZ0Pkbq@phil>
-Subject: Re: [GIT PULL] Rockchip clock changes for 5.19
+In-Reply-To: <5781991.QJadu78ljV@phil>
+References: <5781991.QJadu78ljV@phil>
+Subject: Re: [GIT PULL] Rockchip clock changes for 5.19 #2
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
-Date: Tue, 17 May 2022 15:19:26 -0700
+Date: Tue, 17 May 2022 15:20:08 -0700
 User-Agent: alot/0.10
-Message-Id: <20220517221928.2E5B7C34118@smtp.kernel.org>
+Message-Id: <20220517222010.07254C385B8@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_151931_176807_3EC3321F 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220517_152013_304918_6930BEE7 
+X-CRM114-Status: GOOD (  16.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,32 +72,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Heiko Stuebner (2022-05-17 12:25:19)
+Quoting Heiko Stuebner (2022-05-17 12:31:15)
 > Hi Mike, Stephen,
 > 
-> please find below some Rockchip clock changes for 5.19.
+> please find below a pull-request converting a number of Rockchip
+> clock controllers to yaml, which shound go on top of the previous
+> pull request.
 > 
-> I've split out the conversion from txt to yaml into a separate tag
-> which'll follow shortly.
+> In the discussion Stephen had comments about the optional clocks, that
+> have a circular dependency (xin24m -> cru -> i2c -> rtc -> xin32k -> cru) .
+> After everyone put in their argument, the discussion itself just stopped.
 > 
-> Please pull, thanks
+> I've picked up the conversion patches anyway, as this is the status-quo
+> in terms of modelling clocks on Rockchip, so the yaml conversion doesn't
+> change anything in either direction and just transforms what is in the
+> kernel right now into the yaml format which will improve devicetree checks
+> a lot and also reduce the number of warnings emitted by the checker.
+> 
+> So hopefully please pull :-)
+> Thanks
 > Heiko
 > 
-> The following changes since commit 3123109284176b1532874591f7c81f3837bbdc17:
 > 
->   Linux 5.18-rc1 (2022-04-03 14:08:21 -0700)
-> 
-> are available in the Git repository at:
-> 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.19-rockchip-clk1
-> 
-> for you to fetch changes up to b21445db9818ccb9fa1c0ba81fd3705eb8d347e3:
+> The following changes since commit b21445db9818ccb9fa1c0ba81fd3705eb8d347e3:
 > 
 >   dt-binding: clock: Add missing rk3568 cru bindings (2022-05-14 12:40:41 +0200)
 > 
+> are available in the Git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.19-rockchip-clk2
+> 
+> for you to fetch changes up to 32a214cd8ccbc361319bcd00b0b1b05a6b53bc61:
+> 
+>   dt-bindings: clock: convert rockchip,rk3368-cru.txt to YAML (2022-05-17 21:05:43 +0200)
+> 
 > ----------------------------------------------------------------
 
-Applied to clk-next
+Thanks. Pulled into clk-next. I skipped the previous pull and just took
+this one and combined the messages.
 
 _______________________________________________
 Linux-rockchip mailing list
