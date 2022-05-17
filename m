@@ -4,42 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1987C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 May 2022 19:36:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FA8BC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 May 2022 22:19:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=iUZvC1b2CQfN7fOzpCcgn5tOYLzu//yV6UVNJxnnOoA=; b=Ez4YuX4EeiuBns
-	YjslEkVuDEfkLcLZ5V4y0frmwWZ53yizWGukA9Xh3Q7SqeN732xhS72PILBmY0jjkQDV0buyjGSO8
-	aC4wG6snC2K2DxzYO6IFPwHurzX7GG23L7fOst8D45u0dRVQ6u3xcR7NgiS1ezIFqnpArFW28Sguv
-	qpJD/EhJAmrQ7je2XfCpMd+nmnTWYEceTY7oQnPhQkTIh1i1bH0SoTE9JP7ju4ekXsmy2/3Bihg/v
-	n5ZysSm4GLXRpOUyei8AdoOnFTg7RLOFnZO/I6QPGgWy7XTM3GLUYfRMiUAOsuFNOKPGfcRGjMqMj
-	UwI770id0ei1laaHeWXQ==;
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/Z9DtK2HQIOcLW0PJt1R7NOBtSWtoIbSCKe6uN9SUno=; b=ucZMD9krLyh1vm
+	ORiq9WzqhrxNlTyS4H0XLmQyyNzhDUI3aJn8aYFDTQVzgogJZvUvr1tWRjRCHKzFCLfidZif1Lx6x
+	uXdADkaErqz3wMJprIKe7Ra5ZOidEKB2L8w+Q4HAeaxms8NFW4TjaRBs27XQ4gISjmURD5roQf/L2
+	G8BSjAxPvvPtVjT5ocilQ5V4IA6mwJvHEtVmnK3aO4zonUV5Xkp/uFGiR8QHC6qc3ZIrIcIh35YTG
+	lpYnbi5NdKytKwdPKjyB7w2j0EflmxDLcUn3yWfBrkBjcsEjokxRoKSsC964bAgIaR9vc/scby1Qy
+	DjDKW5LAa234wHewgqbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nr2zO-00FcpL-0r; Tue, 17 May 2022 19:36:14 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1nr5XR-00G6XO-PU; Tue, 17 May 2022 22:19:33 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nr2zL-00FcoC-RF; Tue, 17 May 2022 19:36:13 +0000
-Received: from wf0416.dip.tu-dresden.de ([141.76.181.160] helo=phil.localnet)
- by gloria.sntech.de with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <heiko@sntech.de>)
- id 1nr2zK-0004Ds-OZ; Tue, 17 May 2022 21:36:10 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts64 changes for 5.19 #2
-Date: Tue, 17 May 2022 21:36:09 +0200
-Message-ID: <4288609.taCxCBeP46@phil>
+ id 1nr5XO-00G6Wt-Um
+ for linux-rockchip@lists.infradead.org; Tue, 17 May 2022 22:19:32 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 85575B81D0F;
+ Tue, 17 May 2022 22:19:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E5B7C34118;
+ Tue, 17 May 2022 22:19:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1652825968;
+ bh=mFLGnAFNfhDLPFt9oeV7FYWUbLbyyvFH3zlUGOjfHTA=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=LsAYhuWnAE492gwWLqYiH8Jhn3K1W+EzQ0PIk58eD2KsBTnliRDQrDrMH2dmOL4pN
+ TFMxVxYeqJEIH+WA2/8zmNALR1MjO6P88l2wYbXUUs91CfFcGrsk5G+C3zBAJmYWh9
+ nvgbH7mqzMTE9mDagb6vRQxPtLMhPYP8HYFGWQobSfzWR7h7SnuZhy9GGIKMXV73CG
+ IykPUG8/KrjErokgSpLZkbmZ3Eb19IZFeTr6wvXz8zdsvA1ejNWUn1DBrXqifxlVVv
+ MA01OQDj/JBpZ7sJ4h4IfuVFPpnzqf1di6F06t9sH183naDmnLlBI9ayoADPtw8L7p
+ 40vUIXP9Er6lg==
 MIME-Version: 1.0
+In-Reply-To: <8148508.MhkbZ0Pkbq@phil>
+References: <8148508.MhkbZ0Pkbq@phil>
+Subject: Re: [GIT PULL] Rockchip clock changes for 5.19
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
+Date: Tue, 17 May 2022 15:19:26 -0700
+User-Agent: alot/0.10
+Message-Id: <20220517221928.2E5B7C34118@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_123611_926383_A18F3864 
-X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-CacheID: sfid-20220517_151931_176807_3EC3321F 
+X-CRM114-Status: UNSURE (   9.60  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -58,45 +73,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The following changes since commit bc405bb3eeee4b711830ab569e7f3811b92196ab:
+Quoting Heiko Stuebner (2022-05-17 12:25:19)
+> Hi Mike, Stephen,
+> 
+> please find below some Rockchip clock changes for 5.19.
+> 
+> I've split out the conversion from txt to yaml into a separate tag
+> which'll follow shortly.
+> 
+> Please pull, thanks
+> Heiko
+> 
+> The following changes since commit 3123109284176b1532874591f7c81f3837bbdc17:
+> 
+>   Linux 5.18-rc1 (2022-04-03 14:08:21 -0700)
+> 
+> are available in the Git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.19-rockchip-clk1
+> 
+> for you to fetch changes up to b21445db9818ccb9fa1c0ba81fd3705eb8d347e3:
+> 
+>   dt-binding: clock: Add missing rk3568 cru bindings (2022-05-14 12:40:41 +0200)
+> 
+> ----------------------------------------------------------------
 
-  arm64: dts: rockchip: enable otg/drd operation of usb_host0_xhci in rk356x (2022-05-11 06:09:55 +0200)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.19-rockchip-dts64-2
-
-for you to fetch changes up to 17c0c5b67353b26a46611cffffd80aadd7215cfa:
-
-  arm64: rockchip: add clocks property to cru node rk3368 (2022-05-17 21:08:49 +0200)
-
-----------------------------------------------------------------
-General PCIe2x1 support for rk3568 and some more improvements for the
-Pine64-Quartz-A (fan, bluetooth, sdr104 sdmmc, flash-controller, pcie)
-as well as some fixes to conform to clock dt-bindings.
-
-----------------------------------------------------------------
-Johan Jonker (2):
-      arm64: rockchip: add clocks property to cru node rk3308
-      arm64: rockchip: add clocks property to cru node rk3368
-
-Peter Geis (7):
-      arm64: dts: rockchip: add clocks to rk356x cru
-      arm64: dts: rockchip: rename Quartz64-A bluetooth gpios
-      arm64: dts: rockchip: add Quartz64-A fan pinctrl
-      arm64: dts: rockchip: enable sdr-104 for sdmmc on Quartz A
-      arm64: dts: rockchip: enable sfc controller on Quartz64 Model A
-      arm64: dts: rockchip: Add rk3568 PCIe2x1 controller
-      arm64: dts: rockchip: Enable PCIe controller on quartz64-a
-
- arch/arm64/boot/dts/rockchip/rk3308.dtsi           |  5 +-
- arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  2 +
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 63 +++++++++++++++++++++-
- arch/arm64/boot/dts/rockchip/rk356x.dtsi           | 52 ++++++++++++++++++
- 4 files changed, 118 insertions(+), 4 deletions(-)
-
-
-
+Applied to clk-next
 
 _______________________________________________
 Linux-rockchip mailing list
