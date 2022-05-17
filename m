@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94B04C433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 May 2022 09:24:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4290C433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 May 2022 12:27:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aeRiWkTXNvWJZYKhqccSZSCq1eZN3JNBmakyhvoFtGg=; b=uZW0k7JVqZueDgrY+OuVMhdGMS
-	Y21IRGmfsm75QJ4AlqzKGRElUHt1RfONMER7L8LasCQKKLQEViTEJNH31eQCbJuje7Z4hTulv5+t4
-	95nlA3FdRpPgv0yNEv7ENz/zbRhFG1ITZcR0duMMAPBq32lPmzihMi2jvSPiabwQuoSZiSrjF9ls9
-	9hrbIwFbUxOjt24F92qavFrlRQpRajUfM0dmYUAagwsOdGnRhqAUyrIip/9//NQLiWOBtDmRkzwSJ
-	2l6+DZPf6+6IlgqkTS9jgJllkw76jye/7FQYcKkN5Zh0hHfw3gMxuKD98QuJw51Hrk8DErIz7ZdHm
-	ZsWfrUwA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QKFuQ8H+sY2+kuMPiRITj5z0s044W2efusUcn9dn9+c=; b=3Co6cE0OeJxgmo
+	E5yVndKMJW84LWcTcQ0xyaoWlQ+eA+1xyYx4YJEULiajB/0kbNMF6WJ9NpzcgnAPgVz60NEmO9Ppe
+	DhxnOvhrMLTOtR2bURxsoEmCc0ZnSc4/BGflh/WaPIWXLZ5cexZ2Hactxd/4oPY1D7JDmpmMoQhaL
+	M3WjA3+pXjVuZp6J3KQbM0TIPfvc/xAvJ6C2LlwrF3AkYd3M0rxeoKBEQfT9L4nRiczthOuL50nQa
+	SNn/wTvG/61L2IL4L8smvX7qMUvJ6Ho2ZBijffCCi6xRQzRa9rpMPCbzLGKBmG4YhakCQWbzerPfp
+	fcp7Op5xynNCrQ/Hjn1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nqtRd-00Cjew-QE; Tue, 17 May 2022 09:24:45 +0000
+	id 1nqwHz-00DXFD-5G; Tue, 17 May 2022 12:26:59 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nqtRI-00CjSt-SN; Tue, 17 May 2022 09:24:27 +0000
+ id 1nqwHm-00DX9V-Fr; Tue, 17 May 2022 12:26:48 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: tomeu) with ESMTPSA id D683C1F443C4
+ (Authenticated sender: benjamin.gaignard)
+ with ESMTPSA id 6D4F31F444BC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652779461;
- bh=vXvhBh10bXYYGcRPQrN9qRcZXhsFWq3x8P1iZ8zFEw8=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=DRHQLqC9N0SS3zxQ3c6DuZvUS1zdKcJy9L41+9K0lmLyNNDy/HvuxmOsXKN+UTc5i
- 2TmE41DZ0vafC1k64oSK9IyvmD1CS5hPpSs8jMN0g3ugRaS+glrDThMOaY8ns6b0sO
- qnLuwfW/cRjrLjS8NcpBnyThf8TeusoWU41Q18+NMxyPEv8BZirozSMMfiY4jgSSJj
- ndpsl7WDkDSvNeDlO5CY1zghhqT0xdPzR4ygwkgQJ8AwBsFPGThXFZqa5MU8N9si1S
- xqmo82TEZR2OnH7gSncxw14fLEut5cAUSVOqzTcaADvgVh92F9fIkk8TJ7vlHd1/E/
- /95AwXW4Sm0WA==
-Subject: Re: [RFC v4] drm: Add initial ci/ subdirectory
-To: Neil Armstrong <narmstrong@baylibre.com>, David Airlie
- <airlied@linux.ie>, Jonathan Corbet <corbet@lwn.net>,
- Carlo Caione <carlo@caione.org>, Kevin Hilman <khilman@baylibre.com>,
- Heiko Stuebner <heiko@sntech.de>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-References: <20220511061533.56881-1-tomeu.vizoso@collabora.com>
- <20220517081656.47625-1-tomeu.vizoso@collabora.com>
- <aac61a66-e9d8-f54b-6f35-da8744a943ba@baylibre.com>
-From: Tomeu Vizoso <tomeu.vizoso@collabora.com>
-Message-ID: <fab8dad7-5603-c75a-7a50-298adc828d73@collabora.com>
-Date: Tue, 17 May 2022 11:24:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+ s=mail; t=1652790401;
+ bh=S4g35w9hWMkC25pzb11ycmJ+txkHNSkZ0KmmTSGtQf4=;
+ h=From:To:Cc:Subject:Date:From;
+ b=GNmNTKXyQOv8KjYhMAhYxNRYCc8Uuy+FSdy/3eFBIekFkrmcUSqOBZD7r5G64lHNP
+ Ox4YiXZQ9kAzWiYkdNsvVOGHhzMnlYzeudgCBrgnPNkJUG0hgXwo9P7+OgelcAmPub
+ XQOlbfXk+Cr1aIqQNk37hURVOmQ4yKjAk7TWSrOKSbhBjn2ibr8sUv1aUL0WnHMvAc
+ tpvQRH6f/C5ty4bfU4Cd5rPYs5lpAa7PskDF/NvFe829sjXXxZj3D3DUhwgN63Kp4J
+ NNd8Q//eGx1QMQ2gj3RhnXR5+syG/KxgHSD5rY8RDwphMlnXyLlG50fNZL8riUCRPO
+ 3o9HanqV8UAEA==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
+ gregkh@linuxfoundation.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, heiko@sntech.de, wens@csie.org,
+ jernej.skrabec@gmail.com, samuel@sholland.org
+Cc: kernel@pengutronix.de, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, kernel@collabora.com,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v2] media: hantro: Be more accurate on pixel formats
+ step_width constraints
+Date: Tue, 17 May 2022 14:26:29 +0200
+Message-Id: <20220517122629.522211-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-In-Reply-To: <aac61a66-e9d8-f54b-6f35-da8744a943ba@baylibre.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220517_022425_249768_B20BDACF 
-X-CRM114-Status: GOOD (  40.37  )
+X-CRM114-CacheID: sfid-20220517_052646_923749_EE357C93 
+X-CRM114-Status: GOOD (  22.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,269 +68,385 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gNS8xNy8yMiAxMToxOCBBTSwgTmVpbCBBcm1zdHJvbmcgd3JvdGU6Cj4gT24gMTcvMDUvMjAy
-MiAxMDoxNiwgVG9tZXUgVml6b3NvIHdyb3RlOgo+PiBBbmQgdXNlIGl0IHRvIHN0b3JlIGV4cGVj
-dGF0aW9ucyBhYm91dCB3aGF0IHRoZSBEUk0gZHJpdmVycyBhcmUKPj4gc3VwcG9zZWQgdG8gcGFz
-cyBpbiB0aGUgSUdUIHRlc3Qgc3VpdGUuCj4+Cj4+IEFsc28gaW5jbHVkZSBhIGNvbmZpZ3VyYXRp
-b24gZmlsZSB0aGF0IHBvaW50cyB0byB0aGUgb3V0LW9mLXRyZWUgQ0kKPj4gc2NyaXB0cy4KPj4K
-Pj4gQnkgc3RvcmluZyB0aGUgdGVzdCBleHBlY3RhdGlvbnMgYWxvbmcgdGhlIGNvZGUgd2UgY2Fu
-IG1ha2Ugc3VyZSBib3RoCj4+IHN0YXkgaW4gc3luYyB3aXRoIGVhY2ggb3RoZXIsIGFuZCBzbyB3
-ZSBjYW4ga25vdyB3aGVuIGEgY29kZSBjaGFuZ2UKPj4gYnJlYWtzIHRob3NlIGV4cGVjdGF0aW9u
-cy4KPj4KPj4gVGhpcyB3aWxsIGFsbG93IGFsbCBjb250cmlidXRvcnMgdG8gZHJtIHRvIHJldXNl
-IHRoZSBpbmZyYXN0cnVjdHVyZQo+PiBhbHJlYWR5IGluIGdpdGxhYi5mcmVlZGVza3RvcC5vcmcg
-dG8gdGVzdCB0aGUgZHJpdmVyIG9uIHNldmVyYWwKPj4gZ2VuZXJhdGlvbnMgb2YgdGhlIGhhcmR3
-YXJlLgo+Pgo+PiB2MjoKPj4gwqDCoCAtIEZpeCBuYW1lcyBvZiByZXN1bHQgZXhwZWN0YXRpb24g
-ZmlsZXMgdG8gbWF0Y2ggU29DCj4+IMKgwqAgLSBEb24ndCBleGVjdXRlIHRlc3RzIHRoYXQgYXJl
-IGdvaW5nIHRvIHNraXAgb24gYWxsIGJvYXJkcwo+Pgo+PiB2MzoKPj4gwqDCoCAtIFJlbW92ZSB0
-cmFja2luZyBvZiBkbWVzZyBvdXRwdXQgZHVyaW5nIHRlc3QgZXhlY3V0aW9uCj4+Cj4+IHY0Ogo+
-PiDCoMKgIC0gTW92ZSB1cCB0byBkcml2ZXJzL2dwdS9kcm0KPj4gwqDCoCAtIEFkZCBzdXBwb3J0
-IGZvciBhIGJ1bmNoIG9mIG90aGVyIGRyaXZlcnMKPj4gwqDCoCAtIEV4cGxhaW4gaG93IHRvIGlu
-Y29ycG9yYXRlIGZpeGVzIGZvciBDSSBmcm9tIGEKPj4gwqDCoMKgwqAgJHtUQVJHRVRfQlJBTkNI
-fS1leHRlcm5hbC1maXhlcyBicmFuY2gKPj4gwqDCoCAtIFJlbW92ZSB0ZXN0cyB0aGF0IHBhc3Mg
-ZnJvbSBleHBlY3RlZCByZXN1bHRzIGZpbGUsIHRvIHJlZHVjZSB0aGUKPj4gwqDCoMKgwqAgc2l6
-ZSBvZiBpbi10cmVlIGZpbGVzCj4+IMKgwqAgLSBBZGQgZG9jcyBhYm91dCBob3cgdG8gZGVhbCB3
-aXRoIG91dGFnZXMgaW4gYXV0b21hdGVkIHRlc3RpbmcgbGFicwo+PiDCoMKgIC0gU3BlY2lmeSB0
-aGUgZXhhY3QgU0hBIG9mIHRoZSBDSSBzY3JpcHRzIHRvIGJlIHVzZWQKPj4KPj4gU2lnbmVkLW9m
-Zi1ieTogVG9tZXUgVml6b3NvIDx0b21ldS52aXpvc29AY29sbGFib3JhLmNvbT4KPj4gLS0tCj4+
-IMKgIERvY3VtZW50YXRpb24vZ3B1L2F1dG9tYXRlZF90ZXN0aW5nLnJzdMKgwqDCoMKgwqDCoCB8
-wqAgODQgKysrKysrKwo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kvYW1kZ3B1LnRlc3RsaXN0wqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCB8IDEzMCArKysrKysrKysrKwo+PiDCoCBkcml2ZXJzL2dwdS9k
-cm0vY2kvYW1kZ3B1X3N0b25leV9yZXN1bHRzLnR4dMKgIHzCoCAxNyArKwo+PiDCoCBkcml2ZXJz
-L2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnltbMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCAx
-MyArKwo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kvaTkxNS50ZXN0bGlzdMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHwgMjE5ICsrKysrKysrKysrKysrKysrKwo+PiDCoCBkcml2ZXJzL2dwdS9k
-cm0vY2kvaTkxNV9hbWx5X3Jlc3VsdHMudHh0wqDCoMKgwqDCoCB8wqDCoCA5ICsKPj4gwqAgZHJp
-dmVycy9ncHUvZHJtL2NpL2k5MTVfYXBsX3Jlc3VsdHMudHh0wqDCoMKgwqDCoMKgIHzCoMKgIDkg
-Kwo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kvaTkxNV9jbWxfcmVzdWx0cy50eHTCoMKgwqDCoMKg
-wqAgfMKgIDEwICsKPj4gwqAgZHJpdmVycy9ncHUvZHJtL2NpL2k5MTVfZ2xrX3Jlc3VsdHMudHh0
-wqDCoMKgwqDCoMKgIHzCoCAxMyArKwo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kvaTkxNV9rYmxf
-cmVzdWx0cy50eHTCoMKgwqDCoMKgwqAgfMKgwqAgOSArCj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9j
-aS9pOTE1X3RnbF9yZXN1bHRzLnR4dMKgwqDCoMKgwqDCoCB8wqAgMTIgKwo+PiDCoCBkcml2ZXJz
-L2dwdS9kcm0vY2kvaTkxNV93aGxfcmVzdWx0cy50eHTCoMKgwqDCoMKgwqAgfMKgwqAgOSArCj4+
-IMKgIGRyaXZlcnMvZ3B1L2RybS9jaS9tZWRpYXRlay50ZXN0bGlzdMKgwqDCoMKgwqDCoMKgwqDC
-oCB8IDEwMiArKysrKysrKwo+PiDCoCAuLi4vZ3B1L2RybS9jaS9tZWRpYXRla19tdDgxNzNfcmVz
-dWx0cy50eHTCoMKgwqAgfMKgIDExICsKPj4gwqAgLi4uL2dwdS9kcm0vY2kvbWVkaWF0ZWtfbXQ4
-MTgzX3Jlc3VsdHMudHh0wqDCoMKgIHzCoCAxMSArCj4+IMKgIC4uLi9ncHUvZHJtL2NpL21lZGlh
-dGVrX210ODE5Ml9yZXN1bHRzLnR4dMKgwqDCoCB8wqAgMTEgKwo+PiDCoCBkcml2ZXJzL2dwdS9k
-cm0vY2kvbWVzb24udGVzdGxpc3TCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDcxICsrKysr
-Kwo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kvbWVzb25fZzEyYl9yZXN1bHRzLnR4dMKgwqDCoMKg
-IHzCoCAxMSArCj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9jaS9tc20udGVzdGxpc3TCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIHwgMTQ0ICsrKysrKysrKysrKwo+PiDCoCBkcml2ZXJzL2dwdS9k
-cm0vY2kvbXNtX2FwcTgwMTZfcmVzdWx0cy50eHTCoMKgwqAgfMKgIDc3ICsrKysrKwo+PiDCoCBk
-cml2ZXJzL2dwdS9kcm0vY2kvbXNtX2FwcTgwOTZfcmVzdWx0cy50eHTCoMKgwqAgfMKgIDc2ICsr
-KysrKwo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kvbXNtX3NjNzE4MF9yZXN1bHRzLnR4dMKgwqDC
-oMKgIHzCoCAxOCArKwo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kvbXNtX3NkbTg0NV9yZXN1bHRz
-LnR4dMKgwqDCoMKgIHzCoCAzMyArKysKPj4gwqAgZHJpdmVycy9ncHUvZHJtL2NpL3JvY2tjaGlw
-LnRlc3RsaXN0wqDCoMKgwqDCoMKgwqDCoMKgIHwgMTg4ICsrKysrKysrKysrKysrKwo+PiDCoCAu
-Li4vZ3B1L2RybS9jaS9yb2NrY2hpcF9yazMyODhfcmVzdWx0cy50eHTCoMKgwqAgfMKgIDExICsK
-Pj4gwqAgLi4uL2dwdS9kcm0vY2kvcm9ja2NoaXBfcmszMzk5X3Jlc3VsdHMudHh0wqDCoMKgIHzC
-oCAxNCArKwo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kvdmlydGlvX2dwdS50ZXN0bGlzdMKgwqDC
-oMKgwqDCoMKgIHzCoCA5MiArKysrKysrKwo+PiDCoCBkcml2ZXJzL2dwdS9kcm0vY2kvdmlydGlv
-X2dwdV9yZXN1bHRzLnR4dMKgwqDCoMKgIHzCoCAyOCArKysKPj4gwqAgMjggZmlsZXMgY2hhbmdl
-ZCwgMTQzMiBpbnNlcnRpb25zKCspCj4+IMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0
-aW9uL2dwdS9hdXRvbWF0ZWRfdGVzdGluZy5yc3QKPj4gwqAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
-aXZlcnMvZ3B1L2RybS9jaS9hbWRncHUudGVzdGxpc3QKPj4gwqAgY3JlYXRlIG1vZGUgMTAwNjQ0
-IGRyaXZlcnMvZ3B1L2RybS9jaS9hbWRncHVfc3RvbmV5X3Jlc3VsdHMudHh0Cj4+IMKgIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnltbAo+PiDCoCBjcmVh
-dGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL2k5MTUudGVzdGxpc3QKPj4gwqAgY3Jl
-YXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9jaS9pOTE1X2FtbHlfcmVzdWx0cy50eHQK
-Pj4gwqAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9jaS9pOTE1X2FwbF9yZXN1
-bHRzLnR4dAo+PiDCoCBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL2k5MTVf
-Y21sX3Jlc3VsdHMudHh0Cj4+IMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0v
-Y2kvaTkxNV9nbGtfcmVzdWx0cy50eHQKPj4gwqAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMv
-Z3B1L2RybS9jaS9pOTE1X2tibF9yZXN1bHRzLnR4dAo+PiDCoCBjcmVhdGUgbW9kZSAxMDA2NDQg
-ZHJpdmVycy9ncHUvZHJtL2NpL2k5MTVfdGdsX3Jlc3VsdHMudHh0Cj4+IMKgIGNyZWF0ZSBtb2Rl
-IDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kvaTkxNV93aGxfcmVzdWx0cy50eHQKPj4gwqAgY3Jl
-YXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9jaS9tZWRpYXRlay50ZXN0bGlzdAo+PiDC
-oCBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL21lZGlhdGVrX210ODE3M19y
-ZXN1bHRzLnR4dAo+PiDCoCBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL21l
-ZGlhdGVrX210ODE4M19yZXN1bHRzLnR4dAo+PiDCoCBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
-cy9ncHUvZHJtL2NpL21lZGlhdGVrX210ODE5Ml9yZXN1bHRzLnR4dAo+PiDCoCBjcmVhdGUgbW9k
-ZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL21lc29uLnRlc3RsaXN0Cj4+IMKgIGNyZWF0ZSBt
-b2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kvbWVzb25fZzEyYl9yZXN1bHRzLnR4dAo+PiDC
-oCBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL21zbS50ZXN0bGlzdAo+PiDC
-oCBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL21zbV9hcHE4MDE2X3Jlc3Vs
-dHMudHh0Cj4+IMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kvbXNtX2Fw
-cTgwOTZfcmVzdWx0cy50eHQKPj4gwqAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2Ry
-bS9jaS9tc21fc2M3MTgwX3Jlc3VsdHMudHh0Cj4+IMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2
-ZXJzL2dwdS9kcm0vY2kvbXNtX3NkbTg0NV9yZXN1bHRzLnR4dAo+PiDCoCBjcmVhdGUgbW9kZSAx
-MDA2NDQgZHJpdmVycy9ncHUvZHJtL2NpL3JvY2tjaGlwLnRlc3RsaXN0Cj4+IMKgIGNyZWF0ZSBt
-b2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kvcm9ja2NoaXBfcmszMjg4X3Jlc3VsdHMudHh0
-Cj4+IMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vY2kvcm9ja2NoaXBfcmsz
-Mzk5X3Jlc3VsdHMudHh0Cj4+IMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0v
-Y2kvdmlydGlvX2dwdS50ZXN0bGlzdAo+PiDCoCBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9n
-cHUvZHJtL2NpL3ZpcnRpb19ncHVfcmVzdWx0cy50eHQKPj4KPj4gZGlmZiAtLWdpdCBhL0RvY3Vt
-ZW50YXRpb24vZ3B1L2F1dG9tYXRlZF90ZXN0aW5nLnJzdCAKPj4gYi9Eb2N1bWVudGF0aW9uL2dw
-dS9hdXRvbWF0ZWRfdGVzdGluZy5yc3QKPj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4gaW5kZXgg
-MDAwMDAwMDAwMDAwLi42MTAwM2VjYzdiNmUKPj4gLS0tIC9kZXYvbnVsbAo+PiArKysgYi9Eb2N1
-bWVudGF0aW9uL2dwdS9hdXRvbWF0ZWRfdGVzdGluZy5yc3QKPj4gQEAgLTAsMCArMSw4NCBAQAo+
-PiArLi4gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjArCj4+ICsKPj4gKz09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09Cj4+ICtBdXRvbWF0ZWQgdGVzdGluZyBv
-ZiB0aGUgRFJNIHN1YnN5c3RlbQo+PiArPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT0KPj4gKwo+PiArCj4+ICtJbnRyb2R1Y3Rpb24KPj4gKz09PT09PT09PT09PQo+PiAr
-Cj4+ICtNYWtpbmcgc3VyZSB0aGF0IGNoYW5nZXMgdG8gdGhlIGNvcmUgb3IgZHJpdmVycyBkb24n
-dCBpbnRyb2R1Y2UgCj4+IHJlZ3Jlc3Npb25zIGNhbiBiZSB2ZXJ5IHRpbWUgY29uc3VtaW5nIHdo
-ZW4gbG90cyBvZiBkaWZmZXJlbnQgaGFyZHdhcmUgCj4+IGNvbmZpZ3VyYXRpb25zIG5lZWQgdG8g
-YmUgdGVzdGVkLiBNb3Jlb3ZlciwgaXQgaXNuJ3QgcHJhY3RpY2FsIGZvciAKPj4gZWFjaCBwZXJz
-b24gaW50ZXJlc3RlZCBpbiB0aGlzIHRlc3RpbmcgdG8gaGF2ZSB0byBhY3F1aXJlIGFuZCBtYWlu
-dGFpbiAKPj4gd2hhdCBjYW4gYmUgYSBjb25zaWRlcmFibGUgYW1vdW50IG9mIGhhcmR3YXJlLgo+
-PiArCj4+ICtBbHNvLCBpdCBpcyBkZXNpcmFibGUgZm9yIGRldmVsb3BlcnMgdG8gY2hlY2sgZm9y
-IHJlZ3Jlc3Npb25zIGluIAo+PiB0aGVpciBjb2RlIGJ5IHRoZW1zZWx2ZXMsIGluc3RlYWQgb2Yg
-cmVseWluZyBvbiB0aGUgbWFpbnRhaW5lcnMgCj4+IGZpbmRpbmcgdGhlbSBhbmQgdGhlbiByZXBv
-cnRpbmcgYmFjay4KPj4gKwo+PiArVGhlcmUgYXJlIGZhY2lsaXRpZXMgaW4gZ2l0bGFiLmZyZWVk
-ZXNrdG9wLm9yZyB0byBhdXRvbWF0aWNhbGx5IHRlc3QgCj4+IE1lc2EgdGhhdCBjYW4gYmUgdXNl
-ZCBhcyB3ZWxsIGZvciB0ZXN0aW5nIHRoZSBEUk0gc3Vic3lzdGVtLiBUaGlzIAo+PiBkb2N1bWVu
-dCBleHBsYWlucyBob3cgcGVvcGxlIGludGVyZXN0ZWQgaW4gdGVzdGluZyBpdCBjYW4gdXNlIHRo
-aXMgCj4+IHNoYXJlZCBpbmZyYXN0cnVjdHVyZSB0byBzYXZlIHF1aXRlIHNvbWUgdGltZSBhbmQg
-ZWZmb3J0Lgo+PiArCj4+ICsKPj4gK1JlbGV2YW50IGZpbGVzCj4+ICs9PT09PT09PT09PT09PQo+
-PiArCj4+ICtkcml2ZXJzL2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnltbAo+PiArLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0KPj4gKwo+PiArU3BlY2lmaWVzIHRoZSBzcGVjaWZpYyB2ZXJz
-aW9uIG9mIHRoZSBzY3JpcHRzIHRvIGJlIHVzZWQuIEdpdExhYiBDSSAKPj4gd2lsbCB1c2UgdGhl
-IHZhbHVlcyBkZWZpbmVkIGluIHRoaXMgZmlsZSB0byBmZXRjaCB0aGUgcmlnaHQgc2NyaXB0cy4K
-Pj4gKwo+PiArCj4+ICtkcml2ZXJzL2dwdS9kcm0vY2kvJHtEUklWRVJfTkFNRX0udGVzdGxpc3QK
-Pj4gKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+PiArCj4+ICtT
-cGVjaWZpZXMgdGhlIHRlc3RzIHRoYXQgdGhlIGN1cnJlbnQgY29kZSBpcyBleHBlY3RlZCB0byBi
-ZSBhYmxlIHRvIAo+PiByZWxpYWJseSBydW4gZm9yICR7RFJJVkVSX05BTUV9LiBUaGVzZSB0ZXN0
-cyBhcmUgZXhwZWN0ZWQgdG8gbm90IGhhbmcgCj4+IHRoZSBEVVQgKERldmljZSBVbmRlciBUZXN0
-aW5nKSB3aGVuIHJ1bm5pbmcgb24gdGhlIHJldmlzaW9uIHRoZXkgCj4+IGJlbG9uZyB0bywgYW5k
-IHRvIGdpdmUgY29uc2lzdGVudCByZXN1bHRzLgo+PiArCj4+ICsKPj4gK2RyaXZlcnMvZ3B1L2Ry
-bS9jaS8ke0RSSVZFUl9OQU1FfV8qX3Jlc3VsdHMudHh0Cj4+ICstLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4+ICsKPj4gK1NwZWNpZmllcyB0aGUgZXhwZWN0ZWQgcmVz
-dWx0cyBvZiBydW5uaW5nIHRoaXMgc3BlY2lmaWMga2VybmVsIAo+PiByZXZpc2lvbiBvbiBhIGdp
-dmVuIGhhcmR3YXJlIGNvbmZpZ3VyYXRpb24uCj4+ICsKPj4gKwo+PiArSG93IHRvIGVuYWJsZSBh
-dXRvbWF0ZWQgdGVzdGluZyBvbiB5b3VyIHRyZWUKPj4gKz09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09Cj4+ICsKPj4gKzEuIENyZWF0ZSBhIExpbnV4IHRyZWUgaW4g
-aHR0cHM6Ly9naXRsYWIuZnJlZWRlc2t0b3Aub3JnLyBpZiB5b3UgCj4+IGRvbid0IGhhdmUgb25l
-IHlldAo+PiArCj4+ICsyLiBJbiB5b3VyIGtlcm5lbCByZXBvJ3MgY29uZmlndXJhdGlvbiAoZWcu
-IAo+PiBodHRwczovL2dpdGxhYi5mcmVlZGVza3RvcC5vcmcvdG9tZXUvbGludXgvLS9zZXR0aW5n
-cy9jaV9jZCksIGNoYW5nZSAKPj4gdGhlIENJL0NEIGNvbmZpZ3VyYXRpb24gZmlsZSBmcm9tIC5n
-aXRsYWItY2kueW1sIHRvIAo+PiBkcml2ZXJzL2dwdS9kcm0vY2kvZ2l0bGFiLWNpLnltbC4KPj4g
-Kwo+PiArMy4gTmV4dCB0aW1lIHlvdSBwdXNoIHRvIHRoaXMgcmVwb3NpdG9yeSwgeW91IHdpbGwg
-c2VlIGEgQ0kgcGlwZWxpbmUgCj4+IGJlaW5nIGNyZWF0ZWQgKGVnLiAKPj4gaHR0cHM6Ly9naXRs
-YWIuZnJlZWRlc2t0b3Aub3JnL3RvbWV1L2xpbnV4Ly0vcGlwZWxpbmVzKQo+PiArCj4+ICs0LiBU
-aGUgdmFyaW91cyBqb2JzIHdpbGwgYmUgcnVuIGFuZCB3aGVuIHRoZSBwaXBlbGluZSBpcyBmaW5p
-c2hlZCwgCj4+IGFsbCBqb2JzIHNob3VsZCBiZSBncmVlbiB1bmxlc3MgYSByZWdyZXNzaW9uIGhh
-cyBiZWVuIGZvdW5kLgo+PiArCj4+ICsKPj4gK0hvdyB0byB1cGRhdGUgdGVzdCBleHBlY3RhdGlv
-bnMKPj4gKz09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KPj4gKwo+PiArSWYgeW91ciBj
-aGFuZ2VzIHRvIHRoZSBjb2RlIGZpeCBhbnkgdGVzdHMsIHlvdSB3aWxsIGhhdmUgdG8gdXBkYXRl
-IAo+PiBvbmUgb3IgbW9yZSBvZiB0aGUgZmlsZXMgaW4gCj4+IGRyaXZlcnMvZ3B1L2RybS9jaS8k
-e0RSSVZFUl9OQU1FfV8qX3Jlc3VsdHMudHh0LCBmb3IgZWFjaCBvZiB0aGUgdGVzdCAKPj4gcGxh
-dGZvcm1zIGFmZmVjdGVkIGJ5IHRoZSBjaGFuZ2UuCj4+ICsKPj4gK0lmIHlvdSBoYXZlIHJ1biBh
-IHBpcGVsaW5lIGFuZCBpdCBmYWlsZWQgYmVjYXVzZSBvZiBhIG1pc21hdGNoZWQgdGVzdCAKPj4g
-cmVzdWx0LCB5b3Ugd2lsbCBoYXZlIGJlZW4gb2ZmZXJlZCBhIHBhdGNoIGF0IHRoZSBlbmQgb2Yg
-dGhlIHJ1biB0aGF0IAo+PiB5b3UgY2FuIGFwcGx5IGFmdGVyIHJldmlld2luZyBpdC4KPj4gKwo+
-PiArCj4+ICtIb3cgdG8gZXhwYW5kIGNvdmVyYWdlCj4+ICs9PT09PT09PT09PT09PT09PT09PT09
-Cj4+ICsKPj4gK0lmIHlvdXIgY29kZSBjaGFuZ2VzIG1ha2VzIGl0IHBvc3NpYmxlIHRvIHJ1biBt
-b3JlIHRlc3RzIChieSBzb2x2aW5nIAo+PiByZWxpYWJpbGl0eSBpc3N1ZXMsIGZvciBleGFtcGxl
-KSwgbW9yZSB0ZXN0cyBjYW4gYmUgYWRkZWQgdG8gdGhpcyAKPj4gbGlzdCwgYW5kIHRoZW4gdGhl
-IGV4cGVjdGVkIHJlc3VsdHMgdXBkYXRlZCB3aXRoIHRoZSBwYXRjaCBmaWxlIHRoYXQgCj4+IHdp
-bGwgYmUgcHJpbnRlZCBhdCB0aGUgZW5kIG9mIGVhY2ggam9iLgo+PiArCj4+ICtJZiB0aGVyZSBp
-cyBhIG5lZWQgZm9yIHVwZGF0aW5nIHRoZSB2ZXJzaW9uIG9mIElHVCBiZWluZyB1c2VkIChtYXli
-ZSAKPj4geW91IGhhdmUgYWRkZWQgbW9yZSB0ZXN0cyB0byBpdCksIGZvbGxvdyB0aGUgaW5zdHJ1
-Y3Rpb25zIGF0IAo+PiBodHRwczovL2dpdGxhYi5mcmVlZGVza3RvcC5vcmcvZ2Z4LWNpL2RybS1j
-aS8tL3RyZWUvbWFpbiN1cHJldmluZy1pZ3QuCj4+ICsKPj4gKwo+PiArSG93IHRvIHRlc3QgeW91
-ciBjaGFuZ2VzIHRvIHRoZSBzY3JpcHRzCj4+ICs9PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09PT0KPj4gKwo+PiArRm9yIHRlc3RpbmcgY2hhbmdlcyB0byB0aGUgc2NyaXB0
-cyBpbiB0aGUgZHJtLWNpIHJlcG8sIGNoYW5nZSB0aGUgCj4+IERSTV9DSV9QUk9KRUNUX1BBVEgg
-dmFyaWFibGUgaW4gZHJpdmVycy9ncHUvZHJtL2NpL2dpdGxhYi1jaS55bWwgdG8gCj4+IG1hdGNo
-IHlvdXIgZm9yayBvZiB0aGUgcHJvamVjdCAoZWcuIHRvbWV1L2RybS1jaSkuIFRoaXMgZm9yayBu
-ZWVkcyB0byAKPj4gYmUgaW4gaHR0cHM6Ly9naXRsYWIuZnJlZWRlc2t0b3Aub3JnLy4KPj4gKwo+
-PiArCj4+ICtIb3cgdG8gaW5jb3Jwb3JhdGUgZXh0ZXJuYWwgZml4ZXMgaW4geW91ciB0ZXN0aW5n
-Cj4+ICs9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09Cj4+
-ICsKPj4gK09mdGVuLCByZWdyZXNzaW9ucyBpbiBvdGhlciB0cmVlcyB3aWxsIHByZXZlbnQgdGVz
-dGluZyBjaGFuZ2VzIGxvY2FsIAo+PiB0byB0aGUgdHJlZSB1bmRlciB0ZXN0LiBUaGVzZSBmaXhl
-cyB3aWxsIGJlIGF1dG9tYXRpY2FsbHkgbWVyZ2VkIGluIAo+PiBkdXJpbmcgdGhlIGJ1aWxkIGpv
-YnMgZnJvbSBhIGJyYW5jaCBpbiB0aGUgdGFyZ2V0IHRyZWUgdGhhdCBpcyBuYW1lZCAKPj4gYXMg
-JHtUQVJHRVRfQlJBTkNIfS1leHRlcm5hbC1maXhlcy4KPj4gKwo+PiArSWYgdGhlIHBpcGVsaW5l
-IGlzIG5vdCBpbiBhIG1lcmdlIHJlcXVlc3QgYW5kIGEgYnJhbmNoIHdpdGggdGhlIHNhbWUgCj4+
-IG5hbWUgZXhpc3RzIGluIHRoZSBsb2NhbCB0cmVlLCBjb21taXRzIGZyb20gdGhhdCBicmFuY2gg
-d2lsbCBiZSBtZXJnZWQgCj4+IGluIGFzIHdlbGwuCj4+ICsKPj4gKwo+PiArSG93IHRvIGRlYWwg
-d2l0aCBhdXRvbWF0ZWQgdGVzdGluZyBsYWJzIHRoYXQgbWF5IGJlIGRvd24KPj4gKz09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09Cj4+ICsKPj4g
-K0lmIGEgaGFyZHdhcmUgZmFybSBpcyBkb3duIGFuZCB0aHVzIGNhdXNpbmcgcGlwZWxpbmVzIHRv
-IGZhaWwgdGhhdCAKPj4gd291bGQgb3RoZXJ3aXNlIHBhc3MsIG9uZSBjYW4gZGlzYWJsZSBhbGwg
-am9icyB0aGF0IHdvdWxkIGJlIHN1Ym1pdHRlZCAKPj4gdG8gdGhhdCBmYXJtIGJ5IGVkaXRpbmcg
-dGhlIGZpbGUgYXQgCj4+IGh0dHBzOi8vZ2l0bGFiLmZyZWVkZXNrdG9wLm9yZy9nZngtY2kvbGFi
-LXN0YXR1cy8tL2Jsb2IvbWFpbi9sYWItc3RhdHVzLnltbC4gCj4+Cj4gCj4gCj4gWy4uXQo+IAo+
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL21lc29uLnRlc3RsaXN0IAo+PiBiL2Ry
-aXZlcnMvZ3B1L2RybS9jaS9tZXNvbi50ZXN0bGlzdAo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+
-PiBpbmRleCAwMDAwMDAwMDAwMDAuLjIzNzQ0YjNhMmZiMAo+PiAtLS0gL2Rldi9udWxsCj4+ICsr
-KyBiL2RyaXZlcnMvZ3B1L2RybS9jaS9tZXNvbi50ZXN0bGlzdAo+PiBAQCAtMCwwICsxLDcxIEBA
-Cj4+ICsjIEtlZXAgYWxwaGFiZXRpY2FsbHkgc29ydGVkIGJ5IGRlZmF1bHQKPj4gKwo+PiAraWd0
-QGNvcmVfYXV0aEBnZXRjbGllbnQtc2ltcGxlCj4+ICtpZ3RAY29yZV9hdXRoQGdldGNsaWVudC1t
-YXN0ZXItZHJvcAo+PiAraWd0QGNvcmVfYXV0aEBiYXNpYy1hdXRoCj4+ICtpZ3RAY29yZV9hdXRo
-QG1hbnktbWFnaWNzCj4+ICtpZ3RAY29yZV9nZXRjbGllbnQKPj4gK2lndEBjb3JlX2dldHN0YXRz
-Cj4+ICtpZ3RAY29yZV9nZXR2ZXJzaW9uCj4+ICtpZ3RAY29yZV9zZXRtYXN0ZXJfdnNfYXV0aAo+
-PiAraWd0QGRybV9yZWFkQGludmFsaWQtYnVmZmVyCj4+ICtpZ3RAa21zX2FkZGZiX2Jhc2ljQHVu
-dXNlZC1oYW5kbGUKPj4gK2lndEBrbXNfYWRkZmJfYmFzaWNAdW51c2VkLXBpdGNoZXMKPj4gK2ln
-dEBrbXNfYWRkZmJfYmFzaWNAdW51c2VkLW9mZnNldHMKPj4gK2lndEBrbXNfYWRkZmJfYmFzaWNA
-dW51c2VkLW1vZGlmaWVyCj4+ICtpZ3RAa21zX2FkZGZiX2Jhc2ljQGxlZ2FjeS1mb3JtYXQKPj4g
-K2lndEBrbXNfYWRkZmJfYmFzaWNAbm8taGFuZGxlCj4+ICtpZ3RAa21zX2FkZGZiX2Jhc2ljQGJh
-c2ljCj4+ICtpZ3RAa21zX2FkZGZiX2Jhc2ljQGJhZC1waXRjaC0wCj4+ICtpZ3RAa21zX2FkZGZi
-X2Jhc2ljQGJhZC1waXRjaC0zMgo+PiAraWd0QGttc19hZGRmYl9iYXNpY0BiYWQtcGl0Y2gtNjMK
-Pj4gK2lndEBrbXNfYWRkZmJfYmFzaWNAYmFkLXBpdGNoLTEyOAo+PiAraWd0QGttc19hZGRmYl9i
-YXNpY0BiYWQtcGl0Y2gtMjU2Cj4+ICtpZ3RAa21zX2FkZGZiX2Jhc2ljQGJhZC1waXRjaC0xMDI0
-Cj4+ICtpZ3RAa21zX2FkZGZiX2Jhc2ljQGJhZC1waXRjaC05OTkKPj4gK2lndEBrbXNfYWRkZmJf
-YmFzaWNAYmFkLXBpdGNoLTY1NTM2Cj4+ICtpZ3RAa21zX2FkZGZiX2Jhc2ljQHNpemUtbWF4Cj4+
-ICtpZ3RAa21zX2FkZGZiX2Jhc2ljQHRvby13aWRlCj4+ICtpZ3RAa21zX2FkZGZiX2Jhc2ljQHRv
-by1oaWdoCj4+ICtpZ3RAa21zX2FkZGZiX2Jhc2ljQGJvLXRvby1zbWFsbAo+PiAraWd0QGttc19h
-ZGRmYl9iYXNpY0BzbWFsbC1ibwo+PiAraWd0QGttc19hZGRmYl9iYXNpY0BhZGRmYjI1LW1vZGlm
-aWVyLW5vLWZsYWcKPj4gK2lndEBrbXNfYWRkZmJfYmFzaWNAYWRkZmIyNS1iYWQtbW9kaWZpZXIK
-Pj4gK2lndEBrbXNfYWRkZmJfYmFzaWNAaW52YWxpZC1nZXQtcHJvcC1hbnkKPj4gK2lndEBrbXNf
-YWRkZmJfYmFzaWNAaW52YWxpZC1nZXQtcHJvcAo+PiAraWd0QGttc19hZGRmYl9iYXNpY0BpbnZh
-bGlkLXNldC1wcm9wLWFueQo+PiAraWd0QGttc19hZGRmYl9iYXNpY0BpbnZhbGlkLXNldC1wcm9w
-Cj4+ICtpZ3RAa21zX2FkZGZiX2Jhc2ljQG1hc3Rlci1ybWZiCj4+ICtpZ3RAa21zX2F0b21pY19p
-bnRlcnJ1cHRpYmxlQGxlZ2FjeS1zZXRtb2RlQHBpcGUtYS1lZHAtMQo+PiAraWd0QGttc19hdG9t
-aWNfaW50ZXJydXB0aWJsZUBhdG9taWMtc2V0bW9kZUBwaXBlLWEtZWRwLTEKPj4gK2lndEBrbXNf
-YXRvbWljX2ludGVycnVwdGlibGVAbGVnYWN5LWRwbXNAcGlwZS1hLWVkcC0xCj4+ICtpZ3RAa21z
-X2F0b21pY19pbnRlcnJ1cHRpYmxlQGxlZ2FjeS1wYWdlZmxpcEBwaXBlLWEtZWRwLTEKPj4gK2ln
-dEBrbXNfYXRvbWljX2ludGVycnVwdGlibGVAbGVnYWN5LWN1cnNvckBwaXBlLWEtZWRwLTEKPj4g
-K2lndEBrbXNfYXRvbWljX2ludGVycnVwdGlibGVAdW5pdmVyc2FsLXNldHBsYW5lLXByaW1hcnlA
-cGlwZS1hLWVkcC0xCj4+ICtpZ3RAa21zX2F0b21pY19pbnRlcnJ1cHRpYmxlQHVuaXZlcnNhbC1z
-ZXRwbGFuZS1jdXJzb3JAcGlwZS1hLWVkcC0xCj4+ICtpZ3RAa21zX2NvbnRlbnRfcHJvdGVjdGlv
-bkBMSUMKPj4gK2lndEBrbXNfZ2V0ZmJAZ2V0ZmItaGFuZGxlLXplcm8KPj4gK2lndEBrbXNfZ2V0
-ZmJAZ2V0ZmItaGFuZGxlLXZhbGlkCj4+ICtpZ3RAa21zX2dldGZiQGdldGZiLWhhbmRsZS1jbG9z
-ZWQKPj4gK2lndEBrbXNfZ2V0ZmJAZ2V0ZmItaGFuZGxlLW5vdC1mYgo+PiAraWd0QGttc19nZXRm
-YkBnZXRmYi1hZGRmYi1kaWZmZXJlbnQtaGFuZGxlcwo+PiAraWd0QGttc19nZXRmYkBnZXRmYi1y
-ZXBlYXRlZC1kaWZmZXJlbnQtaGFuZGxlcwo+PiAraWd0QGttc19nZXRmYkBnZXRmYjItaGFuZGxl
-LXplcm8KPj4gK2lndEBrbXNfZ2V0ZmJAZ2V0ZmIyLWhhbmRsZS1jbG9zZWQKPj4gK2lndEBrbXNf
-Z2V0ZmJAZ2V0ZmIyLWhhbmRsZS1ub3QtZmIKPj4gK2lndEBrbXNfZ2V0ZmJAZ2V0ZmIyLWludG8t
-YWRkZmIyCj4+ICtpZ3RAa21zX2dldGZiQGdldGZiLWhhbmRsZS1wcm90ZWN0aW9uCj4+ICtpZ3RA
-a21zX2dldGZiQGdldGZiMi1oYW5kbGUtcHJvdGVjdGlvbgo+PiAraWd0QGttc19oZG1pX2luamVj
-dEBpbmplY3QtNGsKPj4gK2lndEBrbXNfcHJvcF9ibG9iQGJhc2ljCj4+ICtpZ3RAa21zX3Byb3Bf
-YmxvYkBibG9iLXByb3AtY29yZQo+PiAraWd0QGttc19wcm9wX2Jsb2JAYmxvYi1wcm9wLXZhbGlk
-YXRlCj4+ICtpZ3RAa21zX3Byb3BfYmxvYkBibG9iLXByb3AtbGlmZXRpbWUKPj4gK2lndEBrbXNf
-cHJvcF9ibG9iQGJsb2ItbXVsdGlwbGUKPj4gK2lndEBrbXNfcHJvcF9ibG9iQGludmFsaWQtZ2V0
-LXByb3AtYW55Cj4+ICtpZ3RAa21zX3Byb3BfYmxvYkBpbnZhbGlkLWdldC1wcm9wCj4+ICtpZ3RA
-a21zX3Byb3BfYmxvYkBpbnZhbGlkLXNldC1wcm9wLWFueQo+PiAraWd0QGttc19wcm9wX2Jsb2JA
-aW52YWxpZC1zZXQtcHJvcAo+PiAraWd0QGttc19zZXRtb2RlQGJhc2ljQHBpcGUtYS1lZHAtMQo+
-PiAraWd0QGttc19zZXRtb2RlQGJhc2ljQHBpcGUtYi1lZHAtMQo+PiAraWd0QGttc19zeXNmc19l
-ZGlkX3RpbWluZwo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2NpL21lc29uX2cxMmJf
-cmVzdWx0cy50eHQgCj4+IGIvZHJpdmVycy9ncHUvZHJtL2NpL21lc29uX2cxMmJfcmVzdWx0cy50
-eHQKPj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4gaW5kZXggMDAwMDAwMDAwMDAwLi42OTk3YTc1
-YWExZWYKPj4gLS0tIC9kZXYvbnVsbAo+PiArKysgYi9kcml2ZXJzL2dwdS9kcm0vY2kvbWVzb25f
-ZzEyYl9yZXN1bHRzLnR4dAo+PiBAQCAtMCwwICsxLDExIEBACj4+ICtpZ3RAZHJtX3JlYWRAaW52
-YWxpZC1idWZmZXIsZmFpbAo+PiAraWd0QGttc19hZGRmYl9iYXNpY0BhZGRmYjI1LWJhZC1tb2Rp
-ZmllcixmYWlsCj4+ICtpZ3RAa21zX2F0b21pY19pbnRlcnJ1cHRpYmxlQGxlZ2FjeS1zZXRtb2Rl
-LHNraXAKPj4gK2lndEBrbXNfYXRvbWljX2ludGVycnVwdGlibGVAYXRvbWljLXNldG1vZGUsc2tp
-cAo+PiAraWd0QGttc19hdG9taWNfaW50ZXJydXB0aWJsZUBsZWdhY3ktZHBtcyxza2lwCj4+ICtp
-Z3RAa21zX2F0b21pY19pbnRlcnJ1cHRpYmxlQGxlZ2FjeS1wYWdlZmxpcCxza2lwCj4+ICtpZ3RA
-a21zX2F0b21pY19pbnRlcnJ1cHRpYmxlQGxlZ2FjeS1jdXJzb3Isc2tpcAo+PiAraWd0QGttc19h
-dG9taWNfaW50ZXJydXB0aWJsZUB1bml2ZXJzYWwtc2V0cGxhbmUtcHJpbWFyeSxza2lwCj4+ICtp
-Z3RAa21zX2F0b21pY19pbnRlcnJ1cHRpYmxlQHVuaXZlcnNhbC1zZXRwbGFuZS1jdXJzb3Isc2tp
-cAo+PiAraWd0QGttc19jb250ZW50X3Byb3RlY3Rpb25AbGljLHNraXAKPj4gK2lndEBrbXNfc2V0
-bW9kZUBiYXNpYyxza2lwCj4gCj4gQ2FuJ3QgdGhvc2UgYmUgcmVtb3ZlZCBmcm9tIHRlc3RsaXN0
-IGluc3RlYWQgPwo+IEkgc3VwcG9zZSB0aG9zZSBzaG91bGQgbm90IHNraXAsIHJpZ2h0ID8KCllv
-dSBhcmUgcmlnaHQsIHRoZXNlIHNsaXBwZWQgaW4uIFRoZSBvbmx5IHNraXBzIGluIHRoZSByZXN1
-bHRzIHNob3VsZCBiZSAKZm9yIHRlc3RzIHRoYXQgZG8gcnVuIG9uIG90aGVyIGJvYXJkcyBmb3Ig
-dGhlIHNhbWUgZHJpdmVyLgoKPiBBbnl3YXksIHRoaXMgaXMgZ3JlYXQsIHBsZWFzZSB0YWtlIG15
-Cj4gUmV2aWV3ZWQtYnk6IE5laWwgQXJtc3Ryb25nIDxuYXJtc3Ryb25nQGJheWxpYnJlLmNvbT4K
-PiBmb3Igc3R1ZmYgcmVsYXRlZCB0byB0aGUgbWVzb24gZHJpdmVyLgoKVGhhbmtzLAoKVG9tZXUK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Hantro G2 decoder on IMX8MQ strides requirements aren't the same
+for NV12_4L4 and NV12 pixel formats. The first one use a 4 bytes padding
+while the last one needs 8 bytes.
+To be sure to provide the correct stride in all cases we need:
+- to relax the constraints on codec formats so set step_width to 4
+- use capture queue format and not the output queue format when applying
+  the pixel format constraints.
+- put the correct step_width constraints on each pixel format.
+
+Move HEVC SPS validation in hantro_hevc.c to be able to perform it
+when setting sps control and when starting to decode the bitstream.
+Add a new test in HEVC SPS validation function to check if resolution
+is still matching the hardware constraints.
+
+With this SAODBLK_A_MainConcept_4 and SAODBLK_B_MainConcept_4 conformance
+tests files are correctly decoded with both NV12 and NV12_4L4 pixel formats.
+These two files have a resolution of 1016x760.
+If step_width = 16 for the both pixel formats the selected capture
+resolution is 1024x768 which is wrong for NV12_4L4 (which expect 1016x760)
+on Hantro G2 on IMX8MQ (but correct for NV12).
+
+For other variants than Hantro G2 on IMX8M keep the same step_width to avoid
+regressions.
+
+Fluster HEVC test score is now 128/147 vs 126/147 with the both pixel
+formats as decoder output.
+Fluster VP9 test score stay at 147/303.
+
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+version 2:
+- Add a HEVC SPS validation function to be used when
+  setting the control and start decoding.
+  I hope that is what Nicolas expects in his remark on v1.
+
+ drivers/staging/media/hantro/hantro_drv.c     | 12 +++---
+ drivers/staging/media/hantro/hantro_hevc.c    | 28 +++++++++++++
+ drivers/staging/media/hantro/hantro_hw.h      |  2 +
+ drivers/staging/media/hantro/hantro_v4l2.c    |  2 +-
+ drivers/staging/media/hantro/imx8m_vpu_hw.c   | 40 +++++++++++++++++--
+ .../staging/media/hantro/rockchip_vpu_hw.c    | 32 +++++++++++++++
+ .../staging/media/hantro/sama5d4_vdec_hw.c    | 16 ++++++++
+ drivers/staging/media/hantro/sunxi_vpu_hw.c   | 16 ++++++++
+ 8 files changed, 137 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index 377dcc1d19de..5aac3a090480 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -253,6 +253,11 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+ 
+ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ {
++	struct hantro_ctx *ctx;
++
++	ctx = container_of(ctrl->handler,
++			   struct hantro_ctx, ctrl_handler);
++
+ 	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
+ 		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
+ 
+@@ -268,12 +273,7 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ 	} else if (ctrl->id == V4L2_CID_STATELESS_HEVC_SPS) {
+ 		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
+ 
+-		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
+-			/* Luma and chroma bit depth mismatch */
+-			return -EINVAL;
+-		if (sps->bit_depth_luma_minus8 != 0)
+-			/* Only 8-bit is supported */
+-			return -EINVAL;
++		return hantro_hevc_validate_sps(ctx, sps);
+ 	} else if (ctrl->id == V4L2_CID_STATELESS_VP9_FRAME) {
+ 		const struct v4l2_ctrl_vp9_frame *dec_params = ctrl->p_new.p_vp9_frame;
+ 
+diff --git a/drivers/staging/media/hantro/hantro_hevc.c b/drivers/staging/media/hantro/hantro_hevc.c
+index 7fdec50dc853..6abef810b285 100644
+--- a/drivers/staging/media/hantro/hantro_hevc.c
++++ b/drivers/staging/media/hantro/hantro_hevc.c
+@@ -154,6 +154,30 @@ static int tile_buffer_reallocate(struct hantro_ctx *ctx)
+ 	return -ENOMEM;
+ }
+ 
++int hantro_hevc_validate_sps(struct hantro_ctx *ctx, const struct v4l2_ctrl_hevc_sps *sps)
++{
++	if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
++		/* Luma and chroma bit depth mismatch */
++		return -EINVAL;
++	if (sps->bit_depth_luma_minus8 != 0)
++		/* Only 8-bit is supported */
++		return -EINVAL;
++
++	/* for tile pixel format check if the width and height match
++	 * hardware constraints */
++	if (ctx->vpu_dst_fmt->fourcc == V4L2_PIX_FMT_NV12_4L4) {
++		if (ctx->dst_fmt.width !=
++		    ALIGN(sps->pic_width_in_luma_samples, ctx->vpu_dst_fmt->frmsize.step_width))
++			return -EINVAL;
++
++		if (ctx->dst_fmt.height !=
++		    ALIGN(sps->pic_height_in_luma_samples, ctx->vpu_dst_fmt->frmsize.step_height))
++			return -EINVAL;
++	}
++
++	return 0;
++}
++
+ int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx)
+ {
+ 	struct hantro_hevc_dec_hw_ctx *hevc_ctx = &ctx->hevc_dec;
+@@ -177,6 +201,10 @@ int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx)
+ 	if (WARN_ON(!ctrls->sps))
+ 		return -EINVAL;
+ 
++	ret = hantro_hevc_validate_sps(ctx, ctrls->sps);
++	if (ret)
++		return ret;
++
+ 	ctrls->pps =
+ 		hantro_get_ctrl(ctx, V4L2_CID_STATELESS_HEVC_PPS);
+ 	if (WARN_ON(!ctrls->pps))
+diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
+index 994547fe41b9..0bba6378212d 100644
+--- a/drivers/staging/media/hantro/hantro_hw.h
++++ b/drivers/staging/media/hantro/hantro_hw.h
+@@ -341,6 +341,8 @@ int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx);
+ void hantro_hevc_ref_init(struct hantro_ctx *ctx);
+ dma_addr_t hantro_hevc_get_ref_buf(struct hantro_ctx *ctx, s32 poc);
+ int hantro_hevc_add_ref_buf(struct hantro_ctx *ctx, int poc, dma_addr_t addr);
++int hantro_hevc_validate_sps(struct hantro_ctx *ctx, const struct v4l2_ctrl_hevc_sps *sps);
++
+ 
+ static inline unsigned short hantro_vp9_num_sbs(unsigned short dimension)
+ {
+diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
+index 71a6279750bf..93d0dcf69f4a 100644
+--- a/drivers/staging/media/hantro/hantro_v4l2.c
++++ b/drivers/staging/media/hantro/hantro_v4l2.c
+@@ -260,7 +260,7 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+ 	} else if (ctx->is_encoder) {
+ 		vpu_fmt = ctx->vpu_dst_fmt;
+ 	} else {
+-		vpu_fmt = ctx->vpu_src_fmt;
++		vpu_fmt = fmt;
+ 		/*
+ 		 * Width/height on the CAPTURE end of a decoder are ignored and
+ 		 * replaced by the OUTPUT ones.
+diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+index 9802508bade2..b6b2bf65e56d 100644
+--- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
++++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
+@@ -83,6 +83,14 @@ static const struct hantro_fmt imx8m_vpu_postproc_fmts[] = {
+ 		.fourcc = V4L2_PIX_FMT_YUYV,
+ 		.codec_mode = HANTRO_MODE_NONE,
+ 		.postprocessed = true,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 3840,
++			.step_width = MB_DIM,
++			.min_height = 48,
++			.max_height = 2160,
++			.step_height = MB_DIM,
++		},
+ 	},
+ };
+ 
+@@ -90,6 +98,14 @@ static const struct hantro_fmt imx8m_vpu_dec_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 3840,
++			.step_width = MB_DIM,
++			.min_height = 48,
++			.max_height = 2160,
++			.step_height = MB_DIM,
++		},
+ 	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_MPEG2_SLICE,
+@@ -137,6 +153,14 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+ 		.codec_mode = HANTRO_MODE_NONE,
+ 		.postprocessed = true,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 3840,
++			.step_width = MB_DIM,
++			.min_height = 48,
++			.max_height = 2160,
++			.step_height = MB_DIM,
++		},
+ 	},
+ };
+ 
+@@ -144,6 +168,14 @@ static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12_4L4,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 3840,
++			.step_width = 4,
++			.min_height = 48,
++			.max_height = 2160,
++			.step_height = 4,
++		},
+ 	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_HEVC_SLICE,
+@@ -152,10 +184,10 @@ static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
+ 		.frmsize = {
+ 			.min_width = 48,
+ 			.max_width = 3840,
+-			.step_width = MB_DIM,
++			.step_width = 4,
+ 			.min_height = 48,
+ 			.max_height = 2160,
+-			.step_height = MB_DIM,
++			.step_height = 4,
+ 		},
+ 	},
+ 	{
+@@ -165,10 +197,10 @@ static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
+ 		.frmsize = {
+ 			.min_width = 48,
+ 			.max_width = 3840,
+-			.step_width = MB_DIM,
++			.step_width = 4,
+ 			.min_height = 48,
+ 			.max_height = 2160,
+-			.step_height = MB_DIM,
++			.step_height = 4,
+ 		},
+ 	},
+ };
+diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
+index fc96501f3bc8..efba7fcdf207 100644
+--- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
++++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
+@@ -63,6 +63,14 @@ static const struct hantro_fmt rockchip_vpu1_postproc_fmts[] = {
+ 		.fourcc = V4L2_PIX_FMT_YUYV,
+ 		.codec_mode = HANTRO_MODE_NONE,
+ 		.postprocessed = true,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 1920,
++			.step_width = MB_DIM,
++			.min_height = 48,
++			.max_height = 1088,
++			.step_height = MB_DIM,
++		},
+ 	},
+ };
+ 
+@@ -70,6 +78,14 @@ static const struct hantro_fmt rk3066_vpu_dec_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 1920,
++			.step_width = MB_DIM,
++			.min_height = 48,
++			.max_height = 1088,
++			.step_height = MB_DIM,
++		},
+ 	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
+@@ -116,6 +132,14 @@ static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 4096,
++			.step_width = MB_DIM,
++			.min_height = 48,
++			.max_height = 2304,
++			.step_height = MB_DIM,
++		},
+ 	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
+@@ -162,6 +186,14 @@ static const struct hantro_fmt rk3399_vpu_dec_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 1920,
++			.step_width = MB_DIM,
++			.min_height = 48,
++			.max_height = 1088,
++			.step_height = MB_DIM,
++		},
+ 	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
+diff --git a/drivers/staging/media/hantro/sama5d4_vdec_hw.c b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
+index b2fc1c5613e1..07ee804e706b 100644
+--- a/drivers/staging/media/hantro/sama5d4_vdec_hw.c
++++ b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
+@@ -16,6 +16,14 @@ static const struct hantro_fmt sama5d4_vdec_postproc_fmts[] = {
+ 		.fourcc = V4L2_PIX_FMT_YUYV,
+ 		.codec_mode = HANTRO_MODE_NONE,
+ 		.postprocessed = true,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 1280,
++			.step_width = MB_DIM,
++			.min_height = 48,
++			.max_height = 720,
++			.step_height = MB_DIM,
++		},
+ 	},
+ };
+ 
+@@ -23,6 +31,14 @@ static const struct hantro_fmt sama5d4_vdec_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 1280,
++			.step_width = MB_DIM,
++			.min_height = 48,
++			.max_height = 720,
++			.step_height = MB_DIM,
++		},
+ 	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_MPEG2_SLICE,
+diff --git a/drivers/staging/media/hantro/sunxi_vpu_hw.c b/drivers/staging/media/hantro/sunxi_vpu_hw.c
+index c0edd5856a0c..c2392c08febb 100644
+--- a/drivers/staging/media/hantro/sunxi_vpu_hw.c
++++ b/drivers/staging/media/hantro/sunxi_vpu_hw.c
+@@ -14,6 +14,14 @@ static const struct hantro_fmt sunxi_vpu_postproc_fmts[] = {
+ 		.fourcc = V4L2_PIX_FMT_NV12,
+ 		.codec_mode = HANTRO_MODE_NONE,
+ 		.postprocessed = true,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 3840,
++			.step_width = 32,
++			.min_height = 48,
++			.max_height = 2160,
++			.step_height = 32,
++		},
+ 	},
+ };
+ 
+@@ -21,6 +29,14 @@ static const struct hantro_fmt sunxi_vpu_dec_fmts[] = {
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_NV12_4L4,
+ 		.codec_mode = HANTRO_MODE_NONE,
++		.frmsize = {
++			.min_width = 48,
++			.max_width = 3840,
++			.step_width = 32,
++			.min_height = 48,
++			.max_height = 2160,
++			.step_height = 32,
++		},
+ 	},
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_VP9_FRAME,
+-- 
+2.32.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
