@@ -4,58 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C257C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 May 2022 13:21:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2949C4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 May 2022 15:56:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3YUr/yoYyBFGOYHatf9btdndszmI9Fb39XK7cxdw0j4=; b=ygnN+RjEhUGxAW
-	DW/adMQHmnkGVXYqSPNwZBhbU6J4+r8dD0Nod21tg5V7fmf8XLENjvL00ouf4mD5LUNyKWc2zu7rI
-	N3oFPUcTKVusGrI3prhYjJd4wYDKZCXa1nOxKcxML+Z/irh3LtZW11uHjIywdT9rH2Shfm5FYbqsU
-	n+KR+IenexauY+jJnN2YpI2o36YYUOIYaviTDYkajqO/1oiCvrUk4ogNhWkvCelFgRI/vJrJgla5+
-	F+jT9FdEk/5S1HoBYhGT4AlMOs05JFpUfrbn0hefALb3LqcaelEbzu0NuVD8jEcBZfqNOXZlia2lg
-	P4DCY5RSmzCeIVXEGoJA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rlzAn937hviekzHZnnIQs9LxAwiZnDvJB53Qctg+5VI=; b=OXRVcsOc83Fm7/
+	dP0bHdF67z6AW5Id++sbcpCjpoIBFY9kwWT9dqfOSMkhnpHfZFYlEdKyqbf05NuvyezgfZip8wBPg
+	m4o0lrYQlnhTJtytZcepkpKtfn9o5kf7s3RgQfKlvHR2kF3+DwGmj5qaZakl+EyGD+4VnfBhXbOS/
+	wqTVdmIWUyl+JjK5uWu3A5TU70SwS2FU3U5qfKW/rvBeg7PXRgpatc8JJG9UipgFKlMH5VRv3DpZV
+	xZs+9XRzjiHqhKrFMkdRrBTDPMMVzskdt/A3aq3QGzstpHPf6WVFii8IVYwG04d3TLNZ1VQ0Dls7W
+	UOwvTUuw7IOuicz89WGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrJcP-002H0Q-Ih; Wed, 18 May 2022 13:21:37 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nrM1n-002w0B-Df; Wed, 18 May 2022 15:55:59 +0000
+Received: from mail-ot1-f48.google.com ([209.85.210.48])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrJcA-002Gsa-7r; Wed, 18 May 2022 13:21:24 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id D52411F450A3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652880076;
- bh=QwUtZ0MlTuyD+kVFho3tPCQtHU2Givu7vatYONjked0=;
- h=From:To:Cc:Subject:Date:From;
- b=PTQ+51j+Sfhs+k6XBL27swuBTeZdnYk2vb6hvfwVBIjsO04Fk+wu+LwCabRDYcYo2
- G362puEVZI21RLHZWwF5UnF/bF/tLvqok86cDY2ernlFdVm2+7CcYAQBZyxr0CnBV0
- xUmFV75fVWju0y/kipSfLWAD/4S4gV3nHcR9YEyBRnfBmyvhZlWa8ZC4/qk+xGh38N
- cRJjEQgo3rmBjna2bSFY+BJl8vx63oeHFswQ8sjbrzmllBrwwy4D3cERuSsyIlNARR
- OgWHSGN8pqfKmdE+SSPwo16FdpMtZdzzLQo74Rx9iU6zVCHV4z7YxDwKe9B1BQio1t
- Qphsm5/psb2lQ==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
- gregkh@linuxfoundation.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com, heiko@sntech.de, wens@csie.org,
- jernej.skrabec@gmail.com, samuel@sholland.org
-Cc: kernel@pengutronix.de, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, kernel@collabora.com,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Subject: [PATCH v4] media: Add P010 video format
-Date: Wed, 18 May 2022 15:21:05 +0200
-Message-Id: <20220518132105.629797-1-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.32.0
+ id 1nrM1k-002vy6-Le; Wed, 18 May 2022 15:55:58 +0000
+Received: by mail-ot1-f48.google.com with SMTP id
+ m15-20020a9d608f000000b00606a788887aso1671099otj.0; 
+ Wed, 18 May 2022 08:55:54 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=pL9sXlkxO4wUxq+I5961tw5THWjp2m8gWvZxMl5uTTs=;
+ b=QrCCS7YspsbT/bkrhAUeq60VOfBSdfRUBsnxtBLc3FoCOomQdKsOKQR5DSYnBU9fU3
+ 5S6sFBeVwSmhgYkqrBfHLGZHGM6iuNSetGJMejl+OmDkgaBpbGs0UTQ2VqNlxiwBeTp2
+ jMKkSjxQV9wmp3KtZdEZoXN2EcGouq057eig0aZCwOO0v4dPJscNpb0T1j/Gz/Mf4B9t
+ CnVsi6QSyE6dUHC8pLCQtw3G4G9/LxDBrcvR3N5RLMMr/XEvNNF6cYpmbKfmtrHIKuzo
+ Z7v8+fVCyvnCnszGLU8zweK/7BSkmlsm0uvb4BfXy39erlclWn+wntBAy/szsGQ1bxSG
+ OBoA==
+X-Gm-Message-State: AOAM530l3tczO5RAGgS0Gz+aHPidZ/Fw1xyadsjuj26ONhVJNWcztQlM
+ 6Jia5hGasMDwl8aEB7z1Nlg7Gj4Nmw==
+X-Google-Smtp-Source: ABdhPJxiry19r1K5KnHA2+Vc2jieYBIM7bIX3w1IUZHtsbb6TFULxR9rOzLG/JZJSgpOalKPbr31YA==
+X-Received: by 2002:a05:6830:2387:b0:606:4470:133 with SMTP id
+ l7-20020a056830238700b0060644700133mr120520ots.133.1652889353575; 
+ Wed, 18 May 2022 08:55:53 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
+ [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
+ i131-20020acaea89000000b00325cda1ffbasm846556oih.57.2022.05.18.08.55.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 18 May 2022 08:55:52 -0700 (PDT)
+Received: (nullmailer pid 3393244 invoked by uid 1000);
+ Wed, 18 May 2022 15:55:51 -0000
+Date: Wed, 18 May 2022 10:55:51 -0500
+From: Rob Herring <robh@kernel.org>
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Frank Wunderlich <linux@fw-web.de>,
+ Michael Riesch <michael.riesch@wolfvision.net>, Vinod Koul <vkoul@kernel.org>,
+ Johan Jonker <jbx6244@gmail.com>, linux-rockchip@lists.infradead.org,
+ linux-pci@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+ Bjorn Helgaas <bhelgaas@google.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Peter Geis <pgwipeout@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+Subject: Re: Re: [RFC v3 1/5] dt-bindings: phy: rockchip: add PCIe v3 phy
+Message-ID: <20220518155551.GB3302100-robh@kernel.org>
+References: <20220514115946.8858-1-linux@fw-web.de>
+ <20220514115946.8858-2-linux@fw-web.de>
+ <1652570081.002742.3276245.nullmailer@robh.at.kernel.org>
+ <trinity-02ad648c-f6f8-4383-b389-a0578d5a02d2-1652615387162@3c-app-gmx-bap15>
+ <20220516173537.GA2942634-robh@kernel.org>
+ <9496CAFB-6CB6-4BDA-A539-3A6E1B562299@public-files.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <9496CAFB-6CB6-4BDA-A539-3A6E1B562299@public-files.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_062122_575448_C3ADE8D4 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20220518_085556_762162_DA0C1A96 
+X-CRM114-Status: GOOD (  22.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,142 +96,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-P010 is a YUV format with 16-bits per pixel with interleaved UV.
+On Mon, May 16, 2022 at 09:21:31PM +0200, Frank Wunderlich wrote:
+> Am 16. Mai 2022 19:35:37 MESZ schrieb Rob Herring <robh@kernel.org>:
+> >On Sun, May 15, 2022 at 01:49:47PM +0200, Frank Wunderlich wrote:
+> >> Hi
+> >> 
+> >> > Gesendet: Sonntag, 15. Mai 2022 um 01:14 Uhr
+> >> > Von: "Rob Herring" <robh@kernel.org>
+> >> 
+> >> > On Sat, 14 May 2022 13:59:42 +0200, Frank Wunderlich wrote:
+> 
+> >Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
+> >> > >
+> >> >
+> >> > My bot found errors running 'make DT_CHECKER_FLAGS=-m
+> >dt_binding_check'
+> >> > on your patch (DT_CHECKER_FLAGS is new in v5.13):
+> >> >
+> >> > yamllint warnings/errors:
+> >> >
+> >> > dtschema/dtc warnings/errors:
+> >> >
+> >/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml:
+> >properties:clock-names: 'oneOf' conditional failed, one must be fixed:
+> >> > 	[{'const': 'refclk_m'}, {'const': 'refclk_n'}, {'const': 'pclk'}]
+> >is too long
+> >> > 	[{'const': 'refclk_m'}, {'const': 'refclk_n'}, {'const': 'pclk'}]
+> >is too short
+> >> > 	False schema does not allow 3
+> >> > 	1 was expected
+> >> > 	3 is greater than the maximum of 2
+> >> > 	hint: "minItems" is only needed if less than the "items" list
+> >length
+> >> > 	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+> >> >
+> >/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml:
+> >ignoring, error in schema: properties: clock-names
+> >> >
+> >Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.example.dtb:0:0:
+> >/example-0/phy@fe8c0000: failed to match any schema with compatible:
+> >['rockchip,rk3568-pcie3-phy']
+> >> 
+> >> seems this is fixed when i remove the "minItems: 3" from clock names 
+> >> (which is already fixed length because of the list).
+> >
+> >Yes.
+> >
+> >> needed to change type of lane-map to this:
+> >> 
+> >> $ref: /schemas/types.yaml#/definitions/uint8-array
+> >
+> >Why? That's not a standard property though, so needs a 'rockchip' 
+> >prefix. Though maybe a common property would be appropriate here.
+> 
+> Originally it was a bool property named "rockchip,bifurcation" and we 
+> changed it (after comments) to be a more generic property "lane-map" 
+> that can be re-used on other vendors/controllers/phys.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
-version 4:
-- Fix 10-bits per components wording.
+Fair enough. The type needs to be defined in a common binding though. 
+phy/phy-provider.yaml in dtschema probably.
 
-version 3:
-- remove LE suffix
-- rebased on media_tree_master branch
+We already have clock-lanes and data-lanes for other serdes interfaces. 
+Maybe data-lanes works here?
 
- .../media/v4l/pixfmt-yuv-planar.rst           | 54 +++++++++++++++++++
- drivers/media/v4l2-core/v4l2-common.c         |  1 +
- drivers/media/v4l2-core/v4l2-ioctl.c          |  1 +
- include/uapi/linux/videodev2.h                |  1 +
- 4 files changed, 57 insertions(+)
+> Driver reads as u8 array and range is small enough for u8 even if 
+> used for larger controllers (e.g. PCIe x16).
 
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-index 8dff5906639b..a900ff66911a 100644
---- a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-@@ -109,6 +109,13 @@ All components are stored with the same number of bits per component.
-       - Cb, Cr
-       - No
-       - 16x16 tiles
-+    * - V4L2_PIX_FMT_P010
-+      - 'P010'
-+      - 10
-+      - 4:2:0
-+      - Cb, Cr
-+      - Yes
-+      - Linear
-     * - V4L2_PIX_FMT_NV16
-       - 'NV16'
-       - 8
-@@ -171,6 +178,7 @@ horizontally.
- .. _V4L2-PIX-FMT-NV21:
- .. _V4L2-PIX-FMT-NV12M:
- .. _V4L2-PIX-FMT-NV21M:
-+.. _V4L2-PIX-FMT-P010:
- 
- NV12, NV21, NV12M and NV21M
- ---------------------------
-@@ -519,6 +527,52 @@ number of lines as the luma plane.
-       - Cb\ :sub:`33`
-       - Cr\ :sub:`33`
- 
-+.. _V4L2_PIX_FMT_P010:
-+
-+P010
-+----
-+
-+Like NV12 with 10 bits per component, expanded to 16 bits.
-+Data in the 10 high bits, zeros in the 6 low bits, arranged in little endian order.
-+
-+.. flat-table:: Sample 4x4 P010 Image
-+    :header-rows:  0
-+    :stub-columns: 0
-+
-+    * - start + 0:
-+      - Y'\ :sub:`00`
-+      - Y'\ :sub:`01`
-+      - Y'\ :sub:`02`
-+      - Y'\ :sub:`03`
-+    * - start + 8:
-+      - Y'\ :sub:`10`
-+      - Y'\ :sub:`11`
-+      - Y'\ :sub:`12`
-+      - Y'\ :sub:`13`
-+    * - start + 16:
-+      - Y'\ :sub:`20`
-+      - Y'\ :sub:`21`
-+      - Y'\ :sub:`22`
-+      - Y'\ :sub:`23`
-+    * - start + 24:
-+      - Y'\ :sub:`30`
-+      - Y'\ :sub:`31`
-+      - Y'\ :sub:`32`
-+      - Y'\ :sub:`33`
-+    * - start + 32:
-+      - Cb\ :sub:`00`
-+      - Cr\ :sub:`00`
-+      - Cb\ :sub:`01`
-+      - Cr\ :sub:`01`
-+    * - start + 40:
-+      - Cb\ :sub:`10`
-+      - Cr\ :sub:`10`
-+      - Cb\ :sub:`11`
-+      - Cr\ :sub:`11`
-+
-+.. raw:: latex
-+
-+    \endgroup
- 
- Fully Planar YUV Formats
- ========================
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index df34b2a283bc..1e38ad8906a2 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -266,6 +266,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
- 		{ .format = V4L2_PIX_FMT_NV61,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
- 		{ .format = V4L2_PIX_FMT_NV24,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 1, .vdiv = 1 },
- 		{ .format = V4L2_PIX_FMT_NV42,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 1, .vdiv = 1 },
-+		{ .format = V4L2_PIX_FMT_P010,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 2, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
- 
- 		{ .format = V4L2_PIX_FMT_YUV410,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 4, .vdiv = 4 },
- 		{ .format = V4L2_PIX_FMT_YVU410,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 4, .vdiv = 4 },
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index e2636539c9db..536aaeb4df82 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1305,6 +1305,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 	case V4L2_PIX_FMT_NV61:		descr = "Y/CrCb 4:2:2"; break;
- 	case V4L2_PIX_FMT_NV24:		descr = "Y/CbCr 4:4:4"; break;
- 	case V4L2_PIX_FMT_NV42:		descr = "Y/CrCb 4:4:4"; break;
-+	case V4L2_PIX_FMT_P010:		descr = "10-bit Y/CrCb 4:2:0"; break;
- 	case V4L2_PIX_FMT_NV12_4L4:	descr = "Y/CbCr 4:2:0 (4x4 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12_16L16:	descr = "Y/CbCr 4:2:0 (16x16 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12_32L32:   descr = "Y/CbCr 4:2:0 (32x32 Linear)"; break;
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 6d465dc443b7..311f106bbdf5 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -601,6 +601,7 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_NV61    v4l2_fourcc('N', 'V', '6', '1') /* 16  Y/CrCb 4:2:2  */
- #define V4L2_PIX_FMT_NV24    v4l2_fourcc('N', 'V', '2', '4') /* 24  Y/CbCr 4:4:4  */
- #define V4L2_PIX_FMT_NV42    v4l2_fourcc('N', 'V', '4', '2') /* 24  Y/CrCb 4:4:4  */
-+#define V4L2_PIX_FMT_P010    v4l2_fourcc('P', '0', '1', '0') /* 16  Y/CbCr 4:2:0 16-bit per pixel */
- 
- /* two non contiguous planes - one Y, one Cr + Cb interleaved  */
- #define V4L2_PIX_FMT_NV12M   v4l2_fourcc('N', 'M', '1', '2') /* 12  Y/CbCr 4:2:0  */
--- 
-2.32.0
+Not arguing that it shouldn't be, just confused how the type was related 
+to warnings.
 
+> 
+> >> then it looks clean for it....
+> >> 
+> >> -m causes many errors unrelated to this schema-file even if i pass
+> >>
+> >DT_SCHEMA_FILES=Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
+> >
+> >The fix is fixing the remaining 40 or so '-m' errors.
+> 
+> So now clean for you(r bot), too? Did only get a bunch of other unrelated messages.
+
+No, the bot does a baseline build and extracts the diff in warnings. 
+Still too many warnings popping up frequently... :(
+
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
