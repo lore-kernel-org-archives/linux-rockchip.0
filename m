@@ -4,89 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3FBC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 May 2022 11:55:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C257C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 May 2022 13:21:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+z7bSTKSlfp1zvMkTLWn1ewfyr3CLBPos8gepPK4HQI=; b=2QLSIMfOIn+Kmc
-	pUkR35myTwz+IYSC1gxiwSE0cHlVOWBng2w8oe9tZfVySBLo7vx+MxhfmSnfJ51G3UAmGg/cUFWy2
-	vBjh2ETHRUU2qAVzVSO0vEPc6LFyoq0+qR5sHIqXwQkgbFtus82lXQxZ1mVdRW0PwDl7T1mOVOdTO
-	+kAqKuVA/NERQByk21DannU93itURo4E+TRa4ebApdsoRsxcwNwgExp4Ka6zBtxImbkQ+5EnPNRFT
-	BoXcQX9ejWVWLVtQ0BWMQ/bCirMaYloyXZMIpeazQ/xQEbur7iOGZU29xvBMbPlFZhE9Vl8dWvEG2
-	klroPZh0mVn5Jm0HbwgA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3YUr/yoYyBFGOYHatf9btdndszmI9Fb39XK7cxdw0j4=; b=ygnN+RjEhUGxAW
+	DW/adMQHmnkGVXYqSPNwZBhbU6J4+r8dD0Nod21tg5V7fmf8XLENjvL00ouf4mD5LUNyKWc2zu7rI
+	N3oFPUcTKVusGrI3prhYjJd4wYDKZCXa1nOxKcxML+Z/irh3LtZW11uHjIywdT9rH2Shfm5FYbqsU
+	n+KR+IenexauY+jJnN2YpI2o36YYUOIYaviTDYkajqO/1oiCvrUk4ogNhWkvCelFgRI/vJrJgla5+
+	F+jT9FdEk/5S1HoBYhGT4AlMOs05JFpUfrbn0hefALb3LqcaelEbzu0NuVD8jEcBZfqNOXZlia2lg
+	P4DCY5RSmzCeIVXEGoJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrIH6-001il4-Qo; Wed, 18 May 2022 11:55:32 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1nrJcP-002H0Q-Ih; Wed, 18 May 2022 13:21:37 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrIH3-001ij1-0c
- for linux-rockchip@lists.infradead.org; Wed, 18 May 2022 11:55:30 +0000
-Received: by mail-wm1-x329.google.com with SMTP id
- n6-20020a05600c3b8600b0039492b44ce7so912037wms.5
- for <linux-rockchip@lists.infradead.org>; Wed, 18 May 2022 04:55:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=kCCZttYe88nnTP/ci0agOImauJrzNziOVL7F9EsssVg=;
- b=sT81YHpDXhU45Qa9jKOrgFTm+661R7Y1nhg6pDh+t2Wr8aiR4aqMmCBduGV3L3fPm0
- 88jraQoLAs0E29e0eRBFkQxguvW29+jUhGJL/koQYDrTz5Ugyq9M7sH3ZlCNXtboAi8a
- qo71Gvc9NNp/sogT/vUJKGXZUHuVdIDZf0UQGhE81q2yb9MityIGnGLrhyB6c9dB3PFN
- GIpnMk+nZD3AHd/qOzumMpt2dZuOMGbRlPARzRBxjzlOWRV7WUdfO4ZBfi7J86h45TXV
- iEcSDYXMTfOl7ZLWyviT45Gvt6Tuxqf4dRMt03S5mtVAJxmsOLOa/MTbmSUft/pOWjMJ
- d+lg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=kCCZttYe88nnTP/ci0agOImauJrzNziOVL7F9EsssVg=;
- b=fuU766SFbUb4heVpSnt/goXYlmiKd7nAmndDEoK08/Kr9hvADm5RCGYC8jBVJ4TWcU
- 1h+xYLcMQbUehp1AmEtcQjkITXUBbGdpvAaXWRYmoay+8ozSldZSzyxNhr7dEAqP1Dax
- WMSphPRhWXX9ZRYSbDYXoaS/4SlepMbYMVZyTVSoiGPfSbgk+5YAzg6/htRQvGzB+MhJ
- vMpdgvZAlq+9lj3rWAPYeValw63d+M5mOUIgGjMXhW+wKrhUiETbl9xJz9/ZupN4hhDe
- hZYsKeN7e483qq4k8hS2UINKuxUjAwlkgeJKkPUx92o8p525J2/jSSa1knmpaasdpeFw
- PU0A==
-X-Gm-Message-State: AOAM533kUAdXlUaHE03ulFkrcCAgG7eyXELzcOjIOSrjW2OsOpnfS2Gx
- 2rX/HnQTPV8cGMNj5C6T2B78Ug==
-X-Google-Smtp-Source: ABdhPJy9D5teJUnV427nOduKPpgIBBeSHfMiOqPMa95j/tODu6xyxM4Ii2mxk1m/uDR/coamLeL2ww==
-X-Received: by 2002:a7b:c156:0:b0:395:b669:5c83 with SMTP id
- z22-20020a7bc156000000b00395b6695c83mr34907779wmi.141.1652874926783; 
- Wed, 18 May 2022 04:55:26 -0700 (PDT)
-Received: from google.com (cpc155339-bagu17-2-0-cust87.1-3.cable.virginm.net.
- [86.27.177.88]) by smtp.gmail.com with ESMTPSA id
- ay34-20020a05600c1e2200b003942a244f54sm5101071wmb.45.2022.05.18.04.55.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 18 May 2022 04:55:26 -0700 (PDT)
-Date: Wed, 18 May 2022 12:55:24 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Hugh Cole-Baker <sigmaris@gmail.com>
-Cc: u-boot@lists.denx.de, Caesar Wang <wxt@rock-chips.com>,
- Vasily Khoruzhick <anarsoul@gmail.com>,
- Kever Yang <kever.yang@rock-chips.com>,
- Hugh Cole-Baker <sigmaris@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- Brian Norris <briannorris@chromium.org>,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [U-Boot] [PATCH 2/2] rockchip: rk3399: rockpro64: enable force
- power on reset workaround
-Message-ID: <YoTerAfKU5S04nfk@google.com>
-References: <20191128061433.1952869-1-anarsoul@gmail.com>
- <20191128061433.1952869-2-anarsoul@gmail.com>
- <1ab40490-a232-b5fd-6180-17867aa6a053@rock-chips.com>
- <CA+E=qVeNWEJTfQ_30Uxv=qFixMR-rbYOW_HCtx83bqmfNWb9dg@mail.gmail.com>
- <fe3e93dc-16e5-eaf7-94a5-def1dde85c86@rock-chips.com>
- <CA+E=qVdMA_8wQcXzzf47Pi+dUigLBsOzOydhz+DZbvr8+9+PCg@mail.gmail.com>
- <6C83A835-37D3-4E48-BB08-024BB2703FB8@gmail.com>
+ id 1nrJcA-002Gsa-7r; Wed, 18 May 2022 13:21:24 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: benjamin.gaignard)
+ with ESMTPSA id D52411F450A3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1652880076;
+ bh=QwUtZ0MlTuyD+kVFho3tPCQtHU2Givu7vatYONjked0=;
+ h=From:To:Cc:Subject:Date:From;
+ b=PTQ+51j+Sfhs+k6XBL27swuBTeZdnYk2vb6hvfwVBIjsO04Fk+wu+LwCabRDYcYo2
+ G362puEVZI21RLHZWwF5UnF/bF/tLvqok86cDY2ernlFdVm2+7CcYAQBZyxr0CnBV0
+ xUmFV75fVWju0y/kipSfLWAD/4S4gV3nHcR9YEyBRnfBmyvhZlWa8ZC4/qk+xGh38N
+ cRJjEQgo3rmBjna2bSFY+BJl8vx63oeHFswQ8sjbrzmllBrwwy4D3cERuSsyIlNARR
+ OgWHSGN8pqfKmdE+SSPwo16FdpMtZdzzLQo74Rx9iU6zVCHV4z7YxDwKe9B1BQio1t
+ Qphsm5/psb2lQ==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
+ gregkh@linuxfoundation.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, heiko@sntech.de, wens@csie.org,
+ jernej.skrabec@gmail.com, samuel@sholland.org
+Cc: kernel@pengutronix.de, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, kernel@collabora.com,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Subject: [PATCH v4] media: Add P010 video format
+Date: Wed, 18 May 2022 15:21:05 +0200
+Message-Id: <20220518132105.629797-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <6C83A835-37D3-4E48-BB08-024BB2703FB8@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_045529_120788_CDC87D74 
-X-CRM114-Status: GOOD (  33.74  )
+X-CRM114-CacheID: sfid-20220518_062122_575448_C3ADE8D4 
+X-CRM114-Status: GOOD (  11.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,125 +68,149 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TG9vcGluZyBpbnQgYSBmZXcgcmVsZXZhbnQvYWN0aXZlIGtlcm5lbCBwZW9wbGUvbGlzdHMgZm9y
-IGZ1bGwgY292ZXJhZ2UuCgpPbiBTdW4sIDAxIERlYyAyMDE5LCBIdWdoIENvbGUtQmFrZXIgd3Jv
-dGU6Cj4gPiBPbiAyOSBOb3YgMjAxOSwgYXQgMDE6MDYsIFZhc2lseSBLaG9ydXpoaWNrIDxhbmFy
-c291bEBnbWFpbC5jb20+IHdyb3RlOgo+ID4gT24gVGh1LCBOb3YgMjgsIDIwMTkgYXQgNDo1OSBQ
-TSBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPiA+PiAKPiA+
-PiBIaSBWYXNpbHksCj4gPj4gCj4gPj4gT24gMjAxOS8xMS8yOCDkuIvljYgxMTo1MSwgVmFzaWx5
-IEtob3J1emhpY2sgd3JvdGU6Cj4gPj4+IE9uIFRodSwgTm92IDI4LCAyMDE5IGF0IDE6MjMgQU0g
-S2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4gPj4+PiBIaSBW
-YXNpbHksCj4gPj4+PiAKPiA+Pj4+ICAgICAgSSB0aGluayB0aGlzIHNob3VsZCBub3QgYmUgbmVl
-ZGVkLCBzZWUgY29tbWVudHMgYmVsb3cuCj4gPj4+IEhpIEtldmVyLAo+ID4+PiAKPiA+Pj4gSSd2
-ZSBzcGVudCAyIHdlZWtzIG9mIG15IGV2ZW5pbmdzIGRlYnVnZ2luZyB0aGlzIGlzc3VlIGJ1dAo+
-ID4+IAo+ID4+IEkgY2FuIHVuZGVyc3RhbmQgeW91IHdvcmsgcHJldHR5IGhhcmQgb24gbWFrZSBp
-dCB3b3JrLCBpdCdzIG5vdCBzbyBlYXN5Cj4gPj4gdG8gaWRlbnRpZnkgdGhlIHJvb3QgY2F1c2UK
-PiA+PiAKPiA+PiBzb21lIHRpbWVzLCB0aGFua3MgdmVyeSBtdWNoIGZvciB3b3JraW5nIG9uIHRo
-aXMuCj4gPj4gCj4gPj4+IHVuZm9ydHVuYXRlbHkgSSBkb24ndCBoYXZlIGEgcHJvcGVyIGZpeC4g
-VGhpcyBpcyB0aGUgb25seSBzb2x1dGlvbgo+ID4+PiB0aGF0IG1ha2VzIG15IHJvY2twcm82NCBy
-ZWJvb3QgcmVsaWFibHkgd2l0aCBtYWlubGluZSB1LWJvb3QgYW5kIEFURi4KPiA+Pj4gU2VlIG15
-IGNvbW1lbnRzIGJlbG93Lgo+IAo+IEkgYWxzbyBoYWQgYSBwcm9ibGVtIHdoZXJlIExpbnV4IHdv
-dWxkIGhhbmcgb3IgcGFuaWMgYWZ0ZXIgcmVib290aW5nLCB3aXRoCj4gbWFpbmxpbmUgdS1ib290
-IGFuZCBBVEYgb24gYSByb2NrcHJvNjQuIFRoaXMgcGF0Y2ggZG9lcyBmaXggdGhlIGlzc3VlIGZv
-ciBtZSwKPiBJIGhhdmUgdGVzdGVkIGl0IGJ5IHBlcmZvcm1pbmcgMTAgcmVib290cyBmcm9tIExp
-bnV4IGluIGEgcm93IGFuZCBJJ3ZlIHNlZW4KPiBubyBoYW5ncyBvciBwYW5pY3MuCj4gCj4gSSBu
-b3RpY2VkIHRoZSBBcm1iaWFuIHByb2plY3QgaGF2ZSByZWNlbnRseSBpbmNsdWRlZCBhIHBhdGNo
-IHRvIEFURiBbMV0gd2hpY2gKPiBzd2l0Y2hlcyBhbGwgcG93ZXIgZG9tYWlucyBvbiBiZWZvcmUg
-QVRGIHBlcmZvcm1zIGEgc29mdCByZXNldC4gSSBoYXZlIGFsc28KPiB0ZXN0ZWQgdXNpbmcgdS1i
-b290IG1haW5saW5lLCB3aXRob3V0IGFueSBwYXRjaGVzIHRvIHUtYm9vdCwgYnV0IGluY2x1ZGlu
-ZyBBVEYKPiBwYXRjaGVkIHdpdGggeW91ciByZXNldCBmaXggWzJdIGFuZCB0aGUgQXJtYmlhbiBw
-b3dlciBkb21haW5zIHBhdGNoIFsxXS4gVGhpcwo+IGFsc28gZml4ZXMgdGhlIHNhbWUgaGFuZ2lu
-ZyBvbiByZWJvb3QgaXNzdWUgZm9yIG1lIHdpdGhvdXQgbW9kaWZpY2F0aW9ucyB0bwo+IHUtYm9v
-dCwgSSd2ZSBhbHNvIHRlc3RlZCAxMCByZWJvb3RzIGluIGEgcm93IHdpdGggdGhpcyBBVEYgYW5k
-IHNlZW4gbm8gaGFuZ3MuCj4gCj4gU28gdGhpcyB1LWJvb3QgcGF0Y2ggbWF5IG5vdCBiZSBuZWVk
-ZWQgaWYgQVRGIGlzIHBhdGNoZWQgaW5zdGVhZCB0byBzd2l0Y2gKPiBwb3dlciBkb21haW5zIG9u
-IGJlZm9yZSBzb2Z0IHJlc2V0Lgo+IAo+IEZXSVcsIHdoZW4gSSB3YXMgYWJsZSB0byBzZWUgcGFu
-aWMgbWVzc2FnZXMgZnJvbSBMaW51eCB3aGVuIGl0IHBhbmlja2VkIG9uCj4gYm9vdCwgdGhlIGNh
-bGwgdHJhY2UgYWx3YXlzIHNlZW1lZCB0byBpbmNsdWRlIHJvY2tjaGlwX3BkX3Bvd2VyX29mZigp
-IFszXS4KPiAKPiBbMV0gaHR0cHM6Ly9naXRodWIuY29tL2FybWJpYW4vYnVpbGQvYmxvYi9tYXN0
-ZXIvcGF0Y2gvYXRmL2F0Zi1yazMzOTkvc3dpdGNoLXBvd2VyLWRvbWFpbnMtb24tYmVmb3JlLXJl
-c2V0LnBhdGNoCj4gWzJdIGh0dHBzOi8vcmV2aWV3LnRydXN0ZWRmaXJtd2FyZS5vcmcvYy9URi1B
-L3RydXN0ZWQtZmlybXdhcmUtYS8rLzI1MTIKPiBbM10gaHR0cHM6Ly9naXN0LmdpdGh1Yi5jb20v
-c2lnbWFyaXMvYzBlMTU1YzhjYjBhMzI1ZDg0ZjU0OTE4NWY5YTU2OGMKClRoaXMgbGFzdCBwYXN0
-ZSBsb29rcyByZW1hcmthYmx5IHNpbWlsYXIgdG8gYW4gaXNzdWUgY3VycmVudGx5IHNlZW4gb24K
-dGhlIFJhZHhhIFJPQ0sgUGkgNEIgKFJLMzM5OSkgZHVyaW5nIHBvd2VyLXVwIGFmdGVyIGEgc29m
-dCByZWJvb3QKKGBzdWRvIHJlYm9vdGApIGlzIGlzc3VlZC4gIFdlJ3JlIHByZXNlbnRseSBydW5u
-aW5nIHY1LjE1LjM1IFswXS4KCkl0J3Mgbm90IGNsZWFyIGhvdyB0aGlzIGlzc3VlIChwcmVzZW50
-IDMgeWVhcnMgYWdvKSB3YXMgZmluYWxseQpyZXNvbHZlZC4gIEZyb20gdGhlIHRocmVhZCwgaXQg
-bG9va3MgYXMgaWYgdGhlIGZpeCBtaWdodCBoYXZlIG1hZGUgaXRzCndheSBpbnRvIEFURiwgYnV0
-IEknbSA4Ny42JSBzdXJlIEFURiBpcyBub3QgcnVubmluZyBvbiB0aGlzIHBsYXRmb3JtCih5ZXQp
-LgoKTm90ZSB0aGF0IHRoZSB1LWJvb3Qgd2UncmUgdXNpbmcgaXMgYWxzbyBxdWl0ZSBvbGQ6Cgog
-IFUtQm9vdCAyMDE5LjEwLTA5MjQ4LWc4NTExYzc1YmI0IChKYW4gMDggMjAyMCAtIDE3OjEzOjAz
-IC0wODAwKQoKLi4uIHNvIHRoaXMgY291bGQgZWFzaWx5IGJlIHRoZSByb290IGNhdXNlLiAgVGhl
-IGN1cnJlbnQgcGxhbiBpcyB0bwp0cnkgdG8gdXBkYXRlIHRoaXMgQVNBUC4gIEhvd2V2ZXIgZWFy
-bHkgYXR0ZW1wdHMgYXJlIHlldCB0byByZXN1bHQgaW4KYSBzdWNjZXNzZnVsIGJvb3QuCgpJIHNl
-ZSB0aGF0IEJyaWFuIHJlY2VudGx5IGFkZGVkIGEgZmV3IHBhdGNoZXMgcmVsYXRlZCB0byBQRC9E
-VkZTLCBidXQKYWdhaW4sIHRoZXNlIGFwcGVhciB0byBiZSBBVEYgcmVsYXRlZC4KCldvdWxkIGFu
-eW9uZSBiZSBhYmxlIHRvIHNoZWQgc29tZSBsaWdodCBvbnRvIHRoaXMgZm9yIG1lIHBsZWFzZT8K
-CkFzIGFsd2F5cywgYW55IGhlbHAgd291bGQgYmUgZ3JhdGVmdWxseSByZWNlaXZlZC4KCktpbmQg
-cmVnYXJkcywKTGVlCgpbMF0KRnVsbCByZWJvb3QgbG9nIGNhbiBiZSBzZWVuIGF0OiBodHRwczov
-L3Bhc3RlYmluLnVidW50dS5jb20vcC9NalpQMlY2a1EzLwoKWyAgICAwLjY5OTczNl1bICAgIFQx
-XSBpbml0Y2FsbCBfX2luaXRzdHViX19rbW9kX2lvbW11X18zNjJfMTU1X2lvbW11X3N1YnN5c19p
-bml0NCsweDAvMHg4IHJldHVybmVkIDAgYWZ0ZXIgMCB1c2VjcwpbICAgIDAuNzAwNzM3XVsgICAg
-VDFdIGNhbGxpbmcgIF9faW5pdHN0dWJfX2ttb2Rfcm9ja2NoaXBfaW9tbXVfXzM0OF8xNDE1X3Jr
-X2lvbW11X2luaXQ0KzB4MC8weDggQCAxClsgICAgMC43MDIyMzhdWyAgICBDNV0gU0Vycm9yIElu
-dGVycnVwdCBvbiBDUFU1LCBjb2RlIDB4YmYwMDAwMDIgLS0gU0Vycm9yClsgICAgMC43MDIyNDhd
-WyAgICBDNV0gQ1BVOiA1IFBJRDogNDggQ29tbToga3dvcmtlci81OjEgTm90IHRhaW50ZWQgNS4x
-NS4zNS1hbmRyb2lkMTMtNS0wMDA5Mi1nNTI1ZDc3MzEwYTIwICMxClsgICAgMC43MDIyNjFdWyAg
-ICBDNV0gSGFyZHdhcmUgbmFtZTogUmFkeGEgUk9DSyBQaSA0QiAoRFQpClsgICAgMC43MDIyNjZd
-WyAgICBDNV0gV29ya3F1ZXVlOiBwbSBnZW5wZF9wb3dlcl9vZmZfd29ya19mbi5jZmlfanQKWyAg
-ICAwLjcwMjI4OV1bICAgIEM1XSBwc3RhdGU6IDgwNDAwMGM1IChOemN2IGRhSUYgK1BBTiAtVUFP
-IC1UQ08gLURJVCAtU1NCUyBCVFlQRT0tLSkKWyAgICAwLjcwMjMwMV1bICAgIEM1XSBwYyA6IHJl
-Z21hcF9tbWlvX3JlYWQzMmxlKzB4MTQvMHgyYwpbICAgIDAuNzAyMzE4XVsgICAgQzVdIGxyIDog
-cmVnbWFwX21taW9fcmVhZCsweDY4LzB4ZDAKWyAgICAwLjcwMjMzMV1bICAgIEM1XSBzcCA6IGZm
-ZmZmZmMwMGI2ZDNiNDAKWyAgICAwLjcwMjMzNV1bICAgIEM1XSB4Mjk6IGZmZmZmZmMwMGI2ZDNi
-NDAgeDI4OiAwMDAwMDAwMDAwMDAwMDAwIHgyNzogMDAwMDAwMDAwMDAwMDAwMApbICAgIDAuNzAy
-MzUxXVsgICAgQzVdIHgyNjogZmZmZmZmODAwMDkyMzY4MCB4MjU6IGZmZmZmZmMwMDlhYmMyYTAg
-eDI0OiBmZmZmZmY4MDAwOTMwYzAwClsgICAgMC43MDIzNjRdWyAgICBDNV0geDIzOiAwMDAwMDAw
-MDAwMDAwMDE0IHgyMjogZmZmZmZmODAwMDkzMGMwMCB4MjE6IDAwMDAwMDAwMDAwMDAwMDgKWyAg
-ICAwLjcwMjM3OF1bICAgIEM1XSB4MjA6IGZmZmZmZjgwMDA5MjIzMDAgeDE5OiBmZmZmZmY4MDAw
-OTIzNjgwIHgxODogZmZmZmZmYzAwYjY2ZDA1OApbICAgIDAuNzAyMzkxXVsgICAgQzVdIHgxNzog
-MDAwMDAwMDAwMDAwYmE3ZSB4MTY6IGZmZmZmZmMwMGE0ZGVlMDQgeDE1OiAwMDAwMDAwMDAwMDBi
-NjdlClsgICAgMC43MDI0MDVdWyAgICBDNV0geDE0OiAwMDAwMDAwMDAyOGRkN2EwIHgxMzogMDAw
-MDAwMDAwMDAwMDA0MCB4MTI6IDAwMDAwMDAwMDAwMDAwMDAKWyAgICAwLjcwMjQxOV1bICAgIEM1
-XSB4MTE6IDAwMDAwMDAwMDAwMDAwMDAgeDEwOiAwMDAwMDAwMDAwMDAwMDAwIHg5IDogMDAwMDAw
-MDAwMDAwMDAwNQpbICAgIDAuNzAyNDMyXVsgICAgQzVdIHg4IDogMDAwMDAwMDAwMDAwMDAwMCB4
-NyA6IDAwNzU2ZDZkNmY2OTJlMzAgeDYgOiAzMDMwMzgzMDM1MzY2NjY2ClsgICAgMC43MDI0NDVd
-WyAgICBDNV0geDUgOiAwMDAwMDAwMDAwMDAwMDAxIHg0IDogMDI4ZGVhMjQ4ZmJhMzNkNiB4MyA6
-IDAwMDAwMDAwMDAwMDAwMDAKWyAgICAwLjcwMjQ1N11bICAgIEM1XSB4MiA6IGZmZmZmZjgwMDA5
-MjM2ODAgeDEgOiAwMDAwMDAwMDAwMDAwMDA4IHgwIDogMDAwMDAwMDAwMDAwMDAwMApbICAgIDAu
-NzAyNDcyXVsgICAgQzVdIEtlcm5lbCBwYW5pYyAtIG5vdCBzeW5jaW5nOiBBc3luY2hyb25vdXMg
-U0Vycm9yIEludGVycnVwdApbICAgIDAuNzAyNDc3XVsgICAgQzVdIENQVTogNSBQSUQ6IDQ4IENv
-bW06IGt3b3JrZXIvNToxIE5vdCB0YWludGVkIDUuMTUuMzUtYW5kcm9pZDEzLTUtMDAwOTItZzUy
-NWQ3NzMxMGEyMCAjMQpbICAgIDAuNzAyNDg3XVsgICAgQzVdIEhhcmR3YXJlIG5hbWU6IFJhZHhh
-IFJPQ0sgUGkgNEIgKERUKQpbICAgIDAuNzAyNDkyXVsgICAgQzVdIFdvcmtxdWV1ZTogcG0gZ2Vu
-cGRfcG93ZXJfb2ZmX3dvcmtfZm4uY2ZpX2p0ClsgICAgMC43MDI1MDZdWyAgICBDNV0gQ2FsbCB0
-cmFjZToKWyAgICAwLjcwMjUwOF1bICAgIEM1XSAgZHVtcF9iYWNrdHJhY2UuY2ZpX2p0KzB4MC8w
-eDgKWyAgICAwLjcwMjUyNV1bICAgIEM1XSAgZHVtcF9zdGFja19sdmwrMHg4MC8weGI4ClsgICAg
-MC43MDI1MzZdWyAgICBDNV0gIHBhbmljKzB4MTgwLzB4NDQ0ClsgICAgMC43MDI1NDddWyAgICBD
-NV0gIGFybTY0X3NlcnJvcl9wYW5pYysweDFjMC8weDIxMApbICAgIDAuNzAyNTYxXVsgICAgQzVd
-ICBkb19zZXJyb3IrMHgxN2MvMHgyMTgKWyAgICAwLjcwMjU3Ml1bICAgIEM1XSAgZWwxaF82NF9l
-cnJvcl9oYW5kbGVyKzB4MzgvMHg1MApbICAgIDAuNzAyNTgxXVsgICAgQzVdICBlbDFoXzY0X2Vy
-cm9yKzB4N2MvMHg4MApbICAgIDAuNzAyNTg5XVsgICAgQzVdICByZWdtYXBfbW1pb19yZWFkMzJs
-ZSsweDE0LzB4MmMKWyAgICAwLjcwMjYwM11bICAgIEM1XSAgX3JlZ21hcF9idXNfcmVnX3JlYWQr
-MHgzYy8weDkwClsgICAgMC43MDI2MTRdWyAgICBDNV0gIF9yZWdtYXBfcmVhZCsweGIwLzB4MjRj
-ClsgICAgMC43MDI2MjNdWyAgICBDNV0gIHJvY2tjaGlwX3BkX3Bvd2VyKzB4NmM0LzB4YmMwClsg
-ICAgMC43MDI2MzhdWyAgICBDNV0gIHJvY2tjaGlwX3BkX3Bvd2VyX29mZisweDE4LzB4MjgKWyAg
-ICAwLjcwMjY1Ml1bICAgIEM1XSAgX2dlbnBkX3Bvd2VyX29mZisweDE3OC8weDM4OApbICAgIDAu
-NzAyNjYzXVsgICAgQzVdICBnZW5wZF9wb3dlcl9vZmYrMHgxODgvMHgyZTQKWyAgICAwLjcwMjY3
-M11bICAgIEM1XSAgZ2VucGRfcG93ZXJfb2ZmX3dvcmtfZm4rMHg1NC8weGU0ClsgICAgMC43MDI2
-ODNdWyAgICBDNV0gIHByb2Nlc3Nfb25lX3dvcmsrMHgyNTQvMHg1YTAKWyAgICAwLjcwMjY5Nl1b
-ICAgIEM1XSAgd29ya2VyX3RocmVhZCsweDNlYy8weDkyMApbICAgIDAuNzAyNzA3XVsgICAgQzVd
-ICBrdGhyZWFkKzB4MTY4LzB4MWRjClsgICAgMC43MDI3MTZdWyAgICBDNV0gIHJldF9mcm9tX2Zv
-cmsrMHgxMC8weDIwClsgICAgMC43MDI3MjZdWyAgICBDNV0gU01QOiBzdG9wcGluZyBzZWNvbmRh
-cnkgQ1BVcwoKLS0gCkxlZSBKb25lcyBb5p2O55C85pavXQpQcmluY2lwYWwgVGVjaG5pY2FsIExl
-YWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdh
-cmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwgVHdpdHRlciB8IEJsb2cK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+P010 is a YUV format with 16-bits per pixel with interleaved UV.
+
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+version 4:
+- Fix 10-bits per components wording.
+
+version 3:
+- remove LE suffix
+- rebased on media_tree_master branch
+
+ .../media/v4l/pixfmt-yuv-planar.rst           | 54 +++++++++++++++++++
+ drivers/media/v4l2-core/v4l2-common.c         |  1 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |  1 +
+ include/uapi/linux/videodev2.h                |  1 +
+ 4 files changed, 57 insertions(+)
+
+diff --git a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+index 8dff5906639b..a900ff66911a 100644
+--- a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
++++ b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+@@ -109,6 +109,13 @@ All components are stored with the same number of bits per component.
+       - Cb, Cr
+       - No
+       - 16x16 tiles
++    * - V4L2_PIX_FMT_P010
++      - 'P010'
++      - 10
++      - 4:2:0
++      - Cb, Cr
++      - Yes
++      - Linear
+     * - V4L2_PIX_FMT_NV16
+       - 'NV16'
+       - 8
+@@ -171,6 +178,7 @@ horizontally.
+ .. _V4L2-PIX-FMT-NV21:
+ .. _V4L2-PIX-FMT-NV12M:
+ .. _V4L2-PIX-FMT-NV21M:
++.. _V4L2-PIX-FMT-P010:
+ 
+ NV12, NV21, NV12M and NV21M
+ ---------------------------
+@@ -519,6 +527,52 @@ number of lines as the luma plane.
+       - Cb\ :sub:`33`
+       - Cr\ :sub:`33`
+ 
++.. _V4L2_PIX_FMT_P010:
++
++P010
++----
++
++Like NV12 with 10 bits per component, expanded to 16 bits.
++Data in the 10 high bits, zeros in the 6 low bits, arranged in little endian order.
++
++.. flat-table:: Sample 4x4 P010 Image
++    :header-rows:  0
++    :stub-columns: 0
++
++    * - start + 0:
++      - Y'\ :sub:`00`
++      - Y'\ :sub:`01`
++      - Y'\ :sub:`02`
++      - Y'\ :sub:`03`
++    * - start + 8:
++      - Y'\ :sub:`10`
++      - Y'\ :sub:`11`
++      - Y'\ :sub:`12`
++      - Y'\ :sub:`13`
++    * - start + 16:
++      - Y'\ :sub:`20`
++      - Y'\ :sub:`21`
++      - Y'\ :sub:`22`
++      - Y'\ :sub:`23`
++    * - start + 24:
++      - Y'\ :sub:`30`
++      - Y'\ :sub:`31`
++      - Y'\ :sub:`32`
++      - Y'\ :sub:`33`
++    * - start + 32:
++      - Cb\ :sub:`00`
++      - Cr\ :sub:`00`
++      - Cb\ :sub:`01`
++      - Cr\ :sub:`01`
++    * - start + 40:
++      - Cb\ :sub:`10`
++      - Cr\ :sub:`10`
++      - Cb\ :sub:`11`
++      - Cr\ :sub:`11`
++
++.. raw:: latex
++
++    \endgroup
+ 
+ Fully Planar YUV Formats
+ ========================
+diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+index df34b2a283bc..1e38ad8906a2 100644
+--- a/drivers/media/v4l2-core/v4l2-common.c
++++ b/drivers/media/v4l2-core/v4l2-common.c
+@@ -266,6 +266,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
+ 		{ .format = V4L2_PIX_FMT_NV61,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+ 		{ .format = V4L2_PIX_FMT_NV24,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+ 		{ .format = V4L2_PIX_FMT_NV42,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 1, .vdiv = 1 },
++		{ .format = V4L2_PIX_FMT_P010,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 2, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+ 
+ 		{ .format = V4L2_PIX_FMT_YUV410,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 4, .vdiv = 4 },
+ 		{ .format = V4L2_PIX_FMT_YVU410,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 4, .vdiv = 4 },
+diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+index e2636539c9db..536aaeb4df82 100644
+--- a/drivers/media/v4l2-core/v4l2-ioctl.c
++++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+@@ -1305,6 +1305,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+ 	case V4L2_PIX_FMT_NV61:		descr = "Y/CrCb 4:2:2"; break;
+ 	case V4L2_PIX_FMT_NV24:		descr = "Y/CbCr 4:4:4"; break;
+ 	case V4L2_PIX_FMT_NV42:		descr = "Y/CrCb 4:4:4"; break;
++	case V4L2_PIX_FMT_P010:		descr = "10-bit Y/CrCb 4:2:0"; break;
+ 	case V4L2_PIX_FMT_NV12_4L4:	descr = "Y/CbCr 4:2:0 (4x4 Linear)"; break;
+ 	case V4L2_PIX_FMT_NV12_16L16:	descr = "Y/CbCr 4:2:0 (16x16 Linear)"; break;
+ 	case V4L2_PIX_FMT_NV12_32L32:   descr = "Y/CbCr 4:2:0 (32x32 Linear)"; break;
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 6d465dc443b7..311f106bbdf5 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -601,6 +601,7 @@ struct v4l2_pix_format {
+ #define V4L2_PIX_FMT_NV61    v4l2_fourcc('N', 'V', '6', '1') /* 16  Y/CrCb 4:2:2  */
+ #define V4L2_PIX_FMT_NV24    v4l2_fourcc('N', 'V', '2', '4') /* 24  Y/CbCr 4:4:4  */
+ #define V4L2_PIX_FMT_NV42    v4l2_fourcc('N', 'V', '4', '2') /* 24  Y/CrCb 4:4:4  */
++#define V4L2_PIX_FMT_P010    v4l2_fourcc('P', '0', '1', '0') /* 16  Y/CbCr 4:2:0 16-bit per pixel */
+ 
+ /* two non contiguous planes - one Y, one Cr + Cb interleaved  */
+ #define V4L2_PIX_FMT_NV12M   v4l2_fourcc('N', 'M', '1', '2') /* 12  Y/CbCr 4:2:0  */
+-- 
+2.32.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
