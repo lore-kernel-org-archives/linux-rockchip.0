@@ -4,58 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B780C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 May 2022 08:54:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A3FBC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 May 2022 11:55:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9I9+RsASSLuzB5JRhe22WjwjqFWcE+vatQsLmw3CIho=; b=0u8D7rJrXpCwS+
-	LFXJCYau4ii21QUBO8BMbMJZ4Ud3kwZMk1IRJdsQCcQy2D1V65DkDT08nmBs81RqW9Qk7sPHWsCgf
-	if4KG6NNv++yuABnvHPMRAHBBU2aEl/RgrknVLivpk0TSCAgfA5xtnueVVZSqmsE5lreBQJedQCpY
-	4oiFcVTzELoH5DtSOy0JhSr/NCahkfCsmXixAeUMB7UEy6+IJMCD/7GVPjGIa5KXO0dOi9o9Xici4
-	TxxxlR0MCc2WNGl/PoPGCXPsjukZf6BPH/l/CJyWlLzt4/3ajFzNTowgZbJdwPWh707qZECO5/NX0
-	YaLXkgCKmzeWsxMIS8wQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+z7bSTKSlfp1zvMkTLWn1ewfyr3CLBPos8gepPK4HQI=; b=2QLSIMfOIn+Kmc
+	pUkR35myTwz+IYSC1gxiwSE0cHlVOWBng2w8oe9tZfVySBLo7vx+MxhfmSnfJ51G3UAmGg/cUFWy2
+	vBjh2ETHRUU2qAVzVSO0vEPc6LFyoq0+qR5sHIqXwQkgbFtus82lXQxZ1mVdRW0PwDl7T1mOVOdTO
+	+kAqKuVA/NERQByk21DannU93itURo4E+TRa4ebApdsoRsxcwNwgExp4Ka6zBtxImbkQ+5EnPNRFT
+	BoXcQX9ejWVWLVtQ0BWMQ/bCirMaYloyXZMIpeazQ/xQEbur7iOGZU29xvBMbPlFZhE9Vl8dWvEG2
+	klroPZh0mVn5Jm0HbwgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrFRg-000gJ7-8N; Wed, 18 May 2022 08:54:16 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nrIH6-001il4-Qo; Wed, 18 May 2022 11:55:32 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrFRQ-000gDP-Gw; Wed, 18 May 2022 08:54:03 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 557141F44BC0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652864038;
- bh=JifAgMNLUTZbPqUGkfiNvKXoY8wZoQRTWULFSM0LprU=;
- h=From:To:Cc:Subject:Date:From;
- b=cToarhiglI2kF+yH1p6lzPuXjlsuv2gwG13DhdmxkQUvsa60eK2K66yWVhWKSP1W0
- nkDpNGlXB+iykBUInDP+9lRI5WAHyhydgHnDGAvCMrxHt5sgSL3UIfzMuFHKnwbHqF
- YC/MCpqF5w/zoNPQHnAowPbwXvrocx2M1fCePdRekR+7uCNrvI0SfHqMwkD4zG2fyR
- O7sKCaRcNikaACbLkJEKPvszSHr4RlmLKKHnvFZppnX+vgHaULf5O7yMg6sal9kAfJ
- vzSIC+Er93ndAI3Fh+6Rh3zrDjjLMSH+Gkt0vCDKfuU29LA+7KciqFnDtGpSRrbJRx
- S+Iml/YnsXSXw==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
- gregkh@linuxfoundation.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com, heiko@sntech.de, wens@csie.org,
- jernej.skrabec@gmail.com, samuel@sholland.org
-Cc: kernel@pengutronix.de, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, kernel@collabora.com,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v3] media: hantro: Be more accurate on pixel formats
- step_width constraints
-Date: Wed, 18 May 2022 10:53:49 +0200
-Message-Id: <20220518085349.290701-1-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.32.0
+ id 1nrIH3-001ij1-0c
+ for linux-rockchip@lists.infradead.org; Wed, 18 May 2022 11:55:30 +0000
+Received: by mail-wm1-x329.google.com with SMTP id
+ n6-20020a05600c3b8600b0039492b44ce7so912037wms.5
+ for <linux-rockchip@lists.infradead.org>; Wed, 18 May 2022 04:55:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=kCCZttYe88nnTP/ci0agOImauJrzNziOVL7F9EsssVg=;
+ b=sT81YHpDXhU45Qa9jKOrgFTm+661R7Y1nhg6pDh+t2Wr8aiR4aqMmCBduGV3L3fPm0
+ 88jraQoLAs0E29e0eRBFkQxguvW29+jUhGJL/koQYDrTz5Ugyq9M7sH3ZlCNXtboAi8a
+ qo71Gvc9NNp/sogT/vUJKGXZUHuVdIDZf0UQGhE81q2yb9MityIGnGLrhyB6c9dB3PFN
+ GIpnMk+nZD3AHd/qOzumMpt2dZuOMGbRlPARzRBxjzlOWRV7WUdfO4ZBfi7J86h45TXV
+ iEcSDYXMTfOl7ZLWyviT45Gvt6Tuxqf4dRMt03S5mtVAJxmsOLOa/MTbmSUft/pOWjMJ
+ d+lg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=kCCZttYe88nnTP/ci0agOImauJrzNziOVL7F9EsssVg=;
+ b=fuU766SFbUb4heVpSnt/goXYlmiKd7nAmndDEoK08/Kr9hvADm5RCGYC8jBVJ4TWcU
+ 1h+xYLcMQbUehp1AmEtcQjkITXUBbGdpvAaXWRYmoay+8ozSldZSzyxNhr7dEAqP1Dax
+ WMSphPRhWXX9ZRYSbDYXoaS/4SlepMbYMVZyTVSoiGPfSbgk+5YAzg6/htRQvGzB+MhJ
+ vMpdgvZAlq+9lj3rWAPYeValw63d+M5mOUIgGjMXhW+wKrhUiETbl9xJz9/ZupN4hhDe
+ hZYsKeN7e483qq4k8hS2UINKuxUjAwlkgeJKkPUx92o8p525J2/jSSa1knmpaasdpeFw
+ PU0A==
+X-Gm-Message-State: AOAM533kUAdXlUaHE03ulFkrcCAgG7eyXELzcOjIOSrjW2OsOpnfS2Gx
+ 2rX/HnQTPV8cGMNj5C6T2B78Ug==
+X-Google-Smtp-Source: ABdhPJy9D5teJUnV427nOduKPpgIBBeSHfMiOqPMa95j/tODu6xyxM4Ii2mxk1m/uDR/coamLeL2ww==
+X-Received: by 2002:a7b:c156:0:b0:395:b669:5c83 with SMTP id
+ z22-20020a7bc156000000b00395b6695c83mr34907779wmi.141.1652874926783; 
+ Wed, 18 May 2022 04:55:26 -0700 (PDT)
+Received: from google.com (cpc155339-bagu17-2-0-cust87.1-3.cable.virginm.net.
+ [86.27.177.88]) by smtp.gmail.com with ESMTPSA id
+ ay34-20020a05600c1e2200b003942a244f54sm5101071wmb.45.2022.05.18.04.55.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 18 May 2022 04:55:26 -0700 (PDT)
+Date: Wed, 18 May 2022 12:55:24 +0100
+From: Lee Jones <lee.jones@linaro.org>
+To: Hugh Cole-Baker <sigmaris@gmail.com>
+Cc: u-boot@lists.denx.de, Caesar Wang <wxt@rock-chips.com>,
+ Vasily Khoruzhick <anarsoul@gmail.com>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Hugh Cole-Baker <sigmaris@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Elaine Zhang <zhangqing@rock-chips.com>,
+ Brian Norris <briannorris@chromium.org>,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [U-Boot] [PATCH 2/2] rockchip: rk3399: rockpro64: enable force
+ power on reset workaround
+Message-ID: <YoTerAfKU5S04nfk@google.com>
+References: <20191128061433.1952869-1-anarsoul@gmail.com>
+ <20191128061433.1952869-2-anarsoul@gmail.com>
+ <1ab40490-a232-b5fd-6180-17867aa6a053@rock-chips.com>
+ <CA+E=qVeNWEJTfQ_30Uxv=qFixMR-rbYOW_HCtx83bqmfNWb9dg@mail.gmail.com>
+ <fe3e93dc-16e5-eaf7-94a5-def1dde85c86@rock-chips.com>
+ <CA+E=qVdMA_8wQcXzzf47Pi+dUigLBsOzOydhz+DZbvr8+9+PCg@mail.gmail.com>
+ <6C83A835-37D3-4E48-BB08-024BB2703FB8@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <6C83A835-37D3-4E48-BB08-024BB2703FB8@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_015400_865524_C9D300A7 
-X-CRM114-Status: GOOD (  22.84  )
+X-CRM114-CacheID: sfid-20220518_045529_120788_CDC87D74 
+X-CRM114-Status: GOOD (  33.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,670 +99,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Hantro G2 decoder on IMX8MQ strides requirements aren't the same
-for NV12_4L4 and NV12 pixel formats. The first one use a 4 bytes padding
-while the last one needs 16 bytes.
-To be sure to provide the correct stride in all cases we need:
-- to relax the constraints on codec formats so set step_width to 4
-- use capture queue format and not the output queue format when applying
-  the pixel format constraints.
-- put the correct step_width constraints on each pixel format.
-
-Move HEVC SPS validation in hantro_hevc.c to be able to perform it
-when setting sps control and when starting to decode the bitstream.
-Add a new test in HEVC SPS validation function to check if resolution
-is still matching the hardware constraints.
-
-With this SAODBLK_A_MainConcept_4 and SAODBLK_B_MainConcept_4 conformance
-tests files are correctly decoded with both NV12 and NV12_4L4 pixel formats.
-These two files have a resolution of 1016x760.
-
-Add defines for the various used resolutions.
-For other variants than Hantro G2 on IMX8M keep the same step_width to avoid
-regressions.
-
-Fluster HEVC test score is now 128/147 vs 126/147 with the both pixel
-formats as decoder output.
-Fluster VP9 test score stay at 147/303.
-
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
----
-version 3:
-- Add define for the various used resolutions.
-- Reword commit message.
-
-version 2:
-- Add a HEVC SPS validation function to be used when
-  setting the control and start decoding.
-  I hope that is what Nicolas expects in his remark on v1.
-
- drivers/staging/media/hantro/hantro_drv.c     |  12 +-
- drivers/staging/media/hantro/hantro_hevc.c    |  28 +++++
- drivers/staging/media/hantro/hantro_hw.h      |  14 +++
- drivers/staging/media/hantro/hantro_v4l2.c    |   2 +-
- drivers/staging/media/hantro/imx8m_vpu_hw.c   |  80 ++++++++++----
- .../staging/media/hantro/rockchip_vpu_hw.c    | 104 ++++++++++++------
- .../staging/media/hantro/sama5d4_vdec_hw.c    |  40 +++++--
- drivers/staging/media/hantro/sunxi_vpu_hw.c   |  24 +++-
- 8 files changed, 221 insertions(+), 83 deletions(-)
-
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 377dcc1d19de..5aac3a090480 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -253,6 +253,11 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 
- static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
- {
-+	struct hantro_ctx *ctx;
-+
-+	ctx = container_of(ctrl->handler,
-+			   struct hantro_ctx, ctrl_handler);
-+
- 	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
- 		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
- 
-@@ -268,12 +273,7 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
- 	} else if (ctrl->id == V4L2_CID_STATELESS_HEVC_SPS) {
- 		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
- 
--		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
--			/* Luma and chroma bit depth mismatch */
--			return -EINVAL;
--		if (sps->bit_depth_luma_minus8 != 0)
--			/* Only 8-bit is supported */
--			return -EINVAL;
-+		return hantro_hevc_validate_sps(ctx, sps);
- 	} else if (ctrl->id == V4L2_CID_STATELESS_VP9_FRAME) {
- 		const struct v4l2_ctrl_vp9_frame *dec_params = ctrl->p_new.p_vp9_frame;
- 
-diff --git a/drivers/staging/media/hantro/hantro_hevc.c b/drivers/staging/media/hantro/hantro_hevc.c
-index 7fdec50dc853..6abef810b285 100644
---- a/drivers/staging/media/hantro/hantro_hevc.c
-+++ b/drivers/staging/media/hantro/hantro_hevc.c
-@@ -154,6 +154,30 @@ static int tile_buffer_reallocate(struct hantro_ctx *ctx)
- 	return -ENOMEM;
- }
- 
-+int hantro_hevc_validate_sps(struct hantro_ctx *ctx, const struct v4l2_ctrl_hevc_sps *sps)
-+{
-+	if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
-+		/* Luma and chroma bit depth mismatch */
-+		return -EINVAL;
-+	if (sps->bit_depth_luma_minus8 != 0)
-+		/* Only 8-bit is supported */
-+		return -EINVAL;
-+
-+	/* for tile pixel format check if the width and height match
-+	 * hardware constraints */
-+	if (ctx->vpu_dst_fmt->fourcc == V4L2_PIX_FMT_NV12_4L4) {
-+		if (ctx->dst_fmt.width !=
-+		    ALIGN(sps->pic_width_in_luma_samples, ctx->vpu_dst_fmt->frmsize.step_width))
-+			return -EINVAL;
-+
-+		if (ctx->dst_fmt.height !=
-+		    ALIGN(sps->pic_height_in_luma_samples, ctx->vpu_dst_fmt->frmsize.step_height))
-+			return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
- int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx)
- {
- 	struct hantro_hevc_dec_hw_ctx *hevc_ctx = &ctx->hevc_dec;
-@@ -177,6 +201,10 @@ int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx)
- 	if (WARN_ON(!ctrls->sps))
- 		return -EINVAL;
- 
-+	ret = hantro_hevc_validate_sps(ctx, ctrls->sps);
-+	if (ret)
-+		return ret;
-+
- 	ctrls->pps =
- 		hantro_get_ctrl(ctx, V4L2_CID_STATELESS_HEVC_PPS);
- 	if (WARN_ON(!ctrls->pps))
-diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-index 994547fe41b9..457eb8bb6dc2 100644
---- a/drivers/staging/media/hantro/hantro_hw.h
-+++ b/drivers/staging/media/hantro/hantro_hw.h
-@@ -18,9 +18,21 @@
- #define DEC_8190_ALIGN_MASK	0x07U
- 
- #define MB_DIM			16
-+#define TILE_MB_DIM		4
- #define MB_WIDTH(w)		DIV_ROUND_UP(w, MB_DIM)
- #define MB_HEIGHT(h)		DIV_ROUND_UP(h, MB_DIM)
- 
-+#define FMT_MIN_WIDTH		48
-+#define FMT_MIN_HEIGHT		48
-+#define FMT_HD_WIDTH		1280
-+#define FMT_HD_HEIGHT		720
-+#define FMT_FHD_WIDTH		1920
-+#define FMT_FHD_HEIGHT		1088
-+#define FMT_UHD_WIDTH		3840
-+#define FMT_UHD_HEIGHT		2160
-+#define FMT_4K_WIDTH		4096
-+#define FMT_4K_HEIGHT		2304
-+
- #define NUM_REF_PICTURES	(V4L2_HEVC_DPB_ENTRIES_NUM_MAX + 1)
- 
- struct hantro_dev;
-@@ -341,6 +353,8 @@ int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx);
- void hantro_hevc_ref_init(struct hantro_ctx *ctx);
- dma_addr_t hantro_hevc_get_ref_buf(struct hantro_ctx *ctx, s32 poc);
- int hantro_hevc_add_ref_buf(struct hantro_ctx *ctx, int poc, dma_addr_t addr);
-+int hantro_hevc_validate_sps(struct hantro_ctx *ctx, const struct v4l2_ctrl_hevc_sps *sps);
-+
- 
- static inline unsigned short hantro_vp9_num_sbs(unsigned short dimension)
- {
-diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-index 71a6279750bf..93d0dcf69f4a 100644
---- a/drivers/staging/media/hantro/hantro_v4l2.c
-+++ b/drivers/staging/media/hantro/hantro_v4l2.c
-@@ -260,7 +260,7 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
- 	} else if (ctx->is_encoder) {
- 		vpu_fmt = ctx->vpu_dst_fmt;
- 	} else {
--		vpu_fmt = ctx->vpu_src_fmt;
-+		vpu_fmt = fmt;
- 		/*
- 		 * Width/height on the CAPTURE end of a decoder are ignored and
- 		 * replaced by the OUTPUT ones.
-diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-index 9802508bade2..77f574fdfa77 100644
---- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
-+++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-@@ -83,6 +83,14 @@ static const struct hantro_fmt imx8m_vpu_postproc_fmts[] = {
- 		.fourcc = V4L2_PIX_FMT_YUYV,
- 		.codec_mode = HANTRO_MODE_NONE,
- 		.postprocessed = true,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
- 	},
- };
- 
-@@ -90,17 +98,25 @@ static const struct hantro_fmt imx8m_vpu_dec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
- 	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_MPEG2_SLICE,
- 		.codec_mode = HANTRO_MODE_MPEG2_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 1920,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 1088,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -109,11 +125,11 @@ static const struct hantro_fmt imx8m_vpu_dec_fmts[] = {
- 		.codec_mode = HANTRO_MODE_VP8_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 3840,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 2160,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -122,11 +138,11 @@ static const struct hantro_fmt imx8m_vpu_dec_fmts[] = {
- 		.codec_mode = HANTRO_MODE_H264_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 3840,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 2160,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -137,6 +153,14 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
- 		.fourcc = V4L2_PIX_FMT_NV12,
- 		.codec_mode = HANTRO_MODE_NONE,
- 		.postprocessed = true,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
- 	},
- };
- 
-@@ -144,18 +168,26 @@ static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12_4L4,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = TILE_MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = TILE_MB_DIM,
-+		},
- 	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_HEVC_SLICE,
- 		.codec_mode = HANTRO_MODE_HEVC_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 3840,
--			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 2160,
--			.step_height = MB_DIM,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = TILE_MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = TILE_MB_DIM,
- 		},
- 	},
- 	{
-@@ -163,12 +195,12 @@ static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
- 		.codec_mode = HANTRO_MODE_VP9_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 3840,
--			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 2160,
--			.step_height = MB_DIM,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = TILE_MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = TILE_MB_DIM,
- 		},
- 	},
- };
-diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-index fc96501f3bc8..098486b9ec27 100644
---- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
-+++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-@@ -63,6 +63,14 @@ static const struct hantro_fmt rockchip_vpu1_postproc_fmts[] = {
- 		.fourcc = V4L2_PIX_FMT_YUYV,
- 		.codec_mode = HANTRO_MODE_NONE,
- 		.postprocessed = true,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
- 	},
- };
- 
-@@ -70,17 +78,25 @@ static const struct hantro_fmt rk3066_vpu_dec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
- 	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
- 		.codec_mode = HANTRO_MODE_H264_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 1920,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 1088,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -89,11 +105,11 @@ static const struct hantro_fmt rk3066_vpu_dec_fmts[] = {
- 		.codec_mode = HANTRO_MODE_MPEG2_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 1920,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 1088,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -102,11 +118,11 @@ static const struct hantro_fmt rk3066_vpu_dec_fmts[] = {
- 		.codec_mode = HANTRO_MODE_VP8_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 1920,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 1088,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -116,17 +132,25 @@ static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_4K_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_4K_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
- 	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
- 		.codec_mode = HANTRO_MODE_H264_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 4096,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_4K_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 2304,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_4K_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -135,11 +159,11 @@ static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
- 		.codec_mode = HANTRO_MODE_MPEG2_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 1920,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 1088,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -148,11 +172,11 @@ static const struct hantro_fmt rk3288_vpu_dec_fmts[] = {
- 		.codec_mode = HANTRO_MODE_VP8_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 3840,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 2160,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -162,17 +186,25 @@ static const struct hantro_fmt rk3399_vpu_dec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
- 	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_H264_SLICE,
- 		.codec_mode = HANTRO_MODE_H264_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 1920,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 1088,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -181,11 +213,11 @@ static const struct hantro_fmt rk3399_vpu_dec_fmts[] = {
- 		.codec_mode = HANTRO_MODE_MPEG2_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 1920,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_FHD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 1088,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_FHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -194,11 +226,11 @@ static const struct hantro_fmt rk3399_vpu_dec_fmts[] = {
- 		.codec_mode = HANTRO_MODE_VP8_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 3840,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 2160,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-diff --git a/drivers/staging/media/hantro/sama5d4_vdec_hw.c b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
-index b2fc1c5613e1..b205e2db5b04 100644
---- a/drivers/staging/media/hantro/sama5d4_vdec_hw.c
-+++ b/drivers/staging/media/hantro/sama5d4_vdec_hw.c
-@@ -16,6 +16,14 @@ static const struct hantro_fmt sama5d4_vdec_postproc_fmts[] = {
- 		.fourcc = V4L2_PIX_FMT_YUYV,
- 		.codec_mode = HANTRO_MODE_NONE,
- 		.postprocessed = true,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_HD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_HD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
- 	},
- };
- 
-@@ -23,17 +31,25 @@ static const struct hantro_fmt sama5d4_vdec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_HD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_HD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
- 	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_MPEG2_SLICE,
- 		.codec_mode = HANTRO_MODE_MPEG2_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 1280,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_HD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 720,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_HD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -42,11 +58,11 @@ static const struct hantro_fmt sama5d4_vdec_fmts[] = {
- 		.codec_mode = HANTRO_MODE_VP8_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 1280,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_HD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 720,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_HD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-@@ -55,11 +71,11 @@ static const struct hantro_fmt sama5d4_vdec_fmts[] = {
- 		.codec_mode = HANTRO_MODE_H264_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 1280,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_HD_WIDTH,
- 			.step_width = MB_DIM,
--			.min_height = 48,
--			.max_height = 720,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_HD_HEIGHT,
- 			.step_height = MB_DIM,
- 		},
- 	},
-diff --git a/drivers/staging/media/hantro/sunxi_vpu_hw.c b/drivers/staging/media/hantro/sunxi_vpu_hw.c
-index c0edd5856a0c..fbeac81e59e1 100644
---- a/drivers/staging/media/hantro/sunxi_vpu_hw.c
-+++ b/drivers/staging/media/hantro/sunxi_vpu_hw.c
-@@ -14,6 +14,14 @@ static const struct hantro_fmt sunxi_vpu_postproc_fmts[] = {
- 		.fourcc = V4L2_PIX_FMT_NV12,
- 		.codec_mode = HANTRO_MODE_NONE,
- 		.postprocessed = true,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = 32,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = 32,
-+		},
- 	},
- };
- 
-@@ -21,17 +29,25 @@ static const struct hantro_fmt sunxi_vpu_dec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12_4L4,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = 32,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = 32,
-+		},
- 	},
- 	{
- 		.fourcc = V4L2_PIX_FMT_VP9_FRAME,
- 		.codec_mode = HANTRO_MODE_VP9_DEC,
- 		.max_depth = 2,
- 		.frmsize = {
--			.min_width = 48,
--			.max_width = 3840,
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
- 			.step_width = 32,
--			.min_height = 48,
--			.max_height = 2160,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
- 			.step_height = 32,
- 		},
- 	},
--- 
-2.32.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+TG9vcGluZyBpbnQgYSBmZXcgcmVsZXZhbnQvYWN0aXZlIGtlcm5lbCBwZW9wbGUvbGlzdHMgZm9y
+IGZ1bGwgY292ZXJhZ2UuCgpPbiBTdW4sIDAxIERlYyAyMDE5LCBIdWdoIENvbGUtQmFrZXIgd3Jv
+dGU6Cj4gPiBPbiAyOSBOb3YgMjAxOSwgYXQgMDE6MDYsIFZhc2lseSBLaG9ydXpoaWNrIDxhbmFy
+c291bEBnbWFpbC5jb20+IHdyb3RlOgo+ID4gT24gVGh1LCBOb3YgMjgsIDIwMTkgYXQgNDo1OSBQ
+TSBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPiA+PiAKPiA+
+PiBIaSBWYXNpbHksCj4gPj4gCj4gPj4gT24gMjAxOS8xMS8yOCDkuIvljYgxMTo1MSwgVmFzaWx5
+IEtob3J1emhpY2sgd3JvdGU6Cj4gPj4+IE9uIFRodSwgTm92IDI4LCAyMDE5IGF0IDE6MjMgQU0g
+S2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4gPj4+PiBIaSBW
+YXNpbHksCj4gPj4+PiAKPiA+Pj4+ICAgICAgSSB0aGluayB0aGlzIHNob3VsZCBub3QgYmUgbmVl
+ZGVkLCBzZWUgY29tbWVudHMgYmVsb3cuCj4gPj4+IEhpIEtldmVyLAo+ID4+PiAKPiA+Pj4gSSd2
+ZSBzcGVudCAyIHdlZWtzIG9mIG15IGV2ZW5pbmdzIGRlYnVnZ2luZyB0aGlzIGlzc3VlIGJ1dAo+
+ID4+IAo+ID4+IEkgY2FuIHVuZGVyc3RhbmQgeW91IHdvcmsgcHJldHR5IGhhcmQgb24gbWFrZSBp
+dCB3b3JrLCBpdCdzIG5vdCBzbyBlYXN5Cj4gPj4gdG8gaWRlbnRpZnkgdGhlIHJvb3QgY2F1c2UK
+PiA+PiAKPiA+PiBzb21lIHRpbWVzLCB0aGFua3MgdmVyeSBtdWNoIGZvciB3b3JraW5nIG9uIHRo
+aXMuCj4gPj4gCj4gPj4+IHVuZm9ydHVuYXRlbHkgSSBkb24ndCBoYXZlIGEgcHJvcGVyIGZpeC4g
+VGhpcyBpcyB0aGUgb25seSBzb2x1dGlvbgo+ID4+PiB0aGF0IG1ha2VzIG15IHJvY2twcm82NCBy
+ZWJvb3QgcmVsaWFibHkgd2l0aCBtYWlubGluZSB1LWJvb3QgYW5kIEFURi4KPiA+Pj4gU2VlIG15
+IGNvbW1lbnRzIGJlbG93Lgo+IAo+IEkgYWxzbyBoYWQgYSBwcm9ibGVtIHdoZXJlIExpbnV4IHdv
+dWxkIGhhbmcgb3IgcGFuaWMgYWZ0ZXIgcmVib290aW5nLCB3aXRoCj4gbWFpbmxpbmUgdS1ib290
+IGFuZCBBVEYgb24gYSByb2NrcHJvNjQuIFRoaXMgcGF0Y2ggZG9lcyBmaXggdGhlIGlzc3VlIGZv
+ciBtZSwKPiBJIGhhdmUgdGVzdGVkIGl0IGJ5IHBlcmZvcm1pbmcgMTAgcmVib290cyBmcm9tIExp
+bnV4IGluIGEgcm93IGFuZCBJJ3ZlIHNlZW4KPiBubyBoYW5ncyBvciBwYW5pY3MuCj4gCj4gSSBu
+b3RpY2VkIHRoZSBBcm1iaWFuIHByb2plY3QgaGF2ZSByZWNlbnRseSBpbmNsdWRlZCBhIHBhdGNo
+IHRvIEFURiBbMV0gd2hpY2gKPiBzd2l0Y2hlcyBhbGwgcG93ZXIgZG9tYWlucyBvbiBiZWZvcmUg
+QVRGIHBlcmZvcm1zIGEgc29mdCByZXNldC4gSSBoYXZlIGFsc28KPiB0ZXN0ZWQgdXNpbmcgdS1i
+b290IG1haW5saW5lLCB3aXRob3V0IGFueSBwYXRjaGVzIHRvIHUtYm9vdCwgYnV0IGluY2x1ZGlu
+ZyBBVEYKPiBwYXRjaGVkIHdpdGggeW91ciByZXNldCBmaXggWzJdIGFuZCB0aGUgQXJtYmlhbiBw
+b3dlciBkb21haW5zIHBhdGNoIFsxXS4gVGhpcwo+IGFsc28gZml4ZXMgdGhlIHNhbWUgaGFuZ2lu
+ZyBvbiByZWJvb3QgaXNzdWUgZm9yIG1lIHdpdGhvdXQgbW9kaWZpY2F0aW9ucyB0bwo+IHUtYm9v
+dCwgSSd2ZSBhbHNvIHRlc3RlZCAxMCByZWJvb3RzIGluIGEgcm93IHdpdGggdGhpcyBBVEYgYW5k
+IHNlZW4gbm8gaGFuZ3MuCj4gCj4gU28gdGhpcyB1LWJvb3QgcGF0Y2ggbWF5IG5vdCBiZSBuZWVk
+ZWQgaWYgQVRGIGlzIHBhdGNoZWQgaW5zdGVhZCB0byBzd2l0Y2gKPiBwb3dlciBkb21haW5zIG9u
+IGJlZm9yZSBzb2Z0IHJlc2V0Lgo+IAo+IEZXSVcsIHdoZW4gSSB3YXMgYWJsZSB0byBzZWUgcGFu
+aWMgbWVzc2FnZXMgZnJvbSBMaW51eCB3aGVuIGl0IHBhbmlja2VkIG9uCj4gYm9vdCwgdGhlIGNh
+bGwgdHJhY2UgYWx3YXlzIHNlZW1lZCB0byBpbmNsdWRlIHJvY2tjaGlwX3BkX3Bvd2VyX29mZigp
+IFszXS4KPiAKPiBbMV0gaHR0cHM6Ly9naXRodWIuY29tL2FybWJpYW4vYnVpbGQvYmxvYi9tYXN0
+ZXIvcGF0Y2gvYXRmL2F0Zi1yazMzOTkvc3dpdGNoLXBvd2VyLWRvbWFpbnMtb24tYmVmb3JlLXJl
+c2V0LnBhdGNoCj4gWzJdIGh0dHBzOi8vcmV2aWV3LnRydXN0ZWRmaXJtd2FyZS5vcmcvYy9URi1B
+L3RydXN0ZWQtZmlybXdhcmUtYS8rLzI1MTIKPiBbM10gaHR0cHM6Ly9naXN0LmdpdGh1Yi5jb20v
+c2lnbWFyaXMvYzBlMTU1YzhjYjBhMzI1ZDg0ZjU0OTE4NWY5YTU2OGMKClRoaXMgbGFzdCBwYXN0
+ZSBsb29rcyByZW1hcmthYmx5IHNpbWlsYXIgdG8gYW4gaXNzdWUgY3VycmVudGx5IHNlZW4gb24K
+dGhlIFJhZHhhIFJPQ0sgUGkgNEIgKFJLMzM5OSkgZHVyaW5nIHBvd2VyLXVwIGFmdGVyIGEgc29m
+dCByZWJvb3QKKGBzdWRvIHJlYm9vdGApIGlzIGlzc3VlZC4gIFdlJ3JlIHByZXNlbnRseSBydW5u
+aW5nIHY1LjE1LjM1IFswXS4KCkl0J3Mgbm90IGNsZWFyIGhvdyB0aGlzIGlzc3VlIChwcmVzZW50
+IDMgeWVhcnMgYWdvKSB3YXMgZmluYWxseQpyZXNvbHZlZC4gIEZyb20gdGhlIHRocmVhZCwgaXQg
+bG9va3MgYXMgaWYgdGhlIGZpeCBtaWdodCBoYXZlIG1hZGUgaXRzCndheSBpbnRvIEFURiwgYnV0
+IEknbSA4Ny42JSBzdXJlIEFURiBpcyBub3QgcnVubmluZyBvbiB0aGlzIHBsYXRmb3JtCih5ZXQp
+LgoKTm90ZSB0aGF0IHRoZSB1LWJvb3Qgd2UncmUgdXNpbmcgaXMgYWxzbyBxdWl0ZSBvbGQ6Cgog
+IFUtQm9vdCAyMDE5LjEwLTA5MjQ4LWc4NTExYzc1YmI0IChKYW4gMDggMjAyMCAtIDE3OjEzOjAz
+IC0wODAwKQoKLi4uIHNvIHRoaXMgY291bGQgZWFzaWx5IGJlIHRoZSByb290IGNhdXNlLiAgVGhl
+IGN1cnJlbnQgcGxhbiBpcyB0bwp0cnkgdG8gdXBkYXRlIHRoaXMgQVNBUC4gIEhvd2V2ZXIgZWFy
+bHkgYXR0ZW1wdHMgYXJlIHlldCB0byByZXN1bHQgaW4KYSBzdWNjZXNzZnVsIGJvb3QuCgpJIHNl
+ZSB0aGF0IEJyaWFuIHJlY2VudGx5IGFkZGVkIGEgZmV3IHBhdGNoZXMgcmVsYXRlZCB0byBQRC9E
+VkZTLCBidXQKYWdhaW4sIHRoZXNlIGFwcGVhciB0byBiZSBBVEYgcmVsYXRlZC4KCldvdWxkIGFu
+eW9uZSBiZSBhYmxlIHRvIHNoZWQgc29tZSBsaWdodCBvbnRvIHRoaXMgZm9yIG1lIHBsZWFzZT8K
+CkFzIGFsd2F5cywgYW55IGhlbHAgd291bGQgYmUgZ3JhdGVmdWxseSByZWNlaXZlZC4KCktpbmQg
+cmVnYXJkcywKTGVlCgpbMF0KRnVsbCByZWJvb3QgbG9nIGNhbiBiZSBzZWVuIGF0OiBodHRwczov
+L3Bhc3RlYmluLnVidW50dS5jb20vcC9NalpQMlY2a1EzLwoKWyAgICAwLjY5OTczNl1bICAgIFQx
+XSBpbml0Y2FsbCBfX2luaXRzdHViX19rbW9kX2lvbW11X18zNjJfMTU1X2lvbW11X3N1YnN5c19p
+bml0NCsweDAvMHg4IHJldHVybmVkIDAgYWZ0ZXIgMCB1c2VjcwpbICAgIDAuNzAwNzM3XVsgICAg
+VDFdIGNhbGxpbmcgIF9faW5pdHN0dWJfX2ttb2Rfcm9ja2NoaXBfaW9tbXVfXzM0OF8xNDE1X3Jr
+X2lvbW11X2luaXQ0KzB4MC8weDggQCAxClsgICAgMC43MDIyMzhdWyAgICBDNV0gU0Vycm9yIElu
+dGVycnVwdCBvbiBDUFU1LCBjb2RlIDB4YmYwMDAwMDIgLS0gU0Vycm9yClsgICAgMC43MDIyNDhd
+WyAgICBDNV0gQ1BVOiA1IFBJRDogNDggQ29tbToga3dvcmtlci81OjEgTm90IHRhaW50ZWQgNS4x
+NS4zNS1hbmRyb2lkMTMtNS0wMDA5Mi1nNTI1ZDc3MzEwYTIwICMxClsgICAgMC43MDIyNjFdWyAg
+ICBDNV0gSGFyZHdhcmUgbmFtZTogUmFkeGEgUk9DSyBQaSA0QiAoRFQpClsgICAgMC43MDIyNjZd
+WyAgICBDNV0gV29ya3F1ZXVlOiBwbSBnZW5wZF9wb3dlcl9vZmZfd29ya19mbi5jZmlfanQKWyAg
+ICAwLjcwMjI4OV1bICAgIEM1XSBwc3RhdGU6IDgwNDAwMGM1IChOemN2IGRhSUYgK1BBTiAtVUFP
+IC1UQ08gLURJVCAtU1NCUyBCVFlQRT0tLSkKWyAgICAwLjcwMjMwMV1bICAgIEM1XSBwYyA6IHJl
+Z21hcF9tbWlvX3JlYWQzMmxlKzB4MTQvMHgyYwpbICAgIDAuNzAyMzE4XVsgICAgQzVdIGxyIDog
+cmVnbWFwX21taW9fcmVhZCsweDY4LzB4ZDAKWyAgICAwLjcwMjMzMV1bICAgIEM1XSBzcCA6IGZm
+ZmZmZmMwMGI2ZDNiNDAKWyAgICAwLjcwMjMzNV1bICAgIEM1XSB4Mjk6IGZmZmZmZmMwMGI2ZDNi
+NDAgeDI4OiAwMDAwMDAwMDAwMDAwMDAwIHgyNzogMDAwMDAwMDAwMDAwMDAwMApbICAgIDAuNzAy
+MzUxXVsgICAgQzVdIHgyNjogZmZmZmZmODAwMDkyMzY4MCB4MjU6IGZmZmZmZmMwMDlhYmMyYTAg
+eDI0OiBmZmZmZmY4MDAwOTMwYzAwClsgICAgMC43MDIzNjRdWyAgICBDNV0geDIzOiAwMDAwMDAw
+MDAwMDAwMDE0IHgyMjogZmZmZmZmODAwMDkzMGMwMCB4MjE6IDAwMDAwMDAwMDAwMDAwMDgKWyAg
+ICAwLjcwMjM3OF1bICAgIEM1XSB4MjA6IGZmZmZmZjgwMDA5MjIzMDAgeDE5OiBmZmZmZmY4MDAw
+OTIzNjgwIHgxODogZmZmZmZmYzAwYjY2ZDA1OApbICAgIDAuNzAyMzkxXVsgICAgQzVdIHgxNzog
+MDAwMDAwMDAwMDAwYmE3ZSB4MTY6IGZmZmZmZmMwMGE0ZGVlMDQgeDE1OiAwMDAwMDAwMDAwMDBi
+NjdlClsgICAgMC43MDI0MDVdWyAgICBDNV0geDE0OiAwMDAwMDAwMDAyOGRkN2EwIHgxMzogMDAw
+MDAwMDAwMDAwMDA0MCB4MTI6IDAwMDAwMDAwMDAwMDAwMDAKWyAgICAwLjcwMjQxOV1bICAgIEM1
+XSB4MTE6IDAwMDAwMDAwMDAwMDAwMDAgeDEwOiAwMDAwMDAwMDAwMDAwMDAwIHg5IDogMDAwMDAw
+MDAwMDAwMDAwNQpbICAgIDAuNzAyNDMyXVsgICAgQzVdIHg4IDogMDAwMDAwMDAwMDAwMDAwMCB4
+NyA6IDAwNzU2ZDZkNmY2OTJlMzAgeDYgOiAzMDMwMzgzMDM1MzY2NjY2ClsgICAgMC43MDI0NDVd
+WyAgICBDNV0geDUgOiAwMDAwMDAwMDAwMDAwMDAxIHg0IDogMDI4ZGVhMjQ4ZmJhMzNkNiB4MyA6
+IDAwMDAwMDAwMDAwMDAwMDAKWyAgICAwLjcwMjQ1N11bICAgIEM1XSB4MiA6IGZmZmZmZjgwMDA5
+MjM2ODAgeDEgOiAwMDAwMDAwMDAwMDAwMDA4IHgwIDogMDAwMDAwMDAwMDAwMDAwMApbICAgIDAu
+NzAyNDcyXVsgICAgQzVdIEtlcm5lbCBwYW5pYyAtIG5vdCBzeW5jaW5nOiBBc3luY2hyb25vdXMg
+U0Vycm9yIEludGVycnVwdApbICAgIDAuNzAyNDc3XVsgICAgQzVdIENQVTogNSBQSUQ6IDQ4IENv
+bW06IGt3b3JrZXIvNToxIE5vdCB0YWludGVkIDUuMTUuMzUtYW5kcm9pZDEzLTUtMDAwOTItZzUy
+NWQ3NzMxMGEyMCAjMQpbICAgIDAuNzAyNDg3XVsgICAgQzVdIEhhcmR3YXJlIG5hbWU6IFJhZHhh
+IFJPQ0sgUGkgNEIgKERUKQpbICAgIDAuNzAyNDkyXVsgICAgQzVdIFdvcmtxdWV1ZTogcG0gZ2Vu
+cGRfcG93ZXJfb2ZmX3dvcmtfZm4uY2ZpX2p0ClsgICAgMC43MDI1MDZdWyAgICBDNV0gQ2FsbCB0
+cmFjZToKWyAgICAwLjcwMjUwOF1bICAgIEM1XSAgZHVtcF9iYWNrdHJhY2UuY2ZpX2p0KzB4MC8w
+eDgKWyAgICAwLjcwMjUyNV1bICAgIEM1XSAgZHVtcF9zdGFja19sdmwrMHg4MC8weGI4ClsgICAg
+MC43MDI1MzZdWyAgICBDNV0gIHBhbmljKzB4MTgwLzB4NDQ0ClsgICAgMC43MDI1NDddWyAgICBD
+NV0gIGFybTY0X3NlcnJvcl9wYW5pYysweDFjMC8weDIxMApbICAgIDAuNzAyNTYxXVsgICAgQzVd
+ICBkb19zZXJyb3IrMHgxN2MvMHgyMTgKWyAgICAwLjcwMjU3Ml1bICAgIEM1XSAgZWwxaF82NF9l
+cnJvcl9oYW5kbGVyKzB4MzgvMHg1MApbICAgIDAuNzAyNTgxXVsgICAgQzVdICBlbDFoXzY0X2Vy
+cm9yKzB4N2MvMHg4MApbICAgIDAuNzAyNTg5XVsgICAgQzVdICByZWdtYXBfbW1pb19yZWFkMzJs
+ZSsweDE0LzB4MmMKWyAgICAwLjcwMjYwM11bICAgIEM1XSAgX3JlZ21hcF9idXNfcmVnX3JlYWQr
+MHgzYy8weDkwClsgICAgMC43MDI2MTRdWyAgICBDNV0gIF9yZWdtYXBfcmVhZCsweGIwLzB4MjRj
+ClsgICAgMC43MDI2MjNdWyAgICBDNV0gIHJvY2tjaGlwX3BkX3Bvd2VyKzB4NmM0LzB4YmMwClsg
+ICAgMC43MDI2MzhdWyAgICBDNV0gIHJvY2tjaGlwX3BkX3Bvd2VyX29mZisweDE4LzB4MjgKWyAg
+ICAwLjcwMjY1Ml1bICAgIEM1XSAgX2dlbnBkX3Bvd2VyX29mZisweDE3OC8weDM4OApbICAgIDAu
+NzAyNjYzXVsgICAgQzVdICBnZW5wZF9wb3dlcl9vZmYrMHgxODgvMHgyZTQKWyAgICAwLjcwMjY3
+M11bICAgIEM1XSAgZ2VucGRfcG93ZXJfb2ZmX3dvcmtfZm4rMHg1NC8weGU0ClsgICAgMC43MDI2
+ODNdWyAgICBDNV0gIHByb2Nlc3Nfb25lX3dvcmsrMHgyNTQvMHg1YTAKWyAgICAwLjcwMjY5Nl1b
+ICAgIEM1XSAgd29ya2VyX3RocmVhZCsweDNlYy8weDkyMApbICAgIDAuNzAyNzA3XVsgICAgQzVd
+ICBrdGhyZWFkKzB4MTY4LzB4MWRjClsgICAgMC43MDI3MTZdWyAgICBDNV0gIHJldF9mcm9tX2Zv
+cmsrMHgxMC8weDIwClsgICAgMC43MDI3MjZdWyAgICBDNV0gU01QOiBzdG9wcGluZyBzZWNvbmRh
+cnkgQ1BVcwoKLS0gCkxlZSBKb25lcyBb5p2O55C85pavXQpQcmluY2lwYWwgVGVjaG5pY2FsIExl
+YWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdh
+cmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwgVHdpdHRlciB8IEJsb2cK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
