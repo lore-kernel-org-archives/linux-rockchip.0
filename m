@@ -4,58 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2244C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 07:12:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4840AC433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 07:51:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HZZP5RAhKtoWkU+J6/GGrSN9Cz89dhAotTnmD3UqTkE=; b=txlcS3S5aoekhX
-	zP30sCcwJMA7xt5eBDhFXw0zKRPxJaMpm3/uwAzAmrK3ySb8F43stEM6hA6oLOla4miX5q1k3Klx8
-	v553QhNRQI9+vTR1zR2U/PNU7djnu2mv26TLZnRYCIvdul7u9Jcbleu6uavYtXsAMlBZZHQqji5il
-	X4p02cNRTqDrbIFPrmOM9AkUoRMonzf+I4dUBNu+1zG/zSA5jPAvAViOQIYL203w9eN553EpBToqE
-	7GLKrb26DzmbaTz7dPlhJqIPmmjszoue1WzfxN5CQNbK5+DpXbjzzrSGT5xUkUkxI9syDKFNGtOCl
-	0Lb5/++JNDDJYkb34wjQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=e5QUlOSJI7YWVWCpETTThOJU3Sf6KrelDOHn5C+L05o=; b=EIINYV0t7N7tN8
+	8NEMhRo3jLzFPXPDH6018eGiIEabBKUho+JzUDec7Z+9QiTOL6mkk6YQr7q8k1l8IYpnnBSloxB6Q
+	OWKNoWUBKY3Rw1isWyOuKgT+pw6NLebZcNVDGdcQGC3gNfsj/HaPqjICCZRYBs5lR+gsneEXmvdhv
+	tnUZEEq2pJec8QKgZdTW1a7KWTWu0I7TMTKy41OT+RRTnQWgZndUSyujjc2TqaV1yBV2DDF46fQF4
+	xsh/2oKE4JeagO2dnjUAYEvhQeu8qzMvkgpPSSshnBqSIaGHE54aVhKX/GeAonZ4KVsMIk2ED4xrl
+	ndPp2tGpZhZHugYKZA1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nraKT-005S8z-A6; Thu, 19 May 2022 07:12:13 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nrawc-005dlc-SS; Thu, 19 May 2022 07:51:38 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nraKB-005S2P-Bb; Thu, 19 May 2022 07:11:57 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 4369D1F4565F
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652944313;
- bh=OEcTyTvXeWneBi8GvH9jsIAxafQtn5PH2MYUYrWug2Q=;
- h=From:To:Cc:Subject:Date:From;
- b=Cxf3+0ccgabzfMua9Rv0yMGRSD7g3lbSqVGAssBI1p7bDyreKENNItr8zEO6dLo3V
- LKJhyaYazYAn3fP5CsUfXQJUaAWXICsIXDNbl1MkFBUm2/6xKxeOhvuF9VhRpI2XS7
- 6OH/qUZ58KQsrBl4ksLnyaHLaQx/iY6hfZzSKD8odBDjgzmod0tcFQRznLumOBS7TX
- AU4HSX+IYWvHKHyh7FbakEz8nYDdhYR7hl+V8vTxJgybLr5URV0waQ3kbU20aofR5D
- MvwHYJR/n9wEpSZYxIxKWkXmVRSre8/ofc9Kx51n3PqJ/ztC96mQgbV7PdK2V70Abx
- tzHDE0XM9iV0Q==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
- gregkh@linuxfoundation.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
- festevam@gmail.com, linux-imx@nxp.com, heiko@sntech.de, wens@csie.org,
- jernej.skrabec@gmail.com, samuel@sholland.org
-Cc: kernel@pengutronix.de, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-sunxi@lists.linux.dev, kernel@collabora.com,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Subject: [PATCH v6] media: Add P010 video format
-Date: Thu, 19 May 2022 09:11:46 +0200
-Message-Id: <20220519071146.76119-1-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.32.0
+ id 1nrawY-005dg5-Vn
+ for linux-rockchip@lists.infradead.org; Thu, 19 May 2022 07:51:36 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id j24so5926553wrb.1
+ for <linux-rockchip@lists.infradead.org>; Thu, 19 May 2022 00:51:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amarulasolutions.com; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=iM6CKxNIjkJ6jtgcoGB6e3JO7TA8aFCAtiaLHSOsVJE=;
+ b=V4UXNqgMQHzxZLvO6OeUNoo8CEMuEAbelwrlkWZ1T3t7ZyDQvYhOG2E3AVIXwlLZ0t
+ oWVp80/aNSLp+Bkr5ZFgc5o7EzGkK+43Tdnyvsg+WMDqSwpv/7Nrx12yfMKFuO+9aETp
+ zU9tupNFIRgS7dOUYEHuEiy2SKo9as/nzIaIs=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=iM6CKxNIjkJ6jtgcoGB6e3JO7TA8aFCAtiaLHSOsVJE=;
+ b=TjGJf2c8O2kbHaRzHX71lhQmGHfbBFvsJQJqgcDTFIUFnRA6Nde0td9WYazJgZMncC
+ nDIgROMM9HjIfGyfRxBbNRrACK/mZtTadp2OF53WnW8WDi9Ru5XYOQi2OELjauh759fE
+ adFVrp9Fl8yqpEH1aBjr/u+wleB4RsyQMXPlvoc+T0Ujci9z+dhdUQCPUDxv+N7AzXhv
+ fZgiP5SzHFr7cEaNubLw5y4dmOz6FS1pA35AcKr73OTS/fzbVNI/HeYp6lFNDMmrOoNS
+ UZ7gW++pgVXDCe6qteHjShTtQXPWkeotBnCm9NSXQcjNLmujFyDbCBshXBdpYRHSAJJa
+ 3ZYg==
+X-Gm-Message-State: AOAM531hE5gHHMlelACf8vcGU8ClCcGDuoS6aTwJF+I3a6dscnQ30Cxt
+ rRvttnGzdJBAlpqgXkhxxlL0GQ==
+X-Google-Smtp-Source: ABdhPJyXqPOJv+c6R/rrewe0H5MWdpHADVjc2q4n28Oz4QdT4PjkGZFZrzAiy9A5IfLUmqPeO0UxDA==
+X-Received: by 2002:a5d:64a6:0:b0:20c:64ef:c9cc with SMTP id
+ m6-20020a5d64a6000000b0020c64efc9ccmr2983587wrp.190.1652946684161; 
+ Thu, 19 May 2022 00:51:24 -0700 (PDT)
+Received: from tom-ThinkPad-T14s-Gen-2i.station
+ (net-188-217-53-154.cust.vodafonedsl.it. [188.217.53.154])
+ by smtp.gmail.com with ESMTPSA id
+ c6-20020a05600c4a0600b003942a244ebfsm3370254wmp.4.2022.05.19.00.51.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 May 2022 00:51:23 -0700 (PDT)
+From: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
+To: 
+Cc: tommaso.merciai@amarulasolutions.com, linuxfancy@googlegroups.com,
+ linux-amarula@amarulasolutions.com, michael@amarulasolutions.com,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Shunqian Zheng <zhengsq@rock-chips.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
+Subject: [PATCH 2/4] arm64: dts: rockchip: px30: max drive-strength for
+ cif_clkout_m0
+Date: Thu, 19 May 2022 09:51:15 +0200
+Message-Id: <20220519075117.1003520-3-tommaso.merciai@amarulasolutions.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220519075117.1003520-1-tommaso.merciai@amarulasolutions.com>
+References: <20220519075117.1003520-1-tommaso.merciai@amarulasolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_001155_743321_F347E395 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20220519_005135_110568_F5865929 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,149 +96,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-P010 is a YUV format with 10-bits per component with interleaved UV.
+Add max drive-strength for cif_clkout_m0. This fix the issue that
+sometimes camera ov5695 is not probed correctly.
+Tested on PX30_Mini_EVB_V11_20190507
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
+Tested-by: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
 ---
-version 6:
-- Replace 'pixel' per 'component' in commit message and fourcc
-  description
+ arch/arm64/boot/dts/rockchip/px30-evb.dts | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-version 5:
-- Fix commit message
-- Fix fourcc comment
-
-version 4:
-- Fix 10-bits per components wording.
-
-version 3:
-- remove LE suffix
-- rebased on media_tree_master branch
-
- .../media/v4l/pixfmt-yuv-planar.rst           | 54 +++++++++++++++++++
- drivers/media/v4l2-core/v4l2-common.c         |  1 +
- drivers/media/v4l2-core/v4l2-ioctl.c          |  1 +
- include/uapi/linux/videodev2.h                |  1 +
- 4 files changed, 57 insertions(+)
-
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-index 8dff5906639b..a900ff66911a 100644
---- a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
-@@ -109,6 +109,13 @@ All components are stored with the same number of bits per component.
-       - Cb, Cr
-       - No
-       - 16x16 tiles
-+    * - V4L2_PIX_FMT_P010
-+      - 'P010'
-+      - 10
-+      - 4:2:0
-+      - Cb, Cr
-+      - Yes
-+      - Linear
-     * - V4L2_PIX_FMT_NV16
-       - 'NV16'
-       - 8
-@@ -171,6 +178,7 @@ horizontally.
- .. _V4L2-PIX-FMT-NV21:
- .. _V4L2-PIX-FMT-NV12M:
- .. _V4L2-PIX-FMT-NV21M:
-+.. _V4L2-PIX-FMT-P010:
+diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+index 848bc39cf86a..53930e28eadf 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
++++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+@@ -537,6 +537,13 @@ wifi_enable_h: wifi-enable-h {
+ 				<0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	cif-m0 {
++		cif_clkout_m0: cif-clkout-m0 {
++			rockchip,pins =
++				<2 RK_PB3 1 &pcfg_pull_none_12ma>;
++		};
++	};
+ };
  
- NV12, NV21, NV12M and NV21M
- ---------------------------
-@@ -519,6 +527,52 @@ number of lines as the luma plane.
-       - Cb\ :sub:`33`
-       - Cr\ :sub:`33`
- 
-+.. _V4L2_PIX_FMT_P010:
-+
-+P010
-+----
-+
-+Like NV12 with 10 bits per component, expanded to 16 bits.
-+Data in the 10 high bits, zeros in the 6 low bits, arranged in little endian order.
-+
-+.. flat-table:: Sample 4x4 P010 Image
-+    :header-rows:  0
-+    :stub-columns: 0
-+
-+    * - start + 0:
-+      - Y'\ :sub:`00`
-+      - Y'\ :sub:`01`
-+      - Y'\ :sub:`02`
-+      - Y'\ :sub:`03`
-+    * - start + 8:
-+      - Y'\ :sub:`10`
-+      - Y'\ :sub:`11`
-+      - Y'\ :sub:`12`
-+      - Y'\ :sub:`13`
-+    * - start + 16:
-+      - Y'\ :sub:`20`
-+      - Y'\ :sub:`21`
-+      - Y'\ :sub:`22`
-+      - Y'\ :sub:`23`
-+    * - start + 24:
-+      - Y'\ :sub:`30`
-+      - Y'\ :sub:`31`
-+      - Y'\ :sub:`32`
-+      - Y'\ :sub:`33`
-+    * - start + 32:
-+      - Cb\ :sub:`00`
-+      - Cr\ :sub:`00`
-+      - Cb\ :sub:`01`
-+      - Cr\ :sub:`01`
-+    * - start + 40:
-+      - Cb\ :sub:`10`
-+      - Cr\ :sub:`10`
-+      - Cb\ :sub:`11`
-+      - Cr\ :sub:`11`
-+
-+.. raw:: latex
-+
-+    \endgroup
- 
- Fully Planar YUV Formats
- ========================
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index df34b2a283bc..1e38ad8906a2 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -266,6 +266,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
- 		{ .format = V4L2_PIX_FMT_NV61,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
- 		{ .format = V4L2_PIX_FMT_NV24,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 1, .vdiv = 1 },
- 		{ .format = V4L2_PIX_FMT_NV42,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 1, .vdiv = 1 },
-+		{ .format = V4L2_PIX_FMT_P010,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 2, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
- 
- 		{ .format = V4L2_PIX_FMT_YUV410,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 4, .vdiv = 4 },
- 		{ .format = V4L2_PIX_FMT_YVU410,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 4, .vdiv = 4 },
-diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
-index e2636539c9db..536aaeb4df82 100644
---- a/drivers/media/v4l2-core/v4l2-ioctl.c
-+++ b/drivers/media/v4l2-core/v4l2-ioctl.c
-@@ -1305,6 +1305,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
- 	case V4L2_PIX_FMT_NV61:		descr = "Y/CrCb 4:2:2"; break;
- 	case V4L2_PIX_FMT_NV24:		descr = "Y/CbCr 4:4:4"; break;
- 	case V4L2_PIX_FMT_NV42:		descr = "Y/CrCb 4:4:4"; break;
-+	case V4L2_PIX_FMT_P010:		descr = "10-bit Y/CrCb 4:2:0"; break;
- 	case V4L2_PIX_FMT_NV12_4L4:	descr = "Y/CbCr 4:2:0 (4x4 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12_16L16:	descr = "Y/CbCr 4:2:0 (16x16 Linear)"; break;
- 	case V4L2_PIX_FMT_NV12_32L32:   descr = "Y/CbCr 4:2:0 (32x32 Linear)"; break;
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 6d465dc443b7..77bc9e85b8f8 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -601,6 +601,7 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_NV61    v4l2_fourcc('N', 'V', '6', '1') /* 16  Y/CrCb 4:2:2  */
- #define V4L2_PIX_FMT_NV24    v4l2_fourcc('N', 'V', '2', '4') /* 24  Y/CbCr 4:4:4  */
- #define V4L2_PIX_FMT_NV42    v4l2_fourcc('N', 'V', '4', '2') /* 24  Y/CrCb 4:4:4  */
-+#define V4L2_PIX_FMT_P010    v4l2_fourcc('P', '0', '1', '0') /* 24  Y/CbCr 4:2:0 10-bit per component */
- 
- /* two non contiguous planes - one Y, one Cr + Cb interleaved  */
- #define V4L2_PIX_FMT_NV12M   v4l2_fourcc('N', 'M', '1', '2') /* 12  Y/CbCr 4:2:0  */
+ &pmu_io_domains {
 -- 
-2.32.0
+2.25.1
 
 
 _______________________________________________
