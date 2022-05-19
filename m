@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DAD2C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 15:45:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16F81C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 15:45:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R2Gs/zW1+ZMvctH3omYl9RK5jhgtt3uM9PfQZc1y3E0=; b=dBgJrhVrFEkOlJ
-	gIqWLXR8n9lEkG3xVOIRu/C8LH2XF40/ufdWARYVxPr3ChfQzW9zTqk3IHnM/jCaKv0U3AGMwW6eH
-	LqUfmIV9VGQZRJm6UpPxrW2hLZg2xdw0nGL8w2mVenKhCAxJLNPR09RGhlvLUNO/9aw2WtrqDG+q4
-	1qgmf/unXxSuVj34KFuvZi65yTf4H+c1h9N4dXWGZlHD5xh/L9jdanH1qkmASGc/pKiwbKgDxsg2E
-	dph+AIBkRPmts4Zg7U6a2QjUgcjwMH0Q7RWSGqQIqYHEvtJHTpMrsE1YbKRhb6B7Jt/3o47H28xQQ
-	G8maJSCjcFjkUmAFF3Xg==;
+	List-Owner; bh=+RLZ7jjHNISJAh5mzyOYr1gV6CTINy010w0h85RDyrs=; b=UJG1pENlObOcvl
+	uDwnKPy7+XDytpLOS7N4nn/E6uaWY90TRafj1/IX+8SlPLjl9dKZOjjBm4dyaSvjzNoCJ/YI4GO6j
+	3TG4n22ANm0qmiVymDJEfEOQ5t4JfVaxDNO+BEQq/tl6XiqDc2XWubtDYJUoF3x2Hf01jv8lZthVH
+	/BmFsbrPB31wxwnnfeQ1bFBP3a029eSAHiSyAeD2wPkJC6mbF2Bx5ny4/ovDJ4yvLxkENmOcS11G3
+	Xk2BqNjQU2OlL+1wiZstcWU0UYcAhrQhcvYRzV0hkgFG9YsqSbdYA3XJN1B05l5UUHpZSn4hpL6Dk
+	m24d05Jnj8o57eZ5UoWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nriKo-0084MP-MW; Thu, 19 May 2022 15:45:06 +0000
+	id 1nriKq-0084Ot-Vg; Thu, 19 May 2022 15:45:09 +0000
 Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nriJY-0083Ah-K1; Thu, 19 May 2022 15:43:51 +0000
+ id 1nriJY-00839g-GS; Thu, 19 May 2022 15:43:52 +0000
 Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
- by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24J66mW7012194;
- Thu, 19 May 2022 10:43:34 -0500
+ by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24JBHtab024228;
+ Thu, 19 May 2022 10:43:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=PODMain02222019;
- bh=0izqi8NBRaF340qivz0d9/CZYqNOou8aIl/HCv5U0cs=;
- b=lEJw5cwMhbPWVQSN0JyY0ObRrpwQQelzODv3n9IvH7QK+jomjAvNWpPIWN5QysSBKMa1
- Mq4t0jmWw1BzJPaQyaGDHHabAZnlQQlTWgqg1KbaHggnpRwOL2aDwcmDXt/Tk561dlS/
- V/1/NWfq9sHuRmSJ5bnxFSUbqO2Derq9i4AMBki+7HWSNLDa8VcznW7tAg7ZKoYu+Cid
- OIb8T5bsf1RPuAm7VVcG8ntlC1ZdioBnSnTybSx5/KnZehZcXsxJuin194oRcVQYlH+J
- PCDbO9fXClZsBH/1VpQR6gWSY2dgNP2HLD6J4gDyIS4eFARSsIuhJ/cQKJzAOiUHVi3t yw== 
-Received: from ediex02.ad.cirrus.com ([84.19.233.68])
- by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upf5dn-10
+ bh=emFWkhbKLVsY07EOxiGd6bRhil5YXk3bYL2bmY5jBhs=;
+ b=gE7ASeZMhHcJqs5B7NPSes7hj5CyprtFA2EKL8SbShKqYtFabOCjJF7lHKhcfgMUPId6
+ H5i5uuPx0JpJd6dw/vMuYJ+ycfQdTOSeTcUCpx+ZuPweP8ubw1xH/HQQC37a0o+4gLx0
+ fmHIihOvrpnz60EkaRyDiWbmh8WzfP82quKCUXDQX+9ituAlqgSramhvSb+2sjA24+z/
+ /+KxTsJxKeUDCdhzA1XWFYzN6sOx6Hde58g5TSNOnX/zY2nRBMIDoxDU5xbO3i8DyeWo
+ bRwfWm722KdAMsBkUjmhOkZSurVQfRgJhxECR6BjHDc9bNdtsxML3x7OofG/TG9f2T/4 QQ== 
+Received: from ediex01.ad.cirrus.com ([84.19.233.68])
+ by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upf5dm-3
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Thu, 19 May 2022 10:43:34 -0500
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
- (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
+ Thu, 19 May 2022 10:43:25 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 19 May
- 2022 16:43:20 +0100
+ 2022 16:43:18 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
- Frontend Transport; Thu, 19 May 2022 16:43:20 +0100
+ Frontend Transport; Thu, 19 May 2022 16:43:18 +0100
 Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
- by ediswmail.ad.cirrus.com (Postfix) with ESMTP id A66D711D3;
- Thu, 19 May 2022 15:43:20 +0000 (UTC)
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id B4557475;
+ Thu, 19 May 2022 15:43:18 +0000 (UTC)
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
@@ -66,19 +66,19 @@ CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
  <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
  <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
  <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>
-Subject: [PATCH 32/56] ASoC: bcm: Rename set_fmt_new back to set_fmt
-Date: Thu, 19 May 2022 16:42:54 +0100
-Message-ID: <20220519154318.2153729-33-ckeepax@opensource.cirrus.com>
+Subject: [PATCH 05/56] ASoC: bcm: Update to use set_fmt_new callback
+Date: Thu, 19 May 2022 16:42:27 +0100
+Message-ID: <20220519154318.2153729-6-ckeepax@opensource.cirrus.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-X-Proofpoint-GUID: c9plG5cow3MRz3odEjKvsVrUDqurwwph
-X-Proofpoint-ORIG-GUID: c9plG5cow3MRz3odEjKvsVrUDqurwwph
+X-Proofpoint-GUID: ajhifK472w28_I4WDVyEuSohJoIsbKCp
+X-Proofpoint-ORIG-GUID: ajhifK472w28_I4WDVyEuSohJoIsbKCp
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_084348_871928_E3BCFA3F 
-X-CRM114-Status: GOOD (  14.40  )
+X-CRM114-CacheID: sfid-20220519_084348_777872_1BD6FEB1 
+X-CRM114-Status: GOOD (  14.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,39 +96,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Now the core has been migrated across to the new direct clock
-specification we can move the drivers back to the normal set_fmt
+As part of updating the core to directly tell drivers if they are clock
+provider or consumer update these CPU side drivers to use the new direct
 callback.
 
 Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 ---
- sound/soc/bcm/bcm2835-i2s.c | 2 +-
- sound/soc/bcm/cygnus-ssp.c  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ sound/soc/bcm/bcm2835-i2s.c | 22 +++++++++++-----------
+ sound/soc/bcm/cygnus-ssp.c  |  6 +++---
+ 2 files changed, 14 insertions(+), 14 deletions(-)
 
 diff --git a/sound/soc/bcm/bcm2835-i2s.c b/sound/soc/bcm/bcm2835-i2s.c
-index aa7d8e081f89a..e39c8d9f40995 100644
+index e3fc4bee8cfdc..aa7d8e081f89a 100644
 --- a/sound/soc/bcm/bcm2835-i2s.c
 +++ b/sound/soc/bcm/bcm2835-i2s.c
+@@ -133,8 +133,8 @@ static void bcm2835_i2s_start_clock(struct bcm2835_i2s_dev *dev)
+ 		return;
+ 
+ 	switch (provider) {
+-	case SND_SOC_DAIFMT_CBC_CFC:
+-	case SND_SOC_DAIFMT_CBC_CFP:
++	case SND_SOC_DAIFMT_BP_FP:
++	case SND_SOC_DAIFMT_BP_FC:
+ 		clk_prepare_enable(dev->clk);
+ 		dev->clk_prepared = true;
+ 		break;
+@@ -385,12 +385,12 @@ static int bcm2835_i2s_hw_params(struct snd_pcm_substream *substream,
+ 
+ 	/* Check if CPU is bit clock provider */
+ 	switch (dev->fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+-	case SND_SOC_DAIFMT_CBC_CFC:
+-	case SND_SOC_DAIFMT_CBC_CFP:
++	case SND_SOC_DAIFMT_BP_FP:
++	case SND_SOC_DAIFMT_BP_FC:
+ 		bit_clock_provider = true;
+ 		break;
+-	case SND_SOC_DAIFMT_CBP_CFC:
+-	case SND_SOC_DAIFMT_CBP_CFP:
++	case SND_SOC_DAIFMT_BC_FP:
++	case SND_SOC_DAIFMT_BC_FC:
+ 		bit_clock_provider = false;
+ 		break;
+ 	default:
+@@ -399,12 +399,12 @@ static int bcm2835_i2s_hw_params(struct snd_pcm_substream *substream,
+ 
+ 	/* Check if CPU is frame sync provider */
+ 	switch (dev->fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+-	case SND_SOC_DAIFMT_CBC_CFC:
+-	case SND_SOC_DAIFMT_CBP_CFC:
++	case SND_SOC_DAIFMT_BP_FP:
++	case SND_SOC_DAIFMT_BC_FP:
+ 		frame_sync_provider = true;
+ 		break;
+-	case SND_SOC_DAIFMT_CBC_CFP:
+-	case SND_SOC_DAIFMT_CBP_CFP:
++	case SND_SOC_DAIFMT_BP_FC:
++	case SND_SOC_DAIFMT_BC_FC:
+ 		frame_sync_provider = false;
+ 		break;
+ 	default:
 @@ -743,7 +743,7 @@ static const struct snd_soc_dai_ops bcm2835_i2s_dai_ops = {
  	.prepare	= bcm2835_i2s_prepare,
  	.trigger	= bcm2835_i2s_trigger,
  	.hw_params	= bcm2835_i2s_hw_params,
--	.set_fmt_new	= bcm2835_i2s_set_dai_fmt,
-+	.set_fmt	= bcm2835_i2s_set_dai_fmt,
+-	.set_fmt	= bcm2835_i2s_set_dai_fmt,
++	.set_fmt_new	= bcm2835_i2s_set_dai_fmt,
  	.set_bclk_ratio	= bcm2835_i2s_set_dai_bclk_ratio,
  	.set_tdm_slot	= bcm2835_i2s_set_dai_tdm_slot,
  };
 diff --git a/sound/soc/bcm/cygnus-ssp.c b/sound/soc/bcm/cygnus-ssp.c
-index 257f3657bcd6e..4bfa2d715ff4d 100644
+index 9698f4531c90f..257f3657bcd6e 100644
 --- a/sound/soc/bcm/cygnus-ssp.c
 +++ b/sound/soc/bcm/cygnus-ssp.c
+@@ -849,11 +849,11 @@ static int cygnus_ssp_set_fmt(struct snd_soc_dai *cpu_dai, unsigned int fmt)
+ 	ssp_newcfg = 0;
+ 
+ 	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+-	case SND_SOC_DAIFMT_CBP_CFP:
++	case SND_SOC_DAIFMT_BC_FC:
+ 		ssp_newcfg |= BIT(I2S_OUT_CFGX_SLAVE_MODE);
+ 		aio->is_slave = 1;
+ 		break;
+-	case SND_SOC_DAIFMT_CBC_CFC:
++	case SND_SOC_DAIFMT_BP_FP:
+ 		ssp_newcfg &= ~BIT(I2S_OUT_CFGX_SLAVE_MODE);
+ 		aio->is_slave = 0;
+ 		break;
 @@ -1148,7 +1148,7 @@ static const struct snd_soc_dai_ops cygnus_ssp_dai_ops = {
  	.shutdown	= cygnus_ssp_shutdown,
  	.trigger	= cygnus_ssp_trigger,
  	.hw_params	= cygnus_ssp_hw_params,
--	.set_fmt_new	= cygnus_ssp_set_fmt,
-+	.set_fmt	= cygnus_ssp_set_fmt,
+-	.set_fmt	= cygnus_ssp_set_fmt,
++	.set_fmt_new	= cygnus_ssp_set_fmt,
  	.set_sysclk	= cygnus_ssp_set_sysclk,
  	.set_tdm_slot	= cygnus_set_dai_tdm_slot,
  };
