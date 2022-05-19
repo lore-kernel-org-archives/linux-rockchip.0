@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60C48C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 07:02:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2244C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 07:12:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6NcZ4fQeJEQ7vwz0ib+Zpy/WwENUIHYomVySzRN62wM=; b=XU2YVFI4JH1UVr
-	SEAtaJXtyYGo9Xj4vl2YZWy+O7NYBGRM+wdLOWuJwqdEVq6Fe7qR02FUniW1RUqWEtLp1mGdVk8wl
-	FaUvFhkhit5mXyatIZsWVgTjJboqXbYqZEIbSrikg0JqFsvFfEth7TBjr9BHQ04wJMOdFoXHmwjw7
-	P9mqQ4pN2IcSPkyrn38dsK4EZdb+ZkMFnqhurb7aCYlwFbpMww45WR9RXDANu2v2GGhZScIogGMJl
-	fgGqNE1waYqX2WqTYSWhtpjKUQqqx0q2Z8u4mt3Ljnw83ffyFQDyyt54U9Jk8k9BPpU+QmgT4SW/x
-	1U0Z/EQLIZsx77An+/3g==;
+	List-Owner; bh=HZZP5RAhKtoWkU+J6/GGrSN9Cz89dhAotTnmD3UqTkE=; b=txlcS3S5aoekhX
+	zP30sCcwJMA7xt5eBDhFXw0zKRPxJaMpm3/uwAzAmrK3ySb8F43stEM6hA6oLOla4miX5q1k3Klx8
+	v553QhNRQI9+vTR1zR2U/PNU7djnu2mv26TLZnRYCIvdul7u9Jcbleu6uavYtXsAMlBZZHQqji5il
+	X4p02cNRTqDrbIFPrmOM9AkUoRMonzf+I4dUBNu+1zG/zSA5jPAvAViOQIYL203w9eN553EpBToqE
+	7GLKrb26DzmbaTz7dPlhJqIPmmjszoue1WzfxN5CQNbK5+DpXbjzzrSGT5xUkUkxI9syDKFNGtOCl
+	0Lb5/++JNDDJYkb34wjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nraAr-005PVg-9R; Thu, 19 May 2022 07:02:17 +0000
+	id 1nraKT-005S8z-A6; Thu, 19 May 2022 07:12:13 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nraAf-005PQs-JL; Thu, 19 May 2022 07:02:07 +0000
+ id 1nraKB-005S2P-Bb; Thu, 19 May 2022 07:11:57 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
  (Authenticated sender: benjamin.gaignard)
- with ESMTPSA id 642441F45629
+ with ESMTPSA id 4369D1F4565F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1652943719;
- bh=GLtuI+hry+/4iLJMOGwBy+jWAR47CJf0GMenGxeiSwM=;
+ s=mail; t=1652944313;
+ bh=OEcTyTvXeWneBi8GvH9jsIAxafQtn5PH2MYUYrWug2Q=;
  h=From:To:Cc:Subject:Date:From;
- b=OED4ZCMv8q+ogwauV/f2/EreJYk+XcBUc0GGjdlHa6ui7oRbLAEMNbqflkmWG/2R3
- unXL1lASx/ZFWTt7LfjBAUn8FETA6OW9WlFujnR1MlKHPxdRZkjr1n7luwg3duTMS3
- MyZ1uAsEnMEOpMNekhQv3tiGcsiX6u7k3ZFE7UbrZ2pf/J90Ph3qZBcX/7FOrI9Fa5
- auCnHdtB0lD6udebJWgInTFQMBrl1NBoigLgYdFXBhc24HNRp5ebz/F7oCmNB7FGaQ
- aLQ4q96NETWK6/cVXNiWdgyZfMEuC+dbCt0tPO7jH4qI37hzTkkUI7vaIKy4Pom+5L
- jykFXF2jkEyWw==
+ b=Cxf3+0ccgabzfMua9Rv0yMGRSD7g3lbSqVGAssBI1p7bDyreKENNItr8zEO6dLo3V
+ LKJhyaYazYAn3fP5CsUfXQJUaAWXICsIXDNbl1MkFBUm2/6xKxeOhvuF9VhRpI2XS7
+ 6OH/qUZ58KQsrBl4ksLnyaHLaQx/iY6hfZzSKD8odBDjgzmod0tcFQRznLumOBS7TX
+ AU4HSX+IYWvHKHyh7FbakEz8nYDdhYR7hl+V8vTxJgybLr5URV0waQ3kbU20aofR5D
+ MvwHYJR/n9wEpSZYxIxKWkXmVRSre8/ofc9Kx51n3PqJ/ztC96mQgbV7PdK2V70Abx
+ tzHDE0XM9iV0Q==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
  gregkh@linuxfoundation.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
@@ -48,14 +48,14 @@ Cc: kernel@pengutronix.de, linux-media@vger.kernel.org,
  linux-sunxi@lists.linux.dev, kernel@collabora.com,
  Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Subject: [PATCH v5] media: Add P010 video format
-Date: Thu, 19 May 2022 09:01:48 +0200
-Message-Id: <20220519070148.63315-1-benjamin.gaignard@collabora.com>
+Subject: [PATCH v6] media: Add P010 video format
+Date: Thu, 19 May 2022 09:11:46 +0200
+Message-Id: <20220519071146.76119-1-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_000205_926629_FFEAFCBD 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20220519_001155_743321_F347E395 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,11 +73,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-P010 is a YUV format with 10-bits per pixel with interleaved UV.
+P010 is a YUV format with 10-bits per component with interleaved UV.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
+version 6:
+- Replace 'pixel' per 'component' in commit message and fourcc
+  description
+
 version 5:
 - Fix commit message
 - Fix fourcc comment
@@ -199,14 +203,14 @@ index e2636539c9db..536aaeb4df82 100644
  	case V4L2_PIX_FMT_NV12_16L16:	descr = "Y/CbCr 4:2:0 (16x16 Linear)"; break;
  	case V4L2_PIX_FMT_NV12_32L32:   descr = "Y/CbCr 4:2:0 (32x32 Linear)"; break;
 diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 6d465dc443b7..57da13b6105c 100644
+index 6d465dc443b7..77bc9e85b8f8 100644
 --- a/include/uapi/linux/videodev2.h
 +++ b/include/uapi/linux/videodev2.h
 @@ -601,6 +601,7 @@ struct v4l2_pix_format {
  #define V4L2_PIX_FMT_NV61    v4l2_fourcc('N', 'V', '6', '1') /* 16  Y/CrCb 4:2:2  */
  #define V4L2_PIX_FMT_NV24    v4l2_fourcc('N', 'V', '2', '4') /* 24  Y/CbCr 4:4:4  */
  #define V4L2_PIX_FMT_NV42    v4l2_fourcc('N', 'V', '4', '2') /* 24  Y/CrCb 4:4:4  */
-+#define V4L2_PIX_FMT_P010    v4l2_fourcc('P', '0', '1', '0') /* 24  Y/CbCr 4:2:0 10-bit per pixel */
++#define V4L2_PIX_FMT_P010    v4l2_fourcc('P', '0', '1', '0') /* 24  Y/CbCr 4:2:0 10-bit per component */
  
  /* two non contiguous planes - one Y, one Cr + Cb interleaved  */
  #define V4L2_PIX_FMT_NV12M   v4l2_fourcc('N', 'M', '1', '2') /* 12  Y/CbCr 4:2:0  */
