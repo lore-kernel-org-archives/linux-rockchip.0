@@ -4,76 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1BA3C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 21:44:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49012C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 23:40:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sDvqo0Bf8uTWFymDN/RQCpOXZa76QhdbsxGwa9tjYy4=; b=YTU5MM6QsY+Ko9
-	pRJw+KtbzShaPgrfiXZ7U3CCz423a6ijpaai8oMZGU//RCf/mn0g+ZkW2hPNU6riH9BgWFAy9o5/f
-	iC3Yw17Znd8SflOtantp9ABn0Q6OIQi83ar3d2XQGpK+lzwapcLL+dQJZFsykMhD9g5Fe19UfJoc5
-	wHNftU8k5ZIGNx4mOABxogduele3e4svbra3oeO5i7vFMdSGfBoHWUDSiz37Vyk6E1tRdteq7+0hY
-	s8xlMYzH5ThSy+njfKAPaRVxVA4Rd0oSpOL1pRnnTxR6zB4lmdj7z2E0W/snmi3oC3PjL9FyXC6rG
-	pYxe6Y1j6plL/G6v9YEQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=3cGIy5C0nl7s/kCCZtHdZsrNtqxjVULp4b45k5QNvBo=; b=JFZXsVHjqUiVOks8Pek2i0Yu4h
+	R4oIrhWqtkTTd8NDM4LJP5Qoh40fzZk211WidCjKP64dREgV/dRVKIoCjqHww9bG9r5xQBZDDk4aM
+	Uvxdd5pa83fxTd409Mso5A+4QTZXggqtNXd9/c/3t0H13EcDpOyLz+iNr/T6PT1u95HwoHrekeUdW
+	1Jg1euXuR1oIvmYAsK7MBlPBmLjLoXEANFBFfDCntKExdeZoesNiyA42Dm6i+ceLMKSaCg/ODLwq3
+	ceDLRWjZ7+dwSINDbuxfNP2BN/058ICn/xPYDcPeF0wBbel3a2CSEbqu77lmfN0dU7vkWXeoDml1K
+	DcJ4fs1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrnw2-009TKt-8I; Thu, 19 May 2022 21:43:54 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nrpkn-009hZE-TD; Thu, 19 May 2022 23:40:25 +0000
+Received: from out5-smtp.messagingengine.com ([66.111.4.29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrnvz-009TKP-4G
- for linux-rockchip@lists.infradead.org; Thu, 19 May 2022 21:43:52 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id E679AB8289E
- for <linux-rockchip@lists.infradead.org>; Thu, 19 May 2022 21:43:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A7913C385AA
- for <linux-rockchip@lists.infradead.org>; Thu, 19 May 2022 21:43:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1652996627;
- bh=5aMdAvTCHVLlyDNppzS55+XVjRG2HfXHSwjwsdpbSDI=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=BMt93s2vM6p1ZI2XQ3Q86EEKTlBzjLxQUlSqkcYfmBCuijxIW8eKhLsfShbku5Bni
- zw3xcNBXu42bakrmqkgx7Sx+HK5LomkerwtRcOxJeW1buvwdgeRM3TLSNrtSA4hH4B
- V4Jy0L99TanxomZmIYpNPRTY6mLx9bYu+528EZYuUCawqZyRFdPuXmWVos1Cky8MWH
- TCDCb1g3fGDCRq1Xl91+jgBd6hgumhWAS43BzNHksnwPasQJ3Q4toKemfk9DIMKf69
- soVGYAnTKx2/uY/p7F/d3wPqEPE9QHq8nQ5SR6QoHZeEatCuVanGM+i+jdrfX1eM/o
- 1FaPIttreRubQ==
-Received: by mail-ej1-f44.google.com with SMTP id i27so12298192ejd.9
- for <linux-rockchip@lists.infradead.org>; Thu, 19 May 2022 14:43:47 -0700 (PDT)
-X-Gm-Message-State: AOAM530YSOyG/v+5y3uCG0ok57gZleq29RdXXvsZDKHzKh+o+VltnHT1
- IRtjZqSvzW5FfeoPPaqxXGph8HbYZ2b25Rcr0A==
-X-Google-Smtp-Source: ABdhPJy/FmQBVx6CrhZAtN/k6CFbQ9CkVxk9EXYwaAWWsAYZzAOadTHWIasmQ9mr78AgZlMNI2cC8j+VFKqwl5z/bJ8=
-X-Received: by 2002:a17:907:9602:b0:6df:e82c:f84 with SMTP id
- gb2-20020a170907960200b006dfe82c0f84mr6180859ejc.590.1652996625948; Thu, 19
- May 2022 14:43:45 -0700 (PDT)
+ id 1nrpkj-009hY1-IU; Thu, 19 May 2022 23:40:23 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 568E05C023E;
+ Thu, 19 May 2022 19:40:15 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute4.internal (MEProxy); Thu, 19 May 2022 19:40:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
+ cc:cc:content-transfer-encoding:content-type:date:date:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to; s=fm2; t=1653003615; x=
+ 1653090015; bh=iqHByxP/PP0RV5Kp27EEtrVjbBff5eU8E6iDfYSzvlo=; b=v
+ WvrghW/tnB2wQQZ7H1BtAjOy1RhwPLZpgzo98sCQvJhYWwor/HzjJNsV/LVOFbsE
+ YSiG6I57bor0I2nDEC6ZNocpWKkv71xzTjDYt6ZfZ8NcTOw4uLTbONYN6bKYH0PY
+ ZXLXErKuqY/OVSt1aiUR4bNuR2iEWFiDRXePo8UJrjuv+NMyWc7SgXvTTXZClSjS
+ xX/9GfMLAZ8ZS2t+SmXFzd5bG9/XZqH4LhunRvn1mAKETHqh9PDqXC25nNdQWczb
+ Ozc+ESgOxLy8gZ1sJC+Wq7Am0HXvT/m2QJQsf+liwgR8ULL+hRLTOVRO4mvNvxjd
+ KHsL6W3LPExCEUM/TygiQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:in-reply-to:message-id:mime-version:references
+ :reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1653003615; x=
+ 1653090015; bh=iqHByxP/PP0RV5Kp27EEtrVjbBff5eU8E6iDfYSzvlo=; b=k
+ pRbno/Gt6gUXFzSSorr0j6sxajaPEN+rwHFd8+jcnA6Sce0eyMe1DAfgUIuR5rln
+ yyI3d7qfzMsS8JltiVQrFJi7K/ZoDyKheaneInXoIGCdVSulwqOTjJorhLCu2Gw7
+ IoRXmbGJ3trZhAv+ZBVHrxN0gMC5BalsJ/SKUO/9f+9Ut6HKvwFdvvQ8z8xsuHUk
+ fxcCGXOOf/BbfqT8Y8VSjsuEJ6GBj8XDHJJ8IRfvpiEixjiRTsOTlez4NEgoU/2g
+ W4aJu6F/kQHejyjCH6arZw/g+aNM+9HBFIdRKkeEFQw/69yhZyT9EcMBkfbZV9md
+ 9NuahsBfHX2ficK+iYbDQ==
+X-ME-Sender: <xms:XdWGYgUGUf75UPVgls83XPWiF6A-tBj4e3s97Kb34YKu5oXO3A13_Q>
+ <xme:XdWGYkkqej7Sw873SF-tPbdbpAwSLvqaubcCTMpPfIOnD1JzRCeaEf8RmHncNciRB
+ jroNjyXsoqZ4PKpkg>
+X-ME-Received: <xmr:XdWGYkbvrZwpUnOM1O4-_2tYjgJTQpjZPqXkpDEw0EpgcjUMjLmwhmRAdevmUe4wB8Y-f3nIrmriP-19jvjm7O0yy8ouh7KCEVebaavF9pBHI4yR_-4r_4bKXQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedriedvgddviecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpefuvfevfhfhkffffgggjggtgfesthejredttdefjeenucfhrhhomhepufgrmhhu
+ vghlucfjohhllhgrnhguuceoshgrmhhuvghlsehshhholhhlrghnugdrohhrgheqnecugg
+ ftrfgrthhtvghrnhepffdtveekvdegkeeuueetgfetffeileevudekuefhheelvdfhiedt
+ heduhfduhefhnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrh
+ homhepshgrmhhuvghlsehshhholhhlrghnugdrohhrgh
+X-ME-Proxy: <xmx:XdWGYvUwc4jVKeqPla_0-WQCIkx0RnvqDhfHPs1ZzAd8QctkVgY8fQ>
+ <xmx:XdWGYqm6J2stCQX-STAMuroIUM4y_rHHyhG_yTajyWgKhMRCq9JK7Q>
+ <xmx:XdWGYkfsUHQ4XlJCEJ_vR0OyzJAV_JKQMFS6xef23lbxi7aCuM1zAg>
+ <xmx:X9WGYo3IuYUdLigJsZOLgqfeufUYTAN7skI0dQ2vQGpXXTD2m7p_Gw>
+Feedback-ID: i0ad843c9:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 19 May 2022 19:40:12 -0400 (EDT)
+Subject: Re: [PATCH 22/56] ASoC: sunxi: Update to use set_fmt_new callback
+To: Charles Keepax <ckeepax@opensource.cirrus.com>, broonie@kernel.org
+Cc: lgirdwood@gmail.com, kuninori.morimoto.gx@renesas.com,
+ nicolas.ferre@microchip.com, nsaenz@kernel.org, shawnguo@kernel.org,
+ linux-imx@nxp.com, cezary.rojewski@intel.com,
+ pierre-louis.bossart@linux.intel.com, linux-mips@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ daniel@zonque.org, srinivas.kandagatla@linaro.org,
+ linux-rockchip@lists.infradead.org, krzk@kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org,
+ linux-xtensa@linux-xtensa.org, peter.ujfalusi@gmail.com,
+ jarkko.nikula@bitmer.com, heiko@sntech.de, jbrunet@baylibre.com,
+ kernel@pengutronix.de, alsa-devel@alsa-project.org,
+ patches@opensource.cirrus.com
+References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
+ <20220519154318.2153729-23-ckeepax@opensource.cirrus.com>
+From: Samuel Holland <samuel@sholland.org>
+Message-ID: <948d5418-44ca-2e60-0c1c-0b16f315feba@sholland.org>
+Date: Thu, 19 May 2022 18:40:11 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-References: <20220519164533.1961-1-macroalpha82@gmail.com>
- <20220519164533.1961-2-macroalpha82@gmail.com>
-In-Reply-To: <20220519164533.1961-2-macroalpha82@gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Thu, 19 May 2022 16:43:33 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqLOknvm2E8hU9Hd_5S0ZCnPxzbgq4BQL4m6UqC9+tC1tw@mail.gmail.com>
-Message-ID: <CAL_JsqLOknvm2E8hU9Hd_5S0ZCnPxzbgq4BQL4m6UqC9+tC1tw@mail.gmail.com>
-Subject: Re: [PATCH 1/4 v7] dt-bindings: Add Rockchip rk817 battery charger
- support
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: "open list:THERMAL" <linux-pm@vger.kernel.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Lee Jones <lee.jones@linaro.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- "heiko@sntech.de" <heiko@sntech.de>, 
- Sebastian Reichel <sre@kernel.org>, Jon Lin <jon.lin@rock-chips.com>, 
- Chris Zhong <zyw@rock-chips.com>, Elaine Zhang <zhangqing@rock-chips.com>, 
- Chris Morgan <macromorgan@hotmail.com>,
- Maya Matuszczyk <maccraft123mc@gmail.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220519154318.2153729-23-ckeepax@opensource.cirrus.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_144351_361303_3C34F8AF 
-X-CRM114-Status: GOOD (  14.54  )
+X-CRM114-CacheID: sfid-20220519_164021_976898_609AADB2 
+X-CRM114-Status: GOOD (  16.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,34 +118,118 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, May 19, 2022 at 11:45 AM Chris Morgan <macroalpha82@gmail.com> wrote:
->
-> From: Chris Morgan <macromorgan@hotmail.com>
->
-> Create dt-binding documentation to document rk817 battery and charger
-> usage. New device-tree properties have been added.
->
-> - rockchip,resistor-sense-micro-ohms: The value in microohms of the
->                                       sample resistor.
-> - rockchip,sleep-enter-current-microamp: The value in microamps of the
->                                          sleep enter current.
-> - rockchip,sleep-filter-current: The value in microamps of the sleep
->                                  filter current.
->
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+On 5/19/22 10:42 AM, Charles Keepax wrote:
+> As part of updating the core to directly tell drivers if they are clock
+> provider or consumer update these CPU side drivers to use the new direct
+> callback.
+> 
+> Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 > ---
->
-> Note that this patch requires the following commit (still pending):
-> https://lore.kernel.org/linux-rockchip/20220519161731.1168-1-macroalpha82@gmail.com/
->
->  .../bindings/mfd/rockchip,rk817.yaml          | 48 +++++++++++++++++++
->  1 file changed, 48 insertions(+)
+>  sound/soc/sunxi/sun4i-i2s.c   | 20 ++++++++++----------
+>  sound/soc/sunxi/sun8i-codec.c |  8 ++++----
+>  2 files changed, 14 insertions(+), 14 deletions(-)
+> 
+> diff --git a/sound/soc/sunxi/sun4i-i2s.c b/sound/soc/sunxi/sun4i-i2s.c
+> index 7047f71629ab3..872838d3e0a94 100644
+> --- a/sound/soc/sunxi/sun4i-i2s.c
+> +++ b/sound/soc/sunxi/sun4i-i2s.c
+> @@ -702,13 +702,13 @@ static int sun4i_i2s_set_soc_fmt(const struct sun4i_i2s *i2s,
+>  			   SUN4I_I2S_FMT0_FMT_MASK, val);
+>  
+>  	/* DAI clock master masks */
+> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+> -	case SND_SOC_DAIFMT_CBS_CFS:
+> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+> +	case SND_SOC_DAIFMT_BP_FP:
+>  		/* BCLK and LRCLK master */
+>  		val = SUN4I_I2S_CTRL_MODE_MASTER;
+>  		break;
+>  
+> -	case SND_SOC_DAIFMT_CBM_CFM:
+> +	case SND_SOC_DAIFMT_BC_FC:
+>  		/* BCLK and LRCLK slave */
+>  		val = SUN4I_I2S_CTRL_MODE_SLAVE;
+>  		break;
+> @@ -802,13 +802,13 @@ static int sun8i_i2s_set_soc_fmt(const struct sun4i_i2s *i2s,
+>  			   SUN8I_I2S_TX_CHAN_OFFSET(offset));
+>  
+>  	/* DAI clock master masks */
+> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+> -	case SND_SOC_DAIFMT_CBS_CFS:
+> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+> +	case SND_SOC_DAIFMT_BP_FP:
+>  		/* BCLK and LRCLK master */
+>  		val = SUN8I_I2S_CTRL_BCLK_OUT |	SUN8I_I2S_CTRL_LRCK_OUT;
+>  		break;
+>  
+> -	case SND_SOC_DAIFMT_CBM_CFM:
+> +	case SND_SOC_DAIFMT_BC_FC:
+>  		/* BCLK and LRCLK slave */
+>  		val = 0;
+>  		break;
+> @@ -909,13 +909,13 @@ static int sun50i_h6_i2s_set_soc_fmt(const struct sun4i_i2s *i2s,
+>  			   SUN50I_H6_I2S_TX_CHAN_SEL_OFFSET(offset));
+>  
+>  	/* DAI clock master masks */
+> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+> -	case SND_SOC_DAIFMT_CBS_CFS:
+> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+> +	case SND_SOC_DAIFMT_BP_FP:
+>  		/* BCLK and LRCLK master */
+>  		val = SUN8I_I2S_CTRL_BCLK_OUT |	SUN8I_I2S_CTRL_LRCK_OUT;
+>  		break;
+>  
+> -	case SND_SOC_DAIFMT_CBM_CFM:
+> +	case SND_SOC_DAIFMT_BC_FC:
+>  		/* BCLK and LRCLK slave */
+>  		val = 0;
+>  		break;
+> @@ -1081,7 +1081,7 @@ static int sun4i_i2s_set_tdm_slot(struct snd_soc_dai *dai,
+>  
+>  static const struct snd_soc_dai_ops sun4i_i2s_dai_ops = {
+>  	.hw_params	= sun4i_i2s_hw_params,
+> -	.set_fmt	= sun4i_i2s_set_fmt,
+> +	.set_fmt_new	= sun4i_i2s_set_fmt,
+>  	.set_sysclk	= sun4i_i2s_set_sysclk,
+>  	.set_tdm_slot	= sun4i_i2s_set_tdm_slot,
+>  	.trigger	= sun4i_i2s_trigger,
+> diff --git a/sound/soc/sunxi/sun8i-codec.c b/sound/soc/sunxi/sun8i-codec.c
+> index 0bea2162f68d9..6e9ef948d6621 100644
+> --- a/sound/soc/sunxi/sun8i-codec.c
+> +++ b/sound/soc/sunxi/sun8i-codec.c
+> @@ -286,11 +286,11 @@ static int sun8i_codec_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
+>  	u32 dsp_format, format, invert, value;
+>  
+>  	/* clock masters */
+> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+> -	case SND_SOC_DAIFMT_CBS_CFS: /* Codec slave, DAI master */
+> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+> +	case SND_SOC_DAIFMT_BP_FP: /* Codec slave, DAI master */
 
-Please resend to the DT list so that automated checks run.
+This is a codec driver, and it is only ever used on the codec end of a link, so
+I would not expect it to be changed.
 
-Rob
+Regards,
+Samuel
+
+>  		value = 0x1;
+>  		break;
+> -	case SND_SOC_DAIFMT_CBM_CFM: /* Codec Master, DAI slave */
+> +	case SND_SOC_DAIFMT_BC_FC: /* Codec Master, DAI slave */
+>  		value = 0x0;
+>  		break;
+>  	default:
+> @@ -630,7 +630,7 @@ static int sun8i_codec_hw_free(struct snd_pcm_substream *substream,
+>  }
+>  
+>  static const struct snd_soc_dai_ops sun8i_codec_dai_ops = {
+> -	.set_fmt	= sun8i_codec_set_fmt,
+> +	.set_fmt_new	= sun8i_codec_set_fmt,
+>  	.set_tdm_slot	= sun8i_codec_set_tdm_slot,
+>  	.startup	= sun8i_codec_startup,
+>  	.hw_params	= sun8i_codec_hw_params,
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
