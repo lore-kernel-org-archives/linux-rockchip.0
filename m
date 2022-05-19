@@ -4,91 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFBA0C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 18:02:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62CCFC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 18:44:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AzlNYWn3inn4SamqGSHroQp0xmiYzW26+noYrTywQZQ=; b=EejLRolYVTHKYQ
-	8UUS9e9LfLQGR6dB0xL0W0+uus0Gvg2tYpsXL+xS6tOjjoPIpwgKpC/r1cXvMDy/u292QfT16II4y
-	l/3oS7G/94sVPMZnTFhBxslS4NK5ZVs31lk0ZQNEDerUqmE+fTusyT7AHKvOVrSbdk6na4H6kkUsF
-	xuMx6g8bpxMsMOr8Pls5lmXx+aYOqx7kAYv80PlUCaGfDKjmXvlkvbYHVw5B6soZQ1/M4MiAofHj6
-	O8Fdx7Hk4i20yrIwg66eT626CvrKf5gh4xIWYp0d8o8kzprFmQxRDmqPjtbyzFNCEuW1iB+/tLHWe
-	cCWeWOPYeUtMU+5YQsIw==;
+	List-Owner; bh=obeEltgX0ZZpr2pvGHEkoZN85ZAuiQGujbJv0LVDyuw=; b=bJeNneOdxfu03P
+	8P+rkX4GZvPDe2oreBhkAYMeiwTiTH6KkqzxGlH8+kzR1F6AUxX9MgeOfQqmxfXsovaUpgc4qQuxa
+	YLwvU8htSn4DbnDGU7ZmPVknyVcfghV/RM6DIfWykAjWWBlSzKaS0dHsb83H0ur4GVvLqa+Jq2Rio
+	of7pX3yP71YW5YPnogiXn4kuMJiddJdB76AbblEWL+WFT3ZPuhsVfb3TvFqyGaS8PCZ+/jH4Wa5O2
+	K4R3Sb578Gqs30Ex5hDO9KhS0htvszUXBeazdKZC61t8mc8LA8GMy1HWyE1wYTRuMXZhwisXh7ncl
+	qtVD4INeUGORvGJncC/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrkT7-008lOE-RU; Thu, 19 May 2022 18:01:49 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1nrl86-008x9o-Ds; Thu, 19 May 2022 18:44:10 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrkT3-008lJu-Lu
- for linux-rockchip@lists.infradead.org; Thu, 19 May 2022 18:01:48 +0000
-Received: by mail-wm1-x329.google.com with SMTP id
- n124-20020a1c2782000000b003972dfca96cso1349642wmn.4
- for <linux-rockchip@lists.infradead.org>; Thu, 19 May 2022 11:01:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=fVe3M9tqslwY4x7NOY++ZuqXi/JwODP0AzP24EXTsFU=;
- b=zNwnD8HGEX4dMW2o83rvLTn7AoZEcx1sSR4p4yjn9QVAK5h1dVtGWZVEiPqgsMQ4fC
- FR4vTxK/gTLl2/te9WksEJEGLkn2bq1r/T4Oxf29++6M/sWEy0SEK+b2zg+gpI4A+iHo
- +EmeaSR60xdrt/FxX0ojmalJ1HRHJDT/MJMybnUKbzff1PaXXg7T4mMY0M9Ot9pkqXdA
- 6uQIX8VO6xni9jWjHMjkzgsgvi+HusgSv1QCTCiH0DhzpXeUbM8LlnEdwPZycqwjNKxp
- zOiVH0jPUBWHMqU9wcUWK3DHvkT70gubrsWDtyNATfaeNj2C/ucpTbc1s+0aDcagdguf
- 7GeQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=fVe3M9tqslwY4x7NOY++ZuqXi/JwODP0AzP24EXTsFU=;
- b=OSqZ3IeulWVf8Ee4FuAm+/vUCb2QLbBMq8M618G25ne5+EZ9S4cu+JO4rvUAcwEMHg
- B5QRwE/Hbjwf3D6cA00gO+O/z4tdHK+mF0v5CIQXMM/18sRUJJx9rKt+hrGxq5FM0SoU
- R2meqJyl+ECQgE31he4M/iw/VAjBGtdNMqOKeZoSzSlWp1ohdE3JSmbltcZMirP00gjF
- sWWGRnCnCvA8Y+YLhlMG5bF8pLdbF4NAoWLDkH6UrMkS2NUpCqlvkZ0/ameQLRIc69MJ
- MFBRFAwMmo5z3v5HvUwH3eshSFH7aF4JN3gMc9aGejU2/I7U5XXcU41yW5iY3rUa+jar
- K14g==
-X-Gm-Message-State: AOAM533W3bOmlHQbnOuPJ3MnDopd1jjEvWHLXsBQqQFgbn7EV5BIoobi
- 9OOsOAbEcUIv7vAQAegdXvlQWg==
-X-Google-Smtp-Source: ABdhPJw8cfkp+TT1jQnbGLtDqbmyP7lf64imV8URHllNUeLqCnBGznJ1wWVEYzCwsc27qviUHiMqbw==
-X-Received: by 2002:a05:600c:35c1:b0:394:8621:a1d5 with SMTP id
- r1-20020a05600c35c100b003948621a1d5mr5370463wmq.196.1652983298729; 
- Thu, 19 May 2022 11:01:38 -0700 (PDT)
-Received: from google.com (cpc155339-bagu17-2-0-cust87.1-3.cable.virginm.net.
- [86.27.177.88]) by smtp.gmail.com with ESMTPSA id
- i24-20020adfa518000000b0020e5d8dbbb8sm223537wrb.56.2022.05.19.11.01.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 May 2022 11:01:38 -0700 (PDT)
-Date: Thu, 19 May 2022 19:01:36 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Hugh Cole-Baker <sigmaris@gmail.com>,
- U-Boot Mailing List <u-boot@lists.denx.de>,
- Caesar Wang <wxt@rock-chips.com>, Vasily Khoruzhick <anarsoul@gmail.com>,
- Kever Yang <kever.yang@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- Brian Norris <briannorris@chromium.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- arm-mail-list <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [U-Boot] [PATCH 2/2] rockchip: rk3399: rockpro64: enable force
- power on reset workaround
-Message-ID: <YoaGAOjvoq0xg2qg@google.com>
-References: <CAMdYzYobPDBuxiKNDg1UA6jG7mXmj527-Gj6=wt9vBAcbNa++A@mail.gmail.com>
- <YoZaqRCFgBm/ihZB@google.com>
- <CAMdYzYr=yYpWdwkCNOL+jn0tNXJ3=+zQKmeOBoeFN-6KS+B+YQ@mail.gmail.com>
- <YoZlgCi1hoTSmwnq@google.com> <YoZmp3Uqzp3zo98Y@google.com>
- <CAMdYzYowggnZeDP8pC_V0qqkOAGzTfe0Jm4x9sGFvTyFErL7CA@mail.gmail.com>
- <YoZ4ZvpAyEeg3Z2p@google.com> <YoZ9AxALOOqbxc3W@google.com>
- <CAMdYzYpseE+W-R5hfttZhG-u1GaPbaM3-2LzcOhKRp2hBD_2qA@mail.gmail.com>
- <CAMdYzYrPiTp9sLOoSPY=dPWOfLzzwsk6XZaDv3_wZsgZOnAVww@mail.gmail.com>
+ id 1nrl80-008x5X-Ve; Thu, 19 May 2022 18:44:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1652985844; x=1684521844;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=R6wPRFuxi1lyRSKNjtJtOfNrBIGNiVRk0AM8VBBZpvQ=;
+ b=kjFP/wfroWQ0sANO/VBvnySKu0rbF+19InRvgOT+zahPF0ML/+nZORzF
+ joMPcwayF2VrK343nBouKTmePQ0+d2QgjvtONpUtIp074BOdL6pa7Kceu
+ HoWO4Ig2L9hk28BxvM2ASyX7Kib5aftW9SSyz65G1x64xYx2Cm9bLT4Cc
+ c6YBmEpwgr/etrh3zQX3Lt4HBIuqvHLh6tB6GZ7VnHqFSp9bTvLoFLKF5
+ 1LyBJ1lpc8ekhkq2qFlxlWWfUmScytS60/bA7YuKu3XHmhJAv8gD2KRNH
+ d9m7j1Kl/3vfAsg9J3igyB0433P5aInI2S4eiDrdjwGWyQTo+MveC/Y90 w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10352"; a="254374774"
+X-IronPort-AV: E=Sophos;i="5.91,237,1647327600"; d="scan'208";a="254374774"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 May 2022 11:44:01 -0700
+X-IronPort-AV: E=Sophos;i="5.91,237,1647327600"; d="scan'208";a="639936525"
+Received: from vrgokulr-mobl1.amr.corp.intel.com (HELO [10.251.4.170])
+ ([10.251.4.170])
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 May 2022 11:43:56 -0700
+Message-ID: <935f76f2-c4cf-d66f-e1e1-8acf5a643f92@linux.intel.com>
+Date: Thu, 19 May 2022 13:43:55 -0500
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAMdYzYrPiTp9sLOoSPY=dPWOfLzzwsk6XZaDv3_wZsgZOnAVww@mail.gmail.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Firefox/91.0 Thunderbird/91.5.0
+Subject: Re: [PATCH 00/56] Specify clock provider directly to CPU DAIs
+Content-Language: en-US
+To: Charles Keepax <ckeepax@opensource.cirrus.com>, broonie@kernel.org
+Cc: lgirdwood@gmail.com, kuninori.morimoto.gx@renesas.com,
+ nicolas.ferre@microchip.com, nsaenz@kernel.org, shawnguo@kernel.org,
+ linux-imx@nxp.com, cezary.rojewski@intel.com, linux-mips@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ daniel@zonque.org, srinivas.kandagatla@linaro.org,
+ linux-rockchip@lists.infradead.org, krzk@kernel.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org,
+ linux-xtensa@linux-xtensa.org, peter.ujfalusi@gmail.com,
+ jarkko.nikula@bitmer.com, heiko@sntech.de, jbrunet@baylibre.com,
+ kernel@pengutronix.de, alsa-devel@alsa-project.org,
+ patches@opensource.cirrus.com
+References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
+From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+In-Reply-To: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_110145_815479_2DB0CA57 
-X-CRM114-Status: GOOD (  62.48  )
+X-CRM114-CacheID: sfid-20220519_114405_154028_21936962 
+X-CRM114-Status: GOOD (  25.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,197 +84,188 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAxOSBNYXkgMjAyMiwgUGV0ZXIgR2VpcyB3cm90ZToKCj4gT24gVGh1LCBNYXkgMTks
-IDIwMjIgYXQgMTozNiBQTSBQZXRlciBHZWlzIDxwZ3dpcGVvdXRAZ21haWwuY29tPiB3cm90ZToK
-PiA+Cj4gPiBPbiBUaHUsIE1heSAxOSwgMjAyMiBhdCAxOjIzIFBNIExlZSBKb25lcyA8bGVlLmpv
-bmVzQGxpbmFyby5vcmc+IHdyb3RlOgo+ID4gPgo+ID4gPiBPbiBUaHUsIDE5IE1heSAyMDIyLCBM
-ZWUgSm9uZXMgd3JvdGU6Cj4gPiA+Cj4gPiA+ID4gT24gVGh1LCAxOSBNYXkgMjAyMiwgUGV0ZXIg
-R2VpcyB3cm90ZToKPiA+ID4gPgo+ID4gPiA+ID4gT24gVGh1LCBNYXkgMTksIDIwMjIgYXQgMTE6
-NDcgQU0gTGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJvLm9yZz4gd3JvdGU6Cj4gPiA+ID4gPiA+
-Cj4gPiA+ID4gPiA+IE9uIFRodSwgMTkgTWF5IDIwMjIsIExlZSBKb25lcyB3cm90ZToKPiA+ID4g
-PiA+ID4KPiA+ID4gPiA+ID4gPiBPbiBUaHUsIDE5IE1heSAyMDIyLCBQZXRlciBHZWlzIHdyb3Rl
-Ogo+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiBPbiBUaHUsIE1heSAxOSwgMjAyMiBhdCAx
-MDo1NiBBTSBMZWUgSm9uZXMgPGxlZS5qb25lc0BsaW5hcm8ub3JnPiB3cm90ZToKPiA+ID4gPiA+
-ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiBJdCdzIG5vdCBjbGVhciBob3cgdGhp
-cyBpc3N1ZSAocHJlc2VudCAzIHllYXJzIGFnbykgd2FzIGZpbmFsbHkKPiA+ID4gPiA+ID4gPiA+
-ID4gPiA+ID4gPiByZXNvbHZlZC4gIEZyb20gdGhlIHRocmVhZCwgaXQgbG9va3MgYXMgaWYgdGhl
-IGZpeCBtaWdodCBoYXZlIG1hZGUgaXRzCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiA+ID4gd2F5IGlu
-dG8gQVRGLCBidXQgSSdtIDg3LjYlIHN1cmUgQVRGIGlzIG5vdCBydW5uaW5nIG9uIHRoaXMgcGxh
-dGZvcm0KPiA+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiAoeWV0KS4KPiA+ID4gPiA+ID4gPiA+ID4g
-PiA+ID4KPiA+ID4gPiA+ID4gPiA+ID4gPiA+ID4gVGhlIHJrMzM5OSBTb0MgaGFzIGEgaGFyZHdh
-cmUgYnVnIHdoZXJlIHRoZSBwb3dlciBkb21haW5zIGFyZSBub3QKPiA+ID4gPiA+ID4gPiA+ID4g
-PiA+ID4gcmVzZXQgdXBvbiBhIHNvZnQgcmVzZXQuIFRoaXMgbGVhZHMgdG8gc2l0dWF0aW9ucyBs
-aWtlIHRoaXMgb25lIHdoZXJlCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiA+IHBvd2VyIGRvbWFpbnMg
-YXJlIHNodXQgZG93biBkdXJpbmcgc2h1dGRvd24gYnV0IGFyZW4ndCByZXN0b3JlZCBvbgo+ID4g
-PiA+ID4gPiA+ID4gPiA+ID4gPiByZWJvb3QuCj4gPiA+ID4gPiA+ID4gPiA+ID4gPgo+ID4gPiA+
-ID4gPiA+ID4gPiA+ID4gSSBhc3N1bWUgdGhpcyBpc24ndCBzb21ldGhpbmcgd2UgY2FuIHBhdGNo
-IGluIHRoZSBrZXJuZWwgZHJpdmVyPwo+ID4gPiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4g
-PiA+ID4gQXMgZmFyIGFzIEkga25vdyBpdCdzIGJlaW5nIHdvcmtlZCBvbiBieSBvdGhlcnMsIEkg
-aGF2ZSBzb21lIGlkZWFzIGZvcgo+ID4gPiA+ID4gPiA+ID4gPiA+IHRoaXMgYXMgd2VsbCBidXQg
-SSd2ZSBiZWVuIGZvY3VzZWQgb24gcmszNTZ4IGxhdGVseS4KPiA+ID4gPiA+ID4gPiA+ID4KPiA+
-ID4gPiA+ID4gPiA+ID4gVGhhbmtzIGZvciB0aGUgdXBkYXRlLgo+ID4gPiA+ID4gPiA+ID4gPgo+
-ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiBNYWlubGluZSBURi1BIHdhcyBwYXRjaGVkIHRvIGZvcmNl
-IGFsbCBwb3dlciBkb21haW5zIG9ubGluZQo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiB3aGVuIGEg
-c29mdCByZWJvb3QgaXMgdHJpZ2dlcmVkLCB3aGljaCBzb2x2ZWQgdGhhdCBpc3N1ZS4KPiA+ID4g
-PiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiA+ID4gPiBPa2F5LCB0aGlzIGlzIHdoYXQg
-SSBmaWd1cmVkLgo+ID4gPiA+ID4gPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiA+ID4gPiA+ID4g
-V2hhdCBwYXJ0aWN1bGFyIGlzc3VlcyBhcmUgeW91IGhhdmluZyBpbml0aWFsaXppbmcgbW9kZXJu
-IHUtYm9vdCBvbgo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gPiB0aGlzIGRldmljZT8KPiA+ID4gPiA+
-ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiA+ID4gPiBUaGlzIGlzIHRoZSBvdXRwdXQ6IGh0
-dHBzOi8vcGFzdGViaW4udWJ1bnR1LmNvbS9wL2Q1RG1zU0JuclIvCj4gPiA+ID4gPiA+ID4gPiA+
-ID4gPgo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gU3BlYWtpbmcgd2l0aCBvbmUgb2YgdGhlIGd1eXMg
-d2hvIHN1cHBvcnRzIFJvY2tQaSA0IGluIEFPU1AsIGhlCj4gPiA+ID4gPiA+ID4gPiA+ID4gPiBz
-dXNwZWN0cyB0aGUgRERSIHNldHRpbmdzLiAgQXBwYXJlbnRseSBzZXR0aW5ncyBmb3Igb2xkZXIg
-U29Dcwo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gc29tZXRpbWVzIGdldCBjbG9iYmVyZWQgd2hlbiBz
-dXBwb3J0IGZvciBuZXdlciBTb0NzIGlzIGFkZGVkLgo+ID4gPiA+ID4gPiA+ID4gPiA+Cj4gPiA+
-ID4gPiA+ID4gPiA+ID4gVGhlIHJrMzM5OSBUUEwgY29kZSBpcyBzcGVjaWZpYyB0byB0aGUgcmsz
-Mzk5IGFuZCBpdCByZWFsbHkgaGFzbid0Cj4gPiA+ID4gPiA+ID4gPiA+ID4gYmVlbiB0b3VjaGVk
-IG11Y2ggcmVjZW50bHkuIEknbSB1c2luZyB0aGUgbGF0ZXN0IE1haW5saW5lIFUtQm9vdCBvbgo+
-ID4gPiA+ID4gPiA+ID4gPiA+IGJvdGggbXkgUm9ja3BybzY0IGFuZCBQaW5lcGhvbmUtUHJvLiBJ
-IGRvbid0IHNlZSBURi1BIGJlaW5nIGxvYWRlZCwKPiA+ID4gPiA+ID4gPiA+ID4gPiB3aGljaCBz
-aG91bGQgaGFwcGVuIGJldHdlZW46Cj4gPiA+ID4gPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiA+
-ID4gPiBUcnlpbmcgdG8gYm9vdCBmcm9tIEJPT1RST00KPiA+ID4gPiA+ID4gPiA+ID4gPiBSZXR1
-cm5pbmcgdG8gYm9vdCBST00uLi4KPiA+ID4gPiA+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiA+ID4g
-PiA+IE90aGVyd2lzZSBpdCBqdXN0IGxvb2tzIGxpa2UgdGhlIFRQTCBjb2RlIGRvZXNuJ3QgbGlr
-ZSBiZWluZyBpbiBhCj4gPiA+ID4gPiA+ID4gPiA+ID4gc2luZ2xlIGNoYW5uZWwgY29uZmlndXJh
-dGlvbi4gRG9lcyB0aGUgMkdCIG1vZGVsIGp1c3QgZm9yZ28gdGhlIHNlY29uZAo+ID4gPiA+ID4g
-PiA+ID4gPiA+IHJhbSBjaGlwPyBPciBpcyB0aGlzIGFjdHVhbGx5IGEgNEdCIG1vZGVsIGFuZCBp
-dCBpc24ndCBkZXRlY3RpbmcgdGhlCj4gPiA+ID4gPiA+ID4gPiA+ID4gc2Vjb25kIGNoaXAgaW4g
-Ym90aCBkb3duc3RyZWFtIGFuZCBtYWlubGluZT8gQ291bGQgeW91IGluY2x1ZGUgdGhlCj4gPiA+
-ID4gPiA+ID4gPiA+ID4gVFBML1NQTCBwb3J0aW9uIG9mIGRvd25zdHJlYW0ncyBvdXRwdXQ/Cj4g
-PiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiA+IFRQTC9TUEwgYXJlIG1vc3RseSBzaWxl
-bnQgb24gdGhlIGRvd25zdHJlYW0gYnVpbGQ6Cj4gPiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+
-ID4gPiA+IGh0dHBzOi8vcGFzdGViaW4udWJ1bnR1LmNvbS9wL20yYkJkakY4V3EvCj4gPiA+ID4g
-PiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiA+IE5vdCBzdXJlIGlmIGl0IGhlbHBzIGF0IGFsbCwg
-YnV0IEFybUJpYW4gaXMgcHJldHR5IG5vaXN5Ogo+ID4gPiA+ID4gPiA+ID4gPgo+ID4gPiA+ID4g
-PiA+ID4gPiBodHRwczovL3Bhc3RlYmluLnVidW50dS5jb20vcC9mZFBqbW1xQkRNLwo+ID4gPiA+
-ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiA+IFdlaXJkIHRoYXQgZG93bnN0cmVhbSBhbmQgbWFpbmxp
-bmUgYXJlIGJlaW5nIGJ1aWx0IHdpdGggbm9uZSBvZiB0aGUKPiA+ID4gPiA+ID4gPiA+IGRlYnVn
-IHN0dWZmIGVuYWJsZWQuIEFybWJpYW4gY2xlYXJseSBzaG93cyB0aGUgaW5pdGlhbCBzZXR1cCBv
-Y2N1cmluZwo+ID4gPiA+ID4gPiA+ID4gY29ycmVjdGx5LCBhbmQgdGhhdCBpdCdzIGEgNEdCIGJv
-YXJkLiBJdCdzIHVzaW5nIGJvdGggdGhlIFJvY2tjaGlwCj4gPiA+ID4gPiA+ID4gPiBtaW5pbG9h
-ZGVyIHdpdGggYSBSb2NrY2hpcCBURi1BIGJsb2IgYXMgd2VsbC4KPiA+ID4gPiA+ID4gPiA+Cj4g
-PiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiA+ID4gPiBJIGFtIHlldCB0byBpbnZlc3Rp
-Z2F0ZSB0aGUgdS1ib290IHN0b3J5IGluIGFueSBkZXRhaWwuCj4gPiA+ID4gPiA+ID4gPiA+ID4g
-Pgo+ID4gPiA+ID4gPiA+ID4gPiA+ID4gSXQncyBvbiBteSBUT0RPIGxpc3QgZm9yIHRvZGF5Lgo+
-ID4gPiA+ID4gPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiA+ID4gPiA+ID4gSXMgdGhlcmUgYSBw
-YXJ0aWN1bGFyIHJlYXNvbiBpdCBpc24ndCB1c2luZyBNYWlubGluZSBURi1BPwo+ID4gPiA+ID4g
-PiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiA+ID4gPiA+IFdlJ3JlIG5vdCB1c2luZyBUcnVzdGVk
-IEZpcm13YXJlIHlldC4KPiA+ID4gPiA+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiA+ID4gPiA+IFRo
-aXMgcGxhdGZvcm0gZG9lcyBub3Qgd29yayBhdCBhbGwgd2l0aG91dCBURi1BLiBPcHRlZSBpcyBv
-cHRpb25hbC4KPiA+ID4gPiA+ID4gPiA+ID4gPiBFaXRoZXIgeW91IGFyZSB1c2luZyB0aGUgZG93
-bnN0cmVhbSBibG9iIGZyb20gUm9ja2NoaXAgb3IgTWFpbmxpbmUKPiA+ID4gPiA+ID4gPiA+ID4g
-PiBidWlsdCB5b3Vyc2VsZi4gUGVyc29uYWxseSBJIHByZWZlciB1c2luZyBNYWlubGluZSBldmVy
-eXRoaW5nLiBJZiB5b3UKPiA+ID4gPiA+ID4gPiA+ID4gPiBidWlsZCBNYWlubGluZSBVLUJvb3Qg
-d2l0aG91dCBURi1BIGl0IHdpbGwgdGhyb3cgYSB3YXJuaW5nIGF0IHRoZSBlbmQKPiA+ID4gPiA+
-ID4gPiA+ID4gPiB0aGF0IHNheXMgdGhlIGNyZWF0ZWQgYmluYXJ5IGlzIG5vbi1mdW5jdGlvbmFs
-Lgo+ID4gPiA+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiA+ID4gPiBSaWdodC4gIFBsYXllZCBhIGxv
-dCB3aXRoIHRoaXMgdG9kYXkuCj4gPiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiA+IE91
-ciBidWlsZCB3YXMgdXNpbmcgVEYtQSB3aGljaCB3YXMgYnVpbHQtaW4gdG8gdGhlIHByaW1hcnkg
-bG9hZGVyLgo+ID4gPiA+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiA+ID4gPiBJIGhhZCAyIGludGVy
-ZXN0aW5nIHJlc3VsdHMgdG9kYXkuICBObyBpZGVhIGhvdyB0byBleHBsYWluIHRoZW0uCj4gPiA+
-ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiA+IEZpcnN0IG9uZSB3YXMgd2l0aCBNYWlubGlu
-ZSB1LWJvb3QgYW5kIE1haW5saW5lIFRGLUEsIHdoaWNoIGZvdW5kLCBidXQKPiA+ID4gPiA+ID4g
-PiA+ID4gd2FzIHNlZW1pbmdseSB1bmFibGUgdG8gYm9vdCB0aGUga2VybmVsOgo+ID4gPiA+ID4g
-PiA+ID4gPgo+ID4gPiA+ID4gPiA+ID4gPiBodHRwczovL3Bhc3RlYmluLnVidW50dS5jb20vcC85
-SFJoUHlmallLLwo+ID4gPiA+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiA+ID4gPiBUaGUgc2Vjb25k
-IGludGVyZXN0aW5nIHJlc3VsdCBJIGhhZCB3YXMgdXNpbmcgb3VyIGRvd25zdHJlYW0gdS1ib290
-Cj4gPiA+ID4gPiA+ID4gPiA+IHdpdGggTWFpbmxpbmUgVEYtQS4gIEl0IGJvb3RlZCBwZXJmZWN0
-bHkgZnJvbSBjb2xkLCBidXQgbWFuYWdlZCB0byBnZXQKPiA+ID4gPiA+ID4gPiA+ID4gc3R1Y2sg
-aW4gdGhlIFRQTCBvbiBzb2Z0IHJlYm9vdCBpbiBhIHZlcnkgc2ltaWxhciB3YXkgdG8gdGhlIG9u
-ZSBJCj4gPiA+ID4gPiA+ID4gPiA+IHJlcG9ydGVkIGVhcmxpZXIgd2hlbiBub3QgYm9vdGluZyB3
-aXRoIFRGLUEgKCJDaGFubmVsIDE6IGNvbCBlcnJvciIpOgo+ID4gPiA+ID4gPiA+ID4KPiA+ID4g
-PiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiBNYWlubGluZSBURi1BIGRlZmF1bHRzIHRvIDExNTIw
-MCBmb3IgaXRzIHVhcnQgbWVzc2FnZXMsIHNvIHlvdSBuZWVkIHRvCj4gPiA+ID4gPiA+ID4gPiBl
-aXRoZXIgQS4gcGFzcyB0aGUgdWFydCBjb25maWcgZnJvbSBVLUJvb3QgdG8gVEYtQSB3aXRoIGEg
-cGxhdGZvcm0KPiA+ID4gPiA+ID4gPiA+IGNvbmZpZyBvcHRpb24gKHVucmVsaWFibGUgaW4gbXkg
-ZXhwZXJpZW5jZSksIEIuIGNoYW5nZSBVLUJvb3QgdG8KPiA+ID4gPiA+ID4gPiA+IDExNTIwMCwg
-b3IgQy4gY2hhbmdlIFRGLUEgdG8gMS41TSAodGhlIHBhdGggSSB0YWtlKS4gWW91ciBtYWlubGlu
-ZQo+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gSG9wZWZ1bGx5IHRoaXMgaXMgZW5vdWdoOgo+
-ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gZGlmZiAtLWdpdCBhL3BsYXQvcm9ja2NoaXAvcmsz
-Mzk5L3JrMzM5OV9kZWYuaCBiL3BsYXQvcm9ja2NoaXAvcmszMzk5L3JrMzM5OV9kZWYuaAo+ID4g
-PiA+ID4gPiA+IGluZGV4IGJhODMyNDJlYi4uMjRhZDk0YWU3IDEwMDY0NAo+ID4gPiA+ID4gPiA+
-IC0tLSBhL3BsYXQvcm9ja2NoaXAvcmszMzk5L3JrMzM5OV9kZWYuaAo+ID4gPiA+ID4gPiA+ICsr
-KyBiL3BsYXQvcm9ja2NoaXAvcmszMzk5L3JrMzM5OV9kZWYuaAo+ID4gPiA+ID4gPiA+IEBAIC0x
-Nyw3ICsxNyw4IEBACj4gPiA+ID4gPiA+ID4gIC8qKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgo+ID4gPiA+ID4g
-PiA+ICAgKiBVQVJUIHJlbGF0ZWQgY29uc3RhbnRzCj4gPiA+ID4gPiA+ID4gICAqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKi8KPiA+ID4gPiA+ID4gPiAtI2RlZmluZSBSSzMzOTlfQkFVRFJBVEUgICAgICAgICAg
-ICAgICAgICAgICAgICAxMTUyMDAKPiA+ID4gPiA+ID4gPiArLy8jZGVmaW5lIFJLMzM5OV9CQVVE
-UkFURSAgICAgICAgICAgICAgICAgICAgICAxMTUyMDAKPiA+ID4gPiA+ID4gPiArI2RlZmluZSBS
-SzMzOTlfQkFVRFJBVEUgICAgICAgICAgICAgICAgICAgICAgICAxNTAwMDAwCj4gPiA+ID4gPiA+
-ID4gICNkZWZpbmUgUkszMzk5X1VBUlRfQ0xPQ0sgICAgICAgICAgICAgIDI0MDAwMDAwCj4gPiA+
-ID4gPiA+ID4KPiA+ID4gPiA+ID4gPiAgLyoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgo+ID4gPiA+ID4K
-PiA+ID4gPiA+IFllcywgdGhhdCBpcyBzdWZmaWNpZW50Lgo+ID4gPgo+ID4gPiBUaGF0J3MgaW50
-ZXJlc3RpbmcuICBXb3VsZCB0aGlzIGNoYW5nZSByZXN1bHQgaW4gbWUgbm93IGJlaW5nIGFibGUg
-dG8KPiA+ID4gc2VlIHRoZSBjb25zb2xlIG91dHB1dCBmcm9tIHRoaXMgKGFwcGFyZW50bHkpIGZh
-aWxlZCBhdHRlbXB0Ogo+ID4gPgo+ID4gPiBodHRwczovL3Bhc3RlYmluLnVidW50dS5jb20vcC85
-SFJoUHlmallLLwo+ID4gPgo+ID4gPiBIb3dldmVyIHRoZSByZXN1bHQgaXMgdGhlIHNhbWUgYXMg
-dGhlIGRvd25zdHJlYW0ga2VybmVsIHdoZXJlIGl0Cj4gPiA+IGZhaWxzIGluIHRoZSBUUEwgb24g
-c29mdCByZWJvb3Q6Cj4gPiA+Cj4gPiA+IGh0dHBzOi8vcGFzdGViaW4udWJ1bnR1LmNvbS9wL1Ra
-QllxVE1Dbk4vCj4gPiA+Cj4gPiA+IE5vIFRGLUEgbWVzc2FnZXMgc2VlbiB0aG91Z2ggc3RpbGwu
-Cj4gPiA+Cj4gPiA+IElzIGl0IHBvc3NpYmxlIHRoYXQgdS1ib290IG9ubHkgcnVucyBURi1BIG9u
-IGNvbGQgYm9vdD8gIFNlZW1zIG9kZC4KPiA+Cj4gPiBJJ20gY29udmluY2VkIHRoYXQgVEYtQSBp
-cyBub3QgZnVuY3Rpb25hbCBvbiB5b3VyIG1haW5saW5lIGNvbmZpZy4gTm8sCj4gPiBURi1BIHdp
-bGwgZXhlY3V0ZSBvbiBhbnkgcmVzZXQgdGhhdCB0cmlnZ2VycyBTUEwsIGFzIFNQTCBsb2FkcyBU
-Ri1BCj4gPiBhbmQganVtcHMgdG8gaXQgYXMgcGFydCBvZiB0aGUgRklUIGxvYWQuCj4gPgo+ID4g
-Pgo+ID4gPiBXaGF0IHdhcyB0aGUgZXh0cmEgbG9nZ2luZyB5b3UgbWVudGlvbmVkIGJlZm9yZT8K
-PiA+Cj4gPiBUaGlzIGlzIHdoYXQgbXkgcm9ja3BybzY0IGxvb2tzIGxpa2Ugd2l0aCBURi1BIGV4
-ZWN1dGluZy4gTm90ZSBJJ3ZlCj4gPiBlbmFibGVkIGEgYml0IG9mIGV4dHJhIFRGLUEgZGVidWdn
-aW5nLCBub3JtYWxseSBpdCBqdXN0IHByaW50cyBvdXQgdGhlCj4gPiBURi1BIHZlcnNpb24gbnVt
-YmVyLiBURi1BIHJlcG9ydHMgaXRzZWxmIGFzIEJMMzEuCj4gPgo+ID4gVS1Cb290IFRQTCAyMDIy
-LjA0LXJjMi0wMDIzNC1nMDE3YTg5MDFhZTNhLWRpcnR5IChNYXIgMDIgMjAyMiAtIDE4OjM2OjU1
-KQo+ID4gQ2hhbm5lbCAwOiBMUEREUjQsIDUwTUh6Cj4gPiBCVz0zMiBDb2w9MTAgQms9OCBDUzAg
-Um93PTE2LzE1IENTPTEgRGllIEJXPTE2IFNpemU9MjA0OE1CCj4gPiBDaGFubmVsIDE6IExQRERS
-NCwgNTBNSHoKPiA+IEJXPTMyIENvbD0xMCBCaz04IENTMCBSb3c9MTYvMTUgQ1M9MSBEaWUgQlc9
-MTYgU2l6ZT0yMDQ4TUIKPiA+IDI1NkIgc3RyaWRlCj4gPiBscGRkcjRfc2V0X3JhdGU6IGNoYW5n
-ZSBmcmVxIHRvIDQwMDAwMDAwMCBtaHogMCwgMQo+ID4gbHBkZHI0X3NldF9yYXRlOiBjaGFuZ2Ug
-ZnJlcSB0byA4MDAwMDAwMDAgbWh6IDEsIDAKPiA+IFRyeWluZyB0byBib290IGZyb20gQk9PVFJP
-TQo+ID4gUmV0dXJuaW5nIHRvIGJvb3QgUk9NLi4uCj4gPiByb2NrY2hpcF9zZHJhbV9zaXplIGZm
-MzIwMzA4IDMyYzFmMmMxCj4gPiByYW5rIDEgY3MwX2NvbCAxMCBiayAzIGNzMF9yb3cgMTYgYncg
-MiByb3dfM180IDAKPiA+IHJhbmsgMSBjczBfY29sIDEwIGJrIDMgY3MwX3JvdyAxNiBidyAyIHJv
-d18zXzQgMAo+ID4gU0RSQU0gYmFzZT0wLCBzaXplPTEwMDAwMDAwMAo+ID4KPiA+IFUtQm9vdCBT
-UEwgMjAyMi4wNC1yYzItMDAyMzQtZzAxN2E4OTAxYWUzYS1kaXJ0eSAoTWFyIDAyIDIwMjIgLSAx
-ODozNjo1NSAtMDUwMCkKPiA+IFRyeWluZyB0byBib290IGZyb20gTU1DMgo+ID4gTk9USUNFOiAg
-QkwzMTogdjIuNihyZWxlYXNlKTp2Mi42LTEzOC1nOTI5ZjA2NGY2OWQwLWRpcnR5Cj4gPiBOT1RJ
-Q0U6ICBCTDMxOiBCdWlsdCA6IDExOjI3OjQ4LCBGZWIgIDIgMjAyMgo+ID4gSU5GTzogICAgR0lD
-djMgd2l0aCBsZWdhY3kgc3VwcG9ydCBkZXRlY3RlZC4KPiA+IElORk86ICAgIEFSTSBHSUN2MyBk
-cml2ZXIgaW5pdGlhbGl6ZWQgaW4gRUwzCj4gPiBJTkZPOiAgICBNYXhpbXVtIFNQSSBJTlRJRCBz
-dXBwb3J0ZWQ6IDI4Nwo+ID4gSU5GTzogICAgcGxhdF9yb2NrY2hpcF9wbXVfaW5pdCgxNzEwKTog
-cGQgc3RhdHVzIDNlCj4gPiBJTkZPOiAgICBCTDMxOiBJbml0aWFsaXppbmcgcnVudGltZSBzZXJ2
-aWNlcwo+ID4gSU5GTzogICAgQkwzMTogUHJlcGFyaW5nIGZvciBFTDMgZXhpdCB0byBub3JtYWwg
-d29ybGQKPiA+IElORk86ICAgIEVudHJ5IHBvaW50IGFkZHJlc3MgPSAweDIwMDAwMAo+ID4gSU5G
-TzogICAgU1BTUiA9IDB4M2M5Cj4gPgo+ID4KPiA+IFUtQm9vdCAyMDIyLjA0LXJjMi0wMDIzNC1n
-MDE3YTg5MDFhZTNhLWRpcnR5IChNYXIgMDIgMjAyMiAtIDE4OjM2OjU1IC0wNTAwKQo+ID4KPiA+
-IFNvQzogUm9ja2NoaXAgcmszMzk5Cj4gPiBSZXNldCBjYXVzZTogUE9SCj4gPiBNb2RlbDogUGlu
-ZTY0IFJvY2tQcm82NCB2Mi4xCj4gPiBEUkFNOiAgcm9ja2NoaXBfc2RyYW1fc2l6ZSBmZjMyMDMw
-OCAzMmMxZjJjMQo+ID4gcmFuayAxIGNzMF9jb2wgMTAgYmsgMyBjczBfcm93IDE2IGJ3IDIgcm93
-XzNfNCAwCj4gPiByYW5rIDEgY3MwX2NvbCAxMCBiayAzIGNzMF9yb3cgMTYgYncgMiByb3dfM180
-IDAKPiA+IFNEUkFNIGJhc2U9MCwgc2l6ZT0xMDAwMDAwMDAKPiA+IDMuOSBHaUIKPiA+IFBNSUM6
-ICBSSzgwOAo+ID4gQ29yZTogIDI5MiBkZXZpY2VzLCAyOSB1Y2xhc3NlcywgZGV2aWNldHJlZTog
-c2VwYXJhdGUKPiA+IE1NQzogICBtbWNAZmUzMTAwMDA6IDMsIG1tY0BmZTMyMDAwMDogMSwgbW1j
-QGZlMzMwMDAwOiAwCj4gPiBMb2FkaW5nIEVudmlyb25tZW50IGZyb20gU1BJRmxhc2guLi4gU0Y6
-IERldGVjdGVkIGdkMjVxMTI4IHdpdGggcGFnZQo+ID4gc2l6ZSAyNTYgQnl0ZXMsIGVyYXNlIHNp
-emUgNCBLaUIsIHRvdGFsIDE2IE1pQgo+ID4gKioqIFdhcm5pbmcgLSBiYWQgQ1JDLCB1c2luZyBk
-ZWZhdWx0IGVudmlyb25tZW50Cj4gPgo+ID4gSSdtIGN1cnJlbnRseSBwdWxsaW5nIHRoZSByazMz
-OTktcm9jay1waS00Yi5kdHMgdGhhdCdzIGluIG1haW5saW5lCj4gPiBsaW51eCB0byBidWlsZCBh
-IHF1aWNrIGltYWdlIGZvciB5b3UsIGlmIHlvdSdyZSBpbnRlcmVzdGVkLgoKWWVzLCB2ZXJ5IGlu
-dGVyZXN0ZWQsIHRoYW5rIHlvdS4KCj4gSSBzZWUgdGhhdCBtYWlubGluZSBVLUJvb3QgaGFzIHN1
-cHBvcnQgYWxyZWFkeSBmb3IgdGhpcyBkZXZpY2UuIFNvIEknbQo+IGJ1aWxkaW5nIGEgZGVidWcg
-aW1hZ2UgZm9yIHlvdSB3aXRoIHRoYXQuCgpZZXMsIHRoYXQncyB3aGF0IEknbSB1c2luZy4KCkp1
-c3QgdGhlIGRlZmF1bHQgY29uZmlnIHdpdGggQkwzMSBleHBvcnRlZC4KCiAgQkwzMT08UFJPSkVD
-VFM+L3JvY2twaS9hcm0tdHJ1c3RlZC1maXJtd2FyZS9idWlsZC9yazMzOTkvcmVsZWFzZS9ibDMx
-L2JsMzEuZWxmCgotLSAKTGVlIEpvbmVzIFvmnY7nkLzmlq9dClByaW5jaXBhbCBUZWNobmljYWwg
-TGVhZCAtIERldmVsb3BlciBTZXJ2aWNlcwpMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0
-d2FyZSBmb3IgQXJtIFNvQ3MKRm9sbG93IExpbmFybzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxv
-ZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+
+
+On 5/19/22 10:42, Charles Keepax wrote:
+> Currently the set_fmt callback always passes clock provider/consumer
+> with respect to the CODEC. This made sense when the framework was
+> directly broken down into platforms and CODECs. However, as things
+> are now broken down into components which can be connected as either
+> the CPU or CODEC side of a DAI link it simplifies things if each
+> side of the link is just told if it is provider or consumer of the
+> clocks. Making this change allows us to remove one of the last parts
+> of the ASoC core that needs to know if a driver is a CODEC driver,
+> where it flips the clock format specifier if a CODEC driver is used on
+> the CPU side of a DAI link, as well as just being conceptually more
+> consistent with componentisation.
+> 
+> The basic idea of this patch chain is to change the set_fmt callback
+> from specifying if the CODEC is provider/consumer into directly
+> specifying if the component is provider/consumer. To do this we add
+> some new defines, and then to preserve bisectability, the migration is
+> done by adding a new callback, converting over all existing CPU side
+> drivers, converting the core, and then finally reverting back to the
+> old callback.
+> 
+> Converting the platform drivers makes sense as the existing defines
+> are from the perspective of the CODEC and there are more CODEC drivers
+> than platform drivers.
+> 
+> Obviously a fair amount of this patch chain I was only able to build
+> test, so any testing that can be done would be greatly appreciated.
+
+All good for the SOF CI (small subset tested for Intel platforms).
+
+https://github.com/thesofproject/linux/pull/3660
+
+> 
+> Thanks,
+> Charles
+> 
+> Charles Keepax (56):
+>   ASoC: core: Add set_fmt_new callback that directly specifies provider
+>   ASoC: amd: vangogh: Update to use set_fmt_new callback
+>   ASoC: atmel: Update to use set_fmt_new callback
+>   ASoC: au1x: Update to use set_fmt_new callback
+>   ASoC: bcm: Update to use set_fmt_new callback
+>   ASoC: ep93xx: Update to use set_fmt_new callback
+>   ASoC: dwc: Update to use set_fmt_new callback
+>   ASoC: fsl: Update to use set_fmt_new callback
+>   ASoC: hisilicon: Update to use set_fmt_new callback
+>   ASoC: img: Update to use set_fmt_new callback
+>   ASoC: Intel: Update to use set_fmt_new callback
+>   ASoC: js4740-i2s: Update to use set_fmt_new callback
+>   ASoC: mediatek: Update to use set_fmt_new callback
+>   ASoC: meson: Update to use set_fmt_new callback
+>   ASoC: mxs-saif: Update to use set_fmt_new callback
+>   ASoC: pxa: Update to use set_fmt_new callback
+>   ASoC: qcom: Update to use set_fmt_new callback
+>   ASoC: rockchip: Update to use set_fmt_new callback
+>   ASoC: samsung: Update to use set_fmt_new callback
+>   ASoC: sh: Update to use set_fmt_new callback
+>   ASoC: stm: Update to use set_fmt_new callback
+>   ASoC: sunxi: Update to use set_fmt_new callback
+>   ASoC: tegra: Update to use set_fmt_new callback
+>   ASoC: test-component: Update to use set_fmt_new callback
+>   ASoC: ti: Update to use set_fmt_new callback
+>   ASoC: ux500: Update to use set_fmt_new callback
+>   ASoC: xtensa: Update to use set_fmt_new callback
+>   ASoC: core: Always send the CPU DAI a direct clock specifier
+>   ASoC: amd: vangogh: Rename set_fmt_new back to set_fmt
+>   ASoC: atmel: Rename set_fmt_new back to set_fmt
+>   ASoC: au1x: Rename set_fmt_new back to set_fmt
+>   ASoC: bcm: Rename set_fmt_new back to set_fmt
+>   ASoC: ep93xx: Rename set_fmt_new back to set_fmt
+>   ASoC: dwc: Rename set_fmt_new back to set_fmt
+>   ASoC: fsl: Rename set_fmt_new back to set_fmt
+>   ASoC: hisilicon: Rename set_fmt_new back to set_fmt
+>   ASoC: img: Rename set_fmt_new back to set_fmt
+>   ASoC: Intel: Rename set_fmt_new back to set_fmt
+>   ASoC: jz4740-i2s: Rename set_fmt_new back to set_fmt
+>   ASoC: mediatek: Rename set_fmt_new back to set_fmt
+>   ASoC: meson: Rename set_fmt_new back to set_fmt
+>   ASoC: mxs-saif: Rename set_fmt_new back to set_fmt
+>   ASoC: pxa: Rename set_fmt_new back to set_fmt
+>   ASoC: qcom: Rename set_fmt_new back to set_fmt
+>   ASoC: rockchip: Rename set_fmt_new back to set_fmt
+>   ASoC: samsung: Rename set_fmt_new back to set_fmt
+>   ASoC: sh: Rename set_fmt_new back to set_fmt
+>   ASoC: stm: Rename set_fmt_new back to set_fmt
+>   ASoC: sunxi: Rename set_fmt_new back to set_fmt
+>   ASoC: tegra: Rename set_fmt_new back to set_fmt
+>   ASoC: test-component: Rename set_fmt_new back to set_fmt
+>   ASoC: ti: Rename set_fmt_new back to set_fmt
+>   ASoC: ux500: Rename set_fmt_new back to set_fmt
+>   ASoC: xtensa: Rename set_fmt_new back to set_fmt
+>   ASoC: soc-dai: Remove set_fmt_new callback
+>   ASoC: simple-card-utils: Move snd_soc_component_is_codec to be local
+> 
+>  include/sound/soc-component.h                |  5 ---
+>  include/sound/soc-dai.h                      |  6 ++++
+>  sound/soc/amd/vangogh/acp5x-i2s.c            |  4 +--
+>  sound/soc/atmel/atmel-i2s.c                  |  4 +--
+>  sound/soc/atmel/atmel_ssc_dai.c              | 18 +++++-----
+>  sound/soc/atmel/mchp-i2s-mcc.c               |  8 ++---
+>  sound/soc/atmel/mchp-pdmc.c                  |  4 +--
+>  sound/soc/au1x/i2sc.c                        |  2 +-
+>  sound/soc/au1x/psc-i2s.c                     |  4 +--
+>  sound/soc/bcm/bcm2835-i2s.c                  | 20 +++++------
+>  sound/soc/bcm/cygnus-ssp.c                   |  4 +--
+>  sound/soc/cirrus/ep93xx-i2s.c                |  4 +--
+>  sound/soc/dwc/dwc-i2s.c                      |  8 ++---
+>  sound/soc/fsl/fsl_audmix.c                   |  6 ++--
+>  sound/soc/fsl/fsl_esai.c                     |  8 ++---
+>  sound/soc/fsl/fsl_mqs.c                      |  2 +-
+>  sound/soc/fsl/fsl_sai.c                      |  8 ++---
+>  sound/soc/fsl/fsl_ssi.c                      | 22 ++++++------
+>  sound/soc/fsl/imx-audmix.c                   |  4 +--
+>  sound/soc/fsl/imx-card.c                     |  2 +-
+>  sound/soc/generic/simple-card-utils.c        |  7 +++-
+>  sound/soc/generic/test-component.c           | 18 +++++-----
+>  sound/soc/hisilicon/hi6210-i2s.c             | 18 +++++-----
+>  sound/soc/img/img-i2s-in.c                   |  4 +--
+>  sound/soc/img/img-i2s-out.c                  |  6 ++--
+>  sound/soc/intel/atom/sst-atom-controls.c     |  4 +--
+>  sound/soc/intel/boards/bytcht_cx2072x.c      |  2 +-
+>  sound/soc/intel/boards/bytcht_da7213.c       |  2 +-
+>  sound/soc/intel/boards/bytcht_es8316.c       |  2 +-
+>  sound/soc/intel/boards/bytcht_nocodec.c      |  2 +-
+>  sound/soc/intel/boards/bytcr_rt5640.c        |  2 +-
+>  sound/soc/intel/boards/bytcr_rt5651.c        |  2 +-
+>  sound/soc/intel/boards/bytcr_wm5102.c        |  2 +-
+>  sound/soc/intel/boards/cht_bsw_max98090_ti.c |  3 +-
+>  sound/soc/intel/boards/cht_bsw_rt5645.c      |  6 ++--
+>  sound/soc/intel/boards/cht_bsw_rt5672.c      |  2 +-
+>  sound/soc/intel/keembay/kmb_platform.c       |  4 +--
+>  sound/soc/jz4740/jz4740-i2s.c                | 10 +++---
+>  sound/soc/mediatek/mt8195/mt8195-dai-etdm.c  |  6 ++--
+>  sound/soc/mediatek/mt8195/mt8195-dai-pcm.c   |  6 ++--
+>  sound/soc/meson/aiu-encoder-i2s.c            |  2 +-
+>  sound/soc/meson/axg-tdm-interface.c          | 14 ++++----
+>  sound/soc/mxs/mxs-saif.c                     |  4 +--
+>  sound/soc/pxa/magician.c                     |  8 ++---
+>  sound/soc/pxa/mmp-sspa.c                     |  6 ++--
+>  sound/soc/pxa/pxa-ssp.c                      | 22 ++++++------
+>  sound/soc/pxa/pxa2xx-i2s.c                   |  6 ++--
+>  sound/soc/qcom/apq8016_sbc.c                 |  2 +-
+>  sound/soc/qcom/qdsp6/audioreach.c            |  4 +--
+>  sound/soc/qcom/qdsp6/q6afe.c                 |  6 ++--
+>  sound/soc/qcom/sc7180.c                      |  2 +-
+>  sound/soc/qcom/sdm845.c                      |  6 ++--
+>  sound/soc/qcom/sm8250.c                      |  4 +--
+>  sound/soc/rockchip/rockchip_i2s.c            |  6 ++--
+>  sound/soc/rockchip/rockchip_i2s_tdm.c        |  6 ++--
+>  sound/soc/samsung/i2s.c                      |  6 ++--
+>  sound/soc/samsung/pcm.c                      |  4 +--
+>  sound/soc/samsung/s3c-i2s-v2.c               |  6 ++--
+>  sound/soc/samsung/s3c24xx-i2s.c              |  6 ++--
+>  sound/soc/sh/fsi.c                           |  6 ++--
+>  sound/soc/sh/rcar/core.c                     |  4 +--
+>  sound/soc/sh/rz-ssi.c                        |  2 +-
+>  sound/soc/sh/ssi.c                           | 10 +++---
+>  sound/soc/soc-core.c                         | 14 ++------
+>  sound/soc/soc-dai.c                          |  3 +-
+>  sound/soc/stm/stm32_i2s.c                    |  8 ++---
+>  sound/soc/stm/stm32_sai_sub.c                |  8 ++---
+>  sound/soc/sunxi/sun4i-i2s.c                  | 18 +++++-----
+>  sound/soc/sunxi/sun8i-codec.c                |  6 ++--
+>  sound/soc/tegra/tegra20_i2s.c                |  6 ++--
+>  sound/soc/tegra/tegra210_i2s.c               |  6 ++--
+>  sound/soc/tegra/tegra30_i2s.c                |  6 ++--
+>  sound/soc/ti/davinci-i2s.c                   | 32 ++++++++---------
+>  sound/soc/ti/davinci-mcasp.c                 | 10 +++---
+>  sound/soc/ti/omap-mcbsp.c                    | 12 +++----
+>  sound/soc/ux500/ux500_msp_dai.c              | 36 ++++++++++----------
+>  sound/soc/xtensa/xtfpga-i2s.c                |  4 +--
+>  77 files changed, 279 insertions(+), 283 deletions(-)
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
