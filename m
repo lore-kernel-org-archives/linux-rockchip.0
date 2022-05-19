@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39DA4C4332F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 15:49:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1C17C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 15:49:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F+VI3oPj2xIr4e/TmM5IkB814Q7GW9AJhxdFyIlxdJ0=; b=tXfl+2IWS3MIR6
-	JEh1nNi9j+GjKuws0MbwOpbq9iQTiA1dOOyr7p8eMsgBZ5gAyV7w2KR8+QcWsxhsX4CO6U4gekGID
-	Qx8pWEd+biiJsIka8f6M0GtA+99jrapKmZEBuwygr7St+NX1H3R0p77odxUYn9kcAgRmBmXDjam6b
-	3e8FVbYmYRHFQa3gWwIoB0kWVWEU6H7DgYnOjjOch46oAwdysJNrRDGgzyo+VJ+zGiZOS8MiK+L6E
-	ym+3QM6YN+3j9XfqERJKCfHeTy3V+n+NYf9ovbyTMnZafcSFefA37+H/G10pw1RVnF17NrCjkLwfO
-	0OF3mdgpgvZhFiu8muqA==;
+	List-Owner; bh=Zk0mR6TCR/K+1US0HjNBmqp79rcUD49SoTsiwjbiVSI=; b=LL9qNNyh8emWHi
+	aieJUAxcimzw/IVAy4ZZlmbnL7wkn9LVAbs/7UOyJifHpNMLHiF3SVF88OWkllllJoW4KACBCiNxR
+	xo0VjdrtPVuRBtH+RlVrTkJmE43qcoewCFdaOPrraHNjTrBToMvcgR5BDHYpVUTyqNfwfDKHpsW+d
+	JdqS0UrM62qyvi6xOe+v9/hcIJfJ27FowtHB3n3Xn1fzKzqWbmms3fxJ+dJJczIGvGTXDFk6jZ+nn
+	D1NoGvJ0+CSwAEyw4Wny1W55iafVdhc+FyFBBljIrbEfI4NmT0OP3AxCeT8bIS5oDQMHuZAFXJGFp
+	8jJUawpSVylzxx9HALMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nriOZ-00885Z-GU; Thu, 19 May 2022 15:48:59 +0000
+	id 1nriOz-0088UR-7a; Thu, 19 May 2022 15:49:25 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nriJr-0083R3-6w; Thu, 19 May 2022 15:44:07 +0000
+ id 1nriJr-0083Rz-Vl; Thu, 19 May 2022 15:44:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Content-Type:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender
  :Reply-To:Content-ID:Content-Description;
- bh=EnjkLm/Bn2VaDl7QgUDory6TrhO4/WqhOMeFwNAeCO4=; b=GjspCSwCW2y1H/MC0Bt8XdkUjp
- Xynlaveuuk/gZu6Q5/4uo3HMv5pVpFJusrC7hjDVHGJ1yHV1aFlWJoh1B3IIGvv0vcNH8yMmQIQQC
- lWAoN5q0c4ezvmMp/F95UjFQPFCJwJRlkNSXyJzr/mQxwO8IEIVppYFbWlf+oLjIwEIO//Ge3bAme
- ayzK0S29Xv6Xrq3+MYct9ifd5iRr7jquuPD4c66JM9iZxUPthaVqAQVrJzPegYZhlIzDixPxQujtJ
- CltnV1GD+2jqePt7zCQiCE7wUi8n1ghDXpwlZaDkHasjHps9AbOda8gbuCnMSlEPnOkus/7d/Ib9r
- 32LcRrnQ==;
-Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
+ bh=honbQV96RT4wGQVCBJ49Oesqj/VfCnS8zttmRmgGZz4=; b=jeUiifehBAJ7vtAbGyDMWtxU9V
+ 5yLTTIwsAhNFmv8F+sK9xWzQSwJjNBTySNnOWY6DMh4KYPxClqXSnm4Vip1A0pUBfrXD72/X5n30H
+ jd1kEs+KsNVx1K9HgTOVuPSV7nNzV0oCYrCO87Dpl2+QzP6NFSE5Iz0cdiGeSml0/Al+hoTBy/leu
+ iuEYfS1eFIvW7Tookfi/zM34JIFPBkcfqdszVOZ/GZVeG68zYprfobtZ4lNt8xY5FXMrnK2ToDUmV
+ cpUcfS0lFPfy+KAyMWFskyRC2O7gsGPFp3fbJyfD8O1xwz1P3SBfI2jveK3sTjGlt+DQsSR0jCy5z
+ yclzzQAg==;
+Received: from mx0a-001ae601.pphosted.com ([67.231.149.25]
+ helo=mx0b-001ae601.pphosted.com)
  by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nriJm-00CqQg-LJ; Thu, 19 May 2022 15:44:05 +0000
-Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
- by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24J66mWB012194;
+ id 1nriJm-00CqQW-LI; Thu, 19 May 2022 15:44:06 +0000
+Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
+ by mx0a-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24J6k124002261;
  Thu, 19 May 2022 10:43:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=PODMain02222019;
- bh=EnjkLm/Bn2VaDl7QgUDory6TrhO4/WqhOMeFwNAeCO4=;
- b=cyJuIevZ/xe38Y0/J6Dwp1pQuTiwyudCM5dRbE4OUe9/8AizKFZVJdW11BshkUnwRyCq
- cRveNlhoi+Q/0rqjTZfCmyQ3y4fD7/sVTQ3iYVb+rpnbnRv1CBiB6eZakcEKkr95QkeD
- UUzNYraJIq+2Iv2DEthG6Y+ec6Ezq1j3aPicaH1BFKb6C1/jJk2RtRgZypHNkH1lnyUs
- QeRvIe/bezI35ybAwNvoCJsj0zJOyXdx3Uk4Nwmyc7SoQC4PRunzXKGkUTv7yGscZ217
- +9spamDAwsIGeoBGTRrjH2qiW2/a2JaUIEt6fp3mo/kQfJ8wWhJCwGQqM7bH0hpYe3X2 PA== 
-Received: from ediex02.ad.cirrus.com ([84.19.233.68])
- by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upf5dn-14
+ bh=honbQV96RT4wGQVCBJ49Oesqj/VfCnS8zttmRmgGZz4=;
+ b=JJqiiYQjkKr2XvWMkR8tNwSqVJp+YSWsMJkSg5E15kElZDaLSKMCDLT36wdwrudjeksl
+ JgNU/huoLRvceBA+ha1QR7VIurYLvMLsjICy54k6lX+7SWKqT/ptmuilKjX/oeQLaAr5
+ VwazGdJUdvbmF+MCOYi78H9XGOFe7Adod9LfMKaz32pNV1FAEgKiLFRseAIDgYo8LDYy
+ a0OR7NiIrZ63jJjOqrTMwjmDuH8VKEWDh9crxzjTLSkHvh6ikFbU0QSO+7UTCvhpEtq5
+ sRkK+HVqAFjiUXQwubahPE7RCep3x4mGbelpGNgsV5QITCe0avLuoCfk5NKcFFSGQymR MA== 
+Received: from ediex01.ad.cirrus.com ([84.19.233.68])
+ by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3g29u37mcf-9
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Thu, 19 May 2022 10:43:37 -0500
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
- (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
+ Thu, 19 May 2022 10:43:38 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 19 May
- 2022 16:43:21 +0100
+ 2022 16:43:20 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
- Frontend Transport; Thu, 19 May 2022 16:43:21 +0100
+ Frontend Transport; Thu, 19 May 2022 16:43:20 +0100
 Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
- by ediswmail.ad.cirrus.com (Postfix) with ESMTP id A043411DB;
- Thu, 19 May 2022 15:43:21 +0000 (UTC)
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id CBEF511D1;
+ Thu, 19 May 2022 15:43:20 +0000 (UTC)
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
@@ -79,19 +80,19 @@ CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
  <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
  <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
  <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>
-Subject: [PATCH 46/56] ASoC: samsung: Rename set_fmt_new back to set_fmt
-Date: Thu, 19 May 2022 16:43:08 +0100
-Message-ID: <20220519154318.2153729-47-ckeepax@opensource.cirrus.com>
+Subject: [PATCH 34/56] ASoC: dwc: Rename set_fmt_new back to set_fmt
+Date: Thu, 19 May 2022 16:42:56 +0100
+Message-ID: <20220519154318.2153729-35-ckeepax@opensource.cirrus.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-X-Proofpoint-GUID: 5YiEn5E8rqseqepgXRm0tkSg5eIuX_4g
-X-Proofpoint-ORIG-GUID: 5YiEn5E8rqseqepgXRm0tkSg5eIuX_4g
+X-Proofpoint-GUID: VseCsXBrEPJX1DXWVtuHsVN7M3OYMRpM
+X-Proofpoint-ORIG-GUID: VseCsXBrEPJX1DXWVtuHsVN7M3OYMRpM
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_164402_996900_12676ACE 
-X-CRM114-Status: GOOD (  13.70  )
+X-CRM114-CacheID: sfid-20220519_164403_044750_44CD74FB 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,64 +116,22 @@ callback.
 
 Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 ---
- sound/soc/samsung/i2s.c         | 2 +-
- sound/soc/samsung/pcm.c         | 2 +-
- sound/soc/samsung/s3c-i2s-v2.c  | 2 +-
- sound/soc/samsung/s3c24xx-i2s.c | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+ sound/soc/dwc/dwc-i2s.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/samsung/i2s.c b/sound/soc/samsung/i2s.c
-index 9ed275ebd744e..fdd9561c6a9f3 100644
---- a/sound/soc/samsung/i2s.c
-+++ b/sound/soc/samsung/i2s.c
-@@ -1107,7 +1107,7 @@ static int samsung_i2s_dai_remove(struct snd_soc_dai *dai)
- static const struct snd_soc_dai_ops samsung_i2s_dai_ops = {
- 	.trigger = i2s_trigger,
- 	.hw_params = i2s_hw_params,
--	.set_fmt_new = i2s_set_fmt,
-+	.set_fmt = i2s_set_fmt,
- 	.set_clkdiv = i2s_set_clkdiv,
- 	.set_sysclk = i2s_set_sysclk,
- 	.startup = i2s_startup,
-diff --git a/sound/soc/samsung/pcm.c b/sound/soc/samsung/pcm.c
-index 818172d8832d2..c2eb3534bfccb 100644
---- a/sound/soc/samsung/pcm.c
-+++ b/sound/soc/samsung/pcm.c
-@@ -437,7 +437,7 @@ static const struct snd_soc_dai_ops s3c_pcm_dai_ops = {
- 	.set_clkdiv	= s3c_pcm_set_clkdiv,
- 	.trigger	= s3c_pcm_trigger,
- 	.hw_params	= s3c_pcm_hw_params,
--	.set_fmt_new	= s3c_pcm_set_fmt,
-+	.set_fmt	= s3c_pcm_set_fmt,
+diff --git a/sound/soc/dwc/dwc-i2s.c b/sound/soc/dwc/dwc-i2s.c
+index d3778d2d739d8..e794e020052ef 100644
+--- a/sound/soc/dwc/dwc-i2s.c
++++ b/sound/soc/dwc/dwc-i2s.c
+@@ -387,7 +387,7 @@ static const struct snd_soc_dai_ops dw_i2s_dai_ops = {
+ 	.hw_params	= dw_i2s_hw_params,
+ 	.prepare	= dw_i2s_prepare,
+ 	.trigger	= dw_i2s_trigger,
+-	.set_fmt_new	= dw_i2s_set_fmt,
++	.set_fmt	= dw_i2s_set_fmt,
  };
  
- static int s3c_pcm_dai_probe(struct snd_soc_dai *dai)
-diff --git a/sound/soc/samsung/s3c-i2s-v2.c b/sound/soc/samsung/s3c-i2s-v2.c
-index 9c8a0697849d7..1bec72246ed0c 100644
---- a/sound/soc/samsung/s3c-i2s-v2.c
-+++ b/sound/soc/samsung/s3c-i2s-v2.c
-@@ -666,7 +666,7 @@ int s3c_i2sv2_register_component(struct device *dev, int id,
- 	ops->trigger = s3c2412_i2s_trigger;
- 	if (!ops->hw_params)
- 		ops->hw_params = s3c_i2sv2_hw_params;
--	ops->set_fmt_new = s3c2412_i2s_set_fmt;
-+	ops->set_fmt = s3c2412_i2s_set_fmt;
- 	ops->set_clkdiv = s3c2412_i2s_set_clkdiv;
- 	ops->set_sysclk = s3c_i2sv2_set_sysclk;
- 
-diff --git a/sound/soc/samsung/s3c24xx-i2s.c b/sound/soc/samsung/s3c24xx-i2s.c
-index 6226b3b585e54..4082ad7cbcc11 100644
---- a/sound/soc/samsung/s3c24xx-i2s.c
-+++ b/sound/soc/samsung/s3c24xx-i2s.c
-@@ -394,7 +394,7 @@ static int s3c24xx_i2s_resume(struct snd_soc_component *component)
- static const struct snd_soc_dai_ops s3c24xx_i2s_dai_ops = {
- 	.trigger	= s3c24xx_i2s_trigger,
- 	.hw_params	= s3c24xx_i2s_hw_params,
--	.set_fmt_new	= s3c24xx_i2s_set_fmt,
-+	.set_fmt	= s3c24xx_i2s_set_fmt,
- 	.set_clkdiv	= s3c24xx_i2s_set_clkdiv,
- 	.set_sysclk	= s3c24xx_i2s_set_sysclk,
- };
+ #ifdef CONFIG_PM
 -- 
 2.30.2
 
