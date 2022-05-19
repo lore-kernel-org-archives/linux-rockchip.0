@@ -4,93 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35D10C433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 15:43:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613FAC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 15:44:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mwtuzfvOo/dkKx1bmJ+10LeqF264++cHAxgcAR9XvUo=; b=Z6PzxaNhfBwpum
-	GcRMDO1EEDqza5nzt0ppypuhm1jwivWsc7IH8erOn43an5GZf3LyFAdBHMg/PEaGPyYhqWLWVFMy6
-	d1u0RPKKkHb0QafGtLM98kFdL1MLCCDTDpfawreiB/HsYc+yQgsm5njt9L+b7bI+m37m4WAcxwRK8
-	wsfUwBwa6m1rLabfeuMgGrB7LKMgnCRI5r8iWfXCmHzVR0DRDEq0jIsprdgGNt2y6P5oQ8DZjm22L
-	3m+YU1nmmFRy9p6zj4fGSWi3BvyDZCdQQYEYJyUGczL+Uk4MUnFDs6Jzy5aZ7EyDKk4wQpF1OWkkA
-	g7JuKz37hDfnoTMhv7KQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3K1INzENKphaLaKzN/yz8WyQ/VvwvVP0N/ESP32JX7E=; b=SEfRUpb5p3Hxmo
+	R5umjo5JMl163QRRZfKog1lDBggQZVjThoGPRSYWItJRtFdTXg4L10Liy/lBYpQD4llQyZ270YjIq
+	dwXakgADbruZvdqU58Hre3lqAp8r4keo8S3b7UMXHaPD/BcT9oPKlCk0IQ32tFv8BYQpvkbvSwRjH
+	6mZiTMBUSiwquxAvzsrPtnGAIAG//Qh277lKdjwPOAuEGtK4ScnczMsgN64ceMuGX9UDHZu8DTzsm
+	u5e+xdscQ9UOHJ+LChCCtgGZsbtvoZ1vea0djKGSexrKmun7MBwrsoiE0UbBGj+pleEO1gfDltoao
+	Bk9lW/yRsLHwFXa5JH2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nriJ1-0082yw-Np; Thu, 19 May 2022 15:43:15 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1nriJn-0083Nr-BT; Thu, 19 May 2022 15:44:03 +0000
+Received: from mx0a-001ae601.pphosted.com ([67.231.149.25]
+ helo=mx0b-001ae601.pphosted.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nriIp-0082tF-Uo
- for linux-rockchip@lists.infradead.org; Thu, 19 May 2022 15:43:06 +0000
-Received: by mail-wm1-x331.google.com with SMTP id
- o12-20020a1c4d0c000000b00393fbe2973dso5261748wmh.2
- for <linux-rockchip@lists.infradead.org>; Thu, 19 May 2022 08:43:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=WsKBxNUObECM5ccUgjEK/d2Jt99kF9A8elmY+rJSxz8=;
- b=xRQlyAyLuNIIRFdNyO7KqSw60MgWWQpq5Kv0t6poIvMy+tKb1wERA9hGcKuJNMmjf/
- 1IidZPOBOZB3iHs9zZ3LxmZo7J5BRSTZZd5NwlP/HPSE7hkaC2nSR8z+wW3gBjm58tyx
- QJalSg29byxnYqZb5l1dgVcoMa2ek7G4PasAakAxb1hgh1evLRG9i5UecCNTbx0RJNWr
- BT5eBSP3O/TtB0/ZFwov+VnN/eEqOJDb6Bnoq1x8eh+p9/gTvLkVlfaMzd72RtlN5kEy
- SCeTFLG9FqPEjk7TaxM4/hToJ2QNZU/quGsh3zvCOYpZ9RL167kAaCw08M3BMmMlxl6p
- tMyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=WsKBxNUObECM5ccUgjEK/d2Jt99kF9A8elmY+rJSxz8=;
- b=xYI0X+AbXCRz8zOdmIC6VXzZzjoNgKfweYxO1wp7+hchkh2W2L0WtWJjgMXyw+opO8
- gmTtrDMrD/ITLli2lzJrs4qul51kS7CtmAbGphhg34gYzMly+jFb3+u0omzMmVNYIHrf
- QhtyqFpSPWzjUBBuCbqIaVOeaxoyY3veDNwB2seMUik+K4XMic3t5UQFCUGI+zkTolA9
- cIZ5zQyjYPzqPPKg21Dk3ktwskU5cFmINui4Zr0LNkXVynS7DJWl4ZOX0kM5SBHqgyJ3
- gbq5pvp3GCOYH32jVxLmIKlaNc9IFDLlut76Tx3TGsm3MuUVPcKYHAtsl9o8e8pbJgaK
- 0Ekg==
-X-Gm-Message-State: AOAM533cvdqN6rT4tfjCs2gflZg40+ZjdItBqSiJMD8cAdsDAJr+36D9
- 6n93W0g6SpflG9KDaBscP5/OOyQW9KIjCg==
-X-Google-Smtp-Source: ABdhPJy803dNNEjJI3/Sx9/+OlGNDgfh5H3wP+jRZrs7bwDtpPvI1GzBtVm3EDHwvxZKTNEaHTOizA==
-X-Received: by 2002:a05:600c:1986:b0:394:77a3:bfa9 with SMTP id
- t6-20020a05600c198600b0039477a3bfa9mr4374738wmq.142.1652974979324; 
- Thu, 19 May 2022 08:42:59 -0700 (PDT)
-Received: from google.com (cpc155339-bagu17-2-0-cust87.1-3.cable.virginm.net.
- [86.27.177.88]) by smtp.gmail.com with ESMTPSA id
- o1-20020a5d47c1000000b0020e6470b2a7sm4996067wrc.85.2022.05.19.08.42.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 May 2022 08:42:58 -0700 (PDT)
-Date: Thu, 19 May 2022 16:42:56 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Hugh Cole-Baker <sigmaris@gmail.com>,
- U-Boot Mailing List <u-boot@lists.denx.de>,
- Caesar Wang <wxt@rock-chips.com>, Vasily Khoruzhick <anarsoul@gmail.com>,
- Kever Yang <kever.yang@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Elaine Zhang <zhangqing@rock-chips.com>,
- Brian Norris <briannorris@chromium.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- arm-mail-list <linux-arm-kernel@lists.infradead.org>
-Subject: Re: [U-Boot] [PATCH 2/2] rockchip: rk3399: rockpro64: enable force
- power on reset workaround
-Message-ID: <YoZlgCi1hoTSmwnq@google.com>
-References: <CA+E=qVeNWEJTfQ_30Uxv=qFixMR-rbYOW_HCtx83bqmfNWb9dg@mail.gmail.com>
- <fe3e93dc-16e5-eaf7-94a5-def1dde85c86@rock-chips.com>
- <CA+E=qVdMA_8wQcXzzf47Pi+dUigLBsOzOydhz+DZbvr8+9+PCg@mail.gmail.com>
- <6C83A835-37D3-4E48-BB08-024BB2703FB8@gmail.com>
- <YoTerAfKU5S04nfk@google.com>
- <CAMdYzYpRybPjzkhoN0fMNMEdeMAO4zV7kaVVaxUk+=KWg8SK1A@mail.gmail.com>
- <YoX9ChRGuKtn2AVX@google.com>
- <CAMdYzYobPDBuxiKNDg1UA6jG7mXmj527-Gj6=wt9vBAcbNa++A@mail.gmail.com>
- <YoZaqRCFgBm/ihZB@google.com>
- <CAMdYzYr=yYpWdwkCNOL+jn0tNXJ3=+zQKmeOBoeFN-6KS+B+YQ@mail.gmail.com>
+ id 1nriJY-00838A-8x; Thu, 19 May 2022 15:43:50 +0000
+Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
+ by mx0a-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24J6k11k002261;
+ Thu, 19 May 2022 10:43:22 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
+ h=from : to : cc :
+ subject : date : message-id : mime-version : content-transfer-encoding :
+ content-type; s=PODMain02222019;
+ bh=MlGxWDEhiLEzJWCOMp9mdKZ4UoXGVcox5jqQuGHbxDo=;
+ b=RWaMdznvIU2lGGFbbZqLnazWKn7WdbFPod1LyghGyiX1bAYvx1tXUz1khhTPssBL4CvN
+ YizXNjIgNZ9sXE2DkOH/p/dMRqkC7mZKDd/rWKkD48PfWzA8n0823+2DxJT1rFsP2Qj2
+ EgaHNy5cAU07DAdhIBrSek/8OiHShLZS5aSQ8C576M35GdygnSATUckJxwxoAzdDoyE/
+ yHJQxbDkC3VqIMZ6WGeCiSlK5KtsOVZgGBzcI6D8GKIEXN5Pf0lZcAWu1IwL6FTAvSRt
+ rJBT7w3B6dZRfekQZXUmfA9mmFODrTKAMvgmhbQZ4ne7BOa2lmpK230EVR5timL7X2l3 Zw== 
+Received: from ediex01.ad.cirrus.com ([84.19.233.68])
+ by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3g29u37mcf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+ Thu, 19 May 2022 10:43:22 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 19 May
+ 2022 16:43:18 +0100
+Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
+ Frontend Transport; Thu, 19 May 2022 16:43:18 +0100
+Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 492E7476;
+ Thu, 19 May 2022 15:43:18 +0000 (UTC)
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: <broonie@kernel.org>
+CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
+ <nicolas.ferre@microchip.com>, <nsaenz@kernel.org>,
+ <shawnguo@kernel.org>, <linux-imx@nxp.com>,
+ <cezary.rojewski@intel.com>, <pierre-louis.bossart@linux.intel.com>,
+ <linux-mips@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-amlogic@lists.infradead.org>, <daniel@zonque.org>,
+ <srinivas.kandagatla@linaro.org>, <linux-rockchip@lists.infradead.org>,
+ <krzk@kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
+ <linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
+ <linux-omap@vger.kernel.org>, <linux-xtensa@linux-xtensa.org>,
+ <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
+ <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
+ <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>
+Subject: [PATCH 00/56] Specify clock provider directly to CPU DAIs
+Date: Thu, 19 May 2022 16:42:22 +0100
+Message-ID: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAMdYzYr=yYpWdwkCNOL+jn0tNXJ3=+zQKmeOBoeFN-6KS+B+YQ@mail.gmail.com>
+X-Proofpoint-GUID: HFsp4N4C1dfLI4kl_Yax3agDBYSk2Vi1
+X-Proofpoint-ORIG-GUID: HFsp4N4C1dfLI4kl_Yax3agDBYSk2Vi1
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_084304_024823_BCC16681 
-X-CRM114-Status: GOOD (  53.36  )
+X-CRM114-CacheID: sfid-20220519_084348_382205_6C3DF4B8 
+X-CRM114-Status: GOOD (  21.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,111 +90,183 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAxOSBNYXkgMjAyMiwgUGV0ZXIgR2VpcyB3cm90ZToKCj4gT24gVGh1LCBNYXkgMTks
-IDIwMjIgYXQgMTA6NTYgQU0gTGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJvLm9yZz4gd3JvdGU6
-Cj4gPgo+ID4gPiA+ID4gPiBJdCdzIG5vdCBjbGVhciBob3cgdGhpcyBpc3N1ZSAocHJlc2VudCAz
-IHllYXJzIGFnbykgd2FzIGZpbmFsbHkKPiA+ID4gPiA+ID4gcmVzb2x2ZWQuICBGcm9tIHRoZSB0
-aHJlYWQsIGl0IGxvb2tzIGFzIGlmIHRoZSBmaXggbWlnaHQgaGF2ZSBtYWRlIGl0cwo+ID4gPiA+
-ID4gPiB3YXkgaW50byBBVEYsIGJ1dCBJJ20gODcuNiUgc3VyZSBBVEYgaXMgbm90IHJ1bm5pbmcg
-b24gdGhpcyBwbGF0Zm9ybQo+ID4gPiA+ID4gPiAoeWV0KS4KPiA+ID4gPiA+Cj4gPiA+ID4gPiBU
-aGUgcmszMzk5IFNvQyBoYXMgYSBoYXJkd2FyZSBidWcgd2hlcmUgdGhlIHBvd2VyIGRvbWFpbnMg
-YXJlIG5vdAo+ID4gPiA+ID4gcmVzZXQgdXBvbiBhIHNvZnQgcmVzZXQuIFRoaXMgbGVhZHMgdG8g
-c2l0dWF0aW9ucyBsaWtlIHRoaXMgb25lIHdoZXJlCj4gPiA+ID4gPiBwb3dlciBkb21haW5zIGFy
-ZSBzaHV0IGRvd24gZHVyaW5nIHNodXRkb3duIGJ1dCBhcmVuJ3QgcmVzdG9yZWQgb24KPiA+ID4g
-PiA+IHJlYm9vdC4KPiA+ID4gPgo+ID4gPiA+IEkgYXNzdW1lIHRoaXMgaXNuJ3Qgc29tZXRoaW5n
-IHdlIGNhbiBwYXRjaCBpbiB0aGUga2VybmVsIGRyaXZlcj8KPiA+ID4KPiA+ID4gQXMgZmFyIGFz
-IEkga25vdyBpdCdzIGJlaW5nIHdvcmtlZCBvbiBieSBvdGhlcnMsIEkgaGF2ZSBzb21lIGlkZWFz
-IGZvcgo+ID4gPiB0aGlzIGFzIHdlbGwgYnV0IEkndmUgYmVlbiBmb2N1c2VkIG9uIHJrMzU2eCBs
-YXRlbHkuCj4gPgo+ID4gVGhhbmtzIGZvciB0aGUgdXBkYXRlLgo+ID4KPiA+ID4gPiA+IE1haW5s
-aW5lIFRGLUEgd2FzIHBhdGNoZWQgdG8gZm9yY2UgYWxsIHBvd2VyIGRvbWFpbnMgb25saW5lCj4g
-PiA+ID4gPiB3aGVuIGEgc29mdCByZWJvb3QgaXMgdHJpZ2dlcmVkLCB3aGljaCBzb2x2ZWQgdGhh
-dCBpc3N1ZS4KPiA+ID4gPgo+ID4gPiA+IE9rYXksIHRoaXMgaXMgd2hhdCBJIGZpZ3VyZWQuCj4g
-PiA+ID4KPiA+ID4gPiA+IFdoYXQgcGFydGljdWxhciBpc3N1ZXMgYXJlIHlvdSBoYXZpbmcgaW5p
-dGlhbGl6aW5nIG1vZGVybiB1LWJvb3Qgb24KPiA+ID4gPiA+IHRoaXMgZGV2aWNlPwo+ID4gPiA+
-Cj4gPiA+ID4gVGhpcyBpcyB0aGUgb3V0cHV0OiBodHRwczovL3Bhc3RlYmluLnVidW50dS5jb20v
-cC9kNURtc1NCbnJSLwo+ID4gPiA+Cj4gPiA+ID4gU3BlYWtpbmcgd2l0aCBvbmUgb2YgdGhlIGd1
-eXMgd2hvIHN1cHBvcnRzIFJvY2tQaSA0IGluIEFPU1AsIGhlCj4gPiA+ID4gc3VzcGVjdHMgdGhl
-IEREUiBzZXR0aW5ncy4gIEFwcGFyZW50bHkgc2V0dGluZ3MgZm9yIG9sZGVyIFNvQ3MKPiA+ID4g
-PiBzb21ldGltZXMgZ2V0IGNsb2JiZXJlZCB3aGVuIHN1cHBvcnQgZm9yIG5ld2VyIFNvQ3MgaXMg
-YWRkZWQuCj4gPiA+Cj4gPiA+IFRoZSByazMzOTkgVFBMIGNvZGUgaXMgc3BlY2lmaWMgdG8gdGhl
-IHJrMzM5OSBhbmQgaXQgcmVhbGx5IGhhc24ndAo+ID4gPiBiZWVuIHRvdWNoZWQgbXVjaCByZWNl
-bnRseS4gSSdtIHVzaW5nIHRoZSBsYXRlc3QgTWFpbmxpbmUgVS1Cb290IG9uCj4gPiA+IGJvdGgg
-bXkgUm9ja3BybzY0IGFuZCBQaW5lcGhvbmUtUHJvLiBJIGRvbid0IHNlZSBURi1BIGJlaW5nIGxv
-YWRlZCwKPiA+ID4gd2hpY2ggc2hvdWxkIGhhcHBlbiBiZXR3ZWVuOgo+ID4gPgo+ID4gPiBUcnlp
-bmcgdG8gYm9vdCBmcm9tIEJPT1RST00KPiA+ID4gUmV0dXJuaW5nIHRvIGJvb3QgUk9NLi4uCj4g
-PiA+Cj4gPiA+IE90aGVyd2lzZSBpdCBqdXN0IGxvb2tzIGxpa2UgdGhlIFRQTCBjb2RlIGRvZXNu
-J3QgbGlrZSBiZWluZyBpbiBhCj4gPiA+IHNpbmdsZSBjaGFubmVsIGNvbmZpZ3VyYXRpb24uIERv
-ZXMgdGhlIDJHQiBtb2RlbCBqdXN0IGZvcmdvIHRoZSBzZWNvbmQKPiA+ID4gcmFtIGNoaXA/IE9y
-IGlzIHRoaXMgYWN0dWFsbHkgYSA0R0IgbW9kZWwgYW5kIGl0IGlzbid0IGRldGVjdGluZyB0aGUK
-PiA+ID4gc2Vjb25kIGNoaXAgaW4gYm90aCBkb3duc3RyZWFtIGFuZCBtYWlubGluZT8gQ291bGQg
-eW91IGluY2x1ZGUgdGhlCj4gPiA+IFRQTC9TUEwgcG9ydGlvbiBvZiBkb3duc3RyZWFtJ3Mgb3V0
-cHV0Pwo+ID4KPiA+IFRQTC9TUEwgYXJlIG1vc3RseSBzaWxlbnQgb24gdGhlIGRvd25zdHJlYW0g
-YnVpbGQ6Cj4gPgo+ID4gaHR0cHM6Ly9wYXN0ZWJpbi51YnVudHUuY29tL3AvbTJiQmRqRjhXcS8K
-PiA+Cj4gPiBOb3Qgc3VyZSBpZiBpdCBoZWxwcyBhdCBhbGwsIGJ1dCBBcm1CaWFuIGlzIHByZXR0
-eSBub2lzeToKPiA+Cj4gPiBodHRwczovL3Bhc3RlYmluLnVidW50dS5jb20vcC9mZFBqbW1xQkRN
-Lwo+IAo+IFdlaXJkIHRoYXQgZG93bnN0cmVhbSBhbmQgbWFpbmxpbmUgYXJlIGJlaW5nIGJ1aWx0
-IHdpdGggbm9uZSBvZiB0aGUKPiBkZWJ1ZyBzdHVmZiBlbmFibGVkLiBBcm1iaWFuIGNsZWFybHkg
-c2hvd3MgdGhlIGluaXRpYWwgc2V0dXAgb2NjdXJpbmcKPiBjb3JyZWN0bHksIGFuZCB0aGF0IGl0
-J3MgYSA0R0IgYm9hcmQuIEl0J3MgdXNpbmcgYm90aCB0aGUgUm9ja2NoaXAKPiBtaW5pbG9hZGVy
-IHdpdGggYSBSb2NrY2hpcCBURi1BIGJsb2IgYXMgd2VsbC4KPiAKPiA+Cj4gPiA+ID4gSSBhbSB5
-ZXQgdG8gaW52ZXN0aWdhdGUgdGhlIHUtYm9vdCBzdG9yeSBpbiBhbnkgZGV0YWlsLgo+ID4gPiA+
-Cj4gPiA+ID4gSXQncyBvbiBteSBUT0RPIGxpc3QgZm9yIHRvZGF5Lgo+ID4gPiA+Cj4gPiA+ID4g
-PiBJcyB0aGVyZSBhIHBhcnRpY3VsYXIgcmVhc29uIGl0IGlzbid0IHVzaW5nIE1haW5saW5lIFRG
-LUE/Cj4gPiA+ID4KPiA+ID4gPiBXZSdyZSBub3QgdXNpbmcgVHJ1c3RlZCBGaXJtd2FyZSB5ZXQu
-Cj4gPiA+Cj4gPiA+IFRoaXMgcGxhdGZvcm0gZG9lcyBub3Qgd29yayBhdCBhbGwgd2l0aG91dCBU
-Ri1BLiBPcHRlZSBpcyBvcHRpb25hbC4KPiA+ID4gRWl0aGVyIHlvdSBhcmUgdXNpbmcgdGhlIGRv
-d25zdHJlYW0gYmxvYiBmcm9tIFJvY2tjaGlwIG9yIE1haW5saW5lCj4gPiA+IGJ1aWx0IHlvdXJz
-ZWxmLiBQZXJzb25hbGx5IEkgcHJlZmVyIHVzaW5nIE1haW5saW5lIGV2ZXJ5dGhpbmcuIElmIHlv
-dQo+ID4gPiBidWlsZCBNYWlubGluZSBVLUJvb3Qgd2l0aG91dCBURi1BIGl0IHdpbGwgdGhyb3cg
-YSB3YXJuaW5nIGF0IHRoZSBlbmQKPiA+ID4gdGhhdCBzYXlzIHRoZSBjcmVhdGVkIGJpbmFyeSBp
-cyBub24tZnVuY3Rpb25hbC4KPiA+Cj4gPiBSaWdodC4gIFBsYXllZCBhIGxvdCB3aXRoIHRoaXMg
-dG9kYXkuCj4gPgo+ID4gT3VyIGJ1aWxkIHdhcyB1c2luZyBURi1BIHdoaWNoIHdhcyBidWlsdC1p
-biB0byB0aGUgcHJpbWFyeSBsb2FkZXIuCj4gPgo+ID4gSSBoYWQgMiBpbnRlcmVzdGluZyByZXN1
-bHRzIHRvZGF5LiAgTm8gaWRlYSBob3cgdG8gZXhwbGFpbiB0aGVtLgo+ID4KPiA+IEZpcnN0IG9u
-ZSB3YXMgd2l0aCBNYWlubGluZSB1LWJvb3QgYW5kIE1haW5saW5lIFRGLUEsIHdoaWNoIGZvdW5k
-LCBidXQKPiA+IHdhcyBzZWVtaW5nbHkgdW5hYmxlIHRvIGJvb3QgdGhlIGtlcm5lbDoKPiA+Cj4g
-PiBodHRwczovL3Bhc3RlYmluLnVidW50dS5jb20vcC85SFJoUHlmallLLwo+ID4KPiA+IFRoZSBz
-ZWNvbmQgaW50ZXJlc3RpbmcgcmVzdWx0IEkgaGFkIHdhcyB1c2luZyBvdXIgZG93bnN0cmVhbSB1
-LWJvb3QKPiA+IHdpdGggTWFpbmxpbmUgVEYtQS4gIEl0IGJvb3RlZCBwZXJmZWN0bHkgZnJvbSBj
-b2xkLCBidXQgbWFuYWdlZCB0byBnZXQKPiA+IHN0dWNrIGluIHRoZSBUUEwgb24gc29mdCByZWJv
-b3QgaW4gYSB2ZXJ5IHNpbWlsYXIgd2F5IHRvIHRoZSBvbmUgSQo+ID4gcmVwb3J0ZWQgZWFybGll
-ciB3aGVuIG5vdCBib290aW5nIHdpdGggVEYtQSAoIkNoYW5uZWwgMTogY29sIGVycm9yIik6Cj4g
-Cj4gCj4gTWFpbmxpbmUgVEYtQSBkZWZhdWx0cyB0byAxMTUyMDAgZm9yIGl0cyB1YXJ0IG1lc3Nh
-Z2VzLCBzbyB5b3UgbmVlZCB0bwo+IGVpdGhlciBBLiBwYXNzIHRoZSB1YXJ0IGNvbmZpZyBmcm9t
-IFUtQm9vdCB0byBURi1BIHdpdGggYSBwbGF0Zm9ybQo+IGNvbmZpZyBvcHRpb24gKHVucmVsaWFi
-bGUgaW4gbXkgZXhwZXJpZW5jZSksIEIuIGNoYW5nZSBVLUJvb3QgdG8KPiAxMTUyMDAsIG9yIEMu
-IGNoYW5nZSBURi1BIHRvIDEuNU0gKHRoZSBwYXRoIEkgdGFrZSkuIFlvdXIgbWFpbmxpbmUKCkhv
-cGVmdWxseSB0aGlzIGlzIGVub3VnaDoKCmRpZmYgLS1naXQgYS9wbGF0L3JvY2tjaGlwL3JrMzM5
-OS9yazMzOTlfZGVmLmggYi9wbGF0L3JvY2tjaGlwL3JrMzM5OS9yazMzOTlfZGVmLmgKaW5kZXgg
-YmE4MzI0MmViLi4yNGFkOTRhZTcgMTAwNjQ0Ci0tLSBhL3BsYXQvcm9ja2NoaXAvcmszMzk5L3Jr
-MzM5OV9kZWYuaAorKysgYi9wbGF0L3JvY2tjaGlwL3JrMzM5OS9yazMzOTlfZGVmLmgKQEAgLTE3
-LDcgKzE3LDggQEAKIC8qKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKgogICogVUFSVCByZWxhdGVkIGNvbnN0YW50
-cwogICoqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqLwotI2RlZmluZSBSSzMzOTlfQkFVRFJBVEUgICAgICAgICAg
-ICAgICAgICAgICAgICAxMTUyMDAKKy8vI2RlZmluZSBSSzMzOTlfQkFVRFJBVEUgICAgICAgICAg
-ICAgICAgICAgICAgMTE1MjAwCisjZGVmaW5lIFJLMzM5OV9CQVVEUkFURSAgICAgICAgICAgICAg
-ICAgICAgICAgIDE1MDAwMDAKICNkZWZpbmUgUkszMzk5X1VBUlRfQ0xPQ0sgICAgICAgICAgICAg
-IDI0MDAwMDAwCiAKIC8qKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioq
-KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioKCj4gaGFuZyBpcyBleGFjdGx5IHdo
-ZXJlIHlvdSBleHBlY3QgdG8gaGFuZyB3aXRoIGEgbm9uLWZ1bmN0aW9uYWwgVEYtQS4gSQo+IGVu
-YWJsZSBzb21lIGFkZGl0aW9uYWwgcHJpbnRzIGluIG15IFUtQm9vdCB0cmVlIHRvIGtub3cgZXhh
-Y3RseSB3aGF0Cj4gZ2V0cyBsb2FkZWQgZHVyaW5nIFNQTC4gVGhlcmUgYXJlIGFsc28gZGVidWcg
-cHJpbnRzIHlvdSBjYW4gZW5hYmxlIGluCj4gVFBMIHRvIGdldCB0aGUgc2V0dXAgcmVzdWx0cy4K
-CldvdWxkIHlvdSBiZSBraW5kIGVub3VnaCB0byBwb2ludCBtZSB0byB0aGUgdS1ib290L1RGLUEg
-cHJpbnRzIHBsZWFzZT8KCj4gV291bGQgeW91IGJlIHdpbGxpbmcgdG8gcnVuIG1ha2Ugc2F2ZWRl
-ZmNvbmZpZyBmcm9tIHlvdXIgbWFpbmxpbmUKPiBzZXR1cCBhbmQgc2hhcmUgdGhlIHJlc3VsdD8K
-CnUtYm9vdCBvciBURi1BPwoKPiA+IGh0dHBzOi8vcGFzdGViaW4udWJ1bnR1LmNvbS9wL2h3bUJ6
-eERCZ2MvCj4gPgo+ID4gVGhhbmtzIGFnYWluIGZvciB5b3VyIGluc2lnaHQuCj4gPgo+ID4gS2lu
-ZCByZWdhcmRzLAo+ID4gTGVlCj4gPgoKLS0gCkxlZSBKb25lcyBb5p2O55C85pavXQpQcmluY2lw
-YWwgVGVjaG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2VydmljZXMKTGluYXJvLm9yZyDilIIgT3Bl
-biBzb3VyY2Ugc29mdHdhcmUgZm9yIEFybSBTb0NzCkZvbGxvdyBMaW5hcm86IEZhY2Vib29rIHwg
-VHdpdHRlciB8IEJsb2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+Currently the set_fmt callback always passes clock provider/consumer
+with respect to the CODEC. This made sense when the framework was
+directly broken down into platforms and CODECs. However, as things
+are now broken down into components which can be connected as either
+the CPU or CODEC side of a DAI link it simplifies things if each
+side of the link is just told if it is provider or consumer of the
+clocks. Making this change allows us to remove one of the last parts
+of the ASoC core that needs to know if a driver is a CODEC driver,
+where it flips the clock format specifier if a CODEC driver is used on
+the CPU side of a DAI link, as well as just being conceptually more
+consistent with componentisation.
+
+The basic idea of this patch chain is to change the set_fmt callback
+from specifying if the CODEC is provider/consumer into directly
+specifying if the component is provider/consumer. To do this we add
+some new defines, and then to preserve bisectability, the migration is
+done by adding a new callback, converting over all existing CPU side
+drivers, converting the core, and then finally reverting back to the
+old callback.
+
+Converting the platform drivers makes sense as the existing defines
+are from the perspective of the CODEC and there are more CODEC drivers
+than platform drivers.
+
+Obviously a fair amount of this patch chain I was only able to build
+test, so any testing that can be done would be greatly appreciated.
+
+Thanks,
+Charles
+
+Charles Keepax (56):
+  ASoC: core: Add set_fmt_new callback that directly specifies provider
+  ASoC: amd: vangogh: Update to use set_fmt_new callback
+  ASoC: atmel: Update to use set_fmt_new callback
+  ASoC: au1x: Update to use set_fmt_new callback
+  ASoC: bcm: Update to use set_fmt_new callback
+  ASoC: ep93xx: Update to use set_fmt_new callback
+  ASoC: dwc: Update to use set_fmt_new callback
+  ASoC: fsl: Update to use set_fmt_new callback
+  ASoC: hisilicon: Update to use set_fmt_new callback
+  ASoC: img: Update to use set_fmt_new callback
+  ASoC: Intel: Update to use set_fmt_new callback
+  ASoC: js4740-i2s: Update to use set_fmt_new callback
+  ASoC: mediatek: Update to use set_fmt_new callback
+  ASoC: meson: Update to use set_fmt_new callback
+  ASoC: mxs-saif: Update to use set_fmt_new callback
+  ASoC: pxa: Update to use set_fmt_new callback
+  ASoC: qcom: Update to use set_fmt_new callback
+  ASoC: rockchip: Update to use set_fmt_new callback
+  ASoC: samsung: Update to use set_fmt_new callback
+  ASoC: sh: Update to use set_fmt_new callback
+  ASoC: stm: Update to use set_fmt_new callback
+  ASoC: sunxi: Update to use set_fmt_new callback
+  ASoC: tegra: Update to use set_fmt_new callback
+  ASoC: test-component: Update to use set_fmt_new callback
+  ASoC: ti: Update to use set_fmt_new callback
+  ASoC: ux500: Update to use set_fmt_new callback
+  ASoC: xtensa: Update to use set_fmt_new callback
+  ASoC: core: Always send the CPU DAI a direct clock specifier
+  ASoC: amd: vangogh: Rename set_fmt_new back to set_fmt
+  ASoC: atmel: Rename set_fmt_new back to set_fmt
+  ASoC: au1x: Rename set_fmt_new back to set_fmt
+  ASoC: bcm: Rename set_fmt_new back to set_fmt
+  ASoC: ep93xx: Rename set_fmt_new back to set_fmt
+  ASoC: dwc: Rename set_fmt_new back to set_fmt
+  ASoC: fsl: Rename set_fmt_new back to set_fmt
+  ASoC: hisilicon: Rename set_fmt_new back to set_fmt
+  ASoC: img: Rename set_fmt_new back to set_fmt
+  ASoC: Intel: Rename set_fmt_new back to set_fmt
+  ASoC: jz4740-i2s: Rename set_fmt_new back to set_fmt
+  ASoC: mediatek: Rename set_fmt_new back to set_fmt
+  ASoC: meson: Rename set_fmt_new back to set_fmt
+  ASoC: mxs-saif: Rename set_fmt_new back to set_fmt
+  ASoC: pxa: Rename set_fmt_new back to set_fmt
+  ASoC: qcom: Rename set_fmt_new back to set_fmt
+  ASoC: rockchip: Rename set_fmt_new back to set_fmt
+  ASoC: samsung: Rename set_fmt_new back to set_fmt
+  ASoC: sh: Rename set_fmt_new back to set_fmt
+  ASoC: stm: Rename set_fmt_new back to set_fmt
+  ASoC: sunxi: Rename set_fmt_new back to set_fmt
+  ASoC: tegra: Rename set_fmt_new back to set_fmt
+  ASoC: test-component: Rename set_fmt_new back to set_fmt
+  ASoC: ti: Rename set_fmt_new back to set_fmt
+  ASoC: ux500: Rename set_fmt_new back to set_fmt
+  ASoC: xtensa: Rename set_fmt_new back to set_fmt
+  ASoC: soc-dai: Remove set_fmt_new callback
+  ASoC: simple-card-utils: Move snd_soc_component_is_codec to be local
+
+ include/sound/soc-component.h                |  5 ---
+ include/sound/soc-dai.h                      |  6 ++++
+ sound/soc/amd/vangogh/acp5x-i2s.c            |  4 +--
+ sound/soc/atmel/atmel-i2s.c                  |  4 +--
+ sound/soc/atmel/atmel_ssc_dai.c              | 18 +++++-----
+ sound/soc/atmel/mchp-i2s-mcc.c               |  8 ++---
+ sound/soc/atmel/mchp-pdmc.c                  |  4 +--
+ sound/soc/au1x/i2sc.c                        |  2 +-
+ sound/soc/au1x/psc-i2s.c                     |  4 +--
+ sound/soc/bcm/bcm2835-i2s.c                  | 20 +++++------
+ sound/soc/bcm/cygnus-ssp.c                   |  4 +--
+ sound/soc/cirrus/ep93xx-i2s.c                |  4 +--
+ sound/soc/dwc/dwc-i2s.c                      |  8 ++---
+ sound/soc/fsl/fsl_audmix.c                   |  6 ++--
+ sound/soc/fsl/fsl_esai.c                     |  8 ++---
+ sound/soc/fsl/fsl_mqs.c                      |  2 +-
+ sound/soc/fsl/fsl_sai.c                      |  8 ++---
+ sound/soc/fsl/fsl_ssi.c                      | 22 ++++++------
+ sound/soc/fsl/imx-audmix.c                   |  4 +--
+ sound/soc/fsl/imx-card.c                     |  2 +-
+ sound/soc/generic/simple-card-utils.c        |  7 +++-
+ sound/soc/generic/test-component.c           | 18 +++++-----
+ sound/soc/hisilicon/hi6210-i2s.c             | 18 +++++-----
+ sound/soc/img/img-i2s-in.c                   |  4 +--
+ sound/soc/img/img-i2s-out.c                  |  6 ++--
+ sound/soc/intel/atom/sst-atom-controls.c     |  4 +--
+ sound/soc/intel/boards/bytcht_cx2072x.c      |  2 +-
+ sound/soc/intel/boards/bytcht_da7213.c       |  2 +-
+ sound/soc/intel/boards/bytcht_es8316.c       |  2 +-
+ sound/soc/intel/boards/bytcht_nocodec.c      |  2 +-
+ sound/soc/intel/boards/bytcr_rt5640.c        |  2 +-
+ sound/soc/intel/boards/bytcr_rt5651.c        |  2 +-
+ sound/soc/intel/boards/bytcr_wm5102.c        |  2 +-
+ sound/soc/intel/boards/cht_bsw_max98090_ti.c |  3 +-
+ sound/soc/intel/boards/cht_bsw_rt5645.c      |  6 ++--
+ sound/soc/intel/boards/cht_bsw_rt5672.c      |  2 +-
+ sound/soc/intel/keembay/kmb_platform.c       |  4 +--
+ sound/soc/jz4740/jz4740-i2s.c                | 10 +++---
+ sound/soc/mediatek/mt8195/mt8195-dai-etdm.c  |  6 ++--
+ sound/soc/mediatek/mt8195/mt8195-dai-pcm.c   |  6 ++--
+ sound/soc/meson/aiu-encoder-i2s.c            |  2 +-
+ sound/soc/meson/axg-tdm-interface.c          | 14 ++++----
+ sound/soc/mxs/mxs-saif.c                     |  4 +--
+ sound/soc/pxa/magician.c                     |  8 ++---
+ sound/soc/pxa/mmp-sspa.c                     |  6 ++--
+ sound/soc/pxa/pxa-ssp.c                      | 22 ++++++------
+ sound/soc/pxa/pxa2xx-i2s.c                   |  6 ++--
+ sound/soc/qcom/apq8016_sbc.c                 |  2 +-
+ sound/soc/qcom/qdsp6/audioreach.c            |  4 +--
+ sound/soc/qcom/qdsp6/q6afe.c                 |  6 ++--
+ sound/soc/qcom/sc7180.c                      |  2 +-
+ sound/soc/qcom/sdm845.c                      |  6 ++--
+ sound/soc/qcom/sm8250.c                      |  4 +--
+ sound/soc/rockchip/rockchip_i2s.c            |  6 ++--
+ sound/soc/rockchip/rockchip_i2s_tdm.c        |  6 ++--
+ sound/soc/samsung/i2s.c                      |  6 ++--
+ sound/soc/samsung/pcm.c                      |  4 +--
+ sound/soc/samsung/s3c-i2s-v2.c               |  6 ++--
+ sound/soc/samsung/s3c24xx-i2s.c              |  6 ++--
+ sound/soc/sh/fsi.c                           |  6 ++--
+ sound/soc/sh/rcar/core.c                     |  4 +--
+ sound/soc/sh/rz-ssi.c                        |  2 +-
+ sound/soc/sh/ssi.c                           | 10 +++---
+ sound/soc/soc-core.c                         | 14 ++------
+ sound/soc/soc-dai.c                          |  3 +-
+ sound/soc/stm/stm32_i2s.c                    |  8 ++---
+ sound/soc/stm/stm32_sai_sub.c                |  8 ++---
+ sound/soc/sunxi/sun4i-i2s.c                  | 18 +++++-----
+ sound/soc/sunxi/sun8i-codec.c                |  6 ++--
+ sound/soc/tegra/tegra20_i2s.c                |  6 ++--
+ sound/soc/tegra/tegra210_i2s.c               |  6 ++--
+ sound/soc/tegra/tegra30_i2s.c                |  6 ++--
+ sound/soc/ti/davinci-i2s.c                   | 32 ++++++++---------
+ sound/soc/ti/davinci-mcasp.c                 | 10 +++---
+ sound/soc/ti/omap-mcbsp.c                    | 12 +++----
+ sound/soc/ux500/ux500_msp_dai.c              | 36 ++++++++++----------
+ sound/soc/xtensa/xtfpga-i2s.c                |  4 +--
+ 77 files changed, 279 insertions(+), 283 deletions(-)
+
+-- 
+2.30.2
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
