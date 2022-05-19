@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9045C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 15:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4975C433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 15:50:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S+yBd1ceX+pKmBDeXxqSyCiqXC5epL5a/16yvEupam0=; b=yWmiqmRJKXsvv6
-	tNYa+J12yslKysVMcIvaSdffpwOloLt5XzlIMotE0pg2w2OyCd8khpXR2cC7zVtz/n4jVTx8z2O9O
-	8XjBC/TnzzZziSkB0CUVBNGJXe95lkrM2SrlH+kWOndY9j5QV11ja/uREIIO3zrFAFW2Z2l8vpDi9
-	amFDh8N9Fg9HwSdVA4zwOjFMh7BVQA5Q7eHNESkyYZElw0y85Zoxw/3lnq5/z/NPQIX/1KhEQ3t7S
-	8Tk9iogbshd2LRYt6ttXT65F2ntWSGMl9Ni6bTkq5vD1OwZZg55wMuQosC+3TUnVU1xh/f+9icBOa
-	SWHLh6vUCZDn2gCpUFgA==;
+	List-Owner; bh=YJIQrE31CqZc8Jc1SIZIIVlLkgjCASGFcqg14DLRWTg=; b=DNkrnloAkeLKDH
+	i5G/54ED/JODaqn3YukYrZC2Pr+HxlLHnGgPzStiqkrnnnJ6xEhtZdKme9RApUJvWiQ0rJnDXaY+4
+	wSoI+UpU+rSGV70X/2+cOhsbmsUAK0XBw/KBM8KVsCyK/0JQxrnQfkKu0okZwp+PwFlqgGxfvLcQA
+	HOYaPupzqRm4OTf6uN6NmrdpYHdxBBwP0vLxDPUWPOsPxh6YTv0J14kuMuCRyCY75dtyK8YhhcU5Y
+	uIn/EjQX2CRrNhdSkvjg2wEav19+6LNo8som/cOziWtBbno+R7mR2FSaYZIzZGIEvVHi41ZoX6y4l
+	n/UJLYKrk7eq4QRjylZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nriPo-0089L6-71; Thu, 19 May 2022 15:50:16 +0000
+	id 1nriPs-0089Ps-HN; Thu, 19 May 2022 15:50:20 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nriJs-0083Sl-JT; Thu, 19 May 2022 15:44:08 +0000
+ id 1nriJu-0083Uu-Hr; Thu, 19 May 2022 15:44:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Content-Type:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:Sender
  :Reply-To:Content-ID:Content-Description;
- bh=oil1ZKHs2gIMho1AoeBK9FgMU7gcVZ4wK4kjgOzdSgU=; b=CWw+yFk2DI6dGc6fyzwqmZ/1BX
- WJWWo4bcDIQgzaDE1XRZllbqLflX6mFE7usbuVHN6f1iVt2d7bCKngY91irPCyfP8pmcFl9Zta7lR
- 9k9cWGaq2mWsjEuY25HTzQuAbX4oBrhFqZTQOdargl/DKt2ZspmlRiic7Z2tidAwAKxHdzkNILc2k
- g4GfCS/0j6XQAgsC9OcoD6pJ1JExwiK5nHQydzXAIEi0Faic+mFL+tKssyay7s6LxDELbpWzo2QI0
- 2XdPBO8eKdhvAwfqM9tsUmUmtWdWuZFqQn5bXOy4ceOtjRL00v+ZJUaDsoXeKJGUKiIyKOPKvotOT
- Hvyscnig==;
+ bh=47fUoxbjqBre4OhI68iIK7gXTlIUAeEjBy1fpTbx+2I=; b=Phd4rVacIf7UT40BtIHowogRce
+ SjhIWbDK4XBK7TUZ6a6mk/xdH4hStXoDFOt6qd4hYWMAOh575ZXrNA+jcZKJv5SWApFS5iNyeVeMr
+ VBmX1Xu14GYdrp5zYxGgsnyF67DV9vcTaYqw4mmsYDAdiGylji48/vgZJTmTEC/ikmz1MR8usXCpQ
+ 9Q9ZJQ1f++z3yfXiGoH6d+2jCqx9S8Gvip0szc5Z5/ciKN4oQ3Cxw3YzcIEOfQI6tNV8YV+GQbppr
+ j4FRZhzV6I2aPg0hRGQ8kdyUos7liIwihJHu6YuNOgqzWW125DmD68O7XgJDYt4N3ykP4WyDm9BoU
+ t5BE3QmA==;
 Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
  by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nriJm-00CqQi-LJ; Thu, 19 May 2022 15:44:07 +0000
+ id 1nriJm-00CqQd-QO; Thu, 19 May 2022 15:44:09 +0000
 Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
- by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24J66mWF012194;
- Thu, 19 May 2022 10:43:42 -0500
+ by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24J66mVv012194;
+ Thu, 19 May 2022 10:43:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=PODMain02222019;
- bh=oil1ZKHs2gIMho1AoeBK9FgMU7gcVZ4wK4kjgOzdSgU=;
- b=VQjZoP93a0c8d+W/ugsjRxH9Fh1c1s3oEgc2mW54Kkr56QBRJ88v6LW8A8/rSjGStAsO
- Nf1wuE4VqmHUd+/RjkSpFuiZ0cMmWa3CdoAK0RCYsILdmBymnKNchfv1FYGaApL7R4fj
- kPxLk4H6KmvxU/TsS1AKvB1RzEZDzrpsOhNLC+OtRHWFmJnim4Yl0ypQBX2NYM2tFmwh
- SlabDEdIZwWaFx6REBIak6ICHrHTatIr57nUQyEjgxgcyiy0INoclm90w5blGBoZOg/a
- io4sDZ82+vQyPAxpgqierRNnmO+F8kkxvNZAAIKN0iQyMoEssAq1im2hGfWe9JzGdOXB PQ== 
+ bh=47fUoxbjqBre4OhI68iIK7gXTlIUAeEjBy1fpTbx+2I=;
+ b=EZIRm7Zy4iywxKcAPPZ6RbFV5LL6HfHL32Ihijq9cKxdguCP78YFHEKTFc/fZefCx+AZ
+ IvHHlXL59rK/XReAjPBFM5WsaeNQTLBjipE5r2y+3UoE7T1HXl6w7yHPsGdV+Oopywns
+ DwOAl7wUH+PBmQ8xH2kWjWz+0RgSfVrQnTgiXgRIgByr07/Nv+b4/81XdMevloCy+qBu
+ T1GWjuqXKokwNCQJQTPly2Vf7JUXUE2LAFLLbygECOBVbvVALEWlBimYzw3uGtwJCHuh
+ cI7L5KlhUwO6gJA7AeIzuLlq54h1dVtTR8oe8AeAzEamPAwxzuGKztO2SAXzXIQvXAU4 Nw== 
 Received: from ediex02.ad.cirrus.com ([84.19.233.68])
- by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upf5dn-18
+ by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upf5dn-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Thu, 19 May 2022 10:43:41 -0500
+ Thu, 19 May 2022 10:43:26 -0500
 Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
  (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 19 May
- 2022 16:43:22 +0100
+ 2022 16:43:18 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
- Frontend Transport; Thu, 19 May 2022 16:43:22 +0100
+ Frontend Transport; Thu, 19 May 2022 16:43:18 +0100
 Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
- by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 6025911DA;
- Thu, 19 May 2022 15:43:22 +0000 (UTC)
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id BE93311D1;
+ Thu, 19 May 2022 15:43:18 +0000 (UTC)
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
@@ -79,20 +79,19 @@ CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
  <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
  <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
  <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>
-Subject: [PATCH 56/56] ASoC: simple-card-utils: Move
- snd_soc_component_is_codec to be local
-Date: Thu, 19 May 2022 16:43:18 +0100
-Message-ID: <20220519154318.2153729-57-ckeepax@opensource.cirrus.com>
+Subject: [PATCH 06/56] ASoC: ep93xx: Update to use set_fmt_new callback
+Date: Thu, 19 May 2022 16:42:28 +0100
+Message-ID: <20220519154318.2153729-7-ckeepax@opensource.cirrus.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-X-Proofpoint-GUID: g2VJ5uiOojlv2ZUJ1ZRM-SzjnwXJaEpV
-X-Proofpoint-ORIG-GUID: g2VJ5uiOojlv2ZUJ1ZRM-SzjnwXJaEpV
+X-Proofpoint-GUID: aaN9lDp6C-xpba9GNQAi-nnxBESoUzrq
+X-Proofpoint-ORIG-GUID: aaN9lDp6C-xpba9GNQAi-nnxBESoUzrq
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_164402_998372_BFC2FA33 
-X-CRM114-Status: GOOD (  21.52  )
+X-CRM114-CacheID: sfid-20220519_164403_492288_1A98BDD5 
+X-CRM114-Status: GOOD (  13.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,77 +109,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The helper function snd_soc_component_is_codec is based off the
-presence of the non_legacy_dai_naming flag. This isn't super robust
-as CPU side components may also specify this flag, and indeed the
-kernel already contains a couple that do. After componentisation there
-isn't really a totally robust solution to identifying what is a CODEC
-driver, without introducing a flag specifically for that purpose, and
-really the desirable direction to move in is that the distinction
-doesn't matter.
-
-This patch does two things to try to mitigate these problems. Firstly,
-now that all the other users of the helper function have been removed,
-it makes the helper function local to the driver rather, than being
-part of the core. This should help to discourage any new code from
-being created that depends on the CODEC driver distinction. Secondly,
-it updates the helper function itself to use the endianness flag
-rather than the non_legacy_dai_naming flag. The endianness flag is
-definitely invalid on a CPU side component, so it a more reliable
-indicator that the device is definitely a CODEC. The vast majority of
-buses require the CODEC to set the endianness flag, so the number of
-corner cases should be fairly minimal. It is worth noting that CODECs
-sending audio over SPI, or built into the CPU CODECs are potential
-corner cases, however the hope is that in most cases those types of
-devices do not consitute a simple audio card.
+As part of updating the core to directly tell drivers if they are clock
+provider or consumer update this CPU side driver to use the new direct
+callback.
 
 Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 ---
- include/sound/soc-component.h         | 5 -----
- sound/soc/generic/simple-card-utils.c | 7 ++++++-
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ sound/soc/cirrus/ep93xx-i2s.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/sound/soc-component.h b/include/sound/soc-component.h
-index 5a764c3099d3e..5c4cfa70b018c 100644
---- a/include/sound/soc-component.h
-+++ b/include/sound/soc-component.h
-@@ -348,11 +348,6 @@ static inline int snd_soc_component_cache_sync(
- 	return regcache_sync(component->regmap);
- }
- 
--static inline int snd_soc_component_is_codec(struct snd_soc_component *component)
--{
--	return component->driver->non_legacy_dai_naming;
--}
--
- void snd_soc_component_set_aux(struct snd_soc_component *component,
- 			       struct snd_soc_aux_dev *aux);
- int snd_soc_component_init(struct snd_soc_component *component);
-diff --git a/sound/soc/generic/simple-card-utils.c b/sound/soc/generic/simple-card-utils.c
-index 539d7f081bd79..50a9827089335 100644
---- a/sound/soc/generic/simple-card-utils.c
-+++ b/sound/soc/generic/simple-card-utils.c
-@@ -513,6 +513,11 @@ static int asoc_simple_init_dai(struct snd_soc_dai *dai,
- 	return 0;
- }
- 
-+static inline int asoc_simple_component_is_codec(struct snd_soc_component *component)
-+{
-+	return component->driver->endianness;
-+}
-+
- static int asoc_simple_init_dai_link_params(struct snd_soc_pcm_runtime *rtd,
- 					    struct simple_dai_props *dai_props)
- {
-@@ -524,7 +529,7 @@ static int asoc_simple_init_dai_link_params(struct snd_soc_pcm_runtime *rtd,
- 
- 	/* Only Codecs */
- 	for_each_rtd_components(rtd, i, component) {
--		if (!snd_soc_component_is_codec(component))
-+		if (!asoc_simple_component_is_codec(component))
- 			return 0;
+diff --git a/sound/soc/cirrus/ep93xx-i2s.c b/sound/soc/cirrus/ep93xx-i2s.c
+index 2c8cd843d049c..2c8b1c76b834c 100644
+--- a/sound/soc/cirrus/ep93xx-i2s.c
++++ b/sound/soc/cirrus/ep93xx-i2s.c
+@@ -246,12 +246,12 @@ static int ep93xx_i2s_set_dai_fmt(struct snd_soc_dai *cpu_dai,
  	}
  
+ 	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+-	case SND_SOC_DAIFMT_CBC_CFC:
++	case SND_SOC_DAIFMT_BP_FP:
+ 		/* CPU is provider */
+ 		clk_cfg |= EP93XX_I2S_CLKCFG_MASTER;
+ 		break;
+ 
+-	case SND_SOC_DAIFMT_CBP_CFP:
++	case SND_SOC_DAIFMT_BC_FC:
+ 		/* Codec is provider */
+ 		clk_cfg &= ~EP93XX_I2S_CLKCFG_MASTER;
+ 		break;
+@@ -398,7 +398,7 @@ static const struct snd_soc_dai_ops ep93xx_i2s_dai_ops = {
+ 	.shutdown	= ep93xx_i2s_shutdown,
+ 	.hw_params	= ep93xx_i2s_hw_params,
+ 	.set_sysclk	= ep93xx_i2s_set_sysclk,
+-	.set_fmt	= ep93xx_i2s_set_dai_fmt,
++	.set_fmt_new	= ep93xx_i2s_set_dai_fmt,
+ };
+ 
+ #define EP93XX_I2S_FORMATS (SNDRV_PCM_FMTBIT_S32_LE)
 -- 
 2.30.2
 
