@@ -4,81 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25075C4332F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 May 2022 22:57:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B43D8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 06:57:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s7AAH/4bqBYt5hkSQwdlLJs6ZDfhHrwLwXlWsYPJrTg=; b=EMEEX1Fgo4SZw4
-	GEUZO81sBxEIzKzWNhesF0WRagrs1rjKisxpfLg/+9PxZy6OmEHmuYrmGEUA2f+zrN1sMuee2QAHo
-	3KtImknSQT7bEdu3FkkALF0PMhLVBYbyvcxQlu5FRZVqzNI/Iy18xtOg2xSG+acpQaTSZRTmAUaY0
-	O05bZSVf6Gi+Iw56jISuow0AO7KRYVdv0Ja5sObyNvvFBMYWzqLXynITGghx2lB+vDQcI6/FgiGY9
-	jLzSRhhYt9qn7jBX/1ZyM7eEM1QLXW5cjm0Xk121k1uDcuz1fAUIOAMPmeDojE0aaTSDzslPyn/If
-	H+AasOcchWHmH07Q5oBw==;
+	List-Owner; bh=NQ47xU2cuBLoMArwd10wHUryIXK7P9pWDGQkeOFTDW4=; b=d5NMOI2ZSXGEKj
+	3f51+W1Kmik/FWcAUPnika/W9jEa2jeIXAx+/Z3FAM7yKSCdGw2fEx76gPEqSD8NnLTKeRWtXk1tc
+	EvcFeUqFipt4CePoSlohfFxdwjkBvpMB6goa03TyA0gM+NiPqs12A6GTJceGAjXZzVhglFKE8JQpg
+	5Ht1xpRneQw8odthpoNX5/rvcLvCPLngUcl5b2SspTjHFxyQOOH5ZfScZhOIdb7WFLy3zGGSHNc9a
+	zL57e5DBq79GagwXGukuecGd+VCFAfzKRbxSLHvFccyJlRdpAanfEHVhtvBWaeKwE73IyO8eB4bpd
+	r/SM6QtzCYxptDzQsoRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrSbA-004Cct-R4; Wed, 18 May 2022 22:56:56 +0000
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
+	id 1nra6C-005OdB-NY; Thu, 19 May 2022 06:57:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrSb7-004CaO-Uu; Wed, 18 May 2022 22:56:56 +0000
-Received: by mail-yb1-xb2f.google.com with SMTP id t26so6161750ybt.3;
- Wed, 18 May 2022 15:56:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=axowykrfJMadzhLINXAvvr65LaCSW8lRi2zQFcQvwfg=;
- b=Zp22lhgVIo8L2J6FFQkHiTBcIniKo7b2osrdlaCOZam00S6xYqAswf+ErZ+5Bez4BL
- Mr4H/+kOR4XWdtwrr97uxRoVwWwLGCFdmREYBKsi1L4pHCoMPnXgy2FT2mgFE3Bws1j/
- d1zI2tdwoIV0GlDkRjHnWappCw+edGeP93IKmmWEroQOa9naL9aTQ8YP9tZP1wjXIJgE
- ce1r5FMUmMijYrJxIq0Y26G+oEwD4kFK/uj71j6yX+xQ2LnMnrmD3GoG07WqbnbwoSCo
- 0OtKF8rwUymP0R50yrgM1APNLlP7+w815dtI8U6Pu5EhBQx1zfqJbyQg4tuqoyX+FpI0
- /h6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=axowykrfJMadzhLINXAvvr65LaCSW8lRi2zQFcQvwfg=;
- b=3jzIqxUQHaV45699S8heVbYKy5aAULSLXYdKv/AZRgXVkfiZRKgijooehxvkHyno/Z
- hH2qi8/gKwr90SiMI/leL/CimcpnANSdDpVPRu5EKiuUQiQXs6KzCr3/Uan/FF/3Ql/W
- 3x8Vt2czTLcxXQWbxcCUzJqtV5ktlmc4k16v4en99+wEpZt9Z5IFa8CWUq5mx1/IdHzK
- QF7vmtNkVpvvLbp7nURVSY0qkZUGicCU7XmGWsK/3o0+//AcKN5HWX9kyZho2VFRDcMM
- S8nN8Cq29qZ9gGAo7Pk1ErJwrmbsqGtUBNj22G5UHZwHLV6Cy5NbrtQwvH+JBi3aZoRf
- YkKw==
-X-Gm-Message-State: AOAM533PPpibUtRE8tMaOchAisvpHDAgtELkm9vltP2ToOw4aUrqxnOY
- pGk6CO1skZyMfYSMRdgLw3vEXET1jjcqFGCTrE4=
-X-Google-Smtp-Source: ABdhPJzOorh9BKzy7FN3KkaYvsIRN4PIxwYkq2dOyYoF4uJqOGOo2uzth8ikKw8mhAwRi9q6BAMC7J5hY3FvC+XoeYU=
-X-Received: by 2002:a25:d454:0:b0:64d:b902:59c3 with SMTP id
- m81-20020a25d454000000b0064db90259c3mr1869783ybf.228.1652914610817; Wed, 18
- May 2022 15:56:50 -0700 (PDT)
+ id 1nra60-005OY6-QJ; Thu, 19 May 2022 06:57:18 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id EA55761A98;
+ Thu, 19 May 2022 06:57:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95985C34100;
+ Thu, 19 May 2022 06:57:10 +0000 (UTC)
+Message-ID: <60a9c660-16cd-8f5b-8626-be34e8977781@xs4all.nl>
+Date: Thu, 19 May 2022 08:57:08 +0200
 MIME-Version: 1.0
-References: <20191128061433.1952869-1-anarsoul@gmail.com>
- <20191128061433.1952869-2-anarsoul@gmail.com>
- <1ab40490-a232-b5fd-6180-17867aa6a053@rock-chips.com>
- <CA+E=qVeNWEJTfQ_30Uxv=qFixMR-rbYOW_HCtx83bqmfNWb9dg@mail.gmail.com>
- <fe3e93dc-16e5-eaf7-94a5-def1dde85c86@rock-chips.com>
- <CA+E=qVdMA_8wQcXzzf47Pi+dUigLBsOzOydhz+DZbvr8+9+PCg@mail.gmail.com>
- <6C83A835-37D3-4E48-BB08-024BB2703FB8@gmail.com> <YoTerAfKU5S04nfk@google.com>
-In-Reply-To: <YoTerAfKU5S04nfk@google.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Wed, 18 May 2022 18:56:38 -0400
-Message-ID: <CAMdYzYpRybPjzkhoN0fMNMEdeMAO4zV7kaVVaxUk+=KWg8SK1A@mail.gmail.com>
-Subject: Re: [U-Boot] [PATCH 2/2] rockchip: rk3399: rockpro64: enable force
- power on reset workaround
-To: Lee Jones <lee.jones@linaro.org>
-Cc: Hugh Cole-Baker <sigmaris@gmail.com>,
- U-Boot Mailing List <u-boot@lists.denx.de>, 
- Caesar Wang <wxt@rock-chips.com>, Vasily Khoruzhick <anarsoul@gmail.com>, 
- Kever Yang <kever.yang@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, 
- Elaine Zhang <zhangqing@rock-chips.com>,
- Brian Norris <briannorris@chromium.org>, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- arm-mail-list <linux-arm-kernel@lists.infradead.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.1
+Subject: Re: [PATCH v4] media: Add P010 video format
+Content-Language: en-US
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
+ gregkh@linuxfoundation.org, shawnguo@kernel.org, s.hauer@pengutronix.de,
+ festevam@gmail.com, linux-imx@nxp.com, heiko@sntech.de, wens@csie.org,
+ jernej.skrabec@gmail.com, samuel@sholland.org
+Cc: kernel@pengutronix.de, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, kernel@collabora.com,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>
+References: <20220518132105.629797-1-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+In-Reply-To: <20220518132105.629797-1-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220518_155654_036856_3A313911 
-X-CRM114-Status: GOOD (  46.77  )
+X-CRM114-CacheID: sfid-20220518_235716_984472_06711DF2 
+X-CRM114-Status: GOOD (  20.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,149 +66,161 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBNYXkgMTgsIDIwMjIgYXQgNzo1NiBBTSBMZWUgSm9uZXMgPGxlZS5qb25lc0BsaW5h
-cm8ub3JnPiB3cm90ZToKPgo+IExvb3BpbmcgaW50IGEgZmV3IHJlbGV2YW50L2FjdGl2ZSBrZXJu
-ZWwgcGVvcGxlL2xpc3RzIGZvciBmdWxsIGNvdmVyYWdlLgo+Cj4gT24gU3VuLCAwMSBEZWMgMjAx
-OSwgSHVnaCBDb2xlLUJha2VyIHdyb3RlOgo+ID4gPiBPbiAyOSBOb3YgMjAxOSwgYXQgMDE6MDYs
-IFZhc2lseSBLaG9ydXpoaWNrIDxhbmFyc291bEBnbWFpbC5jb20+IHdyb3RlOgo+ID4gPiBPbiBU
-aHUsIE5vdiAyOCwgMjAxOSBhdCA0OjU5IFBNIEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1j
-aGlwcy5jb20+IHdyb3RlOgo+ID4gPj4KPiA+ID4+IEhpIFZhc2lseSwKPiA+ID4+Cj4gPiA+PiBP
-biAyMDE5LzExLzI4IOS4i+WNiDExOjUxLCBWYXNpbHkgS2hvcnV6aGljayB3cm90ZToKPiA+ID4+
-PiBPbiBUaHUsIE5vdiAyOCwgMjAxOSBhdCAxOjIzIEFNIEtldmVyIFlhbmcgPGtldmVyLnlhbmdA
-cm9jay1jaGlwcy5jb20+IHdyb3RlOgo+ID4gPj4+PiBIaSBWYXNpbHksCj4gPiA+Pj4+Cj4gPiA+
-Pj4+ICAgICAgSSB0aGluayB0aGlzIHNob3VsZCBub3QgYmUgbmVlZGVkLCBzZWUgY29tbWVudHMg
-YmVsb3cuCj4gPiA+Pj4gSGkgS2V2ZXIsCj4gPiA+Pj4KPiA+ID4+PiBJJ3ZlIHNwZW50IDIgd2Vl
-a3Mgb2YgbXkgZXZlbmluZ3MgZGVidWdnaW5nIHRoaXMgaXNzdWUgYnV0Cj4gPiA+Pgo+ID4gPj4g
-SSBjYW4gdW5kZXJzdGFuZCB5b3Ugd29yayBwcmV0dHkgaGFyZCBvbiBtYWtlIGl0IHdvcmssIGl0
-J3Mgbm90IHNvIGVhc3kKPiA+ID4+IHRvIGlkZW50aWZ5IHRoZSByb290IGNhdXNlCj4gPiA+Pgo+
-ID4gPj4gc29tZSB0aW1lcywgdGhhbmtzIHZlcnkgbXVjaCBmb3Igd29ya2luZyBvbiB0aGlzLgo+
-ID4gPj4KPiA+ID4+PiB1bmZvcnR1bmF0ZWx5IEkgZG9uJ3QgaGF2ZSBhIHByb3BlciBmaXguIFRo
-aXMgaXMgdGhlIG9ubHkgc29sdXRpb24KPiA+ID4+PiB0aGF0IG1ha2VzIG15IHJvY2twcm82NCBy
-ZWJvb3QgcmVsaWFibHkgd2l0aCBtYWlubGluZSB1LWJvb3QgYW5kIEFURi4KPiA+ID4+PiBTZWUg
-bXkgY29tbWVudHMgYmVsb3cuCj4gPgo+ID4gSSBhbHNvIGhhZCBhIHByb2JsZW0gd2hlcmUgTGlu
-dXggd291bGQgaGFuZyBvciBwYW5pYyBhZnRlciByZWJvb3RpbmcsIHdpdGgKPiA+IG1haW5saW5l
-IHUtYm9vdCBhbmQgQVRGIG9uIGEgcm9ja3BybzY0LiBUaGlzIHBhdGNoIGRvZXMgZml4IHRoZSBp
-c3N1ZSBmb3IgbWUsCj4gPiBJIGhhdmUgdGVzdGVkIGl0IGJ5IHBlcmZvcm1pbmcgMTAgcmVib290
-cyBmcm9tIExpbnV4IGluIGEgcm93IGFuZCBJJ3ZlIHNlZW4KPiA+IG5vIGhhbmdzIG9yIHBhbmlj
-cy4KPiA+Cj4gPiBJIG5vdGljZWQgdGhlIEFybWJpYW4gcHJvamVjdCBoYXZlIHJlY2VudGx5IGlu
-Y2x1ZGVkIGEgcGF0Y2ggdG8gQVRGIFsxXSB3aGljaAo+ID4gc3dpdGNoZXMgYWxsIHBvd2VyIGRv
-bWFpbnMgb24gYmVmb3JlIEFURiBwZXJmb3JtcyBhIHNvZnQgcmVzZXQuIEkgaGF2ZSBhbHNvCj4g
-PiB0ZXN0ZWQgdXNpbmcgdS1ib290IG1haW5saW5lLCB3aXRob3V0IGFueSBwYXRjaGVzIHRvIHUt
-Ym9vdCwgYnV0IGluY2x1ZGluZyBBVEYKPiA+IHBhdGNoZWQgd2l0aCB5b3VyIHJlc2V0IGZpeCBb
-Ml0gYW5kIHRoZSBBcm1iaWFuIHBvd2VyIGRvbWFpbnMgcGF0Y2ggWzFdLiBUaGlzCj4gPiBhbHNv
-IGZpeGVzIHRoZSBzYW1lIGhhbmdpbmcgb24gcmVib290IGlzc3VlIGZvciBtZSB3aXRob3V0IG1v
-ZGlmaWNhdGlvbnMgdG8KPiA+IHUtYm9vdCwgSSd2ZSBhbHNvIHRlc3RlZCAxMCByZWJvb3RzIGlu
-IGEgcm93IHdpdGggdGhpcyBBVEYgYW5kIHNlZW4gbm8gaGFuZ3MuCj4gPgo+ID4gU28gdGhpcyB1
-LWJvb3QgcGF0Y2ggbWF5IG5vdCBiZSBuZWVkZWQgaWYgQVRGIGlzIHBhdGNoZWQgaW5zdGVhZCB0
-byBzd2l0Y2gKPiA+IHBvd2VyIGRvbWFpbnMgb24gYmVmb3JlIHNvZnQgcmVzZXQuCj4gPgo+ID4g
-RldJVywgd2hlbiBJIHdhcyBhYmxlIHRvIHNlZSBwYW5pYyBtZXNzYWdlcyBmcm9tIExpbnV4IHdo
-ZW4gaXQgcGFuaWNrZWQgb24KPiA+IGJvb3QsIHRoZSBjYWxsIHRyYWNlIGFsd2F5cyBzZWVtZWQg
-dG8gaW5jbHVkZSByb2NrY2hpcF9wZF9wb3dlcl9vZmYoKSBbM10uCj4gPgo+ID4gWzFdIGh0dHBz
-Oi8vZ2l0aHViLmNvbS9hcm1iaWFuL2J1aWxkL2Jsb2IvbWFzdGVyL3BhdGNoL2F0Zi9hdGYtcmsz
-Mzk5L3N3aXRjaC1wb3dlci1kb21haW5zLW9uLWJlZm9yZS1yZXNldC5wYXRjaAo+ID4gWzJdIGh0
-dHBzOi8vcmV2aWV3LnRydXN0ZWRmaXJtd2FyZS5vcmcvYy9URi1BL3RydXN0ZWQtZmlybXdhcmUt
-YS8rLzI1MTIKPiA+IFszXSBodHRwczovL2dpc3QuZ2l0aHViLmNvbS9zaWdtYXJpcy9jMGUxNTVj
-OGNiMGEzMjVkODRmNTQ5MTg1ZjlhNTY4Ywo+Cj4gVGhpcyBsYXN0IHBhc3RlIGxvb2tzIHJlbWFy
-a2FibHkgc2ltaWxhciB0byBhbiBpc3N1ZSBjdXJyZW50bHkgc2VlbiBvbgo+IHRoZSBSYWR4YSBS
-T0NLIFBpIDRCIChSSzMzOTkpIGR1cmluZyBwb3dlci11cCBhZnRlciBhIHNvZnQgcmVib290Cj4g
-KGBzdWRvIHJlYm9vdGApIGlzIGlzc3VlZC4gIFdlJ3JlIHByZXNlbnRseSBydW5uaW5nIHY1LjE1
-LjM1IFswXS4KCkdvb2QgRXZlbmluZywKClRoYXQncyBkZWZpbml0ZWx5IG5vdCBzdG9jayB2NS4x
-NS4zNSwgaXQncyBiZWVuIHRhZ2dlZCBhcyBhbiBhbmRyb2lkIGtlcm5lbC4KNS4xNS4zNS1hbmRy
-b2lkMTMtNS0wMDA5Mi1nNTI1ZDc3MzEwYTIwCgo+Cj4gSXQncyBub3QgY2xlYXIgaG93IHRoaXMg
-aXNzdWUgKHByZXNlbnQgMyB5ZWFycyBhZ28pIHdhcyBmaW5hbGx5Cj4gcmVzb2x2ZWQuICBGcm9t
-IHRoZSB0aHJlYWQsIGl0IGxvb2tzIGFzIGlmIHRoZSBmaXggbWlnaHQgaGF2ZSBtYWRlIGl0cwo+
-IHdheSBpbnRvIEFURiwgYnV0IEknbSA4Ny42JSBzdXJlIEFURiBpcyBub3QgcnVubmluZyBvbiB0
-aGlzIHBsYXRmb3JtCj4gKHlldCkuCgpUaGUgcmszMzk5IFNvQyBoYXMgYSBoYXJkd2FyZSBidWcg
-d2hlcmUgdGhlIHBvd2VyIGRvbWFpbnMgYXJlIG5vdApyZXNldCB1cG9uIGEgc29mdCByZXNldC4g
-VGhpcyBsZWFkcyB0byBzaXR1YXRpb25zIGxpa2UgdGhpcyBvbmUgd2hlcmUKcG93ZXIgZG9tYWlu
-cyBhcmUgc2h1dCBkb3duIGR1cmluZyBzaHV0ZG93biBidXQgYXJlbid0IHJlc3RvcmVkIG9uCnJl
-Ym9vdC4gTWFpbmxpbmUgVEYtQSB3YXMgcGF0Y2hlZCB0byBmb3JjZSBhbGwgcG93ZXIgZG9tYWlu
-cyBvbmxpbmUKd2hlbiBhIHNvZnQgcmVib290IGlzIHRyaWdnZXJlZCwgd2hpY2ggc29sdmVkIHRo
-YXQgaXNzdWUuIFdoYXQKcGFydGljdWxhciBpc3N1ZXMgYXJlIHlvdSBoYXZpbmcgaW5pdGlhbGl6
-aW5nIG1vZGVybiB1LWJvb3Qgb24gdGhpcwpkZXZpY2U/IElzIHRoZXJlIGEgcGFydGljdWxhciBy
-ZWFzb24gaXQgaXNuJ3QgdXNpbmcgTWFpbmxpbmUgVEYtQT8KCkkndmUgYWxzbyBydW4gaW50byBp
-c3N1ZXMgb24gcmszNTZ4IHdoZXJlIHRoZSByZWd1bGF0b3IgcG93ZXJpbmcgYQpwb3dlciBkb21h
-aW4gaXNuJ3QgcG93ZXJlZCBkdWUgdG8gYSBzb2Z0IHJlc2V0LCB3aGljaCBhbHNvIGNhdXNlcwpm
-YXVsdHMgbGlrZSB0aGlzLiBTZXQgeW91ciBtYWluIHJlZ3VsYXRvcnMgdG8gYWx3YXlzLW9uIGFu
-ZCBzZWUgaWYgaXQKaGVscHMgd2l0aCB0aGUgaXNzdWUuCgpWZXJ5IFJlc3BlY3RmdWxseSwKUGV0
-ZXIgR2VpcwoKPgo+IE5vdGUgdGhhdCB0aGUgdS1ib290IHdlJ3JlIHVzaW5nIGlzIGFsc28gcXVp
-dGUgb2xkOgo+Cj4gICBVLUJvb3QgMjAxOS4xMC0wOTI0OC1nODUxMWM3NWJiNCAoSmFuIDA4IDIw
-MjAgLSAxNzoxMzowMyAtMDgwMCkKPgo+IC4uLiBzbyB0aGlzIGNvdWxkIGVhc2lseSBiZSB0aGUg
-cm9vdCBjYXVzZS4gIFRoZSBjdXJyZW50IHBsYW4gaXMgdG8KPiB0cnkgdG8gdXBkYXRlIHRoaXMg
-QVNBUC4gIEhvd2V2ZXIgZWFybHkgYXR0ZW1wdHMgYXJlIHlldCB0byByZXN1bHQgaW4KPiBhIHN1
-Y2Nlc3NmdWwgYm9vdC4KPgo+IEkgc2VlIHRoYXQgQnJpYW4gcmVjZW50bHkgYWRkZWQgYSBmZXcg
-cGF0Y2hlcyByZWxhdGVkIHRvIFBEL0RWRlMsIGJ1dAo+IGFnYWluLCB0aGVzZSBhcHBlYXIgdG8g
-YmUgQVRGIHJlbGF0ZWQuCj4KPiBXb3VsZCBhbnlvbmUgYmUgYWJsZSB0byBzaGVkIHNvbWUgbGln
-aHQgb250byB0aGlzIGZvciBtZSBwbGVhc2U/Cj4KPiBBcyBhbHdheXMsIGFueSBoZWxwIHdvdWxk
-IGJlIGdyYXRlZnVsbHkgcmVjZWl2ZWQuCj4KPiBLaW5kIHJlZ2FyZHMsCj4gTGVlCj4KPiBbMF0K
-PiBGdWxsIHJlYm9vdCBsb2cgY2FuIGJlIHNlZW4gYXQ6IGh0dHBzOi8vcGFzdGViaW4udWJ1bnR1
-LmNvbS9wL01qWlAyVjZrUTMvCj4KPiBbICAgIDAuNjk5NzM2XVsgICAgVDFdIGluaXRjYWxsIF9f
-aW5pdHN0dWJfX2ttb2RfaW9tbXVfXzM2Ml8xNTVfaW9tbXVfc3Vic3lzX2luaXQ0KzB4MC8weDgg
-cmV0dXJuZWQgMCBhZnRlciAwIHVzZWNzCj4gWyAgICAwLjcwMDczN11bICAgIFQxXSBjYWxsaW5n
-ICBfX2luaXRzdHViX19rbW9kX3JvY2tjaGlwX2lvbW11X18zNDhfMTQxNV9ya19pb21tdV9pbml0
-NCsweDAvMHg4IEAgMQo+IFsgICAgMC43MDIyMzhdWyAgICBDNV0gU0Vycm9yIEludGVycnVwdCBv
-biBDUFU1LCBjb2RlIDB4YmYwMDAwMDIgLS0gU0Vycm9yCj4gWyAgICAwLjcwMjI0OF1bICAgIEM1
-XSBDUFU6IDUgUElEOiA0OCBDb21tOiBrd29ya2VyLzU6MSBOb3QgdGFpbnRlZCA1LjE1LjM1LWFu
-ZHJvaWQxMy01LTAwMDkyLWc1MjVkNzczMTBhMjAgIzEKPiBbICAgIDAuNzAyMjYxXVsgICAgQzVd
-IEhhcmR3YXJlIG5hbWU6IFJhZHhhIFJPQ0sgUGkgNEIgKERUKQo+IFsgICAgMC43MDIyNjZdWyAg
-ICBDNV0gV29ya3F1ZXVlOiBwbSBnZW5wZF9wb3dlcl9vZmZfd29ya19mbi5jZmlfanQKPiBbICAg
-IDAuNzAyMjg5XVsgICAgQzVdIHBzdGF0ZTogODA0MDAwYzUgKE56Y3YgZGFJRiArUEFOIC1VQU8g
-LVRDTyAtRElUIC1TU0JTIEJUWVBFPS0tKQo+IFsgICAgMC43MDIzMDFdWyAgICBDNV0gcGMgOiBy
-ZWdtYXBfbW1pb19yZWFkMzJsZSsweDE0LzB4MmMKPiBbICAgIDAuNzAyMzE4XVsgICAgQzVdIGxy
-IDogcmVnbWFwX21taW9fcmVhZCsweDY4LzB4ZDAKPiBbICAgIDAuNzAyMzMxXVsgICAgQzVdIHNw
-IDogZmZmZmZmYzAwYjZkM2I0MAo+IFsgICAgMC43MDIzMzVdWyAgICBDNV0geDI5OiBmZmZmZmZj
-MDBiNmQzYjQwIHgyODogMDAwMDAwMDAwMDAwMDAwMCB4Mjc6IDAwMDAwMDAwMDAwMDAwMDAKPiBb
-ICAgIDAuNzAyMzUxXVsgICAgQzVdIHgyNjogZmZmZmZmODAwMDkyMzY4MCB4MjU6IGZmZmZmZmMw
-MDlhYmMyYTAgeDI0OiBmZmZmZmY4MDAwOTMwYzAwCj4gWyAgICAwLjcwMjM2NF1bICAgIEM1XSB4
-MjM6IDAwMDAwMDAwMDAwMDAwMTQgeDIyOiBmZmZmZmY4MDAwOTMwYzAwIHgyMTogMDAwMDAwMDAw
-MDAwMDAwOAo+IFsgICAgMC43MDIzNzhdWyAgICBDNV0geDIwOiBmZmZmZmY4MDAwOTIyMzAwIHgx
-OTogZmZmZmZmODAwMDkyMzY4MCB4MTg6IGZmZmZmZmMwMGI2NmQwNTgKPiBbICAgIDAuNzAyMzkx
-XVsgICAgQzVdIHgxNzogMDAwMDAwMDAwMDAwYmE3ZSB4MTY6IGZmZmZmZmMwMGE0ZGVlMDQgeDE1
-OiAwMDAwMDAwMDAwMDBiNjdlCj4gWyAgICAwLjcwMjQwNV1bICAgIEM1XSB4MTQ6IDAwMDAwMDAw
-MDI4ZGQ3YTAgeDEzOiAwMDAwMDAwMDAwMDAwMDQwIHgxMjogMDAwMDAwMDAwMDAwMDAwMAo+IFsg
-ICAgMC43MDI0MTldWyAgICBDNV0geDExOiAwMDAwMDAwMDAwMDAwMDAwIHgxMDogMDAwMDAwMDAw
-MDAwMDAwMCB4OSA6IDAwMDAwMDAwMDAwMDAwMDUKPiBbICAgIDAuNzAyNDMyXVsgICAgQzVdIHg4
-IDogMDAwMDAwMDAwMDAwMDAwMCB4NyA6IDAwNzU2ZDZkNmY2OTJlMzAgeDYgOiAzMDMwMzgzMDM1
-MzY2NjY2Cj4gWyAgICAwLjcwMjQ0NV1bICAgIEM1XSB4NSA6IDAwMDAwMDAwMDAwMDAwMDEgeDQg
-OiAwMjhkZWEyNDhmYmEzM2Q2IHgzIDogMDAwMDAwMDAwMDAwMDAwMAo+IFsgICAgMC43MDI0NTdd
-WyAgICBDNV0geDIgOiBmZmZmZmY4MDAwOTIzNjgwIHgxIDogMDAwMDAwMDAwMDAwMDAwOCB4MCA6
-IDAwMDAwMDAwMDAwMDAwMDAKPiBbICAgIDAuNzAyNDcyXVsgICAgQzVdIEtlcm5lbCBwYW5pYyAt
-IG5vdCBzeW5jaW5nOiBBc3luY2hyb25vdXMgU0Vycm9yIEludGVycnVwdAo+IFsgICAgMC43MDI0
-NzddWyAgICBDNV0gQ1BVOiA1IFBJRDogNDggQ29tbToga3dvcmtlci81OjEgTm90IHRhaW50ZWQg
-NS4xNS4zNS1hbmRyb2lkMTMtNS0wMDA5Mi1nNTI1ZDc3MzEwYTIwICMxCj4gWyAgICAwLjcwMjQ4
-N11bICAgIEM1XSBIYXJkd2FyZSBuYW1lOiBSYWR4YSBST0NLIFBpIDRCIChEVCkKPiBbICAgIDAu
-NzAyNDkyXVsgICAgQzVdIFdvcmtxdWV1ZTogcG0gZ2VucGRfcG93ZXJfb2ZmX3dvcmtfZm4uY2Zp
-X2p0Cj4gWyAgICAwLjcwMjUwNl1bICAgIEM1XSBDYWxsIHRyYWNlOgo+IFsgICAgMC43MDI1MDhd
-WyAgICBDNV0gIGR1bXBfYmFja3RyYWNlLmNmaV9qdCsweDAvMHg4Cj4gWyAgICAwLjcwMjUyNV1b
-ICAgIEM1XSAgZHVtcF9zdGFja19sdmwrMHg4MC8weGI4Cj4gWyAgICAwLjcwMjUzNl1bICAgIEM1
-XSAgcGFuaWMrMHgxODAvMHg0NDQKPiBbICAgIDAuNzAyNTQ3XVsgICAgQzVdICBhcm02NF9zZXJy
-b3JfcGFuaWMrMHgxYzAvMHgyMTAKPiBbICAgIDAuNzAyNTYxXVsgICAgQzVdICBkb19zZXJyb3Ir
-MHgxN2MvMHgyMTgKPiBbICAgIDAuNzAyNTcyXVsgICAgQzVdICBlbDFoXzY0X2Vycm9yX2hhbmRs
-ZXIrMHgzOC8weDUwCj4gWyAgICAwLjcwMjU4MV1bICAgIEM1XSAgZWwxaF82NF9lcnJvcisweDdj
-LzB4ODAKPiBbICAgIDAuNzAyNTg5XVsgICAgQzVdICByZWdtYXBfbW1pb19yZWFkMzJsZSsweDE0
-LzB4MmMKPiBbICAgIDAuNzAyNjAzXVsgICAgQzVdICBfcmVnbWFwX2J1c19yZWdfcmVhZCsweDNj
-LzB4OTAKPiBbICAgIDAuNzAyNjE0XVsgICAgQzVdICBfcmVnbWFwX3JlYWQrMHhiMC8weDI0Ywo+
-IFsgICAgMC43MDI2MjNdWyAgICBDNV0gIHJvY2tjaGlwX3BkX3Bvd2VyKzB4NmM0LzB4YmMwCj4g
-WyAgICAwLjcwMjYzOF1bICAgIEM1XSAgcm9ja2NoaXBfcGRfcG93ZXJfb2ZmKzB4MTgvMHgyOAo+
-IFsgICAgMC43MDI2NTJdWyAgICBDNV0gIF9nZW5wZF9wb3dlcl9vZmYrMHgxNzgvMHgzODgKPiBb
-ICAgIDAuNzAyNjYzXVsgICAgQzVdICBnZW5wZF9wb3dlcl9vZmYrMHgxODgvMHgyZTQKPiBbICAg
-IDAuNzAyNjczXVsgICAgQzVdICBnZW5wZF9wb3dlcl9vZmZfd29ya19mbisweDU0LzB4ZTQKPiBb
-ICAgIDAuNzAyNjgzXVsgICAgQzVdICBwcm9jZXNzX29uZV93b3JrKzB4MjU0LzB4NWEwCj4gWyAg
-ICAwLjcwMjY5Nl1bICAgIEM1XSAgd29ya2VyX3RocmVhZCsweDNlYy8weDkyMAo+IFsgICAgMC43
-MDI3MDddWyAgICBDNV0gIGt0aHJlYWQrMHgxNjgvMHgxZGMKPiBbICAgIDAuNzAyNzE2XVsgICAg
-QzVdICByZXRfZnJvbV9mb3JrKzB4MTAvMHgyMAo+IFsgICAgMC43MDI3MjZdWyAgICBDNV0gU01Q
-OiBzdG9wcGluZyBzZWNvbmRhcnkgQ1BVcwo+Cj4gLS0KPiBMZWUgSm9uZXMgW+adjueQvOaWr10K
-PiBQcmluY2lwYWwgVGVjaG5pY2FsIExlYWQgLSBEZXZlbG9wZXIgU2VydmljZXMKPiBMaW5hcm8u
-b3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQXJtIFNvQ3MKPiBGb2xsb3cgTGluYXJv
-OiBGYWNlYm9vayB8IFR3aXR0ZXIgfCBCbG9nCj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Benjamin,
+
+On 5/18/22 15:21, Benjamin Gaignard wrote:
+> P010 is a YUV format with 16-bits per pixel with interleaved UV.
+
+That should be: "10 bits per component"
+
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> ---
+> version 4:
+> - Fix 10-bits per components wording.
+> 
+> version 3:
+> - remove LE suffix
+> - rebased on media_tree_master branch
+> 
+>  .../media/v4l/pixfmt-yuv-planar.rst           | 54 +++++++++++++++++++
+>  drivers/media/v4l2-core/v4l2-common.c         |  1 +
+>  drivers/media/v4l2-core/v4l2-ioctl.c          |  1 +
+>  include/uapi/linux/videodev2.h                |  1 +
+>  4 files changed, 57 insertions(+)
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+> index 8dff5906639b..a900ff66911a 100644
+> --- a/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+> +++ b/Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst
+> @@ -109,6 +109,13 @@ All components are stored with the same number of bits per component.
+>        - Cb, Cr
+>        - No
+>        - 16x16 tiles
+> +    * - V4L2_PIX_FMT_P010
+> +      - 'P010'
+> +      - 10
+> +      - 4:2:0
+> +      - Cb, Cr
+> +      - Yes
+> +      - Linear
+>      * - V4L2_PIX_FMT_NV16
+>        - 'NV16'
+>        - 8
+> @@ -171,6 +178,7 @@ horizontally.
+>  .. _V4L2-PIX-FMT-NV21:
+>  .. _V4L2-PIX-FMT-NV12M:
+>  .. _V4L2-PIX-FMT-NV21M:
+> +.. _V4L2-PIX-FMT-P010:
+>  
+>  NV12, NV21, NV12M and NV21M
+>  ---------------------------
+> @@ -519,6 +527,52 @@ number of lines as the luma plane.
+>        - Cb\ :sub:`33`
+>        - Cr\ :sub:`33`
+>  
+> +.. _V4L2_PIX_FMT_P010:
+> +
+> +P010
+> +----
+> +
+> +Like NV12 with 10 bits per component, expanded to 16 bits.
+> +Data in the 10 high bits, zeros in the 6 low bits, arranged in little endian order.
+> +
+> +.. flat-table:: Sample 4x4 P010 Image
+> +    :header-rows:  0
+> +    :stub-columns: 0
+> +
+> +    * - start + 0:
+> +      - Y'\ :sub:`00`
+> +      - Y'\ :sub:`01`
+> +      - Y'\ :sub:`02`
+> +      - Y'\ :sub:`03`
+> +    * - start + 8:
+> +      - Y'\ :sub:`10`
+> +      - Y'\ :sub:`11`
+> +      - Y'\ :sub:`12`
+> +      - Y'\ :sub:`13`
+> +    * - start + 16:
+> +      - Y'\ :sub:`20`
+> +      - Y'\ :sub:`21`
+> +      - Y'\ :sub:`22`
+> +      - Y'\ :sub:`23`
+> +    * - start + 24:
+> +      - Y'\ :sub:`30`
+> +      - Y'\ :sub:`31`
+> +      - Y'\ :sub:`32`
+> +      - Y'\ :sub:`33`
+> +    * - start + 32:
+> +      - Cb\ :sub:`00`
+> +      - Cr\ :sub:`00`
+> +      - Cb\ :sub:`01`
+> +      - Cr\ :sub:`01`
+> +    * - start + 40:
+> +      - Cb\ :sub:`10`
+> +      - Cr\ :sub:`10`
+> +      - Cb\ :sub:`11`
+> +      - Cr\ :sub:`11`
+> +
+> +.. raw:: latex
+> +
+> +    \endgroup
+>  
+>  Fully Planar YUV Formats
+>  ========================
+> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+> index df34b2a283bc..1e38ad8906a2 100644
+> --- a/drivers/media/v4l2-core/v4l2-common.c
+> +++ b/drivers/media/v4l2-core/v4l2-common.c
+> @@ -266,6 +266,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
+>  		{ .format = V4L2_PIX_FMT_NV61,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+>  		{ .format = V4L2_PIX_FMT_NV24,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+>  		{ .format = V4L2_PIX_FMT_NV42,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> +		{ .format = V4L2_PIX_FMT_P010,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 2, 2, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+>  
+>  		{ .format = V4L2_PIX_FMT_YUV410,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 4, .vdiv = 4 },
+>  		{ .format = V4L2_PIX_FMT_YVU410,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 4, .vdiv = 4 },
+> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+> index e2636539c9db..536aaeb4df82 100644
+> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> @@ -1305,6 +1305,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+>  	case V4L2_PIX_FMT_NV61:		descr = "Y/CrCb 4:2:2"; break;
+>  	case V4L2_PIX_FMT_NV24:		descr = "Y/CbCr 4:4:4"; break;
+>  	case V4L2_PIX_FMT_NV42:		descr = "Y/CrCb 4:4:4"; break;
+> +	case V4L2_PIX_FMT_P010:		descr = "10-bit Y/CrCb 4:2:0"; break;
+>  	case V4L2_PIX_FMT_NV12_4L4:	descr = "Y/CbCr 4:2:0 (4x4 Linear)"; break;
+>  	case V4L2_PIX_FMT_NV12_16L16:	descr = "Y/CbCr 4:2:0 (16x16 Linear)"; break;
+>  	case V4L2_PIX_FMT_NV12_32L32:   descr = "Y/CbCr 4:2:0 (32x32 Linear)"; break;
+> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+> index 6d465dc443b7..311f106bbdf5 100644
+> --- a/include/uapi/linux/videodev2.h
+> +++ b/include/uapi/linux/videodev2.h
+> @@ -601,6 +601,7 @@ struct v4l2_pix_format {
+>  #define V4L2_PIX_FMT_NV61    v4l2_fourcc('N', 'V', '6', '1') /* 16  Y/CrCb 4:2:2  */
+>  #define V4L2_PIX_FMT_NV24    v4l2_fourcc('N', 'V', '2', '4') /* 24  Y/CbCr 4:4:4  */
+>  #define V4L2_PIX_FMT_NV42    v4l2_fourcc('N', 'V', '4', '2') /* 24  Y/CrCb 4:4:4  */
+> +#define V4L2_PIX_FMT_P010    v4l2_fourcc('P', '0', '1', '0') /* 16  Y/CbCr 4:2:0 16-bit per pixel */
+
+As discussed on irc, this should be:
+
+/* 24  Y/CbCr 4:2:0 10-bit per pixel */
+
+Regards,
+
+	Hans
+
+>  
+>  /* two non contiguous planes - one Y, one Cr + Cb interleaved  */
+>  #define V4L2_PIX_FMT_NV12M   v4l2_fourcc('N', 'M', '1', '2') /* 12  Y/CbCr 4:2:0  */
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
