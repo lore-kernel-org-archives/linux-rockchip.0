@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2F20C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 15:54:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8160BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 May 2022 15:54:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CzB9qHHbMwlnFw+iD3S1b9KVAJmTJb5xV9Gn7+7osP0=; b=WlXq1m/zVQnDNK
-	Z8CvLle8wul/N6mQnQ3PIvibst7GeebuSL5U1q30TO2OiofMe47H9DbGp2u1OZJh1Ckntg4/3euFQ
-	rlh8FwUALSHX1vRdR5E84cqSIi17umDOM4srKyBKTEmXTt3QQJgJu/rkMV6/QHBf4/AF/tjU0afDs
-	71LYdfc42+HCEDgQICgWwAP+jvCLdhA1fWI9bqn9e37Af4VX4zPpwopPIyXIXq1kIRfh3WM/4PBZg
-	hLKKJwYATFtd+XB/hMRefBgVcZRIMdzrskPhkxyJMgJg6vk8mrOEjSuJbcos6nU4vhu2SkrcoTvan
-	Ss+xxOF3zl8vW2pyE+RA==;
+	List-Owner; bh=IQsrZf4LhkOc0YinTWwI6W/n1K1Np5ezYGtAtKLdvcY=; b=nmQPPr2WpTfqLa
+	zp5E9RAZEAE6LQRHufr8P8R+4W8YJVb5S2pcvEpvAjNc+AN1J/u5c0vrsu0ZRudj6b/JpqNvRpUgm
+	VrJyudQJ4A3lHTbTuIQ/QZuHfYDf5c8CH8H7eWZMwqhBRu9GTuyWTiWcTvRrOgv1gqODGZSGP8rny
+	6tkizWlim8HKzqKUiyXxMK5LXz65FptEO3zgpuGH56+SDLi1LNm3x83RiQNZGSe/l+n+OWxITuVNs
+	5nzzW47VE4fQyWNe9D6EH/yBWKthwoN6ZDbPRM6CM6qE38mhBHOqye89gF+Vv135n3V+OrO4bA75q
+	tF3fcDjXSK6QN73g33JA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nriTj-008DZj-W5; Thu, 19 May 2022 15:54:20 +0000
+	id 1nriTq-008Dgq-RO; Thu, 19 May 2022 15:54:27 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nriKC-0083lI-Iy; Thu, 19 May 2022 15:44:28 +0000
+ id 1nriKD-0083lf-4w; Thu, 19 May 2022 15:44:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
  :MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
  Sender:Reply-To:Content-ID:Content-Description;
- bh=/gQn5VqxSvFGthWPKYzAXcr6OhyWOljQxKT58oQ/PNs=; b=eTzIxhIuBHVjgHfk9JToku4kX3
- BHlDuGgpaX7J6DoTKDrv+1yLRt6isNeLGH8/uUfEwTvdV/337pQk/8/jGYgeiP5YbgkatlJpd/xCx
- ETxGQ2ug/95ynZjJ+tvTgewn0Y//ZquUAtRdbmJPJoOzqw2Q6d28VqVAEdF0BQaFRvNTHXILaG7L0
- 8q5deSKj9Gk5A7cWy6yUnGxKnlmPQLFcRNmlIMUwbUe5ubYWiK8Y/28M1ywb12oLNX7f04ABM7QCo
- Ld2xM2AFc9VUuEAR/lHPA55gSpD+tvUKrtF0I7F/d/yKZKJ377J3r/5b5RHAGX747tofNxaUIj/1Y
- xgDZBJ+Q==;
+ bh=z9ebj2AYycBGu1x3sOA4KwiNWtIMh5BMNemN79pJAyU=; b=anHgpaE2CscVhjSscp4z33iFJf
+ V7BmGkLv5ZjnTQPRSVqf7aHTuZKQu3nSAlfQl9o1jKKw5uN/ne8/WUuU/tROtbcGdD0oTyOSg4to+
+ I0sp3/Ks2khfL4mPGesHBlxZTb1drR87dHyjmk2p0c7BFOp3Rvys02OkvGDYYmfWKRaUG9z7EZsgy
+ O/oiVdGAcvIQYwO/nzpWQ50oKDibN7eyZae+kvxot98RS752DCXWHJbyaBvEH80/uqotUxdwTPZTE
+ O/xd5Ma8lpeeXftoF2Nmix4Lan5UgV1pMGeWwQ8mLNDDBnFhMUabOzYAjzpmxOTkp5m7pOaPKctuY
+ dqRHvLHw==;
 Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nriJt-0024B8-Mp; Thu, 19 May 2022 15:44:26 +0000
+ id 1nriJv-0024BI-Kg; Thu, 19 May 2022 15:44:25 +0000
 Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
- by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24JBHtak024228;
- Thu, 19 May 2022 10:43:37 -0500
+ by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24J66mWE012194;
+ Thu, 19 May 2022 10:43:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=PODMain02222019;
- bh=/gQn5VqxSvFGthWPKYzAXcr6OhyWOljQxKT58oQ/PNs=;
- b=ORyx7ppv3ZYqmdTjinNhY95PTkMT6kF9bPchZUmTwu67B4i4rXPj4CG96ERS8wd/D43b
- bw+LuBUl9AbuCIJ13g8iPLmf/MgU0PqmG/iOcKVjNjppL03Hdq6VuoEMe67/RkuiFRXG
- 2zRGqHwnafP3PFyb4B/VkQ2F5R3RraiIfGbzeqx8GRjLa8uvOYIRIxInoM3wSw3ez+xI
- fGBG50QEcUB7Cxeu6iIiMOywnxkehe2MYJ/NW+IDMys4HpxUDoNYSV5kVw/QO4OjjDfW
- GJYmTPMCPyk62ezMPizfxFwU/ZUtN3yJ/PwZ5E/FBMr0sAhz+x9v2AvBWU/1YFXfJw7x hA== 
-Received: from ediex01.ad.cirrus.com ([84.19.233.68])
- by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upf5dm-11
+ bh=z9ebj2AYycBGu1x3sOA4KwiNWtIMh5BMNemN79pJAyU=;
+ b=F93/BYqfMmyVDe5iSs1jzFHogoePCJ8pkK6U0PsKvqa79Wh0yGz/e7G/FEZlHb3Sv6TZ
+ l224B3AmuTnDodgvt3SoKp/0pefOCaBE9QzbmX//kW7kDkFBPJuEWTwHQrCdhCSyWByP
+ cY5ApDFg5F8JmAW8yPd1UmQaHS/Iow6cwECBW5TN0P2/0PO8ay7AAL4oXYQWX7aY0eDx
+ XzCH+fNrPMXVr8Fq0TnTDa5gU6nWbSZP4NxMM97HdY4ydLOtCB1+DyeokENpMhe1NA6O
+ XD1PcMH2kCGd4teRHV2U2gkqnSk9+h5vsJFKh7sEAedfKxLDJAL5tmVfEHYtJJOBs9z0 +w== 
+Received: from ediex02.ad.cirrus.com ([84.19.233.68])
+ by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upf5dn-17
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Thu, 19 May 2022 10:43:36 -0500
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
+ Thu, 19 May 2022 10:43:41 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
+ (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Thu, 19 May
- 2022 16:43:20 +0100
+ 2022 16:43:22 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
- Frontend Transport; Thu, 19 May 2022 16:43:20 +0100
+ Frontend Transport; Thu, 19 May 2022 16:43:22 +0100
 Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
- by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 8043211DB;
- Thu, 19 May 2022 15:43:20 +0000 (UTC)
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 2786F11DA;
+ Thu, 19 May 2022 15:43:22 +0000 (UTC)
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
@@ -79,19 +79,19 @@ CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
  <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
  <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
  <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>
-Subject: [PATCH 30/56] ASoC: atmel: Rename set_fmt_new back to set_fmt
-Date: Thu, 19 May 2022 16:42:52 +0100
-Message-ID: <20220519154318.2153729-31-ckeepax@opensource.cirrus.com>
+Subject: [PATCH 53/56] ASoC: ux500: Rename set_fmt_new back to set_fmt
+Date: Thu, 19 May 2022 16:43:15 +0100
+Message-ID: <20220519154318.2153729-54-ckeepax@opensource.cirrus.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-X-Proofpoint-GUID: BV7oT_e1dJCP6p6_K2YC2RjwWOsk2pVq
-X-Proofpoint-ORIG-GUID: BV7oT_e1dJCP6p6_K2YC2RjwWOsk2pVq
+X-Proofpoint-GUID: UqtlUZzgI4OUSKujEueGIc6w9lgbqc41
+X-Proofpoint-ORIG-GUID: UqtlUZzgI4OUSKujEueGIc6w9lgbqc41
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_164411_353407_F53AE27B 
-X-CRM114-Status: GOOD (  13.86  )
+X-CRM114-CacheID: sfid-20220519_164413_013121_7189C6E2 
+X-CRM114-Status: GOOD (  14.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,64 +115,22 @@ callback.
 
 Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 ---
- sound/soc/atmel/atmel-i2s.c     | 2 +-
- sound/soc/atmel/atmel_ssc_dai.c | 2 +-
- sound/soc/atmel/mchp-i2s-mcc.c  | 2 +-
- sound/soc/atmel/mchp-pdmc.c     | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+ sound/soc/ux500/ux500_msp_dai.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/sound/soc/atmel/atmel-i2s.c b/sound/soc/atmel/atmel-i2s.c
-index c5ce695da5866..ba56d6ac7e571 100644
---- a/sound/soc/atmel/atmel-i2s.c
-+++ b/sound/soc/atmel/atmel-i2s.c
-@@ -533,7 +533,7 @@ static const struct snd_soc_dai_ops atmel_i2s_dai_ops = {
- 	.prepare	= atmel_i2s_prepare,
- 	.trigger	= atmel_i2s_trigger,
- 	.hw_params	= atmel_i2s_hw_params,
--	.set_fmt_new	= atmel_i2s_set_dai_fmt,
-+	.set_fmt	= atmel_i2s_set_dai_fmt,
- };
- 
- static int atmel_i2s_dai_probe(struct snd_soc_dai *dai)
-diff --git a/sound/soc/atmel/atmel_ssc_dai.c b/sound/soc/atmel/atmel_ssc_dai.c
-index da094762dc994..c92905e343e7e 100644
---- a/sound/soc/atmel/atmel_ssc_dai.c
-+++ b/sound/soc/atmel/atmel_ssc_dai.c
-@@ -835,7 +835,7 @@ static const struct snd_soc_dai_ops atmel_ssc_dai_ops = {
- 	.prepare	= atmel_ssc_prepare,
- 	.trigger	= atmel_ssc_trigger,
- 	.hw_params	= atmel_ssc_hw_params,
--	.set_fmt_new	= atmel_ssc_set_dai_fmt,
-+	.set_fmt	= atmel_ssc_set_dai_fmt,
- 	.set_clkdiv	= atmel_ssc_set_dai_clkdiv,
- };
- 
-diff --git a/sound/soc/atmel/mchp-i2s-mcc.c b/sound/soc/atmel/mchp-i2s-mcc.c
-index 48d434e0c3318..269eab56b6dd9 100644
---- a/sound/soc/atmel/mchp-i2s-mcc.c
-+++ b/sound/soc/atmel/mchp-i2s-mcc.c
-@@ -877,7 +877,7 @@ static const struct snd_soc_dai_ops mchp_i2s_mcc_dai_ops = {
- 	.trigger	= mchp_i2s_mcc_trigger,
- 	.hw_params	= mchp_i2s_mcc_hw_params,
- 	.hw_free	= mchp_i2s_mcc_hw_free,
--	.set_fmt_new	= mchp_i2s_mcc_set_dai_fmt,
-+	.set_fmt	= mchp_i2s_mcc_set_dai_fmt,
- 	.set_tdm_slot	= mchp_i2s_mcc_set_dai_tdm_slot,
- };
- 
-diff --git a/sound/soc/atmel/mchp-pdmc.c b/sound/soc/atmel/mchp-pdmc.c
-index b3f04fa2f6089..b9f6370594482 100644
---- a/sound/soc/atmel/mchp-pdmc.c
-+++ b/sound/soc/atmel/mchp-pdmc.c
-@@ -708,7 +708,7 @@ static int mchp_pdmc_trigger(struct snd_pcm_substream *substream,
- }
- 
- static const struct snd_soc_dai_ops mchp_pdmc_dai_ops = {
--	.set_fmt_new	= mchp_pdmc_set_fmt,
-+	.set_fmt	= mchp_pdmc_set_fmt,
- 	.startup	= mchp_pdmc_startup,
- 	.shutdown	= mchp_pdmc_shutdown,
- 	.hw_params	= mchp_pdmc_hw_params,
+diff --git a/sound/soc/ux500/ux500_msp_dai.c b/sound/soc/ux500/ux500_msp_dai.c
+index cd6c4bdf5041d..851c3b8473fd7 100644
+--- a/sound/soc/ux500/ux500_msp_dai.c
++++ b/sound/soc/ux500/ux500_msp_dai.c
+@@ -707,7 +707,7 @@ static int ux500_msp_dai_probe(struct snd_soc_dai *dai)
+ static const struct snd_soc_dai_ops ux500_msp_dai_ops[] = {
+ 	{
+ 		.set_sysclk = ux500_msp_dai_set_dai_sysclk,
+-		.set_fmt_new = ux500_msp_dai_set_dai_fmt,
++		.set_fmt = ux500_msp_dai_set_dai_fmt,
+ 		.set_tdm_slot = ux500_msp_dai_set_tdm_slot,
+ 		.startup = ux500_msp_dai_startup,
+ 		.shutdown = ux500_msp_dai_shutdown,
 -- 
 2.30.2
 
