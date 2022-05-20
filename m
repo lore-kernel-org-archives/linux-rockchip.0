@@ -4,63 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40EEDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 May 2022 02:19:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA3B5C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 May 2022 06:45:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ozqouPkQWjWj+9VsAsSNmZtB+FVfEOnGKbSJ+oY/C5E=; b=W9MEp/1XlCkIrC
-	sXAGJxyWI3bSPnwjqaUF3YJEvCKDSlt9zMM4jmdztPHbd89GfMojBqQLcQ4sauFMUVWDsu6Hu82mH
-	UHkbyJ0FRMWy6h2fz3QB4Km28ScrOM4lu1vBWnWo3uqX8GmBAo+FwrWzEbSCzLNcCCrB2exVPzEe4
-	s3fA3pykO0a0g6FuXFYbJ6jocvru1j7/pZAMOG6mWibM82Zcg/A5VPeRGKOa0g/UsMUTZpECKSzTG
-	VrO6fBYHDSxO/JbAGR9F+rKfi22jVojAdZ44NaKAjVBf5GDce6iNObgHn57pwGPig62y9WUa/Z2XC
-	xSm24Q+iMmLtFFXBCV6w==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xJr9WZvBvs5SQC5i8vOOLSCMSUnJyScyoegyzJ0P2CY=; b=W6KVfSWavAP7pU
+	w9iSXAbuzQ3uvqvxcg5MH12FGjV68jYwxHLrZ0uxj/lPDgFB4Rc+eLkOJQgOCrEsF/r6BMg4M72bc
+	qd+94Yrg5NJvKdUv+Edlvkz+SuQVn5NKN2N7OSNByeY+fG9Y9ZTomgWxhTtY8M+lLu37nGRWi3JXc
+	tW/6MI0JDD2u0Klv5kIJZQZ4M+3KkUQCaYF+c+0Tl5y1Xm+bitScIn2N8XuqWeHaSwNAXeR7fqs20
+	5/U/PIwNUaUHZRzLAIXSNTI8eUuk80db4p7FrWlUAP6iKuqK2gramsPofsVaLIK+D+Zot94JTVCH0
+	JyePB+Z+o4E8ethANJbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrsEP-00A6JT-No; Fri, 20 May 2022 02:19:09 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1nrwO2-00AqIX-UW; Fri, 20 May 2022 06:45:22 +0000
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrsEE-00A6FE-QR; Fri, 20 May 2022 02:19:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1653013138; x=1684549138;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=PK44YsxEzTes7+36O197PGhEtKdQaq9XcG4ImqzBJtQ=;
- b=TrWerycJ/CYmxv19jVbEl8GE5lgm7PPBkgsdmbAqzmIoPl61fKYYvr1K
- iQZy2RjlC4iPE4kKXPX3pZS38DWjpqxF3/Gjtaks8wt9lPi+PNKvzbP7Q
- Vb5O+sAnpQeKrem/gCi7+sJbm3yevg6KM17m6TrFQHHRog3/987f8Vl7f
- BHoRXosdCY4BL1DR/OBJVxdRQUwcHWlV88ebcjcSzDn89N/jYBdo/Oy0j
- ey0uXkwfctXn9d2iGaD97M3Y4705V/WJgeDmGH7JNsUfPjYFKpQDCCgwj
- TU/YFpTO2Fbb0NjhedOTCpCyphw/qCBjBgKf74mM9lxOJNrMVFUiv0/ay Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10352"; a="335504955"
-X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="335504955"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 May 2022 19:18:53 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,238,1647327600"; d="scan'208";a="524412300"
-Received: from lkp-server02.sh.intel.com (HELO 242b25809ac7) ([10.239.97.151])
- by orsmga003.jf.intel.com with ESMTP; 19 May 2022 19:18:51 -0700
-Received: from kbuild by 242b25809ac7 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nrsE6-0004BO-UR;
- Fri, 20 May 2022 02:18:50 +0000
-Date: Fri, 20 May 2022 10:18:25 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: kbuild-all@lists.01.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
-Subject: [rockchip:wip-v5.20-armsoc/dts64 43/45]
- arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts:11:10: fatal error:
- dt-bindings/soc/rockchip,vop2.h: No such file or directory
-Message-ID: <202205201036.Os3FOJ56-lkp@intel.com>
+ id 1nrwNz-00AqEr-BN
+ for linux-rockchip@lists.infradead.org; Fri, 20 May 2022 06:45:20 +0000
+Received: by mail-lj1-x22d.google.com with SMTP id u7so7905619ljd.11
+ for <linux-rockchip@lists.infradead.org>; Thu, 19 May 2022 23:45:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=AnEwnvhKln/QqudtDrsLeq9rcJ9ha/C6wjXnDVo990k=;
+ b=O6glMIfzZPcKFuiAIfpgKl4vPS6f/5kKRDEsCZ51jhpn2nvRMnbXG5g+EDHeE904nP
+ t7HS+b/93itLD8AaEQHAOU/xrWjqGgTNAbPH9jakVpgMQTIhKd99kpg+p8rnNvdIqwdN
+ 6qoJ6hv6rNLvwFxEXHoFISEMQCRvxYIVNP2Tdx5gjSpfV8JASem8ZyxogIrKo+3noZeo
+ On3nePrDC2RBv0fxVZnC2PEjR3MvP9xqKuaD0jO5YVuhsa36Q52R9it54/UTpAk0vFOu
+ oN03MNBdr3Uh7nMtz9gRp/Uo5idHLu4wjadR99H/ArdkjYBw/HcmyNp38tQ7XXACXvAn
+ 7LxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=AnEwnvhKln/QqudtDrsLeq9rcJ9ha/C6wjXnDVo990k=;
+ b=yz95aSvzhFwV9NjyR8G1ISct4kM/BhZjcVMHlg+5oZtQmgxaMRS0VD/8uwrIRqOc8g
+ lGRlaDs405R/qEULZ16gOEoDq0aEOciAI6brTs8VSGzf9lAw7ZQP9iKFisk2GEChwfCU
+ BQWd+dwxqdX6RvOfNsfPd2e3BcennRpajqUAiJUbh/JavkM4S36TGXBBeQ9PB3AkvUut
+ QqEvKTSmEsuTbi3Jsy4yhnBtfk6umzLi1uxEY/9EoFm0OcIHkjBCm5VYfoi+cnkWWPgI
+ UHj6/da6IBXlTHRrq8KU0nM57DW1eNqz4XvMJMMAELIRUEpc9rUMlWYRQdQ/tOJodTGY
+ RWew==
+X-Gm-Message-State: AOAM532JNd5dYpAYGZLDo4Y6JjqpAn8uWJmD3MK/A04LnIYAP8VmYLvf
+ yXOW/uERdxkGZoZP8JRu9bwO5g==
+X-Google-Smtp-Source: ABdhPJxU0QeXD6emlDZWLebUbtElcVEEa6zD5/lvXQQQBtACmvvZZjPEOav+NOjy2nN8XnxEigbRJQ==
+X-Received: by 2002:a05:651c:158b:b0:250:a056:7e48 with SMTP id
+ h11-20020a05651c158b00b00250a0567e48mr4800506ljq.64.1653029116920; 
+ Thu, 19 May 2022 23:45:16 -0700 (PDT)
+Received: from [192.168.0.17] (78-11-189-27.static.ip.netia.com.pl.
+ [78.11.189.27]) by smtp.gmail.com with ESMTPSA id
+ y22-20020a2e95d6000000b0024f3d1dae8esm197255ljh.22.2022.05.19.23.45.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 19 May 2022 23:45:16 -0700 (PDT)
+Message-ID: <cab52964-31d5-a545-9856-b298d3cd3c84@linaro.org>
+Date: Fri, 20 May 2022 08:45:14 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.1
+Subject: Re: [PATCH 46/56] ASoC: samsung: Rename set_fmt_new back to set_fmt
+Content-Language: en-US
+To: Charles Keepax <ckeepax@opensource.cirrus.com>, broonie@kernel.org
+Cc: lgirdwood@gmail.com, kuninori.morimoto.gx@renesas.com,
+ nicolas.ferre@microchip.com, nsaenz@kernel.org, shawnguo@kernel.org,
+ linux-imx@nxp.com, cezary.rojewski@intel.com,
+ pierre-louis.bossart@linux.intel.com, linux-mips@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ daniel@zonque.org, srinivas.kandagatla@linaro.org,
+ linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org,
+ linux-xtensa@linux-xtensa.org, peter.ujfalusi@gmail.com,
+ jarkko.nikula@bitmer.com, heiko@sntech.de, jbrunet@baylibre.com,
+ kernel@pengutronix.de, alsa-devel@alsa-project.org,
+ patches@opensource.cirrus.com
+References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
+ <20220519154318.2153729-47-ckeepax@opensource.cirrus.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220519154318.2153729-47-ckeepax@opensource.cirrus.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220519_191858_969042_F76BDFEC 
-X-CRM114-Status: GOOD (  10.72  )
+X-CRM114-CacheID: sfid-20220519_234519_443751_C953CA3D 
+X-CRM114-Status: UNSURE (   7.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,42 +106,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git wip-v5.20-armsoc/dts64
-head:   281f94d9cbac31c1c112d09883bc42021435f1ad
-commit: f2cdaaae9b947970842196ac93d71b0daad3e629 [43/45] arm64: dts: rockchip: rk3568-evb: Enable VOP2 and hdmi
-config: arm64-allyesconfig (https://download.01.org/0day-ci/archive/20220520/202205201036.Os3FOJ56-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 11.3.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=f2cdaaae9b947970842196ac93d71b0daad3e629
-        git remote add rockchip https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
-        git fetch --no-tags rockchip wip-v5.20-armsoc/dts64
-        git checkout f2cdaaae9b947970842196ac93d71b0daad3e629
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-All errors (new ones prefixed by >>):
-
->> arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts:11:10: fatal error: dt-bindings/soc/rockchip,vop2.h: No such file or directory
-      11 | #include <dt-bindings/soc/rockchip,vop2.h>
-         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   compilation terminated.
+On 19/05/2022 17:43, Charles Keepax wrote:
+> Now the core has been migrated across to the new direct clock
+> specification we can move the drivers back to the normal set_fmt
+> callback.
+> 
+> Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 
 
-vim +11 arch/arm64/boot/dts/rockchip/rk3568-evb1-v10.dts
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-  > 11	#include <dt-bindings/soc/rockchip,vop2.h>
-    12	#include "rk3568.dtsi"
-    13	
 
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
