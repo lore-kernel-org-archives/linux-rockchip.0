@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA4F1C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 May 2022 10:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A184C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 May 2022 11:04:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O6dEKVCBhngQ+KwyL3GYEXc+0VqGpx0x+mIneoH47b8=; b=ogQNolW9F29sZX
-	1ZADh2sv9tzeCiYYa5qHdLmipHBGN7RFkNuU1IJrGpyqVBnT0M0m8kSP0sMxRhDfpu7J+8epSeyMI
-	ENtULCxZNjrIHi4R9HTl/ViAkZs8h6pTXoUVtyNO7JFlmLvN199KA5oCBMLQq/F5DnkzecI2NfRAU
-	3We+I1LspwTjYerxyn4MP9KzeG59bL1gT8f/4/xoLgeNE7a7T9iHCCJ18LSfpIZTHjyr8UC7zrZJ8
-	Xb/I+9VS+GyOOpgzg29PLzQA0ODaY52UgrZLJy/xyoc6FvO/ju9JWjpzKGIHslghQC0qJkdn4xJYo
-	b6Kiw2xdIBflggHCRNoQ==;
+	List-Owner; bh=NoydDK4HlazgF8zcZlv5SIjjYmp0ZKg42DRvkWJtKdg=; b=me8cp/R71l048F
+	Ls9xmnXv0b9Z9sadJ7LBabs4OEQ+0+QcyPa8NFLbuiUbHerB8WuZyFBYbdOBIGAUTpetWnuM7MMUw
+	vWpovN1ZRfF29D3uYB6VVqnBLGzu8ilV9zvBvlT8UJtFAWGYN6pEoN0BfAUV7mM+hbi3S6dbDee1z
+	FT09rD10XYuu2+33+1d7z8EwuVbM6vWPgq59Ep+Qp8IpHQM7saE1X9DFu3KTx+z9zyiQ0/GATwicx
+	gqizGrusDarEbqM1dqBfsGPYBAmtOO2N5dzTY6b5F4/q6gJahrl9k3SSDTLG1U//H5VT+vfma6d5I
+	wR3c+Vv27iulzShRsdtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nrzos-00BsP0-04; Fri, 20 May 2022 10:25:18 +0000
+	id 1ns0QI-00ByUj-Ox; Fri, 20 May 2022 11:03:58 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrzop-00BsMw-IA; Fri, 20 May 2022 10:25:15 +0000
+ id 1ns0OP-00BxEJ-F6; Fri, 20 May 2022 11:02:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
  References:Message-ID:Subject:CC:To:From:Date:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=WSOvhMBIg+CnexC+Y8X+ZG7BYMkoKeetiZYSiJmE0cw=; b=EOoktUHChXRYEYWKii5MVDtiyi
- kS+dAPJ6Ekg5JNdq1mEhTUSUYvxSProQ9DM1LfwfVLYm0V6/djh5F6aCoswLJTh2BXFGKZgRFGsCM
- vRWlX3xtLjoiGT7Yrpe+aIubWp+q58YH+G6yHpvxomkBykyH/6hV46yxR1V7bq5OtknIHwuAgUDiH
- NNE5pSzb33dNJFoaD/ayO1UjFh2sA8dgFBS+mKa2Yx8gQ9g7zh87iTVPShBkYwjFqLG6/51mVHtO9
- wULbVakzYssjMprd26LEupA6EXdq9XcTSqZQ+2JNOXPlhEeF84qKwt81Rs+Gz6iFjCzU1WGQDxpbx
- KsVYRJTA==;
+ bh=OE6raZbucX9LQfP+TUClB+u691iV9kBCVX1IaiFUTRE=; b=GBAc4E+d890dACNmy1V5iNzH7n
+ XiCNsIPrBp13FTu7pC6+wuJsXxCv1rn6JpntHwSs6wURzXy19oVinvyco81H1KmEiUtpuKQgfv7In
+ MABC0AapBKLeyHuQCLzjhR/9LsPi7aQ18mtEAM1n4WwuOQBdGAoOSSPt09RUiq4lpizu6RweK+I0E
+ 4XKx7dc9KjuAnOybVmZ6+HcB8RUT4aukfFU2RAgifDkDAKuxV8FUjsrNZrsgqOCoXmyzNJmZmv4YD
+ DRZxFKfX9KKJXDUtnF25AXcbhZiWZXxsTh8c20Z4exSyZXZvTLEAM0og+xCthbEmLNy1IUnZjgMdg
+ e6Wp0PoQ==;
 Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
  by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nrzoh-002JLT-0u; Fri, 20 May 2022 10:25:09 +0000
+ id 1nrzNm-002Inw-EU; Fri, 20 May 2022 09:57:22 +0000
 Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
- by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24K5UCxB026795;
- Fri, 20 May 2022 05:24:49 -0500
+ by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 24K5UCw9026795;
+ Fri, 20 May 2022 04:56:56 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com;
  h=date : from : to : cc
  : subject : message-id : references : mime-version : content-type :
  in-reply-to; s=PODMain02222019;
- bh=WSOvhMBIg+CnexC+Y8X+ZG7BYMkoKeetiZYSiJmE0cw=;
- b=E3MDFwXsbJRiBaE4OT2ai+JBwbYdqbCNDnTM5WTrjlOXZlrikeuJ1tiL+m5bGqsZo03j
- hZNgysmRG2QNG9jfqt9CJyU1HKdQikMi9FpVUiaR7mHeBwbTedb07Mex56RR9EocUbFP
- vjQtPAGfK1wk5RM/9IUs9D/tVUYW0yOqIgk1qYoeQRhBJEla3nFqJiatKvzERFcXHqSI
- Q+/Hno0xMo5/BjF4Kn3iHQ0QMOXFJX9/9GuLbAmIRVv9J84ewdgkmDjMuNAiVSG2dbUO
- otHvJplf8L8ZVHcLm7hZgWu0kIHYmP+5RyytltwUsoK/TaAybqvdQMM8AE7gkhiA4klo dQ== 
-Received: from ediex02.ad.cirrus.com ([84.19.233.68])
- by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upg6de-1
+ bh=OE6raZbucX9LQfP+TUClB+u691iV9kBCVX1IaiFUTRE=;
+ b=OZjWqUg2GB9AJ9JqFusRILLr+RJoWNaMdCe9RA8DZ3zC+BqhasJKotr9r087ufLn2CfT
+ ImDGP7AQdM1dEhMs05cuGKULUV2UMVhWKhwv1lv9aIYxP58hsADDle5oYJD73+1i/5E/
+ DJ4PIeWt9ouGrMRIwpVZYIv2N+Hl3NLhwUKoEL7upZzJBlhj+H8WMUIA+0c0utHrFXib
+ 6St0njUEwySoagUHdfOhKQMIhve6czUMiuHZthPtAEsJdIL2UVkqXmo+S/ET4vQeKKCR
+ eK2EWlTLp4WJJ/WhIR7yVYO0bDmrZEz1nQCC+kwy9kogs86oLbScSXA9l5o3Xs/ta2/U LQ== 
+Received: from ediex01.ad.cirrus.com ([84.19.233.68])
+ by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3g28upg5ms-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Fri, 20 May 2022 05:24:48 -0500
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
- (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
+ Fri, 20 May 2022 04:56:55 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 20 May
- 2022 11:24:47 +0100
+ 2022 10:56:54 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.24 via
- Frontend Transport; Fri, 20 May 2022 11:24:47 +0100
+ Frontend Transport; Fri, 20 May 2022 10:56:54 +0100
 Received: from ediswmail.ad.cirrus.com (ediswmail.ad.cirrus.com [198.61.86.93])
- by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 20F84458;
- Fri, 20 May 2022 10:24:47 +0000 (UTC)
-Date: Fri, 20 May 2022 10:24:47 +0000
+ by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 42FB3476;
+ Fri, 20 May 2022 09:56:54 +0000 (UTC)
+Date: Fri, 20 May 2022 09:56:54 +0000
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>
-CC: <broonie@kernel.org>, <lgirdwood@gmail.com>, <nicolas.ferre@microchip.com>,
+To: Samuel Holland <samuel@sholland.org>
+CC: <broonie@kernel.org>, <lgirdwood@gmail.com>,
+ <kuninori.morimoto.gx@renesas.com>, <nicolas.ferre@microchip.com>,
  <nsaenz@kernel.org>, <shawnguo@kernel.org>, <linux-imx@nxp.com>,
  <cezary.rojewski@intel.com>, <pierre-louis.bossart@linux.intel.com>,
  <linux-mips@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
@@ -79,22 +80,21 @@ CC: <broonie@kernel.org>, <lgirdwood@gmail.com>, <nicolas.ferre@microchip.com>,
  <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
  <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
  <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>
-Subject: Re: [PATCH 56/56] ASoC: simple-card-utils: Move
- snd_soc_component_is_codec to be local
-Message-ID: <20220520102447.GL38351@ediswmail.ad.cirrus.com>
+Subject: Re: [PATCH 22/56] ASoC: sunxi: Update to use set_fmt_new callback
+Message-ID: <20220520095654.GK38351@ediswmail.ad.cirrus.com>
 References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
- <20220519154318.2153729-57-ckeepax@opensource.cirrus.com>
- <87czg98193.wl-kuninori.morimoto.gx@renesas.com>
+ <20220519154318.2153729-23-ckeepax@opensource.cirrus.com>
+ <948d5418-44ca-2e60-0c1c-0b16f315feba@sholland.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <87czg98193.wl-kuninori.morimoto.gx@renesas.com>
+In-Reply-To: <948d5418-44ca-2e60-0c1c-0b16f315feba@sholland.org>
 User-Agent: Mutt/1.5.21 (2010-09-15)
-X-Proofpoint-GUID: EewLKkNvojqM2gQAbwrh9EQ5fKjwiv7u
-X-Proofpoint-ORIG-GUID: EewLKkNvojqM2gQAbwrh9EQ5fKjwiv7u
+X-Proofpoint-GUID: 0o2bd6ilE3N_-d0xNvYBerQp3pGSYvGE
+X-Proofpoint-ORIG-GUID: 0o2bd6ilE3N_-d0xNvYBerQp3pGSYvGE
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_112507_643729_1CA32371 
-X-CRM114-Status: GOOD (  27.63  )
+X-CRM114-CacheID: sfid-20220520_105720_162570_4BAEA60F 
+X-CRM114-Status: GOOD (  20.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,65 +112,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 20, 2022 at 01:02:33AM +0000, Kuninori Morimoto wrote:
+On Thu, May 19, 2022 at 06:40:11PM -0500, Samuel Holland wrote:
+> On 5/19/22 10:42 AM, Charles Keepax wrote:
+> > As part of updating the core to directly tell drivers if they are clock
+> > provider or consumer update these CPU side drivers to use the new direct
+> > callback.
+> > 
+> > Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+> > ---
+> >  sound/soc/sunxi/sun4i-i2s.c   | 20 ++++++++++----------
+> >  sound/soc/sunxi/sun8i-codec.c |  8 ++++----
+> >  2 files changed, 14 insertions(+), 14 deletions(-)
+> > diff --git a/sound/soc/sunxi/sun8i-codec.c b/sound/soc/sunxi/sun8i-codec.c
+> > index 0bea2162f68d9..6e9ef948d6621 100644
+> > --- a/sound/soc/sunxi/sun8i-codec.c
+> > +++ b/sound/soc/sunxi/sun8i-codec.c
+> > @@ -286,11 +286,11 @@ static int sun8i_codec_set_fmt(struct snd_soc_dai *dai, unsigned int fmt)
+> >  	u32 dsp_format, format, invert, value;
+> >  
+> >  	/* clock masters */
+> > -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
+> > -	case SND_SOC_DAIFMT_CBS_CFS: /* Codec slave, DAI master */
+> > +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
+> > +	case SND_SOC_DAIFMT_BP_FP: /* Codec slave, DAI master */
 > 
-> Hi
+> This is a codec driver, and it is only ever used on the codec end of a link, so
+> I would not expect it to be changed.
 > 
-> This is not related to this patch, but...
-> 
-> > -static inline int snd_soc_component_is_codec(struct snd_soc_component *component)
-> > -{
-> > -	return component->driver->non_legacy_dai_naming;
-> > -}
-> (snip)
-> > +static inline int asoc_simple_component_is_codec(struct snd_soc_component *component)
-> > +{
-> > +	return component->driver->endianness;
-> > +}
-> 
-> I have added "endianness" "non_legacy_dai_naming" to component
-> when convert old "Codec style" into current "Component style".
-> All codec needs to have these 2.
-> 
-> 	69941bab7c7aeaa7bf7e84397e294c17f0b7c6df
-> 	("ASoC: snd_soc_component_driver has non_legacy_dai_naming")
-> 
-> 	273d778ef38a8861f880e9df5799029dc82bd55d
-> 	("ASoC: snd_soc_component_driver has endianness")
-> 
-> The reason why I didn't use "codec" was that try to keep
-> original style as much as possible.
-> But it seems this is good time to use "codec" for it ?
-> I think the code will be more understandable.
-> 
-> -	.endianness
-> -	.non_legacy_dai_naming
-> +	.is_codec
 
-Yeah I considered this but it didn't really feel like the right
-way to go to me. Firstly, at this stage we almost certainly need
-to keep the endianness and non_legacy_dai_naming flags, there are
-corner cases when endianness probably shouldn't be applied to CODECs
-(as noted in my endianness series), and there are platform drivers
-that use non_legacy_dai_naming.
-
-We could add an is_codec flag along side the other two. But it
-means a whole extra flag and means the the core is still requiring
-a concept of what is a CODEC driver, which really we want to get
-rid of as part of componentisation.
-
-My thinking was that, whilst making this function local to the
-driver isn't perfect, simple card will be used with simple CODECs
-that are likely to exist on a standard audio bus, and thus have
-endianness and the newer graph cards don't require specific
-identification of what is a CODEC driver. So it probably works as
-a solution for now.
-
-> 
-> Thank you for your help !!
-
-Absolutely no problem, thank you for all the work you have done
-on this over the years.
+Thanks for spotting that, silly mistake on my part. Will fix for
+a rev 2.
 
 Thanks,
 Charles
