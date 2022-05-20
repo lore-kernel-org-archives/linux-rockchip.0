@@ -4,85 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45DCCC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 May 2022 13:39:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4C1FC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 May 2022 18:32:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+Tih+/RcmXysAzFNlCVXk68cXUvo6fxc49LV9cNTtFo=; b=AhdIYsPr7hT0ct
-	eZ5vePFzyyUVlxL0AB1fntMNpd6BCu5mcX3PqxLiftwwy8KkCw9YngLkCSQ/JD+pmH6XzNS++7n6H
-	c44YQ4AanYsZDUGs/ZBDqrmg5VzcQziEi7n5BqaFBn6v9jvu69+iieCTIpaKpmDnPskrXTExMPAJC
-	q3WoG0qPH/Eex7tfqTa9pkTLFiIYErnXJ+VuNlqCw/e+6rinhxP3a8FuDJDZxT99kqjgzLMVrakvP
-	LMBPAqMpc4wnJ1bZhLWXw7aI5yAZSTFML2GERExzMQqGhmoE2sfunrkfm97ANADwjlRTKBNj7j4hF
-	BL/5vFxb36KUwvwCA8bg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UEOr9fco/QEe/1urjFRNaxLkm+SjEDt7L+k0kaNtgQY=; b=sfRaiSRP6LUxmA
+	60K0mgHr85YcEXjZ9ysob6XjxtM88gePYZG53TlEFLFfwj9PGzmCK+ubpA8bBS2gFZY34ENquqlqB
+	4WhhFQ5PlyQGazMdmVugIVWa9E8nVtvb8LAJWIxYTdiIveBoXDUbId7LtozBMAVGy3UyZHzsBvN8H
+	WAQtpK9TnYrW/JU2koHvVdHuzC05MPrlFBLGE3WVNOceWdsGkm0q37rs95U4hSm0POCwqbwVIu+wf
+	wqecFWDe4nd1/sLms28VRCinJ6mbPAjGLWMxjSZwkwa3pVlkvtHJtZEGGWP/RO8vKRUj6JtrWvVrS
+	k7FjfR0sttAmCtzOfpYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ns2qa-00ChD6-Vt; Fri, 20 May 2022 13:39:17 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1ns7QR-00EA6p-Os; Fri, 20 May 2022 18:32:35 +0000
+Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ns2qU-00Ch8N-8q; Fri, 20 May 2022 13:39:11 +0000
-Received: by mail-ed1-x532.google.com with SMTP id p26so10852278eds.5;
- Fri, 20 May 2022 06:39:07 -0700 (PDT)
+ id 1ns7Oo-00E9HS-Bn; Fri, 20 May 2022 18:30:57 +0000
+Received: by mail-ot1-x32e.google.com with SMTP id
+ 30-20020a9d0121000000b0060ae97b9967so3024377otu.7; 
+ Fri, 20 May 2022 11:30:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=/vZ5EIynCj28UhpMo2WaUDTGXgrMDD6ssuzpbKQFTrE=;
- b=dbdCdy787bi5RG1nfo93JEf7fRSGqgvdGgWbhi5+jiM2gZq411FflPdY9L2o3Sz097
- XA9SzdoyvFOw4oNvCmxQtifumEL2ucGkRJdht2gKQbj9YVfuffNrO+QPvuuZxjrqoS0F
- NfU67GWBYzEpstGDy844RVUmfAl7HNRGvf/LwT4rnlN6DngXc2ZKIaPbBdhEQ53EpZ4s
- ITsYoJPxw+STd6rZ1MhtfXgofir7SDd7Ohuuh33FWGAKbBMX+xkiGJYwBkluf7rb/Tbk
- 3LkMR2KGcBuBeRhqmlx3nsng24xG35IMWoTed7v6OpPZiYpWbvZKUFT3MZVg1KYI/Bnh
- bK1Q==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=U5IbhIIo2Ex15+PJPCMxKef+LbGdFyZTyufuHty8qHo=;
+ b=iq9/6y8GI/TnANp1RCAraEui+WiIgDl/46PyKF2k4/voiiysrmTm5qwem2BanLUGsZ
+ v+kY1rEeCX8u92xfYlq7q1DYOqwJSOTsgKnY2N4MjHmnbBwhP7jtNWtFHxMCt2jG6wue
+ Z6pNHGIZVLFG2BpQQdvoLKHuoLl7ziApc7pjmMNTh5GKkhk2KU7H237F7hnbyPYogH7v
+ Ru7lde4tDF6iMYl9ZzQFfktw6Hj9fA5VlJnzhySo7/cq9wYSiTlVoUOfotB7YJVYu49d
+ K1dgapC+aXcQkUaFmKB2nhLSG+s7OOj7UCVeQ8xRGuhVnf/v9iLV69I9A8IUz6S5KDtm
+ SEng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=/vZ5EIynCj28UhpMo2WaUDTGXgrMDD6ssuzpbKQFTrE=;
- b=Su4Ks8zwH8vkN4XxF09a/+vpClLulgWgygM1MmKlxii2rrjUCS5vw2xwgF06fOeeBD
- RLg16nLiEGNb4a0Mqe/tXm5rjOWuG4FwsZTrf5KO2TQEENFpX7RD1D6dNRIv46V+9EIm
- I2qww1VAryXqMQdrPHYrV+dk4ur65Z3wQVyfQSlAq9xcM0lF6yfBwxRt73l6B5qmZ1EI
- ecsQ8bbSAR9TEYhocTVLu711CfsC0mMSDh4FyAcNweUZR7f12K/dILGRZjptoslfGc8D
- X2WClx/qd4cgO61KgyWvnscJafdFBbQcFUAWu8f6WH6NqCFk1h4UrFf/JTvrtMX/cC9g
- c0QA==
-X-Gm-Message-State: AOAM531AyEbXYNaJaaonH5WJbDneATDk3W8movSkEGROdLLiiWElIAUJ
- vHilBWqD2fKjWA8pdzJKup4HJjZg14k=
-X-Google-Smtp-Source: ABdhPJzB4dDO6rQGcvP8GfFmFaDFqb3hZ0xhEwmOtYMgE32gUNPAUosh+C78GjzIs6waR9fAZFTMtw==
-X-Received: by 2002:a05:6402:3488:b0:427:b4ec:991b with SMTP id
- v8-20020a056402348800b00427b4ec991bmr10869813edc.319.1653053945963; 
- Fri, 20 May 2022 06:39:05 -0700 (PDT)
-Received: from archbook.localnet (84-72-105-84.dclient.hispeed.ch.
- [84.72.105.84]) by smtp.gmail.com with ESMTPSA id
- b2-20020aa7df82000000b0042abfe32ac8sm4225152edy.30.2022.05.20.06.39.04
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=U5IbhIIo2Ex15+PJPCMxKef+LbGdFyZTyufuHty8qHo=;
+ b=2YL+1cmBTy0RtV3O7oOrAb1Dh6kCDAAHC8Pc63cCRaPqXaRCHbKeUlJr/aEGMeSvIK
+ X8tmxfbFRCnnqDsuXYSUbQj0lLc06S4Mk9DhcLiDh+d9LBLpc3u5GrHyEa9rB4gSq3g/
+ avzq2nqYZnWWvh9eQqIaQXclUFGS5wUGRNUXQ9NSvsxo1gYJVL20wiDuM/EjlkH3Eiw9
+ tUGiWZ0GDkdbk03urV5PjCaxFYWkSfwzklQjREtYZW7pi942gf6HjdRpiCjcybnbR3Ys
+ F9xtJskhu4S1+uuSpOU5uKsHWKZOQ+GTXPxzDqbMcsTfAw4GQnSvbQlXbH+u7go+xhAr
+ Itsg==
+X-Gm-Message-State: AOAM532PrCxTS/8oH8d9VTtdikzlTnVWQhsFuGNKCpRlQRTsTjhImHbm
+ xfujvViEkTkeRzjVGErUy/4=
+X-Google-Smtp-Source: ABdhPJwzaUYgQUwCeSVbbocaJLwqMJOJvR+2bwzwy/QIN/IXIC0gDQB0P3pkZezbWrVsPgHmh03J3g==
+X-Received: by 2002:a05:6830:9c2:b0:606:1e0a:cc8d with SMTP id
+ y2-20020a05683009c200b006061e0acc8dmr4475147ott.265.1653071451235; 
+ Fri, 20 May 2022 11:30:51 -0700 (PDT)
+Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com.
+ [76.183.134.35]) by smtp.gmail.com with ESMTPSA id
+ w12-20020a4ab6cc000000b0035eb4e5a6d0sm1339467ooo.38.2022.05.20.11.30.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 May 2022 06:39:05 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: broonie@kernel.org, Charles Keepax <ckeepax@opensource.cirrus.com>
-Cc: lgirdwood@gmail.com, kuninori.morimoto.gx@renesas.com,
- nicolas.ferre@microchip.com, nsaenz@kernel.org, shawnguo@kernel.org,
- linux-imx@nxp.com, cezary.rojewski@intel.com,
- pierre-louis.bossart@linux.intel.com, linux-mips@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- daniel@zonque.org, srinivas.kandagatla@linaro.org,
- linux-rockchip@lists.infradead.org, krzk@kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org,
- linux-xtensa@linux-xtensa.org, peter.ujfalusi@gmail.com,
- jarkko.nikula@bitmer.com, heiko@sntech.de, jbrunet@baylibre.com,
- kernel@pengutronix.de, alsa-devel@alsa-project.org,
- patches@opensource.cirrus.com
-Subject: Re: [PATCH 18/56] ASoC: rockchip: Update to use set_fmt_new callback
-Date: Fri, 20 May 2022 15:39:03 +0200
-Message-ID: <4375965.enAZpblka2@archbook>
-In-Reply-To: <20220519154318.2153729-19-ckeepax@opensource.cirrus.com>
-References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
- <20220519154318.2153729-19-ckeepax@opensource.cirrus.com>
+ Fri, 20 May 2022 11:30:50 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-pm@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ lee.jones@linaro.org, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, sre@kernel.org,
+ jon.lin@rock-chips.com, zyw@rock-chips.com, zhangqing@rock-chips.com,
+ Chris Morgan <macromorgan@hotmail.com>
+Subject: [RESEND 0/4 v7] power: supply: Add Support for RK817 Charger
+Date: Fri, 20 May 2022 13:30:33 -0500
+Message-Id: <20220520183037.2566-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_063910_400263_2CB21D72 
-X-CRM114-Status: GOOD (  16.42  )
+X-CRM114-CacheID: sfid-20220520_113054_521045_53ADDAB9 
+X-CRM114-Status: GOOD (  16.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,90 +92,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Donnerstag, 19. Mai 2022 17:42:40 CEST Charles Keepax wrote:
-> As part of updating the core to directly tell drivers if they are clock
-> provider or consumer update these CPU side drivers to use the new direct
-> callback.
-> 
-> Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
-> ---
->  sound/soc/rockchip/rockchip_i2s.c     | 8 ++++----
->  sound/soc/rockchip/rockchip_i2s_tdm.c | 8 ++++----
->  2 files changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-> index 4ce5d25793875..0a66c7df323dc 100644
-> --- a/sound/soc/rockchip/rockchip_i2s.c
-> +++ b/sound/soc/rockchip/rockchip_i2s.c
-> @@ -199,13 +199,13 @@ static int rockchip_i2s_set_fmt(struct snd_soc_dai *cpu_dai,
->  
->  	pm_runtime_get_sync(cpu_dai->dev);
->  	mask = I2S_CKR_MSS_MASK;
-> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-> -	case SND_SOC_DAIFMT_CBS_CFS:
-> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
-> +	case SND_SOC_DAIFMT_BP_FP:
->  		/* Set source clock in Master mode */
->  		val = I2S_CKR_MSS_MASTER;
->  		i2s->is_master_mode = true;
->  		break;
-> -	case SND_SOC_DAIFMT_CBM_CFM:
-> +	case SND_SOC_DAIFMT_BC_FC:
->  		val = I2S_CKR_MSS_SLAVE;
->  		i2s->is_master_mode = false;
->  		break;
-> @@ -486,7 +486,7 @@ static const struct snd_soc_dai_ops rockchip_i2s_dai_ops = {
->  	.hw_params = rockchip_i2s_hw_params,
->  	.set_bclk_ratio	= rockchip_i2s_set_bclk_ratio,
->  	.set_sysclk = rockchip_i2s_set_sysclk,
-> -	.set_fmt = rockchip_i2s_set_fmt,
-> +	.set_fmt_new = rockchip_i2s_set_fmt,
->  	.trigger = rockchip_i2s_trigger,
->  };
->  
-> diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
-> index 98700e75b82a1..c90afccdae362 100644
-> --- a/sound/soc/rockchip/rockchip_i2s_tdm.c
-> +++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
-> @@ -411,12 +411,12 @@ static int rockchip_i2s_tdm_set_fmt(struct snd_soc_dai *cpu_dai,
->  	}
->  
->  	mask = I2S_CKR_MSS_MASK;
-> -	switch (fmt & SND_SOC_DAIFMT_MASTER_MASK) {
-> -	case SND_SOC_DAIFMT_CBC_CFC:
-> +	switch (fmt & SND_SOC_DAIFMT_CLOCK_PROVIDER_MASK) {
-> +	case SND_SOC_DAIFMT_BP_FP:
->  		val = I2S_CKR_MSS_MASTER;
->  		i2s_tdm->is_master_mode = true;
->  		break;
-> -	case SND_SOC_DAIFMT_CBP_CFP:
-> +	case SND_SOC_DAIFMT_BC_FC:
->  		val = I2S_CKR_MSS_SLAVE;
->  		i2s_tdm->is_master_mode = false;
->  		break;
-> @@ -1113,7 +1113,7 @@ static const struct snd_soc_dai_ops rockchip_i2s_tdm_dai_ops = {
->  	.hw_params = rockchip_i2s_tdm_hw_params,
->  	.set_bclk_ratio	= rockchip_i2s_tdm_set_bclk_ratio,
->  	.set_sysclk = rockchip_i2s_tdm_set_sysclk,
-> -	.set_fmt = rockchip_i2s_tdm_set_fmt,
-> +	.set_fmt_new = rockchip_i2s_tdm_set_fmt,
->  	.set_tdm_slot = rockchip_dai_tdm_slot,
->  	.trigger = rockchip_i2s_tdm_trigger,
->  };
-> 
+From: Chris Morgan <macromorgan@hotmail.com>
 
-Please run ./scripts/get_maintainer.pl against the individual patches so
-that I'm included in the recipients of the e-mail as well.
+Resending due to missing cc of DT mailing list.
 
-Anyway, for the i2s-tdm parts:
+This series is to add support for the Rockchip rk817 battery charger
+which is present in all Rockchip RK817 PMICs. The driver was written
+as a joint effort by Maya Matuszczyk <maccraft123mc@gmail.com> and
+myself Chris Morgan <macromorgan@hotmail.com>.
 
-Tested-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+The driver requires some basic parameters be described about the
+battery in the devicetree such as the maximum capacity, the minimum
+and maximum voltage for the battery, the maximum charge current, the
+maximum charge voltage, and the value of sample resistors and sleep
+currents.
 
-Tested on a RK3566 connected to an RK817 codec.
+The hardware itself contains an ADC capable of measuring the voltage,
+current, and temperature of the battery (though my implementation of an
+Odroid Go Advance lacks a thermistor for temperature). It also contains
+a columb counter, registers for tracking the measured voltage and
+current at boot, and a few bytes of nvram for storing data.
 
-Regards,
-Nicolas Frattaroli
+Changes from V6:
+ - Updated devicetree binding patch to reference the required
+   prerequisite patch in the correct manner (relocated it below the ---
+   and pointed it to lore.kernel.org).
 
+Changes from V5:
+ - Renamed mfd-cell from "battery" to "charger".
+ - Added note for devicetree binding documentation that it requires
+   application of an additional pending patch (to convert documentation
+   to yaml).
+
+Changes from V4:
+ - Massively redesigned the battery driver to improve measurement
+   accuracy and reliability. Driver now checks values every 8
+   seconds (mimicking BSP driver behavior), or whenever a plug event
+   is detected.
+ - Removed OCV, boot voltage, and boot current as values were found
+   to be unreliable.
+ - Updated first-boot behavior to perform a "best guess" at capacity.
+ - Added ability to calibrate columb counter to full state of charge
+   when charger reports full, and added ability calibrate full charge
+   capacity when battery discharges from full charge to minimum
+   voltage.
+ - Expose state of charge as capacity (in percents).
+ - Updated storing of values to nvram to preserve compatibility with
+   BSP kernel.
+
+Changes from V3:
+
+ - Corrected issues in device tree documentation.
+ - Added additional logic to battery to correct for columb counter
+   drift when the device stays plugged in at a full charge state.
+
+Changes from V2:
+
+ - Updated devicetree bindings to use common property units.
+ - Removed unneeded includes.
+ - Updated rk817_chg_cur_to_reg to make more legible.
+ - Simplified formula for displaying calibrated voltage.
+ - Updated power supply type to POWER_SUPPLY_TYPE_USB.
+ - Implemented get/put_unaligned macros for bulk reads and writes.
+ - Changed numerous dev_err() to dev_err_probe().
+ - Call power_supply_put_battery_info() at end of probe function.
+ - Removed unneeded whitespace.
+
+Changes from V1:
+
+ - Fixed a CLANG warning regarding an uninitalized variable.
+ - Fixed a CLANG warning regarding a pointer as a bool value always
+   returning as true.
+ - Added Maya Matuszczyk to the Signed-off-by.
+
+Chris Morgan (4):
+  dt-bindings: Add Rockchip rk817 battery charger support
+  mfd: Add Rockchip rk817 battery charger support
+  power: supply: Add charger driver for Rockchip RK817
+  arm64: dts: rockchip: add rk817 chg to Odroid Go Advance
+
+ .../bindings/mfd/rockchip,rk817.yaml          |   48 +
+ .../boot/dts/rockchip/rk3326-odroid-go2.dts   |   26 +
+ drivers/mfd/rk808.c                           |   16 +-
+ drivers/power/supply/Kconfig                  |    6 +
+ drivers/power/supply/Makefile                 |    1 +
+ drivers/power/supply/rk817_charger.c          | 1157 +++++++++++++++++
+ include/linux/mfd/rk808.h                     |   91 ++
+ 7 files changed, 1344 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/power/supply/rk817_charger.c
+
+-- 
+2.25.1
 
 
 _______________________________________________
