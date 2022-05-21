@@ -4,75 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9116EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 May 2022 22:47:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 470CFC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 May 2022 19:07:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TRgp1DsSxuUH/g79HEc5XM4u5ZVhTfCgZPLvHA4SRhs=; b=Cj1Nfno/MRielY
-	K11IJYXy3rrHdJ5Vfy/4gHPavk54Q0CGNtjmlasv/zJRSp8cDv4832w9YHcQT6dkvj21m1oHv21xd
-	PlyEjbnNSog6yma1srB6Zrb+Uc/YbkftLwzBsfkSGErkjUpEYr3Q327tPrS8DJMk84M6awfn7EqhR
-	5uKpVM2UtmPnBOPushQT3sEf0F5YI4iYSUBJbutc/b9TvGBn1mqPvW25XC0jDYX6yuxhs6hxXC8fV
-	D9R42A0KpbgqH0ILaUNu0HTBT5R90d3rA+cKAn2Wovdjp9XJahrMASvSU8s5rOw1H4Dc2WVeN9pjY
-	za0n5kUJSlQVvHGekDOA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=H48vVVKGaO9AP8wbd0qAgJrczma5qMxjrGkKb5kO7GQ=; b=zwQnDFASh57ks3
+	OW5irpj/pRySRMun0cg4TamyLG/MXYPoKCnkPOmWqrzf7DCwYt+35hDaWr7ZFREbl5Erkz32W2GTc
+	83dEdQ6Nkr7+NFdpjLdqHiLyJS71CbSb2E8Tnf+yXXmRTegmw74geLSjA7W1Btyg4Ir50lqNF21au
+	U/XdqRtyyeMrohdxW6RG4LxaBOZZLpziVUena3Ubev3Rl/upq2gyfr/SEVYGY3OXDHsewievtSQ77
+	9OjZ5s9lsvekwXPCG2Njq9nIjl7jzkM84zQxIv9ORy8AKgKi4lUqX9lPKg7gMGhX7RJy0Kd3GUw/J
+	dTYouoLUlx4g6a3Fqmyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nsBP7-00Epai-DF; Fri, 20 May 2022 22:47:29 +0000
-Received: from mail-oa1-f48.google.com ([209.85.160.48])
+	id 1nsURz-00HIxg-AH; Sat, 21 May 2022 19:07:43 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nsBP4-00EpZX-Jd; Fri, 20 May 2022 22:47:27 +0000
-Received: by mail-oa1-f48.google.com with SMTP id
- 586e51a60fabf-edf3b6b0f2so11854893fac.9; 
- Fri, 20 May 2022 15:47:25 -0700 (PDT)
+ id 1nsURw-00HIx7-Jv
+ for linux-rockchip@lists.infradead.org; Sat, 21 May 2022 19:07:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1653160057;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Wjy70z3rYdJmy6N/G7PkmPiJBr+st53+xede1hwp8ZM=;
+ b=P7n6Toeq8lIWgUe2vVTOILyzxFbGy8l6T24KuPQyaH6AeaKyL1y2Ifq2B7zDF9dyCRASQ7
+ dnZ7ScdmbNUZb298sEFdLLKtteozAT7Y7VSrLaHl8JlLqBhYeFG9vfNP15FN36Vt316v2s
+ G9MTaOk24ieIVhzBu4HBRmTuRhPhxys=
+Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
+ [209.85.167.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-426-8PIZrz_dNfetLP3pH2Q4SA-1; Sat, 21 May 2022 15:07:36 -0400
+X-MC-Unique: 8PIZrz_dNfetLP3pH2Q4SA-1
+Received: by mail-oi1-f200.google.com with SMTP id
+ f2-20020aca3802000000b0032b0a4dc9a8so1930168oia.12
+ for <linux-rockchip@lists.infradead.org>; Sat, 21 May 2022 12:07:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=u4R4HL1CccLMyjJa3KDF9+5IZQqrErKeOe9qyzr40zI=;
- b=UFmFM/g3m/L2kySsLybEbn2ugVjRCSCsjYwu1dW23KkJP5gFbS+KQlLHon3H6xZ96T
- WFrww97x4HAD6tPoIfsNg/9Ffo57auFhkiKcSmR3zvREFatOz9J2EDtazIyX63eHnF5I
- 1MNcHWJYzw6D+HAilIFKcEnZMHKsm74fS3EnRD5X1hzccayiBWcCoFOE3DaJlSJBT7Yb
- R3KHJbhMUdMijIIdUlA7Hi5QSo6ex/41ffxlf1L9tXrld1B2B75vx7mdwvkF2K/ocLmT
- JLg6O60vvNTbTKx2/JCToXoE0FKKiWX1YVtDYNEHNL4drAW4hwqUiJGnwGSogzYvA5Nu
- VxfQ==
-X-Gm-Message-State: AOAM533NL/jh54Weoj11RWFNMSstjBcKKyslp02stZtFuSzpfBrZoDDk
- SCAug6RAEkNr/e0NmQBV5CmqARq/1A==
-X-Google-Smtp-Source: ABdhPJwdW+Tdz65h6ry0Oq7eN1HrHtplP8oRV3Q6PNvZ3m9WMfgL/C+eJKxxwfuac94FX1DXNrpTbQ==
-X-Received: by 2002:a05:6871:554:b0:f1:7f92:7e67 with SMTP id
- t20-20020a056871055400b000f17f927e67mr7044878oal.124.1653086844501; 
- Fri, 20 May 2022 15:47:24 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net.
- [66.90.144.107]) by smtp.gmail.com with ESMTPSA id
- t187-20020aca5fc4000000b00325cda1ffb4sm1575818oib.51.2022.05.20.15.47.23
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Wjy70z3rYdJmy6N/G7PkmPiJBr+st53+xede1hwp8ZM=;
+ b=BwDoc2WBv0oNWEjgZ3yHOp1KZVRjmB+meIAPMup8iyX/0ExwKnR/ulfiI6GD2AjbFl
+ opdZU8KN8D6Y6B3FmFqVblBTKjvvdGmmUjNY1VktD2Wwj0a3XUOH1GvgI5QlwmhM3qDG
+ F00pEk45MP3ssYsat9Mr7NHXawQ4aYw4GUnohsrSBJZdpFyA3We2XwlyXK0IRaiXqdzv
+ vKJEXxSru8ZgJcuXa9MRqqhCJQD1UN/CLomx4yv3gM+ljwyGedzZhdjB3o6KwowkxgXH
+ /CqbyMS17rDLKnC0BhzP8k63ztyjYT+XvTRREZuczedAJeYBV5B/CWKYGppZ/DwrPhQQ
+ L1pg==
+X-Gm-Message-State: AOAM533v3AA2C5YGEy4zP0laooDb5O61NPws4J6vo0vUzD1c5gUdEQX8
+ fL6mZCOEb/CgKTHnmT22IXMWtLEsi9pV+3oC8bEiW0rQ+RUO+oAnfc2bELSXhYS/NtQ0rqGNZ+2
+ xVqM+kUd14RShYL+LP5n1u7qF+8euOV0r
+X-Received: by 2002:a4a:d40d:0:b0:33a:33be:9c1e with SMTP id
+ n13-20020a4ad40d000000b0033a33be9c1emr6340069oos.96.1653160056074; 
+ Sat, 21 May 2022 12:07:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxQFuSj7FFYoeGmIJnrtvUhAvMCbQ7XefIximmy8LWnPFdHFdaJq2T5go68pyrOKFdwywHEYg==
+X-Received: by 2002:a4a:d40d:0:b0:33a:33be:9c1e with SMTP id
+ n13-20020a4ad40d000000b0033a33be9c1emr6340058oos.96.1653160055856; 
+ Sat, 21 May 2022 12:07:35 -0700 (PDT)
+Received: from dell-per740-01.7a2m.lab.eng.bos.redhat.com
+ (nat-pool-bos-t.redhat.com. [66.187.233.206])
+ by smtp.gmail.com with ESMTPSA id
+ q203-20020aca5cd4000000b00326cb6225f8sm2495564oib.44.2022.05.21.12.07.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 May 2022 15:47:23 -0700 (PDT)
-Received: (nullmailer pid 395300 invoked by uid 1000);
- Fri, 20 May 2022 22:47:22 -0000
-Date: Fri, 20 May 2022 17:47:22 -0500
-From: Rob Herring <robh@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, lee.jones@linaro.org,
- krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, sre@kernel.org,
- jon.lin@rock-chips.com, zyw@rock-chips.com, zhangqing@rock-chips.com,
- Chris Morgan <macromorgan@hotmail.com>,
- Maya Matuszczyk <maccraft123mc@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [RESEND 1/4 v7] dt-bindings: Add Rockchip rk817 battery charger
- support
-Message-ID: <20220520224722.GA389075-robh@kernel.org>
-References: <20220520183037.2566-1-macroalpha82@gmail.com>
- <20220520183037.2566-2-macroalpha82@gmail.com>
+ Sat, 21 May 2022 12:07:35 -0700 (PDT)
+From: Tom Rix <trix@redhat.com>
+To: hjc@rock-chips.com,
+	heiko@sntech.de,
+	airlied@linux.ie,
+	daniel@ffwll.ch
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Tom Rix <trix@redhat.com>
+Subject: [PATCH] drm/rockchip: remove vop_writel
+Date: Sat, 21 May 2022 15:07:16 -0400
+Message-Id: <20220521190716.1936193-1-trix@redhat.com>
+X-Mailer: git-send-email 2.27.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220520183037.2566-2-macroalpha82@gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=trix@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220520_154726_685896_B8D632F4 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20220521_120740_972528_81F2B564 
+X-CRM114-Status: UNSURE (   8.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,32 +107,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 20, 2022 at 01:30:34PM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> Create dt-binding documentation to document rk817 battery and charger
-> usage. New device-tree properties have been added.
-> 
-> - rockchip,resistor-sense-micro-ohms: The value in microohms of the
->                                       sample resistor.
-> - rockchip,sleep-enter-current-microamp: The value in microamps of the
->                                          sleep enter current.
-> - rockchip,sleep-filter-current: The value in microamps of the sleep
->                                  filter current.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> ---
-> 
-> Note that this patch requires the following commit (still pending):
-> https://lore.kernel.org/linux-rockchip/20220519161731.1168-1-macroalpha82@gmail.com/
+cppcheck reports
+[drivers/gpu/drm/rockchip/rockchip_drm_vop.c:186]: (style) The function 'vop_writel' is never used.
 
-And so the checks still won't run... :(
+vop_writel is static function that is not used, so remove it.
 
-Looks like it should be fine to me though.
+Signed-off-by: Tom Rix <trix@redhat.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-Acked-by: Rob Herring <robh@kernel.org>
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 74562d40f639..d1026e78feff 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -183,12 +183,6 @@ struct vop {
+ 	struct vop_win win[];
+ };
+ 
+-static inline void vop_writel(struct vop *vop, uint32_t offset, uint32_t v)
+-{
+-	writel(v, vop->regs + offset);
+-	vop->regsbak[offset >> 2] = v;
+-}
+-
+ static inline uint32_t vop_readl(struct vop *vop, uint32_t offset)
+ {
+ 	return readl(vop->regs + offset);
+-- 
+2.27.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
