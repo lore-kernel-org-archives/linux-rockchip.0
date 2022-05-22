@@ -4,92 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 470CFC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 May 2022 19:07:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3605C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 May 2022 10:49:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=H48vVVKGaO9AP8wbd0qAgJrczma5qMxjrGkKb5kO7GQ=; b=zwQnDFASh57ks3
-	OW5irpj/pRySRMun0cg4TamyLG/MXYPoKCnkPOmWqrzf7DCwYt+35hDaWr7ZFREbl5Erkz32W2GTc
-	83dEdQ6Nkr7+NFdpjLdqHiLyJS71CbSb2E8Tnf+yXXmRTegmw74geLSjA7W1Btyg4Ir50lqNF21au
-	U/XdqRtyyeMrohdxW6RG4LxaBOZZLpziVUena3Ubev3Rl/upq2gyfr/SEVYGY3OXDHsewievtSQ77
-	9OjZ5s9lsvekwXPCG2Njq9nIjl7jzkM84zQxIv9ORy8AKgKi4lUqX9lPKg7gMGhX7RJy0Kd3GUw/J
-	dTYouoLUlx4g6a3Fqmyw==;
+	List-Owner; bh=7ShGj93xXXi1CYlJTZw6SLD7iN/4WdnF0BZSie42He0=; b=qheDXn0OmAFjNI
+	ob0QdHHhvLWZBblohot0N6L+gEWIwCU0u0iBXILy8Ud3N+xCmzwbWlEHU3KKLGN+3AjncxbUGvUPC
+	B4R0hJbVHK0TBWXel9N5r4Y8Xkv2VcNKDLLD3ZX2BlkoAUfHQORDsGiNxN2wLoOIhP/+5XHltPTZS
+	+dHLTt/DB2dLMTND14PRV6SZYwl5pEG5QKg7vVl3y/ZcdgBMZS2v5Q85if1zTqVG9uSM4n4/GMPlB
+	lC93L2DtWLculSBpEr5e7u+BMdl5JtSDY8DdDpuKCxGpi2S4qQd+qNekWk8VZnInF6Qr1DsMCBdsz
+	7CRwwvLduSOy18WDF1Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nsURz-00HIxg-AH; Sat, 21 May 2022 19:07:43 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1nsj9W-0017lj-DQ; Sun, 22 May 2022 10:49:38 +0000
+Received: from mga05.intel.com ([192.55.52.43])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nsURw-00HIx7-Jv
- for linux-rockchip@lists.infradead.org; Sat, 21 May 2022 19:07:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1653160057;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Wjy70z3rYdJmy6N/G7PkmPiJBr+st53+xede1hwp8ZM=;
- b=P7n6Toeq8lIWgUe2vVTOILyzxFbGy8l6T24KuPQyaH6AeaKyL1y2Ifq2B7zDF9dyCRASQ7
- dnZ7ScdmbNUZb298sEFdLLKtteozAT7Y7VSrLaHl8JlLqBhYeFG9vfNP15FN36Vt316v2s
- G9MTaOk24ieIVhzBu4HBRmTuRhPhxys=
-Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
- [209.85.167.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-426-8PIZrz_dNfetLP3pH2Q4SA-1; Sat, 21 May 2022 15:07:36 -0400
-X-MC-Unique: 8PIZrz_dNfetLP3pH2Q4SA-1
-Received: by mail-oi1-f200.google.com with SMTP id
- f2-20020aca3802000000b0032b0a4dc9a8so1930168oia.12
- for <linux-rockchip@lists.infradead.org>; Sat, 21 May 2022 12:07:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=Wjy70z3rYdJmy6N/G7PkmPiJBr+st53+xede1hwp8ZM=;
- b=BwDoc2WBv0oNWEjgZ3yHOp1KZVRjmB+meIAPMup8iyX/0ExwKnR/ulfiI6GD2AjbFl
- opdZU8KN8D6Y6B3FmFqVblBTKjvvdGmmUjNY1VktD2Wwj0a3XUOH1GvgI5QlwmhM3qDG
- F00pEk45MP3ssYsat9Mr7NHXawQ4aYw4GUnohsrSBJZdpFyA3We2XwlyXK0IRaiXqdzv
- vKJEXxSru8ZgJcuXa9MRqqhCJQD1UN/CLomx4yv3gM+ljwyGedzZhdjB3o6KwowkxgXH
- /CqbyMS17rDLKnC0BhzP8k63ztyjYT+XvTRREZuczedAJeYBV5B/CWKYGppZ/DwrPhQQ
- L1pg==
-X-Gm-Message-State: AOAM533v3AA2C5YGEy4zP0laooDb5O61NPws4J6vo0vUzD1c5gUdEQX8
- fL6mZCOEb/CgKTHnmT22IXMWtLEsi9pV+3oC8bEiW0rQ+RUO+oAnfc2bELSXhYS/NtQ0rqGNZ+2
- xVqM+kUd14RShYL+LP5n1u7qF+8euOV0r
-X-Received: by 2002:a4a:d40d:0:b0:33a:33be:9c1e with SMTP id
- n13-20020a4ad40d000000b0033a33be9c1emr6340069oos.96.1653160056074; 
- Sat, 21 May 2022 12:07:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxQFuSj7FFYoeGmIJnrtvUhAvMCbQ7XefIximmy8LWnPFdHFdaJq2T5go68pyrOKFdwywHEYg==
-X-Received: by 2002:a4a:d40d:0:b0:33a:33be:9c1e with SMTP id
- n13-20020a4ad40d000000b0033a33be9c1emr6340058oos.96.1653160055856; 
- Sat, 21 May 2022 12:07:35 -0700 (PDT)
-Received: from dell-per740-01.7a2m.lab.eng.bos.redhat.com
- (nat-pool-bos-t.redhat.com. [66.187.233.206])
- by smtp.gmail.com with ESMTPSA id
- q203-20020aca5cd4000000b00326cb6225f8sm2495564oib.44.2022.05.21.12.07.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 21 May 2022 12:07:35 -0700 (PDT)
-From: Tom Rix <trix@redhat.com>
-To: hjc@rock-chips.com,
-	heiko@sntech.de,
-	airlied@linux.ie,
-	daniel@ffwll.ch
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Tom Rix <trix@redhat.com>
-Subject: [PATCH] drm/rockchip: remove vop_writel
-Date: Sat, 21 May 2022 15:07:16 -0400
-Message-Id: <20220521190716.1936193-1-trix@redhat.com>
-X-Mailer: git-send-email 2.27.0
+ id 1nsj9K-0017l6-UO; Sun, 22 May 2022 10:49:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1653216566; x=1684752566;
+ h=date:from:to:cc:subject:message-id:mime-version;
+ bh=X8R56Cpt49KSpVSGTiYbiDAhwSvcVquKEuawZCEKEIA=;
+ b=fWKdOlVHZdH5xumubVUH6zWAdueKdXpA3SlenEIfsrASpPdtW2P9wQRO
+ e7JZ1UfemLwkWfXQ956qj1b0jBbF6LO/c+weMhndZIqbVPBLmu4ByxJmI
+ q7FXx3/SUO7nZPMmXRb2/DrW4LvvTV1grZSKLNkP8u+HwnT5Vp6YbS11w
+ 2JvXIIj5YfSboZ2IJh6GDYpTiTcHBvE/XQyHvMnHuF+ZF8VXcYFQOEMM3
+ WcBW9bSr8Vov3/fD39fgkYS17nIYb3toVTJnsq7tmeLI9LgnAxj1hIqxQ
+ vTK6trcyBcGgy91Sd2+eIpoYmRwBlMshQmIqdD/JFn+w5D37p8+qqd1fi g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10354"; a="359377018"
+X-IronPort-AV: E=Sophos;i="5.91,244,1647327600"; d="scan'208";a="359377018"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 May 2022 03:49:22 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,244,1647327600"; d="scan'208";a="662981811"
+Received: from lkp-server01.sh.intel.com (HELO db63a1be7222) ([10.239.97.150])
+ by FMSMGA003.fm.intel.com with ESMTP; 22 May 2022 03:49:20 -0700
+Received: from kbuild by db63a1be7222 with local (Exim 4.95)
+ (envelope-from <lkp@intel.com>) id 1nsj9D-0000JB-QO;
+ Sun, 22 May 2022 10:49:19 +0000
+Date: Sun, 22 May 2022 18:48:45 +0800
+From: kernel test robot <lkp@intel.com>
+To: Michael Riesch <michael.riesch@wolfvision.net>
+Cc: kbuild-all@lists.01.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
+ Sascha Hauer <s.hauer@pengutronix.de>
+Subject: [rockchip:wip-v5.20-armsoc/dts64 44/45]
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts:7:10: fatal error:
+ dt-bindings/soc/rockchip,vop2.h: No such file or directory
+Message-ID: <202205221848.KEeyKABj-lkp@intel.com>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=trix@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220521_120740_972528_81F2B564 
-X-CRM114-Status: UNSURE (   8.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220522_034927_066613_D874F675 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,36 +79,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-cppcheck reports
-[drivers/gpu/drm/rockchip/rockchip_drm_vop.c:186]: (style) The function 'vop_writel' is never used.
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git wip-v5.20-armsoc/dts64
+head:   281f94d9cbac31c1c112d09883bc42021435f1ad
+commit: 97d7309a70b03d01a154c4308f423b020f7d397e [44/45] arm64: dts: rockchip: enable vop2 and hdmi tx on quartz64a
+config: arm64-allyesconfig (https://download.01.org/0day-ci/archive/20220522/202205221848.KEeyKABj-lkp@intel.com/config)
+compiler: aarch64-linux-gcc (GCC) 11.3.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=97d7309a70b03d01a154c4308f423b020f7d397e
+        git remote add rockchip https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
+        git fetch --no-tags rockchip wip-v5.20-armsoc/dts64
+        git checkout 97d7309a70b03d01a154c4308f423b020f7d397e
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash
 
-vop_writel is static function that is not used, so remove it.
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
 
-Signed-off-by: Tom Rix <trix@redhat.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 6 ------
- 1 file changed, 6 deletions(-)
+All errors (new ones prefixed by >>):
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 74562d40f639..d1026e78feff 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -183,12 +183,6 @@ struct vop {
- 	struct vop_win win[];
- };
- 
--static inline void vop_writel(struct vop *vop, uint32_t offset, uint32_t v)
--{
--	writel(v, vop->regs + offset);
--	vop->regsbak[offset >> 2] = v;
--}
--
- static inline uint32_t vop_readl(struct vop *vop, uint32_t offset)
- {
- 	return readl(vop->regs + offset);
+>> arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts:7:10: fatal error: dt-bindings/soc/rockchip,vop2.h: No such file or directory
+       7 | #include <dt-bindings/soc/rockchip,vop2.h>
+         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   compilation terminated.
+
+
+vim +7 arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+
+     4	
+     5	#include <dt-bindings/gpio/gpio.h>
+     6	#include <dt-bindings/pinctrl/rockchip.h>
+   > 7	#include <dt-bindings/soc/rockchip,vop2.h>
+     8	#include "rk3566.dtsi"
+     9	
+
 -- 
-2.27.0
-
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
 _______________________________________________
 Linux-rockchip mailing list
