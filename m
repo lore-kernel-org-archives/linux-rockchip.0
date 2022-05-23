@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AED51C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 May 2022 09:08:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E976C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 May 2022 09:10:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b4tmYO7C3D70mK1JUffLkZMgI0w9NTrQxzHUD1wOUl0=; b=NRd9bXXkVmNiOq
-	CkN9Ag6OV94Lw5xCQkWC0E4vG7+TBgMSJAAJSq4A3qAOnO65YnFcdliA0JK0tSZKu5GWPnigBm8rp
-	WPkfSkymMhKUldesm6V3wvzor7dWd0fZxLjlWxPvaXIL3CUCAa0NrR08ZWkyRAZ8nOV18o0KrOyiH
-	E9ACnTgLNPP0bDsp5uucouvRqju0pv9nZJobCSSYK0DG8niT0D+gjopDuQoLD8fPyLsXj2vFHAuOS
-	Y3kOar8RlhTuyiO2JucYgPOPXG89ePvMmWKbbomdvac4CYlkIzWIkUJ6dCNPQ5dmlvYayRztyMp8O
-	zuDFAuEwWYkv/lhAcHKQ==;
+	List-Owner; bh=GCBXp5AkckdNqstu3qC9wXdQNNqOUUS9WNywdNKnnQs=; b=C2XSvTkStyySOD
+	5ATMOkmP0kkjF145R2u+da+D36T4LIe6pz9PLxQHKSf7P40YuOHmdHgo0AzOzrP+5UOOk++6Z3LlF
+	51OlBjzWsvXb+0CVV5IuA3EoesqLfcNxIhzVJZjKPvfOG3NvaU25vekWCnk/JSHAPhMwjdrGX0DwP
+	cRBPYXFJrbjkH7PLu4ZeO0GYnfT+Y04+r50ksiXdC4W6dG0X5jGum1PkTYP/8VOVrtGp91x5Wgcm5
+	rJp78g62y5mQXzv9/reuMzSvTHrLJxKMi4hvbW9SGNXO4PdOHaZXlxK72PH7gYh4qkJL07vmGUyvA
+	oHjDezchF9w4rW209PSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt433-002iBB-RL; Mon, 23 May 2022 09:08:21 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1nt44e-002j16-QF; Mon, 23 May 2022 09:10:00 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt3FE-002MYF-Vt
- for linux-rockchip@lists.infradead.org; Mon, 23 May 2022 08:16:57 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id z25so319073pfr.1
- for <linux-rockchip@lists.infradead.org>; Mon, 23 May 2022 01:16:47 -0700 (PDT)
+ id 1nt3GU-002Mr5-Tu
+ for linux-rockchip@lists.infradead.org; Mon, 23 May 2022 08:18:12 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id
+ o13-20020a17090a9f8d00b001df3fc52ea7so16808802pjp.3
+ for <linux-rockchip@lists.infradead.org>; Mon, 23 May 2022 01:17:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amarulasolutions.com; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=CbX182+PaKOS3rIhJvYoEDAxaskTGV2vPeWYBDL+1ZE=;
- b=VRzZPQ5+kiXiUBhYSi/ckGBBLwSCl7/KHNoeQHkiKVQhJDyOe6EXcnV6SnkuB+d5KD
- M9Pktzdujfo6HxMMEzR8Ew5K90a4cCfIGt1p7StJdxVtf4LBgJ72H9vIg1SoaED67Ywp
- pnwTMnK2uuCE/2qdlMpY93XH23/yc204UUheY=
+ :cc; bh=Dy4PRGOoGRp4CN77V+ahn71XloGT7JKOsY/m9WJCOgs=;
+ b=AzXaGiokChbNSYAcaNoEb68tNdvAPafice8elKmzBRDkx67VTOkzB0UfvczZtXkNbU
+ PPtGg234U0xXDj+rxpktTyxqq2uZ3s4MrO7EDM1P3BTMbxkA+4PzI695hFFTQMF9dt1N
+ eP6rOZW+CIaEHzJv/DwyL9KOVWvV7r7cY9yqo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=CbX182+PaKOS3rIhJvYoEDAxaskTGV2vPeWYBDL+1ZE=;
- b=2xRWIyVgjJZIOkies3Oeer5ZPp6ohE3Rlh+hdk5tWsFiplv9ZKPtADIsEPsvClxwjp
- gIWu1jVZRMsl45ieiV+yOoVbT+fjnFXBVJMeK7GRgTJcunX2O075bDpebNB7qUqmQ4qA
- n2kb32kdRltMANQuIcKeCtuChogoB5rQ8konTgYt8ROj99yVPn6q0M1iZ+aa9PYdfxmp
- v2LFvq8Tf57GhBV/i/aTNGzMlnd1x5NEZTuQeFBsvQDXnQ6dxN5HkVJdvZ4tfbmbuEki
- SWnEV2z3cYunEoqeCeRoQDZbWjJVGF5MoVNzAOcbza+1NuvhnN8luP0FsjO5S06dLaRR
- OGtg==
-X-Gm-Message-State: AOAM532Lb9+0WuKivtww85UQ5TjtA5+SmK5l5hjZS3aGDgtyrBhR7coD
- AhqfP510Tm0VdRe69OrmrjShYYCUh+7rgQzJfEwD7A==
-X-Google-Smtp-Source: ABdhPJwilgWdd5JOmzHW3vHjkiIO7ussnrOgCJHTzOvtitXYdEIkzXfCANq8cU/hVXlu4lWW2lhCe+JaTKbnRHlY0ec=
-X-Received: by 2002:a05:6a00:1897:b0:518:8bc7:9a82 with SMTP id
- x23-20020a056a00189700b005188bc79a82mr8698566pfh.26.1653293807216; Mon, 23
- May 2022 01:16:47 -0700 (PDT)
+ bh=Dy4PRGOoGRp4CN77V+ahn71XloGT7JKOsY/m9WJCOgs=;
+ b=cRY4HeJilF6TBCg+GiUEb9YHmg1nporjajg4Br6njERIVXpScawofEWcX/SdQd4QHD
+ buVuoRLPYb9u4S9FFZFMrByvfBQo6wZErVEbwYffjtEnyv+kzywJPOy7tX6Mbac2D7sW
+ 4d+ccQAe8gbcv5mgzewCOMS7q7N2xjqC8xm1cIcZaztmBBVS6e7nqX5Fj24mIFvuwV/8
+ k2YicJzZ+n5c+G1nhhapjFwwfPeak9qEVzJAVqdqXRJerFx74y3pqE4t070ldXgPHCuM
+ wSpLLJKPo3EFnpJbfuyy7yCvSpInro1Utnwr81JPc9tPY44b8z1Uje2CDuUZ8SM7crie
+ biBQ==
+X-Gm-Message-State: AOAM5329Ae0cIvvjM60+LMkJEI+q/veJJWgbDwiNmbwVejJSiCm06rYR
+ 4xS6fvmtz8m3zzeXptvD9ozFW6U8rg7oW10smOrPDA==
+X-Google-Smtp-Source: ABdhPJxHY9GMvf0RIC495y4Lpy5llzcH99rikFg9l4mAhhiFP1DtpUB+uoazLXEXCSmo0XrRCTzyP9muVQ5LoOg8CIc=
+X-Received: by 2002:a17:902:b10f:b0:161:f196:b4e with SMTP id
+ q15-20020a170902b10f00b00161f1960b4emr15830929plr.134.1653293858455; Mon, 23
+ May 2022 01:17:38 -0700 (PDT)
 MIME-Version: 1.0
 References: <20220519075117.1003520-1-tommaso.merciai@amarulasolutions.com>
- <20220519075117.1003520-5-tommaso.merciai@amarulasolutions.com>
-In-Reply-To: <20220519075117.1003520-5-tommaso.merciai@amarulasolutions.com>
+ <20220519075117.1003520-3-tommaso.merciai@amarulasolutions.com>
+In-Reply-To: <20220519075117.1003520-3-tommaso.merciai@amarulasolutions.com>
 From: Michael Nazzareno Trimarchi <michael@amarulasolutions.com>
-Date: Mon, 23 May 2022 10:16:36 +0200
-Message-ID: <CAOf5uw=Wf0jM_rpY=eLs+phnwEH=5BxZdD-XoHTPdd9SFtGUsQ@mail.gmail.com>
-Subject: Re: [PATCH 4/4] arm64: dts: rockchip: px30: use rk gpio naming
- convention into reset-gpios
+Date: Mon, 23 May 2022 10:17:26 +0200
+Message-ID: <CAOf5uwmjBgSpQEqCswDt02H4e5jahO92TaQnk-91syskM_PZ_Q@mail.gmail.com>
+Subject: Re: [PATCH 2/4] arm64: dts: rockchip: px30: max drive-strength for
+ cif_clkout_m0
 To: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
 Cc: linuxfancy@googlegroups.com, linux-amarula@amarulasolutions.com, 
  Rob Herring <robh+dt@kernel.org>, 
@@ -69,8 +70,8 @@ Cc: linuxfancy@googlegroups.com, linux-amarula@amarulasolutions.com,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_011653_131118_DB647336 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20220523_011810_988229_EE36B9BC 
+X-CRM114-Status: GOOD (  15.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,31 +94,39 @@ Hi
 On Thu, May 19, 2022 at 9:51 AM Tommaso Merciai
 <tommaso.merciai@amarulasolutions.com> wrote:
 >
-> Use rk gpio naming convention into reset-gpios of ov5695 camera
+> Add max drive-strength for cif_clkout_m0. This fix the issue that
+> sometimes camera ov5695 is not probed correctly.
+> Tested on PX30_Mini_EVB_V11_20190507
 >
 > Signed-off-by: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
 > Tested-by: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
 > ---
->  arch/arm64/boot/dts/rockchip/px30-evb.dts | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  arch/arm64/boot/dts/rockchip/px30-evb.dts | 7 +++++++
+>  1 file changed, 7 insertions(+)
 >
 > diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-> index 0d05a1b098bc..07008d84434c 100644
+> index 848bc39cf86a..53930e28eadf 100644
 > --- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
 > +++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-> @@ -450,8 +450,8 @@ ov5695: ov5695@36 {
->                 dvdd-supply = <&vcc1v5_dvp>;
->                 dovdd-supply = <&vcc1v8_dvp>;
->                 pinctrl-names = "default";
-> -               reset-gpios = <&gpio2 14 GPIO_ACTIVE_LOW>;
->                 pinctrl-0 = <&cif_clkout_m0 &mipi_pdn>;
-> +               reset-gpios = <&gpio2 RK_PB6 GPIO_ACTIVE_LOW>;
+> @@ -537,6 +537,13 @@ wifi_enable_h: wifi-enable-h {
+>                                 <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+>                 };
+>         };
+> +
+> +       cif-m0 {
+> +               cif_clkout_m0: cif-clkout-m0 {
+> +                       rockchip,pins =
+> +                               <2 RK_PB3 1 &pcfg_pull_none_12ma>;
+> +               };
+> +       };
+>  };
+
+This is the same now on rockchip bsp
+
+Reviewed-by: Michael Trimarchi <michael@amarulasolutios.com>
+
 >
-
-Reviewed-by: Michael Trimarchi <michael@amarulasolutions.com>
-
->                 port {
->                         ucam_out: endpoint {
+>  &pmu_io_domains {
 > --
 > 2.25.1
 >
