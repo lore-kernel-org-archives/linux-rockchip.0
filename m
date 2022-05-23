@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3605C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 May 2022 10:49:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AED51C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 May 2022 09:08:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=7ShGj93xXXi1CYlJTZw6SLD7iN/4WdnF0BZSie42He0=; b=qheDXn0OmAFjNI
-	ob0QdHHhvLWZBblohot0N6L+gEWIwCU0u0iBXILy8Ud3N+xCmzwbWlEHU3KKLGN+3AjncxbUGvUPC
-	B4R0hJbVHK0TBWXel9N5r4Y8Xkv2VcNKDLLD3ZX2BlkoAUfHQORDsGiNxN2wLoOIhP/+5XHltPTZS
-	+dHLTt/DB2dLMTND14PRV6SZYwl5pEG5QKg7vVl3y/ZcdgBMZS2v5Q85if1zTqVG9uSM4n4/GMPlB
-	lC93L2DtWLculSBpEr5e7u+BMdl5JtSDY8DdDpuKCxGpi2S4qQd+qNekWk8VZnInF6Qr1DsMCBdsz
-	7CRwwvLduSOy18WDF1Qg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=b4tmYO7C3D70mK1JUffLkZMgI0w9NTrQxzHUD1wOUl0=; b=NRd9bXXkVmNiOq
+	CkN9Ag6OV94Lw5xCQkWC0E4vG7+TBgMSJAAJSq4A3qAOnO65YnFcdliA0JK0tSZKu5GWPnigBm8rp
+	WPkfSkymMhKUldesm6V3wvzor7dWd0fZxLjlWxPvaXIL3CUCAa0NrR08ZWkyRAZ8nOV18o0KrOyiH
+	E9ACnTgLNPP0bDsp5uucouvRqju0pv9nZJobCSSYK0DG8niT0D+gjopDuQoLD8fPyLsXj2vFHAuOS
+	Y3kOar8RlhTuyiO2JucYgPOPXG89ePvMmWKbbomdvac4CYlkIzWIkUJ6dCNPQ5dmlvYayRztyMp8O
+	zuDFAuEwWYkv/lhAcHKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nsj9W-0017lj-DQ; Sun, 22 May 2022 10:49:38 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1nt433-002iBB-RL; Mon, 23 May 2022 09:08:21 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nsj9K-0017l6-UO; Sun, 22 May 2022 10:49:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1653216566; x=1684752566;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=X8R56Cpt49KSpVSGTiYbiDAhwSvcVquKEuawZCEKEIA=;
- b=fWKdOlVHZdH5xumubVUH6zWAdueKdXpA3SlenEIfsrASpPdtW2P9wQRO
- e7JZ1UfemLwkWfXQ956qj1b0jBbF6LO/c+weMhndZIqbVPBLmu4ByxJmI
- q7FXx3/SUO7nZPMmXRb2/DrW4LvvTV1grZSKLNkP8u+HwnT5Vp6YbS11w
- 2JvXIIj5YfSboZ2IJh6GDYpTiTcHBvE/XQyHvMnHuF+ZF8VXcYFQOEMM3
- WcBW9bSr8Vov3/fD39fgkYS17nIYb3toVTJnsq7tmeLI9LgnAxj1hIqxQ
- vTK6trcyBcGgy91Sd2+eIpoYmRwBlMshQmIqdD/JFn+w5D37p8+qqd1fi g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10354"; a="359377018"
-X-IronPort-AV: E=Sophos;i="5.91,244,1647327600"; d="scan'208";a="359377018"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 May 2022 03:49:22 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.91,244,1647327600"; d="scan'208";a="662981811"
-Received: from lkp-server01.sh.intel.com (HELO db63a1be7222) ([10.239.97.150])
- by FMSMGA003.fm.intel.com with ESMTP; 22 May 2022 03:49:20 -0700
-Received: from kbuild by db63a1be7222 with local (Exim 4.95)
- (envelope-from <lkp@intel.com>) id 1nsj9D-0000JB-QO;
- Sun, 22 May 2022 10:49:19 +0000
-Date: Sun, 22 May 2022 18:48:45 +0800
-From: kernel test robot <lkp@intel.com>
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: kbuild-all@lists.01.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
- Sascha Hauer <s.hauer@pengutronix.de>
-Subject: [rockchip:wip-v5.20-armsoc/dts64 44/45]
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts:7:10: fatal error:
- dt-bindings/soc/rockchip,vop2.h: No such file or directory
-Message-ID: <202205221848.KEeyKABj-lkp@intel.com>
+ id 1nt3FE-002MYF-Vt
+ for linux-rockchip@lists.infradead.org; Mon, 23 May 2022 08:16:57 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id z25so319073pfr.1
+ for <linux-rockchip@lists.infradead.org>; Mon, 23 May 2022 01:16:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amarulasolutions.com; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CbX182+PaKOS3rIhJvYoEDAxaskTGV2vPeWYBDL+1ZE=;
+ b=VRzZPQ5+kiXiUBhYSi/ckGBBLwSCl7/KHNoeQHkiKVQhJDyOe6EXcnV6SnkuB+d5KD
+ M9Pktzdujfo6HxMMEzR8Ew5K90a4cCfIGt1p7StJdxVtf4LBgJ72H9vIg1SoaED67Ywp
+ pnwTMnK2uuCE/2qdlMpY93XH23/yc204UUheY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CbX182+PaKOS3rIhJvYoEDAxaskTGV2vPeWYBDL+1ZE=;
+ b=2xRWIyVgjJZIOkies3Oeer5ZPp6ohE3Rlh+hdk5tWsFiplv9ZKPtADIsEPsvClxwjp
+ gIWu1jVZRMsl45ieiV+yOoVbT+fjnFXBVJMeK7GRgTJcunX2O075bDpebNB7qUqmQ4qA
+ n2kb32kdRltMANQuIcKeCtuChogoB5rQ8konTgYt8ROj99yVPn6q0M1iZ+aa9PYdfxmp
+ v2LFvq8Tf57GhBV/i/aTNGzMlnd1x5NEZTuQeFBsvQDXnQ6dxN5HkVJdvZ4tfbmbuEki
+ SWnEV2z3cYunEoqeCeRoQDZbWjJVGF5MoVNzAOcbza+1NuvhnN8luP0FsjO5S06dLaRR
+ OGtg==
+X-Gm-Message-State: AOAM532Lb9+0WuKivtww85UQ5TjtA5+SmK5l5hjZS3aGDgtyrBhR7coD
+ AhqfP510Tm0VdRe69OrmrjShYYCUh+7rgQzJfEwD7A==
+X-Google-Smtp-Source: ABdhPJwilgWdd5JOmzHW3vHjkiIO7ussnrOgCJHTzOvtitXYdEIkzXfCANq8cU/hVXlu4lWW2lhCe+JaTKbnRHlY0ec=
+X-Received: by 2002:a05:6a00:1897:b0:518:8bc7:9a82 with SMTP id
+ x23-20020a056a00189700b005188bc79a82mr8698566pfh.26.1653293807216; Mon, 23
+ May 2022 01:16:47 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
+References: <20220519075117.1003520-1-tommaso.merciai@amarulasolutions.com>
+ <20220519075117.1003520-5-tommaso.merciai@amarulasolutions.com>
+In-Reply-To: <20220519075117.1003520-5-tommaso.merciai@amarulasolutions.com>
+From: Michael Nazzareno Trimarchi <michael@amarulasolutions.com>
+Date: Mon, 23 May 2022 10:16:36 +0200
+Message-ID: <CAOf5uw=Wf0jM_rpY=eLs+phnwEH=5BxZdD-XoHTPdd9SFtGUsQ@mail.gmail.com>
+Subject: Re: [PATCH 4/4] arm64: dts: rockchip: px30: use rk gpio naming
+ convention into reset-gpios
+To: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
+Cc: linuxfancy@googlegroups.com, linux-amarula@amarulasolutions.com, 
+ Rob Herring <robh+dt@kernel.org>, 
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Shunqian Zheng <zhengsq@rock-chips.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220522_034927_066613_D874F675 
-X-CRM114-Status: GOOD (  10.45  )
+X-CRM114-CacheID: sfid-20220523_011653_131118_DB647336 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,45 +88,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git wip-v5.20-armsoc/dts64
-head:   281f94d9cbac31c1c112d09883bc42021435f1ad
-commit: 97d7309a70b03d01a154c4308f423b020f7d397e [44/45] arm64: dts: rockchip: enable vop2 and hdmi tx on quartz64a
-config: arm64-allyesconfig (https://download.01.org/0day-ci/archive/20220522/202205221848.KEeyKABj-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 11.3.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git/commit/?id=97d7309a70b03d01a154c4308f423b020f7d397e
-        git remote add rockchip https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
-        git fetch --no-tags rockchip wip-v5.20-armsoc/dts64
-        git checkout 97d7309a70b03d01a154c4308f423b020f7d397e
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash
+Hi
 
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
+On Thu, May 19, 2022 at 9:51 AM Tommaso Merciai
+<tommaso.merciai@amarulasolutions.com> wrote:
+>
+> Use rk gpio naming convention into reset-gpios of ov5695 camera
+>
+> Signed-off-by: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
+> Tested-by: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/px30-evb.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+> index 0d05a1b098bc..07008d84434c 100644
+> --- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
+> +++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+> @@ -450,8 +450,8 @@ ov5695: ov5695@36 {
+>                 dvdd-supply = <&vcc1v5_dvp>;
+>                 dovdd-supply = <&vcc1v8_dvp>;
+>                 pinctrl-names = "default";
+> -               reset-gpios = <&gpio2 14 GPIO_ACTIVE_LOW>;
+>                 pinctrl-0 = <&cif_clkout_m0 &mipi_pdn>;
+> +               reset-gpios = <&gpio2 RK_PB6 GPIO_ACTIVE_LOW>;
+>
 
-All errors (new ones prefixed by >>):
+Reviewed-by: Michael Trimarchi <michael@amarulasolutions.com>
 
->> arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts:7:10: fatal error: dt-bindings/soc/rockchip,vop2.h: No such file or directory
-       7 | #include <dt-bindings/soc/rockchip,vop2.h>
-         |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   compilation terminated.
+>                 port {
+>                         ucam_out: endpoint {
+> --
+> 2.25.1
+>
 
-
-vim +7 arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-
-     4	
-     5	#include <dt-bindings/gpio/gpio.h>
-     6	#include <dt-bindings/pinctrl/rockchip.h>
-   > 7	#include <dt-bindings/soc/rockchip,vop2.h>
-     8	#include "rk3566.dtsi"
-     9	
 
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+Michael Nazzareno Trimarchi
+Co-Founder & Chief Executive Officer
+M. +39 347 913 2170
+michael@amarulasolutions.com
+__________________________________
+
+Amarula Solutions BV
+Joop Geesinkweg 125, 1114 AB, Amsterdam, NL
+T. +31 (0)85 111 9172
+info@amarulasolutions.com
+www.amarulasolutions.com
 
 _______________________________________________
 Linux-rockchip mailing list
