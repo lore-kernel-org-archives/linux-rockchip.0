@@ -4,75 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A090C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 May 2022 14:06:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5856BC4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 May 2022 17:17:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LFZqfPmJFBCuwEA2CetTdgPr+vsqW+DiW5ZaECXN5OY=; b=JObwwpdekkncMh
-	5HEFYqm2hFscZBYpZsnw8y9zjlX8rluKRllg3v3+Lvofxh2V1TlcN+ejZR6qj1BQAuMc0OxQsQ9bK
-	KL/6NV2byFwMujoSd+ZKLpFNQ1RAVqPRPR2XzHiC5BzR/Pc6JR1aPcV0Q3iH8+u6H6Rt7SC2Ke/5k
-	LFWS+/V3jhl3MUaZfU36JYBB6hRqKbZsTC9hqHN2rVJ6mldr16fnqoTBfZPwSfYANoH4gDMP8+iLR
-	5Nake3b+pz2JUATD2NKxLKqz4XPYvuYYOx40bUUucVr23eEF2PB7S2pWXlrdPug5Thc4Oa+ItsM8s
-	ZiPVr0qC3XtU8Rl1x/Xg==;
+	List-Owner; bh=kfk/cTPzR70bEvr/PhFWjOdtyM2ZzOtUDzEECc3m6S4=; b=aOQBH60oSnYA4J
+	ADIzbq50PktFdxqIMd5nIGqlVr4JiPEm0bfB4sLZOlyJvTkDLcU2nba5k0haiETx+/9mrL8uofF6m
+	8Gzrt1WOvcfn3iqMQsm6bdzK5LlpcwpHs1PJqqNn/BnUbsSId+CChJ7o/HkMRy+X70lX2Zoj0o3qB
+	2Dkp3Cu+pm9FhI91DqzV9b93h1PW7zgTZtGDHBAkinEWivPQDbXQmR1OvgAGjYUxrIIlt1rr4SHaa
+	6/4yrfz+cGqmMe6qF0IUVTprhlBt1OyS0XonDlE8ubYGvHGwJyGuf1R6UuzhtyTPr/lJFHOKiK0De
+	arsTsKYGe1OGMcv7veVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nt8he-004dls-EZ; Mon, 23 May 2022 14:06:34 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nt8hT-004djU-4L; Mon, 23 May 2022 14:06:24 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id
- nr2-20020a17090b240200b001df2b1bfc40so17614757pjb.5; 
- Mon, 23 May 2022 07:06:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8y5BRaHXUyaMApI9OkAQijsflwdIHfE4WR6ORnNMHho=;
- b=j/v7TapmIXCeZCguAy5n0XikUxpBpbZZXgASm4lzUDpJg0YoD3MIBgIwVXxhOPAY+/
- yFAiIKNXFA87xFKgRB6RlJpMesb63CuTvoQqXe2uynXQlLkgUan3wKnHI8RfY6sAEgzR
- hLzWAWEqCtGzPqPc9cLQPcidJgFMRmwI8kPVKi5VZetoy6hUeeKBYqF/qj9yGxIlcSEI
- +DMh6CRJK/YzhAogG7XjgWfGzGpfOMvVewUAS967HoeZq6tmBtiXkNuHHi9WTvoJ47Ks
- BE5BZdD9mifa99iCgPwlGljEAnrlw22Mzy8dplvlMycAQ9J9g0DI8RK7yDrw2bakOc3K
- 2elQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8y5BRaHXUyaMApI9OkAQijsflwdIHfE4WR6ORnNMHho=;
- b=y6eEj0uFHDTw6udWMAP/vAEgYZCLqwnRz8hGdig+cyEhc+OnjP/ZJxQVP/p3CiCKCT
- eUulED8P4dntyJ8fzUP8RV4/PBtbKm/7bzWHd8BZbof8BZzTTmPivhd7BYVw/KFBQjcS
- ldFePtW0RFk4XIoDNXCT1BQWcOXyEeCc0PCpukBfVhupZJVnh350YWy4GwmZXO8SuClw
- uGRby5Bgt0mJGV1sXRwbZ8WkLSU4ZWyOmqnaE7upEQup3QFpAVLEJWXmMS/gpzDYJgah
- Ny2JwtmoxdIbizD47bigbKL2+RrxjLZu5F/s7VnQdb301CgfNV02LL810136b8ozlOpe
- Og0A==
-X-Gm-Message-State: AOAM531xu2izAklhklTqsBxX07jcY+uo8f8WI3SBs8xbVAGdFa76Xazh
- Ce/HBW0bOPzlGzXpki59R+Avcs2+owrDhg==
-X-Google-Smtp-Source: ABdhPJyFOXj2ryIjuzJfas0FpOP+2TbpxesLsEPTi6B8TYXOqVZln8qV0MkTsqPVAVL9qJrHEdom/A==
-X-Received: by 2002:a17:903:2288:b0:162:23c:c151 with SMTP id
- b8-20020a170903228800b00162023cc151mr12484842plh.78.1653314780118; 
- Mon, 23 May 2022 07:06:20 -0700 (PDT)
-Received: from localhost.localdomain ([202.120.234.246])
- by smtp.googlemail.com with ESMTPSA id
- n89-20020a17090a5ae200b001df6173700dsm7170927pji.49.2022.05.23.07.06.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 May 2022 07:06:19 -0700 (PDT)
-From: Miaoqian Lin <linmq006@gmail.com>
-To: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+	id 1ntBgJ-005LQ1-H9; Mon, 23 May 2022 17:17:23 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1ntBg8-005LIU-I8; Mon, 23 May 2022 17:17:14 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1A3E61FB;
+ Mon, 23 May 2022 10:17:07 -0700 (PDT)
+Received: from pluto.guestnet.cambridge.arm.com (unknown [172.31.20.19])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5BC6B3F73D;
+ Mon, 23 May 2022 10:17:05 -0700 (PDT)
+From: Cristian Marussi <cristian.marussi@arm.com>
+To: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Cc: linmq006@gmail.com
-Subject: [PATCH] phy: rockchip-usb: Fix refcount leak in rockchip_init_usb_uart
-Date: Mon, 23 May 2022 18:06:03 +0400
-Message-Id: <20220523140603.50848-1-linmq006@gmail.com>
-X-Mailer: git-send-email 2.25.1
+Cc: Heiko Stuebner <heiko@sntech.de>, Liang Chen <cl@rock-chips.com>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Jeffy Chen <jeffy.chen@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>,
+ Cristian Marussi <cristian.marussi@arm.com>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Etienne Carriere <etienne.carriere@linaro.org>,
+ Sudeep Holla <sudeep.holla@arm.com>
+Subject: [PATCH] firmware: arm_scmi: Relax BASE protocol sanity checks on
+ protocol list
+Date: Mon, 23 May 2022 18:15:59 +0100
+Message-Id: <20220523171559.472112-1-cristian.marussi@arm.com>
+X-Mailer: git-send-email 2.36.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220523_070623_226387_A2E26811 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20220523_101712_684191_F542A6D6 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,38 +66,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-of_find_matching_node_and_match() returns a node pointer with refcount
-incremented, we should use of_node_put() on it when not need anymore.
-Add missing of_node_put() to avoid refcount leak.
+Even though malformed replies from firmware must be treated carefully to
+avoid memory corruption Kernel side, some out-of-spec SCMI replies can
+be tolerated to avoid breaking existing deployed system, as long as they
+won't cause memory issues.
 
-Fixes: 605df8af33a7 ("phy: rockchip-usb: add handler for usb-uart functionality")
-Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+Reported-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Cc: Etienne Carriere <etienne.carriere@linaro.org>
+Cc: Sudeep Holla <sudeep.holla@arm.com>
+Signed-off-by: Cristian Marussi <cristian.marussi@arm.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usb.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/firmware/arm_scmi/base.c | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-usb.c b/drivers/phy/rockchip/phy-rockchip-usb.c
-index 8454285977eb..9743b4ac5d1c 100644
---- a/drivers/phy/rockchip/phy-rockchip-usb.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usb.c
-@@ -543,6 +543,7 @@ static int __init rockchip_init_usb_uart(void)
- 	if (!data->init_usb_uart) {
- 		pr_err("%s: usb-uart not available on %s\n",
- 		       __func__, match->compatible);
-+		of_node_put(np);
- 		return -ENOTSUPP;
- 	}
+diff --git a/drivers/firmware/arm_scmi/base.c b/drivers/firmware/arm_scmi/base.c
+index 20fba7370f4e..d0ac96da1ddf 100644
+--- a/drivers/firmware/arm_scmi/base.c
++++ b/drivers/firmware/arm_scmi/base.c
+@@ -221,11 +221,17 @@ scmi_base_implementation_list_get(const struct scmi_protocol_handle *ph,
+ 		calc_list_sz = (1 + (loop_num_ret - 1) / sizeof(u32)) *
+ 				sizeof(u32);
+ 		if (calc_list_sz != real_list_sz) {
+-			dev_err(dev,
+-				"Malformed reply - real_sz:%zd  calc_sz:%u\n",
+-				real_list_sz, calc_list_sz);
+-			ret = -EPROTO;
+-			break;
++			dev_warn(dev,
++				 "Malformed reply - real_sz:%zd  calc_sz:%u  (loop_num_ret:%d)\n",
++				 real_list_sz, calc_list_sz, loop_num_ret);
++			/*
++			 * Bail out if the expected list size is bigger than the
++			 * total payload size of the received reply.
++			 */
++			if (calc_list_sz > real_list_sz) {
++				ret = -EPROTO;
++				break;
++			}
+ 		}
  
-@@ -551,6 +552,7 @@ static int __init rockchip_init_usb_uart(void)
- 		grf = syscon_node_to_regmap(np->parent);
- 	if (IS_ERR(grf))
- 		grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-+	of_node_put(np);
- 	if (IS_ERR(grf)) {
- 		pr_err("%s: Missing rockchip,grf property, %lu\n",
- 		       __func__, PTR_ERR(grf));
+ 		for (loop = 0; loop < loop_num_ret; loop++)
 -- 
-2.25.1
+2.36.1
 
 
 _______________________________________________
