@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83C1DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 May 2022 08:09:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2782AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 May 2022 10:12:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/3hARtqXhXH909nCTb7xQmMwCqy2OJ5iPWsmTtdDWDw=; b=2qXvDuVrUrZOuX
-	4DNeM7xryYW0IZFHqKiutkDH+r02mcRoJ3htkuy25lhuungXDxajFN9tZX4rSqM1rekGgij6YkmBe
-	hrv08uUXDa4Od16DcD4tmXtFXe0OYZLLsw6N5pqKUsLVfqmGm4CjVk1prDb1EAT7SM9j64Kr21616
-	eMCaCqnisd9PInVP8f+3KAacnn/flzJtTZFmh7UnknP0khQviHTh848B9mIPGb/EDzhKX36NMHAZP
-	1Ysj2EfTHQlopx4jf303ua3YPi3pEu64MFhfkrbihYVuMPWYaww7ieSnVmmPWrdj1MHD9XGUN0Pdr
-	VmqsUi/oRX0BJijoBgBw==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:
+	Subject:To:From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/hO2UEEkGbWqVMXofyYENzBmeltxeykvJe5GBZ1OXvc=; b=4DHpmOfRM0VzyO
+	OWivXHTOhcFqx+1jQB6z9s2QRxfH3Nst6QblXn09LoCbt5NWXMLCjOzntGoFLMi2978trawMu1ECC
+	Ky0Yl4tf3xYF6gb/xiNMZALQAaLgD4T53009rhQsHRGgPHaWGrJTjoTCXiv8mZlZ7woRKX+kvZ+W/
+	tur4cqzI7oTI7fT7eJcLygA+mmmJDk0D4S5yZlJEsAcB2LUgR7Ug7xvK7epfEtp2qAbFPH3S39lHO
+	TSoA4T7140nibgfo7x5tFD1KtZYCF0CzHNmxcxo4x/+xq+jRjGRj/G9wbdabVZyFC45WtLaRGtAEj
+	XRx2xKXB+CzPAD809a4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntPbj-007Cag-5p; Tue, 24 May 2022 08:09:35 +0000
-Received: from mail.greatagencyonline.pl ([89.40.125.71])
+	id 1ntRWa-007awa-UP; Tue, 24 May 2022 10:12:24 +0000
+Received: from hwsrv-970840.hostwindsdns.com ([104.168.149.109]
+ helo=box.indicandustries.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntPbg-007CZ2-Ea
- for linux-rockchip@lists.infradead.org; Tue, 24 May 2022 08:09:33 +0000
-Received: by mail.greatagencyonline.pl (Postfix, from userid 1001)
- id 3D650A8127; Tue, 24 May 2022 09:01:25 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=greatagencyonline.pl;
- s=mail; t=1653379286;
- bh=ksvwLPFdjL017OLwir5xHXy3Vmrj/5fhZ5DwBI62qzc=;
- h=Date:From:To:Subject:From;
- b=hFNPf9eppsHY15y59V/ySmElBfEaisuR7x4A13DmecAMD4FNXbnoMYwvhbtzrX+WQ
- dZ/5GFWo5gM1dC9GvIJuWnX3T/rmjuFSvA9yr+lk8kCbm4HDi7eKklSH6hsVUT2zKL
- ZiOY8MKuxxWAX/JsFkCyQ/wPk8HSOT4dO4F5t2udw1FV4jDpQYS/GHuictzSCu77T4
- xfH3VgtHouZHaOPDofAEBEfSEib3PfBmehZ4rEwU0Xsn553eSNs47dN3cz+tsxQyrt
- QizWIL8duaoEjSQRu9emWnC6UA+DTsWEeI1n3bWZUQslt6twjrJXaA6wxXUbOohVrR
- k+nX66qwG38hw==
-Received: by mail.greatagencyonline.pl for
- <linux-rockchip@lists.infradead.org>; Tue, 24 May 2022 08:00:54 GMT
-Message-ID: <20220524074502-0.1.43.vxub.0.ng0nfamodp@greatagencyonline.pl>
-Date: Tue, 24 May 2022 08:00:54 GMT
-From: =?UTF-8?Q?"Miko=C5=82aj_Rudzik"?= <mikolaj.rudzik@greatagencyonline.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: =?UTF-8?Q?Nap=C5=82yw_Klient=C3=B3w_ze_strony?=
-X-Mailer: mail.greatagencyonline.pl
+ id 1ntRWZ-007aux-C1
+ for linux-rockchip@lists.infradead.org; Tue, 24 May 2022 10:12:24 +0000
+Received: from authenticated-user (box.indicandustries.com [104.168.149.109])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
+ bits)) (No client certificate requested)
+ by box.indicandustries.com (Postfix) with ESMTPSA id 3AB571078C8
+ for <linux-rockchip@lists.infradead.org>; Tue, 24 May 2022 03:25:26 -0600 (MDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=box.indicandustries.com; s=mail; t=1653384326;
+ bh=V6VCn7WEbqHjVVQ20/+SYu6rwS1WmTHcxX88g+j430s=;
+ h=Reply-To:From:To:Subject:Date:From;
+ b=cRUJ5CDBOhImdYRhnxE30fS5b0LJXxu+B9OkS6FZkFydCQ1Qb1HA64mivJT5s+IQ3
+ yqJGkOpSz+4+ccvOVFbO7U5AjY0QyJRecW8r38P76Wzo20xmJvtKl+OQUr4keqilWn
+ MXhuuCN1EnD3UV2e0milZavsgfYlbAbc6VuEY28i4Wz6KOprMeYBkYUtT+d/8V2+xB
+ 7m9b375tlT3VquAAvRBVFXNEPkRfMWsHstuqvlKLVW5rn9+WdlFGsju5LDTo/03Pb6
+ suRnYBlqAq68Lor9CPzsGAxITGPuhj58NnTSMAQ3Gs1KZLLNBtoDE/64T+K7hM6K7m
+ jac7KhKUGznCw==
+From: amjad.ali@box.indicandustries.com
+To: linux-rockchip@lists.infradead.org
+Subject: Hello Sir, I seek your urgent consideration.
+Date: 24 May 2022 11:25:25 +0200
+Message-ID: <20220524112525.14A5B0895CD6F194@box.indicandustries.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220524_010932_650553_FCDE382D 
-X-CRM114-Status: UNSURE (   1.71  )
+X-CRM114-CacheID: sfid-20220524_031223_471524_ECFA6878 
+X-CRM114-Status: UNSURE (   1.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -62,18 +63,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: amjalia90@gmail.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKY2hjaWHFgmJ5bSBwb2luZm9ybW93YcSHIFBhxYRzdHdhIG8gbW/FvGxp
-d2/Fm2NpIHBvenlza2FuaWEgbm93eWNoIHpsZWNlxYQgemUgc3Ryb255IHd3dy4KCldpZHppbXkg
-emFpbnRlcmVzb3dhbmllIHBvdGVuY2phbG55Y2ggS2xpZW50w7N3IFBhxYRzdHdhIGZpcm3EhSwg
-ZGxhdGVnbyBjaMSZdG5pZSBwb21vxbxlbXkgUGHFhHN0d3UgZG90cnplxIcgeiBvZmVydMSFIGRv
-IHdpxJlrc3plZ28gZ3JvbmEgb2RiaW9yY8OzdyBwb3ByemV6IGVmZWt0eXduZSBtZXRvZHkgcG96
-eWNqb25vd2FuaWEgc3Ryb255IHcgR29vZ2xlLgoKQ3p5IG3Ds2fFgmJ5bSBsaWN6ecSHIG5hIGtv
-bnRha3Qgendyb3RueT8KCgpQb3pkcmF3aWFtLApNaWtvxYJhaiBSdWR6aWsKCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+SGVsbG8sCgpHcmVldGluZ3M/IEkgYW0gQW1qYWQuIEkgd29yayB3aXRoIGEgbGVhZGluZyBCaW8g
+RmlybS4gIER1ZSB0byAKdGhlIHNldGJhY2tzIG9mIHRoZSBwYW5kZW1pYywgbXkgY29tcGFueSBo
+YXMgb3BlbmVkIGEgYmlkIGluIApzZWFyY2ggb2YgbmV3IHN1cHBsaWVycyBmb3IgYmFzaWMgcmF3
+IG1hdGVyaWFscyBuZWVkZWQgaW4gCnByb2R1Y3Rpb24uCgpJIGFtIHNlZWtpbmcgYSByZXByZXNl
+bnRhdGl2ZcKgYXMgSSBhbSBhIHN0YWZmLCBJIGNhbiBub3QgYmUgCmludm9sdmVkIGRpcmVjdGx5
+LiBJdCBtYXkgbm90IGJlIHlvdXIgYXJlYSBvZiB3b3JrIGJ1dCB0aGUgCnByb2ZpdHMgYXJlIGdy
+ZWF0IGFuZCBJIHdpbGwgZ3VpZGUgeW91IHRocm91Z2guIEkgaGF2ZSBhbHJlYWR5IApzb3VyY2Vk
+IGEgbG9jYWwgc3VwcGxpZXIgZm9yIHRoaXMuIEkgb25seSBuZWVkIGEgcmVsaWFibGUgCnJlcHJl
+c2VudGF0aXZlLgoKUGxlYXNlIGdldCBiYWNrIHRvIG1lIHNvIEkgY2FuIGV4cGxhaW4gdGhpcyBp
+biBmdWxsLgoKQW1qYWQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
