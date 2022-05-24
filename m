@@ -4,52 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2782AC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 May 2022 10:12:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB285C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 May 2022 11:52:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:
-	Subject:To:From:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/hO2UEEkGbWqVMXofyYENzBmeltxeykvJe5GBZ1OXvc=; b=4DHpmOfRM0VzyO
-	OWivXHTOhcFqx+1jQB6z9s2QRxfH3Nst6QblXn09LoCbt5NWXMLCjOzntGoFLMi2978trawMu1ECC
-	Ky0Yl4tf3xYF6gb/xiNMZALQAaLgD4T53009rhQsHRGgPHaWGrJTjoTCXiv8mZlZ7woRKX+kvZ+W/
-	tur4cqzI7oTI7fT7eJcLygA+mmmJDk0D4S5yZlJEsAcB2LUgR7Ug7xvK7epfEtp2qAbFPH3S39lHO
-	TSoA4T7140nibgfo7x5tFD1KtZYCF0CzHNmxcxo4x/+xq+jRjGRj/G9wbdabVZyFC45WtLaRGtAEj
-	XRx2xKXB+CzPAD809a4w==;
+	List-Owner; bh=BKhrxX5aP+3EpEKSU0N98QUlT1/drBjGFBlrj0swfeY=; b=kL8PYOQJrmUKzL
+	vYqzt2tK36P62u3jRi7ccw3Hxi2zjwKwNd7uziNXM85kmR3GcuhpolcV2MApk0iR5iPlrEuYwWF3w
+	ZA1aO4UD2srmjklah/ymAHpkrH4JOE3L6759S/8mg8vAp9kmxIKY2RkdlKFA8pxvqciHX8E4SeqZb
+	DvwIZn5h9MtipDVe8rTh/pSSpBq08PALzBZ4CIU8YuRQS0uGSxFUC+Ww0G37525sPo+8JJg5aX/Te
+	/glT+7gy6oB8PhrpCr6eo2MFNT6KU6OJ/FxQ+R1Li9PIGUYMRJ413C8CH+Hm0Y5MueWCkGCBuRrDH
+	Py6zLhy4FM3NKEPNW7YA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntRWa-007awa-UP; Tue, 24 May 2022 10:12:24 +0000
-Received: from hwsrv-970840.hostwindsdns.com ([104.168.149.109]
- helo=box.indicandustries.com)
+	id 1ntT5Q-007rii-PT; Tue, 24 May 2022 11:52:28 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ntRWZ-007aux-C1
- for linux-rockchip@lists.infradead.org; Tue, 24 May 2022 10:12:24 +0000
-Received: from authenticated-user (box.indicandustries.com [104.168.149.109])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- by box.indicandustries.com (Postfix) with ESMTPSA id 3AB571078C8
- for <linux-rockchip@lists.infradead.org>; Tue, 24 May 2022 03:25:26 -0600 (MDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=box.indicandustries.com; s=mail; t=1653384326;
- bh=V6VCn7WEbqHjVVQ20/+SYu6rwS1WmTHcxX88g+j430s=;
- h=Reply-To:From:To:Subject:Date:From;
- b=cRUJ5CDBOhImdYRhnxE30fS5b0LJXxu+B9OkS6FZkFydCQ1Qb1HA64mivJT5s+IQ3
- yqJGkOpSz+4+ccvOVFbO7U5AjY0QyJRecW8r38P76Wzo20xmJvtKl+OQUr4keqilWn
- MXhuuCN1EnD3UV2e0milZavsgfYlbAbc6VuEY28i4Wz6KOprMeYBkYUtT+d/8V2+xB
- 7m9b375tlT3VquAAvRBVFXNEPkRfMWsHstuqvlKLVW5rn9+WdlFGsju5LDTo/03Pb6
- suRnYBlqAq68Lor9CPzsGAxITGPuhj58NnTSMAQ3Gs1KZLLNBtoDE/64T+K7hM6K7m
- jac7KhKUGznCw==
-From: amjad.ali@box.indicandustries.com
-To: linux-rockchip@lists.infradead.org
-Subject: Hello Sir, I seek your urgent consideration.
-Date: 24 May 2022 11:25:25 +0200
-Message-ID: <20220524112525.14A5B0895CD6F194@box.indicandustries.com>
+ id 1ntT5N-007rhR-GL
+ for linux-rockchip@lists.infradead.org; Tue, 24 May 2022 11:52:26 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: benjamin.gaignard)
+ with ESMTPSA id 77A331F43D78
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1653393142;
+ bh=ALAqMrfW8Y9IKBszQmPYt8RTPIp0NQCV0UbgRyOpuc8=;
+ h=From:To:Cc:Subject:Date:From;
+ b=Om7aAl9CKiGbjRYF0vV47sdFVmoVIiOOnYKWD51j3BX5Qu3kJo7s/lVW6dP9PKjyH
+ 0Ht6OZx34gUywRVmJyhQHZEDF+3tTT0syN+Q8KF9TS8XwTQYSbJHjpIZGoKRDzUUkE
+ Q3WHA3UkZsmYSP0rDUFRExKUbERFxXE8PI+CE9CpzJhe3zQxvj5TsPR1Oci/mksQU5
+ 0Ppgf5/sO0uRM7ZrZMdNYy9lM4rYJ4+IKojoZMQ6vc+4HSZxIeIkWEbiagiR5mXj/K
+ F4nnJc9osgWPUOPjUuScs4TJMjPO3DV5tvKhppwhu4R9XgWkZE67rsaZ+BZ42JV7BJ
+ mDxFgBJZRFBxA==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, mchehab@kernel.org,
+ gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH] media: Hantro: Correct G2 init qp field
+Date: Tue, 24 May 2022 13:52:12 +0200
+Message-Id: <20220524115212.2284908-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220524_031223_471524_ECFA6878 
-X-CRM114-Status: UNSURE (   1.52  )
+X-CRM114-CacheID: sfid-20220524_045225_716768_FF1843B8 
+X-CRM114-Status: UNSURE (   9.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -63,22 +65,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: amjalia90@gmail.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8sCgpHcmVldGluZ3M/IEkgYW0gQW1qYWQuIEkgd29yayB3aXRoIGEgbGVhZGluZyBCaW8g
-RmlybS4gIER1ZSB0byAKdGhlIHNldGJhY2tzIG9mIHRoZSBwYW5kZW1pYywgbXkgY29tcGFueSBo
-YXMgb3BlbmVkIGEgYmlkIGluIApzZWFyY2ggb2YgbmV3IHN1cHBsaWVycyBmb3IgYmFzaWMgcmF3
-IG1hdGVyaWFscyBuZWVkZWQgaW4gCnByb2R1Y3Rpb24uCgpJIGFtIHNlZWtpbmcgYSByZXByZXNl
-bnRhdGl2ZcKgYXMgSSBhbSBhIHN0YWZmLCBJIGNhbiBub3QgYmUgCmludm9sdmVkIGRpcmVjdGx5
-LiBJdCBtYXkgbm90IGJlIHlvdXIgYXJlYSBvZiB3b3JrIGJ1dCB0aGUgCnByb2ZpdHMgYXJlIGdy
-ZWF0IGFuZCBJIHdpbGwgZ3VpZGUgeW91IHRocm91Z2guIEkgaGF2ZSBhbHJlYWR5IApzb3VyY2Vk
-IGEgbG9jYWwgc3VwcGxpZXIgZm9yIHRoaXMuIEkgb25seSBuZWVkIGEgcmVsaWFibGUgCnJlcHJl
-c2VudGF0aXZlLgoKUGxlYXNlIGdldCBiYWNrIHRvIG1lIHNvIEkgY2FuIGV4cGxhaW4gdGhpcyBp
-biBmdWxsLgoKQW1qYWQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+Documentation said that g2 init_qp field use bits 24 to 30 of
+the 8th register.
+Change the field mask to be able to set 7 bits and not only 6 of them.
+
+Conformance test INITQP_B_Main10_Sony_1 decoding is OK with this
+patch.
+
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+With this patch and the patches needed for 10-bit support
+Fluster HEVC score is 138/147
+
+ drivers/staging/media/hantro/hantro_g2_regs.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/media/hantro/hantro_g2_regs.h b/drivers/staging/media/hantro/hantro_g2_regs.h
+index 877d663a8181..82606783591a 100644
+--- a/drivers/staging/media/hantro/hantro_g2_regs.h
++++ b/drivers/staging/media/hantro/hantro_g2_regs.h
+@@ -107,7 +107,7 @@
+ 
+ #define g2_start_code_e		G2_DEC_REG(10, 31, 0x1)
+ #define g2_init_qp_old		G2_DEC_REG(10, 25, 0x3f)
+-#define g2_init_qp		G2_DEC_REG(10, 24, 0x3f)
++#define g2_init_qp		G2_DEC_REG(10, 24, 0x7f)
+ #define g2_num_tile_cols_old	G2_DEC_REG(10, 20, 0x1f)
+ #define g2_num_tile_cols	G2_DEC_REG(10, 19, 0x1f)
+ #define g2_num_tile_rows_old	G2_DEC_REG(10, 15, 0x1f)
+-- 
+2.32.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
