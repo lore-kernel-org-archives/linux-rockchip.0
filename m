@@ -4,77 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A6F4C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 May 2022 13:32:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18A76C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 May 2022 17:18:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rTMdGfJFEzTN7cvubRsPdfGZRjU3Fx8mDEZKAIorojU=; b=C+Q4AKMQg6cTB5
-	ZjHHXGVbDWCalUVBW2Q+/Zu17phMKtaNnuoWPDk3tnF9dGerLBAL1hvKNDhds2AKLBe2I+04pjtjb
-	rf7TbZuFblUaPpw+ROV3YEVeD1ejVJag8KtI/wTkDV9AMv47J1RGyQyZeabSxVXLKcxLRVvcksOwI
-	tGNdc0CDsLG/XB6KZLK7s/8F0Vw+JiPda+CF+m4Mp8llUhfI6vYTe3qXNUaOw60KsdZjcmZjwFwXf
-	/HLT8OiTGSun65rFhhnya2VPCUPplfsRpHuXh7mC2nUvrGSAzRu1j4qaMDGVpGALdnH2r0aLTKO8H
-	Hfag1q/k6l/Q166z4AKQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=eeLi6gJlC0/ds6sEVhGr4hDFvsA4spoZ65vf3VoBG/o=; b=UgnkJhfjxiZnqJ
+	+Z/HksYksZfY74tD4AZo8pV+nd/Us1cP0OGfCB0KpLlpyJvHPBXllHL0FmoCzAF+LnpOQx+iFUtBN
+	iZWe65y60a+n0yIbfFW4wNdbd3U165w2Tj/2m6BMSJ+bQGOzYZgbXNjb4G6X+y19q8pF3t9i/l4eG
+	3d0pWdMqhpcA9ZWvLnd+cU1Dy9JwJb0ldK7C2cIofdLbc6UlEvsbTAa89oNhT8q/bVLsjRe9GTTPB
+	EKJOO7+8Icmhp2G7nVms2yNVNXeBBl0frZwIJ7cgSPPrQj2mONcBKRgnG4kzn31+qkY/q/0gbHhne
+	1LQcEEv4bZwzcKa3O65g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntr7f-00BF9e-QE; Wed, 25 May 2022 13:32:23 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1ntueQ-00Bxd2-LO; Wed, 25 May 2022 17:18:26 +0000
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntr7c-00BF7S-Rk
-	for linux-rockchip@lists.infradead.org; Wed, 25 May 2022 13:32:22 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id t13so10976099wrg.9
-        for <linux-rockchip@lists.infradead.org>; Wed, 25 May 2022 06:32:18 -0700 (PDT)
+	id 1ntueC-00BxYx-KC
+	for linux-rockchip@lists.infradead.org; Wed, 25 May 2022 17:18:17 +0000
+Received: by mail-wr1-x42a.google.com with SMTP id i9so859876wrc.13
+        for <linux-rockchip@lists.infradead.org>; Wed, 25 May 2022 10:18:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :content-transfer-encoding;
-        bh=tZ/KjxVIw1RFo6KvSsSb8PDrS4WyAUmTtmzWDERXJm4=;
-        b=MTHVErAuJCer5WhuAvyzs8ldPymHKIhV+EtGJCZXFIHwURj81LwXR0rzEZ/Jklct3+
-         8bITgDcG6/x3DjQBwOMpqsWXQG531Lrr+pkDD+leKlTk313GJkR36qC+rwzbu+4+/mzN
-         k08BZDGbIo+dM1wSo/KkemQLfbhJLnffUYVMJKN+MWKEXAtIlr7zQEFV+cz1JR42fEjk
-         GE3u0nxsB3to1pkORRLShT9kmyvO+YIqk52EfaWPquOYWUDZhS+pHsv9Dh68aZlBkwuI
-         wq1om24ToZF1CnByN+oIWC4DRyuLYgKoUUmZUXZWjrZISJR2xnYuvIEwKhqpMFNJdGbS
-         uN+A==
+        d=ffwll.ch; s=google;
+        h=date:from:to:cc:subject:message-id:mail-followup-to:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=mSMNPQ5KK6YsA0z6pBHKv8hLf5a2qU6nE4AoCo7IdWI=;
+        b=fJGduJon9UX+/MDCq64jwD4jxYhIn31QF1pGdMs8PSFiMlgFlXxgLIVxETbNxWDLMt
+         6g3wXrECUTQj41d4M980QT0MRiCzku+tMGl/7TUqgr93na92xqke3ns4n4tuPn78nL1e
+         IwcN03P9L0IY2sw1d5Cd916Iq4EmZV44gdgbM=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:content-transfer-encoding;
-        bh=tZ/KjxVIw1RFo6KvSsSb8PDrS4WyAUmTtmzWDERXJm4=;
-        b=ois8xjbWUYENwwMUL8iAVrI5KVzENbsRYVCCxF5XmsPgS9N6tNE9Fjm3lx4FPGfVlU
-         uxSMMLfv/ME3zzRNw48U0m29vCB2xffYt6diXCnTpdU8NDYq1c81MyYTHVrJUwbKPPGA
-         IDNz1r905bJa9Av/VtSuaZby3BaCa25QdPo+wqq+8QctMhiIZlYBt+QUBNCYHZSmqhSi
-         zFoVcClz8ZJ56o/3f3G4BmjKLivjIFCA7H9rADgw+CkPdnIy6Kd61fIZuzGcDIyOicip
-         kKvdVkOlltiLo/3ld1Q3irS01QSttx6DgkfLTBbiWsWuVljqnbUO7sAlDmwVsbbt/g9W
-         FK2A==
-X-Gm-Message-State: AOAM531JhNG0kZ2ZuBtHneYKpTy2NR27J0piN3aYPAHoh+bN5S3KD1TT
-	HUlOu0bAjARUtb64aVm6R92uTg==
-X-Google-Smtp-Source: ABdhPJyxIkAk0Rb0j75gU/uVMimMpKzx0u2IremfkBYnVxbTmWcNRwUcgrY2qKJMzICGrnj1zzMwAw==
-X-Received: by 2002:a5d:4302:0:b0:20e:66db:b8f5 with SMTP id h2-20020a5d4302000000b0020e66dbb8f5mr26080282wrq.320.1653485537548;
-        Wed, 25 May 2022 06:32:17 -0700 (PDT)
-Received: from google.com (cpc155339-bagu17-2-0-cust87.1-3.cable.virginm.net. [86.27.177.88])
-        by smtp.gmail.com with ESMTPSA id d7-20020a05600c34c700b003958af7d0c8sm2374233wmq.45.2022.05.25.06.32.16
+        h=x-gm-message-state:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to;
+        bh=mSMNPQ5KK6YsA0z6pBHKv8hLf5a2qU6nE4AoCo7IdWI=;
+        b=nrqMwDozeDiIm0NWLdILhm7mx/2zyI8o4Lzw9d5MquB6W0a2vKHQ2ZECEOdIHRCS1J
+         GbI69qNEWafZ+56ykWCh76bRfqrW6t++7H9RfcKqxgm9Xwph38RvVw8nGjCHupHw+j6Y
+         nULncLShV5LOEeVw+OnBQO2+6wvqwFrcweV2qru1p7+5mKphHwBHauH8tS1j0lO0ubyf
+         4Cmf7OyklTXb6du7wtvxREx+AnYIE1bstX4alwHSwGDRa5CMZ9JC3H8L8ADrrF9Raqba
+         DjbYQnPq+CulKjLqFgCkdF/i6eAQB0Hc1CZ9pryIh6F+k1mwG/ffRdvw6oIIRxk2lu3P
+         Rt1w==
+X-Gm-Message-State: AOAM531P2LBIvbplPNzKwK+UCXaJb9HcVF9YpnODYFSiYqVF5jD9ataG
+	QRxxrMyWvTQw7nWwjxyXBqaFvg==
+X-Google-Smtp-Source: ABdhPJzsdHYg5Dpp88obJIiM7Dhw/HPhB8owGCNkfmE6OH+ietsqIRSGDzN+swc+xg/bnjU0j19AwA==
+X-Received: by 2002:a05:6000:2cc:b0:20d:e6c:e4f8 with SMTP id o12-20020a05600002cc00b0020d0e6ce4f8mr27246085wry.374.1653499090255;
+        Wed, 25 May 2022 10:18:10 -0700 (PDT)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+        by smtp.gmail.com with ESMTPSA id g5-20020a5d64e5000000b0020d0c9c95d3sm2613468wri.77.2022.05.25.10.18.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 May 2022 06:32:17 -0700 (PDT)
-Date: Wed, 25 May 2022 14:32:14 +0100
-From: Lee Jones <lee.jones@linaro.org>
-To: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org
-Cc: wxt@rock-chips.com, kever.yang@rock-chips.com, zhangqing@rock-chips.com,
-	derrick.huang@rock-chips.com, chenjh@rock-chips.com,
-	hisping.lin@rock-chips.com, typ@rock-chips.com, cwz@rock-chips.com,
-	chenfen@rock-chips.com, jagan@amarulasolutions.com,
-	sjg@chromium.org, cym@rock-chips.com, pgwipeout@gmail.com,
-	adelva@google.com, rammuthiah@google.com
-Subject: [Rock Pi 4+] Mainline LPDDR4 RAM initialisation is not sufficient to
- boot successfully
-Message-ID: <Yo4v3jUeHXTovjOH@google.com>
+        Wed, 25 May 2022 10:18:09 -0700 (PDT)
+Date: Wed, 25 May 2022 19:18:07 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: Samuel Holland <samuel@sholland.org>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	Alistair Francis <alistair@alistair23.me>,
+	=?utf-8?Q?Ond=C5=99ej?= Jirman <x@xff.cz>,
+	Andreas Kemnade <andreas@kemnade.info>,
+	Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+	Geert Uytterhoeven <geert@linux-m68k.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Liang Chen <cl@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Sam Ravnborg <sam@ravnborg.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH 00/16] drm/rockchip: Rockchip EBC ("E-Book
+ Controller") display driver
+Message-ID: <Yo5kz/9cSd6ewC5f@phenom.ffwll.local>
+Mail-Followup-To: Maxime Ripard <maxime@cerno.tech>,
+	Samuel Holland <samuel@sholland.org>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	Alistair Francis <alistair@alistair23.me>,
+	=?utf-8?Q?Ond=C5=99ej?= Jirman <x@xff.cz>,
+	Andreas Kemnade <andreas@kemnade.info>,
+	David Airlie <airlied@linux.ie>,
+	Geert Uytterhoeven <geert@linux-m68k.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Liang Chen <cl@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Sam Ravnborg <sam@ravnborg.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220413221916.50995-1-samuel@sholland.org>
+ <20220414085018.ayjvscgdkoen5nw5@houat>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <20220414085018.ayjvscgdkoen5nw5@houat>
+X-Operating-System: Linux phenom 5.10.0-8-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220525_063220_947047_42DE5733 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20220525_101812_702473_4AC096AC 
+X-CRM114-Status: GOOD (  87.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,160 +121,394 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-R29vZCBhZnRlcm5vb24sICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAKVGhlcmUgYXBwZWFyIHRvIGJlIGEgbnVtYmVyIG9mIGlzc3VlcyB3aXRo
-IHRoZSBSb2NrY2hpcCByazMzOTkgRERSIFJBTSAgICAgICAgICAgICAgICAgICAgICAKaW5pdGlh
-bGlzYXRpb24gc2VxdWVuY2UgaW4gTWFpbmxpbmUuICBTcGVjaWZpY2FsbHksIEknbSBzZWVpbmcg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKY29uc2lzdGVudCBmYWlsdXJlcyBvbiB0aGUg
-Um9jayBQaSA0KyBkdXJpbmcgZWFybHkgYm9vdC4gIEEgdHlwaWNhbCAgICAgICAgICAgICAgICAg
-ICAgICAgICAKZmFpbHVyZSBsb29rcyBzb21ldGhpbmcgbGlrZSB0aGlzOiAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAKICBVLUJvb3QgVFBMIDIwMjIuMDctcmMzLTAwMDA1LWcx
-YjA0YTk2MWM2IChNYXkgMjUgMjAyMiAtIDExOjA5OjE5KSAgICAgICAgICAgICAgICAgICAgICAg
-ICAKICBDaGFubmVsIDA6IExQRERSNCwgNTBNSHogICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBCVz0zMiBDb2w9MTAgQms9
-OCBDUzAgUm93PTE2LzE1IENTPTEgRGllIEJXPTE2IFNpemU9MjA0OE1CICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAKICBDaGFubmVsIDE6IGNvbCBlcnJvciAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBD
-YXAgZXJyb3IhICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAyNTZCIHN0cmlkZSAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAKICBscGRkcjRfc2V0X3JhdGU6IGNoYW5nZSBmcmVxIHRvIDQwMDAwMDAwMCBt
-aHogMCwgMSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBscGRkcjRf
-c2V0X3JhdGU6IGNoYW5nZSBmcmVxIHRvIDgwMDAwMDAwMCBtaHogMSwgMCAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAKICBUcnlpbmcgdG8gYm9vdCBmcm9tIEJPT1RST00g
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAKICBSZXR1cm5pbmcgdG8gYm9vdCBST00uLi4gICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAKRXZlbiB3aGVuIHRoZSBzeXN0ZW0gYm9vdHMgdG8gYSB0ZXJt
-aW5hbCwgd2hpY2ggaGFwcGVucyB2ZXJ5ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
-aW5mcmVxdWVudGx5LCB0aGUgTFBERFI0IFJBTSBjaGlwIGF0IENoYW5uZWwgMSBjYW4gaGF2ZSBj
-b25mbGljdGluZyAgICAgICAgICAgICAgICAgICAgICAgICAKZGlzY292ZXJ5IGluZm9ybWF0aW9u
-IHByaW50ZWQgZHVyaW5nIFRQTC4gIFRoZSBmb2xsb3dpbmcgMyBsaW5lcyB3ZXJlICAgICAgICAg
-ICAgICAgICAgICAgICAKcHJpbnRlZCBkdXJpbmcgc3VjY2Vzc2l2ZSByZWJvb3RzIHVzaW5nIHRo
-ZSBzYW1lIFNEIGNhcmQgd2l0aCBubyAgICAgICAgICAgICAgICAgICAgICAgICAgICAKY2hhbmdl
-czogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAKICAjIEJvb3QgMTogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBCVz0zMiBDb2w9
-OSBCaz00IENTMCBSb3c9MTYvMTUgQ1M9MSBEaWUgQlc9MTYgU2l6ZT0zODRNQiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAKICAjIEJvb3QgMjogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBCVz0zMiBDb2w9MTAgQms9
-NCBDUzAgUm93PTE2LzE1IENTPTEgRGllIEJXPTE2IFNpemU9NzY4TUIgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAj
-IEJvb3QgMzogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBCVz0zMiBDb2w9MTAgQms9NCBDUzAg
-Um93PTE1IENTPTEgRGllIEJXPTE2IFNpemU9NTEyTUIgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKVGhlIHN0b3J5
-IGNoYW5nZXMgd2hlbiBJIGJ1aWxkIHRoZSBpZGJsb2FkZXIuaW1nIGltYWdlIHdpdGggUm9ja2No
-aXAncyAgICAgICAgICAgICAgICAgICAgICAKVEJMICg/KSBiaW5hcnkgYmxvYiBbMF0uICBXaXRo
-IHRoYXQgYnVpbHQgaW4sIHByZXN1bWFibHkgaW4gcGxhY2Ugb2YgICAgICAgICAgICAgICAgICAg
-ICAgICAKdGhlIHVwc3RyZWFtIFRCTCwgYm90aCBSQU0gY2hpcHMgYXJlIHN1Y2Nlc3NmdWxseSBl
-bnVtZXJhdGVkIGFuZCBib290ICAgICAgICAgICAgICAgICAgICAgICAKc3VjY2VlZHMgd2l0aCAx
-MDAlIHN1Y2Nlc3MgcmF0ZTogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
-ICB0b29scy9ta2ltYWdlIC1uIHJrMzM5OSAtVCBya3NkIC1kIFwgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIHJrMzM5OV9kZHJfOTMzTUh6
-X3YxLjI1LmJpbjpzcGwvdS1ib290LXNwbC5iaW4gaWRibG9hZGVyLmltZyAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQW5vdGhl
-ciB0aGluZyB0aGF0IGlzIHZlcnkgZGlmZmVyZW50IGJldHdlZW4gdGhlIDIgaXMgdGhlIGluaXRp
-YWwgICAgICAgICAgICAgICAgICAgICAgICAgICAKZnJlcXVlbmN5IHRoZSBMUEREUjQgY2hpcHMg
-YXJlIGNsb2NrZWQgYXQuICBVc2luZyB0aGUgdXBzdHJlYW0gVEJMICAgICAgICAgICAgICAgICAg
-ICAgICAgICAKdmVyc2lvbiwgdGhlIGRlZmF1bHQgaXMgNTBNaHosIHdoaWNoIHNlZW1zIHZlcnkg
-bG93LiAgSWYgdXNpbmcgdGhlICAgICAgICAgICAgICAgICAgICAgICAgICAKUm9ja2NoaXAgc3Vw
-cGxpZWQgYmluYXJ5IGJsb2IgZmlsZSwgdGhpcyBpcyBpbmNyZWFzZWQgdG8gYSByZXNwZWN0YWJs
-ZSAgICAgICAgICAgICAgICAgICAgICAKNDE2TUh6OiAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAjIE1haW5saW5lICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAKICBDaGFubmVsIDA6IExQRERSNCwgNTBNSHogICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAjIFJvY2tjaGlwIFRCTCBibG9iICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAKICBDaGFubmVsIDA6IExQRERSNCw0MTZNSHogICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAKT25lIHRoaW5nIEkgZGlkIHRyeSB3YXMgdG8gbG9h
-ZCBpbiB0aGUgNDAwTWh6IGNvbmZpZ3VyYXRpb24gc2V0dGluZ3MgICAgICAgICAgICAgICAgICAg
-ICAgICAKZnJvbSBkcml2ZXJzL3JhbS9yb2NrY2hpcC9zZHJhbS1yazMzOTktbHBkZHI0LTQwMC5p
-bmMgYXMgdGhlIGRlZmF1bHQgICAgICAgICAgICAgICAgICAgICAgICAKaW5pdGlhbCB2YWx1ZXMs
-IGluc3RlYWQgb2YgdGhlIDUwTUh6IGRlZmF1bHQgdGFrZW4gZnJvbSAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAKYXJjaC9hcm0vZHRzL3JrMzM5OS1zZHJhbS1scGRkcjQtMTAw
-LmR0c2ksIGJ1dCB0aGlzIGZhaWxlZCBpbiBhIG51bWJlciAgICAgICAgICAgICAgICAgICAgICAK
-b2Ygd2F5czogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAKICBTZXR0aW5nIGNsb2NrOiBGcmVxOiA0MDBNSHogKDQwMDAwMDAwMCkg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBDYWxs
-aW5nIFNEUkFNIGluaXQ6IDIgQ2hhbm5lbHMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICBTdGFydGluZyBTRFJBTSBpbml0aWFsaXph
-dGlvbi4uLiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAKICAgIG1yNTowICBtcjEyOjAgIG1yMTQ6MCAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIFRyYWluaW5n
-IGZhaWxlZCBmb3IgcmFuayAyLCBjaCAwIChyZXQ6IC0yMikgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAKICAgIG1yNTowICBtcjEyOjAgIG1yMTQ6MCAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAKICAgIFRyYWluaW5nIGZhaWxlZCBmb3IgcmFuayAxLCBjaCAwIChyZXQ6IC0yMikgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIG1yNTowICBtcjEyOjAg
-IG1yMTQ6MCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAKICAgIFRyYWluaW5nIGZhaWxlZCBmb3IgcmFuayAyLCBjaCAxIChy
-ZXQ6IC0yMikgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAg
-IG1yNTowICBtcjEyOjAgIG1yMTQ6MCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIFRyYWluaW5nIGZhaWxlZCBmb3Ig
-cmFuayAxLCBjaCAxIChyZXQ6IC0yMikgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAKICAgIFJhbmsgZm9yIENoYW5uZWwgMSBpcyAweDAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIFJhbmsg
-Zm9yIENoYW5uZWwgMCBpcyAweDAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgIFJhbmsgZm9yIENoYW5uZWwgMSBpcyAweDAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAKICBzZHJhbV9pbml0OiBMUEREUjQgLSA0MDBNSHogZmFpbGVkISAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICByazMzOTlfZG1jX2lu
-aXQgRFJBTSBpbml0IGZhaWxlZCAtMjIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAK
-U28gbXkgcXVlc3Rpb24gaXM7IGRvZXMgUm9ja2NoaXAsIG9yIGFueW9uZSBlbHNlIGZvciB0aGF0
-IG1hdHRlciwgaGF2ZSAgICAgICAgICAgICAgICAgICAgICAKYW55IHBsYW5zIG9uIHVwZGF0aW5n
-IE1haW5saW5lIFUtQm9vdCB3aXRoIHRoZSB1cGdyYWRlZC93b3JraW5nIExQRERSNCAgICAgICAg
-ICAgICAgICAgICAgICAKaW5pdGlhbGlzYXRpb24gc2VxdWVuY2U/ICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKQXMgZXZlciwgYW55IGluZm9ybWF0aW9uIC8g
-aGVscCB3b3VsZCBiZSBncmF0ZWZ1bGx5IHJlY2VpdmVkLiAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKTkI6IElmIEkgaGF2
-ZSBtaXNzZWQgYW55IGNyaXRpY2FsIHBlb3BsZSBvdXQgZnJvbSB0aGlzIGRpc2N1c3Npb24sICAg
-ICAgICAgICAgICAgICAgICAgICAgICAKcGxlYXNlIGZlZWwgZnJlZSB0byBsb29wIGFzIG1hbnkg
-b2YgdGhlbSBpbiBhcyB5b3Ugc2VlIGZpdC4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKS2luZCByZWdhcmRzLCAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAKTGVlICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKWzBdIGh0dHBzOi8vZ2l0aHViLmNvbS9y
-b2NrY2hpcC1saW51eC9ya2Jpbi9ibG9iL21hc3Rlci9iaW4vcmszMy9yazMzOTlfZGRyXzkzM01I
-el92MS4yNS5iaW4KCi0tIApMZWUgSm9uZXMgW+adjueQvOaWr10KUHJpbmNpcGFsIFRlY2huaWNh
-bCBMZWFkIC0gRGV2ZWxvcGVyIFNlcnZpY2VzCkxpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNv
-ZnR3YXJlIGZvciBBcm0gU29DcwpGb2xsb3cgTGluYXJvOiBGYWNlYm9vayB8IFR3aXR0ZXIgfCBC
-bG9nCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+Some comments on this from my side too, not sure how good they are when it
+comes more to the hw side of things :-)
+
+On Thu, Apr 14, 2022 at 10:50:18AM +0200, Maxime Ripard wrote:
+> On Wed, Apr 13, 2022 at 05:19:00PM -0500, Samuel Holland wrote:
+> > This series adds a DRM driver for the electrophoretic display controller
+> > found in a few different Rockchip SoCs, specifically the RK3566/RK3568
+> > variant[0] used by the PineNote tablet[1].
+> > 
+> > This is my first real involvement with the DRM subsystem, so please let
+> > me know where I am misunderstanding things.
+> > 
+> > This is now the second SoC-integrated EPD controller with a DRM driver
+> > submission -- the first one being the i.MX6 EPDC[2]. I want to thank
+> > Andreas for sending that series, and for his advice while writing this
+> > driver.
+> > 
+> > One goal I have with sending this series is to discuss how to support
+> > EPDs more generally within the DRM subsystem, so the interfaces with
+> > panels and PMICs and waveform LUTs can be controller-independent.
+> > 
+> > My understanding is that the i.MX6 EPDC series is at least partly based
+> > on the downstream vendor driver. This driver is a clean-sheet design for
+> > hardware with different (read: fewer) capabilities, so we took some
+> > different design paths, but we ran into many of the same sharp edges.
+> > 
+> > Here are some of the areas I would like input on:
+> > 
+> > Panel Lifecycle
+> > ===============
+> > Panels use prepare/unprepare callbacks for their power supply. EPDs
+> > should only be powered up when the display contents are changed. Should
+> > the controller call both drm_panel_(un)prepare during each atomic update
+> > when the framebuffer is dirty?
+> > 
+> > Similarly, panel enable/disable callbacks are tied to backlight state.
+> > For an EPD, it makes sense to have the backlight enabled while the panel
+> > is powered down (because the contents are static). Is it acceptable to
+> > call drm_panel_{en,dis}able while the panel is not prepared?
+> > 
+> > With panel_bridge, the "normal" callback ordering is enforced, and tied
+> > to the atomic state, so neither of these is possible.
+> > 
+> > As a result, neither the backlight nor the voltage regulators are tied
+> > to the panel. The panel's regulators are consumed by the EBC itself.
+> 
+> At least to manage the power state, that looks fairly similar to what we
+> have already to enter / exit from panel self refresh, so maybe we can
+> leverage that infrastructure?
+> 
+> And thus we would have something like enabling the backlight when we
+> prepare the panel, but only enable / disable the regulator when we exit
+> / enter PSR mode?
+> 
+> Would that make sense?
+> 
+> > Panel Timing Parameters
+> > =======================
+> > EPDs have more timing parameters than LCDs, and there are several
+> > different ways of labeling these parameters. See for example the timing
+> > diagrams on pp. 2237-2239 of the RK3568 TRM[0], the descriptions in the
+> > ED103TC2 panel datasheet[3], and the submitted EPDC bindings[2].
+> > 
+> > Both the EPDC and EBC vendor drivers put all of the timing parameters in
+> > the controller's OF node. There is no panel device/node.
+> > 
+> > I was able to squeeze everything needed for my specific case into a
+> > struct drm_display_mode (see patches 5 and 14), but I don't know if this
+> > is an acceptable use of those fields, or if will work with other
+> > controllers. Is adding more fields to drm_display_mode an option?
+> > 
+> > See also the discussion of "dumb" LCD TCONs below.
+> 
+> Reading that datasheet and patch series, it's not clear to me whether
+> it's just a set of generic parameters for E-ink display, or if it's some
+> hardware specific representation of those timings.
+> 
+> Generally speaking, drm_display_mode is an approximation of what the
+> timings are. The exact clock rate for example will be widely different
+> between RGB, HDMI or MIPI-DSI (with or without burst). I think that as
+> long as you can derive a drm_display_mode from those parameters, and can
+> infer those parameters from a drm_display_mode, you can definitely reuse
+> it.
+> 
+> > Panel Connector Type / Media Bus Format
+> > =======================================
+> > The EBC supports either an 8-bit or 16-bit wide data bus, where each
+> > pair of data lines represents the source driver polarity (positive,
+> > negative, or neutral) for a pixel.
+> > 
+> > The only effect of the data bus width is the number of pixels that are
+> > transferred per clock cycle. It has no impact on the number of possible
+> > grayscale levels.
+> > 
+> > How does that translate to DRM_MODE_CONNECTOR_* or MEDIA_BUS_FMT_*?
+> 
+> We'll probably want a separate connector mode, but you could add a
+> parameter on the OF-graph endpoint to set the media bus format.
+> 
+> > Panel Reflection
+> > ================
+> > The ED103TC2 panel scans from right to left. Currently, there is no API
+> > or OF property to represent this. I can add something similar to
+> > drm_panel_orientation.
+> 
+> Yeah, leveraging DRM_MODE_REFLECT_X into something similar to
+> drm_panel_orientation makes sense
+
+Yeah
+
+> > Should this be exposed to userspace? It is acceptable for the kernel
+> > driver to flip the image when blitting from the framebuffer?
+> 
+> I'm not sure about whether or not we should expose it to userspace. I'd
+> say yes, but I'll leave it to others :)
+
+Same. I'm very grumpily accepting that we need sw conversion tools from
+xrgb8888 to more unusual framebuffer formats, but everything else should
+be userspace problems imo.
+
+It's a bit more awkard than a wrongly rotate screen if it's mirrored, but
+I guess that's it.
+
+What is surprising is that your hw really doesn't have any hw support to
+mirror things, since that's generally really easy to implement.
+
+For the blitter I guess that would be a v4l mem2mem device?
+
+> > CRTC "active" and "enabled" states
+> > ==================================
+> > What do these states mean in the context of an EPD? Currently, the
+> > driver ignores "active" and clears the screen to solid white when the
+> > CRTC is disabled.
+> > 
+> > The vendor drivers can switch to a user-provided image when the CRTC is
+> > disabled. Is this something that can/should be supported upstream? If
+> > so, how? Would userspace provide the image to the kernel, or just tell
+> > the kernel not to clear the screen?
+> 
+> I think the semantics are that whenever the CRTC is disabled, the panel
+> is expected to be blank.
+> 
+> Leaving an image on after it's been disabled would have a bunch of
+> side-effects we probably don't want. For example, let's assume we have
+> that support, an application sets a "disabled image" and quits. Should
+> we leave the content on? If so, for how long exactly?
+> 
+> Either way, this is likely to be doable with PSR as well, so I think
+> it's a bit out of scope of this series for now.
+
+active is hw state
+
+enabled is a pure sw state on top, to make sure that all the hw resources
+you need are still reserved. E.g. when you have 2 crtc and you enable one,
+but keep it off (i.e. active = false), then the clocks, memory bw and all
+that are still reserved. This is to be able to guarantee that dpms off ->
+on transitions always work.
+
+Iow, in atomic_check you need to look at enabled, in atomic commit you
+need to look at active.
+
+With a single crtc there should never be any issue here really, since
+there's no other crtc where you can steal clocks or similar things from.
+
+Note that kerneldoc should explain this all, pls double check and if it's
+not clear submit a patch please.
+
+> > VBLANK Events and Asynchronous Commits
+> > ======================================
+> > When should the VBLANK event complete? When the pixels have been blitted
+> > to the kernel's shadow buffer? When the first frame of the waveform is
+> > sent to the panel? When the last frame is sent to the panel?
+> > 
+> > Currently, the driver is taking the first option, letting
+> > drm_atomic_helper_fake_vblank() send the VBLANK event without waiting on
+> > the refresh thread. This is the only way I was able to get good
+> > performance with existing userspace.
+> 
+> I've been having the same kind of discussions in private lately, so I'm
+> interested by the answer as well :)
+> 
+> It would be worth looking into the SPI/I2C panels for this, since it's
+> basically the same case.
+
+So it's maybe a bit misnamed and maybe kerneldocs aren't super clear (pls
+help improve them), but there's two modes:
+
+- drivers which have vblank, which might be somewhat variable (VRR) or
+  become simulated (self-refresh panels), but otherwise is a more-or-less
+  regular clock. For this case the atomic commit event must match the
+  vblank events exactly (frame count and timestamp)
+
+- drivers which don't have vblank at all, mostly these are i2c/spi panels
+  or virtual hw and stuff like that. In this case the event simply happens
+  when the driver is done with refresh/upload, and the frame count should
+  be zero (since it's meaningless).
+
+Unfortuantely the helper to dtrt has fake_vblank in it's name, maybe
+should be renamed to no_vblank or so (the various flags that control it
+are a bit better named).
+
+Again the docs should explain it all, but maybe we should clarify them or
+perhaps rename that helper to be more meaningful.
+
+> > Waveform Loading
+> > ================
+> > Waveform files are calibrated for each batch of panels. So while a
+> > single waveform file may be "good enough" for all panels of a certain
+> > model, the correctly-calibrated file will have better image quality.
+> > 
+> > I don't know of a good way to choose the calibrated file. Even the
+> > board's compatible string may not be specific enough, if the board is
+> > manufactured with multiple batches of panels.
+> > 
+> > Maybe the filename should just be the panel compatible, and the user is
+> > responsible for putting the right file there? In that case, how should I
+> > get the compatible string from the panel_bridge? Traverse the OF graph
+> > myself?
+> 
+> It's not really clear to me what panel_bridge has to do with it? I'm
+> assuming that file has to be uploaded some way or another to the
+> encoder?
+> 
+> If so, yeah, you should just follow through the OF-graph and use the
+> panel compatible. We have a similar case already with panel-mipi-dbi
+> (even though it's standalone)
+
+Yeah if there's really on difference then I guess the best we can do is
+"make sure you put the right file into the firmware directory". Sucks but
+anything else isn't really better.
+
+> > There is also the issue that different controllers need the waveform
+> > data in different formats. ".wbf" appears to be the format provided by
+> > PVI/eInk, the panel manufacturer. The Rockchip EBC hardware expects a
+> > single waveform in a flat array, so the driver has to extract/decompress
+> > that from the .wbf file (this is done in patch 1). On the other hand,
+> > the i.MX EPDC expects a ".wrf" file containing multiple waveforms[8].
+> > 
+> > I propose that the waveform file on disk should always be what was
+> > shipped with the panel -- the .wbf file -- and any extracting or
+> > reformatting is done in the kernel.
+> 
+> Any kind of parsing in the kernel from a file you have no control over
+> always irks me :)
+> 
+> Why and how are those files different in the first place?
+> 
+> > Waveform Selection From Userspace
+> > =================================
+> > EPDs use different waveforms for different purposes: high-quality
+> > grayscale vs. monochrome text vs. dithered monochrome video. How can
+> > userspace select which waveform to use? Should this be a plane property?
+> >
+> > It is also likely that userspace will want to use different waveforms at
+> > the same time for different parts of the screen, for example a fast
+> > monochrome waveform for the drawing area of a note-taking app, but a
+> > grayscale waveform for surrounding UI and window manager.
+> > 
+> > I believe the i.MX6 EPDC supports multiple planes, each with their own
+> > waveform choice. That seems like a good abstraction,
+> 
+> I agree
+> 
+> > but the EBC only supports one plane in hardware. So using this
+> > abstraction with the EBC would require blending pixels and doing
+> > waveform lookups in software.
+> 
+> Not really? You'd have a single plane available, with only one waveform
+> pick for that plane?
+> 
+> > Blitting/Blending in Software
+> > =============================
+> > There are multiple layers to this topic (pun slightly intended):
+> >  1) Today's userspace does not expect a grayscale framebuffer.
+> >     Currently, the driver advertises XRGB8888 and converts to Y4
+> >     in software. This seems to match other drivers (e.g. repaper).
+> >
+> >  2) Ignoring what userspace "wants", the closest existing format is
+> >     DRM_FORMAT_R8. Geert sent a series[4] adding DRM_FORMAT_R1 through
+> >     DRM_FORMAT_R4 (patch 9), which I believe are the "correct" formats
+> >     to use.
+> > 
+> >  3) The RK356x SoCs have an "RGA" hardware block that can do the
+> >     RGB-to-grayscale conversion, and also RGB-to-dithered-monochrome
+> >     which is needed for animation/video. Currently this is exposed with
+> >     a V4L2 platform driver. Can this be inserted into the pipeline in a
+> >     way that is transparent to userspace? Or must some userspace library
+> >     be responsible for setting up the RGA => EBC pipeline?
+> 
+> I'm very interested in this answer as well :)
+> 
+> I think the current consensus is that it's up to userspace to set this
+> up though.
+
+Yeah I think v4l mem2mem device is the answer for these, and then
+userspace gets to set it all up.
+
+> >  4) Supporting multiple planes (for multiple concurrent waveforms)
+> >     implies blending in software. Is that acceptable?
+> > 
+> >  5) Thoughts on SIMD-optimized blitting and waveform lookup functions?
+> > 
+> >  5) Currently the driver uses kmalloc() and dma_sync_single_for_device()
+> >     for its buffers, because it needs both fast reads and fast writes to
+> >     several of them. Maybe cma_alloc() or dma_alloc_from_contiguous()
+> >     would be more appropriate, but I don't see any drivers using those
+> >     directly.
+> 
+> cma_alloc isn't meant to be used directly by drivers anyway, one of the
+> main reason being that CMA might not be available (or desirable) in the
+> first place on the platform the code will run.
+> 
+> The most common option would be dma_alloc_coherent. It often means that
+> the buffer will be mapped non-cacheable, so it kills the access
+> performances. So it completely depends on your access patterns whether
+> it makes sense in your driver or not. kmalloc + dma_sync_single or
+> dma_map_single is also a valid option.
+> 
+> > EPDs connected to "dumb" LCD TCONs
+> > ==================================
+> > This topic is mostly related to my first patch. Some boards exist that
+> > hook up an EPD to a normal LCD TCON, not a dedicated EPD controller. For
+> > example, there's the reMarkable 2[5] and some PocketBook models[6][7].
+> > 
+> > I have some concerns about this:
+> >  1) If we put EPD panel timings in panel drivers (e.g. panel-simple),
+> >     can the same timings work with LCD TCONs and EPD controllers?
+> 
+> I'll think we'll need a separate panel driver for this anyway
+> 
+> >     For example: one cycle of the 16-bit data bus is "one pixel" to an
+> >     LCD controller, but is "8 pixels" to an EPD controller. So there is
+> >     a factor-of-8 difference in horizontal resolution depending on your
+> >     perspective. Should we have the "number of pixel clock cycles" or
+> >     "number of pixels" in .hdisplay/.htotal in the panel timings?
+> > 
+> >     Patch 14 adds a panel with "number of pixels" horizontal resolution,
+> >     so the correct resolution is reported to userspace, but the existing
+> >     eink_vb3300_kca_timing in panel-simple.c appears to use "number of
+> >     pixel clocks" for its horizontal resolution. This makes the panel
+> >     timing definitions incompatible across controllers.
+
+Yeah that sounds bad. And I guess this really should be "number of pixels"
+and the drivers need to be adjusted/fixed to be consistent.
+
+> > 
+> >  2) Using fbdev/fbcon with an EPD hooked up to an LCD TCON will have
+> >     unintended consequences, and possibly damage the panel. Currently,
+> >     there is no way to mark the framebuffer as expecting "source driver
+> >     polarity waveforms" and not pixel data. Is there a specific
+> >     DRM_FORMAT_* we should use for these cases to prevent accidental use
+> >     by userspace?
+> > 
+> >     Or should we disallow this entirely, and have some wrapper layer to
+> >     do the waveform lookups in kernelspace?
+> > 
+> >     I like the wrapper layer idea because it allows normal userspace and
+> >     fbcon to work. It would not be much new code, especially since this
+> >     driver already supports doing the whole pipeline in software. So
+> >     that's why I wrote a separate helper library; I hope this code can
+> >     be reused.
+> 
+> If exposing the panel as a KMS connector can damage the display, I don't
+> think we should expose it at all. Even a property or something won't
+> work, because older applications won't know about that property and will
+> try to use it anyway.
+> 
+> So whatever the solution is, it can't be "you have to know that this
+> device is special, or else...". The default, trivial, case where an
+> application just comes up and tries to display something should somewhat
+> work (even if it might be a bit absurd, like ignoring non_desktop)
+
+Yeah I think if you can wreak the panel that's no good, and should be
+hidden I guess. So I guess for these the kernel gets to apply the waveform
+stuff internally, which I really don't like but oh well. We have plenty of
+cpu slicing and dicing in other spi/i2c/usb drivers too.
+-Daniel
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
