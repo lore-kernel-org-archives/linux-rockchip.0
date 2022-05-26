@@ -4,112 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18A76C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 May 2022 17:18:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA6E8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 May 2022 20:46:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eeLi6gJlC0/ds6sEVhGr4hDFvsA4spoZ65vf3VoBG/o=; b=UgnkJhfjxiZnqJ
-	+Z/HksYksZfY74tD4AZo8pV+nd/Us1cP0OGfCB0KpLlpyJvHPBXllHL0FmoCzAF+LnpOQx+iFUtBN
-	iZWe65y60a+n0yIbfFW4wNdbd3U165w2Tj/2m6BMSJ+bQGOzYZgbXNjb4G6X+y19q8pF3t9i/l4eG
-	3d0pWdMqhpcA9ZWvLnd+cU1Dy9JwJb0ldK7C2cIofdLbc6UlEvsbTAa89oNhT8q/bVLsjRe9GTTPB
-	EKJOO7+8Icmhp2G7nVms2yNVNXeBBl0frZwIJ7cgSPPrQj2mONcBKRgnG4kzn31+qkY/q/0gbHhne
-	1LQcEEv4bZwzcKa3O65g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=h3Z4xIDGISj7cMw45/Ejo841lQLIsvLxTfjxt1wDr88=; b=JHpP/hLAoF826I
+	ERsD2oyU2UKaNx3Z4Vc6mohsTIN6lR14jWZ6eihvNHnZJ1KJeFTlzAsvY9Fhj7SwDbM7cWO/dZpvO
+	7rr8jmQ/KBT79OvVIRqUhHOplg5LKc1GXMl5kxQiX0idCJbxrnYDCM/1X831Vin21TgpTgRx/p0O9
+	ZFHUJOe1F3ZKm8ipXwkiWfkXcdvhIikl9y/uzUPjOgpZIL9J8qPj+bZnO2InmyhFaGLx5LPqhcrvq
+	2Ghjxlpy4pLGc0NXK7DAVP04oBfCfxV/EYcinL6n6HcjRGVXaYIM9ehEQVPlcrlv80VAbIsDczSAg
+	rZYAF/2JABSIT5ZnbhuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntueQ-00Bxd2-LO; Wed, 25 May 2022 17:18:26 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1nuKNN-00Fpvv-E6; Thu, 26 May 2022 20:46:33 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ntueC-00BxYx-KC
-	for linux-rockchip@lists.infradead.org; Wed, 25 May 2022 17:18:17 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id i9so859876wrc.13
-        for <linux-rockchip@lists.infradead.org>; Wed, 25 May 2022 10:18:11 -0700 (PDT)
+	id 1nuKJN-00FoBY-6y
+	for linux-rockchip@lists.infradead.org; Thu, 26 May 2022 20:42:26 +0000
+Received: by mail-ed1-x536.google.com with SMTP id c93so1831046edf.7
+        for <linux-rockchip@lists.infradead.org>; Thu, 26 May 2022 13:42:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=mSMNPQ5KK6YsA0z6pBHKv8hLf5a2qU6nE4AoCo7IdWI=;
-        b=fJGduJon9UX+/MDCq64jwD4jxYhIn31QF1pGdMs8PSFiMlgFlXxgLIVxETbNxWDLMt
-         6g3wXrECUTQj41d4M980QT0MRiCzku+tMGl/7TUqgr93na92xqke3ns4n4tuPn78nL1e
-         IwcN03P9L0IY2sw1d5Cd916Iq4EmZV44gdgbM=
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=xexrzx/Z2+41mJlgQJa+6IcDgOBEQTDb07VL3nibIDo=;
+        b=JHhCapECCfHlCBe7dnsAx2XuFNgSDEABxduC/sRHRvTwCZbdnesm2WNTSDTe7DuCKE
+         C7KCuAbP6mPoxC7ua/1B0RtCzSHPXBX9N1MUmAj5DXIzyVfuRbphF88IapZHG4HJN83L
+         U96nuxWO9ua0FKJxS1H67oQav1Uib0fVHZ3275eHodU5oHrgOPVvPCLrxfzNFQhOp7/b
+         FUmjbWyjzuj5pE9DHW0SgO27rM+YNIIQAAYzqGyfmviAwcBnrFbr+1rmSbdv5nPxZfpf
+         /jN5LKys3z8Ge43o+hbdOo3eyQd+7Ibn116UNiOx4vm/4/gph73uakXplO9zolo/6UF4
+         ubcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:references:mime-version:content-disposition
-         :in-reply-to;
-        bh=mSMNPQ5KK6YsA0z6pBHKv8hLf5a2qU6nE4AoCo7IdWI=;
-        b=nrqMwDozeDiIm0NWLdILhm7mx/2zyI8o4Lzw9d5MquB6W0a2vKHQ2ZECEOdIHRCS1J
-         GbI69qNEWafZ+56ykWCh76bRfqrW6t++7H9RfcKqxgm9Xwph38RvVw8nGjCHupHw+j6Y
-         nULncLShV5LOEeVw+OnBQO2+6wvqwFrcweV2qru1p7+5mKphHwBHauH8tS1j0lO0ubyf
-         4Cmf7OyklTXb6du7wtvxREx+AnYIE1bstX4alwHSwGDRa5CMZ9JC3H8L8ADrrF9Raqba
-         DjbYQnPq+CulKjLqFgCkdF/i6eAQB0Hc1CZ9pryIh6F+k1mwG/ffRdvw6oIIRxk2lu3P
-         Rt1w==
-X-Gm-Message-State: AOAM531P2LBIvbplPNzKwK+UCXaJb9HcVF9YpnODYFSiYqVF5jD9ataG
-	QRxxrMyWvTQw7nWwjxyXBqaFvg==
-X-Google-Smtp-Source: ABdhPJzsdHYg5Dpp88obJIiM7Dhw/HPhB8owGCNkfmE6OH+ietsqIRSGDzN+swc+xg/bnjU0j19AwA==
-X-Received: by 2002:a05:6000:2cc:b0:20d:e6c:e4f8 with SMTP id o12-20020a05600002cc00b0020d0e6ce4f8mr27246085wry.374.1653499090255;
-        Wed, 25 May 2022 10:18:10 -0700 (PDT)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
-        by smtp.gmail.com with ESMTPSA id g5-20020a5d64e5000000b0020d0c9c95d3sm2613468wri.77.2022.05.25.10.18.08
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=xexrzx/Z2+41mJlgQJa+6IcDgOBEQTDb07VL3nibIDo=;
+        b=FIo1XDjQdIHLlqum/wcCmBCXQHlGPmYwXG/2t7GbQ/3uDZ11miTuVdz3PHT0Qwyd5s
+         mn+QLLgVg6IN/z5V1xAw29fgDggrhFILzYa9SNYL4sGX3T1be4OGzde9w0Y+bcGmXHug
+         QboKg0f2bLG00U6hWvEnmqtXLa14d0aEMUEf8oFbYG2f00Pna4loE0IB7gB21ku1UpeZ
+         2ijUTLIovScBsWYOhttX8F7YBFUwKOvwFHs7nM/IKvRZr+4K1ZaNaWdl5zfysQdM4/wb
+         D2lXOcuDBXCjih4kEjwpxie5mp/X2LJlmZk3FKejvyxL5RVC+VPobg01E6Yf91/EbnPs
+         c45Q==
+X-Gm-Message-State: AOAM5336M1EUIKBhxf7i/HFwF20svFbrik9ihsJVrIXF3vShth8gIiTg
+	4FHGZ8QynWK6mpr/LjKi3lXmxQ==
+X-Google-Smtp-Source: ABdhPJyIxK6IQef/XZ8gpZxTuo79xjWunylkaMWeKFo+JpDp1RKm3dK/AsYcM8hal7BYOj7ybERxjw==
+X-Received: by 2002:a05:6402:84c:b0:428:4cc4:8212 with SMTP id b12-20020a056402084c00b004284cc48212mr42427200edz.171.1653597744008;
+        Thu, 26 May 2022 13:42:24 -0700 (PDT)
+Received: from localhost.localdomain (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id r17-20020a50d691000000b0042617ba6389sm1239732edi.19.2022.05.26.13.42.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 May 2022 10:18:09 -0700 (PDT)
-Date: Wed, 25 May 2022 19:18:07 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Maxime Ripard <maxime@cerno.tech>
-Cc: Samuel Holland <samuel@sholland.org>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
+        Thu, 26 May 2022 13:42:23 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: Arnd Bergmann <arnd@arndb.de>,
+	Olof Johansson <olof@lixom.net>,
+	arm@kernel.org,
+	soc@kernel.org,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Alistair Francis <alistair@alistair23.me>,
-	=?utf-8?Q?Ond=C5=99ej?= Jirman <x@xff.cz>,
-	Andreas Kemnade <andreas@kemnade.info>,
-	Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
-	Geert Uytterhoeven <geert@linux-m68k.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Liang Chen <cl@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Sam Ravnborg <sam@ravnborg.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH 00/16] drm/rockchip: Rockchip EBC ("E-Book
- Controller") display driver
-Message-ID: <Yo5kz/9cSd6ewC5f@phenom.ffwll.local>
-Mail-Followup-To: Maxime Ripard <maxime@cerno.tech>,
-	Samuel Holland <samuel@sholland.org>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	Alistair Francis <alistair@alistair23.me>,
-	=?utf-8?Q?Ond=C5=99ej?= Jirman <x@xff.cz>,
-	Andreas Kemnade <andreas@kemnade.info>,
-	David Airlie <airlied@linux.ie>,
-	Geert Uytterhoeven <geert@linux-m68k.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Liang Chen <cl@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Sam Ravnborg <sam@ravnborg.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220413221916.50995-1-samuel@sholland.org>
- <20220414085018.ayjvscgdkoen5nw5@houat>
+	linux-kernel@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 1/3] arm64: dts: rockchip: adjust whitespace around '='
+Date: Thu, 26 May 2022 22:42:16 +0200
+Message-Id: <20220526204218.832029-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220414085018.ayjvscgdkoen5nw5@houat>
-X-Operating-System: Linux phenom 5.10.0-8-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220525_101812_702473_4AC096AC 
-X-CRM114-Status: GOOD (  87.85  )
+X-CRM114-CacheID: sfid-20220526_134225_316986_2B38EBDB 
+X-CRM114-Status: GOOD (  11.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,387 +95,123 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some comments on this from my side too, not sure how good they are when it
-comes more to the hw side of things :-)
+Fix whitespace coding style: use single space instead of tabs or
+multiple spaces around '=' sign in property assignment.  No functional
+changes (same DTB).
 
-On Thu, Apr 14, 2022 at 10:50:18AM +0200, Maxime Ripard wrote:
-> On Wed, Apr 13, 2022 at 05:19:00PM -0500, Samuel Holland wrote:
-> > This series adds a DRM driver for the electrophoretic display controller
-> > found in a few different Rockchip SoCs, specifically the RK3566/RK3568
-> > variant[0] used by the PineNote tablet[1].
-> > 
-> > This is my first real involvement with the DRM subsystem, so please let
-> > me know where I am misunderstanding things.
-> > 
-> > This is now the second SoC-integrated EPD controller with a DRM driver
-> > submission -- the first one being the i.MX6 EPDC[2]. I want to thank
-> > Andreas for sending that series, and for his advice while writing this
-> > driver.
-> > 
-> > One goal I have with sending this series is to discuss how to support
-> > EPDs more generally within the DRM subsystem, so the interfaces with
-> > panels and PMICs and waveform LUTs can be controller-independent.
-> > 
-> > My understanding is that the i.MX6 EPDC series is at least partly based
-> > on the downstream vendor driver. This driver is a clean-sheet design for
-> > hardware with different (read: fewer) capabilities, so we took some
-> > different design paths, but we ran into many of the same sharp edges.
-> > 
-> > Here are some of the areas I would like input on:
-> > 
-> > Panel Lifecycle
-> > ===============
-> > Panels use prepare/unprepare callbacks for their power supply. EPDs
-> > should only be powered up when the display contents are changed. Should
-> > the controller call both drm_panel_(un)prepare during each atomic update
-> > when the framebuffer is dirty?
-> > 
-> > Similarly, panel enable/disable callbacks are tied to backlight state.
-> > For an EPD, it makes sense to have the backlight enabled while the panel
-> > is powered down (because the contents are static). Is it acceptable to
-> > call drm_panel_{en,dis}able while the panel is not prepared?
-> > 
-> > With panel_bridge, the "normal" callback ordering is enforced, and tied
-> > to the atomic state, so neither of these is possible.
-> > 
-> > As a result, neither the backlight nor the voltage regulators are tied
-> > to the panel. The panel's regulators are consumed by the EBC itself.
-> 
-> At least to manage the power state, that looks fairly similar to what we
-> have already to enter / exit from panel self refresh, so maybe we can
-> leverage that infrastructure?
-> 
-> And thus we would have something like enabling the backlight when we
-> prepare the panel, but only enable / disable the regulator when we exit
-> / enter PSR mode?
-> 
-> Would that make sense?
-> 
-> > Panel Timing Parameters
-> > =======================
-> > EPDs have more timing parameters than LCDs, and there are several
-> > different ways of labeling these parameters. See for example the timing
-> > diagrams on pp. 2237-2239 of the RK3568 TRM[0], the descriptions in the
-> > ED103TC2 panel datasheet[3], and the submitted EPDC bindings[2].
-> > 
-> > Both the EPDC and EBC vendor drivers put all of the timing parameters in
-> > the controller's OF node. There is no panel device/node.
-> > 
-> > I was able to squeeze everything needed for my specific case into a
-> > struct drm_display_mode (see patches 5 and 14), but I don't know if this
-> > is an acceptable use of those fields, or if will work with other
-> > controllers. Is adding more fields to drm_display_mode an option?
-> > 
-> > See also the discussion of "dumb" LCD TCONs below.
-> 
-> Reading that datasheet and patch series, it's not clear to me whether
-> it's just a set of generic parameters for E-ink display, or if it's some
-> hardware specific representation of those timings.
-> 
-> Generally speaking, drm_display_mode is an approximation of what the
-> timings are. The exact clock rate for example will be widely different
-> between RGB, HDMI or MIPI-DSI (with or without burst). I think that as
-> long as you can derive a drm_display_mode from those parameters, and can
-> infer those parameters from a drm_display_mode, you can definitely reuse
-> it.
-> 
-> > Panel Connector Type / Media Bus Format
-> > =======================================
-> > The EBC supports either an 8-bit or 16-bit wide data bus, where each
-> > pair of data lines represents the source driver polarity (positive,
-> > negative, or neutral) for a pixel.
-> > 
-> > The only effect of the data bus width is the number of pixels that are
-> > transferred per clock cycle. It has no impact on the number of possible
-> > grayscale levels.
-> > 
-> > How does that translate to DRM_MODE_CONNECTOR_* or MEDIA_BUS_FMT_*?
-> 
-> We'll probably want a separate connector mode, but you could add a
-> parameter on the OF-graph endpoint to set the media bus format.
-> 
-> > Panel Reflection
-> > ================
-> > The ED103TC2 panel scans from right to left. Currently, there is no API
-> > or OF property to represent this. I can add something similar to
-> > drm_panel_orientation.
-> 
-> Yeah, leveraging DRM_MODE_REFLECT_X into something similar to
-> drm_panel_orientation makes sense
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
-Yeah
+---
 
-> > Should this be exposed to userspace? It is acceptable for the kernel
-> > driver to flip the image when blitting from the framebuffer?
-> 
-> I'm not sure about whether or not we should expose it to userspace. I'd
-> say yes, but I'll leave it to others :)
+Output compared with dtx_diff and fdtdump.
+---
+ arch/arm64/boot/dts/rockchip/px30.dtsi                     | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi                   | 6 +++---
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts                | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts        | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi      | 2 +-
+ 6 files changed, 8 insertions(+), 8 deletions(-)
 
-Same. I'm very grumpily accepting that we need sw conversion tools from
-xrgb8888 to more unusual framebuffer formats, but everything else should
-be userspace problems imo.
-
-It's a bit more awkard than a wrongly rotate screen if it's mirrored, but
-I guess that's it.
-
-What is surprising is that your hw really doesn't have any hw support to
-mirror things, since that's generally really easy to implement.
-
-For the blitter I guess that would be a v4l mem2mem device?
-
-> > CRTC "active" and "enabled" states
-> > ==================================
-> > What do these states mean in the context of an EPD? Currently, the
-> > driver ignores "active" and clears the screen to solid white when the
-> > CRTC is disabled.
-> > 
-> > The vendor drivers can switch to a user-provided image when the CRTC is
-> > disabled. Is this something that can/should be supported upstream? If
-> > so, how? Would userspace provide the image to the kernel, or just tell
-> > the kernel not to clear the screen?
-> 
-> I think the semantics are that whenever the CRTC is disabled, the panel
-> is expected to be blank.
-> 
-> Leaving an image on after it's been disabled would have a bunch of
-> side-effects we probably don't want. For example, let's assume we have
-> that support, an application sets a "disabled image" and quits. Should
-> we leave the content on? If so, for how long exactly?
-> 
-> Either way, this is likely to be doable with PSR as well, so I think
-> it's a bit out of scope of this series for now.
-
-active is hw state
-
-enabled is a pure sw state on top, to make sure that all the hw resources
-you need are still reserved. E.g. when you have 2 crtc and you enable one,
-but keep it off (i.e. active = false), then the clocks, memory bw and all
-that are still reserved. This is to be able to guarantee that dpms off ->
-on transitions always work.
-
-Iow, in atomic_check you need to look at enabled, in atomic commit you
-need to look at active.
-
-With a single crtc there should never be any issue here really, since
-there's no other crtc where you can steal clocks or similar things from.
-
-Note that kerneldoc should explain this all, pls double check and if it's
-not clear submit a patch please.
-
-> > VBLANK Events and Asynchronous Commits
-> > ======================================
-> > When should the VBLANK event complete? When the pixels have been blitted
-> > to the kernel's shadow buffer? When the first frame of the waveform is
-> > sent to the panel? When the last frame is sent to the panel?
-> > 
-> > Currently, the driver is taking the first option, letting
-> > drm_atomic_helper_fake_vblank() send the VBLANK event without waiting on
-> > the refresh thread. This is the only way I was able to get good
-> > performance with existing userspace.
-> 
-> I've been having the same kind of discussions in private lately, so I'm
-> interested by the answer as well :)
-> 
-> It would be worth looking into the SPI/I2C panels for this, since it's
-> basically the same case.
-
-So it's maybe a bit misnamed and maybe kerneldocs aren't super clear (pls
-help improve them), but there's two modes:
-
-- drivers which have vblank, which might be somewhat variable (VRR) or
-  become simulated (self-refresh panels), but otherwise is a more-or-less
-  regular clock. For this case the atomic commit event must match the
-  vblank events exactly (frame count and timestamp)
-
-- drivers which don't have vblank at all, mostly these are i2c/spi panels
-  or virtual hw and stuff like that. In this case the event simply happens
-  when the driver is done with refresh/upload, and the frame count should
-  be zero (since it's meaningless).
-
-Unfortuantely the helper to dtrt has fake_vblank in it's name, maybe
-should be renamed to no_vblank or so (the various flags that control it
-are a bit better named).
-
-Again the docs should explain it all, but maybe we should clarify them or
-perhaps rename that helper to be more meaningful.
-
-> > Waveform Loading
-> > ================
-> > Waveform files are calibrated for each batch of panels. So while a
-> > single waveform file may be "good enough" for all panels of a certain
-> > model, the correctly-calibrated file will have better image quality.
-> > 
-> > I don't know of a good way to choose the calibrated file. Even the
-> > board's compatible string may not be specific enough, if the board is
-> > manufactured with multiple batches of panels.
-> > 
-> > Maybe the filename should just be the panel compatible, and the user is
-> > responsible for putting the right file there? In that case, how should I
-> > get the compatible string from the panel_bridge? Traverse the OF graph
-> > myself?
-> 
-> It's not really clear to me what panel_bridge has to do with it? I'm
-> assuming that file has to be uploaded some way or another to the
-> encoder?
-> 
-> If so, yeah, you should just follow through the OF-graph and use the
-> panel compatible. We have a similar case already with panel-mipi-dbi
-> (even though it's standalone)
-
-Yeah if there's really on difference then I guess the best we can do is
-"make sure you put the right file into the firmware directory". Sucks but
-anything else isn't really better.
-
-> > There is also the issue that different controllers need the waveform
-> > data in different formats. ".wbf" appears to be the format provided by
-> > PVI/eInk, the panel manufacturer. The Rockchip EBC hardware expects a
-> > single waveform in a flat array, so the driver has to extract/decompress
-> > that from the .wbf file (this is done in patch 1). On the other hand,
-> > the i.MX EPDC expects a ".wrf" file containing multiple waveforms[8].
-> > 
-> > I propose that the waveform file on disk should always be what was
-> > shipped with the panel -- the .wbf file -- and any extracting or
-> > reformatting is done in the kernel.
-> 
-> Any kind of parsing in the kernel from a file you have no control over
-> always irks me :)
-> 
-> Why and how are those files different in the first place?
-> 
-> > Waveform Selection From Userspace
-> > =================================
-> > EPDs use different waveforms for different purposes: high-quality
-> > grayscale vs. monochrome text vs. dithered monochrome video. How can
-> > userspace select which waveform to use? Should this be a plane property?
-> >
-> > It is also likely that userspace will want to use different waveforms at
-> > the same time for different parts of the screen, for example a fast
-> > monochrome waveform for the drawing area of a note-taking app, but a
-> > grayscale waveform for surrounding UI and window manager.
-> > 
-> > I believe the i.MX6 EPDC supports multiple planes, each with their own
-> > waveform choice. That seems like a good abstraction,
-> 
-> I agree
-> 
-> > but the EBC only supports one plane in hardware. So using this
-> > abstraction with the EBC would require blending pixels and doing
-> > waveform lookups in software.
-> 
-> Not really? You'd have a single plane available, with only one waveform
-> pick for that plane?
-> 
-> > Blitting/Blending in Software
-> > =============================
-> > There are multiple layers to this topic (pun slightly intended):
-> >  1) Today's userspace does not expect a grayscale framebuffer.
-> >     Currently, the driver advertises XRGB8888 and converts to Y4
-> >     in software. This seems to match other drivers (e.g. repaper).
-> >
-> >  2) Ignoring what userspace "wants", the closest existing format is
-> >     DRM_FORMAT_R8. Geert sent a series[4] adding DRM_FORMAT_R1 through
-> >     DRM_FORMAT_R4 (patch 9), which I believe are the "correct" formats
-> >     to use.
-> > 
-> >  3) The RK356x SoCs have an "RGA" hardware block that can do the
-> >     RGB-to-grayscale conversion, and also RGB-to-dithered-monochrome
-> >     which is needed for animation/video. Currently this is exposed with
-> >     a V4L2 platform driver. Can this be inserted into the pipeline in a
-> >     way that is transparent to userspace? Or must some userspace library
-> >     be responsible for setting up the RGA => EBC pipeline?
-> 
-> I'm very interested in this answer as well :)
-> 
-> I think the current consensus is that it's up to userspace to set this
-> up though.
-
-Yeah I think v4l mem2mem device is the answer for these, and then
-userspace gets to set it all up.
-
-> >  4) Supporting multiple planes (for multiple concurrent waveforms)
-> >     implies blending in software. Is that acceptable?
-> > 
-> >  5) Thoughts on SIMD-optimized blitting and waveform lookup functions?
-> > 
-> >  5) Currently the driver uses kmalloc() and dma_sync_single_for_device()
-> >     for its buffers, because it needs both fast reads and fast writes to
-> >     several of them. Maybe cma_alloc() or dma_alloc_from_contiguous()
-> >     would be more appropriate, but I don't see any drivers using those
-> >     directly.
-> 
-> cma_alloc isn't meant to be used directly by drivers anyway, one of the
-> main reason being that CMA might not be available (or desirable) in the
-> first place on the platform the code will run.
-> 
-> The most common option would be dma_alloc_coherent. It often means that
-> the buffer will be mapped non-cacheable, so it kills the access
-> performances. So it completely depends on your access patterns whether
-> it makes sense in your driver or not. kmalloc + dma_sync_single or
-> dma_map_single is also a valid option.
-> 
-> > EPDs connected to "dumb" LCD TCONs
-> > ==================================
-> > This topic is mostly related to my first patch. Some boards exist that
-> > hook up an EPD to a normal LCD TCON, not a dedicated EPD controller. For
-> > example, there's the reMarkable 2[5] and some PocketBook models[6][7].
-> > 
-> > I have some concerns about this:
-> >  1) If we put EPD panel timings in panel drivers (e.g. panel-simple),
-> >     can the same timings work with LCD TCONs and EPD controllers?
-> 
-> I'll think we'll need a separate panel driver for this anyway
-> 
-> >     For example: one cycle of the 16-bit data bus is "one pixel" to an
-> >     LCD controller, but is "8 pixels" to an EPD controller. So there is
-> >     a factor-of-8 difference in horizontal resolution depending on your
-> >     perspective. Should we have the "number of pixel clock cycles" or
-> >     "number of pixels" in .hdisplay/.htotal in the panel timings?
-> > 
-> >     Patch 14 adds a panel with "number of pixels" horizontal resolution,
-> >     so the correct resolution is reported to userspace, but the existing
-> >     eink_vb3300_kca_timing in panel-simple.c appears to use "number of
-> >     pixel clocks" for its horizontal resolution. This makes the panel
-> >     timing definitions incompatible across controllers.
-
-Yeah that sounds bad. And I guess this really should be "number of pixels"
-and the drivers need to be adjusted/fixed to be consistent.
-
-> > 
-> >  2) Using fbdev/fbcon with an EPD hooked up to an LCD TCON will have
-> >     unintended consequences, and possibly damage the panel. Currently,
-> >     there is no way to mark the framebuffer as expecting "source driver
-> >     polarity waveforms" and not pixel data. Is there a specific
-> >     DRM_FORMAT_* we should use for these cases to prevent accidental use
-> >     by userspace?
-> > 
-> >     Or should we disallow this entirely, and have some wrapper layer to
-> >     do the waveform lookups in kernelspace?
-> > 
-> >     I like the wrapper layer idea because it allows normal userspace and
-> >     fbcon to work. It would not be much new code, especially since this
-> >     driver already supports doing the whole pipeline in software. So
-> >     that's why I wrote a separate helper library; I hope this code can
-> >     be reused.
-> 
-> If exposing the panel as a KMS connector can damage the display, I don't
-> think we should expose it at all. Even a property or something won't
-> work, because older applications won't know about that property and will
-> try to use it anyway.
-> 
-> So whatever the solution is, it can't be "you have to know that this
-> device is special, or else...". The default, trivial, case where an
-> application just comes up and tries to display something should somewhat
-> work (even if it might be a bit absurd, like ignoring non_desktop)
-
-Yeah I think if you can wreak the panel that's no good, and should be
-hidden I guess. So I guess for these the kernel gets to apply the waveform
-stuff internally, which I really don't like but oh well. We have plenty of
-cpu slicing and dicing in other spi/i2c/usb drivers too.
--Daniel
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 56dfbb2e2fa6..214f94fea3dc 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -528,7 +528,7 @@ uart5: serial@ff178000 {
+ 	i2c0: i2c@ff180000 {
+ 		compatible = "rockchip,px30-i2c", "rockchip,rk3399-i2c";
+ 		reg = <0x0 0xff180000 0x0 0x1000>;
+-		clocks =  <&cru SCLK_I2C0>, <&cru PCLK_I2C0>;
++		clocks = <&cru SCLK_I2C0>, <&cru PCLK_I2C0>;
+ 		clock-names = "i2c", "pclk";
+ 		interrupts = <GIC_SPI 7 IRQ_TYPE_LEVEL_HIGH>;
+ 		pinctrl-names = "default";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index 4f0b5feaa5e6..a4c5aaf1f457 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -1084,7 +1084,7 @@ emmc_bus8: emmc-bus8 {
+ 
+ 		gmac {
+ 			rgmii_pins: rgmii-pins {
+-				rockchip,pins =	<3 RK_PC6 1 &pcfg_pull_none>,
++				rockchip,pins = <3 RK_PC6 1 &pcfg_pull_none>,
+ 						<3 RK_PD0 1 &pcfg_pull_none>,
+ 						<3 RK_PC3 1 &pcfg_pull_none>,
+ 						<3 RK_PB0 1 &pcfg_pull_none_12ma>,
+@@ -1102,7 +1102,7 @@ rgmii_pins: rgmii-pins {
+ 			};
+ 
+ 			rmii_pins: rmii-pins {
+-				rockchip,pins =	<3 RK_PC6 1 &pcfg_pull_none>,
++				rockchip,pins = <3 RK_PC6 1 &pcfg_pull_none>,
+ 						<3 RK_PD0 1 &pcfg_pull_none>,
+ 						<3 RK_PC3 1 &pcfg_pull_none>,
+ 						<3 RK_PB0 1 &pcfg_pull_none_12ma>,
+@@ -1257,7 +1257,7 @@ sdmmc_bus4: sdmmc-bus4 {
+ 
+ 		spdif {
+ 			spdif_tx: spdif-tx {
+-				rockchip,pins =	<2 RK_PC7 1 &pcfg_pull_none>;
++				rockchip,pins = <2 RK_PC7 1 &pcfg_pull_none>;
+ 			};
+ 		};
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+index 7b717ebec8ff..3d1e126b553f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+@@ -55,7 +55,7 @@ backlight: backlight {
+ 	};
+ 
+ 	edp_panel: edp-panel {
+-		compatible ="lg,lp079qx1-sp0v";
++		compatible = "lg,lp079qx1-sp0v";
+ 		backlight = <&backlight>;
+ 		enable-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>;
+ 		power-supply = <&vcc3v3_s0>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+index 3ae5d727e367..04c752f49be9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+@@ -49,7 +49,7 @@ simple-audio-card,cpu {
+ 	sgtl5000_clk: sgtl5000-oscillator  {
+ 			compatible = "fixed-clock";
+ 			#clock-cells = <0>;
+-			clock-frequency  = <24576000>;
++			clock-frequency = <24576000>;
+ 	};
+ 
+ 	dc_12v: dc-12v {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+index f6b2199a42bd..13927e7d0724 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+@@ -88,7 +88,7 @@ backlight: backlight {
+ 	};
+ 
+ 	edp_panel: edp-panel {
+-		compatible ="lg,lp079qx1-sp0v";
++		compatible = "lg,lp079qx1-sp0v";
+ 		backlight = <&backlight>;
+ 		enable-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+index 01d1a75c8b4d..935b8c68a71d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+@@ -347,7 +347,7 @@ hym8563_int: hym8563-int {
+ 
+ 	pcie {
+ 		pcie_pwr: pcie-pwr {
+-			rockchip,pins =	<4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
++			rockchip,pins = <4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+ 
 -- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
