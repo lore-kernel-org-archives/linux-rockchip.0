@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4141CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 May 2022 20:48:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 651B3C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 May 2022 20:48:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o2wdk7aG6ijqTAovX2dRW/8taVhYWXcOBlsdfwCw5I8=; b=w9Jn2JC6tXIxNg
-	q+iKE6RLxQZFDQ0NCoRRBENGYYNfrjaOzvHdVSwDex2usDmtbUohxAOtsThYfTrBFem9/ZtPV0JAF
-	MKIuqgLBITfDsSHO4y72vmHk+7zp2Rj3VskXc/tvdOoE6v5RvR/s3FfyiysBODc+FWbmgaAhlBkfr
-	Y9IF9ul0yJ9/KC+GI82NIh7eSRyk79tlvrS/LXZ1Ilsd8D3K0Rp2jEqJK4oey3S8mEdQkcDJ/eEwR
-	17Rf3EbV264dRQ+wdeVj7dh5ZHpZXjaBD7CJvsnXIUUqJM8DL8V55d+aGh0MXYZ1I4AneRvyeV2ag
-	WIC03bGtFUGBCp93N+6Q==;
+	List-Owner; bh=TfoCBOoSazCHpmHpqZlB7VUzQV8oeYd1yNz5WTUwL4c=; b=D+b00YCOzuKD2Z
+	m4AW/+lkIAkcYDDW6m4GOCKgZaSnLXgwuOl3NrfLOx55EwYX0js/ncV4sWMJfuPkfEyO+hMFF2Caj
+	a/lrZpuf8vj/GZUetPDSkwZFSqE7IGmKRJ+n4DabbwE4fRZq42lzOMSiXvWFAu0m6ibY08BP8Xx81
+	u8+vVbYDS8UjBLw5zsXc6czpPbYa367rV8QHLZtSuA+1oXmKh0tgcet1OhXe5t6xz5G3c2oWDSik/
+	B6j9Qx8oBey3djS2+6tdU4AxJhN/C2WIJxiBmykiBvZxzXXW8uGDzI93E0FY1m+tOXZ77NrwFAjzl
+	uhM1QzLTlPa97+hwXJ7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nuKPH-00FqlC-8I; Thu, 26 May 2022 20:48:31 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1nuKPJ-00FqmJ-Kt; Thu, 26 May 2022 20:48:33 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nuKJO-00FoC6-PU
-	for linux-rockchip@lists.infradead.org; Thu, 26 May 2022 20:42:29 +0000
-Received: by mail-ed1-x529.google.com with SMTP id j28so3137648eda.13
-        for <linux-rockchip@lists.infradead.org>; Thu, 26 May 2022 13:42:26 -0700 (PDT)
+	id 1nuKJP-00FoD1-TN
+	for linux-rockchip@lists.infradead.org; Thu, 26 May 2022 20:42:30 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id t5so3170276edc.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 26 May 2022 13:42:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=6PoGfKqwaOSA8hY2KbOckVLUzTs3Q4Jc3iaXuQGoRpA=;
-        b=s7sEBaSU1vzd54sOOs0rZZNg9jOLdNNbwjwpFo7NPaSSc3/EKIKfGfGqUmjfhdBIZu
-         tB3MOE4n0cSRKiu3kMyc9QWQPlCIxLXlFngGQ99MiTppR/kW6DZ2r6vPXjZxisDjDaYy
-         k13/DLeamBpnmEzAc+1qsZ1L6InFRZoR/BKSyKI7UfsHpX3PqVH6BgrO/pw4iEh3fnfA
-         aDN7/ymbV30iKKJ5/2YpkRPQks9rvdQYpsQEtIyoocUVncRWur4ETpIxqQ7iRrdx9vvs
-         r0DbsSw+JAaC5BiER/ilnIVQPfvqwa4W+hnWDhdh1zk68xbe2pzmpU0TmUMNdL8vN6EL
-         84Vg==
+        bh=ADqKJdbqKJgJ+Kg0DAm3wQJ6kaap7SQu0KoHV5lMi6o=;
+        b=UW/PIlwYn0ZoAUDaWjJIFIjFaJDJDpE22GNHHXfyeFrpw8sAg9hGAqJUuXHhlcOI0S
+         Uuk1MqkSrW2j/eY1+x65UOWevsmO1H24hHTlmrLIzAaBy8fWfIHuESxie3PDbhitU4XI
+         UuiZwqwRGIa6jap7jzXiEx8bskStr/mKiHi0Qf1BDp7P8sWEWT6P/x/7aVbaY/A0PXFF
+         Q3/h3CdAONbLeV2+sinmhsRtSab2nY8417dlg1stPZtYAp6u1/ymJ/0nCgSeAUkAawHB
+         k/ZlXCMweXeHyK3Ym0mGTg8kauAy0Lb4/btc23UYeB4F7ae+HVKBmETprFUIljfL5hM6
+         JZpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=6PoGfKqwaOSA8hY2KbOckVLUzTs3Q4Jc3iaXuQGoRpA=;
-        b=Inbg6dttEp+luzAzhmVA5dR2ZuHKdcuAyhd5gopzmWWtmkR+uXw3neSNddbA47hG+l
-         /Pr00EmWAOgsWJ+xvJk8VDc86NnmCUW1UZRx6TJ0fVWLR87QjktFMf/cEv85OZAo1B+5
-         eoJKxwOmNHT6rtr5gw+nXmVVEk4TUp1rG8tmNJYtbgA7eo1xZnwp6oaVjaUO5c0sCMiL
-         NigOdA58hlfp6ghH4OtC0+IkBVJLSc+gmnnnrF9VjXU2krHRDKRWHM9FoaBDK98VXpTT
-         vhEpP7dkxgzh0goYbb4Ki0RvKM65l2Xb/NNmig2inBnS/T4YFzR1j5+xGHoJeM7yGUvX
-         a35g==
-X-Gm-Message-State: AOAM531vw2W349ys5G0+FXAaMbIy8nMbVkQJmelmB8E6sYX0oXr/TOjY
-	iwXQVo5kngjxICmD4QTZx8sscw==
-X-Google-Smtp-Source: ABdhPJx7r6j+aBTRisTlPBtzTk+q8WC0quei+dan1fVS+/Wp2DlSJGxhdl7sKtt7zczYJvjIFb1ifA==
-X-Received: by 2002:a05:6402:90d:b0:428:c1ad:1e74 with SMTP id g13-20020a056402090d00b00428c1ad1e74mr41662182edz.345.1653597745304;
-        Thu, 26 May 2022 13:42:25 -0700 (PDT)
+        bh=ADqKJdbqKJgJ+Kg0DAm3wQJ6kaap7SQu0KoHV5lMi6o=;
+        b=0JP9Wco+bKiHNeDrXZ3ZGVkEtN4+48LCUgZ/cN01b1FpVR649hTQIXP0NIoEEEkgC1
+         cu1OmITNL5wszf597f//wEwnw0be5KNQgXlCe5YoaMswCV4IlqSxkFKrIN+PEelD1r3d
+         SoQe7OIdAWTP4fyT+n20rIRfnJfsb2tR12bcT8ZKWw2UEt9fXOHWwZQdVcWTHIiTj9l7
+         pTHjvDtrdEEYTRz3PbicazmDv+vEB4hZLQ+eU0Qgspq8v9Nn6sHwtyDWO8Vhq0bEcSNx
+         aGZ8bzVjX1giLK+J2RnqP8S1upnnZBWcDJWB5A4k5/5sbIKisuu/cVRAsxDVH+8h3JTR
+         k0aQ==
+X-Gm-Message-State: AOAM530CO3DJyFaOOowRq7P5iITojzxTHOQXYVdRMcfjTZZTMfZXKiL5
+	dOu5kDXJZvnTSPtM2GwDZ0TrhA==
+X-Google-Smtp-Source: ABdhPJy3RfkUoqMH5w0G5VrkKRX7O3+5DdIFoLZRfjDU7Ds5U1HKL4bPRFugK9rvtFvsNaJPlNg6zw==
+X-Received: by 2002:a05:6402:1113:b0:428:679e:f73f with SMTP id u19-20020a056402111300b00428679ef73fmr42108111edv.378.1653597746602;
+        Thu, 26 May 2022 13:42:26 -0700 (PDT)
 Received: from localhost.localdomain (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
-        by smtp.gmail.com with ESMTPSA id r17-20020a50d691000000b0042617ba6389sm1239732edi.19.2022.05.26.13.42.24
+        by smtp.gmail.com with ESMTPSA id r17-20020a50d691000000b0042617ba6389sm1239732edi.19.2022.05.26.13.42.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 May 2022 13:42:24 -0700 (PDT)
+        Thu, 26 May 2022 13:42:26 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: Arnd Bergmann <arnd@arndb.de>,
 	Olof Johansson <olof@lixom.net>,
@@ -71,16 +71,16 @@ To: Arnd Bergmann <arnd@arndb.de>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH 2/3] ARM: dts: rockchip: adjust whitespace around '='
-Date: Thu, 26 May 2022 22:42:17 +0200
-Message-Id: <20220526204218.832029-2-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH 3/3] ARM: dts: rv1108: adjust whitespace around '='
+Date: Thu, 26 May 2022 22:42:18 +0200
+Message-Id: <20220526204218.832029-3-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220526204218.832029-1-krzysztof.kozlowski@linaro.org>
 References: <20220526204218.832029-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220526_134226_866974_2C3BE95F 
-X-CRM114-Status: GOOD (  11.74  )
+X-CRM114-CacheID: sfid-20220526_134228_077728_79CACBFD 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,29 +107,158 @@ Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 
 Output compared with dtx_diff and fdtdump.
 ---
- .../arm/boot/dts/rk3288-veyron-broadcom-bluetooth.dtsi | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ arch/arm/boot/dts/rv1108-elgin-r1.dts | 14 +++++++-------
+ arch/arm/boot/dts/rv1108-evb.dts      | 14 +++++++-------
+ arch/arm/boot/dts/rv1108.dtsi         |  2 +-
+ 3 files changed, 15 insertions(+), 15 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-broadcom-bluetooth.dtsi b/arch/arm/boot/dts/rk3288-veyron-broadcom-bluetooth.dtsi
-index a10d25ac8f7b..f9dde0eef527 100644
---- a/arch/arm/boot/dts/rk3288-veyron-broadcom-bluetooth.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron-broadcom-bluetooth.dtsi
-@@ -13,10 +13,10 @@ bluetooth {
- 			    <&bt_dev_wake>;
+diff --git a/arch/arm/boot/dts/rv1108-elgin-r1.dts b/arch/arm/boot/dts/rv1108-elgin-r1.dts
+index 0c99a5934ebf..2d9994379eb2 100644
+--- a/arch/arm/boot/dts/rv1108-elgin-r1.dts
++++ b/arch/arm/boot/dts/rv1108-elgin-r1.dts
+@@ -83,7 +83,7 @@ rk805: pmic@18 {
  
- 		compatible = "brcm,bcm43540-bt";
--		host-wakeup-gpios	= <&gpio4 RK_PD7 GPIO_ACTIVE_HIGH>;
--		shutdown-gpios		= <&gpio4 RK_PD5 GPIO_ACTIVE_HIGH>;
--		device-wakeup-gpios	= <&gpio4 RK_PD2 GPIO_ACTIVE_HIGH>;
--		max-speed		= <3000000>;
--		brcm,bt-pcm-int-params	= [01 02 00 01 01];
-+		host-wakeup-gpios = <&gpio4 RK_PD7 GPIO_ACTIVE_HIGH>;
-+		shutdown-gpios = <&gpio4 RK_PD5 GPIO_ACTIVE_HIGH>;
-+		device-wakeup-gpios = <&gpio4 RK_PD2 GPIO_ACTIVE_HIGH>;
-+		max-speed = <3000000>;
-+		brcm,bt-pcm-int-params = [01 02 00 01 01];
- 	};
- };
+ 		regulators {
+ 			vdd_core: DCDC_REG1 {
+-				regulator-name= "vdd_core";
++				regulator-name = "vdd_core";
+ 				regulator-min-microvolt = <700000>;
+ 				regulator-max-microvolt = <1500000>;
+ 				regulator-always-on;
+@@ -95,7 +95,7 @@ regulator-state-mem {
+ 			};
+ 
+ 			vdd_buck2: DCDC_REG2 {
+-				regulator-name= "vdd_buck2";
++				regulator-name = "vdd_buck2";
+ 				regulator-min-microvolt = <2200000>;
+ 				regulator-max-microvolt = <2200000>;
+ 				regulator-always-on;
+@@ -106,7 +106,7 @@ regulator-state-mem {
+ 			};
+ 
+ 			vcc_ddr: DCDC_REG3 {
+-				regulator-name= "vcc_ddr";
++				regulator-name = "vcc_ddr";
+ 				regulator-always-on;
+ 				regulator-boot-on;
+ 				regulator-state-mem {
+@@ -115,7 +115,7 @@ regulator-state-mem {
+ 			};
+ 
+ 			vcc_io: DCDC_REG4 {
+-				regulator-name= "vcc_io";
++				regulator-name = "vcc_io";
+ 				regulator-min-microvolt = <3300000>;
+ 				regulator-max-microvolt = <3300000>;
+ 				regulator-always-on;
+@@ -127,7 +127,7 @@ regulator-state-mem {
+ 			};
+ 
+ 			vdd_10: LDO_REG1 {
+-				regulator-name= "vdd_10";
++				regulator-name = "vdd_10";
+ 				regulator-min-microvolt = <1000000>;
+ 				regulator-max-microvolt = <1000000>;
+ 				regulator-always-on;
+@@ -138,7 +138,7 @@ regulator-state-mem {
+ 			};
+ 
+ 			vcc_18: LDO_REG2 {
+-				regulator-name= "vcc_18";
++				regulator-name = "vcc_18";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+ 				regulator-always-on;
+@@ -149,7 +149,7 @@ regulator-state-mem {
+ 			};
+ 
+ 			vdd10_pmu: LDO_REG3 {
+-				regulator-name= "vdd10_pmu";
++				regulator-name = "vdd10_pmu";
+ 				regulator-min-microvolt = <1000000>;
+ 				regulator-max-microvolt = <1000000>;
+ 				regulator-always-on;
+diff --git a/arch/arm/boot/dts/rv1108-evb.dts b/arch/arm/boot/dts/rv1108-evb.dts
+index 46cad7cb94bf..ef150f4ee99d 100644
+--- a/arch/arm/boot/dts/rv1108-evb.dts
++++ b/arch/arm/boot/dts/rv1108-evb.dts
+@@ -96,7 +96,7 @@ rk805: pmic@18 {
+ 
+ 		regulators {
+ 			vdd_core: DCDC_REG1 {
+-				regulator-name= "vdd_core";
++				regulator-name = "vdd_core";
+ 				regulator-min-microvolt = <700000>;
+ 				regulator-max-microvolt = <1500000>;
+ 				regulator-always-on;
+@@ -108,7 +108,7 @@ regulator-state-mem {
+ 			};
+ 
+ 			vdd_cam: DCDC_REG2 {
+-				regulator-name= "vdd_cam";
++				regulator-name = "vdd_cam";
+ 				regulator-min-microvolt = <700000>;
+ 				regulator-max-microvolt = <2000000>;
+ 				regulator-state-mem {
+@@ -117,7 +117,7 @@ regulator-state-mem {
+ 			};
+ 
+ 			vcc_ddr: DCDC_REG3 {
+-				regulator-name= "vcc_ddr";
++				regulator-name = "vcc_ddr";
+ 				regulator-always-on;
+ 				regulator-boot-on;
+ 				regulator-state-mem {
+@@ -126,7 +126,7 @@ regulator-state-mem {
+ 			};
+ 
+ 			vcc_io: DCDC_REG4 {
+-				regulator-name= "vcc_io";
++				regulator-name = "vcc_io";
+ 				regulator-min-microvolt = <3300000>;
+ 				regulator-max-microvolt = <3300000>;
+ 				regulator-always-on;
+@@ -138,7 +138,7 @@ regulator-state-mem {
+ 			};
+ 
+ 			vdd_10: LDO_REG1 {
+-				regulator-name= "vdd_10";
++				regulator-name = "vdd_10";
+ 				regulator-min-microvolt = <1000000>;
+ 				regulator-max-microvolt = <1000000>;
+ 				regulator-always-on;
+@@ -149,7 +149,7 @@ regulator-state-mem {
+ 			};
+ 
+ 			vcc_18: LDO_REG2 {
+-				regulator-name= "vcc_18";
++				regulator-name = "vcc_18";
+ 				regulator-min-microvolt = <1800000>;
+ 				regulator-max-microvolt = <1800000>;
+ 				regulator-always-on;
+@@ -160,7 +160,7 @@ regulator-state-mem {
+ 			};
+ 
+ 			vdd10_pmu: LDO_REG3 {
+-				regulator-name= "vdd10_pmu";
++				regulator-name = "vdd10_pmu";
+ 				regulator-min-microvolt = <1000000>;
+ 				regulator-max-microvolt = <1000000>;
+ 				regulator-always-on;
+diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
+index c158a7ea86ec..abf3006f0a84 100644
+--- a/arch/arm/boot/dts/rv1108.dtsi
++++ b/arch/arm/boot/dts/rv1108.dtsi
+@@ -748,7 +748,7 @@ sfc_clk: sfc-clk {
+ 
+ 		gmac {
+ 			rmii_pins: rmii-pins {
+-				rockchip,pins =	<1 RK_PC5 2 &pcfg_pull_none>,
++				rockchip,pins = <1 RK_PC5 2 &pcfg_pull_none>,
+ 						<1 RK_PC3 2 &pcfg_pull_none>,
+ 						<1 RK_PC4 2 &pcfg_pull_none>,
+ 						<1 RK_PB2 3 &pcfg_pull_none_drv_12ma>,
 -- 
 2.34.1
 
