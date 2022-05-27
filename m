@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 698A8C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 May 2022 14:33:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B248C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 May 2022 14:33:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=TgKkv21bTWCywdjwLTKAV1mrRCFbqgKeZwvj7q74W5g=; b=tTsOJmNR0mqoHx
-	JdUChypY42qy1oJWWr+a9pT1sDrNFq5KUbKdlTVRdppK1IK4+vma27GzMr1LeGWLZ8kEC/3E2cOD3
-	l+o2geSkPBrZ5uKNDbZe1D5AMuqHn7iDjJP7fl5WfieYnzMMmN7QtP2WyXxjzrTu6cmyjr9u3+BFr
-	zvePvA5cbYfg0mtpq3/VvySuLJULLayHYYZgmYgtgDIYYBu6i/wAHURhV6wYATw1TIgyJ3AZNEFWB
-	Fo7qj+P0aHUQiooKaeSTaDfDpWhEKrxHyY3NHO0T8ZRsk6KHbNnA7maIuKwr4B5kDDDb87Fo8Lcc9
-	qec799Wuy5Ew2cNwSwjw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Z5VVnr2evjpf2/a8pt6i5/+5+EY2Cnt+C6cE2UQpCt4=; b=wDxro5ITdNNxm3
+	Kh+UOXQ5Iu6xiFm/JOCZgarc/FgXMx8TBjAXtohk22feFbwAT2uZ5RKGh/87aJHmf4dNDY/8YDWX4
+	sFUUvN6baubzXpetP5Bb9v1ImIx03vUYX8fZu09BtsBZiPHdg6dnIeYIj0TTgOVJBCv/PUojah4rb
+	Q8pPODGyeLC4SdrsX8iAi6ohF6adEwoK3DRNdKzGtmtWVb0Bq2XjEfqtFfFIyzkE/poOSj1VTn+DF
+	/az0DBpeaWYFR0vjfNCZqkmmqQZ9ZV5UFbZx0vMxa4dd0r3JQl604iimcAe5hgh0p2fDQMyq3M74f
+	3n5P+IUVkCdaO2utnPyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nub1T-000GWM-NM; Fri, 27 May 2022 14:33:03 +0000
+	id 1nub1m-000GhB-GW; Fri, 27 May 2022 14:33:22 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nub0N-000FuP-Hc; Fri, 27 May 2022 14:31:59 +0000
+	id 1nub0Q-000FwY-8a; Fri, 27 May 2022 14:32:00 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
 	(Authenticated sender: benjamin.gaignard)
-	with ESMTPSA id 4E8FF1F462A2
+	with ESMTPSA id 52B0C1F462B6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1653661909;
-	bh=DnfHieYj/Muzgq3lfRgmbn4LPfXwx7ExtPybg7p/isE=;
-	h=From:To:Cc:Subject:Date:From;
-	b=gk84JhoWJ0zsMuiSu1QnIYBbd1v/Y5BF28C3Jn9bmhjCOOPKKFV2M/H/ZmLdVEjPt
-	 VEPwLsYIURS587bNJ3j7vnmM12kTC5Gq6D59kDmW5QmKqAlkTLTfwAS3ZlvIEVII8y
-	 Ne427IsPYBQefbxUP71SGbMHWBdkwqBhiEcvBsuT3HbQbt9XWDwDg2a4aIxoKwprYu
-	 5kFg5gNG1pGSzYnnFNNykgENicp7E6kqf7TxqZYw32X6LgYbRpMoBLD5tjbhpH1kir
-	 twdXR3k9DFlgUkfqGa8WoHV1FnKbuhrSUPkKnJsvHB84kJXt/tA7+Nk4rT91rwcV5U
-	 LUi7/oiTht0Wg==
+	s=mail; t=1653661914;
+	bh=kTK81QSVDEiBs3FKcIITrIMvJ0XxOzSqRvqrNtGhvm4=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=XfRDCiolZPfNP9W38huzBihhmZafjjhzfPh0FQuho+5/P5c2jUR7gxyqlcJrecAhg
+	 aU+yLpZmVF7lr+jrggq77++XGHyeHvQi04L27dhzR+Xz6xv5bqOVh4hMWXAbon5vov
+	 BzBsom9QBpM8ZMpLoJRJCVOBQd7muR0fOkw5ReGmF0U9DsYIY5zF59999XTxCt2cgW
+	 xRKApoR6Hqf7Wjti67aT4beHP0q/9/ZrMAAMwbZD3H4f0uoHAjoVDEadfZrrKIyDsO
+	 jxVsArLd6uhVPoYQsRXuUHBqWcV5CW4aSTG3ccm7JcssYBQaR+2wgfU0UedoIJ+C1N
+	 Nsfd06ERRX2lg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -58,14 +58,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v6 00/17] Move HEVC stateless controls out of staging
-Date: Fri, 27 May 2022 16:31:17 +0200
-Message-Id: <20220527143134.3360174-1-benjamin.gaignard@collabora.com>
+Subject: [PATCH v6 07/17] media: uapi: HEVC: Add SEI pic struct flags
+Date: Fri, 27 May 2022 16:31:24 +0200
+Message-Id: <20220527143134.3360174-8-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220527143134.3360174-1-benjamin.gaignard@collabora.com>
+References: <20220527143134.3360174-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220527_073155_903329_7501268F 
-X-CRM114-Status: GOOD (  18.22  )
+X-CRM114-CacheID: sfid-20220527_073158_726296_40BF4C3E 
+X-CRM114-Status: UNSURE (   9.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,119 +85,113 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series aims to make HEVC uapi stable and usable for hardware
-decoder. HEVC uapi is used by 2 mainlined drivers (Cedrus and Hantro)
-and 2 out of the tree drivers (rkvdec and RPI).
+The possible values for the field_pic field in the v4l2_hevc_dpb_entry
+structure are defined in the table D.2 in HEVC specification section D.3.3.
+Add flags and documentation for each of them.
 
-version 6:
-- Add short_term_ref_pic_set_size and long_term_ref_pic_set_size
-  in v4l2_ctrl_hevc_decode_params structure.
-- Change slice_pic_order_cnt type to s32 to match with PoC type.
-- Set V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag automatically when using
-  V4L2_CID_STATELESS_HEVC_SLICE_PARAMS control.
-- Add a define for max slices count
-- Stop using Hantro dedicated control.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../media/v4l/ext-ctrls-codec.rst             | 54 +++++++++++++++++++
+ include/media/hevc-ctrls.h                    | 14 +++++
+ 2 files changed, 68 insertions(+)
 
-This version has been tested with these branches:
-- GStreamer: https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/tree/HEVC_aligned_with_kernel_5.15
-- Linux: https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/tree/HEVC_UAPI_V6
-
-With patches to decode 10-bits bitstream and produce P010 frames the Fluster score 
-which was 77/147 before, is now 138/147.
-The 10-bits series will comes after this because of it dependency to
-uAPI change. If you are curious you can find the WIP branch here:
-https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/WIP_HEVC_UAPI_V6
-
-The 9 failing tests are:
-- CONFWIN_A_Sony_1 which contains conformance_window_flag that isn't supported 
-  by the hardware (but visually ok aside a pixel shift).
-- PICSIZE_{A,B,C,D}_Bossen_1 where resolutions are to big for Hantro hardware.
-- TSKIP_A_MS_3 is ok when testing alone but fail (corrupted lines on the
-  first frame) when running it after a couple of other tests.
-- VPSSPSPPS_A_MainConcept_1 where there is an issue on gst parser side 
-  because of VPS/SPS/PPS ordering
-- WPP_D_ericsson_MAIN_2 and WPP_D_ericsson_MAIN10_2 are visually ok but some 
-  difference exist on 5 decoded frames. Some pixels values are no the same 
-  the very end of few lines.
-
-version 6:
-- Stop using Hantro dedicated control and compute the number
-  of bytes to skip inside the driver.
-- Rebased on media_tree/master
-
-version 5:
-- Change __u16 pic_order_cnt[2] into __s32 pic_order_cnt_val in
-  hevc_dpb_entry structure
-- Add defines for SEI pic_struct values (patch 4)
-- Fix numbers of bits computation in cedrus_h265_skip_bits() parameters
-- Fix num_short_term_ref_pic_sets and num_long_term_ref_pics_sps
-  documentation (patch 8)
-- Rebased on v5-18-rc1
-
-GStreamer H265 decoder plugin aligned with HEVC uAPI v5:
-https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/tree/HEVC_aligned_with_kernel_5.15
-
-Version 4:
-- Add num_entry_point_offsets field in  struct v4l2_ctrl_hevc_slice_params
-- Fix V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS name
-- Initialize control V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS
-- Fix space/tab issue in kernel-doc
-- Add patch to change data_bit_offset definition
-- Fix hantro-media SPDX license
-- put controls under stateless section in v4l2-ctrls-defs.c
-
-At the end fluster tests results on IMX8MQ is 77/147 for HEVC codec.
-
-Benjamin Gaignard (14):
-  media: uapi: HEVC: Add missing fields in HEVC controls
-  media: uapi: HEVC: Rename HEVC stateless controls with STATELESS
-    prefix
-  media: uapi: HEVC: Change pic_order_cnt definition in
-    v4l2_hevc_dpb_entry
-  media: uapi: HEVC: Add SEI pic struct flags
-  media: uapi: HEVC: Add documentation to uAPI structure
-  media: uapi: HEVC: Define V4L2_CID_STATELESS_HEVC_SLICE_PARAMS as a
-    dynamic array
-  media: uapi: Move parsed HEVC pixel format out of staging
-  media: uapi: Add V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
-  media: uapi: Move the HEVC stateless control type out of staging
-  media: controls: Log HEVC stateless control in .std_log
-  media: hantro: Stop using Hantro dedicated control
-  media: uapi: HEVC: fix padding in v4l2 control structures
-  media: uapi: Change data_bit_offset definition
-  media: uapi: move HEVC stateless controls out of staging
-
-Hans Verkuil (3):
-  videodev2.h: add V4L2_CTRL_FLAG_DYNAMIC_ARRAY
-  v4l2-ctrls: add support for dynamically allocated arrays.
-  vivid: add dynamic array test control
-
- .../media/v4l/ext-ctrls-codec-stateless.rst   | 897 ++++++++++++++++++
- .../media/v4l/ext-ctrls-codec.rst             | 780 ---------------
- .../media/v4l/pixfmt-compressed.rst           |   7 +-
- .../media/v4l/vidioc-g-ext-ctrls.rst          |  20 +
- .../media/v4l/vidioc-queryctrl.rst            |   8 +
- .../media/videodev2.h.rst.exceptions          |   5 +
- .../media/test-drivers/vivid/vivid-ctrls.c    |  15 +
- drivers/media/v4l2-core/v4l2-ctrls-api.c      | 103 +-
- drivers/media/v4l2-core/v4l2-ctrls-core.c     | 206 +++-
- drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  38 +-
- drivers/media/v4l2-core/v4l2-ctrls-priv.h     |   3 +-
- drivers/media/v4l2-core/v4l2-ctrls-request.c  |  13 +-
- drivers/staging/media/hantro/hantro_drv.c     |  62 +-
- .../staging/media/hantro/hantro_g2_hevc_dec.c |  69 +-
- drivers/staging/media/hantro/hantro_hevc.c    |  10 +-
- drivers/staging/media/hantro/hantro_hw.h      |   4 +-
- drivers/staging/media/sunxi/cedrus/cedrus.c   |  24 +-
- .../staging/media/sunxi/cedrus/cedrus_dec.c   |  10 +-
- .../staging/media/sunxi/cedrus/cedrus_h265.c  |   6 +-
- include/media/hevc-ctrls.h                    | 250 -----
- include/media/v4l2-ctrls.h                    |  48 +-
- include/uapi/linux/v4l2-controls.h            | 458 +++++++++
- include/uapi/linux/videodev2.h                |  13 +
- 23 files changed, 1830 insertions(+), 1219 deletions(-)
- delete mode 100644 include/media/hevc-ctrls.h
-
+diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+index a7803b241612..1ccf6dda61b3 100644
+--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
++++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+@@ -3218,6 +3218,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     * - __u8
+       - ``field_pic``
+       - Whether the reference is a field picture or a frame.
++        See :ref:`HEVC dpb field pic Flags <hevc_dpb_field_pic_flags>`
+     * - __u16
+       - ``pic_order_cnt[2]``
+       - The picture order count of the reference. Only the first element of the
+@@ -3231,6 +3232,59 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+ 
+     \normalsize
+ 
++.. _hevc_dpb_field_pic_flags:
++
++``HEVC dpb field pic Flags``
++
++.. raw:: latex
++
++    \scriptsize
++
++.. flat-table::
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_FRAME``
++      - 0
++      - (progressive) Frame
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_FIELD``
++      - 1
++      - Top field
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_FIELD``
++      - 2
++      - Bottom field
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_BOTTOM``
++      - 3
++      - Top field, bottom field, in that order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_TOP``
++      - 4
++      - Bottom field, top field, in that order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_BOTTOM_TOP``
++      - 5
++      - Top field, bottom field, top field repeated, in that order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_TOP_BOTTOM``
++      - 6
++      - Bottom field, top field, bottom field repeated, in that order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_FRAME_DOUBLING``
++      - 7
++      - Frame doubling
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_FRAME_TRIPLING``
++      - 8
++      - Frame tripling
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_PAIRED_PREVIOUS_BOTTOM``
++      - 9
++      - Top field paired with previous bottom field in output order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_PAIRED_PREVIOUS_TOP``
++      - 10
++      - Bottom field paired with previous top field in output order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_PAIRED_NEXT_BOTTOM``
++      - 11
++      - Top field paired with next bottom field in output order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_PAIRED_NEXT_TOP``
++      - 12
++      - Bottom field paired with next top field in output order
++
+ .. c:type:: v4l2_hevc_pred_weight_table
+ 
+ .. raw:: latex
+diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+index 01c1795c57a9..f3695ab44389 100644
+--- a/include/media/hevc-ctrls.h
++++ b/include/media/hevc-ctrls.h
+@@ -132,6 +132,20 @@ struct v4l2_ctrl_hevc_pps {
+ 
+ #define V4L2_HEVC_DPB_ENTRY_LONG_TERM_REFERENCE	0x01
+ 
++#define V4L2_HEVC_SEI_PIC_STRUCT_FRAME				0
++#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_FIELD			1
++#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_FIELD			2
++#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_BOTTOM			3
++#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_TOP			4
++#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_BOTTOM_TOP			5
++#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_TOP_BOTTOM		6
++#define V4L2_HEVC_SEI_PIC_STRUCT_FRAME_DOUBLING			7
++#define V4L2_HEVC_SEI_PIC_STRUCT_FRAME_TRIPLING			8
++#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_PAIRED_PREVIOUS_BOTTOM	9
++#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_PAIRED_PREVIOUS_TOP	10
++#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_PAIRED_NEXT_BOTTOM		11
++#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_PAIRED_NEXT_TOP		12
++
+ #define V4L2_HEVC_DPB_ENTRIES_NUM_MAX		16
+ 
+ struct v4l2_hevc_dpb_entry {
 -- 
 2.32.0
 
