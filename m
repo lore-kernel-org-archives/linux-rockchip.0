@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 095D7C433FE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 May 2022 14:35:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98DCEC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 May 2022 14:35:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4Gimiw6ZSHnN6MwYBa6lFYsRiU8rTWuLzv8xpEyGBIA=; b=1smdWBpmr4Y5Eu
-	gxZFFhHFUpB6B+4+kPRmtG+BsPxVNbz9dAaTFeKjNtBfDvpaRDnMhuf9GkkLAqn+BXevkqzgyWHLA
-	KER9oDodbr+g9rgDYvx4WJudZLmbElqET+fpJZTuCby8EZQuwfwSywWwlrxhNDp3LcacviJpkk16j
-	OY/3wZrWtJxvXOEdd9MmhYseOS1McWv2e1NvFkjFW3T5Nso4rav1V7jyOcgUu4z3YPOuVORIz5tCJ
-	CfN4TNaT1nffA6sTkZjNGLDnLVdiHWALt5S9rUlamWNMVoS4jPRE8Zp78IwumXJiXlEMAloBfidUx
-	3GTmv2TeDHRm7LyCUl9A==;
+	List-Owner; bh=fGp6KoEgk7ctC8rmcjUZlIX+B26/oYo2JNsnTl9Kojo=; b=xCDjEpzriBtQVZ
+	Dp46BNYZ4GBhaH2zHs5o6dQAMmX27QxWU3iYTJflk2xeMhfCBI6WAiCg30r7MmZm4QASUxQJ7nWXu
+	G3sOhlxrzjexPqBX1moYyOXMEki3fKhIJxR863xZDrmKen5WT2ysA9ip9DmTVuOWLO2bO5Amf5TcY
+	x8LAxcJLBMTRamcLRMxE1Y2pshQO9Zv6fY6RhApssz3hdhxNZR7Ei89bBxZA0axTHsrPtZTrcZpw0
+	DKRDiH6z++GDf44/YWfk7eC43Ek6lcWnsltWNiYTRd6OIVWBQgmEH/rh3OQ9ECbPpj0KsVamjV7fK
+	++ARYJLY11eJuOaW+Ahw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nub3U-000HWu-It; Fri, 27 May 2022 14:35:08 +0000
+	id 1nub3T-000HWQ-Tl; Fri, 27 May 2022 14:35:07 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nub0S-000FyE-0v; Fri, 27 May 2022 14:32:03 +0000
+	id 1nub0Q-000FwV-5g; Fri, 27 May 2022 14:32:03 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
 	(Authenticated sender: benjamin.gaignard)
-	with ESMTPSA id 681D51F462D2
+	with ESMTPSA id DF3011F462B1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1653661917;
-	bh=SzxOOtr+7skGYpIQjWGLYLdEvChiAFV4FuuYZNx0NRw=;
+	s=mail; t=1653661913;
+	bh=RqRKnKbkyvWoTFMbG2kF5of2Rk4avVtJYGGiiJKAuGU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lat7gH+YeaTnFv2giE3/YBKJs09/Y4kE1U/ajM7Zd5I2sxNQPs4NnNH82hoFk4ljw
-	 JzgrmQ7rHMFwvCXvAMp3m9MK+8dBLzekDlp7G5kFl7BQ49ovOfYMZTIwpu2yNDgvgq
-	 FM/uhbE52Mwc1JNk5bDJqg62e2n6iaPtV3wNhCFDxq9zsmCMnmKZRZSR7J7vdrUG58
-	 g26jKWAuSE0apuw7lhrR82zqfwQZASXjlyqAh2x+Wyi/mWsQm5849WFc+MbVk0Rsj0
-	 NmUbxFkBddW8nrpvjHXBoWo3an6QBqOFP/+wrj9s7XhCHSObHjBWRlMGGGq+e4agjX
-	 X13ha08VshXaQ==
+	b=ciR3zmRWd1Rdli66Zkktxcy+SNMHthFp++cDsYUqoIgcY7Q0Fl6q8mydq+y/8Tozu
+	 hOzzPDA8DWlTilSYYbs8hv5d4TcUmd9jZQNJPCjGo/+ImenAkL2H6GSoCw7JmpeMpJ
+	 1cM+GcDS/Z57rYvAvjmKBdeA6u5IVR0hNCKJNPvgbE0j2Jj5C6EYYM13VWddLnCBOQ
+	 MdjbMq6mD1XqSJdeoncVPB7tAuhxd+Rx5vg31HBeFQUHaeS9UTmdHSVktVZOYT7HFT
+	 wAIcQy02of+xV7ql1has9DzPD93KarBd1MAOZjHhoxjUORmYi1yDmYNjglYDKTM1W3
+	 OZB5nhd4HwMUg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -58,16 +58,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v6 10/17] media: uapi: Move parsed HEVC pixel format out of staging
-Date: Fri, 27 May 2022 16:31:27 +0200
-Message-Id: <20220527143134.3360174-11-benjamin.gaignard@collabora.com>
+Subject: [PATCH v6 05/17] media: uapi: HEVC: Rename HEVC stateless controls with STATELESS prefix
+Date: Fri, 27 May 2022 16:31:22 +0200
+Message-Id: <20220527143134.3360174-6-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220527143134.3360174-1-benjamin.gaignard@collabora.com>
 References: <20220527143134.3360174-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220527_073200_278514_37741023 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20220527_073158_577272_5022ED61 
+X-CRM114-Status: GOOD (  18.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,57 +84,461 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Move HEVC pixel format since we are ready to stabilize the uAPI
+Change HEVC stateless controls names to V4L2_CID_STATELESS_HEVC instead
+of V4L2_CID_MPEG_VIDEO_HEVC be coherent with v4l2 naming convention.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- Documentation/userspace-api/media/v4l/pixfmt-compressed.rst | 5 -----
- include/media/hevc-ctrls.h                                  | 3 ---
- include/uapi/linux/videodev2.h                              | 1 +
- 3 files changed, 1 insertion(+), 8 deletions(-)
+ .../media/v4l/ext-ctrls-codec.rst             | 26 +++++++--------
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c     | 32 +++++++++----------
+ drivers/staging/media/hantro/hantro_drv.c     | 26 +++++++--------
+ drivers/staging/media/hantro/hantro_hevc.c    |  8 ++---
+ drivers/staging/media/sunxi/cedrus/cedrus.c   | 24 +++++++-------
+ .../staging/media/sunxi/cedrus/cedrus_dec.c   | 10 +++---
+ include/media/hevc-ctrls.h                    | 26 +++++++--------
+ 7 files changed, 76 insertions(+), 76 deletions(-)
 
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst b/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst
-index 967fc803ef94..c352d91a73d8 100644
---- a/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst
-@@ -215,11 +215,6 @@ Compressed Formats
- 	See the :ref:`associated Codec Control IDs <v4l2-mpeg-hevc>`.
- 	Buffers associated with this pixel format must contain the appropriate
- 	number of macroblocks to decode a full corresponding frame.
--
--	.. note::
--
--	   This format is not yet part of the public kernel API and it
--	   is expected to change.
-     * .. _V4L2-PIX-FMT-FWHT:
+diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+index aa7556e200c9..160b91537c09 100644
+--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
++++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+@@ -2661,7 +2661,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
  
-       - ``V4L2_PIX_FMT_FWHT``
+ .. _v4l2-mpeg-hevc:
+ 
+-``V4L2_CID_MPEG_VIDEO_HEVC_SPS (struct)``
++``V4L2_CID_STATELESS_HEVC_SPS (struct)``
+     Specifies the Sequence Parameter Set fields (as extracted from the
+     bitstream) for the associated HEVC slice data.
+     These bitstream parameters are defined according to :ref:`hevc`.
+@@ -2814,7 +2814,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+ 
+     \normalsize
+ 
+-``V4L2_CID_MPEG_VIDEO_HEVC_PPS (struct)``
++``V4L2_CID_STATELESS_HEVC_PPS (struct)``
+     Specifies the Picture Parameter Set fields (as extracted from the
+     bitstream) for the associated HEVC slice data.
+     These bitstream parameters are defined according to :ref:`hevc`.
+@@ -2967,7 +2967,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+ 
+     \normalsize
+ 
+-``V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS (struct)``
++``V4L2_CID_STATELESS_HEVC_SLICE_PARAMS (struct)``
+     Specifies various slice-specific parameters, especially from the NAL unit
+     header, general slice segment header and weighted prediction parameter
+     parts of the bitstream.
+@@ -3132,7 +3132,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+ 
+     \normalsize
+ 
+-``V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX (struct)``
++``V4L2_CID_STATELESS_HEVC_SCALING_MATRIX (struct)``
+     Specifies the HEVC scaling matrix parameters used for the scaling process
+     for transform coefficients.
+     These matrix and parameters are defined according to :ref:`hevc`.
+@@ -3282,7 +3282,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+ 
+     \normalsize
+ 
+-``V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE (enum)``
++``V4L2_CID_STATELESS_HEVC_DECODE_MODE (enum)``
+     Specifies the decoding mode to use. Currently exposes slice-based and
+     frame-based decoding but new modes might be added later on.
+     This control is used as a modifier for V4L2_PIX_FMT_HEVC_SLICE
+@@ -3297,7 +3297,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+        This menu control is not yet part of the public kernel API and
+        it is expected to change.
+ 
+-.. c:type:: v4l2_mpeg_video_hevc_decode_mode
++.. c:type:: v4l2_stateless_hevc_decode_mode
+ 
+ .. raw:: latex
+ 
+@@ -3310,11 +3310,11 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     :stub-columns: 0
+     :widths:       1 1 2
+ 
+-    * - ``V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_SLICE_BASED``
++    * - ``V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED``
+       - 0
+       - Decoding is done at the slice granularity.
+         The OUTPUT buffer must contain a single slice.
+-    * - ``V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED``
++    * - ``V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED``
+       - 1
+       - Decoding is done at the frame granularity.
+         The OUTPUT buffer must contain all slices needed to decode the
+@@ -3324,7 +3324,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+ 
+     \normalsize
+ 
+-``V4L2_CID_MPEG_VIDEO_HEVC_START_CODE (enum)``
++``V4L2_CID_STATELESS_HEVC_START_CODE (enum)``
+     Specifies the HEVC slice start code expected for each slice.
+     This control is used as a modifier for V4L2_PIX_FMT_HEVC_SLICE
+     pixel format. Applications that support V4L2_PIX_FMT_HEVC_SLICE
+@@ -3338,7 +3338,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+        This menu control is not yet part of the public kernel API and
+        it is expected to change.
+ 
+-.. c:type:: v4l2_mpeg_video_hevc_start_code
++.. c:type:: v4l2_stateless_hevc_start_code
+ 
+ .. tabularcolumns:: |p{9.2cm}|p{0.6cm}|p{7.5cm}|
+ 
+@@ -3347,13 +3347,13 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     :stub-columns: 0
+     :widths:       1 1 2
+ 
+-    * - ``V4L2_MPEG_VIDEO_HEVC_START_CODE_NONE``
++    * - ``V4L2_STATELESS_HEVC_START_CODE_NONE``
+       - 0
+       - Selecting this value specifies that HEVC slices are passed
+         to the driver without any start code. The bitstream data should be
+         according to :ref:`hevc` 7.3.1.1 General NAL unit syntax, hence
+         contains emulation prevention bytes when required.
+-    * - ``V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B``
++    * - ``V4L2_STATELESS_HEVC_START_CODE_ANNEX_B``
+       - 1
+       - Selecting this value specifies that HEVC slices are expected
+         to be prefixed by Annex B start codes. According to :ref:`hevc`
+@@ -3386,7 +3386,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     This provides a bitmask which consists of bits [0, LTR_COUNT-1].
+     This is applicable to the H264 and HEVC encoders.
+ 
+-``V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS (struct)``
++``V4L2_CID_STATELESS_HEVC_DECODE_PARAMS (struct)``
+     Specifies various decode parameters, especially the references picture order
+     count (POC) for all the lists (short, long, before, current, after) and the
+     number of entries for each of them.
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+index 16f42d2fd359..9f55503cd3d6 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+@@ -704,9 +704,9 @@ const char * const *v4l2_ctrl_get_menu(u32 id)
+ 		return hevc_tier;
+ 	case V4L2_CID_MPEG_VIDEO_HEVC_LOOP_FILTER_MODE:
+ 		return hevc_loop_filter_mode;
+-	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE:
++	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:
+ 		return hevc_decode_mode;
+-	case V4L2_CID_MPEG_VIDEO_HEVC_START_CODE:
++	case V4L2_CID_STATELESS_HEVC_START_CODE:
+ 		return hevc_start_code;
+ 	case V4L2_CID_CAMERA_ORIENTATION:
+ 		return camera_orientation;
+@@ -1003,13 +1003,6 @@ const char *v4l2_ctrl_get_name(u32 id)
+ 	case V4L2_CID_MPEG_VIDEO_HEVC_SIZE_OF_LENGTH_FIELD:	return "HEVC Size of Length Field";
+ 	case V4L2_CID_MPEG_VIDEO_REF_NUMBER_FOR_PFRAMES:	return "Reference Frames for a P-Frame";
+ 	case V4L2_CID_MPEG_VIDEO_PREPEND_SPSPPS_TO_IDR:		return "Prepend SPS and PPS to IDR";
+-	case V4L2_CID_MPEG_VIDEO_HEVC_SPS:			return "HEVC Sequence Parameter Set";
+-	case V4L2_CID_MPEG_VIDEO_HEVC_PPS:			return "HEVC Picture Parameter Set";
+-	case V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS:		return "HEVC Slice Parameters";
+-	case V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX:		return "HEVC Scaling Matrix";
+-	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS:		return "HEVC Decode Parameters";
+-	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
+-	case V4L2_CID_MPEG_VIDEO_HEVC_START_CODE:		return "HEVC Start Code";
+ 
+ 	/* CAMERA controls */
+ 	/* Keep the order of the 'case's the same as in v4l2-controls.h! */
+@@ -1188,6 +1181,13 @@ const char *v4l2_ctrl_get_name(u32 id)
+ 	case V4L2_CID_STATELESS_MPEG2_QUANTISATION:		return "MPEG-2 Quantisation Matrices";
+ 	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:	return "VP9 Probabilities Updates";
+ 	case V4L2_CID_STATELESS_VP9_FRAME:			return "VP9 Frame Decode Parameters";
++	case V4L2_CID_STATELESS_HEVC_SPS:			return "HEVC Sequence Parameter Set";
++	case V4L2_CID_STATELESS_HEVC_PPS:			return "HEVC Picture Parameter Set";
++	case V4L2_CID_STATELESS_HEVC_SLICE_PARAMS:		return "HEVC Slice Parameters";
++	case V4L2_CID_STATELESS_HEVC_SCALING_MATRIX:		return "HEVC Scaling Matrix";
++	case V4L2_CID_STATELESS_HEVC_DECODE_PARAMS:		return "HEVC Decode Parameters";
++	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
++	case V4L2_CID_STATELESS_HEVC_START_CODE:		return "HEVC Start Code";
+ 
+ 	/* Colorimetry controls */
+ 	/* Keep the order of the 'case's the same as in v4l2-controls.h! */
+@@ -1363,8 +1363,8 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
+ 	case V4L2_CID_MPEG_VIDEO_HEVC_SIZE_OF_LENGTH_FIELD:
+ 	case V4L2_CID_MPEG_VIDEO_HEVC_TIER:
+ 	case V4L2_CID_MPEG_VIDEO_HEVC_LOOP_FILTER_MODE:
+-	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE:
+-	case V4L2_CID_MPEG_VIDEO_HEVC_START_CODE:
++	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:
++	case V4L2_CID_STATELESS_HEVC_START_CODE:
+ 	case V4L2_CID_STATELESS_H264_DECODE_MODE:
+ 	case V4L2_CID_STATELESS_H264_START_CODE:
+ 	case V4L2_CID_CAMERA_ORIENTATION:
+@@ -1502,19 +1502,19 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
+ 	case V4L2_CID_STATELESS_VP8_FRAME:
+ 		*type = V4L2_CTRL_TYPE_VP8_FRAME;
+ 		break;
+-	case V4L2_CID_MPEG_VIDEO_HEVC_SPS:
++	case V4L2_CID_STATELESS_HEVC_SPS:
+ 		*type = V4L2_CTRL_TYPE_HEVC_SPS;
+ 		break;
+-	case V4L2_CID_MPEG_VIDEO_HEVC_PPS:
++	case V4L2_CID_STATELESS_HEVC_PPS:
+ 		*type = V4L2_CTRL_TYPE_HEVC_PPS;
+ 		break;
+-	case V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS:
++	case V4L2_CID_STATELESS_HEVC_SLICE_PARAMS:
+ 		*type = V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS;
+ 		break;
+-	case V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX:
++	case V4L2_CID_STATELESS_HEVC_SCALING_MATRIX:
+ 		*type = V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX;
+ 		break;
+-	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS:
++	case V4L2_CID_STATELESS_HEVC_DECODE_PARAMS:
+ 		*type = V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS;
+ 		break;
+ 	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index ac232b5f7825..b38d9b3ab2ed 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -265,7 +265,7 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
+ 		if (sps->bit_depth_luma_minus8 != 0)
+ 			/* Only 8-bit is supported */
+ 			return -EINVAL;
+-	} else if (ctrl->id == V4L2_CID_MPEG_VIDEO_HEVC_SPS) {
++	} else if (ctrl->id == V4L2_CID_STATELESS_HEVC_SPS) {
+ 		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
+ 
+ 		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
+@@ -438,18 +438,18 @@ static const struct hantro_ctrl controls[] = {
+ 	}, {
+ 		.codec = HANTRO_HEVC_DECODER,
+ 		.cfg = {
+-			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE,
+-			.min = V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
+-			.max = V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
+-			.def = V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
++			.id = V4L2_CID_STATELESS_HEVC_DECODE_MODE,
++			.min = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
++			.max = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
++			.def = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_HEVC_DECODER,
+ 		.cfg = {
+-			.id = V4L2_CID_MPEG_VIDEO_HEVC_START_CODE,
+-			.min = V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
+-			.max = V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
+-			.def = V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
++			.id = V4L2_CID_STATELESS_HEVC_START_CODE,
++			.min = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
++			.max = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
++			.def = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_HEVC_DECODER,
+@@ -469,23 +469,23 @@ static const struct hantro_ctrl controls[] = {
+ 	}, {
+ 		.codec = HANTRO_HEVC_DECODER,
+ 		.cfg = {
+-			.id = V4L2_CID_MPEG_VIDEO_HEVC_SPS,
++			.id = V4L2_CID_STATELESS_HEVC_SPS,
+ 			.ops = &hantro_ctrl_ops,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_HEVC_DECODER,
+ 		.cfg = {
+-			.id = V4L2_CID_MPEG_VIDEO_HEVC_PPS,
++			.id = V4L2_CID_STATELESS_HEVC_PPS,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_HEVC_DECODER,
+ 		.cfg = {
+-			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS,
++			.id = V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_HEVC_DECODER,
+ 		.cfg = {
+-			.id = V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX,
++			.id = V4L2_CID_STATELESS_HEVC_SCALING_MATRIX,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_HEVC_DECODER,
+diff --git a/drivers/staging/media/hantro/hantro_hevc.c b/drivers/staging/media/hantro/hantro_hevc.c
+index f86c98e19177..f0b19d8017ba 100644
+--- a/drivers/staging/media/hantro/hantro_hevc.c
++++ b/drivers/staging/media/hantro/hantro_hevc.c
+@@ -163,22 +163,22 @@ int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx)
+ 	hantro_start_prepare_run(ctx);
+ 
+ 	ctrls->decode_params =
+-		hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS);
++		hantro_get_ctrl(ctx, V4L2_CID_STATELESS_HEVC_DECODE_PARAMS);
+ 	if (WARN_ON(!ctrls->decode_params))
+ 		return -EINVAL;
+ 
+ 	ctrls->scaling =
+-		hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX);
++		hantro_get_ctrl(ctx, V4L2_CID_STATELESS_HEVC_SCALING_MATRIX);
+ 	if (WARN_ON(!ctrls->scaling))
+ 		return -EINVAL;
+ 
+ 	ctrls->sps =
+-		hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_HEVC_SPS);
++		hantro_get_ctrl(ctx, V4L2_CID_STATELESS_HEVC_SPS);
+ 	if (WARN_ON(!ctrls->sps))
+ 		return -EINVAL;
+ 
+ 	ctrls->pps =
+-		hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_HEVC_PPS);
++		hantro_get_ctrl(ctx, V4L2_CID_STATELESS_HEVC_PPS);
+ 	if (WARN_ON(!ctrls->pps))
+ 		return -EINVAL;
+ 
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.c b/drivers/staging/media/sunxi/cedrus/cedrus.c
+index 68b3dcdb5df3..87be975a72b6 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus.c
+@@ -42,7 +42,7 @@ static int cedrus_try_ctrl(struct v4l2_ctrl *ctrl)
+ 		if (sps->bit_depth_luma_minus8 != 0)
+ 			/* Only 8-bit is supported */
+ 			return -EINVAL;
+-	} else if (ctrl->id == V4L2_CID_MPEG_VIDEO_HEVC_SPS) {
++	} else if (ctrl->id == V4L2_CID_STATELESS_HEVC_SPS) {
+ 		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
+ 		struct cedrus_ctx *ctx = container_of(ctrl->handler, struct cedrus_ctx, hdl);
+ 
+@@ -164,42 +164,42 @@ static const struct cedrus_control cedrus_controls[] = {
+ 	},
+ 	{
+ 		.cfg = {
+-			.id	= V4L2_CID_MPEG_VIDEO_HEVC_SPS,
++			.id	= V4L2_CID_STATELESS_HEVC_SPS,
+ 			.ops	= &cedrus_ctrl_ops,
+ 		},
+ 		.codec		= CEDRUS_CODEC_H265,
+ 	},
+ 	{
+ 		.cfg = {
+-			.id	= V4L2_CID_MPEG_VIDEO_HEVC_PPS,
++			.id	= V4L2_CID_STATELESS_HEVC_PPS,
+ 		},
+ 		.codec		= CEDRUS_CODEC_H265,
+ 	},
+ 	{
+ 		.cfg = {
+-			.id	= V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS,
++			.id	= V4L2_CID_STATELESS_HEVC_SLICE_PARAMS,
+ 		},
+ 		.codec		= CEDRUS_CODEC_H265,
+ 	},
+ 	{
+ 		.cfg = {
+-			.id	= V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX,
++			.id	= V4L2_CID_STATELESS_HEVC_SCALING_MATRIX,
+ 		},
+ 		.codec		= CEDRUS_CODEC_H265,
+ 	},
+ 	{
+ 		.cfg = {
+-			.id	= V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE,
+-			.max	= V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_SLICE_BASED,
+-			.def	= V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_SLICE_BASED,
++			.id	= V4L2_CID_STATELESS_HEVC_DECODE_MODE,
++			.max	= V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED,
++			.def	= V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED,
+ 		},
+ 		.codec		= CEDRUS_CODEC_H265,
+ 	},
+ 	{
+ 		.cfg = {
+-			.id	= V4L2_CID_MPEG_VIDEO_HEVC_START_CODE,
+-			.max	= V4L2_MPEG_VIDEO_HEVC_START_CODE_NONE,
+-			.def	= V4L2_MPEG_VIDEO_HEVC_START_CODE_NONE,
++			.id	= V4L2_CID_STATELESS_HEVC_START_CODE,
++			.max	= V4L2_STATELESS_HEVC_START_CODE_NONE,
++			.def	= V4L2_STATELESS_HEVC_START_CODE_NONE,
+ 		},
+ 		.codec		= CEDRUS_CODEC_H265,
+ 	},
+@@ -211,7 +211,7 @@ static const struct cedrus_control cedrus_controls[] = {
+ 	},
+ 	{
+ 		.cfg = {
+-			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS,
++			.id = V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
+ 		},
+ 		.codec		= CEDRUS_CODEC_H265,
+ 	},
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+index 9c7200299465..aabe6253078e 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
+@@ -65,15 +65,15 @@ void cedrus_device_run(void *priv)
+ 
+ 	case V4L2_PIX_FMT_HEVC_SLICE:
+ 		run.h265.sps = cedrus_find_control_data(ctx,
+-			V4L2_CID_MPEG_VIDEO_HEVC_SPS);
++			V4L2_CID_STATELESS_HEVC_SPS);
+ 		run.h265.pps = cedrus_find_control_data(ctx,
+-			V4L2_CID_MPEG_VIDEO_HEVC_PPS);
++			V4L2_CID_STATELESS_HEVC_PPS);
+ 		run.h265.slice_params = cedrus_find_control_data(ctx,
+-			V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS);
++			V4L2_CID_STATELESS_HEVC_SLICE_PARAMS);
+ 		run.h265.decode_params = cedrus_find_control_data(ctx,
+-			V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS);
++			V4L2_CID_STATELESS_HEVC_DECODE_PARAMS);
+ 		run.h265.scaling_matrix = cedrus_find_control_data(ctx,
+-			V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX);
++			V4L2_CID_STATELESS_HEVC_SCALING_MATRIX);
+ 		break;
+ 
+ 	case V4L2_PIX_FMT_VP8_FRAME:
 diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-index 140151609c96..a3c829ef531a 100644
+index 752a8d10782c..45734bd8fdfc 100644
 --- a/include/media/hevc-ctrls.h
 +++ b/include/media/hevc-ctrls.h
-@@ -13,9 +13,6 @@
+@@ -16,13 +16,13 @@
+ /* The pixel format isn't stable at the moment and will likely be renamed. */
+ #define V4L2_PIX_FMT_HEVC_SLICE v4l2_fourcc('S', '2', '6', '5') /* HEVC parsed slices */
  
- #include <linux/videodev2.h>
+-#define V4L2_CID_MPEG_VIDEO_HEVC_SPS		(V4L2_CID_CODEC_BASE + 1008)
+-#define V4L2_CID_MPEG_VIDEO_HEVC_PPS		(V4L2_CID_CODEC_BASE + 1009)
+-#define V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS	(V4L2_CID_CODEC_BASE + 1010)
+-#define V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX	(V4L2_CID_CODEC_BASE + 1011)
+-#define V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS	(V4L2_CID_CODEC_BASE + 1012)
+-#define V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE	(V4L2_CID_CODEC_BASE + 1015)
+-#define V4L2_CID_MPEG_VIDEO_HEVC_START_CODE	(V4L2_CID_CODEC_BASE + 1016)
++#define V4L2_CID_STATELESS_HEVC_SPS		(V4L2_CID_CODEC_BASE + 1008)
++#define V4L2_CID_STATELESS_HEVC_PPS		(V4L2_CID_CODEC_BASE + 1009)
++#define V4L2_CID_STATELESS_HEVC_SLICE_PARAMS	(V4L2_CID_CODEC_BASE + 1010)
++#define V4L2_CID_STATELESS_HEVC_SCALING_MATRIX	(V4L2_CID_CODEC_BASE + 1011)
++#define V4L2_CID_STATELESS_HEVC_DECODE_PARAMS	(V4L2_CID_CODEC_BASE + 1012)
++#define V4L2_CID_STATELESS_HEVC_DECODE_MODE	(V4L2_CID_CODEC_BASE + 1015)
++#define V4L2_CID_STATELESS_HEVC_START_CODE	(V4L2_CID_CODEC_BASE + 1016)
  
--/* The pixel format isn't stable at the moment and will likely be renamed. */
--#define V4L2_PIX_FMT_HEVC_SLICE v4l2_fourcc('S', '2', '6', '5') /* HEVC parsed slices */
--
- #define V4L2_CID_STATELESS_HEVC_SPS		(V4L2_CID_CODEC_BASE + 1008)
- #define V4L2_CID_STATELESS_HEVC_PPS		(V4L2_CID_CODEC_BASE + 1009)
- #define V4L2_CID_STATELESS_HEVC_SLICE_PARAMS	(V4L2_CID_CODEC_BASE + 1010)
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 9018aa984db3..37f9f23a67fe 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -712,6 +712,7 @@ struct v4l2_pix_format {
- #define V4L2_PIX_FMT_FWHT     v4l2_fourcc('F', 'W', 'H', 'T') /* Fast Walsh Hadamard Transform (vicodec) */
- #define V4L2_PIX_FMT_FWHT_STATELESS     v4l2_fourcc('S', 'F', 'W', 'H') /* Stateless FWHT (vicodec) */
- #define V4L2_PIX_FMT_H264_SLICE v4l2_fourcc('S', '2', '6', '4') /* H264 parsed slices */
-+#define V4L2_PIX_FMT_HEVC_SLICE v4l2_fourcc('S', '2', '6', '5') /* HEVC parsed slices */
+ /* enum v4l2_ctrl_type type values */
+ #define V4L2_CTRL_TYPE_HEVC_SPS 0x0120
+@@ -31,14 +31,14 @@
+ #define V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX 0x0123
+ #define V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS 0x0124
  
- /*  Vendor-specific formats   */
- #define V4L2_PIX_FMT_CPIA1    v4l2_fourcc('C', 'P', 'I', 'A') /* cpia1 YUV */
+-enum v4l2_mpeg_video_hevc_decode_mode {
+-	V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_SLICE_BASED,
+-	V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
++enum v4l2_stateless_hevc_decode_mode {
++	V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED,
++	V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
+ };
+ 
+-enum v4l2_mpeg_video_hevc_start_code {
+-	V4L2_MPEG_VIDEO_HEVC_START_CODE_NONE,
+-	V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
++enum v4l2_stateless_hevc_start_code {
++	V4L2_STATELESS_HEVC_START_CODE_NONE,
++	V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
+ };
+ 
+ #define V4L2_HEVC_SLICE_TYPE_B	0
 -- 
 2.32.0
 
