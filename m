@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE6DCC433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 May 2022 14:34:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EBE5C433FE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 May 2022 14:34:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bVSysVKtXGoOUSKIjyeILGMamwKjyUFm10fH4pQBpuk=; b=PWk8D1MhrC5c46
-	L/ffiWmSz/XXWMhthPRb/5M/tFPkoIh5mKALhnvAV0IYtoIHciaclMkvYse0z/I3oAUsNhgV3U9mc
-	Z9Q1jYg2W7IdzLCMWdVLYYey8bWlwLaTaXhYz0ULmBMiteojEhKHfujoSaoatiA7hfdXfsdOt1sa9
-	yKxzFLOJNegL49Y1915mA+408J0N0fOIHb1tAhWNlpeIHouRQ9HvuJdg2x8GUrcZAoWHVBs+DSbqL
-	4gCm2xIDp58PZTreqH/KhxRQLAjXxfqO3fZJ1LgGeGpFseJ5HOTmfWtVjKRwBESqIRZVQmT76BmRz
-	WDGvG/Cy1OD/PyE3VBUw==;
+	List-Owner; bh=ROCR2O7PZDy849PYfPGRURoKexxYdpSu1hatnc4Goxg=; b=y3Vhnmyru4CadA
+	Xo6rNn1265VyZUXOL7wTNt0/h21xSrI/d78sj8X+N/MerNUiF3+N4UNnJC0eRpN+9ITnP8dPbPDHY
+	AiGjEX7eylz3BWMHRtvIzIYOzGwHXugEzJ4iVWzTnc1shA9aI7zJPM727qhBKeDIcwPLWmHngHx5r
+	jKygra8jyI7SPDV5T/L+bfonNWO9GRFWP6og0Vzby7zUkOOrwTSBU5ha8+ERZrndQAf4NPkwRO9+z
+	+XiOM3VCXVfGL2Xvg+i7gf3VhMRvAU7CevIhjN+9t3KN0XWKWJKAfHixawOfq/vaG5gSafojbj3bS
+	YQgo2wgKpggwtvI7voOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nub2h-000H7x-SA; Fri, 27 May 2022 14:34:19 +0000
+	id 1nub2j-000H8Y-5d; Fri, 27 May 2022 14:34:21 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nub0Q-000FwW-6B; Fri, 27 May 2022 14:32:01 +0000
+	id 1nub0N-000FuU-Go; Fri, 27 May 2022 14:32:01 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
 	(Authenticated sender: benjamin.gaignard)
-	with ESMTPSA id 9E99F1F462B4
+	with ESMTPSA id B1BDA1F462AD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1653661914;
-	bh=R1RD9/NdT1+j3nmnRHTjtmU1Cs+J8VBHdXjBv2QWTxU=;
+	s=mail; t=1653661911;
+	bh=nOMROwZijoU/SUgGxC/eg9dpbQX6kZEe/D5zfHCXRYg=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eVj/gy3sQYM4xdS2PUE5DR30ElA2OwwBxWdXUljYJjK6k0WkPqxo3hlSQNQOgO5dR
-	 EV9lwTv77cnftA0MFN33ZU0fk3qe5H8MBuGBu2DTbRGku8vAZhfwZQCdplcRIkSOde
-	 vuVu3xGWnxB6FBs8sTgxNCVR2cJQnvqsjJ/YQuxsslRuqEmX4WGRfqA9DP2nETOeSE
-	 a39Br9j4JbWgf43n9T+2IRWFLrx0j2FK+6qzDNBGqQ3p+24YvVsGCfYRWmUCFymIvX
-	 fukSoA78tHllEuTmIst2xqUMquYWuxPY0EvUnUFguPz2VV5kv5j1RiWyNs1CDZU4lN
-	 dFZ8uOV6yOIBQ==
+	b=WmwqANMsMVUsGLxrzjbku+JdCsirOV3FfzdmmDWLt5gQG23py71Whub5LeiAHlUhU
+	 9fczLm3WvKdoH9uP65w66sq1gNqNkqLTzIwNqUXADuZpG/mGK3jMDIKEKdCjN/J5bf
+	 l0D+DhceNrXtuECwVZmYdmKJpCpgyRSQB1bwSC5ZX+ZAQiTiqD5rOWYontCOMOpAnB
+	 0KPi65YJxobLP0d+XwNwi6H/X3jLON5j+BjbfvTdHTI+djmMwmW0uMJP8znARhYl6+
+	 F76U4D+vk3DLhpsCXRLdCU88XXSTuAZcBzM5/ArnA3wf4fKRXKzNk968QNW2XCSSP2
+	 EtktK2rM61YZQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -57,17 +57,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v6 06/17] media: uapi: HEVC: Change pic_order_cnt definition in v4l2_hevc_dpb_entry
-Date: Fri, 27 May 2022 16:31:23 +0200
-Message-Id: <20220527143134.3360174-7-benjamin.gaignard@collabora.com>
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Subject: [PATCH v6 02/17] v4l2-ctrls: add support for dynamically allocated arrays.
+Date: Fri, 27 May 2022 16:31:19 +0200
+Message-Id: <20220527143134.3360174-3-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220527143134.3360174-1-benjamin.gaignard@collabora.com>
 References: <20220527143134.3360174-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220527_073158_568904_D3A5FD3F 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20220527_073155_898882_52542BF6 
+X-CRM114-Status: GOOD (  29.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,113 +79,709 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhlIEhFVkMgc3BlY2lmaWNhdGlvbiBkZXNjcmliZXMgdGhlIGZvbGxvd2luZzoKIlBpY09yZGVy
-Q250VmFsIGlzIGRlcml2ZWQgYXMgZm9sbG93czoKUGljT3JkZXJDbnRWYWwgPSBQaWNPcmRlckNu
-dE1zYiArIHNsaWNlX3BpY19vcmRlcl9jbnRfbHNiClRoZSB2YWx1ZSBvZiBQaWNPcmRlckNudFZh
-bCBzaGFsbCBiZSBpbiB0aGUgcmFuZ2Ugb2Yg4oiSMl4zMSB0byAyXjMxIOKIkiAxLCBpbmNsdXNp
-dmUuIgoKVG8gbWF0Y2ggd2l0aCB0aGVzZSBkZWZpbml0aW9ucyBjaGFuZ2UgX191MTYgcGljX29y
-ZGVyX2NudFsyXQppbnRvIF9fczMyIHBpY19vcmRlcl9jbnRfdmFsLgpDaGFuZ2UgdjRsMl9jdHJs
-X2hldmNfc2xpY2VfcGFyYW1zLT5zbGljZV9waWNfb3JkZXJfY250IHRvIF9fczMyIHRvby4KClNp
-Z25lZC1vZmYtYnk6IEJlbmphbWluIEdhaWduYXJkIDxiZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJv
-cmEuY29tPgotLS0KdmVyc2lvbiA2OgotIEFsc28gY2hhbmdlIHNsaWNlX3BpY19vcmRlcl9jbnQg
-dHlwZSB0byBzMzIKLSBGaXggY29tbWVudCBpbiBIYW50cm8gZHJpdmVyCgogRG9jdW1lbnRhdGlv
-bi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9leHQtY3RybHMtY29kZWMucnN0IHwgMiArLQogZHJp
-dmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJfaGV2Y19kZWMuYyAgICAgICAgIHwg
-NyArKystLS0tCiBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19oZXZjLmMgICAg
-ICAgICAgICAgICAgfCAyICstCiBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19o
-dy5oICAgICAgICAgICAgICAgICAgfCA0ICsrLS0KIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54
-aS9jZWRydXMvY2VkcnVzX2gyNjUuYyAgICAgICAgICB8IDQgKystLQogaW5jbHVkZS9tZWRpYS9o
-ZXZjLWN0cmxzLmggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgNCArKy0tCiA2IGZp
-bGVzIGNoYW5nZWQsIDExIGluc2VydGlvbnMoKyksIDEyIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdp
-dCBhL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVj
-LnJzdCBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNv
-ZGVjLnJzdAppbmRleCAxNjBiOTE1MzdjMDkuLmE3ODAzYjI0MTYxMiAxMDA2NDQKLS0tIGEvRG9j
-dW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9leHQtY3RybHMtY29kZWMucnN0Cisr
-KyBiL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVj
-LnJzdApAQCAtMzAxMCw3ICszMDEwLDcgQEAgZW51bSB2NGwyX21wZWdfdmlkZW9faGV2Y19zaXpl
-X29mX2xlbmd0aF9maWVsZCAtCiAgICAgKiAtIF9fdTgKICAgICAgIC0gYGBjb2xvdXJfcGxhbmVf
-aWRgYAogICAgICAgLQotICAgICogLSBfX3UxNgorICAgICogLSBfX3MzMgogICAgICAgLSBgYHNs
-aWNlX3BpY19vcmRlcl9jbnRgYAogICAgICAgLQogICAgICogLSBfX3U4CmRpZmYgLS1naXQgYS9k
-cml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9oZXZjX2RlYy5jIGIvZHJpdmVy
-cy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJfaGV2Y19kZWMuYwppbmRleCA1ZGY2ZjA4
-ZTI2ZjUuLmQyODY1M2QwNGQyMCAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hh
-bnRyby9oYW50cm9fZzJfaGV2Y19kZWMuYworKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFu
-dHJvL2hhbnRyb19nMl9oZXZjX2RlYy5jCkBAIC0zOTAsMTEgKzM5MCwxMCBAQCBzdGF0aWMgaW50
-IHNldF9yZWYoc3RydWN0IGhhbnRyb19jdHggKmN0eCkKIAkJCSAhIShwcHMtPmZsYWdzICYgVjRM
-Ml9IRVZDX1BQU19GTEFHX0xPT1BfRklMVEVSX0FDUk9TU19USUxFU19FTkFCTEVEKSk7CiAKIAkv
-KgotCSAqIFdyaXRlIFBPQyBjb3VudCBkaWZmIGZyb20gY3VycmVudCBwaWMuIEZvciBmcmFtZSBk
-ZWNvZGluZyBvbmx5IGNvbXB1dGUKLQkgKiBwaWNfb3JkZXJfY250WzBdIGFuZCBpZ25vcmUgcGlj
-X29yZGVyX2NudFsxXSB1c2VkIGluIGZpZWxkLWNvZGluZy4KKwkgKiBXcml0ZSBQT0MgY291bnQg
-ZGlmZiBmcm9tIGN1cnJlbnQgcGljLgogCSAqLwogCWZvciAoaSA9IDA7IGkgPCBkZWNvZGVfcGFy
-YW1zLT5udW1fYWN0aXZlX2RwYl9lbnRyaWVzICYmIGkgPCBBUlJBWV9TSVpFKGN1cl9wb2MpOyBp
-KyspIHsKLQkJY2hhciBwb2NfZGlmZiA9IGRlY29kZV9wYXJhbXMtPnBpY19vcmRlcl9jbnRfdmFs
-IC0gZHBiW2ldLnBpY19vcmRlcl9jbnRbMF07CisJCWNoYXIgcG9jX2RpZmYgPSBkZWNvZGVfcGFy
-YW1zLT5waWNfb3JkZXJfY250X3ZhbCAtIGRwYltpXS5waWNfb3JkZXJfY250X3ZhbDsKIAogCQlo
-YW50cm9fcmVnX3dyaXRlKHZwdSwgJmN1cl9wb2NbaV0sIHBvY19kaWZmKTsKIAl9CkBAIC00MjEs
-NyArNDIwLDcgQEAgc3RhdGljIGludCBzZXRfcmVmKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpCiAJ
-ZHBiX2xvbmd0ZXJtX2UgPSAwOwogCWZvciAoaSA9IDA7IGkgPCBkZWNvZGVfcGFyYW1zLT5udW1f
-YWN0aXZlX2RwYl9lbnRyaWVzICYmCiAJICAgICBpIDwgKFY0TDJfSEVWQ19EUEJfRU5UUklFU19O
-VU1fTUFYIC0gMSk7IGkrKykgewotCQlsdW1hX2FkZHIgPSBoYW50cm9faGV2Y19nZXRfcmVmX2J1
-ZihjdHgsIGRwYltpXS5waWNfb3JkZXJfY250WzBdKTsKKwkJbHVtYV9hZGRyID0gaGFudHJvX2hl
-dmNfZ2V0X3JlZl9idWYoY3R4LCBkcGJbaV0ucGljX29yZGVyX2NudF92YWwpOwogCQlpZiAoIWx1
-bWFfYWRkcikKIAkJCXJldHVybiAtRU5PTUVNOwogCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdp
-bmcvbWVkaWEvaGFudHJvL2hhbnRyb19oZXZjLmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFu
-dHJvL2hhbnRyb19oZXZjLmMKaW5kZXggZjBiMTlkODAxN2JhLi41OTE1MmEzZTk1NzYgMTAwNjQ0
-Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2hldmMuYworKysgYi9k
-cml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19oZXZjLmMKQEAgLTMzLDcgKzMzLDcg
-QEAgdm9pZCBoYW50cm9faGV2Y19yZWZfaW5pdChzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQogfQog
-CiBkbWFfYWRkcl90IGhhbnRyb19oZXZjX2dldF9yZWZfYnVmKHN0cnVjdCBoYW50cm9fY3R4ICpj
-dHgsCi0JCQkJICAgaW50IHBvYykKKwkJCQkgICBzMzIgcG9jKQogewogCXN0cnVjdCBoYW50cm9f
-aGV2Y19kZWNfaHdfY3R4ICpoZXZjX2RlYyA9ICZjdHgtPmhldmNfZGVjOwogCWludCBpOwpkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faHcuaCBiL2RyaXZl
-cnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmgKaW5kZXggNTJhOTYwZjZmYTRhLi4y
-NDk0M2M1NzljNzkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFu
-dHJvX2h3LmgKKysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faHcuaApA
-QCAtMTMzLDcgKzEzMyw3IEBAIHN0cnVjdCBoYW50cm9faGV2Y19kZWNfaHdfY3R4IHsKIAlzdHJ1
-Y3QgaGFudHJvX2F1eF9idWYgdGlsZV9ic2Q7CiAJc3RydWN0IGhhbnRyb19hdXhfYnVmIHJlZl9i
-dWZzW05VTV9SRUZfUElDVFVSRVNdOwogCXN0cnVjdCBoYW50cm9fYXV4X2J1ZiBzY2FsaW5nX2xp
-c3RzOwotCWludCByZWZfYnVmc19wb2NbTlVNX1JFRl9QSUNUVVJFU107CisJczMyIHJlZl9idWZz
-X3BvY1tOVU1fUkVGX1BJQ1RVUkVTXTsKIAl1MzIgcmVmX2J1ZnNfdXNlZDsKIAlzdHJ1Y3QgaGFu
-dHJvX2hldmNfZGVjX2N0cmxzIGN0cmxzOwogCXVuc2lnbmVkIGludCBudW1fdGlsZV9jb2xzX2Fs
-bG9jYXRlZDsKQEAgLTM0NSw3ICszNDUsNyBAQCB2b2lkIGhhbnRyb19oZXZjX2RlY19leGl0KHN0
-cnVjdCBoYW50cm9fY3R4ICpjdHgpOwogaW50IGhhbnRyb19nMl9oZXZjX2RlY19ydW4oc3RydWN0
-IGhhbnRyb19jdHggKmN0eCk7CiBpbnQgaGFudHJvX2hldmNfZGVjX3ByZXBhcmVfcnVuKHN0cnVj
-dCBoYW50cm9fY3R4ICpjdHgpOwogdm9pZCBoYW50cm9faGV2Y19yZWZfaW5pdChzdHJ1Y3QgaGFu
-dHJvX2N0eCAqY3R4KTsKLWRtYV9hZGRyX3QgaGFudHJvX2hldmNfZ2V0X3JlZl9idWYoc3RydWN0
-IGhhbnRyb19jdHggKmN0eCwgaW50IHBvYyk7CitkbWFfYWRkcl90IGhhbnRyb19oZXZjX2dldF9y
-ZWZfYnVmKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgsIHMzMiBwb2MpOwogaW50IGhhbnRyb19oZXZj
-X2FkZF9yZWZfYnVmKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgsIGludCBwb2MsIGRtYV9hZGRyX3Qg
-YWRkcik7CiAKIHN0YXRpYyBpbmxpbmUgdW5zaWduZWQgc2hvcnQgaGFudHJvX3ZwOV9udW1fc2Jz
-KHVuc2lnbmVkIHNob3J0IGRpbWVuc2lvbikKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9t
-ZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2gyNjUuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9z
-dW54aS9jZWRydXMvY2VkcnVzX2gyNjUuYwppbmRleCA0NGYzODViZTlmNmMuLjQxMTYwMTk3NTEy
-NCAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNf
-aDI2NS5jCisrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2gy
-NjUuYwpAQCAtMTQzLDggKzE0Myw4IEBAIHN0YXRpYyB2b2lkIGNlZHJ1c19oMjY1X2ZyYW1lX2lu
-Zm9fd3JpdGVfZHBiKHN0cnVjdCBjZWRydXNfY3R4ICpjdHgsCiAJZm9yIChpID0gMDsgaSA8IG51
-bV9hY3RpdmVfZHBiX2VudHJpZXM7IGkrKykgewogCQlpbnQgYnVmZmVyX2luZGV4ID0gdmIyX2Zp
-bmRfdGltZXN0YW1wKHZxLCBkcGJbaV0udGltZXN0YW1wLCAwKTsKIAkJdTMyIHBpY19vcmRlcl9j
-bnRbMl0gPSB7Ci0JCQlkcGJbaV0ucGljX29yZGVyX2NudFswXSwKLQkJCWRwYltpXS5waWNfb3Jk
-ZXJfY250WzFdCisJCQlkcGJbaV0ucGljX29yZGVyX2NudF92YWwsCisJCQlkcGJbaV0ucGljX29y
-ZGVyX2NudF92YWwKIAkJfTsKIAogCQljZWRydXNfaDI2NV9mcmFtZV9pbmZvX3dyaXRlX3Npbmds
-ZShjdHgsIGksIGRwYltpXS5maWVsZF9waWMsCmRpZmYgLS1naXQgYS9pbmNsdWRlL21lZGlhL2hl
-dmMtY3RybHMuaCBiL2luY2x1ZGUvbWVkaWEvaGV2Yy1jdHJscy5oCmluZGV4IDQ1NzM0YmQ4ZmRm
-Yy4uMDFjMTc5NWM1N2E5IDEwMDY0NAotLS0gYS9pbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaAor
-KysgYi9pbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaApAQCAtMTM4LDcgKzEzOCw3IEBAIHN0cnVj
-dCB2NGwyX2hldmNfZHBiX2VudHJ5IHsKIAlfX3U2NAl0aW1lc3RhbXA7CiAJX191OAlmbGFnczsK
-IAlfX3U4CWZpZWxkX3BpYzsKLQlfX3UxNglwaWNfb3JkZXJfY250WzJdOworCV9fczMyCXBpY19v
-cmRlcl9jbnRfdmFsOwogCV9fdTgJcGFkZGluZ1syXTsKIH07CiAKQEAgLTE4MSw3ICsxODEsNyBA
-QCBzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfc2xpY2VfcGFyYW1zIHsKIAkvKiBJU08vSUVDIDIzMDA4
-LTIsIElUVS1UIFJlYy4gSC4yNjU6IEdlbmVyYWwgc2xpY2Ugc2VnbWVudCBoZWFkZXIgKi8KIAlf
-X3U4CXNsaWNlX3R5cGU7CiAJX191OAljb2xvdXJfcGxhbmVfaWQ7Ci0JX191MTYJc2xpY2VfcGlj
-X29yZGVyX2NudDsKKwlfX3MzMglzbGljZV9waWNfb3JkZXJfY250OwogCV9fdTgJbnVtX3JlZl9p
-ZHhfbDBfYWN0aXZlX21pbnVzMTsKIAlfX3U4CW51bV9yZWZfaWR4X2wxX2FjdGl2ZV9taW51czE7
-CiAJX191OAljb2xsb2NhdGVkX3JlZl9pZHg7Ci0tIAoyLjMyLjAKCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+
+Implement support for dynamically allocated arrays.
+
+Most of the changes concern keeping track of the number of elements
+of the array and the number of elements allocated for the array and
+reallocating memory if needed.
+
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+---
+ drivers/media/v4l2-core/v4l2-ctrls-api.c     | 103 ++++++++---
+ drivers/media/v4l2-core/v4l2-ctrls-core.c    | 182 +++++++++++++++----
+ drivers/media/v4l2-core/v4l2-ctrls-priv.h    |   3 +-
+ drivers/media/v4l2-core/v4l2-ctrls-request.c |  13 +-
+ include/media/v4l2-ctrls.h                   |  42 ++++-
+ 5 files changed, 272 insertions(+), 71 deletions(-)
+
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-api.c b/drivers/media/v4l2-core/v4l2-ctrls-api.c
+index db9baa0bd05f..50d012ba3c02 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-api.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-api.c
+@@ -97,29 +97,47 @@ static int def_to_user(struct v4l2_ext_control *c, struct v4l2_ctrl *ctrl)
+ 	return ptr_to_user(c, ctrl, ctrl->p_new);
+ }
+ 
+-/* Helper function: copy the caller-provider value to the given control value */
+-static int user_to_ptr(struct v4l2_ext_control *c,
+-		       struct v4l2_ctrl *ctrl,
+-		       union v4l2_ctrl_ptr ptr)
++/* Helper function: copy the caller-provider value as the new control value */
++static int user_to_new(struct v4l2_ext_control *c, struct v4l2_ctrl *ctrl)
+ {
+ 	int ret;
+ 	u32 size;
+ 
+-	ctrl->is_new = 1;
++	ctrl->is_new = 0;
++	if (ctrl->is_dyn_array &&
++	    c->size > ctrl->p_dyn_alloc_elems * ctrl->elem_size) {
++		void *old = ctrl->p_dyn;
++		void *tmp = kvzalloc(2 * c->size, GFP_KERNEL);
++
++		if (!tmp)
++			return -ENOMEM;
++		memcpy(tmp, ctrl->p_new.p, ctrl->elems * ctrl->elem_size);
++		memcpy(tmp + c->size, ctrl->p_cur.p, ctrl->elems * ctrl->elem_size);
++		ctrl->p_new.p = tmp;
++		ctrl->p_cur.p = tmp + c->size;
++		ctrl->p_dyn = tmp;
++		ctrl->p_dyn_alloc_elems = c->size / ctrl->elem_size;
++		kvfree(old);
++	}
++
+ 	if (ctrl->is_ptr && !ctrl->is_string) {
++		unsigned int elems = c->size / ctrl->elem_size;
+ 		unsigned int idx;
+ 
+-		ret = copy_from_user(ptr.p, c->ptr, c->size) ? -EFAULT : 0;
+-		if (ret || !ctrl->is_array)
+-			return ret;
+-		for (idx = c->size / ctrl->elem_size; idx < ctrl->elems; idx++)
+-			ctrl->type_ops->init(ctrl, idx, ptr);
++		if (copy_from_user(ctrl->p_new.p, c->ptr, c->size))
++			return -EFAULT;
++		ctrl->is_new = 1;
++		if (ctrl->is_dyn_array)
++			ctrl->new_elems = elems;
++		else if (ctrl->is_array)
++			for (idx = elems; idx < ctrl->elems; idx++)
++				ctrl->type_ops->init(ctrl, idx, ctrl->p_new);
+ 		return 0;
+ 	}
+ 
+ 	switch (ctrl->type) {
+ 	case V4L2_CTRL_TYPE_INTEGER64:
+-		*ptr.p_s64 = c->value64;
++		*ctrl->p_new.p_s64 = c->value64;
+ 		break;
+ 	case V4L2_CTRL_TYPE_STRING:
+ 		size = c->size;
+@@ -127,32 +145,27 @@ static int user_to_ptr(struct v4l2_ext_control *c,
+ 			return -ERANGE;
+ 		if (size > ctrl->maximum + 1)
+ 			size = ctrl->maximum + 1;
+-		ret = copy_from_user(ptr.p_char, c->string, size) ? -EFAULT : 0;
++		ret = copy_from_user(ctrl->p_new.p_char, c->string, size) ? -EFAULT : 0;
+ 		if (!ret) {
+-			char last = ptr.p_char[size - 1];
++			char last = ctrl->p_new.p_char[size - 1];
+ 
+-			ptr.p_char[size - 1] = 0;
++			ctrl->p_new.p_char[size - 1] = 0;
+ 			/*
+ 			 * If the string was longer than ctrl->maximum,
+ 			 * then return an error.
+ 			 */
+-			if (strlen(ptr.p_char) == ctrl->maximum && last)
++			if (strlen(ctrl->p_new.p_char) == ctrl->maximum && last)
+ 				return -ERANGE;
+ 		}
+ 		return ret;
+ 	default:
+-		*ptr.p_s32 = c->value;
++		*ctrl->p_new.p_s32 = c->value;
+ 		break;
+ 	}
++	ctrl->is_new = 1;
+ 	return 0;
+ }
+ 
+-/* Helper function: copy the caller-provider value as the new control value */
+-static int user_to_new(struct v4l2_ext_control *c, struct v4l2_ctrl *ctrl)
+-{
+-	return user_to_ptr(c, ctrl, ctrl->p_new);
+-}
+-
+ /*
+  * VIDIOC_G/TRY/S_EXT_CTRLS implementation
+  */
+@@ -254,7 +267,31 @@ static int prepare_ext_ctrls(struct v4l2_ctrl_handler *hdl,
+ 			have_clusters = true;
+ 		if (ctrl->cluster[0] != ctrl)
+ 			ref = find_ref_lock(hdl, ctrl->cluster[0]->id);
+-		if (ctrl->is_ptr && !ctrl->is_string) {
++		if (ctrl->is_dyn_array) {
++			unsigned int max_size = ctrl->dims[0] * ctrl->elem_size;
++			unsigned int tot_size = ctrl->elem_size;
++
++			if (cs->which == V4L2_CTRL_WHICH_REQUEST_VAL)
++				tot_size *= ref->p_req_elems;
++			else
++				tot_size *= ctrl->elems;
++
++			c->size = ctrl->elem_size * (c->size / ctrl->elem_size);
++			if (get) {
++				if (c->size < tot_size) {
++					c->size = tot_size;
++					return -ENOSPC;
++				}
++				c->size = tot_size;
++			} else {
++				if (c->size > max_size) {
++					c->size = max_size;
++					return -ENOSPC;
++				}
++				if (!c->size)
++					return -EFAULT;
++			}
++		} else if (ctrl->is_ptr && !ctrl->is_string) {
+ 			unsigned int tot_size = ctrl->elems * ctrl->elem_size;
+ 
+ 			if (c->size < tot_size) {
+@@ -346,7 +383,7 @@ static int class_check(struct v4l2_ctrl_handler *hdl, u32 which)
+  *
+  * Note that v4l2_g_ext_ctrls_common() with 'which' set to
+  * V4L2_CTRL_WHICH_REQUEST_VAL is only called if the request was
+- * completed, and in that case valid_p_req is true for all controls.
++ * completed, and in that case p_req_valid is true for all controls.
+  */
+ int v4l2_g_ext_ctrls_common(struct v4l2_ctrl_handler *hdl,
+ 			    struct v4l2_ext_controls *cs,
+@@ -430,7 +467,9 @@ int v4l2_g_ext_ctrls_common(struct v4l2_ctrl_handler *hdl,
+ 
+ 			if (is_default)
+ 				ret = def_to_user(cs->controls + idx, ref->ctrl);
+-			else if (is_request && ref->valid_p_req)
++			else if (is_request && ref->p_req_dyn_enomem)
++				ret = -ENOMEM;
++			else if (is_request && ref->p_req_valid)
+ 				ret = req_to_user(cs->controls + idx, ref);
+ 			else if (is_volatile)
+ 				ret = new_to_user(cs->controls + idx, ref->ctrl);
+@@ -457,6 +496,17 @@ int v4l2_g_ext_ctrls(struct v4l2_ctrl_handler *hdl, struct video_device *vdev,
+ }
+ EXPORT_SYMBOL(v4l2_g_ext_ctrls);
+ 
++/* Validate a new control */
++static int validate_new(const struct v4l2_ctrl *ctrl, union v4l2_ctrl_ptr p_new)
++{
++	unsigned int idx;
++	int err = 0;
++
++	for (idx = 0; !err && idx < ctrl->new_elems; idx++)
++		err = ctrl->type_ops->validate(ctrl, idx, p_new);
++	return err;
++}
++
+ /* Validate controls. */
+ static int validate_ctrls(struct v4l2_ext_controls *cs,
+ 			  struct v4l2_ctrl_helper *helpers,
+@@ -872,6 +922,9 @@ int __v4l2_ctrl_s_ctrl_compound(struct v4l2_ctrl *ctrl,
+ 	/* It's a driver bug if this happens. */
+ 	if (WARN_ON(ctrl->type != type))
+ 		return -EINVAL;
++	/* Setting dynamic arrays is not (yet?) supported. */
++	if (WARN_ON(ctrl->is_dyn_array))
++		return -EINVAL;
+ 	memcpy(ctrl->p_new.p, p, ctrl->elems * ctrl->elem_size);
+ 	return set_ctrl(NULL, ctrl, 0);
+ }
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+index 949c1884d9c1..ff8a61f24d0a 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
+@@ -991,11 +991,12 @@ EXPORT_SYMBOL(v4l2_ctrl_notify);
+ 
+ /* Copy the one value to another. */
+ static void ptr_to_ptr(struct v4l2_ctrl *ctrl,
+-		       union v4l2_ctrl_ptr from, union v4l2_ctrl_ptr to)
++		       union v4l2_ctrl_ptr from, union v4l2_ctrl_ptr to,
++		       unsigned int elems)
+ {
+ 	if (ctrl == NULL)
+ 		return;
+-	memcpy(to.p, from.p_const, ctrl->elems * ctrl->elem_size);
++	memcpy(to.p, from.p_const, elems * ctrl->elem_size);
+ }
+ 
+ /* Copy the new value to the current value. */
+@@ -1008,8 +1009,11 @@ void new_to_cur(struct v4l2_fh *fh, struct v4l2_ctrl *ctrl, u32 ch_flags)
+ 
+ 	/* has_changed is set by cluster_changed */
+ 	changed = ctrl->has_changed;
+-	if (changed)
+-		ptr_to_ptr(ctrl, ctrl->p_new, ctrl->p_cur);
++	if (changed) {
++		if (ctrl->is_dyn_array)
++			ctrl->elems = ctrl->new_elems;
++		ptr_to_ptr(ctrl, ctrl->p_new, ctrl->p_cur, ctrl->elems);
++	}
+ 
+ 	if (ch_flags & V4L2_EVENT_CTRL_CH_FLAGS) {
+ 		/* Note: CH_FLAGS is only set for auto clusters. */
+@@ -1039,36 +1043,122 @@ void cur_to_new(struct v4l2_ctrl *ctrl)
+ {
+ 	if (ctrl == NULL)
+ 		return;
+-	ptr_to_ptr(ctrl, ctrl->p_cur, ctrl->p_new);
++	if (ctrl->is_dyn_array)
++		ctrl->new_elems = ctrl->elems;
++	ptr_to_ptr(ctrl, ctrl->p_cur, ctrl->p_new, ctrl->new_elems);
++}
++
++static bool req_alloc_dyn_array(struct v4l2_ctrl_ref *ref, u32 elems)
++{
++	void *tmp;
++
++	if (elems < ref->p_req_dyn_alloc_elems)
++		return true;
++
++	tmp = kvmalloc(elems * ref->ctrl->elem_size, GFP_KERNEL);
++
++	if (!tmp) {
++		ref->p_req_dyn_enomem = true;
++		return false;
++	}
++	ref->p_req_dyn_enomem = false;
++	kvfree(ref->p_req.p);
++	ref->p_req.p = tmp;
++	ref->p_req_dyn_alloc_elems = elems;
++	return true;
+ }
+ 
+ /* Copy the new value to the request value */
+ void new_to_req(struct v4l2_ctrl_ref *ref)
+ {
++	struct v4l2_ctrl *ctrl;
++
+ 	if (!ref)
+ 		return;
+-	ptr_to_ptr(ref->ctrl, ref->ctrl->p_new, ref->p_req);
+-	ref->valid_p_req = true;
++
++	ctrl = ref->ctrl;
++	if (ctrl->is_dyn_array && !req_alloc_dyn_array(ref, ctrl->new_elems))
++		return;
++
++	ref->p_req_elems = ctrl->new_elems;
++	ptr_to_ptr(ctrl, ctrl->p_new, ref->p_req, ref->p_req_elems);
++	ref->p_req_valid = true;
+ }
+ 
+ /* Copy the current value to the request value */
+ void cur_to_req(struct v4l2_ctrl_ref *ref)
+ {
++	struct v4l2_ctrl *ctrl;
++
+ 	if (!ref)
+ 		return;
+-	ptr_to_ptr(ref->ctrl, ref->ctrl->p_cur, ref->p_req);
+-	ref->valid_p_req = true;
++
++	ctrl = ref->ctrl;
++	if (ctrl->is_dyn_array && !req_alloc_dyn_array(ref, ctrl->elems))
++		return;
++
++	ref->p_req_elems = ctrl->elems;
++	ptr_to_ptr(ctrl, ctrl->p_cur, ref->p_req, ctrl->elems);
++	ref->p_req_valid = true;
+ }
+ 
+ /* Copy the request value to the new value */
+-void req_to_new(struct v4l2_ctrl_ref *ref)
++int req_to_new(struct v4l2_ctrl_ref *ref)
+ {
++	struct v4l2_ctrl *ctrl;
++
+ 	if (!ref)
+-		return;
+-	if (ref->valid_p_req)
+-		ptr_to_ptr(ref->ctrl, ref->p_req, ref->ctrl->p_new);
+-	else
+-		ptr_to_ptr(ref->ctrl, ref->ctrl->p_cur, ref->ctrl->p_new);
++		return 0;
++
++	ctrl = ref->ctrl;
++
++	/*
++	 * This control was never set in the request, so just use the current
++	 * value.
++	 */
++	if (!ref->p_req_valid) {
++		if (ctrl->is_dyn_array)
++			ctrl->new_elems = ctrl->elems;
++		ptr_to_ptr(ctrl, ctrl->p_cur, ctrl->p_new, ctrl->new_elems);
++		return 0;
++	}
++
++	/* Not a dynamic array, so just copy the request value */
++	if (!ctrl->is_dyn_array) {
++		ptr_to_ptr(ctrl, ref->p_req, ctrl->p_new, ctrl->new_elems);
++		return 0;
++	}
++
++	/* Sanity check, should never happen */
++	if (WARN_ON(!ref->p_req_dyn_alloc_elems))
++		return -ENOMEM;
++
++	/*
++	 * Check if the number of elements in the request is more than the
++	 * elements in ctrl->p_dyn. If so, attempt to realloc ctrl->p_dyn.
++	 * Note that p_dyn is allocated with twice the number of elements
++	 * in the dynamic array since it has to store both the current and
++	 * new value of such a control.
++	 */
++	if (ref->p_req_elems > ctrl->p_dyn_alloc_elems) {
++		unsigned int sz = ref->p_req_elems * ctrl->elem_size;
++		void *old = ctrl->p_dyn;
++		void *tmp = kvzalloc(2 * sz, GFP_KERNEL);
++
++		if (!tmp)
++			return -ENOMEM;
++		memcpy(tmp, ctrl->p_new.p, ctrl->elems * ctrl->elem_size);
++		memcpy(tmp + sz, ctrl->p_cur.p, ctrl->elems * ctrl->elem_size);
++		ctrl->p_new.p = tmp;
++		ctrl->p_cur.p = tmp + sz;
++		ctrl->p_dyn = tmp;
++		ctrl->p_dyn_alloc_elems = ref->p_req_elems;
++		kvfree(old);
++	}
++
++	ctrl->new_elems = ref->p_req_elems;
++	ptr_to_ptr(ctrl, ref->p_req, ctrl->p_new, ctrl->new_elems);
++	return 0;
+ }
+ 
+ /* Control range checking */
+@@ -1110,17 +1200,6 @@ int check_range(enum v4l2_ctrl_type type,
+ 	}
+ }
+ 
+-/* Validate a new control */
+-int validate_new(const struct v4l2_ctrl *ctrl, union v4l2_ctrl_ptr p_new)
+-{
+-	unsigned idx;
+-	int err = 0;
+-
+-	for (idx = 0; !err && idx < ctrl->elems; idx++)
+-		err = ctrl->type_ops->validate(ctrl, idx, p_new);
+-	return err;
+-}
+-
+ /* Set the handler's error code if it wasn't set earlier already */
+ static inline int handler_set_err(struct v4l2_ctrl_handler *hdl, int err)
+ {
+@@ -1164,6 +1243,8 @@ void v4l2_ctrl_handler_free(struct v4l2_ctrl_handler *hdl)
+ 	/* Free all nodes */
+ 	list_for_each_entry_safe(ref, next_ref, &hdl->ctrl_refs, node) {
+ 		list_del(&ref->node);
++		if (ref->p_req_dyn_alloc_elems)
++			kvfree(ref->p_req.p);
+ 		kfree(ref);
+ 	}
+ 	/* Free all controls owned by the handler */
+@@ -1171,6 +1252,7 @@ void v4l2_ctrl_handler_free(struct v4l2_ctrl_handler *hdl)
+ 		list_del(&ctrl->node);
+ 		list_for_each_entry_safe(sev, next_sev, &ctrl->ev_subs, node)
+ 			list_del(&sev->node);
++		kvfree(ctrl->p_dyn);
+ 		kvfree(ctrl);
+ 	}
+ 	kvfree(hdl->buckets);
+@@ -1286,7 +1368,7 @@ int handler_new_ref(struct v4l2_ctrl_handler *hdl,
+ 	if (hdl->error)
+ 		return hdl->error;
+ 
+-	if (allocate_req)
++	if (allocate_req && !ctrl->is_dyn_array)
+ 		size_extra_req = ctrl->elems * ctrl->elem_size;
+ 	new_ref = kzalloc(sizeof(*new_ref) + size_extra_req, GFP_KERNEL);
+ 	if (!new_ref)
+@@ -1460,7 +1542,6 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
+ 			elem_size = sizeof(s32);
+ 		break;
+ 	}
+-	tot_ctrl_size = elem_size * elems;
+ 
+ 	/* Sanity checks */
+ 	if (id == 0 || name == NULL || !elem_size ||
+@@ -1481,17 +1562,33 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
+ 		handler_set_err(hdl, -EINVAL);
+ 		return NULL;
+ 	}
++	if (flags & V4L2_CTRL_FLAG_DYNAMIC_ARRAY) {
++		/*
++		 * For now only support this for one-dimensional arrays only.
++		 *
++		 * This can be relaxed in the future, but this will
++		 * require more effort.
++		 */
++		if (nr_of_dims != 1) {
++			handler_set_err(hdl, -EINVAL);
++			return NULL;
++		}
++		/* Start with just 1 element */
++		elems = 1;
++	}
+ 
++	tot_ctrl_size = elem_size * elems;
+ 	sz_extra = 0;
+ 	if (type == V4L2_CTRL_TYPE_BUTTON)
+ 		flags |= V4L2_CTRL_FLAG_WRITE_ONLY |
+ 			V4L2_CTRL_FLAG_EXECUTE_ON_WRITE;
+ 	else if (type == V4L2_CTRL_TYPE_CTRL_CLASS)
+ 		flags |= V4L2_CTRL_FLAG_READ_ONLY;
+-	else if (type == V4L2_CTRL_TYPE_INTEGER64 ||
+-		 type == V4L2_CTRL_TYPE_STRING ||
+-		 type >= V4L2_CTRL_COMPOUND_TYPES ||
+-		 is_array)
++	else if (!(flags & V4L2_CTRL_FLAG_DYNAMIC_ARRAY) &&
++		 (type == V4L2_CTRL_TYPE_INTEGER64 ||
++		  type == V4L2_CTRL_TYPE_STRING ||
++		  type >= V4L2_CTRL_COMPOUND_TYPES ||
++		  is_array))
+ 		sz_extra += 2 * tot_ctrl_size;
+ 
+ 	if (type >= V4L2_CTRL_COMPOUND_TYPES && p_def.p_const)
+@@ -1520,7 +1617,9 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
+ 	ctrl->is_ptr = is_array || type >= V4L2_CTRL_COMPOUND_TYPES || ctrl->is_string;
+ 	ctrl->is_int = !ctrl->is_ptr && type != V4L2_CTRL_TYPE_INTEGER64;
+ 	ctrl->is_array = is_array;
++	ctrl->is_dyn_array = !!(flags & V4L2_CTRL_FLAG_DYNAMIC_ARRAY);
+ 	ctrl->elems = elems;
++	ctrl->new_elems = elems;
+ 	ctrl->nr_of_dims = nr_of_dims;
+ 	if (nr_of_dims)
+ 		memcpy(ctrl->dims, dims, nr_of_dims * sizeof(dims[0]));
+@@ -1533,6 +1632,16 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
+ 	ctrl->cur.val = ctrl->val = def;
+ 	data = &ctrl[1];
+ 
++	if (ctrl->is_dyn_array) {
++		ctrl->p_dyn_alloc_elems = elems;
++		ctrl->p_dyn = kvzalloc(2 * elems * elem_size, GFP_KERNEL);
++		if (!ctrl->p_dyn) {
++			kvfree(ctrl);
++			return NULL;
++		}
++		data = ctrl->p_dyn;
++	}
++
+ 	if (!ctrl->is_int) {
+ 		ctrl->p_new.p = data;
+ 		ctrl->p_cur.p = data + tot_ctrl_size;
+@@ -1542,7 +1651,10 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
+ 	}
+ 
+ 	if (type >= V4L2_CTRL_COMPOUND_TYPES && p_def.p_const) {
+-		ctrl->p_def.p = ctrl->p_cur.p + tot_ctrl_size;
++		if (ctrl->is_dyn_array)
++			ctrl->p_def.p = &ctrl[1];
++		else
++			ctrl->p_def.p = ctrl->p_cur.p + tot_ctrl_size;
+ 		memcpy(ctrl->p_def.p, p_def.p_const, elem_size);
+ 	}
+ 
+@@ -1552,6 +1664,7 @@ static struct v4l2_ctrl *v4l2_ctrl_new(struct v4l2_ctrl_handler *hdl,
+ 	}
+ 
+ 	if (handler_new_ref(hdl, ctrl, NULL, false, false)) {
++		kvfree(ctrl->p_dyn);
+ 		kvfree(ctrl);
+ 		return NULL;
+ 	}
+@@ -1889,6 +2002,9 @@ static int cluster_changed(struct v4l2_ctrl *master)
+ 			continue;
+ 		}
+ 
++		if (ctrl->elems != ctrl->new_elems)
++			ctrl_changed = true;
++
+ 		for (idx = 0; !ctrl_changed && idx < ctrl->elems; idx++)
+ 			ctrl_changed = !ctrl->type_ops->equal(ctrl, idx,
+ 				ctrl->p_cur, ctrl->p_new);
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-priv.h b/drivers/media/v4l2-core/v4l2-ctrls-priv.h
+index d4bf2c716f97..aba6176fab6c 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-priv.h
++++ b/drivers/media/v4l2-core/v4l2-ctrls-priv.h
+@@ -57,10 +57,9 @@ void cur_to_new(struct v4l2_ctrl *ctrl);
+ void cur_to_req(struct v4l2_ctrl_ref *ref);
+ void new_to_cur(struct v4l2_fh *fh, struct v4l2_ctrl *ctrl, u32 ch_flags);
+ void new_to_req(struct v4l2_ctrl_ref *ref);
+-void req_to_new(struct v4l2_ctrl_ref *ref);
++int req_to_new(struct v4l2_ctrl_ref *ref);
+ void send_initial_event(struct v4l2_fh *fh, struct v4l2_ctrl *ctrl);
+ void send_event(struct v4l2_fh *fh, struct v4l2_ctrl *ctrl, u32 changes);
+-int validate_new(const struct v4l2_ctrl *ctrl, union v4l2_ctrl_ptr p_new);
+ int handler_new_ref(struct v4l2_ctrl_handler *hdl,
+ 		    struct v4l2_ctrl *ctrl,
+ 		    struct v4l2_ctrl_ref **ctrl_ref,
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-request.c b/drivers/media/v4l2-core/v4l2-ctrls-request.c
+index 7d098f287fd9..c637049d7a2b 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-request.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-request.c
+@@ -143,7 +143,7 @@ v4l2_ctrl_request_hdl_ctrl_find(struct v4l2_ctrl_handler *hdl, u32 id)
+ {
+ 	struct v4l2_ctrl_ref *ref = find_ref_lock(hdl, id);
+ 
+-	return (ref && ref->valid_p_req) ? ref->ctrl : NULL;
++	return (ref && ref->p_req_valid) ? ref->ctrl : NULL;
+ }
+ EXPORT_SYMBOL_GPL(v4l2_ctrl_request_hdl_ctrl_find);
+ 
+@@ -373,7 +373,7 @@ void v4l2_ctrl_request_complete(struct media_request *req,
+ 			v4l2_ctrl_unlock(master);
+ 			continue;
+ 		}
+-		if (ref->valid_p_req)
++		if (ref->p_req_valid)
+ 			continue;
+ 
+ 		/* Copy the current control value into the request */
+@@ -442,7 +442,7 @@ int v4l2_ctrl_request_setup(struct media_request *req,
+ 				struct v4l2_ctrl_ref *r =
+ 					find_ref(hdl, master->cluster[i]->id);
+ 
+-				if (r->valid_p_req) {
++				if (r->p_req_valid) {
+ 					have_new_data = true;
+ 					break;
+ 				}
+@@ -458,7 +458,11 @@ int v4l2_ctrl_request_setup(struct media_request *req,
+ 				struct v4l2_ctrl_ref *r =
+ 					find_ref(hdl, master->cluster[i]->id);
+ 
+-				req_to_new(r);
++				ret = req_to_new(r);
++				if (ret) {
++					v4l2_ctrl_unlock(master);
++					goto error;
++				}
+ 				master->cluster[i]->is_new = 1;
+ 				r->req_done = true;
+ 			}
+@@ -490,6 +494,7 @@ int v4l2_ctrl_request_setup(struct media_request *req,
+ 			break;
+ 	}
+ 
++error:
+ 	media_request_object_put(obj);
+ 	return ret;
+ }
+diff --git a/include/media/v4l2-ctrls.h b/include/media/v4l2-ctrls.h
+index b3ce438f1329..f4105de8a8d2 100644
+--- a/include/media/v4l2-ctrls.h
++++ b/include/media/v4l2-ctrls.h
+@@ -185,6 +185,8 @@ typedef void (*v4l2_ctrl_notify_fnc)(struct v4l2_ctrl *ctrl, void *priv);
+  *		and/or has type %V4L2_CTRL_TYPE_STRING. In other words, &struct
+  *		v4l2_ext_control uses field p to point to the data.
+  * @is_array: If set, then this control contains an N-dimensional array.
++ * @is_dyn_array: If set, then this control contains a dynamically sized 1-dimensional array.
++ *		If this is set, then @is_array is also set.
+  * @has_volatiles: If set, then one or more members of the cluster are volatile.
+  *		Drivers should never touch this flag.
+  * @call_notify: If set, then call the handler's notify function whenever the
+@@ -205,6 +207,9 @@ typedef void (*v4l2_ctrl_notify_fnc)(struct v4l2_ctrl *ctrl, void *priv);
+  * @step:	The control's step value for non-menu controls.
+  * @elems:	The number of elements in the N-dimensional array.
+  * @elem_size:	The size in bytes of the control.
++ * @new_elems:	The number of elements in p_new. This is the same as @elems,
++ *		except for dynamic arrays. In that case it is in the range of
++ *		1 to @p_dyn_alloc_elems.
+  * @dims:	The size of each dimension.
+  * @nr_of_dims:The number of dimensions in @dims.
+  * @menu_skip_mask: The control's skip mask for menu controls. This makes it
+@@ -223,15 +228,21 @@ typedef void (*v4l2_ctrl_notify_fnc)(struct v4l2_ctrl *ctrl, void *priv);
+  *		:math:`ceil(\frac{maximum - minimum}{step}) + 1`.
+  *		Used only if the @type is %V4L2_CTRL_TYPE_INTEGER_MENU.
+  * @flags:	The control's flags.
+- * @cur:	Structure to store the current value.
+- * @cur.val:	The control's current value, if the @type is represented via
+- *		a u32 integer (see &enum v4l2_ctrl_type).
+- * @val:	The control's new s32 value.
+  * @priv:	The control's private pointer. For use by the driver. It is
+  *		untouched by the control framework. Note that this pointer is
+  *		not freed when the control is deleted. Should this be needed
+  *		then a new internal bitfield can be added to tell the framework
+  *		to free this pointer.
++ * @p_dyn:	Pointer to the dynamically allocated array. Only valid if
++ *		@is_dyn_array is true.
++ * @p_dyn_alloc_elems: The number of elements in the dynamically allocated
++ *		array for both the cur and new values. So @p_dyn is actually
++ *		sized for 2 * @p_dyn_alloc_elems * @elem_size. Only valid if
++ *		@is_dyn_array is true.
++ * @cur:	Structure to store the current value.
++ * @cur.val:	The control's current value, if the @type is represented via
++ *		a u32 integer (see &enum v4l2_ctrl_type).
++ * @val:	The control's new s32 value.
+  * @p_def:	The control's default value represented via a union which
+  *		provides a standard way of accessing control types
+  *		through a pointer (for compound controls only).
+@@ -260,6 +271,7 @@ struct v4l2_ctrl {
+ 	unsigned int is_string:1;
+ 	unsigned int is_ptr:1;
+ 	unsigned int is_array:1;
++	unsigned int is_dyn_array:1;
+ 	unsigned int has_volatiles:1;
+ 	unsigned int call_notify:1;
+ 	unsigned int manual_mode_value:8;
+@@ -272,6 +284,7 @@ struct v4l2_ctrl {
+ 	s64 minimum, maximum, default_value;
+ 	u32 elems;
+ 	u32 elem_size;
++	u32 new_elems;
+ 	u32 dims[V4L2_CTRL_MAX_DIMS];
+ 	u32 nr_of_dims;
+ 	union {
+@@ -284,6 +297,8 @@ struct v4l2_ctrl {
+ 	};
+ 	unsigned long flags;
+ 	void *priv;
++	void *p_dyn;
++	u32 p_dyn_alloc_elems;
+ 	s32 val;
+ 	struct {
+ 		s32 val;
+@@ -309,12 +324,22 @@ struct v4l2_ctrl {
+  *		the control has been applied. This prevents applying controls
+  *		from a cluster with multiple controls twice (when the first
+  *		control of a cluster is applied, they all are).
+- * @valid_p_req: If set, then p_req contains the control value for the request.
++ * @p_req_valid: If set, then p_req contains the control value for the request.
++ * @p_req_dyn_enomem: If set, then p_req is invalid since allocating space for
++ *		a dynamic array failed. Attempting to read this value shall
++ *		result in ENOMEM. Only valid if ctrl->is_dyn_array is true.
++ * @p_req_dyn_alloc_elems: The number of elements allocated for the dynamic
++ *		array. Only valid if @p_req_valid and ctrl->is_dyn_array are
++ *		true.
++ * @p_req_elems: The number of elements in @p_req. This is the same as
++ *		ctrl->elems, except for dynamic arrays. In that case it is in
++ *		the range of 1 to @p_req_dyn_alloc_elems. Only valid if
++ *		@p_req_valid is true.
+  * @p_req:	If the control handler containing this control reference
+  *		is bound to a media request, then this points to the
+  *		value of the control that must be applied when the request
+  *		is executed, or to the value of the control at the time
+- *		that the request was completed. If @valid_p_req is false,
++ *		that the request was completed. If @p_req_valid is false,
+  *		then this control was never set for this request and the
+  *		control will not be updated when this request is applied.
+  *
+@@ -329,7 +354,10 @@ struct v4l2_ctrl_ref {
+ 	struct v4l2_ctrl_helper *helper;
+ 	bool from_other_dev;
+ 	bool req_done;
+-	bool valid_p_req;
++	bool p_req_valid;
++	bool p_req_dyn_enomem;
++	u32 p_req_dyn_alloc_elems;
++	u32 p_req_elems;
+ 	union v4l2_ctrl_ptr p_req;
+ };
+ 
+-- 
+2.32.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
