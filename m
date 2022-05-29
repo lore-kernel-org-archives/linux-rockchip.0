@@ -4,87 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57D68C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 May 2022 09:18:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C2F7C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 May 2022 03:19:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9g/1RJzumDjIzlZRpkOlqBCNa/l1BfaB04ukot1UclI=; b=VChzIe0uFAG+1q
-	4oq7Kc5/ui8j5CS+5HdsM0uCCHR7qWnM+9tQ7HaiL23E5UiPaECp+xp4FTE7g9SEHnhTNxMsz60rW
-	9wsBk6uIFkgaJJ5wXPmg19y5JFbRvEY/yYENOEqdHCMGRfka73gjyknsNPB23x9ZzNSvk/mdYu8RC
-	91c7aZ4XM7xQHGzr/35aLetby86DECaqRl20blgTmN96tj8IELyCb5Ae6rS8fVxcKO5KGfTQ/H46k
-	3Pqcc6PFDGcQIs+HLw7QwsRv3GUzRkXjEj6FobEjjINSGYXwGLlQRpzoQtz9IbTmwb48I/+CTCLGt
-	Bn97odR/CppNX8RcT9Zw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nV6LcKDGI1CrftjLKCYPATjOtdaX/ddoRYXEOGpEnKc=; b=L7w8U6v5mTyVlD
+	n0e1IrkyjGCcVDueu0bAR5bDq3dYpV56uu2I9C0dRBq7nukIzk5gNxmwcgsHtL16El16Y5xUB4Jb1
+	GRod+oxxfat1bumkHHMg0uDjSIVeEjkHN4mQFQ0JaNIcxebrnoi4NfOevPVVxdNLn2GZdWdJPMWPO
+	T4T20RkKGV59zIso8yaVMSbc6nq6Lwbe+RrLe26KfXVx6QH4oNhN937b2UEuwedzjyduzPHcYyYqD
+	6APDh8zNPuKPS4zv5aUV+P4ZunAb6+CHpk7hLcaPuQMM5zSx8s20LZlhP8GkQyZPE/8v6276w1iWk
+	sbet/1TuRLzeAZB1csqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nusaN-001p1u-VQ; Sat, 28 May 2022 09:18:16 +0000
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+	id 1nv9Rw-0039MD-9e; Sun, 29 May 2022 03:18:40 +0000
+Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nusaI-001ozI-TC; Sat, 28 May 2022 09:18:12 +0000
-Received: by mail-lj1-x22b.google.com with SMTP id m11so7132532ljc.1;
-        Sat, 28 May 2022 02:18:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=HVRfiub+OH+3yERsymAq7YJAzta8XBR77uv0v0VV0CI=;
-        b=emBIciAFdQnHcKQSohgcuqMQM4xd/Tz5hPJWkxKaoqpZiunJ9s/OTs4WGMG95NSW4L
-         IgZczc+9GJXxJcHaJPXn5wGWSwvNNr7NK0iPiKDna7ZgvHSU3H+3cqKDq++bLMIID/pg
-         WGi2IGkojhYGQUTThKK+rMJIPdLBixIvgKrHxkmswTwOqRnEJD7L5yQqGEaEOrvK5lk+
-         qkpbzv53N91WJdtTRf68St7YDzO4K7K4CZ379sj7xnW+IFrVVRAmkaJKxBPwkYKBzJkg
-         l3Y5YpoNbKupcj3Ag1FqEF0wqmBD5ctEDUT8y+jgldf7YfuRmpnjc1XtWB+r4HJU6Val
-         yWqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=HVRfiub+OH+3yERsymAq7YJAzta8XBR77uv0v0VV0CI=;
-        b=G7wU0TuKiCaTY66XQyRNXJuW+UlHRNFl6TqFf2qJbg2qtAIYO+ZShmteIHY9jB50JG
-         3cDDzMe+eAYNf4AmA+/amXBSYxL+5FAl6UQfbrYBEfGkMMUW0XXiCf7lULrHlRaRtCPm
-         rNjZiD/NPuGtt4bObxMgUIweAtaSH5iMS6P3lzDosnShxnq8CutGZtC9o4RfGmR/Fphp
-         d2qcl3AAIUSW9LzLrL85MKrFBkjU/eVKegp4bRywQfxc7GEcw3+740RAL/5zIe/pC71J
-         S56ZY2Y3q2azQdnh+s6KKQ6CRhqC71PaW+W7D8ZIIasuSC1XsI4xqNXihLUhJVteAJMy
-         FtVA==
-X-Gm-Message-State: AOAM533g/Qhhr3hpaO3wW0YwWIxAuU1x5ZkS40dc8K/4etFehT/cxB8r
-	jZwXAXSqRS5AOVZaxY7EUIs+UAzzjigqNTVF
-X-Google-Smtp-Source: ABdhPJxNkzG4eousUKAj15zHH6g3YqSnU9H8B29bmyYBmgxkfeUg1JCXHoHxE95njq7TczFOLpZl7Q==
-X-Received: by 2002:a2e:a5ca:0:b0:253:c604:647c with SMTP id n10-20020a2ea5ca000000b00253c604647cmr27577549ljp.403.1653729487689;
-        Sat, 28 May 2022 02:18:07 -0700 (PDT)
-Received: from [10.0.0.127] (91-159-150-230.elisa-laajakaista.fi. [91.159.150.230])
-        by smtp.gmail.com with ESMTPSA id v9-20020a2ea449000000b0024f3d1daee2sm1402828ljn.106.2022.05.28.02.18.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 28 May 2022 02:18:07 -0700 (PDT)
-Message-ID: <454f31e4-12ce-2bee-8e95-d75854b34380@gmail.com>
-Date: Sat, 28 May 2022 12:19:20 +0300
+	id 1nv9Ri-0039JO-Mn; Sun, 29 May 2022 03:18:30 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.west.internal (Postfix) with ESMTP id 0141532007E8;
+	Sat, 28 May 2022 23:18:14 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute4.internal (MEProxy); Sat, 28 May 2022 23:18:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	tom-fitzhenry.me.uk; h=cc:cc:content-transfer-encoding:date:date
+	:from:from:in-reply-to:message-id:mime-version:reply-to:sender
+	:subject:subject:to:to; s=fm1; t=1653794294; x=1653880694; bh=Ny
+	KxUSmKaqeyg9xhREFC8EzxSPndaULx7tx1zibykuo=; b=nXc9ARkCFE5fNObRs2
+	Mrwc1HMtw42AKrpMFHx3Eh0n1CBsNAyU0K1uF9aodnAVXX4ZUnPDS8IWSNcOvow/
+	cHQaVRMYHXB2PtZPBUHV/ubtz+zUarGlDIG7/sJWWzN5TqqgasXGhYNEXLtWP9mc
+	wUUVnpGylF9seoF1T1Q8CqBfreAxI6S4R+QBDQ0VAcCNI/S4KoxQ595Ee5lVwqeO
+	S13ReM8/lozx9zUDbVCWEhIgPVqqmVZZtY+ioy/NOSIfQwIqTeYW8C080/9MlSHe
+	7tbTCInDxHlc1fvAOSSbOngueXva3Uv0cnIcmP1CWtbjtl4/yBYLKqQis+NxsDtl
+	T1XA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:message-id
+	:mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=
+	1653794294; x=1653880694; bh=NyKxUSmKaqeyg9xhREFC8EzxSPndaULx7tx
+	1zibykuo=; b=DGKfAUMl/kgSq7mQr9inX79EZFwlwBfH5hNXO9O6hp5YVTbSnQF
+	g87AE2vXJA0kWIXthWmgxCwyF1136G4r+GIxRGy6TlPwsfup+x5YrpTgmAaLSoyz
+	zCNG5L/3XzjP7lDkbeVEE0GEDhV5K8Dytwrdyf77xC/cDf6CxCU+izbMxYJ6hrbq
+	9IOnqJsWMd6x8OyOiim3P1yuNQbQEKaI4njcfmX2rcr9gEVM6QzuuNZNyRCpWLw3
+	SnrlVm2sM8X9qjXHVsGSC5hi4FjLauRNdPFOgl1589Em6p8sIE82lEi1xOeAoyVN
+	veSnfEgmZNs/P9ArK+vvgnJWwTGVaa6lbqA==
+X-ME-Sender: <xms:9eWSYpxvhajMmkwMTlmRVAXFjI5CdlXBUmyJLproRMcC9HpAUH4a0g>
+    <xme:9eWSYpTJ3BYbOuM9VVmtCjqjLbRAgqs_YBMGgd2dbhWOmeA4WCJdbg1_kr5xlnFg0
+    wNsCYDGBgVl0YIUaA>
+X-ME-Received: <xmr:9eWSYjUk7TxqthXe96zFUmG2_VF74_TpD8k6n4DxHW6ifW3Xn_oj6d6UdCllBcO3ZH6-Le5w32RYLoEu6LRxi2RpB63W9oNlscc>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrkedvgdeikecutefuodetggdotefrodftvf
+    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+    fjughrpefhvfevufffkffoggfgsedtkeertdertddtnecuhfhrohhmpefvohhmucfhihht
+    iihhvghnrhihuceothhomhesthhomhdqfhhithiihhgvnhhrhidrmhgvrdhukheqnecugg
+    ftrfgrthhtvghrnhepfeeivdegffeftefhkeeugfdvudetfedtieejuddugfejueektddv
+    vdefueetgeevnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrh
+    homhepthhomhesthhomhdqfhhithiihhgvnhhrhidrmhgvrdhukh
+X-ME-Proxy: <xmx:9eWSYrh0P5sqeiQFuKCgtSytXR0jOqaJ9O3lbNafQoSKFfPR0yKicA>
+    <xmx:9eWSYrDGxYLL499wkTJtzUS0xKOOilpn5y2CxoTDqb5mhi66LpnFAQ>
+    <xmx:9eWSYkJV3qk02QJlFfWJqH3_eyjjd6ehrBJXG-oEqz2CwFr-7oIaLg>
+    <xmx:9uWSYrzFQi9vWFjCAsC1CZ1tNymc-CtaX_YclSx2TH-nh4O_ol0wpg>
+Feedback-ID: iefc945ae:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 28 May 2022 23:18:10 -0400 (EDT)
+From: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Samuel Holland <samuel@sholland.org>,
+	Ondrej Jirman <x@xff.cz>,
+	Martijn Braam <martijn@brixit.nl>,
+	Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
+Subject: [PATCH 0/2] Add support for Pine64 PinePhonePro Linux phone
+Date: Sun, 29 May 2022 13:17:03 +1000
+Message-Id: <20220529031705.278631-1-tom@tom-fitzhenry.me.uk>
+X-Mailer: git-send-email 2.36.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 52/56] ASoC: ti: Rename set_fmt_new back to set_fmt
-Content-Language: en-US
-To: Charles Keepax <ckeepax@opensource.cirrus.com>, broonie@kernel.org
-Cc: lgirdwood@gmail.com, kuninori.morimoto.gx@renesas.com,
- nicolas.ferre@microchip.com, nsaenz@kernel.org, shawnguo@kernel.org,
- linux-imx@nxp.com, cezary.rojewski@intel.com,
- pierre-louis.bossart@linux.intel.com, linux-mips@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
- daniel@zonque.org, srinivas.kandagatla@linaro.org,
- linux-rockchip@lists.infradead.org, krzk@kernel.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, linux-omap@vger.kernel.org,
- linux-xtensa@linux-xtensa.org, jarkko.nikula@bitmer.com, heiko@sntech.de,
- jbrunet@baylibre.com, kernel@pengutronix.de, alsa-devel@alsa-project.org,
- patches@opensource.cirrus.com
-References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
- <20220519154318.2153729-53-ckeepax@opensource.cirrus.com>
-From: =?UTF-8?Q?P=c3=a9ter_Ujfalusi?= <peter.ujfalusi@gmail.com>
-In-Reply-To: <20220519154318.2153729-53-ckeepax@opensource.cirrus.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220528_021810_987473_DE881111 
-X-CRM114-Status: GOOD (  13.35  )
+X-CRM114-CacheID: sfid-20220528_201827_292147_FB6685A0 
+X-CRM114-Status: UNSURE (   8.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,50 +103,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAxOS8wNS8yMDIyIDE4OjQzLCBDaGFybGVzIEtlZXBheCB3cm90ZToKPiBOb3cgdGhlIGNv
-cmUgaGFzIGJlZW4gbWlncmF0ZWQgYWNyb3NzIHRvIHRoZSBuZXcgZGlyZWN0IGNsb2NrCj4gc3Bl
-Y2lmaWNhdGlvbiB3ZSBjYW4gbW92ZSB0aGUgZHJpdmVycyBiYWNrIHRvIHRoZSBub3JtYWwgc2V0
-X2ZtdAo+IGNhbGxiYWNrLgoKQWNrZWQtYnk6IFBldGVyIFVqZmFsdXNpIDxwZXRlci51amZhbHVz
-aUBnbWFpbC5jb20+Cgo+IFNpZ25lZC1vZmYtYnk6IENoYXJsZXMgS2VlcGF4IDxja2VlcGF4QG9w
-ZW5zb3VyY2UuY2lycnVzLmNvbT4KPiAtLS0KPiAgc291bmQvc29jL3RpL2RhdmluY2ktaTJzLmMg
-ICB8IDIgKy0KPiAgc291bmQvc29jL3RpL2RhdmluY2ktbWNhc3AuYyB8IDIgKy0KPiAgc291bmQv
-c29jL3RpL29tYXAtbWNic3AuYyAgICB8IDIgKy0KPiAgMyBmaWxlcyBjaGFuZ2VkLCAzIGluc2Vy
-dGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL3NvdW5kL3NvYy90aS9k
-YXZpbmNpLWkycy5jIGIvc291bmQvc29jL3RpL2RhdmluY2ktaTJzLmMKPiBpbmRleCBjNzM2OGQ1
-Mjk2Njg4Li5mZTU3MmI3MjBiMDk0IDEwMDY0NAo+IC0tLSBhL3NvdW5kL3NvYy90aS9kYXZpbmNp
-LWkycy5jCj4gKysrIGIvc291bmQvc29jL3RpL2RhdmluY2ktaTJzLmMKPiBAQCAtNjA2LDcgKzYw
-Niw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgc25kX3NvY19kYWlfb3BzIGRhdmluY2lfaTJzX2Rh
-aV9vcHMgPSB7Cj4gIAkucHJlcGFyZQk9IGRhdmluY2lfaTJzX3ByZXBhcmUsCj4gIAkudHJpZ2dl
-cgk9IGRhdmluY2lfaTJzX3RyaWdnZXIsCj4gIAkuaHdfcGFyYW1zCT0gZGF2aW5jaV9pMnNfaHdf
-cGFyYW1zLAo+IC0JLnNldF9mbXRfbmV3CT0gZGF2aW5jaV9pMnNfc2V0X2RhaV9mbXQsCj4gKwku
-c2V0X2ZtdAk9IGRhdmluY2lfaTJzX3NldF9kYWlfZm10LAo+ICAJLnNldF9jbGtkaXYJPSBkYXZp
-bmNpX2kyc19kYWlfc2V0X2Nsa2RpdiwKPiAgCj4gIH07Cj4gZGlmZiAtLWdpdCBhL3NvdW5kL3Nv
-Yy90aS9kYXZpbmNpLW1jYXNwLmMgYi9zb3VuZC9zb2MvdGkvZGF2aW5jaS1tY2FzcC5jCj4gaW5k
-ZXggOTYxYmFjNjk2MzY1Mi4uZTJhYWI0NzI5ZjNhYiAxMDA2NDQKPiAtLS0gYS9zb3VuZC9zb2Mv
-dGkvZGF2aW5jaS1tY2FzcC5jCj4gKysrIGIvc291bmQvc29jL3RpL2RhdmluY2ktbWNhc3AuYwo+
-IEBAIC0xNjIwLDcgKzE2MjAsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHNuZF9zb2NfZGFpX29w
-cyBkYXZpbmNpX21jYXNwX2RhaV9vcHMgPSB7Cj4gIAkudHJpZ2dlcgk9IGRhdmluY2lfbWNhc3Bf
-dHJpZ2dlciwKPiAgCS5kZWxheQkJPSBkYXZpbmNpX21jYXNwX2RlbGF5LAo+ICAJLmh3X3BhcmFt
-cwk9IGRhdmluY2lfbWNhc3BfaHdfcGFyYW1zLAo+IC0JLnNldF9mbXRfbmV3CT0gZGF2aW5jaV9t
-Y2FzcF9zZXRfZGFpX2ZtdCwKPiArCS5zZXRfZm10CT0gZGF2aW5jaV9tY2FzcF9zZXRfZGFpX2Zt
-dCwKPiAgCS5zZXRfY2xrZGl2CT0gZGF2aW5jaV9tY2FzcF9zZXRfY2xrZGl2LAo+ICAJLnNldF9z
-eXNjbGsJPSBkYXZpbmNpX21jYXNwX3NldF9zeXNjbGssCj4gIAkuc2V0X3RkbV9zbG90CT0gZGF2
-aW5jaV9tY2FzcF9zZXRfdGRtX3Nsb3QsCj4gZGlmZiAtLWdpdCBhL3NvdW5kL3NvYy90aS9vbWFw
-LW1jYnNwLmMgYi9zb3VuZC9zb2MvdGkvb21hcC1tY2JzcC5jCj4gaW5kZXggNWJmYjU2ZDRmZjg0
-NC4uNThkOGUyMDBhN2I5NyAxMDA2NDQKPiAtLS0gYS9zb3VuZC9zb2MvdGkvb21hcC1tY2JzcC5j
-Cj4gKysrIGIvc291bmQvc29jL3RpL29tYXAtbWNic3AuYwo+IEBAIC0xMjcxLDcgKzEyNzEsNyBA
-QCBzdGF0aWMgY29uc3Qgc3RydWN0IHNuZF9zb2NfZGFpX29wcyBtY2JzcF9kYWlfb3BzID0gewo+
-ICAJLnRyaWdnZXIJPSBvbWFwX21jYnNwX2RhaV90cmlnZ2VyLAo+ICAJLmRlbGF5CQk9IG9tYXBf
-bWNic3BfZGFpX2RlbGF5LAo+ICAJLmh3X3BhcmFtcwk9IG9tYXBfbWNic3BfZGFpX2h3X3BhcmFt
-cywKPiAtCS5zZXRfZm10X25ldwk9IG9tYXBfbWNic3BfZGFpX3NldF9kYWlfZm10LAo+ICsJLnNl
-dF9mbXQJPSBvbWFwX21jYnNwX2RhaV9zZXRfZGFpX2ZtdCwKPiAgCS5zZXRfY2xrZGl2CT0gb21h
-cF9tY2JzcF9kYWlfc2V0X2Nsa2RpdiwKPiAgCS5zZXRfc3lzY2xrCT0gb21hcF9tY2JzcF9kYWlf
-c2V0X2RhaV9zeXNjbGssCj4gIH07CgotLSAKUMOpdGVyCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+This series adds initial support for Pine64 PinePhonePro.
+
+Tom Fitzhenry (2):
+  dt-bindings: arm: rockchip: Add PinePhone Pro bindings
+  arm64: dts: rockchip: Add initial support for Pine64 PinePhone Pro
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../dts/rockchip/rk3399-pinephone-pro.dts     | 939 ++++++++++++++++++
+ 3 files changed, 945 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+
+-- 
+2.36.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
