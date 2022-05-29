@@ -4,97 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86BF2C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 May 2022 03:46:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A36C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 May 2022 06:40:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l9hAcb0WRnNkVpiMrwbTKsGNIDTsUXAzBYXQ88Om/eg=; b=Bc2TRU2lS1yKRp
-	DaPjcfgPgzFJ5Kr0RwD+d7p4qu/dWdB7AkY2slwzQfIrAgsvJNZNqMtQz/HDVXyCl4XTFXnJddH4C
-	5pCplVKjUXwdvKlGlojgYbNHKF9sEhTmXI7gAJJr2N1KHTiFA8AlZKenc+mIvWKslpPGSgYt5ChoZ
-	do2JHygGSOh5ehBUZWe7+G05y2sZZK6+ZuIKfp/hcdW56ll90cXhi/nRffRo4AbqKQoxIpCr8FEdH
-	FTUW4+6xduAAA+/27KGgRZ2ZXE/Xazu3DpHbVBjvdMFbUpXx52wI8C5IgHUgFP7dMpPKXXhCNSX48
-	oMvJpUcz696m4ZO0hCrQ==;
+	List-Owner; bh=wFi8Y547yS1T1XZzs6vT+5PKoRQGnJh+D46iMFQUgaE=; b=cYzXLkI61dug4E
+	m6N80yrogwe0pShCPlRCh0TZxxEysh/kkm2Fbq6GG0+TOTx0iZCMSUTi2H4AQri+kYrMncovFX3pT
+	1BL36xH93ZiicLO0hJsWoXNGrj4RU+nQn44B+boVb78zi4FrJp0ZdBFY+sXf0W7apps6PtpZFw6bV
+	La7pGCaO0HoIl326yIG6+NoE1Q+C5hb6WAWgKdJ6NAuFhaSaBqCMBhLMawCtU42bLUXVQEdM17TeT
+	fhG6KGsB6BsPZTuNn1YKR1hojthF97n2FFJRrd1jOA7W+gY54U5O8z79+q/BbzHKXdpD75+KHuF7z
+	QTPfZvOkqZuqMjtMkNgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nv9sa-003Brh-OO; Sun, 29 May 2022 03:46:12 +0000
-Received: from wout3-smtp.messagingengine.com ([64.147.123.19])
+	id 1nvCbD-003NNv-Hp; Sun, 29 May 2022 06:40:27 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nv9sN-003Bpe-VO; Sun, 29 May 2022 03:46:02 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.west.internal (Postfix) with ESMTP id C9B773200754;
-	Sat, 28 May 2022 23:45:57 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute4.internal (MEProxy); Sat, 28 May 2022 23:45:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	tom-fitzhenry.me.uk; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm1; t=1653795957; x=1653882357; bh=WK6kA6QrCw
-	wKMLUCmNwj3NNYnGVd5SuQZRtDlGxvgIM=; b=jA656v1jz2FAxKtCWhmQrhi7cI
-	bAlr3xV+m4/yfpqH2MGwddW3OBcq73ObzFN1yfiGSZV3VzQ7vBOM3ZigPWoHo9Gm
-	UUyqsd/tjBYL9ql7Ft3qgWwAhu95z5JSE9M0DHniUYRm+mqcZ2vxiDgDWqe5AY4+
-	vHFJzEapzYMOifeE5mMuuvoy1SCebqWSSFbydpiFhD3IgsL8LVQp5lZXk+OF1w70
-	kswguQHn92Qm1oGHErimniOH/gmF/AMDnXofN7K8FBPFKtTbt4feFdw7MsMaYbAD
-	1XKn0/ezf+KVKRC7lCCiTEK23InyTkYK46GFtr35xD0ib+Az9x2ReSJX68DA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1653795957; x=
-	1653882357; bh=WK6kA6QrCwwKMLUCmNwj3NNYnGVd5SuQZRtDlGxvgIM=; b=f
-	G6PDdLVbb8/GJ/ni9Z2Z8luv6q+mzoh37dh3c4jdnB6OxqEqQSPlEoKiE9dp6qrG
-	7XnGdColZLVXKCpjAY83AXoFdHy08lC59RoyVbdSeIffbb/ALOoXvWayT6ntHjs5
-	PuZXN7oyyu9jclhrJaMaGhRDyQ2AkmHD0TeDKcTIlIVMvJxUD87Hnn8AxDrBj6ck
-	ksH+EEqNjxz0AIlYMzTt+ntf5mzUPh/ZCPYbaMUx9lYPwgvcKpoAuVHvGFZhPxlg
-	PpBQI8qrytH5y4+MwoJ7nGIdOl6bUiqFLpO61PgnkrM9YsvHtmeV7jUd6ItfItRO
-	Zqq7tzGm+uIlHEWxHEzLQ==
-X-ME-Sender: <xms:dOySYtl0mCRmdM0WmTyoNrt29PRajIQM_nFipWP75yeJp2SwNKQ8pA>
-    <xme:dOySYo3S5rsbohOnNa9UVpcIhId01TEi_P8HHfRBZUEU-jrIVNxHpI9Vew2druOXP
-    teCu9FKmQGgzsRtTw>
-X-ME-Received: <xmr:dOySYjqszrlqte656snlhzkuGbjNNh8uJPH9l7iWxt05A-x9ZWt4gbz15y1PYOekf3qNMjFjJKQKYpqguW4szH7m>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrkedvgdejfecutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
-    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpefkffggfgfvvehfhffujggtgfesthejredttdefjeenucfhrhhomhepvfhomhcu
-    hfhithiihhgvnhhrhicuoehtohhmsehtohhmqdhfihhtiihhvghnrhihrdhmvgdruhhkqe
-    enucggtffrrghtthgvrhhnpefgfeelleeuteefjefgkeeuhfehgedvleeiheegjeegveei
-    jedtudeludfggfefjeenucffohhmrghinhepghhithhlrggsrdgtohhmnecuvehluhhsth
-    gvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepthhomhesthhomhdqfhhi
-    thiihhgvnhhrhidrmhgvrdhukh
-X-ME-Proxy: <xmx:deySYtncFiIbHVeQ6_rYsnxQ3Q8FQLhRMRaK-0_dnYiW_hnzjAdqbA>
-    <xmx:deySYr3CdhAiP8E7_6AryfkhFhshgP5xdSDG7GjXvVgyW1Xx3qhc5Q>
-    <xmx:deySYstUqaKB0cMXk943KAAuXp90_HdBJU-8bqyxxnGHljFg9UHGyQ>
-    <xmx:deySYpN1GPpRSC7SiBBGLx6_eismD5RWA8h-tZhAH4CiXcIF9_VIDQ>
-Feedback-ID: iefc945ae:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 28 May 2022 23:45:53 -0400 (EDT)
-Message-ID: <b6500fe9-f7df-a7d1-09cb-9f772126128d@tom-fitzhenry.me.uk>
-Date: Sun, 29 May 2022 13:45:52 +1000
+	id 1nvCbA-003NNT-IV; Sun, 29 May 2022 06:40:26 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id n10so15549278ejk.5;
+        Sat, 28 May 2022 23:40:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=oONO6WQdQgiLZe2yfgF19dnfhBaN0Q0QQXJTQuPSQa8=;
+        b=WizP0tOLHFY2yYYJCUAc+dzaT/eZPmgMpaFlUYgvZAMBFE/p0Iquf/FGynlmmRkOjt
+         3+AR2mjyEt/qwhUwIq7q/6+xvi6BytIzDWrBg5mQb6oj24pdk5OX+x6j6bn3Pd6CAgER
+         L8sIoMSJyH9wAtf17fer0voGdtRUbEm6Byd3wiB6zVVHIDL02lJ9HtAJdQq3rG5gFzZT
+         PuYfvWcc5VTN5PT3GMtaLzKTHNsvOld5+vqVGabqgdPJa03VZHXzx7tRPLCF0tlV6mXb
+         E+/ug4zfhyi5dL+ane1xbUBKF39AAfLZ9PhFKvkKK6FhzaYKiQ6VKBXGs0kcKycZ2oRd
+         dByg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=oONO6WQdQgiLZe2yfgF19dnfhBaN0Q0QQXJTQuPSQa8=;
+        b=7LTb4CJMbCAtmeMenWSYb/LeVlrYcjcZDPcJ7U+Iu4EazWsANL0z66YoIYnwKyAP60
+         NA21DLfi4Bb5BNWKtbkjziyvA8cXGUYtHBrHEoSr4NPpY5p9LNGOyZDbWXdmYRNzPHIa
+         7JXgozMrZa/07dvCZrPUcUmhUXmU2px6kZZa8LL64iXX2O0Odb5PD29p2Vkw2ZXfRm9D
+         AL/6CoJ1P0lQniErxmj9qQWo4wy4L9wkbDEpBha/R0QTlUgsu/o5XCogs/ukULexvTO7
+         lilTLlIojE/TRMjIV8uiw1rCkx1clS06f30tdhvP89+7pnnwPSBPLuEdiEd77WyIjcQM
+         i2XA==
+X-Gm-Message-State: AOAM530dqYWqpb658DMe0BoWpA7ud+mSGP0FjT07j1KEvMgWDKekQUCm
+	sOR2ntCiLJKMgwsm9VfuIgU=
+X-Google-Smtp-Source: ABdhPJwQZX9JGZTHf0Ls6o78Dj++YxB0y0nggFjPkGyaUDGcMUrkrEdxaFhvrLzEpGC8rcKttE/1MA==
+X-Received: by 2002:a17:907:8a16:b0:6ff:794c:c368 with SMTP id sc22-20020a1709078a1600b006ff794cc368mr123709ejc.673.1653806422012;
+        Sat, 28 May 2022 23:40:22 -0700 (PDT)
+Received: from kista.localnet (213-161-3-76.dynamic.telemach.net. [213.161.3.76])
+        by smtp.gmail.com with ESMTPSA id a21-20020a50f0d5000000b0042dce73168csm301350edm.13.2022.05.28.23.40.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 28 May 2022 23:40:21 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: mchehab@kernel.org, hverkuil@xs4all.nl, ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, gregkh@linuxfoundation.org, mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org, samuel@sholland.org, nicolas.dufresne@collabora.com, andrzej.p@collabora.com, Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, kernel@collabora.com, Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v6 11/17] media: uapi: Add V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
+Date: Sun, 29 May 2022 08:40:19 +0200
+Message-ID: <2102641.irdbgypaU6@kista>
+In-Reply-To: <20220527143134.3360174-12-benjamin.gaignard@collabora.com>
+References: <20220527143134.3360174-1-benjamin.gaignard@collabora.com> <20220527143134.3360174-12-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Content-Language: en-US
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- linux-rockchip@lists.infradead.org
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Samuel Holland <samuel@sholland.org>,
- Ondrej Jirman <x@xff.cz>, Martijn Braam <martijn@brixit.nl>
-References: <20220529031705.278631-1-tom@tom-fitzhenry.me.uk>
- <20220529031705.278631-3-tom@tom-fitzhenry.me.uk>
-From: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add initial support for Pine64
- PinePhone Pro
-In-Reply-To: <20220529031705.278631-3-tom@tom-fitzhenry.me.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220528_204600_092020_11DFB743 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220528_234024_686986_8C36E648 
+X-CRM114-Status: GOOD (  28.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,39 +80,151 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-I've sent this DT for early feedback. I've commented below on the parts 
-I'm unsure about, and would appreciate any feedback.
+Hi!
 
-On 29/5/22 13:17, Tom Fitzhenry wrote:
-> +	cluster1_opp_ppp: opp-table1b {
+This series looks very good and I plan to test it shortly on Cedrus, but I 
+have one major concern below.
 
-I don't know which OPP should be used.
+Dne petek, 27. maj 2022 ob 16:31:28 CEST je Benjamin Gaignard napisal(a):
+> The number of 'entry point offset' can be very variable.
+> Instead of using a large static array define a v4l2 dynamic array
+> of U32 (V4L2_CTRL_TYPE_U32).
+> The number of entry point offsets is reported by the elems field
+> and in struct v4l2_ctrl_hevc_slice_params.num_entry_point_offsets
+> field.
 
-Per 
-https://gitlab.com/pine64-org/linux/-/merge_requests/36/diffs?commit_id=dcf78ea8ad6f0b1c6e3279d8d752ca68d6d05756, 
-using the regular RK3399 OPP table exceeds operating conditions.
+Slice control by itself is variable length array, so you would actually need 
+2D variable array for entry points which is not supported. However, easy 
+workaround for that is to flatten 2D array to 1D and either have another slice 
+control field which would tell first entry point index for convenience or let 
+driver calculate it by adding up all num_entry_point_offsets of previous 
+slices.
 
-Perhaps this should depend on an OPP for RK3399-T (which would need to 
-be added, as the linked merge request proposes).
+Hans, what do you think?
 
-> +	// Per "TYPE-C", page 23.
-> +	fusb0: typec-portc@22 {
-> +		compatible = "fcs,fusb302";
-> +		reg = <0x22>;
-> +		interrupt-parent = <&gpio1>;
-> +		interrupts = <RK_PA2 IRQ_TYPE_LEVEL_LOW>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&fusb0_int>;
-> +		vbus-supply = <&vcc5v0_typec>;
+Note, it seems that H265 decoding on Cedrus still works without entry points, 
+so this problem can be solved later. I'm not sure what we lose with that but 
+it was suggested that this could influence speed or error resilience or both. 
+However, I think we're close to solve it, so I'd like to do that now.
 
-This is the node many PinePhone Pro users have been using for >1 month, 
-but I don't understand the USB subsystem well enough yet to understand 
-the node.
+Best regards,
+Jernej
+
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  .../userspace-api/media/v4l/ext-ctrls-codec.rst       | 11 +++++++++++
+>  drivers/media/v4l2-core/v4l2-ctrls-defs.c             |  5 +++++
+>  include/media/hevc-ctrls.h                            |  5 ++++-
+>  3 files changed, 20 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/
+Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+> index 0796b1563daa..05228e280f66 100644
+> --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+> +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+> @@ -3010,6 +3010,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>      * - __u32
+>        - ``data_bit_offset``
+>        - Offset (in bits) to the video data in the current slice data.
+> +    * - __u32
+> +      - ``num_entry_point_offsets``
+> +      - Specifies the number of entry point offset syntax elements in the 
+slice header.
+>      * - __u8
+>        - ``nal_unit_type``
+>        - Specifies the coding type of the slice (B, P or I).
+> @@ -3150,6 +3153,14 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>  
+>      \normalsize
+>  
+> +``V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (integer)``
+> +    Specifies entry point offsets in bytes.
+> +    This control is a dynamically sized array. The number of entry point
+> +    offsets is reported by the ``elems`` field.
+> +    This bitstream parameter is defined according to :ref:`hevc`.
+> +    They are described in section 7.4.7.1 "General slice segment header
+> +    semantics" of the specification.
+> +
+>  ``V4L2_CID_STATELESS_HEVC_SCALING_MATRIX (struct)``
+>      Specifies the HEVC scaling matrix parameters used for the scaling 
+process
+>      for transform coefficients.
+> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-
+core/v4l2-ctrls-defs.c
+> index d594efbcbb93..e22921e7ea61 100644
+> --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+> +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+> @@ -1188,6 +1188,7 @@ const char *v4l2_ctrl_get_name(u32 id)
+>  	case V4L2_CID_STATELESS_HEVC_DECODE_PARAMS:		return 
+"HEVC Decode Parameters";
+>  	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:		return 
+"HEVC Decode Mode";
+>  	case V4L2_CID_STATELESS_HEVC_START_CODE:		return 
+"HEVC Start Code";
+> +	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:	return 
+"HEVC Entry Point Offsets";
+>  
+>  	/* Colorimetry controls */
+>  	/* Keep the order of the 'case's the same as in v4l2-controls.h! 
+*/
+> @@ -1518,6 +1519,10 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum 
+v4l2_ctrl_type *type,
+>  	case V4L2_CID_STATELESS_HEVC_DECODE_PARAMS:
+>  		*type = V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS;
+>  		break;
+> +	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:
+> +		*type = V4L2_CTRL_TYPE_U32;
+> +		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
+> +		break;
+>  	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:
+>  		*type = V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR;
+>  		break;
+> diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+> index a3c829ef531a..1319cb99ae3f 100644
+> --- a/include/media/hevc-ctrls.h
+> +++ b/include/media/hevc-ctrls.h
+> @@ -20,6 +20,7 @@
+>  #define V4L2_CID_STATELESS_HEVC_DECODE_PARAMS	(V4L2_CID_CODEC_BASE 
++ 1012)
+>  #define V4L2_CID_STATELESS_HEVC_DECODE_MODE	(V4L2_CID_CODEC_BASE + 1015)
+>  #define V4L2_CID_STATELESS_HEVC_START_CODE	(V4L2_CID_CODEC_BASE + 1016)
+> +#define V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (V4L2_CID_CODEC_BASE + 
+1017)
+>  
+>  /* enum v4l2_ctrl_type type values */
+>  #define V4L2_CTRL_TYPE_HEVC_SPS 0x0120
+> @@ -318,6 +319,8 @@ struct v4l2_hevc_pred_weight_table {
+>   *
+>   * @bit_size: size (in bits) of the current slice data
+>   * @data_bit_offset: offset (in bits) to the video data in the current slice 
+data
+> + * @num_entry_point_offsets: specifies the number of entry point offset syntax
+> + *			     elements in the slice header.
+>   * @nal_unit_type: specifies the coding type of the slice (B, P or I)
+>   * @nuh_temporal_id_plus1: minus 1 specifies a temporal identifier for the 
+NAL unit
+>   * @slice_type: see V4L2_HEVC_SLICE_TYPE_{}
+> @@ -360,7 +363,7 @@ struct v4l2_hevc_pred_weight_table {
+>  struct v4l2_ctrl_hevc_slice_params {
+>  	__u32	bit_size;
+>  	__u32	data_bit_offset;
+> -
+> +	__u32	num_entry_point_offsets;
+>  	/* ISO/IEC 23008-2, ITU-T Rec. H.265: NAL unit header */
+>  	__u8	nal_unit_type;
+>  	__u8	nuh_temporal_id_plus1;
+> -- 
+> 2.32.0
+> 
+> 
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
