@@ -4,96 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6247BC433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 May 2022 11:54:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A5EDC433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 May 2022 14:23:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RGzWsZRZ/EqCPEXeyO4WheBCQH1gjo1/cwQEgitS8Xg=; b=rJ0F2kobtN1PVQI2/6aKbrDri3
-	i9i0YoCKynK62N8YlL7qR0zv6JFNWEaHRQksF8VM5iV07cFw9Kv2dYUeLsQNPgxV6crFzINEed80f
-	9IRRyOIWDKKx1QNgwNs5xT9O6e8zYTxC/DRrwq9bjaJZmJ+yi2kkXP8wzoT95gRqO4IEPGa9neLqW
-	+VnUxtx4/ze7oJQowMuaUgXE3uRD8cX1z/HVSb+fmOUKf2XSjhks4XnTwtJT6tcnzrVyODteSy0XM
-	nJzlMVZlYdf/f92OEsTKTtzXzNaAZguuCEDtzUDHGkYz2/8PgQ2VQVXjwRHkNdZI2/cBpDDWNvweu
-	D2WnIIBQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2kLcOoS74S6sx3CiTcwiW6Xo7Z6nTG6BO4V19487gGc=; b=A417KCjleUdsPJ
+	YaUC4N8jLDQxM6vVM4TGNWAMRBj/3UlBYMpyQlHw64dcL6aucn6S6Td9wpEuGkj36VXTWB7g+qhHW
+	C8QgDtNyZSMbef6w7sQj17j6KSetf8gKfNuMu6YoYp1JuKgLAZOdHDeDcHUIOLztyWL/ZHJoyHlA2
+	/CyVgdNHDODNk2/9ppAHrEtSJHORUjgHpZDOCipQQ/VBqPB5cdyKLNQmKDGdD0Uxcbac3EtpgqHaj
+	A/EAt4+UqsjuR00XulbLkEnZStTCAUBQbdxJqxkDIwQ2SwUnySx1WsyOUnSFhiORezw+vUGhHaO16
+	sD9WdUol+NvqxUHeDPyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvHV0-003ooG-Rk; Sun, 29 May 2022 11:54:22 +0000
-Received: from wout2-smtp.messagingengine.com ([64.147.123.25])
+	id 1nvJp7-00422P-SM; Sun, 29 May 2022 14:23:17 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvHUm-003omq-IO; Sun, 29 May 2022 11:54:11 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailout.west.internal (Postfix) with ESMTP id A7B713200344;
-	Sun, 29 May 2022 07:54:03 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute5.internal (MEProxy); Sun, 29 May 2022 07:54:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	tom-fitzhenry.me.uk; h=cc:content-transfer-encoding:content-type
-	:date:date:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to;
-	 s=fm1; t=1653825243; x=1653911643; bh=TyMkJ9S3FIKXSrx+MW8UBtd0k
-	Xmm/kUUdF7+pxja3NY=; b=tRuEE1q1RsrhQULFDbRCFLBbltENYtBnOvTAeaVol
-	qmw/xZOl2hfLQAE551FeSZ3CNeC8XSZNVoTscnCLNPLjcpcuCzzRrnvAHhu8JJHv
-	OwqcYoNVACriqMmjJfr1QWserF79PsIPVSBbx1QCrHTpGlmyiKSW3ZnCT/HFxcKi
-	rnMzbGBBQfiZhKWR3ZYT+DD+4hvdIhKG0/eJs34GElALn4+DnEB/av7ooS+AxQ1g
-	E0C3nofSsasyXfxH5psvChlxcZKPJFCwLzCEB56UF8Ice9i/cN7TVy9NusTlNQVD
-	00RzPIga0qG7Np8uKt7WdcMBTyUxFCVDSmyRrTROMKolA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-transfer-encoding:content-type
-	:date:date:feedback-id:feedback-id:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:sender
-	:subject:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm1; t=1653825243; x=1653911643; bh=T
-	yMkJ9S3FIKXSrx+MW8UBtd0kXmm/kUUdF7+pxja3NY=; b=yMv7jd+l+N7duKaUP
-	spA1Ssicv4zAjj8OdSYNdFRuv3XL6bosaIqYFgSx9rzOjRsCltJovv0zGXq6UPQs
-	mAIYBGIg3QP7qVCJyhZFOyJQDFxlkN8GaNa39GOMRkK/q389J+giLQ0/GUmivKex
-	TsvvU2KjS9bGzMp+uKxBR49zZtxX74rdLB0yhFR4plz78Z4t7+eGmv8V5aWf7aGu
-	P4mTTaBSEld6hKYRWjF7qW09ej6XXdZjHHeHPpnBLlumLg1b9demHquhHR8jtFxQ
-	jDGuPT1Hik84LdFHV3jYk6X+BOapgIPQIYi0ilzky/fj3KY6j4sZPc4dLOXTe8Po
-	D6TbA==
-X-ME-Sender: <xms:2l6TYj0cpGRJ52HuKYi2ApYY8oFlp4QplMpuMA0-JaGTNBAYbLLjkQ>
-    <xme:2l6TYiHwcIGgR5uhNdmM9hh4uveM6I_gm25xuNjhef02_3a9NHXxtNDYuQtEo8v2d
-    PL8R2EltgZu4UPNCg>
-X-ME-Received: <xmr:2l6TYj48oIgFPX-fHvxLkBZnofGWSLbKhisPDRjC05WHLuLuwYEM5T-L5zjJ3dZndKk_WvjgWpViQh-OTp2KjwyZ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrkeeggdeggecutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
-    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpefkffggfgfuvfhfhfgjtgfgsehtkeertddtfeejnecuhfhrohhmpefvohhmucfh
-    ihhtiihhvghnrhihuceothhomhesthhomhdqfhhithiihhgvnhhrhidrmhgvrdhukheqne
-    cuggftrfgrthhtvghrnhepfeffuedtjeelteffheegudekudetvdejgfejieekteeutdfh
-    lefhtdeuffduueehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilh
-    hfrhhomhepthhomhesthhomhdqfhhithiihhgvnhhrhidrmhgvrdhukh
-X-ME-Proxy: <xmx:2l6TYo3GZLQCAIPzlMCPynJiRrVeLIfQO1ZW-uHkZzW8xkqRp9qzPA>
-    <xmx:2l6TYmH8iuVqMuVF1_3Qo0W7spEXuF_qrkoY-SyUO_TLsUNj0kCpcw>
-    <xmx:2l6TYp83P-N6d8R3njAYyCh5F5JHno2mBLpsbQ8WH9bfdIZMB45aUQ>
-    <xmx:216TYtcaEIFWK0nCgJisHuah0FkQsZn0mT5J_aK0S6C8tcqt7Ur1NQ>
-Feedback-ID: iefc945ae:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 29 May 2022 07:53:59 -0400 (EDT)
-Message-ID: <11f38463-1e3f-8fda-c54f-77c4065b06fc@tom-fitzhenry.me.uk>
-Date: Sun, 29 May 2022 21:53:56 +1000
+	id 1nvJp5-00421f-Ha
+	for linux-rockchip@lists.infradead.org; Sun, 29 May 2022 14:23:16 +0000
+Received: by mail-ej1-x634.google.com with SMTP id rq11so16561405ejc.4
+        for <linux-rockchip@lists.infradead.org>; Sun, 29 May 2022 07:23:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=UJb4UDxzCMKxbf1CmD5HDQoIHrHBHy8/Ie4zmOsAWXA=;
+        b=FT84ta8Yc+hWvvT79Z/EotgnhlCoMR/OVwCUPIcEFFM9M4v1BVvGqveMxavRNr5CmD
+         /6Zt4vFAjSX9EqtxuLO9e3G1siSkcdvv0zot9hpX1hZA6Dzia+4OTFEP73ZZb0gR3xcg
+         2dzF/atPOO9BE18dUZ2nhoQfJ555/XxBWRQhdjYf44S60Cn94N67QQ2d4MPTFeL8hta1
+         gGJlEqXS525lItHW2cEshkDPK59W624fuOQi/w95SBBtEfxmg/bFtL72TDdF7Bzs9ac4
+         +bA2xtkFxrw4UPjRvWnPJ9No/zNPHLyhcbO8Q1R5jOgzK/CPFyc1vrZeOYVuFZT4j95b
+         NuRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=UJb4UDxzCMKxbf1CmD5HDQoIHrHBHy8/Ie4zmOsAWXA=;
+        b=rQ6SbRTQajaf9M2RVImY0Rt7hsiOu+6HO+WAaMyGfPx0Un735SLqJYekgqx5aazW6I
+         BmxnV9lfizCHuHoc1M0yFlutKg+zOsNlSF+nTQp9cHb02uqQEO6quwLYsEvgLdxsyF1F
+         pEm3CG47vlm1lOk9eoBKXAwCRiKvw6estj3mgIS1+T2eRSW71ULeO6kP4GhFo+c0B+9E
+         uDn/1wunNTfWiN12Rceg4uJw7B9iAogj/Ib/SBKse10UWBfHOsTwAWdvlSLhIF9KT8Fy
+         bftNGUOp3xIpnAMKnezNI3U0vrdNSx3gc9DTB8nTlerSur7t6Q1ezVMbuNZYk67p5ihT
+         mPeA==
+X-Gm-Message-State: AOAM531Y5fqwh3WI58qSWeXEjqP+0cnJ8L2V55Ntmj2u1H8e7sTvC4LQ
+	WCkSHsxjCN+6az+PVw3dajcWDg==
+X-Google-Smtp-Source: ABdhPJw+XHJUIyCFpb2k4yaW9AsZyRMrdw/FOfP9vthEhZF1TwTLqKEs+OUv+NI5FuJxjhuKSVnhnQ==
+X-Received: by 2002:a17:907:6e11:b0:6fe:feaa:bb04 with SMTP id sd17-20020a1709076e1100b006fefeaabb04mr26911341ejc.187.1653834194008;
+        Sun, 29 May 2022 07:23:14 -0700 (PDT)
+Received: from [192.168.0.177] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id u10-20020a17090657ca00b006f52dbc192bsm3201856ejr.37.2022.05.29.07.23.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 29 May 2022 07:23:13 -0700 (PDT)
+Message-ID: <66d655bc-f08c-c6ea-8fc6-260f215a8b4c@linaro.org>
+Date: Sun, 29 May 2022 16:23:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.1
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add initial support for Pine64
- PinePhone Pro
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add PinePhone Pro
+ bindings
 Content-Language: en-US
-To: =?UTF-8?Q?Ond=c5=99ej_Jirman?= <megous@megous.com>,
- Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+To: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, Samuel Holland <samuel@sholland.org>,
- Martijn Braam <martijn@brixit.nl>
+ Ondrej Jirman <x@xff.cz>, Martijn Braam <martijn@brixit.nl>
 References: <20220529031705.278631-1-tom@tom-fitzhenry.me.uk>
- <20220529031705.278631-3-tom@tom-fitzhenry.me.uk>
- <20220529113309.imsy7j3cnl4ihc52@core>
-From: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
-In-Reply-To: <20220529113309.imsy7j3cnl4ihc52@core>
+ <20220529031705.278631-2-tom@tom-fitzhenry.me.uk>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220529031705.278631-2-tom@tom-fitzhenry.me.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220529_045409_174739_4B4C323F 
-X-CRM114-Status: UNSURE (   6.07  )
+X-CRM114-CacheID: sfid-20220529_072315_675487_1F320D07 
+X-CRM114-Status: UNSURE (   7.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -106,14 +92,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjkvNS8yMiAyMTozMywgT25kxZllaiBKaXJtYW4gd3JvdGU6Cj4gSSBzdWdnZXN0IHRvIHdh
-aXQgZm9yIHRoZSBvcmlnaW5hbCBhdXRob3IncyBzdWJtaXNzaW9uLgoKU0dUTS4gSSB3aWxsIGhh
-cHBpbHkgd2l0aGRyYXcgdGhlIHBhdGNoIHNlcmllcy4KCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On 29/05/2022 05:17, Tom Fitzhenry wrote:
+> Document board compatible names for Pine64 PinePhonePro.
+> 
+> https://wiki.pine64.org/wiki/PinePhone_Pro
+> 
+> Signed-off-by: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
+
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
