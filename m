@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C888C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 May 2022 14:04:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E478C433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 May 2022 14:11:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fc3QpG3qLKWTiPMs7mqq2nr+P9X1Z8Io6zOD7Ly2oUA=; b=dv9koMeGeVBJVO
-	8CbYVES3Kp6Lz/4IGT+58OYHlxugIvk3Zg+GQzWILzJ3mT06hVh/ikfUDJB4929eklF5IKX3aTKkf
-	I01RR0UlV1RaaqdtDO9DJ+WNh6V8DETTm0qLTmLwWytCkTmbAuSrkcHTMKTtSBrrCoXqh4kJ2ZE+w
-	XtW22/6EQkrlJjn2JKjev7JrqkpAFnZlHfk/Q4Hbe8TKhmDWb2MeSwyO7Rldx9r6NjZWYxW0zDx5a
-	NykOWLu+HH7PMOCUnAx+IKqtWP1+CTBCNexDu9n/tb8qTl+sKVbdwydArgspADl8CcbAu+0zackiy
-	VWIRAgiYEbz+U+weLP5Q==;
+	List-Owner; bh=Sn7i2j2vZF/BEr/J3bQEpIW60r24G4RRqbG/aNy5YW8=; b=UFdjb/YIlmSi0i
+	7LLEcMV+58Bgo9G5zPvVImi3cuA9M7rkEvSEuLV92JBIiX9o/nspbvD1g4ySFNytjkkBpdgIUiz8v
+	aNXYtmvYG1emLymwLx6HENSF/hVPlJMVguXSyNSSrePqwuPZ0puPsI6/Tc1ahWQnTMzeALqVtMIql
+	aCWzW4HxD8MoFa/lkovK2RZGJDYDM+V22TAxGUTJCFLgu+rfhLREq2EGRAxXp0y0H6sMu/beena6F
+	Jbnt+EmfQpfiMBLYpzoymQh2TNa/h+LPcxg7yYpCKmvxXATYM55t9lOQuO8BTDObmAt+s8YN3ILij
+	ni/ekv/kAy7qftjDU/cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvg0G-007256-4p; Mon, 30 May 2022 14:04:16 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nvg70-0075HO-L4; Mon, 30 May 2022 14:11:14 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvfg1-006q3t-3d
-	for linux-rockchip@lists.infradead.org; Mon, 30 May 2022 13:43:23 +0000
+	id 1nvfig-006rVO-Jr; Mon, 30 May 2022 13:46:08 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id A5F3560FC8;
-	Mon, 30 May 2022 13:43:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F08FEC385B8;
-	Mon, 30 May 2022 13:43:18 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3043860FCE;
+	Mon, 30 May 2022 13:46:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57C81C3411F;
+	Mon, 30 May 2022 13:46:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1653918200;
-	bh=lyG/J14veE4PPv7P93S7wmHZ8PtfDwL4ePf9On8nxYM=;
+	s=k20201202; t=1653918365;
+	bh=ZRBlCTHt0pyFWYQr3Ew2t9lLWa2U4S35aOox2RxugS8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=qpxDLNSZad9C5mn4P1PtLw/PYrQHhq8s3bhU93V8DK8A4nnUCa8BNRjcMbSZq1P2T
-	 hnkdDjwlsMRcZwXHxBkgTTc/YRt/63Iri9MaJhI5PgvWhtXeOLKNVv7u/pZ9MFT45d
-	 a5/qFahL4Cx2hL0G9U03L49lkrWToOqTJ5IbOGiK6ff2z78D858Giqo5JTUMtlowS/
-	 8N8z9plMbHIzL9uxdl2K26FMIQexxo5whrueklP4Gg0Th+GEuY/R72ZIakMrifqcL9
-	 vymjhd6jPqqes0sLJnCjy1/EFDMVRRAHTsvn7d6U3oHXi6WsEyi+0MsAQoZPa2uQch
-	 7DR/9ad1y2FsQ==
+	b=l+LglB8FlitDGTYZYnf0Mj4AmwVFoWvtfRPe2SlUpJAzRNvzSE5B/N5KnRu7iVM4O
+	 nTf4+4O3fD0DbO3q0KzeuK8HIEAsM9lA4rWR/OS66+cG/XsMiN+yGnw83joLkXx8nj
+	 lKGLd4hOcA7uPq33jdaCEsTZ+C7MP7BgkO5cAXbw9x2NiI2lMCHfh3SHADnPiTksqb
+	 VSL6KiQLvT99UT5NzEZlx7QTfRZAIdzisVMVX80cBjniGB/0wMtu/RBB34i+jnXCau
+	 zRM8N3FcShQKTW/1rSuWZ1/mxP3O8zCe0ugzrmVBC8NlN5g/HFQggzDRLVJpd14Vwo
+	 WD1aAGK+TQ0UQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Sebastian Fricke <sebastian.fricke@collabora.com>,
+Cc: Hangyu Hua <hbh25y@gmail.com>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
+	jacob-chen@iotwrt.com,
 	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
+	heiko@sntech.de,
 	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev
-Subject: [PATCH AUTOSEL 5.15 092/109] media: hantro: Stop using H.264 parameter pic_num
-Date: Mon, 30 May 2022 09:38:08 -0400
-Message-Id: <20220530133825.1933431-92-sashal@kernel.org>
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.10 55/76] media: rga: fix possible memory leak in rga_probe
+Date: Mon, 30 May 2022 09:43:45 -0400
+Message-Id: <20220530134406.1934928-55-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220530133825.1933431-1-sashal@kernel.org>
-References: <20220530133825.1933431-1-sashal@kernel.org>
+In-Reply-To: <20220530134406.1934928-1-sashal@kernel.org>
+References: <20220530134406.1934928-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_064321_344656_EB68BC48 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20220530_064606_737007_01F7CF6C 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,40 +82,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+From: Hangyu Hua <hbh25y@gmail.com>
 
-[ Upstream commit 831410700909f4e29d5af1ef26b8c59fc2d1988e ]
+[ Upstream commit a71eb6025305192e646040cd76ccacb5bd48a1b5 ]
 
-The hardware expects FrameNumWrap or long_term_frame_idx. Picture
-numbers are per field, and are mostly used during the memory
-management process, which is done in userland. This fixes two
-ITU conformance tests:
+rga->m2m_dev needs to be freed when rga_probe fails.
 
-  - MR6_BT_B
-  - MR8_BT_B
-
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Reviewed-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+Signed-off-by: Hangyu Hua <hbh25y@gmail.com>
 Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/staging/media/hantro/hantro_h264.c | 2 --
- 1 file changed, 2 deletions(-)
+ drivers/media/platform/rockchip/rga/rga.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_h264.c b/drivers/staging/media/hantro/hantro_h264.c
-index 0b4d2491be3b..228629fb3cdf 100644
---- a/drivers/staging/media/hantro/hantro_h264.c
-+++ b/drivers/staging/media/hantro/hantro_h264.c
-@@ -354,8 +354,6 @@ u16 hantro_h264_get_ref_nbr(struct hantro_ctx *ctx, unsigned int dpb_idx)
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index d99ea8973b67..e3246344fb72 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -868,7 +868,7 @@ static int rga_probe(struct platform_device *pdev)
  
- 	if (!(dpb->flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE))
- 		return 0;
--	if (dpb->flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
--		return dpb->pic_num;
- 	return dpb->frame_num;
- }
+ 	ret = pm_runtime_resume_and_get(rga->dev);
+ 	if (ret < 0)
+-		goto rel_vdev;
++		goto rel_m2m;
  
+ 	rga->version.major = (rga_read(rga, RGA_VERSION_INFO) >> 24) & 0xFF;
+ 	rga->version.minor = (rga_read(rga, RGA_VERSION_INFO) >> 20) & 0x0F;
+@@ -884,7 +884,7 @@ static int rga_probe(struct platform_device *pdev)
+ 					   DMA_ATTR_WRITE_COMBINE);
+ 	if (!rga->cmdbuf_virt) {
+ 		ret = -ENOMEM;
+-		goto rel_vdev;
++		goto rel_m2m;
+ 	}
+ 
+ 	rga->src_mmu_pages =
+@@ -921,6 +921,8 @@ static int rga_probe(struct platform_device *pdev)
+ free_dma:
+ 	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
+ 		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
++rel_m2m:
++	v4l2_m2m_release(rga->m2m_dev);
+ rel_vdev:
+ 	video_device_release(vfd);
+ unreg_v4l2_dev:
 -- 
 2.35.1
 
