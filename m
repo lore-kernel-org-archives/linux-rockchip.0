@@ -4,59 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390E5C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 May 2022 13:50:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A11BC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 May 2022 13:50:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OwS6JrmecGg3fsNh+HK2EQulNgcTkLyC6CyrzrJkPyc=; b=1bADMQAKEh7H/D
-	VGzDnPV9yMVSIWU1k21tfbdwpjbnE7OFYw84wwe2dJga7T46iVJ1p9Yq7nuU3xmh3LSAsYcPQ+oKW
-	/HH0tguy+QmYkTVAzbgI2xBubhKnOTz2AWX6sLgNbJjEzKKNOSu5+mXZAJP1lgc4ffnC81R5OmWcB
-	Qd+mKzD5BusPjoSn1U3aU7JbWRvU6i+tsXjeAr9mVSUg8dHPBUTNp+Chz8OGKs08oLdC4E7eoKMpy
-	Ux7/qRokH3LwU3+dG8th97oTK+RIY1Dko+5ZIlbb741UXWqkW5nAQSXL7z2htnFkqZFEiuQI08fFK
-	2EHqJDMZNeZErQ1Vsu6Q==;
+	List-Owner; bh=0cnvVichyKOzQA9Pqms1r3aSNO+pGTb1S91NC9r906w=; b=3ULxhDFZxF4pxC
+	tMfSBTwGaEc6mQVNKlu047S4DVx3QrHyT/hjbrc7RY/Zvp5eI6Q73X/oA3G1oQtqUAxAUfQTShjMD
+	S7epWBL/smAcxb6uoh+JjdekrnC94qk+sziFAmeXyan7hSXMwtYT3T5oRV8QSdJBMYMdGhWGawuPd
+	+vszYEKBNkh7OnZykuUBLZrBxVdCgPV/8rUt3aAI7uwhrJf+GbZHU0KVFFHxpdPVRoumG5i0X6tE5
+	BcQVKbK+I7E65cRdgk5/nzjpISnaon4KdHc7C/2MoXdLQ8WedHhMBExehTjmng9filbm8pai9hhNk
+	uVzgHwf2gXeeqOpdaphg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvfmb-006u2H-LH; Mon, 30 May 2022 13:50:09 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nvfmh-006u5C-HY; Mon, 30 May 2022 13:50:15 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvfZC-006lsV-M7; Mon, 30 May 2022 13:36:20 +0000
+	id 1nvfZI-006lux-GN
+	for linux-rockchip@lists.infradead.org; Mon, 30 May 2022 13:36:27 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 0992CB80D89;
-	Mon, 30 May 2022 13:36:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F92CC3411A;
-	Mon, 30 May 2022 13:36:14 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 26369B80DA9;
+	Mon, 30 May 2022 13:36:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85931C3411E;
+	Mon, 30 May 2022 13:36:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1653917775;
-	bh=phB7LXbMznbVSVQXBgVCBso+VRteL7PNg//ZRtMP2a8=;
+	s=k20201202; t=1653917781;
+	bh=S8nu9Wrj80nFqvcHMwSeosMnoFWh1xZotRyH4pzSSZw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LIS0IJSvBp8KGJdRd3t8HjBM4aTAc4X8QXHwGxHblK2WWpUC1RYM/vT7hkGRCKXdR
-	 baUhz9bHkbBU+F8gru/YGoEkNeMnRavEnZvsI4kfkzhDH4MeYfDIimTycEHjg7yeq8
-	 7KP6/w4sK670gPDIsjWKgO84YJgvV2LjxeHDVMGONswdM8S11WKiYQ99R6mv5e4L4w
-	 I+2R6Hn4hTkhfHjfMh1mU7/hamdn7q4OiYzAZHA7l1moWnZrbtCpeokbkGr0o7ahG+
-	 R621luR/CxygBmnjuGk3O7NcEY0AtBwpTDH8PR0nIYGDW/JJfgR3NAcDVgXeKvCm82
-	 G2+n5c19sqPiA==
+	b=LaOnXRWhKfNePUJ0Ci3hGaa5HDF7YbNJfdO4WChUp6oLfl425ItnixNf5IskiXFQ2
+	 9YIhAqaQsq33D54l/uMAGIvgc2AqHfHB3vL6xaEfm6DiAkffLjbZQFJ+K1lScZkmqz
+	 30JAID1qlyiZnKDupaZ+PEzDJPfwu/VKWS/5cH+gvchFkQyQh2VMFABWZPeSvF6ChP
+	 hdZ6lZWbKW9YXAo2wD+bqqDKdYtXVCp213vFO02Bg03igmS66Onu9yKN/onkgm9IvV
+	 sDdAoFbEDqnJCF/fEuWxoz5yYP/FTamGQ3M1SYjyDjNzwqFxxFDL8AEWkRtWn7BWfD
+	 0Ufae3XCpYEzQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Hangyu Hua <hbh25y@gmail.com>,
+Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	jacob-chen@iotwrt.com,
-	ezequiel@vanguardiasur.com.ar,
-	heiko@sntech.de,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
 	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.17 093/135] media: rga: fix possible memory leak in rga_probe
-Date: Mon, 30 May 2022 09:30:51 -0400
-Message-Id: <20220530133133.1931716-93-sashal@kernel.org>
+	linux-staging@lists.linux.dev
+Subject: [PATCH AUTOSEL 5.17 095/135] media: hantro: HEVC: unconditionnaly set pps_{cb/cr}_qp_offset values
+Date: Mon, 30 May 2022 09:30:53 -0400
+Message-Id: <20220530133133.1931716-95-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220530133133.1931716-1-sashal@kernel.org>
 References: <20220530133133.1931716-1-sashal@kernel.org>
@@ -64,8 +65,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220530_063618_940718_9E034597 
-X-CRM114-Status: GOOD (  13.26  )
+X-CRM114-CacheID: sfid-20220530_063624_726968_55E682C0 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,51 +83,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Hangyu Hua <hbh25y@gmail.com>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 
-[ Upstream commit a71eb6025305192e646040cd76ccacb5bd48a1b5 ]
+[ Upstream commit 46c836569196f377f87a3657b330cffaf94bd727 ]
 
-rga->m2m_dev needs to be freed when rga_probe fails.
+Always set pps_cb_qp_offset and pps_cr_qp_offset values in Hantro/G2
+register whatever is V4L2_HEVC_PPS_FLAG_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT
+flag value.
+The vendor code does the same to set these values.
+This fixes conformance test CAINIT_G_SHARP_3.
 
-Signed-off-by: Hangyu Hua <hbh25y@gmail.com>
+Fluster HEVC score is increase by one with this patch.
+
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/media/platform/rockchip/rga/rga.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ drivers/staging/media/hantro/hantro_g2_hevc_dec.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index 3d3d1062e212..2f8df74ad0fd 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -865,7 +865,7 @@ static int rga_probe(struct platform_device *pdev)
- 
- 	ret = pm_runtime_resume_and_get(rga->dev);
- 	if (ret < 0)
--		goto rel_vdev;
-+		goto rel_m2m;
- 
- 	rga->version.major = (rga_read(rga, RGA_VERSION_INFO) >> 24) & 0xFF;
- 	rga->version.minor = (rga_read(rga, RGA_VERSION_INFO) >> 20) & 0x0F;
-@@ -881,7 +881,7 @@ static int rga_probe(struct platform_device *pdev)
- 					   DMA_ATTR_WRITE_COMBINE);
- 	if (!rga->cmdbuf_virt) {
- 		ret = -ENOMEM;
--		goto rel_vdev;
-+		goto rel_m2m;
+diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+index 99d8ea7543da..fab326389261 100644
+--- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
++++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+@@ -180,13 +180,8 @@ static void set_params(struct hantro_ctx *ctx)
+ 		hantro_reg_write(vpu, &g2_max_cu_qpd_depth, 0);
  	}
  
- 	rga->src_mmu_pages =
-@@ -918,6 +918,8 @@ static int rga_probe(struct platform_device *pdev)
- free_dma:
- 	dma_free_attrs(rga->dev, RGA_CMDBUF_SIZE, rga->cmdbuf_virt,
- 		       rga->cmdbuf_phy, DMA_ATTR_WRITE_COMBINE);
-+rel_m2m:
-+	v4l2_m2m_release(rga->m2m_dev);
- rel_vdev:
- 	video_device_release(vfd);
- unreg_v4l2_dev:
+-	if (pps->flags & V4L2_HEVC_PPS_FLAG_PPS_SLICE_CHROMA_QP_OFFSETS_PRESENT) {
+-		hantro_reg_write(vpu, &g2_cb_qp_offset, pps->pps_cb_qp_offset);
+-		hantro_reg_write(vpu, &g2_cr_qp_offset, pps->pps_cr_qp_offset);
+-	} else {
+-		hantro_reg_write(vpu, &g2_cb_qp_offset, 0);
+-		hantro_reg_write(vpu, &g2_cr_qp_offset, 0);
+-	}
++	hantro_reg_write(vpu, &g2_cb_qp_offset, pps->pps_cb_qp_offset);
++	hantro_reg_write(vpu, &g2_cr_qp_offset, pps->pps_cr_qp_offset);
+ 
+ 	hantro_reg_write(vpu, &g2_filt_offset_beta, pps->pps_beta_offset_div2);
+ 	hantro_reg_write(vpu, &g2_filt_offset_tc, pps->pps_tc_offset_div2);
 -- 
 2.35.1
 
