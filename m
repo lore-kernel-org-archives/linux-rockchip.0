@@ -4,107 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A8FDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 May 2022 08:59:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2F47C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 May 2022 13:39:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GUoCUkuU2/Yg9p8vcdYuIrTNneydufhgkapXeXk2lg0=; b=HHOIBy1w79l/yd
-	IX7aStnfECFcbqL6P6+3TdmITI/iVkt1cx6C35jm0OYCzMHUSANGJYm4Jib0gh8Q76Eww+uIANR8Q
-	Sv+9tUN11GgLlnuAxJANVJzTXfVNzzm31jrrjPiC8kz4+JBe0FoUxQEVkAqaFmAY1GmwTIfZLJFJH
-	Ky5Hweyd0JEOEJ7HB+bGLtNdv1Aa+tK+AdQTY7mR8decX4fxU5lgCFCYWScZUrYtQpUEQ+TzRvDvg
-	E9JKSplHxgYPXDfN4n9KhBe3doJ04EvyavfugNVaLFJ8CNv1BeAUOajIdT47rDJ1B2C+qLIF5Ue0S
-	0GMxJKScW0geuUt7pROA==;
+	List-Owner; bh=novlnh+Qf4BVG33S9hC8EHD/QH/pRDZYgHga4ZMfvUI=; b=wnNVgn9oZJHUko
+	INRoasACBC8t0YwxRW5icUY48c9RD/X4KLIjhh6jAqa0VKp7EGKk+sRFkzrpIGoB0BCxqvKKqPTKs
+	Stv3H3Hbj69x9RoC5/kzXOsQjK/UNskJ/urMN8QBjOwIQriVAtzUsvXbT0Bbj+V4Eo0dIWr0C2h+1
+	MhRccrR+he2VWpRoDyMqyrd/26F+sgYSyeJOzPkb1hr+SGNQxt9kxfTKT+nu+EvpoLxJ7vSYbdzlf
+	Ml9KZoSJJFNTNsIdYCtrzPzdLeZGs/H85sIRaha2weJF3VbNdXrAXshbPQU2uMNw/2VilV3ND1SSm
+	l4NFA60fFUzEPXmE3vYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvxiS-009wfN-AZ; Tue, 31 May 2022 08:59:04 +0000
-Received: from out1-smtp.messagingengine.com ([66.111.4.25])
+	id 1nw25d-00B7aa-F5; Tue, 31 May 2022 13:39:17 +0000
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nvxi9-009wXd-7w; Tue, 31 May 2022 08:58:47 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.nyi.internal (Postfix) with ESMTP id 163C25C0178;
-	Tue, 31 May 2022 04:58:41 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute4.internal (MEProxy); Tue, 31 May 2022 04:58:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=cc
-	:content-transfer-encoding:content-type:date:date:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:sender:subject:subject:to:to; s=fm3; t=1653987521; x=
-	1654073921; bh=oo43um3ROPuCPfC/KF7MzWcIrCP9C5yRfhjmYx4w5Bk=; b=N
-	hhpvJx3+mrLCx5kBTPw04hgqsM8qeNe20J/ISTHZzSyOiKLuOFtJ8JJOZWZqLw/e
-	g3BfrWbGhC+7dX0J4FszaINTCshzB56lFdN/WFLhJucJ9lZj3g01n6i+JzkHhenF
-	bk6aPcyhNwMmCa+r5DGUG+uMVhih5L0ouOJaN73VUjhNHIshT+IdAK0h30Cu2pD7
-	thubFBdmtTYAxGZUq2QpRvBsXYyJAsmjc0JTsJZxRnpoM/wGD1BEaE2S+4i5WViF
-	gDEKgP6Vawu+Q6GXH/1JQbi2/QWr4aBu09Lm22pYnHAs0WnToWko/fUXWIjZlrhe
-	X1Nb8XpYLkqoDzAUZSSrw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:content-transfer-encoding:content-type
-	:date:date:feedback-id:feedback-id:from:from:in-reply-to
-	:in-reply-to:message-id:mime-version:references:reply-to:sender
-	:subject:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender
-	:x-me-sender:x-sasl-enc; s=fm1; t=1653987521; x=1654073921; bh=o
-	o43um3ROPuCPfC/KF7MzWcIrCP9C5yRfhjmYx4w5Bk=; b=iH35DW97Ah1NSmTkb
-	tVz2iBYatAt4nAvefd9g/wzaBT3wtQ5MMi+4dFUm7NzpR6MYCHUJl6qvPS1pYLCK
-	hq0hyiLO+YeIbUv3p4113AzEMc/4UUeDuybshE6UO7lrkHDTw8EhliDO7BIt1685
-	cm8U2/f7vWlGFggl1pjvKsH3zzxwdfIn7RBhJHVpbANY4D5iBP2Rb6sYzaRTV7D8
-	rbkgdnN5Ytherw5mWfOPpLcIPAmINdEBW2CksTkcbf/K9H1GVtAo8THWZo31/Msj
-	78Pwui8jvgAVRwVFny1oG9vMLMTc9IXT4qetkgObXQEREAiMcq6Hrhlvl6Ccj9UV
-	W+CjA==
-X-ME-Sender: <xms:v9iVYm9brSS65NNHeTKa2aSAGuMhNuV_q02NqitHKIflWnyskPm93Q>
-    <xme:v9iVYmvEPzIa6t8R0DpvIt20T_x2F-CuvHUh5PhWnDzhF2bxhd3KZmVzY2jSFMPHc
-    rVf6sZAi_bHYy9zAN0>
-X-ME-Received: <xmr:v9iVYsAbo4OglaOhlIdmxiDh4TkGUQLy0JQ-DnyspWLuS2cSVjWUV6VEFA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrkeekgddutdcutefuodetggdotefrodftvf
-    curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
-    uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
-    fjughrpeffhffvuffkfhggtggugfgjsehtqhertddttddvnecuhfhrohhmpeforgigihhm
-    vgcutfhiphgrrhguuceomhgrgihimhgvsegtvghrnhhordhtvggthheqnecuggftrfgrth
-    htvghrnhepgfejtedtjefggfffvdetuedthedtheegheeuteekfeeghfdtteejkeeludeg
-    vddunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepmh
-    grgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:v9iVYue8RPFp1z-n5TDYcwmL08SVETCWBoiOkGM0Sj6DVf0ap9EGoQ>
-    <xmx:v9iVYrO8My_Z2Um84Ljo0zAf5qBuSDu7j1Yhzm_MSrHcpsLPN30f3Q>
-    <xmx:v9iVYonGekT-cC8ZcFo5elxoAmfC0a5p63TnPymE-i5SQLIN4aRP-Q>
-    <xmx:wdiVYl0RpjWOCUCQSxgWM6t29uxM_f_xUVVu5CeL80V0FPNXRfX-7A>
-Feedback-ID: i8771445c:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 31 May 2022 04:58:38 -0400 (EDT)
-Date: Tue, 31 May 2022 10:58:35 +0200
-From: Maxime Ripard <maxime@cerno.tech>
-To: Samuel Holland <samuel@sholland.org>,
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	Alistair Francis <alistair@alistair23.me>,
-	=?utf-8?Q?Ond=C5=99ej?= Jirman <x@xff.cz>,
-	Andreas Kemnade <andreas@kemnade.info>,
-	David Airlie <airlied@linux.ie>,
-	Geert Uytterhoeven <geert@linux-m68k.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Liang Chen <cl@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Sam Ravnborg <sam@ravnborg.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH 00/16] drm/rockchip: Rockchip EBC ("E-Book
- Controller") display driver
-Message-ID: <20220531085835.grw5nt4vyofis3po@penduick>
-References: <20220413221916.50995-1-samuel@sholland.org>
- <20220414085018.ayjvscgdkoen5nw5@houat>
- <Yo5kz/9cSd6ewC5f@phenom.ffwll.local>
+	id 1nw25R-00B7WI-Vx
+	for linux-rockchip@lists.infradead.org; Tue, 31 May 2022 13:39:08 +0000
+Received: by mail-lj1-x22c.google.com with SMTP id m26so3955216ljb.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 31 May 2022 06:39:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=rV+IwUnjJeMeaLuOoAuodxAXJv2e1zA8eKGCdKHN510=;
+        b=aK6SduPUBnymJsbjYP8iiifXthYMYLwOHK6Ld3DlMMKNkWarDDunHmUfEq5sqmy8GV
+         nRX7yuMXnhH6fyDaiQlcWx++J08xJYRPCWgVH9NQJyKN68AwWt9S14BKBk+vDtcVnAUA
+         ifwgXmWp5PajZLOGS4wIIe1C6saBSt6MonJ5T+AqjBzLximu8th6TDF+hVjKTOaiQCnv
+         pdGXti2Y5aLfwIYoByqBs4dVZYL+AkwdQnxB2vF0akc+16h5AViT2N4idnJJn61tvF3I
+         bz9AMs6+bqVfPmC/CyBlHRKzW4/vUaM2sboP8m1ymnAuOUurizkzERbk/YAOUMz4rf3b
+         xvLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=rV+IwUnjJeMeaLuOoAuodxAXJv2e1zA8eKGCdKHN510=;
+        b=3NubmRpBB0Ha+D/mbpJ28RX3r9SZ+xHNusEPG29Sx/cJuUcynfbKbSufmW0NJy9REU
+         5PILUy0Mw2r3jzj90Hrz3C7OzjqOGR4Xs3lIHaFkr2a7TtRAJ8a1JaVYrFL9ZdL2aaIl
+         Seum1t0xq+jp4Fs/mVM4PyHA7ymiZlWV+h2esGfVMgzYlwtOdzQbfrF/Sfl+Wt8Waru9
+         BbZ88GwK+bGARSPx6QFp309a1hDxCIcP8+yVH05Khudjqn+wfB2qSvyboXrE1DQ/TThG
+         NS7XZ/NbHEE4SLmZCXbQDebTOda7chJtv28j8G/dZK5Kf0MRvdYxhTVZUPq46AU7+war
+         /9xQ==
+X-Gm-Message-State: AOAM530VCJFSDa4qjD27EKwjm2k3rcBIwwgc2rtDMaL8OUnhO4n7JoLF
+	bRLAmk9EWJR2s7nVYsTk8kVSjmwvc1sFiI5Jrsb59A==
+X-Google-Smtp-Source: ABdhPJxxSN08j36y9Nsvv/qbdQgjo0d1IK1+kmolxk6AXhFtn4SjzokuR/8mLpb+7H1Msqpw1zPPrGlDxcrRZV9GXWw=
+X-Received: by 2002:a2e:954c:0:b0:253:d9bf:9f55 with SMTP id
+ t12-20020a2e954c000000b00253d9bf9f55mr33323645ljh.300.1654004341321; Tue, 31
+ May 2022 06:39:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <Yo5kz/9cSd6ewC5f@phenom.ffwll.local>
+References: <20220504213251.264819-1-sebastian.reichel@collabora.com> <20220504213251.264819-10-sebastian.reichel@collabora.com>
+In-Reply-To: <20220504213251.264819-10-sebastian.reichel@collabora.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 31 May 2022 15:38:24 +0200
+Message-ID: <CAPDyKFoRmpX5Pwmu370=tzg6ZAEPNm3LLAooXVLs35z94JsycQ@mail.gmail.com>
+Subject: Re: [PATCHv2 09/21] mmc: sdhci-of-dwcmshc: add reset call back for
+ rockchip Socs
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
+	Bartosz Golaszewski <brgl@bgdev.pl>, Adrian Hunter <adrian.hunter@intel.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Michael Turquette <mturquette@baylibre.com>, 
+	Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-mmc@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, kernel@lists.collabora.co.uk, 
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>, kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220531_015846_039066_AC43C165 
-X-CRM114-Status: GOOD (  43.24  )
+X-CRM114-CacheID: sfid-20220531_063906_068012_27F9FA2B 
+X-CRM114-Status: GOOD (  23.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,101 +92,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Daniel,
+On Wed, 4 May 2022 at 23:33, Sebastian Reichel
+<sebastian.reichel@collabora.com> wrote:
+>
+> From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+>
+> The reset function build in the SDHCI will not reset the logic
+> circuit related to the tuning function, which may cause data
+> reading errors. Resetting the complete SDHCI controller through
+> the reset controller fixes the issue.
+>
+> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+> [rebase, use optional variant of reset getter]
+> Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-Thanks for your feedback
+Queued for v5.20 on the devel branch, thanks!
 
-On Wed, May 25, 2022 at 07:18:07PM +0200, Daniel Vetter wrote:
-> > > VBLANK Events and Asynchronous Commits
-> > > ======================================
-> > > When should the VBLANK event complete? When the pixels have been blitted
-> > > to the kernel's shadow buffer? When the first frame of the waveform is
-> > > sent to the panel? When the last frame is sent to the panel?
-> > > 
-> > > Currently, the driver is taking the first option, letting
-> > > drm_atomic_helper_fake_vblank() send the VBLANK event without waiting on
-> > > the refresh thread. This is the only way I was able to get good
-> > > performance with existing userspace.
-> > 
-> > I've been having the same kind of discussions in private lately, so I'm
-> > interested by the answer as well :)
-> > 
-> > It would be worth looking into the SPI/I2C panels for this, since it's
-> > basically the same case.
-> 
-> So it's maybe a bit misnamed and maybe kerneldocs aren't super clear (pls
-> help improve them), but there's two modes:
-> 
-> - drivers which have vblank, which might be somewhat variable (VRR) or
->   become simulated (self-refresh panels), but otherwise is a more-or-less
->   regular clock. For this case the atomic commit event must match the
->   vblank events exactly (frame count and timestamp)
+Kind regards
+Uffe
 
-Part of my interrogation there is do we have any kind of expectation
-on whether or not, when we commit, the next vblank is going to be the
-one matching that commit or we're allowed to defer it by an arbitrary
-number of frames (provided that the frame count and timestamps are
-correct) ?
 
-> - drivers which don't have vblank at all, mostly these are i2c/spi panels
->   or virtual hw and stuff like that. In this case the event simply happens
->   when the driver is done with refresh/upload, and the frame count should
->   be zero (since it's meaningless).
-> 
-> Unfortuantely the helper to dtrt has fake_vblank in it's name, maybe
-> should be renamed to no_vblank or so (the various flags that control it
-> are a bit better named).
-> 
-> Again the docs should explain it all, but maybe we should clarify them or
-> perhaps rename that helper to be more meaningful.
-> 
-> > > Blitting/Blending in Software
-> > > =============================
-> > > There are multiple layers to this topic (pun slightly intended):
-> > >  1) Today's userspace does not expect a grayscale framebuffer.
-> > >     Currently, the driver advertises XRGB8888 and converts to Y4
-> > >     in software. This seems to match other drivers (e.g. repaper).
-> > >
-> > >  2) Ignoring what userspace "wants", the closest existing format is
-> > >     DRM_FORMAT_R8. Geert sent a series[4] adding DRM_FORMAT_R1 through
-> > >     DRM_FORMAT_R4 (patch 9), which I believe are the "correct" formats
-> > >     to use.
-> > > 
-> > >  3) The RK356x SoCs have an "RGA" hardware block that can do the
-> > >     RGB-to-grayscale conversion, and also RGB-to-dithered-monochrome
-> > >     which is needed for animation/video. Currently this is exposed with
-> > >     a V4L2 platform driver. Can this be inserted into the pipeline in a
-> > >     way that is transparent to userspace? Or must some userspace library
-> > >     be responsible for setting up the RGA => EBC pipeline?
-> > 
-> > I'm very interested in this answer as well :)
-> > 
-> > I think the current consensus is that it's up to userspace to set this
-> > up though.
-> 
-> Yeah I think v4l mem2mem device is the answer for these, and then
-> userspace gets to set it all up.
-
-I think the question wasn't really about where that driver should be,
-but more about who gets to set it up, and if the kernel could have
-some component to expose the formats supported by the converter, but
-whenever a commit is being done pipe that to the v4l2 device before
-doing a page flip.
-
-We have a similar use-case for the RaspberryPi where the hardware
-codec will produce a framebuffer format that isn't standard. That
-format is understood by the display pipeline, and it can do
-writeback.
-
-However, some people are using a separate display (like a SPI display
-supported by tinydrm) and we would still like to be able to output the
-decoded frames there.
-
-Is there some way we could plumb things to "route" that buffer through
-the writeback engine to perform a format conversion before sending it
-over to the SPI display automatically?
-
-Maxime
+> ---
+>  drivers/mmc/host/sdhci-of-dwcmshc.c | 26 +++++++++++++++++++++++++-
+>  1 file changed, 25 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
+> index bac874ab0b33..3a1b5ba36405 100644
+> --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
+> +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
+> @@ -15,6 +15,7 @@
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+>  #include <linux/of_device.h>
+> +#include <linux/reset.h>
+>  #include <linux/sizes.h>
+>
+>  #include "sdhci-pltfm.h"
+> @@ -63,6 +64,7 @@
+>  struct rk3568_priv {
+>         /* Rockchip specified optional clocks */
+>         struct clk_bulk_data rockchip_clks[RK3568_MAX_CLKS];
+> +       struct reset_control *reset;
+>         u8 txclk_tapnum;
+>  };
+>
+> @@ -255,6 +257,21 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+>         sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_STRBIN);
+>  }
+>
+> +static void rk35xx_sdhci_reset(struct sdhci_host *host, u8 mask)
+> +{
+> +       struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
+> +       struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
+> +       struct rk35xx_priv *priv = dwc_priv->priv;
+> +
+> +       if (mask & SDHCI_RESET_ALL && priv->reset) {
+> +               reset_control_assert(priv->reset);
+> +               udelay(1);
+> +               reset_control_deassert(priv->reset);
+> +       }
+> +
+> +       sdhci_reset(host, mask);
+> +}
+> +
+>  static const struct sdhci_ops sdhci_dwcmshc_ops = {
+>         .set_clock              = sdhci_set_clock,
+>         .set_bus_width          = sdhci_set_bus_width,
+> @@ -269,7 +286,7 @@ static const struct sdhci_ops sdhci_dwcmshc_rk3568_ops = {
+>         .set_bus_width          = sdhci_set_bus_width,
+>         .set_uhs_signaling      = dwcmshc_set_uhs_signaling,
+>         .get_max_clock          = sdhci_pltfm_clk_get_max_clock,
+> -       .reset                  = sdhci_reset,
+> +       .reset                  = rk35xx_sdhci_reset,
+>         .adma_write_desc        = dwcmshc_adma_write_desc,
+>  };
+>
+> @@ -292,6 +309,13 @@ static int dwcmshc_rk3568_init(struct sdhci_host *host, struct dwcmshc_priv *dwc
+>         int err;
+>         struct rk3568_priv *priv = dwc_priv->priv;
+>
+> +       priv->reset = devm_reset_control_array_get_optional_exclusive(mmc_dev(host->mmc));
+> +       if (IS_ERR(priv->reset)) {
+> +               err = PTR_ERR(priv->reset);
+> +               dev_err(mmc_dev(host->mmc), "failed to get reset control %d\n", err);
+> +               return err;
+> +       }
+> +
+>         priv->rockchip_clks[0].id = "axi";
+>         priv->rockchip_clks[1].id = "block";
+>         priv->rockchip_clks[2].id = "timer";
+> --
+> 2.35.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
