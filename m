@@ -4,114 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3450C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jun 2022 12:36:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08377C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jun 2022 15:43:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j+bCEa+jQJD4ZH0TCIYV4QYSvYW0xpE8Vts+7XDqzrE=; b=sHwHBKYZFWLINM
-	OHVvivFwuoLYNIw+w8Tkv/6b56ytzxvHIINlz53rX+C3g69KGQCJYgKWuHpqWKit6HhgEQt4S3ugR
-	SdA1n3bmR/xJUwqJz7Jg9jDCnupilm+GLoaiMczoe/4dx6yAOJA4fjGmphwvtVyl4xxkxXfoBPk8u
-	13GpuD+iCnNIzOzTjm4+wQLc76yBAr74rwLgROW0CGe+RW2xsVWCDQyWAT6Ubq5yb+ldudH++yUnG
-	1s8PStRwTWAWBBLNClRuy4t4jz2etm1nl1CtqyoIysWvgkQlLgk7ggkuUKFXH2r/WylA+7K1C3aWH
-	bef/eeULsDDd73p2sraA==;
+	List-Owner; bh=zhsLLnJxSqMDIwg9Jg05KrMY2kHMg5sMdtvgWfNtk1A=; b=0fwl1NBbeaMr9U
+	H0ejrzT85+VeYkBX9KuyNin2sWFXXjCQ03iwnRmDgb5s5rS4vAmEujmJ8Lf0Af5bOyM5uwVv5ttWY
+	CUA+h9ok4Hh7NVqInrJQ2OlHx+Mx2vBlUEs58kUOss2szmf2w2LHow/CAVUJkWltKY6eeYW3Trwgs
+	vGXx0uWgp/+2xIc0NaQVxLvOuxY/cDW5LnSZC3l5yoSZESCFhXmosfGZuAkSN9igbeu+xA9KROap8
+	KtpEbXJSjBhGoN2MsxkEvf4VX/IG47ch3YcQicH0dbeuvJr5//bN/rxB+Glf7XvKtNO4yHPSXFVrV
+	NT4sMX5n9iySz9j1pEXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwNZk-00G3rz-05; Wed, 01 Jun 2022 12:35:48 +0000
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+	id 1nwQVG-00Gwsy-5A; Wed, 01 Jun 2022 15:43:22 +0000
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwNZf-00G3me-DD
-	for linux-rockchip@lists.infradead.org; Wed, 01 Jun 2022 12:35:46 +0000
-Received: by mail-wr1-x432.google.com with SMTP id q7so2163021wrg.5
-        for <linux-rockchip@lists.infradead.org>; Wed, 01 Jun 2022 05:35:40 -0700 (PDT)
+	id 1nwQVC-00GwrV-Ma; Wed, 01 Jun 2022 15:43:20 +0000
+Received: by mail-ej1-x631.google.com with SMTP id m20so4570372ejj.10;
+        Wed, 01 Jun 2022 08:43:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google;
-        h=date:from:to:cc:subject:message-id:mail-followup-to:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=geWAW2xPBu0qLpWdiPyBgNivVlwU5h/jMqQrbUnnVfs=;
-        b=BdiXXMzt8D06LixSdY84NDu9Ost8vce1JU5Ly7m8KGGcWhLpUhElYtn+kEPfDuaH/W
-         ND88PNMAtKQj+HfoxEaDWhcrBetkIBFbdqglb7wVKPfHO9j+2zS1NmYUaejOw1aou2eM
-         2E2nTMfjIdKfDATqam2LNbA4ivHfMMsaofjKI=
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=eExjNr6fs8mRydGKpSFoBAs8yn0OjvvcMBEWL8NYO50=;
+        b=QeReasI5nzyoYwf2HE7Um3WaNjpgzi3+hs2cEneet2shfyHEcSAHMZIM5CDltIicgj
+         9trv5RBkl+Qwg6C5l4NSIYsZGROSeBalRbv/xmfvI2l5JNHo0ZDFEL2VEVqQoTdah8aU
+         IpvV17x4HdV+PHg2mOSKRk4+sPyzfcZ/hPpEr5H6IUl/kHtp4rCxAyRY5NykWyVqHYdu
+         BuE1bLInE6xolADRW15X0ZFlMJZ5lXWdO8fFe9bBMaUaVMEzvLm4F5d41EtnLadU54jL
+         wf4tjgEEIHg9B5ccnUw39SyOgaxNm6CA3xYc8avFezur+ZmsJ6wvKUdBSQhJxCQg+pBV
+         wYNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id
-         :mail-followup-to:references:mime-version:content-disposition
-         :in-reply-to;
-        bh=geWAW2xPBu0qLpWdiPyBgNivVlwU5h/jMqQrbUnnVfs=;
-        b=RHqMaKAacncwh0hm9qxfpjdG4tKi5D72hc2ywin42LkgHKel9m+gx/ZbVdxhPukeG6
-         xFaZ2i05+EbIBE6sipte2t1zkQxqPesGczVNwt0KXrgB1O7fUyHQ3NCYh5kaS9rW1ArB
-         RwgE7j0SnAU3DCTW116nzqS+jfgYQZ4QUIA7k35ZJTwgtjUfw3t7YYvpdSkcD4dWrHpP
-         52WQYf977dHZPGxRMS+OnGBb/YevoDONWJWLfCmB+aAIbAOcCGExFbcAZ24giE+qsj9I
-         ilOngI6pl6sVGPf1g9HueRlUJag/cMJmwY6zfdchrE0+EOPMeUA3sHWdxeYvy4zLm8Xk
-         dksA==
-X-Gm-Message-State: AOAM533REwrHN4+5GJw54eQA63ycVcqxniNspJE7HES++cEHvFoolMLy
-	zm+bQ6Zu3OoMcQsaf/eRfWIJYg==
-X-Google-Smtp-Source: ABdhPJzRlsH0LJwGkcjJA/JqoeBghm0kDNaIwYUbkjauNpnH8gIwKHdrawPBSHH7gN216H+LRzl0Uw==
-X-Received: by 2002:a5d:43cd:0:b0:20c:fdbd:8c11 with SMTP id v13-20020a5d43cd000000b0020cfdbd8c11mr53732471wrr.7.1654086938960;
-        Wed, 01 Jun 2022 05:35:38 -0700 (PDT)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
-        by smtp.gmail.com with ESMTPSA id d12-20020a5d4f8c000000b00210346cd0b7sm1537054wru.101.2022.06.01.05.35.37
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=eExjNr6fs8mRydGKpSFoBAs8yn0OjvvcMBEWL8NYO50=;
+        b=BYCUtKDtZEfGKh64wQ12a9vxMyhDpDexvXfMLJV4q0XRooOqylqIRh9QjLtpNJo30P
+         o+l5XDKkO4lFlouZPNDewwZH1I7YKByzqcvnjsucPp0YwNFCGv2x/PByoRPWfY3oCoe1
+         4X4nWI9Tlkvl5UcN8v+9IeDkuukpcbrJpb93WKYb59lUOIh6tOS0sYVHM1MhbKPgtDe4
+         e1Ibdbfb7ob3X/6RIUdMN/VLwMl6ExAbd6BI71DsUvF+dYEUKjBw4JiayQWZ5Xr2QYeF
+         X84sZ3ePOZuAasCfRo6AisuzL/aVBXh8tfaE0uWnPGA0cCfL6B6MT9M+/GR+7mndozmk
+         tWZA==
+X-Gm-Message-State: AOAM530Tkk+fHVFvovBSkUCtROh7pIujvjFPIcTzN+3nKCMbnv1UQaI2
+	+2z2JWdPS3HTJk8v6LotLvc=
+X-Google-Smtp-Source: ABdhPJw7dHJzyhHVwkls8V0XWmtPtkUmYRDHSLb69EOifEu5t+2w0RzoTsPyS4kP1QriRFySeTgQlg==
+X-Received: by 2002:a17:907:7f26:b0:6ff:ab8:e85 with SMTP id qf38-20020a1709077f2600b006ff0ab80e85mr98874ejc.281.1654098194360;
+        Wed, 01 Jun 2022 08:43:14 -0700 (PDT)
+Received: from kista.localnet (213-161-3-76.dynamic.telemach.net. [213.161.3.76])
+        by smtp.gmail.com with ESMTPSA id w20-20020a17090652d400b006f3ef214e22sm861447ejn.136.2022.06.01.08.43.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 01 Jun 2022 05:35:38 -0700 (PDT)
-Date: Wed, 1 Jun 2022 14:35:35 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Maxime Ripard <maxime@cerno.tech>
-Cc: Samuel Holland <samuel@sholland.org>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	Alistair Francis <alistair@alistair23.me>,
-	=?utf-8?Q?Ond=C5=99ej?= Jirman <x@xff.cz>,
-	Andreas Kemnade <andreas@kemnade.info>,
-	David Airlie <airlied@linux.ie>,
-	Geert Uytterhoeven <geert@linux-m68k.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Liang Chen <cl@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Sam Ravnborg <sam@ravnborg.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH 00/16] drm/rockchip: Rockchip EBC ("E-Book
- Controller") display driver
-Message-ID: <YpddFxvC9pCsobNB@phenom.ffwll.local>
-Mail-Followup-To: Maxime Ripard <maxime@cerno.tech>,
-	Samuel Holland <samuel@sholland.org>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
-	Alistair Francis <alistair@alistair23.me>,
-	=?utf-8?Q?Ond=C5=99ej?= Jirman <x@xff.cz>,
-	Andreas Kemnade <andreas@kemnade.info>,
-	David Airlie <airlied@linux.ie>,
-	Geert Uytterhoeven <geert@linux-m68k.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Liang Chen <cl@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
-	Sam Ravnborg <sam@ravnborg.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220413221916.50995-1-samuel@sholland.org>
- <20220414085018.ayjvscgdkoen5nw5@houat>
- <Yo5kz/9cSd6ewC5f@phenom.ffwll.local>
- <20220531085835.grw5nt4vyofis3po@penduick>
+        Wed, 01 Jun 2022 08:43:13 -0700 (PDT)
+From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
+To: mchehab@kernel.org, hverkuil@xs4all.nl, ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, gregkh@linuxfoundation.org, mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org, samuel@sholland.org, nicolas.dufresne@collabora.com, andrzej.p@collabora.com, Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, kernel@collabora.com, Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: Re: [PATCH v6 09/17] media: uapi: HEVC: Define V4L2_CID_STATELESS_HEVC_SLICE_PARAMS as a dynamic array
+Date: Wed, 01 Jun 2022 17:43:12 +0200
+Message-ID: <8069971.T7Z3S40VBb@kista>
+In-Reply-To: <2630478.mvXUDI8C0e@kista>
+References: <20220527143134.3360174-1-benjamin.gaignard@collabora.com> <20220527143134.3360174-10-benjamin.gaignard@collabora.com> <2630478.mvXUDI8C0e@kista>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220531085835.grw5nt4vyofis3po@penduick>
-X-Operating-System: Linux phenom 5.10.0-8-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_053543_596494_79BD0BE9 
-X-CRM114-Status: GOOD (  61.26  )
+X-CRM114-CacheID: sfid-20220601_084318_776468_1FC45633 
+X-CRM114-Status: GOOD (  23.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,130 +80,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 31, 2022 at 10:58:35AM +0200, Maxime Ripard wrote:
-> Hi Daniel,
-> 
-> Thanks for your feedback
-> 
-> On Wed, May 25, 2022 at 07:18:07PM +0200, Daniel Vetter wrote:
-> > > > VBLANK Events and Asynchronous Commits
-> > > > ======================================
-> > > > When should the VBLANK event complete? When the pixels have been blitted
-> > > > to the kernel's shadow buffer? When the first frame of the waveform is
-> > > > sent to the panel? When the last frame is sent to the panel?
-> > > > 
-> > > > Currently, the driver is taking the first option, letting
-> > > > drm_atomic_helper_fake_vblank() send the VBLANK event without waiting on
-> > > > the refresh thread. This is the only way I was able to get good
-> > > > performance with existing userspace.
-> > > 
-> > > I've been having the same kind of discussions in private lately, so I'm
-> > > interested by the answer as well :)
-> > > 
-> > > It would be worth looking into the SPI/I2C panels for this, since it's
-> > > basically the same case.
-> > 
-> > So it's maybe a bit misnamed and maybe kerneldocs aren't super clear (pls
-> > help improve them), but there's two modes:
-> > 
-> > - drivers which have vblank, which might be somewhat variable (VRR) or
-> >   become simulated (self-refresh panels), but otherwise is a more-or-less
-> >   regular clock. For this case the atomic commit event must match the
-> >   vblank events exactly (frame count and timestamp)
-> 
-> Part of my interrogation there is do we have any kind of expectation
-> on whether or not, when we commit, the next vblank is going to be the
-> one matching that commit or we're allowed to defer it by an arbitrary
-> number of frames (provided that the frame count and timestamps are
-> correct) ?
-
-In general yes, but there's no guarantee. The only guarante we give for
-drivers with vblank counters is that if you receive a vblank event (flip
-complete or vblank event) for frame #n, then an immediate flip/atomic
-ioctl call will display earliest for frame #n+1.
-
-Also usually you should be able to hit #n+1, but even today with fun stuff
-like self refresh panels getting out of self refresh mode might take a bit
-more than a few frames, and so you might end up being late. But otoh if
-you just do a page flip loop then on average (after the crtc is fully
-resumed) you should be able to update at vrefresh rate exactly.
-
-> > - drivers which don't have vblank at all, mostly these are i2c/spi panels
-> >   or virtual hw and stuff like that. In this case the event simply happens
-> >   when the driver is done with refresh/upload, and the frame count should
-> >   be zero (since it's meaningless).
-> > 
-> > Unfortuantely the helper to dtrt has fake_vblank in it's name, maybe
-> > should be renamed to no_vblank or so (the various flags that control it
-> > are a bit better named).
-> > 
-> > Again the docs should explain it all, but maybe we should clarify them or
-> > perhaps rename that helper to be more meaningful.
-> > 
-> > > > Blitting/Blending in Software
-> > > > =============================
-> > > > There are multiple layers to this topic (pun slightly intended):
-> > > >  1) Today's userspace does not expect a grayscale framebuffer.
-> > > >     Currently, the driver advertises XRGB8888 and converts to Y4
-> > > >     in software. This seems to match other drivers (e.g. repaper).
-> > > >
-> > > >  2) Ignoring what userspace "wants", the closest existing format is
-> > > >     DRM_FORMAT_R8. Geert sent a series[4] adding DRM_FORMAT_R1 through
-> > > >     DRM_FORMAT_R4 (patch 9), which I believe are the "correct" formats
-> > > >     to use.
-> > > > 
-> > > >  3) The RK356x SoCs have an "RGA" hardware block that can do the
-> > > >     RGB-to-grayscale conversion, and also RGB-to-dithered-monochrome
-> > > >     which is needed for animation/video. Currently this is exposed with
-> > > >     a V4L2 platform driver. Can this be inserted into the pipeline in a
-> > > >     way that is transparent to userspace? Or must some userspace library
-> > > >     be responsible for setting up the RGA => EBC pipeline?
-> > > 
-> > > I'm very interested in this answer as well :)
-> > > 
-> > > I think the current consensus is that it's up to userspace to set this
-> > > up though.
-> > 
-> > Yeah I think v4l mem2mem device is the answer for these, and then
-> > userspace gets to set it all up.
-> 
-> I think the question wasn't really about where that driver should be,
-> but more about who gets to set it up, and if the kernel could have
-> some component to expose the formats supported by the converter, but
-> whenever a commit is being done pipe that to the v4l2 device before
-> doing a page flip.
-> 
-> We have a similar use-case for the RaspberryPi where the hardware
-> codec will produce a framebuffer format that isn't standard. That
-> format is understood by the display pipeline, and it can do
-> writeback.
-> 
-> However, some people are using a separate display (like a SPI display
-> supported by tinydrm) and we would still like to be able to output the
-> decoded frames there.
-> 
-> Is there some way we could plumb things to "route" that buffer through
-> the writeback engine to perform a format conversion before sending it
-> over to the SPI display automatically?
-
-Currently not transparently. Or at least no one has done that, and I'm not
-sure that's really a great idea. With big gpus all that stuff is done with
-separate command submission to the render side of things, and you can
-fully pipeline all that with in/out-fences.
-
-Doing that in the kms driver side in the kernel feels very wrong to me :-/
--Daniel
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RG5lIG5lZGVsamEsIDI5LiBtYWogMjAyMiBvYiAxMToxOToxMiBDRVNUIGplIEplcm5laiDFoGty
+YWJlYyBuYXBpc2FsKGEpOgo+IERuZSBwZXRlaywgMjcuIG1haiAyMDIyIG9iIDE2OjMxOjI2IENF
+U1QgamUgQmVuamFtaW4gR2FpZ25hcmQgbmFwaXNhbChhKToKPiA+IE1ha2UgZXhwbGljaXQgdGhh
+dCBWNEwyX0NJRF9TVEFURUxFU1NfSEVWQ19TTElDRV9QQVJBTVMgY29udHJvbCBpcwo+ID4gYSBk
+eW5hbWljIGFycmF5IGNvbnRyb2wgdHlwZS4KPiA+IFNvbWUgZHJpdmVycyBtYXkgYmUgYWJsZSB0
+byByZWNlaXZlIG11bHRpcGxlIHNsaWNlcyBpbiBvbmUgY29udHJvbAo+ID4gdG8gaW1wcm92ZSBk
+ZWNvZGluZyBwZXJmb3JtYW5jZS4KPiA+IAo+ID4gRGVmaW5lIHRoZSBtYXggc2l6ZSBvZiB0aGUg
+ZHluYW1pYyB0aGF0IGNhbiBkcml2ZXIgY2FuIHNldCBpbiAuZGltcyA9IHt9Lgo+ID4gCj4gPiBT
+aWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFi
+b3JhLmNvbT4KPiA+IC0tLQo+ID4gdmVyc2lvbiA2Ogo+ID4gLSBTZXQgVjRMMl9DVFJMX0ZMQUdf
+RFlOQU1JQ19BUlJBWSBmbGFnIGF1dG9tYXRpY2FsbHkgd2hlbiB1c2luZwo+ID4gICBWNEwyX0NJ
+RF9TVEFURUxFU1NfSEVWQ19TTElDRV9QQVJBTVMgY29udHJvbC4KPiA+IC0gQWRkIGEgZGVmaW5l
+IGZvciBtYXggc2xpY2VzIGNvdW50Cj4gPiAKPiA+ICBEb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1h
+cGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QgfCAyICsrCj4gPiAgZHJpdmVycy9tZWRp
+YS92NGwyLWNvcmUvdjRsMi1jdHJscy1kZWZzLmMgICAgICAgICAgICAgICAgIHwgMSArCj4gPiAg
+aW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxzLmggICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHwgNSArKysrKwo+ID4gIDMgZmlsZXMgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspCj4gPiAKPiA+
+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1j
+dHJscy1jb2RlYy5yc3QgYi8KPiBEb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRs
+L2V4dC1jdHJscy1jb2RlYy5yc3QKPiA+IGluZGV4IDA2Yjk2N2RlMTQwYy4uMDc5NmIxNTYzZGFh
+IDEwMDY0NAo+ID4gLS0tIGEvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9l
+eHQtY3RybHMtY29kZWMucnN0Cj4gPiArKysgYi9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkv
+bWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QKPiA+IEBAIC0yOTg2LDYgKzI5ODYsOCBAQCBl
+bnVtIHY0bDJfbXBlZ192aWRlb19oZXZjX3NpemVfb2ZfbGVuZ3RoX2ZpZWxkIC0KPiA+ICAgICAg
+VGhlc2UgYml0c3RyZWFtIHBhcmFtZXRlcnMgYXJlIGRlZmluZWQgYWNjb3JkaW5nIHRvIDpyZWY6
+YGhldmNgLgo+ID4gICAgICBUaGV5IGFyZSBkZXNjcmliZWQgaW4gc2VjdGlvbiA3LjQuNyAiR2Vu
+ZXJhbCBzbGljZSBzZWdtZW50IGhlYWRlcgo+ID4gICAgICBzZW1hbnRpY3MiIG9mIHRoZSBzcGVj
+aWZpY2F0aW9uLgo+ID4gKyAgICBUaGlzIGNvbnRyb2wgaXMgYSBkeW5hbWljYWxseSBzaXplZCAx
+LWRpbWVuc2lvbmFsIGFycmF5LAo+ID4gKyAgICBWNEwyX0NUUkxfRkxBR19EWU5BTUlDX0FSUkFZ
+IGZsYWcgbXVzdCBiZSBzZXQgd2hlbiB1c2luZyBpdC4KPiA+ICAKPiA+ICAuLiBjOnR5cGU6OiB2
+NGwyX2N0cmxfaGV2Y19zbGljZV9wYXJhbXMKPiA+ICAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L21lZGlhL3Y0bDItY29yZS92NGwyLWN0cmxzLWRlZnMuYyBiL2RyaXZlcnMvbWVkaWEvCnY0bDIt
+Cj4gY29yZS92NGwyLWN0cmxzLWRlZnMuYwo+ID4gaW5kZXggOWY1NTUwM2NkM2Q2Li5kNTk0ZWZi
+Y2JiOTMgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWN0cmxz
+LWRlZnMuYwo+ID4gKysrIGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jdHJscy1kZWZz
+LmMKPiA+IEBAIC0xNTEwLDYgKzE1MTAsNyBAQCB2b2lkIHY0bDJfY3RybF9maWxsKHUzMiBpZCwg
+Y29uc3QgY2hhciAqKm5hbWUsIGVudW0gCj4gdjRsMl9jdHJsX3R5cGUgKnR5cGUsCj4gPiAgCQli
+cmVhazsKPiA+ICAJY2FzZSBWNEwyX0NJRF9TVEFURUxFU1NfSEVWQ19TTElDRV9QQVJBTVM6Cj4g
+PiAgCQkqdHlwZSA9IFY0TDJfQ1RSTF9UWVBFX0hFVkNfU0xJQ0VfUEFSQU1TOwo+ID4gKwkJKmZs
+YWdzIHw9IFY0TDJfQ1RSTF9GTEFHX0RZTkFNSUNfQVJSQVk7Cj4gCj4gVGhpcyBjaGFuZ2UgYnJl
+YWtzIENlZHJ1cy4gSSdsbCBjaGVjayB3aGF0IG5lZWRzIHRvIGJlIGNoYW5nZWQuCgpQbGVhc2Ug
+aW5jbHVkZSB0aGUgY2hhbmdlIGJlbGxvdyB0byBrZWVwIENlZHJ1cyB3b3JraW5nLiBJJ2xsIGV4
+cGFuZCBzdXBwb3J0IApmb3IgbW9yZSBzbGljZXMgbGF0ZXIuCgogQmVzdCByZWdhcmRzLAogSmVy
+bmVqCgotLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1cy5jCisr
+KyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzLmMKQEAgLTE3OCw2
+ICsxNzgsNyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IGNlZHJ1c19jb250cm9sIGNlZHJ1c19jb250
+cm9sc1tdID0gewogICAgICAgIHsKICAgICAgICAgICAgICAgIC5jZmcgPSB7CiAgICAgICAgICAg
+ICAgICAgICAgICAgIC5pZCAgICAgPSBWNEwyX0NJRF9TVEFURUxFU1NfSEVWQ19TTElDRV9QQVJB
+TVMsCisgICAgICAgICAgICAgICAgICAgICAgIC5kaW1zICAgPSB7IDEgfSwKICAgICAgICAgICAg
+ICAgIH0sCiAgICAgICAgICAgICAgICAuY29kZWMgICAgICAgICAgPSBDRURSVVNfQ09ERUNfSDI2
+NSwKICAgICAgICB9LAogCj4gPiAgCQlicmVhazsKPiA+ICAJY2FzZSBWNEwyX0NJRF9TVEFURUxF
+U1NfSEVWQ19TQ0FMSU5HX01BVFJJWDoKPiA+ICAJCSp0eXBlID0gVjRMMl9DVFJMX1RZUEVfSEVW
+Q19TQ0FMSU5HX01BVFJJWDsKPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL21lZGlhL2hldmMtY3Ry
+bHMuaCBiL2luY2x1ZGUvbWVkaWEvaGV2Yy1jdHJscy5oCj4gPiBpbmRleCAwZGJkNWQ2ODFjMjgu
+LjE0MDE1MTYwOWM5NiAxMDA2NDQKPiA+IC0tLSBhL2luY2x1ZGUvbWVkaWEvaGV2Yy1jdHJscy5o
+Cj4gPiArKysgYi9pbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaAo+ID4gQEAgLTMxMSw5ICszMTEs
+MTQgQEAgc3RydWN0IHY0bDJfaGV2Y19wcmVkX3dlaWdodF90YWJsZSB7Cj4gPiAgI2RlZmluZSAK
+VjRMMl9IRVZDX1NMSUNFX1BBUkFNU19GTEFHX1NMSUNFX0xPT1BfRklMVEVSX0FDUk9TU19TTElD
+RVNfRU5BQkxFRCAKPiAoMVVMTCA8PCA4KQo+ID4gICNkZWZpbmUgVjRMMl9IRVZDX1NMSUNFX1BB
+UkFNU19GTEFHX0RFUEVOREVOVF9TTElDRV9TRUdNRU5UCSgxVUxMIDw8IAo+IDkpCj4gPiAgCj4g
+PiArI2RlZmluZSBWNEwyX0hFVkNfU0xJQ0VfTUFYX0NPVU5UCTYwMAo+ID4gKwo+ID4gIC8qKgo+
+ID4gICAqIHY0bDJfY3RybF9oZXZjX3NsaWNlX3BhcmFtcyAtIEhFVkMgc2xpY2UgcGFyYW1ldGVy
+cwo+ID4gICAqCj4gPiArICogVGhpcyBjb250cm9sIGlzIGEgZHluYW1pY2FsbHkgc2l6ZWQgMS1k
+aW1lbnNpb25hbCBhcnJheSwKPiA+ICsgKiBWNEwyX0NUUkxfRkxBR19EWU5BTUlDX0FSUkFZIGZs
+YWcgbXVzdCBiZSBzZXQgd2hlbiB1c2luZyBpdC4KPiA+ICsgKgo+ID4gICAqIEBiaXRfc2l6ZTog
+c2l6ZSAoaW4gYml0cykgb2YgdGhlIGN1cnJlbnQgc2xpY2UgZGF0YQo+ID4gICAqIEBkYXRhX2Jp
+dF9vZmZzZXQ6IG9mZnNldCAoaW4gYml0cykgdG8gdGhlIHZpZGVvIGRhdGEgaW4gdGhlIGN1cnJl
+bnQgCnNsaWNlIAo+IGRhdGEKPiA+ICAgKiBAbmFsX3VuaXRfdHlwZTogc3BlY2lmaWVzIHRoZSBj
+b2RpbmcgdHlwZSBvZiB0aGUgc2xpY2UgKEIsIFAgb3IgSSkKPiA+IC0tIAo+ID4gMi4zMi4wCj4g
+PiAKPiA+IAo+IAo+IAo+IAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
