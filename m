@@ -4,51 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1B99C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jun 2022 08:02:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3450C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jun 2022 12:36:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FuQhdbb8HrUSDZ+K57wKQ2M3rIFaDvaQ9CO/EuQjTXI=; b=KxNnEWT1nrLooD
-	nfXD3AX7j98BUIG7RN7QsMB1UlkO67bgLWHbEy0Z+YSwG62qJh1RS0BYtow9CZjY5m12SNxYgcKAd
-	IEgc9azgq+OzVL4KiXwTlcnnze9TDun/eGEN68Ch9gCvBuOWW4g0fYz0NkGleyz46ehb1vDLaEsVe
-	W27owZxOkstLPK5qVdlc85ts12NAljVLFvBKs5zo6KzvnI9pfhLtm4A76ICcIxx9zYFy2l05vzsnc
-	EG4foJ4TOsWazgUIHI8LqDuOIw1jLVfbEGDwShFAy3LByFoz0vNMRpbRoSiV/rgpGNYAevfpAWN0I
-	8vJ1SM9p+FpKM5nn6Vsg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=j+bCEa+jQJD4ZH0TCIYV4QYSvYW0xpE8Vts+7XDqzrE=; b=sHwHBKYZFWLINM
+	OHVvivFwuoLYNIw+w8Tkv/6b56ytzxvHIINlz53rX+C3g69KGQCJYgKWuHpqWKit6HhgEQt4S3ugR
+	SdA1n3bmR/xJUwqJz7Jg9jDCnupilm+GLoaiMczoe/4dx6yAOJA4fjGmphwvtVyl4xxkxXfoBPk8u
+	13GpuD+iCnNIzOzTjm4+wQLc76yBAr74rwLgROW0CGe+RW2xsVWCDQyWAT6Ubq5yb+ldudH++yUnG
+	1s8PStRwTWAWBBLNClRuy4t4jz2etm1nl1CtqyoIysWvgkQlLgk7ggkuUKFXH2r/WylA+7K1C3aWH
+	bef/eeULsDDd73p2sraA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwJJA-00EVrS-Ju; Wed, 01 Jun 2022 08:02:24 +0000
-Received: from mail.forindustry.pl ([37.187.225.170])
+	id 1nwNZk-00G3rz-05; Wed, 01 Jun 2022 12:35:48 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwJJ8-00EVqn-IC
-	for linux-rockchip@lists.infradead.org; Wed, 01 Jun 2022 08:02:23 +0000
-Received: by mail.forindustry.pl (Postfix, from userid 1002)
-	id 1D2FDA6066; Wed,  1 Jun 2022 07:46:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=forindustry.pl;
-	s=mail; t=1654069651;
-	bh=Vw5jk5D1DE7WK/GNf/MxRQNyAyPYcC0rMJLibxKTj58=;
-	h=Date:From:To:Subject:From;
-	b=b5XWxk2D0OTuZu+FxXOiAMJsseLzt3738MHdD3mHdYQluU/92ueMzRT6rSGzuHanC
-	 JwInZUHc/jMqs37UFjyp8xQLtoSHRdqCxOtY2UG+j1AJGGGRPwkZ1ZLawK0pjUIrke
-	 9lzAQesdDeQ+qk6lKzcA8gF1LiCskv2P7F6or46sqMwaEcVHndPO14E40PeWI0I2Xb
-	 t0wnHm3h1LSk7lhjf8MjgQZ74tdwmBU1kQgKRMEOccfHOCetPv/2+OAP+W+xUcK3SS
-	 ORf4OlwvJgDyMjyqzH3u6jQzlCth6NPImioealOYqO9FQnz7U4mkMuXNGVcQCTmDh2
-	 JCBoRRVjPqEZw==
-Received: by mail.forindustry.pl for <linux-rockchip@lists.infradead.org>; Wed,  1 Jun 2022 07:45:30 GMT
-Message-ID: <20220601064501-0.1.3k.lmn0.0.spu6h4jdq2@forindustry.pl>
-Date: Wed,  1 Jun 2022 07:45:30 GMT
-From: =?UTF-8?Q?"Arkadiusz_Soko=C5=82owski"?= <arkadiusz.sokolowski@forindustry.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: Koszty instalacji fotowoltaicznej
-X-Mailer: mail.forindustry.pl
+	id 1nwNZf-00G3me-DD
+	for linux-rockchip@lists.infradead.org; Wed, 01 Jun 2022 12:35:46 +0000
+Received: by mail-wr1-x432.google.com with SMTP id q7so2163021wrg.5
+        for <linux-rockchip@lists.infradead.org>; Wed, 01 Jun 2022 05:35:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ffwll.ch; s=google;
+        h=date:from:to:cc:subject:message-id:mail-followup-to:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=geWAW2xPBu0qLpWdiPyBgNivVlwU5h/jMqQrbUnnVfs=;
+        b=BdiXXMzt8D06LixSdY84NDu9Ost8vce1JU5Ly7m8KGGcWhLpUhElYtn+kEPfDuaH/W
+         ND88PNMAtKQj+HfoxEaDWhcrBetkIBFbdqglb7wVKPfHO9j+2zS1NmYUaejOw1aou2eM
+         2E2nTMfjIdKfDATqam2LNbA4ivHfMMsaofjKI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id
+         :mail-followup-to:references:mime-version:content-disposition
+         :in-reply-to;
+        bh=geWAW2xPBu0qLpWdiPyBgNivVlwU5h/jMqQrbUnnVfs=;
+        b=RHqMaKAacncwh0hm9qxfpjdG4tKi5D72hc2ywin42LkgHKel9m+gx/ZbVdxhPukeG6
+         xFaZ2i05+EbIBE6sipte2t1zkQxqPesGczVNwt0KXrgB1O7fUyHQ3NCYh5kaS9rW1ArB
+         RwgE7j0SnAU3DCTW116nzqS+jfgYQZ4QUIA7k35ZJTwgtjUfw3t7YYvpdSkcD4dWrHpP
+         52WQYf977dHZPGxRMS+OnGBb/YevoDONWJWLfCmB+aAIbAOcCGExFbcAZ24giE+qsj9I
+         ilOngI6pl6sVGPf1g9HueRlUJag/cMJmwY6zfdchrE0+EOPMeUA3sHWdxeYvy4zLm8Xk
+         dksA==
+X-Gm-Message-State: AOAM533REwrHN4+5GJw54eQA63ycVcqxniNspJE7HES++cEHvFoolMLy
+	zm+bQ6Zu3OoMcQsaf/eRfWIJYg==
+X-Google-Smtp-Source: ABdhPJzRlsH0LJwGkcjJA/JqoeBghm0kDNaIwYUbkjauNpnH8gIwKHdrawPBSHH7gN216H+LRzl0Uw==
+X-Received: by 2002:a5d:43cd:0:b0:20c:fdbd:8c11 with SMTP id v13-20020a5d43cd000000b0020cfdbd8c11mr53732471wrr.7.1654086938960;
+        Wed, 01 Jun 2022 05:35:38 -0700 (PDT)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+        by smtp.gmail.com with ESMTPSA id d12-20020a5d4f8c000000b00210346cd0b7sm1537054wru.101.2022.06.01.05.35.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 Jun 2022 05:35:38 -0700 (PDT)
+Date: Wed, 1 Jun 2022 14:35:35 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Maxime Ripard <maxime@cerno.tech>
+Cc: Samuel Holland <samuel@sholland.org>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	Alistair Francis <alistair@alistair23.me>,
+	=?utf-8?Q?Ond=C5=99ej?= Jirman <x@xff.cz>,
+	Andreas Kemnade <andreas@kemnade.info>,
+	David Airlie <airlied@linux.ie>,
+	Geert Uytterhoeven <geert@linux-m68k.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Liang Chen <cl@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Sam Ravnborg <sam@ravnborg.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH 00/16] drm/rockchip: Rockchip EBC ("E-Book
+ Controller") display driver
+Message-ID: <YpddFxvC9pCsobNB@phenom.ffwll.local>
+Mail-Followup-To: Maxime Ripard <maxime@cerno.tech>,
+	Samuel Holland <samuel@sholland.org>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	Alistair Francis <alistair@alistair23.me>,
+	=?utf-8?Q?Ond=C5=99ej?= Jirman <x@xff.cz>,
+	Andreas Kemnade <andreas@kemnade.info>,
+	David Airlie <airlied@linux.ie>,
+	Geert Uytterhoeven <geert@linux-m68k.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Liang Chen <cl@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Peter Geis <pgwipeout@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+	Sam Ravnborg <sam@ravnborg.org>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220413221916.50995-1-samuel@sholland.org>
+ <20220414085018.ayjvscgdkoen5nw5@houat>
+ <Yo5kz/9cSd6ewC5f@phenom.ffwll.local>
+ <20220531085835.grw5nt4vyofis3po@penduick>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220531085835.grw5nt4vyofis3po@penduick>
+X-Operating-System: Linux phenom 5.10.0-8-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_010222_795896_895B250B 
-X-CRM114-Status: UNSURE (   1.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220601_053543_596494_79BD0BE9 
+X-CRM114-Status: GOOD (  61.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,20 +123,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKc3R3b3J6eWxpxZtteSBzcGVjamFsbsSFIG9mZXJ0xJkgZGxhIGZpcm0s
-IG5hIGtvbXBsZWtzb3fEhSBvYnPFgnVnxJkgaW53ZXN0eWNqaSB3IGZvdG93b2x0YWlrxJkuCgpT
-cGVjamFsaXp1amVteSBzacSZIHcgemFrcmVzaWUgZG9ib3J1LCBtb250YcW8dSBpIHNlcndpc2ll
-IGluc3RhbGFjamkgZm90b3dvbHRhaWN6bnljaCwgZHlzcG9udWplbXkgbmFqbm93b2N6ZcWbbmll
-anN6eW1pIHJvendpxIV6YW5pYSwga3TDs3JlIHphcGV3bmnEhSBQYcWEc3R3dSBvY3pla2l3YW5l
-IHJlenVsdGF0eS4KCk1vxbxlbXkgcHJ6eWdvdG93YcSHIGRsYSBQYcWEc3R3YSB3c3TEmXBuxIUg
-a2Fsa3VsYWNqxJkgaSBwcnplYW5hbGl6b3dhxIcgZWZla3R5IG1vxbxsaXdlIGRvIG9zacSFZ25p
-xJljaWEuCgpDenkgc8SFIFBhxYRzdHdvIG90d2FyY2kgbmEgd3N0xJlwbsSFIHJvem1vd8SZIHcg
-dHltIHRlbWFjaWU/CgpQb3pkcmF3aWFtLApBcmthZGl1c3ogU29rb8WCb3dza2kKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Tue, May 31, 2022 at 10:58:35AM +0200, Maxime Ripard wrote:
+> Hi Daniel,
+> 
+> Thanks for your feedback
+> 
+> On Wed, May 25, 2022 at 07:18:07PM +0200, Daniel Vetter wrote:
+> > > > VBLANK Events and Asynchronous Commits
+> > > > ======================================
+> > > > When should the VBLANK event complete? When the pixels have been blitted
+> > > > to the kernel's shadow buffer? When the first frame of the waveform is
+> > > > sent to the panel? When the last frame is sent to the panel?
+> > > > 
+> > > > Currently, the driver is taking the first option, letting
+> > > > drm_atomic_helper_fake_vblank() send the VBLANK event without waiting on
+> > > > the refresh thread. This is the only way I was able to get good
+> > > > performance with existing userspace.
+> > > 
+> > > I've been having the same kind of discussions in private lately, so I'm
+> > > interested by the answer as well :)
+> > > 
+> > > It would be worth looking into the SPI/I2C panels for this, since it's
+> > > basically the same case.
+> > 
+> > So it's maybe a bit misnamed and maybe kerneldocs aren't super clear (pls
+> > help improve them), but there's two modes:
+> > 
+> > - drivers which have vblank, which might be somewhat variable (VRR) or
+> >   become simulated (self-refresh panels), but otherwise is a more-or-less
+> >   regular clock. For this case the atomic commit event must match the
+> >   vblank events exactly (frame count and timestamp)
+> 
+> Part of my interrogation there is do we have any kind of expectation
+> on whether or not, when we commit, the next vblank is going to be the
+> one matching that commit or we're allowed to defer it by an arbitrary
+> number of frames (provided that the frame count and timestamps are
+> correct) ?
+
+In general yes, but there's no guarantee. The only guarante we give for
+drivers with vblank counters is that if you receive a vblank event (flip
+complete or vblank event) for frame #n, then an immediate flip/atomic
+ioctl call will display earliest for frame #n+1.
+
+Also usually you should be able to hit #n+1, but even today with fun stuff
+like self refresh panels getting out of self refresh mode might take a bit
+more than a few frames, and so you might end up being late. But otoh if
+you just do a page flip loop then on average (after the crtc is fully
+resumed) you should be able to update at vrefresh rate exactly.
+
+> > - drivers which don't have vblank at all, mostly these are i2c/spi panels
+> >   or virtual hw and stuff like that. In this case the event simply happens
+> >   when the driver is done with refresh/upload, and the frame count should
+> >   be zero (since it's meaningless).
+> > 
+> > Unfortuantely the helper to dtrt has fake_vblank in it's name, maybe
+> > should be renamed to no_vblank or so (the various flags that control it
+> > are a bit better named).
+> > 
+> > Again the docs should explain it all, but maybe we should clarify them or
+> > perhaps rename that helper to be more meaningful.
+> > 
+> > > > Blitting/Blending in Software
+> > > > =============================
+> > > > There are multiple layers to this topic (pun slightly intended):
+> > > >  1) Today's userspace does not expect a grayscale framebuffer.
+> > > >     Currently, the driver advertises XRGB8888 and converts to Y4
+> > > >     in software. This seems to match other drivers (e.g. repaper).
+> > > >
+> > > >  2) Ignoring what userspace "wants", the closest existing format is
+> > > >     DRM_FORMAT_R8. Geert sent a series[4] adding DRM_FORMAT_R1 through
+> > > >     DRM_FORMAT_R4 (patch 9), which I believe are the "correct" formats
+> > > >     to use.
+> > > > 
+> > > >  3) The RK356x SoCs have an "RGA" hardware block that can do the
+> > > >     RGB-to-grayscale conversion, and also RGB-to-dithered-monochrome
+> > > >     which is needed for animation/video. Currently this is exposed with
+> > > >     a V4L2 platform driver. Can this be inserted into the pipeline in a
+> > > >     way that is transparent to userspace? Or must some userspace library
+> > > >     be responsible for setting up the RGA => EBC pipeline?
+> > > 
+> > > I'm very interested in this answer as well :)
+> > > 
+> > > I think the current consensus is that it's up to userspace to set this
+> > > up though.
+> > 
+> > Yeah I think v4l mem2mem device is the answer for these, and then
+> > userspace gets to set it all up.
+> 
+> I think the question wasn't really about where that driver should be,
+> but more about who gets to set it up, and if the kernel could have
+> some component to expose the formats supported by the converter, but
+> whenever a commit is being done pipe that to the v4l2 device before
+> doing a page flip.
+> 
+> We have a similar use-case for the RaspberryPi where the hardware
+> codec will produce a framebuffer format that isn't standard. That
+> format is understood by the display pipeline, and it can do
+> writeback.
+> 
+> However, some people are using a separate display (like a SPI display
+> supported by tinydrm) and we would still like to be able to output the
+> decoded frames there.
+> 
+> Is there some way we could plumb things to "route" that buffer through
+> the writeback engine to perform a format conversion before sending it
+> over to the SPI display automatically?
+
+Currently not transparently. Or at least no one has done that, and I'm not
+sure that's really a great idea. With big gpus all that stuff is done with
+separate command submission to the render side of things, and you can
+fully pipeline all that with in/out-fences.
+
+Doing that in the kms driver side in the kernel feels very wrong to me :-/
+-Daniel
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
