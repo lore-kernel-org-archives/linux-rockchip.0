@@ -4,64 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED42BC43334
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Jun 2022 17:08:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21D2FC43334
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jun 2022 01:38:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zsZXjJbRMnOjhfCg12Bw38FVnzbi4iEgRDXvbluHSyo=; b=315t4JSfMnNQ/A
-	mMJWWCwjK54V1NKnbJd3bUECQB6gtXsPdGKR/4KEwGgMVEYynEHp9DLanMNtR7UhdUznk6v9eq+l5
-	/wsAQvlNRYbF1bDN+x6hZFEc2OAnO0EXbj8iNHS0gcOnkyqWL+ttYoHr+0maw8EXIEWDY7+264iTY
-	eivE1kk4BgD6T6VY7uG0N8W7THlPLBIobUlpQwxywec0FNNtR+jnm22YNm/hSgZEdXuVSzgT/L6qv
-	yEJUEmIEl3qDGCp9y88pCEsf6+5/6MJooizD+pQjpGrY4kZXNwGU9t2uCQHC7CaXltaOoR5bfvYD2
-	lPHci/JPrwryQ83+AU8g==;
+	List-Owner; bh=0GdIMXc0eNgsmErdqDbwwutBPOlxF9Dw05E5Ff+3mg0=; b=Gcccw47kcVNJqZ
+	Zk30SAcyf9wItMlRpvOAUe1s1yhNG4Bpe3Tc6oWj9l2j1A+D8uWZaIPcfBnlcFVDjA63AUe8771V+
+	HXdL7+K95q2Tjzda8zAAHUH3aRHlf5hTBXfDbydrG1EYkbmw1ubhhgHgHSIs8WWFrlf2tG/7bvkh0
+	QEc/MrhJ0byFjPSDvPZWbGt4dN6hPu1OalvuuzAQ0rmH1vEhaTHm0/G9HT3BKeoGKW9K4Ip/xFFvx
+	p11fzXjw+HP9hlxZkzZmJ6dzQcI8jgazyN0xxj5PnwqSQ7StN5xyr4QlxBMECE+qDr6DzOMAxzSQe
+	tY1Zi3NShwC/9OaUUwxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwRpc-00HEfi-AX; Wed, 01 Jun 2022 17:08:28 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nwZnK-0011PO-C9; Thu, 02 Jun 2022 01:38:38 +0000
+Received: from mail-m17656.qiye.163.com ([59.111.176.56])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwRpQ-00HEd6-JE; Wed, 01 Jun 2022 17:08:18 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
-	(Authenticated sender: nicolas)
-	with ESMTPSA id BFCB01F44545
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1654103285;
-	bh=lDyn2UbNzkXVPb/r+aeas5dM5cMmLSiPAoFFx/mTR58=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=hKGgtAuVB/nM+RjHwYL+SUADwNRxvkeD0OOE0Xkh3764zMjQ92J/2r2cDWOvtwLtA
-	 WT/s4wQRkJt96DwrP9M7yZYgRt4y71zelr1LfexyI+jRaI6gHdb0E1sTnrvEZABY5y
-	 21N9XIkghcREUOPPp8B5HQWamxjyZW6fwx4Umsf4j1J0onpoJ1kzyFEDRxc6qbeOc8
-	 BlN8zlc1nksMAVK0rAfAaXPyTaZbuz4d0lNd2+R1znGqe4JtrpIu1aq3nhnbGD9dyT
-	 IC+uoGmLlLBbxzAUP1c1gII+oYMo3SjMcZF4s2zHjYT63c+q0AHHdrIUoEWsdYj1Pc
-	 dO4VROiQlm04A==
-Message-ID: <763308daa3304ef3cf011b4ca7b9c5c006627c90.camel@collabora.com>
-Subject: Re: [PATCH v6 11/17] media: uapi: Add
- V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Jernej =?UTF-8?Q?=C5=A0krabec?= <jernej.skrabec@gmail.com>, 
- mchehab@kernel.org, ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de, 
- gregkh@linuxfoundation.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com,  wens@csie.org, samuel@sholland.org,
- andrzej.p@collabora.com, Hans Verkuil <hverkuil@xs4all.nl>, Benjamin
- Gaignard <benjamin.gaignard@collabora.com>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	kernel@collabora.com
-Date: Wed, 01 Jun 2022 13:07:54 -0400
-In-Reply-To: <11988268.O9o76ZdvQC@jernej-laptop>
-References: <20220527143134.3360174-1-benjamin.gaignard@collabora.com>
-	 <2102878.irdbgypaU6@kista>
-	 <95261aa18425e8f5571888a41ee03d9dfd2814b9.camel@collabora.com>
-	 <11988268.O9o76ZdvQC@jernej-laptop>
-User-Agent: Evolution 3.44.1 (3.44.1-1.fc36) 
+	id 1nwZnG-0011Oc-Q3
+	for linux-rockchip@lists.infradead.org; Thu, 02 Jun 2022 01:38:37 +0000
+Received: from [172.16.12.141] (unknown [58.22.7.114])
+	by mail-m17656.qiye.163.com (Hmail) with ESMTPA id A6B65800E7;
+	Thu,  2 Jun 2022 09:38:28 +0800 (CST)
+Message-ID: <55089a25-67db-45bb-c61b-241ee836f025@rock-chips.com>
+Date: Thu, 2 Jun 2022 09:38:27 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: rk3568-pinctrl for LCD RGB666/RGB656
+Content-Language: en-US
+To: Michael Riesch <michael.riesch@wolfvision.net>,
+ Liang Chen <cl@rock-chips.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Jens Bauer <Jens.Bauer@wolfvision.net>
+References: <3e9619d3-2a59-80eb-b701-90328c6943e6@wolfvision.net>
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <3e9619d3-2a59-80eb-b701-90328c6943e6@wolfvision.net>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
+	kWDxoPAgseWUFZKDYvK1lXWShZQUlKS0tKN1dZLVlBSVdZDwkaFQgSH1lBWRpOSU9WHhgYTR5LGk
+	0aQksfVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWU9LSFVKSktISkNVS1kG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MFE6ORw4Nj0yDx8dUQ0DKRFJ
+	PEpPFB9VSlVKTU5PSkhIQktCSkhNVTMWGhIXVRoVHwJVAhoVOwkUGBBWGBMSCwhVGBQWRVlXWRIL
+	WUFZTkNVSUlVTFVKSk9ZV1kIAVlBSU1OSTcG
+X-HM-Tid: 0a812210652bda02kuwsa6b65800e7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220601_100816_804151_1F83B330 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20220601_183835_050147_CE95C529 
+X-CRM114-Status: GOOD (  12.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,29 +63,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgbWVyY3JlZGkgMDEganVpbiAyMDIyIMOgIDE4OjM1ICswMjAwLCBKZXJuZWogxaBrcmFiZWMg
-YSDDqWNyaXTCoDoKPiA+IEkgYmVsaWV2ZSBpdHMgZGVmaW5lZCBmb2xsb3dpbmcgIlRhYmxlIEEu
-OCDigJMgR2VuZXJhbCB0aWVyIGFuZCBsZXZlbCBsaW1pdHMiLgo+ID4gV2l0aCB0aGUgYXNzdW1w
-dGlvbiB0aGVyZSB3aWxsIG5ldmVyIGJlIGEgbGV2ZWwgNyAod2hpY2ggSSB0aGluayBpcyBmYWly
-KS4KPiA+IElmIGFueW9uZSBzYXcgb3RoZXIgcmVhc29ucyBmb3IgdGhpcyBsaW1pdCwgbGV0IG1l
-IGtub3cuCj4gPiAKPiA+IFRoaXMgaXMgYSB3b3JzZSBjYXNlIHNjZW5hcmlvLCB0aGlzIGlzIHF1
-aXRlIHVubGlrZWx5IGluIHByYWN0aWNlLCBzbyB3aGlsZQo+ID4gcGVyZm9ybWFuY2UgbWlnaHQg
-YmUgYSBkaXNhc3RlciBpZiB5b3VyIGNyYWZ0IGEgc3RyZWFtIGZvciB0aGF0IGNhc2UsIEkKPiA+
-IGRvbid0IHRoaW5rIGl0IHdpbGwgZXZlciBoYXBwZW4gaW4gcmVhbCBsaWZlLgo+IAo+IEJ1dCBk
-byB3ZSByZWFsbHkgbmVlZCB0byBjb3ZlciB3b3JzdCBjYXNlIHNjZW5hcmlvPyBJbiB0aGVvcnks
-IG9uZSBkcml2ZXIgY2FuIAo+IHNldCBsaW1pdCB0byAoZm9yIGV4YW1wbGUpIG1heCAxMDAgc2xp
-Y2VzIGFuZCBpZiB0aGVyZSBpcyBhIGZyYW1lIHdpdGggNjAwIAo+IHNsaWNlcywgdXNlcnNwYWNl
-IGFwcCB3b3VsZCBzdWJtaXQgNiBkZWNvZGUgcmVxdWVzdHMuIEJhc2ljYWxseSB0aGUgc2FtZSB3
-YXkgCj4gaXQncyBkb25lIHRvZGF5LiBXaGlsZSBub3QgYXMgcGVyZm9ybWFudCwgaXQgd291bGQg
-YmUgZ29vZCBjb21wcm9taXNlIGJldHdlZW4gCj4gcmVzb3VyY2VzIGFuZCBzcGVlZC4KClRoZSBs
-aW1pdCBoZXJlIGlzIHRvIHByZXZlbnQgdXNlcmxhbmQgZnJvbSB0cmlja2luZyB0aGUga2VybmVs
-IGludG8gZG9pbmcgdmVyeQpiaWcgYWxsb2NhdGlvbi4gQnV0IHdpdGggZHluYW1pYyBhcnJheSwg
-eW91J2xsIGFsbG9jYXRlIGp1c3QgdGhlIHJpZ2h0IGFtb3VudC4KCk5pY29sYXMKCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Michael:
+
+On 5/27/22 20:46, Michael Riesch wrote:
+> Hello Liang,
+>
+> According to the RK3568 TRM the Video Output Processor (VOP2) is able to
+> emit parallel RGB data to LCDs in 24-bit (888), 18-bit (666) and 16-bit
+> (565) format. Based on this I would have expected that
+> rk3568-pinctrl.dtsi specifies one group of control pins (clock, hsync,
+> vsync, data enable) and three groups of data pins (with 24, 18, 16 pins,
+> respectively). Does this sound reasonable?
+>
+> However, there is only one group with the control pins and the data pins
+> D0 - D23. I cannot tell which pins have to be assigned to the different
+> groups. They are mapped 1:1 to Rockchip pin names (e.g., D0 is mapped to
+> GPIO2_PD0) but it is not clear which function (channel, bit) each pin
+> has in this context. Could you please elaborate on the mapping of the D0
+> - D23 pins in the different operating modes?
+
+
+For 18-bit(RGB666),
+
+R0~R5 map to D18~D23
+
+G0~G5 map to D10~D15
+
+B0~B5 map to D2~D7
+
+
+for 16-bit(RGB565)
+
+R0~R4 map to D17~D23
+
+G0~G5 map to D10~D15
+
+B0~B4 map to D3~D7
+
+> Thanks and regards,
+> Michael
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
