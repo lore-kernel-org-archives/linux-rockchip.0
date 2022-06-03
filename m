@@ -4,89 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B300C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Jun 2022 13:48:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1B36C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Jun 2022 14:47:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uZDFz31zDPEDLD6mzbzJFlBczhRgrjt8MykvaHI5DN4=; b=GE0sJb7xXE8Uoq
-	dVr8jAt0vlR3MAjlek/mbnlWnPtHvbbylP6XOhykDrq8lY5RHzJ7//AhQyhQtqj9zkCB8UvRlAYyN
-	jDNQTJse34dLACXdq3h+YgIYC3PekpNWbtlpOcAC6fXAPYVQX8uW//YgH+RmJX6SiOHYnAn5/Js2G
-	7Ehb0E0cH1Ov7oLxP/xxAglrNKDw2Uz0SpRqZsIaj8mzqZZ++fUCL+G5ELX/rGn0VZCCRvaRE6F7j
-	/x0jEANKLkmDZSWEIzQk1qqNgqsq8kANvWSQORGe7tWm9VxfeWejQXqZwJL6B3sUgPPBnv25HAxqq
-	DbPjxlj0PfPsxAVYUDDg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EjcK03LEi+wdpbboGB+l5HC+0FoqI9r90NiEgErvIz0=; b=dLWNmK3V2LwLze
+	aItjsY1nbU0Lt/Ru6d369lnsj1MnyZ5pDMrNoDoPqo1lVSEQXQ44nOHacj+1hoFpGfgjKBeKs2RAF
+	MEIlWFMsSBOSN3OsakA9RabemU//n440K+SUdwof5vHNateYAxC6MkU4gS2yL6SVEQQzVdfwtpWWs
+	Cd9ymR9ed9pcbWyasWi0IxEYeUxHo8RIZNuxRlA+ha5FyKFA/AurNBiYM8Ral7vQdGGO+q0owFFIL
+	PUC5h2dyXpnTLGkVfET7U1ZV/QGOMD/2J63vDj0ByafFYnGuWNEAiIC8hJNsXxwdiR4yWgfESjzmf
+	kDhSQIwyIv5QFykqiNug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwlBJ-003Stj-7V; Thu, 02 Jun 2022 13:48:09 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1nx8Zn-007sZB-3t; Fri, 03 Jun 2022 14:46:59 +0000
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nwlBF-003SsM-AT; Thu, 02 Jun 2022 13:48:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
-	s=badeba3b8450; t=1654177662;
-	bh=2iYMbjgyUAEmKKRbCPL6Jl2Wqx6/vlykoO1h/cdX9pU=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=B2lwuKhhses728holgAZp4oZnvnVyjpESpX5d4Wahe78tNJd3f7G3iHZN30VkwjsH
-	 1q3k8Lea6OztCKRlH2bP/S9GAYekJz/0C+n+sKdRpScjskIa9I1rRRD5u26It9R98s
-	 VtpCdQQEYQDUF5VyLUAzEr47GXRxAufe1baxqXxE=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [217.61.145.102] ([217.61.145.102]) by web-mail.gmx.net
- (3c-app-gmx-bs39.server.lan [172.19.170.91]) (via HTTP); Thu, 2 Jun 2022
- 15:47:42 +0200
+	id 1nx8Zb-007sW6-OT; Fri, 03 Jun 2022 14:46:49 +0000
+Received: by mail-ej1-x636.google.com with SMTP id me5so15851751ejb.2;
+        Fri, 03 Jun 2022 07:46:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=YC2Ee0NCMeJlT8X63fxTRGd38pLFVJ7vG/uklMcOIlI=;
+        b=DAB5AcjIBnOjiupP4hH+HStNF4SpkVxPODvVa/NiTvS0oAxIKy2zDSw2eSxFE4DMUn
+         SACRISr/C2QkVjCN4BHyV270f/As2rNYKDdazu7lgTfbLhPOIKsLKVTX+xWJfmv/9g/m
+         Qs3WDJ/nCF5iy/yKfsiUGGiksML1xaTGbbLmyrASIJpuf2bs0NSfYNGbfjelc/2gzW3h
+         /dnyGE4XvUuIXpOmyrsYw9CZryf+DanLuMivUf1FnH8UuLWg/aNYrV6MMtIUVotPyChW
+         Qf6G0SMwV4Nh9L2qk01S+lh9wjbqqnrewq3eaUl5Tc9Mmm0ecHf3eqoqYVgbYP8xvvem
+         UCyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=YC2Ee0NCMeJlT8X63fxTRGd38pLFVJ7vG/uklMcOIlI=;
+        b=5IjWn8AwaFqrcoZlWTP0TnG8RGHyL0klmXZslkeQZ8witsUHQ9YgrGBqXbIj7dDuPg
+         awlfk4XvAGnG/FK+BlwWSWB9XaOiaWlSZTtDvuqmB2fpjd2kbpEvjz45Q9836C3iH41Y
+         /ImL1+22ofJsQS09blFR3sIEleZlpkQdwClrLpXIBECunNpNjTiVoE/gJdcJHwFnZIdF
+         rHusOSiuT4VtHKds2zMcjfFaPELhPdsVQqrKqqXtyL4E/0aBkzuOWAi8Q1uUBypIzsOr
+         EcWkYQr6gaGZT16mbkMFk8W/1tVu+H+hyWXSX+WpPVkKWs7oZzwJPCCVcVWd4PL22+hH
+         tdQw==
+X-Gm-Message-State: AOAM532/d0Pt4E5Ily+vdXrgUcwlD326EMB+Y/+8azRKJZtnNHwwxIpw
+	189zt9bT2yTZfzLLA430TdU=
+X-Google-Smtp-Source: ABdhPJyrEKILSmBN85RnfzhGT5qzWkMJSCH9sMD+nxXy6MWjnCr3KSkruA0fsiJp3z9mm1ULqrAapw==
+X-Received: by 2002:a17:907:3e22:b0:6fe:f080:a383 with SMTP id hp34-20020a1709073e2200b006fef080a383mr8793096ejc.709.1654267605061;
+        Fri, 03 Jun 2022 07:46:45 -0700 (PDT)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id kx16-20020a170907775000b00706e8ac43b8sm2920151ejc.199.2022.06.03.07.46.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 03 Jun 2022 07:46:44 -0700 (PDT)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1] ARM: dts: rockchip: enable nfc node in rk3066a-mk808.dts
+Date: Fri,  3 Jun 2022 16:46:27 +0200
+Message-Id: <20220603144627.23269-1-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Message-ID: <trinity-b1d8205a-3354-42e7-8784-0a0cfd7e8a36-1654177662388@3c-app-gmx-bs39>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Rob Herring <robh@kernel.org>
-Cc: Frank Wunderlich <linux@fw-web.de>, Michael Riesch
- <michael.riesch@wolfvision.net>, Vinod Koul <vkoul@kernel.org>, Johan
- Jonker <jbx6244@gmail.com>, linux-rockchip@lists.infradead.org,
- linux-pci@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, Bjorn Helgaas
- <bhelgaas@google.com>, Philipp Zabel <p.zabel@pengutronix.de>, Lorenzo
- Pieralisi <lorenzo.pieralisi@arm.com>, Peter Geis <pgwipeout@gmail.com>,
- Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?=
- <kw@linux.com>
-Subject: Aw: Re: Re: [RFC v3 1/5] dt-bindings: phy: rockchip: add PCIe v3
- phy
-Date: Thu, 2 Jun 2022 15:47:42 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <trinity-940b8fcf-17e7-4445-8aeb-e17f36b41b4b-1653047439840@3c-app-gmx-bap67>
-References: <20220514115946.8858-1-linux@fw-web.de>
- <20220514115946.8858-2-linux@fw-web.de>
- <1652570081.002742.3276245.nullmailer@robh.at.kernel.org>
- <trinity-02ad648c-f6f8-4383-b389-a0578d5a02d2-1652615387162@3c-app-gmx-bap15>
- <20220516173537.GA2942634-robh@kernel.org>
- <9496CAFB-6CB6-4BDA-A539-3A6E1B562299@public-files.de>
- <20220518155551.GB3302100-robh@kernel.org>
- <trinity-940b8fcf-17e7-4445-8aeb-e17f36b41b4b-1653047439840@3c-app-gmx-bap67>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:Ou72G3HO5kBx6mld4VIc7l+uMCSnBYkop7SJ5NIcA1Q3jsvlKS/T+4A2TSpMYReYX1Th0
- GAypuTa3Dp5BK76Enhpr3QRdwCqTSZRqGvWRg8QAKYTGYvWejEs9dbpyaEqq1FTO8xZ16d538kB5
- eY9I2r3Q0tpRm2I9dUl60ZMM4o41OGb7zWBlZPLHfp4gZlwFehrFuARn0k53XVU1e8bI19FDn7pR
- qURa9QP8VTUcbDNiMTKY7o/g6JQGRjPw2uNLkyeSpz/dp0nuEC+MWu+Iff69VEglUCvsEE4gwi++
- +E=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:AM77h1kBGk8=:BFWCs43+kuOa1+j+QUaBrc
- xUewSLTR6sWjcX/t/JXh6voUcMsVSiBagkHDIcOTlNTHngfeHJSZy8Qj7NHOeJQYRHMfHHpHi
- OBI7kmLwzjW23tCFGSYcTTeGYqr2gzMT4Bnzae8XSCvQrD1LwapSpYhvVKv64Qs4wMAkMZSIl
- M+ydn9ktzWPygx0j0usL15amBFWotiOtewmog1LE7yNkOU0RUIjZgFTP66BCQF7JszrotpQ4J
- DaqDPvH6nNl5DnOAtVyWx1GhR+E4hKsdmDo31jw0rmPgzhFzc2SyKU1IM4oBuJ1jSHW+F2RVC
- T2Ag9HLokhVoa0xIWI9gTRE2IojuWWwxplNXf64p7laHinWjbw+7Bjefi9gLm6OK2KiwuH9jl
- D1PbqX0gA9KwsI6peS5UrWANHghNgDGBLS+8hz6ecsFnVm/FhvWhSY1tAhnxlQSDq9OCVcYkq
- EEG1LoMz7j3VrpzjjZdh8VzhiBNG8urgDCdnoH0QsbbtIsIPZjmFoLwe/GoUHRCNrsv6G2CBi
- /khwDm2OWPOJ8Qr3lVaN8Lb8NoroO89YRCX28sgqrBe5ROrHU2AvXtRvbBCBR6B35whGF4Lgf
- N9RYAy4YdWkc3DYijq2gAUA79W1kl4vFpsD62UNn1p+x7qv9jmVBH5oRbx1X+ZvA8Y9dVftqr
- XTYPb/N4sU55JUh6+t6k5wOWcRzlOfW3I0uiKjPp2l0wu1Wa92JKn+DS7AIbsXsSMJx2EQFP+
- q4ydhp2uVyKH89+WcAnpuDKsndqtgejGlenvaSIWRY/adCbtrkjuBFgf4/BEtVcmYb8b+ErdN
- qXsGcYA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220602_064805_869170_BF7ED5AD 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20220603_074647_864007_E32825BD 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,38 +90,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> Gesendet: Freitag, 20. Mai 2022 um 13:50 Uhr
-> Von: "Frank Wunderlich" <frank-w@public-files.de>
-> An: "Rob Herring" <robh@kernel.org>
-> Hi,
->
-> fixed reg-error by using 32bit-address in example, in my test output is clean.
->
-> +++ b/Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
-> @@ -68,7 +68,7 @@ examples:
->      #include <dt-bindings/clock/rk3568-cru.h>
->      pcie30phy: phy@fe8c0000 {
->        compatible = "rockchip,rk3568-pcie3-phy";
-> -      reg = <0x0 0xfe8c0000 0x0 0x20000>;
-> +      reg = <0xfe8c0000 0x20000>;
->
->
-> i hope yours is clean too
+Enable nfc node in rk3066a-mk808.dts
 
-have you tried it?
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ arch/arm/boot/dts/rk3066a-mk808.dts | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-> regarding data-lanes instead of own lane-map, Peter and me only find this in special
-> bindings outside the phy-"namespace" like this.
->
-> https://elixir.bootlin.com/linux/v5.18-rc7/source/Documentation/devicetree/bindings/media/video-interfaces.yaml#L157
->
-> do you mean converting this binding and add it there and base out binding on it?
->
-> https://elixir.bootlin.com/linux/v5.18-rc7/source/Documentation/devicetree/bindings/phy/phy-bindings.txt
+diff --git a/arch/arm/boot/dts/rk3066a-mk808.dts b/arch/arm/boot/dts/rk3066a-mk808.dts
+index 667d57a4f..cfa318a50 100644
+--- a/arch/arm/boot/dts/rk3066a-mk808.dts
++++ b/arch/arm/boot/dts/rk3066a-mk808.dts
+@@ -160,6 +160,24 @@
+ 	status = "okay";
+ };
+ 
++&nfc {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
++
++	nand@0 {
++		reg = <0>;
++		label = "rk-nand";
++		nand-bus-width = <8>;
++		nand-ecc-mode = "hw";
++		nand-ecc-step-size = <1024>;
++		nand-ecc-strength = <40>;
++		nand-is-boot-medium;
++		rockchip,boot-blks = <8>;
++		rockchip,boot-ecc-strength = <24>;
++	};
++};
++
+ &pinctrl {
+ 	usb-host {
+ 		host_drv: host-drv {
+-- 
+2.20.1
 
-is this the right binding to add the data-lanes or do you refer another one (have not found phy-provider)?
-
-regards Frank
 
 _______________________________________________
 Linux-rockchip mailing list
