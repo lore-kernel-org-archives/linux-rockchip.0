@@ -4,66 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39D78C43334
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jun 2022 14:34:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96016C43334
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jun 2022 14:44:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s/pG7A2hmQsy52GZAtjjetcDrbz0pGlErJPyr8ZzfjI=; b=TitvYEszFrVWJP
-	oNgLjdhzxqFSBbvuJhTnMuc/Ta3Uvmf2txBduZcONv+jl/ZNfqVPBBJKAMWCL/M8sNkVyoFpwM8/8
-	9fJTXx3uPE1cE6Dw4itJlI+BTqecosaJA/YKuXE4GTRuI+VQrF/bX6KPESqUUQ6r7zzu8DPPbCkja
-	bcViZ6pHunypLVYSpHgo9Z20jKvA+VoFHlCWGfch8/ujKHBAgP+iRE8tgNmvuiFBLNcyl/OrRcM/s
-	2x0UBRNc2tLHhkRluzqa1oe0VzwZJrvJRm1KihccSJg3RokzNfuMAuG3tL9FPNq4hiI+G8iYlN/6N
-	xALGcEpqvEp4V9rZOxUA==;
+	List-Owner; bh=ZvFc1aloHtum8sdFXGg21NB5YC5D3gNFjZiSGlTPC9s=; b=jObcXs95QYyc5B
+	CQxlgLhueXzF/k7x3PtJMgcHaXY9yMYtx8VY2cCN9jEmgQg8Evnk7PN0yqxBGEyEVj3iNDaUVmCUU
+	XXHixwws2po/YTxil5NpcaeQtGEW+59vPx1XwPOMwv+sLtMH7bL1TAXMXEk60gSJBh7gfMgDWIxu4
+	41F/0Ld8cN8OzFjuiao93z3t7UvOIyr70edTVCDiuR2/1dOKMbIaObspvGypt+45/gLabwkCMIZ0a
+	/uZ019pkZe3CWSj6EZM4TgzEzOFPoLfsQZm+L2CYZVwr6nbMMT6aKcL5cHPvXnauausEiztZ7pIg8
+	OMTllhcJ5WdQA9hve8Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyDo2-001Xt1-D7; Mon, 06 Jun 2022 14:34:10 +0000
+	id 1nyDxf-001a5k-Ku; Mon, 06 Jun 2022 14:44:07 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyDno-001XnQ-Lx; Mon, 06 Jun 2022 14:33:58 +0000
+	id 1nyDxU-001a32-DT; Mon, 06 Jun 2022 14:43:57 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8CACF15DB;
-	Mon,  6 Jun 2022 07:33:55 -0700 (PDT)
-Received: from [10.57.81.38] (unknown [10.57.81.38])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 555903F73B;
-	Mon,  6 Jun 2022 07:33:48 -0700 (PDT)
-Message-ID: <1e0e5403-1e65-db9a-c8e7-34e316bfda8e@arm.com>
-Date: Mon, 6 Jun 2022 15:33:42 +0100
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 198711595;
+	Mon,  6 Jun 2022 07:43:54 -0700 (PDT)
+Received: from bogus (unknown [10.57.9.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 38C0F3F73B;
+	Mon,  6 Jun 2022 07:43:52 -0700 (PDT)
+Date: Mon, 6 Jun 2022 15:43:05 +0100
+From: Sudeep Holla <sudeep.holla@arm.com>
+To: Cristian Marussi <cristian.marussi@arm.com>
+Cc: Michael Riesch <michael.riesch@wolfvision.net>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>, Liang Chen <cl@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Sudeep Holla <sudeep.holla@arm.com>,
+	Jeffy Chen <jeffy.chen@rock-chips.com>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Etienne Carriere <etienne.carriere@linaro.org>
+Subject: Re: [PATCH] firmware: arm_scmi: Relax BASE protocol sanity checks on
+ protocol list
+Message-ID: <20220606144305.agzzyf7c4kp2nwlw@bogus>
+References: <20220523171559.472112-1-cristian.marussi@arm.com>
+ <45bf11a8-47eb-e088-ba99-30c8788c7143@wolfvision.net>
+ <Yp4Br5d0jMnlF5yy@e120937-lin>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH 2/5] iommu: Ensure device has the same iommu_ops as the
- domain
-Content-Language: en-GB
-To: Nicolin Chen <nicolinc@nvidia.com>, jgg@nvidia.com, joro@8bytes.org,
- will@kernel.org, marcan@marcan.st, sven@svenpeter.dev, robdclark@gmail.com,
- m.szyprowski@samsung.com, krzysztof.kozlowski@linaro.org,
- baolu.lu@linux.intel.com, agross@kernel.org, bjorn.andersson@linaro.org,
- matthias.bgg@gmail.com, heiko@sntech.de, orsonzhai@gmail.com,
- baolin.wang7@gmail.com, zhang.lyra@gmail.com, wens@csie.org,
- jernej.skrabec@gmail.com, samuel@sholland.org, jean-philippe@linaro.org,
- alex.williamson@redhat.com
-Cc: suravee.suthikulpanit@amd.com, alyssa@rosenzweig.io,
- alim.akhtar@samsung.com, dwmw2@infradead.org, yong.wu@mediatek.com,
- mjrosato@linux.ibm.com, gerald.schaefer@linux.ibm.com,
- thierry.reding@gmail.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
- cohuck@redhat.com, iommu@lists.linux-foundation.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-s390@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, virtualization@lists.linux-foundation.org,
- kvm@vger.kernel.org
-References: <20220606061927.26049-1-nicolinc@nvidia.com>
- <20220606061927.26049-3-nicolinc@nvidia.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20220606061927.26049-3-nicolinc@nvidia.com>
+Content-Disposition: inline
+In-Reply-To: <Yp4Br5d0jMnlF5yy@e120937-lin>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220606_073356_870121_1E5B3A26 
-X-CRM114-Status: GOOD (  19.47  )
+X-CRM114-CacheID: sfid-20220606_074356_544134_48943E7B 
+X-CRM114-Status: GOOD (  20.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,58 +66,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-06-06 07:19, Nicolin Chen wrote:
-> The core code should not call an iommu driver op with a struct device
-> parameter unless it knows that the dev_iommu_priv_get() for that struct
-> device was setup by the same driver. Otherwise in a mixed driver system
-> the iommu_priv could be casted to the wrong type.
+On Mon, Jun 06, 2022 at 02:31:48PM +0100, Cristian Marussi wrote:
+> On Mon, Jun 06, 2022 at 02:59:10PM +0200, Michael Riesch wrote:
+> > Hi Cristian,
+> >
+> Hi Michael,
+>
+> > On 5/23/22 19:15, Cristian Marussi wrote:
+> > > Even though malformed replies from firmware must be treated carefully to
+> > > avoid memory corruption Kernel side, some out-of-spec SCMI replies can
+> > > be tolerated to avoid breaking existing deployed system, as long as they
+> > > won't cause memory issues.
+> > >
+> > > Reported-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> > > Cc: Etienne Carriere <etienne.carriere@linaro.org>
+> > > Cc: Sudeep Holla <sudeep.holla@arm.com>
+> > > Signed-off-by: Cristian Marussi <cristian.marussi@arm.com>
+> >
+> > Thanks a lot, without this fix the Mali G52 GPU won't probe on my RK3568
+> > EVB1 in vanilla v5.19-rc1.
+> >
+>
+> Yes, the break was reported on -next and today it appeared in 5.19-rc1.
+> A proper FW fix is also up for review by Etienne but in the meantime
+> this tries to limit damages relaxing a bit the checks.
+>
+> > I guess this patch should have a Fixes: tag, right?
+> >
+>
+> It has not a Fixes tag because the issue was introduced in 5.19-rc1 and the
+> fix will go in with the next round of v5.19 fixes by Sudeep (AFAIU) so it
+> will be solved within the v5.19 cycle and I thought the Fixes tag was
+> not needed in this case (I could be wrong...)
 
-We don't have mixed-driver systems, and there are plenty more 
-significant problems than this one to solve before we can (but thanks 
-for pointing it out - I hadn't got as far as auditing the public 
-interfaces yet). Once domains are allocated via a particular device's 
-IOMMU instance in the first place, there will be ample opportunity for 
-the core to stash suitable identifying information in the domain for 
-itself. TBH even the current code could do it without needing the 
-weirdly invasive changes here.
+Correct, if for some reason, we can't push this before v5.19, then fixes
+tag needs to added. I will add that then, but for now let us target getting
+it in before v5.19
 
-> Store the iommu_ops pointer in the iommu_domain and use it as a check to
-> validate that the struct device is correct before invoking any domain op
-> that accepts a struct device.
-
-In fact this even describes exactly that - "Store the iommu_ops pointer 
-in the iommu_domain", vs. the "Store the iommu_ops pointer in the 
-iommu_domain_ops" which the patch is actually doing :/
-
-[...]
-> diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
-> index 19cf28d40ebe..8a1f437a51f2 100644
-> --- a/drivers/iommu/iommu.c
-> +++ b/drivers/iommu/iommu.c
-> @@ -1963,6 +1963,10 @@ static int __iommu_attach_device(struct iommu_domain *domain,
->   {
->   	int ret;
->   
-> +	/* Ensure the device was probe'd onto the same driver as the domain */
-> +	if (dev->bus->iommu_ops != domain->ops->iommu_ops)
-
-Nope, dev_iommu_ops(dev) please. Furthermore I think the logical place 
-to put this is in iommu_group_do_attach_device(), since that's the 
-gateway for the public interfaces - we shouldn't need to second-guess 
-ourselves for internal default-domain-related calls.
-
-Thanks,
-Robin.
-
-> +		return -EMEDIUMTYPE;
-> +
->   	if (unlikely(domain->ops->attach_dev == NULL))
->   		return -ENODEV;
+--
+Regards,
+Sudeep
 
 _______________________________________________
 Linux-rockchip mailing list
