@@ -4,122 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D1D3C43334
-	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jun 2022 06:35:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D394C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jun 2022 08:27:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9SV+f+LbAnlB8D7NlYhDmRq9nlMupR+fSgqlCIO0ADc=; b=HmNi1MEYcpCaj+
-	EEJACOCxDt0Ru+7a40pgdTPbxSydniSP+tjFIpBC6rnRnlI/KY1ImLKEVel5MhYOabUK2IqmMJgeK
-	QmZVoxvEO2s2wvla6wDn2SnPXeyeIHPS2zYPLUhq93iH+249knOt+aM3yBmY3WbQW+DxNTukAMU4O
-	O3MCF2agGAVW7WhJHmhwezPBFsSaemse36nJnFXjoK1vL0lvK8aV1LIfvME9g1buzg+qFUDo9SmJK
-	lR034UdWHpxzuBchoypUNhP2rjtPELCSqosGJtBPKJphwW9mB3z1LToBbgxkp5f0u5rL42gUVUR8v
-	s2FWRgcxWH3kA93RDSjg==;
+	List-Owner; bh=Akdl0QckJEiB9PPNMpjFsYlAFgwtpzVaBCvbR5ihqZE=; b=CuaKg+zT5iXjXd
+	TSPImnuq1aNbyNfId1JRfX/OKL631G/F7noBwlCSbKGhiU0r3etnwgUPIaK5KVGyLJZt/iQDRut+v
+	Lk3IsBo+27aZloYKykt7VZOkeZ/iohi3bWwuItdq5foSitjfhW1XGUBu3g3VCMRnYqNwrNnXanQR5
+	xDQZ2cKBiYdJRQBHZ2AHrPz5SsG+PeGQhoSihFgao8rboZQq1P2jbXfwOG8Uu+nkdsyUNYr4ouY7J
+	8n1310FaC60wRMQiWxWAO4/X08Lsva9aRnhCcyPGHiIe5IUIx+aDg1c1KlgptwYMQb7NsKnRvhzRV
+	ZMYlni0Yi+Nz0YOLY65Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ny6L2-00HJgN-3m; Mon, 06 Jun 2022 06:35:44 +0000
-Received: from mail-bn8nam04on20602.outbound.protection.outlook.com ([2a01:111:f400:7e8d::602] helo=NAM04-BN8-obe.outbound.protection.outlook.com)
+	id 1ny84f-0007H3-LR; Mon, 06 Jun 2022 08:26:57 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ny6Kp-00HJcp-QT; Mon, 06 Jun 2022 06:35:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WGcMjBA4IAx2mEiIDAlCIX67CCFMhUtMYv60zw0osDpL97q0LfsN+hxR4/94p9h+DALvmJNqsqLtpBR4LiIidvqG2iVk32fXvEHfL1uBJL4PcdhNK0TNqUBt/z8hAYqQqh2EvqT+pLi84M7ERQvY4y5PuQdkpeR24tJZPmKNBChidIC1Ye1eWUllPXJpYCCsz3F2NMVKrTMYwBJbGpVsjnwfgH1uJTn/uWt0wJYnun91vuYvh66nojiK49SIl76ljulPeWLyoHNjP2VfH2CBXF16CrSJeftEGj6dyXva7gutP6PwFx/Z6yIyXFIE+G70G49G9OomItZU1Scnp5eLkw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=SeO7Te4yt4I3yBW6/n8sTDab7gbKG7kE6H+bEojxsls=;
- b=ROlR5sVzYZbqKOnILTWxcLGXCLNNdCxqKXYZ8360hsoCWuihyIvjXIDkL4CZf5fJmnNuonDRhp3RngZxeYu5Kdltp+ic7z+4W5a00L0HaVn2ooTo2cQqSEWDjGtbPivDjXw8SG7XVrSgg5ZhO9+F6Sa6hrJkoBFtqOV6xVJRgnTaJTQk34J4CLq9ojXumJCzHJU5ots3wm1WD9KvAiKcuc3oCLwAh79E+OCs3+8zqt4lA5OqqaGAT3E51MAbmLRc7skysXxQJa0ouzCBiUyTh/R4jR/Hvr0YJR9AunKna5o4SVr2Dnl9cR9ByZh/oJLTfkWfDc4PAjbnuoQmqmMrYQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 12.22.5.238) smtp.rcpttodomain=samsung.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SeO7Te4yt4I3yBW6/n8sTDab7gbKG7kE6H+bEojxsls=;
- b=sENtcgjYXlx7gF1Ww8pbiuMwRJ/UhVPfvEiS6SG5dqH2SW9aZTLDbH7YNcpBj0y8rlDMLqi0ymZUbxCTQgvmQqcgLXsp/tQMfps8ZJ0MeNwzeAMlZSc2THfYZ+hJ7da55qfjM+fDWejB9ZXUuQna1t+cCJfPbmhHL/h1uOlx0kZoIG7MUD/yMHZmDkwPnxuyOsyeK9Sirgmnj3EAjy6aQ70yYfcPeVsgftxdTdjY1fspMXRfMy6RmRpMSrsJQZJgMUk6V7Ijy/YRyn0h3ujniXtkUv1b2XN2ttdGJzX8lKlFTSMdS0YaK12UEnMhKgM2oFbBkHYKEtoiu7Fq7ht70g==
-Received: from DM6PR13CA0049.namprd13.prod.outlook.com (2603:10b6:5:134::26)
- by DS7PR12MB6118.namprd12.prod.outlook.com (2603:10b6:8:9a::5) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5314.18; Mon, 6 Jun 2022 06:20:00 +0000
-Received: from DM6NAM11FT057.eop-nam11.prod.protection.outlook.com
- (2603:10b6:5:134:cafe::66) by DM6PR13CA0049.outlook.office365.com
- (2603:10b6:5:134::26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5314.11 via Frontend
- Transport; Mon, 6 Jun 2022 06:20:00 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.238)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 12.22.5.238 as permitted sender) receiver=protection.outlook.com;
- client-ip=12.22.5.238; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (12.22.5.238) by
- DM6NAM11FT057.mail.protection.outlook.com (10.13.172.252) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5314.12 via Frontend Transport; Mon, 6 Jun 2022 06:20:00 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by DRHQMAIL105.nvidia.com
- (10.27.9.14) with Microsoft SMTP Server (TLS) id 15.0.1497.32; Mon, 6 Jun
- 2022 06:19:59 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Sun, 5 Jun 2022
- 23:19:58 -0700
-Received: from Asurada-Nvidia.nvidia.com (10.127.8.12) by mail.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server id 15.2.986.22 via Frontend
- Transport; Sun, 5 Jun 2022 23:19:56 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: <jgg@nvidia.com>, <joro@8bytes.org>, <will@kernel.org>,
-	<marcan@marcan.st>, <sven@svenpeter.dev>, <robin.murphy@arm.com>,
-	<robdclark@gmail.com>, <m.szyprowski@samsung.com>,
-	<krzysztof.kozlowski@linaro.org>, <baolu.lu@linux.intel.com>,
-	<agross@kernel.org>, <bjorn.andersson@linaro.org>, <matthias.bgg@gmail.com>,
-	<heiko@sntech.de>, <orsonzhai@gmail.com>, <baolin.wang7@gmail.com>,
-	<zhang.lyra@gmail.com>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
-	<samuel@sholland.org>, <jean-philippe@linaro.org>,
-	<alex.williamson@redhat.com>
-CC: <suravee.suthikulpanit@amd.com>, <alyssa@rosenzweig.io>,
-	<alim.akhtar@samsung.com>, <dwmw2@infradead.org>, <yong.wu@mediatek.com>,
-	<mjrosato@linux.ibm.com>, <gerald.schaefer@linux.ibm.com>,
-	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
-	<cohuck@redhat.com>, <iommu@lists.linux-foundation.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-samsung-soc@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-s390@vger.kernel.org>, <linux-sunxi@lists.linux.dev>,
-	<linux-tegra@vger.kernel.org>, <virtualization@lists.linux-foundation.org>,
-	<kvm@vger.kernel.org>
-Subject: [PATCH 3/5] vfio/iommu_type1: Prefer to reuse domains vs match enforced cache coherency
-Date: Sun, 5 Jun 2022 23:19:25 -0700
-Message-ID: <20220606061927.26049-4-nicolinc@nvidia.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20220606061927.26049-1-nicolinc@nvidia.com>
-References: <20220606061927.26049-1-nicolinc@nvidia.com>
+	id 1ny84L-0007C5-O3; Mon, 06 Jun 2022 08:26:39 +0000
+Received: from beast.luon.net (unknown [IPv6:2a10:3781:2531:0:973d:c368:8ed:ffaa])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sjoerd)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D5273660204F;
+	Mon,  6 Jun 2022 09:26:32 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1654503992;
+	bh=0pFWHr8nZPd/x652n6ie2quX6dlxkCbVAMeZopa6ow0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=a4X1xRcx8+R0YQxN6+31nvR+V8gHeRJ4dP7pnf6AWEmsdu4OL1qEF997WL7376ywd
+	 Acp3Bsv/gWFubmtBSPDyVjPHYjBhB6doASnOiwzMlOmIbR6IKbyEfUUKIH9rLAdflx
+	 ibryNiRLita0P4JkJUEegdigX9+ltBjqSVDlMkZtlRR5Te1D1pFf8pLU7pekCWPb19
+	 58QFfNeZfOoTBWQ2PePTDiiNSZCZpPQLpfwDzNvjwFHSKC0uOkh3Z7vYtO4VYxJelE
+	 i0mlPynGU8VbsgxkJqjbDK2+cJxQxO56O67BziR7RLLG4wbjonI0lmYJ1JUn2ElGD1
+	 OfW7zUqk7LsXg==
+Received: by beast.luon.net (Postfix, from userid 1000)
+	id A6DFE404D08F; Mon,  6 Jun 2022 10:26:30 +0200 (CEST)
+From: Sjoerd Simons <sjoerd@collabora.com>
+To: linux-rockchip@lists.infradead.org
+Cc: kernel@collabora.com,
+	Akash Gajjar <akash@openedev.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 2/2] arm64: dts: rockchip: rock-pi-s add more peripherals
+Date: Mon,  6 Jun 2022 10:26:28 +0200
+Message-Id: <20220606082629.79682-3-sjoerd@collabora.com>
+X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220606082629.79682-1-sjoerd@collabora.com>
+References: <20220606082629.79682-1-sjoerd@collabora.com>
 MIME-Version: 1.0
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: bb407244-624f-4b4a-99c6-08da478495e9
-X-MS-TrafficTypeDiagnostic: DS7PR12MB6118:EE_
-X-Microsoft-Antispam-PRVS: 	<DS7PR12MB6118FD6562C7A810C4BCD6CCABA29@DS7PR12MB6118.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	i8tdHq15yT1WINxiiwZZdMsO9IrJtkA4R9MXKqwKxXQG6mgzUX3kzv9rK+rShRMSWnkD6J8/Yu6KG2q23Fsy/6CG4W3Vo7HrhwugSUVcZEJzK55e2Vge6vsJdmr/OTVkfBq7ifIz2vxnJ+Q2sCWDBM0E+zR/OGLxM5wXspdnewX51zk5kEhankAbfsmXSE777idXG+f4gLjLmQOvEZEvJrzpdp9db1MxcF2YgYlnPxbfrmY2lldC5dJyWkYu01PjIOM2vzQ+CN/XeE8gw8QM9TdKXh7oaP5YjUsOhnaS+synX6yddE/NgHpPhhju9OI556Cg2b0rVxo3DUdl6UOeK2MmlaWnZpBSWRnFPqi/j2XIZpwMUVhTflKx/Z/v0/kir0tWA9yiK0U6RR9TYlJb5sjHX6KJjNJFxBSeIGEMVGVWzXbcpNtHBjbshi5nXZRxQ2+K7SsrnPHA8KgPwRY7eCekAfZlrSYGm0//m7IX9gSH3ci5LqcxUq8U1s8GJ/t4A8Mw92r7Et6WZiBRaEETgpSmNkc81MrjVhf7HH5SeYfLOCqrt95mYq70nP01MUfaDUpPppLCD9r/ybwIfZnCULmxrTdnaZfbAzFGrm1ujrrobmL4WpzRRMnhSC39Xr6XzQ915Ucie2z7KIUkMNZ+rWoHkqgKQOWdzLL/RUZZHODr+Yvpjj6hMIiLqMQMDyHroNlzuY2pk4HxgIvmFtjHzUPsYmYaWKvuENFgOSI0dndstJUI4viewQOj4dupX+Lo/V8EZ3mEG8tJ3An4oGu7yQ==
-X-Forefront-Antispam-Report: 	CIP:12.22.5.238;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230001)(4636009)(46966006)(36840700001)(40470700004)(7696005)(2616005)(6666004)(1076003)(47076005)(54906003)(26005)(86362001)(40460700003)(426003)(2906002)(7416002)(7406005)(83380400001)(186003)(5660300002)(36756003)(316002)(81166007)(336012)(8936002)(82310400005)(70586007)(921005)(110136005)(356005)(4326008)(70206006)(8676002)(36860700001)(508600001)(2101003)(36900700001)(83996005);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2022 06:20:00.1466
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: bb407244-624f-4b4a-99c6-08da478495e9
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.238];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	DM6NAM11FT057.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB6118
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220605_233531_890678_3360EB8A 
-X-CRM114-Status: GOOD (  12.80  )
+X-CRM114-CacheID: sfid-20220606_012638_013904_C874195E 
+X-CRM114-Status: GOOD (  11.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,49 +79,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jason Gunthorpe <jgg@nvidia.com>
+This enables the following peripherals:
+* Onboard ethernet support
+* Bluetooth
+* USB 2 port
+* OTG port via type-c connector
+* Hardware watchog
 
-The KVM mechanism for controlling wbinvd is only triggered during
-kvm_vfio_group_add(), meaning it is a one-shot test done once the devices
-are setup.
+Also add aliases for the mmc devices and the ethernet interface
 
-So, there is no value in trying to push a device that could do enforced
-cache coherency to a dedicated domain vs re-using an existing domain since
-KVM won't be able to take advantage of it. This just wastes domain memory.
+Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 
-Simplify this code and eliminate the test. This removes the only logic
-that needed to have a dummy domain attached prior to searching for a
-matching domain and simplifies the next patches.
-
-If someday we want to try and optimize this further the better approach is
-to update the Intel driver so that enforce_cache_coherency() can work on a
-domain that already has IOPTEs and then call the enforce_cache_coherency()
-after detaching a device from a domain to upgrade the whole domain to
-enforced cache coherency mode.
-
-Signed-off-by: Jason Gunthorpe <jgg@nvidia.com>
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
 ---
- drivers/vfio/vfio_iommu_type1.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/vfio/vfio_iommu_type1.c b/drivers/vfio/vfio_iommu_type1.c
-index c13b9290e357..f4e3b423a453 100644
---- a/drivers/vfio/vfio_iommu_type1.c
-+++ b/drivers/vfio/vfio_iommu_type1.c
-@@ -2285,9 +2285,7 @@ static int vfio_iommu_type1_attach_group(void *iommu_data,
- 	 * testing if they're on the same bus_type.
- 	 */
- 	list_for_each_entry(d, &iommu->domain_list, next) {
--		if (d->domain->ops == domain->domain->ops &&
--		    d->enforce_cache_coherency ==
--			    domain->enforce_cache_coherency) {
-+		if (d->domain->ops == domain->domain->ops) {
- 			iommu_detach_group(domain->domain, group->iommu_group);
- 			if (!iommu_attach_group(d->domain,
- 						group->iommu_group)) {
+ .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 52 +++++++++++++++++++
+ 1 file changed, 52 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+index 9095efe25ccd..46ba48b843c5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+@@ -11,6 +11,12 @@ / {
+ 	model = "Radxa ROCK Pi S";
+ 	compatible = "radxa,rockpis", "rockchip,rk3308";
+ 
++	aliases {
++		ethernet0 = &gmac;
++		mmc0 = &emmc;
++		mmc1 = &sdmmc;
++	};
++
+ 	chosen {
+ 		stdout-path = "serial0:1500000n8";
+ 	};
+@@ -132,6 +138,15 @@ &emmc {
+ 	status = "okay";
+ };
+ 
++&gmac {
++	clock_in_out = "output";
++	phy-supply = <&vcc_io>;
++	snps,reset-gpio = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	snps,reset-delays-us = <0 50000 50000>;
++	status = "okay";
++};
++
+ &i2c1 {
+ 	status = "okay";
+ };
+@@ -195,10 +210,47 @@ &sdmmc {
+ 	status = "okay";
+ };
+ 
++&u2phy {
++	status = "okay";
++
++	u2phy_host: host-port {
++		phy-supply = <&vcc5v0_otg>;
++		status = "okay";
++	};
++
++	u2phy_otg: otg-port {
++		phy-supply = <&vcc5v0_otg>;
++		status = "okay";
++	};
++};
++
+ &uart0 {
+ 	status = "okay";
+ };
+ 
+ &uart4 {
+ 	status = "okay";
++
++	bluetooth {
++		compatible = "realtek,rtl8723bs-bt";
++		device-wake-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
++		host-wake-gpios = <&gpio4 RK_PB4 GPIO_ACTIVE_HIGH>;
++	};
++};
++
++&usb_host_ehci {
++	status = "okay";
++};
++
++&usb_host_ohci {
++	status = "okay";
++};
++
++&usb20_otg {
++	dr_mode = "peripheral";
++	status = "okay";
++};
++
++&wdt {
++	status = "okay";
+ };
 -- 
-2.17.1
+2.36.1
 
 
 _______________________________________________
