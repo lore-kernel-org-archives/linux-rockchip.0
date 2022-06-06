@@ -4,41 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 850B5C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun,  5 Jun 2022 16:02:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08A50CCA482
+	for <linux-rockchip@archiver.kernel.org>; Mon,  6 Jun 2022 06:20:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mtgsn4cIax1BJWVpfhbeaRrbvKCudREakYzT9w/9+J0=; b=vyc+abrTUduj+gB/LN27X0Hrmx
-	JKLWcN48BKbYminr37FDpxsBPxIokC9sV5dikTD2fBgFTMDvXWJjpF/4lw1asEPxTEWe0Zv8g3r2/
-	YZIVj5qJoEx9AHYpKPYD1WbaIejzg/Cn3P6FUgY/pRymgi4FBZn6upjYPtiPrm3qZFLzptpT4xuRr
-	K9h5Mus2+bNLBAIqCYZ0DJFaKm7y5dLgfgpF/SDMZW7MA+kZDijRMBhQQKUAVJ7oJ0fepm2IQ5sJC
-	knSqIzAAKCmpLpO3EL2aTdPd0nYn+z1jw9oO7+evdxz1nalT4VGEzBMc7twMo2dLiYB028weJM+5s
-	1TKPxrPA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fTlcgUJK4BIMFuKnKrVqmyiYX4xvX2zupC42C7FzqBA=; b=pk+jb4A7Jcx+tY
+	ct2E4p45fJVF3sST+h1uMSSLLde7/SYctQsf6U5GUuASfTp7uZCc/WvjeiCR+j2dvSgQpnjRRdfmK
+	DjMxJnnfZn88pXV1h3SDVPmTAKovqgsKdVVndH2JztjjJblyIUSMrraNqQbFMQR6gC+XDapvry809
+	B3fzT45CjptUOY+U/2isQ5FIvkj/iiikarZfM+PCumTgHYZk+QXCEsZLmDFMonK7cqCfFkezehdnp
+	9bgKJZCHsLkf+Z0OeBOs98kDgSIP5ceZPVQoVQfH72NzlhRzRbzpvfHp4C05CMnDn62Q+g/EUWAQc
+	s0Qj/XnRkvlJ1vgUlygw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nxshC-00EoNU-Hy; Sun, 05 Jun 2022 16:01:42 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1ny662-00H0TW-TH; Mon, 06 Jun 2022 06:20:14 +0000
+Received: from mail-bn8nam11on2060d.outbound.protection.outlook.com ([2a01:111:f400:7eae::60d] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nxsh9-00EoMt-6Y
-	for linux-rockchip@lists.infradead.org; Sun, 05 Jun 2022 16:01:41 +0000
-Message-ID: <140ed64d-26d3-8e67-fe46-f915e91c96de@manjaro.org>
-Date: Sun, 5 Jun 2022 18:01:33 +0200
+	id 1ny65o-00H0Ht-Rv; Mon, 06 Jun 2022 06:20:02 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=cndKJOiJd90tXzm/yOg6GgkNavKUiAMwfv6bOIysihopzc6Xshv8wMsgzqF6osS5xme/1+MVhBtlikayvzg59nZTWZsRp1s5vA8sC26PBKE2y/V68Sb58noh+YIO5DyS+qXeXk7BXOg/0qGxddOGR0i2FoJRa12+MbBCXYdlVyKZEyO22ITepK6UkpILoW0Ngau1fhLIdGM2dbCtwgxNn3uhZ5p76I/9DveLemrCyLjBLexgrKcs4kI89TNhjfR8A1AjU/SfX+Bwflor3TqyMsL6XXAWIsjV3QroTzhHxAlw//GVtz/S3NUJI3ProPlTUYIgWN+5+YcGoguDwM0tsw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=qt61BEzWAJnf/jjYQPs/mf5a7J0wxbd8tUu1/z9I+ro=;
+ b=Fhmg/hcS/GKTVHdJa67QBMwxlUs8EK1td39cjXNGOo5FTqwtB2SaSPYlZ1vehE9JaCe4eFRfEcmL7PrOizvqkbL25NCOHOh3i2Dc5qGOcaFSjYVzrOGQ6gvHXY25hygY/JGcZNjiQ0sPSDXirt5SP0iDkWZ8YxHiG9gAZmAHXKade9yfXPJyztfT0NTBFXhE5465t4VbBzP8B2kdpbttM2gaaCLQN0h0goqzDjntt9bOfSm9a68AzoEa8RORI7LMySH3X6hPG8/GE17wwNqOzslBX3qncp6LaTiTIXxDNvfMYWJf86NFE+LRHwfBUWttNy2Smz5n7MWaHBnui/TwhA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 12.22.5.236) smtp.rcpttodomain=samsung.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=qt61BEzWAJnf/jjYQPs/mf5a7J0wxbd8tUu1/z9I+ro=;
+ b=pZhCEki/WrrDNL6nzAhWkMes+eXnm7eBIhNmnUDuvd8VQ/Lwy7bvo21V8SnWQyH4Zu7dIGoeA2CGzq9jNc3OWhn824TDsFVDGWFUK76ylUq4aMYWZN5DAmWOBrh2335ZCzV3Iv+brkY0+2lolWQPCcAMgQgN5I+66IypBIHg2DYu1plzvA05XuYxI9dz7QLIVlKuiBipWVpb7CDyBjC4w9jstfdhwR/YZVyDR8tK1BWMK2mDhWhjYkTOcSRikSqNObdYZg5B131hHqVsf4SHVpH3yAXSo+ZV55wb9GXUxUFbRSyLs8hunfEBtXUjOnV3T13lJI2sk8pFwZv+Ds13Gg==
+Received: from MW4PR03CA0182.namprd03.prod.outlook.com (2603:10b6:303:b8::7)
+ by DM6PR12MB2890.namprd12.prod.outlook.com (2603:10b6:5:15e::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5314.18; Mon, 6 Jun
+ 2022 06:19:53 +0000
+Received: from CO1NAM11FT018.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:303:b8:cafe::5a) by MW4PR03CA0182.outlook.office365.com
+ (2603:10b6:303:b8::7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5314.12 via Frontend
+ Transport; Mon, 6 Jun 2022 06:19:53 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.236)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 12.22.5.236 as permitted sender) receiver=protection.outlook.com;
+ client-ip=12.22.5.236; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (12.22.5.236) by
+ CO1NAM11FT018.mail.protection.outlook.com (10.13.175.16) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.5314.12 via Frontend Transport; Mon, 6 Jun 2022 06:19:52 +0000
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by DRHQMAIL109.nvidia.com
+ (10.27.9.19) with Microsoft SMTP Server (TLS) id 15.0.1497.32; Mon, 6 Jun
+ 2022 06:19:52 +0000
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail204.nvidia.com
+ (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Sun, 5 Jun 2022
+ 23:19:51 -0700
+Received: from Asurada-Nvidia.nvidia.com (10.127.8.12) by mail.nvidia.com
+ (10.129.68.10) with Microsoft SMTP Server id 15.2.986.22 via Frontend
+ Transport; Sun, 5 Jun 2022 23:19:49 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: <jgg@nvidia.com>, <joro@8bytes.org>, <will@kernel.org>,
+	<marcan@marcan.st>, <sven@svenpeter.dev>, <robin.murphy@arm.com>,
+	<robdclark@gmail.com>, <m.szyprowski@samsung.com>,
+	<krzysztof.kozlowski@linaro.org>, <baolu.lu@linux.intel.com>,
+	<agross@kernel.org>, <bjorn.andersson@linaro.org>, <matthias.bgg@gmail.com>,
+	<heiko@sntech.de>, <orsonzhai@gmail.com>, <baolin.wang7@gmail.com>,
+	<zhang.lyra@gmail.com>, <wens@csie.org>, <jernej.skrabec@gmail.com>,
+	<samuel@sholland.org>, <jean-philippe@linaro.org>,
+	<alex.williamson@redhat.com>
+CC: <suravee.suthikulpanit@amd.com>, <alyssa@rosenzweig.io>,
+	<alim.akhtar@samsung.com>, <dwmw2@infradead.org>, <yong.wu@mediatek.com>,
+	<mjrosato@linux.ibm.com>, <gerald.schaefer@linux.ibm.com>,
+	<thierry.reding@gmail.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
+	<cohuck@redhat.com>, <iommu@lists.linux-foundation.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-arm-msm@vger.kernel.org>, <linux-samsung-soc@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-s390@vger.kernel.org>, <linux-sunxi@lists.linux.dev>,
+	<linux-tegra@vger.kernel.org>, <virtualization@lists.linux-foundation.org>,
+	<kvm@vger.kernel.org>
+Subject: [PATCH 0/5] Simplify vfio_iommu_type1 attach/detach routine
+Date: Sun, 5 Jun 2022 23:19:22 -0700
+Message-ID: <20220606061927.26049-1-nicolinc@nvidia.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Subject: Re: [GIT PULL] Rockchip dts64 changes for 5.19 #1
-Content-Language: da-DK
-To: linux-rockchip@lists.infradead.org
-References: <7748558.DvuYhMxLoT@phil>
- <eb266429-71f3-6d73-7e6a-5be83b6ce048@manjaro.org>
-From: Dan Johansen <strit@manjaro.org>
-Organization: Manjaro ARM
-In-Reply-To: <eb266429-71f3-6d73-7e6a-5be83b6ce048@manjaro.org>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 398b826b-ed06-426d-5c5f-08da47849165
+X-MS-TrafficTypeDiagnostic: DM6PR12MB2890:EE_
+X-Microsoft-Antispam-PRVS: 	<DM6PR12MB2890C7DE246EECA45C210CC1ABA29@DM6PR12MB2890.namprd12.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	lxIvg2z2sn5/yqJNLZP0SOo/ZwR6vmGSXF4b/VrgDZUYpPYs7nwcT45mp7+AU2P52kLC3Ym/oYCD2pyGR7engcAwHD1PRhXFMg+NJ3yhaYTnKiREMZY2qUgp95goY4I/7ZoLrrwh5Gsl/A7VGm4FQJ7993ZrZHdQKOj9+wdTkqsdzMqKajX8CZv/OqVTvwMKN6zqQn9AbaXx5EY+ECXkn7c8/JyO3neqyoyUlkW41kB8E2bBeelwtvl9qk16UN7Csk784yZuf1lCYjUBaJwJR6jzOVknIVvO26orltaUeIBtm3SjcjZ/IkExoAMifcacxDGq1R/Rtu9+4UkOWL5ySBQcHtxSeZ4BvTNEfyDHC8EulLJFymDOxiM+aKTgrhRH5PBjiY5ZYBeAY47OQCcdWMYxfgWJfhpg+QrLJ15JTZ30oqBsbc2rra8FEvifAwOx6xMIS4aoppRmLpkqJzilbvg+KgQFBq7nvoif0pCtK2QzRFEqn/agh/7yMa1/dCVopyDWknn3jEXDnwAEELnfSUIAjZ1RI3CMG6b0FraBhoNPjir+/he0ADqQS1CiNFZSuVzpg6WVq9/Pl/lNxQkXBjDfFRlv9uFdDU74Y3rDRF52zuHXNL+dG0Fhers8QAsNUG18YWzLkcikOjFAsl/wj73n4jHGdTTINxM+8idC9b6UJi0M5fvfYcMVGft9olZ9Pxzw54B8o8OFpBErcCkHhTvlXmrW7DS4t/KYNo24tAaZNmuSw8JD6flulB4Gyyb9g7l8yYBBZ9YTpvoUkD2+RtxEYhYCs2de5SMu26+4UGmKnnXs/keUPIRVp6HXpycbXO0HqmEhG67GW1u+18lEFp2bnqV1S1SH/O0FX77UZMA=
+X-Forefront-Antispam-Report: 	CIP:12.22.5.236;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230001)(4636009)(40470700004)(36840700001)(46966006)(336012)(47076005)(1076003)(2616005)(426003)(36756003)(7416002)(6666004)(83380400001)(966005)(186003)(7696005)(36860700001)(26005)(81166007)(110136005)(40460700003)(8936002)(921005)(356005)(316002)(82310400005)(4326008)(508600001)(86362001)(8676002)(5660300002)(54906003)(70206006)(70586007)(2906002)(7406005)(83996005)(2101003)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2022 06:19:52.5847
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 398b826b-ed06-426d-5c5f-08da47849165
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.236];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	CO1NAM11FT018.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB2890
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220605_090139_603607_15AF9F9E 
-X-CRM114-Status: GOOD (  17.60  )
+X-CRM114-CacheID: sfid-20220605_232000_972477_A784CDDB 
+X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -50,136 +131,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TmV2ZXJtaW5kIG1lLiBGb3VuZCB0aGVtLiBTb3JyeSBmb3IgdGhlIG5vaXNlLgoKRGVuIDA1LjA2
-LjIwMjIga2wuIDE3LjE3IHNrcmV2IERhbiBKb2hhbnNlbjoKPiBKdXN0IGN1cmlvdXMuIEkgZG9u
-J3Qgc2VlIHRoaXMgYnVuY2ggb2YgZHRzNjQgY2hhbmdlcyBpbiB0aGUgbGludXguZ2l0IAo+IHRy
-ZWUgeWV0LCB3aGlsZSB0aGUgZHQtYmluZGluZ3MgZm9yIHRoZW0gYW5kIHRoZSBudW1iZXIgMiBo
-YXMgYmVlbiAKPiBtZXJnZWQgaW50byBpdC4KPgo+IElzIHRoaXMgYW4gb3ZlcnNpZ2h0Pwo+Cj4g
-RGVuIDEyLjA1LjIwMjIga2wuIDAxLjQxIHNrcmV2IEhlaWtvIFN0dWVibmVyOgo+PiBIaSBBcm5k
-LCBLZXZpbiwgT2xvZiwKPj4KPj4gcGxlYXNlIGZpbmQgYmVsb3cgYW5kIGluIHN1YnNlcXVlbnQg
-cHVsbC1yZXF1ZXN0cwo+PiBSb2NrY2hpcCBjaGFuZ2VzIGZvciBmb3IgNS4xOSAuCj4+Cj4+IEFz
-IGFsd2F5cyB0aGUgNjRiaXQgRFRTIHBhcnQgaXMgdGhlIGJpZyBvbmUuCj4+Cj4+IFBsZWFzZSBw
-dWxsIQo+Pgo+PiBUaGFua3MKPj4gSGVpa28KPj4KPj4KPj4gVGhlIGZvbGxvd2luZyBjaGFuZ2Vz
-IHNpbmNlIGNvbW1pdCAKPj4gMzEyMzEwOTI4NDE3NmIxNTMyODc0NTkxZjdjODFmMzgzN2JiZGMx
-NzoKPj4KPj4gwqDCoCBMaW51eCA1LjE4LXJjMSAoMjAyMi0wNC0wMyAxNDowODoyMSAtMDcwMCkK
-Pj4KPj4gYXJlIGF2YWlsYWJsZSBpbiB0aGUgR2l0IHJlcG9zaXRvcnkgYXQ6Cj4+Cj4+IGdpdDov
-L2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9tbWluZC9saW51eC1yb2Nr
-Y2hpcC5naXQgCj4+IHRhZ3MvdjUuMTktcm9ja2NoaXAtZHRzNjQtMQo+Pgo+PiBmb3IgeW91IHRv
-IGZldGNoIGNoYW5nZXMgdXAgdG8gYmM0MDViYjNlZWVlNGI3MTE4MzBhYjU2OWU3ZjM4MTFiOTIx
-OTZhYjoKPj4KPj4gwqDCoCBhcm02NDogZHRzOiByb2NrY2hpcDogZW5hYmxlIG90Zy9kcmQgb3Bl
-cmF0aW9uIG9mIHVzYl9ob3N0MF94aGNpIAo+PiBpbiByazM1NnggKDIwMjItMDUtMTEgMDY6MDk6
-NTUgKzAyMDApCj4+Cj4+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPj4gTmV3IHBlcmlwaGVyYWxzIHN1cHBvcnRlZCBvbiBy
-azM1Nng6IHNmYywgdXNiMywgc2F0YSBhbmQKPj4gdGhlIHZpZGVvLWRlY29kZXIgb24gcmszMzI4
-Lgo+PiBSSzMzOTkgcmVjZWl2ZWQgc29tZSBpbXByb3ZlbWVudHMgYW5kIG5vZGVzIGZvciB0aGUg
-bWVtb3J5IGNvbnRyb2xsZXIuCj4+IEFkZGl0aW9uYWwgcGVyaXBoZXJhbHMgZm9yIFBpbmVOb3Rl
-LCBHcnUgYW5kIEJhbmFuYVBpLVIyLVByby4KPj4gTmV3IGJvYXJkcyBhcmUgdGhlIEZpcmVmbHkg
-U3RhdGlvbiBNMiwgUGluZTY0IFNvUXVhcnR6IFNPTSBhbmQKPj4gUXVhcnR6NjQgbW9kZWwgQiBh
-cyB3ZWxsIGFzIHRoZSBSYWR4YSBSb2NrMyBtb2RlbCBBLgo+Pgo+PiAtLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tCj4+IENhbGVi
-IENvbm5vbGx5ICgxKToKPj4gwqDCoMKgwqDCoMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQg
-YW4gaW5wdXQgZW5hYmxlIHBpbmNvbmYgdG8gcmszMzk5Cj4+Cj4+IENocmlzdG9waGVyIE9iYmFy
-ZCAoMik6Cj4+IMKgwqDCoMKgwqDCoCBhcm02NDogZHRzOiByb2NrY2hpcDogUmVuYW1lIHZkZWNf
-bW11IG5vZGUgZm9yIFJLMzMyOAo+PiDCoMKgwqDCoMKgwqAgYXJtNjQ6IGR0czogcm9ja2NoaXA6
-IEFkZCB2ZGVjIHN1cHBvcnQgZm9yIFJLMzMyOAo+Pgo+PiBGcmFuayBXdW5kZXJsaWNoICgzKToK
-Pj4gwqDCoMKgwqDCoMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBBZGQgc2F0YSBub2RlcyB0byBy
-azM1NngKPj4gwqDCoMKgwqDCoMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBBZGQgVVNCIG5vZGVz
-IGZvciBCUEktUjItUHJvCj4+IMKgwqDCoMKgwqDCoCBhcm02NDogZHRzOiByb2NrY2hpcDogQWRk
-IFNBVEEgc3VwcG9ydCB0byBCUEktUjItUHJvCj4+Cj4+IEZ1cmthbiBLYXJkYW1lICgxKToKPj4g
-wqDCoMKgwqDCoMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQgZHRzIGZvciBGaXJlZmx5IFN0
-YXRpb24gTTIgcmszNTY2Cj4+Cj4+IEhlaWtvIFN0dWVibmVyICgxKToKPj4gwqDCoMKgwqDCoMKg
-IGFybTY0OiBkdHM6IHJvY2tjaGlwOiBmaXggTWFrZWZpbGUgc29ydGluZyBmb3IgQmFuYW5hUGkg
-UjIgUHJvCj4+Cj4+IEpvaGFuIEpvbmtlciAoMik6Cj4+IMKgwqDCoMKgwqDCoCBhcm02NDogZHRz
-OiByb2NrY2hpcDogdXNlIGdlbmVyaWMgbm9kZSBuYW1lIGZvciBwbXVjcnUgb24gcmszMzk5Cj4+
-IMKgwqDCoMKgwqDCoCBhcm02NDogZHRzOiByb2NrY2hpcDogYWRkIGNsb2NrcyBwcm9wZXJ0eSB0
-byBjcnUgbm9kZXMgcmszMzk5Cj4+Cj4+IEtyenlzenRvZiBLb3psb3dza2kgKDEpOgo+PiDCoMKg
-wqDCoMKgwqAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGNvcnJlY3QgaW50ZXJydXB0IGZsYWdzIG9u
-IHJrMzM5OSBib2FyZHMKPj4KPj4gTGluIEh1YW5nICgyKToKPj4gwqDCoMKgwqDCoMKgIGFybTY0
-OiBkdHM6IHJvY2tjaGlwOiBBZGQgZGZpIGFuZCBkbWMgbm9kZXMgdG8gcmszMzk5Cj4+IMKgwqDC
-oMKgwqDCoCBhcm02NDogZHRzOiByb2NrY2hpcDogRW5hYmxlIGRtYyBhbmQgZGZpIG5vZGVzIG9u
-IGdydQo+Pgo+PiBNaWNoYWVsIFJpZXNjaCAoNik6Cj4+IMKgwqDCoMKgwqDCoCBkdC1iaW5kaW5n
-czogYXJtOiByb2NrY2hpcDogYWRkIHJhZHhhIHJvY2szIG1vZGVsIGEKPj4gwqDCoMKgwqDCoMKg
-IGFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQgYmFzaWMgZHRzIGZvciB0aGUgcmFkeGEgcm9jazMg
-bW9kZWwgYQo+PiDCoMKgwqDCoMKgwqAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGFkZCB1c2IzIHN1
-cHBvcnQgdG8gcmszNTY4LWV2YjEtdjEwCj4+IMKgwqDCoMKgwqDCoCBhcm02NDogZHRzOiByb2Nr
-Y2hpcDogYWRkIHVzYjMgc3VwcG9ydCB0byB0aGUgcmFkeGEgcm9jazMgbW9kZWwgYQo+PiDCoMKg
-wqDCoMKgwqAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGVuYWJsZSB1c2IgaHViIG9uIHRoZSByYWR4
-YSByb2NrMyBtb2RlbCBhCj4+IMKgwqDCoMKgwqDCoCBhcm02NDogZHRzOiByb2NrY2hpcDogZW5h
-YmxlIG90Zy9kcmQgb3BlcmF0aW9uIG9mIAo+PiB1c2JfaG9zdDBfeGhjaSBpbiByazM1NngKPj4K
-Pj4gUGV0ZXIgR2VpcyAoOCk6Cj4+IMKgwqDCoMKgwqDCoCBhcm02NDogZHRzOiByb2NrY2hpcDog
-YWRkIHJrMzU2eCBkd2MzIHVzYjMgbm9kZXMKPj4gwqDCoMKgwqDCoMKgIGFybTY0OiBkdHM6IHJv
-Y2tjaGlwOiBlbmFibGUgZHdjMyBvbiBxdWFydHo2NC1hCj4+IMKgwqDCoMKgwqDCoCBhcm02NDog
-ZHRzOiByb2NrY2hpcDogYWRkIHJrMzU2eCBzZmMgc3VwcG9ydAo+PiDCoMKgwqDCoMKgwqAgZHQt
-YmluZGluZ3M6IGFybTogcm9ja2NoaXA6IEFkZCBQaW5lNjQgUXVhcnR6NjQgTW9kZWwgQgo+PiDC
-oMKgwqDCoMKgwqAgZHQtYmluZGluZ3M6IGFybTogcm9ja2NoaXA6IEFkZCBQaW5lNjQgU29RdWFy
-dHogU29NCj4+IMKgwqDCoMKgwqDCoCBkdC1iaW5kaW5nczogYXJtOiByb2NrY2hpcDogQWRkIEZp
-cmVmbHkgU3RhdGlvbiBNMgo+PiDCoMKgwqDCoMKgwqAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGFk
-ZCBQaW5lNjQgUXVhcnR6NjQtQiBkZXZpY2UgdHJlZQo+PiDCoMKgwqDCoMKgwqAgYXJtNjQ6IGR0
-czogcm9ja2NoaXA6IGFkZCBTb1F1YXJ0eiBDTTRJTyBkdHMKPj4KPj4gUm9iaW4gTXVycGh5ICgx
-KToKPj4gwqDCoMKgwqDCoMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBBZGQgc29tZSBwaW5zIGZv
-ciBOYW5vUGk0Cj4+Cj4+IFNhbXVlbCBIb2xsYW5kICgyKToKPj4gwqDCoMKgwqDCoMKgIGFybTY0
-OiBkdHM6IHJvY2tjaGlwOiBBZGQgYWNjZWxlcm9tZXRlciB0byByazM1NjYtcGluZW5vdGUKPj4g
-wqDCoMKgwqDCoMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBBZGQgVVNCIGFuZCBUQ1BDIHRvIHJr
-MzU2Ni1waW5lbm90ZQo+Pgo+PiBTYXNjaGEgSGF1ZXIgKDEpOgo+PiDCoMKgwqDCoMKgwqAgYXJt
-NjQ6IGR0czogcm9ja2NoaXA6IHJlbmFtZSBIRE1JIHJlZiBjbG9jayB0byAncmVmJyBvbiByazMz
-OTkKPj4KPj4gU2hhd24gTGluICgxKToKPj4gwqDCoMKgwqDCoMKgIGFybTY0OiBkdHM6IHJvY2tj
-aGlwOiBNb3ZlIGRyaXZlLWltcGVkYW5jZS1vaG0gdG8gZW1tYyBwaHkgb24gCj4+IHJrMzM5OQo+
-Pgo+PiDCoCAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vcm9ja2NoaXAueWFtbMKgwqDCoMKg
-wqDCoMKgwqDCoCB8wqAgMjMgKy0KPj4gwqAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9N
-YWtlZmlsZcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgIDYgKy0KPj4gwqAgYXJjaC9h
-cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzMjguZHRzacKgwqDCoMKgwqDCoMKgwqDCoMKgIHzC
-oCAyMiArLQo+PiDCoCBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1maXJlZmx5
-LmR0c8KgwqDCoCB8wqDCoCAzICstCj4+IMKgIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkt
-Z3J1LWNocm9tZWJvb2suZHRzacKgwqAgfMKgwqAgNyArCj4+IMKgIC4uLi9ib290L2R0cy9yb2Nr
-Y2hpcC9yazMzOTktZ3J1LXNjYXJsZXQuZHRzacKgwqDCoMKgwqAgfMKgIDEyICsKPj4gwqAgYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1LmR0c2nCoMKgwqDCoMKgwqAgfMKg
-IDI4ICsKPj4gwqAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktaHVnc3VuLXg5
-OS5kdHMgfMKgwqAgMyArLQo+PiDCoCAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWtoYWRh
-cy1lZGdlLmR0c2nCoMKgwqDCoMKgIHzCoMKgIDMgKy0KPj4gwqAgYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazMzOTktbGVlei1wNzEwLmR0c8KgIHzCoMKgIDMgKy0KPj4gwqAgYXJjaC9h
-cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktbmFub3BpNC5kdHNpwqDCoCB8wqDCoCAyICst
-Cj4+IMKgIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW9wMS1vcHAuZHRzacKg
-wqAgfMKgIDI1ICsKPj4gwqAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktb3Jh
-bmdlcGkuZHRzwqDCoCB8wqDCoCAzICstCj4+IMKgIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvcmszMzk5LXJvY2stcGktNGIuZHRzIHzCoMKgIDIgKy0KPj4gwqAgYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazMzOTktcm9jay1waS00Yy5kdHMgfMKgwqAgMiArLQo+PiDCoCBhcmNo
-L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2NrOTYwLmR0c2nCoMKgIHzCoMKgIDMg
-Ky0KPj4gwqAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzacKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHzCoCA0NSArLQo+PiDCoCBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3JrMzU2Ni1waW5lbm90ZS5kdHNpwqAgfMKgIDgwICsrKwo+PiDCoCBhcmNoL2FybTY0L2Jvb3Qv
-ZHRzL3JvY2tjaGlwL3JrMzU2Ni1xdWFydHo2NC1hLmR0cyB8wqAgMzcgKysKPj4gwqAgYXJjaC9h
-cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtcXVhcnR6NjQtYi5kdHMgfCA2MTUgCj4+ICsr
-KysrKysrKysrKysrKysrKysrCj4+IMKgIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
-NTY2LXJvYy1wYy5kdHPCoMKgwqDCoCB8IDU3OSAKPj4gKysrKysrKysrKysrKysrKysrKwo+PiDC
-oCAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY2LXNvcXVhcnR6LWNtNC5kdHPCoMKgwqDCoMKg
-IHwgMTc3ICsrKysrKwo+PiDCoCBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Ni1z
-b3F1YXJ0ei5kdHNpwqAgfCA2MTYgCj4+ICsrKysrKysrKysrKysrKysrKysrKwo+PiDCoCBhcmNo
-L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Ni5kdHNpwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-fMKgIDExICsKPj4gwqAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjgtYnBpLXIy
-LXByby5kdHMgfCAxMDIgKysrKwo+PiDCoCBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3Jr
-MzU2OC1ldmIxLXYxMC5kdHPCoMKgIHzCoCA0NiArKwo+PiDCoCBhcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzU2OC1yb2NrLTNhLmR0c8KgwqDCoCB8IDU2MiAKPj4gKysrKysrKysrKysr
-KysrKysrKwo+PiDCoCBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC5kdHNpwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgfMKgIDIzICsKPj4gwqAgYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
-Y2hpcC9yazM1NnguZHRzacKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCA3NCArKy0KPj4gwqAgMjkg
-ZmlsZXMgY2hhbmdlZCwgMzA5NiBpbnNlcnRpb25zKCspLCAxOCBkZWxldGlvbnMoLSkKPj4gwqAg
-Y3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY2LXF1
-YXJ0ejY0LWIuZHRzCj4+IMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzU2Ni1yb2MtcGMuZHRzCj4+IMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCAKPj4g
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtc29xdWFydHotY200LmR0cwo+PiDC
-oCBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYt
-c29xdWFydHouZHRzaQo+PiDCoCBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm02NC9ib290L2R0
-cy9yb2NrY2hpcC9yazM1Njgtcm9jay0zYS5kdHMKPj4KPj4KPj4KPj4KPj4gX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPj4gTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0Cj4+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPj4gaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAotLSAK
-S2luZCByZWdhcmRzCipEYW4gSm9oYW5zZW4qClByb2plY3QgbGVhZCBvZiB0aGUgKk1hbmphcm8g
-QVJNKiBwcm9qZWN0Ck1hbmphcm8tQVJNIDxodHRwczovL21hbmphcm8ub3JnPgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+This is a preparatory series for IOMMUFD v2 patches. It enforces error
+code -EMEDIUMTYPE in iommu_attach_device() and iommu_attach_group() when
+an IOMMU domain and a device/group are incompatible. It also moves the
+domain->ops check into __iommu_attach_device(). These allow VFIO iommu
+code to simplify its group attachment routine, by avoiding the extra
+IOMMU domain allocations and attach/detach sequences of the old code.
+
+Worths mentioning the exact match for enforce_cache_coherency is removed
+with this series, since there's very less value in doing that since KVM
+won't be able to take advantage of it -- this just wastes domain memory.
+Instead, we rely on Intel IOMMU driver taking care of that internally.
+
+This is on github: https://github.com/nicolinc/iommufd/commits/vfio_iommu_attach
+
+Jason Gunthorpe (1):
+  vfio/iommu_type1: Prefer to reuse domains vs match enforced cache
+    coherency
+
+Nicolin Chen (4):
+  iommu: Return -EMEDIUMTYPE for incompatible domain and device/group
+  iommu: Ensure device has the same iommu_ops as the domain
+  vfio/iommu_type1: Clean up update_dirty_scope in detach_group()
+  vfio/iommu_type1: Simplify group attachment
+
+ drivers/iommu/amd/iommu.c                   |   3 +-
+ drivers/iommu/apple-dart.c                  |   5 +-
+ drivers/iommu/arm/arm-smmu-v3/arm-smmu-v3.c |   7 +-
+ drivers/iommu/arm/arm-smmu/arm-smmu.c       |   1 +
+ drivers/iommu/arm/arm-smmu/qcom_iommu.c     |   3 +-
+ drivers/iommu/exynos-iommu.c                |   1 +
+ drivers/iommu/fsl_pamu_domain.c             |   1 +
+ drivers/iommu/intel/iommu.c                 |   5 +-
+ drivers/iommu/iommu.c                       |  26 ++
+ drivers/iommu/ipmmu-vmsa.c                  |   3 +-
+ drivers/iommu/msm_iommu.c                   |   1 +
+ drivers/iommu/mtk_iommu.c                   |   1 +
+ drivers/iommu/mtk_iommu_v1.c                |   1 +
+ drivers/iommu/omap-iommu.c                  |   3 +-
+ drivers/iommu/rockchip-iommu.c              |   1 +
+ drivers/iommu/s390-iommu.c                  |   1 +
+ drivers/iommu/sprd-iommu.c                  |   1 +
+ drivers/iommu/sun50i-iommu.c                |   1 +
+ drivers/iommu/tegra-gart.c                  |   1 +
+ drivers/iommu/tegra-smmu.c                  |   1 +
+ drivers/iommu/virtio-iommu.c                |   3 +-
+ drivers/vfio/vfio_iommu_type1.c             | 315 ++++++++++----------
+ include/linux/iommu.h                       |   2 +
+ 23 files changed, 223 insertions(+), 164 deletions(-)
+
+-- 
+2.17.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
