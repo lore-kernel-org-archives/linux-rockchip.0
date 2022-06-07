@@ -4,83 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C164C43334
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jun 2022 12:44:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4570C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jun 2022 16:41:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EWIICb1fbnWTHBNAePIf3+1WftTKCqWBBIYONZID3lE=; b=e8EfsRxG0LeJlk
-	emh/PGI3q8ISc7OswvvfT1UCd9p3FzNGnyUAkLpuRwdx2cGQ11N/kljjDe5iLYdZRriAqC9FO2mJY
-	IBH8q8FwRsRIHfVxJ2NIppLMkdcaEj8iDwq3ojd4qSSNPMg++ohGUE2WBrysoiPWS/jK34EmUPSFv
-	8qIbT5Zkkm/a2cJ0RmPDluzexUaVBj2VBvaVNQw2iW7qUwVLvfaPROZKXONbzECht9Gt3rfldhh6W
-	Zu5hHUV08zOnAj2iZclLnIGfTao3J54rVczrlHAsk4VljLtaDbxGXDWDGC+LUNlIG21rJFotjXB4i
-	FAlZcOHnUXqeb67cZrvg==;
+	List-Owner; bh=MmFm/E5mkwMtyS9Kse78MRRQnmrpGeAgkc2Q1gNnHgs=; b=OsmP1uG89NTxqc
+	xRldTPt64NO+q4uihN+hv7qg5bG/OzQzJ7U4EVKYSrKKWsGRDSRy322WV8f/uWiRdg/OGB2t0jd6l
+	v0lgxSK88+ElPMU3Qyt3WVi4AaH3b6yFLy4q6IGVqzEHSQb/bPQdf9Jcp8bpC9KZvtjmDywDz5+hJ
+	6aodjDUsNxShmvKqaAji/TczO2az9GtI4RgXzpoirCzgpiWLqSHODC4lnlIh1eI/cQWAAJd2YcGeq
+	OClwUeVO1SsB9oeVe6bygVjlH4pyOqQLoFz8/4lzDhFTAtVLYB5Nalg7QwfQXEtdDK2pw7UokV1oJ
+	qQGYBzrTpShltMag5Z/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyYZ0-007QgQ-Hy; Tue, 07 Jun 2022 12:44:02 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1nycGx-008S77-Rk; Tue, 07 Jun 2022 16:41:39 +0000
+Received: from relay4-d.mail.gandi.net ([217.70.183.196])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nyYXn-007Pv2-ME; Tue, 07 Jun 2022 12:42:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1654605767; x=1686141767;
-  h=message-id:date:mime-version:cc:subject:to:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=7CnaOaKftZFuU6zS5ejOPSw/a0TRQ7MfLEcH+ST55pI=;
-  b=ayyQhT0tkimPnCvy5Xr697gLqjJM/22scaPtoIJ2dICP4s5tstrhtAox
-   H/WdeT4t7BDOHBn2AcIqDtpGpPnNBBzCVVhew8mPwO64Az1obJ1aRIlVi
-   QZiEtS5edS74vgM08bvEyRaf4EuGmcbWVTF6DzoKhUlfjLBGwtepwawNM
-   21KohzEOmODVJXG3t6bsCCT3PWmiwNE9TXvcplZGn67TvOlHTwmoDLEu2
-   N+yyceb5FAmf9cHijnF3Y4R8U/yaKkjuAiDeapuxDTlWqH/WMbjL/4uLt
-   cD4jmHVaOFuGzq3ZX1nUjoMpd2/3vViI+wdML/Ez/nz4wXTt6VBuxRHJT
-   g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10370"; a="302081687"
-X-IronPort-AV: E=Sophos;i="5.91,283,1647327600"; 
-   d="scan'208";a="302081687"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Jun 2022 05:42:44 -0700
-X-IronPort-AV: E=Sophos;i="5.91,283,1647327600"; 
-   d="scan'208";a="584184405"
-Received: from zwang64-mobl1.ccr.corp.intel.com (HELO [10.249.174.202]) ([10.249.174.202])
-  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Jun 2022 05:42:34 -0700
-Message-ID: <3d0b2863-bb4f-31e1-d54e-09ddf4762d43@linux.intel.com>
-Date: Tue, 7 Jun 2022 20:42:32 +0800
+	id 1nycGv-008S3y-2Q
+	for linux-rockchip@lists.infradead.org; Tue, 07 Jun 2022 16:41:39 +0000
+Received: (Authenticated sender: jacopo@jmondi.org)
+	by mail.gandi.net (Postfix) with ESMTPSA id 6C931E0004;
+	Tue,  7 Jun 2022 16:41:27 +0000 (UTC)
+Date: Tue, 7 Jun 2022 18:41:25 +0200
+From: Jacopo Mondi <jacopo@jmondi.org>
+To: Daniel Scally <djrscally@gmail.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	dafna@fastmail.com, heiko@sntech.de, foss+kernel@0leil.net
+Subject: Re: [PATCH] media: rkisp1: Don't create data links for non-sensor
+ subdevs
+Message-ID: <20220607164125.oabtqz6kh5bo6k6v@uno.localdomain>
+References: <20220606225149.2941160-1-djrscally@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Cc: baolu.lu@linux.intel.com, Nicolin Chen <nicolinc@nvidia.com>,
- joro@8bytes.org, will@kernel.org, marcan@marcan.st, sven@svenpeter.dev,
- robin.murphy@arm.com, robdclark@gmail.com, m.szyprowski@samsung.com,
- krzysztof.kozlowski@linaro.org, agross@kernel.org,
- bjorn.andersson@linaro.org, matthias.bgg@gmail.com, heiko@sntech.de,
- orsonzhai@gmail.com, baolin.wang7@gmail.com, zhang.lyra@gmail.com,
- wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org,
- jean-philippe@linaro.org, alex.williamson@redhat.com,
- suravee.suthikulpanit@amd.com, alyssa@rosenzweig.io,
- alim.akhtar@samsung.com, dwmw2@infradead.org, yong.wu@mediatek.com,
- mjrosato@linux.ibm.com, gerald.schaefer@linux.ibm.com,
- thierry.reding@gmail.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
- cohuck@redhat.com, iommu@lists.linux-foundation.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-s390@vger.kernel.org, linux-sunxi@lists.linux.dev,
- linux-tegra@vger.kernel.org, virtualization@lists.linux-foundation.org,
- kvm@vger.kernel.org
-Subject: Re: [PATCH 0/5] Simplify vfio_iommu_type1 attach/detach routine
-Content-Language: en-US
-To: Jason Gunthorpe <jgg@nvidia.com>
-References: <20220606061927.26049-1-nicolinc@nvidia.com>
- <d357966b-7abd-f8f3-3ca7-3c99f5e075b9@linux.intel.com>
- <20220607115820.GH1343366@nvidia.com>
-From: Baolu Lu <baolu.lu@linux.intel.com>
-In-Reply-To: <20220607115820.GH1343366@nvidia.com>
+Content-Disposition: inline
+In-Reply-To: <20220606225149.2941160-1-djrscally@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220607_054247_815045_3096B84B 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20220607_094137_281314_D5311B0B 
+X-CRM114-Status: GOOD (  18.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,29 +54,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022/6/7 19:58, Jason Gunthorpe wrote:
-> On Tue, Jun 07, 2022 at 03:44:43PM +0800, Baolu Lu wrote:
->> On 2022/6/6 14:19, Nicolin Chen wrote:
->>> Worths mentioning the exact match for enforce_cache_coherency is removed
->>> with this series, since there's very less value in doing that since KVM
->>> won't be able to take advantage of it -- this just wastes domain memory.
->>> Instead, we rely on Intel IOMMU driver taking care of that internally.
->>
->> After reading this series, I don't see that Intel IOMMU driver needs any
->> further change to support the new scheme. Did I miss anything?
-> 
-> You already did it :)
+Hi Dan
 
-Just as I thought. Thank you!
+On Mon, Jun 06, 2022 at 11:51:49PM +0100, Daniel Scally wrote:
+> With the introduction of ancillary links, not all subdevs linked to
+> the ISP's v4l2_dev necessarily represent sensors / bridges. Check the
+> function for the subdevs and skip any that represent lens or flash
+> controllers before creating data links.
+>
+> Signed-off-by: Daniel Scally <djrscally@gmail.com>
+> ---
+>
+> This should fix the issues that have been noticed, but perhaps a new flag like
+> MEDIA_ENT_FL_HAS_SOURCE or something would be a better way to denote subdevs
+> that need data links?
+>
 
-Best regards,
-baolu
+I agree this a bit fragile...
 
+I noticed ancillary links are only created for subdev notifiers,
+which have a populated 'sd' and consequentially an entity. Could an
+helper that walks the links of the notifier's subdev links and checks
+if the subdev at hand is already linked, help ? Maybe with an optional
+set of link flags to match on ?
+
+
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> index 3f5cfa7eb937..e90f0216cb06 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> @@ -134,6 +134,10 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
+>  		    sd == &rkisp1->resizer_devs[RKISP1_SELFPATH].sd)
+>  			continue;
+>
+> +		if (sd->entity.function == MEDIA_ENT_F_LENS ||
+> +		    sd->entity.function == MEDIA_ENT_F_FLASH)
+> +			continue;
+> +
+>  		ret = media_entity_get_fwnode_pad(&sd->entity, sd->fwnode,
+>  						  MEDIA_PAD_FL_SOURCE);
+>  		if (ret < 0) {
+> --
+> 2.25.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
