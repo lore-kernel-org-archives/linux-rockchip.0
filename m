@@ -4,81 +4,190 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D7F3C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jun 2022 20:43:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1B30C43334
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Jun 2022 23:48:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N4sogmLB2K6clOfUuUK5k3Tozmojv07KUFMwaf1ilnE=; b=r4G0C/KqWqMoEx
-	7KSHWP7eMmi8xZDfjwNN0fYHpOjvOEbbkSnFllCwKbDuVRr4XHV02r4qflc1q0l03JwRVxsOXtE5M
-	sino/RDpzuW/eQswx9S9jTP+dm2B4ABgHDZEO92Xt0cCR0dx+oUPnHE/21ediD3GH+NW9PwRFdQag
-	ajeGBMQNbh3ljSjDrzBCjrspjZsWJf3kd/dGWIvtkr2O0aherspV0HTyo3xgudV4LelvNfWZB2mca
-	jUWH7zhzIA3RB38/BUrKW9s4vV4YSqEPLVmaJ8aDdcP0dMOGmx1yv3rbS4puPtsoIDAdUSJH1sPsW
-	qfoI2UIUXlj8MAfBENcg==;
+	List-Owner; bh=8RTZUqbrE/93fMfo0TXqP+IwVvFxReT+NMFp5xzv24M=; b=fEGZIACbp9U/HH
+	fKRO4MSCNbGEVrIGWE6w7AHz8tloo7W0lOvLwxIKfOGZChrh+DoAmNGCHR38DDYIgze9cVQT8kM82
+	SnZEh5HgZLno5HjA42x6x79O0LeVjOoGwaekJxpKf2zQ2y8ubiBkyi04Zii3ry2K9oqmZHxOjAOM2
+	wOWEKGlfSTYSlCK/cABriIaLSGdwjB7f66UaXZ7XOPOUde6GnISeu3klNPEXyRj9nJLLzQLZv6ydQ
+	PgoYGFy/KYrx/c8YG8LnQYg09caSo3C2Gq30/ewvjBe00pZICDsvG0AZYc6rfk6a1vzZV0zXKWZWR
+	dc/hvj+a7UM6yo0N2w4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nz2WN-00Euly-F6; Wed, 08 Jun 2022 20:43:19 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1nz5Pe-00FHUH-W3; Wed, 08 Jun 2022 23:48:35 +0000
+Received: from mga05.intel.com ([192.55.52.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nz2WL-00EulO-20
-	for linux-rockchip@lists.infradead.org; Wed, 08 Jun 2022 20:43:18 +0000
-Received: by mail-wm1-x336.google.com with SMTP id h62-20020a1c2141000000b0039aa4d054e2so13995352wmh.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 08 Jun 2022 13:43:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=FjhE5PPiSPANLbERBUoaLIjjd9QBlbuIaGPi78yCQPY=;
-        b=X7eL2PC8+p8RlO9EuZXV7hUADUmUGDLPB21/oiOrCQ1TJgUzf0S6Jh4eS5UJmteeHC
-         9wE88WK5AAOjs10hdvEURZX3KTFe9yR4phHAqfYssU05BHAoiRAKC/Xpx6OF71DqlqQw
-         vfLepy8+F7dxXW3ENVNR5RHySeM9VautEk6JnEPH+zxcPtEPK1JX0jmvVvMqxuSzRLy2
-         UQ6EudG1mp2COlORH5JdlA9tQxlFk5kpVyw6VQRtMA1Xl+H2MR7bmfyDd/bzV+bxrt3r
-         Y3II48yLr/kCUsC0iQj0/DbjwJXXcd0jjvLFpGBtgj95YOSMDHWr8dmWMDr50tlHOnXK
-         q4QQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=FjhE5PPiSPANLbERBUoaLIjjd9QBlbuIaGPi78yCQPY=;
-        b=WfzDEaCzLhpo7qUTyaLIO0cs6V4zCvtApGERy5XPc2gJ8m+LlhKKdBaPQ4k0mbhK+i
-         L2KKetust7sv/8YtSDTxmgkVhKP74RllipXqsafB7m0DbbqV7lM3sAWOHNI0u34hRADW
-         7Ssep2Pr4ic5k8nEZMT74D3tttsvdxap+QetF4m1T0FYPoCKQhQDUVez21RBn4xmJHrG
-         UTjmZ5YTlHUWl5EZsV//U1JJwqhnmToNEHqVAaccoQ/BwdkarvzZvuQvnkmnAF8GOFxf
-         WI+b0IdODG21LdQ65c5+9C81QgEwQvjefUuyh//llFmUTnTMJqD1AmnL51RJIXkTebrJ
-         la0g==
-X-Gm-Message-State: AOAM531Ai4eYeVpqFWBlDMnflMvjX1eQPXWuaAOG1zA5gX/BmVOwYnh+
-	m5c9geiuUAKf5bdSa5lO3QY=
-X-Google-Smtp-Source: ABdhPJy1raBmoIyJjdtXT7dQKKRodaNcG8RPUZurnfws3uUCnWCKRMZH3/kVeq8lMAqSXvlIC1A/nQ==
-X-Received: by 2002:a05:600c:1910:b0:394:8517:496e with SMTP id j16-20020a05600c191000b003948517496emr1070904wmq.24.1654720994460;
-        Wed, 08 Jun 2022 13:43:14 -0700 (PDT)
-Received: from [192.168.0.14] (cpc141996-chfd3-2-0-cust928.12-3.cable.virginm.net. [86.13.91.161])
-        by smtp.gmail.com with ESMTPSA id h24-20020a05600c145800b0039c54bb28f2sm8887353wmi.36.2022.06.08.13.43.13
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 08 Jun 2022 13:43:13 -0700 (PDT)
-Message-ID: <a0293197-845b-0b95-5abe-6003c4692ab4@gmail.com>
-Date: Wed, 8 Jun 2022 21:43:12 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH] media: rkisp1: Don't create data links for non-sensor
- subdevs
+	id 1nz5Pc-00FHTZ-Ve; Wed, 08 Jun 2022 23:48:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1654732112; x=1686268112;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=Q2tMDw5/kuFY0X+wc9fNYRE9hUgxtUd6HZdsCctJjhk=;
+  b=d5fBTGiWnYtamjgZ0cqd0jy5XEzGlEL9ZxokIv18m0W0Jvcf1Q6/szRG
+   6vtPwXlszcAXlk/UMsoz/zWeAIeRRypuWJTs1H0d6WIcPQhSQqcjm7WMu
+   4EraYZdJ59ew4sHAzFkKcu/gQg1+VlN6/3KaTevZDY7xC0eqYRoSX527D
+   ThShescHx4iwjJvrWMLdfjau6R9/hpifuXpDnJkhtsVP4CNMThZLVv2cv
+   A1M0Rp5As+1FaGx/jmYRpS0Jew+9plo2poo8r08VVw0+eI3aSnMRmwe/N
+   SOYTQD9GzQURoJlShKXL1gSL21ltNy0yumpJ2MQ1A9lPrCYmhnAaR9g7n
+   Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10372"; a="363414352"
+X-IronPort-AV: E=Sophos;i="5.91,287,1647327600"; 
+   d="scan'208";a="363414352"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Jun 2022 16:48:31 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.91,287,1647327600"; 
+   d="scan'208";a="637130451"
+Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
+  by fmsmga008.fm.intel.com with ESMTP; 08 Jun 2022 16:48:30 -0700
+Received: from orsmsx606.amr.corp.intel.com (10.22.229.19) by
+ ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27; Wed, 8 Jun 2022 16:48:30 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.27 via Frontend Transport; Wed, 8 Jun 2022 16:48:30 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.101)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.27; Wed, 8 Jun 2022 16:48:30 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CIdp5lG06MBwZ1Jk8hDP9DlRv8QIXMm2RQnJo+VyluIDYT6HdesTx/fEOVnnW2QYx/i0QKq/uY9SswbKPJAcaRbHW+Pfl5lwv0CB5+7dL673erJwWFMMT2t+0Jc0gi/sgd4ypeFryJqPwdf1a5Bv/Cgezuikq3J+KCMHZCsx4tt17gWjgVKsIarUea8fWLx8k4z1xJRSYTvJxgoxunUk+CQbazyuJnNLTkSZUVVh9BTpuWn5u/apG+OtoSMLsVchdlKMTCk3CilTqBDmkybr5RjNvrCyrNakOaHXJ/X5yId3X/bdS3xp33KgjPxlS/ipykf+VOrcnyt7bkvYVVXFKw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Q2tMDw5/kuFY0X+wc9fNYRE9hUgxtUd6HZdsCctJjhk=;
+ b=f1hlCMgvzZErpoU4+KBi6dYrDbatapz7d+zQGksvv22AytHZBpHt09PPp3iPe3wNcxXsR5YysJ5C4gTiw7+bBVlbDWJ92phuwqDSGOZ/XmpC0598qUt8Q4bnfyEz8lnleBcTT6AHbpPVKejjXQrQVJmxTmwAUdW1foSIxWbA5zafq5dVYy3+qD5ddR3WhJd+gfW/esHPDSUbatmK/7dKo/ccruc33+8CQHxzVBhSKZe8XPBDWVdVcgMvQV3ZU3GhT17gHZlVAdaEeWWrj38dGDUbHiuvM0he+gnAzxigDc3ItkUYEXSF7UZ4KmfB5FpUBZmcN620bYA3cKppSo1ZwQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM4PR11MB5278.namprd11.prod.outlook.com (2603:10b6:5:389::19)
+ by CO1PR11MB5076.namprd11.prod.outlook.com (2603:10b6:303:90::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.12; Wed, 8 Jun
+ 2022 23:48:27 +0000
+Received: from DM4PR11MB5278.namprd11.prod.outlook.com
+ ([fe80::c5d1:fe18:c2f1:2885]) by DM4PR11MB5278.namprd11.prod.outlook.com
+ ([fe80::c5d1:fe18:c2f1:2885%6]) with mapi id 15.20.5314.019; Wed, 8 Jun 2022
+ 23:48:27 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Jason Gunthorpe <jgg@nvidia.com>
+CC: Nicolin Chen <nicolinc@nvidia.com>, "joro@8bytes.org" <joro@8bytes.org>,
+	"will@kernel.org" <will@kernel.org>, "marcan@marcan.st" <marcan@marcan.st>,
+	"sven@svenpeter.dev" <sven@svenpeter.dev>, "robin.murphy@arm.com"
+	<robin.murphy@arm.com>, "robdclark@gmail.com" <robdclark@gmail.com>,
+	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
+	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>, "agross@kernel.org"
+	<agross@kernel.org>, "bjorn.andersson@linaro.org"
+	<bjorn.andersson@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "heiko@sntech.de" <heiko@sntech.de>,
+	"orsonzhai@gmail.com" <orsonzhai@gmail.com>, "baolin.wang7@gmail.com"
+	<baolin.wang7@gmail.com>, "zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
+	"wens@csie.org" <wens@csie.org>, "jernej.skrabec@gmail.com"
+	<jernej.skrabec@gmail.com>, "samuel@sholland.org" <samuel@sholland.org>,
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+	"virtualization@lists.linux-foundation.org"
+	<virtualization@lists.linux-foundation.org>, "thierry.reding@gmail.com"
+	<thierry.reding@gmail.com>, "alim.akhtar@samsung.com"
+	<alim.akhtar@samsung.com>, "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
+	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+	"kvm@vger.kernel.org" <kvm@vger.kernel.org>, "jonathanh@nvidia.com"
+	<jonathanh@nvidia.com>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "gerald.schaefer@linux.ibm.com"
+	<gerald.schaefer@linux.ibm.com>, "linux-sunxi@lists.linux.dev"
+	<linux-sunxi@lists.linux.dev>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "cohuck@redhat.com"
+	<cohuck@redhat.com>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "iommu@lists.linux-foundation.org"
+	<iommu@lists.linux-foundation.org>, "dwmw2@infradead.org"
+	<dwmw2@infradead.org>
+Subject: RE: [PATCH 3/5] vfio/iommu_type1: Prefer to reuse domains vs match
+ enforced cache coherency
+Thread-Topic: [PATCH 3/5] vfio/iommu_type1: Prefer to reuse domains vs match
+ enforced cache coherency
+Thread-Index: AQHYeW2KrRlTv4MQ5UeMm5INXClL961FJamwgAA6IwCAAMkn0A==
+Date: Wed, 8 Jun 2022 23:48:27 +0000
+Message-ID: <DM4PR11MB52781590FB8FB197579DEE848CA49@DM4PR11MB5278.namprd11.prod.outlook.com>
+References: <20220606061927.26049-1-nicolinc@nvidia.com>
+ <20220606061927.26049-4-nicolinc@nvidia.com>
+ <BN9PR11MB5276DC98E75B1906A76F7ADC8CA49@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20220608111724.GL1343366@nvidia.com>
+In-Reply-To: <20220608111724.GL1343366@nvidia.com>
+Accept-Language: en-US
 Content-Language: en-US
-To: Jacopo Mondi <jacopo@jmondi.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- dafna@fastmail.com, heiko@sntech.de, foss+kernel@0leil.net
-References: <20220606225149.2941160-1-djrscally@gmail.com>
- <20220607164125.oabtqz6kh5bo6k6v@uno.localdomain>
- <c328e7e6-8d22-2480-38f0-f05528c548dc@gmail.com>
- <20220608153416.ciwiwg4tbfyetprh@uno.localdomain>
-From: Daniel Scally <djrscally@gmail.com>
-In-Reply-To: <20220608153416.ciwiwg4tbfyetprh@uno.localdomain>
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 22ff9e2a-f85e-436e-03c7-08da49a96266
+x-ms-traffictypediagnostic: CO1PR11MB5076:EE_
+x-microsoft-antispam-prvs: <CO1PR11MB507697CE93091D6E7F3B4A9C8CA49@CO1PR11MB5076.namprd11.prod.outlook.com>
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: zMi6L8nCfPjRbZpA7/0OpRfQjw78DQwKtrECuPw9cTZyJ6O3NkeoYN2sLZK3ZOhMP+v7ojObI//C6KjKYBafI5a0CbSTTvmEDt6TjC/tCt5NEsJDAWcTBTdBR+r8j35TZus8Z3PQ+7nMzrAcX906+E1XNjnYaatziq7ktsxb8WFiKop8S4N8KMjqhf7fmDPST8j0wqf55rW8ptBPNRkj6e7A/uyowhYzIaBYXtzpDpGr3SLILFJHuw0IW9KYgp/4yAK4SqIsP/i4qgSLFDB5g/QyW0VPaLQjYCzvKuZVmREBPatP1xQ5udMA/+o9STH09Ptcp1XTBTF+fmMiWyUalXc3XGwC8f0gjCp6U0O7ZD5nDuYgP8S+TLwT+w2IYBbTqakBe2h1qOn2PaBb3lCMX4FfocJWPKFvE3cFVZ26kCPnBpmcCjUAviVKKcQNz5fuNieEJv0DU9Yb8a9hsjunArUHOWTaM556+YxAiWJlbG9/h/WdmCnXhkXo5wSXpdwyu73MYh4Bg64turr8/KPnre3Rlw2EG2U0H5uEwNYfijLIpOvTmLZySl5w5m7wJHsGs61keyeFRxyDYBYgez72RBSHWp2LYdKeRFoqasvN/m2nd+ZSBe2pCV2SGdvadE/pNteWk9Clm4LbenFnXZ94FSImYcuJRE30zI53yCz3OTIQ5uQo5Ph8I6t8+CB5fT0sOpD8rjOTy27c+N+4lZfXdQ==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM4PR11MB5278.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(366004)(316002)(5660300002)(38100700002)(508600001)(55016003)(6916009)(7406005)(64756008)(33656002)(52536014)(76116006)(66946007)(66556008)(66476007)(66446008)(4326008)(54906003)(8936002)(71200400001)(8676002)(82960400001)(38070700005)(122000001)(86362001)(186003)(7416002)(83380400001)(7696005)(2906002)(6506007)(26005)(9686003);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?SNIBvjsNvOVuYLVgL51M8N9TM04WggNUa4Y5iORUglk+TSDU7n9X+rzUgPTJ?=
+ =?us-ascii?Q?P+KVFBmhfR27/XCZ5W81jYK5qU4ETfHobi1l/xySD2qZqF4uL040MriKzpNn?=
+ =?us-ascii?Q?fPZtrRPwF6buSaBFz1pKiIGZQXgbRVcfl65IAbrqGng/pP9qR7R+y5SxHJB/?=
+ =?us-ascii?Q?UjXFRflqpA62JTu9Dwkpsl/Mc+1EFfohtg9MWGPORbnmuKxHvvcvSus7VGiG?=
+ =?us-ascii?Q?7mO3sUWRLKeb4a7KK3ahEDnhMt/2PvtVuvgKMKddJYvpI/7NpEXtz4kk5rF3?=
+ =?us-ascii?Q?mgFbUCHgzRm+o8jFN+u0JlTqC7eMeOL43E9dUmIEvXyudxGU3IzFIzorITJ/?=
+ =?us-ascii?Q?SDjfY/SFGJNVT14r2zE+0VivRqZgth33vKCNg4FxJZgUReXcWPKGJrKO3lpM?=
+ =?us-ascii?Q?GTONcVFeQwpcHQO15LlDi6GV/boS2hk7RHsbb7h0HxP/QFA4Z2ZHqT16REzp?=
+ =?us-ascii?Q?vJAuAud5M1gXMwwL0DO6Ph9CPONpOa512pmq8dFne6z3SjaifVCDLcGoofjK?=
+ =?us-ascii?Q?I1M4H1bDbyovN4CTwWlcKXTJ0oK7dH8JLNk2shyaobxDmzfd2zYo2Cg//hoX?=
+ =?us-ascii?Q?TTcIw+hCwqadJgcOjdcfOrIAYxeLKjPTcE/dEQRAnOtKtl5OZhmZ+yEANClA?=
+ =?us-ascii?Q?FKrKUl8bzoCzOpHz+1xy/8juUkTiF1VDupi8bFXpDnB6hxUWZ6sWGJQq0W21?=
+ =?us-ascii?Q?q1eujJublee2inNdliDkXsFzzoXAUYpnIz7tc1aFDb9rD+nZrZmxuU+kyOfg?=
+ =?us-ascii?Q?V3Waofve1ZLdt3rACVVC5tf2bRorgjj/IyY1i8ScA20FVvA7ad1iBtdjoj6N?=
+ =?us-ascii?Q?bhM0VxicJRSf0PX5QDKdMAfjr9XPgIlgJJErMjjYvHIYOA+hNIwTWtWweiRK?=
+ =?us-ascii?Q?qkFxJ04tdePm7Xrt4ERe7zbexaHwNrVG/m+zyL4qAkueo6czdZDLOyiw8SzF?=
+ =?us-ascii?Q?SY+iyEICNh2VvGpK7FoCGpL0Wk2WfFkELUMjbg0z5ktthlYyqgSBxapUdapT?=
+ =?us-ascii?Q?SwaiEKGydcfUn0Xje2RrhspKUERQlqB/kzndaOXBuEKt3P0yj8f5wixH2Plq?=
+ =?us-ascii?Q?qzsZXQETIBdUxivZ94dATNrTPr0rm1FwL+zFm1CWBEMwfUrL2625PCuA2juO?=
+ =?us-ascii?Q?HTOuw7Z7QhgATGRk7/2/V2NCiJv32NxeuAr3EElK1CjJVT8cyvcPEbURX9Le?=
+ =?us-ascii?Q?xBQDsqaZxf/eNEZPktVui+0ciz/iuY8DwJWWDegWRY/oAu/ydxQlfKCzSHYS?=
+ =?us-ascii?Q?/rYHZSYkqZui06ciNoyg1Ij265BQ7fI0NnXlWPpNKX4FxzWscFH2hFnWFvTs?=
+ =?us-ascii?Q?lFDq1RF5VkfN1unRK2vsICEMqrl5fLYyV8DWo0C7Mzx9ZtxvSuMpjkWdebCt?=
+ =?us-ascii?Q?6SP48gJkGdy8uPzYoL+ub3MAqdvRJzWrgUsNhTYL7u2/HiY9Y3F9NvOivA9r?=
+ =?us-ascii?Q?1kSxpNpG4MgANXHKv2uIreX4RKnQ1WwBnTtqfxdv1NCAb8Hp6ikqPZ+3gRO8?=
+ =?us-ascii?Q?H7y4MAhT8kHEfTrP+KSaxkxAY5reM4Nrk4YTadzAD99GZSHrZcW1h7dej5Oo?=
+ =?us-ascii?Q?mwL6U9kKaxjqGv47E+BSYEXZylFwaYsQ+2HXrAb9v7sb7kHX/UTjXFZBJnrT?=
+ =?us-ascii?Q?SpXSVKAwL6km1knOFmJTWgVJiorC964fwyHW6GfiPKhaIUP4TZFiaD9L31BK?=
+ =?us-ascii?Q?MaPAgCnf2I6eTznmlKW9qHG8FGDKLfN8Jlt5bIGcMewDoA1oyje9Ni45uTYt?=
+ =?us-ascii?Q?xN8l+bYK3A=3D=3D?=
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB5278.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 22ff9e2a-f85e-436e-03c7-08da49a96266
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Jun 2022 23:48:27.5343
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: MFwcP/ZEW+ip9MeDEiNbeRV/+fo4ilZ7uGtf5Y33Nrd/OedK9nAAarAMgLStqaS3dN7WllGhwi0H7oGUwn3bzA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB5076
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220608_134317_167256_A45FDADC 
-X-CRM114-Status: GOOD (  32.94  )
+X-CRM114-CacheID: sfid-20220608_164833_081979_537B772F 
+X-CRM114-Status: GOOD (  21.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,118 +204,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jacopo
+> From: Jason Gunthorpe <jgg@nvidia.com>
+> Sent: Wednesday, June 8, 2022 7:17 PM
+> 
+> On Wed, Jun 08, 2022 at 08:28:03AM +0000, Tian, Kevin wrote:
+> > > From: Nicolin Chen
+> > > Sent: Monday, June 6, 2022 2:19 PM
+> > >
+> > > From: Jason Gunthorpe <jgg@nvidia.com>
+> > >
+> > > The KVM mechanism for controlling wbinvd is only triggered during
+> > > kvm_vfio_group_add(), meaning it is a one-shot test done once the
+> devices
+> > > are setup.
+> >
+> > It's not one-shot. kvm_vfio_update_coherency() is called in both
+> > group_add() and group_del(). Then the coherency property is
+> > checked dynamically in wbinvd emulation:
+> 
+> From the perspective of managing the domains that is still
+> one-shot. It doesn't get updated when individual devices are
+> added/removed to domains.
 
-On 08/06/2022 16:34, Jacopo Mondi wrote:
-> Hi Dan,
->
-> On Wed, Jun 08, 2022 at 03:25:36PM +0100, Daniel Scally wrote:
->> Hi Jacopo
->>
->> On 07/06/2022 17:41, Jacopo Mondi wrote:
->>> Hi Dan
->>>
->>> On Mon, Jun 06, 2022 at 11:51:49PM +0100, Daniel Scally wrote:
->>>> With the introduction of ancillary links, not all subdevs linked to
->>>> the ISP's v4l2_dev necessarily represent sensors / bridges. Check the
->>>> function for the subdevs and skip any that represent lens or flash
->>>> controllers before creating data links.
->>>>
->>>> Signed-off-by: Daniel Scally <djrscally@gmail.com>
->>>> ---
->>>>
->>>> This should fix the issues that have been noticed, but perhaps a new flag like
->>>> MEDIA_ENT_FL_HAS_SOURCE or something would be a better way to denote subdevs
->>>> that need data links?
->>>>
->>> I agree this a bit fragile...
->>>
->>> I noticed ancillary links are only created for subdev notifiers,
->>> which have a populated 'sd' and consequentially an entity. Could an
->>> helper that walks the links of the notifier's subdev links and checks
->>> if the subdev at hand is already linked, help ? Maybe with an optional
->>> set of link flags to match on ?
-> This is actually a mess, as the list of links to be walked is the list
-> of the sensor's notifier, not the one of the rkisp1. Bad advice,
-> sorry..
+It's unchanged per-domain but dynamic per-vm when multiple
+domains are added/removed (i.e. kvm->arch.noncoherent_dma_count).
+It's the latter being checked in the kvm.
 
+> 
+> > given that I'm fine with the change in this patch. Even more probably
+> > we really want an explicit one-shot model so KVM can lock down
+> > the property once it starts to consume it then further adding a new
+> > group which would change the coherency is explicitly rejected and
+> > removing an existing group leaves it intact.
+> 
+> Why? Once wbinvd is enabled it is compatible with all domain
+> configurations, so just leave it on and ignore everything at that
+> point.
+> 
 
-No problem!
+More than that. My point was to make it a static policy so even if
+wbinvd is disabled in the start we want to leave it off and not affected
+by adding a device which doesn't have coherency. 'wbinvd off' is not
+a compatible configuration hence imo need a way to reject adding
+incompatible device.
 
->>
->> Or maybe just check if the subdev's notifier is the same as the rkisp1's
->> notifier? Like:
->>
->>
->> if(sd->notifier!= &rkisp1->notifier)
-> Not all subdevs will have a notifier, won't they ? In facts only
-> sensor that registers a notifier for their connected lenses/flashes
-> will have one.
-
-
-sd->notifier is the one the subdev binds to, so the rkisp1 in this case.
-The notifier that's registered by the sensor would be
-sd->subdev_notifier...so I think this will work - any subdev that gets
-to this point should have a notifier, which will be the rkisp1 for the
-sensors and the sensor for the VCM.
-
->
-> Anyway, I think the issue here is that we walk the list of all subdevs
-> registered to the root notifier's v4l2_dev.
->
-> All async subdevices matched in the notifiers chain will end up being
-> registered to the root notifier's v4l2_dev, hence also lenses and
-> flashes will appear in this list.
->
->         list_for_each_entry(sd, &rkisp1->v4l2_dev.subdevs, list) {
->
->         }
->
-> Can't we do like the CIO2 does, by walking the list of async subdevs
-> registered to the root notifier only ? This list should not include
-> lenses and flashes if I'm not mistaken.
->
-> 	list_for_each_entry(asd, &rkisp1->notifier.asd_list, asd_list) {
->
->         }
->
-> You can cast the struct v4l2_async_subdev back to the wrapping struct
-> rkisp1_sensor_async and from there get the sd to create the links on.
-> Could this work in your opinion ? I'm sorry I can't test it right
-> away...
-
-
-Yeah I think this should work fine too (it's why the ipu3-cio2 driver
-doesn't experience the same problem) - I can see how easy it is to
-switch it over
-
->
->
->
->> continue
->> That's a bit less clunky than both other solutions I think
->>>
->>>>  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 4 ++++
->>>>  1 file changed, 4 insertions(+)
->>>>
->>>> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->>>> index 3f5cfa7eb937..e90f0216cb06 100644
->>>> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->>>> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->>>> @@ -134,6 +134,10 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
->>>>  		    sd == &rkisp1->resizer_devs[RKISP1_SELFPATH].sd)
->>>>  			continue;
->>>>
->>>> +		if (sd->entity.function == MEDIA_ENT_F_LENS ||
->>>> +		    sd->entity.function == MEDIA_ENT_F_FLASH)
->>>> +			continue;
->>>> +
->>>>  		ret = media_entity_get_fwnode_pad(&sd->entity, sd->fwnode,
->>>>  						  MEDIA_PAD_FL_SOURCE);
->>>>  		if (ret < 0) {
->>>> --
->>>> 2.25.1
->>>>
+Thanks
+Kevin
 
 _______________________________________________
 Linux-rockchip mailing list
