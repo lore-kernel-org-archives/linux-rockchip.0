@@ -4,55 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E03CDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jun 2022 13:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7306C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jun 2022 13:58:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CdBKyvpcNN1b5KLKMKbChIWbLrx1NHSVGgOk2ofj2w0=; b=clpnBPUoEiiCYn
-	U31Znoq9JmnuH6OZdGMd+dRwe9GjCdGEZSqxHrrTMJilHYMHRVJK5xJNUVDlMjALm2n2nxsHfcB1+
-	KbR4T8In8szReslNoxnF+KbYHeXraXL5h+NKiVbv8SvAj/dyh5TJ+E0ichz0VoXvdbG0tEd6nwI7H
-	02iWQutvW0Gg/8pPDBURmlLYSTxvfAZuhHfl/7LH+zYgXdvDicMKU3Jgt15V8s/BdV1TplymbNWnZ
-	+egjbtA9T6mkF6R8JoxEp+lmoPlQ1NRbZrI3Gjwh44OYUBaYV6HgjqG8O6kEP9w2SdHSgbY+x0asd
-	RKSCFHZrYne9C+G8/C/g==;
+	List-Owner; bh=zOaIeswNwSZxFsC7pMNK9GYv4ez0h2SgpgKM/jSbYjY=; b=KJD8Q4CNcB1EQ/
+	+KIaIvRESSVIhUQAoLX1B3Of//iNV7RHNtd5kXzjxFV59GdBIpxdq17D2xEaNDbeQMp3BXH+aG90W
+	FZ+Mk7KFDgcrRViBpdoQ7NVSBBwmGFFlx43Yl59fcz3SpsU9LTfXFgjOq8jshrJNTKt1IEkzX+eQd
+	BYZZjqDE+jPZE+gZkYIlbqQ4AHV/gWHesJsxmjfdnB2OHuCktGKxA0QxkJ+FcEaeBrFK6A3lKkVFy
+	Uf6MTdWUI00OwzK++sOthCt1+xmcIchIVBpzIM6FwzeTQkSuX1DttSzLEvjW/lvXWxEDj9812it+f
+	gJdEYMDlitcQJOMxMX8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzIGu-002Bb2-CV; Thu, 09 Jun 2022 13:32:24 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1nzIfz-002Mlb-CD; Thu, 09 Jun 2022 13:58:19 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzIGo-002BYb-Pm; Thu, 09 Jun 2022 13:32:20 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 41593B82DE0;
-	Thu,  9 Jun 2022 13:32:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1062C34114;
-	Thu,  9 Jun 2022 13:32:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1654781536;
-	bh=z1uhxQdjX7oKygIhJ5n3vdkXs/MdE4hzoVbc7kac5Pw=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=hMlmSDIOYJ+7b9WtKMfh6cgzJtzXooKB9Ak5wfc8T3UmN/WAUfnlQCqpv4GR0YjgG
-	 DWU8hxNDaAM1ZQt9W4THFQE6z0aY044Vscbzm22b4jgWPoF+LLoB4e3e4PGCUo8JaV
-	 hSxS8BIZYoLxBWGpe2pGg8ILRHwpznXh3kv7Kleqvg381zngU5Ik1Kyq+svQaNR7TJ
-	 Wq//i/RIqX99KrUBuYgO0bJ7T/gHcisYcj5pPKpQXMPx0I11l8o3/lQLUVPzaidmUb
-	 2RVz40d6hmCZ5zasbu3JfAz+I5RjDPkDu2c05iawkPzEg4Z20NkuVbFND0UQ7GKmsV
-	 DsOgIPzAWiAxQ==
-From: Mark Brown <broonie@kernel.org>
-To: ckeepax@opensource.cirrus.com
-Cc: linux-sunxi@lists.linux.dev, peter.ujfalusi@gmail.com, pierre-louis.bossart@linux.intel.com, linux-imx@nxp.com, krzk@kernel.org, jarkko.nikula@bitmer.com, linux-xtensa@linux-xtensa.org, cezary.rojewski@intel.com, shawnguo@kernel.org, linux-mediatek@lists.infradead.org, nicolas.ferre@microchip.com, patches@opensource.cirrus.com, linux-amlogic@lists.infradead.org, srinivas.kandagatla@linaro.org, daniel@zonque.org, linux-mips@vger.kernel.org, linux-tegra@vger.kernel.org, nsaenz@kernel.org, linux-stm32@st-md-mailman.stormreply.com, heiko@sntech.de, alsa-devel@alsa-project.org, kernel@pengutronix.de, jbrunet@baylibre.com, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, linux-rockchip@lists.infradead.org, linux-omap@vger.kernel.org, lgirdwood@gmail.com
-In-Reply-To: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
-References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
-Subject: Re: [PATCH 00/56] Specify clock provider directly to CPU DAIs
-Message-Id: <165478153064.1052094.1721875477574787769.b4-ty@kernel.org>
-Date: Thu, 09 Jun 2022 14:32:10 +0100
+	id 1nzIfn-002MeS-7m; Thu, 09 Jun 2022 13:58:08 +0000
+Received: by mail-pf1-x430.google.com with SMTP id x4so12589543pfj.10;
+        Thu, 09 Jun 2022 06:58:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=96RW/mbL/2DXM4l3I73TuzvCiuTWdOKUYU3PG/oUzAI=;
+        b=SlFMlYBtIJ/K5g5OCznvRlvul8d4SV8HRB+pG+lzVNyUqxOFclbbfZLuxq27CIKtyu
+         4N3BPrpxDld8pG00PIuA20mHxX0oz9kBlygD0ZmiXuBxS6erJ7D4pRMjsPDqogyuvNzV
+         bGSm2yOWc4m1fJZnW0KJcbqwV8wqK4A7bwKydp8hisrUK7uUX5p4Y1+6e3RxDcTwDQLs
+         kwt0/PgrFHTlaDUr0PMxb44X2P2I0USvSdyyM4CGSTEXg7BSxAiWkASIx1V7KtW9yVv5
+         6qKG9qEAD5AUWQih6Gez6cBRLwO2XjvHivcBP3g6/YbREDinrcn0csMsXHoRPc148rzu
+         zlWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=96RW/mbL/2DXM4l3I73TuzvCiuTWdOKUYU3PG/oUzAI=;
+        b=VSCZ6MKTt9uFz3gfgV7H0hxFI1GhpbCnfgh+ErteGN0NwTWh6LWsqNy3yvE2Vc3Ou7
+         ddV7Cnzv8pWRKGYOu0wEbIoi/JBE06XcoVMsLJux7GlBB3K4UjjID70yMB+UdqKnNu1V
+         m03NQSQY/Zal5pBBLf0bXeKijid9nnJe1P/eHHWSwqDLvI16bXR49VTPbt8fygzUr98H
+         4W4eL/NRiNOpgGwX+C0As2hN9caXQhS7S91efM7D9gqhHmdte5GxQzKiJsvGhIdtu6L0
+         qDWgitV4Q3JPMnt1Ax54aUqno1e9c7PIiN5hwHC36dzfFLN2NFjsd5rWyUAnnlAOPcjf
+         RvcA==
+X-Gm-Message-State: AOAM530jzomYiCqWQ1jPtUCF4SaFqrOV6iUAY6jrGTra/jsjDu6cBa68
+	fJ1nMChcCdb+JTNdfQjeC/vGQMtbwbWi0tG4mzE=
+X-Google-Smtp-Source: ABdhPJxdQOsF/jy/W9Sm3gtlVbx9Q0MLLzsW63TqmMEat5HrSAEw2Wm/rDyrqDhSBuYXXOi9qMB0pvCET46e5qc4pC4=
+X-Received: by 2002:a63:2:0:b0:3f6:5b37:e94c with SMTP id 2-20020a630002000000b003f65b37e94cmr34982956pga.356.1654783083815;
+ Thu, 09 Jun 2022 06:58:03 -0700 (PDT)
 MIME-Version: 1.0
+References: <20220609113721.379932-1-krzysztof.kozlowski@linaro.org> <20220609114026.380682-3-krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220609114026.380682-3-krzysztof.kozlowski@linaro.org>
+From: Maya Matuszczyk <maccraft123mc@gmail.com>
+Date: Thu, 9 Jun 2022 15:57:27 +0200
+Message-ID: <CAO_MupKxvaXRQvMyEUZMThBZ9033OeJec+BtBndjs5oZ3etTEQ@mail.gmail.com>
+Subject: Re: [PATCH v2 32/48] arm64: dts: rockchip: align gpio-key node names
+ with dtschema
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>, arm@kernel.org, soc@kernel.org, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	devicetree <devicetree@vger.kernel.org>, 
+	arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_063219_174754_BE5E3EBB 
-X-CRM114-Status: GOOD (  17.67  )
+X-CRM114-CacheID: sfid-20220609_065807_345723_71C75B5A 
+X-CRM114-Status: GOOD (  14.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,165 +82,139 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 19 May 2022 16:42:22 +0100, Charles Keepax wrote:
-> Currently the set_fmt callback always passes clock provider/consumer
-> with respect to the CODEC. This made sense when the framework was
-> directly broken down into platforms and CODECs. However, as things
-> are now broken down into components which can be connected as either
-> the CPU or CODEC side of a DAI link it simplifies things if each
-> side of the link is just told if it is provider or consumer of the
-> clocks. Making this change allows us to remove one of the last parts
-> of the ASoC core that needs to know if a driver is a CODEC driver,
-> where it flips the clock format specifier if a CODEC driver is used on
-> the CPU side of a DAI link, as well as just being conceptually more
-> consistent with componentisation.
-> 
-> [...]
-
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[01/56] ASoC: core: Add set_fmt_new callback that directly specifies provider
-        commit: 905f3a04e184854555fc248ca4e692fdbf2f2547
-[02/56] ASoC: amd: vangogh: Update to use set_fmt_new callback
-        commit: ab890e0f83a65624d20b0ca4a7cb6306b8511558
-[03/56] ASoC: atmel: Update to use set_fmt_new callback
-        commit: 0fd054a577180cd807992e32c7cd394e54c85903
-[04/56] ASoC: au1x: Update to use set_fmt_new callback
-        commit: fee11f70849b21a244e6e27d281f3858b671bfea
-[05/56] ASoC: bcm: Update to use set_fmt_new callback
-        commit: 04ea2404468b7885c560c3673f6f2fd368f305a2
-[06/56] ASoC: ep93xx: Update to use set_fmt_new callback
-        commit: 5d6124e58d56818249a6266f56d9c3739e72e1bd
-[07/56] ASoC: dwc: Update to use set_fmt_new callback
-        commit: ca0444f1f7b228ae3b8d1a5c0f0d1b4463171f98
-[08/56] ASoC: fsl: Update to use set_fmt_new callback
-        commit: 3b14c15a333b8225ea38479e13c0366539d3374a
-[09/56] ASoC: hisilicon: Update to use set_fmt_new callback
-        commit: 0f362524dd3face4865077a4f7e7e640a95702aa
-[10/56] ASoC: img: Update to use set_fmt_new callback
-        commit: ed2b384082a678a0c4c8c56deff9e5f46d5e3fca
-[11/56] ASoC: Intel: Update to use set_fmt_new callback
-        commit: add9ee8c64c617f561a309cdda50104e9e2c12f6
-[12/56] ASoC: js4740-i2s: Update to use set_fmt_new callback
-        commit: cbb3a19f090d5a41b822caf9ff2058e1c6bc7ea3
-[13/56] ASoC: mediatek: Update to use set_fmt_new callback
-        commit: 3af99430f8d948a41556156155b0295dec274d41
-[14/56] ASoC: meson: Update to use set_fmt_new callback
-        commit: f60442bf6eab47aa4ab127aab88afdcc29a09a73
-[15/56] ASoC: mxs-saif: Update to use set_fmt_new callback
-        commit: f3c0064f1f8e358799c70c7905a09d15c5ec5e5a
-[16/56] ASoC: pxa: Update to use set_fmt_new callback
-        commit: 84c5b47c8ce4d5059d5e7539d3b44922cc0390e9
-[17/56] ASoC: qcom: Update to use set_fmt_new callback
-        commit: 1148e16b335f341f36475b646c692b4a71a1855e
-[18/56] ASoC: rockchip: Update to use set_fmt_new callback
-        commit: 27646d265da1745b2d1d10fec18465631cb1135f
-[19/56] ASoC: samsung: Update to use set_fmt_new callback
-        commit: 0b491c7c1b2555ef08285fd49a8567f2f9f34ff8
-[20/56] ASoC: sh: Update to use set_fmt_new callback
-        commit: 2d4dd776e902546389f2d7808ece7fd815aa829c
-[21/56] ASoC: stm: Update to use set_fmt_new callback
-        commit: 0092dac91ec1c404787841bdd9ecbf3404d1a41c
-[22/56] ASoC: sunxi: Update to use set_fmt_new callback
-        commit: 7cc3965fde74c9c725ed01de4ac35bc7d562d16a
-[23/56] ASoC: tegra: Update to use set_fmt_new callback
-        commit: d92ad6633fa77f9496840b77c8effeaa13ac78dc
-[24/56] ASoC: test-component: Update to use set_fmt_new callback
-        commit: d444c8d246a62392c0d249b1030c3ca271d47649
-[25/56] ASoC: ti: Update to use set_fmt_new callback
-        commit: 563ff63dc9fbb8ef4b8f145a53c84a5489bbd789
-[26/56] ASoC: ux500: Update to use set_fmt_new callback
-        commit: ce3467c78478e33927aea9043bf20f46fa4d5688
-[27/56] ASoC: xtensa: Update to use set_fmt_new callback
-        commit: e945206a0a448ac81dde0609578508368946f7a6
-[28/56] ASoC: core: Always send the CPU DAI a direct clock specifier
-        commit: 6c076273a326cc5b5162451aacf7b7744bb03c66
-[29/56] ASoC: amd: vangogh: Rename set_fmt_new back to set_fmt
-        commit: 346f47e784cd48b456f267a66e0daf1ef10d21b3
-[30/56] ASoC: atmel: Rename set_fmt_new back to set_fmt
-        commit: a839a53b9dc70f94032a671ee019599884612d4a
-[31/56] ASoC: au1x: Rename set_fmt_new back to set_fmt
-        commit: 2c73f5fd20a845fcb48173578b7c83dbcbacdeda
-[32/56] ASoC: bcm: Rename set_fmt_new back to set_fmt
-        commit: 1a267dd98c246237be00587b6e71f969bf75f10d
-[33/56] ASoC: ep93xx: Rename set_fmt_new back to set_fmt
-        commit: 324a4db8de05290237793dc3d7da887846ae90c1
-[34/56] ASoC: dwc: Rename set_fmt_new back to set_fmt
-        commit: 765fb623a2cd925c550370f73efe2137c52a1b25
-[35/56] ASoC: fsl: Rename set_fmt_new back to set_fmt
-        commit: 00778276cf4c611882219ab7aba9664c48981f1a
-[36/56] ASoC: hisilicon: Rename set_fmt_new back to set_fmt
-        commit: b9a7972818b84a15d46505df7808fd86c3fba5bb
-[37/56] ASoC: img: Rename set_fmt_new back to set_fmt
-        commit: 1830a30ec4cf1642a429e80dbbeb86aa7825c71a
-[38/56] ASoC: Intel: Rename set_fmt_new back to set_fmt
-        commit: c14a6ce9848571cf67faff206b02e212bec82761
-[39/56] ASoC: jz4740-i2s: Rename set_fmt_new back to set_fmt
-        commit: 1724cc38e7685ad8b01413acd70a4a731fc105ae
-[40/56] ASoC: mediatek: Rename set_fmt_new back to set_fmt
-        commit: 00ca2d152ef0fa9f4beb2a590e176499440de8fe
-[41/56] ASoC: meson: Rename set_fmt_new back to set_fmt
-        commit: eee6b5b9f3af0e906085022713ef41e56d03eca8
-[42/56] ASoC: mxs-saif: Rename set_fmt_new back to set_fmt
-        commit: 1a805faeb4915496671cd24bd2a75cc97a85dfc8
-[43/56] ASoC: pxa: Rename set_fmt_new back to set_fmt
-        commit: 8e2cc2b241bc0bb905231f301e6dfc80dc79f8a8
-[44/56] ASoC: qcom: Rename set_fmt_new back to set_fmt
-        commit: f1bd2fae856384f9377ca3faed0583d929002640
-[45/56] ASoC: rockchip: Rename set_fmt_new back to set_fmt
-        commit: 059f16bc0e02164617312435c31dffdc419f113f
-[46/56] ASoC: samsung: Rename set_fmt_new back to set_fmt
-        commit: b99d00c724bcf395558cb3028e823bd8f554fee6
-[47/56] ASoC: sh: Rename set_fmt_new back to set_fmt
-        commit: adced68031f96642272fae4e8c36d45d13797306
-[48/56] ASoC: stm: Rename set_fmt_new back to set_fmt
-        commit: 02ba0d9680feee645a321d65012f38d0a368b559
-[49/56] ASoC: sunxi: Rename set_fmt_new back to set_fmt
-        commit: 15011b2388d020a6cdb323539fc69c31b04d9f21
-[50/56] ASoC: tegra: Rename set_fmt_new back to set_fmt
-        commit: 475f2af6a2ff33e828900601a162e324b9986f9a
-[51/56] ASoC: test-component: Rename set_fmt_new back to set_fmt
-        commit: 408c122ef9de99220f7919594ab8af98194a19e8
-[52/56] ASoC: ti: Rename set_fmt_new back to set_fmt
-        commit: 9ff1836023ae19013c01f230e6a091fad6835213
-[53/56] ASoC: ux500: Rename set_fmt_new back to set_fmt
-        commit: e24ba1a21e244e7174e75ca0c4020beaff0ad369
-[54/56] ASoC: xtensa: Rename set_fmt_new back to set_fmt
-        commit: 58e23e21d18532aaa404e1db87ec92762e1fecd5
-[55/56] ASoC: soc-dai: Remove set_fmt_new callback
-        commit: 19423951a4b5c4f0ca107d6a4bed23f3f63718ca
-[56/56] ASoC: simple-card-utils: Move snd_soc_component_is_codec to be local
-        commit: 28086d05ada6d03daa886aad0e469854b811311c
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Y3p3LiwgOSBjemUgMjAyMiBvIDEzOjU2IEtyenlzenRvZiBLb3psb3dza2kKPGtyenlzenRvZi5r
+b3psb3dza2lAbGluYXJvLm9yZz4gbmFwaXNhxYIoYSk6Cj4KPiBUaGUgbm9kZSBuYW1lcyBzaG91
+bGQgYmUgZ2VuZXJpYyBhbmQgRFQgc2NoZW1hIGV4cGVjdHMgY2VydGFpbiBwYXR0ZXJuCj4gKGUu
+Zy4gd2l0aCBrZXkvYnV0dG9uL3N3aXRjaCkuCj4KPiBTaWduZWQtb2ZmLWJ5OiBLcnp5c3p0b2Yg
+S296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tpQGxpbmFyby5vcmc+Cj4gLS0tCj4gIGFyY2gv
+YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzA4LWV2Yi5kdHMgICB8ICAyICstCj4gIC4uLi9i
+b290L2R0cy9yb2NrY2hpcC9yazMzMjYtb2Ryb2lkLWdvMi5kdHMgICB8IDMyICsrKysrKysrKy0t
+LS0tLS0tLS0KPiAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyOC1uYW5vcGktcjJzLmR0cyAg
+IHwgIDIgKy0KPiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzNjgtZXZiLmR0c2kg
+IHwgIDIgKy0KPiAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2OC1nZWVrYm94LmR0cyAgICAg
+IHwgIDIgKy0KPiAgLi4uL2R0cy9yb2NrY2hpcC9yazMzNjgtb3Jpb24tcjY4LW1ldGEuZHRzICAg
+IHwgIDIgKy0KPiAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM2OC1weDUtZXZiLmR0cyAgICAg
+IHwgIDIgKy0KPiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzNjgtcjg4LmR0cyAg
+IHwgIDIgKy0KPiAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1maXJlZmx5LmR0cyAgICAg
+IHwgIDIgKy0KPiAgLi4uL2R0cy9yb2NrY2hpcC9yazMzOTktZ3J1LWNocm9tZWJvb2suZHRzaSAg
+IHwgIDIgKy0KPiAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1ncnUta2V2aW4uZHRzICAg
+IHwgIDIgKy0KPiAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1ncnUtc2NhcmxldC5kdHNp
+IHwgIDIgKy0KPiAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1raGFkYXMtZWRnZS5kdHNp
+IHwgIDIgKy0KPiAgLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1uYW5vcGktcjRzLmR0cyAg
+IHwgIDQgKy0tCj4gIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktbmFub3BpNC5kdHNpICAg
+ICB8ICAyICstCj4gIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktb3JhbmdlcGkuZHRzICAg
+ICB8ICAyICstCj4gIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcGluZWJvb2stcHJvLmR0
+cyB8ICA0ICstLQo+ICAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvYy1wYy5kdHNpICAg
+ICAgfCAgMiArLQo+ICAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvY2twcm82NC5kdHNp
+ICAgfCAgMiArLQo+ICAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXNhcHBoaXJlLmR0c2kg
+ICAgfCAgMiArLQo+ICAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY2LXBpbmVub3RlLmR0c2kg
+ICAgfCAgMiArLQo+ICAyMSBmaWxlcyBjaGFuZ2VkLCAzOCBpbnNlcnRpb25zKCspLCAzOCBkZWxl
+dGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3Jr
+MzMwOC1ldmIuZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzMDgtZXZiLmR0
+cwo+IGluZGV4IDliNGY4NTVlYTVkNC4uNGI1NDEzYjEyYmZhIDEwMDY0NAo+IC0tLSBhL2FyY2gv
+YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzA4LWV2Yi5kdHMKPiArKysgYi9hcmNoL2FybTY0
+L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMwOC1ldmIuZHRzCj4gQEAgLTc1LDcgKzc1LDcgQEAgZ3Bp
+by1rZXlzIHsKPiAgICAgICAgICAgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiAg
+ICAgICAgICAgICAgICAgcGluY3RybC0wID0gPCZwd3Jfa2V5PjsKPgo+IC0gICAgICAgICAgICAg
+ICBwb3dlciB7Cj4gKyAgICAgICAgICAgICAgIHBvd2VyLWtleSB7Cj4gICAgICAgICAgICAgICAg
+ICAgICAgICAgZ3Bpb3MgPSA8JmdwaW8wIFJLX1BBNiBHUElPX0FDVElWRV9MT1c+Owo+ICAgICAg
+ICAgICAgICAgICAgICAgICAgIGxpbnV4LGNvZGUgPSA8S0VZX1BPV0VSPjsKPiAgICAgICAgICAg
+ICAgICAgICAgICAgICBsYWJlbCA9ICJHUElPIEtleSBQb3dlciI7Cj4gZGlmZiAtLWdpdCBhL2Fy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI2LW9kcm9pZC1nbzIuZHRzIGIvYXJjaC9h
+cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzMjYtb2Ryb2lkLWdvMi5kdHMKPiBpbmRleCBlYTA2
+OTViNTFlY2QuLjcyMzI4ZGQ5OTNlZSAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRz
+L3JvY2tjaGlwL3JrMzMyNi1vZHJvaWQtZ28yLmR0cwo+ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9k
+dHMvcm9ja2NoaXAvcmszMzI2LW9kcm9pZC1nbzIuZHRzCj4gQEAgLTcxLDgyICs3MSw4MiBAQCBn
+cGlvLWtleXMgewo+ICAgICAgICAgICAgICAgICAgKiB8LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tfAo+ICAgICAgICAgICAgICAgICAgKi8KPgo+IC0gICAg
+ICAgICAgICAgICBzdzEgewo+ICsgICAgICAgICAgICAgICBzd2l0Y2gtMSB7CldvdWxkbid0IGl0
+IG1ha2UgbW9yZSBzZW5zZSB0byByZW5hbWUgdGhpcyBhbmQgYWxsIG90aGVyCnJlbmFtZWQgbm9k
+ZXMgaW4gdGhpcyBkdHMgaW50byAiYnV0dG9uLWRwYWQtdXAiIG9yICJidXR0b24tMSIsCmFzIG9u
+IHRoZSBwaHlzaWNhbCBkZXZpY2UgdGhvc2UgYXJlIGJ1dHRvbnMgYW5kIHRoZSBuYW1pbmcKc2No
+ZW1lIG9mICJzdyIgKyBudW1iZXIgc2VlbXMgdG8gYmUgYSBjYXJyeW92ZXIgZnJvbQpkb3duc3Ry
+ZWFtIHNvdXJjZXMuCgo+ICAgICAgICAgICAgICAgICAgICAgICAgIGdwaW9zID0gPCZncGlvMSBS
+S19QQjQgR1BJT19BQ1RJVkVfTE9XPjsKPiAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbCA9
+ICJEUEFELVVQIjsKPiAgICAgICAgICAgICAgICAgICAgICAgICBsaW51eCxjb2RlID0gPEJUTl9E
+UEFEX1VQPjsKPiAgICAgICAgICAgICAgICAgfTsKPiAtICAgICAgICAgICAgICAgc3cyIHsKPiAr
+ICAgICAgICAgICAgICAgc3dpdGNoLTIgewo+ICAgICAgICAgICAgICAgICAgICAgICAgIGdwaW9z
+ID0gPCZncGlvMSBSS19QQjUgR1BJT19BQ1RJVkVfTE9XPjsKPiAgICAgICAgICAgICAgICAgICAg
+ICAgICBsYWJlbCA9ICJEUEFELURPV04iOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIGxpbnV4
+LGNvZGUgPSA8QlROX0RQQURfRE9XTj47Cj4gICAgICAgICAgICAgICAgIH07Cj4gLSAgICAgICAg
+ICAgICAgIHN3MyB7Cj4gKyAgICAgICAgICAgICAgIHN3aXRjaC0zIHsKPiAgICAgICAgICAgICAg
+ICAgICAgICAgICBncGlvcyA9IDwmZ3BpbzEgUktfUEI2IEdQSU9fQUNUSVZFX0xPVz47Cj4gICAg
+ICAgICAgICAgICAgICAgICAgICAgbGFiZWwgPSAiRFBBRC1MRUZUIjsKPiAgICAgICAgICAgICAg
+ICAgICAgICAgICBsaW51eCxjb2RlID0gPEJUTl9EUEFEX0xFRlQ+Owo+ICAgICAgICAgICAgICAg
+ICB9Owo+IC0gICAgICAgICAgICAgICBzdzQgewo+ICsgICAgICAgICAgICAgICBzd2l0Y2gtNCB7
+Cj4gICAgICAgICAgICAgICAgICAgICAgICAgZ3Bpb3MgPSA8JmdwaW8xIFJLX1BCNyBHUElPX0FD
+VElWRV9MT1c+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVsID0gIkRQQUQtUklHSFQi
+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgIGxpbnV4LGNvZGUgPSA8QlROX0RQQURfUklHSFQ+
+Owo+ICAgICAgICAgICAgICAgICB9Owo+IC0gICAgICAgICAgICAgICBzdzUgewo+ICsgICAgICAg
+ICAgICAgICBzd2l0Y2gtNSB7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgZ3Bpb3MgPSA8Jmdw
+aW8xIFJLX1BBMiBHUElPX0FDVElWRV9MT1c+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgIGxh
+YmVsID0gIkJUTi1BIjsKPiAgICAgICAgICAgICAgICAgICAgICAgICBsaW51eCxjb2RlID0gPEJU
+Tl9FQVNUPjsKPiAgICAgICAgICAgICAgICAgfTsKPiAtICAgICAgICAgICAgICAgc3c2IHsKPiAr
+ICAgICAgICAgICAgICAgc3dpdGNoLTYgewo+ICAgICAgICAgICAgICAgICAgICAgICAgIGdwaW9z
+ID0gPCZncGlvMSBSS19QQTUgR1BJT19BQ1RJVkVfTE9XPjsKPiAgICAgICAgICAgICAgICAgICAg
+ICAgICBsYWJlbCA9ICJCVE4tQiI7Cj4gICAgICAgICAgICAgICAgICAgICAgICAgbGludXgsY29k
+ZSA9IDxCVE5fU09VVEg+Owo+ICAgICAgICAgICAgICAgICB9Owo+IC0gICAgICAgICAgICAgICBz
+dzcgewo+ICsgICAgICAgICAgICAgICBzd2l0Y2gtNyB7Cj4gICAgICAgICAgICAgICAgICAgICAg
+ICAgZ3Bpb3MgPSA8JmdwaW8xIFJLX1BBNiBHUElPX0FDVElWRV9MT1c+Owo+ICAgICAgICAgICAg
+ICAgICAgICAgICAgIGxhYmVsID0gIkJUTi1ZIjsKPiAgICAgICAgICAgICAgICAgICAgICAgICBs
+aW51eCxjb2RlID0gPEJUTl9XRVNUPjsKPiAgICAgICAgICAgICAgICAgfTsKPiAtICAgICAgICAg
+ICAgICAgc3c4IHsKPiArICAgICAgICAgICAgICAgc3dpdGNoLTggewo+ICAgICAgICAgICAgICAg
+ICAgICAgICAgIGdwaW9zID0gPCZncGlvMSBSS19QQTcgR1BJT19BQ1RJVkVfTE9XPjsKPiAgICAg
+ICAgICAgICAgICAgICAgICAgICBsYWJlbCA9ICJCVE4tWCI7Cj4gICAgICAgICAgICAgICAgICAg
+ICAgICAgbGludXgsY29kZSA9IDxCVE5fTk9SVEg+Owo+ICAgICAgICAgICAgICAgICB9Owo+IC0g
+ICAgICAgICAgICAgICBzdzkgewo+ICsgICAgICAgICAgICAgICBzd2l0Y2gtOSB7Cj4gICAgICAg
+ICAgICAgICAgICAgICAgICAgZ3Bpb3MgPSA8JmdwaW8yIFJLX1BBMCBHUElPX0FDVElWRV9MT1c+
+Owo+ICAgICAgICAgICAgICAgICAgICAgICAgIGxhYmVsID0gIkYxIjsKPiAgICAgICAgICAgICAg
+ICAgICAgICAgICBsaW51eCxjb2RlID0gPEJUTl9UUklHR0VSX0hBUFBZMT47Cj4gICAgICAgICAg
+ICAgICAgIH07Cj4gLSAgICAgICAgICAgICAgIHN3MTAgewo+ICsgICAgICAgICAgICAgICBzd2l0
+Y2gtMTAgewo+ICAgICAgICAgICAgICAgICAgICAgICAgIGdwaW9zID0gPCZncGlvMiBSS19QQTEg
+R1BJT19BQ1RJVkVfTE9XPjsKPiAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbCA9ICJGMiI7
+Cj4gICAgICAgICAgICAgICAgICAgICAgICAgbGludXgsY29kZSA9IDxCVE5fVFJJR0dFUl9IQVBQ
+WTI+Owo+ICAgICAgICAgICAgICAgICB9Owo+IC0gICAgICAgICAgICAgICBzdzExIHsKPiArICAg
+ICAgICAgICAgICAgc3dpdGNoLTExIHsKPiAgICAgICAgICAgICAgICAgICAgICAgICBncGlvcyA9
+IDwmZ3BpbzIgUktfUEEyIEdQSU9fQUNUSVZFX0xPVz47Cj4gICAgICAgICAgICAgICAgICAgICAg
+ICAgbGFiZWwgPSAiRjMiOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIGxpbnV4LGNvZGUgPSA8
+QlROX1RSSUdHRVJfSEFQUFkzPjsKPiAgICAgICAgICAgICAgICAgfTsKPiAtICAgICAgICAgICAg
+ICAgc3cxMiB7Cj4gKyAgICAgICAgICAgICAgIHN3aXRjaC0xMiB7Cj4gICAgICAgICAgICAgICAg
+ICAgICAgICAgZ3Bpb3MgPSA8JmdwaW8yIFJLX1BBMyBHUElPX0FDVElWRV9MT1c+Owo+ICAgICAg
+ICAgICAgICAgICAgICAgICAgIGxhYmVsID0gIkY0IjsKPiAgICAgICAgICAgICAgICAgICAgICAg
+ICBsaW51eCxjb2RlID0gPEJUTl9UUklHR0VSX0hBUFBZND47Cj4gICAgICAgICAgICAgICAgIH07
+Cj4gLSAgICAgICAgICAgICAgIHN3MTMgewo+ICsgICAgICAgICAgICAgICBzd2l0Y2gtMTMgewo+
+ICAgICAgICAgICAgICAgICAgICAgICAgIGdwaW9zID0gPCZncGlvMiBSS19QQTQgR1BJT19BQ1RJ
+VkVfTE9XPjsKPiAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbCA9ICJGNSI7Cj4gICAgICAg
+ICAgICAgICAgICAgICAgICAgbGludXgsY29kZSA9IDxCVE5fVFJJR0dFUl9IQVBQWTU+Owo+ICAg
+ICAgICAgICAgICAgICB9Owo+IC0gICAgICAgICAgICAgICBzdzE0IHsKPiArICAgICAgICAgICAg
+ICAgc3dpdGNoLTE0IHsKPiAgICAgICAgICAgICAgICAgICAgICAgICBncGlvcyA9IDwmZ3BpbzIg
+UktfUEE1IEdQSU9fQUNUSVZFX0xPVz47Cj4gICAgICAgICAgICAgICAgICAgICAgICAgbGFiZWwg
+PSAiRjYiOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIGxpbnV4LGNvZGUgPSA8QlROX1RSSUdH
+RVJfSEFQUFk2PjsKPiAgICAgICAgICAgICAgICAgfTsKPiAtICAgICAgICAgICAgICAgc3cxNSB7
+Cj4gKyAgICAgICAgICAgICAgIHN3aXRjaC0xNSB7Cj4gICAgICAgICAgICAgICAgICAgICAgICAg
+Z3Bpb3MgPSA8JmdwaW8yIFJLX1BBNiBHUElPX0FDVElWRV9MT1c+Owo+ICAgICAgICAgICAgICAg
+ICAgICAgICAgIGxhYmVsID0gIlRPUC1MRUZUIjsKPiAgICAgICAgICAgICAgICAgICAgICAgICBs
+aW51eCxjb2RlID0gPEJUTl9UTD47Cj4gICAgICAgICAgICAgICAgIH07Cj4gLSAgICAgICAgICAg
+ICAgIHN3MTYgewo+ICsgICAgICAgICAgICAgICBzd2l0Y2gtMTYgewo+ICAgICAgICAgICAgICAg
+ICAgICAgICAgIGdwaW9zID0gPCZncGlvMiBSS19QQTcgR1BJT19BQ1RJVkVfTE9XPjsKPiAgICAg
+ICAgICAgICAgICAgICAgICAgICBsYWJlbCA9ICJUT1AtUklHSFQiOwo+ICAgICAgICAgICAgICAg
+ICAgICAgICAgIGxpbnV4LGNvZGUgPSA8QlROX1RSPjsKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02
+NC9ib290L2R0cy9yb2NrY2hpcC9yazMzMjgtbmFub3BpLXIycy5kdHMgYi9hcmNoL2FybTY0L2Jv
+b3QvZHRzL3JvY2tjaGlwL3JrMzMyOC1uYW5vcGktcjJzLmR0cwo+IGluZGV4IDM4NTdkNDg3YWI4
+NC4uMTQ0NWI4NzlhYzdhIDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
+aXAvcmszMzI4LW5hbm9waS1yMnMuZHRzCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
+Y2hpcC9yazMzMjgtbmFub3BpLXIycy5kdHMKPiBAQCAtMzQsNyArMzQsNyBAQCBrZXlzIHsKPiAg
+ICAgICAgICAgICAgICAgcGluY3RybC0wID0gPCZyZXNldF9idXR0b25fcGluPjsKPiAgICAgICAg
+ICAgICAgICAgcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPgo+IC0gICAgICAgICAgICAgICBy
+ZXNldCB7Cj4gKyAgICAgICAgICAgICAgIGtleS1yZXNldCB7Cj4gICAgICAgICAgICAgICAgICAg
+ICAgICAgbGFiZWwgPSAicmVzZXQiOwo+ICAgICAgICAgICAgICAgICAgICAgICAgIGdwaW9zID0g
+PCZncGlvMCBSS19QQTAgR1BJT19BQ1RJVkVfTE9XPjsKPiAgICAgICAgICAgICAgICAgICAgICAg
+ICBsaW51eCxjb2RlID0gPEtFWV9SRVNUQVJUPjsKCltzbmlwXQoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
