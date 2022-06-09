@@ -4,83 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE85FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jun 2022 11:55:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E03CDC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jun 2022 13:32:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FYJGKTOfr8MKcbRGR8NQRgTKwA0kgwVuRPX9Yy55Qvk=; b=duj9BJSjUKgQaz
-	ehon2jMl4iNwxZQ3uWmo338bxxfG6ArEnYH/eTQUFTHyKHqTlLyEsVafNlHyxAVCMXmUnU9t2nRBM
-	D/QLCWe9McR3fyVBtoKzb1uFIaqL05sfv6O9GF5XgCvJ9lNBGqEqwENs2MdQNpmsRE6nLZaoUMmtz
-	6+5x0Jv3LpkAse3Ew8bpp1F50lsWIXeM8INFhkGOfVRO7PA6D3Z8UDz82Wg8HE3Cv9edZs3Inlzz/
-	v0rzpzINQkPGbFivwwSpfLMqmrE3oSpaAUamyA8JIa7vkzNL+h9mRcZUIwBXtHwLtqpr5BA0V5WkD
-	blhpUw303Gmxcwgitc7g==;
+	List-Owner; bh=CdBKyvpcNN1b5KLKMKbChIWbLrx1NHSVGgOk2ofj2w0=; b=clpnBPUoEiiCYn
+	U31Znoq9JmnuH6OZdGMd+dRwe9GjCdGEZSqxHrrTMJilHYMHRVJK5xJNUVDlMjALm2n2nxsHfcB1+
+	KbR4T8In8szReslNoxnF+KbYHeXraXL5h+NKiVbv8SvAj/dyh5TJ+E0ichz0VoXvdbG0tEd6nwI7H
+	02iWQutvW0Gg/8pPDBURmlLYSTxvfAZuhHfl/7LH+zYgXdvDicMKU3Jgt15V8s/BdV1TplymbNWnZ
+	+egjbtA9T6mkF6R8JoxEp+lmoPlQ1NRbZrI3Gjwh44OYUBaYV6HgjqG8O6kEP9w2SdHSgbY+x0asd
+	RKSCFHZrYne9C+G8/C/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzGlD-001Vxv-Tr; Thu, 09 Jun 2022 11:55:35 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1nzIGu-002Bb2-CV; Thu, 09 Jun 2022 13:32:24 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzGWk-001PM9-T9
-	for linux-rockchip@lists.infradead.org; Thu, 09 Jun 2022 11:40:44 +0000
-Received: by mail-ed1-x536.google.com with SMTP id v25so30825217eda.6
-        for <linux-rockchip@lists.infradead.org>; Thu, 09 Jun 2022 04:40:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=6E1822zqmeR434mGS2TCsjkIyd0y0F8I8Lnrj27v+VA=;
-        b=k+Qe1VBgs50sahiMlASBeeTlbm+9vLVBaP8VMGkAztmofTZTBOFFIn5p18zdieGOsB
-         de14TChGH7n2Akdyy2F1wJ2TEuIIB5j4n77napx9L+pBsIHMPwLunTaLd89y/X2URCI5
-         pWNPJrUECbgYBapkDbmYdGrwnOt0r6+HpxNDB6ayguqvo5kKTRXFlr/VprouHTj2nbVk
-         sSfPdYfkaXLh9m6Xwglj+4EO9sYiU7HKyBkYwB6HfE5a7DdB6l/fusUL4ByJXuRDup21
-         m/6IqWQz1gok52/Lw9m3tqt8hmPeMrr+5hwGUWSoo6s0dIhHLtTTTqz4VWMzmLFrtIaL
-         51yg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=6E1822zqmeR434mGS2TCsjkIyd0y0F8I8Lnrj27v+VA=;
-        b=n5PqEx4LznAKhZtgWoRktIIkiBhcSYhxv4KVPthXahiIy7tsvsqrUonN5r2vY0+U4W
-         GA+nqsvOdve8wBQxcqyWNtSusHmpoI2GvnApuUuYzXh350Rw+64Y11gfHmpSW77psfTX
-         YIgXTJAmwhNBAeFVE2njenyK8XAXb+qnVPrjcqrPWldxqyPBNVm3Odl8B4zFiK11I6T5
-         /Wc+YkYZi8ySjwh7ZVlBEiJs9DfXH5CZ2cVvNxxnu32zMcL+V+Z1ga3rG50BU7HG3Bav
-         HpXn1REMpaxeo7f2nxjWYUIKuQCSOA6/BcWvXENaG851xNC6twq9m2o8V0oZeS7fO+id
-         5GGg==
-X-Gm-Message-State: AOAM533WlGX2qBHg5M9UbE+rgh+aS/VyCoMfeaJuM3gYO+baa5HrLnGt
-	lOC0BQXa9Pq/jLJ/fL2Ph69vOQ==
-X-Google-Smtp-Source: ABdhPJyRucBWM0zsEoD394rr4/Uhn518CmMvxTBau47Tj99+LIp4dwj/x2iw/YvvczHedU0gbmtwzg==
-X-Received: by 2002:a05:6402:4410:b0:427:ab6f:a39a with SMTP id y16-20020a056402441000b00427ab6fa39amr44759736eda.120.1654774835077;
-        Thu, 09 Jun 2022 04:40:35 -0700 (PDT)
-Received: from localhost.localdomain (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
-        by smtp.gmail.com with ESMTPSA id 10-20020a170906058a00b007101f6f0720sm7760844ejn.120.2022.06.09.04.40.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Jun 2022 04:40:34 -0700 (PDT)
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-To: Arnd Bergmann <arnd@arndb.de>,
-	Olof Johansson <olof@lixom.net>,
-	arm@kernel.org,
-	soc@kernel.org,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v2 32/48] arm64: dts: rockchip: align gpio-key node names with dtschema
-Date: Thu,  9 Jun 2022 13:40:19 +0200
-Message-Id: <20220609114026.380682-3-krzysztof.kozlowski@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220609113721.379932-1-krzysztof.kozlowski@linaro.org>
-References: <20220609113721.379932-1-krzysztof.kozlowski@linaro.org>
+	id 1nzIGo-002BYb-Pm; Thu, 09 Jun 2022 13:32:20 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 41593B82DE0;
+	Thu,  9 Jun 2022 13:32:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E1062C34114;
+	Thu,  9 Jun 2022 13:32:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1654781536;
+	bh=z1uhxQdjX7oKygIhJ5n3vdkXs/MdE4hzoVbc7kac5Pw=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=hMlmSDIOYJ+7b9WtKMfh6cgzJtzXooKB9Ak5wfc8T3UmN/WAUfnlQCqpv4GR0YjgG
+	 DWU8hxNDaAM1ZQt9W4THFQE6z0aY044Vscbzm22b4jgWPoF+LLoB4e3e4PGCUo8JaV
+	 hSxS8BIZYoLxBWGpe2pGg8ILRHwpznXh3kv7Kleqvg381zngU5Ik1Kyq+svQaNR7TJ
+	 Wq//i/RIqX99KrUBuYgO0bJ7T/gHcisYcj5pPKpQXMPx0I11l8o3/lQLUVPzaidmUb
+	 2RVz40d6hmCZ5zasbu3JfAz+I5RjDPkDu2c05iawkPzEg4Z20NkuVbFND0UQ7GKmsV
+	 DsOgIPzAWiAxQ==
+From: Mark Brown <broonie@kernel.org>
+To: ckeepax@opensource.cirrus.com
+Cc: linux-sunxi@lists.linux.dev, peter.ujfalusi@gmail.com, pierre-louis.bossart@linux.intel.com, linux-imx@nxp.com, krzk@kernel.org, jarkko.nikula@bitmer.com, linux-xtensa@linux-xtensa.org, cezary.rojewski@intel.com, shawnguo@kernel.org, linux-mediatek@lists.infradead.org, nicolas.ferre@microchip.com, patches@opensource.cirrus.com, linux-amlogic@lists.infradead.org, srinivas.kandagatla@linaro.org, daniel@zonque.org, linux-mips@vger.kernel.org, linux-tegra@vger.kernel.org, nsaenz@kernel.org, linux-stm32@st-md-mailman.stormreply.com, heiko@sntech.de, alsa-devel@alsa-project.org, kernel@pengutronix.de, jbrunet@baylibre.com, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, linux-rockchip@lists.infradead.org, linux-omap@vger.kernel.org, lgirdwood@gmail.com
+In-Reply-To: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
+References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
+Subject: Re: [PATCH 00/56] Specify clock provider directly to CPU DAIs
+Message-Id: <165478153064.1052094.1721875477574787769.b4-ty@kernel.org>
+Date: Thu, 09 Jun 2022 14:32:10 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_044039_012066_BB690B43 
-X-CRM114-Status: GOOD (  12.00  )
+X-CRM114-CacheID: sfid-20220609_063219_174754_BE5E3EBB 
+X-CRM114-Status: GOOD (  17.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,412 +69,158 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The node names should be generic and DT schema expects certain pattern
-(e.g. with key/button/switch).
+On Thu, 19 May 2022 16:42:22 +0100, Charles Keepax wrote:
+> Currently the set_fmt callback always passes clock provider/consumer
+> with respect to the CODEC. This made sense when the framework was
+> directly broken down into platforms and CODECs. However, as things
+> are now broken down into components which can be connected as either
+> the CPU or CODEC side of a DAI link it simplifies things if each
+> side of the link is just told if it is provider or consumer of the
+> clocks. Making this change allows us to remove one of the last parts
+> of the ASoC core that needs to know if a driver is a CODEC driver,
+> where it flips the clock format specifier if a CODEC driver is used on
+> the CPU side of a DAI link, as well as just being conceptually more
+> consistent with componentisation.
+> 
+> [...]
 
-Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- arch/arm64/boot/dts/rockchip/rk3308-evb.dts   |  2 +-
- .../boot/dts/rockchip/rk3326-odroid-go2.dts   | 32 +++++++++----------
- .../boot/dts/rockchip/rk3328-nanopi-r2s.dts   |  2 +-
- arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi  |  2 +-
- .../boot/dts/rockchip/rk3368-geekbox.dts      |  2 +-
- .../dts/rockchip/rk3368-orion-r68-meta.dts    |  2 +-
- .../boot/dts/rockchip/rk3368-px5-evb.dts      |  2 +-
- arch/arm64/boot/dts/rockchip/rk3368-r88.dts   |  2 +-
- .../boot/dts/rockchip/rk3399-firefly.dts      |  2 +-
- .../dts/rockchip/rk3399-gru-chromebook.dtsi   |  2 +-
- .../boot/dts/rockchip/rk3399-gru-kevin.dts    |  2 +-
- .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi |  2 +-
- .../boot/dts/rockchip/rk3399-khadas-edge.dtsi |  2 +-
- .../boot/dts/rockchip/rk3399-nanopi-r4s.dts   |  4 +--
- .../boot/dts/rockchip/rk3399-nanopi4.dtsi     |  2 +-
- .../boot/dts/rockchip/rk3399-orangepi.dts     |  2 +-
- .../boot/dts/rockchip/rk3399-pinebook-pro.dts |  4 +--
- .../boot/dts/rockchip/rk3399-roc-pc.dtsi      |  2 +-
- .../boot/dts/rockchip/rk3399-rockpro64.dtsi   |  2 +-
- .../boot/dts/rockchip/rk3399-sapphire.dtsi    |  2 +-
- .../boot/dts/rockchip/rk3566-pinenote.dtsi    |  2 +-
- 21 files changed, 38 insertions(+), 38 deletions(-)
+Applied to
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308-evb.dts b/arch/arm64/boot/dts/rockchip/rk3308-evb.dts
-index 9b4f855ea5d4..4b5413b12bfa 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3308-evb.dts
-@@ -75,7 +75,7 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwr_key>;
- 
--		power {
-+		power-key {
- 			gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_LOW>;
- 			linux,code = <KEY_POWER>;
- 			label = "GPIO Key Power";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-index ea0695b51ecd..72328dd993ee 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-@@ -71,82 +71,82 @@ gpio-keys {
- 		 * |------------------------------------------------|
- 		 */
- 
--		sw1 {
-+		switch-1 {
- 			gpios = <&gpio1 RK_PB4 GPIO_ACTIVE_LOW>;
- 			label = "DPAD-UP";
- 			linux,code = <BTN_DPAD_UP>;
- 		};
--		sw2 {
-+		switch-2 {
- 			gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_LOW>;
- 			label = "DPAD-DOWN";
- 			linux,code = <BTN_DPAD_DOWN>;
- 		};
--		sw3 {
-+		switch-3 {
- 			gpios = <&gpio1 RK_PB6 GPIO_ACTIVE_LOW>;
- 			label = "DPAD-LEFT";
- 			linux,code = <BTN_DPAD_LEFT>;
- 		};
--		sw4 {
-+		switch-4 {
- 			gpios = <&gpio1 RK_PB7 GPIO_ACTIVE_LOW>;
- 			label = "DPAD-RIGHT";
- 			linux,code = <BTN_DPAD_RIGHT>;
- 		};
--		sw5 {
-+		switch-5 {
- 			gpios = <&gpio1 RK_PA2 GPIO_ACTIVE_LOW>;
- 			label = "BTN-A";
- 			linux,code = <BTN_EAST>;
- 		};
--		sw6 {
-+		switch-6 {
- 			gpios = <&gpio1 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "BTN-B";
- 			linux,code = <BTN_SOUTH>;
- 		};
--		sw7 {
-+		switch-7 {
- 			gpios = <&gpio1 RK_PA6 GPIO_ACTIVE_LOW>;
- 			label = "BTN-Y";
- 			linux,code = <BTN_WEST>;
- 		};
--		sw8 {
-+		switch-8 {
- 			gpios = <&gpio1 RK_PA7 GPIO_ACTIVE_LOW>;
- 			label = "BTN-X";
- 			linux,code = <BTN_NORTH>;
- 		};
--		sw9 {
-+		switch-9 {
- 			gpios = <&gpio2 RK_PA0 GPIO_ACTIVE_LOW>;
- 			label = "F1";
- 			linux,code = <BTN_TRIGGER_HAPPY1>;
- 		};
--		sw10 {
-+		switch-10 {
- 			gpios = <&gpio2 RK_PA1 GPIO_ACTIVE_LOW>;
- 			label = "F2";
- 			linux,code = <BTN_TRIGGER_HAPPY2>;
- 		};
--		sw11 {
-+		switch-11 {
- 			gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
- 			label = "F3";
- 			linux,code = <BTN_TRIGGER_HAPPY3>;
- 		};
--		sw12 {
-+		switch-12 {
- 			gpios = <&gpio2 RK_PA3 GPIO_ACTIVE_LOW>;
- 			label = "F4";
- 			linux,code = <BTN_TRIGGER_HAPPY4>;
- 		};
--		sw13 {
-+		switch-13 {
- 			gpios = <&gpio2 RK_PA4 GPIO_ACTIVE_LOW>;
- 			label = "F5";
- 			linux,code = <BTN_TRIGGER_HAPPY5>;
- 		};
--		sw14 {
-+		switch-14 {
- 			gpios = <&gpio2 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "F6";
- 			linux,code = <BTN_TRIGGER_HAPPY6>;
- 		};
--		sw15 {
-+		switch-15 {
- 			gpios = <&gpio2 RK_PA6 GPIO_ACTIVE_LOW>;
- 			label = "TOP-LEFT";
- 			linux,code = <BTN_TL>;
- 		};
--		sw16 {
-+		switch-16 {
- 			gpios = <&gpio2 RK_PA7 GPIO_ACTIVE_LOW>;
- 			label = "TOP-RIGHT";
- 			linux,code = <BTN_TR>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
-index 3857d487ab84..1445b879ac7a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
-@@ -34,7 +34,7 @@ keys {
- 		pinctrl-0 = <&reset_button_pin>;
- 		pinctrl-names = "default";
- 
--		reset {
-+		key-reset {
- 			label = "reset";
- 			gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_LOW>;
- 			linux,code = <KEY_RESTART>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
-index 15d1fc541c38..083452c67711 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
-@@ -76,7 +76,7 @@ keys: gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwr_key>;
- 
--		power {
-+		key-power {
- 			wakeup-source;
- 			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Power";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
-index 62aa97a0b8c9..be06e6e64d18 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
-@@ -43,7 +43,7 @@ keys: gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwr_key>;
- 
--		power {
-+		key-power {
- 			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Power";
- 			linux,code = <KEY_POWER>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
-index 3ebe15e03cf4..f4c60623c905 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
-@@ -44,7 +44,7 @@ keys: gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwr_key>;
- 
--		power {
-+		key-power {
- 			wakeup-source;
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
- 			label = "GPIO Power";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts b/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-index 5ccaa5f7a370..29df84b81552 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-@@ -30,7 +30,7 @@ keys: gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwr_key>;
- 
--		power {
-+		key-power {
- 			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Power";
- 			linux,code = <KEY_POWER>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-index 959d3cc801f2..38d757c00548 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-@@ -37,7 +37,7 @@ keys: gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwr_key>;
- 
--		power {
-+		key-power {
- 			wakeup-source;
- 			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Power";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-index b340c9e246c4..c5db64f3e124 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
-@@ -87,7 +87,7 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwrbtn>;
- 
--		power {
-+		key-power {
- 			debounce-interval = <100>;
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Key Power";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-index 50d459ee4831..cd074641884b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-@@ -206,7 +206,7 @@ gpio_keys: gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&bt_host_wake_l>;
- 
--		wake_on_bt: wake-on-bt {
-+		wake_on_bt: key-wake-on-bt {
- 			label = "Wake-on-Bluetooth";
- 			gpios = <&gpio0 3 GPIO_ACTIVE_LOW>;
- 			linux,code = <KEY_WAKEUP>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-index 6863689df06f..2cc9b3386c16 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
-@@ -92,7 +92,7 @@ &gpio_keys {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&bt_host_wake_l>, <&cpu1_pen_eject>;
- 
--	pen-insert {
-+	switch-pen-insert {
- 		label = "Pen Insert";
- 		/* Insert = low, eject = high */
- 		gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-index 913d845eb51a..0dadac51daa6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-@@ -183,7 +183,7 @@ gpio_keys: gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pen_eject_odl>;
- 
--		pen-insert {
-+		switch-pen-insert {
- 			label = "Pen Insert";
- 			/* Insert = low, eject = high */
- 			gpios = <&gpio1 1 GPIO_ACTIVE_LOW>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-index 46c4581deb8d..2a332763c35c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-@@ -136,7 +136,7 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwrbtn>;
- 
--		power {
-+		key-power {
- 			debounce-interval = <100>;
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Key Power";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
-index cef4d18b599d..fe5b52610010 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
-@@ -46,9 +46,9 @@ wan_led: led-wan {
- 	gpio-keys {
- 		pinctrl-0 = <&reset_button_pin>;
- 
--		/delete-node/ power;
-+		/delete-node/ key-power;
- 
--		reset {
-+		key-reset {
- 			debounce-interval = <50>;
- 			gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_LOW>;
- 			label = "reset";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-index 248ad41a976b..278123b4f911 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-@@ -111,7 +111,7 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&power_key>;
- 
--		power {
-+		key-power {
- 			debounce-interval = <100>;
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Key Power";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-index ed856bfcfc33..9e2e246e0bab 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-@@ -78,7 +78,7 @@ keys: gpio-keys {
- 		compatible = "gpio-keys";
- 		autorepeat;
- 
--		power {
-+		key-power {
- 			debounce-interval = <100>;
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Power";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index d6b68d77d63a..194e48c755f6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -76,7 +76,7 @@ gpio-key-lid {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&lidbtn_pin>;
- 
--		lid {
-+		switch-lid {
- 			debounce-interval = <20>;
- 			gpios = <&gpio1 RK_PA1 GPIO_ACTIVE_LOW>;
- 			label = "Lid";
-@@ -92,7 +92,7 @@ gpio-key-power {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwrbtn_pin>;
- 
--		power {
-+		key-power {
- 			debounce-interval = <20>;
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "Power";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-index 0e45cc2d195b..acb174d3a8c5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-@@ -54,7 +54,7 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwr_key_l>;
- 
--		power {
-+		key-power {
- 			debounce-interval = <100>;
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Key Power";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-index 6fdeee7d5f6d..78157521e944 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-@@ -42,7 +42,7 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwrbtn>;
- 
--		power {
-+		key-power {
- 			debounce-interval = <100>;
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Key Power";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-index 2aa0fad8f893..e6ac292ce645 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi
-@@ -53,7 +53,7 @@ keys: gpio-keys {
- 		compatible = "gpio-keys";
- 		autorepeat;
- 
--		power {
-+		key-power {
- 			debounce-interval = <100>;
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Power";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-index e01668e6e5f9..ea0fa627c464 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi
-@@ -49,7 +49,7 @@ gpio-keys {
- 		pinctrl-0 = <&hall_int_l>;
- 		pinctrl-names = "default";
- 
--		cover {
-+		switch {
- 			label = "cover";
- 			gpios = <&gpio0 RK_PC7 GPIO_ACTIVE_LOW>;
- 			linux,input-type = <EV_SW>;
--- 
-2.34.1
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
+Thanks!
+
+[01/56] ASoC: core: Add set_fmt_new callback that directly specifies provider
+        commit: 905f3a04e184854555fc248ca4e692fdbf2f2547
+[02/56] ASoC: amd: vangogh: Update to use set_fmt_new callback
+        commit: ab890e0f83a65624d20b0ca4a7cb6306b8511558
+[03/56] ASoC: atmel: Update to use set_fmt_new callback
+        commit: 0fd054a577180cd807992e32c7cd394e54c85903
+[04/56] ASoC: au1x: Update to use set_fmt_new callback
+        commit: fee11f70849b21a244e6e27d281f3858b671bfea
+[05/56] ASoC: bcm: Update to use set_fmt_new callback
+        commit: 04ea2404468b7885c560c3673f6f2fd368f305a2
+[06/56] ASoC: ep93xx: Update to use set_fmt_new callback
+        commit: 5d6124e58d56818249a6266f56d9c3739e72e1bd
+[07/56] ASoC: dwc: Update to use set_fmt_new callback
+        commit: ca0444f1f7b228ae3b8d1a5c0f0d1b4463171f98
+[08/56] ASoC: fsl: Update to use set_fmt_new callback
+        commit: 3b14c15a333b8225ea38479e13c0366539d3374a
+[09/56] ASoC: hisilicon: Update to use set_fmt_new callback
+        commit: 0f362524dd3face4865077a4f7e7e640a95702aa
+[10/56] ASoC: img: Update to use set_fmt_new callback
+        commit: ed2b384082a678a0c4c8c56deff9e5f46d5e3fca
+[11/56] ASoC: Intel: Update to use set_fmt_new callback
+        commit: add9ee8c64c617f561a309cdda50104e9e2c12f6
+[12/56] ASoC: js4740-i2s: Update to use set_fmt_new callback
+        commit: cbb3a19f090d5a41b822caf9ff2058e1c6bc7ea3
+[13/56] ASoC: mediatek: Update to use set_fmt_new callback
+        commit: 3af99430f8d948a41556156155b0295dec274d41
+[14/56] ASoC: meson: Update to use set_fmt_new callback
+        commit: f60442bf6eab47aa4ab127aab88afdcc29a09a73
+[15/56] ASoC: mxs-saif: Update to use set_fmt_new callback
+        commit: f3c0064f1f8e358799c70c7905a09d15c5ec5e5a
+[16/56] ASoC: pxa: Update to use set_fmt_new callback
+        commit: 84c5b47c8ce4d5059d5e7539d3b44922cc0390e9
+[17/56] ASoC: qcom: Update to use set_fmt_new callback
+        commit: 1148e16b335f341f36475b646c692b4a71a1855e
+[18/56] ASoC: rockchip: Update to use set_fmt_new callback
+        commit: 27646d265da1745b2d1d10fec18465631cb1135f
+[19/56] ASoC: samsung: Update to use set_fmt_new callback
+        commit: 0b491c7c1b2555ef08285fd49a8567f2f9f34ff8
+[20/56] ASoC: sh: Update to use set_fmt_new callback
+        commit: 2d4dd776e902546389f2d7808ece7fd815aa829c
+[21/56] ASoC: stm: Update to use set_fmt_new callback
+        commit: 0092dac91ec1c404787841bdd9ecbf3404d1a41c
+[22/56] ASoC: sunxi: Update to use set_fmt_new callback
+        commit: 7cc3965fde74c9c725ed01de4ac35bc7d562d16a
+[23/56] ASoC: tegra: Update to use set_fmt_new callback
+        commit: d92ad6633fa77f9496840b77c8effeaa13ac78dc
+[24/56] ASoC: test-component: Update to use set_fmt_new callback
+        commit: d444c8d246a62392c0d249b1030c3ca271d47649
+[25/56] ASoC: ti: Update to use set_fmt_new callback
+        commit: 563ff63dc9fbb8ef4b8f145a53c84a5489bbd789
+[26/56] ASoC: ux500: Update to use set_fmt_new callback
+        commit: ce3467c78478e33927aea9043bf20f46fa4d5688
+[27/56] ASoC: xtensa: Update to use set_fmt_new callback
+        commit: e945206a0a448ac81dde0609578508368946f7a6
+[28/56] ASoC: core: Always send the CPU DAI a direct clock specifier
+        commit: 6c076273a326cc5b5162451aacf7b7744bb03c66
+[29/56] ASoC: amd: vangogh: Rename set_fmt_new back to set_fmt
+        commit: 346f47e784cd48b456f267a66e0daf1ef10d21b3
+[30/56] ASoC: atmel: Rename set_fmt_new back to set_fmt
+        commit: a839a53b9dc70f94032a671ee019599884612d4a
+[31/56] ASoC: au1x: Rename set_fmt_new back to set_fmt
+        commit: 2c73f5fd20a845fcb48173578b7c83dbcbacdeda
+[32/56] ASoC: bcm: Rename set_fmt_new back to set_fmt
+        commit: 1a267dd98c246237be00587b6e71f969bf75f10d
+[33/56] ASoC: ep93xx: Rename set_fmt_new back to set_fmt
+        commit: 324a4db8de05290237793dc3d7da887846ae90c1
+[34/56] ASoC: dwc: Rename set_fmt_new back to set_fmt
+        commit: 765fb623a2cd925c550370f73efe2137c52a1b25
+[35/56] ASoC: fsl: Rename set_fmt_new back to set_fmt
+        commit: 00778276cf4c611882219ab7aba9664c48981f1a
+[36/56] ASoC: hisilicon: Rename set_fmt_new back to set_fmt
+        commit: b9a7972818b84a15d46505df7808fd86c3fba5bb
+[37/56] ASoC: img: Rename set_fmt_new back to set_fmt
+        commit: 1830a30ec4cf1642a429e80dbbeb86aa7825c71a
+[38/56] ASoC: Intel: Rename set_fmt_new back to set_fmt
+        commit: c14a6ce9848571cf67faff206b02e212bec82761
+[39/56] ASoC: jz4740-i2s: Rename set_fmt_new back to set_fmt
+        commit: 1724cc38e7685ad8b01413acd70a4a731fc105ae
+[40/56] ASoC: mediatek: Rename set_fmt_new back to set_fmt
+        commit: 00ca2d152ef0fa9f4beb2a590e176499440de8fe
+[41/56] ASoC: meson: Rename set_fmt_new back to set_fmt
+        commit: eee6b5b9f3af0e906085022713ef41e56d03eca8
+[42/56] ASoC: mxs-saif: Rename set_fmt_new back to set_fmt
+        commit: 1a805faeb4915496671cd24bd2a75cc97a85dfc8
+[43/56] ASoC: pxa: Rename set_fmt_new back to set_fmt
+        commit: 8e2cc2b241bc0bb905231f301e6dfc80dc79f8a8
+[44/56] ASoC: qcom: Rename set_fmt_new back to set_fmt
+        commit: f1bd2fae856384f9377ca3faed0583d929002640
+[45/56] ASoC: rockchip: Rename set_fmt_new back to set_fmt
+        commit: 059f16bc0e02164617312435c31dffdc419f113f
+[46/56] ASoC: samsung: Rename set_fmt_new back to set_fmt
+        commit: b99d00c724bcf395558cb3028e823bd8f554fee6
+[47/56] ASoC: sh: Rename set_fmt_new back to set_fmt
+        commit: adced68031f96642272fae4e8c36d45d13797306
+[48/56] ASoC: stm: Rename set_fmt_new back to set_fmt
+        commit: 02ba0d9680feee645a321d65012f38d0a368b559
+[49/56] ASoC: sunxi: Rename set_fmt_new back to set_fmt
+        commit: 15011b2388d020a6cdb323539fc69c31b04d9f21
+[50/56] ASoC: tegra: Rename set_fmt_new back to set_fmt
+        commit: 475f2af6a2ff33e828900601a162e324b9986f9a
+[51/56] ASoC: test-component: Rename set_fmt_new back to set_fmt
+        commit: 408c122ef9de99220f7919594ab8af98194a19e8
+[52/56] ASoC: ti: Rename set_fmt_new back to set_fmt
+        commit: 9ff1836023ae19013c01f230e6a091fad6835213
+[53/56] ASoC: ux500: Rename set_fmt_new back to set_fmt
+        commit: e24ba1a21e244e7174e75ca0c4020beaff0ad369
+[54/56] ASoC: xtensa: Rename set_fmt_new back to set_fmt
+        commit: 58e23e21d18532aaa404e1db87ec92762e1fecd5
+[55/56] ASoC: soc-dai: Remove set_fmt_new callback
+        commit: 19423951a4b5c4f0ca107d6a4bed23f3f63718ca
+[56/56] ASoC: simple-card-utils: Move snd_soc_component_is_codec to be local
+        commit: 28086d05ada6d03daa886aad0e469854b811311c
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-rockchip mailing list
