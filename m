@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03C44C43334
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jun 2022 17:44:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 817E4C43334
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jun 2022 17:51:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7890VPux/5/BE/AOkKv1D+WVW1bLfuMdlJdAx/zdygo=; b=Ur/TmnDW646P5L
-	mlMGIdcYlm9atKwRPCIfDTRyHYfmz7z83adcpQRWmFD+pRsZ0Pjb0zzROIOtHImooigCW+CBO175n
-	O/41q+ljCR/vlTvZfUwcQtgPtyM2oFTfcaO5LaN+B6yqDvwSp+r32nOvZdAx/PUruHMGjBhfJK7f3
-	qTYrgQ6Y2kZSckr4ieAHNpabAPnodMxq78i6kYNtcKI/dumC/JF7zAZ61ssxkDtPC+mDjo67z+2Dw
-	ZkgaPW5CghMXGLcs4Kwl3frXR2RQcC3ZHdCaZD6bxXKMQP/bY7X/jJUubgAH2G9pdqNfbCGmQHGdZ
-	drsTDkH47iIDRwV5xmeQ==;
+	List-Owner; bh=a6yio+I1f2BF5kFhJ5oqcgluFKmCORr5PbJMTTUDozc=; b=eNqZGXuL2yOr+0
+	6iuabGW/GRQcL85AxPmOWHmb1UFsNpKKCfUX8dE80D5uwAU9TwFG+N/0RcfA3LD/5QYEhiXXXGnCn
+	d/tDutOJTKf9llp8+6wyZAV+YuX3BK2DZCu+df5V66I/diumdQXqgA8oL71kU8IM66mTgMsT+bCdw
+	44FtkqX3rmX82Jfdw1ezjVyuf1MQCnNb6JG6vYc14/5qK5iNn5UKeezk8IiPfkDSuqm59DCGOZ2pa
+	PitmwZvzV8DPmx6Wo1axo8uyah1ykwfdQeLqnsjnBtpRSZCV46E3PavJFFjkuP1gEES1Dw6sw/2Va
+	Dag4m+quruSy36RwO33A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzMCY-003Gjn-Uu; Thu, 09 Jun 2022 17:44:10 +0000
-Received: from mail-io1-f44.google.com ([209.85.166.44])
+	id 1nzMJ1-003KX9-Ji; Thu, 09 Jun 2022 17:50:51 +0000
+Received: from mail-io1-f49.google.com ([209.85.166.49])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzMCW-003GhL-PF; Thu, 09 Jun 2022 17:44:09 +0000
-Received: by mail-io1-f44.google.com with SMTP id a10so22874660ioe.9;
-        Thu, 09 Jun 2022 10:44:07 -0700 (PDT)
+	id 1nzMIx-003KTE-AH; Thu, 09 Jun 2022 17:50:50 +0000
+Received: by mail-io1-f49.google.com with SMTP id a10so22892745ioe.9;
+        Thu, 09 Jun 2022 10:50:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=2i1pp/1ZsRmToFCoqQ19skHEmaFhsE2D5haAdLzfO1w=;
-        b=GkfbU3os88/NQCn0bG0YXVHdmqZizJU8BoQVnpFvlMbcMCoLWNtiJX7eJoJbO6pzdF
-         0f7z3iFW9tr9JONwA4dXz1RfeG/GNI0kGiF97hQR7QdDtceiQI++6sAOYyxyT2hlVrqV
-         pL/vKTwJn7K1/fn8pdvhRL6SFs+Cam9Oar4BxqEz8gTgsYK9ws023TEXTt2a08z/F9bP
-         VlSa9tsA7v7WkXxcvRmSf6b+pIwEIP8LcyAmGbqjyDr6AEN8rjYdBMw/pUFKxPqjug0X
-         CPTW6RZYmUtsmEpUqFDe/q23umrzXAzDO0nwWLhIKZ8CLrqLvC2D4sgtqFMKC0++/YqI
-         rL7w==
-X-Gm-Message-State: AOAM530L0EgCN5bzjE3MvLny3xQ6hJ4j26aDEnvG1kxscip5/V7pV3o4
-	Ul2aWxHbE34im5ZLPv6amA==
-X-Google-Smtp-Source: ABdhPJy51+FrJNx2InXWFPKHM8IB1lHjAQX9L++85q7Lm90YQcc4+l0XuM1CF1L/kmI1uGCI+7qwsw==
-X-Received: by 2002:a05:6638:2648:b0:330:be8e:9cc with SMTP id n8-20020a056638264800b00330be8e09ccmr22634260jat.85.1654796646710;
-        Thu, 09 Jun 2022 10:44:06 -0700 (PDT)
+        bh=HnAifctYdNaT/poGeGfhLUmDWMrLaMg17cclIAxPNog=;
+        b=RJ60eVFLMpQfg0HeMLvbnp+1casJIp94bOhkHiPEBY2i9ykb4WjQhKVzHTI5r/ko6e
+         pkkgjY/10GMCYo+aby9fvJzrGs9n8lUmabnDMefP4gKD0UmZh2QPh0f7VLvDZFO6HWJT
+         rCrMTIe5dCnvxqlgFmnGcq8SgFK887T8oPUMfKf3ASsIQFKdK2ougPABuF7JA842YORx
+         JX9fcejfGmNjvRwAGZK3EySiGD2gXEQYJ7aNwmw5DfRy5g+EDD02W0qyL4WAEBvicOz5
+         zQvavNeIRrDR1Qq/Cx/S4Pzows8B8NUi8j3twbTdNkU4JQukP9rLwdANqAW+FUfNGkp/
+         nbDw==
+X-Gm-Message-State: AOAM5312+l28x+JknSkbc4K8TNxRSZGXqehIPkj3oNbNiQyC35fW75BL
+	I/hFiQz9nU+KPqfDPFCUCw==
+X-Google-Smtp-Source: ABdhPJxAiTUZAr56YxyBVP43w4ziAPRPbjtV7Scut9p9XeaOHBavU3f1WWiKaf+TI5dVsV/oPBVYzA==
+X-Received: by 2002:a5d:88c8:0:b0:662:b25a:49b7 with SMTP id i8-20020a5d88c8000000b00662b25a49b7mr18756600iol.159.1654797045693;
+        Thu, 09 Jun 2022 10:50:45 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.251])
-        by smtp.gmail.com with ESMTPSA id c12-20020a02330c000000b00331b841cf9fsm4853284jae.33.2022.06.09.10.44.04
+        by smtp.gmail.com with ESMTPSA id b28-20020a056638389c00b00331ab545889sm5305064jav.45.2022.06.09.10.50.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Jun 2022 10:44:05 -0700 (PDT)
-Received: (nullmailer pid 4015147 invoked by uid 1000);
-	Thu, 09 Jun 2022 17:44:03 -0000
-Date: Thu, 9 Jun 2022 11:44:03 -0600
+        Thu, 09 Jun 2022 10:50:45 -0700 (PDT)
+Received: (nullmailer pid 4024412 invoked by uid 1000);
+	Thu, 09 Jun 2022 17:50:42 -0000
+Date: Thu, 9 Jun 2022 11:50:42 -0600
 From: Rob Herring <robh@kernel.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: heiko@sntech.de, edumazet@google.com, linux-kernel@vger.kernel.org, davem@davemloft.net, robh+dt@kernel.org, linux-rockchip@lists.infradead.org, kuba@kernel.org, pabeni@redhat.com, devicetree@vger.kernel.org, krzysztof.kozlowski+dt@linaro.org, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 1/3] dt-bindings: net: convert emac_rockchip.txt to
- YAML
-Message-ID: <20220609174403.GA4015071-robh@kernel.org>
-References: <20220603163539.537-1-jbx6244@gmail.com>
+To: Sjoerd Simons <sjoerd@collabora.com>
+Cc: linux-rockchip@lists.infradead.org, kernel@collabora.com, Akash Gajjar <akash@openedev.com>, Alex Bee <knaerzche@gmail.com>, Chen-Yu Tsai <wenst@chromium.org>, Frank Wunderlich <frank-w@public-files.de>, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Levin Du <djw@t-chip.com.cn>, Liang Chen <cl@rock-chips.com>, Michael Riesch <michael.riesch@wolfvision.net>, Peter Geis <pgwipeout@gmail.com>, Samuel Holland <samuel@sholland.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] arm64: dts: rockchip: add ROCK Pi S DTS support
+Message-ID: <20220609175042.GA4021841-robh@kernel.org>
+References: <20220606082629.79682-1-sjoerd@collabora.com>
+ <20220606082629.79682-2-sjoerd@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220603163539.537-1-jbx6244@gmail.com>
+In-Reply-To: <20220606082629.79682-2-sjoerd@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220609_104408_861430_559BEF83 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20220609_105047_426946_9B3372AC 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +78,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 03 Jun 2022 18:35:37 +0200, Johan Jonker wrote:
-> Convert emac_rockchip.txt to YAML.
+On Mon, Jun 06, 2022 at 10:26:27AM +0200, Sjoerd Simons wrote:
+> From: Akash Gajjar <akash@openedev.com>
 > 
-> Changes against original bindings:
->   Add mdio sub node.
->   Add extra clock for rk3036
+> ROCK Pi S is RK3308 based SBC from radxa.com. ROCK Pi S has a,
+> - 256MB/512MB DDR3 RAM
+> - SD, NAND flash (optional on board 1/2/4/8Gb)
+> - 100MB ethernet, PoE (optional)
+> - Onboard 802.11 b/g/n wifi + Bluetooth 4.0 Module
+> - USB2.0 Type-A HOST x1
+> - USB3.0 Type-C OTG x1
+> - 26-pin expansion header
+> - USB Type-C DC 5V Power Supply
 > 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> This patch enables
+> - Console
+> - NAND Flash
+> - SD Card
+> 
+> Signed-off-by: Akash Gajjar <akash@openedev.com>
+> [sjoerd: Sort dt nodes, drop properties duplicated from dtsi]
+> Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 > ---
 > 
-> Changed V2:
->   use phy
->   rename to rockchip,emac.yaml
->   add more requirements
-> ---
->  .../devicetree/bindings/net/emac_rockchip.txt |  52 --------
->  .../bindings/net/rockchip,emac.yaml           | 115 ++++++++++++++++++
->  2 files changed, 115 insertions(+), 52 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/net/emac_rockchip.txt
->  create mode 100644 Documentation/devicetree/bindings/net/rockchip,emac.yaml
-> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Bindings should be a separate patch.
+
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 204 ++++++++++++++++++
+>  3 files changed, 210 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
 
 _______________________________________________
 Linux-rockchip mailing list
