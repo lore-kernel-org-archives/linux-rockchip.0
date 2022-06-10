@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 000ADC43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 12:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E287C43334
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 12:52:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Rwvt42YniXGp7RY7lM/++i66EUsNYIO6tRuJsXB2SXg=; b=Xcyaf3/bpUdCRy
-	5GvVlOVA65pQpEsHJ/cEVX1PIabm/kGcr6c1ecWt2aKSsIE/8hviFPCnbhKdVjKn2tdE/4EPnQWba
-	tsX/163Hfb3SIHD/XeokQ6Aa/89wSRhmtDx+wvEepel2MK451HfcVGrwR9ztmfrt5szcA+OVLTOYK
-	xrW/imHOqwAi3HIHjduaIguE2kLpOt7jYDhjVy2SHp9j/GHC5FrEjkiiHT4cZXvWkDPQRaxCmdedR
-	/TW1L7Jeu7BmfQlKt3cMNG78NDJBLlWnOa9OvmsaepMBxM/niFVXGSrBi4NF06kzWiRrboFxiK21q
-	KYIRSO2Xc7TI7967FjEw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5P9qr9/8qgW3/UYxAAuDav9Y5WbCm5lxI3EirIVRc8U=; b=ewJkxXikvcpPIG
+	9WUriXVfJiVtC6/+um0G+J1f7zMxUw/inEwmwNTKvzqx+lfiYrKM7svWDj8J6DKYmtCTy3Je3H+JU
+	3tbuydQ3lwtwrL/lB6L43J7+IE+/4fdV0rG7cObExsWlwZx4f7mnOIf9d6QaLZS3UpiK6FgY00kCj
+	SlD6fEp+M9RqTiDLWTIEJRP3fIJ+VmKnRWeDJyHzyPwI6HJN1HJWkw6t24oqemt4e03vhgIWQwudG
+	cYe5rXjQHaCq/2Iie7etbgaQHk+Z4iaPcrP8CW2ud/s1CaWssKdaTgL8bLHxBDEENUxEwr6vZZZzA
+	XkSJcXHCC5JzDBA/4hiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nze45-008EFI-A0; Fri, 10 Jun 2022 12:48:37 +0000
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+	id 1nze80-008F6J-T7; Fri, 10 Jun 2022 12:52:40 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nze42-008EEI-PL
-	for linux-rockchip@lists.infradead.org; Fri, 10 Jun 2022 12:48:35 +0000
-Received: by mail-yb1-xb2e.google.com with SMTP id p13so46820839ybm.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 10 Jun 2022 05:48:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:from:date:message-id:subject:to:cc;
-        bh=Sfhj5wdwRUjdvuShztWnVmtciB4bmqpt/yCTTC/qT1Q=;
-        b=qoZTrQOJJqrmNKCLNaP7NcaBbh6iuWsbFYB4xngaH5zEuOzNZW6X3YyQT+0y+znjuR
-         6QqH53aKiZ0M6kT8bMm5wk4M2Y7q6LbjfmYtl2kHAxSbgXzm9cPQqj8I1+HQOlC6KukY
-         3rxaQFs1KPUP8o9qvjb5DsegfPRckr9Op4Diqhg6tyzHowUpPFO5Z4nj4YqEcS6LtBTs
-         kfPImQh6bzaT+3Wbuy/KCB8B2VTUIFcIW87uswO5foKzxgyADBNrDPlCGSxNW6vqeKya
-         r16heKxo6iDywBjlZy/PuvQ7l3ebsiOZnpia3wOvhoAmX1VEEQAgsur91muSJ53DrknD
-         eSmw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
-        bh=Sfhj5wdwRUjdvuShztWnVmtciB4bmqpt/yCTTC/qT1Q=;
-        b=Ywo/8pQxdRjLLObVvGwdmiFDRS9cEyG/CMhUhscAJ8pbMcr8x3S2YijzaFd9lVondG
-         XvZnhvY4QjJ2j7ol3Al2hsffhjciXOLQJ0AH44nkSGEz1cC+8u4yr2ha7RCcJPXZm27T
-         5/1IZ9qTAH3bWGu+O6JV/MQifGyEsnurFVGTwIpHJ4Mu/hEQw0oxyKtCjh4AW0qUBP7B
-         49Z5FfR3gOeYZs6z44haqfbPHdtsGMV+eheHMg72AQAWLr5+24/5I3LwQBqCtFzv9ggs
-         Diy8MY+IF1Fzsp1ePKwEIdhc+XS1Qx9g84kr2SHVWjnxpmwnW8cshLgoTkqavgDuixL0
-         7dMQ==
-X-Gm-Message-State: AOAM533VkiUF6h++SS7z1Fh79j64IuuvWZwpSDbBgLELWxAmPlMWdkbG
-	K8t0nmxfRZQPrFjd33fByhl5GEn6Ip86NFpzRELiD95t1Dk=
-X-Google-Smtp-Source: ABdhPJwgGuJKr0Lv+asRzvW54Hvakrc7XqpEufJMBXIOtQFdLCsHv05NLGfrUagPF2W/jDZvLrjpttsGr6KfKNGRq/w=
-X-Received: by 2002:a25:7611:0:b0:65c:b595:2822 with SMTP id
- r17-20020a257611000000b0065cb5952822mr43370508ybc.228.1654865311641; Fri, 10
- Jun 2022 05:48:31 -0700 (PDT)
+	id 1nze7y-008F5U-QR
+	for linux-rockchip@lists.infradead.org; Fri, 10 Jun 2022 12:52:40 +0000
+Received: from whitebuilder.lan (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 45E776601723;
+	Fri, 10 Jun 2022 13:52:33 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1654865554;
+	bh=p58BGLd7hMm8p/2ISuy3Dy0LlqXqYJNmYcWNBWGs/eo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=k/12mt8TUAGfUMKdUILYc1U9Q0mcOKvYLKWOvKQehdBhmZwNiUxJswfiOfpoooU6Y
+	 K7SyrWEXe2qjxHIqPHedkJ37gilThxf4XJm1pghTKSzfqIS5CJyy/DGRM6cwux/56x
+	 BJC76p7e5Fq2jAX5N9L4Q+7mVubr9Jjllr2y0C1llKCJP6kL7yxELDiubw4W84nWK5
+	 y2J3cAIz0OPwwKlQj8IYtTfQsYgJi0tzCounvyIkiAzE3Nbynsh4HGqqJjeLMjn96a
+	 wnXDKPIFQARXVZqpvN92Lkf+CAUBKMooUOkILCPvyNcXkpfILLtadGlIz7x/dGu5lp
+	 QNoDgEhEwkwOA==
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: linux-media@vger.kernel.org,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Boris Brezillon <boris.brezillon@collabora.com>
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	kernel@collabora.com,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1 1/5] media: rkvdec: Disable H.264 error detection
+Date: Fri, 10 Jun 2022 08:52:11 -0400
+Message-Id: <20220610125215.240539-2-nicolas.dufresne@collabora.com>
+X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220610125215.240539-1-nicolas.dufresne@collabora.com>
+References: <20220610125215.240539-1-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Fri, 10 Jun 2022 08:48:18 -0400
-Message-ID: <CAMdYzYpF4FNTBPZsEFeWRuEwSies36QM_As8osPWZSr2q-viEA@mail.gmail.com>
-Subject: [BUG] Threaded printk breaks early debugging
-To: John Ogness <john.ogness@linutronix.de>
-Cc: Petr Mladek <pmladek@suse.com>, Sergey Senozhatsky <senozhatsky@chromium.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_054834_862707_E9D4A983 
-X-CRM114-Status: UNSURE (   6.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220610_055239_026963_A3A73C7E 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,21 +81,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Good Morning,
+Quite often, the HW get stuck in error condition if a stream error
+was detected. As documented, the HW should stop immediately and self
+reset. There is likely a problem or a miss-understanding of the self
+self reset mechanism, as unless we make a long pause, the next command
+will then report an error even if there is no error in it.
 
-First, I love this patch from a functional standpoint! However I've
-run into an issue debugging early boot issues. Anything that causes
-the kernel threading system to die (for example here, a NPE) causes
-the boot console to halt before it outputs the error.
+Disabling error detection fixes the issue, and let the decoder continue
+after an error. This patch is safe for backport into older kernels.
 
-Would it be possible to have both a kconfig option and a runtime
-option to toggle printk_fallback_preferred_direct()? Currently I've
-had to force it at all times while debugging.
+Fixes: cd33c830448b ("media: rkvdec: Add the rkvdec driver")
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+ drivers/staging/media/rkvdec/rkvdec-h264.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Thanks again for this amazing work!
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 2992fb87cf72..55596ce6bb6e 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -1175,8 +1175,8 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
+ 
+ 	schedule_delayed_work(&rkvdec->watchdog_work, msecs_to_jiffies(2000));
+ 
+-	writel(0xffffffff, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
+-	writel(0xffffffff, rkvdec->regs + RKVDEC_REG_H264_ERR_E);
++	writel(0, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
++	writel(0, rkvdec->regs + RKVDEC_REG_H264_ERR_E);
+ 	writel(1, rkvdec->regs + RKVDEC_REG_PREF_LUMA_CACHE_COMMAND);
+ 	writel(1, rkvdec->regs + RKVDEC_REG_PREF_CHR_CACHE_COMMAND);
+ 
+-- 
+2.36.1
 
-Very Respectfully,
-Peter Geis
 
 _______________________________________________
 Linux-rockchip mailing list
