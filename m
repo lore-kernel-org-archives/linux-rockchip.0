@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61E93C43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 17:07:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3463C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 17:07:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ml6b+2H6qqd1kBTIryvbfzpYyhlx4zDKxcSAzrVsEOs=; b=KeY04bRVJGvLRM
-	qAra4O74i6fdgWo1gP+sERnFDtuZrEv2UMDFkYjxot9hxMqma35bClA/qgUvKiyGB5ILVUclCI/Mn
-	XWwHxfRAa8498mAZHlW5XFrqLR6A5txU7AgHhabZ7tEuL2bZD5CSa1sSgLL8wrohCGg1KCtW6QBJC
-	PZlkdz9W6LNBw/ep/ukPMc7w23AiQdx+1/sFw9cl8gDr+WuYc0XVtGUeuu/oJym/aeVVn2mvvkNXW
-	rB/g83xOYL0f3RhR6B2kv60U7pGxUBeoB7IQnnmqz8+7SjtZ5UBvmfU0mWEE81xiI35ZeAfBKodVV
-	OFPCvnS8xaVSxDXqar8w==;
+	List-Owner; bh=tfSp8YfcLQb5nP23mVRAaSq1gbe923YQpx6ilI398LM=; b=w67AM4BueAwUPU
+	R5ZghGPZbuPSfZLQoTnwCPBKxcedGn2f6lnDHjYXctRZAXz6hVPiDvTWkGbTJbtsBlV1QsOc7JHa+
+	PbLEzdTWNWmsy8v4Tr534uoUGuzfr263SleOkZ2pKtm49r1fwAMjkb0d5wOP2+oTNovxBgDU7i94g
+	9MPYom9LO5CRxy8qjE/HfGyoQCLC+ANkmiYBxyi1sw0gOTQNfnLh3K02sJoJ8mqVlWXlhJ0jmNoPV
+	+DVbvRGYfej2/pLTXxuJtccQoZMVg3DJBqV42v7ild4WtDusXoVieWni2EnMZfDBCtbKDrWZ1tvgP
+	gmpigEt8w+Hq0yhapuoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzi6k-0094Iu-ED; Fri, 10 Jun 2022 17:07:38 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1nzi6j-0094IG-Fd; Fri, 10 Jun 2022 17:07:37 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzi5N-0093Tj-Hu; Fri, 10 Jun 2022 17:06:16 +0000
+	id 1nzi5N-0093Th-Ol; Fri, 10 Jun 2022 17:06:16 +0000
 Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout1.routing.net (Postfix) with ESMTP id E0E68402D7;
-	Fri, 10 Jun 2022 17:06:11 +0000 (UTC)
+	by mxout4.routing.net (Postfix) with ESMTP id ACCEC10075B;
+	Fri, 10 Jun 2022 17:06:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1654880772;
+	s=20200217; t=1654880771;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=uLlva8Emcc5RehlfDPvdMknMWn6EeajUkWuEMhCA/yw=;
-	b=MYF4NpavEXZUGNrlPUnY4d7VCGpcE+cCV1AJmIXmkPAFkEik6n9g5Rpl/QvrxjJXDVJM9w
-	EqMqKFYe18nc7NVPPmF4alYGD3yxTxlaqqqFOdDUSjPCB7buEAU1Dm0WM/CEvk60A7GPs1
-	JWJioWOeUjn1luaNGn0eBgLYxWNmpeY=
+	bh=pxv03Pmlp9C51iPM8l4XVYMHrHTRmQJueLNoENFoo/4=;
+	b=U7/Qt9io0Kjg8X/YQDUSxgtln8W/s/mX7n3rczykJespwE+Hl/yhIBf4zZTAN64adoWoEL
+	/2ESM+wI0d9hwOBW4dVAHeZzFXdhYlVHoR5Cr47fFc8h3QeMQjXKHnU/Pr7rgsceRR8Ca7
+	bkdcKdyzsPsgHUBPA4RG2CXE3SczoTA=
 Received: from frank-G5.. (fttx-pool-217.61.154.155.bambit.de [217.61.154.155])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 76410100394;
-	Fri, 10 Jun 2022 17:06:10 +0000 (UTC)
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 45CFE1008BF;
+	Fri, 10 Jun 2022 17:06:09 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-rockchip@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
@@ -67,17 +67,17 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
 	Greg Ungerer <gerg@kernel.org>,
 	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
 	"Mauro Carvalho Chehab" <mchehab+samsung@kernel.org>
-Subject: [PATCH v4 4/6] net: dsa: mt7530: get cpu-port via dp->cpu_dp instead of constant
-Date: Fri, 10 Jun 2022 19:05:39 +0200
-Message-Id: <20220610170541.8643-5-linux@fw-web.de>
+Subject: [PATCH v4 3/6] net: dsa: mt7530: rework mt753[01]_setup
+Date: Fri, 10 Jun 2022 19:05:38 +0200
+Message-Id: <20220610170541.8643-4-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220610170541.8643-1-linux@fw-web.de>
 References: <20220610170541.8643-1-linux@fw-web.de>
 MIME-Version: 1.0
-X-Mail-ID: 8b3b788e-848e-4a56-8530-0d42429e9387
+X-Mail-ID: 02da0cd3-b505-41b5-8d21-d43d11ee0763
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_100613_929632_25D37974 
-X-CRM114-Status: GOOD (  18.42  )
+X-CRM114-CacheID: sfid-20220610_100614_000648_8E0BC7BF 
+X-CRM114-Status: GOOD (  12.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,118 +96,75 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Replace last occurences of hardcoded cpu-port by cpu_dp member of
-dsa_port struct.
-
-Now the constant can be dropped.
+Enumerate available cpu-ports instead of using hardcoded constant.
 
 Suggested-by: Vladimir Oltean <olteanv@gmail.com>
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
 ---
- drivers/net/dsa/mt7530.c | 27 ++++++++++++++++++++-------
- drivers/net/dsa/mt7530.h |  1 -
- 2 files changed, 20 insertions(+), 8 deletions(-)
+ drivers/net/dsa/mt7530.c | 25 +++++++++++++++++++++----
+ 1 file changed, 21 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 9c14e46692ee..835807911be0 100644
+index c1922eaba67a..9c14e46692ee 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -1038,6 +1038,7 @@ static int
- mt7530_port_enable(struct dsa_switch *ds, int port,
- 		   struct phy_device *phy)
+@@ -2092,11 +2092,12 @@ static int
+ mt7530_setup(struct dsa_switch *ds)
  {
-+	struct dsa_port *dp = dsa_to_port(ds, port);
  	struct mt7530_priv *priv = ds->priv;
++	struct device_node *dn = NULL;
+ 	struct device_node *phy_node;
+ 	struct device_node *mac_np;
+ 	struct mt7530_dummy_poll p;
+ 	phy_interface_t interface;
+-	struct device_node *dn;
++	struct dsa_port *cpu_dp;
+ 	u32 id, val;
+ 	int ret, i;
  
- 	mutex_lock(&priv->reg_mutex);
-@@ -1046,7 +1047,11 @@ mt7530_port_enable(struct dsa_switch *ds, int port,
- 	 * restore the port matrix if the port is the member of a certain
- 	 * bridge.
+@@ -2104,7 +2105,19 @@ mt7530_setup(struct dsa_switch *ds)
+ 	 * controller also is the container for two GMACs nodes representing
+ 	 * as two netdev instances.
  	 */
--	priv->ports[port].pm |= PCR_MATRIX(BIT(MT7530_CPU_PORT));
-+	if (dsa_port_is_user(dp)) {
-+		struct dsa_port *cpu_dp = dp->cpu_dp;
-+
-+		priv->ports[port].pm |= PCR_MATRIX(BIT(cpu_dp->index));
+-	dn = dsa_to_port(ds, MT7530_CPU_PORT)->master->dev.of_node->parent;
++	dsa_switch_for_each_cpu_port(cpu_dp, ds) {
++		dn = cpu_dp->master->dev.of_node->parent;
++		/* It doesn't matter which CPU port is found first,
++		 * their masters should share the same parent OF node
++		 */
++		break;
 +	}
- 	priv->ports[port].enable = true;
- 	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
- 		   priv->ports[port].pm);
-@@ -1195,7 +1200,8 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
- 			struct netlink_ext_ack *extack)
- {
- 	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
--	u32 port_bitmap = BIT(MT7530_CPU_PORT);
-+	struct dsa_port *cpu_dp = dp->cpu_dp;
-+	u32 port_bitmap = BIT(cpu_dp->index);
- 	struct mt7530_priv *priv = ds->priv;
- 
- 	mutex_lock(&priv->reg_mutex);
-@@ -1272,9 +1278,12 @@ mt7530_port_set_vlan_unaware(struct dsa_switch *ds, int port)
- 	 * the CPU port get out of VLAN filtering mode.
- 	 */
- 	if (all_user_ports_removed) {
--		mt7530_write(priv, MT7530_PCR_P(MT7530_CPU_PORT),
-+		struct dsa_port *dp = dsa_to_port(ds, port);
-+		struct dsa_port *cpu_dp = dp->cpu_dp;
 +
-+		mt7530_write(priv, MT7530_PCR_P(cpu_dp->index),
- 			     PCR_MATRIX(dsa_user_ports(priv->ds)));
--		mt7530_write(priv, MT7530_PVC_P(MT7530_CPU_PORT), PORT_SPEC_TAG
-+		mt7530_write(priv, MT7530_PVC_P(cpu_dp->index), PORT_SPEC_TAG
- 			     | PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
- 	}
- }
-@@ -1312,6 +1321,7 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
- 			 struct dsa_bridge bridge)
- {
- 	struct dsa_port *dp = dsa_to_port(ds, port), *other_dp;
-+	struct dsa_port *cpu_dp = dp->cpu_dp;
- 	struct mt7530_priv *priv = ds->priv;
- 
- 	mutex_lock(&priv->reg_mutex);
-@@ -1340,8 +1350,8 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
- 	 */
- 	if (priv->ports[port].enable)
- 		mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK,
--			   PCR_MATRIX(BIT(MT7530_CPU_PORT)));
--	priv->ports[port].pm = PCR_MATRIX(BIT(MT7530_CPU_PORT));
-+			   PCR_MATRIX(BIT(cpu_dp->index)));
-+	priv->ports[port].pm = PCR_MATRIX(BIT(cpu_dp->index));
- 
- 	/* When a port is removed from the bridge, the port would be set up
- 	 * back to the default as is at initial boot which is a VLAN-unaware
-@@ -1508,6 +1518,9 @@ static int
- mt7530_port_vlan_filtering(struct dsa_switch *ds, int port, bool vlan_filtering,
- 			   struct netlink_ext_ack *extack)
- {
-+	struct dsa_port *dp = dsa_to_port(ds, port);
-+	struct dsa_port *cpu_dp = dp->cpu_dp;
++	if (!dn) {
++		dev_err(ds->dev, "parent OF node of DSA master not found");
++		return -EINVAL;
++	}
 +
- 	if (vlan_filtering) {
- 		/* The port is being kept as VLAN-unaware port when bridge is
- 		 * set up with vlan_filtering not being set, Otherwise, the
-@@ -1515,7 +1528,7 @@ mt7530_port_vlan_filtering(struct dsa_switch *ds, int port, bool vlan_filtering,
- 		 * for becoming a VLAN-aware port.
- 		 */
- 		mt7530_port_set_vlan_aware(ds, port);
--		mt7530_port_set_vlan_aware(ds, MT7530_CPU_PORT);
-+		mt7530_port_set_vlan_aware(ds, cpu_dp->index);
- 	} else {
- 		mt7530_port_set_vlan_unaware(ds, port);
- 	}
-diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
-index 71e36b69b96d..e509af95c354 100644
---- a/drivers/net/dsa/mt7530.h
-+++ b/drivers/net/dsa/mt7530.h
-@@ -8,7 +8,6 @@
+ 	ds->assisted_learning_on_cpu_port = true;
+ 	ds->mtu_enforcement_ingress = true;
  
- #define MT7530_NUM_PORTS		7
- #define MT7530_NUM_PHYS			5
--#define MT7530_CPU_PORT			6
- #define MT7530_NUM_FDB_RECORDS		2048
- #define MT7530_ALL_MEMBERS		0xff
+@@ -2266,6 +2279,7 @@ mt7531_setup(struct dsa_switch *ds)
+ {
+ 	struct mt7530_priv *priv = ds->priv;
+ 	struct mt7530_dummy_poll p;
++	struct dsa_port *cpu_dp;
+ 	u32 val, id;
+ 	int ret, i;
+ 
+@@ -2338,8 +2352,11 @@ mt7531_setup(struct dsa_switch *ds)
+ 				 CORE_PLL_GROUP4, val);
+ 
+ 	/* BPDU to CPU port */
+-	mt7530_rmw(priv, MT7531_CFC, MT7531_CPU_PMAP_MASK,
+-		   BIT(MT7530_CPU_PORT));
++	dsa_switch_for_each_cpu_port(cpu_dp, ds) {
++		mt7530_rmw(priv, MT7531_CFC, MT7531_CPU_PMAP_MASK,
++			   BIT(cpu_dp->index));
++		break;
++	}
+ 	mt7530_rmw(priv, MT753X_BPC, MT753X_BPDU_PORT_FW_MASK,
+ 		   MT753X_BPDU_CPU_ONLY);
  
 -- 
 2.34.1
