@@ -4,156 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFFFDC43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 13:20:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B94ECCA47B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 13:26:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x7Wq9EnHOgdNy8qpPwvH0TEq2m1KT1Kh0Y6DL0Y51ic=; b=SuG3NqGWSHzUQZ
-	JA5+FZTNxNSg0SWpnrxsQqwTbaWiXAy/4lS6zFSX4EV+uDZXu3G84+eh7DEyIrknCKqEYA6IT5SS9
-	PmReFIPH0AYSeZ5W+M3KYX+tnY8qRMnueKVad+7GV0icFCf/ryiJjF/XhxtQUERbyimrpUVI+DMUE
-	vnv7yxiRfVr6xJjfvbN6TrCb47pS+lruy31qYcdLNn8LN4jCPIxfKhVocH7dTqELG3VmOp7k23PRO
-	HXNfjrh0AOwdqQqJBgX9YDS/kppFes8WcM9cdSVybASQpoFWfcJJahjhpCoTKpdI9OtCOnctGJeBw
-	6KDeiYGessCiSM6JhWJw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fbi6v3u0GGRYC9/Cqtl15Ro0IRKmTySt8BRrhbZ/trM=; b=HIbk2oG4/dqpRg
+	eW92hJLfU166Hr7cPb/RuOMzEiBCo9eT2pME1pspCUVpwmt98NJW7XqxHmGXKtbtJlunTZDG5sX+N
+	73+hJydJ8e4IjiE87ZI1kU6SQmM/IJPC1DZk+u/QZup1ISgOPruJRbNs+bIoU49Udor2h4vnJ7VR2
+	I5Ube70V2GglNRQRXz1hitAzZa7MCA7nYUpDs8ZAYd26Gh37DBZvJKSziyYl/h2fMX3JRF/I+cIrA
+	tkglKEfcImj0pW+uyefoTKD8ts6m3tMB1MqaaEsUbefYHQrd0SHCZZTFaAzong6Qk4G2m1KmqRC/x
+	QHYTHMN36wVjZAIMPntA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzeZA-008LEj-D8; Fri, 10 Jun 2022 13:20:44 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1nzeeM-008MVP-Ui; Fri, 10 Jun 2022 13:26:06 +0000
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzeZ7-008LCi-DK
-	for linux-rockchip@lists.infradead.org; Fri, 10 Jun 2022 13:20:43 +0000
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25ADEAbp012733;
-	Fri, 10 Jun 2022 13:20:32 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2021-07-09;
- bh=QVIpPD3OmZ4dGRRLhM3f5nmvVgmgp+Wi0TvBNMLgiAI=;
- b=VpqoBa39q/3Q2OSyEaQ84aTn9JWvv86J/+mLL+XshmgoN0E8JLlwe0BN0I6nMk1tmC2i
- qAoTJbexKzWc6A5VKOQeVZu65uT8vClfi1sjHwtXPHr2Y1bUhIBWiogvRKn5varTLJR8
- elVLDlyJ8rXpADaPCOnVxUp+R8+mngmeXEL/CfARBQNt/rcMaSXUSYuEVaC1/As7UdAN
- /xLJ2xQtZIFPFniajvndWA0MTMpsdjBYttC6AhnwVFCIi6CY0h5Xt9uE6+WD2g51ZOVx
- O7+GkwTd2wEnz/RPxqRMsGDHd5ARjdXS8BUSkWljREqVIcoBDtvcPrHtZbSk2ich5+11 dg== 
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3gfyxsnwwc-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 10 Jun 2022 13:20:32 +0000
-Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.16.1.2/8.16.1.2) with SMTP id 25ADHXEL040662;
-	Fri, 10 Jun 2022 13:20:31 GMT
-Received: from nam12-mw2-obe.outbound.protection.outlook.com (mail-mw2nam12lp2041.outbound.protection.outlook.com [104.47.66.41])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com with ESMTP id 3gfwud1e4u-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 10 Jun 2022 13:20:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Q57c9blQOHeotzOjqdo1HfCmDbwUieZVCUD/SStcRi6+J58JkJWNbGBZI6/+B7+LQBXQuq9Byb9mX9rYtdacizWwNqRpG0PkA/U5jNMem+zSL/ni9Lb+/p4acvHrJQWCSTbZeLCIy+/63gFQI9EpoOEdmYWOzReE7fvvvlkF7/O3jscLUvb607Pl2g2EKGPQmAMsAt3i7XpYBk7FO3ZSvG0yXMwF97IwjNJ4dqZdB1fps4j6HUpVBcZXKRQtWz56SNHjRDobrG2lDt1KR+A1FbCbC59INS82kRxCoSAl0qYo9wapKOD8oQ2PlpDV5gwwmNpeiBep0fHHXLQn/dS0Kg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QVIpPD3OmZ4dGRRLhM3f5nmvVgmgp+Wi0TvBNMLgiAI=;
- b=hoLt/BVanaySRQfqg1p7qc6y8fArghSlnh4U8tEfR6S0CCXF+D/jl3ouCMOZ+TjJFDYd/zIgwWaO8u7KkrkAnJhV4ZVbc9XJ32uuSjdZZNur+sYXIZMDU/rO0JmsGGHcAphVQLM9BcF4eu+J8u8kJYohNLRdGvan/b8nDa3IPh2huex1IUod4Y9BkbVFbc0QJhMe60SudYF0g+PbIBbY0Xb7xWJMRu6XLRlHjTooO+oYQ6YvREhd6O601nbq9SoRIGs8hhw3TnlkEBTethTgCa/cnUN2SnP41aPXW3eXT33iEza78/mSEvmnfH8ZdyusP4Q8eKbMy9bUhHBd5C1rWQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+	id 1nzeeB-008MSH-VL; Fri, 10 Jun 2022 13:25:57 +0000
+Received: by mail-qk1-x72c.google.com with SMTP id x75so16443891qkb.12;
+        Fri, 10 Jun 2022 06:25:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QVIpPD3OmZ4dGRRLhM3f5nmvVgmgp+Wi0TvBNMLgiAI=;
- b=vnawC/ucCy9GW0751XjMkAMyOkvQHYGfPKvb066Blr4IcH8UgWkULlUEBRdJYejrSqB5YH+hEMnMBHfcQK7GTY5S+p4y8YXblEqgeztpnudBNYCzEkSGNAgy/1lX3qJJ3RUW0LnGx1SONeNVKrnDVbaL+jrOEDJSOlmCUKYJNUk=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by DM8PR10MB5479.namprd10.prod.outlook.com
- (2603:10b6:8:3b::14) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.13; Fri, 10 Jun
- 2022 13:20:28 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::5020:9b82:5917:40b]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::5020:9b82:5917:40b%6]) with mapi id 15.20.5332.013; Fri, 10 Jun 2022
- 13:20:28 +0000
-Date: Fri, 10 Jun 2022 16:20:17 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: linux-media@vger.kernel.org,
-        Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-        Mauro Carvalho Chehab <mchehab@kernel.org>,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>, kernel@collabora.com,
-        linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-        linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 4/5] media: rkvdec: Re-enable H.264 error detection
-Message-ID: <20220610132017.GD2146@kadam>
-References: <20220610125215.240539-1-nicolas.dufresne@collabora.com>
- <20220610125215.240539-5-nicolas.dufresne@collabora.com>
-Content-Disposition: inline
-In-Reply-To: <20220610125215.240539-5-nicolas.dufresne@collabora.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: MRXP264CA0019.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:500:15::31) To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=8sukDbyEo5xcdDaL583IQTHCCE/whgVyUt9NY9aiWLE=;
+        b=UCfkLISXPPSYeSjgGZqDfO+y4Neo+B81CIy6P9OkISnZ5tfbMX1tV5EYKqdjTLq6Ok
+         RjXUQnH/Skkm6QY1FK/5Latq0i0AeCYBRql+WgmofSHUA7/ffM4qzOktdTG8PEac04YD
+         csjJBUciYDdQ4UqKHkWFXNm7Z8N/Prng/BFNo+iTJ8teVXsHvCqPr5JrP0bqlfbne+ZB
+         KQW8Zp0G2x+lK3HPi2ISQv31gP9SF8DO1vadvsYZF2h8rXxO1c7lzAGV389I1YjzB0DR
+         i1p3vRetcWlWZOqRu8Yb4Yj+fPbYwkwbsPmqivBBQEDtPG04PQF5M8ub+ZBPgYphWYLI
+         Nc9Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=8sukDbyEo5xcdDaL583IQTHCCE/whgVyUt9NY9aiWLE=;
+        b=Cae6ia3Nj0bHlthwk5NvZnYC9pvhnAoAgvciNbzpGDiyGc3/auUuThZux0W/7ME2vB
+         2tjU3XAaa5aKDFcs6pS5UbCnj0BV294uwTIZ5SoiN/pUwlBstXkNXmCjZbwFmFGsmBl4
+         48eg0DgI4LOBBZwa4647hJHqPBGXyVJS63DOso/7ZL10J91+RCmFOqC+2uy/A1F5PtdV
+         7HfSNYSC0/hlQgRoegJySUvSiXuvFMxJGcoUQ6C/49b7QMQ93lPI1/pqoeuCnCPNkXc8
+         I16bPED+Vf1T4G3zs2fRpqlVMi7C+vqiDbau89x2M05fU3TcaQWaPKSZzN7BJhgcpb4m
+         P8Sw==
+X-Gm-Message-State: AOAM533OSKysu4IUPt62ZrQdHnE68o3xA0Fv5auHcvyk84VjJ8Slj0Wt
+	Erw1wxkkRYFbo9Cgq84Br9M=
+X-Google-Smtp-Source: ABdhPJwtF6VIFbozwGhPH9J0MR6+fnBYBm7qIbwqC1jbHL9ckpuXbik1TffFWtfH1rLe1Upf4pRhyQ==
+X-Received: by 2002:a05:620a:4107:b0:6a6:deea:ebb2 with SMTP id j7-20020a05620a410700b006a6deeaebb2mr12362586qko.245.1654867553832;
+        Fri, 10 Jun 2022 06:25:53 -0700 (PDT)
+Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
+        by smtp.gmail.com with ESMTPSA id ay7-20020a05620a178700b006a73cb957dasm2886594qkb.20.2022.06.10.06.25.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Jun 2022 06:25:53 -0700 (PDT)
+From: Peter Geis <pgwipeout@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Michael Riesch <michael.riesch@wolfvision.net>
+Cc: Peter Geis <pgwipeout@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: Fix Quartz64-A dwc3 otg port behavior
+Date: Fri, 10 Jun 2022 09:25:42 -0400
+Message-Id: <20220610132542.159978-1-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: ae728dc4-3539-4c0d-3834-08da4ae3fc7a
-X-MS-TrafficTypeDiagnostic: DM8PR10MB5479:EE_
-X-Microsoft-Antispam-PRVS: 	<DM8PR10MB5479639076CACCF2749C41A98EA69@DM8PR10MB5479.namprd10.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	k6M8duH1+do1WrXnzdPFfC+/5wWPWRR8dg7cyeRq1SENSTlsbDfmoZJDoWdFYKpMbI1G9pxrt8iopI+1BCn89+T8gUi3JVPXgyypPGsz161UsLGmY6hQxmaOZtPRJ80n+MaUZqRRHSWK6MxNdEUkr7dY+rrMJOkxVhLIUVf8GvzBLzZ8ZJFRtxVkkd2s1Xck1NlmM7mMLWvm64Yy2XwA5Zcdp4dFtjsSl9suEnb0MHkfIDODXS0gEGXQcVYsYrx93sLX+a2goGsExlA9Ox30cBASh3IjNGvGrkAwWh6mKwInoxt3u25qKL1ydEBYNkXm3zLBH8jRI+17uVTZB4a9xThDaYF28MfaX0to/Gh75Nyf1uZYua3yUNqTGHODhEb23KrUdzTRJyi0Dq752fR8Vhq/gTPWdHEaIino08z1YJf1iabIYygYLVuRz2ybPfobED31WT398wNRAWCQTCxRhlcj6Ov7jyDHvx2E3nxQVXlk0dujvpSTl6Dm0j7JATGHRbKyf3PZCymI5epepftuAmmos+qZuid3Yks4CGxZrCOXfcFwDvCtW/N/9Qdg03uq/R+dvGgR25Um2X/KkDcHbGLF7zyDQjIFXWqaWl6BuCFw/3hs9GPZsShY35+HvRT5jgW8F5Vbwo/KDKwmcXFoGiDJylmU80tvqT8xGZZV+AjiLsHeipl1zpcwWJITL0WRCFvj/dWpfIx6vJ/CaUiEBA==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(7916004)(366004)(186003)(54906003)(2906002)(33716001)(1076003)(6916009)(316002)(83380400001)(6666004)(508600001)(8676002)(33656002)(4326008)(66946007)(26005)(9686003)(6512007)(66476007)(66556008)(44832011)(6506007)(5660300002)(52116002)(6486002)(38350700002)(38100700002)(86362001)(8936002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?V9EGMGY2Nko+bi8nh6OljxZY6B3UhOPuV4fCi7vCI8iBeY9T8sNFcwFtl2nd?=
- =?us-ascii?Q?flId9KL4vHjXOYx2dsHLqbpgmDgBmsfbLWHLGV3IK4VtSpxaRaa11vn7MHXj?=
- =?us-ascii?Q?LDaXAsmaCJ110e7A5aFDfqVt+Y32EEZSfTtj7oCX/vAPgaYts0+jUOPnza5T?=
- =?us-ascii?Q?dI8B6/eOwRFb1X8zpry0jJ2+WjHLoyTzU3K654Xj7Cb1W/jQdbNvw8ALOGTW?=
- =?us-ascii?Q?3qkcYCNoRs1zvq8jprQVQzlCRJxBoyxUl9Y337ynQygy5dEgoXp+mqIM0+5C?=
- =?us-ascii?Q?v7nSAUquGZlSD3NWA4ShR/pfdioKkbvVUqPeKLXvdZXldAd5OHYWnigaCWUi?=
- =?us-ascii?Q?/mvwc/XM+aLnEOxrUVccS5GHruxi2TOTskYnr8KM/L9JVtnv+mUxeMiJyE4O?=
- =?us-ascii?Q?z7wRpbk1eYovGNmHtr9GjnGyYKf5zi/OqpKj4JRzkbGD/oHuQt00WhWr33Pz?=
- =?us-ascii?Q?ho9YybmL09cBSnECgrkz190E1JJpVWhoxcMOAD16tBAtjFX5wrJsccN6VOBb?=
- =?us-ascii?Q?lMbZlWtvz8VEeA46VHSew5d6o19V4bhvblOZ6O5E6ZIr91v8CvcGkGc25/XA?=
- =?us-ascii?Q?qM4soVcENlAlGhTydFle6UwoNaX8FbxF6qVDzTGO+U+2wIYkzlP1/RHFFh37?=
- =?us-ascii?Q?rB6MYB46ClBMks/GBYVqcPr0lZYEFq4Iz1sjhrLKnbKa8rS3r/NDuBKGlnlW?=
- =?us-ascii?Q?QQs7HWtsjBiY8gX5GOY4g3AhO7c/b6h0whFNzEzpH2yYP/2uCBJyBQxKW8OD?=
- =?us-ascii?Q?dwATein2nEh1EySU0QXOquYhyNAelMhzTAN155CIvj0shM+l1Z4WsNQD1R8g?=
- =?us-ascii?Q?FbKEQwYBUEMuVE3rjH7xJe7P0JuPE2aZNnDx1mvh/aROutAtuCPIdDTrpmH0?=
- =?us-ascii?Q?VvcfUgqCM11KgMLVB/zv2V8+7wBhIPCL/Z1ONMiw/A0nqPlyDXwYne6sZEeg?=
- =?us-ascii?Q?EO4nY8bIxnkCuCwTEpHNdY41OwrDzbI2kqpLYKbgsDm/aOgX3ttW1yrhSdoN?=
- =?us-ascii?Q?aO0GKNtCeG7k7qf/H4YMbSFpWhAM7x+hLkqyOmPHkGtnMGvrnTEjmbrw18J2?=
- =?us-ascii?Q?1MxCeRAgfjNpEXFLiOYelTUkqFzkjloBu2gxRS43p6WhitzC835TNdKy0Cvx?=
- =?us-ascii?Q?CEeXpjre7H42zYUNFGaNDH56A28j1Wm9ufjxpPO6xBcJ/cYw0fRhyPivzwtj?=
- =?us-ascii?Q?goBPa5t99xDt7W5pcFdVPN18NioS8yY6ZlG2clRHnJ6EO0vRB41O4wB0XWSW?=
- =?us-ascii?Q?pjKdapQYLngZXdFNDg9D79kTOediWHACsYs95kZPP4ebXMQn2TsZu73qa79v?=
- =?us-ascii?Q?T8P3SMiJv73Fq+YG0GxqhHFsBIeQA4Rb2prYsVNLFXHh+SiGmEplM827LSii?=
- =?us-ascii?Q?SiNU3fLc3frjMXxZBZ+CkfTlEkO3JBi0azBNDUTEgDNlRfEC1FgXhb6AM1z3?=
- =?us-ascii?Q?VjidiAqCYek13l4fv2eL7XorrnIW4sbYICJBuo43FhmtKkC66pvXN1M3qy7Y?=
- =?us-ascii?Q?mvt1Kzn9VVjz2t+EIoTZcNyeRvwn9CZlBz2U0NgP+hseKnjLPo56k6CJJzzP?=
- =?us-ascii?Q?jwNAwmCtB8JJ+6fIrptSR5dXmveohCAHUxWRCmf9ytkAvlmjXOCUgznBHuI0?=
- =?us-ascii?Q?VKQRsO6BAvt1TKY7Lhh+dEN8IM4Ck/ec7Xo8lVz6z2BGzqWGSFqh82tvXVw9?=
- =?us-ascii?Q?RYFSZgR9VkqkHZ0WWZIF6/xPq0YLRJfW/fOidB8gPGxFQDK7iJtOn2kmdN9T?=
- =?us-ascii?Q?Qm9DbqtBuNdGzCvF0uu2OG5YTdPOvP4=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ae728dc4-3539-4c0d-3834-08da4ae3fc7a
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Jun 2022 13:20:28.7433
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Mu+pz4Rxx1lXKDE4DNYlFhGv/0b0RX+AW4w+6MAxjE9NqdZKhguGnwtTIowAariu7SR4IUBDRgXK5LdtA9a4suJv++e2KZEtlBEeteifWtQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM8PR10MB5479
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.517,18.0.874
- definitions=2022-06-10_06:2022-06-09,2022-06-10 signatures=0
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 bulkscore=0
- malwarescore=0 mlxlogscore=999 adultscore=0 mlxscore=0 phishscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2204290000 definitions=main-2206100054
-X-Proofpoint-ORIG-GUID: Q2mGQDqnv_rXBSsGusKgbH6Zduhr4qNt
-X-Proofpoint-GUID: Q2mGQDqnv_rXBSsGusKgbH6Zduhr4qNt
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_062041_830582_CC8DD5BB 
-X-CRM114-Status: GOOD (  22.14  )
+X-CRM114-CacheID: sfid-20220610_062556_064535_56FAB7CE 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -170,38 +91,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 10, 2022 at 08:52:14AM -0400, Nicolas Dufresne wrote:
-> This re-enables H.264 error detection, but using the other error mode.
-> In that mode, the decoder will skip over the error macro-block or
-> slices and complete the decoding. As a side effect, the error status
-> is not set in the interrupt status register, and instead errors are
-> detected per format. Using this mode workaround the issue that the
-> HW get stuck in error stated and allow reporting that some corruption
-> may be present in the buffer returned to userland.
-> 
-> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> ---
->  drivers/staging/media/rkvdec/rkvdec-h264.c | 23 +++++++++++++++++++---
->  1 file changed, 20 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-> index 55596ce6bb6e..60a89918e2c1 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-> +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-> @@ -1175,14 +1175,15 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
->  
->  	schedule_delayed_work(&rkvdec->watchdog_work, msecs_to_jiffies(2000));
->  
-> -	writel(0, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
-> -	writel(0, rkvdec->regs + RKVDEC_REG_H264_ERR_E);
-> +	writel(0xffffffff, rkvdec->regs + RKVDEC_REG_STRMD_ERR_EN);
-> +	writel(0xffffffff, rkvdec->regs + RKVDEC_REG_H264_ERR_E);
+The otg_id line on the Quartz64 Model A is not connected to anything.
+This prevents automatic selection of the dual role usb port. In otg mode
+it defaults to device mode. Force it to host mode to retain previous
+behavior.
 
-This reverts the changes in patch 1/5.  Could we just skip patch 1/5
-instead?
+Fixes: bc405bb3eeee ("arm64: dts: rockchip: enable otg/drd operation of usb_host0_xhci in rk356x")
 
-regards,
-dan carpenter
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+index 1534e11a9ad1..fa953b736642 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+@@ -687,6 +687,7 @@ &usb_host1_ohci {
+ };
+ 
+ &usb_host0_xhci {
++	dr_mode = "host";
+ 	status = "okay";
+ };
+ 
+-- 
+2.25.1
 
 
 _______________________________________________
