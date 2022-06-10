@@ -4,80 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEADDC43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 17:08:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35AD2C43334
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 19:14:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5XhRcYmNl+dmv5hrwSphyfjxyjYpGPc9xwYZ6O3b4Mc=; b=IK+uqjxEGPXRz7
-	ygN17J4XTH8bogyTg2jnuhBzd94IrwjYw81HY1uoMAwA7Xc6JBTn/WmCm92LwB8K7PJSEdv0XX/tC
-	Y4nnf9P0rviDQhwFsp3ZKIsD1OC3WRqy3CAoBQB+cwZxQGO+8RzJLOmcnP8nthOOuOacdo3sA/P0V
-	KRpDZBDnVjABOBcaF3cdmoOZiA7xnc/oon2EgD24nqCrtW4EiqmsuCyviTJmlXo/N5/mkGP5vHh36
-	9DQnXx/T8DlnfR98Gpuzjj1d5WemhV+fTL92tbFmCuy0YVI9sCJMNCNi8PZLPTHvomeB9XQ7H11Ok
-	JU/BlRtQzGm4739kuQjQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=28UwMO/JrAY/xZnMliLQ6axHqKB+4AculmPjxXf9rzM=; b=rskzb1SHfaa26qIf2viWDxmkoY
+	abvigtkRY0C3Yh0MoV4r3+Xk84EmlTf8sg1ejNyFpiDxsocazdpZPnU0xwREHEF5/DTFeS+FgD0vT
+	7P4fY+KOCpHmVBsYojLQd6hN7Ft5HiIbPY78iCsFAG9NL08T6nITD4I4prJGRaf1ui2rfBlfJOj4q
+	ZZ/5w6n5SzUCaUaoledcVbCal133RxIFIH/55GIYrkIDycf8mPxTqNiTyzsFjgZ2cdJ9R6aktVrFZ
+	YXyUEf7ZSOlBQj9pz2RWL97/f3BA0AtEuuoBnpuBq24TRPs06L73El6Ba4uaCWHfWNfCKBTRZ1gpy
+	DZOa5cyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzi7D-0094jr-9E; Fri, 10 Jun 2022 17:08:07 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1nzk5Q-009VkZ-KR; Fri, 10 Jun 2022 19:14:24 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzi5N-0093Ta-3P; Fri, 10 Jun 2022 17:06:16 +0000
-Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout2.routing.net (Postfix) with ESMTP id 27A505FBCB;
-	Fri, 10 Jun 2022 17:06:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1654880768;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xWhTK4R919gzcw8H7A5SmTbiVYCMiIHiCGx1oIL6MOA=;
-	b=F/CaaZqZrYtfOBplU1tsgFHTl4qxQTtoMYMIXgeF5uiVRQhSdXc/AIN8tNHaRkw4JxsobS
-	9z2s057vu034EUoNa6EjVZpp6JCsbw7SFDKNOGTsgWdlmn9VqZOlLCeBVH7NAUHGDttUtU
-	VGQDRpTgmNlmTdriCHJ1EnJJpCILJPo=
-Received: from frank-G5.. (fttx-pool-217.61.154.155.bambit.de [217.61.154.155])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 5E78B100394;
-	Fri, 10 Jun 2022 17:06:06 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-rockchip@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vivien Didelot <vivien.didelot@gmail.com>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Landen Chao <Landen.Chao@mediatek.com>,
-	DENG Qingfang <dqfext@gmail.com>,
-	Peter Geis <pgwipeout@gmail.com>,
-	netdev@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Greg Ungerer <gerg@kernel.org>,
-	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
-	"Mauro Carvalho Chehab" <mchehab+samsung@kernel.org>
-Subject: [PATCH v4 1/6] dt-bindings: net: dsa: convert binding for mediatek switches
-Date: Fri, 10 Jun 2022 19:05:36 +0200
-Message-Id: <20220610170541.8643-2-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220610170541.8643-1-linux@fw-web.de>
-References: <20220610170541.8643-1-linux@fw-web.de>
+	id 1nzk5N-009Vie-PK
+	for linux-rockchip@lists.infradead.org; Fri, 10 Jun 2022 19:14:23 +0000
+Received: from localhost (unknown [94.134.91.164])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sebastianfricke)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DE838660171F;
+	Fri, 10 Jun 2022 20:14:15 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1654888456;
+	bh=6GXcmorL5zNXiebjSNEfJIyYSLvMDnksHIFtCZk5Tow=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kIq37SN3oFbZFxM5JjGcBaERVUJj6Ua9iqJagSoqLJDGAUR45CSOdSGBQlD9858tU
+	 lap4CDD0sJ49xIuNZVGpdLLjRMm7tOlkRNrv9t4Sqs1VP4XoRazkY6iYw/ENXBB1BA
+	 Lcu6ElJFG3Tl6760KXW8XXJ5tfxp+GB9KMgzcsz4THPq6N6edCLYxqoNlia1edXTVC
+	 B+6iZm0HtbBHDfd5ca5jEfy7k7rKZ9XAGFKsdW5CKu+2yqda7dVzeqiiNP2nGyn49w
+	 CXJ366NeC9SCjIqjK3v2HK89kGBENqrQcTZj4rPPeaYXL12UKDHFbmnVebrMW3k/f0
+	 039zdkvBOEIiQ==
+Date: Fri, 10 Jun 2022 21:14:13 +0200
+From: Sebastian Fricke <sebastian.fricke@collabora.com>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: linux-media@vger.kernel.org,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	kernel@collabora.com, linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 5/5] media: rkvdec: Improve error handling
+Message-ID: <20220610191413.xgwfw5n6snje3khj@basti-XPS-13-9310>
+References: <20220610125215.240539-1-nicolas.dufresne@collabora.com>
+ <20220610125215.240539-6-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
-X-Mail-ID: c5560985-c828-4dd8-8779-5dd5ffb6263b
+Content-Disposition: inline
+In-Reply-To: <20220610125215.240539-6-nicolas.dufresne@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_100613_504839_EC25CCB0 
-X-CRM114-Status: GOOD (  27.41  )
+X-CRM114-CacheID: sfid-20220610_121422_004851_D1D9CE59 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,794 +72,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+Hey Nicolas,
 
-Convert txt binding to yaml binding for Mediatek switches.
+Tested with: python3 fluster.py run -d GStreamer-H.264-V4L2SL-Gst1.0 -ts JVT-AVC_
+V1 -so /tmp/h264_test.csv -f csv -j1
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
-v4:
-- fix squash of port 5 as cpu-port
-- drop type from interrupt-controller and add depency for this
-- use ethernet-ports in examples
-- drop address-/size-cells
+Ran 129/135 tests successfully               in 82.280 secs
 
-v3:
-- include standalone patch in mt7530 series
-- drop some descriptions (gpio-cells,reset-gpios,reset-names)
-- drop | from descriptions
-- move patternProperties above allOf
+On 10.06.2022 08:52, Nicolas Dufresne wrote:
+>There is two way decode errors can occur. In one case, the ready
 
-v2:
-- rename mediatek.yaml => mediatek,mt7530.yaml
-- drop "boolean" in description
-- drop description for interrupt-properties
-- drop #interrupt-cells as requirement
-- example: eth=>ethernet,mdio0=>mdio,comment indention
-- replace 0 by GPIO_ACTIVE_HIGH in first example
-- use port(s)-pattern from dsa.yaml
-- adress/size-cells not added to required because this
-  is defined at mdio-level inc current dts , not switch level
----
- .../bindings/net/dsa/mediatek,mt7530.yaml     | 406 ++++++++++++++++++
- .../devicetree/bindings/net/dsa/mt7530.txt    | 327 --------------
- 2 files changed, 406 insertions(+), 327 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
- delete mode 100644 Documentation/devicetree/bindings/net/dsa/mt7530.txt
+s/There is two way decode/There are two ways decoding/
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-new file mode 100644
-index 000000000000..112cfaa7e3f6
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -0,0 +1,406 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/dsa/mediatek,mt7530.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek MT7530 Ethernet switch
-+
-+maintainers:
-+  - Sean Wang <sean.wang@mediatek.com>
-+  - Landen Chao <Landen.Chao@mediatek.com>
-+  - DENG Qingfang <dqfext@gmail.com>
-+
-+description: |
-+  Port 5 of mt7530 and mt7621 switch is muxed between:
-+  1. GMAC5: GMAC5 can interface with another external MAC or PHY.
-+  2. PHY of port 0 or port 4: PHY interfaces with an external MAC like 2nd GMAC
-+     of the SOC. Used in many setups where port 0/4 becomes the WAN port.
-+     Note: On a MT7621 SOC with integrated switch: 2nd GMAC can only connected to
-+       GMAC5 when the gpios for RGMII2 (GPIO 22-33) are not used and not
-+       connected to external component!
-+
-+  Port 5 modes/configurations:
-+  1. Port 5 is disabled and isolated: An external phy can interface to the 2nd
-+     GMAC of the SOC.
-+     In the case of a build-in MT7530 switch, port 5 shares the RGMII bus with 2nd
-+     GMAC and an optional external phy. Mind the GPIO/pinctl settings of the SOC!
-+  2. Port 5 is muxed to PHY of port 0/4: Port 0/4 interfaces with 2nd GMAC.
-+     It is a simple MAC to PHY interface, port 5 needs to be setup for xMII mode
-+     and RGMII delay.
-+  3. Port 5 is muxed to GMAC5 and can interface to an external phy.
-+     Port 5 becomes an extra switch port.
-+     Only works on platform where external phy TX<->RX lines are swapped.
-+     Like in the Ubiquiti ER-X-SFP.
-+  4. Port 5 is muxed to GMAC5 and interfaces with the 2nd GAMC as 2nd CPU port.
-+     Currently a 2nd CPU port is not supported by DSA code.
-+
-+  Depending on how the external PHY is wired:
-+  1. normal: The PHY can only connect to 2nd GMAC but not to the switch
-+  2. swapped: RGMII TX, RX are swapped; external phy interface with the switch as
-+     a ethernet port. But can't interface to the 2nd GMAC.
-+
-+    Based on the DT the port 5 mode is configured.
-+
-+  Driver tries to lookup the phy-handle of the 2nd GMAC of the master device.
-+  When phy-handle matches PHY of port 0 or 4 then port 5 set-up as mode 2.
-+  phy-mode must be set, see also example 2 below!
-+  * mt7621: phy-mode = "rgmii-txid";
-+  * mt7623: phy-mode = "rgmii";
-+
-+  CPU-Ports need a phy-mode property:
-+    Allowed values on mt7530 and mt7621:
-+      - "rgmii"
-+      - "trgmii"
-+    On mt7531:
-+      - "1000base-x"
-+      - "2500base-x"
-+      - "sgmii"
-+
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt7530
-+      - mediatek,mt7531
-+      - mediatek,mt7621
-+
-+  core-supply:
-+    description:
-+      Phandle to the regulator node necessary for the core power.
-+
-+  "#gpio-cells":
-+    const: 2
-+
-+  gpio-controller:
-+    type: boolean
-+    description:
-+      if defined, MT7530's LED controller will run on GPIO mode.
-+
-+  "#interrupt-cells":
-+    const: 1
-+
-+  interrupt-controller: true
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  io-supply:
-+    description:
-+      Phandle to the regulator node necessary for the I/O power.
-+      See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
-+      for details for the regulator setup on these boards.
-+
-+  mediatek,mcm:
-+    type: boolean
-+    description:
-+      if defined, indicates that either MT7530 is the part on multi-chip
-+      module belong to MT7623A has or the remotely standalone chip as the
-+      function MT7623N reference board provided for.
-+
-+  reset-gpios:
-+    maxItems: 1
-+
-+  reset-names:
-+    const: mcm
-+
-+  resets:
-+    description:
-+      Phandle pointing to the system reset controller with line index for
-+      the ethsys.
-+    maxItems: 1
-+
-+patternProperties:
-+  "^(ethernet-)?ports$":
-+    type: object
-+
-+    patternProperties:
-+      "^(ethernet-)?port@[0-9]+$":
-+        type: object
-+        description: Ethernet switch ports
-+
-+        unevaluatedProperties: false
-+
-+        properties:
-+          reg:
-+            description:
-+              Port address described must be 6 for CPU port and from 0 to
-+              5 for user ports.
-+
-+        allOf:
-+          - $ref: dsa-port.yaml#
-+          - if:
-+              properties:
-+                label:
-+                  items:
-+                    - const: cpu
-+            then:
-+              required:
-+                - reg
-+                - phy-mode
-+
-+required:
-+  - compatible
-+  - reg
-+
-+allOf:
-+  - $ref: "dsa.yaml#"
-+  - if:
-+      required:
-+        - mediatek,mcm
-+    then:
-+      required:
-+        - resets
-+        - reset-names
-+    else:
-+      required:
-+        - reset-gpios
-+
-+  - dependencies:
-+      interrupt-controller: [ interrupts ]
-+
-+  - if:
-+      properties:
-+        compatible:
-+          items:
-+            - const: mediatek,mt7530
-+    then:
-+      required:
-+        - core-supply
-+        - io-supply
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+    mdio {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+        switch@0 {
-+            compatible = "mediatek,mt7530";
-+            reg = <0>;
-+
-+            core-supply = <&mt6323_vpa_reg>;
-+            io-supply = <&mt6323_vemc3v3_reg>;
-+            reset-gpios = <&pio 33 GPIO_ACTIVE_HIGH>;
-+
-+            ethernet-ports {
-+                #address-cells = <1>;
-+                #size-cells = <0>;
-+                port@0 {
-+                    reg = <0>;
-+                    label = "lan0";
-+                };
-+
-+                port@1 {
-+                    reg = <1>;
-+                    label = "lan1";
-+                };
-+
-+                port@2 {
-+                    reg = <2>;
-+                    label = "lan2";
-+                };
-+
-+                port@3 {
-+                    reg = <3>;
-+                    label = "lan3";
-+                };
-+
-+                port@4 {
-+                    reg = <4>;
-+                    label = "wan";
-+                };
-+
-+                port@6 {
-+                    reg = <6>;
-+                    label = "cpu";
-+                    ethernet = <&gmac0>;
-+                    phy-mode = "trgmii";
-+                    fixed-link {
-+                        speed = <1000>;
-+                        full-duplex;
-+                    };
-+                };
-+            };
-+        };
-+    };
-+
-+  - |
-+    //Example 2: MT7621: Port 4 is WAN port: 2nd GMAC -> Port 5 -> PHY port 4.
-+
-+    ethernet {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+        gmac0: mac@0 {
-+            compatible = "mediatek,eth-mac";
-+            reg = <0>;
-+            phy-mode = "rgmii";
-+
-+            fixed-link {
-+                speed = <1000>;
-+                full-duplex;
-+                pause;
-+            };
-+        };
-+
-+        gmac1: mac@1 {
-+            compatible = "mediatek,eth-mac";
-+            reg = <1>;
-+            phy-mode = "rgmii-txid";
-+            phy-handle = <&phy4>;
-+        };
-+
-+        mdio: mdio-bus {
-+            #address-cells = <1>;
-+            #size-cells = <0>;
-+
-+            /* Internal phy */
-+            phy4: ethernet-phy@4 {
-+                reg = <4>;
-+            };
-+
-+            mt7530: switch@1f {
-+                compatible = "mediatek,mt7621";
-+                reg = <0x1f>;
-+                mediatek,mcm;
-+
-+                resets = <&rstctrl 2>;
-+                reset-names = "mcm";
-+
-+                ethernet-ports {
-+                    #address-cells = <1>;
-+                    #size-cells = <0>;
-+
-+                    port@0 {
-+                        reg = <0>;
-+                        label = "lan0";
-+                    };
-+
-+                    port@1 {
-+                        reg = <1>;
-+                        label = "lan1";
-+                    };
-+
-+                    port@2 {
-+                        reg = <2>;
-+                        label = "lan2";
-+                    };
-+
-+                    port@3 {
-+                        reg = <3>;
-+                        label = "lan3";
-+                    };
-+
-+                    /* Commented out. Port 4 is handled by 2nd GMAC.
-+                    port@4 {
-+                        reg = <4>;
-+                        label = "lan4";
-+                    };
-+                    */
-+
-+                    port@6 {
-+                        reg = <6>;
-+                        label = "cpu";
-+                        ethernet = <&gmac0>;
-+                        phy-mode = "rgmii";
-+
-+                        fixed-link {
-+                            speed = <1000>;
-+                            full-duplex;
-+                            pause;
-+                        };
-+                    };
-+                };
-+            };
-+        };
-+    };
-+
-+  - |
-+    //Example 3: MT7621: Port 5 is connected to external PHY: Port 5 -> external PHY.
-+
-+    ethernet {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+        gmac_0: mac@0 {
-+            compatible = "mediatek,eth-mac";
-+            reg = <0>;
-+            phy-mode = "rgmii";
-+
-+            fixed-link {
-+                speed = <1000>;
-+                full-duplex;
-+                pause;
-+            };
-+        };
-+
-+        mdio0: mdio-bus {
-+            #address-cells = <1>;
-+            #size-cells = <0>;
-+
-+            /* External phy */
-+            ephy5: ethernet-phy@7 {
-+                reg = <7>;
-+            };
-+
-+            switch@1f {
-+                compatible = "mediatek,mt7621";
-+                reg = <0x1f>;
-+                mediatek,mcm;
-+
-+                resets = <&rstctrl 2>;
-+                reset-names = "mcm";
-+
-+                ethernet-ports {
-+                    #address-cells = <1>;
-+                    #size-cells = <0>;
-+
-+                    port@0 {
-+                        reg = <0>;
-+                        label = "lan0";
-+                    };
-+
-+                    port@1 {
-+                        reg = <1>;
-+                        label = "lan1";
-+                    };
-+
-+                    port@2 {
-+                        reg = <2>;
-+                        label = "lan2";
-+                    };
-+
-+                    port@3 {
-+                        reg = <3>;
-+                        label = "lan3";
-+                    };
-+
-+                    port@4 {
-+                        reg = <4>;
-+                        label = "lan4";
-+                    };
-+
-+                    port@5 {
-+                        reg = <5>;
-+                        label = "lan5";
-+                        phy-mode = "rgmii";
-+                        phy-handle = <&ephy5>;
-+                    };
-+
-+                    cpu_port0: port@6 {
-+                        reg = <6>;
-+                        label = "cpu";
-+                        ethernet = <&gmac_0>;
-+                        phy-mode = "rgmii";
-+
-+                        fixed-link {
-+                            speed = <1000>;
-+                            full-duplex;
-+                            pause;
-+                        };
-+                    };
-+                };
-+            };
-+        };
-+    };
-diff --git a/Documentation/devicetree/bindings/net/dsa/mt7530.txt b/Documentation/devicetree/bindings/net/dsa/mt7530.txt
-deleted file mode 100644
-index 18247ebfc487..000000000000
---- a/Documentation/devicetree/bindings/net/dsa/mt7530.txt
-+++ /dev/null
-@@ -1,327 +0,0 @@
--Mediatek MT7530 Ethernet switch
--================================
--
--Required properties:
--
--- compatible: may be compatible = "mediatek,mt7530"
--	or compatible = "mediatek,mt7621"
--	or compatible = "mediatek,mt7531"
--- #address-cells: Must be 1.
--- #size-cells: Must be 0.
--- mediatek,mcm: Boolean; if defined, indicates that either MT7530 is the part
--	on multi-chip module belong to MT7623A has or the remotely standalone
--	chip as the function MT7623N reference board provided for.
--
--If compatible mediatek,mt7530 is set then the following properties are required
--
--- core-supply: Phandle to the regulator node necessary for the core power.
--- io-supply: Phandle to the regulator node necessary for the I/O power.
--	See Documentation/devicetree/bindings/regulator/mt6323-regulator.txt
--	for details for the regulator setup on these boards.
--
--If the property mediatek,mcm isn't defined, following property is required
--
--- reset-gpios: Should be a gpio specifier for a reset line.
--
--Else, following properties are required
--
--- resets : Phandle pointing to the system reset controller with
--	line index for the ethsys.
--- reset-names : Should be set to "mcm".
--
--Required properties for the child nodes within ports container:
--
--- reg: Port address described must be 6 for CPU port and from 0 to 5 for
--	user ports.
--- phy-mode: String, the following values are acceptable for port labeled
--	"cpu":
--	If compatible mediatek,mt7530 or mediatek,mt7621 is set,
--	must be either "trgmii" or "rgmii"
--	If compatible mediatek,mt7531 is set,
--	must be either "sgmii", "1000base-x" or "2500base-x"
--
--Port 5 of mt7530 and mt7621 switch is muxed between:
--1. GMAC5: GMAC5 can interface with another external MAC or PHY.
--2. PHY of port 0 or port 4: PHY interfaces with an external MAC like 2nd GMAC
--   of the SOC. Used in many setups where port 0/4 becomes the WAN port.
--   Note: On a MT7621 SOC with integrated switch: 2nd GMAC can only connected to
--	 GMAC5 when the gpios for RGMII2 (GPIO 22-33) are not used and not
--	 connected to external component!
--
--Port 5 modes/configurations:
--1. Port 5 is disabled and isolated: An external phy can interface to the 2nd
--   GMAC of the SOC.
--   In the case of a build-in MT7530 switch, port 5 shares the RGMII bus with 2nd
--   GMAC and an optional external phy. Mind the GPIO/pinctl settings of the SOC!
--2. Port 5 is muxed to PHY of port 0/4: Port 0/4 interfaces with 2nd GMAC.
--   It is a simple MAC to PHY interface, port 5 needs to be setup for xMII mode
--   and RGMII delay.
--3. Port 5 is muxed to GMAC5 and can interface to an external phy.
--   Port 5 becomes an extra switch port.
--   Only works on platform where external phy TX<->RX lines are swapped.
--   Like in the Ubiquiti ER-X-SFP.
--4. Port 5 is muxed to GMAC5 and interfaces with the 2nd GAMC as 2nd CPU port.
--   Currently a 2nd CPU port is not supported by DSA code.
--
--Depending on how the external PHY is wired:
--1. normal: The PHY can only connect to 2nd GMAC but not to the switch
--2. swapped: RGMII TX, RX are swapped; external phy interface with the switch as
--   a ethernet port. But can't interface to the 2nd GMAC.
--
--Based on the DT the port 5 mode is configured.
--
--Driver tries to lookup the phy-handle of the 2nd GMAC of the master device.
--When phy-handle matches PHY of port 0 or 4 then port 5 set-up as mode 2.
--phy-mode must be set, see also example 2 below!
-- * mt7621: phy-mode = "rgmii-txid";
-- * mt7623: phy-mode = "rgmii";
--
--Optional properties:
--
--- gpio-controller: Boolean; if defined, MT7530's LED controller will run on
--	GPIO mode.
--- #gpio-cells: Must be 2 if gpio-controller is defined.
--- interrupt-controller: Boolean; Enables the internal interrupt controller.
--
--If interrupt-controller is defined, the following properties are required.
--
--- #interrupt-cells: Must be 1.
--- interrupts: Parent interrupt for the interrupt controller.
--
--See Documentation/devicetree/bindings/net/dsa/dsa.txt for a list of additional
--required, optional properties and how the integrated switch subnodes must
--be specified.
--
--Example:
--
--	&mdio0 {
--		switch@0 {
--			compatible = "mediatek,mt7530";
--			#address-cells = <1>;
--			#size-cells = <0>;
--			reg = <0>;
--
--			core-supply = <&mt6323_vpa_reg>;
--			io-supply = <&mt6323_vemc3v3_reg>;
--			reset-gpios = <&pio 33 0>;
--
--			ports {
--				#address-cells = <1>;
--				#size-cells = <0>;
--				reg = <0>;
--				port@0 {
--					reg = <0>;
--					label = "lan0";
--				};
--
--				port@1 {
--					reg = <1>;
--					label = "lan1";
--				};
--
--				port@2 {
--					reg = <2>;
--					label = "lan2";
--				};
--
--				port@3 {
--					reg = <3>;
--					label = "lan3";
--				};
--
--				port@4 {
--					reg = <4>;
--					label = "wan";
--				};
--
--				port@6 {
--					reg = <6>;
--					label = "cpu";
--					ethernet = <&gmac0>;
--					phy-mode = "trgmii";
--					fixed-link {
--						speed = <1000>;
--						full-duplex;
--					};
--				};
--			};
--		};
--	};
--
--Example 2: MT7621: Port 4 is WAN port: 2nd GMAC -> Port 5 -> PHY port 4.
--
--&eth {
--	gmac0: mac@0 {
--		compatible = "mediatek,eth-mac";
--		reg = <0>;
--		phy-mode = "rgmii";
--
--		fixed-link {
--			speed = <1000>;
--			full-duplex;
--			pause;
--		};
--	};
--
--	gmac1: mac@1 {
--		compatible = "mediatek,eth-mac";
--		reg = <1>;
--		phy-mode = "rgmii-txid";
--		phy-handle = <&phy4>;
--	};
--
--	mdio: mdio-bus {
--		#address-cells = <1>;
--		#size-cells = <0>;
--
--		/* Internal phy */
--		phy4: ethernet-phy@4 {
--			reg = <4>;
--		};
--
--		mt7530: switch@1f {
--			compatible = "mediatek,mt7621";
--			#address-cells = <1>;
--			#size-cells = <0>;
--			reg = <0x1f>;
--			pinctrl-names = "default";
--			mediatek,mcm;
--
--			resets = <&rstctrl 2>;
--			reset-names = "mcm";
--
--			ports {
--				#address-cells = <1>;
--				#size-cells = <0>;
--
--				port@0 {
--					reg = <0>;
--					label = "lan0";
--				};
--
--				port@1 {
--					reg = <1>;
--					label = "lan1";
--				};
--
--				port@2 {
--					reg = <2>;
--					label = "lan2";
--				};
--
--				port@3 {
--					reg = <3>;
--					label = "lan3";
--				};
--
--/* Commented out. Port 4 is handled by 2nd GMAC.
--				port@4 {
--					reg = <4>;
--					label = "lan4";
--				};
--*/
--
--				cpu_port0: port@6 {
--					reg = <6>;
--					label = "cpu";
--					ethernet = <&gmac0>;
--					phy-mode = "rgmii";
--
--					fixed-link {
--						speed = <1000>;
--						full-duplex;
--						pause;
--					};
--				};
--			};
--		};
--	};
--};
--
--Example 3: MT7621: Port 5 is connected to external PHY: Port 5 -> external PHY.
--
--&eth {
--	gmac0: mac@0 {
--		compatible = "mediatek,eth-mac";
--		reg = <0>;
--		phy-mode = "rgmii";
--
--		fixed-link {
--			speed = <1000>;
--			full-duplex;
--			pause;
--		};
--	};
--
--	mdio: mdio-bus {
--		#address-cells = <1>;
--		#size-cells = <0>;
--
--		/* External phy */
--		ephy5: ethernet-phy@7 {
--			reg = <7>;
--		};
--
--		mt7530: switch@1f {
--			compatible = "mediatek,mt7621";
--			#address-cells = <1>;
--			#size-cells = <0>;
--			reg = <0x1f>;
--			pinctrl-names = "default";
--			mediatek,mcm;
--
--			resets = <&rstctrl 2>;
--			reset-names = "mcm";
--
--			ports {
--				#address-cells = <1>;
--				#size-cells = <0>;
--
--				port@0 {
--					reg = <0>;
--					label = "lan0";
--				};
--
--				port@1 {
--					reg = <1>;
--					label = "lan1";
--				};
--
--				port@2 {
--					reg = <2>;
--					label = "lan2";
--				};
--
--				port@3 {
--					reg = <3>;
--					label = "lan3";
--				};
--
--				port@4 {
--					reg = <4>;
--					label = "lan4";
--				};
--
--				port@5 {
--					reg = <5>;
--					label = "lan5";
--					phy-mode = "rgmii";
--					phy-handle = <&ephy5>;
--				};
--
--				cpu_port0: port@6 {
--					reg = <6>;
--					label = "cpu";
--					ethernet = <&gmac0>;
--					phy-mode = "rgmii";
--
--					fixed-link {
--						speed = <1000>;
--						full-duplex;
--						pause;
--					};
--				};
--			};
--		};
--	};
--};
--- 
-2.34.1
 
+>status is not set and nothing have been written into the destination,
+
+s/nothing have been/nothing has been/
+
+>while in the other case, the buffer is written but may contain a
+>certain amount of errors. In order to differentiate these, we set
+>the payload for the first case to 0.
+>
+>Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Tested-by: Sebastian Fricke <sebastian.fricke@collabora.com>
+
+>---
+> drivers/staging/media/rkvdec/rkvdec.c | 26 ++++++++++++++++++++++----
+> 1 file changed, 22 insertions(+), 4 deletions(-)
+>
+>diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+>index 7e76f8b72885..27f1f7276dd2 100644
+>--- a/drivers/staging/media/rkvdec/rkvdec.c
+>+++ b/drivers/staging/media/rkvdec/rkvdec.c
+>@@ -954,14 +954,32 @@ static irqreturn_t rkvdec_irq_handler(int irq, void *priv)
+> 	enum vb2_buffer_state state;
+> 	u32 status;
+>
+>+	ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
+> 	status = readl(rkvdec->regs + RKVDEC_REG_INTERRUPT);
+>-	state = (status & RKVDEC_RDY_STA) ?
+>-		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
+>+
+>+	if (!(status & RKVDEC_RDY_STA)) {
+>+		struct vb2_v4l2_buffer *dst_buf = NULL;
+>+
+>+		if (status & RKVDEC_TIMEOUT_STA)
+>+			pr_debug("Decoder stopped due to internal timeout.");
+>+		else
+>+			pr_debug("Decoder stopped due to internal error.");
+
+(Just personal preference.. I would prefer "due to an internal" over
+"due to internal")
+
+>+
+>+		/*
+>+		 * When this happens, the buffer is left unmodified. As it
+>+		 * contains no meaningful data we mark is a empty.
+
+s/is a empty/it as empty/
+
+The rest looks nice. Thanks.
+
+Greetings,
+Sebastian
+
+>+		 */
+>+		dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
+>+		vb2_set_plane_payload(&dst_buf->vb2_buf, 0, 0);
+>+		state = VB2_BUF_STATE_ERROR;
+>+	} else {
+>+		state = VB2_BUF_STATE_DONE;
+>+	}
+>
+> 	writel(0, rkvdec->regs + RKVDEC_REG_INTERRUPT);
+>-	ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
+>
+>-	if (ctx->coded_fmt_desc->ops->check_error_info)
+>+	if (ctx->coded_fmt_desc->ops->check_error_info &&
+>+	    state == VB2_BUF_STATE_DONE)
+> 		state = ctx->coded_fmt_desc->ops->check_error_info(ctx);
+>
+> 	if (cancel_delayed_work(&rkvdec->watchdog_work))
+>-- 
+>2.36.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
