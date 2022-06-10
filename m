@@ -4,77 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77BA5C43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 13:26:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66F2EC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 13:26:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=nk6Nxk4EClO8/LGTKEmVsqhQ5LXeUXsiQXCJLxjn6ok=; b=Ym62DuP2Fxp8ED
-	/ZjtlIkFCj2CAp9Pw1Pfcs/jdQxvcQdNLZAwWydXsuPYvjpxwv3hoswlTw983uqolTL2H9YmbQXA6
-	rd532IeFi5e6L6HjIRAlWhrtKnmYjFeGfbevCb42xG99LSmHayXb9BUuMNDW4lyBOFH2Mq11Hzo1E
-	idrzgu4x3FYebLmEnhvGjhPrd+/P7Iswdirbr1BSVh6LLPUp53iltfeLoxO29KAjAdc5nYaGQq3ha
-	wB5NboRl4hVehJyI50Vit9N5hh56ycu0JDRgIMf9BznqGiAwsobGE31PcYonfNJghQwA4emt3R9TC
-	ifj8yCuU45g6udZ/9eLw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VWJV4nTuGKszqysBY5nTFq+AA6JSS3QorCd+wrIPYoo=; b=EE/kjGf4lIaujN
+	Xw5niXL7Kwh1AweQI0Z2LFD/MkHzvjPGK5Dt5aTTcGg03G67mguyENR5ZlO6p1rgAAvofJz9jjwJw
+	0VMXwek71qkU0jOtzCDQU5JOdWLy+pZbKY87qkl/dkeohOxKlU7LaCAnmpUwBAkSLLJZUY+ppOyqu
+	tvcjyN17c9uesBJgXmMuRbBeJVG9ptGO+1RRs5hPmufaTv1JZVgLlts7erWNTt89so3l7eLP6Pyht
+	s2xOt8N5O23u1DhbMgkFxNiBtARGsQckTQeLJT/xEJ/0XxdswhBFfFaEJzysLeHCdqRTxKHzy/1vD
+	fS4aPs92tLi80ei3RmqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzeeV-008MXl-TS; Fri, 10 Jun 2022 13:26:15 +0000
-Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
+	id 1nzeeX-008MYl-7c; Fri, 10 Jun 2022 13:26:17 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzeeL-008MSH-1J; Fri, 10 Jun 2022 13:26:06 +0000
-Received: by mail-qk1-x72c.google.com with SMTP id x75so16443891qkb.12;
-        Fri, 10 Jun 2022 06:26:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ow44vJixTJI3bDLbO6IuQAgGyjbFuK55tv6KHdA7yKE=;
-        b=mlTLGiRQqGAqZUXhGPc9iKwdlZB0ss78nnQ8j03HInq0uIUB98UynOy2B/ZNvV/Y/N
-         X2h5Uh8tnxYia6rUZqlhfoR9fI0ipHP0GFy1zLRw/gvoWjv2M/myc/cYmoBMgEVrbaLA
-         B1olK1qQB65AuFPKiA/5OayHIYJKZTD0jxadaqxkCpAIbCbaxIoO5M/iwZg9pcIgnlVc
-         gPjc0XLZvEI2CeRF/9CdKWV+BHS3kPiS4cM6ib/oaaXaC3g9uv8vnkj1MrVqV1aniZO6
-         ztmA5psXbfaulM6yvIE1BxqpgC8ZR9bXeyg6lzmmKgTCsh6mwk1MiBGHnZ02i3Ked4dN
-         c9Ow==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ow44vJixTJI3bDLbO6IuQAgGyjbFuK55tv6KHdA7yKE=;
-        b=l6YT805Js0dn6sAXmpweWb8vD0/yq40iFxQP2J7gIIMQ2hiBp5GG5rjB4rGh/BJvIJ
-         OgVlugjIGlRFmulkOLvuRQsXJjiuQ8Ky6C+jjabThu0X/dMZ8jkSQBRCWO/1hVNFYpts
-         RSKt3UA2o60XCsrIWJMcPR9h1+erEWoeuey/F/f87+ZjN49gaqIRMdpDR/9/vOmlRRqF
-         FunEast4O8SdJQE6eHYTheqfSqjL3bmelaaqnM3gwHAprg9KNJKidamnw40aObxRUj2C
-         VSlN/QDzFkJ3J965nq0ad0tpn9obMmEaObFshEAWDy6mXEE+yJ2lghO1pVzMu6wANukY
-         /94Q==
-X-Gm-Message-State: AOAM533lPPRb9WI3jmOPkn88ENNi7MdRIkHz24ZHEc5PJjKu3wW3ebHO
-	fA0B3SrjIs8Bd2o8CrmWV70=
-X-Google-Smtp-Source: ABdhPJzdF9S6OSps6LldwbWkRol9JBXWt5aJOVrTn8JJEeavL0ZEONRe2Eo3CfToQROOPOUB1v4uQg==
-X-Received: by 2002:a05:620a:4726:b0:6a6:d207:7a3f with SMTP id bs38-20020a05620a472600b006a6d2077a3fmr15475207qkb.239.1654867564570;
-        Fri, 10 Jun 2022 06:26:04 -0700 (PDT)
-Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
-        by smtp.gmail.com with ESMTPSA id w184-20020a3794c1000000b006a098381abcsm21509546qkd.114.2022.06.10.06.26.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Jun 2022 06:26:03 -0700 (PDT)
-From: Peter Geis <pgwipeout@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Peter Geis <pgwipeout@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Fix SoQuartz CM4IO usb
-Date: Fri, 10 Jun 2022 09:26:01 -0400
-Message-Id: <20220610132601.160088-1-pgwipeout@gmail.com>
-X-Mailer: git-send-email 2.25.1
+	id 1nzeeU-008MWD-5k
+	for linux-rockchip@lists.infradead.org; Fri, 10 Jun 2022 13:26:15 +0000
+Received: from [192.168.2.145] (109-252-136-92.dynamic.spd-mgts.ru [109.252.136.92])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: dmitry.osipenko)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 74DF76601724;
+	Fri, 10 Jun 2022 14:26:09 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1654867570;
+	bh=tT1jJ5a9K7KdBiLm8g0dOgTvRZsIIl3nYsCefhYiaKE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JtfphsybuNf9jwA62JOvrpW2KC2UX/VuEo7eJvFHDbDMDZ8+PS0O0oRXnNT+lEddW
+	 xUJe48C/W2diI+BjpeBTTJs0m+JXTWQGpzPx0q5nH4+VtM6AIolI5F95UuwVD29Uqv
+	 my99LRuc7hXy6LyBrgFglX+9HcT9bUoPE1NqOYvji8PkzuN7KXX4MoIVrXNB/k/Wx1
+	 5ENAtraBwUS2yEZ4/hRQmA+npqJiZ/S53A/FUymrRKBZTxdPD3yvNRZrucGIILhbjK
+	 OXVMY3hRBSTzW3PxgwT6paWSPWS1Kpace4Nn2vKieWsXDdSKLQFRMJ+dlu8Wlu2tfb
+	 r7TpYKUWgVp4Q==
+Message-ID: <dabcc9ff-2fec-2f84-936e-3e0b71ad7ca3@collabora.com>
+Date: Fri, 10 Jun 2022 16:26:06 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.0
+Subject: Re: [PATCH v1 1/5] media: rkvdec: Disable H.264 error detection
+Content-Language: en-US
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ linux-media@vger.kernel.org, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Boris Brezillon <boris.brezillon@collabora.com>
+Cc: kernel@collabora.com, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+References: <20220610125215.240539-1-nicolas.dufresne@collabora.com>
+ <20220610125215.240539-2-nicolas.dufresne@collabora.com>
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <20220610125215.240539-2-nicolas.dufresne@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_062605_092608_D604DAF8 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20220610_062614_390326_DE2E15EE 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,32 +81,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The SoQuartz CM4-IO should support otg mode, however it currently
-defaults to device mode when otg is enabled. Force it to host mode to
-retain the previous behavior.
+On 6/10/22 15:52, Nicolas Dufresne wrote:
+> Quite often, the HW get stuck in error condition if a stream error
+> was detected. As documented, the HW should stop immediately and self
+> reset. There is likely a problem or a miss-understanding of the self
+> self reset mechanism, as unless we make a long pause, the next command
+> will then report an error even if there is no error in it.
+> 
+> Disabling error detection fixes the issue, and let the decoder continue
+> after an error. This patch is safe for backport into older kernels.
+> 
+> Fixes: cd33c830448b ("media: rkvdec: Add the rkvdec driver")
+> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> ---
 
-Fixes: bc405bb3eeee ("arm64: dts: rockchip: enable otg/drd operation of usb_host0_xhci in rk356x")
+Nit: won't hurt to add the explicit stable tag if you'll make the v2.
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts | 1 +
- 1 file changed, 1 insertion(+)
+Cc: stable@vger.kernel.org
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts b/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
-index e00568a6be5c..56764fae9f9d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-soquartz-cm4.dts
-@@ -169,6 +169,7 @@ &usb2phy0_otg {
- };
- 
- &usb_host0_xhci {
-+	dr_mode = "host";
- 	status = "okay";
- };
- 
 -- 
-2.25.1
-
+Best regards,
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
