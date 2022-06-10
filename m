@@ -4,65 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DF81C43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 08:58:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ED31C43334
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 12:03:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K6otYIoIrMb2BLGgoNuMXkWdyOOtntrungXkmiDVKy0=; b=iCyGvaNmiIMhBl
-	yCFgNLfYR+mRBLBV6A7iHDuF9ZAPdQj01JRmCDd++2PybXgpuvL6G7KqBi96E2hI2XPa2G0kXEMK+
-	JNfc0GAkbIeNuBP4WiYNXrTFXrec2x6YkEmcny4uFqt5SCihtTRzXXZ0gQ9Ekh414pdxOPW+l6C84
-	UM6D9AKW1iR2jPwysoFIYPL8l7J18tdAPsa6MSzz9mPK8ak/AgNO1wzKpKJKm+JcQjlwc6gQKoLpG
-	gUoVO0Grxzo53YYQbiJ+Hf4WnIGxevQ+VUZrrY51Fw4IxesTJ5nz8FIFb1AH8vd8AE3+oj9DmmJzy
-	JVkY3Zh9B47mzjTV+pvA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ge5QV+i+6GdNTk6Acvk7Xp10Q+/M6CezsebnUptNjpU=; b=ddAJW8yOz+VJz3NXT5L091JgTU
+	9NclCMC7SNg6314lUJkEi4wXRw65Zbhw/AyVnpGgD16Bvtz4Y0KioprOCWtH2jjAAqnvuvNZhSCMi
+	gMCUSPR8MmWl9ASUWHGoZZRsvQawL8yquaFYH4Ahd00BTVOFDqqdQqBz+JhTWF3HS8zxjI3e7ChxY
+	rDtC9J6D/19e0aha1tMPxQafUvWPcVWfTkNW5/PKSLe4T2epbX8hGbEfLX+c90tZ1GWEg1Y1gwHvB
+	ueuhvNimaVmLibZgyFR5jCepmX88xKBMsiLV2Ij2yLvMqXnBOGgLT6at+G3YRlsXTGfu9YHYtiX/i
+	UnF3lfXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzaTL-006y85-Qu; Fri, 10 Jun 2022 08:58:27 +0000
-Received: from mail.baikalelectronics.com ([87.245.175.230])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzaSM-006xjY-TD; Fri, 10 Jun 2022 08:57:28 +0000
-Received: from mail (mail.baikal.int [192.168.51.25])
-	by mail.baikalelectronics.com (Postfix) with ESMTP id 5929C16CA;
-	Fri, 10 Jun 2022 11:58:10 +0300 (MSK)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.baikalelectronics.com 5929C16CA
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=baikalelectronics.ru; s=mail; t=1654851490;
-	bh=tsTGa4nIQSpfcKAffHTArOaL54sx0Z3GDpMrlHib4M8=;
-	h=From:To:CC:Subject:Date:In-Reply-To:References:From;
-	b=bGYo9BgWyWBYZWr1Hwb4GQ+ZBELL6vgubusO+LbyJOn4VFuV3+Kr5udEjKzrgMKYf
-	 BqRaSmrGAIVPiSrm6DMjfGpMe2yaU8GnNfw+2nePcm/GrGErJxgac+II5djQb8XgPi
-	 atpqc0ORRjSfkmlM3haxZfDfJI1q6e60Gm9Nt5X4=
-Received: from localhost (192.168.53.207) by mail (192.168.51.25) with
- Microsoft SMTP Server (TLS) id 15.0.1395.4; Fri, 10 Jun 2022 11:57:18 +0300
-From: Serge Semin <Sergey.Semin@baikalelectronics.ru>
-To: Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Jingoo Han
-	<jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Rob
- Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Shawn
- Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>
-CC: Serge Semin <Sergey.Semin@baikalelectronics.ru>, Serge Semin
-	<fancer.lancer@gmail.com>, Alexey Malahov
-	<Alexey.Malahov@baikalelectronics.ru>, Pavel Parkhomenko
-	<Pavel.Parkhomenko@baikalelectronics.ru>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Frank Li
-	<Frank.Li@nxp.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	<linux-pci@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>
-Subject: [PATCH v3 11/17] dt-bindings: PCI: dwc: Apply common schema to Rockchip DW PCIe nodes
-Date: Fri, 10 Jun 2022 11:56:59 +0300
-Message-ID: <20220610085706.15741-12-Sergey.Semin@baikalelectronics.ru>
-In-Reply-To: <20220610085706.15741-1-Sergey.Semin@baikalelectronics.ru>
-References: <20220610085706.15741-1-Sergey.Semin@baikalelectronics.ru>
+	id 1nzdMN-0083lA-0n; Fri, 10 Jun 2022 12:03:27 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1nzdMI-0083gS-4c; Fri, 10 Jun 2022 12:03:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sin.source.kernel.org (Postfix) with ESMTPS id A4AC5CE35D7;
+	Fri, 10 Jun 2022 12:03:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9656BC3411D;
+	Fri, 10 Jun 2022 12:03:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1654862598;
+	bh=f91prLddVZ6W3Wxb6Hqxhw4VdV2kGrg/IH7kR4PdhnY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=U1znS8ABzt3/7+3tW8r9w0ODLWoHYuds726WAKeoahr9hFltRLm81H0CA03oc5Onx
+	 23VM+SJfFghn425BmH1i2xpNVPDVsNSvEL/cpHEuCZoyxDGEaAo989Whdcq+w8Xr0x
+	 eM1QnspuhULq9B32zaxPnZEYYuRFsh5AvVkZYA+n9Rb1/XRe3sNm605YjInqypuQGf
+	 Ct0RLvUATkkDNkfEu+LaV/yPbv5tU1dN7tRgiZFdckQmCpZSAeMflyqASdKidO9ISp
+	 ZlUgqPC+kRCvY06U7U1bpuV5knThQEuewmaR79v8OzQme2AWBWAAH0vkrEzq39r705
+	 METMJ1sJh6Oyg==
+Date: Fri, 10 Jun 2022 13:03:08 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Samuel Holland <samuel@sholland.org>
+Cc: ckeepax@opensource.cirrus.com, linux-sunxi@lists.linux.dev,
+	peter.ujfalusi@gmail.com, pierre-louis.bossart@linux.intel.com,
+	linux-imx@nxp.com, krzk@kernel.org, jarkko.nikula@bitmer.com,
+	linux-xtensa@linux-xtensa.org, cezary.rojewski@intel.com,
+	shawnguo@kernel.org, linux-mediatek@lists.infradead.org,
+	nicolas.ferre@microchip.com, patches@opensource.cirrus.com,
+	linux-amlogic@lists.infradead.org, srinivas.kandagatla@linaro.org,
+	daniel@zonque.org, linux-mips@vger.kernel.org,
+	linux-tegra@vger.kernel.org, nsaenz@kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com, heiko@sntech.de,
+	alsa-devel@alsa-project.org, kernel@pengutronix.de,
+	jbrunet@baylibre.com,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	linux-rockchip@lists.infradead.org, linux-omap@vger.kernel.org,
+	lgirdwood@gmail.com
+Subject: Re: [PATCH 00/56] Specify clock provider directly to CPU DAIs
+Message-ID: <YqMy/FkxDPKmzdrB@sirena.org.uk>
+References: <20220519154318.2153729-1-ckeepax@opensource.cirrus.com>
+ <165478153064.1052094.1721875477574787769.b4-ty@kernel.org>
+ <2a498819-dbbf-31c1-4145-bbd2d7179bd8@sholland.org>
 MIME-Version: 1.0
-X-ClientProxiedBy: MAIL.baikal.int (192.168.51.25) To mail (192.168.51.25)
+In-Reply-To: <2a498819-dbbf-31c1-4145-bbd2d7179bd8@sholland.org>
+X-Cookie: Teachers have class.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_015727_147469_0DCEBED5 
-X-CRM114-Status: GOOD (  11.01  )
+X-CRM114-CacheID: sfid-20220610_050322_595576_C79BA8D6 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,49 +81,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0642836155562820617=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As the DT-bindings description states the Rockchip PCIe controller is
-based on the DW PCIe RP IP-core thus its DT-nodes are supposed to be
-compatible with the common DW PCIe controller schema. Let's make sure they
-evaluated against it by referring to the snps,dw-pcie-common.yaml schema
-in the allOf sub-schemas composition.
 
-Signed-off-by: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+--===============0642836155562820617==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="uQXJNv1MQUHjV+R+"
+Content-Disposition: inline
 
----
 
-Changelog v3:
-- This is a new patch created on v3 lap of the series.
----
- Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+--uQXJNv1MQUHjV+R+
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-index 142bbe577763..d5de609f2145 100644
---- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-+++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-@@ -14,10 +14,11 @@ maintainers:
- description: |+
-   RK3568 SoC PCIe host controller is based on the Synopsys DesignWare
-   PCIe IP and thus inherits all the common properties defined in
--  designware-pcie.txt.
-+  snps,dw-pcie-common.yaml.
- 
- allOf:
-   - $ref: /schemas/pci/pci-bus.yaml#
-+  - $ref: /schemas/pci/snps,dw-pcie-common.yaml#
- 
- # We need a select here so we don't match all nodes with 'snps,dw-pcie'
- select:
--- 
-2.35.1
+On Thu, Jun 09, 2022 at 09:03:15PM -0500, Samuel Holland wrote:
+> On 6/9/22 8:32 AM, Mark Brown wrote:
+> > On Thu, 19 May 2022 16:42:22 +0100, Charles Keepax wrote:
 
+Please delete unneeded context from mails when replying.  Doing this
+makes it much easier to find your reply in the message, helping ensure
+it won't be missed by people scrolling through the irrelevant quoted
+material.
+
+> > [22/56] ASoC: sunxi: Update to use set_fmt_new callback
+> >         commit: 7cc3965fde74c9c725ed01de4ac35bc7d562d16a
+
+> This patch is wrong, which I pointed out earlier[1]. It will break audio on the
+> Allwinner A33 and A64 SoCs. Charles said he would send a v2[2]. Excluding the
+> changes to sound/soc/sunxi/sun8i-codec.c from the patch would fix it.
+
+Your mail doesn't say that this will break, it says the change is
+unexpected.  In any case, please send an incremental fix - there's no
+need to revert the entire series for this.
+
+--uQXJNv1MQUHjV+R+
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmKjMvsACgkQJNaLcl1U
+h9DEiwgAg5/u/EffroYC0gc/E++OVOkz3gwInEgNAC9hOiZUubIV0pLgHmDWF03b
+jPn25vdDiJrTgFiUmwAYyaI1N8iwXmd1UllhVOv/gLkFfltVeVeI5bb7VHjskvpU
+Xx9nbpqcM0LhbDF9NG+WYAoVy5NB/aJZRKoCWoc2qbqyxE4kHlcQ+uGmXHyJDseS
+8BmRAzbUgyMhj1H2rxUsdSJBv07mGmLozTE9V6Ah8CM/7n4PVN9VjDs29qDcs1v2
+4cxYC5JHT+tbp1KldMeaAv50v0292Sfvps0RbW8zrLY4WwXo5mYJWrS+TYv1UQ+M
+XNVup9oVA23wO2KVtvmWoirnwl8blg==
+=hG/3
+-----END PGP SIGNATURE-----
+
+--uQXJNv1MQUHjV+R+--
+
+
+--===============0642836155562820617==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0642836155562820617==--
+
