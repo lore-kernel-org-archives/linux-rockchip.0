@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0A60C43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 17:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9C34CCA47C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 17:08:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gXurkEGerkhwiJXoP6p+j0962BYzgank3hQ2n4ML4H4=; b=xR2bsweLbcbDkh
-	tJlilFk22n6khlPqQU5ci/LuIEe2Al879qpv47cq620PXXUIJECCvEBMTdtrEV8WiZY5JwtrUW9cW
-	RMmJYWUWdDqphHVg5q+BqeePcBDwmfNTzQFFTUpTLhUKVy5ZkfDKJ2m1a8RkySJ6oOLjkLoyWQarl
-	Ym9bKHkK/VWrSRMf3klElhxeEg2TW0KBuIhRRPyKtXrQLcKboCcD0ivVQfMT6iH/Wz6Q/OKQ5BKJW
-	hoTqN2TNSdxSOJLArTCbxFdf9r7+mRURFCLwsndShnqvOLLEQMvkFHaXLYvdtoE7jBQBls4+mUHUk
-	196Z78PrDDuybgFBsZOg==;
+	List-Owner; bh=PMLAZfp83IQoGqm3vrKwYlOqu7C6ARlbHlSVP9x5vzU=; b=R2fWXeNwAhNRrc
+	7iZHCqeE7FTUFHlKqNZO/RMxk5QtmPzIjXgzY+M3Wu+v/VSmJWzr0PsfkcPJDXSTGgRs2oG8GH9Av
+	vElzAtKQg6MJzfF474GCn5gI04IahULn6b+u9XtjGpxGW2RkSo/hc0DJ24nvI1z+I4gcDbgMMdTi1
+	EivDIFcgZtmpRsIH4BOVAG4xPlh1eEP1SJin/BrXHNZUqw3qVZ4JfTBra5a279b8DRP0o/bJu4lgs
+	nsnmgHhsX68oIFxWvVvgK+LNu1X79mRJn7d5xC4LZTzT73t4jKfYp6Nq7xXp8Dt/Vr4JqnOBI3vNI
+	KPsRHNXwr9Y9i0/tiNGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzi7B-0094ip-VI; Fri, 10 Jun 2022 17:08:06 +0000
-Received: from mxout2.routing.net ([2a03:2900:1:a::b])
+	id 1nzi7F-0094m3-R8; Fri, 10 Jun 2022 17:08:09 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzi5O-0093U8-JB; Fri, 10 Jun 2022 17:06:16 +0000
+	id 1nzi5P-0093VD-FR; Fri, 10 Jun 2022 17:06:17 +0000
 Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout2.routing.net (Postfix) with ESMTP id 015A060407;
-	Fri, 10 Jun 2022 17:06:13 +0000 (UTC)
+	by mxout4.routing.net (Postfix) with ESMTP id 08C30100770;
+	Fri, 10 Jun 2022 17:06:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1654880773;
+	s=20200217; t=1654880774;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=muhHy3u6o7qlrEhJK4TIIhDI8FS0kFjcupuOglkyEww=;
-	b=Ea8GWlilsZRa7b9SZmJA/cus7/asdVVglnpJSOV5gEioGqrq7ZHA/W15M3iYNfAjiKHvaX
-	Qsot5FRIG+5R8x2m/yr1E/9CBG22RHvZyFf1KqCRMDsimU4aHz4B7M8l/KaVCWBuwyJ22B
-	3MWLvHbscK4z429CMe8yfYt27RMcPJU=
+	bh=js+mZvUFXnwqGgCGciplzUqL6UKY6LhPbZ2QpREU94c=;
+	b=c+phttVDs2fWl3s6ahHslf2+Zvj3eT2b+FSpol1ryEn0w3JazB48GH+tXK5Buy9cTElBAD
+	AzjKzybdS/FnFOFIbl2NaaKhNNfoWFD4SiLxyFkZvJ5ztxjtOku1/d9uIiS4siMtj8nuS5
+	maTDYHnXfX5hvDCy+N2NSuTMVHFbC9Y=
 Received: from frank-G5.. (fttx-pool-217.61.154.155.bambit.de [217.61.154.155])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id BA712100863;
-	Fri, 10 Jun 2022 17:06:11 +0000 (UTC)
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id D4D61100394;
+	Fri, 10 Jun 2022 17:06:12 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-rockchip@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
@@ -67,17 +67,17 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
 	Greg Ungerer <gerg@kernel.org>,
 	=?UTF-8?q?Ren=C3=A9=20van=20Dorst?= <opensource@vdorst.com>,
 	"Mauro Carvalho Chehab" <mchehab+samsung@kernel.org>
-Subject: [PATCH v4 5/6] dt-bindings: net: dsa: make reset optional and add rgmii-mode to mt7531
-Date: Fri, 10 Jun 2022 19:05:40 +0200
-Message-Id: <20220610170541.8643-6-linux@fw-web.de>
+Subject: [PATCH v4 6/6] arm64: dts: rockchip: Add mt7531 dsa node to BPI-R2-Pro board
+Date: Fri, 10 Jun 2022 19:05:41 +0200
+Message-Id: <20220610170541.8643-7-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220610170541.8643-1-linux@fw-web.de>
 References: <20220610170541.8643-1-linux@fw-web.de>
 MIME-Version: 1.0
-X-Mail-ID: 608a6b67-0651-4348-8dfb-93f736e41a27
+X-Mail-ID: 44a36d37-a351-4272-a63f-a3dc4cfe27d1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_100614_851294_A782BBBE 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20220610_100615_706052_02A54CEF 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,68 +96,75 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-A board may have no independent reset-line, so reset cannot be used
-inside switch driver.
-
-E.g. on Bananapi-R2 Pro switch and gmac are connected to same reset-line.
-
-Resets should be acquired only to 1 device/driver. This prevents reset to
-be bound to switch-driver if reset is already used for gmac. If reset is
-only used by switch driver it resets the switch *and* the gmac after the
-mdio bus comes up resulting in mdio bus goes down. It takes some time
-until all is up again, switch driver tries to read from mdio, will fail
-and defer the probe. On next try the reset does the same again.
-
-Make reset optional for such boards.
-
-Allow port 5 as cpu-port and phy-mode rgmii for mt7531.
-
-- MT7530 supports RGMII on port 5 and RGMII/TRGMII on port 6.
-- MT7531 supports on port 5 RGMII and SGMII (dual-sgmii) and
-  SGMII on port 6.
+Add Device Tree node for mt7531 switch connected to gmac0.
 
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
-v4:
- - add port 5 as CPU-Port
- - change description
+v2:
+- drop status=disabled
 ---
- .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml      | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   | 48 +++++++++++++++++++
+ 1 file changed, 48 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 112cfaa7e3f6..a3bf432960d8 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -55,6 +55,7 @@ description: |
-     On mt7531:
-       - "1000base-x"
-       - "2500base-x"
-+      - "rgmii"
-       - "sgmii"
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+index 40cf2236c0b6..7df8cfb1d3b9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+@@ -394,6 +394,54 @@ &i2c5 {
+ 	status = "disabled";
+ };
  
- 
-@@ -124,8 +125,8 @@ patternProperties:
-         properties:
-           reg:
-             description:
--              Port address described must be 6 for CPU port and from 0 to
--              5 for user ports.
-+              Port address described must be 5 or 6 for CPU port and from 0
-+              to 5 for user ports.
- 
-         allOf:
-           - $ref: dsa-port.yaml#
-@@ -152,9 +153,6 @@ allOf:
-       required:
-         - resets
-         - reset-names
--    else:
--      required:
--        - reset-gpios
- 
-   - dependencies:
-       interrupt-controller: [ interrupts ]
++&mdio0 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++
++	switch@0 {
++		compatible = "mediatek,mt7531";
++		reg = <0>;
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			port@1 {
++				reg = <1>;
++				label = "lan0";
++			};
++
++			port@2 {
++				reg = <2>;
++				label = "lan1";
++			};
++
++			port@3 {
++				reg = <3>;
++				label = "lan2";
++			};
++
++			port@4 {
++				reg = <4>;
++				label = "lan3";
++			};
++
++			port@5 {
++				reg = <5>;
++				label = "cpu";
++				ethernet = <&gmac0>;
++				phy-mode = "rgmii";
++
++				fixed-link {
++					speed = <1000>;
++					full-duplex;
++					pause;
++				};
++			};
++		};
++	};
++};
++
+ &mdio1 {
+ 	rgmii_phy1: ethernet-phy@0 {
+ 		compatible = "ethernet-phy-ieee802.3-c22";
 -- 
 2.34.1
 
