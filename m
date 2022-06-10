@@ -4,65 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DEAEC43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 16:38:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0145AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 16:39:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BpwTaYffIvBlK+CM9HJ+MkjaO7m4OBavYHrquwE2OTg=; b=lzmnXROn4dCglA
-	I0YxPzXcpzEc0k240wXKPFzok5z4xfmaG4yElQeSKapjuBTA0zYygHwh3UtavkrCb28aDzB4joVUd
-	qx3k0hCA9Ai8oyHAjH55BW8UvTBHQnxe3evoADvLkyuLENB8fcv/7xuG1YhAdz+IoBXzZNX62eZjQ
-	Ug93nVAw18ua9PzJ2YBFEnQotjzV6BQsW+IzM/9Kqaebh3JZMrZN01J5yegfR3UApjL3/2oUFzjyD
-	ZEMucyNc/zCKNeaiR3LsOlv8BX1ulu8+460YpkiuNjsMKnOO8C2I0a6uoOuESOT69t5M47S8t4P2i
-	wIFwnBSRo6Gh74ERsQLQ==;
+	List-Owner; bh=uOjKpR9GfW0CdPQUgvIRUqMbrLy+o05jqcbxIevB/kM=; b=HU68tjRJ/z9lyW
+	h9KBvPmpgcNgrZ3UebbISD5QI8h0WRldcmi65yHqXQLrPQiQfHHqaFVZWzVYI+g+BHgOnqpdRjjGi
+	jF9I4K7JT9ZJju/HF/ajSaXxlbbE+SUm6ooGaXmviHAiXyK6IUFKW/bBlDS+RZNbv4gmDkTFvDiz7
+	5Ivw/lrRsWL7cM2a99Zp0vl7V55/yWL3EbgFb7vRuSsBeM2fDVhEOGkM8ZNM0L5FBxdc6atGlFEQx
+	2HAjCTkan/MZ0Et0R3mwtTUaOMOxsj905sWepmoCR/XO+vxjTnK+LMybCmJLWn31hS8ZQKV+dvt94
+	VSvqPhBfMeqbhmptoFGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzheg-008xlN-O0; Fri, 10 Jun 2022 16:38:38 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1nzhfT-008xzE-NK; Fri, 10 Jun 2022 16:39:27 +0000
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzhed-008xkF-Eg
-	for linux-rockchip@lists.infradead.org; Fri, 10 Jun 2022 16:38:37 +0000
-Received: from nicolas-tpx395.localdomain (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 08E4D660172B;
-	Fri, 10 Jun 2022 17:38:32 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1654879114;
-	bh=hp2gpcoxc1L1t8wOVnHFtGzaBF7lMMf2WNxZjV6zYgM=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=F41jVeJokGk1hhiSW1+tW6PCI1j3GAOJWAJfYoahkz5x45dk4JR4jJ+qXu5P8wNHT
-	 3IAfU69kP4ohOwsn45pMzXodDXDNuQH61UOqQ+hJifk9GWe/uN9au8uiHfqrE/VLMM
-	 c0U21ESFIzCPrFJT9m5Iyqbd5NFQECUKGNm+oMj53FZzHwnWqA9t1tkLs3IWfklACm
-	 ZbP5ujWXI35j9SimuIbhj6pXU1a8WrJFBUgJWTDRcrd3LMP2znB4DYHnjyGuROro6M
-	 uDpBSNg3V40ET4zsMLpP7bVi2FVBJPORORz+RUsV47Ost1ChlF9nc7Sv9H/IKGLAqF
-	 YVEL81r24tCDg==
-Message-ID: <16e50526255d585bcd5c863755ebb423466d53ff.camel@collabora.com>
-Subject: Re: [PATCH v1 4/5] media: rkvdec: Re-enable H.264 error detection
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: linux-media <linux-media@vger.kernel.org>, Mauro Carvalho Chehab
-	 <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Collabora Kernel ML
-	 <kernel@collabora.com>, "open list:ARM/Rockchip SoC..."
-	 <linux-rockchip@lists.infradead.org>, "open list:STAGING SUBSYSTEM"
-	 <linux-staging@lists.linux.dev>, Linux Kernel Mailing List
-	 <linux-kernel@vger.kernel.org>
-Date: Fri, 10 Jun 2022 12:38:24 -0400
-In-Reply-To: <CAAEAJfAdPt59oCi4wPybwn0a4zHq_3x66L5mRSQ54yQezz+ZZA@mail.gmail.com>
+	id 1nzhfR-008xx6-EV
+	for linux-rockchip@lists.infradead.org; Fri, 10 Jun 2022 16:39:26 +0000
+Received: by mail-pg1-x533.google.com with SMTP id y187so25292089pgd.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 10 Jun 2022 09:39:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=256cAUtVkFagDS/yqIZzb58j3dk1nOGs4ItV0B+B3cI=;
+        b=D3zV7Y1IWSVTJVokfED/63D/2j42lBd46GeSwVKGFKBdfoXZEHxL3cr6zYs0RngV7D
+         I47cqKiMrBoDtuOweVBbjjvTV2UimiCGImI6tAQad8Zac33GT/Umx8ULdOgXDKsfcL24
+         cfi5tdK4vzvNmxLc5iiyEZjVNjGk7pOSqAi9M=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=256cAUtVkFagDS/yqIZzb58j3dk1nOGs4ItV0B+B3cI=;
+        b=CNLhgRq21L19iGTO7FJxjz+zHlG99QKBB3TkqpN8yMHdnoq+cVNygtZrSNsSA0bHHs
+         VppiM2Zko+A6mX8AKVU1Pl4OCrRxdGR05tcASHnxHwgbMUSdyggfWCUKKO5smX6NKW/o
+         5TpncBkUiIQwKKgeuD/XCVDGaJ9/UkVPXogxDhQp/HKv7K9gsP2L1bIEcv/ywCLtOWiQ
+         PQ8FsNXhJ4tXYi0v/vuZ6Dn1fpBb+qTRka+T1IXwvbD48gqnbU4d0bg8u6BBIKeb3gkV
+         tp+xNM5NLn35U4R2Xf1DBIVUUR6CUeEHR/eLj2vlFW+z0Ebkz28yTEMynoLBEgV/e+O5
+         5LLQ==
+X-Gm-Message-State: AOAM533A8dBeXtzUXIXkNXIR8UiHYi7ZK1BGy7zlS+7sNf54kO0QOa57
+	vtCCDGu0VfbZ4X+M1DR5zV9x7A==
+X-Google-Smtp-Source: ABdhPJwxtPN3zU9xrzQM+6wrSyNRdmKkl7p2ded9MNwUAam/BDGtr4NWYxTixwxl9D0Td1pz01r6/g==
+X-Received: by 2002:a05:6a00:b41:b0:50d:35fa:476d with SMTP id p1-20020a056a000b4100b0050d35fa476dmr47102208pfo.33.1654879162018;
+        Fri, 10 Jun 2022 09:39:22 -0700 (PDT)
+Received: from google.com ([2620:15c:202:201:b40f:db8c:1759:e71b])
+        by smtp.gmail.com with ESMTPSA id a2-20020a17090a70c200b001e2a36fb4aasm1943824pjm.43.2022.06.10.09.39.20
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Jun 2022 09:39:21 -0700 (PDT)
+Date: Fri, 10 Jun 2022 09:39:19 -0700
+From: Brian Norris <briannorris@chromium.org>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: linux-media@vger.kernel.org,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Boris Brezillon <boris.brezillon@collabora.com>,
+	kernel@collabora.com,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 1/5] media: rkvdec: Disable H.264 error detection
+Message-ID: <YqNzt9T9BaYu8tgb@google.com>
 References: <20220610125215.240539-1-nicolas.dufresne@collabora.com>
-	 <20220610125215.240539-5-nicolas.dufresne@collabora.com>
-	 <CAAEAJfAdPt59oCi4wPybwn0a4zHq_3x66L5mRSQ54yQezz+ZZA@mail.gmail.com>
-User-Agent: Evolution 3.44.1 (3.44.1-1.fc36) 
+ <20220610125215.240539-2-nicolas.dufresne@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220610125215.240539-2-nicolas.dufresne@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_093835_788447_98A1449C 
-X-CRM114-Status: GOOD (  33.51  )
+X-CRM114-CacheID: sfid-20220610_093925_555976_6D3D6778 
+X-CRM114-Status: GOOD (  14.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,94 +89,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TGUgdmVuZHJlZGkgMTAganVpbiAyMDIyIMOgIDEyOjAxIC0wMzAwLCBFemVxdWllbCBHYXJjaWEg
-YSDDqWNyaXTCoDoKPiBIaSBOaWNvbGFzLAo+IAo+IEdyZWF0IHN0dWZmISBTZWUgYmVsb3cgZm9y
-IHNvbWUgaWRlYXMgaG93IHRvIGV4cG9zZSBlcnJvcnMuCj4gCj4gT24gRnJpLCBKdW4gMTAsIDIw
-MjIgYXQgOTo1MiBBTSBOaWNvbGFzIER1ZnJlc25lCj4gPG5pY29sYXMuZHVmcmVzbmVAY29sbGFi
-b3JhLmNvbT4gd3JvdGU6Cj4gPiAKPiA+IFRoaXMgcmUtZW5hYmxlcyBILjI2NCBlcnJvciBkZXRl
-Y3Rpb24sIGJ1dCB1c2luZyB0aGUgb3RoZXIgZXJyb3IgbW9kZS4KPiA+IEluIHRoYXQgbW9kZSwg
-dGhlIGRlY29kZXIgd2lsbCBza2lwIG92ZXIgdGhlIGVycm9yIG1hY3JvLWJsb2NrIG9yCj4gPiBz
-bGljZXMgYW5kIGNvbXBsZXRlIHRoZSBkZWNvZGluZy4gQXMgYSBzaWRlIGVmZmVjdCwgdGhlIGVy
-cm9yIHN0YXR1cwo+ID4gaXMgbm90IHNldCBpbiB0aGUgaW50ZXJydXB0IHN0YXR1cyByZWdpc3Rl
-ciwgYW5kIGluc3RlYWQgZXJyb3JzIGFyZQo+ID4gZGV0ZWN0ZWQgcGVyIGZvcm1hdC4gVXNpbmcg
-dGhpcyBtb2RlIHdvcmthcm91bmQgdGhlIGlzc3VlIHRoYXQgdGhlCj4gPiBIVyBnZXQgc3R1Y2sg
-aW4gZXJyb3Igc3RhdGVkIGFuZCBhbGxvdyByZXBvcnRpbmcgdGhhdCBzb21lIGNvcnJ1cHRpb24K
-PiA+IG1heSBiZSBwcmVzZW50IGluIHRoZSBidWZmZXIgcmV0dXJuZWQgdG8gdXNlcmxhbmQuCj4g
-PiAKPiA+IFNpZ25lZC1vZmYtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVA
-Y29sbGFib3JhLmNvbT4KPiA+IC0tLQo+ID4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMv
-cmt2ZGVjLWgyNjQuYyB8IDIzICsrKysrKysrKysrKysrKysrKystLS0KPiA+ICAxIGZpbGUgY2hh
-bmdlZCwgMjAgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkKPiA+IAo+ID4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLWgyNjQuYyBiL2RyaXZlcnMv
-c3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLWgyNjQuYwo+ID4gaW5kZXggNTU1OTZjZTZiYjZl
-Li42MGE4OTkxOGUyYzEgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2
-ZGVjL3JrdmRlYy1oMjY0LmMKPiA+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMv
-cmt2ZGVjLWgyNjQuYwo+ID4gQEAgLTExNzUsMTQgKzExNzUsMTUgQEAgc3RhdGljIGludCBya3Zk
-ZWNfaDI2NF9ydW4oc3RydWN0IHJrdmRlY19jdHggKmN0eCkKPiA+IAo+ID4gICAgICAgICBzY2hl
-ZHVsZV9kZWxheWVkX3dvcmsoJnJrdmRlYy0+d2F0Y2hkb2dfd29yaywgbXNlY3NfdG9famlmZmll
-cygyMDAwKSk7Cj4gPiAKPiA+IC0gICAgICAgd3JpdGVsKDAsIHJrdmRlYy0+cmVncyArIFJLVkRF
-Q19SRUdfU1RSTURfRVJSX0VOKTsKPiA+IC0gICAgICAgd3JpdGVsKDAsIHJrdmRlYy0+cmVncyAr
-IFJLVkRFQ19SRUdfSDI2NF9FUlJfRSk7Cj4gPiArICAgICAgIHdyaXRlbCgweGZmZmZmZmZmLCBy
-a3ZkZWMtPnJlZ3MgKyBSS1ZERUNfUkVHX1NUUk1EX0VSUl9FTik7Cj4gPiArICAgICAgIHdyaXRl
-bCgweGZmZmZmZmZmLCBya3ZkZWMtPnJlZ3MgKyBSS1ZERUNfUkVHX0gyNjRfRVJSX0UpOwo+ID4g
-ICAgICAgICB3cml0ZWwoMSwgcmt2ZGVjLT5yZWdzICsgUktWREVDX1JFR19QUkVGX0xVTUFfQ0FD
-SEVfQ09NTUFORCk7Cj4gPiAgICAgICAgIHdyaXRlbCgxLCBya3ZkZWMtPnJlZ3MgKyBSS1ZERUNf
-UkVHX1BSRUZfQ0hSX0NBQ0hFX0NPTU1BTkQpOwo+ID4gCj4gPiAgICAgICAgIC8qIFN0YXJ0IGRl
-Y29kaW5nISAqLwo+ID4gICAgICAgICB3cml0ZWwoUktWREVDX0lOVEVSUlVQVF9ERUNfRSB8IFJL
-VkRFQ19DT05GSUdfREVDX0NMS19HQVRFX0UgfAo+ID4gLSAgICAgICAgICAgICAgUktWREVDX1RJ
-TUVPVVRfRSB8IFJLVkRFQ19CVUZfRU1QVFlfRSwKPiA+ICsgICAgICAgICAgICAgIFJLVkRFQ19U
-SU1FT1VUX0UgfCBSS1ZERUNfQlVGX0VNUFRZX0UgfAo+ID4gKyAgICAgICAgICAgICAgUktWREVD
-X0gyNjRPUlZQOV9FUlJfTU9ERSwKPiA+ICAgICAgICAgICAgICAgIHJrdmRlYy0+cmVncyArIFJL
-VkRFQ19SRUdfSU5URVJSVVBUKTsKPiA+IAo+ID4gICAgICAgICByZXR1cm4gMDsKPiA+IEBAIC0x
-MTk2LDEwICsxMTk3LDI2IEBAIHN0YXRpYyBpbnQgcmt2ZGVjX2gyNjRfdHJ5X2N0cmwoc3RydWN0
-IHJrdmRlY19jdHggKmN0eCwgc3RydWN0IHY0bDJfY3RybCAqY3RybCkKPiA+ICAgICAgICAgcmV0
-dXJuIDA7Cj4gPiAgfQo+ID4gCj4gPiArc3RhdGljIGludCBya3ZkZWNfaDI2NF9jaGVja19lcnJv
-cl9pbmZvKHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgpCj4gPiArewo+ID4gKyAgICAgICBzdHJ1Y3Qg
-cmt2ZGVjX2RldiAqcmt2ZGVjID0gY3R4LT5kZXY7Cj4gPiArICAgICAgIGludCBlcnI7Cj4gPiAr
-Cj4gPiArICAgICAgIGVyciA9IHJlYWRsKHJrdmRlYy0+cmVncyArIFJLVkRFQ19SRUdfSDI2NF9F
-UlJJTkZPX05VTSk7Cj4gPiArICAgICAgIGlmIChlcnIgJiBSS1ZERUNfU1RSTURfREVDVF9FUlJf
-RkxBRykgewo+ID4gKyAgICAgICAgICAgICAgIHByX2RlYnVnKCJEZWNvZGVkIHBpY3R1cmUgaGF2
-ZSAlaS8laSBzbGljZXMgd2l0aCBlcnJvcnMuXG4iLAo+ID4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgIFJLVkRFQ19FUlJfUEtUX05VTShlcnIpLCBSS1ZERUNfU0xJQ0VERUNfTlVNKGVycikpOwo+
-IAo+IEl0J3MgbW9yZSB1c2VmdWwgZnJpZW5kbHkgdG8ganVzdCBrZWVwIGEgY291bnRlciBzb21l
-d2hlcmUuIEluIHRoZSBwYXN0LAo+IHdlJ3ZlIGNyZWF0ZWQgYSB1c2VyIGNvbnRyb2wsIHdoaWNo
-IGhhcyB0aGUgYWR2YW50YWdlIG9mIGxldmVyYWdpbmcKPiBhbiBleGlzdGluZyBtZWNoYW5pc20s
-IGFuZCBhbHJlYWR5IGJlaW5nIHBlci1mZC4KPiAKPiBTZWU6Cj4gCj4gY29tbWl0IGIyZDNiZWYx
-YWE3ODU4YjJhZTVlMGQwMWFkYjIxNDEyMWJhMDBiOWYKPiAibWVkaWE6IGNvZGE6IEFkZCBhIFY0
-TDIgdXNlciBmb3IgY29udHJvbCBlcnJvciBtYWNyb2Jsb2NrcyBjb3VudCIuCj4gCj4gSSB3b3Vs
-ZCBkcm9wIHRoZSBwcl9kZWJ1Zywgb3IgaWYgeW91IHRoaW5rIGl0J3MgcmVhbGx5IHVzZWZ1bCBm
-b3IgdXNlcnMKPiBhbmQgZGV2ZWxvcGVycywgZ28gd2l0aCB2NGwyX2RiZy4gSW4gd2hpY2ggY2Fz
-ZSwgaG93IGRvIHlvdSBlbnN1cmUKPiBhIGNvcnJ1cHRlZCBzdHJlYW0gd29uJ3QgZmxvb2QgdGhl
-IGxvZ3M/CgpUaGVyZSBpcyBubyB1c2UgY2FzZSB0byBtYWtlIHRoaXMgYSBjb250cm9sLCBidXQg
-eWVzLCBhIGNvcnJ1cHRlZCBzdHJlYW0gY2FuCmZsb29kLCBidXQgaXNuJ3QgdGhlIHBvaW50IG9m
-IHByX2RlYnVnKCkgdGhhdCBpdCB3b24ndCBzaG93IGlmIHlvdSBkb24ndCBlbmFibGVkCml0ID8K
-CkFzIGZvciB2NGwyX2RiZyBJJ20gbm90IGZhbWlsaWFyIHdpdGggdGhhdCBhbmQgaXRzIG5vdCB1
-c2VkIGluIHRoaXMgZHJpdmVyIGZvcgp0cmFjZXMuIEkndmUgdXNlIHByX2RlYnVnIGZvciByZWZl
-cmVuY2UgbGlzdCB0cmFjaW5nIHByZXZpb3VzbHkgYW5kIGZsb29kaW5nIHdhcwpub3QgY29uc2lk
-ZXJlZCBhIHByb2JsZW0gZGVzcGl0ZSBiZWluZyBhIHBlci1mcmFtZSB0cmFjZS4gWW91IGNhbiBl
-dmVuIG91dC0KY29tcGlsZSB0aGVzZSBpZiB5b3UgbmVlZCB0by4KCkxldCBtZSBrbm93IGlmIHlv
-dSBoYXZlIGZ1cnRoZXIgcmF0aW9uYWxlIGluIHRoZSBzdWdnZXN0aW9uIGRpcmVjdGlvbi4gVGhl
-CnJhdGlvbmFsZSBpbiBteSBjb2RpbmcgZm9yIHN1Y2ggdHJhY2UgaXMgdGhhdCBpZiBJIHJlYWQg
-MSBiaXQgb2YgYSByZWdpc3RlciwgYW5kCnRyYWNlIHRoZSBzdXJyb3VuZGluZyB2YWx1ZSwgSSBj
-YW4gdmFsaWRhdGUgKGFzIGEgaHVtYW4pIHRoYXQgdGhlIHJlc3Qgb2YgdGhlCnJlZ2lzdGVyIGlz
-bid0IGNvbXBsZXRlIGdhcmJhZ2UsIGFuZCB0aGF0IEknbSBub3QgYmFzaWNhbGx5IHJlYWRpbmcg
-YSByYW5kb20KYml0LiBMZWF2aW5nIHRoZSB0cmFjZSB0aGVyZSwgYWxsb3cgb3RoZXIgZGV2ZWxv
-cGVyIG9uIG90aGVyIHZhcmlhbnQgb2YgdGhlc2UKU29DIHRvIGFsc28gbm90aWNlIGlmIHRoYXQg
-cmVnaXN0ZXIgYmVjb21lcyBnYXJiYWdlLiBUaGlzIGlzIGluIGNvbnRyYXN0IG9mIGp1c3QKdGVs
-bGluZyBvdGhlcnMgInRydXN0IG1lLCBJIHRlc3RlZCBpdCIuCgpOaWNvbGFzCgo+IAo+IFRoYW5r
-cywKPiBFemVxdWllbAo+IAo+IAo+ID4gKyAgICAgICAgICAgICAgIHJldHVybiBWQjJfQlVGX1NU
-QVRFX0VSUk9SOwo+ID4gKyAgICAgICB9Cj4gPiArCj4gPiArICAgICAgIHJldHVybiBWQjJfQlVG
-X1NUQVRFX0RPTkU7Cj4gPiArfQo+ID4gKwo+ID4gIGNvbnN0IHN0cnVjdCBya3ZkZWNfY29kZWRf
-Zm10X29wcyBya3ZkZWNfaDI2NF9mbXRfb3BzID0gewo+ID4gICAgICAgICAuYWRqdXN0X2ZtdCA9
-IHJrdmRlY19oMjY0X2FkanVzdF9mbXQsCj4gPiAgICAgICAgIC5zdGFydCA9IHJrdmRlY19oMjY0
-X3N0YXJ0LAo+ID4gICAgICAgICAuc3RvcCA9IHJrdmRlY19oMjY0X3N0b3AsCj4gPiAgICAgICAg
-IC5ydW4gPSBya3ZkZWNfaDI2NF9ydW4sCj4gPiAgICAgICAgIC50cnlfY3RybCA9IHJrdmRlY19o
-MjY0X3RyeV9jdHJsLAo+ID4gKyAgICAgICAuY2hlY2tfZXJyb3JfaW5mbyA9IHJrdmRlY19oMjY0
-X2NoZWNrX2Vycm9yX2luZm8sCj4gPiAgfTsKPiA+IC0tCj4gPiAyLjM2LjEKPiA+IAoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Fri, Jun 10, 2022 at 08:52:11AM -0400, Nicolas Dufresne wrote:
+> Quite often, the HW get stuck in error condition if a stream error
+> was detected. As documented, the HW should stop immediately and self
+> reset. There is likely a problem or a miss-understanding of the self
+> self reset mechanism, as unless we make a long pause, the next command
+> will then report an error even if there is no error in it.
+> 
+> Disabling error detection fixes the issue, and let the decoder continue
+> after an error. This patch is safe for backport into older kernels.
+> 
+> Fixes: cd33c830448b ("media: rkvdec: Add the rkvdec driver")
+> Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+This is effectively how ChromeOS previously was using this hardware for
+years. When moving to the upstream/staging driver, this started giving
+us problems. This fix is helpful; we'd rather sacrifice error detection
+for now, to avoid hanging the hardware in error cases ;)
+
+Reviewed-by: Brian Norris <briannorris@chromium.org>
+Tested-by: Brian Norris <briannorris@chromium.org>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
