@@ -4,64 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDB21C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 12:53:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD94BC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Jun 2022 13:13:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=efh5ho70jh8B20GMX5pgbAxdb8FlpoyO0W32mxF/zvk=; b=A76KAGlUYJ6y9e
-	lPLvg5+9XzFo5yWlc6GaEAlF65UTP4JdiHHeTWGVLr3n9yBCJFIflTx2/8hJRFNQwbpzbnywUIJJv
-	cLJgD0rhDcDI7x36AGWRdV3SlOtEgQXT8jjivV7oBlxylkV/ADhVtjlhRI8TtPZdmOXkWwNsr/v6T
-	nRiOW6pIv5A1kkLzuMlTw1ARno0eNVTiWBLjetpVcqQ+EJAeWqGeuf3OMHIwAe3695dMRjqtNr82c
-	7SRLGcJaBLkZNtYbKD0hDtE3DSpWnAy2596AUQf/QROAJO46Mm2p3UlPTZBJhHbExGCthxsMSVOcS
-	QdK5mEbqeLvAsqcY9xew==;
+	List-Owner; bh=DC3ObNRyzjniAALhNOYmD4YPnFsNyx90yEaS/H7hfs0=; b=FIn6LNnqAQkzS1
+	XfB+KgtVA4y1NGlHWZ2uLOnTTjxLg+dJpe9MdOh6qG5meNPUFOhXC+h9zi+GKNd360D1Q8fq+ZL6B
+	x2Se8pK2XwirvzbnZbZyrmE+t+ejm3/eZ4OgrXsseU8fhN9Leu7X/TAQm4V6TJ23eKrY8oKhXb5tk
+	J7W66gNEOYtvBnEneJyKPL+tkotRjZ1ML7HzBeC4C2PQDX7V5qnYYGba6RPOBFBDu5dcXFdfCFfbs
+	dp3uQxYqown5aU/BZVSoLkDVED5cymn0n+cg5Uj+PkyfZ0tMlzbmrBotzYGkecivD4Vx3amt7l08p
+	3tq2LTx7Av92m42wBI8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nze8A-008FDu-RC; Fri, 10 Jun 2022 12:52:50 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1nzeRl-008JDc-0Q; Fri, 10 Jun 2022 13:13:05 +0000
+Received: from mail-io1-f51.google.com ([209.85.166.51])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nze87-008FAc-HQ
-	for linux-rockchip@lists.infradead.org; Fri, 10 Jun 2022 12:52:49 +0000
-Received: from whitebuilder.lan (192-222-136-102.qc.cable.ebox.net [192.222.136.102])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 326D8660172E;
-	Fri, 10 Jun 2022 13:52:45 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1654865566;
-	bh=KEgYpRbmOg42RSvzgWzI7s0Dp0JPZPIQTRZtvkFaa8c=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kqDiqDXGwGHyu3h9CfdF6JAWg8pVEAp7cWWaAgc6izCdsLLvepxAjJouykKy43dWM
-	 8QzWrjNMJWBEJDQDtLXEMHR2S7fWtChcPIGY0Dft4r5Z13Pkp9GiCrd0YyiHJ9gxZ6
-	 Zc2LkjX+iNKmvSijbrah7q4Qmz+zYYIqDKlH0e6oOkYrXgHM5fODqxWWr1Np+0woBE
-	 8yU2M/bvRcMfUcBYCGdtYWBWmZ2VnquGtq79hWTs1/vDB8ecz5l7aDPIMF7ukgg3mF
-	 10lfCbPqtsUd+oQvNNmecDE2dF8fYo/ZJF+GKhbjJ5Cc0eRMpxHRIaHya6rqKhaiac
-	 v1vAk0fBPNcbg==
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: linux-media@vger.kernel.org,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	kernel@collabora.com,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 5/5] media: rkvdec: Improve error handling
-Date: Fri, 10 Jun 2022 08:52:15 -0400
-Message-Id: <20220610125215.240539-6-nicolas.dufresne@collabora.com>
-X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220610125215.240539-1-nicolas.dufresne@collabora.com>
-References: <20220610125215.240539-1-nicolas.dufresne@collabora.com>
-MIME-Version: 1.0
+	id 1nzeRP-008J74-N2; Fri, 10 Jun 2022 13:12:47 +0000
+Received: by mail-io1-f51.google.com with SMTP id r5so4192888iod.5;
+        Fri, 10 Jun 2022 06:12:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+         :message-id;
+        bh=GUJQPqIBLKX/t4jWZnKHkjJZiTQ4T+t3dlD445+qEg8=;
+        b=N+oz4bNxLELViQTnq/rOd4EVp7glJR7ISldu8Ti/DCypWRtM8SmcNlhZiBY0JndLeE
+         P4uOMrjCKv2Dcx2Yto70Ezn7TifMf8EmhAwmyDcBE4+02BwaYvry1TN09lZdwS/bLgUJ
+         UKkFc2WO722SHF1JvnLdK5MpIL1FHHO+EqVZKe4yEg4rKW5UgrrDXVT/XEz8xHlfThnf
+         cOn7tS1ONJ+pMQaMx235FGA495OJZNg+tgYyx6RI40OveAeLxlSrK8twL1rPwylJIdR2
+         c27MnjOr01nks36T6RWDXIcrVo4V2LsvqIspfG/qGbOYRZJqW5PtjaVdRTMGqA3R5TSy
+         OHVA==
+X-Gm-Message-State: AOAM5300BRvbcMl9QLsn068RocnZNdXd4u5qcFwgjzLL4X3mEjNLaS8L
+	Hm4cN15OB9B87Z350lMjPg==
+X-Google-Smtp-Source: ABdhPJzpXU+91NH1R+XxaxuT7R1s4GIE+oR2ZORwDbUcWvGs8HOPQcvwCCMc8f49vy0vBOWd3ZsDGw==
+X-Received: by 2002:a05:6602:2b04:b0:669:5fa:12fa with SMTP id p4-20020a0566022b0400b0066905fa12famr21843526iov.178.1654866761402;
+        Fri, 10 Jun 2022 06:12:41 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.251])
+        by smtp.gmail.com with ESMTPSA id m8-20020a0566380dc800b00331e38ccc4asm4368616jaj.51.2022.06.10.06.12.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Jun 2022 06:12:40 -0700 (PDT)
+Received: (nullmailer pid 1529405 invoked by uid 1000);
+	Fri, 10 Jun 2022 13:12:35 -0000
+From: Rob Herring <robh@kernel.org>
+To: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+Cc: linux-kernel@vger.kernel.org, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Serge Semin <fancer.lancer@gmail.com>, Pavel Parkhomenko <Pavel.Parkhomenko@baikalelectronics.ru>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>, Frank Li <Frank.Li@nxp.com>, Bjorn Helgaas <bhelgaas@google.com>, Shawn Lin <shawn.lin@rock-chips.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Jingoo Han <jingoohan1@gmail.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, Simon Xue <xxm@rock-chips.com>, Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>
+In-Reply-To: <20220610085706.15741-12-Sergey.Semin@baikalelectronics.ru>
+References: <20220610085706.15741-1-Sergey.Semin@baikalelectronics.ru> <20220610085706.15741-12-Sergey.Semin@baikalelectronics.ru>
+Subject: Re: [PATCH v3 11/17] dt-bindings: PCI: dwc: Apply common schema to Rockchip DW PCIe nodes
+Date: Fri, 10 Jun 2022 07:12:35 -0600
+Message-Id: <1654866755.753412.1529404.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_055247_765367_3A53D8AB 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20220610_061243_786047_DE32446D 
+X-CRM114-Status: GOOD (  16.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,65 +70,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is two way decode errors can occur. In one case, the ready
-status is not set and nothing have been written into the destination,
-while in the other case, the buffer is written but may contain a
-certain amount of errors. In order to differentiate these, we set
-the payload for the first case to 0.
+On Fri, 10 Jun 2022 11:56:59 +0300, Serge Semin wrote:
+> As the DT-bindings description states the Rockchip PCIe controller is
+> based on the DW PCIe RP IP-core thus its DT-nodes are supposed to be
+> compatible with the common DW PCIe controller schema. Let's make sure they
+> evaluated against it by referring to the snps,dw-pcie-common.yaml schema
+> in the allOf sub-schemas composition.
+> 
+> Signed-off-by: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+> 
+> ---
+> 
+> Changelog v3:
+> - This is a new patch created on v3 lap of the series.
+> ---
+>  Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+> 
 
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
- drivers/staging/media/rkvdec/rkvdec.c | 26 ++++++++++++++++++++++----
- 1 file changed, 22 insertions(+), 4 deletions(-)
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index 7e76f8b72885..27f1f7276dd2 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -954,14 +954,32 @@ static irqreturn_t rkvdec_irq_handler(int irq, void *priv)
- 	enum vb2_buffer_state state;
- 	u32 status;
- 
-+	ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
- 	status = readl(rkvdec->regs + RKVDEC_REG_INTERRUPT);
--	state = (status & RKVDEC_RDY_STA) ?
--		VB2_BUF_STATE_DONE : VB2_BUF_STATE_ERROR;
-+
-+	if (!(status & RKVDEC_RDY_STA)) {
-+		struct vb2_v4l2_buffer *dst_buf = NULL;
-+
-+		if (status & RKVDEC_TIMEOUT_STA)
-+			pr_debug("Decoder stopped due to internal timeout.");
-+		else
-+			pr_debug("Decoder stopped due to internal error.");
-+
-+		/*
-+		 * When this happens, the buffer is left unmodified. As it
-+		 * contains no meaningful data we mark is a empty.
-+		 */
-+		dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-+		vb2_set_plane_payload(&dst_buf->vb2_buf, 0, 0);
-+		state = VB2_BUF_STATE_ERROR;
-+	} else {
-+		state = VB2_BUF_STATE_DONE;
-+	}
- 
- 	writel(0, rkvdec->regs + RKVDEC_REG_INTERRUPT);
--	ctx = v4l2_m2m_get_curr_priv(rkvdec->m2m_dev);
- 
--	if (ctx->coded_fmt_desc->ops->check_error_info)
-+	if (ctx->coded_fmt_desc->ops->check_error_info &&
-+	    state == VB2_BUF_STATE_DONE)
- 		state = ctx->coded_fmt_desc->ops->check_error_info(ctx);
- 
- 	if (cancel_delayed_work(&rkvdec->watchdog_work))
--- 
-2.36.1
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+./Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml: Unable to find schema file matching $id: http://devicetree.org/schemas/pci/snps,dw-pcie-common.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.example.dtb: pcie@fe280000: False schema does not allow {'compatible': ['rockchip,rk3568-pcie'], 'reg': [[3, 3229614080, 0, 3735552], [0, 4264034304, 0, 65536], [3, 2147483648, 0, 1048576]], 'reg-names': ['dbi', 'apb', 'config'], 'bus-range': [[32, 47]], 'clocks': [[4294967295, 143], [4294967295, 144], [4294967295, 145], [4294967295, 146], [4294967295, 147]], 'clock-names': ['aclk_mst', 'aclk_slv', 'aclk_dbi', 'pclk', 'aux'], 'device_type': ['pci'], 'linux,pci-domain': [[2]], 'max-link-speed': [[2]], 'msi-map': [[8192, 4294967295, 8192, 4096]], 'num-lanes': [[2]], 'phys': [[4294967295]], 'phy-names': ['pcie-phy'], 'power-domains': [[4294967295, 15]], 'ranges': [[2164260864, 0, 2155872256, 3, 2155872256, 0, 1048576], [2197815296, 0, 2156920832, 3, 2156920832, 0, 1064304640]], 'resets': [[4294967295, 193]], 'reset-names': ['pipe'], '#address-cells': [[3]], '#size-cells': [[2]], '$nodename': ['pcie@fe280000']}
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
 
 
 _______________________________________________
