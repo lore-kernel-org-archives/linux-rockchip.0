@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 708B9C43334
-	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Jun 2022 06:53:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6036C43334
+	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Jun 2022 06:54:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kWwy4/TFU3NCldgOtxXF4nmAqdW5Ff85cWBfDxznoiQ=; b=NmJiUEfxsL5gGQ
-	n1fA8Kr22VKA/GSciCNl0gBdTCKkWvUVAwIJb9zZrJLxczCZWRcTvkVKpDjteyEZQuiHu9J0J5LzB
-	OwNzE2tulPjW7YH7WYRh4M/omoKMzV4Pa/ahc61r2Y8eK/SUkn0s0AqFcOkmdzXO45PJ/uKgdzCQ3
-	g1StSpnkqN/zxQrnPTb0T9teg40riJbxsQsvKbyLbxm7JOZ9eRe+fsFEw1KOjm+4z7naTOe622hYf
-	CCfqk425HgDPno+KnTaCWA3W/8jwwg2OMUB+RJNUrLyVPs1Vbz8TiAGRzZRUEJGAXyp6LPvg1t+sg
-	KprP4RidqhrHtZA0Tmyg==;
+	List-Owner; bh=8Iq039RLf3FnRdn3+I0PN+vsEaqO+EZsCoUE49xc4bE=; b=UD+wuLeOXnWA8a
+	OdHOIYH9SjvM9zYm1CYVPjkEGyijXjGDaaQ3yyVOSOaOQajGdzrAZBsHrh/LYZx0SQKYmxawBMrCc
+	Pi9ManZUoegPo6kZx9yz5NPXe19fY2rV7HOmktKF6V1XgM2YDkoRjFUb5d93Nj5VhbZkg3VRrI1f1
+	XZ+A96Iami6ufKazH2c1SUdjFshot9iJgcWIUObV/Y4DmCLNNDvADI4mynBdyfWAagkv8CUwL4Hd/
+	kmL/eZwiVyPj5Z9ILevV0WDqtXcBPhw/aS/jxlJUO+/GXrj19SgDI9ml+CrbViWo/fEG9uWGZQVyP
+	1ScQAzvcMIJW6lDEQ6PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzv09-00BjZM-57; Sat, 11 Jun 2022 06:53:41 +0000
+	id 1nzv0U-00BjjE-QP; Sat, 11 Jun 2022 06:54:02 +0000
 Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nzuzw-00BjUy-EU; Sat, 11 Jun 2022 06:53:29 +0000
-Received: by mail-ed1-x533.google.com with SMTP id w27so1361362edl.7;
-        Fri, 10 Jun 2022 23:53:27 -0700 (PDT)
+	id 1nzv0I-00BjdD-F2; Sat, 11 Jun 2022 06:53:51 +0000
+Received: by mail-ed1-x533.google.com with SMTP id v25so1370867eda.6;
+        Fri, 10 Jun 2022 23:53:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=wN1RtBcP0tZreOj0xnYy6ghrnHUaccRwTp8/xCskyk0=;
-        b=drXJ2Nnp1HsY9uMRMmhBW43v8r/PuTtIdKdbLIpof4gruMkvSO9pUpCknH8Xze7s5i
-         ezfcg00I+GMnbUtXVO0iog9WBGxasTz6/b/C0OOQppbbrCuDsflzsHsmyjAYz/TVRdsg
-         SlFUjt6k7bFygzYHTHEczu1gfBmtU/FnDFRrZUOBRK0JCfyJ0dSBW3tKtb5U4sw22a76
-         3yd6vG2OwqY3MMgCUdCAoiic1bZa4+lwzies/FmLyQXKXC/F/bFsEI1xAod70+5Etp7J
-         /9fJx9Ufx65RoNhSNmmYJvpNLU5e3OxEH0WkW/k1GDfA5g67POyzP9sY7fbkkf2gu8Hj
-         PNtA==
+        bh=ICXO/DGJ5boB7mlSd4xiwerKyKmA2ZX08XZZ4pcrKPM=;
+        b=b/4pAamShqovIyBl8iI9ztI/LhenZJL57ow6DajHUQpr3t0AucBi/h7muZw96HeOFp
+         2t7PkARM1BNVc8+Y4VvVNq+fSBa3XUF+EtEpjh3fu9+ERHFzn3o1Fv6kB7UpzDOZzS22
+         965pxi8mqfSrL8XRJz1PqsBoDOrAUoRS67UwiyQz//jPMdKHoUpAtvM5tlwY+jT23VBy
+         +3l+FWJN7hB9lw0FuLx+FfqKwhAWBhJbnOx67vP4EWn26XgiLGAH4K3m0pKNF5xjot1d
+         NeCuen2wKJ6IwpoZAKKj5sdxSHMC1VB1I/CTsoqblrUkkMdbjQfMgTirQfRi3Qjibbbr
+         o6Bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=wN1RtBcP0tZreOj0xnYy6ghrnHUaccRwTp8/xCskyk0=;
-        b=6h4IeksW6Cu6o+B59sEM2Rsuzrt2ceKtWOfQTR1kXLHK5d8AG11VFITzPvEalzqe2a
-         zlJcXspnLAzLRhAHWq+6kYu4ANlbWVnhRgwc78W7Z3OodR4T85+i0KWuCFyxyIJUGu98
-         CQViN2pr5bo1I9Vbpf4BwdouuM+e04lrUmxzIh2jj4+7D8uxM2t5DLJL+Fri7PR60x6Q
-         LFmGYgR+J6vFW+B4hFMZbwSLI7pDE7aphyr3G7Sx15vFtV4WBFtsqYMPLMiHP/NJhipI
-         7sQTESsAxe5GOt9zs+Caj5dSKyUw0Vb6J/QlDW+ypMP875P6t171qvPo4xLm6CNpcWjh
-         50pg==
-X-Gm-Message-State: AOAM5321ZiS6CSxfSYHvsjQ2kGRtvuRpPkX96xrgYWrxF4vET2olFCJh
-	ohZWTMmgfWfnI1jU9NZSBAw=
-X-Google-Smtp-Source: ABdhPJzW988HLxC7qcZIhf2eFxRPIiplwpsgoZieAq+H2ABUYvgz0HpnzySBj0UsaABVKLR1pcC4Ww==
-X-Received: by 2002:a05:6402:ca5:b0:42d:dba5:b2a0 with SMTP id cn5-20020a0564020ca500b0042ddba5b2a0mr55402932edb.197.1654930406307;
-        Fri, 10 Jun 2022 23:53:26 -0700 (PDT)
+        bh=ICXO/DGJ5boB7mlSd4xiwerKyKmA2ZX08XZZ4pcrKPM=;
+        b=LAW2l9abusqrKh4eI1/U9UivF+gDR9MuF7wpXhpt3WJVJkLXN374+tb+2PQoRasw+X
+         lOJjfx+tPgjXl8JvKFUAt6NuOKYpo0GR6wOqDbve98CYgSRsamraDIghEQnFC/smsMvQ
+         +Xp4pXEVEFy/3B7gEDBZ9FveZ9CGGurP8wfOV7YKg41bI3VS0TnyjkV2qjZI+InzRS0s
+         1R5S0CIfUBEgD6X59o/4AS/PH7WZaTawfzJIlE5MIacmETv3gZy8RY74x3Zs3IiQUDi4
+         t3IG7/PKy+qaowl4V1SaGk9nA6vJeI9AAfZUwW2J3esY8sLq+NJ7YbQexMLB078wS1Zn
+         7/kA==
+X-Gm-Message-State: AOAM5330jBlrRLk5AOG3rASHznzFZeBY5QUQOGA6Y4eD/ZHxdm1wwi3i
+	/u8E94OnUb8yOFxTUxwt0Yg=
+X-Google-Smtp-Source: ABdhPJzX3VjXieTTER669Yy2w3Q2bZlH8GkmHVjM5Re4odhwdth/2IlxLL9pZkieW72w00pl5GAbgw==
+X-Received: by 2002:a50:c407:0:b0:431:39ed:1c5e with SMTP id v7-20020a50c407000000b0043139ed1c5emr38811155edf.402.1654930429342;
+        Fri, 10 Jun 2022 23:53:49 -0700 (PDT)
 Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch. [84.72.105.84])
-        by smtp.gmail.com with ESMTPSA id v14-20020a056402348e00b0042dc25fdf5bsm874261edc.29.2022.06.10.23.53.25
+        by smtp.gmail.com with ESMTPSA id v14-20020a056402348e00b0042dc25fdf5bsm874261edc.29.2022.06.10.23.53.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Jun 2022 23:53:25 -0700 (PDT)
+        Fri, 10 Jun 2022 23:53:48 -0700 (PDT)
 From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Heiko Stuebner <heiko@sntech.de>
 Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 1/2] arm64: dts: rockchip: rk356x: Add HDMI audio nodes
-Date: Sat, 11 Jun 2022 08:52:59 +0200
-Message-Id: <20220611065300.885212-2-frattaroli.nicolas@gmail.com>
+Subject: [PATCH v3 2/2] arm64: dts: rockchip: Enable HDMI audio on Quartz64 A
+Date: Sat, 11 Jun 2022 08:53:00 +0200
+Message-Id: <20220611065300.885212-3-frattaroli.nicolas@gmail.com>
 X-Mailer: git-send-email 2.36.1
 In-Reply-To: <20220611065300.885212-1-frattaroli.nicolas@gmail.com>
 References: <20220611065300.885212-1-frattaroli.nicolas@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220610_235328_524207_63346655 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20220610_235350_573382_8C48E42E 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,67 +92,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds the i2s0 node and an hdmi-sound sound device to the
-rk356x device tree. On the rk356[68], the i2s0 controller is
-connected to HDMI audio.
+This enables the i2s0 controller and the hdmi-sound node on
+the PINE64 Quartz64 Model A single-board computer.
 
-Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
 Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 33 ++++++++++++++++++++++++
- 1 file changed, 33 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index cc1c5a65c5e5..319981c3e9f7 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -183,6 +183,22 @@ opp-800000000 {
- 		};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+index 59e364b724cc..981c4aeea814 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+@@ -310,6 +310,10 @@ hdmi_out_con: endpoint {
  	};
+ };
  
-+	hdmi_sound: hdmi-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,name = "HDMI";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,mclk-fs = <256>;
-+		status = "disabled";
++&hdmi_sound {
++	status = "okay";
++};
 +
-+		simple-audio-card,codec {
-+			sound-dai = <&hdmi>;
-+		};
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s0_8ch>;
-+		};
-+	};
-+
- 	pmu {
- 		compatible = "arm,cortex-a55-pmu";
- 		interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_HIGH>,
-@@ -951,6 +967,23 @@ spdif: spdif@fe460000 {
- 		status = "disabled";
- 	};
+ &i2c0 {
+ 	status = "okay";
  
-+	i2s0_8ch: i2s@fe400000 {
-+		compatible = "rockchip,rk3568-i2s-tdm";
-+		reg = <0x0 0xfe400000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_HIGH>;
-+		assigned-clocks = <&cru CLK_I2S0_8CH_TX_SRC>, <&cru CLK_I2S0_8CH_RX_SRC>;
-+		assigned-clock-rates = <1188000000>, <1188000000>;
-+		clocks = <&cru MCLK_I2S0_8CH_TX>, <&cru MCLK_I2S0_8CH_RX>, <&cru HCLK_I2S0_8CH>;
-+		clock-names = "mclk_tx", "mclk_rx", "hclk";
-+		dmas = <&dmac1 0>;
-+		dma-names = "tx";
-+		resets = <&cru SRST_M_I2S0_8CH_TX>, <&cru SRST_M_I2S0_8CH_RX>;
-+		reset-names = "tx-m", "rx-m";
-+		rockchip,grf = <&grf>;
-+		#sound-dai-cells = <0>;
-+		status = "disabled";
-+	};
+@@ -540,6 +544,10 @@ &i2c3 {
+ 	status = "okay";
+ };
+ 
++&i2s0_8ch {
++	status = "okay";
++};
 +
- 	i2s1_8ch: i2s@fe410000 {
- 		compatible = "rockchip,rk3568-i2s-tdm";
- 		reg = <0x0 0xfe410000 0x0 0x1000>;
+ &i2s1_8ch {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2s1m0_sclktx
 -- 
 2.36.1
 
