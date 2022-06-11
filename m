@@ -4,54 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21F87C43334
-	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Jun 2022 15:16:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC33FC43334
+	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Jun 2022 15:16:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eWxbWIYTuqs8sFJdrexVZU7XSBy6ijiR44DLoaeeNJc=; b=f+uzG7jxIwtuLL
-	W7ZPCdJ9eFoi/kUK7Nsz+u7ReAlpc+BWFBlIyclNme2MwdVYKAWJulgDwH3gMbzGGC1y5f2PKx+Jt
-	mwWNbSjGmYMLReZF1RKyZQE3wsUwd93NDHiAoiCyaDo3VpbO8R9QTMUjhXjmP3OFWyKkK9mj6DuNJ
-	Mt5FDio0HHR6kHmShmKhTKxA/iU9tXLq8siq9xhmAdpDdDymBagHgjgjkH46bopqb/aGBmTneGHiX
-	ZRdsuGI7PAufDzENQlFML56GplNS+LEHIXDyFFcwpAwxeE1fSks8vXTEPLjad/SAwn77AQeJrpOgp
-	Xvok2GFaHzQ7IsSSnkLQ==;
+	List-Owner; bh=lWBVxri4plerhFj6EutzbZLyXd+zStypvFO97PrEmCI=; b=EQTDejWdelR0jd
+	2rMtJuLJfzMO0WxUCC5aw2uLtdq/GQ1KNTJWjDl2SMcCArlbkDeql0I1kfMXthmAS8EYfV9Vhzr8K
+	qT1icXxjX15RyrzMVxQTY6KWkHwQN0wg+4uCDbkvRbJKlW+bbsPbtxqM954t9BF9bLu0yJ17EDURJ
+	VjgE9OfO5hRNc9TRJOH0yUAXp6Jb0PIl/GY2WbmHO5X5a8Q8J0u99+IFVzfpiIaAqPekNo985CnRz
+	jQ8SpRMHjQpWuj5Vmweats6dlUjZ69BopW8tzaYBYVl7TK35BPAgMGQ1ubMw77hLiBElh1E3l9/r7
+	1u0DbU7bzemS4N7jBW2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o02qA-00DWml-Jj; Sat, 11 Jun 2022 15:15:54 +0000
+	id 1o02qS-00DWsm-RX; Sat, 11 Jun 2022 15:16:12 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o02q8-00DWls-Cn; Sat, 11 Jun 2022 15:15:53 +0000
+	id 1o02qA-00DWmC-1p; Sat, 11 Jun 2022 15:15:55 +0000
 Received: from p508fd9f0.dip0.t-ipconnect.de ([80.143.217.240] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1o02q6-0004vU-Go; Sat, 11 Jun 2022 17:15:50 +0200
+	id 1o02q6-0004vU-QD; Sat, 11 Jun 2022 17:15:50 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Frank Wunderlich <linux@fw-web.de>,
-	linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
+To: Peter Geis <pgwipeout@gmail.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Rob Herring <robh+dt@kernel.org>,
-	linux-rtc@vger.kernel.org,
+	Michael Riesch <michael.riesch@wolfvision.net>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	devicetree@vger.kernel.org,
-	Frank Wunderlich <frank-w@public-files.de>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>
-Subject: Re: (subset) [PATCH 0/2] Support RTC on BPI-R2 Pro
-Date: Sat, 11 Jun 2022 17:15:46 +0200
-Message-Id: <165496044123.1951281.5949478945237694774.b4-ty@sntech.de>
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix Quartz64-A dwc3 otg port behavior
+Date: Sat, 11 Jun 2022 17:15:47 +0200
+Message-Id: <165496044123.1951281.9328507276918622323.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220608161150.58919-1-linux@fw-web.de>
-References: <20220608161150.58919-1-linux@fw-web.de>
+In-Reply-To: <20220610132542.159978-1-pgwipeout@gmail.com>
+References: <20220610132542.159978-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220611_081552_469575_91881191 
-X-CRM114-Status: GOOD (  10.29  )
+X-CRM114-CacheID: sfid-20220611_081554_134197_E42640EC 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,26 +65,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 8 Jun 2022 18:11:47 +0200, Frank Wunderlich wrote:
-> This series is updating hym8563 rtc driver and add devicetree nodes
-> for Bananapi R2 Pro board.
+On Fri, 10 Jun 2022 09:25:42 -0400, Peter Geis wrote:
+> The otg_id line on the Quartz64 Model A is not connected to anything.
+> This prevents automatic selection of the dual role usb port. In otg mode
+> it defaults to device mode. Force it to host mode to retain previous
+> behavior.
 > 
-> Frank Wunderlich (1):
->   arm64: dts: rockchip: add RTC to BPI-R2 Pro
-> 
-> Peter Geis (1):
->   rtc: hym8563: try multiple times to init device
-> 
-> [...]
+> Fixes: bc405bb3eeee ("arm64: dts: rockchip: enable otg/drd operation of usb_host0_xhci in rk356x")
 
 Applied, thanks!
 
-[2/2] arm64: dts: rockchip: add RTC to BPI-R2 Pro
-      commit: efaa0c1378ed800abd1abe0aa51ffd30002efdb4
-
-      I've changed the node name to hym8563: rtc@...
-
-      The node name should be the class of device i.e. rtc in this case.
+[1/1] arm64: dts: rockchip: Fix Quartz64-A dwc3 otg port behavior
+      commit: 2881a4ab319918e775ec9c084da3d6cc15ad77ab
 
 Best regards,
 -- 
