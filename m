@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 256D5C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Jun 2022 15:16:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71145C43334
+	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Jun 2022 15:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5yoVJLohPQo/eSNtPTq0Hc8033nq6Qi6OMYLqSCpRKA=; b=MPD0hvqwQm0Vgt
-	KaldCavPMNGa5tvzNGRjkd0YPNA+La7N4NwCso88JhwxY86T4JaSSHaITUepnqv465VTM2Kzrm9VV
-	uF7dYWVATXDztQGt0Yb5q2qs/rgzQQCmQ1YcTZ3ZqPQU8O90j32u8CxCZKJ3y5hE2j3aOsoxfBA09
-	MSQEkP8U573/BqLcEqgFxKSW/uodyWS39PZSy0pr9g/nKyd4yk175cwgBKkkbVOrnLI23XkSRyc4i
-	1n1SR7xim+CBF2Rz0mqp+dtZc/C6O7jxSbC7VTJHcH5Sswyr+0Wauxu/SqdmB8t0nhmmFwqhcSdoB
-	ZM6yLF+Xb7y6MCMUXuCw==;
+	List-Owner; bh=TTRopXdhLufe0qnH8mnO4GxB2yOgISRs2y1/5BTBsD0=; b=geYE9cUxBIMfWm
+	hEsFTHcDRQ9r3kzMt60GKm8UFWSbbkka6aBmLkHY5KI6i0O925GliDRuQ5RIOAkWbJfyMIa6olBOa
+	Pzd1Z+yb9IWTflMZZ3eVMfj/d2Zgru5ss+v6fz8xQwdRRJd3PPCAKDNMNIvtxjNWEjThqDTxeEw8j
+	tTawgXv6KXVv/k8tX11k04V67OLTUL9+mZWzLvIsTYOw7cOxFf04n0YS2Rx2MaIxLhHA3xal0rpc0
+	Roo+gc7JT29zjh6/ORPeIWzHqNdycPAswvemV3P9DNC79LSroqAQA1rlosfDQM8t+6yHclla6ylyi
+	ZO0lS5yB32xkv8JBIVXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o02qk-00DWzV-PO; Sat, 11 Jun 2022 15:16:30 +0000
+	id 1o02ug-00DYfS-W0; Sat, 11 Jun 2022 15:20:35 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o02qE-00DWne-Lm; Sat, 11 Jun 2022 15:15:59 +0000
+	id 1o02ue-00DYdy-1N; Sat, 11 Jun 2022 15:20:33 +0000
 Received: from p508fd9f0.dip0.t-ipconnect.de ([80.143.217.240] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1o02q5-0004vU-GH; Sat, 11 Jun 2022 17:15:49 +0200
+	id 1o02ua-00050J-Qd; Sat, 11 Jun 2022 17:20:28 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>
+To: Brian Norris <briannorris@chromium.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	Peter Geis <pgwipeout@gmail.com>,
-	Liang Chen <cl@rock-chips.com>,
-	linux-kernel@vger.kernel.org,
-	Sascha Hauer <s.hauer@pengutronix.de>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Sebastian Fricke <sebastian.fricke@collabora.com>,
+	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 0/2] HDMI Audio on RK356x/Quartz64 Model A
-Date: Sat, 11 Jun 2022 17:15:44 +0200
-Message-Id: <165496044123.1951281.17858284746435155251.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Subject: Re: [PATCH] arm64: dts: rockchip: Assign RK3399 VDU clock rate
+Date: Sat, 11 Jun 2022 17:20:27 +0200
+Message-Id: <165496080836.1951920.11378861622467603485.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220611065300.885212-1-frattaroli.nicolas@gmail.com>
-References: <20220611065300.885212-1-frattaroli.nicolas@gmail.com>
+In-Reply-To: <20220607141535.1.Idafe043ffc94756a69426ec68872db0645c5d6e2@changeid>
+References: <20220607141535.1.Idafe043ffc94756a69426ec68872db0645c5d6e2@changeid>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220611_081558_755669_7EF6187F 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20220611_082032_119810_771BA513 
+X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,25 +67,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 11 Jun 2022 08:52:58 +0200, Nicolas Frattaroli wrote:
-> This enables HDMI audio on Quartz64 Model A, and the RK356x SoC in
-> general.
+On Tue, 7 Jun 2022 14:15:36 -0700, Brian Norris wrote:
+> Before commit 9998943f6dfc ("media: rkvdec: Stop overclocking the
+> decoder"), the rkvdec driver was forcing the VDU clock rate. After that
+> commit, we rely on the default clock rate. That rate works OK on many
+> boards, with the default PLL settings (CPLL is 800MHz, VDU dividers
+> leave it at 400MHz); but some boards change PLL settings.
 > 
-> i2s0 on the RK356x is connected to HDMI, and only has one DMA. I've
-> confirmed this with the TRM.
-> 
-> To test this, one needs a video clock, i.e. there is no audio if your
-> screen is off. The framebuffer console or something else needs to be
-> running to get audio output.
+> Assign the expected default clock rate explicitly, so that the rate is
+> consistent, regardless of PLL configuration.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: rk356x: Add HDMI audio nodes
-      commit: 697ee8546e241bd5fc175c0cfd5d8b0c8ce39697
-[2/2] arm64: dts: rockchip: Enable HDMI audio on Quartz64 A
-      commit: 4188962d993ef3633a61f66ba5afe9e43088f3c5
+[1/1] arm64: dts: rockchip: Assign RK3399 VDU clock rate
+      commit: 2d56af33d4df94d2b76446ffc3e3654c42232f4b
+
+      as fix for 5.19
 
 Best regards,
 -- 
