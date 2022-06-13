@@ -4,78 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C2DC43334
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jun 2022 09:05:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14AC4C43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jun 2022 09:28:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i8d99zGd9o8MBRB/HpzeEX4KqlH9VW4R7pRP7Rg0Vqs=; b=32quNIiVpSQqnw
-	caEXnmJMNNxPG4AqJO5kEXAeJaytgK2SSXb3sDpduKE9uV1MsIS0g7Yus1+Q7K5Hz66v8I9P1I58H
-	+nNMV9Nv7hAr17PJEN8mngBVEWpnGa2L6C/31c0oWvtKk9KcOftcm2ePU4ZCMSwYlEHxESawGR8kX
-	zcYfixHWD0VALlXK4sFaIHFlvJo8L0LhSIhQzaQE233jbgg42rbJL8GR8zCuexxca0MFR6J8aSkqK
-	ZRqLlRGqCjqw7I+VAw98ZLleueJNuRKrwHt0cmi2uKct6OGH0F/DjrYpvM8/Kztq4I94HjJJ7NyCx
-	7V+Q1qSsjkYN6w5Ozg1A==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=N6g9Vv9nWMtVs0cVrbCw4SoBJk8zwQoPCWIRDqMA9kg=; b=V3jP6vTjXIrFfm
+	X9llcnJVJo4ZJqqavsjGYvSWRFOgeWpKMuIc9VyWrX39Nqz3UWxiHCNQxYC66G8lfl9Bda7x88VJq
+	YFcg6y/4xTko02vLWrH23BN0e9JynHKkjF95230jdUPlxCgzyhXu1Q/g2x5mtP7t2Aos4Xzvoz5oS
+	i08DGoh7x9ZAtxflqwvXUHVEL5uP08P5jQh5ZIz5e1g0CjeADj/hv/0fYCBHN7bP7YWrEGrjsQWU0
+	XdOCtmj9ukGe4PTUsKbHqqbljv9eu0+0PKdWyOkuE2UB/38GmlFANm01GND0ebAP7mHSLRD11O6WP
+	ftDynHsSN2sHOfrNqPKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0g0b-002Nw6-V5; Mon, 13 Jun 2022 09:05:17 +0000
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+	id 1o0gMg-002Xtn-NX; Mon, 13 Jun 2022 09:28:06 +0000
+Received: from mail-m121144.qiye.163.com ([115.236.121.144])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0g0Z-002NvU-GE
-	for linux-rockchip@lists.infradead.org; Mon, 13 Jun 2022 09:05:16 +0000
-Received: by mail-pl1-x62d.google.com with SMTP id o17so4571707pla.6
-        for <linux-rockchip@lists.infradead.org>; Mon, 13 Jun 2022 02:05:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=yf4uQqjq18xkrHLkb2+6jzY6i4Q3FrV7ACwW2a8VXng=;
-        b=iasKB4UXWbJ6k2SuGWn4kaXn0zU/zbIo8v2p1gYX2ZjzCd/raAgen5kmiTSxBWsUqS
-         7AKW/qJtnBVVDMagZpUJMb7crZ5tKlOD8s78G8wkgm8JouXYFrnN3DrDhYH2J37E3mIy
-         JYuDz9ldgWFEaP3mtRZvcUjzoQvgeAyt1Upvc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=yf4uQqjq18xkrHLkb2+6jzY6i4Q3FrV7ACwW2a8VXng=;
-        b=iFygcZgcN3teRr0gl0IMNU3yM6Ml/aK7FkXtuZfo8rybG70uYmIfsx076+PnswFtOD
-         GsWw2Ggnx832BnP/UTLtiFIl4TshrOtk0SbxShBLVLxSWR0wUvIxMG64gHkXkdvp7J8q
-         F2K/Jq+i/RgGbUSHHuxllSHRL+uOBF+UH9/P8y3iW2r/lGkm4UupNDZxq1V/qVmmfjjm
-         O0WCSRCoMaoF8E/x51W50qS37Nvfbn+H+p6ELAkciYLUc/7MNGB9OQhH1TCRrfE0VQ4I
-         K6X58bHVGy35/l5CRLyQr5a6YCKhdNeDyFcQVOditfPqxmo4EZmdqibijedmIXZ9V2E4
-         Iklg==
-X-Gm-Message-State: AOAM5331bfZHwbFwRBUS5JncBfkLQqOfmxMRxDYfLq8B845PwgXRXBpO
-	GDuJDNQLAw3HH3llIc5p32HN0w==
-X-Google-Smtp-Source: ABdhPJxRKgV21sj5bmCx6fBT63Z0QdrSXxDIH9avQ4LVICaS71VFsPjZfmkmIMO6dd7S6ikcA5hlXA==
-X-Received: by 2002:a17:902:9307:b0:166:41a8:abc0 with SMTP id bc7-20020a170902930700b0016641a8abc0mr54929457plb.135.1655111113782;
-        Mon, 13 Jun 2022 02:05:13 -0700 (PDT)
-Received: from google.com ([240f:75:7537:3187:de22:3777:8b31:5148])
-        by smtp.gmail.com with ESMTPSA id b10-20020a170902650a00b001675991fb7fsm4526874plk.55.2022.06.13.02.05.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Jun 2022 02:05:12 -0700 (PDT)
-Date: Mon, 13 Jun 2022 18:05:08 +0900
-From: Sergey Senozhatsky <senozhatsky@chromium.org>
-To: John Ogness <john.ogness@linutronix.de>
-Cc: Sergey Senozhatsky <senozhatsky@chromium.org>,
-	Petr Mladek <pmladek@suse.com>, Peter Geis <pgwipeout@gmail.com>,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
-Subject: Re: [BUG] Threaded printk breaks early debugging
-Message-ID: <Yqb9xOBiY/262lhk@google.com>
-References: <CAMdYzYpF4FNTBPZsEFeWRuEwSies36QM_As8osPWZSr2q-viEA@mail.gmail.com>
- <87y1y48spg.fsf@jogness.linutronix.de>
- <YqVZ4CyWTiDgngkA@google.com>
- <8735g9mqo0.fsf@jogness.linutronix.de>
- <Yqazr060OLp2Rpbk@google.com>
- <87wndlge43.fsf@jogness.linutronix.de>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87wndlge43.fsf@jogness.linutronix.de>
+	id 1o0gMT-002Xpd-OP; Mon, 13 Jun 2022 09:27:55 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by mail-m121144.qiye.163.com (Hmail) with ESMTPA id 0A824AC04CF;
+	Mon, 13 Jun 2022 17:27:48 +0800 (CST)
+From: Jon Lin <jon.lin@rock-chips.com>
+To: broonie@kernel.org
+Cc: heiko@sntech.de,
+	linux-spi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jon Lin <jon.lin@rock-chips.com>
+Subject: [PATCH] spi: rockchip: Disable local irq when pio write out of interrupt service
+Date: Mon, 13 Jun 2022 17:27:44 +0800
+Message-Id: <20220613092744.9726-1-jon.lin@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZCBgUCR5ZQVlLVUtZV1
+	kWDxoPAgseWUFZKDYvK1lXWShZQUlKS0tKN1dZLVlBSVdZDwkaFQgSH1lBWUNLSBlWGEtJSktLHU
+	saGh1DVRMBExYaEhckFA4PWVdZFhoPEhUdFFlBWU9LSFVKSktISkNVS1kG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PCo6CRw4KT09IQ0QPUkXDygS
+	HUoKFANVSlVKTU5OSkpJT01DTUlLVTMWGhIXVREUFVUXEhU7CRQYEFYYExILCFUYFBZFWVdZEgtZ
+	QVlOQ1VJSVVMVUpKT1lXWQgBWUFJTENLNwY+
+X-HM-Tid: 0a815c640702b039kuuu0a824ac04cf
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_020515_610399_2C3E3654 
-X-CRM114-Status: GOOD (  15.55  )
+X-CRM114-CacheID: sfid-20220613_022753_956316_0A0BB973 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,40 +60,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On (22/06/13 10:36), John Ogness wrote:
-> >> IMHO, no. Especially in that situation, we do not want printk causing
-> >> that atomic section to become even longer. If the machine has entered
-> >> normal operation, we want printk out of the way.
-> >
-> > At the same time printk throttles itself in such cases: new messages are
-> > not added at much higher pace that they are printed at. So we lower the
-> > chances of missing messages.
-> 
-> That is true if there is only 1 printk caller.
+Avoid interrupt come and interrupt the pio_writer.
 
-Well, which is the case when num_online_cpus() == 1?
+Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+Signed-off-by: Jon <jon.lin@rock-chips.com>
+---
 
-> For SMP systems with printing handovers, it might not help at all.
-> I firmly believe that sprinkling randomness into printk (i.e. system)
-> latencies is not the answer. We need to keep printk lockless and out
-> of the system's way unless there is a real emergency happening.
+ drivers/spi/spi-rockchip.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-Yeah sure.
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index a08215eb9e14..2184de146928 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -199,6 +199,7 @@ struct rockchip_spi {
+ 	bool cs_high_supported; /* native CS supports active-high polarity */
+ 
+ 	struct spi_transfer *xfer; /* Store xfer temporarily */
++	spinlock_t lock; /* prevent I/O concurrent access */
+ };
+ 
+ static inline void spi_enable_chip(struct rockchip_spi *rs, bool enable)
+@@ -293,9 +294,13 @@ static void rockchip_spi_handle_err(struct spi_controller *ctlr,
+ 
+ static void rockchip_spi_pio_writer(struct rockchip_spi *rs)
+ {
+-	u32 tx_free = rs->fifo_len - readl_relaxed(rs->regs + ROCKCHIP_SPI_TXFLR);
+-	u32 words = min(rs->tx_left, tx_free);
++	u32 tx_free;
++	u32 words;
++	unsigned long flags;
+ 
++	spin_lock_irqsave(&rs->lock, flags);
++	tx_free = rs->fifo_len - readl_relaxed(rs->regs + ROCKCHIP_SPI_TXFLR);
++	words = min(rs->tx_left, tx_free);
+ 	rs->tx_left -= words;
+ 	for (; words; words--) {
+ 		u32 txw;
+@@ -308,6 +313,7 @@ static void rockchip_spi_pio_writer(struct rockchip_spi *rs)
+ 		writel_relaxed(txw, rs->regs + ROCKCHIP_SPI_TXDR);
+ 		rs->tx += rs->n_bytes;
+ 	}
++	spin_unlock_irqrestore(&rs->lock, flags);
+ }
+ 
+ static void rockchip_spi_pio_reader(struct rockchip_spi *rs)
+@@ -779,6 +785,8 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 		goto err_put_ctlr;
+ 	}
+ 
++	spin_lock_init(&rs->lock);
++
+ 	rs->apb_pclk = devm_clk_get(&pdev->dev, "apb_pclk");
+ 	if (IS_ERR(rs->apb_pclk)) {
+ 		dev_err(&pdev->dev, "Failed to get apb_pclk\n");
+-- 
+2.17.1
 
-> This particular thread is not about missed messages due to printk not
-> "throttling the system", but rather the kernel buffers not getting
-> flushed in an emergency. This, of course, needs to be properly handled.
-
-True, but Peter mentioned
-
-  "I noticed with threading enabled during large bursts the console
-   drops an excessive amount of messages. It's especially apparent
-   during the handover from earlycon to the normal console."
 
 _______________________________________________
 Linux-rockchip mailing list
