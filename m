@@ -4,90 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 910BDC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jun 2022 16:49:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EA40C433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jun 2022 16:54:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hRDFj3iZGd4ADJ3xX2z6MLtOvW2QPCxSropgFEPnwFU=; b=Q8Fjba1so+LoW9
-	of1UGPEHHwVqeun8ax2urjVwvMjc4K1exx01etf38/qZ4NiqBS7AjBm1yxK5ntW1h9Q/cklc+6dMB
-	WYX4p6guf3ylOnz8xR5J63wmCkSfclde9ih+UK0pCJ/AcZknkisMXDeqiFjywq5tIMY/5N7y/QOih
-	8L3rtTpe0Ooa2F8ePPrSMBCEe2mLSFG8qmPowylTW8O8AHB4DebFcVhYi1LrqaZEEiJAfNfRKsegb
-	yzrdWFWhI8sue1wNnkZ21KAT6BMEzRCiwyBagewDw16/aqLbO2Lm+kGCF36A/rOgupXN6mn67hYWE
-	Pc0qd9LLdlcnq3uLTtNA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=04wctaYgen3c7cDByAtbj7nI2OSp7xwF9rN2nMR6OuY=; b=1rGaX4z7WUGDXa
+	MPAjNKKU9tbDMj/qimS0HZp9SxMxOBLin3t50ErekkBCqoMkYrd9Dt+mpXmrzL3chCfhLMr6dz7jR
+	FoU8EYBHkRzxqOGjfOeWilFk7BcIOBHtgUc4qElm79KqALFAOT/+FbT1BwhwujDYoTmllcYnYWxR2
+	fvzH2lKxXrRHKieARtqJk7pisdogRvsY6mPok/5hrsij6CSnjowJqQO33ip7qnqn2bKjTifpCeznY
+	0RbJyfW6n8o79yKG06Wr89i3KnjGFw04djmWjka6dyvpaf1mJNy17JpPrdVc22Tm1/Pvt7wGsv9Ec
+	e8rOFxvCv3UwVzzIRX3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0nFz-004lcV-1W; Mon, 13 Jun 2022 16:49:39 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0nFn-004lXv-O6; Mon, 13 Jun 2022 16:49:29 +0000
-Received: by mail-pl1-x633.google.com with SMTP id i15so5584250plr.1;
-        Mon, 13 Jun 2022 09:49:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=c0HeuJ98I3Y5QZXsYDJume8HkCACCCfAbeGSkszGHn8=;
-        b=NUH+Vt/6Cn5kViDjiu3uNhVu3Z9a4hDpEjVwnCuRGiiIDE0H6LIT0uPzEE2Pv7OqOV
-         vYwk/zjRFYUlaheRj1Wr6Ux4IRmrgjvOLX6j042QB9k5My0pZmLLFldevEliU6ApVEfT
-         9I7mzQGZc+BGj2xJp9PkFD6iJtN1wFJ9p7hBhNV3GoZKUuiC6+bKFnQgxaFrPcVraPya
-         5tnlFPsSqU/s1yVzNoo9ROwN0o7s61r79zrq3ojpapxtuLMQB9noVds5iCDIc0SLzOQx
-         B8px/I6/8jCCoCrfJDxqxNi81IYbuqv+NJhq5Xla1mTEff30ylJMhQbLZLfh/qWxEllc
-         kgLA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=c0HeuJ98I3Y5QZXsYDJume8HkCACCCfAbeGSkszGHn8=;
-        b=tFR+mB+jBhJ0bHj6BqdJkU2xsjFqQbF5Z53z+jikstsXrW68ZNrLiF9mVbSXGiA7IR
-         XVKoj3vHr6gcZnZvY+wepRs3J22RZUi0B+hGVtEXrd+OPaE62KX3L9iw4XgVjr5qiTgN
-         YXQU4E+QreHr3D9jtyOuwfYi2N7J+A+YWDpqsKntawhy7p+6GMIDRBqG3KjMRkiesW7K
-         w8FAAmHw8Tgiccm6iVG1Ctlvv7LDUymRa3cWRgvZlpa9sYQY0j9x6y87hJYIMw5lEKqi
-         zkt/9RG6+pcxjjeo4vofGajpB1JOs2lM+boMd4w572eLsoX57HqBWDJ54koc88swT+xU
-         /RKg==
-X-Gm-Message-State: AOAM533193SnauL4V3TIyw7vr8lMx32rR8WnLQ0pQgrbCpFp1EiCNdwT
-	djTABt/SxaBqE+PdNGEuTiM=
-X-Google-Smtp-Source: ABdhPJwH4a0siFP6S/uPa9BISixIKS7A/QejNs/Kv5WE7if7/eH6MSMvtrDL0KlklM7LmjhUfmG+LQ==
-X-Received: by 2002:a17:90b:1bc1:b0:1e6:9a00:5d63 with SMTP id oa1-20020a17090b1bc100b001e69a005d63mr16469024pjb.154.1655138966172;
-        Mon, 13 Jun 2022 09:49:26 -0700 (PDT)
-Received: from [10.67.48.245] ([192.19.223.252])
-        by smtp.googlemail.com with ESMTPSA id ij25-20020a170902ab5900b0015e8d4eb1f7sm5334774plb.65.2022.06.13.09.49.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 13 Jun 2022 09:49:25 -0700 (PDT)
-Message-ID: <def298b1-efcc-8c34-52e2-b33c74e3a129@gmail.com>
-Date: Mon, 13 Jun 2022 09:49:19 -0700
+	id 1o0nKt-004n8f-0k; Mon, 13 Jun 2022 16:54:43 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o0nKg-004n4j-Ss; Mon, 13 Jun 2022 16:54:33 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6D30023A;
+	Mon, 13 Jun 2022 09:54:25 -0700 (PDT)
+Received: from monolith.localdoman (unknown [172.31.20.19])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DDCC43F792;
+	Mon, 13 Jun 2022 09:54:21 -0700 (PDT)
+Date: Mon, 13 Jun 2022 17:54:35 +0100
+From: Alexandru Elisei <alexandru.elisei@arm.com>
+To: sunjunchao2870@gmail.com, jack@suse.cz, viro@zeniv.linux.org.uk,
+	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
+	pmladek@suse.com, senozhatsky@chromium.org, rostedt@goodmis.org,
+	john.ogness@linutronix.de, keescook@chromium.org, anton@enomsg.org,
+	ccross@android.com, tony.luck@intel.com, heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, maco@android.com, hch@lst.de,
+	gregkh@linuxfoundation.org, jirislaby@kernel.org
+Subject: [BUG] rockpro64 board hangs in console_init() after commit
+ 10e14073107d
+Message-ID: <Yqdry+IghSWnJ6pe@monolith.localdoman>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 1/6] arm64: dts: broadcom: Add missing space around status
- property
-Content-Language: en-US
-To: =?UTF-8?Q?Niklas_S=c3=b6derlund?=
- <niklas.soderlund+renesas@ragnatech.se>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- devicetree@vger.kernel.org
-Cc: Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
- bcm-kernel-feedback-list@broadcom.com, Shawn Guo <shawnguo@kernel.org>,
- Li Yang <leoyang.li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- kernel@pengutronix.de, Fabio Estevam <festevam@gmail.com>,
- linux-imx@nxp.com, Wei Xu <xuwei5@hisilicon.com>,
- Andy Gross <agross@kernel.org>, Bjorn Andersson
- <bjorn.andersson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Nishanth Menon <nm@ti.com>, Vignesh Raghavendra <vigneshr@ti.com>,
- Tero Kristo <kristo@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20220612223201.2740248-1-niklas.soderlund+renesas@ragnatech.se>
- <20220612223201.2740248-2-niklas.soderlund+renesas@ragnatech.se>
-From: Florian Fainelli <f.fainelli@gmail.com>
-In-Reply-To: <20220612223201.2740248-2-niklas.soderlund+renesas@ragnatech.se>
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_094927_826908_983F6DDF 
-X-CRM114-Status: UNSURE (   8.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220613_095431_071063_A9601A81 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,18 +59,111 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gNi8xMi8yMiAxNTozMSwgTmlrbGFzIFPDtmRlcmx1bmQgd3JvdGU6Cj4gQWRkIHRoZSBtaXNz
-aW5nIHNwYWNlIGFyb3VuZCB0aGUgc3RhdHVzIHByb3BlcnR5IGJlZm9yZSB0aGUgdHlwbyBzcHJl
-YWRzCj4gdG8gb3RoZXIgZmlsZXMuCj4gCj4gU2lnbmVkLW9mZi1ieTogTmlrbGFzIFPDtmRlcmx1
-bmQgPG5pa2xhcy5zb2Rlcmx1bmQrcmVuZXNhc0ByYWduYXRlY2guc2U+CgpBbHJlYWR5IGNhcnJ5
-aW5nIGFuIGlkZW50aWNhbCBwYXRjaCB0aGF0IHNob3VsZCBsYW5kIGluIHY0LjIwOgoKaHR0cHM6
-Ly9naXRodWIuY29tL0Jyb2FkY29tL3N0YmxpbnV4L2NvbW1pdC9iNjViOTQ3N2Q5MTE4ZTNjZDM1
-OTI0NWY1OWFmNTU2NTk3YmM1YjcxCi0tIApGbG9yaWFuCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi,
+
+(Apologies for the long To: list, I've added everyone that
+scripts/get_maintainer.pl listed for fs/{fs-writeback,inode}.c, for the
+rockchip boards, for printk.c and for the tty layer)
+
+When booting a kernel built from tag v5.19-rc2, my rockpro64-v2 hangs at
+boot with this log:
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 5.19.0-rc2 (alex@redacted) (aarch64-linux-gnu-gcc (GCC) 12.1.0, GNU ld (GNU Binutils) 2.38) #90 SMP PREEMPT Mon Jun 13 17:13:12 BST 2022
+[    0.000000] Machine model: Pine64 RockPro64 v2.0
+[    0.000000] efi: UEFI not found.
+[    0.000000] earlycon: uart0 at MMIO32 0x00000000ff1a0000 (options '1500000n8')
+[    0.000000] printk: bootconsole [uart0] enabled
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000000200000-0x00000000f7ffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xf77dc140-0xf77ddfff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000000200000-0x00000000f7ffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000200000-0x00000000f7ffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000200000-0x00000000f7ffffff]
+[    0.000000] On node 0, zone DMA: 512 pages in unavailable ranges
+[    0.000000] cma: Reserved 32 MiB at 0x00000000f0000000
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: MIGRATE_INFO_TYPE not supported.
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 20 pages/cpu s41768 r8192 d31960 u81920
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: ARM erratum 845719
+[    0.000000] Fallback order for Node 0: 0
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 999432
+[    0.000000] Policy zone: DMA
+[    0.000000] Kernel command line: root=PARTUUID=7f4aab92-69d8-47f3-be10-624da40a71f9 rw earlycon rootwait
+[    0.000000] Dentry cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 3915796K/4061184K available (15552K kernel code, 2758K rwdata, 8668K rodata, 6336K init, 564K bss, 112620K reserved, 32768K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=6, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=6.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=6
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+[    0.000000] GICv3: 256 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000fef00000
+[    0.000000] ITS [mem 0xfee20000-0xfee3ffff]
+[    0.000000] ITS@0x00000000fee20000: allocated 65536 Devices @480000 (flat, esz 8, psz 64K, shr 0)
+[    0.000000] ITS: using cache flushing for cmd queue
+[    0.000000] GICv3: using LPI property table @0x0000000000440000
+[    0.000000] GIC: using cache flushing for LPI property table
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000000450000
+[    0.000000] GICv3: GIC: PPI partition interrupt-partition-0[0] { /cpus/cpu@0[0] /cpus/cpu@1[1] /cpus/cpu@2[2] /cpus/cpu@3[3] }
+[    0.000000] GICv3: GIC: PPI partition interrupt-partition-1[1] { /cpus/cpu@100[4] /cpus/cpu@101[5] }
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 24.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[    0.000001] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    0.005107] Console: colour dummy device 80x25
+[    0.005549] printk: console [tty0] enabled
+[    0.005956] printk: bootconsole [uart0] disabled
+
+Config can be found at [1] (expires after 6 months). I've also built the
+kernel with gcc 10.3.1 [2] (aarch64-none-linux-gnu), same issue.
+
+I've bisected the build failure to commit 10e14073107d ("writeback: Fix
+inode->i_io_list not be protected by inode->i_lock error"); I've confirmed
+that that commit is responsible by successfully booting the board with a
+kernel built from v5.19-rc2 + the above commit reverted.
+
+I tried to do some investigating, it seems that the kernel is stuck at
+printk.c::console_init() -> drivers/tty/vt/vt.c::con_init() ->
+printk.c::register_console() -> unregister_console() -> console_lock().
+This has been determined by adding pr_info statements.
+
+I've booted a kernel compiled with CONFIG_PROVE_LOCKING=y, as the offending
+commit fiddles with locks, but no splat was produced that would explain the
+hang. I've also tried to boot a v5,19-rc2 kernel on my odroid-c4, the board
+is booting just fine, so I'm guessing it only affects of subset of arm64
+boards.
+
+[1] https://pastebin.com/MfDrKyKd
+[2] https://developer.arm.com/downloads/-/gnu-a
+
+Thanks,
+Alex
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
