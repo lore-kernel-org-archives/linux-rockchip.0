@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 660B8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jun 2022 15:14:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58625C43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jun 2022 16:11:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PqVwkmomWUeMw0hch+YeL6f9o0/ACCGEvcIq+FeZ3gM=; b=aAk/WpVqDO1Ub/
-	zP6gVcWLv8xIT9otdd9y7c764nCo1IODfGXHt/vUUVkx/T444LbaRexbKosHtnhuubvkCNPVTmBSu
-	mP7XLiBNDEHkjjZ9Ata+zGOconIrcQbY+xxfb+R0NI5+GiIZAwVcePCR87FmemPcdh7mu7pidF4Ij
-	OAlOo9FUceCByrQ1ws92PuviN4Ego4HiSz+gQpqx/bLvh7RM4WfKugrgI4dGQNId6f3J/nHO61e+d
-	1cNkXHRSwk9yA2Vy0/v4V9AsOHOY0+QZiK9MVFKZG18u+lc3Uf/F+VDlzSnSJqk/yZWPH+pamnK0V
-	qqtKg5yZjg4nCp+nbevw==;
+	List-Owner; bh=WFFcwYhizEROLzTDvQ4I0/MGx4Jt2PWKhuCKV8Ui5mo=; b=xTaDv3t5mN4k8w
+	W+7XG8HprFqaVO7yZSxTKE3eRhh8ge5A6FUCDCo/Sy2SfCWutL7+LqtLiYyAYgfbIx8/zannPuy3H
+	ZaopHCOXt6jcKlw/YGG+jQfBHE0hAjKFJi4UDRBucvmsdCSYSMAb6J76FTQkdWzyqMlPFW6ArBxtV
+	tMzm/4h1ES01MJQMjwj6Hm4y4zjK4O8tGcxtBQFde6O/ebX9jI4Fars04thLL4mFY0wpsw4r2JuGP
+	jvpBN8KtRRWDoLBKJpS2IGQr1QSsMfNLqe5mNFnJAxBv4bAS0iIcVM5KV12l/Jkn4znQoBfIM0gov
+	b+QoHnMqTv9G2BheFzYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0llk-004So3-TK; Mon, 13 Jun 2022 15:14:21 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1o0mfB-004eWS-IS; Mon, 13 Jun 2022 16:11:37 +0000
+Received: from eu-smtp-delivery-151.mimecast.com ([185.58.85.151])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0ljI-004Rek-9K
-	for linux-rockchip@lists.infradead.org; Mon, 13 Jun 2022 15:11:50 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
-	by smtp-out2.suse.de (Postfix) with ESMTP id B31271F38A;
-	Mon, 13 Jun 2022 15:11:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
-	t=1655133106; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Z7dlidkLU9Um70/JTQTwpR+Dj4Fvy0y6/Lfnd9UP1rE=;
-	b=I/O19Pe8jF4zHNt89mXvStjN3iRBYt1Ohq4Zq+R3YXICwPKJNbzsqH7Kox8YE8G/wx4zYU
-	+zclLnmUiCvmbqDsT9msRo+dESKcuvEV9xHNIoGXkkSHpo0pG/NuyPI5Q7fsIhGo3RN3lA
-	/NKiMLgv+Nj1N8t1C9qhvuC8+rDYrgI=
-Received: from suse.cz (unknown [10.100.201.202])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by relay2.suse.de (Postfix) with ESMTPS id 57E2F2C141;
-	Mon, 13 Jun 2022 15:11:46 +0000 (UTC)
-Date: Mon, 13 Jun 2022 17:11:46 +0200
-From: Petr Mladek <pmladek@suse.com>
-To: John Ogness <john.ogness@linutronix.de>
-Cc: Peter Geis <pgwipeout@gmail.com>,
-	Sergey Senozhatsky <senozhatsky@chromium.org>,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
-Subject: Re: [BUG] Threaded printk breaks early debugging
-Message-ID: <YqdTsjRQiJUilSg6@alley>
+	id 1o0mf8-004eO5-JU
+	for linux-rockchip@lists.infradead.org; Mon, 13 Jun 2022 16:11:36 +0000
+Received: from AcuMS.aculab.com (156.67.243.121 [156.67.243.121]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ uk-mta-188-UKF4EeJcNpOg5PEFD63RQQ-1; Mon, 13 Jun 2022 17:11:24 +0100
+X-MC-Unique: UKF4EeJcNpOg5PEFD63RQQ-1
+Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:994c:f5c2:35d6:9b65) by
+ AcuMS.aculab.com (fd9f:af1c:a25b:0:994c:f5c2:35d6:9b65) with Microsoft SMTP
+ Server (TLS) id 15.0.1497.36; Mon, 13 Jun 2022 17:11:19 +0100
+Received: from AcuMS.Aculab.com ([fe80::994c:f5c2:35d6:9b65]) by
+ AcuMS.aculab.com ([fe80::994c:f5c2:35d6:9b65%12]) with mapi id
+ 15.00.1497.036; Mon, 13 Jun 2022 17:11:19 +0100
+From: David Laight <David.Laight@ACULAB.COM>
+To: 'Petr Mladek' <pmladek@suse.com>, Sergey Senozhatsky
+	<senozhatsky@chromium.org>
+CC: John Ogness <john.ogness@linutronix.de>, Peter Geis <pgwipeout@gmail.com>,
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open
+ list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Subject: RE: [BUG] Threaded printk breaks early debugging
+Thread-Topic: [BUG] Threaded printk breaks early debugging
+Thread-Index: AQHYfw5tEBAMEt7XXEKQmWQ8WlSw2q1Nf9Zw
+Date: Mon, 13 Jun 2022 16:11:19 +0000
+Message-ID: <c81870cef50f4e1fac5083f0b780983d@AcuMS.aculab.com>
 References: <CAMdYzYpF4FNTBPZsEFeWRuEwSies36QM_As8osPWZSr2q-viEA@mail.gmail.com>
- <87y1y48spg.fsf@jogness.linutronix.de>
- <CAMdYzYr-Wo713Y4qjboTpoK6GcrYfKCfRJAEizwXw6-=dymVzg@mail.gmail.com>
- <87zgihlbst.fsf@jogness.linutronix.de>
- <CAMdYzYosXiQc9=t7daPaWWS=rnTVT6nnZvVBXDycBQvfR-1FAA@mail.gmail.com>
- <87sfo9l2rt.fsf@jogness.linutronix.de>
+ <87y1y48spg.fsf@jogness.linutronix.de> <YqVZ4CyWTiDgngkA@google.com>
+ <8735g9mqo0.fsf@jogness.linutronix.de> <Yqazr060OLp2Rpbk@google.com>
+ <87wndlge43.fsf@jogness.linutronix.de> <Yqb9xOBiY/262lhk@google.com>
+ <YqcN9mH/aVwBoIMQ@alley>
+In-Reply-To: <YqcN9mH/aVwBoIMQ@alley>
+Accept-Language: en-GB, en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.202.205.107]
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <87sfo9l2rt.fsf@jogness.linutronix.de>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=C51A453 smtp.mailfrom=david.laight@aculab.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: aculab.com
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_081148_561157_CC03A3D3 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20220613_091134_955424_84D02973 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,42 +84,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon 2022-06-13 04:29:50, John Ogness wrote:
-> On 2022-06-12, Peter Geis <pgwipeout@gmail.com> wrote:
-> > The buffer isn't an issue here, everything is available in dmesg when
-> > userspace becomes available. Instead some messages bound for the
-> > serial console are never output.
+From: Petr Mladek
+> Sent: 13 June 2022 11:14
+...
+> Another interesting alternative is the Peter Zijlstra's mode
+> where all messages are printed to the console "immediately".
+> They are serialized only by the CPU-reentrant lock.
 > 
-> OK. Good to know.
-> 
-> > We run a serial console at 1.5m baud which is significantly higher
-> > than most SoCs which default to 115200. I have noticed some timing
-> > differences since the introduction of the threaded console. A
-> > significant amount of information is dumped very early in the boot
-> > process (between 0 and 4 seconds into boot), as most drivers are
-> > probing during this time. It also happens to be when the earlycon
-> > console hands over to the normal console. There is no abnormal
-> > debugging enabled, the output is a standard (non-quiet) boot log. The
-> > question is why is direct mode not triggering during a panic?
-> 
-> Just to be clear, you are not losing any intermediate messages. Only the
-> tail end of the kernel log was never printed. Is this correct?
-> 
-> This may be the same issue being discussed here [0].
-> 
-> John Ogness
-> 
-> [0] https://lore.kernel.org/all/87v8t5l39z.fsf@jogness.linutronix.de
+> This mode is not good for production system. But it might
+> be good for debugging. The good thing is that the behavior
+> is well defined.
 
-If the last messages are missing then it is most likely the same
-issue.
+ISTM that all messages should be output (even if this means
+that cpu spin waiting for a serial console) until userspace
+has a chance to set an option to change the behaviour.
 
-Peter, could you please try if the patch at
-https://lore.kernel.org/r/YqdSw/fJvnkRbjvc@alley
-would make any difference?
+Oh, and can someone stop the distros hiding the console output.
+I want to see the 'oops' traceback when I break the kernel!
 
-Best Regards,
-Petr
+	David
+
+-
+Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
+Registration No: 1397386 (Wales)
+
 
 _______________________________________________
 Linux-rockchip mailing list
