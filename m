@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD384C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jun 2022 02:24:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2068AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Jun 2022 03:49:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+AdIHEDL17J1UblGlfw5UfhtWBnwM9xg6CsVwFItsp4=; b=HjRKFEdhrpqSdM
-	I1VxEJyjqaEDwCeifeMwO/VyJQagAmQqGqpUf1o48/axF2X62sXk6b4ve7fFUXRSpUH0Gu3t0nqBf
-	rgKM2YqH1M/z/0Cav0VtJjvqnsOZuYwzRoY9kcJwdfm3tRASqG9gM0VyFTmyyyM8V3JKy/iNwR8CN
-	z2cjK8YR++UN+zLt+7NL4vkSrXP7aE3YHSlXnktUQWWhcf9hXetRoeILgYVYZJy3Pda6H7zrG65PN
-	VQRGn4PB6MXaKGHRCjLHjEgAJuv/gPHWQ0712O5uvvpYhyPH0w/yxlcnljhK7yUyZczgcPTcap7h0
-	hoeJVsDNvT++opr15N2Q==;
+	List-Owner; bh=0gozFoCfKUe+iFAM5fLugSNUQJrT4HlXm4krufTpE34=; b=RmInGHFmRXnPep
+	vI5bn9yZUiZ2XZ49CNa0Q841LlnIq5d8xrbFA28h3FsGDTpd99UftJgYEX7CJEDD4fxOLSlqhXy9r
+	EzBJBkugWGW5ww+i/zUjzc58KShCQF+4AAPGqbprWqDjro8DIVCsdMNiw/sb5Q8Ua549PioyxRLb6
+	j0cK7wL9tRa9xD1mYsWhyP5bdk/8u1kI1Ox+SHpdQzlvjshRpR3U6nMDKG4Yvq4sL8iQ3z1lJfNT0
+	2Q74FJDdL7CI8y9xszEgalclmVvWASJVt9vTsQM4FZGO0SQ1hAlJC4go1TSdeiaVu6TkuXHaoNLTA
+	G8ZiJAj4tF79XoyNSsoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0ZkD-000rmC-IR; Mon, 13 Jun 2022 02:23:57 +0000
-Received: from galois.linutronix.de ([193.142.43.55])
+	id 1o0b4l-001COF-Ba; Mon, 13 Jun 2022 03:49:15 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o0ZkB-000rlM-17
-	for linux-rockchip@lists.infradead.org; Mon, 13 Jun 2022 02:23:56 +0000
-From: John Ogness <john.ogness@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1655087030;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=L4pUhakLpeWdRTQcLyq5yzn64tbD6Lu4RAFJSVoJmmo=;
-	b=TPSgRqSxJKpUzMpRDYleQ+mW3mGgo2s7Z6qJlxG0rDJaxuUCiy4IJ7yCEQfSCtsVj7tvu9
-	WVWVNOjTbBWN1cLTJa0xaA4sERf/1/MLNxpRxXETrtwP8Uue73f3uOvhC2r1YLl9dHSzeu
-	d9vC9L1doE5A611uE+RClgTZzdveCUbt1Stdyd66VN8J4ia+dGBd+Xp4QZfXCUR3Jer5mN
-	AhHohhx4EYiDNIR+GYjwKIkKMB/blVxQCCP+rslP6cHoa1mw67ZQpYtx0Ytv0oYIUBGUvA
-	AsBAsS30junXnmCxU3BqCN6KiagBWANSZ/4jyqj0hcLKYrCeOYJeLMl5ETXgiA==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1655087030;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=L4pUhakLpeWdRTQcLyq5yzn64tbD6Lu4RAFJSVoJmmo=;
-	b=oq26gIIX/4R1s70Vh5UkPEYUPdDHS1kl8SGMOhIP6rqLLgnvjq3GF/kVztoroIA5H3JgUy
-	DaJGTklOUb5xc8Ag==
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Petr Mladek <pmladek@suse.com>, Sergey Senozhatsky
- <senozhatsky@chromium.org>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..."
- <linux-rockchip@lists.infradead.org>
+	id 1o0b4i-001CLv-6g
+	for linux-rockchip@lists.infradead.org; Mon, 13 Jun 2022 03:49:13 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id k5-20020a17090a404500b001e8875e6242so4741853pjg.5
+        for <linux-rockchip@lists.infradead.org>; Sun, 12 Jun 2022 20:49:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=36dPqle/rlmpKapipF+KE1d4JPgoWr3C6RG6AlhQkWA=;
+        b=Ugkkbu10YeDB3fFkCXZ732hz1icH485fPCKzAPb6Hfdy9IcTXnhDHiCTgWBulae2sI
+         HCTEP9hdisGZk9fh5/56WCLuBfYD0VKVqsRLRXvFXo+v05O1bUIShZDIJR2hd1dZmmIM
+         FXNZ5iOZ7IlBKe9WI5ZamyPsEBFlkXuIRi6U0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=36dPqle/rlmpKapipF+KE1d4JPgoWr3C6RG6AlhQkWA=;
+        b=4pYRq+JnWHYAK/oEozfcxPRwEfbaToTFVf9WKKxuqET9KSZzy5g8+y06T99/TprwjM
+         NIQcSf3mIDgDIIJJKZZsYJBXXhOhDVAt5uuJWHGfSRimIgdlUdz+FwypFVpLPZ4Qp9q/
+         0mB07BJki0+fnddBFOzuAOG/p7DjTpjF83xb0qRwHzWWcdxChS/+eB5khPT3O9PbO9mL
+         mx91rMYxfiS1aHrckZRmd2OYlO+5tdpaUG+CRaH8mNYCrknkKvcQbQ6SDYwaKC2AQEna
+         eF2qUKwSPuiU0rbzZb/EsvQPXjVWYV9einws12ebOdR4MlZQrMIfeIYbxmRB/vb3c+nx
+         6x2Q==
+X-Gm-Message-State: AOAM532/XwI/hwSP2YFLih9oMrb55jnENyokYpZI7lOXtknCY554fYam
+	NemdfnzFrcz/OXBzKsMBR3yeAA==
+X-Google-Smtp-Source: ABdhPJzp4MllA13fAg38/cBxUsQG0hCqm8mssIZuQ/i/A4EmGw1NniOS8zrFvEDb+JlT9qh2I9h7Vg==
+X-Received: by 2002:a17:90b:1c8f:b0:1b8:c6dc:ca61 with SMTP id oo15-20020a17090b1c8f00b001b8c6dcca61mr13258788pjb.13.1655092148795;
+        Sun, 12 Jun 2022 20:49:08 -0700 (PDT)
+Received: from google.com ([240f:75:7537:3187:de22:3777:8b31:5148])
+        by smtp.gmail.com with ESMTPSA id m26-20020a63941a000000b003fc5b1db26fsm4150680pge.52.2022.06.12.20.49.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 12 Jun 2022 20:49:08 -0700 (PDT)
+Date: Mon, 13 Jun 2022 12:49:03 +0900
+From: Sergey Senozhatsky <senozhatsky@chromium.org>
+To: John Ogness <john.ogness@linutronix.de>
+Cc: Sergey Senozhatsky <senozhatsky@chromium.org>,
+	Petr Mladek <pmladek@suse.com>, Peter Geis <pgwipeout@gmail.com>,
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 Subject: Re: [BUG] Threaded printk breaks early debugging
-In-Reply-To: <CAMdYzYosXiQc9=t7daPaWWS=rnTVT6nnZvVBXDycBQvfR-1FAA@mail.gmail.com>
+Message-ID: <Yqazr060OLp2Rpbk@google.com>
 References: <CAMdYzYpF4FNTBPZsEFeWRuEwSies36QM_As8osPWZSr2q-viEA@mail.gmail.com>
  <87y1y48spg.fsf@jogness.linutronix.de>
- <CAMdYzYr-Wo713Y4qjboTpoK6GcrYfKCfRJAEizwXw6-=dymVzg@mail.gmail.com>
- <87zgihlbst.fsf@jogness.linutronix.de>
- <CAMdYzYosXiQc9=t7daPaWWS=rnTVT6nnZvVBXDycBQvfR-1FAA@mail.gmail.com>
-Date: Mon, 13 Jun 2022 04:29:50 +0206
-Message-ID: <87sfo9l2rt.fsf@jogness.linutronix.de>
+ <YqVZ4CyWTiDgngkA@google.com>
+ <8735g9mqo0.fsf@jogness.linutronix.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <8735g9mqo0.fsf@jogness.linutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220612_192355_255636_10D642BF 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220612_204912_308536_B8D64B53 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,31 +90,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-06-12, Peter Geis <pgwipeout@gmail.com> wrote:
-> The buffer isn't an issue here, everything is available in dmesg when
-> userspace becomes available. Instead some messages bound for the
-> serial console are never output.
+On (22/06/13 01:08), John Ogness wrote:
+> On 2022-06-12, Sergey Senozhatsky <senozhatsky@chromium.org> wrote:
+> > Should a situation when we have only one online CPU be enough of a
+> > reason to do direct printing? Otherwise we might not have CPUs to
+> > wakeup khtread on, e.g. when CPU that printk is in atomic section for
+> > too long.
+> 
+> IMHO, no. Especially in that situation, we do not want printk causing
+> that atomic section to become even longer. If the machine has entered
+> normal operation, we want printk out of the way.
 
-OK. Good to know.
-
-> We run a serial console at 1.5m baud which is significantly higher
-> than most SoCs which default to 115200. I have noticed some timing
-> differences since the introduction of the threaded console. A
-> significant amount of information is dumped very early in the boot
-> process (between 0 and 4 seconds into boot), as most drivers are
-> probing during this time. It also happens to be when the earlycon
-> console hands over to the normal console. There is no abnormal
-> debugging enabled, the output is a standard (non-quiet) boot log. The
-> question is why is direct mode not triggering during a panic?
-
-Just to be clear, you are not losing any intermediate messages. Only the
-tail end of the kernel log was never printed. Is this correct?
-
-This may be the same issue being discussed here [0].
-
-John Ogness
-
-[0] https://lore.kernel.org/all/87v8t5l39z.fsf@jogness.linutronix.de
+At the same time printk throttles itself in such cases: new messages are
+not added at much higher pace that they are printed at. So we lower the
+chances of missing messages.
 
 _______________________________________________
 Linux-rockchip mailing list
