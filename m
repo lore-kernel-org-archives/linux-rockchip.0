@@ -4,54 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E59E2C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 13:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFE9DC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 13:39:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UWdTeg95YfWYyF+xCR7fgb3viPFGayouFDw/5XG9wMg=; b=F8MFvhYCoU/zCY
-	AxbyyNiu2htjKLCV/7x3ndTHUdO39U/bE6IrQMYlyaH486dDNKHFs9L1bh8jyFd3I8y03G/pDwamn
-	LItB1dapt1rExNxKOr1wba+yNzUBFHH2SBDUNvqwk8ABX7U3NPsvTFNOB6ff6oDXSCuM7yyVVqa+/
-	/34hFNOZHF4SI1h0V6UDwlFBTNVijMs+iGgFUN6oGy9yXrYGeBMvGFzxgvSCe/53kwI6w07Y7Ovzo
-	egEpS3POBiA1sVu9gk2h8gU/nPQ4X/H+HYC/DCatNNMzjOwcjywOtOB5A5f1khtMtiMVHS9s2D+O+
-	Uaq73veiGhffAiff8niw==;
+	List-Owner; bh=/Gh2dpZV1aNh0tw5FrKQ5ci6YlWCqLvs+n9xqY7QgXY=; b=PC6jl7DVpZSD+e
+	X35keRImrAqLDg9rChCp5ss/XMY2aTV5yvWbBKXjec6aW9rKoM6mAcyaUHAZu24K0rNAhwwUtOR5x
+	aE4T5LV91eoAVL5pnIdpNG0hEGrhPU6Wb0qAmrDiaVC7bjdbf25avZUweaiLdoAG/kb1qMcBaHJAT
+	VgeC2OZ1QZEjXU57UJjF/f48z1kWCwbpmYUGWgXhmYkQRYt6VX8todZQdNFYs9e0hgsI3IUF4G0Qw
+	JEDjUJ/Wimpb2/RXzoFYCv590IjLSeO1XpWeBhJumts6469EMvUl/aHiiCqpNoOJAY2yTcUrJXLG8
+	3LdSx69Z/4VMb1RYwfcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o16WG-009kQk-GI; Tue, 14 Jun 2022 13:23:44 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o16W5-009kOQ-7i; Tue, 14 Jun 2022 13:23:35 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D65A91650;
-	Tue, 14 Jun 2022 06:23:30 -0700 (PDT)
-Received: from monolith.localdoman (unknown [172.31.20.19])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A841A3F73B;
-	Tue, 14 Jun 2022 06:23:27 -0700 (PDT)
-Date: Tue, 14 Jun 2022 14:23:42 +0100
-From: Alexandru Elisei <alexandru.elisei@arm.com>
-To: Petr Mladek <pmladek@suse.com>
-Cc: jack@suse.cz, sunjunchao2870@gmail.com, viro@zeniv.linux.org.uk,
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
-	senozhatsky@chromium.org, rostedt@goodmis.org,
-	john.ogness@linutronix.de, keescook@chromium.org, anton@enomsg.org,
-	ccross@android.com, tony.luck@intel.com, heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, maco@android.com, hch@lst.de,
-	gregkh@linuxfoundation.org, jirislaby@kernel.org
-Subject: Re: [BUG] rockpro64 board hangs in console_init() after commit
- 10e14073107d
-Message-ID: <YqiJH1phG/LWu9bs@monolith.localdoman>
-References: <Yqdry+IghSWnJ6pe@monolith.localdoman>
- <Yqh9xIwBVcabpSLe@alley>
+	id 1o16lk-009mg8-CK; Tue, 14 Jun 2022 13:39:44 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o16lW-009mcz-Us; Tue, 14 Jun 2022 13:39:34 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 47095B8186F;
+	Tue, 14 Jun 2022 13:39:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7EC3AC3411B;
+	Tue, 14 Jun 2022 13:39:23 +0000 (UTC)
+Message-ID: <6960a5b6-441d-71a1-d99a-873b502301ca@xs4all.nl>
+Date: Tue, 14 Jun 2022 15:39:21 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <Yqh9xIwBVcabpSLe@alley>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.0
+Subject: Re: [PATCH v8 08/17] media: uapi: HEVC: Add documentation to uAPI
+ structure
+Content-Language: en-US
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@gmail.com,
+ samuel@sholland.org, nicolas.dufresne@collabora.com, andrzej.p@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ kernel@collabora.com
+References: <20220614083614.240641-1-benjamin.gaignard@collabora.com>
+ <20220614083614.240641-9-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+In-Reply-To: <20220614083614.240641-9-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_062333_415286_0B8B45B4 
-X-CRM114-Status: GOOD (  39.34  )
+X-CRM114-CacheID: sfid-20220614_063931_341401_D07EC618 
+X-CRM114-Status: GOOD (  34.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,268 +71,669 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Petr,
+On 6/14/22 10:36, Benjamin Gaignard wrote:
+> Add kernel-doc documentation for all the HEVC structures.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+> version 5:
+> - Fix num_short_term_ref_pic_sets and num_long_term_ref_pics_sps
+> 
+>  .../media/v4l/ext-ctrls-codec.rst             | 164 +++++++------
+>  include/media/hevc-ctrls.h                    | 221 +++++++++++++++++-
+>  2 files changed, 311 insertions(+), 74 deletions(-)
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+> index 1ccf6dda61b3..06b967de140c 100644
+> --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+> +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+> @@ -2695,70 +2695,76 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>          of H.265 specifications.
+>      * - __u16
+>        - ``pic_width_in_luma_samples``
+> -      -
+> +      - Specifies the width of each decoded picture in units of luma samples.
+>      * - __u16
+>        - ``pic_height_in_luma_samples``
+> -      -
+> +      - Specifies the height of each decoded picture in units of luma samples.
+>      * - __u8
+>        - ``bit_depth_luma_minus8``
+> -      -
+> +      - Specifies the bit depth of the samples of the luma array.
 
-Thank you for having a look.
+Shouldn't this be:
 
-On Tue, Jun 14, 2022 at 02:23:32PM +0200, Petr Mladek wrote:
-> On Mon 2022-06-13 17:54:35, Alexandru Elisei wrote:
-> > [..]
-> 
-> It is strange. I can't see how consoles are related to filesystem
-> writeback.
+      - This value plus 8 specifies the bit depth of the samples of the luma array.
 
-I am in the same boat.
+Same elsewhere.
 
-> 
-> Anyway, the commit 10e14073107d ("writeback: Fix inode->i_io_list not
-> be protected by inode->i_lock error") modifies some locking and
-> might be source of possible deadlocks.
-> 
-> I am not familiar with the fs code. But I noticed the following.
-> The patch adds:
-> 
-> +               if (!was_dirty) {
-> +                       wb = locked_inode_to_wb_and_lock_list(inode);
-> +                       spin_lock(&inode->i_lock);
-> 
-> And locked_inode_to_wb_and_lock_list() is defined this way:
-> 
-> /**
->  * locked_inode_to_wb_and_lock_list - determine a locked inode's wb and lock it
->  * @inode: inode of interest with i_lock held
->  *
->  * Returns @inode's wb with its list_lock held.  @inode->i_lock must be
->  * held on entry and is released on return.  The returned wb is guaranteed
->  * to stay @inode's associated wb until its list_lock is released.
->  */
-> static struct bdi_writeback *
-> locked_inode_to_wb_and_lock_list(struct inode *inode)
-> 	__releases(&inode->i_lock)
-> 	__acquires(&wb->list_lock)
-> {
-> 	while (true) {
-> 		struct bdi_writeback *wb = inode_to_wb(inode);
-> 
-> 		/*
-> 		 * inode_to_wb() association is protected by both
-> 		 * @inode->i_lock and @wb->list_lock but list_lock nests
-> 		 * outside i_lock.  Drop i_lock and verify that the
-> 		 * association hasn't changed after acquiring list_lock.
-> 		 */
-> 		wb_get(wb);
-> 		spin_unlock(&inode->i_lock);
-> 
-> It expects that inode->i_lock is taken before. But the problematic
-> commit takes it later. It might mess the lock and cause a deadlock.
-> 
-> Jack?
-> 
-> 
-> > I tried to do some investigating, it seems that the kernel is stuck at
-> > printk.c::console_init() -> drivers/tty/vt/vt.c::con_init() ->
-> > printk.c::register_console() -> unregister_console() -> console_lock().
-> > This has been determined by adding pr_info statements.
-> 
-> So, you tried something like:
-> 
-> int unregister_console(struct console *console)
-> {
-> 	struct task_struct *thd;
-> 	struct console *con;
-> 	int res;
-> 
-> 	con_printk(KERN_INFO, console, "disabled\n");
-> [...]
-> 
-> +	pr_info("Stage 1\n");
-> 	console_lock();
-> +	pr_info("Stage 2\n");
-> 
-> [...]
-> 
-> 	console_unlock();
-> +	pr_info("Stage 3\n");
-> [...]
-> }
-> 
-> And "Stage 1" was the last message on the console ?
+>      * - __u8
+>        - ``bit_depth_chroma_minus8``
+> -      -
+> +      - Specifies the bit depth of the samples of the chroma arrays.
+>      * - __u8
+>        - ``log2_max_pic_order_cnt_lsb_minus4``
+> -      -
+> +      - Specifies the value of the variable MaxPicOrderCntLsb.
+>      * - __u8
+>        - ``sps_max_dec_pic_buffering_minus1``
+> -      -
+> +      - Plus 1 specifies the maximum required size of the decoded picture buffer for
 
-With this change:
+I would prefer to phrase this as: "This value plus 1"
+I'm not sure how common the current phrase is, though. If it is already used everywhere,
+then keep it as-is.
 
-diff --git a/init/main.c b/init/main.c
-index 0ee39cdcfcac..a245982eb8a2 100644
---- a/init/main.c
-+++ b/init/main.c
-@@ -1057,6 +1057,8 @@ asmlinkage __visible void __init __no_sanitize_address start_kernel(void)
+> +        the CVS
 
-        kmem_cache_init_late();
+Missing period at the end.
 
-+       lockdep_init();
-+
-        /*
-         * HACK ALERT! This is early. We're enabling the console before
-         * we've done PCI setups etc, and console_init() must be aware of
-@@ -1067,8 +1069,6 @@ asmlinkage __visible void __init __no_sanitize_address start_kernel(void)
-                panic("Too many boot %s vars at `%s'", panic_later,
-                      panic_param);
+What is CVS? Perhaps write the full name?
 
--       lockdep_init();
--
-        /*
-         * Need to run this when irqs are enabled, because it wants
-         * to self-test [hard/soft]-irqs on/off lock inversion bugs
-diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index ea3dd55709e7..aa7684c6745d 100644
---- a/kernel/printk/printk.c
-+++ b/kernel/printk/printk.c
-@@ -2705,7 +2705,10 @@ static int console_cpu_notify(unsigned int cpu)
-  */
- void console_lock(void)
- {
-+       pr_info("before might_sleep()");
-        might_sleep();
-+       pr_info("before down_console_sem()");
-+       pr_info("before down_console_sem()");
+>      * - __u8
+>        - ``sps_max_num_reorder_pics``
+> -      -
+> +      - Indicates the maximum allowed number of pictures.
+>      * - __u8
+>        - ``sps_max_latency_increase_plus1``
+> -      -
+> +      - Not equal to 0 is used to compute the value of SpsMaxLatencyPictures[i].
+>      * - __u8
+>        - ``log2_min_luma_coding_block_size_minus3``
+> -      -
+> +      - Plus 3 specifies the minimum luma coding block size.
+>      * - __u8
+>        - ``log2_diff_max_min_luma_coding_block_size``
+> -      -
+> +      - Specifies the difference between the maximum and minimum luma coding block size.
+>      * - __u8
+>        - ``log2_min_luma_transform_block_size_minus2``
+> -      -
+> +      - Plus 2 specifies the minimum luma transform block size.
+>      * - __u8
+>        - ``log2_diff_max_min_luma_transform_block_size``
+> -      -
+> +      - Specifies the difference between the maximum and minimum luma transform block size.
+>      * - __u8
+>        - ``max_transform_hierarchy_depth_inter``
+> -      -
+> +      - Specifies the maximum hierarchy depth for transform units of coding units coded
+> +        in inter prediction mode.
+>      * - __u8
+>        - ``max_transform_hierarchy_depth_intra``
+> -      -
+> +      - Specifies the maximum hierarchy depth for transform units of coding units coded in
+> +        intra prediction mode.
+>      * - __u8
+>        - ``pcm_sample_bit_depth_luma_minus1``
+> -      -
+> +      - Specifies the number of bits used to represent each of PCM sample values of the
+> +        luma component.
+>      * - __u8
+>        - ``pcm_sample_bit_depth_chroma_minus1``
+> -      -
+> +      - Specifies the number of bits used to represent each of PCM sample values of
+> +        the chroma components.
+>      * - __u8
+>        - ``log2_min_pcm_luma_coding_block_size_minus3``
+> -      -
+> +      - Plus 3 specifies the minimum size of coding blocks.
+>      * - __u8
+>        - ``log2_diff_max_min_pcm_luma_coding_block_size``
+> -      -
+> +      - Specifies the difference between the maximum and minimum size of coding blocks.
+>      * - __u8
+>        - ``num_short_term_ref_pic_sets``
+> -      -
+> +      - Specifies the number of st_ref_pic_set() syntax structures included in the SPS.
+>      * - __u8
+>        - ``num_long_term_ref_pics_sps``
+> -      -
+> +      - Specifies the number of candidate long-term reference pictures that are
+> +        specified in the SPS.
+>      * - __u8
+>        - ``chroma_format_idc``
+> -      -
+> +      - Specifies the chroma sampling.
+>      * - __u8
+>        - ``sps_max_sub_layers_minus1``
+> -      -
+> +      - plus 1 specifies the maximum number of temporal sub-layers.
 
-        down_console_sem();
-        if (console_suspended)
-@@ -3508,12 +3511,18 @@ int unregister_console(struct console *console)
-        if (console->exit)
-                res = console->exit(console);
+plus -> Plus
 
-+       pr_info("Exiting from unregister_console(), res = %d", res);
-+       pr_info("Exiting from unregister_console(), res = %d", res);
-+
-        return res;
+>      * - __u64
+>        - ``flags``
+>        - See :ref:`Sequence Parameter Set Flags <hevc_sps_flags>`
+> @@ -2837,7 +2843,8 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>        - Identifies the PPS for reference by other syntax elements.
+>      * - __u8
+>        - ``num_extra_slice_header_bits``
+> -      -
+> +      - Specifies the number of extra slice header bits that are present
+> +        in the slice header RBSP for coded pictures referring to the PPS.
+>      * - __u8
+>        - ``num_ref_idx_l0_default_active_minus1``
+>        - Specifies the inferred value of num_ref_idx_l0_active_minus1
+> @@ -2846,37 +2853,42 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>        - Specifies the inferred value of num_ref_idx_l1_active_minus1
+>      * - __s8
+>        - ``init_qp_minus26``
+> -      -
+> +      - Plus 26 specifies the initial value of SliceQp Y for each slice
+> +        referring to the PPS.
+>      * - __u8
+>        - ``diff_cu_qp_delta_depth``
+> -      -
+> +      - Specifies the difference between the luma coding tree block size
+> +        and the minimum luma coding block size of coding units that
+> +        convey cu_qp_delta_abs and cu_qp_delta_sign_flag.
+>      * - __s8
+>        - ``pps_cb_qp_offset``
+> -      -
+> +      - Specify the offsets to the luma quantization parameter Cb.
+>      * - __s8
+>        - ``pps_cr_qp_offset``
+> -      -
+> +      - Specify the offsets to the luma quantization parameter Cr.
+>      * - __u8
+>        - ``num_tile_columns_minus1``
+> -      -
+> +      - Plus 1 specifies the number of tile columns partitioning the picture.
+>      * - __u8
+>        - ``num_tile_rows_minus1``
+> -      -
+> +      - Plus 1 specifies the number of tile rows partitioning the picture.
+>      * - __u8
+>        - ``column_width_minus1[20]``
+> -      -
+> +      - Plus 1 specifies the width of the i-th tile column in units of
 
- out_disable_unlock:
-        console->flags &= ~CON_ENABLED;
-        console_unlock();
+Wouldn't "of each tile column" be easier to understand?
 
-+       pr_info("Exiting from unregister_console(), res = %d", res);
-+       pr_info("Exiting from unregister_console(), res = %d", res);
-+
-        return res;
- }
- EXPORT_SYMBOL(unregister_console);
+> +        coding tree blocks.
+>      * - __u8
+>        - ``row_height_minus1[22]``
+> -      -
+> +      - Plus 1 specifies the height of the i-th tile row in units of coding
 
-Some of the pr_info statements are duplicated to see the output just before
-the console hangs (I assume they're needed to force a buffer flush).
+Ditto.
 
-This is what I got:
+> +        tree blocks.
+>      * - __s8
+>        - ``pps_beta_offset_div2``
+> -      -
+> +      - Specify the default deblocking parameter offsets for beta divided by 2.
+>      * - __s8
+>        - ``pps_tc_offset_div2``
+> -      -
+> +      - Specify the default deblocking parameter offsets for tC divided by 2.
 
-[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
-[    0.000000] Linux version 5.19.0-rc2-dirty (alex@monolith) (aarch64-linux-gnu-gcc (GCC) 12.1.0, GNU ld (GNU Binutils) 2.38) #106 SMP PREEMPT Tue Jun 14 14:03:30 BST 2022
-[    0.000000] Machine model: Pine64 RockPro64 v2.0
-[    0.000000] efi: UEFI not found.
-[    0.000000] earlycon: uart0 at MMIO32 0x00000000ff1a0000 (options '1500000n8')
-[    0.000000] printk: before might_sleep()
-[    0.000000] printk: before down_console_sem()
-[    0.000000] printk: before down_console_sem()
-[    0.000000] printk: bootconsole [uart0] enabled
-[    0.000000] NUMA: No NUMA configuration found
-[    0.000000] NUMA: Faking a node at [mem 0x0000000000200000-0x00000000f7ffffff]
-[    0.000000] NUMA: NODE_DATA [mem 0xf77cef40-0xf77d0fff]
-[    0.000000] Zone ranges:
-[    0.000000]   DMA      [mem 0x0000000000200000-0x00000000f7ffffff]
-[    0.000000]   DMA32    empty
-[    0.000000]   Normal   empty
-[    0.000000] Movable zone start for each node
-[    0.000000] Early memory node ranges
-[    0.000000]   node   0: [mem 0x0000000000200000-0x00000000f7ffffff]
-[    0.000000] Initmem setup node 0 [mem 0x0000000000200000-0x00000000f7ffffff]
-[    0.000000] On node 0, zone DMA: 512 pages in unavailable ranges
-[    0.000000] cma: Reserved 32 MiB at 0x00000000f0000000
-[    0.000000] psci: probing for conduit method from DT.
-[    0.000000] psci: PSCIv1.1 detected in firmware.
-[    0.000000] psci: Using standard PSCI v0.2 function IDs
-[    0.000000] psci: MIGRATE_INFO_TYPE not supported.
-[    0.000000] psci: SMC Calling Convention v1.2
-[    0.000000] percpu: Embedded 30 pages/cpu s82272 r8192 d32416 u122880
-[    0.000000] Detected VIPT I-cache on CPU0
-[    0.000000] CPU features: detected: GIC system register CPU interface
-[    0.000000] CPU features: detected: ARM erratum 845719
-[    0.000000] Fallback order for Node 0: 0
-[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 999432
-[    0.000000] Policy zone: DMA
-[    0.000000] Kernel command line: root=PARTUUID=7f4aab92-69d8-47f3-be10-624da40a71f9 rw earlycon rootwait
-[    0.000000] Dentry cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
-[    0.000000] Inode-cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
-[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
-[    0.000000] Memory: 3899372K/4061184K available (17600K kernel code, 3994K rwdata, 9648K rodata, 7488K init, 11297K bss, 129044K reserved, 32768K cma-reserved)
-[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=6, Nodes=1
-[    0.000000] trace event string verifier disabled
-[    0.000000] Running RCU self tests
-[    0.000000] rcu: Preemptible hierarchical RCU implementation.
-[    0.000000] rcu: 	RCU event tracing is enabled.
-[    0.000000] rcu: 	RCU lockdep checking is enabled.
-[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=6.
-[    0.000000] 	Trampoline variant of Tasks RCU enabled.
-[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
-[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=6
-[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
-[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
-[    0.000000] GICv3: 256 SPIs implemented
-[    0.000000] GICv3: 0 Extended SPIs implemented
-[    0.000000] Root IRQ handler: gic_handle_irq
-[    0.000000] GICv3: GICv3 features: 16 PPIs
-[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000fef00000
-[    0.000000] ITS [mem 0xfee20000-0xfee3ffff]
-[    0.000000] ITS@0x00000000fee20000: allocated 65536 Devices @500000 (flat, esz 8, psz 64K, shr 0)
-[    0.000000] ITS: using cache flushing for cmd queue
-[    0.000000] GICv3: using LPI property table @0x00000000004e0000
-[    0.000000] GIC: using cache flushing for LPI property table
-[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x00000000004f0000
-[    0.000000] GICv3: GIC: PPI partition interrupt-partition-0[0] { /cpus/cpu@0[0] /cpus/cpu@1[1] /cpus/cpu@2[2] /cpus/cpu@3[3] }
-[    0.000000] GICv3: GIC: PPI partition interrupt-partition-1[1] { /cpus/cpu@100[4] /cpus/cpu@101[5] }
-[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
-[    0.000000] arch_timer: cp15 timer(s) running at 24.00MHz (phys).
-[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
-[    0.000001] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
-[    0.005602] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
-[    0.006373] ... MAX_LOCKDEP_SUBCLASSES:  8
-[    0.006789] ... MAX_LOCK_DEPTH:          48
-[    0.007212] ... MAX_LOCKDEP_KEYS:        8192
-[    0.007651] ... CLASSHASH_SIZE:          4096
-[    0.008088] ... MAX_LOCKDEP_ENTRIES:     32768
-[    0.008535] ... MAX_LOCKDEP_CHAINS:      65536
-[    0.008981] ... CHAINHASH_SIZE:          32768
-[    0.009428]  memory used by lock dependency info: 6365 kB
-[    0.010018]  memory used for stack traces: 4224 kB
-[    0.010500]  per task-struct memory footprint: 1920 bytes
-[    0.011059] printk: before might_sleep()
-[    0.011079] printk: before down_console_sem()
-[    0.011477] printk: before down_console_sem()
-[    0.012112] Console: colour dummy device 80x25
-[    0.012984] printk: before might_sleep()
-[    0.013003] printk: before down_console_sem()
-[    0.013399] printk: before down_console_sem()
-[    0.013860] printk: console [tty0] enabled
-[    0.014986] printk: bootconsole [uart0] disabled
-[    0.015564] printk: before might_sleep()
-[    0.015582] printk: before down_console_sem()
+Is it actually called 'tC' in the HEVC standard, or is this a typo?
 
-> 
-> Does the system boot when you avoid "earlycon" parameter?
+>      * - __u8
+>        - ``log2_parallel_merge_level_minus2``
+> -      -
+> +      - Plus 2 specifies the value of the variable Log2ParMrgLevel.
+>      * - __u8
+>        - ``padding[4]``
+>        - Applications and drivers must set this to zero.
+> @@ -2998,10 +3010,10 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>        - Offset (in bits) to the video data in the current slice data.
+>      * - __u8
+>        - ``nal_unit_type``
+> -      -
+> +      - Specifies the coding type of the slice (B, P or I).
+>      * - __u8
+>        - ``nuh_temporal_id_plus1``
+> -      -
+> +      - Minus 1 specifies a temporal identifier for the NAL unit.
+>      * - __u8
+>        - ``slice_type``
+>        -
+> @@ -3009,52 +3021,56 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>  	V4L2_HEVC_SLICE_TYPE_B).
+>      * - __u8
+>        - ``colour_plane_id``
+> -      -
+> +      - Specifies the colour plane associated with the current slice.
+>      * - __s32
+>        - ``slice_pic_order_cnt``
+> -      -
+> +      - Specifies the picture order count.
+>      * - __u8
+>        - ``num_ref_idx_l0_active_minus1``
+> -      -
+> +      - Specifies the maximum reference index for reference picture list 0
+> +        that may be used to decode the slice.
+>      * - __u8
+>        - ``num_ref_idx_l1_active_minus1``
+> -      -
+> +      - Specifies the maximum reference index for reference picture list 1
+> +        that may be used to decode the slice.
+>      * - __u8
+>        - ``collocated_ref_idx``
+> -      -
+> +      - Specifies the reference index of the collocated picture used for
+> +        temporal motion vector prediction.
+>      * - __u8
+>        - ``five_minus_max_num_merge_cand``
+> -      -
+> +      - Specifies the maximum number of merging motion vector prediction
+> +        candidates supported in the slice subtracted from 5.
+>      * - __s8
+>        - ``slice_qp_delta``
+> -      -
+> +      - Specifies the initial value of QpY to be used for the coding blocks in the slice.
 
-It doesn't boot, it hangs and I don't get any output.
+It's really 'QpY'? There is no obvious relationship between the 'Y' character and the '_delta'
+suffix. Just checking.
 
-> 
-> 
-> > I've booted a kernel compiled with CONFIG_PROVE_LOCKING=y, as the offending
-> > commit fiddles with locks, but no splat was produced that would explain the
-> > hang. I've also tried to boot a v5,19-rc2 kernel on my odroid-c4, the board
-> > is booting just fine, so I'm guessing it only affects of subset of arm64
-> > boards.
-> 
-> You might try to switch the order of console_init() and lockdep_init()
-> in start_kernel() in init/main.c
+>      * - __s8
+>        - ``slice_cb_qp_offset``
+> -      -
+> +      - Specifies a difference to be added to the value of pps_cb_qp_offset.
+>      * - __s8
+>        - ``slice_cr_qp_offset``
+> -      -
+> +      - Specifies a difference to be added to the value of pps_cr_qp_offset.
+>      * - __s8
+>        - ``slice_act_y_qp_offset``
+> -      -
+> +      - screen content extension parameters
+>      * - __s8
+>        - ``slice_act_cb_qp_offset``
+> -      -
+> +      - screen content extension parameters
+>      * - __s8
+>        - ``slice_act_cr_qp_offset``
+> -      -
+> +      - screen content extension parameters
+>      * - __s8
+>        - ``slice_beta_offset_div2``
+> -      -
+> +      - Specify the deblocking parameter offsets for beta divided by 2.
+>      * - __s8
+>        - ``slice_tc_offset_div2``
+> -      -
+> +      - Specify the deblocking parameter offsets for tC divided by 2.
+>      * - __u8
+>        - ``pic_struct``
+> -      -
+> +      - Indicates whether a picture should be displayed as a frame or as one or more fields.
+>      * - __u32
+>        - ``slice_segment_addr``
+> -      -
+> +      - Specifies the address of the first coding tree block in the slice segment.
+>      * - __u8
+>        - ``ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+>        - The list of L0 reference elements as indices in the DPB.
+> @@ -3219,11 +3235,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>        - ``field_pic``
+>        - Whether the reference is a field picture or a frame.
+>          See :ref:`HEVC dpb field pic Flags <hevc_dpb_field_pic_flags>`
+> -    * - __u16
+> -      - ``pic_order_cnt[2]``
+> -      - The picture order count of the reference. Only the first element of the
+> -        array is used for frame pictures, while the first element identifies the
+> -        top field and the second the bottom field in field-coded pictures.
+> +    * - __s32
+> +      - ``pic_order_cnt_val``
+> +      - The picture order count of the current picture.
+>      * - __u8
+>        - ``padding[2]``
+>        - Applications and drivers must set this to zero.
+> @@ -3298,36 +3312,44 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>      :stub-columns: 0
+>      :widths:       1 1 2
+>  
+> -    * - __u8
+> -      - ``luma_log2_weight_denom``
+> -      -
+> -    * - __s8
+> -      - ``delta_chroma_log2_weight_denom``
+> -      -
+>      * - __s8
+>        - ``delta_luma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+> -      -
+> +      - The difference of the weighting factor applied to the luma
+> +        prediction value for list 0.
+>      * - __s8
+>        - ``luma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+> -      -
+> +      - The additive offset applied to the luma prediction value for list 0.
+>      * - __s8
+>        - ``delta_chroma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2]``
+> -      -
+> +      - The difference of the weighting factor applied to the chroma
+> +        prediction value for list 0.
+>      * - __s8
+>        - ``chroma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2]``
+> -      -
+> +      - The difference of the additive offset applied to the chroma
+> +        prediction values for list 0.
+>      * - __s8
+>        - ``delta_luma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+> -      -
+> +      - The difference of the weighting factor applied to the luma
+> +        prediction value for list 1.
+>      * - __s8
+>        - ``luma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+> -      -
+> +      - The additive offset applied to the luma prediction value for list 1.
+>      * - __s8
+>        - ``delta_chroma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2]``
+> -      -
+> +      - The difference of the weighting factor applied to the chroma
+> +        prediction value for list 1.
+>      * - __s8
+>        - ``chroma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2]``
+> -      -
+> +      - The difference of the additive offset applied to the chroma
+> +        prediction values for list 1.
+> +    * - __u8
+> +      - ``luma_log2_weight_denom``
+> +      - The base 2 logarithm of the denominator for all luma weighting
+> +        factors.
+> +    * - __s8
+> +      - ``delta_chroma_log2_weight_denom``
+> +      - The difference of the base 2 logarithm of the denominator for
+> +        all chroma weighting factors.
+>      * - __u8
+>        - ``padding[6]``
+>        - Applications and drivers must set this to zero.
+> diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+> index f3695ab44389..0dbd5d681c28 100644
+> --- a/include/media/hevc-ctrls.h
+> +++ b/include/media/hevc-ctrls.h
+> @@ -55,9 +55,68 @@ enum v4l2_stateless_hevc_start_code {
+>  #define V4L2_HEVC_SPS_FLAG_SPS_TEMPORAL_MVP_ENABLED		(1ULL << 7)
+>  #define V4L2_HEVC_SPS_FLAG_STRONG_INTRA_SMOOTHING_ENABLED	(1ULL << 8)
+>  
+> -/* The controls are not stable at the moment and will likely be reworked. */
+> +/**
+> + * struct v4l2_ctrl_hevc_sps - ITU-T Rec. H.265: Sequence parameter set
+> + *
+> + * @video_parameter_set_id: specifies the value of the
+> + *			    vps_video_parameter_set_id of the active VPS
+> + * @seq_parameter_set_id: provides an identifier for the SPS for
+> + *			  reference by other syntax elements
+> + * @pic_width_in_luma_samples: specifies the width of each decoded picture
+> + *			       in units of luma samples
+> + * @pic_height_in_luma_samples: specifies the height of each decoded picture
+> + *				in units of luma samples
+> + * @bit_depth_luma_minus8: specifies the bit depth of the samples of the
+> + *			   luma array
+> + * @bit_depth_chroma_minus8: specifies the bit depth of the samples of the
+> + *			     chroma arrays
+> + * @log2_max_pic_order_cnt_lsb_minus4: specifies the value of the variable
+> + *				       MaxPicOrderCntLsb
+> + * @sps_max_dec_pic_buffering_minus1: plus 1 specifies the maximum required
+> + *				      size of the decoded picture buffer for
+> + *				      the CVS
+> + * @sps_max_num_reorder_pics: indicates the maximum allowed number of pictures
+> + * @sps_max_latency_increase_plus1: not equal to 0 is used to compute the
+> + *				    value of SpsMaxLatencyPictures[i]
 
-Did so above.
+What is 'i' in this context?
 
-Thanks,
-Alex
+> + * @log2_min_luma_coding_block_size_minus3: plus 3 specifies the minimum
+> + *					    luma coding block size
+> + * @log2_diff_max_min_luma_coding_block_size: specifies the difference between
+> + *					      the maximum and minimum luma
+> + *					      coding block size
+> + * @log2_min_luma_transform_block_size_minus2: plus 2 specifies the minimum luma
+> + *					       transform block size
+> + * @log2_diff_max_min_luma_transform_block_size: specifies the difference between
+> + *						 the maximum and minimum luma
+> + *						 transform block size
+> + * @max_transform_hierarchy_depth_inter: specifies the maximum hierarchy
+> + *					 depth for transform units of
+> + *					 coding units coded in inter
+> + *					 prediction mode
+> + * @max_transform_hierarchy_depth_intra: specifies the maximum hierarchy
+> + *					 depth for transform units of
+> + *					 coding units coded in intra
+> + *					 prediction mode
+> + * @pcm_sample_bit_depth_luma_minus1: specifies the number of bits used to
+> + *				      represent each of PCM sample values of the
+> + *				      luma component
+> + * @pcm_sample_bit_depth_chroma_minus1: specifies the number of bits used to
+> + *					represent each of PCM sample values of
+> + *					the chroma components
+> + * @log2_min_pcm_luma_coding_block_size_minus3: plus 3 specifies the minimum size
+> + *						of coding blocks
+> + * @log2_diff_max_min_pcm_luma_coding_block_size: specifies the difference between
+> + *						  the maximum and minimum size of
+> + *						  coding blocks
+> + * @num_short_term_ref_pic_sets: specifies the number of st_ref_pic_set()
+> + *				 syntax structures included in the SPS
+> + * @num_long_term_ref_pics_sps:	specifies the number of candidate long-term
+> + *				reference pictures that are specified in the SPS
+> + * @chroma_format_idc: specifies the chroma sampling
+> + * @sps_max_sub_layers_minus1: plus 1 specifies the maximum number of temporal
+> + *			       sub-layers
+> + * @flags: see V4L2_HEVC_SPS_FLAG_{}
+> + */
+>  struct v4l2_ctrl_hevc_sps {
+> -	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Sequence parameter set */
+>  	__u8	video_parameter_set_id;
+>  	__u8	seq_parameter_set_id;
+>  	__u16	pic_width_in_luma_samples;
+> @@ -108,8 +167,43 @@ struct v4l2_ctrl_hevc_sps {
+>  #define V4L2_HEVC_PPS_FLAG_DEBLOCKING_FILTER_CONTROL_PRESENT	(1ULL << 19)
+>  #define V4L2_HEVC_PPS_FLAG_UNIFORM_SPACING			(1ULL << 20)
+>  
+> +/**
+> + * struct v4l2_ctrl_hevc_pps - ITU-T Rec. H.265: Picture parameter set
+> + *
+> + * @pic_parameter_set_id: identifies the PPS for reference by other
+> + *			  syntax elements
+> + * @num_extra_slice_header_bits: specifies the number of extra slice header
+> + *				 bits that are present in the slice header RBSP
+> + *				 for coded pictures referring to the PPS.
+> + * @num_ref_idx_l0_default_active_minus1: specifies the inferred value of
+> + *					  num_ref_idx_l0_active_minus1
+> + * @num_ref_idx_l1_default_active_minus1: specifies the inferred value of
+> + *					  num_ref_idx_l1_active_minus1
+> + * @init_qp_minus26: plus 26 specifies the initial value of SliceQp Y for
+> + *		     each slice referring to the PPS
+> + * @diff_cu_qp_delta_depth: specifies the difference between the luma coding
+> + *			    tree block size and the minimum luma coding block
+> + *			    size of coding units that convey cu_qp_delta_abs
+> + *			    and cu_qp_delta_sign_flag
+> + * @pps_cb_qp_offset: specify the offsets to the luma quantization parameter Cb
+> + * @pps_cr_qp_offset: specify the offsets to the luma quantization parameter Cr
+> + * @num_tile_columns_minus1: plus 1 specifies the number of tile columns
+> + *			     partitioning the picture
+> + * @num_tile_rows_minus1: plus 1 specifies the number of tile rows partitioning
+> + *			  the picture
+> + * @column_width_minus1: plus 1 specifies the width of the i-th tile column in
+
+"the i-th" -> each
+
+I think that's easier to understand.
+
+> + *			 units of coding tree blocks
+> + * @row_height_minus1: plus 1 specifies the height of the i-th tile row in
+
+Ditto.
+
+> + *		       units of coding tree blocks
+> + * @pps_beta_offset_div2: specify the default deblocking parameter offsets for
+> + *			  beta divided by 2
+> + * @pps_tc_offset_div2: specify the default deblocking parameter offsets for tC
+> + *			divided by 2
+> + * @log2_parallel_merge_level_minus2: plus 2 specifies the value of the variable
+> + *				      Log2ParMrgLevel
+> + * @flags: see V4L2_HEVC_PPS_FLAG_{}
+> + */
+>  struct v4l2_ctrl_hevc_pps {
+> -	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture parameter set */
+>  	__u8	pic_parameter_set_id;
+>  	__u8	num_extra_slice_header_bits;
+>  	__u8	num_ref_idx_l0_default_active_minus1;
+> @@ -148,6 +242,14 @@ struct v4l2_ctrl_hevc_pps {
+>  
+>  #define V4L2_HEVC_DPB_ENTRIES_NUM_MAX		16
+>  
+> +/**
+> + * struct v4l2_hevc_dpb_entry - HEVC decoded picture buffer entry
+> + *
+> + * @timestamp: timestamp of the V4L2 capture buffer to use as reference.
+> + * @flags: long term flag for the reference frame
+> + * @field_pic: whether the reference is a field picture or a frame.
+> + * @pic_order_cnt_val: the picture order count of the reference.
+> + */
+>  struct v4l2_hevc_dpb_entry {
+>  	__u64	timestamp;
+>  	__u8	flags;
+> @@ -156,6 +258,31 @@ struct v4l2_hevc_dpb_entry {
+>  	__u8	padding[2];
+>  };
+>  
+> +/**
+> + * struct v4l2_hevc_pred_weight_table - HEVC weighted prediction parameters
+> + *
+> + * @delta_luma_weight_l0: the difference of the weighting factor applied
+> + *			  to the luma prediction value for list 0
+> + * @luma_offset_l0: the additive offset applied to the luma prediction value
+> + *		    for list 0
+> + * @delta_chroma_weight_l0: the difference of the weighting factor applied
+> + *			    to the chroma prediction values for list 0
+> + * @chroma_offset_l0: the difference of the additive offset applied to
+> + *		      the chroma prediction values for list 0
+> + * @delta_luma_weight_l1: the difference of the weighting factor applied
+> + *			  to the luma prediction value for list 1
+> + * @luma_offset_l1: the additive offset applied to the luma prediction value
+> + *		    for list 1
+> + * @delta_chroma_weight_l1: the difference of the weighting factor applied
+> + *			    to the chroma prediction values for list 1
+> + * @chroma_offset_l1: the difference of the additive offset applied to
+> + *		      the chroma prediction values for list 1
+> + * @luma_log2_weight_denom: the base 2 logarithm of the denominator for
+> + *			    all luma weighting factors
+> + * @delta_chroma_log2_weight_denom: the difference of the base 2 logarithm
+> + *				    of the denominator for all chroma
+> + *				    weighting factors
+> + */
+>  struct v4l2_hevc_pred_weight_table {
+>  	__s8	delta_luma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>  	__s8	luma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> @@ -184,6 +311,50 @@ struct v4l2_hevc_pred_weight_table {
+>  #define V4L2_HEVC_SLICE_PARAMS_FLAG_SLICE_LOOP_FILTER_ACROSS_SLICES_ENABLED (1ULL << 8)
+>  #define V4L2_HEVC_SLICE_PARAMS_FLAG_DEPENDENT_SLICE_SEGMENT	(1ULL << 9)
+>  
+> +/**
+> + * v4l2_ctrl_hevc_slice_params - HEVC slice parameters
+> + *
+> + * @bit_size: size (in bits) of the current slice data
+> + * @data_bit_offset: offset (in bits) to the video data in the current slice data
+> + * @nal_unit_type: specifies the coding type of the slice (B, P or I)
+> + * @nuh_temporal_id_plus1: minus 1 specifies a temporal identifier for the NAL unit
+> + * @slice_type: see V4L2_HEVC_SLICE_TYPE_{}
+> + * @colour_plane_id: specifies the colour plane associated with the current slice
+> + * @slice_pic_order_cnt: specifies the picture order count
+> + * @num_ref_idx_l0_active_minus1: specifies the maximum reference index for
+> + *				  reference picture list 0 that may be used to decode
+> + *				  the slice
+> + * @num_ref_idx_l1_active_minus1: specifies the maximum reference index for
+> + *				  reference picture list 1 that may be used to decode
+> + *				  the slice
+> + * @collocated_ref_idx: specifies the reference index of the collocated picture used
+> + *			for temporal motion vector prediction
+> + * @five_minus_max_num_merge_cand: specifies the maximum number of merging
+> + *				   motion vector prediction candidates supported in
+> + *				   the slice subtracted from 5
+> + * @slice_qp_delta: specifies the initial value of QpY to be used for the coding
+> + *		    blocks in the slice
+> + * @slice_cb_qp_offset: specifies a difference to be added to the value of pps_cb_qp_offset
+> + * @slice_cr_qp_offset: specifies a difference to be added to the value of pps_cr_qp_offset
+> + * @slice_act_y_qp_offset: screen content extension parameters
+> + * @slice_act_cb_qp_offset: screen content extension parameters
+> + * @slice_act_cr_qp_offset: screen content extension parameters
+> + * @slice_beta_offset_div2: specify the deblocking parameter offsets for beta divided by 2
+> + * @slice_tc_offset_div2: specify the deblocking parameter offsets for tC divided by 2
+> + * @pic_struct: indicates whether a picture should be displayed as a frame or as one or
+> + *		more fields
+> + * @slice_segment_addr: specifies the address of the first coding tree block in
+> + *			the slice segment
+> + * @ref_idx_l0: the list of L0 reference elements as indices in the DPB
+> + * @ref_idx_l1: the list of L1 reference elements as indices in the DPB
+> + * @short_term_ref_pic_set_size: specifies the size of short-term reference
+> + *				 pictures included in the SPS
+> + * @long_term_ref_pic_set_size: specifies the size of long-term reference
+> + *				picture include in the SPS
+> + * @pred_weight_table: the prediction weight coefficients for inter-picture
+> + *		       prediction
+> + * @flags: see V4L2_HEVC_SLICE_PARAMS_FLAG_{}
+> + */
+>  struct v4l2_ctrl_hevc_slice_params {
+>  	__u32	bit_size;
+>  	__u32	data_bit_offset;
+> @@ -230,6 +401,28 @@ struct v4l2_ctrl_hevc_slice_params {
+>  #define V4L2_HEVC_DECODE_PARAM_FLAG_IDR_PIC		0x2
+>  #define V4L2_HEVC_DECODE_PARAM_FLAG_NO_OUTPUT_OF_PRIOR  0x4
+>  
+> +/**
+> + * struct v4l2_ctrl_hevc_decode_params - HEVC decode parameters
+> + *
+> + * @pic_order_cnt_val: picture order count
+> + * @short_term_ref_pic_set_size: specifies the size of short-term reference
+> + *				 pictures set included in the SPS of the first slice
+> + * @long_term_ref_pic_set_size: specifies the size of long-term reference
+> + *				pictures set include in the SPS of the first slice
+> + * @num_active_dpb_entries: the number of entries in dpb
+> + * @dpb: the decoded picture buffer, for meta-data about reference frames
+> + * @num_poc_st_curr_before: the number of reference pictures in the short-term
+> + *			    set that come before the current frame
+> + * @num_poc_st_curr_after: the number of reference pictures in the short-term
+> + *			   set that come after the current frame
+> + * @num_poc_lt_curr: the number of reference pictures in the long-term set
+> + * @poc_st_curr_before: provides the index of the short term before references
+> + *			in DPB array
+> + * @poc_st_curr_after: provides the index of the short term after references
+> + *		       in DPB array
+> + * @poc_lt_curr: provides the index of the long term references in DPB array
+> + * @flags: see V4L2_HEVC_DECODE_PARAM_FLAG_{}
+> + */
+>  struct v4l2_ctrl_hevc_decode_params {
+>  	__s32	pic_order_cnt_val;
+>  	__u16	short_term_ref_pic_set_size;
+> @@ -245,6 +438,28 @@ struct v4l2_ctrl_hevc_decode_params {
+>  	__u64	flags;
+>  };
+>  
+> +/**
+> + * struct v4l2_ctrl_hevc_scaling_matrix - HEVC scaling lists parameters
+> + *
+> + * @scaling_list_4x4: scaling list is used for the scaling process for
+> + *		      transform coefficients. The values on each scaling
+> + *		      list are expected in raster scan order
+> + * @scaling_list_8x8: scaling list is used for the scaling process for
+> + *		      transform coefficients. The values on each scaling
+> + *		      list are expected in raster scan order
+> + * @scaling_list_16x16: scaling list is used for the scaling process for
+> + *			transform coefficients. The values on each scaling
+> + *			list are expected in raster scan order
+> + * @scaling_list_32x32:	scaling list is used for the scaling process for
+> + *			transform coefficients. The values on each scaling
+> + *			list are expected in raster scan order
+> + * @scaling_list_dc_coef_16x16: scaling list is used for the scaling process
+> + *				for transform coefficients. The values on each
+> + *				scaling list are expected in raster scan order.
+> + * @scaling_list_dc_coef_32x32:	scaling list is used for the scaling process
+> + *				for transform coefficients. The values on each
+> + *				scaling list are expected in raster scan order.
+> + */
+>  struct v4l2_ctrl_hevc_scaling_matrix {
+>  	__u8	scaling_list_4x4[6][16];
+>  	__u8	scaling_list_8x8[6][64];
+
+Regards,
+
+	Hans
 
 _______________________________________________
 Linux-rockchip mailing list
