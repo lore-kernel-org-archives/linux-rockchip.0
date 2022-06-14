@@ -4,55 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1CF8C43334
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 10:29:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 780EAC43334
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 12:27:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UjK1Mp/9uQ+XCXi20ddJKXUdoalyqzP8VbkG0TZhRcc=; b=shtKVNaeOHH6oG
-	/vhorKp7OS2dGwbhzpuZLhNTwSGNZqD1yD8NCFgwA7oODuVckq+W2uOFX9wHEcJD78JycePuOlzEU
-	Qw+r2YYTbIeBN6nbrdHqe7iGKHb1AewiF03B3mJFgwD6OeIYJznUL5qALNGfeRBYii6G80Deh+NLZ
-	Fjf+4GbBAChmn++M2+FiVvOlvmQk5wUJZqN/VwqScJ2CRto9Jjpk4hPDaoEj9q8AaSPiMcHFh3qZk
-	HVsIxC78rwXGVFMadKyGFw+Vy/3PwdiTL3XJ/oHCCq+AsJWZYjE2qp3WAI33h03k+T9zGAJsmbb+J
-	81Zyq/zOio979sU6Vo2Q==;
+	List-Owner; bh=SqWusktt5bVlvqwSmXaXhx1C20nctDP2uzJEcGWaoKQ=; b=jrQHi8LzErzvAl
+	mtP0T3RQ4tWFxU/R4iUetsZ2ep25ofBbOrX3cLDrfnJMRUwbng86bZN74N8IY6T7zQljO+tycHNnM
+	efsWUn5Eitm1IoYVNeDZqe23r2klgDxkuJFxguIOXFGKxQufZhxtGRbthXsoVhh4SLh562LKTx4Xj
+	5bv2sHonO4aPXvRWKSY8Dh/WCcC57xOa//3lWMyiRtc8Oxr1ARU9pHZwa3RkkWhxkKNvlv503CZ4T
+	u74OMM3HiFet4s2w9fcAhKKp2vd7spPv0nihKvK34s2vMhWOuai8CN27sij6HVoqpp/dwnMT+d5Qp
+	NJ8WdCDt9eyhsy9dJxuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o13mz-0092fG-4i; Tue, 14 Jun 2022 10:28:49 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1o15dQ-009VnK-PO; Tue, 14 Jun 2022 12:27:04 +0000
+Received: from smtp-out1.suse.de ([195.135.220.28])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o13ml-0092ag-Le; Tue, 14 Jun 2022 10:28:38 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	id 1o15a9-009U2x-BE; Tue, 14 Jun 2022 12:23:45 +0000
+Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
+	by smtp-out1.suse.de (Postfix) with ESMTP id 9FC5F21A66;
+	Tue, 14 Jun 2022 12:23:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+	t=1655209415; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=cytmGLkOXP0ZKr75iGxDdhwnxTw03pqO4oTaHscD8us=;
+	b=Y997rf9wM+mMkcXEZvmkhYR8CN3MIE9GMweLOZSWiflnDZT6Qg92Dy2UJXifLckTpdKuBu
+	F170nZv90IUnj2MeGFjB+vTofOYBepCXv/CkJlcDeSCD9FAL2z65B44yeC1JzxUITZlndE
+	hKzHBR0CsR+cNk8aDSPAyv63o6hRPzg=
+Received: from suse.cz (unknown [10.100.201.202])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id D9AA0B81852;
-	Tue, 14 Jun 2022 10:28:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9200CC3411B;
-	Tue, 14 Jun 2022 10:28:28 +0000 (UTC)
-Message-ID: <3a886196-5f35-8b59-cfc5-f99b92ea85e0@xs4all.nl>
-Date: Tue, 14 Jun 2022 12:28:26 +0200
+	by relay2.suse.de (Postfix) with ESMTPS id 231A52C141;
+	Tue, 14 Jun 2022 12:23:35 +0000 (UTC)
+Date: Tue, 14 Jun 2022 14:23:32 +0200
+From: Petr Mladek <pmladek@suse.com>
+To: Alexandru Elisei <alexandru.elisei@arm.com>, jack@suse.cz
+Cc: sunjunchao2870@gmail.com, viro@zeniv.linux.org.uk,
+	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
+	senozhatsky@chromium.org, rostedt@goodmis.org,
+	john.ogness@linutronix.de, keescook@chromium.org, anton@enomsg.org,
+	ccross@android.com, tony.luck@intel.com, heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, maco@android.com, hch@lst.de,
+	gregkh@linuxfoundation.org, jirislaby@kernel.org
+Subject: Re: [BUG] rockpro64 board hangs in console_init() after commit
+ 10e14073107d
+Message-ID: <Yqh9xIwBVcabpSLe@alley>
+References: <Yqdry+IghSWnJ6pe@monolith.localdoman>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.0
-Subject: Re: [PATCH v8 00/17] Move HEVC stateless controls out of staging
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@gmail.com,
- samuel@sholland.org, nicolas.dufresne@collabora.com, andrzej.p@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- kernel@collabora.com
-References: <20220614083614.240641-1-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <20220614083614.240641-1-benjamin.gaignard@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <Yqdry+IghSWnJ6pe@monolith.localdoman>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_032836_029450_8D63EC60 
-X-CRM114-Status: GOOD (  30.27  )
+X-CRM114-CacheID: sfid-20220614_052341_632010_B6A97BE5 
+X-CRM114-Status: GOOD (  32.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,171 +77,179 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
-
-On 6/14/22 10:35, Benjamin Gaignard wrote:
-> This series aims to make HEVC uapi stable and usable for hardware
-> decoder. HEVC uapi is used by 2 mainlined drivers (Cedrus and Hantro)
-> and 2 out of the tree drivers (rkvdec and RPI).
+On Mon 2022-06-13 17:54:35, Alexandru Elisei wrote:
+> Hi,
 > 
-> version 8:
-> - Same than v7 but rebased on media_stage/master
+> (Apologies for the long To: list, I've added everyone that
+> scripts/get_maintainer.pl listed for fs/{fs-writeback,inode}.c, for the
+> rockchip boards, for printk.c and for the tty layer)
+> 
+> When booting a kernel built from tag v5.19-rc2, my rockpro64-v2 hangs at
+> boot with this log:
+> 
+> [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+> [    0.000000] Linux version 5.19.0-rc2 (alex@redacted) (aarch64-linux-gnu-gcc (GCC) 12.1.0, GNU ld (GNU Binutils) 2.38) #90 SMP PREEMPT Mon Jun 13 17:13:12 BST 2022
+> [    0.000000] Machine model: Pine64 RockPro64 v2.0
+> [    0.000000] efi: UEFI not found.
+> [    0.000000] earlycon: uart0 at MMIO32 0x00000000ff1a0000 (options '1500000n8')
+> [    0.000000] printk: bootconsole [uart0] enabled
+> [    0.000000] NUMA: No NUMA configuration found
+> [    0.000000] NUMA: Faking a node at [mem 0x0000000000200000-0x00000000f7ffffff]
+> [    0.000000] NUMA: NODE_DATA [mem 0xf77dc140-0xf77ddfff]
+> [    0.000000] Zone ranges:
+> [    0.000000]   DMA      [mem 0x0000000000200000-0x00000000f7ffffff]
+> [    0.000000]   DMA32    empty
+> [    0.000000]   Normal   empty
+> [    0.000000] Movable zone start for each node
+> [    0.000000] Early memory node ranges
+> [    0.000000]   node   0: [mem 0x0000000000200000-0x00000000f7ffffff]
+> [    0.000000] Initmem setup node 0 [mem 0x0000000000200000-0x00000000f7ffffff]
+> [    0.000000] On node 0, zone DMA: 512 pages in unavailable ranges
+> [    0.000000] cma: Reserved 32 MiB at 0x00000000f0000000
+> [    0.000000] psci: probing for conduit method from DT.
+> [    0.000000] psci: PSCIv1.1 detected in firmware.
+> [    0.000000] psci: Using standard PSCI v0.2 function IDs
+> [    0.000000] psci: MIGRATE_INFO_TYPE not supported.
+> [    0.000000] psci: SMC Calling Convention v1.2
+> [    0.000000] percpu: Embedded 20 pages/cpu s41768 r8192 d31960 u81920
+> [    0.000000] Detected VIPT I-cache on CPU0
+> [    0.000000] CPU features: detected: GIC system register CPU interface
+> [    0.000000] CPU features: detected: ARM erratum 845719
+> [    0.000000] Fallback order for Node 0: 0
+> [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 999432
+> [    0.000000] Policy zone: DMA
+> [    0.000000] Kernel command line: root=PARTUUID=7f4aab92-69d8-47f3-be10-624da40a71f9 rw earlycon rootwait
+> [    0.000000] Dentry cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+> [    0.000000] Inode-cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+> [    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+> [    0.000000] Memory: 3915796K/4061184K available (15552K kernel code, 2758K rwdata, 8668K rodata, 6336K init, 564K bss, 112620K reserved, 32768K cma-reserved)
+> [    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=6, Nodes=1
+> [    0.000000] rcu: Preemptible hierarchical RCU implementation.
+> [    0.000000] rcu: 	RCU event tracing is enabled.
+> [    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=6.
+> [    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+> [    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=6
+> [    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+> [    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+> [    0.000000] GICv3: 256 SPIs implemented
+> [    0.000000] GICv3: 0 Extended SPIs implemented
+> [    0.000000] Root IRQ handler: gic_handle_irq
+> [    0.000000] GICv3: GICv3 features: 16 PPIs
+> [    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000fef00000
+> [    0.000000] ITS [mem 0xfee20000-0xfee3ffff]
+> [    0.000000] ITS@0x00000000fee20000: allocated 65536 Devices @480000 (flat, esz 8, psz 64K, shr 0)
+> [    0.000000] ITS: using cache flushing for cmd queue
+> [    0.000000] GICv3: using LPI property table @0x0000000000440000
+> [    0.000000] GIC: using cache flushing for LPI property table
+> [    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000000450000
+> [    0.000000] GICv3: GIC: PPI partition interrupt-partition-0[0] { /cpus/cpu@0[0] /cpus/cpu@1[1] /cpus/cpu@2[2] /cpus/cpu@3[3] }
+> [    0.000000] GICv3: GIC: PPI partition interrupt-partition-1[1] { /cpus/cpu@100[4] /cpus/cpu@101[5] }
+> [    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+> [    0.000000] arch_timer: cp15 timer(s) running at 24.00MHz (phys).
+> [    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+> [    0.000001] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+> [    0.005107] Console: colour dummy device 80x25
+> [    0.005549] printk: console [tty0] enabled
+> [    0.005956] printk: bootconsole [uart0] disabled
+> 
+> Config can be found at [1] (expires after 6 months). I've also built the
+> kernel with gcc 10.3.1 [2] (aarch64-none-linux-gnu), same issue.
+> 
+> I've bisected the build failure to commit 10e14073107d ("writeback: Fix
+> inode->i_io_list not be protected by inode->i_lock error"); I've confirmed
+> that that commit is responsible by successfully booting the board with a
+> kernel built from v5.19-rc2 + the above commit reverted.
 
-I get the following documentation warning:
+It is strange. I can't see how consoles are related to filesystem
+writeback.
 
-Documentation/output/videodev2.h.rst:6: WARNING: undefined label: v4l2-ctrl-flag-dynamic-array
+Anyway, the commit 10e14073107d ("writeback: Fix inode->i_io_list not
+be protected by inode->i_lock error") modifies some locking and
+might be source of possible deadlocks.
 
-The new flag needs to be added to Documentation/userspace-api/media/videodev2.h.rst.exceptions.
+I am not familiar with the fs code. But I noticed the following.
+The patch adds:
 
-I also get these kerneldoc warnings:
++               if (!was_dirty) {
++                       wb = locked_inode_to_wb_and_lock_list(inode);
++                       spin_lock(&inode->i_lock);
 
-kerneldoc: WARNINGS
-include/uapi/linux/v4l2-controls.h:2123: warning: Function parameter or member 'reserved' not described in 'v4l2_ctrl_hevc_sps'
-include/uapi/linux/v4l2-controls.h:2123: warning: Function parameter or member 'padding' not described in 'v4l2_ctrl_hevc_sps'
-include/uapi/linux/v4l2-controls.h:2203: warning: Function parameter or member 'reserved' not described in 'v4l2_ctrl_hevc_pps'
-include/uapi/linux/v4l2-controls.h:2203: warning: Function parameter or member 'padding' not described in 'v4l2_ctrl_hevc_pps'
-include/uapi/linux/v4l2-controls.h:2237: warning: Function parameter or member 'reserved' not described in 'v4l2_hevc_dpb_entry'
-include/uapi/linux/v4l2-controls.h:2339: warning: cannot understand function prototype: 'struct v4l2_ctrl_hevc_slice_params '
-include/uapi/linux/v4l2-controls.h:2425: warning: Function parameter or member 'reserved' not described in 'v4l2_ctrl_hevc_decode_params'
-include/uapi/linux/v4l2-controls.h:2425: warning: Function parameter or member 'padding' not described in 'v4l2_ctrl_hevc_decode_params'
-
-Run 'scripts/kernel-doc -none include/uapi/linux/v4l2-controls.h' to get these warnings.
-
-The "cannot understand function prototype" warning is because
+And locked_inode_to_wb_and_lock_list() is defined this way:
 
 /**
- * v4l2_ctrl_hevc_slice_params - HEVC slice parameters
+ * locked_inode_to_wb_and_lock_list - determine a locked inode's wb and lock it
+ * @inode: inode of interest with i_lock held
+ *
+ * Returns @inode's wb with its list_lock held.  @inode->i_lock must be
+ * held on entry and is released on return.  The returned wb is guaranteed
+ * to stay @inode's associated wb until its list_lock is released.
+ */
+static struct bdi_writeback *
+locked_inode_to_wb_and_lock_list(struct inode *inode)
+	__releases(&inode->i_lock)
+	__acquires(&wb->list_lock)
+{
+	while (true) {
+		struct bdi_writeback *wb = inode_to_wb(inode);
 
-is missing 'struct' before 'v4l2_ctrl_hevc_slice_params'.
+		/*
+		 * inode_to_wb() association is protected by both
+		 * @inode->i_lock and @wb->list_lock but list_lock nests
+		 * outside i_lock.  Drop i_lock and verify that the
+		 * association hasn't changed after acquiring list_lock.
+		 */
+		wb_get(wb);
+		spin_unlock(&inode->i_lock);
 
-After adding that I get these warnings:
+It expects that inode->i_lock is taken before. But the problematic
+commit takes it later. It might mess the lock and cause a deadlock.
 
-include/uapi/linux/v4l2-controls.h:2123: warning: Function parameter or member 'reserved' not described in 'v4l2_ctrl_hevc_sps'
-include/uapi/linux/v4l2-controls.h:2123: warning: Function parameter or member 'padding' not described in 'v4l2_ctrl_hevc_sps'
-include/uapi/linux/v4l2-controls.h:2203: warning: Function parameter or member 'reserved' not described in 'v4l2_ctrl_hevc_pps'
-include/uapi/linux/v4l2-controls.h:2203: warning: Function parameter or member 'padding' not described in 'v4l2_ctrl_hevc_pps'
-include/uapi/linux/v4l2-controls.h:2237: warning: Function parameter or member 'reserved' not described in 'v4l2_hevc_dpb_entry'
-include/uapi/linux/v4l2-controls.h:2382: warning: Function parameter or member 'reserved0' not described in 'v4l2_ctrl_hevc_slice_params'
-include/uapi/linux/v4l2-controls.h:2382: warning: Function parameter or member 'reserved1' not described in 'v4l2_ctrl_hevc_slice_params'
-include/uapi/linux/v4l2-controls.h:2382: warning: Function parameter or member 'padding' not described in 'v4l2_ctrl_hevc_slice_params'
-include/uapi/linux/v4l2-controls.h:2425: warning: Function parameter or member 'reserved' not described in 'v4l2_ctrl_hevc_decode_params'
-include/uapi/linux/v4l2-controls.h:2425: warning: Function parameter or member 'padding' not described in 'v4l2_ctrl_hevc_decode_params'
+Jack?
 
-Regards,
 
-	Hans
+> I tried to do some investigating, it seems that the kernel is stuck at
+> printk.c::console_init() -> drivers/tty/vt/vt.c::con_init() ->
+> printk.c::register_console() -> unregister_console() -> console_lock().
+> This has been determined by adding pr_info statements.
 
-> 
-> This version has been tested with these branches:
-> - GStreamer: https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/tree/HEVC_aligned_with_kernel_5.15
-> - Linux: https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/tree/HEVC_UAPI_V8
-> 
-> version 7:
-> - Apply Jernej patches for Cedrus about bit offset definition and
->   V4L2_CID_STATELESS_HEVC_SLICE_PARAMS being a dynamic array control.
-> - Based on media_tree/master
-> 
-> version 6:
-> - Add short_term_ref_pic_set_size and long_term_ref_pic_set_size
->   in v4l2_ctrl_hevc_decode_params structure.
-> - Change slice_pic_order_cnt type to s32 to match with PoC type.
-> - Set V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag automatically when using
->   V4L2_CID_STATELESS_HEVC_SLICE_PARAMS control.
-> - Add a define for max slices count
-> - Stop using Hantro dedicated control.
-> 
-> With patches to decode 10-bits bitstream and produce P010 frames the Fluster score 
-> which was 77/147 before, is now 141/147.
-> The 10-bits series will comes after this because of it dependency to
-> uAPI change. If you are curious you can find the WIP branch here:
-> https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/WIP_HEVC_UAPI_V7
-> 
-> The 6 failing tests are:
-> - PICSIZE_{A,B,C,D}_Bossen_1 where resolutions are to big for Hantro hardware.
-> - WPP_D_ericsson_MAIN_2 and WPP_D_ericsson_MAIN10_2 are visually ok but some 
->   difference exist on 5 decoded frames. Some pixels values are no the same 
->   the very end of few lines.
-> 
-> version 6:
-> - Stop using Hantro dedicated control and compute the number
->   of bytes to skip inside the driver.
-> - Rebased on media_tree/master
-> 
-> version 5:
-> - Change __u16 pic_order_cnt[2] into __s32 pic_order_cnt_val in
->   hevc_dpb_entry structure
-> - Add defines for SEI pic_struct values (patch 4)
-> - Fix numbers of bits computation in cedrus_h265_skip_bits() parameters
-> - Fix num_short_term_ref_pic_sets and num_long_term_ref_pics_sps
->   documentation (patch 8)
-> - Rebased on v5-18-rc1
-> 
-> GStreamer H265 decoder plugin aligned with HEVC uAPI v5:
-> https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/tree/HEVC_aligned_with_kernel_5.15
-> 
-> Version 4:
-> - Add num_entry_point_offsets field in  struct v4l2_ctrl_hevc_slice_params
-> - Fix V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS name
-> - Initialize control V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS
-> - Fix space/tab issue in kernel-doc
-> - Add patch to change data_bit_offset definition
-> - Fix hantro-media SPDX license
-> - put controls under stateless section in v4l2-ctrls-defs.c
-> 
-> At the end fluster tests results on IMX8MQ is 77/147 for HEVC codec.
-> 
-> Benjamin Gaignard (14):
->   media: uapi: HEVC: Add missing fields in HEVC controls
->   media: uapi: HEVC: Rename HEVC stateless controls with STATELESS
->     prefix
->   media: uapi: HEVC: Change pic_order_cnt definition in
->     v4l2_hevc_dpb_entry
->   media: uapi: HEVC: Add SEI pic struct flags
->   media: uapi: HEVC: Add documentation to uAPI structure
->   media: uapi: HEVC: Define V4L2_CID_STATELESS_HEVC_SLICE_PARAMS as a
->     dynamic array
->   media: uapi: Move parsed HEVC pixel format out of staging
->   media: uapi: Add V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
->   media: uapi: Move the HEVC stateless control type out of staging
->   media: controls: Log HEVC stateless control in .std_log
->   media: hantro: Stop using Hantro dedicated control
->   media: uapi: HEVC: fix padding in v4l2 control structures
->   media: uapi: Change data_bit_offset definition
->   media: uapi: move HEVC stateless controls out of staging
-> 
-> Hans Verkuil (3):
->   videodev2.h: add V4L2_CTRL_FLAG_DYNAMIC_ARRAY
->   v4l2-ctrls: add support for dynamically allocated arrays.
->   vivid: add dynamic array test control
-> 
->  .../media/v4l/ext-ctrls-codec-stateless.rst   | 897 ++++++++++++++++++
->  .../media/v4l/ext-ctrls-codec.rst             | 780 ---------------
->  .../media/v4l/pixfmt-compressed.rst           |   7 +-
->  .../media/v4l/vidioc-g-ext-ctrls.rst          |  20 +
->  .../media/v4l/vidioc-queryctrl.rst            |   8 +
->  .../media/videodev2.h.rst.exceptions          |   5 +
->  .../media/test-drivers/vivid/vivid-ctrls.c    |  15 +
->  drivers/media/v4l2-core/v4l2-ctrls-api.c      | 103 +-
->  drivers/media/v4l2-core/v4l2-ctrls-core.c     | 206 +++-
->  drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  38 +-
->  drivers/media/v4l2-core/v4l2-ctrls-priv.h     |   3 +-
->  drivers/media/v4l2-core/v4l2-ctrls-request.c  |  13 +-
->  drivers/staging/media/hantro/hantro_drv.c     |  62 +-
->  .../staging/media/hantro/hantro_g2_hevc_dec.c |  69 +-
->  drivers/staging/media/hantro/hantro_hevc.c    |  10 +-
->  drivers/staging/media/hantro/hantro_hw.h      |   4 +-
->  drivers/staging/media/sunxi/cedrus/cedrus.c   |  25 +-
->  .../staging/media/sunxi/cedrus/cedrus_dec.c   |  10 +-
->  .../staging/media/sunxi/cedrus/cedrus_h265.c  |  23 +-
->  .../staging/media/sunxi/cedrus/cedrus_video.c |   1 -
->  include/media/hevc-ctrls.h                    | 250 -----
->  include/media/v4l2-ctrls.h                    |  48 +-
->  include/uapi/linux/v4l2-controls.h            | 458 +++++++++
->  include/uapi/linux/videodev2.h                |  13 +
->  24 files changed, 1848 insertions(+), 1220 deletions(-)
->  delete mode 100644 include/media/hevc-ctrls.h
-> 
+So, you tried something like:
 
+int unregister_console(struct console *console)
+{
+	struct task_struct *thd;
+	struct console *con;
+	int res;
+
+	con_printk(KERN_INFO, console, "disabled\n");
+[...]
+
++	pr_info("Stage 1\n");
+	console_lock();
++	pr_info("Stage 2\n");
+
+[...]
+
+	console_unlock();
++	pr_info("Stage 3\n");
+[...]
+}
+
+And "Stage 1" was the last message on the console ?
+
+Does the system boot when you avoid "earlycon" parameter?
+
+
+> I've booted a kernel compiled with CONFIG_PROVE_LOCKING=y, as the offending
+> commit fiddles with locks, but no splat was produced that would explain the
+> hang. I've also tried to boot a v5,19-rc2 kernel on my odroid-c4, the board
+> is booting just fine, so I'm guessing it only affects of subset of arm64
+> boards.
+
+You might try to switch the order of console_init() and lockdep_init()
+in start_kernel() in init/main.c
+
+Best Regards,
+Petr
 
 _______________________________________________
 Linux-rockchip mailing list
