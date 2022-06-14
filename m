@@ -4,43 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A36EC43334
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 08:46:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AB45C43334
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 08:46:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2LFrrI0dtUh3Lst7LCSqyJgPDEmSj6V6PJkM7EzTcH8=; b=JDTMPvKkZaFBAp
-	buc7Lgkm5/3a0+MiCZ+Ie8t1mkRaaEAZOG+IFn+4hR7L3Hw+oHL8e9Sxwo9Zg4ccyEVj7zJYe3r5N
-	H0KZTsVMNVPgoHWmT/jxRJp2/9OKZL31oxJteXyBRwfJbl86VvQnqigvE8zqK7JlIgD49mZfMpCk7
-	Mh84Uzvc70kyH5dJ+z9Mm6yA58yTlpoY2ug5kq9Uzgz8TwEfJ9/F+iYFGiI30lpwHG1LDwtDeQXY7
-	YAbOWC9Q8yjm16kaZW4HTVbmZHWW4sZqHsTwilBzyGUiLyJBcHvRMSsPImvTi6e9Go6+lv31pcIms
-	sQjs1qC5WvGARoEU2kkQ==;
+	List-Owner; bh=ovNzxLtGKP5uDsUhLhYbyNGwrHQBiZcf+KfuDD6sv14=; b=G3IEO0wXZPxwCe
+	7NXHtCbW4nBR1Z8f3PtIUibO1ENWoSUC7BeLEpjn/c9xphsr5/izvIPkg3NfPLnWwrNJVpwucDIuq
+	cxn5ntFQXFJD9oGDgx9LCqg32QJlbxkBvVYwwF4U85fPryxPbxwZ+HIwXgGoXW1V0Vudnhlqtwyyr
+	xUsbXHWW9EhFRq/y8gbsoUdfHfU473XD9hseXeRnNg++mmHiy3NcQiHcPBqEp8yOm17Pbg9tYdhiw
+	7f+TOj17f6KDrMSR6uY49yZ5AcsSu94PSBpSa7kk4PtSkW33YXds8HNQWk4N8nqGbqM8rcneCDMl9
+	gKsyPSFBolq1KSWEG0Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o12Bn-008N6p-B9; Tue, 14 Jun 2022 08:46:19 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o12Bo-008N7s-Sx; Tue, 14 Jun 2022 08:46:20 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o122U-008I7b-1K; Tue, 14 Jun 2022 08:36:51 +0000
+	id 1o122e-008ICF-7K; Tue, 14 Jun 2022 08:36:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=/RQpr2E9uP0u5JxUc02oFSjatUaR6n4dEV8lNNbRocM=; b=m85CnS1jGfGKnfmxsCyd4tFSQZ
+	LQqPcc4rJ/PSXPBuhLQ64ylNdsV65wn6j+HGDY31GbmptA7xOenk0hzmMeA/PF1XCR/aWlS/tzcUL
+	NyJHLb7lWpT6nIYkO0OJz51MTH6e+dRdfSD0EttFKRei1WgGILGgnidUm4QM1n4iIr6DQ0aZrW9on
+	UzFwc/Ll9p0TJQFAH6k8TdwduT0NOUS8/vG5my3tx9KNu79++ouaST2vTkpHPNF9VX47mcC9MPcrA
+	WexJRUc/FKhxyUP2RzODeBEeRQznjAU50WZ++BLgEnNjOk2yEfoohRColJbFcgwDFCht0Ml//RJCS
+	LJ/qvFAw==;
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o122S-007oCS-7W; Tue, 14 Jun 2022 08:36:43 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4a7b:8d3a:acaa:ec46])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0E2B166016DE;
-	Tue, 14 Jun 2022 09:36:40 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AEF0A66016D2;
+	Tue, 14 Jun 2022 09:36:38 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655195800;
-	bh=RaIqOdS86jrK18wB+IDAhSAnUu26HB2PzFnjs6CiMNE=;
+	s=mail; t=1655195799;
+	bh=AX9t7NDroKjw8N8uzsZcYRkuwGc+9D6j4YO379jQqLM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=eEXaiT3K5h5F3YoGdArJ97+lvXlhtAbeIZqcCKPmEuD6UOpjaaL9qhPARcGjsyWGM
-	 SBfVZ9JAZhNAb2kSo0swLtyC98mGk6EmwVCG50yFIPBbcZBw1cPAUpzr6N3m9xo1uf
-	 ZVqZzPmBEP6XLxCzG1+zE//8moiRu8676x25fNmqbhx14o70xhIglF/F+1PpRtJ8Ts
-	 fsflBVvNfLHTYmzGs2sZ/ixIC2Ah9NA/AnldDHLI1ZmXSKpcK/QhlHrxtpcpeXI+nF
-	 aABL1SVDRtLhC2r12uLnGYui1ZF5YmsmCOBlpNT/2+k5H+zCmcuhitvmvlJztwW0OM
-	 njaTFHEcjAdDA==
+	b=HFu5KFL9op86g1Wl8lN3KUUsQPMkEnRNsxfoLOGlqfW0lXJoPXrCe8ASGC/7/CX3J
+	 YDeyT2Ncii1CHA7/0qSXnmJPePRuf4xq7yRKijKNfHXZ4CWNupZ97YKx1J7sjdpgHm
+	 VxyJBHv2BaS+0/gezY9eq0rcboCqUuSLIIDunDavY+BI/dXvyYN40qmrpvpw0ZaAel
+	 PZCzClKoi6HN3+IBw2ua0lEVaudFiBYIhP08XaM20WJeLBkgMAWkaGPqYvx6nfrS22
+	 8Z8O23MibIXfVw9UHR5u3Pzgh+iVTnFx4wkDMpHwl20x71tDICNRtQMD5VtTHDSjaK
+	 B9lZXte+DGIJw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -62,16 +75,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 14/17] media: hantro: Stop using Hantro dedicated control
-Date: Tue, 14 Jun 2022 10:36:11 +0200
-Message-Id: <20220614083614.240641-15-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 12/17] media: uapi: Move the HEVC stateless control type out of staging
+Date: Tue, 14 Jun 2022 10:36:09 +0200
+Message-Id: <20220614083614.240641-13-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220614083614.240641-1-benjamin.gaignard@collabora.com>
 References: <20220614083614.240641-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_013642_399523_420E800F 
-X-CRM114-Status: GOOD (  19.70  )
+X-CRM114-CacheID: sfid-20220614_093641_941443_6305A42C 
+X-CRM114-Status: UNSURE (   9.01  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,180 +102,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The number of bits to skip in the slice header can be computed
-in the driver by using sps, pps and decode_params information.
-This allow to remove Hantro dedicated control.
+Move the HEVC stateless controls types out of staging,
+and re-number them.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/staging/media/hantro/hantro_drv.c     | 36 -----------
- .../staging/media/hantro/hantro_g2_hevc_dec.c | 62 ++++++++++++++++++-
- include/media/hevc-ctrls.h                    | 13 ----
- 3 files changed, 61 insertions(+), 50 deletions(-)
+ .../userspace-api/media/videodev2.h.rst.exceptions         | 5 +++++
+ include/media/hevc-ctrls.h                                 | 7 -------
+ include/uapi/linux/videodev2.h                             | 6 ++++++
+ 3 files changed, 11 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 536c8c374952..5aac3a090480 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -304,26 +304,6 @@ static int hantro_jpeg_s_ctrl(struct v4l2_ctrl *ctrl)
- 	return 0;
- }
+diff --git a/Documentation/userspace-api/media/videodev2.h.rst.exceptions b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+index 9cbb7a0c354a..ee34f13e8142 100644
+--- a/Documentation/userspace-api/media/videodev2.h.rst.exceptions
++++ b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+@@ -153,6 +153,11 @@ replace symbol V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR :c:type:`v4l2_ctrl_type`
+ replace symbol V4L2_CTRL_TYPE_VP9_FRAME :c:type:`v4l2_ctrl_type`
+ replace symbol V4L2_CTRL_TYPE_HDR10_CLL_INFO :c:type:`v4l2_ctrl_type`
+ replace symbol V4L2_CTRL_TYPE_HDR10_MASTERING_DISPLAY :c:type:`v4l2_ctrl_type`
++replace symbol V4L2_CTRL_TYPE_HEVC_SPS :c:type:`v4l2_ctrl_type`
++replace symbol V4L2_CTRL_TYPE_HEVC_PPS :c:type:`v4l2_ctrl_type`
++replace symbol V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS :c:type:`v4l2_ctrl_type`
++replace symbol V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX :c:type:`v4l2_ctrl_type`
++replace symbol V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS :c:type:`v4l2_ctrl_type`
  
--static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
--{
--	struct hantro_ctx *ctx;
--
--	ctx = container_of(ctrl->handler,
--			   struct hantro_ctx, ctrl_handler);
--
--	vpu_debug(1, "s_ctrl: id = %d, val = %d\n", ctrl->id, ctrl->val);
--
--	switch (ctrl->id) {
--	case V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP:
--		ctx->hevc_dec.ctrls.hevc_hdr_skip_length = ctrl->val;
--		break;
--	default:
--		return -EINVAL;
--	}
--
--	return 0;
--}
--
- static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
- 	.try_ctrl = hantro_try_ctrl,
- };
-@@ -332,10 +312,6 @@ static const struct v4l2_ctrl_ops hantro_jpeg_ctrl_ops = {
- 	.s_ctrl = hantro_jpeg_s_ctrl,
- };
- 
--static const struct v4l2_ctrl_ops hantro_hevc_ctrl_ops = {
--	.s_ctrl = hantro_hevc_s_ctrl,
--};
--
- #define HANTRO_JPEG_ACTIVE_MARKERS	(V4L2_JPEG_ACTIVE_MARKER_APP0 | \
- 					 V4L2_JPEG_ACTIVE_MARKER_COM | \
- 					 V4L2_JPEG_ACTIVE_MARKER_DQT | \
-@@ -487,18 +463,6 @@ static const struct hantro_ctrl controls[] = {
- 		.cfg = {
- 			.id = V4L2_CID_STATELESS_HEVC_SCALING_MATRIX,
- 		},
--	}, {
--		.codec = HANTRO_HEVC_DECODER,
--		.cfg = {
--			.id = V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP,
--			.name = "Hantro HEVC slice header skip bytes",
--			.type = V4L2_CTRL_TYPE_INTEGER,
--			.min = 0,
--			.def = 0,
--			.max = 0x100,
--			.step = 1,
--			.ops = &hantro_hevc_ctrl_ops,
--		},
- 	}, {
- 		.codec = HANTRO_VP9_DECODER,
- 		.cfg = {
-diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-index d28653d04d20..3be8d6e60bf0 100644
---- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-+++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-@@ -117,6 +117,66 @@ static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
- 		vpu_debug(1, "%s: no chroma!\n", __func__);
- }
- 
-+static unsigned int ceil_log2(unsigned int v)
-+{
-+	/* Compute Ceil(Log2(v))
-+	 * Derived from branchless code for integer log2(v) from:
-+	 * <http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog>
-+	 */
-+	unsigned int r, shift;
-+
-+	v--;
-+	r = (v > 0xFFFF) << 4;
-+	v >>= r;
-+	shift = (v > 0xFF) << 3;
-+	v >>= shift;
-+	r |= shift;
-+	shift = (v > 0xF) << 2;
-+	v >>= shift;
-+	r |= shift;
-+	shift = (v > 0x3) << 1;
-+	v >>= shift;
-+	r |= shift;
-+	r |= (v >> 1);
-+
-+	return r + 1;
-+}
-+
-+static int compute_header_skip_lenght(struct hantro_ctx *ctx)
-+{
-+	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
-+	const struct v4l2_ctrl_hevc_decode_params *decode_params = ctrls->decode_params;
-+	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
-+	const struct v4l2_ctrl_hevc_pps *pps = ctrls->pps;
-+	int skip = 0;
-+
-+	if (pps->flags & V4L2_HEVC_PPS_FLAG_OUTPUT_FLAG_PRESENT)
-+		/* size of pic_output_flag */
-+		skip++;
-+
-+	if (sps->flags & V4L2_HEVC_SPS_FLAG_SEPARATE_COLOUR_PLANE)
-+		/* size of pic_order_cnt_lsb */
-+		skip += 2;
-+
-+	if (!(decode_params->flags & V4L2_HEVC_DECODE_PARAM_FLAG_IDR_PIC)) {
-+		/* size of pic_order_cnt_lsb */
-+		skip += sps->log2_max_pic_order_cnt_lsb_minus4 + 4;
-+
-+		/* size of short_term_ref_pic_set_sps_flag */
-+		skip++;
-+
-+		if (decode_params->short_term_ref_pic_set_size)
-+			/* size of st_ref_pic_set( num_short_term_ref_pic_sets ) */
-+			skip += decode_params->short_term_ref_pic_set_size;
-+		else if (sps->num_short_term_ref_pic_sets > 1)
-+			skip += ceil_log2(sps->num_short_term_ref_pic_sets);
-+
-+		skip += decode_params->long_term_ref_pic_set_size;
-+	}
-+
-+	return skip;
-+}
-+
- static void set_params(struct hantro_ctx *ctx)
- {
- 	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
-@@ -134,7 +194,7 @@ static void set_params(struct hantro_ctx *ctx)
- 
- 	hantro_reg_write(vpu, &g2_output_8_bits, 0);
- 
--	hantro_reg_write(vpu, &g2_hdr_skip_length, ctrls->hevc_hdr_skip_length);
-+	hantro_reg_write(vpu, &g2_hdr_skip_length, compute_header_skip_lenght(ctx));
- 
- 	min_log2_cb_size = sps->log2_min_luma_coding_block_size_minus3 + 3;
- 	max_log2_ctb_size = min_log2_cb_size + sps->log2_diff_max_min_luma_coding_block_size;
+ # V4L2 capability defines
+ replace define V4L2_CAP_VIDEO_CAPTURE device-capabilities
 diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-index d6cb3779d190..efc0412ac41e 100644
+index 1319cb99ae3f..d6cb3779d190 100644
 --- a/include/media/hevc-ctrls.h
 +++ b/include/media/hevc-ctrls.h
-@@ -467,17 +467,4 @@ struct v4l2_ctrl_hevc_scaling_matrix {
- 	__u8	scaling_list_dc_coef_32x32[2];
+@@ -22,13 +22,6 @@
+ #define V4L2_CID_STATELESS_HEVC_START_CODE	(V4L2_CID_CODEC_BASE + 1016)
+ #define V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (V4L2_CID_CODEC_BASE + 1017)
+ 
+-/* enum v4l2_ctrl_type type values */
+-#define V4L2_CTRL_TYPE_HEVC_SPS 0x0120
+-#define V4L2_CTRL_TYPE_HEVC_PPS 0x0121
+-#define V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS 0x0122
+-#define V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX 0x0123
+-#define V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS 0x0124
+-
+ enum v4l2_stateless_hevc_decode_mode {
+ 	V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED,
+ 	V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 37f9f23a67fe..e0d19a6b5bc7 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -1836,6 +1836,12 @@ enum v4l2_ctrl_type {
+ 
+ 	V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR	= 0x0260,
+ 	V4L2_CTRL_TYPE_VP9_FRAME		= 0x0261,
++
++	V4L2_CTRL_TYPE_HEVC_SPS			= 0x0270,
++	V4L2_CTRL_TYPE_HEVC_PPS			= 0x0271,
++	V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS	= 0x0272,
++	V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX	= 0x0273,
++	V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS	= 0x0274,
  };
  
--/*  MPEG-class control IDs specific to the Hantro driver as defined by V4L2 */
--#define V4L2_CID_CODEC_HANTRO_BASE				(V4L2_CTRL_CLASS_CODEC | 0x1200)
--/*
-- * V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP -
-- * the number of data (in bits) to skip in the
-- * slice segment header.
-- * If non-IDR, the bits to be skipped go from syntax element "pic_output_flag"
-- * to before syntax element "slice_temporal_mvp_enabled_flag".
-- * If IDR, the skipped bits are just "pic_output_flag"
-- * (separate_colour_plane_flag is not supported).
-- */
--#define V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP	(V4L2_CID_CODEC_HANTRO_BASE + 0)
--
- #endif
+ /*  Used in the VIDIOC_QUERYCTRL ioctl for querying controls */
 -- 
 2.32.0
 
