@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4EE7C43334
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 19:13:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BBD3CCA47A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 19:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KIltJfQEK2nOF4fa4UCyt/7PJEvqjaOruzsLjYnV7OQ=; b=C13aaytaZuThLJ
-	fQTRILYDs873X72SrlGhOTR/IwkuDhXWQ27Odk4snTzeEOF1euivOApkRz5JrUTWvTqhP2XodXsEm
-	ej3PxPbhRjMXDBkJeZ8lF8zLiGb77sL396G/awRiFr/847dtPfwNSrKNIkC1WX+NZdoghZ8QYUm3e
-	2e2mEiPVoK6j13UIwTJK7aPfNQWbGU8Gs8h45hXaJ5+x1te9DRzwx1Bw7Gsccb8jL6BE0lWffu41h
-	/NJEmI+XjM+MwgpfD691lAWVKu/+pBXn37dguGBTE5kUN7XUvYj+VuAH0/ycnr8lcMVyUr0IlHs5X
-	bdsI16f9JAAoZhAy5H3g==;
+	List-Owner; bh=CnZPHR2CPC3VEyqC4wOuo4mKpLkpMOgZPY04NiCI1ww=; b=J8uj9HkFuy+OWa
+	h9j7KtHWqtLMzMaCKdhcakPM1sBotgmnl+Zro0L3nW5vGL7IAYwpTXaZ6CeK9aPFX/jPLpTDlvr3F
+	ho6ax9o+A+Kj7dT3jF+p/rY4hidh6iuMAyykLAoJgUfqdKQ9wA1gQRzn8exHFWSgT35tfHZ00IUju
+	8Y2MBTRX09dZpYH7wbXmkQZp14XjETsHsCuYIrECFTJYSdmZXrBmJxYPIn7lhSXxvZKmBnhNo5dj0
+	0KJrByOlwmwunGZJ7uA0UNM4DPAis6mw3hkgJoxMxYqq7u4y7+LAiV5IbW87P3nP4X/e1Fw49Zktt
+	snAEwNc7pXTYv9ild5pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1Byb-00AtnJ-99; Tue, 14 Jun 2022 19:13:21 +0000
+	id 1o1Bya-00Atmn-So; Tue, 14 Jun 2022 19:13:20 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1ByA-00Atbu-CQ
-	for linux-rockchip@lists.infradead.org; Tue, 14 Jun 2022 19:12:55 +0000
+	id 1o1By6-00Atb8-HQ
+	for linux-rockchip@lists.infradead.org; Tue, 14 Jun 2022 19:12:51 +0000
 Received: from pyrite.rasen.tech (softbank036240126034.bbtec.net [36.240.126.34])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D39CC825;
-	Tue, 14 Jun 2022 21:12:49 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C8AF79E5;
+	Tue, 14 Jun 2022 21:12:45 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1655233973;
-	bh=OTnYQuvlSCEpGxJsQky+B7kiN2Ypy9jL3LZYyc2briI=;
+	s=mail; t=1655233969;
+	bh=KtK5dwW377NvXzCNP1bIxdNyOb6odWD4AMbMsOvO2T0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CK5oen+KeOy3ybrgXRPXrGAYOZNbIo4OvJCLFOlXJeXppllcvk/57qnx8mKWaThna
-	 Pqy/51ShQoN07wIWX3YzwwbWPMETB9C8LHIxQJ4wNy1HcIM/LlGlym/tMuG8n4eDFm
-	 CPqG0la1MEYpkl9HFv3NGnxp4n8X4K+cqL4Y8nJY=
+	b=F086lYTvRWB6k/opHq61tQXg7462fUbFxUwgm6DYGzMcrgFR8OLYx6Y5+O0GEv8A3
+	 F2rkRClcVK12GQoPl8jyvOaDYNrjuyY9TckZERO5Jn6EQ+EypbGqUhuHSmjuvG2gvo
+	 i5e0AI/bUY1CcNXNvIYsUwGkakHxAJUkZQFrOUqw=
 From: Paul Elder <paul.elder@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
@@ -45,16 +45,16 @@ Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	djrscally@gmail.com,
 	helen.koike@collabora.com,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 16/55] media: v4l2-async: Add notifier operation to destroy asd instances
-Date: Wed, 15 Jun 2022 04:10:48 +0900
-Message-Id: <20220614191127.3420492-17-paul.elder@ideasonboard.com>
+Subject: [PATCH 15/55] media: rkisp1: Rename rkisp1_subdev_notifier() to rkisp1_subdev_notifier_register()
+Date: Wed, 15 Jun 2022 04:10:47 +0900
+Message-Id: <20220614191127.3420492-16-paul.elder@ideasonboard.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
 References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_121254_612110_13682DCD 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20220614_121250_763842_EC9544E0 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,90 +73,36 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-Drivers typically extend the v4l2_async_subdev structure by embedding it
-in a driver-specific structure, to store per-subdev custom data. The
-v4l2_async_subdev instances are freed by the v4l2-async framework, which
-makes this mechanism cumbersome to use safely when custom data needs
-special treatment to be destroyed (such as freeing additional memory, or
-releasing references to kernel objects).
-
-To ease this, add a .destroy() operation to the
-v4l2_async_notifier_operations structure. The operation is called right
-before the v4l2_async_subdev is freed, giving drivers a chance to
-destroy data if needed.
+The function name isn't very clear, rename it to
+rkisp1_subdev_notifier_register().
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- Documentation/driver-api/media/v4l2-subdev.rst |  6 ++++++
- drivers/media/v4l2-core/v4l2-async.c           | 10 ++++++++++
- include/media/v4l2-async.h                     |  2 ++
- 3 files changed, 18 insertions(+)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/driver-api/media/v4l2-subdev.rst b/Documentation/driver-api/media/v4l2-subdev.rst
-index cf3b52bdbfb9..6f8d79926aa5 100644
---- a/Documentation/driver-api/media/v4l2-subdev.rst
-+++ b/Documentation/driver-api/media/v4l2-subdev.rst
-@@ -243,6 +243,12 @@ notifier callback is called. After all subdevices have been located the
- .complete() callback is called. When a subdevice is removed from the
- system the .unbind() method is called. All three callbacks are optional.
- 
-+Drivers can store any type of custom data in their driver-specific
-+:c:type:`v4l2_async_subdev` wrapper. If any of that data requires special
-+handling when the structure is freed, drivers must implement the ``.destroy()``
-+notifier callback. The framework will call it right before freeing the
-+:c:type:`v4l2_async_subdev`.
-+
- Calling subdev operations
- ~~~~~~~~~~~~~~~~~~~~~~~~~
- 
-diff --git a/drivers/media/v4l2-core/v4l2-async.c b/drivers/media/v4l2-core/v4l2-async.c
-index c6995718237a..735dede624b8 100644
---- a/drivers/media/v4l2-core/v4l2-async.c
-+++ b/drivers/media/v4l2-core/v4l2-async.c
-@@ -52,6 +52,15 @@ static int v4l2_async_nf_call_complete(struct v4l2_async_notifier *n)
- 	return n->ops->complete(n);
- }
- 
-+static void v4l2_async_nf_call_destroy(struct v4l2_async_notifier *n,
-+				       struct v4l2_async_subdev *asd)
-+{
-+	if (!n->ops || !n->ops->destroy)
-+		return;
-+
-+	n->ops->destroy(asd);
-+}
-+
- static bool match_i2c(struct v4l2_async_notifier *notifier,
- 		      struct v4l2_subdev *sd, struct v4l2_async_subdev *asd)
- {
-@@ -626,6 +635,7 @@ static void __v4l2_async_nf_cleanup(struct v4l2_async_notifier *notifier)
- 		}
- 
- 		list_del(&asd->asd_list);
-+		v4l2_async_nf_call_destroy(notifier, asd);
- 		kfree(asd);
- 	}
- }
-diff --git a/include/media/v4l2-async.h b/include/media/v4l2-async.h
-index 13ff3ad948f4..25eb1d138c06 100644
---- a/include/media/v4l2-async.h
-+++ b/include/media/v4l2-async.h
-@@ -81,6 +81,7 @@ struct v4l2_async_subdev {
-  * @complete:	All subdevices have been probed successfully. The complete
-  *		callback is only executed for the root notifier.
-  * @unbind:	a subdevice is leaving
-+ * @destroy:	the asd is about to be freed
-  */
- struct v4l2_async_notifier_operations {
- 	int (*bound)(struct v4l2_async_notifier *notifier,
-@@ -90,6 +91,7 @@ struct v4l2_async_notifier_operations {
- 	void (*unbind)(struct v4l2_async_notifier *notifier,
- 		       struct v4l2_subdev *subdev,
- 		       struct v4l2_async_subdev *asd);
-+	void (*destroy)(struct v4l2_async_subdev *asd);
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 7bb1235cddea..386c1c17aec2 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -176,7 +176,7 @@ static const struct v4l2_async_notifier_operations rkisp1_subdev_notifier_ops =
+ 	.complete = rkisp1_subdev_notifier_complete,
  };
  
- /**
+-static int rkisp1_subdev_notifier(struct rkisp1_device *rkisp1)
++static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+ {
+ 	struct v4l2_async_notifier *ntf = &rkisp1->notifier;
+ 	unsigned int next_id = 0;
+@@ -358,7 +358,7 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
+ 	if (ret)
+ 		goto error;
+ 
+-	ret = rkisp1_subdev_notifier(rkisp1);
++	ret = rkisp1_subdev_notifier_register(rkisp1);
+ 	if (ret) {
+ 		dev_err(rkisp1->dev,
+ 			"Failed to register subdev notifier(%d)\n", ret);
 -- 
 2.30.2
 
