@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2C51CCA47E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 19:13:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 736BDCCA47B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 19:13:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nf4I1F+lp4MlRgl/XntA5OnojciSZ5ofTr4H8Hlb/XM=; b=KcrfrXH08enk+E
-	76GY9jcQ5mPVDK4gsJcxJ8NwewrGpBgfoTdaVb84KyN83AVem0F63dVKhwVAAygPMxf5nwqEJtfaD
-	l0oAL54nX7CUyrfrZHx3iSwp6T66D1gjIKl2l2IdjHhQ/bCA0G+tPI6SU7HFSWdV0S5VCukcblpGk
-	Ij3gp7BMMBvyLwNC9FVcSV8gQ8riHgb/10QzAC5LH/VULpN1U6AVScZ2AlYLqA5KPOzJcdCjqpsCv
-	FLgleGZ+kZk81N9Ueyl+YfqyIkB4Zr8qArTlKS5GUM8uZYIhxWpKs3fM4FnfM2iNLBQpwQR4D3drc
-	PAF8MpG8tnn119geAbVw==;
+	List-Owner; bh=992g+u1+P28l3YzdLXpNSm0wgVWdEFA+7l3o1tKaONk=; b=zM3AOpMm/osAzJ
+	KLYvKaVIfNQqwzqbDEpLS9lflurU2cZvuLupuZVWDHLMuPCz4xt+kbgSMjuw3BgFwhlM0lKxio6UL
+	zdJP9CJTBNFEu9ndx/gP1cF8wG6maC48LpxafHeNJZr9s45Fc7FuK+kKvIGNFawPROFuixNa2seHt
+	sEHCJkPiqgTsScPQHRM5KQi3UsfhMdgCkhho3/kRx4R3zDpG460tQ6PPKv3Jec8+PGQEXnl7bRQyF
+	LecIjeOr1accknrsym2F5z8vENQRjy8kMbca0av2RQDcsKAU4FgJfB53kHWonm9hxREWBSmlWyZxN
+	Ue5f7CR2cS/r2R+KcpcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1ByY-00Atk5-73; Tue, 14 Jun 2022 19:13:18 +0000
+	id 1o1ByZ-00Atl9-JX; Tue, 14 Jun 2022 19:13:19 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1Bxi-00AtPu-DZ
-	for linux-rockchip@lists.infradead.org; Tue, 14 Jun 2022 19:12:32 +0000
+	id 1o1Bxu-00AtXv-NN
+	for linux-rockchip@lists.infradead.org; Tue, 14 Jun 2022 19:12:40 +0000
 Received: from pyrite.rasen.tech (softbank036240126034.bbtec.net [36.240.126.34])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 37613825;
-	Tue, 14 Jun 2022 21:12:20 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 06A29825;
+	Tue, 14 Jun 2022 21:12:33 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1655233945;
-	bh=ziuJlGEi/sBEJXY/zL7duNXdiLAR8BKLwIcdu8TNidw=;
+	s=mail; t=1655233957;
+	bh=rIl2U/uSQ4qjK1oJdx1HUIdq6XV0PrNBBMDId1R+hqI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=L32QNvCAqIM4mx7p95QVK9ny/+dVNBOMcqin/7J4bwqvsabrarTvSz19HYePaCXt8
-	 /DzEILJGV0pJ/b/QTjQQq40/0j6oJezvaiQlNoRfxupDLnShUd/TZbPJus7x5ErUs1
-	 HgLzD5rtcW55aQJjpU8z2M0irwQLErpD5E8r8b+U=
+	b=oEbAtAeFuR6hQJPaF8PDn+1P0B8v3LHhIz1jraiTq0pDAvx0uxpm9EUWUMgFvwGaG
+	 qC7jw0Chyqit0UG3HvJp5Ei/V5mPlEPBr6rUyeV15QrGyTvRQhzfrDsADqsQ9eLzTX
+	 pHXfkHBBXiatQYYCYlkGfFZKi5QCv64AIOxBk84o=
 From: Paul Elder <paul.elder@ideasonboard.com>
 To: linux-media@vger.kernel.org
-Cc: Paul Elder <paul.elder@ideasonboard.com>,
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
 	dafna@fastmail.com,
 	heiko@sntech.de,
-	laurent.pinchart@ideasonboard.com,
 	jeanmichel.hautbois@ideasonboard.com,
 	jacopo@jmondi.org,
 	djrscally@gmail.com,
 	helen.koike@collabora.com,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 09/55] media: rkisp1: Make rkisp1_isp_mbus_info common
-Date: Wed, 15 Jun 2022 04:10:41 +0900
-Message-Id: <20220614191127.3420492-10-paul.elder@ideasonboard.com>
+Subject: [PATCH 12/55] media: rkisp1: Reject sensors without pixel rate control at bound time
+Date: Wed, 15 Jun 2022 04:10:44 +0900
+Message-Id: <20220614191127.3420492-13-paul.elder@ideasonboard.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
 References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_121226_897988_15B9DFC6 
-X-CRM114-Status: GOOD (  22.25  )
+X-CRM114-CacheID: sfid-20220614_121238_958038_DE74B2DB 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,608 +72,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The upcoming CSI receiver split from the ISP to a separate source file
-will need to be able to access the list of formats supported by the
-driver. Move it out of the ISP's header and into the common header, and
-add helper functions for accessing it so that the format list doesn't
-need to be stored in the header.
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+The rkisp1 driver requires the sensor to implement the pixel rate
+control. Trying to operate without it will cause an error when starting
+streaming. Catch the issue earlier, at bound time.
+
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-common.c  | 148 +++++++++++++++
- .../platform/rockchip/rkisp1/rkisp1-common.h  |  28 ++-
- .../platform/rockchip/rkisp1/rkisp1-isp.c     | 168 ++----------------
- .../platform/rockchip/rkisp1/rkisp1-resizer.c |  14 +-
- .../platform/rockchip/rkisp1/rkisp1-stats.c   |   2 +-
- 5 files changed, 193 insertions(+), 167 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 6 ++++++
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 5 -----
+ 2 files changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-index cf889666e166..bb0ea20118e1 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-@@ -5,10 +5,158 @@
-  * Copyright (C) 2019 Collabora, Ltd.
-  */
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 39ae35074062..7fc617d51f44 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -190,6 +190,12 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
  
-+#include <media/mipi-csi2.h>
- #include <media/v4l2-rect.h>
- 
- #include "rkisp1-common.h"
- 
-+static const struct rkisp1_mbus_info rkisp1_formats[] = {
-+	{
-+		.mbus_code	= MEDIA_BUS_FMT_YUYV8_2X8,
-+		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-+		.direction	= RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_SRGGB10_1X10,
-+		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-+		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-+		.bayer_pat	= RKISP1_RAW_RGGB,
-+		.bus_width	= 10,
-+		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
-+		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-+		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-+		.bayer_pat	= RKISP1_RAW_BGGR,
-+		.bus_width	= 10,
-+		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_SGBRG10_1X10,
-+		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-+		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-+		.bayer_pat	= RKISP1_RAW_GBRG,
-+		.bus_width	= 10,
-+		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
-+		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-+		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-+		.bayer_pat	= RKISP1_RAW_GRBG,
-+		.bus_width	= 10,
-+		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_SRGGB12_1X12,
-+		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-+		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-+		.bayer_pat	= RKISP1_RAW_RGGB,
-+		.bus_width	= 12,
-+		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_SBGGR12_1X12,
-+		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-+		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-+		.bayer_pat	= RKISP1_RAW_BGGR,
-+		.bus_width	= 12,
-+		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_SGBRG12_1X12,
-+		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-+		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-+		.bayer_pat	= RKISP1_RAW_GBRG,
-+		.bus_width	= 12,
-+		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_SGRBG12_1X12,
-+		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-+		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-+		.bayer_pat	= RKISP1_RAW_GRBG,
-+		.bus_width	= 12,
-+		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_SRGGB8_1X8,
-+		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-+		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-+		.bayer_pat	= RKISP1_RAW_RGGB,
-+		.bus_width	= 8,
-+		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_SBGGR8_1X8,
-+		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-+		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-+		.bayer_pat	= RKISP1_RAW_BGGR,
-+		.bus_width	= 8,
-+		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_SGBRG8_1X8,
-+		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-+		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-+		.bayer_pat	= RKISP1_RAW_GBRG,
-+		.bus_width	= 8,
-+		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_SGRBG8_1X8,
-+		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-+		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-+		.bayer_pat	= RKISP1_RAW_GRBG,
-+		.bus_width	= 8,
-+		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_YUYV8_1X16,
-+		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-+		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-+		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCBYCR,
-+		.bus_width	= 16,
-+		.direction	= RKISP1_ISP_SD_SINK,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_YVYU8_1X16,
-+		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-+		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-+		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCRYCB,
-+		.bus_width	= 16,
-+		.direction	= RKISP1_ISP_SD_SINK,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_UYVY8_1X16,
-+		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-+		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-+		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CBYCRY,
-+		.bus_width	= 16,
-+		.direction	= RKISP1_ISP_SD_SINK,
-+	}, {
-+		.mbus_code	= MEDIA_BUS_FMT_VYUY8_1X16,
-+		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-+		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-+		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CRYCBY,
-+		.bus_width	= 16,
-+		.direction	= RKISP1_ISP_SD_SINK,
-+	},
-+};
-+
-+unsigned int rkisp1_mbus_info_length(void)
-+{
-+	return ARRAY_SIZE(rkisp1_formats);
-+}
-+
-+const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_index(unsigned int index)
-+{
-+	if (index >= rkisp1_mbus_info_length())
-+		return NULL;
-+
-+	return &rkisp1_formats[index];
-+}
-+
-+const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_code(u32 mbus_code)
-+{
-+	unsigned int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(rkisp1_formats); i++) {
-+		const struct rkisp1_mbus_info *fmt = &rkisp1_formats[i];
-+
-+		if (fmt->mbus_code == mbus_code)
-+			return fmt;
+ 	s_asd->pixel_rate_ctrl = v4l2_ctrl_find(sd->ctrl_handler,
+ 						V4L2_CID_PIXEL_RATE);
++	if (!s_asd->pixel_rate_ctrl) {
++		dev_err(rkisp1->dev, "No pixel rate control in subdev %s\n",
++			sd->name);
++		return -EINVAL;
 +	}
 +
-+	return NULL;
-+}
-+
- static const struct v4l2_rect rkisp1_sd_min_crop = {
- 	.width = RKISP1_ISP_MIN_WIDTH,
- 	.height = RKISP1_ISP_MIN_HEIGHT,
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 50d31a254b03..c7d5c57607bd 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -26,7 +26,7 @@
- struct dentry;
- 
- /*
-- * flags on the 'direction' field in struct 'rkisp1_isp_mbus_info' that indicate
-+ * flags on the 'direction' field in struct rkisp1_mbus_info' that indicate
-  * on which pad the media bus format is supported
-  */
- #define RKISP1_ISP_SD_SRC			BIT(0)
-@@ -150,8 +150,8 @@ struct rkisp1_isp {
- 	struct v4l2_subdev sd;
- 	struct media_pad pads[RKISP1_ISP_PAD_MAX];
- 	struct v4l2_subdev_pad_config pad_cfg[RKISP1_ISP_PAD_MAX];
--	const struct rkisp1_isp_mbus_info *sink_fmt;
--	const struct rkisp1_isp_mbus_info *src_fmt;
-+	const struct rkisp1_mbus_info *sink_fmt;
-+	const struct rkisp1_mbus_info *src_fmt;
- 	struct mutex ops_lock; /* serialize the subdevice ops */
- 	bool is_dphy_errctrl_disabled;
- 	__u32 frame_sequence;
-@@ -438,8 +438,8 @@ struct rkisp1_device {
- };
- 
- /*
-- * struct rkisp1_isp_mbus_info - ISP media bus info, Translates media bus code to hardware
-- *				 format values
-+ * struct rkisp1_mbus_info - ISP media bus info, Translates media bus code to hardware
-+ *			     format values
-  *
-  * @mbus_code: media bus code
-  * @pixel_enc: pixel encoding
-@@ -449,7 +449,7 @@ struct rkisp1_device {
-  * @bayer_pat: bayer pattern
-  * @direction: a bitmask of the flags indicating on which pad the format is supported on
-  */
--struct rkisp1_isp_mbus_info {
-+struct rkisp1_mbus_info {
- 	u32 mbus_code;
- 	enum v4l2_pixel_encoding pixel_enc;
- 	u32 mipi_dt;
-@@ -481,6 +481,18 @@ static inline u32 rkisp1_read(struct rkisp1_device *rkisp1, unsigned int addr)
- int rkisp1_cap_enum_mbus_codes(struct rkisp1_capture *cap,
- 			       struct v4l2_subdev_mbus_code_enum *code);
- 
-+/*
-+ * rkisp1_mbus_info_length - Return the number of supported mbus codes
-+ */
-+unsigned int rkisp1_mbus_info_length(void);
-+
-+/*
-+ * rkisp1_mbus_info_get_by_index - Retrieve the ith supported mbus info
-+ *
-+ * @index: index of the mbus info to fetch
-+ */
-+const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_index(unsigned int index);
-+
- /*
-  * rkisp1_sd_adjust_crop_rect - adjust a rectangle to fit into another rectangle.
-  *
-@@ -500,11 +512,11 @@ void rkisp1_sd_adjust_crop(struct v4l2_rect *crop,
- 			   const struct v4l2_mbus_framefmt *bounds);
- 
- /*
-- * rkisp1_isp_mbus_info - get the isp info of the media bus code
-+ * rkisp1_mbus_info_get_by_code - get the isp info of the media bus code
-  *
-  * @mbus_code: the media bus code
-  */
--const struct rkisp1_isp_mbus_info *rkisp1_isp_mbus_info_get(u32 mbus_code);
-+const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_code(u32 mbus_code);
- 
- /* rkisp1_params_configure - configure the params when stream starts.
-  *			     This function is called by the isp entity upon stream starts.
+ 	s_asd->sd = sd;
+ 	s_asd->dphy = devm_phy_get(rkisp1->dev, "dphy");
+ 	if (IS_ERR(s_asd->dphy)) {
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index 328e8fec14e9..89577119b571 100644
+index 58cf6d21f1eb..81138c676ac0 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -15,7 +15,6 @@
- #include <linux/videodev2.h>
- #include <linux/vmalloc.h>
+@@ -823,11 +823,6 @@ static int rkisp1_mipi_csi2_start(struct rkisp1_isp *isp,
+ 	struct phy_configure_opts_mipi_dphy *cfg = &opts.mipi_dphy;
+ 	s64 pixel_clock;
  
--#include <media/mipi-csi2.h>
- #include <media/v4l2-event.h>
- 
- #include "rkisp1-common.h"
-@@ -56,144 +55,10 @@
-  * +---------------------------------------------------------+
-  */
- 
--static const struct rkisp1_isp_mbus_info rkisp1_isp_formats[] = {
--	{
--		.mbus_code	= MEDIA_BUS_FMT_YUYV8_2X8,
--		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
--		.direction	= RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_SRGGB10_1X10,
--		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
--		.mipi_dt	= MIPI_CSI2_DT_RAW10,
--		.bayer_pat	= RKISP1_RAW_RGGB,
--		.bus_width	= 10,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
--		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
--		.mipi_dt	= MIPI_CSI2_DT_RAW10,
--		.bayer_pat	= RKISP1_RAW_BGGR,
--		.bus_width	= 10,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_SGBRG10_1X10,
--		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
--		.mipi_dt	= MIPI_CSI2_DT_RAW10,
--		.bayer_pat	= RKISP1_RAW_GBRG,
--		.bus_width	= 10,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
--		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
--		.mipi_dt	= MIPI_CSI2_DT_RAW10,
--		.bayer_pat	= RKISP1_RAW_GRBG,
--		.bus_width	= 10,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_SRGGB12_1X12,
--		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
--		.mipi_dt	= MIPI_CSI2_DT_RAW12,
--		.bayer_pat	= RKISP1_RAW_RGGB,
--		.bus_width	= 12,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_SBGGR12_1X12,
--		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
--		.mipi_dt	= MIPI_CSI2_DT_RAW12,
--		.bayer_pat	= RKISP1_RAW_BGGR,
--		.bus_width	= 12,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_SGBRG12_1X12,
--		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
--		.mipi_dt	= MIPI_CSI2_DT_RAW12,
--		.bayer_pat	= RKISP1_RAW_GBRG,
--		.bus_width	= 12,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_SGRBG12_1X12,
--		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
--		.mipi_dt	= MIPI_CSI2_DT_RAW12,
--		.bayer_pat	= RKISP1_RAW_GRBG,
--		.bus_width	= 12,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_SRGGB8_1X8,
--		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
--		.mipi_dt	= MIPI_CSI2_DT_RAW8,
--		.bayer_pat	= RKISP1_RAW_RGGB,
--		.bus_width	= 8,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_SBGGR8_1X8,
--		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
--		.mipi_dt	= MIPI_CSI2_DT_RAW8,
--		.bayer_pat	= RKISP1_RAW_BGGR,
--		.bus_width	= 8,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_SGBRG8_1X8,
--		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
--		.mipi_dt	= MIPI_CSI2_DT_RAW8,
--		.bayer_pat	= RKISP1_RAW_GBRG,
--		.bus_width	= 8,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_SGRBG8_1X8,
--		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
--		.mipi_dt	= MIPI_CSI2_DT_RAW8,
--		.bayer_pat	= RKISP1_RAW_GRBG,
--		.bus_width	= 8,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_YUYV8_1X16,
--		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
--		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
--		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCBYCR,
--		.bus_width	= 16,
--		.direction	= RKISP1_ISP_SD_SINK,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_YVYU8_1X16,
--		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
--		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
--		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCRYCB,
--		.bus_width	= 16,
--		.direction	= RKISP1_ISP_SD_SINK,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_UYVY8_1X16,
--		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
--		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
--		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CBYCRY,
--		.bus_width	= 16,
--		.direction	= RKISP1_ISP_SD_SINK,
--	}, {
--		.mbus_code	= MEDIA_BUS_FMT_VYUY8_1X16,
--		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
--		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
--		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CRYCBY,
--		.bus_width	= 16,
--		.direction	= RKISP1_ISP_SD_SINK,
--	},
--};
--
- /* ----------------------------------------------------------------------------
-  * Helpers
-  */
- 
--const struct rkisp1_isp_mbus_info *rkisp1_isp_mbus_info_get(u32 mbus_code)
--{
--	unsigned int i;
--
--	for (i = 0; i < ARRAY_SIZE(rkisp1_isp_formats); i++) {
--		const struct rkisp1_isp_mbus_info *fmt = &rkisp1_isp_formats[i];
--
--		if (fmt->mbus_code == mbus_code)
--			return fmt;
+-	if (!sensor->pixel_rate_ctrl) {
+-		dev_warn(rkisp1->dev, "No pixel rate control in sensor subdev\n");
+-		return -EPIPE;
 -	}
 -
--	return NULL;
--}
--
- static struct v4l2_subdev *rkisp1_get_remote_sensor(struct v4l2_subdev *sd)
- {
- 	struct media_pad *local, *remote;
-@@ -275,7 +140,7 @@ static void rkisp1_config_ism(struct rkisp1_device *rkisp1)
- static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
- {
- 	u32 isp_ctrl = 0, irq_mask = 0, acq_mult = 0, signal = 0;
--	const struct rkisp1_isp_mbus_info *src_fmt, *sink_fmt;
-+	const struct rkisp1_mbus_info *src_fmt, *sink_fmt;
- 	struct rkisp1_sensor_async *sensor;
- 	struct v4l2_mbus_framefmt *sink_frm;
- 	struct v4l2_rect *sink_crop;
-@@ -376,7 +241,7 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
- 
- static int rkisp1_config_dvp(struct rkisp1_device *rkisp1)
- {
--	const struct rkisp1_isp_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
-+	const struct rkisp1_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
- 	u32 val, input_sel;
- 
- 	switch (sink_fmt->bus_width) {
-@@ -402,7 +267,7 @@ static int rkisp1_config_dvp(struct rkisp1_device *rkisp1)
- 
- static int rkisp1_config_mipi(struct rkisp1_device *rkisp1)
- {
--	const struct rkisp1_isp_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
-+	const struct rkisp1_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
- 	unsigned int lanes = rkisp1->active_sensor->lanes;
- 	u32 mipi_ctrl;
- 
-@@ -593,11 +458,12 @@ static int rkisp1_isp_enum_mbus_code(struct v4l2_subdev *sd,
- 		return 0;
- 	}
- 
--	if (code->index >= ARRAY_SIZE(rkisp1_isp_formats))
-+	if (code->index >= rkisp1_mbus_info_length())
- 		return -EINVAL;
- 
--	for (i = 0; i < ARRAY_SIZE(rkisp1_isp_formats); i++) {
--		const struct rkisp1_isp_mbus_info *fmt = &rkisp1_isp_formats[i];
-+	for (i = 0; i < rkisp1_mbus_info_length(); i++) {
-+		const struct rkisp1_mbus_info *fmt =
-+			rkisp1_mbus_info_get_by_index(i);
- 
- 		if (fmt->direction & dir)
- 			pos++;
-@@ -619,7 +485,7 @@ static int rkisp1_isp_enum_frame_size(struct v4l2_subdev *sd,
- 				      struct v4l2_subdev_state *sd_state,
- 				      struct v4l2_subdev_frame_size_enum *fse)
- {
--	const struct rkisp1_isp_mbus_info *mbus_info;
-+	const struct rkisp1_mbus_info *mbus_info;
- 
- 	if (fse->pad == RKISP1_ISP_PAD_SINK_PARAMS ||
- 	    fse->pad == RKISP1_ISP_PAD_SOURCE_STATS)
-@@ -628,7 +494,7 @@ static int rkisp1_isp_enum_frame_size(struct v4l2_subdev *sd,
- 	if (fse->index > 0)
- 		return -EINVAL;
- 
--	mbus_info = rkisp1_isp_mbus_info_get(fse->code);
-+	mbus_info = rkisp1_mbus_info_get_by_code(fse->code);
- 	if (!mbus_info)
- 		return -EINVAL;
- 
-@@ -695,7 +561,7 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
- 				   struct v4l2_mbus_framefmt *format,
- 				   unsigned int which)
- {
--	const struct rkisp1_isp_mbus_info *mbus_info;
-+	const struct rkisp1_mbus_info *mbus_info;
- 	struct v4l2_mbus_framefmt *src_fmt;
- 	const struct v4l2_rect *src_crop;
- 
-@@ -705,10 +571,10 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
- 					   RKISP1_ISP_PAD_SOURCE_VIDEO, which);
- 
- 	src_fmt->code = format->code;
--	mbus_info = rkisp1_isp_mbus_info_get(src_fmt->code);
-+	mbus_info = rkisp1_mbus_info_get_by_code(src_fmt->code);
- 	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SRC)) {
- 		src_fmt->code = RKISP1_DEF_SRC_PAD_FMT;
--		mbus_info = rkisp1_isp_mbus_info_get(src_fmt->code);
-+		mbus_info = rkisp1_mbus_info_get_by_code(src_fmt->code);
- 	}
- 	if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
- 		isp->src_fmt = mbus_info;
-@@ -793,7 +659,7 @@ static void rkisp1_isp_set_sink_fmt(struct rkisp1_isp *isp,
- 				    struct v4l2_mbus_framefmt *format,
- 				    unsigned int which)
- {
--	const struct rkisp1_isp_mbus_info *mbus_info;
-+	const struct rkisp1_mbus_info *mbus_info;
- 	struct v4l2_mbus_framefmt *sink_fmt;
- 	struct v4l2_rect *sink_crop;
- 
-@@ -801,10 +667,10 @@ static void rkisp1_isp_set_sink_fmt(struct rkisp1_isp *isp,
- 					  RKISP1_ISP_PAD_SINK_VIDEO,
- 					  which);
- 	sink_fmt->code = format->code;
--	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-+	mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
- 	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SINK)) {
- 		sink_fmt->code = RKISP1_DEF_SINK_PAD_FMT;
--		mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-+		mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
- 	}
- 	if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
- 		isp->sink_fmt = mbus_info;
-@@ -1080,8 +946,8 @@ int rkisp1_isp_register(struct rkisp1_device *rkisp1)
- 	pads[RKISP1_ISP_PAD_SOURCE_VIDEO].flags = MEDIA_PAD_FL_SOURCE;
- 	pads[RKISP1_ISP_PAD_SOURCE_STATS].flags = MEDIA_PAD_FL_SOURCE;
- 
--	isp->sink_fmt = rkisp1_isp_mbus_info_get(RKISP1_DEF_SINK_PAD_FMT);
--	isp->src_fmt = rkisp1_isp_mbus_info_get(RKISP1_DEF_SRC_PAD_FMT);
-+	isp->sink_fmt = rkisp1_mbus_info_get_by_code(RKISP1_DEF_SINK_PAD_FMT);
-+	isp->src_fmt = rkisp1_mbus_info_get_by_code(RKISP1_DEF_SRC_PAD_FMT);
- 
- 	mutex_init(&isp->ops_lock);
- 	ret = media_entity_pads_init(&sd->entity, RKISP1_ISP_PAD_MAX, pads);
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-index 1c07985c810d..f4caa8f684aa 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-@@ -433,14 +433,14 @@ static void rkisp1_rsz_set_src_fmt(struct rkisp1_resizer *rsz,
- 				   struct v4l2_mbus_framefmt *format,
- 				   unsigned int which)
- {
--	const struct rkisp1_isp_mbus_info *sink_mbus_info;
-+	const struct rkisp1_mbus_info *sink_mbus_info;
- 	struct v4l2_mbus_framefmt *src_fmt, *sink_fmt;
- 
- 	sink_fmt = rkisp1_rsz_get_pad_fmt(rsz, sd_state, RKISP1_RSZ_PAD_SINK,
- 					  which);
- 	src_fmt = rkisp1_rsz_get_pad_fmt(rsz, sd_state, RKISP1_RSZ_PAD_SRC,
- 					 which);
--	sink_mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-+	sink_mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
- 
- 	/* for YUV formats, userspace can change the mbus code on the src pad if it is supported */
- 	if (sink_mbus_info->pixel_enc == V4L2_PIXEL_ENC_YUV &&
-@@ -462,7 +462,7 @@ static void rkisp1_rsz_set_sink_crop(struct rkisp1_resizer *rsz,
- 				     struct v4l2_rect *r,
- 				     unsigned int which)
- {
--	const struct rkisp1_isp_mbus_info *mbus_info;
-+	const struct rkisp1_mbus_info *mbus_info;
- 	struct v4l2_mbus_framefmt *sink_fmt;
- 	struct v4l2_rect *sink_crop;
- 
-@@ -473,7 +473,7 @@ static void rkisp1_rsz_set_sink_crop(struct rkisp1_resizer *rsz,
- 					    which);
- 
- 	/* Not crop for MP bayer raw data */
--	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-+	mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
- 
- 	if (rsz->id == RKISP1_MAINPATH &&
- 	    mbus_info->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
-@@ -500,7 +500,7 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
- 				    struct v4l2_mbus_framefmt *format,
- 				    unsigned int which)
- {
--	const struct rkisp1_isp_mbus_info *mbus_info;
-+	const struct rkisp1_mbus_info *mbus_info;
- 	struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
- 	struct v4l2_rect *sink_crop;
- 
-@@ -516,10 +516,10 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
- 	else
- 		sink_fmt->code = format->code;
- 
--	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-+	mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
- 	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SRC)) {
- 		sink_fmt->code = RKISP1_DEF_FMT;
--		mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-+		mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
- 	}
- 	if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
- 		rsz->pixel_enc = mbus_info->pixel_enc;
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-index 7d82356b5345..2795eef91bdd 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-@@ -305,7 +305,7 @@ static void rkisp1_stats_get_bls_meas(struct rkisp1_stats *stats,
- 				      struct rkisp1_stat_buffer *pbuf)
- {
- 	struct rkisp1_device *rkisp1 = stats->rkisp1;
--	const struct rkisp1_isp_mbus_info *in_fmt = rkisp1->isp.sink_fmt;
-+	const struct rkisp1_mbus_info *in_fmt = rkisp1->isp.sink_fmt;
- 	struct rkisp1_cif_isp_bls_meas_val *bls_val;
- 
- 	bls_val = &pbuf->params.ae.bls_val;
+ 	pixel_clock = v4l2_ctrl_g_ctrl_int64(sensor->pixel_rate_ctrl);
+ 	if (!pixel_clock) {
+ 		dev_err(rkisp1->dev, "Invalid pixel rate value\n");
 -- 
 2.30.2
 
