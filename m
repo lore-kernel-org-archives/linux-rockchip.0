@@ -4,58 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F99CCCA47E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 19:12:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CB62CCA47A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 19:12:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zJRLU6EiLNMLNAKTZ8cF9x8lIs0DgiLsSgzXzmDwkkI=; b=q/lNPXOPOToRFk
-	G9wZw4C3waLCmG6P3f1lRM4qPn8BN9cK3JZ5osaKHXZpAMVuba54sy4t/53zBPqOGNc+VYWrs9Hdu
-	iKa6a2Y9arz6IQQYlbvV3IjsO9jwbcvNrx2GZhVbT5rSY0OwNtQL1OcOTsdFRizcZzVEC/c1iYDG2
-	XDfX0qqYlYg1u04p5F8tT/VvRIehiaBvxblDWaFEJpR1051M1SXoMOlpnoDZqA1tTcKx6axomrEMU
-	x4xmYDIBuC3IoUBr/iGPF8Sfsr55kdigLcFpMb/bX45aVCgmsxvW9Q53nM35MZhcxVMsIFyTzA1mU
-	le6XcNro//KKBsSP4J5A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Ljbkp8txWKuxkRlkgkhw+WyOZhZxtvxS2uFox0YSOJI=; b=JR72kg+02NXb5G
+	ZrGoLKXyxTEIGw9GuhcErf3ykGSrqyDgHSafCBucWapUgDK1FhXIya3kubo63oxd6ch68rwDqbMyn
+	KDTw++9lPTuhyVvNQdWamc5kqcxpmSen5c6wfiq4NWFUAz0j7e27yj8wbheQwszXk0r5gGIn0YsEZ
+	7fRv4UnH2vBmkyhQz71uESg4o3EGXdN8uLYX4IN+yY1yrKAOgBvooi0J1nTLL+yuIaEurw77ZrcLs
+	QMW30yEgWknaPxb/4320aiFvcJUbkOdqRwTt/4lutz75fabK257dinzImV4GqdfTe7aayG2CvVntr
+	KsKO1tWDL1pQwIAvq0Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1BxL-00At7S-IG; Tue, 14 Jun 2022 19:12:03 +0000
+	id 1o1BxJ-00At6L-5d; Tue, 14 Jun 2022 19:12:01 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1BxE-00At4l-MT
-	for linux-rockchip@lists.infradead.org; Tue, 14 Jun 2022 19:12:00 +0000
+	id 1o1BxD-00At4C-NY
+	for linux-rockchip@lists.infradead.org; Tue, 14 Jun 2022 19:11:59 +0000
 Received: from pyrite.rasen.tech (softbank036240126034.bbtec.net [36.240.126.34])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 99047D96;
-	Tue, 14 Jun 2022 21:11:51 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C536A825;
+	Tue, 14 Jun 2022 21:11:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1655233915;
-	bh=8Hn75V1y68nA6PNjFyCUT/vHLq089MhAP7Ng3rcz9GA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=v+LNyxOyTQmXenvtvb6txcxZWdDiv0RfDhvaULhowwRffUDMMZbLaP1MNczsJsPY0
-	 dIU+pspfCe3x4vPN0tGCvLQjtMfoE6Fh/ypHPsUXE+ea6fDcYSkyCtm5JhzdSEMgSO
-	 RgyxBMIdHymU9qw/ODDi6qtn6cwMTO7qXWBh6N3w=
+	s=mail; t=1655233906;
+	bh=POQJwgYWm/OjgPbqYJOxvoM/PSkiBCRnOT4Lwh/HHu0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=TUv2Mcxd2gX3QNOg9IlpPeEa/P0Ye/+YmfJM83mzh1Xsjt9dJ75mrpVG49J8iFODG
+	 Wsb4OQBC7biyVBL720Oznu6908Wv+gX2aswUW5J3CNUc9G4wmCmaYgcz8ECaOzNWn3
+	 KE9StINUmf6vp/oZrc8a1qarknE2YSjdjurC29mQ=
 From: Paul Elder <paul.elder@ideasonboard.com>
 To: linux-media@vger.kernel.org
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+Cc: Paul Elder <paul.elder@ideasonboard.com>,
 	dafna@fastmail.com,
 	heiko@sntech.de,
+	laurent.pinchart@ideasonboard.com,
 	jeanmichel.hautbois@ideasonboard.com,
 	jacopo@jmondi.org,
 	djrscally@gmail.com,
 	helen.koike@collabora.com,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 02/55] media: rkisp1: Enable compilation on ARCH_MXC
-Date: Wed, 15 Jun 2022 04:10:34 +0900
-Message-Id: <20220614191127.3420492-3-paul.elder@ideasonboard.com>
+Subject: [PATCH 00/55] media: rkisp1: Cleanups and add support for i.MX8MP
+Date: Wed, 15 Jun 2022 04:10:32 +0900
+Message-Id: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
-References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_121156_919583_AFC7549C 
-X-CRM114-Status: UNSURE (   9.27  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220614_121155_962804_1888E1A2 
+X-CRM114-Status: GOOD (  12.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,30 +70,114 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Hello,
 
-The ISP used by the Rockchip RK3399 is also found in the NXP i.MX8MP.
-Enable compilation of the driver for the MXC architecture in addition to
-ARCH_ROCKCHIP.
+This series depends on v4 of "media: rkisp1: Misc bug fixes and cleanups" [1].
 
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
----
- drivers/media/platform/rockchip/rkisp1/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+The ISP integrated in the i.MX8MP is nearly the same as the rkisp1, and
+so we can reuse the rkisp1 driver for it.
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/Kconfig b/drivers/media/platform/rockchip/rkisp1/Kconfig
-index dabd7e42c193..731c9acbf6ef 100644
---- a/drivers/media/platform/rockchip/rkisp1/Kconfig
-+++ b/drivers/media/platform/rockchip/rkisp1/Kconfig
-@@ -3,7 +3,7 @@ config VIDEO_ROCKCHIP_ISP1
- 	tristate "Rockchip Image Signal Processing v1 Unit driver"
- 	depends on V4L_PLATFORM_DRIVERS
- 	depends on VIDEO_DEV && OF
--	depends on ARCH_ROCKCHIP || COMPILE_TEST
-+	depends on ARCH_ROCKCHIP || ARCH_MXC || COMPILE_TEST
- 	select MEDIA_CONTROLLER
- 	select VIDEO_V4L2_SUBDEV_API
- 	select VIDEOBUF2_DMA_CONTIG
+This series does some cleanup and refactoring of the rkisp1 driver,
+(patches 1/55 to 46/55), and then adds support for the i.MX8MP (patches
+47/55 to 55/55).
+
+
+Paul
+
+[1] https://lore.kernel.org/linux-media/Ymbxs2p9Tuf331qM@pendragon.ideasonboard.com/T/
+
+Laurent Pinchart (38):
+  media: rkisp1: Enable compilation on ARCH_MXC
+  media: rkisp1: Disable runtime PM in probe error path
+  media: rkisp1: Read the ID register at probe time instead of streamon
+  media: rkisp1: Rename rkisp1_match_data to rkisp1_info
+  media: rkisp1: Access ISP version from info pointer
+  media: rkisp1: cap: Print debug message on failed link validation
+  media: rkisp1: Move sensor .s_stream() call to ISP
+  media: rkisp1: Reject sensors without pixel rate control at bound time
+  media: rkisp1: Create link from sensor to ISP at notifier bound time
+  media: rkisp1: Create internal links at probe time
+  media: rkisp1: Rename rkisp1_subdev_notifier() to
+    rkisp1_subdev_notifier_register()
+  media: v4l2-async: Add notifier operation to destroy asd instances
+  media: rkisp1: Fix sensor source pad retrieval at bound time
+  media: rkisp1: isp: Start CSI-2 receiver before ISP
+  media: rkisp1: csi: Handle CSI-2 RX configuration fully in
+    rkisp1-csi.c
+  media: rkisp1: csi: Rename CSI functions with a common rkisp1_csi
+    prefix
+  media: rkisp1: csi: Move start delay to rkisp1_csi_start()
+  media: rkisp1: csi: Pass sensor pointer to rkisp1_csi_config()
+  media: rkisp1: csi: Constify argument to rkisp1_csi_start()
+  media: rkisp1: isp: Don't initialize ret to 0 in rkisp1_isp_s_stream()
+  media: rkisp1: isp: Pass mbus type and flags to rkisp1_config_cif()
+  media: rkisp1: isp: Rename rkisp1_device.active_sensor to source
+  media: rkisp1: isp: Add container_of wrapper to cast subdev to
+    rkisp1_isp
+  media: rkisp1: isp: Add rkisp1_device backpointer to rkisp1_isp
+  media: rkisp1: isp: Pass rkisp1_isp pointer to internal ISP functions
+  media: rkisp1: isp: Move input configuration to rkisp1_config_isp()
+  media: rkisp1: isp: Merge ISP_ACQ_PROP configuration in single
+    variable
+  media: rkisp1: isp: Initialize some variables at declaration time
+  media: rkisp1: isp: Fix whitespace issues
+  media: rkisp1: isp: Constify various local variables
+  media: rkisp1: isp: Rename rkisp1_get_remote_source()
+  media: mc-entity: Add a new helper function to get a remote pad
+  media: mc-entity: Add a new helper function to get a remote pad for a
+    pad
+  media: rkisp1: isp: Disallow multiple active sources
+  media: rkisp1: csi: Plumb the CSI RX subdev
+  media: rkisp1: Add infrastructure to support ISP features
+  media: rkisp1: Make the internal CSI-2 receiver optional
+  media: rkisp1: Configure gasket on i.MX8MP
+
+Paul Elder (17):
+  media: rkisp1: debug: Add dump file in debugfs for MI buffer registers
+  media: rkisp1: debug: Add debugfs files to monitor MI and ISP
+    interrupts
+  media: rkisp1: Save info pointer in rkisp1_device
+  media: rkisp1: Make rkisp1_isp_mbus_info common
+  media: rkisp1: Split CSI handling to separate file
+  media: rkisp1: csi: Implement a V4L2 subdev for the CSI receiver
+  media: rkisp1: Use fwnode_graph_for_each_endpoint
+  dt-bindings: media: rkisp1: Add port for parallel interface
+  media: rkisp1: Support the ISP parallel input
+  dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
+  media: rkisp1: Add match data for i.MX8MP ISP
+  media: rkisp1: Add and set registers for crop for i.MX8MP
+  media: rkisp1: Add and set registers for output size config on i.MX8MP
+  media: rkisp1: Add i.MX8MP-specific registers for MI and resizer
+  media: rkisp1: Shift DMA buffer addresses on i.MX8MP
+  media: rkisp1: Add register definitions for the test pattern generator
+  media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP
+
+ .../bindings/media/rockchip-isp1.yaml         |  30 +-
+ Documentation/driver-api/media/mc-core.rst    |   4 +-
+ .../driver-api/media/v4l2-subdev.rst          |   6 +
+ drivers/media/mc/mc-entity.c                  |  69 ++
+ .../media/platform/rockchip/rkisp1/Kconfig    |   2 +-
+ .../media/platform/rockchip/rkisp1/Makefile   |   1 +
+ .../platform/rockchip/rkisp1/rkisp1-capture.c |  49 +-
+ .../platform/rockchip/rkisp1/rkisp1-common.c  | 148 ++++
+ .../platform/rockchip/rkisp1/rkisp1-common.h  | 130 +++-
+ .../platform/rockchip/rkisp1/rkisp1-csi.c     | 525 ++++++++++++++
+ .../platform/rockchip/rkisp1/rkisp1-csi.h     |  28 +
+ .../platform/rockchip/rkisp1/rkisp1-debug.c   |  55 +-
+ .../platform/rockchip/rkisp1/rkisp1-dev.c     | 440 +++++++-----
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     | 679 +++++++-----------
+ .../platform/rockchip/rkisp1/rkisp1-params.c  |   2 +-
+ .../platform/rockchip/rkisp1/rkisp1-regs.h    |  87 +++
+ .../platform/rockchip/rkisp1/rkisp1-resizer.c |  43 +-
+ .../platform/rockchip/rkisp1/rkisp1-stats.c   |   4 +-
+ drivers/media/v4l2-core/v4l2-async.c          |  10 +
+ include/media/media-entity.h                  |  63 ++
+ include/media/v4l2-async.h                    |   2 +
+ include/uapi/linux/rkisp1-config.h            |   3 +
+ 22 files changed, 1735 insertions(+), 645 deletions(-)
+ create mode 100644 drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+ create mode 100644 drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
+
 -- 
 2.30.2
 
