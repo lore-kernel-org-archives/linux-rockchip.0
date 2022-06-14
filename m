@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48FB0C43334
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 08:49:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D7A5C43334
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 08:52:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UkQSRtKVLZVAlL/NBrvikIqpXnIVxvM4XXyV/3guDGA=; b=oLECKbxDK5D/9B
-	B4SNPFMFCX8y+qC5nTHYkO+bUzDnOv6S6x8GGYguoTtoFAcvEF5URbOGQ2W7wzZUmhKOjBZC1/ZJb
-	5l9R9EldvN6XYymFRDmz/G9WbItE1UoCcnCLu0bfCkOPfb8XQVZMxfQmvXZSWODfksuh00blL53wS
-	wWrrcIJwJkF3vfha4yBkDQi94FU6mpgSnAa1sZKxyaw+xdSIjaBNEZn0THW8tJnKQtqB0ZPX3HunT
-	Jqk04lgds+PyGBNJ5w1hL/XIR/Li2GPVZoWq8ghLXsy7NpRbwCAfydP+z0m27GqWfIGgDEz70XrwB
-	weN+TOBaDTjhifm/lmqQ==;
+	List-Owner; bh=5amwhvG7FHRvkDzOemSP8PYMM3NLDro8otDD12A2LlQ=; b=s8tVfmxX1fT3T4
+	qRTX0ltNw66jAy3+3YbNADmxCBJr8NzuSQSjoXO3EyMhMefNv2RMzyVjp0HYPfYPg9UhKKRU873mt
+	rvCPpxqy/kSxVWJp2CeIDtOcY/ck+yH4d6cC2OsgjpDe+rcHkeoJQCfPgYrccIJr/Bt+X3qtHP0Jr
+	AggEaH2bEO5X49oZ/O2DkcnkhFnEMwK3G62btoQKJsL4ocF1/M3zh4shtjwXlUMwbLrnNrMo8ecM8
+	jeCql5W6rqEbfCruBSK082gKCJM+utZG7UId4L4N4kTH5lqSf5I0H5WF9g3zkU9B53LJqf+LCzHhp
+	yCGUvR/sWMouLhGFqpaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o12Et-008OoK-DN; Tue, 14 Jun 2022 08:49:31 +0000
+	id 1o12Hd-008QDs-RF; Tue, 14 Jun 2022 08:52:21 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o122p-008ICF-E2; Tue, 14 Jun 2022 08:37:03 +0000
+	id 1o122p-008IFc-Qa; Tue, 14 Jun 2022 08:37:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=bTxTqzWr35iqAL6lxjfkVF4oBweh3rmMe3tvBYqKpcM=; b=Zt/DGNt5UlNGxPLYJ4TReIVfmF
-	LYh2/o+Mn1DBtNuccMpaCVcOucYDTIy2TThiV1nwL2foo0sbeiXdomgJL/TlXJHpkUJsjWhfODliv
-	GrPXy9kfTjl0TPmnZHV21Cuwpe2Y2g9jb6fKwqQSpY4xnBNtQ/SW0FCDTWWfYGyjGUobfOy9Z/NEJ
-	DHy+QCNwToe4JTieFBulsg+NMW1awR0YrKo5cNkemsHZsgXS6eVlVAgQE3rdp34TRZEUt25Y3eQFM
-	eNaJib159rKwp2OwI15JysLxBrd/RoOc/lAZ6tnbZpvdGrWEr484TO63qvBvKjrFfQfFrfI/G8J97
-	lgH4Lt7g==;
+	bh=htd5ltcZRGJmHFFbul6GsbrR2PI7QmchDT638WGXOEg=; b=MHFNPDBm6fEdIHFUiT3Mb2WEKi
+	rfK8h9puGphTyYej0GVxA/kWUBoe7rtc+kNHBVLeNuWNVy/mYQJGi2xXG4YMjZJcORzzodf6TgshU
+	JwKqYGUSaZswjRIDm/Q6QsmCMNR5ar2rsrjV+I9FVxoDAGs76jPcVmPdZvsviGjcVbs+c1pCByQgU
+	bFyfdYxGrztAIRxH4QWxwTiO3Xhq+nZ86Dqxnnzl583PAmcbdEv6k4tN0KGOb5ofatlzNP17kfH5H
+	vZECuWFl8wUSVmMXVLaz6MhI1IbCKgzK7017xjdUUKtIRe+1zDREYL7CdI6jtMA4OyZ+ASlSvoVpm
+	8Tkamrow==;
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o11JT-007nUS-48; Tue, 14 Jun 2022 07:50:15 +0000
+	id 1o11JT-007nUI-40; Tue, 14 Jun 2022 07:50:15 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4a7b:8d3a:acaa:ec46])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id CA60B66016F4;
-	Tue, 14 Jun 2022 08:50:04 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id BF2A066016DF;
+	Tue, 14 Jun 2022 08:50:02 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655193005;
-	bh=VxFUVU598sPR+2ba2pJaipyY91RQ+APtAi220RV7Y1c=;
+	s=mail; t=1655193003;
+	bh=ftNAvCRvK+AQGEske0ptTAtK3LtSx8QeJyl1icndO24=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=FkuS3nIFZX9ocPtMRzMPjnE9YHcNtcFkj3vdX+Nnzk7BQNpw0VeppXwauFBJwaHyP
-	 y5zkglAkNIr7P7w6EQqlLX9xFSZud4DY1GJlVU7of25cPSvi1/N68AYrwMTxDBjIY8
-	 pObVvBWfVCChArkVriZfkc6prUsJhmW4x5hxuBOPMD7LswFRr/WBe4f6NUQFfG8Dqq
-	 FxwCpVWrETiqQ2sHCIN9sFxek1WIIdSvszrmoJ+sjDVadj2hDrJNp6fZm/FI46/n57
-	 P/C7aNkq27fEer1dA3UmuTtuz22wre9u2WSNt7uowKROznOqOvxijKUsBly87G7YBx
-	 LDBEXsHeBMp2A==
+	b=jc8ZVdrmR1GWgBRmZHbgE3DYdRdyKq7cJJuYQa51B4PsZwEqRmWjtvFr9/HKFimF3
+	 jxK3/CtIpnuYIAjwoh5y3J6gtLWuB7CTSv8aVRXUNXVNTuq28pWFuR9cn2MOtBvAhY
+	 /poZHUuY7hbp+kw4PAN0qXKoEq2XEJJKWJ+HJIiiFdXCB8I7R3fDzP8HBeQw2hyw0F
+	 awim8H1ZScfp5Gfg5ilJ5Ox+MUUV5Ok4pOmqvnaqYKfZtQHVWwdFqMN2z1JQapUQhP
+	 YqYdCSYPj40sp1E81uLwoAAJVQ59oe6gyQH0oqbENlV0q8bLLpShZUcjJkWjnTt5IB
+	 jxXYfzEipuShA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -75,16 +75,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v7 14/17] media: hantro: Stop using Hantro dedicated control
-Date: Tue, 14 Jun 2022 09:49:44 +0200
-Message-Id: <20220614074947.160316-15-benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 11/17] media: uapi: Add V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
+Date: Tue, 14 Jun 2022 09:49:41 +0200
+Message-Id: <20220614074947.160316-12-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220614074947.160316-1-benjamin.gaignard@collabora.com>
 References: <20220614074947.160316-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_085011_860514_96FAB534 
-X-CRM114-Status: GOOD (  19.55  )
+X-CRM114-CacheID: sfid-20220614_085011_857484_7191EDDF 
+X-CRM114-Status: GOOD (  14.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,180 +101,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The number of bits to skip in the slice header can be computed
-in the driver by using sps, pps and decode_params information.
-This allow to remove Hantro dedicated control.
+The number of 'entry point offset' can be very variable.
+Instead of using a large static array define a v4l2 dynamic array
+of U32 (V4L2_CTRL_TYPE_U32).
+The number of entry point offsets is reported by the elems field
+and in struct v4l2_ctrl_hevc_slice_params.num_entry_point_offsets
+field.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/staging/media/hantro/hantro_drv.c     | 36 -----------
- .../staging/media/hantro/hantro_g2_hevc_dec.c | 62 ++++++++++++++++++-
- include/media/hevc-ctrls.h                    | 13 ----
- 3 files changed, 61 insertions(+), 50 deletions(-)
+ .../userspace-api/media/v4l/ext-ctrls-codec.rst       | 11 +++++++++++
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c             |  5 +++++
+ include/media/hevc-ctrls.h                            |  5 ++++-
+ 3 files changed, 20 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index b38d9b3ab2ed..377dcc1d19de 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -304,26 +304,6 @@ static int hantro_jpeg_s_ctrl(struct v4l2_ctrl *ctrl)
- 	return 0;
- }
+diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+index 0796b1563daa..05228e280f66 100644
+--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
++++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+@@ -3010,6 +3010,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     * - __u32
+       - ``data_bit_offset``
+       - Offset (in bits) to the video data in the current slice data.
++    * - __u32
++      - ``num_entry_point_offsets``
++      - Specifies the number of entry point offset syntax elements in the slice header.
+     * - __u8
+       - ``nal_unit_type``
+       - Specifies the coding type of the slice (B, P or I).
+@@ -3150,6 +3153,14 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
  
--static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
--{
--	struct hantro_ctx *ctx;
--
--	ctx = container_of(ctrl->handler,
--			   struct hantro_ctx, ctrl_handler);
--
--	vpu_debug(1, "s_ctrl: id = %d, val = %d\n", ctrl->id, ctrl->val);
--
--	switch (ctrl->id) {
--	case V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP:
--		ctx->hevc_dec.ctrls.hevc_hdr_skip_length = ctrl->val;
--		break;
--	default:
--		return -EINVAL;
--	}
--
--	return 0;
--}
--
- static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
- 	.try_ctrl = hantro_try_ctrl,
- };
-@@ -332,10 +312,6 @@ static const struct v4l2_ctrl_ops hantro_jpeg_ctrl_ops = {
- 	.s_ctrl = hantro_jpeg_s_ctrl,
- };
+     \normalsize
  
--static const struct v4l2_ctrl_ops hantro_hevc_ctrl_ops = {
--	.s_ctrl = hantro_hevc_s_ctrl,
--};
--
- #define HANTRO_JPEG_ACTIVE_MARKERS	(V4L2_JPEG_ACTIVE_MARKER_APP0 | \
- 					 V4L2_JPEG_ACTIVE_MARKER_COM | \
- 					 V4L2_JPEG_ACTIVE_MARKER_DQT | \
-@@ -487,18 +463,6 @@ static const struct hantro_ctrl controls[] = {
- 		.cfg = {
- 			.id = V4L2_CID_STATELESS_HEVC_SCALING_MATRIX,
- 		},
--	}, {
--		.codec = HANTRO_HEVC_DECODER,
--		.cfg = {
--			.id = V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP,
--			.name = "Hantro HEVC slice header skip bytes",
--			.type = V4L2_CTRL_TYPE_INTEGER,
--			.min = 0,
--			.def = 0,
--			.max = 0x100,
--			.step = 1,
--			.ops = &hantro_hevc_ctrl_ops,
--		},
- 	}, {
- 		.codec = HANTRO_VP9_DECODER,
- 		.cfg = {
-diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-index d28653d04d20..3be8d6e60bf0 100644
---- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-+++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-@@ -117,6 +117,66 @@ static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
- 		vpu_debug(1, "%s: no chroma!\n", __func__);
- }
++``V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (integer)``
++    Specifies entry point offsets in bytes.
++    This control is a dynamically sized array. The number of entry point
++    offsets is reported by the ``elems`` field.
++    This bitstream parameter is defined according to :ref:`hevc`.
++    They are described in section 7.4.7.1 "General slice segment header
++    semantics" of the specification.
++
+ ``V4L2_CID_STATELESS_HEVC_SCALING_MATRIX (struct)``
+     Specifies the HEVC scaling matrix parameters used for the scaling process
+     for transform coefficients.
+diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+index d594efbcbb93..e22921e7ea61 100644
+--- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
++++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
+@@ -1188,6 +1188,7 @@ const char *v4l2_ctrl_get_name(u32 id)
+ 	case V4L2_CID_STATELESS_HEVC_DECODE_PARAMS:		return "HEVC Decode Parameters";
+ 	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
+ 	case V4L2_CID_STATELESS_HEVC_START_CODE:		return "HEVC Start Code";
++	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:	return "HEVC Entry Point Offsets";
  
-+static unsigned int ceil_log2(unsigned int v)
-+{
-+	/* Compute Ceil(Log2(v))
-+	 * Derived from branchless code for integer log2(v) from:
-+	 * <http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog>
-+	 */
-+	unsigned int r, shift;
-+
-+	v--;
-+	r = (v > 0xFFFF) << 4;
-+	v >>= r;
-+	shift = (v > 0xFF) << 3;
-+	v >>= shift;
-+	r |= shift;
-+	shift = (v > 0xF) << 2;
-+	v >>= shift;
-+	r |= shift;
-+	shift = (v > 0x3) << 1;
-+	v >>= shift;
-+	r |= shift;
-+	r |= (v >> 1);
-+
-+	return r + 1;
-+}
-+
-+static int compute_header_skip_lenght(struct hantro_ctx *ctx)
-+{
-+	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
-+	const struct v4l2_ctrl_hevc_decode_params *decode_params = ctrls->decode_params;
-+	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
-+	const struct v4l2_ctrl_hevc_pps *pps = ctrls->pps;
-+	int skip = 0;
-+
-+	if (pps->flags & V4L2_HEVC_PPS_FLAG_OUTPUT_FLAG_PRESENT)
-+		/* size of pic_output_flag */
-+		skip++;
-+
-+	if (sps->flags & V4L2_HEVC_SPS_FLAG_SEPARATE_COLOUR_PLANE)
-+		/* size of pic_order_cnt_lsb */
-+		skip += 2;
-+
-+	if (!(decode_params->flags & V4L2_HEVC_DECODE_PARAM_FLAG_IDR_PIC)) {
-+		/* size of pic_order_cnt_lsb */
-+		skip += sps->log2_max_pic_order_cnt_lsb_minus4 + 4;
-+
-+		/* size of short_term_ref_pic_set_sps_flag */
-+		skip++;
-+
-+		if (decode_params->short_term_ref_pic_set_size)
-+			/* size of st_ref_pic_set( num_short_term_ref_pic_sets ) */
-+			skip += decode_params->short_term_ref_pic_set_size;
-+		else if (sps->num_short_term_ref_pic_sets > 1)
-+			skip += ceil_log2(sps->num_short_term_ref_pic_sets);
-+
-+		skip += decode_params->long_term_ref_pic_set_size;
-+	}
-+
-+	return skip;
-+}
-+
- static void set_params(struct hantro_ctx *ctx)
- {
- 	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
-@@ -134,7 +194,7 @@ static void set_params(struct hantro_ctx *ctx)
- 
- 	hantro_reg_write(vpu, &g2_output_8_bits, 0);
- 
--	hantro_reg_write(vpu, &g2_hdr_skip_length, ctrls->hevc_hdr_skip_length);
-+	hantro_reg_write(vpu, &g2_hdr_skip_length, compute_header_skip_lenght(ctx));
- 
- 	min_log2_cb_size = sps->log2_min_luma_coding_block_size_minus3 + 3;
- 	max_log2_ctb_size = min_log2_cb_size + sps->log2_diff_max_min_luma_coding_block_size;
+ 	/* Colorimetry controls */
+ 	/* Keep the order of the 'case's the same as in v4l2-controls.h! */
+@@ -1518,6 +1519,10 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
+ 	case V4L2_CID_STATELESS_HEVC_DECODE_PARAMS:
+ 		*type = V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS;
+ 		break;
++	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:
++		*type = V4L2_CTRL_TYPE_U32;
++		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
++		break;
+ 	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:
+ 		*type = V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR;
+ 		break;
 diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-index d6cb3779d190..efc0412ac41e 100644
+index a3c829ef531a..1319cb99ae3f 100644
 --- a/include/media/hevc-ctrls.h
 +++ b/include/media/hevc-ctrls.h
-@@ -467,17 +467,4 @@ struct v4l2_ctrl_hevc_scaling_matrix {
- 	__u8	scaling_list_dc_coef_32x32[2];
- };
+@@ -20,6 +20,7 @@
+ #define V4L2_CID_STATELESS_HEVC_DECODE_PARAMS	(V4L2_CID_CODEC_BASE + 1012)
+ #define V4L2_CID_STATELESS_HEVC_DECODE_MODE	(V4L2_CID_CODEC_BASE + 1015)
+ #define V4L2_CID_STATELESS_HEVC_START_CODE	(V4L2_CID_CODEC_BASE + 1016)
++#define V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (V4L2_CID_CODEC_BASE + 1017)
  
--/*  MPEG-class control IDs specific to the Hantro driver as defined by V4L2 */
--#define V4L2_CID_CODEC_HANTRO_BASE				(V4L2_CTRL_CLASS_CODEC | 0x1200)
--/*
-- * V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP -
-- * the number of data (in bits) to skip in the
-- * slice segment header.
-- * If non-IDR, the bits to be skipped go from syntax element "pic_output_flag"
-- * to before syntax element "slice_temporal_mvp_enabled_flag".
-- * If IDR, the skipped bits are just "pic_output_flag"
-- * (separate_colour_plane_flag is not supported).
-- */
--#define V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP	(V4L2_CID_CODEC_HANTRO_BASE + 0)
+ /* enum v4l2_ctrl_type type values */
+ #define V4L2_CTRL_TYPE_HEVC_SPS 0x0120
+@@ -318,6 +319,8 @@ struct v4l2_hevc_pred_weight_table {
+  *
+  * @bit_size: size (in bits) of the current slice data
+  * @data_bit_offset: offset (in bits) to the video data in the current slice data
++ * @num_entry_point_offsets: specifies the number of entry point offset syntax
++ *			     elements in the slice header.
+  * @nal_unit_type: specifies the coding type of the slice (B, P or I)
+  * @nuh_temporal_id_plus1: minus 1 specifies a temporal identifier for the NAL unit
+  * @slice_type: see V4L2_HEVC_SLICE_TYPE_{}
+@@ -360,7 +363,7 @@ struct v4l2_hevc_pred_weight_table {
+ struct v4l2_ctrl_hevc_slice_params {
+ 	__u32	bit_size;
+ 	__u32	data_bit_offset;
 -
- #endif
++	__u32	num_entry_point_offsets;
+ 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: NAL unit header */
+ 	__u8	nal_unit_type;
+ 	__u8	nuh_temporal_id_plus1;
 -- 
 2.32.0
 
