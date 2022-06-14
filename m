@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D320CCCA47A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 19:15:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 354ACC43334
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 19:15:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2Vwwy6ghNZvpddd5xuz1V2arR+z28j+WT8FhtpQIneU=; b=tc6O+0K+NS147s
-	jshrtp+FDWCwJYOaOATwAAN31171/WkB7PPCaVkvBnMhiStQ3Q3PnP1Ad6D6IdoYHNWnen1qIN36D
-	LJee30Maiap3upzGYrmrSq2kz41TyP09r2SSLzvjN25rcffdQTvTg6asVKzyXVtuGLOtqoDYSX/SD
-	VFWcCxz+8gYwkjanA+QkOhgesd0x2cjXpVVPNenYXKoN0swiYz9299lPNjjgvqW8aZZZhoxprRn7Q
-	nOSGmZDJAflshbLnqq+2ppQ/RZs24bi2/wd4vLdE1cu3YnMJfpJIPAZKyvUjS2dk02EvmQexaGVr5
-	ydYwD6BPM2MAAiRXLuFw==;
+	List-Owner; bh=i8Fjc3N87oTkSbORaap+4flbtMymPxhD9HJtZviRoOE=; b=S13ecy6bYFPUhL
+	NRTmelkdBllcdyE+dJ/T0RqapDsTkYIRGF72wvnj6hwpc+rQ6noZsw+GdhnbwgaqI0gG7Gc4b0pEb
+	j9yDul1urgcOE+dq8uMTvmRXdEXid8a/JL3DCkD1g+LHil/8lEy7RsC2bY2gZoZVCi4Bq1Rl0MlYe
+	hcOzbC5UYgHBm0tVObBRgwBZ6K/FI8dMyKnAVd0LmIG1GqqQqENpapn2eQThBvyB6PPvIuBK6ToD2
+	HVezg49UaUKtUxGiTrvaiBYW1+vPyPDPWB3is1dIdT1pjt5c1il1dPO+iRvGmVDi9y28CsgLVBF57
+	BqUGECKyZ4ihNHQDy/Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1C0f-00Avtm-Hk; Tue, 14 Jun 2022 19:15:29 +0000
+	id 1o1C0k-00Avxc-K0; Tue, 14 Jun 2022 19:15:34 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1C0c-00Avr2-DG
-	for linux-rockchip@lists.infradead.org; Tue, 14 Jun 2022 19:15:28 +0000
+	id 1o1C0g-00Avtt-K9
+	for linux-rockchip@lists.infradead.org; Tue, 14 Jun 2022 19:15:33 +0000
 Received: from pyrite.rasen.tech (softbank036240126034.bbtec.net [36.240.126.34])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 376DB825;
-	Tue, 14 Jun 2022 21:15:20 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id AB80B9E5;
+	Tue, 14 Jun 2022 21:15:25 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1655234125;
-	bh=4KxktOBIz+UgpeD0pYr7qe9l+jhMzIbCTkVwvpMlX0U=;
+	s=mail; t=1655234129;
+	bh=InAoFYTpv2IR4VgCX+XR+7V60n9zC0NurDrDkBszFNs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=r4KrlLcYemeWMfX3JG4vwOgsPU1NQtQxCg2A2e6XTJTHcdj+S9Gy5kzXV8B4WYzZA
-	 ZeuxWGw3b/S4IgexsLdVKgNtiusC6Os/p3pbEUpjg35uNL/+IK7B/4WtJcDDw45IWc
-	 /OXwAuiF8rV8bq+4Y+NtWRy2vxpt/8c6DTEXNapo=
+	b=To9UAGv4xtLOhYvgXaRz7LOmW0tGgm6kTycU3gdOZcGC2TAdkdGU5Q8608V1CX+xI
+	 nA4SderMP4y2DBrYW5HdmKImKeki2PSxsFfk0EJ+KK8+XBkVd0wvR66FIo0qZtOU8j
+	 1cqmXh+2omD5UNRSRp58ZSVCpfFuE/uJkVpG/9NQ=
 From: Paul Elder <paul.elder@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: Paul Elder <paul.elder@ideasonboard.com>,
@@ -46,16 +46,17 @@ Cc: Paul Elder <paul.elder@ideasonboard.com>,
 	djrscally@gmail.com,
 	helen.koike@collabora.com,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 53/55] media: rkisp1: Shift DMA buffer addresses on i.MX8MP
-Date: Wed, 15 Jun 2022 04:11:25 +0900
-Message-Id: <20220614191127.3420492-54-paul.elder@ideasonboard.com>
+Subject: [PATCH 54/55] media: rkisp1: Add register definitions for the test pattern generator
+Date: Wed, 15 Jun 2022 04:11:26 +0900
+Message-Id: <20220614191127.3420492-55-paul.elder@ideasonboard.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
 References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_121526_619882_6F6F1398 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20220614_121530_851767_64107EDE 
+X-CRM114-Status: UNSURE (   5.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,103 +73,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On the ISP that is integrated in the i.MX8MP, the DMA base addresses are
-encoded in 34-bit. Shift them to the left by 2 bits so that they can be
-contained in 32 bits.
+Add register definitions and value macros for the test pattern generator
+block in the ISP.
 
 Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-capture.c | 19 +++++++++++--------
- .../platform/rockchip/rkisp1/rkisp1-common.h  |  1 +
- .../platform/rockchip/rkisp1/rkisp1-dev.c     |  3 ++-
- 3 files changed, 14 insertions(+), 9 deletions(-)
+ .../platform/rockchip/rkisp1/rkisp1-regs.h    | 32 +++++++++++++++++++
+ 1 file changed, 32 insertions(+)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index 35cec263c563..234b1f8488cb 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -624,6 +624,9 @@ static void rkisp1_dummy_buf_destroy(struct rkisp1_capture *cap)
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+index dd63ae13e603..34f4fe09c88d 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+@@ -717,6 +717,27 @@
+ #define RKISP1_CIF_ISP_DPF_SPATIAL_COEFF_MAX		0x1F
+ #define RKISP1_CIF_ISP_DPF_NLL_COEFF_N_MAX		0x3FF
  
- static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
- {
-+	u8 shift = cap->rkisp1->info->features & RKISP1_FEATURE_DMA_34BIT ?
-+		   2 : 0;
++/* TPG */
++#define RKISP1_CIF_ISP_TPG_CTRL_ENA			BIT(0)
++#define RKISP1_CIF_ISP_TPG_CTRL_IMG_3X3_COLOR_BLOCK	(0 << 1)
++#define RKISP1_CIF_ISP_TPG_CTRL_IMG_COLOR_BAR		(1 << 1)
++#define RKISP1_CIF_ISP_TPG_CTRL_IMG_GRAY_BAR		(2 << 1)
++#define RKISP1_CIF_ISP_TPG_CTRL_IMG_HIGHLIGHT_GRID	(3 << 1)
++#define RKISP1_CIF_ISP_TPG_CTRL_IMG_RAND		(4 << 1)
++#define RKISP1_CIF_ISP_TPG_CTRL_CFA_RGGB		(0 << 4)
++#define RKISP1_CIF_ISP_TPG_CTRL_CFA_GRBG		(1 << 4)
++#define RKISP1_CIF_ISP_TPG_CTRL_CFA_GBRB		(2 << 4)
++#define RKISP1_CIF_ISP_TPG_CTRL_CFA_BGGR		(3 << 4)
++#define RKISP1_CIF_ISP_TPG_CTRL_DEPTH_8			(0 << 6)
++#define RKISP1_CIF_ISP_TPG_CTRL_DEPTH_10		(1 << 6)
++#define RKISP1_CIF_ISP_TPG_CTRL_DEPTH_12		(2 << 6)
++#define RKISP1_CIF_ISP_TPG_CTRL_DEF_SYNC		BIT(8)
++#define RKISP1_CIF_ISP_TPG_CTRL_MAX_SYNC		BIT(9)
++#define RKISP1_CIF_ISP_TPG_CTRL_SOL_1080P		(0 << 10)
++#define RKISP1_CIF_ISP_TPG_CTRL_SOL_720P		(1 << 10)
++#define RKISP1_CIF_ISP_TPG_CTRL_SOL_4K			(2 << 10)
++#define RKISP1_CIF_ISP_TPG_CTRL_SOL_USER_DEFINED	(3 << 10)
 +
- 	cap->buf.curr = cap->buf.next;
- 	cap->buf.next = NULL;
+ /* =================================================================== */
+ /*                            CIF Registers                            */
+ /* =================================================================== */
+@@ -912,6 +933,17 @@
+ #define RKISP1_CIF_ISP_SH_DELAY			(RKISP1_CIF_ISP_SH_BASE + 0x00000008)
+ #define RKISP1_CIF_ISP_SH_TIME			(RKISP1_CIF_ISP_SH_BASE + 0x0000000C)
  
-@@ -636,7 +639,7 @@ static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
- 		buff_addr = cap->buf.next->buff_addr;
- 
- 		rkisp1_write(cap->rkisp1, cap->config->mi.y_base_ad_init,
--			     buff_addr[RKISP1_PLANE_Y]);
-+			     buff_addr[RKISP1_PLANE_Y] >> shift);
- 		/*
- 		 * In order to support grey format we capture
- 		 * YUV422 planar format from the camera and
-@@ -645,17 +648,17 @@ static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
- 		if (cap->pix.cfg->fourcc == V4L2_PIX_FMT_GREY) {
- 			rkisp1_write(cap->rkisp1,
- 				     cap->config->mi.cb_base_ad_init,
--				     cap->buf.dummy.dma_addr);
-+				     cap->buf.dummy.dma_addr >> shift);
- 			rkisp1_write(cap->rkisp1,
- 				     cap->config->mi.cr_base_ad_init,
--				     cap->buf.dummy.dma_addr);
-+				     cap->buf.dummy.dma_addr >> shift);
- 		} else {
- 			rkisp1_write(cap->rkisp1,
- 				     cap->config->mi.cb_base_ad_init,
--				     buff_addr[RKISP1_PLANE_CB]);
-+				     buff_addr[RKISP1_PLANE_CB] >> shift);
- 			rkisp1_write(cap->rkisp1,
- 				     cap->config->mi.cr_base_ad_init,
--				     buff_addr[RKISP1_PLANE_CR]);
-+				     buff_addr[RKISP1_PLANE_CR] >> shift);
- 		}
- 	} else {
- 		/*
-@@ -663,11 +666,11 @@ static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
- 		 * throw data if there is no available buffer.
- 		 */
- 		rkisp1_write(cap->rkisp1, cap->config->mi.y_base_ad_init,
--			     cap->buf.dummy.dma_addr);
-+			     cap->buf.dummy.dma_addr >> shift);
- 		rkisp1_write(cap->rkisp1, cap->config->mi.cb_base_ad_init,
--			     cap->buf.dummy.dma_addr);
-+			     cap->buf.dummy.dma_addr >> shift);
- 		rkisp1_write(cap->rkisp1, cap->config->mi.cr_base_ad_init,
--			     cap->buf.dummy.dma_addr);
-+			     cap->buf.dummy.dma_addr >> shift);
- 	}
- 
- 	/* Set plane offsets */
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 96657e55a5b0..0b834579d08c 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -113,6 +113,7 @@ enum rkisp1_feature {
- 	RKISP1_FEATURE_DUAL_CROP = BIT(1),
- 	RKISP1_FEATURE_RSZ_CROP = BIT(2),
- 	RKISP1_FEATURE_MAIN_STRIDE = BIT(3),
-+	RKISP1_FEATURE_DMA_34BIT = BIT(4),
- };
- 
- /*
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index d68a805e8b6b..4c77aa2bc50a 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -506,7 +506,8 @@ static const struct rkisp1_info imx8mp_isp_info = {
- 	.isr_size = ARRAY_SIZE(imx8mp_isp_isrs),
- 	.isp_ver = IMX8MP_V10,
- 	.features = RKISP1_FEATURE_RSZ_CROP
--		  | RKISP1_FEATURE_MAIN_STRIDE,
-+		  | RKISP1_FEATURE_MAIN_STRIDE
-+		  | RKISP1_FEATURE_DMA_34BIT,
- };
- 
- static const struct of_device_id rkisp1_of_match[] = {
++#define RKISP1_CIF_ISP_TPG_BASE			0x00000700
++#define RKISP1_CIF_ISP_TPG_CTRL			(RKISP1_CIF_ISP_TPG_BASE + 0x00000000)
++#define RKISP1_CIF_ISP_TPG_TOTAL_IN		(RKISP1_CIF_ISP_TPG_BASE + 0x00000004)
++#define RKISP1_CIF_ISP_TPG_ACT_IN		(RKISP1_CIF_ISP_TPG_BASE + 0x00000008)
++#define RKISP1_CIF_ISP_TPG_FP_IN		(RKISP1_CIF_ISP_TPG_BASE + 0x0000000C)
++#define RKISP1_CIF_ISP_TPG_BP_IN		(RKISP1_CIF_ISP_TPG_BASE + 0x00000010)
++#define RKISP1_CIF_ISP_TPG_W_IN			(RKISP1_CIF_ISP_TPG_BASE + 0x00000014)
++#define RKISP1_CIF_ISP_TPG_GAP_IN		(RKISP1_CIF_ISP_TPG_BASE + 0x00000018)
++#define RKISP1_CIF_ISP_TPG_GAP_STD_IN		(RKISP1_CIF_ISP_TPG_BASE + 0x0000001C)
++#define RKISP1_CIF_ISP_TPG_RANDOM_SEED_IN	(RKISP1_CIF_ISP_TPG_BASE + 0x00000020)
++
+ #define RKISP1_CIF_C_PROC_BASE			0x00000800
+ #define RKISP1_CIF_C_PROC_CTRL			(RKISP1_CIF_C_PROC_BASE + 0x00000000)
+ #define RKISP1_CIF_C_PROC_CONTRAST		(RKISP1_CIF_C_PROC_BASE + 0x00000004)
 -- 
 2.30.2
 
