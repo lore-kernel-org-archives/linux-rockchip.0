@@ -4,145 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D121C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 20:45:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B1DAC43334
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 21:02:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=85PCeEqys8WFoM0u7P4BT0d1E3djQ0lV7vT8PVC22Eo=; b=1ga+TxiLAmuzm8
-	7B+I0NI+7GGtsSTv3sDDzqgt+kznj+Ux9gPZDxpBm2W9uRCZxI4FCUSyoNSWfLcAxA9p4UypenSSj
-	BOzVNT1Ag04+4ErWjy1DACeoMt4ASfi59gh0ICuwvrHyhPjgsFb4PjN7dwXr86DYgUvap4PZBB18o
-	a012SmJpH329WRNzTYW1pY32BdPMPxegpoUOtn9xUPNx/J6n0Qu9IcWrGBi2zt5fZsFsan1eguhvS
-	f1SC6b4uaBCNSiVHbvNSkOKzdk3zh/w2sC86/IlOVc397UU8pUAnQZmtpqgwAKYHRqzc3eGIdl/3l
-	AHd4NF1h7dSyzZqxEJyw==;
+	List-Owner; bh=E+m6zBGyaFwgXvFhj3fSQd7lIL8QqPdvTvbsTYMaUhs=; b=4+0NVWjNmBO7M7
+	w0HmQkAwHRhzTO4g3w0T9slglhfCrWMC92dxCydsK97h9Y2BQTEOr1eHjd4NOZW64xWT8X0lN2RXO
+	g0QXp12myZVZKUFVbFfrg5sBhn4/Cuq8O1LHdJfl2g/E4v5u6gX02sikhM6LG/vY8v5w3AZPRPFcr
+	S9wddxSgKrVxb8yUPgfgW1utqJgdRC6ZwMvDus35msiKoUHW1w4bl3G//dkl8Tb/ANna0967DAKVW
+	zqfABqLfxe/34AvIJRsuaK5bERv+hglkGanyyOfaEwy7wDLMgbbpsg6+ARysA+aWuOsCMsEEQF3ZT
+	T7M7MFNItMWivLgHAbsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1DPt-00BD9m-EX; Tue, 14 Jun 2022 20:45:37 +0000
-Received: from mail-co1nam11on20602.outbound.protection.outlook.com ([2a01:111:f400:7eab::602] helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+	id 1o1DgR-00BJ1m-ES; Tue, 14 Jun 2022 21:02:43 +0000
+Received: from mail-io1-f46.google.com ([209.85.166.46])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1DPk-00BD5Q-4d; Tue, 14 Jun 2022 20:45:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IJ3bF63yYGUN6eohvnWDP9oKyS+9TiW3ayXA/a22grBqOH2hJwisWr8dg6vL6FouhZIJxnde5LqjRSaB0B+B6jBVGsQk36B93Y7xZpZs+lo13PR26x+v0opZkLXS5oaJN5Qfqj7ancj27L3sTu9l27UYeoUv4RDgI8FjYffqcgUDp5V/qg9/U2iH1q2hqf2FXYMLLk3zd5kohvDblI1mhnW5/Zoso9i+mYdgxPpaLq99t7uaJCD0z+zSDITiw4ywtOfDCKZ9sjhwxtl6lt7Dm2tZfMxBdtDDkok9al6DA7ljsRd0uGbx6pYuf9js6DZSCCbD3myNMfIA0bqVbabvCA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=h+wdnHzm5/tFJI64HWledeJrntDDTEnQRGQb3TjHaak=;
- b=OqjzX1hhs8nf4EaE+2jE3pmO2Kjv2Mpr0fX4ctxEq4KLBSW0RYxjDnmzTvipUuAhUik3AAYgXsEQ9KKGf8RZgjwoViD4bZ+IrVBJp6v6s1KcottmCIVrRKvabPKML4QZ32oDBXoewriLTn8etvY8/CjbYtPNfIRmzBO78If3Lk65ZZUY+El2wr7LiYLrddG9srRMYGmbc2D6BqCYpYBAoNtR3jdIPEfACZrGqt3eHOPoTaVW3yy5O9+9//T3tuI2ozbvEZgzOk8c0XEx4ZSevYhwo98Qyr3cIaSJAv1K7NBIZAnl3WMPqEUq87YW2fpRPkfLISpEQUG3DqjD5psJSg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 12.22.5.235) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com; dmarc=pass
- (p=reject sp=reject pct=100) action=none header.from=nvidia.com; dkim=none
- (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=h+wdnHzm5/tFJI64HWledeJrntDDTEnQRGQb3TjHaak=;
- b=XfpsHHlhP6RjgRnv2YvQYPgMseZ6o6stX8nOOrlRUvybxcMS0kC7GSuFMym2nIlbXTp7Odm9I5U5Pf3N/Y2WkCxg89a5nmpO9fvfNZnGmnygKuB/JgY2xtYkaauV+jQq0mCRmEzTu9Mw225ue7e9JSF9FC1xZkmQsaZ12oLvnqlPkb77jV0aKtAGged9X2LvbdBlHCNgh624YBjemTB/kCW9nwo5NuB9PgBKzoc81Lw7L3ZFP3iaf855HfB0+bmqlcx/gJwTpcgGazzT9HTEPQPP29lEZR/+LiMa2HOJF1T/T9Z4/taJufU6An6tgBiu7beCFIpJBgw8Q/Wxz4iHPw==
-Received: from BN0PR04CA0144.namprd04.prod.outlook.com (2603:10b6:408:ed::29)
- by BN6PR1201MB0113.namprd12.prod.outlook.com (2603:10b6:405:55::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.12; Tue, 14 Jun
- 2022 20:45:23 +0000
-Received: from BN8NAM11FT008.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:ed:cafe::87) by BN0PR04CA0144.outlook.office365.com
- (2603:10b6:408:ed::29) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.17 via Frontend
- Transport; Tue, 14 Jun 2022 20:45:23 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.235)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 12.22.5.235 as permitted sender) receiver=protection.outlook.com;
- client-ip=12.22.5.235; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (12.22.5.235) by
- BN8NAM11FT008.mail.protection.outlook.com (10.13.177.95) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.20.5332.12 via Frontend Transport; Tue, 14 Jun 2022 20:45:23 +0000
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by DRHQMAIL107.nvidia.com
- (10.27.9.16) with Microsoft SMTP Server (TLS) id 15.0.1497.32; Tue, 14 Jun
- 2022 20:45:22 +0000
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail202.nvidia.com
- (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22; Tue, 14 Jun
- 2022 13:45:22 -0700
-Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com (10.129.68.6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22 via Frontend
- Transport; Tue, 14 Jun 2022 13:45:19 -0700
-Date: Tue, 14 Jun 2022 13:45:18 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: "Tian, Kevin" <kevin.tian@intel.com>
-CC: Jason Gunthorpe <jgg@nvidia.com>, "joro@8bytes.org" <joro@8bytes.org>,
-	"will@kernel.org" <will@kernel.org>, "marcan@marcan.st" <marcan@marcan.st>,
-	"sven@svenpeter.dev" <sven@svenpeter.dev>, "robin.murphy@arm.com"
-	<robin.murphy@arm.com>, "robdclark@gmail.com" <robdclark@gmail.com>,
-	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
-	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
-	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>, "agross@kernel.org"
-	<agross@kernel.org>, "bjorn.andersson@linaro.org"
-	<bjorn.andersson@linaro.org>, "matthias.bgg@gmail.com"
-	<matthias.bgg@gmail.com>, "heiko@sntech.de" <heiko@sntech.de>,
-	"orsonzhai@gmail.com" <orsonzhai@gmail.com>, "baolin.wang7@gmail.com"
-	<baolin.wang7@gmail.com>, "zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
-	"wens@csie.org" <wens@csie.org>, "jernej.skrabec@gmail.com"
-	<jernej.skrabec@gmail.com>, "samuel@sholland.org" <samuel@sholland.org>,
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
-	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
-	"virtualization@lists.linux-foundation.org"
-	<virtualization@lists.linux-foundation.org>, "thierry.reding@gmail.com"
-	<thierry.reding@gmail.com>, "alim.akhtar@samsung.com"
-	<alim.akhtar@samsung.com>, "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
-	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
-	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
-	"kvm@vger.kernel.org" <kvm@vger.kernel.org>, "jonathanh@nvidia.com"
-	<jonathanh@nvidia.com>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, "gerald.schaefer@linux.ibm.com"
-	<gerald.schaefer@linux.ibm.com>, "linux-sunxi@lists.linux.dev"
-	<linux-sunxi@lists.linux.dev>, "linux-arm-msm@vger.kernel.org"
-	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-tegra@vger.kernel.org"
-	<linux-tegra@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "cohuck@redhat.com"
-	<cohuck@redhat.com>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "iommu@lists.linux-foundation.org"
-	<iommu@lists.linux-foundation.org>, "dwmw2@infradead.org"
-	<dwmw2@infradead.org>
-Subject: Re: [PATCH 3/5] vfio/iommu_type1: Prefer to reuse domains vs match
- enforced cache coherency
-Message-ID: <YqjzXpzuBa4ATf9o@Asurada-Nvidia>
-References: <20220606061927.26049-1-nicolinc@nvidia.com>
- <20220606061927.26049-4-nicolinc@nvidia.com>
- <BN9PR11MB5276DC98E75B1906A76F7ADC8CA49@BN9PR11MB5276.namprd11.prod.outlook.com>
- <20220608111724.GL1343366@nvidia.com>
- <DM4PR11MB52781590FB8FB197579DEE848CA49@DM4PR11MB5278.namprd11.prod.outlook.com>
+	id 1o1DgP-00BJ0c-Gs; Tue, 14 Jun 2022 21:02:42 +0000
+Received: by mail-io1-f46.google.com with SMTP id y12so10719102ior.7;
+        Tue, 14 Jun 2022 14:02:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=2/cyFUpUGPUplOfOftDnZp7vPwEuiKwsOzYr7Oqpd9c=;
+        b=DF/m9o9azos0UIEkvY55V/f3eUtkDfNsWs+0BfDCDrY7A/LxP1yzA5lXjfpHysuz6+
+         o7XfG3vB2SoxzNvLTyiSGbsaSjqHqQBm5G48MTdSjOcm+080jLi/5DQWjpE1SvgOGtIM
+         KVjbmav742v8Lqw0JQFY0aQ+dSW5/NynT5ebvv+Sc1Z931z+h8dDrrwwz4p737x5MH/p
+         grO/Yr48rGKbPPfWyomGO9O959ZoS5Jg8Yjtq0qYOs9TXd8yQrPV3+WyGTT9hRaTDOIO
+         JB83d02OuxHxNjL60swSWqePGgmvtAa0JnIdX/zh7RMDQXr7DHZHfZuQuigMNhStBBca
+         /fyQ==
+X-Gm-Message-State: AOAM531TkEkASczjXbkcOxbS/mB5UUGs1k1iLx7kW5L5/JPqHboQG9I1
+	aRh/B74RUISLKT/9+VlRug==
+X-Google-Smtp-Source: ABdhPJwArJB183Z3ToeeqDaidsVtxn45dq7qpYio0HGMdk7IzR5wzQxV8JC6SiQfQp3gbJl4lHM0kA==
+X-Received: by 2002:a05:6602:15c5:b0:669:ef95:1cc with SMTP id f5-20020a05660215c500b00669ef9501ccmr3538533iow.140.1655240559745;
+        Tue, 14 Jun 2022 14:02:39 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.251])
+        by smtp.gmail.com with ESMTPSA id y5-20020a92d0c5000000b002d5c572f410sm5885426ila.63.2022.06.14.14.02.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 Jun 2022 14:02:39 -0700 (PDT)
+Received: (nullmailer pid 2566780 invoked by uid 1000);
+	Tue, 14 Jun 2022 21:02:37 -0000
+Date: Tue, 14 Jun 2022 15:02:37 -0600
+From: Rob Herring <robh@kernel.org>
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+Cc: linux-kernel@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-rockchip@lists.infradead.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org
+Subject: Re: [PATCH v5 1/3] media: dt-binding: media: Add rk3568-vepu binding
+Message-ID: <20220614210237.GA2566560-robh@kernel.org>
+References: <20220612155346.16288-1-frattaroli.nicolas@gmail.com>
+ <20220612155346.16288-2-frattaroli.nicolas@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <DM4PR11MB52781590FB8FB197579DEE848CA49@DM4PR11MB5278.namprd11.prod.outlook.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c57380c9-1dd6-4d7d-4096-08da4e46ce09
-X-MS-TrafficTypeDiagnostic: BN6PR1201MB0113:EE_
-X-Microsoft-Antispam-PRVS: 	<BN6PR1201MB0113233C3B5CAF3FE03B6129ABAA9@BN6PR1201MB0113.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	01Lo7EEKLCy2OIC9zTeh6zz/WeBLpYGCF/uXe2ghKhndvNCltYjbF+9OT7LjgeEp0EGOYX5nuh8iNeJdBU9ltcgjgxnXDpq2V4ci2ZGnH/qdqBYJAvHqdOHKYZnlUsuyIwMc5/ZbSNSlzit+njn0WYai4x8rr0ZEmgKxr9lbMKggl+67Z3iwkRyy0mB0dp8SfaBVMh1XZDS8flTgxtRw9ggZO3cGg1XUhhsXl9VK5HMTXN8sAFQn3IJgkOd8SZ8F75KGwXFAp8byCM4c6ZzPY0ocQ+1DYLkWW7xxoqtllkzXftPyL/EON92SQXB0iomv5sJSfASJa52ZEdJ9ZCVP8emmMOA0am7u7MWVpExc6P/LjBm1bgZANxlx1mptyq0XjhB057UHTchHzc333st+7lAC+iGMOew4JEbMYoRP//znW+l8zk9usgbzA+tg55NalrgL7Pwht3H1lcAyo+37W026OIYzHwBTwtw0dS3vbt5YA35V7kyPIZnJri/6mo9tuelWk3JF9QPHOG4EAVfkPPv9nWOOTYs4BGK1uO5sxTULTBgNSVwaSw2R+JzRxKw95KPJE1sUFHwcXvCi6mNojKWSjRSoZgD0KA0/ZAbi09qjpoXRJjk/2PiOSdswHXc9qzUWl36cTtF0LUxCn7pNzSodPa/MLmoZXXZ5fZNnEXHmKdEljxtMKov1+RUJYUOPNVkI2hG8arkjz3tAzGtodg==
-X-Forefront-Antispam-Report: 	CIP:12.22.5.235;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230016)(4636009)(40470700004)(36840700001)(46966006)(5660300002)(7416002)(356005)(36860700001)(7406005)(2906002)(186003)(4744005)(40460700003)(82310400005)(26005)(9686003)(33716001)(70586007)(54906003)(8936002)(86362001)(70206006)(55016003)(508600001)(83380400001)(4326008)(47076005)(8676002)(316002)(426003)(336012)(6916009)(81166007)(36900700001);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jun 2022 20:45:23.5861
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c57380c9-1dd6-4d7d-4096-08da4e46ce09
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.235];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT008.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR1201MB0113
+In-Reply-To: <20220612155346.16288-2-frattaroli.nicolas@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_134528_240505_FC96B40B 
-X-CRM114-Status: GOOD (  13.67  )
+X-CRM114-CacheID: sfid-20220614_140241_595222_28FBE2FA 
+X-CRM114-Status: GOOD (  13.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,33 +78,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Kevin,
-
-On Wed, Jun 08, 2022 at 11:48:27PM +0000, Tian, Kevin wrote:
-> > > > The KVM mechanism for controlling wbinvd is only triggered during
-> > > > kvm_vfio_group_add(), meaning it is a one-shot test done once the
-> > devices
-> > > > are setup.
-> > >
-> > > It's not one-shot. kvm_vfio_update_coherency() is called in both
-> > > group_add() and group_del(). Then the coherency property is
-> > > checked dynamically in wbinvd emulation:
-> >
-> > From the perspective of managing the domains that is still
-> > one-shot. It doesn't get updated when individual devices are
-> > added/removed to domains.
+On Sun, 12 Jun 2022 17:53:44 +0200, Nicolas Frattaroli wrote:
+> The RK3568 and RK3566 have a Hantro VPU node solely dedicated to
+> encoding. This patch adds a new binding to describe it, as it
+> does not really fit the rockchip-vpu binding, since there is no
+> decoder.
 > 
-> It's unchanged per-domain but dynamic per-vm when multiple
-> domains are added/removed (i.e. kvm->arch.noncoherent_dma_count).
-> It's the latter being checked in the kvm.
+> Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> ---
+>  .../bindings/media/rockchip,rk3568-vepu.yaml  | 69 +++++++++++++++++++
+>  MAINTAINERS                                   |  1 +
+>  2 files changed, 70 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/rockchip,rk3568-vepu.yaml
+> 
 
-I am going to send a v2, yet not quite getting the point here.
-Meanwhile, Jason is on leave.
-
-What, in your opinion, would be an accurate description here?
-
-Thanks
-Nic
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
