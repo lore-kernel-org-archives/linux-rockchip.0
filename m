@@ -4,75 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6D52C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 13:59:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C7E5C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 13:59:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vwauD2DL2N1hFbjD9GVH6dbZT7DtqNZKtnoFhk3eMyQ=; b=mo5GcnGCNuG6we
-	M6j6Oqdo7zmKrlnOA/mgGC9y7JQZW45IC4E0Vt2i7io7B+jTf8Vfbryo3PtbX1AMWMU5ZNP5prFj8
-	Bl2p89yauY2Dh6P5RKKeGRNBkX/wN3AiZ4h6EvZcftuh978q+IyT3Q6OjiHPnQuWuw5sFPsAEA08Q
-	NFMCTihDhDkx6dp8Dq4RkJJi6CBT0g+nfqsloHs435kJyEP8T8dJZgWE0GQGtBRQ0v3KDMsIQ+DRM
-	CrBKk/5Y4prRr1N6Kpjx8X5KFV/LEkAVwISKOhVZ0cr2Iyp37G2QlGj19W0pxmXAeuUQOStlu0+nd
-	8u/7b53KggvYZrT9o0mg==;
+	List-Owner; bh=uBgBg5JTnV0yjvd+R84mKzHPtwx/xjJcJ9YOFjFTe+s=; b=coxdW0rMq4aXKh
+	j5oNfWUogtA4jR5S036MET+5cZHKLjjH2PjofxdJ+D1Ql3Fjd57X6BcG5BGB5zQiR72FzWKWy4Esr
+	GSZueFGAJDokUL+HmtUkTuWDUxscSQcbWTaGYB4t9BdOF9StIlX6BjB0LgHSbv1mYX8BUTV0Noqxm
+	ffCB5hHWk5V6k2vUzDOkzB+9ShoeXOlKLN0xDDxzhIBZs57MXeOdkomARl6EMcaQujLNDasI6PU5h
+	sEk3bicRkId2xhph0L81IrYU57/wmt7bBtjLPMXVwQjX4oaG49JGQqp0eBWMPi1nhdbMwzu0oSp3Q
+	xKA8Oqo7XnehJmsECdgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o174I-009rRL-S5; Tue, 14 Jun 2022 13:58:54 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1o174S-009rW0-U1; Tue, 14 Jun 2022 13:59:04 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1746-009rM2-54; Tue, 14 Jun 2022 13:58:44 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
-	by smtp-out2.suse.de (Postfix) with ESMTP id 2C44B1F984;
-	Tue, 14 Jun 2022 13:58:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.cz; s=susede2_rsa;
-	t=1655215118; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CeiLcPaUWpFLyUL+9AfxzQ6cCLGBau32H4tijDd9jqk=;
-	b=nTBARfnLs4xqal0/JTkbIDZlKIg8p/c6pqNEIzOBzKMJh6ZxTO8uc9V3JB2zxJ+mzBkOIl
-	len1iN+co9yZfNxXip8sirINpP0bWdJQkjl7/Bd2Dj8O/TXETPsPOkqUwx4VfWnZLSYtjv
-	7NfnJknbXbvnm0DSQhNNYEqohtnuS34=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.cz;
-	s=susede2_ed25519; t=1655215118;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=CeiLcPaUWpFLyUL+9AfxzQ6cCLGBau32H4tijDd9jqk=;
-	b=Gp7XaVEqQ5AwGE4SIN4e1AWnakNRl3vK1lqe/keGYSlZ9PP9Eb/siFJSVmuirbU1d/8HMs
-	Md9NdyeL5Dx/AKAA==
-Received: from quack3.suse.cz (unknown [10.163.28.18])
+	id 1o174A-009rNx-QJ; Tue, 14 Jun 2022 13:58:49 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by relay2.suse.de (Postfix) with ESMTPS id C687D2C143;
-	Tue, 14 Jun 2022 13:58:37 +0000 (UTC)
-Received: by quack3.suse.cz (Postfix, from userid 1000)
-	id 835F9A062E; Tue, 14 Jun 2022 15:58:37 +0200 (CEST)
-Date: Tue, 14 Jun 2022 15:58:37 +0200
-From: Jan Kara <jack@suse.cz>
-To: Petr Mladek <pmladek@suse.com>
-Cc: Alexandru Elisei <alexandru.elisei@arm.com>, jack@suse.cz,
-	sunjunchao2870@gmail.com, viro@zeniv.linux.org.uk,
-	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
-	senozhatsky@chromium.org, rostedt@goodmis.org,
-	john.ogness@linutronix.de, keescook@chromium.org, anton@enomsg.org,
-	ccross@android.com, tony.luck@intel.com, heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, maco@android.com, hch@lst.de,
-	gregkh@linuxfoundation.org, jirislaby@kernel.org
-Subject: Re: [BUG] rockpro64 board hangs in console_init() after commit
- 10e14073107d
-Message-ID: <20220614135837.3doyrnekzja6grzc@quack3.lan>
-References: <Yqdry+IghSWnJ6pe@monolith.localdoman>
- <Yqh9xIwBVcabpSLe@alley>
+	by sin.source.kernel.org (Postfix) with ESMTPS id F3377CE19C0;
+	Tue, 14 Jun 2022 13:58:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 893B8C3411B;
+	Tue, 14 Jun 2022 13:58:35 +0000 (UTC)
+Message-ID: <b244e86d-06de-7423-d0df-e77485ce4c87@xs4all.nl>
+Date: Tue, 14 Jun 2022 15:58:34 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <Yqh9xIwBVcabpSLe@alley>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.0
+Subject: Re: [PATCH v8 14/17] media: hantro: Stop using Hantro dedicated
+ control
+Content-Language: en-US
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
+ ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
+ gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@gmail.com,
+ samuel@sholland.org, nicolas.dufresne@collabora.com, andrzej.p@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ kernel@collabora.com
+References: <20220614083614.240641-1-benjamin.gaignard@collabora.com>
+ <20220614083614.240641-15-benjamin.gaignard@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+In-Reply-To: <20220614083614.240641-15-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_065842_381260_93B16889 
-X-CRM114-Status: GOOD (  28.65  )
+X-CRM114-CacheID: sfid-20220614_065847_274354_FC535C1B 
+X-CRM114-Status: GOOD (  30.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,78 +71,193 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue 14-06-22 14:23:32, Petr Mladek wrote:
-> On Mon 2022-06-13 17:54:35, Alexandru Elisei wrote:
+On 6/14/22 10:36, Benjamin Gaignard wrote:
+> The number of bits to skip in the slice header can be computed
+> in the driver by using sps, pps and decode_params information.
+> This allow to remove Hantro dedicated control.
 
-<snip>
+allow -> makes it possible
 
-> > Config can be found at [1] (expires after 6 months). I've also built the
-> > kernel with gcc 10.3.1 [2] (aarch64-none-linux-gnu), same issue.
-> > 
-> > I've bisected the build failure to commit 10e14073107d ("writeback: Fix
-> > inode->i_io_list not be protected by inode->i_lock error"); I've confirmed
-> > that that commit is responsible by successfully booting the board with a
-> > kernel built from v5.19-rc2 + the above commit reverted.
 > 
-> It is strange. I can't see how consoles are related to filesystem
-> writeback.
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  drivers/staging/media/hantro/hantro_drv.c     | 36 -----------
+>  .../staging/media/hantro/hantro_g2_hevc_dec.c | 62 ++++++++++++++++++-
+>  include/media/hevc-ctrls.h                    | 13 ----
+>  3 files changed, 61 insertions(+), 50 deletions(-)
 > 
-> Anyway, the commit 10e14073107d ("writeback: Fix inode->i_io_list not
-> be protected by inode->i_lock error") modifies some locking and
-> might be source of possible deadlocks.
+> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+> index 536c8c374952..5aac3a090480 100644
+> --- a/drivers/staging/media/hantro/hantro_drv.c
+> +++ b/drivers/staging/media/hantro/hantro_drv.c
+> @@ -304,26 +304,6 @@ static int hantro_jpeg_s_ctrl(struct v4l2_ctrl *ctrl)
+>  	return 0;
+>  }
+>  
+> -static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
+> -{
+> -	struct hantro_ctx *ctx;
+> -
+> -	ctx = container_of(ctrl->handler,
+> -			   struct hantro_ctx, ctrl_handler);
+> -
+> -	vpu_debug(1, "s_ctrl: id = %d, val = %d\n", ctrl->id, ctrl->val);
+> -
+> -	switch (ctrl->id) {
+> -	case V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP:
+> -		ctx->hevc_dec.ctrls.hevc_hdr_skip_length = ctrl->val;
+> -		break;
+> -	default:
+> -		return -EINVAL;
+> -	}
+> -
+> -	return 0;
+> -}
+> -
+>  static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
+>  	.try_ctrl = hantro_try_ctrl,
+>  };
+> @@ -332,10 +312,6 @@ static const struct v4l2_ctrl_ops hantro_jpeg_ctrl_ops = {
+>  	.s_ctrl = hantro_jpeg_s_ctrl,
+>  };
+>  
+> -static const struct v4l2_ctrl_ops hantro_hevc_ctrl_ops = {
+> -	.s_ctrl = hantro_hevc_s_ctrl,
+> -};
+> -
+>  #define HANTRO_JPEG_ACTIVE_MARKERS	(V4L2_JPEG_ACTIVE_MARKER_APP0 | \
+>  					 V4L2_JPEG_ACTIVE_MARKER_COM | \
+>  					 V4L2_JPEG_ACTIVE_MARKER_DQT | \
+> @@ -487,18 +463,6 @@ static const struct hantro_ctrl controls[] = {
+>  		.cfg = {
+>  			.id = V4L2_CID_STATELESS_HEVC_SCALING_MATRIX,
+>  		},
+> -	}, {
+> -		.codec = HANTRO_HEVC_DECODER,
+> -		.cfg = {
+> -			.id = V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP,
+> -			.name = "Hantro HEVC slice header skip bytes",
+> -			.type = V4L2_CTRL_TYPE_INTEGER,
+> -			.min = 0,
+> -			.def = 0,
+> -			.max = 0x100,
+> -			.step = 1,
+> -			.ops = &hantro_hevc_ctrl_ops,
+> -		},
+>  	}, {
+>  		.codec = HANTRO_VP9_DECODER,
+>  		.cfg = {
+> diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> index d28653d04d20..3be8d6e60bf0 100644
+> --- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> +++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> @@ -117,6 +117,66 @@ static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
+>  		vpu_debug(1, "%s: no chroma!\n", __func__);
+>  }
+>  
+> +static unsigned int ceil_log2(unsigned int v)
+> +{
+> +	/* Compute Ceil(Log2(v))
+> +	 * Derived from branchless code for integer log2(v) from:
+> +	 * <http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog>
+> +	 */
+> +	unsigned int r, shift;
+> +
+> +	v--;
+> +	r = (v > 0xFFFF) << 4;
+> +	v >>= r;
+> +	shift = (v > 0xFF) << 3;
+> +	v >>= shift;
+> +	r |= shift;
+> +	shift = (v > 0xF) << 2;
+> +	v >>= shift;
+> +	r |= shift;
+> +	shift = (v > 0x3) << 1;
+> +	v >>= shift;
+> +	r |= shift;
+> +	r |= (v >> 1);
+> +
+> +	return r + 1;
+> +}
 
-Yes, I've got other reports from ARM people that this commit causes issues
-for them (kernel oops or so) so the locking changes are likely at fault...
+Isn't this identical to fls(v - 1)? See also lib/math/reciprocal_div.c
+where this is used.
 
-> I am not familiar with the fs code. But I noticed the following.
-> The patch adds:
-> 
-> +               if (!was_dirty) {
-> +                       wb = locked_inode_to_wb_and_lock_list(inode);
-> +                       spin_lock(&inode->i_lock);
-> 
-> And locked_inode_to_wb_and_lock_list() is defined this way:
-> 
-> /**
->  * locked_inode_to_wb_and_lock_list - determine a locked inode's wb and lock it
->  * @inode: inode of interest with i_lock held
->  *
->  * Returns @inode's wb with its list_lock held.  @inode->i_lock must be
->  * held on entry and is released on return.  The returned wb is guaranteed
->  * to stay @inode's associated wb until its list_lock is released.
->  */
-> static struct bdi_writeback *
-> locked_inode_to_wb_and_lock_list(struct inode *inode)
-> 	__releases(&inode->i_lock)
-> 	__acquires(&wb->list_lock)
-> {
-> 	while (true) {
-> 		struct bdi_writeback *wb = inode_to_wb(inode);
-> 
-> 		/*
-> 		 * inode_to_wb() association is protected by both
-> 		 * @inode->i_lock and @wb->list_lock but list_lock nests
-> 		 * outside i_lock.  Drop i_lock and verify that the
-> 		 * association hasn't changed after acquiring list_lock.
-> 		 */
-> 		wb_get(wb);
-> 		spin_unlock(&inode->i_lock);
-> 
-> It expects that inode->i_lock is taken before. But the problematic
-> commit takes it later. It might mess the lock and cause a deadlock.
+Regards,
 
-No. AFAICS inode->i_lock is held on entry to
-locked_inode_to_wb_and_lock_list(). The function releases it so we have to
-grab it again. The locking is ugly here but correct in this regard.
+	Hans
 
-It rather likely has to do something with reordering the checks and running
-locked_inode_to_wb_and_lock_list() on inodes for which we previously didn't
-do it but I have to yet fully understand why things crash...
+> +
+> +static int compute_header_skip_lenght(struct hantro_ctx *ctx)
+> +{
+> +	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
+> +	const struct v4l2_ctrl_hevc_decode_params *decode_params = ctrls->decode_params;
+> +	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
+> +	const struct v4l2_ctrl_hevc_pps *pps = ctrls->pps;
+> +	int skip = 0;
+> +
+> +	if (pps->flags & V4L2_HEVC_PPS_FLAG_OUTPUT_FLAG_PRESENT)
+> +		/* size of pic_output_flag */
+> +		skip++;
+> +
+> +	if (sps->flags & V4L2_HEVC_SPS_FLAG_SEPARATE_COLOUR_PLANE)
+> +		/* size of pic_order_cnt_lsb */
+> +		skip += 2;
+> +
+> +	if (!(decode_params->flags & V4L2_HEVC_DECODE_PARAM_FLAG_IDR_PIC)) {
+> +		/* size of pic_order_cnt_lsb */
+> +		skip += sps->log2_max_pic_order_cnt_lsb_minus4 + 4;
+> +
+> +		/* size of short_term_ref_pic_set_sps_flag */
+> +		skip++;
+> +
+> +		if (decode_params->short_term_ref_pic_set_size)
+> +			/* size of st_ref_pic_set( num_short_term_ref_pic_sets ) */
+> +			skip += decode_params->short_term_ref_pic_set_size;
+> +		else if (sps->num_short_term_ref_pic_sets > 1)
+> +			skip += ceil_log2(sps->num_short_term_ref_pic_sets);
+> +
+> +		skip += decode_params->long_term_ref_pic_set_size;
+> +	}
+> +
+> +	return skip;
+> +}
+> +
+>  static void set_params(struct hantro_ctx *ctx)
+>  {
+>  	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
+> @@ -134,7 +194,7 @@ static void set_params(struct hantro_ctx *ctx)
+>  
+>  	hantro_reg_write(vpu, &g2_output_8_bits, 0);
+>  
+> -	hantro_reg_write(vpu, &g2_hdr_skip_length, ctrls->hevc_hdr_skip_length);
+> +	hantro_reg_write(vpu, &g2_hdr_skip_length, compute_header_skip_lenght(ctx));
+>  
+>  	min_log2_cb_size = sps->log2_min_luma_coding_block_size_minus3 + 3;
+>  	max_log2_ctb_size = min_log2_cb_size + sps->log2_diff_max_min_luma_coding_block_size;
+> diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+> index d6cb3779d190..efc0412ac41e 100644
+> --- a/include/media/hevc-ctrls.h
+> +++ b/include/media/hevc-ctrls.h
+> @@ -467,17 +467,4 @@ struct v4l2_ctrl_hevc_scaling_matrix {
+>  	__u8	scaling_list_dc_coef_32x32[2];
+>  };
+>  
+> -/*  MPEG-class control IDs specific to the Hantro driver as defined by V4L2 */
+> -#define V4L2_CID_CODEC_HANTRO_BASE				(V4L2_CTRL_CLASS_CODEC | 0x1200)
+> -/*
+> - * V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP -
+> - * the number of data (in bits) to skip in the
+> - * slice segment header.
+> - * If non-IDR, the bits to be skipped go from syntax element "pic_output_flag"
+> - * to before syntax element "slice_temporal_mvp_enabled_flag".
+> - * If IDR, the skipped bits are just "pic_output_flag"
+> - * (separate_colour_plane_flag is not supported).
+> - */
+> -#define V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP	(V4L2_CID_CODEC_HANTRO_BASE + 0)
+> -
+>  #endif
 
-								Honza
--- 
-Jan Kara <jack@suse.com>
-SUSE Labs, CR
 
 _______________________________________________
 Linux-rockchip mailing list
