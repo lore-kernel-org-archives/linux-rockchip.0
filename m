@@ -4,133 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96C4BC43334
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 12:56:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E59E2C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 13:23:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Cc:Subject:From:To:Date:Message-ID:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=DNNE+DkzCbCpibQS9eyiQRtBMm4sijhykh+i0jZG5X0=; b=Xs9Vil4bHhnoCOo2gfksBx4+Eq
-	Ow++DUiA6yilENIL3HDYYaRQNbkCtsmiIL8K/v/u28kmHefrcEFk+v7bFIMWDMPTT/pgAztfsoLWj
-	DDajgKttZY+XcXDGaTTUBmUQqaNMscx3CAyFpLb5XfE4pwarpFsH/FU+2V9EY/Bv+9+KBJonXOAnf
-	tFBrRdX4xXf+RkJnQk5sY4KA//pB6UPkR7fCprvzLtBOMb8dUesspLMR3iYu6xpNgcXiisCQtRg7t
-	S0hiyac9vmd98zFyflL/KBPvS2/CpbdbjJC2j9kFvr+kh6OXadZcsS/ZFhvvxErmDZU9LcqBL/9zp
-	8EEZva9Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UWdTeg95YfWYyF+xCR7fgb3viPFGayouFDw/5XG9wMg=; b=F8MFvhYCoU/zCY
+	AxbyyNiu2htjKLCV/7x3ndTHUdO39U/bE6IrQMYlyaH486dDNKHFs9L1bh8jyFd3I8y03G/pDwamn
+	LItB1dapt1rExNxKOr1wba+yNzUBFHH2SBDUNvqwk8ABX7U3NPsvTFNOB6ff6oDXSCuM7yyVVqa+/
+	/34hFNOZHF4SI1h0V6UDwlFBTNVijMs+iGgFUN6oGy9yXrYGeBMvGFzxgvSCe/53kwI6w07Y7Ovzo
+	egEpS3POBiA1sVu9gk2h8gU/nPQ4X/H+HYC/DCatNNMzjOwcjywOtOB5A5f1khtMtiMVHS9s2D+O+
+	Uaq73veiGhffAiff8niw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o165T-009fRP-Q1; Tue, 14 Jun 2022 12:56:03 +0000
-Received: from mail-vi1eur04on0619.outbound.protection.outlook.com ([2a01:111:f400:fe0e::619] helo=EUR04-VI1-obe.outbound.protection.outlook.com)
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o165P-009fNe-Sc
-	for linux-rockchip@lists.infradead.org; Tue, 14 Jun 2022 12:56:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RPrVsR58pn//3UP2nmS23LZ8dB0Ae0Ki0E3zBCOw9FjCuMuE27g93ctqc9wT01V1A5PGhV2MydYDggZ4WxE6kTvsQy6z4gieSIw9Gv+zt6HlM59rsH3d1jLK3XY7jhgDJjAFyHobkmMkgtCYxzRvBeVqo40jcCpsnEfdc1UW6jniZhy9rUH5PIXwBTeS1zlrwTjF/Dkbrk35dmhxG6YSRCGtU7QlZpkNq1+TDdWUuJ9GEYpGfLGSQM3tjvyjoK1aE48ZdnUpnY5SsrURcTf6LuTMI2Xed1yDekBoO7Ru6ABL2XovncQ/aWKs3S+j5OLPnXvPY3X4wGHBaeHsHyH2Dw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QWdBRt3G18qqnBO/WN4H1AXoIaAiatOqskAbiPxi2Bs=;
- b=I3j4puebPL5Urix59Tq6Rcz3Y2rftTlbgQL0IDuUcXwJUAl27/izuNAKbh6EWMFZlyOY4jIPTh4Che0bGvH/evAnnLK9N8zbU67EjMlf+lbGOV27blyXyaTFuHGYAv5ijnbOOeshwQoWZkZANTBf4WeUYTe/02WgOwAnbBh09Vqt7hcXwKTDVRyTZI6goK7m4K+a07lWHRcRPu5Irw+DKl9mS2gxgKnXp9HlOS1g4sATz2ZzAFylQrnLI996sBTqZDFfEwyyXonlbPfOuc+QVRHmPSg1a38sNIewKjWfC5hTi1sug8bXKcVzMqforkk3CTIfYDIE3q5P99e9RiGoUw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
- header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cherrycloud.onmicrosoft.com; s=selector2-cherrycloud-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QWdBRt3G18qqnBO/WN4H1AXoIaAiatOqskAbiPxi2Bs=;
- b=sJq0O1Ccv8mxf34ng+GRjiAJIUxTVLHnnzvvW38HSsLLIPmFnVH+dQs5kipjYKaCqpZgOn08p/O0zVQs+stJTpb1POxgRjxP6ZQJ8xoKmwh7VukCRZpXpnzknxCAr7Exvfz84H8aHFfAKfbP0kyqAWHeUddFWCpsln2FzXIcQqE=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
-Received: from PA4PR04MB9367.eurprd04.prod.outlook.com (2603:10a6:102:2aa::7)
- by VI1PR0401MB2288.eurprd04.prod.outlook.com (2603:10a6:800:28::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.22; Tue, 14 Jun
- 2022 12:41:08 +0000
-Received: from PA4PR04MB9367.eurprd04.prod.outlook.com
- ([fe80::880a:6606:6f57:dd0a]) by PA4PR04MB9367.eurprd04.prod.outlook.com
- ([fe80::880a:6606:6f57:dd0a%6]) with mapi id 15.20.5332.020; Tue, 14 Jun 2022
- 12:41:08 +0000
-Message-ID: <778790a4-1239-e9d9-0549-6760a8792ceb@theobroma-systems.com>
-Date: Tue, 14 Jun 2022 14:41:06 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Content-Language: en-US
-To: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
-From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-Subject: Making Rockchip IO domains dependency from other devices explicit
-Cc: dianders@chromium.org, Heiko Stuebner <heiko@sntech.de>,
- david.wu@rock-chips.com, jay.xu@rock-chips.com
-X-ClientProxiedBy: AS8P251CA0018.EURP251.PROD.OUTLOOK.COM
- (2603:10a6:20b:2f2::25) To PA4PR04MB9367.eurprd04.prod.outlook.com
- (2603:10a6:102:2aa::7)
+	id 1o16WG-009kQk-GI; Tue, 14 Jun 2022 13:23:44 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o16W5-009kOQ-7i; Tue, 14 Jun 2022 13:23:35 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D65A91650;
+	Tue, 14 Jun 2022 06:23:30 -0700 (PDT)
+Received: from monolith.localdoman (unknown [172.31.20.19])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A841A3F73B;
+	Tue, 14 Jun 2022 06:23:27 -0700 (PDT)
+Date: Tue, 14 Jun 2022 14:23:42 +0100
+From: Alexandru Elisei <alexandru.elisei@arm.com>
+To: Petr Mladek <pmladek@suse.com>
+Cc: jack@suse.cz, sunjunchao2870@gmail.com, viro@zeniv.linux.org.uk,
+	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
+	senozhatsky@chromium.org, rostedt@goodmis.org,
+	john.ogness@linutronix.de, keescook@chromium.org, anton@enomsg.org,
+	ccross@android.com, tony.luck@intel.com, heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, maco@android.com, hch@lst.de,
+	gregkh@linuxfoundation.org, jirislaby@kernel.org
+Subject: Re: [BUG] rockpro64 board hangs in console_init() after commit
+ 10e14073107d
+Message-ID: <YqiJH1phG/LWu9bs@monolith.localdoman>
+References: <Yqdry+IghSWnJ6pe@monolith.localdoman>
+ <Yqh9xIwBVcabpSLe@alley>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: ed5b0ada-8953-4d10-8876-08da4e032752
-X-MS-TrafficTypeDiagnostic: VI1PR0401MB2288:EE_
-X-Microsoft-Antispam-PRVS: 	<VI1PR0401MB2288B56101F73EAE1A4A2DEEC2AA9@VI1PR0401MB2288.eurprd04.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	NGniFAZ51HsaKJoKlWapxkKn1foO8TkAzGL7IWG2MYV6/VLjNR//DbHBgIGCiGnFWwBwHfELT3jLHFWWAi/CjdRMyrbxHO6vH55pDirbMQwiCIHFEAf9C213cb+Cnm/PHO8Sw8TKXCl7wM4IYpnBaMPWA3Opq24GbbvhKHvnbcMamAs9mhYk8hp2dgHTFnkP3FQnXMQfLrgnyBCdADdlH6Ucx2Atk9VUnNP1g9lMU89f3baXPEqHrjvZUD7D4zyEqYsSltb7Syy10+fM7vytcMsSgCyDw2tkgh+JGKZ9zUg76zOHBd8UVX7GO9/f06n+SOC7bSdkyoppOc01PDdiFEHumCKWkwKmtKGNSJxXJXPevDf0Qi8FyRRX+blkMVZkX9EmRergM3H946UQHX+M9aB1eE0W3sqo/Gtak61FRaFMe8QEyUXHi45afM2DSky+QSnYPcLoZScueM4WYApvQPdgQOhiYe3oLZMA6j7juf3ekY2f+o/6DcoAukhkyExr/I+YuKbapZwWkidfpjNWPxrsmrxPCZqqIBF5LJ4OMsFIAtOO1yLjz2N8sjwOeu8M6cQ0/IWTBgnHI1DDGTqIR1y2wRSBs4yODIGDWoEiuqT+vyqweQdx7lwyJzSaPHX48PkygYWtXiM4ZIHIfex5kfMQjUM8nmelIk0zFfmUr72BOS58KFfR6ozCgAZ8rHNRuYbroEUeXti9n1MnVbnwA+KJzOV27viLCWvhAordUHjeEOgSrEunMrqxca2cnBNpvNjC4lNqwk2+CTyzen6AlocgywN9tptneQ8bQN99zvobwO99eG+GcsD6cuJR+5cGCAPbbYEgnAjhgKax7qH2xQ==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9367.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(366004)(6512007)(83380400001)(44832011)(186003)(6506007)(26005)(36756003)(2906002)(8936002)(31686004)(5660300002)(8676002)(66946007)(86362001)(508600001)(66556008)(966005)(6486002)(2616005)(38100700002)(66476007)(31696002)(110136005)(316002)(4326008)(21314003)(45980500001)(43740500002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?dFJqcHYrNXBOakFHdyswd3NiYTF3czJQc2ppaWVSYXpBQ2J4ZXRBSTRzNU83?=
- =?utf-8?B?MXVSVXMvNUtvREpWUUFVaWwrQ1BNM1dqNlREckNTS0NTU2p6WklNYzhXckRn?=
- =?utf-8?B?NU9QTEp2VlNlajAxblNkQ3lzdGd4VjV4NW81eFR5OFhRRW5NM3NsTE4yR1Rq?=
- =?utf-8?B?dE1EVUtmbHlUaGR0VFRzVHZIbzJNYjg0T0hhMk5Jc2pXandjL0d3L3dubHR3?=
- =?utf-8?B?YTJnYnVzM2dxNDVCaHJHMUtPbjBpWjVYbVVGOFF6aWdHN2lNUFNsakIzR210?=
- =?utf-8?B?SEx4WVZJTWNsZWZYSkIwdk5wTG1ib2U1Q3B5Ny81M0ZIRGxqczd6eUMwZExB?=
- =?utf-8?B?R3Z5MnBMamZTU1VjcnVEc1hNbG5DVWdWOWVuWmFsS2VDdERubFFFdTZnQlBN?=
- =?utf-8?B?eHp4ckNIbllEbmF2OUVGTXBWNnFzMGRYTCtyaFoxOXRFMkdwdml5TjVXYVY5?=
- =?utf-8?B?ekx4T2pocXlyYVB4YThlY1IzSS9JY0dFYzZLendhbVI4MUM0ZG4vVlBLaE5D?=
- =?utf-8?B?ZDJBSmEvQUZVWGZUY24xZUxtaHJXTFM3eXFrUFBBeEl0Q3NUdTdVOVFwbGNq?=
- =?utf-8?B?Z2xWTDdXNWw0bFJTaHFiaVFMZENVWlNZRUF2Zldmbmd4TGY3NCs4MXZrUmFr?=
- =?utf-8?B?dXYyRm8wbnowM0YveThGdzdhdFR3REtQU0s1aWJ4T3lRNWZlSFd6Wmg3VEZC?=
- =?utf-8?B?b3VxVnZ6OXFobE5TUjVEVnJVcGFGSHpFeTYvaEVXUkU2Q2hwNFlUNk9sQmxy?=
- =?utf-8?B?aHhEL25MZnZROGJRaFpSQjBrb0JtL0NoY2RQV2RJOTJkNHkyb2pIeVFySEJB?=
- =?utf-8?B?amErRktXZWNqK3pkN0gzRWRTbDM0bmJrbDlNTld3bTY2aDJNMWZuSzkwenNi?=
- =?utf-8?B?VE5BWUl3TkdZYTI0MmM2UGJhZXdJS3ZGQ2F3endwb0U0Q01xUVZuWkg4d2c1?=
- =?utf-8?B?c08rRkYzbjNJNGE2YjMzdXZ6anQ1RG5kYmxldU5jeG51MWxtaFY1ck9IRDNX?=
- =?utf-8?B?RXdMSkFJQ3hhTmRLdDNlTk5yS2E5K3lIN3VBZFIrS1Y4dlJWV2VMZmN1Sm1a?=
- =?utf-8?B?dkRFK3FGTjNEUlpvMUxVQVdMSEp1OG9rTkdFWkVuYzZFbThwRjJiaGlrSGtL?=
- =?utf-8?B?bnFaZitxOW80Q2tRVFN4a3BVUnZKeUp3WE9YYWpPSTA2Z016cUcrUkQ1STM0?=
- =?utf-8?B?RjZobVhic200V3liTkhFN01aVHNUeVBLYXhwRlpsWEt1RTZMRjdaVlZQVEkx?=
- =?utf-8?B?eCtyTXdkOGlBaEZzRityRUNRbFl3THpZUlhLZTRLSFBOblZVYnl0Z2R1aHo1?=
- =?utf-8?B?TTFRRXc3K1JMSkRwKzNDWVJSbW5CZHlQT0VaT1J5eWZMTGlUY1JNN0FRMHJU?=
- =?utf-8?B?eWkveUU2VVFseUNlKzRmckF1Z1VSUG9jZldEVlpEdG55WHZkY0VTRGRTSkth?=
- =?utf-8?B?ZlQvanNNdFB1USsvempubysxRjBqVGYyM1RvcnE2WTEyanErK0ZnQklDaVZj?=
- =?utf-8?B?UENQR3RqWW50NGp1dXFCVHRzVGlYN2c3aVFZaVRVbGZ5VVJEemtOY0U2V3ZE?=
- =?utf-8?B?aG9XSHV0c0VQQitVQkVjdnErU3piVkYxMHprRk1MWWc4UkxrNFByZStHMTZX?=
- =?utf-8?B?Tzd0cG0vRXZvOWFQYnY0QURVTzFrakovbk5oWkpad1loZzBnN25mRi81bGhR?=
- =?utf-8?B?MzJMbmdpQXcwMHArRzNjNDFqRit1ZDBJUTBEYUNiRklITWJBQ3RIVlB6YnZ5?=
- =?utf-8?B?OVZyekxXamJ6ZUVLSHdVSExsL2NTMWFUUTdkakgyYnFNanhVbGNjQ1pJdUJG?=
- =?utf-8?B?NTFqa1BZM3hoVjVtMXVFc1cyZ3RWNFNId1pIVjZpbzg0OFE4VmJRV2hBd3J1?=
- =?utf-8?B?eGp3SG0weG4rTDhQWXJCa0s2emJrR3YrdTZRVmtiSDhJblZqVW5sM283dlF1?=
- =?utf-8?B?KzVKZnMvamJ0ZytCUEZVSUpWL3F5R1FZVHZ4K3ZKOFBQMzhhWjgvSHppWnJw?=
- =?utf-8?B?RmIxWFQ2RFBBRUdaaDk1ZGFsL0RoWktrQ3RQRWQ2aG43WVZYZFM0S2thNlBL?=
- =?utf-8?B?SWdYeW9jSnhtcG9icVhVS2FjTktqQnhSR2RoRXdGVWNrYThJQ2ovdy85QXBt?=
- =?utf-8?B?RTVRaWpzOXZ4WWt5SGxrY2o1S3V1dWNUN2dGSHhlL1lia3dHTmJjTlB3TEhZ?=
- =?utf-8?B?WDRZV1owNGN2S2dkNUZvamFsdWVXVTdiQjZCTndhaHROSzlyZTNkdGRUZVNa?=
- =?utf-8?B?Qm02a3hwNUdaM3hJemxqdFRSd0ZSYU5odXkrL3RCUjU3QUZ2cWtoUUx6Qzhv?=
- =?utf-8?B?MVdGZ3QySC9OekJuamlndjlLbHNteXpSSy9pL1VLdFRvY0xmV3dHdzhHeE5a?=
- =?utf-8?Q?ha7xo+sD+WPJ3Pg+iDJqoHca1Ot8gllsCNYSv?=
-X-OriginatorOrg: theobroma-systems.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ed5b0ada-8953-4d10-8876-08da4e032752
-X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9367.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jun 2022 12:41:08.4070
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 11UQgSJcZ30aNoMoJuYz35HBD7pM78h2x1GLOpG0HiPGoN+RGIWppi3FBGWEIXNEm8gN5wudRQERPrcY1Z7OAgYgwfc03+/UA35qSTvOxoUIcpZoDaQPj1aAr63TYFfQ
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR0401MB2288
+Content-Disposition: inline
+In-Reply-To: <Yqh9xIwBVcabpSLe@alley>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_055559_964668_786C5578 
-X-CRM114-Status: GOOD (  30.76  )
+X-CRM114-CacheID: sfid-20220614_062333_415286_0B8B45B4 
+X-CRM114-Status: GOOD (  39.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,140 +63,273 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+Hi Petr,
 
-We have hit an issue for a product for which will send patches in the 
-next few months and I'm asking for guidance on how to properly fix this 
-in upstream Linux kernel (we are currently carrying a patch in our 
-downstream U-Boot bootloader instead).
+Thank you for having a look.
 
-On some Rockchip SoCs, some SoC pins are split in what are called IO 
-domains.
+On Tue, Jun 14, 2022 at 02:23:32PM +0200, Petr Mladek wrote:
+> On Mon 2022-06-13 17:54:35, Alexandru Elisei wrote:
+> > [..]
+> 
+> It is strange. I can't see how consoles are related to filesystem
+> writeback.
 
-An IO domain is supplied power externally, by regulators from a PMIC for 
-example. This external power supply is then used by the IO domain as 
-"supply" for the IO pins if they are outputs.
+I am in the same boat.
 
-Each IO domain can configure which voltage the IO pins will be operating 
-on (1.8V or 3.0V). It is unclear if there's a voltage divider in IO 
-domains for lowering from whatever the regulator is supplying to the 
-supported 3.0V or 1.8V.
+> 
+> Anyway, the commit 10e14073107d ("writeback: Fix inode->i_io_list not
+> be protected by inode->i_lock error") modifies some locking and
+> might be source of possible deadlocks.
+> 
+> I am not familiar with the fs code. But I noticed the following.
+> The patch adds:
+> 
+> +               if (!was_dirty) {
+> +                       wb = locked_inode_to_wb_and_lock_list(inode);
+> +                       spin_lock(&inode->i_lock);
+> 
+> And locked_inode_to_wb_and_lock_list() is defined this way:
+> 
+> /**
+>  * locked_inode_to_wb_and_lock_list - determine a locked inode's wb and lock it
+>  * @inode: inode of interest with i_lock held
+>  *
+>  * Returns @inode's wb with its list_lock held.  @inode->i_lock must be
+>  * held on entry and is released on return.  The returned wb is guaranteed
+>  * to stay @inode's associated wb until its list_lock is released.
+>  */
+> static struct bdi_writeback *
+> locked_inode_to_wb_and_lock_list(struct inode *inode)
+> 	__releases(&inode->i_lock)
+> 	__acquires(&wb->list_lock)
+> {
+> 	while (true) {
+> 		struct bdi_writeback *wb = inode_to_wb(inode);
+> 
+> 		/*
+> 		 * inode_to_wb() association is protected by both
+> 		 * @inode->i_lock and @wb->list_lock but list_lock nests
+> 		 * outside i_lock.  Drop i_lock and verify that the
+> 		 * association hasn't changed after acquiring list_lock.
+> 		 */
+> 		wb_get(wb);
+> 		spin_unlock(&inode->i_lock);
+> 
+> It expects that inode->i_lock is taken before. But the problematic
+> commit takes it later. It might mess the lock and cause a deadlock.
+> 
+> Jack?
+> 
+> 
+> > I tried to do some investigating, it seems that the kernel is stuck at
+> > printk.c::console_init() -> drivers/tty/vt/vt.c::con_init() ->
+> > printk.c::register_console() -> unregister_console() -> console_lock().
+> > This has been determined by adding pr_info statements.
+> 
+> So, you tried something like:
+> 
+> int unregister_console(struct console *console)
+> {
+> 	struct task_struct *thd;
+> 	struct console *con;
+> 	int res;
+> 
+> 	con_printk(KERN_INFO, console, "disabled\n");
+> [...]
+> 
+> +	pr_info("Stage 1\n");
+> 	console_lock();
+> +	pr_info("Stage 2\n");
+> 
+> [...]
+> 
+> 	console_unlock();
+> +	pr_info("Stage 3\n");
+> [...]
+> }
+> 
+> And "Stage 1" was the last message on the console ?
 
-There already exists an IO domain driver for Rockchip SoCs[1]. This 
-driver allows to explicit the relationship between the external power 
-supplies and IO domains[2]. This makes sure the regulators are enabled 
-by the Linux kernel so the IO domains are supplied with power.
-This driver is a regulator consumer and does not offer any other 
-interface for device dependency.
-Currently, the IO pin 1.8/3.0V selection is made based on the voltage 
-supported by the regulator attached to a specific IO domain.
+With this change:
 
-And this is where the issue lies. The product has a camera sensor which 
-didn't even appear on i2c until we figured out that its MCLK was 
-actually oscillating between 0 and ~150mV. It appeared that after a soft 
-reboot, the camera sensor would then appear on i2c. The driver of this 
-camera sensor attempts an I2C transfer to check its ID, which fails the 
-probe of the driver because the IO domain of the MCLK pin is not 
-supplied with power yet/correctly configured (the io-domains driver 
-probes after the camera driver). After configuring the IO domain 
-correctly in the bootloader prior to booting the Linux kernel, the 
-camera sensor is now working just fine.
+diff --git a/init/main.c b/init/main.c
+index 0ee39cdcfcac..a245982eb8a2 100644
+--- a/init/main.c
++++ b/init/main.c
+@@ -1057,6 +1057,8 @@ asmlinkage __visible void __init __no_sanitize_address start_kernel(void)
 
-In order to have my camera sensor working and not rely on what the 
-bootloader set before Linux boots, I need to have the IO domain(s) 
-correctly configured before the camera sensor driver probes. The issue 
-is how to represent this dependency in the device tree.
+        kmem_cache_init_late();
 
-It was suggested to me that we could use the power subsystem and use 
-xxx-supply in DT for this, by making the io-domains driver expose a 
-regulator per IO domain. This works fine if the IO pin connected to the 
-device is already a power supply for that device, so we can just make 
-this gpio-regulator depend on the regulator of the IO domain this IO pin 
-is from. If it is not a regulator, this would mean we need to modify 
-drivers to add a new power supply DT property for each driver. This can 
-blow up pretty quickly and require, IMO, non-generic changes to driver 
-to support SoC "quirks". Such would be the case for us, because I'd need 
-to add this power supply DT property to the clock driver so that when 
-the clock driver is probed, the regulators for the IO domains of the 
-clocks exposed on IO pins are actually also enabled and the IO domains 
-properly configured.
++       lockdep_init();
++
+        /*
+         * HACK ALERT! This is early. We're enabling the console before
+         * we've done PCI setups etc, and console_init() must be aware of
+@@ -1067,8 +1069,6 @@ asmlinkage __visible void __init __no_sanitize_address start_kernel(void)
+                panic("Too many boot %s vars at `%s'", panic_later,
+                      panic_param);
 
-So I think the best way would be to have something transparent to the 
-driver. Something handled on the subsystem level?
+-       lockdep_init();
+-
+        /*
+         * Need to run this when irqs are enabled, because it wants
+         * to self-test [hard/soft]-irqs on/off lock inversion bugs
+diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
+index ea3dd55709e7..aa7684c6745d 100644
+--- a/kernel/printk/printk.c
++++ b/kernel/printk/printk.c
+@@ -2705,7 +2705,10 @@ static int console_cpu_notify(unsigned int cpu)
+  */
+ void console_lock(void)
+ {
++       pr_info("before might_sleep()");
+        might_sleep();
++       pr_info("before down_console_sem()");
++       pr_info("before down_console_sem()");
 
-Looking a bit in the other kernel drivers to fish for inspiration and I 
-stumbled upon pinctrl-sunxi driver.[3][4] This driver allows to specify 
-a regulator as power supply per GPIO bank and will enable/disable it if 
-there's a new user/none. The user would just need to add 
-pinctrl-0/pinctrl-names to the device tree node of the device to both 
-configure the GPIO correctly and enable the regulator for the bank this 
-GPIO is attached to.
+        down_console_sem();
+        if (console_suspended)
+@@ -3508,12 +3511,18 @@ int unregister_console(struct console *console)
+        if (console->exit)
+                res = console->exit(console);
 
-Technically, since the pinctrl subsystem has much of its behavior for 
-consumers abstracted, this would make it a good fit for doing things 
-transparently for drivers. The plan would be to have the IO domain 
-driver expose pinctrl configuration nodes that are linked to a specific 
-IO domain which would enable the appropriate regulator. I feel this is 
-quite a reach/abuse of the pinctrl subsystem. Since the IO domain 
-registers actually are configurable for 3.0V/1.8V, maybe this is 
-actually "pin control" in the broad sense?
++       pr_info("Exiting from unregister_console(), res = %d", res);
++       pr_info("Exiting from unregister_console(), res = %d", res);
++
+        return res;
 
-My suggestion would look like the following (based on rk3399-puma.dtsi):
-'''
-&io_domains {
-	status = "okay";
-	bt656-supply = <&vcc_1v8>;
-	audio-supply = <&vcc_1v8>;
-	sdmmc-supply = <&vcc_sd>;
-	gpio1830-supply = <&vcc_1v8>;
+ out_disable_unlock:
+        console->flags &= ~CON_ENABLED;
+        console_unlock();
 
-	pinctrl_bt656_3v0: pinctrl-bt656-3v0 {
-		pins = "bt656";
-		function = "3v0";
-	};
++       pr_info("Exiting from unregister_console(), res = %d", res);
++       pr_info("Exiting from unregister_console(), res = %d", res);
++
+        return res;
+ }
+ EXPORT_SYMBOL(unregister_console);
 
-	pinctrl_bt656_1v8: pinctrl-bt656-1v8 {
-		pins = "bt656";
-		function = "1v8";
-	};
-};
+Some of the pr_info statements are duplicated to see the output just before
+the console hangs (I assume they're needed to force a buffer flush).
 
-&camera {
-	[...]
-	pinctrl-0 = <&pinctrl_bt656_3v0>;
-	pinctrl-names = "default";
-};
-'''
+This is what I got:
 
-We could also do checks in the driver so that the selected pinmux 
-matches what the HW is capable of (e.g. if an 1.8V regulator supplies 
-the IO domain and the pinctrl is requested for 3.0V it should fail). But 
-that's just implementation details.
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 5.19.0-rc2-dirty (alex@monolith) (aarch64-linux-gnu-gcc (GCC) 12.1.0, GNU ld (GNU Binutils) 2.38) #106 SMP PREEMPT Tue Jun 14 14:03:30 BST 2022
+[    0.000000] Machine model: Pine64 RockPro64 v2.0
+[    0.000000] efi: UEFI not found.
+[    0.000000] earlycon: uart0 at MMIO32 0x00000000ff1a0000 (options '1500000n8')
+[    0.000000] printk: before might_sleep()
+[    0.000000] printk: before down_console_sem()
+[    0.000000] printk: before down_console_sem()
+[    0.000000] printk: bootconsole [uart0] enabled
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000000200000-0x00000000f7ffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xf77cef40-0xf77d0fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000000200000-0x00000000f7ffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000200000-0x00000000f7ffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000200000-0x00000000f7ffffff]
+[    0.000000] On node 0, zone DMA: 512 pages in unavailable ranges
+[    0.000000] cma: Reserved 32 MiB at 0x00000000f0000000
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: MIGRATE_INFO_TYPE not supported.
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 30 pages/cpu s82272 r8192 d32416 u122880
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: ARM erratum 845719
+[    0.000000] Fallback order for Node 0: 0
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 999432
+[    0.000000] Policy zone: DMA
+[    0.000000] Kernel command line: root=PARTUUID=7f4aab92-69d8-47f3-be10-624da40a71f9 rw earlycon rootwait
+[    0.000000] Dentry cache hash table entries: 524288 (order: 10, 4194304 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 3899372K/4061184K available (17600K kernel code, 3994K rwdata, 9648K rodata, 7488K init, 11297K bss, 129044K reserved, 32768K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=6, Nodes=1
+[    0.000000] trace event string verifier disabled
+[    0.000000] Running RCU self tests
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU lockdep checking is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=6.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=6
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+[    0.000000] GICv3: 256 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x00000000fef00000
+[    0.000000] ITS [mem 0xfee20000-0xfee3ffff]
+[    0.000000] ITS@0x00000000fee20000: allocated 65536 Devices @500000 (flat, esz 8, psz 64K, shr 0)
+[    0.000000] ITS: using cache flushing for cmd queue
+[    0.000000] GICv3: using LPI property table @0x00000000004e0000
+[    0.000000] GIC: using cache flushing for LPI property table
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x00000000004f0000
+[    0.000000] GICv3: GIC: PPI partition interrupt-partition-0[0] { /cpus/cpu@0[0] /cpus/cpu@1[1] /cpus/cpu@2[2] /cpus/cpu@3[3] }
+[    0.000000] GICv3: GIC: PPI partition interrupt-partition-1[1] { /cpus/cpu@100[4] /cpus/cpu@101[5] }
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 24.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[    0.000001] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    0.005602] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.006373] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.006789] ... MAX_LOCK_DEPTH:          48
+[    0.007212] ... MAX_LOCKDEP_KEYS:        8192
+[    0.007651] ... CLASSHASH_SIZE:          4096
+[    0.008088] ... MAX_LOCKDEP_ENTRIES:     32768
+[    0.008535] ... MAX_LOCKDEP_CHAINS:      65536
+[    0.008981] ... CHAINHASH_SIZE:          32768
+[    0.009428]  memory used by lock dependency info: 6365 kB
+[    0.010018]  memory used for stack traces: 4224 kB
+[    0.010500]  per task-struct memory footprint: 1920 bytes
+[    0.011059] printk: before might_sleep()
+[    0.011079] printk: before down_console_sem()
+[    0.011477] printk: before down_console_sem()
+[    0.012112] Console: colour dummy device 80x25
+[    0.012984] printk: before might_sleep()
+[    0.013003] printk: before down_console_sem()
+[    0.013399] printk: before down_console_sem()
+[    0.013860] printk: console [tty0] enabled
+[    0.014986] printk: bootconsole [uart0] disabled
+[    0.015564] printk: before might_sleep()
+[    0.015582] printk: before down_console_sem()
 
-I'm looking for an upstreamable solution, would that fit the criteria?
+> 
+> Does the system boot when you avoid "earlycon" parameter?
 
-Does anyone have something else to suggest or some feedback to give?
+It doesn't boot, it hangs and I don't get any output.
 
-Feel free to correct me on my definitions or assumptions :)
+> 
+> 
+> > I've booted a kernel compiled with CONFIG_PROVE_LOCKING=y, as the offending
+> > commit fiddles with locks, but no splat was produced that would explain the
+> > hang. I've also tried to boot a v5,19-rc2 kernel on my odroid-c4, the board
+> > is booting just fine, so I'm guessing it only affects of subset of arm64
+> > boards.
+> 
+> You might try to switch the order of console_init() and lockdep_init()
+> in start_kernel() in init/main.c
 
-I've added some contributors of this driver in Cc, I hope you don't mind.
+Did so above.
 
 Thanks,
-Quentin
-
-[1] 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/soc/rockchip/io-domain.c
-[2] 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/power/rockchip-io-domain.yaml
-[3] 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pinctrl/sunxi/pinctrl-sunxi.c
-[4] 
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/pinctrl/allwinner,sun4i-a10-pinctrl.yaml
+Alex
 
 _______________________________________________
 Linux-rockchip mailing list
