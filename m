@@ -4,68 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 126E7C43334
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EF96C433EF
 	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 08:53:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f5T4TUlQDRilsuCqTa3snmEmaG7AYNOZADRpj1hKNQM=; b=MmlxcRMCzLzLQ3
-	Os7afUiRL/f9Xz3gDEbxhm23x7aMd11ig2KR8qwk5lfXtoAG5z8dPmKiilmLNpLMV1cSF4HS9n6xp
-	xvfHYqLreS69AginOcBHuybvckuLxFym1MvtxNqj3sI4q/F3oTbvA7ev2jWptBahPdSqYzTMyoLCH
-	Qz6K6IkIqdNry9cZIbSz2W/wW55u8vCETcHSIKy6mV7jsUVoaRVq6reFetWVU4wf3rRrRrCLwVGcK
-	02YRs31oF8HvwWsWnjCM5K/PCv8wZzj6dSasSUpRQHA8nsI9mdKjr7qf+hmq/ZlebOdud156h44zh
-	HcvA4E+9IAZvZODOr9Xw==;
+	List-Owner; bh=4Gimiw6ZSHnN6MwYBa6lFYsRiU8rTWuLzv8xpEyGBIA=; b=P53/u2QH6vzeVG
+	Fv8T9+TRZ6e8/GZbAbxu+HrS27e9TGZT8Al5uVjplesEdnyTnAwQ5++vCb43HXyNyejUNsm2ks8of
+	g2h9FKS1r9kW4AWMn+0reMlM8YoqElMt33iE39MH/Dg2iRFF4hN3h0kljGEovX0Xdgdm862kR1ZJk
+	8bUpIvdy8ubiASlrYiDxMN5wMp2I5i8IYcKE2DY2wAqWO4IUT7nCv38cINwDUiHGUPnN9rhF6pxNr
+	a89b411ZSHr2harfiO6UdJ1ianC1sK2gWlJpEESBAA2GRibQLXcpwMpfcsMAdVcExRau93Wd5ctCM
+	w84rOo8HxqJqcX1Wpf+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o12IY-008QeO-4I; Tue, 14 Jun 2022 08:53:18 +0000
-Received: from smtp-out2.suse.de ([195.135.220.29])
+	id 1o12IV-008Qcr-Sb; Tue, 14 Jun 2022 08:53:16 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1237-008IUm-9O
-	for linux-rockchip@lists.infradead.org; Tue, 14 Jun 2022 08:37:22 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
-	by smtp-out2.suse.de (Postfix) with ESMTP id EFEF71F894;
-	Tue, 14 Jun 2022 08:37:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
-	t=1655195836; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9VAXCbvSpeZ6BQdmzTuroDUERnJvufcYFBzvcgCeZIc=;
-	b=dJBi3Ve8G9tUZpeQpfb4pVExJQ4QWW6xsgUbeN2qFwkEVdPxRDnhFu33OgfsShQGAQo79j
-	WlROAXt3O4Xr0VmIfgi2O4OthbiAn6h1BkDFLfwDGK3pPwwb9FpzoSypd5V4jRVClVDcHp
-	sYIqi7Jcy2pR6lomxZvMH9EXUUsY10c=
-Received: from suse.cz (unknown [10.100.201.202])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1o122q-008ICF-6P; Tue, 14 Jun 2022 08:37:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=FnndTGiAcv0zFj0R1+1ow6HlwxWL7sg+rmpa0iPcb6g=; b=h/+uwA9wHTUKJvQvVmGdV1+lvW
+	7o7Bj1lxlfABNXSvX6K6P5o3f17q5/fJEOT7lLleG7EkaaBDjckXZc+Y1+MssLjFBoqdcljN2x9pm
+	J90mCPGBTCMx7MwESMxglEEvDFtHkXnkWjgIhA/bj2N4wEVqYlfRxyiyLcme8wDLahxZICKBNjBi4
+	4JkYeLCo5XBqaSbDiSFRIHBwhM96KGcMQzE8JWEm11BW2ydHk71PXTChSzmea9R0ZCF0jbf9BNeDy
+	dc7vpRBcWNEH3uSMHDt6vexcSFsw47qrfP26q66nMo8W+zGyw2UTjbJgXUxfOC4o+nGou1O7tpRGZ
+	ewCeMOfw==;
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o11JT-007nUE-3z; Tue, 14 Jun 2022 07:50:13 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4a7b:8d3a:acaa:ec46])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by relay2.suse.de (Postfix) with ESMTPS id BF3282C141;
-	Tue, 14 Jun 2022 08:37:16 +0000 (UTC)
-Date: Tue, 14 Jun 2022 10:37:13 +0200
-From: Petr Mladek <pmladek@suse.com>
-To: David Laight <David.Laight@aculab.com>
-Cc: Sergey Senozhatsky <senozhatsky@chromium.org>,
-	John Ogness <john.ogness@linutronix.de>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
-Subject: Re: [BUG] Threaded printk breaks early debugging
-Message-ID: <YqhIuTj+KAAA15J7@alley>
-References: <CAMdYzYpF4FNTBPZsEFeWRuEwSies36QM_As8osPWZSr2q-viEA@mail.gmail.com>
- <87y1y48spg.fsf@jogness.linutronix.de>
- <YqVZ4CyWTiDgngkA@google.com>
- <8735g9mqo0.fsf@jogness.linutronix.de>
- <Yqazr060OLp2Rpbk@google.com>
- <87wndlge43.fsf@jogness.linutronix.de>
- <Yqb9xOBiY/262lhk@google.com>
- <YqcN9mH/aVwBoIMQ@alley>
- <c81870cef50f4e1fac5083f0b780983d@AcuMS.aculab.com>
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1584466016D3;
+	Tue, 14 Jun 2022 08:50:02 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655193002;
+	bh=SzxOOtr+7skGYpIQjWGLYLdEvChiAFV4FuuYZNx0NRw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=BaFUl8phf9ysJG/Lcm78xwePaGR0nbcFRP21s3uubPLh0zQGsjx8ovGJmu7gHFyfT
+	 +gag4goHwTpotDmvAuI4vxD65V2sdwgNPCq1GLaT3V5vNfHlMeqh21QqT3QHQ9OID9
+	 GY6JSfXIqJW60qfL8KDqv7adSVIM4ly2dZ+giOhuhzm6jEkDgHbU76hEUVcI+Bm1RT
+	 k3UyFcfRGexxSnvXvs/Wbwy1qq3MK8QESk/1rf5NbfX6O+betALGZ5l5P1clNCqIm+
+	 oZ1S6dRId8uqXNw50g6iEf5ITnrl9LSff1UVAKwL8PsZF5Lon9k9gEWpjgOHB69Lip
+	 3PjEgJdE2/KpQ==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	hverkuil@xs4all.nl,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	mripard@kernel.org,
+	paul.kocialkowski@bootlin.com,
+	wens@csie.org,
+	jernej.skrabec@gmail.com,
+	samuel@sholland.org,
+	nicolas.dufresne@collabora.com,
+	andrzej.p@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v7 10/17] media: uapi: Move parsed HEVC pixel format out of staging
+Date: Tue, 14 Jun 2022 09:49:40 +0200
+Message-Id: <20220614074947.160316-11-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220614074947.160316-1-benjamin.gaignard@collabora.com>
+References: <20220614074947.160316-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <c81870cef50f4e1fac5083f0b780983d@AcuMS.aculab.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_013721_557311_E84A3BA7 
-X-CRM114-Status: GOOD (  17.68  )
+X-CRM114-CacheID: sfid-20220614_085011_756071_2ADEBFCB 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,47 +101,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon 2022-06-13 16:11:19, David Laight wrote:
-> From: Petr Mladek
-> > Sent: 13 June 2022 11:14
-> ...
-> > Another interesting alternative is the Peter Zijlstra's mode
-> > where all messages are printed to the console "immediately".
-> > They are serialized only by the CPU-reentrant lock.
-> > 
-> > This mode is not good for production system. But it might
-> > be good for debugging. The good thing is that the behavior
-> > is well defined.
-> 
-> ISTM that all messages should be output (even if this means
-> that cpu spin waiting for a serial console) until userspace
-> has a chance to set an option to change the behaviour.
+Move HEVC pixel format since we are ready to stabilize the uAPI
 
-There are systems that do not boot because of softlockups
-caused by slow consoles.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ Documentation/userspace-api/media/v4l/pixfmt-compressed.rst | 5 -----
+ include/media/hevc-ctrls.h                                  | 3 ---
+ include/uapi/linux/videodev2.h                              | 1 +
+ 3 files changed, 1 insertion(+), 8 deletions(-)
 
-I am pretty sure that we will add the option to disable
-printk kthreads sooner or later. But we prefer to improve
-the code so that it works out of box. If we add the option
-already know then people will disable kthreads and
-do not report problematic scenarios.
+diff --git a/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst b/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst
+index 967fc803ef94..c352d91a73d8 100644
+--- a/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst
++++ b/Documentation/userspace-api/media/v4l/pixfmt-compressed.rst
+@@ -215,11 +215,6 @@ Compressed Formats
+ 	See the :ref:`associated Codec Control IDs <v4l2-mpeg-hevc>`.
+ 	Buffers associated with this pixel format must contain the appropriate
+ 	number of macroblocks to decode a full corresponding frame.
+-
+-	.. note::
+-
+-	   This format is not yet part of the public kernel API and it
+-	   is expected to change.
+     * .. _V4L2-PIX-FMT-FWHT:
+ 
+       - ``V4L2_PIX_FMT_FWHT``
+diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+index 140151609c96..a3c829ef531a 100644
+--- a/include/media/hevc-ctrls.h
++++ b/include/media/hevc-ctrls.h
+@@ -13,9 +13,6 @@
+ 
+ #include <linux/videodev2.h>
+ 
+-/* The pixel format isn't stable at the moment and will likely be renamed. */
+-#define V4L2_PIX_FMT_HEVC_SLICE v4l2_fourcc('S', '2', '6', '5') /* HEVC parsed slices */
+-
+ #define V4L2_CID_STATELESS_HEVC_SPS		(V4L2_CID_CODEC_BASE + 1008)
+ #define V4L2_CID_STATELESS_HEVC_PPS		(V4L2_CID_CODEC_BASE + 1009)
+ #define V4L2_CID_STATELESS_HEVC_SLICE_PARAMS	(V4L2_CID_CODEC_BASE + 1010)
+diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
+index 9018aa984db3..37f9f23a67fe 100644
+--- a/include/uapi/linux/videodev2.h
++++ b/include/uapi/linux/videodev2.h
+@@ -712,6 +712,7 @@ struct v4l2_pix_format {
+ #define V4L2_PIX_FMT_FWHT     v4l2_fourcc('F', 'W', 'H', 'T') /* Fast Walsh Hadamard Transform (vicodec) */
+ #define V4L2_PIX_FMT_FWHT_STATELESS     v4l2_fourcc('S', 'F', 'W', 'H') /* Stateless FWHT (vicodec) */
+ #define V4L2_PIX_FMT_H264_SLICE v4l2_fourcc('S', '2', '6', '4') /* H264 parsed slices */
++#define V4L2_PIX_FMT_HEVC_SLICE v4l2_fourcc('S', '2', '6', '5') /* HEVC parsed slices */
+ 
+ /*  Vendor-specific formats   */
+ #define V4L2_PIX_FMT_CPIA1    v4l2_fourcc('C', 'P', 'I', 'A') /* cpia1 YUV */
+-- 
+2.32.0
 
-
-> Oh, and can someone stop the distros hiding the console output.
-> I want to see the 'oops' traceback when I break the kernel!
-
-Different users have different needs. AFAIK, distros hide
-the messages because they scare users and overload support.
-It is probably more effective to enable them only for debugging
-when users notice some malfunction.
-
-I do not know the details. I guess that there were years of
-evolution. The default in SUSE was probably set by some
-project managers or people taking care of boot splash,
-installation, ...
-
-Best Regards,
-Petr
 
 _______________________________________________
 Linux-rockchip mailing list
