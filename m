@@ -4,70 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE4AACCA47A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 06:49:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8580FC43334
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 06:49:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dFc5zguomyC393UhsnHbh5lHU9/iZuy+eLOWEpO8JJE=; b=WjsT1cVPr9+ZMh
-	1M4/KGkw5E3e0VY8dipwaDWGUzsWYQVunyhxtWDOeQNPvtmcHVEElcxgsqlmVybKmu24T7ohomy1z
-	c9p9xYU9muLgvApLAjHF20lh4Ox5uOoFn9Z2mI5AdfLRXfThGrCJJLYQzKmH6PDX8sLrnc1ehTsPj
-	GNyIdxkhoPGqBy9ZbhJXLex3M3QTCbISCvdUvuQMx3vuuKjjr/ymRK1fiHgvzicPRcUZRxkRvYxvI
-	gY7g3rgtMwpyJkQaI0KBzpCf7C4TE6NsXBUkMUdVKth3HS8rnYBiiy2iKelIVAyWNPVSQnnKqAeEK
-	S6LVAqHwRhFoikCYVTJw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=fueHb8lE8kbzvx8QaPRbsYQXaCfNEah5PWXNw7eh9VE=; b=ZXsT1AMfHSteEF
+	2Vc1Fjj0Zv9nNqgS3BYOmvxNyoyRWkR7XZInTHgIBFRyWN0+dLU6goqNRJf+UicGZwMLnh9HBjy7h
+	e4xTP7mz4j/nXoY3u7ODF5AXjAEpTrxER17cCf0aVEBevi1EuCsDvc9ASPMLl0nPlaF1ixBgZVLht
+	lT60tI0v7pJfKS4qpbdYXmBe9HjAqlnPi8RTx0q4Akcb6ECE5DU/Xhb+2a1sD7Unen4bhi4YPpW1F
+	Saf3eKs/rtwju9qIxyU2cdONdhndyeQwtGlROR0wR0KARpflnV6FSVHJ9g9nyfzlJIowY/0fA63HL
+	ev3oMZzfU8lJCXVPKCPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o10Mi-007MZK-Ga; Tue, 14 Jun 2022 06:49:28 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o10Mu-007MnQ-L5; Tue, 14 Jun 2022 06:49:40 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o10ML-007MIZ-3k; Tue, 14 Jun 2022 06:49:06 +0000
+	id 1o10MM-007MK8-Gh; Tue, 14 Jun 2022 06:49:08 +0000
 Received: from beast.luon.net (unknown [IPv6:2a10:3781:2531::8])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sjoerd)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E61526601690;
-	Tue, 14 Jun 2022 07:49:00 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D33A866016AA;
+	Tue, 14 Jun 2022 07:49:02 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655189341;
-	bh=6JoH8pVYTDfQZg2qdKnKizfl/wjaRDGVdAibrRD+O28=;
-	h=From:To:Cc:Subject:Date:From;
-	b=izqkkukWVAY+3n+uXNESHk0uuXaFuw09EUGWp34ISPpwaLPzxQb8+V3DfoThHcGLB
-	 jxDiEWcczKQ09txi+Mvszt1qX18hrxUWnQ1jiJCqqEZ/h990OZVo4dTUMzWQJ7vtDf
-	 BqyRJba0enWnNqfPc97yoROnfEhqnZGQZjnLoWtxE4RQYW0Q6TKCm6PR/EgUIo9hOE
-	 Cl/tadwPJ6YQLKsSVtjXv09a/BEaIndNrehDPPMy/98CDp1eLSHcEsbPJjDpdPDPXJ
-	 9EGvItDMhxuAEYmiBY8mtAOLf6NGQi0EBdLf/DBV/JbKoEYg4oaG3gzjkivc4koPYl
-	 XZdr/pVKBQrIw==
+	s=mail; t=1655189342;
+	bh=HEY57/+pQCdqZeUqLYJAbru4ZTJec0xYbZTMVXt16Ag=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=cByx7Kv+Nf87SMgS2jkmXOjVVEQa88yPCjeTDa2PD53e4clOraP6sQykPydDm7lMH
+	 nAaXYjBHe7Tr+L55Fhe2KammIahnevC35qY+CE8lyY3qBREhQHqvs4/S1u7i0aQIHv
+	 6DNBzZI9JLZptUlOWy/3yqWR+RDbmqfV44ABqW8qG7yBI1qo5ctFx6l8rHPZxnXqjm
+	 +Bb7Ee8WCEn6Hd3L47Oo8iAn0HRl5IwZJjw9sgMEvnOFNXA760MxojE7vK7a9Ryjt9
+	 D2quFLXZeB4OqVsXJfLpRU2YisGtN9fJBzj4JpMPwVcipuBnizCNQ68BomwrAY0Mv0
+	 tHj53OTP4AgKg==
 Received: by beast.luon.net (Postfix, from userid 1000)
-	id 6AB894179E40; Tue, 14 Jun 2022 08:48:58 +0200 (CEST)
+	id 1E97D4179E46; Tue, 14 Jun 2022 08:49:00 +0200 (CEST)
 From: Sjoerd Simons <sjoerd@collabora.com>
 To: linux-rockchip@lists.infradead.org
 Cc: kernel@collabora.com,
 	Akash Gajjar <akash@openedev.com>,
-	Alex Bee <knaerzche@gmail.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Frank Wunderlich <frank-w@public-files.de>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Levin Du <djw@t-chip.com.cn>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Peter Geis <pgwipeout@gmail.com>,
 	Rob Herring <robh+dt@kernel.org>,
-	Samuel Holland <samuel@sholland.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/3] Add support for Radxa ROCK Pi S
-Date: Tue, 14 Jun 2022 08:48:54 +0200
-Message-Id: <20220614064858.1445817-1-sjoerd@collabora.com>
+Subject: [PATCH v2 3/3] arm64: dts: rockchip: rock-pi-s add more peripherals
+Date: Tue, 14 Jun 2022 08:48:57 +0200
+Message-Id: <20220614064858.1445817-4-sjoerd@collabora.com>
 X-Mailer: git-send-email 2.36.1
+In-Reply-To: <20220614064858.1445817-1-sjoerd@collabora.com>
+References: <20220614064858.1445817-1-sjoerd@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220613_234905_369172_E3219E29 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20220613_234906_737377_40692FC3 
+X-CRM114-Status: GOOD (  11.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,29 +79,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This enables the following peripherals:
+* Onboard ethernet support
+* Bluetooth
+* USB 2 port
+* OTG port via type-c connector
+* Hardware watchog
 
-This adds a device-tree for the Radxa Rock Pi S; The first patch was
-originally submitted a few years back but seems to have stalled. I've
-adjusted it to sort the device nodes and drop duplication of dtsi
-properties. The second patch adds support for a bunch of additional
-peripherals.
+Also add aliases for the mmc devices and the ethernet interface
 
-Changes in v2:
-- Split binding documentation into its own commit
+Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
 
-Akash Gajjar (1):
-  arm64: dts: rockchip: add ROCK Pi S DTS support
+---
 
-Sjoerd Simons (2):
-  dt-bindings: arm: rockchip: Add Radxa ROCK Pi S
-  arm64: dts: rockchip: rock-pi-s add more peripherals
+(no changes since v1)
 
- .../devicetree/bindings/arm/rockchip.yaml     |   5 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 256 ++++++++++++++++++
- 3 files changed, 262 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+ .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 52 +++++++++++++++++++
+ 1 file changed, 52 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+index 9095efe25ccd..46ba48b843c5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+@@ -11,6 +11,12 @@ / {
+ 	model = "Radxa ROCK Pi S";
+ 	compatible = "radxa,rockpis", "rockchip,rk3308";
+ 
++	aliases {
++		ethernet0 = &gmac;
++		mmc0 = &emmc;
++		mmc1 = &sdmmc;
++	};
++
+ 	chosen {
+ 		stdout-path = "serial0:1500000n8";
+ 	};
+@@ -132,6 +138,15 @@ &emmc {
+ 	status = "okay";
+ };
+ 
++&gmac {
++	clock_in_out = "output";
++	phy-supply = <&vcc_io>;
++	snps,reset-gpio = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	snps,reset-delays-us = <0 50000 50000>;
++	status = "okay";
++};
++
+ &i2c1 {
+ 	status = "okay";
+ };
+@@ -195,10 +210,47 @@ &sdmmc {
+ 	status = "okay";
+ };
+ 
++&u2phy {
++	status = "okay";
++
++	u2phy_host: host-port {
++		phy-supply = <&vcc5v0_otg>;
++		status = "okay";
++	};
++
++	u2phy_otg: otg-port {
++		phy-supply = <&vcc5v0_otg>;
++		status = "okay";
++	};
++};
++
+ &uart0 {
+ 	status = "okay";
+ };
+ 
+ &uart4 {
+ 	status = "okay";
++
++	bluetooth {
++		compatible = "realtek,rtl8723bs-bt";
++		device-wake-gpios = <&gpio4 RK_PB3 GPIO_ACTIVE_HIGH>;
++		host-wake-gpios = <&gpio4 RK_PB4 GPIO_ACTIVE_HIGH>;
++	};
++};
++
++&usb_host_ehci {
++	status = "okay";
++};
++
++&usb_host_ohci {
++	status = "okay";
++};
++
++&usb20_otg {
++	dr_mode = "peripheral";
++	status = "okay";
++};
++
++&wdt {
++	status = "okay";
+ };
 -- 
 2.36.1
 
