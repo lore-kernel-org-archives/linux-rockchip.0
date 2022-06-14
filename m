@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D8D1CCA47A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 08:38:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 331B6CCA47A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 08:39:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WrTHDbCyJ8ZwA5up9ERS0UEp0ueZu1Q2yLmjkDDN7N8=; b=KCTKhoO6Dvw2/X
-	GKbuOwJ02SmFLgG75qXyzdOG8jfBldeXRIySkWYXTkAWgdUa1aWbxmqCN4XIdL+oOfqPnxRy6o7qH
-	FboICxqZnkLfet1wk7LQaUA9SCzZzmwrwOkProhdoxfcZkovL+dPGvF/vEriXToMtT+VqfPf2OWBD
-	hT+UHFO57aGVFlLFSV4qtYq0rXTST8dm06WkE065Bd/Kczi6nV4beuqaz7V1oS9L2xf7k4kAF4IoW
-	LcQQ2jz2pPcWr+czuya/sy5du6APfptWjM3bwFw9GlZOVre7TPdFycfuXL62rz5nIn3Y95CjRMPP4
-	INmsvdE8oGHbaKQUWl8g==;
+	List-Owner; bh=Z5VVnr2evjpf2/a8pt6i5/+5+EY2Cnt+C6cE2UQpCt4=; b=IJ0Oe400pV8rvO
+	eSfFOdK+oCu1UcN/6C1rvH31xpubxtKHYIpkFngSCSGWyfVlT7+5/5gQAIXM0AXga4T1a3eFY6KtG
+	Mel+/XODDP2gZ42ghqV5VOHx6PfUhnh6HZlqavHAWyt+1DfXPn9LC3zsr+7UoulorphvA/L6x3HG+
+	vLtXMuVXeS1cP7bPhfZqv241uj5hcqologi6Yho+TrBNVVfB4WKn207IIjSLlmGuuQ0z6zJ4LvKXy
+	k47BR72/UrWXXB6pyAmCQpHJo44+hfR65u+KOOFTRJBVOUyeKgMrOnJber+U3b9W9f5NOa8r1sYWP
+	sT0gOu2bGACwZBIBBcPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1246-008J07-1A; Tue, 14 Jun 2022 08:38:22 +0000
+	id 1o125T-008JiZ-0P; Tue, 14 Jun 2022 08:39:47 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o122N-008I1I-3D; Tue, 14 Jun 2022 08:36:37 +0000
+	id 1o122P-008I2R-4s; Tue, 14 Jun 2022 08:36:40 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4a7b:8d3a:acaa:ec46])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5C40F66016B4;
-	Tue, 14 Jun 2022 09:36:33 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5D68866016AD;
+	Tue, 14 Jun 2022 09:36:35 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655195793;
-	bh=pjNKQqJt+fujWp4j47KE/erfcCEMJ6ylcH5fLNYA0qE=;
+	s=mail; t=1655195795;
+	bh=kTK81QSVDEiBs3FKcIITrIMvJ0XxOzSqRvqrNtGhvm4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=l1WE8PnReWEERzHE0tBzu/S6jzAEGOZ0Xqiyve4ZYkmxcpBXwrHkYRkUE98iZh/7V
-	 /5OFC1Dj9tleCbKRdqAtTS3Tw/l9B/M2tveDD5QcUZaLIlxAVh9DP0pZ/5KwTGkr6+
-	 4n93PaBy+0i0FqlNfaI3zTCjkZUt5YUu3wh+BlgkOPlK50TqaORwdCGMJANVoENWZD
-	 nNV/XIQY3CpjCxoQh7cwZU+osuxMjreRWWrY0g9GwXcTrBHxDGiw2bw1xxabiiWMGl
-	 heGa/vhmqsEZnjgei4JXhwbWt3aXXXay9v3yX+gnKc7sz09BTM/6IKcq7DU05/79Fm
-	 39/t0+Il0NLww==
+	b=TZ6KWxPbMxtB/FYHBGqctPAqrOOhy5yZM13orUD8cpA+uUh0FpKKo2JrX/Iud87U/
+	 SJ7Im4yaKMcgig694IeFoVn9qgpnHblO2fcYCw2W7WeSVsMakkr9GrUOIPC+ead1Ku
+	 ft1Tb9UETriwYplQOIupsodcdBwEThJy5D2gJWumtnRXMnkPCZFjCjh9aWU3goFOQi
+	 e1E365pfTV+BulEUWV+KB2Wasq9tBT4/3qgCv6YoRxX2/K/Ga1PXiGkkqvf8xPdmSE
+	 TxAkNjO36kNfjKeyma6HeZzFrCPQMwFyANwg+658J9FoKbMlN7/JbVaZ05wmzmQqbZ
+	 MsbWLrIfEOmkQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -62,16 +62,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v8 04/17] media: uapi: HEVC: Add missing fields in HEVC controls
-Date: Tue, 14 Jun 2022 10:36:01 +0200
-Message-Id: <20220614083614.240641-5-benjamin.gaignard@collabora.com>
+Subject: [PATCH v8 07/17] media: uapi: HEVC: Add SEI pic struct flags
+Date: Tue, 14 Jun 2022 10:36:04 +0200
+Message-Id: <20220614083614.240641-8-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220614083614.240641-1-benjamin.gaignard@collabora.com>
 References: <20220614083614.240641-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_013635_441151_D46BE9FC 
-X-CRM114-Status: GOOD (  14.36  )
+X-CRM114-CacheID: sfid-20220614_013637_505343_07E55DC0 
+X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,124 +89,113 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Complete the HEVC controls with missing fields from H.265 specifications.
-Even if these fields aren't used by the current mainlined drivers
-they will be required for (at least) the rkvdec driver.
+The possible values for the field_pic field in the v4l2_hevc_dpb_entry
+structure are defined in the table D.2 in HEVC specification section D.3.3.
+Add flags and documentation for each of them.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
-version 6:
-- Add short_term_ref_pic_set_size and long_term_ref_pic_set_size
-  in v4l2_ctrl_hevc_decode_params structure.
-
- .../media/v4l/ext-ctrls-codec.rst             | 32 +++++++++++++++++++
- include/media/hevc-ctrls.h                    |  8 ++++-
- 2 files changed, 39 insertions(+), 1 deletion(-)
+ .../media/v4l/ext-ctrls-codec.rst             | 54 +++++++++++++++++++
+ include/media/hevc-ctrls.h                    | 14 +++++
+ 2 files changed, 68 insertions(+)
 
 diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-index 6183f43f4d73..aa7556e200c9 100644
+index a7803b241612..1ccf6dda61b3 100644
 --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
 +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-@@ -2683,6 +2683,16 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-     :stub-columns: 0
-     :widths:       1 1 2
- 
-+    * - __u8
-+      - ``video_parameter_set_id``
-+      - Specifies the value of the vps_video_parameter_set_id of the active VPS
-+        as descibed in section "7.4.3.2.1 General sequence parameter set RBSP semantics"
-+        of H.265 specifications.
-+    * - __u8
-+      - ``seq_parameter_set_id``
-+      - Provides an identifier for the SPS for reference by other syntax elements
-+        as descibed in section "7.4.3.2.1 General sequence parameter set RBSP semantics"
-+        of H.265 specifications.
+@@ -3218,6 +3218,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     * - __u8
+       - ``field_pic``
+       - Whether the reference is a field picture or a frame.
++        See :ref:`HEVC dpb field pic Flags <hevc_dpb_field_pic_flags>`
      * - __u16
-       - ``pic_width_in_luma_samples``
-       -
-@@ -2822,6 +2832,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-     :stub-columns: 0
-     :widths:       1 1 2
+       - ``pic_order_cnt[2]``
+       - The picture order count of the reference. Only the first element of the
+@@ -3231,6 +3232,59 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
  
-+    * - __u8
-+      - ``pic_parameter_set_id``
-+      - Identifies the PPS for reference by other syntax elements.
-     * - __u8
-       - ``num_extra_slice_header_bits``
-       -
-@@ -3048,6 +3061,15 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-     * - __u8
-       - ``ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
-       - The list of L1 reference elements as indices in the DPB.
-+    * - __u16
-+      - ``short_term_ref_pic_set_size``
-+      - Specifies the size, in bits, of the short-term reference picture set, described as st_ref_pic_set()
-+        in the specification, included in the slice header or SPS (section 7.3.6.1).
-+    * - __u16
-+      - ``long_term_ref_pic_set_size``
-+      - Specifies the size, in bits, of the long-term reference picture set include in the slice header
-+        or SPS. It is the number of bits in the conditional block if(long_term_ref_pics_present_flag)
-+        in section 7.3.6.1 of the specification.
-     * - __u8
-       - ``padding``
-       - Applications and drivers must set this to zero.
-@@ -3385,6 +3407,16 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-       - ``pic_order_cnt_val``
-       - PicOrderCntVal as described in section 8.3.1 "Decoding process
-         for picture order count" of the specification.
-+    * - __u16
-+      - ``short_term_ref_pic_set_size``
-+      - Specifies the size, in bits, of the short-term reference picture set, of the first slice
-+        described as st_ref_pic_set() in the specification, included in the slice header
-+        or SPS (section 7.3.6.1).
-+    * - __u16
-+      - ``long_term_ref_pic_set_size``
-+      - Specifies the size, in bits, of the long-term reference picture set, of the first slice
-+        included in the slice header or SPS. It is the number of bits in the conditional block
-+        if(long_term_ref_pics_present_flag) in section 7.3.6.1 of the specification.
-     * - __u8
-       - ``num_active_dpb_entries``
-       - The number of entries in ``dpb``.
+     \normalsize
+ 
++.. _hevc_dpb_field_pic_flags:
++
++``HEVC dpb field pic Flags``
++
++.. raw:: latex
++
++    \scriptsize
++
++.. flat-table::
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       1 1 2
++
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_FRAME``
++      - 0
++      - (progressive) Frame
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_FIELD``
++      - 1
++      - Top field
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_FIELD``
++      - 2
++      - Bottom field
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_BOTTOM``
++      - 3
++      - Top field, bottom field, in that order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_TOP``
++      - 4
++      - Bottom field, top field, in that order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_BOTTOM_TOP``
++      - 5
++      - Top field, bottom field, top field repeated, in that order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_TOP_BOTTOM``
++      - 6
++      - Bottom field, top field, bottom field repeated, in that order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_FRAME_DOUBLING``
++      - 7
++      - Frame doubling
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_FRAME_TRIPLING``
++      - 8
++      - Frame tripling
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_PAIRED_PREVIOUS_BOTTOM``
++      - 9
++      - Top field paired with previous bottom field in output order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_PAIRED_PREVIOUS_TOP``
++      - 10
++      - Bottom field paired with previous top field in output order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_PAIRED_NEXT_BOTTOM``
++      - 11
++      - Top field paired with next bottom field in output order
++    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_PAIRED_NEXT_TOP``
++      - 12
++      - Bottom field paired with next top field in output order
++
+ .. c:type:: v4l2_hevc_pred_weight_table
+ 
+ .. raw:: latex
 diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-index 01ccda48d8c5..752a8d10782c 100644
+index 01c1795c57a9..f3695ab44389 100644
 --- a/include/media/hevc-ctrls.h
 +++ b/include/media/hevc-ctrls.h
-@@ -58,6 +58,8 @@ enum v4l2_mpeg_video_hevc_start_code {
- /* The controls are not stable at the moment and will likely be reworked. */
- struct v4l2_ctrl_hevc_sps {
- 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Sequence parameter set */
-+	__u8	video_parameter_set_id;
-+	__u8	seq_parameter_set_id;
- 	__u16	pic_width_in_luma_samples;
- 	__u16	pic_height_in_luma_samples;
- 	__u8	bit_depth_luma_minus8;
-@@ -108,6 +110,7 @@ struct v4l2_ctrl_hevc_sps {
+@@ -132,6 +132,20 @@ struct v4l2_ctrl_hevc_pps {
  
- struct v4l2_ctrl_hevc_pps {
- 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture parameter set */
-+	__u8	pic_parameter_set_id;
- 	__u8	num_extra_slice_header_bits;
- 	__u8	num_ref_idx_l0_default_active_minus1;
- 	__u8	num_ref_idx_l1_default_active_minus1;
-@@ -199,7 +202,8 @@ struct v4l2_ctrl_hevc_slice_params {
- 	__u32	slice_segment_addr;
- 	__u8	ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
- 	__u8	ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
--
-+	__u16	short_term_ref_pic_set_size;
-+	__u16	long_term_ref_pic_set_size;
- 	__u8	padding;
+ #define V4L2_HEVC_DPB_ENTRY_LONG_TERM_REFERENCE	0x01
  
- 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction parameter */
-@@ -214,6 +218,8 @@ struct v4l2_ctrl_hevc_slice_params {
++#define V4L2_HEVC_SEI_PIC_STRUCT_FRAME				0
++#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_FIELD			1
++#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_FIELD			2
++#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_BOTTOM			3
++#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_TOP			4
++#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_BOTTOM_TOP			5
++#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_TOP_BOTTOM		6
++#define V4L2_HEVC_SEI_PIC_STRUCT_FRAME_DOUBLING			7
++#define V4L2_HEVC_SEI_PIC_STRUCT_FRAME_TRIPLING			8
++#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_PAIRED_PREVIOUS_BOTTOM	9
++#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_PAIRED_PREVIOUS_TOP	10
++#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_PAIRED_NEXT_BOTTOM		11
++#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_PAIRED_NEXT_TOP		12
++
+ #define V4L2_HEVC_DPB_ENTRIES_NUM_MAX		16
  
- struct v4l2_ctrl_hevc_decode_params {
- 	__s32	pic_order_cnt_val;
-+	__u16	short_term_ref_pic_set_size;
-+	__u16	long_term_ref_pic_set_size;
- 	__u8	num_active_dpb_entries;
- 	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
- 	__u8	num_poc_st_curr_before;
+ struct v4l2_hevc_dpb_entry {
 -- 
 2.32.0
 
