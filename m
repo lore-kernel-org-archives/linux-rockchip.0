@@ -4,54 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACF39C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jun 2022 23:11:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E31FCCCA473
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jun 2022 23:12:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GEhwc5iIkUBXvJ13plBb+dnKpijtV36bzt5wccOxezk=; b=RDVrmb+XyJopDw
-	0+T77d5OpvONHcYR92duRf2si3xt46Za6EJwKMIZzjQUbdsym+X6sYjx3+r7mcauCp39pzobPYSwn
-	EfqCPvlEBwrHpYphltBuYZhYRvndC+uLNHgyMp+doZGA5LtHFu7M/t+5e2v1Zbub2+qZlxEySWDrx
-	rsWqpqQITW1pBBvhZ0TN6/yaw6Ir5EQ5y2ex5Awv/AHoFtCHB+M6Ys8TkrCWUXcbKgjm+5iR0eu4y
-	bZN22zP/OS+WVS1CMgaUs67wOA2cXoLlLpoB42yO6ZojT23wPPDoU+CxIgkracAfjQXv0mmu9UlGE
-	btMWbOs90GyYfhYFEZ7w==;
+	List-Owner; bh=ENRA4MHOgahye/2r84SS/W1ZWS82SkFS0vHSWwqdrMU=; b=4YrLI5bekyMfNb
+	Ay5m6ek9IraJi695Nub+yUyC7480Yfx7TcwRlLjthPSn6cXfTvCLXfh7QE3O4hBccOgVTKOPMj2qp
+	rnC5NBOzzR2MNJixIxEYu6spy89WXiDmgH4lvPaH84OWoMrqbUzWp30fcwTLHddIIuZwyiXrPXepW
+	Cp/F4LMl8KcYzLccYnBIqiZVzf0fDC2Jo7KIfqExfGkuEXElc9834f59GINmg/ZW2fh/uH56ZFpdE
+	BFh27Cbutcx1wKMr5e1hTLfMlvdM8CPFk4siiyZaWpcMlovZtbfH3qwwOTJISwmH4uQF87cp4QnjA
+	pn3NbPtN3vdvp+CP8mjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1cA1-00GnPS-Pc; Wed, 15 Jun 2022 23:10:53 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1o1cBN-00Gng4-J7; Wed, 15 Jun 2022 23:12:17 +0000
+Received: from mail-mw2nam12on2061f.outbound.protection.outlook.com ([2a01:111:f400:fe5a::61f] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1c9y-00GnOj-Iu
-	for linux-rockchip@lists.infradead.org; Wed, 15 Jun 2022 23:10:52 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 81293415;
-	Thu, 16 Jun 2022 01:10:48 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1655334648;
-	bh=O7ZNOUpuPlxSnW/P1dmlHqXBPaYA+WfcHmaUeCCsrt0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fZ37+IBbHEFY2/Pdj/5/zLhrEKTHdYjW895/mY3qaO4XMf2BxwJcPAYzwYlG0RfDV
-	 goD9QhIbkf+1WARDnjMPcYzMmYuLwbY9doZJazjVR23Ppva3Txj1dZIdpMbcc6BoRN
-	 Bx371hJ5E6RcHKTyzdAkQffOyFJU8GCwxwipekbU=
-Date: Thu, 16 Jun 2022 02:10:38 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Paul Elder <paul.elder@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, dafna@fastmail.com, heiko@sntech.de,
-	jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
-	djrscally@gmail.com, helen.koike@collabora.com,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 41/55] media: rkisp1: csi: Plumb the CSI RX subdev
-Message-ID: <Yqpm7m8txqrtScR/@pendragon.ideasonboard.com>
-References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
- <20220614191127.3420492-42-paul.elder@ideasonboard.com>
+	id 1o1cBK-00Gne2-B1; Wed, 15 Jun 2022 23:12:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=H7w8UqLNcDPkaQ2Su50IekXjTBAGLMsb9foC+vtTDKLLWzY9RE3403Caqhhryzyn+BNQrBOhLbNw3rtJvghf4MIZ5S48PR13jaLnK3pJgNS7YwspJyGcI3SZnbcu55dUImC5QDzEF6m1P8LMSR+155xvOJeJkot6Is7BcyW9hqnxhVxJKe9c/rVim2yP6o9AK5AAiV7BEJLn71UJdpt5mLlganCvc9VMJoBqoHoeW0VfQttwyqS7dwxzFVoct8iaNmBSvbJuj90RJWVvZ+6DhRrSC6Y292t/qZ9EeP30v/89raZxniaPvA+klkMFn6um0vtuz0En+R4Clj0g9iQ0dA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=dv+4zVQ8yma2CGjUc5/QHeUPsUtTcuF3IrwnT53JeW0=;
+ b=UG3uCrVWj+/yLmZYpK8PIlVS/OvB9s3vPt0r2UAEA46xOuXIlybKxU5PWzVVs/II7a6dWaedcbRweDw9D4GIT3fn6TkSD+Z59AHmX4uTEMrdp7Hi1PbM8eM1BpyC4SJakTgW2aGTW5xR/hxU6WD5OxWhWVGPlrdFDn2MFOxd0VrfODa7mICMYKY0OsmH2vkljjMQELDg/cnQzkDrDJElA4/tUa9yg3UJ+P+8TMt/JUwwQfNzFOhPDGFeR/2RXkAOevXg6INRqj9ug5wyLBWxIt6i89oibSAS0AzxSymvKFWHkEc/SovyMjRg6g2YPAj9PPujWbD9oVvcrLGwCAEiWQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 12.22.5.236) smtp.rcpttodomain=gmail.com smtp.mailfrom=nvidia.com; dmarc=pass
+ (p=reject sp=reject pct=100) action=none header.from=nvidia.com; dkim=none
+ (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dv+4zVQ8yma2CGjUc5/QHeUPsUtTcuF3IrwnT53JeW0=;
+ b=nsT7NCzMa2c/i7L8h5EXK5ADt8e0fb+vTzgcrGfd3EMZ2kR3vQNb3WhtFVz8uuCyNDHSAAf1F6REUDrG7P6SFfXy6LmLbJQ4qNQcBQTQedQIo8xrvvdtBHWKC0cfgBY+tseEaACzijh6rHX31PV8EFoVQJHZB6b5dvwLEEoRNAPBZsVGulGmUsbhrty8eECliO8SG38Xv/JaK5Mk2l0OU8hppn+HySYTUFIdc0lpV12Cw/FupdzK7fSwEzGaeMNGgXsJWyBpRk190nwW9nYsol/rc+aayjnu5zer56Th21d9FfeVjMaUTOBqC38rJ2GbnsLWNoCK9rRfaHRICyWEtg==
+Received: from BN9P222CA0024.NAMP222.PROD.OUTLOOK.COM (2603:10b6:408:10c::29)
+ by DM6PR12MB4105.namprd12.prod.outlook.com (2603:10b6:5:217::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.13; Wed, 15 Jun
+ 2022 23:12:08 +0000
+Received: from BN8NAM11FT061.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:10c:cafe::45) by BN9P222CA0024.outlook.office365.com
+ (2603:10b6:408:10c::29) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5353.14 via Frontend
+ Transport; Wed, 15 Jun 2022 23:12:08 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 12.22.5.236)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 12.22.5.236 as permitted sender) receiver=protection.outlook.com;
+ client-ip=12.22.5.236; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (12.22.5.236) by
+ BN8NAM11FT061.mail.protection.outlook.com (10.13.177.144) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.20.5332.12 via Frontend Transport; Wed, 15 Jun 2022 23:12:07 +0000
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ DRHQMAIL109.nvidia.com (10.27.9.19) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.32; Wed, 15 Jun 2022 23:12:06 +0000
+Received: from drhqmail201.nvidia.com (10.126.190.180) by
+ drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.22; Wed, 15 Jun 2022 16:12:06 -0700
+Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com
+ (10.126.190.180) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.22 via Frontend
+ Transport; Wed, 15 Jun 2022 16:12:04 -0700
+Date: Wed, 15 Jun 2022 16:12:03 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: "Tian, Kevin" <kevin.tian@intel.com>
+CC: Jason Gunthorpe <jgg@nvidia.com>, "joro@8bytes.org" <joro@8bytes.org>,
+	"will@kernel.org" <will@kernel.org>, "marcan@marcan.st" <marcan@marcan.st>,
+	"sven@svenpeter.dev" <sven@svenpeter.dev>, "robin.murphy@arm.com"
+	<robin.murphy@arm.com>, "robdclark@gmail.com" <robdclark@gmail.com>,
+	"m.szyprowski@samsung.com" <m.szyprowski@samsung.com>,
+	"krzysztof.kozlowski@linaro.org" <krzysztof.kozlowski@linaro.org>,
+	"baolu.lu@linux.intel.com" <baolu.lu@linux.intel.com>, "agross@kernel.org"
+	<agross@kernel.org>, "bjorn.andersson@linaro.org"
+	<bjorn.andersson@linaro.org>, "matthias.bgg@gmail.com"
+	<matthias.bgg@gmail.com>, "heiko@sntech.de" <heiko@sntech.de>,
+	"orsonzhai@gmail.com" <orsonzhai@gmail.com>, "baolin.wang7@gmail.com"
+	<baolin.wang7@gmail.com>, "zhang.lyra@gmail.com" <zhang.lyra@gmail.com>,
+	"wens@csie.org" <wens@csie.org>, "jernej.skrabec@gmail.com"
+	<jernej.skrabec@gmail.com>, "samuel@sholland.org" <samuel@sholland.org>,
+	"jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+	"alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+	"virtualization@lists.linux-foundation.org"
+	<virtualization@lists.linux-foundation.org>, "thierry.reding@gmail.com"
+	<thierry.reding@gmail.com>, "alim.akhtar@samsung.com"
+	<alim.akhtar@samsung.com>, "alyssa@rosenzweig.io" <alyssa@rosenzweig.io>,
+	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+	"linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+	"kvm@vger.kernel.org" <kvm@vger.kernel.org>, "jonathanh@nvidia.com"
+	<jonathanh@nvidia.com>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "gerald.schaefer@linux.ibm.com"
+	<gerald.schaefer@linux.ibm.com>, "linux-sunxi@lists.linux.dev"
+	<linux-sunxi@lists.linux.dev>, "linux-arm-msm@vger.kernel.org"
+	<linux-arm-msm@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-tegra@vger.kernel.org"
+	<linux-tegra@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "cohuck@redhat.com"
+	<cohuck@redhat.com>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "iommu@lists.linux-foundation.org"
+	<iommu@lists.linux-foundation.org>, "dwmw2@infradead.org"
+	<dwmw2@infradead.org>
+Subject: Re: [PATCH 3/5] vfio/iommu_type1: Prefer to reuse domains vs match
+ enforced cache coherency
+Message-ID: <YqpnQ63gx/3HUWOA@Asurada-Nvidia>
+References: <20220606061927.26049-1-nicolinc@nvidia.com>
+ <20220606061927.26049-4-nicolinc@nvidia.com>
+ <BN9PR11MB5276DC98E75B1906A76F7ADC8CA49@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20220608111724.GL1343366@nvidia.com>
+ <DM4PR11MB52781590FB8FB197579DEE848CA49@DM4PR11MB5278.namprd11.prod.outlook.com>
+ <YqjzXpzuBa4ATf9o@Asurada-Nvidia>
+ <BN9PR11MB527694346588A803F0EDD95E8CAD9@BN9PR11MB5276.namprd11.prod.outlook.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220614191127.3420492-42-paul.elder@ideasonboard.com>
+In-Reply-To: <BN9PR11MB527694346588A803F0EDD95E8CAD9@BN9PR11MB5276.namprd11.prod.outlook.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 589330ed-c0b8-46ee-7f51-08da4f247844
+X-MS-TrafficTypeDiagnostic: DM6PR12MB4105:EE_
+X-Microsoft-Antispam-PRVS: 	<DM6PR12MB4105AB8011A048D7553121ADABAD9@DM6PR12MB4105.namprd12.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	UiXDI9NvcScFVEI7OCm3l0nGJn6kYhAX4y5QwDkwSstAzqwE0gV32FjlfOCVs0htCBHLnUbvHDlFqWVjeaAATuhRY134npZAfNAyhRKU+6FiXt18woerTIMQGBO4zbUHZH8TPTBrg2qWcOEEnNKoPKh0ULiqKvjRzfrYUrKtAqFFOq6YGtvYHqCAwJa5vE+XMPpv7NB00Hng4nmOv35wSyrZF4MKhlrZNXjWKfbreL09WO6L5nz6Mz1pC+69qYDyu5T/SqcUWFnh5pHLTf24BSrVIZYdj4VMMZyRitKFl+iJu1Zd0BE9Z+KVX+ktBHr0LobO3vA+P9pazy/ToQ7jHKmUS0Cp+KF5D7fseLJf7dEDyhCsZnig/UUryIgUYuf0EC1J94yU64OJ0jZMOc30R1cTeA765mC+H8GknODLWRUuGjvZY3Gtj1NvlIqn6ztR5n1KSMKWumYLBKSM6j4cHJ1a9iH7S015nR1DAmwFmfPIor88XxltP4Bi1xkORpzLaacxMDVohHLwSOWfwWuuF1L/drc3TcpM9GBpMrXhBiKYl6NCXu1kYvG/SwDCuw5hZ48Wvmqf2jWg0mnsKkB05m969uotJ6bmYvVUI2nKnhv7plnDL27l2MN3S8Ibu7ko4yCzsrVb6DPz0LMcgoO9iyCGpLf5PN9v4WboSidDnQrkyNON/LgVEm2ghCQNjiMU/TV1POURv6Bg11NHUvUL3w==
+X-Forefront-Antispam-Report: 	CIP:12.22.5.236;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:InfoNoRecords;CAT:NONE;SFS:(13230016)(4636009)(36840700001)(46966006)(40470700004)(33716001)(426003)(47076005)(336012)(83380400001)(86362001)(316002)(4326008)(2906002)(186003)(8676002)(70206006)(55016003)(36860700001)(54906003)(356005)(8936002)(26005)(6916009)(5660300002)(70586007)(40460700003)(7406005)(81166007)(9686003)(82310400005)(508600001)(7416002)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jun 2022 23:12:07.9799
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 589330ed-c0b8-46ee-7f51-08da4f247844
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[12.22.5.236];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT061.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4105
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_161050_823380_752C3C44 
-X-CRM114-Status: GOOD (  28.58  )
+X-CRM114-CacheID: sfid-20220615_161214_619331_EE5CB25F 
+X-CRM114-Status: GOOD (  28.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,268 +161,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Paul,
-
-Thank you for the patch.
-
-On Wed, Jun 15, 2022 at 04:11:13AM +0900, Paul Elder wrote:
-> From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+On Wed, Jun 15, 2022 at 07:35:00AM +0000, Tian, Kevin wrote:
+> External email: Use caution opening links or attachments
 > 
-> Connect the CSI receiver subdevice into the rest of the driver. This
-> includes:
-> - calling the subdevice via the v4l2 subdev API
-> - moving the async notifier for the sensor from the ISP to the CSI
->   receiver
-> - in the ISP, create a media link to the CSI receiver, and remove the
->   media link creation to the sensor
-> - in the CSI receiver, create a media link to the sensor
 > 
-> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> ---
->  .../platform/rockchip/rkisp1/rkisp1-csi.c     | 34 ++++++++++++++++--
->  .../platform/rockchip/rkisp1/rkisp1-csi.h     |  6 ++--
->  .../platform/rockchip/rkisp1/rkisp1-dev.c     | 36 +++++++++----------
->  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 21 ++---------
->  4 files changed, 53 insertions(+), 44 deletions(-)
+> > From: Nicolin Chen <nicolinc@nvidia.com>
+> > Sent: Wednesday, June 15, 2022 4:45 AM
+> >
+> > Hi Kevin,
+> >
+> > On Wed, Jun 08, 2022 at 11:48:27PM +0000, Tian, Kevin wrote:
+> > > > > > The KVM mechanism for controlling wbinvd is only triggered during
+> > > > > > kvm_vfio_group_add(), meaning it is a one-shot test done once the
+> > > > devices
+> > > > > > are setup.
+> > > > >
+> > > > > It's not one-shot. kvm_vfio_update_coherency() is called in both
+> > > > > group_add() and group_del(). Then the coherency property is
+> > > > > checked dynamically in wbinvd emulation:
+> > > >
+> > > > From the perspective of managing the domains that is still
+> > > > one-shot. It doesn't get updated when individual devices are
+> > > > added/removed to domains.
+> > >
+> > > It's unchanged per-domain but dynamic per-vm when multiple
+> > > domains are added/removed (i.e. kvm->arch.noncoherent_dma_count).
+> > > It's the latter being checked in the kvm.
+> >
+> > I am going to send a v2, yet not quite getting the point here.
+> > Meanwhile, Jason is on leave.
+> >
+> > What, in your opinion, would be an accurate description here?
+> >
 > 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-> index 8182694a6fe0..96712b467dde 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-> @@ -43,6 +43,34 @@ rkisp1_csi_get_pad_fmt(struct rkisp1_csi *csi,
->  		return v4l2_subdev_get_try_format(&csi->sd, &state, pad);
->  }
->  
-> +int rkisp1_csi_link_sensor(struct rkisp1_device *rkisp1, struct v4l2_subdev *sd,
-> +			   struct rkisp1_sensor_async *s_asd,
-> +			   unsigned int source_pad)
-> +{
-> +	struct rkisp1_csi *csi = &rkisp1->csi;
-> +	int ret;		
-
-There's trailing whitespace here.
-
-> +
-> +	s_asd->pixel_rate_ctrl = v4l2_ctrl_find(sd->ctrl_handler,
-> +						V4L2_CID_PIXEL_RATE);
-> +	if (!s_asd->pixel_rate_ctrl) {
-> +		dev_err(rkisp1->dev, "No pixel rate control in subdev %s\n",
-> +			sd->name);
-> +		return -EINVAL;
-> +	}
-> +
-> +	/* Create the link from the sensor to the CSI receiver. */
-> +	ret = media_create_pad_link(&sd->entity, source_pad,
-> +				    &csi->sd.entity, RKISP1_CSI_PAD_SINK,
-> +				    !s_asd->index ? MEDIA_LNK_FL_ENABLED : 0);
-> +	if (ret) {
-> +		dev_err(csi->rkisp1->dev, "failed to link src pad of %s\n",
-> +			sd->name);
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->  static int rkisp1_csi_config(struct rkisp1_csi *csi,
->  			     const struct rkisp1_sensor_async *sensor)
->  {
-> @@ -118,8 +146,8 @@ static void rkisp1_csi_disable(struct rkisp1_csi *csi)
->  		     val & (~RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA));
->  }
->  
-> -int rkisp1_csi_start(struct rkisp1_csi *csi,
-> -		     const struct rkisp1_sensor_async *sensor)
-> +static int rkisp1_csi_start(struct rkisp1_csi *csi,
-> +			    const struct rkisp1_sensor_async *sensor)
->  {
->  	struct rkisp1_device *rkisp1 = csi->rkisp1;
->  	union phy_configure_opts opts;
-> @@ -155,7 +183,7 @@ int rkisp1_csi_start(struct rkisp1_csi *csi,
->  	return 0;
->  }
->  
-> -void rkisp1_csi_stop(struct rkisp1_csi *csi)
-> +static void rkisp1_csi_stop(struct rkisp1_csi *csi)
->  {
->  	rkisp1_csi_disable(csi);
->  
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
-> index ddf8e5e08f55..eadcd24f65fb 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
-> @@ -21,8 +21,8 @@ void rkisp1_csi_cleanup(struct rkisp1_device *rkisp1);
->  int rkisp1_csi_register(struct rkisp1_device *rkisp1);
->  void rkisp1_csi_unregister(struct rkisp1_device *rkisp1);
->  
-> -int rkisp1_csi_start(struct rkisp1_csi *csi,
-> -		     const struct rkisp1_sensor_async *sensor);
-> -void rkisp1_csi_stop(struct rkisp1_csi *csi);
-> +int rkisp1_csi_link_sensor(struct rkisp1_device *rkisp1, struct v4l2_subdev *sd,
-> +			   struct rkisp1_sensor_async *s_asd,
-> +			   unsigned int source_pad);
->  
->  #endif /* _RKISP1_CSI_H */
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> index faf2cd4c8149..a3e182c86bdd 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> @@ -17,6 +17,7 @@
->  #include <linux/pinctrl/consumer.h>
->  #include <linux/pm_runtime.h>
->  #include <media/v4l2-fwnode.h>
-> +#include <media/v4l2-mc.h>
->  
->  #include "rkisp1-common.h"
->  #include "rkisp1-csi.h"
-> @@ -119,17 +120,8 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
->  		container_of(asd, struct rkisp1_sensor_async, asd);
->  	int source_pad;
->  
-> -	s_asd->pixel_rate_ctrl = v4l2_ctrl_find(sd->ctrl_handler,
-> -						V4L2_CID_PIXEL_RATE);
-> -	if (!s_asd->pixel_rate_ctrl) {
-> -		dev_err(rkisp1->dev, "No pixel rate control in subdev %s\n",
-> -			sd->name);
-> -		return -EINVAL;
-> -	}
-> -
->  	s_asd->sd = sd;
->  
-> -	/* Create the link to the sensor. */
->  	source_pad = media_entity_get_fwnode_pad(&sd->entity, s_asd->source_ep,
->  						 MEDIA_PAD_FL_SOURCE);
->  	if (source_pad < 0) {
-> @@ -138,10 +130,7 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
->  		return source_pad;
->  	}
->  
-> -	return media_create_pad_link(&sd->entity, source_pad,
-> -				     &rkisp1->isp.sd.entity,
-> -				     RKISP1_ISP_PAD_SINK_VIDEO,
-> -				     !s_asd->index ? MEDIA_LNK_FL_ENABLED : 0);
-> +	return rkisp1_csi_link_sensor(rkisp1, sd, s_asd, source_pad);
->  }
->  
->  static int rkisp1_subdev_notifier_complete(struct v4l2_async_notifier *notifier)
-> @@ -283,6 +272,14 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
->  	unsigned int i;
->  	int ret;
->  
-> +	/* Link the CSI receiver to the ISP. */
-> +	ret = media_create_pad_link(&rkisp1->csi.sd.entity, RKISP1_CSI_PAD_SRC,
-> +				    &rkisp1->isp.sd.entity,
-> +				    RKISP1_ISP_PAD_SINK_VIDEO,
-> +				    MEDIA_LNK_FL_ENABLED);
-> +	if (ret)
-> +		return ret;
-> +
->  	/* create ISP->RSZ->CAP links */
->  	for (i = 0; i < 2; i++) {
->  		struct media_entity *resizer =
-> @@ -364,13 +361,6 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
->  	if (ret)
->  		goto error;
->  
-> -	ret = rkisp1_subdev_notifier_register(rkisp1);
-> -	if (ret) {
-> -		dev_err(rkisp1->dev,
-> -			"Failed to register subdev notifier(%d)\n", ret);
-> -		goto error;
-> -	}
-> -
->  	return 0;
->  
->  error:
-> @@ -534,10 +524,16 @@ static int rkisp1_probe(struct platform_device *pdev)
->  	if (ret)
->  		goto err_cleanup_csi;
->  
-> +	ret = rkisp1_subdev_notifier_register(rkisp1);
-> +	if (ret)
-> +		goto err_unreg_entities;
-> +
->  	rkisp1_debug_init(rkisp1);
->  
->  	return 0;
->  
-> +err_unreg_entities:
-> +	rkisp1_entities_unregister(rkisp1);
->  err_cleanup_csi:
->  	rkisp1_csi_cleanup(rkisp1);
->  err_unreg_media_dev:
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> index 5afb8be311c7..260c9ce0dca4 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> @@ -16,7 +16,6 @@
->  #include <media/v4l2-event.h>
->  
->  #include "rkisp1-common.h"
-> -#include "rkisp1-csi.h"
->  
->  #define RKISP1_DEF_SINK_PAD_FMT MEDIA_BUS_FMT_SRGGB10_1X10
->  #define RKISP1_DEF_SRC_PAD_FMT MEDIA_BUS_FMT_YUYV8_2X8
-> @@ -728,16 +727,12 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
->  {
->  	struct rkisp1_isp *isp = to_rkisp1_isp(sd);
->  	struct rkisp1_device *rkisp1 = isp->rkisp1;
-> -	const struct rkisp1_sensor_async *asd;
->  	struct media_pad *source_pad;
->  	int ret;
->  
->  	if (!enable) {
->  		v4l2_subdev_call(rkisp1->source, video, s_stream, false);
-> -
-> -		rkisp1_csi_stop(&rkisp1->csi);
->  		rkisp1_isp_stop(isp);
-> -
->  		return 0;
->  	}
->  
-> @@ -754,30 +749,20 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
->  		return -EPIPE;
->  	}
->  
-> -	asd = container_of(rkisp1->source->asd, struct rkisp1_sensor_async,
-> -			   asd);
-> -
-> -	if (asd->mbus_type != V4L2_MBUS_CSI2_DPHY)
-> -		return -EINVAL;
-> +	if (rkisp1->source != &rkisp1->csi.sd)
-> +		return -EPIPE;
->  
->  	isp->frame_sequence = -1;
->  	mutex_lock(&isp->ops_lock);
-> -	ret = rkisp1_config_cif(isp, asd->mbus_type, asd->mbus_flags);
-> +	ret = rkisp1_config_cif(isp, V4L2_MBUS_CSI2_DPHY, 0);
->  	if (ret)
->  		goto mutex_unlock;
->  
->  	rkisp1_isp_start(isp);
->  
-> -	ret = rkisp1_csi_start(&rkisp1->csi, asd);
-> -	if (ret) {
-> -		rkisp1_isp_stop(isp);
-> -		goto mutex_unlock;
-> -	}
-> -
->  	ret = v4l2_subdev_call(rkisp1->source, video, s_stream, true);
->  	if (ret) {
->  		rkisp1_isp_stop(isp);
-> -		rkisp1_csi_stop(&rkisp1->csi);
->  		goto mutex_unlock;
->  	}
->  
-> -- 
-> 2.30.2
+> Something like below:
+> --
+> The KVM mechanism for controlling wbinvd is based on OR of
+> the coherency property of all devices attached to a guest, no matter
+> those devices  are attached to a single domain or multiple domains.
 > 
+> So, there is no value in trying to push a device that could do enforced
+> cache coherency to a dedicated domain vs re-using an existing domain
+> which is non-coherent since KVM won't be able to take advantage of it.
+> This just wastes domain memory.
+> 
+> Simplify this code and eliminate the test. This removes the only logic
+> that needed to have a dummy domain attached prior to searching for a
+> matching domain and simplifies the next patches.
+> 
+> It's unclear whether we want to further optimize the Intel driver to
+> update the domain coherency after a device is detached from it, at
+> least not before KVM can be verified to handle such dynamics in related
+> emulation paths (wbinvd, vcpu load, write_cr0, ept, etc.). In reality
+> we don't see an usage requiring such optimization as the only device
+> which imposes such non-coherency is Intel GPU which even doesn't
+> support hotplug/hot remove.
 
--- 
-Regards,
-
-Laurent Pinchart
+Thanks! I just updated that and will send v2.
 
 _______________________________________________
 Linux-rockchip mailing list
