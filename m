@@ -4,128 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8574C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Jun 2022 23:04:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADBAEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jun 2022 04:52:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aRCvnzvhWrHAHeiwJw4kImKgGwLiHFc2C/sflkZnpdc=; b=w6qC3McLTp8lV+
-	kMXTShanopvXmBJgoMmc6x/+kE6kL+/Y0paSZjv6OsrNrgzWp6iIZtUiHGS1/XcX2NepijFRQ+TdK
-	pXwBKD5SQYlj8JN1SmahknD9+mt3Q+IlMx73Ooc84yisJrXop+HDm8mSO4DZ/HhlIX0wxI0z3xz8n
-	W78T0Wpe34YSuGYpE2dvryAWy3uhU5X4zOf8JiUWxdkyNg/joicSrpuGo5I2zvaHckMBA7n0BOqS/
-	ra6OQFO3YV1YOpm/XTV+BsevUd5NQ3r+oMN2pvHZR5NdHp3cuBsNHSv/C7kNWrKJDIGEOiR4vQs7y
-	+U/FenPNhXVBbPgmYiGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=lBTNpEH3nyTruPjH+oJvudbyE9jk82Xg48+R9Ee3yyc=; b=qEnFRYlKZyBc7T
+	cho5qCAIzDYo+wairXqEuX4+IqZWAEo4R8Ct3shkZmLm9Yp+CO+drIDFrOiqW3qBdN/A4xn9dcCLH
+	paqQdxjePqlY+6Jt4wuwjlS4NEvOb2esCGLcMsllPA5PfFvThI2l29CNaYPcST0bNAk4S7h38fnLk
+	gvXxVb8gvi5rjPj9K6oQ9XEpd7XAtAr9GbPXzjOHcHeeioqXfhZzB4MyJpXBJYjRr3nuSKvyrIyr6
+	zD2Lv6+e4LWGLesAfLiyPRrg6r9g4h1gqSly5adsBMx+tBtWdcz3PO8VW9DFMrKpuCoIhrqGhQf0o
+	trd100aSvJP3K6Edix8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1FaN-00Bijr-Cv; Tue, 14 Jun 2022 23:04:35 +0000
-Received: from mail-ve1eur01on061b.outbound.protection.outlook.com ([2a01:111:f400:fe1f::61b] helo=EUR01-VE1-obe.outbound.protection.outlook.com)
+	id 1o1L0k-00CYi7-BY; Wed, 15 Jun 2022 04:52:10 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1Fa2-00Biby-9Q; Tue, 14 Jun 2022 23:04:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=OJZwf2EOPHFRmoXDLOzBaN9Wo3IZEqVQYNjIhZEK/wlwXfCbh3XByUd3hhUMlZSr//1n93gJ48X0x4YOlCc5AfDWW6qVlIjp9WSzrD47WC/2UARMOvTh8+nXMOKGeeypei/FCXJ48hu9uLj0OE/Bcwcanz39bEC/hnMRt26PWGwyt1R79d3cuJ1SowEuzG/xaW+xeARscByvEYli1HjxHblzbwx+3imQQj5c4KUZnxtVrKPLYqAIU/1HEGaKEzObWxtexCjLjeyuxx1NPZ+AkZqWz5z56e3Gl0scmEpzHHanLy8unBY3DSuCsI+72u7N5uEMKk4wpF/0HlkoqlsSRQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hcvOMOUXzbDZy0M4vM0GbwTl7FW6sYGAj3RGByHu0bY=;
- b=Bb+zvdn0aK8VjBS3ndhq27b1pVYqKNBRxbt/v0RJsuUqtyJinYcXWn7ax0fbVMlIX0V59VMP+9Ll+gVJRRJDjQpjjTpBPl+TRirTRVOKVk1JByy5URMR0911DQSewg3cwgm+P32l/O1lB68B23+uBzd475dbA5yDllN01MB51mkK0BytDruG0RO9XTm5TGR40cghb8Atan1+xqpZW5yVG/L+JcDHFaR7jdD3znuw7yY58/RjrM76MhKHlKgyAEW5DryXQvRXLjisttFys/DxwjYE4O4xHzpbcp9mcqMvzyhfTdevk1UJJo/5Rh7aznmAkclExLrQedG0Hafo4TuebA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hcvOMOUXzbDZy0M4vM0GbwTl7FW6sYGAj3RGByHu0bY=;
- b=Go/T8eOcxUErD5fYyqPo/RSTr2hcQf8qK+OTwZll0vIYVUYI9g3ASeKh5EKiKJCkctql5Ktnm0i14uP6MaJP+rVKRIftQ7xJRXVSotNnskVQHEjS0Qx6fxUK4XXlNHCBkUmvQj8QqLCBu1CUIIUGQqP1y0c/0hvaXHjw7IbVvrg=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from AM4PR0802MB2131.eurprd08.prod.outlook.com
- (2603:10a6:200:5c::22) by AS8PR08MB5926.eurprd08.prod.outlook.com
- (2603:10a6:20b:29d::17) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5332.12; Tue, 14 Jun
- 2022 23:04:07 +0000
-Received: from AM4PR0802MB2131.eurprd08.prod.outlook.com
- ([fe80::248c:2539:5ba5:74f2]) by AM4PR0802MB2131.eurprd08.prod.outlook.com
- ([fe80::248c:2539:5ba5:74f2%3]) with mapi id 15.20.5332.022; Tue, 14 Jun 2022
- 23:04:07 +0000
-From: Michael Riesch <michael.riesch@wolfvision.net>
-To: devicetree@vger.kernel.org,
+	id 1o1L0Y-00CYfd-PL
+	for linux-rockchip@lists.infradead.org; Wed, 15 Jun 2022 04:52:00 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id gc3-20020a17090b310300b001e33092c737so938877pjb.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 14 Jun 2022 21:51:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=q6WAiR9ODFenT0pGV9PYtDziPX2QjLk3EOTxMDGIVGc=;
+        b=EClL/J1HWpbNQqyt0eK3B9xqRm6OxDs3oMRzV7qoC3fKV6vIZpYmupM1uS30sYAfhE
+         yNFUPH/2rrnVLnWl0pobmscVgmY6xwGui/28B4vZ1WFDT19y8KscMbgSNSgv9cGDmgQR
+         98+sFrlj6YzugDgEYx7e751i+ifb5FE0TNxCo=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=q6WAiR9ODFenT0pGV9PYtDziPX2QjLk3EOTxMDGIVGc=;
+        b=hRPGTgdMLe6ZYfPW93yeDsvRU5Pl7N0laFP+L/ZyhfIb6BRPHzxp+d72J/JMEIBnx4
+         8ffdwg3x7Y6gir6JaQ2dW4mJGa9N9CAP4R9X+UBTFbKJ0NQQfRf8TdjORLwYNn0tSPjt
+         rkZ5KjpLBZQKmZ5KWEkqzNnx1oUfQdmBG5ztIABeNA1wd58m2bTBz3rusVzpN5LFSpna
+         2AamRfyKnTKSWcj9kSBBu2CwRihNja4bEAMPyTkXjPgbBX+SKRgD8h76h4XEk7kpHrN5
+         f+3cKo9PedT1BrKiFIzcAALBtGZHdO0zzrKQ99XRxe5eO5T1z6D6KE96MpFQ4CPo1V9B
+         VVng==
+X-Gm-Message-State: AJIora+rTQ8HRjaCr9Igypkx7Y9kcTWbq2TENBXzPGA+gOB4X/JuNC9Q
+	zUC/+DSvqxYsg7NdU9dooBlw8Q==
+X-Google-Smtp-Source: AGRyM1us1/gLEAQjjVi/lQpGK2jdBLHhP0c4XnBo74TK2dHflGfaqq79NjgmPEIKLKz0EdhmGPXvMg==
+X-Received: by 2002:a17:902:da88:b0:167:5b56:8edb with SMTP id j8-20020a170902da8800b001675b568edbmr7389162plx.71.1655268714938;
+        Tue, 14 Jun 2022 21:51:54 -0700 (PDT)
+Received: from judyhsiao0523.c.googlers.com.com (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id ja13-20020a170902efcd00b0015e8d4eb1dbsm8183466plb.37.2022.06.14.21.51.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 Jun 2022 21:51:54 -0700 (PDT)
+From: Judy Hsiao <judyhsiao@chromium.org>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Brian Norris <briannorris@chromium.org>,
+	Douglas Anderson <dianders@chromium.org>,
+	Guenter Roeck <groeck@google.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Liang Chen <cl@rock-chips.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>
-Subject: [PATCH 2/2] arm64: dts: rockchip: enable hdmi tx audio on rock-3a
-Date: Wed, 15 Jun 2022 01:03:54 +0200
-Message-Id: <20220614230354.3756364-2-michael.riesch@wolfvision.net>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220614230354.3756364-1-michael.riesch@wolfvision.net>
-References: <20220614230354.3756364-1-michael.riesch@wolfvision.net>
-X-ClientProxiedBy: ZR0P278CA0099.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:23::14) To AM4PR0802MB2131.eurprd08.prod.outlook.com
- (2603:10a6:200:5c::22)
+	linux-kernel@vger.kernel.org,
+	Judy Hsiao <judyhsiao@chromium.org>
+Subject: [v1] arm64: dts: rk3399: i2s: switch BCLK to GPIO
+Date: Wed, 15 Jun 2022 04:51:46 +0000
+Message-Id: <20220615045146.3134420-1-judyhsiao@chromium.org>
+X-Mailer: git-send-email 2.36.1.476.g0c4daa206d-goog
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c9085282-03a8-4043-49c7-08da4e5a2f5d
-X-MS-TrafficTypeDiagnostic: AS8PR08MB5926:EE_
-X-Microsoft-Antispam-PRVS: 	<AS8PR08MB5926F7CD530FB8F0CD1ED4FFF2AA9@AS8PR08MB5926.eurprd08.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	7/T+g4yuacXX/xQjzhPM0pM45I2K8JVKUpip/8C/Qq4hvWkM+eTbVj11M3biZTZk2suQg0sLI/cZVD17ZlyEAt2Exr6qbjAUKFc5n37H6cAcWB2B/JELwInZwAgPqnscE7/GxkIraiDaznQLhVa9W8qElF9CgWQoexrSN83efiR19PV5OiPjVL1Nxrz/a0Dy0zEppKhkv+FrMp+aNYWQL9sajiA/bWDr3+aWHS1b+UIMKlDodmijHSZ9lIQSUcFwha7vPIRPMPE80KYRFBvsyzqzgsttcRl+oQzKcDFICreMntR2jokn0zXGXo+iBssw6m8zb9nm+95GbmpX5Ckm66JAdqbW2rCDNTziJk+Bu29YiNIANFwWVH4MEBW6YAD4Wsb7L8bpa0mTQzT/GhFyMojMeGtzEk76G4hn52VxS0FklE5FkLm19ztFGUqH7R4hZpo7y7l6kUSMI4f5pMn10eWjdBOWUoCHFWXUg5Gs1Ukc9xmTvmy/6RKif1f0VaazExKuq+vbA9xOXn3EXVzLHqRO60qw3ZEcJ4amfgMlQb3zewbMJBRq9BNVDCWkYSh5XZrGrkLuUZM0RLVTFUHByWMCFGAaFnKuE9enn0XcNKoegROz+IrhTyYZlml38hgXnJOLNmVVN3iAN4JoMPwECQ==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM4PR0802MB2131.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(4636009)(346002)(136003)(39850400004)(396003)(366004)(316002)(44832011)(5660300002)(508600001)(66946007)(8676002)(186003)(86362001)(66476007)(4744005)(4326008)(66556008)(107886003)(1076003)(2616005)(41300700001)(54906003)(36756003)(6506007)(52116002)(6666004)(8936002)(38100700002)(6486002)(6512007)(2906002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?/YCUMimQWzH1hSkjqhirn6XOE9c3KbI1k+ouVLAriHebdbvqjg1P6TZQJaoq?=
- =?us-ascii?Q?iNjhYfTwFo13/gECdwCU15wkvWylAvTqoByhElq8xFxpm9Hga9eksoRlNtaX?=
- =?us-ascii?Q?ZkCUR6dTOGQ1Ss7GJNdotYqilgMj71aYD+XiKvHMVabEq3kJi0/HOQ5jJwMS?=
- =?us-ascii?Q?WThHa8DpX209GxjiG9bm9U5EDIFfZy5G7AKmnt3STKmhIIs8bDKRIQYGLdN+?=
- =?us-ascii?Q?LzG2SV7xMBrEqLt8Ncug/fhvC5t6bqx9uQGP1kNu4+aUhLrsa7H6n2lUST9n?=
- =?us-ascii?Q?Sl5WWbhrTIWB/QHD8pBt0OV/Q70eb2GYh6mUrSPD6q2rLoBrG6dFq6cwnsea?=
- =?us-ascii?Q?GpVKG4A36DNUqiYUpJzmtsdu226i4m2hJ+Uu0IloPS5FWA1yRKMw3gctyqoN?=
- =?us-ascii?Q?ksqSCDYVziwLp3nbtyb3zfBeiJ8oWQc3dFNxngyFj1PjrzMNqgMFCgdjwhvt?=
- =?us-ascii?Q?GUfXKw/dTCBWjSdnZHkMoBaMt5C6YpA2Vrth/tRRQima/3yyg8hkjE18MTg2?=
- =?us-ascii?Q?M8RI8dAyWRAnKVWwdRMvkNn8q73S0+zgCd02IT1mXDRikEPv82tQpLpMSjdF?=
- =?us-ascii?Q?YUICMxVrSGO0U3BvtsN7fIvN0XeGoP2//QnbqzW4lmG+HG3UhuoCi+jg7NjJ?=
- =?us-ascii?Q?NPI2GL8m/TBHmxvK/W74rQiobzaGfFsZ/W+LPns4h5kcP9/HyKaSh65mBI/P?=
- =?us-ascii?Q?tPpFdVFsxtY+/SyIyhSybu/wUVz/bzrspqfu+bxdS6qG9t9QRrWzZfdazQVC?=
- =?us-ascii?Q?tDng/+7bPL+uqkTOexBgKvNFI9K4+CGW2KXAFSudS/ThcG66wzGyJ32xW/pw?=
- =?us-ascii?Q?k1qVbxrLtp3tozDAs2ptmy6fnF9jG62a/c+6GMpPPEHSFwj+Gj1qtc9UvpVk?=
- =?us-ascii?Q?XZKsWglVgv9yF85bRZRn1nnCRgamRJBkn9AITNMYax5UPtoQI3CI7VMwqpLR?=
- =?us-ascii?Q?4vGOiHX3P4bYD7szmClKNwCRvEEvggG1phzHE+YnVHIrUFWVRfMG2RKyDxIZ?=
- =?us-ascii?Q?YD94lN1oo4g84nZqm3iEStsENPGLOKHv7D3dZ/eLhCYDt1drKHbitxvfQMxa?=
- =?us-ascii?Q?NGogDJjx2bsdJxlvFuoBNpHgXNLfkvHFD5wXLmdXcUjLgZ8ufEA6Sx9miTzM?=
- =?us-ascii?Q?gwID03tYChueaP6KonHWkZB/T+tKhcxq9H6t1E9u2g+3fl205VhqzSrdS2eD?=
- =?us-ascii?Q?VE4G3pGMVly7QU6DI0+mAgxRFC1aN15rmW1DHyTL/V/BX0xZjiqvbdej2871?=
- =?us-ascii?Q?xfIuIrKYi8+aAMBItzO3Ilv3d7BKV+Amx0CgsgP8KsmudzI9Mpv9FTjE4INF?=
- =?us-ascii?Q?KwL9+Xo+buIgb3J0jaXmm1a60S+DDen04F98R8c2sAm7wmDUyvCbvLkblp6+?=
- =?us-ascii?Q?5xPCW/6Sjuw7rbzXP7Wguu1nKio5sgDGF8a1o37g9eZJotgc0BImbvokZgkY?=
- =?us-ascii?Q?BNE4DsNasD6BWPKSdjWzqplqFWBGz6lsQscPqKD10VuKhnTrP/vrUDRitXh4?=
- =?us-ascii?Q?z5dvQ3aEO8OgdRcmwFKXUnVbyMLr27lTonWkBGcPfcMC+BrkqfQyT/6704T4?=
- =?us-ascii?Q?fUS2aHjhn9K9L6ohWi7EO8Zyk66IGM3FDMSJZSzGEwwxpbYaon0PqD7DKGEP?=
- =?us-ascii?Q?8jWQo9mdL3Cf/jIY+YsIRkMOojm8NqmpSF9+YGm6gpezRkaYPabq2o+0ZvNf?=
- =?us-ascii?Q?rAxUIbdvxpNQVo1qTFkiYrQ7+szgBH/ee18fpnOBetL36kpzp5H/2+W9ffc0?=
- =?us-ascii?Q?gMGA1P36XW4ucULXUW4dRtkNJfubj4VuUrINf0zSqexRA9GA5Z6e+rWBPqWy?=
-X-MS-Exchange-AntiSpam-MessageData-1: 	MtoPsttJCtJgfivJFM+CplgesRTCI+UAASLV3d7LFxJOHsUj0fKWW6Wa
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: c9085282-03a8-4043-49c7-08da4e5a2f5d
-X-MS-Exchange-CrossTenant-AuthSource: AM4PR0802MB2131.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jun 2022 23:04:07.6418
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 84BIaBDIlqKbmlPfiORPEON7zwju3fKH2sEvbdLtCy3CUpCgoana/KHp11fiO4Z813DWqMODCDp0Ug2WWCnahlxHFr/RrR3DjbUSCdPTTV8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR08MB5926
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220614_160414_352331_62079DB8 
-X-CRM114-Status: UNSURE (   8.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220614_215158_879674_6F081C90 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,42 +90,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the I2S0 controller and the hdmi-sound node on the Radxa
-ROCK3 Model A.
+We discoverd that the state of BCLK on, LRCLK off and SD_MODE on
+may cause the speaker melting issue. Removing LRCLK while BCLK
+is present can cause unexpected output behavior including a large
+DC output voltage as described in the Max98357a datasheet.
 
-Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+In order to:
+  1. prevent BCLK from turning on by other component.
+  2. keep BCLK and LRCLK being present at the same time
+
+This patch adjusts the device tree to allow BCLK to switch
+to GPIO func before LRCLK output, and switch back during
+LRCLK is output.
+
+Signed-off-by: Judy Hsiao <judyhsiao@chromium.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 10 +++++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      | 27 ++++++++++++++++++-
+ 2 files changed, 36 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-index da2ef705ce29..6b5093a1a6cf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-@@ -196,6 +196,10 @@ hdmi_out_con: endpoint {
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+index 913d845eb51a..df1647e9d487 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+@@ -766,6 +766,16 @@ &i2s0_8ch_bus {
+ 		<4 RK_PA0 1 &pcfg_pull_none_6ma>;
  };
  
-+&hdmi_sound {
-+	status = "okay";
++&i2s0_8ch_bus_bclk_off {
++	rockchip,pins =
++		<3 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none_6ma>,
++		<3 RK_PD1 1 &pcfg_pull_none_6ma>,
++		<3 RK_PD2 1 &pcfg_pull_none_6ma>,
++		<3 RK_PD3 1 &pcfg_pull_none_6ma>,
++		<3 RK_PD7 1 &pcfg_pull_none_6ma>,
++		<4 RK_PA0 1 &pcfg_pull_none_6ma>;
 +};
 +
- &i2c0 {
- 	status = "okay";
- 
-@@ -436,6 +440,10 @@ codec {
+ /* there is no external pull up, so need to set this pin pull up */
+ &sdmmc_cd_pin {
+ 	rockchip,pins = <1 RK_PB3 RK_FUNC_GPIO &pcfg_pull_up>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index fbd0346624e6..60d8cb32cec8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1662,9 +1662,10 @@ i2s0: i2s@ff880000 {
+ 		dma-names = "tx", "rx";
+ 		clock-names = "i2s_clk", "i2s_hclk";
+ 		clocks = <&cru SCLK_I2S0_8CH>, <&cru HCLK_I2S0_8CH>;
+-		pinctrl-names = "default";
++		pinctrl-names = "bclk_on", "bclk_off";
+ 		pinctrl-0 = <&i2s0_8ch_bus>;
+ 		power-domains = <&power RK3399_PD_SDIOAUDIO>;
++		pinctrl-1 = <&i2s0_8ch_bus_bclk_off>;
+ 		#sound-dai-cells = <0>;
+ 		status = "disabled";
  	};
- };
+@@ -2225,6 +2226,8 @@ pcfg_input_pull_down: pcfg-input-pull-down {
+ 			input-enable;
+ 			bias-pull-down;
+ 			drive-strength = <2>;
++		pcfg_pull_none_hiz: pcfg-pull-none-hiz {
++			bias-disable;
+ 		};
  
-+&i2s0_8ch {
-+	status = "okay";
-+};
+ 		clock {
+@@ -2407,6 +2410,19 @@ i2s0_8ch_bus: i2s0-8ch-bus {
+ 					<3 RK_PD7 1 &pcfg_pull_none>,
+ 					<4 RK_PA0 1 &pcfg_pull_none>;
+ 			};
 +
- &i2s1_8ch {
- 	rockchip,trcm-sync-tx-only;
- 	status = "okay";
++			i2s0_8ch_bus_bclk_off: i2s0-8ch-bus-bclk-off {
++				rockchip,pins =
++					<3 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none_hiz>,
++					<3 RK_PD1 1 &pcfg_pull_none>,
++					<3 RK_PD2 1 &pcfg_pull_none>,
++					<3 RK_PD3 1 &pcfg_pull_none>,
++					<3 RK_PD4 1 &pcfg_pull_none>,
++					<3 RK_PD5 1 &pcfg_pull_none>,
++					<3 RK_PD6 1 &pcfg_pull_none>,
++					<3 RK_PD7 1 &pcfg_pull_none>,
++					<4 RK_PA0 1 &pcfg_pull_none>;
++			};
+ 		};
+ 
+ 		i2s1 {
+@@ -2418,6 +2434,15 @@ i2s1_2ch_bus: i2s1-2ch-bus {
+ 					<4 RK_PA6 1 &pcfg_pull_none>,
+ 					<4 RK_PA7 1 &pcfg_pull_none>;
+ 			};
++
++			i2s1_2ch_bus_bclk_off: i2s1-2ch-bus-bclk-off {
++				rockchip,pins =
++					<4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none_hiz>,
++					<4 RK_PA4 1 &pcfg_pull_none>,
++					<4 RK_PA5 1 &pcfg_pull_none>,
++					<4 RK_PA6 1 &pcfg_pull_none>,
++					<4 RK_PA7 1 &pcfg_pull_none>;
++			};
+ 		};
+ 
+ 		sdio0 {
 -- 
-2.30.2
+2.36.1.476.g0c4daa206d-goog
 
 
 _______________________________________________
