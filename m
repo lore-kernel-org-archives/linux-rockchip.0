@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02B6AC43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jun 2022 13:28:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C394C43334
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jun 2022 14:38:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=baSwohen+u+1fTgFhpJbre4ItNIhnw2JHdXniwo92tU=; b=Dovlg4eB97UWGw
-	sKjFtROYjHmqaItLvSBH8ZdSfEZ2vjTADbYj+h1WJegx+Z8VO49ePpZZE85HjwyUalq1sCtbGeHG0
-	IAnqB0Y8tWN5pb84X0/5GG/qoDiua+j/aciOE6znAwNLkcniU6t5nSfmvSPy5DobbGv1fygvEEiwn
-	87qgQPyDCs3VgcZfk+tqDvQSfp50pp27xRZ9CyJr3sxu/naFIqYHPvsl+DKDP8vyU0QtmVJk96X9N
-	h+GJFEL3xyLpmg0+c/hPKEoBGU4Z+H9JQdehiIp22cEqfN7urwxXgndaDFuKQPr9w5QdD3GtKrVEP
-	6Jyl/d/yBjIJEfSiMJVQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gp1Kb41jcI5Rw4avkd1Xvxbggo0t7iF9X6ZI/VGQKM4=; b=2pb5VbYkqkIAix
+	Id2tVNul65mRHEEzdKOKoIYLStAeZ3cUSX3+irLTd445QdLqkEWo08UfToleMkOauU7RXCmZDcDnG
+	9lUqVyvtUqO+tmMokWQ8F3TNTLnMxmETn4NbmzWDWhijWuT6fJNephAfBAJe6IU1Sc/07lpUYsvGQ
+	Ruresn+In2cIBAZQKEZf5PBkv10+nNq5CoeYgU85yVzho5ytILjVzWEvFmUE9Bazo9WCVwqIWm34H
+	VnSy8hHeKZo6hWwz2ZdpufEG1/Af6WKeWaZS3CVq/NSeKhYGfv9Z3tU0zAJ5Oko4FneI3uGk4Sr/x
+	Jia+uxir3CEEyWyltMlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1T4f-00EhaW-7c; Wed, 15 Jun 2022 13:28:45 +0000
-Received: from jabberwock.ucw.cz ([46.255.230.98])
+	id 1o1U9w-00EyqX-Qg; Wed, 15 Jun 2022 14:38:16 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1T4S-00EhUt-8i; Wed, 15 Jun 2022 13:28:33 +0000
-Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
-	id F25FC1C0BC8; Wed, 15 Jun 2022 15:28:30 +0200 (CEST)
-Date: Wed, 15 Jun 2022 15:28:27 +0200
-From: Pavel Machek <pavel@ucw.cz>
-To: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Samuel Holland <samuel@sholland.org>, Ondrej Jirman <x@xff.cz>,
-	Martijn Braam <martijn@brixit.nl>,
-	Ondrej Jirman <megous@megous.com>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add initial support for Pine64
- PinePhone Pro
-Message-ID: <20220615132827.GB1429@bug>
-References: <20220529031705.278631-1-tom@tom-fitzhenry.me.uk>
- <20220529031705.278631-3-tom@tom-fitzhenry.me.uk>
+	id 1o1U9t-00Eyoh-94
+	for linux-rockchip@lists.infradead.org; Wed, 15 Jun 2022 14:38:14 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 58D0D5A9;
+	Wed, 15 Jun 2022 16:38:06 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1655303886;
+	bh=0EpIzqHqqSnkByYS6l8lemBHSW4NPMYxO1kLR5xNbxs=;
+	h=Date:From:To:Cc:Subject:From;
+	b=j5G0lgYUMd98V83w+JtfxRjGadqmkjxtRln249IPBYkNopHoWBZJeF2QIgVt7HAN6
+	 CAM/M5D5vJtV7fDhUJJuSQsdQE29/3gPL1kr8VIxvhcGvVrJS6ReOq2H7zJx5s352g
+	 kLcOsK6VcVbsmVitDUwXbrAhH55nKLSmK7iYQN+U=
+Date: Wed, 15 Jun 2022 17:37:56 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: linux-media@vger.kernel.org
+Cc: Paul Elder <paul.elder@ideasonboard.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Heiko Stuebner <heiko@sntech.de>, Tomasz Figa <tfiga@google.com>,
+	linux-rockchip@lists.infradead.org
+Subject: [GIT PULL FOR v5.20] rkisp1 misc fixes and improvements
+Message-ID: <YqnuxKlNjA0AaIAR@pendragon.ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220529031705.278631-3-tom@tom-fitzhenry.me.uk>
-User-Agent: Mutt/1.5.23 (2014-03-12)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_062832_507099_A90F4A89 
-X-CRM114-Status: GOOD (  11.02  )
+X-CRM114-CacheID: sfid-20220615_073813_515457_ABB2256B 
+X-CRM114-Status: UNSURE (   7.59  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,51 +66,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi!
+Hi Mauro,
 
-> +	// Per "RK 3399 SARADC", page 8.
-> +	adc-keys {
-> +		compatible = "adc-keys";
-> +		io-channels = <&saradc 1>;
-> +		io-channel-names = "buttons";
-> +		keyup-threshold-microvolt = <1600000>;
-> +		poll-interval = <100>;
-> +
-> +		button-up {
-> +			label = "Volume Up";
-> +			linux,code = <KEY_VOLUMEUP>;
-> +			press-threshold-microvolt = <100000>;
-> +		};
-> +
-> +		button-down {
-> +			label = "Volume Down";
-> +			linux,code = <KEY_VOLUMEDOWN>;
-> +			press-threshold-microvolt = <300000>;
-> +		};
-> +	};
+The following changes since commit f2906aa863381afb0015a9eb7fefad885d4e5a56:
 
-Wow. Quite a hack...
+  Linux 5.19-rc1 (2022-06-05 17:18:54 -0700)
 
+are available in the Git repository at:
 
-> +	// Per "RK3399 GPIO", page 11.
-> +	leds {
-> +		compatible = "gpio-leds";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&red_led_pin &green_led_pin &blue_led_pin>;
+  git://linuxtv.org/pinchartl/media.git tags/imx-next-20220615
 
+for you to fetch changes up to 4d846800b527933a46ffd5ff48b87f5a03ca087a:
 
-> + led-standby { + color = <LED_COLOR_ID_RED>; + default-state = "off"; + function = 
+  media: rkisp1: Drop parentheses and fix indentation in rkisp1_probe() (2022-06-15 16:51:44 +0300)
 
-I wish LED was connected to PWM, not to simple GPIO...
+----------------------------------------------------------------
+rkisp1 misc bug fixes and cleanups
 
-Plus, it is really one RGB LED, right? It should be handled as such.
+----------------------------------------------------------------
+Laurent Pinchart (20):
+      media: rkisp1: capture: Initialize entity before video device
+      media: rkisp1: capture: Fix and simplify (un)registration
+      media: rkisp1: isp: Fix and simplify (un)registration
+      media: rkisp1: resizer: Fix and simplify (un)registration
+      media: rkisp1: params: Fix and simplify (un)registration
+      media: rkisp1: stats: Simplify (un)registration
+      media: rkisp1: Simplify rkisp1_entities_register() error path
+      media: rkisp1: regs: Don't use BIT() macro for multi-bit register fields
+      media: rkisp1: regs: Rename CCL, ICCL and IRCL registers with VI_ prefix
+      media: rkisp1: Swap value and address arguments to rkisp1_write()
+      media: rkisp1: resizer: Simplify register access
+      media: rkisp1: Move debugfs code to a separate file
+      media: rkisp1: Compile debugfs support conditionally
+      media: rkisp1: debug: Collect input status by sampling ISP_FLAGS_SHD
+      media: rkisp1: debug: Add debugfs files to dump core and ISP registers
+      media: rkisp1: debug: Move resizer register dump to debugfs
+      media: rkisp1: debug: Consolidate reg dumps for shadow registers
+      media: rkisp1: debug: Update max register name length
+      media: rkisp1: Align macro definitions
+      media: rkisp1: Drop parentheses and fix indentation in rkisp1_probe()
 
-Best regards,
-								Pavel
+Paul Elder (1):
+      media: rkisp1: capture: Bypass the main device for handling querycap
+
+ drivers/media/platform/rockchip/rkisp1/Makefile    |  17 +-
+ .../platform/rockchip/rkisp1/rkisp1-capture.c      | 159 +++--
+ .../media/platform/rockchip/rkisp1/rkisp1-common.h |  48 +-
+ .../media/platform/rockchip/rkisp1/rkisp1-debug.c  | 222 +++++++
+ .../media/platform/rockchip/rkisp1/rkisp1-dev.c    |  79 +--
+ .../media/platform/rockchip/rkisp1/rkisp1-isp.c    | 156 ++---
+ .../media/platform/rockchip/rkisp1/rkisp1-params.c | 705 +++++++++++----------
+ .../media/platform/rockchip/rkisp1/rkisp1-regs.h   | 190 +++---
+ .../platform/rockchip/rkisp1/rkisp1-resizer.c      | 204 ++----
+ .../media/platform/rockchip/rkisp1/rkisp1-stats.c  |  13 +-
+ 10 files changed, 949 insertions(+), 844 deletions(-)
+ create mode 100644 drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
 
 -- 
-(english) http://www.livejournal.com/~pavelmachek
-(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blog.html
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
