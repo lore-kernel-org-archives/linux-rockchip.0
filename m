@@ -4,59 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD7A2C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jun 2022 10:41:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87323C43334
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jun 2022 12:50:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=roWiuJzJHKoL5JbHLpkV3LcgQcpsFsbbFGt5Zf65EaA=; b=ZwmrEH5woF/6aOc949k2XwkTpi
-	BLTl1HgPF5ioSJyNtpD9j3mAtUMYT+j0jX8DXSeORtunM7x1kWf2d2nUcrKUJsHAlr5pBp4mZQNyA
-	tAnwwYuMb9Add+mSsNgKHAStEolLNc0sKV3TqfDIMCjtQdXBsTs+28e7nUiQMeQZMCdkQUBbqJeyX
-	UNVEh/N4L+7ZVF4aaXbXBwqNcgSrRaQS1p0txv0pjX/0La88CX7/y+SGV/ZvrlD5/GkTt60mW4bPP
-	2MOqWqRzG+1s7COziN19zO5cw6zGb7/vDReEzzTL/rgkkw0hIfD9UlF4TPTBe306Ob6kUPsIbU4Ep
-	PEgLS3BQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZCSnUimCkJMLEDzPgMM9L3Ykpak5kV5uovbCEJ4k/lU=; b=eyl7yHitaioEaQ
+	aw3pLQlHtMzbz/sh70kaCDP8JPAfCEf7BAG2o8jA8yPypKa9DzeXtIRtSvAmJLCyHzaFDJthAfJO5
+	Th3H5QsAmvUNeMbCow/XguocC3pialCdiiv/WenJfdrsXzK4UW4qYKQrGjmzFy+qyD4RUzD0UncBj
+	auDYPulpxEpN5fIdrJkRCYk8lPoQtKLmmLOsap/HDY0YHnSKLPGcM1Ft/yC9NtyB0RGLQUND5nKOE
+	8VpqShZCKRaZ0EnzVjimHwVSBJlLzgh3TjnVC71uagjbVr4ET8u+lEK7wrA3TRQMWTMG6JV6DDutL
+	hslMlY6+AEercKSbRDzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1QSk-00DuTz-HV; Wed, 15 Jun 2022 10:41:26 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1QL6-00Drat-BV; Wed, 15 Jun 2022 10:33:34 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B348FB81D68;
-	Wed, 15 Jun 2022 10:33:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F4D6C3411C;
-	Wed, 15 Jun 2022 10:33:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655289209;
-	bh=1J5FIdCXMTdaAREzoK9hwYKt1T9ZVL6B+SZnop3VnVg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=I+w70pC8ZPbD1S9qVrTDD7WcD736w3zQdRkBEPv95DCFnodoajia8Xr41uPX+V0+9
-	 So0HZEsWVReh4bJirWgS9hKoVNkkBE4p9nQ/rQMJhQow7i0YoxF/Lv6Ie6GDrJMTG/
-	 RF/T7zxQT6/P0fKIhYGTtltc3XNkG5FPOvh1/sMJABLfsI1Ymp+QMc1r1xxCiMtRKn
-	 XKiNTulrj1supnwV+t+VJ9/X36BcRCyJtS4fF/qdlwq7APXtrXCrwiI7Mb7ERdDq7c
-	 CCsL01YTqaJarU1wU94lgizcQqMVgg3w+Tm9WnGyCVgzdfAShAUWcUmYFNtcUfE2vq
-	 v3jQU9qY2uppA==
-Date: Wed, 15 Jun 2022 11:33:21 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Judy Hsiao <judyhsiao@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [v1] ASoC: rockchip: i2s: switch BCLK to GPIO
-Message-ID: <Yqm1cTfq1AA/mAV5@sirena.org.uk>
-References: <20220615045643.3137287-1-judyhsiao@chromium.org>
+	id 1o1STW-00EY4E-KT; Wed, 15 Jun 2022 12:50:22 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o1STI-00EXwx-R9; Wed, 15 Jun 2022 12:50:12 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 44F1B152B;
+	Wed, 15 Jun 2022 05:50:05 -0700 (PDT)
+Received: from monolith.localdoman (unknown [172.31.20.19])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B163D3F73B;
+	Wed, 15 Jun 2022 05:50:01 -0700 (PDT)
+Date: Wed, 15 Jun 2022 13:50:24 +0100
+From: Alexandru Elisei <alexandru.elisei@arm.com>
+To: Petr Mladek <pmladek@suse.com>
+Cc: jack@suse.cz, sunjunchao2870@gmail.com, viro@zeniv.linux.org.uk,
+	linux-fsdevel@vger.kernel.org, linux-kernel@vger.kernel.org,
+	senozhatsky@chromium.org, rostedt@goodmis.org,
+	john.ogness@linutronix.de, keescook@chromium.org, anton@enomsg.org,
+	ccross@android.com, tony.luck@intel.com, heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, maco@android.com, hch@lst.de,
+	gregkh@linuxfoundation.org, jirislaby@kernel.org
+Subject: Re: [BUG] rockpro64 board hangs in console_init() after commit
+ 10e14073107d
+Message-ID: <YqnVWCYx0L2RlckB@monolith.localdoman>
+References: <Yqdry+IghSWnJ6pe@monolith.localdoman>
+ <Yqh9xIwBVcabpSLe@alley>
+ <YqiJH1phG/LWu9bs@monolith.localdoman>
+ <YqiidNPMUZQPRIvy@alley>
 MIME-Version: 1.0
-In-Reply-To: <20220615045643.3137287-1-judyhsiao@chromium.org>
-X-Cookie: byob, v:
+Content-Disposition: inline
+In-Reply-To: <YqiidNPMUZQPRIvy@alley>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_033332_590146_38E52B09 
-X-CRM114-Status: GOOD (  17.77  )
+X-CRM114-CacheID: sfid-20220615_055009_025501_9CF85A68 
+X-CRM114-Status: GOOD (  43.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,79 +65,199 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5055734601073476338=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Petr,
 
---===============5055734601073476338==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4CmsN/CfvM2oLYC0"
-Content-Disposition: inline
+On Tue, Jun 14, 2022 at 05:00:04PM +0200, Petr Mladek wrote:
+> On Tue 2022-06-14 14:23:42, Alexandru Elisei wrote:
+> > With this change:
+> > 
+> > diff --git a/init/main.c b/init/main.c
+> > index 0ee39cdcfcac..a245982eb8a2 100644
+> > --- a/init/main.c
+> > +++ b/init/main.c
+> > @@ -1057,6 +1057,8 @@ asmlinkage __visible void __init __no_sanitize_address start_kernel(void)
+> > 
+> >         kmem_cache_init_late();
+> > 
+> > +       lockdep_init();
+> > +
+> >         /*
+> >          * HACK ALERT! This is early. We're enabling the console before
+> >          * we've done PCI setups etc, and console_init() must be aware of
+> > @@ -1067,8 +1069,6 @@ asmlinkage __visible void __init __no_sanitize_address start_kernel(void)
+> >                 panic("Too many boot %s vars at `%s'", panic_later,
+> >                       panic_param);
+> > 
+> > -       lockdep_init();
+> > -
+> >         /*
+> >          * Need to run this when irqs are enabled, because it wants
+> >          * to self-test [hard/soft]-irqs on/off lock inversion bugs
+> > diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
+> > index ea3dd55709e7..aa7684c6745d 100644
+> > --- a/kernel/printk/printk.c
+> > +++ b/kernel/printk/printk.c
+> > @@ -2705,7 +2705,10 @@ static int console_cpu_notify(unsigned int cpu)
+> >   */
+> >  void console_lock(void)
+> >  {
+> > +       pr_info("before might_sleep()");
+> >         might_sleep();
+> > +       pr_info("before down_console_sem()");
+> > +       pr_info("before down_console_sem()");
+> > 
+> >         down_console_sem();
+> >         if (console_suspended)
+> > @@ -3508,12 +3511,18 @@ int unregister_console(struct console *console)
+> >         if (console->exit)
+> >                 res = console->exit(console);
+> > 
+> > +       pr_info("Exiting from unregister_console(), res = %d", res);
+> > +       pr_info("Exiting from unregister_console(), res = %d", res);
+> > +
+> >         return res;
+> > 
+> >  out_disable_unlock:
+> >         console->flags &= ~CON_ENABLED;
+> >         console_unlock();
+> > 
+> > +       pr_info("Exiting from unregister_console(), res = %d", res);
+> > +       pr_info("Exiting from unregister_console(), res = %d", res);
+> > +
+> >         return res;
+> >  }
+> >  EXPORT_SYMBOL(unregister_console);
+> > 
+> > Some of the pr_info statements are duplicated to see the output just before
+> > the console hangs (I assume they're needed to force a buffer flush).
+> > 
+> > This is what I got:
+> > 
+> > [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+> > [    0.000000] Linux version 5.19.0-rc2-dirty (alex@monolith) (aarch64-linux-gnu-gcc (GCC) 12.1.0, GNU ld (GNU Binutils) 2.38) #106 SMP PREEMPT Tue Jun 14 14:03:30 BST 2022
+> > [    0.000000] Machine model: Pine64 RockPro64 v2.0
+> > [    0.000000] efi: UEFI not found.
+> > [    0.000000] earlycon: uart0 at MMIO32 0x00000000ff1a0000 (options '1500000n8')
+> > [    0.000000] printk: before might_sleep()
+> > [    0.000000] printk: before down_console_sem()
+> > [    0.000000] printk: before down_console_sem()
+> > [    0.000000] printk: bootconsole [uart0] enabled
+> > [    0.000000] NUMA: No NUMA configuration found
+> > [    0.000000] NUMA: Faking a node at [mem 0x0000000000200000-0x00000000f7ffffff]
+> > [    0.000000] NUMA: NODE_DATA [mem 0xf77cef40-0xf77d0fff]
+> [...]
+> > [    0.000001] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+> > [    0.005602] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+> > [    0.006373] ... MAX_LOCKDEP_SUBCLASSES:  8
+> > [    0.006789] ... MAX_LOCK_DEPTH:          48
+> > [    0.007212] ... MAX_LOCKDEP_KEYS:        8192
+> > [    0.007651] ... CLASSHASH_SIZE:          4096
+> > [    0.008088] ... MAX_LOCKDEP_ENTRIES:     32768
+> > [    0.008535] ... MAX_LOCKDEP_CHAINS:      65536
+> > [    0.008981] ... CHAINHASH_SIZE:          32768
+> > [    0.009428]  memory used by lock dependency info: 6365 kB
+> > [    0.010018]  memory used for stack traces: 4224 kB
+> > [    0.010500]  per task-struct memory footprint: 1920 bytes
+> > [    0.011059] printk: before might_sleep()
+> > [    0.011079] printk: before down_console_sem()
+> > [    0.011477] printk: before down_console_sem()
+> > [    0.012112] Console: colour dummy device 80x25
+> > [    0.012984] printk: before might_sleep()
+> > [    0.013003] printk: before down_console_sem()
+> > [    0.013399] printk: before down_console_sem()
+> > [    0.013860] printk: console [tty0] enabled
+> > [    0.014986] printk: bootconsole [uart0] disabled
+> > [    0.015564] printk: before might_sleep()
+> > [    0.015582] printk: before down_console_sem()
+> 
+> I think that it did not print the 2nd "printk: before
+> down_console_sem()" because there was missing newline "\n".
 
+You're right, tried it with appending the newline character and it worked.
 
---4CmsN/CfvM2oLYC0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+> 
+> printk() keeps such a line open because pr_cont() might append
+> to it. The message will get printed to the console only when
+> pr_cont("bla bla \n") is called or when another non-continuous
+> printk() is called.
 
-On Wed, Jun 15, 2022 at 04:56:43AM +0000, Judy Hsiao wrote:
+Thank you for the explanation!
 
->  	i2s->bclk_ratio = 64;
-> +	i2s->pinctrl = devm_pinctrl_get(&pdev->dev);
-> +	if (IS_ERR(i2s->pinctrl))
-> +		dev_err(&pdev->dev, "failed to find i2s pinctrl\n");
-> +
-> +	i2s->bclk_on = pinctrl_lookup_state(i2s->pinctrl,
-> +				   "bclk_on");
-> +	if (IS_ERR_OR_NULL(i2s->bclk_on))
-> +		dev_err(&pdev->dev, "failed to find i2s default state\n");
-> +	else
-> +		dev_dbg(&pdev->dev, "find i2s bclk state\n");
-> +
-> +	i2s->bclk_off = pinctrl_lookup_state(i2s->pinctrl,
-> +				  "bclk_off");
-> +	if (IS_ERR_OR_NULL(i2s->bclk_off))
-> +		dev_err(&pdev->dev, "failed to find i2s gpio state\n");
-> +	else
-> +		dev_dbg(&pdev->dev, "find i2s bclk_off state\n");
+> 
+> > > Does the system boot when you avoid "earlycon" parameter?
+> > 
+> > It doesn't boot, it hangs and I don't get any output.
+> 
+> The difference might be that earlycon uses the serial port.
+> While the normal console is terminal "tty0".
+> 
+> Does it help to configure also the normal serial console.
+> I mean booting with something like:
+> 
+> earlycon console=uart,mmio32,0x00000000ff1a0000,1500000n8 console=tty0
+> 
+> I am not completely sure about the console=uart parameter. It is a
+> shame but I have never used it. I took the format from
+> Documentation/admin-guide/kernel-parameters.txt and the values
+> from your boot log:
+> 
+> [    0.000000] earlycon: uart0 at MMIO32 0x00000000ff1a0000 (options '1500000n8')
 
-This should really validate that it's got both on and off states before
-we start using these, especially if we only have off, since we might end
-up being able to do one side of the switch but not the other which won't
-work.  I'm also wondering if it's better to just use audio active/idle
-states rather than saying purely something for the BCLK - effectively
-that's what this is doing and it feels like it might be cleaner and more
-future proof for people to disable all the audio pins rather than just
-BCLK and then switch them together.
+According to the devicetree, earlycon should be serial2:1500000n8 (the
+"stdout-path" property of the "chosen" node), which is an alias for the
+node /serial@ff1a0000. That serial console has the compatible property
+"rockchip,rk3399-uart", "snps,dw-apb-uart". The uart8250 early console
+driver binds to that device.
 
---4CmsN/CfvM2oLYC0
-Content-Type: application/pgp-signature; name="signature.asc"
+Putting the kernel output and the information from the devicetree together,
+the earlycon parameter should be:
 
------BEGIN PGP SIGNATURE-----
+earlycon=uart8250,mmio32,0xff1a0000,1500000n8
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmKptXEACgkQJNaLcl1U
-h9DonQf/TZGhSlKwJZPQlFmypY1sEE1OjAFYsmr7k+A+owQ3xj2wv9RAPQrb2s5W
-No05azxh5PaZe5ZbGA64pH7iDbDcGuffc2QxlnJZgA0vg+02kuZd3lSdcsXcaiDj
-oq6oFh0qPN19Fftie3BNVhQ6NLIclG3fszY0eLn+O2VfSIPSb5BrwQJuEKUth1yR
-GFAGoVg3kpU+7Vk3apesZhhqrvNLy8MtQ65h2Rn73tGJxPhsrWcqnLQ7dsg+seVO
-U4go/CaOBnSS8Cm8zFoxdG9o6xGyPgabb6+uWVAR8ssRkvv4FqCWSl1IBxrSRDpC
-XhYLgerh8VFllC0Rgb+v2CW81EFB5w==
-=uIhh
------END PGP SIGNATURE-----
+But when I use that, I don't get any output and the kernel hangs on v5.18
+and v5.17 too.
 
---4CmsN/CfvM2oLYC0--
+It turns out that leaving the baudrate out of the earlycon parameter:
 
+earlycon=uart8250,mmio32,0xff1a0000
 
---===============5055734601073476338==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+or specifying a baudrate of 115200:
+
+earlycon=uart8250,mmio32,0xff1a0000,115200n8
+
+makes it work again, and the board can boot. I assume that because a bogus
+baud rate makes earlycon work, there is something off with how the 8250
+earlycon driver gets the UART clock frequency (credits to Andre Przywara
+for helping me with the UART debugging and discovering this).
+
+> 
+> > > > I've booted a kernel compiled with CONFIG_PROVE_LOCKING=y, as the offending
+> > > > commit fiddles with locks, but no splat was produced that would explain the
+> > > > hang. I've also tried to boot a v5,19-rc2 kernel on my odroid-c4, the board
+> > > > is booting just fine, so I'm guessing it only affects of subset of arm64
+> > > > boards.
+> > > 
+> > > You might try to switch the order of console_init() and lockdep_init()
+> > > in start_kernel() in init/main.c
+> > 
+> > Did so above.
+> 
+> Unfortunately, it did not print anything :-(
+
+With this patch [1] I was able to succefully boot the board. So I guess
+problem should be fixed.
+
+[1] https://lore.kernel.org/all/20220614124618.2830569-1-suzuki.poulose@arm.com/
+
+Thanks,
+Alex
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5055734601073476338==--
-
