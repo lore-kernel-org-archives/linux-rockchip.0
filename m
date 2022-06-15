@@ -4,67 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF392C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jun 2022 16:29:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9494EC43334
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jun 2022 16:40:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LtXaAjDc/CIgrocnP8XWlMB6GLXK9UOJRw4ZqojLv5A=; b=OUBC2TfzYnbiLQ
-	J5/HcjQKtQiWD+mhfhK5fPgx2WghXTwciThCXucaZIUuLOglAQwc1XQOLk4W4Xm6pgpwQKFaQNMUm
-	Gf5v8mb2M0J7sbdFoXGjUg9OI79l5NgXZBdrRGDUkP8slswPZ5Cfj0Rj3FKqJX6l2vwiLS7qD01ur
-	5WYs3osoEkrmjg8UIGuuex/fb9tAiOQu+sEr2fF/ff+mGbVXmL9+B5487YXeCIsQaaFAI1y4YROI2
-	vHLFvcOQJ2DVdH3kTpVJ5MGQCFz4da7s4CwN8vDINq/2/YJhvXYJ197tMJ3hFdgPnR1lZ7zqqHfRn
-	FEow1IIw4n5aEOrsjRcw==;
+	List-Owner; bh=tdx6rq22Jzl1WJJh07Y6ZMrJJOacLNJ77XLkbEiJjvw=; b=WzpM0WUveLC0I4
+	iVGlpMquOcdth1MxsJjp9LWSWnuBdVDL6cPjGVQpl3ZUCQvl7R+KhY44PCSliZfbDWA7/PWuNQoN2
+	ICTPEZNlClfhgditshOmhMuhEi2oAms6MVb+j0WWpIR4JhAvHSy89MyfebzZKcfsKqBYvwv5U5tbM
+	W1Vy97tNPFYkA6t1/A5YayCAZpcFTgoIftKDBSdKhr8RpsusZkIgIe64/tvXBTaccu3y00L3E9wtG
+	gpmw6Xg44EwSmxmUjSKvfWTpT7QCzvsLVfzIUgSmy+/Fn8IptqV/jZcZuZZr0uz14BLs89nyTwKsU
+	FGI7jgFOy/CEUlYd50eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1Vto-00FQIa-TJ; Wed, 15 Jun 2022 16:29:44 +0000
+	id 1o1W3u-00FTDg-OW; Wed, 15 Jun 2022 16:40:10 +0000
 Received: from smtp-out2.suse.de ([195.135.220.29])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1Vt9-00FPti-6r
-	for linux-rockchip@lists.infradead.org; Wed, 15 Jun 2022 16:29:05 +0000
+	id 1o1W3j-00FT8T-CT; Wed, 15 Jun 2022 16:40:00 +0000
 Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
-	by smtp-out2.suse.de (Postfix) with ESMTP id 52AB41F95C;
-	Wed, 15 Jun 2022 16:28:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
-	t=1655310518; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
+	by smtp-out2.suse.de (Postfix) with ESMTP id 0B2621F963;
+	Wed, 15 Jun 2022 16:39:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.cz; s=susede2_rsa;
+	t=1655311196; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
 	 in-reply-to:in-reply-to:references:references;
-	bh=sRVZYO8u+2GaBZDjbgulOQw4vH+xb0fipLd/Fd2y5no=;
-	b=X3toKjCDbNw80V+NQoJvX5JRKMX4cFCbyF7og7xPPjMnpeaUfgQKlYedoXL67veGx6ItpT
-	HqkMRF2zeZ4TShn7mZ4RuNANXtDLMdXc9OCm7sQ1xuIiRBKQ4mSevfOrKlg63BAFBZG80/
-	ekRWqnkUwHrDV9ignxnR0VbrQGzvWXs=
-Received: from alley.suse.cz (unknown [10.100.201.202])
-	by relay2.suse.de (Postfix) with ESMTP id E517C2C141;
-	Wed, 15 Jun 2022 16:28:37 +0000 (UTC)
-From: Petr Mladek <pmladek@suse.com>
-To: John Ogness <john.ogness@linutronix.de>
-Cc: Sergey Senozhatsky <senozhatsky@chromium.org>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	"Paul E . McKenney" <paulmck@kernel.org>,
-	frederic@kernel.org,
-	Peter Geis <pgwipeout@gmail.com>,
-	zhouzhouyi@gmail.com,
-	dave@stgolabs.net,
-	josh@joshtriplett.org,
-	Linus Torvalds <torvalds@linux-foundation.org>,
-	rcu@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Petr Mladek <pmladek@suse.com>
-Subject: [PATCH 2/2] printk: Wait for the global console lock when the system is going down
-Date: Wed, 15 Jun 2022 18:28:05 +0200
-Message-Id: <20220615162805.27962-3-pmladek@suse.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20220615162805.27962-1-pmladek@suse.com>
-References: <20220615162805.27962-1-pmladek@suse.com>
+	bh=TVxUPTfO0hu4AGabf4c0ym38vWrRw1TSRFIcByfylSk=;
+	b=Qgr2omByqxvkI9MmyIwGTpWrpq6ocW18Hhtf6rwr0nFGrcOyzWH9GjC/F0xLdx+jaEtjoo
+	YFdxFuL0yfnjhzGisYgIxMVyL+tn7ZIBI0H4Q2H/xkJ23PichcvgmSkmbr1ZgbAt2dEAQT
+	jGNsQzVpHFlaoDhGAu+DeY4r9KjxTgY=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.cz;
+	s=susede2_ed25519; t=1655311196;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=TVxUPTfO0hu4AGabf4c0ym38vWrRw1TSRFIcByfylSk=;
+	b=M/VYh5tM+kZEYsijqThrHs/SGSJ8RVv2zieejoHwwyAxBZEO5v/pzySncZUp64Wnp5Rz7P
+	ymZz65DaMYPCkXCw==
+Received: from quack3.suse.cz (unknown [10.163.28.18])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by relay2.suse.de (Postfix) with ESMTPS id AD85B2C141;
+	Wed, 15 Jun 2022 16:39:55 +0000 (UTC)
+Received: by quack3.suse.cz (Postfix, from userid 1000)
+	id ED3C3A062E; Wed, 15 Jun 2022 18:39:49 +0200 (CEST)
+Date: Wed, 15 Jun 2022 18:39:49 +0200
+From: Jan Kara <jack@suse.cz>
+To: Alexandru Elisei <alexandru.elisei@arm.com>
+Cc: Petr Mladek <pmladek@suse.com>, jack@suse.cz, sunjunchao2870@gmail.com,
+	viro@zeniv.linux.org.uk, linux-fsdevel@vger.kernel.org,
+	linux-kernel@vger.kernel.org, senozhatsky@chromium.org,
+	rostedt@goodmis.org, john.ogness@linutronix.de,
+	keescook@chromium.org, anton@enomsg.org, ccross@android.com,
+	tony.luck@intel.com, heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, maco@android.com, hch@lst.de,
+	gregkh@linuxfoundation.org, jirislaby@kernel.org
+Subject: Re: [BUG] rockpro64 board hangs in console_init() after commit
+ 10e14073107d
+Message-ID: <20220615163949.z22puioui322ktla@quack3.lan>
+References: <Yqdry+IghSWnJ6pe@monolith.localdoman>
+ <Yqh9xIwBVcabpSLe@alley>
+ <YqiJH1phG/LWu9bs@monolith.localdoman>
+ <YqiidNPMUZQPRIvy@alley>
+ <YqnVWCYx0L2RlckB@monolith.localdoman>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <YqnVWCYx0L2RlckB@monolith.localdoman>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_092903_534280_B92D55A9 
-X-CRM114-Status: GOOD (  19.67  )
+X-CRM114-CacheID: sfid-20220615_093959_608199_03418BE1 
+X-CRM114-Status: GOOD (  23.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,185 +92,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There are reports that the console kthreads block the global console
-lock when the system is going down, for example, reboot, panic.
+Hi Alexandru!
 
-First part of the solution was to block kthreads in these problematic
-system states so they stopped handling newly added messages.
+On Wed 15-06-22 13:50:24, Alexandru Elisei wrote:
+> On Tue, Jun 14, 2022 at 05:00:04PM +0200, Petr Mladek wrote:
+> > > > > I've booted a kernel compiled with CONFIG_PROVE_LOCKING=y, as the offending
+> > > > > commit fiddles with locks, but no splat was produced that would explain the
+> > > > > hang. I've also tried to boot a v5,19-rc2 kernel on my odroid-c4, the board
+> > > > > is booting just fine, so I'm guessing it only affects of subset of arm64
+> > > > > boards.
+> > > > 
+> > > > You might try to switch the order of console_init() and lockdep_init()
+> > > > in start_kernel() in init/main.c
+> > > 
+> > > Did so above.
+> > 
+> > Unfortunately, it did not print anything :-(
+> 
+> With this patch [1] I was able to succefully boot the board. So I guess
+> problem should be fixed.
+> 
+> [1] https://lore.kernel.org/all/20220614124618.2830569-1-suzuki.poulose@arm.com/
 
-Second part of the solution is to wait when for the kthreads when
-they are actively printing. It solves the problem when a message
-was printed before the system entered the problematic state and
-the kthreads managed to step in.
+Can you please try booting with the patch I've posted at [2]? After some
+discussion with Linus that would be a preferable fix... Thanks!
 
-A busy waiting has to be used because panic() can be called in any
-context and in an unknown state of the scheduler.
+[2] https://lore.kernel.org/all/20220615133845.o2lzfe5s4dzdfvtg@quack3.lan
 
-There must be a timeout because the kthread might get stuck or sleeping
-and never release the lock. The timeout 10s is an arbitrary value
-inspired by the softlockup timeout.
+								Honza
 
-BugLink: https://lore.kernel.org/r/20220610205038.GA3050413@paulmck-ThinkPad-P17-Gen-1
-BugLink: https://lore.kernel.org/r/CAMdYzYpF4FNTBPZsEFeWRuEwSies36QM_As8osPWZSr2q-viEA@mail.gmail.com
-Signed-off-by: Petr Mladek <pmladek@suse.com>
----
- include/linux/printk.h      |  5 +++++
- kernel/panic.c              |  2 ++
- kernel/printk/internal.h    |  2 ++
- kernel/printk/printk.c      |  4 ++++
- kernel/printk/printk_safe.c | 32 ++++++++++++++++++++++++++++++++
- kernel/reboot.c             |  2 ++
- 6 files changed, 47 insertions(+)
-
-diff --git a/include/linux/printk.h b/include/linux/printk.h
-index 10ec29bc0135..f88ec15f83dc 100644
---- a/include/linux/printk.h
-+++ b/include/linux/printk.h
-@@ -173,6 +173,7 @@ extern void printk_prefer_direct_enter(void);
- extern void printk_prefer_direct_exit(void);
- 
- extern bool pr_flush(int timeout_ms, bool reset_on_progress);
-+extern void try_block_console_kthreads(int timeout_ms);
- 
- /*
-  * Please don't use printk_ratelimit(), because it shares ratelimiting state
-@@ -237,6 +238,10 @@ static inline bool pr_flush(int timeout_ms, bool reset_on_progress)
- 	return true;
- }
- 
-+static inline void try_block_console_kthreads(int timeout_ms)
-+{
-+}
-+
- static inline int printk_ratelimit(void)
- {
- 	return 0;
-diff --git a/kernel/panic.c b/kernel/panic.c
-index a3c758dba15a..4cf13c37bd08 100644
---- a/kernel/panic.c
-+++ b/kernel/panic.c
-@@ -297,6 +297,7 @@ void panic(const char *fmt, ...)
- 		 * unfortunately means it may not be hardened to work in a
- 		 * panic situation.
- 		 */
-+		try_block_console_kthreads(10000);
- 		smp_send_stop();
- 	} else {
- 		/*
-@@ -304,6 +305,7 @@ void panic(const char *fmt, ...)
- 		 * kmsg_dump, we will need architecture dependent extra
- 		 * works in addition to stopping other CPUs.
- 		 */
-+		try_block_console_kthreads(10000);
- 		crash_smp_send_stop();
- 	}
- 
-diff --git a/kernel/printk/internal.h b/kernel/printk/internal.h
-index d947ca6c84f9..e7d8578860ad 100644
---- a/kernel/printk/internal.h
-+++ b/kernel/printk/internal.h
-@@ -20,6 +20,8 @@ enum printk_info_flags {
- 	LOG_CONT	= 8,	/* text is a fragment of a continuation line */
- };
- 
-+extern bool block_console_kthreads;
-+
- __printf(4, 0)
- int vprintk_store(int facility, int level,
- 		  const struct dev_printk_info *dev_info,
-diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 45c6c2b0b104..b095fb5f5f61 100644
---- a/kernel/printk/printk.c
-+++ b/kernel/printk/printk.c
-@@ -250,6 +250,9 @@ static atomic_t console_kthreads_active = ATOMIC_INIT(0);
- #define console_kthread_printing_exit() \
- 	atomic_dec(&console_kthreads_active)
- 
-+/* Block console kthreads to avoid processing new messages. */
-+bool block_console_kthreads;
-+
- /*
-  * Helper macros to handle lockdep when locking/unlocking console_sem. We use
-  * macros instead of functions so that _RET_IP_ contains useful information.
-@@ -3730,6 +3733,7 @@ static bool printer_should_wake(struct console *con, u64 seq)
- 
- 	if (con->blocked ||
- 	    console_kthreads_atomically_blocked() ||
-+	    block_console_kthreads ||
- 	    system_state > SYSTEM_RUNNING ||
- 	    oops_in_progress) {
- 		return false;
-diff --git a/kernel/printk/printk_safe.c b/kernel/printk/printk_safe.c
-index ef0f9a2044da..caac4de1ea59 100644
---- a/kernel/printk/printk_safe.c
-+++ b/kernel/printk/printk_safe.c
-@@ -8,7 +8,9 @@
- #include <linux/smp.h>
- #include <linux/cpumask.h>
- #include <linux/printk.h>
-+#include <linux/console.h>
- #include <linux/kprobes.h>
-+#include <linux/delay.h>
- 
- #include "internal.h"
- 
-@@ -50,3 +52,33 @@ asmlinkage int vprintk(const char *fmt, va_list args)
- 	return vprintk_default(fmt, args);
- }
- EXPORT_SYMBOL(vprintk);
-+
-+/**
-+ * try_block_console_kthreads() - Try to block console kthreads and
-+ *	make the global console_lock() avaialble
-+ *
-+ * @timeout_ms:        The maximum time (in ms) to wait.
-+ *
-+ * Prevent console kthreads from starting processing new messages. Wait
-+ * until the global console_lock() become available.
-+ *
-+ * Context: Can be called in any context.
-+ */
-+void try_block_console_kthreads(int timeout_ms)
-+{
-+	block_console_kthreads = true;
-+
-+	/* Do not wait when the console lock could not be safely taken. */
-+	if (this_cpu_read(printk_context) || in_nmi())
-+		return;
-+
-+	while (timeout_ms > 0) {
-+		if (console_trylock()) {
-+			console_unlock();
-+			return;
-+		}
-+
-+		udelay(1000);
-+		timeout_ms -= 1;
-+	}
-+}
-diff --git a/kernel/reboot.c b/kernel/reboot.c
-index b5a71d1ff603..80564ffafabf 100644
---- a/kernel/reboot.c
-+++ b/kernel/reboot.c
-@@ -82,6 +82,7 @@ void kernel_restart_prepare(char *cmd)
- {
- 	blocking_notifier_call_chain(&reboot_notifier_list, SYS_RESTART, cmd);
- 	system_state = SYSTEM_RESTART;
-+	try_block_console_kthreads(10000);
- 	usermodehelper_disable();
- 	device_shutdown();
- }
-@@ -270,6 +271,7 @@ static void kernel_shutdown_prepare(enum system_states state)
- 	blocking_notifier_call_chain(&reboot_notifier_list,
- 		(state == SYSTEM_HALT) ? SYS_HALT : SYS_POWER_OFF, NULL);
- 	system_state = state;
-+	try_block_console_kthreads(10000);
- 	usermodehelper_disable();
- 	device_shutdown();
- }
 -- 
-2.35.3
-
+Jan Kara <jack@suse.com>
+SUSE Labs, CR
 
 _______________________________________________
 Linux-rockchip mailing list
