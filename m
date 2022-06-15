@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C394C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jun 2022 14:38:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8F4DC43334
+	for <linux-rockchip@archiver.kernel.org>; Wed, 15 Jun 2022 15:49:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gp1Kb41jcI5Rw4avkd1Xvxbggo0t7iF9X6ZI/VGQKM4=; b=2pb5VbYkqkIAix
-	Id2tVNul65mRHEEzdKOKoIYLStAeZ3cUSX3+irLTd445QdLqkEWo08UfToleMkOauU7RXCmZDcDnG
-	9lUqVyvtUqO+tmMokWQ8F3TNTLnMxmETn4NbmzWDWhijWuT6fJNephAfBAJe6IU1Sc/07lpUYsvGQ
-	Ruresn+In2cIBAZQKEZf5PBkv10+nNq5CoeYgU85yVzho5ytILjVzWEvFmUE9Bazo9WCVwqIWm34H
-	VnSy8hHeKZo6hWwz2ZdpufEG1/Af6WKeWaZS3CVq/NSeKhYGfv9Z3tU0zAJ5Oko4FneI3uGk4Sr/x
-	Jia+uxir3CEEyWyltMlQ==;
+	List-Owner; bh=r9v19gqZQy6+VHkn+QTtqvklrZ+7vbAcc445Z/T5Q8w=; b=Ss0jy4sPm9h8pE
+	zVvFcN6UteNSKY9CQPJn/r6Ut79kHGJ+Rc9FF3x27sQZMYOrYipaqmacL4SiFgjr0deyk6/fEl/LI
+	Ja536uD3fhT6MWrj3ttggt3ZAeyD/+tqz+gMPvxS8Gdn/9aGpYA9X3guo1PIj46KG+nsSMsghniHB
+	GM3UNdvWatAnzNMiG+ZpVXZ2SiOg6Aa9ZpqceAC9/w6501Z9CrbkRnGvld6ie0C7J9fbW3ufUCm8l
+	HJV1xiRf8sGaLpand2vqtTtDm88ju/gvY8vNfR9dA5p7x0K45yJkH7OA3nexs2qK1/iJkAlkClG5+
+	TGHztg+U6YPKlDcNDi2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1U9w-00EyqX-Qg; Wed, 15 Jun 2022 14:38:16 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1U9t-00Eyoh-94
-	for linux-rockchip@lists.infradead.org; Wed, 15 Jun 2022 14:38:14 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 58D0D5A9;
-	Wed, 15 Jun 2022 16:38:06 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1655303886;
-	bh=0EpIzqHqqSnkByYS6l8lemBHSW4NPMYxO1kLR5xNbxs=;
-	h=Date:From:To:Cc:Subject:From;
-	b=j5G0lgYUMd98V83w+JtfxRjGadqmkjxtRln249IPBYkNopHoWBZJeF2QIgVt7HAN6
-	 CAM/M5D5vJtV7fDhUJJuSQsdQE29/3gPL1kr8VIxvhcGvVrJS6ReOq2H7zJx5s352g
-	 kLcOsK6VcVbsmVitDUwXbrAhH55nKLSmK7iYQN+U=
-Date: Wed, 15 Jun 2022 17:37:56 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: linux-media@vger.kernel.org
-Cc: Paul Elder <paul.elder@ideasonboard.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Heiko Stuebner <heiko@sntech.de>, Tomasz Figa <tfiga@google.com>,
-	linux-rockchip@lists.infradead.org
-Subject: [GIT PULL FOR v5.20] rkisp1 misc fixes and improvements
-Message-ID: <YqnuxKlNjA0AaIAR@pendragon.ideasonboard.com>
+	id 1o1VGY-00FELm-4h; Wed, 15 Jun 2022 15:49:10 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o1VGL-00FEBx-Gf; Wed, 15 Jun 2022 15:48:59 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 89EF4153B;
+	Wed, 15 Jun 2022 08:48:49 -0700 (PDT)
+Received: from e122027.arm.com (unknown [10.57.7.82])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EB7D33F7F5;
+	Wed, 15 Jun 2022 08:48:47 -0700 (PDT)
+From: Steven Price <steven.price@arm.com>
+To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	David Airlie <airlied@linux.ie>,
+	Sandy Huang <hjc@rock-chips.com>
+Cc: Steven Price <steven.price@arm.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Robin Murphy <robin.murphy@arm.com>
+Subject: [PATCH] drm/rockchip: Detach from ARM DMA domain in attach_device
+Date: Wed, 15 Jun 2022 16:48:30 +0100
+Message-Id: <20220615154830.555422-1-steven.price@arm.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_073813_515457_ABB2256B 
-X-CRM114-Status: UNSURE (   7.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220615_084857_634281_E6E42F79 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,66 +65,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mauro,
+Since commit 1ea2a07a532b ("iommu: Add DMA ownership management
+interfaces") the Rockchip display driver on the Firefly RK3288 fails to
+initialise properly. This is because ARM DMA domain is still attached.
 
-The following changes since commit f2906aa863381afb0015a9eb7fefad885d4e5a56:
+Let's follow the lead of exynos and tegra and add code to explicitly
+remove the ARM domain before attaching a new one.
 
-  Linux 5.19-rc1 (2022-06-05 17:18:54 -0700)
+Suggested-by: Robin Murphy <robin.murphy@arm.com>
+Signed-off-by: Steven Price <steven.price@arm.com>
+---
+See also the thread[1] where I reported the regression.
 
-are available in the Git repository at:
+[1] https://lore.kernel.org/linux-kernel/da9cca0a-ec5b-2e73-9de0-a930f7d947b2%40arm.com
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-  git://linuxtv.org/pinchartl/media.git tags/imx-next-20220615
-
-for you to fetch changes up to 4d846800b527933a46ffd5ff48b87f5a03ca087a:
-
-  media: rkisp1: Drop parentheses and fix indentation in rkisp1_probe() (2022-06-15 16:51:44 +0300)
-
-----------------------------------------------------------------
-rkisp1 misc bug fixes and cleanups
-
-----------------------------------------------------------------
-Laurent Pinchart (20):
-      media: rkisp1: capture: Initialize entity before video device
-      media: rkisp1: capture: Fix and simplify (un)registration
-      media: rkisp1: isp: Fix and simplify (un)registration
-      media: rkisp1: resizer: Fix and simplify (un)registration
-      media: rkisp1: params: Fix and simplify (un)registration
-      media: rkisp1: stats: Simplify (un)registration
-      media: rkisp1: Simplify rkisp1_entities_register() error path
-      media: rkisp1: regs: Don't use BIT() macro for multi-bit register fields
-      media: rkisp1: regs: Rename CCL, ICCL and IRCL registers with VI_ prefix
-      media: rkisp1: Swap value and address arguments to rkisp1_write()
-      media: rkisp1: resizer: Simplify register access
-      media: rkisp1: Move debugfs code to a separate file
-      media: rkisp1: Compile debugfs support conditionally
-      media: rkisp1: debug: Collect input status by sampling ISP_FLAGS_SHD
-      media: rkisp1: debug: Add debugfs files to dump core and ISP registers
-      media: rkisp1: debug: Move resizer register dump to debugfs
-      media: rkisp1: debug: Consolidate reg dumps for shadow registers
-      media: rkisp1: debug: Update max register name length
-      media: rkisp1: Align macro definitions
-      media: rkisp1: Drop parentheses and fix indentation in rkisp1_probe()
-
-Paul Elder (1):
-      media: rkisp1: capture: Bypass the main device for handling querycap
-
- drivers/media/platform/rockchip/rkisp1/Makefile    |  17 +-
- .../platform/rockchip/rkisp1/rkisp1-capture.c      | 159 +++--
- .../media/platform/rockchip/rkisp1/rkisp1-common.h |  48 +-
- .../media/platform/rockchip/rkisp1/rkisp1-debug.c  | 222 +++++++
- .../media/platform/rockchip/rkisp1/rkisp1-dev.c    |  79 +--
- .../media/platform/rockchip/rkisp1/rkisp1-isp.c    | 156 ++---
- .../media/platform/rockchip/rkisp1/rkisp1-params.c | 705 +++++++++++----------
- .../media/platform/rockchip/rkisp1/rkisp1-regs.h   | 190 +++---
- .../platform/rockchip/rkisp1/rkisp1-resizer.c      | 204 ++----
- .../media/platform/rockchip/rkisp1/rkisp1-stats.c  |  13 +-
- 10 files changed, 949 insertions(+), 844 deletions(-)
- create mode 100644 drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 67d38f53d3e5..13ed33e74457 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -23,6 +23,14 @@
+ #include <drm/drm_probe_helper.h>
+ #include <drm/drm_vblank.h>
+ 
++#if defined(CONFIG_ARM_DMA_USE_IOMMU)
++#include <asm/dma-iommu.h>
++#else
++#define arm_iommu_detach_device(...)	({ })
++#define arm_iommu_release_mapping(...)	({ })
++#define to_dma_iommu_mapping(dev) NULL
++#endif
++
+ #include "rockchip_drm_drv.h"
+ #include "rockchip_drm_fb.h"
+ #include "rockchip_drm_gem.h"
+@@ -49,6 +57,15 @@ int rockchip_drm_dma_attach_device(struct drm_device *drm_dev,
+ 	if (!private->domain)
+ 		return 0;
+ 
++	if (IS_ENABLED(CONFIG_ARM_DMA_USE_IOMMU)) {
++		struct dma_iommu_mapping *mapping = to_dma_iommu_mapping(dev);
++
++		if (mapping) {
++			arm_iommu_detach_device(dev);
++			arm_iommu_release_mapping(mapping);
++		}
++	}
++
+ 	ret = iommu_attach_device(private->domain, dev);
+ 	if (ret) {
+ 		DRM_DEV_ERROR(dev, "Failed to attach iommu device\n");
 -- 
-Regards,
+2.25.1
 
-Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
