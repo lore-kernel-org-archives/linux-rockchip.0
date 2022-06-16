@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF72EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 15:59:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E7FECCA47A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 16:00:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RWkDfSrBpBuEnka+crVSMzkpYAleZxDiDGoBjHrPAZs=; b=C4/5bnOcCAVcvT
-	IXKLrpQAtpuRqrVht6sKhIh77gZ1bRy+WXdzxSpTHF+Cdjpe8DzoQGQiHW0adrgrUc7+WYBeZ+7fL
-	ENsk9oDHFQNMOEiORlAofgxccZTOzbNqFyi+y/blKrabErZcG8DHIBLaVxHWmVt1FAVCeyTQbTouX
-	pdUewBiXZ+70loIBmzTcIZaT7HBjBfcJnHQnWdn1aOhfK1SpxhL76KmUCJ9tBuU6Ad0AcYkyYc3P+
-	O+U2AJeRQdAuLXHM542fQ72kXa8pcp3+qwey+tgBqI2sfLdXPPjs9XVmjIPkFQ178nSkHDsSX31Du
-	Z/zIVPOAlG/3Bo/QwaoQ==;
+	List-Owner; bh=uWsw/bGMGWYAfLnxGYFb6EeVO4sd+nqgVlHDL3nf3+8=; b=w6CRxWqf3l9/Mx
+	jk9kUukGtE86zzhUfLSEhAhDSczjmUlMNQSFCVAY66bzyBGNQMnzutSKXCvhSB0OgsZZrplyz9RqS
+	G/mmWd15maJg2fEl5joKQ3I5xSQO7ib1vtx4JuydkIIFFUm9kTyNDjH4yBeyolHHhu+ooQhoNGLHB
+	PuidgFwr+Tm4lrGTjLPfNCT/KOqqcxwpy2iEghmo9ng8SIBP+GGijLxDJb4/5Kj8uRjcH4fA5tKUK
+	ns6KYcJvfVTVKPkNRG8LkjRC1X3goGN/dgNV2oQ15EOwLiWS5U1N321U0hplQZfygnVSTcQ3pej19
+	PO4od7dZiL8IwzSukuYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1ruK-003HAH-Nl; Thu, 16 Jun 2022 15:59:44 +0000
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+	id 1o1ruf-003HNT-MH; Thu, 16 Jun 2022 16:00:05 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1rtr-003GpT-6b
-	for linux-rockchip@lists.infradead.org; Thu, 16 Jun 2022 15:59:16 +0000
-Received: by mail-pg1-x531.google.com with SMTP id w29so1622498pgl.8
-        for <linux-rockchip@lists.infradead.org>; Thu, 16 Jun 2022 08:59:11 -0700 (PDT)
+	id 1o1rtv-003GtH-Rb
+	for linux-rockchip@lists.infradead.org; Thu, 16 Jun 2022 15:59:21 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id z14so1663454pgh.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 16 Jun 2022 08:59:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=1iiZdBWHFJdrFfJbZfZnceN3/GxT4Ky2/m6fos+S0Ik=;
-        b=be9El3SEh1Rc32lQg8vmdwcehMjaAdXHGjl51fuvrV8TKt7e6WJNXjd5ZvK7JYL/PT
-         y3zQle7EN32cMVterapkUauMSGaMiXS92cn9Aa2/ibdODcfC9sRhAgQcTf7SCwiNrPMg
-         L3S/hTlMKEGmp44yy7V60bbkGPajVLKvmkTC8=
+        bh=DgrwewMce2rCEAP+XlA9uqVT9sKMIcKrgNTnswDM33Y=;
+        b=j1+LKGPK//opsez1h3IZYLmloo+4hPEoxEk8xMICOmbOhqlBLGAMND2zjOoFyug2EY
+         5w+Wt5QkKbiSzcJfiUrlZXilCZK7CzVdOKye1m0P35pjQXxCnDRhlzva6yupERBJDrHJ
+         N5pZ4c/wqoz867w4DqOPA5KqOEfbKkO/oGYIg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=1iiZdBWHFJdrFfJbZfZnceN3/GxT4Ky2/m6fos+S0Ik=;
-        b=YRDKxTZ/u82VPkjuSBB4xIkoYhR7d5Bl78xIRfOcBAo+WeCFyc//Gz2Scq5Cz8prWz
-         AcL9dny0jsDvKiTnpy/JRSWjTaKKA7kOvkL8xYcVpwacKGaLZhVXsdZ1LXXalL56axpc
-         TrZIXHx8ySJl4OqQQUtOheEVEJ0axAAmuL+i2AptDvmZHgf33J2CgKp7KjsJIs46FVf2
-         gSgj4mUaXmNM+PU91tgnSddfawkYBshJdS7VppRWS22VHxaWFHSxASxxvKMeHc27s+vm
-         0wUMJvE5US4hZXzfad1++QfrUtSsrXa//kN9pV8U4KB8QJloH4UYKCMgGE+zMhUL3B7g
-         ZUew==
-X-Gm-Message-State: AJIora9P7tWuCGKyUFaMBinTCsU6Y5NZJ7xWApK67EYozlwuwUOvNZdP
-	bfJ6bIQhYDjV3TfEHLeGZmf3Zg==
-X-Google-Smtp-Source: AGRyM1vxFRDYywPnwd/TaWUfaMrqEEbcG5OqHf0sBwiLQgHUU2wzGIceW6mk/A7eRkxFTYDDQBR38g==
-X-Received: by 2002:a05:6a00:140a:b0:4e0:54d5:d01 with SMTP id l10-20020a056a00140a00b004e054d50d01mr5349202pfu.20.1655395151450;
-        Thu, 16 Jun 2022 08:59:11 -0700 (PDT)
+        bh=DgrwewMce2rCEAP+XlA9uqVT9sKMIcKrgNTnswDM33Y=;
+        b=INu3iP3hY2DhFRFrkX9s6aFo7Od42mnkKM+SAEcPch+0cvMwnHH6knqv3keutJfNfr
+         zBjZAMO/55BbWTdSQI+aGU3YIQIAvJPSFWwFwf8yxQksuJ1YbCzZCmDY/a593wFivyP5
+         d4q4E2iimkXcXItE49erDdmsVb+o7dQaJM7sO2JgZIrDOEzeBE/6U0dC8k2e1Gb1GNsT
+         i8xTc9ddH7tRwBkLgyT5xLp5x9LUYQSdKY6d3Fb7s4jCPTXCxglgwnLgsDDIuPVqOFWO
+         MGBZ0YYpsM1kCjDjeuX5oatXudgPNReSpuRX4RhQe/6eYy3J1qS5USz7xxV5VWdwVW3r
+         ysUA==
+X-Gm-Message-State: AJIora8ZPs4HHM1ZFm1ReqCkoe7rXXNM/30YfC2VTVv5rP9RP8oy6ohj
+	2uU7JbP155fwbU1ZxDKKhOezJw==
+X-Google-Smtp-Source: AGRyM1tJ4+JyFVVgPMz5uyUA7b8XnLeEV3bIK43Yl9Qo91NqaGe+fP3lYzpmcrF6e9DSJkwDcLQiGQ==
+X-Received: by 2002:a62:b802:0:b0:51b:f4d2:65be with SMTP id p2-20020a62b802000000b0051bf4d265bemr5477983pfe.79.1655395156957;
+        Thu, 16 Jun 2022 08:59:16 -0700 (PDT)
 Received: from judyhsiao0523.c.googlers.com.com (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
-        by smtp.gmail.com with ESMTPSA id f8-20020a170902684800b00161478027f5sm1779797pln.150.2022.06.16.08.59.09
+        by smtp.gmail.com with ESMTPSA id f8-20020a170902684800b00161478027f5sm1779797pln.150.2022.06.16.08.59.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Jun 2022 08:59:11 -0700 (PDT)
+        Thu, 16 Jun 2022 08:59:16 -0700 (PDT)
 From: Judy Hsiao <judyhsiao@chromium.org>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Liam Girdwood <lgirdwood@gmail.com>,
@@ -68,16 +68,17 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Judy Hsiao <judyhsiao@chromium.org>
-Subject: [PATCH v2 2/3] arm64: dts: rk3399: i2s: switch BCLK to GPIO
-Date: Thu, 16 Jun 2022 15:58:35 +0000
-Message-Id: <20220616155836.3401420-3-judyhsiao@chromium.org>
+Subject: [PATCH v2 3/3] ASoC: dt-bindings: rockchip: Document pinctrl-names for i2s
+Date: Thu, 16 Jun 2022 15:58:36 +0000
+Message-Id: <20220616155836.3401420-4-judyhsiao@chromium.org>
 X-Mailer: git-send-email 2.36.1.476.g0c4daa206d-goog
 In-Reply-To: <20220616155836.3401420-1-judyhsiao@chromium.org>
 References: <20220616155836.3401420-1-judyhsiao@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_085915_314393_7B23530A 
-X-CRM114-Status: GOOD (  14.10  )
+X-CRM114-CacheID: sfid-20220616_085919_954347_D3F9A106 
+X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,98 +95,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-We discoverd that the state of BCLK on, LRCLK off and SD_MODE on
-may cause the speaker melting issue. Removing LRCLK while BCLK
-is present can cause unexpected output behavior including a large
-DC output voltage as described in the Max98357a datasheet.
-
-In order to:
-  1. prevent BCLK from turning on by other component.
-  2. keep BCLK and LRCLK being present at the same time
-
-This patch adjusts the device tree to allow BCLK to switch
-to GPIO func before LRCLK output, and switch back during
-LRCLK is output.
+This patch documents pinctrl-names for i2s.
 
 Signed-off-by: Judy Hsiao <judyhsiao@chromium.org>
 ---
- .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 10 ++++++++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi      | 25 ++++++++++++++++++-
- 2 files changed, 34 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/sound/rockchip-i2s.yaml | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-index 913d845eb51a..df1647e9d487 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-@@ -766,6 +766,16 @@ &i2s0_8ch_bus {
- 		<4 RK_PA0 1 &pcfg_pull_none_6ma>;
- };
+diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml b/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
+index 5ea16b8ef93f..af1069278623 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
++++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
+@@ -61,6 +61,13 @@ properties:
+           - const: tx
+           - const: rx
  
-+&i2s0_8ch_bus_bclk_off {
-+	rockchip,pins =
-+		<3 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none_6ma>,
-+		<3 RK_PD1 1 &pcfg_pull_none_6ma>,
-+		<3 RK_PD2 1 &pcfg_pull_none_6ma>,
-+		<3 RK_PD3 1 &pcfg_pull_none_6ma>,
-+		<3 RK_PD7 1 &pcfg_pull_none_6ma>,
-+		<4 RK_PA0 1 &pcfg_pull_none_6ma>;
-+};
++  pinctrl-names:
++    oneOf:
++      - const: default
++        - items:
++          - const: bclk_on
++          - const: bclk_off
 +
- /* there is no external pull up, so need to set this pin pull up */
- &sdmmc_cd_pin {
- 	rockchip,pins = <1 RK_PB3 RK_FUNC_GPIO &pcfg_pull_up>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index fbd0346624e6..3981dec6a5a5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -1662,9 +1662,10 @@ i2s0: i2s@ff880000 {
- 		dma-names = "tx", "rx";
- 		clock-names = "i2s_clk", "i2s_hclk";
- 		clocks = <&cru SCLK_I2S0_8CH>, <&cru HCLK_I2S0_8CH>;
--		pinctrl-names = "default";
-+		pinctrl-names = "bclk_on", "bclk_off";
- 		pinctrl-0 = <&i2s0_8ch_bus>;
- 		power-domains = <&power RK3399_PD_SDIOAUDIO>;
-+		pinctrl-1 = <&i2s0_8ch_bus_bclk_off>;
- 		#sound-dai-cells = <0>;
- 		status = "disabled";
- 	};
-@@ -2407,6 +2408,19 @@ i2s0_8ch_bus: i2s0-8ch-bus {
- 					<3 RK_PD7 1 &pcfg_pull_none>,
- 					<4 RK_PA0 1 &pcfg_pull_none>;
- 			};
-+
-+			i2s0_8ch_bus_bclk_off: i2s0-8ch-bus-bclk-off {
-+				rockchip,pins =
-+					<3 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>,
-+					<3 RK_PD1 1 &pcfg_pull_none>,
-+					<3 RK_PD2 1 &pcfg_pull_none>,
-+					<3 RK_PD3 1 &pcfg_pull_none>,
-+					<3 RK_PD4 1 &pcfg_pull_none>,
-+					<3 RK_PD5 1 &pcfg_pull_none>,
-+					<3 RK_PD6 1 &pcfg_pull_none>,
-+					<3 RK_PD7 1 &pcfg_pull_none>,
-+					<4 RK_PA0 1 &pcfg_pull_none>;
-+			};
- 		};
+   power-domains:
+     maxItems: 1
  
- 		i2s1 {
-@@ -2418,6 +2432,15 @@ i2s1_2ch_bus: i2s1-2ch-bus {
- 					<4 RK_PA6 1 &pcfg_pull_none>,
- 					<4 RK_PA7 1 &pcfg_pull_none>;
- 			};
-+
-+			i2s1_2ch_bus_bclk_off: i2s1-2ch-bus-bclk-off {
-+				rockchip,pins =
-+					<4 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>,
-+					<4 RK_PA4 1 &pcfg_pull_none>,
-+					<4 RK_PA5 1 &pcfg_pull_none>,
-+					<4 RK_PA6 1 &pcfg_pull_none>,
-+					<4 RK_PA7 1 &pcfg_pull_none>;
-+			};
- 		};
- 
- 		sdio0 {
 -- 
 2.36.1.476.g0c4daa206d-goog
 
