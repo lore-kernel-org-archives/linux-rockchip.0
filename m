@@ -4,53 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3537C43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 16:05:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB1EAC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 19:04:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xp8KsccPFkiJhjkSH3EoGap9ARZnXxwi0jeelk6341Y=; b=YoKM+OaLDoe+2H
-	I1pfHuDA5z3ygh0OJHuC2W0npCAYDOjxurW2SKR3RU+LVX4WDpX2q7bQ/18OpUCgj8ZbQd+N9RvgE
-	oISc1u/pUbTAUuTi38/yFwKRdnaisDKuwDk9zukeFRAGD2S4wnavPBUAvlPlizZj5nZoHMthl6p6Q
-	EShufIM3Goi6H1zHdZNOa4W5AEmhyU7u/aQT0ILs/CD//OkEZvXlBF/WCxNdBd8e2GVmK2zavsAth
-	3v0izzMwCDazmowek+PbYN0VxpNhlmU01NLw0nP+Q/pUBxh7nrU2GqXuDCUaj2aj4i0qKRB9Annwl
-	az/9NGtmnsAT5sBRmPcQ==;
+	List-Owner; bh=UD8RaVbBRbJmbB58Eo+2WiCBVxdOv+uD8UrBP63z7HY=; b=qGz0FOCwX4L9r5
+	e0hHOdg8LzNPMfOCvtnUG2HL3nLBaZgrhqc6XAYNazBhyjDrHkbd/hFHZfgRzzbEBki2hPdifI62T
+	am7bbG6PZFVBJSb9wT5m2l+bh/0ZwQmLlRiqfe96ZTTLxc3iElXfXkgl6QVKCkSaeiahDuPOD9c+q
+	qmN8mA0IvDfIA01mQTfvNve4+6KabUPYD1jWRrV96B+K/WwVcgSFMtiFVU8coCs44Xs6PGWta2FUZ
+	a5hkpzJXCyN/MhbkIa+TqyZtLMmyyPDjuZ/8hd+Ggep9tieomID3tKOmUXwfzBL2cLKCB+tadZ5rn
+	8gRDdoG7O/QNdcymKnKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1rzq-003JyB-8x; Thu, 16 Jun 2022 16:05:26 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1o1un8-003wLb-77; Thu, 16 Jun 2022 19:04:30 +0000
+Received: from mga18.intel.com ([134.134.136.126])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1rzi-003Js6-JM
-	for linux-rockchip@lists.infradead.org; Thu, 16 Jun 2022 16:05:21 +0000
-Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0370FBAC;
-	Thu, 16 Jun 2022 18:05:12 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1655395513;
-	bh=bgubHmggbrvTsLqwBe7Y6wtg/PSfpTcmOn7GZDOwDME=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=T84Dk98x+VbV2YVVPizLwX2OfZTHsYkFH3KEh1zDS0Ao5xmMaxKsP0XsN2eef7uEP
-	 K+x3A34Yu4PIYQ/kLPU0eRJmvHJyEgcPVc6XUkCgggBu5R/2NZjYYMwz1GSYlRJCjL
-	 x8SB4NT8vCnOCV/S6+eqggvd5KbJfR0dr6lD48RU=
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Florian Sylvestre <fsylvestre@baylibre.com>
-Subject: [PATCH 3/3] media: rockchip: rkisp1: Define macros for DPCC configurations in UAPI
-Date: Thu, 16 Jun 2022 19:04:56 +0300
-Message-Id: <20220616160456.21549-4-laurent.pinchart@ideasonboard.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220616160456.21549-1-laurent.pinchart@ideasonboard.com>
-References: <20220616160456.21549-1-laurent.pinchart@ideasonboard.com>
+	id 1o1umw-003wJH-J5; Thu, 16 Jun 2022 19:04:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1655406258; x=1686942258;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=05ZQtWGf38sMkIDGBxN5ear0JqXBorAqDG9HH+7P078=;
+  b=mBXmRGM51yeSBexYfRoC/bEKN26z65LHbDLHDXX5E1nBPXPaYMUFoLkN
+   T394p4gJlEYI6g3J/egS1YG97ShfXUcbQDfLk5lInPeoPaF2DmgRJaor6
+   TB5Ktx3lUbv7pbA7npwuK/+TtDHOtZW/llz52AKSK/SGPEMLbPHzMqis9
+   6oVQLooYOBY/4dwI9I1ZYBX6r5X06jRQpNhfYTyu6qxF8dC+j9wMpvFoU
+   SzKrh4NYDsdwPkrLQm22dCfBDJgooi1oqz6DdTPs5jQmHUHiiK3YCUj84
+   AM4TvWJ8V/8zKo4deY0FjRvTNoh5P1k+BpQh6lJQT5YSv3aS0+hO89vvf
+   w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10380"; a="262348686"
+X-IronPort-AV: E=Sophos;i="5.92,306,1650956400"; 
+   d="scan'208";a="262348686"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Jun 2022 12:04:15 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,306,1650956400"; 
+   d="scan'208";a="728022535"
+Received: from lkp-server01.sh.intel.com (HELO 60dabacc1df6) ([10.239.97.150])
+  by fmsmga001.fm.intel.com with ESMTP; 16 Jun 2022 12:04:12 -0700
+Received: from kbuild by 60dabacc1df6 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1o1ump-000Ogz-O9;
+	Thu, 16 Jun 2022 19:04:11 +0000
+Date: Fri, 17 Jun 2022 03:03:38 +0800
+From: kernel test robot <lkp@intel.com>
+To: Judy Hsiao <judyhsiao@chromium.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: kbuild-all@lists.01.org, Liam Girdwood <lgirdwood@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Brian Norris <briannorris@chromium.org>,
+	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+	Chen-Yu Tsai <wenst@chromium.org>, alsa-devel@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Judy Hsiao <judyhsiao@chromium.org>
+Subject: Re: [PATCH v2 1/3] ASoC: rockchip: i2s: switch BCLK to GPIO
+Message-ID: <202206170216.M52eiJwN-lkp@intel.com>
+References: <20220616155836.3401420-2-judyhsiao@chromium.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220616155836.3401420-2-judyhsiao@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_090518_838828_0287AEF5 
-X-CRM114-Status: GOOD (  11.61  )
+X-CRM114-CacheID: sfid-20220616_120418_715944_81D510A1 
+X-CRM114-Status: GOOD (  18.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,138 +87,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Extend the UAPI rkisp1-config.h header with macros for all DPCC
-configuration fields. While at it, clarify of fix issues in the DPCC
-documentation.
+Hi Judy,
 
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
----
- .../platform/rockchip/rkisp1/rkisp1-regs.h    |  1 -
- include/uapi/linux/rkisp1-config.h            | 77 +++++++++++++++----
- 2 files changed, 61 insertions(+), 17 deletions(-)
+Thank you for the patch! Yet something to improve:
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-index dc01f968c19d..a931f7216e9b 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-@@ -620,7 +620,6 @@
- /* DPCC */
- #define RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE		BIT(0)
- #define RKISP1_CIF_ISP_DPCC_MODE_GRAYSCALE_MODE		BIT(1)
--#define RKISP1_CIF_ISP_DPCC_MODE_STAGE1_ENABLE		BIT(2)
- #define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_MASK		GENMASK(3, 0)
- #define RKISP1_CIF_ISP_DPCC_SET_USE_MASK		GENMASK(3, 0)
- #define RKISP1_CIF_ISP_DPCC_METHODS_SET_MASK		0x00001f1f
-diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-index 583ca0d9a79d..730673ecc63d 100644
---- a/include/uapi/linux/rkisp1-config.h
-+++ b/include/uapi/linux/rkisp1-config.h
-@@ -117,7 +117,46 @@
- /*
-  * Defect Pixel Cluster Correction
-  */
--#define RKISP1_CIF_ISP_DPCC_METHODS_MAX       3
-+#define RKISP1_CIF_ISP_DPCC_METHODS_MAX				3
-+
-+#define RKISP1_CIF_ISP_DPCC_MODE_STAGE1_ENABLE			(1U << 2)
-+
-+#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_STAGE1_INCL_G_CENTER	(1U << 0)
-+#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_STAGE1_INCL_RB_CENTER	(1U << 1)
-+#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_STAGE1_G_3X3		(1U << 2)
-+#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_STAGE1_RB_3X3		(1U << 3)
-+
-+/* 0-2 for sets 1-3 */
-+#define RKISP1_CIF_ISP_DPCC_SET_USE_STAGE1_USE_SET(n)		((n) << 0)
-+#define RKISP1_CIF_ISP_DPCC_SET_USE_STAGE1_USE_FIX_SET		(1U << 3)
-+
-+#define RKISP1_CIF_ISP_DPCC_METHODS_SET_PG_GREEN_ENABLE		(1U << 0)
-+#define RKISP1_CIF_ISP_DPCC_METHODS_SET_LC_GREEN_ENABLE		(1U << 1)
-+#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RO_GREEN_ENABLE		(1U << 2)
-+#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RND_GREEN_ENABLE	(1U << 3)
-+#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RG_GREEN_ENABLE		(1U << 4)
-+#define RKISP1_CIF_ISP_DPCC_METHODS_SET_PG_RED_BLUE_ENABLE	(1U << 8)
-+#define RKISP1_CIF_ISP_DPCC_METHODS_SET_LC_RED_BLUE_ENABLE	(1U << 9)
-+#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RO_RED_BLUE_ENABLE	(1U << 10)
-+#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RND_RED_BLUE_ENABLE	(1U << 11)
-+#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RG_RED_BLUE_ENABLE	(1U << 12)
-+
-+#define RKISP1_CIF_ISP_DPCC_LINE_THRESH_G(v)			((v) << 0)
-+#define RKISP1_CIF_ISP_DPCC_LINE_THRESH_RB(v)			((v) << 8)
-+#define RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_G(v)			((v) << 0)
-+#define RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_RB(v)			((v) << 8)
-+#define RKISP1_CIF_ISP_DPCC_PG_FAC_G(v)				((v) << 0)
-+#define RKISP1_CIF_ISP_DPCC_PG_FAC_RB(v)			((v) << 8)
-+#define RKISP1_CIF_ISP_DPCC_RND_THRESH_G(v)			((v) << 0)
-+#define RKISP1_CIF_ISP_DPCC_RND_THRESH_RB(v)			((v) << 8)
-+#define RKISP1_CIF_ISP_DPCC_RG_FAC_G(v)				((v) << 0)
-+#define RKISP1_CIF_ISP_DPCC_RG_FAC_RB(v)			((v) << 8)
-+
-+#define RKISP1_CIF_ISP_DPCC_RO_LIMITS_n_G(n, v)			((v) << ((n) * 4))
-+#define RKISP1_CIF_ISP_DPCC_RO_LIMITS_n_RB(n, v)		((v) << ((n) * 4 + 2))
-+
-+#define RKISP1_CIF_ISP_DPCC_RND_OFFS_n_G(n, v)			((v) << ((n) * 4))
-+#define RKISP1_CIF_ISP_DPCC_RND_OFFS_n_RB(n, v)			((v) << ((n) * 4 + 2))
- 
- /*
-  * Denoising pre filter
-@@ -249,16 +288,20 @@ struct rkisp1_cif_isp_bls_config {
- };
- 
- /**
-- * struct rkisp1_cif_isp_dpcc_methods_config - Methods Configuration used by DPCC
-+ * struct rkisp1_cif_isp_dpcc_methods_config - DPCC methods set configuration
-  *
-- * Methods Configuration used by Defect Pixel Cluster Correction
-+ * This structure stores the configuration of one set of methods for the DPCC
-+ * algorithm. Multiple methods can be selected in each set (independently for
-+ * the Green and Red/Blue components) through the @method field, the result is
-+ * the logical AND of all enabled methods. The remaining fields set thresholds
-+ * and factors for each method.
-  *
-- * @method: Method enable bits
-- * @line_thresh: Line threshold
-- * @line_mad_fac: Line MAD factor
-- * @pg_fac: Peak gradient factor
-- * @rnd_thresh: Rank Neighbor Difference threshold
-- * @rg_fac: Rank gradient factor
-+ * @method: Method enable bits (RKISP1_CIF_ISP_DPCC_METHODS_SET_*)
-+ * @line_thresh: Line threshold (RKISP1_CIF_ISP_DPCC_LINE_THRESH_*)
-+ * @line_mad_fac: Line Mean Absolute Difference factor (RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_*)
-+ * @pg_fac: Peak gradient factor (RKISP1_CIF_ISP_DPCC_PG_FAC_*)
-+ * @rnd_thresh: Rank Neighbor Difference threshold (RKISP1_CIF_ISP_DPCC_RND_THRESH_*)
-+ * @rg_fac: Rank gradient factor (RKISP1_CIF_ISP_DPCC_RG_FAC_*)
-  */
- struct rkisp1_cif_isp_dpcc_methods_config {
- 	__u32 method;
-@@ -272,14 +315,16 @@ struct rkisp1_cif_isp_dpcc_methods_config {
- /**
-  * struct rkisp1_cif_isp_dpcc_config - Configuration used by DPCC
-  *
-- * Configuration used by Defect Pixel Cluster Correction
-+ * Configuration used by Defect Pixel Cluster Correction. Three sets of methods
-+ * can be configured and selected through the @set_use field. The result is the
-+ * logical OR of all enabled sets.
-  *
-- * @mode: dpcc output mode
-- * @output_mode: whether use hard coded methods
-- * @set_use: stage1 methods set
-- * @methods: methods config
-- * @ro_limits: rank order limits
-- * @rnd_offs: differential rank offsets for rank neighbor difference
-+ * @mode: DPCC mode (RKISP1_CIF_ISP_DPCC_MODE_*)
-+ * @output_mode: Interpolation output mode (RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_*)
-+ * @set_use: Methods sets selection (RKISP1_CIF_ISP_DPCC_SET_USE_*)
-+ * @methods: Methods sets configuration
-+ * @ro_limits: Rank order limits (RKISP1_CIF_ISP_DPCC_RO_LIMITS_*)
-+ * @rnd_offs: Differential rank offsets for rank neighbor difference (RKISP1_CIF_ISP_DPCC_RND_OFFS_*)
-  */
- struct rkisp1_cif_isp_dpcc_config {
- 	__u32 mode;
+[auto build test ERROR on rockchip/for-next]
+[also build test ERROR on broonie-sound/for-next robh/for-next linus/master v5.19-rc2 next-20220616]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Judy-Hsiao/ASoC-rockchip-i2s-switch-BCLK-to-GPIO/20220617-000041
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
+config: arc-randconfig-r043-20220616 (https://download.01.org/0day-ci/archive/20220617/202206170216.M52eiJwN-lkp@intel.com/config)
+compiler: arc-elf-gcc (GCC) 11.3.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/322064314e50b113217aa4c7412e2431defea08f
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Judy-Hsiao/ASoC-rockchip-i2s-switch-BCLK-to-GPIO/20220617-000041
+        git checkout 322064314e50b113217aa4c7412e2431defea08f
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=arc SHELL=/bin/bash sound/soc/rockchip/
+
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
+
+All errors (new ones prefixed by >>):
+
+   sound/soc/rockchip/rockchip_i2s.c: In function 'rockchip_snd_rxctrl':
+   sound/soc/rockchip/rockchip_i2s.c:247:16: error: 'return' with a value, in function returning void [-Werror=return-type]
+     247 |         return ret;
+         |                ^~~
+   sound/soc/rockchip/rockchip_i2s.c:188:13: note: declared here
+     188 | static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
+         |             ^~~~~~~~~~~~~~~~~~~
+   sound/soc/rockchip/rockchip_i2s.c: In function 'rockchip_i2s_trigger':
+>> sound/soc/rockchip/rockchip_i2s.c:485:29: error: void value not ignored as it ought to be
+     485 |                         ret = rockchip_snd_rxctrl(i2s, 1);
+         |                             ^
+   sound/soc/rockchip/rockchip_i2s.c:498:29: error: void value not ignored as it ought to be
+     498 |                         ret = rockchip_snd_rxctrl(i2s, 0);
+         |                             ^
+   cc1: some warnings being treated as errors
+
+
+vim +485 sound/soc/rockchip/rockchip_i2s.c
+
+   473	
+   474	static int rockchip_i2s_trigger(struct snd_pcm_substream *substream,
+   475					int cmd, struct snd_soc_dai *dai)
+   476	{
+   477		struct rk_i2s_dev *i2s = to_info(dai);
+   478		int ret = 0;
+   479	
+   480		switch (cmd) {
+   481		case SNDRV_PCM_TRIGGER_START:
+   482		case SNDRV_PCM_TRIGGER_RESUME:
+   483		case SNDRV_PCM_TRIGGER_PAUSE_RELEASE:
+   484			if (substream->stream == SNDRV_PCM_STREAM_CAPTURE)
+ > 485				ret = rockchip_snd_rxctrl(i2s, 1);
+   486			else
+   487				ret = rockchip_snd_txctrl(i2s, 1);
+   488			if (ret < 0)
+   489				return ret;
+   490			i2s_pinctrl_select_bclk_on(i2s);
+   491			break;
+   492		case SNDRV_PCM_TRIGGER_SUSPEND:
+   493		case SNDRV_PCM_TRIGGER_STOP:
+   494		case SNDRV_PCM_TRIGGER_PAUSE_PUSH:
+   495			if (substream->stream == SNDRV_PCM_STREAM_CAPTURE) {
+   496				if (!i2s->tx_start)
+   497					i2s_pinctrl_select_bclk_off(i2s);
+   498				ret = rockchip_snd_rxctrl(i2s, 0);
+   499			} else {
+   500				if (!i2s->rx_start)
+   501					i2s_pinctrl_select_bclk_off(i2s);
+   502				ret = rockchip_snd_txctrl(i2s, 0);
+   503			}
+   504			break;
+   505		default:
+   506			ret = -EINVAL;
+   507			break;
+   508		}
+   509	
+   510		return ret;
+   511	}
+   512	
+
 -- 
-Regards,
-
-Laurent Pinchart
-
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
 _______________________________________________
 Linux-rockchip mailing list
