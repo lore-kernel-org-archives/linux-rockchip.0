@@ -4,54 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3693C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 00:51:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3AF1C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 00:52:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yDTHEw3OOviA35N6d5C001pPEg9rs3KLGevQbXxbjiY=; b=T3f/auPNSydxkJ
-	e6PUgBOZby166Jec4XY6fG4IkO+cNJ+scYuZdJzJv+qwY7sUCnaKAYA++clG6VTSRgMJKO4o4fZYH
-	HDyXs9C+rArTmXlCBXOslWrcHJoZ4+yJiL4CBkgH4z2sYRVnRzPPU7i27qMsqHOcnGeO3EnJEuV6C
-	LijJgtaHsdmfxB5D9JZBBIYK0QadV8KAkJxkLBfzzmufoI5Jq4gPVOqXmVQL5yTUbLWPGjXa2dkcn
-	FKXc5S6HIOiOuqqjuEHfHZFgJFHMdz6M+XjFC05XxHwzeWvvV7DyV30Bk7k3e71g5s5ujtf9cPo0a
-	CmllSLZzli+hgcpC4qig==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LGm95NgZBOQe1pQnRZUoSyfgQMs67Tr5FVF+OFJTaJ4=; b=xkxxsfltsSnfaw
+	B+DBuwZbztx6eb19hwZGuNXBEIDnz8A3G4BqZObYYWpr134ml6hwQPeauvkTgtj+WwJOL81tNIrmN
+	tehtdf0xxDUhBcUhdBQfB2aMjvrzCiqe2fJQS9iMH8+mKpyC5yoXDTdHbjxCm74Tl9LWP6LwByGOM
+	E3XpP2HFUjVQaLRepC76cgAc/GeNOOM3YIAi9MBGCWDKlLnklP6v9dHlAPqDL7GbnhnC2aKQEqjGj
+	rXIbtev0Pjz/bUROlCxx6xtrZzVTnvxBsQ2Sn6Y6JutxV6OOSLP7TfUeSrviEQQaPRH3/wwV+RS9J
+	S9UvfZtdC8mv4M+KDh4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1dis-00HBzL-0n; Thu, 16 Jun 2022 00:50:58 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1o1dkZ-00HCSH-Tf; Thu, 16 Jun 2022 00:52:43 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1din-00HBxc-8l
-	for linux-rockchip@lists.infradead.org; Thu, 16 Jun 2022 00:50:56 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 03522A49;
-	Thu, 16 Jun 2022 02:50:50 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1655340651;
-	bh=tbR3cDcTJpCSyGjHtccnyd5K3LBobanW/9HbgJbzy/k=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vpcpUp/2BrudPB5VqO1yiutmcxUudd+zIqnzXyqlyNUoHsOvH9l8gmwDPYS/RARhf
-	 3rFiZWW0Wy8KQXTcpBBohLAJ02dZHV25ueeKrr2n3cL1Kqk/WDyYeZaCl8RYq9UBE2
-	 7twGPfPW3hoqDP4XeMUpyksO4SPiC5/i/gjgUpBM=
-Date: Thu, 16 Jun 2022 03:50:41 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Paul Elder <paul.elder@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, dafna@fastmail.com, heiko@sntech.de,
-	jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
-	djrscally@gmail.com, helen.koike@collabora.com,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 09/55] media: rkisp1: Make rkisp1_isp_mbus_info common
-Message-ID: <Yqp+YR6Tj+CtOMcz@pendragon.ideasonboard.com>
-References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
- <20220614191127.3420492-10-paul.elder@ideasonboard.com>
+	id 1o1dkV-00HCPH-Nj
+	for linux-rockchip@lists.infradead.org; Thu, 16 Jun 2022 00:52:42 +0000
+Received: by mail-pf1-x434.google.com with SMTP id y6so82747pfr.13
+        for <linux-rockchip@lists.infradead.org>; Wed, 15 Jun 2022 17:52:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=bS44KlBALAfqkwqt9ygLgULcU5dF5vLqiaHLdQBQ0Ho=;
+        b=b9HGWtDf4VC1WlcJOpckJNAQ818E19qKR4Cmmaw9dq6l1RKROoGAGdwAQuJHY1TWzl
+         9d8UZDXsbJLBco0Mb1u8qunkkNeEz8p4YKAoIRVKgfXsjQdlFnTGFE+PYWdYNqfnpTwx
+         G+J3rXn0XoOuWzwcp8JMscWAXzWTkpgqnPwEe+lKQ64ysrFqwMeUg0yemLdbkBJGvuwP
+         LsXg1e2Lbq9VWPQ4XXtA8Kd5rr41LFaMju2+8COMibvyvqvNhWQN136z8IHVg2yzC6Gu
+         0K6LVJJTdtsPOVTB9JiJcfwGEuF4qNujG40m5c8szT7s4EtSBB0pNd4iXuyGO8yejkja
+         kxJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=bS44KlBALAfqkwqt9ygLgULcU5dF5vLqiaHLdQBQ0Ho=;
+        b=gyapT0H0IG0D+WSbFTTWBSgEWepFXO2OeL0jKkQ55OcFUOgYw5Vn6c41qiOWMGo4yP
+         CimWkwMOCZONUoTnD4SNJc3Bohc3lTjl7R0wpTmGtqPoeJxLNyjDCfOt/ygWQA3ofV7t
+         aisWCPZBqxUmkZOx7ISmJhLoIrYCet2F6eF1CnM+lEEDioFVNWnUldcRYUuUppSDQi5y
+         bJG7VNJwMXvHtyI0553JkcmziYwe1SBNC8Pjdq6IchfSRMisDHF1B0cWFWlIOl87qRKd
+         Fx9XLr1PB0YdTZGlMJ/zf3WGdQB8fpGWq3C1uRDjPETKc5GgJs1QvnMH1I3bN+SYjPWS
+         oO9g==
+X-Gm-Message-State: AJIora9BQ+rjchCQNOuW2GbfDzC0INxEnDPUMIMucg9V/tG3E8fgYTjI
+	Y9AkU7+bxeelToaxNtGG63wbIQ==
+X-Google-Smtp-Source: AGRyM1v62iQJ4p2NmntVYp97jTJ8PjxTfuDqjP+lKe8IZ2Y04aHEh7obpS0MtR3CR9vlb8lk311VYA==
+X-Received: by 2002:a63:814a:0:b0:3fc:ee2c:340f with SMTP id t71-20020a63814a000000b003fcee2c340fmr2189807pgd.380.1655340755007;
+        Wed, 15 Jun 2022 17:52:35 -0700 (PDT)
+Received: from krzk-bin.. ([192.77.111.2])
+        by smtp.gmail.com with ESMTPSA id g26-20020aa7875a000000b005183f333721sm259504pfo.87.2022.06.15.17.52.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 15 Jun 2022 17:52:34 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+To: arm@kernel.org,
+	soc@kernel.org,
+	Arnd Bergmann <arnd@arndb.de>,
+	Olof Johansson <olof@lixom.net>
+Cc: Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	=?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
+	Tony Lindgren <tony@atomide.com>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Joel Stanley <joel@jms.id.au>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Peter Rosin <peda@axentia.se>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Andy Gross <agross@kernel.org>,
+	Bjorn Andersson <bjorn.andersson@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Michal Simek <michal.simek@xilinx.com>,
+	Khuong Dinh <khuong@os.amperecomputing.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Li Yang <leoyang.li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Wei Xu <xuwei5@hisilicon.com>,
+	Nishanth Menon <nm@ti.com>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Tero Kristo <kristo@kernel.org>,
+	linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	openbmc@lists.ozlabs.org,
+	linux-gpio@vger.kernel.org,
+	linux-omap@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-aspeed@lists.ozlabs.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-tegra@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v3 00/40] dt-bindings: input: gpio-keys: rework matching children
+Date: Wed, 15 Jun 2022 17:52:24 -0700
+Message-Id: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220614191127.3420492-10-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_175053_661987_6AD8FAF8 
-X-CRM114-Status: GOOD (  30.37  )
+X-CRM114-CacheID: sfid-20220615_175239_893874_136749E0 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,637 +135,319 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Paul,
+Hi,
 
-Thank you for the patch.
+Merging
+=======
+1. dt-bindings: rebased on top of Rob's:
+   https://lore.kernel.org/all/20220608211207.2058487-1-robh@kernel.org/
 
-On Wed, Jun 15, 2022 at 04:10:41AM +0900, Paul Elder wrote:
-> The upcoming CSI receiver split from the ISP to a separate source file
-> will need to be able to access the list of formats supported by the
-> driver. Move it out of the ISP's header and into the common header, and
-> add helper functions for accessing it so that the format list doesn't
-> need to be stored in the header.
-> 
-> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> ---
->  .../platform/rockchip/rkisp1/rkisp1-common.c  | 148 +++++++++++++++
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |  28 ++-
->  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 168 ++----------------
->  .../platform/rockchip/rkisp1/rkisp1-resizer.c |  14 +-
->  .../platform/rockchip/rkisp1/rkisp1-stats.c   |   2 +-
->  5 files changed, 193 insertions(+), 167 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-> index cf889666e166..bb0ea20118e1 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-> @@ -5,10 +5,158 @@
->   * Copyright (C) 2019 Collabora, Ltd.
->   */
->  
-> +#include <media/mipi-csi2.h>
->  #include <media/v4l2-rect.h>
->  
->  #include "rkisp1-common.h"
->  
-> +static const struct rkisp1_mbus_info rkisp1_formats[] = {
-> +	{
-> +		.mbus_code	= MEDIA_BUS_FMT_YUYV8_2X8,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> +		.direction	= RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SRGGB10_1X10,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> +		.bayer_pat	= RKISP1_RAW_RGGB,
-> +		.bus_width	= 10,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> +		.bayer_pat	= RKISP1_RAW_BGGR,
-> +		.bus_width	= 10,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SGBRG10_1X10,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> +		.bayer_pat	= RKISP1_RAW_GBRG,
-> +		.bus_width	= 10,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> +		.bayer_pat	= RKISP1_RAW_GRBG,
-> +		.bus_width	= 10,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SRGGB12_1X12,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> +		.bayer_pat	= RKISP1_RAW_RGGB,
-> +		.bus_width	= 12,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SBGGR12_1X12,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> +		.bayer_pat	= RKISP1_RAW_BGGR,
-> +		.bus_width	= 12,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SGBRG12_1X12,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> +		.bayer_pat	= RKISP1_RAW_GBRG,
-> +		.bus_width	= 12,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SGRBG12_1X12,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> +		.bayer_pat	= RKISP1_RAW_GRBG,
-> +		.bus_width	= 12,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SRGGB8_1X8,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> +		.bayer_pat	= RKISP1_RAW_RGGB,
-> +		.bus_width	= 8,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SBGGR8_1X8,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> +		.bayer_pat	= RKISP1_RAW_BGGR,
-> +		.bus_width	= 8,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SGBRG8_1X8,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> +		.bayer_pat	= RKISP1_RAW_GBRG,
-> +		.bus_width	= 8,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SGRBG8_1X8,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> +		.bayer_pat	= RKISP1_RAW_GRBG,
-> +		.bus_width	= 8,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_YUYV8_1X16,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> +		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> +		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCBYCR,
-> +		.bus_width	= 16,
-> +		.direction	= RKISP1_ISP_SD_SINK,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_YVYU8_1X16,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> +		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> +		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCRYCB,
-> +		.bus_width	= 16,
-> +		.direction	= RKISP1_ISP_SD_SINK,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_UYVY8_1X16,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> +		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> +		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CBYCRY,
-> +		.bus_width	= 16,
-> +		.direction	= RKISP1_ISP_SD_SINK,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_VYUY8_1X16,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> +		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> +		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CRYCBY,
-> +		.bus_width	= 16,
-> +		.direction	= RKISP1_ISP_SD_SINK,
-> +	},
-> +};
-> +
-> +unsigned int rkisp1_mbus_info_length(void)
-> +{
-> +	return ARRAY_SIZE(rkisp1_formats);
-> +}
-> +
-> +const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_index(unsigned int index)
-> +{
-> +	if (index >= rkisp1_mbus_info_length())
+2. DTS patches are independent. They can be picked up directly by sub-arch
+   maintainers, by Arnd or Olof, or eventually by me (if you wish).
 
-	if (index >= ARRAY_SIZE(rkisp1_formats))
+Changes since v2
+================
+1. Few node renamings according to comments (at91, rockchip, nuvoton,wpcm450-pinctrl.yaml).
+2. Add Rb tags.
+3. Drop applied patches: allwinner, amlogic, broadcom and samsung.
 
-to match the code below (and see also my comment further down)
+Changes since v1
+================
+Patch 1: Extend gpio-keys nodes pattern to cover buttons, events and switches (Jeff).
+Patch 2: Include input.yaml (Dmitry, Rob).
+Patch 3: New patch.
+New DTS patches.
 
-> +		return NULL;
-> +
-> +	return &rkisp1_formats[index];
-> +}
-> +
-> +const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_code(u32 mbus_code)
-> +{
-> +	unsigned int i;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(rkisp1_formats); i++) {
-> +		const struct rkisp1_mbus_info *fmt = &rkisp1_formats[i];
-> +
-> +		if (fmt->mbus_code == mbus_code)
-> +			return fmt;
-> +	}
-> +
-> +	return NULL;
-> +}
-> +
->  static const struct v4l2_rect rkisp1_sd_min_crop = {
->  	.width = RKISP1_ISP_MIN_WIDTH,
->  	.height = RKISP1_ISP_MIN_HEIGHT,
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index 50d31a254b03..c7d5c57607bd 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> @@ -26,7 +26,7 @@
->  struct dentry;
->  
->  /*
-> - * flags on the 'direction' field in struct 'rkisp1_isp_mbus_info' that indicate
-> + * flags on the 'direction' field in struct rkisp1_mbus_info' that indicate
->   * on which pad the media bus format is supported
->   */
->  #define RKISP1_ISP_SD_SRC			BIT(0)
-> @@ -150,8 +150,8 @@ struct rkisp1_isp {
->  	struct v4l2_subdev sd;
->  	struct media_pad pads[RKISP1_ISP_PAD_MAX];
->  	struct v4l2_subdev_pad_config pad_cfg[RKISP1_ISP_PAD_MAX];
-> -	const struct rkisp1_isp_mbus_info *sink_fmt;
-> -	const struct rkisp1_isp_mbus_info *src_fmt;
-> +	const struct rkisp1_mbus_info *sink_fmt;
-> +	const struct rkisp1_mbus_info *src_fmt;
->  	struct mutex ops_lock; /* serialize the subdevice ops */
->  	bool is_dphy_errctrl_disabled;
->  	__u32 frame_sequence;
-> @@ -438,8 +438,8 @@ struct rkisp1_device {
->  };
->  
->  /*
-> - * struct rkisp1_isp_mbus_info - ISP media bus info, Translates media bus code to hardware
-> - *				 format values
-> + * struct rkisp1_mbus_info - ISP media bus info, Translates media bus code to hardware
-> + *			     format values
->   *
->   * @mbus_code: media bus code
->   * @pixel_enc: pixel encoding
-> @@ -449,7 +449,7 @@ struct rkisp1_device {
->   * @bayer_pat: bayer pattern
->   * @direction: a bitmask of the flags indicating on which pad the format is supported on
->   */
-> -struct rkisp1_isp_mbus_info {
-> +struct rkisp1_mbus_info {
->  	u32 mbus_code;
->  	enum v4l2_pixel_encoding pixel_enc;
->  	u32 mipi_dt;
-> @@ -481,6 +481,18 @@ static inline u32 rkisp1_read(struct rkisp1_device *rkisp1, unsigned int addr)
->  int rkisp1_cap_enum_mbus_codes(struct rkisp1_capture *cap,
->  			       struct v4l2_subdev_mbus_code_enum *code);
->  
-> +/*
-> + * rkisp1_mbus_info_length - Return the number of supported mbus codes
-> + */
-> +unsigned int rkisp1_mbus_info_length(void);
-> +
-> +/*
-> + * rkisp1_mbus_info_get_by_index - Retrieve the ith supported mbus info
-> + *
-> + * @index: index of the mbus info to fetch
-> + */
-> +const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_index(unsigned int index);
-> +
->  /*
->   * rkisp1_sd_adjust_crop_rect - adjust a rectangle to fit into another rectangle.
->   *
-> @@ -500,11 +512,11 @@ void rkisp1_sd_adjust_crop(struct v4l2_rect *crop,
->  			   const struct v4l2_mbus_framefmt *bounds);
->  
->  /*
-> - * rkisp1_isp_mbus_info - get the isp info of the media bus code
-> + * rkisp1_mbus_info_get_by_code - get the isp info of the media bus code
->   *
->   * @mbus_code: the media bus code
->   */
-> -const struct rkisp1_isp_mbus_info *rkisp1_isp_mbus_info_get(u32 mbus_code);
-> +const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_code(u32 mbus_code);
->  
->  /* rkisp1_params_configure - configure the params when stream starts.
->   *			     This function is called by the isp entity upon stream starts.
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> index 328e8fec14e9..89577119b571 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> @@ -15,7 +15,6 @@
->  #include <linux/videodev2.h>
->  #include <linux/vmalloc.h>
->  
-> -#include <media/mipi-csi2.h>
->  #include <media/v4l2-event.h>
->  
->  #include "rkisp1-common.h"
-> @@ -56,144 +55,10 @@
->   * +---------------------------------------------------------+
->   */
->  
-> -static const struct rkisp1_isp_mbus_info rkisp1_isp_formats[] = {
-> -	{
-> -		.mbus_code	= MEDIA_BUS_FMT_YUYV8_2X8,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> -		.direction	= RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SRGGB10_1X10,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> -		.bayer_pat	= RKISP1_RAW_RGGB,
-> -		.bus_width	= 10,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> -		.bayer_pat	= RKISP1_RAW_BGGR,
-> -		.bus_width	= 10,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SGBRG10_1X10,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> -		.bayer_pat	= RKISP1_RAW_GBRG,
-> -		.bus_width	= 10,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> -		.bayer_pat	= RKISP1_RAW_GRBG,
-> -		.bus_width	= 10,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SRGGB12_1X12,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> -		.bayer_pat	= RKISP1_RAW_RGGB,
-> -		.bus_width	= 12,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SBGGR12_1X12,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> -		.bayer_pat	= RKISP1_RAW_BGGR,
-> -		.bus_width	= 12,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SGBRG12_1X12,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> -		.bayer_pat	= RKISP1_RAW_GBRG,
-> -		.bus_width	= 12,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SGRBG12_1X12,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> -		.bayer_pat	= RKISP1_RAW_GRBG,
-> -		.bus_width	= 12,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SRGGB8_1X8,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> -		.bayer_pat	= RKISP1_RAW_RGGB,
-> -		.bus_width	= 8,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SBGGR8_1X8,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> -		.bayer_pat	= RKISP1_RAW_BGGR,
-> -		.bus_width	= 8,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SGBRG8_1X8,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> -		.bayer_pat	= RKISP1_RAW_GBRG,
-> -		.bus_width	= 8,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SGRBG8_1X8,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> -		.bayer_pat	= RKISP1_RAW_GRBG,
-> -		.bus_width	= 8,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_YUYV8_1X16,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> -		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> -		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCBYCR,
-> -		.bus_width	= 16,
-> -		.direction	= RKISP1_ISP_SD_SINK,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_YVYU8_1X16,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> -		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> -		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCRYCB,
-> -		.bus_width	= 16,
-> -		.direction	= RKISP1_ISP_SD_SINK,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_UYVY8_1X16,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> -		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> -		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CBYCRY,
-> -		.bus_width	= 16,
-> -		.direction	= RKISP1_ISP_SD_SINK,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_VYUY8_1X16,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> -		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> -		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CRYCBY,
-> -		.bus_width	= 16,
-> -		.direction	= RKISP1_ISP_SD_SINK,
-> -	},
-> -};
-> -
->  /* ----------------------------------------------------------------------------
->   * Helpers
->   */
->  
-> -const struct rkisp1_isp_mbus_info *rkisp1_isp_mbus_info_get(u32 mbus_code)
-> -{
-> -	unsigned int i;
-> -
-> -	for (i = 0; i < ARRAY_SIZE(rkisp1_isp_formats); i++) {
-> -		const struct rkisp1_isp_mbus_info *fmt = &rkisp1_isp_formats[i];
-> -
-> -		if (fmt->mbus_code == mbus_code)
-> -			return fmt;
-> -	}
-> -
-> -	return NULL;
-> -}
-> -
->  static struct v4l2_subdev *rkisp1_get_remote_sensor(struct v4l2_subdev *sd)
->  {
->  	struct media_pad *local, *remote;
-> @@ -275,7 +140,7 @@ static void rkisp1_config_ism(struct rkisp1_device *rkisp1)
->  static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
->  {
->  	u32 isp_ctrl = 0, irq_mask = 0, acq_mult = 0, signal = 0;
-> -	const struct rkisp1_isp_mbus_info *src_fmt, *sink_fmt;
-> +	const struct rkisp1_mbus_info *src_fmt, *sink_fmt;
->  	struct rkisp1_sensor_async *sensor;
->  	struct v4l2_mbus_framefmt *sink_frm;
->  	struct v4l2_rect *sink_crop;
-> @@ -376,7 +241,7 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
->  
->  static int rkisp1_config_dvp(struct rkisp1_device *rkisp1)
->  {
-> -	const struct rkisp1_isp_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
-> +	const struct rkisp1_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
->  	u32 val, input_sel;
->  
->  	switch (sink_fmt->bus_width) {
-> @@ -402,7 +267,7 @@ static int rkisp1_config_dvp(struct rkisp1_device *rkisp1)
->  
->  static int rkisp1_config_mipi(struct rkisp1_device *rkisp1)
->  {
-> -	const struct rkisp1_isp_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
-> +	const struct rkisp1_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
->  	unsigned int lanes = rkisp1->active_sensor->lanes;
->  	u32 mipi_ctrl;
->  
-> @@ -593,11 +458,12 @@ static int rkisp1_isp_enum_mbus_code(struct v4l2_subdev *sd,
->  		return 0;
->  	}
->  
-> -	if (code->index >= ARRAY_SIZE(rkisp1_isp_formats))
-> +	if (code->index >= rkisp1_mbus_info_length())
->  		return -EINVAL;
->  
-> -	for (i = 0; i < ARRAY_SIZE(rkisp1_isp_formats); i++) {
-> -		const struct rkisp1_isp_mbus_info *fmt = &rkisp1_isp_formats[i];
-> +	for (i = 0; i < rkisp1_mbus_info_length(); i++) {
-> +		const struct rkisp1_mbus_info *fmt =
-> +			rkisp1_mbus_info_get_by_index(i);
+Best regards,
+Krzysztof
 
-You could write this as
+Krzysztof Kozlowski (40):
+  dt-bindings: input: gpio-keys: enforce node names to match all
+    properties
+  dt-bindings: input: gpio-keys: reference input.yaml and document
+    properties
+  dt-bindings: input: gpio-keys: accept also interrupt-extended
+  dt-bindings: pinctrl: nuvoton,wpcm450-pinctrl: align key node name
+  arm64: dts: apm: correct gpio-keys properties
+  arm64: dts: broadcom: align gpio-key node names with dtschema
+  arm64: dts: freescale: align gpio-key node names with dtschema
+  arm64: dts: freescale: align led node names with dtschema
+  arm64: dts: hisilicon: align gpio-key node names with dtschema
+  arm64: dts: hisilicon: correct gpio-keys properties
+  arm64: dts: marvell: align gpio-key node names with dtschema
+  arm64: dts: marvell: armada-3720: align lednode names with dtschema
+  ARM: dts: marvell: align gpio-key node names with dtschema
+  ARM: dts: marvell: correct gpio-keys properties
+  arm64: dts: mediatek: align gpio-key node names with dtschema
+  arm64: dts: mediatek: mt7622-bananapi-bpi-r64: align led node names
+    with dtschema
+  arm64: dts: mediatek: mt7622-rfb1: correct gpio-keys properties
+  ARM: dts: mediatek: align gpio-key node names with dtschema
+  arm64: dts: tegra: align gpio-key node names with dtschema
+  ARM: dts: tegra: align gpio-key node names with dtschema
+  arm64: dts: qcom: align gpio-key node names with dtschema
+  arm64: dts: qcom: correct gpio-keys properties
+  arm64: dts: qcom: sdm630-sony-xperia-nile: drop unneeded status from
+    gpio-keys
+  arm64: dts: qcom: align led node names with dtschema
+  ARM: dts: qcom: align gpio-key node names with dtschema
+  arm64: dts: rockchip: align gpio-key node names with dtschema
+  ARM: dts: rockchip: align gpio-key node names with dtschema
+  ARM: dts: rockchip: rk3288-tinker: correct gpio-keys properties
+  arm64: dts: ti: align gpio-key node names with dtschema
+  arm64: dts: xilinx: align gpio-key node names with dtschema
+  ARM: dts: xilinx: align gpio-key node names with dtschema
+  ARM: dts: omap: align gpio-key node names with dtschema
+  ARM: dts: omap: correct gpio-keys properties
+  ARM: dts: animeo: align gpio-key node names with dtschema
+  ARM: dts: animeo: correct gpio-keys properties
+  ARM: dts: aspeed: align gpio-key node names with dtschema
+  ARM: dts: aspeed: correct gpio-keys properties
+  ARM: dts: at91: align gpio-key node names with dtschema
+  ARM: dts: at91: correct gpio-keys properties
+  ARM: dts: at91: drop unneeded status from gpio-keys
 
-	for (i = 0; ; i++) {
-		const struct rkisp1_mbus_info *fmt =
-			rkisp1_mbus_info_get_by_index(i);
-
-		if (!fmt)
-			return -EINVAL;
-
-and drop the rkisp1_mbus_info_length() function. Up to you. Either way,
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
->  
->  		if (fmt->direction & dir)
->  			pos++;
-> @@ -619,7 +485,7 @@ static int rkisp1_isp_enum_frame_size(struct v4l2_subdev *sd,
->  				      struct v4l2_subdev_state *sd_state,
->  				      struct v4l2_subdev_frame_size_enum *fse)
->  {
-> -	const struct rkisp1_isp_mbus_info *mbus_info;
-> +	const struct rkisp1_mbus_info *mbus_info;
->  
->  	if (fse->pad == RKISP1_ISP_PAD_SINK_PARAMS ||
->  	    fse->pad == RKISP1_ISP_PAD_SOURCE_STATS)
-> @@ -628,7 +494,7 @@ static int rkisp1_isp_enum_frame_size(struct v4l2_subdev *sd,
->  	if (fse->index > 0)
->  		return -EINVAL;
->  
-> -	mbus_info = rkisp1_isp_mbus_info_get(fse->code);
-> +	mbus_info = rkisp1_mbus_info_get_by_code(fse->code);
->  	if (!mbus_info)
->  		return -EINVAL;
->  
-> @@ -695,7 +561,7 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
->  				   struct v4l2_mbus_framefmt *format,
->  				   unsigned int which)
->  {
-> -	const struct rkisp1_isp_mbus_info *mbus_info;
-> +	const struct rkisp1_mbus_info *mbus_info;
->  	struct v4l2_mbus_framefmt *src_fmt;
->  	const struct v4l2_rect *src_crop;
->  
-> @@ -705,10 +571,10 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
->  					   RKISP1_ISP_PAD_SOURCE_VIDEO, which);
->  
->  	src_fmt->code = format->code;
-> -	mbus_info = rkisp1_isp_mbus_info_get(src_fmt->code);
-> +	mbus_info = rkisp1_mbus_info_get_by_code(src_fmt->code);
->  	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SRC)) {
->  		src_fmt->code = RKISP1_DEF_SRC_PAD_FMT;
-> -		mbus_info = rkisp1_isp_mbus_info_get(src_fmt->code);
-> +		mbus_info = rkisp1_mbus_info_get_by_code(src_fmt->code);
->  	}
->  	if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
->  		isp->src_fmt = mbus_info;
-> @@ -793,7 +659,7 @@ static void rkisp1_isp_set_sink_fmt(struct rkisp1_isp *isp,
->  				    struct v4l2_mbus_framefmt *format,
->  				    unsigned int which)
->  {
-> -	const struct rkisp1_isp_mbus_info *mbus_info;
-> +	const struct rkisp1_mbus_info *mbus_info;
->  	struct v4l2_mbus_framefmt *sink_fmt;
->  	struct v4l2_rect *sink_crop;
->  
-> @@ -801,10 +667,10 @@ static void rkisp1_isp_set_sink_fmt(struct rkisp1_isp *isp,
->  					  RKISP1_ISP_PAD_SINK_VIDEO,
->  					  which);
->  	sink_fmt->code = format->code;
-> -	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-> +	mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
->  	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SINK)) {
->  		sink_fmt->code = RKISP1_DEF_SINK_PAD_FMT;
-> -		mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-> +		mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
->  	}
->  	if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
->  		isp->sink_fmt = mbus_info;
-> @@ -1080,8 +946,8 @@ int rkisp1_isp_register(struct rkisp1_device *rkisp1)
->  	pads[RKISP1_ISP_PAD_SOURCE_VIDEO].flags = MEDIA_PAD_FL_SOURCE;
->  	pads[RKISP1_ISP_PAD_SOURCE_STATS].flags = MEDIA_PAD_FL_SOURCE;
->  
-> -	isp->sink_fmt = rkisp1_isp_mbus_info_get(RKISP1_DEF_SINK_PAD_FMT);
-> -	isp->src_fmt = rkisp1_isp_mbus_info_get(RKISP1_DEF_SRC_PAD_FMT);
-> +	isp->sink_fmt = rkisp1_mbus_info_get_by_code(RKISP1_DEF_SINK_PAD_FMT);
-> +	isp->src_fmt = rkisp1_mbus_info_get_by_code(RKISP1_DEF_SRC_PAD_FMT);
->  
->  	mutex_init(&isp->ops_lock);
->  	ret = media_entity_pads_init(&sd->entity, RKISP1_ISP_PAD_MAX, pads);
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> index 1c07985c810d..f4caa8f684aa 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> @@ -433,14 +433,14 @@ static void rkisp1_rsz_set_src_fmt(struct rkisp1_resizer *rsz,
->  				   struct v4l2_mbus_framefmt *format,
->  				   unsigned int which)
->  {
-> -	const struct rkisp1_isp_mbus_info *sink_mbus_info;
-> +	const struct rkisp1_mbus_info *sink_mbus_info;
->  	struct v4l2_mbus_framefmt *src_fmt, *sink_fmt;
->  
->  	sink_fmt = rkisp1_rsz_get_pad_fmt(rsz, sd_state, RKISP1_RSZ_PAD_SINK,
->  					  which);
->  	src_fmt = rkisp1_rsz_get_pad_fmt(rsz, sd_state, RKISP1_RSZ_PAD_SRC,
->  					 which);
-> -	sink_mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-> +	sink_mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
->  
->  	/* for YUV formats, userspace can change the mbus code on the src pad if it is supported */
->  	if (sink_mbus_info->pixel_enc == V4L2_PIXEL_ENC_YUV &&
-> @@ -462,7 +462,7 @@ static void rkisp1_rsz_set_sink_crop(struct rkisp1_resizer *rsz,
->  				     struct v4l2_rect *r,
->  				     unsigned int which)
->  {
-> -	const struct rkisp1_isp_mbus_info *mbus_info;
-> +	const struct rkisp1_mbus_info *mbus_info;
->  	struct v4l2_mbus_framefmt *sink_fmt;
->  	struct v4l2_rect *sink_crop;
->  
-> @@ -473,7 +473,7 @@ static void rkisp1_rsz_set_sink_crop(struct rkisp1_resizer *rsz,
->  					    which);
->  
->  	/* Not crop for MP bayer raw data */
-> -	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-> +	mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
->  
->  	if (rsz->id == RKISP1_MAINPATH &&
->  	    mbus_info->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
-> @@ -500,7 +500,7 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
->  				    struct v4l2_mbus_framefmt *format,
->  				    unsigned int which)
->  {
-> -	const struct rkisp1_isp_mbus_info *mbus_info;
-> +	const struct rkisp1_mbus_info *mbus_info;
->  	struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
->  	struct v4l2_rect *sink_crop;
->  
-> @@ -516,10 +516,10 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
->  	else
->  		sink_fmt->code = format->code;
->  
-> -	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-> +	mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
->  	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SRC)) {
->  		sink_fmt->code = RKISP1_DEF_FMT;
-> -		mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-> +		mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
->  	}
->  	if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
->  		rsz->pixel_enc = mbus_info->pixel_enc;
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> index 7d82356b5345..2795eef91bdd 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> @@ -305,7 +305,7 @@ static void rkisp1_stats_get_bls_meas(struct rkisp1_stats *stats,
->  				      struct rkisp1_stat_buffer *pbuf)
->  {
->  	struct rkisp1_device *rkisp1 = stats->rkisp1;
-> -	const struct rkisp1_isp_mbus_info *in_fmt = rkisp1->isp.sink_fmt;
-> +	const struct rkisp1_mbus_info *in_fmt = rkisp1->isp.sink_fmt;
->  	struct rkisp1_cif_isp_bls_meas_val *bls_val;
->  
->  	bls_val = &pbuf->params.ae.bls_val;
+ .../devicetree/bindings/input/gpio-keys.yaml  | 159 +++++++++---------
+ .../pinctrl/nuvoton,wpcm450-pinctrl.yaml      |   2 +-
+ arch/arm/boot/dts/am335x-evm.dts              |   8 +-
+ arch/arm/boot/dts/am335x-guardian.dts         |   2 -
+ .../boot/dts/am335x-moxa-uc-2100-common.dtsi  |   4 +-
+ .../boot/dts/am335x-moxa-uc-8100-common.dtsi  |   4 +-
+ arch/arm/boot/dts/am335x-pcm-953.dtsi         |   4 +-
+ arch/arm/boot/dts/am335x-pepper.dts           |   8 +-
+ arch/arm/boot/dts/am335x-shc.dts              |   6 +-
+ arch/arm/boot/dts/am3517-evm-ui.dtsi          |  20 +--
+ arch/arm/boot/dts/am3517-evm.dts              |  18 +-
+ arch/arm/boot/dts/am437x-idk-evm.dts          |   6 +-
+ arch/arm/boot/dts/animeo_ip.dts               |  10 +-
+ arch/arm/boot/dts/armada-370-c200-v2.dts      |   8 +-
+ arch/arm/boot/dts/armada-370-rd.dts           |   2 -
+ .../boot/dts/armada-370-seagate-nas-xbay.dtsi |   8 +-
+ .../armada-370-seagate-personal-cloud.dtsi    |   8 +-
+ .../boot/dts/armada-381-netgear-gs110emx.dts  |   2 +-
+ .../arm/boot/dts/armada-385-clearfog-gtr.dtsi |   4 +-
+ arch/arm/boot/dts/armada-385-linksys.dtsi     |   4 +-
+ .../arm/boot/dts/armada-388-clearfog-base.dts |   2 +-
+ arch/arm/boot/dts/armada-388-clearfog.dts     |   2 +-
+ arch/arm/boot/dts/armada-xp-axpwifiap.dts     |   6 +-
+ arch/arm/boot/dts/armada-xp-linksys-mamba.dts |   8 +-
+ .../boot/dts/armada-xp-openblocks-ax3-4.dts   |   6 +-
+ .../arm/boot/dts/aspeed-bmc-ampere-mtjade.dts |  30 ++--
+ .../boot/dts/aspeed-bmc-bytedance-g220a.dts   |  48 +++---
+ arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts  |  10 +-
+ arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts  |  14 +-
+ .../boot/dts/aspeed-bmc-inspur-fp5280g2.dts   |  22 +--
+ arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts   |  23 +--
+ arch/arm/boot/dts/aspeed-bmc-opp-mowgli.dts   |  20 +--
+ arch/arm/boot/dts/aspeed-bmc-opp-nicole.dts   |   2 +-
+ arch/arm/boot/dts/aspeed-bmc-opp-palmetto.dts |   2 +-
+ arch/arm/boot/dts/aspeed-bmc-opp-romulus.dts  |   2 +-
+ arch/arm/boot/dts/aspeed-bmc-opp-swift.dts    |  30 ++--
+ arch/arm/boot/dts/aspeed-bmc-opp-tacoma.dts   |  14 +-
+ arch/arm/boot/dts/aspeed-bmc-opp-vesnin.dts   |   4 +-
+ .../boot/dts/aspeed-bmc-opp-witherspoon.dts   |  16 +-
+ arch/arm/boot/dts/aspeed-bmc-opp-zaius.dts    |   4 +-
+ arch/arm/boot/dts/at91-foxg20.dts             |   4 +-
+ arch/arm/boot/dts/at91-gatwick.dts            |   2 +-
+ arch/arm/boot/dts/at91-kizbox.dts             |   8 +-
+ arch/arm/boot/dts/at91-kizbox2-common.dtsi    |  10 +-
+ arch/arm/boot/dts/at91-kizbox3-hs.dts         |  12 +-
+ arch/arm/boot/dts/at91-kizboxmini-common.dtsi |   6 +-
+ arch/arm/boot/dts/at91-nattis-2-natte-2.dts   |   2 +-
+ arch/arm/boot/dts/at91-qil_a9260.dts          |   4 +-
+ arch/arm/boot/dts/at91-sam9x60ek.dts          |   5 +-
+ arch/arm/boot/dts/at91-sama5d27_som1_ek.dts   |   4 +-
+ arch/arm/boot/dts/at91-sama5d27_wlsom1_ek.dts |   5 +-
+ arch/arm/boot/dts/at91-sama5d2_icp.dts        |   5 +-
+ arch/arm/boot/dts/at91-sama5d2_ptc_ek.dts     |   4 +-
+ arch/arm/boot/dts/at91-sama5d2_xplained.dts   |   4 +-
+ arch/arm/boot/dts/at91-sama5d3_xplained.dts   |   4 +-
+ arch/arm/boot/dts/at91-sama5d4_xplained.dts   |   4 +-
+ arch/arm/boot/dts/at91-sama5d4ek.dts          |   4 +-
+ arch/arm/boot/dts/at91-sama7g5ek.dts          |   4 +-
+ arch/arm/boot/dts/at91-wb45n.dts              |   7 +-
+ arch/arm/boot/dts/at91-wb50n.dts              |  10 +-
+ arch/arm/boot/dts/at91sam9260ek.dts           |   6 +-
+ arch/arm/boot/dts/at91sam9261ek.dts           |  10 +-
+ arch/arm/boot/dts/at91sam9263ek.dts           |   6 +-
+ arch/arm/boot/dts/at91sam9g20ek_common.dtsi   |   6 +-
+ .../dts/at91sam9g25-gardena-smart-gateway.dts |   2 +-
+ arch/arm/boot/dts/at91sam9m10g45ek.dts        |  16 +-
+ arch/arm/boot/dts/at91sam9n12ek.dts           |   4 +-
+ arch/arm/boot/dts/at91sam9rlek.dts            |   6 +-
+ arch/arm/boot/dts/mt7623a-rfb-emmc.dts        |   4 +-
+ arch/arm/boot/dts/mt7623a-rfb-nand.dts        |   4 +-
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts |   4 +-
+ arch/arm/boot/dts/mt7623n-rfb-emmc.dts        |   4 +-
+ arch/arm/boot/dts/mt7629-rfb.dts              |   4 +-
+ .../boot/dts/qcom-apq8064-asus-nexus7-flo.dts |   4 +-
+ .../qcom-apq8064-sony-xperia-lagan-yuga.dts   |   8 +-
+ arch/arm/boot/dts/qcom-ipq4018-ap120c-ac.dtsi |   2 +-
+ arch/arm/boot/dts/qcom-ipq8064-rb3011.dts     |   4 +-
+ arch/arm/boot/dts/qcom-ipq8064-v1.0.dtsi      |   6 +-
+ .../qcom-msm8974-lge-nexus5-hammerhead.dts    |   4 +-
+ .../dts/qcom-msm8974-sony-xperia-rhine.dtsi   |   8 +-
+ .../dts/qcom-msm8974pro-fairphone-fp2.dts     |   6 +-
+ .../boot/dts/qcom-msm8974pro-samsung-klte.dts |   6 +-
+ ...-msm8974pro-sony-xperia-shinano-castor.dts |   8 +-
+ arch/arm/boot/dts/rk3066a-bqcurie2.dts        |   4 +-
+ arch/arm/boot/dts/rk3066a-rayeager.dts        |   2 +-
+ arch/arm/boot/dts/rk3188-bqedison2qc.dts      |   4 +-
+ arch/arm/boot/dts/rk3188-px3-evb.dts          |   2 +-
+ arch/arm/boot/dts/rk3188-radxarock.dts        |   2 +-
+ arch/arm/boot/dts/rk3229-evb.dts              |   2 +-
+ arch/arm/boot/dts/rk3288-evb.dtsi             |   2 +-
+ arch/arm/boot/dts/rk3288-firefly-reload.dts   |   2 +-
+ arch/arm/boot/dts/rk3288-firefly.dtsi         |   2 +-
+ arch/arm/boot/dts/rk3288-phycore-rdk.dts      |   4 +-
+ arch/arm/boot/dts/rk3288-popmetal.dts         |   2 +-
+ arch/arm/boot/dts/rk3288-r89.dts              |   2 +-
+ arch/arm/boot/dts/rk3288-rock2-square.dts     |   2 +-
+ arch/arm/boot/dts/rk3288-tinker.dtsi          |   4 +-
+ .../boot/dts/rk3288-veyron-chromebook.dtsi    |   2 +-
+ arch/arm/boot/dts/rk3288-veyron-minnie.dts    |   4 +-
+ arch/arm/boot/dts/rk3288-veyron-pinky.dts     |   2 +-
+ arch/arm/boot/dts/rk3288-veyron.dtsi          |   2 +-
+ arch/arm/boot/dts/tegra114-asus-tf701t.dts    |   8 +-
+ arch/arm/boot/dts/tegra114-dalmore.dts        |   8 +-
+ arch/arm/boot/dts/tegra114-roth.dts           |   6 +-
+ arch/arm/boot/dts/tegra114-tn7.dts            |   6 +-
+ arch/arm/boot/dts/tegra124-apalis-eval.dts    |   2 +-
+ .../boot/dts/tegra124-apalis-v1.2-eval.dts    |   2 +-
+ arch/arm/boot/dts/tegra124-jetson-tk1.dts     |   2 +-
+ arch/arm/boot/dts/tegra124-nyan.dtsi          |   4 +-
+ arch/arm/boot/dts/tegra124-venice2.dts        |   2 +-
+ .../boot/dts/tegra20-acer-a500-picasso.dts    |   8 +-
+ arch/arm/boot/dts/tegra20-asus-tf101.dts      |   8 +-
+ arch/arm/boot/dts/tegra20-colibri-eval-v3.dts |   2 +-
+ arch/arm/boot/dts/tegra20-colibri-iris.dts    |   2 +-
+ arch/arm/boot/dts/tegra20-harmony.dts         |   2 +-
+ arch/arm/boot/dts/tegra20-paz00.dts           |   2 +-
+ arch/arm/boot/dts/tegra20-seaboard.dts        |   4 +-
+ arch/arm/boot/dts/tegra20-trimslice.dts       |   2 +-
+ arch/arm/boot/dts/tegra20-ventana.dts         |   2 +-
+ arch/arm/boot/dts/tegra30-apalis-eval.dts     |   2 +-
+ .../arm/boot/dts/tegra30-apalis-v1.1-eval.dts |   2 +-
+ .../tegra30-asus-nexus7-grouper-common.dtsi   |   8 +-
+ .../dts/tegra30-asus-transformer-common.dtsi  |  10 +-
+ arch/arm/boot/dts/tegra30-cardhu.dtsi         |   6 +-
+ arch/arm/boot/dts/tegra30-colibri-eval-v3.dts |   2 +-
+ arch/arm/boot/dts/tegra30-ouya.dts            |   2 +-
+ .../arm/boot/dts/tegra30-pegatron-chagall.dts |  10 +-
+ arch/arm/boot/dts/zynq-zc702.dts              |   4 +-
+ arch/arm/boot/dts/zynq-zturn-common.dtsi      |   2 +-
+ arch/arm64/boot/dts/apm/apm-merlin.dts        |   2 +-
+ arch/arm64/boot/dts/apm/apm-mustang.dts       |   2 +-
+ .../bcm4906-tplink-archer-c2300-v1.dts        |   8 +-
+ .../bcm4908/bcm4908-asus-gt-ac5300.dts        |   8 +-
+ .../boot/dts/freescale/fsl-ls1088a-ten64.dts  |  10 +-
+ .../boot/dts/freescale/imx8mm-mx8menlo.dts    |   4 +-
+ .../dts/freescale/imx8mm-var-som-symphony.dts |   6 +-
+ .../dts/freescale/imx8mm-venice-gw700x.dtsi   |   8 +-
+ .../dts/freescale/imx8mm-venice-gw7901.dts    |   8 +-
+ .../dts/freescale/imx8mm-venice-gw7902.dts    |   8 +-
+ .../dts/freescale/imx8mm-venice-gw7903.dts    |   6 +-
+ .../boot/dts/freescale/imx8mm-verdin.dtsi     |   2 +-
+ .../dts/freescale/imx8mn-var-som-symphony.dts |   6 +-
+ .../dts/freescale/imx8mn-venice-gw7902.dts    |   8 +-
+ .../boot/dts/freescale/imx8mp-verdin.dtsi     |   2 +-
+ .../dts/freescale/imx8mq-librem5-devkit.dts   |   6 +-
+ .../boot/dts/freescale/imx8mq-librem5.dtsi    |   4 +-
+ .../boot/dts/freescale/imx8mq-nitrogen.dts    |   2 +-
+ .../freescale/imx8qxp-colibri-eval-v3.dtsi    |   2 +-
+ arch/arm64/boot/dts/freescale/mba8mx.dtsi     |   6 +-
+ .../boot/dts/hisilicon/hi3660-hikey960.dts    |   2 +-
+ arch/arm64/boot/dts/hisilicon/hip05-d02.dts   |   6 +-
+ .../dts/marvell/armada-3720-turris-mox.dts    |   4 +-
+ .../marvell/armada-8040-clearfog-gt-8k.dts    |   4 +-
+ .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  |  11 +-
+ arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts  |   5 +-
+ .../dts/mediatek/mt8173-elm-hana-rev7.dts     |   6 +-
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi  |  10 +-
+ .../dts/mediatek/mt8183-kukui-jacuzzi.dtsi    |   4 +-
+ .../dts/mediatek/mt8183-kukui-kakadu.dtsi     |   2 +-
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |   2 +-
+ .../boot/dts/mediatek/pumpkin-common.dtsi     |   4 +-
+ .../arm64/boot/dts/nvidia/tegra132-norrin.dts |   4 +-
+ .../boot/dts/nvidia/tegra186-p2771-0000.dts   |   6 +-
+ .../nvidia/tegra186-p3509-0000+p3636-0001.dts |   6 +-
+ .../boot/dts/nvidia/tegra194-p2972-0000.dts   |   4 +-
+ .../boot/dts/nvidia/tegra194-p3509-0000.dtsi  |   4 +-
+ .../arm64/boot/dts/nvidia/tegra210-p2597.dtsi |   6 +-
+ .../arm64/boot/dts/nvidia/tegra210-p2894.dtsi |   2 +-
+ .../boot/dts/nvidia/tegra210-p3450-0000.dts   |   4 +-
+ arch/arm64/boot/dts/nvidia/tegra210-smaug.dts |  10 +-
+ .../nvidia/tegra234-p3737-0000+p3701-0000.dts |   6 +-
+ arch/arm64/boot/dts/qcom/apq8016-sbc.dts      |   4 +-
+ arch/arm64/boot/dts/qcom/apq8096-db820c.dts   |   6 +-
+ .../boot/dts/qcom/msm8916-alcatel-idol347.dts |   2 +-
+ .../arm64/boot/dts/qcom/msm8916-asus-z00l.dts |   4 +-
+ .../arm64/boot/dts/qcom/msm8916-huawei-g7.dts |   2 +-
+ .../boot/dts/qcom/msm8916-longcheer-l8150.dts |   2 +-
+ .../boot/dts/qcom/msm8916-longcheer-l8910.dts |   2 +-
+ .../qcom/msm8916-samsung-a2015-common.dtsi    |   6 +-
+ .../boot/dts/qcom/msm8916-samsung-j5.dts      |   4 +-
+ .../dts/qcom/msm8916-samsung-serranove.dts    |   6 +-
+ .../dts/qcom/msm8916-wingtech-wt88047.dts     |   2 +-
+ .../boot/dts/qcom/msm8992-xiaomi-libra.dts    |   6 +-
+ .../dts/qcom/msm8994-msft-lumia-octagon.dtsi  |  10 +-
+ .../qcom/msm8994-sony-xperia-kitakami.dtsi    |  12 +-
+ .../boot/dts/qcom/msm8996-xiaomi-common.dtsi  |   6 +-
+ .../boot/dts/qcom/msm8998-fxtec-pro1.dts      |  26 ++-
+ .../boot/dts/qcom/msm8998-oneplus-common.dtsi |   6 +-
+ .../dts/qcom/msm8998-sony-xperia-yoshino.dtsi |   8 +-
+ arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi  |   2 +-
+ arch/arm64/boot/dts/qcom/sc7280-idp.dtsi      |   2 +-
+ .../dts/qcom/sdm630-sony-xperia-nile.dtsi     |  11 +-
+ .../boot/dts/qcom/sdm632-fairphone-fp3.dts    |   2 +-
+ .../boot/dts/qcom/sdm660-xiaomi-lavender.dts  |   2 +-
+ arch/arm64/boot/dts/qcom/sdm845-cheza.dtsi    |   2 +-
+ arch/arm64/boot/dts/qcom/sdm845-db845c.dts    |  10 +-
+ .../boot/dts/qcom/sdm845-oneplus-common.dtsi  |   4 +-
+ .../boot/dts/qcom/sdm845-shift-axolotl.dts    |   2 +-
+ .../dts/qcom/sdm845-sony-xperia-tama.dtsi     |   2 +-
+ .../boot/dts/qcom/sdm845-xiaomi-beryllium.dts |   2 +-
+ .../boot/dts/qcom/sdm850-lenovo-yoga-c630.dts |   4 +-
+ .../qcom/sm6125-sony-xperia-seine-pdx201.dts  |   4 +-
+ .../boot/dts/qcom/sm7225-fairphone-fp4.dts    |   2 +-
+ arch/arm64/boot/dts/qcom/sm8150-hdk.dts       |   4 +-
+ .../dts/qcom/sm8150-microsoft-surface-duo.dts |   4 +-
+ arch/arm64/boot/dts/qcom/sm8250-hdk.dts       |   4 +-
+ .../boot/dts/qcom/sm8250-sony-xperia-edo.dtsi |   2 +-
+ .../dts/qcom/sm8350-sony-xperia-sagami.dtsi   |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3308-evb.dts   |   2 +-
+ .../boot/dts/rockchip/rk3326-odroid-go2.dts   |  32 ++--
+ .../boot/dts/rockchip/rk3328-nanopi-r2s.dts   |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi  |   2 +-
+ .../boot/dts/rockchip/rk3368-geekbox.dts      |   2 +-
+ .../dts/rockchip/rk3368-orion-r68-meta.dts    |   2 +-
+ .../boot/dts/rockchip/rk3368-px5-evb.dts      |   2 +-
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts   |   2 +-
+ .../boot/dts/rockchip/rk3399-firefly.dts      |   2 +-
+ .../dts/rockchip/rk3399-gru-chromebook.dtsi   |   2 +-
+ .../boot/dts/rockchip/rk3399-gru-kevin.dts    |   2 +-
+ .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi |   2 +-
+ .../boot/dts/rockchip/rk3399-khadas-edge.dtsi |   2 +-
+ .../boot/dts/rockchip/rk3399-nanopi-r4s.dts   |   4 +-
+ .../boot/dts/rockchip/rk3399-nanopi4.dtsi     |   2 +-
+ .../boot/dts/rockchip/rk3399-orangepi.dts     |   2 +-
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts |   4 +-
+ .../boot/dts/rockchip/rk3399-roc-pc.dtsi      |   2 +-
+ .../boot/dts/rockchip/rk3399-rockpro64.dtsi   |   2 +-
+ .../boot/dts/rockchip/rk3399-sapphire.dtsi    |   2 +-
+ .../boot/dts/rockchip/rk3566-pinenote.dtsi    |   2 +-
+ .../arm64/boot/dts/ti/k3-am654-base-board.dts |   4 +-
+ .../dts/ti/k3-j721e-common-proc-board.dts     |   4 +-
+ .../boot/dts/xilinx/zynqmp-sm-k26-revA.dts    |   2 +-
+ .../boot/dts/xilinx/zynqmp-zcu100-revC.dts    |   2 +-
+ .../boot/dts/xilinx/zynqmp-zcu102-revA.dts    |   2 +-
+ .../boot/dts/xilinx/zynqmp-zcu106-revA.dts    |   2 +-
+ .../boot/dts/xilinx/zynqmp-zcu111-revA.dts    |   2 +-
+ 236 files changed, 696 insertions(+), 757 deletions(-)
 
 -- 
-Regards,
+2.34.1
 
-Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
