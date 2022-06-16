@@ -4,60 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FE06C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 01:00:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AFBAC43334
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 01:05:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V23fokeiJDEgCKT34YKoOlKnEZbULm7c7p6CSBfBEAk=; b=twWd7Fa1yxoUgo
-	SytddoHC2GwQKHuiMdfmTeA3Eg0mwm65gTs38DUApFVB0nTMvCgHvUa64vRkQkJR7KXmCdGOlewrf
-	liThkIm0d14VdPEFC7jEnHBrINSUkpWLviQknKlx90XA6Weo4akx/cWdaCUDn5FqhUWhlucNo7B61
-	Rzcr+G48iRAzVcwCohEWTmfO0eMav+4NjSbvTFVAg2QkPhjC8lsiDTFAgD6hpOEQy/+6S6MwOIxr1
-	Bly2Sbcd7dVDI/IplQe+SPx+q6szNNADipJpkUDil68FthLWDA9/G+aeyn+UWMY+zbCU2JrHDRr5J
-	LgORuWTTGXKe9UY0wwsQ==;
+	List-Owner; bh=NCB/Vip8vDgt7cC+XDOt/bz8nK/S7FU5rJlwT2Av8lk=; b=motJ93u6/7Hvyp
+	oVUwG6NbXBbIiTg/kxSwuXUBMj6r7H2n28iqS8hNoe/FLfiZssePhBOZaZrEh2J75WCIF4kmTblxJ
+	P7OFOevqiiKePc51bMbiikBrjcXppCtn2tmo4Co5aFF7I8spOQ/vywXJ3JwBT93QOowohnssM0vsW
+	boXzbSLjX5lExN56DCmNqJfsry45PQjO4foDudY/KGNqII57vBeQ+vyWvQ0noFClk7WlPDl3VDFMI
+	2SwsbqepQbF6Whyl1VRDqYyxYr5DvDWusXOdRxH2KE6vA5yZgaTYl7z2CZhYZhMzj95z5t6KjjN4+
+	GCpN4oU+Qc+GoLTW4jyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1drP-00HFpt-Vc; Thu, 16 Jun 2022 00:59:48 +0000
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+	id 1o1dww-00HICU-1J; Thu, 16 Jun 2022 01:05:30 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1dmN-00HCvx-NB
-	for linux-rockchip@lists.infradead.org; Thu, 16 Jun 2022 00:54:39 +0000
-Received: by mail-pg1-x533.google.com with SMTP id l4so11840620pgh.13
-        for <linux-rockchip@lists.infradead.org>; Wed, 15 Jun 2022 17:54:35 -0700 (PDT)
+	id 1o1dmg-00HDGj-AZ
+	for linux-rockchip@bombadil.infradead.org; Thu, 16 Jun 2022 00:54:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=CXB5XzjU8LfwcLqwKO65LrYsijml7F+eyLiUznyo7HA=; b=eKEyQxR6mKABeorCVE3OAjAVR7
+	RDMU9KVSzz6drVECuuJjgzvkDdbcN1nw7yC2mjaaUaOcOfREa3MgVtsKWoITW+iZQhcgRZTgc6RgS
+	djL1ZGmbxx0TtaIZPg035Nj6GIUnVCLYJzGuGrWk0C37XHf1RXkG8s95952qtTMFjU5zU5AqO2Wl4
+	enB0y7EHuJG2XE4+YkoNH+iMGytZgKlC87w/B18GdJiohVLzpgUzcF+qGZ/DQ2Kp2x3XcNDrZL2fY
+	/RVHFRvZ33YB5cUGe3CEVcJgBxfyLJ1LvoZ3CIRE5JxQ80s5jrpIjdBIe6a8TawgNtRxKPmioNnyr
+	uKRJwcCw==;
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o1dmV-008HUB-1W
+	for linux-rockchip@lists.infradead.org; Thu, 16 Jun 2022 00:54:45 +0000
+Received: by mail-pl1-x633.google.com with SMTP id m14so19017plg.5
+        for <linux-rockchip@lists.infradead.org>; Wed, 15 Jun 2022 17:54:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=M9cRkNbphtR1nWH7ufUYuqXLWJ3+nF8HvpiRBxYWxPQ=;
-        b=tkmIXw8S+k2c1x0Z8p2fkhSsgK0peNeFvgYkUZVUbu5RtEBex46lXIf0HKW6KNOylf
-         rUetQ2rNwWUAd44EAXVgDEadyBYaaJH/+W2wws4iXr+E8a6JlRbCZ+8k1Bb6YQs+dnX7
-         id6Mioo1lPjVuzzNY2nslYBygaxWvtpXNzUbpiMHDzDuBVV/UL0Yxk6kulap4njidxnk
-         nOMYL3P92a2zYS8o4YIl/5+ywbhC+oXAKuXL9R3gtKQgHFmgKTula0kNSxZiO9Qp88E6
-         qrqiklAypz47DRoiMUu3RosDCn2TFv7BgtfIaHM0kdGxeTRY86D7VT9F3Y1otVqUksqD
-         S+DQ==
+        bh=CXB5XzjU8LfwcLqwKO65LrYsijml7F+eyLiUznyo7HA=;
+        b=VGry34Lsq0AAS5nS8T6G1tLJmFhnHD7ECJLqZEOUaJy7QdnDMbPqUOUZY6b0P6If+x
+         3Uol647tBlTWP6/ZisPA7IHqknVh+L9peADwDRasaWhMrymZ41xMQwCp6s3Y4WwGB5pG
+         Ds/a0MWQIUGMskAyAgZW3yACJAm/N0IzCY2sK5fuOPhKxxqhXCucmeW2oGgcCCuy8BxZ
+         z+xri6fR8xTTHBaWhZj6XAfXbG8wl4u/ET6YjeKflaW24AurN7ZA/63448M5zw62FM3j
+         +mRfFSzgTFX2ghXYud3l1uu4BGvm2tF6mzs61wuv5+waU2zF0CTi0+D8HNccvczicN5y
+         e/qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=M9cRkNbphtR1nWH7ufUYuqXLWJ3+nF8HvpiRBxYWxPQ=;
-        b=0mafmCivCHz21X4sqDVhHkedS4pAiIXlcv1gSwGOVt6vWLxCwHC/bws0vUWZzkGXQN
-         cGJF6t4mwDG12pl3+Wk1PNHSH0hiAgCURUXPQ1LVEALTjjtkfUsMzo/QiYuMmKkUCdqK
-         5d8Hg9veMA58O6ab3khCrg9/o33wJ1uykLudIv6xUdYqx/FENrU+/0wu6nXOxSlIUZDQ
-         eSsTIpaU2HkIjdhjup2/1TAzk2U8ytGfHyT+/Ztcepht6UOfiroLtvH3SDEHK74kUmi4
-         pjFYEDwumtDGahX+EdNo3rnH9vee2bP4e4vKvuAjdDcDAx6RHSJEKsqfbjdrEze9P2Xn
-         XGgw==
-X-Gm-Message-State: AJIora/Jq2AdwTv6S0+++7KrqjCiqlQu1MEWTh9e8jjQneF6t5twG+n5
-	V/JqhVDqwSf903sSAPdbSk5P0g==
-X-Google-Smtp-Source: AGRyM1tpbUG7VBpi2KBjuHGMrdDhp+WlAIB47W+NtptWCExSUXTuflyBSiZqqcb1A36kEESZAQWFLw==
-X-Received: by 2002:a63:5c56:0:b0:3fc:824d:fc57 with SMTP id n22-20020a635c56000000b003fc824dfc57mr2168194pgm.561.1655340875257;
-        Wed, 15 Jun 2022 17:54:35 -0700 (PDT)
+        bh=CXB5XzjU8LfwcLqwKO65LrYsijml7F+eyLiUznyo7HA=;
+        b=hUhI3W2SqzYeZatMFo9ObnPOXTRJ1nwfb0zciHhqxyaBoiY+n1mgRXFJPzE8vTXUxg
+         ACP8SKd4Y1+M8JQfVmlYRUEIz8R9+2eEnDLonb9YIG/wO05waNnQgaJEVqYPrtI5pkYM
+         SLhywTYTlRLThLpTAgj3GcIk8VMJqmCvTNrVAxIyIyIVI61KHApaJR1PZTF5PYbFyIeu
+         IFqb4B95QsZWfvRJXo3/So1aQasSS+00c9wkReABPhkNunr1XJp209/TRvDf8mc6d2f5
+         35hy0ELbiuBSv+QlURj+eqvY0hqgpnjmVIfAkgQVMyn2OSkpi/8QDeBia5ac8qTZQx/m
+         Yu9Q==
+X-Gm-Message-State: AJIora+hwznOY8pRVVUDY/AG4nkjkSt72ye8oR0J1QXTdp4hAN/94Sd0
+	gnIo+LhIIstF1afHDiLzhe7h+g==
+X-Google-Smtp-Source: AGRyM1tTJuVv6wY6oC6Dqloj1ueiXM7oVUn01PuF4hqwTjmcDmQnxyteBUfMI5SU0Y3/qkOFQiy+jw==
+X-Received: by 2002:a17:902:f54c:b0:163:f64a:612c with SMTP id h12-20020a170902f54c00b00163f64a612cmr2228151plf.22.1655340876407;
+        Wed, 15 Jun 2022 17:54:36 -0700 (PDT)
 Received: from krzk-bin.. ([192.77.111.2])
-        by smtp.gmail.com with ESMTPSA id p4-20020a170902780400b0016760c06b76sm233660pll.194.2022.06.15.17.54.34
+        by smtp.gmail.com with ESMTPSA id p4-20020a170902780400b0016760c06b76sm233660pll.194.2022.06.15.17.54.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Jun 2022 17:54:34 -0700 (PDT)
+        Wed, 15 Jun 2022 17:54:36 -0700 (PDT)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 To: arm@kernel.org,
 	soc@kernel.org,
@@ -71,16 +85,16 @@ To: arm@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v3 27/40] ARM: dts: rockchip: align gpio-key node names with dtschema
-Date: Wed, 15 Jun 2022 17:53:20 -0700
-Message-Id: <20220616005333.18491-27-krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v3 28/40] ARM: dts: rockchip: rk3288-tinker: correct gpio-keys properties
+Date: Wed, 15 Jun 2022 17:53:21 -0700
+Message-Id: <20220616005333.18491-28-krzysztof.kozlowski@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
 References: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220615_175435_822954_E51E46AF 
-X-CRM114-Status: GOOD (  11.90  )
+X-CRM114-CacheID: sfid-20220616_015443_312654_2D64E06B 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,285 +111,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The node names should be generic and DT schema expects certain pattern
-(e.g. with key/button/switch).
+gpio-keys children do not use unit addresses.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 ---
- arch/arm/boot/dts/rk3066a-bqcurie2.dts          | 4 ++--
- arch/arm/boot/dts/rk3066a-rayeager.dts          | 2 +-
- arch/arm/boot/dts/rk3188-bqedison2qc.dts        | 4 ++--
- arch/arm/boot/dts/rk3188-px3-evb.dts            | 2 +-
- arch/arm/boot/dts/rk3188-radxarock.dts          | 2 +-
- arch/arm/boot/dts/rk3229-evb.dts                | 2 +-
- arch/arm/boot/dts/rk3288-evb.dtsi               | 2 +-
- arch/arm/boot/dts/rk3288-firefly-reload.dts     | 2 +-
- arch/arm/boot/dts/rk3288-firefly.dtsi           | 2 +-
- arch/arm/boot/dts/rk3288-phycore-rdk.dts        | 4 ++--
- arch/arm/boot/dts/rk3288-popmetal.dts           | 2 +-
- arch/arm/boot/dts/rk3288-r89.dts                | 2 +-
- arch/arm/boot/dts/rk3288-rock2-square.dts       | 2 +-
- arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi | 2 +-
- arch/arm/boot/dts/rk3288-veyron-minnie.dts      | 4 ++--
- arch/arm/boot/dts/rk3288-veyron-pinky.dts       | 2 +-
- arch/arm/boot/dts/rk3288-veyron.dtsi            | 2 +-
- 17 files changed, 21 insertions(+), 21 deletions(-)
+ arch/arm/boot/dts/rk3288-tinker.dtsi | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk3066a-bqcurie2.dts b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
-index 390aa33cd55a..962b4d1291db 100644
---- a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
-+++ b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
-@@ -48,7 +48,7 @@ gpio-keys {
- 		compatible = "gpio-keys";
- 		autorepeat;
+diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
+index 9c1e38c54eae..09618bb7d872 100644
+--- a/arch/arm/boot/dts/rk3288-tinker.dtsi
++++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
+@@ -26,14 +26,12 @@ ext_gmac: external-gmac-clock {
  
--		power {
-+		key-power {
- 			gpios = <&gpio6 RK_PA2 GPIO_ACTIVE_LOW>; /* GPIO6_A2 */
- 			linux,code = <KEY_POWER>;
- 			label = "GPIO Key Power";
-@@ -56,7 +56,7 @@ power {
- 			wakeup-source;
- 			debounce-interval = <100>;
- 		};
--		volume-down {
-+		key-volume-down {
- 			gpios = <&gpio4 RK_PC5 GPIO_ACTIVE_LOW>; /* GPIO4_C5 */
- 			linux,code = <KEY_VOLUMEDOWN>;
- 			label = "GPIO Key Vol-";
-diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts b/arch/arm/boot/dts/rk3066a-rayeager.dts
-index 12b2e59aebc4..dbbc5170094e 100644
---- a/arch/arm/boot/dts/rk3066a-rayeager.dts
-+++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
-@@ -32,7 +32,7 @@ ir: ir-receiver {
- 	keys: gpio-keys {
- 		compatible = "gpio-keys";
- 
--		power {
-+		key-power {
- 			wakeup-source;
- 			gpios = <&gpio6 RK_PA2 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Power";
-diff --git a/arch/arm/boot/dts/rk3188-bqedison2qc.dts b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
-index 35b7a5798eee..9312be362a7a 100644
---- a/arch/arm/boot/dts/rk3188-bqedison2qc.dts
-+++ b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
-@@ -37,7 +37,7 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwr_key &usb_int>;
- 
--		power {
-+		key-power {
- 			gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
- 			linux,code = <KEY_POWER>;
- 			label = "GPIO Key Power";
-@@ -46,7 +46,7 @@ power {
- 			wakeup-source;
- 		};
- 
--		wake_on_usb: wake-on-usb {
-+		wake_on_usb: key-wake-on-usb {
- 			label = "Wake-on-USB";
- 			gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
- 			linux,code = <KEY_WAKEUP>;
-diff --git a/arch/arm/boot/dts/rk3188-px3-evb.dts b/arch/arm/boot/dts/rk3188-px3-evb.dts
-index fc478ac4e781..0a1ae689b162 100644
---- a/arch/arm/boot/dts/rk3188-px3-evb.dts
-+++ b/arch/arm/boot/dts/rk3188-px3-evb.dts
-@@ -29,7 +29,7 @@ gpio-keys {
- 		compatible = "gpio-keys";
- 		autorepeat;
- 
--		power {
-+		key-power {
- 			gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
- 			linux,code = <KEY_POWER>;
- 			label = "GPIO Key Power";
-diff --git a/arch/arm/boot/dts/rk3188-radxarock.dts b/arch/arm/boot/dts/rk3188-radxarock.dts
-index 36c0945f43b2..a9ed3cd2c2da 100644
---- a/arch/arm/boot/dts/rk3188-radxarock.dts
-+++ b/arch/arm/boot/dts/rk3188-radxarock.dts
-@@ -24,7 +24,7 @@ gpio-keys {
- 		compatible = "gpio-keys";
- 		autorepeat;
- 
--		power {
-+		key-power {
- 			gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
- 			linux,code = <KEY_POWER>;
- 			label = "GPIO Key Power";
-diff --git a/arch/arm/boot/dts/rk3229-evb.dts b/arch/arm/boot/dts/rk3229-evb.dts
-index 797476e8bef1..5c3d08e3eea3 100644
---- a/arch/arm/boot/dts/rk3229-evb.dts
-+++ b/arch/arm/boot/dts/rk3229-evb.dts
-@@ -107,7 +107,7 @@ vdd_log: vdd-log-regulator {
- 		regulator-boot-on;
- 	};
- 
--	gpio_keys {
-+	gpio-keys {
- 		compatible = "gpio-keys";
- 		autorepeat;
- 		pinctrl-names = "default";
-diff --git a/arch/arm/boot/dts/rk3288-evb.dtsi b/arch/arm/boot/dts/rk3288-evb.dtsi
-index c4ca73b40d4a..399d6b9c5fd4 100644
---- a/arch/arm/boot/dts/rk3288-evb.dtsi
-+++ b/arch/arm/boot/dts/rk3288-evb.dtsi
-@@ -118,7 +118,7 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwrbtn>;
- 
--		power {
-+		key-power {
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			linux,code = <KEY_POWER>;
- 			label = "GPIO Key Power";
-diff --git a/arch/arm/boot/dts/rk3288-firefly-reload.dts b/arch/arm/boot/dts/rk3288-firefly-reload.dts
-index 9a4a9749c405..a5a0826341e6 100644
---- a/arch/arm/boot/dts/rk3288-firefly-reload.dts
-+++ b/arch/arm/boot/dts/rk3288-firefly-reload.dts
-@@ -27,7 +27,7 @@ button-recovery {
  	gpio-keys {
  		compatible = "gpio-keys";
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+ 		autorepeat;
  
--		power {
-+		key-power {
- 			wakeup-source;
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Power";
-diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi b/arch/arm/boot/dts/rk3288-firefly.dtsi
-index 7fb582302b32..052afe5543e2 100644
---- a/arch/arm/boot/dts/rk3288-firefly.dtsi
-+++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
-@@ -49,7 +49,7 @@ ir: ir-receiver {
- 	keys: gpio-keys {
- 		compatible = "gpio-keys";
- 
--		power {
-+		key-power {
- 			wakeup-source;
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Power";
-diff --git a/arch/arm/boot/dts/rk3288-phycore-rdk.dts b/arch/arm/boot/dts/rk3288-phycore-rdk.dts
-index 1e33859de484..1a5156951492 100644
---- a/arch/arm/boot/dts/rk3288-phycore-rdk.dts
-+++ b/arch/arm/boot/dts/rk3288-phycore-rdk.dts
-@@ -20,14 +20,14 @@ user_buttons: user-buttons {
  		pinctrl-names = "default";
- 		pinctrl-0 = <&user_button_pins>;
+ 		pinctrl-0 = <&pwrbtn>;
  
 -		button@0 {
-+		button-0 {
- 			label = "home";
- 			linux,code = <KEY_HOME>;
- 			gpios = <&gpio8 0 GPIO_ACTIVE_HIGH>;
- 			wakeup-source;
- 		};
- 
--		button@1 {
-+		button-1 {
- 			label = "menu";
- 			linux,code = <KEY_MENU>;
- 			gpios = <&gpio8 3 GPIO_ACTIVE_HIGH>;
-diff --git a/arch/arm/boot/dts/rk3288-popmetal.dts b/arch/arm/boot/dts/rk3288-popmetal.dts
-index 8c7376d64bc4..fd90f3b8fc32 100644
---- a/arch/arm/boot/dts/rk3288-popmetal.dts
-+++ b/arch/arm/boot/dts/rk3288-popmetal.dts
-@@ -30,7 +30,7 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwrbtn>;
- 
--		power {
-+		key-power {
++		button {
  			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
  			linux,code = <KEY_POWER>;
  			label = "GPIO Key Power";
-diff --git a/arch/arm/boot/dts/rk3288-r89.dts b/arch/arm/boot/dts/rk3288-r89.dts
-index 55467bc30fa6..633e5a032463 100644
---- a/arch/arm/boot/dts/rk3288-r89.dts
-+++ b/arch/arm/boot/dts/rk3288-r89.dts
-@@ -31,7 +31,7 @@ gpio-keys {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwrbtn>;
- 
--		power {
-+		key-power {
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			linux,code = <KEY_POWER>;
- 			label = "GPIO Key Power";
-diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts b/arch/arm/boot/dts/rk3288-rock2-square.dts
-index c4d1d142d8c6..80e0f07c8e87 100644
---- a/arch/arm/boot/dts/rk3288-rock2-square.dts
-+++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
-@@ -28,7 +28,7 @@ button-recovery {
- 	gpio-keys {
- 		compatible = "gpio-keys";
- 
--		power {
-+		key-power {
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			label = "GPIO Power";
- 			linux,code = <KEY_POWER>;
-diff --git a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-index 05112c25176d..700bb548d6b2 100644
---- a/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron-chromebook.dtsi
-@@ -32,7 +32,7 @@ lid_switch: lid-switch {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&ap_lid_int_l>;
- 
--		lid {
-+		switch-lid {
- 			label = "Lid";
- 			gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_LOW>;
- 			wakeup-source;
-diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-index 82fc6fba9999..dcdcc55c4098 100644
---- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-@@ -21,14 +21,14 @@ volume_buttons: volume-buttons {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&volum_down_l &volum_up_l>;
- 
--		volum_down {
-+		key-volum-down {
- 			label = "Volum_down";
- 			gpios = <&gpio5 RK_PB3 GPIO_ACTIVE_LOW>;
- 			linux,code = <KEY_VOLUMEDOWN>;
- 			debounce-interval = <100>;
- 		};
- 
--		volum_up {
-+		key-volum-up {
- 			label = "Volum_up";
- 			gpios = <&gpio5 RK_PB2 GPIO_ACTIVE_LOW>;
- 			linux,code = <KEY_VOLUMEUP>;
-diff --git a/arch/arm/boot/dts/rk3288-veyron-pinky.dts b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
-index 4e9fdb0f722d..e2a4e6232eb5 100644
---- a/arch/arm/boot/dts/rk3288-veyron-pinky.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
-@@ -45,7 +45,7 @@ &edp {
- &lid_switch {
- 	pinctrl-0 = <&pwr_key_h &ap_lid_int_l>;
- 
--	power {
-+	key-power {
- 		gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
- 	};
- };
-diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi b/arch/arm/boot/dts/rk3288-veyron.dtsi
-index 54a6838d73f5..e406c8c7c7e5 100644
---- a/arch/arm/boot/dts/rk3288-veyron.dtsi
-+++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
-@@ -29,7 +29,7 @@ power_button: power-button {
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pwr_key_l>;
- 
--		power {
-+		key-power {
- 			label = "Power";
- 			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
- 			linux,code = <KEY_POWER>;
 -- 
 2.34.1
 
