@@ -4,83 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2E49CCA481
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 15:46:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA89FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 15:59:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=huL21HPwgcS4VluOB/gN0L5MjA7IrmurPRwg4kogFjA=; b=35NwdSYSWOS4T6
-	irb+gL4PJuIzH7Sn6c2e0PFWURRpxxwOCbyBPFtoftBUyhNCajyQt+3wQZaT8CgEv265ZMrXWyQdd
-	si2Kit/YCiFcuzOatY5USKwnuJO7wfQezqkhmEC44SS03cG6Wm30B+GA4X53gzCzE1WoYh4yJ6TEd
-	tWwqdDaSMPy4pT+kdBHW387OlHkak+/ms24zdhhhc0l+rQLvP1hz/t4r8GyoDYMo8SGVgVDWr6GW6
-	0ZIFq18UGbTv947E3bjiVblUkhNLwoi+1CatqHRSEQgKSIHHEJ5U2ElJZ8hyFHMkZTVu7c+5onjiY
-	MfIh6XoufiglEnhp/sZA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Lx2lp9ObQvfpJJxrt/pWXEBP2eqMLhiPwiYyXtioFMs=; b=1rKzKnAlOVsxFf
+	Br1Hi0Ri6zaM5xncQs9fffLqPbWILAmNXB/BvVCPVQBlSQxEo0nfOaK+e0fZoP0KdzQHJFL8vjJsa
+	LzbJ5albe8/KSartnCwDjaUGj+e5QNH4INXaCjOCyVk6Y/sY4lp3HGmKcQV+nFhVS4esK5dfIgDOT
+	Q47o+Avm+AEpM8GVvshTKt3L/uVLxjFRnGf87o8n0ZwSO4Vhg5bAq+7YSHIFd0VYnNJTR/nmi6ICO
+	TmC6Bgo5TJ4DRgwlQrtEcLJkpbqFcTOcw+z+ZSQeRv2bhn84S9z8AqyQph9VBMXk95moXf6o8WshX
+	3kw4ns3UfMcdpqJ4aGfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1rgn-003EQ4-8y; Thu, 16 Jun 2022 15:45:45 +0000
-Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
+	id 1o1rtj-003Gnk-Lg; Thu, 16 Jun 2022 15:59:07 +0000
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1qaF-002rPS-NQ; Thu, 16 Jun 2022 14:35:00 +0000
-Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
-	by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25GC0DJX015765;
-	Thu, 16 Jun 2022 09:34:34 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding : content-type; s=PODMain02222019;
- bh=NITDP0/FzeUs4judT0jNQp5cBIgyRfB6xBGDNoV8sco=;
- b=ClzRE7fBiz+GWthoVNTPsY6Fx7c1X8cRUAIgzZ/qS9WG1RR6BXUoQY5FA7DIngYuUoiJ
- UvkNB3gdBMNIHksHNt3Phkpfr9SzcHgu4ysbvMxlRGGU+cbkgeT1b4dZl7HeyVIu2HPC
- TorThIqOBQiSLb9VC0I7Z3tZtk+FO0fIGPDUS/tyD2jhLcRCU/mtH/6ukYWVuq4DI+s6
- C8ADRe0WLljJiNOfEOeO2j+guVW5X/20k8sq81CpH+oTaqmNgT1vU1JzpfiJ/CdAm/uA
- svK8DaIsOfCaIagQ7D2Cv8B5aGSbGxCn8Sl/OSnvV25h6mVJFQOqo7s73LELeZpRWEEB Uw== 
-Received: from ediex02.ad.cirrus.com ([84.19.233.68])
-	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3gmqfq5w3h-5
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
-	Thu, 16 Jun 2022 09:34:34 -0500
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
- (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Thu, 16 Jun
- 2022 15:34:30 +0100
-Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.28 via Frontend
- Transport; Thu, 16 Jun 2022 15:34:30 +0100
-Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
-	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 692FC11D1;
-	Thu, 16 Jun 2022 14:34:30 +0000 (UTC)
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: <broonie@kernel.org>
-CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
-        <mripard@kernel.org>, <airlied@linux.ie>, <daniel@ffwll.ch>,
-        <vkoul@kernel.org>, <nicolas.ferre@microchip.com>, <nsaenz@kernel.org>,
-        <shawnguo@kernel.org>, <linux-imx@nxp.com>,
-        <cezary.rojewski@intel.com>, <pierre-louis.bossart@linux.intel.com>,
-        <linux-mips@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
-        <daniel@zonque.org>, <srinivas.kandagatla@linaro.org>,
-        <linux-rockchip@lists.infradead.org>, <krzk@kernel.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>,
-        <linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
-        <linux-omap@vger.kernel.org>, <linux-xtensa@linux-xtensa.org>,
-        <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
-        <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
-        <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>,
-        <dri-devel@lists.freedesktop.org>,
-        <linux-rpi-kernel@lists.infradead.org>
-Subject: [PATCH 06/96] ASoC: jz4740-i2c: Migrate to new style legacy DAI naming flag
-Date: Thu, 16 Jun 2022 15:32:59 +0100
-Message-ID: <20220616143429.1324494-7-ckeepax@opensource.cirrus.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220616143429.1324494-1-ckeepax@opensource.cirrus.com>
-References: <20220616143429.1324494-1-ckeepax@opensource.cirrus.com>
+	id 1o1rtZ-003Gdh-86
+	for linux-rockchip@lists.infradead.org; Thu, 16 Jun 2022 15:58:58 +0000
+Received: by mail-pf1-x435.google.com with SMTP id x138so1856592pfc.12
+        for <linux-rockchip@lists.infradead.org>; Thu, 16 Jun 2022 08:58:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Dt7moyOGq/wGPX6up0TVePAZeRh2KcSmjYDlmf94HxE=;
+        b=etAzaLvBUF3LEk3BYYPg9CD5v+EkBJJTvunVknq9iG/wLOY/Le32cBqexS0UkwiMlm
+         ETzSnFjod9eT57QJBIyjiwXD7Ji0tFwwKHTkKj1Ize6vtPyw2HENYoBzT1QYSCFPVmH1
+         oC8sYIl2DMZmXaRla94BaQApJ2Rdu8zrT5qdE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Dt7moyOGq/wGPX6up0TVePAZeRh2KcSmjYDlmf94HxE=;
+        b=PMxBnnHQKy7LuWMHYKCN8pyvafM96FgXGwBfakWdqRmagsFsB8n1CnOFhvO2F/xqkl
+         9ju9b4OfrMv7v9t6wx3TIrGjBCDO0KEDU0fvzBk3mTJUtgy0DIejkHrCgTZoXFXStJwO
+         +PT3iY6GP5k7zHQwenu0uF8C95DjvOt9IiHnkSC6YDIe1tkYjVU3aZmErDwJJt31pKf6
+         sSZX7wCTebDyK3LbYlQ8fvBiNJw5eLWgirORjRr1FQENlv/br1iI2N4yfwPPnRsWzRra
+         GUjgjTzZsKkwLXC8wvyWyl4VABuUm0aBKBQVdtdBprOah58uobimCjLFTk2ZIF8QNO+k
+         Oy2Q==
+X-Gm-Message-State: AJIora9thYgkBtyVUYg4lUXT9CBQnaztQeByXGf7814YlZSBYkb9keI1
+	j6Q4zAQ69eWVXbDgRv+Yt9bdbA==
+X-Google-Smtp-Source: AGRyM1t0X7UHlN5X6Tiqx+yKhBWm7VLeGVTI8ighHLTVurpkRre+vuBb+6E5+wGZ4rm7QDhfp1ipTg==
+X-Received: by 2002:aa7:888c:0:b0:505:7832:98fc with SMTP id z12-20020aa7888c000000b00505783298fcmr5333501pfe.0.1655395133562;
+        Thu, 16 Jun 2022 08:58:53 -0700 (PDT)
+Received: from judyhsiao0523.c.googlers.com.com (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id f8-20020a170902684800b00161478027f5sm1779797pln.150.2022.06.16.08.58.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 Jun 2022 08:58:53 -0700 (PDT)
+From: Judy Hsiao <judyhsiao@chromium.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Brian Norris <briannorris@chromium.org>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	alsa-devel@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Judy Hsiao <judyhsiao@chromium.org>
+Subject: [PATCH v2 0/3] ASoC: rockchip: i2s: switch BCLK to GPIO
+Date: Thu, 16 Jun 2022 15:58:33 +0000
+Message-Id: <20220616155836.3401420-1-judyhsiao@chromium.org>
+X-Mailer: git-send-email 2.36.1.476.g0c4daa206d-goog
 MIME-Version: 1.0
-X-Proofpoint-ORIG-GUID: iSA6Egfg7F-z7JxBynJ2xhU-srF922i2
-X-Proofpoint-GUID: iSA6Egfg7F-z7JxBynJ2xhU-srF922i2
-X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_073455_935861_51D0C0F2 
-X-CRM114-Status: GOOD (  14.45  )
+X-CRM114-CacheID: sfid-20220616_085857_319451_E4D80AB0 
+X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,36 +93,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Change the legacy DAI naming flag from opting in to the new scheme
-(non_legacy_dai_naming), to opting out of it (legacy_dai_naming).
-This driver appears to be on the CPU side of the DAI link and
-currently uses the legacy naming, so add the new flag.
+The patches series is to fix the unexpected large
+DC output voltage of Max98357a to burn the speakers 
+on rockchip platform when BCLK and SD_MODE are ON but LRCLK is OFF.
 
-Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
----
- sound/soc/jz4740/jz4740-i2s.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+Changes Since V2:
+    -- Add documents of i2s pinctrl-names.
+    -- Fix dtsi syntax error.
+    -- Include the dtsi change and the driver change in the same series.
+    -- Ensure that driver gets both bclk_on and bclk_off states before using them.
 
-diff --git a/sound/soc/jz4740/jz4740-i2s.c b/sound/soc/jz4740/jz4740-i2s.c
-index 446c5e0615649..79afac0c50038 100644
---- a/sound/soc/jz4740/jz4740-i2s.c
-+++ b/sound/soc/jz4740/jz4740-i2s.c
-@@ -498,9 +498,10 @@ static const struct i2s_soc_info jz4780_i2s_soc_info = {
- };
- 
- static const struct snd_soc_component_driver jz4740_i2s_component = {
--	.name		= "jz4740-i2s",
--	.suspend	= jz4740_i2s_suspend,
--	.resume		= jz4740_i2s_resume,
-+	.name			= "jz4740-i2s",
-+	.suspend		= jz4740_i2s_suspend,
-+	.resume			= jz4740_i2s_resume,
-+	.legacy_dai_naming	= 1,
- };
- 
- static const struct of_device_id jz4740_of_matches[] = {
+Judy Hsiao (3):
+  ASoC: rockchip: i2s: switch BCLK to GPIO
+  arm64: dts: rk3399: i2s: switch BCLK to GPIO
+  ASoC: dt-bindings: rockchip: Document pinctrl-names for i2s
+
+ .../bindings/sound/rockchip-i2s.yaml          |   7 +
+ .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi |  10 ++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  25 +++-
+ sound/soc/rockchip/rockchip_i2s.c             | 134 ++++++++++++++----
+ 4 files changed, 149 insertions(+), 27 deletions(-)
+
 -- 
-2.30.2
+2.36.1.476.g0c4daa206d-goog
 
 
 _______________________________________________
