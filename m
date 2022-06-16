@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFA25C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 20:27:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33C61C43334
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 20:39:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fGaLKx8tgAPTKUutHigJA8Pb5yt9WO1aot2pgKvAjwo=; b=j/rFyLOhPDGusA
-	tqalHLY6ZWp64vwSzEK+T6xPpo+LG1j+YeyF3da2BjAH9qs+loEbjNRow4x6rbZsbDu63AByLzZ3g
-	wzq+uhCm0DqLV7JCUFDacOqnRKcorwz+D2qwqVLiOhj7WqnwwZG29O4UqwmRxAkPX4Y1L/XA0RAPy
-	DC0PBGaAUi8FTHWw+4ImBOliYnFIJdYOIk9/QnsMxk4m3Mj7vDdWpsJ0BSZaBQ41a/dighQE9Avcz
-	KPGd+u2z4lw+kGmfgmFJaVqJ/JhhyLqikZGb/G6ZLcPYBwM7VxsvddCyJdk+JP1dsF/OR5yEUlDC7
-	oennngk9JCu0JpcFduww==;
+	List-Owner; bh=mrQkhgibWo0BwxgG591YaZmLUOzHywS55eDrAVMQcm8=; b=oH7QGo3zZqQOgX
+	msPV3ZQwDLKk1V6/D/PBFXsdm/hdS86o9uHgYdSMt6Vjcykm+/0yiHgB+gFGxmHQn2NnDc1mJsU4j
+	pWAaEkr0eghWWbtHobGWxGw4rETokwSpds+as0dtqHNpuUaBYNQqO3oJdHE0sdEfhxaPSRmmKqzmu
+	grMoH/Bz1H+WLTXmwPbepi1/UbSeRPM5j2x/7tpOBkcWxOAyJwCx/ILPwmzN6hxy2slTnFyc4evF5
+	ZWx+M6y/hjYBznMuYBTkPhpyo+r/thkogm0xc0KSOYWRl2k8mpAo9+aqQqivO8fhVBml8lU3syGtW
+	ZNj2qn+bT7rAiGLXpZUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1w5b-0047Bm-BA; Thu, 16 Jun 2022 20:27:39 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1o1wGy-004Bj9-5s; Thu, 16 Jun 2022 20:39:24 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1w3W-0045yA-9b; Thu, 16 Jun 2022 20:25:32 +0000
-Received: by mail-ej1-x632.google.com with SMTP id g25so4817116ejh.9;
-        Thu, 16 Jun 2022 13:25:27 -0700 (PDT)
+	id 1o1wGv-004BhR-GV
+	for linux-rockchip@lists.infradead.org; Thu, 16 Jun 2022 20:39:22 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id k12-20020a17090a404c00b001eaabc1fe5dso2831311pjg.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 16 Jun 2022 13:39:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=S51F3Je5QDB420YRCT+3HINCDkvBOXZdT2bwWLedeKE=;
-        b=BBO69XMOO3d5o5uHjrczeLA5BMwcMouFDIOARWkmT7GrhDj6Rh6l5caepWk2XyUIgc
-         8Gn6BFxCb/irQ78FHD46MDFyUe++lQlzDybuxYEKQruT4YzuMgS1/e1DVP7usIvj7Q9X
-         Ewj9G4WoKZNd0dvus4bQrhzYuebUrtVeyoGgpil8lVAyK7q1B+lzU0yXZOfLwflgtFFN
-         sW/TsuU5WcdYSz2jwALtvwoXQHEYjZufP3cwKXuQx5I5lUdTG07sSwrnEKNsClJM5x2E
-         XiY/uI/N0i8RQL7O/XkrKQa4DQicNwX95RPUS0nizP/gJn0YtQsFdS/AhuTcb3pg+zoy
-         luug==
+        d=chromium.org; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=pkTlqBCv4kkUBzXfdE69AlbwDzWnDXPmq1X/ctwZ1RI=;
+        b=ROZn+y/7o3WKT8p5stMPNJszpKJne4D3/Za9voE4D9qs7VwnFgZTseD6+HxsBnKHov
+         rlTxbyYs4W0Iquvo4qHE70ivqOFlD9BOvwBoC+2PAKOw5Li1rI5SuWzQIMoZoQdgMPQQ
+         xeKSWDr237Bfr3p2GiCiYStFm/NkPc/o4cp4Q=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=S51F3Je5QDB420YRCT+3HINCDkvBOXZdT2bwWLedeKE=;
-        b=BXbXhRcmHiFuhp+chC7YTXy4Vupz5Q3d0CrNMjmeKc06Zb7AJpNbUQ1D/CVN5d7/2K
-         HL09dSoK7qr6gL6PzCmRQrNHarux5f0y/Kq23kjCNf39rJjeSjVY3MqlSI7uaIJ/nuUU
-         RlglqyKDJiQb5Qd8CKwF0Zugl/ZgsNe2P79yXYq6ocl79Lq6NQ9DZ1VhminnJEg4GPmw
-         9+fig4hmUCd5XYiOJhWqvg37aJgegPMc6pux2qwTBvkRWOJVQs4NLGK8sDrBgl9bvMpN
-         FMRVn2T8dhHXL9ldL4BmKe09MJfb8DWnhoGa/68Cq6OnB5lyf7FQ2p/B6rxToKFtMsvq
-         NBbw==
-X-Gm-Message-State: AJIora8d5qCMb78t0MrECKk8McDalqQZlJ6plt5q5AtCyiIOv0dUkG+3
-	lzjTump0TbWnFBiA6tBCEQU=
-X-Google-Smtp-Source: AGRyM1sDaGC+6BR752Es4zGOOLY2CRsRtcQIh1wgtcW8aG69QcftAAgu5n+sP0gTrl7CxcEdIodS2Q==
-X-Received: by 2002:a17:907:8b87:b0:715:e127:b64d with SMTP id tb7-20020a1709078b8700b00715e127b64dmr5996239ejc.481.1655411126677;
-        Thu, 16 Jun 2022 13:25:26 -0700 (PDT)
-Received: from kista.localdomain (213-161-3-76.dynamic.telemach.net. [213.161.3.76])
-        by smtp.gmail.com with ESMTPSA id 21-20020a170906329500b006fe8a4ec62fsm1186760ejw.4.2022.06.16.13.25.25
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=pkTlqBCv4kkUBzXfdE69AlbwDzWnDXPmq1X/ctwZ1RI=;
+        b=hhN3tTsFgoB0W7heobKYtSIYBrGzJeyWLkGCs0JSZE+dGoKLrCV3sZNPUPTjgfKqWF
+         wiZCytcx5rFPobUkneBwqXilbEKwJ9r/NJ7YYIUaC6TlWRrv3ebjtl5Sb/iPFl86Z91Z
+         QuuGXQZpLKHnNYVlWmw0XbP+epKx5TFt7WY30k8LK++S0ovLLbKDOKmtvwZLSzl8EW2d
+         2jmIbBmAf0uu5ByYZZPApQ9zZ053pZWegf4b6kRjEmx0IxTyZ3X7RLrFHX5smAOebyPR
+         5M7cCimuYi2s3s9yelBjXMGlVw4t+/mY/NlO9ciPzJzh14oI9Hwta0XruC296EQaZUxO
+         9gHQ==
+X-Gm-Message-State: AJIora+672YiQkQmYRbY4lP6PG0LGCozgmE0iksQa/YCX23kLwbh821o
+	m0pyuNwNVIPpIMe42pqYNfN4RQ==
+X-Google-Smtp-Source: AGRyM1uRzdYi2h3WMgzsyG09F2s9/Uo4CiVLNg4n/tohSEwV59gL8BG6VgxVEBMNWkC3PEFczoXGPA==
+X-Received: by 2002:a17:902:a609:b0:169:a8b:7c3c with SMTP id u9-20020a170902a60900b001690a8b7c3cmr3281133plq.67.1655411957916;
+        Thu, 16 Jun 2022 13:39:17 -0700 (PDT)
+Received: from google.com ([2620:15c:202:201:4709:a407:1ca6:24ea])
+        by smtp.gmail.com with ESMTPSA id jh17-20020a170903329100b00168b9093a06sm2038204plb.243.2022.06.16.13.39.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Jun 2022 13:25:26 -0700 (PDT)
-From: Jernej Skrabec <jernej.skrabec@gmail.com>
-To: ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de
-Cc: mchehab@kernel.org,
-	hverkuil-cisco@xs4all.nl,
-	benjamin.gaignard@collabora.com,
-	nicolas.dufresne@collabora.com,
-	gregkh@linuxfoundation.org,
-	linux-media@vger.kernel.org,
-	linux-staging@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Jernej Skrabec <jernej.skrabec@gmail.com>
-Subject: [PATCH v2 7/7] media: hantro: sunxi: Enable 10-bit decoding
-Date: Thu, 16 Jun 2022 22:25:13 +0200
-Message-Id: <20220616202513.351039-8-jernej.skrabec@gmail.com>
-X-Mailer: git-send-email 2.36.1
-In-Reply-To: <20220616202513.351039-1-jernej.skrabec@gmail.com>
-References: <20220616202513.351039-1-jernej.skrabec@gmail.com>
+        Thu, 16 Jun 2022 13:39:16 -0700 (PDT)
+Date: Thu, 16 Jun 2022 13:39:14 -0700
+From: Brian Norris <briannorris@chromium.org>
+To: Judy Hsiao <judyhsiao@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>, Chen-Yu Tsai <wenst@chromium.org>,
+	alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 3/3] ASoC: dt-bindings: rockchip: Document
+ pinctrl-names for i2s
+Message-ID: <YquU8hN+9ETu8tB2@google.com>
+References: <20220616155836.3401420-1-judyhsiao@chromium.org>
+ <20220616155836.3401420-4-judyhsiao@chromium.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220616155836.3401420-4-judyhsiao@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_132530_378006_35D19EB5 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20220616_133921_603839_02683963 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,61 +90,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Now that infrastructure for 10-bit decoding exists, enable it for
-Allwinner H6.
+On Thu, Jun 16, 2022 at 03:58:36PM +0000, Judy Hsiao wrote:
+> This patch documents pinctrl-names for i2s.
+> 
+> Signed-off-by: Judy Hsiao <judyhsiao@chromium.org>
+> ---
+>  Documentation/devicetree/bindings/sound/rockchip-i2s.yaml | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml b/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
+> index 5ea16b8ef93f..af1069278623 100644
+> --- a/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
+> +++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
+> @@ -61,6 +61,13 @@ properties:
+>            - const: tx
+>            - const: rx
+>  
+> +  pinctrl-names:
+> +    oneOf:
+> +      - const: default
+> +        - items:
 
-Signed-off-by: Jernej Skrabec <jernej.skrabec@gmail.com>
----
- drivers/staging/media/hantro/sunxi_vpu_hw.c | 27 +++++++++++++++++++++
- 1 file changed, 27 insertions(+)
+I'm far from a YAML expert, but I think you have the indentation wrong?
+You want the "const: default" and the "items:" schema to be on the same
+level of indentation, right?
 
-diff --git a/drivers/staging/media/hantro/sunxi_vpu_hw.c b/drivers/staging/media/hantro/sunxi_vpu_hw.c
-index fbeac81e59e1..02ce8b064a8f 100644
---- a/drivers/staging/media/hantro/sunxi_vpu_hw.c
-+++ b/drivers/staging/media/hantro/sunxi_vpu_hw.c
-@@ -23,12 +23,39 @@ static const struct hantro_fmt sunxi_vpu_postproc_fmts[] = {
- 			.step_height = 32,
- 		},
- 	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_P010,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.postprocessed = true,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = 32,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = 32,
-+		},
-+	},
- };
- 
- static const struct hantro_fmt sunxi_vpu_dec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12_4L4,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = 32,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = 32,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_P010_4L4,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
- 		.frmsize = {
- 			.min_width = FMT_MIN_WIDTH,
- 			.max_width = FMT_UHD_WIDTH,
--- 
-2.36.1
+If you haven't already, you might run through the 'make
+dt_binding_check' process.
 
+Brian
+
+> +          - const: bclk_on
+> +          - const: bclk_off
+> +
+>    power-domains:
+>      maxItems: 1
+>  
+> -- 
+> 2.36.1.476.g0c4daa206d-goog
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
