@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAA17C43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 14:56:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE4BEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Jun 2022 14:56:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VzhXLQnG2pxvxBZqtSnjFwWxhBOrbdZBzazyOPpOzms=; b=0mG/SCLdjRyrOI
-	AoN2eh/LIJ4IHht0R7rAkJc9AHoBGVpoH40aLcXSbB+pxQSwQW9uYC7oe6F2CV2ijN4xDhE9ngqmT
-	6rJwzeqtBRhmDlLHxX3IRhMNR1rHq0jr9FXTrEsRiPzTet6rdwymqJrEgGo1ilP9GhNxJZz1J1NUo
-	fmgUMKTAoTyPoBwGZB0GvPraN7GdVnDdDh7+mz+HFG3lHYEnJhckchW9L3qFIXrx4MmhvLQnMNWBN
-	KcRUTL2kfL2C8lWCoSSnlctdLjiq6AN4+rvnEgTHsYgD3etiR791ZuXYI93FiS0Xjp/zPdtmaFlHf
-	95mVF6hf0XOnYzJoaVtw==;
+	List-Owner; bh=WtO8IGALSWrKERk2zMu1v3iCOvfK/M3GYVm61M/QCg4=; b=QOhoTP+HpKVbvk
+	BF5QZlAOH6Z+cbTnWlIOpN44AWuHEzTuFyUGoUVMzBqGs6xrNyYRp6YJ0t9BWlBto6SYT75tgySLF
+	MmDDz4EKXKtt0DwPJ26BtwRR5yk3YtUsuxqgLka7+q932Bsiv/QXNY+W4S38fg1LplnZUn8345LA3
+	5ZiTfUejG5A27MBcA7mXUePx8vkM+adCcQ0YzKswmpxU2XAcoiQFBMmOUcyP9NksTNdrzVmGjP8h5
+	iVwWP94SvPDh/JTtE3rGyWYFxdO52cKYTPV2C309mwBujJZYzrk9B3xoOmGYsnV5styyG8xrM94hF
+	W38YXkZSSEZqJYUt+myA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1quU-0032XU-PY; Thu, 16 Jun 2022 14:55:51 +0000
+	id 1o1qud-0032fT-Pn; Thu, 16 Jun 2022 14:56:00 +0000
 Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o1qu8-00322Q-CE; Thu, 16 Jun 2022 14:55:30 +0000
+	id 1o1qu8-00323B-TC; Thu, 16 Jun 2022 14:55:30 +0000
 Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
-	by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25GBnCaO029573;
-	Thu, 16 Jun 2022 09:34:46 -0500
+	by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25G8o9fa009500;
+	Thu, 16 Jun 2022 09:34:53 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=PODMain02222019;
- bh=4uqNUGf6HvGyrALyQ2b9y5JkJHvBo6YEo+XEvqJ14h8=;
- b=Nl8Sm2FqtQD6JNG+sS9TJicNso+ElW86C0ev+JPA8sRcJcWK/dgS0W/kaI5ZmZKbD6Ot
- 6jQn4ptx2QZY/MvoKulAa3ueKYtJOT2/UkCMdcZmb245cNP+ku/ZfBhLPpHvC+Z9MCPj
- CdhW9gkGMM4ef5abmhtvTQlH32RwyLSL7zFsQj60PFc2BBoqXwwNUOeg63O9szC4inKe
- fVn2pZhO/q0jOVLmX7mOTgpShC9/P/peLzAi9DzNzvZQXozozGkmDQ9g7cUQzgTj8ZDu
- XiThpX8+DsyrMwoi+XMzhynRbwvL9sOBTjZbhOPchDtJrJpHTpB6uGagO6MOdjlkqt1v NA== 
-Received: from ediex01.ad.cirrus.com ([84.19.233.68])
-	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3gmqfq5w3m-8
+ bh=8tSPP1RTMjwN9/fm7e1xi82dPxSMcLxVZ0qD6znQAiU=;
+ b=ZREMjiilmbtSjP/ytOkfU2OKJK1sPvkC04jU3ES7c+EfQ/NwXAF0KsyGIFEGCmMKygsR
+ wg5tr9z13rk7/AU6Pl4hFBKpFEtTRP5JmEEafrlGaHnThnr5+i/f09XlbmjdAx71cWYB
+ HiSuWncG1jrFgnAGx3vm8//RqPdrZZQvXEdy/Wcn7PAugtDhBHdRdMB7XtZSFpncs+QB
+ UxuT9+Mjykli+8MoqKH4nWLOMieobVtkpGDVxM4TnbzK8dTE9figMB6/cgt0bpMp9Yh3
+ mANlsu1SzrHhXFeyAMrfqoUdh9teIwsB0DxpwBV5EjIWEcEnLO4Oy8ODiZ35Qs5fVW0T rw== 
+Received: from ediex02.ad.cirrus.com ([84.19.233.68])
+	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3gmqfq5w3u-8
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
-	Thu, 16 Jun 2022 09:34:45 -0500
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 16 Jun 2022 09:34:52 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
+ (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Thu, 16 Jun
- 2022 15:34:34 +0100
+ 2022 15:34:36 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.28 via Frontend
- Transport; Thu, 16 Jun 2022 15:34:34 +0100
+ Transport; Thu, 16 Jun 2022 15:34:36 +0100
 Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
-	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 01C9711D3;
-	Thu, 16 Jun 2022 14:34:34 +0000 (UTC)
+	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id C298B11DA;
+	Thu, 16 Jun 2022 14:34:36 +0000 (UTC)
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
@@ -68,19 +68,19 @@ CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
         <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>,
         <dri-devel@lists.freedesktop.org>,
         <linux-rpi-kernel@lists.infradead.org>
-Subject: [PATCH 51/96] ASoC: es*: Remove now redundant non_legacy_dai_naming flag
-Date: Thu, 16 Jun 2022 15:33:44 +0100
-Message-ID: <20220616143429.1324494-52-ckeepax@opensource.cirrus.com>
+Subject: [PATCH 85/96] ASoC: lochnagar: Remove now redundant non_legacy_dai_naming flag
+Date: Thu, 16 Jun 2022 15:34:18 +0100
+Message-ID: <20220616143429.1324494-86-ckeepax@opensource.cirrus.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220616143429.1324494-1-ckeepax@opensource.cirrus.com>
 References: <20220616143429.1324494-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-X-Proofpoint-ORIG-GUID: I9KB3elWZPkIUzwXFnmB6Nu8V3J30hQk
-X-Proofpoint-GUID: I9KB3elWZPkIUzwXFnmB6Nu8V3J30hQk
+X-Proofpoint-ORIG-GUID: CQhjCtEelBg-Ip53g70SpnvrDeSHBSET
+X-Proofpoint-GUID: CQhjCtEelBg-Ip53g70SpnvrDeSHBSET
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220616_075528_610928_D53DA4AD 
-X-CRM114-Status: GOOD (  12.81  )
+X-CRM114-CacheID: sfid-20220616_075529_152260_0F0F4225 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,60 +103,21 @@ the non_legacy_dai_naming flag.
 
 Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 ---
- sound/soc/codecs/es7134.c | 1 -
- sound/soc/codecs/es7241.c | 1 -
- sound/soc/codecs/es8316.c | 1 -
- sound/soc/codecs/es8328.c | 1 -
- 4 files changed, 4 deletions(-)
+ sound/soc/codecs/lochnagar-sc.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/sound/soc/codecs/es7134.c b/sound/soc/codecs/es7134.c
-index f443351677dfe..f5150d2f95da6 100644
---- a/sound/soc/codecs/es7134.c
-+++ b/sound/soc/codecs/es7134.c
-@@ -213,7 +213,6 @@ static const struct snd_soc_component_driver es7134_component_driver = {
- 	.idle_bias_on		= 1,
- 	.use_pmdown_time	= 1,
- 	.endianness		= 1,
--	.non_legacy_dai_naming	= 1,
+diff --git a/sound/soc/codecs/lochnagar-sc.c b/sound/soc/codecs/lochnagar-sc.c
+index 54a8ba7ed3c20..13fbd8830b09f 100644
+--- a/sound/soc/codecs/lochnagar-sc.c
++++ b/sound/soc/codecs/lochnagar-sc.c
+@@ -217,7 +217,6 @@ static const struct snd_soc_component_driver lochnagar_sc_driver = {
+ 	.dapm_routes = lochnagar_sc_routes,
+ 	.num_dapm_routes = ARRAY_SIZE(lochnagar_sc_routes),
+ 
+-	.non_legacy_dai_naming = 1,
+ 	.endianness = 1,
  };
  
- static struct snd_soc_dai_driver es7154_dai = {
-diff --git a/sound/soc/codecs/es7241.c b/sound/soc/codecs/es7241.c
-index 0baa86241cf93..339553cfbb48e 100644
---- a/sound/soc/codecs/es7241.c
-+++ b/sound/soc/codecs/es7241.c
-@@ -232,7 +232,6 @@ static const struct snd_soc_component_driver es7241_component_driver = {
- 	.num_dapm_routes	= ARRAY_SIZE(es7241_dapm_routes),
- 	.idle_bias_on		= 1,
- 	.endianness		= 1,
--	.non_legacy_dai_naming	= 1,
- };
- 
- static void es7241_parse_fmt(struct device *dev, struct es7241_data *priv)
-diff --git a/sound/soc/codecs/es8316.c b/sound/soc/codecs/es8316.c
-index 4407166bb3388..eb15be9095e77 100644
---- a/sound/soc/codecs/es8316.c
-+++ b/sound/soc/codecs/es8316.c
-@@ -769,7 +769,6 @@ static const struct snd_soc_component_driver soc_component_dev_es8316 = {
- 	.num_dapm_routes	= ARRAY_SIZE(es8316_dapm_routes),
- 	.use_pmdown_time	= 1,
- 	.endianness		= 1,
--	.non_legacy_dai_naming	= 1,
- };
- 
- static const struct regmap_range es8316_volatile_ranges[] = {
-diff --git a/sound/soc/codecs/es8328.c b/sound/soc/codecs/es8328.c
-index dd53dfd87b04e..160adc706cc69 100644
---- a/sound/soc/codecs/es8328.c
-+++ b/sound/soc/codecs/es8328.c
-@@ -844,7 +844,6 @@ static const struct snd_soc_component_driver es8328_component_driver = {
- 	.idle_bias_on		= 1,
- 	.use_pmdown_time	= 1,
- 	.endianness		= 1,
--	.non_legacy_dai_naming	= 1,
- };
- 
- int es8328_probe(struct device *dev, struct regmap *regmap)
 -- 
 2.30.2
 
