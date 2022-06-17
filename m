@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8D62C43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jun 2022 12:00:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F93C43334
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jun 2022 12:00:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c5w9U1iB3pNrFsqkT++YSdMLiSVPj74x8QrRkVDnXtM=; b=TAx1ANZ4u62t0a
-	kRUeBD5PxW90tLImkq4NfsutS8OH/ntAgCG/SQYNp7K7b/D0DXr+Ar/un2FgQY4HBUJccRmKiyowA
-	L5Kg0/3gHZATJwmGqRqzy4cu21qNAiGWO5PObMLH6NaVoZogb8qyfYTJN7GtDsaWqwi+rYn+34r79
-	U0JtRchMTfyKQLYbLY8DCP84mu5VkwfTZty9ej/d9fk6NsjG942NDoE3wUcALLBzV8l8jwXvEiuKp
-	k5BCRE6oIgHUODPfaFpijiOD9kZ7Zje5YpnjzorFD0cIwuLjHITR2SDWqkdYzJ9wqVwLULMJ8luYB
-	4VCZAn59X0m9hE8EbG5g==;
+	List-Owner; bh=fwGAAGGdLHchDUugHEfS2ZCmiXHsp9Rsgx8BQ925No4=; b=lm/fwai2Uvu8+p
+	kKoSuAjsbJ4JCwFakMz5QaEUjXNYhkpLfd7YZIOy8l9rFeQaTRZwZj22PSE4k44Dba0OnGzOvDD0C
+	tKtney8EZ4EX6nvxF96kNaMY1zY6hpKhxGLC/036X4bf9DZWNagURBiw06Nt2Lsr12Cb/bRGJkOdl
+	YiL14mRvNdtw0ffKAmQHV7d0jBla2BxNpYAEdWYdX4s73PXPc8w283g3DrK1txa9H9o9M94b7t8Pe
+	VFaXw4oVxi602Q8z2fD+qBo5tAVNDx1xumwF9XaL+UoZGphathhgk/4LLHLNO26XAa+aKGmX9kXh1
+	5lGGx7bAs84hs5H1vi9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2Adr-007Vpg-8y; Fri, 17 Jun 2022 11:59:59 +0000
+	id 1o2Ae9-007W2e-R6; Fri, 17 Jun 2022 12:00:17 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2AcU-007Uz4-Du; Fri, 17 Jun 2022 11:58:34 +0000
+	id 1o2AcU-007UzA-Mg; Fri, 17 Jun 2022 11:58:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=pD+aiRV73CLHlkRFdtcrCiiY/Hsz9hpciHAoVHeRQOA=; b=jV1G1vs9eI+Fwfij6sBojhw6Kn
-	akMwMchm+tTC3M+FkiDSeSnYHT5oH7TN2hFC82F9lf4hsV9KEnf4tdPIAeglm+APYy+mGawpH+KU2
-	YcbbDaPPZPE0pVETYZ0j90NttVbUv/9WdqY3EUpkvpL3frzwkmNEcY5lmVBF0ad1JT+dfWfCMs8/k
-	zzDIhwNlV5BCWsfrhJ+uqwlZyDtASmXMwzX/91p6zrg4rQv6gX7BJedopto0oabDS7cxMoKFna5QJ
-	lZVAStPUZMxCyURwZexDf7uBQFCEvh9tPcHWm2xdxonSW2TMcPQ5LmWgV46q7UKc0IUmDEJ8uMN0e
-	d61iEZ8w==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	bh=3uw9DTlVlL/3p2zPOPmNWGMTwEFie9pHBKmiA6Ivfi0=; b=ObT96/fXaOgdBDiXd0Wp4tmIIt
+	xxhsK8MizBP7xxGoSHvIw4tYNQstxLjHywrerqwQbMaJ3aSgUDswtVJmRg+NcHPnQEhTuQ/uDhM5j
+	0vB0+7wSUbZM6Z520HignKaGBsi7zBSCecILFaVNQOM/P42TW9PViAjOVW16EZSCDe2AK1D86uStq
+	94xqS/qmQ4470X0BBf/8clea30LwVdNJnjuyvWOidSrITWoDosMEGb+VyFC/pueMd3vz165yttKfM
+	8TXZRg+O/ZyFJTtLwV/UqK0rDH64YcLo2t7ITWipuqcUSXw8FDnJesutM1ujzKHtSIN1/WqyKg4oI
+	TvlbtC+g==;
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2AcH-008g13-G5; Fri, 17 Jun 2022 11:58:31 +0000
+	id 1o2AcH-008g12-GB; Fri, 17 Jun 2022 11:58:31 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:faf2:1a12:f903:cc5e])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 958D3660183F;
-	Fri, 17 Jun 2022 12:58:14 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E532F660182B;
+	Fri, 17 Jun 2022 12:58:13 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655467095;
-	bh=Bi9ZgazJJwK+UkLeBW4Jrqy71/5gwlYkkwpr++kSPkE=;
+	s=mail; t=1655467094;
+	bh=fxXI7c8YXJnT7vm+g7u/aQWMuoQ0IJrsBIzhoiD/xMM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=A6NLed4jxlXHDJPD/q4xzy1Fl7/Bqux8fDkPtfQqt3OTbEmyg4aKG3s2xWyB6cRLY
-	 QlZW2trGVdOF/x2dTMvEYIMCKKcVT/TX2AzPUr6p7neNVfqOdSLZ3EdVon9Yw7ivwe
-	 y+xAHhMRyMxupaPm6VyvGapLJ9PNDuMNlp3DFvvNoBz8gLx2gVCdoqdvCDWSc7OD/r
-	 NCesnf18jXkKzrQ09TVqWylBbdEXFZzoakQUodTkexabf+na8RuWQaTQKJV5BUNOFM
-	 Jh8ra96L+qdOPpSNLfENziK7H/aCewUCmlP6sbRroEzGiv41iGe3+WE1+2gxvzOFPZ
-	 MkcefIlVFHb+Q==
+	b=WHiyH0jeRJY0lzGPOQRJdYu8CI0pnfTp42+8SfKodfAfvThdlVQMp5r36uFQq8KcO
+	 IODu9Q6+r6a8D0X5cBPa9XkSSyAkwteXz03/F/5iAvSp0WYK6fi9KRhz5kpxKFJrJQ
+	 2gAQMEpdKFXYN2JQcaCl3oGAkQGcio3L1XJ3oucSieTzOt1g4NyvBqqydvylUhwt32
+	 hRq+LagLJIGGUL1YuLziWG85CdL8HpR1/3i7OvgK5nf3jh8M1GaS2MzoMzYWxWK3Yn
+	 Cg39tZbklkbA14PwW4c6/K5nQhS5XH3bSLNresaPWkIJV+QqWl7QbQAzbTomsDb3xK
+	 dPmGYQi84EmbA==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -75,16 +75,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH 6/7] media: hantro: imx8m: Enable 10bit decoding
-Date: Fri, 17 Jun 2022 13:58:01 +0200
-Message-Id: <20220617115802.396442-7-benjamin.gaignard@collabora.com>
+Subject: [PATCH 5/7] media: Hantro: HEVC: Allows 10-bit bitstream
+Date: Fri, 17 Jun 2022 13:58:00 +0200
+Message-Id: <20220617115802.396442-6-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220617115802.396442-1-benjamin.gaignard@collabora.com>
 References: <20220617115802.396442-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_125823_679686_0A9843F6 
-X-CRM114-Status: UNSURE (   8.05  )
+X-CRM114-CacheID: sfid-20220617_125823_740009_07212543 
+X-CRM114-Status: UNSURE (   9.72  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,57 +102,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Expose 10bit pixel formats to enable 10bit decoding in IMX8M SoCs.
+Stop limiting HEVC support to 8-bits bitstreams also
+accept 10-bits bitstreams.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 ---
- drivers/staging/media/hantro/imx8m_vpu_hw.c | 27 +++++++++++++++++++++
- 1 file changed, 27 insertions(+)
+ drivers/staging/media/hantro/hantro_hevc.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/imx8m_vpu_hw.c b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-index 77f574fdfa77..b390228fd3b4 100644
---- a/drivers/staging/media/hantro/imx8m_vpu_hw.c
-+++ b/drivers/staging/media/hantro/imx8m_vpu_hw.c
-@@ -162,12 +162,39 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
- 			.step_height = MB_DIM,
- 		},
- 	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_P010,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.postprocessed = true,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
- };
+diff --git a/drivers/staging/media/hantro/hantro_hevc.c b/drivers/staging/media/hantro/hantro_hevc.c
+index e06837108a09..85688a4df166 100644
+--- a/drivers/staging/media/hantro/hantro_hevc.c
++++ b/drivers/staging/media/hantro/hantro_hevc.c
+@@ -159,8 +159,8 @@ int hantro_hevc_validate_sps(struct hantro_ctx *ctx, const struct v4l2_ctrl_hevc
+ 	if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
+ 		/* Luma and chroma bit depth mismatch */
+ 		return -EINVAL;
+-	if (sps->bit_depth_luma_minus8 != 0)
+-		/* Only 8-bit is supported */
++	if (sps->bit_depth_luma_minus8 != 0 && sps->bit_depth_luma_minus8 != 2)
++		/* Only 8-bit and 10-bit is supported */
+ 		return -EINVAL;
  
- static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12_4L4,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = TILE_MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = TILE_MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_P010_4L4,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
- 		.frmsize = {
- 			.min_width = FMT_MIN_WIDTH,
- 			.max_width = FMT_UHD_WIDTH,
+ 	ctx->bit_depth = sps->bit_depth_luma_minus8 + 8;
 -- 
 2.32.0
 
