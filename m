@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDD34C43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jun 2022 23:13:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 565E9C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jun 2022 23:15:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HRNzcQgrttZZHiMwGEADgKFtMqrJKFdanyvZ3HTPvt8=; b=EPjB5v4jI0+RrV
-	fs8dcEabxEgGtjF2qrWKmdEDSSQ7lcvQ+1SenEcy5eYpKeSKkgOF68jWEZw8jQcK4ZeTwtmfnt7UQ
-	K5FM9IIHGrMJQ6J6fMi3YQMfIJsCa+Q+ptU3+YJkLX9YNvS446mdBgdq8BvK4Wqgw9BE3YodnyalP
-	DdaJSSRfLPrnKHHgdztb21Ho939wI7b0H2/mLTr6V8GzTkBMs4+Dtc9wdjr1BXREHGHQ27RJtiKBF
-	ZHFBKAONY5yBvPZo5SIXMo0tI2bzW9juX5J5ZZSn18jutvejM4OBezVPVJgGLf9oiAu65QtDBTBpA
-	5XLuF43HBIPRJeNXbCTg==;
+	List-Owner; bh=6DwWYGK7pKLC0pN09X4NYDhbjjP8WlnUEgYjCxPP/iE=; b=SHFerifF0xEbdY
+	9iT8sXPdAIb9RwA4693y4V4XplQfioyEfZ5xN7Tu06ksCEabqN3/Mo79Z7/22jIG6VQK9dbHHPCXa
+	jZvLr3UjYMnK4DgsBqcJZYH9GvBRn6XEQsGw6WvATot6xxLk9vEkSky1ljjxF8b6j4zjxg3GZBZGv
+	/kNnkxXxzqMSRlzthmiOok2Mm38cwJ+rMsqUe6lGI8Q4mZKQdgycVrPL4a0DYUaSXnbIIGVNB9N5f
+	nUkdfYHnVnuPKpdhug8BrCqvcDeQQtp8IDfuGAQg3gjbCRoDzQ9u8YRJCBvrkbdGtqG5ufP3rcZzq
+	PKzjfirl983hD79Qztqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2L9v-009YeN-I0; Fri, 17 Jun 2022 23:13:47 +0000
+	id 1o2LBG-009ZBi-B9; Fri, 17 Jun 2022 23:15:10 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2L9s-009Ycr-Bk
-	for linux-rockchip@lists.infradead.org; Fri, 17 Jun 2022 23:13:45 +0000
+	id 1o2LBC-009ZAl-Pu
+	for linux-rockchip@lists.infradead.org; Fri, 17 Jun 2022 23:15:08 +0000
 Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 2CE0A383;
-	Sat, 18 Jun 2022 01:13:42 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 44190383;
+	Sat, 18 Jun 2022 01:15:05 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1655507622;
-	bh=BEv2PbaEUPQo9bvkksfi8QV6k0alhwbvIm6SPMBY9XU=;
+	s=mail; t=1655507705;
+	bh=2n3ALDFlvoHMdw9w95WQCuY0GmjWJ6auY7Iv7AAuQYU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hrhUXljWBHXsXG7zbfP4livkIWbll3y7WBIwqeCikQUtx/PmmeUzMbvxnD3pNffKc
-	 Hl01NNXOsUxmkyLfn3zLexMVrfz1gkVlb5QmUasZg16OZRkXF1iF6w5Wv139ig8SD/
-	 JeoBE33L/R4k+Ai9MiZqyPOcepEC4IgmCPG6ydWo=
-Date: Sat, 18 Jun 2022 02:13:30 +0300
+	b=P6KxT538bjwQOtilo7gmsunKTH0/5mfuFZxp8tXIlz3xbIFlcRHZHl9BP6pNPgzSL
+	 +lpdxKfqv+YooY9VwHn5n4Gpf+FtB9PJ34GrA18ykxjNKnFuKTxdZ3qj7CtS5/emBJ
+	 feJZCKOK1NKMXmru4OTUCVbvqHtp6F0g2C6JcQuQ=
+Date: Sat, 18 Jun 2022 02:14:53 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Paul Elder <paul.elder@ideasonboard.com>
 Cc: linux-media@vger.kernel.org, dafna@fastmail.com, heiko@sntech.de,
 	jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
 	djrscally@gmail.com, helen.koike@collabora.com,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 43/55] dt-bindings: media: rkisp1: Add port for parallel
- interface
-Message-ID: <Yq0Kmu/tL8imjlZr@pendragon.ideasonboard.com>
+Subject: Re: [PATCH 47/55] dt-bindings: media: rkisp1: Add i.MX8MP ISP to
+ compatible
+Message-ID: <Yq0K7TZB3jWsOa2q@pendragon.ideasonboard.com>
 References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
- <20220614191127.3420492-44-paul.elder@ideasonboard.com>
+ <20220614191127.3420492-48-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220614191127.3420492-44-paul.elder@ideasonboard.com>
+In-Reply-To: <20220614191127.3420492-48-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_161344_601743_32BB885E 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20220617_161507_044387_C1C77B60 
+X-CRM114-Status: GOOD (  15.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,53 +73,45 @@ Hi Paul,
 
 Thank you for the patch.
 
-On Wed, Jun 15, 2022 at 04:11:15AM +0900, Paul Elder wrote:
-> The rkisp1 can take an input on the parallel interface. Add a port for
-> it, and update the required field. At least one port is required, and
-> both may be specified.
+On Wed, Jun 15, 2022 at 04:11:19AM +0900, Paul Elder wrote:
+> The i.MX8MP ISP is compatbile with the rkisp1 driver. Add it to the list
+> of compatible strings. While at it, expand on the description of the
+> clocks to make it clear which clock in the i.MX8MP ISP they map to,
+> based on the names from the datasheet (which are confusing).
 > 
 > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
 
 Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
 > ---
->  .../bindings/media/rockchip-isp1.yaml         | 23 +++++++++++++++++--
->  1 file changed, 21 insertions(+), 2 deletions(-)
+>  Documentation/devicetree/bindings/media/rockchip-isp1.yaml | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
 > 
 > diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-> index d1489b177331..b3661d7d4357 100644
+> index b3661d7d4357..95cf945f7ac5 100644
 > --- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 > +++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-> @@ -84,8 +84,27 @@ properties:
->                  minItems: 1
->                  maxItems: 4
+> @@ -16,6 +16,7 @@ description: |
+>  properties:
+>    compatible:
+>      enum:
+> +      - fsl,imx8mp-isp
+>        - rockchip,px30-cif-isp
+>        - rockchip,rk3399-cif-isp
 >  
-> -    required:
-> -      - port@0
-> +      port@1:
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: connection point for input on the parallel interface
-> +
-> +        properties:
-> +          bus-type:
-> +            enum: [5, 6]
-> +
-> +          endpoint:
-> +            $ref: video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +
-> +        required:
-> +          - bus-type
-> +
-> +    anyOf:
-> +      - required:
-> +          - port@0
-> +      - required:
-> +          - port@1
+> @@ -36,9 +37,9 @@ properties:
+>      minItems: 3
+>      items:
+>        # isp0 and isp1
+> -      - description: ISP clock
+> -      - description: ISP AXI clock
+> -      - description: ISP AHB clock
+> +      - description: ISP clock (for imx8mp, clk)
+> +      - description: ISP AXI clock (for imx8mp, m_hclk)
+> +      - description: ISP AHB clock (for imx8mp, hclk)
+>        # only for isp1
+>        - description: ISP Pixel clock
 >  
->  required:
->    - compatible
 
 -- 
 Regards,
