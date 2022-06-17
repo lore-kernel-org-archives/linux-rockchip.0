@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA534C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jun 2022 12:05:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9A46C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jun 2022 12:46:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RmISGd4sHzVYYaP14eb89iTR2iB8IGQzQvTmUSCEGhM=; b=1wewjtEAvy07lT
-	QJu2sDWVLop9pra5YNf0kVHjs0DAybYK9ceDVHkQEjdceVtzFviy7j6OKUW4G8MzGqdb9s0zBF3w5
-	gPgupOOEXVe8W3MLb2THbSc5hjYj+vKjfP6LvLb2eCV6m3wUQD0Pu6LyExTQViKUMOwOOz4ROiJ0t
-	rqDIcSOXj8qnIl+DBpAIjUnu6Kwomv8ypeT1qH1j26UYrKocL4wP9pWV87KnxH22X3CWrcMfDuHrL
-	dLwP/ga12OFpo+1Xral4MwJ1Ag1C9E7/HOxBYg0BI2oXQCTPpOs1eUppi7sXSHeBxSVHByE0wdta6
-	okwcDaAZ6ambKkqu0Pcg==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CaHcqAn85sdu4+W2SZPbToTm98tx1q/A165rBGhoIAk=; b=QuGAp97rDjnFZN9o7TVzPuPGSg
+	HonCGk6sUURx76Uac0Y0Ws0knZq92bob5WY0Z3HKl6cjkh5kZ9uyWATs6kyiZJxboK8EezayMhPVr
+	pthxRM4a39UIWtiMliy4oMnEwGDlrKV/+L8ETBftx3G5uIWaXpsGIdD/FR04vaZL+gSPlfjauGr4w
+	RBsSIHgkdaJOs4Kjgu/dm4HWLyLpUxamVkemLiXAoB9hZLpGNqeQRzBuOHP1g+k9x5mYPwhdfG9mg
+	aZXyzhvBdZVpWO/EX87HVm2U9oL5wsibN3bl8Nrt+DvdzlMxml4CSubu8wSif37MooQRtsPBrdexj
+	+glvubmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2Ait-007YEs-Ry; Fri, 17 Jun 2022 12:05:11 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o2BMW-007gPo-Hb; Fri, 17 Jun 2022 12:46:08 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2Aia-007Y7K-6v; Fri, 17 Jun 2022 12:04:53 +0000
-Received: from [IPV6:2a01:e0a:120:3210:faf2:1a12:f903:cc5e] (unknown [IPv6:2a01:e0a:120:3210:faf2:1a12:f903:cc5e])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1o2APk-007Pix-8I; Fri, 17 Jun 2022 11:45:25 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 57E84660179A;
-	Fri, 17 Jun 2022 13:04:50 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1655467490;
-	bh=9LT9TBmpX+iklRTLTEkirvb5pG6BvIzQn9IYxu2sTaw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NyJ3FZJq1G1P2Gl7/FhAwV7gF4sq+eOFpT62CN+8ZaTweGSe7f/u8//yPqBwvLmyY
-	 nepzxZmDcbjFrbQSWrRGnx8uxyV+ZK0xB2MRnA172wWAX+kmxk3Rvuwh8C//cpYWwk
-	 iL4OPgwfYE2uTtDrl3mmlQmrxow4Z4QtGlG8XOG0LfQzf3KTON6BAEMM5EkNZTsfWK
-	 94+7C0CL+bzU+Jx+faW0V3bqDZKymVLud1zjEjDSFLTqxZ7OGoMePB2SjKz2p6lDNz
-	 jPlW3YTbxRlLz2gey+pscn0n4ZzXQKoTr34W5lsN0qF1BJfSi7v3ct+J5WcFZC0FUS
-	 29DL/ZJIr9MIA==
-Message-ID: <5ad90377-a9b1-f73a-e15b-ae553202f2a8@collabora.com>
-Date: Fri, 17 Jun 2022 14:04:48 +0200
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9CC2D61E31;
+	Fri, 17 Jun 2022 11:45:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9898DC3411B;
+	Fri, 17 Jun 2022 11:45:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1655466323;
+	bh=G02EHsP0i0hcRdjLFNd0iVg8HQg/SfUQ/ToemVQl0rE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=mgqIzxXuf+ImZ4rEI3dxKP09dcoIV8IiXHXBXN/k0t56pc6yCwEg3N/KK1HII5Gsp
+	 XRN+yN3qdfqaTZ4bKG6acyLDhwQlav7x8as3HOsA4JC0QMSrKZ0942b/KADOey6suN
+	 37hagpMtaEunJPklqJSGldFvBP87RfrTk2xLWU0vZ0qU87BHq8bRBpq1tXestMvyAt
+	 hdLic6IPyk3hNXUcL9Qxq2BRHx5Q6VF1LsUXRmzV1SyIvHshV99/Y+RGnvOkgLVKws
+	 9d5VP/UAAuwc8hvhy4wR0S8JLfeoJYhvxTHEsqtetcvk0gT/O2ZarZnYVXP0VOnpKR
+	 KM95Xhnstdlmg==
+Date: Fri, 17 Jun 2022 12:45:18 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Jon Lin <jon.lin@rock-chips.com>
+Cc: heiko@sntech.de, linux-spi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] spi: rockchip: Disable local irq when pio write out of
+ interrupt service
+Message-ID: <YqxpTqvaQb4cohTh@sirena.org.uk>
+References: <20220613092744.9726-1-jon.lin@rock-chips.com>
+ <YqcveggUU7yaXuk1@sirena.org.uk>
+ <b97ee70c-70ee-6b15-65d6-a176125dcfd8@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v2 0/7] media: hantro: Add 10-bit support
-Content-Language: en-US
-To: Jernej Skrabec <jernej.skrabec@gmail.com>, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de
-Cc: mchehab@kernel.org, hverkuil-cisco@xs4all.nl,
- nicolas.dufresne@collabora.com, gregkh@linuxfoundation.org,
- linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20220616202513.351039-1-jernej.skrabec@gmail.com>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <20220616202513.351039-1-jernej.skrabec@gmail.com>
+In-Reply-To: <b97ee70c-70ee-6b15-65d6-a176125dcfd8@rock-chips.com>
+X-Cookie: 98% lean.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_050452_402129_D38E480C 
-X-CRM114-Status: GOOD (  15.68  )
+X-CRM114-CacheID: sfid-20220617_044524_413639_FE5A422C 
+X-CRM114-Status: GOOD (  20.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,47 +70,82 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============4760120424006813001=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDE2LzA2LzIwMjIgw6AgMjI6MjUsIEplcm5laiBTa3JhYmVjIGEgw6ljcml0wqA6Cj4gVGhp
-cyBzZXJpZXMgYWRkcyBzdXBwb3J0IGZvciAxMC1iaXQgZm9ybWF0IGhhbmRsaW5nIGluIEhhbnRy
-byBkcml2ZXIuCj4gTW9zdCBwYXRjaGVzIGFkanVzdCBwb3N0cHJvYyBiZWhhdmlvdXIgdG8gYmUg
-bW9yZSB1bml2ZXJzYWwuIFRoZXJlIGlzCj4gYSBsb3Qgb2YgYXNzdW1wdGlvbnMsIHdoaWNoIG5l
-ZWQgdG8gYmUgcmVwbGFjZWQgd2l0aCBtb3JlIGdlbmVyYWxpemVkLgo+Cj4gVGVzdGVkIG9uIEFs
-bHdpbm5lciBINi4gVGVzdGVkIHdpdGggdnA5Mi0yLTIwLTEwYml0LXl1djQyMC53ZWJtIHNhbXBs
-ZSwKPiB3aGljaCBwcm9kdWNlcyBjb3JyZWN0IGNoZWNrc3VtLgo+Cj4gUGxlYXNlIHRha2UgYSBs
-b29rLgoKSSBoYXZlIHNlbmQgYSBjb21wbGVtZW50YXJ5IHNlcmllcyB0byB0aGlzIG9uZSB0byBl
-bmFibGUgMTAtYml0CmZvciBIRVZDIG9uIEhhbnRyby9HMiBvbiBJTVg4TVEuCldpdGggdGhlc2Ug
-dHdvIHBhdGNoc2V0IEknbSBhYmxlIHRvIGRlY29kZSBhbGwgdGhlIDEwLWJpdCBjb25mb3JtYW5j
-ZQp0ZXN0IGZpbGVzLgoKRm9yIHRoaXMgc2VyaWVzOgpUZXN0ZWQtYnk6IEJlbmphbWluIEdhaWdu
-YXJkIDxiZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEuY29tPgoKPgo+IEJlc3QgcmVnYXJkcywK
-PiBKZXJuZWoKPgo+IENoYW5nZXMgZnJvbSBSRkM6Cj4gLSBmaXhlZCB0eXBvIGluIGZ1bmN0aW9u
-IG5hbWUKPiAtIHJlbW92ZWQgbWVyZ2VkIHBhdGNoIChQMDEwIGZvcm1hdCkKPiAtIHJlbW92ZWQg
-YnJva2VuIHBhdGNoIChzdW54aSBmcmVxdWVuY3kgY2hhbmdlKQo+IC0gYWRkZWQgbmV3IHBhdGNo
-IChtZWRpYTogaGFudHJvOiBwb3N0cHJvYzogUHJvcGVybHkgY2FsY3VsYXRlIGNocm9tYSBvZmZz
-ZXQpCj4gLSBhZGRlZCByLWIgZnJvbSBFemVxdWllbAo+Cj4gRXplcXVpZWwgR2FyY2lhICgxKToK
-PiAgICBtZWRpYTogQWRkIFAwMTAgdGlsZWQgZm9ybWF0Cj4KPiBKZXJuZWogU2tyYWJlYyAoNik6
-Cj4gICAgbWVkaWE6IGhhbnRybzogU3VwcG9ydCBmb3JtYXQgZmlsdGVyaW5nIGJ5IGRlcHRoCj4g
-ICAgbWVkaWE6IGhhbnRybzogcG9zdHByb2M6IEZpeCBidWZmZXIgc2l6ZSBjYWxjdWxhdGlvbgo+
-ICAgIG1lZGlhOiBoYW50cm86IHBvc3Rwcm9jOiBGaXggbGVnYWN5IHJlZ3MgY29uZmlndXJhdGlv
-bgo+ICAgIG1lZGlhOiBoYW50cm86IHBvc3Rwcm9jOiBQcm9wZXJseSBjYWxjdWxhdGUgY2hyb21h
-IG9mZnNldAo+ICAgIG1lZGlhOiBoYW50cm86IFN0b3JlIFZQOSBiaXQgZGVwdGggaW4gY29udGV4
-dAo+ICAgIG1lZGlhOiBoYW50cm86IHN1bnhpOiBFbmFibGUgMTAtYml0IGRlY29kaW5nCj4KPiAg
-IGRyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItY29tbW9uLmMgICAgICAgICB8ICAxICsKPiAg
-IGRyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItaW9jdGwuYyAgICAgICAgICB8ICAxICsKPiAg
-IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvLmggICAgICAgICB8ICA0ICsrCj4g
-ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19kcnYuYyAgICAgfCAyMyArKysr
-KysrKysKPiAgIC4uLi9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJfdnA5X2RlYy5jICB8
-ICA4IC0tLQo+ICAgLi4uL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19wb3N0cHJvYy5jICAg
-IHwgMzggKysrKysrKysrKystLS0KPiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFu
-dHJvX3Y0bDIuYyAgICB8IDUwICsrKysrKysrKysrKysrKysrLS0KPiAgIGRyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS9oYW50cm8vaGFudHJvX3Y0bDIuaCAgICB8ICAzICsrCj4gICBkcml2ZXJzL3N0YWdp
-bmcvbWVkaWEvaGFudHJvL3N1bnhpX3ZwdV9ody5jICAgfCAyNyArKysrKysrKysrCj4gICBpbmNs
-dWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmggICAgICAgICAgICAgICAgfCAgMSArCj4gICAxMCBm
-aWxlcyBjaGFuZ2VkLCAxMzYgaW5zZXJ0aW9ucygrKSwgMjAgZGVsZXRpb25zKC0pCj4KCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============4760120424006813001==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="CLGvc6v7On6xFTSG"
+Content-Disposition: inline
+
+
+--CLGvc6v7On6xFTSG
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Jun 17, 2022 at 02:24:10PM +0800, Jon Lin wrote:
+> On 2022/6/13 20:37, Mark Brown wrote:
+> > On Mon, Jun 13, 2022 at 05:27:44PM +0800, Jon Lin wrote:
+
+> > > +	spin_unlock_irqrestore(&rs->lock, flags);
+
+> > So this is effectively just disabling interrupts during PIO, there's no
+> > other users of the lock which is rather heavyweight.  What's the actual
+> > issue here?  We should also have something saying what's going on in the
+> > code since right now the lock just looks redundant.
+
+> For lock: In order to avoid special situations, such as when the CPU
+> frequency drops to close to the IO rate, the water line interrupt is
+> triggered during FIFO filling (triggered by other CPUs), resulting in
+> critical resources still not being protected in place. For local IRQ
+
+So essentially we're so slow in filling the FIFO when starting a
+transfer that the interrupt triggers in the middle of the initial FIFO
+fill?  Something that tricky *really* needs a comment adding.
+
+Ideally we'd just leave the interrupt masked until the FIFO is filled
+though, looking at the driver I see that there is an interrupt mask
+register which seems to have some level of masking available and I do
+note that in rockchip_spi_prepare_irq() we unmask interrupts before we
+start filling the FIFO rather than afterwards.  Would reversing the
+unmask order there address the issue more cleanly?
+
+> disable: Turning off the local interrupt is mainly to prevent the CPU
+> schedule from being interrupted when filling FIFO.
+
+If it were just this then there's preempt_disable(), but what's the
+problem with being preempted during the FIFO fill?
+
+--CLGvc6v7On6xFTSG
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmKsaU0ACgkQJNaLcl1U
+h9B+Lgf/aLgqdBeHId+v7ymWQ/Ek1vdJ2rjI0CAdGbF8OAmLPqjmOXm8neX8rAJc
+OSrQaiXEUmHSsWanCg2AuyX2kQ++TDePT55bA1wCTMwR8ICHSdK6GbdQaxUg7hk3
+H2uyaPCZWr9bEsH0xM2//kgl26MqQ1PZhO/rirE+E3OHi0AOjeX/wSipAOn/X6+4
+YNz/UW3cvbYWO+Oa8Lz5m2AB56Med0qOswwl65jp/jyF9f16UuwUfEyCbdY469/m
+yUpz2PdongU1+0DVlaB8a4nUsUlOCENQzYmy+aPVIRp888Tbz4OYBq9ISjbPY2zU
+WIleNV4RTnqq6TcM6o3thBpkJGuW/w==
+=fIJJ
+-----END PGP SIGNATURE-----
+
+--CLGvc6v7On6xFTSG--
+
+
+--===============4760120424006813001==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4760120424006813001==--
+
