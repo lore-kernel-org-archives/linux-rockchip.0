@@ -4,76 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B21A2C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jun 2022 21:08:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B184C43334
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jun 2022 21:34:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vap/RObWJ9zJ7YtVsr0uydwAx2qEg9YPsGBsUK8+6WM=; b=D/rYn0iSKyOq/4
-	AecTUl9wG58rIiNj2pa60dGMLI9fdWK3UBWg59lQkQFnpdZruSPqtFCls7S+bDmtRcpWC/nUD0a3w
-	JLmGGs5F4ceJ84RZovqD3EoQeoCCR6VNYq3Q9kC083HfvppeRAfoLcyVVjqTit2HMMY/crUZSEd3c
-	QaqDkQ59TB0pRHwLWfcSn68dMfry01tejlhfG0o9C12sdXT6m/kDGW9qpRu+M/y9LkHjZOrWvoAXE
-	+if/K6wwlGmUWPVV8IxSjsBREP9MJlhFb5IP4K87EgeVx8l53TFfAzUb80AucgVQo9alSkef2nDng
-	9knV6yzFXUishFr6weHg==;
+	List-Owner; bh=7n+c219kaxOkh9kitJ7iamMVeOzF7grgVzsRzWJe+ik=; b=cbH+1qkityNmAA
+	9pA03WRQuJDWbOp/+JZ1JX6U8FzlwhUhyN9EPiJCs0rvQojdoFXhDvBjJLB5fikJl+ILT2Pd3OrD+
+	0MU6QJw7Z1p6sZa85ST26HO7sB1VlNazaDvqN+ZJSb1K+5zM2sOkaGFqolpZeBrGHT0bPKE4y7eTt
+	JsfjBTypMssXrPFlqk80oste4euLS8qmBDYve5bGGTRnftY/RK+mkChli/b+iG93MRW2qCCV4LEm2
+	DmvbwPJYHKV7xJWweXvAqZof+SZla7V0sha0X2DxanPux6RhXoOLott4F+w8aYruF9CiIq5kBLJDG
+	ZVRqCZJcC4yBDWHucvVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2JC7-0098jE-5A; Fri, 17 Jun 2022 21:07:55 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1o2Jbn-009H5p-78; Fri, 17 Jun 2022 21:34:27 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2Irk-0092AE-3N
-	for linux-rockchip@lists.infradead.org; Fri, 17 Jun 2022 20:46:53 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id f65so4967200pgc.7
-        for <linux-rockchip@lists.infradead.org>; Fri, 17 Jun 2022 13:46:49 -0700 (PDT)
+	id 1o2Jbk-009H3o-EI
+	for linux-rockchip@lists.infradead.org; Fri, 17 Jun 2022 21:34:26 +0000
+Received: by mail-wr1-x435.google.com with SMTP id a15so7217616wrh.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 17 Jun 2022 14:34:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=GXaclX1FL0h8CGb7nidVOvl5KYslHnP1qP5vHuFEg/o=;
-        b=lSFDDXp8fJxd3k1/NPPifUGgBLPdaE22CTJKPLAyp43SGjKFomXAGiePTZ42BlIrJh
-         odqD9O7PRMXQHJrgctB/Y5S4MWjuJgaJD8WmZ8sebu3eFFWTXjdDxTbzEMVwKQUMkU4q
-         U6exfnONG79nydNKJedyEQ72Xcs+9MEgrbF4s=
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=E6J2GDFXNA9d2Ur0cBOwlB2pD33WtCla1AS4T/F8zFc=;
+        b=McfFr2H4uUyZBLWPhYsclLMDsaAEJs/nwet2oYKtO3ZovJP4GOwXQLvfdYsScpq7xD
+         4DaC1AaMfV1ERdwVCiOAGgZG0aH/ZU9qm9jUeGsSda7wTpFCCk3xr28DOSCmKDYRJ41C
+         wIWiBY+RFTq2HBdlLJ85v/WUSY6Zx2upu5aTBIW7DgDtnMyFLUe8MXqUOW1PwUN2HQCk
+         ks9TQzB5qpfrNby4EeTZCbNEhaslwQHRM7o6tsCxaF7f0HeqPUN98AIY0LGKh6s4NWuC
+         rXln+QFcs3i0OKMbzkV1J3HjxyEyEtfF0cjNRh7rS13Jzlc5789crPJsulBnsXBWngTl
+         IMGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=GXaclX1FL0h8CGb7nidVOvl5KYslHnP1qP5vHuFEg/o=;
-        b=fzv5TPoxKai7Yo00bgSPBXOc6eTLWWZXPWgYt/jUB/fI91VdE55u2HCpYn6i6RyBsq
-         udmLzie4f1VlpsROqxbd4rSSNZ68Itbn1fFsafMyUVcOO7R2EDptrPV6JZ/HFXW9DxIl
-         b9Zc5H51GvTghcHKGRE92aRxgfQhl98fViFZEUTByZu5i+gYvpCjhPiRfA9LICBJz1rU
-         3vaa68R4JW19PlAs/i4CgH7XB/lRTucL9Qi53/fTRO0q+rLy1UU8Ol5hxhBoD0HCe0NY
-         MIC3UKhsYi2tV0bZwPJriZdGh7MV4mtMVqCRyanxrzM+VLLcSqQgYlpwUKTzIOFvD8F5
-         Qhkw==
-X-Gm-Message-State: AJIora+UGQiTgsysmqGY+8OPjJ5m0DWpmUYWqDWyQ2TdSX5jzyHZrlVv
-	V7HEqROs85++yztJ7Oc2YMtanw==
-X-Google-Smtp-Source: AGRyM1tK3U/ZG9n4Mvxa/4Mm4J4wxTavnLkXJYks8NkYt9StAA0o/gzzGm6jYf7ZHj2JUirJCeCBHg==
-X-Received: by 2002:a05:6a00:b8c:b0:51c:2d3d:4595 with SMTP id g12-20020a056a000b8c00b0051c2d3d4595mr11829256pfj.80.1655498809321;
-        Fri, 17 Jun 2022 13:46:49 -0700 (PDT)
-Received: from google.com ([2620:15c:202:201:6844:cedc:a28c:44b2])
-        by smtp.gmail.com with ESMTPSA id p7-20020a17090a428700b001e2f383110bsm5904549pjg.11.2022.06.17.13.46.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Jun 2022 13:46:48 -0700 (PDT)
-Date: Fri, 17 Jun 2022 13:46:46 -0700
-From: Brian Norris <briannorris@chromium.org>
-To: Judy Hsiao <judyhsiao@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>, Chen-Yu Tsai <wenst@chromium.org>,
-	alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 1/3] ASoC: rockchip: i2s: switch BCLK to GPIO
-Message-ID: <YqzoNqd3Mpv3r2tS@google.com>
-References: <20220616155836.3401420-1-judyhsiao@chromium.org>
- <20220617044251.4029697-1-judyhsiao@chromium.org>
- <20220617044251.4029697-2-judyhsiao@chromium.org>
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=E6J2GDFXNA9d2Ur0cBOwlB2pD33WtCla1AS4T/F8zFc=;
+        b=a3tMzeJu1bbG2QoDksIQBwZ3KPwoOAz8xUwQV+Sx3/n6X6GQRaFlh5070S8ePKT5Qa
+         AtajpmrN6yUkN35Fi4FfHH4rexAIsHNrBZZ+CuM/uA9TrRqlh5MuAY/zc5HH46/jUKD+
+         mDhjyn+7Fgg9F0ddkmrL0aQHCnIFpvv3AdAZzg3ZRI9qhXBqWwq95mjhNDZivOLyfMz2
+         nwep1D4p1ZwZ5NRgL7AcGe9BT8qEeXbqd5Jcub/NhleOP5eDJtS2NbuU5xtAbAlR+mnp
+         PAjxQymkIgwNtbphrdk+d7xIDkrOPABVUt/r06eak9fZ6jAESKfz+Pjx5y9GTiRsnBzQ
+         z5cA==
+X-Gm-Message-State: AJIora8Um8qzHgEP8E8aYQDXmBdxjOzc/QAT3n9g15Tdy4aPXSb807c2
+	q9f/6d9oOZxGtf34xb9WkyraBM6ya94=
+X-Google-Smtp-Source: AGRyM1sdfmWAB71n854msPnVjKa+QfE2XohTi2r41xyncb8L436Q4uzI/6R0Hi6OZnryZgZ5y0SzYQ==
+X-Received: by 2002:a5d:598e:0:b0:218:531a:eb5 with SMTP id n14-20020a5d598e000000b00218531a0eb5mr10917451wri.334.1655501661377;
+        Fri, 17 Jun 2022 14:34:21 -0700 (PDT)
+Received: from [192.168.0.14] (cpc141996-chfd3-2-0-cust928.12-3.cable.virginm.net. [86.13.91.161])
+        by smtp.gmail.com with ESMTPSA id l14-20020adfe58e000000b0021a56cda047sm3312866wrm.60.2022.06.17.14.34.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 17 Jun 2022 14:34:20 -0700 (PDT)
+Message-ID: <e9b1b46f-e8a5-4481-e70f-d7355b828808@gmail.com>
+Date: Fri, 17 Jun 2022 22:34:19 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220617044251.4029697-2-judyhsiao@chromium.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH 37/55] media: mc-entity: Add a new helper function to get
+ a remote pad
+Content-Language: en-US
+To: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dafna@fastmail.com,
+ heiko@sntech.de, jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
+ helen.koike@collabora.com, linux-rockchip@lists.infradead.org
+References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
+ <20220614191127.3420492-38-paul.elder@ideasonboard.com>
+From: Daniel Scally <djrscally@gmail.com>
+In-Reply-To: <20220614191127.3420492-38-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_134652_208032_AEB5CE5C 
-X-CRM114-Status: GOOD (  27.29  )
+X-CRM114-CacheID: sfid-20220617_143424_554674_380D3280 
+X-CRM114-Status: GOOD (  37.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,107 +94,173 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello all
 
-On Fri, Jun 17, 2022 at 04:42:49AM +0000, Judy Hsiao wrote:
-> We discovered that the state of BCLK on, LRCLK off and SD_MODE on
-> may cause the speaker melting issue. Removing LRCLK while BCLK
-> is present can cause unexpected output behavior including a large
-> DC output voltage as described in the Max98357a datasheet.
-> 
-> In order to:
->   1. prevent BCLK from turning on by other component.
->   2. keep BCLK and LRCLK being present at the same time
-> 
-> This patch switches BCLK to GPIO func before LRCLK output, and
-> configures BCLK func back during LRCLK is output.
-> 
-> Without this fix, BCLK is turned on 11 ms earlier than LRCK by the
-> da7219.
-> With this fix, BCLK is turned on only 0.4 ms earlier than LRCK by
-> the rockchip codec.
-> 
-> Signed-off-by: Judy Hsiao <judyhsiao@chromium.org>
+On 14/06/2022 20:11, Paul Elder wrote:
+> From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+>
+> The media_entity_remote_pad() helper function returns the first remote
+> pad it find connected to a given pad. Beside being possibly ill-named
+> (as it operates on a pad, not an entity) and non-deterministic (as it
+> stops at the first enabled link), the fact that it returns the first
+> match makes it unsuitable for drivers that need to guarantee that a
+> single link is enabled, for instance when an entity can process data
+> from one of multiple sources at a time.
+>
+> For those use cases, add a new helper function,
+> media_entity_remote_pad_unique(), that operates on an entity and returns
+> a remote pad, with a guarantee that only one link is enabled. To ease
+> its use in drivers, also add an inline wrapper that locates source pads
+> specifically. A wrapper that locates sink pads can easily be added when
+> needed.
+>
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 > ---
->  sound/soc/rockchip/rockchip_i2s.c | 167 ++++++++++++++++++++++--------
->  1 file changed, 121 insertions(+), 46 deletions(-)
-> 
-> diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-> index 47a3971a9ce1..5e3cb06377a1 100644
-> --- a/sound/soc/rockchip/rockchip_i2s.c
-> +++ b/sound/soc/rockchip/rockchip_i2s.c
-
-> @@ -92,39 +122,46 @@ static inline struct rk_i2s_dev *to_info(struct snd_soc_dai *dai)
->  	return snd_soc_dai_get_drvdata(dai);
+>  Documentation/driver-api/media/mc-core.rst |  4 +-
+>  drivers/media/mc/mc-entity.c               | 38 ++++++++++++++++++
+>  include/media/media-entity.h               | 45 ++++++++++++++++++++++
+>  3 files changed, 85 insertions(+), 2 deletions(-)
+>
+> diff --git a/Documentation/driver-api/media/mc-core.rst b/Documentation/driver-api/media/mc-core.rst
+> index 02481a2513b9..a2d1e32e3abb 100644
+> --- a/Documentation/driver-api/media/mc-core.rst
+> +++ b/Documentation/driver-api/media/mc-core.rst
+> @@ -186,8 +186,8 @@ is required and the graph structure can be freed normally.
+>  
+>  Helper functions can be used to find a link between two given pads, or a pad
+>  connected to another pad through an enabled link
+> -:c:func:`media_entity_find_link()` and
+> -:c:func:`media_entity_remote_pad()`.
+> +(:c:func:`media_entity_find_link()`, :c:func:`media_entity_remote_pad()` and
+> +:c:func:`media_entity_remote_source_pad()`).
+>  
+>  Use count and power handling
+>  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> diff --git a/drivers/media/mc/mc-entity.c b/drivers/media/mc/mc-entity.c
+> index 11f5207f73aa..1febf5a86be6 100644
+> --- a/drivers/media/mc/mc-entity.c
+> +++ b/drivers/media/mc/mc-entity.c
+> @@ -9,6 +9,7 @@
+>   */
+>  
+>  #include <linux/bitmap.h>
+> +#include <linux/list.h>
+>  #include <linux/property.h>
+>  #include <linux/slab.h>
+>  #include <media/media-entity.h>
+> @@ -920,6 +921,43 @@ struct media_pad *media_entity_remote_pad(const struct media_pad *pad)
 >  }
+>  EXPORT_SYMBOL_GPL(media_entity_remote_pad);
 >  
-> -static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
-> +static int rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
->  {
->  	unsigned int val = 0;
->  	int retry = 10;
-> -
-> +	int ret = 0;
+> +struct media_pad *
+> +media_entity_remote_pad_unique(const struct media_entity *entity,
+> +			       unsigned int type)
+> +{
+> +	struct media_pad *pad = NULL;
+> +	struct media_link *link;
 > +
->  	spin_lock(&i2s->lock);
->  	if (on) {
-> -		regmap_update_bits(i2s->regmap, I2S_DMACR,
-> -				   I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_ENABLE);
-> -
-> -		regmap_update_bits(i2s->regmap, I2S_XFER,
-> -				   I2S_XFER_TXS_START | I2S_XFER_RXS_START,
-> -				   I2S_XFER_TXS_START | I2S_XFER_RXS_START);
-> -
-> +		ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
-> +			I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_ENABLE);
-> +		if (ret < 0)
-> +			goto end;
-> +		ret = regmap_update_bits(i2s->regmap, I2S_XFER,
-> +			I2S_XFER_TXS_START | I2S_XFER_RXS_START,
-> +			I2S_XFER_TXS_START | I2S_XFER_RXS_START);
-
-This still isn't how I'd expect the indentation to look, but I think I
-will stop complaining about whitespace. Maybe you can either use
-'clang-format' (sparingly), or else see what Mark thinks.
-
-> +		if (ret < 0)
-> +			goto end;
->  		i2s->tx_start = true;
->  	} else {
->  		i2s->tx_start = false;
->  
-...
-
->  static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
-
-I didn't think I needed to call this out, because you already got build
-bots complaining about this, but...
-...did you even compile-test this? You should be making this function
-return 'int', not 'void', because you're adding return values below.
-
->  {
->  	unsigned int val = 0;
->  	int retry = 10;
-> +	int ret = 0;
->  
-...
-> +end:
->  	spin_unlock(&i2s->lock);
-> +	if (ret < 0)
-> +		dev_err(i2s->dev, "lrclk update failed\n");
+> +	list_for_each_entry(link, &entity->links, list) {
+> +		struct media_pad *local_pad;
+> +		struct media_pad *remote_pad;
 > +
-> +	return ret;
+> +		if (!(link->flags & MEDIA_LNK_FL_ENABLED))
+> +			continue;
+Does this need another guard here to make sure the link isn't an
+ancillary link? Only likely to happen at least in the immediate future
+where the entity represents a camera sensor, so possibly not applicable
+here - I couldn't find where the new function is used in the series to
+check. I _think_ it would actually work ok regardless...media_gobj
+type-punning makes my brain ache, but I think the local_pad->entity ==
+entity comparison would actually compare the entity->name member of the
+entity at the end of an ancillary link to the entity parameter, not find
+a match and so continue the loop without failing, but that feels a bit
+sub-optimal.
 
-^^ here.
 
->  }
+
+> +
+> +		if (type == MEDIA_PAD_FL_SOURCE) {
+> +			local_pad = link->sink;
+> +			remote_pad = link->source;
+> +		} else {
+> +			local_pad = link->source;
+> +			remote_pad = link->sink;
+> +		}
+> +
+> +		if (local_pad->entity == entity) {
+> +			if (pad)
+> +				return ERR_PTR(-ENOTUNIQ);
+> +
+> +			pad = remote_pad;
+> +		}
+> +	}
+> +
+> +	if (!pad)
+> +		return ERR_PTR(-ENOLINK);
+> +
+> +	return pad;
+> +}
+> +EXPORT_SYMBOL_GPL(media_entity_remote_pad_unique);
+> +
+>  static void media_interface_init(struct media_device *mdev,
+>  				 struct media_interface *intf,
+>  				 u32 gobj_type,
+> diff --git a/include/media/media-entity.h b/include/media/media-entity.h
+> index a9a1c0ec5d1c..33d5f52719a0 100644
+> --- a/include/media/media-entity.h
+> +++ b/include/media/media-entity.h
+> @@ -859,6 +859,51 @@ struct media_link *media_entity_find_link(struct media_pad *source,
+>   */
+>  struct media_pad *media_entity_remote_pad(const struct media_pad *pad);
 >  
->  static int rockchip_i2s_set_fmt(struct snd_soc_dai *cpu_dai,
-
-Aside from those, I think this looks OK to the best of my
-(not-very-familiar with sounds/soc/) ability:
-
-Reviewed-by: Brian Norris <briannorris@chromium.org>
+> +/**
+> + * media_entity_remote_pad_unique - Find a remote pad connected to an entity
+> + * @entity: The entity
+> + * @type: The type of pad to find (MEDIA_PAD_FL_SINK or MEDIA_PAD_FL_SOURCE)
+> + *
+> + * Search for and return a remote pad of @type connected to @entity through an
+> + * enabled link. If multiple (or no) remote pads match these criteria, an error
+> + * is returned.
+> + *
+> + * The uniqueness constraint makes this helper function suitable for entities
+> + * that support a single active source or sink at a time.
+> + *
+> + * Return: A pointer to the remote pad, or one of the following error pointers
+> + * if an error occurs:
+> + *
+> + * * -ENOTUNIQ - Multiple links are enabled
+> + * * -ENOLINK - No connected pad found
+> + */
+> +struct media_pad *
+> +media_entity_remote_pad_unique(const struct media_entity *entity,
+> +			       unsigned int type);
+> +
+> +/**
+> + * media_entity_remote_source_pad - Find a remote source pad connected to an entity
+> + * @entity: The entity
+> + *
+> + * Search for and return a remote source pad connected to @entity through an
+> + * enabled link. If multiple (or no) remote pads match these criteria, an error
+> + * is returned.
+> + *
+> + * The uniqueness constraint makes this helper function suitable for entities
+> + * that support a single active source at a time.
+> + *
+> + * Return: A pointer to the remote pad, or one of the following error pointers
+> + * if an error occurs:
+> + *
+> + * * -ENOTUNIQ - Multiple links are enabled
+> + * * -ENOLINK - No connected pad found
+> + */
+> +static inline struct media_pad *
+> +media_entity_remote_source_pad(const struct media_entity *entity)
+> +{
+> +	return media_entity_remote_pad_unique(entity, MEDIA_PAD_FL_SOURCE);
+> +}
+> +
+>  /**
+>   * media_entity_is_streaming - Test if an entity is part of a streaming pipeline
+>   * @entity: The entity
 
 _______________________________________________
 Linux-rockchip mailing list
