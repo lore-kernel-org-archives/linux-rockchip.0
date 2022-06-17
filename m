@@ -4,52 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C36C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jun 2022 09:45:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFE96C43334
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Jun 2022 09:46:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=v2WseN4jxEXVCI94mwX5jt6dDWEh0MjjDrEUec3GhOc=; b=VNHjQcpIL24bxZ
-	pXpumMO7laFE/9HW17SB2vxIoRTiwB8C8H+U3xE/oETIUN0SflsGlPM5CC8E0LYOROvtU3FYhXFdn
-	SuuAu3/5hhxeMSMsAlmnpdBzdHB1ax6OG+Oc8xob4Et14DrqVviLjN/KhMJzF3aN9ne2WCjGDHhcq
-	wMkdKifaVCfeXXdTuF/b/f3x1pjnvlwvOB903JIh2M5ppPjkNWdC7FU6ms26daehwDrvo8hO+t+2H
-	qqDCoiMaJ7Zymi4Ml+j6WsMxOW/JI9zO3emB3YoBejCiRpLY894xxRR9WMTurA3ewKjSJEVqhDYMD
-	MwY7qIWBAGcA/2yUeYlw==;
+	List-Owner; bh=LfmyPUKqOF1FshNLpWPiUd3uHMmM0yqdK94gtNJ95jA=; b=aEEV27aVZWBJ02
+	pL65m3aIIgMj6oRuLMDoK8XAYgkKKpluTUA7r87uxIp6yuXWlZzM2ekaDQYMLRt6mAPWur5CLH+gX
+	CklLwH26/n/hsymnnBqjcTz0WA5WID+oEL3BN35bFV1Ji9hNv2h2x8X4ATyx0WjcPDkTvJlg8MgbY
+	UJsj+vO78TyCef+whATr0OGv8XnLPs2tp+Fe+jA0IVjozklAYD5VI61myZ+MQXKpMzc4wbmY76G6/
+	pb3Sizh4rp97dUR2VYiQK9WTkSXnJKzDdH7szzjmMPyec2Vo7k8qBPfkm8TLamicVIa3orxJCAYAp
+	ObQS3FGg+RG1QNLK7sqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o28XS-006mi3-E1; Fri, 17 Jun 2022 09:45:14 +0000
-Received: from szxga02-in.huawei.com ([45.249.212.188])
+	id 1o28YA-006mz6-E3; Fri, 17 Jun 2022 09:45:58 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o28XP-006mfX-CZ
-	for linux-rockchip@lists.infradead.org; Fri, 17 Jun 2022 09:45:13 +0000
-Received: from dggpeml500022.china.huawei.com (unknown [172.30.72.53])
-	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4LPYyF19rzzjXbg;
-	Fri, 17 Jun 2022 17:43:33 +0800 (CST)
-Received: from huawei.com (10.175.112.208) by dggpeml500022.china.huawei.com
- (7.185.36.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Fri, 17 Jun
- 2022 17:45:06 +0800
-From: Zhang Zekun <zhangzekun11@huawei.com>
-To: <ezequiel@vanguardiasur.com.ar>, <mchehab@kernel.org>,
-	<gregkh@linuxfoundation.org>
-CC: <linux-media@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
-	<linux-staging@lists.linux.dev>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH -next] media:rkvdec:Remove redundant memset
-Date: Fri, 17 Jun 2022 09:39:25 +0000
-Message-ID: <20220617093925.44985-1-zhangzekun11@huawei.com>
-X-Mailer: git-send-email 2.17.1
+	id 1o27SS-006MDI-N3; Fri, 17 Jun 2022 08:36:04 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:faf2:1a12:f903:cc5e])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0BDEA660179A;
+	Fri, 17 Jun 2022 09:35:53 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1655454953;
+	bh=7x8/8HIIJI7T1pseYga/Y7jcduOcSFuotK39n2h+Ncw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=iOfLp4XMB9xXSuz6oTsB0aRx934JkSWZ51zGng/ukPDKfdybILfVJJZ0nmPa6/RZY
+	 eMdP1POd1Ym9GBcqh7PMgJcCRgKqCIvdCPEAIMThsdoOtqnipEnehFRfoAo3NNu1ro
+	 /VP8MsnOqcfFjKEKWoPGfslTPVZvROFkpewa5knFsiaKQi4JS/nZ83deSyxIePBFi+
+	 +CK/4urNOvAeFE904IX9vZ3UkVHb3gn+7TE/LorDzqnLJbaW+mj8XInU5yWPe3ldeT
+	 0D480VWpUgs+2Zl5ec1JhxrKrVAL/AZOl3rlpiOYR8mNAVCRso0xI5pnWcmrSD+Uk1
+	 QJaYPaptlwD7g==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	hverkuil@xs4all.nl,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	mripard@kernel.org,
+	paul.kocialkowski@bootlin.com,
+	wens@csie.org,
+	jernej.skrabec@gmail.com,
+	samuel@sholland.org,
+	nicolas.dufresne@collabora.com,
+	andrzej.p@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v9 00/17] Move HEVC stateless controls out of staging
+Date: Fri, 17 Jun 2022 10:35:28 +0200
+Message-Id: <20220617083545.133920-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-X-Originating-IP: [10.175.112.208]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- dggpeml500022.china.huawei.com (7.185.36.66)
-X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_024511_638278_AE830343 
-X-CRM114-Status: UNSURE (   6.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220617_013601_030746_396E868D 
+X-CRM114-Status: GOOD (  17.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,40 +86,125 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-As dma_alloc_coherent() will return a zeroed buffer, we
-don't need to memset the returned buffer.
-priv_tbl = dma_alloc_coherent() and count_tbl = dma_alloc_coherent()
-should be enough.
+This series aims to make HEVC uapi stable and usable for hardware
+decoder. HEVC uapi is used by 2 mainlined drivers (Cedrus and Hantro)
+and 2 out of the tree drivers (rkvdec and RPI).
 
--see commit 750afb08ca71 ("cross-tree: phase out dma_zalloc_coherent()")
+version 9:
+- Reword some commit message
+- Use fls()
+- Remove useless padding at the end of hevc structures
+- Reword all _minus* field description
+- change CVS to codec video sequence
+- Fix various typo
+- Fix undefined label: v4l2-ctrl-flag-dynamic-array warning
+- fix the waring reported by 'scripts/kernel-doc -none
+  include/uapi/linux/v4l2-controls.h'
 
-Signed-off-by: Zhang Zekun <zhangzekun11@huawei.com>
----
- drivers/staging/media/rkvdec/rkvdec-vp9.c | 2 --
- 1 file changed, 2 deletions(-)
+This version has been tested with these branches:
+- GStreamer: https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/tree/HEVC_aligned_with_kernel_5.15
+- Linux: https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/tree/HEVC_UAPI_V9
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec-vp9.c b/drivers/staging/media/rkvdec/rkvdec-vp9.c
-index 311a12656072..c2f42e76be10 100644
---- a/drivers/staging/media/rkvdec/rkvdec-vp9.c
-+++ b/drivers/staging/media/rkvdec/rkvdec-vp9.c
-@@ -1015,7 +1015,6 @@ static int rkvdec_vp9_start(struct rkvdec_ctx *ctx)
- 
- 	vp9_ctx->priv_tbl.size = sizeof(*priv_tbl);
- 	vp9_ctx->priv_tbl.cpu = priv_tbl;
--	memset(priv_tbl, 0, sizeof(*priv_tbl));
- 
- 	count_tbl = dma_alloc_coherent(rkvdec->dev, RKVDEC_VP9_COUNT_SIZE,
- 				       &vp9_ctx->count_tbl.dma, GFP_KERNEL);
-@@ -1026,7 +1025,6 @@ static int rkvdec_vp9_start(struct rkvdec_ctx *ctx)
- 
- 	vp9_ctx->count_tbl.size = RKVDEC_VP9_COUNT_SIZE;
- 	vp9_ctx->count_tbl.cpu = count_tbl;
--	memset(count_tbl, 0, sizeof(*count_tbl));
- 	rkvdec_init_v4l2_vp9_count_tbl(ctx);
- 
- 	return 0;
+With patches to decode 10-bits bitstream and produce P010 frames the Fluster score 
+which was 77/147 before, is now 141/147.
+The 10-bits series will comes after this because of it dependency to
+uAPI change. If you are curious you can find the WIP branch here:
+https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/WIP_HEVC_UAPI_V9
+
+The 6 failing tests are:
+- PICSIZE_{A,B,C,D}_Bossen_1 where resolutions are to big for Hantro hardware.
+- WPP_D_ericsson_MAIN_2 and WPP_D_ericsson_MAIN10_2 are visually ok but some 
+  difference exist on 5 decoded frames. Some pixels values are no the same 
+  the very end of few lines.
+
+version 8:
+- Same than v7 but rebased on media_stage/master
+
+version 7:
+- Apply Jernej patches for Cedrus about bit offset definition and
+  V4L2_CID_STATELESS_HEVC_SLICE_PARAMS being a dynamic array control.
+- Based on media_tree/master
+
+version 6:
+- Add short_term_ref_pic_set_size and long_term_ref_pic_set_size
+  in v4l2_ctrl_hevc_decode_params structure.
+- Change slice_pic_order_cnt type to s32 to match with PoC type.
+- Set V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag automatically when using
+  V4L2_CID_STATELESS_HEVC_SLICE_PARAMS control.
+- Add a define for max slices count
+- Stop using Hantro dedicated control.
+
+version 5:
+- Change __u16 pic_order_cnt[2] into __s32 pic_order_cnt_val in
+  hevc_dpb_entry structure
+- Add defines for SEI pic_struct values (patch 4)
+- Fix numbers of bits computation in cedrus_h265_skip_bits() parameters
+- Fix num_short_term_ref_pic_sets and num_long_term_ref_pics_sps
+  documentation (patch 8)
+- Rebased on v5-18-rc1
+
+Version 4:
+- Add num_entry_point_offsets field in  struct v4l2_ctrl_hevc_slice_params
+- Fix V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS name
+- Initialize control V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS
+- Fix space/tab issue in kernel-doc
+- Add patch to change data_bit_offset definition
+- Fix hantro-media SPDX license
+- put controls under stateless section in v4l2-ctrls-defs.c
+
+Benjamin Gaignard (14):
+  media: uapi: HEVC: Add missing fields in HEVC controls
+  media: uapi: HEVC: Rename HEVC stateless controls with STATELESS
+    prefix
+  media: uapi: HEVC: Change pic_order_cnt definition in
+    v4l2_hevc_dpb_entry
+  media: uapi: HEVC: Add SEI pic struct flags
+  media: uapi: HEVC: Add documentation to uAPI structure
+  media: uapi: HEVC: Define V4L2_CID_STATELESS_HEVC_SLICE_PARAMS as a
+    dynamic array
+  media: uapi: Move parsed HEVC pixel format out of staging
+  media: uapi: Add V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
+  media: uapi: Move the HEVC stateless control type out of staging
+  media: controls: Log HEVC stateless control in .std_log
+  media: hantro: Stop using Hantro dedicated control
+  media: uapi: HEVC: fix padding in v4l2 control structures
+  media: uapi: Change data_bit_offset definition
+  media: uapi: move HEVC stateless controls out of staging
+
+Hans Verkuil (3):
+  videodev2.h: add V4L2_CTRL_FLAG_DYNAMIC_ARRAY
+  v4l2-ctrls: add support for dynamically allocated arrays.
+  vivid: add dynamic array test control
+
+ .../media/v4l/ext-ctrls-codec-stateless.rst   | 897 ++++++++++++++++++
+ .../media/v4l/ext-ctrls-codec.rst             | 780 ---------------
+ .../media/v4l/pixfmt-compressed.rst           |   7 +-
+ .../media/v4l/vidioc-g-ext-ctrls.rst          |  20 +
+ .../media/v4l/vidioc-queryctrl.rst            |   8 +
+ .../media/videodev2.h.rst.exceptions          |   6 +
+ .../media/test-drivers/vivid/vivid-ctrls.c    |  15 +
+ drivers/media/v4l2-core/v4l2-ctrls-api.c      | 103 +-
+ drivers/media/v4l2-core/v4l2-ctrls-core.c     | 212 ++++-
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  38 +-
+ drivers/media/v4l2-core/v4l2-ctrls-priv.h     |   3 +-
+ drivers/media/v4l2-core/v4l2-ctrls-request.c  |  13 +-
+ drivers/staging/media/hantro/hantro_drv.c     |  62 +-
+ .../staging/media/hantro/hantro_g2_hevc_dec.c |  44 +-
+ drivers/staging/media/hantro/hantro_hevc.c    |  10 +-
+ drivers/staging/media/hantro/hantro_hw.h      |   4 +-
+ drivers/staging/media/sunxi/cedrus/cedrus.c   |  26 +-
+ .../staging/media/sunxi/cedrus/cedrus_dec.c   |  10 +-
+ .../staging/media/sunxi/cedrus/cedrus_h265.c  |  23 +-
+ .../staging/media/sunxi/cedrus/cedrus_video.c |   1 -
+ include/media/hevc-ctrls.h                    | 250 -----
+ include/media/v4l2-ctrls.h                    |  48 +-
+ include/uapi/linux/v4l2-controls.h            | 459 +++++++++
+ include/uapi/linux/videodev2.h                |  13 +
+ 24 files changed, 1826 insertions(+), 1226 deletions(-)
+ delete mode 100644 include/media/hevc-ctrls.h
+
 -- 
-2.17.1
+2.32.0
 
 
 _______________________________________________
