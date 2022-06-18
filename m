@@ -4,59 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73CF7C43334
-	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Jun 2022 02:43:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA4EEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Jun 2022 03:03:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TOmlIRkQn3ZMc96UImjtol70SCg+xqLZxk7y3fmJzL4=; b=WgEA4tjevxO37g
-	EfFGyzyl9KH0Nxa3eYEtgPw6kQjsPMRLtkbld/oIcrWJ13sEmN0H/L8m/grXCmY+dOx/2Zp0UQHDs
-	jFYVqQBAMqXJTjpB7RfwfhlqV67/GC93RbNUh56bkK3I/M+mzMmxHwdmDgl9HMePjqN+X2WpQY1wl
-	2qprmq+IjozQhPYfuBRkhZUrlv9LnLLfafoBkUgH/+kW8iod83DxxGLS8YaaXi/a/XHb7CGuY+pxV
-	uuv8KUWMCek32sgNU500gLCHwDfNI9SguGupNcLoXDoiYvaMW+UN3h80toNlVufGTyuf58xxoMlOu
-	n/DwCshCMNFNjj8qk9xw==;
+	List-Owner; bh=WBBfSmoXzRLkLg3fvNhzwfn7SaN/RKihYKhe+aXPVwc=; b=tWXVL+X1+3THK6
+	4m3yneApMQoyvzZuyT4Dr/kVxhRqw9iXNs+QGebuVyM5XArXPrqV69NTXjXf+kJEdwo0S2euKDvTq
+	TjZRbddM7InBmFpYc3EGkFrUXg9i7YCU/cjDRgk261aoUBcuEQjRvGnW0Pr6uhbmSFNQYod68QPhk
+	eZm3waYpodXAOlh4LSl/Fjmb0+XtBRWYSRpDqfqoGdGHF5xgnbH8x0mpDgkyjvK2RwGuZVuv7vErV
+	IgwJTddLrhrmASNHRHartz3hto/6M3WZ9YLJFvqHb3SQlvLoKS32NYh7qhnAAHRD3fek3Ug7uxUW/
+	XcJcDVr/m0/S2Rgq5xdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2OR1-00A6Pb-1r; Sat, 18 Jun 2022 02:43:39 +0000
-Received: from m1550.mail.126.com ([220.181.15.50])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2OQp-00A6Io-6o; Sat, 18 Jun 2022 02:43:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
-	s=s110527; h=Date:From:Subject:MIME-Version:Message-ID; bh=CiWP9
-	J47fOf0SwiBXWz/6vH2KuuXSnebcHPFbMKOEds=; b=erEZwwJ4FGbX8tdHYKTW9
-	pja4dXtj/h3QlBjqXD8/95vQB+6h7R73Jjo5/81j8+av7H1eSnbOUpNiAPVksnC2
-	94PPcxhOja591vXmx6cf46zBZcey4r8RU0gAj/NCJW/mo0wKByGms6eyTDa3Jz7U
-	S8IgR2qAY8pEgR0oZXA5bs=
-Received: from windhl$126.com ( [124.16.139.61] ) by ajax-webmail-wmsvr50
- (Coremail) ; Sat, 18 Jun 2022 10:43:12 +0800 (CST)
-X-Originating-IP: [124.16.139.61]
-Date: Sat, 18 Jun 2022 10:43:12 +0800 (CST)
-From: "Liang He" <windhl@126.com>
-To: "Heiko Stuebner" <heiko@sntech.de>
-Cc: linux@armlinux.org.uk, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re:Re: [PATCH v2] arm: mach-rockchip: (pm) Add missing
- of_node_put()
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version XT5.0.13 build 20220113(9671e152)
- Copyright (c) 2002-2022 www.mailtech.cn 126com
-In-Reply-To: <165548567344.3407211.15518569345867067474.b4-ty@sntech.de>
-References: <20220616021713.3973472-1-windhl@126.com>
- <165548567344.3407211.15518569345867067474.b4-ty@sntech.de>
+	id 1o2Ojj-00AB3n-Iz; Sat, 18 Jun 2022 03:02:59 +0000
+Received: from fllv0016.ext.ti.com ([198.47.19.142])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o2Ojh-00AB30-DV; Sat, 18 Jun 2022 03:02:58 +0000
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 25I32Nt4004650;
+	Fri, 17 Jun 2022 22:02:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+	s=ti-com-17Q1; t=1655521343;
+	bh=v9iLe16OQzDjus8PgEyzt81ju785zygpn75Qb7cPKDk=;
+	h=From:To:CC:Subject:Date:In-Reply-To:References;
+	b=ubm9+IAhGGTk3kdTt5x7vdcv21zn8SduavN1QPsDFtatpMEQLnnpq14kmxzjhSdoM
+	 EhSYzwprF+3qoaWgxqEa7tkCA7AfNzT0CIUyyPN2V1vMiSYZKDtU+T7Pvq2yIkEfs4
+	 7jCtmDUFYShPMx+ispwTz24Ou/91SMS8cN3blxkI=
+Received: from DLEE103.ent.ti.com (dlee103.ent.ti.com [157.170.170.33])
+	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 25I32NTI008896
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Fri, 17 Jun 2022 22:02:23 -0500
+Received: from DLEE108.ent.ti.com (157.170.170.38) by DLEE103.ent.ti.com
+ (157.170.170.33) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2308.14; Fri, 17
+ Jun 2022 22:02:22 -0500
+Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE108.ent.ti.com
+ (157.170.170.38) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2308.14 via
+ Frontend Transport; Fri, 17 Jun 2022 22:02:22 -0500
+Received: from localhost (ileax41-snat.itg.ti.com [10.172.224.153])
+	by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 25I32MBg024730;
+	Fri, 17 Jun 2022 22:02:22 -0500
+From: Nishanth Menon <nm@ti.com>
+To: <krzysztof.kozlowski@linaro.org>, <olof@lixom.net>, <soc@kernel.org>,
+        Arnd
+ Bergmann <arnd@arndb.de>, <arm@kernel.org>
+CC: Nishanth Menon <nm@ti.com>, <linux-input@vger.kernel.org>,
+        <khuong@os.amperecomputing.com>, <heiko@sntech.de>,
+        <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+        <jonathanh@nvidia.com>, <sebastian.hesselbarth@gmail.com>,
+        <agross@kernel.org>, <linux-omap@vger.kernel.org>,
+        <linux-gpio@vger.kernel.org>, <tony@atomide.com>,
+        <nicolas.ferre@microchip.com>, <joel@jms.id.au>,
+        <linux-arm-msm@vger.kernel.org>, <robh+dt@kernel.org>,
+        <bcousson@baylibre.com>, <thierry.reding@gmail.com>,
+        <claudiu.beznea@microchip.com>, <vigneshr@ti.com>,
+        <bjorn.andersson@linaro.org>, <openbmc@lists.ozlabs.org>,
+        <peda@axentia.se>, <andrew@lunn.ch>, <linux-aspeed@lists.ozlabs.org>,
+        <linus.walleij@linaro.org>, <festevam@gmail.com>,
+        <xuwei5@hisilicon.com>, <alexandre.belloni@bootlin.com>,
+        <leoyang.li@nxp.com>, <michal.simek@xilinx.com>, <andrew@aj.id.au>,
+        <kristo@kernel.org>, <linux-imx@nxp.com>,
+        <krzysztof.kozlowski+dt@linaro.org>, <shawnguo@kernel.org>,
+        Sascha Hauer <s.hauer@pengutronix.de>,
+        <linux-arm-kernel@lists.infradead.org>, <matthias.bgg@gmail.com>,
+        <j.neuschaefer@gmx.net>, <gregory.clement@bootlin.com>,
+        <linux-mediatek@lists.infradead.org>,
+        <linux-rockchip@lists.infradead.org>, <linux@armlinux.org.uk>,
+        <kernel@pengutronix.de>, <dmitry.torokhov@gmail.com>,
+        <linux-tegra@vger.kernel.org>
+Subject: Re: (subset) [PATCH v3 00/40] dt-bindings: input: gpio-keys: rework matching children
+Date: Fri, 17 Jun 2022 22:02:21 -0500
+Message-ID: <165552126299.28422.3856100388848453087.b4-ty@ti.com>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
+References: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
-Message-ID: <6b387941.aed.18174b16871.Coremail.windhl@126.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: MsqowADXLPHBO61ixdU4AA--.57247W
-X-CM-SenderInfo: hzlqvxbo6rjloofrz/1tbiuAYkF2JVj6uAOAABsn
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220617_194327_629987_BC6F73E2 
-X-CRM114-Status: UNSURE (   5.57  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220617_200257_587021_5411D12E 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,31 +104,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Krzysztof Kozlowski,
+
+On Wed, 15 Jun 2022 17:52:24 -0700, Krzysztof Kozlowski wrote:
+> Merging
+> =======
+> 1. dt-bindings: rebased on top of Rob's:
+>    https://lore.kernel.org/all/20220608211207.2058487-1-robh@kernel.org/
+> 
+> 2. DTS patches are independent. They can be picked up directly by sub-arch
+>    maintainers, by Arnd or Olof, or eventually by me (if you wish).
+> 
+> [...]
+
+I have applied the following to branch ti-k3-dts-next on [1].
+Thank you!
+
+[29/40] arm64: dts: ti: align gpio-key node names with dtschema
+        commit: 85423386c9763fb20159892631eccc481a2d9b71
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent up the chain during
+the next merge window (or sooner if it is a relevant bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+[1] git://git.kernel.org/pub/scm/linux/kernel/git/ti/linux.git
+-- 
+Regards,
+Nishanth Menon
+Key (0xDDB5849D1736249D) / Fingerprint: F8A2 8693 54EB 8232 17A3  1A34 DDB5 849D 1736 249D
 
 
-At 2022-06-18 01:10:28, "Heiko Stuebner" <heiko@sntech.de> wrote:
->On Thu, 16 Jun 2022 10:17:13 +0800, Liang He wrote:
->> In rockchip_suspend_init(), of_find_matching_node_and_match() will
->> return a node pointer with refcount incremented. We should use
->> of_node_put() in fail path or when it is not used anymore.
->
->Applied, thanks!
->
->[1/1] arm: mach-rockchip: (pm) Add missing of_node_put()
->      commit f4470dbfb5ff92804650bc71d115c3f150d430f6
->
->There was an unneeded tab in the blank line above out_put
->and a completely unneeded blank line added at the end of
->the function. I dropped both.
-
-Thanks very much for your effort.
-
-I am learning the coding style for kernel code.
-
->
->Best regards,
->-- 
->Heiko Stuebner <heiko@sntech.de>
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
