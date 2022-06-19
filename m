@@ -4,73 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6256C43334
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jun 2022 08:28:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2B3AC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jun 2022 09:53:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a1wE7qPFSKhsIHmxqILNw+GXVs55gBXMY+pEIfqIz1k=; b=LtugBujYrtHKJp
-	82rPXe1jGVoAYjvOfAys6GbwpYRg2xKG8jl8oiNMxBBs/eORNvFtBPVjn1HVNnaN4q+jw2J49PgbJ
-	rrRUHmmaB+24AhGqWlvpz8KtMuOJcRuNDuWRk4rCku0CN6/Ehaq4yV7xNAB111vxNqUe/HCY9wieb
-	sh52QzfPUL57Fn4ZOUUKsq2rTyrnWRWgGZToY5SK+k1uUU4C2DdzAbmGdQvTnOG/hV7MHNnXdikoW
-	G3hdI1GPsTTa0b43thwopi9JQo/LqBSOWXR4ygmBoTC1zX1DjEMh6YA+U8sc6z8vQIu1r3z8hwvS+
-	sc8FiWRp2MsRg1yEwljg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/2Q/meY96vBQ7FvmjBH7TZtq7jGA90M6ccCF+Fd+qKY=; b=vZZjhMwftgKJwP
+	uD0F3jFupZmScmEReHwTXVbePZQZQ4bxoT/N3ZU8YAOINyjEhg+IW9Wc0jiU30RfpfIJD7R8amziR
+	f9w6GB7lSc9/5VUyZmZ2KhFKjaLdB64Voy+PliqZgNxRJDvYBBWOQU5KV8I/8Ow8RaX3DQqCsqkXB
+	OAj+0YWHxzarAEFfUNlG29Mo169ZArQal8mn4XRpWg1gZQLqPErutdw0XfnmddZw8MOshzlOEcraU
+	YdbeBrEjIo24OTN5NjYll2nm5qDXtjLctBBeJdbRNq1e6ZH/qIx9XwgenOouqvy13aCy7QCmYJU5p
+	8SxalfquhwToYTBSiByw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2qHk-00Db9J-7o; Sun, 19 Jun 2022 08:27:56 +0000
-Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	id 1o2rce-00Dnv5-4d; Sun, 19 Jun 2022 09:53:36 +0000
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2qGN-00DaPW-Kp; Sun, 19 Jun 2022 08:26:33 +0000
-Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout4.routing.net (Postfix) with ESMTP id DF7061012A5;
-	Sun, 19 Jun 2022 08:26:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1655627180;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=A4lLwqC5/vPLfeHiAQTc4w8YOcpo0bpEwa4ZlWnmejQ=;
-	b=VCwlF8wqUvMe2MZ9cmqa+1oZZ/GWrSh6uVAa6wnUXsXxFSbj/Z/UIbJ1xxkYiy6ZxJ2SO4
-	j8rhwqDjWVM1EepH5lHUohfe39XDnoAMG7SiseVfX1WC0Ui7yBxdvAwma5eFWgeasI5Djl
-	SYUIQ6NJYjHiJITuY0Ei8CW0qpJFzrY=
-Received: from frank-G5.. (fttx-pool-157.180.227.195.bambit.de [157.180.227.195])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id EA529100622;
-	Sun, 19 Jun 2022 08:26:19 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-rockchip@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
-	Kishon Vijay Abraham I <kishon@ti.com>,
-	Vinod Koul <vkoul@kernel.org>,
+	id 1o2rcb-00Dntw-5K
+	for linux-rockchip@lists.infradead.org; Sun, 19 Jun 2022 09:53:34 +0000
+Received: by mail-pl1-x62e.google.com with SMTP id m14so7345477plg.5
+        for <linux-rockchip@lists.infradead.org>; Sun, 19 Jun 2022 02:53:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=kR0nPmihBKg/JVQtdlu4B3iD3y1xFJeR/L3hKnfirkg=;
+        b=Ujfw05oCO6CQHlxIt9U1/Vw2jZz2wiVAu2MidO2JcQLF7s5nkeLtX+pXVg0r+JG7Rq
+         bspYGi4fxvj/xaZ96AGR+/2wKEL8/NTtY2c8USzvxw8l9fcUpS41zrHtRVsNA/M50cgw
+         jGn6RF4QAyzCyK8+RxV6AHBAabXA7pT2Kp29w=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=kR0nPmihBKg/JVQtdlu4B3iD3y1xFJeR/L3hKnfirkg=;
+        b=OdkpMf0F9nHZx7t1y1lS+32H8v8Nqly9hMOKZh8aWxIyHHk2PJUSbBVHCl79Mz+7BA
+         9oQllFdmEMaPGBbWmOqTqsOlkXMRG3eUpewUHuDfOZgtcLsdojzY2W134S5AXas77znF
+         /EF1hTL+8YFO87H/uAns28jcRlrPjF6Cc40VzjekdYc2dahsgKpPf3DYTuxRKY+uC/wY
+         68aLv4TCVz0dMH79jDAm7TlTNhMnGDBACt62X7K6rd3MiCpV0aOv5wLKBPKgELata7VB
+         X60bHznLOfC51itZ3Ctwbxa49CD1S9bIFdU+67tfC8vsSAKmFwqsfTFNzsvDlAIFIJys
+         kzzA==
+X-Gm-Message-State: AJIora/eWYIJNxHEAXIW6YnYnZsnytGiPwP2GOtBbYKvBKbXVAaEzyD4
+	pEtNOoySC+wJc/x8E3+T9Ha5zg==
+X-Google-Smtp-Source: AGRyM1v7zPmyGbZPOSnbb98hniYzON8YpxLeYV5xLE/gaU76OD8LpMvcKXf8EiPwhBviJK2jxy4o0Q==
+X-Received: by 2002:a17:90a:e418:b0:1ec:9908:d5f0 with SMTP id hv24-20020a17090ae41800b001ec9908d5f0mr3170210pjb.7.1655632411623;
+        Sun, 19 Jun 2022 02:53:31 -0700 (PDT)
+Received: from judyhsiao0523.c.googlers.com.com (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id 135-20020a62178d000000b0050dc762817esm6799971pfx.88.2022.06.19.02.53.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 19 Jun 2022 02:53:30 -0700 (PDT)
+From: Judy Hsiao <judyhsiao@chromium.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Liang Chen <cl@rock-chips.com>,
-	Simon Xue <xxm@rock-chips.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
+	Brian Norris <briannorris@chromium.org>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	alsa-devel@alsa-project.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 5/5] arm64: dts: rockchip: Add PCIe v3 nodes to BPI-R2-Pro
-Date: Sun, 19 Jun 2022 10:26:05 +0200
-Message-Id: <20220619082605.7935-6-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220619082605.7935-1-linux@fw-web.de>
-References: <20220619082605.7935-1-linux@fw-web.de>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Judy Hsiao <judyhsiao@chromium.org>
+Subject: [PATCH v4 0/3] ASoC: rockchip: i2s: switch BCLK to GPIO
+Date: Sun, 19 Jun 2022 09:53:21 +0000
+Message-Id: <20220619095324.492678-1-judyhsiao@chromium.org>
+X-Mailer: git-send-email 2.36.1.476.g0c4daa206d-goog
 MIME-Version: 1.0
-X-Mail-ID: 260ea333-eed3-421e-8eba-414050f769c4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220619_012632_015593_51A2BA5C 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20220619_025333_273806_6630120B 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,150 +92,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+The patches series is to fix the unexpected large DC output
+voltage of Max98357a that burns the speakers on the rockchip
+platform when BCLK and SD_MODE are ON but LRCLK is OFF.
 
-Add Nodes to Bananapi-R2-Pro board to support PCIe v3 and
-set PCIe related regulators to always on.
+Changes Since V4:
+    -- Fix indentation in the driver. (Align parameters with the parenthesis
+       placement.)
+    -- Fix incorrect return type of rockchip_snd_rxctrl.
+Changes Since V3:
+    -- Fix indentation in the documentation.
+    -- Put pinctrl-1 right after pinctrl-0 in dtsi.
+    -- Fix indentation in the driver.
+    -- Remove unnecessary dev_dbg() in the driver.
+Changes Since V2:
+    -- Add documents of i2s pinctrl-names.
+    -- Fix dtsi syntax error.
+    -- Include the dtsi change and the driver change in the same series.
+    -- Ensure that driver gets both bclk_on and bclk_off states before using them.
 
-Suggested-by: Peter Geis <pgwipeout@gmail.com>
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
-v4:
-- change u8 lane-map to u32 data-lanes
+Judy Hsiao (3):
+  ASoC: rockchip: i2s: switch BCLK to GPIO
+  arm64: dts: rk3399: i2s: switch BCLK to GPIO
+  ASoC: dt-bindings: rockchip: Document pinctrl-names for i2s
 
-v3:
-- squash lane-map over bifurcation property
-- add comment which slot is M2 and which one if mPCIe
-- fixes from Peter:
-  - drop regulator-always-on/regulator-boot-on from regulators
-  - increase startup-delay-us for regulators
-  - set phy-mode on PCIe3-phy
-  - add num-lanes to PCIe overrides
-  - add usb node for to PCIe/m2
-  - move lane-map from PCIe controller to PCIe-phy
+ .../bindings/sound/rockchip-i2s.yaml          |   7 +
+ .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi |  10 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  25 ++-
+ sound/soc/rockchip/rockchip_i2s.c             | 171 +++++++++++++-----
+ 4 files changed, 165 insertions(+), 48 deletions(-)
 
-v2:
-- underscores in nodenames
-- rockchip,bifurcation to vendor unspecific bifurcation
-- fix trailing space
----
- .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   | 90 +++++++++++++++++++
- 1 file changed, 90 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-index 40cf2236c0b6..dd688019ca49 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-@@ -74,6 +74,62 @@ vcc5v0_sys: vcc5v0-sys {
- 		vin-supply = <&dc_12v>;
- 	};
- 
-+	pcie30_avdd0v9: pcie30-avdd0v9 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pcie30_avdd0v9";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <900000>;
-+		regulator-max-microvolt = <900000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	pcie30_avdd1v8: pcie30-avdd1v8 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pcie30_avdd1v8";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	/* pi6c pcie clock generator feeds both ports */
-+	vcc3v3_pi6c_05: vcc3v3-pi6c-05-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_pcie";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		enable-active-high;
-+		gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
-+		startup-delay-us = <200000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	/* actually fed by vcc3v3_sys, dependent on pi6c clock generator */
-+	vcc3v3_minipcie: vcc3v3-minipcie-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_minipcie";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		startup-delay-us = <50000>;
-+		vin-supply = <&vcc3v3_pi6c_05>;
-+	};
-+
-+	/* actually fed by vcc3v3_sys, dependent on pi6c clock generator */
-+	vcc3v3_ngff: vcc3v3-ngff-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_ngff";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		enable-active-high;
-+		gpio = <&gpio4 RK_PC1 GPIO_ACTIVE_HIGH>;
-+		startup-delay-us = <50000>;
-+		vin-supply = <&vcc3v3_pi6c_05>;
-+	};
-+
- 	vcc5v0_usb: vcc5v0_usb {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc5v0_usb";
-@@ -401,6 +457,27 @@ rgmii_phy1: ethernet-phy@0 {
- 	};
- };
- 
-+&pcie30phy {
-+	data-lanes = <1 2>;
-+	status = "okay";
-+};
-+
-+&pcie3x1 {
-+	/* M.2 slot */
-+	num-lanes = <1>;
-+	reset-gpios = <&gpio3 RK_PA1 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_ngff>;
-+	status = "okay";
-+};
-+
-+&pcie3x2 {
-+	/* mPCIe slot */
-+	num-lanes = <1>;
-+	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_minipcie>;
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	leds {
- 		blue_led_pin: blue-led-pin {
-@@ -587,3 +664,16 @@ &usb2phy0_otg {
- 	phy-supply = <&vcc5v0_usb_otg>;
- 	status = "okay";
- };
-+
-+&usb2phy1 {
-+	/* USB for PCIe/M2 */
-+	status = "okay";
-+};
-+
-+&usb2phy1_host {
-+	status = "okay";
-+};
-+
-+&usb2phy1_otg {
-+	status = "okay";
-+};
 -- 
-2.34.1
+2.36.1.476.g0c4daa206d-goog
 
 
 _______________________________________________
