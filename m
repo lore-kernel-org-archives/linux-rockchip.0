@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F96CC43334
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jun 2022 08:26:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDCC2C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jun 2022 08:27:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=QNqcdxF9wnLVP/QrMp5CbFnvSQSIcGgPdhnWlYSTyJs=; b=VcIqSV0zk9+QOU
-	41tFGxF+PQydGZKpTtA4vCZSoN3tcXU0V7p98aydoPDzqjrskyikbOWTjAkBl6CVftwDdQntxVRek
-	dP1orBuFMp15VcNe75tCoTUHizHtoqv2Wfxdm/VHMXFvGYR3ngzcoCaWQrmZWLV4dGFRcNUvUsduE
-	OQhyiGNZDOhhOqyF7TlfZaJp1l2HQHZYl6NDrzCktEzZh0AQU5LxZ9OrtrjzQ7oQ37UoLxJzho0Kh
-	g0wMoIZFf/OdwxKvlCoupVVtGr431dgVFZKs92c6uZGma2NlxuEvPaJbxPGcLoGFklt1gZo+9mnHS
-	Do0cbCPyHkSp8Ept2P1A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LfP1wXOWIqf9c95t3+8tkk9cgPdjApY5TcBZ/dCqSQA=; b=DtaQ3Hy1AkIYFO
+	QD6mdbqOyW2nvrU1xUSxmC5N0cxuQYJ8nGbABUKojZUvo1W8jVE+iD82k3QUkymdOPOH2agX5R586
+	WsVB/YokehoLIsL9XcOZizVVsijYyGILBSE4+WmoP4jpMbIxrsL8wjqEPeVn+Qi313f6OdN8S4UEn
+	vDsde5qpGW9v1OS2zKqhkwhuxqnWt5o3FUPW/G1eApXMcxVlAMwOnkdjFvfHgHnYleiD1Mg6X7ZCI
+	gPi9D7+l89Yutdo6I078WUZ41h6C+sCp1iQYheWajd5LF4HJq9YKKwxuFFnPUMpqi4MEm3Z82sLzB
+	HsL6Pm6PwrmpqSHCf4lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2qGf-00DaVn-EY; Sun, 19 Jun 2022 08:26:49 +0000
+	id 1o2qGf-00DaVZ-3a; Sun, 19 Jun 2022 08:26:49 +0000
 Received: from mxout4.routing.net ([2a03:2900:1:a::9])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2qGK-00DaMk-SF; Sun, 19 Jun 2022 08:26:30 +0000
+	id 1o2qGK-00DaMN-Sc; Sun, 19 Jun 2022 08:26:30 +0000
 Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
-	by mxout4.routing.net (Postfix) with ESMTP id 1B9861005EE;
-	Sun, 19 Jun 2022 08:26:16 +0000 (UTC)
+	by mxout4.routing.net (Postfix) with ESMTP id 16505101294;
+	Sun, 19 Jun 2022 08:26:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1655627176;
+	s=20200217; t=1655627178;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=El3eiqyJe3YtA9IE7kBZL0i2kK4Uj0j7O55/zFr8ZLU=;
-	b=ADrErCZhcAqvjuy8n/SQ/YGx6mGDEZEwIkwvwI7RZsGRwXOegwn4Mm9CQs5zFrdzDkWw0d
-	W82WX7cZIk9v6foxd0gvYJQ7rPyuVkGIX9I/uMPX5nLYWzYkHPDhUerM0AwCwgdtAJ1hga
-	IaMww8wfvino7oIxLfb3stHTi2pq61s=
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MgcSu/bZTjky7t6qN/ZaauuAgwOYV51FTF/OPnptHgI=;
+	b=V6/kqZMK1osbUAGBkeFFjrg5dRAARQNas58FVCI4qRndkb38a6EHvdAEV/aLOMhouEWz/q
+	LejXWwk/2sPy+jDMUP1N+8QGvamW9vYJK+S3X/d82GDMzG5ofe/EUICg9bi2gqBCt03ZNt
+	Lu70UDU7W6ytiAZu07Poq4q0kD5SAu4=
 Received: from frank-G5.. (fttx-pool-157.180.227.195.bambit.de [157.180.227.195])
-	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id DF4AA10054D;
-	Sun, 19 Jun 2022 08:26:14 +0000 (UTC)
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 1633710054D;
+	Sun, 19 Jun 2022 08:26:17 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-rockchip@lists.infradead.org
 Cc: Frank Wunderlich <frank-w@public-files.de>,
@@ -58,16 +59,19 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
 	linux-phy@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 0/5] RK3568 PCIe V3 support
-Date: Sun, 19 Jun 2022 10:26:00 +0200
-Message-Id: <20220619082605.7935-1-linux@fw-web.de>
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v4 2/5] dt-bindings: soc: grf: add pcie30-{phy,pipe}-grf
+Date: Sun, 19 Jun 2022 10:26:02 +0200
+Message-Id: <20220619082605.7935-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220619082605.7935-1-linux@fw-web.de>
+References: <20220619082605.7935-1-linux@fw-web.de>
 MIME-Version: 1.0
-X-Mail-ID: 43d1a18b-a719-4417-955d-f644080d9cf4
+X-Mail-ID: 1f4313a6-4642-4c5d-9b5c-1584b150b7b3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220619_012629_100537_3ABDC1B6 
-X-CRM114-Status: UNSURE (   8.75  )
+X-CRM114-CacheID: sfid-20220619_012629_116296_9F3DAC19 
+X-CRM114-Status: UNSURE (   7.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,33 +91,41 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-This series adds Rockchip PCIe V3 support found on rk3568 SOC.
+Add compatibles for PCIe v3 General Register Files.
 
-Compared to PCIeV2 which uses the Naneng combphy, PCIe v3 uses a dedicated
-PCI-phy.
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+---
+v4:
+- rebase on 5.19-rc1
+- add acked-by
 
-Frank Wunderlich (4):
-  dt-bindings: phy: rockchip: add PCIe v3 phy
-  dt-bindings: soc: grf: add pcie30-{phy,pipe}-grf
-  arm64: dts: rockchip: rk3568: Add PCIe v3 nodes
-  arm64: dts: rockchip: Add PCIe v3 nodes to BPI-R2-Pro
+v3:
+- fix order of grf-bindings
 
-Shawn Lin (1):
-  phy: rockchip: Support PCIe v3
+v2:
+- add soc-part to pcie3-phy-grf
+---
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
- .../bindings/phy/rockchip,pcie3-phy.yaml      |  80 +++++
- .../devicetree/bindings/soc/rockchip/grf.yaml |   3 +
- .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   |  90 +++++
- arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 122 +++++++
- drivers/phy/rockchip/Kconfig                  |   9 +
- drivers/phy/rockchip/Makefile                 |   1 +
- .../phy/rockchip/phy-rockchip-snps-pcie3.c    | 317 ++++++++++++++++++
- include/linux/phy/pcie.h                      |  12 +
- 8 files changed, 634 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
- create mode 100644 drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
- create mode 100644 include/linux/phy/pcie.h
-
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index 75a2b8bb25fb..97301c470173 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -16,9 +16,12 @@ properties:
+           - enum:
+               - rockchip,rk3288-sgrf
+               - rockchip,rk3566-pipe-grf
++              - rockchip,rk3568-pcie3-phy-grf
+               - rockchip,rk3568-pipe-grf
+               - rockchip,rk3568-pipe-phy-grf
+               - rockchip,rk3568-usb2phy-grf
++              - rockchip,rk3588-pcie3-phy-grf
++              - rockchip,rk3588-pcie3-pipe-grf
+               - rockchip,rv1108-usbgrf
+           - const: syscon
+       - items:
 -- 
 2.34.1
 
