@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B616C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 18 Jun 2022 17:08:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C680C43334
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jun 2022 07:34:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XxzVfScO4V4vLgXUEFiNSienZaMm6qxgjWwGys2RGl4=; b=Cr6Es8W6XBObSn
-	14Tnn+HEV/MrMWIxSWsNob+GRFfMhVTR7NoYA0j5cJXpe2O+QzYNNmCv9cql/uoRO7k+YwUauLSFP
-	So36s6g8CrYOmh6VdWSvPty0SVxyZpkV+qfuDEqk/u/8/M/1iyU/bNJw5QFwQxNUxDHaYRyC/KZRj
-	5bOA4PO/UVYlzdr4piAJUknO36pEYNsHy9w5w+hvtyiILqk1Bgq7LeaoI56H5LKfh3d/jRIryDzaA
-	7e9rx4MdCgsaDxitlbNKqJgbfp4Sqt+sB0QDgAaLfyTIxMiUMhgvuvuU4RG6uHwSwUycjThL7XuoN
-	izm3AdidH5TYzd4ZbiFQ==;
+	List-Owner; bh=rGC48hs9pUQFyPuFSJdT+388As5zUPVaGW4sufbahR0=; b=IUgBQarRu+cppA
+	zlsxGxQujjMxfm0YT02L9bhEQUFriv51UPToQMGCsnuealrjiTmQxiO2iV7Zv5k0let1Pw2dRdDk3
+	fRK8qAUMv5fIz0uj/4xK9DTb9IkQFlrPiXaTeueYTwBwxeOQCLV4RHCyXikvf+2rCO+ebaCfjg49w
+	mL0Zsd5u8VBJzxGN+EGgx14//aUjAndGJKzHf8PXrG5PA67iiDDyWzsCHWbviCh1xh5/H6d4cWQW+
+	guDBtNHyALXFMnooIa19Xl6wDO7eAl2f2EEzZ+J6M5ssroUrmtPw942AunftwMA3oQhSBZwQeOl0v
+	kNKUivO8mdyGUon0SWpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2bvu-00BvgT-GI; Sat, 18 Jun 2022 17:08:26 +0000
-Received: from smtp07.smtpout.orange.fr ([80.12.242.129] helo=smtp.smtpout.orange.fr)
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2bvr-00Bvel-D3
-	for linux-rockchip@lists.infradead.org; Sat, 18 Jun 2022 17:08:25 +0000
-Received: from pop-os.home ([90.11.190.129])
-	by smtp.orange.fr with ESMTPA
-	id 2bvaoZWBzL5fD2bvboxfsD; Sat, 18 Jun 2022 19:08:15 +0200
-X-ME-Helo: pop-os.home
-X-ME-Auth: YWZlNiIxYWMyZDliZWIzOTcwYTEyYzlhMmU3ZiQ1M2U2MzfzZDfyZTMxZTBkMTYyNDBjNDJlZmQ3ZQ==
-X-ME-Date: Sat, 18 Jun 2022 19:08:15 +0200
-X-ME-IP: 90.11.190.129
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	David Airlie <airlied@linux.ie>,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Marek Szyprowski <m.szyprowski@samsung.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maxime Ripard <maxime@cerno.tech>
-Cc: linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	dri-devel@lists.freedesktop.org,
+	id 1o2pRx-00DTOz-SR; Sun, 19 Jun 2022 07:34:25 +0000
+Received: from m15114.mail.126.com ([220.181.15.114])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o2pRm-00DTMK-Mz; Sun, 19 Jun 2022 07:34:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
+	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=qhxkr
+	/aOqu+vrmKB0+0pl6NWC0/MFEXuMV8Podpx0Ds=; b=MfggCQvt+upNsGoaH47cF
+	+b4IfpfMkVkJ0UZH5aI1kQAKd+Vvym4kbUwYlt8QESrmrmncIcXq23CoHykbNGit
+	bxa+8EXLpN5o43VpQTj/hGolvuaA9fRQgI1K7z/RceM12t8k03/flLtUQRDi+1Kr
+	QlaO9j8qYWvWeZ7NiaA6pE=
+Received: from localhost.localdomain (unknown [124.16.139.61])
+	by smtp7 (Coremail) with SMTP id DsmowACHl_M80a5iRtXFDg--.28970S2;
+	Sun, 19 Jun 2022 15:33:16 +0800 (CST)
+From: Liang He <windhl@126.com>
+To: linus.walleij@linaro.org,
+	heiko@sntech.de
+Cc: windhl@126.com,
+	linux-gpio@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH] drm/rockchip: Fix an error handling path rockchip_dp_probe()
-Date: Sat, 18 Jun 2022 19:08:05 +0200
-Message-Id: <b719d9061bb97eb85145fbd3c5e63f4549f2e13e.1655572071.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.34.1
+Subject: [PATCH] pinctrl/rockchip: Fix refcount leak bug
+Date: Sun, 19 Jun 2022 15:33:15 +0800
+Message-Id: <20220619073315.4067956-1-windhl@126.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+X-CM-TRANSID: DsmowACHl_M80a5iRtXFDg--.28970S2
+X-Coremail-Antispam: 1Uf129KBjvdXoWrtrykArWxAryrZw4fZr4UXFb_yoWfJrcEka
+	4xWr9rXr1UGFWrur42q3y3WFyFkanrWr4vvFn7ZasxCasrXw1Iqrn5Wry3K3s7Gr4ayr9r
+	GrZFvr4rJFWUJjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUUID7DUUUUU==
+X-Originating-IP: [124.16.139.61]
+X-CM-SenderInfo: hzlqvxbo6rjloofrz/1tbi3B0lF1pEDwJZSwAAsy
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220618_100823_601910_98B4139B 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20220619_003415_141311_A52CF658 
+X-CRM114-Status: UNSURE (   6.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,38 +72,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Should component_add() fail, we should call analogix_dp_remove() in the
-error handling path, as already done in the remove function.
+In rockchip_pinctrl_parse_groups(), we need a of_node_put() in each
+loop for the of_find_node_by_phandle() to keep the refcount balance.
 
-Fixes: 152cce0006ab ("drm/bridge: analogix_dp: Split bind() into probe() and real bind()")
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+Signed-off-by: Liang He <windhl@126.com>
 ---
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ drivers/pinctrl/pinctrl-rockchip.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 70be64ca0a00..ad2d3ae7e621 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -408,7 +408,15 @@ static int rockchip_dp_probe(struct platform_device *pdev)
- 	if (IS_ERR(dp->adp))
- 		return PTR_ERR(dp->adp);
- 
--	return component_add(dev, &rockchip_dp_component_ops);
-+	ret = component_add(dev, &rockchip_dp_component_ops);
-+	if (ret)
-+		goto err_dp_remove;
-+
-+	return 0;
-+
-+err_dp_remove:
-+	analogix_dp_remove(dp->adp);
-+	return ret;
- }
- 
- static int rockchip_dp_remove(struct platform_device *pdev)
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 32e41395fc76..d78827c97760 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -2710,6 +2710,7 @@ static int rockchip_pinctrl_parse_groups(struct device_node *np,
+ 		np_config = of_find_node_by_phandle(be32_to_cpup(phandle));
+ 		ret = pinconf_generic_parse_dt_config(np_config, NULL,
+ 				&grp->data[j].configs, &grp->data[j].nconfigs);
++		of_node_put(np_config);
+ 		if (ret)
+ 			return ret;
+ 	}
 -- 
-2.34.1
+2.25.1
 
 
 _______________________________________________
