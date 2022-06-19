@@ -4,57 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C680C43334
-	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jun 2022 07:34:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F96CC43334
+	for <linux-rockchip@archiver.kernel.org>; Sun, 19 Jun 2022 08:26:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rGC48hs9pUQFyPuFSJdT+388As5zUPVaGW4sufbahR0=; b=IUgBQarRu+cppA
-	zlsxGxQujjMxfm0YT02L9bhEQUFriv51UPToQMGCsnuealrjiTmQxiO2iV7Zv5k0let1Pw2dRdDk3
-	fRK8qAUMv5fIz0uj/4xK9DTb9IkQFlrPiXaTeueYTwBwxeOQCLV4RHCyXikvf+2rCO+ebaCfjg49w
-	mL0Zsd5u8VBJzxGN+EGgx14//aUjAndGJKzHf8PXrG5PA67iiDDyWzsCHWbviCh1xh5/H6d4cWQW+
-	guDBtNHyALXFMnooIa19Xl6wDO7eAl2f2EEzZ+J6M5ssroUrmtPw942AunftwMA3oQhSBZwQeOl0v
-	kNKUivO8mdyGUon0SWpQ==;
+	List-Owner; bh=QNqcdxF9wnLVP/QrMp5CbFnvSQSIcGgPdhnWlYSTyJs=; b=VcIqSV0zk9+QOU
+	41tFGxF+PQydGZKpTtA4vCZSoN3tcXU0V7p98aydoPDzqjrskyikbOWTjAkBl6CVftwDdQntxVRek
+	dP1orBuFMp15VcNe75tCoTUHizHtoqv2Wfxdm/VHMXFvGYR3ngzcoCaWQrmZWLV4dGFRcNUvUsduE
+	OQhyiGNZDOhhOqyF7TlfZaJp1l2HQHZYl6NDrzCktEzZh0AQU5LxZ9OrtrjzQ7oQ37UoLxJzho0Kh
+	g0wMoIZFf/OdwxKvlCoupVVtGr431dgVFZKs92c6uZGma2NlxuEvPaJbxPGcLoGFklt1gZo+9mnHS
+	Do0cbCPyHkSp8Ept2P1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2pRx-00DTOz-SR; Sun, 19 Jun 2022 07:34:25 +0000
-Received: from m15114.mail.126.com ([220.181.15.114])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o2pRm-00DTMK-Mz; Sun, 19 Jun 2022 07:34:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=126.com;
-	s=s110527; h=From:Subject:Date:Message-Id:MIME-Version; bh=qhxkr
-	/aOqu+vrmKB0+0pl6NWC0/MFEXuMV8Podpx0Ds=; b=MfggCQvt+upNsGoaH47cF
-	+b4IfpfMkVkJ0UZH5aI1kQAKd+Vvym4kbUwYlt8QESrmrmncIcXq23CoHykbNGit
-	bxa+8EXLpN5o43VpQTj/hGolvuaA9fRQgI1K7z/RceM12t8k03/flLtUQRDi+1Kr
-	QlaO9j8qYWvWeZ7NiaA6pE=
-Received: from localhost.localdomain (unknown [124.16.139.61])
-	by smtp7 (Coremail) with SMTP id DsmowACHl_M80a5iRtXFDg--.28970S2;
-	Sun, 19 Jun 2022 15:33:16 +0800 (CST)
-From: Liang He <windhl@126.com>
-To: linus.walleij@linaro.org,
-	heiko@sntech.de
-Cc: windhl@126.com,
-	linux-gpio@vger.kernel.org,
+	id 1o2qGf-00DaVn-EY; Sun, 19 Jun 2022 08:26:49 +0000
+Received: from mxout4.routing.net ([2a03:2900:1:a::9])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o2qGK-00DaMk-SF; Sun, 19 Jun 2022 08:26:30 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+	by mxout4.routing.net (Postfix) with ESMTP id 1B9861005EE;
+	Sun, 19 Jun 2022 08:26:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1655627176;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=El3eiqyJe3YtA9IE7kBZL0i2kK4Uj0j7O55/zFr8ZLU=;
+	b=ADrErCZhcAqvjuy8n/SQ/YGx6mGDEZEwIkwvwI7RZsGRwXOegwn4Mm9CQs5zFrdzDkWw0d
+	W82WX7cZIk9v6foxd0gvYJQ7rPyuVkGIX9I/uMPX5nLYWzYkHPDhUerM0AwCwgdtAJ1hga
+	IaMww8wfvino7oIxLfb3stHTi2pq61s=
+Received: from frank-G5.. (fttx-pool-157.180.227.195.bambit.de [157.180.227.195])
+	by mxbox2.masterlogin.de (Postfix) with ESMTPSA id DF4AA10054D;
+	Sun, 19 Jun 2022 08:26:14 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-rockchip@lists.infradead.org
+Cc: Frank Wunderlich <frank-w@public-files.de>,
+	Kishon Vijay Abraham I <kishon@ti.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Liang Chen <cl@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] pinctrl/rockchip: Fix refcount leak bug
-Date: Sun, 19 Jun 2022 15:33:15 +0800
-Message-Id: <20220619073315.4067956-1-windhl@126.com>
-X-Mailer: git-send-email 2.25.1
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v4 0/5] RK3568 PCIe V3 support
+Date: Sun, 19 Jun 2022 10:26:00 +0200
+Message-Id: <20220619082605.7935-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-CM-TRANSID: DsmowACHl_M80a5iRtXFDg--.28970S2
-X-Coremail-Antispam: 1Uf129KBjvdXoWrtrykArWxAryrZw4fZr4UXFb_yoWfJrcEka
-	4xWr9rXr1UGFWrur42q3y3WFyFkanrWr4vvFn7ZasxCasrXw1Iqrn5Wry3K3s7Gr4ayr9r
-	GrZFvr4rJFWUJjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUUID7DUUUUU==
-X-Originating-IP: [124.16.139.61]
-X-CM-SenderInfo: hzlqvxbo6rjloofrz/1tbi3B0lF1pEDwJZSwAAsy
+X-Mail-ID: 43d1a18b-a719-4417-955d-f644080d9cf4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220619_003415_141311_A52CF658 
-X-CRM114-Status: UNSURE (   6.38  )
+X-CRM114-CacheID: sfid-20220619_012629_100537_3ABDC1B6 
+X-CRM114-Status: UNSURE (   8.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,28 +85,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In rockchip_pinctrl_parse_groups(), we need a of_node_put() in each
-loop for the of_find_node_by_phandle() to keep the refcount balance.
+From: Frank Wunderlich <frank-w@public-files.de>
 
-Signed-off-by: Liang He <windhl@126.com>
----
- drivers/pinctrl/pinctrl-rockchip.c | 1 +
- 1 file changed, 1 insertion(+)
+This series adds Rockchip PCIe V3 support found on rk3568 SOC.
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 32e41395fc76..d78827c97760 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -2710,6 +2710,7 @@ static int rockchip_pinctrl_parse_groups(struct device_node *np,
- 		np_config = of_find_node_by_phandle(be32_to_cpup(phandle));
- 		ret = pinconf_generic_parse_dt_config(np_config, NULL,
- 				&grp->data[j].configs, &grp->data[j].nconfigs);
-+		of_node_put(np_config);
- 		if (ret)
- 			return ret;
- 	}
+Compared to PCIeV2 which uses the Naneng combphy, PCIe v3 uses a dedicated
+PCI-phy.
+
+Frank Wunderlich (4):
+  dt-bindings: phy: rockchip: add PCIe v3 phy
+  dt-bindings: soc: grf: add pcie30-{phy,pipe}-grf
+  arm64: dts: rockchip: rk3568: Add PCIe v3 nodes
+  arm64: dts: rockchip: Add PCIe v3 nodes to BPI-R2-Pro
+
+Shawn Lin (1):
+  phy: rockchip: Support PCIe v3
+
+ .../bindings/phy/rockchip,pcie3-phy.yaml      |  80 +++++
+ .../devicetree/bindings/soc/rockchip/grf.yaml |   3 +
+ .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   |  90 +++++
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 122 +++++++
+ drivers/phy/rockchip/Kconfig                  |   9 +
+ drivers/phy/rockchip/Makefile                 |   1 +
+ .../phy/rockchip/phy-rockchip-snps-pcie3.c    | 317 ++++++++++++++++++
+ include/linux/phy/pcie.h                      |  12 +
+ 8 files changed, 634 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/rockchip,pcie3-phy.yaml
+ create mode 100644 drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
+ create mode 100644 include/linux/phy/pcie.h
+
 -- 
-2.25.1
+2.34.1
 
 
 _______________________________________________
