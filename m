@@ -4,75 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0B7EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jun 2022 13:41:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EE33C43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jun 2022 14:28:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7nJM2n9PYU1yGJ1ZRviVul0OHHVELivtT/G4gzUZkPU=; b=wUkiZwhfyhNAaMTGlc2rQanDdv
-	Ig5wkdLRjmcOnNI2zqg3pS/E3yvcRhb33BRAx692qRnAmldjHnBocuYcxY2DPvy2ek26Do6vZ8fNv
-	bp1Q1cDFQ38ipUKaL4VeXRn2xdpGhdfWMtVQHhruAnIElaRNOp2WIbO0y5sDqTdIYlv7zuOm8U8Zl
-	arH6EKWCBxQgN/TW4zUXvYdUr86dPLwoCzyh6YKgWwfINuy1o8dK8hWJ52oYgqDs1fAswPrk1BsFE
-	lvPrPmQtoVtVc7k6qYiI2Nf1UD8MCJ2GGpIAHmXvQDDUSlx3aSsyIRKaP+i6NJVpDxz0BHzWAbTTm
-	P507Gnrw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IfBurvTKo9RAL+aiqnLLbZ4EAPcJ1CWoHUAORRYK05U=; b=QC5925DZPKKsHe
+	AL0oBXcrPeEDDjkcyVakCWep0D2IlsRGa4Kv/3Lo6cCU8hrnZRJQ5wMYBvVfadcw8Z+yx/EinQV+G
+	tVpyeJq1TpU899kzRTbiaFZnui3LoT94Zuowe8wyg1R1YfjPr0PxsTu9P6p22B7hW+87LsKkqd9tD
+	JTbOyxgm+R0O7WHtA997W60r8NMqAITka7yJEaOSP/sBJqUY44hoCCZ9jjYEt9QZeo2S1M8ziXTLy
+	Hhoz6GAk2Fk4JO/W75nS+erQFPsIi2z4XGqhC7GGWugAryRZfi5Pjr+bgv3qDpwtSm1m9zh5hkVHW
+	4josAOeUbsbZ9KlI6vTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3HeE-000vp7-Mm; Mon, 20 Jun 2022 13:40:58 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1o3INr-0014FI-92; Mon, 20 Jun 2022 14:28:07 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3HeB-000vjf-H4
-	for linux-rockchip@lists.infradead.org; Mon, 20 Jun 2022 13:40:57 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <mgr@pengutronix.de>)
-	id 1o3He1-0002eB-Dc; Mon, 20 Jun 2022 15:40:45 +0200
-Received: from mgr by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <mgr@pengutronix.de>)
-	id 1o3Hdv-00040a-Fb; Mon, 20 Jun 2022 15:40:39 +0200
-Date: Mon, 20 Jun 2022 15:40:39 +0200
-From: Michael Grzeschik <mgr@pengutronix.de>
-To: Nicolas Dufresne <nicolas@ndufresne.ca>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	Liang Chen <cl@rock-chips.com>, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-staging@lists.linux.dev,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: Re: [PATCH 0/3] Enable JPEG Encoder on RK3566/RK3568
-Message-ID: <20220620134039.GG21590@pengutronix.de>
-References: <20220427224438.335327-1-frattaroli.nicolas@gmail.com>
- <198ce3981ad15844627581f9519cab67ed2a81c1.camel@ndufresne.ca>
- <2438841.KJ31GcehEG@archbook>
- <20220429232047.GG7671@pengutronix.de>
- <0414bb0816eef95961fe47de96f97f925d29228f.camel@ndufresne.ca>
+	id 1o3INm-0014EF-Ud
+	for linux-rockchip@lists.infradead.org; Mon, 20 Jun 2022 14:28:05 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 1B1ABB811C4;
+	Mon, 20 Jun 2022 14:28:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78A10C3411B;
+	Mon, 20 Jun 2022 14:27:57 +0000 (UTC)
+Message-ID: <7a373ba9-4736-f726-a07e-38d9c5c9062c@xs4all.nl>
+Date: Mon, 20 Jun 2022 16:27:55 +0200
 MIME-Version: 1.0
-In-Reply-To: <0414bb0816eef95961fe47de96f97f925d29228f.camel@ndufresne.ca>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: mgr@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.6.0
+Subject: Re: [PATCH 16/55] media: v4l2-async: Add notifier operation to
+ destroy asd instances
+Content-Language: en-US
+To: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dafna@fastmail.com,
+ heiko@sntech.de, jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
+ djrscally@gmail.com, helen.koike@collabora.com,
+ linux-rockchip@lists.infradead.org
+References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
+ <20220614191127.3420492-17-paul.elder@ideasonboard.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+In-Reply-To: <20220614191127.3420492-17-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_064055_605804_49638C27 
-X-CRM114-Status: GOOD (  30.81  )
+X-CRM114-CacheID: sfid-20220620_072803_321350_9630AE58 
+X-CRM114-Status: GOOD (  26.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,144 +63,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8248430457201876306=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 6/14/22 21:10, Paul Elder wrote:
+> From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> 
+> Drivers typically extend the v4l2_async_subdev structure by embedding it
+> in a driver-specific structure, to store per-subdev custom data. The
+> v4l2_async_subdev instances are freed by the v4l2-async framework, which
+> makes this mechanism cumbersome to use safely when custom data needs
+> special treatment to be destroyed (such as freeing additional memory, or
+> releasing references to kernel objects).
+> 
+> To ease this, add a .destroy() operation to the
+> v4l2_async_notifier_operations structure. The operation is called right
+> before the v4l2_async_subdev is freed, giving drivers a chance to
+> destroy data if needed.
+> 
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
---===============8248430457201876306==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="uc35eWnScqDcQrv5"
-Content-Disposition: inline
+Reviewed-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 
+Looks good!
 
---uc35eWnScqDcQrv5
-Content-Type: text/plain; charset=iso-8859-15; format=flowed
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Regards,
 
-Hi Nicolas,
-Hi Andrzej,
+	Hans
 
-On Mon, May 02, 2022 at 08:20:50AM -0400, Nicolas Dufresne wrote:
->Le samedi 30 avril 2022 =E0 01:20 +0200, Michael Grzeschik a =E9crit=A0:
->> Since the RK3568 seems to get more and more of attention at the moment
->> I would like to ask if somebody is planning to write support the RKVENC
->> in mainline. That is the VEPU540 core refered to in the RK3568 TRM.
->>
->> I would start with that in the next weeks, taking the bootlin H1 support
->> as an reference to handle the request_api for the encoder part. Which is
->> currently completely untouched in mainline AFAIK.
->
->I'm very happy to ear you'd be interest in helping with this. I'm adding A=
-ndrzej
->in CC, as he started some base work using VP8 encoder on RK3399 (same HW f=
-ound
->on other RK SoC) to make this possible. Note that these are a new type of
->encoders and a specification is needed to ensure they all have a coherent =
-work-
->flow. The first step was obviously to have working prototype, Bootlin star=
-ted
->with H264 (but never posted anything on the mailing list). I'm under the
->impression they have abandoned it. Andrzej have decided to use VP8 as it is
->simpler. The prototype should help understand the basic flow of an encoder=
- and
->produce a specification for this.
+> ---
+>  Documentation/driver-api/media/v4l2-subdev.rst |  6 ++++++
+>  drivers/media/v4l2-core/v4l2-async.c           | 10 ++++++++++
+>  include/media/v4l2-async.h                     |  2 ++
+>  3 files changed, 18 insertions(+)
+> 
+> diff --git a/Documentation/driver-api/media/v4l2-subdev.rst b/Documentation/driver-api/media/v4l2-subdev.rst
+> index cf3b52bdbfb9..6f8d79926aa5 100644
+> --- a/Documentation/driver-api/media/v4l2-subdev.rst
+> +++ b/Documentation/driver-api/media/v4l2-subdev.rst
+> @@ -243,6 +243,12 @@ notifier callback is called. After all subdevices have been located the
+>  .complete() callback is called. When a subdevice is removed from the
+>  system the .unbind() method is called. All three callbacks are optional.
+>  
+> +Drivers can store any type of custom data in their driver-specific
+> +:c:type:`v4l2_async_subdev` wrapper. If any of that data requires special
+> +handling when the structure is freed, drivers must implement the ``.destroy()``
+> +notifier callback. The framework will call it right before freeing the
+> +:c:type:`v4l2_async_subdev`.
+> +
+>  Calling subdev operations
+>  ~~~~~~~~~~~~~~~~~~~~~~~~~
+>  
+> diff --git a/drivers/media/v4l2-core/v4l2-async.c b/drivers/media/v4l2-core/v4l2-async.c
+> index c6995718237a..735dede624b8 100644
+> --- a/drivers/media/v4l2-core/v4l2-async.c
+> +++ b/drivers/media/v4l2-core/v4l2-async.c
+> @@ -52,6 +52,15 @@ static int v4l2_async_nf_call_complete(struct v4l2_async_notifier *n)
+>  	return n->ops->complete(n);
+>  }
+>  
+> +static void v4l2_async_nf_call_destroy(struct v4l2_async_notifier *n,
+> +				       struct v4l2_async_subdev *asd)
+> +{
+> +	if (!n->ops || !n->ops->destroy)
+> +		return;
+> +
+> +	n->ops->destroy(asd);
+> +}
+> +
+>  static bool match_i2c(struct v4l2_async_notifier *notifier,
+>  		      struct v4l2_subdev *sd, struct v4l2_async_subdev *asd)
+>  {
+> @@ -626,6 +635,7 @@ static void __v4l2_async_nf_cleanup(struct v4l2_async_notifier *notifier)
+>  		}
+>  
+>  		list_del(&asd->asd_list);
+> +		v4l2_async_nf_call_destroy(notifier, asd);
+>  		kfree(asd);
+>  	}
+>  }
+> diff --git a/include/media/v4l2-async.h b/include/media/v4l2-async.h
+> index 13ff3ad948f4..25eb1d138c06 100644
+> --- a/include/media/v4l2-async.h
+> +++ b/include/media/v4l2-async.h
+> @@ -81,6 +81,7 @@ struct v4l2_async_subdev {
+>   * @complete:	All subdevices have been probed successfully. The complete
+>   *		callback is only executed for the root notifier.
+>   * @unbind:	a subdevice is leaving
+> + * @destroy:	the asd is about to be freed
+>   */
+>  struct v4l2_async_notifier_operations {
+>  	int (*bound)(struct v4l2_async_notifier *notifier,
+> @@ -90,6 +91,7 @@ struct v4l2_async_notifier_operations {
+>  	void (*unbind)(struct v4l2_async_notifier *notifier,
+>  		       struct v4l2_subdev *subdev,
+>  		       struct v4l2_async_subdev *asd);
+> +	void (*destroy)(struct v4l2_async_subdev *asd);
+>  };
+>  
+>  /**
 
-I just have tested the bootlin v4l2-h264-encoder stack on the rk3399
-with v5.19-rc2. It is working as expected.
-
-Since there have been some rumours about using the VEPU121 core on the
-rk3568, which could have h264 support as well. I have tested this
-stack on that core as well.
-
-The findings are; It is producing some data, but the stream created
-is not possible to be decoded. Tested with vlc and gstreamer.
-
-Be it due to misconfiguration or the core is really not h264 capable.
-
-Find the latest code here:
-
-https://git.pengutronix.de/cgit/mgr/linux/log/?h=3Dv5.19/topic/rk3568-vepu-=
-h264-stateless-bootlin
-
->From there, the "easy" part is to make per codec controls, to configure the
->encoder. Demonstrating fixed QP, this is about were I believe Bootlin stop=
-ped.
-
-I have seen that the userspace tool is filling in some initial values
-in the PPS and SPS headers, which are not adjustable. I bet you refer to th=
-at.
-
->And I personally believe some OSS userland (not just tests) that can handle
->multiple reference, perhaps more advance GOP pattern and some basic rate c=
-ontrol
->would help build confidence in the uAPI.
-
-I found the following CTRL Types being defined in the bootlin stack
-for the request API.
-
-V4L2_CID_STATELESS_H264_ENCODE_PARAMS
-V4L2_CID_STATELESS_H264_ENCODE_RC
-V4L2_CID_STATELESS_H264_ENCODE_FEEDBACK
-
-The FEEDBACK CID is the information we gain after one frame was
-encoded. With this data the RC (Rate Control) parameter is prepared for
-the next frame.
-
-You mean to have some user interface to make the rate control user
-configurable?
-
->Let us know how we can help, we should >void doing the same thing, as
->this is already quite a large project that can easily take over a year
->to become mainline ready.
-
-It would probably help to share some codebase. If you already have
-something for that rkvenc codec, be it VP8 support. It would probably
-make sense for me to build up on that. Or to discuss common code
-patterns on structures.
-
-Michael
-
---=20
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-
---uc35eWnScqDcQrv5
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEElXvEUs6VPX6mDPT8C+njFXoeLGQFAmKweNQACgkQC+njFXoe
-LGT11RAAnVZ0A6JKPjgbTZ/1C64OH4qCrOEQTTgTjxGPByN1DdSUNxLlC6ImI93g
-ntqqVZL5ZEH7YDcP60ckHU2Z8CfsGDz1vGLjkP6NwcErjO+3jEu7Y5m3fajJ+xqL
-Jzzm7x3NM1X0lB8aTzwOQ0HdUirA9m6Vd4lvGy8e+M/73SaXLAWlv5CsfONXfuQB
-pamaG6u76JwcgopgmhFBOyxj7TFWrzHIwXJ8DdQTLz3/1fKcQ9/ESyilhbSKjuzh
-/BIHvjJ6Zv3dMfSefrr6tdiyftopOFz4XlxkdKwqKzcgSfiBmiOmCkLqHm+UQcA+
-P5wq+bSjoXRj5chsQ/LfqsUBt9tERP16lZQ/on6Wg7LCfG/rdXcEUrrXoffOyr54
-1KRyjgUzTXLL1nu/e/OK7ar5ZD+Nb5I3/DFNlIgdNRCKX7pS2RKruLyHU2u4T4om
-S3q9u+vfx4D3Aug2Zgtb771sRZJDhn7jvpuiQB+B5nEeGtRzZzAy702IoBJgu1Qx
-4XYYwNC9a1pA4Ywl9P+az5pw+9zZ0cPdt5mPcNI9iHz4L7xXNTZ+HhiMc/GKp4d3
-IhkFkhMBLDcGmQgO8BedhjqSHOP9H3eAOpN/91xoDkSpRWKfhqV8meIgCkQ96haW
-cKsgq2jQqLWq1YcTnE1nIlpspJP5wd87KaHVjTaAcy54jt59hzE=
-=v/bQ
------END PGP SIGNATURE-----
-
---uc35eWnScqDcQrv5--
-
-
---===============8248430457201876306==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8248430457201876306==--
-
