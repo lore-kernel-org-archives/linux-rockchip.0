@@ -4,54 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EE33C43334
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jun 2022 14:28:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DDCAC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Jun 2022 16:13:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IfBurvTKo9RAL+aiqnLLbZ4EAPcJ1CWoHUAORRYK05U=; b=QC5925DZPKKsHe
-	AL0oBXcrPeEDDjkcyVakCWep0D2IlsRGa4Kv/3Lo6cCU8hrnZRJQ5wMYBvVfadcw8Z+yx/EinQV+G
-	tVpyeJq1TpU899kzRTbiaFZnui3LoT94Zuowe8wyg1R1YfjPr0PxsTu9P6p22B7hW+87LsKkqd9tD
-	JTbOyxgm+R0O7WHtA997W60r8NMqAITka7yJEaOSP/sBJqUY44hoCCZ9jjYEt9QZeo2S1M8ziXTLy
-	Hhoz6GAk2Fk4JO/W75nS+erQFPsIi2z4XGqhC7GGWugAryRZfi5Pjr+bgv3qDpwtSm1m9zh5hkVHW
-	4josAOeUbsbZ9KlI6vTQ==;
+	List-Owner; bh=JZwSnO89a78SSgYbRA/j6/G7sDo+sQcd5BOdrJa0hDE=; b=VrLGN820N0+/AK
+	yL1lK7WmsgDTvz2DF2L5sXC8/Emm/HRTYqv4ap8ap9EuM8fn0yyRjUUz0NDUS4OeK2jzehwUKMMee
+	8VZIVEIz7+ue57Vt97KtjAc+IOvHoh8+lauzGyjt5oiw2QAD5S2FirC3iM0Xr0klNUkWU8KQFHQNd
+	Q++6VLcwPCdkb8rH+68tpofDpA27wGWJtzA4C2UP2gD44GZ8vbYg6gDn4CkfbG/KhOb1W2bTIjJ0c
+	GtxOrkCXaoltcT0UytKPr/MNLkufEkVht7YJsip3kiH0v2h4uFLrGWL2eAHuvwD/23duFUM3pf5uM
+	bZfg9CkA6K9VcOUJIgQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3INr-0014FI-92; Mon, 20 Jun 2022 14:28:07 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1o3K20-001PGn-Er; Mon, 20 Jun 2022 16:13:40 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3INm-0014EF-Ud
-	for linux-rockchip@lists.infradead.org; Mon, 20 Jun 2022 14:28:05 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 1B1ABB811C4;
-	Mon, 20 Jun 2022 14:28:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 78A10C3411B;
-	Mon, 20 Jun 2022 14:27:57 +0000 (UTC)
-Message-ID: <7a373ba9-4736-f726-a07e-38d9c5c9062c@xs4all.nl>
-Date: Mon, 20 Jun 2022 16:27:55 +0200
+	id 1o3K1v-001PFg-4F
+	for linux-rockchip@lists.infradead.org; Mon, 20 Jun 2022 16:13:38 +0000
+Received: by mail-ed1-x530.google.com with SMTP id b8so15770635edj.11
+        for <linux-rockchip@lists.infradead.org>; Mon, 20 Jun 2022 09:13:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=amarulasolutions.com; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=ZJmJdj8nRClod9Z4u/Y8NwaNKFRU93bJiGvbGJuwavU=;
+        b=RQlUd87epecEzei0t79oGeBMIiZR0/2tJfN9XXH5QN+MWfxEEJ6fre2RI8xOublN3M
+         A5k+kQ3BfQHHLQ/+xDmzKeA1eRBp3+VM3SwU9yix5WkOTOVf25Ppvu+Q64N3wAE1Del2
+         UMoEPmd63bBjTdk6Um9vFvIaZX8eJMnYP4Hp4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=ZJmJdj8nRClod9Z4u/Y8NwaNKFRU93bJiGvbGJuwavU=;
+        b=rYHrFV7hpzi8XfG6smFmAcbEZw2a04d+RYmW5eqHlhzc53RzAwNFog0ZDWk2oBGwYn
+         uMxkr+MpQ17M0ir/RGi72zkaOx0mNvDLKjDvyLPqetKO8MGSnBI3iM1/FZh9boWevUgO
+         9pRGjYx0Z6TTqWA0JSf783iDRhJi9yAcYlsRNlFFmg3WBhX2CQD3KZAZAxjEnmr9wGJV
+         /cLd6eru1OM5ai/EfIaS3avX75UMDhN2y7ieBXjaET12H3LysN3QjEH2YYMk9hXO1Lz1
+         B1Vz0xOpSWkLQbNqSRwE0VLznfk36xxy6dx9K4HtXfVJO+HPuA1gYZZwAvefHaVCnmpN
+         DryA==
+X-Gm-Message-State: AJIora8ye6Cgoq3YleslI5wk8WNwN4ggh4njSIl7kEWOO2G4IFKmNBFi
+	nvmPQEmw+HVjWADuA0Y3kyQcHA==
+X-Google-Smtp-Source: AGRyM1v2E4EsdSvTyCjiSPb7XU8YdefsrsLd6QxRC9ZwWvG54o42T1cmj7ikK0ag4dtck5lD6BN4eQ==
+X-Received: by 2002:aa7:dcc1:0:b0:435:5db1:c749 with SMTP id w1-20020aa7dcc1000000b004355db1c749mr22894260edu.124.1655741613213;
+        Mon, 20 Jun 2022 09:13:33 -0700 (PDT)
+Received: from tom-ThinkPad-T14s-Gen-2i.station (net-188-217-55-189.cust.vodafonedsl.it. [188.217.55.189])
+        by smtp.gmail.com with ESMTPSA id p26-20020a17090653da00b00706c1327f4bsm6209772ejo.23.2022.06.20.09.13.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Jun 2022 09:13:32 -0700 (PDT)
+From: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
+To: 
+Cc: linuxfancy@googlegroups.com,
+	linux-amarula@amarulasolutions.com,
+	jacopo@jmondi.org,
+	Tommaso Merciai <tommaso.merciai@amarulasolutions.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 3/3] arm64: dts: rockchip: px30: use rk gpio naming convention into reset-gpios
+Date: Mon, 20 Jun 2022 18:13:20 +0200
+Message-Id: <20220620161321.1898840-4-tommaso.merciai@amarulasolutions.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220620161321.1898840-1-tommaso.merciai@amarulasolutions.com>
+References: <20220620161321.1898840-1-tommaso.merciai@amarulasolutions.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.0
-Subject: Re: [PATCH 16/55] media: v4l2-async: Add notifier operation to
- destroy asd instances
-Content-Language: en-US
-To: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, dafna@fastmail.com,
- heiko@sntech.de, jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
- djrscally@gmail.com, helen.koike@collabora.com,
- linux-rockchip@lists.infradead.org
-References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
- <20220614191127.3420492-17-paul.elder@ideasonboard.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <20220614191127.3420492-17-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220620_072803_321350_9630AE58 
-X-CRM114-Status: GOOD (  26.93  )
+X-CRM114-CacheID: sfid-20220620_091335_208338_41F10846 
+X-CRM114-Status: GOOD (  10.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,102 +94,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 6/14/22 21:10, Paul Elder wrote:
-> From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> 
-> Drivers typically extend the v4l2_async_subdev structure by embedding it
-> in a driver-specific structure, to store per-subdev custom data. The
-> v4l2_async_subdev instances are freed by the v4l2-async framework, which
-> makes this mechanism cumbersome to use safely when custom data needs
-> special treatment to be destroyed (such as freeing additional memory, or
-> releasing references to kernel objects).
-> 
-> To ease this, add a .destroy() operation to the
-> v4l2_async_notifier_operations structure. The operation is called right
-> before the v4l2_async_subdev is freed, giving drivers a chance to
-> destroy data if needed.
-> 
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Use rk gpio naming convention into reset-gpios of ov5695 camera
 
-Reviewed-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Signed-off-by: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
+Tested-by: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
+---
+ arch/arm64/boot/dts/rockchip/px30-evb.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Looks good!
-
-Regards,
-
-	Hans
-
-> ---
->  Documentation/driver-api/media/v4l2-subdev.rst |  6 ++++++
->  drivers/media/v4l2-core/v4l2-async.c           | 10 ++++++++++
->  include/media/v4l2-async.h                     |  2 ++
->  3 files changed, 18 insertions(+)
-> 
-> diff --git a/Documentation/driver-api/media/v4l2-subdev.rst b/Documentation/driver-api/media/v4l2-subdev.rst
-> index cf3b52bdbfb9..6f8d79926aa5 100644
-> --- a/Documentation/driver-api/media/v4l2-subdev.rst
-> +++ b/Documentation/driver-api/media/v4l2-subdev.rst
-> @@ -243,6 +243,12 @@ notifier callback is called. After all subdevices have been located the
->  .complete() callback is called. When a subdevice is removed from the
->  system the .unbind() method is called. All three callbacks are optional.
->  
-> +Drivers can store any type of custom data in their driver-specific
-> +:c:type:`v4l2_async_subdev` wrapper. If any of that data requires special
-> +handling when the structure is freed, drivers must implement the ``.destroy()``
-> +notifier callback. The framework will call it right before freeing the
-> +:c:type:`v4l2_async_subdev`.
-> +
->  Calling subdev operations
->  ~~~~~~~~~~~~~~~~~~~~~~~~~
->  
-> diff --git a/drivers/media/v4l2-core/v4l2-async.c b/drivers/media/v4l2-core/v4l2-async.c
-> index c6995718237a..735dede624b8 100644
-> --- a/drivers/media/v4l2-core/v4l2-async.c
-> +++ b/drivers/media/v4l2-core/v4l2-async.c
-> @@ -52,6 +52,15 @@ static int v4l2_async_nf_call_complete(struct v4l2_async_notifier *n)
->  	return n->ops->complete(n);
->  }
->  
-> +static void v4l2_async_nf_call_destroy(struct v4l2_async_notifier *n,
-> +				       struct v4l2_async_subdev *asd)
-> +{
-> +	if (!n->ops || !n->ops->destroy)
-> +		return;
-> +
-> +	n->ops->destroy(asd);
-> +}
-> +
->  static bool match_i2c(struct v4l2_async_notifier *notifier,
->  		      struct v4l2_subdev *sd, struct v4l2_async_subdev *asd)
->  {
-> @@ -626,6 +635,7 @@ static void __v4l2_async_nf_cleanup(struct v4l2_async_notifier *notifier)
->  		}
->  
->  		list_del(&asd->asd_list);
-> +		v4l2_async_nf_call_destroy(notifier, asd);
->  		kfree(asd);
->  	}
->  }
-> diff --git a/include/media/v4l2-async.h b/include/media/v4l2-async.h
-> index 13ff3ad948f4..25eb1d138c06 100644
-> --- a/include/media/v4l2-async.h
-> +++ b/include/media/v4l2-async.h
-> @@ -81,6 +81,7 @@ struct v4l2_async_subdev {
->   * @complete:	All subdevices have been probed successfully. The complete
->   *		callback is only executed for the root notifier.
->   * @unbind:	a subdevice is leaving
-> + * @destroy:	the asd is about to be freed
->   */
->  struct v4l2_async_notifier_operations {
->  	int (*bound)(struct v4l2_async_notifier *notifier,
-> @@ -90,6 +91,7 @@ struct v4l2_async_notifier_operations {
->  	void (*unbind)(struct v4l2_async_notifier *notifier,
->  		       struct v4l2_subdev *subdev,
->  		       struct v4l2_async_subdev *asd);
-> +	void (*destroy)(struct v4l2_async_subdev *asd);
->  };
->  
->  /**
+diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+index aee7fecdfc15..bc59a5588ea7 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
++++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+@@ -449,8 +449,8 @@ ov5695: ov5695@36 {
+ 		dvdd-supply = <&vcc1v5_dvp>;
+ 		dovdd-supply = <&vcc1v8_dvp>;
+ 		pinctrl-names = "default";
+-		reset-gpios = <&gpio2 14 GPIO_ACTIVE_LOW>;
+ 		pinctrl-0 = <&cif_clkout_m0 &mipi_pdn>;
++		reset-gpios = <&gpio2 RK_PB6 GPIO_ACTIVE_LOW>;
+ 
+ 		port {
+ 			ucam_out: endpoint {
+-- 
+2.25.1
 
 
 _______________________________________________
