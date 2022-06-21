@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A00C6C43334
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jun 2022 17:59:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14A66C43334
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Jun 2022 18:03:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date
 	:From:In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZDtMacsVZYIeZz8HS1jms1p8EFzfv748PbUabMVDanA=; b=eYiU5xfEgVriIn
-	9qVI69WMv3XFjCVgc/8DtBO18LxIHiZpsw2NqUqPez5S94bKXXDasmwD74uKYhO8w4ybX0v2VGSmR
-	xBEwVHH790X5b7Sst1/W5QfuSCJUampeX4neOzJmTKYvxDI8yYCJVSrTA/Q6nPxn//z51Y7eIs4J1
-	3vGBKH/qlVhuYi5pyqBo8D+0ENLvpYezsUzH3Vj8nn+by8gaQ8pM6JvWo0aDhOdx3s23690dnPTS0
-	0pRaEl+A8Y5ujEjueSR2nV6n3P5g1YHDmdjH02tP3K08RE8DbQEk5gMYYSp92486+MYOH4A2Wo54P
-	Ruf7LBLY5jJ8WvRs0yOg==;
+	List-Owner; bh=g+6fyUtBbSsN1pjmnXljt5I+DtLp2d/mc6uRVFyZ++s=; b=kO5XYLS675a0Dv
+	Fcqzjuoxws9oMabV4/07ltNAwjF+CQKA1El4vO3LaSBppoIXup34tApTMHiLo87S9v46M9RA3we+S
+	pkKpqT153OGqZFMpDwfJotYpx+wDhijdGu/kFWaqvQUx7DMqIah/KuSvOVwDijEcLIpvIGj+Iqwjs
+	i3Nh53WBrZbOFsSzZt9ZbR8rIF9XTWEIbIvf6QfkMpnJdxAFog6uLm3+p2KjQP3oYA3iQiQWwel1w
+	bANYPg3jL9kcKMJ0Yf/z8Q/ERLDmX8UXKpOhFp3rSa+MsBBQyebbuV17t2cKaK1j8OLWpNEdDMQX+
+	bQHkGj92X7WXKYcEdyhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3i9a-006egK-LW; Tue, 21 Jun 2022 17:59:06 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1o3iDS-006fIR-Hw; Tue, 21 Jun 2022 18:03:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o3i9O-006ecN-Qs; Tue, 21 Jun 2022 17:58:56 +0000
+	id 1o3iDG-006fHE-PL; Tue, 21 Jun 2022 18:02:56 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 1D660615C3;
-	Tue, 21 Jun 2022 17:58:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7EA2FC341C6;
-	Tue, 21 Jun 2022 17:58:52 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 4726A615C3;
+	Tue, 21 Jun 2022 18:02:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A56E4C341C5;
+	Tue, 21 Jun 2022 18:02:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655834332;
-	bh=ie0fsV1NYE5zKGkG5gMpaBWr3MLQDZYRSPzwKnAxneM=;
+	s=k20201202; t=1655834573;
+	bh=m1X7FvI1uiifJspV+x3BmlWHT5A5zSRKyjEIzbgM4IM=;
 	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc:From;
-	b=JHCfdE6dN3MO0DXOhdUQXJcHo0AsiOF5Q+ukREbQ6KO0Rt0D4FGy1r/5xrZrFdmRb
-	 WgYbTT0PlxGBjQS+5p6AxW2GLu9HkLUPuT3C3YWw50lr0MzN7eYSmjIcgwwG21ImIY
-	 nbGNa91GpE6Fw/R2R42DlSoPNA8D65I3tzab9pI3ggqgXXppeRGo0bPkG7U7UN2zO9
-	 Jfgeoh1QVgIsXIBM0hFK4r93cw+s+6YwPwDQSLRKiNz1ZfIMYlmoM+gl98ogqUW3Mc
-	 3wIvgYu8kaV0jEJsk0GnLLqwA1HhmeuEjK35/YDW20+DIdX2QMl5iwOSOfy8JefIyN
-	 rf6PRqS1lI1ow==
-Received: by mail-vs1-f45.google.com with SMTP id r4so14640956vsf.10;
-        Tue, 21 Jun 2022 10:58:52 -0700 (PDT)
-X-Gm-Message-State: AJIora9N4JvGA3xx1lubBugja/jcgnIQwALHnoGxWXFi45mr6c03/7Dw
-	Eg+Xxm7lhmW6n2P9rgfA8e3wtw3wKhFa+eiJBCA=
-X-Google-Smtp-Source: AGRyM1svAWcHbrEfGfm5k/hfuTdXisxqG0fTMNVOlWCOHViV1GoqBV/BhrgxrOMrH1bW8b9DhhQj/KWLQU4ZXR87G2A=
-X-Received: by 2002:a05:6102:38cd:b0:354:3f24:56bf with SMTP id
- k13-20020a05610238cd00b003543f2456bfmr3870027vst.49.1655834331405; Tue, 21
- Jun 2022 10:58:51 -0700 (PDT)
+	b=ghh7+xjqdr9eFxyRx3wiMhMP/pIOlGjgxnejNYFTzAtIgG+cr9lbFCYwbEuKOnRs6
+	 EY8XnbUK3ZGsym5er2Pxb3sCu9bksrzVx6G841feJDuKgNc47SvVracpXZfaSEqU3o
+	 psoEQN5nGVjI6K3FNiwUpEaU8vv0a2A+xfJD01Fb9r0FbUl2T9j16RTWdcJ3ETNM8e
+	 Xkti3SJlyLmFkh070Yja4kNpsFLj72+W3GV5hgT7P1CrP+d9zZ7nStstwV89pL6yS1
+	 Og/V1tnp+9QdCeo3kQhHWhj4pqqomgVdqQg4b8OElGCPtvNSPYE4h7YFeCmTe4/3DP
+	 ZLHlOYtALRstw==
+Received: by mail-vk1-f180.google.com with SMTP id b4so3597311vkh.6;
+        Tue, 21 Jun 2022 11:02:53 -0700 (PDT)
+X-Gm-Message-State: AJIora/1RUY24Ix3vGwSrTYp3ZazW6MXRuSZG5FxmdM45bdZaJ0aQICN
+	5CQJBaUCdzPURWacvUyqbtP5Z8btwqG0jaBaIzY=
+X-Google-Smtp-Source: AGRyM1uyIe7b28W4Jxl7Eqs9weFsOOBRrjta8K1BfyGR4+d14hvHWpkSnOYBB8+31J6rbc1R4Zx8Q/GvwqzUsNpPPQE=
+X-Received: by 2002:a05:6122:d82:b0:36b:fb80:5116 with SMTP id
+ bc2-20020a0561220d8200b0036bfb805116mr5776924vkb.26.1655834572507; Tue, 21
+ Jun 2022 11:02:52 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220619095324.492678-1-judyhsiao@chromium.org> <165583076931.271995.9857794745310978104.b4-ty@kernel.org>
-In-Reply-To: <165583076931.271995.9857794745310978104.b4-ty@kernel.org>
+References: <20220619095324.492678-1-judyhsiao@chromium.org> <20220619095324.492678-2-judyhsiao@chromium.org>
+In-Reply-To: <20220619095324.492678-2-judyhsiao@chromium.org>
 From: Chen-Yu Tsai <wens@kernel.org>
-Date: Wed, 22 Jun 2022 01:58:40 +0800
-X-Gmail-Original-Message-ID: <CAGb2v66+ZjKFvCfq-H3F_ZdyxiKHY6=7juhSCmHPK3o8kgw+Og@mail.gmail.com>
-Message-ID: <CAGb2v66+ZjKFvCfq-H3F_ZdyxiKHY6=7juhSCmHPK3o8kgw+Og@mail.gmail.com>
-Subject: Re: (subset) [PATCH v4 0/3] ASoC: rockchip: i2s: switch BCLK to GPIO
-To: Mark Brown <broonie@kernel.org>
-Cc: judyhsiao@chromium.org, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Jaroslav Kysela <perex@perex.cz>, linux-kernel <linux-kernel@vger.kernel.org>, wenst@chromium.org, 
-	Liam Girdwood <lgirdwood@gmail.com>, 
+Date: Wed, 22 Jun 2022 02:02:41 +0800
+X-Gmail-Original-Message-ID: <CAGb2v64WsRV_pPsD4BQOjtFXOwca5xVkrXRxyxz2OLvQqKifPg@mail.gmail.com>
+Message-ID: <CAGb2v64WsRV_pPsD4BQOjtFXOwca5xVkrXRxyxz2OLvQqKifPg@mail.gmail.com>
+Subject: Re: [PATCH v4 1/3] ASoC: rockchip: i2s: switch BCLK to GPIO
+To: Judy Hsiao <judyhsiao@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Rob Herring <robh+dt@kernel.org>, Brian Norris <briannorris@chromium.org>, 
+	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Chen-Yu Tsai <wenst@chromium.org>, 
+	Linux-ALSA <alsa-devel@alsa-project.org>, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
 	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, briannorris@chromium.org, 
-	Rob Herring <robh+dt@kernel.org>, Linux-ALSA <alsa-devel@alsa-project.org>
+	linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220621_105854_984233_51F3F743 
-X-CRM114-Status: GOOD (  28.98  )
+X-CRM114-CacheID: sfid-20220621_110254_948884_2514B2AF 
+X-CRM114-Status: GOOD (  35.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,73 +85,300 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mark,
+Hi,
 
-On Wed, Jun 22, 2022 at 1:00 AM Mark Brown <broonie@kernel.org> wrote:
+On Sun, Jun 19, 2022 at 5:54 PM Judy Hsiao <judyhsiao@chromium.org> wrote:
 >
-> On Sun, 19 Jun 2022 09:53:21 +0000, Judy Hsiao wrote:
-> > The patches series is to fix the unexpected large DC output
-> > voltage of Max98357a that burns the speakers on the rockchip
-> > platform when BCLK and SD_MODE are ON but LRCLK is OFF.
-> >
-> > Changes Since V4:
-> >     -- Fix indentation in the driver. (Align parameters with the parenthesis
-> >        placement.)
-> >     -- Fix incorrect return type of rockchip_snd_rxctrl.
-> > Changes Since V3:
-> >     -- Fix indentation in the documentation.
-> >     -- Put pinctrl-1 right after pinctrl-0 in dtsi.
-> >     -- Fix indentation in the driver.
-> >     -- Remove unnecessary dev_dbg() in the driver.
-> > Changes Since V2:
-> >     -- Add documents of i2s pinctrl-names.
-> >     -- Fix dtsi syntax error.
-> >     -- Include the dtsi change and the driver change in the same series.
-> >     -- Ensure that driver gets both bclk_on and bclk_off states before using them.
-> >
-> > [...]
+> We discoverd that the state of BCLK on, LRCLK off and SD_MODE on
+> may cause the speaker melting issue. Removing LRCLK while BCLK
+> is present can cause unexpected output behavior including a large
+> DC output voltage as described in the Max98357a datasheet.
 >
-> Applied to
+> In order to:
+>   1. prevent BCLK from turning on by other component.
+>   2. keep BCLK and LRCLK being present at the same time
 >
->    https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+> This patch switches BCLK to GPIO func before LRCLK output, and
+> configures BCLK func back during LRCLK is output.
 >
-> Thanks!
+> Without this fix, BCLK is turned on 11 ms earlier than LRCK by the
+> da7219.
+> With this fix, BCLK is turned on only 0.4 ms earlier than LRCK by
+> the rockchip codec.
 >
-> [1/3] ASoC: rockchip: i2s: switch BCLK to GPIO
->       commit: 44f362c2cc6dd0c5e3cb499c4fb4ed45b63a6196
+> Signed-off-by: Judy Hsiao <judyhsiao@chromium.org>
+> Reviewed-by: Brian Norris <briannorris@chromium.org>
+> ---
+>  sound/soc/rockchip/rockchip_i2s.c | 171 ++++++++++++++++++++++--------
+>  1 file changed, 124 insertions(+), 47 deletions(-)
+>
+> diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+> index 47a3971a9ce1..8e4a9b8746fd 100644
+> --- a/sound/soc/rockchip/rockchip_i2s.c
+> +++ b/sound/soc/rockchip/rockchip_i2s.c
+> @@ -54,8 +54,38 @@ struct rk_i2s_dev {
+>         const struct rk_i2s_pins *pins;
+>         unsigned int bclk_ratio;
+>         spinlock_t lock; /* tx/rx lock */
+> +       struct pinctrl *pinctrl;
+> +       struct pinctrl_state *bclk_on;
+> +       struct pinctrl_state *bclk_off;
+>  };
+>
+> +static int i2s_pinctrl_select_bclk_on(struct rk_i2s_dev *i2s)
+> +{
+> +       int ret = 0;
+> +
+> +       if (!IS_ERR(i2s->pinctrl) && !IS_ERR_OR_NULL(i2s->bclk_on))
+> +               ret = pinctrl_select_state(i2s->pinctrl, i2s->bclk_on);
+> +
+> +       if (ret)
+> +               dev_err(i2s->dev, "bclk enable failed %d\n", ret);
+> +
+> +       return ret;
+> +}
+> +
+> +static int i2s_pinctrl_select_bclk_off(struct rk_i2s_dev *i2s)
+> +{
+> +
+> +       int ret = 0;
+> +
+> +       if (!IS_ERR(i2s->pinctrl) && !IS_ERR_OR_NULL(i2s->bclk_off))
+> +               ret = pinctrl_select_state(i2s->pinctrl, i2s->bclk_off);
+> +
+> +       if (ret)
+> +               dev_err(i2s->dev, "bclk disable failed %d\n", ret);
+> +
+> +       return ret;
+> +}
+> +
+>  static int i2s_runtime_suspend(struct device *dev)
+>  {
+>         struct rk_i2s_dev *i2s = dev_get_drvdata(dev);
+> @@ -92,39 +122,46 @@ static inline struct rk_i2s_dev *to_info(struct snd_soc_dai *dai)
+>         return snd_soc_dai_get_drvdata(dai);
+>  }
+>
+> -static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
+> +static int rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
+>  {
+>         unsigned int val = 0;
+>         int retry = 10;
+> -
+> +       int ret = 0;
+> +
+>         spin_lock(&i2s->lock);
+>         if (on) {
+> -               regmap_update_bits(i2s->regmap, I2S_DMACR,
+> -                                  I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_ENABLE);
+> -
+> -               regmap_update_bits(i2s->regmap, I2S_XFER,
+> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START,
+> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START);
+> -
+> +               ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
+> +                                        I2S_DMACR_TDE_ENABLE,
+> +                                        I2S_DMACR_TDE_ENABLE);
+> +               if (ret < 0)
+> +                       goto end;
+> +               ret = regmap_update_bits(i2s->regmap, I2S_XFER,
+> +                                        I2S_XFER_TXS_START | I2S_XFER_RXS_START,
+> +                                        I2S_XFER_TXS_START | I2S_XFER_RXS_START);
+> +               if (ret < 0)
+> +                       goto end;
+>                 i2s->tx_start = true;
+>         } else {
+>                 i2s->tx_start = false;
+>
+> -               regmap_update_bits(i2s->regmap, I2S_DMACR,
+> -                                  I2S_DMACR_TDE_ENABLE, I2S_DMACR_TDE_DISABLE);
+> +               ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
+> +                                        I2S_DMACR_TDE_ENABLE,
+> +                                        I2S_DMACR_TDE_DISABLE);
+> +               if (ret < 0)
+> +                       goto end;
+>
+>                 if (!i2s->rx_start) {
+> -                       regmap_update_bits(i2s->regmap, I2S_XFER,
+> -                                          I2S_XFER_TXS_START |
+> -                                          I2S_XFER_RXS_START,
+> -                                          I2S_XFER_TXS_STOP |
+> -                                          I2S_XFER_RXS_STOP);
+> -
+> +                       ret = regmap_update_bits(i2s->regmap, I2S_XFER,
+> +                                                I2S_XFER_TXS_START | I2S_XFER_RXS_START,
+> +                                                I2S_XFER_TXS_STOP | I2S_XFER_RXS_STOP);
+> +                       if (ret < 0)
+> +                               goto end;
+>                         udelay(150);
+> -                       regmap_update_bits(i2s->regmap, I2S_CLR,
+> -                                          I2S_CLR_TXC | I2S_CLR_RXC,
+> -                                          I2S_CLR_TXC | I2S_CLR_RXC);
+> -
+> +                       ret = regmap_update_bits(i2s->regmap, I2S_CLR,
+> +                                                I2S_CLR_TXC | I2S_CLR_RXC,
+> +                                                I2S_CLR_TXC | I2S_CLR_RXC);
+> +                       if (ret < 0)
+> +                               goto end;
+>                         regmap_read(i2s->regmap, I2S_CLR, &val);
+>
+>                         /* Should wait for clear operation to finish */
+> @@ -138,42 +175,55 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
+>                         }
+>                 }
+>         }
+> +end:
+>         spin_unlock(&i2s->lock);
+> +       if (ret < 0)
+> +               dev_err(i2s->dev, "lrclk update failed\n");
+> +
+> +       return ret;
+>  }
+>
+> -static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
+> +static int rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
+>  {
+>         unsigned int val = 0;
+>         int retry = 10;
+> +       int ret = 0;
+>
+>         spin_lock(&i2s->lock);
+>         if (on) {
+> -               regmap_update_bits(i2s->regmap, I2S_DMACR,
+> -                                  I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_ENABLE);
+> -
+> -               regmap_update_bits(i2s->regmap, I2S_XFER,
+> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START,
+> -                                  I2S_XFER_TXS_START | I2S_XFER_RXS_START);
+> -
+> +               ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
+> +                                        I2S_DMACR_RDE_ENABLE,
+> +                                        I2S_DMACR_RDE_ENABLE);
+> +               if (ret < 0)
+> +                       goto end;
+> +
+> +               ret = regmap_update_bits(i2s->regmap, I2S_XFER,
+> +                                        I2S_XFER_TXS_START | I2S_XFER_RXS_START,
+> +                                        I2S_XFER_TXS_START | I2S_XFER_RXS_START);
+> +               if (ret < 0)
+> +                       goto end;
+>                 i2s->rx_start = true;
+>         } else {
+>                 i2s->rx_start = false;
+>
+> -               regmap_update_bits(i2s->regmap, I2S_DMACR,
+> -                                  I2S_DMACR_RDE_ENABLE, I2S_DMACR_RDE_DISABLE);
+> +               ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
+> +                                        I2S_DMACR_RDE_ENABLE,
+> +                                        I2S_DMACR_RDE_DISABLE);
+> +               if (ret < 0)
+> +                       goto end;
+>
+>                 if (!i2s->tx_start) {
+> -                       regmap_update_bits(i2s->regmap, I2S_XFER,
+> -                                          I2S_XFER_TXS_START |
+> -                                          I2S_XFER_RXS_START,
+> -                                          I2S_XFER_TXS_STOP |
+> -                                          I2S_XFER_RXS_STOP);
+> -
+> +                       ret = regmap_update_bits(i2s->regmap, I2S_XFER,
+> +                                                I2S_XFER_TXS_START | I2S_XFER_RXS_START,
+> +                                                I2S_XFER_TXS_STOP | I2S_XFER_RXS_STOP);
+> +                       if (ret < 0)
+> +                               goto end;
+>                         udelay(150);
+> -                       regmap_update_bits(i2s->regmap, I2S_CLR,
+> -                                          I2S_CLR_TXC | I2S_CLR_RXC,
+> -                                          I2S_CLR_TXC | I2S_CLR_RXC);
+> -
+> +                       ret = regmap_update_bits(i2s->regmap, I2S_CLR,
+> +                                                I2S_CLR_TXC | I2S_CLR_RXC,
+> +                                                I2S_CLR_TXC | I2S_CLR_RXC);
+> +                       if (ret < 0)
+> +                               goto end;
+>                         regmap_read(i2s->regmap, I2S_CLR, &val);
+>
+>                         /* Should wait for clear operation to finish */
+> @@ -187,7 +237,12 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
+>                         }
+>                 }
+>         }
+> +end:
+>         spin_unlock(&i2s->lock);
+> +       if (ret < 0)
+> +               dev_err(i2s->dev, "lrclk update failed\n");
+> +
+> +       return ret;
+>  }
+>
+>  static int rockchip_i2s_set_fmt(struct snd_soc_dai *cpu_dai,
+> @@ -425,17 +480,25 @@ static int rockchip_i2s_trigger(struct snd_pcm_substream *substream,
+>         case SNDRV_PCM_TRIGGER_RESUME:
+>         case SNDRV_PCM_TRIGGER_PAUSE_RELEASE:
+>                 if (substream->stream == SNDRV_PCM_STREAM_CAPTURE)
+> -                       rockchip_snd_rxctrl(i2s, 1);
+> +                       ret = rockchip_snd_rxctrl(i2s, 1);
+>                 else
+> -                       rockchip_snd_txctrl(i2s, 1);
+> +                       ret = rockchip_snd_txctrl(i2s, 1);
+> +               if (ret < 0)
+> +                       return ret;
+> +               i2s_pinctrl_select_bclk_on(i2s);
+>                 break;
+>         case SNDRV_PCM_TRIGGER_SUSPEND:
+>         case SNDRV_PCM_TRIGGER_STOP:
+>         case SNDRV_PCM_TRIGGER_PAUSE_PUSH:
+> -               if (substream->stream == SNDRV_PCM_STREAM_CAPTURE)
+> -                       rockchip_snd_rxctrl(i2s, 0);
+> -               else
+> -                       rockchip_snd_txctrl(i2s, 0);
+> +               if (substream->stream == SNDRV_PCM_STREAM_CAPTURE) {
+> +                       if (!i2s->tx_start)
+> +                               i2s_pinctrl_select_bclk_off(i2s);
+> +                       ret = rockchip_snd_rxctrl(i2s, 0);
+> +               } else {
+> +                       if (!i2s->rx_start)
+> +                               i2s_pinctrl_select_bclk_off(i2s);
+> +                       ret = rockchip_snd_txctrl(i2s, 0);
+> +               }
+>                 break;
+>         default:
+>                 ret = -EINVAL;
+> @@ -736,6 +799,20 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+>         }
+>
+>         i2s->bclk_ratio = 64;
+> +       i2s->pinctrl = devm_pinctrl_get(&pdev->dev);
+> +       if (IS_ERR(i2s->pinctrl))
+> +               dev_err(&pdev->dev, "failed to find i2s pinctrl\n");
+> +
+> +       i2s->bclk_on = pinctrl_lookup_state(i2s->pinctrl, "bclk_on");
 
-Seems you applied v1 instead of v4?
+This will crash on any I2S controller that doesn't have pinctrl properties,
+notably the I2S controller that sends audio to the HDMI controller will
+never have pinctrl properties, since the connection is internal to the
+SoC.
 
-Either way, this causes the driver to crash for any I2S node that doesn't
-have pinctrl properties set. Notably, the I2S controller that sends audio
-to the HDMI controller will never have pinctrl properties, since the
-connection is internal.
+I'd say just put pinctrl lookup calls in an else block.
 
 
 ChenYu
 
-
-> [3/3] ASoC: dt-bindings: rockchip: Document pinctrl-names for i2s
->       (no commit info)
+> +       if (!IS_ERR_OR_NULL(i2s->bclk_on)) {
+> +               i2s->bclk_off = pinctrl_lookup_state(i2s->pinctrl, "bclk_off");
+> +               if (IS_ERR_OR_NULL(i2s->bclk_off)) {
+> +                       dev_err(&pdev->dev, "failed to find i2s bclk_off\n");
+> +                       goto err_clk;
+> +               }
+> +       }
+> +
+> +       i2s_pinctrl_select_bclk_off(i2s);
 >
-> All being well this means that it will be integrated into the linux-next
-> tree (usually sometime in the next 24 hours) and sent to Linus during
-> the next merge window (or sooner if it is a bug fix), however if
-> problems are discovered then the patch may be dropped or reverted.
+>         dev_set_drvdata(&pdev->dev, i2s);
 >
-> You may get further e-mails resulting from automated or manual testing
-> and review of the tree, please engage with people reporting problems and
-> send followup patches addressing any issues that are reported if needed.
+> --
+> 2.36.1.476.g0c4daa206d-goog
 >
-> If any updates are required or you are submitting further changes they
-> should be sent as incremental updates against current git, existing
-> patches will not be replaced.
->
-> Please add any relevant lists and maintainers to the CCs when replying
-> to this mail.
->
-> Thanks,
-> Mark
 >
 > _______________________________________________
 > linux-arm-kernel mailing list
