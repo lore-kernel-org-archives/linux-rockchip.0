@@ -4,55 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3D89C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jun 2022 17:30:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F30EDC43334
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jun 2022 19:48:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a74hPiCrvlnt8JmBeGRbE5GaplKQo76J5FpFL4uGTu0=; b=w3TXxU7W0AdhFH
-	pGiLocTcz5Fq4rojA/y9mLilNipRSNhTYKdHHOUmrY7S9R71lAsSuyfE1FDJ9+orQhxqo/abxocpA
-	kWRBIJRp3eUEtRswhzTzSHDTDdkeEK+Llju8z+2EEgYbAWRceB83BasJoUBkP+9Eba7t8D59IBXQh
-	dGHpUS7cpSn/NkslAtodCu3S4IJH0hr1KkfVmS4LkptP9g52+2wt1EH/g7NQbtq2iRgXH1q+lJCAa
-	XNXGMUOehE4dJw8/JIXHPwNNQfnFlmrVf63+D61gmvpmGDPyf3vgYQUXU/JyYC3eWNGqXvAv21VNi
-	TWwZyenxL9DSw3K60xQg==;
+	List-Owner; bh=tueW9BpHySKs/c/KnBo3le93iX7CsAvoAPuCTGjhOsU=; b=r/b9jkPPdcLZvz
+	zAnQj5uL5eQaw10+rl6fcxza043dU/bgt6ltoLT2YbjeChXLBsajAG8/cmgzTrjlvC67qX07KqsEZ
+	6HlmZ/h9RXijbKStC1bFP7b0LVujoBl+/aPTKA8l6IWMuvEV6ca1zHbcG+kKkaSKwjvm0EMAlXJ3D
+	trWth4rDjgrT+K+EonM7xhAazQWFUkHTY7/9c4A69Ulq8wTbrNsm5EM1i35DoJJ2MvKm4QqepMEaD
+	8yKr3TQ1cxY712rcOMjIi73dSBIdVo+Q1k7xV9Poty3nUz9jA8cLW3v/KK9srsTDyqqMOvsw7UIyY
+	NXFmHFEy2l1FcUnzv8Fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o44BR-00BhqW-Qo; Wed, 22 Jun 2022 17:30:29 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1o46L2-00C7OR-8a; Wed, 22 Jun 2022 19:48:32 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o44BA-00Bhm9-Vf; Wed, 22 Jun 2022 17:30:14 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 3876CB8205B;
-	Wed, 22 Jun 2022 17:30:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EC7AC3411B;
-	Wed, 22 Jun 2022 17:30:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655919007;
-	bh=WpJxGSkPnoTmSLwPwAWBaxy5WCwKFsEXIi5/wZIjC5Q=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=O8jxIq/LPamDMoq3ZB2j4wKsgadFaOqNRR2sr+IiON6+3oKt+nbysJU5zpEoBOByl
-	 fHmubXbbNGi5HsAVhjywJjEsxEmjTw71SSTsJr5e/wmXA3GWk4Ki9vdn6oQlVG3jqT
-	 QQtlHrEY+c3CoRRr0TmpuAJ0g9VGIpx7EfPEqG+U6cuTP5Sz4PgZiwIMmkffuNxd0U
-	 64ztA/4TMUpRS4RSCgoXh85rrTNo9jaNjhEzenVzLKNeYpjLIXHfH90Osum6p7LKOb
-	 v/wPfk30TGijakLXclDCK7BscWP31fN8u3E4QnoSIoaDYuWRk7S9IcE1e5M6Zg+yy+
-	 KMyCln03Hi57A==
-From: Mark Brown <broonie@kernel.org>
-To: lgirdwood@gmail.com, heiko@sntech.de, wens@kernel.org, tiwai@suse.com, perex@perex.cz
-Cc: linux-kernel@vger.kernel.org, wens@csie.org, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, judyhsiao@chromium.org
-In-Reply-To: <20220621185747.2782-1-wens@kernel.org>
-References: <20220621185747.2782-1-wens@kernel.org>
-Subject: Re: [PATCH] ASoC: rockchip: i2s: Fix crash on missing pinctrl
-Message-Id: <165591900483.1405752.13168398437677956332.b4-ty@kernel.org>
-Date: Wed, 22 Jun 2022 18:30:04 +0100
+	id 1o46Kz-00C7NA-Jy; Wed, 22 Jun 2022 19:48:31 +0000
+Received: from [46.183.103.8] (helo=phil.sntech)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1o46KG-0004LY-G0; Wed, 22 Jun 2022 21:47:45 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: soc@kernel.org,
+	Olof Johansson <olof@lixom.net>,
+	arm@kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Arnd Bergmann <arnd@arndb.de>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	openbmc@lists.ozlabs.org,
+	Khuong Dinh <khuong@os.amperecomputing.com>,
+	Tony Lindgren <tony@atomide.com>,
+	Joel Stanley <joel@jms.id.au>,
+	linux-arm-msm@vger.kernel.org,
+	Shawn Guo <shawnguo@kernel.org>,
+	Michal Simek <michal.simek@xilinx.com>,
+	linux-aspeed@lists.ozlabs.org,
+	=?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	linux-input@vger.kernel.org,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Andy Gross <agross@kernel.org>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	Wei Xu <xuwei5@hisilicon.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Bjorn Andersson <bjorn.andersson@linaro.org>,
+	devicetree@vger.kernel.org,
+	Peter Rosin <peda@axentia.se>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
+	Fabio Estevam <festevam@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Li Yang <leoyang.li@nxp.com>,
+	linux-tegra@vger.kernel.org,
+	linux-gpio@vger.kernel.org,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	linux-omap@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-arm-kernel@lists.infradead.org,
+	Tero Kristo <kristo@kernel.org>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Nishanth Menon <nm@ti.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	linux-mediatek@lists.infradead.org
+Subject: Re: (subset) [PATCH v3 00/40] dt-bindings: input: gpio-keys: rework matching children
+Date: Wed, 22 Jun 2022 21:47:36 +0200
+Message-Id: <165592714968.3933570.9891201783444800337.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
+References: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_103013_212302_CCF8ED1F 
-X-CRM114-Status: GOOD (  13.73  )
+X-CRM114-CacheID: sfid-20220622_124829_712230_D488D2C5 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,43 +108,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 22 Jun 2022 02:57:47 +0800, Chen-Yu Tsai wrote:
-> From: Chen-Yu Tsai <wens@csie.org>
+On Wed, 15 Jun 2022 17:52:24 -0700, Krzysztof Kozlowski wrote:
+> Merging
+> =======
+> 1. dt-bindings: rebased on top of Rob's:
+>    https://lore.kernel.org/all/20220608211207.2058487-1-robh@kernel.org/
 > 
-> Commit 44f362c2cc6d ("ASoC: rockchip: i2s: switch BCLK to GPIO") added
-> pinctrl lookups, but did not skip the lookup if there was no pinctrl
-> device tied to the I2S controller. As a result, the lookup was done
-> on an invalid pointer in such cases, causing a kernel panic.
+> 2. DTS patches are independent. They can be picked up directly by sub-arch
+>    maintainers, by Arnd or Olof, or eventually by me (if you wish).
 > 
 > [...]
 
-Applied to
+Applied, thanks!
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+[26/40] arm64: dts: rockchip: align gpio-key node names with dtschema
+        commit: 517ed0ffd3cc691bef747288d51d01d2705b2251
 
-Thanks!
+        In the pinenote dts the original patch changed "cover" to
+        switch, so to keep the cover information intact, I changed
+        the node to "switch-cover" ... similar to other "switch-lid"
+        instances in some other Rockchip devicetrees.
 
-[1/1] ASoC: rockchip: i2s: Fix crash on missing pinctrl
-      commit: c3b5fd7fbb698496461f280728b456d9927f22af
+[27/40] ARM: dts: rockchip: align gpio-key node names with dtschema
+        commit: 271e2c92285075a890c58cba9ad5979a8959f6ff
+[28/40] ARM: dts: rockchip: rk3288-tinker: correct gpio-keys properties
+        commit: e5a3cbe8b45b0a436a39cc969b7bcc8353248018
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
