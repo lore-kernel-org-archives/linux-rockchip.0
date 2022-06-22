@@ -4,43 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAD09CCA47D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jun 2022 13:13:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3D89C43334
+	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jun 2022 17:30:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6t4dpQ7iNmy6rvWo05Zm5sht36nRLfBrPYN1Esn4Mco=; b=tOC8f0yUulbipY
-	eR9MWzH1xB/apU0RAsupGO418KbPvStgu8G+qpZJNzCTcMR6q/xG9m63xhiBd6SrvrZD9MdIw+ZoS
-	FKoSEyMLFfuwEpDpHuxQg48j8FumdOBxdhD0u/7BFTNog2z/r5kjRS1gyoattkYFnmFcWM4nskyw+
-	LshX/qQ9bFvn6RlUNKeuL4+Fue3guICZu1dUracJL7Yb1pmKnNh52MqPmXHCk/rhCYss8AudNbg8V
-	3KD+wCO0R2bH9OqlkEOq1WzleDtsRV4e4WuwLCZxEoFQL6o9N5Xzu5Bs6xx89aOsXXu0Re6fzO600
-	tMNjI/NpCD1R+AQ43qOg==;
+	List-Owner; bh=a74hPiCrvlnt8JmBeGRbE5GaplKQo76J5FpFL4uGTu0=; b=w3TXxU7W0AdhFH
+	pGiLocTcz5Fq4rojA/y9mLilNipRSNhTYKdHHOUmrY7S9R71lAsSuyfE1FDJ9+orQhxqo/abxocpA
+	kWRBIJRp3eUEtRswhzTzSHDTDdkeEK+Llju8z+2EEgYbAWRceB83BasJoUBkP+9Eba7t8D59IBXQh
+	dGHpUS7cpSn/NkslAtodCu3S4IJH0hr1KkfVmS4LkptP9g52+2wt1EH/g7NQbtq2iRgXH1q+lJCAa
+	XNXGMUOehE4dJw8/JIXHPwNNQfnFlmrVf63+D61gmvpmGDPyf3vgYQUXU/JyYC3eWNGqXvAv21VNi
+	TWwZyenxL9DSw3K60xQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o40AT-00AS9K-CO; Wed, 22 Jun 2022 13:13:13 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1o44BR-00BhqW-Qo; Wed, 22 Jun 2022 17:30:29 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4081-00AQi1-9D; Wed, 22 Jun 2022 13:10:45 +0000
-Received: from [62.91.21.7] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1o407q-0001zi-OT; Wed, 22 Jun 2022 15:10:30 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Liang He <windhl@126.com>, linux@armlinux.org.uk, Krzysztof Kozlowski <krzk@kernel.org>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] arm: mach-rockchip: (pm) Add missing of_node_put()
-Date: Wed, 22 Jun 2022 15:10:26 +0200
-Message-ID: <4377545.PIDvDuAF1L@phil>
-In-Reply-To: <1a450b67-1e37-1eac-5906-910cb4deefdf@kernel.org>
-References: <20220616021713.3973472-1-windhl@126.com> <1a450b67-1e37-1eac-5906-910cb4deefdf@kernel.org>
+	id 1o44BA-00Bhm9-Vf; Wed, 22 Jun 2022 17:30:14 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 3876CB8205B;
+	Wed, 22 Jun 2022 17:30:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EC7AC3411B;
+	Wed, 22 Jun 2022 17:30:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1655919007;
+	bh=WpJxGSkPnoTmSLwPwAWBaxy5WCwKFsEXIi5/wZIjC5Q=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=O8jxIq/LPamDMoq3ZB2j4wKsgadFaOqNRR2sr+IiON6+3oKt+nbysJU5zpEoBOByl
+	 fHmubXbbNGi5HsAVhjywJjEsxEmjTw71SSTsJr5e/wmXA3GWk4Ki9vdn6oQlVG3jqT
+	 QQtlHrEY+c3CoRRr0TmpuAJ0g9VGIpx7EfPEqG+U6cuTP5Sz4PgZiwIMmkffuNxd0U
+	 64ztA/4TMUpRS4RSCgoXh85rrTNo9jaNjhEzenVzLKNeYpjLIXHfH90Osum6p7LKOb
+	 v/wPfk30TGijakLXclDCK7BscWP31fN8u3E4QnoSIoaDYuWRk7S9IcE1e5M6Zg+yy+
+	 KMyCln03Hi57A==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com, heiko@sntech.de, wens@kernel.org, tiwai@suse.com, perex@perex.cz
+Cc: linux-kernel@vger.kernel.org, wens@csie.org, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, judyhsiao@chromium.org
+In-Reply-To: <20220621185747.2782-1-wens@kernel.org>
+References: <20220621185747.2782-1-wens@kernel.org>
+Subject: Re: [PATCH] ASoC: rockchip: i2s: Fix crash on missing pinctrl
+Message-Id: <165591900483.1405752.13168398437677956332.b4-ty@kernel.org>
+Date: Wed, 22 Jun 2022 18:30:04 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_061041_403848_E9A52715 
-X-CRM114-Status: GOOD (  17.16  )
+X-CRM114-CacheID: sfid-20220622_103013_212302_CCF8ED1F 
+X-CRM114-Status: GOOD (  13.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,44 +69,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 22. Juni 2022, 11:00:11 CEST schrieb Krzysztof Kozlowski:
-> On 16/06/2022 04:17, Liang He wrote:
-> > In rockchip_suspend_init(), of_find_matching_node_and_match() will
-> > return a node pointer with refcount incremented. We should use
-> > of_node_put() in fail path or when it is not used anymore.
-> > 
-> > Signed-off-by: Liang He <windhl@126.com>
-> > ---
-> >  changelog:
-> > 
-> >  v2: (1) use real name for Sob (2) use goto-label patch style
-> >  v1: add of_node_put() for each return
-> > 
+On Wed, 22 Jun 2022 02:57:47 +0800, Chen-Yu Tsai wrote:
+> From: Chen-Yu Tsai <wens@csie.org>
 > 
-> Before applying the patch please check it carefully. Previous evidence
-> [1][2] suggests that not it was not even compiled.
-
-thanks noticing possible issues and for the heads up :-) .
-
-I re-examined the patch and at least in this case the of_node_put addition
-looks correct - the original code was missing this and not putting the node
-it got in the error case. And the change also compiles :-) .
-
-Heiko
-
-> [1] https://lore.kernel.org/all/202206221602.odN70SHs-lkp@intel.com/
+> Commit 44f362c2cc6d ("ASoC: rockchip: i2s: switch BCLK to GPIO") added
+> pinctrl lookups, but did not skip the lookup if there was no pinctrl
+> device tied to the I2S controller. As a result, the lookup was done
+> on an invalid pointer in such cases, causing a kernel panic.
 > 
-> [2]
-> https://lore.kernel.org/all/16f9a971.44e5.1817068ee3c.Coremail.windhl@126.com/
-> 
-> 
-> Best regards,
-> Krzysztof
-> 
+> [...]
 
+Applied to
 
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
+Thanks!
 
+[1/1] ASoC: rockchip: i2s: Fix crash on missing pinctrl
+      commit: c3b5fd7fbb698496461f280728b456d9927f22af
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-rockchip mailing list
