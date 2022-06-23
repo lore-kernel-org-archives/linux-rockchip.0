@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBC7FC43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 16:32:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFF94C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 16:32:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ltHNv45FsqO0ZMyLCo5xiwqQhEqERblMoNceJxb61rw=; b=1zmqk73JBJVpME
-	WXdvxIiqX63he88EHSrspgB4uY0r+JlbegmIBMbSftTsSgaGxvkrZitgvEALSZH7wnfCElrvXNf8i
-	bH0eiVxZ/anhBUWtput7gSNBcv5D1TgNa82qC1/8q2Uy96NITCy7XxqRThH2DFUoJCUtkXSeXHD7X
-	YJ7FeVMbcj3vf7z6A3q4RPW9uX5QgqKjrWm5oINYXR0+eRoaGx8COdEL97c7+C6kyHr/dc4B9Lv9a
-	Z/sA9g58QRZwRWHj8u15mjOty+RSLNMg8x35IOEG6JMSgs/meov4C//PcvKgqCF2XnlvS3NeQ+AOl
-	xEPPrUrddxDAQqNw/BKQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZdCYMqek7RLdsxdhBO+PnWZSaiIT0E4ybW0vTMdUX94=; b=wwXPsxe6M+y5Zq
+	7OQz2hsNOe/A96b870CimigxrU/blBIIL+zJJkXnVAopZaQtMut9qSs+nraMwJvez8CaHK3fPn+3u
+	Z+KRKJLbLpnkjbafHKqeRqoGamjwVne1xCQ8wLllNLV0el5ShQZF7NYWHzBl9Mi0hGrbIigKCtNvf
+	dWL2RF//QOQQoy3MiEucAmZy7sVMCC5grNV0REjIAUpu15fIYCMwHfd3BuqBFzgPhV+vBbSJlfgDs
+	Gi6DRcN2KxMwV1DE8a7usrbJ0SsZ1CFZ8nVsEljY9QHb7moAB6KAA973EtyFiFNbMQgoOkL7QyU9g
+	VTCt48SuqLGUwjiqndrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Pkq-00Fun2-52; Thu, 23 Jun 2022 16:32:28 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o4Pkr-00Funj-BU; Thu, 23 Jun 2022 16:32:29 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Pi8-00FtTC-3L; Thu, 23 Jun 2022 16:29:42 +0000
-Received: from [IPv6:2a00:23c7:6883:e501:cf51:f3a2:10b5:accf] (unknown [IPv6:2a00:23c7:6883:e501:cf51:f3a2:10b5:accf])
+	id 1o4PkB-00FuSR-0J
+	for linux-rockchip@lists.infradead.org; Thu, 23 Jun 2022 16:31:48 +0000
+Received: from jupiter.universe (unknown [95.33.159.255])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
-	(Authenticated sender: obbardc)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AEEC266017E4;
-	Thu, 23 Jun 2022 17:29:38 +0100 (BST)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 78C6F66017E7;
+	Thu, 23 Jun 2022 17:31:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656001778;
-	bh=0fcf2Og5+kAlUKXKZjiLdn0YJRF3DsBLftoZV9IJdiw=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=l+w2abAK8h9HgrwpbWg/B7Xm/ZaYbCCurnXZ5ciUQbyFRDTaxvAMFlniqbO8hgs+S
-	 981JtASOd+mligWTmMli1hppeFeGWghNcEEmC4+0/Y5fiTssfNFoMTBmp4jqnSulK2
-	 p3GPoLcdzkwTAMDKAJ7NogogOjBqlbHZ8Grr9PtOqIz1Stm9ynrF2g90OPyhvnnKoN
-	 PpgFpwZFFBIm6918/vzZHy3hIJJZ0eMY7mB4GTJwpwL79QTmvRjQ5HO7uGbM1nOGnS
-	 gCpZhnxZuTUGBOhqTMSx23f4Yjarc3OfE+HPqmMYDyAYDZUutn/IrDq9sMpMQuSFJG
-	 1eJdb/IWM8ohg==
-Message-ID: <0a302a938736d3d5dc9e158718f2cd0c33b53ea4.camel@collabora.com>
-Subject: Re: [PATCH 1/6] dt-bindings: arm: rockchip: add rk3388 compatible
- string to pmu.yaml
-From: Christopher Obbard <chris.obbard@collabora.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>, Heiko Stuebner
-	 <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>,  linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org,  devicetree@vger.kernel.org,
- kernel@collabora.com
-Date: Thu, 23 Jun 2022 17:29:33 +0100
-In-Reply-To: <20220623162309.243766-2-sebastian.reichel@collabora.com>
-References: <20220623162309.243766-1-sebastian.reichel@collabora.com>
-	 <20220623162309.243766-2-sebastian.reichel@collabora.com>
-User-Agent: Evolution 3.44.2-1 
+	s=mail; t=1656001905;
+	bh=sn5EgbuebsC5sj9x597tVnHtLZq99Obp6jUYVfxzKNI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=EssX3KBCfrGxvxrbPBoNpHrV6gvrQguoeot2m5+BR4zgQYfK+gDwT6YrvOmR6CQtx
+	 PSPH8UnwOn4/lARgGLYi8k0A3EXnbg8FNOHtC1RT3MloKdK8Ddtj7w+7aKo/RwWN/E
+	 czFvSd6uo1hJ49b7DH6YKPg2Jg2KpKDdbRM7aMBPr2m24zsPiIpQ2wPjLNHpK/7WcM
+	 pDrauGnmaOVH1OiW3w+BE1Z5lfU6KmbkAskPGQF5juVpnRNwuE3/2pv+lDr9lYXc3V
+	 ARo954b3WFrPhPj1xAZSnizrLB5BmWzj2Kh/oQdYH7GusjolJNokw6VmOpAOMmjZk1
+	 3MVWvqFL4Hs4w==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id E4A0E480122; Thu, 23 Jun 2022 18:31:42 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>
+Cc: Wolfram Sang <wsa@kernel.org>,
+	linux-i2c@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH 1/1] dt-bindings: i2c: i2c-rk3x: add rk3588 compatible
+Date: Thu, 23 Jun 2022 18:31:36 +0200
+Message-Id: <20220623163136.246404-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_092940_378641_0E280F6D 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20220623_093147_218866_159DEAF8 
+X-CRM114-Status: UNSURE (   8.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,34 +74,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCAyMDIyLTA2LTIzIGF0IDE4OjIzICswMjAwLCBTZWJhc3RpYW4gUmVpY2hlbCB3cm90
-ZToKPiBBZGQgdGhlIGNvbXBhdGlibGUgZm9yIHRoZSBwbXUgbWZkIG9uIHJrMzM4OC4KCkhleSBT
-ZWJhc3RpYW4sCgpBbHNvIGxvb2tzIGxvb2tzIGxpa2UgdGhpcyAoYW5kIHRoZSBwYXRjaCBzdWJq
-ZWN0KSBzaG91bGQgaW5zdGVhZCByZWZlcgp0byB0aGUgcmszNTg4ID8KClRoYW5rcyEKQ2hyaXMK
-Cgo+IAo+IFNpZ25lZC1vZmYtYnk6IFNlYmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hl
-bEBjb2xsYWJvcmEuY29tPgo+IC0tLQo+IMKgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
-bmdzL2FybS9yb2NrY2hpcC9wbXUueWFtbCB8IDIgKysKPiDCoDEgZmlsZSBjaGFuZ2VkLCAyIGlu
-c2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL2FybS9yb2NrY2hpcC9wbXUueWFtbAo+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
-L2JpbmRpbmdzL2FybS9yb2NrY2hpcC9wbXUueWFtbAo+IGluZGV4IDVlY2UzODA2NWU1NC4uNGM2
-NDUwNDljMTViIDEwMDY0NAo+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9hcm0vcm9ja2NoaXAvcG11LnlhbWwKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvYXJtL3JvY2tjaGlwL3BtdS55YW1sCj4gQEAgLTI1LDYgKzI1LDcgQEAgc2VsZWN0
-Ogo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgIC0gcm9ja2NoaXAscmszMzY4LXBtdQo+IMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIC0gcm9ja2NoaXAscmszMzk5LXBtdQo+IMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IC0gcm9ja2NoaXAscmszNTY4LXBtdQo+ICvCoMKgwqDCoMKgwqDCoMKgwqAgLSByb2NrY2hpcCxy
-azM1ODgtcG11Cj4gwqAKPiDCoMKgIHJlcXVpcmVkOgo+IMKgwqDCoMKgIC0gY29tcGF0aWJsZQo+
-IEBAIC0zOSw2ICs0MCw3IEBAIHByb3BlcnRpZXM6Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqAgLSBy
-b2NrY2hpcCxyazMzNjgtcG11Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqAgLSByb2NrY2hpcCxyazMz
-OTktcG11Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqAgLSByb2NrY2hpcCxyazM1NjgtcG11Cj4gK8Kg
-wqDCoMKgwqDCoMKgwqDCoCAtIHJvY2tjaGlwLHJrMzU4OC1wbXUKPiDCoMKgwqDCoMKgwqAgLSBj
-b25zdDogc3lzY29uCj4gwqDCoMKgwqDCoMKgIC0gY29uc3Q6IHNpbXBsZS1tZmQKPiDCoAo+IC0t
-IAo+IDIuMzUuMQo+IAo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+Just like RK356x, RK3588 is compatible to the existing rk3399 binding.
+
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+index 5339dd4fc370..2f79f6d57e2d 100644
+--- a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
++++ b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+@@ -37,6 +37,7 @@ properties:
+               - rockchip,rk3308-i2c
+               - rockchip,rk3328-i2c
+               - rockchip,rk3568-i2c
++              - rockchip,rk3588-i2c
+           - const: rockchip,rk3399-i2c
+ 
+   reg:
+-- 
+2.35.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
