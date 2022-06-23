@@ -4,94 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F30EDC43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 22 Jun 2022 19:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52A91C43334
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 02:16:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tueW9BpHySKs/c/KnBo3le93iX7CsAvoAPuCTGjhOsU=; b=r/b9jkPPdcLZvz
-	zAnQj5uL5eQaw10+rl6fcxza043dU/bgt6ltoLT2YbjeChXLBsajAG8/cmgzTrjlvC67qX07KqsEZ
-	6HlmZ/h9RXijbKStC1bFP7b0LVujoBl+/aPTKA8l6IWMuvEV6ca1zHbcG+kKkaSKwjvm0EMAlXJ3D
-	trWth4rDjgrT+K+EonM7xhAazQWFUkHTY7/9c4A69Ulq8wTbrNsm5EM1i35DoJJ2MvKm4QqepMEaD
-	8yKr3TQ1cxY712rcOMjIi73dSBIdVo+Q1k7xV9Poty3nUz9jA8cLW3v/KK9srsTDyqqMOvsw7UIyY
-	NXFmHFEy2l1FcUnzv8Fw==;
+	List-Owner; bh=Rs9kZEC27jqk79Qpn2R6PxcDF2kOfq7F1TzclvoLhD4=; b=UgN5pY5GwP/9R0
+	+RstExX5gS2q5CefpgtQrp0zByvwi8DEETydo7TVoVsR8bj5yT+YHWcF2vey5aOeRubUIEbFw4QYd
+	FJj7qDHwgZVyM0vVbmsOinMlKv4XZ2H+7JSM/fwRKPkv/IrXLy0+JqT2UBF7xhilht3sG/0yuOL1q
+	Kn5MlhN3iLpapSvulDxy8beWowni8uLnqbZ6iPCpYIx6AC0+FkTRcyi5Po629LFKJiI7BMceqHBvM
+	Z5z1iO5LziGFIgYPKwKkzDZZwzlxQieKB33VgJ5EbU6M3a708Pp3RqHBa5vmrO+CGv/yduHknDjfR
+	z3CE/XG3oX0p3OA2VIkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o46L2-00C7OR-8a; Wed, 22 Jun 2022 19:48:32 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1o4COT-00Cv6W-7E; Thu, 23 Jun 2022 02:16:29 +0000
+Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o46Kz-00C7NA-Jy; Wed, 22 Jun 2022 19:48:31 +0000
-Received: from [46.183.103.8] (helo=phil.sntech)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1o46KG-0004LY-G0; Wed, 22 Jun 2022 21:47:45 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: soc@kernel.org,
-	Olof Johansson <olof@lixom.net>,
-	arm@kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
-	Arnd Bergmann <arnd@arndb.de>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	openbmc@lists.ozlabs.org,
-	Khuong Dinh <khuong@os.amperecomputing.com>,
-	Tony Lindgren <tony@atomide.com>,
-	Joel Stanley <joel@jms.id.au>,
-	linux-arm-msm@vger.kernel.org,
-	Shawn Guo <shawnguo@kernel.org>,
-	Michal Simek <michal.simek@xilinx.com>,
-	linux-aspeed@lists.ozlabs.org,
-	=?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	linux-input@vger.kernel.org,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Andy Gross <agross@kernel.org>,
-	Gregory Clement <gregory.clement@bootlin.com>,
-	Wei Xu <xuwei5@hisilicon.com>,
-	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
-	Bjorn Andersson <bjorn.andersson@linaro.org>,
-	devicetree@vger.kernel.org,
-	Peter Rosin <peda@axentia.se>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
-	Fabio Estevam <festevam@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Li Yang <leoyang.li@nxp.com>,
-	linux-tegra@vger.kernel.org,
-	linux-gpio@vger.kernel.org,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	linux-omap@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Tero Kristo <kristo@kernel.org>,
-	NXP Linux Team <linux-imx@nxp.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Claudiu Beznea <claudiu.beznea@microchip.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Nishanth Menon <nm@ti.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	linux-mediatek@lists.infradead.org
-Subject: Re: (subset) [PATCH v3 00/40] dt-bindings: input: gpio-keys: rework matching children
-Date: Wed, 22 Jun 2022 21:47:36 +0200
-Message-Id: <165592714968.3933570.9891201783444800337.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
-References: <20220616005224.18391-1-krzysztof.kozlowski@linaro.org>
+	id 1o4C8i-00Co6G-D5; Thu, 23 Jun 2022 02:00:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1655949612; x=1687485612;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=KbeXCVtz+edFvopo5p5QoDn9huAgw0qHkMWWoFBLhXA=;
+  b=IVOQLpFC00oWG6FkyTmkdLiuRsuVASPL9qDevRUCK27wAoFJYCmh7z3V
+   WffdL4SCAxDgfJt9s9RjAeDfejbpX83LX3lHjtiiaunZ/sGs+SBHKXuIl
+   lkPMCLJAQB8tRdXfDCtJ5/Oip6Hav5BjI3D3ONiutI3aMeCR/Ec3TIiO1
+   xR9wwCQVJ+nNvLZQ+w7F0ha9UkY+e8dMHCt8uxvwoHAgifDjlw/s1nAr8
+   cLNzzOd0hrwyEnebRFpfI7V5h8UL410UwZ+/hTK34bRCUtAgLA9gXJzjC
+   1NjEMLs3AVNhW5Z5yBevIZAtIIZypi2TOcM/zi7qRkFH92S0S39NMS0Pf
+   Q==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10386"; a="342281580"
+X-IronPort-AV: E=Sophos;i="5.92,215,1650956400"; 
+   d="scan'208";a="342281580"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Jun 2022 19:00:09 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.92,215,1650956400"; 
+   d="scan'208";a="615398908"
+Received: from lkp-server01.sh.intel.com (HELO 68b931ab7ac1) ([10.239.97.150])
+  by orsmga008.jf.intel.com with ESMTP; 22 Jun 2022 19:00:02 -0700
+Received: from kbuild by 68b931ab7ac1 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1o4C8X-0000LT-BJ;
+	Thu, 23 Jun 2022 02:00:01 +0000
+Date: Thu, 23 Jun 2022 09:59:06 +0800
+From: kernel test robot <lkp@intel.com>
+To: Charles Keepax <ckeepax@opensource.cirrus.com>, broonie@kernel.org
+Cc: kbuild-all@lists.01.org, lgirdwood@gmail.com,
+	kuninori.morimoto.gx@renesas.com, mripard@kernel.org,
+	airlied@linux.ie, daniel@ffwll.ch, vkoul@kernel.org,
+	nicolas.ferre@microchip.com, nsaenz@kernel.org, shawnguo@kernel.org,
+	linux-imx@nxp.com, cezary.rojewski@intel.com,
+	pierre-louis.bossart@linux.intel.com, linux-mips@vger.kernel.org,
+	linux-amlogic@lists.infradead.org, daniel@zonque.org,
+	srinivas.kandagatla@linaro.org, linux-rockchip@lists.infradead.org,
+	krzk@kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-omap@vger.kernel.org, linux-xtensa@linux-xtensa.org,
+	peter.ujfalusi@gmail.com, jarkko.nikula@bitmer.com, heiko@sntech.de,
+	jbrunet@baylibre.com, kernel@pengutronix.de,
+	alsa-devel@alsa-project.org
+Subject: Re: [PATCH 27/96] ASoC: au1x: Migrate to new style legacy DAI naming
+ flag
+Message-ID: <202206230910.wUXKFP3z-lkp@intel.com>
+References: <20220616143429.1324494-28-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220616143429.1324494-28-ckeepax@opensource.cirrus.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_124829_712230_D488D2C5 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20220622_190012_574684_1E531188 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,35 +94,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 15 Jun 2022 17:52:24 -0700, Krzysztof Kozlowski wrote:
-> Merging
-> =======
-> 1. dt-bindings: rebased on top of Rob's:
->    https://lore.kernel.org/all/20220608211207.2058487-1-robh@kernel.org/
-> 
-> 2. DTS patches are independent. They can be picked up directly by sub-arch
->    maintainers, by Arnd or Olof, or eventually by me (if you wish).
-> 
-> [...]
+Hi Charles,
 
-Applied, thanks!
+I love your patch! Yet something to improve:
 
-[26/40] arm64: dts: rockchip: align gpio-key node names with dtschema
-        commit: 517ed0ffd3cc691bef747288d51d01d2705b2251
+[auto build test ERROR on broonie-sound/for-next]
+[also build test ERROR on tegra/for-next sunxi/sunxi/for-next linus/master v5.19-rc3 next-20220622]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
 
-        In the pinenote dts the original patch changed "cover" to
-        switch, so to keep the cover information intact, I changed
-        the node to "switch-cover" ... similar to other "switch-lid"
-        instances in some other Rockchip devicetrees.
+url:    https://github.com/intel-lab-lkp/linux/commits/Charles-Keepax/Refactor-non_legacy_dai_naming-flag/20220616-224300
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+config: mips-db1xxx_defconfig (https://download.01.org/0day-ci/archive/20220623/202206230910.wUXKFP3z-lkp@intel.com/config)
+compiler: mipsel-linux-gcc (GCC) 11.3.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/794205d61285d0921e564e722daf9b20df82ed57
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Charles-Keepax/Refactor-non_legacy_dai_naming-flag/20220616-224300
+        git checkout 794205d61285d0921e564e722daf9b20df82ed57
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=mips SHELL=/bin/bash sound/soc/au1x/
 
-[27/40] ARM: dts: rockchip: align gpio-key node names with dtschema
-        commit: 271e2c92285075a890c58cba9ad5979a8959f6ff
-[28/40] ARM: dts: rockchip: rk3288-tinker: correct gpio-keys properties
-        commit: e5a3cbe8b45b0a436a39cc969b7bcc8353248018
+If you fix the issue, kindly add following tag where applicable
+Reported-by: kernel test robot <lkp@intel.com>
 
-Best regards,
+All error/warnings (new ones prefixed by >>):
+
+>> sound/soc/au1x/ac97c.c:227:10: error: 'const struct snd_soc_component_driver' has no member named 'legacy_dai_name'; did you mean 'legacy_dai_naming'?
+     227 |         .legacy_dai_name        = 1,
+         |          ^~~~~~~~~~~~~~~
+         |          legacy_dai_naming
+>> sound/soc/au1x/ac97c.c:227:35: warning: initialization of 'const struct snd_kcontrol_new *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+     227 |         .legacy_dai_name        = 1,
+         |                                   ^
+   sound/soc/au1x/ac97c.c:227:35: note: (near initialization for 'au1xac97c_component.controls')
+
+
+vim +227 sound/soc/au1x/ac97c.c
+
+   224	
+   225	static const struct snd_soc_component_driver au1xac97c_component = {
+   226		.name			= "au1xac97c",
+ > 227		.legacy_dai_name	= 1,
+   228	};
+   229	
+
 -- 
-Heiko Stuebner <heiko@sntech.de>
+0-DAY CI Kernel Test Service
+https://01.org/lkp
 
 _______________________________________________
 Linux-rockchip mailing list
