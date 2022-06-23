@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CB0CC43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 16:05:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99990C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 16:05:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+eUFzV+zAGAWA41pav4LCiCro8ttX0WS9kcc5C5+cOo=; b=QldChv6Nd++O8K
-	A+NmVJTx7nmKNXRPHwlDazdDkXeK9NWuQv2CbYzlnaktOiBA+qHJSLDke4UXJuvbPi2MFkdQDXSEG
-	Rt9pKwwg9M1obT4/0/1SFCZA/bHR1fzNXyKrsGXQSX5eUz8yCsnvFNIEGdAmKuBWI0F33LQXVaY81
-	ylbe+JJyWZq6uTbwp3/ruIKrhZgqjmL2eM2BrYSNh0Jegf7owZcksa4y/jbo9rBUnPYN5GSiiWwYE
-	VBEc/MbL9iI+6E9HCk1FDcYGitRuUhmtBBIcSr+R8VHvYKQr8ARhHXSH9bHg++oYog4u0gxQHkwME
-	+6B3SnyQx+FkrODr36pQ==;
+	List-Owner; bh=9rJ3hjoqgP6vHm7b9kMny0Q1ljsH1eyG2LkhXR/VZNM=; b=PNQcUIT2jTtl0J
+	FtXRlU/GCz79/j/MMJ43FZE1zpBmANns19NrT2ERBikszYHIxZc0aCOOt+iatEoiAWPdBpJdYFjDc
+	o8miGCWZVmHrJovMm6P6N9/JOVKr12ViL4miFG4cId8+5Gl5I39g7Ewv1Z5q5K5kbgZMACWCYviFb
+	OO1WJJSiURbfYjXBVwXnv+r60ZZ/8ZAnay5sx6iIrydSy1yQU7rY+2yJeB4OaIOUXdMcVNq2gQ7Hj
+	KJmzxJQJAHpe/KI5fVWWmWbTg1TLyzc/PXtTx45ScN1ojKyBntzaDPkLk9iAB1m45TFtyBMZZ6wdF
+	AXHs7fNgQbI/oitSbxhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4PK0-00FngD-Ug; Thu, 23 Jun 2022 16:04:44 +0000
+	id 1o4PK0-00Fnff-6Y; Thu, 23 Jun 2022 16:04:44 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4PJg-00FncC-CF; Thu, 23 Jun 2022 16:04:26 +0000
+	id 1o4PJg-00FncA-CH; Thu, 23 Jun 2022 16:04:26 +0000
 Received: from jupiter.universe (unknown [95.33.159.255])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 63D8466017E4;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5461366017E3;
 	Thu, 23 Jun 2022 17:04:20 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1656000260;
-	bh=JyODDbAkozctO2YF4+4+8QrF0xaiP+MYadCgEeOgwr0=;
+	bh=tTOCToDJjcLzI14JLadsZVSZ4cSn/2Or8RPivrlFg50=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LGglfLaFni5u8gXAQ2JFlRVE1lfhiFRI+lJp2LSBZDn1JEAzJfBs3Q90TkocJaeIa
-	 7hghODJXm5+mrtYT0qLq6djDtK2DNq2AbqQSE0HtBHXhDVrSIv8CedmSpsEnBH1PfS
-	 yYEEaaTSWIUOOxbHncdqwQXiWYJ2c+n0sXd98dZ6NwtBzWDfpNuL6XxxHjV5NoNl8Q
-	 w5iJyEOblil+/hjQehSoaoWD3nwctT+rMYEl4lDOqEc6GGOrDSNrINNm1597tm6qpP
-	 OmSKb+PeV8BgVNWEdWdT0E35YrH4t6kbLmtaCfHoGy19JwdDp45l3dFdvzE6dxAoEk
-	 G+jcyKwV6PVIA==
+	b=l1nq5aDNdCksneNEv4Ky2QDp6lYhWwWbitEnYFwdL0FBBbVRgR6YL1N7UJOwgvrFB
+	 If6qvM3MU3Dxy6izVLbsp6gpHvtLtNfuRRMH27qvOMbEkJ2krBgle2c84cnBJjz3VZ
+	 8cAGtJg/8XgKWuB3F4fxttvffqAcADxgv7oPhJdt8fM45CnB6WvSm7RV+5atDRF5IZ
+	 gcj5mMN2dXrAuGZi2P51IQQ1vLnAp99uZTP/8OPe3yLr5VTbds9Jo9FbirtmXEWLih
+	 4HM6IeUVCRG0A9ESxQynNnOAMh8LJp5BHL+uyOWfwYdq2d+gDOIhk32Ih1R3cTGMJK
+	 jUxZBzlFnrCkw==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id CAB7A48059B; Thu, 23 Jun 2022 18:04:17 +0200 (CEST)
+	id C66CC480126; Thu, 23 Jun 2022 18:04:17 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -56,16 +56,16 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	Elaine Zhang <zhangqing@rock-chips.com>,
 	kernel@collabora.com,
 	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH 4/5] clk: rockchip: clk-cpu: add mux setting for cpu change frequency
-Date: Thu, 23 Jun 2022 18:03:28 +0200
-Message-Id: <20220623160329.239501-5-sebastian.reichel@collabora.com>
+Subject: [PATCH 2/5] clk: rockchip: add register offset of the cores select parent
+Date: Thu, 23 Jun 2022 18:03:26 +0200
+Message-Id: <20220623160329.239501-3-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220623160329.239501-1-sebastian.reichel@collabora.com>
 References: <20220623160329.239501-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_090425_142259_1CC7138A 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20220623_090425_138927_BE1206CD 
+X-CRM114-Status: GOOD (  15.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,83 +77,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogRWxhaW5lIFpoYW5nIDx6aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+CgpJbiBvcmRlciB0
-byBpbXByb3ZlIHRoZSBtYWluIGZyZXF1ZW5jeSBvZiBDUFUsIHRoZSBjbG9jayBwYXRoIG9mIENQ
-VSBpcwpzaW1wbGlmaWVkIGFzIGZvbGxvd3M6CiAgICAgICAgICAgICAgICAgICAgICAgICB8LS1c
-CiAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgXCAgICAgICAgICAgIHwtLVwKIC0tYXBsbC0t
-fFwgICAgICAgICAgICAgIHwgICAgXCAgICAgICAgICAgfCAgIFwKICAgICAgICAgfCB8LS1hcGxs
-X2NvcmUtLXwgICAgIFwgICAgICAgICAgfCAgICBcCiAtLTI0TS0tLXwvICAgICAgICAgICAgICB8
-bXV4MSB8LS1bZ2F0ZV0tLXxtdXgyfC0tLWNsa19jb3JlCiAgICAgICAgICAgICAgICAgICAgICAg
-ICB8ICAgICAvICAgICAgICAgIHwgICAgLwogLS1ncGxsLS18XCAgICAgICAgICAgICAgfCAgICAv
-ICAgIHwtLS0tLS18ICAgLwogICAgICAgICB8IHwtLWdwbGxfY29yZS0tfCAgIC8gICAgIHwgICAg
-ICB8LS0vCiAtLTI0TS0tLXwvICAgICAgICAgICAgICB8LS0vICAgICAgfAogICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIHwKIC0tLS0tLS1hcGxsX2RpcmVjdGx5LS0tLS0tLS0tLS0t
-LS18CgpXaGVuIHRoZSBDUFUgcmVxdWVzdHMgaGlnaCBmcmVxdWVuY3ksIHdlIHdhbnQgdG8gdXNl
-IE1VWDIgc2VsZWN0IHRoZQoiYXBsbF9kaXJlY3RseSIuCkF0IGxvdyBmcmVxdWVuY2llcyB1c2Ug
-TVVYMSB0byBzZWxlY3Qg4oCcYXBsbF9jb3JlIiBhbmQgdGhlbiBNVVgyIHRvCnNlbGVjdCAiYXBs
-bF9jb3JlX2dhdGUiLgoKSG93ZXZlciwgaW4gdGhpcyB3YXksIHRoZSBDUFUgZnJlcXVlbmN5IGNv
-bnZlcnNpb24gbmVlZHMgdG8gYmUKaW4gdGhlIGZvbGxvd2luZyBvcmRlcjoKMS4gTVVYMiBzZWxl
-Y3QgdG8gImFwbGxfY29yZV9nYXRlIiwgTVVYMSBzZWxlY3QgImdwbGxfY29yZSIKMi4gQXBsbCBz
-ZXRzIHNsb3dfbW9kZSwgc2V0cyBBUExMIHBhcmFtZXRlcnMsIGxvY2tzIEFQTEwsIGFuZCB0aGVu
-IEFQTEwKc2V0cyBub3JtYWxfbW9kZQozLiBNVVgxIHNlbGVjdCAiYXBsbF9jb3JlIiwgTVVYMiBz
-ZWxlY3QgImFwbGxfZGlyZWN0bHkiCgpTbyBhZGQgcHJlX211eHMgYW5kIHBvc3RfbXV4cyB0byBj
-b3ZlciB0aGlzIHNwZWNpYWwgcmVxdWlyZW1lbnRzLgoKU2lnbmVkLW9mZi1ieTogRWxhaW5lIFpo
-YW5nIDx6aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+CltyZWJhc2VdClNpZ25lZC1vZmYtYnk6IFNl
-YmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hlbEBjb2xsYWJvcmEuY29tPgotLS0KIGRy
-aXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1jcHUuYyB8IDQxICsrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysKIGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay5oICAgICB8ICAyICsrCiAyIGZp
-bGVzIGNoYW5nZWQsIDQzIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9y
-b2NrY2hpcC9jbGstY3B1LmMgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstY3B1LmMKaW5kZXgg
-MTFhYTIyNTliNTMyLi42ZWE3ZmJhOWY5ZTUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvY2xrL3JvY2tj
-aGlwL2Nsay1jcHUuYworKysgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstY3B1LmMKQEAgLTEx
-Myw2ICsxMTMsNDIgQEAgc3RhdGljIHZvaWQgcm9ja2NoaXBfY3B1Y2xrX3NldF9kaXZpZGVycyhz
-dHJ1Y3Qgcm9ja2NoaXBfY3B1Y2xrICpjcHVjbGssCiAJfQogfQogCitzdGF0aWMgdm9pZCByb2Nr
-Y2hpcF9jcHVjbGtfc2V0X3ByZV9tdXhzKHN0cnVjdCByb2NrY2hpcF9jcHVjbGsgKmNwdWNsaywK
-KwkJCQkJIGNvbnN0IHN0cnVjdCByb2NrY2hpcF9jcHVjbGtfcmF0ZV90YWJsZSAqcmF0ZSkKK3sK
-KwlpbnQgaTsKKworCS8qIGFsdGVybmF0ZSBwYXJlbnQgaXMgYWN0aXZlIG5vdy4gc2V0IHRoZSBw
-cmVfbXV4cyAqLworCWZvciAoaSA9IDA7IGkgPCBBUlJBWV9TSVpFKHJhdGUtPnByZV9tdXhzKTsg
-aSsrKSB7CisJCWNvbnN0IHN0cnVjdCByb2NrY2hpcF9jcHVjbGtfY2xrc2VsICpjbGtzZWwgPSAm
-cmF0ZS0+cHJlX211eHNbaV07CisKKwkJaWYgKCFjbGtzZWwtPnJlZykKKwkJCWJyZWFrOworCisJ
-CXByX2RlYnVnKCIlczogc2V0dGluZyByZWcgMHgleCB0byAweCV4XG4iLAorCQkJIF9fZnVuY19f
-LCBjbGtzZWwtPnJlZywgY2xrc2VsLT52YWwpOworCQl3cml0ZWwoY2xrc2VsLT52YWwsIGNwdWNs
-ay0+cmVnX2Jhc2UgKyBjbGtzZWwtPnJlZyk7CisJfQorfQorCitzdGF0aWMgdm9pZCByb2NrY2hp
-cF9jcHVjbGtfc2V0X3Bvc3RfbXV4cyhzdHJ1Y3Qgcm9ja2NoaXBfY3B1Y2xrICpjcHVjbGssCisJ
-CQkJCSAgY29uc3Qgc3RydWN0IHJvY2tjaGlwX2NwdWNsa19yYXRlX3RhYmxlICpyYXRlKQorewor
-CWludCBpOworCisJLyogYWx0ZXJuYXRlIHBhcmVudCBpcyBhY3RpdmUgbm93LiBzZXQgdGhlIG11
-eHMgKi8KKwlmb3IgKGkgPSAwOyBpIDwgQVJSQVlfU0laRShyYXRlLT5wb3N0X211eHMpOyBpKysp
-IHsKKwkJY29uc3Qgc3RydWN0IHJvY2tjaGlwX2NwdWNsa19jbGtzZWwgKmNsa3NlbCA9ICZyYXRl
-LT5wb3N0X211eHNbaV07CisKKwkJaWYgKCFjbGtzZWwtPnJlZykKKwkJCWJyZWFrOworCisJCXBy
-X2RlYnVnKCIlczogc2V0dGluZyByZWcgMHgleCB0byAweCV4XG4iLAorCQkJIF9fZnVuY19fLCBj
-bGtzZWwtPnJlZywgY2xrc2VsLT52YWwpOworCQl3cml0ZWwoY2xrc2VsLT52YWwsIGNwdWNsay0+
-cmVnX2Jhc2UgKyBjbGtzZWwtPnJlZyk7CisJfQorfQorCiBzdGF0aWMgaW50IHJvY2tjaGlwX2Nw
-dWNsa19wcmVfcmF0ZV9jaGFuZ2Uoc3RydWN0IHJvY2tjaGlwX2NwdWNsayAqY3B1Y2xrLAogCQkJ
-CQkgICBzdHJ1Y3QgY2xrX25vdGlmaWVyX2RhdGEgKm5kYXRhKQogewpAQCAtMTY1LDYgKzIwMSw5
-IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfY3B1Y2xrX3ByZV9yYXRlX2NoYW5nZShzdHJ1Y3Qgcm9j
-a2NoaXBfY3B1Y2xrICpjcHVjbGssCiAJCQkgICAgICAgY3B1Y2xrLT5yZWdfYmFzZSArIHJlZ19k
-YXRhLT5jb3JlX3JlZ1tpXSk7CiAJCX0KIAl9CisKKwlyb2NrY2hpcF9jcHVjbGtfc2V0X3ByZV9t
-dXhzKGNwdWNsaywgcmF0ZSk7CisKIAkvKiBzZWxlY3QgYWx0ZXJuYXRlIHBhcmVudCAqLwogCWlm
-IChyZWdfZGF0YS0+bXV4X2NvcmVfcmVnKQogCQl3cml0ZWwoSElXT1JEX1VQREFURShyZWdfZGF0
-YS0+bXV4X2NvcmVfYWx0LApAQCAtMjE5LDYgKzI1OCw4IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBf
-Y3B1Y2xrX3Bvc3RfcmF0ZV9jaGFuZ2Uoc3RydWN0IHJvY2tjaGlwX2NwdWNsayAqY3B1Y2xrLAog
-CQkJCSAgICAgcmVnX2RhdGEtPm11eF9jb3JlX3NoaWZ0KSwKIAkJICAgICAgIGNwdWNsay0+cmVn
-X2Jhc2UgKyByZWdfZGF0YS0+Y29yZV9yZWdbMF0pOwogCisJcm9ja2NoaXBfY3B1Y2xrX3NldF9w
-b3N0X211eHMoY3B1Y2xrLCByYXRlKTsKKwogCS8qIHJlbW92ZSBkaXZpZGVycyAqLwogCWZvciAo
-aSA9IDA7IGkgPCByZWdfZGF0YS0+bnVtX2NvcmVzOyBpKyspIHsKIAkJd3JpdGVsKEhJV09SRF9V
-UERBVEUoMCwgcmVnX2RhdGEtPmRpdl9jb3JlX21hc2tbaV0sCmRpZmYgLS1naXQgYS9kcml2ZXJz
-L2Nsay9yb2NrY2hpcC9jbGsuaCBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay5oCmluZGV4IGJm
-N2M4ZDA4MmZkZS4uMmJkMTg2M2E3NDE4IDEwMDY0NAotLS0gYS9kcml2ZXJzL2Nsay9yb2NrY2hp
-cC9jbGsuaAorKysgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGsuaApAQCAtMzgwLDYgKzM4MCw4
-IEBAIHN0cnVjdCByb2NrY2hpcF9jcHVjbGtfY2xrc2VsIHsKIHN0cnVjdCByb2NrY2hpcF9jcHVj
-bGtfcmF0ZV90YWJsZSB7CiAJdW5zaWduZWQgbG9uZyBwcmF0ZTsKIAlzdHJ1Y3Qgcm9ja2NoaXBf
-Y3B1Y2xrX2Nsa3NlbCBkaXZzW1JPQ0tDSElQX0NQVUNMS19OVU1fRElWSURFUlNdOworCXN0cnVj
-dCByb2NrY2hpcF9jcHVjbGtfY2xrc2VsIHByZV9tdXhzW1JPQ0tDSElQX0NQVUNMS19OVU1fRElW
-SURFUlNdOworCXN0cnVjdCByb2NrY2hpcF9jcHVjbGtfY2xrc2VsIHBvc3RfbXV4c1tST0NLQ0hJ
-UF9DUFVDTEtfTlVNX0RJVklERVJTXTsKIH07CiAKIC8qKgotLSAKMi4zNS4xCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Elaine Zhang <zhangqing@rock-chips.com>
+
+The cores select parent register is special on RK3588.
+
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/clk/rockchip/clk-cpu.c | 28 ++++++++++++++++++++--------
+ drivers/clk/rockchip/clk.h     |  3 +++
+ 2 files changed, 23 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-cpu.c b/drivers/clk/rockchip/clk-cpu.c
+index 47288197c9d7..11aa2259b532 100644
+--- a/drivers/clk/rockchip/clk-cpu.c
++++ b/drivers/clk/rockchip/clk-cpu.c
+@@ -166,10 +166,16 @@ static int rockchip_cpuclk_pre_rate_change(struct rockchip_cpuclk *cpuclk,
+ 		}
+ 	}
+ 	/* select alternate parent */
+-	writel(HIWORD_UPDATE(reg_data->mux_core_alt,
+-			     reg_data->mux_core_mask,
+-			     reg_data->mux_core_shift),
+-	       cpuclk->reg_base + reg_data->core_reg[0]);
++	if (reg_data->mux_core_reg)
++		writel(HIWORD_UPDATE(reg_data->mux_core_alt,
++				     reg_data->mux_core_mask,
++				     reg_data->mux_core_shift),
++		       cpuclk->reg_base + reg_data->mux_core_reg);
++	else
++		writel(HIWORD_UPDATE(reg_data->mux_core_alt,
++				     reg_data->mux_core_mask,
++				     reg_data->mux_core_shift),
++		       cpuclk->reg_base + reg_data->core_reg[0]);
+ 
+ 	spin_unlock_irqrestore(cpuclk->lock, flags);
+ 	return 0;
+@@ -202,10 +208,16 @@ static int rockchip_cpuclk_post_rate_change(struct rockchip_cpuclk *cpuclk,
+ 	 * primary parent by the extra dividers that were needed for the alt.
+ 	 */
+ 
+-	writel(HIWORD_UPDATE(reg_data->mux_core_main,
+-			     reg_data->mux_core_mask,
+-			     reg_data->mux_core_shift),
+-	       cpuclk->reg_base + reg_data->core_reg[0]);
++	if (reg_data->mux_core_reg)
++		writel(HIWORD_UPDATE(reg_data->mux_core_main,
++				     reg_data->mux_core_mask,
++				     reg_data->mux_core_shift),
++		       cpuclk->reg_base + reg_data->mux_core_reg);
++	else
++		writel(HIWORD_UPDATE(reg_data->mux_core_main,
++				     reg_data->mux_core_mask,
++				     reg_data->mux_core_shift),
++		       cpuclk->reg_base + reg_data->core_reg[0]);
+ 
+ 	/* remove dividers */
+ 	for (i = 0; i < reg_data->num_cores; i++) {
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 7aa45cc70287..6aece7f07a7d 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -370,6 +370,8 @@ struct rockchip_cpuclk_rate_table {
+  * @div_core_shift[]:	cores divider offset used to divide the pll value
+  * @div_core_mask[]:	cores divider mask
+  * @num_cores:	number of cpu cores
++ * @mux_core_reg:       register offset of the cores select parent
++ * @mux_core_alt:       mux value to select alternate parent
+  * @mux_core_main:	mux value to select main parent of core
+  * @mux_core_shift:	offset of the core multiplexer
+  * @mux_core_mask:	core multiplexer mask
+@@ -379,6 +381,7 @@ struct rockchip_cpuclk_reg_data {
+ 	u8	div_core_shift[ROCKCHIP_CPUCLK_MAX_CORES];
+ 	u32	div_core_mask[ROCKCHIP_CPUCLK_MAX_CORES];
+ 	int	num_cores;
++	int	mux_core_reg;
+ 	u8	mux_core_alt;
+ 	u8	mux_core_main;
+ 	u8	mux_core_shift;
+-- 
+2.35.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
