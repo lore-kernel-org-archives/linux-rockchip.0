@@ -4,72 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32D2DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 11:03:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 046A8C43334
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 11:04:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l9Lhj/BYYfeXwD7GMsXaMye32muTSwq7Ex+ltNcEeeI=; b=TTNHCdPTbEGMu7g6pfL2w8GuTH
-	KoqNcaXakrBjHb9ro8EQAzx7jEsSdhJUDna3bWUysU1uDJx54PVgvVeEoqKZ3dJK4ETE2dY/CgLME
-	1c+21dHQBboen8XX+CWm3KAKjsNd3e399wjDMmIuVwVWlZa6de+nKjhcV4xfPAFoD+0Exf0FTi9oy
-	OaC9SKPcAfRNANRDQBj1kN199g+cPtnkP8U5moWSF0QsLI/+Uq0BHmtwxKIa7w3QunwssfHhddd8f
-	4G70SqO+E1zHJ9vNguB3rng+e4wqONzYq1X1bA/5ysit3dT810Wt07hL/VVmYei7CpLzGzBCAaaII
-	EoNaIfag==;
+	bh=LVsrQzj2OTkseAFWe9rSxvgYOTfsQA2H6h0afu43oJY=; b=Mydha1hvV/Bxo+eoCEp3rXxVKg
+	J3cif+lP+iDKLaaM5ZkpQW+O42KSHQzQS9rESjMdSMhnUAwupTeVBuD3rFpsh1AQv4fsoE2HH0IeF
+	k6UXTLFu+JjysDUl66rqHNBSyKdPj2ghtLD3J+G33VTImBP7Q5hOIcddYGksXwBbLe5RXe3g7hiKF
+	6unL0N2J5vAg5NISkp0vzbGLAKxu8MZgzsG6BCB5OpF5i/z+7FILpjJzSDPE0knH1c/YjpXNY7GLE
+	xsT/2xlm+6plnr9KX+m4OQJ5TiSFNAD6q//2eZSiyBkni4wUpcexfeG3ccLO9oON6k6WA5lzyVy0r
+	nBTqvt2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Kbw-00EdKB-4a; Thu, 23 Jun 2022 11:02:56 +0000
+	id 1o4KdJ-00Edda-Da; Thu, 23 Jun 2022 11:04:21 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Kbs-00EdIO-Ph; Thu, 23 Jun 2022 11:02:53 +0000
+	id 1o4Kd8-00Edbv-Ng; Thu, 23 Jun 2022 11:04:11 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id D195061ED8;
-	Thu, 23 Jun 2022 11:02:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C860C3411B;
-	Thu, 23 Jun 2022 11:02:44 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 42D8661EC5;
+	Thu, 23 Jun 2022 11:04:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D82FC3411B;
+	Thu, 23 Jun 2022 11:04:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1655982171;
-	bh=QWxmpYJIQevrOn+jIA9BiDlZ1Jm6cS7KRCVZB/rj9MU=;
+	s=k20201202; t=1655982249;
+	bh=aIdW+I8dNqFwqnLgbomd19CUJMezjB4BlkNogKF1XZo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uQk8I+JcFVSOI+L8cXE8qm9iQ8k8bUT7pZ8ijL0cSccXLN/EnEJluw10gdhEyLr88
-	 s6xeP9hTwyT3i50PQskxDM7s5sJ2nLymilcYIEePm8cIm44TRyGaEB2yaLeixVYMrg
-	 0mAYkNT2SfaDKlQsjc/t8JthcQT6mrQJK6lEVobXtbCMLERvjkwCLxxYNMtYejSyuS
-	 HSovhcM4827L2LVHZT2VNMWzjxl7vsjEsFQKWsfL1FBmkr3e3R9PDrzQmE8758RzF+
-	 yE7Esv/81d3SjOJ4ZNdwrzouWuT87mR+AC21FSj5henoKNvlHs7tJDzCKhtuX9qPOn
-	 ITMDCSQZB//dg==
-Date: Thu, 23 Jun 2022 12:02:41 +0100
+	b=f94JHIY2LJbI2Z629AcUkVoFj6tJtMk6c6chxLzm/Y40OJmm/H3oD/tx9PhFDkM+R
+	 akJg1h/M78V9YOs135hgonnv43OiVa/CDM/PR3a1YGeQ/5n+hYZLJQhmIaeIR/OOCe
+	 w/liblWEHu65ul29/nr2gN8BWFXIuCAw/++yEk3UfAGWrbxzwEldfC99bk84QTNfHJ
+	 Sm72tCN2sIz+b+wNKtmui59HDfV2Vx4S6YA1Q2RgN4ke86e/9aHDiF7lqDVRpOsFmS
+	 ApZ7rzgErYj75gj/K3Lkw262ujnaGbyq0Q2caYXBeuhL3hc+ZnRSXTUufhqvmBzQ8/
+	 FBE+onHEaBEhA==
+Date: Thu, 23 Jun 2022 12:04:03 +0100
 From: Mark Brown <broonie@kernel.org>
-To: Charles Keepax <ckeepax@opensource.cirrus.com>
-Cc: kernel test robot <lkp@intel.com>, kbuild-all@lists.01.org,
-	lgirdwood@gmail.com, kuninori.morimoto.gx@renesas.com,
-	mripard@kernel.org, airlied@linux.ie, daniel@ffwll.ch,
-	vkoul@kernel.org, nicolas.ferre@microchip.com, nsaenz@kernel.org,
-	shawnguo@kernel.org, linux-imx@nxp.com, cezary.rojewski@intel.com,
-	pierre-louis.bossart@linux.intel.com, linux-mips@vger.kernel.org,
-	linux-amlogic@lists.infradead.org, daniel@zonque.org,
-	srinivas.kandagatla@linaro.org, linux-rockchip@lists.infradead.org,
-	krzk@kernel.org, linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-omap@vger.kernel.org, linux-xtensa@linux-xtensa.org,
-	peter.ujfalusi@gmail.com, jarkko.nikula@bitmer.com, heiko@sntech.de,
-	jbrunet@baylibre.com, kernel@pengutronix.de,
-	alsa-devel@alsa-project.org
-Subject: Re: [PATCH 27/96] ASoC: au1x: Migrate to new style legacy DAI naming
- flag
-Message-ID: <YrRIUef2WAs15/Mg@sirena.org.uk>
-References: <20220616143429.1324494-28-ckeepax@opensource.cirrus.com>
- <202206230910.wUXKFP3z-lkp@intel.com>
- <20220623093951.GG38351@ediswmail.ad.cirrus.com>
+To: Judy Hsiao <judyhsiao@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Brian Norris <briannorris@chromium.org>,
+	Jaroslav Kysela <perex@perex.cz>, Chen-Yu Tsai <wenst@chromium.org>,
+	alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5 0/3] ASoC: rockchip: i2s: switch BCLK to GPIO
+Message-ID: <YrRIo62na5FCCa06@sirena.org.uk>
+References: <20220623021153.587423-1-judyhsiao@chromium.org>
 MIME-Version: 1.0
-In-Reply-To: <20220623093951.GG38351@ediswmail.ad.cirrus.com>
+In-Reply-To: <20220623021153.587423-1-judyhsiao@chromium.org>
 X-Cookie: I had pancake makeup for brunch!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_040252_910678_0FD28E17 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20220623_040410_850864_BF19E8EF 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,47 +70,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0636127282646964150=="
+Content-Type: multipart/mixed; boundary="===============7385284439648825115=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0636127282646964150==
+--===============7385284439648825115==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="aRjk/oNkrDuhHxkv"
+	protocol="application/pgp-signature"; boundary="bAAQzJfUr8Tz2hZ6"
 Content-Disposition: inline
 
 
---aRjk/oNkrDuhHxkv
+--bAAQzJfUr8Tz2hZ6
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-On Thu, Jun 23, 2022 at 09:39:51AM +0000, Charles Keepax wrote:
+On Thu, Jun 23, 2022 at 02:11:50AM +0000, Judy Hsiao wrote:
+> The patches series is to fix the unexpected large DC output
+> voltage of Max98357a that burns the speakers on the rockchip
+> platform when BCLK and SD_MODE are ON but LRCLK is OFF.
 
-> Mark do you want me to send a v2 for the whole series? Or given
-> the size would it be better to just resend this patch?
+An earlier version was already applied, please send any changes as
+incremental patches.
 
-Series please.
-
---aRjk/oNkrDuhHxkv
+--bAAQzJfUr8Tz2hZ6
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmK0SFEACgkQJNaLcl1U
-h9At5wf6Ax7J+7EqACjWVB1NBLm4Fqt/fn2hmYjsWEp5xg2nu64uAExOpqhd88Ub
-8EiQ8JJ5Yh+LqGAd+ebgMayuxNfGx/YW+EBYI86mKPNt5JUiC9pf7v5IDM8Tdowt
-ItjroWnrAvyu755n93nXekhH53LbekNQZ3r38IqmgYxXfRwuBwo+6LDpWwG+yuZM
-qsKAlnQyapzbY/t5/1ziDvbV9Tu1jRGLpytGhBD3ishspCgdES0U6CAXTAiQbGpc
-MjSi61J4JAE+Xhu37HN97vid7MjwfolyUldVhZBQk80qRTtR78Iu5cv5Mg1kJ1v7
-BEu+WlV4O3xD0frAhInPwl3skpKkHQ==
-=ECPa
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmK0SKMACgkQJNaLcl1U
+h9CrCAf+LQBNxKh07eXpoNhG69/PzuPmq/iy71grFtQtZnGyzGn2Z1HDltI4l5pW
+ac3Pqo+XRj3DYnI6TbysWctR7ZrsootwIfuugKZ4zSLxvC4RX94EnKxKsOSDq+6Q
+2+eFccgAih/GvhGR+RXmtx72jixO0eq2Ywpfinfn3+TsbWQSNL6MbyHX1WsErIqR
++OUii5syBaM8/AlOwbJBz53Ad0beGnKYGk4TvN4mNugXh7QIHNX3tRRomZ95A+Kn
+f33IjTorYaXsJXsi/3OUT9/Jhb5ZBH7gy+2yVUsRbUH5jQzyIgVAYcHvTRSb0B1A
+zP0bwOPq6qUNV60QFV8VXDwMqGzYTQ==
+=K5QJ
 -----END PGP SIGNATURE-----
 
---aRjk/oNkrDuhHxkv--
+--bAAQzJfUr8Tz2hZ6--
 
 
---===============0636127282646964150==
+--===============7385284439648825115==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -132,5 +122,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0636127282646964150==--
+--===============7385284439648825115==--
 
