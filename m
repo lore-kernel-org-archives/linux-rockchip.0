@@ -4,71 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0296DC43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 16:31:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBC7FC43334
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 16:32:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2lvee2gQdBHwWK/gJ75fhLpJVJXEsY/w2l8JY2wfhvc=; b=3cE/nU9GwBSjt6
-	cL/KQ5xWLe8O4agGVne8+kgkZMdx9Azac6g/6HoCeXCFeaDe29Mvx6+InnQiYo6wejhy2bcnEnR6w
-	I92BPELAQNbrzM5oI8cXl+yAqSQeWv0n3F7RI6DIfgzrbbnUchhMPHj+kwL8FKMS+F4WvWcQb5fyW
-	aebHrpC5V4okCaIlAyj6Zw9ZJrNUVu1YQuT44lyIfyhhk+mQa9q8UCiOI7tH1unuumjFaatM1yJb6
-	/Y1wvGTXBccOm/I5X+mU0GJkOY5Ef+/RYrzY5LiQoZ35um/v2s4W27EK9mSnDsufXftooDbplDWFc
-	JyTYtuz5Of3u3sGf7upg==;
+	List-Owner; bh=ltHNv45FsqO0ZMyLCo5xiwqQhEqERblMoNceJxb61rw=; b=1zmqk73JBJVpME
+	WXdvxIiqX63he88EHSrspgB4uY0r+JlbegmIBMbSftTsSgaGxvkrZitgvEALSZH7wnfCElrvXNf8i
+	bH0eiVxZ/anhBUWtput7gSNBcv5D1TgNa82qC1/8q2Uy96NITCy7XxqRThH2DFUoJCUtkXSeXHD7X
+	YJ7FeVMbcj3vf7z6A3q4RPW9uX5QgqKjrWm5oINYXR0+eRoaGx8COdEL97c7+C6kyHr/dc4B9Lv9a
+	Z/sA9g58QRZwRWHj8u15mjOty+RSLNMg8x35IOEG6JMSgs/meov4C//PcvKgqCF2XnlvS3NeQ+AOl
+	xEPPrUrddxDAQqNw/BKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4PjR-00Fu4g-AC; Thu, 23 Jun 2022 16:31:01 +0000
+	id 1o4Pkq-00Fun2-52; Thu, 23 Jun 2022 16:32:28 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4PhR-00FtCa-Ht; Thu, 23 Jun 2022 16:29:00 +0000
-Received: from jupiter.universe (unknown [95.33.159.255])
+	id 1o4Pi8-00FtTC-3L; Thu, 23 Jun 2022 16:29:42 +0000
+Received: from [IPv6:2a00:23c7:6883:e501:cf51:f3a2:10b5:accf] (unknown [IPv6:2a00:23c7:6883:e501:cf51:f3a2:10b5:accf])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AF31166017E4;
-	Thu, 23 Jun 2022 17:28:55 +0100 (BST)
+	(Authenticated sender: obbardc)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AEEC266017E4;
+	Thu, 23 Jun 2022 17:29:38 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656001736;
-	bh=NR9TyHKc60OYnxwLzxpQ1c2wItafR5D/uWReeMDiZLI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=C4UNF7lZTqD5LepVh7lPXHlQ4Cg/MEBb0h35zYH+X8dGc8Eu0ai5PQMPD5IarZXf2
-	 e7h0C7YgJ4TWpOj/Za/hPe9A0p0X8iJGdbcD5X1quHJvT0PDTGWJQ7CVzXh5zjle+4
-	 p0ilh6svW6dAG/2XvlSuUcgpTSHIgSMb+nQNRD1qSksgEWCxSo94pTUHP9lYZIVT/4
-	 aTHqXJemhYdox00n8txpy56Q3zYYT2idzOwicN9pAHjQek1Zz/6BlLlTi9u/mIyC74
-	 aH6GFfmUNOh9oWw3igFheTNgflmESEipeFusus4ddL8mBHfKfB5g+6e1UNzhg7YPYo
-	 +qDY/tzxGJmBg==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 4A59D480591; Thu, 23 Jun 2022 18:28:53 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>
-Cc: "David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	netdev@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCH 3/3] dt-bindings: net: rockchip-dwmac: add rk3588 gmac compatible
-Date: Thu, 23 Jun 2022 18:28:50 +0200
-Message-Id: <20220623162850.245608-4-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220623162850.245608-1-sebastian.reichel@collabora.com>
-References: <20220623162850.245608-1-sebastian.reichel@collabora.com>
+	s=mail; t=1656001778;
+	bh=0fcf2Og5+kAlUKXKZjiLdn0YJRF3DsBLftoZV9IJdiw=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=l+w2abAK8h9HgrwpbWg/B7Xm/ZaYbCCurnXZ5ciUQbyFRDTaxvAMFlniqbO8hgs+S
+	 981JtASOd+mligWTmMli1hppeFeGWghNcEEmC4+0/Y5fiTssfNFoMTBmp4jqnSulK2
+	 p3GPoLcdzkwTAMDKAJ7NogogOjBqlbHZ8Grr9PtOqIz1Stm9ynrF2g90OPyhvnnKoN
+	 PpgFpwZFFBIm6918/vzZHy3hIJJZ0eMY7mB4GTJwpwL79QTmvRjQ5HO7uGbM1nOGnS
+	 gCpZhnxZuTUGBOhqTMSx23f4Yjarc3OfE+HPqmMYDyAYDZUutn/IrDq9sMpMQuSFJG
+	 1eJdb/IWM8ohg==
+Message-ID: <0a302a938736d3d5dc9e158718f2cd0c33b53ea4.camel@collabora.com>
+Subject: Re: [PATCH 1/6] dt-bindings: arm: rockchip: add rk3388 compatible
+ string to pmu.yaml
+From: Christopher Obbard <chris.obbard@collabora.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>, Heiko Stuebner
+	 <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>,  linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,  devicetree@vger.kernel.org,
+ kernel@collabora.com
+Date: Thu, 23 Jun 2022 17:29:33 +0100
+In-Reply-To: <20220623162309.243766-2-sebastian.reichel@collabora.com>
+References: <20220623162309.243766-1-sebastian.reichel@collabora.com>
+	 <20220623162309.243766-2-sebastian.reichel@collabora.com>
+User-Agent: Evolution 3.44.2-1 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_092857_809612_4C0C1CFF 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20220623_092940_378641_0E280F6D 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,68 +71,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add compatible string for RK3588 gmac, which is similar to the RK3568
-one, but needs another syscon device for clock selection.
-
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 6 ++++++
- Documentation/devicetree/bindings/net/snps,dwmac.yaml     | 1 +
- 2 files changed, 7 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-index 083623c8d718..c42f5a74a92e 100644
---- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-@@ -25,6 +25,7 @@ select:
-           - rockchip,rk3368-gmac
-           - rockchip,rk3399-gmac
-           - rockchip,rk3568-gmac
-+          - rockchip,rk3588-gmac
-           - rockchip,rv1108-gmac
-   required:
-     - compatible
-@@ -50,6 +51,7 @@ properties:
-       - items:
-           - enum:
-               - rockchip,rk3568-gmac
-+              - rockchip,rk3588-gmac
-           - const: snps,dwmac-4.20a
- 
-   clocks:
-@@ -81,6 +83,10 @@ properties:
-     description: The phandle of the syscon node for the general register file.
-     $ref: /schemas/types.yaml#/definitions/phandle
- 
-+  rockchip,php_grf:
-+    description: The phandle of the syscon node for the peripheral general register file.
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+
-   tx_delay:
-     description: Delay value for TXD timing. Range value is 0~0x7F, 0x30 as default.
-     $ref: /schemas/types.yaml#/definitions/uint32
-diff --git a/Documentation/devicetree/bindings/net/snps,dwmac.yaml b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-index 36c85eb3dc0d..b5aba399ca5d 100644
---- a/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/snps,dwmac.yaml
-@@ -72,6 +72,7 @@ properties:
-         - rockchip,rk3328-gmac
-         - rockchip,rk3366-gmac
-         - rockchip,rk3368-gmac
-+        - rockchip,rk3588-gmac
-         - rockchip,rk3399-gmac
-         - rockchip,rv1108-gmac
-         - snps,dwmac
--- 
-2.35.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCAyMDIyLTA2LTIzIGF0IDE4OjIzICswMjAwLCBTZWJhc3RpYW4gUmVpY2hlbCB3cm90
+ZToKPiBBZGQgdGhlIGNvbXBhdGlibGUgZm9yIHRoZSBwbXUgbWZkIG9uIHJrMzM4OC4KCkhleSBT
+ZWJhc3RpYW4sCgpBbHNvIGxvb2tzIGxvb2tzIGxpa2UgdGhpcyAoYW5kIHRoZSBwYXRjaCBzdWJq
+ZWN0KSBzaG91bGQgaW5zdGVhZCByZWZlcgp0byB0aGUgcmszNTg4ID8KClRoYW5rcyEKQ2hyaXMK
+Cgo+IAo+IFNpZ25lZC1vZmYtYnk6IFNlYmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hl
+bEBjb2xsYWJvcmEuY29tPgo+IC0tLQo+IMKgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
+bmdzL2FybS9yb2NrY2hpcC9wbXUueWFtbCB8IDIgKysKPiDCoDEgZmlsZSBjaGFuZ2VkLCAyIGlu
+c2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL2FybS9yb2NrY2hpcC9wbXUueWFtbAo+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL2FybS9yb2NrY2hpcC9wbXUueWFtbAo+IGluZGV4IDVlY2UzODA2NWU1NC4uNGM2
+NDUwNDljMTViIDEwMDY0NAo+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9hcm0vcm9ja2NoaXAvcG11LnlhbWwKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvYXJtL3JvY2tjaGlwL3BtdS55YW1sCj4gQEAgLTI1LDYgKzI1LDcgQEAgc2VsZWN0
+Ogo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgIC0gcm9ja2NoaXAscmszMzY4LXBtdQo+IMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIC0gcm9ja2NoaXAscmszMzk5LXBtdQo+IMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IC0gcm9ja2NoaXAscmszNTY4LXBtdQo+ICvCoMKgwqDCoMKgwqDCoMKgwqAgLSByb2NrY2hpcCxy
+azM1ODgtcG11Cj4gwqAKPiDCoMKgIHJlcXVpcmVkOgo+IMKgwqDCoMKgIC0gY29tcGF0aWJsZQo+
+IEBAIC0zOSw2ICs0MCw3IEBAIHByb3BlcnRpZXM6Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqAgLSBy
+b2NrY2hpcCxyazMzNjgtcG11Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqAgLSByb2NrY2hpcCxyazMz
+OTktcG11Cj4gwqDCoMKgwqDCoMKgwqDCoMKgwqAgLSByb2NrY2hpcCxyazM1NjgtcG11Cj4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoCAtIHJvY2tjaGlwLHJrMzU4OC1wbXUKPiDCoMKgwqDCoMKgwqAgLSBj
+b25zdDogc3lzY29uCj4gwqDCoMKgwqDCoMKgIC0gY29uc3Q6IHNpbXBsZS1tZmQKPiDCoAo+IC0t
+IAo+IDIuMzUuMQo+IAo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
+LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
+by9saW51eC1yb2NrY2hpcAo=
