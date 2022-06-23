@@ -4,83 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 547B2C43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 14:00:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5A38C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 16:05:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kTQseaU2CQ2oFDU2SwlcUwvFwqYfCDP4J9ktZjSnYlQ=; b=LpwIT2sMZUw4o7
-	CyzV8U+4nAiBNgTXsbs1csZp8IfXuMPVeyOuxiuj++qtG6mPGUZ96Ph6humBELFINLQAyzMhbT0gu
-	jFV2QJcRPh/jl3jCfGr+cY43KZYmKwU4PlvmXffQLyPVNYjAWQdl6DqXiQe/GbgFSuuYBlf6H8lz2
-	gObLJOz5KQSzc9mRVv5LY3nIYwEIHij4eU1tUP4hRAuGxJLn4zxtYop1/i9ypszREVw2MSGFS06gG
-	/TVKZCi17x7ppFt6znayMKa/wEL8csb0hKQXertL6HPLON19MjtMIFTDV6igEuT5d1omiHu+IAZvI
-	ojlo2sD+3QVrjaAX9+5w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tZ6p25C55s2v5eD+QmXizml6qNd7FShpu2i9bugcPCQ=; b=KS6ji1rPz0LUA8
+	21u5q+dpCwHAyid8nVy8vZucxBZOnhCBN7JiVRV4FCKiUjmXBLwV+/GnT1mb+VtkWizVdID2TigSU
+	+SSHXoce3VCHWpPq0u4fnSntIFpEJRYxoABbRajpH75/hZtjrul7iZcBk/LLLk5cOAwFoSSQe5ad1
+	w6Kz9956I/ZcDXl4/Y6vtvJmcjhZLE3VA8AZliCbPRrsZlo9VtziswrKGqIGo2VTXV0yifGl9xvHW
+	WJ+YELZv11t/R1CxZgbUVbLy4OdiF+FHL+t6ioG5oa52ZUCQTON8WW0ZGDzWcC/MmYlBKmlB3QNSd
+	vUXH3s7p6tScWCfdV8rQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4NNv-00FRzq-H7; Thu, 23 Jun 2022 14:00:39 +0000
-Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
+	id 1o4PK1-00FngJ-8A; Thu, 23 Jun 2022 16:04:45 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4MKc-00F6qw-Tt; Thu, 23 Jun 2022 12:53:13 +0000
-Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
-	by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25NBvlr9011978;
-	Thu, 23 Jun 2022 07:52:54 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding : content-type; s=PODMain02222019;
- bh=FzDSh8zY1KDxF7rJkQVN5S8yOHbt/setTYgyg3pJdkA=;
- b=WN1au59VKRbs4jpssR6hn+mnYNcEN/m0pxRkSfCYwgnxHu5Rc4+3MjbDPK3a6uXRLTK9
- bQ9OlcuYQoJZJXRf5KPThPWU0to8si2KcKjxdXNzMewGbMLtoNKeLbIrrrTfBK9vCbTa
- WRDTZy3NLPLTtGAhTavPO8QcUKAM0pI4HzqFg3V1v+FuwDcxcIGZ4CSgF6UeLWZDezh6
- HnHMsD4gphMterWg6uIzwPGTtu5+uwT8Zlkql4DEjaqpeaJaNQGGWf4wmUgjx4Hxgs9t
- 5mFHD3O3M/NSwK146ecG9Up+ht7Knzs4YS7Z1T2jYm/LVePhiYZvAn8hTzmHFFv/tao7 BQ== 
-Received: from ediex02.ad.cirrus.com ([84.19.233.68])
-	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3gsb4p6wvp-4
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
-	Thu, 23 Jun 2022 07:52:54 -0500
-Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
- (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Thu, 23 Jun
- 2022 13:52:51 +0100
-Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
- (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.28 via Frontend
- Transport; Thu, 23 Jun 2022 13:52:51 +0100
-Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
-	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 2C940478;
-	Thu, 23 Jun 2022 12:52:51 +0000 (UTC)
-From: Charles Keepax <ckeepax@opensource.cirrus.com>
-To: <broonie@kernel.org>
-CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
-        <mripard@kernel.org>, <airlied@linux.ie>, <daniel@ffwll.ch>,
-        <vkoul@kernel.org>, <nicolas.ferre@microchip.com>, <nsaenz@kernel.org>,
-        <shawnguo@kernel.org>, <linux-imx@nxp.com>,
-        <cezary.rojewski@intel.com>, <pierre-louis.bossart@linux.intel.com>,
-        <linux-mips@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
-        <daniel@zonque.org>, <srinivas.kandagatla@linaro.org>,
-        <linux-rockchip@lists.infradead.org>, <krzk@kernel.org>,
-        <linux-stm32@st-md-mailman.stormreply.com>,
-        <linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
-        <linux-omap@vger.kernel.org>, <linux-xtensa@linux-xtensa.org>,
-        <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
-        <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
-        <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>,
-        <dri-devel@lists.freedesktop.org>,
-        <linux-rpi-kernel@lists.infradead.org>, <frattaroli.nicolas@gmail.com>
-Subject: [PATCH v2 05/96] ASoC: spear: Migrate to new style legacy DAI naming flag
-Date: Thu, 23 Jun 2022 13:51:19 +0100
-Message-ID: <20220623125250.2355471-6-ckeepax@opensource.cirrus.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
-References: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
+	id 1o4PJg-00Fnc8-0v; Thu, 23 Jun 2022 16:04:27 +0000
+Received: from jupiter.universe (unknown [95.33.159.255])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4852766017DF;
+	Thu, 23 Jun 2022 17:04:20 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656000260;
+	bh=zjDrFX45JCbBeibf/cBhGS7s1nuAsOUhgqAPOq3rbRg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=TsVNhEoI98MAUIQkJPaWhfmD0sdrYQpC9cvsXv9JHQ2bszl61qUYPSFzqLaCIzbKl
+	 DnKHf1MNcqrXJxPp6tNjpiTpYWloHzYVKMppk77y7yvlzugkg+EXFmQXs2K8cKvyaE
+	 h6JyEzZ0qpeNhAhlGSphPZD9S3QL2o//zwnMhUChwjZhVAH7+SKty8lPjM/SrZL+gS
+	 mh2A9vLHm6fhZ0cESUWBLOUNOarnznhZF4Ek71lKIMGVhyWj3jWKFaXtUyYaCoWp7w
+	 By6hvtCCzmlYAupqHtZtiqUYHO7j8rYvKvJ6/iXDcflnBqg68C0fbHaw6GTC/lIQ0F
+	 D68Sy+350fvng==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id C0904480122; Thu, 23 Jun 2022 18:04:17 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH 0/5] RK3588 Clock and Reset Support
+Date: Thu, 23 Jun 2022 18:03:24 +0200
+Message-Id: <20220623160329.239501-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-X-Proofpoint-GUID: RexsSzvU8UcrJPKYH7dwMALHEx7klMig
-X-Proofpoint-ORIG-GUID: RexsSzvU8UcrJPKYH7dwMALHEx7klMig
-X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_055311_195069_E3F953F9 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20220623_090425_164823_22F12676 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,47 +79,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Change the legacy DAI naming flag from opting in to the new scheme
-(non_legacy_dai_naming), to opting out of it (legacy_dai_naming).
-These drivers appear to be on the CPU side of the DAI link and
-currently uses the legacy naming, so add the new flag.
+RK3588 Clock and Reset Support
 
-Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
----
- sound/soc/spear/spdif_in.c  | 3 ++-
- sound/soc/spear/spdif_out.c | 3 ++-
- 2 files changed, 4 insertions(+), 2 deletions(-)
+This has been part of a bigger patchset adding basic rk3588 support.
+Since that gets more and more out of hand, I'm now sending patches
+for each subsystem as individual patchset. Previou patchet:
 
-diff --git a/sound/soc/spear/spdif_in.c b/sound/soc/spear/spdif_in.c
-index 4b68d6ee75da4..4ad8b1fc713a7 100644
---- a/sound/soc/spear/spdif_in.c
-+++ b/sound/soc/spear/spdif_in.c
-@@ -172,7 +172,8 @@ static struct snd_soc_dai_driver spdif_in_dai = {
- };
- 
- static const struct snd_soc_component_driver spdif_in_component = {
--	.name		= "spdif-in",
-+	.name			= "spdif-in",
-+	.legacy_dai_naming	= 1,
- };
- 
- static irqreturn_t spdif_in_irq(int irq, void *arg)
-diff --git a/sound/soc/spear/spdif_out.c b/sound/soc/spear/spdif_out.c
-index 549295a6ed501..fb107c5790add 100644
---- a/sound/soc/spear/spdif_out.c
-+++ b/sound/soc/spear/spdif_out.c
-@@ -273,7 +273,8 @@ static struct snd_soc_dai_driver spdif_out_dai = {
- };
- 
- static const struct snd_soc_component_driver spdif_out_component = {
--	.name		= "spdif-out",
-+	.name			= "spdif-out",
-+	.legacy_dai_naming	= 1,
- };
- 
- static int spdif_out_probe(struct platform_device *pdev)
+https://lore.kernel.org/all/20220504213251.264819-1-sebastian.reichel@collabora.com/
+
+Changes:
+ * Sync'd against latest downstream changes
+ * Update bindings according to Rob's comments, except for license
+   (no feedback from Rockchip)
+
+-- Sebastian
+
+Elaine Zhang (5):
+  dt-binding: clock: Document rockchip,rk3588-cru bindings
+  clk: rockchip: add register offset of the cores select parent
+  clk: rockchip: add pll type for RK3588
+  clk: rockchip: clk-cpu: add mux setting for cpu change frequency
+  clk: rockchip: Add clock controller for the RK3588
+
+ .../bindings/clock/rockchip,rk3588-cru.yaml   |   59 +
+ drivers/clk/rockchip/Kconfig                  |    8 +
+ drivers/clk/rockchip/Makefile                 |    1 +
+ drivers/clk/rockchip/clk-cpu.c                |   69 +-
+ drivers/clk/rockchip/clk-pll.c                |  218 +-
+ drivers/clk/rockchip/clk-rk3588.c             | 2530 +++++++++++++++++
+ drivers/clk/rockchip/clk.h                    |   65 +
+ include/dt-bindings/clock/rk3588-cru.h        | 1516 ++++++++++
+ 8 files changed, 4457 insertions(+), 9 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml
+ create mode 100644 drivers/clk/rockchip/clk-rk3588.c
+ create mode 100644 include/dt-bindings/clock/rk3588-cru.h
+
 -- 
-2.30.2
+2.35.1
 
 
 _______________________________________________
