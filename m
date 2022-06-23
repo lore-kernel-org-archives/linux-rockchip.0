@@ -4,80 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE452C43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 02:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9A47C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 07:46:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qYqElmZ7Ijp0t/oy8suAmVQeYSWSZTpMWGNVJlYaRCY=; b=P0nk0d5rxG6lNo
-	oRRCRG9Z/0IokcxWfo53oORT7HMaIN6UJX5rLRjcGRhKZSletT/RaQFwZeB6Y7kZhCG5VDy0qDTIS
-	crm7wqClQc/V6hPp6htemdurRJZOdlVg9Ti9MvgWSZPejPauQrv0vZE49Lms+klJ6zt0sEvDxaAKU
-	oILmnf9QWcFv/6M0hCxJHW5PN/tdY28oh0QOo7tdUtyDE8PEgFg8uI0enwVOF0YJ1HCyih5kFKZ+K
-	WeC6IOHAO8+MS7yaAxue49P6UYlthNcixVXmGOHEl8i3C+i63XjLDQ1x3fMJ/gKzD3kSd9C1eeu3d
-	NeBaEIwMNw1lRvE48seg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=H7a6Tyy+GP7gs/hNrIjRsMHNK+l7M84BaBG+NV8a8RQ=; b=vraQQ0cgaZGQMf
+	Hl5ktXSIIkkUJSvar82QBU0RxU/t79NQ58IveGuE6d+G227iYFydbHTCHVtRiJ1VLksOHxjRTPwZq
+	9xWyV+EPTynUTtnfkjNxG6bDkNyjtWi7WUsHsXu74l2xC4XJdM+4ncP5MULgTnPZcbzuWQ9m2i9at
+	Ah5mJ6jGJqaXEfuqjvmVfMDZIRodiwJS1I2u84xELW4e+i2ZRS9cPH/IeFJYQgWwQc7kiyDBvvw7I
+	uKTFdEDW6dgVKt4VEHqZDtpRzbUa5SJnC+0fO6ovl74CNprozd6vjfTc7o6wrZLuzrSn7tWz1FMqy
+	1cfoM2p8asqRXB5r2xQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4CVh-00Cy9V-OQ; Thu, 23 Jun 2022 02:23:57 +0000
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+	id 1o4HXe-00DvP2-QW; Thu, 23 Jun 2022 07:46:18 +0000
+Received: from mail.onlinesuccesses.pl ([198.244.150.235])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4CKS-00CtOR-G8
-	for linux-rockchip@lists.infradead.org; Thu, 23 Jun 2022 02:12:22 +0000
-Received: by mail-pl1-x634.google.com with SMTP id k7so16928921plg.7
-        for <linux-rockchip@lists.infradead.org>; Wed, 22 Jun 2022 19:12:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=LO7XuaEC/0vDNLbgeDoJilJKS3NWSolp4n621az3TKo=;
-        b=YTdodIHecq0rIHPbOUNfMDsBOBFCCQZTpt8Mae1FUo/OzFM6XdXMJqT6FAiu7e9CXF
-         PxEgtptDJcI0oMyWCxN8NsK8HX4VKQAnnRy7sEUIStaqxwAiGptBSPMulN6V+Gcit6n2
-         NDv7VnHGcSOV1n6yNb6uEy6L+zlw+RJ1HHkXI=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=LO7XuaEC/0vDNLbgeDoJilJKS3NWSolp4n621az3TKo=;
-        b=pnuJM3pWQXULjPEobHy+XWmWYqkiaOaU4m2pEE/WUIOaIKXsE9THv64kgn+fa6ucEJ
-         rXGKVuVoYe/4FxgYSZ6EGIelabMRErW+r2oTsLDcR9h8MPYMavM3X5PSL4UVfGW6KYUl
-         jzJu/DslTnDGY/7WRT5m4D+gsEDtVLpA8L1H//D57FsyrtTpf1JEA5fPTyTURTOS9xEd
-         +n+7cA9xXuAI6eJUDOIwXcSbH4RucspNMETzZC9e1AwVsKyDTAOZnM6s/ATCEwrB0RKT
-         01wtp6AJzI1u883gTkHjLsC8LwWnkBWxcCJo199fjQBcysw9do791Sh/sWamQY74N6U5
-         O3bA==
-X-Gm-Message-State: AJIora+DUpvulrkRLC/qx3ZPh2niydGTGvl9uQKRdss5VkQxe82AqhND
-	Esj5Xq/1V5fXKEP6OypKhlVymg==
-X-Google-Smtp-Source: AGRyM1vyoRc4GfoYYaOKyQJWI5gEHK7cxz3myYUl/C/h7waRa2CFuT2tcdE9FdsAox69KLspbd1rCg==
-X-Received: by 2002:a17:902:ee55:b0:16a:5e4:26b with SMTP id 21-20020a170902ee5500b0016a05e4026bmr29350254plo.29.1655950337415;
-        Wed, 22 Jun 2022 19:12:17 -0700 (PDT)
-Received: from judyhsiao0523.c.googlers.com.com (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
-        by smtp.gmail.com with ESMTPSA id m6-20020a170902768600b0016196bd15f4sm6194000pll.15.2022.06.22.19.12.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Jun 2022 19:12:16 -0700 (PDT)
-From: Judy Hsiao <judyhsiao@chromium.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Brian Norris <briannorris@chromium.org>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	alsa-devel@alsa-project.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Judy Hsiao <judyhsiao@chromium.org>
-Subject: [PATCH v5 3/3] ASoC: dt-bindings: rockchip: Document pinctrl-names for i2s
-Date: Thu, 23 Jun 2022 02:11:53 +0000
-Message-Id: <20220623021153.587423-4-judyhsiao@chromium.org>
-X-Mailer: git-send-email 2.37.0.rc0.104.g0611611a94-goog
-In-Reply-To: <20220623021153.587423-1-judyhsiao@chromium.org>
-References: <20220623021153.587423-1-judyhsiao@chromium.org>
+	id 1o4HXc-00DvOS-UL
+	for linux-rockchip@lists.infradead.org; Thu, 23 Jun 2022 07:46:18 +0000
+Received: by mail.onlinesuccesses.pl (Postfix, from userid 1002)
+	id 31AFEA49F9; Thu, 23 Jun 2022 07:43:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=onlinesuccesses.pl;
+	s=mail; t=1655970214;
+	bh=nE8HqilgMh4dy7+Z8ksfg7Bc9rmPeQtYFq3/3YR2ODU=;
+	h=Date:From:To:Subject:From;
+	b=kNISgZDfLLDcxO3atv2wzIBu46B8s3OOLIf+1ruojhY7Axa87VwkuZ7c2agwIQb8M
+	 vR98uGAZ6IOnD5p+YYaqFrZUfG/r1INTT3MFtxH0dHJgjwDr9/qqFjbqh2lcZOGdzE
+	 aZw1VsEyAPHeK0SIuf2w2ch/0E9f0mk7mZz1vTFzWF1gJJlm6bNcnsOVsaTDB4lJDu
+	 VgSblTuJBUP8bt3Wg7kdJ+SqEVr5ZiIQ2LksiAoSwT8fgw2hWpMf2BnhESICj4O1DH
+	 sN9D0uJcvVEH6YwEGYMgDOS7BTd0SI+kvOVJnKTqJl8dObFVth90e+dLU9UcvVQkEy
+	 /bRyhrc/CMPqQ==
+Received: by mail.onlinesuccesses.pl for <linux-rockchip@lists.infradead.org>; Thu, 23 Jun 2022 07:41:20 GMT
+Message-ID: <20220623064501-0.1.51.1ms8w.0.1cp78218vo@onlinesuccesses.pl>
+Date: Thu, 23 Jun 2022 07:41:20 GMT
+From: "Wiktor Zielonko" <wiktor.zielonko@onlinesuccesses.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: Ruch z pierwszej pozycji w Google
+X-Mailer: mail.onlinesuccesses.pl
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_191220_661043_54476E3B 
-X-CRM114-Status: UNSURE (   8.58  )
+X-CRM114-CacheID: sfid-20220623_004617_145864_042EE7C0 
+X-CRM114-Status: UNSURE (   0.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,41 +60,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch documents pinctrl-names for i2s.
-
-Signed-off-by: Judy Hsiao <judyhsiao@chromium.org>
----
- Documentation/devicetree/bindings/sound/rockchip-i2s.yaml | 7 +++++++
- 1 file changed, 7 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml b/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
-index 5ea16b8ef93f..7e36e389e976 100644
---- a/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
-+++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
-@@ -61,6 +61,13 @@ properties:
-           - const: tx
-           - const: rx
- 
-+  pinctrl-names:
-+    oneOf:
-+      - const: default
-+      - items:
-+          - const: bclk_on
-+          - const: bclk_off
-+
-   power-domains:
-     maxItems: 1
- 
--- 
-2.37.0.rc0.104.g0611611a94-goog
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LCAKCmpha2nFmyBjemFzIHRlbXUgemfFgm9zacWCYSBzacSZIGRvIG5hcyBm
+aXJtYSwga3TDs3JlaiBzdHJvbmEgaW50ZXJuZXRvd2EgbmllIHBvenljam9ub3dhxYJhIHNpxJkg
+d3lzb2tvIHcgd3lzenVraXdhcmNlIEdvb2dsZS4gCgpOYSBwb2RzdGF3aWUgd3lrb25hbmVnbyBw
+cnpleiBuYXMgYXVkeXR1IFNFTyB6b3B0eW1hbGl6b3dhbGnFm215IHRyZcWbY2kgbmEgc3Ryb25p
+ZSBwb2Qga8SFdGVtIHdjemXFm25pZWogb3ByYWNvd2FueWNoIHPFgsOzdyBrbHVjem93eWNoLiBO
+YXN6IHdld27EmXRyem55IHN5c3RlbSBjb2R6aWVubmllIGFuYWxpenVqZSBwcmF3aWTFgm93ZSBk
+emlhxYJhbmllIHdpdHJ5bnkuICBEemnEmWtpIGluZHl3aWR1YWxuZWogc3RyYXRlZ2lpLCBmaXJt
+YSB6ZG9ieXdhIGNvcmF6IHdpxJljZWogS2xpZW50w7N3LiAgCgpDenkgY2hjaWVsaWJ5IFBhxYRz
+dHdvIHp3acSZa3N6ecSHIGxpY3pixJkgb3PDs2Igb2R3aWVkemFqxIVjeWNoIHN0cm9uxJkgaW50
+ZXJuZXRvd8SFIGZpcm15PyBNw7NnxYJieW0gcHJ6ZWRzdGF3acSHIG9mZXJ0xJk/IAoKClBvemRy
+YXdpYW0gc2VyZGVjem5pZSwKV2lrdG9yIFppZWxvbmtvCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
