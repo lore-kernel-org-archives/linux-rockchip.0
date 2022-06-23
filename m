@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFE01C43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 16:24:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44B52CCA47C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 16:24:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rvJcxf3ZLKHmBhj3XtPdTQVfUB1d444myrxoqccGH2U=; b=ecal2jMwBEztRl
-	pV7g/36Fr69KQ1Q4sjGpPiXV5mvjY27F7vGS2/sidNLWRxcgWR3ufpQJhWb08hERVEsd+IKsVjRVo
-	GgEqO0uqLeBEXq9z1NWxZOWWiNmkafs13DNZPJjgVo78c9XwJLVqEY3DTg8CeFb4EGJ+IO7epO04j
-	tL4LDwkJ+GYMYPSfslsPKU5JuJi0KgBHRUe44+Nwh7hSuyWVxHE1HVp5eJ4vIPGVxWfYnazrV5l8x
-	oNdTU1YWQFNEMPINdf5HGG0jEop/tXHQrHwpg6FRpGMtaDprP7Re3Fmg5W5kFM4pTfGUVv8wgv8um
-	Kve/OgUMDx4ydx4zQ87A==;
+	List-Owner; bh=cOvaIefbJblTZttjJKgMztvAdQB//uWBy0jb6pKdua4=; b=bn0Dw/lL5Xhp7L
+	8HVX+32agM7MNKyDvFxJG3TMWlLuwEkw8MvuUmaCGDfv8oF/y6KqZnVD3yV2LW4Gb/iNWwUjZulQU
+	JBI4Qe3k/1O3I5YSqN+uNgw88pdwOk11S+OvQJ68sGFxF1qthZ1x0H/VIJJtB/T56dCpU9LqoQW/c
+	3xgz7Ipxtn01v5bAkma71N6dPfBcrER1pJ8zBc+VjWQtY0Iox0VdUKuJt3JHIktn6bNwn6aJS/Pl2
+	rkjlyMeLWlU9lgAXc43iJ5jot6aIJrrlB/VeGCpmTRNqJ1ynetZvthFz6Je43FbufYy510W/jBfUR
+	7auiVQflLFhUtn1dSfmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Pcj-00Fr8L-QJ; Thu, 23 Jun 2022 16:24:05 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o4Pcl-00Fr9B-2c; Thu, 23 Jun 2022 16:24:07 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Pc0-00Fqrt-9t; Thu, 23 Jun 2022 16:23:23 +0000
+	id 1o4Pc0-00Fqrq-Fj; Thu, 23 Jun 2022 16:23:23 +0000
 Received: from jupiter.universe (unknown [95.33.159.255])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id D40EC66017E3;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CC5DF66017E2;
 	Thu, 23 Jun 2022 17:23:18 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1656001399;
-	bh=wQNrRBDOImsaqQM9a/eYf3eakfhEWslqVCx/TL9kHGg=;
+	bh=rjBm2R8h7petkCH6iM9MUjj3atNPYvOGs6HwOrPQqZA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=NaiYsPr6dWRnIpEWBNnfBC13gxBPi28TV6tNBbsh1fue+Lh4tVqOZKSs5iGKFGebn
-	 Yi4feXmB9OiD5nmITOddSxbI/cRwNQHY7nEpgrjDMhhMod5MqCnrTvnIETDOCTJX/d
-	 DyBFnfkcf8OsSuHh3saSMMDeOeyyPZMC0KUiT1ZkkVaHQLbGKp+Efx7hWLrPEPNgta
-	 Hm4eeTJKc7xjb3YueyYPihjWbLgzI6PJ4V3SVxGpPAaKs9hjPGb5b81q2ZeQdMgXgT
-	 gabUuybDbdxhGxyA5SLFTUXlHeEgbjjghnmDizxYh/h1oQUPIQM2oJCVfJ+VyGrKKs
-	 FAMmUNGhu/2CQ==
+	b=QTCZHJY18S50CZZWCOgZUOUmRIfFZailGxVZ3XS5jW1LOaXbIqmIxI5NT69761FvP
+	 8jwYEjhq4moOktAEJc7rBjiPKJn48gAOBYxY5AJbVlypeW7g4g3z8YsS2nqAX4H/bw
+	 3Tn+oXkjnqSrvXWTNVsCP+18BZTphvCkL6qUx5vHG2b9zRVbCkG4wAwvjZra4AAgNd
+	 XOvbd2dPROcQ5M8ANsXx9hX7VBtGjY+ekGNRhbbNxuKEPMvrR4K/lLQiK6usYS0D7s
+	 ybJPoHEFUaYrzCyHXfs70y9MjdY+jnZAlx+QmkbAdq4qX+7j5NB19+dFZgkV8BcluF
+	 LJtd3yYlpJRLQ==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 72C60480591; Thu, 23 Jun 2022 18:23:16 +0200 (CEST)
+	id 6E43F480125; Thu, 23 Jun 2022 18:23:16 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -52,16 +52,16 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH 3/6] dt-bindings: power: rockchip: Add bindings for rk3588
-Date: Thu, 23 Jun 2022 18:23:06 +0200
-Message-Id: <20220623162309.243766-4-sebastian.reichel@collabora.com>
+Subject: [PATCH 1/6] dt-bindings: arm: rockchip: add rk3388 compatible string to pmu.yaml
+Date: Thu, 23 Jun 2022 18:23:04 +0200
+Message-Id: <20220623162309.243766-2-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220623162309.243766-1-sebastian.reichel@collabora.com>
 References: <20220623162309.243766-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_092320_529654_4713EDB3 
-X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-CacheID: sfid-20220623_092320_722943_3BEE47F0 
+X-CRM114-Status: UNSURE (   9.80  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,33 +79,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the compatible string for RK3588 SoC.
+Add the compatible for the pmu mfd on rk3388.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../devicetree/bindings/power/rockchip,power-controller.yaml    | 2 ++
+ Documentation/devicetree/bindings/arm/rockchip/pmu.yaml | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-index 3deb0fc8dfd3..5a769517f5c4 100644
---- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-+++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-@@ -41,6 +41,7 @@ properties:
-       - rockchip,rk3368-power-controller
-       - rockchip,rk3399-power-controller
-       - rockchip,rk3568-power-controller
-+      - rockchip,rk3588-power-controller
+diff --git a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+index 5ece38065e54..4c645049c15b 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip/pmu.yaml
+@@ -25,6 +25,7 @@ select:
+           - rockchip,rk3368-pmu
+           - rockchip,rk3399-pmu
+           - rockchip,rk3568-pmu
++          - rockchip,rk3588-pmu
  
-   "#power-domain-cells":
-     const: 1
-@@ -119,6 +120,7 @@ $defs:
-           "include/dt-bindings/power/rk3368-power.h"
-           "include/dt-bindings/power/rk3399-power.h"
-           "include/dt-bindings/power/rk3568-power.h"
-+          "include/dt-bindings/power/rk3588-power.h"
+   required:
+     - compatible
+@@ -39,6 +40,7 @@ properties:
+           - rockchip,rk3368-pmu
+           - rockchip,rk3399-pmu
+           - rockchip,rk3568-pmu
++          - rockchip,rk3588-pmu
+       - const: syscon
+       - const: simple-mfd
  
-       clocks:
-         minItems: 1
 -- 
 2.35.1
 
