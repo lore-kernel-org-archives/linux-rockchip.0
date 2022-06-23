@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD00BC433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 12:55:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D8B7C43334
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 12:55:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XIWNuUFXSHZqR/6a3zf6ignm2vrQH+bCNG3E5SAdpSo=; b=rTUVLNtCmdFtT7
-	qQ7UyONeuSjsKve9ghnpGmS5m1UihLRvlAGv/GJeJFi6kU5m1QmLeVDSCn60Hf+EARO1Xjtrm+oYE
-	Xh6ZpBlNRMWmRVzaymeBsqCQ0pCVkSCVb/ZU2JHiEiIXYXXSH54Ws4mtX1xRds7ri4303ocxmyGYD
-	ifQwH+qNe/hu7OoRGRyI//PpCk7GwMmo0H0OIjfQFAhSyCSfNHAdDw15DNahs6IAI2tHEmtmYODV0
-	JTr95vr7lGhz3Rh9bJi5Z+kjY61dIW1/KNppBYc8rJ72KQVfkVuDDXCZ3zMowBPkwc1yfKvnuRZ+4
-	0GjO/nCKGNWCuIsGC8Iw==;
+	List-Owner; bh=nWhfagqLxfE7EHw1cMzvipVwZf4u5hO0QQpwuRaBNV4=; b=fbaYlBJft8KL4V
+	m/HI6aNxMxoR/TBZwZPVNL8XGsuXkkCGdqMNQJ9rdFAIhSwu9bCHxeb/bGkUoaTzi7mG5pi1LHLLR
+	QOqQYoy66GuDuZH2enVwF96LXtq3Vfb2K3HZrZCQGBVslS9Q4PWDaG1U7XtWcjx6fFK5cMpKXL82/
+	MpqMWB2uz+vJzF4d3u9LPDYFG5T9ODajfZK8XaH2L7UbhW+ZwAtS0buMIMqa9pncGfCbVlBkek21u
+	IkPWczj2gy8qC7G9UQR9GhYAmGbt6adPPBzlA5iUdXXVjNlScOfhHRhGt3/MFxDIdGmI2y+PNUZVO
+	ZWBoohJAdNNlfzbJtQmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4MMk-00F8y8-Tq; Thu, 23 Jun 2022 12:55:22 +0000
-Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
+	id 1o4MMt-00F9AP-H5; Thu, 23 Jun 2022 12:55:31 +0000
+Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4MKq-00F72Q-LW; Thu, 23 Jun 2022 12:53:31 +0000
-Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
-	by mx0a-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25NBNlqc015665;
-	Thu, 23 Jun 2022 07:52:59 -0500
+	id 1o4MKs-00F73w-5x; Thu, 23 Jun 2022 12:53:33 +0000
+Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
+	by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25N5mxlG032604;
+	Thu, 23 Jun 2022 07:53:09 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=PODMain02222019;
- bh=ZbauxbsNGm9xAny7IOFo1jE6ACKMKJr4mljuYL9lUZI=;
- b=MPOwFXqDN8U9oWJdwNA8OUN36n09Lwt7sCkNUOXrxAZEsn1kLXd8EWGvHR94XHJRWJ2+
- wUTXVn2epUkeGplkeA8tOMY58rJssAY04gDxp8tIIBnEZ0gtnYWSQmmux7y8Gva5IZ9P
- gWra0YGJHEyl19vGXXuUhQOHzy64bH3dFQR4O0BoKGeQAQms4QuWsLkmBEbOHukSalEB
- Iq12/pnW7/zGJW2PHEe7nlC8N5LTf6V3pU6ZAH3hUQdAV2XMqma/PmAAK9Xol5PoMGOr
- rneYRbpms0AQtiA5y9nhpjGYlLQ2uWpioPh8vdcy+oQ7F+S/dzyXizGpuxu7cvayMOCR SA== 
+ bh=+zjiVDa6Ny/om/OU+ts87eea2uu9PR3c4RSQwJkZVkY=;
+ b=j2jEMHJq1/WHMMF9nBD9VY0jpJxBs4IVWr0J6PtMAgdkEUHBsYcr7UEukGKY9852lIYK
+ J+00mmk1RyzNcrvImWBmBQXL3PJlF8CSCWrfHHMDdecStiYhpTYiZoVVtN6RK6pK2bB4
+ +4OJ1+60RIS9pevol6IYXa8y0MBsiRon2bg/lVVFLby53veZ0NAbqVPESzUlq89AMrm9
+ HeZjzkCrw6/6xxaixSSjln3kXfYOVD39QpWLMm0TYR73RbwH7kGnhCr6eI+jQoWLZ6AO
+ kYQKmcohMFNXe9u7alyY56bBoKuIOHYOGlZY792bfqLjQZ8IzMEp9aPCkXlDcZzhSvrj 1g== 
 Received: from ediex01.ad.cirrus.com ([84.19.233.68])
-	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3gsc41fa4j-9
+	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3gsb4p6wvu-15
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
-	Thu, 23 Jun 2022 07:52:59 -0500
+	Thu, 23 Jun 2022 07:53:08 -0500
 Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Thu, 23 Jun
- 2022 13:52:52 +0100
+ 2022 13:52:57 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.28 via Frontend
- Transport; Thu, 23 Jun 2022 13:52:52 +0100
+ Transport; Thu, 23 Jun 2022 13:52:57 +0100
 Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
-	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 52A0711D3;
-	Thu, 23 Jun 2022 12:52:52 +0000 (UTC)
+	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 2307711D3;
+	Thu, 23 Jun 2022 12:52:57 +0000 (UTC)
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
@@ -68,19 +68,19 @@ CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
         <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>,
         <dri-devel@lists.freedesktop.org>,
         <linux-rpi-kernel@lists.infradead.org>, <frattaroli.nicolas@gmail.com>
-Subject: [PATCH v2 18/96] ASoC: amd: Migrate to new style legacy DAI naming flag
-Date: Thu, 23 Jun 2022 13:51:32 +0100
-Message-ID: <20220623125250.2355471-19-ckeepax@opensource.cirrus.com>
+Subject: [PATCH v2 72/96] ASoC: cpcap: Remove now redundant non_legacy_dai_naming flag
+Date: Thu, 23 Jun 2022 13:52:26 +0100
+Message-ID: <20220623125250.2355471-73-ckeepax@opensource.cirrus.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
 References: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-X-Proofpoint-GUID: IA-ECFlg29Sq85BFJIbLgooa5MDsQMWw
-X-Proofpoint-ORIG-GUID: IA-ECFlg29Sq85BFJIbLgooa5MDsQMWw
+X-Proofpoint-GUID: 054Cz-4n8cuEK7QNvBVeBA3isJVzQlWV
+X-Proofpoint-ORIG-GUID: 054Cz-4n8cuEK7QNvBVeBA3isJVzQlWV
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_055324_823213_1D88E905 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20220623_055326_416225_1D08DBF0 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,120 +97,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Change the legacy DAI naming flag from opting in to the new scheme
-(non_legacy_dai_naming), to opting out of it (legacy_dai_naming).
-These drivers appear to be on the CPU side of the DAI link and
-currently uses the legacy naming, so add the new flag.
+The ASoC core has now been changed to default to the non-legacy DAI
+naming, as such drivers using the new scheme no longer need to specify
+the non_legacy_dai_naming flag.
 
 Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 ---
- sound/soc/amd/acp/acp-platform.c     | 15 ++++++++-------
- sound/soc/amd/raven/acp3x-i2s.c      |  3 ++-
- sound/soc/amd/renoir/acp3x-pdm-dma.c | 13 +++++++------
- sound/soc/amd/vangogh/acp5x-i2s.c    |  1 +
- sound/soc/amd/yc/acp6x-pdm-dma.c     | 13 +++++++------
- 5 files changed, 25 insertions(+), 20 deletions(-)
+ sound/soc/codecs/cpcap.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/sound/soc/amd/acp/acp-platform.c b/sound/soc/amd/acp/acp-platform.c
-index 65a809e2c29ff..3c4fd8b805891 100644
---- a/sound/soc/amd/acp/acp-platform.c
-+++ b/sound/soc/amd/acp/acp-platform.c
-@@ -267,13 +267,14 @@ static int acp_dma_close(struct snd_soc_component *component,
- }
- 
- static const struct snd_soc_component_driver acp_pcm_component = {
--	.name		= DRV_NAME,
--	.open		= acp_dma_open,
--	.close		= acp_dma_close,
--	.hw_params	= acp_dma_hw_params,
--	.pointer	= acp_dma_pointer,
--	.mmap		= acp_dma_mmap,
--	.pcm_construct	= acp_dma_new,
-+	.name			= DRV_NAME,
-+	.open			= acp_dma_open,
-+	.close			= acp_dma_close,
-+	.hw_params		= acp_dma_hw_params,
-+	.pointer		= acp_dma_pointer,
-+	.mmap			= acp_dma_mmap,
-+	.pcm_construct		= acp_dma_new,
-+	.legacy_dai_naming	= 1,
+diff --git a/sound/soc/codecs/cpcap.c b/sound/soc/codecs/cpcap.c
+index ffdf8b615efaa..4f9dabd9d78a6 100644
+--- a/sound/soc/codecs/cpcap.c
++++ b/sound/soc/codecs/cpcap.c
+@@ -1660,7 +1660,6 @@ static struct snd_soc_component_driver soc_codec_dev_cpcap = {
+ 	.idle_bias_on		= 1,
+ 	.use_pmdown_time	= 1,
+ 	.endianness		= 1,
+-	.non_legacy_dai_naming	= 1,
  };
  
- int acp_platform_register(struct device *dev)
-diff --git a/sound/soc/amd/raven/acp3x-i2s.c b/sound/soc/amd/raven/acp3x-i2s.c
-index de6f70d7ef364..aa38cef1776da 100644
---- a/sound/soc/amd/raven/acp3x-i2s.c
-+++ b/sound/soc/amd/raven/acp3x-i2s.c
-@@ -257,7 +257,8 @@ static const struct snd_soc_dai_ops acp3x_i2s_dai_ops = {
- };
- 
- static const struct snd_soc_component_driver acp3x_dai_component = {
--	.name           = DRV_NAME,
-+	.name			= DRV_NAME,
-+	.legacy_dai_naming	= 1,
- };
- 
- static struct snd_soc_dai_driver acp3x_i2s_dai = {
-diff --git a/sound/soc/amd/renoir/acp3x-pdm-dma.c b/sound/soc/amd/renoir/acp3x-pdm-dma.c
-index 8c42345ee41e9..7203c6488df0e 100644
---- a/sound/soc/amd/renoir/acp3x-pdm-dma.c
-+++ b/sound/soc/amd/renoir/acp3x-pdm-dma.c
-@@ -363,12 +363,13 @@ static struct snd_soc_dai_driver acp_pdm_dai_driver = {
- };
- 
- static const struct snd_soc_component_driver acp_pdm_component = {
--	.name		= DRV_NAME,
--	.open		= acp_pdm_dma_open,
--	.close		= acp_pdm_dma_close,
--	.hw_params	= acp_pdm_dma_hw_params,
--	.pointer	= acp_pdm_dma_pointer,
--	.pcm_construct	= acp_pdm_dma_new,
-+	.name			= DRV_NAME,
-+	.open			= acp_pdm_dma_open,
-+	.close			= acp_pdm_dma_close,
-+	.hw_params		= acp_pdm_dma_hw_params,
-+	.pointer		= acp_pdm_dma_pointer,
-+	.pcm_construct		= acp_pdm_dma_new,
-+	.legacy_dai_naming	= 1,
- };
- 
- static int acp_pdm_audio_probe(struct platform_device *pdev)
-diff --git a/sound/soc/amd/vangogh/acp5x-i2s.c b/sound/soc/amd/vangogh/acp5x-i2s.c
-index 72c8c68e59336..773e96f1b4dd6 100644
---- a/sound/soc/amd/vangogh/acp5x-i2s.c
-+++ b/sound/soc/amd/vangogh/acp5x-i2s.c
-@@ -345,6 +345,7 @@ static const struct snd_soc_dai_ops acp5x_i2s_dai_ops = {
- 
- static const struct snd_soc_component_driver acp5x_dai_component = {
- 	.name = "acp5x-i2s",
-+	.legacy_dai_naming = 1,
- };
- 
- static struct snd_soc_dai_driver acp5x_i2s_dai = {
-diff --git a/sound/soc/amd/yc/acp6x-pdm-dma.c b/sound/soc/amd/yc/acp6x-pdm-dma.c
-index 7e66393e41535..acecd6a4ec4b1 100644
---- a/sound/soc/amd/yc/acp6x-pdm-dma.c
-+++ b/sound/soc/amd/yc/acp6x-pdm-dma.c
-@@ -335,12 +335,13 @@ static struct snd_soc_dai_driver acp6x_pdm_dai_driver = {
- };
- 
- static const struct snd_soc_component_driver acp6x_pdm_component = {
--	.name		= DRV_NAME,
--	.open		= acp6x_pdm_dma_open,
--	.close		= acp6x_pdm_dma_close,
--	.hw_params	= acp6x_pdm_dma_hw_params,
--	.pointer	= acp6x_pdm_dma_pointer,
--	.pcm_construct	= acp6x_pdm_dma_new,
-+	.name			= DRV_NAME,
-+	.open			= acp6x_pdm_dma_open,
-+	.close			= acp6x_pdm_dma_close,
-+	.hw_params		= acp6x_pdm_dma_hw_params,
-+	.pointer		= acp6x_pdm_dma_pointer,
-+	.pcm_construct		= acp6x_pdm_dma_new,
-+	.legacy_dai_naming	= 1,
- };
- 
- static int acp6x_pdm_audio_probe(struct platform_device *pdev)
+ static int cpcap_codec_probe(struct platform_device *pdev)
 -- 
 2.30.2
 
