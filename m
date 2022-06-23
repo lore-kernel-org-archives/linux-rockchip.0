@@ -4,80 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52A91C43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 02:16:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3084C43334
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 02:22:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Rs9kZEC27jqk79Qpn2R6PxcDF2kOfq7F1TzclvoLhD4=; b=UgN5pY5GwP/9R0
-	+RstExX5gS2q5CefpgtQrp0zByvwi8DEETydo7TVoVsR8bj5yT+YHWcF2vey5aOeRubUIEbFw4QYd
-	FJj7qDHwgZVyM0vVbmsOinMlKv4XZ2H+7JSM/fwRKPkv/IrXLy0+JqT2UBF7xhilht3sG/0yuOL1q
-	Kn5MlhN3iLpapSvulDxy8beWowni8uLnqbZ6iPCpYIx6AC0+FkTRcyi5Po629LFKJiI7BMceqHBvM
-	Z5z1iO5LziGFIgYPKwKkzDZZwzlxQieKB33VgJ5EbU6M3a708Pp3RqHBa5vmrO+CGv/yduHknDjfR
-	z3CE/XG3oX0p3OA2VIkg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2fUS/VyJN6YeCkNQb0jraVv+un+v5Gen1BkMG/JvUec=; b=wMjN5V3uLNMW9/
+	YTDgf8F5keYPL2B8zgDH0oB6WIelHyQbinhyX5UEbybn9GEJ74fiubeFwO4jdv3p77PjYvZ6KPUyP
+	YzmBBJIWz83f9h7hqBPuFXbv5D2xdviysQslz0yW1grh+LUp7/3Nu3uuCoFHjx/BT+YK46w3EXT9k
+	qIutVcNJkY4u4SzLsiXOQSIkMrGWr4dFd/hwXizVh67e3TaCYi5uZ80x/eIhu80gGi2QuUFgOdkRI
+	lUvTeUqzmeCBzanJBxHEb6D+uBWPLtOX4OCKmJZmgiKnEF86RvgqIG+aUgeTfbFPoOrXWT1CzUJKC
+	BQ2/OzZzeyy5WtqdSxpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4COT-00Cv6W-7E; Thu, 23 Jun 2022 02:16:29 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
+	id 1o4CTd-00CxH8-IX; Thu, 23 Jun 2022 02:21:49 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4C8i-00Co6G-D5; Thu, 23 Jun 2022 02:00:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1655949612; x=1687485612;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=KbeXCVtz+edFvopo5p5QoDn9huAgw0qHkMWWoFBLhXA=;
-  b=IVOQLpFC00oWG6FkyTmkdLiuRsuVASPL9qDevRUCK27wAoFJYCmh7z3V
-   WffdL4SCAxDgfJt9s9RjAeDfejbpX83LX3lHjtiiaunZ/sGs+SBHKXuIl
-   lkPMCLJAQB8tRdXfDCtJ5/Oip6Hav5BjI3D3ONiutI3aMeCR/Ec3TIiO1
-   xR9wwCQVJ+nNvLZQ+w7F0ha9UkY+e8dMHCt8uxvwoHAgifDjlw/s1nAr8
-   cLNzzOd0hrwyEnebRFpfI7V5h8UL410UwZ+/hTK34bRCUtAgLA9gXJzjC
-   1NjEMLs3AVNhW5Z5yBevIZAtIIZypi2TOcM/zi7qRkFH92S0S39NMS0Pf
-   Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10386"; a="342281580"
-X-IronPort-AV: E=Sophos;i="5.92,215,1650956400"; 
-   d="scan'208";a="342281580"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Jun 2022 19:00:09 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.92,215,1650956400"; 
-   d="scan'208";a="615398908"
-Received: from lkp-server01.sh.intel.com (HELO 68b931ab7ac1) ([10.239.97.150])
-  by orsmga008.jf.intel.com with ESMTP; 22 Jun 2022 19:00:02 -0700
-Received: from kbuild by 68b931ab7ac1 with local (Exim 4.95)
-	(envelope-from <lkp@intel.com>)
-	id 1o4C8X-0000LT-BJ;
-	Thu, 23 Jun 2022 02:00:01 +0000
-Date: Thu, 23 Jun 2022 09:59:06 +0800
-From: kernel test robot <lkp@intel.com>
-To: Charles Keepax <ckeepax@opensource.cirrus.com>, broonie@kernel.org
-Cc: kbuild-all@lists.01.org, lgirdwood@gmail.com,
-	kuninori.morimoto.gx@renesas.com, mripard@kernel.org,
-	airlied@linux.ie, daniel@ffwll.ch, vkoul@kernel.org,
-	nicolas.ferre@microchip.com, nsaenz@kernel.org, shawnguo@kernel.org,
-	linux-imx@nxp.com, cezary.rojewski@intel.com,
-	pierre-louis.bossart@linux.intel.com, linux-mips@vger.kernel.org,
-	linux-amlogic@lists.infradead.org, daniel@zonque.org,
-	srinivas.kandagatla@linaro.org, linux-rockchip@lists.infradead.org,
-	krzk@kernel.org, linux-stm32@st-md-mailman.stormreply.com,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-omap@vger.kernel.org, linux-xtensa@linux-xtensa.org,
-	peter.ujfalusi@gmail.com, jarkko.nikula@bitmer.com, heiko@sntech.de,
-	jbrunet@baylibre.com, kernel@pengutronix.de,
-	alsa-devel@alsa-project.org
-Subject: Re: [PATCH 27/96] ASoC: au1x: Migrate to new style legacy DAI naming
- flag
-Message-ID: <202206230910.wUXKFP3z-lkp@intel.com>
-References: <20220616143429.1324494-28-ckeepax@opensource.cirrus.com>
+	id 1o4CKA-00CtI8-Ah
+	for linux-rockchip@lists.infradead.org; Thu, 23 Jun 2022 02:12:03 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id b12-20020a17090a6acc00b001ec2b181c98so1109496pjm.4
+        for <linux-rockchip@lists.infradead.org>; Wed, 22 Jun 2022 19:12:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=hRLTpselmSzOmfEMzptO0DKyWBgV2uZm8FqGFEjaV8s=;
+        b=BR2naSce8Q38Guq9+xSEESPiRtMPfWntr5oX3C6t9VIHlwzBOfmM9RhSLX9CWTsMYW
+         2gUyBX0+UTMKdPEfxtmCJ4CA1pEbwNKXe4xcp3Vq2XvN3KCbwROgQnoECWpG9Sb6mwL5
+         ysQgodcgLMBdNiZaq+cVygPxvvgpSBqG3a8w0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=hRLTpselmSzOmfEMzptO0DKyWBgV2uZm8FqGFEjaV8s=;
+        b=y2pta5wLMtpAGTQpwacqy1E66JisQdpZ3l/XRY7lFAFm6vnJnqWe+JAfcCRIyln7Ff
+         FmoOILq1h+v+4T8wusHqWXWF/aiUPuNSE85Q4rS7E6IBObX2kOBMCsFj8EmtHhcmsyGM
+         uZ/9YLp88mHaEGs7h+Y+apfYgXW/FnnzBO+4DeowRppy0YbggsVylS8uFpFriNuNor8u
+         mTmA7QS/QH5RdHSbt/9fw8uNma59rYrrMmO/smyJGy0+wFJtZJHThvnsAPf/8hbbciaU
+         PzrXaNdkQHjslnNc5tyKK3jgSJlNr4IkujG9gFuznZg1cEkl1kA3YjGf5oRNWtDb/AoK
+         muAg==
+X-Gm-Message-State: AJIora9/0/sZd1PD2YBDNg4x1CGfqEMComV8b0cIkUnYsx4P1TXakE1f
+	7Y7HQw/ILKVXuaLyh/Dx5Ptdhw==
+X-Google-Smtp-Source: AGRyM1to8GFgYWhfCWzgrps3P2NpjJ8gdP3iEDZCUi592P2vqic1MM8S2D55xH9pxFCZWiiBnYgG1A==
+X-Received: by 2002:a17:902:e848:b0:167:6ef7:b093 with SMTP id t8-20020a170902e84800b001676ef7b093mr36677142plg.154.1655950320778;
+        Wed, 22 Jun 2022 19:12:00 -0700 (PDT)
+Received: from judyhsiao0523.c.googlers.com.com (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id m6-20020a170902768600b0016196bd15f4sm6194000pll.15.2022.06.22.19.11.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 22 Jun 2022 19:12:00 -0700 (PDT)
+From: Judy Hsiao <judyhsiao@chromium.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Brian Norris <briannorris@chromium.org>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	alsa-devel@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Judy Hsiao <judyhsiao@chromium.org>
+Subject: [PATCH v5 0/3] ASoC: rockchip: i2s: switch BCLK to GPIO
+Date: Thu, 23 Jun 2022 02:11:50 +0000
+Message-Id: <20220623021153.587423-1-judyhsiao@chromium.org>
+X-Mailer: git-send-email 2.37.0.rc0.104.g0611611a94-goog
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220616143429.1324494-28-ckeepax@opensource.cirrus.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220622_190012_574684_1E531188 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20220622_191202_459228_2DAF01D8 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,58 +92,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Charles,
+The patches series is to fix the unexpected large DC output
+voltage of Max98357a that burns the speakers on the rockchip
+platform when BCLK and SD_MODE are ON but LRCLK is OFF.
 
-I love your patch! Yet something to improve:
+Changes Since V5:
+    -- Check i2s->pinctrl is valid before using pinctrl_lookup_state.
+Changes Since V4:
+    -- Fix indentation in the driver. (Align parameters with the parenthesis
+       placement.)
+    -- Fix incorrect return type of rockchip_snd_rxctrl.
+Changes Since V3:
+    -- Fix indentation in the documentation.
+    -- Put pinctrl-1 right after pinctrl-0 in dtsi.
+    -- Fix indentation in the driver.
+    -- Remove unnecessary dev_dbg() in the driver.
+Changes Since V2:
+    -- Add documents of i2s pinctrl-names.
+    -- Fix dtsi syntax error.
+    -- Include the dtsi change and the driver change in the same series.
+    -- Ensure that driver gets both bclk_on and bclk_off states before using them.
 
-[auto build test ERROR on broonie-sound/for-next]
-[also build test ERROR on tegra/for-next sunxi/sunxi/for-next linus/master v5.19-rc3 next-20220622]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
+Judy Hsiao (3):
+  ASoC: rockchip: i2s: switch BCLK to GPIO
+  arm64: dts: rk3399: i2s: switch BCLK to GPIO
+  ASoC: dt-bindings: rockchip: Document pinctrl-names for i2s
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Charles-Keepax/Refactor-non_legacy_dai_naming-flag/20220616-224300
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-config: mips-db1xxx_defconfig (https://download.01.org/0day-ci/archive/20220623/202206230910.wUXKFP3z-lkp@intel.com/config)
-compiler: mipsel-linux-gcc (GCC) 11.3.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/794205d61285d0921e564e722daf9b20df82ed57
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Charles-Keepax/Refactor-non_legacy_dai_naming-flag/20220616-224300
-        git checkout 794205d61285d0921e564e722daf9b20df82ed57
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.3.0 make.cross W=1 O=build_dir ARCH=mips SHELL=/bin/bash sound/soc/au1x/
-
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
-
-All error/warnings (new ones prefixed by >>):
-
->> sound/soc/au1x/ac97c.c:227:10: error: 'const struct snd_soc_component_driver' has no member named 'legacy_dai_name'; did you mean 'legacy_dai_naming'?
-     227 |         .legacy_dai_name        = 1,
-         |          ^~~~~~~~~~~~~~~
-         |          legacy_dai_naming
->> sound/soc/au1x/ac97c.c:227:35: warning: initialization of 'const struct snd_kcontrol_new *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
-     227 |         .legacy_dai_name        = 1,
-         |                                   ^
-   sound/soc/au1x/ac97c.c:227:35: note: (near initialization for 'au1xac97c_component.controls')
-
-
-vim +227 sound/soc/au1x/ac97c.c
-
-   224	
-   225	static const struct snd_soc_component_driver au1xac97c_component = {
-   226		.name			= "au1xac97c",
- > 227		.legacy_dai_name	= 1,
-   228	};
-   229	
+ .../bindings/sound/rockchip-i2s.yaml          |   7 +
+ .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi |  10 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  25 ++-
+ sound/soc/rockchip/rockchip_i2s.c             | 171 +++++++++++++-----
+ 4 files changed, 165 insertions(+), 48 deletions(-)
 
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.37.0.rc0.104.g0611611a94-goog
+
 
 _______________________________________________
 Linux-rockchip mailing list
