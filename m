@@ -4,79 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5324CCA47C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 11:54:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41D6EC433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 12:53:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u4b7vNmBZOp/U99LYSXBVXWI8k58lYCaBgZ0ZW0BBQc=; b=VpchXDtxo9uHAa
-	z81Lai1zAjufV1Mmalk6cblfK1u/LeOc0K+NUgC5sDVG37sP+g9tK/GXAdORcmpKWOceu9eY44NHc
-	nZcykxEauFT0sPktdb4xbazB1yxoL/jNRBRY6wyTLn1SsSdZppF6tpbIcUwPVLNj6h2mtQIdoHBVm
-	0qNEpNIfuSWyZXAt8iKjHqcjzivY6aE4ANilL4EQQqViFmAZDugpuYiR82B8ahzorTnzEl3wtEAoB
-	+xZd171EshKZoCexNKFyPGd+VXK11rAsopUnmNX9yTonSfWcB7c8MjCW3giN6FBrcbKseNRVq8C5F
-	ku6PCXq3+a9TVVz6ZFDA==;
+	List-Owner; bh=oJ6kwHU16Qe0TcYCH2u7iPFT6i4l4tN+bLr/ymXxp/w=; b=3AWlDtpTMzI9M+
+	ZvLrC4fhKAGawP6Epxqd/3gNZupZi4bQDY1Q5O23r+HLAwU0ViRKmB39JGtnfk93oIW7THGmK6s3r
+	ojL/fI8A5u3wDiwkAYUKMHrziV+/XEaS/erzeDaZWP/KMYKEtNl+54JY+cO4knlfH6hoW1GUoDjFu
+	IaNKYoBAMwHRt5cf7x+avC3ku67mvrtbtUc4lMqIZn4T0vxsDxUWFCBNsM3HNfSzVAwmG8JtTuWiL
+	q4YRs01PFdoicoNLC8zDHYfm6IxMBAEZjKAwwJaizS8Wiyr0aL4kApYDCKTxuDKdx4+x6ltCW4FA6
+	zM2MtRHEIb9nN0ogXVKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4LPP-00En6B-TV; Thu, 23 Jun 2022 11:54:03 +0000
-Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
+	id 1o4MKk-00F6zZ-RW; Thu, 23 Jun 2022 12:53:18 +0000
+Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4LPE-00En39-Vn
-	for linux-rockchip@lists.infradead.org; Thu, 23 Jun 2022 11:53:54 +0000
-Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-101b4f9e825so21843434fac.5
-        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jun 2022 04:53:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=XSwofcGG+SuHZWjrcw4RCNPkMyXc7hvkKah+C3xh1WY=;
-        b=vpoPxNjXWrU9nkPNyRtHurU6kHESQTp+i6RaSWdF1/oI2TiHgWSaRUOwwSyWlGs7Rg
-         MWfR/45XHtMSk2oR1KvVuPu7dkFqOkAv7XtznKxA8hpRQEYfCCPwi9CwSehF1qvj9JT9
-         0drhGVMjzBbEdiNg+TE0urW03QT7hmqYAg/CpR4hBJ4jf5B4dp45OfknorHeBRBhddjK
-         FQTfEL8UkKkyn9+LT3a7S7YVZu08e5pJqu31bTSDHW3InYof+zowTqQgAYhjGwrA6PvI
-         4g6ZfQx9Z4hDF0Uf470iS14506I9h0/5pQx3Rj++3ip/D3ZLVIMlB/QIQe4hrjizhMl9
-         Pw0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=XSwofcGG+SuHZWjrcw4RCNPkMyXc7hvkKah+C3xh1WY=;
-        b=YZXn1VkDpI/Zy37jyRL5vxKomzuQrj78OVtvAMuonfm0ioRvw2xjVCZQPnfRWmED8q
-         HxD5WKB0Z1Lh/hPOOMuLl4lRSa4TeaPOHrgCnZcEArVFBCBwYE/DpM5wmxsqWUowaaXr
-         AIlJU5LC2xpnn51uG3d6Uze7uGvG/zsg2+bpxeEGHy6RHF5yoqxr3r9CZUXp3nVIOyfI
-         WLLaDbTsACQcMZLbBLmpqUYa2VuVoEyACZutn5KYaKglmgrEhWgIm6DR35vs2s7A19Im
-         1KBg8JxmYA3LDnrTQS1RbvKovINaiELcdNq9AkOSagvG1Fz0/pkBrahjVMeQCepk6OGb
-         dcsg==
-X-Gm-Message-State: AJIora9OJacxgRVS+j7jbIRytR0kWE37lPJjE5TUr5kUpEo5EvtSmRDC
-	+QPm4DLSj6AdZd5H235ZorHKNw==
-X-Google-Smtp-Source: AGRyM1uUfHwTgGd1byknrOoPAeDPrqoAhY+P3IumHMsnT2THZTV0C6LIrL7B2BG/Fu7TllSLOQ+6TQ==
-X-Received: by 2002:a05:6870:b48d:b0:101:c750:a4b0 with SMTP id y13-20020a056870b48d00b00101c750a4b0mr2200530oap.204.1655985230967;
-        Thu, 23 Jun 2022 04:53:50 -0700 (PDT)
-Received: from eze-laptop ([186.13.97.222])
-        by smtp.gmail.com with ESMTPSA id eb10-20020a056870a88a00b000f5f4ad194bsm12189484oab.25.2022.06.23.04.53.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Jun 2022 04:53:31 -0700 (PDT)
-Date: Thu, 23 Jun 2022 08:53:12 -0300
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v5 2/3] media: hantro: Add support for RK356x encoder
-Message-ID: <YrRUKD17Wtf5ik0r@eze-laptop>
-References: <20220612155346.16288-1-frattaroli.nicolas@gmail.com>
- <20220612155346.16288-3-frattaroli.nicolas@gmail.com>
+	id 1o4MKc-00F6qr-Tu; Thu, 23 Jun 2022 12:53:13 +0000
+Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
+	by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25NBvlr6011978;
+	Thu, 23 Jun 2022 07:52:52 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-transfer-encoding : content-type; s=PODMain02222019;
+ bh=uY14+QEFQEizEt6ccSxDQhzZtgLZGOD04zjlJ9Wfhgk=;
+ b=gvYWDHKojyJC+jwElDfX/RM0zcyxR63/JoshYxPn3OTP45Qit1Ao1ayz/IlzfXg+MH5P
+ ZEviTUq4KkeFk5/xLQavIV90bUPHJCMfruAmknaM/aifMV+wMHD03MWIFWziUUMjCUNc
+ kUtzAe/c2wvYvk6cIf1lsm7F5Zu8eb9Pzv1qHK8yLWukbt/54tL/7pTizA9TQRkVlTRT
+ 8CVheIYqqyttUpJvLbBO/NSqr+IcpEm4+NB1JQqh3dmhGa+E9jPJ1psuFce1wctI7ahL
+ HToNedQAHQutVQ/Gcsx2D5Ompi8TfA0c61si29fyQGcLWPkhQCOf7h1nvipZWEeOnhjR Yw== 
+Received: from ediex02.ad.cirrus.com ([84.19.233.68])
+	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3gsb4p6wvp-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
+	Thu, 23 Jun 2022 07:52:52 -0500
+Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
+ (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Thu, 23 Jun
+ 2022 13:52:50 +0100
+Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.28 via Frontend
+ Transport; Thu, 23 Jun 2022 13:52:50 +0100
+Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
+	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id D4FDE478;
+	Thu, 23 Jun 2022 12:52:50 +0000 (UTC)
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: <broonie@kernel.org>
+CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
+        <mripard@kernel.org>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+        <vkoul@kernel.org>, <nicolas.ferre@microchip.com>, <nsaenz@kernel.org>,
+        <shawnguo@kernel.org>, <linux-imx@nxp.com>,
+        <cezary.rojewski@intel.com>, <pierre-louis.bossart@linux.intel.com>,
+        <linux-mips@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
+        <daniel@zonque.org>, <srinivas.kandagatla@linaro.org>,
+        <linux-rockchip@lists.infradead.org>, <krzk@kernel.org>,
+        <linux-stm32@st-md-mailman.stormreply.com>,
+        <linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
+        <linux-omap@vger.kernel.org>, <linux-xtensa@linux-xtensa.org>,
+        <peter.ujfalusi@gmail.com>, <jarkko.nikula@bitmer.com>,
+        <heiko@sntech.de>, <jbrunet@baylibre.com>, <kernel@pengutronix.de>,
+        <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>,
+        <dri-devel@lists.freedesktop.org>,
+        <linux-rpi-kernel@lists.infradead.org>, <frattaroli.nicolas@gmail.com>
+Subject: [PATCH v2 01/96] ASoC: soc-component: Add legacy_dai_naming flag
+Date: Thu, 23 Jun 2022 13:51:15 +0100
+Message-ID: <20220623125250.2355471-2-ckeepax@opensource.cirrus.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
+References: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220612155346.16288-3-frattaroli.nicolas@gmail.com>
+X-Proofpoint-GUID: S0xzFDpQJeHPmvQlsg6MT6z-qdCQjCvX
+X-Proofpoint-ORIG-GUID: S0xzFDpQJeHPmvQlsg6MT6z-qdCQjCvX
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_045353_049713_EF43B5D3 
-X-CRM114-Status: GOOD (  22.11  )
+X-CRM114-CacheID: sfid-20220623_055311_243051_A89445C3 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,112 +97,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
+Historically, the legacy DAI naming scheme was applied to platform
+drivers and the newer scheme to CODEC drivers. During componentisation
+the core lost the knowledge of if a driver was a CODEC or platform, they
+were all now components. To continue to support the legacy naming on
+older platform drivers a flag was added to the snd_soc_component_driver
+structure, non_legacy_dai_naming, to indicate to use the new scheme and
+this was applied to all CODECs as part of the migration.
 
-On Sun, Jun 12, 2022 at 05:53:45PM +0200, Nicolas Frattaroli wrote:
-> The RK3566 and RK3568 SoCs come with a small Hantro instance which is
-> solely dedicated to encoding. This patch adds the necessary structs to
-> the Hantro driver to allow the JPEG encoder of it to function.
-> 
-> Through some sleuthing through the vendor's MPP source code and after
-> closer inspection of the TRM, it was determined that the hardware likely
-> supports VP8 and H.264 as well.
-> 
-> Tested with the following GStreamer command:
-> 
-> gst-launch-1.0 videotestsrc ! v4l2jpegenc ! matroskamux ! \
->                filesink location=foo.mkv
-> 
-> Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+However, a slight issue appears to be developing with respect to this
+flag being opt in for the non-legacy scheme, which presumably we want to
+be the primary scheme used. Many codec drivers appear to forget to
+include this flag:
 
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+  grep -l -r "snd_soc_component_driver" sound/soc/codecs/*.c |
+  xargs grep -L "non_legacy_dai_naming" | wc
+     48      48    556
 
-Thanks,
-Ezequiel
+It would seem more sensible to change the flag to legacy_dai_naming
+making the new scheme opt out. As a first step this patch adds a new
+flag for this so that the users can be updated.
 
-> ---
->  drivers/staging/media/hantro/hantro_drv.c     |  1 +
->  drivers/staging/media/hantro/hantro_hw.h      |  1 +
->  .../staging/media/hantro/rockchip_vpu_hw.c    | 25 +++++++++++++++++++
->  3 files changed, 27 insertions(+)
-> 
-> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> index ac232b5f7825..1112e8d0c821 100644
-> --- a/drivers/staging/media/hantro/hantro_drv.c
-> +++ b/drivers/staging/media/hantro/hantro_drv.c
-> @@ -638,6 +638,7 @@ static const struct of_device_id of_hantro_match[] = {
->  	{ .compatible = "rockchip,rk3288-vpu", .data = &rk3288_vpu_variant, },
->  	{ .compatible = "rockchip,rk3328-vpu", .data = &rk3328_vpu_variant, },
->  	{ .compatible = "rockchip,rk3399-vpu", .data = &rk3399_vpu_variant, },
-> +	{ .compatible = "rockchip,rk3568-vepu", .data = &rk3568_vepu_variant, },
->  	{ .compatible = "rockchip,rk3568-vpu", .data = &rk3568_vpu_variant, },
->  #endif
->  #ifdef CONFIG_VIDEO_HANTRO_IMX8M
-> diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/staging/media/hantro/hantro_hw.h
-> index 52a960f6fa4a..8c7eb5591446 100644
-> --- a/drivers/staging/media/hantro/hantro_hw.h
-> +++ b/drivers/staging/media/hantro/hantro_hw.h
-> @@ -306,6 +306,7 @@ extern const struct hantro_variant rk3066_vpu_variant;
->  extern const struct hantro_variant rk3288_vpu_variant;
->  extern const struct hantro_variant rk3328_vpu_variant;
->  extern const struct hantro_variant rk3399_vpu_variant;
-> +extern const struct hantro_variant rk3568_vepu_variant;
->  extern const struct hantro_variant rk3568_vpu_variant;
->  extern const struct hantro_variant sama5d4_vdec_variant;
->  extern const struct hantro_variant sunxi_vpu_variant;
-> diff --git a/drivers/staging/media/hantro/rockchip_vpu_hw.c b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-> index fc96501f3bc8..b39813d53e57 100644
-> --- a/drivers/staging/media/hantro/rockchip_vpu_hw.c
-> +++ b/drivers/staging/media/hantro/rockchip_vpu_hw.c
-> @@ -417,6 +417,14 @@ static const struct hantro_codec_ops rk3399_vpu_codec_ops[] = {
->  	},
->  };
->  
-> +static const struct hantro_codec_ops rk3568_vepu_codec_ops[] = {
-> +	[HANTRO_MODE_JPEG_ENC] = {
-> +		.run = rockchip_vpu2_jpeg_enc_run,
-> +		.reset = rockchip_vpu2_enc_reset,
-> +		.done = rockchip_vpu2_jpeg_enc_done,
-> +	},
-> +};
-> +
->  /*
->   * VPU variant.
->   */
-> @@ -439,6 +447,10 @@ static const struct hantro_irq rockchip_vpu2_irqs[] = {
->  	{ "vdpu", rockchip_vpu2_vdpu_irq },
->  };
->  
-> +static const struct hantro_irq rk3568_vepu_irqs[] = {
-> +	{ "vepu", rockchip_vpu2_vepu_irq },
-> +};
-> +
->  static const char * const rk3066_vpu_clk_names[] = {
->  	"aclk_vdpu", "hclk_vdpu",
->  	"aclk_vepu", "hclk_vepu"
-> @@ -545,6 +557,19 @@ const struct hantro_variant rk3399_vpu_variant = {
->  	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
->  };
->  
-> +const struct hantro_variant rk3568_vepu_variant = {
-> +	.enc_offset = 0x0,
-> +	.enc_fmts = rockchip_vpu_enc_fmts,
-> +	.num_enc_fmts = ARRAY_SIZE(rockchip_vpu_enc_fmts),
-> +	.codec = HANTRO_JPEG_ENCODER,
-> +	.codec_ops = rk3568_vepu_codec_ops,
-> +	.irqs = rk3568_vepu_irqs,
-> +	.num_irqs = ARRAY_SIZE(rk3568_vepu_irqs),
-> +	.init = rockchip_vpu_hw_init,
-> +	.clk_names = rockchip_vpu_clk_names,
-> +	.num_clocks = ARRAY_SIZE(rockchip_vpu_clk_names)
-> +};
-> +
->  const struct hantro_variant rk3568_vpu_variant = {
->  	.dec_offset = 0x400,
->  	.dec_fmts = rk3399_vpu_dec_fmts,
-> -- 
-> 2.36.1
-> 
+Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+---
+ include/sound/soc-component.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/sound/soc-component.h b/include/sound/soc-component.h
+index 5c4cfa70b018c..96c2f5fffc51e 100644
+--- a/include/sound/soc-component.h
++++ b/include/sound/soc-component.h
+@@ -179,6 +179,7 @@ struct snd_soc_component_driver {
+ 	 * analogue).
+ 	 */
+ 	unsigned int endianness:1;
++	unsigned int legacy_dai_naming:1;
+ 	unsigned int non_legacy_dai_naming:1;
+ 
+ 	/* this component uses topology and ignore machine driver FEs */
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
