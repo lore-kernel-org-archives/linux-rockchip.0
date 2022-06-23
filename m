@@ -4,79 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77079CCA48C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 16:47:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CB48C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 23:45:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=euEgrDIYtzliNySFJgqsnOINAZddthrrd4z9xqTGbi4=; b=jS99QRZOpSR3W5
-	f4TCdLlR6rBoFcYo/8KFk9tliyI+a0U5jGjdDutMxKivqSZFCLTnmqywT7Ta7abp29ztccIrJvl/x
-	xbYb4s5PKMRFsxqYBhbbMiI31KthIkdl8/xw7xG4Es3LSi5Eg81A/oJwFdnY9GAi0Vpp8wjt0CDjq
-	2YXDRkAOazWOeFqFIrmXZaf8J5luIzMbYdn9pxs8R1iBl/9nmH4R3rGhcbz5BvBtMelr4xrQY1gnG
-	kjGSo7rrErkrmQZ0wDi+qgBQdcrFD2eFHwzzbt4ug62EhoNmfmb1xJsGG67xTA8L8t/zauiv7z7H0
-	7UuFpdufwwV3oQFn+ofw==;
+	List-Owner; bh=WzEWEtoA8+1FDttyyw3nezRNxnKaxY2KcQ+LlI/XXDs=; b=FXZj+ovEqOI6Dk
+	gdGjFTu1cvYgJ3qGxp4OrDcBtlN2Cv3uGYgCTLN78h9oW6Y/si3m58QNt8h/Ca2Mfua4vRByGjzYg
+	HLcRxR9gQ22wEpJnVcy+toYiwBMOVU7LIyMDyv5Yc06LOG1qbc8+RU1HR6GCgIEsLZHi/L7wOHz4a
+	3V/MrAridhR1fBe/kUgSl7FiE2IWaYzLIULkP+h/P7joti9WRPN9QAzFeeSmOV4cKz/A8JCtDWITk
+	fpFGNt2GUUmn31lvRDO1T/bSMl5mikC76cizEyMaOvp/hZxexks6QmR+EC1UtvmyyMtVNkpTrchfM
+	w/oJqlFpCZtsK/iwuYvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Pyx-00FzIF-Ju; Thu, 23 Jun 2022 16:47:03 +0000
-Received: from mail-qv1-xf2f.google.com ([2607:f8b0:4864:20::f2f])
+	id 1o4WVf-00H82z-NN; Thu, 23 Jun 2022 23:45:15 +0000
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Pyu-00FzFU-BD
-	for linux-rockchip@lists.infradead.org; Thu, 23 Jun 2022 16:47:01 +0000
-Received: by mail-qv1-xf2f.google.com with SMTP id 88so163364qva.9
-        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jun 2022 09:46:58 -0700 (PDT)
+	id 1o4WVd-00H81U-2A
+	for linux-rockchip@lists.infradead.org; Thu, 23 Jun 2022 23:45:14 +0000
+Received: by mail-ed1-x52e.google.com with SMTP id cf14so1125107edb.8
+        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jun 2022 16:45:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=poorly.run; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=B1jvVdluJ66W41UOcamwBo/85mg4sSq7LE7oRZc9/Ws=;
-        b=CQgpPxqnnpqAloyO7Cx3oS7JP5gZQB3Qg0Mw2O4cWqw3cPSl/gs3pEoUgwTf3F2ERo
-         dqIndkVy6qNbaczXA18ui/W1Uf2EYbUGkmckXM1NOGViyBpaCUtGPOXa2WE1WTX9e1SY
-         WML0WjDpL/clGTLZdmKiq6o2tGLLrdlI9gHCS10Mi/kIkpec+p5IdmoZ1XFY7puK4uUH
-         BOawN171/X8635YxQHiPx4XzloEvkwByWBIBZEK6EdI0XLNGOUpp6hZiKZvi2jJngvF0
-         B9azYvIFMbctnuc1A9kMbnzp+BAbHnl6yOUVoDpD9sY5t2AHKxM4D6ijomMyR/wV0j+M
-         MQlw==
+        d=chromium.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=4ikmHtD58shD6bwBLVpbuZjlxH1kCE1s2bn5lg6TI84=;
+        b=Idb+m4MmDg0qMd2DH6fEfYzuuttvLSeFBYJHLxEIpsJQi14s4A53HQuCSN5EPUcDlu
+         cHZr8bJG8h/PTgfMQpO0HbbedR/xKjdcHTojqasgMK1W7NG1vLAyJp2ONOWhpxRkyeua
+         SwHT1Aus7rtxzv/TDgM3Hsx5fXimanh7yIQWU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=B1jvVdluJ66W41UOcamwBo/85mg4sSq7LE7oRZc9/Ws=;
-        b=fcD5vra2Udx93HeisKHxqgcwlBAxp8oJgRYaGCF4BGmwhWbIVhZCtWWD6g+IhPwtup
-         7Xvuth9QzSspTwsw4Q6j/wwkOXtvCwnj2V6+BAurY+7pkiZjNmsQ5zd+un0KXnmijulX
-         4UgRUhc+8Kkyy7qD99De/H/eX0DTCfgRayHF0yBsbDb/QqG7QFxqlmaLA/s5F421PBOX
-         hcj7yzRtt1FZXGNQlsEf9MDCHUgCnGJaqE6MW8ZrH+F6Xr73SwdBQBjnOY7mxRb3jltd
-         2PJ7f6evUhtNmm1ZsI21Yptr6DuIaNSbxO9UhjsQHnSp03Sfr5t92LfNWtWDC0Miv+NR
-         Q4GQ==
-X-Gm-Message-State: AJIora9gd+3/3Y+g6lZ8heR/DO5FjSQVVC5FwAXL6eL7f3JdFaS4Cntf
-	VFLKg9A5ti4mjvFgV9y+LZS3WA==
-X-Google-Smtp-Source: AGRyM1vxTXHu+RcB3wUEKbXav6TTh4Vf0ZudnPRdRYthYM9mf8uEoaiSOtHZwJ2Xro3RBhPUjeOqUA==
-X-Received: by 2002:ac8:5a04:0:b0:304:f19e:5fe4 with SMTP id n4-20020ac85a04000000b00304f19e5fe4mr8951799qta.374.1656002817837;
-        Thu, 23 Jun 2022 09:46:57 -0700 (PDT)
-Received: from localhost (115.25.199.35.bc.googleusercontent.com. [35.199.25.115])
-        by smtp.gmail.com with ESMTPSA id x28-20020ac8701c000000b00316022dcc08sm3157121qtm.11.2022.06.23.09.46.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Jun 2022 09:46:57 -0700 (PDT)
-Date: Thu, 23 Jun 2022 16:46:56 +0000
-From: Sean Paul <sean@poorly.run>
-To: Brian Norris <briannorris@chromium.org>
-Cc: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Doug Anderson <dianders@chromium.org>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: vop: Don't crash for invalid
- duplicate_state()
-Message-ID: <YrSZAMYzEkXUExNG@art_vandelay>
-References: <20220617172623.1.I62db228170b1559ada60b8d3e1637e1688424926@changeid>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=4ikmHtD58shD6bwBLVpbuZjlxH1kCE1s2bn5lg6TI84=;
+        b=Hc42ch3/CWYjnIbf4IRzWOw7GD0enNk4MwudulSMPo7ephYPQOOz2dCUVbOZOSgBvf
+         l5iH0oFX/zw9SB2dlzvLIek7ZRciQPq3xdqdvFscr0iMg+ftwMPp1aPuriQYMzqt1l94
+         ZvV8hhCVt/l4RjFIOZqQMNdON9G3oqK8+4fh+HCzkcqpyItTCVwnsxGqk+ZRsULpJUKh
+         7J8bpMcxlGFJdKKSc2qfAA3IlkKFxUPtge5xUFr2aj+IEd+UdD5tOzxV1k2Bb9GF+xah
+         T91haZK65ZyyXOeovj3ZrGZ6wOno2ccmS9A6QLPqskZ0ZXRtGNjsZArhikNA/bVgkGWi
+         jCYQ==
+X-Gm-Message-State: AJIora9JGRrdNH/eQlVIBDBwB0UiJM3ZJ72WPSZDAffzfAGwy3a5b1J9
+	ovSy0AI9GyYObnNoi+jvnH98nTZZgUqcqsyQ
+X-Google-Smtp-Source: AGRyM1uF/a3RPFnnh0wksOQmwdJd92WwLkGv6d7Do/7/gF7C9l9WxloTnQ/JWIUfJkJ+F2RKRK6TdQ==
+X-Received: by 2002:aa7:d5c9:0:b0:435:8099:30e6 with SMTP id d9-20020aa7d5c9000000b00435809930e6mr13963877eds.384.1656027906808;
+        Thu, 23 Jun 2022 16:45:06 -0700 (PDT)
+Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com. [209.85.128.54])
+        by smtp.gmail.com with ESMTPSA id kl2-20020a170907994200b00722d5b26ecesm199291ejc.205.2022.06.23.16.45.05
+        for <linux-rockchip@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 23 Jun 2022 16:45:06 -0700 (PDT)
+Received: by mail-wm1-f54.google.com with SMTP id z9so349678wmf.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 23 Jun 2022 16:45:05 -0700 (PDT)
+X-Received: by 2002:a05:600c:22d9:b0:39c:4b1b:5f99 with SMTP id
+ 25-20020a05600c22d900b0039c4b1b5f99mr469227wmg.151.1656027905540; Thu, 23 Jun
+ 2022 16:45:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
+References: <20220617172623.1.I62db228170b1559ada60b8d3e1637e1688424926@changeid>
 In-Reply-To: <20220617172623.1.I62db228170b1559ada60b8d3e1637e1688424926@changeid>
+From: Doug Anderson <dianders@chromium.org>
+Date: Thu, 23 Jun 2022 16:44:52 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=Wsp6GA=L4GsEVjMqazgtw4qG40gtLq1HT++5e9eRrvTw@mail.gmail.com>
+Message-ID: <CAD=FV=Wsp6GA=L4GsEVjMqazgtw4qG40gtLq1HT++5e9eRrvTw@mail.gmail.com>
+Subject: Re: [PATCH] drm/rockchip: vop: Don't crash for invalid duplicate_state()
+To: Brian Norris <briannorris@chromium.org>
+Cc: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>, 
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	dri-devel <dri-devel@lists.freedesktop.org>, 
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, 
+	Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_094700_535418_11D33EBD 
-X-CRM114-Status: GOOD (  16.55  )
+X-CRM114-CacheID: sfid-20220623_164513_128900_0D052839 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,43 +94,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 17, 2022 at 05:26:52PM -0700, Brian Norris wrote:
+Hi,
+
+On Fri, Jun 17, 2022 at 5:27 PM Brian Norris <briannorris@chromium.org> wrote:
+>
 > It's possible for users to try to duplicate the CRTC state even when the
 > state doesn't exist. drm_atomic_helper_crtc_duplicate_state() (and other
 > users of __drm_atomic_helper_crtc_duplicate_state()) already guard this
 > with a WARN_ON() instead of crashing, so let's do that here too.
-> 
+>
 > Signed-off-by: Brian Norris <briannorris@chromium.org>
-
-Thanks for this patch!
-
-Reviewed-by: Sean Paul <seanpaul@chromium.org>
-
 > ---
-> 
+>
 >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 3 +++
 >  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index 74562d40f639..daf192881353 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -1570,6 +1570,9 @@ static struct drm_crtc_state *vop_crtc_duplicate_state(struct drm_crtc *crtc)
->  {
->  	struct rockchip_crtc_state *rockchip_state;
->  
-> +	if (WARN_ON(!crtc->state))
-> +		return NULL;
-> +
->  	rockchip_state = kzalloc(sizeof(*rockchip_state), GFP_KERNEL);
->  	if (!rockchip_state)
->  		return NULL;
-> -- 
-> 2.36.1.476.g0c4daa206d-goog
-> 
 
--- 
-Sean Paul, Software Engineer, Google / Chromium OS
+I'm not an expert in this area, but it makes sense to me to match
+drm_atomic_helper_crtc_duplicate_state() in this way. Thus:
+
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
+
+I would tend to assume that this would be landed in drm-misc by Heiko
+if he's good with it. After several weeks of silence, however, I'll
+commit it myself.
+
+-Doug
 
 _______________________________________________
 Linux-rockchip mailing list
