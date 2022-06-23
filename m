@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E9E8CCA492
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 12:53:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F6E0CCA497
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 12:53:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l2tSu0hCnmuAoAn08WC/NHP1/ISf2l/F+GYBe3nezEU=; b=uGi03kjPKvF44D
-	GgrirHVPMu0IQ0Ni5xSKZurDgiM6HyX5izK5LnC2vDjMz1Wq0jDIvtGMTC0HlGQKGGUA4wF0HUjGF
-	GPXyIp6xPeICI5ML6kUlDZJXQhVDVgdn5eBeCg500IWTNaviEcZCoad6LpbREKEr7Ez4bVjgvVbjN
-	il0ew8XT1MdQsNpd1zi6jfL/n7OHXQFLkLBKWo/s7oh9nt3IF1Sixeh3iBGxpbikKsTitq6SFxtcw
-	m2zMtHcfyapcV/2o+7/PIXyUVloCTvENYpT9vltXv/fkDi7rLXyhNBVHtgfEDFVB2x8b/dqKzMGUH
-	0GKh7M5+EwwZ8YAd1ywQ==;
+	List-Owner; bh=l8DT79HbnMhCf8k0Oswta4Fb4im0IVxkvqVI4qQsyBw=; b=umV8d9DmKJfjsr
+	6wPV/CGfZ93p2TzYvpgeQvQ+rH2D95DAGYgMWv+unra4G6+i+7Zj9kZVtBKWYokXHQvPAY9IuDQN3
+	I6tyMbcek3tNqNFRASNKn5zO1Yt1KongiZOFsAq63eiyGSTvbOlw6PP69y1210PxnCPnrCQ1ZWlAW
+	Lnr8wJlbIs38XfCRpmX8z3melYtAUGSmE90kEXyYEz5L0JzSmYW/qnTKX38u+FXGbB9m0RLb4/KhU
+	GLH3nesgbjM/NEnWvtVdAY8Rs7r748eEPVG411/Wme7XWpJcFRoJ3Gni5cpk0NxsS9KrXyr9XsPD5
+	nJp3loy3yGZMG5wqxQkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4MKq-00F71q-9v; Thu, 23 Jun 2022 12:53:24 +0000
+	id 1o4MKy-00F7AQ-Nq; Thu, 23 Jun 2022 12:53:32 +0000
 Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4MKd-00F6s9-HL; Thu, 23 Jun 2022 12:53:13 +0000
+	id 1o4MKd-00F6st-RF; Thu, 23 Jun 2022 12:53:14 +0000
 Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
-	by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25NBvlrE011978;
-	Thu, 23 Jun 2022 07:52:58 -0500
+	by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25NBvlrG011978;
+	Thu, 23 Jun 2022 07:53:00 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=PODMain02222019;
- bh=QrMJdKf4Z+/ZQRuy+lyxsoWSwzbRShT9MEE2wu/XMYc=;
- b=iIWS18/YdxYU7/gOFy4A1VTRX1vY8LET3tcRVY7P5vJg0G5PppBG/ZOuLOVGp8dbe7vm
- cTczMCuR1yRvD034/BjNBZj864dLgQFW+Zz48Np4jNIJGzZuotN4ftLbS1ltcaOyQSAQ
- MkI/AjJmxAjna5euzUUVL/lFZRUlvX/FDrDy00rIiTMo9xvjPI6mJp2OPt9nkRRGZjOk
- ohtXMI9SVbXhbjwJVgf2fjREK4CKwuCLOzZuPxrTYC+oHSjlq+cJ4DYbt9faKgzhZ+tS
- B2UB3swBCrghclbAs6LE8N9NoQCZElzHjjke/oU8aGpuxJR1nxvER3xLFpaTCPZ7w5Yd 5w== 
+ bh=GTnHSi0yRHHF639vxs9xx5N++7My5MIlVXcDYN1gZUo=;
+ b=kPxDJpeA9itRjjKzDmbUW30RB6LylMe+gdsLt5rZ6t2h7ad6frtu2kytY+nDHxs8n4It
+ njFwp7JkLACHD5fPBBpouF1t50bdcqGrAzy+YzQLMOFoEb+MiZLhwKkKyr8t7TstGJDW
+ KcObatdIX+0R56yKRkkrCRDJNDoPvaEg3VloFcZIQJ7Hxt/TZGlY0ctm835JLPRz2hU0
+ LTnlp0U5PnVdlSG37w3ouJ+NnT29PjPcHgppP0mfL6Gj0zrtx0Yi6BYKwcxBHXaTGKTF
+ EJQStIRgU5yZmufoqo9PEVOLS26pkSfPvu6TucYsp43UWO20MLaOPlwoMYvwGA1VCN5J vg== 
 Received: from ediex02.ad.cirrus.com ([84.19.233.68])
-	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3gsb4p6wvp-9
+	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3gsb4p6wvp-11
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
-	Thu, 23 Jun 2022 07:52:58 -0500
+	Thu, 23 Jun 2022 07:53:00 -0500
 Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX02.ad.cirrus.com
  (198.61.84.81) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Thu, 23 Jun
- 2022 13:52:52 +0100
+ 2022 13:52:53 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.28 via Frontend
- Transport; Thu, 23 Jun 2022 13:52:52 +0100
+ Transport; Thu, 23 Jun 2022 13:52:53 +0100
 Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
-	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id CD31511D4;
-	Thu, 23 Jun 2022 12:52:52 +0000 (UTC)
+	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 5AD2911D4;
+	Thu, 23 Jun 2022 12:52:53 +0000 (UTC)
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
@@ -68,19 +68,19 @@ CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
         <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>,
         <dri-devel@lists.freedesktop.org>,
         <linux-rpi-kernel@lists.infradead.org>, <frattaroli.nicolas@gmail.com>
-Subject: [PATCH v2 23/96] ASoC: dwc: Migrate to new style legacy DAI naming flag
-Date: Thu, 23 Jun 2022 13:51:37 +0100
-Message-ID: <20220623125250.2355471-24-ckeepax@opensource.cirrus.com>
+Subject: [PATCH v2 29/96] ASoC: sof: Migrate to new style legacy DAI naming flag
+Date: Thu, 23 Jun 2022 13:51:43 +0100
+Message-ID: <20220623125250.2355471-30-ckeepax@opensource.cirrus.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
 References: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-X-Proofpoint-GUID: OY8uk6_fPqAepoBc_qckSEfTqnw_qiC6
-X-Proofpoint-ORIG-GUID: OY8uk6_fPqAepoBc_qckSEfTqnw_qiC6
+X-Proofpoint-GUID: 7Rh8siupePuSNyXx_DrQmV9InHb_wGhk
+X-Proofpoint-ORIG-GUID: 7Rh8siupePuSNyXx_DrQmV9InHb_wGhk
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_055311_765168_5F99BCB1 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20220623_055312_070676_1FCE5266 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,32 +99,38 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Change the legacy DAI naming flag from opting in to the new scheme
 (non_legacy_dai_naming), to opting out of it (legacy_dai_naming).
-This driver appears to be on the CPU side of the DAI link and
+These drivers appear to be on the CPU side of the DAI link and
 currently uses the legacy naming, so add the new flag.
 
 Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 ---
- sound/soc/dwc/dwc-i2s.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ sound/soc/sof/pcm.c               | 2 ++
+ sound/soc/sof/sof-client-probes.c | 1 +
+ 2 files changed, 3 insertions(+)
 
-diff --git a/sound/soc/dwc/dwc-i2s.c b/sound/soc/dwc/dwc-i2s.c
-index e794e020052ef..7f7dd07c63b2f 100644
---- a/sound/soc/dwc/dwc-i2s.c
-+++ b/sound/soc/dwc/dwc-i2s.c
-@@ -449,9 +449,10 @@ static int dw_i2s_resume(struct snd_soc_component *component)
- #endif
+diff --git a/sound/soc/sof/pcm.c b/sound/soc/sof/pcm.c
+index 27504abc5385f..6cb6a432be5e9 100644
+--- a/sound/soc/sof/pcm.c
++++ b/sound/soc/sof/pcm.c
+@@ -682,4 +682,6 @@ void snd_sof_new_platform_drv(struct snd_sof_dev *sdev)
  
- static const struct snd_soc_component_driver dw_i2s_component = {
--	.name		= "dw-i2s",
--	.suspend	= dw_i2s_suspend,
--	.resume		= dw_i2s_resume,
-+	.name			= "dw-i2s",
-+	.suspend		= dw_i2s_suspend,
-+	.resume			= dw_i2s_resume,
-+	.legacy_dai_naming	= 1,
+ 	 /* increment module refcount when a pcm is opened */
+ 	pd->module_get_upon_open = 1;
++
++	pd->legacy_dai_naming = 1;
+ }
+diff --git a/sound/soc/sof/sof-client-probes.c b/sound/soc/sof/sof-client-probes.c
+index 34e6bd356e717..1f1ea93a7fbf3 100644
+--- a/sound/soc/sof/sof-client-probes.c
++++ b/sound/soc/sof/sof-client-probes.c
+@@ -667,6 +667,7 @@ static const struct snd_soc_component_driver sof_probes_component = {
+ 	.name = "sof-probes-component",
+ 	.compress_ops = &sof_probes_compressed_ops,
+ 	.module_get_upon_open = 1,
++	.legacy_dai_naming = 1,
  };
  
- /*
+ SND_SOC_DAILINK_DEF(dummy, DAILINK_COMP_ARRAY(COMP_DUMMY()));
 -- 
 2.30.2
 
