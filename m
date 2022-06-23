@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D8B7C43334
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B53EACCA47E
 	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 12:55:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nWhfagqLxfE7EHw1cMzvipVwZf4u5hO0QQpwuRaBNV4=; b=fbaYlBJft8KL4V
-	m/HI6aNxMxoR/TBZwZPVNL8XGsuXkkCGdqMNQJ9rdFAIhSwu9bCHxeb/bGkUoaTzi7mG5pi1LHLLR
-	QOqQYoy66GuDuZH2enVwF96LXtq3Vfb2K3HZrZCQGBVslS9Q4PWDaG1U7XtWcjx6fFK5cMpKXL82/
-	MpqMWB2uz+vJzF4d3u9LPDYFG5T9ODajfZK8XaH2L7UbhW+ZwAtS0buMIMqa9pncGfCbVlBkek21u
-	IkPWczj2gy8qC7G9UQR9GhYAmGbt6adPPBzlA5iUdXXVjNlScOfhHRhGt3/MFxDIdGmI2y+PNUZVO
-	ZWBoohJAdNNlfzbJtQmQ==;
+	List-Owner; bh=tTCNNwqgaDX7Wm9Yt0gBIt1X7iaqwZsh9IabzS5PNQo=; b=jDCpn3OBoQQMEt
+	dMvIuJwBFVwrLg3d0AYY+cRSuEQw27jtlnIG09DPr2jF5KE0Q7+PS8xWlhO9QzwB9trFmF1zzndoV
+	f9VrSqZjhsOUvg1SIPTlbviuJ5SUIrmvl7thJnjBWZ9euWIgXtujjZ7RFufieEtP1xSN8gZrXR46A
+	XnM7CnJXe6HZiCtmq4RmZVMg8hvPWpYmwxeyLXtCPAVyWGdUI5GagxqNLgqyCl+y4BCbaWLS9q3Xp
+	tNm4WCWpPS+9eMe/1nnCmYuHziATac8MQ3vYDRwgPAA7tMFyOBFc/vgnTgr194i8LvLGvZC++59xG
+	WYW8l4bvPFUEnd0JVhSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4MMt-00F9AP-H5; Thu, 23 Jun 2022 12:55:31 +0000
-Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
+	id 1o4MMs-00F98a-Dh; Thu, 23 Jun 2022 12:55:30 +0000
+Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4MKs-00F73w-5x; Thu, 23 Jun 2022 12:53:33 +0000
-Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
-	by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25N5mxlG032604;
-	Thu, 23 Jun 2022 07:53:09 -0500
+	id 1o4MKq-00F72Z-TH; Thu, 23 Jun 2022 12:53:31 +0000
+Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
+	by mx0a-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25NBNlqg015665;
+	Thu, 23 Jun 2022 07:53:03 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-transfer-encoding : content-type; s=PODMain02222019;
- bh=+zjiVDa6Ny/om/OU+ts87eea2uu9PR3c4RSQwJkZVkY=;
- b=j2jEMHJq1/WHMMF9nBD9VY0jpJxBs4IVWr0J6PtMAgdkEUHBsYcr7UEukGKY9852lIYK
- J+00mmk1RyzNcrvImWBmBQXL3PJlF8CSCWrfHHMDdecStiYhpTYiZoVVtN6RK6pK2bB4
- +4OJ1+60RIS9pevol6IYXa8y0MBsiRon2bg/lVVFLby53veZ0NAbqVPESzUlq89AMrm9
- HeZjzkCrw6/6xxaixSSjln3kXfYOVD39QpWLMm0TYR73RbwH7kGnhCr6eI+jQoWLZ6AO
- kYQKmcohMFNXe9u7alyY56bBoKuIOHYOGlZY792bfqLjQZ8IzMEp9aPCkXlDcZzhSvrj 1g== 
+ bh=NdWNqGk7KYNCnb6vF06SM0HZUNiwmzGy7/npWlCANTY=;
+ b=pl9GZ0sm4izeOpQNlz1JULcTPTAF8z8IksyRkNGDBos6hUEv38UxIz3WaS2uwspoNo47
+ ZfOxyKCYduHCyLqEYRfcWfOs6k/P7mOdn4vc/5P7Yaoc/R2vE0x7lV7Be/BIsdR9lrz9
+ BX4eJOfc17ShLxE1DluYe4mSxomVwJgTJlaJZAzEPfAloyKWyMO/wk0+Mk1v111PzUIJ
+ RyBhnCy3ndtaCR6TGiTO8FxBFW8r7H8/9Rm/cYdEKA+JU+60glrwZ+mb/AkJogZdMmoO
+ voHl0eP1NeD5EBRSNjOMJkyHQDejWPxJ3QSicvN07rqRn4kP5BfV1m6uDdhRf6bWSS25 OQ== 
 Received: from ediex01.ad.cirrus.com ([84.19.233.68])
-	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3gsb4p6wvu-15
+	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3gsc41fa4j-13
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
-	Thu, 23 Jun 2022 07:53:08 -0500
+	Thu, 23 Jun 2022 07:53:03 -0500
 Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Thu, 23 Jun
- 2022 13:52:57 +0100
+ 2022 13:52:53 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.28 via Frontend
- Transport; Thu, 23 Jun 2022 13:52:57 +0100
+ Transport; Thu, 23 Jun 2022 13:52:53 +0100
 Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
-	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 2307711D3;
-	Thu, 23 Jun 2022 12:52:57 +0000 (UTC)
+	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id B8B4E11D3;
+	Thu, 23 Jun 2022 12:52:53 +0000 (UTC)
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
@@ -68,19 +68,19 @@ CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
         <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>,
         <dri-devel@lists.freedesktop.org>,
         <linux-rpi-kernel@lists.infradead.org>, <frattaroli.nicolas@gmail.com>
-Subject: [PATCH v2 72/96] ASoC: cpcap: Remove now redundant non_legacy_dai_naming flag
-Date: Thu, 23 Jun 2022 13:52:26 +0100
-Message-ID: <20220623125250.2355471-73-ckeepax@opensource.cirrus.com>
+Subject: [PATCH v2 33/96] ASoC: samsung: Migrate to new style legacy DAI naming flag
+Date: Thu, 23 Jun 2022 13:51:47 +0100
+Message-ID: <20220623125250.2355471-34-ckeepax@opensource.cirrus.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
 References: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-X-Proofpoint-GUID: 054Cz-4n8cuEK7QNvBVeBA3isJVzQlWV
-X-Proofpoint-ORIG-GUID: 054Cz-4n8cuEK7QNvBVeBA3isJVzQlWV
+X-Proofpoint-GUID: v0oFCxrSCxmZrVeXEmSq3Ws8-owDeSPN
+X-Proofpoint-ORIG-GUID: v0oFCxrSCxmZrVeXEmSq3Ws8-owDeSPN
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_055326_416225_1D08DBF0 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20220623_055325_082024_C7568CFB 
+X-CRM114-Status: GOOD (  15.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,27 +97,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The ASoC core has now been changed to default to the non-legacy DAI
-naming, as such drivers using the new scheme no longer need to specify
-the non_legacy_dai_naming flag.
+Change the legacy DAI naming flag from opting in to the new scheme
+(non_legacy_dai_naming), to opting out of it (legacy_dai_naming).
+These drivers appear to be on the CPU side of the DAI link and
+currently uses the legacy naming, so add the new flag.
 
 Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 ---
- sound/soc/codecs/cpcap.c | 1 -
- 1 file changed, 1 deletion(-)
+ sound/soc/samsung/i2s.c         | 2 ++
+ sound/soc/samsung/pcm.c         | 3 ++-
+ sound/soc/samsung/s3c2412-i2s.c | 7 ++++---
+ sound/soc/samsung/s3c24xx-i2s.c | 7 ++++---
+ sound/soc/samsung/spdif.c       | 7 ++++---
+ 5 files changed, 16 insertions(+), 10 deletions(-)
 
-diff --git a/sound/soc/codecs/cpcap.c b/sound/soc/codecs/cpcap.c
-index ffdf8b615efaa..4f9dabd9d78a6 100644
---- a/sound/soc/codecs/cpcap.c
-+++ b/sound/soc/codecs/cpcap.c
-@@ -1660,7 +1660,6 @@ static struct snd_soc_component_driver soc_codec_dev_cpcap = {
- 	.idle_bias_on		= 1,
- 	.use_pmdown_time	= 1,
- 	.endianness		= 1,
--	.non_legacy_dai_naming	= 1,
+diff --git a/sound/soc/samsung/i2s.c b/sound/soc/samsung/i2s.c
+index fdd9561c6a9f3..9505200f3d11b 100644
+--- a/sound/soc/samsung/i2s.c
++++ b/sound/soc/samsung/i2s.c
+@@ -1143,6 +1143,8 @@ static const struct snd_soc_component_driver samsung_i2s_component = {
+ 
+ 	.suspend = i2s_suspend,
+ 	.resume = i2s_resume,
++
++	.legacy_dai_naming = 1,
  };
  
- static int cpcap_codec_probe(struct platform_device *pdev)
+ #define SAMSUNG_I2S_FMTS (SNDRV_PCM_FMTBIT_S8 | SNDRV_PCM_FMTBIT_S16_LE | \
+diff --git a/sound/soc/samsung/pcm.c b/sound/soc/samsung/pcm.c
+index c2eb3534bfccb..e859252ae5e6e 100644
+--- a/sound/soc/samsung/pcm.c
++++ b/sound/soc/samsung/pcm.c
+@@ -480,7 +480,8 @@ static struct snd_soc_dai_driver s3c_pcm_dai[] = {
+ };
+ 
+ static const struct snd_soc_component_driver s3c_pcm_component = {
+-	.name		= "s3c-pcm",
++	.name			= "s3c-pcm",
++	.legacy_dai_naming	= 1,
+ };
+ 
+ static int s3c_pcm_dev_probe(struct platform_device *pdev)
+diff --git a/sound/soc/samsung/s3c2412-i2s.c b/sound/soc/samsung/s3c2412-i2s.c
+index ec1c6f9d76ac7..0579a352961cc 100644
+--- a/sound/soc/samsung/s3c2412-i2s.c
++++ b/sound/soc/samsung/s3c2412-i2s.c
+@@ -192,9 +192,10 @@ static struct snd_soc_dai_driver s3c2412_i2s_dai = {
+ };
+ 
+ static const struct snd_soc_component_driver s3c2412_i2s_component = {
+-	.name		= "s3c2412-i2s",
+-	.suspend	= s3c2412_i2s_suspend,
+-	.resume		= s3c2412_i2s_resume,
++	.name			= "s3c2412-i2s",
++	.suspend		= s3c2412_i2s_suspend,
++	.resume			= s3c2412_i2s_resume,
++	.legacy_dai_naming	= 1,
+ };
+ 
+ static int s3c2412_iis_dev_probe(struct platform_device *pdev)
+diff --git a/sound/soc/samsung/s3c24xx-i2s.c b/sound/soc/samsung/s3c24xx-i2s.c
+index 4082ad7cbcc11..e760fc8b42636 100644
+--- a/sound/soc/samsung/s3c24xx-i2s.c
++++ b/sound/soc/samsung/s3c24xx-i2s.c
+@@ -415,9 +415,10 @@ static struct snd_soc_dai_driver s3c24xx_i2s_dai = {
+ };
+ 
+ static const struct snd_soc_component_driver s3c24xx_i2s_component = {
+-	.name		= "s3c24xx-i2s",
+-	.suspend	= s3c24xx_i2s_suspend,
+-	.resume		= s3c24xx_i2s_resume,
++	.name			= "s3c24xx-i2s",
++	.suspend		= s3c24xx_i2s_suspend,
++	.resume			= s3c24xx_i2s_resume,
++	.legacy_dai_naming	= 1,
+ };
+ 
+ static int s3c24xx_iis_dev_probe(struct platform_device *pdev)
+diff --git a/sound/soc/samsung/spdif.c b/sound/soc/samsung/spdif.c
+index 47b6d19e43ffb..7d815e237e5c6 100644
+--- a/sound/soc/samsung/spdif.c
++++ b/sound/soc/samsung/spdif.c
+@@ -352,9 +352,10 @@ static struct snd_soc_dai_driver samsung_spdif_dai = {
+ };
+ 
+ static const struct snd_soc_component_driver samsung_spdif_component = {
+-	.name		= "samsung-spdif",
+-	.suspend	= spdif_suspend,
+-	.resume		= spdif_resume,
++	.name			= "samsung-spdif",
++	.suspend		= spdif_suspend,
++	.resume			= spdif_resume,
++	.legacy_dai_naming	= 1,
+ };
+ 
+ static int spdif_probe(struct platform_device *pdev)
 -- 
 2.30.2
 
