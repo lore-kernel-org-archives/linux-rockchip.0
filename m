@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 882F6CCA48D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 12:54:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73ACFCCA490
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 12:54:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oYt+8jpE8Tq8ZMuDQoCHVtJZTZzo1iDIBk08NJq38mo=; b=FqHXrSbQZ1SK2Y
-	jIRgjUYuUh5i407Rm2GIEbTMx4ceJqZI8F2nYMYYhZcpVOof/7EfqbTQ2Zq1F2SrS5R22xcIqf82J
-	VIh8B5R2/q663HCyNepdSlGJb38oA5bQvrkcW6kj4F8B30Zh9rzMYsxmNv1OvepnsMmsK4+Gk2+pt
-	O56bn+wSx27D4pLR99U36kNdZxY9RLDexSos9O+UdHtpg0esGLj3lhfM9MSae16PBo89OJ3B79lJY
-	/kih60bezAUDxNnc7k08e/665iAvHEzdomlwbhFhklEJNjx9lKACaT6svnNncp9vvgNEIMkjuiHPf
-	nQHg4zzi5LjCmEAnak2g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mk0b1WbDTI2LkGt5bawVZcM5ew1wb0CMyD7fmbwn3fg=; b=gIKD4B0DstasH6
+	BVExS4yzlPrkwou7s+hF9S/Ept0DdiB9lWyWvFBDWCtI73GdZR/CQ6CyQ0ZfpQid0zdznl0T1+tHY
+	38qBru7l4vUgqtEwsOBRkbopR+/xJLP8xTsX4b+S6UiUrb6WY2YIGkT6R/mvtM73WMSGH1Ukpyovl
+	R5Vpbx3+4YFlEQpuFVHS3HihXl03e8llNPnd9ZX8Kycwo9hzHkdboblE3dxICJDbjJI9hL0YVwqjB
+	eWGRGJm9rqO/6mksRUqq+XYUWw9ZHpkGJieq6H/nD1PTAnplzGYth4mMoMMEYqH74Uy5a3h1sIhKQ
+	nj7/hIXrlB/p09pglogw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4MLG-00F7Ri-BG; Thu, 23 Jun 2022 12:53:50 +0000
+	id 1o4MLf-00F7nm-MI; Thu, 23 Jun 2022 12:54:15 +0000
 Received: from mx0a-001ae601.pphosted.com ([67.231.149.25] helo=mx0b-001ae601.pphosted.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4MKe-00F6uE-Pk; Thu, 23 Jun 2022 12:53:18 +0000
+	id 1o4MKe-00F6s3-5x; Thu, 23 Jun 2022 12:53:20 +0000
 Received: from pps.filterd (m0077473.ppops.net [127.0.0.1])
-	by mx0a-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25NBNlqd015665;
-	Thu, 23 Jun 2022 07:53:00 -0500
+	by mx0a-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 25NBNlqU015665;
+	Thu, 23 Jun 2022 07:52:53 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding : content-type; s=PODMain02222019;
- bh=ZCITtJ1KUhO3m0hQgxKHALQnZSotGGuUuKGm6KuVmmc=;
- b=HZsw3lXE4bHk6wg9RtDkrEwudbBsroBhvZQ6syOT1mSDXvLCZsJm2uICraft12P0JInS
- apyN6NyAnd32ms99eg2IM+mgzawGT0a8Vp26CJLCmqJbk1E+tRJpcRG5p9Pf59NrEXjf
- kcJ/Wf15Bv7VtAzoHL12+47nTdXnTc4TToQJ7H6CA1Vbzda00+JwTDZGvDH+n1WjgksZ
- jMGy0emMkTQs5dXevrPZozXN3BEFjmkMWa32Fs2D3FI8TCLz1frqmKn+Ea7Mf6I5IoHP
- eHkIvK5XzXs1+8a9e1tdhrGESfzYdHFAQ+AbgBDAxFtIbUVmU5uHarzSH7PKPxjCgnRq rg== 
+ subject : date : message-id : mime-version : content-transfer-encoding :
+ content-type; s=PODMain02222019;
+ bh=I/nAyq/yX0/Qkd0s3twb/NFxcFkLi7+qur//JjrguHM=;
+ b=Y5YZVC8mPJuNjmZ1mkLZlFJAwT1pMdOG7qSYB3oyuclmHPHSHkJidr6V4FrbXMV0zp7d
+ hIIA8hajCGNpLBka5Xbsmi4LwJ/jU9bN+tizgi7iPeSyQXJmrwpix0WfslA45qKmvgEu
+ ecZUxr7AaR7uTnEEBc58BVIMXwAeQj4bRmFUqaPmL4iXI3+ov4k3dH0S2639nY2bszPc
+ jdeV7520kXKski9RAhd7U4Z6AIf52qDoB5bhqCsHRdBBnHdbPnzPovBJD5wiqONOLJtQ
+ Z5GOsc5sci5pfm2vL/2u916liltVkmrn0iQ7+w/wYuWZnph+AXTRKq0/+wxB9BuCCvuD sw== 
 Received: from ediex01.ad.cirrus.com ([84.19.233.68])
-	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3gsc41fa4j-10
+	by mx0a-001ae601.pphosted.com (PPS) with ESMTPS id 3gsc41fa4j-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
-	Thu, 23 Jun 2022 07:53:00 -0500
+	Thu, 23 Jun 2022 07:52:53 -0500
 Received: from EDIEX01.ad.cirrus.com (198.61.84.80) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.28; Thu, 23 Jun
- 2022 13:52:52 +0100
+ 2022 13:52:50 +0100
 Received: from ediswmail.ad.cirrus.com (198.61.86.93) by EDIEX01.ad.cirrus.com
  (198.61.84.80) with Microsoft SMTP Server id 15.1.2375.28 via Frontend
- Transport; Thu, 23 Jun 2022 13:52:52 +0100
+ Transport; Thu, 23 Jun 2022 13:52:50 +0100
 Received: from algalon.ad.cirrus.com (algalon.ad.cirrus.com [198.90.251.122])
-	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 88E0C11D1;
-	Thu, 23 Jun 2022 12:52:52 +0000 (UTC)
+	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id BA370475;
+	Thu, 23 Jun 2022 12:52:50 +0000 (UTC)
 From: Charles Keepax <ckeepax@opensource.cirrus.com>
 To: <broonie@kernel.org>
 CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
@@ -68,19 +68,17 @@ CC: <lgirdwood@gmail.com>, <kuninori.morimoto.gx@renesas.com>,
         <alsa-devel@alsa-project.org>, <patches@opensource.cirrus.com>,
         <dri-devel@lists.freedesktop.org>,
         <linux-rpi-kernel@lists.infradead.org>, <frattaroli.nicolas@gmail.com>
-Subject: [PATCH v2 20/96] ASoC: fsl: Migrate to new style legacy DAI naming flag
-Date: Thu, 23 Jun 2022 13:51:34 +0100
-Message-ID: <20220623125250.2355471-21-ckeepax@opensource.cirrus.com>
+Subject: [PATCH v2 00/96] Refactor non_legacy_dai_naming flag
+Date: Thu, 23 Jun 2022 13:51:14 +0100
+Message-ID: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
-References: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
 MIME-Version: 1.0
-X-Proofpoint-GUID: h9WaDBf4KuGByK_NZWi6uS9FRCjWftDR
-X-Proofpoint-ORIG-GUID: h9WaDBf4KuGByK_NZWi6uS9FRCjWftDR
+X-Proofpoint-GUID: INsOd-nUoJBYUsd4NgffnWiFjHNqRV_a
+X-Proofpoint-ORIG-GUID: INsOd-nUoJBYUsd4NgffnWiFjHNqRV_a
 X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_055312_909992_4FAC2849 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20220623_055312_391539_9D86D326 
+X-CRM114-Status: GOOD (  13.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,152 +95,479 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Change the legacy DAI naming flag from opting in to the new scheme
-(non_legacy_dai_naming), to opting out of it (legacy_dai_naming).
-These drivers appear to be on the CPU side of the DAI link and
-currently uses the legacy naming, so add the new flag.
+Historically, the legacy DAI naming scheme was applied to platform
+drivers and the newer scheme to CODEC drivers. During componentisation
+the core lost the knowledge of if a driver was a CODEC or platform, they
+were all now components. To continue to support the legacy naming on
+older platform drivers a flag was added to the snd_soc_component_driver
+structure, non_legacy_dai_naming, to indicate to use the new scheme and
+this was applied to all CODECs as part of the migration.
 
-Signed-off-by: Charles Keepax <ckeepax@opensource.cirrus.com>
----
- sound/soc/fsl/fsl_aud2htx.c     | 3 ++-
- sound/soc/fsl/fsl_easrc.c       | 7 ++++---
- sound/soc/fsl/fsl_esai.c        | 3 ++-
- sound/soc/fsl/fsl_rpmsg.c       | 3 ++-
- sound/soc/fsl/fsl_sai.c         | 3 ++-
- sound/soc/fsl/fsl_spdif.c       | 3 ++-
- sound/soc/fsl/fsl_ssi.c         | 1 +
- sound/soc/fsl/fsl_xcvr.c        | 3 ++-
- sound/soc/fsl/mpc5200_psc_i2s.c | 3 ++-
- 9 files changed, 19 insertions(+), 10 deletions(-)
+However, a slight issue appears to be developing with respect to this
+flag being opt in for the non-legacy scheme, which presumably we want to
+be the primary scheme used. Many codec drivers appear to forget to
+include this flag:
 
-diff --git a/sound/soc/fsl/fsl_aud2htx.c b/sound/soc/fsl/fsl_aud2htx.c
-index 422922146f2a5..873295f59ad7b 100644
---- a/sound/soc/fsl/fsl_aud2htx.c
-+++ b/sound/soc/fsl/fsl_aud2htx.c
-@@ -103,7 +103,8 @@ static struct snd_soc_dai_driver fsl_aud2htx_dai = {
- };
- 
- static const struct snd_soc_component_driver fsl_aud2htx_component = {
--	.name	= "fsl-aud2htx",
-+	.name			= "fsl-aud2htx",
-+	.legacy_dai_naming	= 1,
- };
- 
- static const struct reg_default fsl_aud2htx_reg_defaults[] = {
-diff --git a/sound/soc/fsl/fsl_easrc.c b/sound/soc/fsl/fsl_easrc.c
-index be14f84796cb4..ea96b0fb6b202 100644
---- a/sound/soc/fsl/fsl_easrc.c
-+++ b/sound/soc/fsl/fsl_easrc.c
-@@ -1572,9 +1572,10 @@ static struct snd_soc_dai_driver fsl_easrc_dai = {
- };
- 
- static const struct snd_soc_component_driver fsl_easrc_component = {
--	.name		= "fsl-easrc-dai",
--	.controls       = fsl_easrc_snd_controls,
--	.num_controls   = ARRAY_SIZE(fsl_easrc_snd_controls),
-+	.name			= "fsl-easrc-dai",
-+	.controls		= fsl_easrc_snd_controls,
-+	.num_controls		= ARRAY_SIZE(fsl_easrc_snd_controls),
-+	.legacy_dai_naming	= 1,
- };
- 
- static const struct reg_default fsl_easrc_reg_defaults[] = {
-diff --git a/sound/soc/fsl/fsl_esai.c b/sound/soc/fsl/fsl_esai.c
-index 75f7807df29af..5c21fc490fce1 100644
---- a/sound/soc/fsl/fsl_esai.c
-+++ b/sound/soc/fsl/fsl_esai.c
-@@ -824,7 +824,8 @@ static struct snd_soc_dai_driver fsl_esai_dai = {
- };
- 
- static const struct snd_soc_component_driver fsl_esai_component = {
--	.name		= "fsl-esai",
-+	.name			= "fsl-esai",
-+	.legacy_dai_naming	= 1,
- };
- 
- static const struct reg_default fsl_esai_reg_defaults[] = {
-diff --git a/sound/soc/fsl/fsl_rpmsg.c b/sound/soc/fsl/fsl_rpmsg.c
-index 19fd312508839..bf94838bdbefe 100644
---- a/sound/soc/fsl/fsl_rpmsg.c
-+++ b/sound/soc/fsl/fsl_rpmsg.c
-@@ -135,7 +135,8 @@ static struct snd_soc_dai_driver fsl_rpmsg_dai = {
- };
- 
- static const struct snd_soc_component_driver fsl_component = {
--	.name           = "fsl-rpmsg",
-+	.name			= "fsl-rpmsg",
-+	.legacy_dai_naming	= 1,
- };
- 
- static const struct fsl_rpmsg_soc_data imx7ulp_data = {
-diff --git a/sound/soc/fsl/fsl_sai.c b/sound/soc/fsl/fsl_sai.c
-index 4f5bd9597c746..68b5b488deebd 100644
---- a/sound/soc/fsl/fsl_sai.c
-+++ b/sound/soc/fsl/fsl_sai.c
-@@ -767,7 +767,8 @@ static struct snd_soc_dai_driver fsl_sai_dai_template = {
- };
- 
- static const struct snd_soc_component_driver fsl_component = {
--	.name           = "fsl-sai",
-+	.name			= "fsl-sai",
-+	.legacy_dai_naming	= 1,
- };
- 
- static struct reg_default fsl_sai_reg_defaults_ofs0[] = {
-diff --git a/sound/soc/fsl/fsl_spdif.c b/sound/soc/fsl/fsl_spdif.c
-index 42d11aca38a10..0504431792cf9 100644
---- a/sound/soc/fsl/fsl_spdif.c
-+++ b/sound/soc/fsl/fsl_spdif.c
-@@ -1237,7 +1237,8 @@ static struct snd_soc_dai_driver fsl_spdif_dai = {
- };
- 
- static const struct snd_soc_component_driver fsl_spdif_component = {
--	.name		= "fsl-spdif",
-+	.name			= "fsl-spdif",
-+	.legacy_dai_naming	= 1,
- };
- 
- /* FSL SPDIF REGMAP */
-diff --git a/sound/soc/fsl/fsl_ssi.c b/sound/soc/fsl/fsl_ssi.c
-index 7dd0c48cd9ae4..c9e0e31d5b34d 100644
---- a/sound/soc/fsl/fsl_ssi.c
-+++ b/sound/soc/fsl/fsl_ssi.c
-@@ -1182,6 +1182,7 @@ static struct snd_soc_dai_driver fsl_ssi_dai_template = {
- 
- static const struct snd_soc_component_driver fsl_ssi_component = {
- 	.name = "fsl-ssi",
-+	.legacy_dai_naming = 1,
- };
- 
- static struct snd_soc_dai_driver fsl_ssi_ac97_dai = {
-diff --git a/sound/soc/fsl/fsl_xcvr.c b/sound/soc/fsl/fsl_xcvr.c
-index 55e640cba87d0..c043efe4548d1 100644
---- a/sound/soc/fsl/fsl_xcvr.c
-+++ b/sound/soc/fsl/fsl_xcvr.c
-@@ -911,7 +911,8 @@ static struct snd_soc_dai_driver fsl_xcvr_dai = {
- };
- 
- static const struct snd_soc_component_driver fsl_xcvr_comp = {
--	.name = "fsl-xcvr-dai",
-+	.name			= "fsl-xcvr-dai",
-+	.legacy_dai_naming	= 1,
- };
- 
- static const struct reg_default fsl_xcvr_reg_defaults[] = {
-diff --git a/sound/soc/fsl/mpc5200_psc_i2s.c b/sound/soc/fsl/mpc5200_psc_i2s.c
-index 3149d59ae968d..73f3e61f208a7 100644
---- a/sound/soc/fsl/mpc5200_psc_i2s.c
-+++ b/sound/soc/fsl/mpc5200_psc_i2s.c
-@@ -148,7 +148,8 @@ static struct snd_soc_dai_driver psc_i2s_dai[] = {{
- } };
- 
- static const struct snd_soc_component_driver psc_i2s_component = {
--	.name		= "mpc5200-i2s",
-+	.name			= "mpc5200-i2s",
-+	.legacy_dai_naming	= 1,
- };
- 
- /* ---------------------------------------------------------------------
+  grep -l -r "snd_soc_component_driver" sound/soc/codecs/*.c |
+  xargs grep -L "non_legacy_dai_naming" | wc
+     48      48    556
+
+Whilst in many cases the configuration of the DAIs themselves will cause
+the core to apply the new scheme anyway, it would seem more sensible to
+change the flag to legacy_dai_naming making the new scheme opt out. This
+patch series migrates across to such a scheme.
+
+Thanks,
+Charles
+
+Changes since v1:
+ - Fix typo in sound/soc/au1x/ac97c.c
+
+Charles Keepax (96):
+  ASoC: soc-component: Add legacy_dai_naming flag
+  soundwire: intel: Migrate to new style legacy DAI naming flag
+  drm/vc4: Migrate to new style legacy DAI naming flag
+  ASoC: img: Migrate to new style legacy DAI naming flag
+  ASoC: spear: Migrate to new style legacy DAI naming flag
+  ASoC: jz4740-i2c: Migrate to new style legacy DAI naming flag
+  ASoC: ep93xx: Migrate to new style legacy DAI naming flag
+  ASoC: stm32: Migrate to new style legacy DAI naming flag
+  ASoC: bcm: Migrate to new style legacy DAI naming flag
+  ASoC: sh: Migrate to new style legacy DAI naming flag
+  ASoC: tegra: Migrate to new style legacy DAI naming flag
+  ASoC: hisilicon: Migrate to new style legacy DAI naming flag
+  ASoC: xilinx: Migrate to new style legacy DAI naming flag
+  ASoC: sunxi: Migrate to new style legacy DAI naming flag
+  ASoC: Intel: Migrate to new style legacy DAI naming flag
+  ASoC: meson: Migrate to new style legacy DAI naming flag
+  ASoC: sti-uniperf: Migrate to new style legacy DAI naming flag
+  ASoC: amd: Migrate to new style legacy DAI naming flag
+  ASoC: atmel: Migrate to new style legacy DAI naming flag
+  ASoC: fsl: Migrate to new style legacy DAI naming flag
+  ASoC: xtensa: Migrate to new style legacy DAI naming flag
+  ASoC: adi: Migrate to new style legacy DAI naming flag
+  ASoC: dwc: Migrate to new style legacy DAI naming flag
+  ASoC: qcom: Migrate to new style legacy DAI naming flag
+  ASoC: test-component: Migrate to new style legacy DAI naming flag
+  ASoC: rockchip: Migrate to new style legacy DAI naming flag
+  ASoC: au1x: Migrate to new style legacy DAI naming flag
+  ASoC: pxa: Migrate to new style legacy DAI naming flag
+  ASoC: sof: Migrate to new style legacy DAI naming flag
+  ASoC: ux500: Migrate to new style legacy DAI naming flag
+  ASoC: ti: Migrate to new style legacy DAI naming flag
+  ASoC: mxs-saif: Migrate to new style legacy DAI naming flag
+  ASoC: samsung: Migrate to new style legacy DAI naming flag
+  ASoC: core: Switch core to new DAI naming flag
+  media: TDA1997x: Remove now redundant non_legacy_dai_naming flag
+  ASoC: fsl: Remove now redundant non_legacy_dai_naming flag
+  ASoC: meson: Remove now redundant non_legacy_dai_naming flag
+  ASoC: pistachio: Remove now redundant non_legacy_dai_naming flag
+  ASoC: samsung: Remove now redundant non_legacy_dai_naming flag
+  ASoC: soc-utils: Remove now redundant non_legacy_dai_naming flag
+  ASoC: sunxi: Remove now redundant non_legacy_dai_naming flag
+  ASoC: tegra: Remove now redundant non_legacy_dai_naming flag
+  ASoC: test-component: Remove now redundant non_legacy_dai_naming flag
+  ASoC: topology: KUnit: Remove now redundant non_legacy_dai_naming flag
+  ASoC: uniphier: Remove now redundant non_legacy_dai_naming flag
+  ASoC: ad*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: ak*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: alc*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: cs*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: da*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: es*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: max*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: msm*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: nau*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: pcm*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: rt*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: spdif: Remove now redundant non_legacy_dai_naming flag
+  ASoC: ssm*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: sta*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: tas*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: tfa*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: tlv320*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: twl*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: uda*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: wm*: Remove now redundant non_legacy_dai_naming flag
+  ASoC: 88pm860x: Remove now redundant non_legacy_dai_naming flag
+  ASoC: ab8500: Remove now redundant non_legacy_dai_naming flag
+  ASoC: ac97: Remove now redundant non_legacy_dai_naming flag
+  ASoC: ads117x: Remove now redundant non_legacy_dai_naming flag
+  ASoC: bd28623: Remove now redundant non_legacy_dai_naming flag
+  ASoC: bt-sco: Remove now redundant non_legacy_dai_naming flag
+  ASoC: cpcap: Remove now redundant non_legacy_dai_naming flag
+  ASoC: cq93vc: Remove now redundant non_legacy_dai_naming flag
+  ASoC: cx20442: Remove now redundant non_legacy_dai_naming flag
+  ASoC: dmic: Remove now redundant non_legacy_dai_naming flag
+  ASoC: gtm601: Remove now redundant non_legacy_dai_naming flag
+  ASoC: hdac_hdmi: Remove now redundant non_legacy_dai_naming flag
+  ASoC: hdmi-codec: Remove now redundant non_legacy_dai_naming flag
+  ASoC: ics43432: Remove now redundant non_legacy_dai_naming flag
+  ASoC: inno_rk3036: Remove now redundant non_legacy_dai_naming flag
+  ASoC: Intel: avs: Remove now redundant non_legacy_dai_naming flag
+  ASoC: isabelle: Remove now redundant non_legacy_dai_naming flag
+  ASoC: jz4740: Remove now redundant non_legacy_dai_naming flag
+  ASoC: lm49453: Remove now redundant non_legacy_dai_naming flag
+  ASoC: lochnagar: Remove now redundant non_legacy_dai_naming flag
+  ASoC: mc13783: Remove now redundant non_legacy_dai_naming flag
+  ASoC: ml26124: Remove now redundant non_legacy_dai_naming flag
+  ASoC: rk817: Remove now redundant non_legacy_dai_naming flag
+  ASoC: sgtl5000: Remove now redundant non_legacy_dai_naming flag
+  ASoC: si476x: Remove now redundant non_legacy_dai_naming flag
+  ASoC: stac9766: Remove now redundant non_legacy_dai_naming flag
+  ASoC: sti-sas: Remove now redundant non_legacy_dai_naming flag
+  ASoC: tscs42xx: Remove now redundant non_legacy_dai_naming flag
+  ASoC: wl1273: Remove now redundant non_legacy_dai_naming flag
+  ASoC: zl38060: Remove now redundant non_legacy_dai_naming flag
+  ASoC: soc-component: Remove non_legacy_dai_naming flag
+
+ drivers/gpu/drm/vc4/vc4_hdmi.c         |  1 +
+ drivers/media/i2c/tda1997x.c           |  1 -
+ drivers/soundwire/intel.c              |  5 +++--
+ include/sound/soc-component.h          |  2 +-
+ sound/soc/adi/axi-i2s.c                |  1 +
+ sound/soc/adi/axi-spdif.c              |  1 +
+ sound/soc/amd/acp/acp-platform.c       | 15 ++++++++-------
+ sound/soc/amd/raven/acp3x-i2s.c        |  3 ++-
+ sound/soc/amd/renoir/acp3x-pdm-dma.c   | 13 +++++++------
+ sound/soc/amd/vangogh/acp5x-i2s.c      |  1 +
+ sound/soc/amd/yc/acp6x-pdm-dma.c       | 13 +++++++------
+ sound/soc/atmel/atmel-classd.c         |  1 +
+ sound/soc/atmel/atmel-i2s.c            |  3 ++-
+ sound/soc/atmel/atmel-pdmic.c          |  1 +
+ sound/soc/atmel/atmel_ssc_dai.c        |  7 ++++---
+ sound/soc/atmel/mchp-i2s-mcc.c         |  3 ++-
+ sound/soc/atmel/mchp-pdmc.c            |  1 +
+ sound/soc/atmel/mchp-spdifrx.c         |  3 ++-
+ sound/soc/atmel/mchp-spdiftx.c         |  3 ++-
+ sound/soc/au1x/ac97c.c                 |  3 ++-
+ sound/soc/au1x/i2sc.c                  |  3 ++-
+ sound/soc/au1x/psc-ac97.c              |  3 ++-
+ sound/soc/au1x/psc-i2s.c               |  3 ++-
+ sound/soc/bcm/bcm2835-i2s.c            |  3 ++-
+ sound/soc/bcm/bcm63xx-i2s-whistler.c   |  1 +
+ sound/soc/bcm/cygnus-ssp.c             |  7 ++++---
+ sound/soc/cirrus/ep93xx-ac97.c         |  3 ++-
+ sound/soc/cirrus/ep93xx-i2s.c          |  7 ++++---
+ sound/soc/codecs/88pm860x-codec.c      |  1 -
+ sound/soc/codecs/ab8500-codec.c        |  1 -
+ sound/soc/codecs/ac97.c                |  1 -
+ sound/soc/codecs/ad1836.c              |  1 -
+ sound/soc/codecs/ad193x.c              |  1 -
+ sound/soc/codecs/ad1980.c              |  1 -
+ sound/soc/codecs/ad73311.c             |  1 -
+ sound/soc/codecs/adau1373.c            |  1 -
+ sound/soc/codecs/adau1701.c            |  1 -
+ sound/soc/codecs/adau1761.c            |  1 -
+ sound/soc/codecs/adau1781.c            |  1 -
+ sound/soc/codecs/adau1977.c            |  1 -
+ sound/soc/codecs/adau7002.c            |  1 -
+ sound/soc/codecs/adau7118.c            |  1 -
+ sound/soc/codecs/adav80x.c             |  1 -
+ sound/soc/codecs/ads117x.c             |  1 -
+ sound/soc/codecs/ak4104.c              |  1 -
+ sound/soc/codecs/ak4118.c              |  1 -
+ sound/soc/codecs/ak4375.c              |  1 -
+ sound/soc/codecs/ak4458.c              |  2 --
+ sound/soc/codecs/ak4535.c              |  1 -
+ sound/soc/codecs/ak4554.c              |  1 -
+ sound/soc/codecs/ak4613.c              |  1 -
+ sound/soc/codecs/ak4641.c              |  1 -
+ sound/soc/codecs/ak4642.c              |  1 -
+ sound/soc/codecs/ak4671.c              |  1 -
+ sound/soc/codecs/ak5386.c              |  1 -
+ sound/soc/codecs/ak5558.c              |  2 --
+ sound/soc/codecs/alc5623.c             |  1 -
+ sound/soc/codecs/alc5632.c             |  1 -
+ sound/soc/codecs/bd28623.c             |  1 -
+ sound/soc/codecs/bt-sco.c              |  1 -
+ sound/soc/codecs/cpcap.c               |  1 -
+ sound/soc/codecs/cq93vc.c              |  1 -
+ sound/soc/codecs/cs35l32.c             |  1 -
+ sound/soc/codecs/cs35l33.c             |  1 -
+ sound/soc/codecs/cs35l34.c             |  1 -
+ sound/soc/codecs/cs35l35.c             |  1 -
+ sound/soc/codecs/cs35l36.c             |  1 -
+ sound/soc/codecs/cs4234.c              |  1 -
+ sound/soc/codecs/cs4265.c              |  1 -
+ sound/soc/codecs/cs4270.c              |  1 -
+ sound/soc/codecs/cs4271.c              |  1 -
+ sound/soc/codecs/cs42l42.c             |  1 -
+ sound/soc/codecs/cs42l51.c             |  1 -
+ sound/soc/codecs/cs42l52.c             |  1 -
+ sound/soc/codecs/cs42l56.c             |  1 -
+ sound/soc/codecs/cs42l73.c             |  1 -
+ sound/soc/codecs/cs42xx8.c             |  1 -
+ sound/soc/codecs/cs43130.c             |  1 -
+ sound/soc/codecs/cs4341.c              |  1 -
+ sound/soc/codecs/cs4349.c              |  1 -
+ sound/soc/codecs/cs47l15.c             |  1 -
+ sound/soc/codecs/cs47l24.c             |  1 -
+ sound/soc/codecs/cs47l35.c             |  1 -
+ sound/soc/codecs/cs47l85.c             |  1 -
+ sound/soc/codecs/cs47l90.c             |  1 -
+ sound/soc/codecs/cs47l92.c             |  1 -
+ sound/soc/codecs/cs53l30.c             |  1 -
+ sound/soc/codecs/cx20442.c             |  1 -
+ sound/soc/codecs/da7210.c              |  1 -
+ sound/soc/codecs/da7213.c              |  1 -
+ sound/soc/codecs/da7218.c              |  1 -
+ sound/soc/codecs/da7219.c              |  1 -
+ sound/soc/codecs/da732x.c              |  1 -
+ sound/soc/codecs/da9055.c              |  1 -
+ sound/soc/codecs/dmic.c                |  1 -
+ sound/soc/codecs/es7134.c              |  1 -
+ sound/soc/codecs/es7241.c              |  1 -
+ sound/soc/codecs/es8316.c              |  1 -
+ sound/soc/codecs/es8328.c              |  1 -
+ sound/soc/codecs/gtm601.c              |  1 -
+ sound/soc/codecs/hdac_hdmi.c           |  1 -
+ sound/soc/codecs/hdmi-codec.c          |  1 -
+ sound/soc/codecs/ics43432.c            |  1 -
+ sound/soc/codecs/inno_rk3036.c         |  1 -
+ sound/soc/codecs/isabelle.c            |  1 -
+ sound/soc/codecs/jz4740.c              |  2 --
+ sound/soc/codecs/lm49453.c             |  1 -
+ sound/soc/codecs/lochnagar-sc.c        |  1 -
+ sound/soc/codecs/max98088.c            |  1 -
+ sound/soc/codecs/max98090.c            |  1 -
+ sound/soc/codecs/max98095.c            |  1 -
+ sound/soc/codecs/max98357a.c           |  1 -
+ sound/soc/codecs/max98371.c            |  1 -
+ sound/soc/codecs/max98373.c            |  2 --
+ sound/soc/codecs/max98390.c            |  1 -
+ sound/soc/codecs/max98396.c            |  2 --
+ sound/soc/codecs/max9850.c             |  1 -
+ sound/soc/codecs/max98520.c            |  1 -
+ sound/soc/codecs/max9860.c             |  1 -
+ sound/soc/codecs/max9867.c             |  1 -
+ sound/soc/codecs/max98925.c            |  1 -
+ sound/soc/codecs/max98926.c            |  1 -
+ sound/soc/codecs/max98927.c            |  1 -
+ sound/soc/codecs/mc13783.c             |  1 -
+ sound/soc/codecs/ml26124.c             |  1 -
+ sound/soc/codecs/msm8916-wcd-analog.c  |  1 -
+ sound/soc/codecs/msm8916-wcd-digital.c |  1 -
+ sound/soc/codecs/nau8315.c             |  1 -
+ sound/soc/codecs/nau8540.c             |  1 -
+ sound/soc/codecs/nau8810.c             |  1 -
+ sound/soc/codecs/nau8821.c             |  1 -
+ sound/soc/codecs/nau8822.c             |  1 -
+ sound/soc/codecs/nau8824.c             |  1 -
+ sound/soc/codecs/nau8825.c             |  1 -
+ sound/soc/codecs/pcm1681.c             |  1 -
+ sound/soc/codecs/pcm1789.c             |  1 -
+ sound/soc/codecs/pcm179x.c             |  1 -
+ sound/soc/codecs/pcm186x.c             |  2 --
+ sound/soc/codecs/pcm3008.c             |  1 -
+ sound/soc/codecs/pcm3168a.c            |  1 -
+ sound/soc/codecs/pcm5102a.c            |  1 -
+ sound/soc/codecs/pcm512x.c             |  1 -
+ sound/soc/codecs/rk817_codec.c         |  1 -
+ sound/soc/codecs/rt1011.c              |  1 -
+ sound/soc/codecs/rt1015.c              |  1 -
+ sound/soc/codecs/rt1015p.c             |  1 -
+ sound/soc/codecs/rt1016.c              |  1 -
+ sound/soc/codecs/rt1019.c              |  1 -
+ sound/soc/codecs/rt1305.c              |  1 -
+ sound/soc/codecs/rt1308.c              |  1 -
+ sound/soc/codecs/rt274.c               |  1 -
+ sound/soc/codecs/rt286.c               |  1 -
+ sound/soc/codecs/rt298.c               |  1 -
+ sound/soc/codecs/rt5514.c              |  1 -
+ sound/soc/codecs/rt5616.c              |  1 -
+ sound/soc/codecs/rt5631.c              |  1 -
+ sound/soc/codecs/rt5640.c              |  2 --
+ sound/soc/codecs/rt5645.c              |  1 -
+ sound/soc/codecs/rt5651.c              |  1 -
+ sound/soc/codecs/rt5659.c              |  1 -
+ sound/soc/codecs/rt5660.c              |  1 -
+ sound/soc/codecs/rt5663.c              |  1 -
+ sound/soc/codecs/rt5665.c              |  1 -
+ sound/soc/codecs/rt5668.c              |  1 -
+ sound/soc/codecs/rt5670.c              |  1 -
+ sound/soc/codecs/rt5677.c              |  1 -
+ sound/soc/codecs/rt5682.c              |  1 -
+ sound/soc/codecs/rt5682s.c             |  1 -
+ sound/soc/codecs/sgtl5000.c            |  1 -
+ sound/soc/codecs/si476x.c              |  1 -
+ sound/soc/codecs/spdif_receiver.c      |  1 -
+ sound/soc/codecs/spdif_transmitter.c   |  1 -
+ sound/soc/codecs/ssm2518.c             |  1 -
+ sound/soc/codecs/ssm2602.c             |  1 -
+ sound/soc/codecs/ssm4567.c             |  1 -
+ sound/soc/codecs/sta32x.c              |  1 -
+ sound/soc/codecs/sta350.c              |  1 -
+ sound/soc/codecs/sta529.c              |  1 -
+ sound/soc/codecs/stac9766.c            |  2 --
+ sound/soc/codecs/sti-sas.c             |  1 -
+ sound/soc/codecs/tas2552.c             |  1 -
+ sound/soc/codecs/tas2562.c             |  2 --
+ sound/soc/codecs/tas2764.c             |  1 -
+ sound/soc/codecs/tas2770.c             |  1 -
+ sound/soc/codecs/tas5086.c             |  1 -
+ sound/soc/codecs/tas571x.c             |  1 -
+ sound/soc/codecs/tas5720.c             |  2 --
+ sound/soc/codecs/tas5805m.c            |  1 -
+ sound/soc/codecs/tas6424.c             |  1 -
+ sound/soc/codecs/tfa9879.c             |  1 -
+ sound/soc/codecs/tfa989x.c             |  1 -
+ sound/soc/codecs/tlv320adcx140.c       |  1 -
+ sound/soc/codecs/tlv320aic23.c         |  1 -
+ sound/soc/codecs/tlv320aic26.c         |  1 -
+ sound/soc/codecs/tlv320aic31xx.c       |  1 -
+ sound/soc/codecs/tlv320aic32x4.c       |  2 --
+ sound/soc/codecs/tlv320aic3x.c         |  1 -
+ sound/soc/codecs/tlv320dac33.c         |  1 -
+ sound/soc/codecs/tscs42xx.c            |  1 -
+ sound/soc/codecs/twl4030.c             |  1 -
+ sound/soc/codecs/twl6040.c             |  1 -
+ sound/soc/codecs/uda1334.c             |  1 -
+ sound/soc/codecs/uda134x.c             |  1 -
+ sound/soc/codecs/uda1380.c             |  1 -
+ sound/soc/codecs/wl1273.c              |  1 -
+ sound/soc/codecs/wm0010.c              |  1 -
+ sound/soc/codecs/wm1250-ev1.c          |  1 -
+ sound/soc/codecs/wm2000.c              |  1 -
+ sound/soc/codecs/wm2200.c              |  1 -
+ sound/soc/codecs/wm5100.c              |  1 -
+ sound/soc/codecs/wm5102.c              |  1 -
+ sound/soc/codecs/wm5110.c              |  1 -
+ sound/soc/codecs/wm8350.c              |  1 -
+ sound/soc/codecs/wm8400.c              |  1 -
+ sound/soc/codecs/wm8510.c              |  1 -
+ sound/soc/codecs/wm8523.c              |  1 -
+ sound/soc/codecs/wm8524.c              |  1 -
+ sound/soc/codecs/wm8580.c              |  1 -
+ sound/soc/codecs/wm8711.c              |  1 -
+ sound/soc/codecs/wm8727.c              |  1 -
+ sound/soc/codecs/wm8728.c              |  1 -
+ sound/soc/codecs/wm8731.c              |  1 -
+ sound/soc/codecs/wm8737.c              |  1 -
+ sound/soc/codecs/wm8741.c              |  1 -
+ sound/soc/codecs/wm8750.c              |  1 -
+ sound/soc/codecs/wm8753.c              |  1 -
+ sound/soc/codecs/wm8770.c              |  1 -
+ sound/soc/codecs/wm8776.c              |  1 -
+ sound/soc/codecs/wm8782.c              |  1 -
+ sound/soc/codecs/wm8804.c              |  1 -
+ sound/soc/codecs/wm8900.c              |  1 -
+ sound/soc/codecs/wm8903.c              |  1 -
+ sound/soc/codecs/wm8904.c              |  1 -
+ sound/soc/codecs/wm8940.c              |  1 -
+ sound/soc/codecs/wm8955.c              |  1 -
+ sound/soc/codecs/wm8960.c              |  1 -
+ sound/soc/codecs/wm8961.c              |  1 -
+ sound/soc/codecs/wm8962.c              |  1 -
+ sound/soc/codecs/wm8971.c              |  1 -
+ sound/soc/codecs/wm8974.c              |  1 -
+ sound/soc/codecs/wm8978.c              |  1 -
+ sound/soc/codecs/wm8983.c              |  1 -
+ sound/soc/codecs/wm8985.c              |  1 -
+ sound/soc/codecs/wm8988.c              |  1 -
+ sound/soc/codecs/wm8990.c              |  1 -
+ sound/soc/codecs/wm8991.c              |  1 -
+ sound/soc/codecs/wm8993.c              |  1 -
+ sound/soc/codecs/wm8994.c              |  1 -
+ sound/soc/codecs/wm8995.c              |  1 -
+ sound/soc/codecs/wm8996.c              |  2 --
+ sound/soc/codecs/wm8997.c              |  1 -
+ sound/soc/codecs/wm8998.c              |  1 -
+ sound/soc/codecs/wm9081.c              |  1 -
+ sound/soc/codecs/wm9090.c              |  1 -
+ sound/soc/codecs/wm9705.c              |  1 -
+ sound/soc/codecs/wm9712.c              |  1 -
+ sound/soc/codecs/wm9713.c              |  1 -
+ sound/soc/codecs/zl38060.c             |  1 -
+ sound/soc/dwc/dwc-i2s.c                |  7 ++++---
+ sound/soc/fsl/fsl_aud2htx.c            |  3 ++-
+ sound/soc/fsl/fsl_easrc.c              |  7 ++++---
+ sound/soc/fsl/fsl_esai.c               |  3 ++-
+ sound/soc/fsl/fsl_mqs.c                |  1 -
+ sound/soc/fsl/fsl_rpmsg.c              |  3 ++-
+ sound/soc/fsl/fsl_sai.c                |  3 ++-
+ sound/soc/fsl/fsl_spdif.c              |  3 ++-
+ sound/soc/fsl/fsl_ssi.c                |  1 +
+ sound/soc/fsl/fsl_xcvr.c               |  3 ++-
+ sound/soc/fsl/mpc5200_psc_i2s.c        |  3 ++-
+ sound/soc/generic/test-component.c     |  2 +-
+ sound/soc/hisilicon/hi6210-i2s.c       |  1 +
+ sound/soc/img/img-i2s-in.c             |  3 ++-
+ sound/soc/img/img-i2s-out.c            |  3 ++-
+ sound/soc/img/img-parallel-out.c       |  3 ++-
+ sound/soc/img/img-spdif-in.c           |  3 ++-
+ sound/soc/img/img-spdif-out.c          |  3 ++-
+ sound/soc/img/pistachio-internal-dac.c |  1 -
+ sound/soc/intel/avs/pcm.c              |  2 --
+ sound/soc/intel/keembay/kmb_platform.c | 14 ++++++++------
+ sound/soc/jz4740/jz4740-i2s.c          |  7 ++++---
+ sound/soc/meson/aiu-acodec-ctrl.c      |  1 -
+ sound/soc/meson/aiu-codec-ctrl.c       |  1 -
+ sound/soc/meson/axg-frddr.c            |  3 +++
+ sound/soc/meson/axg-pdm.c              |  4 +++-
+ sound/soc/meson/axg-spdifin.c          |  1 +
+ sound/soc/meson/axg-spdifout.c         |  1 +
+ sound/soc/meson/axg-toddr.c            |  3 +++
+ sound/soc/meson/g12a-toacodec.c        |  2 --
+ sound/soc/meson/g12a-tohdmitx.c        |  1 -
+ sound/soc/meson/t9015.c                |  1 -
+ sound/soc/mxs/mxs-saif.c               |  3 ++-
+ sound/soc/pxa/mmp-sspa.c               |  9 +++++----
+ sound/soc/pxa/pxa-ssp.c                | 21 +++++++++++----------
+ sound/soc/pxa/pxa2xx-i2s.c             | 21 +++++++++++----------
+ sound/soc/qcom/lpass-cpu.c             |  1 +
+ sound/soc/qcom/qdsp6/q6asm-dai.c       | 23 ++++++++++++-----------
+ sound/soc/rockchip/rockchip_i2s.c      |  1 +
+ sound/soc/rockchip/rockchip_i2s_tdm.c  |  1 +
+ sound/soc/rockchip/rockchip_pdm.c      |  1 +
+ sound/soc/rockchip/rockchip_spdif.c    |  1 +
+ sound/soc/samsung/aries_wm8994.c       |  1 -
+ sound/soc/samsung/i2s.c                |  2 ++
+ sound/soc/samsung/pcm.c                |  3 ++-
+ sound/soc/samsung/s3c2412-i2s.c        |  7 ++++---
+ sound/soc/samsung/s3c24xx-i2s.c        |  7 ++++---
+ sound/soc/samsung/spdif.c              |  7 ++++---
+ sound/soc/sh/hac.c                     |  3 ++-
+ sound/soc/sh/rcar/core.c               | 11 ++++++-----
+ sound/soc/sh/rz-ssi.c                  |  9 +++++----
+ sound/soc/sh/siu_pcm.c                 | 17 +++++++++--------
+ sound/soc/sh/ssi.c                     |  3 ++-
+ sound/soc/soc-core.c                   |  2 +-
+ sound/soc/soc-topology-test.c          |  3 ---
+ sound/soc/soc-utils.c                  |  1 -
+ sound/soc/sof/pcm.c                    |  2 ++
+ sound/soc/sof/sof-client-probes.c      |  1 +
+ sound/soc/spear/spdif_in.c             |  3 ++-
+ sound/soc/spear/spdif_out.c            |  3 ++-
+ sound/soc/sti/sti_uniperif.c           |  3 ++-
+ sound/soc/stm/stm32_adfsdm.c           |  1 +
+ sound/soc/stm/stm32_i2s.c              |  1 +
+ sound/soc/stm/stm32_sai_sub.c          |  1 +
+ sound/soc/stm/stm32_spdifrx.c          |  1 +
+ sound/soc/sunxi/sun4i-codec.c          |  7 ++-----
+ sound/soc/sunxi/sun4i-i2s.c            |  3 ++-
+ sound/soc/sunxi/sun4i-spdif.c          |  3 ++-
+ sound/soc/sunxi/sun8i-codec.c          |  1 -
+ sound/soc/tegra/tegra20_ac97.c         |  3 ++-
+ sound/soc/tegra/tegra20_i2s.c          |  3 ++-
+ sound/soc/tegra/tegra20_spdif.c        |  1 +
+ sound/soc/tegra/tegra210_i2s.c         |  1 -
+ sound/soc/tegra/tegra30_i2s.c          |  3 ++-
+ sound/soc/ti/davinci-i2s.c             |  3 ++-
+ sound/soc/ti/davinci-mcasp.c           |  3 ++-
+ sound/soc/ti/davinci-vcif.c            |  3 ++-
+ sound/soc/ti/omap-dmic.c               |  3 ++-
+ sound/soc/ti/omap-hdmi.c               |  1 +
+ sound/soc/ti/omap-mcbsp.c              |  3 ++-
+ sound/soc/ti/omap-mcpdm.c              |  7 ++++---
+ sound/soc/uniphier/evea.c              |  1 -
+ sound/soc/ux500/ux500_msp_dai.c        |  3 ++-
+ sound/soc/xilinx/xlnx_formatter_pcm.c  | 16 ++++++++--------
+ sound/soc/xilinx/xlnx_i2s.c            |  1 +
+ sound/soc/xilinx/xlnx_spdif.c          |  1 +
+ sound/soc/xtensa/xtfpga-i2s.c          | 15 ++++++++-------
+ 345 files changed, 274 insertions(+), 435 deletions(-)
+
 -- 
 2.30.2
 
