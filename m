@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D194C43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 16:23:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47C81C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Jun 2022 16:24:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XvZipTdVhzMteicRpISqU07X+ysW50fBoOWW9lAdcGg=; b=BPWGOt/oZQ64k1
-	ziSaXV+JcBBlPx20kzBlovewpiS5qEjI5XVHL8lbCLkqSHrLevjIQsORVlX4Lri2mNQvnlDl69ETd
-	55Lm09Li/AlFtH6iqE4xz4Bghg/QTHjFWIkNmI2eGix4ib+LxyzEik9uWyQhoCfueYbIDuNO2nc1s
-	8oRXR+GZtknFJCcQJ3tN5rVNkL7GtUdMB/RAMSZYMt+QTQSUviiZjsB5GJUB7dqdz/Cd/s05Mn3+6
-	Vp6WUDZb/rXEm3qG16A5hY2X+898S+kGd2TZ2zOv2PXq13eD9jd7t5u6SKbxT+Luw231bj+FmLM/O
-	JIc1fCxRQw9Cxi6xWhKg==;
+	List-Owner; bh=Eret+96BTwBvqPG/r2MTFfZf1Y8g2AWx60sU+P5Gn0A=; b=zb8NLCiktl/xVR
+	B6pWuHExP0fvyYjQXTKRWawAZoSLwPoV0eDk764VCobPcfZzUIqjnMB/LfD5TYppBy5MDqTuTAmlf
+	ZazZ9dvs8YyhS3bWncWHPyOgV3rBQ6alrXbxa+86rrrgFGjUqiCC76BtVaqLTfgFkHxrb6LHZWMlh
+	vs5Inpz6moPQkwUNtMAH5nrXw01NmIVG/cYAhAYLhlbCzLoxAkO91U8kQ6D1hye0W3+0pIA4w1nEa
+	CIksk32gpYuVy/G79fwlvfJDsoecUSMvVaniMzW5mIJm95106mFKklJZfoiX9Iu+fB7E7yPcsy7aA
+	EaBsEIkDsP83hI6freuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4PcK-00FqxF-GD; Thu, 23 Jun 2022 16:23:40 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o4Pck-00Fr8m-D6; Thu, 23 Jun 2022 16:24:06 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4Pc0-00Fqrp-9r; Thu, 23 Jun 2022 16:23:21 +0000
+	id 1o4Pc0-00Fqrr-Fg; Thu, 23 Jun 2022 16:23:23 +0000
 Received: from jupiter.universe (unknown [95.33.159.255])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C6CAE66017DF;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id DD14B66017E4;
 	Thu, 23 Jun 2022 17:23:18 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656001398;
-	bh=vN4kmY04mNzLCL12mBQfRLfsXojEK7HYIW1GyujY8kM=;
+	s=mail; t=1656001399;
+	bh=1k76+Z2E09lVPZkdnZgMSbCx3lTMmi73P+p2vvelDUI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=LjjJ3BBhRSWk+DCNGq1XPan72wthJeiJRv/2nX8Lf4MjO4EsHRBIzyeuXBRkyE61X
-	 hAreAW2ux3llnlfgHOkaAY+a7yM315WIRzLoBwg08XpCEkhdltfUNcDUdJb7SkLsFj
-	 BbRLbXBQbt6Z/gYA6PHUKQUn160EGifMiC0OdjsBtuaCzdp41TZ/iU3Vc25BLTBM0w
-	 Kv8r+Y0Smufk+GXmLPs56L1BrJXFIQBxK1v6dMGXSSIqBcfS/TiarlGfJBgjWOC3hO
-	 kQek1IfDyt4U7ryUcp3pJ1gV82j28lfpDRjcdVzEzZccXefrwT/ll3lfdUQljmjgmz
-	 pU3lKGX5ziB9w==
+	b=nj3U6ZGVJKrzXBjLhjilrvVA72jJGi+xewy9uDejeihojbCYnZMNnh6uYwfOZAHJ/
+	 FvOKaFTgu6AI6JlwxdYGykjGhGWFl/xymiv7wjdUdfFYw3QVy8NWvJDpOqpv387+YI
+	 003xzcDAmyzRVUsQl4NobE15M9+0puoqWgyyRY57UdhNmHhrddGKAChKVlKAY9Xa0t
+	 HqqCYG99YEtUZj0DHCyBYRjnHjfQjUQffLHgpGBMJSKaB4zAZiNEGgWA0m3V5wboyY
+	 XctJS1M5NVppbZ4Kr1oXlReYo8Ntv05VVEO9SEcfwYqmJXQ7gM51nBMBfv9y/XOgFc
+	 pvixK2UtsIh9g==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 7078B480126; Thu, 23 Jun 2022 18:23:16 +0200 (CEST)
+	id 7474648059B; Thu, 23 Jun 2022 18:23:16 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -50,19 +50,19 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	Finley Xiao <finley.xiao@rock-chips.com>,
-	kernel@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH 2/6] dt-bindings: add power-domain header for rk3588
-Date: Thu, 23 Jun 2022 18:23:05 +0200
-Message-Id: <20220623162309.243766-3-sebastian.reichel@collabora.com>
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH 4/6] dt-bindings: mfd: syscon: Add rk3388 QoS register compatible
+Date: Thu, 23 Jun 2022 18:23:07 +0200
+Message-Id: <20220623162309.243766-5-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220623162309.243766-1-sebastian.reichel@collabora.com>
 References: <20220623162309.243766-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220623_092320_517715_FFD04BA2 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20220623_092320_689962_C98E18E2 
+X-CRM114-Status: UNSURE (   8.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,92 +79,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Finley Xiao <finley.xiao@rock-chips.com>
+Document rk3368 compatible for QoS registers.
 
-According to a description from TRM, add all the power domains.
-
-Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- include/dt-bindings/power/rk3588-power.h | 69 ++++++++++++++++++++++++
- 1 file changed, 69 insertions(+)
- create mode 100644 include/dt-bindings/power/rk3588-power.h
+ Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/include/dt-bindings/power/rk3588-power.h b/include/dt-bindings/power/rk3588-power.h
-new file mode 100644
-index 000000000000..69f7e9060250
---- /dev/null
-+++ b/include/dt-bindings/power/rk3588-power.h
-@@ -0,0 +1,69 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+#ifndef __DT_BINDINGS_POWER_RK3588_POWER_H__
-+#define __DT_BINDINGS_POWER_RK3588_POWER_H__
-+
-+/* VD_LITDSU */
-+#define RK3588_PD_CPU_0		0
-+#define RK3588_PD_CPU_1		1
-+#define RK3588_PD_CPU_2		2
-+#define RK3588_PD_CPU_3		3
-+
-+/* VD_BIGCORE0 */
-+#define RK3588_PD_CPU_4		4
-+#define RK3588_PD_CPU_5		5
-+
-+/* VD_BIGCORE1 */
-+#define RK3588_PD_CPU_6		6
-+#define RK3588_PD_CPU_7		7
-+
-+/* VD_NPU */
-+#define RK3588_PD_NPU		8
-+#define RK3588_PD_NPUTOP	9
-+#define RK3588_PD_NPU1		10
-+#define RK3588_PD_NPU2		11
-+
-+/* VD_GPU */
-+#define RK3588_PD_GPU		12
-+
-+/* VD_VCODEC */
-+#define RK3588_PD_VCODEC	13
-+#define RK3588_PD_RKVDEC0	14
-+#define RK3588_PD_RKVDEC1	15
-+#define RK3588_PD_VENC0		16
-+#define RK3588_PD_VENC1		17
-+
-+/* VD_DD01 */
-+#define RK3588_PD_DDR01		18
-+
-+/* VD_DD23 */
-+#define RK3588_PD_DDR23		19
-+
-+/* VD_LOGIC */
-+#define RK3588_PD_CENTER	20
-+#define RK3588_PD_VDPU		21
-+#define RK3588_PD_RGA30		22
-+#define RK3588_PD_AV1		23
-+#define RK3588_PD_VOP		24
-+#define RK3588_PD_VO0		25
-+#define RK3588_PD_VO1		26
-+#define RK3588_PD_VI		27
-+#define RK3588_PD_ISP1		28
-+#define RK3588_PD_FEC		29
-+#define RK3588_PD_RGA31		30
-+#define RK3588_PD_USB		31
-+#define RK3588_PD_PHP		32
-+#define RK3588_PD_GMAC		33
-+#define RK3588_PD_PCIE		34
-+#define RK3588_PD_NVM		35
-+#define RK3588_PD_NVM0		36
-+#define RK3588_PD_SDIO		37
-+#define RK3588_PD_AUDIO		38
-+#define RK3588_PD_SECURE	39
-+#define RK3588_PD_SDMMC		40
-+#define RK3588_PD_CRYPTO	41
-+#define RK3588_PD_BUS		42
-+
-+/* VD_PMU */
-+#define RK3588_PD_PMU1		43
-+
-+#endif
+diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+index fb784045013f..ff1a7aae33f2 100644
+--- a/Documentation/devicetree/bindings/mfd/syscon.yaml
++++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+@@ -59,6 +59,7 @@ properties:
+               - rockchip,rk3368-qos
+               - rockchip,rk3399-qos
+               - rockchip,rk3568-qos
++              - rockchip,rk3588-qos
+               - samsung,exynos3-sysreg
+               - samsung,exynos4-sysreg
+               - samsung,exynos5-sysreg
 -- 
 2.35.1
 
