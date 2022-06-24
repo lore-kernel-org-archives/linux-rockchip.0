@@ -4,44 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DEA7C43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jun 2022 07:23:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CD25C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jun 2022 08:28:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UzxRS8lM/8Mlp6umbtDAgFKW8d52/oQy3FdDW/Ui/4g=; b=K6/F9WPKBg5Vhe
-	l1mRzlGox/lWAWiqXOHS4aIwNIwNCJcvLADPPGJtZLGBTk9WDGZpgIeeb127aw/SazgGpsGscDUKU
-	cz73Ir885HGiL4Wl3e/XPzOWmkoRHD2/7orlwsbYveqAqmrrpNm+oExRGv7n0l4pz+AvKpqbosMiV
-	GtCEcVEhpejPTf4hsuqd7dOHRTu9uHlwdPb7q7jNGh4tIOX2yTmr3YcuJ7vGzjXpppni77z0kCNWB
-	77PdFbn+0AZy8YLbDfUtQ7Z+IzxX/0S/BqteiOgSmzMbmkYEblU5ZOrViEFBaroTAR10svZRATcZE
-	38rJyQPN2doUT2CP64xQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=smemynp/ub/IIJJ0E82E6A91BbaPLTApnaqIx1dGoZQ=; b=Ama0W/CLdnyL3i
+	yNxT5S4OJgrhqPaOioqGKYnWFdjz8Mbvmvi3GTmSbS3O/NuJG6C88KCx5568nSWBtKr9j5QjkqHfg
+	Z6IUdKBo+mAH+xbXpfKhsjhIu7udwJzAP8KrEupstOgaBed933+vCDX6jpWpi2CtvtutRthQDkwQt
+	cPnTZj0UwWNxmmAcsCSi0BMroA4s+pVmVZPu/yO/13GXh/okGzdFcPkIc2aYtzRMr2L243aOcacPn
+	8kchMmFPlvqmkSRm6YixMfPSeoF5vs87HHuq+sqy/MRO7ExAPKSmxHN7sBnhlHnx6pUye6591+KFy
+	O3K5rVmxYhShKeR3F55A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4dfB-000zIU-TD; Fri, 24 Jun 2022 07:23:33 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1o4efj-001AXl-MC; Fri, 24 Jun 2022 08:28:11 +0000
+Received: from out30-133.freemail.mail.aliyun.com ([115.124.30.133])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4df9-000zHO-0W
-	for linux-rockchip@lists.infradead.org; Fri, 24 Jun 2022 07:23:32 +0000
-Received: from p508fdadf.dip0.t-ipconnect.de ([80.143.218.223] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1o4df4-00074z-Ip; Fri, 24 Jun 2022 09:23:26 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Brian Norris <briannorris@chromium.org>, Doug Anderson <dianders@chromium.org>
-Cc: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: vop: Don't crash for invalid duplicate_state()
-Date: Fri, 24 Jun 2022 09:23:24 +0200
-Message-ID: <4196825.8hzESeGDPO@phil>
-In-Reply-To: <CAD=FV=Wsp6GA=L4GsEVjMqazgtw4qG40gtLq1HT++5e9eRrvTw@mail.gmail.com>
-References: <20220617172623.1.I62db228170b1559ada60b8d3e1637e1688424926@changeid> <CAD=FV=Wsp6GA=L4GsEVjMqazgtw4qG40gtLq1HT++5e9eRrvTw@mail.gmail.com>
+	id 1o4efX-001AUo-Uh; Fri, 24 Jun 2022 08:28:01 +0000
+X-Alimail-AntiSpam: AC=PASS;BC=-1|-1;BR=01201311R171e4;CH=green;DM=||false|;DS=||;FP=0|-1|-1|-1|0|-1|-1|-1;HT=ay29a033018046049;MF=jiapeng.chong@linux.alibaba.com;NM=1;PH=DS;RN=10;SR=0;TI=SMTPD_---0VHGRu2S_1656059267;
+Received: from localhost(mailfrom:jiapeng.chong@linux.alibaba.com fp:SMTPD_---0VHGRu2S_1656059267)
+          by smtp.aliyun-inc.com;
+          Fri, 24 Jun 2022 16:27:52 +0800
+From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+To: lgirdwood@gmail.com
+Cc: broonie@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com,
+	heiko@sntech.de,
+	alsa-devel@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+Subject: [PATCH] ASoC: rockchip: i2s: Fix missing error code in rockchip_i2s_probe()
+Date: Fri, 24 Jun 2022 16:27:45 +0800
+Message-Id: <20220624082745.68367-1-jiapeng.chong@linux.alibaba.com>
+X-Mailer: git-send-email 2.20.1.7.g153144c
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_002331_095969_156312B0 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20220624_012800_199017_8210DDE6 
+X-CRM114-Status: UNSURE (   8.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,39 +64,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 24. Juni 2022, 01:44:52 CEST schrieb Doug Anderson:
-> Hi,
-> 
-> On Fri, Jun 17, 2022 at 5:27 PM Brian Norris <briannorris@chromium.org> wrote:
-> >
-> > It's possible for users to try to duplicate the CRTC state even when the
-> > state doesn't exist. drm_atomic_helper_crtc_duplicate_state() (and other
-> > users of __drm_atomic_helper_crtc_duplicate_state()) already guard this
-> > with a WARN_ON() instead of crashing, so let's do that here too.
-> >
-> > Signed-off-by: Brian Norris <briannorris@chromium.org>
-> > ---
-> >
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 3 +++
-> >  1 file changed, 3 insertions(+)
-> 
-> I'm not an expert in this area, but it makes sense to me to match
-> drm_atomic_helper_crtc_duplicate_state() in this way. Thus:
-> 
-> Reviewed-by: Douglas Anderson <dianders@chromium.org>
-> 
-> I would tend to assume that this would be landed in drm-misc by Heiko
-> if he's good with it. After several weeks of silence, however, I'll
-> commit it myself.
+The error code is missing in this code scenario, add the error code
+'-EINVAL' to the return value 'ret'.
 
-I do tend to batch up drm-misc patches, as that is always a different
-workflow but I'll pick that up :-)
+This was found by coccicheck:
 
-The interesting question would be, do we want some fixes tag for it?
+sound/soc/rockchip/rockchip_i2s.c:810 rockchip_i2s_probe() warn: missing error code 'ret'.
 
+Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
+---
+ sound/soc/rockchip/rockchip_i2s.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Heiko
-
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index d300eee9ddaa..0ed01624a2db 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -807,6 +807,7 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+ 			i2s->bclk_off = pinctrl_lookup_state(i2s->pinctrl, "bclk_off");
+ 			if (IS_ERR_OR_NULL(i2s->bclk_off)) {
+ 				dev_err(&pdev->dev, "failed to find i2s bclk_off\n");
++				ret = -EINVAL;
+ 				goto err_clk;
+ 			}
+ 		}
+-- 
+2.20.1.7.g153144c
 
 
 _______________________________________________
