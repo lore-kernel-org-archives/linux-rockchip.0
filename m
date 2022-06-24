@@ -4,44 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4A4FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jun 2022 20:38:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D2C6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jun 2022 23:44:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VfgT8YR0PnPBaQwwXC74wIPJ8zCiOcvf3qRmM2bcMZU=; b=DocqVUzqp3RVMW
-	OYd63ZwW3enZad6OQen9gRTAI3yISVkkyxxX2b8fxhdYxBEOjg1q5+mlhX6ZeSMWWT0vID0yYjPnL
-	OR0zb7TUVVuKkLlhv4uIKwkmoZMilCj2O1vVYZRohLvuwFD5mQzmODxMTIUi8chcYdfWK0ia3zkGo
-	UhQAyFu5IE1RlE+Xy3ic9GqVw6Sb9m21SasiPYdomlddak1Gwz1aZKP/QrYoToa1+OPcCGj/oXDql
-	1WJ6TX5C0v5/+1JQIo9FUZXRzKvmIQDTzBnKFWbkPFJU6cE8nwGbsjrc7h4nZCPSHJb4Lid7MIQ0/
-	WaMdefRPRa+L1P2ITm9g==;
+	List-Owner; bh=FgP0ZI7Z/53LEIvlN3eX0NfnjMJHpw+DEGLiApuzN4U=; b=YbbxN7r3CcBrfX
+	8dnDALYajr8le/1K6AfN6tXx/k2lBgWeytjaOxaR2O4kPDgh846OQ8HVePJ0LiFW0ohvx3/kVCwm4
+	r3c1dOX9HbPaGvtfEq36vkQ5Tgqkmqj+Ie0R77Buw0wbKvanz7oxTBAZjWjUR+1u7ci/G+ssqPxPl
+	KVawl1y7BtchiCayogvoowUi71baoxuGH61c74FlOzRNtE8+P04T3vqJw3h/zRyQNdnYKLmaeTsKK
+	o5KyhJiO/0T0dqWYMqCMeB02kvcN8HebmsrTBKabFq+5P11oa2dcaxMQf31L8lJKwI6RQ/+hZs7sA
+	4R0SOrspUDgXhvbbhRRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4q3z-003lEX-U2; Fri, 24 Jun 2022 20:37:59 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1o4sy7-0047nC-58; Fri, 24 Jun 2022 23:44:07 +0000
+Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4q3x-003lDO-0J
-	for linux-rockchip@lists.infradead.org; Fri, 24 Jun 2022 20:37:58 +0000
-Received: from p57b77c73.dip0.t-ipconnect.de ([87.183.124.115] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1o4q3s-0003j9-0C; Fri, 24 Jun 2022 22:37:52 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Brian Norris <briannorris@chromium.org>
-Cc: Doug Anderson <dianders@chromium.org>, Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, Sandy Huang <hjc@rock-chips.com>, Sean Paul <seanpaul@chromium.org>
-Subject: Re: [PATCH] drm/rockchip: vop: Don't crash for invalid duplicate_state()
-Date: Fri, 24 Jun 2022 22:37:50 +0200
-Message-ID: <4134988.X513TT2pbd@phil>
-In-Reply-To: <CA+ASDXOzhoooDDJUWV7rKpz-7GkMR5v=3gKQt4XazTSgnY51WQ@mail.gmail.com>
-References: <20220617172623.1.I62db228170b1559ada60b8d3e1637e1688424926@changeid> <4196825.8hzESeGDPO@phil> <CA+ASDXOzhoooDDJUWV7rKpz-7GkMR5v=3gKQt4XazTSgnY51WQ@mail.gmail.com>
+	id 1o4sy4-0047mf-L7; Fri, 24 Jun 2022 23:44:06 +0000
+Received: by mail-yb1-xb2a.google.com with SMTP id o19so470941ybg.2;
+        Fri, 24 Jun 2022 16:44:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=V1brg2y3JDj6U/8CjOdEq248XdYOzJ81ukpZs2/J6U8=;
+        b=L5mUz/R7adkDYUiVk2Y8mAxfEW65sH5WSCnPVZqLvidJHxkq00zUfXXCrgaJLXeU0G
+         TR7rTPQ+KG6YAtuMTX8GtWKTLjEwiPODRV3kz7Og/WwaDcRBfkIkIfCGPPTau/z4E2ko
+         veRudcqY88uclMsw6twNecxETVIDpgpb6h9X/TgnD5usl5Wi5U5iDksSXb145bwBZ3Ue
+         ZK9HMCqQqfHMn6HJB/gFMRH7XwUKNKiZbL4y+4/l8Po6DCb+XajGBL7HeKX/rdnDcLSb
+         mx4sqh8Di0sTc+sdbHbpuTWpUZJU+TaT4nqAW7QttSEpOQkFKpMatP9Ztj+unehnNJRC
+         DUVQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=V1brg2y3JDj6U/8CjOdEq248XdYOzJ81ukpZs2/J6U8=;
+        b=GXmgmu4onh+8YxfDSLoRgQGgpbpLI1o97PkuSVrqfWaK3N/uuLxtI4zSujhlfW/N42
+         7qEQN1+gYULzU1sH070DH/e13P0W9yNABkBCkGmDsykGtRTYoDXjM7Vy+0gGVS8ElMmf
+         WvH9UXvAtrlH2Qvn4GQBF0kEZJ1B45c6wnXRf/uMc7LaLj4ZYzkTaH3IcR0F7SLky86A
+         81Kd27TMTOC0kg9hYyJSodc5G7sctsr4VH3Ay0h1B43Z4AP7K0jP6wh/pYrS+QBkkc6M
+         LTh7JqsYaMyLwIB8KRp0P04iSq4IVJ4J2UfwjYyTPrKZrcooFvw83/AkoQpnMKKulyYn
+         msDw==
+X-Gm-Message-State: AJIora8sLtCw53Tunbd0y34IVRnJZDzABS8UEZE36OVSoOG5n4i5XruT
+	ztZtqwGT8F7F4lWq7JN7Sb0SRSE2EIK71qDQIyg=
+X-Google-Smtp-Source: AGRyM1sjX822X/Dsy8VIFBGvzBLqvpKs7BIx362sSa5Zd+7UmGXE/g/4Z/fcgebJhZRBeq9CHZ6VxnHhew15CUmd9fU=
+X-Received: by 2002:a25:be07:0:b0:664:4210:aaf3 with SMTP id
+ h7-20020a25be07000000b006644210aaf3mr1716779ybk.415.1656114243169; Fri, 24
+ Jun 2022 16:44:03 -0700 (PDT)
 MIME-Version: 1.0
+References: <20220623162850.245608-1-sebastian.reichel@collabora.com>
+ <20220623162850.245608-2-sebastian.reichel@collabora.com> <YrWdnQKVbJR+NrfH@lunn.ch>
+ <20220624162956.vn4b3va5cz2agvrb@mercury.elektranox.org> <YrXryvTpnSIOyUTD@lunn.ch>
+ <20220624173547.ccads2mikb4np5wz@mercury.elektranox.org> <YrX2ROe3a5Qeot4z@lunn.ch>
+ <20220624201537.l7p6aoquvvadmpei@mercury.elektranox.org>
+In-Reply-To: <20220624201537.l7p6aoquvvadmpei@mercury.elektranox.org>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Fri, 24 Jun 2022 19:43:51 -0400
+Message-ID: <CAMdYzYr_EA2Oxf6Q-WkX987eWUKRokRR1EsCWM4J+BcF+OkO9A@mail.gmail.com>
+Subject: Re: [PATCH 1/3] net: ethernet: stmmac: dwmac-rk: Disable delayline if
+ it is invalid
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Linux Kernel Network Developers <netdev@vger.kernel.org>, 
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+	arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+	devicetree <devicetree@vger.kernel.org>, David Wu <david.wu@rock-chips.com>, 
+	kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_133757_090609_7150F4FC 
-X-CRM114-Status: GOOD (  19.19  )
+X-CRM114-CacheID: sfid-20220624_164404_751687_31335598 
+X-CRM114-Status: GOOD (  19.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,44 +96,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 24. Juni 2022, 19:57:53 CEST schrieb Brian Norris:
-> On Fri, Jun 24, 2022 at 12:23 AM Heiko Stuebner <heiko@sntech.de> wrote:
-> > The interesting question would be, do we want some fixes tag for it?
-> 
-> I'm not aware of any currently-upstream code that will hit this [1].
-> I've hit it in out-of-tree code (or, code that I submitted to
-> dri-devel, but wasn't accepted as-is), and this is the "belt and
-> braces" part -- the primary fix is that we should avoid calling things
-> like drm_atomic_get_crtc_state() at inappropriate times.
-> 
-> So, is the "extra safety" check really something that should go to
-> -stable? (Because let's be honest, everything with a Fixes tag goes
-> there.) Maybe?
-> 
-> Anyway, if you want to "blame" anything, this commit actually dropped
-> the safety check:
-> 
-> 4e257d9eee23 drm/rockchip: get rid of rockchip_drm_crtc_mode_config
+On Fri, Jun 24, 2022 at 4:16 PM Sebastian Reichel
+<sebastian.reichel@collabora.com> wrote:
+>
+> Hi,
+>
+> On Fri, Jun 24, 2022 at 07:37:08PM +0200, Andrew Lunn wrote:
+> > > The Rockchip hardware supports enabling/disabling delays and
+> > > configuring a delay value of 0x00-0x7f. For the RK3588 evaluation
+> > > board the RX delay should be disabled.
+> >
+> > So you can just put 0 in DT then.
+>
+> My understanding is, that there is a difference between
+> enabled delay with a delay value of 0 and delay fully
+> disabled. But I could not find any details aboout this
+> in the datasheet unfortunately.
 
-I tend to think, if we know that connection we should also include it :-) .
-I wouldn't include a cc-stable for the reason you mentioned, but to me
-it makes sense if someone reading the git history in the future can easily
-know that information - so it doesn't hurt :-) .
+The driver already sets the delays to 0 in case of the rgmii-id modes.
+0 is disabled, even in this patch. The only thing this patch does is
+change the behavior when the delays are not set. If the rx delays
+should be 0, they should be defined as 0 in the device tree. There is
+rgmii-rxid for a reason as well, but if they are setting the rx delay
+to 0 with rgmii that implies this hardware is fundamentally broken.
 
-So I'll add that when applying.
+Very Respectfully,
+Peter Geis
 
-Thanks for supplying the origin commit
-Heiko
-
-> 
-> Brian
-> 
-> [1] But I'm not omniscient. So maybe it's good to have anyway.
-> 
-
-
-
-
+>
+> -- Sebastian
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
