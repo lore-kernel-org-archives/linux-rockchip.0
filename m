@@ -4,40 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5739CCCA47E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jun 2022 16:53:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B6AC43334
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jun 2022 17:36:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+ubYVk1QT1kRVsnFnqLueKg7F+135SAdeBqzV07r/fQ=; b=3lgn2Fc6O0GFGr
-	xYSYXzcQYbhJdPFjuMm3sdkAlOoxsBn5p8b9sxoXkE/vNdfCwybZQ3zoP/iAORzS40kLNKN/fIad8
-	9xWoViB0QidMf5s4PeOoylEAo2cwlY7ZHRoJOG05T1M/GS82kAxeTmWAqOhgDUltOCbCH6sd0hBMF
-	V+4CN6QPPzojr/sJuEPeLSzOsvT9Zvth9KdMa2KtO6fUR1aEw7BNgDxcHNSru1i0Q/3FdvGst20Kz
-	mrqXxWr8TAexydlFyCNESdacno0NeOvGsj8RZZGddkSisA24Df2SRJ9YyuuR+fM4A+PbAtyG67K53
-	cyrU8dgxCO3R+1bdQkNw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hOeXAryehxjRPiA7GAIT+QlntofhcwpcSA+tG3UMs2g=; b=ObsXDMMe8lKWH3aCU4V/Z/2Wx5
+	1xRtY3lonR3zQ2qVIK7KvJ9Pk9B/ompKIHapOXtSjjPEcFbccX0yrDZcgT0oEpgu1t901RPE2eKmG
+	U/mZQwk6Al/1uqC17VJgihRfVF/mVRDNyWHHIaDnEnEG2tGraBdOBVqG5jNkNMo0rulpkQw7QeGqQ
+	ZsTQqtqXaXqf6+4JOs4zycsfBKgnYN53NiJUtj/EnVGoMBYRKzcED9DHWV8Oyx8zRmD7oGPlUjsYf
+	t0nXoO0Yh3y1YgNye9eg5bMiGVjOeN5ZUHXmAsFd7fNQPTt6k1GU9XOaDzKffLrDWpMiWcYb3nSjW
+	jPajjJ/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4mY4-0034bZ-DV; Fri, 24 Jun 2022 16:52:48 +0000
-Received: from vps0.lunn.ch ([185.16.172.187])
+	id 1o4nDz-003HAh-Pl; Fri, 24 Jun 2022 17:36:07 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4mY1-0034Xe-Lk; Fri, 24 Jun 2022 16:52:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=z/TLLw7mRzYQAex8p/0tcUML3Z0CyUY3N6YPN7Zygq8=; b=yTHVrYXvbdipcml9LQ8q2WwBVS
-	8kHZmLGGojsXKF2Hv4vohMrDU8/tuTU/kSVMM/BwMOvv1OlzNHNPK5iGFSwJTvLXUy2dPJMQZv9On
-	5kQhOf8DqYQ4eu9UGZBMzL6n6SyKB9FQKLgIKapmgmnHZmzGouHfD2e7hgimsJmgVtMc=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1o4mXi-0085tJ-Tz; Fri, 24 Jun 2022 18:52:26 +0200
-Date: Fri, 24 Jun 2022 18:52:26 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
+	id 1o4nDk-003H6s-Ks; Fri, 24 Jun 2022 17:35:54 +0000
+Received: from mercury (dyndsl-095-033-155-155.ewe-ip-backbone.de [95.33.155.155])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id E58D7660180A;
+	Fri, 24 Jun 2022 18:35:49 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1656092150;
+	bh=+EH0iTD2RyXg6NOT3T8bkKi66cDg0fDsvnolznRjMug=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Jm5EGJA/RuRH9YqY0fPGHC1HCqGAsZ1gDSMdoZJ57JKdwOr6EZb7H065XaIibTYF1
+	 rQ66T2FvvCJzDIcFPdjQTeKt03K/ObDHktixAJwQwVS2x71Gi3I01UFDmkLN5FuQn5
+	 pvTWRrG8vvCueAhrjfAjNXkyrdeur2Y+cgg2sTHFw0c7wC1odNHZQyI1QnehPCozOF
+	 FXTdAbJZnO0I1bmAt+aaWsRTDrlVe5eVL1E4MOktBkMQdxjlVFLgsHchavDxXolsn/
+	 FFF0Rjt1qFJ+O3nimK0kim8bXvrK59IPC1cU4eKVcVUR4nZBuRmOuE9lCqWXdWkZEJ
+	 pW/yIcDD/dznQ==
+Received: by mercury (Postfix, from userid 1000)
+	id 39FC510605AA; Fri, 24 Jun 2022 19:35:47 +0200 (CEST)
+Date: Fri, 24 Jun 2022 19:35:47 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Andrew Lunn <andrew@lunn.ch>
 Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
 	Alexandre Torgue <alexandre.torgue@foss.st.com>,
 	Jose Abreu <joabreu@synopsys.com>,
@@ -51,17 +59,17 @@ Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
 	David Wu <david.wu@rock-chips.com>, kernel@collabora.com
 Subject: Re: [PATCH 1/3] net: ethernet: stmmac: dwmac-rk: Disable delayline
  if it is invalid
-Message-ID: <YrXryvTpnSIOyUTD@lunn.ch>
+Message-ID: <20220624173547.ccads2mikb4np5wz@mercury.elektranox.org>
 References: <20220623162850.245608-1-sebastian.reichel@collabora.com>
  <20220623162850.245608-2-sebastian.reichel@collabora.com>
  <YrWdnQKVbJR+NrfH@lunn.ch>
  <20220624162956.vn4b3va5cz2agvrb@mercury.elektranox.org>
+ <YrXryvTpnSIOyUTD@lunn.ch>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220624162956.vn4b3va5cz2agvrb@mercury.elektranox.org>
+In-Reply-To: <YrXryvTpnSIOyUTD@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_095245_780129_32A1A772 
-X-CRM114-Status: GOOD (  10.30  )
+X-CRM114-CacheID: sfid-20220624_103552_968149_29643306 
+X-CRM114-Status: GOOD (  18.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,27 +81,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4327881639247757865=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> > So it seems to me you are changing the documented default. You cannot
-> > do that, this is ABI.
-> 
-> Right. I suppose we either need a disable value or an extra property. I
-> can add support for supplying (-1) from DT. Does that sounds ok to
-> everyone?
 
-I'm missing the big picture.
+--===============4327881639247757865==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="qenzcnj3phman7qo"
+Content-Disposition: inline
 
-Does the hardware you are adding not support delays? If so, rather
-than using the defaults, don't do anything. And if a value is
-supplied, -EINVAL?
 
-	  Andrew
+--qenzcnj3phman7qo
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+On Fri, Jun 24, 2022 at 06:52:26PM +0200, Andrew Lunn wrote:
+> > > So it seems to me you are changing the documented default. You cannot
+> > > do that, this is ABI.
+> >=20
+> > Right. I suppose we either need a disable value or an extra property. I
+> > can add support for supplying (-1) from DT. Does that sounds ok to
+> > everyone?
+>=20
+> I'm missing the big picture.
+>=20
+> Does the hardware you are adding not support delays? If so, rather
+> than using the defaults, don't do anything. And if a value is
+> supplied, -EINVAL?
+
+The Rockchip hardware supports enabling/disabling delays and
+configuring a delay value of 0x00-0x7f. For the RK3588 evaluation
+board the RX delay should be disabled.
+
+-- Sebastian
+
+--qenzcnj3phman7qo
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmK19e8ACgkQ2O7X88g7
++ppYMA/+N8W88aXHTf0j/BzfDjaK+JD9zY4pvt14NYf4ry3+ZxpQzE2tbKB+UJHN
+UXnEGt+ZMn42ouBQ9tV71fpAfMsW3sz6Oz9InLHW6u5m7AxBUC+QJlOxyvsO2gGh
+pca/jDy/kMDvkAlzm59JwkvjGNV0Ykdg1zkQGiCzmGIYM0GSXRxEGAi+aSBSvFZU
+ey+pshbPGq9EKVUpIj7S9bWLdHxfWjFnH6N0KhlWB+u/BgUZR7fYT16nXUa2wFfv
+1g8BU0D42Nn5QzCx6PCfzlB79fH13C7ms+x32iVdd4OKVLaG+qHiTkr1uQ53hTFZ
+UrBy+xP5GFZFW4oGyqWLSEs2u3fB9A4f2KB3JABKQ4DEn5/repN6SjBZpx1rCFJP
+cKR26TLZAGfbL2YXVYg+5sCH/87/B8g42t8WZFo7T8AdiIBnPe1iC5rJGtqhTJ7w
+9F1eKoqhI1Y5VBEWNftQ1EWwKMqyIkQPgw/n1AoTdxZjkRdMr9xgGKPPp09aZTq8
+ZKj7tgoaIoQ5QHkmSHpAzeo3tyoRbnt+LggqcdaGeBzpCrQUEk/5bHp+T4IIy5BN
+B7jy0vHA4guncxII1K+Sjsp0eii7Of++/exoH3mWenm5As68R3miJvCNvvI7yssh
+6cRjUzXV/PpQJq7MpzzZpGJYEcQptzgQm6JcTDTU1ShCnTURRBU=
+=pr4F
+-----END PGP SIGNATURE-----
+
+--qenzcnj3phman7qo--
+
+
+--===============4327881639247757865==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4327881639247757865==--
+
