@@ -4,91 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B70BC43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jun 2022 14:35:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA848CCA473
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jun 2022 14:36:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9EmRrwX89v7evi4+rK08r3Nz1ZK0Ln0GeEl4Ufme+PU=; b=TV5LJY0Y7onJgIa4zfppC2dtpc
-	bAXKk5uYrskgrQSfMa/j7DhUOZsQ5GPKCB7qkPVYiBeEuaHM1FAbQkN1rDxv17qP6ZpaDYys5ZldP
-	oBLldEYBY9mcxYhn+IpFYst3VnHl1YX0b5qlyZSZ7Cu2VShFVAeC7FM5T/QQkqZMDYMSg5MLD4lPd
-	3VsL20XddPY+rKJAaOygQH0+N9iWCI96OjMZuptZ1LTYcwLOp3USRo3ZbqIRJSDvaUZWpOlDxIs9u
-	y2c7FKsxWVLAbl/LGM9Z/vahmsuTHcFFYd4YicEfN6BNwl8YJ8vqWZrn1MhdlnHwqMvRy9Ks9ZsFK
-	+bix+c8g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=K49xffLbDZZI701oB0UxDLyUF8tGTTQQRpeEOxVt6i0=; b=F54OjPDp5SmPHX
+	nAJgOdsrWJ+/qOrZ5rlA3vxzqGql42SKfGlgVJMzaNwmX1S6/bXJQRpKZJLYU4Wpau1092T9iJaH+
+	fXVO9hmH42ZumR0LZpXshxbE+tCuEIe4vCnIj4dcpDhIzNTtLanpsISSiB3pzVHw3WSJbFbTq4oN1
+	zBeNDHINIjXEBkJ5g75RMR4SOYcQBAovjw7FTlGzZ8r2TT8zCIzvagp+wnRQ+RrTn7jGH3VgSsv8q
+	4gBTXZA5M76JCUKDOsCEfmYpq4CA7OneFy4rEzM392i1tzUZzteaslfXybw7SJt7Zl63m4bHUGide
+	BGDFVsU/sVbQdEoPdZSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4kPF-002dfZ-Ih; Fri, 24 Jun 2022 14:35:33 +0000
-Received: from wout5-smtp.messagingengine.com ([64.147.123.21])
+	id 1o4kPe-002drB-RN; Fri, 24 Jun 2022 14:35:58 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4kPC-002ddu-7e
-	for linux-rockchip@lists.infradead.org; Fri, 24 Jun 2022 14:35:31 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailout.west.internal (Postfix) with ESMTP id E40A9320091C;
-	Fri, 24 Jun 2022 10:35:28 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute5.internal (MEProxy); Fri, 24 Jun 2022 10:35:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
-	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm2; t=1656081328; x=1656167728; bh=tcz65/MMAx
-	i7w9JzUonZxPihwwNmyYf4cTMwzAEWYCE=; b=ERH3oWXAiGPnExA0xUWuJKq6T/
-	5P56u27EzfcpPTTlXDIyqLiK0aH0I6PSFlN6mGwS6O4mTx/jyw6QvdQyFmVNeWhW
-	ySmjs/qokdINLDKuxoWjH+PU2a2ZMHph1HQmtIK/QbSGBNi3KP/yDdtEnAqsEYF3
-	+IZCYZobI0WLxzZOyYYNuhJ3Munyx2rY3rCMnoIlchu70+7ksPHUaBmYYzzYJzJe
-	mMNcwCV2qGvU6AC0nJTkJ/l+LSAXyk/UglVYS0cdWuPgioJANZedDS+qtv7dtKih
-	RZJIqiuk81NeUI9jcwg1DKfiSOLaRvgqb05FONS08/DmWD51dVBcQCzeRgBw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm2; t=1656081328; x=1656167728; bh=tcz65/MMAxi7w9JzUonZxPihwwNm
-	yYf4cTMwzAEWYCE=; b=RYEs/tAWjgiEd5wQuyson6peoCmm9MGQYvlvEa2zLwsz
-	brD5mf/5j3ex2tu25wNC5kBG0obqXOt0jQfqikzOdQglStAEM5R9mZQ5IvzAsxAo
-	Kp65QN+pUS6JFnfi958SVGwzqtd5lnQG0EN+PNCWncTsRqKUOnGcpcCW9CiCpvVj
-	yYayAwobJt6En0gqSbkAiRR/JneEEPJsjwFyNM3TdLwxCDLVjcsEn16ehOWrs5Uj
-	vkfZe6lJR6oE2OnVgYs2/ocb3vvnfTGJEwdguKA9F3wK/LOGBZ0Lq5Bz1Y76KmPX
-	zmip0QH4VyufIGFcXuHFyeRER4O3mpNPyiH6+D7Qsw==
-X-ME-Sender: <xms:sMu1YjTNiOMGiWjrETg56SiNv5xgq7mOelEkK-jii08CcgCNQIQKVg>
-    <xme:sMu1YkwzglWaPKpvUgHHnfDK6qHq8kFgIg5Cw9w8F5lzgSQqix6xg_qkskhVAlcDe
-    DmVDYqd0GdoU9-howk>
-X-ME-Received: <xmr:sMu1Yo139ouQSpAdcpx7PQF96_PSJhKIBWVeuPt-q--UCf0Kackxqw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudefledgjeehucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtjeenucfhrhhomhepffgrfhhn
-    rgcujfhirhhstghhfhgvlhguuceouggrfhhnrgesfhgrshhtmhgrihhlrdgtohhmqeenuc
-    ggtffrrghtthgvrhhnpedvhedtledukeegveelfeeuvddujeeiteehkedvhfetkeffudej
-    hfeftdduhedvkeenucevlhhushhtvghrufhiiigvpedunecurfgrrhgrmhepmhgrihhlfh
-    hrohhmpegurghfnhgrsehfrghsthhmrghilhdrtghomh
-X-ME-Proxy: <xmx:sMu1YjABOchUUO68Y1WdCHiTX4MyTByE-DAICZfLCzijkELglK-z_g>
-    <xmx:sMu1Yshl2mvr9xCBB-y_6JadxxNZPa5KdE2k-JVUVj7ukG8SDLLEXw>
-    <xmx:sMu1YnqitehkI9tXpXOHMo8nCLI5BYl59pAOn2-PsR8PWNC6MNLtDw>
-    <xmx:sMu1YogoT2uItS5sjz60rFcj0hwVgYgSNAthBdyQn_M-_bc517kWSA>
-Feedback-ID: i0e894699:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 24 Jun 2022 10:35:25 -0400 (EDT)
-Date: Fri, 24 Jun 2022 17:35:22 +0300
-From: Dafna Hirschfeld <dafna@fastmail.com>
-To: Paul Elder <paul.elder@ideasonboard.com>
-Cc: linux-media@vger.kernel.org,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	heiko@sntech.de, jeanmichel.hautbois@ideasonboard.com,
-	jacopo@jmondi.org, djrscally@gmail.com, helen.koike@collabora.com,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 08/55] media: rkisp1: Access ISP version from info pointer
-Message-ID: <20220624143522.ap2wfg52j5jf5dg4@guri>
-References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
- <20220614191127.3420492-9-paul.elder@ideasonboard.com>
+	id 1o4kPT-002dmv-Oc; Fri, 24 Jun 2022 14:35:49 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 58A0D62078;
+	Fri, 24 Jun 2022 14:35:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 646D3C341C0;
+	Fri, 24 Jun 2022 14:35:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1656081347;
+	bh=fES71k0ZtQMfRPu9DCT9ZOVYdQvNBjl3fNHC6w3pSEc=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Hsmdt5LTyq7cqedpM7gD3mcbjTqTZVbXcWKBNDxL/nyNXh7QuMwjQ7X3ZkyQfEMS5
+	 Kdh+uekKRjxFdw0vb9b8c6lwbHpQqddsFR4oHiVYwa5BNCUy3eHchli72h2SDIuN41
+	 eWKSgqEpPHVxgOfnphX4wAtuA0nksQX4p+f8jQbXuc8w9G32PNwcLP4/fB62l3+jqw
+	 H0LDGLFIFqEz8Kb63K/UqL4SxCQ3FOJjUFbQiuYnFn8KnA0LwJ/rtjmUCDKd0108Hy
+	 cAyth5zSs6zw/PuBediVxP+YxqQUm/7CT5eQ6Td9KeKJ1juFc97abm97Yy0gvZjprA
+	 ZtYgphvV7oKDg==
+From: Mark Brown <broonie@kernel.org>
+To: jiapeng.chong@linux.alibaba.com, lgirdwood@gmail.com
+Cc: alsa-devel@alsa-project.org, tiwai@suse.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, perex@perex.cz
+In-Reply-To: <20220624082745.68367-1-jiapeng.chong@linux.alibaba.com>
+References: <20220624082745.68367-1-jiapeng.chong@linux.alibaba.com>
+Subject: Re: [PATCH] ASoC: rockchip: i2s: Fix missing error code in rockchip_i2s_probe()
+Message-Id: <165608134513.445804.8165290048747586515.b4-ty@kernel.org>
+Date: Fri, 24 Jun 2022 15:35:45 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220614191127.3420492-9-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_073530_350356_B0340597 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20220624_073547_884959_A2AD384B 
+X-CRM114-Status: GOOD (  14.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,80 +64,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 15.06.2022 04:10, Paul Elder wrote:
->From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->
->The ISP version is stored in the media_device hw_revision field and
->access from there in the driver. Now that we store a pointer to the
->match data in the rkisp1_device structure, access the ISP version from
->there to make the code clearer and avoid depending on the media_device.
->
->Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+On Fri, 24 Jun 2022 16:27:45 +0800, Jiapeng Chong wrote:
+> The error code is missing in this code scenario, add the error code
+> '-EINVAL' to the return value 'ret'.
+> 
+> This was found by coccicheck:
+> 
+> sound/soc/rockchip/rockchip_i2s.c:810 rockchip_i2s_probe() warn: missing error code 'ret'.
+> 
+> [...]
 
-Reviewed-by Dafna Hirschfeld <dafna@fastmail.com>
+Applied to
 
->---
-> drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c    | 4 ++--
-> drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 2 +-
-> drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c  | 2 +-
-> 3 files changed, 4 insertions(+), 4 deletions(-)
->
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->index 02968656f3c0..328e8fec14e9 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->@@ -417,7 +417,7 @@ static int rkisp1_config_mipi(struct rkisp1_device *rkisp1)
-> 	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_CTRL, mipi_ctrl);
->
-> 	/* V12 could also use a newer csi2-host, but we don't want that yet */
->-	if (rkisp1->media_dev.hw_revision == RKISP1_V12)
->+	if (rkisp1->info->isp_ver == RKISP1_V12)
-> 		rkisp1_write(rkisp1, RKISP1_CIF_ISP_CSI0_CTRL0, 0);
->
-> 	/* Configure Data Type and Virtual Channel */
->@@ -535,7 +535,7 @@ static void rkisp1_config_clk(struct rkisp1_device *rkisp1)
-> 	rkisp1_write(rkisp1, RKISP1_CIF_VI_ICCL, val);
->
-> 	/* ensure sp and mp can run at the same time in V12 */
->-	if (rkisp1->media_dev.hw_revision == RKISP1_V12) {
->+	if (rkisp1->info->isp_ver == RKISP1_V12) {
-> 		val = RKISP1_CIF_CLK_CTRL_MI_Y12 | RKISP1_CIF_CLK_CTRL_MI_SP |
-> 		      RKISP1_CIF_CLK_CTRL_MI_RAW0 | RKISP1_CIF_CLK_CTRL_MI_RAW1 |
-> 		      RKISP1_CIF_CLK_CTRL_MI_READ | RKISP1_CIF_CLK_CTRL_MI_RAWRD |
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
->index c88a9c0fa86e..9da7dc1bc690 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
->@@ -1801,7 +1801,7 @@ static void rkisp1_init_params(struct rkisp1_params *params)
-> 	params->vdev_fmt.fmt.meta.buffersize =
-> 		sizeof(struct rkisp1_params_cfg);
->
->-	if (params->rkisp1->media_dev.hw_revision == RKISP1_V12)
->+	if (params->rkisp1->info->isp_ver == RKISP1_V12)
-> 		params->ops = &rkisp1_v12_params_ops;
-> 	else
-> 		params->ops = &rkisp1_v10_params_ops;
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
->index b7ae9166c52f..7d82356b5345 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
->@@ -427,7 +427,7 @@ static void rkisp1_init_stats(struct rkisp1_stats *stats)
-> 	stats->vdev_fmt.fmt.meta.buffersize =
-> 		sizeof(struct rkisp1_stat_buffer);
->
->-	if (stats->rkisp1->media_dev.hw_revision == RKISP1_V12)
->+	if (stats->rkisp1->info->isp_ver == RKISP1_V12)
-> 		stats->ops = &rkisp1_v12_stats_ops;
-> 	else
-> 		stats->ops = &rkisp1_v10_stats_ops;
->-- 
->2.30.2
->
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: rockchip: i2s: Fix missing error code in rockchip_i2s_probe()
+      commit: 7f6409fd9b54b6f56444edc996cd28059f215415
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-rockchip mailing list
