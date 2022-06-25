@@ -4,56 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E331C43334
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jun 2022 18:00:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BA22C43334
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jun 2022 21:27:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EszjM1l3f3LWuDGJGd1FAEIhvj9BocsdINHYCoSsQ3U=; b=MmCKdRlEvqTu3P
-	AfygDouk7PxStLca4rKGhgm4zRAjSdJwSV1eoAqxR8xtQ5MCpuNZAasCM/Z71STUo6ZZ+MlyMEwME
-	8pHOwzppjpvqrVaTFP1dpF2drdccvXXh92rzVKgCF/8OCvbeZXZN2SXwAB+TxWPpbDbrR8O+qmn2K
-	4kR7+m5o5y9yxE608yveuitCmgA4E98Ph8DEXyuoCgLxRstsEE5mwbfZQepkrL1Pf+jQXpKrgGb9D
-	d9V3d2irEmPkO9PrIPx4dYLmRJi2/UiV+pICOWLP/yhtjUQ+FcmpPru8SCxeNj/rU9ZSDc15cv9ji
-	WQmChHJKVIJhIvTu4D5w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nTawxjCptMJkgLrT/F+z75ca52FhQzunsZEb6LQ+WDE=; b=TrBfHzXS/ulzrh
+	bIvnNTjLykprY7V6tTPAu+hEZugU6ayIux7IX60HLSiWNtPqxMXp7kAl6T8YsCFgffVAaWEReEPc0
+	L27NVwkbrx+KvtLR0CWzkfPYovQNCrg/c5HXpqPMRorL+JLaFFrzeanEjJCPzY+juMZszR3GFh5e1
+	HNYuJ6uylLG3IgrsiNcs3jDuaIKQerTLKNf496Cp6ddt0Te8SFJJtd3+rPYnnaBFvdOW3KxIbLuls
+	Um6tPe1rLE5hr9n16g7AxF8fni2FXUs2VVq76hKdel7LfJrN8myvkplUqF9u01SEJyTR+FaXSzbqA
+	b9WrDZc2tRfKUrIvntZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5A4p-0075cC-3K; Sat, 25 Jun 2022 18:00:11 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1o5DJO-007wZU-Vg; Sat, 25 Jun 2022 21:27:27 +0000
+Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5A4m-0075bI-9Q
-	for linux-rockchip@lists.infradead.org; Sat, 25 Jun 2022 18:00:09 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5608831A;
-	Sat, 25 Jun 2022 20:00:06 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656180006;
-	bh=MCaBH7JYDAQAejYxz4JDDGEMpG5ffm5wgGm/4ewwNz8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nFrdt8dYt6fsqYYkik6Z374s94gmp8kSkrdgHxFAKn1hF6oSwjaMi3JDoJfOCax2H
-	 sYJMMMpUguDcMRSLGOjHkR/DJV4FZuaaJoEog03AljiXkezWvhtinpKbwT3zZOBkic
-	 4yyr6cIEmyUHTYRqsjdmeEOlq2wWqPn3prjHIoEY=
-Date: Sat, 25 Jun 2022 20:59:48 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Paul Elder <paul.elder@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, dafna@fastmail.com, heiko@sntech.de,
-	jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
-	djrscally@gmail.com, helen.koike@collabora.com,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 01/55] media: rkisp1: debug: Add dump file in debugfs for
- MI buffer registers
-Message-ID: <YrdNFJnkU+MLtmtk@pendragon.ideasonboard.com>
-References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
- <20220614191127.3420492-2-paul.elder@ideasonboard.com>
- <YqpgMkK33+0IpxjR@pendragon.ideasonboard.com>
+	id 1o5DJE-007wV5-Dd; Sat, 25 Jun 2022 21:27:17 +0000
+Received: by mail-qk1-x72b.google.com with SMTP id k20so4553525qkj.1;
+        Sat, 25 Jun 2022 14:27:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=S8QPR7010o3+lSeTdoHVBPsXg7K50OfJRqwfALm+B8Y=;
+        b=EuwnwbchhSMoZBWIKc/x9m5O2fkTFhYTIHK0kIussP9tG64+1y9Y0/2Dppi5Fo9EdV
+         dmmp153kQiz+ZpNvC/LBYNdTA66I7BF5QTtRS2mI/pqKblP9W4DAgJPEMezWTJYOARSa
+         7XeABi9J7KgqlehGMrX6LFZsEn0uPJNx8iXoum5k0FB95lUqdNbs1TgSeKAb9G52NUSP
+         bEXy48i+uA1zupC2PHhnha1Z/dVjNJ9wUhuEaq2PWhpD8cDwc5kgK9e4fO8SLctnh+yN
+         U7xR70Xp/FlOtslyLMFNTvUNILDZw7+kbs+YYAdPeBH5Hr9tuiwtrYO0nLJ6ri/rhIMo
+         A5ZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=S8QPR7010o3+lSeTdoHVBPsXg7K50OfJRqwfALm+B8Y=;
+        b=uxx4zJWkuaReuuZbrfjYOF/2I2fOmnx3RF2jawkjp5JDII7F6CRXxYBL5A5cp6V0gD
+         iFNCY75bhqNXMdiGLwZwpQa9c5FjyhkCEnCdIHvzarjVxZRJAARCgjzeSABuqUjB9gwr
+         gPTo1B+54s5g4mz/WgNGTCij9yYj7ASPj8TzkgaRj7EZy208MCfNQ3hFNzdtasjg/Km6
+         OIuFtkzZfK5210Q6L6OwIt1CwK+vsq7aw6+jSGyiBvv09wXxxAey35mPtc2zuv46LMss
+         5QCRtmwgnqHvJPL/NUAyNxba91muE8MSWPNLZ6yD76vQhDc5nBh2YwGzY2c+K9gzA91C
+         If+g==
+X-Gm-Message-State: AJIora8Cl6yPpKYitdh6m+0P+5gxP9gk4LfY4IpCAa5/BlpyGSw9bfMO
+	bWVlFg6YiziV61WhO3GIYrA=
+X-Google-Smtp-Source: AGRyM1s4h1N3WWL57e5l+pcg+OjgEgNSB9UE+Z/gTHHHREPG/QUu8JCNL/rEMqQrEbQf4v2vzU9l4g==
+X-Received: by 2002:a05:620a:24c7:b0:6a7:2d03:2de3 with SMTP id m7-20020a05620a24c700b006a72d032de3mr3996238qkn.134.1656192434519;
+        Sat, 25 Jun 2022 14:27:14 -0700 (PDT)
+Received: from master-x64.sparksnet ([2601:153:980:85b1::10])
+        by smtp.gmail.com with ESMTPSA id m22-20020a05620a291600b006aef641865esm4834601qkp.128.2022.06.25.14.27.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 25 Jun 2022 14:27:14 -0700 (PDT)
+From: Peter Geis <pgwipeout@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Kishon Vijay Abraham I <kishon@ti.com>,
+	Vinod Koul <vkoul@kernel.org>
+Cc: Peter Geis <pgwipeout@gmail.com>,
+	linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v1] phy: rockchip-inno-usb2: Prevent incorrect error on probe
+Date: Sat, 25 Jun 2022 17:27:11 -0400
+Message-Id: <20220625212711.558495-1-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YqpgMkK33+0IpxjR@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220625_110008_523311_A059875C 
-X-CRM114-Status: GOOD (  20.67  )
+X-CRM114-CacheID: sfid-20220625_142716_519733_FCCCAF41 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,71 +90,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Paul,
+If a phy supply is designated but isn't available at probe time, an
+EPROBE_DEFER is returned. Use dev_err_probe to prevent this from
+incorrectly printing during boot.
 
-On Thu, Jun 16, 2022 at 01:41:56AM +0300, Laurent Pinchart wrote:
-> On Wed, Jun 15, 2022 at 04:10:33AM +0900, Paul Elder wrote:
-> > Add a register dump file in debugfs for some of the buffer-related
-> > registers in MI, for the base address, the size, and the offset. Also
-> > dump the appropriate shadow registers.
-> > 
-> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > ---
-> >  .../platform/rockchip/rkisp1/rkisp1-debug.c   | 21 +++++++++++++++++++
-> >  1 file changed, 21 insertions(+)
-> > 
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> > index e76dc2b164b6..1a59c00fabdd 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> > @@ -121,6 +121,24 @@ static int rkisp1_debug_dump_rsz_regs_show(struct seq_file *m, void *p)
-> >  }
-> >  DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_rsz_regs);
-> >  
-> > +static int rkisp1_debug_dump_mi_mp_y_offs_cnt_show(struct seq_file *m, void *p)
-> > +{
-> > +	static const struct rkisp1_debug_register registers[] = {
-> > +		RKISP1_DEBUG_REG(MI_MP_Y_BASE_AD_INIT),
-> > +		RKISP1_DEBUG_REG(MI_MP_Y_BASE_AD_INIT2),
-> > +		RKISP1_DEBUG_REG(MI_MP_Y_BASE_AD_SHD),
-> > +		RKISP1_DEBUG_REG(MI_MP_Y_SIZE_INIT),
-> > +		RKISP1_DEBUG_REG(MI_MP_Y_SIZE_INIT),
-> > +		RKISP1_DEBUG_REG(MI_MP_Y_SIZE_SHD),
-> > +		RKISP1_DEBUG_REG(MI_MP_Y_OFFS_CNT_SHD),
-> > +		{ /* Sentinel */ },
-> > +	};
-> > +	struct rkisp1_device *rkisp1 = m->private;
-> > +
-> > +	return rkisp1_debug_dump_regs(rkisp1, m, 0, registers);
-> > +}
-> > +DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_mi_mp_y_offs_cnt);
-> > +
-> >  #define RKISP1_DEBUG_DATA_COUNT_BINS	32
-> >  #define RKISP1_DEBUG_DATA_COUNT_STEP	(4096 / RKISP1_DEBUG_DATA_COUNT_BINS)
-> >  
-> > @@ -214,6 +232,9 @@ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
-> >  	debugfs_create_file("srsz", 0444, regs_dir,
-> >  			    &rkisp1->resizer_devs[RKISP1_SELFPATH],
-> >  			    &rkisp1_debug_dump_rsz_regs_fops);
-> > +
-> > +	debugfs_create_file("mi_mp_y_bufs", 0444, regs_dir, rkisp1,
-> > +			    &rkisp1_debug_dump_mi_mp_y_offs_cnt_fops);
-> 
-> That's a very specialized file. I wonder if we should call it just
-> "mi_mp" if it needs to be extended later with other memory interface
-> registers for the main path. Or maybe even just "mi", to cover the self
-> path too ? The latter may be a tad too generic. What do you think ?
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+---
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Ping
-
-> >  }
-> >  
-> >  void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
-
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index 6e44069617df..706a2263b0b2 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -1289,7 +1289,7 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
+ 
+ 		phy = devm_phy_create(dev, child_np, &rockchip_usb2phy_ops);
+ 		if (IS_ERR(phy)) {
+-			dev_err(dev, "failed to create phy\n");
++			dev_err_probe(dev, PTR_ERR(phy), "failed to create phy\n");
+ 			ret = PTR_ERR(phy);
+ 			goto put_child;
+ 		}
 -- 
-Regards,
+2.25.1
 
-Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
