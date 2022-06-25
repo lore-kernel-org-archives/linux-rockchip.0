@@ -4,59 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BED82C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jun 2022 17:34:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E331C43334
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jun 2022 18:00:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZbssqCwBSgMicBd0URy2Sjv+3q3oF1vmhd8NbmqoDyA=; b=ZphjbxekDb+3Xh
-	V+CFJW+MWQRyThpBlKL0jd/ljECw2/2BuDVjjNEzj655Oe6azWxkuBIhMGwDqn3jP+qe6Cd5NhaKh
-	VJm0Yh5GzOSOqIJsG0WlEYv065ZG1xAIOEaXoXhcZ/KLLOp719NbfDLNsf71EwkZnZFhuKyq9qmLH
-	do4Xfm5RvO6Qc0nPDzZgM4wAyuvk9pl+aRKGEsOwOGkUZiScA64oYTW8aKj3EAYGVjwtTulyt6tBl
-	epgQbMTjny6VI9WTe1aavgexVAAeXVRQ6OTBjQTTzeBzmwmB5XuJCPsBY6KwONlGdQ1Jj9Uwzbxlq
-	rUL2hvy2kxKjgHS0DGRA==;
+	List-Owner; bh=EszjM1l3f3LWuDGJGd1FAEIhvj9BocsdINHYCoSsQ3U=; b=MmCKdRlEvqTu3P
+	AfygDouk7PxStLca4rKGhgm4zRAjSdJwSV1eoAqxR8xtQ5MCpuNZAasCM/Z71STUo6ZZ+MlyMEwME
+	8pHOwzppjpvqrVaTFP1dpF2drdccvXXh92rzVKgCF/8OCvbeZXZN2SXwAB+TxWPpbDbrR8O+qmn2K
+	4kR7+m5o5y9yxE608yveuitCmgA4E98Ph8DEXyuoCgLxRstsEE5mwbfZQepkrL1Pf+jQXpKrgGb9D
+	d9V3d2irEmPkO9PrIPx4dYLmRJi2/UiV+pICOWLP/yhtjUQ+FcmpPru8SCxeNj/rU9ZSDc15cv9ji
+	WQmChHJKVIJhIvTu4D5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o59gC-00704x-HS; Sat, 25 Jun 2022 17:34:44 +0000
+	id 1o5A4p-0075cC-3K; Sat, 25 Jun 2022 18:00:11 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o59g8-00703i-SS
-	for linux-rockchip@lists.infradead.org; Sat, 25 Jun 2022 17:34:42 +0000
+	id 1o5A4m-0075bI-9Q
+	for linux-rockchip@lists.infradead.org; Sat, 25 Jun 2022 18:00:09 +0000
 Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id ABA4731A;
-	Sat, 25 Jun 2022 19:34:37 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 5608831A;
+	Sat, 25 Jun 2022 20:00:06 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656178477;
-	bh=AxlcDAe2aaoGeQStKMnjGmN2Ky5OxO2XqqfaEsiv9dg=;
+	s=mail; t=1656180006;
+	bh=MCaBH7JYDAQAejYxz4JDDGEMpG5ffm5wgGm/4ewwNz8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Y/WxETVdzSQPb2MOUc9OI8krW5R0AnL3/fd5ZN6tX1OxEHhElI5cYbiuQDRXxgTdA
-	 D3AClHWBT5Lnqc4I/WjFSddV7oRB8mEFjXZy3PG7gPI+L9jld8REur51hmal/F2Um9
-	 SEE55NbGopudKmt25m6cpB4OLtc10yXw1HC4uq/Q=
-Date: Sat, 25 Jun 2022 20:34:20 +0300
+	b=nFrdt8dYt6fsqYYkik6Z374s94gmp8kSkrdgHxFAKn1hF6oSwjaMi3JDoJfOCax2H
+	 sYJMMMpUguDcMRSLGOjHkR/DJV4FZuaaJoEog03AljiXkezWvhtinpKbwT3zZOBkic
+	 4yyr6cIEmyUHTYRqsjdmeEOlq2wWqPn3prjHIoEY=
+Date: Sat, 25 Jun 2022 20:59:48 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Daniel Scally <djrscally@gmail.com>
-Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
-	dafna@fastmail.com, heiko@sntech.de,
+To: Paul Elder <paul.elder@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, dafna@fastmail.com, heiko@sntech.de,
 	jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
-	helen.koike@collabora.com, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 37/55] media: mc-entity: Add a new helper function to get
- a remote pad
-Message-ID: <YrdHHA9QBGncWd54@pendragon.ideasonboard.com>
+	djrscally@gmail.com, helen.koike@collabora.com,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 01/55] media: rkisp1: debug: Add dump file in debugfs for
+ MI buffer registers
+Message-ID: <YrdNFJnkU+MLtmtk@pendragon.ideasonboard.com>
 References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
- <20220614191127.3420492-38-paul.elder@ideasonboard.com>
- <e9b1b46f-e8a5-4481-e70f-d7355b828808@gmail.com>
- <69142509-842a-81e5-2bce-69e2dbb9e4d2@gmail.com>
- <Yq0C6an46kNX1RME@pendragon.ideasonboard.com>
- <936ea3d3-530e-1b7b-f96c-1407d3f24abd@gmail.com>
+ <20220614191127.3420492-2-paul.elder@ideasonboard.com>
+ <YqpgMkK33+0IpxjR@pendragon.ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <936ea3d3-530e-1b7b-f96c-1407d3f24abd@gmail.com>
+In-Reply-To: <YqpgMkK33+0IpxjR@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220625_103441_122655_287C5898 
-X-CRM114-Status: GOOD (  43.59  )
+X-CRM114-CacheID: sfid-20220625_110008_523311_A059875C 
+X-CRM114-Status: GOOD (  20.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,195 +70,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dan,
+Hi Paul,
 
-On Sat, Jun 18, 2022 at 10:35:12AM +0100, Daniel Scally wrote:
-> On 17/06/2022 23:40, Laurent Pinchart wrote:
-> > On Fri, Jun 17, 2022 at 11:33:03PM +0100, Daniel Scally wrote:
-> >> On 17/06/2022 22:34, Daniel Scally wrote:
-> >>> On 14/06/2022 20:11, Paul Elder wrote:
-> >>>> From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> >>>>
-> >>>> The media_entity_remote_pad() helper function returns the first remote
-> >>>> pad it find connected to a given pad. Beside being possibly ill-named
-> >>>> (as it operates on a pad, not an entity) and non-deterministic (as it
-> >>>> stops at the first enabled link), the fact that it returns the first
-> >>>> match makes it unsuitable for drivers that need to guarantee that a
-> >>>> single link is enabled, for instance when an entity can process data
-> >>>> from one of multiple sources at a time.
-> >>>>
-> >>>> For those use cases, add a new helper function,
-> >>>> media_entity_remote_pad_unique(), that operates on an entity and returns
-> >>>> a remote pad, with a guarantee that only one link is enabled. To ease
-> >>>> its use in drivers, also add an inline wrapper that locates source pads
-> >>>> specifically. A wrapper that locates sink pads can easily be added when
-> >>>> needed.
-> >>>>
-> >>>> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> >>>> ---
-> >>>>  Documentation/driver-api/media/mc-core.rst |  4 +-
-> >>>>  drivers/media/mc/mc-entity.c               | 38 ++++++++++++++++++
-> >>>>  include/media/media-entity.h               | 45 ++++++++++++++++++++++
-> >>>>  3 files changed, 85 insertions(+), 2 deletions(-)
-> >>>>
-> >>>> diff --git a/Documentation/driver-api/media/mc-core.rst b/Documentation/driver-api/media/mc-core.rst
-> >>>> index 02481a2513b9..a2d1e32e3abb 100644
-> >>>> --- a/Documentation/driver-api/media/mc-core.rst
-> >>>> +++ b/Documentation/driver-api/media/mc-core.rst
-> >>>> @@ -186,8 +186,8 @@ is required and the graph structure can be freed normally.
-> >>>>  
-> >>>>  Helper functions can be used to find a link between two given pads, or a pad
-> >>>>  connected to another pad through an enabled link
-> >>>> -:c:func:`media_entity_find_link()` and
-> >>>> -:c:func:`media_entity_remote_pad()`.
-> >>>> +(:c:func:`media_entity_find_link()`, :c:func:`media_entity_remote_pad()` and
-> >>>> +:c:func:`media_entity_remote_source_pad()`).
-> >>>>  
-> >>>>  Use count and power handling
-> >>>>  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> >>>> diff --git a/drivers/media/mc/mc-entity.c b/drivers/media/mc/mc-entity.c
-> >>>> index 11f5207f73aa..1febf5a86be6 100644
-> >>>> --- a/drivers/media/mc/mc-entity.c
-> >>>> +++ b/drivers/media/mc/mc-entity.c
-> >>>> @@ -9,6 +9,7 @@
-> >>>>   */
-> >>>>  
-> >>>>  #include <linux/bitmap.h>
-> >>>> +#include <linux/list.h>
-> >>>>  #include <linux/property.h>
-> >>>>  #include <linux/slab.h>
-> >>>>  #include <media/media-entity.h>
-> >>>> @@ -920,6 +921,43 @@ struct media_pad *media_entity_remote_pad(const struct media_pad *pad)
-> >>>>  }
-> >>>>  EXPORT_SYMBOL_GPL(media_entity_remote_pad);
-> >>>>  
-> >>>> +struct media_pad *
-> >>>> +media_entity_remote_pad_unique(const struct media_entity *entity,
-> >>>> +			       unsigned int type)
-> >>>> +{
-> >>>> +	struct media_pad *pad = NULL;
-> >>>> +	struct media_link *link;
-> >>>> +
-> >>>> +	list_for_each_entry(link, &entity->links, list) {
-> >>>> +		struct media_pad *local_pad;
-> >>>> +		struct media_pad *remote_pad;
-> >>>> +
-> >>>> +		if (!(link->flags & MEDIA_LNK_FL_ENABLED))
-> >>>> +			continue;
-> >>> 
-> >>> Does this need another guard here to make sure the link isn't an
-> >>> ancillary link? Only likely to happen at least in the immediate future
-> >>> where the entity represents a camera sensor, so possibly not applicable
-> >>> here - I couldn't find where the new function is used in the series to
-> >>> check. I _think_ it would actually work ok regardless...media_gobj
-> >>> type-punning makes my brain ache, but I think the local_pad->entity ==
-> >>> entity comparison would actually compare the entity->name member of the
-> >>> entity at the end of an ancillary link to the entity parameter, not find
-> >>> a match and so continue the loop without failing, but that feels a bit
-> >>> sub-optimal.
-> >> 
-> >> Or perhaps a better approach would be to provide something like a
-> >> "list_for_each_data_link()" iterator - the potential problem here (as
-> >> with Quentin's recent issue with the rkisp1 driver) is the assumption
-> >> that all links are data links, so maybe it's best to just guarantee that
-> >> if we can.
-> >> 
-> > I agree with you, without a dedicated iterator, we're bound to repeat
-> > the mistake over and over.
-> >
-> > Would you like to submit a patch to add that iterator, or should I ? I'd
-> > name it for_each_media_entity_data_link() or something similar.
+On Thu, Jun 16, 2022 at 01:41:56AM +0300, Laurent Pinchart wrote:
+> On Wed, Jun 15, 2022 at 04:10:33AM +0900, Paul Elder wrote:
+> > Add a register dump file in debugfs for some of the buffer-related
+> > registers in MI, for the base address, the size, and the offset. Also
+> > dump the appropriate shadow registers.
+> > 
+> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> > ---
+> >  .../platform/rockchip/rkisp1/rkisp1-debug.c   | 21 +++++++++++++++++++
+> >  1 file changed, 21 insertions(+)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> > index e76dc2b164b6..1a59c00fabdd 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
+> > @@ -121,6 +121,24 @@ static int rkisp1_debug_dump_rsz_regs_show(struct seq_file *m, void *p)
+> >  }
+> >  DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_rsz_regs);
+> >  
+> > +static int rkisp1_debug_dump_mi_mp_y_offs_cnt_show(struct seq_file *m, void *p)
+> > +{
+> > +	static const struct rkisp1_debug_register registers[] = {
+> > +		RKISP1_DEBUG_REG(MI_MP_Y_BASE_AD_INIT),
+> > +		RKISP1_DEBUG_REG(MI_MP_Y_BASE_AD_INIT2),
+> > +		RKISP1_DEBUG_REG(MI_MP_Y_BASE_AD_SHD),
+> > +		RKISP1_DEBUG_REG(MI_MP_Y_SIZE_INIT),
+> > +		RKISP1_DEBUG_REG(MI_MP_Y_SIZE_INIT),
+> > +		RKISP1_DEBUG_REG(MI_MP_Y_SIZE_SHD),
+> > +		RKISP1_DEBUG_REG(MI_MP_Y_OFFS_CNT_SHD),
+> > +		{ /* Sentinel */ },
+> > +	};
+> > +	struct rkisp1_device *rkisp1 = m->private;
+> > +
+> > +	return rkisp1_debug_dump_regs(rkisp1, m, 0, registers);
+> > +}
+> > +DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_mi_mp_y_offs_cnt);
+> > +
+> >  #define RKISP1_DEBUG_DATA_COUNT_BINS	32
+> >  #define RKISP1_DEBUG_DATA_COUNT_STEP	(4096 / RKISP1_DEBUG_DATA_COUNT_BINS)
+> >  
+> > @@ -214,6 +232,9 @@ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+> >  	debugfs_create_file("srsz", 0444, regs_dir,
+> >  			    &rkisp1->resizer_devs[RKISP1_SELFPATH],
+> >  			    &rkisp1_debug_dump_rsz_regs_fops);
+> > +
+> > +	debugfs_create_file("mi_mp_y_bufs", 0444, regs_dir, rkisp1,
+> > +			    &rkisp1_debug_dump_mi_mp_y_offs_cnt_fops);
 > 
-> I've started one - I'll send it later (using your function name though,
-> naming things was never my strong suit!)
+> That's a very specialized file. I wonder if we should call it just
+> "mi_mp" if it needs to be extended later with other memory interface
+> registers for the main path. Or maybe even just "mi", to cover the self
+> path too ? The latter may be a tad too generic. What do you think ?
 
-I've modified this patch to skip non-data links manually, to avoid
-depending on your series. If the iterator gets merged first, I'll update
-the media_entity_remote_pad_unique() helper to use it.
+Ping
 
-> >>>> +
-> >>>> +		if (type == MEDIA_PAD_FL_SOURCE) {
-> >>>> +			local_pad = link->sink;
-> >>>> +			remote_pad = link->source;
-> >>>> +		} else {
-> >>>> +			local_pad = link->source;
-> >>>> +			remote_pad = link->sink;
-> >>>> +		}
-> >>>> +
-> >>>> +		if (local_pad->entity == entity) {
-> >>>> +			if (pad)
-> >>>> +				return ERR_PTR(-ENOTUNIQ);
-> >>>> +
-> >>>> +			pad = remote_pad;
-> >>>> +		}
-> >>>> +	}
-> >>>> +
-> >>>> +	if (!pad)
-> >>>> +		return ERR_PTR(-ENOLINK);
-> >>>> +
-> >>>> +	return pad;
-> >>>> +}
-> >>>> +EXPORT_SYMBOL_GPL(media_entity_remote_pad_unique);
-> >>>> +
-> >>>>  static void media_interface_init(struct media_device *mdev,
-> >>>>  				 struct media_interface *intf,
-> >>>>  				 u32 gobj_type,
-> >>>> diff --git a/include/media/media-entity.h b/include/media/media-entity.h
-> >>>> index a9a1c0ec5d1c..33d5f52719a0 100644
-> >>>> --- a/include/media/media-entity.h
-> >>>> +++ b/include/media/media-entity.h
-> >>>> @@ -859,6 +859,51 @@ struct media_link *media_entity_find_link(struct media_pad *source,
-> >>>>   */
-> >>>>  struct media_pad *media_entity_remote_pad(const struct media_pad *pad);
-> >>>>  
-> >>>> +/**
-> >>>> + * media_entity_remote_pad_unique - Find a remote pad connected to an entity
-> >>>> + * @entity: The entity
-> >>>> + * @type: The type of pad to find (MEDIA_PAD_FL_SINK or MEDIA_PAD_FL_SOURCE)
-> >>>> + *
-> >>>> + * Search for and return a remote pad of @type connected to @entity through an
-> >>>> + * enabled link. If multiple (or no) remote pads match these criteria, an error
-> >>>> + * is returned.
-> >>>> + *
-> >>>> + * The uniqueness constraint makes this helper function suitable for entities
-> >>>> + * that support a single active source or sink at a time.
-> >>>> + *
-> >>>> + * Return: A pointer to the remote pad, or one of the following error pointers
-> >>>> + * if an error occurs:
-> >>>> + *
-> >>>> + * * -ENOTUNIQ - Multiple links are enabled
-> >>>> + * * -ENOLINK - No connected pad found
-> >>>> + */
-> >>>> +struct media_pad *
-> >>>> +media_entity_remote_pad_unique(const struct media_entity *entity,
-> >>>> +			       unsigned int type);
-> >>>> +
-> >>>> +/**
-> >>>> + * media_entity_remote_source_pad - Find a remote source pad connected to an entity
-> >>>> + * @entity: The entity
-> >>>> + *
-> >>>> + * Search for and return a remote source pad connected to @entity through an
-> >>>> + * enabled link. If multiple (or no) remote pads match these criteria, an error
-> >>>> + * is returned.
-> >>>> + *
-> >>>> + * The uniqueness constraint makes this helper function suitable for entities
-> >>>> + * that support a single active source at a time.
-> >>>> + *
-> >>>> + * Return: A pointer to the remote pad, or one of the following error pointers
-> >>>> + * if an error occurs:
-> >>>> + *
-> >>>> + * * -ENOTUNIQ - Multiple links are enabled
-> >>>> + * * -ENOLINK - No connected pad found
-> >>>> + */
-> >>>> +static inline struct media_pad *
-> >>>> +media_entity_remote_source_pad(const struct media_entity *entity)
-> >>>> +{
-> >>>> +	return media_entity_remote_pad_unique(entity, MEDIA_PAD_FL_SOURCE);
-> >>>> +}
-> >>>> +
-> >>>>  /**
-> >>>>   * media_entity_is_streaming - Test if an entity is part of a streaming pipeline
-> >>>>   * @entity: The entity
+> >  }
+> >  
+> >  void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
 
 -- 
 Regards,
