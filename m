@@ -4,83 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AED5C43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Jun 2022 23:51:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 548EBC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jun 2022 03:49:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vii85Ukhs9dzMmVW8UBf5g3lPGRuq9fdHfl+Ucu5SK4=; b=YnUOHdSzx9O2TU
-	M62Pfg0cY4Us//E+M3za1J6NBnOePsTC5S0nS2e3CsRJ8/pw62Y0zesMaBgEIwYjfFY5a0GGrcG14
-	Khaeykw6eD9gvfeswNT3+mb4c7ULkizrPEmUuFD10fOfx/HabPSJbvlS1kdgX3HnVNb6kgztt0H2Z
-	L6wpbuts5v2EqJoI6ABAPMj7cXxEisKaEMhmSJnps35cnht4NvbSgnOJwUJKjmdkZp0Y/EgpQymW/
-	qXTD7D++G9Z1I9DCnfTpHQ3/7Ek9i8PLaasVY4PVp/qzKAg7NycY4ks6bIi0uf2qoXNjwaMw2IeSU
-	Qz8JCiSt8npo2NPTb11g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b0yHzRkHcMIcIIj2bsp+jQQavgUI/UziT3Z6OUCVDR8=; b=jL9kq+R28vLUXhZKFWMlUWMJRa
+	gfBlvkU4yB/lDkXbSB02PAqTWVW7QWIHlyqEjvTSEhG0jwAYFdjDqRksiNfLB9cyG3H74zKPmb+r5
+	JIpVUfClz1rqqShTnZcGTamiYVGZg6nH8UcHforuP01FJRID5sOei6Tz6YTZlx43PbEdXQYuP6peI
+	aVZb5vsbwV3gflBc99F9QjqCKzEqXLYF54ph+SgS4Vxh4GZ1/uZKhMZ5PYlzk0SQo7VHC3cSYbZOZ
+	LkxPe1AKNGbqQyYjz+Asflro9k13sp5uX7d15r3jdtYNxNaOKFT59RaigJ2kz/VyHHQ93jzub1TVm
+	Ipn+ew6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4t4q-0048yO-60; Fri, 24 Jun 2022 23:51:04 +0000
-Received: from mail-yb1-xb2f.google.com ([2607:f8b0:4864:20::b2f])
+	id 1o4wnI-004XlV-15; Sat, 25 Jun 2022 03:49:12 +0000
+Received: from wout5-smtp.messagingengine.com ([64.147.123.21])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4t4e-0048vb-4p; Fri, 24 Jun 2022 23:50:54 +0000
-Received: by mail-yb1-xb2f.google.com with SMTP id i15so7080451ybp.1;
-        Fri, 24 Jun 2022 16:50:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=Tpyy52Va1yoUFxkWaJiZWHUiWCZKDHYZNk3jb16MkOc=;
-        b=bZ5Qc2PmXudjnJ7XSVzr2YBjuEyOt6GrlLXoD12O9fIJ+jo0UGfqbWTpuNs3g/mQzU
-         Jr5tBqM0dnffPv10emheE6AMj/AASM0COPNeOXelqEYDSNZNL+Vh6hgLq1ekJayzpiUh
-         FED1zdeTCzdhgtVkUu998NvUX+OIXrM02hrA8sF/GIyHXlUdwjVGP5ax3j49XH3/Qnfq
-         0rSjgWTimDcX3doA3Z7ckSIbyll1U0JPMFTHErhLEmc4dhHmKEVjMyQDN9iWSE5wr23P
-         3jNFI+FsOJUl8Tj1puiOWEj/ZUD4YhNXWgQDnbgEhtw1VTMVzqAjqlW3MlO237R2SY3c
-         u4eA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=Tpyy52Va1yoUFxkWaJiZWHUiWCZKDHYZNk3jb16MkOc=;
-        b=WZ8r8Nq6kKI5zkW2OphnHCoIresqbOQlY7JMbE4CHFURPFUN1fGyBqVS8EAbQBBbim
-         i+WE3TqXXs7l0d2JF7kqsJ8UCF6gIbHbz370oY+5Kz0aoW9S/MgpRO4hsZ6/gTY+rO+z
-         99cR22ceD6jVlSwHa0H787gCWzk9IGkYytTGIJCktH8iIiOpMmzFjhjtysp7YrGwMeqQ
-         5Gs+43gMsWfXv2gXvHBG70ZlYwlqFzEsuow4bhn39gWwFCpiNx0QbsAZuMuQ17OmFVw3
-         9vKp+Xyt2L6GDK0R/FMw2H8SZ+isvg8xPj2Xohhvr/dWdp/KU8Mauc6WKXxGHrF4+9mS
-         rDmA==
-X-Gm-Message-State: AJIora+iirf1308ishT/l2BYfWBrmk4Nx1Aui1Eyi699Azm6d9don0g4
-	40uZni5V+ZNCoA/VSpNYT6PSp8Ng1L6Qs6JrSyg=
-X-Google-Smtp-Source: AGRyM1vdDI/f8LGzmuk1iFMTPRqi7k5Gwp2+cwL1cyeaP7+C0e3UHCumNqn9DagvqoDBnzMHFa+NXofTv2G6w2geU2U=
-X-Received: by 2002:a25:9101:0:b0:669:8f1d:d2cf with SMTP id
- v1-20020a259101000000b006698f1dd2cfmr1730228ybl.461.1656114650221; Fri, 24
- Jun 2022 16:50:50 -0700 (PDT)
+	id 1o4wnD-004Xju-E7
+	for linux-rockchip@lists.infradead.org; Sat, 25 Jun 2022 03:49:10 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.west.internal (Postfix) with ESMTP id 0982032001E9;
+	Fri, 24 Jun 2022 23:49:01 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute4.internal (MEProxy); Fri, 24 Jun 2022 23:49:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
+	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to; s=fm2; t=1656128941; x=1656215341; bh=MFJaja2OYK
+	8nLbNkG1zK2oE4MU4F6Ft1dRMiHyQHjWw=; b=CUOqLK9tGEWXRwGTMfaGUL9ExY
+	YXKHbkvRlNAERrr9Epe2G7ptwMZuf1cO+/sVpJIAELiCEo/puyc8fe0P6FeNeyAL
+	1pn+qPTNu5ONehD87rw34Z9asfZT5Su2RdzptmgD1jn3M3M2uZrm4cgySghv+2SE
+	xtVnTNk88ne5DmRuB/Ls01vhZoxufbGtAemHbUN5hf15IIYQ2fotgGyU/1spQ9OL
+	IfSRJgkVqxRNSlAfTYbvEBRklrJgtCYPe6Yz1dbA2SEcJl1MWc9QeG5WLAkAHadH
+	XRnz3z4FvT4CDpmbspPZkUJ0L2qlfD8OAr5VCQD0yO3qeU8gZt39pHyARs5A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm2; t=1656128941; x=1656215341; bh=MFJaja2OYK8nLbNkG1zK2oE4MU4F
+	6Ft1dRMiHyQHjWw=; b=PLUgVfVG0Qmbv9tyhSyMAilJ6Y/6zPDY8xff9YaU1TNr
+	TT7qHW2mzERC9Hmmh68iqyMDRC/jd6EE4cEeoWlqygNhp+bGQlzoll/ikQbRddxu
+	ZcQ11jARxmutECvl3UmZ0C9W9broQXo/BesX/H+AZ5D0BS0LWe19prma/zG5WsFP
+	PwgUmwMdQ6acssXzMWchsrnh8JWH2QVFrI5Kxsayt4a0F6eiQU3mmMeI6I5O5BYK
+	qHiRbEfJc3hm1ax0K8cWnTNt1E93JR1pa3aEmBhwJXVCHMT8HLZHA4et6dNvStdX
+	0QzWvTKGYW8kBVMR8MmsWmz7NeqoVB4hLU7aegdGvQ==
+X-ME-Sender: <xms:rIW2YrwFGN7ECwbYxCA3E8USRiUDE1oWDp8ptfvHE2xI4zujcXBSfw>
+    <xme:rIW2YjR1p77H6eCNicgjxe_oLALn1KrPhn4MHlZsvZ_wC9rmC45Ob-gVaVsN9A3CJ
+    sbl4i95CHCJWhoZFY4>
+X-ME-Received: <xmr:rIW2YlX36bvzKEGMgnqVW3jrxeVHLPxvghmLrWjdmZjXhcfLI-YEUQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudegtddgjeeiucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtjeenucfhrhhomhepffgrfhhn
+    rgcujfhirhhstghhfhgvlhguuceouggrfhhnrgesfhgrshhtmhgrihhlrdgtohhmqeenuc
+    ggtffrrghtthgvrhhnpedvhedtledukeegveelfeeuvddujeeiteehkedvhfetkeffudej
+    hfeftdduhedvkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfh
+    hrohhmpegurghfnhgrsehfrghsthhmrghilhdrtghomh
+X-ME-Proxy: <xmx:rYW2YlgZFDQhoA2NsZzSXn9j3FG2cFWibaciVrejXOLTUXOUIdTjOQ>
+    <xmx:rYW2YtCetyR3VUbpkGdnpv3bVu3pCTpivUIHiMbkR-k5DAYTTE_kjw>
+    <xmx:rYW2YuIahOPtJDwpjukIB_GLE8WamwOQQfk0-uEKV28AtIDK6-iGAw>
+    <xmx:rYW2YnC0aEWFeF8JUeFNXaJI8G7_T7CZpg85O2QWucS9niyx3vfMeQ>
+Feedback-ID: i0e894699:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 24 Jun 2022 23:48:57 -0400 (EDT)
+Date: Sat, 25 Jun 2022 06:48:54 +0300
+From: Dafna Hirschfeld <dafna@fastmail.com>
+To: Paul Elder <paul.elder@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, heiko@sntech.de,
+	laurent.pinchart@ideasonboard.com,
+	jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
+	djrscally@gmail.com, helen.koike@collabora.com,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 18/55] media: rkisp1: Split CSI handling to separate file
+Message-ID: <20220625034854.ofifsye75tubciuk@guri>
+References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
+ <20220614191127.3420492-19-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
-References: <20220422072841.2206452-1-s.hauer@pengutronix.de>
- <20220422072841.2206452-21-s.hauer@pengutronix.de> <A86359EC-5291-41BD-966E-EB7890644731@gmail.com>
- <CAMdYzYoFG3wCQaWXQNJd7mE20OMCj=ZeuewwZfaCJyoCBT-kQQ@mail.gmail.com>
- <0E6FE020-C95E-47CF-A9D6-AC3F2B2D334F@gmail.com> <CAMdYzYobfJ7WGN+UQ7t5e1Zy9knjfHLse8KzrGrHPfeMkkG0gw@mail.gmail.com>
- <9F2D8CFF-1EAE-4586-9EE9-82A9D67840BB@gmail.com> <CAMdYzYrz7DRj7F9hGaAPaTSiZkQ4eMNujAp8uPuE9geL6kAz4g@mail.gmail.com>
- <9567EECF-A154-4FE1-A03C-5ED080409030@gmail.com> <190C3FD3-0185-4A99-B10E-A5790047D993@gmail.com>
- <CAMdYzYqGGfWDr11iyyfzigxsL7_N2szuag9P6TUZGuzGF4oB+A@mail.gmail.com> <AF6176F5-995E-473B-B494-844ECC26BC03@gmail.com>
-In-Reply-To: <AF6176F5-995E-473B-B494-844ECC26BC03@gmail.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Fri, 24 Jun 2022 19:50:38 -0400
-Message-ID: <CAMdYzYocZw1SNtgbfqn1VuvKTCiuMNTYRn2MydiGnL-UxtnYuA@mail.gmail.com>
-Subject: Re: [PATCH v11 20/24] arm64: dts: rockchip: enable vop2 and hdmi tx
- on rock-3a
-To: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>, Michael Riesch <michael.riesch@wolfvision.net>, 
-	dri-devel@lists.freedesktop.org, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
-	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, kernel@pengutronix.de, 
-	Andy Yan <andy.yan@rock-chips.com>, 
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	kernel test robot <lkp@intel.com>
+Content-Disposition: inline
+In-Reply-To: <20220614191127.3420492-19-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_165052_255945_6A69BF3B 
-X-CRM114-Status: GOOD (  41.29  )
+X-CRM114-CacheID: sfid-20220624_204907_823744_25FE7A16 
+X-CRM114-Status: GOOD (  17.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,101 +100,686 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBKdW4gMjQsIDIwMjIgYXQgMjo1NyBQTSBQaW90ciBPbmlzemN6dWsKPHBpb3RyLm9u
-aXN6Y3p1a0BnbWFpbC5jb20+IHdyb3RlOgo+Cj4KPgo+ID4gV2lhZG9tb8WbxIcgbmFwaXNhbmEg
-cHJ6ZXogUGV0ZXIgR2VpcyA8cGd3aXBlb3V0QGdtYWlsLmNvbT4gdyBkbml1IDI0LjA2LjIwMjIs
-IG8gZ29kei4gMTQ6NDA6Cj4gPgo+ID4+Cj4gPj4gU2FzY2hhLCBQZXRlcgo+ID4+Cj4gPj4gSSBy
-ZXR1cm5lZCB0byB0cnlpbmcgdG8gZmluZCB3aHkgaGRtaS1jZWMgaXMgbm90IHdvcmtpbmcgb24g
-cm9jazMtYSB2MS4zMSBody4KPiA+Pgo+ID4+IEknbSBvbiB2b3AyIHYxMSBvbiA1LjE4IG1haW5s
-aW5lLgo+ID4+Cj4gPj4gQ3VycmVudCBmaW5kaW5nczoKPiA+Pgo+ID4+ICgxKSB0aGUgc2FtZSBz
-dy4gc3RhY2svYmluYXJpZXMgd29ya3Mgb24gcm9jay0zYiAod2hlcmUgY2VjIHVzZXMgaGRtaXR4
-X20wIGluc3RlYWQgb2YgaGRtaXR4X20xIEkvTyBsaW5lKTsKPiA+Pgo+ID4+ICgyKSBncGlvLWNl
-YyBob3dldmVyIHdvcmtzIG5vIHByb2JsZW0gb24gcm9jazMtYTsKPiA+Pgo+ID4+ICgzKSBtb25p
-dG9yaW5nIGNlYyBtZXNzYWdlcyB3aXRoIHY0LXV0aWxzICdjZWMtZm9sbG93ZXIgLXMnIHNob3dz
-IGV4YWN0IHRoZSBzYW1lIGV2ZW50cyBpbiBub24td29ya2luZyByb2NrMy1hIGFuZCB3b3JraW5n
-IHJvY2szLWIKPiA+PiAodGVzdGVkIGJ5IGlzc3VlIGNvbmZpZ3VyZSBjZWMgYnkgJ2NlYy1jdGwg
-LWQgL2Rldi9jZWMwIC0tcGh5cy1hZGRyPTEuMC4wLjAgLS1wbGF5YmFjaycgY29tbWFuZCkKPiA+
-Cj4gPiAtLXBoeXMtYWRkciBpc24ndCBhIHZhbGlkIGNvbW1hbmQgZm9yIHRoaXMgY29udHJvbGxl
-ci4gVGhlIGRldmljZQo+ID4gZGVzaWduYXRpb24gaXMgb25seSByZXF1aXJlZCBpZiB5b3UgaGF2
-ZSBtb3JlIHRoYW4gb25lIGNlYyBkZXZpY2UuCj4gPgo+ID4+Cj4gPj4gLS0+IGknbSBpbnRlcnBy
-ZXRpbmcgdGhpcyBhcyBjb25maXJtYXRpb24gdGhhdCBsb3cgbGV2ZWwgcGh5IGxheWVyIHJlY2Vp
-dmVzIG9rIGNlYyBkYXRhIGZyb20gY29ubmVjdGVkIGRldmljZSBvbiBub24td29ya2luZyByb2Nr
-My1hOwo+ID4+Cj4gPj4gKDQpIGRlYnVnIHN5c2ZzIGZvciBjZWMgc2hvd3MgImhhcyBDRUMgZm9s
-bG93ZXIgKGluIHBhc3N0aHJvdWdoIG1vZGUpIiBmb3Igd29ya2luZyByb2NrLTNiIGFuZCB0aGVy
-ZSBpcyBOTyAiaGFzIENFQyBmb2xsb3dlciIgZGVidWcgbWVzc2FnZSBpbiBmYWlsaW5nIHJvY2sz
-LWEuCj4gPgo+ID4gVGhpcyBtYWtlcyBtZSBzdXNwZWN0IHlvdSBhcmUgaW4gZmFjdCBub3QgdXNp
-bmcgdGhlIHNhbWUgc29mdHdhcmUKPiA+IHN0YWNrLCBvciBhcmUgbm90IHJ1bm5pbmcgdGhlIHNh
-bWUgY29tbWFuZHMuCj4KPiBJdCB3YXMgdGhlIHNhbWUgU0QgY2FyZCAtIHdpdGggb25seSBEVCBk
-ZWNsYXJhdGlvbiBjaGFuZ2VkIGluIGJvb3Quc2NyCj4gU3VjaCBTRCBjYXJkIGhhcyBjZWMgcGVy
-ZmVjdGx5IHdvcmtpbmcgaW4gcm9jazNiCj4KPiA+IFJ1bm5pbmcgYGNlYy1mb2xsb3dlciAtdiAt
-bSAtVGAgb24gYSByazM1NjYgZGV2aWNlIHdpdGggd29ya2luZyBjZWMKPiA+IHVzaW5nIDUuMTkt
-cmMxLCBJIHNlZSBubyBtZW50aW9uIG9mIGNlYy1mb2xsb3dlciBpbiB0aGUgZGVidWdmcyBjZWMw
-Cj4gPiBzdGF0dXMgZW50cnkuCj4gPgo+ID4+Cj4gPj4gRm9yIG1lIEl0IGxvb2tzIGxpa2UgbG93
-LWxldmVsIGhkbWktY2VjIHdvcmtzIG9rIG9uIGZhaWxpbmcgcm9jazMtYSAtIGJ1dCB1cHBlciBs
-YXllcnMgKGluIGhkbWkgdm9wMj8pIGFyZSBub3QgcmVnaXN0ZXJpbmcgKG9yIGZhaWxpbmcgdG8g
-cmVnaXN0ZXIpIGNlYy1mb2xsb3dlciBmaWxlaGFuZGxlLiBUaGlzIGhhcHBlbnMganVzdCB3aGVu
-IGhkbWl0eCBJL08gaW4gRFQgaXMgY2hhbmdlZCBmcm9tIGhkbWl0eF9tMCB0byBoZG11dHhfbTEu
-IEEgYml0IHN0cmFuZ2UgLSBidXQgYWxsIG15IHRlc3RzIGNvbnNpc3RlbnRseSBjb25maXJtaW5n
-IHRoaXMgb2JzZXJ2YXRpb24uLi4uCj4gPgo+ID4gVGhlcmUgaXMgbm90aGluZyB3cm9uZyB3aXRo
-IHZvcDIgYXMgaXQgaXMgbm90IGludm9sdmVkIGF0IGFsbCBpbiB0aGlzLgo+ID4gVGhlIHJvY2tj
-aGlwIGhkbWkgZHJpdmVyICh3aGljaCBpcyBub3Qgc3BlY2lmaWMgdG8gdm9wMikgZG9lcyBub3Ro
-aW5nCj4gPiBtb3JlIHRoYW4gY2FsbCB0aGUgY2VjIHJlZ2lzdHJhdGlvbiBtZXRob2QgaW4gdGhl
-IGR3IGhkbWkgYnJpZGdlCj4gPiBkcml2ZXIsIHdoaWNoIHRoZW4gY2FsbHMgdGhlIGtlcm5lbCBj
-ZWMgcmVnaXN0cmF0aW9uIGZ1bmN0aW9ucy4KPiA+IENoYW5naW5nIHBpbm11eCBjaGFuZ2VzIG5v
-dGhpbmcgaW4gaG93IHRoaXMgZnVuY3Rpb25zLgo+ID4KPiA+Pgo+ID4+IEknbSB0b28gd2VhayBp
-biBrZXJuZWwgY2VjIGludGVybmFscyAtIHNvIG1heWJlIHlvdSBoYXZlIGFueSBwb2ludGVycyBo
-b3cgdG8gZnVydGhlciBkZWJ1Zy9pbnZlc3RpZ2F0ZSB0aGlzIGlzc3VlPwo+ID4KPiA+IEFzIHdl
-IGRpc2N1c3NlZCBpbiB0aGUgcGluZTY0IHJvb20sIHRoaXMgaXMgc3RpbGwgdmVyeSBsaWtlbHkg
-YQo+ID4gaGFyZHdhcmUgaXNzdWUgd2l0aCB0aGlzIGJvYXJkLiBBIGNvbmZpZ3VyYXRpb24gaXNz
-dWUgd2l0aCB5b3VyIHUtYm9vdAo+ID4gb3IgdGYtYSBpcyBhbHNvIGEgcG9zc2liaWxpdHksIGJ1
-dCBpcyBsZXNzIGxpa2VseS4KPiA+Cj4gPiBZb3Ugc2hvd2VkIHdpdGggeW91ciBsb2dpYyBhbmFs
-eXplciB3aXRoIG5vdGhpbmcgcGx1Z2dlZCBpbiBhbmQgY2VjCj4gPiBub3QgbXV4ZWQgdG8gbTEs
-IGRhdGEgd2FzIHByZXNlbnQgb24gbTEuCj4KPiBJc3N1ZSBvZiBwcmVzZW5jZSBvZiBkYXRhIG9u
-IG0xIHdpdGggbm90aGluZyBwbHVnZ2VkIHdhcyBtaXN0YWtlIGZyb20gbXkgc2lkZTogd3Jvbmcg
-Ym9hcmQgcGluIHVzZWQgdG8gY29ubmVjdCBsb2dpYyBhbmFseXNlciBHTkQuCj4gQWZ0ZXIgY29y
-cmVjdGx5IGNvbm5lY3RpbmcgR05EIC0gYWxsIGlzIG9rIChubyBhbnkgdW5leHBlY3RlZCBkYXRh
-OyBwdWxzZXMgYXBwZWFycyBvbmx5IGFmdGVyIGNlYyBjb21tYW5kczsgcHVsc2VzIHRpbWluZ3Mg
-YXJlIG9rIHNvIGNlYyBwcm90b2NvbCBhbmFseXNlciBzaG93cyByZWFzb25hYmxlIGRhdGE7IG5v
-IGNlYyB0aW1pbmcgZXJyb3JzIHJlcG9ydGVkIGJ5IHByb3RvY29sIGFuYWx5c2VyKS4KPgo+Cj4g
-PiBJIHJlcXVlc3RlZCB5b3UgaW52ZXN0aWdhdGUKPiA+IHRoZSBmb2xsb3dpbmcsIHRvIHdoaWNo
-IHlvdSBoYXZlbid0IHJlcGxpZWQ6Cj4gPiBIYXZlIHlvdSB0cmllZCBmb3JjaW5nIG0wIHRvIGJl
-IGFzc2lnbmVkIHRvIGEgZGV2aWNlIG90aGVyIHRoYW4gaGRtaS1jZWM/Cj4KPiBJJ20gYSBiaXQg
-bG9zdCBoZXJlOiB2MS4zMSBodyB1c2VzIG0xIGFuZCBtMCBpcyB1bnVzZWQuCj4gSXMgeW91IGlk
-ZWEgdG8gdmVyaWZ5IHRoYXQgbTAgaXMgbm90IHVzZWQgYnkgaGRtaS1jZWMgLSBldmVuIHdoZW4g
-bTEgaXMgZGVjbGFyZWQgZm9yIGhkbWktY2VjIGluIERUPwo+IE1heSB5b3UgcGxzIGhpbnQgbWUg
-d2l0aCBhbnkgZXhhbXBsZSBvZiBEVCBzbmlwcGV0IGZvciBZb3VyIG0wIGFzc2lnbm1lbnQgaWRl
-YT8KCkFzIHBpbmN0cmwgaXMgb25seSBhc3NpZ25lZCB3aGVuIGEgZGV2aWNlIGV4cGxpY2l0bHkg
-cmVxdWVzdHMgaXQgaW4KdGhlIGtlcm5lbCBkcml2ZXIsIGl0IGlzIHBvc3NpYmxlIHRvIGhhdmUg
-bXVsdGlwbGUgcGluY3RybCBwaW5zCmFzc2lnbmVkIHRvIGEgc2luZ2xlIGRldmljZSBpZiBpdCB3
-YXMgbGVmdCB0aGF0IHdheSBieSBwcmV2aW91cwpzb2Z0d2FyZSBvciB1c2Vyc3BhY2UgaGFzIGZ1
-biB3aXRoIGl0LiBTdWNoIGFzIGJvdGggdGhlIG0wIGFuZCBtMSBwaW5zCmFyZSBhc3NpZ25lZCB0
-byB0aGUgY2VjLWNvbnRyb2xsZXIuIFN1Y2ggYSBjYXNlIGlzIGJyb2tlbi4KCllvdSBjYW4gYXNz
-aWduIHRoZSBtMCBwaW4gdG8gYW5vdGhlciBkZXZpY2UgZXhwbGljaXRseSwgYnV0IGJlZm9yZQpk
-b2luZyBzbyBJJ2QgcmVhZCB0aGUgcmVnaXN0ZXIgbWFudWFsbHkganVzdCB0byBzZWUgaWYgaXQu
-IEZvciBleGFtcGxlCnRoYXQgcGluIGFsc28gaXMgdGhlIHNwaTNtMV9jczEgcGluLgoKPgo+ID4g
-SGF2ZSB5b3UgY2hlY2tlZCBpZiBtMSBpcyBzaG9ydGVkIHRvIGFub3RoZXIgcGluPwo+Cj4gWWVz
-LiBMb29rcyBvayBmb3IgbWUuCj4gKGFzIHJhZHhhIGRlYmlhbiBoYXMgd29ya2luZyBvayBoZG1p
-LWNlYyBpIHRoaW5rIGh3IGlzIG9rKQo+Cj4gPgo+ID4gSW4gcmVnYXJkcyB0byB5b3VyIGRhdGEg
-ZnJhbWVzIGZvciA0LjE5IHZzIDUuMTgsIGltYWdlLXZpZXctb24gaXMgbm90Cj4gPiBhIHZhbGlk
-IGNvbW1hbmQgaWYgdGhlIHRvcG9sb2d5IGRvZXNuJ3QgZGV0ZWN0IGEgZGV2aWNlIG9uIHRoZSBi
-dXMuCj4gPiBJIHJlY29tbWVuZCBydW5uaW5nIHRoZSBzYW1lIHRlc3QsIGV4Y2VwdCBydW4gYGNl
-Yy1jdGwgLVMgLS1wbGF5YmFja2AKPiA+IGFuZCBwb3N0IHRoZSByZXN1bHRzIGZvciBib3RoLgo+
-Cj4gUGxzIGZpbmQgcmVzdWx0cyBmb3IgY29tbWFuZCBgY2VjLWN0bCAtUyAtLXBsYXliYWNrYDoK
-Pgo+IDEuICByYWR4YSB1YnVudHUgNC4xOSBic3A6Cj4gbG9naWMgYW5hbHlzZXIgY2VjIHByb3Rv
-IGRlY29kZWQgKyB0aW1pbmdzOiBodHRwczovL3Bhc3RlYmluLmNvbS9oSFBtS3Y0aQo+IEZZSSBs
-b2dpYyBhbmFseXNlciBvdXRwdXQgKGZpcnN0IDM1MG1zZWMpOiBodHRwczovL3Bhc3RlLnBpY3Mv
-NjNjYjRkYzdmOWI1MWQ4ODI1ZDM3N2I0NWJmNzFhZTQKPgo+IDIuIG1haW5saW5lIDUuMTguNjoK
-PiBsb2dpYyBhbmFseXNlciBjZWMgcHJvdG8gZGVjb2RlZCArIHRpbWluZ3M6IGh0dHBzOi8vcGFz
-dGViaW4uY29tL1lZRFVZNHgxCj4gRllJIGxvZ2ljIGFuYWx5c2VyIG91dHB1dCAoZmlyc3QgMzUw
-bXNlYyk6IGh0dHBzOi8vcGFzdGUucGljcy8wZDg5NGI4Y2ViYTE2NGRjNmQ3NDNmODA0NGM3ZTAx
-ZQo+Cj4KCk5vdyB0aGlzIGlzIGludGVyZXN0aW5nLCB0aGUgVFYgaXMgcmVzcG9uZGluZyBpbiBi
-b3RoIGNhc2VzLiBUaGUgVFYKZG9lcyBub3Qgc2hvdyB1cCBhdCBhbGwgaW4gdGhlIHJldHVybiBz
-ZXF1ZW5jZSBpbiBjYXNlIDI/CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 15.06.2022 04:10, Paul Elder wrote:
+>Not all ISP instances include a MIPI CSI-2 receiver. To prepare for
+>making it optional, move code related to the CSI-2 receiver to a
+>separate file.
+>
+>Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+>Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+>---
+> .../media/platform/rockchip/rkisp1/Makefile   |   1 +
+> .../platform/rockchip/rkisp1/rkisp1-common.h  |  17 +-
+> .../platform/rockchip/rkisp1/rkisp1-csi.c     | 193 ++++++++++++++++++
+> .../platform/rockchip/rkisp1/rkisp1-csi.h     |  28 +++
+> .../platform/rockchip/rkisp1/rkisp1-dev.c     |  32 +--
+> .../platform/rockchip/rkisp1/rkisp1-isp.c     | 153 +-------------
+> 6 files changed, 257 insertions(+), 167 deletions(-)
+> create mode 100644 drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+> create mode 100644 drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
+>
+>diff --git a/drivers/media/platform/rockchip/rkisp1/Makefile b/drivers/media/platform/rockchip/rkisp1/Makefile
+>index f7543a82aa10..b3844c4f7623 100644
+>--- a/drivers/media/platform/rockchip/rkisp1/Makefile
+>+++ b/drivers/media/platform/rockchip/rkisp1/Makefile
+>@@ -2,6 +2,7 @@
+>
+> rockchip-isp1-y := rkisp1-capture.o \
+> 		   rkisp1-common.o \
+>+		   rkisp1-csi.o \
+> 		   rkisp1-dev.o \
+> 		   rkisp1-isp.o \
+> 		   rkisp1-resizer.o \
+>diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+>index 60c5462e1746..a52fa9e0dd66 100644
+>--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+>+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+>@@ -123,7 +123,6 @@ struct rkisp1_info {
+>  * @mbus_flags:		media bus (V4L2_MBUS_*) flags
+>  * @sd:			a pointer to v4l2_subdev struct of the sensor
+>  * @pixel_rate_ctrl:	pixel rate of the sensor, used to initialize the phy
+>- * @dphy:		a pointer to the phy
+>  */
+> struct rkisp1_sensor_async {
+> 	struct v4l2_async_subdev asd;
+>@@ -134,7 +133,19 @@ struct rkisp1_sensor_async {
+> 	unsigned int mbus_flags;
+> 	struct v4l2_subdev *sd;
+> 	struct v4l2_ctrl *pixel_rate_ctrl;
+>+};
+>+
+>+/*
+>+ * struct rkisp1_csi - CSI receiver subdev
+>+ *
+>+ * @rkisp1: pointer to the rkisp1 device
+>+ * @dphy: a pointer to the phy
+>+ * @is_dphy_errctrl_disabled: if dphy errctrl is disabled (avoid endless interrupt)
+>+ */
+>+struct rkisp1_csi {
+>+	struct rkisp1_device *rkisp1;
+
+I think you missed initializing csi->rkips1
+
+> 	struct phy *dphy;
+>+	bool is_dphy_errctrl_disabled;
+> };
+>
+> /*
+>@@ -147,7 +158,6 @@ struct rkisp1_sensor_async {
+>  * @sink_fmt:			input format
+>  * @src_fmt:			output format
+>  * @ops_lock:			ops serialization
+>- * @is_dphy_errctrl_disabled:	if dphy errctrl is disabled (avoid endless interrupt)
+>  * @frame_sequence:		used to synchronize frame_id between video devices.
+>  */
+> struct rkisp1_isp {
+>@@ -157,7 +167,6 @@ struct rkisp1_isp {
+> 	const struct rkisp1_mbus_info *sink_fmt;
+> 	const struct rkisp1_mbus_info *src_fmt;
+> 	struct mutex ops_lock; /* serialize the subdevice ops */
+>-	bool is_dphy_errctrl_disabled;
+> 	__u32 frame_sequence;
+> };
+>
+>@@ -411,6 +420,7 @@ struct rkisp1_debug {
+>  * @media_dev:	   media_device variable
+>  * @notifier:	   a notifier to register on the v4l2-async API to be notified on the sensor
+>  * @active_sensor: sensor in-use, set when streaming on
+>+ * @csi:	   internal CSI-2 receiver
+>  * @isp:	   ISP sub-device
+>  * @resizer_devs:  resizer sub-devices
+>  * @capture_devs:  capture devices
+>@@ -430,6 +440,7 @@ struct rkisp1_device {
+> 	struct media_device media_dev;
+> 	struct v4l2_async_notifier notifier;
+> 	struct rkisp1_sensor_async *active_sensor;
+>+	struct rkisp1_csi csi;
+> 	struct rkisp1_isp isp;
+> 	struct rkisp1_resizer resizer_devs[2];
+> 	struct rkisp1_capture capture_devs[2];
+>diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+>new file mode 100644
+>index 000000000000..4af04296b625
+>--- /dev/null
+>+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+>@@ -0,0 +1,193 @@
+>+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+>+/*
+>+ * Rockchip ISP1 Driver - CSI-2 Receiver
+>+ *
+>+ * Copyright (C) 2019 Collabora, Ltd.
+>+ * Copyright (C) 2022 Ideas on Board
+>+ *
+>+ * Based on Rockchip ISP1 driver by Rockchip Electronics Co., Ltd.
+>+ * Copyright (C) 2017 Rockchip Electronics Co., Ltd.
+>+ */
+>+
+>+#include <linux/device.h>
+>+#include <linux/phy/phy.h>
+>+#include <linux/phy/phy-mipi-dphy.h>
+>+
+>+#include <media/v4l2-ctrls.h>
+>+
+>+#include "rkisp1-common.h"
+>+#include "rkisp1-csi.h"
+>+
+>+int rkisp1_config_mipi(struct rkisp1_csi *csi)
+>+{
+>+	struct rkisp1_device *rkisp1 = csi->rkisp1;
+>+	const struct rkisp1_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
+>+	unsigned int lanes = rkisp1->active_sensor->lanes;
+>+	u32 mipi_ctrl;
+>+
+>+	if (lanes < 1 || lanes > 4)
+>+		return -EINVAL;
+>+
+>+	mipi_ctrl = RKISP1_CIF_MIPI_CTRL_NUM_LANES(lanes - 1) |
+>+		    RKISP1_CIF_MIPI_CTRL_SHUTDOWNLANES(0xf) |
+>+		    RKISP1_CIF_MIPI_CTRL_ERR_SOT_SYNC_HS_SKIP |
+>+		    RKISP1_CIF_MIPI_CTRL_CLOCKLANE_ENA;
+>+
+>+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_CTRL, mipi_ctrl);
+>+
+>+	/* V12 could also use a newer csi2-host, but we don't want that yet */
+>+	if (rkisp1->info->isp_ver == RKISP1_V12)
+>+		rkisp1_write(rkisp1, RKISP1_CIF_ISP_CSI0_CTRL0, 0);
+>+
+>+	/* Configure Data Type and Virtual Channel */
+>+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMG_DATA_SEL,
+>+		     RKISP1_CIF_MIPI_DATA_SEL_DT(sink_fmt->mipi_dt) |
+>+		     RKISP1_CIF_MIPI_DATA_SEL_VC(0));
+>+
+>+	/* Clear MIPI interrupts */
+>+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_ICR, ~0);
+
+new line here
+
+>+	/*
+>+	 * Disable RKISP1_CIF_MIPI_ERR_DPHY interrupt here temporary for
+>+	 * isp bus may be dead when switch isp.
+>+	 */
+>+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC,
+>+		     RKISP1_CIF_MIPI_FRAME_END | RKISP1_CIF_MIPI_ERR_CSI |
+>+		     RKISP1_CIF_MIPI_ERR_DPHY |
+>+		     RKISP1_CIF_MIPI_SYNC_FIFO_OVFLW(0x03) |
+>+		     RKISP1_CIF_MIPI_ADD_DATA_OVFLW);
+>+
+>+	dev_dbg(rkisp1->dev, "\n  MIPI_CTRL 0x%08x\n"
+>+		"  MIPI_IMG_DATA_SEL 0x%08x\n"
+>+		"  MIPI_STATUS 0x%08x\n"
+>+		"  MIPI_IMSC 0x%08x\n",
+>+		rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL),
+>+		rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMG_DATA_SEL),
+>+		rkisp1_read(rkisp1, RKISP1_CIF_MIPI_STATUS),
+>+		rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMSC));
+>+
+>+	return 0;
+>+}
+>+
+>+int rkisp1_mipi_csi2_start(struct rkisp1_csi *csi,
+>+			   struct rkisp1_sensor_async *sensor)
+>+{
+>+	struct rkisp1_device *rkisp1 = csi->rkisp1;
+>+	union phy_configure_opts opts;
+>+	struct phy_configure_opts_mipi_dphy *cfg = &opts.mipi_dphy;
+>+	s64 pixel_clock;
+>+
+>+	pixel_clock = v4l2_ctrl_g_ctrl_int64(sensor->pixel_rate_ctrl);
+>+	if (!pixel_clock) {
+>+		dev_err(rkisp1->dev, "Invalid pixel rate value\n");
+>+		return -EINVAL;
+>+	}
+>+
+>+	phy_mipi_dphy_get_default_config(pixel_clock,
+>+					 rkisp1->isp.sink_fmt->bus_width,
+>+					 sensor->lanes, cfg);
+>+	phy_set_mode(csi->dphy, PHY_MODE_MIPI_DPHY);
+>+	phy_configure(csi->dphy, &opts);
+>+	phy_power_on(csi->dphy);
+>+
+>+	return 0;
+>+}
+>+
+>+void rkisp1_mipi_csi2_stop(struct rkisp1_csi *csi)
+>+{
+>+	phy_power_off(csi->dphy);
+>+}
+>+
+>+void rkisp1_mipi_start(struct rkisp1_csi *csi)
+>+{
+>+	struct rkisp1_device *rkisp1 = csi->rkisp1;
+>+	u32 val;
+>+
+>+	val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
+>+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_CTRL,
+>+		     val | RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA);
+>+}
+>+
+>+void rkisp1_mipi_stop(struct rkisp1_csi *csi)
+>+{
+>+	struct rkisp1_device *rkisp1 = csi->rkisp1;
+>+	u32 val;
+>+
+>+	/* Mask and clear interrupts. */
+>+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC, 0);
+>+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_ICR, ~0);
+>+
+>+	val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
+>+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_CTRL,
+>+		     val & (~RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA));
+>+}
+>+
+>+irqreturn_t rkisp1_mipi_isr(int irq, void *ctx)
+>+{
+>+	struct device *dev = ctx;
+>+	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+>+	u32 val, status;
+>+
+>+	status = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_MIS);
+>+	if (!status)
+>+		return IRQ_NONE;
+>+
+>+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_ICR, status);
+>+
+>+	/*
+>+	 * Disable DPHY errctrl interrupt, because this dphy
+>+	 * erctrl signal is asserted until the next changes
+>+	 * of line state. This time is may be too long and cpu
+>+	 * is hold in this interrupt.
+>+	 */
+>+	if (status & RKISP1_CIF_MIPI_ERR_CTRL(0x0f)) {
+>+		val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMSC);
+>+		rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC,
+>+			     val & ~RKISP1_CIF_MIPI_ERR_CTRL(0x0f));
+>+		rkisp1->csi.is_dphy_errctrl_disabled = true;
+>+	}
+>+
+>+	/*
+>+	 * Enable DPHY errctrl interrupt again, if mipi have receive
+>+	 * the whole frame without any error.
+>+	 */
+>+	if (status == RKISP1_CIF_MIPI_FRAME_END) {
+>+		/*
+>+		 * Enable DPHY errctrl interrupt again, if mipi have receive
+>+		 * the whole frame without any error.
+>+		 */
+>+		if (rkisp1->csi.is_dphy_errctrl_disabled) {
+>+			val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMSC);
+>+			val |= RKISP1_CIF_MIPI_ERR_CTRL(0x0f);
+>+			rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC, val);
+>+			rkisp1->csi.is_dphy_errctrl_disabled = false;
+>+		}
+>+	} else {
+>+		rkisp1->debug.mipi_error++;
+>+	}
+>+
+>+	return IRQ_HANDLED;
+>+}
+>+
+>+int rkisp1_csi_init(struct rkisp1_device *rkisp1)
+>+{
+>+	struct rkisp1_csi *csi = &rkisp1->csi;
+>+
+>+	csi->dphy = devm_phy_get(rkisp1->dev, "dphy");
+>+	if (IS_ERR(csi->dphy)) {
+>+		if (PTR_ERR(csi->dphy) != -EPROBE_DEFER)
+>+		dev_err_probe(rkisp1->dev, PTR_ERR(csi->dphy),
+>+			      "Couldn't get the MIPI D-PHY\n");
+
+indentation
+
+>+		return PTR_ERR(csi->dphy);
+>+	}
+>+
+>+	phy_init(csi->dphy);
+>+
+>+	return 0;
+>+}
+>+
+>+void rkisp1_csi_cleanup(struct rkisp1_device *rkisp1)
+>+{
+>+	struct rkisp1_csi *csi = &rkisp1->csi;
+>+
+>+	phy_exit(csi->dphy);
+>+}
+>diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
+>new file mode 100644
+>index 000000000000..d97a4ee5c002
+>--- /dev/null
+>+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
+>@@ -0,0 +1,28 @@
+>+/* SPDX-License-Identifier: (GPL-2.0+ OR MIT) */
+>+/*
+>+ * Rockchip ISP1 Driver - CSI-2 Receiver
+>+ *
+>+ * Copyright (C) 2019 Collabora, Ltd.
+>+ * Copyright (C) 2022 Ideas on Board
+>+ *
+>+ * Based on Rockchip ISP1 driver by Rockchip Electronics Co., Ltd.
+>+ * Copyright (C) 2017 Rockchip Electronics Co., Ltd.
+>+ */
+>+#ifndef _RKISP1_CSI_H
+>+#define _RKISP1_CSI_H
+>+
+>+struct rkisp1_device;
+>+struct rkisp1_sensor_async;
+>+
+>+int rkisp1_csi_init(struct rkisp1_device *rkisp1);
+>+void rkisp1_csi_cleanup(struct rkisp1_device *rkisp1);
+>+
+>+int rkisp1_config_mipi(struct rkisp1_csi *csi);
+>+
+>+int rkisp1_mipi_csi2_start(struct rkisp1_csi *csi,
+>+			   struct rkisp1_sensor_async *sensor);
+>+void rkisp1_mipi_csi2_stop(struct rkisp1_csi *csi);
+>+void rkisp1_mipi_start(struct rkisp1_csi *csi);
+>+void rkisp1_mipi_stop(struct rkisp1_csi *csi);
+
+some of the functions name here are *_csi_* and some are *_csi2_*
+maybe choose consistent name?
+
+thanks,
+Dafna
+
+>+
+>+#endif /* _RKISP1_CSI_H */
+>diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+>index 0f3e45cdbf2a..373a1f00c10a 100644
+>--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+>+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+>@@ -15,11 +15,11 @@
+> #include <linux/of_graph.h>
+> #include <linux/of_platform.h>
+> #include <linux/pinctrl/consumer.h>
+>-#include <linux/phy/phy.h>
+>-#include <linux/phy/phy-mipi-dphy.h>
+>+#include <linux/pm_runtime.h>
+> #include <media/v4l2-fwnode.h>
+>
+> #include "rkisp1-common.h"
+>+#include "rkisp1-csi.h"
+>
+> /*
+>  * ISP Details
+>@@ -128,14 +128,6 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
+> 	}
+>
+> 	s_asd->sd = sd;
+>-	s_asd->dphy = devm_phy_get(rkisp1->dev, "dphy");
+>-	if (IS_ERR(s_asd->dphy)) {
+>-		if (PTR_ERR(s_asd->dphy) != -EPROBE_DEFER)
+>-			dev_err(rkisp1->dev, "Couldn't get the MIPI D-PHY\n");
+>-		return PTR_ERR(s_asd->dphy);
+>-	}
+>-
+>-	phy_init(s_asd->dphy);
+>
+> 	/* Create the link to the sensor. */
+> 	source_pad = media_entity_get_fwnode_pad(&sd->entity, s_asd->source_ep,
+>@@ -152,16 +144,6 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
+> 				     !s_asd->index ? MEDIA_LNK_FL_ENABLED : 0);
+> }
+>
+>-static void rkisp1_subdev_notifier_unbind(struct v4l2_async_notifier *notifier,
+>-					  struct v4l2_subdev *sd,
+>-					  struct v4l2_async_subdev *asd)
+>-{
+>-	struct rkisp1_sensor_async *s_asd =
+>-		container_of(asd, struct rkisp1_sensor_async, asd);
+>-
+>-	phy_exit(s_asd->dphy);
+>-}
+>-
+> static int rkisp1_subdev_notifier_complete(struct v4l2_async_notifier *notifier)
+> {
+> 	struct rkisp1_device *rkisp1 =
+>@@ -180,7 +162,6 @@ static void rkisp1_subdev_notifier_destroy(struct v4l2_async_subdev *asd)
+>
+> static const struct v4l2_async_notifier_operations rkisp1_subdev_notifier_ops = {
+> 	.bound = rkisp1_subdev_notifier_bound,
+>-	.unbind = rkisp1_subdev_notifier_unbind,
+> 	.complete = rkisp1_subdev_notifier_complete,
+> 	.destroy = rkisp1_subdev_notifier_destroy,
+> };
+>@@ -540,14 +521,20 @@ static int rkisp1_probe(struct platform_device *pdev)
+> 		goto err_unreg_v4l2_dev;
+> 	}
+>
+>-	ret = rkisp1_entities_register(rkisp1);
+>+	ret = rkisp1_csi_init(rkisp1);
+> 	if (ret)
+> 		goto err_unreg_media_dev;
+>
+>+	ret = rkisp1_entities_register(rkisp1);
+>+	if (ret)
+>+		goto err_cleanup_csi;
+>+
+> 	rkisp1_debug_init(rkisp1);
+>
+> 	return 0;
+>
+>+err_cleanup_csi:
+>+	rkisp1_csi_cleanup(rkisp1);
+> err_unreg_media_dev:
+> 	media_device_unregister(&rkisp1->media_dev);
+> err_unreg_v4l2_dev:
+>@@ -565,6 +552,7 @@ static int rkisp1_remove(struct platform_device *pdev)
+> 	v4l2_async_nf_cleanup(&rkisp1->notifier);
+>
+> 	rkisp1_entities_unregister(rkisp1);
+>+	rkisp1_csi_cleanup(rkisp1);
+> 	rkisp1_debug_cleanup(rkisp1);
+>
+> 	media_device_unregister(&rkisp1->media_dev);
+>diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+>index 81138c676ac0..5eabb321e320 100644
+>--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+>+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+>@@ -9,8 +9,6 @@
+>  */
+>
+> #include <linux/iopoll.h>
+>-#include <linux/phy/phy.h>
+>-#include <linux/phy/phy-mipi-dphy.h>
+> #include <linux/pm_runtime.h>
+> #include <linux/videodev2.h>
+> #include <linux/vmalloc.h>
+>@@ -18,6 +16,7 @@
+> #include <media/v4l2-event.h>
+>
+> #include "rkisp1-common.h"
+>+#include "rkisp1-csi.h"
+>
+> #define RKISP1_DEF_SINK_PAD_FMT MEDIA_BUS_FMT_SRGGB10_1X10
+> #define RKISP1_DEF_SRC_PAD_FMT MEDIA_BUS_FMT_YUYV8_2X8
+>@@ -265,55 +264,6 @@ static int rkisp1_config_dvp(struct rkisp1_device *rkisp1)
+> 	return 0;
+> }
+>
+>-static int rkisp1_config_mipi(struct rkisp1_device *rkisp1)
+>-{
+>-	const struct rkisp1_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
+>-	unsigned int lanes = rkisp1->active_sensor->lanes;
+>-	u32 mipi_ctrl;
+>-
+>-	if (lanes < 1 || lanes > 4)
+>-		return -EINVAL;
+>-
+>-	mipi_ctrl = RKISP1_CIF_MIPI_CTRL_NUM_LANES(lanes - 1) |
+>-		    RKISP1_CIF_MIPI_CTRL_SHUTDOWNLANES(0xf) |
+>-		    RKISP1_CIF_MIPI_CTRL_ERR_SOT_SYNC_HS_SKIP |
+>-		    RKISP1_CIF_MIPI_CTRL_CLOCKLANE_ENA;
+>-
+>-	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_CTRL, mipi_ctrl);
+>-
+>-	/* V12 could also use a newer csi2-host, but we don't want that yet */
+>-	if (rkisp1->info->isp_ver == RKISP1_V12)
+>-		rkisp1_write(rkisp1, RKISP1_CIF_ISP_CSI0_CTRL0, 0);
+>-
+>-	/* Configure Data Type and Virtual Channel */
+>-	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMG_DATA_SEL,
+>-		     RKISP1_CIF_MIPI_DATA_SEL_DT(sink_fmt->mipi_dt) |
+>-		     RKISP1_CIF_MIPI_DATA_SEL_VC(0));
+>-
+>-	/* Clear MIPI interrupts */
+>-	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_ICR, ~0);
+>-	/*
+>-	 * Disable RKISP1_CIF_MIPI_ERR_DPHY interrupt here temporary for
+>-	 * isp bus may be dead when switch isp.
+>-	 */
+>-	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC,
+>-		     RKISP1_CIF_MIPI_FRAME_END | RKISP1_CIF_MIPI_ERR_CSI |
+>-		     RKISP1_CIF_MIPI_ERR_DPHY |
+>-		     RKISP1_CIF_MIPI_SYNC_FIFO_OVFLW(0x03) |
+>-		     RKISP1_CIF_MIPI_ADD_DATA_OVFLW);
+>-
+>-	dev_dbg(rkisp1->dev, "\n  MIPI_CTRL 0x%08x\n"
+>-		"  MIPI_IMG_DATA_SEL 0x%08x\n"
+>-		"  MIPI_STATUS 0x%08x\n"
+>-		"  MIPI_IMSC 0x%08x\n",
+>-		rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL),
+>-		rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMG_DATA_SEL),
+>-		rkisp1_read(rkisp1, RKISP1_CIF_MIPI_STATUS),
+>-		rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMSC));
+>-
+>-	return 0;
+>-}
+>-
+> /* Configure MUX */
+> static int rkisp1_config_path(struct rkisp1_device *rkisp1)
+> {
+>@@ -326,7 +276,7 @@ static int rkisp1_config_path(struct rkisp1_device *rkisp1)
+> 		ret = rkisp1_config_dvp(rkisp1);
+> 		dpcl |= RKISP1_CIF_VI_DPCL_IF_SEL_PARALLEL;
+> 	} else if (sensor->mbus_type == V4L2_MBUS_CSI2_DPHY) {
+>-		ret = rkisp1_config_mipi(rkisp1);
+>+		ret = rkisp1_config_mipi(&rkisp1->csi);
+> 		dpcl |= RKISP1_CIF_VI_DPCL_IF_SEL_MIPI;
+> 	}
+>
+>@@ -360,17 +310,14 @@ static void rkisp1_isp_stop(struct rkisp1_device *rkisp1)
+> 	 * Stop ISP(isp) ->wait for ISP isp off
+> 	 */
+> 	/* stop and clear MI, MIPI, and ISP interrupts */
+>-	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC, 0);
+>-	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_ICR, ~0);
+>-
+> 	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IMSC, 0);
+> 	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, ~0);
+>
+> 	rkisp1_write(rkisp1, RKISP1_CIF_MI_IMSC, 0);
+> 	rkisp1_write(rkisp1, RKISP1_CIF_MI_ICR, ~0);
+>-	val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
+>-	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_CTRL,
+>-		     val & (~RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA));
+>+
+>+	rkisp1_mipi_stop(&rkisp1->csi);
+>+
+> 	/* stop ISP */
+> 	val = rkisp1_read(rkisp1, RKISP1_CIF_ISP_CTRL);
+> 	val &= ~(RKISP1_CIF_ISP_CTRL_ISP_INFORM_ENABLE |
+>@@ -417,11 +364,9 @@ static void rkisp1_isp_start(struct rkisp1_device *rkisp1)
+> 	rkisp1_config_clk(rkisp1);
+>
+> 	/* Activate MIPI */
+>-	if (sensor->mbus_type == V4L2_MBUS_CSI2_DPHY) {
+>-		val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
+>-		rkisp1_write(rkisp1, RKISP1_CIF_MIPI_CTRL,
+>-			     val | RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA);
+>-	}
+>+	if (sensor->mbus_type == V4L2_MBUS_CSI2_DPHY)
+>+		rkisp1_mipi_start(&rkisp1->csi);
+>+
+> 	/* Activate ISP */
+> 	val = rkisp1_read(rkisp1, RKISP1_CIF_ISP_CTRL);
+> 	val |= RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD |
+>@@ -814,35 +759,6 @@ static const struct v4l2_subdev_pad_ops rkisp1_isp_pad_ops = {
+>  * Stream operations
+>  */
+>
+>-static int rkisp1_mipi_csi2_start(struct rkisp1_isp *isp,
+>-				  struct rkisp1_sensor_async *sensor)
+>-{
+>-	struct rkisp1_device *rkisp1 =
+>-		container_of(isp->sd.v4l2_dev, struct rkisp1_device, v4l2_dev);
+>-	union phy_configure_opts opts;
+>-	struct phy_configure_opts_mipi_dphy *cfg = &opts.mipi_dphy;
+>-	s64 pixel_clock;
+>-
+>-	pixel_clock = v4l2_ctrl_g_ctrl_int64(sensor->pixel_rate_ctrl);
+>-	if (!pixel_clock) {
+>-		dev_err(rkisp1->dev, "Invalid pixel rate value\n");
+>-		return -EINVAL;
+>-	}
+>-
+>-	phy_mipi_dphy_get_default_config(pixel_clock, isp->sink_fmt->bus_width,
+>-					 sensor->lanes, cfg);
+>-	phy_set_mode(sensor->dphy, PHY_MODE_MIPI_DPHY);
+>-	phy_configure(sensor->dphy, &opts);
+>-	phy_power_on(sensor->dphy);
+>-
+>-	return 0;
+>-}
+>-
+>-static void rkisp1_mipi_csi2_stop(struct rkisp1_sensor_async *sensor)
+>-{
+>-	phy_power_off(sensor->dphy);
+>-}
+>-
+> static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+> {
+> 	struct rkisp1_device *rkisp1 =
+>@@ -856,7 +772,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+> 				 false);
+>
+> 		rkisp1_isp_stop(rkisp1);
+>-		rkisp1_mipi_csi2_stop(rkisp1->active_sensor);
+>+		rkisp1_mipi_csi2_stop(&rkisp1->csi);
+> 		return 0;
+> 	}
+>
+>@@ -878,7 +794,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+> 	if (ret)
+> 		goto mutex_unlock;
+>
+>-	ret = rkisp1_mipi_csi2_start(&rkisp1->isp, rkisp1->active_sensor);
+>+	ret = rkisp1_mipi_csi2_start(&rkisp1->csi, rkisp1->active_sensor);
+> 	if (ret)
+> 		goto mutex_unlock;
+>
+>@@ -888,7 +804,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+> 			       true);
+> 	if (ret) {
+> 		rkisp1_isp_stop(rkisp1);
+>-		rkisp1_mipi_csi2_stop(rkisp1->active_sensor);
+>+		rkisp1_mipi_csi2_stop(&rkisp1->csi);
+> 		goto mutex_unlock;
+> 	}
+>
+>@@ -993,53 +909,6 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
+>  * Interrupt handlers
+>  */
+>
+>-irqreturn_t rkisp1_mipi_isr(int irq, void *ctx)
+>-{
+>-	struct device *dev = ctx;
+>-	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+>-	u32 val, status;
+>-
+>-	status = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_MIS);
+>-	if (!status)
+>-		return IRQ_NONE;
+>-
+>-	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_ICR, status);
+>-
+>-	/*
+>-	 * Disable DPHY errctrl interrupt, because this dphy
+>-	 * erctrl signal is asserted until the next changes
+>-	 * of line state. This time is may be too long and cpu
+>-	 * is hold in this interrupt.
+>-	 */
+>-	if (status & RKISP1_CIF_MIPI_ERR_CTRL(0x0f)) {
+>-		val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMSC);
+>-		rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC,
+>-			     val & ~RKISP1_CIF_MIPI_ERR_CTRL(0x0f));
+>-		rkisp1->isp.is_dphy_errctrl_disabled = true;
+>-	}
+>-
+>-	/*
+>-	 * Enable DPHY errctrl interrupt again, if mipi have receive
+>-	 * the whole frame without any error.
+>-	 */
+>-	if (status == RKISP1_CIF_MIPI_FRAME_END) {
+>-		/*
+>-		 * Enable DPHY errctrl interrupt again, if mipi have receive
+>-		 * the whole frame without any error.
+>-		 */
+>-		if (rkisp1->isp.is_dphy_errctrl_disabled) {
+>-			val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMSC);
+>-			val |= RKISP1_CIF_MIPI_ERR_CTRL(0x0f);
+>-			rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC, val);
+>-			rkisp1->isp.is_dphy_errctrl_disabled = false;
+>-		}
+>-	} else {
+>-		rkisp1->debug.mipi_error++;
+>-	}
+>-
+>-	return IRQ_HANDLED;
+>-}
+>-
+> static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
+> {
+> 	struct v4l2_event event = {
+>-- 
+>2.30.2
+>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
