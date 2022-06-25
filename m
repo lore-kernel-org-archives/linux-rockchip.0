@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BE26C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jun 2022 05:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD624C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jun 2022 05:05:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bavA+XRpgOz8EQ0LWg9orp+5BfEqYWscQ7FyLJjdh/0=; b=4wkQBJxqlcjaQNycjVFBD6SHpY
-	w31Sw0gJCAazxHCh/QHLk/NcWFK+geh83pgROb1jzb4pUnjKf5ZsTtb1o8jfNwms/2m3ZbiYqQFSh
-	laMOq2p+js1izuXwwIBVA25CV2T1ed6ah0xeSSUNe15w0t2AQY+3vplzi232zOeIQxaMI49orS5jj
-	f45gSNKVo6D2tFaWjRSVci0u424Cfp5MUD4Y9IgxPCPaudUOKfFmDN738fknhqlwUDoIcx1oaX2eh
-	IUflSEqQLx+pAu26a5iT+A0kn3sjTgFN3jq1FBWSpABrpVp44xEHFlr14ULdaV1FxRUgIE5QWuk6T
-	BZ6pGpaw==;
+	bh=DtAL1tryOcf04ChxTCYE5TFqrpq1kt9j5xWC3NAzSoc=; b=PCIhKi/GA15b1KKsGlBydiST2I
+	khr6RJxBOdRXKHe3JS0bQDngu1f0FZq69zJLajt/3kJoe91plIeGTfWLoRnAbiuvtsuStTfXjp/wW
+	BMVsgXI/LSBunWs7+LK/+2UpkpZvZjbHbhc1W8DilGX2H3dGVnYOGkGq2V5GVEj8SjOrwsbLECa2x
+	PlSR9dTaT1cge12SfVp6ahKXZgdqqteA6zyjScnDFHH5sQNBFYQ0Eu7bH45sQaMvcvytfwDVLKke1
+	WNXfhStTIaAWF+J4I81OPEsxVOPzxDEwJ53guPP8trKnLxiZAzJvH+23rxiSMQpIyLA36/9WDKi/q
+	rU4KncIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4xyC-004f9f-CL; Sat, 25 Jun 2022 05:04:32 +0000
+	id 1o4xyp-004fGL-Ql; Sat, 25 Jun 2022 05:05:11 +0000
 Received: from wout5-smtp.messagingengine.com ([64.147.123.21])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4xy9-004f9A-PU
-	for linux-rockchip@lists.infradead.org; Sat, 25 Jun 2022 05:04:31 +0000
+	id 1o4xyn-004fFF-3h
+	for linux-rockchip@lists.infradead.org; Sat, 25 Jun 2022 05:05:10 +0000
 Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailout.west.internal (Postfix) with ESMTP id 732D33200910;
-	Sat, 25 Jun 2022 01:04:28 -0400 (EDT)
+	by mailout.west.internal (Postfix) with ESMTP id C37E83200901;
+	Sat, 25 Jun 2022 01:05:07 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
-  by compute2.internal (MEProxy); Sat, 25 Jun 2022 01:04:29 -0400
+  by compute2.internal (MEProxy); Sat, 25 Jun 2022 01:05:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
 	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
 	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm2; t=1656133467; x=1656219867; bh=lm8eqV5bh7
-	EwZAwY0dYNZBn1aIogTtEkXnKnj3irYZQ=; b=fSb3pvoeJNIp46y+5zu9AS3QBN
-	3WxbM1NUeD5+T+UzAim3SQacK3cUvYOuChqX2dN+owob4IfUA8wKcZmswLTW462F
-	1OKlsiQiPMYrExiJe35sATRiDWbwanEggtuG79a2v5/3WRGMkwmwnYD8iS8Y1O/q
-	qKBCD/fUfyhU8SQnU2LJnRQXxaf96kP41fLjrMD6y1aTP0Lw5Y/40d5C676Yo50h
-	wTblU7/o08BNpMC61U0PAu3d582D+fQW2t/5rphg3oawcgYPmNYOencCBhY+7j4T
-	cYhUSzdwscWNl3nkxmfrb/x84vfWRLClvF5XHmIHvajvuJkJ1e7q1bEGqPWA==
+	:subject:to:to; s=fm2; t=1656133507; x=1656219907; bh=Gv7D2SRG9y
+	KuAB2N1Eso0pAhevzF/nzQN+ib0KFHt0c=; b=JfnyHZzSrB0XBul0fe8cVyy+/I
+	sHqvvSBB9fCHB+cxovA2WBZNzotze1XbFTiDknyUKZrBJ1+ioOo5cA0l76i5qWBS
+	bAUrS7/inSd7EfHYzjwZIQX+owkcCx3KIMSPpFiWnrYUWq08WFWLgNnDXp9h+fJ7
+	EHpNHwNBaNz9YGFp2nsR2v08xr7CmAoLHN0E0lpByqp48cvMR1ntR5QUcgrDAWIs
+	mtAhbCFLr2SMoOAwPZB0DHUwo7RotrBJdT3zztdW0mjh+Ivk7ieGOFeLBOwqPXSz
+	CDvfsJBbktZC96rS5XQ3Dsprryo/fQ+mPGMpdGZY1Sj/cOnx/T3JcRV60ipQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
 	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
 	:mime-version:references:reply-to:sender:subject:subject:to:to
 	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm2; t=1656133467; x=1656219867; bh=lm8eqV5bh7EwZAwY0dYNZBn1aIog
-	TtEkXnKnj3irYZQ=; b=oWqItmX4DpOXrMbYrCIZ95lWiwZ0PjcF2/q7TFUCtwmv
-	ZEEu4BvSon6+EdtiIHs8eIJ0e5l4OETIl+c+BxSZIRH7H6I+/cwP54vaTuJzB3VK
-	Dh1ei2kBxi2hNtKCr3/Hh0ixpoAqcspoOHJE3pIOb+fvjEhVSmqkKH/kpaE/q+qI
-	Shvg1Bf1DHj24gaIz264SnG3r8LsFKcuCzzfcxfTdRJPoOVcg1DIJLIL81eZCsWy
-	iwR+IXcpJMQhSWXR0ZpuhX99/uulBJu+Z/IdsQ2ZtXMMhWqhGtcZLNk+FBhgGF8k
-	vae0FHPgXBSHBhOdRzb7GNmHEwgk4JP/bm/ZnkqneQ==
-X-ME-Sender: <xms:W5e2YhZKK-D4d_vAL4rkO5FXFc3kQ1v814cETrk3y9dbWRKSOy78_Q>
-    <xme:W5e2YoZrPP_SFgOr5qNdbov_StiZQvwAYsTNn-ysd_ZahZPenmntAtxpNUhjtiL52
-    28C-dCCrBv26_gUj-c>
-X-ME-Received: <xmr:W5e2Yj-EPEC54zVXuOKdIdmWXURdImitFBmq6x6Wc8knAWA7eT8i8A>
+	fm2; t=1656133507; x=1656219907; bh=Gv7D2SRG9yKuAB2N1Eso0pAhevzF
+	/nzQN+ib0KFHt0c=; b=pkpeUgvt7cxlv/zKW0Xf9ziCFYMVLa98bjRvJXeVCx7e
+	cYJwN0T8F19wYd8h1XZJWuHWevG+0UcymscusgYdEan7dMHrMcqC6Kjb0Dmq9mzK
+	1ZJtlMKBHm1oDhkDw2/GC/kC5fQ32nmcl+RH397ujzUh+FOCocUwvLSysXjk241h
+	0ZLq8JIIvLlaKavCYh+lojXRSefRdIFdyB6zdfltY2OKkcxit5xT7u82iKuZace7
+	GmMGQLWFQ67IM55Y8nLzfh9pCCUXzHm02HCliFEHGgJ10SXUjVZMYQAMFD9QtUeh
+	9rmknqfUjcwE7C72o3qPkbosq3xjF3qS6aHjoxlvSA==
+X-ME-Sender: <xms:g5e2Yonxfxd-ZJS5xlQvt0nq7FEFxNXYcUqkXdcQ6lt8tUoW7iVspg>
+    <xme:g5e2Yn0JvbSY-6qXG_zaRYTMJMO1vY5_Ap0UPLzQ_beeKAwyluaRErXy9gat53CdO
+    5LQnnzVcZhisDiE3s4>
+X-ME-Received: <xmr:g5e2Ymqwn-ebqjKalxxk6Z53oiH49wGXVW6w5UxPcOCgDdva-pA_Zg>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudegtddgleefucetufdoteggodetrfdotf
     fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
     uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
     cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtjeenucfhrhhomhepffgrfhhn
     rgcujfhirhhstghhfhgvlhguuceouggrfhhnrgesfhgrshhtmhgrihhlrdgtohhmqeenuc
     ggtffrrghtthgvrhhnpedvhedtledukeegveelfeeuvddujeeiteehkedvhfetkeffudej
-    hfeftdduhedvkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfh
+    hfeftdduhedvkeenucevlhhushhtvghrufhiiigvpedunecurfgrrhgrmhepmhgrihhlfh
     hrohhmpegurghfnhgrsehfrghsthhmrghilhdrtghomh
-X-ME-Proxy: <xmx:W5e2YvpUjIn7Ef5vfjiH13Lc_Hny_F-S9X7kgjeBbY_rPb_kCwiAOw>
-    <xmx:W5e2YsqO1ANMxQkxAX0GkpdCWPBt9l8wEfhJ1pg5uROyzfW4hdwiHQ>
-    <xmx:W5e2YlTk6OgueoPsdd5ZAsWaVbE9l1WpqlMUrF0-J-XE254TD7Cf1g>
-    <xmx:W5e2YkLjTzIlTymNW6kHAkqDCsqZp5Qota_PCuEakPyP6piF7uDWsw>
+X-ME-Proxy: <xmx:g5e2YknFGOoIx94vNFS7jtlENc2my9UmLJkRrlYAlAH9-smNPb01Rw>
+    <xmx:g5e2Ym1aW1cj_2IGg4rUUBNypprMdhan_SEzWOCq--KK-DdHke4IJQ>
+    <xmx:g5e2YrsKhqiFI4WHuYjx47obQMp0kUrbn57GAQdfBlQz5YWQPH0Mew>
+    <xmx:g5e2YvnsH33AO_5esKRA6zJOodyMVKQcEaM0Ik3Qs9TJxzzYJeb7kw>
 Feedback-ID: i0e894699:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 25 Jun 2022 01:04:24 -0400 (EDT)
-Date: Sat, 25 Jun 2022 08:04:21 +0300
+ 25 Jun 2022 01:05:04 -0400 (EDT)
+Date: Sat, 25 Jun 2022 08:05:01 +0300
 From: Dafna Hirschfeld <dafna@fastmail.com>
 To: Paul Elder <paul.elder@ideasonboard.com>
 Cc: linux-media@vger.kernel.org,
@@ -79,17 +79,16 @@ Cc: linux-media@vger.kernel.org,
 	heiko@sntech.de, jeanmichel.hautbois@ideasonboard.com,
 	jacopo@jmondi.org, djrscally@gmail.com, helen.koike@collabora.com,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 33/55] media: rkisp1: isp: Initialize some variables at
- declaration time
-Message-ID: <20220625050421.f4rgnckrebmsmvlz@guri>
+Subject: Re: [PATCH 34/55] media: rkisp1: isp: Fix whitespace issues
+Message-ID: <20220625050501.zpyhh6gtk7ezaee5@guri>
 References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
- <20220614191127.3420492-34-paul.elder@ideasonboard.com>
+ <20220614191127.3420492-35-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220614191127.3420492-34-paul.elder@ideasonboard.com>
+In-Reply-To: <20220614191127.3420492-35-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_220429_900150_40F37CD4 
-X-CRM114-Status: UNSURE (   7.45  )
+X-CRM114-CacheID: sfid-20220624_220509_222347_C48294DE 
+X-CRM114-Status: UNSURE (   7.55  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -110,36 +109,51 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 15.06.2022 04:11, Paul Elder wrote:
 >From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 >
->Intialize the src_fmt and sink_fmt variable when declaring them in
->rkisp1_config_isp().
+>Add missing blank lines after variable declaration blocks, and fix
+>indentation issues.
 >
 >Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
 Reviewed-by Dafna Hirschfeld <dafna@fastmail.com>
 
 >---
-> drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 5 ++---
-> 1 file changed, 2 insertions(+), 3 deletions(-)
+> drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 8 +++++---
+> 1 file changed, 5 insertions(+), 3 deletions(-)
 >
 >diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->index 4496af991c82..bf44f10200f5 100644
+>index bf44f10200f5..86d496855374 100644
 >--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
 >+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->@@ -142,12 +142,11 @@ static int rkisp1_config_isp(struct rkisp1_isp *isp,
+>@@ -79,7 +79,8 @@ rkisp1_isp_get_pad_fmt(struct rkisp1_isp *isp,
 > {
-> 	struct rkisp1_device *rkisp1 = isp->rkisp1;
-> 	u32 isp_ctrl = 0, irq_mask = 0, acq_mult = 0, acq_prop = 0;
->-	const struct rkisp1_mbus_info *src_fmt, *sink_fmt;
->+	const struct rkisp1_mbus_info *sink_fmt = isp->sink_fmt;
->+	const struct rkisp1_mbus_info *src_fmt = isp->src_fmt;
-> 	struct v4l2_mbus_framefmt *sink_frm;
-> 	struct v4l2_rect *sink_crop;
+> 	struct v4l2_subdev_state state = {
+> 		.pads = isp->pad_cfg
+>-		};
+>+	};
+>+
+> 	if (which == V4L2_SUBDEV_FORMAT_TRY)
+> 		return v4l2_subdev_get_try_format(&isp->sd, sd_state, pad);
+> 	else
+>@@ -93,7 +94,8 @@ rkisp1_isp_get_pad_crop(struct rkisp1_isp *isp,
+> {
+> 	struct v4l2_subdev_state state = {
+> 		.pads = isp->pad_cfg
+>-		};
+>+	};
+>+
+> 	if (which == V4L2_SUBDEV_FORMAT_TRY)
+> 		return v4l2_subdev_get_try_crop(&isp->sd, sd_state, pad);
+> 	else
+>@@ -893,8 +895,8 @@ static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
+> 	struct v4l2_event event = {
+> 		.type = V4L2_EVENT_FRAME_SYNC,
+> 	};
+>-	event.u.frame_sync.frame_sequence = isp->frame_sequence;
 >
->-	sink_fmt = isp->sink_fmt;
->-	src_fmt = isp->src_fmt;
-> 	sink_frm = rkisp1_isp_get_pad_fmt(isp, NULL,
-> 					  RKISP1_ISP_PAD_SINK_VIDEO,
-> 					  V4L2_SUBDEV_FORMAT_ACTIVE);
+>+	event.u.frame_sync.frame_sequence = isp->frame_sequence;
+> 	v4l2_event_queue(isp->sd.devnode, &event);
+> }
+>
 >-- 
 >2.30.2
 >
