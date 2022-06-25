@@ -4,73 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35211C43334
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jun 2022 06:51:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57772C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Jun 2022 07:01:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LSWqp0ufQDuhwaltYhEmQxcGCsq9qPk876Pg61bdajQ=; b=qtystFVeUFYzim
-	Y4siB0AAU/OsjmM3WeKqQofFjhF0XVrSyHUdsCLEaVsbMp+jfLn1l+tk414+3sBf8D7mX2ZRZrfHj
-	UbhWmpO+YdCfTbaJWyKxSmUQZSjnW2ET42rOAqS/Mc9eVl+qNMtPaW0rrpqCaEjHNWu8AitHHKeKb
-	9wmATsCfyhPtBANihguMgSfFJca372crU0gayqg6rn5YZ80hVA/3YTMGZW3UASF8NLDdzMQEWOJ4U
-	zhKCWtJ/6klAvYt3jJ9P//Wt6F7xmau2etOXgUL/NjVMfWWVPY627a7HvtG2ngGyRjl//UqFULsHA
-	qCAQeYoBIwIGsFE5w+7g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YQWpb2jrcNFbQJK7lSlb0NSzx6pAvuJMFcgSJriU3yo=; b=1kDj/8bQ46TzHaSxJvCEESWIfz
+	gDkOkAkx4YF4svEczcT1l2oiRGLtSoFoCMLFyRjHxp5y4yTNf2HcBls2HxPFDmpydCpQZ0oULDjN0
+	iTPVEUxBaAp72MNH4srgv+ATcku6Do7Qb2wJjqA1HxF3wl3gaJuUk4SChmkFsFlrT8E9yvcDGTGn2
+	kXhBvopqEQ7Gxa5aq4eL5rGw4Md3nftzGpdFq4RProz8jyHHGyh4F1uxXNXjVzoaQ4PgOMtAa4pE+
+	6Kn23vckv5dTdaDXwYWPfEZW+E87+eu3jX3GeS6SHER5eGgTGM6fW3Toe8zxdVvutUnCjz26ii8hC
+	g/G3fNdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4zdc-004uWX-QV; Sat, 25 Jun 2022 06:51:24 +0000
-Received: from vps0.lunn.ch ([185.16.172.187])
+	id 1o4zmj-004w6M-AS; Sat, 25 Jun 2022 07:00:49 +0000
+Received: from out2-smtp.messagingengine.com ([66.111.4.26])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o4zda-004uVC-C3; Sat, 25 Jun 2022 06:51:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=DpRcewL0IJOgcup/joXmgDicwFFYm/SKIQKzwXVWCV0=; b=S17dD0BnFVszDueqzqzCO7RBSt
-	L8S1H8njwdNi0KtUNa68tSCRzXhWS+0i/kpyzIF2vo00VrkjZ0Tzt02jQFC3IzLKPPaO6OB7fdH5j
-	UolqLyN+Rbjdv0TyiyzlIKYcWObsFlZvE7uZKigOIOOstQuSclpBhlMIVNyXeYjE60BE=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1o4zdB-008AWB-Sz; Sat, 25 Jun 2022 08:50:57 +0200
-Date: Sat, 25 Jun 2022 08:50:57 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Linux Kernel Network Developers <netdev@vger.kernel.org>,
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
-	arm-mail-list <linux-arm-kernel@lists.infradead.org>,
-	devicetree <devicetree@vger.kernel.org>,
-	David Wu <david.wu@rock-chips.com>, kernel@collabora.com
-Subject: Re: [PATCH 1/3] net: ethernet: stmmac: dwmac-rk: Disable delayline
- if it is invalid
-Message-ID: <YrawUa4VcRrMvNJf@lunn.ch>
-References: <20220623162850.245608-1-sebastian.reichel@collabora.com>
- <20220623162850.245608-2-sebastian.reichel@collabora.com>
- <YrWdnQKVbJR+NrfH@lunn.ch>
- <20220624162956.vn4b3va5cz2agvrb@mercury.elektranox.org>
- <YrXryvTpnSIOyUTD@lunn.ch>
- <20220624173547.ccads2mikb4np5wz@mercury.elektranox.org>
- <YrX2ROe3a5Qeot4z@lunn.ch>
- <20220624201537.l7p6aoquvvadmpei@mercury.elektranox.org>
- <CAMdYzYr_EA2Oxf6Q-WkX987eWUKRokRR1EsCWM4J+BcF+OkO9A@mail.gmail.com>
+	id 1o4zmf-004w4y-9M
+	for linux-rockchip@lists.infradead.org; Sat, 25 Jun 2022 07:00:47 +0000
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+	by mailout.nyi.internal (Postfix) with ESMTP id 097905C018E;
+	Sat, 25 Jun 2022 03:00:41 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute3.internal (MEProxy); Sat, 25 Jun 2022 03:00:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
+	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to; s=fm2; t=1656140441; x=1656226841; bh=RlGoNG9VfL
+	DqdgYpkSpV/LORekTR7zm1fiGqlCC0b4M=; b=WxDufg6P1AwE4UHuElYk5pUQ9D
+	FwXx6o+i1RMNPx0NafHjPvgGY0g+CprBtqeLD/Mea9OAxbCOu7mqdvj/DZ4Sh3kB
+	KnYb2ZgIUdY2ItwmlXufoNRv0cwS8Kq/eTaIENyDxlU+eHvdRXRN1oK9Mev4lT2W
+	V4T3cSdEz4WYihBg71nSAqeqoIz07//CIz+OIqnQRcGEeWwMF2DjX70QQBViWNsL
+	hPjZPA3v5MugfVsthjGkmSe34vPYFl8F0+DpxtuPncnB5FQ0fgY0U91oikykd6GN
+	RmHnX9DzZW4I5GZNVfOjA1sz2Q0yEAMMUfKzUhZNf5disc2AGkvyRILn1U1A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm2; t=1656140441; x=1656226841; bh=RlGoNG9VfLDqdgYpkSpV/LORekTR
+	7zm1fiGqlCC0b4M=; b=t5Pr9JPhd1AhkP8mf/DYD6VsFubJzR3KdbRcrFKenQiC
+	eTQi9gYhTjz2+XGR8XxSH+TyGi33/Q5+7LXPrKa7gi/d92s1sXWkjiEQmkNiIr0D
+	HUgKlmPMXNEVFKlN3/8TaFOD7MhCqvBufj+lPXYXSB4PbRvOS4Vwxb9sIZWfELVi
+	K1+wQFdOVt0Pjug18qIAyhNN3pVRxAAOW0EVEk56xZ1H15k5Bzkxb+IrX5dv8Wyf
+	Ge4jWpCiDaUjG3SlxhdQ3gmlOV5ZO4q1wZOCoLbF9yBKsOehyfZf+SBJcx2qs90A
+	OKguWh+dXiT1M25dEvRTMwGzvsg1AAiLDhNXhhZFJw==
+X-ME-Sender: <xms:mLK2YgI5EEQATyBfztK7gsO7yItRS9h9ZkoP4YRJnmHYGVyA47hkyg>
+    <xme:mLK2YgIu7h_4zRBRX6FDMwNsaiyL13sPjc4IGvsBAJGwmaugIy-VBdzG798Q3-ytd
+    dBdiuAP2q8we6cCPcc>
+X-ME-Received: <xmr:mLK2Ygu797KtqQ3Qki0jCtJcwkQeAwvnHq6TkXPTFmVXkyMJltaxJg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudegtddguddujecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+    enucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttdejnecuhfhrohhmpeffrghf
+    nhgrucfjihhrshgthhhfvghlugcuoegurghfnhgrsehfrghsthhmrghilhdrtghomheqne
+    cuggftrfgrthhtvghrnhepvdehtdeludekgeevleefuedvudejieetheekvdfhteekffdu
+    jefhfedtudehvdeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilh
+    hfrhhomhepuggrfhhnrgesfhgrshhtmhgrihhlrdgtohhm
+X-ME-Proxy: <xmx:mLK2YtbxjQKbJATqEmTWv1tQcjKxiHytqyeiWqbIAk-ie6ZXZp_krQ>
+    <xmx:mLK2YnYAQl-4tNNcP-egRiziohRPkGqqMGJgJuno_6TZZsLcjKQH7A>
+    <xmx:mLK2YpDSMh1FUH07xNXCgewRz_ylrei9qyjpDA09RVQePf-49luDFw>
+    <xmx:mbK2Yr48J4Pb5XYODW1SzZNuXvxQaGZxsrBtULzxNwjdz_pzXLn-Gw>
+Feedback-ID: i0e894699:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
+ 25 Jun 2022 03:00:37 -0400 (EDT)
+Date: Sat, 25 Jun 2022 10:00:34 +0300
+From: Dafna Hirschfeld <dafna@fastmail.com>
+To: Paul Elder <paul.elder@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, heiko@sntech.de,
+	laurent.pinchart@ideasonboard.com,
+	jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
+	djrscally@gmail.com, helen.koike@collabora.com,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 40/55] media: rkisp1: csi: Implement a V4L2 subdev for
+ the CSI receiver
+Message-ID: <20220625070034.6odv6cyvqqigb2sa@guri>
+References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
+ <20220614191127.3420492-41-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAMdYzYr_EA2Oxf6Q-WkX987eWUKRokRR1EsCWM4J+BcF+OkO9A@mail.gmail.com>
+In-Reply-To: <20220614191127.3420492-41-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220624_235122_449109_C3021DD9 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220625_000045_939430_831DDFFF 
+X-CRM114-Status: GOOD (  19.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,22 +101,450 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> The driver already sets the delays to 0 in case of the rgmii-id modes.
-> 0 is disabled, even in this patch. The only thing this patch does is
-> change the behavior when the delays are not set. If the rx delays
-> should be 0, they should be defined as 0 in the device tree. There is
-> rgmii-rxid for a reason as well, but if they are setting the rx delay
-> to 0 with rgmii that implies this hardware is fundamentally broken.
+On 15.06.2022 04:11, Paul Elder wrote:
+>The CSI receiver is a component separate from the ISP or the resizers.
+>It is actually optional, not all device model include a CSI receiver. On
+>some SoCs CSI-2 support can be provided through an external CSI-2
+>receiver, connected to the ISP's parallel input.
+>
+>To support those use cases, create a V4L2 subdev to model the CSI
+>receiver. It will allow the driver to handle both internal and external
+>CSI receivers the same way.
+>
+>The next commit will plumb the CSI subdev to the rest of the driver,
+>replacing direct function calls.
+>
+>Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+>Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+>---
+> .../platform/rockchip/rkisp1/rkisp1-common.h  |  17 ++
+> .../platform/rockchip/rkisp1/rkisp1-csi.c     | 287 ++++++++++++++++++
+> .../platform/rockchip/rkisp1/rkisp1-csi.h     |   4 +
+> .../platform/rockchip/rkisp1/rkisp1-dev.c     |   5 +
+> 4 files changed, 313 insertions(+)
+>
+>diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+>index 3c55e922346e..0ab49d1feb55 100644
+>--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+>+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+>@@ -68,6 +68,13 @@ enum rkisp1_rsz_pad {
+> 	RKISP1_RSZ_PAD_MAX
+> };
+>
+>+/* enum for the csi receiver pads */
+>+enum rkisp1_csi_pad {
+>+	RKISP1_CSI_PAD_SINK,
+>+	RKISP1_CSI_PAD_SRC,
+>+	RKISP1_CSI_PAD_MAX
 
-Or the delay is implemented by longer tracks on the PCB. It happens
-sometimes, but not very often.
+I'd call it RKISP1_CSI_PAD_NUM
 
-	   Andrew
+>+};
+>+
+> /* enum for the capture id */
+> enum rkisp1_stream_id {
+> 	RKISP1_MAINPATH,
+>@@ -141,11 +148,21 @@ struct rkisp1_sensor_async {
+>  * @rkisp1: pointer to the rkisp1 device
+>  * @dphy: a pointer to the phy
+>  * @is_dphy_errctrl_disabled: if dphy errctrl is disabled (avoid endless interrupt)
+>+ * @sd: v4l2_subdev variable
+>+ * @pads: media pads
+>+ * @pad_cfg: configurations for the pads
+>+ * @ops_lock: a lock for the subdev ops
+>+ * @source: source in-use, set when starting streaming
+>  */
+> struct rkisp1_csi {
+> 	struct rkisp1_device *rkisp1;
+> 	struct phy *dphy;
+> 	bool is_dphy_errctrl_disabled;
+>+	struct v4l2_subdev sd;
+>+	struct media_pad pads[RKISP1_CSI_PAD_MAX];
+>+	struct v4l2_subdev_pad_config pad_cfg[RKISP1_CSI_PAD_MAX];
+>+	struct mutex ops_lock; /* serialize the subdevice ops */
+>+	struct rkisp1_sensor_async *source;
+> };
+>
+> /*
+>diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+>index 425a3b014089..8182694a6fe0 100644
+>--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+>+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+>@@ -15,10 +15,34 @@
+> #include <linux/phy/phy-mipi-dphy.h>
+>
+> #include <media/v4l2-ctrls.h>
+>+#include <media/v4l2-fwnode.h>
+>
+> #include "rkisp1-common.h"
+> #include "rkisp1-csi.h"
+>
+>+#define RKISP1_CSI_DEV_NAME	RKISP1_DRIVER_NAME "_csi"
+>+
+>+#define RKISP1_CSI_DEF_FMT	MEDIA_BUS_FMT_SRGGB10_1X10
+>+
+>+static inline struct rkisp1_csi *to_rkisp1_csi(struct v4l2_subdev *sd)
+>+{
+>+	return container_of(sd, struct rkisp1_csi, sd);
+>+}
+>+
+>+static struct v4l2_mbus_framefmt *
+>+rkisp1_csi_get_pad_fmt(struct rkisp1_csi *csi,
+>+		       struct v4l2_subdev_state *sd_state,
+>+		       unsigned int pad, u32 which)
+>+{
+>+	struct v4l2_subdev_state state = {
+>+		.pads = csi->pad_cfg
+>+	};
+
+newline here
+>+	if (which == V4L2_SUBDEV_FORMAT_TRY)
+>+		return v4l2_subdev_get_try_format(&csi->sd, sd_state, pad);
+>+	else
+>+		return v4l2_subdev_get_try_format(&csi->sd, &state, pad);
+>+}
+>+
+> static int rkisp1_csi_config(struct rkisp1_csi *csi,
+> 			     const struct rkisp1_sensor_async *sensor)
+> {
+>@@ -185,6 +209,269 @@ irqreturn_t rkisp1_csi_isr(int irq, void *ctx)
+> 	return IRQ_HANDLED;
+> }
+>
+>+/* ----------------------------------------------------------------------------
+>+ * Subdev pad operations
+>+ */
+>+
+>+static void rkisp1_csi_set_src_fmt(struct rkisp1_csi *csi,
+>+				   struct v4l2_subdev_state *sd_state,
+>+				   struct v4l2_mbus_framefmt *format,
+>+				   unsigned int which)
+>+{
+>+	struct v4l2_mbus_framefmt *sink_fmt;
+>+
+>+	/* We don't set the src format directly; take it from the sink format */
+>+	sink_fmt = rkisp1_csi_get_pad_fmt(csi, sd_state, RKISP1_CSI_PAD_SINK,
+>+					  which);
+>+
+>+	*format = *sink_fmt;
+>+}
+>+
+>+static void rkisp1_csi_set_sink_fmt(struct rkisp1_csi *csi,
+>+				    struct v4l2_subdev_state *sd_state,
+>+				    struct v4l2_mbus_framefmt *format,
+>+				    unsigned int which)
+>+{
+>+	const struct rkisp1_mbus_info *mbus_info;
+>+	struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
+>+
+>+	sink_fmt = rkisp1_csi_get_pad_fmt(csi, sd_state, RKISP1_CSI_PAD_SINK,
+>+					  which);
+>+	src_fmt = rkisp1_csi_get_pad_fmt(csi, sd_state, RKISP1_CSI_PAD_SRC,
+>+					 which);
+>+
+>+	sink_fmt->code = format->code;
+>+
+>+	mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
+>+	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SINK)) {
+>+		sink_fmt->code = RKISP1_CSI_DEF_FMT;
+>+		mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
+>+	}
+>+
+>+	sink_fmt->width = clamp_t(u32, format->width,
+>+				  RKISP1_ISP_MIN_WIDTH,
+>+				  RKISP1_ISP_MAX_WIDTH);
+>+	sink_fmt->height = clamp_t(u32, format->height,
+>+				   RKISP1_ISP_MIN_HEIGHT,
+>+				   RKISP1_ISP_MAX_HEIGHT);
+>+
+>+	/* Propagate to source pad */
+>+	src_fmt->code = sink_fmt->code;
+>+	src_fmt->width = sink_fmt->width;
+>+	src_fmt->height = sink_fmt->height;
+>+
+
+why here you don't do '*src_fmt = *sink_fmt' instead of per field propaget ?
+
+>+	*format = *sink_fmt;
+>+}
+>+
+>+static int rkisp1_csi_enum_mbus_code(struct v4l2_subdev *sd,
+>+				     struct v4l2_subdev_state *sd_state,
+>+				     struct v4l2_subdev_mbus_code_enum *code)
+>+{
+>+	unsigned int i;
+>+	int pos = 0;
+>+
+>+	if (code->index >= rkisp1_mbus_info_length())
+>+		return -EINVAL;
+>+
+>+	for (i = 0; i < rkisp1_mbus_info_length(); i++) {
+>+		const struct rkisp1_mbus_info *fmt =
+>+			rkisp1_mbus_info_get_by_index(i);
+>+
+>+		if (fmt->direction & RKISP1_ISP_SD_SINK)
+>+			pos++;
+>+
+>+		if (code->index == pos - 1) {
+>+			code->code = fmt->mbus_code;
+>+			return 0;
+>+		}
+>+	}
+>+
+>+	return -EINVAL;
+>+}
+>+
+>+static int rkisp1_csi_init_config(struct v4l2_subdev *sd,
+>+				  struct v4l2_subdev_state *sd_state)
+>+{
+>+	struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
+>+
+>+	sink_fmt = v4l2_subdev_get_try_format(sd, sd_state,
+>+					      RKISP1_CSI_PAD_SRC);
+
+last argument here should be RKISP1_CSI_PAD_SINK ?
+
+>+	sink_fmt->width = RKISP1_DEFAULT_WIDTH;
+>+	sink_fmt->height = RKISP1_DEFAULT_HEIGHT;
+>+	sink_fmt->field = V4L2_FIELD_NONE;
+>+	sink_fmt->code = RKISP1_CSI_DEF_FMT;
+>+
+>+	src_fmt = v4l2_subdev_get_try_format(sd, sd_state,
+>+					     RKISP1_CSI_PAD_SINK);
+
+last argument here should be RKISP1_CSI_PAD_SRC ?
+
+>+	*src_fmt = *sink_fmt;
+>+
+>+	return 0;
+>+}
+>+
+>+static int rkisp1_csi_get_fmt(struct v4l2_subdev *sd,
+>+			      struct v4l2_subdev_state *sd_state,
+>+			      struct v4l2_subdev_format *fmt)
+>+{
+>+	struct rkisp1_csi *csi = to_rkisp1_csi(sd);
+>+
+>+	mutex_lock(&csi->ops_lock);
+>+	fmt->format = *rkisp1_csi_get_pad_fmt(csi, sd_state, fmt->pad,
+>+					      fmt->which);
+>+	mutex_unlock(&csi->ops_lock);
+>+	return 0;
+>+}
+>+
+>+static int rkisp1_csi_set_fmt(struct v4l2_subdev *sd,
+>+			      struct v4l2_subdev_state *sd_state,
+>+			      struct v4l2_subdev_format *fmt)
+>+{
+>+	struct rkisp1_csi *csi = to_rkisp1_csi(sd);
+>+
+>+	mutex_lock(&csi->ops_lock);
+>+	if (fmt->pad == RKISP1_CSI_PAD_SINK)
+>+		rkisp1_csi_set_sink_fmt(csi, sd_state, &fmt->format,
+>+					fmt->which);
+>+	else
+>+		rkisp1_csi_set_src_fmt(csi, sd_state, &fmt->format,
+>+				       fmt->which);
+>+
+>+	mutex_unlock(&csi->ops_lock);
+>+	return 0;
+>+}
+>+
+>+/* ----------------------------------------------------------------------------
+>+ * Subdev video operations
+>+ */
+>+
+>+static int rkisp1_csi_s_stream(struct v4l2_subdev *sd, int enable)
+>+{
+>+	struct rkisp1_csi *csi = to_rkisp1_csi(sd);
+>+	struct rkisp1_device *rkisp1 = csi->rkisp1;
+>+	struct media_pad *source_pad;
+>+	struct v4l2_subdev *source;
+>+	int ret;
+>+
+>+	if (!enable) {
+>+		v4l2_subdev_call(csi->source->sd, video, s_stream,
+>+				 false);
+>+
+>+		rkisp1_csi_stop(csi);
+>+
+>+		return ret;
+
+ret is uninitialized here
+
+>+	}
+>+
+>+	source_pad = media_entity_remote_source_pad(&sd->entity);
+>+	if (IS_ERR(source_pad)) {
+>+		dev_dbg(rkisp1->dev, "Failed to get source for CSI: %d\n", ret);
+
+here you should print 'ERR_PTR(source_pad)' instead of 'ret'
+
+thanks,
+Dafna
+
+>+		return -EPIPE;
+>+	}
+>+
+>+	source = media_entity_to_v4l2_subdev(source_pad->entity);
+>+	if (!source) {
+>+		/* This should really not happen, so is not worth a message. */
+>+		return -EPIPE;
+>+	}
+>+
+>+	csi->source = container_of(source->asd, struct rkisp1_sensor_async,
+>+				   asd);
+>+
+>+	if (csi->source->mbus_type != V4L2_MBUS_CSI2_DPHY)
+>+		return -EINVAL;
+>+
+>+	mutex_lock(&csi->ops_lock);
+>+	ret = rkisp1_csi_start(csi, csi->source);
+>+	mutex_unlock(&csi->ops_lock);
+>+	if (ret)
+>+		return ret;
+>+
+>+	v4l2_subdev_call(csi->source->sd, video, s_stream, true);
+>+
+>+	return 0;
+>+}
+>+
+>+/* ----------------------------------------------------------------------------
+>+ * Registration
+>+ */
+>+
+>+static const struct media_entity_operations rkisp1_csi_media_ops = {
+>+	.link_validate = v4l2_subdev_link_validate,
+>+};
+>+
+>+static const struct v4l2_subdev_video_ops rkisp1_csi_video_ops = {
+>+	.s_stream = rkisp1_csi_s_stream,
+>+};
+>+
+>+static const struct v4l2_subdev_pad_ops rkisp1_csi_pad_ops = {
+>+	.enum_mbus_code = rkisp1_csi_enum_mbus_code,
+>+	.init_cfg = rkisp1_csi_init_config,
+>+	.get_fmt = rkisp1_csi_get_fmt,
+>+	.set_fmt = rkisp1_csi_set_fmt,
+>+};
+>+
+>+static const struct v4l2_subdev_ops rkisp1_csi_ops = {
+>+	.video = &rkisp1_csi_video_ops,
+>+	.pad = &rkisp1_csi_pad_ops,
+>+};
+>+
+>+int rkisp1_csi_register(struct rkisp1_device *rkisp1)
+>+{
+>+	struct rkisp1_csi *csi = &rkisp1->csi;
+>+	struct v4l2_subdev_state state = {};
+>+	struct media_pad *pads;
+>+	struct v4l2_subdev *sd;
+>+	int ret;
+>+
+>+	csi->rkisp1 = rkisp1;
+>+	mutex_init(&csi->ops_lock);
+>+
+>+	sd = &csi->sd;
+>+	v4l2_subdev_init(sd, &rkisp1_csi_ops);
+>+	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
+>+	sd->entity.ops = &rkisp1_csi_media_ops;
+>+	sd->entity.function = MEDIA_ENT_F_VID_IF_BRIDGE;
+>+	sd->owner = THIS_MODULE;
+>+	strscpy(sd->name, RKISP1_CSI_DEV_NAME, sizeof(sd->name));
+>+
+>+	pads = csi->pads;
+>+	pads[RKISP1_CSI_PAD_SINK].flags = MEDIA_PAD_FL_SINK |
+>+					  MEDIA_PAD_FL_MUST_CONNECT;
+>+	pads[RKISP1_CSI_PAD_SRC].flags = MEDIA_PAD_FL_SOURCE |
+>+					 MEDIA_PAD_FL_MUST_CONNECT;
+>+
+>+	ret = media_entity_pads_init(&sd->entity, RKISP1_CSI_PAD_MAX, pads);
+>+	if (ret)
+>+		goto error;
+>+
+>+	state.pads = csi->pad_cfg;
+>+	rkisp1_csi_init_config(sd, &state);
+>+
+>+	ret = v4l2_device_register_subdev(&csi->rkisp1->v4l2_dev, sd);
+>+	if (ret) {
+>+		dev_err(sd->dev, "Failed to register csi receiver subdev\n");
+>+		goto error;
+>+	}
+>+
+>+	return 0;
+>+
+>+error:
+>+	media_entity_cleanup(&sd->entity);
+>+	mutex_destroy(&csi->ops_lock);
+>+	csi->rkisp1 = NULL;
+>+	return ret;
+>+}
+>+
+>+void rkisp1_csi_unregister(struct rkisp1_device *rkisp1)
+>+{
+>+	struct rkisp1_csi *csi = &rkisp1->csi;
+>+
+>+	if (!csi->rkisp1)
+>+		return;
+>+
+>+	v4l2_device_unregister_subdev(&csi->sd);
+>+	media_entity_cleanup(&csi->sd.entity);
+>+	mutex_destroy(&csi->ops_lock);
+>+}
+>+
+> int rkisp1_csi_init(struct rkisp1_device *rkisp1)
+> {
+> 	struct rkisp1_csi *csi = &rkisp1->csi;
+>diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
+>index 97ce7e7959ab..ddf8e5e08f55 100644
+>--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
+>+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
+>@@ -13,10 +13,14 @@
+>
+> struct rkisp1_device;
+> struct rkisp1_sensor_async;
+>+struct v4l2_subdev;
+>
+> int rkisp1_csi_init(struct rkisp1_device *rkisp1);
+> void rkisp1_csi_cleanup(struct rkisp1_device *rkisp1);
+>
+>+int rkisp1_csi_register(struct rkisp1_device *rkisp1);
+>+void rkisp1_csi_unregister(struct rkisp1_device *rkisp1);
+>+
+> int rkisp1_csi_start(struct rkisp1_csi *csi,
+> 		     const struct rkisp1_sensor_async *sensor);
+> void rkisp1_csi_stop(struct rkisp1_csi *csi);
+>diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+>index 253220188abd..faf2cd4c8149 100644
+>--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+>+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+>@@ -324,6 +324,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
+>
+> static void rkisp1_entities_unregister(struct rkisp1_device *rkisp1)
+> {
+>+	rkisp1_csi_unregister(rkisp1);
+> 	rkisp1_params_unregister(rkisp1);
+> 	rkisp1_stats_unregister(rkisp1);
+> 	rkisp1_capture_devs_unregister(rkisp1);
+>@@ -355,6 +356,10 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
+> 	if (ret)
+> 		goto error;
+>
+>+	ret = rkisp1_csi_register(rkisp1);
+>+	if (ret)
+>+		goto error;
+>+
+> 	ret = rkisp1_create_links(rkisp1);
+> 	if (ret)
+> 		goto error;
+>-- 
+>2.30.2
+>
 
 _______________________________________________
 Linux-rockchip mailing list
