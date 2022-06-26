@@ -4,55 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50D51C43334
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Jun 2022 11:59:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73D8BC43334
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Jun 2022 20:18:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C1EyEH1Y+LobPH/oi0ciEda6QAt3FW8xjH7YXlxeFc0=; b=y0tD4X3u2Sotb1
-	0VFbIJ0uIE34MQyqa0s8wcboj3X3sj8pun7xYmcHsiM0UVzeSuD7Ujz4iFCd58pRxjJnZXc/+tdnM
-	D0PjL3irmJgyjta1XTqs1Hvjubytm9t5aPPNtB4+ENQQJJuFi3PIhdTJZPscK18RZBBf84cIECI/k
-	xBsnmZ4FL0LabT4dpP1PwWJM++gxpXFHVge9MbbwQXUKuB07+T+EpkiqDri5MjtNEB21bckx1NRck
-	Edm3wjD1KnSKYrDt5sdaWXYdrHakT341EEzHQnKBh5P8TMXmev0rH6Yo9FFb/0gvg8OzxQ0/mMrj5
-	nInFbi51pZwswM33Un+w==;
+	List-Owner; bh=AqM2pTrcay/1Nm2kos1cMCjckYNJ1kc/Zgm/FLWAaD8=; b=zuZUruHq85hP7U
+	ZJaqLIi2vEPT9CRtURAhm7/J4rHlNKyjV3m8yLggRpHqxu8UBYb2Zusb58W/EpNyM61qsdyX4oW1s
+	BaIccPysoBppx/y9ebjeoyAu+deKOpwS8O6NEcsULtarowdP+g8U4wgiVa4D6wqjUV/Nwvp+Pmhtu
+	z8W2qkL5RmPPgcYHYaI7VQUxiajDuTDm6zVAPRjmjiDaJhsGeUM35UUFziFKX9Da9GE1DnjP1IohM
+	9IYRNT5mb33kWZl0b6/IqOsJuP7ojqblTIjH9gN7jMnlA3n4klOK9KxbDarTtEpkAKKjQl3avxbrk
+	ybhAQ3EYKqEgnZ8UJaDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5QvE-00BZJQ-Df; Sun, 26 Jun 2022 11:59:24 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1o5YiH-00DQrB-3q; Sun, 26 Jun 2022 20:18:33 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o5QvA-00BZI3-K0
-	for linux-rockchip@lists.infradead.org; Sun, 26 Jun 2022 11:59:22 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 814C647C;
-	Sun, 26 Jun 2022 13:59:18 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656244758;
-	bh=HW1eG9VGIY5EMWAsjPWLiwt5R0a/3een/kzTZOMo9hU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gL8KmefFueuaNq23pb0ZZJgkqxGVDcvZ5UzwSynXVa7xE6fc+iJDqmaJQcaGOsFWN
-	 FBdXk/RYls5+Da4k53R3jFVni7axWfNXyy5v6CtDGgZtFNqld3ZD9SOKGI0/N7mV04
-	 uvThVwXgKA9I67isuUWf7pUeAXRYmNZD1O1bkxpE=
-Date: Sun, 26 Jun 2022 14:59:00 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Paul Elder <paul.elder@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, dafna@fastmail.com, heiko@sntech.de,
-	jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
-	djrscally@gmail.com, helen.koike@collabora.com,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 50/55] media: rkisp1: Add and set registers for crop for
- i.MX8MP
-Message-ID: <YrhKBN8lrI+beC26@pendragon.ideasonboard.com>
-References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
- <20220614191127.3420492-51-paul.elder@ideasonboard.com>
+	id 1o5Yi5-00DQmL-WC
+	for linux-rockchip@lists.infradead.org; Sun, 26 Jun 2022 20:18:23 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id d2so3254669ejy.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 26 Jun 2022 13:18:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=lnbF1fjC+JvjJ15dVinDZNgoh7EJaSVwGaKHW7o0wZ8=;
+        b=wW32Ek+GuFD9uwHEGLBbT+0C8MIBVLar4kXtsEkBF64mra8w7rqkWRoVkPW/k8YU/H
+         7M6WNL+0rAWa40wnTM5rB+KaD/HyXE5dCJilu7P1YZAd2lyR9TzMvTjHZsufmasYkLaY
+         LCOR4F1tuzGnIP7lEm//+/rqZDxzOjO5v5H97H4ZPYDQIgfOUEnmtO77oth0Jy5rp9Xx
+         1M7QFSezlIsfPunkRVIiDUri06hnezyGcjJLtOZR8st+nTNaLCtXHjz040qrgFPfOMd6
+         hGZWE/dx9EfCKwcqmcLT0/ogb8vOicAvxZlDbhI68G6x1BKjReBIM75XoYYc7of9jXi4
+         qyfA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=lnbF1fjC+JvjJ15dVinDZNgoh7EJaSVwGaKHW7o0wZ8=;
+        b=CYevvY+AW0ZXjdRoxA8rOmIK68sdRg9/SOyj6RkzEhU7Ywyvyy2iMZ3m1dDHfyTP9z
+         TG9ExKnnuQ98ILDhYOC42ojloYcboNuhY/uoOwX6g4RwwtYEshXYoKPClOvpl0HnvnXv
+         QV+H0dkfkzucRA1y8b+p8IgOvWYxtOyIW/OvD/g3xabq/GBXcc1irFifYwm+Nlk712Et
+         3isznOd1S+HVZJY0Bx4MH4Iho6gS2YLCMrRuxJyg9hv706ssz4I1BN87xj61islehThK
+         cEEGQQUipwUT6sKZUxS4LlLlBV9e7k5qsrX1l1RcwNhGz9F6zEU6a9Cbd+a6B8m0q/GW
+         2h+Q==
+X-Gm-Message-State: AJIora/SFa7oq9/w0uXXJfuo1r5UjLQhS0Zs+YIWUQuW6MWTHrbRSZhB
+	HeMubzEWuV80eRDDPNnGUsPT1Q==
+X-Google-Smtp-Source: AGRyM1v0yaNtAV+Id57QV3yP/7C35VegUiMHZ3SK4snewZleCVTI+jGXtu3/rbJCqSl6AXK/2njUDQ==
+X-Received: by 2002:a17:907:3e81:b0:726:9615:d14d with SMTP id hs1-20020a1709073e8100b007269615d14dmr5276783ejc.517.1656274699878;
+        Sun, 26 Jun 2022 13:18:19 -0700 (PDT)
+Received: from [192.168.0.245] (xdsl-188-155-176-92.adslplus.ch. [188.155.176.92])
+        by smtp.gmail.com with ESMTPSA id c20-20020a056402101400b004358cec9ce1sm6402929edu.65.2022.06.26.13.18.18
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 26 Jun 2022 13:18:19 -0700 (PDT)
+Message-ID: <4fdcb631-16cd-d5f1-e2be-19ecedb436eb@linaro.org>
+Date: Sun, 26 Jun 2022 22:18:18 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220614191127.3420492-51-paul.elder@ideasonboard.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.10.0
+Subject: Re: [PATCH 3/3] dt-bindings: net: rockchip-dwmac: add rk3588 gmac
+ compatible
+Content-Language: en-US
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>
+Cc: "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, netdev@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, kernel@collabora.com
+References: <20220623162850.245608-1-sebastian.reichel@collabora.com>
+ <20220623162850.245608-4-sebastian.reichel@collabora.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220623162850.245608-4-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220626_045920_854799_ECA56601 
-X-CRM114-Status: GOOD (  24.56  )
+X-CRM114-CacheID: sfid-20220626_131822_063880_82A1330D 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,183 +100,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Paul,
-
-Thank you for the patch.
-
-On Wed, Jun 15, 2022 at 04:11:22AM +0900, Paul Elder wrote:
-> The ISP version in the i.MX8MP has a separate set of registers for crop
-> that is currently not handled. Add a feature flag to determine which
-> type of crop the ISP supports and set the crop registers based on that.
+On 23/06/2022 18:28, Sebastian Reichel wrote:
+> Add compatible string for RK3588 gmac, which is similar to the RK3568
+> one, but needs another syscon device for clock selection.
 > 
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |  2 ++
->  .../platform/rockchip/rkisp1/rkisp1-debug.c   | 14 +++++++++++++-
->  .../platform/rockchip/rkisp1/rkisp1-dev.c     |  7 +++++--
->  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  9 +++++++++
->  .../platform/rockchip/rkisp1/rkisp1-resizer.c | 19 +++++++++++++++++--
->  5 files changed, 46 insertions(+), 5 deletions(-)
+>  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 6 ++++++
+>  Documentation/devicetree/bindings/net/snps,dwmac.yaml     | 1 +
+>  2 files changed, 7 insertions(+)
+
+Rebase on some new kernel tree, you use old Cc addresses.
+
 > 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index 667fca0fef95..e4f422bed09a 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> @@ -110,6 +110,8 @@ enum rkisp1_isp_pad {
->   */
->  enum rkisp1_feature {
->  	RKISP1_FEATURE_MIPI_CSI2 = BIT(0),
-> +	RKISP1_FEATURE_DUAL_CROP = BIT(1),
-> +	RKISP1_FEATURE_RSZ_CROP = BIT(2),
->  };
+> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> index 083623c8d718..c42f5a74a92e 100644
+> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+> @@ -25,6 +25,7 @@ select:
+>            - rockchip,rk3368-gmac
+>            - rockchip,rk3399-gmac
+>            - rockchip,rk3568-gmac
+> +          - rockchip,rk3588-gmac
+>            - rockchip,rv1108-gmac
+>    required:
+>      - compatible
+> @@ -50,6 +51,7 @@ properties:
+>        - items:
+>            - enum:
+>                - rockchip,rk3568-gmac
+> +              - rockchip,rk3588-gmac
+>            - const: snps,dwmac-4.20a
 >  
->  /*
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> index 02854e8ea1a4..753abd024ce7 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> @@ -115,9 +115,21 @@ static int rkisp1_debug_dump_rsz_regs_show(struct seq_file *m, void *p)
->  		RKISP1_DEBUG_SHD_REG(RSZ_PHASE_VC),
->  		{ /* Sentinel */ },
->  	};
-> +	static const struct rkisp1_debug_register crop_registers[] = {
-> +		RKISP1_DEBUG_SHD_REG(RSZ_CROP_X_DIR),
-> +		RKISP1_DEBUG_SHD_REG(RSZ_CROP_Y_DIR),
-> +		RKISP1_DEBUG_REG(RSZ_FRAME_RATE),
-> +		RKISP1_DEBUG_REG(RSZ_FORMAT_CONV_CTRL),
-> +		{ /* Sentinel */ },
-> +	};
->  	struct rkisp1_resizer *rsz = m->private;
+>    clocks:
+> @@ -81,6 +83,10 @@ properties:
+>      description: The phandle of the syscon node for the general register file.
+>      $ref: /schemas/types.yaml#/definitions/phandle
 >  
-> -	return rkisp1_debug_dump_regs(rsz->rkisp1, m, rsz->regs_base, registers);
-> +	rkisp1_debug_dump_regs(rsz->rkisp1, m, rsz->regs_base, registers);
-> +	if (rsz->rkisp1->info->features & RKISP1_FEATURE_RSZ_CROP)
-> +		rkisp1_debug_dump_regs(rsz->rkisp1, m, rsz->regs_base,
-> +				       crop_registers);
-> +
-> +	return 0;
->  }
->  DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_rsz_regs);
->  
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> index a4496ee2e9b4..5abe33f5fed4 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> @@ -465,7 +465,8 @@ static const struct rkisp1_info px30_isp_info = {
->  	.isrs = px30_isp_isrs,
->  	.isr_size = ARRAY_SIZE(px30_isp_isrs),
->  	.isp_ver = RKISP1_V12,
-> -	.features = RKISP1_FEATURE_MIPI_CSI2,
-> +	.features = RKISP1_FEATURE_MIPI_CSI2
-> +		  | RKISP1_FEATURE_DUAL_CROP,
->  };
->  
->  static const char * const rk3399_isp_clks[] = {
-> @@ -484,7 +485,8 @@ static const struct rkisp1_info rk3399_isp_info = {
->  	.isrs = rk3399_isp_isrs,
->  	.isr_size = ARRAY_SIZE(rk3399_isp_isrs),
->  	.isp_ver = RKISP1_V10,
-> -	.features = RKISP1_FEATURE_MIPI_CSI2,
-> +	.features = RKISP1_FEATURE_MIPI_CSI2
-> +		  | RKISP1_FEATURE_DUAL_CROP,
->  };
->  
->  static const char * const imx8mp_isp_clks[] = {
-> @@ -503,6 +505,7 @@ static const struct rkisp1_info imx8mp_isp_info = {
->  	.isrs = imx8mp_isp_isrs,
->  	.isr_size = ARRAY_SIZE(imx8mp_isp_isrs),
->  	.isp_ver = IMX8MP_V10,
-> +	.features = RKISP1_FEATURE_RSZ_CROP,
->  };
->  
->  static const struct of_device_id rkisp1_of_match[] = {
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> index dd3e6c38be67..1fc54ab22b6d 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> @@ -168,6 +168,9 @@
->  #define RKISP1_CIF_RSZ_CTRL_CFG_UPD_AUTO		BIT(9)
->  #define RKISP1_CIF_RSZ_SCALER_FACTOR			BIT(16)
->  
-> +/* RSZ_CROP_[XY]_DIR */
-> +#define RKISP1_CIF_RSZ_CROP_XY_DIR(start, end)		((end) << 16 | (start) << 0)
-> +
->  /* MI_IMSC - MI_MIS - MI_RIS - MI_ICR - MI_ISR */
->  #define RKISP1_CIF_MI_FRAME(stream)			BIT((stream)->id)
->  #define RKISP1_CIF_MI_MBLK_LINE				BIT(2)
-> @@ -926,6 +929,12 @@
->  #define RKISP1_CIF_RSZ_PHASE_HC_SHD		0x004C
->  #define RKISP1_CIF_RSZ_PHASE_VY_SHD		0x0050
->  #define RKISP1_CIF_RSZ_PHASE_VC_SHD		0x0054
-> +#define RKISP1_CIF_RSZ_CROP_X_DIR		0x0058
-> +#define RKISP1_CIF_RSZ_CROP_Y_DIR		0x005C
-> +#define RKISP1_CIF_RSZ_CROP_X_DIR_SHD		0x0060
-> +#define RKISP1_CIF_RSZ_CROP_Y_DIR_SHD		0x0064
-> +#define RKISP1_CIF_RSZ_FRAME_RATE		0x0068
-> +#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL		0x006C
->  
->  #define RKISP1_CIF_MI_BASE			0x00001400
->  #define RKISP1_CIF_MI_CTRL			(RKISP1_CIF_MI_BASE + 0x00000000)
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> index f4caa8f684aa..08bf3aa8088f 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> @@ -244,6 +244,7 @@ static void rkisp1_rsz_config_regs(struct rkisp1_resizer *rsz,
->  {
->  	u32 ratio, rsz_ctrl = 0;
->  	unsigned int i;
-> +	u32 val;
->  
->  	/* No phase offset */
->  	rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_PHASE_HY, 0);
-> @@ -292,6 +293,18 @@ static void rkisp1_rsz_config_regs(struct rkisp1_resizer *rsz,
->  
->  	rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_CTRL, rsz_ctrl);
->  
-> +	if (rsz->rkisp1->info->features & RKISP1_FEATURE_RSZ_CROP) {
-> +		val = RKISP1_CIF_RSZ_CROP_XY_DIR(src_y->left, src_y->left + src_y->width - 1);
-> +		rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_CROP_X_DIR, val);
-> +		val = RKISP1_CIF_RSZ_CROP_XY_DIR(src_y->top, src_y->top + src_y->height - 1);
-> +		rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_CROP_Y_DIR, val);
-> +
-> +		val = RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_INPUT_FORMAT_YCBCR_422
-> +		    | RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_OUTPUT_FORMAT_YCBCR_420
-> +		    | RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_PACK_FORMAT_SEMI_PLANAR;
+> +  rockchip,php_grf:
 
-Shouldn't this depend on the input and output formats of the resizer ?
+What does the "php" mean?
 
-> +		rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_FORMAT_CONV_CTRL, val);
-> +	}
-> +
->  	rkisp1_rsz_update_shadow(rsz, when);
->  }
->  
-> @@ -656,7 +669,8 @@ static int rkisp1_rsz_s_stream(struct v4l2_subdev *sd, int enable)
->  	enum rkisp1_shadow_regs_when when = RKISP1_SHADOW_REGS_SYNC;
->  
->  	if (!enable) {
-> -		rkisp1_dcrop_disable(rsz, RKISP1_SHADOW_REGS_ASYNC);
-> +		if (rkisp1->info->features & RKISP1_FEATURE_DUAL_CROP)
-> +			rkisp1_dcrop_disable(rsz, RKISP1_SHADOW_REGS_ASYNC);
->  		rkisp1_rsz_disable(rsz, RKISP1_SHADOW_REGS_ASYNC);
->  		return 0;
->  	}
-> @@ -666,7 +680,8 @@ static int rkisp1_rsz_s_stream(struct v4l2_subdev *sd, int enable)
->  
->  	mutex_lock(&rsz->ops_lock);
->  	rkisp1_rsz_config(rsz, when);
-> -	rkisp1_dcrop_config(rsz);
-> +	if (rkisp1->info->features & RKISP1_FEATURE_DUAL_CROP)
-> +		rkisp1_dcrop_config(rsz);
->  
->  	mutex_unlock(&rsz->ops_lock);
->  	return 0;
+No underscores in names, hyphens instead.
 
--- 
-Regards,
 
-Laurent Pinchart
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
