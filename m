@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3531C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jun 2022 10:02:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98806C43334
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jun 2022 13:58:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XAH88IMrzu1xCHJ1OLgxRD380dfBtHjMNWjdyncdj4I=; b=yeJP6ek3qGwspHr5gUauP6IXFX
-	y98/ZCvVVKWdRbbcSVZoEdkVPoaxc4g9g3yvkPj63BTZh2IbSE1P4SE7k+UNAbnIWNwWXsZUMRDqU
-	AfqE2BCgkjm8T2qLcFNGeixrgHrLgckJhlTmKOMQ/oscVnudMqxgcNljHaqgZYYtYUlCm5+146PFX
-	i49D9MbAv61sHRAnXEQM5CxrUWs2PAWGCdxB1Tsc+pADnw/adil8wXF5qINPOOaWafvYzMgApuNgz
-	M3t8VjTP8NP2kR025jqro2bwX+EhUNsdL5BrByvQ3N8U/lwJDg7V2XiNPVFiNvWWgZOND9ItUA2Sy
-	3U1oey2w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Dh5vNUub4KD3YrRxsPu5tYI9/ooYOAqM6JqbL1nX6eE=; b=nq+a3KmTLvpdX6
+	tXQ+acn3Vf1Q6ZV9t/S6U384ULm4hEPuXKBF3SxcnCwEgp6q8PYl9zS/i4O1kx5gqye3Le91nvr8i
+	Z/j9fwtrddiU9UEJwVVHY7apJizRVoTtdU4O4ZxdtgE/uPyGzkFBMQjeWHwykVV2qLJxsAroEtdgX
+	1ZWMbMe+PUWSwh7/wNL8mXg6Iw7zKGCCcfTtWG0nQitE7iHvOLd2FOp8PNJ6Riom4qugpCaqjub5B
+	qmeK/IjBKJnJhW5S4BVJPVu6WXdeQnOyaW4t1CqcdFD5OpSCKRu2iP691ZFWGiamcIEtDdTDJArLA
+	HScIki0tmVxstYPUAgCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o682r-005cOi-Dz; Tue, 28 Jun 2022 10:02:09 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o6BjX-006aZ2-DF; Tue, 28 Jun 2022 13:58:27 +0000
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o682g-005cMT-PI; Tue, 28 Jun 2022 10:02:00 +0000
-Received: from mercury (dyndsl-095-033-152-169.ewe-ip-backbone.de [95.33.152.169])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AC26566015BF;
-	Tue, 28 Jun 2022 11:01:54 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656410514;
-	bh=B+3J166mE7yKiVnjSIyWp3uT7KdPeBK+33FGGWy9RJg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=M8saON4JHL9YGPUFK1egyrxL/8I/qsYZXe6LxdIs3ftZ5nLVb6f2GxpvYQYI1gwXE
-	 Er8Li0/WGkZydvB3Qk+R21aLPz2KZjEa6eNgiMKI3M9PCTptid9HYSTA4v0K3RiT2a
-	 Wf3GfKywmOT0WhMh4JB0oY1imBpu9Ec7LZr3NlfxSzqqSyExNPROSxXYtxGUtP7PXQ
-	 16+dtthw8a12V5kqJcR2MSWd+obty7RK9U+4z6eAkllpVo1zcElPZwtUoL8j7vabIh
-	 tCNs1KxSZUZcERzPF8Lu3fgWl/NKynNBUwfyCOPO9CXGLn4coDOwYj7SuJwa1PIIo+
-	 TrMiFE8+UMOMQ==
-Received: by mercury (Postfix, from userid 1000)
-	id A946E106069D; Tue, 28 Jun 2022 12:01:52 +0200 (CEST)
-Date: Tue, 28 Jun 2022 12:01:52 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Jose Abreu <joabreu@synopsys.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	netdev@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
-	David Wu <david.wu@rock-chips.com>, kernel@collabora.com
-Subject: Re: [PATCHv2 1/2] net: ethernet: stmmac: dwmac-rk: Add gmac support
- for rk3588
-Message-ID: <20220628100152.hpugcvxtqdq7pfic@mercury.elektranox.org>
-References: <20220627170747.137386-1-sebastian.reichel@collabora.com>
- <20220627170747.137386-2-sebastian.reichel@collabora.com>
- <7314b028-3cda-d70c-80a1-25750235a907@linaro.org>
+	id 1o6BjT-006aUI-RR
+	for linux-rockchip@lists.infradead.org; Tue, 28 Jun 2022 13:58:25 +0000
+Received: by mail-yb1-xb35.google.com with SMTP id h187so20147065ybg.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Jun 2022 06:58:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=2/l7W+OssRRYQModKHWxWKmgYil2AiQmmsO4Fs3j34E=;
+        b=kzEgPie5pY0c0ahz2zTJxPOw01bu71JnTCUESsurSekWEfS5exSW/cJqaS2kOLFZW+
+         IYpmXp4AnNxegO/cntNbrVoKNLN1a9RzN0hByEGTIGZ0L50g7PRTv0/vJx0CM+PPblJe
+         jK72CWBbaR5L/ROcbOoguxAUkN/Cnp8hmNqMKpGJQSZABtr43cdVlJ2RzFp5z1Ow1zws
+         O7+oGnxVXiWrkzHlM9OKxdq3zauWv5/gmlhxe0S0K8d618YrhFt356dAhBKX2q9KzgVL
+         zTfEDnUiI+5FpceqZCWDdH7on3X2Mw8lhq5R5Sb2Mdg4hlGbSrCtepCFMp5Ym+uwCDEk
+         Q8rw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=2/l7W+OssRRYQModKHWxWKmgYil2AiQmmsO4Fs3j34E=;
+        b=AAp2naEmeN9h0j6gyMAdzySjuJxbfgBCcYbN+yWvFnzeqWR4YAYxfZq8spmCo37Nns
+         F40Lbl+e3+j+n5diJvaJBMNcPOyiKPTGBk/CRfLiUHQCmbHgO8mMPZj4sGwJcfQfYaou
+         /2BAJZmwoPgq57qmHAgvfJibXbR4r2LIzBplk4M+g9mNyIKgi9AU8XaEkEgtb0MdZ04o
+         kRNVwLbVDCF9yEJvjuX6P/p7fti+GdqfyaUDqEUwLXorF6YjN/G/4vTx/jHESjaKIjdB
+         fiEVb/nFgMnRqYZA6YRK14oHjb1FwMyDOgtBWCwH93LoHWt2BOhmA7Qz9M/cjQRpO3DD
+         A7Tg==
+X-Gm-Message-State: AJIora8AI+bbE737zjPg0SbTtveziUhQs5jhSNh1WdUF1lLU/+7FCbU8
+	RbQylfo9kylMf0dyOZWoZ8aL7bRik8gabqeni9Fk+g==
+X-Google-Smtp-Source: AGRyM1s6T+OzQpi21xhADOxFCQu+HizTLSBGEeUHU6KCbRefmRdacgeQvdx2yDE1xwu1Y/sLnazE19sz7Mfsu8aAT08=
+X-Received: by 2002:a25:e7d4:0:b0:66c:899b:49c6 with SMTP id
+ e203-20020a25e7d4000000b0066c899b49c6mr20150388ybh.291.1656424699840; Tue, 28
+ Jun 2022 06:58:19 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <7314b028-3cda-d70c-80a1-25750235a907@linaro.org>
+References: <20220623160801.240779-1-sebastian.reichel@collabora.com> <20220623160801.240779-2-sebastian.reichel@collabora.com>
+In-Reply-To: <20220623160801.240779-2-sebastian.reichel@collabora.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Tue, 28 Jun 2022 15:58:08 +0200
+Message-ID: <CACRpkdausrTN2c3QXLFJu0R1B6WsUda6POeUG2XasqBB6hSCtA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: gpio: rockchip: add gpio-ranges
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>, linux-gpio@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	kernel@collabora.com, Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_030159_074356_531A4077 
-X-CRM114-Status: GOOD (  19.58  )
+X-CRM114-CacheID: sfid-20220628_065823_922364_0E342CA1 
+X-CRM114-Status: GOOD (  10.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,84 +81,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7925680896311096532=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Thu, Jun 23, 2022 at 6:08 PM Sebastian Reichel
+<sebastian.reichel@collabora.com> wrote:
 
---===============7925680896311096532==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="c2yjj25avm3cvkmr"
-Content-Disposition: inline
+> Allow usage of gpio-ranges with the rockchip gpio controller. The driver
+> already had support for this since it has been added to the mainline kernel
+> in the first place.
+>
+> Acked-by: Rob Herring <robh@kernel.org>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
---c2yjj25avm3cvkmr
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi Krzysztof,
-
-On Tue, Jun 28, 2022 at 10:55:04AM +0200, Krzysztof Kozlowski wrote:
-> On 27/06/2022 19:07, Sebastian Reichel wrote:
-> > From: David Wu <david.wu@rock-chips.com>
-> >=20
-> > Add constants and callback functions for the dwmac on RK3588 soc.
-> > As can be seen, the base structure is the same, only registers
-> > and the bits in them moved slightly.
-> >=20
-> > Signed-off-by: David Wu <david.wu@rock-chips.com>
-> > [rebase, squash fixes]
-> > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> > ---
-> > Krzysztof asked what "php" means. The answer is: The datasheet
-> > calls the referenced syscon area "PHP_GRF" with GRF meaning
-> > "general register file". PHP is never written out in the datasheet,
-> > but is the name of a subsystem in the SoC which contains the ethernet
-> > controllers, USB and SATA with it's own MMU and power domain.
->=20
-> Maybe there was a typo and name is PPH? Like some kind of short cut of
-> "peripheral"?
-
-Maybe, but then it is consistent throughout the datasheet and the
-vendor kernel. There is a few hundred instances of PHP_ in the
-datasheet and PPH is only found for Displayport PHYs (DPPHY).
-
--- Sebastian
-
---c2yjj25avm3cvkmr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmK60YgACgkQ2O7X88g7
-+poNGA//fEqVCXbx8RU3oSYO8REyv6/VZBK5mmbgFGTRgfx6saGdL23ygwT5CwJV
-ONdL3BuHUBeSIOEVCe9HaTiE4LezWtdmNijAQm5dV47TIOyA2LYyoXtW+uYpWcc8
-G0Mv547WfztVhClFCP+EjNuP/krXiNOaQU+JsvtFEzGK3t2RiPzCzFqMCkDke4F1
-xE7Oz9UAgiFCFDxwKZdON1hP1rTYYBSKqiWT+6HuWY/kwSOPJxMK5/AQhKoEm9lC
-j3yPpI82w4lN1E643IdJ/OWmiQb7NFLJ3RL2BgNiy/RQ8UyrlXaNCn557KX+tD6A
-DFIIMVBmsjMwMxqb5tUanEydIH6I93vTBhKwRcztmJ6Gl6XZF0CuKXy5FqrhIABy
-nYmb2Bonj9wU0SGoOYd4OX6nrCZ/nwbjHLO+xBxgKdX5s109WOJL0VX637p6mTmZ
-XhweYOjZZGu+Or741RxiIfjoUjGKpbElbAbKApM7BaDmqO5VWhcZakq8oJ4TtH66
-B4Otqi/5YJJLmyizWNZsfJHI7K7rvB+pc4L896Ve77SXJZaePzA/9/zr7X45h+rW
-KfSiiP82YulVWYNXRNX5A1pMqOx8AG2P4R11IDZ3FnI+wVzDsAuz51IWFSk6q6XF
-NLHlLM70E9ZoVWIR9MDF6AenyA2iTNqgMVoN7GlynUCi8x5yqGg=
-=lyNm
------END PGP SIGNATURE-----
-
---c2yjj25avm3cvkmr--
-
-
---===============7925680896311096532==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7925680896311096532==--
-
