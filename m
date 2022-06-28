@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B428BCCA47B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jun 2022 02:21:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7B95C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jun 2022 02:27:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fgv8Lglg5Ushoe0YR6tcY6LzqQVoSf84PPVclBcC0rI=; b=BmVYNOxeDePlC1
-	tX8JMD3wJ5qo7VCTcxkMjnYeneeK3zjH6I/zINrIxcHn2SbVAW+X0VPjNXdQaa6octlFyC4/x2bVx
-	UVKo1agSqYVRih8IRv+KTad2WLPYWdpIIcIjLC/+zVliizIb/JFKa7bzHusEGTzscK4NhQNF7HNmF
-	w0ylt8/7iDdzAMxdXbiafvpnktxS5FX4DnH7Z+qNq406AbgkCBQ/XB14dpm/q4kZbqb8iKMsaQKGM
-	t30iHBILT838i+7PVcOd/AkgGAkfa/3nxEpVryzQ/lGd8jpUd/C+4KqBLhUU++4ilXv6uTrvAW4p/
-	Zko/baL8DDKMWCz8Mx4g==;
+	List-Owner; bh=KuXOUq1KoufocZxZRTV0Ty5hoZNIq+phqpXKFJOanmg=; b=Wddwt7ktsX1k6Q
+	YplwRozQOaoEqnQOzMDpk9bshmrg7dgnKq8kBmMFGHlCWqpJjmgyJ5Ffu3GDRmaq/l3Hf36l4iP5k
+	0a/Mtzn7VNnSUABuuK9NAkB4vORay9J4T5ViJYt/FuQUXgGVaMlhhTL4Lkn/wrlg7Ng6940nSIbr8
+	+M6TmdGPsPeR4rX0NWZqSMTNI0j9em7e9UF2+TuVZSzd92T0qT0fyOi6MjTA+I92mSLsimYnS0TPv
+	p5CSXNpGOeNQHiT7pI0fkOfOFdRsWPBCNfARoeNxEx3IAcTJ3XK0qX6iznFJriBZFDwk6eynahL4X
+	sPHmHAlWvgdNKlDNEN/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o60qn-003faw-T2; Tue, 28 Jun 2022 02:21:13 +0000
+	id 1o60wg-003jG4-9Y; Tue, 28 Jun 2022 02:27:18 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o60pg-003eq7-3d; Tue, 28 Jun 2022 02:20:06 +0000
+	id 1o60rQ-003g18-Ln; Tue, 28 Jun 2022 02:21:54 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6F03D617D1;
-	Tue, 28 Jun 2022 02:20:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 226B6C34115;
-	Tue, 28 Jun 2022 02:20:02 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2861F61857;
+	Tue, 28 Jun 2022 02:21:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01A40C36AF2;
+	Tue, 28 Jun 2022 02:21:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1656382803;
-	bh=kYORw5wqusvRfagoLxQr/wFqpwJ6P+zDcSDSn4016GU=;
+	s=k20201202; t=1656382912;
+	bh=NiB08PHBrGbxEHA9x3A6NC5XZ6j/Z0J8wAaPOiplP7w=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=KIsjXQBQei3t52gyomCXFsNMUt61NOdtSigPITW3+Fd6aViyMAoBZtDlFVbcdjMt8
-	 m5UNSgYace0SgQG2U4ApJUdiE4cuKO3BX7oGsvP0K2XhxVJqkrrZSlRfkwPVIqUYeJ
-	 SFbc5U7WPGl3c03DLViUppV3zfTV2oF6Gl7nG+TrCv3ixgVmc4tvzYnakcCNEEYw6T
-	 /hGmC1c1aIHuN8ABMrtI198PhgW3mwb2dPS9/j3ON11+uGPbBEWOhiChPPpa4IDlwP
-	 3Ev/SWK/pmdSjsf8PJcySaFgE0mv7vd2k/iXBwcu2ml1w3X95C2hn1R2QkGwckI/KY
-	 ynHWXcyQ+qKiA==
+	b=L/A5hOL4GTXKlaAdwHaizBhDbsAM30pqAkshQMeO3mC+37AYm6vWx7IWqcu1p0jm0
+	 2pKtfKqix53ahdJWcGHqExN7+EKvBTUWyIofCEGAt2h+Xbl0vAEN0uvZbXZBiv/nHX
+	 PlJPF8O+DZfNqvYKdHfERQxJslQwaxIPuHS5TerWZYI/qcahpJ1bvZeBNGB+nVJDsB
+	 cGaL+bT3tbyIr5Xfu/EeqSBORfy0+lD3TotTX8ZO9ipPRewLIYwVmSpko+6iFgTvhs
+	 cMXLyN8wti8WP3g5yEj9WiSVGuczGmcgXSHyF30gXgsQG0UTL0+Jb/3dfPFKiNLJ88
+	 NA9l5F/WyhU6Q==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -51,17 +51,17 @@ Cc: Jon Lin <jon.lin@rock-chips.com>,
 	linux-spi@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.18 29/53] spi: rockchip: Unmask IRQ at the final to avoid preemption
-Date: Mon, 27 Jun 2022 22:18:15 -0400
-Message-Id: <20220628021839.594423-29-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 19/41] spi: rockchip: Unmask IRQ at the final to avoid preemption
+Date: Mon, 27 Jun 2022 22:20:38 -0400
+Message-Id: <20220628022100.595243-19-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220628021839.594423-1-sashal@kernel.org>
-References: <20220628021839.594423-1-sashal@kernel.org>
+In-Reply-To: <20220628022100.595243-1-sashal@kernel.org>
+References: <20220628022100.595243-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220627_192004_229143_EBFA4FE5 
+X-CRM114-CacheID: sfid-20220627_192152_778024_6F7CC248 
 X-CRM114-Status: GOOD (  12.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,10 +95,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index a08215eb9e14..79242dc5272d 100644
+index b721b62118e1..7880a4f25284 100644
 --- a/drivers/spi/spi-rockchip.c
 +++ b/drivers/spi/spi-rockchip.c
-@@ -381,15 +381,18 @@ static int rockchip_spi_prepare_irq(struct rockchip_spi *rs,
+@@ -380,15 +380,18 @@ static int rockchip_spi_prepare_irq(struct rockchip_spi *rs,
  	rs->tx_left = rs->tx ? xfer->len / rs->n_bytes : 0;
  	rs->rx_left = xfer->len / rs->n_bytes;
  
