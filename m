@@ -4,71 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79978C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jun 2022 16:14:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C2D1C43334
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Jun 2022 19:05:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y8rCtKkA0ZO3pwIt64PZkKGB7a0vZxS606eaHh2NKnI=; b=IkU8mOeIMuAUjL
-	jBtF1/ZzOkZgkjpUAin7w17sgub3wngbyBFT64IrKCMXeDGHr+hSTY91hlyn/auwE6Dq/u3F+QKB2
-	QAloeSkiQJSbswuKNqAS24n5+CpjTg8IC6KSplv4RwpRYD0hT8Og4VPyKqowPHz0CKlzeozM7ac2c
-	ZLR57U6s+L+bTX3iEv+X4QVpqo5JX3MsauOnGjGRDLkppHuquqgBIc/wK0K4ysfH8MDVkgX+iHY81
-	0WAidGkM45UERRcV2psKA22YeD2nLzDbsD5xdKb6B3mxYLj5EIiFd30Cs7BD0+LB0EyKcJRZqYgmR
-	gPTvP//fJGp+u9Jol34Q==;
+	List-Owner; bh=Lp/LhqprL+FfB/8jzhgi8BSUtJnE/M11oGzWduAWWgA=; b=vboeYWQ90PjdsW
+	H22zws1SbpaqHKlmmKLZCP5SQuWDSav+XW/a6v2hYaRIYQxIZEZGCImVUFbxopApR80Fm/RBNPLuW
+	40baB2d0TJcsiQjJD3KEO3pH/Q/xkFnvcqUyIrcn8nikqNU3SpcEptkAjkPKJxOuWLqhhzhtMgB+b
+	GOMoMsiy0yJSu5G/c+BLdcQD3UeqOaAgcBOMzG13faUYUhjjgRuXO3q/R1tqvrr2v+Dr1r/BROEMy
+	zXz/6tmQb9j26W6AZoJrnoUYIN05dIwzx78YahmnggwIOAvlHWNhEj69sr4Et8Nm9j4oq4fBXELmo
+	hw+dFEp0l7JovM1J3LBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6Dqb-00796x-ME; Tue, 28 Jun 2022 16:13:53 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1o6GWP-007kft-Nz; Tue, 28 Jun 2022 19:05:13 +0000
+Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6DqP-007911-JV; Tue, 28 Jun 2022 16:13:43 +0000
-Received: by mail-ej1-x629.google.com with SMTP id mf9so26921650ejb.0;
-        Tue, 28 Jun 2022 09:13:39 -0700 (PDT)
+	id 1o6GWL-007kdn-R2
+	for linux-rockchip@lists.infradead.org; Tue, 28 Jun 2022 19:05:11 +0000
+Received: by mail-oi1-x22c.google.com with SMTP id u189so18502676oib.4
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Jun 2022 12:05:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=6Lx7tM7FvIRfnZKu78o7ZdG3s890VbwgJIMpBDQ1SB8=;
-        b=VWAFcug2fFdI2e8F8vBX6YDg0MzYOgFQTojwHJWJ8Jr/LwsxBu2ry4BIYLQNn/DbRD
-         IawwZNF/NMwS25ujAFZZbbdtB5MRhCmyJRnrrY7ONIAe9dtloYM4ctvGRv4L80xrj/P9
-         JjvO5VGg8TfMfjl0u69r2fWoT25FadBtqQtwMNZJZmanyDjNQDgZLPoFKFM5nGkeiw4W
-         s/1g+gD7LXQ/5Ut1e0a7dyvUXvz2VbmUXsvSng1J708ae0OEbXLAADwnUCFTUpMHxEZq
-         GYbhu8rC+xSYmRInlEKW7eTekO2xkOHI08O6aO0nPLse2EnNqESI2Buip6b0qEWCsdpK
-         JaoQ==
+        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=W1UIqFTlInNMiky+uI28fdGpzcjitquJfb20l0+LlU8=;
+        b=NrQGrqnbwzbhIyRzdo4unz7FYRp2nskiLvSmmkb4yarwZzomgFLeSx5Ec5F4/DliEc
+         y5TH8OcNawJ+0OQIkYevtpgfojNpE8WkrJgbv4Cr/eV/c6uTfuOZECHBu1+PfMWS1NSY
+         WrQU6OYpcG95kbDLkTSEkIbfIz5Gp3vE5Kaqn4x7s9qi8GYr/jWFNQPRWK0B50pLQSwK
+         SBvt1hV1JUHjL8Hpv6GgBes8iC+6jV3pH01FA8WGF4g+Ygr/Qb/bvIDdYWXmuFjxaxzH
+         LzIKSkspipD8M5Nd1B8YYti3H2P/Tg/u+LkRy5dVoFuSCkpZ7iNnIHVIqQn3US16/JTW
+         1o5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=6Lx7tM7FvIRfnZKu78o7ZdG3s890VbwgJIMpBDQ1SB8=;
-        b=eXr4n+HChkDIa8a4BCood9Auzjy5eyfTyvuJa7V5rKz2J2NN74WQaLGC5GS80qATgf
-         4NEjKxX/3AU3J0f4wUte1WcjM1ze9N8d3DNz7/pahvCNFAhGEfgez1BpTv1bGEKRHcko
-         0PDx1yg70qSjhBQAXcei9H6VhsDOB/IT1zPJAf83h4kcdKNKsKecjXVXXQQzD0c75I/X
-         hHSEVcJL7v9zqptDDKbUJ4nFraI1vt2J8kdf9K57CmAMr3jefvAaQgLsYcOd065DkAli
-         jGRCqdTDJeUkCLmQnFLJTM2zSfGKnAko8eQ3gSjNpXTl32LPANCQZUl+xgTZuvAlcwjP
-         ggKA==
-X-Gm-Message-State: AJIora/DA86m1kSW8mwH8Jyp1JzUpFGx2YaQzIcXnEhtupuJxyDQJmQu
-	zVcWefswGHKzakRf34Fxt7c=
-X-Google-Smtp-Source: AGRyM1txh7PKe9jl713q+VzwJ2SumfGwKEpOgKcIAHEzirk7F73v58L8m9Qb7NNtanEUImj71zQq3A==
-X-Received: by 2002:a17:907:7285:b0:722:e371:72d5 with SMTP id dt5-20020a170907728500b00722e37172d5mr18921148ejc.731.1656432818741;
-        Tue, 28 Jun 2022 09:13:38 -0700 (PDT)
-Received: from jernej-laptop.localnet (213-161-3-76.dynamic.telemach.net. [213.161.3.76])
-        by smtp.gmail.com with ESMTPSA id ci3-20020a170906c34300b00722ea7a7aeesm6593654ejb.51.2022.06.28.09.13.36
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=W1UIqFTlInNMiky+uI28fdGpzcjitquJfb20l0+LlU8=;
+        b=VyiSW9zCXlq6Yq0+Z9WLFewdIFHb9w8CuKLWzmnwC9abF911CiMJwi0RGoCHtBzsMg
+         0tfuOF7ffgOng7/3Duj3Wa8nRmEtcYJPivIf4HlRYwvmWkPPs1eykqaBC8w6kHUFHGrc
+         lnX9wCk8JSWGBiLa9Wm8zTLEnBMZo23YpiuJxCGs11zHoB83qJdCWdhDD/+krtDRVf6I
+         LtdH9MJkJPFPT7E6pUbwvOjJakoRHDiwv6BQKbXq8XwTtTsSRaUD9Ol2oOH/Ynbu6VZN
+         S2HOT4veyBfOuQUw7MTUaYPZNWh7Cp/KJ4eOq7dvaH8wAeCa1gzPj09k9IETPlnjFhld
+         dTlA==
+X-Gm-Message-State: AJIora+2ZJNjUSSrXtz5X5YK4ld77xRIXu9otAvC4WwS/4zc2oraCF4U
+	gsvVsh+0Kjaaz+tL8KrVDFkeng==
+X-Google-Smtp-Source: AGRyM1vBnvXXHKQfLBKNriRwVeDZ8JKqFoDXG2qXIcwdge1wnrXP13gptGoFgCR+8DCzLOn6SlPKjA==
+X-Received: by 2002:a05:6808:1a13:b0:335:870b:324e with SMTP id bk19-20020a0568081a1300b00335870b324emr697774oib.297.1656443107736;
+        Tue, 28 Jun 2022 12:05:07 -0700 (PDT)
+Received: from eze-laptop ([190.190.187.68])
+        by smtp.gmail.com with ESMTPSA id n17-20020a9d7111000000b0060b069325f2sm480492otj.63.2022.06.28.12.05.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Jun 2022 09:13:37 -0700 (PDT)
-From: Jernej =?utf-8?B?xaBrcmFiZWM=?= <jernej.skrabec@gmail.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: p.zabel@pengutronix.de, mchehab@kernel.org, hverkuil-cisco@xs4all.nl, benjamin.gaignard@collabora.com, nicolas.dufresne@collabora.com, gregkh@linuxfoundation.org, linux-media@vger.kernel.org, linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 3/7] media: hantro: postproc: Fix buffer size calculation
-Date: Tue, 28 Jun 2022 18:13:35 +0200
-Message-ID: <3180111.44csPzL39Z@jernej-laptop>
-In-Reply-To: <YrskKxCDwSulaGJ5@eze-laptop>
-References: <20220616202513.351039-1-jernej.skrabec@gmail.com> <20220616202513.351039-4-jernej.skrabec@gmail.com> <YrskKxCDwSulaGJ5@eze-laptop>
+        Tue, 28 Jun 2022 12:05:06 -0700 (PDT)
+Date: Tue, 28 Jun 2022 16:05:01 -0300
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+To: Jernej Skrabec <jernej.skrabec@gmail.com>
+Cc: p.zabel@pengutronix.de, mchehab@kernel.org, hverkuil-cisco@xs4all.nl,
+	benjamin.gaignard@collabora.com, nicolas.dufresne@collabora.com,
+	gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/7] media: Add P010 tiled format
+Message-ID: <YrtQ3QPEGfbbllCG@eze-laptop>
+References: <20220616202513.351039-1-jernej.skrabec@gmail.com>
+ <20220616202513.351039-2-jernej.skrabec@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220616202513.351039-2-jernej.skrabec@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220628_091341_716781_C3F28322 
-X-CRM114-Status: GOOD (  38.04  )
+X-CRM114-CacheID: sfid-20220628_120510_242058_D98A3C7F 
+X-CRM114-Status: GOOD (  16.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,171 +92,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Dne torek, 28. junij 2022 ob 17:54:19 CEST je Ezequiel Garcia napisal(a):
-> Hi Jernej,
-> 
-> On Thu, Jun 16, 2022 at 10:25:09PM +0200, Jernej Skrabec wrote:
-> > When allocating aux buffers for postprocessing, it's assumed that base
-> > buffer size is the same as that of output. Coincidentally, that's true
-> > most of the time, but not always. 10-bit source also needs aux buffer
-> > size which is appropriate for 10-bit native format, even if the output
-> > format is 8-bit. Similarly, mv sizes and other extra buffer size also
-> > depends on source width/height, not destination.
-> > 
-> > Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-> 
-> I took a new look at this patch.
-> 
-> > Signed-off-by: Jernej Skrabec <jernej.skrabec@gmail.com>
-> > ---
-> > 
-> >  .../staging/media/hantro/hantro_postproc.c    | 24 +++++++++++++------
-> >  drivers/staging/media/hantro/hantro_v4l2.c    |  2 +-
-> >  drivers/staging/media/hantro/hantro_v4l2.h    |  2 ++
-> >  3 files changed, 20 insertions(+), 8 deletions(-)
-> > 
-> > diff --git a/drivers/staging/media/hantro/hantro_postproc.c
-> > b/drivers/staging/media/hantro/hantro_postproc.c index
-> > ab168c1c0d28..b77cc55e43ea 100644
-> > --- a/drivers/staging/media/hantro/hantro_postproc.c
-> > +++ b/drivers/staging/media/hantro/hantro_postproc.c
-> > @@ -12,6 +12,7 @@
-> > 
-> >  #include "hantro_hw.h"
-> >  #include "hantro_g1_regs.h"
-> >  #include "hantro_g2_regs.h"
-> > 
-> > +#include "hantro_v4l2.h"
-> > 
-> >  #define HANTRO_PP_REG_WRITE(vpu, reg_name, val) \
-> >  { \
-> > 
-> > @@ -174,18 +175,27 @@ int hantro_postproc_alloc(struct hantro_ctx *ctx)
-> > 
-> >  	struct v4l2_m2m_ctx *m2m_ctx = ctx->fh.m2m_ctx;
-> >  	struct vb2_queue *cap_queue = &m2m_ctx->cap_q_ctx.q;
-> >  	unsigned int num_buffers = cap_queue->num_buffers;
-> > 
-> > +	struct v4l2_pix_format_mplane pix_mp;
-> > +	const struct hantro_fmt *fmt;
-> > 
-> >  	unsigned int i, buf_size;
-> > 
-> > -	buf_size = ctx->dst_fmt.plane_fmt[0].sizeimage;
-> > +	/* this should always pick native format */
-> > +	fmt = hantro_get_default_fmt(ctx, false);
-> 
-> Clearly this is correct.
-> 
-> When the driver enables the post-processor it decodes a coded format (H264,
-> etc.) to a native format (NV12_4L4 or P010_4L4) and feeds this into the
-> postprocessor engine to produce some other format (YUYV, NV12, etc.).
-> 
-> The buffers allocated here should be taken from the native format,
-> so it's correct to use hantro_get_default_fmt().
-> 
-> > +	if (!fmt)
-> > +		return -EINVAL;
-> > +	v4l2_fill_pixfmt_mp(&pix_mp, fmt->fourcc, ctx->src_fmt.width,
-> > +			    ctx->src_fmt.height);
-> 
-> The issue comes at this point, where we negotiate the buffer size based on
-> the source size (OUTPUT queue size), instead of negotiating based
-> on the Native size.
-> 
->   Coded -> [ Decoder ] -> Native -> [ Post-processor ] -> Decoded
+Hi Jernej,
 
-I'm not sure what is the difference between source and native size? You mean 
-one coded in controls and one set via output format? IMO they should always be 
-the same, otherwise it can be considered a bug in userspace application.
+Thanks for the patch.
 
-Best regards,
-Jernej
-
+On Thu, Jun 16, 2022 at 10:25:07PM +0200, Jernej Skrabec wrote:
+> From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 > 
-> So, while the patch is surely improving things, I wonder if it won't
-> cause other issues.
+> Add P010 tiled format
 > 
-> This reminds me we are still lacking a more complete test-suite for this
-> driver, so that we can validate changes and ensure there are no
-> regressions.
+> Signed-off-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+> [rebased and updated pixel format name]
+> Signed-off-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+> ---
+>  drivers/media/v4l2-core/v4l2-common.c | 1 +
+>  drivers/media/v4l2-core/v4l2-ioctl.c  | 1 +
+>  include/uapi/linux/videodev2.h        | 1 +
+
+We also need to add the documentation in
+Documentation/userspace-api/media/v4l/pixfmt-yuv-planar.rst.
+
+See Benjamin's patch for reference:
+
+commit 5374d8fb75f313294c7d97e85c22bead34d63f2b
+Author: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Date:   Thu May 19 08:11:46 2022 +0100
+
+    media: Add P010 video format
+
+    P010 is a YUV format with 10-bits per component with interleaved UV.
+
+>  3 files changed, 3 insertions(+)
 > 
-> Perhaps we could hack Fluster to not only test the conformance,
-> but also test the post-processor?
-> 
-> Thanks,
-> Ezequiel
-> 
-> > +
-> > +	buf_size = pix_mp.plane_fmt[0].sizeimage;
-> > 
-> >  	if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE)
-> > 
-> > -		buf_size += hantro_h264_mv_size(ctx->dst_fmt.width,
-> > -						ctx-
->dst_fmt.height);
-> > +		buf_size += hantro_h264_mv_size(pix_mp.width,
-> > +						
-pix_mp.height);
-> > 
-> >  	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_VP9_FRAME)
-> > 
-> > -		buf_size += hantro_vp9_mv_size(ctx->dst_fmt.width,
-> > -					       ctx-
->dst_fmt.height);
-> > +		buf_size += hantro_vp9_mv_size(pix_mp.width,
-> > +					       pix_mp.height);
-> > 
-> >  	else if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_HEVC_SLICE)
-> > 
-> > -		buf_size += hantro_hevc_mv_size(ctx->dst_fmt.width,
-> > -						ctx-
->dst_fmt.height);
-> > +		buf_size += hantro_hevc_mv_size(pix_mp.width,
-> > +						
-pix_mp.height);
-> > 
-> >  	for (i = 0; i < num_buffers; ++i) {
-> >  	
-> >  		struct hantro_aux_buf *priv = &ctx->postproc.dec_q[i];
-> > 
-> > diff --git a/drivers/staging/media/hantro/hantro_v4l2.c
-> > b/drivers/staging/media/hantro/hantro_v4l2.c index
-> > 334f18a4120d..2c7a805289e7 100644
-> > --- a/drivers/staging/media/hantro/hantro_v4l2.c
-> > +++ b/drivers/staging/media/hantro/hantro_v4l2.c
-> > @@ -118,7 +118,7 @@ hantro_find_format(const struct hantro_ctx *ctx, u32
-> > fourcc)> 
-> >  	return NULL;
-> >  
-> >  }
-> > 
-> > -static const struct hantro_fmt *
-> > +const struct hantro_fmt *
-> > 
-> >  hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream)
-> >  {
-> >  
-> >  	const struct hantro_fmt *formats;
-> > 
-> > diff --git a/drivers/staging/media/hantro/hantro_v4l2.h
-> > b/drivers/staging/media/hantro/hantro_v4l2.h index
-> > b17e84c82582..64f6f57e9d7a 100644
-> > --- a/drivers/staging/media/hantro/hantro_v4l2.h
-> > +++ b/drivers/staging/media/hantro/hantro_v4l2.h
-> > @@ -23,5 +23,7 @@ extern const struct vb2_ops hantro_queue_ops;
-> > 
-> >  void hantro_reset_fmts(struct hantro_ctx *ctx);
-> >  int hantro_get_format_depth(u32 fourcc);
-> > 
-> > +const struct hantro_fmt *
-> > +hantro_get_default_fmt(const struct hantro_ctx *ctx, bool bitstream);
-> > 
-> >  #endif /* HANTRO_V4L2_H_ */
+> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+> index 1e38ad8906a2..e0fbe6ba4b6c 100644
+> --- a/drivers/media/v4l2-core/v4l2-common.c
+> +++ b/drivers/media/v4l2-core/v4l2-common.c
+> @@ -278,6 +278,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
+>  
+>  		/* Tiled YUV formats */
+>  		{ .format = V4L2_PIX_FMT_NV12_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 1, 2, 0, 0 }, .hdiv = 2, .vdiv = 2 },
+> +		{ .format = V4L2_PIX_FMT_P010_4L4, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 2, 4, 0, 0 }, .hdiv = 2, .vdiv = 2 },
+>  
+>  		/* YUV planar formats, non contiguous variant */
+>  		{ .format = V4L2_PIX_FMT_YUV420M, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 3, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 2 },
+> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
+> index e2526701294e..e24d38c0a178 100644
+> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
+> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
+> @@ -1310,6 +1310,7 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
+>  	case V4L2_PIX_FMT_NV12_4L4:	descr = "Y/CbCr 4:2:0 (4x4 Linear)"; break;
+>  	case V4L2_PIX_FMT_NV12_16L16:	descr = "Y/CbCr 4:2:0 (16x16 Linear)"; break;
+>  	case V4L2_PIX_FMT_NV12_32L32:   descr = "Y/CbCr 4:2:0 (32x32 Linear)"; break;
+> +	case V4L2_PIX_FMT_P010_4L4:	descr = "P010 tiled"; break;
 
+I would make this "10-bit Y/CbCr 4:2:0 (4x4 Linear)".
 
-
-
+Thanks,
+Ezequiel
 
 _______________________________________________
 Linux-rockchip mailing list
