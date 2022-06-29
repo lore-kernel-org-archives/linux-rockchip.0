@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B17F1C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jun 2022 14:07:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 800A1C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jun 2022 14:07:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7+VyvNS+GJDqONgCyrG2UGrV3vrVi39Hj9ZbshHLHTI=; b=LaXMLz89SxsLtc
-	5NpCFdOfwf3lK2l5GsbLc6cR4fHDOoeNTzC0YTmHmdIwP9zYS95XVlFxr3Dfoe3rFY3BrD0aaaQ9W
-	iGpq3x+mT7UzMSINjqUROrzfCKmzrcG/S5/p1R06frLuBtgrfVAKp/5PrP2PqR+GRfNSiRnpxw1QX
-	8ZFDv2q1vft4FahOcv0nWqgoH5nmSL2CxsKtCFxdxIc2nQiUjgTAPi+r1sIeivFHaV3VqrsuZYZwH
-	TK2WS83Js3Mnsd8dclrkdr849RptKGu0P/EeV1lhnv6RM2dS4btDakJOaOUfvx8oW8BRULEgSHdMN
-	6iXtwlLcfhvVxncIGINA==;
+	List-Owner; bh=jeMebgJih+EZ8zmzo5zAX+wpdzuP6oNpB4VKXQr5HzQ=; b=FZj36PqCDAaNag
+	1/2SscYheds6uVWyQ9JkCOXuiQjZhnF7fKck/9TWDOo6Sro1VyEpskYmO045etpTIzdiSoL/B9Pua
+	sUvdwtTJ/iBVHZoM3k2QIaVMpcRq2hMMfdfm4EZGHGdEcobzwmzqtjFJQb4/pEhMwkngqoYB6liuq
+	4MwVqXXJkwhCDMkNecBbIdpPF/YlZxsbRyrTzRWeVJPE8dYrk8WNd3m9c1RdGh5LcQJWqeToqUvmE
+	cgt6CKezRd95hlPxJiKOEBm33N7gFfhqxbtD5qIm8J/X1/L4EDMf/uS7U6jnJBzi03Wev887bZ2in
+	7ln8ezFyLKwkduS0xotQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6YLD-00COZr-BU; Wed, 29 Jun 2022 14:06:51 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1o6YLC-00COZd-SV; Wed, 29 Jun 2022 14:06:50 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6YKS-00COEV-0O; Wed, 29 Jun 2022 14:06:09 +0000
+	id 1o6YKR-00COEG-Mi; Wed, 29 Jun 2022 14:06:09 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 9DFBF61EB7;
-	Wed, 29 Jun 2022 14:06:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56FFDC341CC;
-	Wed, 29 Jun 2022 14:06:00 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 2F78CB824B3;
+	Wed, 29 Jun 2022 14:06:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5FBFC341CB;
+	Wed, 29 Jun 2022 14:05:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1656511562;
-	bh=hQ4GAhXdMgF49WKm+/UqfK/ikb/wVg3umyPPuTJc5B4=;
+	s=k20201202; t=1656511559;
+	bh=ZdjWjB54cbHRycxjLjITQrOn43M908WL8or1/9HBUP4=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=hiVpqZ5ooSG23Egrz8t0eRL5wRs4x59r5mR3X6pG1Biqem7zx+KjCFGD5aj3bnSLE
-	 evU6B9jOfOUqR6VyXKFqDfwxWniVsJmlTh5z7C/TsrAa5j5VwuMv/4xs22e0Uq+N6e
-	 bs35PYcgw2+ZnlKf/gPY0IxBi2CVBlIXc0D6fdslkM5VvmIt+eb4PqRCqCb+pEaKBT
-	 LJlpyWa0XjiPAF31i9So3nKSCyiLOfMzxUZ6N8awFxNi6529aFAecYXIvtOdbH8gAl
-	 hH6UQKeineRn3/Om8AnmpfmZSQwFg3VVcI6LqRDi65zz9k9vZDktcL39E172GJWUiK
-	 OQiZcKk7860WA==
+	b=fU2BuCn79mheeDdDSP3MX6LYQ+5ckPhDuYaqjp8b1HSv4cqiAXAJNAeTOa9TyAs6K
+	 Q3iRARr/muciSSJsFU7N7vAOGSd/FgJB5CqSYLyV26WGaGpUJxPbz1L06vtQyqiCwv
+	 TVQ3NNbgZM84meUWk09BU+U+4oH39ksuPITo7PGRDqG//Dk6hw/3dUXx7S1RhBhjLk
+	 Mos9iiiXXADkMbS21xZIL3BCJyIRqkOeafCV6NfGDuC3kw4qzAyc7+hRq1ztBH9hEL
+	 nhlZeS3sWm1R+6U8JgJXlLy3x6ZqG9/ZsBHhKBsbbAJGf3dqH9pZ/czKHtNKl66bSy
+	 +ffyJlifgrTrw==
 From: Mark Brown <broonie@kernel.org>
 To: heiko@sntech.de, judyhsiao@chromium.org
 Cc: alsa-devel@alsa-project.org, wenst@chromium.org, Rob Herring <robh+dt@kernel.org>, briannorris@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jaroslav Kysela <perex@perex.cz>, Liam Girdwood <lgirdwood@gmail.com>
-In-Reply-To: <20220629080421.2427933-1-judyhsiao@chromium.org>
-References: <20220629080421.2427933-1-judyhsiao@chromium.org>
-Subject: Re: [PATCH v1 1/2] ASoC: rockchip: i2s: Remove unwanted dma settings in rockchip_i2s_probe
-Message-Id: <165651156008.1437597.7188024938057495855.b4-ty@kernel.org>
-Date: Wed, 29 Jun 2022 15:06:00 +0100
+In-Reply-To: <20220629080345.2427872-1-judyhsiao@chromium.org>
+References: <20220629080345.2427872-1-judyhsiao@chromium.org>
+Subject: Re: [PATCH v1] ASoC: rockchip: i2s: Fix the debug level on missing pinctrl
+Message-Id: <165651155754.1437597.8598340692080624115.b4-ty@kernel.org>
+Date: Wed, 29 Jun 2022 15:05:57 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_070604_128138_E7367A9E 
-X-CRM114-Status: GOOD (  12.16  )
+X-CRM114-CacheID: sfid-20220629_070603_926905_F4182833 
+X-CRM114-Status: GOOD (  12.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,8 +69,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 29 Jun 2022 08:04:21 +0000, Judy Hsiao wrote:
-> Remove the unwanted dma settings in rockchip_i2s_probe.
+On Wed, 29 Jun 2022 08:03:45 +0000, Judy Hsiao wrote:
+> Use dev_dbg on missing i2s->pinctrl as the pinctrl property is optional.
 > 
 > 
 
@@ -80,8 +80,8 @@ Applied to
 
 Thanks!
 
-[1/2] ASoC: rockchip: i2s: Remove unwanted dma settings in rockchip_i2s_probe
-      commit: d6910eaa6fc71c0307e16b310a07cdb347d26d7d
+[1/1] ASoC: rockchip: i2s: Fix the debug level on missing pinctrl
+      commit: 48620f17e071060092197a09663a1c1fe6207829
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
