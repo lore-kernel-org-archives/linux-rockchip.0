@@ -4,55 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75C06C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jun 2022 16:24:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA7E3C43334
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jun 2022 17:01:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6FPiaUPayBLcWh17afn/TZviFPIMamkWv6QTzlV8T20=; b=NO7QDz0RKMWsZu
-	a2w0gplSkwd/b8LlTZr8Lqbkr7eonNFZJ+lc76oxXu4Y6EkjFSxUkLSb6rOcljKUh2Rcq5TWpoPZF
-	YAIdoeT2M3LVhTDGt1afkDDVnvKiPT1JsNXCuue/Wp/IGf4H7dxYVLdlcETI2EysE/02pmwonj35o
-	f7xCojIEv1tHxydd9DOFzSRc2NwZL59SDByQWnloaakS0RXKcbrVXw4C8I5nV+6LD3Y+4Gc6LV4hj
-	/wIs9fpH5jNq913+hNAIZxJg6cfqpWdPl+QB9gD3kGaKrSis3i+lmK/PuMW9ZmUORmBYyfXq/Dp84
-	e9acdTjtjIUZVGMv01Ng==;
+	List-Owner; bh=Eh6CLK5coQmrsQtlpumtk2qrHG6oS4+3MeoWafZoFLo=; b=eLa19LCCIR2bXf
+	i/hJNJMqeZmLq2pPpXga7IIsxmRud++avz5j7UjPv3/DM9MmzIB6pVOJd+nrkYYVU9mxDiCaOmOn7
+	F+qLfdzMmDEIMPlRTkfq7VRcbgpq2jUY8YjRy2KV/1Xq/wICNK2vxcr2kq4hgACh3L6SG6AHSlu7Z
+	F79jDmTjGdUuteQ9/IZ0DVthSoFcAPUKhhUB5XnHCqqZm7E7reC/A7cO1LunP+gnmrGJ73y44bLwo
+	9xDsgs69dLpuAkTHJ1CvtVGM1/id/UyI6qAIJEwgioFxsBSRDdEqTzunuLyJy3/RSjFghH+kDJz0Y
+	wwt+Ll/GPw5TUEs+ET3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6aU6-00Cyqv-Hq; Wed, 29 Jun 2022 16:24:10 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1o6b4H-00D7MJ-Oa; Wed, 29 Jun 2022 17:01:33 +0000
+Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6aU2-00Cyoc-Pj; Wed, 29 Jun 2022 16:24:09 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id B4607B82584;
-	Wed, 29 Jun 2022 16:24:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4E892C341CC;
-	Wed, 29 Jun 2022 16:23:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1656519843;
-	bh=BQk96XPXhMlTi13f6yCCrvn/8gYix9PjnzJYL42TN7s=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=VW2yy9wHGEB3RwMgTdrsQaoW/Ma/abZbffXSLvQ9Zqp6Axo0G2D24TTx5/Yl9FGE7
-	 4kFmiAHHKB7kXVfcoaKTk/CtYcJ9rLFHAYy3RpCkDV8fggVH41eMn8hAa5vNFK50/U
-	 llHsfbIinN/MnhVCEfLf+e3cGGKyAVnxuT98gfaRko7gmvnfiDj15NQZAcj/hD3pSZ
-	 c9YhVwSDPiwPZ+VaIkPJozCDt5Jx8KY5wSv0RxPiAM5EXlg/XnXRqNjB+EseDxBoa0
-	 7MpQjBJokUnMJysNj3I64tS+Eie2bZgRhLxqgyDq0vJ4S4hKUnrijIeYvNSkW/Qwcp
-	 qIxPAH3f/PEtw==
-From: Mark Brown <broonie@kernel.org>
-To: ckeepax@opensource.cirrus.com
-Cc: linux-mips@vger.kernel.org, alsa-devel@alsa-project.org, linux-stm32@st-md-mailman.stormreply.com, nsaenz@kernel.org, lgirdwood@gmail.com, srinivas.kandagatla@linaro.org, jbrunet@baylibre.com, heiko@sntech.de, linux-tegra@vger.kernel.org, shawnguo@kernel.org, linux-rockchip@lists.infradead.org, nicolas.ferre@microchip.com, patches@opensource.cirrus.com, peter.ujfalusi@gmail.com, linux-sunxi@lists.linux.dev, linux-rpi-kernel@lists.infradead.org, linux-omap@vger.kernel.org, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, vkoul@kernel.org, frattaroli.nicolas@gmail.com, airlied@linux.ie, daniel@zonque.org, mripard@kernel.org, linux-xtensa@linux-xtensa.org, krzk@kernel.org, cezary.rojewski@intel.com, kernel@pengutronix.de, dri-devel@lists.freedesktop.org, daniel@ffwll.ch, linux-amlogic@lists.infradead.org, linux-imx@nxp.com, pierre-louis.bossart@linux.intel.com, jarkko.nikula@bitmer.com
-In-Reply-To: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
-References: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
-Subject: Re: [PATCH v2 00/96] Refactor non_legacy_dai_naming flag
-Message-Id: <165651983704.2058781.8213227099502123936.b4-ty@kernel.org>
-Date: Wed, 29 Jun 2022 17:23:57 +0100
+	id 1o6b49-00D7J4-0J
+	for linux-rockchip@lists.infradead.org; Wed, 29 Jun 2022 17:01:29 +0000
+Received: by mail-oa1-x36.google.com with SMTP id 586e51a60fabf-101cdfddfacso22231061fac.7
+        for <linux-rockchip@lists.infradead.org>; Wed, 29 Jun 2022 10:01:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to;
+        bh=ef+4apwtIbdICqme2rXmW1mvBhsERAVWQJprylUXtXY=;
+        b=G42CbUs4Vmmb5Q0Gf4h3i/fhOzvaIMiB+WCejp/2bnJofeKf1EfIqxUApo/q2dgKeR
+         FMZj76Va5WB5JQFQ46dBJAytWdFbzf3cKrStbdLyi6oOCeLD8LWmvST9yfxYJvoYy4u4
+         SJNqKHr680iZHcDDoDpmsMUrT4HIuDGigN6phqAcN69BYWAE7WCIvQ6E3qRyYGolHNDI
+         p1v/MtUSyGwHMonO4Bly0xu7aeI8ZQTrm7a6UW9dtUSIK0QMbncHNx9iHXQMqtVvbKg4
+         3kK1Ze4ArGkUJ75NIufIag4ruRCAKvgP0g+i4VBgPRIzNP0jDjtW0zJqr6XSyDVdqA/L
+         ZBXQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to;
+        bh=ef+4apwtIbdICqme2rXmW1mvBhsERAVWQJprylUXtXY=;
+        b=AJgAi601KQDvfc9rqDtNKzo/+6iN+tWq8Fjorm69PunLW/jgH0GiCwghshiql+E2Gf
+         q7vksc9c6UTiCINuQ9VaFsxHugSVFKzf1EKA+z3EQZP9g7rHVQtpWqcd4GbL/pXe4HMx
+         S3D4Lagzo+1GeyqH+1hohA9oduQkHzVuBSwSdl72RdlPu6Ov1UAwvRgt0GLHa5a8Zpd4
+         /0o4jusw9XZS3THP+9Uldr2KdeJfZ7H+072C2ycgS9QE+pUHcfd5ZG6cmEzy2ZldM876
+         KDPDVcOO0Lzrl/MJnEZAdV55t1nlnIKuN3V5yvmA70kJ/21eQkDVTHoHioI5An+GKqNJ
+         wQXg==
+X-Gm-Message-State: AJIora+X3C0ullN+Nbv12KKZI+Wl4DBCdepjFpAv9007uBA2nYdzvHP1
+	6okVOVyIsKXf/OBnE5DmwFBc+8hFTzaLZm6N
+X-Google-Smtp-Source: AGRyM1uBXuRoIHaCMNvjM0X3TXsEmHfLKz9mV46S0kVY8b8/1/jTKZ6c1VetCC5svwotT9hmzFHoKA==
+X-Received: by 2002:a05:6870:45a1:b0:10b:8ee3:b3bd with SMTP id y33-20020a05687045a100b0010b8ee3b3bdmr1351076oao.9.1656522082649;
+        Wed, 29 Jun 2022 10:01:22 -0700 (PDT)
+Received: from eze-laptop ([190.190.187.68])
+        by smtp.gmail.com with ESMTPSA id go13-20020a056870da0d00b00101f143d537sm11419179oab.26.2022.06.29.10.01.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 29 Jun 2022 10:01:21 -0700 (PDT)
+Date: Wed, 29 Jun 2022 14:01:16 -0300
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Jernej =?utf-8?Q?=C5=A0krabec?= <jernej.skrabec@gmail.com>,
+	p.zabel@pengutronix.de, mchehab@kernel.org,
+	hverkuil-cisco@xs4all.nl, benjamin.gaignard@collabora.com,
+	gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 3/7] media: hantro: postproc: Fix buffer size
+ calculation
+Message-ID: <YryFXLQvxEizaVah@eze-laptop>
+References: <20220616202513.351039-1-jernej.skrabec@gmail.com>
+ <20220616202513.351039-4-jernej.skrabec@gmail.com>
+ <YrskKxCDwSulaGJ5@eze-laptop>
+ <3180111.44csPzL39Z@jernej-laptop>
+ <5af02115c95f96116b161464d3be8a210dad9d97.camel@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <5af02115c95f96116b161464d3be8a210dad9d97.camel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_092407_142559_0C348CFE 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20220629_100125_142313_616EC46D 
+X-CRM114-Status: GOOD (  50.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,241 +93,139 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 23 Jun 2022 13:51:14 +0100, Charles Keepax wrote:
-> Historically, the legacy DAI naming scheme was applied to platform
-> drivers and the newer scheme to CODEC drivers. During componentisation
-> the core lost the knowledge of if a driver was a CODEC or platform, they
-> were all now components. To continue to support the legacy naming on
-> older platform drivers a flag was added to the snd_soc_component_driver
-> structure, non_legacy_dai_naming, to indicate to use the new scheme and
-> this was applied to all CODECs as part of the migration.
-> 
-> [...]
-
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[01/96] ASoC: soc-component: Add legacy_dai_naming flag
-        commit: 1c348f748b4dd7711c5564a8fce0842529498dff
-[02/96] soundwire: intel: Migrate to new style legacy DAI naming flag
-        commit: ca68202098a4416501cc9b5d68a54de22d754766
-[03/96] drm/vc4: Migrate to new style legacy DAI naming flag
-        commit: db827cb34ca38f4106f7c667bea3bbb48bc73552
-[04/96] ASoC: img: Migrate to new style legacy DAI naming flag
-        commit: 5f9d69986014945b826c712081678446c1f10fd7
-[05/96] ASoC: spear: Migrate to new style legacy DAI naming flag
-        commit: eeb021ee8fab0baae82e3784664666fd6b826e89
-[06/96] ASoC: jz4740-i2c: Migrate to new style legacy DAI naming flag
-        commit: 2bebc3b622c3c300eb3a3f603473429d8264c3b6
-[07/96] ASoC: ep93xx: Migrate to new style legacy DAI naming flag
-        commit: fe58b58330434ffad5fa0bc97e177aa93a9a6222
-[08/96] ASoC: stm32: Migrate to new style legacy DAI naming flag
-        commit: 36f07985f81b7482dceb8e650d2ce1f0222294d1
-[09/96] ASoC: bcm: Migrate to new style legacy DAI naming flag
-        commit: b9a0db0ae5247d92f379107a9c479f881914999d
-[10/96] ASoC: sh: Migrate to new style legacy DAI naming flag
-        commit: f712ff57a27090baff61f92bdb6521e8781d5e6b
-[11/96] ASoC: tegra: Migrate to new style legacy DAI naming flag
-        commit: 3172582c10540d4bf1caac1c39c903793648db8f
-[12/96] ASoC: hisilicon: Migrate to new style legacy DAI naming flag
-        commit: bf6dacb784f0efb5a225f6560d693fa71c7fda64
-[13/96] ASoC: xilinx: Migrate to new style legacy DAI naming flag
-        commit: bd486b070b1e24b38b3d6d7e33abffe4a18e3296
-[14/96] ASoC: sunxi: Migrate to new style legacy DAI naming flag
-        commit: f450b5dbce413b276e6c9215b40868b905c7b634
-[15/96] ASoC: Intel: Migrate to new style legacy DAI naming flag
-        commit: 725cf3bc6009b7fa156b73982eddf23c71767fbb
-[16/96] ASoC: meson: Migrate to new style legacy DAI naming flag
-        commit: d8572da099247860e97b27a7fddc9d80a71b8c25
-[17/96] ASoC: sti-uniperf: Migrate to new style legacy DAI naming flag
-        commit: ad483da7b0a17fdf4df0bd75b2cf29b5650ca2f7
-[18/96] ASoC: amd: Migrate to new style legacy DAI naming flag
-        commit: 0bc1e7d1fc3c50cf1eb62cd3c8d2b73c5f6d83fe
-[19/96] ASoC: atmel: Migrate to new style legacy DAI naming flag
-        commit: 7593e00807fb62e9f5e7367fc2500428cc317ff0
-[20/96] ASoC: fsl: Migrate to new style legacy DAI naming flag
-        commit: 1e63fcc74ace9824f3529eeabbb8f1881a7d3800
-[21/96] ASoC: xtensa: Migrate to new style legacy DAI naming flag
-        commit: f257dea1c589fa3f558502b3ac7b1c09699a73ab
-[22/96] ASoC: adi: Migrate to new style legacy DAI naming flag
-        commit: 9a34161a0bc90df825694195659d894e80afe7a3
-[23/96] ASoC: dwc: Migrate to new style legacy DAI naming flag
-        commit: e740ef3d9418db78ac7a8a24071933f9146af6e4
-[24/96] ASoC: qcom: Migrate to new style legacy DAI naming flag
-        commit: 8135d0290a9a1f1f752bb374f93a017b2074d09b
-[25/96] ASoC: test-component: Migrate to new style legacy DAI naming flag
-        commit: d73130ba523b88a3edb097ae3eb9f93df844b5e2
-[26/96] ASoC: rockchip: Migrate to new style legacy DAI naming flag
-        commit: d48a77173534df90788075e76fa88c52b7395a1e
-[27/96] ASoC: au1x: Migrate to new style legacy DAI naming flag
-        commit: 8e750817a1943b49d81c633f48370bce93bab98c
-[28/96] ASoC: pxa: Migrate to new style legacy DAI naming flag
-        commit: 05603f15b67a517c05ee2e2298e9accb8b7f1794
-[29/96] ASoC: sof: Migrate to new style legacy DAI naming flag
-        commit: a718ba30038402e6daa311c566d9be39e4ab3f05
-[30/96] ASoC: ux500: Migrate to new style legacy DAI naming flag
-        commit: 768be0d633d9ff668a7ca4ba3b8e3eebea328cb8
-[31/96] ASoC: ti: Migrate to new style legacy DAI naming flag
-        commit: 39c84e77da04f66f20fc54c6c6f49a5863bace5d
-[32/96] ASoC: mxs-saif: Migrate to new style legacy DAI naming flag
-        commit: 4cc4e22843e9bec6e9083d85e8a0bfed85fe5423
-[33/96] ASoC: samsung: Migrate to new style legacy DAI naming flag
-        commit: f7bfa516a39a111a5d3b6473cdac20ee6075358c
-[34/96] ASoC: core: Switch core to new DAI naming flag
-        commit: 129f055a2144ab588a43c2e66d21a1f55ce54f81
-[35/96] media: TDA1997x: Remove now redundant non_legacy_dai_naming flag
-        commit: 55b566ded44db29e9c1ab61623c60ade4600301e
-[36/96] ASoC: fsl: Remove now redundant non_legacy_dai_naming flag
-        commit: 89836f00429b5c3dedb2e2f30262e53847b82ad0
-[37/96] ASoC: meson: Remove now redundant non_legacy_dai_naming flag
-        commit: 9455e289246d8769631e6bec78c0c2ef40171b70
-[38/96] ASoC: pistachio: Remove now redundant non_legacy_dai_naming flag
-        commit: 7e91c90863df7387b9e1f04d9bfc2a43c77d2a46
-[39/96] ASoC: samsung: Remove now redundant non_legacy_dai_naming flag
-        commit: 752044db5b54c867dadfbd0daea90f1b9ecb21f1
-[40/96] ASoC: soc-utils: Remove now redundant non_legacy_dai_naming flag
-        commit: 0f91b4de756415382c10c502010c7536500a1632
-[41/96] ASoC: sunxi: Remove now redundant non_legacy_dai_naming flag
-        commit: 4c6391f59c459e7cf8d584299d0746cb681c2cb7
-[42/96] ASoC: tegra: Remove now redundant non_legacy_dai_naming flag
-        commit: 63c0ec9ebfec499d603993ea8244907bfbe39598
-[43/96] ASoC: test-component: Remove now redundant non_legacy_dai_naming flag
-        commit: 485c5924f262d4aef720c508ee2ff3cb8e2e531b
-[44/96] ASoC: topology: KUnit: Remove now redundant non_legacy_dai_naming flag
-        commit: 7cfb102a55556f5f165a2150a6f77a5aa7257599
-[45/96] ASoC: uniphier: Remove now redundant non_legacy_dai_naming flag
-        commit: 36e79a44b12e4ce2d8659f47dbcce42690919567
-[46/96] ASoC: ad*: Remove now redundant non_legacy_dai_naming flag
-        commit: d9e7ddb98604de6470a0fe4f9e2434a55ca35730
-[47/96] ASoC: ak*: Remove now redundant non_legacy_dai_naming flag
-        commit: 410e73a5338d72c31a32a50c1629d81d8ce6a71f
-[48/96] ASoC: alc*: Remove now redundant non_legacy_dai_naming flag
-        commit: 60d28b5c47c7f02bb52fc5e52a84d669b9b54dbc
-[49/96] ASoC: cs*: Remove now redundant non_legacy_dai_naming flag
-        commit: ff946fd98bffe5de450047f54a27492827186b75
-[50/96] ASoC: da*: Remove now redundant non_legacy_dai_naming flag
-        commit: c03a5b4c419799676013cb0c58c03e00ebe21a61
-[51/96] ASoC: es*: Remove now redundant non_legacy_dai_naming flag
-        commit: f0b163b4d5a215f610bd64eb8ab8a8906e53bec6
-[52/96] ASoC: max*: Remove now redundant non_legacy_dai_naming flag
-        commit: d2d3219ebe568fe4ee90ac748939304f7e05a8ec
-[53/96] ASoC: msm*: Remove now redundant non_legacy_dai_naming flag
-        commit: 736f48714c1b85b0b1f6c88af07989a5828531c9
-[54/96] ASoC: nau*: Remove now redundant non_legacy_dai_naming flag
-        commit: c2fd88f0029172679917ebc536cfdc4b8fabe168
-[55/96] ASoC: pcm*: Remove now redundant non_legacy_dai_naming flag
-        commit: 8d4470b8d08b4aab5136cc3265eb0b05d2a1c72d
-[56/96] ASoC: rt*: Remove now redundant non_legacy_dai_naming flag
-        commit: a524837ddd11bc20ec59d033d0260707cfa3cb99
-[57/96] ASoC: spdif: Remove now redundant non_legacy_dai_naming flag
-        commit: 792a8a944e7aa3f6ae0733429ba9937d7029ee4b
-[58/96] ASoC: ssm*: Remove now redundant non_legacy_dai_naming flag
-        commit: a4311a5b1502f747576e5995d1b5ab04f60033f9
-[59/96] ASoC: sta*: Remove now redundant non_legacy_dai_naming flag
-        commit: 402f437b43870e65377bb97240ee3911858547cb
-[60/96] ASoC: tas*: Remove now redundant non_legacy_dai_naming flag
-        commit: 02bcc2be4c12763dd4c524e67973afe4d8ea6d4c
-[61/96] ASoC: tfa*: Remove now redundant non_legacy_dai_naming flag
-        commit: c91f7e94ce931f058543174a409bb082208cae4a
-[62/96] ASoC: tlv320*: Remove now redundant non_legacy_dai_naming flag
-        commit: 04f3d715df3a463985dc25e55a55dbd970dd77b7
-[63/96] ASoC: twl*: Remove now redundant non_legacy_dai_naming flag
-        commit: 5947b42cbe0ee580c31f7f327119e7f7c703c25c
-[64/96] ASoC: uda*: Remove now redundant non_legacy_dai_naming flag
-        commit: 792008f6df86f7e5f861ef80fd4d6eb444a4aa92
-[65/96] ASoC: wm*: Remove now redundant non_legacy_dai_naming flag
-        commit: 02004449dbe6ec05b5b64a88824939b8fe474b82
-[66/96] ASoC: 88pm860x: Remove now redundant non_legacy_dai_naming flag
-        commit: 4c90eebd97c519361f32e11de991e299f5b47e3d
-[67/96] ASoC: ab8500: Remove now redundant non_legacy_dai_naming flag
-        commit: bb426d37dcd9a1474f785fea434875233d24e537
-[68/96] ASoC: ac97: Remove now redundant non_legacy_dai_naming flag
-        commit: 96b409c94d6766ae8faa9f07fabc3694ddb7d018
-[69/96] ASoC: ads117x: Remove now redundant non_legacy_dai_naming flag
-        commit: e556a108e0aab4688cb0c7b1c0517e3fab8b5eb4
-[70/96] ASoC: bd28623: Remove now redundant non_legacy_dai_naming flag
-        commit: 310288271f55ae0edccd01257c9fdf460dd45e30
-[71/96] ASoC: bt-sco: Remove now redundant non_legacy_dai_naming flag
-        commit: 8c657358f685cec541d7ad3c54f899a65f56783e
-[72/96] ASoC: cpcap: Remove now redundant non_legacy_dai_naming flag
-        commit: 35c5013ce7ca3ad55974e3517273a0e42140b5e7
-[73/96] ASoC: cq93vc: Remove now redundant non_legacy_dai_naming flag
-        commit: 73a3dca65cbe5e7de20f3453b6881acf3fb3cfbe
-[74/96] ASoC: cx20442: Remove now redundant non_legacy_dai_naming flag
-        commit: a0b6e4048228829485a43247c12c7774531728c4
-[75/96] ASoC: dmic: Remove now redundant non_legacy_dai_naming flag
-        commit: 4eaf75fa427262289a2bc34d3fcfbc602ebbacfa
-[76/96] ASoC: gtm601: Remove now redundant non_legacy_dai_naming flag
-        commit: 33b179e7513c30f03277f5de2a845e940a9bde9c
-[77/96] ASoC: hdac_hdmi: Remove now redundant non_legacy_dai_naming flag
-        commit: f02a7d11998eefe8c5627b93627469a0aab8d3da
-[78/96] ASoC: hdmi-codec: Remove now redundant non_legacy_dai_naming flag
-        commit: f5f8019371b42c742d9777052c189e89a0745319
-[79/96] ASoC: ics43432: Remove now redundant non_legacy_dai_naming flag
-        commit: e8f88be5c1548791397dadf2250fb5dcc9461f10
-[80/96] ASoC: inno_rk3036: Remove now redundant non_legacy_dai_naming flag
-        commit: 1f1ee5ae7a8b3d30cbfe18561a4e3b7430e96c9f
-[81/96] ASoC: Intel: avs: Remove now redundant non_legacy_dai_naming flag
-        commit: 22afe04dd84a63440e69dfc7f0e670404fbce831
-[82/96] ASoC: isabelle: Remove now redundant non_legacy_dai_naming flag
-        commit: 328bd81743f0823d9604b0098c95f071e7d02805
-[83/96] ASoC: jz4740: Remove now redundant non_legacy_dai_naming flag
-        commit: dd213681c801fd9d26aef95f4eb563c38f4967f9
-[84/96] ASoC: lm49453: Remove now redundant non_legacy_dai_naming flag
-        commit: 191889406df931cc2e40abf0a0de141b098f0481
-[85/96] ASoC: lochnagar: Remove now redundant non_legacy_dai_naming flag
-        commit: 34b89b309441f7f45f68d7ec3633ee3d50921bc8
-[86/96] ASoC: mc13783: Remove now redundant non_legacy_dai_naming flag
-        commit: 139db4ad9e0b793ffd3f4f23976bf72d5e4e6703
-[87/96] ASoC: ml26124: Remove now redundant non_legacy_dai_naming flag
-        commit: 7e6fcd7f6223ab32bdccc5e22cdec780cde305c3
-[88/96] ASoC: rk817: Remove now redundant non_legacy_dai_naming flag
-        commit: 2e938b8edfedb73efd07545a58fe51bb7fc48a56
-[89/96] ASoC: sgtl5000: Remove now redundant non_legacy_dai_naming flag
-        commit: 81ed3cb8d93936fe32b2b5c213dd56d8ecae7be8
-[90/96] ASoC: si476x: Remove now redundant non_legacy_dai_naming flag
-        commit: 89571b892e74b9724e155774576651cd675b4110
-[91/96] ASoC: stac9766: Remove now redundant non_legacy_dai_naming flag
-        commit: e5257aa583b6d9f80e3aaa3ed6fc68c1b1b5925a
-[92/96] ASoC: sti-sas: Remove now redundant non_legacy_dai_naming flag
-        commit: 20b1894d16547dcd99f190f5a0604a06a0c4479f
-[93/96] ASoC: tscs42xx: Remove now redundant non_legacy_dai_naming flag
-        commit: c06fb318493a059ac2c47937761d048f9ab1b542
-[94/96] ASoC: wl1273: Remove now redundant non_legacy_dai_naming flag
-        commit: 11c8bfaacbcd6c8251f65101d5ceeb173a76b1a3
-[95/96] ASoC: zl38060: Remove now redundant non_legacy_dai_naming flag
-        commit: 4a7a283a41dad608ce32c4ed623cc2caf68150c4
-[96/96] ASoC: soc-component: Remove non_legacy_dai_naming flag
-        commit: 01936221278c5af60d82b8e78ca74caa491c0d31
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTmljb2xhcywgSmVybmVqLAoKT24gVHVlLCBKdW4gMjgsIDIwMjIgYXQgMDQ6MDY6MTNQTSAt
+MDQwMCwgTmljb2xhcyBEdWZyZXNuZSB3cm90ZToKPiBMZSBtYXJkaSAyOCBqdWluIDIwMjIgw6Ag
+MTg6MTMgKzAyMDAsIEplcm5laiDFoGtyYWJlYyBhIMOpY3JpdMKgOgo+ID4gRG5lIHRvcmVrLCAy
+OC4ganVuaWogMjAyMiBvYiAxNzo1NDoxOSBDRVNUIGplIEV6ZXF1aWVsIEdhcmNpYSBuYXBpc2Fs
+KGEpOgo+ID4gPiBIaSBKZXJuZWosCj4gPiA+IAo+ID4gPiBPbiBUaHUsIEp1biAxNiwgMjAyMiBh
+dCAxMDoyNTowOVBNICswMjAwLCBKZXJuZWogU2tyYWJlYyB3cm90ZToKPiA+ID4gPiBXaGVuIGFs
+bG9jYXRpbmcgYXV4IGJ1ZmZlcnMgZm9yIHBvc3Rwcm9jZXNzaW5nLCBpdCdzIGFzc3VtZWQgdGhh
+dCBiYXNlCj4gPiA+ID4gYnVmZmVyIHNpemUgaXMgdGhlIHNhbWUgYXMgdGhhdCBvZiBvdXRwdXQu
+IENvaW5jaWRlbnRhbGx5LCB0aGF0J3MgdHJ1ZQo+ID4gPiA+IG1vc3Qgb2YgdGhlIHRpbWUsIGJ1
+dCBub3QgYWx3YXlzLiAxMC1iaXQgc291cmNlIGFsc28gbmVlZHMgYXV4IGJ1ZmZlcgo+ID4gPiA+
+IHNpemUgd2hpY2ggaXMgYXBwcm9wcmlhdGUgZm9yIDEwLWJpdCBuYXRpdmUgZm9ybWF0LCBldmVu
+IGlmIHRoZSBvdXRwdXQKPiA+ID4gPiBmb3JtYXQgaXMgOC1iaXQuIFNpbWlsYXJseSwgbXYgc2l6
+ZXMgYW5kIG90aGVyIGV4dHJhIGJ1ZmZlciBzaXplIGFsc28KPiA+ID4gPiBkZXBlbmRzIG9uIHNv
+dXJjZSB3aWR0aC9oZWlnaHQsIG5vdCBkZXN0aW5hdGlvbi4KPiA+ID4gPiAKPiA+ID4gPiBSZXZp
+ZXdlZC1ieTogRXplcXVpZWwgR2FyY2lhIDxlemVxdWllbEB2YW5ndWFyZGlhc3VyLmNvbS5hcj4K
+PiA+ID4gCj4gPiA+IEkgdG9vayBhIG5ldyBsb29rIGF0IHRoaXMgcGF0Y2guCj4gPiA+IAo+ID4g
+PiA+IFNpZ25lZC1vZmYtYnk6IEplcm5laiBTa3JhYmVjIDxqZXJuZWouc2tyYWJlY0BnbWFpbC5j
+b20+Cj4gPiA+ID4gLS0tCj4gPiA+ID4gCj4gPiA+ID4gIC4uLi9zdGFnaW5nL21lZGlhL2hhbnRy
+by9oYW50cm9fcG9zdHByb2MuYyAgICB8IDI0ICsrKysrKysrKysrKystLS0tLS0KPiA+ID4gPiAg
+ZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fdjRsMi5jICAgIHwgIDIgKy0KPiA+
+ID4gPiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fdjRsMi5oICAgIHwgIDIg
+KysKPiA+ID4gPiAgMyBmaWxlcyBjaGFuZ2VkLCAyMCBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9u
+cygtKQo+ID4gPiA+IAo+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEv
+aGFudHJvL2hhbnRyb19wb3N0cHJvYy5jCj4gPiA+ID4gYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEv
+aGFudHJvL2hhbnRyb19wb3N0cHJvYy5jIGluZGV4Cj4gPiA+ID4gYWIxNjhjMWMwZDI4Li5iNzdj
+YzU1ZTQzZWEgMTAwNjQ0Cj4gPiA+ID4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRy
+by9oYW50cm9fcG9zdHByb2MuYwo+ID4gPiA+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9o
+YW50cm8vaGFudHJvX3Bvc3Rwcm9jLmMKPiA+ID4gPiBAQCAtMTIsNiArMTIsNyBAQAo+ID4gPiA+
+IAo+ID4gPiA+ICAjaW5jbHVkZSAiaGFudHJvX2h3LmgiCj4gPiA+ID4gICNpbmNsdWRlICJoYW50
+cm9fZzFfcmVncy5oIgo+ID4gPiA+ICAjaW5jbHVkZSAiaGFudHJvX2cyX3JlZ3MuaCIKPiA+ID4g
+PiAKPiA+ID4gPiArI2luY2x1ZGUgImhhbnRyb192NGwyLmgiCj4gPiA+ID4gCj4gPiA+ID4gICNk
+ZWZpbmUgSEFOVFJPX1BQX1JFR19XUklURSh2cHUsIHJlZ19uYW1lLCB2YWwpIFwKPiA+ID4gPiAg
+eyBcCj4gPiA+ID4gCj4gPiA+ID4gQEAgLTE3NCwxOCArMTc1LDI3IEBAIGludCBoYW50cm9fcG9z
+dHByb2NfYWxsb2Moc3RydWN0IGhhbnRyb19jdHggKmN0eCkKPiA+ID4gPiAKPiA+ID4gPiAgCXN0
+cnVjdCB2NGwyX20ybV9jdHggKm0ybV9jdHggPSBjdHgtPmZoLm0ybV9jdHg7Cj4gPiA+ID4gIAlz
+dHJ1Y3QgdmIyX3F1ZXVlICpjYXBfcXVldWUgPSAmbTJtX2N0eC0+Y2FwX3FfY3R4LnE7Cj4gPiA+
+ID4gIAl1bnNpZ25lZCBpbnQgbnVtX2J1ZmZlcnMgPSBjYXBfcXVldWUtPm51bV9idWZmZXJzOwo+
+ID4gPiA+IAo+ID4gPiA+ICsJc3RydWN0IHY0bDJfcGl4X2Zvcm1hdF9tcGxhbmUgcGl4X21wOwo+
+ID4gPiA+ICsJY29uc3Qgc3RydWN0IGhhbnRyb19mbXQgKmZtdDsKPiA+ID4gPiAKPiA+ID4gPiAg
+CXVuc2lnbmVkIGludCBpLCBidWZfc2l6ZTsKPiA+ID4gPiAKPiA+ID4gPiAtCWJ1Zl9zaXplID0g
+Y3R4LT5kc3RfZm10LnBsYW5lX2ZtdFswXS5zaXplaW1hZ2U7Cj4gPiA+ID4gKwkvKiB0aGlzIHNo
+b3VsZCBhbHdheXMgcGljayBuYXRpdmUgZm9ybWF0ICovCj4gPiA+ID4gKwlmbXQgPSBoYW50cm9f
+Z2V0X2RlZmF1bHRfZm10KGN0eCwgZmFsc2UpOwo+ID4gPiAKPiA+ID4gQ2xlYXJseSB0aGlzIGlz
+IGNvcnJlY3QuCj4gPiA+IAo+ID4gPiBXaGVuIHRoZSBkcml2ZXIgZW5hYmxlcyB0aGUgcG9zdC1w
+cm9jZXNzb3IgaXQgZGVjb2RlcyBhIGNvZGVkIGZvcm1hdCAoSDI2NCwKPiA+ID4gZXRjLikgdG8g
+YSBuYXRpdmUgZm9ybWF0IChOVjEyXzRMNCBvciBQMDEwXzRMNCkgYW5kIGZlZWRzIHRoaXMgaW50
+byB0aGUKPiA+ID4gcG9zdHByb2Nlc3NvciBlbmdpbmUgdG8gcHJvZHVjZSBzb21lIG90aGVyIGZv
+cm1hdCAoWVVZViwgTlYxMiwgZXRjLikuCj4gPiA+IAo+ID4gPiBUaGUgYnVmZmVycyBhbGxvY2F0
+ZWQgaGVyZSBzaG91bGQgYmUgdGFrZW4gZnJvbSB0aGUgbmF0aXZlIGZvcm1hdCwKPiA+ID4gc28g
+aXQncyBjb3JyZWN0IHRvIHVzZSBoYW50cm9fZ2V0X2RlZmF1bHRfZm10KCkuCj4gPiA+IAo+ID4g
+PiA+ICsJaWYgKCFmbXQpCj4gPiA+ID4gKwkJcmV0dXJuIC1FSU5WQUw7Cj4gPiA+ID4gKwl2NGwy
+X2ZpbGxfcGl4Zm10X21wKCZwaXhfbXAsIGZtdC0+Zm91cmNjLCBjdHgtPnNyY19mbXQud2lkdGgs
+Cj4gPiA+ID4gKwkJCSAgICBjdHgtPnNyY19mbXQuaGVpZ2h0KTsKPiA+ID4gCj4gPiA+IFRoZSBp
+c3N1ZSBjb21lcyBhdCB0aGlzIHBvaW50LCB3aGVyZSB3ZSBuZWdvdGlhdGUgdGhlIGJ1ZmZlciBz
+aXplIGJhc2VkIG9uCj4gPiA+IHRoZSBzb3VyY2Ugc2l6ZSAoT1VUUFVUIHF1ZXVlIHNpemUpLCBp
+bnN0ZWFkIG9mIG5lZ290aWF0aW5nIGJhc2VkCj4gPiA+IG9uIHRoZSBOYXRpdmUgc2l6ZS4KPiA+
+ID4gCj4gPiA+ICAgQ29kZWQgLT4gWyBEZWNvZGVyIF0gLT4gTmF0aXZlIC0+IFsgUG9zdC1wcm9j
+ZXNzb3IgXSAtPiBEZWNvZGVkCj4gPiAKPiA+IEknbSBub3Qgc3VyZSB3aGF0IGlzIHRoZSBkaWZm
+ZXJlbmNlIGJldHdlZW4gc291cmNlIGFuZCBuYXRpdmUgc2l6ZT8gWW91IG1lYW4gCj4gPiBvbmUg
+Y29kZWQgaW4gY29udHJvbHMgYW5kIG9uZSBzZXQgdmlhIG91dHB1dCBmb3JtYXQ/IElNTyB0aGV5
+IHNob3VsZCBhbHdheXMgYmUgCj4gPiB0aGUgc2FtZSwgb3RoZXJ3aXNlIGl0IGNhbiBiZSBjb25z
+aWRlcmVkIGEgYnVnIGluIHVzZXJzcGFjZSBhcHBsaWNhdGlvbi4KPiAKPiBJbmRlZWQgdGhlIHNy
+Y19mbXQgc2hvdWxkIHVzZSBjb2RlZCB3aWR0aC9oZWlnaHQgKGFzIHBlciBzcGVjKS4gVGhlIGRy
+aXZlciB3aWxsCj4gdGhlbiBhZGFwdCB0byBpdHMgb3duIHJlcXVpcmVtZW50IHJlc3VsdGluZyBp
+bnRvIHRoZSAibmF0aXZlIiB3aWR0aCBoZWlnaHQgYmVpbmcKPiByZXR1cm5lZC4gTm90aWNlIHRo
+YXQgc19jdHJsKCkgc2hvdWxkIGZhaWwgaW4gY2FzZSBvZiBtaXNzLW1hdGNoICh0aGlzIGlzIENP
+REVDCj4gc3BlY2lmaWMpLCBvciBzdHJlYW1vbigpIHNob3VsZCBmYWlsIGlmIHRoZSBjb2RlYyBz
+cGVjaWZpYyBjb250cm9sIGhhdmUgbmV2ZXIKPiBiZWVuIHNldCAoYXMgd2UgYWx3YXlzIGluaXRp
+YWxpc2UgdGhpcywgaXQgd2lsbCBmYWlsIGR1ZSB0byBkZWZhdWx0IGJlaW5nIGFuCj4gaW52YWxp
+ZCB2YWx1ZSBhbnl3YXkpLgo+IAo+IEFzIGEgc2lkZSBlZmZlY3QsIHdoZW4gdXNlcmxhbmQgcmVh
+ZCB0aGUgZGVmYXVsdCBmb3JtYXQgKEdfRk1UKENBUFRVUkUpLCB0aGUKPiB3aWR0aC9oZWlnaHQg
+c2hvdWxkIG1hdGNoIHRoZSBzcmNfZHN0IGZvciB0aGlzIGRyaXZlci4gVGhpcyBpcyB0aGUgbmF0
+aXZlIHNpemUuCj4gVGhlIG9wdGlvbmFsIHBhdGggdGhhdCB0aGlzIGRyaXZlciBlbmFibGVzIGlz
+IGVudW1lcmF0aW9uIG9mIENBUFRVUkUgZm9ybWF0IGFuZAo+IGZyYW1lIHNpemVzLCBjb21iaW5l
+ZCB3aXRoIHRvIHNlbGVjdCBmcm9tIHRoZXNlLiBUaGUgZHJpdmVyIHdpbGwgY3JlYXRlIGEKPiBz
+ZWNvbmRhcnkgc2V0IG9mIGJ1ZmZlcnMgaW4gdGhlIGNhc2UuCj4gCgpPSywgdGhlIHBhdGNoIGxv
+b2tzIGdvb2QgdGhlbi4KClRoYW5rcywKRXplcXVpZWwKCj4gTmljb2xhcwo+IAo+ID4gCj4gPiBC
+ZXN0IHJlZ2FyZHMsCj4gPiBKZXJuZWoKPiA+IAo+ID4gPiAKPiA+ID4gU28sIHdoaWxlIHRoZSBw
+YXRjaCBpcyBzdXJlbHkgaW1wcm92aW5nIHRoaW5ncywgSSB3b25kZXIgaWYgaXQgd29uJ3QKPiA+
+ID4gY2F1c2Ugb3RoZXIgaXNzdWVzLgo+ID4gPiAKPiA+ID4gVGhpcyByZW1pbmRzIG1lIHdlIGFy
+ZSBzdGlsbCBsYWNraW5nIGEgbW9yZSBjb21wbGV0ZSB0ZXN0LXN1aXRlIGZvciB0aGlzCj4gPiA+
+IGRyaXZlciwgc28gdGhhdCB3ZSBjYW4gdmFsaWRhdGUgY2hhbmdlcyBhbmQgZW5zdXJlIHRoZXJl
+IGFyZSBubwo+ID4gPiByZWdyZXNzaW9ucy4KPiA+ID4gCj4gPiA+IFBlcmhhcHMgd2UgY291bGQg
+aGFjayBGbHVzdGVyIHRvIG5vdCBvbmx5IHRlc3QgdGhlIGNvbmZvcm1hbmNlLAo+ID4gPiBidXQg
+YWxzbyB0ZXN0IHRoZSBwb3N0LXByb2Nlc3Nvcj8KPiA+ID4gCj4gPiA+IFRoYW5rcywKPiA+ID4g
+RXplcXVpZWwKPiA+ID4gCj4gPiA+ID4gKwo+ID4gPiA+ICsJYnVmX3NpemUgPSBwaXhfbXAucGxh
+bmVfZm10WzBdLnNpemVpbWFnZTsKPiA+ID4gPiAKPiA+ID4gPiAgCWlmIChjdHgtPnZwdV9zcmNf
+Zm10LT5mb3VyY2MgPT0gVjRMMl9QSVhfRk1UX0gyNjRfU0xJQ0UpCj4gPiA+ID4gCj4gPiA+ID4g
+LQkJYnVmX3NpemUgKz0gaGFudHJvX2gyNjRfbXZfc2l6ZShjdHgtPmRzdF9mbXQud2lkdGgsCj4g
+PiA+ID4gLQkJCQkJCWN0eC0KPiA+ID4gZHN0X2ZtdC5oZWlnaHQpOwo+ID4gPiA+ICsJCWJ1Zl9z
+aXplICs9IGhhbnRyb19oMjY0X212X3NpemUocGl4X21wLndpZHRoLAo+ID4gPiA+ICsJCQkJCQkK
+PiA+IHBpeF9tcC5oZWlnaHQpOwo+ID4gPiA+IAo+ID4gPiA+ICAJZWxzZSBpZiAoY3R4LT52cHVf
+c3JjX2ZtdC0+Zm91cmNjID09IFY0TDJfUElYX0ZNVF9WUDlfRlJBTUUpCj4gPiA+ID4gCj4gPiA+
+ID4gLQkJYnVmX3NpemUgKz0gaGFudHJvX3ZwOV9tdl9zaXplKGN0eC0+ZHN0X2ZtdC53aWR0aCwK
+PiA+ID4gPiAtCQkJCQkgICAgICAgY3R4LQo+ID4gPiBkc3RfZm10LmhlaWdodCk7Cj4gPiA+ID4g
+KwkJYnVmX3NpemUgKz0gaGFudHJvX3ZwOV9tdl9zaXplKHBpeF9tcC53aWR0aCwKPiA+ID4gPiAr
+CQkJCQkgICAgICAgcGl4X21wLmhlaWdodCk7Cj4gPiA+ID4gCj4gPiA+ID4gIAllbHNlIGlmIChj
+dHgtPnZwdV9zcmNfZm10LT5mb3VyY2MgPT0gVjRMMl9QSVhfRk1UX0hFVkNfU0xJQ0UpCj4gPiA+
+ID4gCj4gPiA+ID4gLQkJYnVmX3NpemUgKz0gaGFudHJvX2hldmNfbXZfc2l6ZShjdHgtPmRzdF9m
+bXQud2lkdGgsCj4gPiA+ID4gLQkJCQkJCWN0eC0KPiA+ID4gZHN0X2ZtdC5oZWlnaHQpOwo+ID4g
+PiA+ICsJCWJ1Zl9zaXplICs9IGhhbnRyb19oZXZjX212X3NpemUocGl4X21wLndpZHRoLAo+ID4g
+PiA+ICsJCQkJCQkKPiA+IHBpeF9tcC5oZWlnaHQpOwo+ID4gPiA+IAo+ID4gPiA+ICAJZm9yIChp
+ID0gMDsgaSA8IG51bV9idWZmZXJzOyArK2kpIHsKPiA+ID4gPiAgCQo+ID4gPiA+ICAJCXN0cnVj
+dCBoYW50cm9fYXV4X2J1ZiAqcHJpdiA9ICZjdHgtPnBvc3Rwcm9jLmRlY19xW2ldOwo+ID4gPiA+
+IAo+ID4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRy
+b192NGwyLmMKPiA+ID4gPiBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX3Y0
+bDIuYyBpbmRleAo+ID4gPiA+IDMzNGYxOGE0MTIwZC4uMmM3YTgwNTI4OWU3IDEwMDY0NAo+ID4g
+PiA+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX3Y0bDIuYwo+ID4g
+PiA+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX3Y0bDIuYwo+ID4g
+PiA+IEBAIC0xMTgsNyArMTE4LDcgQEAgaGFudHJvX2ZpbmRfZm9ybWF0KGNvbnN0IHN0cnVjdCBo
+YW50cm9fY3R4ICpjdHgsIHUzMgo+ID4gPiA+IGZvdXJjYyk+IAo+ID4gPiA+ICAJcmV0dXJuIE5V
+TEw7Cj4gPiA+ID4gIAo+ID4gPiA+ICB9Cj4gPiA+ID4gCj4gPiA+ID4gLXN0YXRpYyBjb25zdCBz
+dHJ1Y3QgaGFudHJvX2ZtdCAqCj4gPiA+ID4gK2NvbnN0IHN0cnVjdCBoYW50cm9fZm10ICoKPiA+
+ID4gPiAKPiA+ID4gPiAgaGFudHJvX2dldF9kZWZhdWx0X2ZtdChjb25zdCBzdHJ1Y3QgaGFudHJv
+X2N0eCAqY3R4LCBib29sIGJpdHN0cmVhbSkKPiA+ID4gPiAgewo+ID4gPiA+ICAKPiA+ID4gPiAg
+CWNvbnN0IHN0cnVjdCBoYW50cm9fZm10ICpmb3JtYXRzOwo+ID4gPiA+IAo+ID4gPiA+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb192NGwyLmgKPiA+ID4g
+PiBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX3Y0bDIuaCBpbmRleAo+ID4g
+PiA+IGIxN2U4NGM4MjU4Mi4uNjRmNmY1N2U5ZDdhIDEwMDY0NAo+ID4gPiA+IC0tLSBhL2RyaXZl
+cnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX3Y0bDIuaAo+ID4gPiA+ICsrKyBiL2RyaXZl
+cnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX3Y0bDIuaAo+ID4gPiA+IEBAIC0yMyw1ICsy
+Myw3IEBAIGV4dGVybiBjb25zdCBzdHJ1Y3QgdmIyX29wcyBoYW50cm9fcXVldWVfb3BzOwo+ID4g
+PiA+IAo+ID4gPiA+ICB2b2lkIGhhbnRyb19yZXNldF9mbXRzKHN0cnVjdCBoYW50cm9fY3R4ICpj
+dHgpOwo+ID4gPiA+ICBpbnQgaGFudHJvX2dldF9mb3JtYXRfZGVwdGgodTMyIGZvdXJjYyk7Cj4g
+PiA+ID4gCj4gPiA+ID4gK2NvbnN0IHN0cnVjdCBoYW50cm9fZm10ICoKPiA+ID4gPiAraGFudHJv
+X2dldF9kZWZhdWx0X2ZtdChjb25zdCBzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LCBib29sIGJpdHN0
+cmVhbSk7Cj4gPiA+ID4gCj4gPiA+ID4gICNlbmRpZiAvKiBIQU5UUk9fVjRMMl9IXyAqLwo+ID4g
+Cj4gPiAKPiA+IAo+ID4gCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
