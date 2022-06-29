@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E4E9C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jun 2022 19:17:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3534C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jun 2022 20:30:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pHrjCcheOO0VHYykgIKb1tYokEZM9MrZmSZRp3ABFSs=; b=i+VgAiCSqgZRoi
-	/eWTV2lpsJlZSUQmCgWh+Jv5c9DEZJQPmB7+k6ms/wNQU7qOdwQuydMBCQpX27ctpbojh2zRr3HpQ
-	4jxVcdCNSIXVk3nO15XXwx9Fd1TyGF/h9eMIo90Be3ZkmIPsJwes9ifqrShyPjnQwE1IXk1Nvwelz
-	yUE2Kn4rs4/v8z5bDK/DsEMsbTk3uEOvuFlw+lylVi66t6KE54tdViRROu3Pshpmi8VHMSWezx9/2
-	ZNoKuMDU9Ecl0KqLygBGirhIAjTWUDs1z4R066Ja4eh4PajLJ65VvFAOUOLgAhYPTBaAJyvap2DmN
-	VcepX1ZOkn1lycb3GxQw==;
+	List-Owner; bh=QkjBQFXhlFggrfHVkWmBJxnHIPTaAAF3oXM/MdFSJ9A=; b=A9gLDRcAk4C+wQ
+	hYcYSdxDOi5LiiPue9hgw3E7ObrgtGJcJiW6vTWNM1IH8f3bhJCiTD1iyKu8GN7v8N/gK3ZzkZwfR
+	KkcvaA3L2qYUMkL2fSPXF5/5H77JsqUfTmq8UB/sEL8Kk6DZeRw/IN7nd4HjE/Mk8O6QTzj5RF7j+
+	IRZ3PLRas0YNDhLwTzjWXmnCts+1RqoIGnoW9B32PpGb+zVyKFIbi0xcZrhaOoPnjX4/ZL20vn5FO
+	apMT26PNqfpc9/LPJTkLAExV9rjfEQoFlOdqMWNgNDSEBh4DBkmOpnW0A6DfcN/K3IYyaICKQnWDr
+	mzP3BZRAe5hsTaHk3dTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6dC7-00DjxS-HC; Wed, 29 Jun 2022 19:17:47 +0000
-Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
+	id 1o6eKh-00DyNe-8x; Wed, 29 Jun 2022 20:30:43 +0000
+Received: from mail-oo1-xc35.google.com ([2607:f8b0:4864:20::c35])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6dC4-00Dju8-7d
-	for linux-rockchip@lists.infradead.org; Wed, 29 Jun 2022 19:17:45 +0000
-Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-101d2e81bceso22830430fac.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 29 Jun 2022 12:17:39 -0700 (PDT)
+	id 1o6dEK-00DkmS-U3
+	for linux-rockchip@lists.infradead.org; Wed, 29 Jun 2022 19:20:06 +0000
+Received: by mail-oo1-xc35.google.com with SMTP id n11-20020a4ad12b000000b00425b01c3326so1484802oor.8
+        for <linux-rockchip@lists.infradead.org>; Wed, 29 Jun 2022 12:20:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to;
-        bh=o/jwDiSinXrZOl+AEZjENE1aXxHwuHlOc6Yz74KbYe0=;
-        b=JhdB2BWMAi71kcD+c+7SIRFoBiHS6KZWlMNs8nE2JqKY9mTy+LMUKNGK6hA37tCcur
-         3ihy3S0zD4ttDFVRVGcRYlgpAQxEJacZYkJ/wx6wXApOJgnEySeGr+h4cHZq1fHfTvwn
-         oQ15u7ydaB0/VrxUkP7JIrv4B6SQCIfxCOiySaf5MFNFaRUFUX2GWn5vcLfYfeCrJBG3
-         cOcN2K6do9JMJkXPyGf5BCKo2Tdhhn6aTazrQ+981pV/Z1n8WKzmiw6Z2M9jtW06chIe
-         Xo85QNzBDp4TE82AvhjeJAgjK0ukkf9kKJjpf/wQhLhRiOxOdIdoGie5zYZEDxV8OEzp
-         LAuw==
+        bh=4IY1+lAO4Posxki4A8hl3XkQpihB9YLZGIPFUTvwakM=;
+        b=HYC4tZgofx/ozc5CMWDl+alXct7+6S+dQxMbkS7lfomOQqvqi3SXQLiewlzmyuDFi5
+         ahx6zd6QAWXzcAEyFdYv66RwYSGLUvergaae5ybUbKeDqvz2CTX/Ndc2OtlXbRWc4j5d
+         eeThbp/RaKvtBFN77MLPcUoSKe1H+Y6dnOd2QkkNDEZ2Rp8amwyvNtOkWJeCLdR0vYB0
+         dEHtmnqS4gFz4Atb5iAdYKjUblRRjPvf9dIO4R9l/6lcxRptDU3VE5h2HomzueMyU4fO
+         JIsE0TZOIHbQhl1l90yKlRQBW0qFzpa9rHVJqX2ghHY5pdpLQNdx9Ir79BVx0iBXdc7H
+         zBLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=o/jwDiSinXrZOl+AEZjENE1aXxHwuHlOc6Yz74KbYe0=;
-        b=TaCPWULUS49nxsMXCGO83Li/mqe6oaxg35dwDkHk5mJpSAG5yeJMy83llmaQICMNv0
-         mwPrngfmLNgcWOF3YZTt5Rmd+LsvqNeTyo9eLVoFJFz2N21ooLyj2X5qukB+IpDO1sr6
-         PVWVV7R81ykzbqnorEofD6/WJbkwBXXxRhWVyqkZ+LY7oL/xDGhEryq6rQARfuo7BS2Z
-         44dgRUmbHfcm+zDRD300kn6Gytx2P20rVYJBIT25mjcybSx8yzuhpWAJZdcGjcDf5tHr
-         S06kgu6qxuPa/GAFo3w18e2byKJdGxNdLa87v1d3a1oiQhC/Cs550BSfGocXqVi86+BU
-         s/tg==
-X-Gm-Message-State: AJIora9Xd26OO989m5YXkdSvE3miR2NgUE47ymIQr44/6S3kNh2FwP9F
-	GHp1fMI0JzF1y9zC9MKOVkLv2g==
-X-Google-Smtp-Source: AGRyM1ud70v6ZQx2pnfpvswry6jTmrDjH3dXCQpTFuuOtuEaCYXzyLQ8lVwOmnjRqh/VOA9wD9nKyg==
-X-Received: by 2002:a05:6870:c1c1:b0:ee:5c83:7be7 with SMTP id i1-20020a056870c1c100b000ee5c837be7mr2968439oad.53.1656530258908;
-        Wed, 29 Jun 2022 12:17:38 -0700 (PDT)
+        bh=4IY1+lAO4Posxki4A8hl3XkQpihB9YLZGIPFUTvwakM=;
+        b=aBC3SYzIK3Q03y0IG9NySDR2YCxwkvEtAAxh2d9vjq3NbMSVjBd0bDNyiJ0nK9OQk0
+         cPF/tE/DmTjbnsZVW5qIBkcmhCerMHFgVMoCrvn88to2j2t+YAsGvUqvZq47PVC54MJw
+         kLDxs1LJuwmkyb7W87jpI+YjJQIUTq55FgTnClShbBHWAz2moV3zOqHlRhZlfc1FzcCh
+         xTCvxm0I3qtF4JsPvwCp7JJEpf/lJxxDlVUgNa999l0ZSL95qTnJjju1PktASXmL1nsc
+         sxKUSkzXeSs7ZPBFImkuhEZGprzBLB8/WUFcAErT34sfEWDXDhibTjSQgbUMzyltsHMy
+         hzog==
+X-Gm-Message-State: AJIora8fe0eVObwn00m4ssECsY6LfcSjMZPDQYA8ozLdIWHIhfS8dul7
+	FoMMEGb9ojZZcdfALKb3p0ZBkg==
+X-Google-Smtp-Source: AGRyM1szB2I5u75eF35Z9NNIRvSjg69yLzAkkdRofmHhMutfeUDBCRnOFjwrl8GRyQF4pR5pXgXnRg==
+X-Received: by 2002:a4a:2cc1:0:b0:425:8f67:36f5 with SMTP id o184-20020a4a2cc1000000b004258f6736f5mr2137665ooo.16.1656530402190;
+        Wed, 29 Jun 2022 12:20:02 -0700 (PDT)
 Received: from eze-laptop ([190.190.187.68])
-        by smtp.gmail.com with ESMTPSA id r10-20020a056808210a00b00325cda1ff8esm9021967oiw.13.2022.06.29.12.17.35
+        by smtp.gmail.com with ESMTPSA id y19-20020a9d7153000000b00612e4267634sm10092952otj.18.2022.06.29.12.19.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Jun 2022 12:17:38 -0700 (PDT)
-Date: Wed, 29 Jun 2022 16:17:32 -0300
+        Wed, 29 Jun 2022 12:20:01 -0700 (PDT)
+Date: Wed, 29 Jun 2022 16:19:55 -0300
 From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 To: Jernej Skrabec <jernej.skrabec@gmail.com>
 Cc: p.zabel@pengutronix.de, mchehab@kernel.org, hverkuil-cisco@xs4all.nl,
@@ -66,16 +66,16 @@ Cc: p.zabel@pengutronix.de, mchehab@kernel.org, hverkuil-cisco@xs4all.nl,
 	gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
 	linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 6/7] media: hantro: Store VP9 bit depth in context
-Message-ID: <YrylTP7c8q7vZGam@eze-laptop>
+Subject: Re: [PATCH v2 7/7] media: hantro: sunxi: Enable 10-bit decoding
+Message-ID: <Yryl24uu0CMKpFgQ@eze-laptop>
 References: <20220616202513.351039-1-jernej.skrabec@gmail.com>
- <20220616202513.351039-7-jernej.skrabec@gmail.com>
+ <20220616202513.351039-8-jernej.skrabec@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220616202513.351039-7-jernej.skrabec@gmail.com>
+In-Reply-To: <20220616202513.351039-8-jernej.skrabec@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_121744_296226_DA0C0D00 
-X-CRM114-Status: GOOD (  18.95  )
+X-CRM114-CacheID: sfid-20220629_122005_070712_249B4440 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,69 +94,64 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Jernej,
 
-On Thu, Jun 16, 2022 at 10:25:12PM +0200, Jernej Skrabec wrote:
-> Now that we have proper infrastructure for postprocessing 10-bit
-> formats, store VP9 bit depth in context.
+On Thu, Jun 16, 2022 at 10:25:13PM +0200, Jernej Skrabec wrote:
+> Now that infrastructure for 10-bit decoding exists, enable it for
+> Allwinner H6.
 > 
-> Signed-off-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+
+I don't have this hardware, but the patch seems OK.
 
 Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 
-Thanks,
-Ezequiel
-
+> Signed-off-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 > ---
->  drivers/staging/media/hantro/hantro_drv.c | 23 +++++++++++++++++++++++
->  1 file changed, 23 insertions(+)
+>  drivers/staging/media/hantro/sunxi_vpu_hw.c | 27 +++++++++++++++++++++
+>  1 file changed, 27 insertions(+)
 > 
-> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> index 01d33dcb0467..afddf7ac0731 100644
-> --- a/drivers/staging/media/hantro/hantro_drv.c
-> +++ b/drivers/staging/media/hantro/hantro_drv.c
-> @@ -324,6 +324,24 @@ static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
->  	return 0;
->  }
->  
-> +static int hantro_vp9_s_ctrl(struct v4l2_ctrl *ctrl)
-> +{
-> +	struct hantro_ctx *ctx;
-> +
-> +	ctx = container_of(ctrl->handler,
-> +			   struct hantro_ctx, ctrl_handler);
-> +
-> +	switch (ctrl->id) {
-> +	case V4L2_CID_STATELESS_VP9_FRAME:
-> +		ctx->bit_depth = ctrl->p_new.p_vp9_frame->bit_depth;
-> +		break;
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->  static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
->  	.try_ctrl = hantro_try_ctrl,
->  };
-> @@ -336,6 +354,10 @@ static const struct v4l2_ctrl_ops hantro_hevc_ctrl_ops = {
->  	.s_ctrl = hantro_hevc_s_ctrl,
->  };
->  
-> +static const struct v4l2_ctrl_ops hantro_vp9_ctrl_ops = {
-> +	.s_ctrl = hantro_vp9_s_ctrl,
-> +};
-> +
->  #define HANTRO_JPEG_ACTIVE_MARKERS	(V4L2_JPEG_ACTIVE_MARKER_APP0 | \
->  					 V4L2_JPEG_ACTIVE_MARKER_COM | \
->  					 V4L2_JPEG_ACTIVE_MARKER_DQT | \
-> @@ -503,6 +525,7 @@ static const struct hantro_ctrl controls[] = {
->  		.codec = HANTRO_VP9_DECODER,
->  		.cfg = {
->  			.id = V4L2_CID_STATELESS_VP9_FRAME,
-> +			.ops = &hantro_vp9_ctrl_ops,
+> diff --git a/drivers/staging/media/hantro/sunxi_vpu_hw.c b/drivers/staging/media/hantro/sunxi_vpu_hw.c
+> index fbeac81e59e1..02ce8b064a8f 100644
+> --- a/drivers/staging/media/hantro/sunxi_vpu_hw.c
+> +++ b/drivers/staging/media/hantro/sunxi_vpu_hw.c
+> @@ -23,12 +23,39 @@ static const struct hantro_fmt sunxi_vpu_postproc_fmts[] = {
+>  			.step_height = 32,
 >  		},
->  	}, {
->  		.codec = HANTRO_VP9_DECODER,
+>  	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_P010,
+> +		.codec_mode = HANTRO_MODE_NONE,
+> +		.postprocessed = true,
+> +		.frmsize = {
+> +			.min_width = FMT_MIN_WIDTH,
+> +			.max_width = FMT_UHD_WIDTH,
+> +			.step_width = 32,
+> +			.min_height = FMT_MIN_HEIGHT,
+> +			.max_height = FMT_UHD_HEIGHT,
+> +			.step_height = 32,
+> +		},
+> +	},
+>  };
+>  
+>  static const struct hantro_fmt sunxi_vpu_dec_fmts[] = {
+>  	{
+>  		.fourcc = V4L2_PIX_FMT_NV12_4L4,
+>  		.codec_mode = HANTRO_MODE_NONE,
+> +		.match_depth = true,
+> +		.frmsize = {
+> +			.min_width = FMT_MIN_WIDTH,
+> +			.max_width = FMT_UHD_WIDTH,
+> +			.step_width = 32,
+> +			.min_height = FMT_MIN_HEIGHT,
+> +			.max_height = FMT_UHD_HEIGHT,
+> +			.step_height = 32,
+> +		},
+> +	},
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_P010_4L4,
+> +		.codec_mode = HANTRO_MODE_NONE,
+> +		.match_depth = true,
+>  		.frmsize = {
+>  			.min_width = FMT_MIN_WIDTH,
+>  			.max_width = FMT_UHD_WIDTH,
 > -- 
 > 2.36.1
 > 
