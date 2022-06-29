@@ -4,79 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 906AFC43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jun 2022 08:05:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B17F1C43334
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jun 2022 14:07:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qcd/M92714T1vBcyhPdS3zXBDnOgR7dHKf8l9dJBuUA=; b=q/s5h66714azu1
-	y/cjegHNPGMsZojLZdpvy5sosFKI6V8i618atXjodq5ocN4lN78SgIbhOphZV/mfURv2txocP4HVC
-	0OKmNfTUiYQmxZ1AjJc770wBqOSQeXcF7k/DaAahG9VEhl30vaxF9QbzBKWOI348VDFOvIqaMhAic
-	HoEJt10xSb765+sn/y6a0pONVMrhkQq/BGu1U5ZsEolMstlFuDDiG/0jiQRk6yhjLgtDBW4lm7xX5
-	oFJEMRXCWeipHtTmiFM8do3+P9glxVLRSuat9I93u1klN2Bf+FnAQzXgOSKkKGAMZVEL3M9/iKb54
-	xHm0yPR/TybO6NhWCCZg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7+VyvNS+GJDqONgCyrG2UGrV3vrVi39Hj9ZbshHLHTI=; b=LaXMLz89SxsLtc
+	5NpCFdOfwf3lK2l5GsbLc6cR4fHDOoeNTzC0YTmHmdIwP9zYS95XVlFxr3Dfoe3rFY3BrD0aaaQ9W
+	iGpq3x+mT7UzMSINjqUROrzfCKmzrcG/S5/p1R06frLuBtgrfVAKp/5PrP2PqR+GRfNSiRnpxw1QX
+	8ZFDv2q1vft4FahOcv0nWqgoH5nmSL2CxsKtCFxdxIc2nQiUjgTAPi+r1sIeivFHaV3VqrsuZYZwH
+	TK2WS83Js3Mnsd8dclrkdr849RptKGu0P/EeV1lhnv6RM2dS4btDakJOaOUfvx8oW8BRULEgSHdMN
+	6iXtwlLcfhvVxncIGINA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6Sgz-00AHgV-S9; Wed, 29 Jun 2022 08:04:57 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1o6YLD-00COZr-BU; Wed, 29 Jun 2022 14:06:51 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6SgY-00AHTq-NU
-	for linux-rockchip@lists.infradead.org; Wed, 29 Jun 2022 08:04:34 +0000
-Received: by mail-pl1-x631.google.com with SMTP id x20so7767972plx.6
-        for <linux-rockchip@lists.infradead.org>; Wed, 29 Jun 2022 01:04:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tphUaJRWmGfbf+rcQQvvdTAaHw/IgKryhTSbMG303fk=;
-        b=kbp3SymyDcrr+av2CLzAaJ76U24aRBFW6qsAWMQJGR2htBnuWGvLCgalt6z/9/NmEc
-         NYAfdcJUNOfMQCpCkh4e9mKK6tdsIRgQA3MxiqiHyNqa8GjPRZJajLDPkoWHecHitd0N
-         Xx9kXZJ5tjyhVlfINrOFta2j0NZ+Epkj0WilE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=tphUaJRWmGfbf+rcQQvvdTAaHw/IgKryhTSbMG303fk=;
-        b=LaLWDmXPVZTTonxlrc32A4ld1K/TDx2u1LkA6OplIrGhiFK0Giy92LhDTbK4YuOUqb
-         0Q4yFY3sQdjVjPLSZ9vXI6NWFWQqGFDpOGu/6TOYx+6rKTU4nJo+xrBWx2dyrdWjF1gx
-         CYfqpeWCjr98seDuifVZF7prOZMKMwqWLipXkI9UPOsQjaAUV7TzsJWdB0Wk8NyUEiDM
-         uJ09UmlRYrFKs26TlAAsCA4qWupGMZ/G7SmD2ycxscsasmBOUQHcEQxl1vW5pwG9oY2s
-         MhtUdcyRIU17PTZeF0GrjDVh+utwUZPLT7xZJUAUxGTtsnTgFQEMnXGQF0JKDh/Wgl5F
-         ZMJQ==
-X-Gm-Message-State: AJIora9u3lMZi2kSx64J2fSXqt+qOjoizPOuE5KZbMWjLPDQSDra+nAk
-	7zlfBXxYJip9vQC9Q0YmP1TBkA==
-X-Google-Smtp-Source: AGRyM1vD7+R3YGDCxJmwjPFiWHdqVH/Qs7cs5QFTjqLhaftK9VZtL0He5C1/fsJNXhqqZ4K3pDox+A==
-X-Received: by 2002:a17:902:7481:b0:16b:7a53:3b4c with SMTP id h1-20020a170902748100b0016b7a533b4cmr8071158pll.54.1656489869151;
-        Wed, 29 Jun 2022 01:04:29 -0700 (PDT)
-Received: from judyhsiao0523.c.googlers.com.com (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
-        by smtp.gmail.com with ESMTPSA id 11-20020a63164b000000b0040d4c8e335csm10579256pgw.75.2022.06.29.01.04.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 Jun 2022 01:04:28 -0700 (PDT)
-From: Judy Hsiao <judyhsiao@chromium.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Brian Norris <briannorris@chromium.org>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	alsa-devel@alsa-project.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Judy Hsiao <judyhsiao@chromium.org>
-Subject: [PATCH v1 1/2] ASoC: rockchip: i2s: Remove unwanted dma settings in rockchip_i2s_probe
-Date: Wed, 29 Jun 2022 08:04:21 +0000
-Message-Id: <20220629080421.2427933-1-judyhsiao@chromium.org>
-X-Mailer: git-send-email 2.37.0.rc0.161.g10f37bed90-goog
+	id 1o6YKS-00COEV-0O; Wed, 29 Jun 2022 14:06:09 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 9DFBF61EB7;
+	Wed, 29 Jun 2022 14:06:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56FFDC341CC;
+	Wed, 29 Jun 2022 14:06:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1656511562;
+	bh=hQ4GAhXdMgF49WKm+/UqfK/ikb/wVg3umyPPuTJc5B4=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=hiVpqZ5ooSG23Egrz8t0eRL5wRs4x59r5mR3X6pG1Biqem7zx+KjCFGD5aj3bnSLE
+	 evU6B9jOfOUqR6VyXKFqDfwxWniVsJmlTh5z7C/TsrAa5j5VwuMv/4xs22e0Uq+N6e
+	 bs35PYcgw2+ZnlKf/gPY0IxBi2CVBlIXc0D6fdslkM5VvmIt+eb4PqRCqCb+pEaKBT
+	 LJlpyWa0XjiPAF31i9So3nKSCyiLOfMzxUZ6N8awFxNi6529aFAecYXIvtOdbH8gAl
+	 hH6UQKeineRn3/Om8AnmpfmZSQwFg3VVcI6LqRDi65zz9k9vZDktcL39E172GJWUiK
+	 OQiZcKk7860WA==
+From: Mark Brown <broonie@kernel.org>
+To: heiko@sntech.de, judyhsiao@chromium.org
+Cc: alsa-devel@alsa-project.org, wenst@chromium.org, Rob Herring <robh+dt@kernel.org>, briannorris@chromium.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Jaroslav Kysela <perex@perex.cz>, Liam Girdwood <lgirdwood@gmail.com>
+In-Reply-To: <20220629080421.2427933-1-judyhsiao@chromium.org>
+References: <20220629080421.2427933-1-judyhsiao@chromium.org>
+Subject: Re: [PATCH v1 1/2] ASoC: rockchip: i2s: Remove unwanted dma settings in rockchip_i2s_probe
+Message-Id: <165651156008.1437597.7188024938057495855.b4-ty@kernel.org>
+Date: Wed, 29 Jun 2022 15:06:00 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_010430_785559_0AABABE8 
-X-CRM114-Status: UNSURE (   9.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220629_070604_128138_E7367A9E 
+X-CRM114-Status: GOOD (  12.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,36 +69,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove the unwanted dma settings in rockchip_i2s_probe.
+On Wed, 29 Jun 2022 08:04:21 +0000, Judy Hsiao wrote:
+> Remove the unwanted dma settings in rockchip_i2s_probe.
+> 
+> 
 
-Fixes: 44f362c2cc6d ("ASoC: rockchip: i2s: switch BCLK to GPIO")
-Signed-off-by: Judy Hsiao <judyhsiao@chromium.org>
----
- sound/soc/rockchip/rockchip_i2s.c | 8 --------
- 1 file changed, 8 deletions(-)
+Applied to
 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 0ed01624a2db..285b6455be28 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -817,14 +817,6 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
- 
- 	i2s_pinctrl_select_bclk_off(i2s);
- 
--	i2s->playback_dma_data.addr = res->start + I2S_TXDR;
--	i2s->playback_dma_data.addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
--	i2s->playback_dma_data.maxburst = 4;
--
--	i2s->capture_dma_data.addr = res->start + I2S_RXDR;
--	i2s->capture_dma_data.addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
--	i2s->capture_dma_data.maxburst = 4;
--
- 	dev_set_drvdata(&pdev->dev, i2s);
- 
- 	pm_runtime_enable(&pdev->dev);
--- 
-2.37.0.rc0.161.g10f37bed90-goog
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
+Thanks!
+
+[1/2] ASoC: rockchip: i2s: Remove unwanted dma settings in rockchip_i2s_probe
+      commit: d6910eaa6fc71c0307e16b310a07cdb347d26d7d
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-rockchip mailing list
