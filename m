@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15294C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jun 2022 16:24:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75C06C43334
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Jun 2022 16:24:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lKIye9XVCGo4TA65EySJQKrdQd1EkbqZ/WAs7uvGeIE=; b=LKuNeN3BVBqvs9
-	JWaOmrCOSTI9tQcJB20efHBuQSSGaZbk0FDHgr22m/3g4zb38Bl1/zQvh8RMI+oQWtqk/jgyL9TeJ
-	4WnMO8nrOfflFrEQiXfpoF36ZeYWRiiPJ82bfO1KKkS1ivw08XgFO2vDeRemUURx9cctioRnveAYC
-	UhbMIFv1CzJ/mTvQeopr68xeIgeqJzocl/cTTjzrepGciLFTPfSszaY5mFhecz3usVQ2JStUIDMpv
-	qfugy1XU9QORSkykndQdjqEWaOV/cvC382UnqkVA265b64cSCw3dYs5Z923MzIOqVTHkFeenTridH
-	uZLPKVChx9gRJTQbsf5g==;
+	List-Owner; bh=6FPiaUPayBLcWh17afn/TZviFPIMamkWv6QTzlV8T20=; b=NO7QDz0RKMWsZu
+	a2w0gplSkwd/b8LlTZr8Lqbkr7eonNFZJ+lc76oxXu4Y6EkjFSxUkLSb6rOcljKUh2Rcq5TWpoPZF
+	YAIdoeT2M3LVhTDGt1afkDDVnvKiPT1JsNXCuue/Wp/IGf4H7dxYVLdlcETI2EysE/02pmwonj35o
+	f7xCojIEv1tHxydd9DOFzSRc2NwZL59SDByQWnloaakS0RXKcbrVXw4C8I5nV+6LD3Y+4Gc6LV4hj
+	/wIs9fpH5jNq913+hNAIZxJg6cfqpWdPl+QB9gD3kGaKrSis3i+lmK/PuMW9ZmUORmBYyfXq/Dp84
+	e9acdTjtjIUZVGMv01Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6aTy-00CynT-Ha; Wed, 29 Jun 2022 16:24:02 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1o6aU6-00Cyqv-Hq; Wed, 29 Jun 2022 16:24:10 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6aTu-00CymN-DJ; Wed, 29 Jun 2022 16:24:00 +0000
+	id 1o6aU2-00Cyoc-Pj; Wed, 29 Jun 2022 16:24:09 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 6C79061AC0;
+	by ams.source.kernel.org (Postfix) with ESMTPS id B4607B82584;
+	Wed, 29 Jun 2022 16:24:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4E892C341CC;
 	Wed, 29 Jun 2022 16:23:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF816C341C8;
-	Wed, 29 Jun 2022 16:23:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1656519836;
-	bh=RFV17kA2etM59yr+SN253bVf49eBdGjyy0t6B21oRjo=;
+	s=k20201202; t=1656519843;
+	bh=BQk96XPXhMlTi13f6yCCrvn/8gYix9PjnzJYL42TN7s=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=cGr5NPOZVjoOE9RiyqdUubbitwp2BzC8tMvMAchRhOZ3AwMNZOD6GZRS6IePuY2ym
-	 88NyXFPS3JBVchIAXJh5ullSO22rYW5Hb5jmqdMInVOFc+PkCtAMrCt4Y43CpMQT/U
-	 sxLBtnHOT6tZhVfystwT9SGmEr2bx6COWmnT16ySPc/cDlxOD+4aJAEq9mymcmAzl5
-	 8rBBb4wIwf0xWhOENpfmIHGp2nRY/l8aVuGxJ5IuRJwSqH/Avqb7be/UD8XUBnXoLQ
-	 VX2yCnpK0z0fYjL62FBOewa8Y/hkS9djRysBIzQQpUOvC85ML8nRm17EcGWgfJgIqH
-	 Hf7b6rO7jXDwg==
+	b=VW2yy9wHGEB3RwMgTdrsQaoW/Ma/abZbffXSLvQ9Zqp6Axo0G2D24TTx5/Yl9FGE7
+	 4kFmiAHHKB7kXVfcoaKTk/CtYcJ9rLFHAYy3RpCkDV8fggVH41eMn8hAa5vNFK50/U
+	 llHsfbIinN/MnhVCEfLf+e3cGGKyAVnxuT98gfaRko7gmvnfiDj15NQZAcj/hD3pSZ
+	 c9YhVwSDPiwPZ+VaIkPJozCDt5Jx8KY5wSv0RxPiAM5EXlg/XnXRqNjB+EseDxBoa0
+	 7MpQjBJokUnMJysNj3I64tS+Eie2bZgRhLxqgyDq0vJ4S4hKUnrijIeYvNSkW/Qwcp
+	 qIxPAH3f/PEtw==
 From: Mark Brown <broonie@kernel.org>
 To: ckeepax@opensource.cirrus.com
-Cc: linux-mips@vger.kernel.org, alsa-devel@alsa-project.org, linux-stm32@st-md-mailman.stormreply.com, nsaenz@kernel.org, lgirdwood@gmail.com, srinivas.kandagatla@linaro.org, jbrunet@baylibre.com, heiko@sntech.de, linux-tegra@vger.kernel.org, shawnguo@kernel.org, linux-rockchip@lists.infradead.org, nicolas.ferre@microchip.com, patches@opensource.cirrus.com, peter.ujfalusi@gmail.com, linux-sunxi@lists.linux.dev, linux-rpi-kernel@lists.infradead.org, linux-omap@vger.kernel.org, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, vkoul@kernel.org, mripard@kernel.org, daniel@zonque.org, airlied@linux.ie, linux-xtensa@linux-xtensa.org, krzk@kernel.org, cezary.rojewski@intel.com, kernel@pengutronix.de, dri-devel@lists.freedesktop.org, daniel@ffwll.ch, linux-amlogic@lists.infradead.org, linux-imx@nxp.com, pierre-louis.bossart@linux.intel.com, jarkko.nikula@bitmer.com
-In-Reply-To: <20220616143429.1324494-1-ckeepax@opensource.cirrus.com>
-References: <20220616143429.1324494-1-ckeepax@opensource.cirrus.com>
-Subject: Re: [PATCH 00/96] Refactor non_legacy_dai_naming flag
-Message-Id: <165651983041.2058781.2369056940647429242.b4-ty@kernel.org>
-Date: Wed, 29 Jun 2022 17:23:50 +0100
+Cc: linux-mips@vger.kernel.org, alsa-devel@alsa-project.org, linux-stm32@st-md-mailman.stormreply.com, nsaenz@kernel.org, lgirdwood@gmail.com, srinivas.kandagatla@linaro.org, jbrunet@baylibre.com, heiko@sntech.de, linux-tegra@vger.kernel.org, shawnguo@kernel.org, linux-rockchip@lists.infradead.org, nicolas.ferre@microchip.com, patches@opensource.cirrus.com, peter.ujfalusi@gmail.com, linux-sunxi@lists.linux.dev, linux-rpi-kernel@lists.infradead.org, linux-omap@vger.kernel.org, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, vkoul@kernel.org, frattaroli.nicolas@gmail.com, airlied@linux.ie, daniel@zonque.org, mripard@kernel.org, linux-xtensa@linux-xtensa.org, krzk@kernel.org, cezary.rojewski@intel.com, kernel@pengutronix.de, dri-devel@lists.freedesktop.org, daniel@ffwll.ch, linux-amlogic@lists.infradead.org, linux-imx@nxp.com, pierre-louis.bossart@linux.intel.com, jarkko.nikula@bitmer.com
+In-Reply-To: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
+References: <20220623125250.2355471-1-ckeepax@opensource.cirrus.com>
+Subject: Re: [PATCH v2 00/96] Refactor non_legacy_dai_naming flag
+Message-Id: <165651983704.2058781.8213227099502123936.b4-ty@kernel.org>
+Date: Wed, 29 Jun 2022 17:23:57 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220629_092358_590514_AECD9CF3 
-X-CRM114-Status: GOOD (  14.84  )
+X-CRM114-CacheID: sfid-20220629_092407_142559_0C348CFE 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,7 +69,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 16 Jun 2022 15:32:53 +0100, Charles Keepax wrote:
+On Thu, 23 Jun 2022 13:51:14 +0100, Charles Keepax wrote:
 > Historically, the legacy DAI naming scheme was applied to platform
 > drivers and the newer scheme to CODEC drivers. During componentisation
 > the core lost the knowledge of if a driver was a CODEC or platform, they
