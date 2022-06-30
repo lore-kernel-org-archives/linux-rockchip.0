@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05FEECCA483
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jul 2022 00:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DE7ECCA485
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jul 2022 00:16:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MT0QDARCyh392OYJcVpbzbp3ExgBoNecNY3f/kJBOo8=; b=g9iSvcNK9prcIx
-	jrJo+MkXLT9d4bOsKZz7ojoP5SETxUcZscCEruEY7cQ/CcBIKULKlrbmOMlZmd+u5pbO4Vw08GCq5
-	XtMEYGXIhx/qGTNvZhAjTGRWoETeOjwDh2qKvCTn0S2jVahwRt23UTIv0oqzbdxhWwdTQKGpXvRex
-	4zFlOjWJi9TiQr4DgUMgOwkEmfhKnI9gZr4BIy98YPhWRMpLyBQgd2ZTExbSdLL8zK5PWtWFhS2kQ
-	9Z9wL0rCu4bw+A5o9z7BBkcRWp3gquBzElYpVp/6uBLFp0MoXViRT/VpswQbu4MdejbxrDy3YsmOy
-	pcAatkQFdFwWGWziKjCA==;
+	List-Owner; bh=ajM+A6nTXPHz9g+Iy9U5MJ82jvMi14HPpFSeVjDaNQk=; b=wlQwenPf7CqvBy
+	xVTCSJ16RovPrsKYAibjlgYZnDCZD+YdOWAuoqICybFfwDVWbsK3pXt1j4oA1DbeZmC7FV6XgPmY7
+	7lSQQ0VoFfi8E35Ct8j6w+JL2ZL+EERQXE5Lj7SsSjsYBH+qT6pb1fYL/tzH8k46FENRUNjSGWoRK
+	6q2N9Su6gtQ60yKK6HOwRHpzhzaKBjy3+txmbdoRQVf4iYgi66OpWtBg/jkz/vucoIUw7EK4cT1xf
+	85bQgehGo1fli4Rr794dJfSt7taR3+S8GHt/J1kqLtygY4RNkmvsvdTMwZp+E3WVNzMP8ifnm/G1F
+	8yHMJIPfeA8Z59uQNNvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o74KF-0028Lu-W5; Fri, 01 Jul 2022 00:16:00 +0000
+	id 1o74KI-0028Ow-7H; Fri, 01 Jul 2022 00:16:02 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o73GL-0020Fh-Uw
-	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:08:00 +0000
+	id 1o73GO-0020IR-03
+	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:08:04 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CE63C2589;
-	Fri,  1 Jul 2022 01:07:48 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 1D12459D;
+	Fri,  1 Jul 2022 01:07:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656630469;
-	bh=NKUnmgozwQ6M2cH0sZowD8uiqmyOjqngz4xSZ1/kWVQ=;
+	s=mail; t=1656630472;
+	bh=Mwkj3xI3t+j/kROPqx0pfNIcza44hw1NcvJdaI1/K6w=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=pgMwTRPjHOEhRoPEYIMqeScLFj+E8a7b/YCcq/YehAM0iq72AyYkl2QQR8cbiZ5PE
-	 zMPbMn2kydeY2I1iM5VBNWaavPor7o/TtGFlUCZQyky9lz2AXnzEuRVCFMlC1sI6i6
-	 GUcNrDVB+2xywZ5J9P0T7+JtBvZt4SRcCtNib3lk=
+	b=Jb7jSJyRDCkdsyQF9SK62+RQABgL3WBssTl+JRRN0kC06hhYsj/2fKbCCd+QyZNvv
+	 MnLy1zfEAwKVNA4ZZ04P00zaMT7/o2Q70qo6sQF5r8Zj4SqCksk55+Svv5WiHqjT+z
+	 2tl7cH1pGbkPQV+L/Ura9PBIyt7YQ2+NRjLX0Lns=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -42,16 +42,17 @@ Cc: linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v2 18/55] media: rkisp1: Fix sensor source pad retrieval at bound time
-Date: Fri,  1 Jul 2022 02:06:36 +0300
-Message-Id: <20220630230713.10580-19-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v2 23/55] media: rkisp1: csi: Move start delay to rkisp1_csi_start()
+Date: Fri,  1 Jul 2022 02:06:41 +0300
+Message-Id: <20220630230713.10580-24-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_160754_189853_F2FAFAB1 
-X-CRM114-Status: GOOD (  15.26  )
+X-CRM114-CacheID: sfid-20220630_160756_228577_586004E9 
+X-CRM114-Status: UNSURE (   9.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,118 +69,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When a sensor is bound, its source pad is retrieved in the .bound()
-operation with a call to media_entity_get_fwnode_pad(). The function
-should be called with the source endpoint fwnode of the sensor, but is
-instead called with the sensor's device fwnode.
-
-Fix this, which involves storing a reference to the source endpoint
-fwnode in the rkisp1_sensor_async structure, and thus implementing the
-subdev notifier .destroy() operation to release the reference.
+The delay in rkisp1_isp_start() is related to the CSI-2 receiver and
+the camera sensor. Move it where it belongs, to rkisp1_csi_start().
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-common.h  |  2 ++
- .../platform/rockchip/rkisp1/rkisp1-dev.c     | 28 ++++++++++++++++---
- 2 files changed, 26 insertions(+), 4 deletions(-)
+Changes since v1:
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index b0896b508db3..f08b3dec1465 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -117,6 +117,7 @@ struct rkisp1_info {
-  *
-  * @asd:		async_subdev variable for the sensor
-  * @index:		index of the sensor (counting sensor found in DT)
-+ * @source_ep:		fwnode for the sensor source endpoint
-  * @lanes:		number of lanes
-  * @mbus_type:		type of bus (currently only CSI2 is supported)
-  * @mbus_flags:		media bus (V4L2_MBUS_*) flags
-@@ -127,6 +128,7 @@ struct rkisp1_info {
- struct rkisp1_sensor_async {
- 	struct v4l2_async_subdev asd;
- 	unsigned int index;
-+	struct fwnode_handle *source_ep;
- 	unsigned int lanes;
- 	enum v4l2_mbus_type mbus_type;
- 	unsigned int mbus_flags;
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 2e68f35e8ea5..813c013139ea 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -138,7 +138,7 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
- 	phy_init(s_asd->dphy);
+- Fix typo in commit message
+---
+ drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c | 7 +++++++
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 6 ------
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+index 102deb877aa4..749ad473b877 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+@@ -9,6 +9,7 @@
+  * Copyright (C) 2017 Rockchip Electronics Co., Ltd.
+  */
  
- 	/* Create the link to the sensor. */
--	source_pad = media_entity_get_fwnode_pad(&sd->entity, sd->fwnode,
-+	source_pad = media_entity_get_fwnode_pad(&sd->entity, s_asd->source_ep,
- 						 MEDIA_PAD_FL_SOURCE);
- 	if (source_pad < 0) {
- 		dev_err(rkisp1->dev, "failed to find source pad for %s\n",
-@@ -170,10 +170,19 @@ static int rkisp1_subdev_notifier_complete(struct v4l2_async_notifier *notifier)
- 	return v4l2_device_register_subdev_nodes(&rkisp1->v4l2_dev);
++#include <linux/delay.h>
+ #include <linux/device.h>
+ #include <linux/phy/phy.h>
+ #include <linux/phy/phy-mipi-dphy.h>
+@@ -121,6 +122,12 @@ int rkisp1_csi_start(struct rkisp1_csi *csi,
+ 
+ 	rkisp1_csi_enable(csi);
+ 
++	/*
++	 * CIF spec says to wait for sufficient time after enabling
++	 * the MIPI interface and before starting the sensor output.
++	 */
++	usleep_range(1000, 1200);
++
+ 	return 0;
  }
  
-+static void rkisp1_subdev_notifier_destroy(struct v4l2_async_subdev *asd)
-+{
-+	struct rkisp1_sensor_async *rk_asd =
-+		container_of(asd, struct rkisp1_sensor_async, asd);
-+
-+	fwnode_handle_put(rk_asd->source_ep);
-+}
-+
- static const struct v4l2_async_notifier_operations rkisp1_subdev_notifier_ops = {
- 	.bound = rkisp1_subdev_notifier_bound,
- 	.unbind = rkisp1_subdev_notifier_unbind,
- 	.complete = rkisp1_subdev_notifier_complete,
-+	.destroy = rkisp1_subdev_notifier_destroy,
- };
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index d2343f166f42..da895f6aa3fa 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -365,12 +365,6 @@ static void rkisp1_isp_start(struct rkisp1_device *rkisp1)
+ 	       RKISP1_CIF_ISP_CTRL_ISP_ENABLE |
+ 	       RKISP1_CIF_ISP_CTRL_ISP_INFORM_ENABLE;
+ 	rkisp1_write(rkisp1, RKISP1_CIF_ISP_CTRL, val);
+-
+-	/*
+-	 * CIF spec says to wait for sufficient time after enabling
+-	 * the MIPI interface and before starting the sensor output.
+-	 */
+-	usleep_range(1000, 1200);
+ }
  
- static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
-@@ -190,6 +199,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
- 			.bus_type = V4L2_MBUS_CSI2_DPHY
- 		};
- 		struct rkisp1_sensor_async *rk_asd;
-+		struct fwnode_handle *source = NULL;
- 		struct fwnode_handle *ep;
- 
- 		ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(rkisp1->dev),
-@@ -202,15 +212,24 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
- 		if (ret)
- 			goto err_parse;
- 
--		rk_asd = v4l2_async_nf_add_fwnode_remote(ntf, ep,
--							 struct
--							 rkisp1_sensor_async);
-+		source = fwnode_graph_get_remote_endpoint(ep);
-+		if (!source) {
-+			dev_err(rkisp1->dev,
-+				"endpoint %pfw has no remote endpoint\n",
-+				ep);
-+			ret = -ENODEV;
-+			goto err_parse;
-+		}
-+
-+		rk_asd = v4l2_async_nf_add_fwnode(ntf, source,
-+						  struct rkisp1_sensor_async);
- 		if (IS_ERR(rk_asd)) {
- 			ret = PTR_ERR(rk_asd);
- 			goto err_parse;
- 		}
- 
- 		rk_asd->index = index++;
-+		rk_asd->source_ep = source;
- 		rk_asd->mbus_type = vep.bus_type;
- 		rk_asd->mbus_flags = vep.bus.mipi_csi2.flags;
- 		rk_asd->lanes = vep.bus.mipi_csi2.num_data_lanes;
-@@ -225,6 +244,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
- 		continue;
- err_parse:
- 		fwnode_handle_put(ep);
-+		fwnode_handle_put(source);
- 		v4l2_async_nf_cleanup(ntf);
- 		return ret;
- 	}
+ /* ----------------------------------------------------------------------------
 -- 
 Regards,
 
