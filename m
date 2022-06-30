@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE387C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 17:30:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5B37C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 17:33:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P+ENneN2w+q7jdaRnHWbepp3EGFBToFwyC9+q1nt778=; b=GO37l61jwh/XxF
-	/7AXwOFy5De80cDKNLHJv6r8BasZ9d+GP9W3c9QWltqvDm4eXs0jnH0rrholjA0+bCWecLODUlNXl
-	Ug2vuNlGBEXYv512NldmDhEN0TbD94mx3sI7/JRoP27rrn1+P9u6olwXErgSxFI0eSGgR9DJF4OWP
-	CbSz9m+Ek5TpHnZhejL7rXCQwAai73XGC+iybaZxm87oLnLfxEeOKiujv9C81vh/HH+kIdeTxR9MJ
-	+5Mrt8MxeOcVsFF5KvkEXeTgaEzPLD7X0ZHQj+n+z9okii7QYc8mC1XkVFs2oE06Awcotq0tiRtWO
-	W12I8M6UO9eErnQ8vzZA==;
+	List-Owner; bh=x22igHqzgcApqIdlEs3w01dmWLFEzbj2n+JRvKkHZD4=; b=FvmubD4CBxHn8p
+	IOohB2q5zmcY5l5k1s3ekJvkFdFRzgTmVExeARCnQNdYKyvwhX86pdys0EioVZ5gkDkrC/gQKx0xg
+	jelDzXLRC3OYVz/LSF/F/MXmJBZDu91dPrhQGnrz3RWzPREKUdSr43R0Kwg8GE2RYY/jY0s7h2ZEu
+	SH1ULB99fEpiq0DMSbQLuxbsq4AMjMYnYeBhNc7BQkipXXo3qT+cpV6fe9KOVWGh30HbM+lfr1YW9
+	u5E+oAU1pZYIadHnGLTU3Ny8NHOBM9W0o41F2dv2mmkhwaeLTSNU/y250arHr3AjMqwlmLvt3dowP
+	xFrB/xbOeJ6oOpac2yiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6xzm-000pWs-Fk; Thu, 30 Jun 2022 17:30:26 +0000
-Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
+	id 1o6y2Z-000qQ8-Re; Thu, 30 Jun 2022 17:33:19 +0000
+Received: from mail-oo1-xc2d.google.com ([2607:f8b0:4864:20::c2d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6xzk-000pVz-Bk
-	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 17:30:25 +0000
-Received: by mail-oa1-x30.google.com with SMTP id 586e51a60fabf-fe023ab520so121997fac.10
-        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jun 2022 10:30:21 -0700 (PDT)
+	id 1o6y2X-000qNk-3u
+	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 17:33:18 +0000
+Received: by mail-oo1-xc2d.google.com with SMTP id i19-20020a4ad093000000b004256ad0893fso3883433oor.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jun 2022 10:33:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to;
-        bh=eJY5MsxNfTnDTBWpRfYuGIpnJMS3h7qwIGokJXZf/SU=;
-        b=4qpE9Xqlh8LCVZjAhVL6VmJW8gFDr5tVr6AffUScIOD0NsVctK6XwJvGUEQbj1bggv
-         Zi0cl94d3kOceYChCHUi9cy7jPTzSvkjIuyReTX5OOfsDLigMNzFrWVth51sbRrvG8SV
-         8C0OlVewUuJSoOvXCplJX6YbhSnE9L6+rzL2q3xwpEAOA3L1cCy+RW4vruhvVxUSKEsZ
-         LlUg7Xn+IVTwD5Mageii8ELu3At8wUEi36cZ+YxZG/krL/dS65fGTsaZhMqvMI8ExxTV
-         QcPxhJebo5cepb+WQclHIKyfnLNpfbHDHoN23kwA9dQnpMqDWxhZw7MmjHFTN2OOMaUp
-         qdGA==
+        bh=GV7rma6+T6KQeNRvTDv+srtDNdvqlj7JPB6xqwy+fxk=;
+        b=ckqrfpEM/4gKBJjhBatJ51K90/WUgBhZtqvKDzA88Flf40NTPMPJ3eZDAlYNVMscNR
+         Z04iE7NbvH+6wmJDcGoO0YcWZSxZ5v4kO4QOu/HcG9Y2XfVgQCyfsYK385Gcry0OEqk8
+         ZtoAWYW+qF/6z3/W+NP1hXY9zVBQOgHhNxaNxkQ2ardLLkmiymDOST7wRfi6+XiPFHAW
+         Y0e3rnUyJG2xSx2ya0qjfSS71MBMskruUftE+5LWofxOYujh+WBbydgzqeOtIXXL2pxo
+         B8Td0OnpEnoLQd4+stuufZP1dCAIEox1NYiPQK8Y8dsDRVwiuC60fECu6q+awcJxHQvh
+         Fo0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=eJY5MsxNfTnDTBWpRfYuGIpnJMS3h7qwIGokJXZf/SU=;
-        b=n3r/jILOaU5eGlsL0cb5vPdmtaEzWMNloEt/BmV5NsqbgX8bBgWWOXjCOjxLn6HtzV
-         g+aGXDXoDkOdEnML82B3rtsi5Oy0ViOsiMFscsj4kBGqm2oFqYiC6LDVdvgUFyoWIZUQ
-         FN/NhsgzuVwACZYIwSVsRtyd4LxyRb7YcuKmy5QcAry80XAdFWQ0LN7IOy+T5/Vx4QJe
-         T44HQivge1k26jjWB1MSTQqNE+nTGHP1l2MhbprJFSVj+IeD1LHaML47qh+SUp9VsYHz
-         XAWGilxmAIlkyzWq/JtFQj3zR+a1VOlAma6sqL3vXZZG7+1FMJmWOCJJc7llJRbw5EaR
-         5ziQ==
-X-Gm-Message-State: AJIora82xfRfuncMUA7hLiyi/dFE2HVSBfSUS6l4KLmS4qB+yoTNYCgf
-	6TYA9Yv6wzOBLbT61D+d1iGx3A==
-X-Google-Smtp-Source: AGRyM1t4nWwAndTq5PNsUK2pyU0AyCgAgapJSJwk+PMvmJlVrviN4+sLMJ1Qy/YsZCdRe9kj2u2IwQ==
-X-Received: by 2002:a05:6870:e2ce:b0:101:a7c3:49cb with SMTP id w14-20020a056870e2ce00b00101a7c349cbmr7105251oad.197.1656610221161;
-        Thu, 30 Jun 2022 10:30:21 -0700 (PDT)
+        bh=GV7rma6+T6KQeNRvTDv+srtDNdvqlj7JPB6xqwy+fxk=;
+        b=zo0PPl05nkHPKFe/BDZEKiKN6qq9Pebmf//RQFKNjGcDyyfSS7qKn+Cs1l4tu/TtlF
+         0qpiTMtjt4TXoZ1Eoh1N0d7jfrFYu8ACU82liS360TwTgS6AV915UsFTIiaKEgFf4MCA
+         pMabAscM78/mrZUJtUgQ3pm+7TucPFVIYo+jK5/eamxGwdOq5BbtQg2hU5w6ronjl1BJ
+         oU/Fqw5xVIGFc5oCiGWbxgWq8kD7NhEFtsxIr1U1zyjSUg7v5zV7JiGK56O3n0dLNx2J
+         qTt36Yl5NBOjRXnNdG8oADbmfu283J4kWYP+v/qy46Wu0uNo3VmwbXP9rjJcyAKzgo8o
+         tTHQ==
+X-Gm-Message-State: AJIora9gv3KEkulFl9suvfFZ/d+cg3G2NpwkMdSockH1pHqmtsRo1Ojp
+	WObhYNKCNZcUvPdZvphamUorsA==
+X-Google-Smtp-Source: AGRyM1uHmEh/OuQKMNNKJwNpcvuxZiUW4pitk9X+/dijUMypH48J/IY4d7OKUiVi0cZ1jQhEP0B37w==
+X-Received: by 2002:a4a:49d0:0:b0:425:708a:224 with SMTP id z199-20020a4a49d0000000b00425708a0224mr4367978ooa.18.1656610395166;
+        Thu, 30 Jun 2022 10:33:15 -0700 (PDT)
 Received: from eze-laptop ([190.190.187.68])
-        by smtp.gmail.com with ESMTPSA id r10-20020a056808210a00b00325cda1ff8esm10445255oiw.13.2022.06.30.10.30.16
+        by smtp.gmail.com with ESMTPSA id z18-20020a056808065200b0032ba1b363d2sm10323115oih.55.2022.06.30.10.33.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jun 2022 10:30:20 -0700 (PDT)
-Date: Thu, 30 Jun 2022 14:30:13 -0300
+        Thu, 30 Jun 2022 10:33:14 -0700 (PDT)
+Date: Thu, 30 Jun 2022 14:33:08 -0300
 From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: mchehab@kernel.org, hverkuil@xs4all.nl, p.zabel@pengutronix.de,
@@ -70,16 +70,17 @@ Cc: mchehab@kernel.org, hverkuil@xs4all.nl, p.zabel@pengutronix.de,
 	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
 	kernel@collabora.com
-Subject: Re: [PATCH 1/7] media: hantro: Store HEVC bit depth in context
-Message-ID: <Yr3dpT/hQHM56c8o@eze-laptop>
+Subject: Re: [PATCH 2/7] media: hantro: HEVC: Fix auxilary buffer size
+ calculation
+Message-ID: <Yr3eVDFjPBrvi5Td@eze-laptop>
 References: <20220617115802.396442-1-benjamin.gaignard@collabora.com>
- <20220617115802.396442-2-benjamin.gaignard@collabora.com>
+ <20220617115802.396442-3-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220617115802.396442-2-benjamin.gaignard@collabora.com>
+In-Reply-To: <20220617115802.396442-3-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_103024_628972_AD184D44 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20220630_103317_184081_21AB1125 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,38 +99,46 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Benjamin,
 
-Thanks for the patch.
-
-On Fri, Jun 17, 2022 at 01:57:56PM +0200, Benjamin Gaignard wrote:
-> Store HEVC bit depth in context.
-> Bit depth is equal to hevc sps bit_depth_luma_minus8 + 8.
+On Fri, Jun 17, 2022 at 01:57:57PM +0200, Benjamin Gaignard wrote:
+> SAO and FILTER buffers size depend of the bit depth.
+> Make sure we have enough space for 10bit bitstreams.
 > 
 > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
->  drivers/staging/media/hantro/hantro_hevc.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/staging/media/hantro/hantro_hevc.c b/drivers/staging/media/hantro/hantro_hevc.c
-> index 5984c5fa6f83..dcb5c8703b6e 100644
-> --- a/drivers/staging/media/hantro/hantro_hevc.c
-> +++ b/drivers/staging/media/hantro/hantro_hevc.c
-> @@ -163,6 +163,8 @@ int hantro_hevc_validate_sps(struct hantro_ctx *ctx, const struct v4l2_ctrl_hevc
->  		/* Only 8-bit is supported */
->  		return -EINVAL;
->  
-> +	ctx->bit_depth = sps->bit_depth_luma_minus8 + 8;
-> +
 
-This should set in hantro_hevc_s_ctrl.
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 
-Thanks!
+Thanks,
 Ezequiel
 
->  	/*
->  	 * for tile pixel format check if the width and height match
->  	 * hardware constraints
+> ---
+>  drivers/staging/media/hantro/hantro_hevc.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/media/hantro/hantro_hevc.c b/drivers/staging/media/hantro/hantro_hevc.c
+> index dcb5c8703b6e..e06837108a09 100644
+> --- a/drivers/staging/media/hantro/hantro_hevc.c
+> +++ b/drivers/staging/media/hantro/hantro_hevc.c
+> @@ -104,7 +104,7 @@ static int tile_buffer_reallocate(struct hantro_ctx *ctx)
+>  		hevc_dec->tile_bsd.cpu = NULL;
+>  	}
+>  
+> -	size = VERT_FILTER_RAM_SIZE * height64 * (num_tile_cols - 1);
+> +	size = (VERT_FILTER_RAM_SIZE * height64 * (num_tile_cols - 1) * ctx->bit_depth) / 8;
+>  	hevc_dec->tile_filter.cpu = dma_alloc_coherent(vpu->dev, size,
+>  						       &hevc_dec->tile_filter.dma,
+>  						       GFP_KERNEL);
+> @@ -112,7 +112,7 @@ static int tile_buffer_reallocate(struct hantro_ctx *ctx)
+>  		goto err_free_tile_buffers;
+>  	hevc_dec->tile_filter.size = size;
+>  
+> -	size = VERT_SAO_RAM_SIZE * height64 * (num_tile_cols - 1);
+> +	size = (VERT_SAO_RAM_SIZE * height64 * (num_tile_cols - 1) * ctx->bit_depth) / 8;
+>  	hevc_dec->tile_sao.cpu = dma_alloc_coherent(vpu->dev, size,
+>  						    &hevc_dec->tile_sao.dma,
+>  						    GFP_KERNEL);
 > -- 
 > 2.32.0
+
 > 
 
 _______________________________________________
