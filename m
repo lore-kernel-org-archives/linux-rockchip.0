@@ -4,92 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45700C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 21:57:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2227C43334
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 22:04:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bFBjnQPw9ucHBUS55ImefWIwc//HBqZrAMXRP8iAimI=; b=pGmTtGWwXUv6lKnDV0/xefqWnL
-	kP+Cvvc6PhL7BzjrSHhIxPbZlXRuT3aWc9aF/uzCs3oF54QsoDaHsGZe/GcHqcL6CwxBnU5eEMoby
-	vfOxvSUo8/fvcUDGIOmLi8PnX6HyzCPSeY60cfVoBqaidZpxnsH96MMJb3b8sjNkRQXGLv1zkoHtv
-	7lEKp8BhulUXoIVmvpf2KyJoZf8ACakADG91f94dxI6/lQOiwg3tX+PcCC8DySjdWPL64McZcHMBg
-	r1biCFvb8zqBqGZvSMhIU+2F+wKV+lzOaKln1k6xPegaNp1aKLvRycXjzrYWWa7ykyir50zozZxQw
-	A2RaqkVg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7IRnls4m3vGqwB9zv63GLWBsxaSaWqOtY5XghXbqLFA=; b=gbT1M/uHg1p9Wk
+	mDE2n4U0kjQgxUrE+fs84ZE3iNaga0MCTHxUnqNa+Uwp6Ose3jRejxjZ4GHzaMBYtlFIp/XkBd0+R
+	DHZ4WSV5tFfyj0YMSiquTcRPvuYWlh6BwH61KBoPodcJDqqIglzv0RM/ZCL6xf5l8yb/5j0M/k9Ad
+	Oi17JQ8CGXVfU3MXhQRzoVFuPDwFntZj6zfPh2Lnq4oEdjVKuO5b8yvbMu6lpD0NxoSdYzve+YM/+
+	Cpz00Oug9uZ0ghyaOIVVlfmcDHMi/tq874AzG6W25NKS9Ajdx/Yaj9OkktSatntODITAfduDa/FEF
+	Y0e2oFzfIry6IyTlvY5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o72AA-001iGM-Rf; Thu, 30 Jun 2022 21:57:26 +0000
-Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
+	id 1o72Gm-001jRG-6U; Thu, 30 Jun 2022 22:04:16 +0000
+Received: from mail-il1-f177.google.com ([209.85.166.177])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o72A7-001iFU-My
-	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 21:57:25 +0000
-Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
-	by mailout.west.internal (Postfix) with ESMTP id 0D0423200A1D;
-	Thu, 30 Jun 2022 17:57:21 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute2.internal (MEProxy); Thu, 30 Jun 2022 17:57:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
-	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm2; t=1656626241; x=1656712641; bh=gYS3J5Ca4h
-	8qz/MDexEyw7DF4q+FKi51Y6TnlVjbSf8=; b=EgH5lLyOfUZF1ZVFmf6copmhyo
-	afVkhqq/9TBNkdhr/nwW/jXOxEDQ9CZEBtMnNfYrHXk/1jXliBb349Ty+Lw3Z4nD
-	ZH102bveQUBnzy/e9+h447ZB4i3/4uiFoWiKk00mZNeDxiz69Ej8Jbdya5pYw60L
-	J2HMQ03XjmZmkaaBvUddGq7nUJI8lIq9Hm9GLY9HLcIjFlAA1k280Y2YZfJ67Gk4
-	Xpulb8DYODFeL7qBJ/gb/P1UEgzzWGp03aLAW8ecMG0JIXFZI2hcWtFlW9jtmjP8
-	U4R98mABAt0IyUotYV+wltUHehbRcxhhJfqwn6r+udWinDakRKZubKxOI7aA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm2; t=1656626241; x=1656712641; bh=gYS3J5Ca4h8qz/MDexEyw7DF4q+F
-	Ki51Y6TnlVjbSf8=; b=BfeC/JdgCM0lP4Uh4Jj8+hVylbWmMsgo5LuMr970NWu8
-	P54nzE32fMbnKPIceNZ3hXvDa4SqBqc5kn8fUomB0dD3GKxuf2IIOk9hTZzL3iWd
-	VLaRqnPjk22GX+FigWqLXO4rMqrDBejMdX0v4BW8g0fSOWYSOpe/Wxf7bDQ88/lc
-	xvc5y15TwOCuMgJsheVaDMdrN27ANZ1GJpG1xkJUTEMQnG1lT9bs6nKYRWbdAF2V
-	gbGPpvGWNAHXSp929Ono+Qy3kcDLtO6yshIwujmIc4+Ka4kGrgoR5gH/VboUZNbY
-	k5DKPoU5yHc4MgRhH08loSah+UUpKqXwYPJmFH034Q==
-X-ME-Sender: <xms:QRy-YrqfNldGTXLFHrEKaFnR7rKe5h7CgnzfL5f1auJG5ImOhmLtaw>
-    <xme:QRy-Ylo6MQkUNbIQFHus0n8WTERFqZhPJcv2Y5Dd_Ixss2uZM6gcs4YDE_GJWflQo
-    4kIaXd3NBzabW6o-34>
-X-ME-Received: <xmr:QRy-YoMMu_KHVJ7hjQIbn3tANK_grAKGNQ0IMIzHF0CrqNlmxrhnzw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudehvddgtdehucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtjeenucfhrhhomhepffgrfhhn
-    rgcujfhirhhstghhfhgvlhguuceouggrfhhnrgesfhgrshhtmhgrihhlrdgtohhmqeenuc
-    ggtffrrghtthgvrhhnpedvhedtledukeegveelfeeuvddujeeiteehkedvhfetkeffudej
-    hfeftdduhedvkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfh
-    hrohhmpegurghfnhgrsehfrghsthhmrghilhdrtghomh
-X-ME-Proxy: <xmx:QRy-Yu5xic5P0tyiMMtZmaMTEqxhcKJIng8TJW3AbfT54rlUL52vbQ>
-    <xmx:QRy-Yq4ajRQy49AItxohWF5RXm7EYAjRs62YAGKOP6xKytndsv45SA>
-    <xmx:QRy-YmhMW4P6eX7p4DsxQPZ5d4PnYcSmBiRYRKLYi9KKj0IweuHf8w>
-    <xmx:QRy-YhYPJts8fjMh5EE4KQ1hRCHCi74sPqBjyTZ_DqCsMiaCXmvUjw>
-Feedback-ID: i0e894699:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 30 Jun 2022 17:57:18 -0400 (EDT)
-Date: Fri, 1 Jul 2022 00:57:15 +0300
-From: Dafna Hirschfeld <dafna@fastmail.com>
-To: Paul Elder <paul.elder@ideasonboard.com>
-Cc: linux-media@vger.kernel.org,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	heiko@sntech.de, jeanmichel.hautbois@ideasonboard.com,
-	jacopo@jmondi.org, djrscally@gmail.com, helen.koike@collabora.com,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 27/55] media: rkisp1: isp: Rename
- rkisp1_device.active_sensor to source
-Message-ID: <20220630215715.fc7fynqpd36d55hf@guri>
-References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
- <20220614191127.3420492-28-paul.elder@ideasonboard.com>
+	id 1o72Gj-001jQA-9y; Thu, 30 Jun 2022 22:04:14 +0000
+Received: by mail-il1-f177.google.com with SMTP id n14so262152ilt.10;
+        Thu, 30 Jun 2022 15:04:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=s6vayCRK86CE7qgYDkxjb+ihTq54Ky6YWbFQEP1rvh0=;
+        b=WfZkzY33Y4Ce8lYtBxmEIpxTsSM2nQQbu92BVu+0qPhsi+O83cL0Oyx7qWNsrk2Lj4
+         KBaPWy5P0wB0eH28Er24GCp+H7f5W6cul7hHHnFaYR7mQAqZZM3ibQNupROSOf7iJ4Te
+         Z7CEda6g/XN0P71b/4Ow9THYjDLLOwmozLehAzRO981fRbZUAu8ekkPjDtw3xNgWEaYq
+         H3ealBnVEJNxSzCbrg27c0kVKxg2BYj4xzGPxJDYi3s0mpMJRXpECLjf4YTMvu430xvD
+         iYz30QN8A9JJkx2BYNrQbdg3wzSXRV7qy5cb/kjd9/mPLpnzzQC1CMFyqQ/QALYvR+Wr
+         t4Hw==
+X-Gm-Message-State: AJIora9W+UtPZEB/ETpje/HGRpZBpwqPz0CPWXcPrQtikNru/ko8o4sM
+	ikrtJRtvFyEMKVZNmQNLPQ==
+X-Google-Smtp-Source: AGRyM1vW3dsEogT9Co/H9kmqJP0E9h2BYpxtiVWrLbrM0vHhTIpjSAk9Y6napPhEV50x1ZxpZ78c1g==
+X-Received: by 2002:a05:6e02:1c27:b0:2d9:4d66:8541 with SMTP id m7-20020a056e021c2700b002d94d668541mr6394281ilh.176.1656626652566;
+        Thu, 30 Jun 2022 15:04:12 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id e25-20020a0566380cd900b00339ee768069sm8989348jak.74.2022.06.30.15.04.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Jun 2022 15:04:12 -0700 (PDT)
+Received: (nullmailer pid 3399122 invoked by uid 1000);
+	Thu, 30 Jun 2022 22:04:09 -0000
+Date: Thu, 30 Jun 2022 16:04:09 -0600
+From: Rob Herring <robh@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, Finley Xiao <finley.xiao@rock-chips.com>, kernel@collabora.com
+Subject: Re: [PATCH 2/6] dt-bindings: add power-domain header for rk3588
+Message-ID: <20220630220409.GA3396626-robh@kernel.org>
+References: <20220623162309.243766-1-sebastian.reichel@collabora.com>
+ <20220623162309.243766-3-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220614191127.3420492-28-paul.elder@ideasonboard.com>
+In-Reply-To: <20220623162309.243766-3-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_145723_821869_4CA1B858 
-X-CRM114-Status: GOOD (  13.08  )
+X-CRM114-CacheID: sfid-20220630_150413_384699_900AF969 
+X-CRM114-Status: GOOD (  15.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,129 +73,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 15.06.2022 04:10, Paul Elder wrote:
->From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->
->The active_sensor field of the rkisp1_device structure points to the ASD
->data for the active source. The source may however not be a sensor, so
->the naming is a bit confusing. Furthermore, the driver doesn't need to
->access the full ASD from the active_sensor field, only the subdev
->pointer is needed, when stopping streaming.
->
->Rename the field to source, and turn it into a v4l2_subdev pointer.
->
->Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+On Thu, Jun 23, 2022 at 06:23:05PM +0200, Sebastian Reichel wrote:
+> From: Finley Xiao <finley.xiao@rock-chips.com>
+> 
+> According to a description from TRM, add all the power domains.
+> 
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  include/dt-bindings/power/rk3588-power.h | 69 ++++++++++++++++++++++++
+>  1 file changed, 69 insertions(+)
+>  create mode 100644 include/dt-bindings/power/rk3588-power.h
+> 
+> diff --git a/include/dt-bindings/power/rk3588-power.h b/include/dt-bindings/power/rk3588-power.h
+> new file mode 100644
+> index 000000000000..69f7e9060250
+> --- /dev/null
+> +++ b/include/dt-bindings/power/rk3588-power.h
+> @@ -0,0 +1,69 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
 
-Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
+Dual license please. It would be nice to get agreement from Rockchip on 
+this and *all* DT headers.
 
->---
-> .../platform/rockchip/rkisp1/rkisp1-common.h  |  4 +--
-> .../platform/rockchip/rkisp1/rkisp1-isp.c     | 27 +++++++++----------
-> 2 files changed, 14 insertions(+), 17 deletions(-)
->
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->index dbf1baca623a..7a6f55a31bb0 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->@@ -419,7 +419,7 @@ struct rkisp1_debug {
->  * @v4l2_dev:	   v4l2_device variable
->  * @media_dev:	   media_device variable
->  * @notifier:	   a notifier to register on the v4l2-async API to be notified on the sensor
->- * @active_sensor: sensor in-use, set when streaming on
->+ * @source:        source subdev in-use, set when starting streaming
->  * @csi:	   internal CSI-2 receiver
->  * @isp:	   ISP sub-device
->  * @resizer_devs:  resizer sub-devices
->@@ -439,7 +439,7 @@ struct rkisp1_device {
-> 	struct v4l2_device v4l2_dev;
-> 	struct media_device media_dev;
-> 	struct v4l2_async_notifier notifier;
->-	struct rkisp1_sensor_async *active_sensor;
->+	struct v4l2_subdev *source;
-> 	struct rkisp1_csi csi;
-> 	struct rkisp1_isp isp;
-> 	struct rkisp1_resizer resizer_devs[2];
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->index f6d1c93dd99d..4f12fc0b7694 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->@@ -58,7 +58,7 @@
->  * Helpers
->  */
->
->-static struct v4l2_subdev *rkisp1_get_remote_sensor(struct v4l2_subdev *sd)
->+static struct v4l2_subdev *rkisp1_get_remote_source(struct v4l2_subdev *sd)
-> {
-> 	struct media_pad *local, *remote;
-> 	struct media_entity *sensor_me;
->@@ -749,12 +749,11 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
-> 	struct rkisp1_device *rkisp1 =
-> 		container_of(sd->v4l2_dev, struct rkisp1_device, v4l2_dev);
-> 	struct rkisp1_isp *isp = &rkisp1->isp;
->-	struct v4l2_subdev *sensor_sd;
->+	struct rkisp1_sensor_async *asd;
-> 	int ret;
->
-> 	if (!enable) {
->-		v4l2_subdev_call(rkisp1->active_sensor->sd, video, s_stream,
->-				 false);
->+		v4l2_subdev_call(rkisp1->source, video, s_stream, false);
->
-> 		rkisp1_csi_stop(&rkisp1->csi);
-> 		rkisp1_isp_stop(rkisp1);
->@@ -762,35 +761,33 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
-> 		return 0;
-> 	}
->
->-	sensor_sd = rkisp1_get_remote_sensor(sd);
->-	if (!sensor_sd) {
->-		dev_warn(rkisp1->dev, "No link between isp and sensor\n");
->+	rkisp1->source = rkisp1_get_remote_source(sd);
->+	if (!rkisp1->source) {
->+		dev_warn(rkisp1->dev, "No link between isp and source\n");
-> 		return -ENODEV;
-> 	}
->
->-	rkisp1->active_sensor = container_of(sensor_sd->asd,
->-					     struct rkisp1_sensor_async, asd);
->+	asd = container_of(rkisp1->source->asd, struct rkisp1_sensor_async,
->+			   asd);
->
->-	if (rkisp1->active_sensor->mbus_type != V4L2_MBUS_CSI2_DPHY)
->+	if (asd->mbus_type != V4L2_MBUS_CSI2_DPHY)
-> 		return -EINVAL;
->
-> 	rkisp1->isp.frame_sequence = -1;
-> 	mutex_lock(&isp->ops_lock);
->-	ret = rkisp1_config_cif(rkisp1, rkisp1->active_sensor->mbus_type,
->-				rkisp1->active_sensor->mbus_flags);
->+	ret = rkisp1_config_cif(rkisp1, asd->mbus_type, asd->mbus_flags);
-> 	if (ret)
-> 		goto mutex_unlock;
->
-> 	rkisp1_isp_start(rkisp1);
->
->-	ret = rkisp1_csi_start(&rkisp1->csi, rkisp1->active_sensor);
->+	ret = rkisp1_csi_start(&rkisp1->csi, asd);
-> 	if (ret) {
-> 		rkisp1_isp_stop(rkisp1);
-> 		goto mutex_unlock;
-> 	}
->
->-	ret = v4l2_subdev_call(rkisp1->active_sensor->sd, video, s_stream,
->-			       true);
->+	ret = v4l2_subdev_call(rkisp1->source, video, s_stream, true);
-> 	if (ret) {
-> 		rkisp1_isp_stop(rkisp1);
-> 		rkisp1_csi_stop(&rkisp1->csi);
->-- 
->2.30.2
->
+> +#ifndef __DT_BINDINGS_POWER_RK3588_POWER_H__
+> +#define __DT_BINDINGS_POWER_RK3588_POWER_H__
+> +
+> +/* VD_LITDSU */
+> +#define RK3588_PD_CPU_0		0
+> +#define RK3588_PD_CPU_1		1
+> +#define RK3588_PD_CPU_2		2
+> +#define RK3588_PD_CPU_3		3
+> +
+> +/* VD_BIGCORE0 */
+> +#define RK3588_PD_CPU_4		4
+> +#define RK3588_PD_CPU_5		5
+> +
+> +/* VD_BIGCORE1 */
+> +#define RK3588_PD_CPU_6		6
+> +#define RK3588_PD_CPU_7		7
+> +
+> +/* VD_NPU */
+> +#define RK3588_PD_NPU		8
+> +#define RK3588_PD_NPUTOP	9
+> +#define RK3588_PD_NPU1		10
+> +#define RK3588_PD_NPU2		11
+> +
+> +/* VD_GPU */
+> +#define RK3588_PD_GPU		12
+> +
+> +/* VD_VCODEC */
+> +#define RK3588_PD_VCODEC	13
+> +#define RK3588_PD_RKVDEC0	14
+> +#define RK3588_PD_RKVDEC1	15
+> +#define RK3588_PD_VENC0		16
+> +#define RK3588_PD_VENC1		17
+> +
+> +/* VD_DD01 */
+> +#define RK3588_PD_DDR01		18
+> +
+> +/* VD_DD23 */
+> +#define RK3588_PD_DDR23		19
+> +
+> +/* VD_LOGIC */
+> +#define RK3588_PD_CENTER	20
+> +#define RK3588_PD_VDPU		21
+> +#define RK3588_PD_RGA30		22
+> +#define RK3588_PD_AV1		23
+> +#define RK3588_PD_VOP		24
+> +#define RK3588_PD_VO0		25
+> +#define RK3588_PD_VO1		26
+> +#define RK3588_PD_VI		27
+> +#define RK3588_PD_ISP1		28
+> +#define RK3588_PD_FEC		29
+> +#define RK3588_PD_RGA31		30
+> +#define RK3588_PD_USB		31
+> +#define RK3588_PD_PHP		32
+> +#define RK3588_PD_GMAC		33
+> +#define RK3588_PD_PCIE		34
+> +#define RK3588_PD_NVM		35
+> +#define RK3588_PD_NVM0		36
+> +#define RK3588_PD_SDIO		37
+> +#define RK3588_PD_AUDIO		38
+> +#define RK3588_PD_SECURE	39
+> +#define RK3588_PD_SDMMC		40
+> +#define RK3588_PD_CRYPTO	41
+> +#define RK3588_PD_BUS		42
+> +
+> +/* VD_PMU */
+> +#define RK3588_PD_PMU1		43
+> +
+> +#endif
+> -- 
+> 2.35.1
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
