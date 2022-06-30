@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54C58CCA48A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34EF5CCA489
 	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jul 2022 00:16:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,29 +12,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U40i6+V78yW2Gbmio/lAXOG62lnkGFEmO06Uj78tciA=; b=1MgTK/O5QYy810
-	6xC2VrJ2r9s/NQYJCjHaEOzKXkB4jjzahn7n74bP+FatfUl31riV4wW6hXEK93u1cjV3KguMNXBjA
-	It9srwQHfoDrTeo/4LSC9rIhyUy7sZie7e9bDVmjWrXKuqvdD1e8XKiq1/N1JPm1yoEomM2gTNNYY
-	Ks9viXqhpGvnCtPjJTPmw/GwLvKh1ZzN2xB6gObowd3eI3Gm3kxtG8uiO4yzQQlxRD6MmsyayGsLt
-	29HGNnMOSf8+YBos3e6NBTIwBj0DSblIvYQkc8pG72wpWP3kehvztiCohXk01RDdcm3aTxc3HXxBA
-	EwxvUZQzWGlKge5Dt0ng==;
+	List-Owner; bh=w03Kakpk5DlnOmSYCTSrpVOGq56DJHJqWYgnpi/Fhok=; b=rLH/7FKzSza2vl
+	7pKCenQnG+d/0dga71pV8lUO4MCTyBL5zVS1w2SJnMebveAZ3GV3kivXpEAslsLIPqHPq8HW50zp6
+	MFmaPY+Nex9dSjy5Ilgw+VEV8DUwfjoO9aBgclImduAx9ZZLN9OQZqhK6Xp8XaMfLdHtWA6DdpS4N
+	tHt6ubxi8BdawTHlLK5kaKsSB3ik6TZGJU1HffAPCkFO31fE2OsxUtOe8GejQjRO0QmjajEcynVoi
+	9DAOYD/e7izCXbSGM0Iu8oSd2y8+SHkJDF2KjvB6xa0j8JEbLmIyw3wMd8o/ry8GLb64JmlvDmzar
+	Sm6+6bLAbyi2w5sVkLTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o74KH-0028Nn-9x; Fri, 01 Jul 2022 00:16:01 +0000
+	id 1o74KB-0028IH-Ii; Fri, 01 Jul 2022 00:15:55 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o73GM-0020GO-M9
-	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:08:03 +0000
+	id 1o73GG-0020C4-6Q
+	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:07:52 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 6EA516BB;
-	Fri,  1 Jul 2022 01:07:51 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 69548895;
+	Fri,  1 Jul 2022 01:07:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656630471;
-	bh=SeOZyeZ1yTB675rmxIyXKFIUobXZfiQt61LX4lHqU30=;
+	s=mail; t=1656630460;
+	bh=uDD12vDq3fsahJmQwvQ3N8Bt1OOoJitjn4KcNjyDtM4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=qfv0p5gDwBFpgRAH8vmFHoIOtL97PScyhf26pbjL9H+ifmDPZYaDgl022Ayh1YF3c
-	 LBmj9S1ORdDb6mL5XwJMA8FJ60if9kVHzh7Ib99m0LIehbRKGv0zYisqvyFiFLjLf1
-	 jHJIdq5qUPOjPrWO6vPYZYSEZGd6KRNbSIWNA0VM=
+	b=fK3DnrjhQX7pig+qc/VUsEEUepIXspuDf5TVCXInUPxEQNA4H3t/Ly3FIE9GyXxfA
+	 OtRIOiQolh+OnPPNYqBJa0aMoV9KZ6YuF4MVpyxduTVYgrw12JhAyvM808esLv1KQ1
+	 BtQB0KDM6IlS6sYcGYJhLaym6MlDFarP1N+Qvz+g=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -42,16 +42,17 @@ Cc: linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v2 22/55] media: rkisp1: csi: Rename CSI functions with a common rkisp1_csi prefix
-Date: Fri,  1 Jul 2022 02:06:40 +0300
-Message-Id: <20220630230713.10580-23-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v2 05/55] media: rkisp1: Enable compilation on ARCH_MXC
+Date: Fri,  1 Jul 2022 02:06:23 +0300
+Message-Id: <20220630230713.10580-6-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_160754_972036_4394AC1C 
-X-CRM114-Status: GOOD (  14.54  )
+X-CRM114-CacheID: sfid-20220630_160748_441495_E9E02535 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,176 +69,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The CSI-related functions are not named consistently. Fix it by using a
-common rkisp1_csi prefix.
+The ISP used by the Rockchip RK3399 is also found in the NXP i.MX8MP.
+Enable compilation of the driver for the MXC architecture in addition to
+ARCH_ROCKCHIP.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-common.h  |  2 +-
- .../platform/rockchip/rkisp1/rkisp1-csi.c     | 20 +++++++++----------
- .../platform/rockchip/rkisp1/rkisp1-csi.h     |  6 +++---
- .../platform/rockchip/rkisp1/rkisp1-dev.c     |  4 ++--
- .../platform/rockchip/rkisp1/rkisp1-isp.c     |  6 +++---
- 5 files changed, 19 insertions(+), 19 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 4ba30f172c8b..d07c5c8e5b0d 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -541,7 +541,7 @@ void rkisp1_params_disable(struct rkisp1_params *params);
- 
- /* irq handlers */
- irqreturn_t rkisp1_isp_isr(int irq, void *ctx);
--irqreturn_t rkisp1_mipi_isr(int irq, void *ctx);
-+irqreturn_t rkisp1_csi_isr(int irq, void *ctx);
- irqreturn_t rkisp1_capture_isr(int irq, void *ctx);
- void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris);
- void rkisp1_params_isr(struct rkisp1_device *rkisp1);
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-index 25e1183cdbac..102deb877aa4 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-@@ -18,7 +18,7 @@
- #include "rkisp1-common.h"
- #include "rkisp1-csi.h"
- 
--static int rkisp1_config_mipi(struct rkisp1_csi *csi)
-+static int rkisp1_csi_config(struct rkisp1_csi *csi)
- {
- 	struct rkisp1_device *rkisp1 = csi->rkisp1;
- 	const struct rkisp1_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
-@@ -69,7 +69,7 @@ static int rkisp1_config_mipi(struct rkisp1_csi *csi)
- 	return 0;
- }
- 
--void rkisp1_mipi_start(struct rkisp1_csi *csi)
-+static void rkisp1_csi_enable(struct rkisp1_csi *csi)
- {
- 	struct rkisp1_device *rkisp1 = csi->rkisp1;
- 	u32 val;
-@@ -79,7 +79,7 @@ void rkisp1_mipi_start(struct rkisp1_csi *csi)
- 		     val | RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA);
- }
- 
--void rkisp1_mipi_stop(struct rkisp1_csi *csi)
-+static void rkisp1_csi_disable(struct rkisp1_csi *csi)
- {
- 	struct rkisp1_device *rkisp1 = csi->rkisp1;
- 	u32 val;
-@@ -93,8 +93,8 @@ void rkisp1_mipi_stop(struct rkisp1_csi *csi)
- 		     val & (~RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA));
- }
- 
--int rkisp1_mipi_csi2_start(struct rkisp1_csi *csi,
--			   struct rkisp1_sensor_async *sensor)
-+int rkisp1_csi_start(struct rkisp1_csi *csi,
-+		     struct rkisp1_sensor_async *sensor)
- {
- 	struct rkisp1_device *rkisp1 = csi->rkisp1;
- 	union phy_configure_opts opts;
-@@ -102,7 +102,7 @@ int rkisp1_mipi_csi2_start(struct rkisp1_csi *csi,
- 	s64 pixel_clock;
- 	int ret;
- 
--	ret = rkisp1_config_mipi(csi);
-+	ret = rkisp1_csi_config(csi);
- 	if (ret)
- 		return ret;
- 
-@@ -119,19 +119,19 @@ int rkisp1_mipi_csi2_start(struct rkisp1_csi *csi,
- 	phy_configure(csi->dphy, &opts);
- 	phy_power_on(csi->dphy);
- 
--	rkisp1_mipi_start(csi);
-+	rkisp1_csi_enable(csi);
- 
- 	return 0;
- }
- 
--void rkisp1_mipi_csi2_stop(struct rkisp1_csi *csi)
-+void rkisp1_csi_stop(struct rkisp1_csi *csi)
- {
--	rkisp1_mipi_stop(csi);
-+	rkisp1_csi_disable(csi);
- 
- 	phy_power_off(csi->dphy);
- }
- 
--irqreturn_t rkisp1_mipi_isr(int irq, void *ctx)
-+irqreturn_t rkisp1_csi_isr(int irq, void *ctx)
- {
- 	struct device *dev = ctx;
- 	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
-index 1f921d534865..7d3f01cfb49f 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
-@@ -17,8 +17,8 @@ struct rkisp1_sensor_async;
- int rkisp1_csi_init(struct rkisp1_device *rkisp1);
- void rkisp1_csi_cleanup(struct rkisp1_device *rkisp1);
- 
--int rkisp1_mipi_csi2_start(struct rkisp1_csi *csi,
--			   struct rkisp1_sensor_async *sensor);
--void rkisp1_mipi_csi2_stop(struct rkisp1_csi *csi);
-+int rkisp1_csi_start(struct rkisp1_csi *csi,
-+		     struct rkisp1_sensor_async *sensor);
-+void rkisp1_csi_stop(struct rkisp1_csi *csi);
- 
- #endif /* _RKISP1_CSI_H */
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 2afaa9f26f29..2c441665c017 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -383,7 +383,7 @@ static irqreturn_t rkisp1_isr(int irq, void *ctx)
- 	 */
- 	rkisp1_capture_isr(irq, ctx);
- 	rkisp1_isp_isr(irq, ctx);
--	rkisp1_mipi_isr(irq, ctx);
-+	rkisp1_csi_isr(irq, ctx);
- 
- 	return IRQ_HANDLED;
- }
-@@ -398,7 +398,7 @@ static const char * const px30_isp_clks[] = {
- static const struct rkisp1_isr_data px30_isp_isrs[] = {
- 	{ "isp", rkisp1_isp_isr },
- 	{ "mi", rkisp1_capture_isr },
--	{ "mipi", rkisp1_mipi_isr },
-+	{ "mipi", rkisp1_csi_isr },
- };
- 
- static const struct rkisp1_info px30_isp_info = {
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index f477368dcec9..d2343f166f42 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -763,7 +763,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
- 		v4l2_subdev_call(rkisp1->active_sensor->sd, video, s_stream,
- 				 false);
- 
--		rkisp1_mipi_csi2_stop(&rkisp1->csi);
-+		rkisp1_csi_stop(&rkisp1->csi);
- 		rkisp1_isp_stop(rkisp1);
- 
- 		return 0;
-@@ -789,7 +789,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
- 
- 	rkisp1_isp_start(rkisp1);
- 
--	ret = rkisp1_mipi_csi2_start(&rkisp1->csi, rkisp1->active_sensor);
-+	ret = rkisp1_csi_start(&rkisp1->csi, rkisp1->active_sensor);
- 	if (ret) {
- 		rkisp1_isp_stop(rkisp1);
- 		goto mutex_unlock;
-@@ -799,7 +799,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
- 			       true);
- 	if (ret) {
- 		rkisp1_isp_stop(rkisp1);
--		rkisp1_mipi_csi2_stop(&rkisp1->csi);
-+		rkisp1_csi_stop(&rkisp1->csi);
- 		goto mutex_unlock;
- 	}
- 
+diff --git a/drivers/media/platform/rockchip/rkisp1/Kconfig b/drivers/media/platform/rockchip/rkisp1/Kconfig
+index dabd7e42c193..731c9acbf6ef 100644
+--- a/drivers/media/platform/rockchip/rkisp1/Kconfig
++++ b/drivers/media/platform/rockchip/rkisp1/Kconfig
+@@ -3,7 +3,7 @@ config VIDEO_ROCKCHIP_ISP1
+ 	tristate "Rockchip Image Signal Processing v1 Unit driver"
+ 	depends on V4L_PLATFORM_DRIVERS
+ 	depends on VIDEO_DEV && OF
+-	depends on ARCH_ROCKCHIP || COMPILE_TEST
++	depends on ARCH_ROCKCHIP || ARCH_MXC || COMPILE_TEST
+ 	select MEDIA_CONTROLLER
+ 	select VIDEO_V4L2_SUBDEV_API
+ 	select VIDEOBUF2_DMA_CONTIG
 -- 
 Regards,
 
