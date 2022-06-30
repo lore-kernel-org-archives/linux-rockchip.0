@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5B37C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 17:33:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E1F7C43334
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 17:34:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x22igHqzgcApqIdlEs3w01dmWLFEzbj2n+JRvKkHZD4=; b=FvmubD4CBxHn8p
-	IOohB2q5zmcY5l5k1s3ekJvkFdFRzgTmVExeARCnQNdYKyvwhX86pdys0EioVZ5gkDkrC/gQKx0xg
-	jelDzXLRC3OYVz/LSF/F/MXmJBZDu91dPrhQGnrz3RWzPREKUdSr43R0Kwg8GE2RYY/jY0s7h2ZEu
-	SH1ULB99fEpiq0DMSbQLuxbsq4AMjMYnYeBhNc7BQkipXXo3qT+cpV6fe9KOVWGh30HbM+lfr1YW9
-	u5E+oAU1pZYIadHnGLTU3Ny8NHOBM9W0o41F2dv2mmkhwaeLTSNU/y250arHr3AjMqwlmLvt3dowP
-	xFrB/xbOeJ6oOpac2yiQ==;
+	List-Owner; bh=G/6AAAsZ0uWG1WCP72c+6J/UHh9bhbtK1J7NCeuZuTc=; b=oldDJH5yNEBRFc
+	xAEf+29S2NRfQo7NkuAwT1e6U5VVkyfvZfdKk0QSue5823RrLyNCbZ2nO1Wkp7rm5tzAbwucBL14f
+	lMZWizlzQAWcSbWXQE/Q7gDHvrX1H8f9lj3BknANb4g5AG5v5K25rZL7AhQgWFogH75g6r+Da3CRS
+	y3LvWgobyinAFfyoE+8xpWkzd9u7REo0xkmaMaIPt8xdICgKVqgb9iGh+ohmNJywF/OUhX6RZKTaw
+	SR4nQHLgvgso7gAUdPqdmbN5mklhnbORNOhhXL1rmjXYczAeSFchaGjqiTUSK8LqfHDHYxZAL1HDP
+	Sp3Bvk7suNyOHnkgJydg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6y2Z-000qQ8-Re; Thu, 30 Jun 2022 17:33:19 +0000
-Received: from mail-oo1-xc2d.google.com ([2607:f8b0:4864:20::c2d])
+	id 1o6y3g-000qqq-A4; Thu, 30 Jun 2022 17:34:28 +0000
+Received: from mail-oi1-x22e.google.com ([2607:f8b0:4864:20::22e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6y2X-000qNk-3u
-	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 17:33:18 +0000
-Received: by mail-oo1-xc2d.google.com with SMTP id i19-20020a4ad093000000b004256ad0893fso3883433oor.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jun 2022 10:33:15 -0700 (PDT)
+	id 1o6y3a-000qnS-M6
+	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 17:34:27 +0000
+Received: by mail-oi1-x22e.google.com with SMTP id bd16so166728oib.6
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jun 2022 10:34:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
         h=date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to;
-        bh=GV7rma6+T6KQeNRvTDv+srtDNdvqlj7JPB6xqwy+fxk=;
-        b=ckqrfpEM/4gKBJjhBatJ51K90/WUgBhZtqvKDzA88Flf40NTPMPJ3eZDAlYNVMscNR
-         Z04iE7NbvH+6wmJDcGoO0YcWZSxZ5v4kO4QOu/HcG9Y2XfVgQCyfsYK385Gcry0OEqk8
-         ZtoAWYW+qF/6z3/W+NP1hXY9zVBQOgHhNxaNxkQ2ardLLkmiymDOST7wRfi6+XiPFHAW
-         Y0e3rnUyJG2xSx2ya0qjfSS71MBMskruUftE+5LWofxOYujh+WBbydgzqeOtIXXL2pxo
-         B8Td0OnpEnoLQd4+stuufZP1dCAIEox1NYiPQK8Y8dsDRVwiuC60fECu6q+awcJxHQvh
-         Fo0g==
+        bh=BWbLJKNt5MQqNM+YkZAOKbF+2rTK0qxaILnlQmPjQL4=;
+        b=RPsUGVKyrgf5xg0jcnzE7QB2dirFT0xK3s8TYFJ/rLTSjzy1/dXyAUJ6hsrGo0AgK3
+         0CjbgD2BEaoPuX60nr6hxj0ezhnyYUT0JWa6ZFksc0onWBUOEkydiBAYyy/Tzrxq7gAI
+         SkKxMDeWtegmW0N9vlbSiI3KYxzTKrTx+Kj8Z6ENoXTAViJA3vn8/djDjj8JIsXgklIU
+         yeZ4shPeFr+/qpuE7zcGcRjRsXvNUQNFdRmNwA1wcFm9REPxg6dK+16MzTXQLqarCl9O
+         iGFVdIyvcm3yegLnMSgzaYXgBk3I7ru2A2CE37rdIPZgPHp3MYJAkLLzQSwvfiJvlyjp
+         +mQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=GV7rma6+T6KQeNRvTDv+srtDNdvqlj7JPB6xqwy+fxk=;
-        b=zo0PPl05nkHPKFe/BDZEKiKN6qq9Pebmf//RQFKNjGcDyyfSS7qKn+Cs1l4tu/TtlF
-         0qpiTMtjt4TXoZ1Eoh1N0d7jfrFYu8ACU82liS360TwTgS6AV915UsFTIiaKEgFf4MCA
-         pMabAscM78/mrZUJtUgQ3pm+7TucPFVIYo+jK5/eamxGwdOq5BbtQg2hU5w6ronjl1BJ
-         oU/Fqw5xVIGFc5oCiGWbxgWq8kD7NhEFtsxIr1U1zyjSUg7v5zV7JiGK56O3n0dLNx2J
-         qTt36Yl5NBOjRXnNdG8oADbmfu283J4kWYP+v/qy46Wu0uNo3VmwbXP9rjJcyAKzgo8o
-         tTHQ==
-X-Gm-Message-State: AJIora9gv3KEkulFl9suvfFZ/d+cg3G2NpwkMdSockH1pHqmtsRo1Ojp
-	WObhYNKCNZcUvPdZvphamUorsA==
-X-Google-Smtp-Source: AGRyM1uHmEh/OuQKMNNKJwNpcvuxZiUW4pitk9X+/dijUMypH48J/IY4d7OKUiVi0cZ1jQhEP0B37w==
-X-Received: by 2002:a4a:49d0:0:b0:425:708a:224 with SMTP id z199-20020a4a49d0000000b00425708a0224mr4367978ooa.18.1656610395166;
-        Thu, 30 Jun 2022 10:33:15 -0700 (PDT)
+        bh=BWbLJKNt5MQqNM+YkZAOKbF+2rTK0qxaILnlQmPjQL4=;
+        b=qo7rkaIe9CRvXCD9cUEZ/gcnt/usA6zbwx5o/i9qMyUIEjwHHQkJvPXAjXZjt1ZoBL
+         YKTb1H8BFFyGcpQi325mdlHs/+sVY60kxVvpmfL5fRD/sO5ySN5y4uAy31k52PPePtMU
+         sPdKwOQN8KeV5fIwv0ZWCna80MFewaOCWlJWsCQ0/ZicmGNJU8il0Y5Sd+/hHtFJGDac
+         UPpmAAMJ5BHSpaJ2X5HE7iDzA2a55TuyMjU02HalFLsAy/9L65HkeLYZBqmp1grBgXXj
+         LBSR8AAnkpBqysoEeLOUceQnL/ulUoq6VOv3A5ssnyqMgWc+1mnTugYxfyFUHxJzU86H
+         CdmQ==
+X-Gm-Message-State: AJIora+rwG9BffnFFwRXNx+9nEYxcp3iZI+s7Hb4BRgIrSlXnoRh70u2
+	Dy3GLR75byclfg7CWSjWS0dfNQ==
+X-Google-Smtp-Source: AGRyM1vEwKk6VMtJ6yfaI/N6IBF1oh91SChmbChO4mduVSAvClPkYqXQsh5Dy17rYEmcMyschR/Jkg==
+X-Received: by 2002:a05:6808:94:b0:335:98f6:2471 with SMTP id s20-20020a056808009400b0033598f62471mr5801516oic.148.1656610460711;
+        Thu, 30 Jun 2022 10:34:20 -0700 (PDT)
 Received: from eze-laptop ([190.190.187.68])
-        by smtp.gmail.com with ESMTPSA id z18-20020a056808065200b0032ba1b363d2sm10323115oih.55.2022.06.30.10.33.11
+        by smtp.gmail.com with ESMTPSA id q10-20020a05687101ca00b000fb2aa6eef2sm13182533oad.32.2022.06.30.10.34.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jun 2022 10:33:14 -0700 (PDT)
-Date: Thu, 30 Jun 2022 14:33:08 -0300
+        Thu, 30 Jun 2022 10:34:20 -0700 (PDT)
+Date: Thu, 30 Jun 2022 14:34:13 -0300
 From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: mchehab@kernel.org, hverkuil@xs4all.nl, p.zabel@pengutronix.de,
@@ -70,17 +70,16 @@ Cc: mchehab@kernel.org, hverkuil@xs4all.nl, p.zabel@pengutronix.de,
 	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
 	kernel@collabora.com
-Subject: Re: [PATCH 2/7] media: hantro: HEVC: Fix auxilary buffer size
- calculation
-Message-ID: <Yr3eVDFjPBrvi5Td@eze-laptop>
+Subject: Re: [PATCH 3/7] media: hantro: HEVC: Fix chroma offset computation
+Message-ID: <Yr3elVvJDfISzA3U@eze-laptop>
 References: <20220617115802.396442-1-benjamin.gaignard@collabora.com>
- <20220617115802.396442-3-benjamin.gaignard@collabora.com>
+ <20220617115802.396442-4-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220617115802.396442-3-benjamin.gaignard@collabora.com>
+In-Reply-To: <20220617115802.396442-4-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_103317_184081_21AB1125 
-X-CRM114-Status: GOOD (  14.12  )
+X-CRM114-CacheID: sfid-20220630_103422_779472_A2F56C85 
+X-CRM114-Status: GOOD (  14.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,9 +98,9 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Benjamin,
 
-On Fri, Jun 17, 2022 at 01:57:57PM +0200, Benjamin Gaignard wrote:
-> SAO and FILTER buffers size depend of the bit depth.
-> Make sure we have enough space for 10bit bitstreams.
+On Fri, Jun 17, 2022 at 01:57:58PM +0200, Benjamin Gaignard wrote:
+> The chroma offset depends of the bitstream depth.
+> Make sure that ctx->bit_depth is used to compute it.
 > 
 > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 
@@ -111,34 +110,24 @@ Thanks,
 Ezequiel
 
 > ---
->  drivers/staging/media/hantro/hantro_hevc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  drivers/staging/media/hantro/hantro_g2_hevc_dec.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/staging/media/hantro/hantro_hevc.c b/drivers/staging/media/hantro/hantro_hevc.c
-> index dcb5c8703b6e..e06837108a09 100644
-> --- a/drivers/staging/media/hantro/hantro_hevc.c
-> +++ b/drivers/staging/media/hantro/hantro_hevc.c
-> @@ -104,7 +104,7 @@ static int tile_buffer_reallocate(struct hantro_ctx *ctx)
->  		hevc_dec->tile_bsd.cpu = NULL;
->  	}
+> diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> index 9eac133bda68..8407ad45b7b7 100644
+> --- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> +++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
+> @@ -12,7 +12,7 @@
 >  
-> -	size = VERT_FILTER_RAM_SIZE * height64 * (num_tile_cols - 1);
-> +	size = (VERT_FILTER_RAM_SIZE * height64 * (num_tile_cols - 1) * ctx->bit_depth) / 8;
->  	hevc_dec->tile_filter.cpu = dma_alloc_coherent(vpu->dev, size,
->  						       &hevc_dec->tile_filter.dma,
->  						       GFP_KERNEL);
-> @@ -112,7 +112,7 @@ static int tile_buffer_reallocate(struct hantro_ctx *ctx)
->  		goto err_free_tile_buffers;
->  	hevc_dec->tile_filter.size = size;
+>  static size_t hantro_hevc_chroma_offset(struct hantro_ctx *ctx)
+>  {
+> -	return ctx->dst_fmt.width * ctx->dst_fmt.height;
+> +	return ctx->dst_fmt.width * ctx->dst_fmt.height * ctx->bit_depth / 8;
+>  }
 >  
-> -	size = VERT_SAO_RAM_SIZE * height64 * (num_tile_cols - 1);
-> +	size = (VERT_SAO_RAM_SIZE * height64 * (num_tile_cols - 1) * ctx->bit_depth) / 8;
->  	hevc_dec->tile_sao.cpu = dma_alloc_coherent(vpu->dev, size,
->  						    &hevc_dec->tile_sao.dma,
->  						    GFP_KERNEL);
+>  static size_t hantro_hevc_motion_vectors_offset(struct hantro_ctx *ctx)
 > -- 
 > 2.32.0
-
 > 
 
 _______________________________________________
