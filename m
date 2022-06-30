@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 877D8C43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 14:52:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE387C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 17:30:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6HdkOyzi8GFrdMt395/xPVUw5k44+c6mD0SZg8fq31c=; b=jbsNveV3wuVX+t
-	jOsWkhgODMEDcrUvxKS84YLo4NJJXxkC9MEXmQ40sBBr6N5DtiFNXwFpLLpz61EVTVxpJCWHX1bcF
-	0IvQfnuqsZiCqMAdwkpytg8AAsmVpBGu0H9/IM3v8VExEy7MG0fCy6WlMgVON+d6ygAbczi+Xfhxh
-	eonkw3f7fWLFd7H272ums1mpe12jUqVSBk47SM3LCkQiQweFvocDaY0+CbN4OtrPzYjTDbZPHqd1R
-	jMlySeuxPS6QiJW/ot84WDf2nec5MMUQv/Ft6Mbj9Lx0sB0n55pf26NIr1jgvvNNoUD155jb0hP8r
-	+IkmCwbBvTKYkQNcW2rw==;
+	List-Owner; bh=P+ENneN2w+q7jdaRnHWbepp3EGFBToFwyC9+q1nt778=; b=GO37l61jwh/XxF
+	/7AXwOFy5De80cDKNLHJv6r8BasZ9d+GP9W3c9QWltqvDm4eXs0jnH0rrholjA0+bCWecLODUlNXl
+	Ug2vuNlGBEXYv512NldmDhEN0TbD94mx3sI7/JRoP27rrn1+P9u6olwXErgSxFI0eSGgR9DJF4OWP
+	CbSz9m+Ek5TpHnZhejL7rXCQwAai73XGC+iybaZxm87oLnLfxEeOKiujv9C81vh/HH+kIdeTxR9MJ
+	+5Mrt8MxeOcVsFF5KvkEXeTgaEzPLD7X0ZHQj+n+z9okii7QYc8mC1XkVFs2oE06Awcotq0tiRtWO
+	W12I8M6UO9eErnQ8vzZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6vWT-000BHN-R0; Thu, 30 Jun 2022 14:52:01 +0000
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+	id 1o6xzm-000pWs-Fk; Thu, 30 Jun 2022 17:30:26 +0000
+Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o6vWM-000BDk-17
-	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 14:52:00 +0000
-Received: by mail-wr1-x42d.google.com with SMTP id i25so22170086wrc.13
-        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jun 2022 07:51:51 -0700 (PDT)
+	id 1o6xzk-000pVz-Bk
+	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 17:30:25 +0000
+Received: by mail-oa1-x30.google.com with SMTP id 586e51a60fabf-fe023ab520so121997fac.10
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jun 2022 10:30:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
         h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to;
-        bh=9Vy0Q0yOTMgozrHr/k/yV5yONhH9Zbt0a1EaEatVf+M=;
-        b=r4J30h3bEqLpGViZoCt3O4Hu1A5Wj8yEoXJyszGfn/2GIs+kmRDBHulPLdUyC4Ipgf
-         511lhEjeX6IjV6aAfF4VgBZrNrJgHftDLZbVV7kyp+6VJtKdZ/CQfMINKKgXtPTKNGZt
-         5L2uSoPR4Ll1ZcvuB0Pp5zfWhANJGiUi77pZuSpTenN24NJaiedqX+Ma26654YC4zDcg
-         +hbWPRjgQObK+W99vRfGDLVj3QX/o1hqIR+2AYQhIKXLEOV2e98MCtRtla8lQgWG9uDV
-         BCYikfSKz9/5Et7f0xcWox2UNv/tFKLx+pSXweXdeRvtvKiRMe0thmxCDXTmS1TYJ6OK
-         Pvaw==
+         :content-disposition:in-reply-to;
+        bh=eJY5MsxNfTnDTBWpRfYuGIpnJMS3h7qwIGokJXZf/SU=;
+        b=4qpE9Xqlh8LCVZjAhVL6VmJW8gFDr5tVr6AffUScIOD0NsVctK6XwJvGUEQbj1bggv
+         Zi0cl94d3kOceYChCHUi9cy7jPTzSvkjIuyReTX5OOfsDLigMNzFrWVth51sbRrvG8SV
+         8C0OlVewUuJSoOvXCplJX6YbhSnE9L6+rzL2q3xwpEAOA3L1cCy+RW4vruhvVxUSKEsZ
+         LlUg7Xn+IVTwD5Mageii8ELu3At8wUEi36cZ+YxZG/krL/dS65fGTsaZhMqvMI8ExxTV
+         QcPxhJebo5cepb+WQclHIKyfnLNpfbHDHoN23kwA9dQnpMqDWxhZw7MmjHFTN2OOMaUp
+         qdGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=9Vy0Q0yOTMgozrHr/k/yV5yONhH9Zbt0a1EaEatVf+M=;
-        b=jbGUyx6m2EIAQadf8UVCF7Ww2Z4WN+N1MY9dxBEQ5fMHZ897bHnZ0RREKT1jbqRG2t
-         johwfYT3dVYKQ2AP620HfM1CYlCeDuiO2f6fxDqZ3HLVcr/EZmQna1Zq0DeSgZ+adIAl
-         yk+DmyJpIu+gJ+fLDZNt21jdN9H/GTC+3+yS/m4hxCWdpMGFJ+UjP42sMNs2dSN02e4J
-         OA4Xt8aO8dQDJ/QBceoLSP6lNnTnrHeaoobxDRq6UABVqFEuJQQ1Ak1NyIvm+/V1kPsL
-         BbgNY6YbKfp0++jPpIFs6In0hsCQibOMHRSPD41xR/jieii3Hk5uDAZFHnpgjA6Pc1JM
-         3zBA==
-X-Gm-Message-State: AJIora8U6fjPhiupO3RAncr4KVogxrotkLaCuGjEwV6fKgNLfeICikWC
-	78CDLZ5H2dAf97xgINYdlr+P2Q==
-X-Google-Smtp-Source: AGRyM1sZE6o0QXRdpPatXcWMIkBfS5RwTO5A1CXqWo9NWMsluuItsc+JQISfOGpvtoQ5/vBZ9B/ppA==
-X-Received: by 2002:a5d:47a1:0:b0:21d:1723:94f3 with SMTP id 1-20020a5d47a1000000b0021d172394f3mr8540807wrb.580.1656600710016;
-        Thu, 30 Jun 2022 07:51:50 -0700 (PDT)
-Received: from Red ([2a01:cb1d:3d5:a100:264b:feff:fe03:2806])
-        by smtp.googlemail.com with ESMTPSA id r16-20020a05600c35d000b003a0375c4f73sm7209219wmq.44.2022.06.30.07.51.49
+         :mime-version:content-disposition:in-reply-to;
+        bh=eJY5MsxNfTnDTBWpRfYuGIpnJMS3h7qwIGokJXZf/SU=;
+        b=n3r/jILOaU5eGlsL0cb5vPdmtaEzWMNloEt/BmV5NsqbgX8bBgWWOXjCOjxLn6HtzV
+         g+aGXDXoDkOdEnML82B3rtsi5Oy0ViOsiMFscsj4kBGqm2oFqYiC6LDVdvgUFyoWIZUQ
+         FN/NhsgzuVwACZYIwSVsRtyd4LxyRb7YcuKmy5QcAry80XAdFWQ0LN7IOy+T5/Vx4QJe
+         T44HQivge1k26jjWB1MSTQqNE+nTGHP1l2MhbprJFSVj+IeD1LHaML47qh+SUp9VsYHz
+         XAWGilxmAIlkyzWq/JtFQj3zR+a1VOlAma6sqL3vXZZG7+1FMJmWOCJJc7llJRbw5EaR
+         5ziQ==
+X-Gm-Message-State: AJIora82xfRfuncMUA7hLiyi/dFE2HVSBfSUS6l4KLmS4qB+yoTNYCgf
+	6TYA9Yv6wzOBLbT61D+d1iGx3A==
+X-Google-Smtp-Source: AGRyM1t4nWwAndTq5PNsUK2pyU0AyCgAgapJSJwk+PMvmJlVrviN4+sLMJ1Qy/YsZCdRe9kj2u2IwQ==
+X-Received: by 2002:a05:6870:e2ce:b0:101:a7c3:49cb with SMTP id w14-20020a056870e2ce00b00101a7c349cbmr7105251oad.197.1656610221161;
+        Thu, 30 Jun 2022 10:30:21 -0700 (PDT)
+Received: from eze-laptop ([190.190.187.68])
+        by smtp.gmail.com with ESMTPSA id r10-20020a056808210a00b00325cda1ff8esm10445255oiw.13.2022.06.30.10.30.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 30 Jun 2022 07:51:49 -0700 (PDT)
-Date: Thu, 30 Jun 2022 16:51:47 +0200
-From: LABBE Corentin <clabbe@baylibre.com>
-To: John Keeping <john@metanate.com>
-Cc: heiko@sntech.de, ardb@kernel.org, herbert@gondor.apana.org.au,
-	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v7 14/33] crypto: rockchip: handle reset also in PM
-Message-ID: <Yr24g3LoO5uFuCux@Red>
-References: <20220508185957.3629088-1-clabbe@baylibre.com>
- <20220508185957.3629088-15-clabbe@baylibre.com>
- <YrBUODGF51oUsF1f@donbot>
- <YrF74tmA9qc+I3JF@Red>
- <YrHJn6Pl5B/1pj9L@donbot>
+        Thu, 30 Jun 2022 10:30:20 -0700 (PDT)
+Date: Thu, 30 Jun 2022 14:30:13 -0300
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: mchehab@kernel.org, hverkuil@xs4all.nl, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, mripard@kernel.org,
+	paul.kocialkowski@bootlin.com, wens@csie.org,
+	jernej.skrabec@gmail.com, samuel@sholland.org,
+	nicolas.dufresne@collabora.com, andrzej.p@collabora.com,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	kernel@collabora.com
+Subject: Re: [PATCH 1/7] media: hantro: Store HEVC bit depth in context
+Message-ID: <Yr3dpT/hQHM56c8o@eze-laptop>
+References: <20220617115802.396442-1-benjamin.gaignard@collabora.com>
+ <20220617115802.396442-2-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <YrHJn6Pl5B/1pj9L@donbot>
+In-Reply-To: <20220617115802.396442-2-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_075154_127631_3AB7B900 
-X-CRM114-Status: GOOD (  25.54  )
+X-CRM114-CacheID: sfid-20220630_103024_628972_AD184D44 
+X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,51 +91,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Le Tue, Jun 21, 2022 at 02:37:35PM +0100, John Keeping a =E9crit :
-> On Tue, Jun 21, 2022 at 10:05:54AM +0200, LABBE Corentin wrote:
-> > Le Mon, Jun 20, 2022 at 12:04:24PM +0100, John Keeping a =E9crit :
-> > > On Sun, May 08, 2022 at 06:59:38PM +0000, Corentin Labbe wrote:
-> > > > reset could be handled by PM functions.
-> > > =
+Hi Benjamin,
 
-> > > Is there any further rationale for this?
-> > > =
+Thanks for the patch.
 
-> > > After this change there is no longer a guaranteed reset pulse on probe
-> > > since the reset control may already be de-asserted.  This is normally
-> > > the most important case for a reset as it's the only time when the st=
-ate
-> > > of the hardware is unknown.
-> > > =
+On Fri, Jun 17, 2022 at 01:57:56PM +0200, Benjamin Gaignard wrote:
+> Store HEVC bit depth in context.
+> Bit depth is equal to hevc sps bit_depth_luma_minus8 + 8.
+> 
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> ---
+>  drivers/staging/media/hantro/hantro_hevc.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/staging/media/hantro/hantro_hevc.c b/drivers/staging/media/hantro/hantro_hevc.c
+> index 5984c5fa6f83..dcb5c8703b6e 100644
+> --- a/drivers/staging/media/hantro/hantro_hevc.c
+> +++ b/drivers/staging/media/hantro/hantro_hevc.c
+> @@ -163,6 +163,8 @@ int hantro_hevc_validate_sps(struct hantro_ctx *ctx, const struct v4l2_ctrl_hevc
+>  		/* Only 8-bit is supported */
+>  		return -EINVAL;
+>  
+> +	ctx->bit_depth = sps->bit_depth_luma_minus8 + 8;
+> +
 
-> > > The original use of devm_add_action_or_reset() seems a bit weird alre=
-ady
-> > > since there doesn't seem to be any need to assert reset when the driv=
-er
-> > > is unloaded.
-> > > =
+This should set in hantro_hevc_s_ctrl.
 
-> > =
+Thanks!
+Ezequiel
 
-> > I am not an hw engineer, so my knowledge on reset is low.
-> > So why not having a reset pulse on probe is a problem ?
-> =
-
-> The point of the reset is to bring the hardware back to a known state.
-> Since we don't know what state the hardware will be in following the
-> bootloader or previous OS, I think the reset in probe is the only place
-> that it is important.
-> =
-
-> If this patch isn't fixing anything, I suggest just dropping it.
-
-Thanks for the explanation, I will re-add the reset at probe.
-
+>  	/*
+>  	 * for tile pixel format check if the width and height match
+>  	 * hardware constraints
+> -- 
+> 2.32.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
