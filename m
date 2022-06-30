@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 844BECCA47B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 23:08:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6069BCCA482
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 23:08:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SgcjR8MW/DSJm+oc8vYPl/2jZSMbgxPnjzr4wKXadP0=; b=VxEKFCu980z920
-	JFiBmb6sgZrqlHqX6ikW6JnIq4uu/bFd0jFfrioKQjYnLbKEJ0uVaEQSdYGTTwCzXdxvx3aRWHePJ
-	Bwz9yHEOYs1WnRUkh98QYa2h0rqQguixpvCF7MpxIJvRzlhyiMr6sFMlFPAeoLU+2BYitVii2vylZ
-	AysBfJQ12f1oWrb9SVaveqEUd0AcxbrAet7Qdy2Th2Lx624om4HM7G9TnlrUNmsMA+SmZt2PmNHgW
-	V73MD4YTsizw56Gv1teDnQ4J8BzutDVeZjuaNPsBBPO/PIq6Ivor2YtI06ZJaFi/oxiTGBXACCnVw
-	38GcXTnWDewa0CwsBOVw==;
+	List-Owner; bh=0uF93bVDjAMAaF7Sotysgey/MteKgda/NiLhe9bg4Ss=; b=GQF4DigTSqiTfg
+	J/Ll8Tr+cMFeDVNyok7BzVovVlyJzRCDNrAgRNIwuzoTIiSDYOsMTjtn09xkThK53ewVLNDVKi11B
+	W5XisqXyelWz7Nucd+vjLWl66ov9I1XewmOupvI6xJYxCjs2fjX8b3QzRxRxZckOJ5Ad0b3h0AcMs
+	PsTyUggv1Jh1dqnD7SyrXuEoCP9Qb0kMnFggHso/iTPy3awZiIhhM3nAM1+omQAd9x0S/hKFJTKxa
+	3uaNp6/QXKPjJiiytT8erAlaDMfMzu7911ayiMBUN5AwcY6j/ijJ0Fujrs/XhhFJIxcilRTdzAvAK
+	no1bBeSg/gGOT2LmjFrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o73Gw-0020iO-9A; Thu, 30 Jun 2022 23:08:30 +0000
+	id 1o73Gu-0020gx-Ls; Thu, 30 Jun 2022 23:08:28 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o73GS-0020Nh-VR
-	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:08:13 +0000
+	id 1o73GP-0020Ku-Pq
+	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:08:10 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 28C3F29EE;
-	Fri,  1 Jul 2022 01:07:59 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id EA1DC29C5;
+	Fri,  1 Jul 2022 01:07:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656630479;
-	bh=tzCFgUl3vVCeMLvuhbu5pUzMb0JRa2/mqZqQb6VvOW4=;
+	s=mail; t=1656630476;
+	bh=EGJRYXr/iwJn9j9cWZE4tZvFBGtzzsX/yK0fTVPTQoc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=rA38wlRwAHjoRXzN3LERzGP1qzCfbPWFdc3VE0lZKYqGkLrZplbs4Fibhj5Yvwwna
-	 u6LgnX9UVqmPbcd64f3eK59Q/59GNstGe65ZtGIjXRdi/x6Ehu//xL4zbCM6dKCwTb
-	 YvYVkHe0duIXT8Fppvw2HtsIMhlAgs2eiMaYvXsA=
+	b=cTyFgZdCEP4Km6qLiJTT0K3rDCkAnSCmVKYUdV+t0P/JGucQKQJjfrBZDAEXphcMr
+	 2fdxU1G/9NPnh0zp9Uo3+oy32SuTi307Mv2E08RbJxrdaukAg1An55Yn5sZOpB3yCV
+	 iLVP6g8Dw5xmQ8gOEFwOJVnhnn6rbyVZBJsL8iFo=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -42,16 +42,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v2 34/55] media: rkisp1: isp: Initialize some variables at declaration time
-Date: Fri,  1 Jul 2022 02:06:52 +0300
-Message-Id: <20220630230713.10580-35-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v2 29/55] media: rkisp1: isp: Add container_of wrapper to cast subdev to rkisp1_isp
+Date: Fri,  1 Jul 2022 02:06:47 +0300
+Message-Id: <20220630230713.10580-30-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_160801_212995_A7D847E4 
-X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-CacheID: sfid-20220630_160758_031278_E07F587E 
+X-CRM114-Status: UNSURE (   9.53  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,38 +69,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Initialize the src_fmt and sink_fmt variable when declaring them in
-rkisp1_config_isp().
+Replace manual container_of() calls with a static inline wrapper to
+increase readability.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
 ---
-Changes since v1:
-
-- Fix typo in commit message
----
- drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ .../media/platform/rockchip/rkisp1/rkisp1-isp.c   | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index 938541ce52ce..53f0516594ef 100644
+index 944b6ea11853..9f4fb984194d 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -142,12 +142,11 @@ static int rkisp1_config_isp(struct rkisp1_isp *isp,
- {
- 	struct rkisp1_device *rkisp1 = isp->rkisp1;
- 	u32 isp_ctrl = 0, irq_mask = 0, acq_mult = 0, acq_prop = 0;
--	const struct rkisp1_mbus_info *src_fmt, *sink_fmt;
-+	const struct rkisp1_mbus_info *sink_fmt = isp->sink_fmt;
-+	const struct rkisp1_mbus_info *src_fmt = isp->src_fmt;
- 	struct v4l2_mbus_framefmt *sink_frm;
- 	struct v4l2_rect *sink_crop;
+@@ -370,6 +370,11 @@ static void rkisp1_isp_start(struct rkisp1_device *rkisp1)
+  * Subdev pad operations
+  */
  
--	sink_fmt = isp->sink_fmt;
--	src_fmt = isp->src_fmt;
- 	sink_frm = rkisp1_isp_get_pad_fmt(isp, NULL,
- 					  RKISP1_ISP_PAD_SINK_VIDEO,
- 					  V4L2_SUBDEV_FORMAT_ACTIVE);
++static inline struct rkisp1_isp *to_rkisp1_isp(struct v4l2_subdev *sd)
++{
++	return container_of(sd, struct rkisp1_isp, sd);
++}
++
+ static int rkisp1_isp_enum_mbus_code(struct v4l2_subdev *sd,
+ 				     struct v4l2_subdev_state *sd_state,
+ 				     struct v4l2_subdev_mbus_code_enum *code)
+@@ -625,7 +630,7 @@ static int rkisp1_isp_get_fmt(struct v4l2_subdev *sd,
+ 			      struct v4l2_subdev_state *sd_state,
+ 			      struct v4l2_subdev_format *fmt)
+ {
+-	struct rkisp1_isp *isp = container_of(sd, struct rkisp1_isp, sd);
++	struct rkisp1_isp *isp = to_rkisp1_isp(sd);
+ 
+ 	mutex_lock(&isp->ops_lock);
+ 	fmt->format = *rkisp1_isp_get_pad_fmt(isp, sd_state, fmt->pad,
+@@ -638,7 +643,7 @@ static int rkisp1_isp_set_fmt(struct v4l2_subdev *sd,
+ 			      struct v4l2_subdev_state *sd_state,
+ 			      struct v4l2_subdev_format *fmt)
+ {
+-	struct rkisp1_isp *isp = container_of(sd, struct rkisp1_isp, sd);
++	struct rkisp1_isp *isp = to_rkisp1_isp(sd);
+ 
+ 	mutex_lock(&isp->ops_lock);
+ 	if (fmt->pad == RKISP1_ISP_PAD_SINK_VIDEO)
+@@ -659,7 +664,7 @@ static int rkisp1_isp_get_selection(struct v4l2_subdev *sd,
+ 				    struct v4l2_subdev_state *sd_state,
+ 				    struct v4l2_subdev_selection *sel)
+ {
+-	struct rkisp1_isp *isp = container_of(sd, struct rkisp1_isp, sd);
++	struct rkisp1_isp *isp = to_rkisp1_isp(sd);
+ 	int ret = 0;
+ 
+ 	if (sel->pad != RKISP1_ISP_PAD_SOURCE_VIDEO &&
+@@ -701,7 +706,7 @@ static int rkisp1_isp_set_selection(struct v4l2_subdev *sd,
+ {
+ 	struct rkisp1_device *rkisp1 =
+ 		container_of(sd->v4l2_dev, struct rkisp1_device, v4l2_dev);
+-	struct rkisp1_isp *isp = container_of(sd, struct rkisp1_isp, sd);
++	struct rkisp1_isp *isp = to_rkisp1_isp(sd);
+ 	int ret = 0;
+ 
+ 	if (sel->target != V4L2_SEL_TGT_CROP)
+@@ -748,7 +753,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+ {
+ 	struct rkisp1_device *rkisp1 =
+ 		container_of(sd->v4l2_dev, struct rkisp1_device, v4l2_dev);
+-	struct rkisp1_isp *isp = &rkisp1->isp;
++	struct rkisp1_isp *isp = to_rkisp1_isp(sd);
+ 	struct rkisp1_sensor_async *asd;
+ 	int ret;
+ 
 -- 
 Regards,
 
