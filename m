@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B95E8C433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C948CCA482
 	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 23:08:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,50 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A1h4kGQEj+ko78BwAY3SWoTJ/tJmQbJfHJE9f3MdSqQ=; b=mKjUOiSWElyeD5
-	rI0hI4fUiWdK4ic1OBPpm+Bm8x4H5IwoLui9QY0kgdRedrPWkC+Nt/menjrOjICGhaeFT5tBzBDl9
-	aQ1w5hhMJyio6gHjUjmjHzJOhzGx49Axnr8lA32VjnafbxhiWueFPACHXVRpoeK+aW2MTVhEYJ2B6
-	/6VsOmsnap0zd+YO2ZnuOpdIRjpM/okmuawguBcqwgwTV9Th9WxZo02FUVHxEM2IqbdF9pbKRa3jI
-	A202hg3S1DhTkoULdeg4vL2q8RfxMQRSh7zc+3ydioHPiHGTKoD327mDR4tB+HAKIfsYn0odb2Bzw
-	q6SzqRkEVfRElCLZo6Sw==;
+	List-Owner; bh=INEIqlZYBXJvckQDBSsbB4/OYFhsSIx6tPBUdJPL1ps=; b=u5oneldNWlgzOC
+	vEayT7r5JHWYSv1EfhPNjyLmHnt5Ex1o9XeRXhKPxUO9oTgFltnxFC+4nsjYDfUYIlyxRIDyI3av5
+	r5kdjAECt9aK0rwLgzL2i7Wrnzzp+ozvF74gz+VqOLs/TUsNXHCWDmVYZqA6i+n5W7vwfvBRlL3MV
+	NnzABbYUhmbbQDx3VnOliyyvTL0dOYxlZHnOt2pFurrNfZ2Guad4xwpRoe7fXOM5FcKCEqH+HgCg7
+	ZutgaOOywC2ap6OCJ/77aab1AV/12YQLjTTvy+i1vJjMZ5+XAI9NJWVPvyO04sjrr8l0VnyE48XMh
+	bNnrfH69+Vqw892VPTwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o73H1-0020p9-5A; Thu, 30 Jun 2022 23:08:35 +0000
+	id 1o73Gz-0020lq-36; Thu, 30 Jun 2022 23:08:33 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o73Gb-0020V4-No
-	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:08:22 +0000
+	id 1o73GX-0020Rg-Hj
+	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:08:18 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id BED202A4E;
-	Fri,  1 Jul 2022 01:08:07 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B4D062A0D;
+	Fri,  1 Jul 2022 01:08:03 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656630488;
-	bh=jX2xREptjTcdw3Dt0HLdq+66A0eTeJEwSsBRZlLZKZg=;
+	s=mail; t=1656630484;
+	bh=E7wx+Givrops2Em5viTqLD4swjZIINgoU1dEi9o0D1w=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=EvZC8Tay6ZZf3hId1Peivl/WpYQTPS4d9QT7MRg6/icHhbW10EV+CpIekr63gLCrh
-	 QoJ2BhBaE/1MKPMZWFz5L/NQdU3Rs9NDfYePknZ9Y2xZ5zMHNQ99j2ktcXg+saxpnX
-	 JLAIE1sosJJ3XhzRmScxbMeE+Wj5L3i6ouCSqYSw=
+	b=ZE8F4EA0CTWcPBH8plI4ZwBHXCoR8BveE26IMBd4ZhcyExaei9nNRZptVr4JHnAew
+	 pcteKGme5IaN/S/NIS9EBYUSdcDyU0ZCxHRtO48fFQUEvqCL4E6bsr1rU2KV8xob3a
+	 W6mvpOx8LaghssgE3yCL0Nh8nmnvN8RrYEp2iANQ=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
 	Dafna Hirschfeld <dafna@fastmail.com>,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	devicetree@vger.kernel.org
-Subject: [PATCH v2 47/55] dt-bindings: media: rkisp1: Add i.MX8MP ISP to compatible
-Date: Fri,  1 Jul 2022 02:07:05 +0300
-Message-Id: <20220630230713.10580-48-laurent.pinchart@ideasonboard.com>
+	Paul Elder <paul.elder@ideasonboard.com>
+Subject: [PATCH v2 41/55] media: rkisp1: Use fwnode_graph_for_each_endpoint
+Date: Fri,  1 Jul 2022 02:06:59 +0300
+Message-Id: <20220630230713.10580-42-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_160809_955980_B3A7CB89 
-X-CRM114-Status: UNSURE (   8.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220630_160805_767702_60D3E6E4 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,41 +70,111 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Paul Elder <paul.elder@ideasonboard.com>
 
-The i.MX8MP ISP is compatbile with the rkisp1 driver. Add it to the list
-of compatible strings. While at it, expand on the description of the
-clocks to make it clear which clock in the i.MX8MP ISP they map to,
-based on the names from the datasheet (which are confusing).
+When registering the notifier, replace the manual while loop with
+fwnode_graph_for_each_endpoint. This simplifies error handling.
 
 Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
 Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- Documentation/devicetree/bindings/media/rockchip-isp1.yaml | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ .../platform/rockchip/rkisp1/rkisp1-dev.c     | 44 +++++++++----------
+ 1 file changed, 20 insertions(+), 24 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-index b3661d7d4357..95cf945f7ac5 100644
---- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-@@ -16,6 +16,7 @@ description: |
- properties:
-   compatible:
-     enum:
-+      - fsl,imx8mp-isp
-       - rockchip,px30-cif-isp
-       - rockchip,rk3399-cif-isp
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index c3a7ab70bbef..0eb37ba557ce 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -168,29 +168,28 @@ static const struct v4l2_async_notifier_operations rkisp1_subdev_notifier_ops =
+ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+ {
+ 	struct v4l2_async_notifier *ntf = &rkisp1->notifier;
+-	unsigned int next_id = 0;
++	struct fwnode_handle *fwnode = dev_fwnode(rkisp1->dev);
++	struct fwnode_handle *ep;
+ 	unsigned int index = 0;
+-	int ret;
++	int ret = 0;
  
-@@ -36,9 +37,9 @@ properties:
-     minItems: 3
-     items:
-       # isp0 and isp1
--      - description: ISP clock
--      - description: ISP AXI clock
--      - description: ISP AHB clock
-+      - description: ISP clock (for imx8mp, clk)
-+      - description: ISP AXI clock (for imx8mp, m_hclk)
-+      - description: ISP AHB clock (for imx8mp, hclk)
-       # only for isp1
-       - description: ISP Pixel clock
+ 	v4l2_async_nf_init(ntf);
+ 
+-	while (1) {
++	ntf->ops = &rkisp1_subdev_notifier_ops;
++
++	fwnode_graph_for_each_endpoint(fwnode, ep) {
+ 		struct v4l2_fwnode_endpoint vep = {
+ 			.bus_type = V4L2_MBUS_CSI2_DPHY
+ 		};
+ 		struct rkisp1_sensor_async *rk_asd;
+-		struct fwnode_handle *source = NULL;
+-		struct fwnode_handle *ep;
+-
+-		ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(rkisp1->dev),
+-						     0, next_id,
+-						     FWNODE_GRAPH_ENDPOINT_NEXT);
+-		if (!ep)
+-			break;
++		struct fwnode_handle *source;
+ 
+ 		ret = v4l2_fwnode_endpoint_parse(ep, &vep);
+-		if (ret)
+-			goto err_parse;
++		if (ret) {
++			dev_err(rkisp1->dev, "failed to parse endpoint %pfw\n",
++				ep);
++			break;
++		}
+ 
+ 		source = fwnode_graph_get_remote_endpoint(ep);
+ 		if (!source) {
+@@ -198,14 +197,15 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+ 				"endpoint %pfw has no remote endpoint\n",
+ 				ep);
+ 			ret = -ENODEV;
+-			goto err_parse;
++			break;
+ 		}
+ 
+ 		rk_asd = v4l2_async_nf_add_fwnode(ntf, source,
+ 						  struct rkisp1_sensor_async);
+ 		if (IS_ERR(rk_asd)) {
++			fwnode_handle_put(source);
+ 			ret = PTR_ERR(rk_asd);
+-			goto err_parse;
++			break;
+ 		}
+ 
+ 		rk_asd->index = index++;
+@@ -216,27 +216,23 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+ 
+ 		dev_dbg(rkisp1->dev, "registered ep id %d with %d lanes\n",
+ 			vep.base.id, rk_asd->lanes);
++	}
+ 
+-		next_id = vep.base.id + 1;
+-
+-		fwnode_handle_put(ep);
+-
+-		continue;
+-err_parse:
++	if (ret) {
+ 		fwnode_handle_put(ep);
+-		fwnode_handle_put(source);
+ 		v4l2_async_nf_cleanup(ntf);
+ 		return ret;
+ 	}
+ 
+-	if (next_id == 0)
++	if (!index)
+ 		dev_dbg(rkisp1->dev, "no remote subdevice found\n");
+-	ntf->ops = &rkisp1_subdev_notifier_ops;
++
+ 	ret = v4l2_async_nf_register(&rkisp1->v4l2_dev, ntf);
+ 	if (ret) {
+ 		v4l2_async_nf_cleanup(ntf);
+ 		return ret;
+ 	}
++
+ 	return 0;
+ }
  
 -- 
 Regards,
