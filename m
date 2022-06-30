@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56D5DCCA483
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 23:08:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FFF3CCA47F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 23:08:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M2u7sPIItj5YBCkhkGrXkziCD9OkgjoIti9HvYSRsv4=; b=XxLGxJsjfiA8Zj
-	GqqiLvzZu/YyM2skZjFUwmO2NB9ZRpKnzwJ+kxAXxQX6WAas+8k0Dl0V1IpMx2aqA+vUd+54tiJ+P
-	1lUA9BtUfVqCqjnePK8PBec99kc2CS+AHkmR0Xch995J5KO1NcFsS9e+GiPxfq6oGxB26O11N8nkz
-	LsFOUSAiEbgj2gXXG5cXxUHz2rVNrlM/nJZqpYGMNKwc5FqESnJwU3IxnTSeol+wj25ccheu2KhoJ
-	E6zMuX2CDC3vzIgAAFfh+ojK/cGOafockZGaIfASxhC6iqUwBsH/GzIQFbQUPfSrfWbrucVyt1QrH
-	tDWKQE0y5+5ZioKYU/OQ==;
+	List-Owner; bh=uMHVGt95JfkxrZ5TMZwEyNQMi2Uv/ZnH2OASOp3ioAM=; b=LcSwdYgwkTNcYo
+	yxr7uKY6DAftGcde5hwySMpcWCkWCNwneGWjwvTEDDvFUOPvKcZRJGef4QZRKZO3tvInxJYzcYG8A
+	Kv1z1mUIm1BNxmr4SZCBMTGMveDXaYJF/RVr/soI2vt4Dp5D5k9fRGniOnvT4hiyBYk1+JrzjV8r0
+	pJln9jsNgSJD+p+gXK4lCBk7t0vyV4G9t3iACszuCuvautIEs9zIhqlkgeO08faZkrRZEAKzIDR3B
+	e4+xTByfi/WKQYCmjc5BaeRLaz7pKpmOw1BuUSiiwBM2VpZmfpkZQgaG18svzhCeU9Wytao1ZkNog
+	gfxONqplQAz8WxKaglGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o73Gz-0020mo-LC; Thu, 30 Jun 2022 23:08:33 +0000
+	id 1o73H2-0020qX-4c; Thu, 30 Jun 2022 23:08:36 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o73GZ-0020TG-KP
-	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:08:19 +0000
+	id 1o73Gd-0020Xb-F2
+	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:08:22 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CE87BA1C;
-	Fri,  1 Jul 2022 01:08:05 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 38BFC2A4F;
+	Fri,  1 Jul 2022 01:08:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656630486;
-	bh=9Vohmbbva7uI4DtI9pF4Wld+RGir5COGGdVGOhliK+s=;
+	s=mail; t=1656630489;
+	bh=/3AoZhQqUQbVZqavOWitWJhADZEuur7NZVJYIoJ7AxI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mTfjJ+j6k/SCl5PgkWpnWHNfdJXW+GUjReF5h71bFCI4U6ebVRQHpbtqip3ASPbR/
-	 FMcmtriaM/d1CqIaHBLrBfp6OukOHERPGQRIrbuawOVDtqbx3NfYKCqCcxZV6QUtLg
-	 u22fm4zyDQCx0HwwDb2wDCWYigjg7TrziFj9+bBg=
+	b=nHX9h4A1ujCObg8sNJQKBaWxiuw3EUs+qvNbV3neRLL/Ksamt3YCXPXCujosiWWmk
+	 6HJATJft01fqLGNDU7D8IfapB25DJzmlajhr4TDA2yOCbbgdlvEwCWpnCFJXQ/Zu6Y
+	 Dnv6d4uWGgqwm9Mz2+4FdjaMpbtj45iWDCCne55U=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -42,16 +42,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v2 44/55] media: rkisp1: Add infrastructure to support ISP features
-Date: Fri,  1 Jul 2022 02:07:02 +0300
-Message-Id: <20220630230713.10580-45-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v2 49/55] media: rkisp1: Configure gasket on i.MX8MP
+Date: Fri,  1 Jul 2022 02:07:07 +0300
+Message-Id: <20220630230713.10580-50-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_160807_843930_1169420A 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20220630_160811_685462_AA2D7709 
+X-CRM114-Status: GOOD (  21.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,81 +68,260 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Different ISP versions implement different sets of features. The driver
-already takes the version into account in several places, but this
-approach won't scale well for features that are found in different
-versions. Introduce a new mechanism using a features bitmask in the
-rkisp1_info structure to indicate which features the ISP support.
-
-The first feature bit tells if the ISP has an internal CSI-2 receiver,
-which is not available in all ISP versions.
+The i.MX8MP has a gasket between the CSI-2 receiver and the ISP.
+Configure and enable it when starting the ISP, and disable it when
+stopping.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-common.h      | 15 +++++++++++++++
- .../media/platform/rockchip/rkisp1/rkisp1-dev.c   |  2 ++
- 2 files changed, 17 insertions(+)
+ .../platform/rockchip/rkisp1/rkisp1-common.h  |   5 +
+ .../platform/rockchip/rkisp1/rkisp1-dev.c     |  16 +++
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     | 128 +++++++++++++++++-
+ 3 files changed, 147 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index e436f1572566..dedfcf3466c8 100644
+index dedfcf3466c8..7e2aa0a2b86d 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -98,6 +98,19 @@ enum rkisp1_isp_pad {
- 	RKISP1_ISP_PAD_MAX
- };
+@@ -24,6 +24,7 @@
+ #include "rkisp1-regs.h"
  
-+/*
-+ * enum rkisp1_feature - ISP features
-+ *
-+ * @RKISP1_FEATURE_MIPI_CSI2: The ISP has an internal MIPI CSI-2 receiver
-+ *
-+ * The ISP features are stored in a bitmask in &rkisp1_info.features and allow
-+ * the driver to implement support for features present in some ISP versions
-+ * only.
-+ */
-+enum rkisp1_feature {
-+	RKISP1_FEATURE_MIPI_CSI2 = BIT(0),
-+};
-+
- /*
-  * struct rkisp1_info - Model-specific ISP Information
-  *
-@@ -106,6 +119,7 @@ enum rkisp1_isp_pad {
-  * @isrs: array of ISP interrupt descriptors
-  * @isr_size: number of entries in the @isrs array
-  * @isp_ver: ISP version
-+ * @features: bitmatk of rkisp1_feature features implemented by the ISP
-  *
-  * This structure contains information about the ISP specific to a particular
-  * ISP model, version, or integration in a particular SoC.
-@@ -116,6 +130,7 @@ struct rkisp1_info {
- 	const struct rkisp1_isr_data *isrs;
- 	unsigned int isr_size;
- 	enum rkisp1_cif_isp_version isp_ver;
-+	unsigned int features;
- };
+ struct dentry;
++struct regmap;
  
  /*
+  * flags on the 'direction' field in struct rkisp1_mbus_info' that indicate
+@@ -442,6 +443,8 @@ struct rkisp1_debug {
+  * @dev:	   a pointer to the struct device
+  * @clk_size:	   number of clocks
+  * @clks:	   array of clocks
++ * @gasket:	   the gasket - i.MX8MP only
++ * @gasket_id:	   the gasket ID (0 or 1) - i.MX8MP only
+  * @v4l2_dev:	   v4l2_device variable
+  * @media_dev:	   media_device variable
+  * @notifier:	   a notifier to register on the v4l2-async API to be notified on the sensor
+@@ -462,6 +465,8 @@ struct rkisp1_device {
+ 	struct device *dev;
+ 	unsigned int clk_size;
+ 	struct clk_bulk_data clks[RKISP1_MAX_BUS_CLK];
++	struct regmap *gasket;
++	unsigned int gasket_id;
+ 	struct v4l2_device v4l2_dev;
+ 	struct media_device media_dev;
+ 	struct v4l2_async_notifier notifier;
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 1dcade2fd2a7..bc278b49fefc 100644
+index a41f89807dd7..b6643020b831 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -460,6 +460,7 @@ static const struct rkisp1_info px30_isp_info = {
- 	.isrs = px30_isp_isrs,
- 	.isr_size = ARRAY_SIZE(px30_isp_isrs),
- 	.isp_ver = RKISP1_V12,
-+	.features = RKISP1_FEATURE_MIPI_CSI2,
- };
+@@ -10,6 +10,7 @@
  
- static const char * const rk3399_isp_clks[] = {
-@@ -478,6 +479,7 @@ static const struct rkisp1_info rk3399_isp_info = {
- 	.isrs = rk3399_isp_isrs,
- 	.isr_size = ARRAY_SIZE(rk3399_isp_isrs),
- 	.isp_ver = RKISP1_V10,
-+	.features = RKISP1_FEATURE_MIPI_CSI2,
- };
+ #include <linux/clk.h>
+ #include <linux/interrupt.h>
++#include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/of_graph.h>
+@@ -579,6 +580,21 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 		return ret;
+ 	rkisp1->clk_size = info->clk_size;
  
- static const struct of_device_id rkisp1_of_match[] = {
++	if (info->isp_ver == IMX8MP_V10) {
++		unsigned int id;
++
++		rkisp1->gasket = syscon_regmap_lookup_by_phandle_args(dev->of_node,
++								      "fsl,blk-ctrl",
++								      1, &id);
++		if (IS_ERR(rkisp1->gasket)) {
++			ret = PTR_ERR(rkisp1->gasket);
++			dev_err(dev, "failed to get gasket: %d\n", ret);
++			return ret;
++		}
++
++		rkisp1->gasket_id = id;
++	}
++
+ 	pm_runtime_enable(&pdev->dev);
+ 
+ 	ret = pm_runtime_resume_and_get(&pdev->dev);
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index 383a3ec83ca9..a3c7d4d88387 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -10,6 +10,7 @@
+ 
+ #include <linux/iopoll.h>
+ #include <linux/pm_runtime.h>
++#include <linux/regmap.h>
+ #include <linux/videodev2.h>
+ #include <linux/vmalloc.h>
+ 
+@@ -87,6 +88,115 @@ rkisp1_isp_get_pad_crop(struct rkisp1_isp *isp,
+ 		return v4l2_subdev_get_try_crop(&isp->sd, &state, pad);
+ }
+ 
++/* -----------------------------------------------------------------------------
++ * Media block control (i.MX8MP only)
++ */
++
++#define ISP_DEWARP_CONTROL				0x0138
++
++#define ISP_DEWARP_CONTROL_MIPI_CSI2_HS_POLARITY	BIT(22)
++#define ISP_DEWARP_CONTROL_MIPI_CSI2_VS_SEL_RISING	(0 << 20)
++#define ISP_DEWARP_CONTROL_MIPI_CSI2_VS_SEL_NEGATIVE	(1 << 20)
++#define ISP_DEWARP_CONTROL_MIPI_CSI2_VS_SEL_POSITIVE	(2 << 20)
++#define ISP_DEWARP_CONTROL_MIPI_CSI2_VS_SEL_FALLING	(3 << 20)
++#define ISP_DEWARP_CONTROL_MIPI_CSI2_VS_SEL_MASK	GENMASK(21, 20)
++#define ISP_DEWARP_CONTROL_MIPI_ISP2_LEFT_JUST_MODE	BIT(19)
++#define ISP_DEWARP_CONTROL_MIPI_ISP2_DATA_TYPE(dt)	((dt) << 13)
++#define ISP_DEWARP_CONTROL_MIPI_ISP2_DATA_TYPE_MASK	GENMASK(18, 13)
++
++#define ISP_DEWARP_CONTROL_MIPI_CSI1_HS_POLARITY	BIT(12)
++#define ISP_DEWARP_CONTROL_MIPI_CSI1_VS_SEL_RISING	(0 << 10)
++#define ISP_DEWARP_CONTROL_MIPI_CSI1_VS_SEL_NEGATIVE	(1 << 10)
++#define ISP_DEWARP_CONTROL_MIPI_CSI1_VS_SEL_POSITIVE	(2 << 10)
++#define ISP_DEWARP_CONTROL_MIPI_CSI1_VS_SEL_FALLING	(3 << 10)
++#define ISP_DEWARP_CONTROL_MIPI_CSI1_VS_SEL_MASK	GENMASK(11, 10)
++#define ISP_DEWARP_CONTROL_MIPI_ISP1_LEFT_JUST_MODE	BIT(9)
++#define ISP_DEWARP_CONTROL_MIPI_ISP1_DATA_TYPE(dt)	((dt) << 3)
++#define ISP_DEWARP_CONTROL_MIPI_ISP1_DATA_TYPE_MASK	GENMASK(8, 3)
++
++#define ISP_DEWARP_CONTROL_GPR_ISP_1_DISABLE		BIT(1)
++#define ISP_DEWARP_CONTROL_GPR_ISP_0_DISABLE		BIT(0)
++
++static int rkisp1_gasket_enable(struct rkisp1_device *rkisp1,
++				struct media_pad *source)
++{
++	struct v4l2_subdev *source_sd;
++	struct v4l2_mbus_frame_desc fd;
++	unsigned int dt;
++	u32 mask;
++	u32 val;
++	int ret;
++
++	/*
++	 * Configure and enable the gasket with the CSI-2 data type. Set the
++	 * vsync polarity as active high, as that is what the ISP is configured
++	 * to expect in ISP_ACQ_PROP. Enable left justification, as the i.MX8MP
++	 * ISP has a 16-bit wide input and expects data to be left-aligned.
++	 */
++
++	source_sd = media_entity_to_v4l2_subdev(source->entity);
++	ret = v4l2_subdev_call(source_sd, pad, get_frame_desc,
++			       source->index, &fd);
++	if (ret) {
++		dev_err(rkisp1->dev,
++			"failed to get frame descriptor from '%s':%u: %d\n",
++			source_sd->name, 0, ret);
++		return ret;
++	}
++
++	if (fd.num_entries != 1) {
++		dev_err(rkisp1->dev, "invalid frame descriptor for '%s':%u\n",
++			source_sd->name, 0);
++		return -EINVAL;
++	}
++
++	dt = fd.entry[0].bus.csi2.dt;
++
++	if (rkisp1->gasket_id == 0) {
++		mask = ISP_DEWARP_CONTROL_MIPI_CSI1_HS_POLARITY
++		     | ISP_DEWARP_CONTROL_MIPI_CSI1_VS_SEL_MASK
++		     | ISP_DEWARP_CONTROL_MIPI_ISP1_LEFT_JUST_MODE
++		     | ISP_DEWARP_CONTROL_MIPI_ISP1_DATA_TYPE_MASK
++		     | ISP_DEWARP_CONTROL_GPR_ISP_0_DISABLE;
++		val = ISP_DEWARP_CONTROL_MIPI_CSI1_VS_SEL_POSITIVE
++		    | ISP_DEWARP_CONTROL_MIPI_ISP1_LEFT_JUST_MODE
++		    | ISP_DEWARP_CONTROL_MIPI_ISP1_DATA_TYPE(dt);
++	} else {
++		mask = ISP_DEWARP_CONTROL_MIPI_CSI2_HS_POLARITY
++		     | ISP_DEWARP_CONTROL_MIPI_CSI2_VS_SEL_MASK
++		     | ISP_DEWARP_CONTROL_MIPI_ISP2_LEFT_JUST_MODE
++		     | ISP_DEWARP_CONTROL_MIPI_ISP2_DATA_TYPE_MASK
++		     | ISP_DEWARP_CONTROL_GPR_ISP_1_DISABLE;
++		val = ISP_DEWARP_CONTROL_MIPI_CSI2_VS_SEL_POSITIVE
++		    | ISP_DEWARP_CONTROL_MIPI_ISP2_LEFT_JUST_MODE
++		    | ISP_DEWARP_CONTROL_MIPI_ISP2_DATA_TYPE(dt);
++	}
++
++	regmap_update_bits(rkisp1->gasket, ISP_DEWARP_CONTROL, mask, val);
++
++	return 0;
++}
++
++static void rkisp1_gasket_disable(struct rkisp1_device *rkisp1)
++{
++	u32 mask;
++	u32 val;
++
++	if (rkisp1->gasket_id == 1) {
++		mask = ISP_DEWARP_CONTROL_MIPI_ISP2_LEFT_JUST_MODE
++		     | ISP_DEWARP_CONTROL_MIPI_ISP2_DATA_TYPE_MASK
++		     | ISP_DEWARP_CONTROL_GPR_ISP_1_DISABLE;
++		val = ISP_DEWARP_CONTROL_GPR_ISP_1_DISABLE;
++	} else {
++		mask = ISP_DEWARP_CONTROL_MIPI_ISP1_LEFT_JUST_MODE
++		     | ISP_DEWARP_CONTROL_MIPI_ISP1_DATA_TYPE_MASK
++		     | ISP_DEWARP_CONTROL_GPR_ISP_0_DISABLE;
++		val = ISP_DEWARP_CONTROL_GPR_ISP_0_DISABLE;
++	}
++
++	regmap_update_bits(rkisp1->gasket, ISP_DEWARP_CONTROL, mask, val);
++}
++
+ /* ----------------------------------------------------------------------------
+  * Camera Interface registers configurations
+  */
+@@ -303,6 +413,9 @@ static void rkisp1_isp_stop(struct rkisp1_isp *isp)
+ 		     RKISP1_CIF_VI_IRCL_MIPI_SW_RST |
+ 		     RKISP1_CIF_VI_IRCL_ISP_SW_RST);
+ 	rkisp1_write(rkisp1, RKISP1_CIF_VI_IRCL, 0x0);
++
++	if (rkisp1->info->isp_ver == IMX8MP_V10)
++		rkisp1_gasket_disable(rkisp1);
+ }
+ 
+ static void rkisp1_config_clk(struct rkisp1_isp *isp)
+@@ -327,19 +440,28 @@ static void rkisp1_config_clk(struct rkisp1_isp *isp)
+ 	}
+ }
+ 
+-static void rkisp1_isp_start(struct rkisp1_isp *isp)
++static int rkisp1_isp_start(struct rkisp1_isp *isp, struct media_pad *source)
+ {
+ 	struct rkisp1_device *rkisp1 = isp->rkisp1;
+ 	u32 val;
++	int ret;
+ 
+ 	rkisp1_config_clk(isp);
+ 
++	if (rkisp1->info->isp_ver == IMX8MP_V10) {
++		ret = rkisp1_gasket_enable(rkisp1, source);
++		if (ret)
++			return ret;
++	}
++
+ 	/* Activate ISP */
+ 	val = rkisp1_read(rkisp1, RKISP1_CIF_ISP_CTRL);
+ 	val |= RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD |
+ 	       RKISP1_CIF_ISP_CTRL_ISP_ENABLE |
+ 	       RKISP1_CIF_ISP_CTRL_ISP_INFORM_ENABLE;
+ 	rkisp1_write(rkisp1, RKISP1_CIF_ISP_CTRL, val);
++
++	return 0;
+ }
+ 
+ /* ----------------------------------------------------------------------------
+@@ -772,7 +894,9 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+ 	if (ret)
+ 		goto mutex_unlock;
+ 
+-	rkisp1_isp_start(isp);
++	ret = rkisp1_isp_start(isp, source_pad);
++	if (ret)
++		goto mutex_unlock;
+ 
+ 	ret = v4l2_subdev_call(rkisp1->source, video, s_stream, true);
+ 	if (ret) {
 -- 
 Regards,
 
