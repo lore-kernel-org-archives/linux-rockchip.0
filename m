@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B1C6CCA47B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 23:08:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D553CCA47F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Jun 2022 23:08:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nh5eOSTEqNAjw+r+tAgzgqkItPXugGskhLYE+dO0YqY=; b=ntq27VRzKsbJab
-	Zve631JvR6eungj1+HX+kyqQxTEokjSLiLAhJQYOW5aC3LmDNi6ERq9hnAh4wP6e1VKxPk0U3DvdO
-	R09jucwF4k2i8BgL6dLBh5tLJS8abF3VVH03pTfFO+mihaVbegMKls4T/K80debOcahAG81A/qOW0
-	2VO4ns8mFAAi/X9APoqejaOLrkywg0X5LibfHO8lhCL8+ukdKoqC7BTauc7FvEHe/fHHo6d4Y3SMD
-	apOvws3uZ3d/ysA0fs+6zPYThNiuNHUZTI7marxYNTQR3UFrDJAAKEBi5pOAZGgildRUWMnBjsIWj
-	4axARquo3uR8y5J+xzXQ==;
+	List-Owner; bh=PtxqpQ+7HUeulL3WcF37J+c7F4KCY8034CqoYwRm1LQ=; b=4SR3ei/5KGvUp5
+	vGfpk6bAEsl0hMBl8RMFf2CcrHBkdTkeEWnpk9yWQK9fsIOu+/T6updXE1bx3e1yifJMu23GBdW52
+	FDzh736dz1gt8wbot4F+szzWYERthke6vxpf14wu/IA90pTnuyq2EkLHusPrfPf8kHNQpJRmFUfKe
+	vYtScX3Zpi94MgO0RU4DeF/CpB2yB2gRS0GsNm2ECcrTvGHuxsQKQkXJHtEPBomO+YYwm8eYnBfts
+	409hxLIuChAzJntSV0+9uqRSjcPP0ahY0Pq3UGMBY0FU4ZdlVFck86KscHRD/8WAMtG+OQGeNSKgQ
+	ILvsWovGAkGyWwtQI4nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o73GK-0020E8-6f; Thu, 30 Jun 2022 23:07:52 +0000
+	id 1o73GF-0020CL-Rl; Thu, 30 Jun 2022 23:07:47 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o73GB-00209G-H8
-	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:07:50 +0000
+	id 1o73GA-00208o-PE
+	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:07:46 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A4FCF832;
-	Fri,  1 Jul 2022 01:07:39 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 6F2F345F;
+	Fri,  1 Jul 2022 01:07:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656630460;
-	bh=j+3ZrtP0d8WL1IFfwyhIbmDB62PiXxGJI5Umbm5Fudo=;
+	s=mail; t=1656630458;
+	bh=JDOiawMLBdfXZfH1YXNdSi716Fr2tNwedvvBzba61rM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=PEsmZ0z3mE2xA/IcSEhg998oDR2vt7YeYqIUuvCEWk2jxX1PvpQac8+Y8/6rkBmPa
-	 gqxtDt9PBPaWzElCKXy5Pda1RSka2/03/s2FMliC+cfUv35oRtriNwN7epFVNyZviB
-	 qg4FonpoLesYJg4xTX0i0HlS8pq1M+f5xDMNJOoQ=
+	b=FKTXjxTOEon9C1zBSvCUCijg2FTDPSWLfxO8+g0k7fQL3g2WO51HBPlhMPOroXPO0
+	 q3u33vESsosZy7vbC1WZgYvElgyHIejOQx3jzf8UvSwGu6QBSzJrfbmsTibJYG53RR
+	 /f/DDSFHqsIhHIdrhNSTDK++wLqM8V74ehS5rD5w=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -44,16 +44,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	Paul Elder <paul.elder@ideasonboard.com>,
 	Sakari Ailus <sakari.ailus@linux.intel.com>,
 	Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Subject: [PATCH v2 04/55] media: mc-entity: Add a new helper function to get a remote pad for a pad
-Date: Fri,  1 Jul 2022 02:06:22 +0300
-Message-Id: <20220630230713.10580-5-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v2 01/55] media: v4l2-async: Add notifier operation to destroy asd instances
+Date: Fri,  1 Jul 2022 02:06:19 +0300
+Message-Id: <20220630230713.10580-2-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_160743_762409_828341EF 
-X-CRM114-Status: GOOD (  15.78  )
+X-CRM114-CacheID: sfid-20220630_160743_021906_ED0124F4 
+X-CRM114-Status: GOOD (  13.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,112 +70,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The newly added media_entity_remote_source_pad() helper function handles
-use cases where the entity has a link enabled uniqueness constraint
-covering all pads. There are use cases where the constraint covers a
-specific pad only. Add a new media_pad_remote_pad_unique() function to
-handle this. It operates as media_entity_remote_source_pad(), but on a
-given pad instead of on the entity.
+Drivers typically extend the v4l2_async_subdev structure by embedding it
+in a driver-specific structure, to store per-subdev custom data. The
+v4l2_async_subdev instances are freed by the v4l2-async framework, which
+makes this mechanism cumbersome to use safely when custom data needs
+special treatment to be destroyed (such as freeing additional memory, or
+releasing references to kernel objects).
+
+To ease this, add a .destroy() operation to the
+v4l2_async_notifier_operations structure. The operation is called right
+before the v4l2_async_subdev is freed, giving drivers a chance to
+destroy data if needed.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Acked-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Reviewed-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 ---
-Changes since v1:
+ Documentation/driver-api/media/v4l2-subdev.rst |  6 ++++++
+ drivers/media/v4l2-core/v4l2-async.c           | 10 ++++++++++
+ include/media/v4l2-async.h                     |  2 ++
+ 3 files changed, 18 insertions(+)
 
-- Rename media_pad_remote_pad() to media_pad_remote_pad_unique()
----
- Documentation/driver-api/media/mc-core.rst |  5 ++--
- drivers/media/mc/mc-entity.c               | 31 ++++++++++++++++++++++
- include/media/media-entity.h               | 18 +++++++++++++
- 3 files changed, 52 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/driver-api/media/mc-core.rst b/Documentation/driver-api/media/mc-core.rst
-index 66801506b2dd..644911936ad9 100644
---- a/Documentation/driver-api/media/mc-core.rst
-+++ b/Documentation/driver-api/media/mc-core.rst
-@@ -186,8 +186,9 @@ is required and the graph structure can be freed normally.
+diff --git a/Documentation/driver-api/media/v4l2-subdev.rst b/Documentation/driver-api/media/v4l2-subdev.rst
+index cf3b52bdbfb9..6f8d79926aa5 100644
+--- a/Documentation/driver-api/media/v4l2-subdev.rst
++++ b/Documentation/driver-api/media/v4l2-subdev.rst
+@@ -243,6 +243,12 @@ notifier callback is called. After all subdevices have been located the
+ .complete() callback is called. When a subdevice is removed from the
+ system the .unbind() method is called. All three callbacks are optional.
  
- Helper functions can be used to find a link between two given pads, or a pad
- connected to another pad through an enabled link
--(:c:func:`media_entity_find_link()`, :c:func:`media_pad_remote_pad_first()` and
--:c:func:`media_entity_remote_source_pad_unique()`).
-+(:c:func:`media_entity_find_link()`, :c:func:`media_pad_remote_pad_first()`n
-+:c:func:`media_entity_remote_source_pad_unique()` and
-+:c:func:`media_pad_remote_pad_unique()`).
++Drivers can store any type of custom data in their driver-specific
++:c:type:`v4l2_async_subdev` wrapper. If any of that data requires special
++handling when the structure is freed, drivers must implement the ``.destroy()``
++notifier callback. The framework will call it right before freeing the
++:c:type:`v4l2_async_subdev`.
++
+ Calling subdev operations
+ ~~~~~~~~~~~~~~~~~~~~~~~~~
  
- Use count and power handling
- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-diff --git a/drivers/media/mc/mc-entity.c b/drivers/media/mc/mc-entity.c
-index bd7145932137..7082403d5800 100644
---- a/drivers/media/mc/mc-entity.c
-+++ b/drivers/media/mc/mc-entity.c
-@@ -960,6 +960,37 @@ media_entity_remote_pad_unique(const struct media_entity *entity,
+diff --git a/drivers/media/v4l2-core/v4l2-async.c b/drivers/media/v4l2-core/v4l2-async.c
+index c6995718237a..735dede624b8 100644
+--- a/drivers/media/v4l2-core/v4l2-async.c
++++ b/drivers/media/v4l2-core/v4l2-async.c
+@@ -52,6 +52,15 @@ static int v4l2_async_nf_call_complete(struct v4l2_async_notifier *n)
+ 	return n->ops->complete(n);
  }
- EXPORT_SYMBOL_GPL(media_entity_remote_pad_unique);
  
-+struct media_pad *media_pad_remote_pad_unique(const struct media_pad *pad)
++static void v4l2_async_nf_call_destroy(struct v4l2_async_notifier *n,
++				       struct v4l2_async_subdev *asd)
 +{
-+	struct media_pad *found_pad = NULL;
-+	struct media_link *link;
++	if (!n->ops || !n->ops->destroy)
++		return;
 +
-+	list_for_each_entry(link, &pad->entity->links, list) {
-+		struct media_pad *remote_pad;
-+
-+		if (!(link->flags & MEDIA_LNK_FL_ENABLED))
-+			continue;
-+
-+		if (link->sink == pad)
-+			remote_pad = link->source;
-+		else if (link->source == pad)
-+			remote_pad = link->sink;
-+		else
-+			continue;
-+
-+		if (found_pad)
-+			return ERR_PTR(-ENOTUNIQ);
-+
-+		found_pad = remote_pad;
-+	}
-+
-+	if (!found_pad)
-+		return ERR_PTR(-ENOLINK);
-+
-+	return found_pad;
++	n->ops->destroy(asd);
 +}
-+EXPORT_SYMBOL_GPL(media_pad_remote_pad_unique);
 +
- static void media_interface_init(struct media_device *mdev,
- 				 struct media_interface *intf,
- 				 u32 gobj_type,
-diff --git a/include/media/media-entity.h b/include/media/media-entity.h
-index aecd1691b297..cd0690cff4c2 100644
---- a/include/media/media-entity.h
-+++ b/include/media/media-entity.h
-@@ -859,6 +859,24 @@ struct media_link *media_entity_find_link(struct media_pad *source,
-  */
- struct media_pad *media_pad_remote_pad_first(const struct media_pad *pad);
+ static bool match_i2c(struct v4l2_async_notifier *notifier,
+ 		      struct v4l2_subdev *sd, struct v4l2_async_subdev *asd)
+ {
+@@ -626,6 +635,7 @@ static void __v4l2_async_nf_cleanup(struct v4l2_async_notifier *notifier)
+ 		}
  
-+/**
-+ * media_pad_remote_pad_unique - Find a remote pad connected to a pad
-+ * @pad: The pad
-+ *
-+ * Search for and return a remote pad connected to @pad through an enabled
-+ * link. If multiple (or no) remote pads are found, an error is returned.
-+ *
-+ * The uniqueness constraint makes this helper function suitable for entities
-+ * that support a single active source at a time on a given pad.
-+ *
-+ * Return: A pointer to the remote pad, or one of the following error pointers
-+ * if an error occurs:
-+ *
-+ * * -ENOTUNIQ - Multiple links are enabled
-+ * * -ENOLINK - No connected pad found
-+ */
-+struct media_pad *media_pad_remote_pad_unique(const struct media_pad *pad);
-+
+ 		list_del(&asd->asd_list);
++		v4l2_async_nf_call_destroy(notifier, asd);
+ 		kfree(asd);
+ 	}
+ }
+diff --git a/include/media/v4l2-async.h b/include/media/v4l2-async.h
+index 13ff3ad948f4..25eb1d138c06 100644
+--- a/include/media/v4l2-async.h
++++ b/include/media/v4l2-async.h
+@@ -81,6 +81,7 @@ struct v4l2_async_subdev {
+  * @complete:	All subdevices have been probed successfully. The complete
+  *		callback is only executed for the root notifier.
+  * @unbind:	a subdevice is leaving
++ * @destroy:	the asd is about to be freed
+  */
+ struct v4l2_async_notifier_operations {
+ 	int (*bound)(struct v4l2_async_notifier *notifier,
+@@ -90,6 +91,7 @@ struct v4l2_async_notifier_operations {
+ 	void (*unbind)(struct v4l2_async_notifier *notifier,
+ 		       struct v4l2_subdev *subdev,
+ 		       struct v4l2_async_subdev *asd);
++	void (*destroy)(struct v4l2_async_subdev *asd);
+ };
+ 
  /**
-  * media_entity_remote_pad_unique - Find a remote pad connected to an entity
-  * @entity: The entity
 -- 
 Regards,
 
