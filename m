@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C04F6CCA480
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06068CCA486
 	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jul 2022 00:16:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,29 +12,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C36O8ilUv9i/1HN78CO0Cm4/BghNsKHmbkq+mddoXAs=; b=MI6jBTuZtv2GX8
-	PJcW8jnAL0mHAt+bzxc1KriF2ZLO5O6hXsbt13NbssqQ9DJsf7mNl4kUHBnW5NIErjRcW3XJ7lg4F
-	m/VR71TGLXme8wNF7HW16DfRUYN5hRzkc26rSu1jU96+q43KdCXO1Gb+MNDm4q80yU9ZxG2e4h/AW
-	mfSfPivxqQifL6hcK2Of8OJQ/OT7iCAQdkn8RmL3nyeYV6awv2ofELbU0p2Y3PQcl42t6PFgngDVf
-	4vOKzHLFWPlNnoVW4i2gwZKAbfrwTth9cvaorJRUOMAQwr2yNOcuyh0rdU4r4m+/CO22wTtSKxiVI
-	UTqjyH5DCqQ2I55jcp8Q==;
+	List-Owner; bh=0wCN9zFE7u5p2ZWsk4zpm8oxH6zASJtbXxCTPR47Ghc=; b=MPQESj6HoV2nRD
+	tiGHDzjBP3J0E4Cr5SUOqelj10AzWvRhXiYcL9pjhsEhu75AyNgWrdshmPjw9LS+vRh/60XLDyxIo
+	LKq7uy+XIhowmY29RCzYm1rDVoaDZY+LwQphhxSL1NaCZ0upqQif8MeyJw8qb4lGhDvJLbrp90prD
+	my54VEOvZKsut3J0Km5JSEVoCNPlq8kuAAvYruusKevuRjTG7OKyP5j4C58VMHu+6juXLBkipLQ+U
+	r0tdiH2tG2a7mNX0t9Dr+0h2csT45wppCQzzcEWewCP/BsFMpDIe62BD1G/b0/ASjDvMc9c9X7B2K
+	mbY453wg6Ah7G4aUZwLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o74KG-0028NR-OH; Fri, 01 Jul 2022 00:16:00 +0000
+	id 1o74KD-0028Ik-Ay; Fri, 01 Jul 2022 00:15:57 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o73GM-0020GL-HK
-	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:08:02 +0000
+	id 1o73GK-0020Dn-8o
+	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:07:54 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id C904425C;
-	Fri,  1 Jul 2022 01:07:50 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 322071460;
+	Fri,  1 Jul 2022 01:07:46 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656630471;
-	bh=1gnWTfQPlHBwqtiI1RSXDNm3+y65nEyAe5aBA3W9vVw=;
+	s=mail; t=1656630466;
+	bh=4W5h8ZyhDD2s+cMAmd4iAng4SMJHn0OJPbEVgJX1vhQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Xt+f2Z1Oc7M4TkrWGXPe55V0TbDYkG1eY7fxvezp3Y5+Y+6pcqLGJztX1Asmx4vO2
-	 2Vbk17CL+4lCaHVXkwqWQPy+dB6FnwsXP4TFP9cys7IC11FvluyDrSUgHun0T6CrJ+
-	 WRETe9W7flzEu0dgEMTOVMoOEqEk+T0bgW1E2h0Y=
+	b=AxrbhFdyL8OjS7Nzpg/Qqn7zTZ7XXkaoQOVyiD7yU8fKSr1oeFA3nDfMfvf9TRbGp
+	 TA9o4+VOWe3LpnyFyMLQQxTjOqayxHD2OcbSzB0kgGPp9r8f7YZc+Y7RkFRkuC3NoO
+	 mly8XZUtMOXk+7QANSQ73ky6cSmhikr6MDQ0e6WQ=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -42,16 +42,17 @@ Cc: linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v2 21/55] media: rkisp1: csi: Handle CSI-2 RX configuration fully in rkisp1-csi.c
-Date: Fri,  1 Jul 2022 02:06:39 +0300
-Message-Id: <20220630230713.10580-22-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v2 14/55] media: rkisp1: Reject sensors without pixel rate control at bound time
+Date: Fri,  1 Jul 2022 02:06:32 +0300
+Message-Id: <20220630230713.10580-15-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_160754_912146_247B6AFC 
-X-CRM114-Status: GOOD (  17.21  )
+X-CRM114-CacheID: sfid-20220630_160752_595999_B909F3ED 
+X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,181 +69,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The ISP layer now calls multiple functions of the CSI-2 RX layer to
-configure, start and stop it, with the steps for the last two
-operations. Move those calls to rkisp1_mipi_csi2_start() and
-rkisp1_mipi_csi2_stop() to simplify the ISP code and the API exposed by
-the CSI-2 receiver component.
+The rkisp1 driver requires the sensor to implement the pixel rate
+control. Trying to operate without it will cause an error when starting
+streaming. Catch the issue earlier, at bound time.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-csi.c     | 59 +++++++++++--------
- .../platform/rockchip/rkisp1/rkisp1-csi.h     |  4 --
- .../platform/rockchip/rkisp1/rkisp1-isp.c     | 10 +---
- 3 files changed, 35 insertions(+), 38 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 6 ++++++
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 5 -----
+ 2 files changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-index b5732511459f..25e1183cdbac 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-@@ -18,7 +18,7 @@
- #include "rkisp1-common.h"
- #include "rkisp1-csi.h"
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 39ae35074062..7fc617d51f44 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -190,6 +190,12 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
  
--int rkisp1_config_mipi(struct rkisp1_csi *csi)
-+static int rkisp1_config_mipi(struct rkisp1_csi *csi)
- {
- 	struct rkisp1_device *rkisp1 = csi->rkisp1;
- 	const struct rkisp1_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
-@@ -69,6 +69,30 @@ int rkisp1_config_mipi(struct rkisp1_csi *csi)
- 	return 0;
- }
- 
-+void rkisp1_mipi_start(struct rkisp1_csi *csi)
-+{
-+	struct rkisp1_device *rkisp1 = csi->rkisp1;
-+	u32 val;
+ 	s_asd->pixel_rate_ctrl = v4l2_ctrl_find(sd->ctrl_handler,
+ 						V4L2_CID_PIXEL_RATE);
++	if (!s_asd->pixel_rate_ctrl) {
++		dev_err(rkisp1->dev, "No pixel rate control in subdev %s\n",
++			sd->name);
++		return -EINVAL;
++	}
 +
-+	val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
-+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_CTRL,
-+		     val | RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA);
-+}
-+
-+void rkisp1_mipi_stop(struct rkisp1_csi *csi)
-+{
-+	struct rkisp1_device *rkisp1 = csi->rkisp1;
-+	u32 val;
-+
-+	/* Mask and clear interrupts. */
-+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC, 0);
-+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_ICR, ~0);
-+
-+	val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
-+	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_CTRL,
-+		     val & (~RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA));
-+}
-+
- int rkisp1_mipi_csi2_start(struct rkisp1_csi *csi,
- 			   struct rkisp1_sensor_async *sensor)
- {
-@@ -76,6 +100,11 @@ int rkisp1_mipi_csi2_start(struct rkisp1_csi *csi,
- 	union phy_configure_opts opts;
- 	struct phy_configure_opts_mipi_dphy *cfg = &opts.mipi_dphy;
- 	s64 pixel_clock;
-+	int ret;
-+
-+	ret = rkisp1_config_mipi(csi);
-+	if (ret)
-+		return ret;
- 
- 	pixel_clock = v4l2_ctrl_g_ctrl_int64(sensor->pixel_rate_ctrl);
- 	if (!pixel_clock) {
-@@ -90,38 +119,18 @@ int rkisp1_mipi_csi2_start(struct rkisp1_csi *csi,
- 	phy_configure(csi->dphy, &opts);
- 	phy_power_on(csi->dphy);
- 
-+	rkisp1_mipi_start(csi);
-+
- 	return 0;
- }
- 
- void rkisp1_mipi_csi2_stop(struct rkisp1_csi *csi)
- {
-+	rkisp1_mipi_stop(csi);
-+
- 	phy_power_off(csi->dphy);
- }
- 
--void rkisp1_mipi_start(struct rkisp1_csi *csi)
--{
--	struct rkisp1_device *rkisp1 = csi->rkisp1;
--	u32 val;
--
--	val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
--	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_CTRL,
--		     val | RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA);
--}
--
--void rkisp1_mipi_stop(struct rkisp1_csi *csi)
--{
--	struct rkisp1_device *rkisp1 = csi->rkisp1;
--	u32 val;
--
--	/* Mask and clear interrupts. */
--	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_IMSC, 0);
--	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_ICR, ~0);
--
--	val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
--	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_CTRL,
--		     val & (~RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA));
--}
--
- irqreturn_t rkisp1_mipi_isr(int irq, void *ctx)
- {
- 	struct device *dev = ctx;
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
-index d97a4ee5c002..1f921d534865 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
-@@ -17,12 +17,8 @@ struct rkisp1_sensor_async;
- int rkisp1_csi_init(struct rkisp1_device *rkisp1);
- void rkisp1_csi_cleanup(struct rkisp1_device *rkisp1);
- 
--int rkisp1_config_mipi(struct rkisp1_csi *csi);
--
- int rkisp1_mipi_csi2_start(struct rkisp1_csi *csi,
- 			   struct rkisp1_sensor_async *sensor);
- void rkisp1_mipi_csi2_stop(struct rkisp1_csi *csi);
--void rkisp1_mipi_start(struct rkisp1_csi *csi);
--void rkisp1_mipi_stop(struct rkisp1_csi *csi);
- 
- #endif /* _RKISP1_CSI_H */
+ 	s_asd->sd = sd;
+ 	s_asd->dphy = devm_phy_get(rkisp1->dev, "dphy");
+ 	if (IS_ERR(s_asd->dphy)) {
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index 81c4eb48baab..f477368dcec9 100644
+index 689885ac2e84..56781b53dd83 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -276,7 +276,6 @@ static int rkisp1_config_path(struct rkisp1_device *rkisp1)
- 		ret = rkisp1_config_dvp(rkisp1);
- 		dpcl |= RKISP1_CIF_VI_DPCL_IF_SEL_PARALLEL;
- 	} else if (sensor->mbus_type == V4L2_MBUS_CSI2_DPHY) {
--		ret = rkisp1_config_mipi(&rkisp1->csi);
- 		dpcl |= RKISP1_CIF_VI_DPCL_IF_SEL_MIPI;
- 	}
+@@ -823,11 +823,6 @@ static int rkisp1_mipi_csi2_start(struct rkisp1_isp *isp,
+ 	struct phy_configure_opts_mipi_dphy *cfg = &opts.mipi_dphy;
+ 	s64 pixel_clock;
  
-@@ -309,15 +308,13 @@ static void rkisp1_isp_stop(struct rkisp1_device *rkisp1)
- 	 * ISP(mi) stop in mi frame end -> Stop ISP(mipi) ->
- 	 * Stop ISP(isp) ->wait for ISP isp off
- 	 */
--	/* stop and clear MI, MIPI, and ISP interrupts */
-+	/* stop and clear MI and ISP interrupts */
- 	rkisp1_write(rkisp1, RKISP1_CIF_ISP_IMSC, 0);
- 	rkisp1_write(rkisp1, RKISP1_CIF_ISP_ICR, ~0);
- 
- 	rkisp1_write(rkisp1, RKISP1_CIF_MI_IMSC, 0);
- 	rkisp1_write(rkisp1, RKISP1_CIF_MI_ICR, ~0);
- 
--	rkisp1_mipi_stop(&rkisp1->csi);
+-	if (!sensor->pixel_rate_ctrl) {
+-		dev_warn(rkisp1->dev, "No pixel rate control in sensor subdev\n");
+-		return -EPIPE;
+-	}
 -
- 	/* stop ISP */
- 	val = rkisp1_read(rkisp1, RKISP1_CIF_ISP_CTRL);
- 	val &= ~(RKISP1_CIF_ISP_CTRL_ISP_INFORM_ENABLE |
-@@ -358,15 +355,10 @@ static void rkisp1_config_clk(struct rkisp1_device *rkisp1)
- 
- static void rkisp1_isp_start(struct rkisp1_device *rkisp1)
- {
--	struct rkisp1_sensor_async *sensor = rkisp1->active_sensor;
- 	u32 val;
- 
- 	rkisp1_config_clk(rkisp1);
- 
--	/* Activate MIPI */
--	if (sensor->mbus_type == V4L2_MBUS_CSI2_DPHY)
--		rkisp1_mipi_start(&rkisp1->csi);
--
- 	/* Activate ISP */
- 	val = rkisp1_read(rkisp1, RKISP1_CIF_ISP_CTRL);
- 	val |= RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD |
+ 	pixel_clock = v4l2_ctrl_g_ctrl_int64(sensor->pixel_rate_ctrl);
+ 	if (!pixel_clock) {
+ 		dev_err(rkisp1->dev, "Invalid pixel rate value\n");
 -- 
 Regards,
 
