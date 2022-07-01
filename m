@@ -4,67 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C761ECCA479
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jul 2022 09:03:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50A9EC43334
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jul 2022 09:19:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H+isbNiczkNuMk+RChrikKAeY6klfCSUXTIDZV+nOGk=; b=ztBQgi4E0IAVJf
-	DhoflFK1jBLzk0oNh/FCFPvOSfsJBzd0/d1Bp0UjLDomxH+Bkrynat7PSf7znsaVLNVHWiGnIk9kb
-	XTNyjPU8YFYJ63z5l2XPwUyG+mu8fKyQ9peApZtGucOlJ+l4upag89SUHWQWNy/YfNDotZhxKxHsT
-	sPwSPt0N9EFry0HU+aSht8yK2K9vk/m2Lmn/MOaTCz70FoigJncjXwItIuGVRhMoLg7lb/xkMvdQz
-	s1V6waKmwaJUUfLsoi88ejTu9+ZmVCyWjmXBV3qGm7r6jj6xOhj6sNhXofZhj5mhCzFKca7K1nUAx
-	o63NebD+0jP7ID9HsS6Q==;
+	List-Owner; bh=8boQKnPw+/iL9Ovn7aO8aK9sMvFDK7RUGUE4VEzC5YI=; b=Tnvp4UGm4qIjGh
+	jXyoYn+zmFl1Wtiy/6b+cbACad2CT9XVIgGzG6vpw79LjqZp/fOsmFxTJ+FrHdM02/7ZrOQr3qy1A
+	rMRYeQaSmxSUTjoXziR88Yfm7suXaLa9YW3ocUSnIaf7ywAuecPAJN6C7Wc/DeiA0x9r/HUDN0CMb
+	87TvIZiBbKzeP3hh+78jvqNUGVpMXypx0xXnMTXr4TnPi0919WqcMMwIlR5eaGffofPH+dgx/zbHv
+	VWUBg5UY5qfd3B+feBQyjtRMT/g/3+ga62GNiskG/9sSL3NwcXxUhNZliDYPCusLxLZctd1+A3zGt
+	loXt0Wt2co1OQN8QfypQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7CYn-003l2C-Fk; Fri, 01 Jul 2022 09:03:33 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o7CoI-003pcv-5V; Fri, 01 Jul 2022 09:19:34 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7CYd-003kzq-8v; Fri, 01 Jul 2022 09:03:24 +0000
-Received: from [IPV6:2a01:e0a:120:3210:2a18:eef7:517c:3467] (unknown [IPv6:2a01:e0a:120:3210:2a18:eef7:517c:3467])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 099BA66015B2;
-	Fri,  1 Jul 2022 10:03:21 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1656666201;
-	bh=HeVABiQifDKZmsejKzWKuWsrRSudGKBJZ7pqrByEerQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nwQ+wI922KmSe3X33SneWndU3TbI/sjRvPQJ8Dr5Xx5e+O3qg5hog/1NfrfSZLLa+
-	 uiofarX6QER7SRj2Socni4uPTSAQWRCqvBlpKKJW9qGo5lGcEk2o08vW2y1EogP2yf
-	 Er5jCtdTUH1iSLSOQe/5IZo2K3fmdvkTD8DY16m2Bto4fPs3QeAcL2Otxzd/KusWTh
-	 +5WhbyviowG4guFPNMai5QO1z1hlQI4fVdmiSKw2/rCJl+CsdHNDVuFp5LAVwrEHsh
-	 QhTDO0SZt/zk+9K5tTKjKTU+cWKKVLKpaDNBmWwyxA41gdiPS+vybDFYccNgp4oEzr
-	 H6JM/1lzE99Gw==
-Message-ID: <37145626-1a7e-2aba-4f3c-4d0574729a41@collabora.com>
-Date: Fri, 1 Jul 2022 11:03:18 +0200
+	id 1o7CoF-003paw-25
+	for linux-rockchip@lists.infradead.org; Fri, 01 Jul 2022 09:19:32 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9E91025C;
+	Fri,  1 Jul 2022 11:19:28 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1656667168;
+	bh=PiwUbyUV4xv77mPNNleUvrhzAfhgzSm779hMBHQ+4Gg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RiEXrSsWz0vix7wNf+yys2R/x1h13eceuCys6fj5t5lAhhu5jNftyK0bC4LuhdCOe
+	 +Tu/z/P72YCiYjCsZwtygPEaRLAr41uxYTkDFXWKG3jtv4ymXqbH4uiXzst9oxO67r
+	 XzMNgrns7ZJkZx+hlqFiINQkl4r8WXb5DQqIK/ls=
+Date: Fri, 1 Jul 2022 12:19:07 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Dafna Hirschfeld <dafna@fastmail.com>
+Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
+	heiko@sntech.de, jeanmichel.hautbois@ideasonboard.com,
+	jacopo@jmondi.org, djrscally@gmail.com, helen.koike@collabora.com,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 43/55] dt-bindings: media: rkisp1: Add port for parallel
+ interface
+Message-ID: <Yr68C1T5Pai8m/O+@pendragon.ideasonboard.com>
+References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
+ <20220614191127.3420492-44-paul.elder@ideasonboard.com>
+ <20220701052222.a7rtl5hivr4oy7bk@guri>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH 3/7] media: hantro: HEVC: Fix chroma offset computation
-Content-Language: en-US
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Cc: mchehab@kernel.org, hverkuil@xs4all.nl, ezequiel@vanguardiasur.com.ar,
- p.zabel@pengutronix.de, gregkh@linuxfoundation.org, mripard@kernel.org,
- wens@csie.org, jernej.skrabec@gmail.com, samuel@sholland.org,
- nicolas.dufresne@collabora.com, andrzej.p@collabora.com,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- kernel@collabora.com
-References: <20220617115802.396442-1-benjamin.gaignard@collabora.com>
- <20220617115802.396442-4-benjamin.gaignard@collabora.com>
- <Yr60jj4OOAM6plWC@aptenodytes>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <Yr60jj4OOAM6plWC@aptenodytes>
+Content-Disposition: inline
+In-Reply-To: <20220701052222.a7rtl5hivr4oy7bk@guri>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_020323_481223_C70DB16B 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20220701_021931_298239_D3E198E6 
+X-CRM114-Status: GOOD (  17.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,35 +65,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDAxLzA3LzIwMjIgw6AgMTA6NDcsIFBhdWwgS29jaWFsa293c2tpIGEgw6ljcml0wqA6Cj4g
-SGkgQmVuamFtaW4sCj4KPiBPbiBGcmkgMTcgSnVuIDIyLCAxMzo1NywgQmVuamFtaW4gR2FpZ25h
-cmQgd3JvdGU6Cj4+IFRoZSBjaHJvbWEgb2Zmc2V0IGRlcGVuZHMgb2YgdGhlIGJpdHN0cmVhbSBk
-ZXB0aC4KPj4gTWFrZSBzdXJlIHRoYXQgY3R4LT5iaXRfZGVwdGggaXMgdXNlZCB0byBjb21wdXRl
-IGl0Lgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2Fp
-Z25hcmRAY29sbGFib3JhLmNvbT4KPj4gLS0tCj4+ICAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hh
-bnRyby9oYW50cm9fZzJfaGV2Y19kZWMuYyB8IDIgKy0KPj4gICAxIGZpbGUgY2hhbmdlZCwgMSBp
-bnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3Rh
-Z2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmMgYi9kcml2ZXJzL3N0YWdpbmcv
-bWVkaWEvaGFudHJvL2hhbnRyb19nMl9oZXZjX2RlYy5jCj4+IGluZGV4IDllYWMxMzNiZGE2OC4u
-ODQwN2FkNDViN2I3IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJv
-L2hhbnRyb19nMl9oZXZjX2RlYy5jCj4+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50
-cm8vaGFudHJvX2cyX2hldmNfZGVjLmMKPj4gQEAgLTEyLDcgKzEyLDcgQEAKPj4gICAKPj4gICBz
-dGF0aWMgc2l6ZV90IGhhbnRyb19oZXZjX2Nocm9tYV9vZmZzZXQoc3RydWN0IGhhbnRyb19jdHgg
-KmN0eCkKPj4gICB7Cj4+IC0JcmV0dXJuIGN0eC0+ZHN0X2ZtdC53aWR0aCAqIGN0eC0+ZHN0X2Zt
-dC5oZWlnaHQ7Cj4+ICsJcmV0dXJuIGN0eC0+ZHN0X2ZtdC53aWR0aCAqIGN0eC0+ZHN0X2ZtdC5o
-ZWlnaHQgKiBjdHgtPmJpdF9kZXB0aCAvIDg7Cj4gSXMgdGhpcyBhIGNhc2UgZm9yIERJVl9ST1VO
-RF9VUCBvciBhcmUgeW91IHN1cmUgdGhlIHJvdW5kZWQtZG93biBzaXplIGlzIGFsd2F5cwo+IHN1
-ZmZpY2llbnQ/CgpObyBuZWVkIG9mIERJVl9ST1VORF9VUCBoZXJlIGJlY2F1c2UgaXQgY291bGQg
-YWZmZWN0IHRoZSBjaHJvbWEgb2Zmc2V0IHdoZW4KdXNpbmcgZGVjb2RlciB0aWxlZCBmb3JtYXQg
-YW5kIGFkZCBleHRyYSBieXRlcyBiZXR3ZWVuIGx1bWEgYW5kIGNocm9tYSBwbGFuZXMuCgpSZWdh
-cmRzLApCZW5qYW1pbgoKPiBDaGVlcnMsCj4KPiBQYXVsCj4KPj4gICB9Cj4+ICAgCj4+ICAgc3Rh
-dGljIHNpemVfdCBoYW50cm9faGV2Y19tb3Rpb25fdmVjdG9yc19vZmZzZXQoc3RydWN0IGhhbnRy
-b19jdHggKmN0eCkKPj4gLS0gCj4+IDIuMzIuMAo+PgoKX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
-bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Dafna,
+
+On Fri, Jul 01, 2022 at 08:22:22AM +0300, Dafna Hirschfeld wrote:
+> On 15.06.2022 04:11, Paul Elder wrote:
+> > The rkisp1 can take an input on the parallel interface. Add a port for
+> > it, and update the required field. At least one port is required, and
+> > both may be specified.
+> >
+> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> > ---
+> >  .../bindings/media/rockchip-isp1.yaml         | 23 +++++++++++++++++--
+> >  1 file changed, 21 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> > index d1489b177331..b3661d7d4357 100644
+> > --- a/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> > +++ b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> > @@ -84,8 +84,27 @@ properties:
+> >                  minItems: 1
+> >                  maxItems: 4
+> > 
+> > -    required:
+> > -      - port@0
+> > +      port@1:
+> > +        $ref: /schemas/graph.yaml#/$defs/port-base
+> > +        unevaluatedProperties: false
+> > +        description: connection point for input on the parallel interface
+> > +
+> > +        properties:
+> > +          bus-type:
+> > +            enum: [5, 6]
+> > +
+> > +          endpoint:
+> > +            $ref: video-interfaces.yaml#
+> > +            unevaluatedProperties: false
+> > +
+> > +        required:
+> > +          - bus-type
+> > +
+> > +    anyOf:
+> > +      - required:
+> > +          - port@0
+> > +      - required:
+> > +          - port@1
+> > 
+> >  required:
+> >    - compatible
+> 
+> Could be nice to add an example
+
+I don't have a real-life example of a parallel sensor connected to a
+RK3399, but the i.MX8MP connects its CSI-2 receiver to the parallel
+input of the ISP. I'll add an example to the other DT bindings patch
+that adds the compatible string for the i.MX8MP, is that OK ?
+
+-- 
+Regards,
+
+Laurent Pinchart
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
