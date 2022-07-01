@@ -4,54 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E1ACCCA480
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jul 2022 00:16:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB983CCA473
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jul 2022 02:14:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xZyBQ8rof/G7IPn5+jyPSCxNp1bSb3vMRJwa2BHXOwY=; b=eNjdAUD+cvMQZ3
-	L9IJxmOJ8Smlmmbas7L9jJkMC4j5M/pne+BQxUPnDUYhe7W/BBjZoPyXrN/7e0rkzMwR/x14mbK8v
-	YFcVNonm7NjdaByq+mewEYLGQfkSMWogaV6DnXi2MOmzGJDQouFN5fYboK3lnRua9OJuyO0jjodLG
-	2UY4rV2r3W4NAsQURdKZWgyovPBIHWzY+DMcYyd2YcG2b+Y4lveTkQacNwyX5n/I18fg4tJ1VvhqQ
-	cBONkkGWfhlwGi8NqH/iS/4G/ScPZXIB59SjVEsyZyf99nuVyTJsSix6t9MyRwYBhtDPjVKruIrDh
-	6Q4lX41FVxyexy8HLCdw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hWSWWtifVXBkh7VvEahXLvYqsry0iccd0Dh6O8kblcM=; b=OxFDlw8UjDYZdo
+	EMi/lx4XLCIknRayPKuZD1SGzj/m3FwJBbSCPkF8jruucVbTTCwUdLzkqJEYgqQ/EIbqSrDehxQor
+	8NFKPq9OEvBDacVft7Vo0lXU2GRIbwouLykwkBrrs1hqEpnNCY3ALhZ26bxE+Bsh3R4rbB1H2/V8M
+	5vu32gH5QtXh/cJIDkyWtbRDGr5FOW9WQdHfaB/CAtjYNw2w6AWMhesFZJsNx1pKjOu6J5DE653zo
+	0qzxPiv/QM84w0o49bu9O3QWRx72yYpwLXSPovEIMcTWuntJ5VDhxZezyrmxClmHk0j7DT/GbrpFu
+	xDkOmCvZCJzI8kM9FIBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o74KK-0028SW-2p; Fri, 01 Jul 2022 00:16:04 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1o76B4-002NRN-V0; Fri, 01 Jul 2022 02:14:38 +0000
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o73GO-0020JM-Es
-	for linux-rockchip@lists.infradead.org; Thu, 30 Jun 2022 23:08:08 +0000
-Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A82A629BE;
-	Fri,  1 Jul 2022 01:07:54 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656630475;
-	bh=RlK4exWAqaRYJVUJdirlFjjAHNRwMV6rEZlQMI1az98=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=py82ELKeqjE/G7EP+UQi2UCTE5Xym4jKOj6FpTmkK3sO2a9trMLXe9b2mpOhCfUlx
-	 OtNueB/aqfcygOsDXY5aBZaFm+cZ1DL9ch8wLya0Wo/m8o347yz2/8t8rPQL6uNbvA
-	 DEDLzse9zZ//iGBu69xDhUHCX1QbRSL8oxmhUtzw=
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Helen Koike <helen.koike@collabora.com>,
-	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v2 27/55] media: rkisp1: isp: Pass mbus type and flags to rkisp1_config_cif()
-Date: Fri,  1 Jul 2022 02:06:45 +0300
-Message-Id: <20220630230713.10580-28-laurent.pinchart@ideasonboard.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
-References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
+	id 1o76B2-002NPu-IY
+	for linux-rockchip@lists.infradead.org; Fri, 01 Jul 2022 02:14:38 +0000
+Received: by mail-pg1-x52b.google.com with SMTP id g4so1116264pgc.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Jun 2022 19:14:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=+nG6eb4+X5Ja/3xTBDEgAUy+rU3+Q7DlGcjeg+QB5NE=;
+        b=AhRwhX3qb9Gd5pjZU3Ju6++wdDeh9TWEcwxe7bHgCzd2uV4SQi6lmZjo/YF93Keivu
+         nppBG2JkTguvnOU2sKHsipgtfl7GIDry14WJl07b4OcAOSRUuxdFebUItxXO/SHmei2x
+         Na8FewAQ1/FvgOHmArf8p6ak4Dcvc3Dq0r1lg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=+nG6eb4+X5Ja/3xTBDEgAUy+rU3+Q7DlGcjeg+QB5NE=;
+        b=BCit1SyqVG7z7VSXTcyc7z/ayFE8uzvuai1bwNelaGFZ+iZB+pcWzV6/4pLlLouJ8r
+         9w4SVg5ian4I1EdSqGVMctiI2IVlPDlHnpqI6hW2FpnqU9tuUhsP0q3u6q1rNerDgRS6
+         Es8mKK1qhQ/ia6CMMxWOse3GunQUTQeI3E3T294WoWZq8J4O6A6zp0Yt8ZQZX68QYXSA
+         bc+oyshBAWkFhOZBTUSPlSRVrfNIZYcSSa91lYnEaunN7jdJVlb2wxyO5+h7sr7x6l4/
+         laF7H94WzLUJOmz5wQ4XMG6y5X5UfF2Mar3cgU4L9DGoauuhB/DT1SFjHBelhfRkXzz4
+         3Gsg==
+X-Gm-Message-State: AJIora8ryRSsiHn279wZkJ3D6HGfceIDBu73uWNoVYLvAa97EmxS93XQ
+	CkQqvFMR5w7vdDgk1l8xp7z+Yw==
+X-Google-Smtp-Source: AGRyM1vT575BCyuGLho/NbkSLyh3jD8NuJm0rgeF42h3/GJvEzoiIL/ra/yU9Bj42AjH05umGXxiJw==
+X-Received: by 2002:a63:4d4f:0:b0:3fd:f4a1:93db with SMTP id n15-20020a634d4f000000b003fdf4a193dbmr10451410pgl.374.1656641674280;
+        Thu, 30 Jun 2022 19:14:34 -0700 (PDT)
+Received: from judyhsiao0523.c.googlers.com.com (0.223.81.34.bc.googleusercontent.com. [34.81.223.0])
+        by smtp.gmail.com with ESMTPSA id z29-20020aa7949d000000b0052515e20df8sm14423596pfk.152.2022.06.30.19.14.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 30 Jun 2022 19:14:33 -0700 (PDT)
+From: Judy Hsiao <judyhsiao@chromium.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Brian Norris <briannorris@chromium.org>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	alsa-devel@alsa-project.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Judy Hsiao <judyhsiao@chromium.org>
+Subject: [PATCH v1] FROMGIT: ASoC: rockchip: i2s: Fix error code when fail to read I2S_CLR
+Date: Fri,  1 Jul 2022 02:14:27 +0000
+Message-Id: <20220701021427.3120549-1-judyhsiao@chromium.org>
+X-Mailer: git-send-email 2.37.0.rc0.161.g10f37bed90-goog
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220630_160756_726897_D5509C7F 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20220630_191436_993203_105D7D41 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,148 +92,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-To prepare for the removal of the active_sensor field from the
-rkisp1_device structure, pass the media bus type of flag to the
-rkisp1_config_cif() function instead of accessing them through
-active_sensor.
+Add the error code '-EBUSY' when fail to read I2S_CLR
+in rockchip_snd_rxctrl() and rockchip_snd_txctrl()
 
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
+Fixes: 44f362c2cc6d ("ASoC: rockchip: i2s: switch BCLK to GPIO")
+Signed-off-by: Judy Hsiao <judyhsiao@chromium.org>
 ---
- .../platform/rockchip/rkisp1/rkisp1-isp.c     | 44 +++++++++----------
- 1 file changed, 22 insertions(+), 22 deletions(-)
+ sound/soc/rockchip/rockchip_i2s.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index faf80197edbf..501996fffca0 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -136,15 +136,14 @@ static void rkisp1_config_ism(struct rkisp1_device *rkisp1)
- /*
-  * configure ISP blocks with input format, size......
-  */
--static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
-+static int rkisp1_config_isp(struct rkisp1_device *rkisp1,
-+			     enum v4l2_mbus_type mbus_type, u32 mbus_flags)
- {
- 	u32 isp_ctrl = 0, irq_mask = 0, acq_mult = 0, signal = 0;
- 	const struct rkisp1_mbus_info *src_fmt, *sink_fmt;
--	struct rkisp1_sensor_async *sensor;
- 	struct v4l2_mbus_framefmt *sink_frm;
- 	struct v4l2_rect *sink_crop;
- 
--	sensor = rkisp1->active_sensor;
- 	sink_fmt = rkisp1->isp.sink_fmt;
- 	src_fmt = rkisp1->isp.src_fmt;
- 	sink_frm = rkisp1_isp_get_pad_fmt(&rkisp1->isp, NULL,
-@@ -157,7 +156,7 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
- 	if (sink_fmt->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
- 		acq_mult = 1;
- 		if (src_fmt->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
--			if (sensor->mbus_type == V4L2_MBUS_BT656)
-+			if (mbus_type == V4L2_MBUS_BT656)
- 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_RAW_PICT_ITU656;
- 			else
- 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_RAW_PICT;
-@@ -165,17 +164,17 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
- 			rkisp1_write(rkisp1, RKISP1_CIF_ISP_DEMOSAIC,
- 				     RKISP1_CIF_ISP_DEMOSAIC_TH(0xc));
- 
--			if (sensor->mbus_type == V4L2_MBUS_BT656)
-+			if (mbus_type == V4L2_MBUS_BT656)
- 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_BAYER_ITU656;
- 			else
- 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_BAYER_ITU601;
- 		}
- 	} else if (sink_fmt->pixel_enc == V4L2_PIXEL_ENC_YUV) {
- 		acq_mult = 2;
--		if (sensor->mbus_type == V4L2_MBUS_CSI2_DPHY) {
-+		if (mbus_type == V4L2_MBUS_CSI2_DPHY) {
- 			isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU601;
- 		} else {
--			if (sensor->mbus_type == V4L2_MBUS_BT656)
-+			if (mbus_type == V4L2_MBUS_BT656)
- 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU656;
- 			else
- 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU601;
-@@ -185,17 +184,16 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
- 	}
- 
- 	/* Set up input acquisition properties */
--	if (sensor->mbus_type == V4L2_MBUS_BT656 ||
--	    sensor->mbus_type == V4L2_MBUS_PARALLEL) {
--		if (sensor->mbus_flags & V4L2_MBUS_PCLK_SAMPLE_RISING)
-+	if (mbus_type == V4L2_MBUS_BT656 || mbus_type == V4L2_MBUS_PARALLEL) {
-+		if (mbus_flags & V4L2_MBUS_PCLK_SAMPLE_RISING)
- 			signal = RKISP1_CIF_ISP_ACQ_PROP_POS_EDGE;
- 	}
- 
--	if (sensor->mbus_type == V4L2_MBUS_PARALLEL) {
--		if (sensor->mbus_flags & V4L2_MBUS_VSYNC_ACTIVE_LOW)
-+	if (mbus_type == V4L2_MBUS_PARALLEL) {
-+		if (mbus_flags & V4L2_MBUS_VSYNC_ACTIVE_LOW)
- 			signal |= RKISP1_CIF_ISP_ACQ_PROP_VSYNC_LOW;
- 
--		if (sensor->mbus_flags & V4L2_MBUS_HSYNC_ACTIVE_LOW)
-+		if (mbus_flags & V4L2_MBUS_HSYNC_ACTIVE_LOW)
- 			signal |= RKISP1_CIF_ISP_ACQ_PROP_HSYNC_LOW;
- 	}
- 
-@@ -265,17 +263,17 @@ static int rkisp1_config_dvp(struct rkisp1_device *rkisp1)
- }
- 
- /* Configure MUX */
--static int rkisp1_config_path(struct rkisp1_device *rkisp1)
-+static int rkisp1_config_path(struct rkisp1_device *rkisp1,
-+			      enum v4l2_mbus_type mbus_type)
- {
--	struct rkisp1_sensor_async *sensor = rkisp1->active_sensor;
- 	u32 dpcl = rkisp1_read(rkisp1, RKISP1_CIF_VI_DPCL);
- 	int ret = 0;
- 
--	if (sensor->mbus_type == V4L2_MBUS_BT656 ||
--	    sensor->mbus_type == V4L2_MBUS_PARALLEL) {
-+	if (mbus_type == V4L2_MBUS_BT656 ||
-+	    mbus_type == V4L2_MBUS_PARALLEL) {
- 		ret = rkisp1_config_dvp(rkisp1);
- 		dpcl |= RKISP1_CIF_VI_DPCL_IF_SEL_PARALLEL;
--	} else if (sensor->mbus_type == V4L2_MBUS_CSI2_DPHY) {
-+	} else if (mbus_type == V4L2_MBUS_CSI2_DPHY) {
- 		dpcl |= RKISP1_CIF_VI_DPCL_IF_SEL_MIPI;
- 	}
- 
-@@ -285,14 +283,15 @@ static int rkisp1_config_path(struct rkisp1_device *rkisp1)
- }
- 
- /* Hardware configure Entry */
--static int rkisp1_config_cif(struct rkisp1_device *rkisp1)
-+static int rkisp1_config_cif(struct rkisp1_device *rkisp1,
-+			     enum v4l2_mbus_type mbus_type, u32 mbus_flags)
- {
- 	int ret;
- 
--	ret = rkisp1_config_isp(rkisp1);
-+	ret = rkisp1_config_isp(rkisp1, mbus_type, mbus_flags);
- 	if (ret)
- 		return ret;
--	ret = rkisp1_config_path(rkisp1);
-+	ret = rkisp1_config_path(rkisp1, mbus_type);
- 	if (ret)
- 		return ret;
- 	rkisp1_config_ism(rkisp1);
-@@ -777,7 +776,8 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
- 
- 	rkisp1->isp.frame_sequence = -1;
- 	mutex_lock(&isp->ops_lock);
--	ret = rkisp1_config_cif(rkisp1);
-+	ret = rkisp1_config_cif(rkisp1, rkisp1->active_sensor->mbus_type,
-+				rkisp1->active_sensor->mbus_flags);
- 	if (ret)
- 		goto mutex_unlock;
- 
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index f783994cc16a..fd36c0bacc43 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -171,6 +171,7 @@ static int rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
+ 				retry--;
+ 				if (!retry) {
+ 					dev_warn(i2s->dev, "fail to clear\n");
++					ret = -EBUSY;
+ 					break;
+ 				}
+ 			}
+@@ -232,6 +233,7 @@ static int rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
+ 				retry--;
+ 				if (!retry) {
+ 					dev_warn(i2s->dev, "fail to clear\n");
++					ret = -EBUSY;
+ 					break;
+ 				}
+ 			}
 -- 
-Regards,
-
-Laurent Pinchart
+2.37.0.rc0.161.g10f37bed90-goog
 
 
 _______________________________________________
