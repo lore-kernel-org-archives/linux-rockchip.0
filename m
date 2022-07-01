@@ -4,72 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A6D4C43334
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jul 2022 10:32:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF619C43334
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jul 2022 11:30:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UsB9dCUWwViONaWHn+1/sIWJt78Xr+J7IfYA50IiMH8=; b=vxv6dxDl2JVX4t
-	w21RuXFPXTY/4et0JxYJUTueSaTW03MrrtJiESQpZM05gcqYC5EmpdHjtu31N/tYoSJft3FQyhpAP
-	cCbiWj1LUmAn9zfdSfjHnMnbaFUMr0z4dvYRuu3c8nl3C6KmqmedSCzxQsOZ82zt6pfd55jgFweox
-	QEJ805ZNW7oHW2Q2lKaiMKIFpYSdeHkdfszoBd08mZHQDSQdXcqSTdKeoHyINlsn0h4bLV8SAeWWN
-	nXZmoSX93QlnmNIRNx+J5ZPDQDTXmdr5+NKzvOedf9y5lINDO5l7pVcVf2GSZOL8rVxq66OEarDgN
-	/ouN+hhHgnY9QAh6g/lg==;
+	List-Owner; bh=wZLWTy5l9+1d1inDYiDx1EBqENin6ovcX4qz9iRYaeA=; b=BjLAlFufXyWobW
+	2C8GTwAOPtvPhZFu3F8R+l6CcMpPRsG/YHm/CS2ttxClRpmOFiu+VhfjLi1xluy6QJK2xyXeksYI3
+	P8eez97lS9FpobfSlqTe2D2nYA8VmvxT/BMBic33RwXUfjvNtL2YeousPifUBecKdWP3jUmNB/XTu
+	kwDUqfHYB3BEgDvcy2939yWf1Trilsh0yy0mtYwjJKRxEO5YU7K5odMchihcO+DERDfvgNoV/BnwH
+	xUOQF6U9FHL42eiRCeK5pjvyxWuXX6gJeVwAmNF2jdFDKTDBA+U/4Ef/9aa0ruOzRfmR4uSHclFqP
+	Se5wybJVdGSbOlcVuZnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Dx7-0045Xn-27; Fri, 01 Jul 2022 10:32:45 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1o7EqW-004MzO-01; Fri, 01 Jul 2022 11:30:00 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Dx3-0045Wz-Lq
-	for linux-rockchip@lists.infradead.org; Fri, 01 Jul 2022 10:32:43 +0000
-Received: by mail-ed1-x533.google.com with SMTP id o9so2349342edt.12
-        for <linux-rockchip@lists.infradead.org>; Fri, 01 Jul 2022 03:32:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=JOFbrEFB9DCfHsTRcts2PWWLes6+Uj7GP9RbVOzCFVM=;
-        b=G+gv7lbE9ycKvCE2XLzqdLc2Ydvt8ZMtLvSeU8HaZ9IBTC9+4C4J6ma8pDYRasv6wq
-         dcAt/tL/BVFPZBcEhMgdJxdBXiLcrR5bmHv75VIK3GY2JxCSNscmZtvnZBYdFRUX9Qcy
-         IisiKj6sGhICKwcz5anBl2siQIhcRP+Uc4j32evQkEIK3AZcvRK1nehjJQIM5EzR/bPG
-         fi6N0RqIPnU/tv562fCX7SXzZa+R0t5D5E/Ffu34GINVQTBi1YcK1LVQLyZlIFvcww/7
-         Qm2IqQQtvN82DMspOaGPkO152of48xEt9tQYjv0rwDLdjcEcLNFX8kaM4qN61e0hgIvf
-         93/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=JOFbrEFB9DCfHsTRcts2PWWLes6+Uj7GP9RbVOzCFVM=;
-        b=3calmNJg1DXuhI811nfrQduZ9TswzYOKwZLuDfIKPh2guoVjDra+TQy8qsZRNDbVzQ
-         Dq7Z2bWqCT49inLvQyHHUQQ9rte1faR77KWqSzfk7eXPW/5sVIlYrcs8AeTbLYc/Eg7+
-         +mjWD2pBl8CEGP/e0E9ohqUHSU6ZONGT7L5RFOYRJ0Y3yQ8yuFx97DyDMdAS8e/Ah3Ew
-         u4xJIEUghw6fTT9jiW9BBYRCNlRVqDMTzvM87Ly11mZ3+1NB4Ol86fZ+t/vKrXpTTcrg
-         yt93it5+JakWo1nnU6ELacowF+AsVSg5g+GRczBtGiXDWRdcw89W8BWKy912cZgDkJgj
-         PVxg==
-X-Gm-Message-State: AJIora9ZePnAf/CBGkNHWOjnQsbPFK6dhu26rljrhJYzoDBBlIfn2oh8
-	X6Q86UHHlT/hCuZp3tBNMfWkaXV9y5WMiFJ+xeaIHg==
-X-Google-Smtp-Source: AGRyM1vgIA6SqnHR0nHNlzVRqwiqRXFzYSzGJQPFnq7om9GgN5s8pDmkyBxQwG7kziOKv65nyKva/jRmpalBobiJTEQ=
-X-Received: by 2002:a05:6402:d0a:b0:437:66ca:c211 with SMTP id
- eb10-20020a0564020d0a00b0043766cac211mr18200869edb.29.1656671558454; Fri, 01
- Jul 2022 03:32:38 -0700 (PDT)
+	id 1o7EqS-004Mum-P8
+	for linux-rockchip@lists.infradead.org; Fri, 01 Jul 2022 11:29:58 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 4642C25C;
+	Fri,  1 Jul 2022 13:29:51 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1656674991;
+	bh=XgcTw8PU6I3n9hYJoCLdk4qKokseuI1tXq5PoF/JwYo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=W3pAjBPaZNtpFWgLpHMfsLPQChJxVa4r6yLfqY5WF7b9Ud5LDRvlRX3aDcflSr0JU
+	 LtZ0ppPCJRDcJMvdgxNfVK2Qf9t6a6hLk2buE1UwGv/cSKlgPHEpIJ8/vqtDhJ+8H5
+	 0Bsz+fdCWxo46d2PBkw+gnmqldEehk/1b7VNxqtU=
+Date: Fri, 1 Jul 2022 14:29:30 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Dafna Hirschfeld <dafna@fastmail.com>
+Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
+	heiko@sntech.de, jeanmichel.hautbois@ideasonboard.com,
+	jacopo@jmondi.org, djrscally@gmail.com, helen.koike@collabora.com,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 17/55] media: rkisp1: Fix sensor source pad retrieval at
+ bound time
+Message-ID: <Yr7amhpamdtasEHA@pendragon.ideasonboard.com>
+References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
+ <20220614191127.3420492-18-paul.elder@ideasonboard.com>
+ <20220701043641.bo3sgetazko3fwoi@guri>
 MIME-Version: 1.0
-References: <20220623160801.240779-1-sebastian.reichel@collabora.com>
-In-Reply-To: <20220623160801.240779-1-sebastian.reichel@collabora.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Fri, 1 Jul 2022 12:32:27 +0200
-Message-ID: <CAMRc=Mc9KHb1Y4EGbhaAKgVFwto+ujcF9f+VWC2P9imbawrcog@mail.gmail.com>
-Subject: Re: [PATCH 0/2] RK3588 GPIO Support
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, 
-	linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org, kernel@collabora.com
+Content-Disposition: inline
+In-Reply-To: <20220701043641.bo3sgetazko3fwoi@guri>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_033241_750623_94D00FF8 
-X-CRM114-Status: GOOD (  12.40  )
+X-CRM114-CacheID: sfid-20220701_042957_071143_7BD381C0 
+X-CRM114-Status: GOOD (  25.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,37 +70,138 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 23, 2022 at 6:08 PM Sebastian Reichel
-<sebastian.reichel@collabora.com> wrote:
->
-> This has been part of a bigger patchset adding basic rk3588 support.
-> Since that gets more and more out of hand, I'm now sending patches
-> for each subsystem as individual patchset. Previou patchet:
->
-> https://lore.kernel.org/all/20220504213251.264819-1-sebastian.reichel@collabora.com/
->
-> Changes:
->  * None (except for collecting Acks)
->
-> -- Sebastian
->
-> Jianqun Xu (1):
->   gpio: rockchip: add support for rk3588
->
-> Sebastian Reichel (1):
->   dt-bindings: gpio: rockchip: add gpio-ranges
->
->  Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml | 2 ++
->  drivers/gpio/gpio-rockchip.c                                   | 3 ++-
->  2 files changed, 4 insertions(+), 1 deletion(-)
->
-> --
-> 2.35.1
->
+Hi Dafna,
 
-Both applied, thanks!
+On Fri, Jul 01, 2022 at 07:36:41AM +0300, Dafna Hirschfeld wrote:
+> On 15.06.2022 04:10, Paul Elder wrote:
+> > From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > 
+> > When a sensor is bound, its source pad is retrieved in the .bound()
+> > operation with a call to media_entity_get_fwnode_pad(). The function
+> > should be called with the source endpoint fwnode of the sensor, but is
+> > instead called with the sensor's device fwnode.
+> > 
+> > Fix this, which involves storing a reference to the source endpoint
+> > fwnode in the rkisp1_sensor_async structure, and thus implementing the
+> > subdev notifier .destroy() operation to release the reference.
+> > 
+> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > ---
+> >  .../platform/rockchip/rkisp1/rkisp1-common.h  |  2 ++
+> >  .../platform/rockchip/rkisp1/rkisp1-dev.c     | 28 ++++++++++++++++---
+> >  2 files changed, 26 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > index ba11baf75fa9..60c5462e1746 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> > @@ -117,6 +117,7 @@ struct rkisp1_info {
+> >   *
+> >   * @asd:		async_subdev variable for the sensor
+> >   * @index:		index of the sensor (counting sensor found in DT)
+> > + * @source_ep:		fwnode for the sensor source endpoint
+> >   * @lanes:		number of lanes
+> >   * @mbus_type:		type of bus (currently only CSI2 is supported)
+> >   * @mbus_flags:		media bus (V4L2_MBUS_*) flags
+> > @@ -127,6 +128,7 @@ struct rkisp1_info {
+> >  struct rkisp1_sensor_async {
+> >  	struct v4l2_async_subdev asd;
+> >  	unsigned int index;
+> > +	struct fwnode_handle *source_ep;
+> >  	unsigned int lanes;
+> >  	enum v4l2_mbus_type mbus_type;
+> >  	unsigned int mbus_flags;
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > index 386c1c17aec2..0f3e45cdbf2a 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > @@ -138,7 +138,7 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
+> >  	phy_init(s_asd->dphy);
+> > 
+> >  	/* Create the link to the sensor. */
+> > -	source_pad = media_entity_get_fwnode_pad(&sd->entity, sd->fwnode,
+> > +	source_pad = media_entity_get_fwnode_pad(&sd->entity, s_asd->source_ep,
+> >  						 MEDIA_PAD_FL_SOURCE);
+> >  	if (source_pad < 0) {
+> >  		dev_err(rkisp1->dev, "failed to find source pad for %s\n",
+> > @@ -170,10 +170,19 @@ static int rkisp1_subdev_notifier_complete(struct v4l2_async_notifier *notifier)
+> >  	return v4l2_device_register_subdev_nodes(&rkisp1->v4l2_dev);
+> >  }
+> > 
+> > +static void rkisp1_subdev_notifier_destroy(struct v4l2_async_subdev *asd)
+> > +{
+> > +	struct rkisp1_sensor_async *rk_asd =
+> > +		container_of(asd, struct rkisp1_sensor_async, asd);
+> > +
+> > +	fwnode_handle_put(rk_asd->source_ep);
+> > +}
+> > +
+> >  static const struct v4l2_async_notifier_operations rkisp1_subdev_notifier_ops = {
+> >  	.bound = rkisp1_subdev_notifier_bound,
+> >  	.unbind = rkisp1_subdev_notifier_unbind,
+> >  	.complete = rkisp1_subdev_notifier_complete,
+> > +	.destroy = rkisp1_subdev_notifier_destroy,
+> >  };
+> > 
+> >  static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+> > @@ -190,6 +199,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+> >  			.bus_type = V4L2_MBUS_CSI2_DPHY
+> >  		};
+> >  		struct rkisp1_sensor_async *rk_asd;
+> > +		struct fwnode_handle *source = NULL;
+> >  		struct fwnode_handle *ep;
+> > 
+> >  		ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(rkisp1->dev),
+> > @@ -202,15 +212,24 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+> >  		if (ret)
+> >  			goto err_parse;
+> > 
+> > -		rk_asd = v4l2_async_nf_add_fwnode_remote(ntf, ep,
+> > -							 struct
+> > -							 rkisp1_sensor_async);
+> > +		source = fwnode_graph_get_remote_endpoint(ep);
+> > +		if (!source) {
+> > +			dev_err(rkisp1->dev,
+> > +				"endpoint %pfw has no remote endpoint\n",
+> > +				ep);
+> > +			ret = -ENODEV;
+> > +			goto err_parse;
+> > +		}
+> > +
+> > +		rk_asd = v4l2_async_nf_add_fwnode(ntf, source,
+> > +						  struct rkisp1_sensor_async);
+> >  		if (IS_ERR(rk_asd)) {
+> >  			ret = PTR_ERR(rk_asd);
+> >  			goto err_parse;
+> >  		}
+> > 
+> >  		rk_asd->index = index++;
+> > +		rk_asd->source_ep = source;
+> 
+> here do 'source = NULL', see reason below
+> 
+> >  		rk_asd->mbus_type = vep.bus_type;
+> >  		rk_asd->mbus_flags = vep.bus.mipi_csi2.flags;
+> >  		rk_asd->lanes = vep.bus.mipi_csi2.num_data_lanes;
+> > @@ -225,6 +244,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+> >  		continue;
+> >  err_parse:
+> >  		fwnode_handle_put(ep);
+> > +		fwnode_handle_put(source);
+> 
+> if v4l2_fwnode_endpoint_parse fails then here you put the source of previous iteration
 
-Bart
+source is a variable local to the loop, and it's initialized to NULL in
+the declaration, so it will be reset to NULL at every iteration.
+
+> >  		v4l2_async_nf_cleanup(ntf);
+> >  		return ret;
+> >  	}
+
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
