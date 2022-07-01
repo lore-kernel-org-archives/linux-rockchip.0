@@ -4,82 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 162C8C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jul 2022 16:48:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E44FC43334
+	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jul 2022 20:18:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C2q+rz3b+Djc7N07hzuQHJwf6ev1RYcR2DarHPGEp/w=; b=Wz/25CZURJSF+U
-	rTBezz1oCA15bgMAqDSlYavRn+6Jrej3spVSH246NUCQ7BG02c77obrNnJsAunvVFxBiYnyBQHHnp
-	HiUnDCDsq7XI97ZqzYBes4egQuhAHito+HIMyN4nOpmecWoPLXEHUfXsRW+qS35AO/usVtrKzqrFr
-	KTRw2eV34BVpWtpA9wykfoWgkZlD+aVjkb43De63XrWHm4w88SF8qAyVoGNmwAlBtvWD6o8o3TjnJ
-	efBWrpqPX703QTWXUXeJ1d4GuhgnovwxGs1LgegK0R9yZdFzjF8n/TMy7AuNRHzCKI+BkMWukicmU
-	zV2yn5fk1MssKHF4DdHQ==;
+	List-Owner; bh=7KIaT++bJvaNhNYtXCo+38OJbk0dlPtkJKErlivFCo8=; b=M8NRmthXofzUbH
+	Oi3uVYmSjXXhh55Hartt2QxQtwhN19S61goKn67KDu7guKVECku1KpupwEr+BvO2V2OMA0h5gU7HR
+	r6qvBSyz1cCLmHTPxWCS/JdwiD395AKU82CHnOoCZ51VQUHS0eDXrmDMhgaQwYIqxoIt+wwpm9qN0
+	2aeUfly21MIlq9c3UTOrjE/KA6yz8t6s2UExkFC4pzdiqQDgPZg6bSgzKIia5cXnuM4X5FrZI3S7A
+	S2X0PylWpIsOatT7IZ3bEDPZIAWhoiNfgJq25A5zI02BP+pkfmyzDl0zhFSCDcAoVu12FYM0SJi4b
+	CcQEvPZpqxDuo4nuPy8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Jo4-0065DU-Lo; Fri, 01 Jul 2022 16:47:48 +0000
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
+	id 1o7N5K-006lo4-Ul; Fri, 01 Jul 2022 20:17:50 +0000
+Received: from mail-io1-f53.google.com ([209.85.166.53])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7Jo2-0065BU-Bk
-	for linux-rockchip@lists.infradead.org; Fri, 01 Jul 2022 16:47:47 +0000
-Received: by mail-ot1-x336.google.com with SMTP id b23-20020a9d7557000000b00616c7999865so2230730otl.12
-        for <linux-rockchip@lists.infradead.org>; Fri, 01 Jul 2022 09:47:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=3aXEKuYhSekfjFf2iaJFFk/57mY9AqJp8+HZ/oMIjzQ=;
-        b=NFQb1gvPPgh9l6ruExkaXLZ1hFCZfoyPD99CK1HWB7to7E8wSHjtHLAHs8hQK2c5nM
-         FpMJM4l43Kc6cdx0S/XcRRbIGzbRiat3w+G1TAfva2q1K0ZtJCzvIuZpQ2lf96iLM/sP
-         RXGhwEwsvIQNicNbaidCfit2HC/ghNX/2Rxbg=
+	id 1o7N5I-006lmq-MW
+	for linux-rockchip@lists.infradead.org; Fri, 01 Jul 2022 20:17:49 +0000
+Received: by mail-io1-f53.google.com with SMTP id v185so3270623ioe.11
+        for <linux-rockchip@lists.infradead.org>; Fri, 01 Jul 2022 13:17:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=3aXEKuYhSekfjFf2iaJFFk/57mY9AqJp8+HZ/oMIjzQ=;
-        b=i2KWBD0KMcyk5IPlQ3MmiK3xNCPIcVUmTgLK2l00DNtYLJ5F/vItTmNWpUPMjdPejP
-         gZvcbX2me0qsTL4FLmoU1K7kMjuVu7DShcVsgrsIKpGrhdGrSF+Pi7u0LaCMpoFGv1HJ
-         aTYJPkfuililIarqojEhs7QjJJehE1cKYuXBecXEnP6f0q3wwYVLRZ8Y4TtednJhLwpW
-         jdBmvscKyqrqd5fnWnfvysN5QDvwJGBPi0eak5YM07SRk4lyOgnHP3f9vZvh4zCP5yWr
-         cp3KocblGAIr8IOS4hjXN16H62TlX8aaVF/pNEtnkH19RcFacr34bNI3Bq1TVE4EJuW5
-         59Og==
-X-Gm-Message-State: AJIora8EN1MdjqUasmdlCmj3EicSa1fsO3XxqQHn0A3+PqCgEOVyhOEe
-	3KFVMl3coZ8sGvRgh6WoXbpiee8M5dVhOA==
-X-Google-Smtp-Source: AGRyM1uJ+A0H4aGBB2GJFzOclqHxpY5NIIJauzzkWfMQKrnlTfkXYt2h0BMpvxnk/TFwcD0aU+V9NA==
-X-Received: by 2002:a9d:7984:0:b0:616:dbd1:2006 with SMTP id h4-20020a9d7984000000b00616dbd12006mr6897201otm.72.1656694064247;
-        Fri, 01 Jul 2022 09:47:44 -0700 (PDT)
-Received: from mail-oa1-f48.google.com (mail-oa1-f48.google.com. [209.85.160.48])
-        by smtp.gmail.com with ESMTPSA id e19-20020a9d4913000000b0060bc92bf0c9sm12893602otf.20.2022.07.01.09.47.42
-        for <linux-rockchip@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 01 Jul 2022 09:47:43 -0700 (PDT)
-Received: by mail-oa1-f48.google.com with SMTP id 586e51a60fabf-101ab23ff3fso4283031fac.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 01 Jul 2022 09:47:42 -0700 (PDT)
-X-Received: by 2002:a05:6870:2326:b0:f1:7485:2a92 with SMTP id
- w38-20020a056870232600b000f174852a92mr9593871oao.291.1656694062616; Fri, 01
- Jul 2022 09:47:42 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=L+J73+vdV/PGctyRmhCgIGT9iR/WXHXxzhXGHKHUvwY=;
+        b=ceu4paIQ+plVcJqhwUBJGx3pLbVyuTQy/I0/j/apxYkNU/mKv9JP+9umLlhdE3damA
+         GQ5FAoSPPCpZh6awageKIAu7xomJS8LQOzEXZbLFu1krMc+QxYMthy10/yX6aW05tSUa
+         z0G8ImF/RY9vjk4RQ2tPlpYx4QwqV4lWecgFJ8tfpzZzxDrbsj4ZQlyj+1KDFQqF1BtG
+         bHzcXrEPiFvfvy5htJ6efNach0XRlPkyDL9wT2vJBiFNsxvbFlnup3eZkFw7JE+zLOv6
+         tyGol1Uuq0lqmLZYV1gezZiDOtyWqrcRBc2VRkavs4NHgNsY+o+LdWPUGw+4ASlSUIXS
+         Aqrg==
+X-Gm-Message-State: AJIora+B8negXiv6C8eK4YMXtnToNdadDHs2LeZuVfNbGF3crvfE9ABB
+	337tVMzKM20JY3ubsAq+8g==
+X-Google-Smtp-Source: AGRyM1sVN6vixZJkx0n3n55NBj1VVJZFB80abfEjRsMa+IerrCpMxFINUJUSe7TfvsJe3mf+nfyCmw==
+X-Received: by 2002:a05:6638:380e:b0:33c:bbf7:56c0 with SMTP id i14-20020a056638380e00b0033cbbf756c0mr10243381jav.71.1656706663566;
+        Fri, 01 Jul 2022 13:17:43 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id s21-20020a6bdc15000000b0067533ab9404sm7279557ioc.16.2022.07.01.13.17.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Jul 2022 13:17:43 -0700 (PDT)
+Received: (nullmailer pid 1450120 invoked by uid 1000);
+	Fri, 01 Jul 2022 20:17:41 -0000
+Date: Fri, 1 Jul 2022 14:17:41 -0600
+From: Rob Herring <robh@kernel.org>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: devicetree@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>, Helen Koike <helen.koike@collabora.com>, Paul Elder <paul.elder@ideasonboard.com>, Rob Herring <robh+dt@kernel.org>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 42/55] dt-bindings: media: rkisp1: Add port for
+ parallel interface
+Message-ID: <20220701201741.GA1450061-robh@kernel.org>
+References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
+ <20220630230713.10580-43-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
-References: <20220701021427.3120549-1-judyhsiao@chromium.org>
-In-Reply-To: <20220701021427.3120549-1-judyhsiao@chromium.org>
-From: Brian Norris <briannorris@chromium.org>
-Date: Fri, 1 Jul 2022 09:47:30 -0700
-X-Gmail-Original-Message-ID: <CA+ASDXMof_NA0v_PwD6--ojrsEiMvSOpx48UWS0vmVB4xBc_VA@mail.gmail.com>
-Message-ID: <CA+ASDXMof_NA0v_PwD6--ojrsEiMvSOpx48UWS0vmVB4xBc_VA@mail.gmail.com>
-Subject: Re: [PATCH v1] FROMGIT: ASoC: rockchip: i2s: Fix error code when fail
- to read I2S_CLR
-To: Judy Hsiao <judyhsiao@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>, 
-	Jaroslav Kysela <perex@perex.cz>, Chen-Yu Tsai <wenst@chromium.org>, alsa-devel@alsa-project.org, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
-	Linux Kernel <linux-kernel@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20220630230713.10580-43-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220701_094746_488010_8775039B 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20220701_131748_776214_56991758 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,17 +80,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 30, 2022 at 7:14 PM Judy Hsiao <judyhsiao@chromium.org> wrote:
->
-> Add the error code '-EBUSY' when fail to read I2S_CLR
-> in rockchip_snd_rxctrl() and rockchip_snd_txctrl()
->
-> Fixes: 44f362c2cc6d ("ASoC: rockchip: i2s: switch BCLK to GPIO")
-> Signed-off-by: Judy Hsiao <judyhsiao@chromium.org>
+On Fri, 01 Jul 2022 02:07:00 +0300, Laurent Pinchart wrote:
+> From: Paul Elder <paul.elder@ideasonboard.com>
+> 
+> The rkisp1 can take an input on the parallel interface. Add a port for
+> it, and update the required field. At least one port is required, and
+> both may be specified.
+> 
+> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> ---
+>  .../bindings/media/rockchip-isp1.yaml         | 23 +++++++++++++++++--
+>  1 file changed, 21 insertions(+), 2 deletions(-)
+> 
 
-Apart from the FROMGIT subject:
-
-Reviewed-by: Brian Norris <briannorris@chromium.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
