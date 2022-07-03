@@ -4,43 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4771C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Jul 2022 13:11:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AA2EC43334
+	for <linux-rockchip@archiver.kernel.org>; Sun,  3 Jul 2022 03:57:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qLTHFSWV3jRWUIPDzFZc8t8hCyl8LulNYNKz4OkFRIM=; b=xGG06MQc0x+hU0nfnXa42PSm30
-	cWn9rbF5tlYalJWXAJgREQ0qkbikRLZ192SvXI3dAYT6HqsL+CqiNQaQK/gTaC/IE5L+gsoJwEhZA
-	htTcZe19ie1dzN1eXoThuhNxkS7Rc49ciiHcCk/6GryALsMM5kHb3/3m89JGsxvaOBcGvStwjHcrW
-	OWT534W0LaBfJAC37pGDLP6FwtkUy59HvWmJ+CHDOGM424fL9h7QINWPKCC1z05xO3WW7HHLnmknw
-	pzr3B+9HcCqEvuESrXvL5c4OyF/UTOSZy522W7amIBa9kxe7QuEj244w+8MF9Emndl7E0SG9SHUsb
-	ktnFbz8w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tdn0KygupeEYyauVCZyunJz9YRx/fXKPaSBrrmEl9BA=; b=tRuqMX/54nm+PU
+	IBidUxHiiP2gmOkJBQQlvKxx8l4TuT/j5bwnsKgj3A5yrPydG7Spj0a6lVIweoCtuXjSPSgdBFZq2
+	MmPKHnvbxgS8YlgeF7j4ds2jiq6mXsOyzLPSp9G8nXMEA60Nj+kVDvRogixs4gAfhEEy87adrmo/N
+	zoru07RTsZFmXmnJwxY+NFJxLh0D4up73H1KJBS+PY2KRKioDyjGO+O3H81N7byqz/t/dDh8KJ1XM
+	nAwb6UhGSi6Hio7mrA/m8+UiimrqXaw3LtdFiHvlUIen2Jpwo3dbEZsLUiP2zaLueS7Ci/Cb/mbzM
+	DqvhjbFUYz7hs6q27xow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7ctk-009hQN-CF; Sat, 02 Jul 2022 13:10:56 +0000
-Received: from relay4-d.mail.gandi.net ([217.70.183.196])
+	id 1o7qjp-00DXYY-9y; Sun, 03 Jul 2022 03:57:37 +0000
+Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o7ctW-009hLf-PX; Sat, 02 Jul 2022 13:10:47 +0000
-Received: (Authenticated sender: didi.debian@cknow.org)
-	by mail.gandi.net (Postfix) with ESMTPSA id CB176E0004;
-	Sat,  2 Jul 2022 13:10:32 +0000 (UTC)
-From: Diederik de Haas <didi.debian@cknow.org>
-To: heiko@sntech.de, ardb@kernel.org, herbert@gondor.apana.org.au, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
-Cc: devicetree@vger.kernel.org, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Corentin Labbe <clabbe@baylibre.com>
-Subject: Re: [PATCH v7 00/33] crypto: rockchip: permit to pass self-tests
-Date: Sat, 02 Jul 2022 15:10:22 +0200
-Message-ID: <5836825.lOV4Wx5bFT@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20220508185957.3629088-1-clabbe@baylibre.com>
-References: <20220508185957.3629088-1-clabbe@baylibre.com>
+	id 1o7qjj-00DXUB-SR
+	for linux-rockchip@lists.infradead.org; Sun, 03 Jul 2022 03:57:34 +0000
+Received: by mail-oi1-x22c.google.com with SMTP id q11so8907101oih.10
+        for <linux-rockchip@lists.infradead.org>; Sat, 02 Jul 2022 20:57:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=S2PQt3HxkBxUYjC+VtlXEq4NoCpstcc7waq7Ie+ZSSw=;
+        b=LcxkuQlcBom6K7cYz2cObFcKqvmFziGvIewxr5CVdQDXpiVs4Qe1p9/ma3MjpEBl0m
+         LdiaLTeEwxUPT1iylGK2uBRwa96fvGW0y6QRWq5F+NZCFL6N1e6TXJlkAQCGEx5XaKBZ
+         bMXT/f+ogoq6vs4TCzgBdramsCAz0nmWRD4br2nzTC8FHRTsVjgo15di4+fdqYbsWQIV
+         4/vga7HK3myEs7r2HcBsoYeS5QL/sXXpo879hazt2tPiyyJMP+yzm9vvBM9i2od8IqAh
+         LSpFzHsWhZD+5n1ToMnLkj0S4zSlSFpghH27+UmeVqnGiX+vxJHJBYAk1fLnQfBbxsFF
+         J2sg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=S2PQt3HxkBxUYjC+VtlXEq4NoCpstcc7waq7Ie+ZSSw=;
+        b=VPYPBOjq+gAANjpZeQOcWQrgNxRxZ2QIlmeSIWyvEdN82WbUAcMMA9foYC8rW1l4OI
+         lJdQT9x0ZsUT3AFj0XX0J/cIfsmPeypI9h0omFkgnFEeIrSIzwDWw717H73Dp0++Za0z
+         2TlzQ7k41bN3SNAxCS89jCRXQIZO1yFY7qcBgbaEvLEzNEBvqns6nk39UgSPbFl6o/Tu
+         QF6aL4m50HhOK0ORW3s2iy1L8m3lJ359Eb8imvgDObwMmqSpeVsrPdBcfS3RzB7TLee2
+         POA1EGm5hvBObmnbkYQ1DUeLrhuEWpmT+JCc0mulkJa4bFUou6iHd8ON85LH+BEZU4Dv
+         yclQ==
+X-Gm-Message-State: AJIora+4ntFfhxmVHBX2ih66HmojxkEPGyMG6r4MNLX3XGpKuNdX1OL9
+	Gc7AtrB0572pROvKnF/Z19qttA==
+X-Google-Smtp-Source: AGRyM1vPsLVLSd2YTyZeBHDlHn82rVPH0GlTr+Bdo5oMuTiVoQgn60DY/3PL3sh3O2ct5ts3e02W/w==
+X-Received: by 2002:a05:6808:1b25:b0:32e:e59c:3901 with SMTP id bx37-20020a0568081b2500b0032ee59c3901mr13881725oib.186.1656820650648;
+        Sat, 02 Jul 2022 20:57:30 -0700 (PDT)
+Received: from builder.lan (104-57-184-186.lightspeed.austtx.sbcglobal.net. [104.57.184.186])
+        by smtp.gmail.com with ESMTPSA id 25-20020aca0f19000000b0032e5d0b5d5fsm12965910oip.58.2022.07.02.20.57.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 02 Jul 2022 20:57:29 -0700 (PDT)
+From: Bjorn Andersson <bjorn.andersson@linaro.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+	Olof Johansson <olof@lixom.net>,
+	soc@kernel.org,
+	Arnd Bergmann <arnd@arndb.de>,
+	arm@kernel.org
+Cc: Li Yang <leoyang.li@nxp.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Florian Fainelli <f.fainelli@gmail.com>,
+	Neil Armstrong <narmstrong@baylibre.com>,
+	Tony Lindgren <tony@atomide.com>,
+	Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+	Joel Stanley <joel@jms.id.au>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Tero Kristo <kristo@kernel.org>,
+	=?UTF-8?q?Rafa=C5=82=20Mi=C5=82ecki?= <zajec5@gmail.com>,
+	Hauke Mehrtens <hauke@hauke-m.de>,
+	Scott Branden <sbranden@broadcom.com>,
+	linux-rockchip@lists.infradead.org,
+	Russell King <linux@armlinux.org.uk>,
+	=?UTF-8?q?Beno=C3=AEt=20Cousson?= <bcousson@baylibre.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	linux-sunxi@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	linux-tegra@vger.kernel.org,
+	Khuong Dinh <khuong@os.amperecomputing.com>,
+	linux-gpio@vger.kernel.org,
+	Kevin Hilman <khilman@baylibre.com>,
+	linux-amlogic@lists.infradead.org,
+	Fabio Estevam <festevam@gmail.com>,
+	Michal Simek <michal.simek@xilinx.com>,
+	linux-samsung-soc@vger.kernel.org,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Nishanth Menon <nm@ti.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Peter Rosin <peda@axentia.se>,
+	linux-arm-kernel@lists.infradead.org,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	openbmc@lists.ozlabs.org,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Andy Gross <agross@kernel.org>,
+	Wei Xu <xuwei5@hisilicon.com>,
+	linux-omap@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Ray Jui <rjui@broadcom.com>,
+	Gregory Clement <gregory.clement@bootlin.com>,
+	=?UTF-8?q?Jonathan=20Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	linux-input@vger.kernel.org,
+	linux-aspeed@lists.ozlabs.org,
+	Chen-Yu Tsai <wens@csie.org>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Claudiu Beznea <claudiu.beznea@microchip.com>
+Subject: Re: (subset) [PATCH v2 00/48] dt-bindings: input: gpio-keys: rework matching children
+Date: Sat,  2 Jul 2022 22:56:25 -0500
+Message-Id: <165682055971.445910.5189932421143220440.b4-ty@linaro.org>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220609113721.379932-1-krzysztof.kozlowski@linaro.org>
+References: <20220609113721.379932-1-krzysztof.kozlowski@linaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220702_061043_013631_F714D257 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220702_205732_005996_044E2507 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -52,70 +148,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4346382361281697705=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============4346382361281697705==
-Content-Type: multipart/signed; boundary="nextPart4750321.31r3eYUQgx"; micalg="pgp-sha256"; protocol="application/pgp-signature"
-
---nextPart4750321.31r3eYUQgx
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
-From: Diederik de Haas <didi.debian@cknow.org>
-Date: Sat, 02 Jul 2022 15:10:22 +0200
-Message-ID: <5836825.lOV4Wx5bFT@bagend>
-Organization: Connecting Knowledge
-In-Reply-To: <20220508185957.3629088-1-clabbe@baylibre.com>
-References: <20220508185957.3629088-1-clabbe@baylibre.com>
-MIME-Version: 1.0
-
-On Sunday, 8 May 2022 20:59:24 CEST Corentin Labbe wrote:
-> The rockchip crypto driver is broken and do not pass self-tests.
-> This serie's goal is to permit to become usable and pass self-tests.
+On Thu, 9 Jun 2022 13:37:21 +0200, Krzysztof Kozlowski wrote:
+> Merging
+> =======
+> 1. dt-bindings: rebased on top of Rob's:
+>    https://lore.kernel.org/all/20220608211207.2058487-1-robh@kernel.org/
 > 
-> This whole serie is tested on a rk3328-rock64, rk3288-miqi and
-> rk3399-khadas-edge-v with selftests (with
-> CONFIG_CRYPTO_MANAGER_EXTRA_TESTS=y)
+> 2. DTS patches are independent. They can be picked up directly by sub-arch
+>    maintainers, by Arnd or Olof, or eventually by me (if you wish).
+> 
+> [...]
 
-https://salsa.debian.org/kernel-team/linux/-/merge_requests/493 is where I 
-integrated this patch set with the Debian kernel and tested that successfully 
-on my Pine64 Rock64.
-IOW: Tested-by Diederik de Haas <didi.debian@cknow.org>
+Applied, thanks!
 
-AFAIK, this patch set has also been tested on rk3399-rockpro64 by sigmaris.
---nextPart4750321.31r3eYUQgx
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
+[27/48] arm64: dts: qcom: align gpio-key node names with dtschema
+        commit: b08f5cbd69dcd25f5ab2a0798fe3836a97a9d7c6
+[28/48] arm64: dts: qcom: correct gpio-keys properties
+        commit: 5a4b0b853a2914403746b0a1decab695202ff242
+[29/48] arm64: dts: qcom: sdm630-sony-xperia-nile: drop unneeded status from gpio-keys
+        commit: 9d8840f6ee426b6dfcb65bdf39e2898652e2b1e5
+[30/48] arm64: dts: qcom: align led node names with dtschema
+        commit: 3cfe94d660a8ebc19e78ea0a4781d7e9a1054c65
 
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQT1sUPBYsyGmi4usy/XblvOeH7bbgUCYsBDvgAKCRDXblvOeH7b
-blpaAP9kFZ/boaOXl0bbOZEIBmCFypk1uuBcJuyFoKwO5UqmFQD+IfGRbHcHhnvC
-lA2OKhtfIjfHBONu1gwLt9f2XbMMBQk=
-=PeHT
------END PGP SIGNATURE-----
-
---nextPart4750321.31r3eYUQgx--
-
-
-
-
-
---===============4346382361281697705==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Best regards,
+-- 
+Bjorn Andersson <bjorn.andersson@linaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4346382361281697705==--
-
-
-
-
