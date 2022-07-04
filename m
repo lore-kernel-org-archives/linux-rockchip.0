@@ -4,57 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EEC7C43334
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Jul 2022 11:12:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB01BCCA479
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Jul 2022 12:34:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3XiEbHPzUPBvIbIuicX2qc10AUZKfFSDEau+WUlBOqU=; b=e26j20umqRZYyd
-	BFaC2ByiZDDJusg5R6DjtQFiF+JqXjo2V2E2smwqvgIdko0RgWeYTVs4Gr17JOavHSqnMCw75fLCu
-	xhn8+ASB3L69ef9Q5Yv1OYv1o5xKUHnCyZtbG8evCSvvoSN0x53tTac75DLXpbaVkavn0o+AQSTzK
-	TH5ATYuwTMDAEmqwQaJmcvj+T+7+OC8PaBtp/tZeG5ge0+wcm2uMqbD4AtfVB89ouz0Q7kSw+zASX
-	DcjixzqCVrv14tJvA1DE+OLIUatMre3bh9vIq6O5k3ZRETXBFsKYmYHepC/w2cucr09KTN51tAZWR
-	EEbYEEq/T8L9YL8oJ0FQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3JnbmVJSgNbP+Mly7q/ifwYzn7y6idHxc95DP7FB95U=; b=0kWO4AthayrCcz
+	lqwdWg7jPJv5tbOLEutYnKMw0QszG0edKAjKxmz2eL5a8UmCvF2IU6xGL0NBZnm7bErtTvfw9Exi9
+	9wujog98YePc5mgy9Ekx8uhj10VF4/2LIdDFWKeKk4dm1S7CyUB/98SCwjxUFA9t60hkkRVLUgHZQ
+	BSkrMwIqHc+tYpc2WQzKxndutyTpDILR1d7ED8gdS72ITlkJPPVUq6qHRXvZLdlEZIK5+DyS4bi9J
+	kheFXCfIHsQjAY1dvYXwT0T4IfkwvUA6hM8LL0wbSewV3PvFktz/WouAFPs685+znr0CiLrOtvr3F
+	YrPDqRczQZo4fxwUPJwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8K0G-007XBX-Oy; Mon, 04 Jul 2022 11:12:32 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1o8LH6-008nb6-Hg; Mon, 04 Jul 2022 12:34:00 +0000
+Received: from szxga02-in.huawei.com ([45.249.212.188])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8JV9-00775w-GM
-	for linux-rockchip@lists.infradead.org; Mon, 04 Jul 2022 10:40:32 +0000
-Received: from pyrite.rasen.tech (softbank036240127029.bbtec.net [36.240.127.29])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 9A2BD735;
-	Mon,  4 Jul 2022 12:40:17 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656931221;
-	bh=FBbORzZsd8t52d0M/dDiUORF/AbuoFadWA61eG2I6qA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=H5QB0atoH0TzlWiG1NLFf1G36m6ky5E2rSuuWesfYP7+vxpOP+MVaHktFdlkZv+1C
-	 QFjjvTvYtnxASGNl6QDyJkW80Gi4cKq3+87wwGiyJZU09SDmGZ5w+0UVN/0w7Hh5jv
-	 4q1pboKQ6m4WcWWHiBSo9iSimd1unZD0vq2RCMao=
-Date: Mon, 4 Jul 2022 19:40:11 +0900
-From: paul.elder@ideasonboard.com
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Alexander Stein <alexander.stein@ew.tq-group.com>,
-	linux-media@vger.kernel.org, dafna@fastmail.com, heiko@sntech.de,
-	jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
-	djrscally@gmail.com, helen.koike@collabora.com,
-	linux-rockchip@lists.infradead.org
-Subject: Re: (EXT) [PATCH 55/55] media: rkisp1: Fix RSZ_CTRL bits for i.MX8MP
-Message-ID: <20220704104011.GF3886060@pyrite.rasen.tech>
-References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
- <20220614191127.3420492-56-paul.elder@ideasonboard.com>
- <3553507.tdWV9SEqCh@steina-w>
- <Yq0INaUi1yaB0d8F@pendragon.ideasonboard.com>
+	id 1o8LH1-008nWl-0W
+	for linux-rockchip@lists.infradead.org; Mon, 04 Jul 2022 12:33:57 +0000
+Received: from dggpeml500022.china.huawei.com (unknown [172.30.72.56])
+	by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Lc4tX0mVJzkWqL;
+	Mon,  4 Jul 2022 20:31:48 +0800 (CST)
+Received: from huawei.com (10.175.112.208) by dggpeml500022.china.huawei.com
+ (7.185.36.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.24; Mon, 4 Jul
+ 2022 20:33:46 +0800
+From: Zhang Zekun <zhangzekun11@huawei.com>
+To: <Larry.Finger@lwfinger.net>, <phil@philpotter.co.uk>,
+	<paskripkin@gmail.com>, <gregkh@linuxfoundation.org>, <martin@kaiser.cx>,
+	<straube.linux@gmail.com>
+CC: <linux-media@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-staging@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
+	<xuqiang36@huawei.com>
+Subject: [PATCH -next] staging: r8188eu: use 'is_zero_ether_addr' to identify an empty address
+Date: Mon, 4 Jul 2022 12:31:40 +0000
+Message-ID: <20220704123140.100128-1-zhangzekun11@huawei.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <Yq0INaUi1yaB0d8F@pendragon.ideasonboard.com>
+X-Originating-IP: [10.175.112.208]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ dggpeml500022.china.huawei.com (7.185.36.66)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220704_034023_809520_CD72F502 
-X-CRM114-Status: GOOD (  25.40  )
+X-CRM114-CacheID: sfid-20220704_053355_317201_513CBEB2 
+X-CRM114-Status: UNSURE (   7.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,80 +68,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
+Use 'is_zero_ether_addr' to identify an empty ethernet address, intead
+of using 'memcpy' directly.
 
-On Sat, Jun 18, 2022 at 02:03:17AM +0300, Laurent Pinchart wrote:
-> Hi Alexander,
-> 
-> On Thu, Jun 16, 2022 at 10:05:06AM +0200, Alexander Stein wrote:
-> > Am Dienstag, 14. Juni 2022, 21:11:27 CEST schrieb Paul Elder:
-> > > The ISP that is integrated in the i.MX8MP uses different bits in the
-> > > MRSZ_CTRL and SRSZ_CTRL registers for updating the configuration
-> > > compared to the on in the RK3399. In addition, it adds a new bit for
-> > > enabling crop. Add new definitions for these bits for i.MX8MP devices,
-> > > and update where they are set.
-> > > 
-> > > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > > ---
-> > >  drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h   |  4 ++++
-> > >  .../media/platform/rockchip/rkisp1/rkisp1-resizer.c    | 10 ++++++++--
-> > >  2 files changed, 12 insertions(+), 2 deletions(-)
-> > > 
-> > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > > b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h index
-> > > 34f4fe09c88d..24ad2ccec2a3 100644
-> > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > > @@ -168,6 +168,10 @@
-> > >  #define RKISP1_CIF_RSZ_CTRL_CFG_UPD_AUTO		BIT(9)
-> > >  #define RKISP1_CIF_RSZ_SCALER_FACTOR			BIT(16)
-> > > 
-> > > +#define RKISP1_CIF_RSZ_CTRL_CROP_ENABLE_IMX		BIT(8)
-> > > +#define RKISP1_CIF_RSZ_CTRL_CFG_UPD_IMX			BIT(9)
-> > > +#define RKISP1_CIF_RSZ_CTRL_CFG_UPD_AUTO_IMX		BIT(10)
-> > > +
-> > 
-> > Does it make sense to move this kind of information into struct rkisp1_info? 
-> > This way you can skip the if (isp_ver == ...) thing.
-> 
-> Good question. Paul, what do you think ? If it doesn't get moved to the
-> structure, I think I'd condition it by the RKISP1_FEATURE_RSZ_CROP
-> feature bit instead of a version check, as it seems closely related. I'm
-> actually leaning towards the latter.
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: Zhang Zekun <zhangzekun11@huawei.com>
+---
+ drivers/staging/r8188eu/core/rtw_mlme_ext.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Yeah I think the latter too.
+diff --git a/drivers/staging/r8188eu/core/rtw_mlme_ext.c b/drivers/staging/r8188eu/core/rtw_mlme_ext.c
+index cce0575e93b7..365f5b2786cf 100644
+--- a/drivers/staging/r8188eu/core/rtw_mlme_ext.c
++++ b/drivers/staging/r8188eu/core/rtw_mlme_ext.c
+@@ -3513,7 +3513,6 @@ static unsigned int on_action_public_p2p(struct recv_frame *precv_frame)
+ 	u32	p2p_ielen;
+ 	struct	wifidirect_info	*pwdinfo = &padapter->wdinfo;
+ 	u8	result = P2P_STATUS_SUCCESS;
+-	u8	empty_addr[ETH_ALEN] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+ 
+ 	frame_body = (unsigned char *)(pframe + sizeof(struct ieee80211_hdr_3addr));
+ 
+@@ -3551,7 +3550,7 @@ static unsigned int on_action_public_p2p(struct recv_frame *precv_frame)
+ 
+ 		/*	Commented by Kurt 20120113 */
+ 		/*	Get peer_dev_addr here if peer doesn't issue prov_disc frame. */
+-		if (!memcmp(pwdinfo->rx_prov_disc_info.peerDevAddr, empty_addr, ETH_ALEN))
++		if (is_zero_ether_addr(pwdinfo->rx_prov_disc_info.peerDevAddr))
+ 			memcpy(pwdinfo->rx_prov_disc_info.peerDevAddr, GetAddr2Ptr(pframe), ETH_ALEN);
+ 
+ 		result = process_p2p_group_negotation_req(pwdinfo, frame_body, len);
+-- 
+2.17.1
 
-
-Paul
-
-> 
-> > >  /* RSZ_CROP_[XY]_DIR */
-> > >  #define RKISP1_CIF_RSZ_CROP_XY_DIR(start, end)		((end) << 16 | (start) << 0)
-> > > 
-> > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> > > b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c index
-> > > 08bf3aa8088f..29a31b18a082 100644
-> > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> > > @@ -209,9 +209,15 @@ static void rkisp1_rsz_update_shadow(struct
-> > > rkisp1_resizer *rsz, u32 ctrl_cfg = rkisp1_rsz_read(rsz,
-> > > RKISP1_CIF_RSZ_CTRL);
-> > > 
-> > >  	if (when == RKISP1_SHADOW_REGS_ASYNC)
-> > > -		ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CFG_UPD_AUTO;
-> > > +		if (rsz->rkisp1->info->isp_ver == IMX8MP_V10)
-> > > +			ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CFG_UPD_AUTO_IMX;
-> > > +		else
-> > > +			ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CFG_UPD_AUTO;
-> > >  	else
-> > > -		ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CFG_UPD;
-> > > +		if (rsz->rkisp1->info->isp_ver == IMX8MP_V10)
-> > > +			ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CFG_UPD_IMX;
-> > > +		else
-> > > +			ctrl_cfg |= RKISP1_CIF_RSZ_CTRL_CFG_UPD;
-> > > 
-> > >  	rkisp1_rsz_write(rsz, RKISP1_CIF_RSZ_CTRL, ctrl_cfg);
-> > >  }
 
 _______________________________________________
 Linux-rockchip mailing list
