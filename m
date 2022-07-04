@@ -4,54 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A0FAC43334
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Jul 2022 04:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38B4EC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 Jul 2022 11:11:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PBAoBht4e3nyxpGEsUsu0yliHO6385SNs0YhwqZVHek=; b=xAQUHB5tL7Sznn
-	NqNrpQnwQAI269Ev72ts75FLHoN7HzOuXRd15QrmssLdrAbq3hKOAbM1k+Xw4oKHnvHEkZZdT9lAi
-	VdfILwMH9ajsaL9ROuz/EqbkbEuKb5f2frtPHN2KjfUVrPn+9wY6PjXXiv6yvOL/9QdUYiPRY0oDt
-	YEJ/FKCpHy+T4/FM19HcQXsopZ4SszxG87mGS/my2Sj0R1Ala0GieKMD/sg2BfNll+9O6yrr8fQEb
-	OeRYOJNO0CbcHYTtIZf4A7MxcvVxlppCBQw8V0EueEnSNmF5suOdyCCYJFxD8uvFfRLRyfvkCD0cg
-	lhoWhIutA34ZdYDVph5g==;
+	List-Owner; bh=pUSTdD72EdULcf6N4oQJKtrwHOZr0rxxhwzsumKtlHo=; b=iWx9fDSwreOuFP
+	7w4Z6VDa/uXg61BywphzGQ72k8RuWW+y3OIpBNQQeJAFZA9Pog94ZmSXZpnui07QJ81Rq2PMa5NCu
+	a0XZqxxdp0Vi7plIZP3BbLHW3uI2J4mHqn8owx7DEmX8wETmX6OIaR2cx/bnZ4CCiElFjjNmcrDFk
+	KLmjyhzAnWk8qLLIZK0Pn7Im8jxZEIJRWirQ0e4y1jL4CkJU13WaM1GAPII4fqlC3UpMfSl5F4en/
+	NKp3WbhrqN87odrFN4cwdE8FYfe+toQHMKQHxg7rBaxCTGQOzJ9CxcKbO18mZXiEiXsBZ44Q4Usj7
+	99gMtxFi0HZ1G/JNznoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8Dn9-004WVZ-4V; Mon, 04 Jul 2022 04:34:35 +0000
+	id 1o8JzH-007W6p-5u; Mon, 04 Jul 2022 11:11:31 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8Dn4-004WTF-3q
-	for linux-rockchip@lists.infradead.org; Mon, 04 Jul 2022 04:34:33 +0000
+	id 1o8JRT-0074pK-6M
+	for linux-rockchip@lists.infradead.org; Mon, 04 Jul 2022 10:36:37 +0000
 Received: from pyrite.rasen.tech (softbank036240127029.bbtec.net [36.240.127.29])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 684C749C;
-	Mon,  4 Jul 2022 06:34:25 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 65A1C735;
+	Mon,  4 Jul 2022 12:36:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1656909268;
-	bh=29Gb14Mqk9UkGQwtJNPJX1AUzP4UDsEqhS9ebXq2LH0=;
+	s=mail; t=1656930991;
+	bh=4HYhwVxv0cO37GEKoq6/N1bKLFEbQ4Ole4I76e5nS1A=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vlo9OayrExy0VwCWWyHJMlVA+d3XpHU+iPZZRlLvnshhRXB8wVwZUq3Tz7xSeMejK
-	 NXc8Pi+fa9sOBqnzkI8WXSh4GLcPOns9Pv95g2/6V3D3X7APbyK8mirr51ChUr+JKU
-	 dQSuRrzNmjr/GBgzVaJADV8rlsWCROs5OmRgqvpE=
-Date: Mon, 4 Jul 2022 13:34:19 +0900
+	b=UbM3hwG8ZlpUCE4Qvw5H8dV7gfaBOaCScwbI7ynXonyN0ihNcm87F70NyaRMY9/6t
+	 +7vcz3AAr5nEKxE+LRLQ4K3wm9rtIowiDtmnNcsbzF4jCY1L6YuoW3o2Sx3Dn8NALo
+	 uH0GK01Qfw8uvL6jsjoNEIiZRYieN8yo3EkGo6wo=
+Date: Mon, 4 Jul 2022 19:36:21 +0900
 From: paul.elder@ideasonboard.com
 To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v2 11/55] media: rkisp1: Make rkisp1_isp_mbus_info common
-Message-ID: <20220704043419.GC3886060@pyrite.rasen.tech>
-References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
- <20220630230713.10580-12-laurent.pinchart@ideasonboard.com>
+Cc: Dafna Hirschfeld <dafna@fastmail.com>, linux-media@vger.kernel.org,
+	heiko@sntech.de, jeanmichel.hautbois@ideasonboard.com,
+	jacopo@jmondi.org, djrscally@gmail.com, helen.koike@collabora.com,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 48/55] media: rkisp1: Add match data for i.MX8MP ISP
+Message-ID: <20220704103621.GD3886060@pyrite.rasen.tech>
+References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
+ <20220614191127.3420492-49-paul.elder@ideasonboard.com>
+ <Yq0NnksDldH1PDfp@pendragon.ideasonboard.com>
+ <20220626040543.jswxbusyyydfoxfd@guri>
+ <Yrg96r2vRewNpMFl@pendragon.ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220630230713.10580-12-laurent.pinchart@ideasonboard.com>
+In-Reply-To: <Yrg96r2vRewNpMFl@pendragon.ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220703_213430_528343_BEE80DE3 
-X-CRM114-Status: GOOD (  30.30  )
+X-CRM114-CacheID: sfid-20220704_033635_487171_B4E7A508 
+X-CRM114-Status: GOOD (  47.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,627 +66,177 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
+Hello,
 
-On Fri, Jul 01, 2022 at 02:06:29AM +0300, Laurent Pinchart wrote:
-> From: Paul Elder <paul.elder@ideasonboard.com>
-> 
-> The upcoming CSI receiver split from the ISP to a separate source file
-> will need to be able to access the list of formats supported by the
-> driver. Move it out of the ISP's header and into the common header, and
-> add helper functions for accessing it so that the format list doesn't
-> need to be stored in the header.
-> 
-> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
+On Sun, Jun 26, 2022 at 02:07:22PM +0300, Laurent Pinchart wrote:
+> On Sun, Jun 26, 2022 at 07:05:43AM +0300, Dafna Hirschfeld wrote:
+> > On 18.06.2022 02:26, Laurent Pinchart wrote:
+> > > On Wed, Jun 15, 2022 at 04:11:20AM +0900, Paul Elder wrote:
+> > >> Add match data to the rkisp1 driver to match the i.MX8MP ISP.
+> > >>
+> > >> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> > >> ---
+> > >>  .../platform/rockchip/rkisp1/rkisp1-dev.c     | 22 ++++++++++++++++=
++++
+> > >>  include/uapi/linux/rkisp1-config.h            |  3 +++
+> > >>  2 files changed, 25 insertions(+)
+> > >>
+> > >> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/d=
+rivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > >> index 62fa2bd275fe..3a0115bdcee5 100644
+> > >> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > >> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > >> @@ -486,6 +486,24 @@ static const struct rkisp1_info rk3399_isp_info=
+ =3D {
+> > >>  	.features =3D RKISP1_FEATURE_MIPI_CSI2,
+> > >>  };
+> > >>
+> > >> +static const char * const imx8mp_isp_clks[] =3D {
+> > >> +	"isp",
+> > >> +	"hclk",
+> > >> +	"aclk",
+> > >> +};
+> > >> +
+> > >> +static const struct rkisp1_isr_data imx8mp_isp_isrs[] =3D {
+> > >> +	{ NULL, rkisp1_isr },
+> > >> +};
+> > >> +
+> > >> +static const struct rkisp1_info imx8mp_isp_info =3D {
+> > >> +	.clks =3D imx8mp_isp_clks,
+> > >> +	.clk_size =3D ARRAY_SIZE(imx8mp_isp_clks),
+> > >> +	.isrs =3D imx8mp_isp_isrs,
+> > >> +	.isr_size =3D ARRAY_SIZE(imx8mp_isp_isrs),
+> > >> +	.isp_ver =3D IMX8MP_V10,
+> > >> +};
+> > >> +
+> > >>  static const struct of_device_id rkisp1_of_match[] =3D {
+> > >>  	{
+> > >>  		.compatible =3D "rockchip,px30-cif-isp",
+> > >> @@ -495,6 +513,10 @@ static const struct of_device_id rkisp1_of_matc=
+h[] =3D {
+> > >>  		.compatible =3D "rockchip,rk3399-cif-isp",
+> > >>  		.data =3D &rk3399_isp_info,
+> > >>  	},
+> > >> +	{
+> > >> +		.compatible =3D "fsl,imx8mp-isp",
+> > >> +		.data =3D &imx8mp_isp_info,
+> > >> +	},
+> > >>  	{},
+> > >>  };
+> > >>  MODULE_DEVICE_TABLE(of, rkisp1_of_match);
+> > >> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux=
+/rkisp1-config.h
+> > >> index 583ca0d9a79d..40677d47825c 100644
+> > >> --- a/include/uapi/linux/rkisp1-config.h
+> > >> +++ b/include/uapi/linux/rkisp1-config.h
+> > >> @@ -140,12 +140,15 @@
+> > >>   * @RKISP1_V11: declared in the original vendor code, but not used
+> > >>   * @RKISP1_V12: used at least in rk3326 and px30
+> > >>   * @RKISP1_V13: used at least in rk1808
+> > >> + * @IMX8MP_V10: used in at least imx8mp
+> > >>   */
+> > >>  enum rkisp1_cif_isp_version {
+> > >>  	RKISP1_V10 =3D 10,
+> > >>  	RKISP1_V11,
+> > >>  	RKISP1_V12,
+> > >>  	RKISP1_V13,
+> > >> +	/* TODO Choose a better version for this */
+> > >> +	IMX8MP_V10,
+> > >
+> > > Time to address this ? :-)
+> > >
+> > > Does anyone know where the current versioning scheme come from ?
+> > =
 
-Can I...
+> > It was added by Heiko St=FCbner, basically trying to figure out the
+> > versions from the vedor code,
+> > see https://lore.kernel.org/all/20210121144407.9045-6-dafna.hirschfeld@=
+collabora.com/
+> =
 
-Acked-by: Paul Elder <paul.elder@ideasonboard.com>
+> Is that public code ? Heiko, do you have any pointer to it ?
+> =
 
-...for your changes?
+> As far as I understand, this ISP IP has been forked, and is now
+> developed in parallel by Rockchip (for their own SoCs) and by
+> VeriSilicon (under the name of ISP8000Nano). The versioning schemes on
+> the two sides are different, and may have common roots. The fact that
+> the ISP8000Nano can be customized at synthesis time also complicates
+> this.
+> =
 
-> ---
-> Changes since v1:
-> 
-> - Drop rkisp1_mbus_info_length()
-> ---
->  .../platform/rockchip/rkisp1/rkisp1-common.c  | 143 +++++++++++++++
->  .../platform/rockchip/rkisp1/rkisp1-common.h  |  23 ++-
->  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 170 ++----------------
->  .../platform/rockchip/rkisp1/rkisp1-resizer.c |  14 +-
->  .../platform/rockchip/rkisp1/rkisp1-stats.c   |   2 +-
->  5 files changed, 184 insertions(+), 168 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-> index cf889666e166..f956b90a407a 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-> @@ -5,10 +5,153 @@
->   * Copyright (C) 2019 Collabora, Ltd.
->   */
->  
-> +#include <media/mipi-csi2.h>
->  #include <media/v4l2-rect.h>
->  
->  #include "rkisp1-common.h"
->  
-> +static const struct rkisp1_mbus_info rkisp1_formats[] = {
-> +	{
-> +		.mbus_code	= MEDIA_BUS_FMT_YUYV8_2X8,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> +		.direction	= RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SRGGB10_1X10,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> +		.bayer_pat	= RKISP1_RAW_RGGB,
-> +		.bus_width	= 10,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> +		.bayer_pat	= RKISP1_RAW_BGGR,
-> +		.bus_width	= 10,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SGBRG10_1X10,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> +		.bayer_pat	= RKISP1_RAW_GBRG,
-> +		.bus_width	= 10,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> +		.bayer_pat	= RKISP1_RAW_GRBG,
-> +		.bus_width	= 10,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SRGGB12_1X12,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> +		.bayer_pat	= RKISP1_RAW_RGGB,
-> +		.bus_width	= 12,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SBGGR12_1X12,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> +		.bayer_pat	= RKISP1_RAW_BGGR,
-> +		.bus_width	= 12,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SGBRG12_1X12,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> +		.bayer_pat	= RKISP1_RAW_GBRG,
-> +		.bus_width	= 12,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SGRBG12_1X12,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> +		.bayer_pat	= RKISP1_RAW_GRBG,
-> +		.bus_width	= 12,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SRGGB8_1X8,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> +		.bayer_pat	= RKISP1_RAW_RGGB,
-> +		.bus_width	= 8,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SBGGR8_1X8,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> +		.bayer_pat	= RKISP1_RAW_BGGR,
-> +		.bus_width	= 8,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SGBRG8_1X8,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> +		.bayer_pat	= RKISP1_RAW_GBRG,
-> +		.bus_width	= 8,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_SGRBG8_1X8,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> +		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> +		.bayer_pat	= RKISP1_RAW_GRBG,
-> +		.bus_width	= 8,
-> +		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_YUYV8_1X16,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> +		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> +		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCBYCR,
-> +		.bus_width	= 16,
-> +		.direction	= RKISP1_ISP_SD_SINK,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_YVYU8_1X16,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> +		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> +		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCRYCB,
-> +		.bus_width	= 16,
-> +		.direction	= RKISP1_ISP_SD_SINK,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_UYVY8_1X16,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> +		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> +		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CBYCRY,
-> +		.bus_width	= 16,
-> +		.direction	= RKISP1_ISP_SD_SINK,
-> +	}, {
-> +		.mbus_code	= MEDIA_BUS_FMT_VYUY8_1X16,
-> +		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> +		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> +		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CRYCBY,
-> +		.bus_width	= 16,
-> +		.direction	= RKISP1_ISP_SD_SINK,
-> +	},
-> +};
-> +
-> +const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_index(unsigned int index)
-> +{
-> +	if (index >= ARRAY_SIZE(rkisp1_formats))
-> +		return NULL;
-> +
-> +	return &rkisp1_formats[index];
-> +}
-> +
-> +const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_code(u32 mbus_code)
-> +{
-> +	unsigned int i;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(rkisp1_formats); i++) {
-> +		const struct rkisp1_mbus_info *fmt = &rkisp1_formats[i];
-> +
-> +		if (fmt->mbus_code == mbus_code)
-> +			return fmt;
-> +	}
-> +
-> +	return NULL;
-> +}
-> +
->  static const struct v4l2_rect rkisp1_sd_min_crop = {
->  	.width = RKISP1_ISP_MIN_WIDTH,
->  	.height = RKISP1_ISP_MIN_HEIGHT,
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index 7dca59f7b424..63eb376d9913 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> @@ -26,7 +26,7 @@
->  struct dentry;
->  
->  /*
-> - * flags on the 'direction' field in struct 'rkisp1_isp_mbus_info' that indicate
-> + * flags on the 'direction' field in struct rkisp1_mbus_info' that indicate
->   * on which pad the media bus format is supported
->   */
->  #define RKISP1_ISP_SD_SRC			BIT(0)
-> @@ -150,8 +150,8 @@ struct rkisp1_isp {
->  	struct v4l2_subdev sd;
->  	struct media_pad pads[RKISP1_ISP_PAD_MAX];
->  	struct v4l2_subdev_pad_config pad_cfg[RKISP1_ISP_PAD_MAX];
-> -	const struct rkisp1_isp_mbus_info *sink_fmt;
-> -	const struct rkisp1_isp_mbus_info *src_fmt;
-> +	const struct rkisp1_mbus_info *sink_fmt;
-> +	const struct rkisp1_mbus_info *src_fmt;
->  	struct mutex ops_lock; /* serialize the subdevice ops */
->  	bool is_dphy_errctrl_disabled;
->  	__u32 frame_sequence;
-> @@ -429,8 +429,8 @@ struct rkisp1_device {
->  };
->  
->  /*
-> - * struct rkisp1_isp_mbus_info - ISP media bus info, Translates media bus code to hardware
-> - *				 format values
-> + * struct rkisp1_mbus_info - ISP media bus info, Translates media bus code to hardware
-> + *			     format values
->   *
->   * @mbus_code: media bus code
->   * @pixel_enc: pixel encoding
-> @@ -440,7 +440,7 @@ struct rkisp1_device {
->   * @bayer_pat: bayer pattern
->   * @direction: a bitmask of the flags indicating on which pad the format is supported on
->   */
-> -struct rkisp1_isp_mbus_info {
-> +struct rkisp1_mbus_info {
->  	u32 mbus_code;
->  	enum v4l2_pixel_encoding pixel_enc;
->  	u32 mipi_dt;
-> @@ -472,6 +472,13 @@ static inline u32 rkisp1_read(struct rkisp1_device *rkisp1, unsigned int addr)
->  int rkisp1_cap_enum_mbus_codes(struct rkisp1_capture *cap,
->  			       struct v4l2_subdev_mbus_code_enum *code);
->  
-> +/*
-> + * rkisp1_mbus_info_get_by_index - Retrieve the ith supported mbus info
-> + *
-> + * @index: index of the mbus info to fetch
-> + */
-> +const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_index(unsigned int index);
-> +
->  /*
->   * rkisp1_sd_adjust_crop_rect - adjust a rectangle to fit into another rectangle.
->   *
-> @@ -491,11 +498,11 @@ void rkisp1_sd_adjust_crop(struct v4l2_rect *crop,
->  			   const struct v4l2_mbus_framefmt *bounds);
->  
->  /*
-> - * rkisp1_isp_mbus_info - get the isp info of the media bus code
-> + * rkisp1_mbus_info_get_by_code - get the isp info of the media bus code
->   *
->   * @mbus_code: the media bus code
->   */
-> -const struct rkisp1_isp_mbus_info *rkisp1_isp_mbus_info_get(u32 mbus_code);
-> +const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_code(u32 mbus_code);
->  
->  /* rkisp1_params_configure - configure the params when stream starts.
->   *			     This function is called by the isp entity upon stream starts.
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> index 69c60814ecc1..8aa4c0b85510 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> @@ -15,7 +15,6 @@
->  #include <linux/videodev2.h>
->  #include <linux/vmalloc.h>
->  
-> -#include <media/mipi-csi2.h>
->  #include <media/v4l2-event.h>
->  
->  #include "rkisp1-common.h"
-> @@ -56,144 +55,10 @@
->   * +---------------------------------------------------------+
->   */
->  
-> -static const struct rkisp1_isp_mbus_info rkisp1_isp_formats[] = {
-> -	{
-> -		.mbus_code	= MEDIA_BUS_FMT_YUYV8_2X8,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> -		.direction	= RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SRGGB10_1X10,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> -		.bayer_pat	= RKISP1_RAW_RGGB,
-> -		.bus_width	= 10,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> -		.bayer_pat	= RKISP1_RAW_BGGR,
-> -		.bus_width	= 10,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SGBRG10_1X10,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> -		.bayer_pat	= RKISP1_RAW_GBRG,
-> -		.bus_width	= 10,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW10,
-> -		.bayer_pat	= RKISP1_RAW_GRBG,
-> -		.bus_width	= 10,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SRGGB12_1X12,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> -		.bayer_pat	= RKISP1_RAW_RGGB,
-> -		.bus_width	= 12,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SBGGR12_1X12,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> -		.bayer_pat	= RKISP1_RAW_BGGR,
-> -		.bus_width	= 12,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SGBRG12_1X12,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> -		.bayer_pat	= RKISP1_RAW_GBRG,
-> -		.bus_width	= 12,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SGRBG12_1X12,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW12,
-> -		.bayer_pat	= RKISP1_RAW_GRBG,
-> -		.bus_width	= 12,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SRGGB8_1X8,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> -		.bayer_pat	= RKISP1_RAW_RGGB,
-> -		.bus_width	= 8,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SBGGR8_1X8,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> -		.bayer_pat	= RKISP1_RAW_BGGR,
-> -		.bus_width	= 8,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SGBRG8_1X8,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> -		.bayer_pat	= RKISP1_RAW_GBRG,
-> -		.bus_width	= 8,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_SGRBG8_1X8,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
-> -		.mipi_dt	= MIPI_CSI2_DT_RAW8,
-> -		.bayer_pat	= RKISP1_RAW_GRBG,
-> -		.bus_width	= 8,
-> -		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_YUYV8_1X16,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> -		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> -		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCBYCR,
-> -		.bus_width	= 16,
-> -		.direction	= RKISP1_ISP_SD_SINK,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_YVYU8_1X16,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> -		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> -		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCRYCB,
-> -		.bus_width	= 16,
-> -		.direction	= RKISP1_ISP_SD_SINK,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_UYVY8_1X16,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> -		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> -		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CBYCRY,
-> -		.bus_width	= 16,
-> -		.direction	= RKISP1_ISP_SD_SINK,
-> -	}, {
-> -		.mbus_code	= MEDIA_BUS_FMT_VYUY8_1X16,
-> -		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> -		.mipi_dt	= MIPI_CSI2_DT_YUV422_8B,
-> -		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CRYCBY,
-> -		.bus_width	= 16,
-> -		.direction	= RKISP1_ISP_SD_SINK,
-> -	},
-> -};
-> -
->  /* ----------------------------------------------------------------------------
->   * Helpers
->   */
->  
-> -const struct rkisp1_isp_mbus_info *rkisp1_isp_mbus_info_get(u32 mbus_code)
-> -{
-> -	unsigned int i;
-> -
-> -	for (i = 0; i < ARRAY_SIZE(rkisp1_isp_formats); i++) {
-> -		const struct rkisp1_isp_mbus_info *fmt = &rkisp1_isp_formats[i];
-> -
-> -		if (fmt->mbus_code == mbus_code)
-> -			return fmt;
-> -	}
-> -
-> -	return NULL;
-> -}
-> -
->  static struct v4l2_subdev *rkisp1_get_remote_sensor(struct v4l2_subdev *sd)
->  {
->  	struct media_pad *local, *remote;
-> @@ -275,7 +140,7 @@ static void rkisp1_config_ism(struct rkisp1_device *rkisp1)
->  static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
->  {
->  	u32 isp_ctrl = 0, irq_mask = 0, acq_mult = 0, signal = 0;
-> -	const struct rkisp1_isp_mbus_info *src_fmt, *sink_fmt;
-> +	const struct rkisp1_mbus_info *src_fmt, *sink_fmt;
->  	struct rkisp1_sensor_async *sensor;
->  	struct v4l2_mbus_framefmt *sink_frm;
->  	struct v4l2_rect *sink_crop;
-> @@ -376,7 +241,7 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
->  
->  static int rkisp1_config_dvp(struct rkisp1_device *rkisp1)
->  {
-> -	const struct rkisp1_isp_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
-> +	const struct rkisp1_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
->  	u32 val, input_sel;
->  
->  	switch (sink_fmt->bus_width) {
-> @@ -402,7 +267,7 @@ static int rkisp1_config_dvp(struct rkisp1_device *rkisp1)
->  
->  static int rkisp1_config_mipi(struct rkisp1_device *rkisp1)
->  {
-> -	const struct rkisp1_isp_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
-> +	const struct rkisp1_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
->  	unsigned int lanes = rkisp1->active_sensor->lanes;
->  	u32 mipi_ctrl;
->  
-> @@ -593,11 +458,12 @@ static int rkisp1_isp_enum_mbus_code(struct v4l2_subdev *sd,
->  		return 0;
->  	}
->  
-> -	if (code->index >= ARRAY_SIZE(rkisp1_isp_formats))
-> -		return -EINVAL;
-> +	for (i = 0; ; i++) {
-> +		const struct rkisp1_mbus_info *fmt =
-> +			rkisp1_mbus_info_get_by_index(i);
->  
-> -	for (i = 0; i < ARRAY_SIZE(rkisp1_isp_formats); i++) {
-> -		const struct rkisp1_isp_mbus_info *fmt = &rkisp1_isp_formats[i];
-> +		if (!fmt)
-> +			return -EINVAL;
->  
->  		if (fmt->direction & dir)
->  			pos++;
-> @@ -619,7 +485,7 @@ static int rkisp1_isp_enum_frame_size(struct v4l2_subdev *sd,
->  				      struct v4l2_subdev_state *sd_state,
->  				      struct v4l2_subdev_frame_size_enum *fse)
->  {
-> -	const struct rkisp1_isp_mbus_info *mbus_info;
-> +	const struct rkisp1_mbus_info *mbus_info;
->  
->  	if (fse->pad == RKISP1_ISP_PAD_SINK_PARAMS ||
->  	    fse->pad == RKISP1_ISP_PAD_SOURCE_STATS)
-> @@ -628,7 +494,7 @@ static int rkisp1_isp_enum_frame_size(struct v4l2_subdev *sd,
->  	if (fse->index > 0)
->  		return -EINVAL;
->  
-> -	mbus_info = rkisp1_isp_mbus_info_get(fse->code);
-> +	mbus_info = rkisp1_mbus_info_get_by_code(fse->code);
->  	if (!mbus_info)
->  		return -EINVAL;
->  
-> @@ -695,7 +561,7 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
->  				   struct v4l2_mbus_framefmt *format,
->  				   unsigned int which)
->  {
-> -	const struct rkisp1_isp_mbus_info *mbus_info;
-> +	const struct rkisp1_mbus_info *mbus_info;
->  	struct v4l2_mbus_framefmt *src_fmt;
->  	const struct v4l2_rect *src_crop;
->  
-> @@ -705,10 +571,10 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
->  					   RKISP1_ISP_PAD_SOURCE_VIDEO, which);
->  
->  	src_fmt->code = format->code;
-> -	mbus_info = rkisp1_isp_mbus_info_get(src_fmt->code);
-> +	mbus_info = rkisp1_mbus_info_get_by_code(src_fmt->code);
->  	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SRC)) {
->  		src_fmt->code = RKISP1_DEF_SRC_PAD_FMT;
-> -		mbus_info = rkisp1_isp_mbus_info_get(src_fmt->code);
-> +		mbus_info = rkisp1_mbus_info_get_by_code(src_fmt->code);
->  	}
->  	if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
->  		isp->src_fmt = mbus_info;
-> @@ -793,7 +659,7 @@ static void rkisp1_isp_set_sink_fmt(struct rkisp1_isp *isp,
->  				    struct v4l2_mbus_framefmt *format,
->  				    unsigned int which)
->  {
-> -	const struct rkisp1_isp_mbus_info *mbus_info;
-> +	const struct rkisp1_mbus_info *mbus_info;
->  	struct v4l2_mbus_framefmt *sink_fmt;
->  	struct v4l2_rect *sink_crop;
->  
-> @@ -801,10 +667,10 @@ static void rkisp1_isp_set_sink_fmt(struct rkisp1_isp *isp,
->  					  RKISP1_ISP_PAD_SINK_VIDEO,
->  					  which);
->  	sink_fmt->code = format->code;
-> -	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-> +	mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
->  	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SINK)) {
->  		sink_fmt->code = RKISP1_DEF_SINK_PAD_FMT;
-> -		mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-> +		mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
->  	}
->  	if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
->  		isp->sink_fmt = mbus_info;
-> @@ -1080,8 +946,8 @@ int rkisp1_isp_register(struct rkisp1_device *rkisp1)
->  	pads[RKISP1_ISP_PAD_SOURCE_VIDEO].flags = MEDIA_PAD_FL_SOURCE;
->  	pads[RKISP1_ISP_PAD_SOURCE_STATS].flags = MEDIA_PAD_FL_SOURCE;
->  
-> -	isp->sink_fmt = rkisp1_isp_mbus_info_get(RKISP1_DEF_SINK_PAD_FMT);
-> -	isp->src_fmt = rkisp1_isp_mbus_info_get(RKISP1_DEF_SRC_PAD_FMT);
-> +	isp->sink_fmt = rkisp1_mbus_info_get_by_code(RKISP1_DEF_SINK_PAD_FMT);
-> +	isp->src_fmt = rkisp1_mbus_info_get_by_code(RKISP1_DEF_SRC_PAD_FMT);
->  
->  	mutex_init(&isp->ops_lock);
->  	ret = media_entity_pads_init(&sd->entity, RKISP1_ISP_PAD_MAX, pads);
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> index 1c07985c810d..f4caa8f684aa 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-> @@ -433,14 +433,14 @@ static void rkisp1_rsz_set_src_fmt(struct rkisp1_resizer *rsz,
->  				   struct v4l2_mbus_framefmt *format,
->  				   unsigned int which)
->  {
-> -	const struct rkisp1_isp_mbus_info *sink_mbus_info;
-> +	const struct rkisp1_mbus_info *sink_mbus_info;
->  	struct v4l2_mbus_framefmt *src_fmt, *sink_fmt;
->  
->  	sink_fmt = rkisp1_rsz_get_pad_fmt(rsz, sd_state, RKISP1_RSZ_PAD_SINK,
->  					  which);
->  	src_fmt = rkisp1_rsz_get_pad_fmt(rsz, sd_state, RKISP1_RSZ_PAD_SRC,
->  					 which);
-> -	sink_mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-> +	sink_mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
->  
->  	/* for YUV formats, userspace can change the mbus code on the src pad if it is supported */
->  	if (sink_mbus_info->pixel_enc == V4L2_PIXEL_ENC_YUV &&
-> @@ -462,7 +462,7 @@ static void rkisp1_rsz_set_sink_crop(struct rkisp1_resizer *rsz,
->  				     struct v4l2_rect *r,
->  				     unsigned int which)
->  {
-> -	const struct rkisp1_isp_mbus_info *mbus_info;
-> +	const struct rkisp1_mbus_info *mbus_info;
->  	struct v4l2_mbus_framefmt *sink_fmt;
->  	struct v4l2_rect *sink_crop;
->  
-> @@ -473,7 +473,7 @@ static void rkisp1_rsz_set_sink_crop(struct rkisp1_resizer *rsz,
->  					    which);
->  
->  	/* Not crop for MP bayer raw data */
-> -	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-> +	mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
->  
->  	if (rsz->id == RKISP1_MAINPATH &&
->  	    mbus_info->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
-> @@ -500,7 +500,7 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
->  				    struct v4l2_mbus_framefmt *format,
->  				    unsigned int which)
->  {
-> -	const struct rkisp1_isp_mbus_info *mbus_info;
-> +	const struct rkisp1_mbus_info *mbus_info;
->  	struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
->  	struct v4l2_rect *sink_crop;
->  
-> @@ -516,10 +516,10 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
->  	else
->  		sink_fmt->code = format->code;
->  
-> -	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-> +	mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
->  	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SRC)) {
->  		sink_fmt->code = RKISP1_DEF_FMT;
-> -		mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
-> +		mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
->  	}
->  	if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
->  		rsz->pixel_enc = mbus_info->pixel_enc;
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> index 7d82356b5345..2795eef91bdd 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-> @@ -305,7 +305,7 @@ static void rkisp1_stats_get_bls_meas(struct rkisp1_stats *stats,
->  				      struct rkisp1_stat_buffer *pbuf)
->  {
->  	struct rkisp1_device *rkisp1 = stats->rkisp1;
-> -	const struct rkisp1_isp_mbus_info *in_fmt = rkisp1->isp.sink_fmt;
-> +	const struct rkisp1_mbus_info *in_fmt = rkisp1->isp.sink_fmt;
->  	struct rkisp1_cif_isp_bls_meas_val *bls_val;
->  
->  	bls_val = &pbuf->params.ae.bls_val;
-> -- 
-> Regards,
-> 
-> Laurent Pinchart
-> 
+> The question at hand is how to expose a single coherent versioning
+> scheme to userspace in this driver. The hardware has a version
+> identification register that we could use, but I don't know if it gives
+> us enough information (as in guaranteeing that the same version value
+> won't be used for different IP versions that would need to be
+> distinguished from each other in userspace). The fact that Rockchip and
+> VeriSilicon probably develop their own new versions without cooperating
+> increases the risk of collision.
+> =
+
+> We will also have to tackle the question of UABI. Newer ISP versions
+> will require extensions to the ISP parameters structure. The i.MX8MP has
+> extra processing blocks that are not supported by the driver today. One
+> option would be to duplicate the top-level rkisp1_params_cfg structure
+> per ISP version, as well as a set of lower-level structure where
+> appropriate (how to handle that easily and efficiently on the driver
+> side will be interesting to figure out). Another option is to only add
+> parameters to the end of the rkisp1_params_cfg structure, but I fear
+> that won't scale. We'll end up with a large structure where lots of data
+> will be irrelevant for any particular ISP version, and that will be
+> error-prone.
+> =
+
+> Comments and idea will be appreciated.
+
+Thinking out loud:
+
+The most sure way is clearly to have feature flags for each feature.
+Maybe one set of internal ones that only affect the driver, and another
+set for userspace to see what the hardware is capable of. On the other
+hand, from the top of my head, the ones that userspace cares about could
+be probed in other ways, like the presence of the self path can be
+obtained from the media graph, and available controls/formats from...
+the list of available controls/formats.
+
+Also if we have flags then... what's the point of the version number? Is
+there any value in letting userspace know some version number if it
+doesn't particularly correlate with the actual features that are
+available? Plus, we run the risk of version numbers (from the version
+register) colliding between VeriSilicon and Rockchip. Plus my
+understanding is that the current version number that we have right now
+(V10 ~ V13) is fairly arbitrary anyway? (but we have to keep it for
+compatibility reasons.)
+
+So...
+
+1 - Do we need a precise version number for the purpose of probing
+capabilities? Can it just be replaced with feature flags?
+2 - Do we need feature flags? Can all information (that userspace cares
+about be obtained by some other source? (I guess this needs more
+investigation)
+3 - Maybe userspace doesn't care about the precise version number at
+all? We could just continue with an aribitrary version number (like
+IMX_V10)?
+4 - Or we could just expand the version number with what we get from the
+version register? And have different... labels (?) based on the vendor?
+
+Lots of thinking out loud with no clear conclusion :D
+
+
+Paul
+
+> =
+
+> > >>  };
+> > >>
+> > >>  enum rkisp1_cif_isp_histogram_mode {
 
 _______________________________________________
 Linux-rockchip mailing list
