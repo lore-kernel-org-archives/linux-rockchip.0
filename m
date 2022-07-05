@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF594C43334
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Jul 2022 15:21:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A009C433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Jul 2022 15:22:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P/qKrXxaxiR/i3EmV6yldInAHwKbyYcZdJ2jkFS/KZo=; b=G0aqP6jQnYXo1E
-	YIrqcqf1VSkdMQRgoK09tWXV4ohApKinSTwp7mzvAQ88vzzzsGZssDRGXLR7Rr78fYStxt2PXM582
-	VbTpc0LZiMhydKm0ItBdNHfqKP3ueAQVjMRicmGNbTfFGyFz8l5Xpap60Y6Hv0st1RIufO88zMIDx
-	xiOhvu5Pfkdc21bOij0N/ceiD64D6j7H7DHc2hQd97pEzuSwbPRYP3lpAqlSTg2J1G3X8NsgqGgRq
-	a3MVM668B1UCx7C/KNS9Gn621s81I5qttkyjk+x4kMFiyo50CUlvuUQ67FDYrxc11k0Ozeq+2vdCj
-	REAp54YXxjxTqQ6XzPOQ==;
+	List-Owner; bh=7O6iX3PKKic2PuwEgj5cDMfRfywXRGbSMcFFVRlH7jE=; b=gGpN7aqwQJb+5A
+	jnWi6WSlVjU6SakRUxsXzC7MPYklL0ivWMI9Q9juakd7KeZVc1aEDWa947gBs1R71m9KRCpTdFRzd
+	LMGebss25yDJVr2GzWUihu3TS6CjCwYfNBWN6eT3Trk7qG6zbRiWM1dUgQo7sk3+tUzGmwPUfvNIa
+	ELwKSD5FBdM6HLIhdJ7mkMEgUNqxHALs4u9LlI0QgfM0Zij9A/RQf+vxi///FqkuwaZRctWZuGfUk
+	I1BHDb5/rAVFhVrZYOFyX9dCionwvkBt/QY4NCVzYk3iDOfWjX9AHOZ5PbOYFV4uBaoTBK646bnVQ
+	U8QurmXCkJqw6f1EvNRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8kMW-0016d6-Iw; Tue, 05 Jul 2022 15:21:16 +0000
+	id 1o8kNF-00176n-7x; Tue, 05 Jul 2022 15:22:01 +0000
 Received: from mail-vk1-xa2b.google.com ([2607:f8b0:4864:20::a2b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8kMF-0016Us-B5
-	for linux-rockchip@lists.infradead.org; Tue, 05 Jul 2022 15:21:02 +0000
-Received: by mail-vk1-xa2b.google.com with SMTP id j15so6005673vkp.5
-        for <linux-rockchip@lists.infradead.org>; Tue, 05 Jul 2022 08:20:58 -0700 (PDT)
+	id 1o8kNC-001742-5Z
+	for linux-rockchip@lists.infradead.org; Tue, 05 Jul 2022 15:21:59 +0000
+Received: by mail-vk1-xa2b.google.com with SMTP id m141so848969vke.6
+        for <linux-rockchip@lists.infradead.org>; Tue, 05 Jul 2022 08:21:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
         h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=RvdKDgvs4AXmU39XlGDzFbaYm56is7a3XXl4RJV2kdI=;
-        b=IKkrnvqpifAu5kQsEGrE0rM61ULdJrHMK7Df6P3Tsa98W8KKGfMM8i5RuyC6pj2ELP
-         Qunl9t7vul6cTi8tW/fh6y1jZvkDUDnFrc2+GEZN0JB46/8iKDVKg+eJxVH4LtLxRcgD
-         KSJAR1X4a6mlW6yE5Wg8u6SbCMxDtu9VPvSiXT57BzHHC3mZC8h7rkx3Ml7CLwqm5lI3
-         DtFMwDUcXabxFSZgG1BtktE0I4a4Rb0nVuc+pqtHI+sZe7t33E6ZwmBxY7DC4E7wCMFt
-         uWd6rAlwpNuCw64ByM/ljHZ9ZAWSIboXOtuOjhGusEPtniiDzoAlKjfEIgE0pMQcxX/b
-         o1LQ==
+         :content-disposition:content-transfer-encoding:in-reply-to;
+        bh=zHbKKGR+Wv/3OU+gW+VqdMcUxYMzP8bmEQJt54cYuBU=;
+        b=zh64ulqMye88ggew4xToJ9pGFLWZY/NQ9Yaz4tTu8C/S11bO2LzpGtROkxTYiyLziv
+         bpEmInz1UlKkT0cXaGCCTPLs/DA6J3zdXOgtaFp6sBizyG0O5wTLzaHupmw+jX9bcRRH
+         5oT+vw1p21rnHupvnOjWgI7RkaVHan+GDqIh9voDM/iuN3FNHN8+Ih8S+l3JwY8abNaN
+         zx3MxsNxiZa3TgH58WfYJQTSXcFoLcEFl1tihXt3hKlxONege8dja76GL9Ba6Z+zBupD
+         EjtZunig7zpSENXeLotPYKAjUzqQ5MC8PxKifr1hv1N6gz4GKFrp2R4vtZx74/Bt5iEB
+         r/ZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=RvdKDgvs4AXmU39XlGDzFbaYm56is7a3XXl4RJV2kdI=;
-        b=u8Iph9hqlBH8t48PSYg6O/IPHPBdC3/oNFk9rZO4r/YLFmDD5IjXbWzUowp23wRgmo
-         QkpfiL0AuwUWnT9Sota9O+U1FfZWAVq7xnrNoEPEYERCaU4LqydQA7SjjcV57QV0w64S
-         //tCcy1eNQxR6Ca7Yd2IZxWJ3Xb1mdxRft+J/z/iWOXdxIYljwBrhE3Go6//e0V1vzuN
-         aliuIaPzwPW4J7tqCDSkStGOWsowJVZI6zQJP862gOwnfJDMqDVKT+Cw3xfNmGe4VgNw
-         OR3tUb4Vg0hK8Zz7O1h1GZCpxgtMFLYfdq0GIo8hbD8zd2bXHXJRQ/hY7JH2kI813Iqs
-         x6fA==
-X-Gm-Message-State: AJIora+PTDLTpwGGm1peCUAORNgbYuMVBc9l0qZ8aTu+bqMyXtQPy84X
-	Pk2cLPSP4Z4/FvXc+06sKeyrkQ==
-X-Google-Smtp-Source: AGRyM1tRfN4rVaOt1CEMfDav/P0uK/9oaO5f6jqKdYy7cgZXGpsyOhlvV4odcnZP62aSGVdqujsYKg==
-X-Received: by 2002:a1f:5543:0:b0:36f:e4cb:cbd6 with SMTP id j64-20020a1f5543000000b0036fe4cbcbd6mr19198679vkb.23.1657034457098;
-        Tue, 05 Jul 2022 08:20:57 -0700 (PDT)
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to;
+        bh=zHbKKGR+Wv/3OU+gW+VqdMcUxYMzP8bmEQJt54cYuBU=;
+        b=Y8bei11Kk4BphciHc6CXm+b0GCQr2KxCg75Cpg1ikrduvqRaduO3ZAh4I7S6/0JWy1
+         AZyJeib+6Hd3+Oag54kY2JNZQovZtcf3p4nVIdJPThYHYGu12NQ8YXvHutkiehu+7L6A
+         3XUNC4d9iu9xsG+McFHAS6k98R3fdnusEsUnA62osJz50nOr8auqG2sJfkdltP1xWIf1
+         TWKKh4aaHDr9h2UsOPzr5/uzfD81pbEgv0jVy5VjU/3HgGXoUms1kRfAQ7IMP5nUsBJL
+         vLlzXjjVNdmNcdSNMYh7l7gZ3pXcXEC4BqRuz4aNtv5NmuWw55QxPPUQ9ZVuGirk/VSX
+         +QBw==
+X-Gm-Message-State: AJIora8FDEOO0F8MY17tRpjikdQXFnt8OFaSUVyD8hcl7oTSaMZW2u4C
+	lh21itVEJCI8/FQ3iMh9zXevQQ==
+X-Google-Smtp-Source: AGRyM1vv1TQom6v/kGvdJ+vbVe2gwOtECASq1yaAWyDd4ax0uN1sm7T1n0ryHKYnK6V1qbtOUCHazg==
+X-Received: by 2002:a1f:b493:0:b0:370:3d3d:c2c9 with SMTP id d141-20020a1fb493000000b003703d3dc2c9mr20615151vkf.10.1657034517256;
+        Tue, 05 Jul 2022 08:21:57 -0700 (PDT)
 Received: from eze-laptop ([190.190.187.68])
-        by smtp.gmail.com with ESMTPSA id p126-20020a1f2984000000b0036c8e111321sm6799195vkp.14.2022.07.05.08.20.53
+        by smtp.gmail.com with ESMTPSA id y66-20020a1f3245000000b0036ca4583f08sm6849462vky.16.2022.07.05.08.21.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Jul 2022 08:20:56 -0700 (PDT)
-Date: Tue, 5 Jul 2022 12:20:51 -0300
+        Tue, 05 Jul 2022 08:21:56 -0700 (PDT)
+Date: Tue, 5 Jul 2022 12:21:51 -0300
 From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Cc: mchehab@kernel.org, hverkuil@xs4all.nl, p.zabel@pengutronix.de,
@@ -70,17 +71,17 @@ Cc: mchehab@kernel.org, hverkuil@xs4all.nl, p.zabel@pengutronix.de,
 	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
 	kernel@collabora.com
-Subject: Re: [PATCH v10 05/17] media: uapi: HEVC: Rename HEVC stateless
- controls with STATELESS prefix
-Message-ID: <YsRW0+GJf6KQ1Yi1@eze-laptop>
+Subject: Re: [PATCH v10 06/17] media: uapi: HEVC: Change pic_order_cnt
+ definition in v4l2_hevc_dpb_entry
+Message-ID: <YsRXD50CusUmQMyx@eze-laptop>
 References: <20220705085420.272912-1-benjamin.gaignard@collabora.com>
- <20220705085420.272912-6-benjamin.gaignard@collabora.com>
+ <20220705085420.272912-7-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220705085420.272912-6-benjamin.gaignard@collabora.com>
+In-Reply-To: <20220705085420.272912-7-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220705_082059_531941_A8639237 
-X-CRM114-Status: GOOD (  28.49  )
+X-CRM114-CacheID: sfid-20220705_082158_302128_A0092494 
+X-CRM114-Status: GOOD (  20.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,480 +93,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jul 05, 2022 at 10:54:08AM +0200, Benjamin Gaignard wrote:
-> Change HEVC  stateless controls names to V4L2_CID_STATELESS_HEVC instead
-> of V4L2_CID_MPEG_VIDEO_HEVC be coherent with v4l2 naming convention.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> Tested-by: Jernej Skrabec <jernej.skrabec@gmail.com>
-
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-
-> ---
->  .../media/v4l/ext-ctrls-codec.rst             | 26 +++++++--------
->  drivers/media/v4l2-core/v4l2-ctrls-defs.c     | 32 +++++++++----------
->  drivers/staging/media/hantro/hantro_drv.c     | 26 +++++++--------
->  drivers/staging/media/hantro/hantro_hevc.c    |  8 ++---
->  drivers/staging/media/sunxi/cedrus/cedrus.c   | 24 +++++++-------
->  .../staging/media/sunxi/cedrus/cedrus_dec.c   | 10 +++---
->  include/media/hevc-ctrls.h                    | 26 +++++++--------
->  7 files changed, 76 insertions(+), 76 deletions(-)
-> 
-> diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> index cff742142a55..868669ae6831 100644
-> --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> @@ -2661,7 +2661,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->  
->  .. _v4l2-mpeg-hevc:
->  
-> -``V4L2_CID_MPEG_VIDEO_HEVC_SPS (struct)``
-> +``V4L2_CID_STATELESS_HEVC_SPS (struct)``
->      Specifies the Sequence Parameter Set fields (as extracted from the
->      bitstream) for the associated HEVC slice data.
->      These bitstream parameters are defined according to :ref:`hevc`.
-> @@ -2814,7 +2814,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->  
->      \normalsize
->  
-> -``V4L2_CID_MPEG_VIDEO_HEVC_PPS (struct)``
-> +``V4L2_CID_STATELESS_HEVC_PPS (struct)``
->      Specifies the Picture Parameter Set fields (as extracted from the
->      bitstream) for the associated HEVC slice data.
->      These bitstream parameters are defined according to :ref:`hevc`.
-> @@ -2967,7 +2967,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->  
->      \normalsize
->  
-> -``V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS (struct)``
-> +``V4L2_CID_STATELESS_HEVC_SLICE_PARAMS (struct)``
->      Specifies various slice-specific parameters, especially from the NAL unit
->      header, general slice segment header and weighted prediction parameter
->      parts of the bitstream.
-> @@ -3132,7 +3132,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->  
->      \normalsize
->  
-> -``V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX (struct)``
-> +``V4L2_CID_STATELESS_HEVC_SCALING_MATRIX (struct)``
->      Specifies the HEVC scaling matrix parameters used for the scaling process
->      for transform coefficients.
->      These matrix and parameters are defined according to :ref:`hevc`.
-> @@ -3282,7 +3282,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->  
->      \normalsize
->  
-> -``V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE (enum)``
-> +``V4L2_CID_STATELESS_HEVC_DECODE_MODE (enum)``
->      Specifies the decoding mode to use. Currently exposes slice-based and
->      frame-based decoding but new modes might be added later on.
->      This control is used as a modifier for V4L2_PIX_FMT_HEVC_SLICE
-> @@ -3297,7 +3297,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->         This menu control is not yet part of the public kernel API and
->         it is expected to change.
->  
-> -.. c:type:: v4l2_mpeg_video_hevc_decode_mode
-> +.. c:type:: v4l2_stateless_hevc_decode_mode
->  
->  .. raw:: latex
->  
-> @@ -3310,11 +3310,11 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->      :stub-columns: 0
->      :widths:       1 1 2
->  
-> -    * - ``V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_SLICE_BASED``
-> +    * - ``V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED``
->        - 0
->        - Decoding is done at the slice granularity.
->          The OUTPUT buffer must contain a single slice.
-> -    * - ``V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED``
-> +    * - ``V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED``
->        - 1
->        - Decoding is done at the frame granularity.
->          The OUTPUT buffer must contain all slices needed to decode the
-> @@ -3324,7 +3324,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->  
->      \normalsize
->  
-> -``V4L2_CID_MPEG_VIDEO_HEVC_START_CODE (enum)``
-> +``V4L2_CID_STATELESS_HEVC_START_CODE (enum)``
->      Specifies the HEVC slice start code expected for each slice.
->      This control is used as a modifier for V4L2_PIX_FMT_HEVC_SLICE
->      pixel format. Applications that support V4L2_PIX_FMT_HEVC_SLICE
-> @@ -3338,7 +3338,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->         This menu control is not yet part of the public kernel API and
->         it is expected to change.
->  
-> -.. c:type:: v4l2_mpeg_video_hevc_start_code
-> +.. c:type:: v4l2_stateless_hevc_start_code
->  
->  .. tabularcolumns:: |p{9.2cm}|p{0.6cm}|p{7.5cm}|
->  
-> @@ -3347,13 +3347,13 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->      :stub-columns: 0
->      :widths:       1 1 2
->  
-> -    * - ``V4L2_MPEG_VIDEO_HEVC_START_CODE_NONE``
-> +    * - ``V4L2_STATELESS_HEVC_START_CODE_NONE``
->        - 0
->        - Selecting this value specifies that HEVC slices are passed
->          to the driver without any start code. The bitstream data should be
->          according to :ref:`hevc` 7.3.1.1 General NAL unit syntax, hence
->          contains emulation prevention bytes when required.
-> -    * - ``V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B``
-> +    * - ``V4L2_STATELESS_HEVC_START_CODE_ANNEX_B``
->        - 1
->        - Selecting this value specifies that HEVC slices are expected
->          to be prefixed by Annex B start codes. According to :ref:`hevc`
-> @@ -3386,7 +3386,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->      This provides a bitmask which consists of bits [0, LTR_COUNT-1].
->      This is applicable to the H264 and HEVC encoders.
->  
-> -``V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS (struct)``
-> +``V4L2_CID_STATELESS_HEVC_DECODE_PARAMS (struct)``
->      Specifies various decode parameters, especially the references picture order
->      count (POC) for all the lists (short, long, before, current, after) and the
->      number of entries for each of them.
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> index 16f42d2fd359..9f55503cd3d6 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> @@ -704,9 +704,9 @@ const char * const *v4l2_ctrl_get_menu(u32 id)
->  		return hevc_tier;
->  	case V4L2_CID_MPEG_VIDEO_HEVC_LOOP_FILTER_MODE:
->  		return hevc_loop_filter_mode;
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE:
-> +	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:
->  		return hevc_decode_mode;
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_START_CODE:
-> +	case V4L2_CID_STATELESS_HEVC_START_CODE:
->  		return hevc_start_code;
->  	case V4L2_CID_CAMERA_ORIENTATION:
->  		return camera_orientation;
-> @@ -1003,13 +1003,6 @@ const char *v4l2_ctrl_get_name(u32 id)
->  	case V4L2_CID_MPEG_VIDEO_HEVC_SIZE_OF_LENGTH_FIELD:	return "HEVC Size of Length Field";
->  	case V4L2_CID_MPEG_VIDEO_REF_NUMBER_FOR_PFRAMES:	return "Reference Frames for a P-Frame";
->  	case V4L2_CID_MPEG_VIDEO_PREPEND_SPSPPS_TO_IDR:		return "Prepend SPS and PPS to IDR";
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_SPS:			return "HEVC Sequence Parameter Set";
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_PPS:			return "HEVC Picture Parameter Set";
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS:		return "HEVC Slice Parameters";
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX:		return "HEVC Scaling Matrix";
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS:		return "HEVC Decode Parameters";
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_START_CODE:		return "HEVC Start Code";
->  
->  	/* CAMERA controls */
->  	/* Keep the order of the 'case's the same as in v4l2-controls.h! */
-> @@ -1188,6 +1181,13 @@ const char *v4l2_ctrl_get_name(u32 id)
->  	case V4L2_CID_STATELESS_MPEG2_QUANTISATION:		return "MPEG-2 Quantisation Matrices";
->  	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:	return "VP9 Probabilities Updates";
->  	case V4L2_CID_STATELESS_VP9_FRAME:			return "VP9 Frame Decode Parameters";
-> +	case V4L2_CID_STATELESS_HEVC_SPS:			return "HEVC Sequence Parameter Set";
-> +	case V4L2_CID_STATELESS_HEVC_PPS:			return "HEVC Picture Parameter Set";
-> +	case V4L2_CID_STATELESS_HEVC_SLICE_PARAMS:		return "HEVC Slice Parameters";
-> +	case V4L2_CID_STATELESS_HEVC_SCALING_MATRIX:		return "HEVC Scaling Matrix";
-> +	case V4L2_CID_STATELESS_HEVC_DECODE_PARAMS:		return "HEVC Decode Parameters";
-> +	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
-> +	case V4L2_CID_STATELESS_HEVC_START_CODE:		return "HEVC Start Code";
->  
->  	/* Colorimetry controls */
->  	/* Keep the order of the 'case's the same as in v4l2-controls.h! */
-> @@ -1363,8 +1363,8 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
->  	case V4L2_CID_MPEG_VIDEO_HEVC_SIZE_OF_LENGTH_FIELD:
->  	case V4L2_CID_MPEG_VIDEO_HEVC_TIER:
->  	case V4L2_CID_MPEG_VIDEO_HEVC_LOOP_FILTER_MODE:
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE:
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_START_CODE:
-> +	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:
-> +	case V4L2_CID_STATELESS_HEVC_START_CODE:
->  	case V4L2_CID_STATELESS_H264_DECODE_MODE:
->  	case V4L2_CID_STATELESS_H264_START_CODE:
->  	case V4L2_CID_CAMERA_ORIENTATION:
-> @@ -1502,19 +1502,19 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
->  	case V4L2_CID_STATELESS_VP8_FRAME:
->  		*type = V4L2_CTRL_TYPE_VP8_FRAME;
->  		break;
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_SPS:
-> +	case V4L2_CID_STATELESS_HEVC_SPS:
->  		*type = V4L2_CTRL_TYPE_HEVC_SPS;
->  		break;
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_PPS:
-> +	case V4L2_CID_STATELESS_HEVC_PPS:
->  		*type = V4L2_CTRL_TYPE_HEVC_PPS;
->  		break;
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS:
-> +	case V4L2_CID_STATELESS_HEVC_SLICE_PARAMS:
->  		*type = V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS;
->  		break;
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX:
-> +	case V4L2_CID_STATELESS_HEVC_SCALING_MATRIX:
->  		*type = V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX;
->  		break;
-> -	case V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS:
-> +	case V4L2_CID_STATELESS_HEVC_DECODE_PARAMS:
->  		*type = V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS;
->  		break;
->  	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:
-> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> index 01d33dcb0467..536c8c374952 100644
-> --- a/drivers/staging/media/hantro/hantro_drv.c
-> +++ b/drivers/staging/media/hantro/hantro_drv.c
-> @@ -270,7 +270,7 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
->  		if (sps->bit_depth_luma_minus8 != 0)
->  			/* Only 8-bit is supported */
->  			return -EINVAL;
-> -	} else if (ctrl->id == V4L2_CID_MPEG_VIDEO_HEVC_SPS) {
-> +	} else if (ctrl->id == V4L2_CID_STATELESS_HEVC_SPS) {
->  		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
->  
->  		return hantro_hevc_validate_sps(ctx, sps);
-> @@ -438,18 +438,18 @@ static const struct hantro_ctrl controls[] = {
->  	}, {
->  		.codec = HANTRO_HEVC_DECODER,
->  		.cfg = {
-> -			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE,
-> -			.min = V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
-> -			.max = V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
-> -			.def = V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
-> +			.id = V4L2_CID_STATELESS_HEVC_DECODE_MODE,
-> +			.min = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
-> +			.max = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
-> +			.def = V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
->  		},
->  	}, {
->  		.codec = HANTRO_HEVC_DECODER,
->  		.cfg = {
-> -			.id = V4L2_CID_MPEG_VIDEO_HEVC_START_CODE,
-> -			.min = V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
-> -			.max = V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
-> -			.def = V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
-> +			.id = V4L2_CID_STATELESS_HEVC_START_CODE,
-> +			.min = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
-> +			.max = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
-> +			.def = V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
->  		},
->  	}, {
->  		.codec = HANTRO_HEVC_DECODER,
-> @@ -469,23 +469,23 @@ static const struct hantro_ctrl controls[] = {
->  	}, {
->  		.codec = HANTRO_HEVC_DECODER,
->  		.cfg = {
-> -			.id = V4L2_CID_MPEG_VIDEO_HEVC_SPS,
-> +			.id = V4L2_CID_STATELESS_HEVC_SPS,
->  			.ops = &hantro_ctrl_ops,
->  		},
->  	}, {
->  		.codec = HANTRO_HEVC_DECODER,
->  		.cfg = {
-> -			.id = V4L2_CID_MPEG_VIDEO_HEVC_PPS,
-> +			.id = V4L2_CID_STATELESS_HEVC_PPS,
->  		},
->  	}, {
->  		.codec = HANTRO_HEVC_DECODER,
->  		.cfg = {
-> -			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS,
-> +			.id = V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
->  		},
->  	}, {
->  		.codec = HANTRO_HEVC_DECODER,
->  		.cfg = {
-> -			.id = V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX,
-> +			.id = V4L2_CID_STATELESS_HEVC_SCALING_MATRIX,
->  		},
->  	}, {
->  		.codec = HANTRO_HEVC_DECODER,
-> diff --git a/drivers/staging/media/hantro/hantro_hevc.c b/drivers/staging/media/hantro/hantro_hevc.c
-> index bd924896e409..1df87ca88ebf 100644
-> --- a/drivers/staging/media/hantro/hantro_hevc.c
-> +++ b/drivers/staging/media/hantro/hantro_hevc.c
-> @@ -189,17 +189,17 @@ int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx)
->  	hantro_start_prepare_run(ctx);
->  
->  	ctrls->decode_params =
-> -		hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS);
-> +		hantro_get_ctrl(ctx, V4L2_CID_STATELESS_HEVC_DECODE_PARAMS);
->  	if (WARN_ON(!ctrls->decode_params))
->  		return -EINVAL;
->  
->  	ctrls->scaling =
-> -		hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX);
-> +		hantro_get_ctrl(ctx, V4L2_CID_STATELESS_HEVC_SCALING_MATRIX);
->  	if (WARN_ON(!ctrls->scaling))
->  		return -EINVAL;
->  
->  	ctrls->sps =
-> -		hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_HEVC_SPS);
-> +		hantro_get_ctrl(ctx, V4L2_CID_STATELESS_HEVC_SPS);
->  	if (WARN_ON(!ctrls->sps))
->  		return -EINVAL;
->  
-> @@ -208,7 +208,7 @@ int hantro_hevc_dec_prepare_run(struct hantro_ctx *ctx)
->  		return ret;
->  
->  	ctrls->pps =
-> -		hantro_get_ctrl(ctx, V4L2_CID_MPEG_VIDEO_HEVC_PPS);
-> +		hantro_get_ctrl(ctx, V4L2_CID_STATELESS_HEVC_PPS);
->  	if (WARN_ON(!ctrls->pps))
->  		return -EINVAL;
->  
-> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus.c b/drivers/staging/media/sunxi/cedrus/cedrus.c
-> index 68b3dcdb5df3..87be975a72b6 100644
-> --- a/drivers/staging/media/sunxi/cedrus/cedrus.c
-> +++ b/drivers/staging/media/sunxi/cedrus/cedrus.c
-> @@ -42,7 +42,7 @@ static int cedrus_try_ctrl(struct v4l2_ctrl *ctrl)
->  		if (sps->bit_depth_luma_minus8 != 0)
->  			/* Only 8-bit is supported */
->  			return -EINVAL;
-> -	} else if (ctrl->id == V4L2_CID_MPEG_VIDEO_HEVC_SPS) {
-> +	} else if (ctrl->id == V4L2_CID_STATELESS_HEVC_SPS) {
->  		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
->  		struct cedrus_ctx *ctx = container_of(ctrl->handler, struct cedrus_ctx, hdl);
->  
-> @@ -164,42 +164,42 @@ static const struct cedrus_control cedrus_controls[] = {
->  	},
->  	{
->  		.cfg = {
-> -			.id	= V4L2_CID_MPEG_VIDEO_HEVC_SPS,
-> +			.id	= V4L2_CID_STATELESS_HEVC_SPS,
->  			.ops	= &cedrus_ctrl_ops,
->  		},
->  		.codec		= CEDRUS_CODEC_H265,
->  	},
->  	{
->  		.cfg = {
-> -			.id	= V4L2_CID_MPEG_VIDEO_HEVC_PPS,
-> +			.id	= V4L2_CID_STATELESS_HEVC_PPS,
->  		},
->  		.codec		= CEDRUS_CODEC_H265,
->  	},
->  	{
->  		.cfg = {
-> -			.id	= V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS,
-> +			.id	= V4L2_CID_STATELESS_HEVC_SLICE_PARAMS,
->  		},
->  		.codec		= CEDRUS_CODEC_H265,
->  	},
->  	{
->  		.cfg = {
-> -			.id	= V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX,
-> +			.id	= V4L2_CID_STATELESS_HEVC_SCALING_MATRIX,
->  		},
->  		.codec		= CEDRUS_CODEC_H265,
->  	},
->  	{
->  		.cfg = {
-> -			.id	= V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE,
-> -			.max	= V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_SLICE_BASED,
-> -			.def	= V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_SLICE_BASED,
-> +			.id	= V4L2_CID_STATELESS_HEVC_DECODE_MODE,
-> +			.max	= V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED,
-> +			.def	= V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED,
->  		},
->  		.codec		= CEDRUS_CODEC_H265,
->  	},
->  	{
->  		.cfg = {
-> -			.id	= V4L2_CID_MPEG_VIDEO_HEVC_START_CODE,
-> -			.max	= V4L2_MPEG_VIDEO_HEVC_START_CODE_NONE,
-> -			.def	= V4L2_MPEG_VIDEO_HEVC_START_CODE_NONE,
-> +			.id	= V4L2_CID_STATELESS_HEVC_START_CODE,
-> +			.max	= V4L2_STATELESS_HEVC_START_CODE_NONE,
-> +			.def	= V4L2_STATELESS_HEVC_START_CODE_NONE,
->  		},
->  		.codec		= CEDRUS_CODEC_H265,
->  	},
-> @@ -211,7 +211,7 @@ static const struct cedrus_control cedrus_controls[] = {
->  	},
->  	{
->  		.cfg = {
-> -			.id = V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS,
-> +			.id = V4L2_CID_STATELESS_HEVC_DECODE_PARAMS,
->  		},
->  		.codec		= CEDRUS_CODEC_H265,
->  	},
-> diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-> index 9c7200299465..aabe6253078e 100644
-> --- a/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-> +++ b/drivers/staging/media/sunxi/cedrus/cedrus_dec.c
-> @@ -65,15 +65,15 @@ void cedrus_device_run(void *priv)
->  
->  	case V4L2_PIX_FMT_HEVC_SLICE:
->  		run.h265.sps = cedrus_find_control_data(ctx,
-> -			V4L2_CID_MPEG_VIDEO_HEVC_SPS);
-> +			V4L2_CID_STATELESS_HEVC_SPS);
->  		run.h265.pps = cedrus_find_control_data(ctx,
-> -			V4L2_CID_MPEG_VIDEO_HEVC_PPS);
-> +			V4L2_CID_STATELESS_HEVC_PPS);
->  		run.h265.slice_params = cedrus_find_control_data(ctx,
-> -			V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS);
-> +			V4L2_CID_STATELESS_HEVC_SLICE_PARAMS);
->  		run.h265.decode_params = cedrus_find_control_data(ctx,
-> -			V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS);
-> +			V4L2_CID_STATELESS_HEVC_DECODE_PARAMS);
->  		run.h265.scaling_matrix = cedrus_find_control_data(ctx,
-> -			V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX);
-> +			V4L2_CID_STATELESS_HEVC_SCALING_MATRIX);
->  		break;
->  
->  	case V4L2_PIX_FMT_VP8_FRAME:
-> diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-> index 752a8d10782c..45734bd8fdfc 100644
-> --- a/include/media/hevc-ctrls.h
-> +++ b/include/media/hevc-ctrls.h
-> @@ -16,13 +16,13 @@
->  /* The pixel format isn't stable at the moment and will likely be renamed. */
->  #define V4L2_PIX_FMT_HEVC_SLICE v4l2_fourcc('S', '2', '6', '5') /* HEVC parsed slices */
->  
-> -#define V4L2_CID_MPEG_VIDEO_HEVC_SPS		(V4L2_CID_CODEC_BASE + 1008)
-> -#define V4L2_CID_MPEG_VIDEO_HEVC_PPS		(V4L2_CID_CODEC_BASE + 1009)
-> -#define V4L2_CID_MPEG_VIDEO_HEVC_SLICE_PARAMS	(V4L2_CID_CODEC_BASE + 1010)
-> -#define V4L2_CID_MPEG_VIDEO_HEVC_SCALING_MATRIX	(V4L2_CID_CODEC_BASE + 1011)
-> -#define V4L2_CID_MPEG_VIDEO_HEVC_DECODE_PARAMS	(V4L2_CID_CODEC_BASE + 1012)
-> -#define V4L2_CID_MPEG_VIDEO_HEVC_DECODE_MODE	(V4L2_CID_CODEC_BASE + 1015)
-> -#define V4L2_CID_MPEG_VIDEO_HEVC_START_CODE	(V4L2_CID_CODEC_BASE + 1016)
-> +#define V4L2_CID_STATELESS_HEVC_SPS		(V4L2_CID_CODEC_BASE + 1008)
-> +#define V4L2_CID_STATELESS_HEVC_PPS		(V4L2_CID_CODEC_BASE + 1009)
-> +#define V4L2_CID_STATELESS_HEVC_SLICE_PARAMS	(V4L2_CID_CODEC_BASE + 1010)
-> +#define V4L2_CID_STATELESS_HEVC_SCALING_MATRIX	(V4L2_CID_CODEC_BASE + 1011)
-> +#define V4L2_CID_STATELESS_HEVC_DECODE_PARAMS	(V4L2_CID_CODEC_BASE + 1012)
-> +#define V4L2_CID_STATELESS_HEVC_DECODE_MODE	(V4L2_CID_CODEC_BASE + 1015)
-> +#define V4L2_CID_STATELESS_HEVC_START_CODE	(V4L2_CID_CODEC_BASE + 1016)
->  
->  /* enum v4l2_ctrl_type type values */
->  #define V4L2_CTRL_TYPE_HEVC_SPS 0x0120
-> @@ -31,14 +31,14 @@
->  #define V4L2_CTRL_TYPE_HEVC_SCALING_MATRIX 0x0123
->  #define V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS 0x0124
->  
-> -enum v4l2_mpeg_video_hevc_decode_mode {
-> -	V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_SLICE_BASED,
-> -	V4L2_MPEG_VIDEO_HEVC_DECODE_MODE_FRAME_BASED,
-> +enum v4l2_stateless_hevc_decode_mode {
-> +	V4L2_STATELESS_HEVC_DECODE_MODE_SLICE_BASED,
-> +	V4L2_STATELESS_HEVC_DECODE_MODE_FRAME_BASED,
->  };
->  
-> -enum v4l2_mpeg_video_hevc_start_code {
-> -	V4L2_MPEG_VIDEO_HEVC_START_CODE_NONE,
-> -	V4L2_MPEG_VIDEO_HEVC_START_CODE_ANNEX_B,
-> +enum v4l2_stateless_hevc_start_code {
-> +	V4L2_STATELESS_HEVC_START_CODE_NONE,
-> +	V4L2_STATELESS_HEVC_START_CODE_ANNEX_B,
->  };
->  
->  #define V4L2_HEVC_SLICE_TYPE_B	0
-> -- 
-> 2.32.0
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBKdWwgMDUsIDIwMjIgYXQgMTA6NTQ6MDlBTSArMDIwMCwgQmVuamFtaW4gR2FpZ25h
+cmQgd3JvdGU6Cj4gVGhlIEhFVkMgc3BlY2lmaWNhdGlvbiBkZXNjcmliZXMgdGhlIGZvbGxvd2lu
+ZzoKPiAiUGljT3JkZXJDbnRWYWwgaXMgZGVyaXZlZCBhcyBmb2xsb3dzOgo+IFBpY09yZGVyQ250
+VmFsID0gUGljT3JkZXJDbnRNc2IgKyBzbGljZV9waWNfb3JkZXJfY250X2xzYgo+IFRoZSB2YWx1
+ZSBvZiBQaWNPcmRlckNudFZhbCBzaGFsbCBiZSBpbiB0aGUgcmFuZ2Ugb2Yg4oiSMl4zMSB0byAy
+XjMxIOKIkiAxLCBpbmNsdXNpdmUuIgo+IAo+IFRvIG1hdGNoIHdpdGggdGhlc2UgZGVmaW5pdGlv
+bnMgY2hhbmdlIF9fdTE2IHBpY19vcmRlcl9jbnRbMl0KPiBpbnRvIF9fczMyIHBpY19vcmRlcl9j
+bnRfdmFsLgo+IENoYW5nZSB2NGwyX2N0cmxfaGV2Y19zbGljZV9wYXJhbXMtPnNsaWNlX3BpY19v
+cmRlcl9jbnQgdG8gX19zMzIgdG9vLgo+IAo+IFNpZ25lZC1vZmYtYnk6IEJlbmphbWluIEdhaWdu
+YXJkIDxiZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJvcmEuY29tPgo+IEFja2VkLWJ5OiBOaWNvbGFz
+IER1ZnJlc25lIDxuaWNvbGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+Cj4gVGVzdGVkLWJ5OiBK
+ZXJuZWogU2tyYWJlYyA8amVybmVqLnNrcmFiZWNAZ21haWwuY29tPgoKR29vZCBjYXRjaC4KClJl
+dmlld2VkLWJ5OiBFemVxdWllbCBHYXJjaWEgPGV6ZXF1aWVsQHZhbmd1YXJkaWFzdXIuY29tLmFy
+PgoKPiAtLS0KPiAgRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9leHQtY3Ry
+bHMtY29kZWMucnN0IHwgMiArLQo+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRy
+b19nMl9oZXZjX2RlYy5jICAgICAgICAgfCA3ICsrKy0tLS0KPiAgZHJpdmVycy9zdGFnaW5nL21l
+ZGlhL2hhbnRyby9oYW50cm9faGV2Yy5jICAgICAgICAgICAgICAgIHwgMiArLQo+ICBkcml2ZXJz
+L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19ody5oICAgICAgICAgICAgICAgICAgfCA0ICsr
+LS0KPiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3N1bnhpL2NlZHJ1cy9jZWRydXNfaDI2NS5jICAg
+ICAgICAgIHwgNCArKy0tCj4gIGluY2x1ZGUvbWVkaWEvaGV2Yy1jdHJscy5oICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICB8IDQgKystLQo+ICA2IGZpbGVzIGNoYW5nZWQsIDExIGluc2Vy
+dGlvbnMoKyksIDEyIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9u
+L3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QgYi9Eb2N1bWVudGF0
+aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QKPiBpbmRleCA4
+Njg2NjlhZTY4MzEuLjNkZmI4MWE5MzkzNSAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9uL3Vz
+ZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QKPiArKysgYi9Eb2N1bWVu
+dGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QKPiBAQCAt
+MzAxMCw3ICszMDEwLDcgQEAgZW51bSB2NGwyX21wZWdfdmlkZW9faGV2Y19zaXplX29mX2xlbmd0
+aF9maWVsZCAtCj4gICAgICAqIC0gX191OAo+ICAgICAgICAtIGBgY29sb3VyX3BsYW5lX2lkYGAK
+PiAgICAgICAgLQo+IC0gICAgKiAtIF9fdTE2Cj4gKyAgICAqIC0gX19zMzIKPiAgICAgICAgLSBg
+YHNsaWNlX3BpY19vcmRlcl9jbnRgYAo+ICAgICAgICAtCj4gICAgICAqIC0gX191OAo+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9oZXZjX2RlYy5j
+IGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJfaGV2Y19kZWMuYwo+IGlu
+ZGV4IDVkZjZmMDhlMjZmNS4uZDI4NjUzZDA0ZDIwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvc3Rh
+Z2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmMKPiArKysgYi9kcml2ZXJzL3N0
+YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19nMl9oZXZjX2RlYy5jCj4gQEAgLTM5MCwxMSArMzkw
+LDEwIEBAIHN0YXRpYyBpbnQgc2V0X3JlZihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQo+ICAJCQkg
+ISEocHBzLT5mbGFncyAmIFY0TDJfSEVWQ19QUFNfRkxBR19MT09QX0ZJTFRFUl9BQ1JPU1NfVElM
+RVNfRU5BQkxFRCkpOwo+ICAKPiAgCS8qCj4gLQkgKiBXcml0ZSBQT0MgY291bnQgZGlmZiBmcm9t
+IGN1cnJlbnQgcGljLiBGb3IgZnJhbWUgZGVjb2Rpbmcgb25seSBjb21wdXRlCj4gLQkgKiBwaWNf
+b3JkZXJfY250WzBdIGFuZCBpZ25vcmUgcGljX29yZGVyX2NudFsxXSB1c2VkIGluIGZpZWxkLWNv
+ZGluZy4KPiArCSAqIFdyaXRlIFBPQyBjb3VudCBkaWZmIGZyb20gY3VycmVudCBwaWMuCj4gIAkg
+Ki8KPiAgCWZvciAoaSA9IDA7IGkgPCBkZWNvZGVfcGFyYW1zLT5udW1fYWN0aXZlX2RwYl9lbnRy
+aWVzICYmIGkgPCBBUlJBWV9TSVpFKGN1cl9wb2MpOyBpKyspIHsKPiAtCQljaGFyIHBvY19kaWZm
+ID0gZGVjb2RlX3BhcmFtcy0+cGljX29yZGVyX2NudF92YWwgLSBkcGJbaV0ucGljX29yZGVyX2Nu
+dFswXTsKPiArCQljaGFyIHBvY19kaWZmID0gZGVjb2RlX3BhcmFtcy0+cGljX29yZGVyX2NudF92
+YWwgLSBkcGJbaV0ucGljX29yZGVyX2NudF92YWw7Cj4gIAo+ICAJCWhhbnRyb19yZWdfd3JpdGUo
+dnB1LCAmY3VyX3BvY1tpXSwgcG9jX2RpZmYpOwo+ICAJfQo+IEBAIC00MjEsNyArNDIwLDcgQEAg
+c3RhdGljIGludCBzZXRfcmVmKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpCj4gIAlkcGJfbG9uZ3Rl
+cm1fZSA9IDA7Cj4gIAlmb3IgKGkgPSAwOyBpIDwgZGVjb2RlX3BhcmFtcy0+bnVtX2FjdGl2ZV9k
+cGJfZW50cmllcyAmJgo+ICAJICAgICBpIDwgKFY0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1fTUFY
+IC0gMSk7IGkrKykgewo+IC0JCWx1bWFfYWRkciA9IGhhbnRyb19oZXZjX2dldF9yZWZfYnVmKGN0
+eCwgZHBiW2ldLnBpY19vcmRlcl9jbnRbMF0pOwo+ICsJCWx1bWFfYWRkciA9IGhhbnRyb19oZXZj
+X2dldF9yZWZfYnVmKGN0eCwgZHBiW2ldLnBpY19vcmRlcl9jbnRfdmFsKTsKPiAgCQlpZiAoIWx1
+bWFfYWRkcikKPiAgCQkJcmV0dXJuIC1FTk9NRU07Cj4gIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJz
+L3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19oZXZjLmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVk
+aWEvaGFudHJvL2hhbnRyb19oZXZjLmMKPiBpbmRleCAxZGY4N2NhODhlYmYuLjU5ODRjNWZhNmY4
+MyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19oZXZj
+LmMKPiArKysgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19oZXZjLmMKPiBA
+QCAtMzMsNyArMzMsNyBAQCB2b2lkIGhhbnRyb19oZXZjX3JlZl9pbml0KHN0cnVjdCBoYW50cm9f
+Y3R4ICpjdHgpCj4gIH0KPiAgCj4gIGRtYV9hZGRyX3QgaGFudHJvX2hldmNfZ2V0X3JlZl9idWYo
+c3RydWN0IGhhbnRyb19jdHggKmN0eCwKPiAtCQkJCSAgIGludCBwb2MpCj4gKwkJCQkgICBzMzIg
+cG9jKQo+ICB7Cj4gIAlzdHJ1Y3QgaGFudHJvX2hldmNfZGVjX2h3X2N0eCAqaGV2Y19kZWMgPSAm
+Y3R4LT5oZXZjX2RlYzsKPiAgCWludCBpOwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcv
+bWVkaWEvaGFudHJvL2hhbnRyb19ody5oIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9o
+YW50cm9faHcuaAo+IGluZGV4IGEyZTBmMDgzNjI4MS4uMzNkMTU2Y2NiZmViIDEwMDY0NAo+IC0t
+LSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmgKPiArKysgYi9kcml2
+ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19ody5oCj4gQEAgLTE0NSw3ICsxNDUsNyBA
+QCBzdHJ1Y3QgaGFudHJvX2hldmNfZGVjX2h3X2N0eCB7Cj4gIAlzdHJ1Y3QgaGFudHJvX2F1eF9i
+dWYgdGlsZV9ic2Q7Cj4gIAlzdHJ1Y3QgaGFudHJvX2F1eF9idWYgcmVmX2J1ZnNbTlVNX1JFRl9Q
+SUNUVVJFU107Cj4gIAlzdHJ1Y3QgaGFudHJvX2F1eF9idWYgc2NhbGluZ19saXN0czsKPiAtCWlu
+dCByZWZfYnVmc19wb2NbTlVNX1JFRl9QSUNUVVJFU107Cj4gKwlzMzIgcmVmX2J1ZnNfcG9jW05V
+TV9SRUZfUElDVFVSRVNdOwo+ICAJdTMyIHJlZl9idWZzX3VzZWQ7Cj4gIAlzdHJ1Y3QgaGFudHJv
+X2hldmNfZGVjX2N0cmxzIGN0cmxzOwo+ICAJdW5zaWduZWQgaW50IG51bV90aWxlX2NvbHNfYWxs
+b2NhdGVkOwo+IEBAIC0zNTcsNyArMzU3LDcgQEAgdm9pZCBoYW50cm9faGV2Y19kZWNfZXhpdChz
+dHJ1Y3QgaGFudHJvX2N0eCAqY3R4KTsKPiAgaW50IGhhbnRyb19nMl9oZXZjX2RlY19ydW4oc3Ry
+dWN0IGhhbnRyb19jdHggKmN0eCk7Cj4gIGludCBoYW50cm9faGV2Y19kZWNfcHJlcGFyZV9ydW4o
+c3RydWN0IGhhbnRyb19jdHggKmN0eCk7Cj4gIHZvaWQgaGFudHJvX2hldmNfcmVmX2luaXQoc3Ry
+dWN0IGhhbnRyb19jdHggKmN0eCk7Cj4gLWRtYV9hZGRyX3QgaGFudHJvX2hldmNfZ2V0X3JlZl9i
+dWYoc3RydWN0IGhhbnRyb19jdHggKmN0eCwgaW50IHBvYyk7Cj4gK2RtYV9hZGRyX3QgaGFudHJv
+X2hldmNfZ2V0X3JlZl9idWYoc3RydWN0IGhhbnRyb19jdHggKmN0eCwgczMyIHBvYyk7Cj4gIGlu
+dCBoYW50cm9faGV2Y19hZGRfcmVmX2J1ZihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LCBpbnQgcG9j
+LCBkbWFfYWRkcl90IGFkZHIpOwo+ICBpbnQgaGFudHJvX2hldmNfdmFsaWRhdGVfc3BzKHN0cnVj
+dCBoYW50cm9fY3R4ICpjdHgsIGNvbnN0IHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19zcHMgKnNwcyk7
+Cj4gIAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2Nl
+ZHJ1c19oMjY1LmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19o
+MjY1LmMKPiBpbmRleCA0NGYzODViZTlmNmMuLjQxMTYwMTk3NTEyNCAxMDA2NDQKPiAtLS0gYS9k
+cml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19oMjY1LmMKPiArKysgYi9k
+cml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19oMjY1LmMKPiBAQCAtMTQz
+LDggKzE0Myw4IEBAIHN0YXRpYyB2b2lkIGNlZHJ1c19oMjY1X2ZyYW1lX2luZm9fd3JpdGVfZHBi
+KHN0cnVjdCBjZWRydXNfY3R4ICpjdHgsCj4gIAlmb3IgKGkgPSAwOyBpIDwgbnVtX2FjdGl2ZV9k
+cGJfZW50cmllczsgaSsrKSB7Cj4gIAkJaW50IGJ1ZmZlcl9pbmRleCA9IHZiMl9maW5kX3RpbWVz
+dGFtcCh2cSwgZHBiW2ldLnRpbWVzdGFtcCwgMCk7Cj4gIAkJdTMyIHBpY19vcmRlcl9jbnRbMl0g
+PSB7Cj4gLQkJCWRwYltpXS5waWNfb3JkZXJfY250WzBdLAo+IC0JCQlkcGJbaV0ucGljX29yZGVy
+X2NudFsxXQo+ICsJCQlkcGJbaV0ucGljX29yZGVyX2NudF92YWwsCj4gKwkJCWRwYltpXS5waWNf
+b3JkZXJfY250X3ZhbAo+ICAJCX07Cj4gIAo+ICAJCWNlZHJ1c19oMjY1X2ZyYW1lX2luZm9fd3Jp
+dGVfc2luZ2xlKGN0eCwgaSwgZHBiW2ldLmZpZWxkX3BpYywKPiBkaWZmIC0tZ2l0IGEvaW5jbHVk
+ZS9tZWRpYS9oZXZjLWN0cmxzLmggYi9pbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaAo+IGluZGV4
+IDQ1NzM0YmQ4ZmRmYy4uMDFjMTc5NWM1N2E5IDEwMDY0NAo+IC0tLSBhL2luY2x1ZGUvbWVkaWEv
+aGV2Yy1jdHJscy5oCj4gKysrIGIvaW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxzLmgKPiBAQCAtMTM4
+LDcgKzEzOCw3IEBAIHN0cnVjdCB2NGwyX2hldmNfZHBiX2VudHJ5IHsKPiAgCV9fdTY0CXRpbWVz
+dGFtcDsKPiAgCV9fdTgJZmxhZ3M7Cj4gIAlfX3U4CWZpZWxkX3BpYzsKPiAtCV9fdTE2CXBpY19v
+cmRlcl9jbnRbMl07Cj4gKwlfX3MzMglwaWNfb3JkZXJfY250X3ZhbDsKPiAgCV9fdTgJcGFkZGlu
+Z1syXTsKPiAgfTsKPiAgCj4gQEAgLTE4MSw3ICsxODEsNyBAQCBzdHJ1Y3QgdjRsMl9jdHJsX2hl
+dmNfc2xpY2VfcGFyYW1zIHsKPiAgCS8qIElTTy9JRUMgMjMwMDgtMiwgSVRVLVQgUmVjLiBILjI2
+NTogR2VuZXJhbCBzbGljZSBzZWdtZW50IGhlYWRlciAqLwo+ICAJX191OAlzbGljZV90eXBlOwo+
+ICAJX191OAljb2xvdXJfcGxhbmVfaWQ7Cj4gLQlfX3UxNglzbGljZV9waWNfb3JkZXJfY250Owo+
+ICsJX19zMzIJc2xpY2VfcGljX29yZGVyX2NudDsKPiAgCV9fdTgJbnVtX3JlZl9pZHhfbDBfYWN0
+aXZlX21pbnVzMTsKPiAgCV9fdTgJbnVtX3JlZl9pZHhfbDFfYWN0aXZlX21pbnVzMTsKPiAgCV9f
+dTgJY29sbG9jYXRlZF9yZWZfaWR4Owo+IC0tIAo+IDIuMzIuMAo+IAoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
