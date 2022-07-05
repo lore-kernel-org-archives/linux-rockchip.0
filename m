@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9E64C43334
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Jul 2022 08:55:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7096C43334
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Jul 2022 08:55:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iBMQwN/uwyAhz/AUWZd6q0Eeg7QgjDP/MQav8CX04yA=; b=geS01mL1HVsooj
-	IeVE9xFvD3mm/ERWCtF/bC7ssJycmkAdFp6Y+b5WDbhhAcwTiS1uXQkSw7jKNXXSQm0v3iJtquJZq
-	cUKLAUNIPCxJ6JxvyeZEPSh7mkvI7SGjzCU5yn7r/xJr7b2PfwaEJTYR8xNgFzwXc8akSzxZkBJVH
-	PRn5d0yzyvZoNv/QoSTQGC2jn072Vc5oTwbs4RhecUV/KglJIEfAd6KAwzdTvz/svH3K+TP6N4FY/
-	u3iqyCvq1+S+yJa1e0Zc5+og+nXVM917Ei6COr/Bk+yLG5s+8pZXaYCWXpfWgU50dbCNVcA2BWyTe
-	NZnD4RxCebcUss4nOwGA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/1yut6ASB0huNOtm43MRlkrlPQ10NN4wBPkaDpVmZcM=; b=Zq6wZ2Rb3pyrbD
+	paJ4fGLRBDjB1/CbVDO7WSJ8NXOdrOVumAjcrDwcfz/SpqcXvGYiXxBqXnxDPGa8UGOMrvkn0LaI5
+	VB9uQJ+hU07jlLSO1rBFARJgZrwSsukcCJe6nXNO6gO5zA3VEywkQWFB2M7wifTnuXzsHTtDfaB2k
+	0sUP+8MXPERPFDS8IE+DwvZu/BC7lfc+04VXBLdFIdO8/SVVeCtLWttUcDCLSkP4qCNm1tUBNKWu9
+	tcaYWmqkGZ9gj47Rk9QQ4+zRYpQuEv61OL+Mif8WUfaGcD7HEGDYWlO/P4xW13V+Pheu3S+M85DcB
+	cUW5a15Xrcg8HDcyGCHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8eKl-00GO6c-Ji; Tue, 05 Jul 2022 08:55:03 +0000
+	id 1o8eKx-00GOC7-96; Tue, 05 Jul 2022 08:55:15 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8eKI-00GNj8-M2; Tue, 05 Jul 2022 08:54:36 +0000
+	id 1o8eKI-00GNi1-Ky; Tue, 05 Jul 2022 08:54:36 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:6610:ee84:2ba:7917])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id C974966019A6;
-	Tue,  5 Jul 2022 09:54:29 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A66C7660180F;
+	Tue,  5 Jul 2022 09:54:27 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657011270;
-	bh=t2nvI/kg2Kq1rqLSdmDvuwNvRSSyiwxniPhWit8pHhg=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Vz7c8/xkAGu1w8ToLbQp8QsuvwuXQZrsmmaJOCJY0/DPU8ia0fMKJkWSvFaAFxLaw
-	 aRPV2l707pADZ2iww39TMgSJ4DMZz9kMJPUn9USruK532DBb5qN8gsuO5vtB2L7ViI
-	 Af2Z8Je8glAaL5UYkv1SxGLbxqVMtc/SoDOZ2wBQMfJ/CA9aAEfStdr/xoatTCtSmy
-	 TeqUBOy89fhOrSV7HeDKkKuagbaxSga+SbuP22FsK0vHMTXg2ty4a7nTSM23hg3gz7
-	 /2ULbrc8AHDEc2uG7I1ZG47PrHQgx0MkbGAzNl0tW/PLX0mVoggHHu2xTUzxU2Rzbu
-	 aRaoI6LLqlc+w==
+	s=mail; t=1657011268;
+	bh=MBzgqHdSZRvB6rJVKH3yJTlp+CNTNNydwqek24ljDwA=;
+	h=From:To:Cc:Subject:Date:From;
+	b=KFShzg/37zg5dX+J+wbUDr+8HqgJDwpWU1lm8ZbUYzHaOpSHpPHhUtLQjva+DIXYP
+	 XgClSI//+YY9gxBae/P2k5+VZAifG/pXyPxo7FRIdgijvXh5NFBY+QR1FJGGNthBYF
+	 a8WmeHrSl9ucL6+iasdqzm18nc+nS0VlMv3Ud4IrCR7/TBfD7B959ePq6TVT6IwOev
+	 Dmeh6Fc7FB9H0qWa4XCfUKWGf0t7S0VfdIrBe9r/hNzG6TGuf3ZyCcMsjW3GE6kHxb
+	 EpeZfE80wFqh0bU3w0aZCu/okfju9LkTJjMA6DiUyy9tfhHkXtkkWWFROY3YldXDXS
+	 lK01HPa7lhZPg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -61,19 +61,15 @@ Cc: linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 03/17] vivid: add dynamic array test control
-Date: Tue,  5 Jul 2022 10:54:06 +0200
-Message-Id: <20220705085420.272912-4-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 00/17] Move HEVC stateless controls out of staging
+Date: Tue,  5 Jul 2022 10:54:03 +0200
+Message-Id: <20220705085420.272912-1-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220705085420.272912-1-benjamin.gaignard@collabora.com>
-References: <20220705085420.272912-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220705_015434_881216_A16CB7FF 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220705_015434_988527_51A15E17 
+X-CRM114-Status: GOOD (  17.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,60 +86,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+This series aims to make HEVC uapi stable and usable for hardware
+decoder. HEVC uapi is used by 2 mainlined drivers (Cedrus and Hantro)
+and 2 out of the tree drivers (rkvdec and RPI).
 
-Add a dynamic array test control to help test support for this
-feature.
+version 10:
+- Rebased on media_stage/master
+- Add Acked-by tag from Nicolas
+- Add Tested-by tag from Jernej
+- Fix typo in patch 14
 
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Acked-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Tested-by: Jernej Skrabec <jernej.skrabec@gmail.com>
----
- drivers/media/test-drivers/vivid/vivid-ctrls.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+This version has been tested with these branches:
+- GStreamer: https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/tree/HEVC_aligned_with_kernel_5.15
+- Linux: https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/tree/HEVC_UAPI_V10
 
-diff --git a/drivers/media/test-drivers/vivid/vivid-ctrls.c b/drivers/media/test-drivers/vivid/vivid-ctrls.c
-index 7ff8fdfda28e..a78d676575bc 100644
---- a/drivers/media/test-drivers/vivid/vivid-ctrls.c
-+++ b/drivers/media/test-drivers/vivid/vivid-ctrls.c
-@@ -34,6 +34,7 @@
- #define VIVID_CID_U8_4D_ARRAY		(VIVID_CID_CUSTOM_BASE + 10)
- #define VIVID_CID_AREA			(VIVID_CID_CUSTOM_BASE + 11)
- #define VIVID_CID_RO_INTEGER		(VIVID_CID_CUSTOM_BASE + 12)
-+#define VIVID_CID_U32_DYN_ARRAY		(VIVID_CID_CUSTOM_BASE + 13)
- 
- #define VIVID_CID_VIVID_BASE		(0x00f00000 | 0xf000)
- #define VIVID_CID_VIVID_CLASS		(0x00f00000 | 1)
-@@ -190,6 +191,19 @@ static const struct v4l2_ctrl_config vivid_ctrl_u32_array = {
- 	.dims = { 1 },
- };
- 
-+static const struct v4l2_ctrl_config vivid_ctrl_u32_dyn_array = {
-+	.ops = &vivid_user_gen_ctrl_ops,
-+	.id = VIVID_CID_U32_DYN_ARRAY,
-+	.name = "U32 Dynamic Array",
-+	.type = V4L2_CTRL_TYPE_U32,
-+	.flags = V4L2_CTRL_FLAG_DYNAMIC_ARRAY,
-+	.def = 50,
-+	.min = 10,
-+	.max = 90,
-+	.step = 1,
-+	.dims = { 100 },
-+};
-+
- static const struct v4l2_ctrl_config vivid_ctrl_u16_matrix = {
- 	.ops = &vivid_user_gen_ctrl_ops,
- 	.id = VIVID_CID_U16_MATRIX,
-@@ -1625,6 +1639,7 @@ int vivid_create_controls(struct vivid_dev *dev, bool show_ccs_cap,
- 	dev->ro_int32 = v4l2_ctrl_new_custom(hdl_user_gen, &vivid_ctrl_ro_int32, NULL);
- 	v4l2_ctrl_new_custom(hdl_user_gen, &vivid_ctrl_area, NULL);
- 	v4l2_ctrl_new_custom(hdl_user_gen, &vivid_ctrl_u32_array, NULL);
-+	v4l2_ctrl_new_custom(hdl_user_gen, &vivid_ctrl_u32_dyn_array, NULL);
- 	v4l2_ctrl_new_custom(hdl_user_gen, &vivid_ctrl_u16_matrix, NULL);
- 	v4l2_ctrl_new_custom(hdl_user_gen, &vivid_ctrl_u8_4d_array, NULL);
- 
+With patches to decode 10-bits bitstream and produce P010 frames the Fluster score 
+which was 77/147 before, is now 141/147.
+The 10-bits series will comes after this because of it dependency to
+uAPI change. If you are curious you can find the WIP branch here:
+https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/WIP_HEVC_UAPI_V10
+
+The 6 failing tests are:
+- PICSIZE_{A,B,C,D}_Bossen_1 where resolutions are to big for Hantro hardware.
+- WPP_D_ericsson_MAIN_2 and WPP_D_ericsson_MAIN10_2 are visually ok but some 
+  difference exist on 5 decoded frames. Some pixels values are no the same 
+  the very end of few lines.
+
+version 9:
+- Reword some commit message
+- Use fls()
+- Remove useless padding at the end of hevc structures
+- Reword all _minus* field description
+- change CVS to codec video sequence
+- Fix various typo
+- Fix undefined label: v4l2-ctrl-flag-dynamic-array warning
+- fix the waring reported by 'scripts/kernel-doc -none
+  include/uapi/linux/v4l2-controls.h'
+
+version 8:
+- Same than v7 but rebased on media_stage/master
+
+version 7:
+- Apply Jernej patches for Cedrus about bit offset definition and
+  V4L2_CID_STATELESS_HEVC_SLICE_PARAMS being a dynamic array control.
+- Based on media_tree/master
+
+version 6:
+- Add short_term_ref_pic_set_size and long_term_ref_pic_set_size
+  in v4l2_ctrl_hevc_decode_params structure.
+- Change slice_pic_order_cnt type to s32 to match with PoC type.
+- Set V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag automatically when using
+  V4L2_CID_STATELESS_HEVC_SLICE_PARAMS control.
+- Add a define for max slices count
+- Stop using Hantro dedicated control.
+
+version 5:
+- Change __u16 pic_order_cnt[2] into __s32 pic_order_cnt_val in
+  hevc_dpb_entry structure
+- Add defines for SEI pic_struct values (patch 4)
+- Fix numbers of bits computation in cedrus_h265_skip_bits() parameters
+- Fix num_short_term_ref_pic_sets and num_long_term_ref_pics_sps
+  documentation (patch 8)
+- Rebased on v5-18-rc1
+
+Version 4:
+- Add num_entry_point_offsets field in  struct v4l2_ctrl_hevc_slice_params
+- Fix V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS name
+- Initialize control V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS
+- Fix space/tab issue in kernel-doc
+- Add patch to change data_bit_offset definition
+- Fix hantro-media SPDX license
+- put controls under stateless section in v4l2-ctrls-defs.c 
+
+Benjamin Gaignard (14):
+  media: uapi: HEVC: Add missing fields in HEVC controls
+  media: uapi: HEVC: Rename HEVC stateless controls with STATELESS
+    prefix
+  media: uapi: HEVC: Change pic_order_cnt definition in
+    v4l2_hevc_dpb_entry
+  media: uapi: HEVC: Add SEI pic struct flags
+  media: uapi: HEVC: Add documentation to uAPI structure
+  media: uapi: HEVC: Define V4L2_CID_STATELESS_HEVC_SLICE_PARAMS as a
+    dynamic array
+  media: uapi: Move parsed HEVC pixel format out of staging
+  media: uapi: Add V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
+  media: uapi: Move the HEVC stateless control type out of staging
+  media: controls: Log HEVC stateless control in .std_log
+  media: hantro: Stop using Hantro dedicated control
+  media: uapi: HEVC: fix padding in v4l2 control structures
+  media: uapi: Change data_bit_offset definition
+  media: uapi: move HEVC stateless controls out of staging
+
+Hans Verkuil (3):
+  videodev2.h: add V4L2_CTRL_FLAG_DYNAMIC_ARRAY
+  v4l2-ctrls: add support for dynamically allocated arrays.
+  vivid: add dynamic array test control
+
+ .../media/v4l/ext-ctrls-codec-stateless.rst   | 897 ++++++++++++++++++
+ .../media/v4l/ext-ctrls-codec.rst             | 780 ---------------
+ .../media/v4l/pixfmt-compressed.rst           |   7 +-
+ .../media/v4l/vidioc-g-ext-ctrls.rst          |  20 +
+ .../media/v4l/vidioc-queryctrl.rst            |   8 +
+ .../media/videodev2.h.rst.exceptions          |   6 +
+ .../media/test-drivers/vivid/vivid-ctrls.c    |  15 +
+ drivers/media/v4l2-core/v4l2-ctrls-api.c      | 103 +-
+ drivers/media/v4l2-core/v4l2-ctrls-core.c     | 212 ++++-
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  38 +-
+ drivers/media/v4l2-core/v4l2-ctrls-priv.h     |   3 +-
+ drivers/media/v4l2-core/v4l2-ctrls-request.c  |  13 +-
+ drivers/staging/media/hantro/hantro_drv.c     |  62 +-
+ .../staging/media/hantro/hantro_g2_hevc_dec.c |  44 +-
+ drivers/staging/media/hantro/hantro_hevc.c    |  10 +-
+ drivers/staging/media/hantro/hantro_hw.h      |   4 +-
+ drivers/staging/media/sunxi/cedrus/cedrus.c   |  26 +-
+ .../staging/media/sunxi/cedrus/cedrus_dec.c   |  10 +-
+ .../staging/media/sunxi/cedrus/cedrus_h265.c  |  23 +-
+ .../staging/media/sunxi/cedrus/cedrus_video.c |   1 -
+ include/media/hevc-ctrls.h                    | 250 -----
+ include/media/v4l2-ctrls.h                    |  48 +-
+ include/uapi/linux/v4l2-controls.h            | 459 +++++++++
+ include/uapi/linux/videodev2.h                |  13 +
+ 24 files changed, 1826 insertions(+), 1226 deletions(-)
+ delete mode 100644 include/media/hevc-ctrls.h
+
 -- 
 2.32.0
 
