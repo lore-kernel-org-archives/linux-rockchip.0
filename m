@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58E52C43334
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Jul 2022 13:04:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C40CEC43334
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Jul 2022 13:05:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:Subject:From:
 	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=u2DU9TgNUO9ombfqafGB4b6dV/hOTF4ZXIpGjEeUsGo=; b=4tfrdV+7Jjwb/h
-	5PCTJR/ynMrWBA/sLVco/VrwUfrATsZCKoX1XY59d8NC5oEBo0crP77bra1Ldn88kx+/LRGVnGkCY
-	A/B+iTLOXKJe63FB8ZHpe2FGsZs65wUKJCRpubooPUDAB3Oho5iAuYEueX89YcmSsBg6tvSzXcaOs
-	MWbu9DtoKkprikk7yLGgh6NNEFmzgYhK6WpEBexsBRzuSrtmRt1eK4eYYtW59ONDsKESqerKSovqB
-	M2YKNeTYFrKJCK0q4CjpntjsGPHvVsy3MD3ue45Q8ismdmMoizRTKNosnobMNv8xLrp7/zjqGH+Bl
-	2pbfj1Ntkzh/9XfZWgag==;
+	List-Owner; bh=ZvKB0uLhu5q/5f0L/o6WTmdFsdb2NdNesZMSJ+GER54=; b=zGF1kQWaDqWUSi
+	0rcsvmGzzijA9/ruPdDi+HHdlmHUwt6f+s3Npk5PvriEweFVGlT+Z4EskC+MQMfYpXinQpqCndoPH
+	O68O6Jnys6yjBAtwkVpSOC8o4QokB5Q2DkHyOhPrEk/n1KMuJ8tYKUROS4TgSOEM53h3j3q1VdGK/
+	CtoubmZAWFY1S4Au3P4q9xBWgkB6NhbUF8tZT153veWV7cBzTep4K+5B9OaogQMx9tvEJc5Uvja+3
+	mckShKTWaymcqrZjbVD8gd56OxtcyqDzs0oyBnnW3sGLSFnkG+pxv4lVM5kS81uF9Nv3qxmbPwIUi
+	UU6wqaDDZJe4lfySivCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8iEN-000LRO-Bi; Tue, 05 Jul 2022 13:04:43 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1o8iEc-000LYM-IR; Tue, 05 Jul 2022 13:04:58 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8iEK-000LPR-Jj
-	for linux-rockchip@lists.infradead.org; Tue, 05 Jul 2022 13:04:42 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id eq6so15176225edb.6
-        for <linux-rockchip@lists.infradead.org>; Tue, 05 Jul 2022 06:04:39 -0700 (PDT)
+	id 1o8iEY-000LLE-7u
+	for linux-rockchip@lists.infradead.org; Tue, 05 Jul 2022 13:04:55 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id o25so21537662ejm.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 05 Jul 2022 06:04:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=message-id:date:mime-version:user-agent:from:subject:to:references
          :content-language:in-reply-to:content-transfer-encoding;
-        bh=JGy9gwsWLVZJVyczNGGA91DB7fN/2EsnOrS0qdE6YQg=;
-        b=lAN21efsa0bLzELolwWkySJ4e6PbvVFDkwshZ4HSBxGmpBwmRJHDt6w4TGHm2UCkQc
-         XDhWOwDuTlcx7cTTMt70czNEMGc/dm9IPlbxrX674Klr5iLKyooZTSVxMFIEzGmnTc62
-         l498ug88lF3b4dEVVCFd/iYdpT5TLJunGhBdOHmEOSnxIG8S/+P6y1Y0pTqsTIfL1L5s
-         a7a2zBotwLLhJmpndXd5SFAxEKYYCFV/KDqZP+86qLevy37R4w3T0lFUY8YWrv7EACAP
-         7dU+o2P2jiEUG5gg0hp4dTKc2H6oN1asB8+aU1iKQYyF4ncXLu3iFZBm7br7fNrWQc9i
-         8QlQ==
+        bh=aqu6Y/3+x6nEsAoLh3o9pU85d8clRgzQlLwxdiHK3Rs=;
+        b=Lcx04JVp1A6lozQ3rsDvuvDIiP210EtAls4/k3JDb+6kwCEp7tS0ucSd5h5/1e3MSI
+         mlc/vzAQN8Wl0qhRX6J5NtsVGtwo4m0XrZ6zM8+7/YD9VydQKL1nSh31u5FwjgTjTQeD
+         xrTjewaY/eIal/fjokyWc4Eqz+TzAUE73pz1VYrtRMQdniCVDbu6dnnhLF9FAxOfIP1I
+         LiuqzPNpVtkYqdjCfFQQFpSCmY4faW73eBohwM5eq+sHwShzDNFZVF6IQWjTt2Jkr01Q
+         cAzyowCwBFRDSJfIhVjZ53eyVqF7o1IErGPtlYYNq/0mFUe+Ki2fsvtP0dsya6qLxZIf
+         9MEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:from
          :subject:to:references:content-language:in-reply-to
          :content-transfer-encoding;
-        bh=JGy9gwsWLVZJVyczNGGA91DB7fN/2EsnOrS0qdE6YQg=;
-        b=z1608ZVGIJu5W41A2Vf+2vpi8SqIZSntMziB8Oa5EBUaASlXMv5G4gtcvcgXDS36Jt
-         06cMon46CMzZteMPO8QsAJ41W/NFyTTFJqmKfIT7ckWCACGpqj8c9yYUss7vG7WeL2GX
-         yXmC8Tx7qQ3cpWw6T5nLmTxYWQCiOka7Dk5A1oQVbqe5qnOaLwh4xKnl3DV5DIrV8nns
-         /h5D7rR9hQlfv5bSuTwzWGuASU0N7BR1rW0AQ2i2Ld49XnmSQxXlgJxerJR9bEOcP8uU
-         dlZ6J7T5p96E2asGbcaS/TqD5yof2x4CrlSYUFK4Ykd2QXFiWZ0ZAvNHFMPqTbX1fwQz
-         dPVQ==
-X-Gm-Message-State: AJIora+08LOxDuvP5SuwY0rZ+viA7/lf0DWqihV6tb1RzDMlq5vcZpY5
-	ZbwbyfC3uw/mPV1dgVIen80=
-X-Google-Smtp-Source: AGRyM1v2oZeA1nA8fhywR9doIE3zeT/Od0sd+L/1edRe2Szu+Oi7bvDnnmEITawJB2esawxwjxq5PQ==
-X-Received: by 2002:aa7:cf08:0:b0:43a:6d32:f71d with SMTP id a8-20020aa7cf08000000b0043a6d32f71dmr10983729edy.192.1657026278599;
-        Tue, 05 Jul 2022 06:04:38 -0700 (PDT)
+        bh=aqu6Y/3+x6nEsAoLh3o9pU85d8clRgzQlLwxdiHK3Rs=;
+        b=6oGEG0vRXzIduhsSieQPV7y97xiMsi1HYBnEupYFY/Rhxllwr4dlf7Nfv4dtd06rd6
+         1AI/XnoYaiC5zD2IzmaLK/mCxG6zl5prJIQ9GdG1ysvKg2jz1ldryS4Qu8GXCbypT9r2
+         B14NNA5o5BQ4dBdf7EPAFARO/AH4/syKugzFQAMHNVsXpdkT2boHwq/I0aX9mH6C1iGi
+         tBQ4eK+Ldy2/GWVuvg8UYqteCq/9UX1rNZTuYjNTvO4KRFHlsfEOE3HNiMaR9nOU9K0v
+         z1rKOwb2fWJkdZVUOQfaJ/is2mh3HZcHYRviwglVTAN5DZ3fqm1mzi4v1U2nRW5xE3LN
+         zJAQ==
+X-Gm-Message-State: AJIora/+PcIqNoJQzyOpPNwAXnR02HUwTgLqnzPKrqP5uzWe7NwuIVeg
+	LM7TDrKRF7hyv6qUbJgGUSw=
+X-Google-Smtp-Source: AGRyM1sWcmocQujdixSNyf9YYXtb/LLsElfYSNy22vIPweSks/f58SpJUB7twDD+VZyGI1IOSGEJ/w==
+X-Received: by 2002:a17:907:2895:b0:72a:ed50:f0e8 with SMTP id em21-20020a170907289500b0072aed50f0e8mr1246090ejc.392.1657026293702;
+        Tue, 05 Jul 2022 06:04:53 -0700 (PDT)
 Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id la21-20020a170907781500b0072aeda86ac3sm388545ejc.149.2022.07.05.06.04.37
+        by smtp.gmail.com with ESMTPSA id w2-20020a50fa82000000b0043a64eee322sm4091094edr.28.2022.07.05.06.04.53
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 05 Jul 2022 06:04:38 -0700 (PDT)
-Message-ID: <add074a1-6462-291b-af0d-9b463d8dcd41@gmail.com>
-Date: Tue, 5 Jul 2022 15:04:37 +0200
+        Tue, 05 Jul 2022 06:04:53 -0700 (PDT)
+Message-ID: <e705ee9a-f80b-7035-cb1a-a0f242357103@gmail.com>
+Date: Tue, 5 Jul 2022 15:04:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.0
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v1 3/6] rockchip: rk3066: add Rockchip IDB block device as
- boot action
+Subject: [PATCH v1 4/6] arm: dts: rockchip: sync rk3066/rk3188 DT files from
+ Linux
 To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>,
  Philipp Tomsich <philipp.tomsich@vrull.eu>, xypron.glpk@gmx.de,
  U-Boot-Denx <u-boot@lists.denx.de>, Yifeng Zhao
@@ -78,8 +78,8 @@ References: <20220701094304.1846-1-jbx6244@yandex.com>
 Content-Language: en-US
 In-Reply-To: <20220701094304.1846-1-jbx6244@yandex.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220705_060440_719964_7FE7FD1A 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20220705_060454_324889_CE1F1FE6 
+X-CRM114-Status: GOOD (  11.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,49 +98,190 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Johan Jonker <jbx6244@gmail.com>
 
-Add Rockchip IDB block device as boot action for rk3066.
-When a key is pressed the NAND IDB blocks can be accessed
-by a USB gadget like rockusb.
+Sync rk3066/rk3188 DT files from Linux.
+This is the state as of v5.18 in Linux +
+nfc node for MK808 rk3066a.
+CRU nodes now have a clock property.
+To prefend dtoc errors a fixed clock must also be
+included for tpl/spl in the rk3xxx-u-boot.dtsi file.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
+ arch/arm/dts/rk3066a-mk808.dts    | 18 ++++++++++++++++++
+ arch/arm/dts/rk3066a.dtsi         |  3 ++-
+ arch/arm/dts/rk3188-radxarock.dts |  3 +--
+ arch/arm/dts/rk3188.dtsi          | 24 +++++++++++++++---------
+ arch/arm/dts/rk3xxx-u-boot.dtsi   |  4 ++++
+ 5 files changed, 40 insertions(+), 12 deletions(-)
 
-This patch comes on top of a serie called:
-[PATCH v1 00/17] Add rk3066 ADC and USB support
-https://lore.kernel.org/u-boot/20220508150825.21711-1-jbx6244@gmail.com/
----
- arch/arm/mach-rockchip/rk3066/rk3066.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/arch/arm/mach-rockchip/rk3066/rk3066.c b/arch/arm/mach-rockchip/rk3066/rk3066.c
-index be19400c..c2058369 100644
---- a/arch/arm/mach-rockchip/rk3066/rk3066.c
-+++ b/arch/arm/mach-rockchip/rk3066/rk3066.c
-@@ -32,6 +32,8 @@ void board_debug_uart_init(void)
- 		     GPIO1B0_UART2_SIN << GPIO1B0_SHIFT);
- }
+diff --git a/arch/arm/dts/rk3066a-mk808.dts b/arch/arm/dts/rk3066a-mk808.dts
+index 667d57a4..cfa318a5 100644
+--- a/arch/arm/dts/rk3066a-mk808.dts
++++ b/arch/arm/dts/rk3066a-mk808.dts
+@@ -160,6 +160,24 @@
+ 	status = "okay";
+ };
  
-+int rk_idb_start(void);
++&nfc {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	status = "okay";
 +
- __weak void do_spl(void)
- {
- 	if (CONFIG_IS_ENABLED(OF_PLATDATA))
-@@ -43,6 +45,15 @@ __weak void do_spl(void)
- 	int ret;
++	nand@0 {
++		reg = <0>;
++		label = "rk-nand";
++		nand-bus-width = <8>;
++		nand-ecc-mode = "hw";
++		nand-ecc-step-size = <1024>;
++		nand-ecc-strength = <40>;
++		nand-is-boot-medium;
++		rockchip,boot-blks = <8>;
++		rockchip,boot-ecc-strength = <24>;
++	};
++};
++
+ &pinctrl {
+ 	usb-host {
+ 		host_drv: host-drv {
+diff --git a/arch/arm/dts/rk3066a.dtsi b/arch/arm/dts/rk3066a.dtsi
+index c25b9695..de9915d9 100644
+--- a/arch/arm/dts/rk3066a.dtsi
++++ b/arch/arm/dts/rk3066a.dtsi
+@@ -202,8 +202,9 @@
+ 	cru: clock-controller@20000000 {
+ 		compatible = "rockchip,rk3066a-cru";
+ 		reg = <0x20000000 0x1000>;
++		clocks = <&xin24m>;
++		clock-names = "xin24m";
+ 		rockchip,grf = <&grf>;
+-
+ 		#clock-cells = <1>;
+ 		#reset-cells = <1>;
+ 		assigned-clocks = <&cru PLL_CPLL>, <&cru PLL_GPLL>,
+diff --git a/arch/arm/dts/rk3188-radxarock.dts b/arch/arm/dts/rk3188-radxarock.dts
+index e7138a4a..a9ed3cd2 100644
+--- a/arch/arm/dts/rk3188-radxarock.dts
++++ b/arch/arm/dts/rk3188-radxarock.dts
+@@ -6,7 +6,6 @@
+ /dts-v1/;
+ #include <dt-bindings/input/input.h>
+ #include "rk3188.dtsi"
+-#include "rk3188-radxarock-u-boot.dtsi"
  
- 	switch (spl_boot_device()) {
-+#if IS_ENABLED(CONFIG_SPL_ROCKCHIP_IDB)
-+	case BOOT_DEVICE_NAND:
-+		dev_type = "idb";
-+		dev_index = 0;
-+		ret = rk_idb_start();
-+		if (ret)
-+			return;
-+		break;
-+#endif
- 	case BOOT_DEVICE_MMC1:
- 		dev_type = "mmc";
- 		dev_index = 0;
+ / {
+ 	model = "Radxa Rock";
+@@ -25,7 +24,7 @@
+ 		compatible = "gpio-keys";
+ 		autorepeat;
+ 
+-		power {
++		key-power {
+ 			gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_LOW>;
+ 			linux,code = <KEY_POWER>;
+ 			label = "GPIO Key Power";
+diff --git a/arch/arm/dts/rk3188.dtsi b/arch/arm/dts/rk3188.dtsi
+index 9a80f83a..cdd4a0bd 100644
+--- a/arch/arm/dts/rk3188.dtsi
++++ b/arch/arm/dts/rk3188.dtsi
+@@ -54,7 +54,7 @@
+ 		};
+ 	};
+ 
+-	cpu0_opp_table: opp_table0 {
++	cpu0_opp_table: opp-table-0 {
+ 		compatible = "operating-points-v2";
+ 		opp-shared;
+ 
+@@ -195,8 +195,9 @@
+ 	cru: clock-controller@20000000 {
+ 		compatible = "rockchip,rk3188-cru";
+ 		reg = <0x20000000 0x1000>;
++		clocks = <&xin24m>;
++		clock-names = "xin24m";
+ 		rockchip,grf = <&grf>;
+-
+ 		#clock-cells = <1>;
+ 		#reset-cells = <1>;
+ 	};
+@@ -223,7 +224,7 @@
+ 		#size-cells = <1>;
+ 		ranges;
+ 
+-		gpio0: gpio0@2000a000 {
++		gpio0: gpio@2000a000 {
+ 			compatible = "rockchip,rk3188-gpio-bank0";
+ 			reg = <0x2000a000 0x100>;
+ 			interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_HIGH>;
+@@ -236,7 +237,7 @@
+ 			#interrupt-cells = <2>;
+ 		};
+ 
+-		gpio1: gpio1@2003c000 {
++		gpio1: gpio@2003c000 {
+ 			compatible = "rockchip,gpio-bank";
+ 			reg = <0x2003c000 0x100>;
+ 			interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>;
+@@ -249,7 +250,7 @@
+ 			#interrupt-cells = <2>;
+ 		};
+ 
+-		gpio2: gpio2@2003e000 {
++		gpio2: gpio@2003e000 {
+ 			compatible = "rockchip,gpio-bank";
+ 			reg = <0x2003e000 0x100>;
+ 			interrupts = <GIC_SPI 56 IRQ_TYPE_LEVEL_HIGH>;
+@@ -262,7 +263,7 @@
+ 			#interrupt-cells = <2>;
+ 		};
+ 
+-		gpio3: gpio3@20080000 {
++		gpio3: gpio@20080000 {
+ 			compatible = "rockchip,gpio-bank";
+ 			reg = <0x20080000 0x100>;
+ 			interrupts = <GIC_SPI 57 IRQ_TYPE_LEVEL_HIGH>;
+@@ -275,15 +276,15 @@
+ 			#interrupt-cells = <2>;
+ 		};
+ 
+-		pcfg_pull_up: pcfg_pull_up {
++		pcfg_pull_up: pcfg-pull-up {
+ 			bias-pull-up;
+ 		};
+ 
+-		pcfg_pull_down: pcfg_pull_down {
++		pcfg_pull_down: pcfg-pull-down {
+ 			bias-pull-down;
+ 		};
+ 
+-		pcfg_pull_none: pcfg_pull_none {
++		pcfg_pull_none: pcfg-pull-none {
+ 			bias-disable;
+ 		};
+ 
+@@ -641,6 +642,11 @@
+ &grf {
+ 	compatible = "rockchip,rk3188-grf", "syscon", "simple-mfd";
+ 
++	io_domains: io-domains {
++		compatible = "rockchip,rk3188-io-voltage-domain";
++		status = "disabled";
++	};
++
+ 	usbphy: usbphy {
+ 		compatible = "rockchip,rk3188-usb-phy";
+ 		#address-cells = <1>;
+diff --git a/arch/arm/dts/rk3xxx-u-boot.dtsi b/arch/arm/dts/rk3xxx-u-boot.dtsi
+index e67432fb..c77d1fae 100644
+--- a/arch/arm/dts/rk3xxx-u-boot.dtsi
++++ b/arch/arm/dts/rk3xxx-u-boot.dtsi
+@@ -33,3 +33,7 @@
+ &uart2 {
+ 	clock-frequency = <24000000>;
+ };
++
++&xin24m {
++	u-boot,dm-pre-reloc;
++};
 -- 
 2.20.1
 
