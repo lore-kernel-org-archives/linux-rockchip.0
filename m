@@ -4,71 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B700C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Jul 2022 14:18:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4CCFC43334
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Jul 2022 15:20:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5AyOeFYaek410fZAPZnBk7m1yK4DIILCIja9a+Dx0kY=; b=rQ38SKG8PC4dw2
-	2LytkIQ2ibA3lLz5DvBQIS7tPJu23jIBetUbVdzHhvCWNmgxdtjoCK01TR7vgneo2ansk6O4atiAx
-	+6JNv2wAP3CQ/Lp7eBy0K0K6/UXJEHEEqBS1r8cXlakz35+fye41Gat1dIYiH57eW+lxCBS+h1wvq
-	1OkO/InsaRW32ZX8QzeM2xG23pxhUr1kzl+h27sR2o2Ase0uoHzKUV2hVWBaa3lX6CcW/4FYbKtFe
-	ApYKqO+zVOHz5SFt7g0hiJRlSOen6z+x8GKMF1c2sgcQDT28GnWmLFj4CX7XN62AYN+5VgYL4F3KD
-	jij88wNMkOj5l8QP0xsg==;
+	List-Owner; bh=MqRsoWXRzOa0GjGO4F9FOU0/ybv2sa6/s8xKMBa3PYU=; b=tQcPDc/QV/2G9a
+	dyRWktdJCmVktBWtQZTsSAI2kDxtIDwW+dEj7j7bitpvEj7G/ZWjKk18gVnEnj5ljTukX1RLEW42G
+	6i5lKgOSlNjkXeOE5xMMoTUBLs4YNNMlinv5YNF6dzmUJ8x6Fs1WEjZwO5XDM68dPH+Q+blWzIZzn
+	z/ivD+DIqTcyd+xupkcgzLd510WIcPGeVVRbr2wwR8bC1cB97/wPnRael2L0KTrQyf8BVgl32qJz2
+	OvHmwOV36Qix4UBeWjPoB4qHxaMj3BMFAMmftuVkfsNXO1kRUIs/VSh5i9Zy4KNkdk+tGtC+kF3i4
+	PBXd1PXFXFVk9JafQzcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8jNT-000lbr-SK; Tue, 05 Jul 2022 14:18:11 +0000
-Received: from mx1.tinet.org ([195.77.216.146] helo=mx1.tinet.cat)
+	id 1o8kLH-0015wd-56; Tue, 05 Jul 2022 15:19:59 +0000
+Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8jNQ-000lD8-Oc
-	for linux-rockchip@lists.infradead.org; Tue, 05 Jul 2022 14:18:10 +0000
-X-ASG-Debug-ID: 1657030634-163e7b70c832ede0001-fBy1Pp
-Received: from smtp01.tinet.cat (smtp01.tinet.org [195.77.216.131]) by mx1.tinet.cat with ESMTP id QAyDqerT5jCUwhmM; Tue, 05 Jul 2022 16:17:14 +0200 (CEST)
-X-Barracuda-Envelope-From: xdrudis@tinet.cat
-X-Barracuda-Effective-Source-IP: smtp01.tinet.org[195.77.216.131]
-X-Barracuda-Apparent-Source-IP: 195.77.216.131
-Received: from begut (99.red-79-152-185.dynamicip.rima-tde.net [79.152.185.99])
-	by smtp01.tinet.cat (Postfix) with ESMTPSA id 16BD5605E0C1;
-	Tue,  5 Jul 2022 16:17:14 +0200 (CEST)
-Date: Tue, 5 Jul 2022 16:17:12 +0200
-From: Xavier Drudis Ferran <xdrudis@tinet.cat>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>,
-	Philipp Tomsich <philipp.tomsich@vrull.eu>, xypron.glpk@gmx.de,
-	U-Boot-Denx <u-boot@lists.denx.de>,
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>, jon.lin@rock-chips.com,
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
-	miquel.raynal@bootlin.com, michael@amarulasolutions.com,
-	dario.binacchi@amarulasolutions.com
-Subject: Re: [PATCH v1 1/6] rockchip: block: add Rockchip IDB block device
-Message-ID: <20220705141712.GB2037@begut>
-X-ASG-Orig-Subj: Re: [PATCH v1 1/6] rockchip: block: add Rockchip IDB block device
-References: <20220701094304.1846-1-jbx6244@yandex.com>
- <1816d342-1bd1-ff1e-efe6-af4595850946@gmail.com>
+	id 1o8kLD-0015sj-PW
+	for linux-rockchip@lists.infradead.org; Tue, 05 Jul 2022 15:19:57 +0000
+Received: by mail-vs1-xe2a.google.com with SMTP id j6so12280554vsi.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 05 Jul 2022 08:19:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=SKPvviyPL26CyA8l9iar2MIM4Wl98vso25xZ3nSjowU=;
+        b=c0XNEbkP56Uqlf4jbginpW0oHEPYA0t7AvZsiEserqczx9y1nIzJpBNsL8Sc6nrkj/
+         q2T/YS82/7XzUAAoKEyCWX539afsddUI2xsSnt4prcm+mjMFdB32eOuzeB/EZ8vX30kY
+         bO58EClJSlDOewXEm7SqHBVP309Srux5rkhUkTWEs/pYyCk3AqY9lrqtJetO8Z3ofaun
+         i8OVgiYO/LzH9Igm+AMI5uxUw8y8ljzUSEEYe2E3RO31MCWc39KO5uc6saJfMtQnpPuF
+         rpxBWGIQYgfm4LUJSsPfHkADD/CwTH4HT3F1UUDv7UogtFBxSYJzExYvvgyVWz2CU6kS
+         Io4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=SKPvviyPL26CyA8l9iar2MIM4Wl98vso25xZ3nSjowU=;
+        b=C7wdG3zxAXN0VlRqBKLWeREz2myd1RhSFW6FJ7IcrBwOtHE0YWtLlZLMKzxQ4ZIfN5
+         ++0t65hEfL3lE6IOwjRF8DWPtbD0TMFHGgBejMFyVo5iZyVQYMhl1lO0I3QoM2yuowt0
+         /SCsc0FvVl7p0HZVWIuLVKXaeTdWOr70WkzurdsN94LRLLUJ5vTOnFNXGpz4M26amtvL
+         cD6JdtRxpJoxF1aHmU9gzwQ/Ovt1ypxNb9BSTC9KfUUzf3MU48EW3dszo+RxfHvlkIiF
+         Vre0gC5Yvjx6LA3lLByQmZ2tlltHQa8wuWrP3Ln2CVwyuk+7I5RjJGNdR5sMuYqvCbvY
+         ATPw==
+X-Gm-Message-State: AJIora9Ov+0o/mhbDmT/tRD9bBHRwNrdBXd6WDSvKd5ZRQIH/dGAOQnO
+	vyoeIbU8CaLmcHTYm4N4vbIx7Q==
+X-Google-Smtp-Source: AGRyM1tMBtr7MaG5fInbc7HrIJPJwBQ3Wz4TiiPGLX6OFZzB9OSAQ2Kvd7GK6x+gf0OnNgXpAqo5AA==
+X-Received: by 2002:a67:b207:0:b0:356:51a5:993e with SMTP id b7-20020a67b207000000b0035651a5993emr19609454vsf.12.1657034390773;
+        Tue, 05 Jul 2022 08:19:50 -0700 (PDT)
+Received: from eze-laptop ([190.190.187.68])
+        by smtp.gmail.com with ESMTPSA id b5-20020ab00b05000000b00382a8b1e590sm2980986uak.20.2022.07.05.08.19.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 05 Jul 2022 08:19:49 -0700 (PDT)
+Date: Tue, 5 Jul 2022 12:19:44 -0300
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: mchehab@kernel.org, hverkuil@xs4all.nl, p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org, mripard@kernel.org,
+	paul.kocialkowski@bootlin.com, wens@csie.org,
+	jernej.skrabec@gmail.com, samuel@sholland.org,
+	nicolas.dufresne@collabora.com, andrzej.p@collabora.com,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	kernel@collabora.com
+Subject: Re: [PATCH v10 04/17] media: uapi: HEVC: Add missing fields in HEVC
+ controls
+Message-ID: <YsRWkP6pCMcP2Im2@eze-laptop>
+References: <20220705085420.272912-1-benjamin.gaignard@collabora.com>
+ <20220705085420.272912-5-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1816d342-1bd1-ff1e-efe6-af4595850946@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Barracuda-Connect: smtp01.tinet.org[195.77.216.131]
-X-Barracuda-Start-Time: 1657030634
-X-Barracuda-URL: https://webmail.tinet.cat:443/cgi-mod/mark.cgi
-X-Virus-Scanned: by bsmtpd at tinet.cat
-X-Barracuda-Scan-Msg-Size: 3188
-X-Barracuda-BRTS-Status: 1
-X-Barracuda-Bayes: SPAM GLOBAL 0.9025 1.0000 3.2524
-X-Barracuda-Spam-Score: 3.25
-X-Barracuda-Spam-Status: No, SCORE=3.25 using global scores of TAG_LEVEL=1000.0 QUARANTINE_LEVEL=6.0 KILL_LEVEL=8.0 tests=MAILTO_TO_SPAM_ADDR
-X-Barracuda-Spam-Report: Code version 3.2, rules version 3.2.3.99173
-	Rule breakdown below
-	 pts rule name              description
-	---- ---------------------- --------------------------------------------------
-	0.00 MAILTO_TO_SPAM_ADDR    Includes a link to a likely spammer email
+In-Reply-To: <20220705085420.272912-5-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220705_071808_996384_6FBB42DD 
-X-CRM114-Status: GOOD (  19.66  )
+X-CRM114-CacheID: sfid-20220705_081955_876024_C83FA941 
+X-CRM114-Status: GOOD (  23.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,93 +97,132 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-Thanks for your work. 
-
-El Tue, Jul 05, 2022 at 03:04:15PM +0200, Johan Jonker deia:
-> From: Johan Jonker <jbx6244@gmail.com>
+On Tue, Jul 05, 2022 at 10:54:07AM +0200, Benjamin Gaignard wrote:
+> Complete the HEVC controls with missing fields from H.265 specifications.
+> Even if these fields aren't used by the current mainlined drivers
+> they will be required for (at least) the rkvdec driver.
 > 
-> The Rockchip SoCs with a NAND as boot device need
-> a special Rockchip IDB block device to transfer the data
-> from the rockusb gadget to the NAND driver.
->
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Tested-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 
-Sorry for the fast browsing, lack of experience and possibly wrong and
-noisy comment (I'm no U-Boot expert), but if you have patience for my
-curiosity... This isn't a review, I haven't read it all, just some
-small parts.
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 
-> diff --git a/arch/arm/mach-rockchip/rockchip_idb.c b/arch/arm/mach-rockchip/rockchip_idb.c
-> new file mode 100644
-> index 00000000..6243131d
-> --- /dev/null
-> +++ b/arch/arm/mach-rockchip/rockchip_idb.c
-[...]
-> +struct NandParaInfo {
-> +	u8 id_bytes;
-> +	u8 nand_id[6];
-> +	u8 vendor;
-> +	u8 die_per_chip;
-> +	u8 sec_per_page;
-> +	u16 page_per_blk;
-> +	u8 cell;
-> +	u8 plane_per_die;
-> +	u16 blk_per_plane;
-> +	u16 operation_opt;
-> +	u8 lsb_mode;
-> +	u8 read_retry_mode;
-> +	u8 ecc_bits;
-> +	u8 access_freq;
-> +	u8 opt_mode;
-> +	u8 die_gap;
-> +	u8 bad_block_mode;
-> +	u8 multi_plane_mode;
-> +	u8 slc_mode;
-> +	u8 reserved[5];
-> +};
-> +
-
-Is part of this info already represented in 
-nand_flash_dev in include/linux/mtd/rawnand.h ?
-
-And is it worth merging somehow ? Or should 
-this be synced to something external and the 
-.h file I mentioned be synced to linux, so merging
-would be more trouble than it is worth ? 
-
-> +
-> +u16 random_seed[] = {
-> +	0x576a, 0x05e8, 0x629d, 0x45a3,
-> +	0x649c, 0x4bf0, 0x2342, 0x272e,
-> +	0x7358, 0x4ff3, 0x73ec, 0x5f70,
-[...]
-> +	0x3b2e, 0x7ec7, 0x4fd2, 0x5d28,
-> +	0x751f, 0x3ef8, 0x39b1, 0x4e49,
-> +	0x746b, 0x6ef6, 0x44be, 0x6db7,
-> +};
-
-Where does this come from ? Is it copyrightable ? If so, is it
-licensed ?  fair use ? Does it need to be synced every so often with
-some external source ?
-
-> +
-> +struct NandParaInfo NandFlashParaTbl[] = {
-> +	{6, {0x2c, 0x64, 0x44, 0x4b, 0xa9, 0x00}, 4, 1, 16,  256, 2, 2, 2048, 0x01df,  3, 17, 40, 32, 1, 0, 1, 0, 0, {0, 0, 0, 0, 0}},
-> +	{6, {0x2c, 0x44, 0x44, 0x4b, 0xa9, 0x00}, 4, 1, 16,  256, 2, 2, 1064, 0x01df,  3, 17, 40, 32, 1, 0, 1, 0, 0, {0, 0, 0, 0, 0}},
-> +	{6, {0x2c, 0x68, 0x04, 0x4a, 0xa9, 0x00}, 4, 1,  8,  256, 2, 2, 2048, 0x011f,  1,  0, 24, 32, 1, 0, 1, 0, 0, {0, 0, 0, 0, 0}},
-[...]
-> +	{6, {0x98, 0xde, 0x94, 0x82, 0x76, 0x56}, 1, 1, 16,  256, 2, 2, 2062, 0x05d1,  1, 33, 40, 32, 2, 1, 1, 0, 0, {0, 0, 0, 0, 0}},
-[...]
-> +	{6, {0xec, 0xd5, 0x94, 0x76, 0x54, 0x43}, 0, 1, 16,  128, 2, 2, 1038, 0x0119,  2,  0, 24, 36, 3, 1, 3, 0, 0, {0, 0, 0, 0, 0}},
-> +	{6, {0xec, 0xd7, 0x14, 0x76, 0x54, 0xc2}, 0, 1, 16,  128, 2, 2, 2076, 0x0491,  2,  0, 24, 40, 3, 1, 3, 0, 0, {0, 0, 0, 0, 0}},
-> +	{6, {0xec, 0xde, 0x94, 0xc3, 0xa4, 0xca}, 0, 1, 32,  792, 2, 1,  688, 0x04c1, 11, 50, 40, 32, 3, 1, 1, 0, 1, {0, 0, 0, 0, 0}},
-> +};
-> +
-
-Is this info partially duplicated in drivers/mtd/nand/raw/nand_ids.c ?
-Should it be merged and this added there somehow ?  It seems to have
-more data, but I don't know if some items are deductible from others.
-Could some constants be used to make it easier to read ?
+> ---
+> version 9:
+> - fix typo
+> 
+>  .../media/v4l/ext-ctrls-codec.rst             | 32 +++++++++++++++++++
+>  include/media/hevc-ctrls.h                    |  8 ++++-
+>  2 files changed, 39 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+> index 6183f43f4d73..cff742142a55 100644
+> --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+> +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+> @@ -2683,6 +2683,16 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>      :stub-columns: 0
+>      :widths:       1 1 2
+>  
+> +    * - __u8
+> +      - ``video_parameter_set_id``
+> +      - Specifies the value of the vps_video_parameter_set_id of the active VPS
+> +        as described in section "7.4.3.2.1 General sequence parameter set RBSP semantics"
+> +        of H.265 specifications.
+> +    * - __u8
+> +      - ``seq_parameter_set_id``
+> +      - Provides an identifier for the SPS for reference by other syntax elements
+> +        as described in section "7.4.3.2.1 General sequence parameter set RBSP semantics"
+> +        of H.265 specifications.
+>      * - __u16
+>        - ``pic_width_in_luma_samples``
+>        -
+> @@ -2822,6 +2832,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>      :stub-columns: 0
+>      :widths:       1 1 2
+>  
+> +    * - __u8
+> +      - ``pic_parameter_set_id``
+> +      - Identifies the PPS for reference by other syntax elements.
+>      * - __u8
+>        - ``num_extra_slice_header_bits``
+>        -
+> @@ -3048,6 +3061,15 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>      * - __u8
+>        - ``ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+>        - The list of L1 reference elements as indices in the DPB.
+> +    * - __u16
+> +      - ``short_term_ref_pic_set_size``
+> +      - Specifies the size, in bits, of the short-term reference picture set, described as st_ref_pic_set()
+> +        in the specification, included in the slice header or SPS (section 7.3.6.1).
+> +    * - __u16
+> +      - ``long_term_ref_pic_set_size``
+> +      - Specifies the size, in bits, of the long-term reference picture set include in the slice header
+> +        or SPS. It is the number of bits in the conditional block if(long_term_ref_pics_present_flag)
+> +        in section 7.3.6.1 of the specification.
+>      * - __u8
+>        - ``padding``
+>        - Applications and drivers must set this to zero.
+> @@ -3385,6 +3407,16 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+>        - ``pic_order_cnt_val``
+>        - PicOrderCntVal as described in section 8.3.1 "Decoding process
+>          for picture order count" of the specification.
+> +    * - __u16
+> +      - ``short_term_ref_pic_set_size``
+> +      - Specifies the size, in bits, of the short-term reference picture set, of the first slice
+> +        described as st_ref_pic_set() in the specification, included in the slice header
+> +        or SPS (section 7.3.6.1).
+> +    * - __u16
+> +      - ``long_term_ref_pic_set_size``
+> +      - Specifies the size, in bits, of the long-term reference picture set, of the first slice
+> +        included in the slice header or SPS. It is the number of bits in the conditional block
+> +        if(long_term_ref_pics_present_flag) in section 7.3.6.1 of the specification.
+>      * - __u8
+>        - ``num_active_dpb_entries``
+>        - The number of entries in ``dpb``.
+> diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+> index 01ccda48d8c5..752a8d10782c 100644
+> --- a/include/media/hevc-ctrls.h
+> +++ b/include/media/hevc-ctrls.h
+> @@ -58,6 +58,8 @@ enum v4l2_mpeg_video_hevc_start_code {
+>  /* The controls are not stable at the moment and will likely be reworked. */
+>  struct v4l2_ctrl_hevc_sps {
+>  	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Sequence parameter set */
+> +	__u8	video_parameter_set_id;
+> +	__u8	seq_parameter_set_id;
+>  	__u16	pic_width_in_luma_samples;
+>  	__u16	pic_height_in_luma_samples;
+>  	__u8	bit_depth_luma_minus8;
+> @@ -108,6 +110,7 @@ struct v4l2_ctrl_hevc_sps {
+>  
+>  struct v4l2_ctrl_hevc_pps {
+>  	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture parameter set */
+> +	__u8	pic_parameter_set_id;
+>  	__u8	num_extra_slice_header_bits;
+>  	__u8	num_ref_idx_l0_default_active_minus1;
+>  	__u8	num_ref_idx_l1_default_active_minus1;
+> @@ -199,7 +202,8 @@ struct v4l2_ctrl_hevc_slice_params {
+>  	__u32	slice_segment_addr;
+>  	__u8	ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>  	__u8	ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+> -
+> +	__u16	short_term_ref_pic_set_size;
+> +	__u16	long_term_ref_pic_set_size;
+>  	__u8	padding;
+>  
+>  	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction parameter */
+> @@ -214,6 +218,8 @@ struct v4l2_ctrl_hevc_slice_params {
+>  
+>  struct v4l2_ctrl_hevc_decode_params {
+>  	__s32	pic_order_cnt_val;
+> +	__u16	short_term_ref_pic_set_size;
+> +	__u16	long_term_ref_pic_set_size;
+>  	__u8	num_active_dpb_entries;
+>  	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+>  	__u8	num_poc_st_curr_before;
+> -- 
+> 2.32.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
