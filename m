@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADCF5C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Jul 2022 08:55:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96E20C43334
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 Jul 2022 08:56:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UVC3JLr7K6cDaOjSyh4w3cMYvLSN0u1LZnEAz2qAUOo=; b=NHf8uVkNtaLAZg
-	OsuH/wYOGmnjwje1QlSL4VgyzH7qqeNqBF68Q+lgD2ExCPD82407Gf5WOd9Cv5RWwjZe43HqxSsIZ
-	e5m1nNfxiUkGVGRblMnQGvmWvDrTLngI4NTjnRh4AM5ghjPlGZr3eUufGC0CTLcY8zxN0OobU2PJP
-	Ot9kQa+5+85RQT49JagOvUyEVa6cuEUW1AeXg1LRCpV7HM+RmCD1D6y4jUZ45rN/fuSWWavAhRmH+
-	MDRklTfpUCOz+u20dZO9M4Y3Eh9UzU4B8rJCwFMmk1Cky5xaMbS60Y9qzJygph5R7NxJCDPSVT5rZ
-	2s+a3q2dpSRpmrbXBsyw==;
+	List-Owner; bh=2SPAsuW7A9tcU5ii82BS5n4kNLrGe7h2svsA9adwNf0=; b=ONqNa3b5X7Lwc6
+	uhJdlGkHevdXm2u0siyim9tV7UI2B1ReEAZcB8ehWdw3DKSFdFSZMN1WF7PJlt61o1QHgvj6TCzxa
+	n/P7Y0P17pWquDF0ihH/VkHuYxWd/ub2bRlgse52Gacrn+/o2y2jRwO1wwl5NRgp+Smtm+pN5LD4j
+	BOy1ezjaOIav8TFliPiBgf3OtZjWT1z46dlMagQmZycs9i3IWu+bfCfUD1IopCVYYdkeXS8Jed3OA
+	GB2kiC/s2RpdG+hyQILmx95annBD4qAL1dcqsHMWTMlBtpk7rFRSbba62TElU9cgvIi9W4INlKw61
+	KHuzaFW8kYn+WxJy1yRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8eLS-00GOYl-Un; Tue, 05 Jul 2022 08:55:46 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o8eLj-00GOj6-M7; Tue, 05 Jul 2022 08:56:03 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8eKJ-00GNis-9p; Tue, 05 Jul 2022 08:54:38 +0000
+	id 1o8eKI-00GNjF-Lc; Tue, 05 Jul 2022 08:54:38 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:6610:ee84:2ba:7917])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 625A566018E6;
-	Tue,  5 Jul 2022 09:54:28 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 8289A66019A9;
+	Tue,  5 Jul 2022 09:54:30 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657011269;
-	bh=Mix/dcrKC689R6KC/YMCQrhQenAEsIdHlkgicoWn7ow=;
+	s=mail; t=1657011271;
+	bh=74m1fNyKKTWNkvvgOeIYSIUU2D5I7i5Y9LQkpaIM6SY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=C+DAJSLJ3b5Q95+W3tmiszjM244p+ilvoGcvIgubHwQrdQBaEaMOtGACYhyXnONlE
-	 6n1tmZTgxgkWlQaw/ZqWJ7/O+a9onSRtfI90XOqThWw1dBD79Kr2bDCzKA+6PyZ5oi
-	 mlBD47Fdf16X1AG8cHwa838eL8zJrxmrcfjpRNk3Mp0+FrMY0+I/HKE43z0MRdL4ak
-	 1eASG4NTtpurC8zP10PTbwj15T+xfvvTQOgkqBgshxZLU83xY6vytbBhCsMbbl70d7
-	 TpdJOLnpGfammU7XuqwXdPFwpCrYfPfdUYyzjfXn6+e1hfkDZswDvOhWBvjNT48V/Z
-	 wZrR/Z0EyMoFg==
+	b=LMyNVaWJ+9x+1beTSaA1VQ6u6UF/WW9gp7fms57pDRz278Gsb88c+rF6M9884Z42U
+	 RydbPZZyOyHia3WJzLfdt0EfOnuwmlultsZ3Y5/cYPT6IpzND3/pjitNuXZYXLBPL0
+	 ZLQ3KJWoouCXDpp6qlsnW7A4un9Ns24W+19W9QmEVZEB/Bw32TiwKMUGsFRP3mG3YI
+	 F4TiemRY+rCqeVpg8z1TT9DLNdfgeEFXFEb6VOU8PvwF4Xfr8YGK9Bvbb//1Jv3By+
+	 jdQtGqkzbCCmrkykgQSUui6k/bMk+4BKyYHc5G0fU+k5RTotQOklEwTDv5XpGfQNBC
+	 elp1FOdmBHwCQ==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -61,18 +61,17 @@ Cc: linux-media@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v10 01/17] videodev2.h: add V4L2_CTRL_FLAG_DYNAMIC_ARRAY
-Date: Tue,  5 Jul 2022 10:54:04 +0200
-Message-Id: <20220705085420.272912-2-benjamin.gaignard@collabora.com>
+Subject: [PATCH v10 04/17] media: uapi: HEVC: Add missing fields in HEVC controls
+Date: Tue,  5 Jul 2022 10:54:07 +0200
+Message-Id: <20220705085420.272912-5-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220705085420.272912-1-benjamin.gaignard@collabora.com>
 References: <20220705085420.272912-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220705_015435_675013_ED1C8E3F 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20220705_015435_011913_B44B27E1 
+X-CRM114-Status: GOOD (  14.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,78 +88,125 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Complete the HEVC controls with missing fields from H.265 specifications.
+Even if these fields aren't used by the current mainlined drivers
+they will be required for (at least) the rkvdec driver.
 
-Add a new flag that indicates that this control is a dynamically sized
-array. Also document this flag.
-
-Currently dynamically sized arrays are limited to one dimensional arrays,
-but that might change in the future if there is a need for it.
-
-The initial use-case of dynamic arrays are stateless codecs. A frame
-can be divided in many slices, so you want to provide an array containing
-slice information for each slice. Typically the number of slices is small,
-but the standard allow for hundreds or thousands of slices. Dynamic arrays
-are a good solution since sizing the array for the worst case would waste
-substantial amounts of memory.
-
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Acked-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Tested-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 ---
 version 9:
-- Fix undefined label: v4l2-ctrl-flag-dynamic-array warning
+- fix typo
 
- .../userspace-api/media/v4l/vidioc-queryctrl.rst          | 8 ++++++++
- .../userspace-api/media/videodev2.h.rst.exceptions        | 1 +
- include/uapi/linux/videodev2.h                            | 1 +
- 3 files changed, 10 insertions(+)
+ .../media/v4l/ext-ctrls-codec.rst             | 32 +++++++++++++++++++
+ include/media/hevc-ctrls.h                    |  8 ++++-
+ 2 files changed, 39 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
-index 88f630252d98..a20dfa2a933b 100644
---- a/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
-+++ b/Documentation/userspace-api/media/v4l/vidioc-queryctrl.rst
-@@ -625,6 +625,14 @@ See also the examples in :ref:`control`.
- 	``V4L2_CTRL_FLAG_GRABBED`` flag when buffers are allocated or
- 	streaming is in progress since most drivers do not support changing
- 	the format in that case.
-+    * - ``V4L2_CTRL_FLAG_DYNAMIC_ARRAY``
-+      - 0x0800
-+      - This control is a dynamically sized 1-dimensional array. It
-+        behaves the same as a regular array, except that the number
-+	of elements as reported by the ``elems`` field is between 1 and
-+	``dims[0]``. So setting the control with a differently sized
-+	array will change the ``elems`` field when the control is
-+	queried afterwards.
+diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+index 6183f43f4d73..cff742142a55 100644
+--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
++++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+@@ -2683,6 +2683,16 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     :stub-columns: 0
+     :widths:       1 1 2
  
- Return Value
- ============
-diff --git a/Documentation/userspace-api/media/videodev2.h.rst.exceptions b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
-index 9cbb7a0c354a..0b91200776f8 100644
---- a/Documentation/userspace-api/media/videodev2.h.rst.exceptions
-+++ b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
-@@ -379,6 +379,7 @@ replace define V4L2_CTRL_FLAG_VOLATILE control-flags
- replace define V4L2_CTRL_FLAG_HAS_PAYLOAD control-flags
- replace define V4L2_CTRL_FLAG_EXECUTE_ON_WRITE control-flags
- replace define V4L2_CTRL_FLAG_MODIFY_LAYOUT control-flags
-+replace define V4L2_CTRL_FLAG_DYNAMIC_ARRAY control-flags
++    * - __u8
++      - ``video_parameter_set_id``
++      - Specifies the value of the vps_video_parameter_set_id of the active VPS
++        as described in section "7.4.3.2.1 General sequence parameter set RBSP semantics"
++        of H.265 specifications.
++    * - __u8
++      - ``seq_parameter_set_id``
++      - Provides an identifier for the SPS for reference by other syntax elements
++        as described in section "7.4.3.2.1 General sequence parameter set RBSP semantics"
++        of H.265 specifications.
+     * - __u16
+       - ``pic_width_in_luma_samples``
+       -
+@@ -2822,6 +2832,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     :stub-columns: 0
+     :widths:       1 1 2
  
- replace define V4L2_CTRL_FLAG_NEXT_CTRL control
- replace define V4L2_CTRL_FLAG_NEXT_COMPOUND control
-diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
-index 5311ac4fde35..9018aa984db3 100644
---- a/include/uapi/linux/videodev2.h
-+++ b/include/uapi/linux/videodev2.h
-@@ -1890,6 +1890,7 @@ struct v4l2_querymenu {
- #define V4L2_CTRL_FLAG_HAS_PAYLOAD	0x0100
- #define V4L2_CTRL_FLAG_EXECUTE_ON_WRITE	0x0200
- #define V4L2_CTRL_FLAG_MODIFY_LAYOUT	0x0400
-+#define V4L2_CTRL_FLAG_DYNAMIC_ARRAY	0x0800
++    * - __u8
++      - ``pic_parameter_set_id``
++      - Identifies the PPS for reference by other syntax elements.
+     * - __u8
+       - ``num_extra_slice_header_bits``
+       -
+@@ -3048,6 +3061,15 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     * - __u8
+       - ``ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+       - The list of L1 reference elements as indices in the DPB.
++    * - __u16
++      - ``short_term_ref_pic_set_size``
++      - Specifies the size, in bits, of the short-term reference picture set, described as st_ref_pic_set()
++        in the specification, included in the slice header or SPS (section 7.3.6.1).
++    * - __u16
++      - ``long_term_ref_pic_set_size``
++      - Specifies the size, in bits, of the long-term reference picture set include in the slice header
++        or SPS. It is the number of bits in the conditional block if(long_term_ref_pics_present_flag)
++        in section 7.3.6.1 of the specification.
+     * - __u8
+       - ``padding``
+       - Applications and drivers must set this to zero.
+@@ -3385,6 +3407,16 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+       - ``pic_order_cnt_val``
+       - PicOrderCntVal as described in section 8.3.1 "Decoding process
+         for picture order count" of the specification.
++    * - __u16
++      - ``short_term_ref_pic_set_size``
++      - Specifies the size, in bits, of the short-term reference picture set, of the first slice
++        described as st_ref_pic_set() in the specification, included in the slice header
++        or SPS (section 7.3.6.1).
++    * - __u16
++      - ``long_term_ref_pic_set_size``
++      - Specifies the size, in bits, of the long-term reference picture set, of the first slice
++        included in the slice header or SPS. It is the number of bits in the conditional block
++        if(long_term_ref_pics_present_flag) in section 7.3.6.1 of the specification.
+     * - __u8
+       - ``num_active_dpb_entries``
+       - The number of entries in ``dpb``.
+diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+index 01ccda48d8c5..752a8d10782c 100644
+--- a/include/media/hevc-ctrls.h
++++ b/include/media/hevc-ctrls.h
+@@ -58,6 +58,8 @@ enum v4l2_mpeg_video_hevc_start_code {
+ /* The controls are not stable at the moment and will likely be reworked. */
+ struct v4l2_ctrl_hevc_sps {
+ 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Sequence parameter set */
++	__u8	video_parameter_set_id;
++	__u8	seq_parameter_set_id;
+ 	__u16	pic_width_in_luma_samples;
+ 	__u16	pic_height_in_luma_samples;
+ 	__u8	bit_depth_luma_minus8;
+@@ -108,6 +110,7 @@ struct v4l2_ctrl_hevc_sps {
  
- /*  Query flags, to be ORed with the control ID */
- #define V4L2_CTRL_FLAG_NEXT_CTRL	0x80000000
+ struct v4l2_ctrl_hevc_pps {
+ 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture parameter set */
++	__u8	pic_parameter_set_id;
+ 	__u8	num_extra_slice_header_bits;
+ 	__u8	num_ref_idx_l0_default_active_minus1;
+ 	__u8	num_ref_idx_l1_default_active_minus1;
+@@ -199,7 +202,8 @@ struct v4l2_ctrl_hevc_slice_params {
+ 	__u32	slice_segment_addr;
+ 	__u8	ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 	__u8	ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+-
++	__u16	short_term_ref_pic_set_size;
++	__u16	long_term_ref_pic_set_size;
+ 	__u8	padding;
+ 
+ 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction parameter */
+@@ -214,6 +218,8 @@ struct v4l2_ctrl_hevc_slice_params {
+ 
+ struct v4l2_ctrl_hevc_decode_params {
+ 	__s32	pic_order_cnt_val;
++	__u16	short_term_ref_pic_set_size;
++	__u16	long_term_ref_pic_set_size;
+ 	__u8	num_active_dpb_entries;
+ 	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 	__u8	num_poc_st_curr_before;
 -- 
 2.32.0
 
