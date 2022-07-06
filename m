@@ -4,60 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2646CC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 07:57:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F339FCCA485
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 09:05:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KO896d2y8TdAf8HTd9NVgNxNu8He1JhZWSb3bhjkllE=; b=pidTlybJpsbiZ0
-	pdMJVgyAxspaVjX21jkICnar2JmVw5RvSRU9kdOHx5ZtiMLN+vUMhvUzKTLljbRh6epoWXZOaKYoY
-	R+g7hqieHpq4wmBhOXv1Be+l8et145GuWSYQ0dBvZ6WBVzwQNjUM3u/lOkcRcHXltHjDY6yidZUQe
-	OOldbeoy1VHPzdu3NmQ95zlU+ReN3hzePorxQCgFTxvrM9f8ieaLqGdBEYqQsIHO+wUgUSdgAzqwT
-	JEhUAJSwd3QaGJtTV/hzHwpGJHqEMMZW799BQJSHnSMq1I6iJb4zLnc4lY0+PSr6hhDXyltLRGW6n
-	ez5tDp9yDwrPPEDOcJyw==;
+	List-Owner; bh=br+uZG4aj8CPR33Ld/ERFImYRe47BjEQqkF0a6921D4=; b=baazuieCsYXYZX
+	xbcS/JW+TO+E4dDt14qhraCOEoxq3U3wsozMrxiUH+iRvzbkpNk8UkWF4SP6roeWYMrwRa1QbE1R8
+	vWYmWr5mN0vdE36sc8y/iz9lmvX/Dog+nkOcDdOpvxg2TCIiC+KsWSdwvYxX1vVv1xkW54eUNnwcQ
+	0K8hZExGWvLAYxFjkof1ICydBGoYeyGaqZZQWYCiqe81P5tKCiCuFYEBwIFRZf3Z4PfgqHFH/HnhU
+	O611R9P8mUJb1yyfjMxlFKCg2hkQ3Mk1RY9Q9iDm92Uw/VeTcGVSNPDZipbkuTKcBzxOdZR9Vw2Fn
+	KWSub8r5Ahd1AWGqjS1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8zuS-007EGK-9c; Wed, 06 Jul 2022 07:57:20 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1o90yP-007cGi-Ks; Wed, 06 Jul 2022 09:05:29 +0000
+Received: from mail-wr1-f53.google.com ([209.85.221.53])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o8zuD-007E8a-CX; Wed, 06 Jul 2022 07:57:08 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 260C3B81B37;
-	Wed,  6 Jul 2022 07:57:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F2787C341C8;
-	Wed,  6 Jul 2022 07:56:57 +0000 (UTC)
-Message-ID: <e63f409e-4e9c-78c1-dc1c-92efa4fff744@xs4all.nl>
-Date: Wed, 6 Jul 2022 09:56:55 +0200
+	id 1o90xz-007bxv-FM
+	for linux-rockchip@lists.infradead.org; Wed, 06 Jul 2022 09:05:05 +0000
+Received: by mail-wr1-f53.google.com with SMTP id q9so21052773wrd.8
+        for <linux-rockchip@lists.infradead.org>; Wed, 06 Jul 2022 02:05:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=YTCwVt48y9KJqKpi4AoXVBEGpD4ZzF22SRLhTWJSe6w=;
+        b=aROmTaAGd5Uz5ErAcUPgj5Xng9693lZ8XtgK2awEuQqhxAkqjQwWM4e9bCWIzuN+uc
+         wtw+U7lTfgBdzB7scPLu92+ZDbFpxIMPTR9qj22P+Jfxatc/rsIt/ni7zG9Xvp45Qc1j
+         uxylZy+jPptwy6+sevgtRWzhVjd7xCO+6GlWPmrf39fqipXEwibsZdfy5CiwlqYUiO3o
+         bom/rzprf++oFWPvrbxSimc6AV1Qqlq/sD2yufBm1H2ZYCLsKFaPm61pmYKSrp3q/amA
+         8suMAqn73A02BwL5qgCNRGSjHyO+yp019HEbO8oUz4qJcEuXe9LtkK0kcVIrYMrLg0+v
+         5Y1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=YTCwVt48y9KJqKpi4AoXVBEGpD4ZzF22SRLhTWJSe6w=;
+        b=vpfHg5565/i1kIAHca9vGTAeqWWMhgBaR8qMaxh+G+jdBgaQeghO0QLEVsSCawndTr
+         jlyZ5A64+VzF09+uGjVIjk4kSDm1HXJdkya9VstXUHDcGvhFYuB3OFLUXu69Q5VBlnDq
+         iQxE0Nqn6XBLRhiX7xtpPF5N+JLNRLWzXp8QmmjVwT2Dh1PGgXdSY/V9+hniJFoVKuWl
+         KW/TE4P/Jz/9mWZZuRgLgZqKxTWv+juy5ZzvbGt/uoRiSUf6J+I4WnjS7YqdqDfHoc2e
+         WDjF+Yu46zeSPtTNkGC3lE/WTwyvphYQ374asQOxhdTTfl7dEnzrbS3iyBt9c/pyYurD
+         FXJw==
+X-Gm-Message-State: AJIora++1gLys25ECof0u9LvsLqq53NL/aKg9Xfn7EGhEqYqtk6Jm0P5
+	RTbc+JahRli2OzmOKQRZI4wWlA==
+X-Google-Smtp-Source: AGRyM1vC9VxnuvLBjsVAM6qNEFXl5IPwmRbanNxBUua9l8GqQ2AlSl2w3qIg0HwpaHw77/ccv3FGlw==
+X-Received: by 2002:adf:db12:0:b0:21b:970b:e882 with SMTP id s18-20020adfdb12000000b0021b970be882mr37317063wri.6.1657098303035;
+        Wed, 06 Jul 2022 02:05:03 -0700 (PDT)
+Received: from localhost.localdomain (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.googlemail.com with ESMTPSA id v11-20020adfe28b000000b0021d6ef34b2asm5230223wri.51.2022.07.06.02.05.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 06 Jul 2022 02:05:02 -0700 (PDT)
+From: Corentin Labbe <clabbe@baylibre.com>
+To: heiko@sntech.de,
+	herbert@gondor.apana.org.au,
+	krzysztof.kozlowski+dt@linaro.org,
+	mturquette@baylibre.com,
+	p.zabel@pengutronix.de,
+	robh+dt@kernel.org,
+	sboyd@kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-clk@vger.kernel.org,
+	linux-crypto@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	john@metanate.com,
+	didi.debian@cknow.org,
+	Corentin Labbe <clabbe@baylibre.com>
+Subject: [PATCH v8 29/33] crypto: rockchip: store crypto_info in request context
+Date: Wed,  6 Jul 2022 09:04:08 +0000
+Message-Id: <20220706090412.806101-30-clabbe@baylibre.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220706090412.806101-1-clabbe@baylibre.com>
+References: <20220706090412.806101-1-clabbe@baylibre.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.0
-Subject: Re: [PATCH v10 11/17] media: uapi: Add
- V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Cc: mchehab@kernel.org, p.zabel@pengutronix.de, gregkh@linuxfoundation.org,
- mripard@kernel.org, paul.kocialkowski@bootlin.com, wens@csie.org,
- jernej.skrabec@gmail.com, samuel@sholland.org,
- nicolas.dufresne@collabora.com, andrzej.p@collabora.com,
- linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- kernel@collabora.com
-References: <20220705085420.272912-1-benjamin.gaignard@collabora.com>
- <20220705085420.272912-12-benjamin.gaignard@collabora.com>
- <YsRclobW7gL/Dtlr@eze-laptop>
- <6ae43dcd-9b1d-ce30-8c3e-a8c313ef5b0a@collabora.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <6ae43dcd-9b1d-ce30-8c3e-a8c313ef5b0a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_005705_785599_EAABC5B4 
-X-CRM114-Status: GOOD (  24.53  )
+X-CRM114-CacheID: sfid-20220706_020503_569252_3FCE3A43 
+X-CRM114-Status: GOOD (  13.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,115 +96,141 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQmVuamFtaW4sCgpPbiA3LzUvMjIgMTg6MDMsIEJlbmphbWluIEdhaWduYXJkIHdyb3RlOgo+
-IAo+IExlIDA1LzA3LzIwMjIgw6AgMTc6NDUsIEV6ZXF1aWVsIEdhcmNpYSBhIMOpY3JpdMKgOgo+
-PiBIaSBndXlzLAo+Pgo+PiBPbiBUdWUsIEp1bCAwNSwgMjAyMiBhdCAxMDo1NDoxNEFNICswMjAw
-LCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToKPj4+IFRoZSBudW1iZXIgb2YgJ2VudHJ5IHBvaW50
-IG9mZnNldCcgY2FuIGJlIHZlcnkgdmFyaWFibGUuCj4+PiBJbnN0ZWFkIG9mIHVzaW5nIGEgbGFy
-Z2Ugc3RhdGljIGFycmF5IGRlZmluZSBhIHY0bDIgZHluYW1pYyBhcnJheQo+Pj4gb2YgVTMyIChW
-NEwyX0NUUkxfVFlQRV9VMzIpLgo+Pj4gVGhlIG51bWJlciBvZiBlbnRyeSBwb2ludCBvZmZzZXRz
-IGlzIHJlcG9ydGVkIGJ5IHRoZSBlbGVtcyBmaWVsZAo+Pj4gYW5kIGluIHN0cnVjdCB2NGwyX2N0
-cmxfaGV2Y19zbGljZV9wYXJhbXMubnVtX2VudHJ5X3BvaW50X29mZnNldHMKPj4+IGZpZWxkLgo+
-Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IEJlbmphbWluIEdhaWduYXJkIDxiZW5qYW1pbi5nYWlnbmFy
-ZEBjb2xsYWJvcmEuY29tPgo+Pj4gQWNrZWQtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMu
-ZHVmcmVzbmVAY29sbGFib3JhLmNvbT4KPj4+IFRlc3RlZC1ieTogSmVybmVqIFNrcmFiZWMgPGpl
-cm5lai5za3JhYmVjQGdtYWlsLmNvbT4KPj4+IC0tLQo+Pj4gICAuLi4vdXNlcnNwYWNlLWFwaS9t
-ZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdCAgICAgICB8IDExICsrKysrKysrKysrCj4+PiAg
-IGRyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItY3RybHMtZGVmcy5jICAgICAgICAgICAgIHwg
-IDUgKysrKysKPj4+ICAgaW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxzLmggICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgfCAgNSArKysrLQo+Pj4gICAzIGZpbGVzIGNoYW5nZWQsIDIwIGluc2VydGlv
-bnMoKyksIDEgZGVsZXRpb24oLSkKPj4+Cj4+PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi91
-c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9leHQtY3RybHMtY29kZWMucnN0IGIvRG9jdW1lbnRhdGlv
-bi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9leHQtY3RybHMtY29kZWMucnN0Cj4+PiBpbmRleCBk
-YjBkZjdkOWYyN2MuLjhkZjhkN2ZkZmU3MCAxMDA2NDQKPj4+IC0tLSBhL0RvY3VtZW50YXRpb24v
-dXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdAo+Pj4gKysrIGIvRG9j
-dW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9leHQtY3RybHMtY29kZWMucnN0Cj4+
-PiBAQCAtMzAxMCw2ICszMDEwLDkgQEAgZW51bSB2NGwyX21wZWdfdmlkZW9faGV2Y19zaXplX29m
-X2xlbmd0aF9maWVsZCAtCj4+PiAgICAgICAqIC0gX191MzIKPj4+ICAgICAgICAgLSBgYGRhdGFf
-Yml0X29mZnNldGBgCj4+PiAgICAgICAgIC0gT2Zmc2V0IChpbiBiaXRzKSB0byB0aGUgdmlkZW8g
-ZGF0YSBpbiB0aGUgY3VycmVudCBzbGljZSBkYXRhLgo+Pj4gKyAgICAqIC0gX191MzIKPj4+ICsg
-ICAgICAtIGBgbnVtX2VudHJ5X3BvaW50X29mZnNldHNgYAo+Pj4gKyAgICAgIC0gU3BlY2lmaWVz
-IHRoZSBudW1iZXIgb2YgZW50cnkgcG9pbnQgb2Zmc2V0IHN5bnRheCBlbGVtZW50cyBpbiB0aGUg
-c2xpY2UgaGVhZGVyLgo+PiBUaGlzIGxvb2tzIHVuZGVyZG9jdW1lbnRlZC4gU29tZXdoZXJlIGlu
-IHRoZSBkb2NzIGl0IHNob3VsZCBiZSBtZW50aW9uZWQKPj4gdGhhdCB0aGUgZmllbGQgJ251bV9l
-bnRyeV9wb2ludF9vZmZzZXRzJyBpcyBsaW5rZWQgdG8gdGhlIGNvbnRyb2wKPj4gVjRMMl9DSURf
-U1RBVEVMRVNTX0hFVkNfRU5UUllfUE9JTlRfT0ZGU0VUUy4KPiAKPiBUaGlzIGZpZWxkIGlzIGhl
-cmUgYmVjYXVzZSBzb21lIGRyaXZlcnMgd291bGQgbGlrZSBrbm93IHRoZSBudW1iZXIgb2YKPiBl
-bnRyeSBwb2ludCBvZmZzZXRzIHdpdGhvdXQgZ2V0dGluZyB0aGUgZW50cnkgcG9pbnQgb2Zmc2V0
-cyBkYXRhIGl0c2VsZi4KCkkgYWdyZWUgd2l0aCBFemVxdWllbCB0aGF0IHRoaXMgbmVlZHMgdG8g
-YmUgZG9jdW1lbnRlZCBhIGJpdCBiZXR0ZXIsIGVzcC4gYnkKaGF2aW5nIGEgcmVmZXJlbmNlIHRv
-IHRoZSBjb250cm9sIChhbmQgdmljZSB2ZXJzYSwgcHJvYmFibHkpLiBUaGF0IHB1dHMgdGhpcwpp
-bnRvIGJldHRlciBjb250ZXh0LgoKSSBhc3N1bWUgeW91J2xsIHBvc3QgYSB2MTE/CgpSZWdhcmRz
-LAoKCUhhbnMKCj4gCj4gQmVuamFtaW4KPiAKPj4KPj4gVGhhbmtzLAo+PiBFemVxdWllbAo+Pgo+
-Pj4gICAgICAgKiAtIF9fdTgKPj4+ICAgICAgICAgLSBgYG5hbF91bml0X3R5cGVgYAo+Pj4gICAg
-ICAgICAtIFNwZWNpZmllcyB0aGUgY29kaW5nIHR5cGUgb2YgdGhlIHNsaWNlIChCLCBQIG9yIEkp
-Lgo+Pj4gQEAgLTMxNTAsNiArMzE1MywxNCBAQCBlbnVtIHY0bDJfbXBlZ192aWRlb19oZXZjX3Np
-emVfb2ZfbGVuZ3RoX2ZpZWxkIC0KPj4+ICAgCj4+PiAgICAgICBcbm9ybWFsc2l6ZQo+Pj4gICAK
-Pj4+ICtgYFY0TDJfQ0lEX1NUQVRFTEVTU19IRVZDX0VOVFJZX1BPSU5UX09GRlNFVFMgKGludGVn
-ZXIpYGAKPj4+ICsgICAgU3BlY2lmaWVzIGVudHJ5IHBvaW50IG9mZnNldHMgaW4gYnl0ZXMuCj4+
-PiArICAgIFRoaXMgY29udHJvbCBpcyBhIGR5bmFtaWNhbGx5IHNpemVkIGFycmF5LiBUaGUgbnVt
-YmVyIG9mIGVudHJ5IHBvaW50Cj4+PiArICAgIG9mZnNldHMgaXMgcmVwb3J0ZWQgYnkgdGhlIGBg
-ZWxlbXNgYCBmaWVsZC4KPj4+ICsgICAgVGhpcyBiaXRzdHJlYW0gcGFyYW1ldGVyIGlzIGRlZmlu
-ZWQgYWNjb3JkaW5nIHRvIDpyZWY6YGhldmNgLgo+Pj4gKyAgICBUaGV5IGFyZSBkZXNjcmliZWQg
-aW4gc2VjdGlvbiA3LjQuNy4xICJHZW5lcmFsIHNsaWNlIHNlZ21lbnQgaGVhZGVyCj4+PiArICAg
-IHNlbWFudGljcyIgb2YgdGhlIHNwZWNpZmljYXRpb24uCj4+PiArCj4+PiAgIGBgVjRMMl9DSURf
-U1RBVEVMRVNTX0hFVkNfU0NBTElOR19NQVRSSVggKHN0cnVjdClgYAo+Pj4gICAgICAgU3BlY2lm
-aWVzIHRoZSBIRVZDIHNjYWxpbmcgbWF0cml4IHBhcmFtZXRlcnMgdXNlZCBmb3IgdGhlIHNjYWxp
-bmcgcHJvY2Vzcwo+Pj4gICAgICAgZm9yIHRyYW5zZm9ybSBjb2VmZmljaWVudHMuCj4+PiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jdHJscy1kZWZzLmMgYi9kcml2
-ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWN0cmxzLWRlZnMuYwo+Pj4gaW5kZXggZDU5NGVmYmNi
-YjkzLi5lMjI5MjFlN2VhNjEgMTAwNjQ0Cj4+PiAtLS0gYS9kcml2ZXJzL21lZGlhL3Y0bDItY29y
-ZS92NGwyLWN0cmxzLWRlZnMuYwo+Pj4gKysrIGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRs
-Mi1jdHJscy1kZWZzLmMKPj4+IEBAIC0xMTg4LDYgKzExODgsNyBAQCBjb25zdCBjaGFyICp2NGwy
-X2N0cmxfZ2V0X25hbWUodTMyIGlkKQo+Pj4gICAJY2FzZSBWNEwyX0NJRF9TVEFURUxFU1NfSEVW
-Q19ERUNPREVfUEFSQU1TOgkJcmV0dXJuICJIRVZDIERlY29kZSBQYXJhbWV0ZXJzIjsKPj4+ICAg
-CWNhc2UgVjRMMl9DSURfU1RBVEVMRVNTX0hFVkNfREVDT0RFX01PREU6CQlyZXR1cm4gIkhFVkMg
-RGVjb2RlIE1vZGUiOwo+Pj4gICAJY2FzZSBWNEwyX0NJRF9TVEFURUxFU1NfSEVWQ19TVEFSVF9D
-T0RFOgkJcmV0dXJuICJIRVZDIFN0YXJ0IENvZGUiOwo+Pj4gKwljYXNlIFY0TDJfQ0lEX1NUQVRF
-TEVTU19IRVZDX0VOVFJZX1BPSU5UX09GRlNFVFM6CXJldHVybiAiSEVWQyBFbnRyeSBQb2ludCBP
-ZmZzZXRzIjsKPj4+ICAgCj4+PiAgIAkvKiBDb2xvcmltZXRyeSBjb250cm9scyAqLwo+Pj4gICAJ
-LyogS2VlcCB0aGUgb3JkZXIgb2YgdGhlICdjYXNlJ3MgdGhlIHNhbWUgYXMgaW4gdjRsMi1jb250
-cm9scy5oISAqLwo+Pj4gQEAgLTE1MTgsNiArMTUxOSwxMCBAQCB2b2lkIHY0bDJfY3RybF9maWxs
-KHUzMiBpZCwgY29uc3QgY2hhciAqKm5hbWUsIGVudW0gdjRsMl9jdHJsX3R5cGUgKnR5cGUsCj4+
-PiAgIAljYXNlIFY0TDJfQ0lEX1NUQVRFTEVTU19IRVZDX0RFQ09ERV9QQVJBTVM6Cj4+PiAgIAkJ
-KnR5cGUgPSBWNEwyX0NUUkxfVFlQRV9IRVZDX0RFQ09ERV9QQVJBTVM7Cj4+PiAgIAkJYnJlYWs7
-Cj4+PiArCWNhc2UgVjRMMl9DSURfU1RBVEVMRVNTX0hFVkNfRU5UUllfUE9JTlRfT0ZGU0VUUzoK
-Pj4+ICsJCSp0eXBlID0gVjRMMl9DVFJMX1RZUEVfVTMyOwo+Pj4gKwkJKmZsYWdzIHw9IFY0TDJf
-Q1RSTF9GTEFHX0RZTkFNSUNfQVJSQVk7Cj4+PiArCQlicmVhazsKPj4+ICAgCWNhc2UgVjRMMl9D
-SURfU1RBVEVMRVNTX1ZQOV9DT01QUkVTU0VEX0hEUjoKPj4+ICAgCQkqdHlwZSA9IFY0TDJfQ1RS
-TF9UWVBFX1ZQOV9DT01QUkVTU0VEX0hEUjsKPj4+ICAgCQlicmVhazsKPj4+IGRpZmYgLS1naXQg
-YS9pbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaCBiL2luY2x1ZGUvbWVkaWEvaGV2Yy1jdHJscy5o
-Cj4+PiBpbmRleCBhMzcyYzE4NDY4OWUuLjNhNjYwMWE0NmNlZCAxMDA2NDQKPj4+IC0tLSBhL2lu
-Y2x1ZGUvbWVkaWEvaGV2Yy1jdHJscy5oCj4+PiArKysgYi9pbmNsdWRlL21lZGlhL2hldmMtY3Ry
-bHMuaAo+Pj4gQEAgLTIwLDYgKzIwLDcgQEAKPj4+ICAgI2RlZmluZSBWNEwyX0NJRF9TVEFURUxF
-U1NfSEVWQ19ERUNPREVfUEFSQU1TCShWNEwyX0NJRF9DT0RFQ19CQVNFICsgMTAxMikKPj4+ICAg
-I2RlZmluZSBWNEwyX0NJRF9TVEFURUxFU1NfSEVWQ19ERUNPREVfTU9ERQkoVjRMMl9DSURfQ09E
-RUNfQkFTRSArIDEwMTUpCj4+PiAgICNkZWZpbmUgVjRMMl9DSURfU1RBVEVMRVNTX0hFVkNfU1RB
-UlRfQ09ERQkoVjRMMl9DSURfQ09ERUNfQkFTRSArIDEwMTYpCj4+PiArI2RlZmluZSBWNEwyX0NJ
-RF9TVEFURUxFU1NfSEVWQ19FTlRSWV9QT0lOVF9PRkZTRVRTIChWNEwyX0NJRF9DT0RFQ19CQVNF
-ICsgMTAxNykKPj4+ICAgCj4+PiAgIC8qIGVudW0gdjRsMl9jdHJsX3R5cGUgdHlwZSB2YWx1ZXMg
-Ki8KPj4+ICAgI2RlZmluZSBWNEwyX0NUUkxfVFlQRV9IRVZDX1NQUyAweDAxMjAKPj4+IEBAIC0z
-MTYsNiArMzE3LDggQEAgc3RydWN0IHY0bDJfaGV2Y19wcmVkX3dlaWdodF90YWJsZSB7Cj4+PiAg
-ICAqCj4+PiAgICAqIEBiaXRfc2l6ZTogc2l6ZSAoaW4gYml0cykgb2YgdGhlIGN1cnJlbnQgc2xp
-Y2UgZGF0YQo+Pj4gICAgKiBAZGF0YV9iaXRfb2Zmc2V0OiBvZmZzZXQgKGluIGJpdHMpIHRvIHRo
-ZSB2aWRlbyBkYXRhIGluIHRoZSBjdXJyZW50IHNsaWNlIGRhdGEKPj4+ICsgKiBAbnVtX2VudHJ5
-X3BvaW50X29mZnNldHM6IHNwZWNpZmllcyB0aGUgbnVtYmVyIG9mIGVudHJ5IHBvaW50IG9mZnNl
-dCBzeW50YXgKPj4+ICsgKgkJCSAgICAgZWxlbWVudHMgaW4gdGhlIHNsaWNlIGhlYWRlci4KPj4+
-ICAgICogQG5hbF91bml0X3R5cGU6IHNwZWNpZmllcyB0aGUgY29kaW5nIHR5cGUgb2YgdGhlIHNs
-aWNlIChCLCBQIG9yIEkpCj4+PiAgICAqIEBudWhfdGVtcG9yYWxfaWRfcGx1czE6IG1pbnVzIDEg
-c3BlY2lmaWVzIGEgdGVtcG9yYWwgaWRlbnRpZmllciBmb3IgdGhlIE5BTCB1bml0Cj4+PiAgICAq
-IEBzbGljZV90eXBlOiBzZWUgVjRMMl9IRVZDX1NMSUNFX1RZUEVfe30KPj4+IEBAIC0zNTgsNyAr
-MzYxLDcgQEAgc3RydWN0IHY0bDJfaGV2Y19wcmVkX3dlaWdodF90YWJsZSB7Cj4+PiAgIHN0cnVj
-dCB2NGwyX2N0cmxfaGV2Y19zbGljZV9wYXJhbXMgewo+Pj4gICAJX191MzIJYml0X3NpemU7Cj4+
-PiAgIAlfX3UzMglkYXRhX2JpdF9vZmZzZXQ7Cj4+PiAtCj4+PiArCV9fdTMyCW51bV9lbnRyeV9w
-b2ludF9vZmZzZXRzOwo+Pj4gICAJLyogSVNPL0lFQyAyMzAwOC0yLCBJVFUtVCBSZWMuIEguMjY1
-OiBOQUwgdW5pdCBoZWFkZXIgKi8KPj4+ICAgCV9fdTgJbmFsX3VuaXRfdHlwZTsKPj4+ICAgCV9f
-dTgJbnVoX3RlbXBvcmFsX2lkX3BsdXMxOwo+Pj4gLS0gCj4+PiAyLjMyLjAKPj4+CgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+The crypto_info to use must be stored in the request context.
+This will help when 2 crypto_info will be available on rk3399.
+
+Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+---
+ drivers/crypto/rockchip/rk3288_crypto.h          |  2 ++
+ drivers/crypto/rockchip/rk3288_crypto_ahash.c    | 14 ++++++--------
+ drivers/crypto/rockchip/rk3288_crypto_skcipher.c |  6 ++++--
+ 3 files changed, 12 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
+index 28bf09fe1c1d..ff9fc25972eb 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto.h
++++ b/drivers/crypto/rockchip/rk3288_crypto.h
+@@ -215,6 +215,7 @@ struct rk_ahash_ctx {
+ 
+ /* the private variable of hash for fallback */
+ struct rk_ahash_rctx {
++	struct rk_crypto_info		*dev;
+ 	struct ahash_request		fallback_req;
+ 	u32				mode;
+ 	int nrsg;
+@@ -231,6 +232,7 @@ struct rk_cipher_ctx {
+ };
+ 
+ struct rk_cipher_rctx {
++	struct rk_crypto_info		*dev;
+ 	u8 backup_iv[AES_BLOCK_SIZE];
+ 	u32				mode;
+ 	struct skcipher_request fallback_req;   // keep at the end
+diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+index 636dbcde0ca3..d1bf68cb390d 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
++++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
+@@ -200,6 +200,7 @@ static int rk_ahash_export(struct ahash_request *req, void *out)
+ 
+ static int rk_ahash_digest(struct ahash_request *req)
+ {
++	struct rk_ahash_rctx *rctx = ahash_request_ctx(req);
+ 	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
+ 	struct rk_crypto_info *dev = tctx->dev;
+ 
+@@ -209,6 +210,8 @@ static int rk_ahash_digest(struct ahash_request *req)
+ 	if (!req->nbytes)
+ 		return zero_message_process(req);
+ 
++	rctx->dev = dev;
++
+ 	return crypto_transfer_hash_request_to_engine(dev->engine, req);
+ }
+ 
+@@ -223,10 +226,8 @@ static void crypto_ahash_dma_start(struct rk_crypto_info *dev, struct scatterlis
+ static int rk_hash_prepare(struct crypto_engine *engine, void *breq)
+ {
+ 	struct ahash_request *areq = container_of(breq, struct ahash_request, base);
+-	struct crypto_ahash *tfm = crypto_ahash_reqtfm(areq);
+ 	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
+-	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
+-	struct rk_crypto_info *rkc = tctx->dev;
++	struct rk_crypto_info *rkc = rctx->dev;
+ 	int ret;
+ 
+ 	ret = dma_map_sg(rkc->dev, areq->src, sg_nents(areq->src), DMA_TO_DEVICE);
+@@ -241,10 +242,8 @@ static int rk_hash_prepare(struct crypto_engine *engine, void *breq)
+ static int rk_hash_unprepare(struct crypto_engine *engine, void *breq)
+ {
+ 	struct ahash_request *areq = container_of(breq, struct ahash_request, base);
+-	struct crypto_ahash *tfm = crypto_ahash_reqtfm(areq);
+ 	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
+-	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
+-	struct rk_crypto_info *rkc = tctx->dev;
++	struct rk_crypto_info *rkc = rctx->dev;
+ 
+ 	dma_unmap_sg(rkc->dev, areq->src, rctx->nrsg, DMA_TO_DEVICE);
+ 	return 0;
+@@ -255,11 +254,10 @@ static int rk_hash_run(struct crypto_engine *engine, void *breq)
+ 	struct ahash_request *areq = container_of(breq, struct ahash_request, base);
+ 	struct crypto_ahash *tfm = crypto_ahash_reqtfm(areq);
+ 	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
+-	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
+ 	struct ahash_alg *alg = __crypto_ahash_alg(tfm->base.__crt_alg);
+ 	struct rk_crypto_tmp *algt = container_of(alg, struct rk_crypto_tmp, alg.hash);
+ 	struct scatterlist *sg = areq->src;
+-	struct rk_crypto_info *rkc = tctx->dev;
++	struct rk_crypto_info *rkc = rctx->dev;
+ 	int err = 0;
+ 	int i;
+ 	u32 v;
+diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+index cf0dfb6029d8..0b1c90ababb7 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
++++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
+@@ -86,12 +86,15 @@ static int rk_cipher_handle_req(struct skcipher_request *req)
+ {
+ 	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(req);
+ 	struct rk_cipher_ctx *tctx = crypto_skcipher_ctx(tfm);
++	struct rk_cipher_rctx *rctx = skcipher_request_ctx(req);
+ 	struct rk_crypto_info *rkc = tctx->dev;
+ 	struct crypto_engine *engine = rkc->engine;
+ 
+ 	if (rk_cipher_need_fallback(req))
+ 		return rk_cipher_fallback(req);
+ 
++	rctx->dev = rkc;
++
+ 	return crypto_transfer_skcipher_request_to_engine(engine, req);
+ }
+ 
+@@ -290,7 +293,6 @@ static int rk_cipher_run(struct crypto_engine *engine, void *async_req)
+ {
+ 	struct skcipher_request *areq = container_of(async_req, struct skcipher_request, base);
+ 	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(areq);
+-	struct rk_cipher_ctx *ctx = crypto_skcipher_ctx(tfm);
+ 	struct rk_cipher_rctx *rctx = skcipher_request_ctx(areq);
+ 	struct scatterlist *sgs, *sgd;
+ 	int err = 0;
+@@ -303,7 +305,7 @@ static int rk_cipher_run(struct crypto_engine *engine, void *async_req)
+ 	unsigned int todo;
+ 	struct skcipher_alg *alg = crypto_skcipher_alg(tfm);
+ 	struct rk_crypto_tmp *algt = container_of(alg, struct rk_crypto_tmp, alg.skcipher);
+-	struct rk_crypto_info *rkc = ctx->dev;
++	struct rk_crypto_info *rkc = rctx->dev;
+ 
+ 	algt->stat_req++;
+ 
+-- 
+2.35.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
