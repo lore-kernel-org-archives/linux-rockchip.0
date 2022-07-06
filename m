@@ -4,84 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4683CC43334
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 14:29:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD952C43334
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 15:25:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pwOBd+PapevirDQFDFq43dp1Wd0YWx9TrwMACqVl6mM=; b=KVLGnBKob2GAms
-	R+eSWR9icvhCg1pNnMsDaXbDoKtExYM5XK0pCl2ZZXv54+zO/AWFcA4WxxqfbTMcscY6mdfBDbRnP
-	Rwc/OpktQDxTOGv8jx7Mx6CtUdt9GcKHyPdO3uLWgBXFwZ6+JRWLAzLRlz/k0LrHwohdK88L7M26R
-	AlhhRSSQNvtPZP32SYwBQ01Mv+OU0fB9KkVdCf1/8vRwWwbvkl/OW+pQATaNExUhS6xvGs3+j47lN
-	/hlfb5H19ZM5ooPJ12tzyRVLCgv0zcQml8y2frPtPm6a83AhyGgvcrEOVgh5iT1iPd752KWAhFu6N
-	6ocDnISdBgtsiV4jwVYQ==;
+	List-Owner; bh=yqJTUiLBTlNaCNuZteZiX6LYwd6h7Uy+PB+aW00jpmQ=; b=27aqzHYopWhJm/
+	YuDPuPH2JTilxbKDsMGhGwfPk0FmJ1Mg1etKkEPAW5oF7o54f7voEZZL6LLstc/yan7CcHzGjQuO+
+	DMtxIS0w1KvU5BmSqbmnGWFG51Zpj6q7K+suScPLopipc3I+LMlB1O5cmlJUb9nUd9CRglmi+BiaX
+	rNjKLuesPeFtxe3rjEI6FH7CrNATMaW7AL45z2XTWa80nWURyXfWXb9Ga3r/Lu5Sc+SEqo23xeSuM
+	cNE7l9Tl0pLAeJBCrjsN5ZnjnqbDOFC9T4KkmN3xzINYCrpfeu1aqFoKV/wL/4dH13rbkn+DQti87
+	D+fGKOl13CAGINV22TJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o961R-00AdbY-Oj; Wed, 06 Jul 2022 14:28:57 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1o96u9-00B19p-2M; Wed, 06 Jul 2022 15:25:29 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o961H-00AdYe-QH
-	for linux-rockchip@lists.infradead.org; Wed, 06 Jul 2022 14:28:49 +0000
-Received: by mail-wr1-x436.google.com with SMTP id v16so10892182wrd.13
-        for <linux-rockchip@lists.infradead.org>; Wed, 06 Jul 2022 07:28:45 -0700 (PDT)
+	id 1o96u7-00B17m-4P
+	for linux-rockchip@lists.infradead.org; Wed, 06 Jul 2022 15:25:28 +0000
+Received: by mail-lf1-x131.google.com with SMTP id bf9so3285757lfb.13
+        for <linux-rockchip@lists.infradead.org>; Wed, 06 Jul 2022 08:25:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to;
-        bh=ftt1gf1maseGqC1Gii2R8eooTq30YUOm7AExkJ1sGBI=;
-        b=Idoj3f1+WjxFSaC8dyFJ6WmfifQA2Bwuj5QgzV8Fe9fCvZIDrYQbVnffG8rK4Nhc4M
-         jvHyyMmjSeGMeDEH4iox8BuBGuO6q8XyI23QONyQjrKEGWhId2FvvYQYj+rZeGaB0/eo
-         MUdXlaK5JbXGM0j2k3ek6BkgxAY9GaYqGOl+mn/4rhtdprQ7qgjNalgVk6pGjrDjT7Ku
-         eeUWJoM0DPwXvseOzmAuU3AAzE03J0h5k3FeeTVa3m4j4nFPgILNL7MqTRu2UnVmw5aX
-         1zZugYcVyqVJ3+nz8LREpA3sfLCyT180zGZkVMDZPDaXbPkBCuENIrpeSE4U0KAp5FG1
-         0IlQ==
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=s2u++J5w4NDwIl2ly2qjEOKSEw7r+aYlZPxk8tDl4yU=;
+        b=pk5hd/IvYkLkIbMjLl+3RikyW0xoTset+iQYFryFsW/I+s24lsz9o8Cklus2QbjDrS
+         fTLopnC3tP8Tgxb6id5LNbzOlagVM7wajEchHrhxhs4RTGPvA1jvZYuEsKyaMvsJ5lst
+         EP4uXSsnokVfUY179M2SKS8ybC4aaKtAPqz1QswivD3/5JXqesOzr72Z4M/0IIT6Nhb2
+         RS+nATTSSmsMDcjkBkBjijERiX/tHYUQlIFZaS/lXdiUAyCGf6tRSFEn8/XLan5otBRf
+         iOW3EGwwOmL0aWPWKGitff/EIURBYj05PDccP0XqedV5InKTIBYAQjSI0a2fFcZeYiek
+         Ih3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=ftt1gf1maseGqC1Gii2R8eooTq30YUOm7AExkJ1sGBI=;
-        b=E/pAYmOaMXlOGne5115LPx0PkGuGnzC3LQFEi3PXH0SGjWs7tEjvFbg4nq1X0OeHnS
-         ksadOfpanhCElTpt9xe5lOG/GjUL4azpSQD1apCRmyaSqyFJ4rUzUuo0w+XUg6pHTKlJ
-         CuYwzBcBu0NHTPYpux5QRjypVYxBbjwlEOCwClzIDIAv3U2O4aT+q0Zo5RKQYJefkraZ
-         IjZZ4sqSlEskoHLeroJYtf/LB0xVsRNp9QvhUl0Lx2GS33v9edLgeIaA5khX/NxxtYwC
-         mKbQHIy9erSYt3YBE8LIIUABHbddkX0tMWDClQ5oL4fMt8H+0JdPdRFLeaLSktX2wBD3
-         IEwQ==
-X-Gm-Message-State: AJIora9YFyrtMu6JzuJijFWpt60sCZqEHw9QC7eu+DUgbQdTnmvk8eb+
-	HjSObgb8UInnoVbsKLtUdwTs3g==
-X-Google-Smtp-Source: AGRyM1s/EpMgC9IgMxTtWr1OjAkAw4mmTjNBAsTu4Zuo0mz4gDkedlTMxCZZ9t17GTaZzEa0+7q8Kg==
-X-Received: by 2002:adf:ea08:0:b0:21d:6dbf:6366 with SMTP id q8-20020adfea08000000b0021d6dbf6366mr13294602wrm.137.1657117724247;
-        Wed, 06 Jul 2022 07:28:44 -0700 (PDT)
-Received: from Red ([2a01:cb1d:3d5:a100:264b:feff:fe03:2806])
-        by smtp.googlemail.com with ESMTPSA id y5-20020a056000108500b002167efdd549sm8046055wrw.38.2022.07.06.07.28.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Jul 2022 07:28:43 -0700 (PDT)
-Date: Wed, 6 Jul 2022 16:28:40 +0200
-From: LABBE Corentin <clabbe@baylibre.com>
-To: Rob Herring <robh@kernel.org>
-Cc: john@metanate.com, heiko@sntech.de, p.zabel@pengutronix.de,
-	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
-	linux-kernel@vger.kernel.org, didi.debian@cknow.org,
-	herbert@gondor.apana.org.au, sboyd@kernel.org,
-	mturquette@baylibre.com, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-clk@vger.kernel.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=s2u++J5w4NDwIl2ly2qjEOKSEw7r+aYlZPxk8tDl4yU=;
+        b=xP/SzPmrxj/5ZdypPoNWNG3TLij7ALDT042B97Bshz9FNga9Wtb4tFRS6dFPExhIcK
+         Ysl6er1vLA3CMXDAcYRVHD/x5XGFH5W51jnJEEsL4wBXn/0y/fCJAQa3znKOQs4eSJFw
+         TV56Syl9lOXlhFkaquwpFAcxcEqlpn/cGMJrcgCV3SPduYQ/Ks1Kr8ZfhcnShw6dPMbd
+         YZIjhpjFq4gRhz4ntMej+ueifpFCnRlK73rlX08qI8KL3wF8CegBFSbXAmx2qbyOcqcO
+         ABv3NPE+zcdpOu2kHyksN/L2JrGp5sG8qGpgzdfWlO/F5Btcy/L27751ejQ2lH35/xPl
+         UCrw==
+X-Gm-Message-State: AJIora8e1bRizj9KaxiYbgmxlMeSlWvplCC5xP2yHWoNXt7zrNhGR6b3
+	nIVMTTn8n9fBqVHCGqx823OKHg==
+X-Google-Smtp-Source: AGRyM1sl33iwmIsDfZENKyDLnobKwErOZsB1g6zI01WIfhPK+le8wb3cPVwq3Y8t8JUPspB3KmPC/w==
+X-Received: by 2002:ac2:4a77:0:b0:484:d52:4e33 with SMTP id q23-20020ac24a77000000b004840d524e33mr5930342lfp.477.1657121123285;
+        Wed, 06 Jul 2022 08:25:23 -0700 (PDT)
+Received: from [192.168.1.52] ([84.20.121.239])
+        by smtp.gmail.com with ESMTPSA id z3-20020a19f703000000b0047e789b9700sm6320314lfe.118.2022.07.06.08.25.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 06 Jul 2022 08:25:22 -0700 (PDT)
+Message-ID: <3e47b853-bb82-8766-8884-3da931c038a2@linaro.org>
+Date: Wed, 6 Jul 2022 17:25:21 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
 Subject: Re: [PATCH v8 25/33] dt-bindings: crypto: rockchip: convert to new
  driver bindings
-Message-ID: <YsWcGDwPCX+/95i3@Red>
+Content-Language: en-US
+To: LABBE Corentin <clabbe@baylibre.com>, Rob Herring <robh@kernel.org>
+Cc: john@metanate.com, heiko@sntech.de, p.zabel@pengutronix.de,
+ krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
+ linux-kernel@vger.kernel.org, didi.debian@cknow.org,
+ herbert@gondor.apana.org.au, sboyd@kernel.org, mturquette@baylibre.com,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-clk@vger.kernel.org
 References: <20220706090412.806101-1-clabbe@baylibre.com>
  <20220706090412.806101-26-clabbe@baylibre.com>
  <1657114144.957232.4099933.nullmailer@robh.at.kernel.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1657114144.957232.4099933.nullmailer@robh.at.kernel.org>
+ <YsWcGDwPCX+/95i3@Red>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <YsWcGDwPCX+/95i3@Red>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_072847_876846_D1D50236 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20220706_082527_213354_49E1E77A 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,53 +95,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Le Wed, Jul 06, 2022 at 07:29:04AM -0600, Rob Herring a =E9crit :
-> On Wed, 06 Jul 2022 09:04:04 +0000, Corentin Labbe wrote:
-> > The latest addition to the rockchip crypto driver need to update the
-> > driver bindings.
-> > =
-
-> > Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-> > Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
-> > ---
-> >  .../crypto/rockchip,rk3288-crypto.yaml        | 85 +++++++++++++++++--
-> >  1 file changed, 77 insertions(+), 8 deletions(-)
-> > =
-
-> =
-
-> My bot found errors running 'make DT_CHECKER_FLAGS=3D-m dt_binding_check'
-> on your patch (DT_CHECKER_FLAGS is new in v5.13):
-> =
-
-> yamllint warnings/errors:
-> =
-
-> dtschema/dtc warnings/errors:
-> /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/cryp=
-to/rockchip,rk3288-crypto.yaml: allOf:0:then:properties:clock-names: 'oneOf=
-' conditional failed, one must be fixed:
-> 	[{'const': 'aclk'}, {'const': 'hclk'}, {'const': 'sclk'}, {'const': 'apb=
-_pclk'}] is too long
-> 	[{'const': 'aclk'}, {'const': 'hclk'}, {'const': 'sclk'}, {'const': 'apb=
-_pclk'}] is too short
-> 	False schema does not allow 4
-> 	1 was expected
-> 	4 is greater than the maximum of 2
-> 	4 is greater than the maximum of 3
-
-Hello
-
-I upgraded to dt-schema 2022.07 and fail to reproduce all errors.
-
-Regards
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMDYvMDcvMjAyMiAxNjoyOCwgTEFCQkUgQ29yZW50aW4gd3JvdGU6Cj4gTGUgV2VkLCBKdWwg
+MDYsIDIwMjIgYXQgMDc6Mjk6MDRBTSAtMDYwMCwgUm9iIEhlcnJpbmcgYSDDqWNyaXQgOgo+PiBP
+biBXZWQsIDA2IEp1bCAyMDIyIDA5OjA0OjA0ICswMDAwLCBDb3JlbnRpbiBMYWJiZSB3cm90ZToK
+Pj4+IFRoZSBsYXRlc3QgYWRkaXRpb24gdG8gdGhlIHJvY2tjaGlwIGNyeXB0byBkcml2ZXIgbmVl
+ZCB0byB1cGRhdGUgdGhlCj4+PiBkcml2ZXIgYmluZGluZ3MuCj4+Pgo+Pj4gUmV2aWV3ZWQtYnk6
+IEtyenlzenRvZiBLb3psb3dza2kgPGtyenlzenRvZi5rb3psb3dza2lAbGluYXJvLm9yZz4KPj4+
+IFNpZ25lZC1vZmYtYnk6IENvcmVudGluIExhYmJlIDxjbGFiYmVAYmF5bGlicmUuY29tPgo+Pj4g
+LS0tCj4+PiAgLi4uL2NyeXB0by9yb2NrY2hpcCxyazMyODgtY3J5cHRvLnlhbWwgICAgICAgIHwg
+ODUgKysrKysrKysrKysrKysrKystLQo+Pj4gIDEgZmlsZSBjaGFuZ2VkLCA3NyBpbnNlcnRpb25z
+KCspLCA4IGRlbGV0aW9ucygtKQo+Pj4KPj4KPj4gTXkgYm90IGZvdW5kIGVycm9ycyBydW5uaW5n
+ICdtYWtlIERUX0NIRUNLRVJfRkxBR1M9LW0gZHRfYmluZGluZ19jaGVjaycKPj4gb24geW91ciBw
+YXRjaCAoRFRfQ0hFQ0tFUl9GTEFHUyBpcyBuZXcgaW4gdjUuMTMpOgo+Pgo+PiB5YW1sbGludCB3
+YXJuaW5ncy9lcnJvcnM6Cj4+Cj4+IGR0c2NoZW1hL2R0YyB3YXJuaW5ncy9lcnJvcnM6Cj4+IC9i
+dWlsZHMvcm9iaGVycmluZy9saW51eC1kdC1yZXZpZXcvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL2NyeXB0by9yb2NrY2hpcCxyazMyODgtY3J5cHRvLnlhbWw6IGFsbE9mOjA6dGhl
+bjpwcm9wZXJ0aWVzOmNsb2NrLW5hbWVzOiAnb25lT2YnIGNvbmRpdGlvbmFsIGZhaWxlZCwgb25l
+IG11c3QgYmUgZml4ZWQ6Cj4+IAlbeydjb25zdCc6ICdhY2xrJ30sIHsnY29uc3QnOiAnaGNsayd9
+LCB7J2NvbnN0JzogJ3NjbGsnfSwgeydjb25zdCc6ICdhcGJfcGNsayd9XSBpcyB0b28gbG9uZwo+
+PiAJW3snY29uc3QnOiAnYWNsayd9LCB7J2NvbnN0JzogJ2hjbGsnfSwgeydjb25zdCc6ICdzY2xr
+J30sIHsnY29uc3QnOiAnYXBiX3BjbGsnfV0gaXMgdG9vIHNob3J0Cj4+IAlGYWxzZSBzY2hlbWEg
+ZG9lcyBub3QgYWxsb3cgNAo+PiAJMSB3YXMgZXhwZWN0ZWQKPj4gCTQgaXMgZ3JlYXRlciB0aGFu
+IHRoZSBtYXhpbXVtIG9mIDIKPj4gCTQgaXMgZ3JlYXRlciB0aGFuIHRoZSBtYXhpbXVtIG9mIDMK
+PiAKPiBIZWxsbwo+IAo+IEkgdXBncmFkZWQgdG8gZHQtc2NoZW1hIDIwMjIuMDcgYW5kIGZhaWwg
+dG8gcmVwcm9kdWNlIGFsbCBlcnJvcnMuCgpWaXNpYmxlIG9uIG9sZGVyIGR0c2NoZW1hICgyMDIy
+LjYuZGV2MTArZ2NkNjRmNzVmZTA5MSksIHZpc2libGUgb24KbmV3ZXN0ICgyMDIyLjcpLgoKRXhh
+Y3RseSB0aGUgc2FtZSBlcnJvci4KCkJlc3QgcmVnYXJkcywKS3J6eXN6dG9mCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
