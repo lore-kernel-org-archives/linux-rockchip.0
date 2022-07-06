@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7997C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 09:43:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA3F6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 09:44:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+NND9ijYg5G2wQkV+QMK0eeLO3FdqNHCz44DxR2VNGE=; b=O0E0Y1gtIA/Y2X
-	1tu9fZwhWaKSQCrxcAGLJBw8iOYTOpmxGcw2UUnz1N2bd6KS4YNcURsFXt8KNusMDPk1ypGtG1Rsg
-	W9QQeVBAcFgp6c0kj7E5MBQaEaXQKM6mDURqFsdw5v3d5M6/rCPQAI4BoGbCSJDsBQdRLkCCAgSgt
-	EiOmJUqDZNBQytWQn2yIW3uU56s78Emw8vmrtFegkIm/nc6SyPWCeQpT5B2NWKM0yBZHXHbpudcGP
-	sZWuiRHebfN9ZcQU5s5beUTmkdvt0iSdstwXucLqiRvI+32NjVffXpWUP5/vTXQzkFa+X7KwoBbFg
-	najjt/RdOQjbvvqtQvnQ==;
+	List-Owner; bh=swLEOHUeI/buMMbKTwvLogFhZNX6cId6fke6ZvEbuWg=; b=0JSIxpPyvTniLS
+	neYua57X+NngkPzdGKRT16cKaTrIXOeZTHbbYyyN1Ztj12z0wm8TcvcKEJY8hXa5YFlY/ZPhNmObD
+	UTFtqSH4I8yR/pCPF0EKNnFOeyB9GIcf/YLdZnWNyNKtdSetreH7MltWQXkaBhFBSECs2VXZB2ZSM
+	ZpfWe+Lri3L2+Z3hAN07hBBV8UDTMQ0K3rC+csAaPtutw1B8oHXr2VFLmoFS+hYZQpMWdbCvve2gx
+	6byfSFsyOosA5PB9VofUe+oWjtARGWvld1JHFvxrd+fh8Ygho3VnD8bM0U0RrPdEzESlcidDB/MLR
+	e1B2qc/bhVo6F835hRiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o91Yk-007sbY-Sy; Wed, 06 Jul 2022 09:43:02 +0000
+	id 1o91Zk-007t8N-MY; Wed, 06 Jul 2022 09:44:04 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o91UN-007q2H-F6; Wed, 06 Jul 2022 09:38:46 +0000
+	id 1o91UU-007q8k-RU; Wed, 06 Jul 2022 09:38:49 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:3a70:988d:42ce:f5cc])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 12D9D66019C0;
-	Wed,  6 Jul 2022 10:38:16 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 78AC266019DD;
+	Wed,  6 Jul 2022 10:38:21 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657100296;
-	bh=ooo3l1PsFXcVje4Ldzk86P3cMh/GLXIVXtNCaRrfIQg=;
+	s=mail; t=1657100302;
+	bh=qxR1F8ry0iFug22w2E8Lp+hA57rv+0jkQMuhDa4/mBU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=H12vgpTmscWWYSfoUcgL7CiiiIAq3aL+m2uqN5Myo20THVnYP0+K+lsOtc9slt8kc
-	 Q26s9DUNg/nn2Fu+9u9AsmepP6MiahuKA1xOpptT/3mqkNJxGvPyPJRccNr50n6VDK
-	 eiBtAqgzxjlpRbFnkEDMp+plr54fFP+PXQ1fEV5GViNUdRj5jO4ZR6O/c7L4iSPk9z
-	 E+bEfB9L/6UnvXyDxtGhOmkEWCkz94U2i5taGBnD5iXe6gVWz46YiN8NV2+Ku6e7Sm
-	 uUhIv6X0+qOCc/Mu+O/MkjX0RLy+1ifsdnlhzAzRHl/N9vZ4KlP50Zz5djbbsUqg8w
-	 EAkJzOthOFzVw==
+	b=EYuFnNwxGs6dN/vL08XHmF/16BP6YYZuKHFYSaNLIxztRWWzL7DDUH11if4igRVOj
+	 1LUqQg9LM2jiZla8ozW6eiqh77ZP/1UBiK9DkhJSHF+6LtGXyrJ9XqWkzCr8c5FHDA
+	 Zd1YE1zx+b6x6fkO08jBWkX72smqojIQ42HHHWAZvO85XmXmTyGi96OrWp4jBfOleL
+	 WoUmX7T/Cl6zZMI8R4ULwNXXOtZU4fF9hTigJuUG2aQGUh2XPpGn6RIDw5UJHLR8s8
+	 JlbOVFuVDpUoiny0urcWxIlVK9MDhbvU+DHBtLmdy1BmV8HiyWcOz89ndTWsTD21Cp
+	 mVeOn8cQG+MBw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v11 08/17] media: uapi: HEVC: Add documentation to uAPI structure
-Date: Wed,  6 Jul 2022 11:37:54 +0200
-Message-Id: <20220706093803.158810-9-benjamin.gaignard@collabora.com>
+Subject: [PATCH v11 16/17] media: uapi: Change data_bit_offset definition
+Date: Wed,  6 Jul 2022 11:38:02 +0200
+Message-Id: <20220706093803.158810-17-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220706093803.158810-1-benjamin.gaignard@collabora.com>
 References: <20220706093803.158810-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_023831_968123_9AF28962 
-X-CRM114-Status: GOOD (  19.42  )
+X-CRM114-CacheID: sfid-20220706_023839_300013_20E9AD36 
+X-CRM114-Status: GOOD (  17.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,626 +88,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add kernel-doc documentation for all the HEVC structures.
+'F.7.3.6.1 General slice segment header syntax' section of HEVC
+specification describes that a slice header always end aligned on
+byte boundary, therefore we only need to provide the data offset in bytes.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Tested-by: Jernej Skrabec <jernej.skrabec@gmail.com>
 ---
-version 11:
-- Fix various typos in "Add documentation to uAPI structure" patch.
-
- .../media/v4l/ext-ctrls-codec.rst             | 168 +++++++------
- include/media/hevc-ctrls.h                    | 221 +++++++++++++++++-
- 2 files changed, 313 insertions(+), 76 deletions(-)
+ .../media/v4l/ext-ctrls-codec.rst             |  4 ++--
+ .../staging/media/sunxi/cedrus/cedrus_h265.c  | 19 ++++++++++++++++++-
+ .../staging/media/sunxi/cedrus/cedrus_video.c |  1 -
+ include/media/hevc-ctrls.h                    |  4 ++--
+ 4 files changed, 22 insertions(+), 6 deletions(-)
 
 diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-index 8ba16e8742f3..e88b5e6944a6 100644
+index d5ef91ae3539..f012673a3e64 100644
 --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
 +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-@@ -2695,70 +2695,76 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-         of H.265 specifications.
-     * - __u16
-       - ``pic_width_in_luma_samples``
--      -
-+      - Specifies the width of each decoded picture in units of luma samples.
-     * - __u16
-       - ``pic_height_in_luma_samples``
--      -
-+      - Specifies the height of each decoded picture in units of luma samples.
-     * - __u8
-       - ``bit_depth_luma_minus8``
--      -
-+      - This value plus 8 specifies the bit depth of the samples of the luma array.
-     * - __u8
-       - ``bit_depth_chroma_minus8``
--      -
-+      - This value plus 8 specifies the bit depth of the samples of the chroma arrays.
-     * - __u8
-       - ``log2_max_pic_order_cnt_lsb_minus4``
--      -
-+      - This value plus 4 specifies the value of the variable MaxPicOrderCntLsb.
-     * - __u8
-       - ``sps_max_dec_pic_buffering_minus1``
--      -
-+      - This value plus 1 specifies the maximum required size of the decoded picture buffer for
-+        the codec video sequence.
-     * - __u8
-       - ``sps_max_num_reorder_pics``
--      -
-+      - Indicates the maximum allowed number of pictures.
-     * - __u8
-       - ``sps_max_latency_increase_plus1``
--      -
-+      - Not equal to 0 is used to compute the value of SpsMaxLatencyPictures array.
-     * - __u8
-       - ``log2_min_luma_coding_block_size_minus3``
--      -
-+      - This value plus 3 specifies the minimum luma coding block size.
-     * - __u8
-       - ``log2_diff_max_min_luma_coding_block_size``
--      -
-+      - Specifies the difference between the maximum and minimum luma coding block size.
-     * - __u8
-       - ``log2_min_luma_transform_block_size_minus2``
--      -
-+      - This value plus 2 specifies the minimum luma transform block size.
-     * - __u8
-       - ``log2_diff_max_min_luma_transform_block_size``
--      -
-+      - Specifies the difference between the maximum and minimum luma transform block size.
-     * - __u8
-       - ``max_transform_hierarchy_depth_inter``
--      -
-+      - Specifies the maximum hierarchy depth for transform units of coding units coded
-+        in inter prediction mode.
-     * - __u8
-       - ``max_transform_hierarchy_depth_intra``
--      -
-+      - Specifies the maximum hierarchy depth for transform units of coding units coded in
-+        intra prediction mode.
-     * - __u8
-       - ``pcm_sample_bit_depth_luma_minus1``
--      -
-+      - This value plus 1 specifies the number of bits used to represent each of PCM sample
-+        values of the luma component.
-     * - __u8
-       - ``pcm_sample_bit_depth_chroma_minus1``
--      -
-+      - This value plus 1 specifies the number of bits used to represent each of PCM sample
-+        values of the chroma components.
-     * - __u8
-       - ``log2_min_pcm_luma_coding_block_size_minus3``
--      -
-+      - This value plus 3 specifies the minimum size of coding blocks.
-     * - __u8
-       - ``log2_diff_max_min_pcm_luma_coding_block_size``
--      -
-+      - Specifies the difference between the maximum and minimum size of coding blocks.
-     * - __u8
-       - ``num_short_term_ref_pic_sets``
--      -
-+      - Specifies the number of st_ref_pic_set() syntax structures included in the SPS.
-     * - __u8
-       - ``num_long_term_ref_pics_sps``
--      -
-+      - Specifies the number of candidate long-term reference pictures that are
-+        specified in the SPS.
-     * - __u8
-       - ``chroma_format_idc``
--      -
-+      - Specifies the chroma sampling.
-     * - __u8
-       - ``sps_max_sub_layers_minus1``
--      -
-+      - This value plus 1 specifies the maximum number of temporal sub-layers.
-     * - __u64
-       - ``flags``
-       - See :ref:`Sequence Parameter Set Flags <hevc_sps_flags>`
-@@ -2837,46 +2843,52 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-       - Identifies the PPS for reference by other syntax elements.
-     * - __u8
-       - ``num_extra_slice_header_bits``
--      -
-+      - Specifies the number of extra slice header bits that are present
-+        in the slice header RBSP for coded pictures referring to the PPS.
-     * - __u8
-       - ``num_ref_idx_l0_default_active_minus1``
--      - Specifies the inferred value of num_ref_idx_l0_active_minus1
-+      - This value plus 1 specifies the inferred value of num_ref_idx_l0_active_minus1.
-     * - __u8
-       - ``num_ref_idx_l1_default_active_minus1``
--      - Specifies the inferred value of num_ref_idx_l1_active_minus1
-+      - This value plus 1 specifies the inferred value of num_ref_idx_l1_active_minus1.
-     * - __s8
-       - ``init_qp_minus26``
--      -
-+      - This value plus 26 specifies the initial value of SliceQp Y for each slice
-+        referring to the PPS.
-     * - __u8
-       - ``diff_cu_qp_delta_depth``
--      -
-+      - Specifies the difference between the luma coding tree block size
-+        and the minimum luma coding block size of coding units that
-+        convey cu_qp_delta_abs and cu_qp_delta_sign_flag.
-     * - __s8
-       - ``pps_cb_qp_offset``
--      -
-+      - Specifies the offsets to the luma quantization parameter Cb.
-     * - __s8
-       - ``pps_cr_qp_offset``
--      -
-+      - Specifies the offsets to the luma quantization parameter Cr.
-     * - __u8
-       - ``num_tile_columns_minus1``
--      -
-+      - This value plus 1 specifies the number of tile columns partitioning the picture.
-     * - __u8
-       - ``num_tile_rows_minus1``
--      -
-+      - This value plus 1 specifies the number of tile rows partitioning the picture.
-     * - __u8
-       - ``column_width_minus1[20]``
--      -
-+      - Plus 1 specifies the width of each tile column in units of
-+        coding tree blocks.
-     * - __u8
-       - ``row_height_minus1[22]``
--      -
-+      - This value plus 1 specifies the height of each tile row in units of coding
-+        tree blocks.
-     * - __s8
-       - ``pps_beta_offset_div2``
--      -
-+      - Specifies the default deblocking parameter offsets for beta divided by 2.
-     * - __s8
-       - ``pps_tc_offset_div2``
--      -
-+      - Specifies the default deblocking parameter offsets for tC divided by 2.
-     * - __u8
-       - ``log2_parallel_merge_level_minus2``
--      -
-+      - Plus 2 specifies the value of the variable Log2ParMrgLevel.
-     * - __u8
-       - ``padding[4]``
-       - Applications and drivers must set this to zero.
-@@ -2998,10 +3010,10 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-       - Offset (in bits) to the video data in the current slice data.
-     * - __u8
-       - ``nal_unit_type``
--      -
-+      - Specifies the coding type of the slice (B, P or I).
-     * - __u8
-       - ``nuh_temporal_id_plus1``
--      -
-+      - This value minus 1 specifies a temporal identifier for the NAL unit.
-     * - __u8
-       - ``slice_type``
-       -
-@@ -3009,52 +3021,56 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
- 	V4L2_HEVC_SLICE_TYPE_B).
-     * - __u8
-       - ``colour_plane_id``
--      -
-+      - Specifies the colour plane associated with the current slice.
-     * - __s32
-       - ``slice_pic_order_cnt``
--      -
-+      - Specifies the picture order count.
-     * - __u8
-       - ``num_ref_idx_l0_active_minus1``
--      -
-+      - This value plus 1 specifies the maximum reference index for
-+        reference picture list 0 that may be used to decode the slice.
-     * - __u8
-       - ``num_ref_idx_l1_active_minus1``
--      -
-+      - This value plus 1 specifies the maximum reference index for
-+        reference picture list 1 that may be used to decode the slice.
-     * - __u8
-       - ``collocated_ref_idx``
--      -
-+      - Specifies the reference index of the collocated picture used for
-+        temporal motion vector prediction.
-     * - __u8
-       - ``five_minus_max_num_merge_cand``
--      -
-+      - Specifies the maximum number of merging motion vector prediction
-+        candidates supported in the slice subtracted from 5.
-     * - __s8
-       - ``slice_qp_delta``
--      -
-+      - Specifies the initial value of QpY to be used for the coding blocks in the slice.
-     * - __s8
-       - ``slice_cb_qp_offset``
--      -
-+      - Specifies a difference to be added to the value of pps_cb_qp_offset.
-     * - __s8
-       - ``slice_cr_qp_offset``
--      -
-+      - Specifies a difference to be added to the value of pps_cr_qp_offset.
-     * - __s8
-       - ``slice_act_y_qp_offset``
--      -
-+      - Screen content extension parameters.
-     * - __s8
-       - ``slice_act_cb_qp_offset``
--      -
-+      - Screen content extension parameters.
-     * - __s8
-       - ``slice_act_cr_qp_offset``
--      -
-+      - Screen content extension parameters.
-     * - __s8
-       - ``slice_beta_offset_div2``
--      -
-+      - Specifies the deblocking parameter offsets for beta divided by 2.
-     * - __s8
-       - ``slice_tc_offset_div2``
--      -
-+      - Specifies the deblocking parameter offsets for tC divided by 2.
-     * - __u8
-       - ``pic_struct``
--      -
-+      - Indicates whether a picture should be displayed as a frame or as one or more fields.
+@@ -3008,8 +3008,8 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+       - ``bit_size``
+       - Size (in bits) of the current slice data.
      * - __u32
-       - ``slice_segment_addr``
--      -
-+      - Specifies the address of the first coding tree block in the slice segment.
-     * - __u8
-       - ``ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
-       - The list of L0 reference elements as indices in the DPB.
-@@ -3219,11 +3235,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-       - ``field_pic``
-       - Whether the reference is a field picture or a frame.
-         See :ref:`HEVC dpb field pic Flags <hevc_dpb_field_pic_flags>`
--    * - __u16
--      - ``pic_order_cnt[2]``
--      - The picture order count of the reference. Only the first element of the
--        array is used for frame pictures, while the first element identifies the
--        top field and the second the bottom field in field-coded pictures.
-+    * - __s32
-+      - ``pic_order_cnt_val``
-+      - The picture order count of the current picture.
-     * - __u8
-       - ``padding[2]``
-       - Applications and drivers must set this to zero.
-@@ -3298,36 +3312,44 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-     :stub-columns: 0
-     :widths:       1 1 2
+-      - ``data_bit_offset``
+-      - Offset (in bits) to the video data in the current slice data.
++      - ``data_byte_offset``
++      - Offset (in bytes) to the video data in the current slice data.
+     * - __u32
+       - ``num_entry_point_offsets``
+       - Specifies the number of entry point offset syntax elements in the slice header.
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+index 411601975124..7b67cb4621cf 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_h265.c
+@@ -317,6 +317,8 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+ 	u32 chroma_log2_weight_denom;
+ 	u32 output_pic_list_index;
+ 	u32 pic_order_cnt[2];
++	u8 *padding;
++	int count;
+ 	u32 reg;
  
--    * - __u8
--      - ``luma_log2_weight_denom``
--      -
--    * - __s8
--      - ``delta_chroma_log2_weight_denom``
--      -
-     * - __s8
-       - ``delta_luma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
--      -
-+      - The difference of the weighting factor applied to the luma
-+        prediction value for list 0.
-     * - __s8
-       - ``luma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
--      -
-+      - The additive offset applied to the luma prediction value for list 0.
-     * - __s8
-       - ``delta_chroma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2]``
--      -
-+      - The difference of the weighting factor applied to the chroma
-+        prediction value for list 0.
-     * - __s8
-       - ``chroma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2]``
--      -
-+      - The difference of the additive offset applied to the chroma
-+        prediction values for list 0.
-     * - __s8
-       - ``delta_luma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
--      -
-+      - The difference of the weighting factor applied to the luma
-+        prediction value for list 1.
-     * - __s8
-       - ``luma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
--      -
-+      - The additive offset applied to the luma prediction value for list 1.
-     * - __s8
-       - ``delta_chroma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2]``
--      -
-+      - The difference of the weighting factor applied to the chroma
-+        prediction value for list 1.
-     * - __s8
-       - ``chroma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2]``
--      -
-+      - The difference of the additive offset applied to the chroma
-+        prediction values for list 1.
-+    * - __u8
-+      - ``luma_log2_weight_denom``
-+      - The base 2 logarithm of the denominator for all luma weighting
-+        factors.
-+    * - __s8
-+      - ``delta_chroma_log2_weight_denom``
-+      - The difference of the base 2 logarithm of the denominator for
-+        all chroma weighting factors.
-     * - __u8
-       - ``padding[6]``
-       - Applications and drivers must set this to zero.
+ 	sps = run->h265.sps;
+@@ -405,7 +407,22 @@ static void cedrus_h265_setup(struct cedrus_ctx *ctx,
+ 	/* Initialize bitstream access. */
+ 	cedrus_write(dev, VE_DEC_H265_TRIGGER, VE_DEC_H265_TRIGGER_INIT_SWDEC);
+ 
+-	cedrus_h265_skip_bits(dev, slice_params->data_bit_offset);
++	/*
++	 * Cedrus expects that bitstream pointer is actually at the end of the slice header
++	 * instead of start of slice data. Padding is 8 bits at most (one bit set to 1 and
++	 * at most seven bits set to 0), so we have to inspect only one byte before slice data.
++	 */
++	padding = (u8 *)vb2_plane_vaddr(&run->src->vb2_buf, 0) +
++		slice_params->data_byte_offset - 1;
++
++	for (count = 0; count < 8; count++)
++		if (*padding & (1 << count))
++			break;
++
++	/* Include the one bit. */
++	count++;
++
++	cedrus_h265_skip_bits(dev, slice_params->data_byte_offset * 8 - count);
+ 
+ 	/* Bitstream parameters. */
+ 
+diff --git a/drivers/staging/media/sunxi/cedrus/cedrus_video.c b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+index 33726175d980..66714609b577 100644
+--- a/drivers/staging/media/sunxi/cedrus/cedrus_video.c
++++ b/drivers/staging/media/sunxi/cedrus/cedrus_video.c
+@@ -568,7 +568,6 @@ int cedrus_queue_init(void *priv, struct vb2_queue *src_vq,
+ 
+ 	src_vq->type = V4L2_BUF_TYPE_VIDEO_OUTPUT;
+ 	src_vq->io_modes = VB2_MMAP | VB2_DMABUF;
+-	src_vq->dma_attrs = DMA_ATTR_NO_KERNEL_MAPPING;
+ 	src_vq->drv_priv = ctx;
+ 	src_vq->buf_struct_size = sizeof(struct cedrus_buffer);
+ 	src_vq->ops = &cedrus_qops;
 diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-index f3695ab44389..57053cfa099b 100644
+index 7358cbfc3e4d..c89029b3c5da 100644
 --- a/include/media/hevc-ctrls.h
 +++ b/include/media/hevc-ctrls.h
-@@ -55,9 +55,68 @@ enum v4l2_stateless_hevc_start_code {
- #define V4L2_HEVC_SPS_FLAG_SPS_TEMPORAL_MVP_ENABLED		(1ULL << 7)
- #define V4L2_HEVC_SPS_FLAG_STRONG_INTRA_SMOOTHING_ENABLED	(1ULL << 8)
- 
--/* The controls are not stable at the moment and will likely be reworked. */
-+/**
-+ * struct v4l2_ctrl_hevc_sps - ITU-T Rec. H.265: Sequence parameter set
-+ *
-+ * @video_parameter_set_id: specifies the value of the
-+ *			    vps_video_parameter_set_id of the active VPS
-+ * @seq_parameter_set_id: provides an identifier for the SPS for
-+ *			  reference by other syntax elements
-+ * @pic_width_in_luma_samples: specifies the width of each decoded picture
-+ *			       in units of luma samples
-+ * @pic_height_in_luma_samples: specifies the height of each decoded picture
-+ *				in units of luma samples
-+ * @bit_depth_luma_minus8: this value plus 8 specifies the bit depth of the
-+ *                         samples of the luma array
-+ * @bit_depth_chroma_minus8: this value plus 8 specifies the bit depth of the
-+ *                           samples of the chroma arrays
-+ * @log2_max_pic_order_cnt_lsb_minus4: this value plus 4 specifies the value
-+ *                                     of the variable MaxPicOrderCntLsb
-+ * @sps_max_dec_pic_buffering_minus1: this value plus 1 specifies the maximum
-+ *                                    required size of the decoded picture
-+ *                                    buffer for the codec video sequence
-+ * @sps_max_num_reorder_pics: indicates the maximum allowed number of pictures
-+ * @sps_max_latency_increase_plus1: not equal to 0 is used to compute the
-+ *				    value of SpsMaxLatencyPictures array
-+ * @log2_min_luma_coding_block_size_minus3: this value plus 3 specifies the
-+ *                                          minimum luma coding block size
-+ * @log2_diff_max_min_luma_coding_block_size: specifies the difference between
-+ *					      the maximum and minimum luma
-+ *					      coding block size
-+ * @log2_min_luma_transform_block_size_minus2: this value plus 2 specifies the
-+ *                                             minimum luma transform block size
-+ * @log2_diff_max_min_luma_transform_block_size: specifies the difference between
-+ *						 the maximum and minimum luma
-+ *						 transform block size
-+ * @max_transform_hierarchy_depth_inter: specifies the maximum hierarchy
-+ *					 depth for transform units of
-+ *					 coding units coded in inter
-+ *					 prediction mode
-+ * @max_transform_hierarchy_depth_intra: specifies the maximum hierarchy
-+ *					 depth for transform units of
-+ *					 coding units coded in intra
-+ *					 prediction mode
-+ * @pcm_sample_bit_depth_luma_minus1: this value plus 1 specifies the number of
-+ *                                    bits used to represent each of PCM sample
-+ *                                    values of the luma component
-+ * @pcm_sample_bit_depth_chroma_minus1: this value plus 1 specifies the number
-+ *                                      of bits used to represent each of PCM
-+ *                                      sample values of the chroma components
-+ * @log2_min_pcm_luma_coding_block_size_minus3: this value plus 3 specifies the
-+ *                                              minimum size of coding blocks
-+ * @log2_diff_max_min_pcm_luma_coding_block_size: specifies the difference between
-+ *						  the maximum and minimum size of
-+ *						  coding blocks
-+ * @num_short_term_ref_pic_sets: specifies the number of st_ref_pic_set()
-+ *				 syntax structures included in the SPS
-+ * @num_long_term_ref_pics_sps:	specifies the number of candidate long-term
-+ *				reference pictures that are specified in the SPS
-+ * @chroma_format_idc: specifies the chroma sampling
-+ * @sps_max_sub_layers_minus1: this value plus 1 specifies the maximum number
-+ *                             of temporal sub-layers
-+ * @flags: see V4L2_HEVC_SPS_FLAG_{}
-+ */
- struct v4l2_ctrl_hevc_sps {
--	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Sequence parameter set */
- 	__u8	video_parameter_set_id;
- 	__u8	seq_parameter_set_id;
- 	__u16	pic_width_in_luma_samples;
-@@ -108,8 +167,43 @@ struct v4l2_ctrl_hevc_sps {
- #define V4L2_HEVC_PPS_FLAG_DEBLOCKING_FILTER_CONTROL_PRESENT	(1ULL << 19)
- #define V4L2_HEVC_PPS_FLAG_UNIFORM_SPACING			(1ULL << 20)
- 
-+/**
-+ * struct v4l2_ctrl_hevc_pps - ITU-T Rec. H.265: Picture parameter set
-+ *
-+ * @pic_parameter_set_id: identifies the PPS for reference by other
-+ *			  syntax elements
-+ * @num_extra_slice_header_bits: specifies the number of extra slice header
-+ *				 bits that are present in the slice header RBSP
-+ *				 for coded pictures referring to the PPS.
-+ * @num_ref_idx_l0_default_active_minus1: this value plus 1 specifies the inferred
-+ *                                        value of num_ref_idx_l0_active_minus1
-+ * @num_ref_idx_l1_default_active_minus1: this value plus 1 specifies the inferred
-+ *                                        value of num_ref_idx_l1_active_minus1
-+ * @init_qp_minus26: this value plus 26 specifies the initial value of SliceQp Y
-+ *                   for each slice referring to the PPS
-+ * @diff_cu_qp_delta_depth: specifies the difference between the luma coding
-+ *			    tree block size and the minimum luma coding block
-+ *			    size of coding units that convey cu_qp_delta_abs
-+ *			    and cu_qp_delta_sign_flag
-+ * @pps_cb_qp_offset: specify the offsets to the luma quantization parameter Cb
-+ * @pps_cr_qp_offset: specify the offsets to the luma quantization parameter Cr
-+ * @num_tile_columns_minus1: this value plus 1 specifies the number of tile columns
-+ *			     partitioning the picture
-+ * @num_tile_rows_minus1: this value plus 1 specifies the number of tile rows
-+ *                        partitioning the picture
-+ * @column_width_minus1: this value plus 1 specifies the width of each tile column
-+ *                       in units of coding tree blocks
-+ * @row_height_minus1: this value plus 1 specifies the height of each tile row in
-+ *		       units of coding tree blocks
-+ * @pps_beta_offset_div2: specify the default deblocking parameter offsets for
-+ *			  beta divided by 2
-+ * @pps_tc_offset_div2: specify the default deblocking parameter offsets for tC
-+ *			divided by 2
-+ * @log2_parallel_merge_level_minus2: this value plus 2 specifies the value of
-+ *                                    the variable Log2ParMrgLevel
-+ * @flags: see V4L2_HEVC_PPS_FLAG_{}
-+ */
- struct v4l2_ctrl_hevc_pps {
--	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture parameter set */
- 	__u8	pic_parameter_set_id;
- 	__u8	num_extra_slice_header_bits;
- 	__u8	num_ref_idx_l0_default_active_minus1;
-@@ -148,6 +242,14 @@ struct v4l2_ctrl_hevc_pps {
- 
- #define V4L2_HEVC_DPB_ENTRIES_NUM_MAX		16
- 
-+/**
-+ * struct v4l2_hevc_dpb_entry - HEVC decoded picture buffer entry
-+ *
-+ * @timestamp: timestamp of the V4L2 capture buffer to use as reference.
-+ * @flags: long term flag for the reference frame
-+ * @field_pic: whether the reference is a field picture or a frame.
-+ * @pic_order_cnt_val: the picture order count of the reference.
-+ */
- struct v4l2_hevc_dpb_entry {
- 	__u64	timestamp;
- 	__u8	flags;
-@@ -156,6 +258,31 @@ struct v4l2_hevc_dpb_entry {
- 	__u8	padding[2];
- };
- 
-+/**
-+ * struct v4l2_hevc_pred_weight_table - HEVC weighted prediction parameters
-+ *
-+ * @delta_luma_weight_l0: the difference of the weighting factor applied
-+ *			  to the luma prediction value for list 0
-+ * @luma_offset_l0: the additive offset applied to the luma prediction value
-+ *		    for list 0
-+ * @delta_chroma_weight_l0: the difference of the weighting factor applied
-+ *			    to the chroma prediction values for list 0
-+ * @chroma_offset_l0: the difference of the additive offset applied to
-+ *		      the chroma prediction values for list 0
-+ * @delta_luma_weight_l1: the difference of the weighting factor applied
-+ *			  to the luma prediction value for list 1
-+ * @luma_offset_l1: the additive offset applied to the luma prediction value
-+ *		    for list 1
-+ * @delta_chroma_weight_l1: the difference of the weighting factor applied
-+ *			    to the chroma prediction values for list 1
-+ * @chroma_offset_l1: the difference of the additive offset applied to
-+ *		      the chroma prediction values for list 1
-+ * @luma_log2_weight_denom: the base 2 logarithm of the denominator for
-+ *			    all luma weighting factors
-+ * @delta_chroma_log2_weight_denom: the difference of the base 2 logarithm
-+ *				    of the denominator for all chroma
-+ *				    weighting factors
-+ */
- struct v4l2_hevc_pred_weight_table {
- 	__s8	delta_luma_weight_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
- 	__s8	luma_offset_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
-@@ -184,6 +311,50 @@ struct v4l2_hevc_pred_weight_table {
- #define V4L2_HEVC_SLICE_PARAMS_FLAG_SLICE_LOOP_FILTER_ACROSS_SLICES_ENABLED (1ULL << 8)
- #define V4L2_HEVC_SLICE_PARAMS_FLAG_DEPENDENT_SLICE_SEGMENT	(1ULL << 9)
- 
-+/**
-+ * struct v4l2_ctrl_hevc_slice_params - HEVC slice parameters
-+ *
-+ * @bit_size: size (in bits) of the current slice data
-+ * @data_bit_offset: offset (in bits) to the video data in the current slice data
-+ * @nal_unit_type: specifies the coding type of the slice (B, P or I)
-+ * @nuh_temporal_id_plus1: minus 1 specifies a temporal identifier for the NAL unit
-+ * @slice_type: see V4L2_HEVC_SLICE_TYPE_{}
-+ * @colour_plane_id: specifies the colour plane associated with the current slice
-+ * @slice_pic_order_cnt: specifies the picture order count
-+ * @num_ref_idx_l0_active_minus1: this value plus 1 specifies the maximum reference
-+ *                                index for reference picture list 0 that may be
-+ *                                used to decode the slice
-+ * @num_ref_idx_l1_active_minus1: this value plus 1 specifies the maximum reference
-+ *                                index for reference picture list 1 that may be
-+ *                                used to decode the slice
-+ * @collocated_ref_idx: specifies the reference index of the collocated picture used
-+ *			for temporal motion vector prediction
-+ * @five_minus_max_num_merge_cand: specifies the maximum number of merging
-+ *				   motion vector prediction candidates supported in
-+ *				   the slice subtracted from 5
-+ * @slice_qp_delta: specifies the initial value of QpY to be used for the coding
-+ *		    blocks in the slice
-+ * @slice_cb_qp_offset: specifies a difference to be added to the value of pps_cb_qp_offset
-+ * @slice_cr_qp_offset: specifies a difference to be added to the value of pps_cr_qp_offset
-+ * @slice_act_y_qp_offset: screen content extension parameters
-+ * @slice_act_cb_qp_offset: screen content extension parameters
-+ * @slice_act_cr_qp_offset: screen content extension parameters
-+ * @slice_beta_offset_div2: specify the deblocking parameter offsets for beta divided by 2
-+ * @slice_tc_offset_div2: specify the deblocking parameter offsets for tC divided by 2
-+ * @pic_struct: indicates whether a picture should be displayed as a frame or as one or
-+ *		more fields
-+ * @slice_segment_addr: specifies the address of the first coding tree block in
-+ *			the slice segment
-+ * @ref_idx_l0: the list of L0 reference elements as indices in the DPB
-+ * @ref_idx_l1: the list of L1 reference elements as indices in the DPB
-+ * @short_term_ref_pic_set_size: specifies the size of short-term reference
-+ *				 pictures included in the SPS
-+ * @long_term_ref_pic_set_size: specifies the size of long-term reference
-+ *				picture include in the SPS
-+ * @pred_weight_table: the prediction weight coefficients for inter-picture
-+ *		       prediction
-+ * @flags: see V4L2_HEVC_SLICE_PARAMS_FLAG_{}
-+ */
+@@ -310,7 +310,7 @@ struct v4l2_hevc_pred_weight_table {
+  * V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag must be set when using it.
+  *
+  * @bit_size: size (in bits) of the current slice data
+- * @data_bit_offset: offset (in bits) to the video data in the current slice data
++ * @data_byte_offset: offset (in bytes) to the video data in the current slice data
+  * @num_entry_point_offsets: specifies the number of entry point offset syntax
+  *			     elements in the slice header.
+  * @nal_unit_type: specifies the coding type of the slice (B, P or I)
+@@ -356,7 +356,7 @@ struct v4l2_hevc_pred_weight_table {
+  */
  struct v4l2_ctrl_hevc_slice_params {
  	__u32	bit_size;
- 	__u32	data_bit_offset;
-@@ -230,6 +401,28 @@ struct v4l2_ctrl_hevc_slice_params {
- #define V4L2_HEVC_DECODE_PARAM_FLAG_IDR_PIC		0x2
- #define V4L2_HEVC_DECODE_PARAM_FLAG_NO_OUTPUT_OF_PRIOR  0x4
- 
-+/**
-+ * struct v4l2_ctrl_hevc_decode_params - HEVC decode parameters
-+ *
-+ * @pic_order_cnt_val: picture order count
-+ * @short_term_ref_pic_set_size: specifies the size of short-term reference
-+ *				 pictures set included in the SPS of the first slice
-+ * @long_term_ref_pic_set_size: specifies the size of long-term reference
-+ *				pictures set include in the SPS of the first slice
-+ * @num_active_dpb_entries: the number of entries in dpb
-+ * @dpb: the decoded picture buffer, for meta-data about reference frames
-+ * @num_poc_st_curr_before: the number of reference pictures in the short-term
-+ *			    set that come before the current frame
-+ * @num_poc_st_curr_after: the number of reference pictures in the short-term
-+ *			   set that come after the current frame
-+ * @num_poc_lt_curr: the number of reference pictures in the long-term set
-+ * @poc_st_curr_before: provides the index of the short term before references
-+ *			in DPB array
-+ * @poc_st_curr_after: provides the index of the short term after references
-+ *		       in DPB array
-+ * @poc_lt_curr: provides the index of the long term references in DPB array
-+ * @flags: see V4L2_HEVC_DECODE_PARAM_FLAG_{}
-+ */
- struct v4l2_ctrl_hevc_decode_params {
- 	__s32	pic_order_cnt_val;
- 	__u16	short_term_ref_pic_set_size;
-@@ -245,6 +438,28 @@ struct v4l2_ctrl_hevc_decode_params {
- 	__u64	flags;
- };
- 
-+/**
-+ * struct v4l2_ctrl_hevc_scaling_matrix - HEVC scaling lists parameters
-+ *
-+ * @scaling_list_4x4: scaling list is used for the scaling process for
-+ *		      transform coefficients. The values on each scaling
-+ *		      list are expected in raster scan order
-+ * @scaling_list_8x8: scaling list is used for the scaling process for
-+ *		      transform coefficients. The values on each scaling
-+ *		      list are expected in raster scan order
-+ * @scaling_list_16x16: scaling list is used for the scaling process for
-+ *			transform coefficients. The values on each scaling
-+ *			list are expected in raster scan order
-+ * @scaling_list_32x32:	scaling list is used for the scaling process for
-+ *			transform coefficients. The values on each scaling
-+ *			list are expected in raster scan order
-+ * @scaling_list_dc_coef_16x16: scaling list is used for the scaling process
-+ *				for transform coefficients. The values on each
-+ *				scaling list are expected in raster scan order.
-+ * @scaling_list_dc_coef_32x32:	scaling list is used for the scaling process
-+ *				for transform coefficients. The values on each
-+ *				scaling list are expected in raster scan order.
-+ */
- struct v4l2_ctrl_hevc_scaling_matrix {
- 	__u8	scaling_list_4x4[6][16];
- 	__u8	scaling_list_8x8[6][64];
+-	__u32	data_bit_offset;
++	__u32	data_byte_offset;
+ 	__u32	num_entry_point_offsets;
+ 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: NAL unit header */
+ 	__u8	nal_unit_type;
 -- 
 2.32.0
 
