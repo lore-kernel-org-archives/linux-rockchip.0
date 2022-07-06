@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B74CEC43334
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 09:41:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6D50C43334
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 09:41:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dS0hqeNHSfQf7vieEd1E8G5H7WzXoNew4jGdZA1MRV0=; b=xp18llUXl+9g1B
-	/yyPqWMldlhEfvTnwLDsYtr8sqFHgyg/i2n2CtU62pv3C/JfOP0xtxQaPiFR2cOoX4YEUqxZTuKJa
-	RokUi45QRTXZzgD1KZLAYfQ8V7K/3pTwo43xmDsXEQrfN7q//b4vHFVCyvCVYRWOgSN4NZC9SrTF3
-	Bw9IUiANxRtv2oUxT7Q+/1F9ydPGhrHpXVJF1WaAy5NMYQbncwR+EmUupGn5IM2ULu046Sgy0EOgS
-	CzYBKzzk9ryr/DHp+KzFKTt4EIQPaAEYg1r1ae53Z7d1BSt5zk+3N2cQas5Eg+ScUnY5yq8X6TTts
-	R7IDQffRdVMHM0/R5ooQ==;
+	List-Owner; bh=UT7fif7zfmRBEQ9gsK7dnkEkmWi5t8I3iGAiqzlAVj4=; b=JQyJJi7hQrNwTb
+	fzDSgvAsatTGxyyBSJtVIl1VkftAXAhcK5E74ISVTZqK1GKlkrQaeNz5CLPod+VidRoTv+3wg4bQb
+	jj2APmigwJybgkSMMtTmBt1HSZXT9bzWE0sHIqVvToyWoAZ5sITQMjk94eQ3kUkgFlxnxDgvoZpbD
+	kdvvi9F8yHlZIG4Ceh9euaS28Fottm//+lOzq4NnLk3LrYbgQYq535p1JhipLTql69nvYd5nktT4L
+	ZLhydXSkxxLfCwTY+PolaJv5HM2xPqm7gKjReTULpGtry5Xx4gfEDbTCeL+2o78wFXm5XMSn2Gv5C
+	OFhuillIu/ikrmQQ9jNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o91Wh-007rGt-Mo; Wed, 06 Jul 2022 09:40:55 +0000
+	id 1o91Wg-007rFs-5X; Wed, 06 Jul 2022 09:40:54 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o91UN-007q2G-F8; Wed, 06 Jul 2022 09:38:37 +0000
+	id 1o91UN-007q2A-BR; Wed, 06 Jul 2022 09:38:37 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:3a70:988d:42ce:f5cc])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6172E66019BA;
-	Wed,  6 Jul 2022 10:38:15 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B4D4166019B6;
+	Wed,  6 Jul 2022 10:38:14 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1657100295;
-	bh=PVStR3ApcqPTtqGenIYO4/72sXWBsjSuFtk9oWFtb7s=;
+	bh=ljC78Z2JAx0jLGp/fyK/qXKVwEXo68jXKXsRWY1Kabo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IdSEQ3R11zGZQzzEBqHnA3gIaLsmQK56qtnj4D7/q6boPDeLNFB+uZ9NkIutvIWmL
-	 lt37g1B9etRxseHoSQTD8V7JgzkHwzpEq5RLbFTBJTXgX6NYZpYbPMNlqPWzVJ0Esv
-	 pCBT26OHV519UD0RwALDT3fCUmjy06pUW7sv3n12OUzBTU+ilDt4WH4slcrx4cGR8A
-	 OA0MHAc0PfMu/B0tXonM36TGU1e5OMVNHFuOTce8g5JuQMtU+FB38+iDLZEfiywJL9
-	 WPQ1wuY1KbRP3lK4L1Z0pgnsNHo47lE/qwbw77YJ216X3fuLtxKRavzZTHjNQiTM1X
-	 Ido5VueGK4Y1w==
+	b=WumULO1LhKy/Y08dBbtQOfZEg+HaSdVI5S8TYyvqoalAcKkGc7/D5kl9j5n3HYYS0
+	 6La9L29L3XGjmWcgJd4dtc3nJJVZ6xqMCnM2jkrcP2joGMMAyzXTe+tBjFdw+rm2a6
+	 nKMNXCHSWly8NqB26qkeTyhAQEHXxX6xeaBqNs8Yuay4H5AZj++nYa9j2m8ZsXuoS0
+	 jQWlfxgzGL01IxH1LcDKJbg2DfGhBo2iAKnjB5LwHPkYgszYWhJK7m33mb3d/zqAa3
+	 dmMTE7t4/TKVteSQMtNJtUAdGAkhVg8bqk/r8bJfdJ8G1eOCFTKj6EQ1bRzfQErwDK
+	 fFsf5dJgOmA7Q==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -62,16 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v11 07/17] media: uapi: HEVC: Add SEI pic struct flags
-Date: Wed,  6 Jul 2022 11:37:53 +0200
-Message-Id: <20220706093803.158810-8-benjamin.gaignard@collabora.com>
+Subject: [PATCH v11 06/17] media: uapi: HEVC: Change pic_order_cnt definition in v4l2_hevc_dpb_entry
+Date: Wed,  6 Jul 2022 11:37:52 +0200
+Message-Id: <20220706093803.158810-7-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220706093803.158810-1-benjamin.gaignard@collabora.com>
 References: <20220706093803.158810-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_023831_823158_24F7BBE9 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20220706_023831_770298_83B145A4 
+X-CRM114-Status: GOOD (  14.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,126 +83,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The possible values for the field_pic field in the v4l2_hevc_dpb_entry
-structure are defined in the table D.2 in HEVC specification section D.3.3.
-Add flags and documentation for each of them.
-
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Jernej Skrabec <jernej.skrabec@gmail.com>
----
- .../media/v4l/ext-ctrls-codec.rst             | 54 +++++++++++++++++++
- include/media/hevc-ctrls.h                    | 14 +++++
- 2 files changed, 68 insertions(+)
-
-diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-index 3dfb81a93935..8ba16e8742f3 100644
---- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-+++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-@@ -3218,6 +3218,7 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-     * - __u8
-       - ``field_pic``
-       - Whether the reference is a field picture or a frame.
-+        See :ref:`HEVC dpb field pic Flags <hevc_dpb_field_pic_flags>`
-     * - __u16
-       - ``pic_order_cnt[2]``
-       - The picture order count of the reference. Only the first element of the
-@@ -3231,6 +3232,59 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
- 
-     \normalsize
- 
-+.. _hevc_dpb_field_pic_flags:
-+
-+``HEVC dpb field pic Flags``
-+
-+.. raw:: latex
-+
-+    \scriptsize
-+
-+.. flat-table::
-+    :header-rows:  0
-+    :stub-columns: 0
-+    :widths:       1 1 2
-+
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_FRAME``
-+      - 0
-+      - (progressive) Frame
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_FIELD``
-+      - 1
-+      - Top field
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_FIELD``
-+      - 2
-+      - Bottom field
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_BOTTOM``
-+      - 3
-+      - Top field, bottom field, in that order
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_TOP``
-+      - 4
-+      - Bottom field, top field, in that order
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_BOTTOM_TOP``
-+      - 5
-+      - Top field, bottom field, top field repeated, in that order
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_TOP_BOTTOM``
-+      - 6
-+      - Bottom field, top field, bottom field repeated, in that order
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_FRAME_DOUBLING``
-+      - 7
-+      - Frame doubling
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_FRAME_TRIPLING``
-+      - 8
-+      - Frame tripling
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_PAIRED_PREVIOUS_BOTTOM``
-+      - 9
-+      - Top field paired with previous bottom field in output order
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_PAIRED_PREVIOUS_TOP``
-+      - 10
-+      - Bottom field paired with previous top field in output order
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_TOP_PAIRED_NEXT_BOTTOM``
-+      - 11
-+      - Top field paired with next bottom field in output order
-+    * - ``V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_PAIRED_NEXT_TOP``
-+      - 12
-+      - Bottom field paired with next top field in output order
-+
- .. c:type:: v4l2_hevc_pred_weight_table
- 
- .. raw:: latex
-diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-index 01c1795c57a9..f3695ab44389 100644
---- a/include/media/hevc-ctrls.h
-+++ b/include/media/hevc-ctrls.h
-@@ -132,6 +132,20 @@ struct v4l2_ctrl_hevc_pps {
- 
- #define V4L2_HEVC_DPB_ENTRY_LONG_TERM_REFERENCE	0x01
- 
-+#define V4L2_HEVC_SEI_PIC_STRUCT_FRAME				0
-+#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_FIELD			1
-+#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_FIELD			2
-+#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_BOTTOM			3
-+#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_TOP			4
-+#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_BOTTOM_TOP			5
-+#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_TOP_BOTTOM		6
-+#define V4L2_HEVC_SEI_PIC_STRUCT_FRAME_DOUBLING			7
-+#define V4L2_HEVC_SEI_PIC_STRUCT_FRAME_TRIPLING			8
-+#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_PAIRED_PREVIOUS_BOTTOM	9
-+#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_PAIRED_PREVIOUS_TOP	10
-+#define V4L2_HEVC_SEI_PIC_STRUCT_TOP_PAIRED_NEXT_BOTTOM		11
-+#define V4L2_HEVC_SEI_PIC_STRUCT_BOTTOM_PAIRED_NEXT_TOP		12
-+
- #define V4L2_HEVC_DPB_ENTRIES_NUM_MAX		16
- 
- struct v4l2_hevc_dpb_entry {
--- 
-2.32.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlIEhFVkMgc3BlY2lmaWNhdGlvbiBkZXNjcmliZXMgdGhlIGZvbGxvd2luZzoKIlBpY09yZGVy
+Q250VmFsIGlzIGRlcml2ZWQgYXMgZm9sbG93czoKUGljT3JkZXJDbnRWYWwgPSBQaWNPcmRlckNu
+dE1zYiArIHNsaWNlX3BpY19vcmRlcl9jbnRfbHNiClRoZSB2YWx1ZSBvZiBQaWNPcmRlckNudFZh
+bCBzaGFsbCBiZSBpbiB0aGUgcmFuZ2Ugb2Yg4oiSMl4zMSB0byAyXjMxIOKIkiAxLCBpbmNsdXNp
+dmUuIgoKVG8gbWF0Y2ggd2l0aCB0aGVzZSBkZWZpbml0aW9ucyBjaGFuZ2UgX191MTYgcGljX29y
+ZGVyX2NudFsyXQppbnRvIF9fczMyIHBpY19vcmRlcl9jbnRfdmFsLgpDaGFuZ2UgdjRsMl9jdHJs
+X2hldmNfc2xpY2VfcGFyYW1zLT5zbGljZV9waWNfb3JkZXJfY250IHRvIF9fczMyIHRvby4KClNp
+Z25lZC1vZmYtYnk6IEJlbmphbWluIEdhaWduYXJkIDxiZW5qYW1pbi5nYWlnbmFyZEBjb2xsYWJv
+cmEuY29tPgpSZXZpZXdlZC1ieTogRXplcXVpZWwgR2FyY2lhIDxlemVxdWllbEB2YW5ndWFyZGlh
+c3VyLmNvbS5hcj4KQWNrZWQtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVA
+Y29sbGFib3JhLmNvbT4KVGVzdGVkLWJ5OiBKZXJuZWogU2tyYWJlYyA8amVybmVqLnNrcmFiZWNA
+Z21haWwuY29tPgotLS0KIERvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0
+LWN0cmxzLWNvZGVjLnJzdCB8IDIgKy0KIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFu
+dHJvX2cyX2hldmNfZGVjLmMgICAgICAgICB8IDcgKysrLS0tLQogZHJpdmVycy9zdGFnaW5nL21l
+ZGlhL2hhbnRyby9oYW50cm9faGV2Yy5jICAgICAgICAgICAgICAgIHwgMiArLQogZHJpdmVycy9z
+dGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faHcuaCAgICAgICAgICAgICAgICAgIHwgNCArKy0t
+CiBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19oMjY1LmMgICAgICAg
+ICAgfCA0ICsrLS0KIGluY2x1ZGUvbWVkaWEvaGV2Yy1jdHJscy5oICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICB8IDQgKystLQogNiBmaWxlcyBjaGFuZ2VkLCAxMSBpbnNlcnRpb25zKCsp
+LCAxMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1h
+cGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QgYi9Eb2N1bWVudGF0aW9uL3VzZXJzcGFj
+ZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QKaW5kZXggODY4NjY5YWU2ODMxLi4z
+ZGZiODFhOTM5MzUgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRp
+YS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdAorKysgYi9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1h
+cGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QKQEAgLTMwMTAsNyArMzAxMCw3IEBAIGVu
+dW0gdjRsMl9tcGVnX3ZpZGVvX2hldmNfc2l6ZV9vZl9sZW5ndGhfZmllbGQgLQogICAgICogLSBf
+X3U4CiAgICAgICAtIGBgY29sb3VyX3BsYW5lX2lkYGAKICAgICAgIC0KLSAgICAqIC0gX191MTYK
+KyAgICAqIC0gX19zMzIKICAgICAgIC0gYGBzbGljZV9waWNfb3JkZXJfY250YGAKICAgICAgIC0K
+ICAgICAqIC0gX191OApkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9o
+YW50cm9fZzJfaGV2Y19kZWMuYyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJv
+X2cyX2hldmNfZGVjLmMKaW5kZXggNWRmNmYwOGUyNmY1Li5kMjg2NTNkMDRkMjAgMTAwNjQ0Ci0t
+LSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cyX2hldmNfZGVjLmMKKysr
+IGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzJfaGV2Y19kZWMuYwpAQCAt
+MzkwLDExICszOTAsMTAgQEAgc3RhdGljIGludCBzZXRfcmVmKHN0cnVjdCBoYW50cm9fY3R4ICpj
+dHgpCiAJCQkgISEocHBzLT5mbGFncyAmIFY0TDJfSEVWQ19QUFNfRkxBR19MT09QX0ZJTFRFUl9B
+Q1JPU1NfVElMRVNfRU5BQkxFRCkpOwogCiAJLyoKLQkgKiBXcml0ZSBQT0MgY291bnQgZGlmZiBm
+cm9tIGN1cnJlbnQgcGljLiBGb3IgZnJhbWUgZGVjb2Rpbmcgb25seSBjb21wdXRlCi0JICogcGlj
+X29yZGVyX2NudFswXSBhbmQgaWdub3JlIHBpY19vcmRlcl9jbnRbMV0gdXNlZCBpbiBmaWVsZC1j
+b2RpbmcuCisJICogV3JpdGUgUE9DIGNvdW50IGRpZmYgZnJvbSBjdXJyZW50IHBpYy4KIAkgKi8K
+IAlmb3IgKGkgPSAwOyBpIDwgZGVjb2RlX3BhcmFtcy0+bnVtX2FjdGl2ZV9kcGJfZW50cmllcyAm
+JiBpIDwgQVJSQVlfU0laRShjdXJfcG9jKTsgaSsrKSB7Ci0JCWNoYXIgcG9jX2RpZmYgPSBkZWNv
+ZGVfcGFyYW1zLT5waWNfb3JkZXJfY250X3ZhbCAtIGRwYltpXS5waWNfb3JkZXJfY250WzBdOwor
+CQljaGFyIHBvY19kaWZmID0gZGVjb2RlX3BhcmFtcy0+cGljX29yZGVyX2NudF92YWwgLSBkcGJb
+aV0ucGljX29yZGVyX2NudF92YWw7CiAKIAkJaGFudHJvX3JlZ193cml0ZSh2cHUsICZjdXJfcG9j
+W2ldLCBwb2NfZGlmZik7CiAJfQpAQCAtNDIxLDcgKzQyMCw3IEBAIHN0YXRpYyBpbnQgc2V0X3Jl
+ZihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KQogCWRwYl9sb25ndGVybV9lID0gMDsKIAlmb3IgKGkg
+PSAwOyBpIDwgZGVjb2RlX3BhcmFtcy0+bnVtX2FjdGl2ZV9kcGJfZW50cmllcyAmJgogCSAgICAg
+aSA8IChWNEwyX0hFVkNfRFBCX0VOVFJJRVNfTlVNX01BWCAtIDEpOyBpKyspIHsKLQkJbHVtYV9h
+ZGRyID0gaGFudHJvX2hldmNfZ2V0X3JlZl9idWYoY3R4LCBkcGJbaV0ucGljX29yZGVyX2NudFsw
+XSk7CisJCWx1bWFfYWRkciA9IGhhbnRyb19oZXZjX2dldF9yZWZfYnVmKGN0eCwgZHBiW2ldLnBp
+Y19vcmRlcl9jbnRfdmFsKTsKIAkJaWYgKCFsdW1hX2FkZHIpCiAJCQlyZXR1cm4gLUVOT01FTTsK
+IApkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faGV2Yy5j
+IGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faGV2Yy5jCmluZGV4IDFkZjg3
+Y2E4OGViZi4uNTk4NGM1ZmE2ZjgzIDEwMDY0NAotLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEv
+aGFudHJvL2hhbnRyb19oZXZjLmMKKysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9o
+YW50cm9faGV2Yy5jCkBAIC0zMyw3ICszMyw3IEBAIHZvaWQgaGFudHJvX2hldmNfcmVmX2luaXQo
+c3RydWN0IGhhbnRyb19jdHggKmN0eCkKIH0KIAogZG1hX2FkZHJfdCBoYW50cm9faGV2Y19nZXRf
+cmVmX2J1ZihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LAotCQkJCSAgIGludCBwb2MpCisJCQkJICAg
+czMyIHBvYykKIHsKIAlzdHJ1Y3QgaGFudHJvX2hldmNfZGVjX2h3X2N0eCAqaGV2Y19kZWMgPSAm
+Y3R4LT5oZXZjX2RlYzsKIAlpbnQgaTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRp
+YS9oYW50cm8vaGFudHJvX2h3LmggYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRy
+b19ody5oCmluZGV4IGEyZTBmMDgzNjI4MS4uMzNkMTU2Y2NiZmViIDEwMDY0NAotLS0gYS9kcml2
+ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19ody5oCisrKyBiL2RyaXZlcnMvc3RhZ2lu
+Zy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmgKQEAgLTE0NSw3ICsxNDUsNyBAQCBzdHJ1Y3QgaGFu
+dHJvX2hldmNfZGVjX2h3X2N0eCB7CiAJc3RydWN0IGhhbnRyb19hdXhfYnVmIHRpbGVfYnNkOwog
+CXN0cnVjdCBoYW50cm9fYXV4X2J1ZiByZWZfYnVmc1tOVU1fUkVGX1BJQ1RVUkVTXTsKIAlzdHJ1
+Y3QgaGFudHJvX2F1eF9idWYgc2NhbGluZ19saXN0czsKLQlpbnQgcmVmX2J1ZnNfcG9jW05VTV9S
+RUZfUElDVFVSRVNdOworCXMzMiByZWZfYnVmc19wb2NbTlVNX1JFRl9QSUNUVVJFU107CiAJdTMy
+IHJlZl9idWZzX3VzZWQ7CiAJc3RydWN0IGhhbnRyb19oZXZjX2RlY19jdHJscyBjdHJsczsKIAl1
+bnNpZ25lZCBpbnQgbnVtX3RpbGVfY29sc19hbGxvY2F0ZWQ7CkBAIC0zNTcsNyArMzU3LDcgQEAg
+dm9pZCBoYW50cm9faGV2Y19kZWNfZXhpdChzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KTsKIGludCBo
+YW50cm9fZzJfaGV2Y19kZWNfcnVuKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgpOwogaW50IGhhbnRy
+b19oZXZjX2RlY19wcmVwYXJlX3J1bihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4KTsKIHZvaWQgaGFu
+dHJvX2hldmNfcmVmX2luaXQoc3RydWN0IGhhbnRyb19jdHggKmN0eCk7Ci1kbWFfYWRkcl90IGhh
+bnRyb19oZXZjX2dldF9yZWZfYnVmKHN0cnVjdCBoYW50cm9fY3R4ICpjdHgsIGludCBwb2MpOwor
+ZG1hX2FkZHJfdCBoYW50cm9faGV2Y19nZXRfcmVmX2J1ZihzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4
+LCBzMzIgcG9jKTsKIGludCBoYW50cm9faGV2Y19hZGRfcmVmX2J1ZihzdHJ1Y3QgaGFudHJvX2N0
+eCAqY3R4LCBpbnQgcG9jLCBkbWFfYWRkcl90IGFkZHIpOwogaW50IGhhbnRyb19oZXZjX3ZhbGlk
+YXRlX3NwcyhzdHJ1Y3QgaGFudHJvX2N0eCAqY3R4LCBjb25zdCBzdHJ1Y3QgdjRsMl9jdHJsX2hl
+dmNfc3BzICpzcHMpOwogCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkv
+Y2VkcnVzL2NlZHJ1c19oMjY1LmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVz
+L2NlZHJ1c19oMjY1LmMKaW5kZXggNDRmMzg1YmU5ZjZjLi40MTE2MDE5NzUxMjQgMTAwNjQ0Ci0t
+LSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9zdW54aS9jZWRydXMvY2VkcnVzX2gyNjUuYworKysg
+Yi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvc3VueGkvY2VkcnVzL2NlZHJ1c19oMjY1LmMKQEAgLTE0
+Myw4ICsxNDMsOCBAQCBzdGF0aWMgdm9pZCBjZWRydXNfaDI2NV9mcmFtZV9pbmZvX3dyaXRlX2Rw
+YihzdHJ1Y3QgY2VkcnVzX2N0eCAqY3R4LAogCWZvciAoaSA9IDA7IGkgPCBudW1fYWN0aXZlX2Rw
+Yl9lbnRyaWVzOyBpKyspIHsKIAkJaW50IGJ1ZmZlcl9pbmRleCA9IHZiMl9maW5kX3RpbWVzdGFt
+cCh2cSwgZHBiW2ldLnRpbWVzdGFtcCwgMCk7CiAJCXUzMiBwaWNfb3JkZXJfY250WzJdID0gewot
+CQkJZHBiW2ldLnBpY19vcmRlcl9jbnRbMF0sCi0JCQlkcGJbaV0ucGljX29yZGVyX2NudFsxXQor
+CQkJZHBiW2ldLnBpY19vcmRlcl9jbnRfdmFsLAorCQkJZHBiW2ldLnBpY19vcmRlcl9jbnRfdmFs
+CiAJCX07CiAKIAkJY2VkcnVzX2gyNjVfZnJhbWVfaW5mb193cml0ZV9zaW5nbGUoY3R4LCBpLCBk
+cGJbaV0uZmllbGRfcGljLApkaWZmIC0tZ2l0IGEvaW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxzLmgg
+Yi9pbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaAppbmRleCA0NTczNGJkOGZkZmMuLjAxYzE3OTVj
+NTdhOSAxMDA2NDQKLS0tIGEvaW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxzLmgKKysrIGIvaW5jbHVk
+ZS9tZWRpYS9oZXZjLWN0cmxzLmgKQEAgLTEzOCw3ICsxMzgsNyBAQCBzdHJ1Y3QgdjRsMl9oZXZj
+X2RwYl9lbnRyeSB7CiAJX191NjQJdGltZXN0YW1wOwogCV9fdTgJZmxhZ3M7CiAJX191OAlmaWVs
+ZF9waWM7Ci0JX191MTYJcGljX29yZGVyX2NudFsyXTsKKwlfX3MzMglwaWNfb3JkZXJfY250X3Zh
+bDsKIAlfX3U4CXBhZGRpbmdbMl07CiB9OwogCkBAIC0xODEsNyArMTgxLDcgQEAgc3RydWN0IHY0
+bDJfY3RybF9oZXZjX3NsaWNlX3BhcmFtcyB7CiAJLyogSVNPL0lFQyAyMzAwOC0yLCBJVFUtVCBS
+ZWMuIEguMjY1OiBHZW5lcmFsIHNsaWNlIHNlZ21lbnQgaGVhZGVyICovCiAJX191OAlzbGljZV90
+eXBlOwogCV9fdTgJY29sb3VyX3BsYW5lX2lkOwotCV9fdTE2CXNsaWNlX3BpY19vcmRlcl9jbnQ7
+CisJX19zMzIJc2xpY2VfcGljX29yZGVyX2NudDsKIAlfX3U4CW51bV9yZWZfaWR4X2wwX2FjdGl2
+ZV9taW51czE7CiAJX191OAludW1fcmVmX2lkeF9sMV9hY3RpdmVfbWludXMxOwogCV9fdTgJY29s
+bG9jYXRlZF9yZWZfaWR4OwotLSAKMi4zMi4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
+Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
