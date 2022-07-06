@@ -4,87 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40BFFC43334
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 09:46:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 464CCC43334
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 09:48:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lLYDtkYmsJxLLBIiGbZV8nGTQmN5g/t4M/Jzm/otPLQ=; b=NAXcpjpvOcGywE
-	6MpXMzq8E5bak+zup77i0mURtAwJPAToQ8ZQC+EY7P8B0ErJHJaJBg1a8wDlM8u2mFngvPRuqwImB
-	1tOkmVJw8VEzc/snfS9XefsBioqXNLIi7ZESgshODwdaSmvOSU6t3fiy1GH86ZqbtljURoR3+Xuw1
-	qMl/jDT8Niyq5jcUwyfRzaSO8GEYP7EFNsa0XUcUejsX3HVUZuomwaYcV/l1gm+aov0ogWkOqPfzl
-	61r8iLHgVImsMzpt24ZBz1nEfEkpI3EfoTegkBPd9H3loqqNjydrsq0dYxroQnFrOZrYcN9hMcnmu
-	5ujYtKLFtzOKHbsQkxXg==;
+	List-Owner; bh=H321X8HU8AaKEs0TKy0EVrM84Pt6F97kQmbLE8Rtg4M=; b=sa4iSnXMnZM1nG
+	QmEoXPrRnlVRNbM0GjPVcwo0eJ/o1hZPDaZ3KJtfXeNv1BUjFJr5xqpwAFu1OKCbc/rqhhFc65V1E
+	UWrYVGCmSubmyVkthq2FJXHJccdV1ewH7zi3pY1sUuw5F7niMg8asXZ9xJGTEEB7yt8jnM+otkg99
+	cKBAm4lAFWIeiy+vZ2XMSUtsuYWEl1Kr5frbaZHA0HvUkPBJ+8dhkp0gspVc8+X0sHGiEZRKOjKi1
+	3uz6EmzSYt0fB9fZWFvz0LeMeQH3owRxzUyjHUL/rXz7GsxJanwNnNliQUHPem7jp0q2BposyMGvA
+	ciGDLlWXJPgqJnyDa8Lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o91bT-007u7Z-Fb; Wed, 06 Jul 2022 09:45:51 +0000
+	id 1o91e0-007vWE-Oa; Wed, 06 Jul 2022 09:48:28 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o91Ur-007qGk-Hi; Wed, 06 Jul 2022 09:39:01 +0000
+	id 1o91Uu-007qGk-Fi
+	for linux-rockchip@bombadil.infradead.org; Wed, 06 Jul 2022 09:39:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=NjAl/fINhpCL3RCBsXHwkF7V2QVGh86LqOhj8TdlpZg=; b=jVzlE7w2pLNylS2aQtaREFaFe5
-	NoalZd2ahCEi/wykIHtwCIvRCXwQbA6ETDXTC03/5oPBZ18m3okAGcahP8jVbj7kDZfYhBj7kmYEW
-	g3W/C5DomyuIlJS7VRbybpuGT0gsbn23HBS3aYMA/jg0vmO1iXp8KEXDwztn9uBYQfj6PFj3BgpxE
-	KCTt/dXu7R5EOODhufrgzWoXkH3aSAg07GYHcdrSczDbgnsWppkZ+VcnSdg3aYp2h6IHW6XKYmJmh
-	BiC2PX7gH+smT1x2ebE6oZo7Fn2Yik75COo2IGC1OrrmcLZqKd0ddHRy3gzUCnfglvEobS0losIR7
-	7vEUMGLQ==;
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	bh=Rj/Na2p2CdSqeZMTsRP9N7r+JNYd47iwYks0u+hdyhY=; b=Dk3IUdUXzFl9LkosXUtEU1tijY
+	QZvxwzIJGcjsE2WOTkvYAqRKAzyh9Fnjs6/y8JscI9YX2kSFpaA3Kc7RTdlluVjIABKlQEJPfYtHs
+	gZHz94GH8xFDJKwYH0yiYuFo47cxiegcuPD2Ze2UKoNjCkhKlnN+tjs5BC0I+RSUsCMa9xrfj0T+u
+	6PUtfclDXAkXZBwaGPtq+fP92xqhaqmrDqz2tzEcOFrZ7gSPI0Yg5UyhWuQHDkBBAnPaIkWfobG+i
+	V5cT7UVF6tbjyUgVTl8o6Thx0ZfLx+iKykyD7uWneIJdF9CPdziXhQbfjb7UADv0XGhdSbD6NBOmO
+	dlIgMBUw==;
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o91US-000Nzg-KY; Wed, 06 Jul 2022 09:38:38 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:3a70:988d:42ce:f5cc])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 2897C66019D7;
-	Wed,  6 Jul 2022 10:38:20 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657100300;
-	bh=GGDFitLy58DfVh6zZbvuy2OUtuE/OIoUzaLyWW36kOw=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=mHVqNAWZAJ+lxY3sVwbxGyMzwu3pajQrm/MjREvo+uUdki9+fBqerNgw32zOHnk9s
-	 BKAYyaz5dQnZuDkD4T3ec4bLkp0xAINzqrW+oTvjAgp5F/aqfKaSW9UM9uUU47Et6b
-	 jn+9BErKbVtOkNjw55H5J6p1TdYsHGuuV3KutUPwtk/iXjW71Xm4dSPjd6MGdPMne7
-	 f+fk/b4tBbGZbE8XNerLWU89ydogs+mDijud8iAC3G46pmBX5wFLwSyJRIwf/A21ro
-	 mUSywzaV/Q9eKJwLvbfBxQ9xrO+WATZ579QYNOupLkBoWz/1vxy+HNZqkG5StXXUrM
-	 ezRSjotl43XiA==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	hverkuil@xs4all.nl,
-	ezequiel@vanguardiasur.com.ar,
+	id 1o90yD-000NGq-Sl
+	for linux-rockchip@lists.infradead.org; Wed, 06 Jul 2022 09:05:22 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id h14-20020a1ccc0e000000b0039eff745c53so8588139wmb.5
+        for <linux-rockchip@lists.infradead.org>; Wed, 06 Jul 2022 02:05:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=Rj/Na2p2CdSqeZMTsRP9N7r+JNYd47iwYks0u+hdyhY=;
+        b=mKtq9ve1yeoQVoxcX9vU8Kzc4lD26BfGnICxDQSTU+FaPGF//iOE0yhM54oCSAigK9
+         nw9+9IBaikZ7fIBfJL5/xRtLdv6VunAaQ1NIogOf9pia8Ily3Ben5QVis32InM4k/D5T
+         AfSj67218HVN2+GtVGePlqM0jgo2354uQNXUsMyuZAioIP9MGKGscKVmvyklsbm3pcON
+         /aKvGA8XIweKLAH1x5YWdI/17e9p+Wtui1phg0hDbSSYqdPcnc4L6WRBNE+otZiCFUvK
+         JXdJofacBazG0blo5TNTGr+Z/z30kJwYylSc0JUYrIBbnTaLTKIAVKYdnWsrhvS09EC+
+         G5kg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=Rj/Na2p2CdSqeZMTsRP9N7r+JNYd47iwYks0u+hdyhY=;
+        b=lbWxmC6CtxdCCzAv1n9dHSlvQR0QmdcrZANgob1Z35OKIKNtbojkuRsxirQiTU7sLT
+         M2yPcgFfyeGLGX487pRzj/xKAf32a7fHCWD6pgeTxSNLohN53uCQCCA9hEDvu7/PNWfb
+         kgkLZ0s4CL4E0Ol07qgK2jpF6BFmH17+az6nExFgErFgPpvWK4wSpMe09s9SQuSHFdN7
+         1ADF5zIhZrzoGTLpdLLzI8K4jW/5DWmfFZSwHiYuQ0vUSqcbcAMxxSrGQzSxpBYRtwPZ
+         sDpGynpT6eIb3fB7mVXMPNF1GSsfg7d0Q8ycNxu2v+UlxvXVmnLwIxriYf+3F5mX8vDu
+         o8jA==
+X-Gm-Message-State: AJIora9dm+EF+yPL0Bp3IcxMjzSvQBXfUAI02t9odRcuprlmZzOUldU6
+	ihINodyEyvbqOORvD865fGLOFA==
+X-Google-Smtp-Source: AGRyM1sAnoPrBg6uJutH5ajAxHTIlpAdgFxVpIOIcQSoVgdpXp9s7DoczGILgzfePMiGZltE3rbq0A==
+X-Received: by 2002:a05:600c:a18d:b0:3a0:2c9a:b3de with SMTP id id13-20020a05600ca18d00b003a02c9ab3demr40212216wmb.147.1657098302032;
+        Wed, 06 Jul 2022 02:05:02 -0700 (PDT)
+Received: from localhost.localdomain (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.googlemail.com with ESMTPSA id v11-20020adfe28b000000b0021d6ef34b2asm5230223wri.51.2022.07.06.02.05.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 06 Jul 2022 02:05:01 -0700 (PDT)
+From: Corentin Labbe <clabbe@baylibre.com>
+To: heiko@sntech.de,
+	herbert@gondor.apana.org.au,
+	krzysztof.kozlowski+dt@linaro.org,
+	mturquette@baylibre.com,
 	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	mripard@kernel.org,
-	paul.kocialkowski@bootlin.com,
-	wens@csie.org,
-	jernej.skrabec@gmail.com,
-	samuel@sholland.org,
-	nicolas.dufresne@collabora.com,
-	andrzej.p@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
+	robh+dt@kernel.org,
+	sboyd@kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v11 14/17] media: hantro: Stop using Hantro dedicated control
-Date: Wed,  6 Jul 2022 11:38:00 +0200
-Message-Id: <20220706093803.158810-15-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220706093803.158810-1-benjamin.gaignard@collabora.com>
-References: <20220706093803.158810-1-benjamin.gaignard@collabora.com>
+	linux-clk@vger.kernel.org,
+	linux-crypto@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	john@metanate.com,
+	didi.debian@cknow.org,
+	Corentin Labbe <clabbe@baylibre.com>
+Subject: [PATCH v8 28/33] arm64: dts: rockchip: rk3399: add crypto node
+Date: Wed,  6 Jul 2022 09:04:07 +0000
+Message-Id: <20220706090412.806101-29-clabbe@baylibre.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220706090412.806101-1-clabbe@baylibre.com>
+References: <20220706090412.806101-1-clabbe@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_103837_051739_996E274E 
-X-CRM114-Status: GOOD (  19.15  )
+X-CRM114-CacheID: sfid-20220706_100519_988071_B1C2DF26 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,160 +116,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The number of bits to skip in the slice header can be computed
-in the driver by using sps, pps and decode_params information.
-This makes it possible to remove Hantro dedicated control.
+The rk3399 has a crypto IP handled by the rk3288 crypto driver so adds a
+node for it.
 
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+Tested-by Diederik de Haas <didi.debian@cknow.org>
+Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- drivers/staging/media/hantro/hantro_drv.c     | 36 ------------------
- .../staging/media/hantro/hantro_g2_hevc_dec.c | 37 ++++++++++++++++++-
- include/media/hevc-ctrls.h                    | 13 -------
- 3 files changed, 36 insertions(+), 50 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 536c8c374952..5aac3a090480 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -304,26 +304,6 @@ static int hantro_jpeg_s_ctrl(struct v4l2_ctrl *ctrl)
- 	return 0;
- }
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 9d5b0e8c9cca..8e5aa1ca62d1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -582,6 +582,26 @@ saradc: saradc@ff100000 {
+ 		status = "disabled";
+ 	};
  
--static int hantro_hevc_s_ctrl(struct v4l2_ctrl *ctrl)
--{
--	struct hantro_ctx *ctx;
--
--	ctx = container_of(ctrl->handler,
--			   struct hantro_ctx, ctrl_handler);
--
--	vpu_debug(1, "s_ctrl: id = %d, val = %d\n", ctrl->id, ctrl->val);
--
--	switch (ctrl->id) {
--	case V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP:
--		ctx->hevc_dec.ctrls.hevc_hdr_skip_length = ctrl->val;
--		break;
--	default:
--		return -EINVAL;
--	}
--
--	return 0;
--}
--
- static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
- 	.try_ctrl = hantro_try_ctrl,
- };
-@@ -332,10 +312,6 @@ static const struct v4l2_ctrl_ops hantro_jpeg_ctrl_ops = {
- 	.s_ctrl = hantro_jpeg_s_ctrl,
- };
- 
--static const struct v4l2_ctrl_ops hantro_hevc_ctrl_ops = {
--	.s_ctrl = hantro_hevc_s_ctrl,
--};
--
- #define HANTRO_JPEG_ACTIVE_MARKERS	(V4L2_JPEG_ACTIVE_MARKER_APP0 | \
- 					 V4L2_JPEG_ACTIVE_MARKER_COM | \
- 					 V4L2_JPEG_ACTIVE_MARKER_DQT | \
-@@ -487,18 +463,6 @@ static const struct hantro_ctrl controls[] = {
- 		.cfg = {
- 			.id = V4L2_CID_STATELESS_HEVC_SCALING_MATRIX,
- 		},
--	}, {
--		.codec = HANTRO_HEVC_DECODER,
--		.cfg = {
--			.id = V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP,
--			.name = "Hantro HEVC slice header skip bytes",
--			.type = V4L2_CTRL_TYPE_INTEGER,
--			.min = 0,
--			.def = 0,
--			.max = 0x100,
--			.step = 1,
--			.ops = &hantro_hevc_ctrl_ops,
--		},
- 	}, {
- 		.codec = HANTRO_VP9_DECODER,
- 		.cfg = {
-diff --git a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-index d28653d04d20..233ecd863d5f 100644
---- a/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-+++ b/drivers/staging/media/hantro/hantro_g2_hevc_dec.c
-@@ -117,6 +117,41 @@ static void prepare_tile_info_buffer(struct hantro_ctx *ctx)
- 		vpu_debug(1, "%s: no chroma!\n", __func__);
- }
- 
-+static int compute_header_skip_length(struct hantro_ctx *ctx)
-+{
-+	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
-+	const struct v4l2_ctrl_hevc_decode_params *decode_params = ctrls->decode_params;
-+	const struct v4l2_ctrl_hevc_sps *sps = ctrls->sps;
-+	const struct v4l2_ctrl_hevc_pps *pps = ctrls->pps;
-+	int skip = 0;
++	crypto0: crypto@ff8b0000 {
++		compatible = "rockchip,rk3399-crypto";
++		reg = <0x0 0xff8b0000 0x0 0x4000>;
++		interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru HCLK_M_CRYPTO0>, <&cru HCLK_S_CRYPTO0>, <&cru SCLK_CRYPTO0>;
++		clock-names = "hclk_master", "hclk_slave", "sclk";
++		resets = <&cru SRST_CRYPTO0>, <&cru SRST_CRYPTO0_S>, <&cru SRST_CRYPTO0_M>;
++		reset-names = "rst_master", "rst_slave", "crypto-rst";
++	};
 +
-+	if (pps->flags & V4L2_HEVC_PPS_FLAG_OUTPUT_FLAG_PRESENT)
-+		/* size of pic_output_flag */
-+		skip++;
++	crypto1: crypto@ff8b8000 {
++		compatible = "rockchip,rk3399-crypto";
++		reg = <0x0 0xff8b8000 0x0 0x4000>;
++		interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru HCLK_M_CRYPTO1>, <&cru HCLK_S_CRYPTO1>, <&cru SCLK_CRYPTO1>;
++		clock-names = "hclk_master", "hclk_slave", "sclk";
++		resets = <&cru SRST_CRYPTO1>, <&cru SRST_CRYPTO1_S>, <&cru SRST_CRYPTO1_M>;
++		reset-names = "rst_master", "rst_slave", "crypto-rst";
++	};
 +
-+	if (sps->flags & V4L2_HEVC_SPS_FLAG_SEPARATE_COLOUR_PLANE)
-+		/* size of pic_order_cnt_lsb */
-+		skip += 2;
-+
-+	if (!(decode_params->flags & V4L2_HEVC_DECODE_PARAM_FLAG_IDR_PIC)) {
-+		/* size of pic_order_cnt_lsb */
-+		skip += sps->log2_max_pic_order_cnt_lsb_minus4 + 4;
-+
-+		/* size of short_term_ref_pic_set_sps_flag */
-+		skip++;
-+
-+		if (decode_params->short_term_ref_pic_set_size)
-+			/* size of st_ref_pic_set( num_short_term_ref_pic_sets ) */
-+			skip += decode_params->short_term_ref_pic_set_size;
-+		else if (sps->num_short_term_ref_pic_sets > 1)
-+			skip += fls(sps->num_short_term_ref_pic_sets - 1);
-+
-+		skip += decode_params->long_term_ref_pic_set_size;
-+	}
-+
-+	return skip;
-+}
-+
- static void set_params(struct hantro_ctx *ctx)
- {
- 	const struct hantro_hevc_dec_ctrls *ctrls = &ctx->hevc_dec.ctrls;
-@@ -134,7 +169,7 @@ static void set_params(struct hantro_ctx *ctx)
- 
- 	hantro_reg_write(vpu, &g2_output_8_bits, 0);
- 
--	hantro_reg_write(vpu, &g2_hdr_skip_length, ctrls->hevc_hdr_skip_length);
-+	hantro_reg_write(vpu, &g2_hdr_skip_length, compute_header_skip_length(ctx));
- 
- 	min_log2_cb_size = sps->log2_min_luma_coding_block_size_minus3 + 3;
- 	max_log2_ctb_size = min_log2_cb_size + sps->log2_diff_max_min_luma_coding_block_size;
-diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-index 42d16e8a1050..9239e8b649e0 100644
---- a/include/media/hevc-ctrls.h
-+++ b/include/media/hevc-ctrls.h
-@@ -465,17 +465,4 @@ struct v4l2_ctrl_hevc_scaling_matrix {
- 	__u8	scaling_list_dc_coef_32x32[2];
- };
- 
--/*  MPEG-class control IDs specific to the Hantro driver as defined by V4L2 */
--#define V4L2_CID_CODEC_HANTRO_BASE				(V4L2_CTRL_CLASS_CODEC | 0x1200)
--/*
-- * V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP -
-- * the number of data (in bits) to skip in the
-- * slice segment header.
-- * If non-IDR, the bits to be skipped go from syntax element "pic_output_flag"
-- * to before syntax element "slice_temporal_mvp_enabled_flag".
-- * If IDR, the skipped bits are just "pic_output_flag"
-- * (separate_colour_plane_flag is not supported).
-- */
--#define V4L2_CID_HANTRO_HEVC_SLICE_HEADER_SKIP	(V4L2_CID_CODEC_HANTRO_BASE + 0)
--
- #endif
+ 	i2c1: i2c@ff110000 {
+ 		compatible = "rockchip,rk3399-i2c";
+ 		reg = <0x0 0xff110000 0x0 0x1000>;
 -- 
-2.32.0
+2.35.1
 
 
 _______________________________________________
