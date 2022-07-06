@@ -4,87 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBEA6C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 11:31:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A675C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 13:29:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8FANSH56U7ZeEh7je+6pQ6oMu3LiyfUyksXenNd26oI=; b=hq9jO23uHtJaKP
-	q0fUt9BE/mSvaew/8DoBM+ZOSABh4WF5JZy+p4vaeDGeZAiIQA9RE0MWnVXk8cJTx57lx3HYqrD9R
-	vAxFa19YJQ5gX7o+acx/6a56lg5KN0Y18+r//D6BbdUImbOzpEz/HFTxI4Q+e2+o6PaGcH3qwPbv+
-	bc5pVsd6KzwZRZX6FganpI1u8UsZBRxBhV7yOj1liGSkhdqdrtVRqzMtwBV+E9gfJ2tOPTbvM6+t4
-	zxe9r3PqzczgVWlYZM2ujp9DU+Escho9BVjL7TfR8QGqWDdZPmwJQv8eo12kZizZuvSGWk8V1PJih
-	wO+0mr9VTumMex8CiIXw==;
+	List-Owner; bh=rXD2LIUcZ9L5W8dFS9WweG29JwSlQP/0GQQ275IM7os=; b=bwm4kNLMC8xYPf
+	twH8Pqa5FSFnlyDRDKT0dFBHeHuK6iBWnCfZtfDCzsfUIbR9nk9hRrxtlcLzjckClKewIu+5Kr7es
+	85RgocZ2XdE1GYHl2Vv1tYCE9eITlZ6ke+FHHxnaZCvBksJ/oR3MvbyCIVdYcWN54eK1pcGSSXT0L
+	pfjSShmIKf52DhKATQizjku1n+pQNQMkxVuDktDrBt8nY59TvONwYFEEA4sxjWgwk4bU7lxNKlX6D
+	wuE2VG9YKYpvoyWoWLWlMS7Y+1vxseCn9HsPDj/BDb+bX4rOMmuulEx9cnQaniCHhhXOcg7AAlT2c
+	mw+GurOYv8loitFycI0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o93FN-009dcG-IN; Wed, 06 Jul 2022 11:31:09 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1o955m-00AGnd-ME; Wed, 06 Jul 2022 13:29:22 +0000
+Received: from mail-il1-f178.google.com ([209.85.166.178])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o90xc-007blz-SF
-	for linux-rockchip@lists.infradead.org; Wed, 06 Jul 2022 09:04:45 +0000
-Received: by mail-wr1-x433.google.com with SMTP id b26so21080099wrc.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 06 Jul 2022 02:04:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=859E0YEubESiyrb+oeUTAg5/XBxqc58UKlJ7e69ztp0=;
-        b=h9PhuTJWLoltGwBkAxtkiSdX7roGbTC4vn3P+0UWJW7wwDcEfsRRYmEfoA1fapinEY
-         a0BzS/CVuEJxsi8fFfmWTf2fRSCt+A2DQJ6wVGLUF4V41Q9VEb3BGRi4ZSSf15P1IKfn
-         +mTz6R7YRqs8lkGu5o3p6NI2L4bMEve2rjxQiMoRmsKvpeO8KfA0iShRpaCPvI2ppQ1e
-         qXrCJwvGgyMCfUyZrpBKM363GQuAA7VLC5sjZ2jsR7b3jWSYYla0cRJqLgCzCi3wI7pI
-         ig4nFOh9ubUh6QnMxs+vEVfJHlkefBHsxhjDwsXaVacd8RtTkUFUdrdxAEkGA35psGeX
-         rimA==
+	id 1o955b-00AGjj-8D; Wed, 06 Jul 2022 13:29:12 +0000
+Received: by mail-il1-f178.google.com with SMTP id v2so137176ilo.7;
+        Wed, 06 Jul 2022 06:29:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=859E0YEubESiyrb+oeUTAg5/XBxqc58UKlJ7e69ztp0=;
-        b=wZUY0ibMqNL8y+9hdm36eaZhlpUVLyFG9zGn4s/zmW4KOcDXc7LB4MpGT1FW92KB4K
-         ulxOWNGYvjRA1UHQ1PyMB3SH0Jvew+9arOC4Yn6UF6X5K1HfvhA1VIPmVgYmyJYXj/Kp
-         mByPYNs3wUM7SHpS6JTBfLx6SXuyE/XmeEwDxuG8lHDAW8CHAUsXeGzP9BEC3J6Pwwo0
-         T2stgsp7zQx/cYUNCc+3g85hbBpBiCobhBF6PgRU+Jyyuc/LlJvUFBleSpMGHo1nl6yX
-         f1fN8Rk0I86pZ4ERFhpt8nzAytStvdLR6d4T5O47IrOUSQ0VkjToTfzDLSURKHD3XTmO
-         nSTQ==
-X-Gm-Message-State: AJIora8R7cTCHEfoizhUn9q0Tl6s2cZYQyZ6T/0glzWTWa0ohsOcLPuT
-	mqbdMV2RRTy9/UeDZJVNP6r2ag==
-X-Google-Smtp-Source: AGRyM1uGaPfIfWwxoEeJp2iiYMlfNF64ryMNj2+XHW0wolxABcxBDbUoxclVB8+24W1gt3JVoHyNMQ==
-X-Received: by 2002:a5d:59a9:0:b0:21d:7ee2:8f90 with SMTP id p9-20020a5d59a9000000b0021d7ee28f90mr1316055wrr.598.1657098276166;
-        Wed, 06 Jul 2022 02:04:36 -0700 (PDT)
-Received: from localhost.localdomain (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id v11-20020adfe28b000000b0021d6ef34b2asm5230223wri.51.2022.07.06.02.04.35
+        h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+         :message-id;
+        bh=bL71fy7BLG4i0HSqgZRBo3aR1jRlA0eAtGzp+APcptI=;
+        b=Ke8EVbHe6GLr+MihiYUAr60ETCidN/SudO9ZLLEwRpjxtzf/L0gMjRTOJUHJKsvkVq
+         /s+Z3PPjR8oLrRUGvlHt2TLeMsYGFYPt1pLrrvtoi2vZfodduskjyzBrExfi0NSjahfd
+         ofvw/uPsxI6xLbpvpEX05JetjaY80203GCwkxUXLK1BOb05BrU6OD5JnNInT170MvX9g
+         gens7VpWnY4YF1d0SCZKAJJoagA7Il5i3XvBPWiJRV5vVAgYRZlRqbEFewACi4mPWnxB
+         ZAoPSK1KCg443NT/vi0pj/yWxxU/9uTFKfeqB1hWp+fyi5Alg8KgwEuPlL6B/k4r7SOo
+         M9iw==
+X-Gm-Message-State: AJIora8u97yLFrMhtnib5RysPsZHsaM1m/kVUfvMKJ7aXa93eVk2KUtG
+	ajIENHt+RVLOxJ4qTYjpDA==
+X-Google-Smtp-Source: AGRyM1tJGJIVlx7VpB8IkYCckD9b2GDYj12b9uIMBx8AyD4cJrWgClMUDYkNKE6zsrsxzt8Q5IB69w==
+X-Received: by 2002:a05:6e02:1848:b0:2da:af35:e7c3 with SMTP id b8-20020a056e02184800b002daaf35e7c3mr23641658ilv.265.1657114146897;
+        Wed, 06 Jul 2022 06:29:06 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id z10-20020a92650a000000b002dc100ab6fdsm3675172ilb.35.2022.07.06.06.29.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Jul 2022 02:04:35 -0700 (PDT)
-From: Corentin Labbe <clabbe@baylibre.com>
-To: heiko@sntech.de,
-	herbert@gondor.apana.org.au,
-	krzysztof.kozlowski+dt@linaro.org,
-	mturquette@baylibre.com,
-	p.zabel@pengutronix.de,
-	robh+dt@kernel.org,
-	sboyd@kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	linux-crypto@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	john@metanate.com,
-	didi.debian@cknow.org,
-	Corentin Labbe <clabbe@baylibre.com>
-Subject: [PATCH v8 03/33] crypto: rockchip: do not do custom power management
-Date: Wed,  6 Jul 2022 09:03:42 +0000
-Message-Id: <20220706090412.806101-4-clabbe@baylibre.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220706090412.806101-1-clabbe@baylibre.com>
-References: <20220706090412.806101-1-clabbe@baylibre.com>
-MIME-Version: 1.0
+        Wed, 06 Jul 2022 06:29:06 -0700 (PDT)
+Received: (nullmailer pid 4099934 invoked by uid 1000);
+	Wed, 06 Jul 2022 13:29:04 -0000
+From: Rob Herring <robh@kernel.org>
+To: Corentin Labbe <clabbe@baylibre.com>
+Cc: john@metanate.com, heiko@sntech.de, p.zabel@pengutronix.de, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, didi.debian@cknow.org, herbert@gondor.apana.org.au, sboyd@kernel.org, mturquette@baylibre.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-clk@vger.kernel.org, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220706090412.806101-26-clabbe@baylibre.com>
+References: <20220706090412.806101-1-clabbe@baylibre.com> <20220706090412.806101-26-clabbe@baylibre.com>
+Subject: Re: [PATCH v8 25/33] dt-bindings: crypto: rockchip: convert to new driver bindings
+Date: Wed, 06 Jul 2022 07:29:04 -0600
+Message-Id: <1657114144.957232.4099933.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_020441_003461_51A9D1D3 
-X-CRM114-Status: GOOD (  15.38  )
+X-CRM114-CacheID: sfid-20220706_062911_334847_A033C551 
+X-CRM114-Status: GOOD (  14.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,110 +70,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The clock enable/disable at tfm init/exit is fragile,
-if 2 tfm are init in the same time and one is removed just after,
-it will leave the hardware uncloked even if a user remains.
+On Wed, 06 Jul 2022 09:04:04 +0000, Corentin Labbe wrote:
+> The latest addition to the rockchip crypto driver need to update the
+> driver bindings.
+> 
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> ---
+>  .../crypto/rockchip,rk3288-crypto.yaml        | 85 +++++++++++++++++--
+>  1 file changed, 77 insertions(+), 8 deletions(-)
+> 
 
-Instead simply enable clocks at probe time.
-We will do PM later.
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Fixes: ce0183cb6464b ("crypto: rockchip - switch to skcipher API")
-Reviewed-by: John Keeping <john@metanate.com>
-Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
----
- drivers/crypto/rockchip/rk3288_crypto.c          | 4 ++--
- drivers/crypto/rockchip/rk3288_crypto.h          | 2 --
- drivers/crypto/rockchip/rk3288_crypto_ahash.c    | 3 +--
- drivers/crypto/rockchip/rk3288_crypto_skcipher.c | 5 +++--
- 4 files changed, 6 insertions(+), 8 deletions(-)
+yamllint warnings/errors:
 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
-index 21d3f1458584..4cff49b82983 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto.c
-@@ -394,8 +394,7 @@ static int rk_crypto_probe(struct platform_device *pdev)
- 		     rk_crypto_done_task_cb, (unsigned long)crypto_info);
- 	crypto_init_queue(&crypto_info->queue, 50);
- 
--	crypto_info->enable_clk = rk_crypto_enable_clk;
--	crypto_info->disable_clk = rk_crypto_disable_clk;
-+	rk_crypto_enable_clk(crypto_info);
- 	crypto_info->load_data = rk_load_data;
- 	crypto_info->unload_data = rk_unload_data;
- 	crypto_info->enqueue = rk_crypto_enqueue;
-@@ -422,6 +421,7 @@ static int rk_crypto_remove(struct platform_device *pdev)
- 	struct rk_crypto_info *crypto_tmp = platform_get_drvdata(pdev);
- 
- 	rk_crypto_unregister();
-+	rk_crypto_disable_clk(crypto_tmp);
- 	tasklet_kill(&crypto_tmp->done_task);
- 	tasklet_kill(&crypto_tmp->queue_task);
- 	return 0;
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
-index 97278c2574ff..2fa7131e4060 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.h
-+++ b/drivers/crypto/rockchip/rk3288_crypto.h
-@@ -220,8 +220,6 @@ struct rk_crypto_info {
- 	int (*start)(struct rk_crypto_info *dev);
- 	int (*update)(struct rk_crypto_info *dev);
- 	void (*complete)(struct crypto_async_request *base, int err);
--	int (*enable_clk)(struct rk_crypto_info *dev);
--	void (*disable_clk)(struct rk_crypto_info *dev);
- 	int (*load_data)(struct rk_crypto_info *dev,
- 			 struct scatterlist *sg_src,
- 			 struct scatterlist *sg_dst);
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-index ed03058497bc..49017d1fb510 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-@@ -301,7 +301,7 @@ static int rk_cra_hash_init(struct crypto_tfm *tfm)
- 				 sizeof(struct rk_ahash_rctx) +
- 				 crypto_ahash_reqsize(tctx->fallback_tfm));
- 
--	return tctx->dev->enable_clk(tctx->dev);
-+	return 0;
- }
- 
- static void rk_cra_hash_exit(struct crypto_tfm *tfm)
-@@ -309,7 +309,6 @@ static void rk_cra_hash_exit(struct crypto_tfm *tfm)
- 	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(tfm);
- 
- 	free_page((unsigned long)tctx->dev->addr_vir);
--	return tctx->dev->disable_clk(tctx->dev);
- }
- 
- struct rk_crypto_tmp rk_ahash_sha1 = {
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-index 5bbf0d2722e1..8c44a19eab75 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-@@ -388,8 +388,10 @@ static int rk_ablk_init_tfm(struct crypto_skcipher *tfm)
- 	ctx->dev->update = rk_ablk_rx;
- 	ctx->dev->complete = rk_crypto_complete;
- 	ctx->dev->addr_vir = (char *)__get_free_page(GFP_KERNEL);
-+	if (!ctx->dev->addr_vir)
-+		return -ENOMEM;
- 
--	return ctx->dev->addr_vir ? ctx->dev->enable_clk(ctx->dev) : -ENOMEM;
-+	return 0;
- }
- 
- static void rk_ablk_exit_tfm(struct crypto_skcipher *tfm)
-@@ -397,7 +399,6 @@ static void rk_ablk_exit_tfm(struct crypto_skcipher *tfm)
- 	struct rk_cipher_ctx *ctx = crypto_skcipher_ctx(tfm);
- 
- 	free_page((unsigned long)ctx->dev->addr_vir);
--	ctx->dev->disable_clk(ctx->dev);
- }
- 
- struct rk_crypto_tmp rk_ecb_aes_alg = {
--- 
-2.35.1
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml: allOf:0:then:properties:clock-names: 'oneOf' conditional failed, one must be fixed:
+	[{'const': 'aclk'}, {'const': 'hclk'}, {'const': 'sclk'}, {'const': 'apb_pclk'}] is too long
+	[{'const': 'aclk'}, {'const': 'hclk'}, {'const': 'sclk'}, {'const': 'apb_pclk'}] is too short
+	False schema does not allow 4
+	1 was expected
+	4 is greater than the maximum of 2
+	4 is greater than the maximum of 3
+	hint: "minItems" is only needed if less than the "items" list length
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml: allOf:0:then:properties:reset-names: {'items': [{'const': 'crypto-rst'}], 'maxItems': 1} should not be valid under {'required': ['maxItems']}
+	hint: "maxItems" is not needed with an "items" list
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml: allOf:1:then:properties:clock-names: {'items': [{'const': 'hclk_master'}, {'const': 'hclk_slave'}, {'const': 'sclk'}], 'maxItems': 3} should not be valid under {'required': ['maxItems']}
+	hint: "maxItems" is not needed with an "items" list
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml: allOf:1:then:properties:reset-names: {'items': [{'const': 'crypto-rst'}], 'maxItems': 1} should not be valid under {'required': ['maxItems']}
+	hint: "maxItems" is not needed with an "items" list
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml: allOf:2:then:properties:clock-names: {'items': [{'const': 'hclk_master'}, {'const': 'hclk_slave'}, {'const': 'sclk'}], 'maxItems': 3} should not be valid under {'required': ['maxItems']}
+	hint: "maxItems" is not needed with an "items" list
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml: allOf:2:then:properties:reset-names: 'oneOf' conditional failed, one must be fixed:
+	[{'const': 'rst_master'}, {'const': 'rst_slave'}, {'const': 'crypto-rst'}] is too long
+	[{'const': 'rst_master'}, {'const': 'rst_slave'}, {'const': 'crypto-rst'}] is too short
+	False schema does not allow 3
+	1 was expected
+	3 is greater than the maximum of 2
+	hint: "minItems" is only needed if less than the "items" list length
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml: ignoring, error in schema: allOf: 0: then: properties: reset-names
+Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.example.dtb:0:0: /example-0/crypto@ff8a0000: failed to match any schema with compatible: ['rockchip,rk3288-crypto']
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
 
 
 _______________________________________________
