@@ -4,86 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD952C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 15:25:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D14C0C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 18:29:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yqJTUiLBTlNaCNuZteZiX6LYwd6h7Uy+PB+aW00jpmQ=; b=27aqzHYopWhJm/
-	YuDPuPH2JTilxbKDsMGhGwfPk0FmJ1Mg1etKkEPAW5oF7o54f7voEZZL6LLstc/yan7CcHzGjQuO+
-	DMtxIS0w1KvU5BmSqbmnGWFG51Zpj6q7K+suScPLopipc3I+LMlB1O5cmlJUb9nUd9CRglmi+BiaX
-	rNjKLuesPeFtxe3rjEI6FH7CrNATMaW7AL45z2XTWa80nWURyXfWXb9Ga3r/Lu5Sc+SEqo23xeSuM
-	cNE7l9Tl0pLAeJBCrjsN5ZnjnqbDOFC9T4KkmN3xzINYCrpfeu1aqFoKV/wL/4dH13rbkn+DQti87
-	D+fGKOl13CAGINV22TJA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MKInodb4EG2a3oTJCKDElAnYj9jZ3covq1le9Vu6rOM=; b=rnPLtDQIJKf6l4
+	bY0li+bU+NIkHmOoE6VAOhBiy8UH03A/0YYHrQy5DfSlNr+rmOCeOTthMevHkY/BF2GISq45x5TS3
+	GMD6XEjKNhCFHi8sTUSqFNwjXFF69zifqnmOCN2FLsDq/oJlMrQqrYravtGN1NvLRHQdPEUTunIfu
+	mfJxssRSvTMMk/6klrDRKUc5orL579HP25Vdi3iBBGN4KeIS0Auop7D60pxZXv13EBL2vlccBfhrV
+	iHjWlMCYGKg6i/boz2+1TNvnrDEFwnJQn3izV/wK3rzu6nk+58os8K2VUDlJPK79GnTX7DD01g5FA
+	Bo41jXvsYc84OmsbZ2cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o96u9-00B19p-2M; Wed, 06 Jul 2022 15:25:29 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1o99mD-00Bx2E-3c; Wed, 06 Jul 2022 18:29:29 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o96u7-00B17m-4P
-	for linux-rockchip@lists.infradead.org; Wed, 06 Jul 2022 15:25:28 +0000
-Received: by mail-lf1-x131.google.com with SMTP id bf9so3285757lfb.13
-        for <linux-rockchip@lists.infradead.org>; Wed, 06 Jul 2022 08:25:24 -0700 (PDT)
+	id 1o99m0-00BwuS-6S; Wed, 06 Jul 2022 18:29:18 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id v67-20020a1cac46000000b003a1888b9d36so9661361wme.0;
+        Wed, 06 Jul 2022 11:29:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=s2u++J5w4NDwIl2ly2qjEOKSEw7r+aYlZPxk8tDl4yU=;
-        b=pk5hd/IvYkLkIbMjLl+3RikyW0xoTset+iQYFryFsW/I+s24lsz9o8Cklus2QbjDrS
-         fTLopnC3tP8Tgxb6id5LNbzOlagVM7wajEchHrhxhs4RTGPvA1jvZYuEsKyaMvsJ5lst
-         EP4uXSsnokVfUY179M2SKS8ybC4aaKtAPqz1QswivD3/5JXqesOzr72Z4M/0IIT6Nhb2
-         RS+nATTSSmsMDcjkBkBjijERiX/tHYUQlIFZaS/lXdiUAyCGf6tRSFEn8/XLan5otBRf
-         iOW3EGwwOmL0aWPWKGitff/EIURBYj05PDccP0XqedV5InKTIBYAQjSI0a2fFcZeYiek
-         Ih3w==
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=veq/Lh4TlAFiqd2as2QsDi+5Sf/Jvx1yYHKwqofOJ9o=;
+        b=D/GBtbDoDrd9WwaKJrXkQPvMJSnhagjGlrMvRdZngoIOSQDMFwf3riNka9sKWeqUNZ
+         68j9wAd8P1tOp6+eYbBL3LPhXmcL7ncpp3SJbkkONwh9iHnHCvJ0LgIh0ehHtblz6Xy/
+         mROak7qhzqZU18vdXSDiBY8UhDFH5gcTJ+UksgT6qUUwNmbmFP3P2OKXyEC0qMF1jZfu
+         f9p1UF3PpXu/MPUbJN44Um5RfZ/DowbA8xZPZKvbhPd27bczcpR90fcMTtf5GNkgIHXv
+         CLclsFl7XWUrDyTonvk+LNSWdVcvt4vpOy0tqASojUCUBmYAGcuvq1TJ5JO93XcQfVq+
+         lTuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=s2u++J5w4NDwIl2ly2qjEOKSEw7r+aYlZPxk8tDl4yU=;
-        b=xP/SzPmrxj/5ZdypPoNWNG3TLij7ALDT042B97Bshz9FNga9Wtb4tFRS6dFPExhIcK
-         Ysl6er1vLA3CMXDAcYRVHD/x5XGFH5W51jnJEEsL4wBXn/0y/fCJAQa3znKOQs4eSJFw
-         TV56Syl9lOXlhFkaquwpFAcxcEqlpn/cGMJrcgCV3SPduYQ/Ks1Kr8ZfhcnShw6dPMbd
-         YZIjhpjFq4gRhz4ntMej+ueifpFCnRlK73rlX08qI8KL3wF8CegBFSbXAmx2qbyOcqcO
-         ABv3NPE+zcdpOu2kHyksN/L2JrGp5sG8qGpgzdfWlO/F5Btcy/L27751ejQ2lH35/xPl
-         UCrw==
-X-Gm-Message-State: AJIora8e1bRizj9KaxiYbgmxlMeSlWvplCC5xP2yHWoNXt7zrNhGR6b3
-	nIVMTTn8n9fBqVHCGqx823OKHg==
-X-Google-Smtp-Source: AGRyM1sl33iwmIsDfZENKyDLnobKwErOZsB1g6zI01WIfhPK+le8wb3cPVwq3Y8t8JUPspB3KmPC/w==
-X-Received: by 2002:ac2:4a77:0:b0:484:d52:4e33 with SMTP id q23-20020ac24a77000000b004840d524e33mr5930342lfp.477.1657121123285;
-        Wed, 06 Jul 2022 08:25:23 -0700 (PDT)
-Received: from [192.168.1.52] ([84.20.121.239])
-        by smtp.gmail.com with ESMTPSA id z3-20020a19f703000000b0047e789b9700sm6320314lfe.118.2022.07.06.08.25.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 06 Jul 2022 08:25:22 -0700 (PDT)
-Message-ID: <3e47b853-bb82-8766-8884-3da931c038a2@linaro.org>
-Date: Wed, 6 Jul 2022 17:25:21 +0200
+        bh=veq/Lh4TlAFiqd2as2QsDi+5Sf/Jvx1yYHKwqofOJ9o=;
+        b=iKWy9B31KFyvcCylakesVcZCkqBO1SkyTmMnOXfkEjh+R96MHuadZXS7ZMhUgTmaSZ
+         sISL9/r/Vcb75rfYRIbHpBQQeauo6wB3kC/yUCHA+cjYlWfGpimjHOdgj91Gv9mK04WR
+         MphTHMVTEvqlmyH6sKdAuDCa5DETiZS3Uhys7/W/JuEvDIWevU/nZTk9mLLnadwqeE3D
+         l9qWNZtCx/roioljrkGwv66geeSeBQgKN2Nk/sAMaUNJtH4rlyEphP+Dcvdp8g6+eE7B
+         u0bohYMlj6SyjckG5mjVOcf4nrgVojBs2fjtXbCXRRBkh3OFACQ1KEnCbFaI2ROQnTrH
+         02qg==
+X-Gm-Message-State: AJIora9CpZ+6jxE55vWNCTkGxDzV0zhfZiBXcMKetwqUxLQFTJn35pgg
+	2OYzyuK+Tx6PzF1d4vn8tzQ=
+X-Google-Smtp-Source: AGRyM1v+PzFf3H84UTOcP8kXa3ogDH7CjY7F56uHMLIutxGcHvpSyE47mzgtd7yg9gcVbPZPjDejGQ==
+X-Received: by 2002:a05:600c:600d:b0:3a1:9712:5d31 with SMTP id az13-20020a05600c600d00b003a197125d31mr24463802wmb.67.1657132151725;
+        Wed, 06 Jul 2022 11:29:11 -0700 (PDT)
+Received: from kista.localdomain (213-161-3-76.dynamic.telemach.net. [213.161.3.76])
+        by smtp.gmail.com with ESMTPSA id r15-20020a0560001b8f00b0021d74906683sm5142406wru.28.2022.07.06.11.29.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 06 Jul 2022 11:29:11 -0700 (PDT)
+From: Jernej Skrabec <jernej.skrabec@gmail.com>
+To: ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de
+Cc: mchehab@kernel.org,
+	hverkuil-cisco@xs4all.nl,
+	benjamin.gaignard@collabora.com,
+	nicolas.dufresne@collabora.com,
+	gregkh@linuxfoundation.org,
+	linux-media@vger.kernel.org,
+	linux-staging@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Jernej Skrabec <jernej.skrabec@gmail.com>
+Subject: [PATCH v3 0/7] media: hantro: Add 10-bit support
+Date: Wed,  6 Jul 2022 20:28:54 +0200
+Message-Id: <20220706182901.78949-1-jernej.skrabec@gmail.com>
+X-Mailer: git-send-email 2.37.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v8 25/33] dt-bindings: crypto: rockchip: convert to new
- driver bindings
-Content-Language: en-US
-To: LABBE Corentin <clabbe@baylibre.com>, Rob Herring <robh@kernel.org>
-Cc: john@metanate.com, heiko@sntech.de, p.zabel@pengutronix.de,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org,
- linux-kernel@vger.kernel.org, didi.debian@cknow.org,
- herbert@gondor.apana.org.au, sboyd@kernel.org, mturquette@baylibre.com,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- linux-clk@vger.kernel.org
-References: <20220706090412.806101-1-clabbe@baylibre.com>
- <20220706090412.806101-26-clabbe@baylibre.com>
- <1657114144.957232.4099933.nullmailer@robh.at.kernel.org>
- <YsWcGDwPCX+/95i3@Red>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <YsWcGDwPCX+/95i3@Red>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_082527_213354_49E1E77A 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20220706_112916_267167_DFDDA477 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,37 +90,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMDYvMDcvMjAyMiAxNjoyOCwgTEFCQkUgQ29yZW50aW4gd3JvdGU6Cj4gTGUgV2VkLCBKdWwg
-MDYsIDIwMjIgYXQgMDc6Mjk6MDRBTSAtMDYwMCwgUm9iIEhlcnJpbmcgYSDDqWNyaXQgOgo+PiBP
-biBXZWQsIDA2IEp1bCAyMDIyIDA5OjA0OjA0ICswMDAwLCBDb3JlbnRpbiBMYWJiZSB3cm90ZToK
-Pj4+IFRoZSBsYXRlc3QgYWRkaXRpb24gdG8gdGhlIHJvY2tjaGlwIGNyeXB0byBkcml2ZXIgbmVl
-ZCB0byB1cGRhdGUgdGhlCj4+PiBkcml2ZXIgYmluZGluZ3MuCj4+Pgo+Pj4gUmV2aWV3ZWQtYnk6
-IEtyenlzenRvZiBLb3psb3dza2kgPGtyenlzenRvZi5rb3psb3dza2lAbGluYXJvLm9yZz4KPj4+
-IFNpZ25lZC1vZmYtYnk6IENvcmVudGluIExhYmJlIDxjbGFiYmVAYmF5bGlicmUuY29tPgo+Pj4g
-LS0tCj4+PiAgLi4uL2NyeXB0by9yb2NrY2hpcCxyazMyODgtY3J5cHRvLnlhbWwgICAgICAgIHwg
-ODUgKysrKysrKysrKysrKysrKystLQo+Pj4gIDEgZmlsZSBjaGFuZ2VkLCA3NyBpbnNlcnRpb25z
-KCspLCA4IGRlbGV0aW9ucygtKQo+Pj4KPj4KPj4gTXkgYm90IGZvdW5kIGVycm9ycyBydW5uaW5n
-ICdtYWtlIERUX0NIRUNLRVJfRkxBR1M9LW0gZHRfYmluZGluZ19jaGVjaycKPj4gb24geW91ciBw
-YXRjaCAoRFRfQ0hFQ0tFUl9GTEFHUyBpcyBuZXcgaW4gdjUuMTMpOgo+Pgo+PiB5YW1sbGludCB3
-YXJuaW5ncy9lcnJvcnM6Cj4+Cj4+IGR0c2NoZW1hL2R0YyB3YXJuaW5ncy9lcnJvcnM6Cj4+IC9i
-dWlsZHMvcm9iaGVycmluZy9saW51eC1kdC1yZXZpZXcvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
-L2JpbmRpbmdzL2NyeXB0by9yb2NrY2hpcCxyazMyODgtY3J5cHRvLnlhbWw6IGFsbE9mOjA6dGhl
-bjpwcm9wZXJ0aWVzOmNsb2NrLW5hbWVzOiAnb25lT2YnIGNvbmRpdGlvbmFsIGZhaWxlZCwgb25l
-IG11c3QgYmUgZml4ZWQ6Cj4+IAlbeydjb25zdCc6ICdhY2xrJ30sIHsnY29uc3QnOiAnaGNsayd9
-LCB7J2NvbnN0JzogJ3NjbGsnfSwgeydjb25zdCc6ICdhcGJfcGNsayd9XSBpcyB0b28gbG9uZwo+
-PiAJW3snY29uc3QnOiAnYWNsayd9LCB7J2NvbnN0JzogJ2hjbGsnfSwgeydjb25zdCc6ICdzY2xr
-J30sIHsnY29uc3QnOiAnYXBiX3BjbGsnfV0gaXMgdG9vIHNob3J0Cj4+IAlGYWxzZSBzY2hlbWEg
-ZG9lcyBub3QgYWxsb3cgNAo+PiAJMSB3YXMgZXhwZWN0ZWQKPj4gCTQgaXMgZ3JlYXRlciB0aGFu
-IHRoZSBtYXhpbXVtIG9mIDIKPj4gCTQgaXMgZ3JlYXRlciB0aGFuIHRoZSBtYXhpbXVtIG9mIDMK
-PiAKPiBIZWxsbwo+IAo+IEkgdXBncmFkZWQgdG8gZHQtc2NoZW1hIDIwMjIuMDcgYW5kIGZhaWwg
-dG8gcmVwcm9kdWNlIGFsbCBlcnJvcnMuCgpWaXNpYmxlIG9uIG9sZGVyIGR0c2NoZW1hICgyMDIy
-LjYuZGV2MTArZ2NkNjRmNzVmZTA5MSksIHZpc2libGUgb24KbmV3ZXN0ICgyMDIyLjcpLgoKRXhh
-Y3RseSB0aGUgc2FtZSBlcnJvci4KCkJlc3QgcmVnYXJkcywKS3J6eXN6dG9mCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+This series adds support for 10-bit format handling in Hantro driver.
+Most patches adjust postproc behaviour to be more universal. There is
+a lot of assumptions, which need to be replaced with more generalized.
+
+Tested on Allwinner H6. Tested with vp92-2-20-10bit-yuv420.webm sample,
+which produces correct checksum.
+
+Please take a look.
+
+Best regards,
+Jernej
+
+Changes fron v2:
+- rebased on media-stage/master
+- added P010 4L4 format documentation
+- added t-b and r-b tags
+
+Changes from RFC:
+- fixed typo in function name
+- removed merged patch (P010 format)
+- removed broken patch (sunxi frequency change)
+- added new patch (media: hantro: postproc: Properly calculate chroma offset)
+- added r-b from Ezequiel
+
+Ezequiel Garcia (1):
+  media: Add P010 tiled format
+
+Jernej Skrabec (6):
+  media: hantro: Support format filtering by depth
+  media: hantro: postproc: Fix buffer size calculation
+  media: hantro: postproc: Fix legacy regs configuration
+  media: hantro: postproc: Properly calculate chroma offset
+  media: hantro: Store VP9 bit depth in context
+  media: hantro: sunxi: Enable 10-bit decoding
+
+ .../media/v4l/pixfmt-yuv-planar.rst           | 18 +++++--
+ drivers/media/v4l2-core/v4l2-common.c         |  1 +
+ drivers/media/v4l2-core/v4l2-ioctl.c          |  1 +
+ drivers/staging/media/hantro/hantro.h         |  4 ++
+ drivers/staging/media/hantro/hantro_drv.c     | 23 +++++++++
+ .../staging/media/hantro/hantro_g2_vp9_dec.c  |  8 ---
+ .../staging/media/hantro/hantro_postproc.c    | 38 +++++++++++---
+ drivers/staging/media/hantro/hantro_v4l2.c    | 50 +++++++++++++++++--
+ drivers/staging/media/hantro/hantro_v4l2.h    |  3 ++
+ drivers/staging/media/hantro/sunxi_vpu_hw.c   | 27 ++++++++++
+ include/uapi/linux/videodev2.h                |  1 +
+ 11 files changed, 151 insertions(+), 23 deletions(-)
+
+-- 
+2.37.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
