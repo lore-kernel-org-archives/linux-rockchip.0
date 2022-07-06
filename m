@@ -4,101 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5569EC433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 10:33:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F77BC43334
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 11:08:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4ajE7yFRUv8gRJHWE4m7wprHzCQaaZvjyu5bVUMcwJc=; b=SR4veGpiE5XHut
-	KUoIoYTvdfBConOpQH3K3hgw+Kw/UfF/dkREq+00m59sZ4p86MctM1h1dMH3hm/0GIIp26EpHTYV4
-	uKL1tNsoOGVypVqlP4NuIuuENNCR3W1W3TvAscgSRHR8vFIclBKjb2V7oFOAKjqnQVEt2jGL4sYnt
-	nuVc8B/kr2PAlENGHrnEzhjzQ5cHcwab9wLsudcLx7Cnp5kFVCNr7tQSdEHgWSIFKAeBUDogHysoy
-	dwg9Dp+4Ibp8gwUihesxpJ0k6KoITCWnYxyvYp9poJRPVrva03c6lSlUWv+irJRmf4rIM3kLaLhGp
-	JHvC5xcw/NL7S3KNqBlw==;
+	List-Owner; bh=75MkUwdcbusi09xxlouYwoWLNSTW3YGgGJUdYBpGHA0=; b=eTlIouCF+aiJw5
+	JC/iGtQ5QgZaoARZB/YWC7UNxoyDzRw+aev7f8HaZF0r2NUwcqCQPN4YTXXg/zWYS5qxZSwNF41/Q
+	5WKlUd+R0/Wd0IwKxd87jSAMD8JtplLBvkGvqJymC3mjQpMhCppb6vwD7iGBfIeYV7IRLIRsUeHdj
+	hhL5MHKkFNRWYrInEOFNaUTAic+jBbmIC8uzZJAM6UflFQMTS5GDXnLUuOpXnxp4pemOQ14Fozkeu
+	AsVNCduVzw8orGlZmQHVTtiuL25vOfYVXQn6knqDMZpxi7mmC7xStRUBv++GFkWKRK5FYb8sn0CUk
+	xlcM75UGKSsownwKig6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o92L5-008ZIo-J7; Wed, 06 Jul 2022 10:32:59 +0000
-Received: from casper.infradead.org ([90.155.50.34])
+	id 1o92tJ-0099lj-OQ; Wed, 06 Jul 2022 11:08:21 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o90xz-007c4V-7w
-	for linux-rockchip@bombadil.infradead.org; Wed, 06 Jul 2022 09:05:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=ByxNWxvo3Qxto7Y23zUxo9nNTozJns03C6t8K9dbr0w=; b=rG4UGUGwzW7OAMVbFhpBZPNsnP
-	DwpCUB4NS3HhaDnvWBpjI67BsaxeiaxNfqf5UZcgZsOQKXfciIN01pT30kMG7/UDonbnyz91KgjZ8
-	KDeq+plhqHjxoMiUCDikUwpPwbt8VhdQQ9+jGWTxSBMTkjIZgqxfBIDw9g6qyPzkpCnvkaJN6ktGh
-	emcpd8e+3vigfs4dyv9OtfGOKZ6PAUE4cYsLUBHZyLyv+Lj2/Jzdv6b0J6fSUl5JKjlXQebjF4m3g
-	EJUjkr7ZoE2BvqOnbUuUeBNJmp8opUkweAGQ7ODST/PzFVtBiiCW6tz2ZHVP/mSZXGG4m4rYenJZQ
-	tCnlZBHQ==;
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o90xu-001MNB-Gb
-	for linux-rockchip@lists.infradead.org; Wed, 06 Jul 2022 09:05:00 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id g39-20020a05600c4ca700b003a03ac7d540so11171180wmp.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 06 Jul 2022 02:04:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=ByxNWxvo3Qxto7Y23zUxo9nNTozJns03C6t8K9dbr0w=;
-        b=Uj6A4VQMorRDpukAwKo3mZYizpLwaXmXw3lMifLZfkNvlTsXxaOCOXSNIwnm7GfcHL
-         6ob6kzQY/T//oE3PC27+bx2vNVultePS61OJLn36+bTtfkh8ZiU24sO9+IS2hSGjtPXv
-         BmNJpmexSVy7EUqT9sXD90kSeF2GcAfKCo8ZR1+vXqwuV4mYpMRBtj8DOha/L6H4FVVr
-         hO2ljaI/Q+d6f/BKhElVy7LS9GvB5L8uKJDWuyIZM86KPO2R5DeiOo8yLI2YfD8PkiA9
-         kCMdnW66aFFNLs5sRF6rI6sg6Pg78NTJj6ELBnzzo9qa9jTzbdTw22P24VKRDM5Jnq+H
-         lLnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=ByxNWxvo3Qxto7Y23zUxo9nNTozJns03C6t8K9dbr0w=;
-        b=m1pEuoW95u1racgYsidEbf7EOfLILErT9D9bDJyHRgoCqokblOgClDdzRqHF9pGOsd
-         sNyiOemPsZCMuQnJyc85/WsaQWCG97CM9pavEho4D3tPFByQGJdFNtzjpZcDVVDwTE6Z
-         7wkjw5Qrq/6wqGEoUq5f/T88LI+5fOkUYihE3KRtk2rLIigZKIWuGpP7jHRdo3QXcTET
-         QnUCuf10ZPBzi6tln1kIafVn2iL1LSZmyyAn6NKXjOS79Hw//cIoQd3TSlr91ALDKB05
-         R5dioh9eteE/Ign6ufWRT6gvIE9GQQD4SUfQjBydaUsh1S8Jdj5mZao/0/aoxEZpMIMt
-         o/vg==
-X-Gm-Message-State: AJIora+3IM8yQUl8K01/F8pR14kqVdbfKDnIV0CczPyy8Tgz8Gj8wVbG
-	aiOvR1bDdG50C5o0hBqu/rCrpw==
-X-Google-Smtp-Source: AGRyM1sbbL9OFOe0vMUyFtYyzwsesNGIbCCct5C0zRev6g+zKLrjo/jGIAovgbyi6B6L3LuGTV9hgQ==
-X-Received: by 2002:a05:600c:500a:b0:3a1:8c53:9bd5 with SMTP id n10-20020a05600c500a00b003a18c539bd5mr29827788wmr.82.1657098295936;
-        Wed, 06 Jul 2022 02:04:55 -0700 (PDT)
-Received: from localhost.localdomain (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id v11-20020adfe28b000000b0021d6ef34b2asm5230223wri.51.2022.07.06.02.04.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Jul 2022 02:04:55 -0700 (PDT)
-From: Corentin Labbe <clabbe@baylibre.com>
-To: heiko@sntech.de,
-	herbert@gondor.apana.org.au,
-	krzysztof.kozlowski+dt@linaro.org,
-	mturquette@baylibre.com,
-	p.zabel@pengutronix.de,
-	robh+dt@kernel.org,
-	sboyd@kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	linux-crypto@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	john@metanate.com,
-	didi.debian@cknow.org,
-	Corentin Labbe <clabbe@baylibre.com>
-Subject: [PATCH v8 22/33] crypto: rockchip: use a rk_crypto_info variable instead of lot of indirection
-Date: Wed,  6 Jul 2022 09:04:01 +0000
-Message-Id: <20220706090412.806101-23-clabbe@baylibre.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220706090412.806101-1-clabbe@baylibre.com>
-References: <20220706090412.806101-1-clabbe@baylibre.com>
+	id 1o92sx-0099SH-Kl; Wed, 06 Jul 2022 11:08:02 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id A1E48B81BE6;
+	Wed,  6 Jul 2022 11:07:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 461D8C341CA;
+	Wed,  6 Jul 2022 11:07:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1657105676;
+	bh=4zHuh7F5byl2nEPHnYTUbXvbtKodYNHadkpLFgUS4D8=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=hYxx8Tehs7AmPsTysQ6czl9Kxyix/jOttDeKm8zJyZGMw/nRLfXlG4CexEZYiMTpl
+	 spfMy1sybYG6UUHOETIJBE2RiqHuSk5p5YTSqpKwUIH7+dni69ipqZCVpE3bUf60aG
+	 GNIyTtdTFW7tSwSsfeBnApKSCGc7I6iJh0rKk5rApl6PujvQ89TLY8a4ERnvccQPzp
+	 hIHZhdeTniLkDq3NW9uTUPwWtsMm0QAMqvMOCiYkqDsK8rBRwl6kO3GQkRrlyvGge9
+	 qMsW101toZmR9EfuR/l/IoNMTGTBYdArbWSXcmgQDqNaS6piqBBhzToh4DG3m/tFll
+	 zKXIeNGLD5z8Q==
+From: Mark Brown <broonie@kernel.org>
+To: heiko@sntech.de, judyhsiao@chromium.org
+Cc: linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, wenst@chromium.org, Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, briannorris@chromium.org
+In-Reply-To: <20220701021427.3120549-1-judyhsiao@chromium.org>
+References: <20220701021427.3120549-1-judyhsiao@chromium.org>
+Subject: Re: [PATCH v1] FROMGIT: ASoC: rockchip: i2s: Fix error code when fail to read I2S_CLR
+Message-Id: <165710567400.237380.4691352154008052318.b4-ty@kernel.org>
+Date: Wed, 06 Jul 2022 12:07:54 +0100
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_100458_575807_3BF16CDC 
-X-CRM114-Status: GOOD (  12.34  )
+X-CRM114-CacheID: sfid-20220706_040759_878189_5A391F8C 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,179 +69,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Instead of using lot of ctx->dev->xx indirections, use an intermediate
-variable for rk_crypto_info.
-This will help later, when 2 different rk_crypto_info would be used.
+On Fri, 1 Jul 2022 02:14:27 +0000, Judy Hsiao wrote:
+> Add the error code '-EBUSY' when fail to read I2S_CLR
+> in rockchip_snd_rxctrl() and rockchip_snd_txctrl()
+> 
+> 
 
-Reviewed-by: John Keeping <john@metanate.com>
-Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
----
- drivers/crypto/rockchip/rk3288_crypto_ahash.c | 23 +++++++-----
- .../crypto/rockchip/rk3288_crypto_skcipher.c  | 37 ++++++++++---------
- 2 files changed, 32 insertions(+), 28 deletions(-)
+Applied to
 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-index fae779d73c84..636dbcde0ca3 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-@@ -226,9 +226,10 @@ static int rk_hash_prepare(struct crypto_engine *engine, void *breq)
- 	struct crypto_ahash *tfm = crypto_ahash_reqtfm(areq);
- 	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
- 	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
-+	struct rk_crypto_info *rkc = tctx->dev;
- 	int ret;
- 
--	ret = dma_map_sg(tctx->dev->dev, areq->src, sg_nents(areq->src), DMA_TO_DEVICE);
-+	ret = dma_map_sg(rkc->dev, areq->src, sg_nents(areq->src), DMA_TO_DEVICE);
- 	if (ret <= 0)
- 		return -EINVAL;
- 
-@@ -243,8 +244,9 @@ static int rk_hash_unprepare(struct crypto_engine *engine, void *breq)
- 	struct crypto_ahash *tfm = crypto_ahash_reqtfm(areq);
- 	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
- 	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
-+	struct rk_crypto_info *rkc = tctx->dev;
- 
--	dma_unmap_sg(tctx->dev->dev, areq->src, rctx->nrsg, DMA_TO_DEVICE);
-+	dma_unmap_sg(rkc->dev, areq->src, rctx->nrsg, DMA_TO_DEVICE);
- 	return 0;
- }
- 
-@@ -257,6 +259,7 @@ static int rk_hash_run(struct crypto_engine *engine, void *breq)
- 	struct ahash_alg *alg = __crypto_ahash_alg(tfm->base.__crt_alg);
- 	struct rk_crypto_tmp *algt = container_of(alg, struct rk_crypto_tmp, alg.hash);
- 	struct scatterlist *sg = areq->src;
-+	struct rk_crypto_info *rkc = tctx->dev;
- 	int err = 0;
- 	int i;
- 	u32 v;
-@@ -283,13 +286,13 @@ static int rk_hash_run(struct crypto_engine *engine, void *breq)
- 	rk_ahash_reg_init(areq);
- 
- 	while (sg) {
--		reinit_completion(&tctx->dev->complete);
--		tctx->dev->status = 0;
--		crypto_ahash_dma_start(tctx->dev, sg);
--		wait_for_completion_interruptible_timeout(&tctx->dev->complete,
-+		reinit_completion(&rkc->complete);
-+		rkc->status = 0;
-+		crypto_ahash_dma_start(rkc, sg);
-+		wait_for_completion_interruptible_timeout(&rkc->complete,
- 							  msecs_to_jiffies(2000));
--		if (!tctx->dev->status) {
--			dev_err(tctx->dev->dev, "DMA timeout\n");
-+		if (!rkc->status) {
-+			dev_err(rkc->dev, "DMA timeout\n");
- 			err = -EFAULT;
- 			goto theend;
- 		}
-@@ -306,10 +309,10 @@ static int rk_hash_run(struct crypto_engine *engine, void *breq)
- 	 * efficiency, and make it response quickly when dma
- 	 * complete.
- 	 */
--	readl_poll_timeout(tctx->dev->reg + RK_CRYPTO_HASH_STS, v, v == 0, 10, 1000);
-+	readl_poll_timeout(rkc->reg + RK_CRYPTO_HASH_STS, v, v == 0, 10, 1000);
- 
- 	for (i = 0; i < crypto_ahash_digestsize(tfm) / 4; i++) {
--		v = readl(tctx->dev->reg + RK_CRYPTO_HASH_DOUT_0 + i * 4);
-+		v = readl(rkc->reg + RK_CRYPTO_HASH_DOUT_0 + i * 4);
- 		put_unaligned_le32(v, areq->result + i * 4);
- 	}
- 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-index 3187869c4c68..6a1bea98fded 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-@@ -303,6 +303,7 @@ static int rk_cipher_run(struct crypto_engine *engine, void *async_req)
- 	unsigned int todo;
- 	struct skcipher_alg *alg = crypto_skcipher_alg(tfm);
- 	struct rk_crypto_tmp *algt = container_of(alg, struct rk_crypto_tmp, alg.skcipher);
-+	struct rk_crypto_info *rkc = ctx->dev;
- 
- 	algt->stat_req++;
- 
-@@ -330,49 +331,49 @@ static int rk_cipher_run(struct crypto_engine *engine, void *async_req)
- 			scatterwalk_map_and_copy(biv, sgs, offset, ivsize, 0);
- 		}
- 		if (sgs == sgd) {
--			err = dma_map_sg(ctx->dev->dev, sgs, 1, DMA_BIDIRECTIONAL);
-+			err = dma_map_sg(rkc->dev, sgs, 1, DMA_BIDIRECTIONAL);
- 			if (err <= 0) {
- 				err = -EINVAL;
- 				goto theend_iv;
- 			}
- 		} else {
--			err = dma_map_sg(ctx->dev->dev, sgs, 1, DMA_TO_DEVICE);
-+			err = dma_map_sg(rkc->dev, sgs, 1, DMA_TO_DEVICE);
- 			if (err <= 0) {
- 				err = -EINVAL;
- 				goto theend_iv;
- 			}
--			err = dma_map_sg(ctx->dev->dev, sgd, 1, DMA_FROM_DEVICE);
-+			err = dma_map_sg(rkc->dev, sgd, 1, DMA_FROM_DEVICE);
- 			if (err <= 0) {
- 				err = -EINVAL;
- 				goto theend_sgs;
- 			}
- 		}
- 		err = 0;
--		rk_cipher_hw_init(ctx->dev, areq);
-+		rk_cipher_hw_init(rkc, areq);
- 		if (ivsize) {
- 			if (ivsize == DES_BLOCK_SIZE)
--				memcpy_toio(ctx->dev->reg + RK_CRYPTO_TDES_IV_0, ivtouse, ivsize);
-+				memcpy_toio(rkc->reg + RK_CRYPTO_TDES_IV_0, ivtouse, ivsize);
- 			else
--				memcpy_toio(ctx->dev->reg + RK_CRYPTO_AES_IV_0, ivtouse, ivsize);
-+				memcpy_toio(rkc->reg + RK_CRYPTO_AES_IV_0, ivtouse, ivsize);
- 		}
--		reinit_completion(&ctx->dev->complete);
--		ctx->dev->status = 0;
-+		reinit_completion(&rkc->complete);
-+		rkc->status = 0;
- 
- 		todo = min(sg_dma_len(sgs), len);
- 		len -= todo;
--		crypto_dma_start(ctx->dev, sgs, sgd, todo / 4);
--		wait_for_completion_interruptible_timeout(&ctx->dev->complete,
-+		crypto_dma_start(rkc, sgs, sgd, todo / 4);
-+		wait_for_completion_interruptible_timeout(&rkc->complete,
- 							  msecs_to_jiffies(2000));
--		if (!ctx->dev->status) {
--			dev_err(ctx->dev->dev, "DMA timeout\n");
-+		if (!rkc->status) {
-+			dev_err(rkc->dev, "DMA timeout\n");
- 			err = -EFAULT;
- 			goto theend;
- 		}
- 		if (sgs == sgd) {
--			dma_unmap_sg(ctx->dev->dev, sgs, 1, DMA_BIDIRECTIONAL);
-+			dma_unmap_sg(rkc->dev, sgs, 1, DMA_BIDIRECTIONAL);
- 		} else {
--			dma_unmap_sg(ctx->dev->dev, sgs, 1, DMA_TO_DEVICE);
--			dma_unmap_sg(ctx->dev->dev, sgd, 1, DMA_FROM_DEVICE);
-+			dma_unmap_sg(rkc->dev, sgs, 1, DMA_TO_DEVICE);
-+			dma_unmap_sg(rkc->dev, sgd, 1, DMA_FROM_DEVICE);
- 		}
- 		if (rctx->mode & RK_CRYPTO_DEC) {
- 			memcpy(iv, biv, ivsize);
-@@ -405,10 +406,10 @@ static int rk_cipher_run(struct crypto_engine *engine, void *async_req)
- 
- theend_sgs:
- 	if (sgs == sgd) {
--		dma_unmap_sg(ctx->dev->dev, sgs, 1, DMA_BIDIRECTIONAL);
-+		dma_unmap_sg(rkc->dev, sgs, 1, DMA_BIDIRECTIONAL);
- 	} else {
--		dma_unmap_sg(ctx->dev->dev, sgs, 1, DMA_TO_DEVICE);
--		dma_unmap_sg(ctx->dev->dev, sgd, 1, DMA_FROM_DEVICE);
-+		dma_unmap_sg(rkc->dev, sgs, 1, DMA_TO_DEVICE);
-+		dma_unmap_sg(rkc->dev, sgd, 1, DMA_FROM_DEVICE);
- 	}
- theend_iv:
- 	return err;
--- 
-2.35.1
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
+Thanks!
+
+[1/1] FROMGIT: ASoC: rockchip: i2s: Fix error code when fail to read I2S_CLR
+      commit: 0ff9f8b9f59208332c6707e37d5739c57c7f7bce
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-rockchip mailing list
