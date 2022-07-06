@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F339FCCA485
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 09:05:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 015D4CCA473
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jul 2022 09:05:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=br+uZG4aj8CPR33Ld/ERFImYRe47BjEQqkF0a6921D4=; b=baazuieCsYXYZX
-	xbcS/JW+TO+E4dDt14qhraCOEoxq3U3wsozMrxiUH+iRvzbkpNk8UkWF4SP6roeWYMrwRa1QbE1R8
-	vWYmWr5mN0vdE36sc8y/iz9lmvX/Dog+nkOcDdOpvxg2TCIiC+KsWSdwvYxX1vVv1xkW54eUNnwcQ
-	0K8hZExGWvLAYxFjkof1ICydBGoYeyGaqZZQWYCiqe81P5tKCiCuFYEBwIFRZf3Z4PfgqHFH/HnhU
-	O611R9P8mUJb1yyfjMxlFKCg2hkQ3Mk1RY9Q9iDm92Uw/VeTcGVSNPDZipbkuTKcBzxOdZR9Vw2Fn
-	KWSub8r5Ahd1AWGqjS1A==;
+	List-Owner; bh=zvZNIDIhcnabxTjE92iLjr4QMJFv2RIy57SH0KW3teM=; b=LmV+607184ZxmK
+	Tqbo7LOKWvsLzkdjTEQN+gz2WprVrBLJA3/t9OHvKjlLMNDaPm1+ptohOeP0aXMvDZon/NF7gOypC
+	XxgkjFUC4XEodJW9b2bCW81e4kHzC40/SNaCWG+JRJfaQgdIFHaHdRMqEhppDUGgicb3ba9H4/xXr
+	iasflgRTziDNUDvhAmkDGdqjJl02+qbSbgFA1XRWRMI4V4DTqJgHQLlR+NmYi+yqds7J3JgH7SGtR
+	pix7zTajZ5e44tGDWTNI8jZA5Cp6CcI51VrQVoZQg+eCOI+zPnddQWO/0syNQhGTYCp+XqgYLhBI/
+	VeMraEHTQ41wtUMEvyjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o90yP-007cGi-Ks; Wed, 06 Jul 2022 09:05:29 +0000
-Received: from mail-wr1-f53.google.com ([209.85.221.53])
+	id 1o90yg-007cQE-Hf; Wed, 06 Jul 2022 09:05:46 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o90xz-007bxv-FM
-	for linux-rockchip@lists.infradead.org; Wed, 06 Jul 2022 09:05:05 +0000
-Received: by mail-wr1-f53.google.com with SMTP id q9so21052773wrd.8
-        for <linux-rockchip@lists.infradead.org>; Wed, 06 Jul 2022 02:05:03 -0700 (PDT)
+	id 1o90y1-007blz-Eu
+	for linux-rockchip@lists.infradead.org; Wed, 06 Jul 2022 09:05:06 +0000
+Received: by mail-wr1-x433.google.com with SMTP id b26so21082074wrc.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 06 Jul 2022 02:05:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=YTCwVt48y9KJqKpi4AoXVBEGpD4ZzF22SRLhTWJSe6w=;
-        b=aROmTaAGd5Uz5ErAcUPgj5Xng9693lZ8XtgK2awEuQqhxAkqjQwWM4e9bCWIzuN+uc
-         wtw+U7lTfgBdzB7scPLu92+ZDbFpxIMPTR9qj22P+Jfxatc/rsIt/ni7zG9Xvp45Qc1j
-         uxylZy+jPptwy6+sevgtRWzhVjd7xCO+6GlWPmrf39fqipXEwibsZdfy5CiwlqYUiO3o
-         bom/rzprf++oFWPvrbxSimc6AV1Qqlq/sD2yufBm1H2ZYCLsKFaPm61pmYKSrp3q/amA
-         8suMAqn73A02BwL5qgCNRGSjHyO+yp019HEbO8oUz4qJcEuXe9LtkK0kcVIrYMrLg0+v
-         5Y1w==
+        bh=/HcULCDUWUOb7zL9pkaT5teTJK7hgsOh6ToY9+UZMac=;
+        b=jzmrHnL6AP5JP5ynKqMYe5yX2tYmFdVE8TwhZFHgWJFWW0o1xKFCEzfUtnEChQnGm/
+         A6fQvxFRl2SJpiM4Zj/xug3hmVwSmyjac1QgUpHLeezzF65VvWPXm1axFpEEUOV6/Tvq
+         FmFmnBGkQtH8EGsxTiOQ3zh9mBrKz/VYH64Ram1n1qoiNJN0DeG0dPQXrNtxp3U+wfWW
+         e1NjKc352R2J8iC4t/8fmbX8ZkB6Zor6dVY+HZIwU2XX5wv7jTxP50GPf53rIHxA+20F
+         12t1xepnNyAfFnfApYwl21tsc0KoW0p5KIZ1vlvUXF4b+4tt44fifPg2WA5jVg9InUm5
+         TAyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=YTCwVt48y9KJqKpi4AoXVBEGpD4ZzF22SRLhTWJSe6w=;
-        b=vpfHg5565/i1kIAHca9vGTAeqWWMhgBaR8qMaxh+G+jdBgaQeghO0QLEVsSCawndTr
-         jlyZ5A64+VzF09+uGjVIjk4kSDm1HXJdkya9VstXUHDcGvhFYuB3OFLUXu69Q5VBlnDq
-         iQxE0Nqn6XBLRhiX7xtpPF5N+JLNRLWzXp8QmmjVwT2Dh1PGgXdSY/V9+hniJFoVKuWl
-         KW/TE4P/Jz/9mWZZuRgLgZqKxTWv+juy5ZzvbGt/uoRiSUf6J+I4WnjS7YqdqDfHoc2e
-         WDjF+Yu46zeSPtTNkGC3lE/WTwyvphYQ374asQOxhdTTfl7dEnzrbS3iyBt9c/pyYurD
-         FXJw==
-X-Gm-Message-State: AJIora++1gLys25ECof0u9LvsLqq53NL/aKg9Xfn7EGhEqYqtk6Jm0P5
-	RTbc+JahRli2OzmOKQRZI4wWlA==
-X-Google-Smtp-Source: AGRyM1vC9VxnuvLBjsVAM6qNEFXl5IPwmRbanNxBUua9l8GqQ2AlSl2w3qIg0HwpaHw77/ccv3FGlw==
-X-Received: by 2002:adf:db12:0:b0:21b:970b:e882 with SMTP id s18-20020adfdb12000000b0021b970be882mr37317063wri.6.1657098303035;
-        Wed, 06 Jul 2022 02:05:03 -0700 (PDT)
+        bh=/HcULCDUWUOb7zL9pkaT5teTJK7hgsOh6ToY9+UZMac=;
+        b=j2XYAuVoOHEAIK5mDYbvS8IyqzZL9sA0PO+08zMWyrwJ9kbBppzFnQHYAUH4Kn2P8d
+         rAFZKCpj2qtozrY44pEq831Ab5FTK0PBQt3tr9lqBnXq4KV/6T6i9m2eKIwX5HPGwL4c
+         JaQPiEQi/IXIFCFgMM3NdFqXPP2STl4CkQjrqGTabGce1s2YJOuuY0JCXIQCeMX1aq7y
+         +R7gkpko9AFCR3BzYGmEZEXniLR+vLSurgKV8fd3RD6I8wkwGERG0ap75WZKU2MdN8VZ
+         w4oocFyC2zlc9lzz/YfST0MrrHWywCfRrifF1fGin1nCLklfd7GcznJApevg6bFQLpVe
+         SRZg==
+X-Gm-Message-State: AJIora9tP2AMcN1s/Wm7hsRLBl3t5v5Gd6XtBTJyWrgRf6Jq5l54ZGbU
+	hXQincE9Y2FWsw9hrUIcXXnFBA==
+X-Google-Smtp-Source: AGRyM1vRD4rRZCFfC8x4QQPMMOy8cjZ8voHj35W/8OT3F5k7JS0Li37UwyHkRVf/XoUVjf0EDwXrnw==
+X-Received: by 2002:adf:fb08:0:b0:21b:af81:2ffd with SMTP id c8-20020adffb08000000b0021baf812ffdmr36963912wrr.685.1657098305026;
+        Wed, 06 Jul 2022 02:05:05 -0700 (PDT)
 Received: from localhost.localdomain (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id v11-20020adfe28b000000b0021d6ef34b2asm5230223wri.51.2022.07.06.02.05.02
+        by smtp.googlemail.com with ESMTPSA id v11-20020adfe28b000000b0021d6ef34b2asm5230223wri.51.2022.07.06.02.05.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Jul 2022 02:05:02 -0700 (PDT)
+        Wed, 06 Jul 2022 02:05:04 -0700 (PDT)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: heiko@sntech.de,
 	herbert@gondor.apana.org.au,
@@ -75,16 +75,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	john@metanate.com,
 	didi.debian@cknow.org,
 	Corentin Labbe <clabbe@baylibre.com>
-Subject: [PATCH v8 29/33] crypto: rockchip: store crypto_info in request context
-Date: Wed,  6 Jul 2022 09:04:08 +0000
-Message-Id: <20220706090412.806101-30-clabbe@baylibre.com>
+Subject: [PATCH v8 31/33] crypto: rockchip: rk_ahash_reg_init use crypto_info from parameter
+Date: Wed,  6 Jul 2022 09:04:10 +0000
+Message-Id: <20220706090412.806101-32-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220706090412.806101-1-clabbe@baylibre.com>
 References: <20220706090412.806101-1-clabbe@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220706_020503_569252_3FCE3A43 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20220706_020505_557491_1E895A01 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,131 +101,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The crypto_info to use must be stored in the request context.
-This will help when 2 crypto_info will be available on rk3399.
+rk_ahash_reg_init() use crypto_info from TFM context, since we will
+remove it, let's take if from parameters.
 
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- drivers/crypto/rockchip/rk3288_crypto.h          |  2 ++
- drivers/crypto/rockchip/rk3288_crypto_ahash.c    | 14 ++++++--------
- drivers/crypto/rockchip/rk3288_crypto_skcipher.c |  6 ++++--
- 3 files changed, 12 insertions(+), 10 deletions(-)
+ drivers/crypto/rockchip/rk3288_crypto_ahash.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
-index 28bf09fe1c1d..ff9fc25972eb 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.h
-+++ b/drivers/crypto/rockchip/rk3288_crypto.h
-@@ -215,6 +215,7 @@ struct rk_ahash_ctx {
- 
- /* the private variable of hash for fallback */
- struct rk_ahash_rctx {
-+	struct rk_crypto_info		*dev;
- 	struct ahash_request		fallback_req;
- 	u32				mode;
- 	int nrsg;
-@@ -231,6 +232,7 @@ struct rk_cipher_ctx {
- };
- 
- struct rk_cipher_rctx {
-+	struct rk_crypto_info		*dev;
- 	u8 backup_iv[AES_BLOCK_SIZE];
- 	u32				mode;
- 	struct skcipher_request fallback_req;   // keep at the end
 diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-index 636dbcde0ca3..d1bf68cb390d 100644
+index d1bf68cb390d..30f78256c955 100644
 --- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
 +++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-@@ -200,6 +200,7 @@ static int rk_ahash_export(struct ahash_request *req, void *out)
- 
- static int rk_ahash_digest(struct ahash_request *req)
- {
-+	struct rk_ahash_rctx *rctx = ahash_request_ctx(req);
- 	struct rk_ahash_ctx *tctx = crypto_tfm_ctx(req->base.tfm);
- 	struct rk_crypto_info *dev = tctx->dev;
- 
-@@ -209,6 +210,8 @@ static int rk_ahash_digest(struct ahash_request *req)
- 	if (!req->nbytes)
- 		return zero_message_process(req);
- 
-+	rctx->dev = dev;
-+
- 	return crypto_transfer_hash_request_to_engine(dev->engine, req);
- }
- 
-@@ -223,10 +226,8 @@ static void crypto_ahash_dma_start(struct rk_crypto_info *dev, struct scatterlis
- static int rk_hash_prepare(struct crypto_engine *engine, void *breq)
- {
- 	struct ahash_request *areq = container_of(breq, struct ahash_request, base);
--	struct crypto_ahash *tfm = crypto_ahash_reqtfm(areq);
- 	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
--	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
--	struct rk_crypto_info *rkc = tctx->dev;
-+	struct rk_crypto_info *rkc = rctx->dev;
- 	int ret;
- 
- 	ret = dma_map_sg(rkc->dev, areq->src, sg_nents(areq->src), DMA_TO_DEVICE);
-@@ -241,10 +242,8 @@ static int rk_hash_prepare(struct crypto_engine *engine, void *breq)
- static int rk_hash_unprepare(struct crypto_engine *engine, void *breq)
- {
- 	struct ahash_request *areq = container_of(breq, struct ahash_request, base);
--	struct crypto_ahash *tfm = crypto_ahash_reqtfm(areq);
- 	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
--	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
--	struct rk_crypto_info *rkc = tctx->dev;
-+	struct rk_crypto_info *rkc = rctx->dev;
- 
- 	dma_unmap_sg(rkc->dev, areq->src, rctx->nrsg, DMA_TO_DEVICE);
+@@ -78,12 +78,10 @@ static int zero_message_process(struct ahash_request *req)
  	return 0;
-@@ -255,11 +254,10 @@ static int rk_hash_run(struct crypto_engine *engine, void *breq)
- 	struct ahash_request *areq = container_of(breq, struct ahash_request, base);
- 	struct crypto_ahash *tfm = crypto_ahash_reqtfm(areq);
- 	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
--	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
- 	struct ahash_alg *alg = __crypto_ahash_alg(tfm->base.__crt_alg);
- 	struct rk_crypto_tmp *algt = container_of(alg, struct rk_crypto_tmp, alg.hash);
- 	struct scatterlist *sg = areq->src;
--	struct rk_crypto_info *rkc = tctx->dev;
-+	struct rk_crypto_info *rkc = rctx->dev;
- 	int err = 0;
- 	int i;
- 	u32 v;
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-index cf0dfb6029d8..0b1c90ababb7 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-@@ -86,12 +86,15 @@ static int rk_cipher_handle_req(struct skcipher_request *req)
- {
- 	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(req);
- 	struct rk_cipher_ctx *tctx = crypto_skcipher_ctx(tfm);
-+	struct rk_cipher_rctx *rctx = skcipher_request_ctx(req);
- 	struct rk_crypto_info *rkc = tctx->dev;
- 	struct crypto_engine *engine = rkc->engine;
- 
- 	if (rk_cipher_need_fallback(req))
- 		return rk_cipher_fallback(req);
- 
-+	rctx->dev = rkc;
-+
- 	return crypto_transfer_skcipher_request_to_engine(engine, req);
  }
  
-@@ -290,7 +293,6 @@ static int rk_cipher_run(struct crypto_engine *engine, void *async_req)
+-static void rk_ahash_reg_init(struct ahash_request *req)
++static void rk_ahash_reg_init(struct ahash_request *req,
++			      struct rk_crypto_info *dev)
  {
- 	struct skcipher_request *areq = container_of(async_req, struct skcipher_request, base);
- 	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(areq);
--	struct rk_cipher_ctx *ctx = crypto_skcipher_ctx(tfm);
- 	struct rk_cipher_rctx *rctx = skcipher_request_ctx(areq);
- 	struct scatterlist *sgs, *sgd;
- 	int err = 0;
-@@ -303,7 +305,7 @@ static int rk_cipher_run(struct crypto_engine *engine, void *async_req)
- 	unsigned int todo;
- 	struct skcipher_alg *alg = crypto_skcipher_alg(tfm);
- 	struct rk_crypto_tmp *algt = container_of(alg, struct rk_crypto_tmp, alg.skcipher);
--	struct rk_crypto_info *rkc = ctx->dev;
-+	struct rk_crypto_info *rkc = rctx->dev;
+ 	struct rk_ahash_rctx *rctx = ahash_request_ctx(req);
+-	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
+-	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
+-	struct rk_crypto_info *dev = tctx->dev;
+ 	int reg_status;
  
- 	algt->stat_req++;
+ 	reg_status = CRYPTO_READ(dev, RK_CRYPTO_CTRL) |
+@@ -281,7 +279,7 @@ static int rk_hash_run(struct crypto_engine *engine, void *breq)
+ 		goto theend;
+ 	}
  
+-	rk_ahash_reg_init(areq);
++	rk_ahash_reg_init(areq, rkc);
+ 
+ 	while (sg) {
+ 		reinit_completion(&rkc->complete);
 -- 
 2.35.1
 
