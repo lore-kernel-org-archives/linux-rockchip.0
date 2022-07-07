@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A965CCA47F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jul 2022 19:41:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78062C43334
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jul 2022 21:09:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SHc0HDqZr9YOaIOjoFvXbjyaW6C/VinXxrVjcHeW9TE=; b=PAEkLkdwDDJ+YF
-	dNBtOO60+PLeHblngAaX1EB6bH7GAXufx9sJ9jQ3zcT2daSIn6Cn0QEHzdiLdc14eGWWtMtF+YK6F
-	XqqchuRf8gM0HVcKE/kb340g4BRyGjQV/ATstLtl+MHK9lWRnlxoeCl+zczrcYIXlQOH6Gl/4tMe7
-	w8Gff0WMqvLOm+4q/cyldoWsPERaCKVIlT3r3c06wBCBfGmsy0YV7E8mSFDRPS+bjgT3OTwWEbUzD
-	KFrTGKqS8L+jLOTxr5AuS6Ai2THZ+sBDA3aJZ7yb98gW+UFqK7Ilbdm/J8Bb5Ar8A47AYfXQMfMBV
-	uD+gjEQ7NaNfZ8pSZcpA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dpmect/fbczEvfpIhPkHvebuUKM1qMWtTHw8XhY05HE=; b=S7f23y/9+zLCSSWqTXqJGlkkRb
+	SuANhvCqnDLo73KuKaAemRsKNxBXcgYDwUmRUVQjmpkDsSPqFbwIPNgu/FIKstLtEeaKC3Ne/uqxJ
+	RuRioEta3kHyQf8eAH/Mk9CUVhJ8RZe81l6VYbk8OpHHZoyaND86bwrb+SIxT/DDLE2ss17DZ3jX/
+	E2khLxx8S0+zX2D6x7B3vAbhMRDqBcSGlr4vTPf23oOr02PFuSfYwkPbCFNg1vVk/rAqcNECbNLEq
+	iCFvy8bHzs4p7ueENzi0B2+b9PCA9qyPNoYEjnaEDKas/qNV32aZr6a7NpBJkc1g1VSN4W6wF7HFl
+	jZP9MVxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9XNY-00HaNg-7y; Thu, 07 Jul 2022 19:41:36 +0000
-Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
+	id 1o9YkX-000GjQ-Fl; Thu, 07 Jul 2022 21:09:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9XNM-00HaKU-RS; Thu, 07 Jul 2022 19:41:26 +0000
-Received: by mail-oi1-x235.google.com with SMTP id s188so24364756oib.6;
-        Thu, 07 Jul 2022 12:41:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=Wz86QKRHnj/MzzGjPiA/OihJZ8/+5T6Oq/nltkUkjeQ=;
-        b=EBzKxQoFNquptYjnPmsNGzg6ttCIDNdfnEylByDZWOM3k8m/qMfwJvtkKm/foB12lU
-         EaoYJVyT9Q/OMHE7/BwDvHEtQuhksafloPvdUEBSUmpN1lxUYY4epo2IFcmMjbfy/Uv+
-         ud3iog1hudI9+aeiZK5e5HHDeQ3J9NEdgx1oZi/YZH5XVG4u5xnnMMzOsCpfCfdkzl8L
-         Qp1ELBzLZ5aflJp6X3bB1b62J152xJ1cHxd2Ah1cP0eYDBwX6ZPU49c0L15qKrqpP9Id
-         dmVcnHls/Q8jbMQdNfBRKUCmRq4d5qNrPWcLWzeLpv3izmhfO/fUyn0jS7Tr8ver6Ohb
-         8Frw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=Wz86QKRHnj/MzzGjPiA/OihJZ8/+5T6Oq/nltkUkjeQ=;
-        b=U/SULl1McO+dpuNjSbh6h5ueq3YElvG1BvAXW7n0B2F5WMzlyLM9vlDIuKQ3uPMO11
-         clSZtIN7h2MJNsUk0sHQh/i7B3iyV5JctVpKnzEQDn6ljjOlru7XWLmJUo6VpK1pbvSi
-         MqW1m/cwXCrHeMoSCeJ0qHDGW9y9fTQO4yXI44BLKheWeSzWz5OrQC7npzu7LgSqA1Cc
-         nqQS+fAD2f+AezdbhHnaq13Jq/w0cZD0asyWcCNkOvGBbkz96VaYKGk+xbX5c2x5ekL8
-         BpZQaGjCQSOLn6evjgS6gNLuwp7a+0zMBL9F4YXOILgY6me4euqy/WoDqboQbXxzaKkC
-         9CTg==
-X-Gm-Message-State: AJIora/voOwWBrbCm7rJnCK+a27VXwSsHTpswyWqOXEvsfC+b1uarHiV
-	K+yA8zQBNXrETGd710svLMYmeWDVpiFcKANCKp8=
-X-Google-Smtp-Source: AGRyM1vBKpqkOG1+8HnXie17TyP6e40WbpSsab9ACDEoP5++MkGGca64AkausYZ+Ec+Am/jIxen/+cHoLTXgPJh9k0c=
-X-Received: by 2002:a05:6808:3096:b0:335:796f:abc2 with SMTP id
- bl22-20020a056808309600b00335796fabc2mr3594892oib.173.1657222880210; Thu, 07
- Jul 2022 12:41:20 -0700 (PDT)
+	id 1o9YkU-000GhO-3K
+	for linux-rockchip@lists.infradead.org; Thu, 07 Jul 2022 21:09:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id EF67262438;
+	Thu,  7 Jul 2022 21:09:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C348C3411E;
+	Thu,  7 Jul 2022 21:09:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1657228158;
+	bh=6krTAHwFw5x0U7lXZFEFY+uwkkZbcGAH15gDhbYLZwM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ga/Eg8he1VNjTwBK41B5yYfJYSptChGMWMA+R6lCpztF7tZajil53T7Qq6HpZskYi
+	 Dt66uiBvx/L6DBZoQhh3reKkpIXFjf9TEtHVu2iujHESQe6IqCKLdEv0b2qdCtzuAz
+	 QHro3r5Os2Q0y8XV/8KpK5CKWuXiCfjky1t5i08QIJk65RnbChP3oa37U3M960I+L1
+	 CmmrOKdaQ8LtgMRp/ah3lp2UJTOziUimDe5XlODUkVFLelit+55xchlMFDiG7zyegi
+	 joDUwMMMnnHXHnVpYxVIBFHi6f6FxrXX8/7t/gREyg13EHBvgn4J2aJkM7bY1xCek0
+	 3xXWMZ8DY5xMg==
+Date: Thu, 7 Jul 2022 23:09:13 +0200
+From: Wolfram Sang <wsa@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-i2c@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH 1/1] dt-bindings: i2c: i2c-rk3x: add rk3588 compatible
+Message-ID: <YsdLeaGJGf7FFIK1@shikoro>
+Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-i2c@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	kernel@collabora.com
+References: <20220623163136.246404-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-References: <trinity-54ed588d-4b2c-4177-83b0-4eda8ff16a42-1657210235522@3c-app-gmx-bap68>
- <trinity-ec3b4258-cb12-42c2-9058-362260a275d2-1657216287085@3c-app-gmx-bap68>
-In-Reply-To: <trinity-ec3b4258-cb12-42c2-9058-362260a275d2-1657216287085@3c-app-gmx-bap68>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Thu, 7 Jul 2022 15:41:08 -0400
-Message-ID: <CAMdYzYrs0oJXVcViOmJk4E7PSTeP5TYs0O_ePHmrcAiKtOAWXQ@mail.gmail.com>
-Subject: Re: [BUG] USB broken on rk3568 based R2Pro
-To: Frank Wunderlich <frank-w@public-files.de>
-Cc: Samuel Holland <samuel@sholland.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Vinod Koul <vkoul@kernel.org>, 
-	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, 
-	arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, 
-	Heiko Stuebner <heiko@sntech.de>
+In-Reply-To: <20220623163136.246404-1-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_124124_924140_23517AFD 
-X-CRM114-Status: GOOD (  21.06  )
+X-CRM114-CacheID: sfid-20220707_140922_198913_05F91089 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,55 +74,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5612019995960499903=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jul 7, 2022 at 1:51 PM Frank Wunderlich <frank-w@public-files.de> wrote:
->
-> Hi,
->
-> traced it down with manual reverts to this one:
->
-> commit 6a98df08ccd55e87947d253b19925691763e755c
->     phy: rockchip-inno-usb2: Fix muxed interrupt support
->
-> luckily i can revert only this and now upper usb-port works again
->
-> @samuel: have you an idea how to fix your problem without breaking my board? :)
->
-> @greg/Vinod: maybe we can add a revert of this in mainline till issue is resolved?
->
-> regards Frank
 
-I don't know what you're running, but with the standard arm64
-defconfig w/ all rockchip stuff built in, I have no issues here on
-5.19.
-Note, the following changes are necessary to the 5.19 dts here:
-Remove the extcon from usb_host0_xhci, as the production model doesn't
-have automatic switching capabilities. The ID pin was removed in favor
-of the usb debug function which also doesn't work.
-Add dr_mode = "host" to the same node, for the same reason.
+--===============5612019995960499903==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="6ILHCh8oIcB1AeoY"
+Content-Disposition: inline
 
->
->
-> > Von: "Frank Wunderlich" <frank-w@public-files.de>
-> > i noticed that upper usb-Port (otg) is broken on my Bananapi R2Pro with 5.19-rc1, works with 5.18.0
-> >
-> > this port is a usb3 (xhci) port which includes an usb2-phy and should support otg, but i still want
-> > to use it in host-only mode (USB-A socket).
-> >
-> > already tried setting dr_mode in dts back to "host" as this was changed in rk356x.dtsi by this commit:
-> >
-> > bc405bb3eeee 2022-04-25 arm64: dts: rockchip: enable otg/drd operation of usb_host0_xhci in rk356x
-> >
-> > i see no error in dmesg and usb-controllers seem to be initialized completely (visible in lsusb).
-> >
-> > r2pro has ID-Pin not connected, so i tried also peters Patch without success :(
->
+
+--6ILHCh8oIcB1AeoY
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Jun 23, 2022 at 06:31:36PM +0200, Sebastian Reichel wrote:
+> Just like RK356x, RK3588 is compatible to the existing rk3399 binding.
+>=20
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+Applied to for-next, thanks!
+
+
+--6ILHCh8oIcB1AeoY
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmLHS3kACgkQFA3kzBSg
+KbZbdxAAh0HztJSdWzgE6pvvDl4NPTDHqvu/WoFDZb4u8b3JEuS5aBbnq/88tdXd
+ZvEuui8kTRfTdlFtOhg8Hwht0JDWR5gIxoQUn4t/wXos7pACFutNe2aB4PqgU+JR
+wG2rNirDX0xKW9zkUcZkSBH9cjvWxrAbUuAwiek+cc7jJvARTLe90PgVB7pe4yP8
+rYPUEXXhLsBxQCTxneyiiqVhm0SrivIJtGBMg1ZenNxvcuwJheURRVakm4CTzw14
+FMWMfCAYnqNvfw+4FiHKowrL0PzggoFCUZm/5Mn0mBa2cpj6nXtBpkahBwJ3qoZN
+wngs/Otsmsnzm5jyAjV3SlPuYjVpsWAvijkMIuGhIyLwHV19QTy7DkArTrpz4NKL
+r0u39rnxauNqnrV1uD+Nbl7vH6J6sowm94iDGb/Vv20DBFLRHPYBbxAU3dW9Iyjz
+HRJCKAKsDybpYcyIVp2gWWT9sINkYTxV0EQeNnCIJSCy8UUDc3zYcq/j5Nz4HYZt
+lMzEwSTUpdm1yzvFFk02ewmTkraoos4QouLuljCP2qsMdlhyvdl6RdS35Gt34iVE
+qncRgVU6s0Xq5ELw1H0VCsL4w3cI8LLGDcIA2lLg07PzrQ30hIakOPikmK6YL/Lw
+W70ueL4eaj8eFbU33cueytdy/W4/bWkw9Hz/DpD8f0/qriulrmA=
+=OzcX
+-----END PGP SIGNATURE-----
+
+--6ILHCh8oIcB1AeoY--
+
+
+--===============5612019995960499903==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5612019995960499903==--
+
