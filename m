@@ -4,59 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C356C433EF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jul 2022 11:51:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3803C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jul 2022 13:38:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zPAuWpDWOftEQtuOg3KATLoZPyDlPJDRrFsIs3OccJ8=; b=s0c5pcaj40EkWo
-	XQE3xG9OR5mvp9eoV7/+AaRKCzeOj1snJyn23O3D6aTnug3XTVjYWTzsSw7o8+9ztlsE+Ads9vAOX
-	DR8GGGqJIVUukXsSunVQTw8MehhWqbUdtB9jaGpyXLAQhkaxzyHETpxq02ZLbxbxb7YXIpOvN4GlG
-	4gsK4giw3PiWMYA6gEZlGi1EBjUf0alHF7gZgxor5CwQ1ALV0zjQmYU94WbI9VI5MSyGHxXehCT+Q
-	g+ikSfbBLFTazygcXdQPHAjmY5vboAajVBo8MrtXYavjeezpq1A+Yh7uac0xxbVcDEOdJP9MX/bO0
-	q1j5L6sbWPRqJIEUQ0Mg==;
+	List-Owner; bh=4DzRK5LZPkWxv9lzN5oxaPt0MXohXNBhQG8kh3QWHsI=; b=wdMucqc19WTyUB
+	9X/ZVrHjVdkl0uQJoylDItUkygn5DCSyxRVD41r0YDCMI/QekZ4B4gcCCWenaAXYHUFsmS5Z3qwZ/
+	/LPkj2q9YmQhRiacGfN7qe+G5x6zcXDSuF4eubb0qnk8qM4BGeB91tDfM+W0cnHA7y7ptLcKo0sK2
+	JyxBJIxh3rqcy1S124SV+Orjf9QAzkBoaqRlQCkckmziZ0WnqY0guxrx7yeK7bEePvu63LB5Yqw4U
+	DgKnBvDDCGOJAIY1qNxx7WPvpH9PW0jmhks04gYMii6e4KDDlWtyj/XOSXKO2uXJo7D8rDoYNNeRw
+	ZuTSE53XOGFCG/lgryjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9Q2T-00Fu8a-SN; Thu, 07 Jul 2022 11:51:21 +0000
+	id 1o9Ri1-00GIGj-TY; Thu, 07 Jul 2022 13:38:21 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9Q2Q-00Fu4Y-MC
-	for linux-rockchip@lists.infradead.org; Thu, 07 Jul 2022 11:51:20 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 65B9BD00;
-	Thu,  7 Jul 2022 13:51:12 +0200 (CEST)
+	id 1o9Rhz-00GIF1-Bg
+	for linux-rockchip@lists.infradead.org; Thu, 07 Jul 2022 13:38:20 +0000
+Received: from pyrite.rasen.tech (softbank036240121080.bbtec.net [36.240.121.80])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 261DBD00;
+	Thu,  7 Jul 2022 15:38:11 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657194672;
-	bh=ttFizf9QabHuTvJxAhWK1YwUKuqRP1Sd+rQ+z8nbdUk=;
+	s=mail; t=1657201094;
+	bh=LbsJnxGU9iYd6zfMNbJdS8L/YRRNIr+LQftTx73xm2A=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZSCuxYbXb9ojUmEZi8HHater5m5DR+ftbqpEExp4Ijvx2Tggs5NFGJRPJtSxXZp/n
-	 E+CEdTwNItM5Pm4fGwace+6io1MFcpmww4KKIkL9hKcHby92H1VuItA96ZQ7bU2JyY
-	 Nb82tVzJ2cDt0l1+FcaQs1pDbTD7f7hmAZ2XB54Y=
-Date: Thu, 7 Jul 2022 14:50:46 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Paul Elder <paul.elder@ideasonboard.com>, linux-media@vger.kernel.org,
-	dafna@fastmail.com, heiko@sntech.de,
-	jeanmichel.hautbois@ideasonboard.com, jacopo@jmondi.org,
-	djrscally@gmail.com, helen.koike@collabora.com,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 37/55] media: mc-entity: Add a new helper function to get
- a remote pad
-Message-ID: <YsbIltES0oblIsDb@pendragon.ideasonboard.com>
-References: <20220614191127.3420492-1-paul.elder@ideasonboard.com>
- <20220614191127.3420492-38-paul.elder@ideasonboard.com>
- <6a718a13-e441-f093-d86e-5480d0a46103@xs4all.nl>
- <Yrc/Qs7dtciy22dv@pendragon.ideasonboard.com>
- <c8f5c146-10d2-dcc8-f492-62fa34a1d648@xs4all.nl>
+	b=vKp8aK5Vq44sPcR5cpUHtDPSabO2yY3vH0zU3jit83gnvN0tPgsEycfqbvUwkBaCM
+	 G+tGovoIH87nrfe/RbDUlamsbePtRkfVizQxsU+kdvELchNHa1bYP3UY09JVbIviYD
+	 HUOw9iy7n+5OMo0OeFQONWhqYl+59eMzM0cjErWE=
+Date: Thu, 7 Jul 2022 22:38:05 +0900
+From: paul.elder@ideasonboard.com
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH v2 10/55] media: rkisp1: Access ISP version from info
+ pointer
+Message-ID: <20220707133805.GH3886060@pyrite.rasen.tech>
+References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
+ <20220630230713.10580-11-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <c8f5c146-10d2-dcc8-f492-62fa34a1d648@xs4all.nl>
+In-Reply-To: <20220630230713.10580-11-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_045119_063717_5BDB78D2 
-X-CRM114-Status: GOOD (  41.83  )
+X-CRM114-CacheID: sfid-20220707_063819_628762_502D4F13 
+X-CRM114-Status: GOOD (  19.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,196 +69,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Hans,
+Hi Laurent,
 
-On Thu, Jul 07, 2022 at 08:52:16AM +0200, Hans Verkuil wrote:
-> On 6/25/22 19:00, Laurent Pinchart wrote:
-> > On Fri, Jun 17, 2022 at 01:48:05PM +0200, Hans Verkuil wrote:
-> >> On 6/14/22 21:11, Paul Elder wrote:
-> >>> From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> >>>
-> >>> The media_entity_remote_pad() helper function returns the first remote
-> >>> pad it find connected to a given pad. Beside being possibly ill-named
-> >>> (as it operates on a pad, not an entity) and non-deterministic (as it
-> >>> stops at the first enabled link), the fact that it returns the first
-> >>> match makes it unsuitable for drivers that need to guarantee that a
-> >>> single link is enabled, for instance when an entity can process data
-> >>> from one of multiple sources at a time.
-> >>
-> >> Question: of all the callers of this function, are there any that really
-> >> need media_entity_remote_pad() instead of media_pad_remote_pad_unique()?
-> >>
-> >> Would it be possible to replace all callers of the old function with the
-> >> new function? If that's the case, then the _unique suffix can be dropped,
-> >> since that would effectively be the default. And if a function is needed
-> >> to handle the case where there are multiple enabled links, then a new
-> >> function should be created.
-> > 
-> > I don't think so. media_entity_remote_pad() operates on a pad, switching
-> > to media_pad_remote_pad_unique() wouldn't work on subdevs that have
-> > multiple sink or source pads with one active link each.
+On Fri, Jul 01, 2022 at 02:06:28AM +0300, Laurent Pinchart wrote:
+> The ISP version is stored in the media_device hw_revision field and
+> access from there in the driver. Now that we store a pointer to the
+> match data in the rkisp1_device structure, access the ISP version from
+> there to make the code clearer and avoid depending on the media_device.
 > 
-> Do we have those today in the mainline kernel? Just checking...
+> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
 
-Re-reading my reply, it seems I may have been mistaken. We may be able
-to ditch media_pad_remote_pad_first() and replace it with
-media_pad_remote_pad_unique() (at least in the majority of cases), but
-we'll need to carefully review each user.
+Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
 
-> >> Also, media_entity_remote_pad() should really be renamed to
-> >> media_pad_remote_pad_first() or something like that, right? I'm not saying
-> >> you should, but that's really what it does, as I understand it.
-> > 
-> > Yes, I think that would make sense, and it would freethe
-> > media_entity_remote_pad() name, so the new function wouldn't need the
-> > _unique suffix. I'll give it a try.
-> > 
-> >>> For those use cases, add a new helper function,
-> >>> media_entity_remote_pad_unique(), that operates on an entity and returns
-> >>> a remote pad, with a guarantee that only one link is enabled. To ease
-> >>> its use in drivers, also add an inline wrapper that locates source pads
-> >>> specifically. A wrapper that locates sink pads can easily be added when
-> >>> needed.
-> >>>
-> >>> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> >>> ---
-> >>>  Documentation/driver-api/media/mc-core.rst |  4 +-
-> >>>  drivers/media/mc/mc-entity.c               | 38 ++++++++++++++++++
-> >>>  include/media/media-entity.h               | 45 ++++++++++++++++++++++
-> >>>  3 files changed, 85 insertions(+), 2 deletions(-)
-> >>>
-> >>> diff --git a/Documentation/driver-api/media/mc-core.rst b/Documentation/driver-api/media/mc-core.rst
-> >>> index 02481a2513b9..a2d1e32e3abb 100644
-> >>> --- a/Documentation/driver-api/media/mc-core.rst
-> >>> +++ b/Documentation/driver-api/media/mc-core.rst
-> >>> @@ -186,8 +186,8 @@ is required and the graph structure can be freed normally.
-> >>>  
-> >>>  Helper functions can be used to find a link between two given pads, or a pad
-> >>>  connected to another pad through an enabled link
-> >>> -:c:func:`media_entity_find_link()` and
-> >>> -:c:func:`media_entity_remote_pad()`.
-> >>> +(:c:func:`media_entity_find_link()`, :c:func:`media_entity_remote_pad()` and
-> >>> +:c:func:`media_entity_remote_source_pad()`).
-> >>>  
-> >>>  Use count and power handling
-> >>>  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> >>> diff --git a/drivers/media/mc/mc-entity.c b/drivers/media/mc/mc-entity.c
-> >>> index 11f5207f73aa..1febf5a86be6 100644
-> >>> --- a/drivers/media/mc/mc-entity.c
-> >>> +++ b/drivers/media/mc/mc-entity.c
-> >>> @@ -9,6 +9,7 @@
-> >>>   */
-> >>>  
-> >>>  #include <linux/bitmap.h>
-> >>> +#include <linux/list.h>
-> >>>  #include <linux/property.h>
-> >>>  #include <linux/slab.h>
-> >>>  #include <media/media-entity.h>
-> >>> @@ -920,6 +921,43 @@ struct media_pad *media_entity_remote_pad(const struct media_pad *pad)
-> >>>  }
-> >>>  EXPORT_SYMBOL_GPL(media_entity_remote_pad);
-> >>>  
-> >>> +struct media_pad *
-> >>> +media_entity_remote_pad_unique(const struct media_entity *entity,
-> >>> +			       unsigned int type)
-> >>> +{
-> >>> +	struct media_pad *pad = NULL;
-> >>> +	struct media_link *link;
-> >>> +
-> >>> +	list_for_each_entry(link, &entity->links, list) {
-> >>> +		struct media_pad *local_pad;
-> >>> +		struct media_pad *remote_pad;
-> >>> +
-> >>> +		if (!(link->flags & MEDIA_LNK_FL_ENABLED))
-> >>> +			continue;
-> >>> +
-> >>> +		if (type == MEDIA_PAD_FL_SOURCE) {
-> >>> +			local_pad = link->sink;
-> >>> +			remote_pad = link->source;
-> >>> +		} else {
-> >>> +			local_pad = link->source;
-> >>> +			remote_pad = link->sink;
-> >>> +		}
-> >>> +
-> >>> +		if (local_pad->entity == entity) {
-> >>> +			if (pad)
-> >>> +				return ERR_PTR(-ENOTUNIQ);
-> >>> +
-> >>> +			pad = remote_pad;
-> >>> +		}
-> >>> +	}
-> >>> +
-> >>> +	if (!pad)
-> >>> +		return ERR_PTR(-ENOLINK);
-> >>> +
-> >>> +	return pad;
-> >>> +}
-> >>> +EXPORT_SYMBOL_GPL(media_entity_remote_pad_unique);
-> >>> +
-> >>>  static void media_interface_init(struct media_device *mdev,
-> >>>  				 struct media_interface *intf,
-> >>>  				 u32 gobj_type,
-> >>> diff --git a/include/media/media-entity.h b/include/media/media-entity.h
-> >>> index a9a1c0ec5d1c..33d5f52719a0 100644
-> >>> --- a/include/media/media-entity.h
-> >>> +++ b/include/media/media-entity.h
-> >>> @@ -859,6 +859,51 @@ struct media_link *media_entity_find_link(struct media_pad *source,
-> >>>   */
-> >>>  struct media_pad *media_entity_remote_pad(const struct media_pad *pad);
-> >>>  
-> >>> +/**
-> >>> + * media_entity_remote_pad_unique - Find a remote pad connected to an entity
-> >>> + * @entity: The entity
-> >>> + * @type: The type of pad to find (MEDIA_PAD_FL_SINK or MEDIA_PAD_FL_SOURCE)
-> >>> + *
-> >>> + * Search for and return a remote pad of @type connected to @entity through an
-> >>> + * enabled link. If multiple (or no) remote pads match these criteria, an error
-> >>> + * is returned.
-> >>> + *
-> >>> + * The uniqueness constraint makes this helper function suitable for entities
-> >>> + * that support a single active source or sink at a time.
-> >>> + *
-> >>> + * Return: A pointer to the remote pad, or one of the following error pointers
-> >>> + * if an error occurs:
-> >>> + *
-> >>> + * * -ENOTUNIQ - Multiple links are enabled
-> >>> + * * -ENOLINK - No connected pad found
-> >>> + */
-> >>> +struct media_pad *
-> >>> +media_entity_remote_pad_unique(const struct media_entity *entity,
-> >>> +			       unsigned int type);
-> >>> +
-> >>> +/**
-> >>> + * media_entity_remote_source_pad - Find a remote source pad connected to an entity
-> >>> + * @entity: The entity
-> >>> + *
-> >>> + * Search for and return a remote source pad connected to @entity through an
-> >>> + * enabled link. If multiple (or no) remote pads match these criteria, an error
-> >>> + * is returned.
-> >>> + *
-> >>> + * The uniqueness constraint makes this helper function suitable for entities
-> >>> + * that support a single active source at a time.
-> >>> + *
-> >>> + * Return: A pointer to the remote pad, or one of the following error pointers
-> >>> + * if an error occurs:
-> >>> + *
-> >>> + * * -ENOTUNIQ - Multiple links are enabled
-> >>> + * * -ENOLINK - No connected pad found
-> >>> + */
-> >>> +static inline struct media_pad *
-> >>> +media_entity_remote_source_pad(const struct media_entity *entity)
-> >>> +{
-> >>> +	return media_entity_remote_pad_unique(entity, MEDIA_PAD_FL_SOURCE);
-> >>> +}
-> >>> +
-> >>>  /**
-> >>>   * media_entity_is_streaming - Test if an entity is part of a streaming pipeline
-> >>>   * @entity: The entity
-
--- 
-Regards,
-
-Laurent Pinchart
+> ---
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c    | 4 ++--
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 2 +-
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c  | 2 +-
+>  3 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> index bc94a51124b0..69c60814ecc1 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> @@ -417,7 +417,7 @@ static int rkisp1_config_mipi(struct rkisp1_device *rkisp1)
+>  	rkisp1_write(rkisp1, RKISP1_CIF_MIPI_CTRL, mipi_ctrl);
+>  
+>  	/* V12 could also use a newer csi2-host, but we don't want that yet */
+> -	if (rkisp1->media_dev.hw_revision == RKISP1_V12)
+> +	if (rkisp1->info->isp_ver == RKISP1_V12)
+>  		rkisp1_write(rkisp1, RKISP1_CIF_ISP_CSI0_CTRL0, 0);
+>  
+>  	/* Configure Data Type and Virtual Channel */
+> @@ -535,7 +535,7 @@ static void rkisp1_config_clk(struct rkisp1_device *rkisp1)
+>  	rkisp1_write(rkisp1, RKISP1_CIF_VI_ICCL, val);
+>  
+>  	/* ensure sp and mp can run at the same time in V12 */
+> -	if (rkisp1->media_dev.hw_revision == RKISP1_V12) {
+> +	if (rkisp1->info->isp_ver == RKISP1_V12) {
+>  		val = RKISP1_CIF_CLK_CTRL_MI_Y12 | RKISP1_CIF_CLK_CTRL_MI_SP |
+>  		      RKISP1_CIF_CLK_CTRL_MI_RAW0 | RKISP1_CIF_CLK_CTRL_MI_RAW1 |
+>  		      RKISP1_CIF_CLK_CTRL_MI_READ | RKISP1_CIF_CLK_CTRL_MI_RAWRD |
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> index c88a9c0fa86e..9da7dc1bc690 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+> @@ -1801,7 +1801,7 @@ static void rkisp1_init_params(struct rkisp1_params *params)
+>  	params->vdev_fmt.fmt.meta.buffersize =
+>  		sizeof(struct rkisp1_params_cfg);
+>  
+> -	if (params->rkisp1->media_dev.hw_revision == RKISP1_V12)
+> +	if (params->rkisp1->info->isp_ver == RKISP1_V12)
+>  		params->ops = &rkisp1_v12_params_ops;
+>  	else
+>  		params->ops = &rkisp1_v10_params_ops;
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
+> index b7ae9166c52f..7d82356b5345 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
+> @@ -427,7 +427,7 @@ static void rkisp1_init_stats(struct rkisp1_stats *stats)
+>  	stats->vdev_fmt.fmt.meta.buffersize =
+>  		sizeof(struct rkisp1_stat_buffer);
+>  
+> -	if (stats->rkisp1->media_dev.hw_revision == RKISP1_V12)
+> +	if (stats->rkisp1->info->isp_ver == RKISP1_V12)
+>  		stats->ops = &rkisp1_v12_stats_ops;
+>  	else
+>  		stats->ops = &rkisp1_v10_stats_ops;
 
 _______________________________________________
 Linux-rockchip mailing list
