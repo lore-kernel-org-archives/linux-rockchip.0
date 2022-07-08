@@ -4,66 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06D42C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 05:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48490C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 06:15:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XCy6DSPNwW3n7MeQqeLfEGIdanTFMv4qzwC93INYizI=; b=LJUixnROdKqKao
-	K+kjMNreeqBy00wM7WHhCaFRm10c589UG2ZTe9dmz33UA+CxVUEpiaDGhxXD60lg2BgWzj4rlqlRz
-	+yJUEDB4hq1Fa4/Uy/ailrftulF8XWi2VracaaIUDfC6vQmHuUPpuE/ce+8C14NMWkVBCVQ14XsK0
-	lFwjaY3+9QCQcP0OtJw3BkX8ePttwCwjFn2Z8njGiujl8Xavd1traecMovrTxATgmKKYYFeWy0qDX
-	rNmH4CAzRx/7uEfdL6JLzyAP8jPCnj5N4JB7v+LrWXNw/+mYgo6kjtdHfLOvdtvar2EsFHO81D+4H
-	ZOyN5XgI8zMF9s5UfsCQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=T2mJ4Dv6srtiAQkVQbut2j+BK0P1aEc7n4ozsERZ8jU=; b=nE7dxUH+34/PxZ
+	Mw9GhH8TEayBwgB3pKdVoxed4aU2Tfk4hpsW0le8cMN/YufRZ/h+M4xQtmJs5MJlUOWyE3udINKDk
+	RJqdTnQLa58lxi59Z5FFNqOJvW81052KkmUxSLXHgKH+s1HGUV2EhR58qJYrWIUbKI3Z4pxMqaJCV
+	gWwAONCt9tNt3cwdhJDS65UdA8cvDzqgMk+1b6OqfCzj1Ol7CfqnqFn/gAjj64FLseKntzgxBBYYY
+	9rMYwWYWPqbri1AMiENEQ2Op8/IYT8rWBKZQ5JjUM+VKyHHeskdhIDY4nfEhrViTzwDTAMN8ww0SJ
+	TvvC++cuPunjcqJAPn/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9gLx-001oAf-Rt; Fri, 08 Jul 2022 05:16:33 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1o9hGR-001x48-SE; Fri, 08 Jul 2022 06:14:55 +0000
+Received: from wout2-smtp.messagingengine.com ([64.147.123.25])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9gLl-001o7O-Jk; Fri, 08 Jul 2022 05:16:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id E7FC2B8229B;
-	Fri,  8 Jul 2022 05:16:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33A1DC341C0;
-	Fri,  8 Jul 2022 05:16:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1657257378;
-	bh=4wYE7v0lAhM5Calh+s5prT4A+3nwzjmMFNoQEcRsbG0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YsrHVfbHK5/zojMD3bFusOTRWdnu1UlFGWIdjtdtmzu10DnF/Pi5B4S2737FkTlTA
-	 cxSFPavn11Rke/IEjLJsqiep/kO5RRvSDJSkT+OTPoTXyJMmmVC5Abd7IzJ9Fd03Gs
-	 746teNFDCCR/0OEhhg6ZStW/RTFszZJs7VxW7aVPAyxAy55n+HlkgW0Cj2Mkfmvdqn
-	 pFq+D+bNarwZ4Vd6XiN9XLnMoZoojo1EMU5IXrG79gBiwjcjyzSQFx1nH35Pnhl7JV
-	 KWpAOsftWLG4+czWL3UeN5nIaoRWPG7qh3nxshRxGO3h62zl0sVQknoai9nzpusDOv
-	 qo+SfnOnpFgng==
-Date: Fri, 8 Jul 2022 10:46:15 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Frank Wunderlich <frank-w@public-files.de>,
+	id 1o9hGF-001wyt-Ni; Fri, 08 Jul 2022 06:14:45 +0000
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+	by mailout.west.internal (Postfix) with ESMTP id E5FB7320096D;
+	Fri,  8 Jul 2022 02:14:36 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+  by compute3.internal (MEProxy); Fri, 08 Jul 2022 02:14:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
+	cc:cc:content-transfer-encoding:date:date:from:from:in-reply-to
+	:message-id:mime-version:reply-to:sender:subject:subject:to:to;
+	 s=fm1; t=1657260876; x=1657347276; bh=nopVA/lnqhA2exVnToP0mAgp/
+	wxD75eWlnpPSbCMmhw=; b=qLifMKaVVYCsUgU9yiikgoZJSNfJzHy2jb+u9aDAk
+	9hbbzrHTATV30Bcsy3EAcNyHGSq/YkJy/w3Rg1h3QiQPPtAZSXwRH0uLDTsT7SU2
+	MlCNVYE3pDR+7PFerHhcw85mKR+89fWeFbk+gwS0iRSW6Ct7ulgPbBkdUGL6AZ/t
+	JhJkOX6zp4WEYWtYOWQkcqVbQgGcVVvw01W39mOnSvdfoF/zbHXXC9nsgzCHFuTM
+	cxX4ASOOR7hWvfBtX6McmfdpsDGRyWWEB2qYd3sljwhtjI3P3ebEMjEjRENrMDun
+	mQYFa/lBuwS+0v7HUSNH1U2L6n+hLrX8xhoUaRnpcNhmA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:message-id
+	:mime-version:reply-to:sender:subject:subject:to:to:x-me-proxy
+	:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
+	1657260876; x=1657347276; bh=nopVA/lnqhA2exVnToP0mAgp/wxD75eWlnp
+	PSbCMmhw=; b=QfZYx+0hze5fBvUiMuj+l7/XD8s1hXCbdcXO7h0X/rMKnO2PZVS
+	abnxnYlIm1PdbN6LsXwwNJfAWcJvYFvEq3OMAh7jsEYXmu05/rfC3SCxj4qSysi/
+	SMPPnNxxgZxLO2LIbG0j8MkSizxYeDlbDHjqmv2XYtMHp1jjh2vxfls3acOoNIVO
+	/pSnhYR+uGX66623GxMxJvJE8/QSdBZ78YZ0/qZWnRUdOgwGrqhEBFJP8XQAHIhk
+	05WEHpIr74EzjTQFcuvoiVDgQCvyGoZlXbNDWfr7cSUGSF6j/1CuvPk4DBAiPem+
+	ot4mpi/Nf84vyqj8sf9eufw3zVNYJKOYnDA==
+X-ME-Sender: <xms:S8vHYoqMDTQMHWGLTx4sPNo-Weg9pgTx7Uo7AFhli8vJaMXi9aKjfQ>
+    <xme:S8vHYuruNtlz6sY7beqEHHT4vMnCL5nUz9iYNdxuqJClokr8HrtNesVd1SI9eW5fh
+    sNEIxwxtM-dzkDdEw>
+X-ME-Received: <xmr:S8vHYtNNIvpcOw04o5Sugtui4oxFefbFjBSlBaj62v4FV41IhIv7MJdYHUNM_yanYoCHyMqOba1d89uykysp5n91A_txNLeB-BhvY859qq4w0guGt0086PVkfp9M89mI_q30WQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudeiiedguddtgecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+    enucfjughrpefhvfevufffkffoggfgsedtkeertdertddtnecuhfhrohhmpefurghmuhgv
+    lhcujfholhhlrghnugcuoehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhgqeenucggtf
+    frrghtthgvrhhnpeekveelhfejueelleetvdejvdeffeetgeelheeujeffhefgffefkeeh
+    hffhkeekgeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
+    hmpehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhg
+X-ME-Proxy: <xmx:S8vHYv4g7k8LVnEvLvHaHAAx_ydDpIiFO1kkp41ON7r2cIft0s-12A>
+    <xmx:S8vHYn4EdORI1pXwVUYkz6narXRb4uz09FxV-d3XUNBuaNFNgNre_A>
+    <xmx:S8vHYvi5fWrY6mdRR6qvUur3kNdA79q8gwXVkpd9clR-uSk7Q96K3w>
+    <xmx:TMvHYkF95XdlQH0Fa61XApRMkJ1z7EuMK1RhTYfxoE009Eu6HiBW7Q>
+Feedback-ID: i0ad843c9:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 8 Jul 2022 02:14:35 -0400 (EDT)
+From: Samuel Holland <samuel@sholland.org>
+To: Frank Wunderlich <frank-w@public-files.de>,
+	Vinod Koul <vkoul@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Peter Geis <pgwipeout@gmail.com>,
 	Samuel Holland <samuel@sholland.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
-	arm-mail-list <linux-arm-kernel@lists.infradead.org>,
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
 	Kishon Vijay Abraham I <kishon@ti.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [BUG] USB broken on rk3568 based R2Pro
-Message-ID: <Yse9nz9jjRoiPq6K@matsya>
-References: <trinity-54ed588d-4b2c-4177-83b0-4eda8ff16a42-1657210235522@3c-app-gmx-bap68>
- <trinity-ec3b4258-cb12-42c2-9058-362260a275d2-1657216287085@3c-app-gmx-bap68>
- <CAMdYzYrs0oJXVcViOmJk4E7PSTeP5TYs0O_ePHmrcAiKtOAWXQ@mail.gmail.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] phy: rockchip-inno-usb2: Ignore OTG IRQs in host mode
+Date: Fri,  8 Jul 2022 01:14:34 -0500
+Message-Id: <20220708061434.38115-1-samuel@sholland.org>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAMdYzYrs0oJXVcViOmJk4E7PSTeP5TYs0O_ePHmrcAiKtOAWXQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220707_221621_981032_2534826C 
-X-CRM114-Status: GOOD (  26.42  )
+X-CRM114-CacheID: sfid-20220707_231444_033463_941077FC 
+X-CRM114-Status: GOOD (  11.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,59 +106,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07-07-22, 15:41, Peter Geis wrote:
-> On Thu, Jul 7, 2022 at 1:51 PM Frank Wunderlich <frank-w@public-files.de> wrote:
-> >
-> > Hi,
-> >
-> > traced it down with manual reverts to this one:
-> >
-> > commit 6a98df08ccd55e87947d253b19925691763e755c
-> >     phy: rockchip-inno-usb2: Fix muxed interrupt support
-> >
-> > luckily i can revert only this and now upper usb-port works again
-> >
-> > @samuel: have you an idea how to fix your problem without breaking my board? :)
-> >
-> > @greg/Vinod: maybe we can add a revert of this in mainline till issue is resolved?
+When the OTG port is fixed to host mode, the driver does not request its
+IRQs, nor does it enable those IRQs in hardware. Similarly, the driver
+should ignore the OTG port IRQs when handling the shared interrupt.
 
-Lets give it a few days if we can find a fix, if not we can revert
+Otherwise, it would update the extcon based on an ID pin which may be in
+an undefined state, or try to queue a uninitialized work item.
 
-> >
-> > regards Frank
-> 
-> I don't know what you're running, but with the standard arm64
-> defconfig w/ all rockchip stuff built in, I have no issues here on
-> 5.19.
+Fixes: 6a98df08ccd5 ("phy: rockchip-inno-usb2: Fix muxed interrupt support")
+Reported-by: Frank Wunderlich <frank-w@public-files.de>
+Signed-off-by: Samuel Holland <samuel@sholland.org>
+---
 
-Please share the config and other details on what your running so that
-Peter can repro this...
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-> Note, the following changes are necessary to the 5.19 dts here:
-> Remove the extcon from usb_host0_xhci, as the production model doesn't
-> have automatic switching capabilities. The ID pin was removed in favor
-> of the usb debug function which also doesn't work.
-> Add dr_mode = "host" to the same node, for the same reason.
-> 
-> >
-> >
-> > > Von: "Frank Wunderlich" <frank-w@public-files.de>
-> > > i noticed that upper usb-Port (otg) is broken on my Bananapi R2Pro with 5.19-rc1, works with 5.18.0
-> > >
-> > > this port is a usb3 (xhci) port which includes an usb2-phy and should support otg, but i still want
-> > > to use it in host-only mode (USB-A socket).
-> > >
-> > > already tried setting dr_mode in dts back to "host" as this was changed in rk356x.dtsi by this commit:
-> > >
-> > > bc405bb3eeee 2022-04-25 arm64: dts: rockchip: enable otg/drd operation of usb_host0_xhci in rk356x
-> > >
-> > > i see no error in dmesg and usb-controllers seem to be initialized completely (visible in lsusb).
-> > >
-> > > r2pro has ID-Pin not connected, so i tried also peters Patch without success :(
-> >
-
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index 6711659f727c..26b841c49ec6 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -978,7 +978,9 @@ static irqreturn_t rockchip_usb2phy_irq(int irq, void *data)
+ 
+ 		switch (rport->port_id) {
+ 		case USB2PHY_PORT_OTG:
+-			ret |= rockchip_usb2phy_otg_mux_irq(irq, rport);
++			if (rport->mode != USB_DR_MODE_HOST &&
++			    rport->mode != USB_DR_MODE_UNKNOWN)
++				ret |= rockchip_usb2phy_otg_mux_irq(irq, rport);
+ 			break;
+ 		case USB2PHY_PORT_HOST:
+ 			ret |= rockchip_usb2phy_linestate_irq(irq, rport);
 -- 
-~Vinod
+2.35.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
