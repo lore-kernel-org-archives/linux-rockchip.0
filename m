@@ -4,80 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31CC4C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 12:20:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52224C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 13:04:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sxOirQ49SgRAeowlNsMOybO94DErrXLO18EKFctFgr0=; b=YJ6q8h0wO+3O4G
-	oks5FYST4W3itqNlmIMCX2/65rN352bhjtyUAeRnnrLXzUq/jfSYWLdd1W1V//vzt9+NF3YOa/G77
-	mtd1fS7wbfFHS6EVnSSlmgmSrpuS1scDexmdZvVVWnMs+4Mw7jUXIo//UrPc0l+ufekRj+N3rdi4W
-	5dvTPRruWM6WJxxJx9zkvAjmsnja8cMOUDomck7pHOkRvLSmdd7/oX7Ti7XnV7nlgOHuN4ghA9qZ8
-	6fh/i2JpPvXkrWsk5vAVvyDDc3w9+hxBNbLXKWXj1cZxDPzsz8rL+5++8qGzGVIPtJoO19k45zpL+
-	Mw0vaPpxarWeHrncG42Q==;
+	List-Owner; bh=jOMEksi5N4AiJRNl3xUliEFen+fqeTnv5Od2yWHfEOQ=; b=cEUzHno43hXilZ
+	QzsPLcVzBi0dPnkOl9jJHlStoiDCrIecbKFb80tAN/rPH4fX0tDuPnHVBTNHvpLvu0cRwTB8WVhx1
+	3OqwSq5ZB4SaZB4+76nY8kuvr3kp33RlRSJHb3viraia91z6age3jb1XLln8ONQ9geg9nb2qzlVIJ
+	puZ1NuPSXcGWXcMRq5hV/nn9A5Pt5M4m4AMgQ9jcRq2FoOheJXs1RXHolQsNbgLx2WaAukHpM+Ksc
+	3yawqwhdfqsXDckt3hw6kdhesJOSwkiJXTpId4b3lF2ZG2F4pI0YJyUOn7ZBF16UvTq5l7rxbVM3l
+	l6mEPUVK48Fb/Oqd4oRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9mxu-003fty-0M; Fri, 08 Jul 2022 12:20:10 +0000
-Received: from mout.gmx.net ([212.227.15.15])
+	id 1o9neB-003qVU-3L; Fri, 08 Jul 2022 13:03:51 +0000
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9muK-003do1-Ud; Fri, 08 Jul 2022 12:16:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
-	s=badeba3b8450; t=1657282571;
-	bh=sLmOfEnVNSVJmG8OJ3heD6wggMT/SeCDldQQU4BqbpY=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=DyhV7FdbUVKU7Ttey7nDmGkD+9TlO6L1Mv7tpQytkaOh1gboOWChF58Z1Fv0nFj+b
-	 SUIJUELDjlU9g+2s9f+dHvsKd2djsEf793iFNX425K23OFnfY2CE/fVr7gHEzyf83r
-	 A4rEoZoYB6dVQkiNshc44BvPfRJJKqTQghMle/5Q=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [157.180.225.69] ([157.180.225.69]) by web-mail.gmx.net
- (3c-app-gmx-bs34.server.lan [172.19.170.86]) (via HTTP); Fri, 8 Jul 2022
- 14:16:11 +0200
+	id 1o9ne0-003qSF-Gx; Fri, 08 Jul 2022 13:03:41 +0000
+Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-101b4f9e825so29166462fac.5;
+        Fri, 08 Jul 2022 06:03:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=Y17ryAIxO/dvkSkByT2s1yRZ7L0UbD2LWBRjA+w7j+Q=;
+        b=jSYYobr311VNLy07Cjz8gDIG+oESJa6dRhMqxo30Bq3rvsN+6nGLs8Fkv+qliwrohi
+         01HgAiRu2w5d3q5gNVkvvXR8UPo3/3IAXoQu4XW9HGDncf5FQTk7DxEbsgTxT7JTd3sy
+         q3HESzfd/jnKqN20HiShjxbb/tRY+q1TsvYncabPkgUyi/EpHDFxnUQdGHucC93ci5rG
+         R6KpUpqosBMJHsBCyH+lx5GxzJ9cGVnZVX0ziCKRvrM14Qb70/b4u5k8lZDakIPjZeZi
+         JMHrhUCtK/PngH+0VLpXU/Of6n0kW2lwlmnHI/GcFSHU6qM7zd2JfoG0We01Lzsw6Da2
+         x1wg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=Y17ryAIxO/dvkSkByT2s1yRZ7L0UbD2LWBRjA+w7j+Q=;
+        b=zxwYYCJANEZvY72OjLeoKzfrywtQCbyU5kbZ2BlAyZe4j3S8IfET0ZYXedoBhP6Qba
+         s+jdiG2ukf8eJdutuyyhML25PTxb34omWDbDm4cxUiTzyE45T3iPFieMOPzPHJPt/5FZ
+         OPtBlHoS50rMbh+yUd1i2lazGsylkiz82+ri5vtBodBzLxreg8kjWTik7EGWVVtY+6cJ
+         L9i11IT5K6eCpSG7eio7QVnkF0tPjjB/E2vzdBA6kU9FyH17HptTKNDNX08P3/54aZIz
+         aR7GSwzuEt3i357N+A4gAM38tMjTDH6xgjRoCtMpYneqGGHOwWWWQmRGbx/Yt5glyzEI
+         ANpA==
+X-Gm-Message-State: AJIora8Rk8i+iUfC066lDr3CtTwpBsNEBQH9ri6uJDoDR2mN4gY05uah
+	tBsUlaMaOpxy9CgyeulG9hzQe/AJwMji0zWtt50=
+X-Google-Smtp-Source: AGRyM1tS5kDwbKFQZtNj91Ot3KokuF+ATZYxfy3zfBjWanx+q0Lt7A+xPf2a+vz2v9/S5xbz8uHmruFmJ0OZs1QmNM0=
+X-Received: by 2002:a05:6870:88a8:b0:101:6409:ae26 with SMTP id
+ m40-20020a05687088a800b001016409ae26mr1811331oam.160.1657285416958; Fri, 08
+ Jul 2022 06:03:36 -0700 (PDT)
 MIME-Version: 1.0
-Message-ID: <trinity-05389b8f-a479-47b6-bc3b-5a02b4804627-1657282571466@3c-app-gmx-bs34>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Vinod Koul <vkoul@kernel.org>
-Cc: Peter Geis <pgwipeout@gmail.com>, Samuel Holland <samuel@sholland.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "open list:GENERIC PHY
- FRAMEWORK" <linux-phy@lists.infradead.org>, arm-mail-list
- <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..."
- <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
- Heiko Stuebner <heiko@sntech.de>
-Subject: Aw: Re: [BUG] USB broken on rk3568 based R2Pro
-Date: Fri, 8 Jul 2022 14:16:11 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <Yse9nz9jjRoiPq6K@matsya>
-References: <trinity-54ed588d-4b2c-4177-83b0-4eda8ff16a42-1657210235522@3c-app-gmx-bap68>
- <trinity-ec3b4258-cb12-42c2-9058-362260a275d2-1657216287085@3c-app-gmx-bap68>
- <CAMdYzYrs0oJXVcViOmJk4E7PSTeP5TYs0O_ePHmrcAiKtOAWXQ@mail.gmail.com>
- <Yse9nz9jjRoiPq6K@matsya>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:vgMfP4yrgP6IpedEv6CgTxZAAf8HIDhFKdiUyaeSHdg2tVzwFrS50PzJNDIePsXF7KbF6
- J9K5v57XKgWKAYmgNXjWqx1t0N68O3WYkk1cznqmNUekVop9kGV1Ob//cSMx0eWbITKbussxkMCD
- dlEvBpRPrIUOab5UiCWjJaz+eqA4bz1WmJ645Y3qjbo93khRXmfQFEaOvKzqvz2+IwR53d/drNNF
- RknhomxxLXlzclbVM/uMNZBAbyS+R85IJ27MP3j8fDB6okU2YcyQTiDFzs0PBAaEAoDChtj6jxt2
- yI=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:v1BOECItVR8=:ulQ1qSe1hQy0NTW9mWO0kE
- c2a22fNZRvgOYXx6+tObJX3UwhLQgRSedAB8WhQAvHHIHu2OV7pHs3atR5BBZ34FuiBDBLv43
- 9AQcBtuMGz8xnX0qvYxX6JPV1xtLOWYi2/Vt3rcmtbeXTQR65EgqxmOhK+cf3PvVAwXcVER8V
- pQ9tkkOnSaz+yai0boxtj4y1sCzO0VPFlQyCx8+D0IYoWw/L9mQ8bJyoswiWYEe0eHOhQXiAM
- HeulOpEuktmuy+exEJjP7mFRO201HN25HHMV+UbnY9q33+o7m1tSUHSw9J7oCwZRAfqYBVVqe
- QTKcJP0Npt3jcw+N0c/Ex6b1bZwsrr7XQ0kg9CPtN+faTa/8UAPR4zrxGL+GBG/NxQ2xj4J83
- 56kPfAncml2s/3IomVNxv7Bqdn31RqYzVQNoX2BL0tqIk6RwYq/SdxrbqH5kqKP66gTLZ/dNH
- 4FSkg1D2Es1SuGupZGyt8NfU483TNNFDWdshbvfjW55JeCVcGTuZm8x5tOVcfohitog3CEDMj
- ziw2HatpZwPF9/dJEyBkkHSXgZBLP3g8Qh71IBzQbipNqhDlZED/mL7GtMewbY5QpQpm4FZWM
- WAbiksoSaFHszJ5keonTv9gKNUr0yq6/uw8Zmy57mEhf8XOwPN4ZLz4oAXrkl5G13WLFG5PrI
- 83gkhY6vx/inIfg6rPCcxFxuDWPrUAaP7Ip12zsIf3FOTjmXQyMHrvw1Js6B9fHk96m364/lZ
- daWdVhHkCCo4nk9qCgu6ZY8oFOg8hOZBlYIW/56bL4yT3+pEXZI88r91F18PfEvMfp3T8+1Qt
- zdvUabr
+References: <20220708061434.38115-1-samuel@sholland.org> <trinity-e64eb9b8-7b25-4893-a1a2-ecbf9da3ef71-1657280834206@3c-app-gmx-bs34>
+In-Reply-To: <trinity-e64eb9b8-7b25-4893-a1a2-ecbf9da3ef71-1657280834206@3c-app-gmx-bs34>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Fri, 8 Jul 2022 09:03:25 -0400
+Message-ID: <CAMdYzYpN1B8fPzDhyqUKVMD_1bM4cYjk9_QHGLeCBis-8SUatg@mail.gmail.com>
+Subject: Re: [PATCH] phy: rockchip-inno-usb2: Ignore OTG IRQs in host mode
+To: Frank Wunderlich <frank-w@public-files.de>
+Cc: Samuel Holland <samuel@sholland.org>, Vinod Koul <vkoul@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Kishon Vijay Abraham I <kishon@ti.com>, arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, 
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_051629_330140_17F2C533 
-X-CRM114-Status: GOOD (  25.48  )
+X-CRM114-CacheID: sfid-20220708_060340_597946_DB7C56A8 
+X-CRM114-Status: GOOD (  20.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,70 +87,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi
+Good Morning,
 
-Samuels Patch fixes my issue
+I've confirmed this also resolves the issues with phy warnings on quartz64-a.
+Tested-by: Peter Geis <pgwipeout@gmail.com>
 
-https://patchwork.kernel.org/project/linux-rockchip/patch/20220708061434.38115-1-samuel@sholland.org/
+Very Respectfully,
+Peter Geis
 
-regards Frank
-
-> Gesendet: Freitag, 08. Juli 2022 um 07:16 Uhr
-> Von: "Vinod Koul" <vkoul@kernel.org>
-> On 07-07-22, 15:41, Peter Geis wrote:
-> > On Thu, Jul 7, 2022 at 1:51 PM Frank Wunderlich <frank-w@public-files.de> wrote:
-> > >
-> > > Hi,
-> > >
-> > > traced it down with manual reverts to this one:
-> > >
-> > > commit 6a98df08ccd55e87947d253b19925691763e755c
-> > >     phy: rockchip-inno-usb2: Fix muxed interrupt support
-> > >
-> > > luckily i can revert only this and now upper usb-port works again
-> > >
-> > > @samuel: have you an idea how to fix your problem without breaking my board? :)
-> > >
-> > > @greg/Vinod: maybe we can add a revert of this in mainline till issue is resolved?
+On Fri, Jul 8, 2022 at 7:47 AM Frank Wunderlich <frank-w@public-files.de> wrote:
 >
-> Lets give it a few days if we can find a fix, if not we can revert
+> Hi Samuel
 >
-> > >
-> > > regards Frank
+> thx for the fix...with this it works again
+>
+> Tested-by: Frank Wunderlich <frank-w@public-files.de>
+>
+> regards Frank
+>
+>
+> > Gesendet: Freitag, 08. Juli 2022 um 08:14 Uhr
+> > Von: "Samuel Holland" <samuel@sholland.org>
+> > An: "Frank Wunderlich" <frank-w@public-files.de>, "Vinod Koul" <vkoul@kernel.org>
+> > Cc: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Peter Geis" <pgwipeout@gmail.com>, "Samuel Holland" <samuel@sholland.org>, "Heiko Stuebner" <heiko@sntech.de>, "Kishon Vijay Abraham I" <kishon@ti.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org
+> > Betreff: [PATCH] phy: rockchip-inno-usb2: Ignore OTG IRQs in host mode
 > >
-> > I don't know what you're running, but with the standard arm64
-> > defconfig w/ all rockchip stuff built in, I have no issues here on
-> > 5.19.
->
-> Please share the config and other details on what your running so that
-> Peter can repro this...
->
-> > Note, the following changes are necessary to the 5.19 dts here:
-> > Remove the extcon from usb_host0_xhci, as the production model doesn't
-> > have automatic switching capabilities. The ID pin was removed in favor
-> > of the usb debug function which also doesn't work.
-> > Add dr_mode = "host" to the same node, for the same reason.
+> > When the OTG port is fixed to host mode, the driver does not request its
+> > IRQs, nor does it enable those IRQs in hardware. Similarly, the driver
+> > should ignore the OTG port IRQs when handling the shared interrupt.
 > >
-> > >
-> > >
-> > > > Von: "Frank Wunderlich" <frank-w@public-files.de>
-> > > > i noticed that upper usb-Port (otg) is broken on my Bananapi R2Pro with 5.19-rc1, works with 5.18.0
-> > > >
-> > > > this port is a usb3 (xhci) port which includes an usb2-phy and should support otg, but i still want
-> > > > to use it in host-only mode (USB-A socket).
-> > > >
-> > > > already tried setting dr_mode in dts back to "host" as this was changed in rk356x.dtsi by this commit:
-> > > >
-> > > > bc405bb3eeee 2022-04-25 arm64: dts: rockchip: enable otg/drd operation of usb_host0_xhci in rk356x
-> > > >
-> > > > i see no error in dmesg and usb-controllers seem to be initialized completely (visible in lsusb).
-> > > >
-> > > > r2pro has ID-Pin not connected, so i tried also peters Patch without success :(
-> > >
->
-> --
-> ~Vinod
-
+> > Otherwise, it would update the extcon based on an ID pin which may be in
+> > an undefined state, or try to queue a uninitialized work item.
+> >
+> > Fixes: 6a98df08ccd5 ("phy: rockchip-inno-usb2: Fix muxed interrupt support")
+> > Reported-by: Frank Wunderlich <frank-w@public-files.de>
+> > Signed-off-by: Samuel Holland <samuel@sholland.org>
+> > ---
+> >
+> >  drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 4 +++-
+> >  1 file changed, 3 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+> > index 6711659f727c..26b841c49ec6 100644
+> > --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+> > +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+> > @@ -978,7 +978,9 @@ static irqreturn_t rockchip_usb2phy_irq(int irq, void *data)
+> >
+> >               switch (rport->port_id) {
+> >               case USB2PHY_PORT_OTG:
+> > -                     ret |= rockchip_usb2phy_otg_mux_irq(irq, rport);
+> > +                     if (rport->mode != USB_DR_MODE_HOST &&
+> > +                         rport->mode != USB_DR_MODE_UNKNOWN)
+> > +                             ret |= rockchip_usb2phy_otg_mux_irq(irq, rport);
+> >                       break;
+> >               case USB2PHY_PORT_HOST:
+> >                       ret |= rockchip_usb2phy_linestate_irq(irq, rport);
+> > --
+> > 2.35.1
+> >
+> >
 
 _______________________________________________
 Linux-rockchip mailing list
