@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A21EBCCA47B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 10:42:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAF84C43334
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 11:47:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R0zzQPBgfOByZbb1PliZnB6S5ru/a2GngaGHZbaksvU=; b=cSdAI0wXLm7MoR
-	PShZfhwIfVTOnlu0VUVTY9F3vS8j8vVWt7NBKqSRC6qPG/ykMy6COALuzWsDDzb8YO+GEwH2qY81t
-	VbQYnRUp1h0jHD2D9itawREt6AwzUcrl+baRLwJVw7lyFFYaYcJ7FHcBirRwzE8cPrFcb1b+Jaj52
-	dBeBqCJ1HFtp66WU/S80bwkSJXhNezeYfzJ3uhdGIHLGqZgyBacfSbkiRiSsNVE0G1VEpubj02VG8
-	ARV0CzP4ZKn5gtA2yUo3ZoZtxcrvYPczaXVNG63VSuruu49lb60wTktMiImfSMqKVq9LO/F6Lah2s
-	ahyqOA/zs2A+pzPs1+qw==;
+	List-Owner; bh=AfPUpYTCxcr/PVPcDrxfXhco42nu/WgM4ojqlYs6IxY=; b=KiibZl6By///rK
+	kTdknxNVKOi4qyT7KCxNxofcOtKjunmEWW/xCaEfI2pinepzEdEgkNkuDg1GDXKdT1tl7EbA1hVxy
+	FrQDTy4kQ8GYxHyD7WDcqa4fGBqZQc54DF6mcMg/nqh5/h25T5OhpcdcqcAX1x5FsfLR1qYcVJQM2
+	lvMBMDAhc9E+fOc53YpZ3zhSFYoIBO1YsB1bhei4UlyknS45XN01Mr+kZBBo7b4cQZxqxLsr7x8P1
+	CBAnDrZKvVmIVtSvoq+em8AclA3urVmTuNGd6dCN2XDMzaz/95yfoX4oN96JT0pYliLuxWgeKuDI7
+	+3be7wl2+iadpjNxlQVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9lRE-003EOO-H1; Fri, 08 Jul 2022 10:42:20 +0000
-Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
+	id 1o9mSQ-003T0A-K5; Fri, 08 Jul 2022 11:47:38 +0000
+Received: from mout.gmx.net ([212.227.17.20])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9lRB-003ENO-TJ
-	for linux-rockchip@lists.infradead.org; Fri, 08 Jul 2022 10:42:19 +0000
-Received: by mail-ot1-x331.google.com with SMTP id q18-20020a9d7c92000000b00616b27cda7cso15917044otn.9
-        for <linux-rockchip@lists.infradead.org>; Fri, 08 Jul 2022 03:42:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=Vbo3Wb82ZgGFHuwV12svaEHQLDH9O7wKe6jY6HWRXhY=;
-        b=8EUPg3/5EaiUHN0vnZcJQmvXjQMJx9fkbtfkcLCkttmkRKUoEq/QZ0tU1kqgMA9Znj
-         7CH06w+uvLiTkjglzeH70bA8hBynPieg/xJMqMrr5end3xRtzfB1ea+HdBYMEMtHHg3E
-         d4ULA48+9JF7O0mgZR/7EgZSshMG0mLSJr0Su2xG9FkSoE+LSHJlFmIM+zZQ06xschlf
-         nbxjNaCCAiwGGXk6nKP7ukIjZgEThIdS3LiVE8m2xJ4rq/rpxV0wvpZdGmty9UGFlc+i
-         egOU8pqd0eAvAFaz6Kq46h89paq6RFnYgQ4aKtgbNhlXIIiYbPsbnRTZt64/Qf0uTerb
-         egSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=Vbo3Wb82ZgGFHuwV12svaEHQLDH9O7wKe6jY6HWRXhY=;
-        b=nJxHteA0EYC5oVvAviH3DnkXv9jV3gRIcY29FO1iTnBH8vjx6oYf0FxIFcnOzkor4A
-         NxFD6LxqfcUWhnIOd+qjVQNEGQ40KwFAfkOdjrV2G2hletjyuCm2rgKYe+qQ5HrsaCRx
-         EuA4gng9VOPvqrXbeJKSH2W1IzYetSF+oKUtUGTr9t8rU7VHljZVw55Im3icNX6uymmn
-         e0BloemYv87BjrNnzx+u8tL/I04/dtxWfr6fRooW5eaUodS4ib4reXK52EWz8snL8zJq
-         GuZmhfSecCQNT9h2LW6hPmv1zMINpBcw2m+nhy+YgKGXRGQcogMfBc93Y1alc/3lzV0I
-         fNkQ==
-X-Gm-Message-State: AJIora8SRbQrXJ5gT1NpljBZBM6e5r5UGr8mLF0JXDDhwi3sWae0Rmik
-	VAOXHT6qkPfPK3UP/DkSIIsd5w==
-X-Google-Smtp-Source: AGRyM1tzbbpdDVYyEDXf5c332NybbUnnkr9zj7NhM5LflklG4ao6rMqDCvNezrG82Bl3sUy0/D2GSw==
-X-Received: by 2002:a05:6830:438a:b0:616:f238:1562 with SMTP id s10-20020a056830438a00b00616f2381562mr1217862otv.111.1657276935550;
-        Fri, 08 Jul 2022 03:42:15 -0700 (PDT)
-Received: from eze-laptop ([186.13.97.246])
-        by smtp.gmail.com with ESMTPSA id 127-20020aca0785000000b00334c2e81dfbsm9219460oih.0.2022.07.08.03.42.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Jul 2022 03:42:15 -0700 (PDT)
-Date: Fri, 8 Jul 2022 07:42:06 -0300
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, hverkuil@xs4all.nl, p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org, mripard@kernel.org,
-	paul.kocialkowski@bootlin.com, wens@csie.org,
-	jernej.skrabec@gmail.com, samuel@sholland.org,
-	nicolas.dufresne@collabora.com, andrzej.p@collabora.com,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	kernel@collabora.com
-Subject: Re: [PATCH v11 11/17] media: uapi: Add
- V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
-Message-ID: <YsgJ/i/93Hr4CpY+@eze-laptop>
-References: <20220706093803.158810-1-benjamin.gaignard@collabora.com>
- <20220706093803.158810-12-benjamin.gaignard@collabora.com>
+	id 1o9mSN-003SyL-7a; Fri, 08 Jul 2022 11:47:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+	s=badeba3b8450; t=1657280834;
+	bh=EWEAPU38vj7LmQ0GV5eR0yBw5Q9Puye2G39BDYq0u9U=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=i08e/rcxzGvUZZ6G9QLLYOldTQAicMr5nKV+Jya7oEM29J+uy5Q6o5EJcefDdpCZp
+	 xdi6J6MpXUGzoRZ8zjfu66CheQjXhBeFlXe13MGZz5Xa0vSbYrgLoAL+tcjAIZkYzw
+	 VKn4C9OaaRAaMlmX7ilOm6kVXI0xOFQZ0D8ihV4o=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [157.180.225.69] ([157.180.225.69]) by web-mail.gmx.net
+ (3c-app-gmx-bs34.server.lan [172.19.170.86]) (via HTTP); Fri, 8 Jul 2022
+ 13:47:14 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220706093803.158810-12-benjamin.gaignard@collabora.com>
+Message-ID: <trinity-e64eb9b8-7b25-4893-a1a2-ecbf9da3ef71-1657280834206@3c-app-gmx-bs34>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Samuel Holland <samuel@sholland.org>
+Cc: Vinod Koul <vkoul@kernel.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Peter Geis <pgwipeout@gmail.com>, Samuel
+ Holland <samuel@sholland.org>, Heiko Stuebner <heiko@sntech.de>, Kishon
+ Vijay Abraham I <kishon@ti.com>, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+Subject: Aw: [PATCH] phy: rockchip-inno-usb2: Ignore OTG IRQs in host mode
+Date: Fri, 8 Jul 2022 13:47:14 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20220708061434.38115-1-samuel@sholland.org>
+References: <20220708061434.38115-1-samuel@sholland.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:GfoyUgrdNBpE5DDJbWK8te0BuGsOwpkIMZlmgMLq1ItIB/f3fCmj/9ymcLMVp17XUT2zY
+ 3xp9r+UOjlAqGwFSDjqez3Ln2yovoTGQGt22vq8xptS1y220lsviKcnC5y3XihFCTJvaqPSWydpT
+ QlSQW2TRIZRyM/vB9LZ5Xr2rjIbYLlexTW8UsnotLz3QUPu6HzZGLZtgNPTHuhvrsiYkai6FHyZC
+ SkWma4f0xPHm3Y/9yGxeETmZ3QWbEZrDg0V1WCAv7o89412MTt2PfkAno2j+6BBSizptC/DqVu+F
+ Fo=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wytnxtIYGok=:dTYOmJoT3eHdOG7IhPcXGp
+ OGG8ryZh66JdV6Kq/GVwA8zElZc+LivbVYefnktcRVFAV/5PacCunOPDFSVGh/JcbSrFq5mO2
+ B34W9Mkpio1MGUgNaCmWdlxC6Gg5V1I7dijebd5UbtMDRddWD6Mgt9OP981YMO/A5tBNAgcYq
+ xsZxL7Zyqv1xwrQ+KTlyxKY+KlJsLvnKxlf5vQ4kYLg5SVImesW9Nz8AXiH0cw0fTIMZmRrXX
+ 9JV6HJXqmiZViJcpUNceMvSel/WGRQ75Knt6G1L45YhSb2C4C9qHfKfJ+vl+Xp0feQM0tqnQx
+ tx4IRW3jrTqByEK0zl4rfDtMXBZ8HxDuxZXrPjqE7W7SMwFixbeM7TXWtfCe1N9C0cOJywGRR
+ zVOSBAlMuZcRplnszMihWYtjlfesdzhB3xJtq3Wz87tfWUNdiW20Fy1eQCDrlXsHIdjfjnfYz
+ be1mE3jHyh2LGPSVe5r4hU1x3RMKeQYu2ypkNwzO8YH86Z3+hPTiKeHGdpwe6HiXO8ZAdp8nM
+ hzBafo32SQglxXd65Otp9vZT90+0dSpvESQdV66xftA2woSAFqbiZqTogIVSF85fqdr3wR9Wv
+ EP9husCEOd2RJvTHaJxVAnaVB65mLBn0Xtsd3i7clKmxKN0yWuffwy+YTDIDFB2FsoWrvdQGz
+ aIwQRVCtsspGPgs0zTDJM+6fyljHzHqI6tZ4foTlX7xk8MNLm3phwIXzVZljwZOZjVzbvwlb8
+ fKCiPz/aKZCsEFFbTU0wOkCOBWJA2ybdzGuEm2/mVKA2o1XC0m7umnxZAnj/9mul/0gfujTJT
+ xszZGf7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_034217_975464_AD5CF9D6 
-X-CRM114-Status: GOOD (  28.81  )
+X-CRM114-CacheID: sfid-20220708_044735_749929_50447B53 
+X-CRM114-Status: GOOD (  17.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,149 +90,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin, Jernej,
+Hi Samuel
 
-On Wed, Jul 06, 2022 at 11:37:57AM +0200, Benjamin Gaignard wrote:
-> The number of 'entry point offset' can be very variable.
-> Instead of using a large static array define a v4l2 dynamic array
-> of U32 (V4L2_CTRL_TYPE_U32).
-> The number of entry point offsets is reported by the elems field
-> and in struct v4l2_ctrl_hevc_slice_params.num_entry_point_offsets
-> field.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> Tested-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+thx for the fix...with this it works again
+
+Tested-by: Frank Wunderlich <frank-w@public-files.de>
+
+regards Frank
+
+
+> Gesendet: Freitag, 08. Juli 2022 um 08:14 Uhr
+> Von: "Samuel Holland" <samuel@sholland.org>
+> An: "Frank Wunderlich" <frank-w@public-files.de>, "Vinod Koul" <vkoul@kernel.org>
+> Cc: "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Peter Geis" <pgwipeout@gmail.com>, "Samuel Holland" <samuel@sholland.org>, "Heiko Stuebner" <heiko@sntech.de>, "Kishon Vijay Abraham I" <kishon@ti.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org
+> Betreff: [PATCH] phy: rockchip-inno-usb2: Ignore OTG IRQs in host mode
+>
+> When the OTG port is fixed to host mode, the driver does not request its
+> IRQs, nor does it enable those IRQs in hardware. Similarly, the driver
+> should ignore the OTG port IRQs when handling the shared interrupt.
+>
+> Otherwise, it would update the extcon based on an ID pin which may be in
+> an undefined state, or try to queue a uninitialized work item.
+>
+> Fixes: 6a98df08ccd5 ("phy: rockchip-inno-usb2: Fix muxed interrupt support")
+> Reported-by: Frank Wunderlich <frank-w@public-files.de>
+> Signed-off-by: Samuel Holland <samuel@sholland.org>
 > ---
-> version 11:
-> - Be more verbose about num_entry_point_offsets field usage.
-> 
->  .../userspace-api/media/v4l/ext-ctrls-codec.rst   | 15 +++++++++++++++
->  drivers/media/v4l2-core/v4l2-ctrls-defs.c         |  5 +++++
->  include/media/hevc-ctrls.h                        |  5 ++++-
->  3 files changed, 24 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> index c2e0adece613..59e751c38d06 100644
-> --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> @@ -3010,6 +3010,13 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->      * - __u32
->        - ``data_bit_offset``
->        - Offset (in bits) to the video data in the current slice data.
-> +    * - __u32
-> +      - ``num_entry_point_offsets``
-> +      - Specifies the number of entry point offset syntax elements in the slice header.
-
-Given this field really matches the syntax element (thanks for the
-clarification), I would suggest keeping it simpler,
-maybe something along these lines:
-
-""
-Specifies the number of entry point offset syntax elements in the slice header.
-When the driver supports it, the ``V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS``
-must be set.
-""
-
-> +        This field must be set even if V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS
-> +        control isn't used. Additionally, if entry point offsets control is needed
-> +        and if submitting multiple slices at once, length of entry point offsets
-> +        array must be sum of num_entry_point_offsets of all slices in that job.
-
->      * - __u8
->        - ``nal_unit_type``
->        - Specifies the coding type of the slice (B, P or I).
-> @@ -3150,6 +3157,14 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->  
->      \normalsize
->  
-> +``V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (integer)``
-> +    Specifies entry point offsets in bytes.
-> +    This control is a dynamically sized array. The number of entry point
-> +    offsets is reported by the ``elems`` field.
-> +    This bitstream parameter is defined according to :ref:`hevc`.
-> +    They are described in section 7.4.7.1 "General slice segment header
-> +    semantics" of the specification.
-> +
-
-I would add Jernej's clarification about the length of the control
-here, where the control is documented.
-
-""
-This control is a dynamically sized array. The number of entry point
-offsets is reported by the ``elems`` field.
-This bitstream parameter is defined according to :ref:`hevc`.
-They are described in section 7.4.7.1 "General slice segment header
-semantics" of the specification.
-When multiple slices are submitted in a request, the length
-of this array must be the sum of num_entry_point_offsets
-of all the slices in the request.
-""
-
-Hopefully this is clearer to application developers?
-
-Thanks!
-Ezequiel
-
->  ``V4L2_CID_STATELESS_HEVC_SCALING_MATRIX (struct)``
->      Specifies the HEVC scaling matrix parameters used for the scaling process
->      for transform coefficients.
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-defs.c b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> index d594efbcbb93..e22921e7ea61 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls-defs.c
-> @@ -1188,6 +1188,7 @@ const char *v4l2_ctrl_get_name(u32 id)
->  	case V4L2_CID_STATELESS_HEVC_DECODE_PARAMS:		return "HEVC Decode Parameters";
->  	case V4L2_CID_STATELESS_HEVC_DECODE_MODE:		return "HEVC Decode Mode";
->  	case V4L2_CID_STATELESS_HEVC_START_CODE:		return "HEVC Start Code";
-> +	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:	return "HEVC Entry Point Offsets";
->  
->  	/* Colorimetry controls */
->  	/* Keep the order of the 'case's the same as in v4l2-controls.h! */
-> @@ -1518,6 +1519,10 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type,
->  	case V4L2_CID_STATELESS_HEVC_DECODE_PARAMS:
->  		*type = V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS;
->  		break;
-> +	case V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS:
-> +		*type = V4L2_CTRL_TYPE_U32;
-> +		*flags |= V4L2_CTRL_FLAG_DYNAMIC_ARRAY;
-> +		break;
->  	case V4L2_CID_STATELESS_VP9_COMPRESSED_HDR:
->  		*type = V4L2_CTRL_TYPE_VP9_COMPRESSED_HDR;
->  		break;
-> diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-> index a372c184689e..3a6601a46ced 100644
-> --- a/include/media/hevc-ctrls.h
-> +++ b/include/media/hevc-ctrls.h
-> @@ -20,6 +20,7 @@
->  #define V4L2_CID_STATELESS_HEVC_DECODE_PARAMS	(V4L2_CID_CODEC_BASE + 1012)
->  #define V4L2_CID_STATELESS_HEVC_DECODE_MODE	(V4L2_CID_CODEC_BASE + 1015)
->  #define V4L2_CID_STATELESS_HEVC_START_CODE	(V4L2_CID_CODEC_BASE + 1016)
-> +#define V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS (V4L2_CID_CODEC_BASE + 1017)
->  
->  /* enum v4l2_ctrl_type type values */
->  #define V4L2_CTRL_TYPE_HEVC_SPS 0x0120
-> @@ -316,6 +317,8 @@ struct v4l2_hevc_pred_weight_table {
->   *
->   * @bit_size: size (in bits) of the current slice data
->   * @data_bit_offset: offset (in bits) to the video data in the current slice data
-> + * @num_entry_point_offsets: specifies the number of entry point offset syntax
-> + *			     elements in the slice header.
->   * @nal_unit_type: specifies the coding type of the slice (B, P or I)
->   * @nuh_temporal_id_plus1: minus 1 specifies a temporal identifier for the NAL unit
->   * @slice_type: see V4L2_HEVC_SLICE_TYPE_{}
-> @@ -358,7 +361,7 @@ struct v4l2_hevc_pred_weight_table {
->  struct v4l2_ctrl_hevc_slice_params {
->  	__u32	bit_size;
->  	__u32	data_bit_offset;
-> -
-> +	__u32	num_entry_point_offsets;
->  	/* ISO/IEC 23008-2, ITU-T Rec. H.265: NAL unit header */
->  	__u8	nal_unit_type;
->  	__u8	nuh_temporal_id_plus1;
-> -- 
-> 2.32.0
-> 
+>
+>  drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+> index 6711659f727c..26b841c49ec6 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+> @@ -978,7 +978,9 @@ static irqreturn_t rockchip_usb2phy_irq(int irq, void *data)
+>
+>  		switch (rport->port_id) {
+>  		case USB2PHY_PORT_OTG:
+> -			ret |= rockchip_usb2phy_otg_mux_irq(irq, rport);
+> +			if (rport->mode != USB_DR_MODE_HOST &&
+> +			    rport->mode != USB_DR_MODE_UNKNOWN)
+> +				ret |= rockchip_usb2phy_otg_mux_irq(irq, rport);
+>  			break;
+>  		case USB2PHY_PORT_HOST:
+>  			ret |= rockchip_usb2phy_linestate_irq(irq, rport);
+> --
+> 2.35.1
+>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
