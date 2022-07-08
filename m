@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25FD0C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 08:34:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07D42C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 09:00:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bj2/XDjdIj29HOnIAwkx9iHlCCQWGFEUFC+VsfY0vps=; b=F2y7PAljz2EhSr
-	jWRJPsBPWIDJkHpTBqjq1eG4wEQIOgf7E79bTKcXsNH0HKLotmw1IrxyIH0XviUUQw0v3Av5lbvnu
-	NLfCFdJ6NLV6tSkT4Bq5722Gq1BBp2mI2qE46GV2tLE38t8jdZ+j6ID5hmv34hrEkVYCkjS4DuU8w
-	67wznqNdWtN1MoeSvTymPlqMxlt67iC7X0CFF4jYqTbkV2bBgvVh9hoagFZQAkdTPBhxbxrxbc9jR
-	ltiV8FTihQvie5MITwt7zYJYUccW4/Rany1SNHJ33upXBYStamD5FQo2ML5g6dCvd7tqZk4Cy/p4C
-	TnY8JAoRH7+QgIDDyYYw==;
+	List-Owner; bh=gBODX610Cc8ZJXr/3pNyQnz+l56X0SZwcC6h6G3Wuw0=; b=06BBVXLlAevLPx
+	wh+yQbyb7UqlC3gbasH1myHqCtjypxlARx1g6OD+o1YKjzIShWjO/6ISKwrU5NpCrc1gIGn4qivFZ
+	ATipsZrqCaKzB5sDxhOzqX2q1TYwIcyjQJLG+bTi4zmxTaBLoJQ2UROkGh5MMd7p9UxZ1W4lz80Lq
+	ecthOm02jM6i05VHozVaYTNT2JEbVULu7zLOeCAsyCjngaiTBvSMk3AuMZxEwhyIHU3qAjknyb4Y8
+	oiguf1Gj9TDxOasnZtgoZJYFW7awOhIIhWejJXqQV3nniupQdmlU12Vv51Fl9MZvex+x58MV1HHeV
+	a4iEQZp6tLiO2bL0iXUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jRT-002a3O-9u; Fri, 08 Jul 2022 08:34:27 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1o9jqa-002jQE-7H; Fri, 08 Jul 2022 09:00:24 +0000
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jNd-002YPc-Ta; Fri, 08 Jul 2022 08:30:32 +0000
-Received: from [IPV6:2a01:e0a:120:3210:3cab:61a1:2b1f:896b] (unknown [IPv6:2a01:e0a:120:3210:3cab:61a1:2b1f:896b])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4560866016EA;
-	Fri,  8 Jul 2022 09:30:26 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657269026;
-	bh=qfgyl2yB9WpCC89gaoCuz9B+sGb+HA4tw4xxh0EJO4k=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=aACNZwUXO3pm+/4mM5Dbdj2Py8aqOzFVqSDE+rtn7lbLuRUp80B9Xkbtq0MTj5WI1
-	 JyV1cJtsYPjM17TOZ3G4Nd47q2OKHn3PSOQiDlMlw6FZdjL0hXMHOuHNRLsnQVercp
-	 ZkYhPBROVQjmj/twyctgLfED8rO10ruK3y+RxstaIfSoC/wSx+VuKNDvwdt7ZnHt4D
-	 Qxv18yM2oT8X3Vs0Mb7nsARX0fZ6dA8zFt8owzH3+3CRxJz9QY02HLkh+GABxHYmM9
-	 Umwp1dYKs4EWJh2TzCna8bM446AGzYtHrWUtTd95wwp3hyrVBkU9DjESVP0+tcp0vm
-	 M6bAhz1Fkm8dg==
-Message-ID: <129fe9f8-2434-258a-fff6-b0e199bbb7e6@collabora.com>
-Date: Fri, 8 Jul 2022 10:30:23 +0200
+	id 1o9jpH-002itR-93
+	for linux-rockchip@lists.infradead.org; Fri, 08 Jul 2022 08:59:05 +0000
+Received: by mail-pf1-x429.google.com with SMTP id y9so8791871pff.12
+        for <linux-rockchip@lists.infradead.org>; Fri, 08 Jul 2022 01:59:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=amarulasolutions.com; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=rpBIPZoEOcdI5wCWlLWqGXg56NDDPjrDi01arW3/rrA=;
+        b=PDVNridy/FVQHJjoxp3EXy/miBQ6yThN3u+Xjh9V8ag9TiQ12D0VwTyB3aBwauMx2I
+         AG+Gwasnbbp08iRgF5aMqtR940L4g2i6OAq11SezwF5hw73vrcuZS7GXx8KvHRZLHUCD
+         DVZ2xrjM7J8d9JAV2hQv/VC+/wOA4wBBGCQmc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=rpBIPZoEOcdI5wCWlLWqGXg56NDDPjrDi01arW3/rrA=;
+        b=tnVcVmxtKsXr7F+gtUm0WSCXGdBruOOcepQPIJNqwyoFUereEan4E4Q84Dz7bwyBr7
+         wVuKvUy6r7xUTtnzD2QqqlBwYDqQtYBDuBFJTaJY4pHHIS4DIaN5pZi537ffmY5cwe55
+         2qH922A8q3I1EsU3BiHledcoDpAXgJrGw+RNs/51LvYe9SYbN8Ap4DDe0aOxDXNLI9Vv
+         xtgADQZyZ9VirFMJCACWJ4zCrgdullvyNjx5FQ0clpHAASF6WKx4xd/NaLsLTuQ4UOZm
+         U7NObkDAoHGHpjQWhwsFLcOZ8bG34EEduRmRtOTyugyN10hU59hFRDs2r4JpbYqIPcJg
+         U9Sg==
+X-Gm-Message-State: AJIora+jp66sck2+AtEcpniOm0NyQ5oaG/VdM2rXjxRbD9vHEdXNK/gW
+	0K8X09uu5SsYHdhTSFpZ+PWUtOc+XX7O7+iOXDlD0g==
+X-Google-Smtp-Source: AGRyM1sQytUht2yJLJ7J+cYr8NzXL6L5CGUjxBU9VdfkGYywSTCydJtiD1eDQD7nCAYjNvOgibtJxg/J9mWvKSWpo0w=
+X-Received: by 2002:a05:6a00:2407:b0:528:5bbc:aa0d with SMTP id
+ z7-20020a056a00240700b005285bbcaa0dmr2880732pfh.40.1657270740765; Fri, 08 Jul
+ 2022 01:59:00 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.9.1
-Subject: Re: [PATCH v11 15/17] media: uapi: HEVC: fix padding in v4l2 control
- structures
-Content-Language: en-US
-To: Hans Verkuil <hverkuil@xs4all.nl>, mchehab@kernel.org,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@gmail.com,
- samuel@sholland.org, nicolas.dufresne@collabora.com, andrzej.p@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- kernel@collabora.com
-References: <20220706093803.158810-1-benjamin.gaignard@collabora.com>
- <20220706093803.158810-16-benjamin.gaignard@collabora.com>
- <fffca68c-abe8-591b-43af-656599d0d2f0@xs4all.nl>
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <fffca68c-abe8-591b-43af-656599d0d2f0@xs4all.nl>
+References: <1cf06b47-4f0d-2207-8135-3a48826520f0@gmail.com>
+In-Reply-To: <1cf06b47-4f0d-2207-8135-3a48826520f0@gmail.com>
+From: Michael Nazzareno Trimarchi <michael@amarulasolutions.com>
+Date: Fri, 8 Jul 2022 10:58:49 +0200
+Message-ID: <CAOf5uwkUmAUeMt8+Y_ExojBigT7Vt6ju+E0vx4o-tNyUZ8B3UA@mail.gmail.com>
+Subject: Re: [PATCH v1 0/6] Add Rockchip IDB device
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, 
+	Philipp Tomsich <philipp.tomsich@vrull.eu>, xypron.glpk@gmx.de, 
+	U-Boot-Denx <u-boot@lists.denx.de>, Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
+	jon.lin@rock-chips.com, 
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, miquel.raynal@bootlin.com, 
+	dario.binacchi@amarulasolutions.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_013030_262209_381BD423 
-X-CRM114-Status: GOOD (  21.46  )
+X-CRM114-CacheID: sfid-20220708_015903_408380_DA9888FA 
+X-CRM114-Status: GOOD (  33.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,183 +80,184 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDA4LzA3LzIwMjIgw6AgMDk6MDMsIEhhbnMgVmVya3VpbCBhIMOpY3JpdMKgOgo+Cj4gT24g
-Ny82LzIyIDExOjM4LCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToKPj4gRml4IHBhZGRpbmcgd2hl
-cmUgbmVlZGVkIHRvIHJlbW92ZSBob2xlcyBhbmQgc3RheSBhbGlnbmVkIG9uIGNhY2hlIGJvdW5k
-YXJpZXMKPiBJZiBhIHYxMiBpcyBuZWVkZWQsIHRoZW4gcGxlYXNlIGRyb3AgdGhlICIgYW5kIHN0
-YXkgYWxpZ25lZCBvbiBjYWNoZSBib3VuZGFyaWVzIgo+IHBhcnQgc2luY2UgdGhhdCdzIGEgbGVm
-dC1vdmVyIGZyb20gcHJldmlvdXMgdmVyc2lvbnMuIEkndmUgbWFudWFsbHkgcmVtb3ZlZCBpdAo+
-IGluIG15IGJyYW5jaCBzbyBubyBuZWVkIHRvIGRvIGFueXRoaW5nIHVubGVzcyBhIHYxMiBpcyBu
-ZWVkZWQuCgpJIHRoaW5rIG9ubHkgcGF0Y2ggMTEgc3RpbGwgbmVlZCB5b3VyIHJldmlldy4KSWYg
-aXQgaXMgZmluZSB3ZSB3b24ndCBuZWVkIHYxMi4KClJlZ2FyZHMsCkJlbmphbWluCgo+Cj4gUmVn
-YXJkcywKPgo+IAlIYW5zCj4KPj4gU2lnbmVkLW9mZi1ieTogQmVuamFtaW4gR2FpZ25hcmQgPGJl
-bmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+Cj4+IEFja2VkLWJ5OiBOaWNvbGFzIER1ZnJl
-c25lIDxuaWNvbGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+Cj4+IFRlc3RlZC1ieTogSmVybmVq
-IFNrcmFiZWMgPGplcm5lai5za3JhYmVjQGdtYWlsLmNvbT4KPj4gLS0tCj4+ICAgLi4uL21lZGlh
-L3Y0bC9leHQtY3RybHMtY29kZWMucnN0ICAgICAgICAgICAgIHwgIDYgKystLS0KPj4gICBkcml2
-ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWN0cmxzLWNvcmUuYyAgICAgfCAxNSAtLS0tLS0tLS0t
-LS0tCj4+ICAgaW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxzLmggICAgICAgICAgICAgICAgICAgIHwg
-MjIgKysrKysrKysrKysrLS0tLS0tLQo+PiAgIDMgZmlsZXMgY2hhbmdlZCwgMTcgaW5zZXJ0aW9u
-cygrKSwgMjYgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL3Vz
-ZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QgYi9Eb2N1bWVudGF0aW9u
-L3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QKPj4gaW5kZXggNTll
-NzUxYzM4ZDA2Li5kNWVmOTFhZTM1MzkgMTAwNjQ0Cj4+IC0tLSBhL0RvY3VtZW50YXRpb24vdXNl
-cnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdAo+PiArKysgYi9Eb2N1bWVu
-dGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL2V4dC1jdHJscy1jb2RlYy5yc3QKPj4gQEAg
-LTM1MTMsOSArMzUxMyw2IEBAIGVudW0gdjRsMl9tcGVnX3ZpZGVvX2hldmNfc2l6ZV9vZl9sZW5n
-dGhfZmllbGQgLQo+PiAgICAgICAqIC0gX191OAo+PiAgICAgICAgIC0gYGBudW1fYWN0aXZlX2Rw
-Yl9lbnRyaWVzYGAKPj4gICAgICAgICAtIFRoZSBudW1iZXIgb2YgZW50cmllcyBpbiBgYGRwYmBg
-Lgo+PiAtICAgICogLSBzdHJ1Y3QgOmM6dHlwZTpgdjRsMl9oZXZjX2RwYl9lbnRyeWAKPj4gLSAg
-ICAgIC0gYGBkcGJbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhdYGAKPj4gLSAgICAgIC0g
-VGhlIGRlY29kZWQgcGljdHVyZSBidWZmZXIsIGZvciBtZXRhLWRhdGEgYWJvdXQgcmVmZXJlbmNl
-IGZyYW1lcy4KPj4gICAgICAgKiAtIF9fdTgKPj4gICAgICAgICAtIGBgbnVtX3BvY19zdF9jdXJy
-X2JlZm9yZWBgCj4+ICAgICAgICAgLSBUaGUgbnVtYmVyIG9mIHJlZmVyZW5jZSBwaWN0dXJlcyBp
-biB0aGUgc2hvcnQtdGVybSBzZXQgdGhhdCBjb21lIGJlZm9yZQo+PiBAQCAtMzUzOSw2ICszNTM2
-LDkgQEAgZW51bSB2NGwyX21wZWdfdmlkZW9faGV2Y19zaXplX29mX2xlbmd0aF9maWVsZCAtCj4+
-ICAgICAgICAgLSBgYHBvY19sdF9jdXJyW1Y0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1fTUFYXWBg
-Cj4+ICAgICAgICAgLSBQb2NMdEN1cnIgYXMgZGVzY3JpYmVkIGluIHNlY3Rpb24gOC4zLjIgIkRl
-Y29kaW5nIHByb2Nlc3MgZm9yIHJlZmVyZW5jZQo+PiAgICAgICAgICAgcGljdHVyZSBzZXQiOiBw
-cm92aWRlcyB0aGUgaW5kZXggb2YgdGhlIGxvbmcgdGVybSByZWZlcmVuY2VzIGluIERQQiBhcnJh
-eS4KPj4gKyAgICAqIC0gc3RydWN0IDpjOnR5cGU6YHY0bDJfaGV2Y19kcGJfZW50cnlgCj4+ICsg
-ICAgICAtIGBgZHBiW1Y0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1fTUFYXWBgCj4+ICsgICAgICAt
-IFRoZSBkZWNvZGVkIHBpY3R1cmUgYnVmZmVyLCBmb3IgbWV0YS1kYXRhIGFib3V0IHJlZmVyZW5j
-ZSBmcmFtZXMuCj4+ICAgICAgICogLSBfX3U2NAo+PiAgICAgICAgIC0gYGBmbGFnc2BgCj4+ICAg
-ICAgICAgLSBTZWUgOnJlZjpgRGVjb2RlIFBhcmFtZXRlcnMgRmxhZ3MgPGhldmNfZGVjb2RlX3Bh
-cmFtc19mbGFncz5gCj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwy
-LWN0cmxzLWNvcmUuYyBiL2RyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItY3RybHMtY29yZS5j
-Cj4+IGluZGV4IGM1YzU0MDc1ODRmZi4uMWY4NTgyOGQ2Njk0IDEwMDY0NAo+PiAtLS0gYS9kcml2
-ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWN0cmxzLWNvcmUuYwo+PiArKysgYi9kcml2ZXJzL21l
-ZGlhL3Y0bDItY29yZS92NGwyLWN0cmxzLWNvcmUuYwo+PiBAQCAtNTM2LDcgKzUzNiw2IEBAIHN0
-YXRpYyBpbnQgc3RkX3ZhbGlkYXRlX2NvbXBvdW5kKGNvbnN0IHN0cnVjdCB2NGwyX2N0cmwgKmN0
-cmwsIHUzMiBpZHgsCj4+ICAgCXN0cnVjdCB2NGwyX2N0cmxfaDI2NF9kZWNvZGVfcGFyYW1zICpw
-X2gyNjRfZGVjX3BhcmFtczsKPj4gICAJc3RydWN0IHY0bDJfY3RybF9oZXZjX3NwcyAqcF9oZXZj
-X3NwczsKPj4gICAJc3RydWN0IHY0bDJfY3RybF9oZXZjX3BwcyAqcF9oZXZjX3BwczsKPj4gLQlz
-dHJ1Y3QgdjRsMl9jdHJsX2hldmNfc2xpY2VfcGFyYW1zICpwX2hldmNfc2xpY2VfcGFyYW1zOwo+
-PiAgIAlzdHJ1Y3QgdjRsMl9jdHJsX2hkcjEwX21hc3RlcmluZ19kaXNwbGF5ICpwX2hkcjEwX21h
-c3RlcmluZzsKPj4gICAJc3RydWN0IHY0bDJfY3RybF9oZXZjX2RlY29kZV9wYXJhbXMgKnBfaGV2
-Y19kZWNvZGVfcGFyYW1zOwo+PiAgIAlzdHJ1Y3QgdjRsMl9hcmVhICphcmVhOwo+PiBAQCAtODE0
-LDggKzgxMyw2IEBAIHN0YXRpYyBpbnQgc3RkX3ZhbGlkYXRlX2NvbXBvdW5kKGNvbnN0IHN0cnVj
-dCB2NGwyX2N0cmwgKmN0cmwsIHUzMiBpZHgsCj4+ICAgCQkJcF9oZXZjX3Bwcy0+cHBzX2JldGFf
-b2Zmc2V0X2RpdjIgPSAwOwo+PiAgIAkJCXBfaGV2Y19wcHMtPnBwc190Y19vZmZzZXRfZGl2MiA9
-IDA7Cj4+ICAgCQl9Cj4+IC0KPj4gLQkJemVyb19wYWRkaW5nKCpwX2hldmNfcHBzKTsKPj4gICAJ
-CWJyZWFrOwo+PiAgIAo+PiAgIAljYXNlIFY0TDJfQ1RSTF9UWVBFX0hFVkNfREVDT0RFX1BBUkFN
-UzoKPj4gQEAgLTgyNCwyMSArODIxLDkgQEAgc3RhdGljIGludCBzdGRfdmFsaWRhdGVfY29tcG91
-bmQoY29uc3Qgc3RydWN0IHY0bDJfY3RybCAqY3RybCwgdTMyIGlkeCwKPj4gICAJCWlmIChwX2hl
-dmNfZGVjb2RlX3BhcmFtcy0+bnVtX2FjdGl2ZV9kcGJfZW50cmllcyA+Cj4+ICAgCQkgICAgVjRM
-Ml9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVgpCj4+ICAgCQkJcmV0dXJuIC1FSU5WQUw7Cj4+IC0K
-Pj4gLQkJZm9yIChpID0gMDsgaSA8IHBfaGV2Y19kZWNvZGVfcGFyYW1zLT5udW1fYWN0aXZlX2Rw
-Yl9lbnRyaWVzOwo+PiAtCQkgICAgIGkrKykgewo+PiAtCQkJc3RydWN0IHY0bDJfaGV2Y19kcGJf
-ZW50cnkgKmRwYl9lbnRyeSA9Cj4+IC0JCQkJJnBfaGV2Y19kZWNvZGVfcGFyYW1zLT5kcGJbaV07
-Cj4+IC0KPj4gLQkJCXplcm9fcGFkZGluZygqZHBiX2VudHJ5KTsKPj4gLQkJfQo+PiAgIAkJYnJl
-YWs7Cj4+ICAgCj4+ICAgCWNhc2UgVjRMMl9DVFJMX1RZUEVfSEVWQ19TTElDRV9QQVJBTVM6Cj4+
-IC0JCXBfaGV2Y19zbGljZV9wYXJhbXMgPSBwOwo+PiAtCj4+IC0JCXplcm9fcGFkZGluZyhwX2hl
-dmNfc2xpY2VfcGFyYW1zLT5wcmVkX3dlaWdodF90YWJsZSk7Cj4+IC0JCXplcm9fcGFkZGluZygq
-cF9oZXZjX3NsaWNlX3BhcmFtcyk7Cj4+ICAgCQlicmVhazsKPj4gICAKPj4gICAJY2FzZSBWNEwy
-X0NUUkxfVFlQRV9IRFIxMF9DTExfSU5GTzoKPj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvbWVkaWEv
-aGV2Yy1jdHJscy5oIGIvaW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxzLmgKPj4gaW5kZXggOTIzOWU4
-YjY0OWUwLi43MzU4Y2JmYzNlNGQgMTAwNjQ0Cj4+IC0tLSBhL2luY2x1ZGUvbWVkaWEvaGV2Yy1j
-dHJscy5oCj4+ICsrKyBiL2luY2x1ZGUvbWVkaWEvaGV2Yy1jdHJscy5oCj4+IEBAIC0xMDUsNiAr
-MTA1LDcgQEAgZW51bSB2NGwyX3N0YXRlbGVzc19oZXZjX3N0YXJ0X2NvZGUgewo+PiAgICAqIEBj
-aHJvbWFfZm9ybWF0X2lkYzogc3BlY2lmaWVzIHRoZSBjaHJvbWEgc2FtcGxpbmcKPj4gICAgKiBA
-c3BzX21heF9zdWJfbGF5ZXJzX21pbnVzMTogdGhpcyB2YWx1ZSBwbHVzIDEgc3BlY2lmaWVzIHRo
-ZSBtYXhpbXVtIG51bWJlcgo+PiAgICAqICAgICAgICAgICAgICAgICAgICAgICAgICAgICBvZiB0
-ZW1wb3JhbCBzdWItbGF5ZXJzCj4+ICsgKiBAcmVzZXJ2ZWQ6IHBhZGRpbmcgZmllbGQuIFNob3Vs
-ZCBiZSB6ZXJvZWQgYnkgYXBwbGljYXRpb25zLgo+PiAgICAqIEBmbGFnczogc2VlIFY0TDJfSEVW
-Q19TUFNfRkxBR197fQo+PiAgICAqLwo+PiAgIHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19zcHMgewo+
-PiBAQCAtMTMzLDYgKzEzNCw3IEBAIHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19zcHMgewo+PiAgIAlf
-X3U4CWNocm9tYV9mb3JtYXRfaWRjOwo+PiAgIAlfX3U4CXNwc19tYXhfc3ViX2xheWVyc19taW51
-czE7Cj4+ICAgCj4+ICsJX191OAlyZXNlcnZlZFs2XTsKPj4gICAJX191NjQJZmxhZ3M7Cj4+ICAg
-fTsKPj4gICAKPj4gQEAgLTE5Miw2ICsxOTQsNyBAQCBzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfc3Bz
-IHsKPj4gICAgKgkJCWRpdmlkZWQgYnkgMgo+PiAgICAqIEBsb2cyX3BhcmFsbGVsX21lcmdlX2xl
-dmVsX21pbnVzMjogdGhpcyB2YWx1ZSBwbHVzIDIgc3BlY2lmaWVzIHRoZSB2YWx1ZSBvZgo+PiAg
-ICAqICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGhlIHZhcmlhYmxlIExvZzJQ
-YXJNcmdMZXZlbAo+PiArICogQHJlc2VydmVkOiBwYWRkaW5nIGZpZWxkLiBTaG91bGQgYmUgemVy
-b2VkIGJ5IGFwcGxpY2F0aW9ucy4KPj4gICAgKiBAZmxhZ3M6IHNlZSBWNEwyX0hFVkNfUFBTX0ZM
-QUdfe30KPj4gICAgKi8KPj4gICBzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfcHBzIHsKPj4gQEAgLTIx
-MCw4ICsyMTMsNyBAQCBzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfcHBzIHsKPj4gICAJX19zOAlwcHNf
-YmV0YV9vZmZzZXRfZGl2MjsKPj4gICAJX19zOAlwcHNfdGNfb2Zmc2V0X2RpdjI7Cj4+ICAgCV9f
-dTgJbG9nMl9wYXJhbGxlbF9tZXJnZV9sZXZlbF9taW51czI7Cj4+IC0KPj4gLQlfX3U4CXBhZGRp
-bmdbNF07Cj4+ICsJX191OAlyZXNlcnZlZDsKPj4gICAJX191NjQJZmxhZ3M7Cj4+ICAgfTsKPj4g
-ICAKPj4gQEAgLTIzOSwxNCArMjQxLDE1IEBAIHN0cnVjdCB2NGwyX2N0cmxfaGV2Y19wcHMgewo+
-PiAgICAqIEB0aW1lc3RhbXA6IHRpbWVzdGFtcCBvZiB0aGUgVjRMMiBjYXB0dXJlIGJ1ZmZlciB0
-byB1c2UgYXMgcmVmZXJlbmNlLgo+PiAgICAqIEBmbGFnczogbG9uZyB0ZXJtIGZsYWcgZm9yIHRo
-ZSByZWZlcmVuY2UgZnJhbWUKPj4gICAgKiBAZmllbGRfcGljOiB3aGV0aGVyIHRoZSByZWZlcmVu
-Y2UgaXMgYSBmaWVsZCBwaWN0dXJlIG9yIGEgZnJhbWUuCj4+ICsgKiBAcmVzZXJ2ZWQ6IHBhZGRp
-bmcgZmllbGQuIFNob3VsZCBiZSB6ZXJvZWQgYnkgYXBwbGljYXRpb25zLgo+PiAgICAqIEBwaWNf
-b3JkZXJfY250X3ZhbDogdGhlIHBpY3R1cmUgb3JkZXIgY291bnQgb2YgdGhlIHJlZmVyZW5jZS4K
-Pj4gICAgKi8KPj4gICBzdHJ1Y3QgdjRsMl9oZXZjX2RwYl9lbnRyeSB7Cj4+ICAgCV9fdTY0CXRp
-bWVzdGFtcDsKPj4gICAJX191OAlmbGFnczsKPj4gICAJX191OAlmaWVsZF9waWM7Cj4+ICsJX191
-MTYJcmVzZXJ2ZWQ7Cj4+ICAgCV9fczMyCXBpY19vcmRlcl9jbnRfdmFsOwo+PiAtCV9fdTgJcGFk
-ZGluZ1syXTsKPj4gICB9Owo+PiAgIAo+PiAgIC8qKgo+PiBAQCAtMjg1LDggKzI4OCw2IEBAIHN0
-cnVjdCB2NGwyX2hldmNfcHJlZF93ZWlnaHRfdGFibGUgewo+PiAgIAlfX3M4CWRlbHRhX2Nocm9t
-YV93ZWlnaHRfbDFbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhdWzJdOwo+PiAgIAlfX3M4
-CWNocm9tYV9vZmZzZXRfbDFbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhdWzJdOwo+PiAg
-IAo+PiAtCV9fdTgJcGFkZGluZ1s2XTsKPj4gLQo+PiAgIAlfX3U4CWx1bWFfbG9nMl93ZWlnaHRf
-ZGVub207Cj4+ICAgCV9fczgJZGVsdGFfY2hyb21hX2xvZzJfd2VpZ2h0X2Rlbm9tOwo+PiAgIH07
-Cj4+IEBAIC0zMzksNiArMzQwLDcgQEAgc3RydWN0IHY0bDJfaGV2Y19wcmVkX3dlaWdodF90YWJs
-ZSB7Cj4+ICAgICogQHNsaWNlX3RjX29mZnNldF9kaXYyOiBzcGVjaWZ5IHRoZSBkZWJsb2NraW5n
-IHBhcmFtZXRlciBvZmZzZXRzIGZvciB0QyBkaXZpZGVkIGJ5IDIKPj4gICAgKiBAcGljX3N0cnVj
-dDogaW5kaWNhdGVzIHdoZXRoZXIgYSBwaWN0dXJlIHNob3VsZCBiZSBkaXNwbGF5ZWQgYXMgYSBm
-cmFtZSBvciBhcyBvbmUgb3IKPj4gICAgKgkJbW9yZSBmaWVsZHMKPj4gKyAqIEByZXNlcnZlZDA6
-IHBhZGRpbmcgZmllbGQuIFNob3VsZCBiZSB6ZXJvZWQgYnkgYXBwbGljYXRpb25zLgo+PiAgICAq
-IEBzbGljZV9zZWdtZW50X2FkZHI6IHNwZWNpZmllcyB0aGUgYWRkcmVzcyBvZiB0aGUgZmlyc3Qg
-Y29kaW5nIHRyZWUgYmxvY2sgaW4KPj4gICAgKgkJCXRoZSBzbGljZSBzZWdtZW50Cj4+ICAgICog
-QHJlZl9pZHhfbDA6IHRoZSBsaXN0IG9mIEwwIHJlZmVyZW5jZSBlbGVtZW50cyBhcyBpbmRpY2Vz
-IGluIHRoZSBEUEIKPj4gQEAgLTM0OSw2ICszNTEsNyBAQCBzdHJ1Y3QgdjRsMl9oZXZjX3ByZWRf
-d2VpZ2h0X3RhYmxlIHsKPj4gICAgKgkJCQlwaWN0dXJlIGluY2x1ZGUgaW4gdGhlIFNQUwo+PiAg
-ICAqIEBwcmVkX3dlaWdodF90YWJsZTogdGhlIHByZWRpY3Rpb24gd2VpZ2h0IGNvZWZmaWNpZW50
-cyBmb3IgaW50ZXItcGljdHVyZQo+PiAgICAqCQkgICAgICAgcHJlZGljdGlvbgo+PiArICogQHJl
-c2VydmVkMTogcGFkZGluZyBmaWVsZC4gU2hvdWxkIGJlIHplcm9lZCBieSBhcHBsaWNhdGlvbnMu
-Cj4+ICAgICogQGZsYWdzOiBzZWUgVjRMMl9IRVZDX1NMSUNFX1BBUkFNU19GTEFHX3t9Cj4+ICAg
-ICovCj4+ICAgc3RydWN0IHY0bDJfY3RybF9oZXZjX3NsaWNlX3BhcmFtcyB7Cj4+IEBAIC0zNzks
-MTcgKzM4MiwxOCBAQCBzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfc2xpY2VfcGFyYW1zIHsKPj4gICAJ
-LyogSVNPL0lFQyAyMzAwOC0yLCBJVFUtVCBSZWMuIEguMjY1OiBQaWN0dXJlIHRpbWluZyBTRUkg
-bWVzc2FnZSAqLwo+PiAgIAlfX3U4CXBpY19zdHJ1Y3Q7Cj4+ICAgCj4+ICsJX191OAlyZXNlcnZl
-ZDBbM107Cj4+ICAgCS8qIElTTy9JRUMgMjMwMDgtMiwgSVRVLVQgUmVjLiBILjI2NTogR2VuZXJh
-bCBzbGljZSBzZWdtZW50IGhlYWRlciAqLwo+PiAgIAlfX3UzMglzbGljZV9zZWdtZW50X2FkZHI7
-Cj4+ICAgCV9fdTgJcmVmX2lkeF9sMFtWNEwyX0hFVkNfRFBCX0VOVFJJRVNfTlVNX01BWF07Cj4+
-ICAgCV9fdTgJcmVmX2lkeF9sMVtWNEwyX0hFVkNfRFBCX0VOVFJJRVNfTlVNX01BWF07Cj4+ICAg
-CV9fdTE2CXNob3J0X3Rlcm1fcmVmX3BpY19zZXRfc2l6ZTsKPj4gICAJX191MTYJbG9uZ190ZXJt
-X3JlZl9waWNfc2V0X3NpemU7Cj4+IC0JX191OAlwYWRkaW5nOwo+PiAgIAo+PiAgIAkvKiBJU08v
-SUVDIDIzMDA4LTIsIElUVS1UIFJlYy4gSC4yNjU6IFdlaWdodGVkIHByZWRpY3Rpb24gcGFyYW1l
-dGVyICovCj4+ICAgCXN0cnVjdCB2NGwyX2hldmNfcHJlZF93ZWlnaHRfdGFibGUgcHJlZF93ZWln
-aHRfdGFibGU7Cj4+ICAgCj4+ICsJX191OAlyZXNlcnZlZDFbMl07Cj4+ICAgCV9fdTY0CWZsYWdz
-Owo+PiAgIH07Cj4+ICAgCj4+IEBAIC00MDYsNyArNDEwLDYgQEAgc3RydWN0IHY0bDJfY3RybF9o
-ZXZjX3NsaWNlX3BhcmFtcyB7Cj4+ICAgICogQGxvbmdfdGVybV9yZWZfcGljX3NldF9zaXplOiBz
-cGVjaWZpZXMgdGhlIHNpemUgb2YgbG9uZy10ZXJtIHJlZmVyZW5jZQo+PiAgICAqCQkJCXBpY3R1
-cmVzIHNldCBpbmNsdWRlIGluIHRoZSBTUFMgb2YgdGhlIGZpcnN0IHNsaWNlCj4+ICAgICogQG51
-bV9hY3RpdmVfZHBiX2VudHJpZXM6IHRoZSBudW1iZXIgb2YgZW50cmllcyBpbiBkcGIKPj4gLSAq
-IEBkcGI6IHRoZSBkZWNvZGVkIHBpY3R1cmUgYnVmZmVyLCBmb3IgbWV0YS1kYXRhIGFib3V0IHJl
-ZmVyZW5jZSBmcmFtZXMKPj4gICAgKiBAbnVtX3BvY19zdF9jdXJyX2JlZm9yZTogdGhlIG51bWJl
-ciBvZiByZWZlcmVuY2UgcGljdHVyZXMgaW4gdGhlIHNob3J0LXRlcm0KPj4gICAgKgkJCSAgICBz
-ZXQgdGhhdCBjb21lIGJlZm9yZSB0aGUgY3VycmVudCBmcmFtZQo+PiAgICAqIEBudW1fcG9jX3N0
-X2N1cnJfYWZ0ZXI6IHRoZSBudW1iZXIgb2YgcmVmZXJlbmNlIHBpY3R1cmVzIGluIHRoZSBzaG9y
-dC10ZXJtCj4+IEBAIC00MTcsNiArNDIwLDggQEAgc3RydWN0IHY0bDJfY3RybF9oZXZjX3NsaWNl
-X3BhcmFtcyB7Cj4+ICAgICogQHBvY19zdF9jdXJyX2FmdGVyOiBwcm92aWRlcyB0aGUgaW5kZXgg
-b2YgdGhlIHNob3J0IHRlcm0gYWZ0ZXIgcmVmZXJlbmNlcwo+PiAgICAqCQkgICAgICAgaW4gRFBC
-IGFycmF5Cj4+ICAgICogQHBvY19sdF9jdXJyOiBwcm92aWRlcyB0aGUgaW5kZXggb2YgdGhlIGxv
-bmcgdGVybSByZWZlcmVuY2VzIGluIERQQiBhcnJheQo+PiArICogQHJlc2VydmVkOiBwYWRkaW5n
-IGZpZWxkLiBTaG91bGQgYmUgemVyb2VkIGJ5IGFwcGxpY2F0aW9ucy4KPj4gKyAqIEBkcGI6IHRo
-ZSBkZWNvZGVkIHBpY3R1cmUgYnVmZmVyLCBmb3IgbWV0YS1kYXRhIGFib3V0IHJlZmVyZW5jZSBm
-cmFtZXMKPj4gICAgKiBAZmxhZ3M6IHNlZSBWNEwyX0hFVkNfREVDT0RFX1BBUkFNX0ZMQUdfe30K
-Pj4gICAgKi8KPj4gICBzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfZGVjb2RlX3BhcmFtcyB7Cj4+IEBA
-IC00MjQsMTMgKzQyOSwxNCBAQCBzdHJ1Y3QgdjRsMl9jdHJsX2hldmNfZGVjb2RlX3BhcmFtcyB7
-Cj4+ICAgCV9fdTE2CXNob3J0X3Rlcm1fcmVmX3BpY19zZXRfc2l6ZTsKPj4gICAJX191MTYJbG9u
-Z190ZXJtX3JlZl9waWNfc2V0X3NpemU7Cj4+ICAgCV9fdTgJbnVtX2FjdGl2ZV9kcGJfZW50cmll
-czsKPj4gLQlzdHJ1Y3QJdjRsMl9oZXZjX2RwYl9lbnRyeSBkcGJbVjRMMl9IRVZDX0RQQl9FTlRS
-SUVTX05VTV9NQVhdOwo+PiAgIAlfX3U4CW51bV9wb2Nfc3RfY3Vycl9iZWZvcmU7Cj4+ICAgCV9f
-dTgJbnVtX3BvY19zdF9jdXJyX2FmdGVyOwo+PiAgIAlfX3U4CW51bV9wb2NfbHRfY3VycjsKPj4g
-ICAJX191OAlwb2Nfc3RfY3Vycl9iZWZvcmVbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhd
-Owo+PiAgIAlfX3U4CXBvY19zdF9jdXJyX2FmdGVyW1Y0TDJfSEVWQ19EUEJfRU5UUklFU19OVU1f
-TUFYXTsKPj4gICAJX191OAlwb2NfbHRfY3VycltWNEwyX0hFVkNfRFBCX0VOVFJJRVNfTlVNX01B
-WF07Cj4+ICsJX191OAlyZXNlcnZlZFs0XTsKPj4gKwlzdHJ1Y3QJdjRsMl9oZXZjX2RwYl9lbnRy
-eSBkcGJbVjRMMl9IRVZDX0RQQl9FTlRSSUVTX05VTV9NQVhdOwo+PiAgIAlfX3U2NAlmbGFnczsK
-Pj4gICB9Owo+PiAgIAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+Hi Johan
+
+On Tue, Jul 5, 2022 at 3:04 PM Johan Jonker <jbx6244@gmail.com> wrote:
+>
+> From: Johan Jonker <jbx6244@gmail.com>
+>
+> Add Rockchip IDB device for U-boot.
+>
+> On Rockchip SoCs with a NAND as boot device the information data base (IDB) loaded
+> by the boot ROM is stored at the beginning of several erase blocks.
+> Rewriting NAND blocks makes them wear out, so some spare blocks and a writing strategy
+> are required. A closed source usbplug uses block: 2,3,4,5,6 for example.
+> Block 0 and 1 is in use for other data.
+> For compatible reasons this device follows this approach in line with other
+> Rockchip products and modules for now.
+>
+> The Rockchip boot ROM requires a particular file format for booting from NAND:
+>
+>   It starts with 512-byte (IDB sector 0), RC4 encoded header and is aligned to NAND page size.
+>   Rockchip fills sector 1,2 and 3 here with more data structures, but that is not required
+
+I suggest starting to split on what is mandatory and what is optional
+here. If possible remove CamelCase
+definition of variables. Try to split the first patches in small chunk
+so it's easy to discuss a bit more
+
+>   by the boot ROM. It just makes it easier to identify the IDB date and version.
+>
+
+Looks like this is rockchip specific. As far as I understand, all the
+exposed information can be written from rockchip closed/source
+tools. I don't have a rockchip board with Nand to test. Rather prefer
+to go with some initial an minimalistic approach and see how look like
+
+In nxp we have only a small tool in uboot able to program the nand. Do
+you think that same approach is possible in rockchip?
+
+Michael
+
+
+>   Then 2KB pieces (4 x 512 byte sectors) of spl and tpl data aligned to the NAND page size in a
+>   fixed pattern with empty pages.
+>
+> Size of spl and tpl must be aligned to 2KB.
+> Empty NAND pages/sectors not in use should fill with 0xFF padding to increase NAND durability.
+>
+> Create a IDB image for the flash tools below with:
+>
+> #### For RK30 with NAND only ####
+>
+> printf "RK30" > tplspl.bin
+> dd if=u-boot-tpl.bin >> tplspl.bin
+> truncate -s %2048 tplspl.bin
+> truncate -s %2048 u-boot-spl.bin
+> ./mkimage -v -n rk3066 -T rksd -d ./tplspl.bin:./u-boot-spl.bin out
+>
+> #### For other Rockchip SoCs with NAND ####
+>
+> ./mkimage -v -n rk3188 -T rksd -d ./u-boot-tpl.bin:./u-boot-spl.bin out
+>
+> or if more data structures for IDB sector 1, 2 (RC4) and 3 (RC4) are needed then use a custom
+> image tool as mainline only has basic support for IDB sector 0.
+>
+> In order to transfer data from a host (PC) via USB existing methods are used.
+> This driver creates an GPT EFI block driver to work with the
+> U-boot commands "rockusb" and "ums".
+> IDB data is inserted 'on the fly' as if it were a normal disk in blocks with 512 byte.
+> Changing disk parameters is not allowed.
+>
+> The IDB device driver looks for block driver sector 64 to start with and calculates the IDB size.
+> When the last sector is received it erases a NAND block and writes IDB sectors to NAND in a pattern.
+> Written data is verified. If not identical that NAND erase block is freed.
+> As last thing the remaining IDB blocks are scanned and made available for reading.
+>
+> Normal U-boot operation contains 2 steps:
+>
+> 1 - start IDB device
+> 2 - start USB gadget (rockusb or ums)
+>
+> U-boot IDB commands:
+>
+> idb start - start IDB device
+> idb stop  - stop IDB blk device
+> idb info  - show IDB device info
+>
+> Host (PC) tool commands combinations that work:
+>
+> U-boot                                  linux
+> rockusb 0 idb 0
+>                                         upgrade_tool pl
+>                                         upgrade_tool wl 64 upgrade_tool_wl_64.bin
+>                                         upgrade_tool rl 64 512 upgrade_tool_rl_64_512.bin
+>                                         upgrade_tool rd
+>
+>                                         rkdeveloptool ppt
+>                                         rkdeveloptool wlx loader1 rkdeveloptool_wlx_loader1.bin
+>                                         rkdeveloptool wl 64 rkdeveloptool_wl_64.bin
+>                                         rkdeveloptool rl 64 512 rkdeveloptool_rl_64_512.bin
+>                                         rkdeveloptool rd
+>
+>                                         rkflashtool w 64 512 < rkflashtool_w_64_512.bin
+>                                         rkflashtool r 64 512 > rkflashtool_r_64_512.bin
+>
+> ums 0 idb 0
+>                                         dd if=ums_0_idb_0_wr.bin of=/dev/sda1
+>                                         dd if=/dev/sda1 of=ums_0_idb_0_rd.bin
+>
+> Tested with:
+>   MK808 rk3066
+>
+> Not tested:
+>   nfc type V8, V9
+>
+> TODO:
+>   Looking for advice on what needs to be done to make it fit for mainline. Thanks!
+>
+>   This is placed in the mach-rockchip directory,
+>   so we can re-use/combine the source with a usbplug or RK NAND FTL driver
+>   with no MTD frame work bloatware ;) in a Makefile.
+>
+>   IDB header V2
+>
+>   Writing strategy improvement
+>
+>   etc, etc
+>
+> Johan Jonker (6):
+>   rockchip: block: add Rockchip IDB block device
+>   rockchip: spl: allow more boot devices
+>   rockchip: rk3066: add Rockchip IDB block device as boot action
+>   arm: dts: rockchip: sync rk3066/rk3188 DT files from Linux
+>   arm: dts: rockchip: enable nfc node in spl for rk3066 mk808
+>   rockchip: configs: mk808: add idb configs
+>
+>  arch/arm/dts/rk3066a-mk808-u-boot.dtsi |    8 +
+>  arch/arm/dts/rk3066a-mk808.dts         |   18 +
+>  arch/arm/dts/rk3066a.dtsi              |    3 +-
+>  arch/arm/dts/rk3188-radxarock.dts      |    3 +-
+>  arch/arm/dts/rk3188.dtsi               |   24 +-
+>  arch/arm/dts/rk3xxx-u-boot.dtsi        |    4 +
+>  arch/arm/mach-rockchip/Kconfig         |   12 +
+>  arch/arm/mach-rockchip/Makefile        |    1 +
+>  arch/arm/mach-rockchip/rk3066/rk3066.c |   11 +
+>  arch/arm/mach-rockchip/rockchip_idb.c  | 1694 ++++++++++++++++++++++++
+>  arch/arm/mach-rockchip/spl.c           |    5 +-
+>  configs/mk808_defconfig                |    4 +
+>  drivers/block/blk-uclass.c             |    2 +
+>  include/blk.h                          |    1 +
+>  include/dm/uclass-id.h                 |    1 +
+>  include/efi_loader.h                   |    4 +
+>  lib/efi_loader/efi_device_path.c       |   30 +
+>  17 files changed, 1812 insertions(+), 13 deletions(-)
+>  create mode 100644 arch/arm/mach-rockchip/rockchip_idb.c
+>
+> --
+> 2.20.1
+>
+
+
+--
+Michael Nazzareno Trimarchi
+Co-Founder & Chief Executive Officer
+M. +39 347 913 2170
+michael@amarulasolutions.com
+__________________________________
+
+Amarula Solutions BV
+Joop Geesinkweg 125, 1114 AB, Amsterdam, NL
+T. +31 (0)85 111 9172
+info@amarulasolutions.com
+www.amarulasolutions.com
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
