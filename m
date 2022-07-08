@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31725C43334
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 17:27:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED73BC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 18:42:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rht/aoZ1M3NrGHqfjeJ3/2q3kMn05IZ74878CldHWik=; b=gPzSPO+/oAQqVn
-	2zpujJciSu5wcMHFStblE09PEpTWC4CpGTOgSCKuUgAKpof3jo+Xy8h6l5vO5OQBX8qtNQ1p3Gf+J
-	jAt8iY4DeljNzyOOdMpBD7V3YVYThVzgIijc7ogbJEXK9kZ4kG7+W2gVRwNQfCvz2ZgrUkpW8L4SD
-	MR1VADngHqrrQ2xeseF+WJSM4c8zrnfF68sS/tFu9adIomJ1y1u3Y2yrwkqaiHdg0nstau3hDlw1d
-	9jQGAgIdV3o6mV26OtQZVzBGyLh+Tb2OxwSKQ41ZaK4pJw6hXzJzl6c+70+nrn8UWc4qgUQPxZCX6
-	0OykA+xyiaQEwxVKnt0Q==;
+	List-Owner; bh=/Vtt0aPtUtMM15euPFPD6XfnmpXYp7+56TIb0wz+CuU=; b=FAOu5e3paPPPNv
+	934HykbvDSKN5ykGBJvgYLp115fvzTNG6gUpFg4ZlcQSs/VbdvOErVW8o8R8zBKml4VDNCIpDX1wl
+	rf0aIWDVyaUBpXzxAhZ9Wc5jby78cWvcT5OOMYylX3nw2LkbVxZvW0we7LBkSDmHFu9o5ZdLBbez8
+	2j0UAODLnTTFEcZH2BbVy5kStZrQmg11g+J+g3Wgw2UJ0RK3Q/0JmtAclloHdDQDs9A8rBiS3Bmeo
+	vnN9Xa1JV4w4smhRHoNVFcc03R9JCQ158o8HwF8FQB37hEVF+NFsQ8Js6h20RkfG9t+XMR8AWFBOO
+	ettBaAfhQFlUmMl6v9yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9rky-004zQm-2v; Fri, 08 Jul 2022 17:27:08 +0000
-Received: from mail-vs1-xe34.google.com ([2607:f8b0:4864:20::e34])
+	id 1o9svH-005Q2J-81; Fri, 08 Jul 2022 18:41:51 +0000
+Received: from mail-oa1-x2e.google.com ([2001:4860:4864:20::2e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9rkm-004zMT-6d
-	for linux-rockchip@lists.infradead.org; Fri, 08 Jul 2022 17:26:58 +0000
-Received: by mail-vs1-xe34.google.com with SMTP id 189so21901508vsh.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 08 Jul 2022 10:26:54 -0700 (PDT)
+	id 1o9svE-005Q1b-40; Fri, 08 Jul 2022 18:41:49 +0000
+Received: by mail-oa1-x2e.google.com with SMTP id 586e51a60fabf-10c0119dd16so19298993fac.6;
+        Fri, 08 Jul 2022 11:41:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=NSM8ajHqIDtLKXot339G9SFfPFoqyW80VhoVWH3GfCM=;
-        b=t/08+YvQrOla80cXDLEKjcU9b/miWzACs9ggxMSQ/HnX8aRJQyd0xSIl9wOPBVi8w/
-         54scqXstqW5EU51WJ1KomoPnKkwMYmN4G+58IdyJuPtLfJOpOfdfJgvENh8fY2hUvJL7
-         1TMbYhC70bAtFgsoeqkQi22knePdNsbptMrNuG3pSe2Dr1xA0OMerk25gNqj2fNwUZIP
-         y+4wo1j0kdf0mNDSE9tVZ3CJXTHM6YeKGIpEN25lDQmIsK1hvuHMBRiTTz9G9829vOqN
-         4jNy/lzcl4yltVAv0K+5ZD6E8ZTAnf8SV3hRC5TjLN86DevzU4cgD2AFNHy6Ee3OnHOb
-         oV3A==
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=E0+g3v6pC8RZHHJAWVXJd2G4KVUBkvrj09rmmxGrR+E=;
+        b=kSYmvN1LCA3HQHM673GLcBGagoKwVuIV8NANpt2rxPMcLLWoBx+CfJY8ie9CG4TGzW
+         ugF84N5L5QD3G75H5LrXyrM8YkCRQMnK+iZ1dI4DI2zTyth8s05//EGrQJvdGqb9yi4S
+         B/tjHLAOt5UvECMIo6t8OqiACR6SiWt3V+3dF6sUQfeq7kyW6jlLw8j1l2035R9lcPch
+         UcUr8O7CrHvwRQ5lzMep3rsle82S1UVvgN2dAsAoTVQ/xJgiAO/JI8phqK4EF8y6kmpS
+         s0J76+Tjs1AkkNP5UpMf4RoGm4qheTfRTJS/0uObwUMh44154LXbdFg062bUyBbKKDhI
+         FLew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=NSM8ajHqIDtLKXot339G9SFfPFoqyW80VhoVWH3GfCM=;
-        b=pKZsyEL/Fc0GrLJhGpWfOISaV4ojxGn4hwDYR8eD0TP1G6NmpfUZKOeCbNDgYNr8Ac
-         Wfs14BR6AUP4o6e7rA7qNZLV/QW3Swvt8nvHEuReFSAeoCmA4m3BoHxftg6iZQyuUJNj
-         WfTCIDuiPv/equBQbVDho6fyf//7g6fYTI3yvNVlFHUcNPLDYp0GeAXpK8mjwSOTpOoQ
-         qDmdku1uy2dVO69wHDXPPEhG1lQ2ENSdLD2VTgnQRXWBqJuSZdaNXxgsQadWwQfr3jCN
-         THhiN5AIRaqOlkUfjVj1J4qMEjzdOl3jnWa1jGAZlPjf4jPDVle8JlwKs3RwTbE5yY5V
-         CK3g==
-X-Gm-Message-State: AJIora+3vJq8QydD+lBNORv1e+ZsQ2UK9tudKzicuMBjZrAsBsr+Fl4w
-	NC2qsW0LTWzeTvMuVbnjRMdFEw==
-X-Google-Smtp-Source: AGRyM1vk1ZoPhmtNc9NwRJLsUfHXgBQK+dUd9nrNQ3zzlVukaxwwhB4iEeeKk3+DPtxmTSvxtnmmdQ==
-X-Received: by 2002:a05:6102:3fa9:b0:356:a227:1670 with SMTP id o41-20020a0561023fa900b00356a2271670mr2212510vsv.79.1657301213915;
-        Fri, 08 Jul 2022 10:26:53 -0700 (PDT)
-Received: from eze-laptop ([190.190.187.68])
-        by smtp.gmail.com with ESMTPSA id b127-20020a1fcb85000000b003743e7c87c5sm4611362vkg.5.2022.07.08.10.26.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Jul 2022 10:26:53 -0700 (PDT)
-Date: Fri, 8 Jul 2022 14:26:48 -0300
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, hverkuil@xs4all.nl, p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org, mripard@kernel.org,
-	paul.kocialkowski@bootlin.com, wens@csie.org,
-	jernej.skrabec@gmail.com, samuel@sholland.org,
-	nicolas.dufresne@collabora.com, andrzej.p@collabora.com,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	kernel@collabora.com
-Subject: Re: [PATCH v13 15/17] media: uapi: HEVC: fix padding in v4l2 control
- structures
-Message-ID: <Ysho2DSLKk7W4Gt/@eze-laptop>
-References: <20220708162156.815772-1-benjamin.gaignard@collabora.com>
- <20220708162156.815772-16-benjamin.gaignard@collabora.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=E0+g3v6pC8RZHHJAWVXJd2G4KVUBkvrj09rmmxGrR+E=;
+        b=Sjfoz6JVTGiWOEVV+jQAPgqZhSyOT7oW4CPbVDy4Am2pwyQACEwFCBDaGqXxpvwABh
+         On/i4PCS5JSdXQt+mj3GAWS1ZvlSxDkdnTUL4eBNHNtKPLrp2I9+rKH4Iw0oisVgxalG
+         /3j9Fj2wE+tB+GRgHK8QIFhbTtzlyKCwSgEMIs7yeT5dE9pUEitNYfxuJpwVJg3H/+mj
+         rECMdNgsTJG4Lns/tJ5zkuOMhrFKxEoxCcGLnZmo5LpRUjAiCYvP5vIMGpHwnU32lvWf
+         q+p+WusZwvrzJq4VPQnNjxOM46p6PH7QMqv+9ptA1AQS10sV+MIEHczmdLnZGaAHDLlv
+         5bww==
+X-Gm-Message-State: AJIora8bRWpiidEvhc8iXaPS/2YxhK145qQ5lstGqG8N5yGKu1gbEYYt
+	d+4eNfIti7e+8UzFuDyq6oZ2f2fLq9DOCHiMJj0=
+X-Google-Smtp-Source: AGRyM1tJ/cjliLSb05PEgv9ikZiVR60MsFIKWxl5kdrWfbZDUl5sqhyFFPR61swqCmtESYW1a7F/DCBBVWpAqv0OAXU=
+X-Received: by 2002:a05:6870:88a8:b0:101:6409:ae26 with SMTP id
+ m40-20020a05687088a800b001016409ae26mr736747oam.160.1657305706145; Fri, 08
+ Jul 2022 11:41:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220708162156.815772-16-benjamin.gaignard@collabora.com>
+References: <20220608161150.58919-1-linux@fw-web.de> <20220608161150.58919-2-linux@fw-web.de>
+ <5611d1c5-44db-4144-3c46-256323d39fe3@arm.com>
+In-Reply-To: <5611d1c5-44db-4144-3c46-256323d39fe3@arm.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Fri, 8 Jul 2022 14:41:35 -0400
+Message-ID: <CAMdYzYo=Wft93OEKapVFx-oxe8ocU7OuhU+MOdqUw8-QjqzDGg@mail.gmail.com>
+Subject: Re: [PATCH 1/2] rtc: hym8563: try multiple times to init device
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Frank Wunderlich <linux@fw-web.de>, 
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+	Frank Wunderlich <frank-w@public-files.de>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	devicetree <devicetree@vger.kernel.org>, 
+	arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rtc@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_102656_253388_A72FAAB2 
-X-CRM114-Status: GOOD (  26.69  )
+X-CRM114-CacheID: sfid-20220708_114148_178853_771539D3 
+X-CRM114-Status: GOOD (  31.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,224 +90,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jul 08, 2022 at 06:21:54PM +0200, Benjamin Gaignard wrote:
-> Fix padding where needed to remove holes
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> Tested-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+On Fri, Jul 8, 2022 at 12:18 PM Robin Murphy <robin.murphy@arm.com> wrote:
+>
+> On 2022-06-08 17:11, Frank Wunderlich wrote:
+> > From: Peter Geis <pgwipeout@gmail.com>
+> >
+> > RTC sometimes does not respond the first time in init.
+> > Try multiple times to get a response.
+>
+> FWIW, given that HYM8563 is fairly common on RK3288 boards - I can't say
+> I've ever noticed an issue with mine, for instance - it seems dubious
+> that this would be a general issue of the chip itself. Are you sure it's
+> not a SoC or board-level issue with the I2C bus being in a funny initial
+> state, timings being marginal, or suchlike?
 
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+I don't think this is an SoC issue since this is the first instance
+I've encountered it. Mind you we don't have the reset lines hooked up
+at all for the Rockchip i2c driver, so it's possible that's the case,
+but I'd imagine it would be observed more broadly if that was the
+case. I've tried pushing the timings out pretty far as well as bumping
+up the drive strength to no change. It seems to occur only with the
+hym rtc used on this board. I suspect it's a new variant of the hym
+that has slightly different behavior.
 
-> ---
->  .../media/v4l/ext-ctrls-codec.rst             |  6 ++---
->  drivers/media/v4l2-core/v4l2-ctrls-core.c     | 15 -------------
->  include/media/hevc-ctrls.h                    | 22 ++++++++++++-------
->  3 files changed, 17 insertions(+), 26 deletions(-)
-> 
-> diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> index c05c5553f0e3..73b347acb704 100644
-> --- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> +++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-> @@ -3514,9 +3514,6 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->      * - __u8
->        - ``num_active_dpb_entries``
->        - The number of entries in ``dpb``.
-> -    * - struct :c:type:`v4l2_hevc_dpb_entry`
-> -      - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
-> -      - The decoded picture buffer, for meta-data about reference frames.
->      * - __u8
->        - ``num_poc_st_curr_before``
->        - The number of reference pictures in the short-term set that come before
-> @@ -3540,6 +3537,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
->        - ``poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
->        - PocLtCurr as described in section 8.3.2 "Decoding process for reference
->          picture set": provides the index of the long term references in DPB array.
-> +    * - struct :c:type:`v4l2_hevc_dpb_entry`
-> +      - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
-> +      - The decoded picture buffer, for meta-data about reference frames.
->      * - __u64
->        - ``flags``
->        - See :ref:`Decode Parameters Flags <hevc_decode_params_flags>`
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> index c5c5407584ff..1f85828d6694 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-> @@ -536,7 +536,6 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
->  	struct v4l2_ctrl_h264_decode_params *p_h264_dec_params;
->  	struct v4l2_ctrl_hevc_sps *p_hevc_sps;
->  	struct v4l2_ctrl_hevc_pps *p_hevc_pps;
-> -	struct v4l2_ctrl_hevc_slice_params *p_hevc_slice_params;
->  	struct v4l2_ctrl_hdr10_mastering_display *p_hdr10_mastering;
->  	struct v4l2_ctrl_hevc_decode_params *p_hevc_decode_params;
->  	struct v4l2_area *area;
-> @@ -814,8 +813,6 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
->  			p_hevc_pps->pps_beta_offset_div2 = 0;
->  			p_hevc_pps->pps_tc_offset_div2 = 0;
->  		}
-> -
-> -		zero_padding(*p_hevc_pps);
->  		break;
->  
->  	case V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS:
-> @@ -824,21 +821,9 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
->  		if (p_hevc_decode_params->num_active_dpb_entries >
->  		    V4L2_HEVC_DPB_ENTRIES_NUM_MAX)
->  			return -EINVAL;
-> -
-> -		for (i = 0; i < p_hevc_decode_params->num_active_dpb_entries;
-> -		     i++) {
-> -			struct v4l2_hevc_dpb_entry *dpb_entry =
-> -				&p_hevc_decode_params->dpb[i];
-> -
-> -			zero_padding(*dpb_entry);
-> -		}
->  		break;
->  
->  	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
-> -		p_hevc_slice_params = p;
-> -
-> -		zero_padding(p_hevc_slice_params->pred_weight_table);
-> -		zero_padding(*p_hevc_slice_params);
->  		break;
->  
->  	case V4L2_CTRL_TYPE_HDR10_CLL_INFO:
-> diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-> index 9239e8b649e0..7358cbfc3e4d 100644
-> --- a/include/media/hevc-ctrls.h
-> +++ b/include/media/hevc-ctrls.h
-> @@ -105,6 +105,7 @@ enum v4l2_stateless_hevc_start_code {
->   * @chroma_format_idc: specifies the chroma sampling
->   * @sps_max_sub_layers_minus1: this value plus 1 specifies the maximum number
->   *                             of temporal sub-layers
-> + * @reserved: padding field. Should be zeroed by applications.
->   * @flags: see V4L2_HEVC_SPS_FLAG_{}
->   */
->  struct v4l2_ctrl_hevc_sps {
-> @@ -133,6 +134,7 @@ struct v4l2_ctrl_hevc_sps {
->  	__u8	chroma_format_idc;
->  	__u8	sps_max_sub_layers_minus1;
->  
-> +	__u8	reserved[6];
->  	__u64	flags;
->  };
->  
-> @@ -192,6 +194,7 @@ struct v4l2_ctrl_hevc_sps {
->   *			divided by 2
->   * @log2_parallel_merge_level_minus2: this value plus 2 specifies the value of
->   *                                    the variable Log2ParMrgLevel
-> + * @reserved: padding field. Should be zeroed by applications.
->   * @flags: see V4L2_HEVC_PPS_FLAG_{}
->   */
->  struct v4l2_ctrl_hevc_pps {
-> @@ -210,8 +213,7 @@ struct v4l2_ctrl_hevc_pps {
->  	__s8	pps_beta_offset_div2;
->  	__s8	pps_tc_offset_div2;
->  	__u8	log2_parallel_merge_level_minus2;
-> -
-> -	__u8	padding[4];
-> +	__u8	reserved;
->  	__u64	flags;
->  };
->  
-> @@ -239,14 +241,15 @@ struct v4l2_ctrl_hevc_pps {
->   * @timestamp: timestamp of the V4L2 capture buffer to use as reference.
->   * @flags: long term flag for the reference frame
->   * @field_pic: whether the reference is a field picture or a frame.
-> + * @reserved: padding field. Should be zeroed by applications.
->   * @pic_order_cnt_val: the picture order count of the reference.
->   */
->  struct v4l2_hevc_dpb_entry {
->  	__u64	timestamp;
->  	__u8	flags;
->  	__u8	field_pic;
-> +	__u16	reserved;
->  	__s32	pic_order_cnt_val;
-> -	__u8	padding[2];
->  };
->  
->  /**
-> @@ -285,8 +288,6 @@ struct v4l2_hevc_pred_weight_table {
->  	__s8	delta_chroma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
->  	__s8	chroma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
->  
-> -	__u8	padding[6];
-> -
->  	__u8	luma_log2_weight_denom;
->  	__s8	delta_chroma_log2_weight_denom;
->  };
-> @@ -339,6 +340,7 @@ struct v4l2_hevc_pred_weight_table {
->   * @slice_tc_offset_div2: specify the deblocking parameter offsets for tC divided by 2
->   * @pic_struct: indicates whether a picture should be displayed as a frame or as one or
->   *		more fields
-> + * @reserved0: padding field. Should be zeroed by applications.
->   * @slice_segment_addr: specifies the address of the first coding tree block in
->   *			the slice segment
->   * @ref_idx_l0: the list of L0 reference elements as indices in the DPB
-> @@ -349,6 +351,7 @@ struct v4l2_hevc_pred_weight_table {
->   *				picture include in the SPS
->   * @pred_weight_table: the prediction weight coefficients for inter-picture
->   *		       prediction
-> + * @reserved1: padding field. Should be zeroed by applications.
->   * @flags: see V4L2_HEVC_SLICE_PARAMS_FLAG_{}
->   */
->  struct v4l2_ctrl_hevc_slice_params {
-> @@ -379,17 +382,18 @@ struct v4l2_ctrl_hevc_slice_params {
->  	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture timing SEI message */
->  	__u8	pic_struct;
->  
-> +	__u8	reserved0[3];
->  	/* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
->  	__u32	slice_segment_addr;
->  	__u8	ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
->  	__u8	ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
->  	__u16	short_term_ref_pic_set_size;
->  	__u16	long_term_ref_pic_set_size;
-> -	__u8	padding;
->  
->  	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction parameter */
->  	struct v4l2_hevc_pred_weight_table pred_weight_table;
->  
-> +	__u8	reserved1[2];
->  	__u64	flags;
->  };
->  
-> @@ -406,7 +410,6 @@ struct v4l2_ctrl_hevc_slice_params {
->   * @long_term_ref_pic_set_size: specifies the size of long-term reference
->   *				pictures set include in the SPS of the first slice
->   * @num_active_dpb_entries: the number of entries in dpb
-> - * @dpb: the decoded picture buffer, for meta-data about reference frames
->   * @num_poc_st_curr_before: the number of reference pictures in the short-term
->   *			    set that come before the current frame
->   * @num_poc_st_curr_after: the number of reference pictures in the short-term
-> @@ -417,6 +420,8 @@ struct v4l2_ctrl_hevc_slice_params {
->   * @poc_st_curr_after: provides the index of the short term after references
->   *		       in DPB array
->   * @poc_lt_curr: provides the index of the long term references in DPB array
-> + * @reserved: padding field. Should be zeroed by applications.
-> + * @dpb: the decoded picture buffer, for meta-data about reference frames
->   * @flags: see V4L2_HEVC_DECODE_PARAM_FLAG_{}
->   */
->  struct v4l2_ctrl_hevc_decode_params {
-> @@ -424,13 +429,14 @@ struct v4l2_ctrl_hevc_decode_params {
->  	__u16	short_term_ref_pic_set_size;
->  	__u16	long_term_ref_pic_set_size;
->  	__u8	num_active_dpb_entries;
-> -	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
->  	__u8	num_poc_st_curr_before;
->  	__u8	num_poc_st_curr_after;
->  	__u8	num_poc_lt_curr;
->  	__u8	poc_st_curr_before[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
->  	__u8	poc_st_curr_after[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
->  	__u8	poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
-> +	__u8	reserved[4];
-> +	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
->  	__u64	flags;
->  };
->  
-> -- 
-> 2.32.0
-> 
+>
+> Robin.
+>
+> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+> > Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> > ---
+> >   drivers/rtc/rtc-hym8563.c | 11 +++++++++--
+> >   1 file changed, 9 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/rtc/rtc-hym8563.c b/drivers/rtc/rtc-hym8563.c
+> > index 90e602e99d03..9adcedaa4613 100644
+> > --- a/drivers/rtc/rtc-hym8563.c
+> > +++ b/drivers/rtc/rtc-hym8563.c
+> > @@ -13,6 +13,7 @@
+> >   #include <linux/clk-provider.h>
+> >   #include <linux/i2c.h>
+> >   #include <linux/bcd.h>
+> > +#include <linux/delay.h>
+> >   #include <linux/rtc.h>
+> >
+> >   #define HYM8563_CTL1                0x00
+> > @@ -438,10 +439,16 @@ static irqreturn_t hym8563_irq(int irq, void *dev_id)
+> >
+> >   static int hym8563_init_device(struct i2c_client *client)
+> >   {
+> > -     int ret;
+> > +     int ret, i;
+> >
+> >       /* Clear stop flag if present */
+> > -     ret = i2c_smbus_write_byte_data(client, HYM8563_CTL1, 0);
+> > +     for (i = 0; i < 3; i++) {
+> > +             ret = i2c_smbus_write_byte_data(client, HYM8563_CTL1, 0);
+> > +             if (ret == 0)
+> > +                     break;
+> > +             msleep(20);
+> > +     }
+> > +
+> >       if (ret < 0)
+> >               return ret;
+> >
 
 _______________________________________________
 Linux-rockchip mailing list
