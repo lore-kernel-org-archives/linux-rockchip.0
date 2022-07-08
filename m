@@ -4,71 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07D42C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 09:00:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E178CC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 09:38:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gBODX610Cc8ZJXr/3pNyQnz+l56X0SZwcC6h6G3Wuw0=; b=06BBVXLlAevLPx
-	wh+yQbyb7UqlC3gbasH1myHqCtjypxlARx1g6OD+o1YKjzIShWjO/6ISKwrU5NpCrc1gIGn4qivFZ
-	ATipsZrqCaKzB5sDxhOzqX2q1TYwIcyjQJLG+bTi4zmxTaBLoJQ2UROkGh5MMd7p9UxZ1W4lz80Lq
-	ecthOm02jM6i05VHozVaYTNT2JEbVULu7zLOeCAsyCjngaiTBvSMk3AuMZxEwhyIHU3qAjknyb4Y8
-	oiguf1Gj9TDxOasnZtgoZJYFW7awOhIIhWejJXqQV3nniupQdmlU12Vv51Fl9MZvex+x58MV1HHeV
-	a4iEQZp6tLiO2bL0iXUw==;
+	List-Owner; bh=RI1MtGz6ag0rlWfXkFBITUDsgOjifnS9EGVCe9uOCS8=; b=M7lnF6g22+GjJp
+	Dq3ZsCouaqFCo+eaKGTNGfg/2Klq/Ml/NZFbeeSXhne0e7Fd4DyC1lsWJckSoM9Yu70SvCFWzEUE8
+	rD5QI5mnGtc5taiCXkzL9c0v2+EMKc8dX9eim+PRl4Lk39/bHoO4Wtd14azdKzzFiHUp1traCyoML
+	8ITk7Ds7VnmJH6SvQYNCUF2taDe+fEgEVLpcPDTtvAhm5LybDd8a+2vHABOvqgoBLim6cLpwUaui3
+	/7/fiP4atev+0uZW3rxf/6DKGIG5qvQ7YG+4+0hnzgh5Ic+vdnjJQ4dy2+33wWsrKTXpClw/HwGuA
+	grvLncOEJVqR5VcXBYPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jqa-002jQE-7H; Fri, 08 Jul 2022 09:00:24 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1o9kQv-002xxD-1a; Fri, 08 Jul 2022 09:37:57 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9jpH-002itR-93
-	for linux-rockchip@lists.infradead.org; Fri, 08 Jul 2022 08:59:05 +0000
-Received: by mail-pf1-x429.google.com with SMTP id y9so8791871pff.12
-        for <linux-rockchip@lists.infradead.org>; Fri, 08 Jul 2022 01:59:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=amarulasolutions.com; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=rpBIPZoEOcdI5wCWlLWqGXg56NDDPjrDi01arW3/rrA=;
-        b=PDVNridy/FVQHJjoxp3EXy/miBQ6yThN3u+Xjh9V8ag9TiQ12D0VwTyB3aBwauMx2I
-         AG+Gwasnbbp08iRgF5aMqtR940L4g2i6OAq11SezwF5hw73vrcuZS7GXx8KvHRZLHUCD
-         DVZ2xrjM7J8d9JAV2hQv/VC+/wOA4wBBGCQmc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=rpBIPZoEOcdI5wCWlLWqGXg56NDDPjrDi01arW3/rrA=;
-        b=tnVcVmxtKsXr7F+gtUm0WSCXGdBruOOcepQPIJNqwyoFUereEan4E4Q84Dz7bwyBr7
-         wVuKvUy6r7xUTtnzD2QqqlBwYDqQtYBDuBFJTaJY4pHHIS4DIaN5pZi537ffmY5cwe55
-         2qH922A8q3I1EsU3BiHledcoDpAXgJrGw+RNs/51LvYe9SYbN8Ap4DDe0aOxDXNLI9Vv
-         xtgADQZyZ9VirFMJCACWJ4zCrgdullvyNjx5FQ0clpHAASF6WKx4xd/NaLsLTuQ4UOZm
-         U7NObkDAoHGHpjQWhwsFLcOZ8bG34EEduRmRtOTyugyN10hU59hFRDs2r4JpbYqIPcJg
-         U9Sg==
-X-Gm-Message-State: AJIora+jp66sck2+AtEcpniOm0NyQ5oaG/VdM2rXjxRbD9vHEdXNK/gW
-	0K8X09uu5SsYHdhTSFpZ+PWUtOc+XX7O7+iOXDlD0g==
-X-Google-Smtp-Source: AGRyM1sQytUht2yJLJ7J+cYr8NzXL6L5CGUjxBU9VdfkGYywSTCydJtiD1eDQD7nCAYjNvOgibtJxg/J9mWvKSWpo0w=
-X-Received: by 2002:a05:6a00:2407:b0:528:5bbc:aa0d with SMTP id
- z7-20020a056a00240700b005285bbcaa0dmr2880732pfh.40.1657270740765; Fri, 08 Jul
- 2022 01:59:00 -0700 (PDT)
+	id 1o9kQh-002xr1-IG; Fri, 08 Jul 2022 09:37:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+	s=badeba3b8450; t=1657273045;
+	bh=7DjN/u4lV28JQGeSo7v9VWllQNWiCVT/J6Yw1Y7f+08=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=K7jYehq7hFxHD1ijV4FP+4DLs+ERcehlEmVXuwgjDeMMzR3ms9bKrJuPKRKOg+de4
+	 sPp56q65AEtO+1qlRQarUPsFgnDlTFWQmgraD76xF3Mp+b7bcRshGcJndGc7Dv9gSG
+	 ha/owRF7z6CbMzCi3g7vWswStSU36lH6Uy8YFQo0=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [157.180.225.69] ([157.180.225.69]) by web-mail.gmx.net
+ (3c-app-gmx-bs34.server.lan [172.19.170.86]) (via HTTP); Fri, 8 Jul 2022
+ 11:37:25 +0200
 MIME-Version: 1.0
-References: <1cf06b47-4f0d-2207-8135-3a48826520f0@gmail.com>
-In-Reply-To: <1cf06b47-4f0d-2207-8135-3a48826520f0@gmail.com>
-From: Michael Nazzareno Trimarchi <michael@amarulasolutions.com>
-Date: Fri, 8 Jul 2022 10:58:49 +0200
-Message-ID: <CAOf5uwkUmAUeMt8+Y_ExojBigT7Vt6ju+E0vx4o-tNyUZ8B3UA@mail.gmail.com>
-Subject: Re: [PATCH v1 0/6] Add Rockchip IDB device
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, 
-	Philipp Tomsich <philipp.tomsich@vrull.eu>, xypron.glpk@gmx.de, 
-	U-Boot-Denx <u-boot@lists.denx.de>, Yifeng Zhao <yifeng.zhao@rock-chips.com>, 
-	jon.lin@rock-chips.com, 
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, miquel.raynal@bootlin.com, 
-	dario.binacchi@amarulasolutions.com
+Message-ID: <trinity-8311107f-8d47-4da9-8b30-012156e1ce68-1657273045706@3c-app-gmx-bs34>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Peter Geis <pgwipeout@gmail.com>
+Cc: Samuel Holland <samuel@sholland.org>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Vinod Koul <vkoul@kernel.org>, "open
+ list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, arm-mail-list
+ <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..."
+ <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List
+ <linux-kernel@vger.kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Subject: Aw: Re: [BUG] USB broken on rk3568 based R2Pro
+Date: Fri, 8 Jul 2022 11:37:25 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <CAMdYzYrs0oJXVcViOmJk4E7PSTeP5TYs0O_ePHmrcAiKtOAWXQ@mail.gmail.com>
+References: <trinity-54ed588d-4b2c-4177-83b0-4eda8ff16a42-1657210235522@3c-app-gmx-bap68>
+ <trinity-ec3b4258-cb12-42c2-9058-362260a275d2-1657216287085@3c-app-gmx-bap68>
+ <CAMdYzYrs0oJXVcViOmJk4E7PSTeP5TYs0O_ePHmrcAiKtOAWXQ@mail.gmail.com>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:4OJhdHFpq7YpX6xsUbZCX2nrOMgzlmYf82BMa6ciaZDE8xDzru1jsrfijDkjdym8cGddL
+ t8cHv+WAuN/5qZ8W0/Ljxq206ngky8YIv1Ro6nQCJ3zOP/kp6hsytwtZIhsSV01khwuindPc0lCO
+ iXBoDiZ93w+k7tl2GT8/8b7ws2eAD7M+iKW9W6JxhFrtNx7vgYluHLlP7CMMKdeva8JXZbnJXUz6
+ BE5HJleqt/5vCL0rCQhY46dYdu1JNW/diQy5cr3Eg6gbHjx6A8RZ0RGypkaK2dLFHvmjb4NOMuRq
+ X0=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Muo9ZjD44g4=:51OLlILkc6InU8bvJlJVsp
+ 1+i1blCY6q/2wG5K+hJ8K1AjFJBmeqZ1gMWElBAs3GQqLT6TJwIAoTPkZUddVNZOMQZnfN9/p
+ Eot5yUV8zbAQLZqt74VVnkdY7b6gpleCZsuyx/mjUUx4nz+SlND4+UBJkJCGvhu003dyU8DfW
+ zytMXqC/S5tqhPBd9CrNqTO46hquSDttq0yJVZWjSR6yatqdmZhZ8NXcEkicGKGtcu3LHUQpY
+ g+fXltGEw65/eV7+y/shwme8qzN704++mKsKZZy2XRwf4vaT4Os/zivvyZ0JzhTgiTmSwMnsX
+ uNcPMlmxd3TCrxctvUMEOgjK/BELiEJEOoJIMT8tMx3wICjJAOpHsdqFr6N4pokycbOR+sDls
+ AFIMA1G1/KUDQ1c7Ed8sONZEjwcp/PwJWHZYsLvi2kPr3Af3d5xuUE6wFuqBk7/OxxOWBFssn
+ m9dw0H/49mQLce4FVp13f02YIQL4PCS3fveXdqkcbCYRHuRikGkoiE2UP90tK83HxULUYk50T
+ Oj+HcwCaXWUzf7rONtgv2tcqzKxFYcfi+L/qG+wD6M/eCNPgP6jT4i6XI/eIWCLWSbc6fkSMW
+ tofIhv6AAGZABxpy5bnYfgVBx/irueB8erMzRDYFJa2Gc72r1+0HVN/3EtA/bV05Y+tOUogqG
+ 8agarUPV+ejsTNfLVVXyBotQyuF1FSc8s3WAqlbMGwX20xgraFif1J5MMa9uiHlvy/bb1rV+a
+ lB6tyew6UGYWgpkQHuNSgsFTOPn3pq2/e5rnGUbQuoQh6RwVEq5/MZBlRg3EWdsek8BhoRFq/
+ IFb+Mfb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_015903_408380_DA9888FA 
-X-CRM114-Status: GOOD (  33.18  )
+X-CRM114-CacheID: sfid-20220708_023744_111593_820CA457 
+X-CRM114-Status: GOOD (  23.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,177 +93,270 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Johan
-
-On Tue, Jul 5, 2022 at 3:04 PM Johan Jonker <jbx6244@gmail.com> wrote:
->
-> From: Johan Jonker <jbx6244@gmail.com>
->
-> Add Rockchip IDB device for U-boot.
->
-> On Rockchip SoCs with a NAND as boot device the information data base (IDB) loaded
-> by the boot ROM is stored at the beginning of several erase blocks.
-> Rewriting NAND blocks makes them wear out, so some spare blocks and a writing strategy
-> are required. A closed source usbplug uses block: 2,3,4,5,6 for example.
-> Block 0 and 1 is in use for other data.
-> For compatible reasons this device follows this approach in line with other
-> Rockchip products and modules for now.
->
-> The Rockchip boot ROM requires a particular file format for booting from NAND:
->
->   It starts with 512-byte (IDB sector 0), RC4 encoded header and is aligned to NAND page size.
->   Rockchip fills sector 1,2 and 3 here with more data structures, but that is not required
-
-I suggest starting to split on what is mandatory and what is optional
-here. If possible remove CamelCase
-definition of variables. Try to split the first patches in small chunk
-so it's easy to discuss a bit more
-
->   by the boot ROM. It just makes it easier to identify the IDB date and version.
->
-
-Looks like this is rockchip specific. As far as I understand, all the
-exposed information can be written from rockchip closed/source
-tools. I don't have a rockchip board with Nand to test. Rather prefer
-to go with some initial an minimalistic approach and see how look like
-
-In nxp we have only a small tool in uboot able to program the nand. Do
-you think that same approach is possible in rockchip?
-
-Michael
 
 
->   Then 2KB pieces (4 x 512 byte sectors) of spl and tpl data aligned to the NAND page size in a
->   fixed pattern with empty pages.
->
-> Size of spl and tpl must be aligned to 2KB.
-> Empty NAND pages/sectors not in use should fill with 0xFF padding to increase NAND durability.
->
-> Create a IDB image for the flash tools below with:
->
-> #### For RK30 with NAND only ####
->
-> printf "RK30" > tplspl.bin
-> dd if=u-boot-tpl.bin >> tplspl.bin
-> truncate -s %2048 tplspl.bin
-> truncate -s %2048 u-boot-spl.bin
-> ./mkimage -v -n rk3066 -T rksd -d ./tplspl.bin:./u-boot-spl.bin out
->
-> #### For other Rockchip SoCs with NAND ####
->
-> ./mkimage -v -n rk3188 -T rksd -d ./u-boot-tpl.bin:./u-boot-spl.bin out
->
-> or if more data structures for IDB sector 1, 2 (RC4) and 3 (RC4) are needed then use a custom
-> image tool as mainline only has basic support for IDB sector 0.
->
-> In order to transfer data from a host (PC) via USB existing methods are used.
-> This driver creates an GPT EFI block driver to work with the
-> U-boot commands "rockusb" and "ums".
-> IDB data is inserted 'on the fly' as if it were a normal disk in blocks with 512 byte.
-> Changing disk parameters is not allowed.
->
-> The IDB device driver looks for block driver sector 64 to start with and calculates the IDB size.
-> When the last sector is received it erases a NAND block and writes IDB sectors to NAND in a pattern.
-> Written data is verified. If not identical that NAND erase block is freed.
-> As last thing the remaining IDB blocks are scanned and made available for reading.
->
-> Normal U-boot operation contains 2 steps:
->
-> 1 - start IDB device
-> 2 - start USB gadget (rockusb or ums)
->
-> U-boot IDB commands:
->
-> idb start - start IDB device
-> idb stop  - stop IDB blk device
-> idb info  - show IDB device info
->
-> Host (PC) tool commands combinations that work:
->
-> U-boot                                  linux
-> rockusb 0 idb 0
->                                         upgrade_tool pl
->                                         upgrade_tool wl 64 upgrade_tool_wl_64.bin
->                                         upgrade_tool rl 64 512 upgrade_tool_rl_64_512.bin
->                                         upgrade_tool rd
->
->                                         rkdeveloptool ppt
->                                         rkdeveloptool wlx loader1 rkdeveloptool_wlx_loader1.bin
->                                         rkdeveloptool wl 64 rkdeveloptool_wl_64.bin
->                                         rkdeveloptool rl 64 512 rkdeveloptool_rl_64_512.bin
->                                         rkdeveloptool rd
->
->                                         rkflashtool w 64 512 < rkflashtool_w_64_512.bin
->                                         rkflashtool r 64 512 > rkflashtool_r_64_512.bin
->
-> ums 0 idb 0
->                                         dd if=ums_0_idb_0_wr.bin of=/dev/sda1
->                                         dd if=/dev/sda1 of=ums_0_idb_0_rd.bin
->
-> Tested with:
->   MK808 rk3066
->
-> Not tested:
->   nfc type V8, V9
->
-> TODO:
->   Looking for advice on what needs to be done to make it fit for mainline. Thanks!
->
->   This is placed in the mach-rockchip directory,
->   so we can re-use/combine the source with a usbplug or RK NAND FTL driver
->   with no MTD frame work bloatware ;) in a Makefile.
->
->   IDB header V2
->
->   Writing strategy improvement
->
->   etc, etc
->
-> Johan Jonker (6):
->   rockchip: block: add Rockchip IDB block device
->   rockchip: spl: allow more boot devices
->   rockchip: rk3066: add Rockchip IDB block device as boot action
->   arm: dts: rockchip: sync rk3066/rk3188 DT files from Linux
->   arm: dts: rockchip: enable nfc node in spl for rk3066 mk808
->   rockchip: configs: mk808: add idb configs
->
->  arch/arm/dts/rk3066a-mk808-u-boot.dtsi |    8 +
->  arch/arm/dts/rk3066a-mk808.dts         |   18 +
->  arch/arm/dts/rk3066a.dtsi              |    3 +-
->  arch/arm/dts/rk3188-radxarock.dts      |    3 +-
->  arch/arm/dts/rk3188.dtsi               |   24 +-
->  arch/arm/dts/rk3xxx-u-boot.dtsi        |    4 +
->  arch/arm/mach-rockchip/Kconfig         |   12 +
->  arch/arm/mach-rockchip/Makefile        |    1 +
->  arch/arm/mach-rockchip/rk3066/rk3066.c |   11 +
->  arch/arm/mach-rockchip/rockchip_idb.c  | 1694 ++++++++++++++++++++++++
->  arch/arm/mach-rockchip/spl.c           |    5 +-
->  configs/mk808_defconfig                |    4 +
->  drivers/block/blk-uclass.c             |    2 +
->  include/blk.h                          |    1 +
->  include/dm/uclass-id.h                 |    1 +
->  include/efi_loader.h                   |    4 +
->  lib/efi_loader/efi_device_path.c       |   30 +
->  17 files changed, 1812 insertions(+), 13 deletions(-)
->  create mode 100644 arch/arm/mach-rockchip/rockchip_idb.c
->
-> --
-> 2.20.1
->
+regards Frank
 
 
---
-Michael Nazzareno Trimarchi
-Co-Founder & Chief Executive Officer
-M. +39 347 913 2170
-michael@amarulasolutions.com
-__________________________________
+> Gesendet: Donnerstag, 07. Juli 2022 um 21:41 Uhr
+> Von: "Peter Geis" <pgwipeout@gmail.com>
+> On Thu, Jul 7, 2022 at 1:51 PM Frank Wunderlich <frank-w@public-files.de> wrote:
+> >
+> > Hi,
+> >
+> > traced it down with manual reverts to this one:
+> >
+> > commit 6a98df08ccd55e87947d253b19925691763e755c
+> >     phy: rockchip-inno-usb2: Fix muxed interrupt support
+> >
+> > luckily i can revert only this and now upper usb-port works again
+> >
+> > @samuel: have you an idea how to fix your problem without breaking my board? :)
+> >
+> > @greg/Vinod: maybe we can add a revert of this in mainline till issue is resolved?
+> >
+> > regards Frank
+>
+> I don't know what you're running, but with the standard arm64
+> defconfig w/ all rockchip stuff built in, I have no issues here on
+> 5.19.
+> Note, the following changes are necessary to the 5.19 dts here:
+> Remove the extcon from usb_host0_xhci, as the production model doesn't
+> have automatic switching capabilities. The ID pin was removed in favor
+> of the usb debug function which also doesn't work.
+> Add dr_mode = "host" to the same node, for the same reason.
 
-Amarula Solutions BV
-Joop Geesinkweg 125, 1114 AB, Amsterdam, NL
-T. +31 (0)85 111 9172
-info@amarulasolutions.com
-www.amarulasolutions.com
+i already added the dr_mode=host to my xhci-node [1], but it is not pushed down to usb2-phy
+
+it looks like the dr_mode property is ignored (or not yet set)...so the switch statement which is added by the patch choose the wrong initialization. in 5.18 init was done independ from phy-mode
+
+# dmesg | grep -i debug
+[    1.093370] phy phy-fe8a0000.usb2phy.0: DEBUG: Passed rockchip_usb2phy_irq 981 port_id:1(OTG:0,HOST:1)
+[    1.094739] phy phy-fe8a0000.usb2phy.1: DEBUG: Passed rockchip_usb2phy_irq 981 port_id:0(OTG:0,HOST:1)
+# cat /sys/firmware/devicetree/base/usb@fcc00000/dr_mode
+host#
+# cat /sys/firmware/devicetree/base/usb@fd000000/dr_mode
+host#
+
+usb_host0_xhci: usb@fcc00000 {
+  phys = <&usb2phy0_otg>, <&combphy0 PHY_TYPE_USB3>; <<<< usb2phy0_otg seems to be initialized to otg mode and dr_mode is not applied when rockchip_usb2phy_irq is run
+
+second controller works
+usb_host1_xhci: usb@fd000000 {
+  phy-names = "usb2-phy", "usb3-phy";
+
+in case that defconfig is the cause like peter guessed...i use same defconfig for 5.18 (working) and 5.19-rc (only lower port working)
+
+$ grep -i 'usb\|hci\|otg' ../build/.config
+# CONFIG_HISI_HIKEY_USB is not set
+# CONFIG_MISC_RTSX_USB is not set
+CONFIG_SATA_AHCI=y
+CONFIG_SATA_AHCI_PLATFORM=y
+# CONFIG_AHCI_CEVA is not set
+# CONFIG_AHCI_QORIQ is not set
+# CONFIG_SATA_ACARD_AHCI is not set
+# CONFIG_MDIO_MVUSB is not set
+CONFIG_USB_NET_DRIVERS=y
+# CONFIG_USB_CATC is not set
+# CONFIG_USB_KAWETH is not set
+# CONFIG_USB_PEGASUS is not set
+# CONFIG_USB_RTL8150 is not set
+# CONFIG_USB_RTL8152 is not set
+# CONFIG_USB_LAN78XX is not set
+# CONFIG_USB_USBNET is not set
+# CONFIG_USB_HSO is not set
+# CONFIG_USB_IPHETH is not set
+# CONFIG_USB_NET_RNDIS_WLAN is not set
+# CONFIG_MOUSE_SYNAPTICS_USB is not set
+# CONFIG_XILLYUSB is not set
+# CONFIG_I2C_TINY_USB is not set
+# USB GPIO expanders
+# end of USB GPIO expanders
+# USB-based Watchdog Cards
+# CONFIG_USBPCWATCHDOG is not set
+# CONFIG_REGULATOR_QCOM_USB_VBUS is not set
+# CONFIG_USB_PULSE8_CEC is not set
+# CONFIG_USB_RAINSHADOW_CEC is not set
+CONFIG_SND_USB=y
+# CONFIG_SND_USB_AUDIO is not set
+# CONFIG_SND_USB_UA101 is not set
+# CONFIG_SND_USB_CAIAQ is not set
+# CONFIG_SND_USB_6FIRE is not set
+# CONFIG_SND_USB_HIFACE is not set
+# CONFIG_SND_USB_POD is not set
+# CONFIG_SND_USB_PODHD is not set
+# CONFIG_SND_USB_TONEPORT is not set
+# CONFIG_SND_USB_VARIAX is not set
+# USB HID support
+CONFIG_USB_HID=y
+# CONFIG_USB_HIDDEV is not set
+# end of USB HID support
+CONFIG_USB_OHCI_LITTLE_ENDIAN=y
+CONFIG_USB_SUPPORT=y
+CONFIG_USB_COMMON=y
+# CONFIG_USB_LED_TRIG is not set
+# CONFIG_USB_ULPI_BUS is not set
+CONFIG_USB_CONN_GPIO=y
+CONFIG_USB_ARCH_HAS_HCD=y
+CONFIG_USB=y
+CONFIG_USB_PCI=y
+# CONFIG_USB_ANNOUNCE_NEW_DEVICES is not set
+# Miscellaneous USB options
+CONFIG_USB_DEFAULT_PERSIST=y
+# CONFIG_USB_FEW_INIT_RETRIES is not set
+# CONFIG_USB_DYNAMIC_MINORS is not set
+CONFIG_USB_OTG=y
+# CONFIG_USB_OTG_PRODUCTLIST is not set
+# CONFIG_USB_OTG_DISABLE_EXTERNAL_HUB is not set
+# CONFIG_USB_OTG_FSM is not set
+# CONFIG_USB_LEDS_TRIGGER_USBPORT is not set
+CONFIG_USB_AUTOSUSPEND_DELAY=2
+# CONFIG_USB_MON is not set
+# USB Host Controller Drivers
+# CONFIG_USB_C67X00_HCD is not set
+CONFIG_USB_XHCI_HCD=y
+# CONFIG_USB_XHCI_DBGCAP is not set
+CONFIG_USB_XHCI_PCI=y
+# CONFIG_USB_XHCI_PCI_RENESAS is not set
+CONFIG_USB_XHCI_PLATFORM=y
+CONFIG_USB_EHCI_HCD=y
+CONFIG_USB_EHCI_ROOT_HUB_TT=y
+CONFIG_USB_EHCI_TT_NEWSCHED=y
+CONFIG_USB_EHCI_PCI=y
+# CONFIG_USB_EHCI_FSL is not set
+CONFIG_USB_EHCI_HCD_PLATFORM=y
+# CONFIG_USB_OXU210HP_HCD is not set
+# CONFIG_USB_ISP116X_HCD is not set
+# CONFIG_USB_FOTG210_HCD is not set
+# CONFIG_USB_MAX3421_HCD is not set
+CONFIG_USB_OHCI_HCD=y
+CONFIG_USB_OHCI_HCD_PCI=y
+CONFIG_USB_OHCI_HCD_PLATFORM=y
+# CONFIG_USB_UHCI_HCD is not set
+# CONFIG_USB_SL811_HCD is not set
+# CONFIG_USB_R8A66597_HCD is not set
+# CONFIG_USB_HCD_TEST_MODE is not set
+# CONFIG_USB_XEN_HCD is not set
+# USB Device Class drivers
+# CONFIG_USB_ACM is not set
+# CONFIG_USB_PRINTER is not set
+# CONFIG_USB_WDM is not set
+# CONFIG_USB_TMC is not set
+# NOTE: USB_STORAGE depends on SCSI but BLK_DEV_SD may
+# also be needed; see USB_STORAGE Help for more info
+CONFIG_USB_STORAGE=y
+# CONFIG_USB_STORAGE_DEBUG is not set
+# CONFIG_USB_STORAGE_REALTEK is not set
+# CONFIG_USB_STORAGE_DATAFAB is not set
+# CONFIG_USB_STORAGE_FREECOM is not set
+# CONFIG_USB_STORAGE_ISD200 is not set
+# CONFIG_USB_STORAGE_USBAT is not set
+# CONFIG_USB_STORAGE_SDDR09 is not set
+# CONFIG_USB_STORAGE_SDDR55 is not set
+# CONFIG_USB_STORAGE_JUMPSHOT is not set
+# CONFIG_USB_STORAGE_ALAUDA is not set
+# CONFIG_USB_STORAGE_ONETOUCH is not set
+# CONFIG_USB_STORAGE_KARMA is not set
+# CONFIG_USB_STORAGE_CYPRESS_ATACB is not set
+# CONFIG_USB_STORAGE_ENE_UB6250 is not set
+# CONFIG_USB_UAS is not set
+# USB Imaging devices
+# CONFIG_USB_MDC800 is not set
+# CONFIG_USB_MICROTEK is not set
+# CONFIG_USBIP_CORE is not set
+# CONFIG_USB_CDNS_SUPPORT is not set
+# CONFIG_USB_MUSB_HDRC is not set
+CONFIG_USB_DWC3=y
+CONFIG_USB_DWC3_HOST=y
+CONFIG_USB_DWC3_PCI=y
+CONFIG_USB_DWC3_HAPS=y
+CONFIG_USB_DWC3_OF_SIMPLE=y
+CONFIG_USB_DWC2=y
+CONFIG_USB_DWC2_HOST=y
+# Gadget/Dual-role mode requires USB Gadget support to be enabled
+# CONFIG_USB_DWC2_PCI is not set
+# CONFIG_USB_DWC2_DEBUG is not set
+# CONFIG_USB_DWC2_TRACK_MISSED_SOFS is not set
+# CONFIG_USB_CHIPIDEA is not set
+# CONFIG_USB_ISP1760 is not set
+# USB port drivers
+# CONFIG_USB_SERIAL is not set
+# USB Miscellaneous drivers
+# CONFIG_USB_EMI62 is not set
+# CONFIG_USB_EMI26 is not set
+# CONFIG_USB_ADUTUX is not set
+# CONFIG_USB_SEVSEG is not set
+# CONFIG_USB_LEGOTOWER is not set
+# CONFIG_USB_LCD is not set
+# CONFIG_USB_CYPRESS_CY7C63 is not set
+# CONFIG_USB_CYTHERM is not set
+# CONFIG_USB_IDMOUSE is not set
+# CONFIG_USB_FTDI_ELAN is not set
+# CONFIG_USB_APPLEDISPLAY is not set
+# CONFIG_USB_SISUSBVGA is not set
+# CONFIG_USB_LD is not set
+# CONFIG_USB_TRANCEVIBRATOR is not set
+# CONFIG_USB_IOWARRIOR is not set
+# CONFIG_USB_TEST is not set
+# CONFIG_USB_EHSET_TEST_FIXTURE is not set
+# CONFIG_USB_ISIGHTFW is not set
+# CONFIG_USB_YUREX is not set
+# CONFIG_USB_EZUSB_FX2 is not set
+# CONFIG_USB_HUB_USB251XB is not set
+# CONFIG_USB_HSIC_USB3503 is not set
+# CONFIG_USB_HSIC_USB4604 is not set
+# CONFIG_USB_LINK_LAYER_TEST is not set
+# CONFIG_USB_CHAOSKEY is not set
+# USB Physical Layer drivers
+CONFIG_USB_PHY=y
+CONFIG_NOP_USB_XCEIV=y
+# CONFIG_USB_GPIO_VBUS is not set
+# CONFIG_USB_ISP1301 is not set
+# CONFIG_USB_ULPI is not set
+# end of USB Physical Layer drivers
+# CONFIG_USB_GADGET is not set
+CONFIG_USB_ROLE_SWITCH=y
+CONFIG_MMC_SDHCI=y
+# CONFIG_MMC_SDHCI_PCI is not set
+CONFIG_MMC_SDHCI_ACPI=y
+CONFIG_MMC_SDHCI_PLTFM=y
+# CONFIG_MMC_SDHCI_OF_ARASAN is not set
+# CONFIG_MMC_SDHCI_OF_ASPEED is not set
+# CONFIG_MMC_SDHCI_OF_AT91 is not set
+CONFIG_MMC_SDHCI_OF_DWCMSHC=y
+# CONFIG_MMC_SDHCI_CADENCE is not set
+CONFIG_MMC_SDHCI_F_SDH30=y
+# CONFIG_MMC_SDHCI_MILBEAUT is not set
+CONFIG_MMC_CQHCI=y
+# CONFIG_MMC_SDHCI_XENON is not set
+# CONFIG_MMC_SDHCI_OMAP is not set
+# CONFIG_MMC_SDHCI_AM654 is not set
+# LED driver for blink(1) USB RGB LED is under Special HID drivers (HID_THINGM)
+CONFIG_EXTCON_USB_GPIO=y
+# CONFIG_EXTCON_USBC_TUSB320 is not set
+# CONFIG_BCM_KONA_USB2_PHY is not set
+# CONFIG_PHY_PXA_28NM_USB2 is not set
+# CONFIG_PHY_CPCAP_USB is not set
+CONFIG_PHY_ROCKCHIP_INNO_USB2=y
+CONFIG_PHY_ROCKCHIP_USB=y
+# CONFIG_PHY_SAMSUNG_USB2 is not set
+# CONFIG_USB4 is not set
+
+as you see i have
+
+CONFIG_USB_OTG=y
+and
+CONFIG_USB_ROLE_SWITCH=y
+
+enabled which should push down the dr_mode property to phy
+
+my full defconfig/source is here [2]
+
+regards Frank
+
+[1] https://github.com/frank-w/BPI-R2-4.14/commit/0530fbbf7785a9709354c3de1e5a3cd01a3a859a
+[2] https://github.com/frank-w/BPI-R2-4.14/blob/5.19-rc/arch/arm64/configs/quartz64_defconfig
+
 
 _______________________________________________
 Linux-rockchip mailing list
