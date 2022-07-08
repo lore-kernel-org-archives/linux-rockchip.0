@@ -4,87 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34AD6CCA47F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 16:30:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96FF4C43334
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 16:35:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+LAriUDBsuQmP8YoBt+hlv/2w9F7qghOIjzzyt+w6JI=; b=IrA3FbnCY41HY8
-	5iysxGAMK04EDUdFl5BYfRPeMkveNhfpAhsrG3FsSvIDOmAUO9kKM+WRCF5OiX4e4YxL+u09K8ApI
-	TQlisk9jTw66t5umchlTf/5qETiq4SnIIjqsF2fo87PyVU9iMo6JeH2dZSbeVQQQVcbqSu+JmWytv
-	nPswW0d4ky6VVQz7jAtDA3th56PtJbmx5EeXru5/+7lPovhMXhRkNHE7UvpgI7md3C6+V0PIEDr4A
-	mpHN/U8NoPu73q+Cw4vRirPDyzuSxVfHKLfI/HliWi84Hu+n98379Tym8QMPJ1Z19DDdtfb3sTi5r
-	gcEGMBYPXyaetupkCDaw==;
+	List-Owner; bh=4aHtn016wMkiArG0sCBXkSaHpKdyBgN7NDabzKYcqAM=; b=FAJf53hks7TrcA
+	tAdfVHBRMFFuOiAGT9euZkeD5gvP7eaHtDKZ3nnuRB0kguj1KnZGPBJbL/p6N8wziX3yleIGubdA5
+	lb8HClUk9isfionWzYFjKJuXX/6E1stg8ULha9cjbzJ2Zg6naGu1zw+VF1Fb/k6LmNZ2HuoWrRp34
+	WrZZSGGYkgL2TNsm08lSwREQbTNjBLV6RJOTJvHX1rgygEZCQZ+zDCKrnOZa8Ir17i0e7SXuTLp+k
+	XV/1++ACKDP+HF9FE7dzE1R6+Oq0nICVAYmhc9rfjUA9olfdRLYVEAovRqsBAOWYD/vnK6Oieaf7/
+	Df2nigVgZXpa+d1IYjfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9qrp-004emo-2H; Fri, 08 Jul 2022 16:30:09 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1o9qx2-004h9v-GO; Fri, 08 Jul 2022 16:35:32 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9qki-004awJ-80; Fri, 08 Jul 2022 16:22:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=PLx5rPEYz+9aCqiZtNmJuRvxkUgrg71onIQ2x9rwY94=; b=IqMRqOsmpfy3rUOEId8hfAspwv
-	N41mjYnLLnLB/pOtpw5o1cdQE6mGfu3ZW7pahbM76RpNl9xO6m/Kt+yyFyfoqHzEk8Z+laDsAXwLZ
-	94ZeRY2OzIQPFihA6CtEAFiGKAeb8BLqjDOfkUqYsJsNymdKI6fysXaXCS9rjCK6tqLUu2FUx4JCY
-	s11yBUuNSEkgJLkZqXzlZadww1y+XTdrNaj0v/iXacU/zz3Bd24N9QiwYxdLrYSL+L5K7xtnbNajy
-	2DAvdW5dwD0z7Xy1AbX5+MPVS+rn3C2mSTnJPZ6Ik7sX6bHnSpKrzZe7/YvuQkIp0jSxZZf24vfD4
-	7EOs99rw==;
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9qkM-001pGt-5u; Fri, 08 Jul 2022 16:22:45 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:3cab:61a1:2b1f:896b])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1o9qpU-004dbE-Rw; Fri, 08 Jul 2022 16:27:46 +0000
+Received: from [IPV6:2a01:e0a:120:3210:3cab:61a1:2b1f:896b] (unknown [IPv6:2a01:e0a:120:3210:3cab:61a1:2b1f:896b])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A30726601A31;
-	Fri,  8 Jul 2022 17:22:22 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id AD7BD66015BF;
+	Fri,  8 Jul 2022 17:27:42 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657297343;
-	bh=xF9ZvP1OxRF2VHnAqJEtN3YP6ikHBpHFskEbXri9mr8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=USqvJMAgrziXv9JLuO7i9L5QmXFddMFbZELK7wVq/Kxq4WYPF3mhoOe0XzAMqCYtS
-	 DgqxjowdxNf1pi+SOgNMC02gMdNLtTa1u6ktUymqGI7d6/hm7q6V1bepRBXL6gg01t
-	 q5m6HoZ7v/xOJiu7vC79V/xIb0begc54z0/miDLM5Xj1f6/Pt8x83LxKH7YSxWDR8/
-	 WGCNu/tMAetOYGphN56iFUgLSFvcyFTTbv2bgoFDOMbjbndWBiLm9ezno/DpBd7yPz
-	 UjnyUT574vDELREDkR1979RX442jrASEMzzkvhaRqj8oF4KxGu4/dTcmy/s4I4O4yP
-	 Quqd/81NYPXSQ==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	hverkuil@xs4all.nl,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	mripard@kernel.org,
-	paul.kocialkowski@bootlin.com,
-	wens@csie.org,
-	jernej.skrabec@gmail.com,
-	samuel@sholland.org,
-	nicolas.dufresne@collabora.com,
-	andrzej.p@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v13 15/17] media: uapi: HEVC: fix padding in v4l2 control structures
-Date: Fri,  8 Jul 2022 18:21:54 +0200
-Message-Id: <20220708162156.815772-16-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220708162156.815772-1-benjamin.gaignard@collabora.com>
-References: <20220708162156.815772-1-benjamin.gaignard@collabora.com>
+	s=mail; t=1657297663;
+	bh=M2XcgqYs6U+1Gi7Jie82t46uoCuX+14uCwhy1mBpf+M=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=d2km7C3FWFcz1KTim3I9/kIUdFITsY+FuaSR8gBCBJAfljtekinzQ0OzUVNyjua2q
+	 /A4wTU80QYAD7JrR8LVMZkMwpooLuSp/jpvgv9m1nc1Z8DI3jBr3qqb5dQbbTVkYgJ
+	 32HyiO486LLwBRY5eB/CYt/YcWhiiwUzLvthcObej84XGW3sRNk4OZ017mV0ncmBVp
+	 l7WAf1P88rnD8NMstdzMwqABH71kyyEYJ8L7PTvl08bdzDyZJpT+mfMbx7GVwco7Rx
+	 kQQNT15xNA5JpXc/yMqqDdG7ZAfNHxAyd7etOKrAfwwQDnGe0DJkgJiGvS7X27R3BB
+	 NZGtgtBAR94Iw==
+Message-ID: <7041df2a-e248-56d4-da6a-343b610de8b4@collabora.com>
+Date: Fri, 8 Jul 2022 18:27:40 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.9.1
+Subject: Re: [PATCH v12 11/17] media: uapi: Add
+ V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
+Content-Language: en-US
+To: =?UTF-8?Q?Jernej_=c5=a0krabec?= <jernej.skrabec@gmail.com>,
+ mchehab@kernel.org, hverkuil@xs4all.nl, ezequiel@vanguardiasur.com.ar,
+ p.zabel@pengutronix.de, gregkh@linuxfoundation.org, mripard@kernel.org,
+ paul.kocialkowski@bootlin.com, wens@csie.org, samuel@sholland.org,
+ nicolas.dufresne@collabora.com, andrzej.p@collabora.com
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+ kernel@collabora.com
+References: <20220708120554.495495-1-benjamin.gaignard@collabora.com>
+ <2106581.irdbgypaU6@jernej-laptop>
+ <5e346689-5a0c-8fc7-129d-53a6f28e5349@collabora.com>
+ <4604967.rnE6jSC6OK@kista>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <4604967.rnE6jSC6OK@kista>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_172243_326304_D9816B99 
-X-CRM114-Status: GOOD (  17.91  )
+X-CRM114-CacheID: sfid-20220708_092745_207736_8315B038 
+X-CRM114-Status: GOOD (  23.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,227 +78,132 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix padding where needed to remove holes
-
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Tested-by: Jernej Skrabec <jernej.skrabec@gmail.com>
----
- .../media/v4l/ext-ctrls-codec.rst             |  6 ++---
- drivers/media/v4l2-core/v4l2-ctrls-core.c     | 15 -------------
- include/media/hevc-ctrls.h                    | 22 ++++++++++++-------
- 3 files changed, 17 insertions(+), 26 deletions(-)
-
-diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-index c05c5553f0e3..73b347acb704 100644
---- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-+++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
-@@ -3514,9 +3514,6 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-     * - __u8
-       - ``num_active_dpb_entries``
-       - The number of entries in ``dpb``.
--    * - struct :c:type:`v4l2_hevc_dpb_entry`
--      - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
--      - The decoded picture buffer, for meta-data about reference frames.
-     * - __u8
-       - ``num_poc_st_curr_before``
-       - The number of reference pictures in the short-term set that come before
-@@ -3540,6 +3537,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
-       - ``poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
-       - PocLtCurr as described in section 8.3.2 "Decoding process for reference
-         picture set": provides the index of the long term references in DPB array.
-+    * - struct :c:type:`v4l2_hevc_dpb_entry`
-+      - ``dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
-+      - The decoded picture buffer, for meta-data about reference frames.
-     * - __u64
-       - ``flags``
-       - See :ref:`Decode Parameters Flags <hevc_decode_params_flags>`
-diff --git a/drivers/media/v4l2-core/v4l2-ctrls-core.c b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-index c5c5407584ff..1f85828d6694 100644
---- a/drivers/media/v4l2-core/v4l2-ctrls-core.c
-+++ b/drivers/media/v4l2-core/v4l2-ctrls-core.c
-@@ -536,7 +536,6 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
- 	struct v4l2_ctrl_h264_decode_params *p_h264_dec_params;
- 	struct v4l2_ctrl_hevc_sps *p_hevc_sps;
- 	struct v4l2_ctrl_hevc_pps *p_hevc_pps;
--	struct v4l2_ctrl_hevc_slice_params *p_hevc_slice_params;
- 	struct v4l2_ctrl_hdr10_mastering_display *p_hdr10_mastering;
- 	struct v4l2_ctrl_hevc_decode_params *p_hevc_decode_params;
- 	struct v4l2_area *area;
-@@ -814,8 +813,6 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
- 			p_hevc_pps->pps_beta_offset_div2 = 0;
- 			p_hevc_pps->pps_tc_offset_div2 = 0;
- 		}
--
--		zero_padding(*p_hevc_pps);
- 		break;
- 
- 	case V4L2_CTRL_TYPE_HEVC_DECODE_PARAMS:
-@@ -824,21 +821,9 @@ static int std_validate_compound(const struct v4l2_ctrl *ctrl, u32 idx,
- 		if (p_hevc_decode_params->num_active_dpb_entries >
- 		    V4L2_HEVC_DPB_ENTRIES_NUM_MAX)
- 			return -EINVAL;
--
--		for (i = 0; i < p_hevc_decode_params->num_active_dpb_entries;
--		     i++) {
--			struct v4l2_hevc_dpb_entry *dpb_entry =
--				&p_hevc_decode_params->dpb[i];
--
--			zero_padding(*dpb_entry);
--		}
- 		break;
- 
- 	case V4L2_CTRL_TYPE_HEVC_SLICE_PARAMS:
--		p_hevc_slice_params = p;
--
--		zero_padding(p_hevc_slice_params->pred_weight_table);
--		zero_padding(*p_hevc_slice_params);
- 		break;
- 
- 	case V4L2_CTRL_TYPE_HDR10_CLL_INFO:
-diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
-index 9239e8b649e0..7358cbfc3e4d 100644
---- a/include/media/hevc-ctrls.h
-+++ b/include/media/hevc-ctrls.h
-@@ -105,6 +105,7 @@ enum v4l2_stateless_hevc_start_code {
-  * @chroma_format_idc: specifies the chroma sampling
-  * @sps_max_sub_layers_minus1: this value plus 1 specifies the maximum number
-  *                             of temporal sub-layers
-+ * @reserved: padding field. Should be zeroed by applications.
-  * @flags: see V4L2_HEVC_SPS_FLAG_{}
-  */
- struct v4l2_ctrl_hevc_sps {
-@@ -133,6 +134,7 @@ struct v4l2_ctrl_hevc_sps {
- 	__u8	chroma_format_idc;
- 	__u8	sps_max_sub_layers_minus1;
- 
-+	__u8	reserved[6];
- 	__u64	flags;
- };
- 
-@@ -192,6 +194,7 @@ struct v4l2_ctrl_hevc_sps {
-  *			divided by 2
-  * @log2_parallel_merge_level_minus2: this value plus 2 specifies the value of
-  *                                    the variable Log2ParMrgLevel
-+ * @reserved: padding field. Should be zeroed by applications.
-  * @flags: see V4L2_HEVC_PPS_FLAG_{}
-  */
- struct v4l2_ctrl_hevc_pps {
-@@ -210,8 +213,7 @@ struct v4l2_ctrl_hevc_pps {
- 	__s8	pps_beta_offset_div2;
- 	__s8	pps_tc_offset_div2;
- 	__u8	log2_parallel_merge_level_minus2;
--
--	__u8	padding[4];
-+	__u8	reserved;
- 	__u64	flags;
- };
- 
-@@ -239,14 +241,15 @@ struct v4l2_ctrl_hevc_pps {
-  * @timestamp: timestamp of the V4L2 capture buffer to use as reference.
-  * @flags: long term flag for the reference frame
-  * @field_pic: whether the reference is a field picture or a frame.
-+ * @reserved: padding field. Should be zeroed by applications.
-  * @pic_order_cnt_val: the picture order count of the reference.
-  */
- struct v4l2_hevc_dpb_entry {
- 	__u64	timestamp;
- 	__u8	flags;
- 	__u8	field_pic;
-+	__u16	reserved;
- 	__s32	pic_order_cnt_val;
--	__u8	padding[2];
- };
- 
- /**
-@@ -285,8 +288,6 @@ struct v4l2_hevc_pred_weight_table {
- 	__s8	delta_chroma_weight_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
- 	__s8	chroma_offset_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX][2];
- 
--	__u8	padding[6];
--
- 	__u8	luma_log2_weight_denom;
- 	__s8	delta_chroma_log2_weight_denom;
- };
-@@ -339,6 +340,7 @@ struct v4l2_hevc_pred_weight_table {
-  * @slice_tc_offset_div2: specify the deblocking parameter offsets for tC divided by 2
-  * @pic_struct: indicates whether a picture should be displayed as a frame or as one or
-  *		more fields
-+ * @reserved0: padding field. Should be zeroed by applications.
-  * @slice_segment_addr: specifies the address of the first coding tree block in
-  *			the slice segment
-  * @ref_idx_l0: the list of L0 reference elements as indices in the DPB
-@@ -349,6 +351,7 @@ struct v4l2_hevc_pred_weight_table {
-  *				picture include in the SPS
-  * @pred_weight_table: the prediction weight coefficients for inter-picture
-  *		       prediction
-+ * @reserved1: padding field. Should be zeroed by applications.
-  * @flags: see V4L2_HEVC_SLICE_PARAMS_FLAG_{}
-  */
- struct v4l2_ctrl_hevc_slice_params {
-@@ -379,17 +382,18 @@ struct v4l2_ctrl_hevc_slice_params {
- 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture timing SEI message */
- 	__u8	pic_struct;
- 
-+	__u8	reserved0[3];
- 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: General slice segment header */
- 	__u32	slice_segment_addr;
- 	__u8	ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
- 	__u8	ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
- 	__u16	short_term_ref_pic_set_size;
- 	__u16	long_term_ref_pic_set_size;
--	__u8	padding;
- 
- 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction parameter */
- 	struct v4l2_hevc_pred_weight_table pred_weight_table;
- 
-+	__u8	reserved1[2];
- 	__u64	flags;
- };
- 
-@@ -406,7 +410,6 @@ struct v4l2_ctrl_hevc_slice_params {
-  * @long_term_ref_pic_set_size: specifies the size of long-term reference
-  *				pictures set include in the SPS of the first slice
-  * @num_active_dpb_entries: the number of entries in dpb
-- * @dpb: the decoded picture buffer, for meta-data about reference frames
-  * @num_poc_st_curr_before: the number of reference pictures in the short-term
-  *			    set that come before the current frame
-  * @num_poc_st_curr_after: the number of reference pictures in the short-term
-@@ -417,6 +420,8 @@ struct v4l2_ctrl_hevc_slice_params {
-  * @poc_st_curr_after: provides the index of the short term after references
-  *		       in DPB array
-  * @poc_lt_curr: provides the index of the long term references in DPB array
-+ * @reserved: padding field. Should be zeroed by applications.
-+ * @dpb: the decoded picture buffer, for meta-data about reference frames
-  * @flags: see V4L2_HEVC_DECODE_PARAM_FLAG_{}
-  */
- struct v4l2_ctrl_hevc_decode_params {
-@@ -424,13 +429,14 @@ struct v4l2_ctrl_hevc_decode_params {
- 	__u16	short_term_ref_pic_set_size;
- 	__u16	long_term_ref_pic_set_size;
- 	__u8	num_active_dpb_entries;
--	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
- 	__u8	num_poc_st_curr_before;
- 	__u8	num_poc_st_curr_after;
- 	__u8	num_poc_lt_curr;
- 	__u8	poc_st_curr_before[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
- 	__u8	poc_st_curr_after[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
- 	__u8	poc_lt_curr[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
-+	__u8	reserved[4];
-+	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
- 	__u64	flags;
- };
- 
--- 
-2.32.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDA4LzA3LzIwMjIgw6AgMTg6MTEsIEplcm5laiDFoGtyYWJlYyBhIMOpY3JpdMKgOgo+IERu
+ZSBwZXRlaywgMDguIGp1bGlqIDIwMjIgb2IgMTg6MDA6MjQgQ0VTVCBqZSBCZW5qYW1pbiBHYWln
+bmFyZCBuYXBpc2FsKGEpOgo+PiBMZSAwOC8wNy8yMDIyIMOgIDE2OjAyLCBKZXJuZWogxaBrcmFi
+ZWMgYSDDqWNyaXQgOgo+Pj4gSGkgQmVuamFtaW4hCj4+Pgo+Pj4gRG5lIHBldGVrLCAwOC4ganVs
+aWogMjAyMiBvYiAxNDowNTo0OCBDRVNUIGplIEJlbmphbWluIEdhaWduYXJkCj4gbmFwaXNhbChh
+KToKPj4+PiBUaGUgbnVtYmVyIG9mICdlbnRyeSBwb2ludCBvZmZzZXQnIGNhbiBiZSB2ZXJ5IHZh
+cmlhYmxlLgo+Pj4+IEluc3RlYWQgb2YgdXNpbmcgYSBsYXJnZSBzdGF0aWMgYXJyYXkgZGVmaW5l
+IGEgdjRsMiBkeW5hbWljIGFycmF5Cj4+Pj4gb2YgVTMyIChWNEwyX0NUUkxfVFlQRV9VMzIpLgo+
+Pj4+IFRoZSBudW1iZXIgb2YgZW50cnkgcG9pbnQgb2Zmc2V0cyBpcyByZXBvcnRlZCBieSB0aGUg
+ZWxlbXMgZmllbGQKPj4+PiBhbmQgaW4gc3RydWN0IHY0bDJfY3RybF9oZXZjX3NsaWNlX3BhcmFt
+cy5udW1fZW50cnlfcG9pbnRfb2Zmc2V0cwo+Pj4+IGZpZWxkLgo+Pj4+Cj4+Pj4gU2lnbmVkLW9m
+Zi1ieTogQmVuamFtaW4gR2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+
+Cj4+Pj4gQWNrZWQtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29sbGFi
+b3JhLmNvbT4KPj4+PiBUZXN0ZWQtYnk6IEplcm5laiBTa3JhYmVjIDxqZXJuZWouc2tyYWJlY0Bn
+bWFpbC5jb20+Cj4+Pj4gLS0tCj4+Pj4gdmVyc2lvbiAxMjoKPj4+PiAtIFJld29yZCBudW1fZW50
+cnlfcG9pbnRfb2Zmc2V0cyBkb2N1bWVudGF0aW9uCj4+Pj4KPj4+PiAgICAuLi4vdXNlcnNwYWNl
+LWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdCAgICAgfCAxMyArKysrKysrKysrKysr
+Cj4+Pj4gICAgZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jdHJscy1kZWZzLmMgICAgICAg
+ICAgIHwgIDUgKysrKysKPj4+PiAgICBpbmNsdWRlL21lZGlhL2hldmMtY3RybHMuaCAgICAgICAg
+ICAgICAgICAgICAgICAgICAgfCAgNSArKysrLQo+Pj4+ICAgIDMgZmlsZXMgY2hhbmdlZCwgMjIg
+aW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQo+Pj4+Cj4+Pj4gZGlmZiAtLWdpdCBhL0RvY3Vt
+ZW50YXRpb24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvZXh0LWN0cmxzLWNvZGVjLnJzdAo+Pj4+
+IGIvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9leHQtY3RybHMtY29kZWMu
+cnN0IGluZGV4Cj4+Pj4gYzJlMGFkZWNlNjEzLi4wY2Q5NjcxMjZmZGYgMTAwNjQ0Cj4+Pj4gLS0t
+IGEvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9leHQtY3RybHMtY29kZWMu
+cnN0Cj4+Pj4gKysrIGIvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9leHQt
+Y3RybHMtY29kZWMucnN0Cj4+Pj4gQEAgLTMwMTAsNiArMzAxMCwxMSBAQCBlbnVtIHY0bDJfbXBl
+Z192aWRlb19oZXZjX3NpemVfb2ZfbGVuZ3RoX2ZpZWxkIC0KPj4+Pgo+Pj4+ICAgICAgICAqIC0g
+X191MzIKPj4+PiAgICAgICAgCj4+Pj4gICAgICAgICAgLSBgYGRhdGFfYml0X29mZnNldGBgCj4+
+Pj4gICAgICAgICAgLSBPZmZzZXQgKGluIGJpdHMpIHRvIHRoZSB2aWRlbyBkYXRhIGluIHRoZSBj
+dXJyZW50IHNsaWNlIGRhdGEuCj4+Pj4KPj4+PiArICAgICogLSBfX3UzMgo+Pj4+ICsgICAgICAt
+IGBgbnVtX2VudHJ5X3BvaW50X29mZnNldHNgYAo+Pj4+ICsgICAgICAtIFNwZWNpZmllcyB0aGUg
+bnVtYmVyIG9mIGVudHJ5IHBvaW50IG9mZnNldCBzeW50YXggZWxlbWVudHMgaW4KPj4+PiB0aGUK
+Pj4+PiBzbGljZSBoZWFkZXIuICsgICAgICAgIFdoZW4gdGhlIGRyaXZlciBzdXBwb3J0cyBpdCwg
+dGhlCj4+Pj4gYGBWNEwyX0NJRF9TVEFURUxFU1NfSEVWQ19FTlRSWV9QT0lOVF9PRkZTRVRTYGAg
+KyAgICAgICAgbXVzdCBiZSBzZXQuCj4+Pj4KPj4+PiAgICAgICAgKiAtIF9fdTgKPj4+PiAgICAg
+ICAgCj4+Pj4gICAgICAgICAgLSBgYG5hbF91bml0X3R5cGVgYAo+Pj4+ICAgICAgICAgIC0gU3Bl
+Y2lmaWVzIHRoZSBjb2RpbmcgdHlwZSBvZiB0aGUgc2xpY2UgKEIsIFAgb3IgSSkuCj4+Pj4KPj4+
+PiBAQCAtMzE1MCw2ICszMTU1LDE0IEBAIGVudW0gdjRsMl9tcGVnX3ZpZGVvX2hldmNfc2l6ZV9v
+Zl9sZW5ndGhfZmllbGQgLQo+Pj4+Cj4+Pj4gICAgICAgIFxub3JtYWxzaXplCj4+Pj4KPj4+PiAr
+YGBWNEwyX0NJRF9TVEFURUxFU1NfSEVWQ19FTlRSWV9QT0lOVF9PRkZTRVRTIChpbnRlZ2VyKWBg
+Cj4+Pj4gKyAgICBTcGVjaWZpZXMgZW50cnkgcG9pbnQgb2Zmc2V0cyBpbiBieXRlcy4KPj4+PiAr
+ICAgIFRoaXMgY29udHJvbCBpcyBhIGR5bmFtaWNhbGx5IHNpemVkIGFycmF5LiBUaGUgbnVtYmVy
+IG9mIGVudHJ5IHBvaW50Cj4+Pj4gKyAgICBvZmZzZXRzIGlzIHJlcG9ydGVkIGJ5IHRoZSBgYGVs
+ZW1zYGAgZmllbGQuCj4+Pj4gKyAgICBUaGlzIGJpdHN0cmVhbSBwYXJhbWV0ZXIgaXMgZGVmaW5l
+ZCBhY2NvcmRpbmcgdG8gOnJlZjpgaGV2Y2AuCj4+Pj4gKyAgICBUaGV5IGFyZSBkZXNjcmliZWQg
+aW4gc2VjdGlvbiA3LjQuNy4xICJHZW5lcmFsIHNsaWNlIHNlZ21lbnQgaGVhZGVyCj4+Pj4gKyAg
+ICBzZW1hbnRpY3MiIG9mIHRoZSBzcGVjaWZpY2F0aW9uLgo+Pj4gWW91IGZvcmdvdCB0byB1cGRh
+dGUgYWJvdmUgZGVzY3JpcHRpb24gcGVyIEV6ZXF1aWVsIGNvbW1lbnQuCj4+IE5vIGl0IHdhcyBu
+dW1fZW50cnlfcG9pbnRfb2Zmc2V0cyB3aGljaCB3YXMgbmVlZGVkIHRvIGJlIHVwZGF0ZWQKPj4g
+bm90IHRoaXMgY29udHJvbC4KPiBCb3RoIG5lZWRzIHRvIGJlIHVwZGF0ZWQuIEV6ZXF1aWVsIHNh
+aWQ6Cj4KPiAiSSB3b3VsZCBhZGQgSmVybmVqJ3MgY2xhcmlmaWNhdGlvbiBhYm91dCB0aGUgbGVu
+Z3RoIG9mIHRoZSBjb250cm9sCj4gaGVyZSwgd2hlcmUgdGhlIGNvbnRyb2wgaXMgZG9jdW1lbnRl
+ZC4iCj4KPiAiIgo+IFRoaXMgY29udHJvbCBpcyBhIGR5bmFtaWNhbGx5IHNpemVkIGFycmF5LiBU
+aGUgbnVtYmVyIG9mIGVudHJ5IHBvaW50Cj4gb2Zmc2V0cyBpcyByZXBvcnRlZCBieSB0aGUgYGBl
+bGVtc2BgIGZpZWxkLgo+IFRoaXMgYml0c3RyZWFtIHBhcmFtZXRlciBpcyBkZWZpbmVkIGFjY29y
+ZGluZyB0byA6cmVmOmBoZXZjYC4KPiBUaGV5IGFyZSBkZXNjcmliZWQgaW4gc2VjdGlvbiA3LjQu
+Ny4xICJHZW5lcmFsIHNsaWNlIHNlZ21lbnQgaGVhZGVyCj4gc2VtYW50aWNzIiBvZiB0aGUgc3Bl
+Y2lmaWNhdGlvbi4KPiBXaGVuIG11bHRpcGxlIHNsaWNlcyBhcmUgc3VibWl0dGVkIGluIGEgcmVx
+dWVzdCwgdGhlIGxlbmd0aAo+IG9mIHRoaXMgYXJyYXkgbXVzdCBiZSB0aGUgc3VtIG9mIG51bV9l
+bnRyeV9wb2ludF9vZmZzZXRzCj4gb2YgYWxsIHRoZSBzbGljZXMgaW4gdGhlIHJlcXVlc3QuCj4g
+IiIKCkkgaGF2ZSB0b3RhbGx5IG1pc3MgdGhlIGxhc3QgcGFydC4KSXQgaXMgZml4IGluIHYxMy4K
+ClRoYW5rcyBmb3IgeW91ciByZXZpZXcuClJlZ2FyZHMsCkJlbmphbWluCgo+Cj4gQmVzdCByZWdh
+cmRzLAo+IEplcm5lago+Cj4+IFJlZ2FyZHMsCj4+IEJlbmphbWluCj4+Cj4+PiBCZXN0IHJlZ2Fy
+ZHMsCj4+PiBKZXJuZWoKPj4+Cj4+Pj4gKwo+Pj4+Cj4+Pj4gICAgYGBWNEwyX0NJRF9TVEFURUxF
+U1NfSEVWQ19TQ0FMSU5HX01BVFJJWCAoc3RydWN0KWBgCj4+Pj4gICAgCj4+Pj4gICAgICAgIFNw
+ZWNpZmllcyB0aGUgSEVWQyBzY2FsaW5nIG1hdHJpeCBwYXJhbWV0ZXJzIHVzZWQgZm9yIHRoZSBz
+Y2FsaW5nCj4+Pj4KPj4+PiBwcm9jZXNzIGZvciB0cmFuc2Zvcm0gY29lZmZpY2llbnRzLgo+Pj4+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWN0cmxzLWRlZnMuYwo+
+Pj4+IGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jdHJscy1kZWZzLmMgaW5kZXgKPj4+
+PiBkNTk0ZWZiY2JiOTMuLmUyMjkyMWU3ZWE2MSAxMDA2NDQKPj4+PiAtLS0gYS9kcml2ZXJzL21l
+ZGlhL3Y0bDItY29yZS92NGwyLWN0cmxzLWRlZnMuYwo+Pj4+ICsrKyBiL2RyaXZlcnMvbWVkaWEv
+djRsMi1jb3JlL3Y0bDItY3RybHMtZGVmcy5jCj4+Pj4gQEAgLTExODgsNiArMTE4OCw3IEBAIGNv
+bnN0IGNoYXIgKnY0bDJfY3RybF9nZXRfbmFtZSh1MzIgaWQpCj4+Pj4KPj4+PiAgICAJY2FzZSBW
+NEwyX0NJRF9TVEFURUxFU1NfSEVWQ19ERUNPREVfUEFSQU1TOgkJcmV0dXJuCj4+PiAiSEVWQyBE
+ZWNvZGUKPj4+Cj4+Pj4gUGFyYW1ldGVycyI7IGNhc2UgVjRMMl9DSURfU1RBVEVMRVNTX0hFVkNf
+REVDT0RFX01PREU6CQlyZXR1cm4KPj4+ICJIRVZDIERlY29kZQo+Pj4KPj4+PiBNb2RlIjsgY2Fz
+ZSBWNEwyX0NJRF9TVEFURUxFU1NfSEVWQ19TVEFSVF9DT0RFOgkJcmV0dXJuCj4+PiAiSEVWQyBT
+dGFydCBDb2RlIjsKPj4+Cj4+Pj4gKwljYXNlIFY0TDJfQ0lEX1NUQVRFTEVTU19IRVZDX0VOVFJZ
+X1BPSU5UX09GRlNFVFM6CXJldHVybgo+Pj4gIkhFVkMgRW50cnkKPj4+Cj4+Pj4gUG9pbnQgT2Zm
+c2V0cyI7Cj4+Pj4KPj4+PiAgICAJLyogQ29sb3JpbWV0cnkgY29udHJvbHMgKi8KPj4+PiAgICAJ
+LyogS2VlcCB0aGUgb3JkZXIgb2YgdGhlICdjYXNlJ3MgdGhlIHNhbWUgYXMgaW4gdjRsMi1jb250
+cm9scy5oIQo+Pj4gKi8KPj4+Cj4+Pj4gQEAgLTE1MTgsNiArMTUxOSwxMCBAQCB2b2lkIHY0bDJf
+Y3RybF9maWxsKHUzMiBpZCwgY29uc3QgY2hhciAqKm5hbWUsCj4+Pj4gZW51bQo+Pj4+Cj4+Pj4g
+djRsMl9jdHJsX3R5cGUgKnR5cGUsIGNhc2UgVjRMMl9DSURfU1RBVEVMRVNTX0hFVkNfREVDT0RF
+X1BBUkFNUzoKPj4+PiAgICAJCSp0eXBlID0gVjRMMl9DVFJMX1RZUEVfSEVWQ19ERUNPREVfUEFS
+QU1TOwo+Pj4+ICAgIAkJYnJlYWs7Cj4+Pj4KPj4+PiArCWNhc2UgVjRMMl9DSURfU1RBVEVMRVNT
+X0hFVkNfRU5UUllfUE9JTlRfT0ZGU0VUUzoKPj4+PiArCQkqdHlwZSA9IFY0TDJfQ1RSTF9UWVBF
+X1UzMjsKPj4+PiArCQkqZmxhZ3MgfD0gVjRMMl9DVFJMX0ZMQUdfRFlOQU1JQ19BUlJBWTsKPj4+
+PiArCQlicmVhazsKPj4+Pgo+Pj4+ICAgIAljYXNlIFY0TDJfQ0lEX1NUQVRFTEVTU19WUDlfQ09N
+UFJFU1NFRF9IRFI6Cj4+Pj4gICAgCQkqdHlwZSA9IFY0TDJfQ1RSTF9UWVBFX1ZQOV9DT01QUkVT
+U0VEX0hEUjsKPj4+PiAgICAJCWJyZWFrOwo+Pj4+Cj4+Pj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUv
+bWVkaWEvaGV2Yy1jdHJscy5oIGIvaW5jbHVkZS9tZWRpYS9oZXZjLWN0cmxzLmgKPj4+PiBpbmRl
+eCBhMzcyYzE4NDY4OWUuLjNhNjYwMWE0NmNlZCAxMDA2NDQKPj4+PiAtLS0gYS9pbmNsdWRlL21l
+ZGlhL2hldmMtY3RybHMuaAo+Pj4+ICsrKyBiL2luY2x1ZGUvbWVkaWEvaGV2Yy1jdHJscy5oCj4+
+Pj4gQEAgLTIwLDYgKzIwLDcgQEAKPj4+Pgo+Pj4+ICAgICNkZWZpbmUgVjRMMl9DSURfU1RBVEVM
+RVNTX0hFVkNfREVDT0RFX1BBUkFNUwkKPiAoVjRMMl9DSURfQ09ERUNfQkFTRQo+Pj4gKyAxMDEy
+KQo+Pj4KPj4+PiAgICAjZGVmaW5lIFY0TDJfQ0lEX1NUQVRFTEVTU19IRVZDX0RFQ09ERV9NT0RF
+CShWNEwyX0NJRF9DT0RFQ19CQVNFCj4gKwo+Pj4+ICAgIDEwMTUpCj4+Pj4gICAgI2RlZmluZSBW
+NEwyX0NJRF9TVEFURUxFU1NfSEVWQ19TVEFSVF9DT0RFCShWNEwyX0NJRF9DT0RFQ19CQVNFICsg
+MTAxNikKPj4+Pgo+Pj4+ICsjZGVmaW5lIFY0TDJfQ0lEX1NUQVRFTEVTU19IRVZDX0VOVFJZX1BP
+SU5UX09GRlNFVFMgKFY0TDJfQ0lEX0NPREVDX0JBU0UKPj4+PiArCj4+Pj4gMTAxNykKPj4+Pgo+
+Pj4+ICAgIC8qIGVudW0gdjRsMl9jdHJsX3R5cGUgdHlwZSB2YWx1ZXMgKi8KPj4+PiAgICAjZGVm
+aW5lIFY0TDJfQ1RSTF9UWVBFX0hFVkNfU1BTIDB4MDEyMAo+Pj4+Cj4+Pj4gQEAgLTMxNiw2ICsz
+MTcsOCBAQCBzdHJ1Y3QgdjRsMl9oZXZjX3ByZWRfd2VpZ2h0X3RhYmxlIHsKPj4+Pgo+Pj4+ICAg
+ICAqCj4+Pj4gICAgICogQGJpdF9zaXplOiBzaXplIChpbiBiaXRzKSBvZiB0aGUgY3VycmVudCBz
+bGljZSBkYXRhCj4+Pj4gICAgICogQGRhdGFfYml0X29mZnNldDogb2Zmc2V0IChpbiBiaXRzKSB0
+byB0aGUgdmlkZW8gZGF0YSBpbiB0aGUgY3VycmVudAo+Pj4+Cj4+Pj4gc2xpY2UgZGF0YSArICog
+QG51bV9lbnRyeV9wb2ludF9vZmZzZXRzOiBzcGVjaWZpZXMgdGhlIG51bWJlciBvZiBlbnRyeQo+
+Pj4+IHBvaW50IG9mZnNldCBzeW50YXggKyAqCQkJICAgICBlbGVtZW50cyBpbiB0aGUgc2xpY2UK
+Pj4+IGhlYWRlci4KPj4+Cj4+Pj4gICAgICogQG5hbF91bml0X3R5cGU6IHNwZWNpZmllcyB0aGUg
+Y29kaW5nIHR5cGUgb2YgdGhlIHNsaWNlIChCLCBQIG9yIEkpCj4+Pj4gICAgICogQG51aF90ZW1w
+b3JhbF9pZF9wbHVzMTogbWludXMgMSBzcGVjaWZpZXMgYSB0ZW1wb3JhbCBpZGVudGlmaWVyIGZv
+cgo+Pj4+ICAgICB0aGUKPj4+Pgo+Pj4+IE5BTCB1bml0ICogQHNsaWNlX3R5cGU6IHNlZSBWNEwy
+X0hFVkNfU0xJQ0VfVFlQRV97fQo+Pj4+IEBAIC0zNTgsNyArMzYxLDcgQEAgc3RydWN0IHY0bDJf
+aGV2Y19wcmVkX3dlaWdodF90YWJsZSB7Cj4+Pj4KPj4+PiAgICBzdHJ1Y3QgdjRsMl9jdHJsX2hl
+dmNfc2xpY2VfcGFyYW1zIHsKPj4+PiAgICAKPj4+PiAgICAJX191MzIJYml0X3NpemU7Cj4+Pj4g
+ICAgCV9fdTMyCWRhdGFfYml0X29mZnNldDsKPj4+Pgo+Pj4+IC0KPj4+PiArCV9fdTMyCW51bV9l
+bnRyeV9wb2ludF9vZmZzZXRzOwo+Pj4+Cj4+Pj4gICAgCS8qIElTTy9JRUMgMjMwMDgtMiwgSVRV
+LVQgUmVjLiBILjI2NTogTkFMIHVuaXQgaGVhZGVyICovCj4+Pj4gICAgCV9fdTgJbmFsX3VuaXRf
+dHlwZTsKPj4+PiAgICAJX191OAludWhfdGVtcG9yYWxfaWRfcGx1czE7Cj4KCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
