@@ -4,76 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60C08C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 14:21:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28A4FC433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 15:03:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YDnsZmqmdeRoXvQFxonr7YzlxwuRnIauZl5KtpDeHtY=; b=j3GTmqOSutynRQ
-	URMz1RN8qWQO11E2gX13eTIQ4R7MYG9LrRZkV8R3YTOds3AXxmWIbM+UC3sQKG5osYHAQqCDPGUJJ
-	jrR7KLkr/fHD3aoUXtL1Jb5+nrE5jY3IUOWN79cM9F44ojiPz2QsIA5bZ+bX7QQfkyaHdbmBvLldr
-	K56jlTJt8qGVp7RKDDu7NhKzd15tkmsGkOFtjFj83vAHBrQvxjCQmBbzjk7sSWV1QGQKJ9II3wHuG
-	/Ti8TFukdQMjI6ABaMyPUQCDgkHpMiR2BxhcUSuea7+B6tSCcv1eHOOciXkm3H6pYeDwSkrE3DlEr
-	O38jDH85zbPq0Wii4Zpw==;
+	List-Owner; bh=wTj/51udpAmMXKo4ttJNuO6PDlVpRF9sLiSXS6Fz0aU=; b=wtbIxw2MXbml6w
+	TwysRFJbR2bz40tXdMI3/VQQzINXWIfvsB6fYLPwR+wYG1h38xXH1JgrP5zASbc3zR5p4l8Hs1tzI
+	vkW/flFdDF6JtriwRGF545TnJQh15dXmBy/3F6KJmux1PzcBQ3/pSoVw9DFK5OJct496KDqvIUnMa
+	Znw1cWEav98YJ5YsIqh4ydfroij7XVg9dlI9FGTKuMXVWBxZLt2HdboAmsdCpggzaBcqKhYIE9OZ8
+	nkL7qbOeN/XZqUJnnPTTttyG54mMi8q1T1a4zzS1673B1qKZxjrPpaa7EP1MktOJnJ0pa1FchR6P5
+	I8wluQW17TOeWHdrzO0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9orP-0047bs-55; Fri, 08 Jul 2022 14:21:35 +0000
-Received: from mout.gmx.net ([212.227.17.22])
+	id 1o9pVJ-004GNz-Ky; Fri, 08 Jul 2022 15:02:49 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9orL-0047aC-UH
-	for linux-rockchip@lists.infradead.org; Fri, 08 Jul 2022 14:21:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
-	s=badeba3b8450; t=1657290076;
-	bh=6lhQbMhE6Tq/JsXBUhi3e+zhcqO27HN8eOz+uNLxVak=;
-	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Qu8KxQ7va/kQoThEw5wcX6AZ+LOCulHcyvKRJiHoBxoLvr9kuCA6a4qs+Nc4Bpl5h
-	 wecj1UMnBgTjPCCY1Sr4i6On96bzMKhWn0sH1dY+qeNcVRIYTWKXRQ6ZXc3/2p3jo3
-	 g/3BXNJS4wCI8fA3ONdu8JdZr0SSbfIuKjroJzik=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [157.180.225.69] ([157.180.225.69]) by web-mail.gmx.net
- (3c-app-gmx-bs34.server.lan [172.19.170.86]) (via HTTP); Fri, 8 Jul 2022
- 16:21:16 +0200
+	id 1o9pV7-004GKy-TP; Fri, 08 Jul 2022 15:02:40 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8A5E956D;
+	Fri,  8 Jul 2022 17:02:31 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1657292551;
+	bh=ocnrOIoCfRwibBCiZ+RwJd0XDGrI+GgLvnRAzWASL7o=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KLWBp6RDoZW5xkiMgXZndAxBR2BykK13S8w868jYDYwOG/gtspp2L+dEcmQ9AuVPd
+	 03ePUft+ipPUGxzqrE7zTfSJWH9BpzpPIh6hqabqyjvCMkKeqcP7/VokNgTcRjsQQ0
+	 0g+C3zclK0cCNIL9QpVHfot4RUY93ESmuH1j/Eec=
+Date: Fri, 8 Jul 2022 18:02:05 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Paul Elder <paul.elder@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2] media: rkisp1: Support devices without self path
+Message-ID: <YshG7eSvijdaPOYY@pendragon.ideasonboard.com>
+References: <20220628054430.1349988-1-paul.elder@ideasonboard.com>
 MIME-Version: 1.0
-Message-ID: <trinity-23d198fe-40f0-40bb-8d95-2a64ae047a7d-1657290076363@3c-app-gmx-bs34>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Frank Wunderlich <linux@fw-web.de>
-Subject: Aw: [PATCH] arm64: dts: rk356x: fix upper usb port on BPI-R2-Pro
-Date: Fri, 8 Jul 2022 16:21:16 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20220708132706.81450-1-linux@fw-web.de>
-References: <20220708132706.81450-1-linux@fw-web.de>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:6POgQ4vFo6v2yxUWKuL4B/SKN+XUsFnyRZLUJ8RKpuNVB+CVRgUrtdqsuKTkX6DYgczdM
- S79MFaUYh2YAHCctg75rCXezG2XeG6pSK72EuX6BaIiUykX1x9lVwIAUUgFUkoOPjpD5EqR6fUDl
- go6/5GkbcWukqZ5Xv2tic2OdfZeeiwtMAiMkp1YxBJMudGPAC92m3KqlIw0RiMiA+LgQfn3zIbiF
- UKzcgEK4EnU/Ccjn3f7QK2hNolEB93PTxFV4c2q1U2Me8VQuhKQ3Y9SNhyUP9cVWGo63AzzZpmtZ
- yg=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:2Ss00Y/hSzk=:W+x06xOV3HSvSsYyXdbK6F
- 5sjv8mfCSOOHEOg6rxQHgGX/yqo9n/Irjw6ctZ9iYnFsjlASDEQ0anJ6kl/q+N0hIuMunTRh4
- AUWZy2OJuiQoynH5m/huT/LHorj0WAUnYB04wT9JyxFyAjY8ONrOULoPO11I0uMmSkzS0WCm2
- mv9NIIftZbU19iLpdoPTzFuibq+2PBwrPrD6OEks2V2icsj27YYhxOnYW4hdcP7UjPkyrgtn1
- bOuEGeQl4ayrDs3jI+0n6rm3HUGxBONnL2v7MPHZXErdXWxYzFVC4pLk0V4U6elUDuce7V6VL
- 2Vhl6wfvsI6q+222HDdV/fzEiERFnatmjY2RBX5HcjBefCYsmGPpO3tzISbJuty3EdItLalW4
- mhpS81gsaLGM6RSEN9HZLmzglApx/rWoO+e3q3an9Zlpg+63LlsvcX8WioMNhlkSitiwnkJCR
- WALLV2rjor6Whr6lyQK/jFBsh90gGRCz9e0Ja0YCkx9GAH9iyOIQvcZq0yzNfD0JcTk6cbOWy
- /q1+Q7txmkFcADCG9oCjsaXZE2UpyeX9M+URxSQq3mWPqxndZPI1s3UUeWwDKOk5QDvynKSfn
- BPDv3+foeeT3YfgeZ99QJVwrCBJQOPfJUf73G92JmPkaul70935GSvSATHdC61pH6WNxXw+Yr
- BkjyB4sAF0eGx8JTpYHKSiwJWM43rKJ3MDP6mWBZ297YyCtOKajWUnCHRodmudp9CmYCGDdr5
- DyXQaqSs5rxgXBrC3fuYbN8/e2HobxejxhbmPbA72ZHGRnnA5bXkXak03NtvsGaWJ7lfpBeXz
- 8r4KUoU
+Content-Disposition: inline
+In-Reply-To: <20220628054430.1349988-1-paul.elder@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_072132_521973_56D93635 
-X-CRM114-Status: UNSURE (   6.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220708_080238_302076_4FBC653F 
+X-CRM114-Status: GOOD (  34.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,11 +67,206 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Paul,
 
-noticed that prefix should be "arm64: dts: rockchip:", should i send a v2 or can this changed while applying?
+Thank you for the patch.
 
-regards Frank
+On Tue, Jun 28, 2022 at 02:44:30PM +0900, Paul Elder wrote:
+> Some hardware supported by the rkisp1 driver, such as the ISP in the
+> i.MX8MP, don't have a self path. Add a feature flag for this, and
+> massage the rest of the driver to support the lack of a self path.
+> 
+> Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+> 
+> ---
+> Changes in v2:
+> - add rkisp1_path_count() helper to obtain the number of paths
+> - fix forcing config update when there's no self path
+> 
+> This patch depends on "media: rkisp1: Cleanups and add support for
+> i.MX8MP" [1], which in turn depends on v4 of "media: rkisp1: Misc bug
+> fixes and cleanups" [2].
+> 
+> [1] https://lore.kernel.org/linux-media/20220625070034.6odv6cyvqqigb2sa@guri/T/
+> [2] https://lore.kernel.org/linux-media/Ymbxs2p9Tuf331qM@pendragon.ideasonboard.com/T/
+> ---
+>  .../platform/rockchip/rkisp1/rkisp1-capture.c     |  9 ++++++---
+>  .../platform/rockchip/rkisp1/rkisp1-common.h      | 15 +++++++++++++++
+>  .../media/platform/rockchip/rkisp1/rkisp1-dev.c   |  9 ++++++---
+>  .../platform/rockchip/rkisp1/rkisp1-resizer.c     |  6 ++++--
+>  4 files changed, 31 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> index 234b1f8488cb..215be4034c52 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> @@ -709,6 +709,7 @@ irqreturn_t rkisp1_capture_isr(int irq, void *ctx)
+>  {
+>  	struct device *dev = ctx;
+>  	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+> +	unsigned int dev_count = rkisp1_path_count(rkisp1);
+>  	unsigned int i;
+>  	u32 status;
+>  
+> @@ -718,7 +719,7 @@ irqreturn_t rkisp1_capture_isr(int irq, void *ctx)
+>  
+>  	rkisp1_write(rkisp1, RKISP1_CIF_MI_ICR, status);
+>  
+> -	for (i = 0; i < ARRAY_SIZE(rkisp1->capture_devs); ++i) {
+> +	for (i = 0; i < dev_count; ++i) {
+>  		struct rkisp1_capture *cap = &rkisp1->capture_devs[i];
+>  
+>  		if (!(status & RKISP1_CIF_MI_FRAME(cap)))
+> @@ -875,6 +876,7 @@ static void rkisp1_cap_stream_enable(struct rkisp1_capture *cap)
+>  {
+>  	struct rkisp1_device *rkisp1 = cap->rkisp1;
+>  	struct rkisp1_capture *other = &rkisp1->capture_devs[cap->id ^ 1];
+> +	bool has_self_path = rkisp1->info->features & RKISP1_FEATURE_SELF_PATH;
+>  
+>  	cap->ops->set_data_path(cap);
+>  	cap->ops->config(cap);
+> @@ -892,7 +894,7 @@ static void rkisp1_cap_stream_enable(struct rkisp1_capture *cap)
+>  	 * This's also required because the second FE maybe corrupt
+>  	 * especially when run at 120fps.
+>  	 */
+> -	if (!other->is_streaming) {
+> +	if (!has_self_path || !other->is_streaming) {
+>  		/* force cfg update */
+>  		rkisp1_write(rkisp1, RKISP1_CIF_MI_INIT,
+>  			     RKISP1_CIF_MI_INIT_SOFT_UPD);
+> @@ -1445,10 +1447,11 @@ rkisp1_capture_init(struct rkisp1_device *rkisp1, enum rkisp1_stream_id id)
+>  
+>  int rkisp1_capture_devs_register(struct rkisp1_device *rkisp1)
+>  {
+> +	unsigned int dev_count = rkisp1_path_count(rkisp1);
+>  	unsigned int i;
+>  	int ret;
+>  
+> -	for (i = 0; i < ARRAY_SIZE(rkisp1->capture_devs); i++) {
+> +	for (i = 0; i < dev_count; i++) {
+>  		struct rkisp1_capture *cap = &rkisp1->capture_devs[i];
+>  
+>  		rkisp1_capture_init(rkisp1, i);
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> index 0b834579d08c..f25d885c79ff 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+> @@ -114,6 +114,7 @@ enum rkisp1_feature {
+>  	RKISP1_FEATURE_RSZ_CROP = BIT(2),
+>  	RKISP1_FEATURE_MAIN_STRIDE = BIT(3),
+>  	RKISP1_FEATURE_DMA_34BIT = BIT(4),
+> +	RKISP1_FEATURE_SELF_PATH = BIT(5),
+>  };
+>  
+>  /*
+> @@ -552,6 +553,20 @@ unsigned int rkisp1_mbus_info_length(void);
+>   */
+>  const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_index(unsigned int index);
+>  
+> +/*
+> + * rkisp1_path_count - Return the number of paths supported by the device
+> + *
+> + * Some devices only have a main path, while other device have both a main path
+> + * and a self path. This function returns the number of paths that this device
+> + * has, based on the feature flags. It should be used insted of checking
+> + * ARRAY_SIZE of capture_devs/resizer_devs.
+> + */
+> +static inline unsigned int rkisp1_path_count(struct rkisp1_device *rkisp1)
+> +{
+> +	bool has_self_path = rkisp1->info->features & RKISP1_FEATURE_SELF_PATH;
+> +	return has_self_path ? 2 : 1;
+
+	return rkisp1->info->features & RKISP1_FEATURE_SELF_PATH ? 2 : 1;
+
+would do.
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+> +}
+> +
+>  /*
+>   * rkisp1_sd_adjust_crop_rect - adjust a rectangle to fit into another rectangle.
+>   *
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> index 4c77aa2bc50a..8fd9f67836a5 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> @@ -326,6 +326,7 @@ static const struct dev_pm_ops rkisp1_pm_ops = {
+>  
+>  static int rkisp1_create_links(struct rkisp1_device *rkisp1)
+>  {
+> +	unsigned int dev_count = rkisp1_path_count(rkisp1);
+>  	unsigned int i;
+>  	int ret;
+>  
+> @@ -341,7 +342,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
+>  	}
+>  
+>  	/* create ISP->RSZ->CAP links */
+> -	for (i = 0; i < 2; i++) {
+> +	for (i = 0; i < dev_count; i++) {
+>  		struct media_entity *resizer =
+>  			&rkisp1->resizer_devs[i].sd.entity;
+>  		struct media_entity *capture =
+> @@ -466,7 +467,8 @@ static const struct rkisp1_info px30_isp_info = {
+>  	.isr_size = ARRAY_SIZE(px30_isp_isrs),
+>  	.isp_ver = RKISP1_V12,
+>  	.features = RKISP1_FEATURE_MIPI_CSI2
+> -		  | RKISP1_FEATURE_DUAL_CROP,
+> +		  | RKISP1_FEATURE_DUAL_CROP
+> +		  | RKISP1_FEATURE_SELF_PATH,
+>  };
+>  
+>  static const char * const rk3399_isp_clks[] = {
+> @@ -486,7 +488,8 @@ static const struct rkisp1_info rk3399_isp_info = {
+>  	.isr_size = ARRAY_SIZE(rk3399_isp_isrs),
+>  	.isp_ver = RKISP1_V10,
+>  	.features = RKISP1_FEATURE_MIPI_CSI2
+> -		  | RKISP1_FEATURE_DUAL_CROP,
+> +		  | RKISP1_FEATURE_DUAL_CROP
+> +		  | RKISP1_FEATURE_SELF_PATH,
+>  };
+>  
+>  static const char * const imx8mp_isp_clks[] = {
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+> index 29a31b18a082..a18dacc84568 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
+> @@ -673,6 +673,7 @@ static int rkisp1_rsz_s_stream(struct v4l2_subdev *sd, int enable)
+>  	struct rkisp1_device *rkisp1 = rsz->rkisp1;
+>  	struct rkisp1_capture *other = &rkisp1->capture_devs[rsz->id ^ 1];
+>  	enum rkisp1_shadow_regs_when when = RKISP1_SHADOW_REGS_SYNC;
+> +	bool has_self_path = rkisp1->info->features & RKISP1_FEATURE_SELF_PATH;
+>  
+>  	if (!enable) {
+>  		if (rkisp1->info->features & RKISP1_FEATURE_DUAL_CROP)
+> @@ -681,7 +682,7 @@ static int rkisp1_rsz_s_stream(struct v4l2_subdev *sd, int enable)
+>  		return 0;
+>  	}
+>  
+> -	if (other->is_streaming)
+> +	if (has_self_path && other->is_streaming)
+>  		when = RKISP1_SHADOW_REGS_ASYNC;
+>  
+>  	mutex_lock(&rsz->ops_lock);
+> @@ -769,10 +770,11 @@ static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
+>  
+>  int rkisp1_resizer_devs_register(struct rkisp1_device *rkisp1)
+>  {
+> +	unsigned int dev_count = rkisp1_path_count(rkisp1);
+>  	unsigned int i;
+>  	int ret;
+>  
+> -	for (i = 0; i < ARRAY_SIZE(rkisp1->resizer_devs); i++) {
+> +	for (i = 0; i < dev_count; i++) {
+>  		struct rkisp1_resizer *rsz = &rkisp1->resizer_devs[i];
+>  
+>  		rsz->rkisp1 = rkisp1;
+
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
