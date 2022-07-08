@@ -4,55 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC783C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 16:18:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6D70C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 16:22:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ye9ivO19O4XDGT81VsZfo3wwqUQaFLxzIkbq0Tc+ZZU=; b=lLrNpGMzBOE64h
-	jQkif4trf8FtarGqgjNwGDIk6iD67QI2lHkLk/k/JWP3RG0Q2jaLu+5nVzQu/mXNvwyUln9uBgXWu
-	fua4QSiZMlEOh83/ck8Tz0mpnw0HtaOlOpEhQnPx6jm+wyCieHXkDg8xBNnIT3g82pM0v5CivYkh/
-	VwGHpsPWMJ2HblIT3Gow76AFMwGns8DqiUOvhuQZTe8veh0+duD4NkG6pCaOoiHTL7BVVT5cQf5Dt
-	hRpgmNTF+Z0Z+VpGeXaHMKm7XkD1tH8SkxbIOopIuw+CvnzJBCnqGqk8PBZMONzAAHnfDAMBs9W7Q
-	LtrGxQFH95w2y/dUabKg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sUsQ345CPEMBbrJyUmd8k8vqwruN1x/ed/ETWd2kxnU=; b=vgdHwhALIXB8xH
+	gIcEaQXiLQd4qkK2V17AW2UaiGIgZO6GnFwKSY9yIdo3sB7Xuuey7S/UC32XIqUa9iJmgZW813IFZ
+	4NI74GJSV6dT2dyJgnZmTm68PNXoZkx6a9Z9Jh6rRwYhdnOzz1KFH3e58sBK/T7URCeKuzhRyXQs/
+	fa98fVogetoQTUnpixaHcw9Oz1uydsE7DrzlUb4PW6Y2WgWSfybQkWpekl4rZtpDAzksB8NxrrdnP
+	GTJqgsEaflRfoPF8UNyzzocRVNcRYMkovYnJpF7TuW38BHM5BEl4KZYx5PAkKjrm9yuprGeUSYpVr
+	ZpHqieW4i9ZaBWQMm38A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9qgj-004ZWv-AF; Fri, 08 Jul 2022 16:18:41 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9qgW-004ZR1-HC; Fri, 08 Jul 2022 16:18:30 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 1FDB7106F;
-	Fri,  8 Jul 2022 09:18:23 -0700 (PDT)
-Received: from [10.57.86.102] (unknown [10.57.86.102])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C2FDB3F66F;
-	Fri,  8 Jul 2022 09:18:20 -0700 (PDT)
-Message-ID: <5611d1c5-44db-4144-3c46-256323d39fe3@arm.com>
-Date: Fri, 8 Jul 2022 17:17:22 +0100
+	id 1o9qkd-004atw-CB; Fri, 08 Jul 2022 16:22:43 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1o9qkA-004acy-Ld; Fri, 08 Jul 2022 16:22:16 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:3cab:61a1:2b1f:896b])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6038D66019F2;
+	Fri,  8 Jul 2022 17:22:12 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1657297333;
+	bh=o7ebIOjpMgtPQ39JcRXc/Ro+io5jN2W2nv9fLX75sa0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=muvNRQdER9IO0S1c15PPAB4e2sDqHgkuf17AHlvI1jTz5o+yznWgHJlb6i1uCLsgx
+	 T6Qi5g4pkCErYbraJWiaNdC29wQDYJ092xVfAfJcl6DJxAJuYqy1GGL8GbA7vEddo4
+	 8bgWSxYq7d8gYDmyeKEtoO+Q7WEYdY5VevdVasK0VlwkDY58yoeBhAirnFc1rwyYyf
+	 hpE8jl/ilPJojysCmasE0kB1QAC43mm3arPgl7QIFVitiSALHaYNaPEaWYwqOrdqDW
+	 nNWqjhX9fpFYisJrj8/x+doEOq0lQB76LRE3b50ZlKymF3dCF6whPHFR4MxVNKysrg
+	 LFqCP3YJnm6Hw==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	hverkuil@xs4all.nl,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	mripard@kernel.org,
+	paul.kocialkowski@bootlin.com,
+	wens@csie.org,
+	jernej.skrabec@gmail.com,
+	samuel@sholland.org,
+	nicolas.dufresne@collabora.com,
+	andrzej.p@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v13 00/17] Move HEVC stateless controls out of staging
+Date: Fri,  8 Jul 2022 18:21:39 +0200
+Message-Id: <20220708162156.815772-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 1/2] rtc: hym8563: try multiple times to init device
-Content-Language: en-GB
-To: Frank Wunderlich <linux@fw-web.de>, linux-rockchip@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Alessandro Zummo <a.zummo@towertech.it>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-rtc@vger.kernel.org,
- Peter Geis <pgwipeout@gmail.com>
-References: <20220608161150.58919-1-linux@fw-web.de>
- <20220608161150.58919-2-linux@fw-web.de>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20220608161150.58919-2-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_091828_650590_751C59BC 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20220708_092214_953927_E9A4D5C5 
+X-CRM114-Status: GOOD (  18.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,62 +81,149 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-06-08 17:11, Frank Wunderlich wrote:
-> From: Peter Geis <pgwipeout@gmail.com>
-> 
-> RTC sometimes does not respond the first time in init.
-> Try multiple times to get a response.
+This series aims to make HEVC uapi stable and usable for hardware
+decoder. HEVC uapi is used by 2 mainlined drivers (Cedrus and Hantro)
+and 2 out of the tree drivers (rkvdec and RPI).
 
-FWIW, given that HYM8563 is fairly common on RK3288 boards - I can't say 
-I've ever noticed an issue with mine, for instance - it seems dubious 
-that this would be a general issue of the chip itself. Are you sure it's 
-not a SoC or board-level issue with the I2C bus being in a funny initial 
-state, timings being marginal, or suchlike?
+version 13:
+- Reword num_entry_point_offsets field and control usage (yes, again)
 
-Robin.
+version 12:
+- Fix commit message in patch "HEVC: fix padding in v4l2 control
+  structures"
+- Reword num_entry_point_offsets field usage.
 
-> Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
->   drivers/rtc/rtc-hym8563.c | 11 +++++++++--
->   1 file changed, 9 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/rtc/rtc-hym8563.c b/drivers/rtc/rtc-hym8563.c
-> index 90e602e99d03..9adcedaa4613 100644
-> --- a/drivers/rtc/rtc-hym8563.c
-> +++ b/drivers/rtc/rtc-hym8563.c
-> @@ -13,6 +13,7 @@
->   #include <linux/clk-provider.h>
->   #include <linux/i2c.h>
->   #include <linux/bcd.h>
-> +#include <linux/delay.h>
->   #include <linux/rtc.h>
->   
->   #define HYM8563_CTL1		0x00
-> @@ -438,10 +439,16 @@ static irqreturn_t hym8563_irq(int irq, void *dev_id)
->   
->   static int hym8563_init_device(struct i2c_client *client)
->   {
-> -	int ret;
-> +	int ret, i;
->   
->   	/* Clear stop flag if present */
-> -	ret = i2c_smbus_write_byte_data(client, HYM8563_CTL1, 0);
-> +	for (i = 0; i < 3; i++) {
-> +		ret = i2c_smbus_write_byte_data(client, HYM8563_CTL1, 0);
-> +		if (ret == 0)
-> +			break;
-> +		msleep(20);
-> +	}
-> +
->   	if (ret < 0)
->   		return ret;
->   
+version 11:
+- Be more verbose about num_entry_point_offsets field usage.
+- Fix various typos in "Add documentation to uAPI structure" patch.
+
+version 10:
+- Rebased on media_stage/master
+- Add Acked-by tag from Nicolas
+- Add Tested-by tag from Jernej
+- Fix typo in patch 14
+
+This version has been tested with these branches:
+- GStreamer: https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/tree/HEVC_aligned_with_kernel_5.15
+- Linux: https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/tree/HEVC_UAPI_V10
+
+With patches to decode 10-bits bitstream and produce P010 frames the Fluster score 
+which was 77/147 before, is now 141/147.
+The 10-bits series will comes after this because of it dependency to
+uAPI change. If you are curious you can find the WIP branch here:
+https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/WIP_HEVC_UAPI_V10
+
+The 6 failing tests are:
+- PICSIZE_{A,B,C,D}_Bossen_1 where resolutions are to big for Hantro hardware.
+- WPP_D_ericsson_MAIN_2 and WPP_D_ericsson_MAIN10_2 are visually ok but some 
+  difference exist on 5 decoded frames. Some pixels values are no the same 
+  the very end of few lines.
+
+version 9:
+- Reword some commit message
+- Use fls()
+- Remove useless padding at the end of hevc structures
+- Reword all _minus* field description
+- change CVS to codec video sequence
+- Fix various typo
+- Fix undefined label: v4l2-ctrl-flag-dynamic-array warning
+- fix the waring reported by 'scripts/kernel-doc -none
+  include/uapi/linux/v4l2-controls.h'
+
+version 8:
+- Same than v7 but rebased on media_stage/master
+
+version 7:
+- Apply Jernej patches for Cedrus about bit offset definition and
+  V4L2_CID_STATELESS_HEVC_SLICE_PARAMS being a dynamic array control.
+- Based on media_tree/master
+
+version 6:
+- Add short_term_ref_pic_set_size and long_term_ref_pic_set_size
+  in v4l2_ctrl_hevc_decode_params structure.
+- Change slice_pic_order_cnt type to s32 to match with PoC type.
+- Set V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag automatically when using
+  V4L2_CID_STATELESS_HEVC_SLICE_PARAMS control.
+- Add a define for max slices count
+- Stop using Hantro dedicated control.
+
+version 5:
+- Change __u16 pic_order_cnt[2] into __s32 pic_order_cnt_val in
+  hevc_dpb_entry structure
+- Add defines for SEI pic_struct values (patch 4)
+- Fix numbers of bits computation in cedrus_h265_skip_bits() parameters
+- Fix num_short_term_ref_pic_sets and num_long_term_ref_pics_sps
+  documentation (patch 8)
+- Rebased on v5-18-rc1
+
+Version 4:
+- Add num_entry_point_offsets field in  struct v4l2_ctrl_hevc_slice_params
+- Fix V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS name
+- Initialize control V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS
+- Fix space/tab issue in kernel-doc
+- Add patch to change data_bit_offset definition
+- Fix hantro-media SPDX license
+- put controls under stateless section in v4l2-ctrls-defs.c 
+ 
+Benjamin Gaignard (14):
+  media: uapi: HEVC: Add missing fields in HEVC controls
+  media: uapi: HEVC: Rename HEVC stateless controls with STATELESS
+    prefix
+  media: uapi: HEVC: Change pic_order_cnt definition in
+    v4l2_hevc_dpb_entry
+  media: uapi: HEVC: Add SEI pic struct flags
+  media: uapi: HEVC: Add documentation to uAPI structure
+  media: uapi: HEVC: Define V4L2_CID_STATELESS_HEVC_SLICE_PARAMS as a
+    dynamic array
+  media: uapi: Move parsed HEVC pixel format out of staging
+  media: uapi: Add V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
+  media: uapi: Move the HEVC stateless control type out of staging
+  media: controls: Log HEVC stateless control in .std_log
+  media: hantro: Stop using Hantro dedicated control
+  media: uapi: HEVC: fix padding in v4l2 control structures
+  media: uapi: Change data_bit_offset definition
+  media: uapi: move HEVC stateless controls out of staging
+
+Hans Verkuil (3):
+  videodev2.h: add V4L2_CTRL_FLAG_DYNAMIC_ARRAY
+  v4l2-ctrls: add support for dynamically allocated arrays.
+  vivid: add dynamic array test control
+
+ .../media/v4l/ext-ctrls-codec-stateless.rst   | 902 ++++++++++++++++++
+ .../media/v4l/ext-ctrls-codec.rst             | 780 ---------------
+ .../media/v4l/pixfmt-compressed.rst           |   7 +-
+ .../media/v4l/vidioc-g-ext-ctrls.rst          |  20 +
+ .../media/v4l/vidioc-queryctrl.rst            |   8 +
+ .../media/videodev2.h.rst.exceptions          |   6 +
+ .../media/test-drivers/vivid/vivid-ctrls.c    |  15 +
+ drivers/media/v4l2-core/v4l2-ctrls-api.c      | 103 +-
+ drivers/media/v4l2-core/v4l2-ctrls-core.c     | 212 +++-
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  38 +-
+ drivers/media/v4l2-core/v4l2-ctrls-priv.h     |   3 +-
+ drivers/media/v4l2-core/v4l2-ctrls-request.c  |  13 +-
+ drivers/staging/media/hantro/hantro_drv.c     |  62 +-
+ .../staging/media/hantro/hantro_g2_hevc_dec.c |  44 +-
+ drivers/staging/media/hantro/hantro_hevc.c    |  10 +-
+ drivers/staging/media/hantro/hantro_hw.h      |   4 +-
+ drivers/staging/media/sunxi/cedrus/cedrus.c   |  26 +-
+ .../staging/media/sunxi/cedrus/cedrus_dec.c   |  10 +-
+ .../staging/media/sunxi/cedrus/cedrus_h265.c  |  23 +-
+ .../staging/media/sunxi/cedrus/cedrus_video.c |   1 -
+ include/media/hevc-ctrls.h                    | 250 -----
+ include/media/v4l2-ctrls.h                    |  48 +-
+ include/uapi/linux/v4l2-controls.h            | 459 +++++++++
+ include/uapi/linux/videodev2.h                |  13 +
+ 24 files changed, 1831 insertions(+), 1226 deletions(-)
+ delete mode 100644 include/media/hevc-ctrls.h
+
+-- 
+2.32.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
