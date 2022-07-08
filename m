@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B275FC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 12:07:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67D4FCCA480
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jul 2022 12:07:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bu8FKgi3V8DNrI6dolzF1ScksmfDnUcUzSSveiCBfmE=; b=c4vJPezQGY1kad
-	AW9jCkXx1fbkoSu9GtbdzEXPVPMc41E9z2XjHYQUkjPa0JGWThubTzJNKgP1+Y1X/poJ/1MaSbdjB
-	tLWqeXql+GO8RL+Y0CwycI1/GJtD0GH19fn0CR1Oo0KTiq3RKrBUpDVkSPsZdKwrMEQKT+ktWwrKj
-	qgzs+UgTnKAshgrVwSUYJohWpIaPdIiHpAeuxlSY50zquExSY3Uk2Xks1K37slasAchDJpvFlwSaq
-	ThBFWfzQqlUB4ben4n/cDlNZ/caZeDbuDz5jFoHKPRgzqltk3YwUrpMwQMrLlXwecqdKCz2DiHcto
-	sFf/oP3bpM02IndALzIQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6ZrBday1E0WhkcBVLuVLGN1ncvyK2Bbu8MHWtF/p7FM=; b=IN5JlCS6bHmuSY
+	Lm14eB5q3tIp4PCQgAX46TIsgR2M9Rn6zugPrnj5iLvcwaU8yFmFb+lP99VSH996jge55Coi0LY9O
+	+HN+dllp7SIqprAXFE2NSKeaHt3fd/y8j1dhLR0fT3CdqQUtb2YbW1JdDJBEngOYfC/XB23ITBqI2
+	9FpT8eLuRJ0Yr97Aer82S29ZgAB3E4+B43eDYWeRVXQRQWpPYiW2YbKPYzp3msNXCa/q16PWCXWvE
+	mSt510c6wsem9kUtJkjWo97v6MPOjgQMPx7IeIbWniwsIk4AbYU3mG5zqUXwU9VKvm6MqJWTlb/k5
+	oJ5EBfqMvEs/b5bms4tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9mlm-003ZFz-Lz; Fri, 08 Jul 2022 12:07:38 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1o9mlo-003ZGh-0R; Fri, 08 Jul 2022 12:07:40 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1o9mkK-003YZX-49; Fri, 08 Jul 2022 12:06:12 +0000
+	id 1o9mkL-003Yag-Ho; Fri, 08 Jul 2022 12:06:12 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:3cab:61a1:2b1f:896b])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 032C266019BF;
-	Fri,  8 Jul 2022 13:06:04 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id CC99D66019DD;
+	Fri,  8 Jul 2022 13:06:07 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1657281965;
-	bh=oR1vIJX0M4WLom1qHGcFhu7RKQFofXwwY/N0SjmofPo=;
-	h=From:To:Cc:Subject:Date:From;
-	b=bMiC9ktT7iO4ZCB19V+PjdDBRG+SXGxKPI9updyHCELhayVZNOCaGblpJHinNLgWj
-	 GREWycA2GpXePXu++Tjg+sw9zASf2pt6jqCONLv60QK1SxG6LCvBXrDbkdaY2mQUsn
-	 8fgUxUsZmg47TyejZsxBctwEUxD/+bP2Ajkix0uAw1WPxm5LdGSWVGfxmizjrEyeWk
-	 8X7rrGSsuHnGZQ7onJAz6l+bkR9gwt8ixdIigsPTmUQDdtSPnC59Z+XmRnzACMt6px
-	 XROnNk+9SY9/HueVYK2KFBNTVooF4l4KxJJuPQvxL4mzzXYPK5eDDUakFC7KUUjtig
-	 gixgEnOVY5mTg==
+	s=mail; t=1657281968;
+	bh=C5Btgw3+c5EvnhMNonf2NhctTzpNaqRXUw4T2X+a+KU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=XgTnMOKc5gcpG4y3guHP5QXUY5uBCIiDnBS7OPVsQNV/iWMs1klAXdMo1IPEfPf9E
+	 ia4ic2MrrCYx0mCUtyTWxy0E4oiEH69yHngg/RovDPYGaLKAR/0AFkB3qYr+KgGb50
+	 qFqkxhK6hOmmmsPFgd0j1rFASk5iuKJ9jLji5+WSydyLw8ON7xpirzGcf+1BSKNKUl
+	 wl1NLlVkaYgZOcaap2TIZMo57e7pdhEivMO0SVWdxkDlqS/EGx7Aw2NIMKBcpHusJD
+	 ZyFecXf/8mACkO6HRVww0Z/lpiTjo9h1v2OXL1igz/5QSH+6VBsCXKnKUZQEF18P1U
+	 ssrc0MZEwi/uw==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -62,14 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v12 00/17] Move HEVC stateless controls out of staging
-Date: Fri,  8 Jul 2022 14:05:37 +0200
-Message-Id: <20220708120554.495495-1-benjamin.gaignard@collabora.com>
+Subject: [PATCH v12 04/17] media: uapi: HEVC: Add missing fields in HEVC controls
+Date: Fri,  8 Jul 2022 14:05:41 +0200
+Message-Id: <20220708120554.495495-5-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20220708120554.495495-1-benjamin.gaignard@collabora.com>
+References: <20220708120554.495495-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220708_050608_490612_6491DF2A 
-X-CRM114-Status: GOOD (  18.61  )
+X-CRM114-CacheID: sfid-20220708_050609_876028_57C16D71 
+X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,138 +88,123 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series aims to make HEVC uapi stable and usable for hardware
-decoder. HEVC uapi is used by 2 mainlined drivers (Cedrus and Hantro)
-and 2 out of the tree drivers (rkvdec and RPI).
+Complete the HEVC controls with missing fields from H.265 specifications.
+Even if these fields aren't used by the current mainlined drivers
+they will be required for (at least) the rkvdec driver.
 
-version 12:
-- Fix commit message in patch "HEVC: fix padding in v4l2 control
-  structures"
-- Reword num_entry_point_offsets field usage.
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Tested-by: Jernej Skrabec <jernej.skrabec@gmail.com>
+---
+ .../media/v4l/ext-ctrls-codec.rst             | 32 +++++++++++++++++++
+ include/media/hevc-ctrls.h                    |  8 ++++-
+ 2 files changed, 39 insertions(+), 1 deletion(-)
 
-version 11:
-- Be more verbose about num_entry_point_offsets field usage.
-- Fix various typos in "Add documentation to uAPI structure" patch.
-
-version 10:
-- Rebased on media_stage/master
-- Add Acked-by tag from Nicolas
-- Add Tested-by tag from Jernej
-- Fix typo in patch 14
-
-This version has been tested with these branches:
-- GStreamer: https://gitlab.freedesktop.org/benjamin.gaignard1/gstreamer/-/tree/HEVC_aligned_with_kernel_5.15
-- Linux: https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/tree/HEVC_UAPI_V10
-
-With patches to decode 10-bits bitstream and produce P010 frames the Fluster score 
-which was 77/147 before, is now 141/147.
-The 10-bits series will comes after this because of it dependency to
-uAPI change. If you are curious you can find the WIP branch here:
-https://gitlab.collabora.com/benjamin.gaignard/for-upstream/-/commits/WIP_HEVC_UAPI_V10
-
-The 6 failing tests are:
-- PICSIZE_{A,B,C,D}_Bossen_1 where resolutions are to big for Hantro hardware.
-- WPP_D_ericsson_MAIN_2 and WPP_D_ericsson_MAIN10_2 are visually ok but some 
-  difference exist on 5 decoded frames. Some pixels values are no the same 
-  the very end of few lines.
-
-version 9:
-- Reword some commit message
-- Use fls()
-- Remove useless padding at the end of hevc structures
-- Reword all _minus* field description
-- change CVS to codec video sequence
-- Fix various typo
-- Fix undefined label: v4l2-ctrl-flag-dynamic-array warning
-- fix the waring reported by 'scripts/kernel-doc -none
-  include/uapi/linux/v4l2-controls.h'
-
-version 8:
-- Same than v7 but rebased on media_stage/master
-
-version 7:
-- Apply Jernej patches for Cedrus about bit offset definition and
-  V4L2_CID_STATELESS_HEVC_SLICE_PARAMS being a dynamic array control.
-- Based on media_tree/master
-
-version 6:
-- Add short_term_ref_pic_set_size and long_term_ref_pic_set_size
-  in v4l2_ctrl_hevc_decode_params structure.
-- Change slice_pic_order_cnt type to s32 to match with PoC type.
-- Set V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag automatically when using
-  V4L2_CID_STATELESS_HEVC_SLICE_PARAMS control.
-- Add a define for max slices count
-- Stop using Hantro dedicated control.
-
-version 5:
-- Change __u16 pic_order_cnt[2] into __s32 pic_order_cnt_val in
-  hevc_dpb_entry structure
-- Add defines for SEI pic_struct values (patch 4)
-- Fix numbers of bits computation in cedrus_h265_skip_bits() parameters
-- Fix num_short_term_ref_pic_sets and num_long_term_ref_pics_sps
-  documentation (patch 8)
-- Rebased on v5-18-rc1
-
-Version 4:
-- Add num_entry_point_offsets field in  struct v4l2_ctrl_hevc_slice_params
-- Fix V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS name
-- Initialize control V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS
-- Fix space/tab issue in kernel-doc
-- Add patch to change data_bit_offset definition
-- Fix hantro-media SPDX license
-- put controls under stateless section in v4l2-ctrls-defs.c 
-
-Benjamin Gaignard (14):
-  media: uapi: HEVC: Add missing fields in HEVC controls
-  media: uapi: HEVC: Rename HEVC stateless controls with STATELESS
-    prefix
-  media: uapi: HEVC: Change pic_order_cnt definition in
-    v4l2_hevc_dpb_entry
-  media: uapi: HEVC: Add SEI pic struct flags
-  media: uapi: HEVC: Add documentation to uAPI structure
-  media: uapi: HEVC: Define V4L2_CID_STATELESS_HEVC_SLICE_PARAMS as a
-    dynamic array
-  media: uapi: Move parsed HEVC pixel format out of staging
-  media: uapi: Add V4L2_CID_STATELESS_HEVC_ENTRY_POINT_OFFSETS control
-  media: uapi: Move the HEVC stateless control type out of staging
-  media: controls: Log HEVC stateless control in .std_log
-  media: hantro: Stop using Hantro dedicated control
-  media: uapi: HEVC: fix padding in v4l2 control structures
-  media: uapi: Change data_bit_offset definition
-  media: uapi: move HEVC stateless controls out of staging
-
-Hans Verkuil (3):
-  videodev2.h: add V4L2_CTRL_FLAG_DYNAMIC_ARRAY
-  v4l2-ctrls: add support for dynamically allocated arrays.
-  vivid: add dynamic array test control
-
- .../media/v4l/ext-ctrls-codec-stateless.rst   | 899 ++++++++++++++++++
- .../media/v4l/ext-ctrls-codec.rst             | 780 ---------------
- .../media/v4l/pixfmt-compressed.rst           |   7 +-
- .../media/v4l/vidioc-g-ext-ctrls.rst          |  20 +
- .../media/v4l/vidioc-queryctrl.rst            |   8 +
- .../media/videodev2.h.rst.exceptions          |   6 +
- .../media/test-drivers/vivid/vivid-ctrls.c    |  15 +
- drivers/media/v4l2-core/v4l2-ctrls-api.c      | 103 +-
- drivers/media/v4l2-core/v4l2-ctrls-core.c     | 212 ++++-
- drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  38 +-
- drivers/media/v4l2-core/v4l2-ctrls-priv.h     |   3 +-
- drivers/media/v4l2-core/v4l2-ctrls-request.c  |  13 +-
- drivers/staging/media/hantro/hantro_drv.c     |  62 +-
- .../staging/media/hantro/hantro_g2_hevc_dec.c |  44 +-
- drivers/staging/media/hantro/hantro_hevc.c    |  10 +-
- drivers/staging/media/hantro/hantro_hw.h      |   4 +-
- drivers/staging/media/sunxi/cedrus/cedrus.c   |  26 +-
- .../staging/media/sunxi/cedrus/cedrus_dec.c   |  10 +-
- .../staging/media/sunxi/cedrus/cedrus_h265.c  |  23 +-
- .../staging/media/sunxi/cedrus/cedrus_video.c |   1 -
- include/media/hevc-ctrls.h                    | 250 -----
- include/media/v4l2-ctrls.h                    |  48 +-
- include/uapi/linux/v4l2-controls.h            | 459 +++++++++
- include/uapi/linux/videodev2.h                |  13 +
- 24 files changed, 1828 insertions(+), 1226 deletions(-)
- delete mode 100644 include/media/hevc-ctrls.h
-
+diff --git a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+index 6183f43f4d73..cff742142a55 100644
+--- a/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
++++ b/Documentation/userspace-api/media/v4l/ext-ctrls-codec.rst
+@@ -2683,6 +2683,16 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     :stub-columns: 0
+     :widths:       1 1 2
+ 
++    * - __u8
++      - ``video_parameter_set_id``
++      - Specifies the value of the vps_video_parameter_set_id of the active VPS
++        as described in section "7.4.3.2.1 General sequence parameter set RBSP semantics"
++        of H.265 specifications.
++    * - __u8
++      - ``seq_parameter_set_id``
++      - Provides an identifier for the SPS for reference by other syntax elements
++        as described in section "7.4.3.2.1 General sequence parameter set RBSP semantics"
++        of H.265 specifications.
+     * - __u16
+       - ``pic_width_in_luma_samples``
+       -
+@@ -2822,6 +2832,9 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     :stub-columns: 0
+     :widths:       1 1 2
+ 
++    * - __u8
++      - ``pic_parameter_set_id``
++      - Identifies the PPS for reference by other syntax elements.
+     * - __u8
+       - ``num_extra_slice_header_bits``
+       -
+@@ -3048,6 +3061,15 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+     * - __u8
+       - ``ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX]``
+       - The list of L1 reference elements as indices in the DPB.
++    * - __u16
++      - ``short_term_ref_pic_set_size``
++      - Specifies the size, in bits, of the short-term reference picture set, described as st_ref_pic_set()
++        in the specification, included in the slice header or SPS (section 7.3.6.1).
++    * - __u16
++      - ``long_term_ref_pic_set_size``
++      - Specifies the size, in bits, of the long-term reference picture set include in the slice header
++        or SPS. It is the number of bits in the conditional block if(long_term_ref_pics_present_flag)
++        in section 7.3.6.1 of the specification.
+     * - __u8
+       - ``padding``
+       - Applications and drivers must set this to zero.
+@@ -3385,6 +3407,16 @@ enum v4l2_mpeg_video_hevc_size_of_length_field -
+       - ``pic_order_cnt_val``
+       - PicOrderCntVal as described in section 8.3.1 "Decoding process
+         for picture order count" of the specification.
++    * - __u16
++      - ``short_term_ref_pic_set_size``
++      - Specifies the size, in bits, of the short-term reference picture set, of the first slice
++        described as st_ref_pic_set() in the specification, included in the slice header
++        or SPS (section 7.3.6.1).
++    * - __u16
++      - ``long_term_ref_pic_set_size``
++      - Specifies the size, in bits, of the long-term reference picture set, of the first slice
++        included in the slice header or SPS. It is the number of bits in the conditional block
++        if(long_term_ref_pics_present_flag) in section 7.3.6.1 of the specification.
+     * - __u8
+       - ``num_active_dpb_entries``
+       - The number of entries in ``dpb``.
+diff --git a/include/media/hevc-ctrls.h b/include/media/hevc-ctrls.h
+index 01ccda48d8c5..752a8d10782c 100644
+--- a/include/media/hevc-ctrls.h
++++ b/include/media/hevc-ctrls.h
+@@ -58,6 +58,8 @@ enum v4l2_mpeg_video_hevc_start_code {
+ /* The controls are not stable at the moment and will likely be reworked. */
+ struct v4l2_ctrl_hevc_sps {
+ 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Sequence parameter set */
++	__u8	video_parameter_set_id;
++	__u8	seq_parameter_set_id;
+ 	__u16	pic_width_in_luma_samples;
+ 	__u16	pic_height_in_luma_samples;
+ 	__u8	bit_depth_luma_minus8;
+@@ -108,6 +110,7 @@ struct v4l2_ctrl_hevc_sps {
+ 
+ struct v4l2_ctrl_hevc_pps {
+ 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Picture parameter set */
++	__u8	pic_parameter_set_id;
+ 	__u8	num_extra_slice_header_bits;
+ 	__u8	num_ref_idx_l0_default_active_minus1;
+ 	__u8	num_ref_idx_l1_default_active_minus1;
+@@ -199,7 +202,8 @@ struct v4l2_ctrl_hevc_slice_params {
+ 	__u32	slice_segment_addr;
+ 	__u8	ref_idx_l0[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 	__u8	ref_idx_l1[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+-
++	__u16	short_term_ref_pic_set_size;
++	__u16	long_term_ref_pic_set_size;
+ 	__u8	padding;
+ 
+ 	/* ISO/IEC 23008-2, ITU-T Rec. H.265: Weighted prediction parameter */
+@@ -214,6 +218,8 @@ struct v4l2_ctrl_hevc_slice_params {
+ 
+ struct v4l2_ctrl_hevc_decode_params {
+ 	__s32	pic_order_cnt_val;
++	__u16	short_term_ref_pic_set_size;
++	__u16	long_term_ref_pic_set_size;
+ 	__u8	num_active_dpb_entries;
+ 	struct	v4l2_hevc_dpb_entry dpb[V4L2_HEVC_DPB_ENTRIES_NUM_MAX];
+ 	__u8	num_poc_st_curr_before;
 -- 
 2.32.0
 
