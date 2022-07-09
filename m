@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3884C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Jul 2022 18:48:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD7F8C43334
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Jul 2022 18:49:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uOzDM/bj80l1f3Vne50NFh93CySFtK3DNJdjEGoDx6Y=; b=aIPixUVOVWL5N2
-	65raXYsC6tDL56rkEHlfNZQF76F5XThdtNy/3NysATWx1I4c/lPNvYG/iKCYaUyeIuzUdWeCXYwH1
-	Ow1d+vNfRWnEJ581LfjnYsrc6fRfNIAZ8eYL+ciWueqB29/UYkxeOieaejdqzL5fluknSMAOFBOA7
-	6DhHv6E3BGJ/1yTO3MbE1D4pNuAowfZFsi5qbD+wuG5rWWrcDgWBSPtmtiBAFobarbgPuwuMPLTu9
-	wwM+W4/PdE4S4m1GNxsm2QFR1VILyivsW0aML9wVO6kHD1iIcxJWFNq2igpAEFufba97U0zmQwqcu
-	yGVVpebth6U6xQAtXVKw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MWmb2zjr8d6W7DP4pAVvBGsQYBZYDj2UnFGevlPXNpk=; b=KdGdh1QvthDCKT
+	jMCsbbt3p1LL5n9+vbyuTy0q3WXudi3bHFJc3XTQ/9Gx/0sxEIWuffXMLoxSfoe/tOOSbMcbP61po
+	ETM4qJSKjiam15teFmaSIWhvYwPV3K1V768yB3wTE779tYsoQ9tTOz8+VDwGVrEEwZbTRvkKP8b/C
+	g/c4v5nj/lcDXxbJzAbiWgc2DNaV1oHdJHQe1kZHf7hU1gEHEyqqzmCDLTGcJk3ClXxa1n8AADzey
+	K/mYSp/+uE5HiA5kivzqtydimc8xszoGlMwFF7Zy/oSyfr9whIjdzn7uSKycG3ZyHic0aRgnVjiNR
+	a6bMfj3LcLU3RAVaOl8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAFVW-008xRA-96; Sat, 09 Jul 2022 18:48:46 +0000
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+	id 1oAFVg-008xVj-Nv; Sat, 09 Jul 2022 18:48:56 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAFVU-008xP3-0z
-	for linux-rockchip@lists.infradead.org; Sat, 09 Jul 2022 18:48:45 +0000
-Received: by mail-ej1-x62a.google.com with SMTP id dn9so2678363ejc.7
-        for <linux-rockchip@lists.infradead.org>; Sat, 09 Jul 2022 11:48:40 -0700 (PDT)
+	id 1oAFVe-008xUK-6N
+	for linux-rockchip@lists.infradead.org; Sat, 09 Jul 2022 18:48:55 +0000
+Received: by mail-ej1-x630.google.com with SMTP id d2so2712159ejy.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 09 Jul 2022 11:48:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=message-id:date:mime-version:user-agent:from:subject:to:cc
-         :content-language:content-transfer-encoding;
-        bh=Gt+hfrqCc3VEGBjaUNKjqIybU1cXKwEnJuj/4xYFvKs=;
-        b=NseEJltERRCt/EUWgx8LA3/ncGXuEey/IFOpRICaCXam0mFw89bWIlPlqsw1ZPeY7O
-         dVqYRhdmxmPbCJGSYojBnOtzY1TafWkUwa1JNjO52ZHdqd0drIuMhDoJ06rwselSJBzo
-         TPMXFSRUpYEJO5OkhRha/0vv2j/D7k/3QBQg+hiVOa55UCIOhuyJ2Z2rp1Cz+alMMj1z
-         JelH+AyViSsW9wNsyLqFB2GE8c3AYW6DwYe+9Mhhhv9kkN0wCB8K73RJSdEoMml/f6cV
-         9VkV4WIB50naYLMhFm+pfEUfhZ4RYra/9V5f04DnGFLbxMU1ItvK4BS++l7fggLz0aYd
-         K/rQ==
+         :references:content-language:in-reply-to:content-transfer-encoding;
+        bh=D6ZWROrOm5A/72vvn/EnqIlXf/wR4eKjCaY3Xoecv+4=;
+        b=PSh47ZiWf9AT7uBET3RVnRvAsMJ5a94/WfriQ6FiiLJ4B5YQnOvH6u5RBdy9yAARcv
+         gUwlLAmsG8uJf+suwAtWM9+OBKUewSPK0JMYpgoLHlK8nrfdVXev2K4SW7UygbQ5vHG9
+         rByHK5Gzxq44tCaKGjcuevbOgVhlb5HhG4BMv83iWYzuW72xerBt9GRMzbLFV5Hb1ofn
+         ji/g6OWtKtqZnOPKEqK/9ztCpaik4Ae3Vs2o4Y259krDl6ia2xpL3qX6d7z7lImQPsxJ
+         OcdH03CDiHI2r1BIarzqkBY2QzQyhnZ4xfOwBTjvhnKboO29Sph0YfUOqkM0DA4A1z6M
+         bY4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:from
-         :subject:to:cc:content-language:content-transfer-encoding;
-        bh=Gt+hfrqCc3VEGBjaUNKjqIybU1cXKwEnJuj/4xYFvKs=;
-        b=zFakKF9Xtib1lFlgze1v3X0k+d99895rLzBKTYZfw8pyRpJcibL34qGaYBQeMV2Ous
-         tT2t+jSecgrnGMsSK769VNtHBMBke6GEcP3nMBZZ856i2dOocJK0WV1SgV7XnkC0u5S7
-         dNszv+/Qk4M7jnKjm1O6Z3oiiRa2oj5ZrIdBGof+/Ymj1Xo89Ou/6H5mlTBWnHAaXQpr
-         KVyyyfOrOmJykZzegF9dC2ajBzAvy2GodRjL/vYlNB9Osf5BBT4NKh/qIxVsUCMIBRgh
-         PJ7HYT+2L4ApSmZZS6/OaqrkGrOsBTgM6wchdqAwucNKDpH/4QEvS4uvUq1nWWQyUoOE
-         cmBw==
-X-Gm-Message-State: AJIora9G2euBg2xF3PTXgMwsRMllygx3TKdAOyYAviXXZ2mKgv2Nls1/
-	tUs3cvnODuJmJhuww/fpNq0=
-X-Google-Smtp-Source: AGRyM1tMHBur76vZi9yDHYyNrmjO1h0Uq9Bq2NpbodAd+tV4fMbpsTHLu8L9zYd2dS5Y+AuCVYVNXQ==
-X-Received: by 2002:a17:907:58e:b0:726:9e67:e7cc with SMTP id vw14-20020a170907058e00b007269e67e7ccmr10106750ejb.740.1657392519167;
-        Sat, 09 Jul 2022 11:48:39 -0700 (PDT)
+         :subject:to:cc:references:content-language:in-reply-to
+         :content-transfer-encoding;
+        bh=D6ZWROrOm5A/72vvn/EnqIlXf/wR4eKjCaY3Xoecv+4=;
+        b=o3CPq6msAGymJ9lVm/mpv5aIjCm8I3TtBKXOFYl2nbxSRKyJRB0pM8Z3qdqHMIAaS1
+         69LERR/2M2vmfSDG06duJEzNPr40HmFd2H70AFO9tAeI7QvC9nZ7bf5ry4oSGjqnCaII
+         bn08vLm/rDzcp+PcKvE7uCRL2OHICd0N5aJed6vyFokkm8uNyjLgfZkXf+Hj90qJWxah
+         ImULoa/kIqc7eOf39wZxQ/0RKUWuon5wxp0Vfigejm9jiWzKW7kuv9ZDgUnWDtjaiqIn
+         WKsDw98gGIO33MNRjpKeT/eqM9vHWi1HcViflBrtN6ZIbkERX7a0d9Ey8fuqDJomks5X
+         GGrw==
+X-Gm-Message-State: AJIora/0b+DEWanYLKGI98uNK7IHsd/yG52kywZlswRO+VQ/tSgM7FHa
+	JuZvCT2SQaoWu38HO0+TBGc=
+X-Google-Smtp-Source: AGRyM1umqiMDdVMRHxQaPnIifsVbxgBEEClzqsOrFJwYZd6szSp5UpSFNrkI4W2VHZVBB7Ukpnbs6A==
+X-Received: by 2002:a17:907:3e81:b0:726:9615:d14d with SMTP id hs1-20020a1709073e8100b007269615d14dmr9844756ejc.517.1657392532066;
+        Sat, 09 Jul 2022 11:48:52 -0700 (PDT)
 Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id gs5-20020a170906f18500b0072aa0d9ba93sm840412ejb.134.2022.07.09.11.48.37
+        by smtp.gmail.com with ESMTPSA id m16-20020a056402051000b0043a7cdfac46sm1385819edv.23.2022.07.09.11.48.51
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 09 Jul 2022 11:48:38 -0700 (PDT)
-Message-ID: <a1458a7b-2043-6397-3107-2d1fdf08c8e1@gmail.com>
-Date: Sat, 9 Jul 2022 20:48:37 +0200
+        Sat, 09 Jul 2022 11:48:51 -0700 (PDT)
+Message-ID: <31b26006-d3fe-21c4-ef8e-f7347a29595a@gmail.com>
+Date: Sat, 9 Jul 2022 20:48:50 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.8.0
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2 00/11] Add Rockchip IDB device
+Subject: [PATCH v2 01/11] rockchip: idb: prepare IDB block device
 To: kever.yang@rock-chips.com
 Cc: sjg@chromium.org, philipp.tomsich@vrull.eu, xypron.glpk@gmx.de,
  yifeng.zhao@rock-chips.com, jon.lin@rock-chips.com, u-boot@lists.denx.de,
  linux-rockchip@lists.infradead.org, miquel.raynal@bootlin.com,
  michael@amarulasolutions.com, dario.binacchi@amarulasolutions.com
+References: <20220709183130.8039-1-jbx6244@gmail.com>
 Content-Language: en-US
+In-Reply-To: <20220709183130.8039-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220709_114844_120623_E779F359 
-X-CRM114-Status: GOOD (  19.38  )
+X-CRM114-CacheID: sfid-20220709_114854_265633_BC8E2242 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,146 +93,132 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Rockchip IDB device for U-boot.
+Prepare for the IDB block device by adding some constants and
+function extentions.
 
-On Rockchip SoCs with a NAND as boot device the information data base (IDB) loaded
-by the boot ROM is stored at the beginning of several erase blocks.
-Rewriting NAND blocks makes them wear out, so some spare blocks and a writing strategy
-are required. A closed source usbplug uses block: 2,3,4,5,6 for example.
-Block 0 and 1 is in use for other data.
-For compatible reasons this device follows this approach in line with other
-Rockchip products and modules for now.
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ drivers/block/blk-uclass.c       |  2 ++
+ include/blk.h                    |  1 +
+ include/dm/uclass-id.h           |  1 +
+ include/efi_loader.h             |  4 ++++
+ lib/efi_loader/efi_device_path.c | 30 ++++++++++++++++++++++++++++++
+ 5 files changed, 38 insertions(+)
 
-The Rockchip boot ROM requires a particular file format for booting from NAND:
-
-  It starts with 512-byte (IDB sector 0), RC4 encoded header and is aligned to NAND page size.
-  Rockchip fills sector 1,2 and 3 here with more data structures, but that is not required
-  by the boot ROM. It just makes it easier to identify the IDB date and version.
-
-  Then 2KB pieces (4 x 512 byte sectors) of spl and tpl data aligned to the NAND page size in a
-  fixed pattern with empty pages.
-
-Size of spl and tpl must be aligned to 2KB.
-Empty NAND pages/sectors not in use should fill with 0xFF padding to increase NAND durability.
-
-Create a IDB image for the flash tools below with:
-
-#### For RK30 with NAND only ####
-
-printf "RK30" > tplspl.bin
-dd if=u-boot-tpl.bin >> tplspl.bin
-truncate -s %2048 tplspl.bin
-truncate -s %2048 u-boot-spl.bin
-./mkimage -v -n rk3066 -T rksd -d ./tplspl.bin:./u-boot-spl.bin out
-
-#### For other Rockchip SoCs with NAND ####
-
-./mkimage -v -n rk3188 -T rksd -d ./u-boot-tpl.bin:./u-boot-spl.bin out
-
-or if more data structures for IDB sector 1, 2 (RC4) and 3 (RC4) are needed then use a custom
-image tool as mainline only has basic support for IDB sector 0.
-
-In order to transfer data from a host (PC) via USB existing methods are used.
-This driver creates an GPT EFI block driver to work with the
-U-boot commands "rockusb" and "ums".
-IDB data is inserted 'on the fly' as if it were a normal disk in blocks with 512 byte.
-Changing disk parameters is not allowed.
-
-The IDB device driver looks for block driver sector 64 to start with and calculates the IDB size.
-When the last sector is received it erases a NAND block and writes IDB sectors to NAND in a pattern.
-Written data is verified. If not identical that NAND erase block is freed.
-As last thing the remaining IDB blocks are scanned and made available for reading.
-
-Normal U-boot operation contains 2 steps:
-
-1 - start IDB device
-2 - start USB gadget (rockusb or ums)
-
-U-boot IDB commands:
-
-idb start - start IDB device
-idb stop  - stop IDB blk device
-idb info  - show IDB device info
-
-Host (PC) tool commands combinations that work:
-
-U-boot					linux
-rockusb 0 idb 0
-					upgrade_tool pl
-					upgrade_tool wl 64 upgrade_tool_wl_64.bin
-					upgrade_tool rl 64 512 upgrade_tool_rl_64_512.bin
-					upgrade_tool rd
-
-					rkdeveloptool ppt
-					rkdeveloptool wlx loader1 rkdeveloptool_wlx_loader1.bin
-					rkdeveloptool wl 64 rkdeveloptool_wl_64.bin
-					rkdeveloptool rl 64 512 rkdeveloptool_rl_64_512.bin
-					rkdeveloptool rd
-
-					rkflashtool w 64 512 < rkflashtool_w_64_512.bin
-					rkflashtool r 64 512 > rkflashtool_r_64_512.bin
-
-ums 0 idb 0
-					dd if=ums_0_idb_0_wr.bin of=/dev/sda1
-					dd if=/dev/sda1 of=ums_0_idb_0_rd.bin
-
-Tested with:
-  MK808 rk3066
-
-Not tested:
-  nfc type V8, V9
-
-TODO:
-  This is placed in the mach-rockchip directory,
-  so we can re-use/combine the source with a usbplug or RK NAND FTL driver
-  with no MTD frame work bloatware ;) in a Makefile.
-
-  IDB header V2
-
-  Writing strategy improvement
-
-  etc, etc
-
-Changed V2:
-  remove CamelCases
-  split patch block driver
-  split patch optinal stop and info cmd
-  split patch optinal sector1 info
-  split patch optinal randomizer
-
-Johan Jonker (11):
-  rockchip: idb: prepare IDB block device
-  rockchip: idb: add basic functions
-  rockchip: idb: add IDB block device
-  rockchip: idb: add info and stop command
-  rockchip: idb: add sector1 info
-  rockchip: idb: add randomizer option
-  rockchip: spl: allow more boot devices
-  rockchip: rk3066: add Rockchip IDB block device as boot action
-  arm: dts: rockchip: sync rk3066/rk3188 DT files from Linux
-  arm: dts: rockchip: enable nfc node in spl for rk3066 mk808
-  rockchip: configs: mk808: add idb configs
-
- arch/arm/dts/rk3066a-mk808-u-boot.dtsi |    8 +
- arch/arm/dts/rk3066a-mk808.dts         |   18 +
- arch/arm/dts/rk3066a.dtsi              |    3 +-
- arch/arm/dts/rk3188-radxarock.dts      |    3 +-
- arch/arm/dts/rk3188.dtsi               |   24 +-
- arch/arm/dts/rk3xxx-u-boot.dtsi        |    4 +
- arch/arm/mach-rockchip/Kconfig         |   12 +
- arch/arm/mach-rockchip/Makefile        |    1 +
- arch/arm/mach-rockchip/rk3066/rk3066.c |   11 +
- arch/arm/mach-rockchip/rockchip_idb.c  | 1694 ++++++++++++++++++++++++
- arch/arm/mach-rockchip/spl.c           |    5 +-
- configs/mk808_defconfig                |    4 +
- drivers/block/blk-uclass.c             |    2 +
- include/blk.h                          |    1 +
- include/dm/uclass-id.h                 |    1 +
- include/efi_loader.h                   |    4 +
- lib/efi_loader/efi_device_path.c       |   30 +
- 17 files changed, 1812 insertions(+), 13 deletions(-)
- create mode 100644 arch/arm/mach-rockchip/rockchip_idb.c
-
+diff --git a/drivers/block/blk-uclass.c b/drivers/block/blk-uclass.c
+index 21c5209b..0b5f219d 100644
+--- a/drivers/block/blk-uclass.c
++++ b/drivers/block/blk-uclass.c
+@@ -32,6 +32,7 @@ static const char *if_typename_str[IF_TYPE_COUNT] = {
+ 	[IF_TYPE_EFI_LOADER]	= "efiloader",
+ 	[IF_TYPE_VIRTIO]	= "virtio",
+ 	[IF_TYPE_PVBLOCK]	= "pvblock",
++	[IF_TYPE_RK_IDB]	= "idb",
+ };
+ 
+ static enum uclass_id if_type_uclass_id[IF_TYPE_COUNT] = {
+@@ -49,6 +50,7 @@ static enum uclass_id if_type_uclass_id[IF_TYPE_COUNT] = {
+ 	[IF_TYPE_EFI_LOADER]	= UCLASS_EFI_LOADER,
+ 	[IF_TYPE_VIRTIO]	= UCLASS_VIRTIO,
+ 	[IF_TYPE_PVBLOCK]	= UCLASS_PVBLOCK,
++	[IF_TYPE_RK_IDB]	= UCLASS_RK_IDB,
+ };
+ 
+ static enum if_type if_typename_to_iftype(const char *if_typename)
+diff --git a/include/blk.h b/include/blk.h
+index 9503369d..a73cc577 100644
+--- a/include/blk.h
++++ b/include/blk.h
+@@ -38,6 +38,7 @@ enum if_type {
+ 	IF_TYPE_PVBLOCK,
+ 	IF_TYPE_VIRTIO,
+ 	IF_TYPE_EFI_MEDIA,
++	IF_TYPE_RK_IDB,
+ 
+ 	IF_TYPE_COUNT,			/* Number of interface types */
+ };
+diff --git a/include/dm/uclass-id.h b/include/dm/uclass-id.h
+index 3ba69ad9..38a227f0 100644
+--- a/include/dm/uclass-id.h
++++ b/include/dm/uclass-id.h
+@@ -104,6 +104,7 @@ enum uclass_id {
+ 	UCLASS_REGULATOR,	/* Regulator device */
+ 	UCLASS_REMOTEPROC,	/* Remote Processor device */
+ 	UCLASS_RESET,		/* Reset controller device */
++	UCLASS_RK_IDB,		/* Rockchip IDB device */
+ 	UCLASS_RNG,		/* Random Number Generator */
+ 	UCLASS_RTC,		/* Real time clock device */
+ 	UCLASS_SCMI_AGENT,	/* Interface with an SCMI server */
+diff --git a/include/efi_loader.h b/include/efi_loader.h
+index c1e00eba..44d42603 100644
+--- a/include/efi_loader.h
++++ b/include/efi_loader.h
+@@ -141,6 +141,10 @@ static inline efi_status_t efi_launch_capsules(void)
+ #define U_BOOT_VIRTIO_DEV_GUID \
+ 	EFI_GUID(0x63293792, 0xadf5, 0x9325, \
+ 		 0xb9, 0x9f, 0x4e, 0x0e, 0x45, 0x5c, 0x1b, 0x1e)
++/* GUID used as root for Rockchip IDB devices */
++#define U_BOOT_IDB_DEV_GUID \
++	EFI_GUID(0xadc021df, 0x5f24, 0x464f, \
++		 0x9a, 0x88, 0xdb, 0xee, 0x3f, 0x1d, 0x14, 0x0f)
+ 
+ /* Use internal device tree when starting UEFI application */
+ #define EFI_FDT_USE_INTERNAL NULL
+diff --git a/lib/efi_loader/efi_device_path.c b/lib/efi_loader/efi_device_path.c
+index 171661b8..b7535373 100644
+--- a/lib/efi_loader/efi_device_path.c
++++ b/lib/efi_loader/efi_device_path.c
+@@ -28,6 +28,9 @@ const efi_guid_t efi_guid_host_dev = U_BOOT_HOST_DEV_GUID;
+ #ifdef CONFIG_VIRTIO_BLK
+ const efi_guid_t efi_guid_virtio_dev = U_BOOT_VIRTIO_DEV_GUID;
+ #endif
++#if CONFIG_IS_ENABLED(ROCKCHIP_IDB)
++const efi_guid_t efi_guid_idb_dev = U_BOOT_IDB_DEV_GUID;
++#endif
+ 
+ /* template END node: */
+ static const struct efi_device_path END = {
+@@ -574,6 +577,16 @@ __maybe_unused static unsigned int dp_size(struct udevice *dev)
+ 			  */
+ 			return dp_size(dev->parent)
+ 				+ sizeof(struct efi_device_path_vendor) + 1;
++#endif
++#if CONFIG_IS_ENABLED(ROCKCHIP_IDB)
++		case UCLASS_RK_IDB:
++			 /*
++			  * Rockchip IDB device will be represented
++			  * as vendor device with extra one byte for
++			  * device number
++			  */
++			return dp_size(dev->parent)
++				+ sizeof(struct efi_device_path_vendor) + 1;
+ #endif
+ 		default:
+ 			return dp_size(dev->parent);
+@@ -667,6 +680,23 @@ __maybe_unused static void *dp_fill(void *buf, struct udevice *dev)
+ 			return &dp->vendor_data[1];
+ 			}
+ #endif
++#if CONFIG_IS_ENABLED(ROCKCHIP_IDB)
++		case UCLASS_RK_IDB: {
++			struct efi_device_path_vendor *dp;
++			struct blk_desc *desc = dev_get_uclass_plat(dev);
++
++			dp_fill(buf, dev->parent);
++			dp = buf;
++			++dp;
++			dp->dp.type = DEVICE_PATH_TYPE_HARDWARE_DEVICE;
++			dp->dp.sub_type = DEVICE_PATH_SUB_TYPE_VENDOR;
++			dp->dp.length = sizeof(*dp) + 1;
++			memcpy(&dp->guid, &efi_guid_idb_dev,
++			       sizeof(efi_guid_t));
++			dp->vendor_data[0] = desc->devnum;
++			return &dp->vendor_data[1];
++			}
++#endif
+ #ifdef CONFIG_IDE
+ 		case UCLASS_IDE: {
+ 			struct efi_device_path_atapi *dp =
 -- 
 2.20.1
 
