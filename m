@@ -4,99 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C96E6C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Jul 2022 17:01:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69E00C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Jul 2022 19:41:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5ddM87gRrARG+rsKb08eA/JZc7XrujyWLtClgmdpyt8=; b=hVW06FTqu2JAfK
-	X4q6KtTfENPmXNx2KijHUXkzKoAJQQ9XtCEetVYpBx8M86l8PXF0CmL0OHmXAcTk2KePKPQCFrC/Y
-	TqQFBAxWi0D61upqIjNzh0W0lU+SWTHmdtaMK8PHMOpPwyCqkY28WuBm9C8ZZBx96BYCzyVdzR6W7
-	0hdsBA5J/DWO7ryI7nIziqv7OCTpBdckdonnLFX2ZjV5tHMmDVGKYYf/iUQ7SYEoIj9b6/D6Pqpk4
-	Q3FbPFSRhtlNygSberL7zNhKywe+mAlPvfUpftLh9TBnGgA3Fo3uHWT9XLIYjNxdz0fMx9LL1JiB2
-	IG/U2dXOG26ullbxGc5g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fHxJoo2Ni7H/gH02gqRgL2PM5+AA7qu+W0glMJYEAuU=; b=s1FyUs0ACNDi3QaLo9ym6lY5cO
+	JQyBM7nWtwEgjpXwXO77RcS2xHZJAVE55ETtgf4n1tN7Wx1wxsSpr+821+TQGJAq8RJTma5hVfxZZ
+	V55CqzgLsv0JyJ50EuEbHxxvkSc28rHz/bjNlyCAgbgXdFuxmJos1SoINHQRT52p8SShFFV/pnmF+
+	Nu6SJn8BFBy58c/o+tdZbQtxsY6HA4DdRLmFfcvr4ZFOgBwo1z+h9aK7lhdQtsNg1ItH5K+67Lt5b
+	c00wIGea4ZDdCTaigITzkxohqqdtv19YYkBK8Tq+GnnNV2CNLAEu3HsOdoQWQAc0WqfneHSo9WLax
+	9+ZDMuEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAaJL-00CdTL-VU; Sun, 10 Jul 2022 17:01:35 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1oAcnW-00DN30-9W; Sun, 10 Jul 2022 19:40:54 +0000
+Received: from out2-smtp.messagingengine.com ([66.111.4.26])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAaJA-00CdP6-Sx; Sun, 10 Jul 2022 17:01:26 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id t1so1721079lft.8;
-        Sun, 10 Jul 2022 10:01:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:subject:from:in-reply-to:date:cc
-         :content-transfer-encoding:message-id:references:to;
-        bh=l5KBCfAYsYBJK00LG729DXfB0UnpaT/zELkVvdQsl2k=;
-        b=l4xC2JvKpgguZIekeYks5GBWZNd+nxhscrKPy/iFwlHrX5IHPNR+dg0MkRAGLCLnn4
-         J/qjx4gCp+iS+3quLxQDXlEs2QWURLHYdt764zfFSCxgGn5GaK0mTuz1JRGHzGKk/D4D
-         2sJtQ8KjuDQ7CmOf5avdSbC4qNCo6olgDxce1o4eg+hvYB+/fa9potF1u4ejsVHdwLCQ
-         iEpSvBL9vngc4nvqP6ZFdx5/tk6P8jY2XRGSCsE45SU6hvP2qOjMIH65h9Ym2PzoO28H
-         F+3PDTtO1SyY00S2atlgTeBjqk47AEp4IALEacYHMvQkhx9lp7J199Aro/pMfoMFnKxa
-         X/Wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
-         :content-transfer-encoding:message-id:references:to;
-        bh=l5KBCfAYsYBJK00LG729DXfB0UnpaT/zELkVvdQsl2k=;
-        b=5j5MhVoTdc93OS5zwoTkthrxJvMjiUAY1V3mYKEA4Go3XLv5SQMWK9tNRpcXuHhZJN
-         e3o8ahRBodF3HrNXWDFDhzsErGog1LcVETC6Zrz0Ouc7ty3bfiR6xrB7TigY9V83sN2V
-         i6wxvqq6GSVXi04iJJnaBHmnY2KlVct5dL8TYLrSYMj5vQh46NT0YwIZk5YLTRz0Zxso
-         /cfFM2KvIZHUNZckui0Gfk45F553O94sLZgOqa47LG3uZJpQQntsRB3jXQAQW8vVqVpT
-         VskWenxoFhVKNWzXGD/cmqNcEQvPzNRviXRUjCDAJtb+jjqDV89LUpWjoQ1mGHYlPhOY
-         luNA==
-X-Gm-Message-State: AJIora/w0HmKEnIsySs0yRJeiW0SKcCA4BpRZiZEsnPgdAAdtvE8pX3z
-	f4EpPs527J0XQeR0EY4QHEu18l8Vys0DkyQc
-X-Google-Smtp-Source: AGRyM1uyIS9oK9Fh8cBxLkbNkrlVHcMu5NngnD6Rs6WSVParGKGEiwgMWhY3lvBxlSFpWCJ4WEn3MA==
-X-Received: by 2002:a05:6512:505:b0:489:c93d:a95c with SMTP id o5-20020a056512050500b00489c93da95cmr6616045lfb.115.1657472481536;
-        Sun, 10 Jul 2022 10:01:21 -0700 (PDT)
-Received: from smtpclient.apple (31-178-127-80.dynamic.chello.pl. [31.178.127.80])
-        by smtp.gmail.com with ESMTPSA id q12-20020a056512210c00b00489daae997fsm355423lfr.10.2022.07.10.10.01.20
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 10 Jul 2022 10:01:21 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
-Subject: Re: [PATCH v11 20/24] arm64: dts: rockchip: enable vop2 and hdmi tx
- on rock-3a
-From: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
-In-Reply-To: <E9DC63DF-46A6-438E-A7F1-5F7A65F56DFC@gmail.com>
-Date: Sun, 10 Jul 2022 19:01:17 +0200
-Cc: Sascha Hauer <s.hauer@pengutronix.de>,
- Michael Riesch <michael.riesch@wolfvision.net>,
- dri-devel@lists.freedesktop.org,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- kernel@pengutronix.de,
- Andy Yan <andy.yan@rock-chips.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>,
- =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- kernel test robot <lkp@intel.com>
-Message-Id: <F2EFA9CE-C8D7-4D7B-9CAB-80EEA9FAF7DB@gmail.com>
-References: <20220422072841.2206452-1-s.hauer@pengutronix.de>
- <20220422072841.2206452-21-s.hauer@pengutronix.de>
- <A86359EC-5291-41BD-966E-EB7890644731@gmail.com>
- <CAMdYzYoFG3wCQaWXQNJd7mE20OMCj=ZeuewwZfaCJyoCBT-kQQ@mail.gmail.com>
- <0E6FE020-C95E-47CF-A9D6-AC3F2B2D334F@gmail.com>
- <CAMdYzYobfJ7WGN+UQ7t5e1Zy9knjfHLse8KzrGrHPfeMkkG0gw@mail.gmail.com>
- <9F2D8CFF-1EAE-4586-9EE9-82A9D67840BB@gmail.com>
- <CAMdYzYrz7DRj7F9hGaAPaTSiZkQ4eMNujAp8uPuE9geL6kAz4g@mail.gmail.com>
- <9567EECF-A154-4FE1-A03C-5ED080409030@gmail.com>
- <190C3FD3-0185-4A99-B10E-A5790047D993@gmail.com>
- <CAMdYzYqGGfWDr11iyyfzigxsL7_N2szuag9P6TUZGuzGF4oB+A@mail.gmail.com>
- <AF6176F5-995E-473B-B494-844ECC26BC03@gmail.com>
- <CAMdYzYocZw1SNtgbfqn1VuvKTCiuMNTYRn2MydiGnL-UxtnYuA@mail.gmail.com>
- <0D8B18A1-82FD-4902-A443-AD774DE43DAD@gmail.com>
- <CAMdYzYpdo6Hb30y1oEya5GT1eXHJVTETq--HcmMjF40gvCUZ9A@mail.gmail.com>
- <E9DC63DF-46A6-438E-A7F1-5F7A65F56DFC@gmail.com>
-To: Peter Geis <pgwipeout@gmail.com>
-X-Mailer: Apple Mail (2.3654.120.0.1.13)
+	id 1oAcnU-00DMxn-19
+	for linux-rockchip@lists.infradead.org; Sun, 10 Jul 2022 19:40:53 +0000
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+	by mailout.nyi.internal (Postfix) with ESMTP id 24CB95C00FF;
+	Sun, 10 Jul 2022 15:40:48 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute4.internal (MEProxy); Sun, 10 Jul 2022 15:40:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
+	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to; s=fm3; t=1657482048; x=1657568448; bh=z2ln1D3mw/
+	WA/USf0NOFQ5xIxofvB946t/dlFqZzj58=; b=HTqAOc8CYTcK1VRxJikS+a4xfL
+	3hUEBJKWhu2N7loGku37MGZaAE5xgYcFTZqZbejtk9hsijEEBlwRB/PiQpmwUg0J
+	az3EJHiWANtIpoqEwcwUgc3a0rosj8iDWyJ3WvKFv3lgvoGMKDVOQhI8GO8i1ffg
+	U1btAFp3KgGR7muZFrsNSlzQri99xWEBVhfSNuV7kFCGrccVO0yAX1RPaJmyruGr
+	1MpUX8uhNVSQUlwBdoJuBC8qGBpdWiz53qXR8KQ5S5gSEz6uNw18BZFINGAB/hO3
+	zfK8SpvbU+nTy8pf6dGGH3Fsj/hnsR+O4mVtySFymSTQK9iBv/7S3Wr1/A0w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
+	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
+	:mime-version:references:reply-to:sender:subject:subject:to:to
+	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm3; t=1657482048; x=1657568448; bh=z2ln1D3mw/WA/USf0NOFQ5xIxofv
+	B946t/dlFqZzj58=; b=CXXBaqO+Bmt1DhNKQx9eB/oxt5bCWiBgBmGWSRDJnGVR
+	Dm0qvMMEZJDrnj2YR24NFdrtP/2qw0DGHX2QE8+WXEFf9N2GbHbei/Q50dols4eW
+	DR2DkHrthxvCD08/kMBmZw6AaFEVwtXM7p6FUYWmSkVTcXTdTCHwIzrxigEJITHu
+	DQjJ0GkedOqB2VGWm7X+2d7tVhLlBt04rU4W0fRdVrUPkbe3ce/40hd7sWPeoFw2
+	DgJYb/Mc1mpi5F0OAtzFBtjP3PtqTvYPXMG4RkGNcrNndt39ioX9bFLYocgzHrcQ
+	d03PfyJ/yzZpdJ+2382ROnO3PXfzi+qGY+Fr4QDSYw==
+X-ME-Sender: <xms:PyvLYkMDpwn33H3zX2Gj35E_QvMH05yJf0DW9J_Abkh8zt2e1fYzPg>
+    <xme:PyvLYq-xxIzXW2DEsCmyL4joo_e7Ev_WarkKao0nnc7R_KG6vxb-ogbwPUU2fZFWD
+    PBRlHUZa68K3dJMvQU>
+X-ME-Received: <xmr:PyvLYrQ5Fy4gvYYO0m-Xp3_-PIhDZSSpKuE0SUIjysUKjAfymUm3HQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudejuddgudegfecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+    enucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttdejnecuhfhrohhmpeffrghf
+    nhgrucfjihhrshgthhhfvghlugcuoegurghfnhgrsehfrghsthhmrghilhdrtghomheqne
+    cuggftrfgrthhtvghrnhepvdehtdeludekgeevleefuedvudejieetheekvdfhteekffdu
+    jefhfedtudehvdeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilh
+    hfrhhomhepuggrfhhnrgesfhgrshhtmhgrihhlrdgtohhm
+X-ME-Proxy: <xmx:PyvLYsu1jgx9xMplPYAnjyzZXFE4prwQnLv_qme7Ax8Alhnb0Uxb7w>
+    <xmx:PyvLYseNf23cIShjp3IyDCjFOiqXzVwwU4BOB-83JdNsq9e0LDJ71A>
+    <xmx:PyvLYg3ECv8AhnBRuFRN7UyZoqxhz97RKmo2h09gUCiKGMfu3BnaBQ>
+    <xmx:QCvLYr66toh30Y6XqYmHaWSFygXjbfZ22puJD4p4omxWQ22OuPW5kQ>
+Feedback-ID: i0e894699:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
+ 10 Jul 2022 15:40:45 -0400 (EDT)
+Date: Sun, 10 Jul 2022 22:40:41 +0300
+From: Dafna Hirschfeld <dafna@fastmail.com>
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	Helen Koike <helen.koike@collabora.com>,
+	Paul Elder <paul.elder@ideasonboard.com>
+Subject: Re: [PATCH v2 12/55] media: rkisp1: cap: Print debug message on
+ failed link validation
+Message-ID: <20220710194041.sjw55jpky7g6dov7@guri>
+References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
+ <20220630230713.10580-13-laurent.pinchart@ideasonboard.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220630230713.10580-13-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220710_100124_959468_C86BE9DC 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20220710_124052_391566_AF013D67 
+X-CRM114-Status: UNSURE (   7.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,41 +101,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cgo+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFBpb3RyIE9uaXN6Y3p1ayA8cGlvdHIub25p
-c3pjenVrQGdtYWlsLmNvbT4gdyBkbml1IDI1LjA2LjIwMjIsIG8gZ29kei4gMTc6MzE6Cj4gCj4g
-Cj4gCj4+IFdpYWRvbW/Fm8SHIG5hcGlzYW5hIHByemV6IFBldGVyIEdlaXMgPHBnd2lwZW91dEBn
-bWFpbC5jb20+IHcgZG5pdSAyNS4wNi4yMDIyLCBvIGdvZHouIDE2OjAwOgo+PiAKPj4gCj4+IFRo
-ZSBmaXJzdCBpc3N1ZSB5b3UgaGF2ZSBpcyB0aGUgVFYgaXNuJ3QgcmVzcG9uZGluZyB1bnRpbCB0
-aGUgYWJzb2x1dGUKPj4gZW5kLgo+IAo+IEkgc3VzcGVjdCB0aGlzIGlzIGJlY2F1c2UgbGFjayBv
-biBpZGxlIGdhcHMgYmV0d2VlbiBjZWMgY29tbWFuZHMgc2VudCBmcm9tIGJvYXJkIHRvIHR2Lgo+
-IE1heWJlIFRWIHN3LiBjYW4ndCBkZWFsIHdpdGggY29uc2VjdXRpdmUgY29tbWFuZHMgd2l0aG91
-dCBhbnkgaWRsZSBiZXR3ZWVuIHRoZW0/IAo+IAo+IEl0IGlzIGludGVyZXN0aW5nIHRoYXQgZGlz
-Y29ubmVjdGluZyBUViAtIHNvIENFQyBsaW5lIGlzIGRyaXZlbiBvbmx5IGJ5IGJvYXJkIC0gcm9j
-azNhIHN0aWxsIGRvbid0IGhhdmUgYW55IGlkbGUgZ2FwcyB3aGlsZSByb2NrM2IgKGFuZCByYWR4
-YSA0LjE5IGJzcCkgaGFzIHRoZW0gKHZlcnkgc2ltaWxhciBiZXR3ZWVuIDUuMThtYWlsaW5lIGFu
-ZCA0LjE5IGJzcCkuCj4gCj4gSG93IHRoaXMgaXMgcG9zc2libGUgdGhhdCBjaGFuZ2UgSS9PIGZy
-b20gbTAtPm0xIGltcGFjdHMgX3RpbWluZ3NfIG9uIGZyZWUgaGFuZ2luZyBDRUMgbGluZT8gCj4g
-Cj4+IFRoaXMgc3RyaWtlcyBtZSBhcyBhIHNpZ25hbCBpbnRlZ3JpdHkgaXNzdWUuIERvIHlvdSBo
-YXZlIGFuCj4+IG9zY2lsbG9zY29wZSAobm90IGEgbG9naWMgYW5hbHl6ZXIsIHlvdSBuZWVkIHZv
-bHRhZ2VzIGFuZCByYW1wIHRpbWVzKQo+PiB0byBjb21wYXJlIHRoZSB3b3JraW5nIHZzIG5vbi13
-b3JraW5nIHNpZ25hbHM/IENoZWNrIGJvdGggc2lkZXMgb2YgdGhlCj4+IGxldmVsIHNoaWZ0ZXIu
-Cj4gCj4gSW5kZWVkIC0gaSB3aWxsIHZlcmlmeSB0aGlzIHdpdGggZGlnaXRhbCBvc2NpbGxvc2Nv
-cGUuIAoKUGV0ZXIsCgpmeWkKCkkgZ290IG15IG9zY2lsbG9zY29wZSBhbmQgZG8gbWVhc3VyZW1l
-bnRzIG9uIGhkbWkgY2FibGUgY2VjIGxpbmUgb246IHdvcmtpbmcgcm9jazNiIGFuZCBub24td29y
-a2luZyByb2NrM2EuCnN3IHdhcyBleGFjdGx5IHRoZSBzYW1lIChzYW1lIHNkIGNhcmQ7IG9ubHkg
-ZHRiIGNoYW5nZWQpCgpQbHMgc2VlIG1lYXN1cmVtZW50cyBmb3I6CnN0YXJ0IHB1bHNlCiIwIiBw
-dWxzZQoiMSIgcHVsc2UKCm5vbi13b3JraW5nIHJvY2szLWE6Cmh0dHA6Ly93YXJwZWQuaW5ldDIu
-b3JnL3JvY2szYS1vbmUucG5nCmh0dHA6Ly93YXJwZWQuaW5ldDIub3JnL3JvY2szYS1zdGFydC5w
-bmcKaHR0cDovL3dhcnBlZC5pbmV0Mi5vcmcvcm9jazNhLXplcm8ucG5nCgp3b3JraW5nIHJvY2sz
-LWIKaHR0cDovL3dhcnBlZC5pbmV0Mi5vcmcvcm9jazNiLW9uZS5wbmcKaHR0cDovL3dhcnBlZC5p
-bmV0Mi5vcmcvcm9jazNiLXN0YXJ0LnBuZwpodHRwOi8vd2FycGVkLmluZXQyLm9yZy9yb2NrM2It
-emVyby5wbmcKCk5vdyBpJ20gOTklIHN1cmUgaXNzdWUgaXMgbm90IGh3IHJlbGF0ZWQgYnV0IHN3
-IChrZXJuZWwpLi4uCgpicgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+On 01.07.2022 02:06, Laurent Pinchart wrote:
+>When a link validation failure occurs, print a debug message to help
+>diagnosing the cause.
+>
+>Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
+Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
+
+>---
+>Changes since v1:
+>
+>- Add missing \n
+>---
+> .../media/platform/rockchip/rkisp1/rkisp1-capture.c    | 10 +++++++++-
+> 1 file changed, 9 insertions(+), 1 deletion(-)
+>
+>diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+>index 94819e6c23e2..fb14c8aa154c 100644
+>--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+>+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+>@@ -1294,8 +1294,16 @@ static int rkisp1_capture_link_validate(struct media_link *link)
+>
+> 	if (sd_fmt.format.height != cap->pix.fmt.height ||
+> 	    sd_fmt.format.width != cap->pix.fmt.width ||
+>-	    sd_fmt.format.code != fmt->mbus)
+>+	    sd_fmt.format.code != fmt->mbus) {
+>+		dev_dbg(cap->rkisp1->dev,
+>+			"link '%s':%u -> '%s':%u not valid: 0x%04x/%ux%u != 0x%04x/%ux%u\n",
+>+			link->source->entity->name, link->source->index,
+>+			link->sink->entity->name, link->sink->index,
+>+			sd_fmt.format.code, sd_fmt.format.width,
+>+			sd_fmt.format.height, fmt->mbus, cap->pix.fmt.width,
+>+			cap->pix.fmt.height);
+> 		return -EPIPE;
+>+	}
+>
+> 	return 0;
+> }
+>-- 
+>Regards,
+>
+>Laurent Pinchart
+>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
