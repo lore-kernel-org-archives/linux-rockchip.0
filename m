@@ -4,95 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6031AC43334
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Jul 2022 19:50:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A04F6C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 Jul 2022 21:25:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GOQiJlNKoD21RJKBXbQZ3l8YW1sD6WXB3Hp22veHZ+E=; b=y6DS5SvPU7d7ddi8BvoVzQnCI0
-	gpyOWtCRvYksMn5WgX+MNCHqALnMGAK6lbe0YJgyur4VPiJ000IxBrYOYDtHGfdh2uiW0ihvx3H6c
-	yk3CmbGn/euU6PzrFyKAZkGCA5k8vruMw5Ck7+p93BoUAL6Pzs60vcEQjwKVHFBDjiH2v9MdzbE7K
-	Mt5lBqfgRKTTHDvbwSIsGwOmioVNDq765+wjoVy+6yH6i4d+bTyJS19EqPPPhm8nG2GvGEyorldJQ
-	k+X/HwqFneBgxthfFbckKt00o8tICNLVRom80GR6aqZ5zUwnBdhIzP4xDEctZbofpk1DG8jMcF3jg
-	SxZQm9Cw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UO6ILEPEXAcBo+1yr26RV8hmSaZ4LL0UEcHzhnmi0Z8=; b=A1M+QJv4qHcfKO
+	LnPiZvGnXwikL429G5YWMhNrzpz+6j1lLH+FxbZ0wDcm/1u9hscvJ95HT+6gRzcObeO7+nXWiYSGs
+	KG9T5Za1zlLBpvYBmxuuLeYwbDiwKwKWR2slkRF4FGNxEhWTOmaewTvt34004xQp49TvfKnmdHFtG
+	0M7isZf2MuhOGbQM1clXjAeCtRA3oZadq0tfJh4yHmW2E+qaabM8P/2gfpdS/6EL6Phqh10i9IdWy
+	uLVc0plhU3Ka/dXqJfMPajEf0IrvBWyg+e0R9wX9uyO/jwIfsU/cab9VTZuPOXgI4P8BmCK9CCaUF
+	m+wwqSH2da+WAT3xMBxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAcwG-00DUFv-06; Sun, 10 Jul 2022 19:49:56 +0000
-Received: from out2-smtp.messagingengine.com ([66.111.4.26])
+	id 1oAeQ8-00Do8J-8X; Sun, 10 Jul 2022 21:24:52 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAcwC-00DU9y-Nd
-	for linux-rockchip@lists.infradead.org; Sun, 10 Jul 2022 19:49:54 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
-	by mailout.nyi.internal (Postfix) with ESMTP id D7F6F5C0061;
-	Sun, 10 Jul 2022 15:49:51 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute3.internal (MEProxy); Sun, 10 Jul 2022 15:49:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
-	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm3; t=1657482591; x=1657568991; bh=V6JgLWdccE
-	IMz+qv1sEblb9V6yseT1o4V/fe7MLIkq8=; b=G/K9Cw3DfpEp4F58KWEYMW6O6S
-	PRjzZ4BlzsG0poDf+S2dPB0tBobYKR6KOr1cQlx/uPHIR0MG1SAbu4Cb1ER8XAku
-	uu1F/myIoSThPUxJriJG8B0BGwyJvC5otCSTJnVYcC7ZjjF8dk9tmpY8nOtqarjl
-	KTQSOp/WM0IZ7AM3qIMiLlnmgRNT9x8UCgTxKoerSMwmkucCeI5aKCA0bAbBkoCR
-	nCNkcO1IKERZHyt71mUR7l1jPUSL/kqX4jn3AgtmhKB5JXkmX+a0EColKWYJmrLT
-	IWP421BgNMwHakeW/0fhZeSJoU9PCW5BJhKiZlHfEEsxHOK8ZfCcCuGwTGlw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1657482591; x=1657568991; bh=V6JgLWdccEIMz+qv1sEblb9V6yse
-	T1o4V/fe7MLIkq8=; b=mjxGXwK8i6EUa18MeIuvAd+2yLvI6dv73Y/mxJmb6Qm+
-	L5kN3ymZ+WJ4IRYlsQQx99oOlfLlvYvvchxHMQl5eKLcgouKeRTB+ZPyclvDYGno
-	v0KpXFj/hiu7dqmkYlXxTTRPgNBtY/bQyGWtZ0lAEWm8OJBwXVGoKdMWyNrsPOaH
-	ZPl93fj96EKNWYlNfpnqsCgeRHn1dAuUy/gZIpe1vC+SWYgyj0dp+XAY9oXdkMkU
-	S+RoqDuNPvzcAH7VkaKecUmFcs+X5A2RxPI+/DwPnO+h+1x3JtvMKiWk7+gGTZzO
-	/NfX92dshxv+xl9/sh7Du5B4269ajI9y5pCfcG2Lgg==
-X-ME-Sender: <xms:Xy3LYmsvXnZ-2PAF1ni0r3HbGzfxLCqV1YBtZgROk8GhG3yP0aDinA>
-    <xme:Xy3LYrduTs3NTrLnu7vWFd6WYI-KBdSY43oIN0EYWwrwBfbxt7orV6zKakPKAi2VT
-    g7HsKmC9PDqZ6VYens>
-X-ME-Received: <xmr:Xy3LYhzm8Zv8irxSZ7nC82aFXWDzwaEZkuHtScd9wy25aldsT3ttRA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudejuddgudeggecutefuodetggdotefrod
-    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
-    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-    enucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttdejnecuhfhrohhmpeffrghf
-    nhgrucfjihhrshgthhhfvghlugcuoegurghfnhgrsehfrghsthhmrghilhdrtghomheqne
-    cuggftrfgrthhtvghrnhepheeivdejhedvffelkeffvdejvdeiheehtdethfdvtdeufeeu
-    keelhfetuddugfejnecuffhomhgrihhnpehinhhfrhgruggvrggurdhorhhgnecuvehluh
-    hsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepuggrfhhnrgesfhgr
-    shhtmhgrihhlrdgtohhm
-X-ME-Proxy: <xmx:Xy3LYhOOb2n2WBSScMhH8SqtZ24J_Bzg4AfL3W6ROqPZLQXO7TJePA>
-    <xmx:Xy3LYm9U7M3CN_5RFyQkxl60iJsGTbSy6h7jwFz-XaXxLuxTX0a7xg>
-    <xmx:Xy3LYpVJtpqvD9eQxsoQGqQTRPCe0iMmGJZMwD6i-GSrTrLWxVpBCg>
-    <xmx:Xy3LYqY6ZrKCtrQPIXjVPeh3E2bCwoz3z_lzIwYKEjSM3X8a7okobg>
-Feedback-ID: i0e894699:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 10 Jul 2022 15:49:49 -0400 (EDT)
-Date: Sun, 10 Jul 2022 22:49:46 +0300
-From: Dafna Hirschfeld <dafna@fastmail.com>
-To: paul.elder@ideasonboard.com
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	id 1oAePx-00Do5v-H5
+	for linux-rockchip@lists.infradead.org; Sun, 10 Jul 2022 21:24:43 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id ay25so2063547wmb.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 10 Jul 2022 14:24:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linexp-org.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=HjRFmpGybbr7CcVNDUXcigDJ5VrNfuY+c1EB/6AHNWI=;
+        b=OxjhRHGwv3JxchWDTPUu1T+zywciRVphtTvXEmU6mUP2Q9Of5MXMuHJY5jKgJ6vOj5
+         0FkeqDfjT/IT/xDaqYBzID/YeazVI30mFF4P5pEUJxCKFt1lqN5GhLAyfDCgXZZJaV2K
+         dDfhBRDUjsb+PsEVfJszUYZM3197zydiypebSIPcqBt4cUhP+JV+xuPrRncSvDMKWF2/
+         p/dTWys6Fe4NJQKArT17uycj3ES1nZJi8EO6o2/Jg5QJMl33K1QqSOkETVJK6m6IT0GL
+         PtBaI7T9ekSbYG++sokQO3C4N5hDmtfflXY+DWamHH+PQP+iaua08bc9WYB0yvJY8Tec
+         OFKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=HjRFmpGybbr7CcVNDUXcigDJ5VrNfuY+c1EB/6AHNWI=;
+        b=NChT9n7iP8DOoP59mi8paDmAKHhsxuaUsVebVxSOqdbei/P/LZ5G2bMExdk3Fg0Fp9
+         EGgzhB3k1KGXWD13KYy+xYFjsXQlnKdcPxSDxg0CPcKFzV/JskNWGHBFDy8W7hrNPKcI
+         nXh1gBgP+0+rJ3Hve9Oo3kL4/i1kulnG7+U1ohWOoIwu5hNc3xn4r6s4kgI0FLaz4YIz
+         lADJWXnSnocty1K151sM9LS2+5fxNhhT0bgRcd03sSNk+nX80rsB433/CF9Qht3yTjdF
+         ZVvgP774pncEQfndexUSvOUn7ks5698CxXK8N+Ae7RG1vNhuzesBsjaIUdONREDfQ0AV
+         Aq0A==
+X-Gm-Message-State: AJIora8YALcaXOO/8xSb1uAouLMlHjTRNIlqUaepdejUcKpOF3f5JNGN
+	TOVwbdBWFlXTo7HiM3Po7Tmc4w==
+X-Google-Smtp-Source: AGRyM1usBJbr5Lkiq7/hO35XDewZS0GFLE3KDQw4iUzv5twxxD1w/8r2ebUW/ye7FMkxIGG534Tm/Q==
+X-Received: by 2002:a05:600c:1c93:b0:3a0:579e:9f44 with SMTP id k19-20020a05600c1c9300b003a0579e9f44mr12373763wms.82.1657488278918;
+        Sun, 10 Jul 2022 14:24:38 -0700 (PDT)
+Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:c7c0:6823:f3ce:2447])
+        by smtp.gmail.com with ESMTPSA id m19-20020a05600c3b1300b003a2dd0d21f0sm7142759wms.13.2022.07.10.14.24.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 10 Jul 2022 14:24:38 -0700 (PDT)
+From: Daniel Lezcano <daniel.lezcano@linexp.org>
+To: daniel.lezcano@linaro.org,
+	rafael@kernel.org
+Cc: rui.zhang@intel.com,
+	khilman@baylibre.com,
+	abailon@baylibre.com,
+	amitk@kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org,
 	Heiko Stuebner <heiko@sntech.de>,
-	Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v2 18/55] media: rkisp1: Fix sensor source pad retrieval
- at bound time
-Message-ID: <20220710194946.5v2q5qmp2loje4vc@guri>
-References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
- <20220630230713.10580-19-laurent.pinchart@ideasonboard.com>
- <20220707140123.GM3886060@pyrite.rasen.tech>
- <YsbyFwtuhBChV+gn@pendragon.ideasonboard.com>
- <20220707145052.GP3886060@pyrite.rasen.tech>
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
+Subject: [PATCH v1 03/33] thermal/drivers/rockchip: Switch to new of API
+Date: Sun, 10 Jul 2022 23:23:53 +0200
+Message-Id: <20220710212423.681301-4-daniel.lezcano@linexp.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220710212423.681301-1-daniel.lezcano@linexp.org>
+References: <20220710212423.681301-1-daniel.lezcano@linexp.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220707145052.GP3886060@pyrite.rasen.tech>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220710_124952_877662_E44996F0 
-X-CRM114-Status: GOOD (  26.80  )
+X-CRM114-CacheID: sfid-20220710_142441_797966_C03F5462 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,152 +91,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07.07.2022 23:50, paul.elder@ideasonboard.com wrote:
->Hi Laurent,
->
->On Thu, Jul 07, 2022 at 05:47:51PM +0300, Laurent Pinchart wrote:
->> Hi Paul,
->>
->> On Thu, Jul 07, 2022 at 11:01:23PM +0900, paul.elder@ideasonboard.com wrote:
->> > On Fri, Jul 01, 2022 at 02:06:36AM +0300, Laurent Pinchart wrote:
->> > > When a sensor is bound, its source pad is retrieved in the .bound()
->> > > operation with a call to media_entity_get_fwnode_pad(). The function
->> > > should be called with the source endpoint fwnode of the sensor, but is
->> > > instead called with the sensor's device fwnode.
->> > >
->> > > Fix this, which involves storing a reference to the source endpoint
->> > > fwnode in the rkisp1_sensor_async structure, and thus implementing the
->> > > subdev notifier .destroy() operation to release the reference.
->> > >
->> > > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->> > > ---
->> > >  .../platform/rockchip/rkisp1/rkisp1-common.h  |  2 ++
->> > >  .../platform/rockchip/rkisp1/rkisp1-dev.c     | 28 ++++++++++++++++---
->> > >  2 files changed, 26 insertions(+), 4 deletions(-)
->> > >
->> > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->> > > index b0896b508db3..f08b3dec1465 100644
->> > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->> > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->> > > @@ -117,6 +117,7 @@ struct rkisp1_info {
->> > >   *
->> > >   * @asd:		async_subdev variable for the sensor
->> > >   * @index:		index of the sensor (counting sensor found in DT)
->> > > + * @source_ep:		fwnode for the sensor source endpoint
->> > >   * @lanes:		number of lanes
->> > >   * @mbus_type:		type of bus (currently only CSI2 is supported)
->> > >   * @mbus_flags:		media bus (V4L2_MBUS_*) flags
->> > > @@ -127,6 +128,7 @@ struct rkisp1_info {
->> > >  struct rkisp1_sensor_async {
->> > >  	struct v4l2_async_subdev asd;
->> > >  	unsigned int index;
->> > > +	struct fwnode_handle *source_ep;
->> > >  	unsigned int lanes;
->> > >  	enum v4l2_mbus_type mbus_type;
->> > >  	unsigned int mbus_flags;
->> > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->> > > index 2e68f35e8ea5..813c013139ea 100644
->> > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->> > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->> > > @@ -138,7 +138,7 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
->> > >  	phy_init(s_asd->dphy);
->> > >
->> > >  	/* Create the link to the sensor. */
->> > > -	source_pad = media_entity_get_fwnode_pad(&sd->entity, sd->fwnode,
->> > > +	source_pad = media_entity_get_fwnode_pad(&sd->entity, s_asd->source_ep,
->> > >  						 MEDIA_PAD_FL_SOURCE);
->> > >  	if (source_pad < 0) {
->> > >  		dev_err(rkisp1->dev, "failed to find source pad for %s\n",
->> > > @@ -170,10 +170,19 @@ static int rkisp1_subdev_notifier_complete(struct v4l2_async_notifier *notifier)
->> > >  	return v4l2_device_register_subdev_nodes(&rkisp1->v4l2_dev);
->> > >  }
->> > >
->> > > +static void rkisp1_subdev_notifier_destroy(struct v4l2_async_subdev *asd)
->> > > +{
->> > > +	struct rkisp1_sensor_async *rk_asd =
->> > > +		container_of(asd, struct rkisp1_sensor_async, asd);
->> > > +
->> > > +	fwnode_handle_put(rk_asd->source_ep);
->> > > +}
->> > > +
->> > >  static const struct v4l2_async_notifier_operations rkisp1_subdev_notifier_ops = {
->> > >  	.bound = rkisp1_subdev_notifier_bound,
->> > >  	.unbind = rkisp1_subdev_notifier_unbind,
->> > >  	.complete = rkisp1_subdev_notifier_complete,
->> > > +	.destroy = rkisp1_subdev_notifier_destroy,
->> > >  };
->> > >
->> > >  static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
->> > > @@ -190,6 +199,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
->> > >  			.bus_type = V4L2_MBUS_CSI2_DPHY
->> > >  		};
->> > >  		struct rkisp1_sensor_async *rk_asd;
->> > > +		struct fwnode_handle *source = NULL;
->> > >  		struct fwnode_handle *ep;
->> > >
->> > >  		ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(rkisp1->dev),
->> > > @@ -202,15 +212,24 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
->> > >  		if (ret)
->> > >  			goto err_parse;
->> > >
->> > > -		rk_asd = v4l2_async_nf_add_fwnode_remote(ntf, ep,
->> > > -							 struct
->> > > -							 rkisp1_sensor_async);
->> > > +		source = fwnode_graph_get_remote_endpoint(ep);
->> > > +		if (!source) {
->> > > +			dev_err(rkisp1->dev,
->> > > +				"endpoint %pfw has no remote endpoint\n",
->> > > +				ep);
->> > > +			ret = -ENODEV;
->> > > +			goto err_parse;
->> >
->> > source is error here so you don't need to fwnode_handle_put() it later I
->> > think.
->>
->> That's right, but I still need the fwnode_handle_put(ep) and
->> v4l2_async_nf_cleanup(ntf). As fwnode_handle_put(NULL) is a no-op, I
->> didn't add a NULL check before calling it.
->
->Ah, I see. Understandable.
->
->Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
+The thermal OF code has a new API allowing to migrate the OF
+initialization to a simpler approach.
 
-Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
+Use this new API.
 
->
->>
->> > > +		}
->> > > +
->> > > +		rk_asd = v4l2_async_nf_add_fwnode(ntf, source,
->> > > +						  struct rkisp1_sensor_async);
->> > >  		if (IS_ERR(rk_asd)) {
->> > >  			ret = PTR_ERR(rk_asd);
->> > >  			goto err_parse;
->> > >  		}
->> > >
->> > >  		rk_asd->index = index++;
->> > > +		rk_asd->source_ep = source;
->> > >  		rk_asd->mbus_type = vep.bus_type;
->> > >  		rk_asd->mbus_flags = vep.bus.mipi_csi2.flags;
->> > >  		rk_asd->lanes = vep.bus.mipi_csi2.num_data_lanes;
->> > > @@ -225,6 +244,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
->> > >  		continue;
->> > >  err_parse:
->> > >  		fwnode_handle_put(ep);
->> > > +		fwnode_handle_put(source);
->> > >  		v4l2_async_nf_cleanup(ntf);
->> > >  		return ret;
->> > >  	}
->
->_______________________________________________
->Linux-rockchip mailing list
->Linux-rockchip@lists.infradead.org
->http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Signed-off-by: Daniel Lezcano <daniel.lezcano@linexp.org>
+---
+ drivers/thermal/rockchip_thermal.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
+index dc3a9c276a09..ea3abfb8e6c8 100644
+--- a/drivers/thermal/rockchip_thermal.c
++++ b/drivers/thermal/rockchip_thermal.c
+@@ -1211,9 +1211,9 @@ static irqreturn_t rockchip_thermal_alarm_irq_thread(int irq, void *dev)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static int rockchip_thermal_set_trips(void *_sensor, int low, int high)
++static int rockchip_thermal_set_trips(struct thermal_zone_device *tz, int low, int high)
+ {
+-	struct rockchip_thermal_sensor *sensor = _sensor;
++	struct rockchip_thermal_sensor *sensor = tz->devdata;
+ 	struct rockchip_thermal_data *thermal = sensor->thermal;
+ 	const struct rockchip_tsadc_chip *tsadc = thermal->chip;
+ 
+@@ -1224,9 +1224,9 @@ static int rockchip_thermal_set_trips(void *_sensor, int low, int high)
+ 				     sensor->id, thermal->regs, high);
+ }
+ 
+-static int rockchip_thermal_get_temp(void *_sensor, int *out_temp)
++static int rockchip_thermal_get_temp(struct thermal_zone_device *tz, int *out_temp)
+ {
+-	struct rockchip_thermal_sensor *sensor = _sensor;
++	struct rockchip_thermal_sensor *sensor = tz->devdata;
+ 	struct rockchip_thermal_data *thermal = sensor->thermal;
+ 	const struct rockchip_tsadc_chip *tsadc = sensor->thermal->chip;
+ 	int retval;
+@@ -1239,7 +1239,7 @@ static int rockchip_thermal_get_temp(void *_sensor, int *out_temp)
+ 	return retval;
+ }
+ 
+-static const struct thermal_zone_of_device_ops rockchip_of_thermal_ops = {
++static struct thermal_zone_device_ops rockchip_of_thermal_ops = {
+ 	.get_temp = rockchip_thermal_get_temp,
+ 	.set_trips = rockchip_thermal_set_trips,
+ };
+@@ -1326,8 +1326,8 @@ rockchip_thermal_register_sensor(struct platform_device *pdev,
+ 
+ 	sensor->thermal = thermal;
+ 	sensor->id = id;
+-	sensor->tzd = devm_thermal_zone_of_sensor_register(&pdev->dev, id,
+-					sensor, &rockchip_of_thermal_ops);
++	sensor->tzd = devm_thermal_of_zone_register(&pdev->dev, id, sensor,
++						    &rockchip_of_thermal_ops);
+ 	if (IS_ERR(sensor->tzd)) {
+ 		error = PTR_ERR(sensor->tzd);
+ 		dev_err(&pdev->dev, "failed to register sensor %d: %d\n",
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
