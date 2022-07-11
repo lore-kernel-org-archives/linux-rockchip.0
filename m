@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13014C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 12:58:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0859DC43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 12:58:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JzMAUvYYothXWdYmQZmWSy9E+uF3wTaga4u/6CkUuus=; b=SUeKz2q3QiGJXj
-	+NhKYDHHR0mDR4NWykMRMX7rcyHjWibQxtbK2pbMGDhkLUnTW8JjJphB/WVmGJnx/bHt04rbjqMnJ
-	LYq81PwRioAfb7/CmnaqiAB4pOBe7VZxfgYw9NrAy6XzKiWqaYt4fl1O1eEwDv76qNp8U3uZ5af1P
-	MvxFYNn7Jf/EE/Rql+khBzJfLICVrYsDCEs9QhF+P0roHjBmaIJde/k5tjAq0MxWszFwbNkEnMj6o
-	5TyjhOB7HnNnZ3IDOdVWR6fhLSAE9GXyGJ5FsJyhz3veQTHzyrRE+NjL0EO16tyEwYYZ6evgSOPim
-	SrHGC4pW+RzdCIy0lz7w==;
+	List-Owner; bh=7MspyWrKy4EFSfkXogJA1aqZOFQZcXGTBv6nSSgkrSI=; b=KMs5QgJWVJUD+C
+	DXpFOMBTaT4KXUJyUYllHd9pSp4bFIzKzc9U7xB3n7dtiXXiN7wZVC5EkIgut348vu4/GcRBgUa17
+	rOFodIABImoaIBLgUGJkFNY8lcUpDL7EaIW44M4xeelAQofF9gcdLGBsOLIt28IJj514dQW+v5o4U
+	5jXo9KSlFcn1rODLkJUzV5bX3HYiXsKHvbTRoERQxueGxaOZ187mFkOsiggAKcyPyXXmrKyHMg7Kr
+	WOQTe/PjW4lycNxdkKLJjV52wKd+f8tbGbLzxtZg2yntZhhY3fXVbQerXOWC+F29DhCIK3WsvHJJQ
+	qQ6tvN736iXyTpnNytcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAszk-001hAv-9e; Mon, 11 Jul 2022 12:58:36 +0000
+	id 1oAszo-001hFw-9y; Mon, 11 Jul 2022 12:58:40 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAslQ-001YMV-As
-	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 12:43:50 +0000
+	id 1oAslN-001YKW-MB
+	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 12:43:48 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 3B6BD87F;
-	Mon, 11 Jul 2022 14:43:46 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B61CD2F50;
+	Mon, 11 Jul 2022 14:43:43 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657543426;
-	bh=EjHItJgv5DGeGyWq4grxYgyRRZLKQVkSpISeDYuuCzY=;
+	s=mail; t=1657543424;
+	bh=f+MN00A0UOxPA9aBsxCLQ2UAel9P8hNaKX6kFDMPtEY=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=uxUhBxbnq/ypgN0CldBGP3+YhXhGyYSw3kbCTchGIq0h8uv9Cu7lZphZ4VvyRDxJp
-	 rwqI2RyzHtoAqBR7bvMCUkBb28q4jq2a71U7WK7TyVMjaZl9wKF3bkBLSJJUkN8vbV
-	 0/C1mLOCG71pWu/cu7j00JJDdHYgaYgj6Aoqua2U=
+	b=HzoUpLft4dxWWXp/OxYxyHUQtZQi6D44exVAk2pkHpcXVmceewTROd20qc7UyYXJN
+	 7fxFxndaKqfbuTz2JGY8+d+V5QzWN+Tyq3p2QFQ3qQpD1TKZ9dVzy3fToYsCwzSnCJ
+	 Md6xEKp6GwPqzjvLuCfm59mE+nji7MMh3/32l7xY=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -42,16 +42,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v3 44/46] media: rkisp1: Add infrastructure to support ISP features
-Date: Mon, 11 Jul 2022 15:42:46 +0300
-Message-Id: <20220711124248.2683-45-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v3 40/46] media: rkisp1: csi: Plumb the CSI RX subdev
+Date: Mon, 11 Jul 2022 15:42:42 +0300
+Message-Id: <20220711124248.2683-41-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220711124248.2683-1-laurent.pinchart@ideasonboard.com>
 References: <20220711124248.2683-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_054348_563601_5CF051C5 
-X-CRM114-Status: GOOD (  14.27  )
+X-CRM114-CacheID: sfid-20220711_054345_935106_DB41D3E8 
+X-CRM114-Status: GOOD (  21.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,82 +68,300 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Different ISP versions implement different sets of features. The driver
-already takes the version into account in several places, but this
-approach won't scale well for features that are found in different
-versions. Introduce a new mechanism using a features bitmask in the
-rkisp1_info structure to indicate which features the ISP support.
+Connect the CSI receiver subdevice between the sensors and the ISP. This
+includes:
 
-The first feature bit tells if the ISP has an internal CSI-2 receiver,
-which is not available in all ISP versions.
+- Calling the subdevice via the v4l2 subdev API
+- Moving the async notifier for the sensor from the ISP to the CSI
+  receiver
+- In the ISP, create a media link to the CSI receiver, and remove the
+  media link creation to the sensor
+- In the CSI receiver, create a media link to the sensor
 
+Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-common.h      | 15 +++++++++++++++
- .../media/platform/rockchip/rkisp1/rkisp1-dev.c   |  2 ++
- 2 files changed, 17 insertions(+)
+Changes since v1:
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 6e5db7f7b647..b4c9573295c7 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -98,6 +98,19 @@ enum rkisp1_isp_pad {
- 	RKISP1_ISP_PAD_MAX
- };
+- Clarify commit message
+- Update the media device topology
+- Fix white space
+---
+ .../platform/rockchip/rkisp1/rkisp1-csi.c     | 34 ++++++++-
+ .../platform/rockchip/rkisp1/rkisp1-csi.h     |  6 +-
+ .../platform/rockchip/rkisp1/rkisp1-dev.c     | 70 ++++++++++---------
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     | 21 +-----
+ 4 files changed, 75 insertions(+), 56 deletions(-)
+
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+index 0c90f76ba9b3..d7acc94e10f8 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
+@@ -47,6 +47,34 @@ rkisp1_csi_get_pad_fmt(struct rkisp1_csi *csi,
+ 		return v4l2_subdev_get_try_format(&csi->sd, &state, pad);
+ }
  
-+/*
-+ * enum rkisp1_feature - ISP features
-+ *
-+ * @RKISP1_FEATURE_MIPI_CSI2: The ISP has an internal MIPI CSI-2 receiver
-+ *
-+ * The ISP features are stored in a bitmask in &rkisp1_info.features and allow
-+ * the driver to implement support for features present in some ISP versions
-+ * only.
-+ */
-+enum rkisp1_feature {
-+	RKISP1_FEATURE_MIPI_CSI2 = BIT(0),
-+};
++int rkisp1_csi_link_sensor(struct rkisp1_device *rkisp1, struct v4l2_subdev *sd,
++			   struct rkisp1_sensor_async *s_asd,
++			   unsigned int source_pad)
++{
++	struct rkisp1_csi *csi = &rkisp1->csi;
++	int ret;
 +
- /*
-  * struct rkisp1_info - Model-specific ISP Information
-  *
-@@ -106,6 +119,7 @@ enum rkisp1_isp_pad {
-  * @isrs: array of ISP interrupt descriptors
-  * @isr_size: number of entries in the @isrs array
-  * @isp_ver: ISP version
-+ * @features: bitmatk of rkisp1_feature features implemented by the ISP
-  *
-  * This structure contains information about the ISP specific to a particular
-  * ISP model, version, or integration in a particular SoC.
-@@ -116,6 +130,7 @@ struct rkisp1_info {
- 	const struct rkisp1_isr_data *isrs;
- 	unsigned int isr_size;
- 	enum rkisp1_cif_isp_version isp_ver;
-+	unsigned int features;
- };
++	s_asd->pixel_rate_ctrl = v4l2_ctrl_find(sd->ctrl_handler,
++						V4L2_CID_PIXEL_RATE);
++	if (!s_asd->pixel_rate_ctrl) {
++		dev_err(rkisp1->dev, "No pixel rate control in subdev %s\n",
++			sd->name);
++		return -EINVAL;
++	}
++
++	/* Create the link from the sensor to the CSI receiver. */
++	ret = media_create_pad_link(&sd->entity, source_pad,
++				    &csi->sd.entity, RKISP1_CSI_PAD_SINK,
++				    !s_asd->index ? MEDIA_LNK_FL_ENABLED : 0);
++	if (ret) {
++		dev_err(csi->rkisp1->dev, "failed to link src pad of %s\n",
++			sd->name);
++		return ret;
++	}
++
++	return 0;
++}
++
+ static int rkisp1_csi_config(struct rkisp1_csi *csi,
+ 			     const struct rkisp1_sensor_async *sensor)
+ {
+@@ -122,8 +150,8 @@ static void rkisp1_csi_disable(struct rkisp1_csi *csi)
+ 		     val & (~RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA));
+ }
  
- /*
+-int rkisp1_csi_start(struct rkisp1_csi *csi,
+-		     const struct rkisp1_sensor_async *sensor)
++static int rkisp1_csi_start(struct rkisp1_csi *csi,
++			    const struct rkisp1_sensor_async *sensor)
+ {
+ 	struct rkisp1_device *rkisp1 = csi->rkisp1;
+ 	union phy_configure_opts opts;
+@@ -158,7 +186,7 @@ int rkisp1_csi_start(struct rkisp1_csi *csi,
+ 	return 0;
+ }
+ 
+-void rkisp1_csi_stop(struct rkisp1_csi *csi)
++static void rkisp1_csi_stop(struct rkisp1_csi *csi)
+ {
+ 	rkisp1_csi_disable(csi);
+ 
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
+index f75babaac1cb..1f5f2af31a7d 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
+@@ -21,8 +21,8 @@ void rkisp1_csi_cleanup(struct rkisp1_device *rkisp1);
+ int rkisp1_csi_register(struct rkisp1_device *rkisp1);
+ void rkisp1_csi_unregister(struct rkisp1_device *rkisp1);
+ 
+-int rkisp1_csi_start(struct rkisp1_csi *csi,
+-		     const struct rkisp1_sensor_async *sensor);
+-void rkisp1_csi_stop(struct rkisp1_csi *csi);
++int rkisp1_csi_link_sensor(struct rkisp1_device *rkisp1, struct v4l2_subdev *sd,
++			   struct rkisp1_sensor_async *s_asd,
++			   unsigned int source_pad);
+ 
+ #endif /* _RKISP1_CSI_H */
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 1dcade2fd2a7..bc278b49fefc 100644
+index 5428e19e818f..c3a7ab70bbef 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -460,6 +460,7 @@ static const struct rkisp1_info px30_isp_info = {
- 	.isrs = px30_isp_isrs,
- 	.isr_size = ARRAY_SIZE(px30_isp_isrs),
- 	.isp_ver = RKISP1_V12,
-+	.features = RKISP1_FEATURE_MIPI_CSI2,
- };
+@@ -17,6 +17,7 @@
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/pm_runtime.h>
+ #include <media/v4l2-fwnode.h>
++#include <media/v4l2-mc.h>
  
- static const char * const rk3399_isp_clks[] = {
-@@ -478,6 +479,7 @@ static const struct rkisp1_info rk3399_isp_info = {
- 	.isrs = rk3399_isp_isrs,
- 	.isr_size = ARRAY_SIZE(rk3399_isp_isrs),
- 	.isp_ver = RKISP1_V10,
-+	.features = RKISP1_FEATURE_MIPI_CSI2,
- };
+ #include "rkisp1-common.h"
+ #include "rkisp1-csi.h"
+@@ -67,18 +68,28 @@
+  *
+  * Media Topology
+  * --------------
+- *      +----------+     +----------+
+- *      | Sensor 2 |     | Sensor X |
+- *      ------------ ... ------------
+- *      |    0     |     |    0     |
+- *      +----------+     +----------+      +-----------+
+- *                  \      |               |  params   |
+- *                   \     |               | (output)  |
+- *    +----------+    \    |               +-----------+
+- *    | Sensor 1 |     v   v                     |
+- *    ------------      +------+------+          |
+- *    |    0     |----->|  0   |  1   |<---------+
+- *    +----------+      |------+------|
++ *
++ *          +----------+       +----------+
++ *          | Sensor 1 |       | Sensor X |
++ *          ------------  ...  ------------
++ *          |    0     |       |    0     |
++ *          +----------+       +----------+
++ *               |                  |
++ *                \----\       /----/
++ *                     |       |
++ *                     v       v
++ *                  +-------------+
++ *                  |      0      |
++ *                  ---------------
++ *                  |  CSI-2 RX   |
++ *                  ---------------         +-----------+
++ *                  |      1      |         |  params   |
++ *                  +-------------+         | (output)  |
++ *                         |               +-----------+
++ *                         v                     |
++ *                      +------+------+          |
++ *                      |  0   |  1   |<---------+
++ *                      |------+------|
+  *                      |     ISP     |
+  *                      |------+------|
+  *        +-------------|  2   |  3   |----------+
+@@ -119,17 +130,8 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
+ 		container_of(asd, struct rkisp1_sensor_async, asd);
+ 	int source_pad;
  
- static const struct of_device_id rkisp1_of_match[] = {
+-	s_asd->pixel_rate_ctrl = v4l2_ctrl_find(sd->ctrl_handler,
+-						V4L2_CID_PIXEL_RATE);
+-	if (!s_asd->pixel_rate_ctrl) {
+-		dev_err(rkisp1->dev, "No pixel rate control in subdev %s\n",
+-			sd->name);
+-		return -EINVAL;
+-	}
+-
+ 	s_asd->sd = sd;
+ 
+-	/* Create the link to the sensor. */
+ 	source_pad = media_entity_get_fwnode_pad(&sd->entity, s_asd->source_ep,
+ 						 MEDIA_PAD_FL_SOURCE);
+ 	if (source_pad < 0) {
+@@ -138,10 +140,7 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
+ 		return source_pad;
+ 	}
+ 
+-	return media_create_pad_link(&sd->entity, source_pad,
+-				     &rkisp1->isp.sd.entity,
+-				     RKISP1_ISP_PAD_SINK_VIDEO,
+-				     !s_asd->index ? MEDIA_LNK_FL_ENABLED : 0);
++	return rkisp1_csi_link_sensor(rkisp1, sd, s_asd, source_pad);
+ }
+ 
+ static int rkisp1_subdev_notifier_complete(struct v4l2_async_notifier *notifier)
+@@ -283,6 +282,14 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
+ 	unsigned int i;
+ 	int ret;
+ 
++	/* Link the CSI receiver to the ISP. */
++	ret = media_create_pad_link(&rkisp1->csi.sd.entity, RKISP1_CSI_PAD_SRC,
++				    &rkisp1->isp.sd.entity,
++				    RKISP1_ISP_PAD_SINK_VIDEO,
++				    MEDIA_LNK_FL_ENABLED);
++	if (ret)
++		return ret;
++
+ 	/* create ISP->RSZ->CAP links */
+ 	for (i = 0; i < 2; i++) {
+ 		struct media_entity *resizer =
+@@ -364,13 +371,6 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
+ 	if (ret)
+ 		goto error;
+ 
+-	ret = rkisp1_subdev_notifier_register(rkisp1);
+-	if (ret) {
+-		dev_err(rkisp1->dev,
+-			"Failed to register subdev notifier(%d)\n", ret);
+-		goto error;
+-	}
+-
+ 	return 0;
+ 
+ error:
+@@ -534,10 +534,16 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		goto err_cleanup_csi;
+ 
++	ret = rkisp1_subdev_notifier_register(rkisp1);
++	if (ret)
++		goto err_unreg_entities;
++
+ 	rkisp1_debug_init(rkisp1);
+ 
+ 	return 0;
+ 
++err_unreg_entities:
++	rkisp1_entities_unregister(rkisp1);
+ err_cleanup_csi:
+ 	rkisp1_csi_cleanup(rkisp1);
+ err_unreg_media_dev:
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+index d7e2802d11f5..ea0bbccb5aee 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+@@ -16,7 +16,6 @@
+ #include <media/v4l2-event.h>
+ 
+ #include "rkisp1-common.h"
+-#include "rkisp1-csi.h"
+ 
+ #define RKISP1_DEF_SINK_PAD_FMT MEDIA_BUS_FMT_SRGGB10_1X10
+ #define RKISP1_DEF_SRC_PAD_FMT MEDIA_BUS_FMT_YUYV8_2X8
+@@ -728,17 +727,13 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+ {
+ 	struct rkisp1_isp *isp = to_rkisp1_isp(sd);
+ 	struct rkisp1_device *rkisp1 = isp->rkisp1;
+-	const struct rkisp1_sensor_async *asd;
+ 	struct media_pad *source_pad;
+ 	struct media_pad *sink_pad;
+ 	int ret;
+ 
+ 	if (!enable) {
+ 		v4l2_subdev_call(rkisp1->source, video, s_stream, false);
+-
+-		rkisp1_csi_stop(&rkisp1->csi);
+ 		rkisp1_isp_stop(isp);
+-
+ 		return 0;
+ 	}
+ 
+@@ -756,30 +751,20 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+ 		return -EPIPE;
+ 	}
+ 
+-	asd = container_of(rkisp1->source->asd, struct rkisp1_sensor_async,
+-			   asd);
+-
+-	if (asd->mbus_type != V4L2_MBUS_CSI2_DPHY)
+-		return -EINVAL;
++	if (rkisp1->source != &rkisp1->csi.sd)
++		return -EPIPE;
+ 
+ 	isp->frame_sequence = -1;
+ 	mutex_lock(&isp->ops_lock);
+-	ret = rkisp1_config_cif(isp, asd->mbus_type, asd->mbus_flags);
++	ret = rkisp1_config_cif(isp, V4L2_MBUS_CSI2_DPHY, 0);
+ 	if (ret)
+ 		goto mutex_unlock;
+ 
+ 	rkisp1_isp_start(isp);
+ 
+-	ret = rkisp1_csi_start(&rkisp1->csi, asd);
+-	if (ret) {
+-		rkisp1_isp_stop(isp);
+-		goto mutex_unlock;
+-	}
+-
+ 	ret = v4l2_subdev_call(rkisp1->source, video, s_stream, true);
+ 	if (ret) {
+ 		rkisp1_isp_stop(isp);
+-		rkisp1_csi_stop(&rkisp1->csi);
+ 		goto mutex_unlock;
+ 	}
+ 
 -- 
 Regards,
 
