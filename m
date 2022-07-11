@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B9ACCCA480
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 12:58:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 131BEC43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 12:58:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+6if4HKSj4jc/M8fiegA00lJP42pTzmbmfVbxPeFeMI=; b=qOnqZlpP7VkOMN
-	jOWGfwCeyKDD68hdmc8MnKaOU2yVk5DqJhKMiQA5uGfOj6LFDorE/HdlY9zVKDrC/msN/BvLScGMN
-	Hk7GKSBDTF+optg37MERvMoATCU/svtSvy7aSYphLwaGHg8+8yMwzfjhWHbloAwdJ/ZTkWFA7D1Mr
-	82yFf4fUWnyoKodhqK8NLnHR4Xvly1ak8kSHyv16sdBRqkoyHS1AiAWd+rMRjGgB4RBmI56nDznAK
-	3G//bN2oLlM494j1lLkSBj59CYFJyPIl0Yx3SzWMPaRg6dp67nNoC+tLWfroUqV+9ALWZmeu2qlDY
-	VyURyH9VdzY0ZgVszREw==;
+	List-Owner; bh=pZhyx3rvYRw3bRmHEtg9WP7Q3LtLawM+Zica3eNphdM=; b=ksr5KF6hVxBscg
+	v7iW5NmkFFTpyKVt9EjcPNMkJ310TpVjFUw2l3c7mneDH7Zt3bprQ5adZulafEsDy974icvSz4T+M
+	evxSi6uq4bmPDoeO0S5wJkYR9o+SFQ/mQK385FIWT0FhdMVS7/LmaHLgqYSGok3d9RFPARV40XK9e
+	uWpYxdeLkl+v+jL5AAR1BMPd73Q/5/guZh9G5L7K9bjbGkx/EA2MGxTxfcM99/f5oUYIFMRkk2LBR
+	jUmZuGyK13ViBYWrFRnFYpflSscdL6hS73Sf1TlbjV/FtGu/QPIsrY3Kt0ROZbdfpauRdLTx0ELmT
+	4KX6oJMiQRBkxe1dHG+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAszP-001gol-Qk; Mon, 11 Jul 2022 12:58:16 +0000
+	id 1oAszW-001gvA-7c; Mon, 11 Jul 2022 12:58:22 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAslK-001YIA-H3
+	id 1oAslJ-001YHf-Uq
 	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 12:43:44 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 945512715;
-	Mon, 11 Jul 2022 14:43:40 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id F1FE42719;
+	Mon, 11 Jul 2022 14:43:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657543421;
-	bh=vM+Q5vUk3nCD2h953d/yNGgWUWEpVhZ4V2w1vUhHO6U=;
+	s=mail; t=1657543420;
+	bh=UPJ5XRznE8cv1wBcVUOUFQDm95EI3a0AXC/nNFTTE8U=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=j493lDZFMiU3iadVec35lEYZG2pg4gDXZ+gG78BSMWHQt4fmbYBWL9El+fOHt4fl5
-	 uYrvNGavg0wacFeIOU1wuQ4fFjiyOZSLQiVSVCtIT0VroNYIqV9OrRRQSfbgTT4Odb
-	 r1OR0GY6y+8F2TkVpJ8y59aDhHbahm4s/UB/yFA0=
+	b=PEK0yW8lSsF1HhztAw/YIBASa+OvMjVjn+I9BI9oc6TsAYyX6CRHJGBxXPp1bUVWj
+	 Y5YvePPAY8mFD7/FLSTMYNAp0b0w0Xu9PdC247SoIxpvtrcHQFjUp35Of/iwfRojmA
+	 7FpksrkIS9e8i07uZWZ5KLzwwxU0BkI/z4WPSNoc=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -42,16 +42,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v3 35/46] media: rkisp1: isp: Fix whitespace issues
-Date: Mon, 11 Jul 2022 15:42:37 +0300
-Message-Id: <20220711124248.2683-36-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v3 34/46] media: rkisp1: isp: Initialize some variables at declaration time
+Date: Mon, 11 Jul 2022 15:42:36 +0300
+Message-Id: <20220711124248.2683-35-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220711124248.2683-1-laurent.pinchart@ideasonboard.com>
 References: <20220711124248.2683-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_054342_752905_E46F48E7 
-X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-CacheID: sfid-20220711_054342_205572_AE57FD14 
+X-CRM114-Status: UNSURE (   8.94  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,49 +69,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add missing blank lines after variable declaration blocks, and fix
-indentation issues.
+Initialize the src_fmt and sink_fmt variable when declaring them in
+rkisp1_config_isp().
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
+Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+Changes since v1:
+
+- Fix typo in commit message
+---
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index 53f0516594ef..944d7bfa9b41 100644
+index 938541ce52ce..53f0516594ef 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -79,7 +79,8 @@ rkisp1_isp_get_pad_fmt(struct rkisp1_isp *isp,
+@@ -142,12 +142,11 @@ static int rkisp1_config_isp(struct rkisp1_isp *isp,
  {
- 	struct v4l2_subdev_state state = {
- 		.pads = isp->pad_cfg
--		};
-+	};
-+
- 	if (which == V4L2_SUBDEV_FORMAT_TRY)
- 		return v4l2_subdev_get_try_format(&isp->sd, sd_state, pad);
- 	else
-@@ -93,7 +94,8 @@ rkisp1_isp_get_pad_crop(struct rkisp1_isp *isp,
- {
- 	struct v4l2_subdev_state state = {
- 		.pads = isp->pad_cfg
--		};
-+	};
-+
- 	if (which == V4L2_SUBDEV_FORMAT_TRY)
- 		return v4l2_subdev_get_try_crop(&isp->sd, sd_state, pad);
- 	else
-@@ -893,8 +895,8 @@ static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
- 	struct v4l2_event event = {
- 		.type = V4L2_EVENT_FRAME_SYNC,
- 	};
-+
- 	event.u.frame_sync.frame_sequence = isp->frame_sequence;
--
- 	v4l2_event_queue(isp->sd.devnode, &event);
- }
+ 	struct rkisp1_device *rkisp1 = isp->rkisp1;
+ 	u32 isp_ctrl = 0, irq_mask = 0, acq_mult = 0, acq_prop = 0;
+-	const struct rkisp1_mbus_info *src_fmt, *sink_fmt;
++	const struct rkisp1_mbus_info *sink_fmt = isp->sink_fmt;
++	const struct rkisp1_mbus_info *src_fmt = isp->src_fmt;
+ 	struct v4l2_mbus_framefmt *sink_frm;
+ 	struct v4l2_rect *sink_crop;
  
+-	sink_fmt = isp->sink_fmt;
+-	src_fmt = isp->src_fmt;
+ 	sink_frm = rkisp1_isp_get_pad_fmt(isp, NULL,
+ 					  RKISP1_ISP_PAD_SINK_VIDEO,
+ 					  V4L2_SUBDEV_FORMAT_ACTIVE);
 -- 
 Regards,
 
