@@ -4,91 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7697BC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 02:12:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D41B6C43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 02:29:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BcjLN2g6qfSPNGVZxxFDWiUKl/0DXRCLxgYst28RSfQ=; b=IqtZIxUhRxd/xedqBCkoqV/QdT
-	FMWd1uHSu5AlgYRMFvMJ8C4sEk5/gNXYQjMaKRKDWlV1ihXZMVsLaaq4FzI2mUvgZJMv36sxA79H7
-	PXvb8fj15VA1eu/4rXgdxvaSnaxrnOn1oDM/AW0uzra7MDAqAeXcMFPFPVCZFJqYvhXg6Vn9ErIKm
-	VGY7cX9jXWWeupec8zUMpCNQ3XBJ/FMGiDtoXQiyOybtuNTe/PWgozhvsWRmFdSjoIWR+T5ND8by3
-	BLvnwaM8XdmHj6hizhZE9Laeci5+wz1BvxnOlZ+1wOJynLT0AHYAzTwiW0XD+1/Yl2DduGdZwksyL
-	fQY3ydEA==;
+	bh=zAEcZej34YGaPDTMrAqMA5T9DHLk1cX40xiw/MhWdsU=; b=tYWpxeFAX9xgyXx0+Kkc6D8WQr
+	obawUMhCyF4K1+/v6Ss/e9EWpjSyoIiITnZU1nyYTCSuE1hgeAn1rXs3UqYpH/9OCsP0YIb+XkiYc
+	yfRWY53yhyp2YkIwZGTkRWh7+zAy4xkAP3G6wSBMqtP+OBVYvmy/alhuSmjrwSDeqHl+sMYcOeMLZ
+	1GQqS149miBaWIO1fm+fqNAnOpT41pZX4tiYQI7PhYw/Ds6eAFejOAf4MMN+HEwoje+D2+PDJ410R
+	S+EJ41c2dUzBBqkXv/jHzWJBPqGT4r4rvhVptX2sivXikfEizZ7NgDsQBy0GdiML8hUMZu1nPpduk
+	Hntvcuhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAiuW-00FBUY-RE; Mon, 11 Jul 2022 02:12:32 +0000
+	id 1oAjB5-00FFmx-Up; Mon, 11 Jul 2022 02:29:39 +0000
 Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAiuT-00FBRt-5i
-	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 02:12:31 +0000
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
-	by mailout.west.internal (Postfix) with ESMTP id 857A43200437;
-	Sun, 10 Jul 2022 22:12:27 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute4.internal (MEProxy); Sun, 10 Jul 2022 22:12:28 -0400
+	id 1oAjB3-00FFkn-3Z
+	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 02:29:38 +0000
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+	by mailout.west.internal (Postfix) with ESMTP id 37AF6320029B;
+	Sun, 10 Jul 2022 22:29:26 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute2.internal (MEProxy); Sun, 10 Jul 2022 22:29:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
 	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
 	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm3; t=1657505547; x=1657591947; bh=hWC7cnV3u0
-	/WqBn4JaJa+zLs79UTwQ6f06De1X6rols=; b=IrFs2qPi6nHqRxEHxwO4BFVWqz
-	YYQ3HgAqNtMQ5RFt3+SYVJ2ZI+eDxR/+cox93+DqPbLhFtStY+LMPXNwPRezj7g2
-	A4xEiH+KhEb6DKu3qRgWxyFLsAWfwHHydaf0lLZ6OsktovATyz0eF8i+llC+qN7c
-	VdcUf3Cm/vi17OeM8xhmAMcBDL+Zi6zsvS2cd0ttsF4vRa2f0ElT0ztqKfLs1usK
-	d6hlkuA6QfJggC7PL2IWVbPum4OoW1SWptbO6s6FuYayGrAy+w8djCIlNGGkQFcf
-	IBNO9GtnIwh50fqbEMY+EMTBeJRZMmCVHjDpNbKLr7/HYr8vlCF5zwdc1UrQ==
+	:subject:to:to; s=fm3; t=1657506565; x=1657592965; bh=CCBY9d9Um0
+	Hx5Dv0S6QBP9R5oXD6ecN3f+4ds/Nn9eo=; b=VZyG1eJHfMrzi6a1LVxodT6pOU
+	8JIsvB4Z176b8DBHR2RLPDnWNYE7usLoTa+RTQ6qhiJ80lwau1OgGmH2ib6YfwN2
+	9DNjRo4e7J6ORwkluzH4duUY4WciNUcTSTO0//DxA8e+pVSXN3aFoLWr54j4bS9T
+	LeGF6FwkL4GtjGFcKKlf//dAg2tgLIU9CxF00/P8wEhK4df9NiR2fX0T4awtIrmM
+	+6RERVwV+rXsE/0yFsqFddDEZspwsubHOipuWyBJVOBksXh69xK751clvIMwah4B
+	s7acsGPW4DP1+lELFxz7F/EdDDnVo0VoWrtPFNyH1L/WbVG0RO6xzRJOmhZw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
 	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
 	:mime-version:references:reply-to:sender:subject:subject:to:to
 	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1657505547; x=1657591947; bh=hWC7cnV3u0/WqBn4JaJa+zLs79UT
-	wQ6f06De1X6rols=; b=CRSpocwVab4KGAJsuzMWtap45ZqGd0diguyqk//v13qj
-	DcwMQvzsxFM8lLwYJmvMzO/7E0l3jiRQD87cqSiMyrq7pdfwm+jje43Bm42i73hV
-	YHPqHXLuMBMZu6Zn0cNkXn/OKCVcrFy+p7u+oGsLr5UkKoVzl35qqImqcUCgSqPr
-	aLtArdqBfkNuaHzytpCdHKUPt8ivU/st8Ki9zIFaF9E+ILkVx/VELtwMecvLtVa4
-	gDB+kYzcoqOOzCMXDkjqt1B2GAh7I8n6mmLSeTH9pLpZWiOphXqITexSkhpCEdtm
-	yM0VPGep133I2Dgn6bqt6o0MSE9EPVp/jb94CewiWA==
-X-ME-Sender: <xms:CofLYhyuxr5Mfj9Gjn6KXAesOjAxcjKY2zatfZQ4Zfam3WZJzK8SRg>
-    <xme:CofLYhRmy8ywsBWSTMZpnGGnSzAr4-TWroe6hRj1tOb34Dwbkpu6MMxrXUI45-U_G
-    YE8en9KDWQyQWnxBTg>
-X-ME-Received: <xmr:CofLYrXGIFp0JMdjho1TB8jdtx_tA5iZThuaz0bFXI5Wy3pCNsSvxQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudejvddgheekucetufdoteggodetrfdotf
+	fm3; t=1657506565; x=1657592965; bh=CCBY9d9Um0Hx5Dv0S6QBP9R5oXD6
+	ecN3f+4ds/Nn9eo=; b=tvvldkt4bWDMxIkUqSpylJYIekNMAhSLG0K4OwO3RKCV
+	fwkhY951C/58gBCH3Y+f+fFp7o9aXrBcAtkjqtOmtwUh1ae3knL8iuISohhIjfM5
+	DHeAUg76AfuspZgl5/gp+u+6CVJhCNC57gaYgioZPd6N7SuYw7/EL0I85Z9RwidP
+	a2HqDrL3/MuuFSafKBXthbUbZ/wZ/qjPKrz1CQd21fZXguyjWzhtl8Cr3Cz/PJYY
+	WP7E7JtlrgquCYOYWzwHzXAB8KB8DkCtJhdIkxOxK28jsZtI8scn55v4wvE3XFvc
+	uEhRNQkgbaZVIGt8nfKM823wfzQRrQ7iSwUQ2gUYdg==
+X-ME-Sender: <xms:BYvLYuJkFJbX_aldDJLmpkF62GVfQ8pJjgVeX2G7b8eyJbKZcshmpA>
+    <xme:BYvLYmIcoH33nzj88-OR1GFNskc7rxyWwpKHpoUGfg8CmJWihhYjizWBfjjAoqMIG
+    1NNgkkzSGGjYWP4-E0>
+X-ME-Received: <xmr:BYvLYut5ZHStFvS8oTSSjKzjHPVZSmKvPYX2mjoZxxSL5AhBWD4KMg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudejvddgieduucetufdoteggodetrfdotf
     fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
     uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
     cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtjeenucfhrhhomhepffgrfhhn
     rgcujfhirhhstghhfhgvlhguuceouggrfhhnrgesfhgrshhtmhgrihhlrdgtohhmqeenuc
-    ggtffrrghtthgvrhhnpeevtdffuedtvedugfehvdfhheevkefhheejvdffveffffdtgfdt
-    feetffdvheejhfenucffohhmrghinhepsggrshgvrdhiugdpihhnfhhrrgguvggrugdroh
-    hrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegu
-    rghfnhgrsehfrghsthhmrghilhdrtghomh
-X-ME-Proxy: <xmx:CofLYjilOjxXbabXaNPDk--Xzj5hp_52xWZfxxfpkIY8SD-JC6eCPA>
-    <xmx:CofLYjBtTHGxhfDqewdefmpKoLab7OEfONxr7_Mqt1ubGRFHlPWnGQ>
-    <xmx:CofLYsI5yrAvjyUlLRef54ZLspIujiEdighkh3iQypYzqGmXVvfWmQ>
-    <xmx:C4fLYu-HU8kuIkldoKBkbNAWh8HrZNN0WepGM7uUbOGSCB_nsXzKLA>
+    ggtffrrghtthgvrhhnpeehiedvjeehvdffleekffdvjedvieehhedttefhvddtueefueek
+    lefhteduudfgjeenucffohhmrghinhepihhnfhhrrgguvggrugdrohhrghenucevlhhush
+    htvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegurghfnhgrsehfrghs
+    thhmrghilhdrtghomh
+X-ME-Proxy: <xmx:BYvLYjZ32EcYeR7Kv-lpvuVjxU1wEILyxpY8afVVf0En_9spXlGUWg>
+    <xmx:BYvLYlYKUQiV7BvhtZdo3fx9fz1IZAXkk5mvvg4LZGtBcy82bHwzVg>
+    <xmx:BYvLYvBG-fXDd_gGCbLALqR9aps9wqig91gO87RcGIh_rkKJQuGEiA>
+    <xmx:BYvLYkW1tNX67_28j9RJf-UXoBVuIuNpo27KvAKZwhCrtTmnJTPPww>
 Feedback-ID: i0e894699:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 10 Jul 2022 22:12:24 -0400 (EDT)
-Date: Mon, 11 Jul 2022 05:12:21 +0300
+ 10 Jul 2022 22:29:22 -0400 (EDT)
+Date: Mon, 11 Jul 2022 05:29:19 +0300
 From: Dafna Hirschfeld <dafna@fastmail.com>
 To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	Paul Elder <paul.elder@ideasonboard.com>
-Subject: Re: [PATCH v2 43/55] media: rkisp1: Support the ISP parallel input
-Message-ID: <20220711021221.pm5kmszgd2t5vhod@guri>
+Subject: Re: [PATCH v2 44/55] media: rkisp1: Add infrastructure to support
+ ISP features
+Message-ID: <20220711022919.hh3yvmlkioefgdrd@guri>
 References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
- <20220630230713.10580-44-laurent.pinchart@ideasonboard.com>
+ <20220630230713.10580-45-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220630230713.10580-44-laurent.pinchart@ideasonboard.com>
+In-Reply-To: <20220630230713.10580-45-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220710_191229_669667_144B6305 
-X-CRM114-Status: GOOD (  17.81  )
+X-CRM114-CacheID: sfid-20220710_192937_222487_E25D348A 
+X-CRM114-Status: GOOD (  15.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,195 +107,84 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 01.07.2022 02:07, Laurent Pinchart wrote:
->From: Paul Elder <paul.elder@ideasonboard.com>
+>Different ISP versions implement different sets of features. The driver
+>already takes the version into account in several places, but this
+>approach won't scale well for features that are found in different
+>versions. Introduce a new mechanism using a features bitmask in the
+>rkisp1_info structure to indicate which features the ISP support.
 >
->The ISP has a parallel input, exposed through port 1 in the device tree
->node. While the driver supports configuring the ISP for the parallel and
->BT.656 input modes, the DT parsing code, the subdev bound handler and
->the ISP stream start handler only support the CSI input. Extend them to
->support the parallel input.
+>The first feature bit tells if the ISP has an internal CSI-2 receiver,
+>which is not available in all ISP versions.
 >
->Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
 >Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
 Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
 
 >---
-> .../platform/rockchip/rkisp1/rkisp1-common.h  |  2 +
-> .../platform/rockchip/rkisp1/rkisp1-dev.c     | 68 ++++++++++++++++---
-> .../platform/rockchip/rkisp1/rkisp1-isp.c     | 18 ++++-
-> 3 files changed, 77 insertions(+), 11 deletions(-)
+> .../platform/rockchip/rkisp1/rkisp1-common.h      | 15 +++++++++++++++
+> .../media/platform/rockchip/rkisp1/rkisp1-dev.c   |  2 ++
+> 2 files changed, 17 insertions(+)
 >
 >diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->index 84832e1367ff..e436f1572566 100644
+>index e436f1572566..dedfcf3466c8 100644
 >--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
 >+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->@@ -130,6 +130,7 @@ struct rkisp1_info {
->  * @mbus_flags:		media bus (V4L2_MBUS_*) flags
->  * @sd:			a pointer to v4l2_subdev struct of the sensor
->  * @pixel_rate_ctrl:	pixel rate of the sensor, used to initialize the phy
->+ * @port:		port number (0: MIPI, 1: Parallel)
->  */
-> struct rkisp1_sensor_async {
-> 	struct v4l2_async_subdev asd;
->@@ -140,6 +141,7 @@ struct rkisp1_sensor_async {
-> 	unsigned int mbus_flags;
-> 	struct v4l2_subdev *sd;
-> 	struct v4l2_ctrl *pixel_rate_ctrl;
->+	unsigned int port;
+>@@ -98,6 +98,19 @@ enum rkisp1_isp_pad {
+> 	RKISP1_ISP_PAD_MAX
+> };
+>
+>+/*
+>+ * enum rkisp1_feature - ISP features
+>+ *
+>+ * @RKISP1_FEATURE_MIPI_CSI2: The ISP has an internal MIPI CSI-2 receiver
+>+ *
+>+ * The ISP features are stored in a bitmask in &rkisp1_info.features and allow
+>+ * the driver to implement support for features present in some ISP versions
+>+ * only.
+>+ */
+>+enum rkisp1_feature {
+>+	RKISP1_FEATURE_MIPI_CSI2 = BIT(0),
+>+};
+>+
+> /*
+>  * struct rkisp1_info - Model-specific ISP Information
+>  *
+>@@ -106,6 +119,7 @@ enum rkisp1_isp_pad {
+>  * @isrs: array of ISP interrupt descriptors
+>  * @isr_size: number of entries in the @isrs array
+>  * @isp_ver: ISP version
+>+ * @features: bitmatk of rkisp1_feature features implemented by the ISP
+>  *
+>  * This structure contains information about the ISP specific to a particular
+>  * ISP model, version, or integration in a particular SoC.
+>@@ -116,6 +130,7 @@ struct rkisp1_info {
+> 	const struct rkisp1_isr_data *isrs;
+> 	unsigned int isr_size;
+> 	enum rkisp1_cif_isp_version isp_ver;
+>+	unsigned int features;
 > };
 >
 > /*
 >diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->index 0eb37ba557ce..1dcade2fd2a7 100644
+>index 1dcade2fd2a7..bc278b49fefc 100644
 >--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
 >+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->@@ -129,6 +129,7 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
-> 	struct rkisp1_sensor_async *s_asd =
-> 		container_of(asd, struct rkisp1_sensor_async, asd);
-> 	int source_pad;
->+	int ret;
+>@@ -460,6 +460,7 @@ static const struct rkisp1_info px30_isp_info = {
+> 	.isrs = px30_isp_isrs,
+> 	.isr_size = ARRAY_SIZE(px30_isp_isrs),
+> 	.isp_ver = RKISP1_V12,
+>+	.features = RKISP1_FEATURE_MIPI_CSI2,
+> };
 >
-> 	s_asd->sd = sd;
+> static const char * const rk3399_isp_clks[] = {
+>@@ -478,6 +479,7 @@ static const struct rkisp1_info rk3399_isp_info = {
+> 	.isrs = rk3399_isp_isrs,
+> 	.isr_size = ARRAY_SIZE(rk3399_isp_isrs),
+> 	.isp_ver = RKISP1_V10,
+>+	.features = RKISP1_FEATURE_MIPI_CSI2,
+> };
 >
->@@ -140,7 +141,20 @@ static int rkisp1_subdev_notifier_bound(struct v4l2_async_notifier *notifier,
-> 		return source_pad;
-> 	}
->
->-	return rkisp1_csi_link_sensor(rkisp1, sd, s_asd, source_pad);
->+	if (s_asd->port == 0)
->+		return rkisp1_csi_link_sensor(rkisp1, sd, s_asd, source_pad);
->+
->+	ret = media_create_pad_link(&sd->entity, source_pad,
->+				    &rkisp1->isp.sd.entity,
->+				    RKISP1_ISP_PAD_SINK_VIDEO,
->+				    !s_asd->index ? MEDIA_LNK_FL_ENABLED : 0);
->+	if (ret) {
->+		dev_err(rkisp1->dev, "failed to link source pad of %s\n",
->+			sd->name);
->+		return ret;
->+	}
->+
->+	return 0;
-> }
->
-> static int rkisp1_subdev_notifier_complete(struct v4l2_async_notifier *notifier)
->@@ -178,12 +192,33 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
-> 	ntf->ops = &rkisp1_subdev_notifier_ops;
->
-> 	fwnode_graph_for_each_endpoint(fwnode, ep) {
->-		struct v4l2_fwnode_endpoint vep = {
->-			.bus_type = V4L2_MBUS_CSI2_DPHY
->-		};
->+		struct fwnode_handle *port;
->+		struct v4l2_fwnode_endpoint vep = { };
-> 		struct rkisp1_sensor_async *rk_asd;
-> 		struct fwnode_handle *source;
->+		u32 reg = 0;
->
->+		/* Select the bus type based on the port. */
->+		port = fwnode_get_parent(ep);
->+		fwnode_property_read_u32(port, "reg", &reg);
->+		fwnode_handle_put(port);
->+
->+		switch (reg) {
->+		case 0:
->+			vep.bus_type = V4L2_MBUS_CSI2_DPHY;
->+			break;
->+
->+		case 1:
->+			/*
->+			 * Parallel port. The bus-type property in DT is
->+			 * mandatory for port 1, it will be used to determine if
->+			 * it's PARALLEL or BT656.
->+			 */
->+			vep.bus_type = V4L2_MBUS_UNKNOWN;
->+			break;
->+		}
->+
->+		/* Parse the endpoint and validate the bus type. */
-> 		ret = v4l2_fwnode_endpoint_parse(ep, &vep);
-> 		if (ret) {
-> 			dev_err(rkisp1->dev, "failed to parse endpoint %pfw\n",
->@@ -191,6 +226,17 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
-> 			break;
-> 		}
->
->+		if (vep.base.port == 1) {
->+			if (vep.bus_type != V4L2_MBUS_PARALLEL &&
->+			    vep.bus_type != V4L2_MBUS_BT656) {
->+				dev_err(rkisp1->dev,
->+					"port 1 must be parallel or BT656\n");
->+				ret = -EINVAL;
->+				break;
->+			}
->+		}
->+
->+		/* Add the async subdev to the notifier. */
-> 		source = fwnode_graph_get_remote_endpoint(ep);
-> 		if (!source) {
-> 			dev_err(rkisp1->dev,
->@@ -211,11 +257,17 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
-> 		rk_asd->index = index++;
-> 		rk_asd->source_ep = source;
-> 		rk_asd->mbus_type = vep.bus_type;
->-		rk_asd->mbus_flags = vep.bus.mipi_csi2.flags;
->-		rk_asd->lanes = vep.bus.mipi_csi2.num_data_lanes;
->+		rk_asd->port = vep.base.port;
->
->-		dev_dbg(rkisp1->dev, "registered ep id %d with %d lanes\n",
->-			vep.base.id, rk_asd->lanes);
->+		if (vep.bus_type == V4L2_MBUS_CSI2_DPHY) {
->+			rk_asd->mbus_flags = vep.bus.mipi_csi2.flags;
->+			rk_asd->lanes = vep.bus.mipi_csi2.num_data_lanes;
->+		} else {
->+			rk_asd->mbus_flags = vep.bus.parallel.flags;
->+		}
->+
->+		dev_dbg(rkisp1->dev, "registered ep id %d, bus type %u, %u lanes\n",
->+			vep.base.id, rk_asd->mbus_type, rk_asd->lanes);
-> 	}
->
-> 	if (ret) {
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->index ea0bbccb5aee..383a3ec83ca9 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->@@ -729,6 +729,8 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
-> 	struct rkisp1_device *rkisp1 = isp->rkisp1;
-> 	struct media_pad *source_pad;
-> 	struct media_pad *sink_pad;
->+	enum v4l2_mbus_type mbus_type;
->+	u32 mbus_flags;
-> 	int ret;
->
-> 	if (!enable) {
->@@ -751,12 +753,22 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
-> 		return -EPIPE;
-> 	}
->
->-	if (rkisp1->source != &rkisp1->csi.sd)
->-		return -EPIPE;
->+	if (rkisp1->source == &rkisp1->csi.sd) {
->+		mbus_type = V4L2_MBUS_CSI2_DPHY;
->+		mbus_flags = 0;
->+	} else {
->+		const struct rkisp1_sensor_async *asd;
->+
->+		asd = container_of(rkisp1->source->asd,
->+				   struct rkisp1_sensor_async, asd);
->+
->+		mbus_type = asd->mbus_type;
->+		mbus_flags = asd->mbus_flags;
->+	}
->
-> 	isp->frame_sequence = -1;
-> 	mutex_lock(&isp->ops_lock);
->-	ret = rkisp1_config_cif(isp, V4L2_MBUS_CSI2_DPHY, 0);
->+	ret = rkisp1_config_cif(isp, mbus_type, mbus_flags);
-> 	if (ret)
-> 		goto mutex_unlock;
->
+> static const struct of_device_id rkisp1_of_match[] = {
 >-- 
 >Regards,
 >
