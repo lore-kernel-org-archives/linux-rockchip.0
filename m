@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A59A1C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 03:00:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C39AFC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 03:03:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4qR1QWTOsoph64aHUwcbjgvm+ChD0hxdmCbYY3XJSAg=; b=nkZOn78BtciuZMBcHrQyrQeHLp
-	Nr3poeciSfq32ALeMaL/QmFbCY6Hm41S1YLlZxQFBM3RAl+a+Sq6bClOEX/9d/YKxdPCVx0zqCqBb
-	fjmCbS3my1dFUOHb2riQnBNOe6NmCAnCvYxllXv+Tz8NMcKoxe3dlBTD5rsWShHt1W1X6DMfoIJgq
-	khdxGK6rCZ3MJnZcOaMuWhMzzKKT4Mm9x1oxD5QBrMAYJDCVrt7q4VVONojiZs2YcYUv4xl2w42F5
-	IhcSJTJcGlmbyuxG/NLsEbkhFmxke1ukAaSw/XWGA0Z70bh0gM0oCZCbsPB/Bjm8/w6oaVHNDZRUC
-	jKoY89+w==;
+	bh=+fpAji9gLViU7+34z1Yt2mcwPyf8ILIjuxSvIYgSQfg=; b=RqM27ves4im3u89/aQwFuQnBkx
+	iu9UiWlUSEU4D2+tH4dQy7qhwTwpPiqeRXJtuaHfbS6QQGX0W4hdsuoH8SXdom+H0+H+JA5/Eu0oz
+	mFfe1iOpX57rJLgCF36HcOSTE4W/58VdgNc4b+J0J4duildOsQ1x+uga4gTThRLp+EKDJ84ju36s2
+	OYv+v6REbk0uVHYNUp4GzADeB6cmkjnhzxQtxgfvcSAR2eNPqvcjA/6+PVCNhvB3QGaOt/CzH5uyY
+	pV7q+f5euoOWhfN8i6MlwlEdtUKcFnz0PLaF1edDu604yyp2BLKLDPo4mwYTl/8e7/oQgGzMQq1ty
+	2C0nXmSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAjeJ-00FQW0-Pc; Mon, 11 Jul 2022 02:59:51 +0000
+	id 1oAjhI-00FRu4-Gs; Mon, 11 Jul 2022 03:02:56 +0000
 Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAjeG-00FQUL-Jo
-	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 02:59:50 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
-	by mailout.west.internal (Postfix) with ESMTP id 8C17B3200657;
-	Sun, 10 Jul 2022 22:59:47 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute3.internal (MEProxy); Sun, 10 Jul 2022 22:59:48 -0400
+	id 1oAjhG-00FRtU-Gr
+	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 03:02:56 +0000
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+	by mailout.west.internal (Postfix) with ESMTP id 260ED320085B;
+	Sun, 10 Jul 2022 23:02:53 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute2.internal (MEProxy); Sun, 10 Jul 2022 23:02:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
 	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
 	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm3; t=1657508387; x=1657594787; bh=Vjo7xIJE87
-	/J7RzJzICzwGe1nCM99XNZiWqI3BgiIgo=; b=cjajEGWWBjdpN/lFfGnkUNvHhG
-	QxGuX+ltFItF6hjsftHGbsRRB7risFNyn7if/ETyD2/nPxx+fw3XxEoRy4RxkXVC
-	Yqm2q0hBdY9hvSim9LDdt2vUZDYeOphwfRHgG8Azxiy79TPM/K8+LQdDcqDsY5dZ
-	m/P+PNJ4DEqA2J/BjygF8QnvugpK1XAz53DFShnjMBPYPFS2xPOOgHUEg1E1DlnW
-	nY2/ZWEgnuo1LnKIDq9g7gDY1SOffpRG/ZGyiJiMqWj3U7VV/HPneZ3k73qVO/4C
-	vnloimcWkC+EPBkxT2DDSa7KmDO7R2wgP02+XsmR+FT+dHExEyklZ0AUuTFA==
+	:subject:to:to; s=fm3; t=1657508572; x=1657594972; bh=LpXRutFVA5
+	wZCYNXG+zU/75GmjifqfN47iqoqg8E0pY=; b=nz0FYSNkSg0JYR+PgW61aeGKUM
+	8Orr64zKSevQ6t/BVht+x9qqKGO/dDXACh6gj5J3spPQOwh2a/Ni/8FSi64sD38c
+	F0sHqdLNNEgiuy54Eqgfkyq0DcoDUGTO876OSR1QTyIyRRbuH/q6oRHpPN6+RLVX
+	+jimMqyPkZ+9RjJOuFSER8J+kp1Ld6A9J+smI2V+tDuAJ8LqTrIUuJ5IQI/bwkoP
+	4y3txCDPPF9aPk2v6HYluz2k3cvwmSa31jEm/PndA2M/ag9N6gOGobJfYf+C6Fm6
+	ssd6QHM07Q7RK5yfETfaCIvV22aAnNMXTovWc03CBVvf41e5OhnyIgA4aIWQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
 	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
 	:mime-version:references:reply-to:sender:subject:subject:to:to
 	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1657508387; x=1657594787; bh=Vjo7xIJE87/J7RzJzICzwGe1nCM9
-	9XNZiWqI3BgiIgo=; b=v5MyBJr5NbcE9Gvz9mJj/cBh7Ez0UENYDK+q4UPNDzo4
-	a/U1uL9G7URl1UMg8sQB6HeoqKd08z9KV3EDJ+vbOcFNjFoQpRIemdTItmoIjJzA
-	4pR5jkD+Tccn7+/byFSXDWeOcoYeRPkV2N3egiqDhUFY/KnGiTJWyX1Uw+s4GT2O
-	U/rdBIbEm9ByEkhe24lSqNjG2yqpF97x+8nl3KAv4WlLkSDkoyW02q6gEFQcd6Di
-	5F9gbe1sxLegjH3dxvmwceYpj58U+DThof5S9HkhMz0X6do3aVnQJbscnNT5Y9xS
-	/hX6wNrHdEEo1eUr9l5SPt20lsc4/i3OwhlBc7jefA==
-X-ME-Sender: <xms:IpLLYtNWmt-qSz8einWmJd7FOBFynL3kzdSv-lrp8_eGWJIaEHMfvQ>
-    <xme:IpLLYv-lMivmrMzbHWYZI0Tm_azMwiRqQKWTE2xmg7lGJ5oNObwQNq88jkqpUKiWb
-    -hCBgL-prCMwHofBeU>
-X-ME-Received: <xmr:IpLLYsQfKAYQ77rpQoeC745O7XxLb9PpaMEtxfgG29b8mdWHLG51Bg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudejvddgieeiucetufdoteggodetrfdotf
+	fm3; t=1657508572; x=1657594972; bh=LpXRutFVA5wZCYNXG+zU/75Gmjif
+	qfN47iqoqg8E0pY=; b=3NtmYMCwMLiof4MfamoGX9q9LS2FvqWzUlNox66ZFby8
+	PiRO+Boub2irvmlTQR2ISlv8WTfAeYucj0ZiOWzjN2/PZT5ZPzGL8hdzxKScKQuq
+	r6rdDRDY9lDUp4og0LymhaAQF5PwTzX8XV75cUkn3xDQtlmOrR/Suw9Wz6ekVMZy
+	XskIvCkgxpH4cKTTEjbYAyjmVYcaFc5CnkCF2ONoE8VptzO/dx9mDHpEhuGgzi9I
+	Ebzp6MRFZfBbGQtBGKECvvQDgVzYUPvGkTM6qCPBquhxyPJk6SHL9Z7yZcE9Sb94
+	RkC8wYZ9R9ZIQVoBRQBtA9m7ZyMjO2vacg3pHf9hgQ==
+X-ME-Sender: <xms:3JLLYgEz4qlI15VDosfWkSjol-qyNLBejf0PSxBZ-ZS_YFMkyg76Xw>
+    <xme:3JLLYpW5BLr_DWboMXmjgGnaOyjVZNnAE1xyPm0PJMkK66cATUNXKJ7hGv6O_Kmsx
+    fMBeXRr5RbhCP-XjE4>
+X-ME-Received: <xmr:3JLLYqI6e7V6oFirY22taRVQRbZubAQ8xQsPQnNBjDRgGVg6RMRr5Q>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudejvddgieejucetufdoteggodetrfdotf
     fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
     uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
     cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtjeenucfhrhhomhepffgrfhhn
@@ -65,31 +65,32 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudejvddgieeiucetufdoteggod
     lefhteduudfgjeenucffohhmrghinhepihhnfhhrrgguvggrugdrohhrghenucevlhhush
     htvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegurghfnhgrsehfrghs
     thhmrghilhdrtghomh
-X-ME-Proxy: <xmx:IpLLYpsKMzGet-Ba5iUGTUqxjHncF52cG3LeHQTZcTXwz4Wf8qZseA>
-    <xmx:IpLLYleKajsIh6H32pnmewASdRX9CHiepp9WI8c6LDOcIjzJR_ph9w>
-    <xmx:IpLLYl2twX9G6BR3hN8WojrOn1j0kcYbN1njOw77skhdsL3Isadt5A>
-    <xmx:I5LLYs7DX3IzMD0f1CNT-2ziZpVBQS6c030_Y2QDYDZhqZWVSl2f6w>
+X-ME-Proxy: <xmx:3JLLYiHvYMpdgz4g3rj-kq5AtrGIWrPfhx0zuorN7Evln_1hnO3usw>
+    <xmx:3JLLYmU7zY7AJK6FZ3Xl7BtAvHZxD-kDgxiYDKw-LWT_fxdzY-UhLA>
+    <xmx:3JLLYlOkwQg9ISeqhYaQhbqxxNjiX2yH9JDJtJ8LlwCQFpBG66YCYg>
+    <xmx:3JLLYkxIrPdtEWwxzCPCLTRzrjET4rhBVQlFYfy_dgP3juaRZHRlHA>
 Feedback-ID: i0e894699:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 10 Jul 2022 22:59:44 -0400 (EDT)
-Date: Mon, 11 Jul 2022 05:59:42 +0300
+ 10 Jul 2022 23:02:50 -0400 (EDT)
+Date: Mon, 11 Jul 2022 06:02:46 +0300
 From: Dafna Hirschfeld <dafna@fastmail.com>
 To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	Paul Elder <paul.elder@ideasonboard.com>
-Subject: Re: [PATCH v2 51/55] media: rkisp1: Add and set registers for output
- size config on i.MX8MP
-Message-ID: <20220711025942.tbwprd4oebuvvdro@guri>
+Subject: Re: [PATCH v2 52/55] media: rkisp1: Add i.MX8MP-specific registers
+ for MI and resizer
+Message-ID: <20220711030246.6kxh6bw47feaubra@guri>
 References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
- <20220630230713.10580-52-laurent.pinchart@ideasonboard.com>
+ <20220630230713.10580-53-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220630230713.10580-52-laurent.pinchart@ideasonboard.com>
+In-Reply-To: <20220630230713.10580-53-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220710_195948_705296_82B6C01E 
-X-CRM114-Status: GOOD (  13.40  )
+X-CRM114-CacheID: sfid-20220710_200254_610853_20C758FB 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,92 +110,76 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 On 01.07.2022 02:07, Laurent Pinchart wrote:
 >From: Paul Elder <paul.elder@ideasonboard.com>
 >
->The ISP version in the i.MX8MP has a set of registers currently not
->handled by the driver for output size configuration. Add a feature flag
->to determine if the ISP requires this, and set the registers based on
->that.
+>Add register definitions for resizer format conversion control and for
+>the memory interface output that are specific to the ISP version in the
+>i.MX8MP.
 >
 >Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 >Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
->Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 >---
-> drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 8 ++++++++
-> drivers/media/platform/rockchip/rkisp1/rkisp1-common.h  | 1 +
-> drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c     | 3 ++-
-> drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h    | 9 +++++++++
-> 4 files changed, 20 insertions(+), 1 deletion(-)
+> .../platform/rockchip/rkisp1/rkisp1-regs.h    | 33 +++++++++++++++++++
+> 1 file changed, 33 insertions(+)
 >
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
->index d5904c96ff3f..3c1ade601bf4 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
->@@ -420,6 +420,14 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
-> 	rkisp1_write(rkisp1, cap->config->mi.cr_size_init,
-> 		     rkisp1_pixfmt_comp_size(pixm, RKISP1_PLANE_CR));
+>diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+>index 5c2195019723..dd63ae13e603 100644
+>--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+>+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+>@@ -171,6 +171,23 @@
+> /* RSZ_CROP_[XY]_DIR */
+> #define RKISP1_CIF_RSZ_CROP_XY_DIR(start, end)		((end) << 16 | (start) << 0)
 >
->+	if (rkisp1->info->features & RKISP1_FEATURE_MAIN_STRIDE) {
->+		rkisp1_write(rkisp1, RKISP1_CIF_MI_MP_Y_LLENGTH, pixm->width);
->+		rkisp1_write(rkisp1, RKISP1_CIF_MI_MP_Y_PIC_WIDTH, pixm->width);
->+		rkisp1_write(rkisp1, RKISP1_CIF_MI_MP_Y_PIC_HEIGHT, pixm->height);
->+		rkisp1_write(rkisp1, RKISP1_CIF_MI_MP_Y_PIC_SIZE,
->+			     pixm->width * pixm->height);
->+	}
+>+/* RSZ_FORMAT_CONV_CTRL */
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_INPUT_FORMAT_YCBCR_400	(0 << 0)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_INPUT_FORMAT_YCBCR_420	(1 << 0)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_INPUT_FORMAT_YCBCR_422	(2 << 0)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_INPUT_FORMAT_YCBCR_444	(3 << 0)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_OUTPUT_FORMAT_YCBCR_400	(0 << 2)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_OUTPUT_FORMAT_YCBCR_420	(1 << 2)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_OUTPUT_FORMAT_YCBCR_422	(2 << 2)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_OUTPUT_FORMAT_YCBCR_444	(3 << 2)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_CFG_Y_FULL			BIT(5)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_CFG_CBCR_FULL			BIT(6)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_CFG_422NOCOSITED		BIT(7)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_DATA_WIDTH_10_BIT_ENABLE	BIT(8)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_DATA_WIDTH_10_BIT_METHOD	BIT(9)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_PACK_FORMAT_PLANAR		(0 << 10)
+>+#define RKISP1_CIF_RSZ_FORMAT_CONV_CTRL_RSZ_PACK_FORMAT_SEMI_PLANAR	(1 << 10)
 >+
-> 	rkisp1_irq_frame_end_enable(cap);
->
-> 	/* set uv swapping for semiplanar formats */
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->index 18a48ecda173..6ce92b5fd465 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->@@ -112,6 +112,7 @@ enum rkisp1_feature {
-> 	RKISP1_FEATURE_MIPI_CSI2 = BIT(0),
-> 	RKISP1_FEATURE_DUAL_CROP = BIT(1),
-> 	RKISP1_FEATURE_RSZ_CROP = BIT(2),
->+	RKISP1_FEATURE_MAIN_STRIDE = BIT(3),
+> /* MI_IMSC - MI_MIS - MI_RIS - MI_ICR - MI_ISR */
+> #define RKISP1_CIF_MI_FRAME(stream)			BIT((stream)->id)
+> #define RKISP1_CIF_MI_MBLK_LINE				BIT(2)
+>@@ -212,6 +229,22 @@
+> #define RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP	BIT(0)
+> #define RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP	BIT(1)
+> #define RKISP1_CIF_MI_XTD_FMT_CTRL_DMA_CB_CR_SWAP	BIT(2)
 
-missing doc
+newline here
+
+>+/* MI_OUTPUT_ALIGN_FORMAT */
+>+#define RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_LSB_ALIGNMENT			BIT(0)
+>+#define RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES		BIT(1)
+>+#define RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_WORDS		BIT(2)
+>+#define RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_DWORDS		BIT(3)
+>+#define RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES		BIT(4)
+>+#define RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_WORDS		BIT(5)
+>+#define RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_DWORDS		BIT(6)
+>+#define RKISP1_CIF_OUTPUT_ALIGN_FORMAT_DMA_BYTE_SWAP_BYTES		BIT(7)
+>+#define RKISP1_CIF_OUTPUT_ALIGN_FORMAT_DMA_BYTE_SWAP_WORDS		BIT(8)
+>+#define RKISP1_CIF_OUTPUT_ALIGN_FORMAT_DMA_BYTE_SWAP_DWORDS		BIT(9)
+
+and here
 
 thanks,
 Dafna
 
-> };
+>+/* MI_MP_OUTPUT_FIFO_SIZE */
+>+#define RKISP1_CIF_MI_MP_OUTPUT_FIFO_SIZE_OUTPUT_FIFO_DEPTH_FULL	(0 << 0)
+>+#define RKISP1_CIF_MI_MP_OUTPUT_FIFO_SIZE_OUTPUT_FIFO_DEPTH_HALF	(1 << 0)
+>+#define RKISP1_CIF_MI_MP_OUTPUT_FIFO_SIZE_OUTPUT_FIFO_DEPTH_QUARTER	(2 << 0)
+>+#define RKISP1_CIF_MI_MP_OUTPUT_FIFO_SIZE_OUTPUT_FIFO_DEPTH_EIGHT	(3 << 0)
 >
-> /*
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->index 003bd7db54b9..a9c93191020f 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->@@ -515,7 +515,8 @@ static const struct rkisp1_info imx8mp_isp_info = {
-> 	.isrs = imx8mp_isp_isrs,
-> 	.isr_size = ARRAY_SIZE(imx8mp_isp_isrs),
-> 	.isp_ver = IMX8MP_V10,
->-	.features = RKISP1_FEATURE_RSZ_CROP,
->+	.features = RKISP1_FEATURE_RSZ_CROP
->+		  | RKISP1_FEATURE_MAIN_STRIDE,
-> };
->
-> static const struct of_device_id rkisp1_of_match[] = {
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
->index 1fc54ab22b6d..5c2195019723 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
->@@ -1013,6 +1013,15 @@
-> #define RKISP1_CIF_MI_SP_CB_BASE_AD_INIT2	(RKISP1_CIF_MI_BASE + 0x00000140)
-> #define RKISP1_CIF_MI_SP_CR_BASE_AD_INIT2	(RKISP1_CIF_MI_BASE + 0x00000144)
-> #define RKISP1_CIF_MI_XTD_FORMAT_CTRL		(RKISP1_CIF_MI_BASE + 0x00000148)
->+#define RKISP1_CIF_MI_MP_HANDSHAKE_0		(RKISP1_CIF_MI_BASE + 0x0000014C)
->+#define RKISP1_CIF_MI_MP_Y_LLENGTH		(RKISP1_CIF_MI_BASE + 0x00000150)
->+#define RKISP1_CIF_MI_MP_Y_SLICE_OFFSET		(RKISP1_CIF_MI_BASE + 0x00000154)
->+#define RKISP1_CIF_MI_MP_C_SLICE_OFFSET		(RKISP1_CIF_MI_BASE + 0x00000158)
->+#define RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT	(RKISP1_CIF_MI_BASE + 0x0000015C)
->+#define RKISP1_CIF_MI_MP_OUTPUT_FIFO_SIZE	(RKISP1_CIF_MI_BASE + 0x00000160)
->+#define RKISP1_CIF_MI_MP_Y_PIC_WIDTH		(RKISP1_CIF_MI_BASE + 0x00000164)
->+#define RKISP1_CIF_MI_MP_Y_PIC_HEIGHT		(RKISP1_CIF_MI_BASE + 0x00000168)
->+#define RKISP1_CIF_MI_MP_Y_PIC_SIZE		(RKISP1_CIF_MI_BASE + 0x0000016C)
->
-> #define RKISP1_CIF_SMIA_BASE			0x00001A00
-> #define RKISP1_CIF_SMIA_CTRL			(RKISP1_CIF_SMIA_BASE + 0x00000000)
+> /* VI_CCL */
+> #define RKISP1_CIF_CCL_CIF_CLK_DIS			BIT(2)
 >-- 
 >Regards,
 >
