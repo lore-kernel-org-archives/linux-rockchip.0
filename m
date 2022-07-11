@@ -4,56 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2E55C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 08:21:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDDDDC43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 09:54:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ISbSto7/9mR2YQnzv3rK2/5mAwHsr1JFvcxPYsG7Iz8=; b=mbaz13Z0b01DFr
-	6KXvL7HRRIJrgRiod27wInY9MIL7Ps6R2vMmdQdlEjMALQhr3BBwJAHqv4kvd1zPgMw0EgEbbjf55
-	wvyPFvu5rCbhTLPYkleliIsDq3LidNfsMeVFO78tZkJ74l6Mk5KgPtAILWKJ4L+ADmNEMxd+Kf930
-	RFSEADqPjjGHQzqLgpzHwsVPPxvLGBEPTxLFXrh67yRk+A4ZZurB6Cc3bBTW5ou7MVI0XzrogQL2k
-	bwWEQ55tE2Anc6gOo9HNKHJbRF3wpiZrMMVgdzC0Ks9xB/M0f5h6Xd97pu9D/ucofAT4gkGwQGnYD
-	EKJIl52pmH4/+wkhmf6Q==;
+	List-Owner; bh=JdLGIUfRD8ntHTTdSr9h6ibtJkwpU5NlebNGcIIata4=; b=qY/X5XapPWHn3v
+	jB/0+vQ2Zmtuuf4C6X4h/THV3g5MtYZU/jeqzK5L9iuwxqPjZqQCLI1p58VxmGdtia7E2uc+l9KEk
+	XJjGxCAXW8JRMEj0Hw8yqf4VNOyFdXePcTy5JczVaBDCSLzoAE8PmMnNUpDBpw4KPxjxMsA/RpPLM
+	lntYPA0tkr6aIYUc0vV0ssomBw9E2WbdbzAiAotH43/CXGeHIzpP5dfaEv9HGrBkm0ptjV+MCG8Gz
+	a7XwBD31Hv6/EYzK8DccbGHbctxWUfLQQ5XGNQPGQkYOcK9YI4N4tvcNCJLKBVNTGXnmRtheOthxK
+	DERKVciCWW7+gcHpBWRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAofE-00HAV6-HW; Mon, 11 Jul 2022 08:21:08 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1oAq78-000OIU-JF; Mon, 11 Jul 2022 09:54:02 +0000
+Received: from comms.puri.sm ([159.203.221.185])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAofA-00HAQh-Uz
-	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 08:21:08 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 3BB18326;
-	Mon, 11 Jul 2022 10:21:00 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657527660;
-	bh=qrXuRQPfNfuf9kF3ryytF8skRW3+YUk0aHcam+Ep8Yg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gxXkPeW+Sgl5VjsRT+YtJXwXKFk8rW472bxsUWh1Hwx3g1qeKkefDCSCmVMN8A5Tj
-	 kegzEQuFIzWQa3jaXNumcgt27anynPMBMrPyZSQwe81+r46jbufYEbH3VVGYC70pMW
-	 y3lK74dr0riin+MkVDiMmbGXF2p96OAosCfCvWTs=
-Date: Mon, 11 Jul 2022 11:20:32 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	Heiko Stuebner <heiko@sntech.de>,
-	Helen Koike <helen.koike@collabora.com>,
-	Paul Elder <paul.elder@ideasonboard.com>
-Subject: Re: [PATCH v2 39/55] media: rkisp1: csi: Implement a V4L2 subdev for
- the CSI receiver
-Message-ID: <YsvdUDs/li/2/Agv@pendragon.ideasonboard.com>
-References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
- <20220630230713.10580-40-laurent.pinchart@ideasonboard.com>
- <20220711012212.kfppk5oundhrhou4@guri>
+	id 1oAq6u-000O0S-C4; Mon, 11 Jul 2022 09:53:50 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by comms.puri.sm (Postfix) with ESMTP id 3D626E008C;
+	Mon, 11 Jul 2022 02:53:48 -0700 (PDT)
+Received: from comms.puri.sm ([127.0.0.1])
+	by localhost (comms.puri.sm [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hUIrTT-BYtUY; Mon, 11 Jul 2022 02:53:47 -0700 (PDT)
+Message-ID: <2f25ea965289f6fdcd5fc0f12f445b174637ce74.camel@puri.sm>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=puri.sm; s=comms;
+	t=1657533227; bh=TVz04yqNH5FrtGrIWTgZUwVoMq0XrHut9P4bMsniJm4=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=PS1GhNTKykKIt32KKaeweI2mhIJoMfnPfodyUGODFOtiMfFATwu3z94XgaugNch4N
+	 ujKrehvq4hvjiEn0orUwecpWXIwsRUhv+rbIlEMQrHW+SJHhn1e35DwkzL7GNRi0iv
+	 WZQkVqrW1ykNxIsD9u+0Fvf23HcfRg+zNjEmkDyxajivnqr9LMfF5vQ/cRa4FJ8lCL
+	 QMzZCgtktwREXvmIRq6TezSxXtqAN6j2ipiLgHP9RzpjwnttruHGsrw9vRY6HhuFg1
+	 gViWkOPmo3T+udFtU+9iotZ337GijJqTM2w7NEWMj23Og3ByECWsjDnLKXQAqPaXjH
+	 Lg0DsWS/Y7Ddg==
+Subject: Re: [PATCH V4 07/11] arm64: dts: imx8mq: Enable both G1 and G2
+ VPU's with vpu-blk-ctrl
+From: Martin Kepplinger <martin.kepplinger@puri.sm>
+To: Lucas Stach <l.stach@pengutronix.de>, Adam Ford <aford173@gmail.com>, 
+	linux-media@vger.kernel.org
+Cc: aford@beaconembedded.com, cphealy@gmail.com, kernel test robot
+ <lkp@intel.com>,  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Philipp
+ Zabel <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh@kernel.org>, Shawn Guo <shawnguo@kernel.org>, Sascha
+ Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team
+ <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, NXP Linux Team
+ <linux-imx@nxp.com>,  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-staging@lists.linux.dev
+Date: Mon, 11 Jul 2022 11:53:40 +0200
+In-Reply-To: <17c5ef22479cfea3f43dce1885f6613f1bef8064.camel@pengutronix.de>
+References: <20220125171129.472775-1-aford173@gmail.com>
+	 <20220125171129.472775-8-aford173@gmail.com>
+	 <d6c5c5663f8ae904d409240063295cf516e17dd1.camel@puri.sm>
+	 <4b958892ba788a0e9e73a9135c305aacbe33294d.camel@pengutronix.de>
+	 <c11a58ecc5da2e206fc2b942980223a04a103f19.camel@puri.sm>
+	 <17c5ef22479cfea3f43dce1885f6613f1bef8064.camel@pengutronix.de>
+User-Agent: Evolution 3.38.3-1 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220711012212.kfppk5oundhrhou4@guri>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_012105_395737_C995F826 
-X-CRM114-Status: GOOD (  38.04  )
+X-CRM114-CacheID: sfid-20220711_025348_448755_B9E6429C 
+X-CRM114-Status: GOOD (  36.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,458 +79,237 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dafna,
-
-On Mon, Jul 11, 2022 at 04:22:12AM +0300, Dafna Hirschfeld wrote:
-> On 01.07.2022 02:06, Laurent Pinchart wrote:
-> > From: Paul Elder <paul.elder@ideasonboard.com>
-> > 
-> > The CSI receiver is a component separate from the ISP or the resizers.
-> > It is actually optional, not all device model include a CSI receiver. On
-> > some SoCs CSI-2 support can be provided through an external CSI-2
-> > receiver, connected to the ISP's parallel input.
-> > 
-> > To support those use cases, create a V4L2 subdev to model the CSI
-> > receiver. It will allow the driver to handle both internal and external
-> > CSI receivers the same way.
-> > 
-> > The next commit will plumb the CSI subdev to the rest of the driver,
-> > replacing direct function calls.
-> > 
-> > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > ---
-> > Changes since v1:
-> > 
-> > - Rename RKISP1_CSI_PAD_MAX to RKISP1_CSI_PAD_NUM
-> > - Simplify format propagation
-> > - Fix usage of uninitialized variables
-> > - White space fixes
-> > ---
-> >  .../platform/rockchip/rkisp1/rkisp1-common.h  |  17 ++
-> >  .../platform/rockchip/rkisp1/rkisp1-csi.c     | 288 ++++++++++++++++++
-> >  .../platform/rockchip/rkisp1/rkisp1-csi.h     |   4 +
-> >  .../platform/rockchip/rkisp1/rkisp1-dev.c     |   5 +
-> >  4 files changed, 314 insertions(+)
-> > 
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > index 5301461d3ea3..84832e1367ff 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> > @@ -68,6 +68,13 @@ enum rkisp1_rsz_pad {
-> >  	RKISP1_RSZ_PAD_MAX
-> >  };
-> > 
-> > +/* enum for the csi receiver pads */
-> > +enum rkisp1_csi_pad {
-> > +	RKISP1_CSI_PAD_SINK,
-> > +	RKISP1_CSI_PAD_SRC,
-> > +	RKISP1_CSI_PAD_NUM
-> > +};
-> > +
-> >  /* enum for the capture id */
-> >  enum rkisp1_stream_id {
-> >  	RKISP1_MAINPATH,
-> > @@ -141,11 +148,21 @@ struct rkisp1_sensor_async {
-> >   * @rkisp1: pointer to the rkisp1 device
-> >   * @dphy: a pointer to the phy
-> >   * @is_dphy_errctrl_disabled: if dphy errctrl is disabled (avoid endless interrupt)
-> > + * @sd: v4l2_subdev variable
-> > + * @pads: media pads
-> > + * @pad_cfg: configurations for the pads
-> > + * @ops_lock: a lock for the subdev ops
-> > + * @source: source in-use, set when starting streaming
-> >   */
-> >  struct rkisp1_csi {
-> >  	struct rkisp1_device *rkisp1;
-> >  	struct phy *dphy;
-> >  	bool is_dphy_errctrl_disabled;
-> > +	struct v4l2_subdev sd;
-> > +	struct media_pad pads[RKISP1_CSI_PAD_NUM];
-> > +	struct v4l2_subdev_pad_config pad_cfg[RKISP1_CSI_PAD_NUM];
-> > +	struct mutex ops_lock; /* serialize the subdevice ops */
-> > +	struct rkisp1_sensor_async *source;
-> >  };
-> > 
-> >  /*
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-> > index 81849c8e9c73..173a0550af5c 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.c
-> > @@ -15,10 +15,35 @@
-> >  #include <linux/phy/phy-mipi-dphy.h>
-> > 
-> >  #include <media/v4l2-ctrls.h>
-> > +#include <media/v4l2-fwnode.h>
-> > 
-> >  #include "rkisp1-common.h"
-> >  #include "rkisp1-csi.h"
-> > 
-> > +#define RKISP1_CSI_DEV_NAME	RKISP1_DRIVER_NAME "_csi"
-> > +
-> > +#define RKISP1_CSI_DEF_FMT	MEDIA_BUS_FMT_SRGGB10_1X10
-> > +
-> > +static inline struct rkisp1_csi *to_rkisp1_csi(struct v4l2_subdev *sd)
-> > +{
-> > +	return container_of(sd, struct rkisp1_csi, sd);
-> > +}
-> > +
-> > +static struct v4l2_mbus_framefmt *
-> > +rkisp1_csi_get_pad_fmt(struct rkisp1_csi *csi,
-> > +		       struct v4l2_subdev_state *sd_state,
-> > +		       unsigned int pad, u32 which)
-> > +{
-> > +	struct v4l2_subdev_state state = {
-> > +		.pads = csi->pad_cfg
-> > +	};
-> > +
-> > +	if (which == V4L2_SUBDEV_FORMAT_TRY)
-> > +		return v4l2_subdev_get_try_format(&csi->sd, sd_state, pad);
-> > +	else
-> > +		return v4l2_subdev_get_try_format(&csi->sd, &state, pad);
-> > +}
-> > +
-> >  static int rkisp1_csi_config(struct rkisp1_csi *csi,
-> >  			     const struct rkisp1_sensor_async *sensor)
-> >  {
-> > @@ -186,6 +211,269 @@ irqreturn_t rkisp1_csi_isr(int irq, void *ctx)
-> >  	return IRQ_HANDLED;
-> >  }
-> > 
-> > +/* ----------------------------------------------------------------------------
-> > + * Subdev pad operations
-> > + */
-> > +
-> > +static void rkisp1_csi_set_src_fmt(struct rkisp1_csi *csi,
-> > +				   struct v4l2_subdev_state *sd_state,
-> > +				   struct v4l2_mbus_framefmt *format,
-> > +				   unsigned int which)
-> > +{
-> > +	struct v4l2_mbus_framefmt *sink_fmt;
-> > +
-> > +	/* We don't set the src format directly; take it from the sink format */
-> > +	sink_fmt = rkisp1_csi_get_pad_fmt(csi, sd_state, RKISP1_CSI_PAD_SINK,
-> > +					  which);
-> > +
-> > +	*format = *sink_fmt;
-> > +}
-> > +
-> > +static void rkisp1_csi_set_sink_fmt(struct rkisp1_csi *csi,
-> > +				    struct v4l2_subdev_state *sd_state,
-> > +				    struct v4l2_mbus_framefmt *format,
-> > +				    unsigned int which)
-> > +{
-> > +	const struct rkisp1_mbus_info *mbus_info;
-> > +	struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
-> > +
-> > +	sink_fmt = rkisp1_csi_get_pad_fmt(csi, sd_state, RKISP1_CSI_PAD_SINK,
-> > +					  which);
-> > +	src_fmt = rkisp1_csi_get_pad_fmt(csi, sd_state, RKISP1_CSI_PAD_SRC,
-> > +					 which);
-> > +
-> > +	sink_fmt->code = format->code;
-> > +
-> > +	mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
-> > +	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SINK)) {
-> > +		sink_fmt->code = RKISP1_CSI_DEF_FMT;
-> > +		mbus_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
-> > +	}
-> > +
-> > +	sink_fmt->width = clamp_t(u32, format->width,
-> > +				  RKISP1_ISP_MIN_WIDTH,
-> > +				  RKISP1_ISP_MAX_WIDTH);
-> > +	sink_fmt->height = clamp_t(u32, format->height,
-> > +				   RKISP1_ISP_MIN_HEIGHT,
-> > +				   RKISP1_ISP_MAX_HEIGHT);
-> > +
-> > +	/* Propagate to source pad */
-> > +	*src_fmt = *sink_fmt;
-> > +
-> > +	*format = *sink_fmt;
-> > +}
-> > +
-> > +static int rkisp1_csi_enum_mbus_code(struct v4l2_subdev *sd,
-> > +				     struct v4l2_subdev_state *sd_state,
-> > +				     struct v4l2_subdev_mbus_code_enum *code)
-> > +{
-> > +	unsigned int i;
-> > +	int pos = 0;
-> > +
-> > +	for (i = 0; ; i++) {
-> > +		const struct rkisp1_mbus_info *fmt =
-> > +			rkisp1_mbus_info_get_by_index(i);
-> > +
-> > +		if (!fmt)
-> > +			return -EINVAL;
-> > +
-> > +		if (fmt->direction & RKISP1_ISP_SD_SINK)
-> > +			pos++;
-> > +
-> > +		if (code->index == pos - 1) {
-> > +			code->code = fmt->mbus_code;
-> > +			return 0;
-> > +		}
-> > +	}
-> > +
-> > +	return -EINVAL;
-> > +}
-> > +
-> > +static int rkisp1_csi_init_config(struct v4l2_subdev *sd,
-> > +				  struct v4l2_subdev_state *sd_state)
-> > +{
-> > +	struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
-> > +
-> > +	sink_fmt = v4l2_subdev_get_try_format(sd, sd_state,
-> > +					      RKISP1_CSI_PAD_SINK);
-> > +	src_fmt = v4l2_subdev_get_try_format(sd, sd_state,
-> > +					     RKISP1_CSI_PAD_SRC);
-> > +
-> > +	sink_fmt->width = RKISP1_DEFAULT_WIDTH;
-> > +	sink_fmt->height = RKISP1_DEFAULT_HEIGHT;
-> > +	sink_fmt->field = V4L2_FIELD_NONE;
-> > +	sink_fmt->code = RKISP1_CSI_DEF_FMT;
-> > +
-> > +	*src_fmt = *sink_fmt;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int rkisp1_csi_get_fmt(struct v4l2_subdev *sd,
-> > +			      struct v4l2_subdev_state *sd_state,
-> > +			      struct v4l2_subdev_format *fmt)
-> > +{
-> > +	struct rkisp1_csi *csi = to_rkisp1_csi(sd);
-> > +
-> > +	mutex_lock(&csi->ops_lock);
-> > +	fmt->format = *rkisp1_csi_get_pad_fmt(csi, sd_state, fmt->pad,
-> > +					      fmt->which);
-> > +	mutex_unlock(&csi->ops_lock);
-> > +	return 0;
-> > +}
-> > +
-> > +static int rkisp1_csi_set_fmt(struct v4l2_subdev *sd,
-> > +			      struct v4l2_subdev_state *sd_state,
-> > +			      struct v4l2_subdev_format *fmt)
-> > +{
-> > +	struct rkisp1_csi *csi = to_rkisp1_csi(sd);
-> > +
-> > +	mutex_lock(&csi->ops_lock);
-> > +	if (fmt->pad == RKISP1_CSI_PAD_SINK)
-> > +		rkisp1_csi_set_sink_fmt(csi, sd_state, &fmt->format,
-> > +					fmt->which);
-> > +	else
-> > +		rkisp1_csi_set_src_fmt(csi, sd_state, &fmt->format,
-> > +				       fmt->which);
-> > +
-> > +	mutex_unlock(&csi->ops_lock);
-> > +	return 0;
-> > +}
-> > +
-> > +/* ----------------------------------------------------------------------------
-> > + * Subdev video operations
-> > + */
-> > +
-> > +static int rkisp1_csi_s_stream(struct v4l2_subdev *sd, int enable)
-> > +{
-> > +	struct rkisp1_csi *csi = to_rkisp1_csi(sd);
-> > +	struct rkisp1_device *rkisp1 = csi->rkisp1;
-> > +	struct media_pad *source_pad;
-> > +	struct v4l2_subdev *source;
-> > +	int ret;
-> > +
-> > +	if (!enable) {
-> > +		v4l2_subdev_call(csi->source->sd, video, s_stream,
-> > +				 false);
-> > +
-> > +		rkisp1_csi_stop(csi);
-> > +
-> > +		return 0;
-> > +	}
-> > +
-> > +	source_pad = media_entity_remote_source_pad_unique(&sd->entity);
-> > +	if (IS_ERR(source_pad)) {
-> > +		dev_dbg(rkisp1->dev, "Failed to get source for CSI: %d\n",
-> > +			IS_ERR(source_pad));
-> 
-> s/IS_ERR/PTR_ERR/
-
-Oops. Fixed.
-
-> > +		return -EPIPE;
-> > +	}
-> > +
-> > +	source = media_entity_to_v4l2_subdev(source_pad->entity);
-> > +	if (!source) {
-> > +		/* This should really not happen, so is not worth a message. */
-> > +		return -EPIPE;
-> > +	}
-> > +
-> > +	csi->source = container_of(source->asd, struct rkisp1_sensor_async,
-> > +				   asd);
-> > +
-> > +	if (csi->source->mbus_type != V4L2_MBUS_CSI2_DPHY)
-> > +		return -EINVAL;
-> 
-> I would set here csi->source to NULL,
-
-OK.
-
-> and shouldn't setting it be inside the lock?
-
-csi->source is only accessed by this function, so I don't think that's
-needed.
-
-> > +	mutex_lock(&csi->ops_lock);
-> > +	ret = rkisp1_csi_start(csi, csi->source);
-> > +	mutex_unlock(&csi->ops_lock);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	v4l2_subdev_call(csi->source->sd, video, s_stream, true);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +/* ----------------------------------------------------------------------------
-> > + * Registration
-> > + */
-> > +
-> > +static const struct media_entity_operations rkisp1_csi_media_ops = {
-> > +	.link_validate = v4l2_subdev_link_validate,
-> > +};
-> > +
-> > +static const struct v4l2_subdev_video_ops rkisp1_csi_video_ops = {
-> > +	.s_stream = rkisp1_csi_s_stream,
-> > +};
-> > +
-> > +static const struct v4l2_subdev_pad_ops rkisp1_csi_pad_ops = {
-> > +	.enum_mbus_code = rkisp1_csi_enum_mbus_code,
-> > +	.init_cfg = rkisp1_csi_init_config,
-> > +	.get_fmt = rkisp1_csi_get_fmt,
-> > +	.set_fmt = rkisp1_csi_set_fmt,
-> > +};
-> > +
-> > +static const struct v4l2_subdev_ops rkisp1_csi_ops = {
-> > +	.video = &rkisp1_csi_video_ops,
-> > +	.pad = &rkisp1_csi_pad_ops,
-> > +};
-> > +
-> > +int rkisp1_csi_register(struct rkisp1_device *rkisp1)
-> > +{
-> > +	struct rkisp1_csi *csi = &rkisp1->csi;
-> > +	struct v4l2_subdev_state state = {};
-> > +	struct media_pad *pads;
-> > +	struct v4l2_subdev *sd;
-> > +	int ret;
-> > +
-> > +	csi->rkisp1 = rkisp1;
-> > +	mutex_init(&csi->ops_lock);
-> > +
-> > +	sd = &csi->sd;
-> > +	v4l2_subdev_init(sd, &rkisp1_csi_ops);
-> > +	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE;
-> > +	sd->entity.ops = &rkisp1_csi_media_ops;
-> > +	sd->entity.function = MEDIA_ENT_F_VID_IF_BRIDGE;
-> > +	sd->owner = THIS_MODULE;
-> > +	strscpy(sd->name, RKISP1_CSI_DEV_NAME, sizeof(sd->name));
-> > +
-> > +	pads = csi->pads;
-> > +	pads[RKISP1_CSI_PAD_SINK].flags = MEDIA_PAD_FL_SINK |
-> > +					  MEDIA_PAD_FL_MUST_CONNECT;
-> > +	pads[RKISP1_CSI_PAD_SRC].flags = MEDIA_PAD_FL_SOURCE |
-> > +					 MEDIA_PAD_FL_MUST_CONNECT;
-> > +
-> > +	ret = media_entity_pads_init(&sd->entity, RKISP1_CSI_PAD_NUM, pads);
-> > +	if (ret)
-> > +		goto error;
-> > +
-> > +	state.pads = csi->pad_cfg;
-> > +	rkisp1_csi_init_config(sd, &state);
-> > +
-> > +	ret = v4l2_device_register_subdev(&csi->rkisp1->v4l2_dev, sd);
-> > +	if (ret) {
-> > +		dev_err(sd->dev, "Failed to register csi receiver subdev\n");
-> > +		goto error;
-> > +	}
-> > +
-> > +	return 0;
-> > +
-> > +error:
-> > +	media_entity_cleanup(&sd->entity);
-> > +	mutex_destroy(&csi->ops_lock);
-> > +	csi->rkisp1 = NULL;
-> > +	return ret;
-> > +}
-> > +
-> > +void rkisp1_csi_unregister(struct rkisp1_device *rkisp1)
-> > +{
-> > +	struct rkisp1_csi *csi = &rkisp1->csi;
-> > +
-> > +	if (!csi->rkisp1)
-> > +		return;
-> > +
-> > +	v4l2_device_unregister_subdev(&csi->sd);
-> > +	media_entity_cleanup(&csi->sd.entity);
-> > +	mutex_destroy(&csi->ops_lock);
-> > +}
-> > +
-> >  int rkisp1_csi_init(struct rkisp1_device *rkisp1)
-> >  {
-> >  	struct rkisp1_csi *csi = &rkisp1->csi;
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
-> > index 97ce7e7959ab..ddf8e5e08f55 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-csi.h
-> > @@ -13,10 +13,14 @@
-> > 
-> >  struct rkisp1_device;
-> >  struct rkisp1_sensor_async;
-> > +struct v4l2_subdev;
-> > 
-> >  int rkisp1_csi_init(struct rkisp1_device *rkisp1);
-> >  void rkisp1_csi_cleanup(struct rkisp1_device *rkisp1);
-> > 
-> > +int rkisp1_csi_register(struct rkisp1_device *rkisp1);
-> > +void rkisp1_csi_unregister(struct rkisp1_device *rkisp1);
-> > +
-> >  int rkisp1_csi_start(struct rkisp1_csi *csi,
-> >  		     const struct rkisp1_sensor_async *sensor);
-> >  void rkisp1_csi_stop(struct rkisp1_csi *csi);
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > index 2c441665c017..5428e19e818f 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > @@ -324,6 +324,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
-> > 
-> >  static void rkisp1_entities_unregister(struct rkisp1_device *rkisp1)
-> >  {
-> > +	rkisp1_csi_unregister(rkisp1);
-> >  	rkisp1_params_unregister(rkisp1);
-> >  	rkisp1_stats_unregister(rkisp1);
-> >  	rkisp1_capture_devs_unregister(rkisp1);
-> > @@ -355,6 +356,10 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
-> >  	if (ret)
-> >  		goto error;
-> > 
-> > +	ret = rkisp1_csi_register(rkisp1);
-> > +	if (ret)
-> > +		goto error;
-> > +
-> >  	ret = rkisp1_create_links(rkisp1);
-> >  	if (ret)
-> >  		goto error;
-
--- 
-Regards,
-
-Laurent Pinchart
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRGllbnN0YWcsIGRlbSAyNi4wNC4yMDIyIHVtIDEyOjQzICswMjAwIHNjaHJpZWIgTHVjYXMg
+U3RhY2g6Cj4gQW0gRGllbnN0YWcsIGRlbSAyNi4wNC4yMDIyIHVtIDA5OjM4ICswMjAwIHNjaHJp
+ZWIgTWFydGluIEtlcHBsaW5nZXI6Cj4gPiBBbSBNb250YWcsIGRlbSAyNS4wNC4yMDIyIHVtIDE3
+OjM0ICswMjAwIHNjaHJpZWIgTHVjYXMgU3RhY2g6Cj4gPiA+IEhpIE1hcnRpbiwKPiA+ID4gCj4g
+PiA+IEFtIE1vbnRhZywgZGVtIDI1LjA0LjIwMjIgdW0gMTc6MjIgKzAyMDAgc2NocmllYiBNYXJ0
+aW4KPiA+ID4gS2VwcGxpbmdlcjoKPiA+ID4gPiBBbSBEaWVuc3RhZywgZGVtIDI1LjAxLjIwMjIg
+dW0gMTE6MTEgLTA2MDAgc2NocmllYiBBZGFtIEZvcmQ6Cj4gPiA+ID4gPiBXaXRoIHRoZSBIYW50
+cm8gRzEgYW5kIEcyIG5vdyBzZXR1cCB0byBydW4gaW5kZXBlbmRlbnRseSwKPiA+ID4gPiA+IHVw
+ZGF0ZQo+ID4gPiA+ID4gdGhlIGRldmljZSB0cmVlIHRvIGFsbG93IGJvdGggdG8gb3BlcmF0ZS7C
+oCBUaGlzIHJlcXVpcmVzIHRoZQo+ID4gPiA+ID4gdnB1LWJsay1jdHJsIG5vZGUgdG8gYmUgY29u
+ZmlndXJlZC7CoCBTaW5jZSB2cHUtYmxrLWN0cmwgbmVlZHMKPiA+ID4gPiA+IGNlcnRhaW4gY2xv
+Y2sgZW5hYmxlZCB0byBoYW5kbGUgdGhlIGdhdGluZyBvZiB0aGUgRzEgYW5kIEcyCj4gPiA+ID4g
+PiBmdXNlcywgdGhlIGNsb2NrLXBhcmVudHMgYW5kIGNsb2NrLXJhdGVzIGZvciB0aGUgdmFyaW91
+cwo+ID4gPiA+ID4gVlBVJ3MKPiA+ID4gPiA+IHRvIGJlIG1vdmVkIGludG8gdGhlIHBnY192cHUg
+YmVjYXVzZSB0aGV5IGNhbm5vdCBnZXQgcmUtCj4gPiA+ID4gPiBwYXJlbnRlZAo+ID4gPiA+ID4g
+b25jZSBlbmFibGVkLCBhbmQgdGhlIHBnY192cHUgaXMgdGhlIGhpZ2hlc3QgaW4gdGhlIGNoYWlu
+Lgo+ID4gPiA+ID4gCj4gPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBBZGFtIEZvcmQgPGFmb3JkMTcz
+QGdtYWlsLmNvbT4KPiA+ID4gPiA+IFJlcG9ydGVkLWJ5OiBrZXJuZWwgdGVzdCByb2JvdCA8bGtw
+QGludGVsLmNvbT4KPiA+ID4gPiA+IFJldmlld2VkLWJ5OiBFemVxdWllbCBHYXJjaWEgPGV6ZXF1
+aWVsQHZhbmd1YXJkaWFzdXIuY29tLmFyPgo+ID4gPiA+ID4gCj4gPiA+ID4gPiBkaWZmIC0tZ2l0
+IGEvYXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2NhbGUvaW14OG1xLmR0c2kKPiA+ID4gPiA+IGIv
+YXJjaC9hcm02NC9ib290L2R0cy9mcmVlc2NhbGUvaW14OG1xLmR0c2kKPiA+ID4gPiA+IGluZGV4
+IDJkZjI1MTBkMDExOC4uNTQ5YjI0NDBmNTVkIDEwMDY0NAo+ID4gPiA+ID4gLS0tIGEvYXJjaC9h
+cm02NC9ib290L2R0cy9mcmVlc2NhbGUvaW14OG1xLmR0c2kKPiA+ID4gPiA+ICsrKyBiL2FyY2gv
+YXJtNjQvYm9vdC9kdHMvZnJlZXNjYWxlL2lteDhtcS5kdHNpCj4gPiA+ID4gPiBAQCAtNzM3LDcg
+KzczNywyMSBAQCBwZ2NfZ3B1OiBwb3dlci1kb21haW5ANSB7Cj4gPiA+ID4gPiDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoHBnY192cHU6IHBvd2VyLQo+ID4gPiA+ID4gZG9tYWluQDYgewo+ID4gPiA+
+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgI3Bvd2VyLQo+ID4gPiA+
+ID4gZG9tYWluLQo+ID4gPiA+ID4gY2VsbHMgPQo+ID4gPiA+ID4gPDA+Owo+ID4gPiA+ID4gwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmVnID0KPiA+ID4gPiA+IDxJTVg4
+TV9QT1dFUl9ET01BSU5fVlBVPjsKPiA+ID4gPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgY2xvY2tzID0KPiA+ID4gPiA+IDwmY2xrCj4gPiA+ID4gPiBJTVg4TVFfQ0xL
+X1ZQVV9ERUNfUk9PVD47Cj4gPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoGNsb2NrcyA9Cj4gPiA+ID4gPiA8JmNsawo+ID4gPiA+ID4gSU1YOE1RX0NMS19WUFVf
+REVDX1JPT1Q+LAo+ID4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgCj4gPiA+ID4gPiA8JmNsawo+ID4gPiA+ID4gSU1YOE1RX0NMS19W
+UFVfRzFfUk9PVD4sCj4gPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAKPiA+ID4gPiA+IDwmY2xrCj4gPiA+ID4gPiBJTVg4TVFfQ0xL
+X1ZQVV9HMl9ST09UPjsKPiA+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgYXNzaWduZWQtCj4gPiA+ID4gPiBjbG9ja3MgPQo+ID4gPiA+ID4gPCZjbGsgSU1YOE1R
+X0NMS19WUFVfRzE+LAo+ID4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoAo+ID4gPiA+ID4gwqDCoMKgwqAKPiA+ID4g
+PiA+IDwmY2xrIElNWDhNUV9DTEtfVlBVX0cyPiwKPiA+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAKPiA+ID4gPiA+
+IMKgwqDCoMKgCj4gPiA+ID4gPiA8JmNsayBJTVg4TVFfQ0xLX1ZQVV9CVVM+LAo+ID4gPiA+ID4g
+K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoAo+ID4gPiA+ID4gwqDCoMKgwqAKPiA+ID4gPiA+IDwmY2xrIElNWDhNUV9WUFVfUExM
+X0JZUEFTUz47Cj4gPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oGFzc2lnbmVkLQo+ID4gPiA+ID4gY2xvY2stCj4gPiA+ID4gPiBwYXJlbnRzID0gPCZjbGsgSU1Y
+OE1RX1ZQVV9QTExfT1VUPiwKPiA+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAKPiA+ID4gPiA+IMKgwqDCoMKgCj4g
+PiA+ID4gPiDCoMKgwqDCoAo+ID4gPiA+ID4gwqDCoMKgIDwmY2xrIElNWDhNUV9WUFVfUExMX09V
+VD4sCj4gPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgCj4gPiA+ID4gPiDCoMKgwqDCoAo+ID4gPiA+ID4gwqDCoMKg
+wqAKPiA+ID4gPiA+IMKgwqDCoCA8JmNsayBJTVg4TVFfU1lTMV9QTExfODAwTT4sCj4gPiA+ID4g
+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgCj4gPiA+ID4gPiDCoMKgwqDCoAo+ID4gPiA+ID4gwqDCoMKgwqAKPiA+ID4gPiA+
+IMKgwqDCoCA8JmNsayBJTVg4TVFfVlBVX1BMTD47Cj4gPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoGFzc2lnbmVkLQo+ID4gPiA+ID4gY2xvY2stCj4gPiA+ID4g
+PiByYXRlcwo+ID4gPiA+ID4gPSA8NjAwMDAwMDAwPiwKPiA+ID4gPiA+ICvCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAKPiA+ID4g
+PiA+IMKgwqDCoMKgCj4gPiA+ID4gPiDCoMKgwqDCoAo+ID4gPiA+ID4gwqAgPDYwMDAwMDAwMD4s
+Cj4gPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgCj4gPiA+ID4gPiDCoMKgwqDCoAo+ID4gPiA+ID4gwqDCoMKgwqAK
+PiA+ID4gPiA+IMKgIDw4MDAwMDAwMDA+LAo+ID4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoAo+ID4gPiA+ID4gwqDC
+oMKgwqAKPiA+ID4gPiA+IMKgwqDCoMKgCj4gPiA+ID4gPiDCoCA8MD47Cj4gPiA+ID4gPiDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoH07Cj4gPiA+ID4gPiDCoAo+ID4gPiA+ID4gwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqBwZ2NfZGlzcDoKPiA+ID4gPiA+IHBvd2VyLWRvbWFpbkA3Cj4gPiA+ID4gPiB7
+Cj4gPiA+ID4gPiBAQCAtMTQ1NywzMCArMTQ3MSwzMSBAQCB1c2IzX3BoeTE6IHVzYi1waHlAMzgy
+ZjAwNDAgewo+ID4gPiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgc3RhdHVzID0gImRpc2FibGVkIjsKPiA+ID4gPiA+IMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgfTsKPiA+ID4gPiA+IMKgCj4gPiA+ID4gPiAtwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgdnB1OiB2aWRlby1jb2RlY0AzODMwMDAwMCB7Cj4gPiA+ID4gPiAtwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGNvbXBhdGlibGUgPSAi
+bnhwLGlteDhtcS12cHUiOwo+ID4gPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqByZWcgPSA8MHgzODMwMDAwMCAweDEwMDAwPiwKPiA+ID4gPiA+IC3C
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8
+MHgzODMxMDAwMCAweDEwMDAwPiwKPiA+ID4gPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8MHgzODMyMDAwMCAweDEwMDAwPjsKPiA+
+ID4gPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcmVn
+LW5hbWVzID0gImcxIiwgImcyIiwgImN0cmwiOwo+ID4gPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpbnRlcnJ1cHRzID0gPEdJQ19TUEkgNwo+ID4g
+PiA+ID4gSVJRX1RZUEVfTEVWRUxfSElHSD4sCj4gPiA+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8R0lD
+X1NQSSA4Cj4gPiA+ID4gPiBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPiA+ID4gPiA+IC3CoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgaW50ZXJydXB0LW5hbWVzID0g
+ImcxIiwgImcyIjsKPiA+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB2cHVf
+ZzE6IHZpZGVvLWNvZGVjQDM4MzAwMDAwIHsKPiA+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgY29tcGF0aWJsZSA9ICJueHAsaW14OG1xLXZwdS1n
+MSI7Cj4gPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoHJlZyA9IDwweDM4MzAwMDAwIDB4MTAwMDA+Owo+ID4gPiA+ID4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpbnRlcnJ1cHRzID0gPEdJQ19TUEkgNwo+
+ID4gPiA+ID4gSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGNsb2NrcyA9IDwmY2xrCj4gPiA+ID4gPiBJ
+TVg4TVFfQ0xLX1ZQVV9HMV9ST09UPjsKPiA+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcG93ZXItZG9tYWlucyA9IDwmdnB1X2Jsa19jdHJsCj4g
+PiA+ID4gPiBJTVg4TVFfVlBVQkxLX1BEX0cxPjsKPiA+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqB9Owo+ID4gPiA+ID4gKwo+ID4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoHZwdV9nMjogdmlkZW8tY29kZWNAMzgzMTAwMDAgewo+ID4gPiA+ID4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBjb21wYXRpYmxlID0g
+Im54cCxpbXg4bXEtdnB1LWcyIjsKPiA+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgcmVnID0gPDB4MzgzMTAwMDAgMHgxMDAwMD47Cj4gPiA+ID4g
+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGludGVycnVw
+dHMgPSA8R0lDX1NQSSA4Cj4gPiA+ID4gPiBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPiA+ID4gPiA+
+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgY2xvY2tzID0g
+PCZjbGsKPiA+ID4gPiA+IElNWDhNUV9DTEtfVlBVX0cyX1JPT1Q+Owo+ID4gPiA+ID4gK8KgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBwb3dlci1kb21haW5zID0g
+PCZ2cHVfYmxrX2N0cmwKPiA+ID4gPiA+IElNWDhNUV9WUFVCTEtfUERfRzI+Owo+ID4gPiA+ID4g
+K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoH07Cj4gPiA+ID4gPiArCj4gPiA+ID4gPiAr
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgdnB1X2Jsa19jdHJsOiBibGstY3RybEAzODMy
+MDAwMCB7Cj4gPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoGNvbXBhdGlibGUgPSAiZnNsLGlteDhtcS12cHUtYmxrLQo+ID4gPiA+ID4gY3RybCI7
+Cj4gPiA+ID4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oHJlZyA9IDwweDM4MzIwMDAwIDB4MTAwPjsKPiA+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcG93ZXItZG9tYWlucyA9IDwmcGdjX3ZwdT4sCj4g
+PiA+ID4gPiA8JnBnY192cHU+LAo+ID4gPiA+ID4gPCZwZ2NfdnB1PjsKPiA+ID4gPiA+ICvCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgcG93ZXItZG9tYWluLW5h
+bWVzID0gImJ1cyIsICJnMSIsCj4gPiA+ID4gPiAiZzIiOwo+ID4gPiA+ID4gwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgY2xvY2tzID0gPCZjbGsKPiA+ID4g
+PiA+IElNWDhNUV9DTEtfVlBVX0cxX1JPT1Q+LAo+ID4gPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrCj4gPiA+
+ID4gPiBJTVg4TVFfQ0xLX1ZQVV9HMl9ST09UPiwKPiA+ID4gPiA+IC3CoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8JmNsawo+ID4g
+PiA+ID4gSU1YOE1RX0NMS19WUFVfREVDX1JPT1Q+Owo+ID4gPiA+ID4gLcKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBjbG9jay1uYW1lcyA9ICJnMSIsICJnMiIs
+ICJidXMiOwo+ID4gPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqBhc3NpZ25lZC1jbG9ja3MgPSA8JmNsawo+ID4gPiA+ID4gSU1YOE1RX0NMS19WUFVf
+RzE+LAo+ID4gPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrCj4gPiA+ID4gPiBJ
+TVg4TVFfQ0xLX1ZQVV9HMj4sCj4gPiA+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPCZj
+bGsKPiA+ID4gPiA+IElNWDhNUV9DTEtfVlBVX0JVUz4sCj4gPiA+ID4gPiAtwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqAgPCZjbGsKPiA+ID4gPiA+IElNWDhNUV9WUFVfUExMX0JZUEFTUz47Cj4gPiA+
+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGFzc2ln
+bmVkLWNsb2NrLXBhcmVudHMgPSA8JmNsawo+ID4gPiA+ID4gSU1YOE1RX1ZQVV9QTExfT1VUPiwK
+PiA+ID4gPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrCj4g
+PiA+ID4gPiBJTVg4TVFfVlBVX1BMTF9PVVQ+LAo+ID4gPiA+ID4gLcKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgPCZjbGsKPiA+ID4gPiA+IElNWDhNUV9TWVMxX1BMTF84MDBN
+PiwKPiA+ID4gPiA+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xr
+Cj4gPiA+ID4gPiBJTVg4TVFfVlBVX1BMTD47Cj4gPiA+ID4gPiAtwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGFzc2lnbmVkLWNsb2NrLXJhdGVzID0gPDYwMDAw
+MDAwMD4sCj4gPiA+ID4gPiA8NjAwMDAwMDAwPiwKPiA+ID4gPiA+IC3CoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgPDgwMDAwMDAwMD4sCj4gPiA+ID4gPiA8MD47Cj4gPiA+ID4gPiAt
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoHBvd2VyLWRvbWFp
+bnMgPSA8JnBnY192cHU+Owo+ID4gPiA+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDwmY2xrCj4gPiA+ID4gPiBJTVg4TVFf
+Q0xLX1ZQVV9HMl9ST09UPjsKPiA+ID4gPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgY2xvY2stbmFtZXMgPSAiZzEiLCAiZzIiOwo+ID4gPiA+ID4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAjcG93ZXItZG9tYWlu
+LWNlbGxzID0gPDE+Owo+ID4gPiA+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqB9
+Owo+ID4gPiA+ID4gwqAKPiA+ID4gPiA+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+cGNpZTA6IHBjaWVAMzM4MDAwMDAgewo+ID4gPiA+IAo+ID4gPiA+IFdpdGggdGhpcyB1cGRhdGUs
+IHdoZW4gdGVzdGluZyBzdXNwZW5kIHRvIHJhbSBvbiBpbXg4bXEsIEkgZ2V0Ogo+ID4gPiA+IAo+
+ID4gPiA+IGJ1Y2s0OiBmYWlsZWQgdG8gZGlzYWJsZTogLUVUSU1FRE9VVAo+ID4gPiA+IAo+ID4g
+PiA+IHdoZXJlIGJ1Y2s0IGlzIHBvd2VyLXN1cHBseSBvZiBwZ2NfdnB1LiBBbmQgdGh1cyB0aGUg
+dHJhbnNpdGlvbgo+ID4gPiA+IHRvCj4gPiA+ID4gc3VzcGVuZCAoYW5kIHJlc3VtaW5nKSBmYWls
+cy4KPiA+ID4gPiAKPiA+ID4gPiBIYXZlIHlvdSB0ZXN0ZWQgc3lzdGVtIHN1c3BlbmQgYWZ0ZXIg
+dGhlIGlteDhtLWJsay1jdHJsIHVwZGF0ZQo+ID4gPiA+IG9uCj4gPiA+ID4gaW14OG1xPwo+ID4g
+PiAKPiA+ID4gSSBoYXZlbid0IHRlc3RlZCBzeXN0ZW0gc3VzcGVuZCwgZG9uJ3Qga25vdyBpZiBh
+bnlvbmUgZWxzZSBkaWQuCj4gPiA+IEhvd2V2ZXIKPiA+ID4gSSBndWVzcyB0aGF0IHRoaXMgaXMg
+anVzdCB1bmNvdmVyaW5nIGEgcHJlZXhpc3RpbmcgaXNzdWUgaW4gdGhlCj4gPiA+IHN5c3RlbQo+
+ID4gPiBzdXNwZW5kIHNlcXVlbmNpbmcsIHdoaWNoIHlvdSB3b3VsZCBhbHNvIGhpdCBpZiB0aGUg
+dmlkZW8KPiA+ID4gZGVjb2RlcnMKPiA+ID4gd2VyZQo+ID4gPiBhY3RpdmUgYXQgc3lzdGVtIHN1
+c3BlbmQgdGltZS4KPiA+ID4gCj4gPiA+IE15IGd1ZXNzIGlzIHRoYXQgdGhlIHJlZ3VsYXRvciBk
+aXNhYmxlIGZhaWxzLCBkdWUgdG8gdGhlIHBvd2VyCj4gPiA+IGRvbWFpbnMKPiA+ID4gYmVpbmcg
+ZGlzYWJsZWQgcXVpdGUgbGF0ZSBpbiB0aGUgc3VzcGVuZCBzZXF1ZW5jZSwgd2hlcmUgaTJjCj4g
+PiA+IGNvbW11bmljYXRpb24gd2l0aCB0aGUgUE1JQyBpcyBubyBsb25nZXIgcG9zc2libGUgZHVl
+IHRvIGkyYwo+ID4gPiBiZWluZwo+ID4gPiBzdXNwZW5kZWQgYWxyZWFkeSBvciBzb21ldGhpbmcg
+bGlrZSB0aGF0LiBNYXliZSB5b3UgY2FuIGRpZyBpbiBhCj4gPiA+IGJpdAo+ID4gPiBvbgo+ID4g
+PiB0aGUgYWN0dWFsIHNlcXVlbmNlIG9uIHlvdXIgc3lzdGVtIGFuZCB3ZSBjYW4gc2VlIGhvdyB3
+ZSBjYW4KPiA+ID4gcmV3b3JrCj4gPiA+IHRoaW5ncyB0byBzdXNwZW5kIHRoZSBwb3dlciBkb21h
+aW5zIGF0IGEgdGltZSB3aGVyZSBjb21tdW5pY2F0aW9uCj4gPiA+IHdpdGgKPiA+ID4gdGhlIFBN
+SUMgaXMgc3RpbGwgcG9zc2libGU/Cj4gPiAKPiA+IFdoYXQgZXhhY3RseSB3b3VsZCB5b3UgbGlr
+ZSB0byBzZWU/IEhlcmUncyBhbGwgZ3BjdjIgcmVndWxhdG9ycwo+ID4gZGlzYWJsaW5nIG9uIHN1
+c3BlbmQuIChncHUgKGRvbWFpbiA1KSBpcyBkaXNhYmxlZCBieSBydW50aW1lIHBtCj4gPiBvZnRl
+bik6Cj4gPiAKPiA+IFvCoMKgIDQ3LjEzODcwMF0gaW14LXBnYyBpbXgtcGdjLWRvbWFpbi41OiBk
+aXNhYmxpbmcgcmVndWxhdG9yCj4gPiBbwqDCoCA0Ny4yOTgwNzFdIEZyZWV6aW5nIHVzZXIgc3Bh
+Y2UgcHJvY2Vzc2VzIC4uLiAoZWxhcHNlZCAwLjAwOAo+ID4gc2Vjb25kcykgZG9uZS4KPiA+IFvC
+oMKgIDQ3LjMxMzQzMl0gT09NIGtpbGxlciBkaXNhYmxlZC4KPiA+IFvCoMKgIDQ3LjMxNjY3MF0g
+RnJlZXppbmcgcmVtYWluaW5nIGZyZWV6YWJsZSB0YXNrcyAuLi4gKGVsYXBzZWQKPiA+IDIuMjIx
+Cj4gPiBzZWNvbmRzKSBkb25lLgo+ID4gW8KgwqAgNDkuNjcyMDUyXSBpbXg4bS1ibGstY3RybCAz
+ODMyMDAwMC5ibGstY3RybDoKPiA+IGlteDhtX2Jsa19jdHJsX3N1c3BlbmQKPiA+IHN0YXJ0Cj4g
+PiBbwqDCoCA0OS43MDQ0MTddIGlteC1wZ2MgaW14LXBnYy1kb21haW4uMDogZGlzYWJsaW5nIHJl
+Z3VsYXRvcgo+ID4gW8KgwqAgNDkuNzExMTE0XSBpbXgtcGdjIGlteC1wZ2MtZG9tYWluLjY6IGRp
+c2FibGluZyByZWd1bGF0b3IKPiA+IFvCoMKgIDQ5LjgxOTA2NF0gYnVjazQ6IGZhaWxlZCB0byBk
+aXNhYmxlOiAtRVRJTUVET1VUCj4gPiAKPiA+IFRoZSBzdGFjayBsb29rcyBwcmV0dHkgbXVjaCB0
+aGUgc2FtZSBmb3IgYWxsIG9mIHRoZW0sIGZyb20KPiA+IHBtX3N1c3BlbmQoKQo+ID4gb3ZlciBn
+ZW5wZF9zdXNwZW5kX25vaXJ5KCkuCj4gCj4gU28gdGhlIEdQVSBkb21haW4gaXMgYWxyZWFkeSBz
+dXNwZW5kZWQgYmVmb3JlIHRoZSBzeXN0ZW0gc3VzcGVuZCwKPiBwcm9iYWJseSBkdWUgdG8gc2hv
+cnQgcnVudGltZSBQTSB0aW1lb3V0cy4KPiAKPiBDYW4geW91IHBsZWFzZSBjaGVjayBhdCB3aGlj
+aCBwb2ludCB0aGUgaTJjIHN1YnN5c3RlbSBpcyBzdXNwZW5kZWQ/IEkKPiB0aGluayB3ZSBhcmUg
+YWxyZWFkeSBwYXN0IHRoYXQgcG9pbnQgd2hlbiBydW5uaW5nIHRoZSBQTSBkb21haW4KPiBzdXNw
+ZW5kCj4gZnJvbSBhIF9ub2lycSBjYWxsYmFjay4gSSdsbCB0YWtlIGEgbG9vayBvbiBob3cgd2Ug
+Y2FuIHByb3Blcmx5Cj4gY2hhbmdlCj4gdGhpcyBvcmRlcmluZy4KPiAKPiBSZWdhcmRzLAo+IEx1
+Y2FzCj4gCgpoaSBMdWNhcywgc29ycnkgZm9yIG5vdCBmb2xsb3dpbmcgdXAgb24gdGhpcyBmb3Ig
+c28gbG9uZy4gVGhpcyBmaXhlcwpzdXNwZW5kL3Jlc3VtZSBmb3IgbWU6CgpodHRwczovL2xvcmUu
+a2VybmVsLm9yZy9saW51eC1hcm0ta2VybmVsLzIwMjIwNzExMDk0NTQ5LjM0NDU1NjYtMS1tYXJ0
+aW4ua2VwcGxpbmdlckBwdXJpLnNtL1QvI3QKCnRoYW5rIHlvdSBmb3IgeW91IGhlbHAgc28gZmFy
+LAoKICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtYXJ0aW4KCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
+c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
