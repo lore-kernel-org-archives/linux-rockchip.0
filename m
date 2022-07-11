@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34BBEC43334
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 12:58:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 355F2C43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 12:58:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ys40OHbTPspec2kNTg5lzZ9wTd/xaHas0XTxnYDU22g=; b=Y9YpIpAAE9zDGw
-	SSlJFQdG4mO6+DefTMwlpekylfD3nPs22NLMwweWN0EAGkki9RlpZx9Lb8cO4yDN13j0GHWli/C4v
-	T2jdl65fSE9ClYZ4rZWCrxmttih0iIzlIuHTR/O/9NhR7V/b/kCinU8QzDGs6l9bwkBBKVxDyZiEU
-	UAC1Kw+EWID559iz/0GHV5fU3Jrj53uffw4hZ2/QPWkT9jDOZmApxA/lMpF/bArb/qbXNXx9eAtLy
-	h20vlxzE8vRqAhNYsE+7i653u/egSonLqBIBqj9JdHgDyEY1tc9MTnMi6L9DXMNV7bzev58FMbtHE
-	MBTeVtAxKZfRZstFV6nA==;
+	List-Owner; bh=hkDtvyBzV+Bh8ntA0pcZKn4BjlMVXgusKnCT38lMB1Y=; b=iqHt5tvY4S6b6x
+	zBXl4fbEQUoaijmwZG8JLdMCqMWJlSRqJbB+hUY7uDCHcz5QYen+kNYJnGE8Knv+AZYVutc3Qrt4n
+	uUY3cBR80wwWL6yH/gPPE1YAdYIXHGxiRCdXWW99fJ7CHWxdyiAhb6vVREHoO9Z30ZpjINph+CeIh
+	8lvm15dIRtPy4Z6zstA75KQvSFTNvhsQINOQXWNh4fEXo6X0qIepUvgaN/V1fS+6ZXETvOYHJqzNk
+	n6qXl1968AKAFdRma5cjjkbQyVLwtgGSBeQxlD0XSP0ROY8gUiKZzUa4nxEg5QfST/9vJszpGxWw5
+	B7491uqrNwcATPJKIg/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAszH-001ghQ-Pb; Mon, 11 Jul 2022 12:58:07 +0000
+	id 1oAszb-001h0M-R7; Mon, 11 Jul 2022 12:58:27 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAslH-001YFf-JP
-	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 12:43:43 +0000
+	id 1oAslL-001YJ0-QE
+	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 12:43:45 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 738BA326;
-	Mon, 11 Jul 2022 14:43:37 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id D13B12B64;
+	Mon, 11 Jul 2022 14:43:41 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657543417;
-	bh=99UIE8oqmPmd0m1zZDgA48K/oWQ1/6lftaY/SpI4KEo=;
+	s=mail; t=1657543422;
+	bh=N3hccJTZaKwLIucsH11uAzhxQ0X+ZEraF0MdIfMal/k=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=o/EnwWY6kyiInZNC9WWihT1pmrgJ9X6mjTgUNLCQZoElZFAuK1QQmj/6J4wlkpRBF
-	 YsYPZp5ZLdsdOy9mmhi1xJm0l+aZQrNc6j2UqKgwvlXWh+J5jm0yB/lthDnvmAWpdy
-	 cQXXVKBysC3Q/LmLUwgMDCVlswZVhP8C0KWuc+mM=
+	b=sZ0Qzm2yWyxUpjkK4m5a3ltcFchO0PvnwqKUvqBrIr+uIzLiqWS0dszVfqfX//sHV
+	 msY0ZCHEFYbvwBCOZ/KOI8QLF+R80wWN/Sg3KJleZZ4xK7pVeLl1LOcs9HGNTsnVqb
+	 RZo2+cGvaJu/AjD/y2bKX8ZbIg4f5Y7d8TWec9qA=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -42,16 +42,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v3 30/46] media: rkisp1: isp: Add rkisp1_device backpointer to rkisp1_isp
-Date: Mon, 11 Jul 2022 15:42:32 +0300
-Message-Id: <20220711124248.2683-31-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v3 37/46] media: rkisp1: isp: Rename rkisp1_get_remote_source()
+Date: Mon, 11 Jul 2022 15:42:39 +0300
+Message-Id: <20220711124248.2683-38-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220711124248.2683-1-laurent.pinchart@ideasonboard.com>
 References: <20220711124248.2683-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_054339_842400_6DA14ED7 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20220711_054344_076031_484B726E 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,77 +68,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rkisp1_isp structure documentation mentions a backpointer field to
-rkisp1_device, but the field is missing. Add it, and use it to replace
-more complicated constructs using container_of() on the v4l2_device.
+Rename the rkisp1_get_remote_source() function to
+rkisp1_isp_get_source() to use a consistent rkisp1_isp_* prefix for all
+ISP functions, and drop the "remote" as the source can't be local.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
 ---
- .../media/platform/rockchip/rkisp1/rkisp1-common.h    |  1 +
- drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c   | 11 +++++------
- 2 files changed, 6 insertions(+), 6 deletions(-)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index ee9e724f4bf2..5301461d3ea3 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -162,6 +162,7 @@ struct rkisp1_csi {
-  */
- struct rkisp1_isp {
- 	struct v4l2_subdev sd;
-+	struct rkisp1_device *rkisp1;
- 	struct media_pad pads[RKISP1_ISP_PAD_MAX];
- 	struct v4l2_subdev_pad_config pad_cfg[RKISP1_ISP_PAD_MAX];
- 	const struct rkisp1_mbus_info *sink_fmt;
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index 9f4fb984194d..3f9541fc4a2f 100644
+index 2ba227b2f6a1..37623b73b1d9 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -704,15 +704,13 @@ static int rkisp1_isp_set_selection(struct v4l2_subdev *sd,
- 				    struct v4l2_subdev_state *sd_state,
- 				    struct v4l2_subdev_selection *sel)
+@@ -58,7 +58,7 @@
+  * Helpers
+  */
+ 
+-static struct v4l2_subdev *rkisp1_get_remote_source(struct v4l2_subdev *sd)
++static struct v4l2_subdev *rkisp1_isp_get_source(struct v4l2_subdev *sd)
  {
--	struct rkisp1_device *rkisp1 =
--		container_of(sd->v4l2_dev, struct rkisp1_device, v4l2_dev);
- 	struct rkisp1_isp *isp = to_rkisp1_isp(sd);
- 	int ret = 0;
+ 	struct media_pad *local, *remote;
+ 	struct media_entity *sensor_me;
+@@ -754,7 +754,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+ 		return 0;
+ 	}
  
- 	if (sel->target != V4L2_SEL_TGT_CROP)
- 		return -EINVAL;
- 
--	dev_dbg(rkisp1->dev, "%s: pad: %d sel(%d,%d)/%dx%d\n", __func__,
-+	dev_dbg(isp->rkisp1->dev, "%s: pad: %d sel(%d,%d)/%dx%d\n", __func__,
- 		sel->pad, sel->r.left, sel->r.top, sel->r.width, sel->r.height);
- 	mutex_lock(&isp->ops_lock);
- 	if (sel->pad == RKISP1_ISP_PAD_SINK_VIDEO)
-@@ -751,9 +749,8 @@ static const struct v4l2_subdev_pad_ops rkisp1_isp_pad_ops = {
- 
- static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
- {
--	struct rkisp1_device *rkisp1 =
--		container_of(sd->v4l2_dev, struct rkisp1_device, v4l2_dev);
- 	struct rkisp1_isp *isp = to_rkisp1_isp(sd);
-+	struct rkisp1_device *rkisp1 = isp->rkisp1;
- 	struct rkisp1_sensor_async *asd;
- 	int ret;
- 
-@@ -840,12 +837,14 @@ int rkisp1_isp_register(struct rkisp1_device *rkisp1)
- {
- 	struct v4l2_subdev_state state = {
- 		.pads = rkisp1->isp.pad_cfg
--		};
-+	};
- 	struct rkisp1_isp *isp = &rkisp1->isp;
- 	struct media_pad *pads = isp->pads;
- 	struct v4l2_subdev *sd = &isp->sd;
- 	int ret;
- 
-+	isp->rkisp1 = rkisp1;
-+
- 	v4l2_subdev_init(sd, &rkisp1_isp_ops);
- 	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE | V4L2_SUBDEV_FL_HAS_EVENTS;
- 	sd->entity.ops = &rkisp1_isp_media_ops;
+-	rkisp1->source = rkisp1_get_remote_source(sd);
++	rkisp1->source = rkisp1_isp_get_source(sd);
+ 	if (!rkisp1->source) {
+ 		dev_warn(rkisp1->dev, "No link between isp and source\n");
+ 		return -ENODEV;
 -- 
 Regards,
 
