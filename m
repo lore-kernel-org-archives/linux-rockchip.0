@@ -4,56 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05A59C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 12:04:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E865C43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 12:33:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cFehOU2qIAinlfhBST7kyknyWUkbr8/FfzjO1ehioYI=; b=hT0ELZCBr/qkCm
-	xoyU6+4lVNIcQsa6zVNsl+H5imU8IdwyjuzMwAHrWISY9hBx9pWu+gK6622ILE2Vpdq7RE8pyLXPC
-	ykmbNE6hF5ihWGeKNvpnKbfjSYbC/Q98QdSwbJMh3Wa93OXuSl0Ow8Nmfl1JSTIZ71e+gMMFjEZkA
-	6HU8IARQY/eOf84qYHzieDPGmcIsCNeQZHLBtwXjCN1+v9eZVMbAXsGZkEP1lQcjGeFVjhf6RiRtS
-	dYBGKDijJ017/dehO+h9kHsZDJ/grfKlJDbe12pdCfRl1FOekTJ5hBSrKpYdDq1e62HdnLGlP6I5E
-	uSYFAIpNTu5EKOsth7mA==;
+	List-Owner; bh=7ntmt+7cuP/FEM+Jnakeq5bBMgOdCJKiIh5Q5svnMIc=; b=XU5KKzuOAZ9vNY
+	2CkA0vpS4yrzNgMtUJWYvrk8VZ0pvO5mKKRo57IRV4k9yMErP2vOaBoZabRFOz5Yo+XdXU0CZMTAX
+	nDVFCUsfTVppT9zFDjq4QZfcWKFYnRmpBE58cmcqZN03xzo8QX1NKd89GtQ9l/Yw+A22jVYaaVqkM
+	Bm5Qg7KQtNIby08LfU6+Hcsb7HH5GoWh5wB6PS+g9OQ6+vNCzT6E9p3J/bpjAX2oV3JJHZ+tJZSEg
+	d+N8n8Lx8Xv8yIRzzZhEP0LthedK9VvSfHOvcgruM1BFrlRt0XK/IXAqfk/UUhXysubDbbk4lX0H1
+	tBm89TaVmBnLrzaCmHPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAs9e-001HBb-HD; Mon, 11 Jul 2022 12:04:46 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1oAsba-001T2Z-1U; Mon, 11 Jul 2022 12:33:38 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAs9b-001H8D-2E
-	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 12:04:45 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 42ADA326;
-	Mon, 11 Jul 2022 14:04:37 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657541077;
-	bh=kohtYCBqjedD034cw6pp1EIO4lNH1yHH1Q5bUGoDebI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jIrrqEzNIw6rk82M5eEYDwc8JaHwyoKqRUqJqcmT+fUfaDWbpMnk/rVj1/7fIPFy6
-	 c5sWmRufFLL4x6kWRgaSuTytVBCAXugnP4UZ5DjihgtaBM6oi5k04EgW9pPFDWNptX
-	 uxzbPfV2ku2/gI16C8FnJdEkYmmOh0KsYr+CM6TY=
-Date: Mon, 11 Jul 2022 15:04:10 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	Heiko Stuebner <heiko@sntech.de>,
-	Helen Koike <helen.koike@collabora.com>,
-	Paul Elder <paul.elder@ideasonboard.com>
-Subject: Re: [PATCH v2 46/55] media: rkisp1: debug: Add dump file in debugfs
- for MI buffer registers
-Message-ID: <YswRuuTUpVSkTPm4@pendragon.ideasonboard.com>
-References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
- <20220630230713.10580-47-laurent.pinchart@ideasonboard.com>
- <20220711025107.xkws7mliucwxjjgn@guri>
+	id 1oAsaq-001ScS-1h
+	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 12:32:54 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id j22so8584398ejs.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 11 Jul 2022 05:32:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=hx4Xj0vKM3i9b8JRtUJiv/sbaqsj2HeLHhMvN2rvbzQ=;
+        b=InkBM8ViDKm5aLb2MeT/zAOxVF3eGAC8WlnxhjWChE7n2CDLvHpCe3Dq+yAnlWY6y5
+         op0wpFNoTFP1AXUj0T5v2K8D4abTewJPr26cMOYUUGI2dz2GvGghJxuuSMSlRRKm68qS
+         fBIllUi8s5VTs6u0fczmV+Gy3C/hJFD1sLOnGNDY/2tR+JLiWaK9SMpHm5b4XrwCEFea
+         KruUDwljlzZF2DhfpSyArfYq9nTxQ8udeAM0Aw7SZE/saGyCdscgpovFlPcNS5oN1hBI
+         orvTarntKuH2FOtLUxG4AQI3V1yi2zV1EN5AnftGKZV3CUBjHsuRIgUzXnwjYAyU8W3G
+         9EGg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=hx4Xj0vKM3i9b8JRtUJiv/sbaqsj2HeLHhMvN2rvbzQ=;
+        b=VI0uy6/fZQuQUHiu0Uj8euRXeuMHgazoTSuZteij9VLHxLI1UmxaPSFaYp/d6b5WU4
+         M2GMxWkDIZwIeb8pCscASqInzBdBgKA2IdaVE8WjATTCSpOsUgSLt+UzDtgwB838oHhC
+         uIncnS4oYmk3JdPzEchFgv6csdQxHoJeS5yYAz5SmKMiM87EXEWX+9t2l5gmIhlEF+Rc
+         g2F/SPgHdUjvVfmTffgS63BkvjtWJG+E/Z3uEDReGo6n4AmilxluQkwBeFtmqySCGhjH
+         3dy+TGkwJv3BOsFbaNmP5EpkE8ywKuAJB1NO6mgVwx8jqIPsU+wQtvbJkslLbSx9QIP0
+         YhwA==
+X-Gm-Message-State: AJIora9z+UgB0TAYcevDR8+q4cs0yay7Xadk4o/n04+PtzfnpZsHUlQI
+	K/RDHzJ+ykhOYB2OLBEW3Wtx0VRGa5RnyrpSayJ34w==
+X-Google-Smtp-Source: AGRyM1t2GYOvYiSczm91nCPcsRJRH4FqjR9E7NVKZ+m4L5fqZwnWxrxafS/w6hG5adH2Z02J62sZu85S85XMttB+tZA=
+X-Received: by 2002:a17:906:2086:b0:717:4e91:f1db with SMTP id
+ 6-20020a170906208600b007174e91f1dbmr18061273ejq.345.1657542766827; Mon, 11
+ Jul 2022 05:32:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220711025107.xkws7mliucwxjjgn@guri>
+References: <20220125171129.472775-1-aford173@gmail.com> <20220125171129.472775-8-aford173@gmail.com>
+ <d6c5c5663f8ae904d409240063295cf516e17dd1.camel@puri.sm> <4b958892ba788a0e9e73a9135c305aacbe33294d.camel@pengutronix.de>
+ <c11a58ecc5da2e206fc2b942980223a04a103f19.camel@puri.sm> <17c5ef22479cfea3f43dce1885f6613f1bef8064.camel@pengutronix.de>
+ <2f25ea965289f6fdcd5fc0f12f445b174637ce74.camel@puri.sm>
+In-Reply-To: <2f25ea965289f6fdcd5fc0f12f445b174637ce74.camel@puri.sm>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Mon, 11 Jul 2022 09:32:35 -0300
+Message-ID: <CAAEAJfACXrhHwF-Z9ygnZTUgKBQ3u1jHNDaMhgivq_rDr8xTNw@mail.gmail.com>
+Subject: Re: [PATCH V4 07/11] arm64: dts: imx8mq: Enable both G1 and G2 VPU's
+ with vpu-blk-ctrl
+To: Martin Kepplinger <martin.kepplinger@puri.sm>
+Cc: Lucas Stach <l.stach@pengutronix.de>, Adam Ford <aford173@gmail.com>, 
+	linux-media <linux-media@vger.kernel.org>, Adam Ford-BE <aford@beaconembedded.com>, 
+	Chris Healy <cphealy@gmail.com>, kernel test robot <lkp@intel.com>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
+	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+	devicetree <devicetree@vger.kernel.org>, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+	"open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_050443_296774_711B1552 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20220711_053252_168882_654B4265 
+X-CRM114-Status: GOOD (  40.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,70 +99,273 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dafna,
+Hi Martin,
 
-On Mon, Jul 11, 2022 at 05:51:07AM +0300, Dafna Hirschfeld wrote:
-> On 01.07.2022 02:07, Laurent Pinchart wrote:
-> >From: Paul Elder <paul.elder@ideasonboard.com>
+On Mon, Jul 11, 2022 at 6:53 AM Martin Kepplinger
+<martin.kepplinger@puri.sm> wrote:
+>
+> Am Dienstag, dem 26.04.2022 um 12:43 +0200 schrieb Lucas Stach:
+> > Am Dienstag, dem 26.04.2022 um 09:38 +0200 schrieb Martin Kepplinger:
+> > > Am Montag, dem 25.04.2022 um 17:34 +0200 schrieb Lucas Stach:
+> > > > Hi Martin,
+> > > >
+> > > > Am Montag, dem 25.04.2022 um 17:22 +0200 schrieb Martin
+> > > > Kepplinger:
+> > > > > Am Dienstag, dem 25.01.2022 um 11:11 -0600 schrieb Adam Ford:
+> > > > > > With the Hantro G1 and G2 now setup to run independently,
+> > > > > > update
+> > > > > > the device tree to allow both to operate.  This requires the
+> > > > > > vpu-blk-ctrl node to be configured.  Since vpu-blk-ctrl needs
+> > > > > > certain clock enabled to handle the gating of the G1 and G2
+> > > > > > fuses, the clock-parents and clock-rates for the various
+> > > > > > VPU's
+> > > > > > to be moved into the pgc_vpu because they cannot get re-
+> > > > > > parented
+> > > > > > once enabled, and the pgc_vpu is the highest in the chain.
+> > > > > >
+> > > > > > Signed-off-by: Adam Ford <aford173@gmail.com>
+> > > > > > Reported-by: kernel test robot <lkp@intel.com>
+> > > > > > Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+> > > > > >
+> > > > > > diff --git a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+> > > > > > b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+> > > > > > index 2df2510d0118..549b2440f55d 100644
+> > > > > > --- a/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+> > > > > > +++ b/arch/arm64/boot/dts/freescale/imx8mq.dtsi
+> > > > > > @@ -737,7 +737,21 @@ pgc_gpu: power-domain@5 {
+> > > > > >                                         pgc_vpu: power-
+> > > > > > domain@6 {
+> > > > > >                                                 #power-
+> > > > > > domain-
+> > > > > > cells =
+> > > > > > <0>;
+> > > > > >                                                 reg =
+> > > > > > <IMX8M_POWER_DOMAIN_VPU>;
+> > > > > > -                                               clocks =
+> > > > > > <&clk
+> > > > > > IMX8MQ_CLK_VPU_DEC_ROOT>;
+> > > > > > +                                               clocks =
+> > > > > > <&clk
+> > > > > > IMX8MQ_CLK_VPU_DEC_ROOT>,
+> > > > > > +
+> > > > > > <&clk
+> > > > > > IMX8MQ_CLK_VPU_G1_ROOT>,
+> > > > > > +
+> > > > > > <&clk
+> > > > > > IMX8MQ_CLK_VPU_G2_ROOT>;
+> > > > > > +                                               assigned-
+> > > > > > clocks =
+> > > > > > <&clk IMX8MQ_CLK_VPU_G1>,
+> > > > > > +
+> > > > > >
+> > > > > > <&clk IMX8MQ_CLK_VPU_G2>,
+> > > > > > +
+> > > > > >
+> > > > > > <&clk IMX8MQ_CLK_VPU_BUS>,
+> > > > > > +
+> > > > > >
+> > > > > > <&clk IMX8MQ_VPU_PLL_BYPASS>;
+> > > > > > +                                               assigned-
+> > > > > > clock-
+> > > > > > parents = <&clk IMX8MQ_VPU_PLL_OUT>,
+> > > > > > +
+> > > > > >
+> > > > > >
+> > > > > >     <&clk IMX8MQ_VPU_PLL_OUT>,
+> > > > > > +
+> > > > > >
+> > > > > >
+> > > > > >     <&clk IMX8MQ_SYS1_PLL_800M>,
+> > > > > > +
+> > > > > >
+> > > > > >
+> > > > > >     <&clk IMX8MQ_VPU_PLL>;
+> > > > > > +                                               assigned-
+> > > > > > clock-
+> > > > > > rates
+> > > > > > = <600000000>,
+> > > > > > +
+> > > > > >
+> > > > > >
+> > > > > >   <600000000>,
+> > > > > > +
+> > > > > >
+> > > > > >
+> > > > > >   <800000000>,
+> > > > > > +
+> > > > > >
+> > > > > >
+> > > > > >   <0>;
+> > > > > >                                         };
+> > > > > >
+> > > > > >                                         pgc_disp:
+> > > > > > power-domain@7
+> > > > > > {
+> > > > > > @@ -1457,30 +1471,31 @@ usb3_phy1: usb-phy@382f0040 {
+> > > > > >                         status = "disabled";
+> > > > > >                 };
+> > > > > >
+> > > > > > -               vpu: video-codec@38300000 {
+> > > > > > -                       compatible = "nxp,imx8mq-vpu";
+> > > > > > -                       reg = <0x38300000 0x10000>,
+> > > > > > -                             <0x38310000 0x10000>,
+> > > > > > -                             <0x38320000 0x10000>;
+> > > > > > -                       reg-names = "g1", "g2", "ctrl";
+> > > > > > -                       interrupts = <GIC_SPI 7
+> > > > > > IRQ_TYPE_LEVEL_HIGH>,
+> > > > > > -                                    <GIC_SPI 8
+> > > > > > IRQ_TYPE_LEVEL_HIGH>;
+> > > > > > -                       interrupt-names = "g1", "g2";
+> > > > > > +               vpu_g1: video-codec@38300000 {
+> > > > > > +                       compatible = "nxp,imx8mq-vpu-g1";
+> > > > > > +                       reg = <0x38300000 0x10000>;
+> > > > > > +                       interrupts = <GIC_SPI 7
+> > > > > > IRQ_TYPE_LEVEL_HIGH>;
+> > > > > > +                       clocks = <&clk
+> > > > > > IMX8MQ_CLK_VPU_G1_ROOT>;
+> > > > > > +                       power-domains = <&vpu_blk_ctrl
+> > > > > > IMX8MQ_VPUBLK_PD_G1>;
+> > > > > > +               };
+> > > > > > +
+> > > > > > +               vpu_g2: video-codec@38310000 {
+> > > > > > +                       compatible = "nxp,imx8mq-vpu-g2";
+> > > > > > +                       reg = <0x38310000 0x10000>;
+> > > > > > +                       interrupts = <GIC_SPI 8
+> > > > > > IRQ_TYPE_LEVEL_HIGH>;
+> > > > > > +                       clocks = <&clk
+> > > > > > IMX8MQ_CLK_VPU_G2_ROOT>;
+> > > > > > +                       power-domains = <&vpu_blk_ctrl
+> > > > > > IMX8MQ_VPUBLK_PD_G2>;
+> > > > > > +               };
+> > > > > > +
+> > > > > > +               vpu_blk_ctrl: blk-ctrl@38320000 {
+> > > > > > +                       compatible = "fsl,imx8mq-vpu-blk-
+> > > > > > ctrl";
+> > > > > > +                       reg = <0x38320000 0x100>;
+> > > > > > +                       power-domains = <&pgc_vpu>,
+> > > > > > <&pgc_vpu>,
+> > > > > > <&pgc_vpu>;
+> > > > > > +                       power-domain-names = "bus", "g1",
+> > > > > > "g2";
+> > > > > >                         clocks = <&clk
+> > > > > > IMX8MQ_CLK_VPU_G1_ROOT>,
+> > > > > > -                                <&clk
+> > > > > > IMX8MQ_CLK_VPU_G2_ROOT>,
+> > > > > > -                                <&clk
+> > > > > > IMX8MQ_CLK_VPU_DEC_ROOT>;
+> > > > > > -                       clock-names = "g1", "g2", "bus";
+> > > > > > -                       assigned-clocks = <&clk
+> > > > > > IMX8MQ_CLK_VPU_G1>,
+> > > > > > -                                         <&clk
+> > > > > > IMX8MQ_CLK_VPU_G2>,
+> > > > > > -                                         <&clk
+> > > > > > IMX8MQ_CLK_VPU_BUS>,
+> > > > > > -                                         <&clk
+> > > > > > IMX8MQ_VPU_PLL_BYPASS>;
+> > > > > > -                       assigned-clock-parents = <&clk
+> > > > > > IMX8MQ_VPU_PLL_OUT>,
+> > > > > > -                                                <&clk
+> > > > > > IMX8MQ_VPU_PLL_OUT>,
+> > > > > > -                                                <&clk
+> > > > > > IMX8MQ_SYS1_PLL_800M>,
+> > > > > > -                                                <&clk
+> > > > > > IMX8MQ_VPU_PLL>;
+> > > > > > -                       assigned-clock-rates = <600000000>,
+> > > > > > <600000000>,
+> > > > > > -                                              <800000000>,
+> > > > > > <0>;
+> > > > > > -                       power-domains = <&pgc_vpu>;
+> > > > > > +                                <&clk
+> > > > > > IMX8MQ_CLK_VPU_G2_ROOT>;
+> > > > > > +                       clock-names = "g1", "g2";
+> > > > > > +                       #power-domain-cells = <1>;
+> > > > > >                 };
+> > > > > >
+> > > > > >                 pcie0: pcie@33800000 {
+> > > > >
+> > > > > With this update, when testing suspend to ram on imx8mq, I get:
+> > > > >
+> > > > > buck4: failed to disable: -ETIMEDOUT
+> > > > >
+> > > > > where buck4 is power-supply of pgc_vpu. And thus the transition
+> > > > > to
+> > > > > suspend (and resuming) fails.
+> > > > >
+> > > > > Have you tested system suspend after the imx8m-blk-ctrl update
+> > > > > on
+> > > > > imx8mq?
+> > > >
+> > > > I haven't tested system suspend, don't know if anyone else did.
+> > > > However
+> > > > I guess that this is just uncovering a preexisting issue in the
+> > > > system
+> > > > suspend sequencing, which you would also hit if the video
+> > > > decoders
+> > > > were
+> > > > active at system suspend time.
+> > > >
+> > > > My guess is that the regulator disable fails, due to the power
+> > > > domains
+> > > > being disabled quite late in the suspend sequence, where i2c
+> > > > communication with the PMIC is no longer possible due to i2c
+> > > > being
+> > > > suspended already or something like that. Maybe you can dig in a
+> > > > bit
+> > > > on
+> > > > the actual sequence on your system and we can see how we can
+> > > > rework
+> > > > things to suspend the power domains at a time where communication
+> > > > with
+> > > > the PMIC is still possible?
+> > >
+> > > What exactly would you like to see? Here's all gpcv2 regulators
+> > > disabling on suspend. (gpu (domain 5) is disabled by runtime pm
+> > > often):
+> > >
+> > > [   47.138700] imx-pgc imx-pgc-domain.5: disabling regulator
+> > > [   47.298071] Freezing user space processes ... (elapsed 0.008
+> > > seconds) done.
+> > > [   47.313432] OOM killer disabled.
+> > > [   47.316670] Freezing remaining freezable tasks ... (elapsed
+> > > 2.221
+> > > seconds) done.
+> > > [   49.672052] imx8m-blk-ctrl 38320000.blk-ctrl:
+> > > imx8m_blk_ctrl_suspend
+> > > start
+> > > [   49.704417] imx-pgc imx-pgc-domain.0: disabling regulator
+> > > [   49.711114] imx-pgc imx-pgc-domain.6: disabling regulator
+> > > [   49.819064] buck4: failed to disable: -ETIMEDOUT
+> > >
+> > > The stack looks pretty much the same for all of them, from
+> > > pm_suspend()
+> > > over genpd_suspend_noiry().
 > >
-> >Add a register dump file in debugfs for some of the buffer-related
-> >registers in MI, for the base address, the size, and the offset. Also
-> >dump the appropriate shadow registers.
+> > So the GPU domain is already suspended before the system suspend,
+> > probably due to short runtime PM timeouts.
 > >
-> >Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> >---
-> > .../platform/rockchip/rkisp1/rkisp1-debug.c   | 21 +++++++++++++++++++
-> > 1 file changed, 21 insertions(+)
+> > Can you please check at which point the i2c subsystem is suspended? I
+> > think we are already past that point when running the PM domain
+> > suspend
+> > from a _noirq callback. I'll take a look on how we can properly
+> > change
+> > this ordering.
 > >
-> >diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> >index e76dc2b164b6..1a59c00fabdd 100644
-> >--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> >+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
-> >@@ -121,6 +121,24 @@ static int rkisp1_debug_dump_rsz_regs_show(struct seq_file *m, void *p)
-> > }
-> > DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_rsz_regs);
+> > Regards,
+> > Lucas
 > >
-> >+static int rkisp1_debug_dump_mi_mp_y_offs_cnt_show(struct seq_file *m, void *p)
-> >+{
-> >+	static const struct rkisp1_debug_register registers[] = {
-> >+		RKISP1_DEBUG_REG(MI_MP_Y_BASE_AD_INIT),
-> >+		RKISP1_DEBUG_REG(MI_MP_Y_BASE_AD_INIT2),
-> >+		RKISP1_DEBUG_REG(MI_MP_Y_BASE_AD_SHD),
-> >+		RKISP1_DEBUG_REG(MI_MP_Y_SIZE_INIT),
-> >+		RKISP1_DEBUG_REG(MI_MP_Y_SIZE_INIT),
-> >+		RKISP1_DEBUG_REG(MI_MP_Y_SIZE_SHD),
-> >+		RKISP1_DEBUG_REG(MI_MP_Y_OFFS_CNT_SHD),
-> >+		{ /* Sentinel */ },
-> >+	};
-> >+	struct rkisp1_device *rkisp1 = m->private;
-> >+
-> >+	return rkisp1_debug_dump_regs(rkisp1, m, 0, registers);
-> >+}
-> >+DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_mi_mp_y_offs_cnt);
-> >+
-> > #define RKISP1_DEBUG_DATA_COUNT_BINS	32
-> > #define RKISP1_DEBUG_DATA_COUNT_STEP	(4096 / RKISP1_DEBUG_DATA_COUNT_BINS)
-> >
-> >@@ -214,6 +232,9 @@ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
-> > 	debugfs_create_file("srsz", 0444, regs_dir,
-> > 			    &rkisp1->resizer_devs[RKISP1_SELFPATH],
-> > 			    &rkisp1_debug_dump_rsz_regs_fops);
-> >+
-> >+	debugfs_create_file("mi_mp_y_bufs", 0444, regs_dir, rkisp1,
-> >+			    &rkisp1_debug_dump_mi_mp_y_offs_cnt_fops);
-> 
-> You didn't change the file name as Laurent suggested
+>
+> hi Lucas, sorry for not following up on this for so long. This fixes
+> suspend/resume for me:
+>
+> https://lore.kernel.org/linux-arm-kernel/20220711094549.3445566-1-martin.kepplinger@puri.sm/T/#t
+>
+> thank you for you help so far,
+>
 
-I've fixed that locally, will be included in v3.
+Thanks a lot for keeping us posted. The fix for suspend/resume
+looks great!
 
-> > }
-> >
-> > void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
-
--- 
-Regards,
-
-Laurent Pinchart
+Ezequiel
 
 _______________________________________________
 Linux-rockchip mailing list
