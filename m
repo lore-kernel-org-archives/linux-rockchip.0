@@ -4,134 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 724ABC43334
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 16:38:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38FC2CCA47B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 16:51:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Cc:From:
-	References:To:Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6ciQQv94trzMxuVBVVSas17ShO0ymBxMVsFa11Rs7Ks=; b=3ycRiZJTTYGcEa
-	Y1+MwtHEV6ji2n8UwslxhZpVDu2sHmkWxt+CEegvZba0gPAevB/AhGfAdsEv5BpP+rVXcMOdRctMy
-	y+HrC8r8zPL4EuMP3FVBFTqJroi6ERh/agPRK60lOIsKuXN19Ug8Ps8GQOc2OJ55RNwBGL4RaOnYY
-	sEK7MiuAW+Vfa7q6xl2ZkvCA/IaulNXY1GaNOyRegWkRFyeTKSxcGj86tPr6KS+2jd3+ODM5zaiLF
-	TE1G0zq78nedMplBGVcW2LFYWh88uJLiwviU78qBC7XPHdi7lcgSCWqbyMAj4YY9lUjSxOw0V/c0g
-	+gA+bPsk1+JxCArP4wVA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FQftcjKHhHHAfmpHpigLeUehd+uI6zqNBefCJyfrd3k=; b=hYP3qQfCSywDlR
+	M1VquyPWdNIw+jrXoQIsc8zhMKE2Yvt8cg4p8w+pcLymF01AJ/YFBQGHzSUELobsSBzGCO3Ss28aF
+	NkkpWeL622sIsZos8FDSt88rW+Acof+cYBX8C1fYn8Sz/zGPX8H02UZdsu9faidWTMtspdNtpyzo9
+	G90AoeboYVy1y0Nd+g0M6AzPiiEDqdFBFOVUlh9dFNGtF6RNeB+ChsyVm8K3lClpAepBiOZoBtBkU
+	TD8/auSf/aYe8mJVUECfywmtUaJMR7qdaPEohuAJeCCleJPZJ4hHTFRbgks/jtaz8d9RARX0X5Y1J
+	DZ1E/5iojScPQrpJ+StA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAwQ5-003FjC-Rz; Mon, 11 Jul 2022 16:38:01 +0000
-Received: from mail-am6eur05on2075.outbound.protection.outlook.com ([40.107.22.75] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
+	id 1oAwcp-003Kbu-1w; Mon, 11 Jul 2022 16:51:11 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAwQ2-003FhB-Lt
-	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 16:38:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UlsxjmqVqacwU9SYL9UM9JD3gqeDcKjoOiW1hdkOhhYD3F5BD8G1P1/wNzJ0vYd2PtxVYBQjADBFtwJ+YBtSN+1xMMiTfRzM2MwzuF29ENJ/tOGrV54A0vL7iq+qjVitwsN5dLc81JJal3fE1x7OfSwlB2IMXW0Fbif3619rjteyD3CSxmklqQdD7tG9lSwFL+zEzDvOMwqCS9cROQwdbySTsBEd3kd8CcDvZVfHsw0Bq0vbKxgrluYExf/M5Snuv9kPofGVN278RXOoBZEgk9fwDlcvP3ANlGjrWnNVdepxurAonfo6+pB6soZ+f7F/m4IplP1iDDpkYckqNJm6gQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zHe35JFhVHw6/OeozF7GFo4Uvw/cVrrZin7r6e3bZTY=;
- b=OQ6+jcNKPADk8vRBhorfpvx5YCOxP1RN9WfNWqnirP7LbW8Af0bOWpmG/hDsIP5+3M6Bb2IM0I5X3r7ZLU+MI2z8CElbFhSerLCunahOODpODRUoDx1/gM1hivqN+ga9s9Hl/JtNpruw1ypMrvq+zjIiaGQohfmQTyLKE7HgJasLwp8i3aMcV3GaG/KaZgnd2r05WmOmCXMbDX7PMxeOkaVGzMWE+s/9cTwPqnvUnJrekYiPDayRFMAI9eYkaIw8BK4hkOcXOlL32KKfrwRdhu9m5LMmlnTX3EPiSyM9EuYGV0k0r3+L3FxFhH1/FmxL4tCX8gFSXk08eW4sjHsDYA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zHe35JFhVHw6/OeozF7GFo4Uvw/cVrrZin7r6e3bZTY=;
- b=kf+uN1gC+2dXIy9XmMLoxjJ2iwCwEjfDnQNNjnKkYZvKlA/fbq1j32RIhdpqBhPLMNdk3UTP6seHqTT7+hHb+irOE80TzDQM3oWZPLkyoSGRr/arPsDGtvZ8nVrPpq76GWJhz/lATRTRi9BGcBo7mlbNMRegI60gTc1sr/Hhl9c=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from AM4PR0802MB2131.eurprd08.prod.outlook.com
- (2603:10a6:200:5c::22) by AM8PR08MB6546.eurprd08.prod.outlook.com
- (2603:10a6:20b:355::18) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5417.15; Mon, 11 Jul
- 2022 16:37:53 +0000
-Received: from AM4PR0802MB2131.eurprd08.prod.outlook.com
- ([fe80::dcaa:905c:ff8:1f5b]) by AM4PR0802MB2131.eurprd08.prod.outlook.com
- ([fe80::dcaa:905c:ff8:1f5b%9]) with mapi id 15.20.5417.026; Mon, 11 Jul 2022
- 16:37:53 +0000
-Message-ID: <7f32db4b-7355-ec48-2e9f-b1db6c24a560@wolfvision.net>
-Date: Mon, 11 Jul 2022 18:37:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH v3 44/46] media: rkisp1: Add infrastructure to support ISP
- features
-Content-Language: en-US
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+	id 1oAwcm-003KZU-4y
+	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 16:51:09 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 05D23326;
+	Mon, 11 Jul 2022 18:51:05 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1657558266;
+	bh=KOgT+6L+h1zlwGrFOLmavt4b32iztY2zE9g1TXtIcnQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RNDDKIDbH0TvJbQ6BhEdvEF65PSJlsrgLJGkRzxJ5plhNm5d1zsgShLBeZ2uYP0W+
+	 Q6BpC9vJz8Oc+vPTPePNsTX7MnW7QGtQGUDrpovdlJoFCRfjRqv+DRxKd9+GhqfDN/
+	 jakKOmjQdMM5ZSm665Kmcu8jyfNdbqzi0nM5+xp4=
+Date: Mon, 11 Jul 2022 19:50:39 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Michael Riesch <michael.riesch@wolfvision.net>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Helen Koike <helen.koike@collabora.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org
+Subject: Re: [PATCH v3 44/46] media: rkisp1: Add infrastructure to support
+ ISP features
+Message-ID: <YsxU32X+C6nV1YPU@pendragon.ideasonboard.com>
 References: <20220711124248.2683-1-laurent.pinchart@ideasonboard.com>
  <20220711124248.2683-45-laurent.pinchart@ideasonboard.com>
-From: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Dafna Hirschfeld <dafna@fastmail.com>,
- Helen Koike <helen.koike@collabora.com>, Heiko Stuebner <heiko@sntech.de>,
- linux-media@vger.kernel.org
-In-Reply-To: <20220711124248.2683-45-laurent.pinchart@ideasonboard.com>
-X-ClientProxiedBy: ZR0P278CA0144.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:40::23) To AM4PR0802MB2131.eurprd08.prod.outlook.com
- (2603:10a6:200:5c::22)
+ <7f32db4b-7355-ec48-2e9f-b1db6c24a560@wolfvision.net>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: da6e3e8d-8021-4ca3-26ea-08da635bb34c
-X-MS-TrafficTypeDiagnostic: AM8PR08MB6546:EE_
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	YKoGXNvifDR0bxr1dwqBJBVFblJk8UeT5jMHp75cLeyjNiCBYJscqkWsEmL2DAwUQeAgOvdPEZZMA4uASfxFqeLjnvADo2S5mtwSsX4Ncnj6SzAM8P/go1gtQJdL+TQYUKSox1w7CR4JEpOlq0iSvy5GPGV7QO7RV0sIuDWHSS6iWbYkGIttnfoCiDSD4wGY3ncrma5qlp4JTi7pA3q0hJNTIrM5xR1mqFrkIhZM0+amY5OPAj5mGvrHpD3AoaoDbczG1SbVvl7N7sydnOzYpTjMO83webbRJcCJ+NKnkmxjNZtdixOf5HQRNuoP2DWbRDFE5BUTxVCQp63pLeV3UiZHn44XKnWOdSyRFpuJyGPRQul7ApIbieQUiHtoXIJRy0MS7JlNog4fgAxWseq1a3cZq08JdDboVdecSXFfPlFWgFXCtEg4j9bwxvn98AJeoj6hc8lrCdMvg6ib/QSvxDKwEcdA8r4ZzIljIcvHQGWgv6uHXcp9iz+/AXW6oYOKrebTBOE2n09M0o4Kdam3hE4gjPAklajvA2wCgiLY6KU4dMDdMhe+T9Bhd6VCguMN60pOss+L8rtHR6smwvXl4d+qJ3Tg1J7ZKWIzu/UCko2uGpLnHRJjTYE8Ca+XDcXbAtyX90+/VbkJ5eMjR87Ds6qfepFlwTB8fN2OdR+wt4F9AGx623uY5+acYMcD6zxuZPqGyw2iN/qrbyK4+1BUxgyVM0mVlqRgVXz9Fqu0EF28F7fZYRZfwWr5vT3W5cKR5+1wQ2Hc9DrgsbLTS3PSvMjyPUkjx34+jFX6Fz+Nvt0R3BDvR4ZJIu7vTuIX4C1EItt7ssx4MuR2pl39Qx6WmA==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM4PR0802MB2131.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(4636009)(376002)(396003)(346002)(366004)(39850400004)(136003)(66946007)(478600001)(4744005)(44832011)(31686004)(6486002)(38100700002)(36756003)(2906002)(4326008)(8676002)(41300700001)(54906003)(6916009)(8936002)(5660300002)(316002)(66556008)(52116002)(2616005)(186003)(6512007)(53546011)(31696002)(6506007)(86362001)(66476007)(43740500002)(45980500001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?YmhRUmE4WWFsTDU4S21KNmFFUmtYUlJUT2FlOFJkbTJEOHE0U1k2OGlZTTdR?=
- =?utf-8?B?OStGMkRzb1YvSGlMblU4VmlQM2MwUXZDQ3F3RzE4Z2FNeWVnK0NMYmhGWUxO?=
- =?utf-8?B?bzdzb01TV0NRREltaXhsSEVmclNFYnV2NVBSZjBLMFU4Y3hGZFFFbDc5di9G?=
- =?utf-8?B?QUNRREQ3L0xjVVI2UUIwZ2U5L000QmVBNHIrYWFhcGs3aDFkNm13UllBNWlO?=
- =?utf-8?B?My93TitkS0VKeC9VdjUxdWxMRlJtNEVlUXQwTXYvUTY2eFFCSEphTysvNHJa?=
- =?utf-8?B?bFV0YlM4VTBUNXpSd3lQZHQxOS9SUU9CZmxUREJrTW9zYmI4SXdmK0JRQnJK?=
- =?utf-8?B?WHNXQmQwQ09Ycy9BN0hjUFNVZlFkS3NxQVROa0NGbnlJRE5vLzNjUkU4bkhB?=
- =?utf-8?B?am42cmkyLzEzNlY1WFdlNkNiVjVyL2xzaG9XT1Y3ZkluNi8rTVlmVXdRYkkz?=
- =?utf-8?B?enlGcHdiNXZvQ29PcmFMTU1mTlROYzhCZUlhdkhoZFJXTzc0eTd5RFRyTElj?=
- =?utf-8?B?SlZOSDhId2FYZHZqcWtVelFzOXZZNmV3RHhXREthcFZOOVpjcFpwMjFwNGlp?=
- =?utf-8?B?dnM1UFBhODY1TU5tSk14WW9ST1FWMzZHaWo5NFJSVnV5SzFIYzk3Yk1rTzkw?=
- =?utf-8?B?QjV3ME5xNU45dXdXL0hjT3IwUlN2R25WSHg2NFJQakdBdUJ2WFNHd2xDaU1Y?=
- =?utf-8?B?MGpFcGRncXMzZXNUcjZ5ZThLand5VHNCSUpWZ2Jjc0JrWmpzVWZ1V0FBb2ox?=
- =?utf-8?B?Q296WGtSeHBTTHhzcWNCVXJ2WW81VGNhc0lWWnEvOTVSclZsb21hNllpdDZa?=
- =?utf-8?B?OEEzTU04SzNxNHhFdURqOWo2ZmRSYm4ra2Z4NHJVWkpJUkJVVWl4MXQ5WlJL?=
- =?utf-8?B?WFo5UzFaRXQ4a0Y5Nktra1BzQnZacERpakI4UmxKZ0p3MWpqWUJKRHUwNDk4?=
- =?utf-8?B?MXFaUGMvL0RmRVYzMWJnekdhRVRvdER1aU85NkR5Z251NGNKcGMvMUJVQW10?=
- =?utf-8?B?SENGNCtST0V2L0dGOUpSbkgydmN3VVZNMzVlRW9BMVk5eU1GakQ0VFZyMlB6?=
- =?utf-8?B?U292ZC9JeFBKT2RJOG1KRHhMNGlQNHRmeFVTK01pK3pPZHB2Y01uRWNUWFhv?=
- =?utf-8?B?Wk1RRkdINzBVUzVsWTdjR2pXOHpEelZtQkw3dCtyK1ZFelJMckFiUHRHNHQr?=
- =?utf-8?B?bTdkZlI2amt1RGttVGlvZ1FvMUZFc2NUbldCQjN1VEdVdUl4b0pVT29IVXhO?=
- =?utf-8?B?R29qT2s4STZibHJhclBqeUd2TVk0c3JCK2NXa3VSNFpTdTZBNjFuREhtTzVC?=
- =?utf-8?B?eDc2QVUyTGI3cWFvS2tOVWticW83bHNrNmhsZ2JxOWYxbnp3U0VWb3NCcXlm?=
- =?utf-8?B?RzlSNXF5SVc1UUtzbkVGd3FjR2dXUWtSdThzQ1JwUW1JQllNdHF4MGtJbWtQ?=
- =?utf-8?B?OUhDWFFDQU5hTzJJeHJNSFRneXNyWDhka0hKYnpmVDk2NXVGVTVJeDQxMHBj?=
- =?utf-8?B?N05kTDVJQ3htU3VvOE1VUXVFbFVRK1ltM3VVZ01WYTgxK3h0THF0cE1XaVZh?=
- =?utf-8?B?RngwNkYyTnlrVzdzcXJyby9EVkVtMXkzQ3NseEtxR284RzFFOHg5ZERkRUVT?=
- =?utf-8?B?bHRkaHdpWUNkREhkbjJURDczZGlHSU9ZWDk4T3NhK2pVOUVLMHM2eVd2b3JR?=
- =?utf-8?B?d0FMZTFDTFhYK3k4TjlUcjVVR0tjQ01IZHczSEFiUUZxczB3Si9QYmthRFpT?=
- =?utf-8?B?dWNwTzRWS2NIckIydFB1UEJ4NTlmaVJpdHhoMjJXVDdiVGtBa2pyZ0tvMTZ3?=
- =?utf-8?B?ZFpEdXhKblZYRUliai9aazVaTVZZcXJ5aDhnYlgrK3Q5TTdVeHl5ZDZkT3JK?=
- =?utf-8?B?NWswSGwxUEg4U1l1WUhsSGVpck1IeEMxN3FuZjVvU2U3VFFYU3Bac2xKUURt?=
- =?utf-8?B?RG9WTXM0TU8wYjdTMG9rdHU3TjdERG4waC9oN1YwYUZMRGFhV214b1p5UTRC?=
- =?utf-8?B?dXk2dkxuK3p0azBPa0JVd09BT2lPVUxZc2RKQ2JxK2hHamU1WmI0QXRsdjhE?=
- =?utf-8?B?ZDJxbHluMjhxNHlVOHNNOXF1MEFuZkRhTmVGUktqZmNuR0t2NGJoSlY5dDRx?=
- =?utf-8?B?YUJVQjVsMUxxeURNQk1lS3dXNjJQTVpjYWhQWGQ1L2VsK21uVHJVVG94TFVS?=
- =?utf-8?B?a2xPZitJbzRmV3YxYkZvdjZ1L0haclJkSm5CR0tXZkh5Rnc4a1p0cFRCcHJr?=
- =?utf-8?B?TXFjT3BzRzJ2VWtoYUkwZ1hTVFpBPT0=?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: da6e3e8d-8021-4ca3-26ea-08da635bb34c
-X-MS-Exchange-CrossTenant-AuthSource: AM4PR0802MB2131.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jul 2022 16:37:52.9351
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Xg+7pB9GEYYymwVUPBQMvnFeBLfi30XGknKLkP+JwWsyMZopskUuaA/PRbdeQASPtE2YbeCD6Z7kdhZvez91VygFhRDAHU8Y8IDEBp5S7s8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM8PR08MB6546
+Content-Disposition: inline
+In-Reply-To: <7f32db4b-7355-ec48-2e9f-b1db6c24a560@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_093758_958354_6E6CC216 
-X-CRM114-Status: UNSURE (   7.14  )
+X-CRM114-CacheID: sfid-20220711_095108_368021_5456CA0E 
+X-CRM114-Status: UNSURE (   9.01  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -149,24 +71,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Laurent,
+Hi Michael,
 
-On 7/11/22 14:42, Laurent Pinchart wrote:
-> [...]
->  /*
->   * struct rkisp1_info - Model-specific ISP Information
->   *
-> @@ -106,6 +119,7 @@ enum rkisp1_isp_pad {
->   * @isrs: array of ISP interrupt descriptors
->   * @isr_size: number of entries in the @isrs array
->   * @isp_ver: ISP version
-> + * @features: bitmatk of rkisp1_feature features implemented by the ISP
+On Mon, Jul 11, 2022 at 06:37:51PM +0200, Michael Riesch wrote:
+> On 7/11/22 14:42, Laurent Pinchart wrote:
+> > [...]
+> >  /*
+> >   * struct rkisp1_info - Model-specific ISP Information
+> >   *
+> > @@ -106,6 +119,7 @@ enum rkisp1_isp_pad {
+> >   * @isrs: array of ISP interrupt descriptors
+> >   * @isr_size: number of entries in the @isrs array
+> >   * @isp_ver: ISP version
+> > + * @features: bitmatk of rkisp1_feature features implemented by the ISP
+> 
+> s/bitmatk/bitmask ?
 
-s/bitmatk/bitmask ?
+Thanks for spotting this. I've fixed the typo locally, I don't plan to
+post a v4 just for that.
 
-> [...]
-Best regards,
-Michael
+> > [...]
+
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
