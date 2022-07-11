@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FA3AC433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CF7ACCA480
 	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 12:58:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,29 +12,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ExFm3S11fdmYmVBBdsmR0k2wErXsfLgg2mKczk2GWGI=; b=NvZy7p/GZBgtQt
-	t9VznMaG0BLqEsuywrcBIeJBUZf79pR5KpRKTZL5xH8hgfq37eHMRTaQGeFfa5wpWW6ZgU4pWjw+5
-	q16gD3ynQOIo0yXndQHn8uSzkIGTmhet6nVlKcLdJFn6yt+k1k+ZMAwPqfIS6NaRqHWimKcWCHLnR
-	Bl4PZ8ZOJGHNAYWfeUnYBThiOgTdP/5zTnEpNRUs8tS40bTB3issxM5CArpnwfoEOllEX+sLyviU4
-	X0m/siH6zPWtmY0WqfsVEDVI53hW9j5FFITKfLvuSigpCc5w4F+pZlbWHS5Uf8T8ShtebltvQJXvK
-	BGFgzJGOM0T38iJkGuuw==;
+	List-Owner; bh=xZyBQ8rof/G7IPn5+jyPSCxNp1bSb3vMRJwa2BHXOwY=; b=H6Uc2lZuuryckv
+	YaPICMBNCf+2WHirmoEXpmbzQm8nR3N4B0uF3xDYrcuNdwXfRguk2XgF3YZOVgYgYjr+8KgURwhFA
+	u6doHOKuiGj+IuxO/VHxg7XnIcpjyWcOPRJ7m4eXs+WreKFC2MdPtw8e97IEALSFccbw0lRdCl2kA
+	VG+/EqDt9NGEb1Uy+PqWLo04xUGc4RtpERypcfRLVM2ZlViWtZsHTBc0/i7/uuUJ+JccEfOChceed
+	L18hybQC2d2m7l0l8eI+buf3YQA3wEC+NPexJBKeYuShE9oFO1OvvZSTWRFtCD6jG5Ykbu2YIxalb
+	52cacXbUieCuHtqvDM1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAsz4-001gUs-Ef; Mon, 11 Jul 2022 12:57:54 +0000
+	id 1oAsyy-001gPk-AX; Mon, 11 Jul 2022 12:57:48 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAslF-001YDr-7Y
-	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 12:43:40 +0000
+	id 1oAslF-001YEC-ND
+	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 12:43:41 +0000
 Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0E7181C55;
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A40D0440;
 	Mon, 11 Jul 2022 14:43:35 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657543415;
-	bh=F1QdLeUW3yWAWI1I2P154ju8330xmx2JjEaoxO7nkoA=;
+	s=mail; t=1657543416;
+	bh=RlK4exWAqaRYJVUJdirlFjjAHNRwMV6rEZlQMI1az98=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ay2EMvW8EmJCOoTtE5PGMFk/OMCdw/LhcE7l1jR78xmxoMmMuL+zftid+9mWBtoNJ
-	 js1gmCMAZ9ZubaGsUgUj55jurG8TYnkrEgvaWezP+pTf6GkHezpPaCwjq+daKE8H1R
-	 E7K0DPwvTFE1K9igB5fyUEA6AHnHCSjAlZFQKYWE=
+	b=dVPM8NVoDz3w2UEDM8Pk4EeLiJh7QbvbPRUbLg5yyeHi9q/FYUHzsZv+oRceAHxBk
+	 nYnPkWVGhM8k2PPTZVtulcyBieJicp3RTza5aDbdPmKG2LpkpD3r6Ysh7RWJ+R6tSa
+	 9Rl8UCTKzxAcrVyOpyXwjoWCk7pqL/Jmw00gbw+w=
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: linux-media@vger.kernel.org
 Cc: linux-rockchip@lists.infradead.org,
@@ -42,17 +42,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v3 26/46] media: rkisp1: isp: Don't initialize ret to 0 in rkisp1_isp_s_stream()
-Date: Mon, 11 Jul 2022 15:42:28 +0300
-Message-Id: <20220711124248.2683-27-laurent.pinchart@ideasonboard.com>
+Subject: [PATCH v3 27/46] media: rkisp1: isp: Pass mbus type and flags to rkisp1_config_cif()
+Date: Mon, 11 Jul 2022 15:42:29 +0300
+Message-Id: <20220711124248.2683-28-laurent.pinchart@ideasonboard.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220711124248.2683-1-laurent.pinchart@ideasonboard.com>
 References: <20220711124248.2683-1-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_054337_592874_E8D5BFCC 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220711_054338_026590_582508FF 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,28 +68,144 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The ret variable doesn't need to be initialized in
-rkisp1_isp_s_stream().
+To prepare for the removal of the active_sensor field from the
+rkisp1_device structure, pass the media bus type of flag to the
+rkisp1_config_cif() function instead of accessing them through
+active_sensor.
 
 Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../platform/rockchip/rkisp1/rkisp1-isp.c     | 44 +++++++++----------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
 
 diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-index da895f6aa3fa..faf80197edbf 100644
+index faf80197edbf..501996fffca0 100644
 --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
 +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-@@ -751,7 +751,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
- 		container_of(sd->v4l2_dev, struct rkisp1_device, v4l2_dev);
- 	struct rkisp1_isp *isp = &rkisp1->isp;
- 	struct v4l2_subdev *sensor_sd;
--	int ret = 0;
-+	int ret;
+@@ -136,15 +136,14 @@ static void rkisp1_config_ism(struct rkisp1_device *rkisp1)
+ /*
+  * configure ISP blocks with input format, size......
+  */
+-static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
++static int rkisp1_config_isp(struct rkisp1_device *rkisp1,
++			     enum v4l2_mbus_type mbus_type, u32 mbus_flags)
+ {
+ 	u32 isp_ctrl = 0, irq_mask = 0, acq_mult = 0, signal = 0;
+ 	const struct rkisp1_mbus_info *src_fmt, *sink_fmt;
+-	struct rkisp1_sensor_async *sensor;
+ 	struct v4l2_mbus_framefmt *sink_frm;
+ 	struct v4l2_rect *sink_crop;
  
- 	if (!enable) {
- 		v4l2_subdev_call(rkisp1->active_sensor->sd, video, s_stream,
+-	sensor = rkisp1->active_sensor;
+ 	sink_fmt = rkisp1->isp.sink_fmt;
+ 	src_fmt = rkisp1->isp.src_fmt;
+ 	sink_frm = rkisp1_isp_get_pad_fmt(&rkisp1->isp, NULL,
+@@ -157,7 +156,7 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
+ 	if (sink_fmt->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
+ 		acq_mult = 1;
+ 		if (src_fmt->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
+-			if (sensor->mbus_type == V4L2_MBUS_BT656)
++			if (mbus_type == V4L2_MBUS_BT656)
+ 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_RAW_PICT_ITU656;
+ 			else
+ 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_RAW_PICT;
+@@ -165,17 +164,17 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
+ 			rkisp1_write(rkisp1, RKISP1_CIF_ISP_DEMOSAIC,
+ 				     RKISP1_CIF_ISP_DEMOSAIC_TH(0xc));
+ 
+-			if (sensor->mbus_type == V4L2_MBUS_BT656)
++			if (mbus_type == V4L2_MBUS_BT656)
+ 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_BAYER_ITU656;
+ 			else
+ 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_BAYER_ITU601;
+ 		}
+ 	} else if (sink_fmt->pixel_enc == V4L2_PIXEL_ENC_YUV) {
+ 		acq_mult = 2;
+-		if (sensor->mbus_type == V4L2_MBUS_CSI2_DPHY) {
++		if (mbus_type == V4L2_MBUS_CSI2_DPHY) {
+ 			isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU601;
+ 		} else {
+-			if (sensor->mbus_type == V4L2_MBUS_BT656)
++			if (mbus_type == V4L2_MBUS_BT656)
+ 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU656;
+ 			else
+ 				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU601;
+@@ -185,17 +184,16 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
+ 	}
+ 
+ 	/* Set up input acquisition properties */
+-	if (sensor->mbus_type == V4L2_MBUS_BT656 ||
+-	    sensor->mbus_type == V4L2_MBUS_PARALLEL) {
+-		if (sensor->mbus_flags & V4L2_MBUS_PCLK_SAMPLE_RISING)
++	if (mbus_type == V4L2_MBUS_BT656 || mbus_type == V4L2_MBUS_PARALLEL) {
++		if (mbus_flags & V4L2_MBUS_PCLK_SAMPLE_RISING)
+ 			signal = RKISP1_CIF_ISP_ACQ_PROP_POS_EDGE;
+ 	}
+ 
+-	if (sensor->mbus_type == V4L2_MBUS_PARALLEL) {
+-		if (sensor->mbus_flags & V4L2_MBUS_VSYNC_ACTIVE_LOW)
++	if (mbus_type == V4L2_MBUS_PARALLEL) {
++		if (mbus_flags & V4L2_MBUS_VSYNC_ACTIVE_LOW)
+ 			signal |= RKISP1_CIF_ISP_ACQ_PROP_VSYNC_LOW;
+ 
+-		if (sensor->mbus_flags & V4L2_MBUS_HSYNC_ACTIVE_LOW)
++		if (mbus_flags & V4L2_MBUS_HSYNC_ACTIVE_LOW)
+ 			signal |= RKISP1_CIF_ISP_ACQ_PROP_HSYNC_LOW;
+ 	}
+ 
+@@ -265,17 +263,17 @@ static int rkisp1_config_dvp(struct rkisp1_device *rkisp1)
+ }
+ 
+ /* Configure MUX */
+-static int rkisp1_config_path(struct rkisp1_device *rkisp1)
++static int rkisp1_config_path(struct rkisp1_device *rkisp1,
++			      enum v4l2_mbus_type mbus_type)
+ {
+-	struct rkisp1_sensor_async *sensor = rkisp1->active_sensor;
+ 	u32 dpcl = rkisp1_read(rkisp1, RKISP1_CIF_VI_DPCL);
+ 	int ret = 0;
+ 
+-	if (sensor->mbus_type == V4L2_MBUS_BT656 ||
+-	    sensor->mbus_type == V4L2_MBUS_PARALLEL) {
++	if (mbus_type == V4L2_MBUS_BT656 ||
++	    mbus_type == V4L2_MBUS_PARALLEL) {
+ 		ret = rkisp1_config_dvp(rkisp1);
+ 		dpcl |= RKISP1_CIF_VI_DPCL_IF_SEL_PARALLEL;
+-	} else if (sensor->mbus_type == V4L2_MBUS_CSI2_DPHY) {
++	} else if (mbus_type == V4L2_MBUS_CSI2_DPHY) {
+ 		dpcl |= RKISP1_CIF_VI_DPCL_IF_SEL_MIPI;
+ 	}
+ 
+@@ -285,14 +283,15 @@ static int rkisp1_config_path(struct rkisp1_device *rkisp1)
+ }
+ 
+ /* Hardware configure Entry */
+-static int rkisp1_config_cif(struct rkisp1_device *rkisp1)
++static int rkisp1_config_cif(struct rkisp1_device *rkisp1,
++			     enum v4l2_mbus_type mbus_type, u32 mbus_flags)
+ {
+ 	int ret;
+ 
+-	ret = rkisp1_config_isp(rkisp1);
++	ret = rkisp1_config_isp(rkisp1, mbus_type, mbus_flags);
+ 	if (ret)
+ 		return ret;
+-	ret = rkisp1_config_path(rkisp1);
++	ret = rkisp1_config_path(rkisp1, mbus_type);
+ 	if (ret)
+ 		return ret;
+ 	rkisp1_config_ism(rkisp1);
+@@ -777,7 +776,8 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+ 
+ 	rkisp1->isp.frame_sequence = -1;
+ 	mutex_lock(&isp->ops_lock);
+-	ret = rkisp1_config_cif(rkisp1);
++	ret = rkisp1_config_cif(rkisp1, rkisp1->active_sensor->mbus_type,
++				rkisp1->active_sensor->mbus_flags);
+ 	if (ret)
+ 		goto mutex_unlock;
+ 
 -- 
 Regards,
 
