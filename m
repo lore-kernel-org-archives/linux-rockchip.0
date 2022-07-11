@@ -4,54 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14AE2C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 12:59:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 117ACC433EF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 Jul 2022 13:06:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jClWWV1zmbwXpOZdvhq1m6Bg9H7h2xDlXRekKx6PFz8=; b=ZD3UzfYrqvdRoJ
-	2fRn+ZzumD1er2tLtHPfBINzF/BYrExIwF95CUPNb/Sdbda2yO9UNd8urpJ4lug6CPiAx4vntRN6q
-	VzWFnQxioOxcUQqnUuii2UxTPV/4VC2GteltMB9Dk8PuSEj/7qJ6kSKc7PpnyKOBfFipSQ7Qoc8mI
-	tyyV9hL1E9EgGlv2SVEdWjmthgBF9M5XCV5AerBDv9sRP26ac6cRqQGnpx5a3hkgkoQBz7b3d0CL8
-	hoAlRlZG/78svt487himOh5DRQd3NY5VJz7qLepmSY/JQ58H3/gNqiTr+svPB4CZXKpPRRh9UOH2p
-	VzmxDJSNDYXnYEfbrPnA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FYqpTIu2MDPMZnmrADq+bnTLncmeFo8E5j97CdGC4pY=; b=H+OnJo7LFKwXFt
+	vAQqtoWrum6Hp7nJKRd73ZAQxGmZAKITVVl8VkVVwIkZCfcXgIfcvOt62AN/17+G0KHkRF7B89fQU
+	2rbgLpEMnZ3WC5VAAjSo8FkB5k2Ca4OO80hR/OLYU0xjmOYpLpovDZLb6ym4kJ9W/Zix0n/UR3D7m
+	VOk5KGZpYZu+VH10Qb0Cvdb8a0tv3oRu20i/qy6gAw2xkcMS/oTl1lXyN86glIYwb8xGinSH/IQ5a
+	bxNz3NpfrPnC2VmP7IIvuswZMOUJLcsxBmXBbORWgNoy2xb2yxik0h3NruWK+z502vQoZqoMaxjhg
+	h9oa3IXdFOXJkPIg/V7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAszw-001hPA-JO; Mon, 11 Jul 2022 12:58:48 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oAslQ-001YMt-Ld
-	for linux-rockchip@lists.infradead.org; Mon, 11 Jul 2022 12:43:50 +0000
-Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CEE0E1B3F;
-	Mon, 11 Jul 2022 14:43:46 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657543427;
-	bh=6SMlAvs+yRBz6lY+aRVcA8GR5qhX2rLh9MEc+kUtftU=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=fA5SdH3SSr3PZ2DwoUO4wzmoVSPFUPpzzVaTGiSJA/xROokmQgWsjUc0OKo+DHizu
-	 TLqcowa4T7B+9GBn6ZPIGT86svZ+6lvcqXURwZTg4Tzx6zlrA8zZE5L01O7wCHOn6i
-	 5pPp0W+l40Wb6TjCwSo0YtLMdnL3QZ5A//ymglpI=
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Helen Koike <helen.koike@collabora.com>,
-	Paul Elder <paul.elder@ideasonboard.com>
-Subject: [PATCH v3 45/46] media: rkisp1: Make the internal CSI-2 receiver optional
-Date: Mon, 11 Jul 2022 15:42:47 +0300
-Message-Id: <20220711124248.2683-46-laurent.pinchart@ideasonboard.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220711124248.2683-1-laurent.pinchart@ideasonboard.com>
-References: <20220711124248.2683-1-laurent.pinchart@ideasonboard.com>
+	id 1oAt76-001mCd-FQ; Mon, 11 Jul 2022 13:06:12 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oAt61-001ldI-7l; Mon, 11 Jul 2022 13:05:08 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 41D961576;
+	Mon, 11 Jul 2022 06:05:00 -0700 (PDT)
+Received: from monolith.localdoman (unknown [172.31.20.19])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 290A93F70D;
+	Mon, 11 Jul 2022 06:04:58 -0700 (PDT)
+From: Alexandru Elisei <alexandru.elisei@arm.com>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org,
+	perex@perex.cz,
+	tiwai@suse.com,
+	heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	alsa-devel@alsa-project.org,
+	judyhsiao@chromium.org
+Subject: [PATCH] ASoC: rockchip: i2s: Fix NULL pointer dereference when pinctrl is not found
+Date: Mon, 11 Jul 2022 14:05:22 +0100
+Message-Id: <20220711130522.401551-1-alexandru.elisei@arm.com>
+X-Mailer: git-send-email 2.37.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220711_054348_912871_12FCFCFE 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20220711_060505_432187_5276CCBE 
+X-CRM114-Status: GOOD (  16.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,121 +65,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Not all ISP versions integrate a MIPI CSI-2 receiver.
+Commit a5450aba737d ("ASoC: rockchip: i2s: switch BCLK to GPIO") switched
+BCLK to GPIO functions when probing the i2s bus interface, but missed
+adding a check for when devm_pinctrl_get() returns an error.  This can lead
+to the following NULL pointer dereference on a rockpro64-v2 if there are no
+"pinctrl" properties in the i2s device tree node:
 
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
+[    0.658381] rockchip-i2s ff880000.i2s: failed to find i2s default state
+[    0.658993] rockchip-i2s ff880000.i2s: failed to find i2s gpio state
+[    0.660072] rockchip-i2s ff890000.i2s: failed to find i2s default state
+[    0.660670] rockchip-i2s ff890000.i2s: failed to find i2s gpio state
+[    0.661716] rockchip-i2s ff8a0000.i2s: failed to find i2s pinctrl
+[    0.662276] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000005
+[    0.663061] Mem abort info:
+[    0.663317]   ESR = 0x0000000096000004
+[    0.663658]   EC = 0x25: DABT (current EL), IL = 32 bits
+[    0.664136]   SET = 0, FnV = 0
+[    0.664171] mmc2: SDHCI controller on fe330000.mmc [fe330000.mmc] using ADMA
+[    0.664409]   EA = 0, S1PTW = 0
+[    0.664415]   FSC = 0x04: level 0 translation fault
+[    0.664421] Data abort info:
+[    0.666050]   ISV = 0, ISS = 0x00000004
+[    0.666399]   CM = 0, WnR = 0
+[    0.666671] [0000000000000005] user address but active_mm is swapper
+[    0.667240] Internal error: Oops: 96000004 [#1] PREEMPT SMP
+[    0.667742] Modules linked in:
+[    0.668028] CPU: 5 PID: 1 Comm: swapper/0 Not tainted 5.19.0-rc6 #300
+[    0.668608] Hardware name: Pine64 RockPro64 v2.0 (DT)
+[    0.669062] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    0.669689] pc : pinctrl_lookup_state+0x20/0xc0
+[    0.670110] lr : rockchip_i2s_probe+0x1a8/0x54c
+[    0.670527] sp : ffff80000a17bb30
+[    0.670829] x29: ffff80000a17bb30 x28: 0000000000000000 x27: ffff8000097c04c8
+[    0.671480] x26: ffff800009871060 x25: ffff800009871078 x24: ffff000001c11368
+[    0.672129] x23: ffff8000092dc850 x22: ffffffffffffffed x21: ffff8000096f7e98
+[    0.672776] x20: ffffffffffffffed x19: ffff000001d92480 x18: ffffffffffffffff
+[    0.673423] x17: 000000040044ffff x16: ffff0000f77db2d0 x15: 0764076e07690766
+[    0.674070] x14: 0720076f07740720 x13: ffff800009e129f0 x12: 000000000000038d
+[    0.674717] x11: 000000000000012f x10: ffff800009e6a9f0 x9 : ffff800009e129f0
+[    0.675364] x8 : 00000000ffffefff x7 : ffff800009e6a9f0 x6 : 80000000fffff000
+[    0.676011] x5 : 000000000000bff4 x4 : 0000000000000000 x3 : 0000000000000000
+[    0.676657] x2 : 0000000000000000 x1 : ffff8000096f7e98 x0 : ffffffffffffffed
+[    0.677304] Call trace:
+[    0.677531]  pinctrl_lookup_state+0x20/0xc0
+[    0.677914]  rockchip_i2s_probe+0x1a8/0x54c
+[    0.678297]  platform_probe+0x68/0xc0
+[    0.678638]  really_probe.part.0+0x9c/0x2ac
+[    0.679027]  __driver_probe_device+0x98/0x144
+[    0.679429]  driver_probe_device+0xac/0x140
+[    0.679814]  __driver_attach+0xf8/0x184
+[    0.680169]  bus_for_each_dev+0x70/0xd0
+[    0.680524]  driver_attach+0x24/0x30
+[    0.680856]  bus_add_driver+0x150/0x200
+[    0.681210]  driver_register+0x78/0x130
+[    0.681560]  __platform_driver_register+0x28/0x34
+[    0.681988]  rockchip_i2s_driver_init+0x1c/0x28
+[    0.682407]  do_one_initcall+0x50/0x1c0
+[    0.682760]  kernel_init_freeable+0x204/0x288
+[    0.683160]  kernel_init+0x28/0x13c
+[    0.683482]  ret_from_fork+0x10/0x20
+[    0.683816] Code: aa0003f4 a9025bf5 aa0003f6 aa0103f5 (f8418e93)
+[    0.684365] ---[ end trace 0000000000000000 ]---
+[    0.684813] Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b
+[    0.685500] SMP: stopping secondary CPUs
+[    0.685995] Kernel Offset: disabled
+[    0.686310] CPU features: 0x800,00105811,00001086
+[    0.686736] Memory Limit: none
+[    0.687021] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b ]---
+
+Check that i2s->pinctrl is valid before attempting to search for the
+bclk_on and bclk_off pinctrl states.
+
+Fixes: a5450aba737d ("ASoC: rockchip: i2s: switch BCLK to GPIO")
+Signed-off-by: Alexandru Elisei <alexandru.elisei@arm.com>
 ---
- .../platform/rockchip/rkisp1/rkisp1-dev.c     | 50 +++++++++++++------
- 1 file changed, 34 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index bc278b49fefc..f2475c6235ea 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -205,6 +205,14 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+Full log at [1], config at [2] (pastebins expire after 6 months).
+
+I'm not familiar with this part of the kernel, I did my best to come up
+with an explanation and a fix for the panic.
+
+Read Documentation/devicetree/bindings/sound/rockchip-i2s.yaml, which has the
+definition for the i2s nodes with the same compatible string as the i2s@ff8a0000
+that is causing the panic (which is, "rockchip,rk3399-i2s"
+"rockchip,rk3066-i2s"). There's no mention there of a "pinctrl" property, maybe
+I'm reading the docs wrong, or maybe the board devicetree also needs fixing.
+
+[1] https://pastebin.com/vuRVDsKk
+[2] https://pastebin.com/3yDMF7YE
+
+ sound/soc/rockchip/rockchip_i2s.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 99a128a666fb..c9fedf6eb2e6 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -808,8 +808,11 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
  
- 		switch (reg) {
- 		case 0:
-+			/* MIPI CSI-2 port */
-+			if (!(rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)) {
-+				dev_err(rkisp1->dev,
-+					"internal CSI must be available for port 0\n");
-+				ret = -EINVAL;
-+				break;
-+			}
-+
- 			vep.bus_type = V4L2_MBUS_CSI2_DPHY;
- 			break;
- 
-@@ -330,13 +338,16 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
- 	unsigned int i;
- 	int ret;
- 
--	/* Link the CSI receiver to the ISP. */
--	ret = media_create_pad_link(&rkisp1->csi.sd.entity, RKISP1_CSI_PAD_SRC,
--				    &rkisp1->isp.sd.entity,
--				    RKISP1_ISP_PAD_SINK_VIDEO,
--				    MEDIA_LNK_FL_ENABLED);
--	if (ret)
--		return ret;
-+	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
-+		/* Link the CSI receiver to the ISP. */
-+		ret = media_create_pad_link(&rkisp1->csi.sd.entity,
-+					    RKISP1_CSI_PAD_SRC,
-+					    &rkisp1->isp.sd.entity,
-+					    RKISP1_ISP_PAD_SINK_VIDEO,
-+					    MEDIA_LNK_FL_ENABLED);
-+		if (ret)
-+			return ret;
+ 	i2s->bclk_ratio = 64;
+ 	i2s->pinctrl = devm_pinctrl_get(&pdev->dev);
+-	if (IS_ERR(i2s->pinctrl))
++	if (IS_ERR(i2s->pinctrl)) {
+ 		dev_err(&pdev->dev, "failed to find i2s pinctrl\n");
++		ret = PTR_ERR(i2s->pinctrl);
++		goto err_clk;
 +	}
  
- 	/* create ISP->RSZ->CAP links */
- 	for (i = 0; i < 2; i++) {
-@@ -379,7 +390,8 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
- 
- static void rkisp1_entities_unregister(struct rkisp1_device *rkisp1)
- {
--	rkisp1_csi_unregister(rkisp1);
-+	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
-+		rkisp1_csi_unregister(rkisp1);
- 	rkisp1_params_unregister(rkisp1);
- 	rkisp1_stats_unregister(rkisp1);
- 	rkisp1_capture_devs_unregister(rkisp1);
-@@ -411,9 +423,11 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
- 	if (ret)
- 		goto error;
- 
--	ret = rkisp1_csi_register(rkisp1);
--	if (ret)
--		goto error;
-+	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
-+		ret = rkisp1_csi_register(rkisp1);
-+		if (ret)
-+			goto error;
-+	}
- 
- 	ret = rkisp1_create_links(rkisp1);
- 	if (ret)
-@@ -576,9 +590,11 @@ static int rkisp1_probe(struct platform_device *pdev)
- 		goto err_unreg_v4l2_dev;
- 	}
- 
--	ret = rkisp1_csi_init(rkisp1);
--	if (ret)
--		goto err_unreg_media_dev;
-+	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
-+		ret = rkisp1_csi_init(rkisp1);
-+		if (ret)
-+			goto err_unreg_media_dev;
-+	}
- 
- 	ret = rkisp1_entities_register(rkisp1);
- 	if (ret)
-@@ -595,7 +611,8 @@ static int rkisp1_probe(struct platform_device *pdev)
- err_unreg_entities:
- 	rkisp1_entities_unregister(rkisp1);
- err_cleanup_csi:
--	rkisp1_csi_cleanup(rkisp1);
-+	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
-+		rkisp1_csi_cleanup(rkisp1);
- err_unreg_media_dev:
- 	media_device_unregister(&rkisp1->media_dev);
- err_unreg_v4l2_dev:
-@@ -613,7 +630,8 @@ static int rkisp1_remove(struct platform_device *pdev)
- 	v4l2_async_nf_cleanup(&rkisp1->notifier);
- 
- 	rkisp1_entities_unregister(rkisp1);
--	rkisp1_csi_cleanup(rkisp1);
-+	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
-+		rkisp1_csi_cleanup(rkisp1);
- 	rkisp1_debug_cleanup(rkisp1);
- 
- 	media_device_unregister(&rkisp1->media_dev);
+ 	i2s->bclk_on = pinctrl_lookup_state(i2s->pinctrl,
+ 				   "bclk_on");
 -- 
-Regards,
-
-Laurent Pinchart
+2.37.0
 
 
 _______________________________________________
