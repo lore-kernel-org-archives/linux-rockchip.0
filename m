@@ -4,52 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C748C433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Jul 2022 11:02:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4538C43334
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Jul 2022 11:17:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gvxo9BCWjtYxIcVRYkRxj+Suw8/KxJeHVK9/Jry+HIw=; b=x+5I3CrSTh3nKj
-	SV3digcaQgZVmIkWKVPBM4rBnXZWCpIaT68qwdXnPUrusoZ90RjYtEWzFQJByDUkGH4oH/PLZ0No5
-	WIHVwYzJry7e7g1WUZ8q3pe28IafkR5I8T5vyZt9AF/4QWA+r4VtNTXZ+gb0XqqLwH5UlY4k7VyWR
-	uRizsnjHlhsvDfOUAQfL7CKzb9UmRv8c1tkmE9jheq2ANBeF3sTQ9OO8jj7TdRsUvrjbFO84b7QkW
-	mLDijfEmyBedkx/Mv2rX+NkDockmYUOsMoJ7zwG+3+hiR+TZW0z5bFjGGmY4RYJz1CCTxQUS1VX85
-	z8zzMTs6I/WHnyrB8dxw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VjcM8En+Myod3tEpK+CAmWL4xJIidfjcF1ls9r72crI=; b=NiFub6XRQWLKDYCxlc3bOiQif6
+	w4xEnalfIgqq8s6J2J2rvKpDFpZvkM1Xe7IrmCRxZtjpq+g58a0dzkspCBljPmMKeHD8tUYmYhdve
+	pKMOwZkTgXoH+Ejb5vXsZzYmmj2ZHSmz8xm45qaVT1QeL63Zkr4LEkD4/SdeHuFlgkr6viGUGC5my
+	0Kh9ivG1kgd3OpU1W6Llhno3dAS//hrtibjG0SnVpxuBOHgrpdLH9CHpwCizYZuPBufKV/Y1Lyv0L
+	jDO5GS2NioBoidE3H1QobRjrTxuCmEOc/jGgMSZ/pSGrOluPAcbgt9g4HLbSiQuJz16/H4eyQ653l
+	jsU1NXoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBDeM-00ACxP-T1; Tue, 12 Jul 2022 11:01:54 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBDe8-00ACgW-BG; Tue, 12 Jul 2022 11:01:42 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 96FB21515;
-	Tue, 12 Jul 2022 04:01:38 -0700 (PDT)
-Received: from monolith.localdoman (unknown [172.31.20.19])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5A5D53F792;
-	Tue, 12 Jul 2022 04:01:36 -0700 (PDT)
-Date: Tue, 12 Jul 2022 12:02:02 +0100
-From: Alexandru Elisei <alexandru.elisei@arm.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: broonie@kernel.org, lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
-	heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
+	id 1oBDtD-00AMjp-Rg; Tue, 12 Jul 2022 11:17:15 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oBDrM-00ALRc-0T; Tue, 12 Jul 2022 11:15:21 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id E3A7261248;
+	Tue, 12 Jul 2022 11:15:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D0A7EC3411C;
+	Tue, 12 Jul 2022 11:15:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1657624518;
+	bh=pl+XSTy71759ycCBgu9SNDcZUWjRzFBZrxHr5o4NhkE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ij/VftPgtX3+p7oZlqQcNN5X4dIQyuD2oyvEMy/kkK0HkdTOPivSOS9gdF6Faz3Nf
+	 aUaNyyqRK1qIcgwuhwiki0AUEcELQlz9tmwnVSshklWq2Sxy39jfBLdPiJTyDh+qC1
+	 dA/R/95PdNkPd9CvjIYA5JxoRSNcPWiD1bikxvks11Alkp9kv6x0NwKT0H78aWQHYA
+	 IfTbm5APcUCzxBmtj1hwiCk/SLcIOooR1hvG+WjDP/oxLEhTgKplMI6ZTk5iBNx2Ck
+	 Wp0a77ITRnEpA1c1IOB1y0l7kqsa655UY9kOthW/QvuecFdALJmOnG+g5WvS7OXk8F
+	 qzZAj0r1/JzlA==
+Date: Tue, 12 Jul 2022 12:15:10 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Alexandru Elisei <alexandru.elisei@arm.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, lgirdwood@gmail.com, perex@perex.cz,
+	tiwai@suse.com, heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
 	alsa-devel@alsa-project.org, judyhsiao@chromium.org
 Subject: Re: [PATCH] ASoC: rockchip: i2s: Fix NULL pointer dereference when
  pinctrl is not found
-Message-ID: <Ys1UqkHRyvv91UC7@monolith.localdoman>
+Message-ID: <Ys1Xvp+IMIUpzNzo@sirena.org.uk>
 References: <20220711130522.401551-1-alexandru.elisei@arm.com>
  <CAGXv+5HyD63MSmnNSoHX6euR2qpnqh-Fn9rdRYRYz4Ci90+w8Q@mail.gmail.com>
  <Ys00vczqcIGzOadV@monolith.localdoman>
  <CAGXv+5G=YvDkm8a=Wyui4mqSskqPq-kQJfU4HGNXSGzz0hXiqw@mail.gmail.com>
+ <Ys1UqkHRyvv91UC7@monolith.localdoman>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAGXv+5G=YvDkm8a=Wyui4mqSskqPq-kQJfU4HGNXSGzz0hXiqw@mail.gmail.com>
+In-Reply-To: <Ys1UqkHRyvv91UC7@monolith.localdoman>
+X-Cookie: I like your SNOOPY POSTER!!
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_040140_504219_1C43CB99 
-X-CRM114-Status: GOOD (  44.12  )
+X-CRM114-CacheID: sfid-20220712_041520_117423_CFCBE62D 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,185 +74,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2357164800314396823=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On Tue, Jul 12, 2022 at 05:25:43PM +0800, Chen-Yu Tsai wrote:
-> On Tue, Jul 12, 2022 at 4:53 PM Alexandru Elisei
-> <alexandru.elisei@arm.com> wrote:
-> >
-> > Hi ChenYu,
-> >
-> > On Tue, Jul 12, 2022 at 02:17:32PM +0800, Chen-Yu Tsai wrote:
-> > > On Mon, Jul 11, 2022 at 9:06 PM Alexandru Elisei
-> > > <alexandru.elisei@arm.com> wrote:
-> > > >
-> > > > Commit a5450aba737d ("ASoC: rockchip: i2s: switch BCLK to GPIO") switched
-> > > > BCLK to GPIO functions when probing the i2s bus interface, but missed
-> > > > adding a check for when devm_pinctrl_get() returns an error.  This can lead
-> > > > to the following NULL pointer dereference on a rockpro64-v2 if there are no
-> > > > "pinctrl" properties in the i2s device tree node:
-> > > >
-> > > > [    0.658381] rockchip-i2s ff880000.i2s: failed to find i2s default state
-> > > > [    0.658993] rockchip-i2s ff880000.i2s: failed to find i2s gpio state
-> > > > [    0.660072] rockchip-i2s ff890000.i2s: failed to find i2s default state
-> > > > [    0.660670] rockchip-i2s ff890000.i2s: failed to find i2s gpio state
-> > > > [    0.661716] rockchip-i2s ff8a0000.i2s: failed to find i2s pinctrl
-> > > > [    0.662276] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000005
-> > > > [    0.663061] Mem abort info:
-> > > > [    0.663317]   ESR = 0x0000000096000004
-> > > > [    0.663658]   EC = 0x25: DABT (current EL), IL = 32 bits
-> > > > [    0.664136]   SET = 0, FnV = 0
-> > > > [    0.664171] mmc2: SDHCI controller on fe330000.mmc [fe330000.mmc] using ADMA
-> > > > [    0.664409]   EA = 0, S1PTW = 0
-> > > > [    0.664415]   FSC = 0x04: level 0 translation fault
-> > > > [    0.664421] Data abort info:
-> > > > [    0.666050]   ISV = 0, ISS = 0x00000004
-> > > > [    0.666399]   CM = 0, WnR = 0
-> > > > [    0.666671] [0000000000000005] user address but active_mm is swapper
-> > > > [    0.667240] Internal error: Oops: 96000004 [#1] PREEMPT SMP
-> > > > [    0.667742] Modules linked in:
-> > > > [    0.668028] CPU: 5 PID: 1 Comm: swapper/0 Not tainted 5.19.0-rc6 #300
-> > > > [    0.668608] Hardware name: Pine64 RockPro64 v2.0 (DT)
-> > > > [    0.669062] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> > > > [    0.669689] pc : pinctrl_lookup_state+0x20/0xc0
-> > > > [    0.670110] lr : rockchip_i2s_probe+0x1a8/0x54c
-> > > > [    0.670527] sp : ffff80000a17bb30
-> > > > [    0.670829] x29: ffff80000a17bb30 x28: 0000000000000000 x27: ffff8000097c04c8
-> > > > [    0.671480] x26: ffff800009871060 x25: ffff800009871078 x24: ffff000001c11368
-> > > > [    0.672129] x23: ffff8000092dc850 x22: ffffffffffffffed x21: ffff8000096f7e98
-> > > > [    0.672776] x20: ffffffffffffffed x19: ffff000001d92480 x18: ffffffffffffffff
-> > > > [    0.673423] x17: 000000040044ffff x16: ffff0000f77db2d0 x15: 0764076e07690766
-> > > > [    0.674070] x14: 0720076f07740720 x13: ffff800009e129f0 x12: 000000000000038d
-> > > > [    0.674717] x11: 000000000000012f x10: ffff800009e6a9f0 x9 : ffff800009e129f0
-> > > > [    0.675364] x8 : 00000000ffffefff x7 : ffff800009e6a9f0 x6 : 80000000fffff000
-> > > > [    0.676011] x5 : 000000000000bff4 x4 : 0000000000000000 x3 : 0000000000000000
-> > > > [    0.676657] x2 : 0000000000000000 x1 : ffff8000096f7e98 x0 : ffffffffffffffed
-> > > > [    0.677304] Call trace:
-> > > > [    0.677531]  pinctrl_lookup_state+0x20/0xc0
-> > > > [    0.677914]  rockchip_i2s_probe+0x1a8/0x54c
-> > > > [    0.678297]  platform_probe+0x68/0xc0
-> > > > [    0.678638]  really_probe.part.0+0x9c/0x2ac
-> > > > [    0.679027]  __driver_probe_device+0x98/0x144
-> > > > [    0.679429]  driver_probe_device+0xac/0x140
-> > > > [    0.679814]  __driver_attach+0xf8/0x184
-> > > > [    0.680169]  bus_for_each_dev+0x70/0xd0
-> > > > [    0.680524]  driver_attach+0x24/0x30
-> > > > [    0.680856]  bus_add_driver+0x150/0x200
-> > > > [    0.681210]  driver_register+0x78/0x130
-> > > > [    0.681560]  __platform_driver_register+0x28/0x34
-> > > > [    0.681988]  rockchip_i2s_driver_init+0x1c/0x28
-> > > > [    0.682407]  do_one_initcall+0x50/0x1c0
-> > > > [    0.682760]  kernel_init_freeable+0x204/0x288
-> > > > [    0.683160]  kernel_init+0x28/0x13c
-> > > > [    0.683482]  ret_from_fork+0x10/0x20
-> > > > [    0.683816] Code: aa0003f4 a9025bf5 aa0003f6 aa0103f5 (f8418e93)
-> > > > [    0.684365] ---[ end trace 0000000000000000 ]---
-> > > > [    0.684813] Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b
-> > > > [    0.685500] SMP: stopping secondary CPUs
-> > > > [    0.685995] Kernel Offset: disabled
-> > > > [    0.686310] CPU features: 0x800,00105811,00001086
-> > > > [    0.686736] Memory Limit: none
-> > > > [    0.687021] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b ]---
-> > > >
-> > > > Check that i2s->pinctrl is valid before attempting to search for the
-> > > > bclk_on and bclk_off pinctrl states.
-> > > >
-> > > > Fixes: a5450aba737d ("ASoC: rockchip: i2s: switch BCLK to GPIO")
-> > > > Signed-off-by: Alexandru Elisei <alexandru.elisei@arm.com>
-> > > > ---
-> > > >
-> > > > Full log at [1], config at [2] (pastebins expire after 6 months).
-> > > >
-> > > > I'm not familiar with this part of the kernel, I did my best to come up
-> > > > with an explanation and a fix for the panic.
-> > > >
-> > > > Read Documentation/devicetree/bindings/sound/rockchip-i2s.yaml, which has the
-> > > > definition for the i2s nodes with the same compatible string as the i2s@ff8a0000
-> > > > that is causing the panic (which is, "rockchip,rk3399-i2s"
-> > > > "rockchip,rk3066-i2s"). There's no mention there of a "pinctrl" property, maybe
-> > > > I'm reading the docs wrong, or maybe the board devicetree also needs fixing.
-> > > >
-> > > > [1] https://pastebin.com/vuRVDsKk
-> > > > [2] https://pastebin.com/3yDMF7YE
-> > > >
-> > > >  sound/soc/rockchip/rockchip_i2s.c | 5 ++++-
-> > > >  1 file changed, 4 insertions(+), 1 deletion(-)
-> > > >
-> > > > diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-> > > > index 99a128a666fb..c9fedf6eb2e6 100644
-> > > > --- a/sound/soc/rockchip/rockchip_i2s.c
-> > > > +++ b/sound/soc/rockchip/rockchip_i2s.c
-> > > > @@ -808,8 +808,11 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
-> > > >
-> > > >         i2s->bclk_ratio = 64;
-> > > >         i2s->pinctrl = devm_pinctrl_get(&pdev->dev);
-> > > > -       if (IS_ERR(i2s->pinctrl))
-> > > > +       if (IS_ERR(i2s->pinctrl)) {
-> > > >                 dev_err(&pdev->dev, "failed to find i2s pinctrl\n");
-> > > > +               ret = PTR_ERR(i2s->pinctrl);
-> > > > +               goto err_clk;
-> > > > +       }
-> > >
-> > > This would break audio for HDMI audio, which uses an I2S interface
-> > > to feed the HDMI controller and does not need or have pinctrl, but
-> > > here you make pinctrl a requirement.
-> > >
-> > > See https://lore.kernel.org/alsa-devel/20220621185747.2782-1-wens@kernel.org/
-> > > for my fix, which is merged for 5.20.
-> >
-> > For what it's worth, I've tested the fix and the board boots just fine.
-> 
-> Check if your HDMI audio card probed correctly or not?
+--===============2357164800314396823==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="9fEy3WxPqrp25A5C"
+Content-Disposition: inline
 
-I use my board headless, I didn't even have the HDMI sound card compiled.
 
-Compiled the hdmi sound driver now (CONFIG_SND_SOC=y,
-CONFIG_SND_SIMPLE_CARD=y), and when I do aplay -L I don't see a hdmi-sound
-device.
+--9fEy3WxPqrp25A5C
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Sprinkled some printk's in asoc_simple_probe(), simple_parse_of() returns
--517. Same for v5.19-rc5.
+On Tue, Jul 12, 2022 at 12:02:02PM +0100, Alexandru Elisei wrote:
+> On Tue, Jul 12, 2022 at 05:25:43PM +0800, Chen-Yu Tsai wrote:
 
-Any suggestions?
+> Any suggestions?
 
-Thanks,
-Alex
+I think Chen-Yu's suggestion of reverting both patches for 5.19 is
+probably the most sensible one at this point.
 
-> 
-> ChenYu
-> 
-> > Thanks,
-> > Alex
-> >
-> > >
-> > > Maybe your patch (which Mark already applied) and commit a5450aba737d
-> > > ("ASoC: rockchip: i2s: switch BCLK to GPIO") should just be reverted from
-> > > the for-5.19?
-> > >
-> > > Mark?
-> > >
-> > >
-> > > Regards
-> > > ChenYu
-> > >
-> > > >
-> > > >         i2s->bclk_on = pinctrl_lookup_state(i2s->pinctrl,
-> > > >                                    "bclk_on");
-> > > > --
-> > > > 2.37.0
-> > > >
-> > > >
-> > > > _______________________________________________
-> > > > Linux-rockchip mailing list
-> > > > Linux-rockchip@lists.infradead.org
-> > > > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+--9fEy3WxPqrp25A5C
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmLNV70ACgkQJNaLcl1U
+h9CbyAf+JJJlABFoNhMUptCoSgIxg6keunheh8+GJnPLI0O/NtsiaWYFVqZXpuwR
+4boFSbhWcQ5u2r03Utj676hsh7pGIztD0DgmlPrz8mDrLkxBJOxCBD/pLgGjgIBE
+ET844Y3Bvfd+3YEPZ/oBNYH6/IALfruWjCoNeT8gbLLbFuxh8b13Vi+m/+YCINK0
+Wx/upzf3+kzP70TytIzjtOE3lFmvalhbXg+2L9KI/KuTshS49kARSbx88KyHLlDx
+4pF/HG6rRxqlIkCZYnWF+BVwuDqWlxl9zG10PAauBoOfflhoccMb6mk0nhW8hlpP
+fRJ/16Nq5K+4KFtQN9U/lSG2jERAwA==
+=X9aC
+-----END PGP SIGNATURE-----
+
+--9fEy3WxPqrp25A5C--
+
+
+--===============2357164800314396823==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2357164800314396823==--
+
