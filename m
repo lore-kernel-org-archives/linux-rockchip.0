@@ -4,92 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBE6CC433EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Jul 2022 18:43:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42DBCC433EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 Jul 2022 19:19:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hpU+F+KtvWGYD7del3uj8PkfkqhmTlzhRpyQuEJzAyo=; b=mRa7CRlynKl8byZdGOp4xKKiKK
-	AiMDVVFvvenaUVBzTDuDhWebNwyUfM6640YqCzaHpSlK3K9qXAiLJYdRVhfc4fZ4x2vhNQ1kxcAW1
-	dDNhfMYp2vIHaCi7tzMiDVih8unQgFGcIZDp5ClSL9NybaeDEpXpZ62GPfmShpEJsCpWEZ7mMIYqg
-	fVZ2W4H5lfqCkHdY1SyxGwX0HzQF1W0fkmhitamnDL8jmT4y8oo4OONUrI1XCRoqU6n4eDiqC2l6d
-	lZULjK6LyIut7SziDNNsxcJEZoHP9IXGxsqKpb0HMzjsjh5U5TDwyLpat3+nY+AWeik0pVGh8y6q0
-	28Ll3PUQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=b14llsNk0+Dth5rJ8HIKLvolESdxiET25sQEWHrzcN4=; b=nqWoHgvx4PefJE
+	qJRiIE+S72Ly9O6tArIWgnhNqG3obHBQuoQI1vbW39EygbZ+vYTtyuypE9QOLliB0sy0cqfJwRLl8
+	KQ10NBxj6zofNzH3rqUfFbqSXbADG3MQ4BOGX0RovA0EHcNrDossrZn6xJzwprmL3AgvRDVkpGyVx
+	y8FjCju3yRBR9iHKVz4MeKhTJvyIGUOwGz46F28Kd1fZRcqiAUmGSXObsdSwCeKCkC58U4QIw5u6N
+	9RGh13i+mQh9C73nFiC9Z9vu6A66io5NqTpdrNqZTDKDzHj/OpWbyrPAs84i1ZrIvgUWxddc8emtt
+	wfhIGCVEXFWEdZH9J6EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBKqL-00DrBZ-FH; Tue, 12 Jul 2022 18:42:45 +0000
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24])
+	id 1oBLPU-00E7pd-KA; Tue, 12 Jul 2022 19:19:04 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBKqI-00DrAY-QP
-	for linux-rockchip@lists.infradead.org; Tue, 12 Jul 2022 18:42:44 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailout.west.internal (Postfix) with ESMTP id 8B3143200893;
-	Tue, 12 Jul 2022 14:42:41 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute5.internal (MEProxy); Tue, 12 Jul 2022 14:42:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
-	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm3; t=1657651361; x=1657737761; bh=HpjzQni4lQ
-	mNhSxmuAfTDeTcCNmiq8c1Rj6unWmum/c=; b=X8i2jvWR+B05rPqKOvOPCf56se
-	YcyHQufSI7sBqFJlENYtCLlkb+XQKAO9qmgoZM2qYc8J3Svti8KcvmgCql13y1Is
-	ePC0Sm066WcJuWzTeNw6luwI5BTSkA2o6ajz8qi9cXp4yUzBGtZUiuf89YJXQmsh
-	P+oS8Ms/pntHL4z48ahltsPYVp8Sznnlc19Tdq+8/69qwYr4vRkPMtNaWYZW23Wd
-	QEEaMCMEEMg0U7/lweD8rYSCmIMKilNnKqvV/uhotb9/S3Ey/vDmjeCCSjBwdFv7
-	O9WAWWIMFcF06UKL6dltD81SF05XuCnuniTgbbTrplng/grd6htf4KLwj1fQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1657651361; x=1657737761; bh=HpjzQni4lQmNhSxmuAfTDeTcCNmi
-	q8c1Rj6unWmum/c=; b=F4KbEX5RsiiuSrCVY4tZVFknfJ2krKQxuRpht7hIO2An
-	SpEmx+UlCcME+gSZ3AW0AMIydW0+sxbfF3TuC/TOGMEQS5PPe1Q5YLIbC5LwguQC
-	w9a8g++4vUEKiRinBXTc0MQHheOlWuJ/3IwacaptvcxVVjpMP774MNKflMrZpqsj
-	oZS8iNXf4M6WiSHgx0IbPkd0zyNSGvUYE/iGRYPMLwK0OySGUahzbrNzQSTiX2UY
-	cyJHK4KMIlsUmn3lVYg5GmOKR6ig+sJXHOuFj0MD6JFeudrHjuGOBnX4eVFZVD2p
-	iO9MQN2FfMKaA/SNo+Q8xuFNkgTm1KZBeIT170Nr1w==
-X-ME-Sender: <xms:oMDNYtlKkj-TiSI0RBU50H8u6EEDqn63lGDAs__Dgjd4bnI9OA9p3w>
-    <xme:oMDNYo3wivbpcXUsDtFxaptOheF-N5JzV7WVPPI2F8MC5LDIc_FxxXUkuCg8_I6mp
-    2YUKfV_E0UfLXZIaUI>
-X-ME-Received: <xmr:oMDNYjpyo8wk5spmjkDVBifFPxpoW94YgwcXeMAM9rlJU3wFfpNLlg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudejhedgudeftdcutefuodetggdotefrod
-    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
-    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-    enucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttdejnecuhfhrohhmpeffrghf
-    nhgrucfjihhrshgthhhfvghlugcuoegurghfnhgrsehfrghsthhmrghilhdrtghomheqne
-    cuggftrfgrthhtvghrnhepvdehtdeludekgeevleefuedvudejieetheekvdfhteekffdu
-    jefhfedtudehvdeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilh
-    hfrhhomhepuggrfhhnrgesfhgrshhtmhgrihhlrdgtohhm
-X-ME-Proxy: <xmx:ocDNYtkqk9ixAJ0lJyzuLKKth5BP14EBhLIaf42rSdrx_e_VWgxZOg>
-    <xmx:ocDNYr34d1lAYZRm_BITRizsugOCmO4yH4KM9VFUYZ8bmyIQvYvQPg>
-    <xmx:ocDNYstSsZbXdvZAHk54EKW3cDUPb3PgZC8mfl-AJL2eelwcsWkokQ>
-    <xmx:ocDNYmRsynxb8p_VtWhGsEIJMo59yDU5P5lhRkLO1ne8O3frhofL5Q>
-Feedback-ID: i0e894699:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
- 12 Jul 2022 14:42:38 -0400 (EDT)
-Date: Tue, 12 Jul 2022 21:42:36 +0300
-From: Dafna Hirschfeld <dafna@fastmail.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+	id 1oBLPR-00E7nL-Pg
+	for linux-rockchip@lists.infradead.org; Tue, 12 Jul 2022 19:19:03 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A63A525B;
+	Tue, 12 Jul 2022 21:18:56 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1657653536;
+	bh=j8RWaj1qu7ba9MIthv0s3ghzbaeY8Rc1/L/BeRMnbgs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hzfRbJiGXTAxWSk4AbrMDzE3LZJuuz9MjhRG0S+If9GReht7dRdgo8zVDx6nPj/hj
+	 nJXcPeqbm+PsJxn2ziXpjMAqVbdIBODWUdbXnsudqC5+t2vywyRk41YyDb2P+uuOBo
+	 mFJd5VEU8PRwYlQXuvIM/p05d5mqZ1S+Br+qXfus=
+Date: Tue, 12 Jul 2022 22:18:27 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Dafna Hirschfeld <dafna@fastmail.com>
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	Heiko Stuebner <heiko@sntech.de>,
 	Helen Koike <helen.koike@collabora.com>,
 	Paul Elder <paul.elder@ideasonboard.com>
-Subject: Re: [PATCH v3 46/46] media: rkisp1: debug: Add dump file in debugfs
- for MI main path registers
-Message-ID: <20220712184236.fr5xrmtqicwycsir@guri>
+Subject: Re: [PATCH v3 38/46] media: rkisp1: isp: Disallow multiple active
+ sources
+Message-ID: <Ys3JA6bTN2TG6uMn@pendragon.ideasonboard.com>
 References: <20220711124248.2683-1-laurent.pinchart@ideasonboard.com>
- <20220711124248.2683-47-laurent.pinchart@ideasonboard.com>
+ <20220711124248.2683-39-laurent.pinchart@ideasonboard.com>
+ <20220712184005.nwnlflsupgie6owf@guri>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220711124248.2683-47-laurent.pinchart@ideasonboard.com>
+In-Reply-To: <20220712184005.nwnlflsupgie6owf@guri>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220712_114242_903947_8B588FDC 
-X-CRM114-Status: UNSURE (   8.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220712_121902_030322_46C4DD48 
+X-CRM114-Status: GOOD (  28.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,74 +65,105 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 11.07.2022 15:42, Laurent Pinchart wrote:
->From: Paul Elder <paul.elder@ideasonboard.com>
->
->Add a register dump file in debugfs for some of the buffer-related
->registers for the main path in MI (for the base address, the size, and
->the offset). Also dump the corresponding shadow registers.
->
->Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+Hi Dafna,
 
-Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
+On Tue, Jul 12, 2022 at 09:40:05PM +0300, Dafna Hirschfeld wrote:
+> On 11.07.2022 15:42, Laurent Pinchart wrote:
+> > The ISP supports multiple source subdevs, but can only capture from a
+> > single one at a time. The source is selected through link setup. The
+> > driver finds the active source in its .s_stream() handler using the
+> > media_entity_remote_pad() function. This fails to reject invalid
+> > configurations with multiple active sources. Fix it by using the
+> > media_pad_remote_pad_unique() helper instead, and inline
+> > rkisp1_isp_get_source() in rkisp1_isp_s_stream() as the function is
+> > small and has a single caller.
+> > 
+> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
+> > ---
+> > Changes since v2:
+> > 
+> > - Update media_pad_remote_pad_unique() function name in commit message
+> > ---
+> >  .../platform/rockchip/rkisp1/rkisp1-isp.c     | 30 ++++++++-----------
+> >  1 file changed, 13 insertions(+), 17 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > index 37623b73b1d9..d7e2802d11f5 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > @@ -58,20 +58,6 @@
+> >   * Helpers
+> >   */
+> > 
+> > -static struct v4l2_subdev *rkisp1_isp_get_source(struct v4l2_subdev *sd)
+> > -{
+> > -	struct media_pad *local, *remote;
+> > -	struct media_entity *sensor_me;
+> > -
+> > -	local = &sd->entity.pads[RKISP1_ISP_PAD_SINK_VIDEO];
+> > -	remote = media_pad_remote_pad_first(local);
+> > -	if (!remote)
+> > -		return NULL;
+> > -
+> > -	sensor_me = remote->entity;
+> > -	return media_entity_to_v4l2_subdev(sensor_me);
+> > -}
+> > -
+> >  static struct v4l2_mbus_framefmt *
+> >  rkisp1_isp_get_pad_fmt(struct rkisp1_isp *isp,
+> >  		       struct v4l2_subdev_state *sd_state,
+> > @@ -743,6 +729,8 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+> >  	struct rkisp1_isp *isp = to_rkisp1_isp(sd);
+> >  	struct rkisp1_device *rkisp1 = isp->rkisp1;
+> >  	const struct rkisp1_sensor_async *asd;
+> > +	struct media_pad *source_pad;
+> > +	struct media_pad *sink_pad;
+> >  	int ret;
+> > 
+> >  	if (!enable) {
+> > @@ -754,10 +742,18 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+> >  		return 0;
+> >  	}
+> > 
+> > -	rkisp1->source = rkisp1_isp_get_source(sd);
+> 
+> so 'rkisp1->source' is the source of the isp right? and in addition you later
+> add csi->source for the csi source. Maybe move rkisp1->source field to rkisp1_isp
+> to make it clear it is the isp source.
+> Just a suggestion. If you don't feel like, then:
 
->---
->Changes since v2:
->
->- Rename file from mi_mp_y_bufs to mi_mp
->---
-> .../platform/rockchip/rkisp1/rkisp1-debug.c   | 21 +++++++++++++++++++
-> 1 file changed, 21 insertions(+)
->
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
->index e76dc2b164b6..71df3dc95e6f 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c
->@@ -121,6 +121,24 @@ static int rkisp1_debug_dump_rsz_regs_show(struct seq_file *m, void *p)
-> }
-> DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_rsz_regs);
->
->+static int rkisp1_debug_dump_mi_mp_show(struct seq_file *m, void *p)
->+{
->+	static const struct rkisp1_debug_register registers[] = {
->+		RKISP1_DEBUG_REG(MI_MP_Y_BASE_AD_INIT),
->+		RKISP1_DEBUG_REG(MI_MP_Y_BASE_AD_INIT2),
->+		RKISP1_DEBUG_REG(MI_MP_Y_BASE_AD_SHD),
->+		RKISP1_DEBUG_REG(MI_MP_Y_SIZE_INIT),
->+		RKISP1_DEBUG_REG(MI_MP_Y_SIZE_INIT),
->+		RKISP1_DEBUG_REG(MI_MP_Y_SIZE_SHD),
->+		RKISP1_DEBUG_REG(MI_MP_Y_OFFS_CNT_SHD),
->+		{ /* Sentinel */ },
->+	};
->+	struct rkisp1_device *rkisp1 = m->private;
->+
->+	return rkisp1_debug_dump_regs(rkisp1, m, 0, registers);
->+}
->+DEFINE_SHOW_ATTRIBUTE(rkisp1_debug_dump_mi_mp);
->+
-> #define RKISP1_DEBUG_DATA_COUNT_BINS	32
-> #define RKISP1_DEBUG_DATA_COUNT_STEP	(4096 / RKISP1_DEBUG_DATA_COUNT_BINS)
->
->@@ -214,6 +232,9 @@ void rkisp1_debug_init(struct rkisp1_device *rkisp1)
-> 	debugfs_create_file("srsz", 0444, regs_dir,
-> 			    &rkisp1->resizer_devs[RKISP1_SELFPATH],
-> 			    &rkisp1_debug_dump_rsz_regs_fops);
->+
->+	debugfs_create_file("mi_mp", 0444, regs_dir, rkisp1,
->+			    &rkisp1_debug_dump_mi_mp_fops);
-> }
->
-> void rkisp1_debug_cleanup(struct rkisp1_device *rkisp1)
->-- 
->Regards,
->
->Laurent Pinchart
->
+That's a very good idea. I'll add a patch on top to do this.
+
+> Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
+> 
+> > +	sink_pad = &isp->pads[RKISP1_ISP_PAD_SINK_VIDEO];
+> > +	source_pad = media_pad_remote_pad_unique(sink_pad);
+> > +	if (IS_ERR(source_pad)) {
+> > +		dev_dbg(rkisp1->dev, "Failed to get source for ISP: %ld\n",
+> > +			PTR_ERR(source_pad));
+> > +		return -EPIPE;
+> > +	}
+> > +
+> > +	rkisp1->source = media_entity_to_v4l2_subdev(source_pad->entity);
+> >  	if (!rkisp1->source) {
+> > -		dev_warn(rkisp1->dev, "No link between isp and source\n");
+> > -		return -ENODEV;
+> > +		/* This should really not happen, so is not worth a message. */
+> > +		return -EPIPE;
+> >  	}
+> > 
+> >  	asd = container_of(rkisp1->source->asd, struct rkisp1_sensor_async,
+
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
