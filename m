@@ -4,89 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5DC7C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Jul 2022 20:42:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50033C43334
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 Jul 2022 22:22:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gXhMnEHKlP2QRCW4bdrMT2vHPAMnstThszhtq9DKOQA=; b=d+bRwb7rfol0db
-	FA4mSgY1DNsggyqD9TZupHHp+b9RuQSn44kEg6EepCkqUOalhSSknv1lxs8xar1F8fomCI1813jfB
-	T73tFWqPaATBV/ZGeybjRahQUis5O8xvgeRIsd+6EhX0xwbemnG/hjN9b3Oix4sjLp97satAWIqUK
-	csf056YsccAuYuP2Pi2vcREmAzLsGjP61bc2v0teQuiTnZfPjB/BLPYfPhnt6UHX4Voo+IdeGnqLF
-	/YgeN2WZ4OKqxePEZZx3kz6g5KX1U1N8o5ejU138dVddsYfnUNXkLpANlmrT/beeysnjFqm38pWz1
-	3H0l3XIH7kBFxLEplErw==;
+	List-Archive:List-Unsubscribe:List-Id:To:Date:Message-Id:Subject:Mime-Version
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=O0Md00GfLrIS4aLQrRvyMWbJr+rS2/fsiaQu9qLiy9s=; b=gUMPYDHYKGhQ1v
+	f3g2qwjaHWN99/PkYdI+2dSAiY11TSv9VU8FTTFo1ulomU6PtoALRzOp7FeAvvA/9/ZVP9p6XW8rv
+	EoYwF3V4U0qlpGeRMOYsQIA+I3vCxpQX8gmOdBJbWK57YqgoT8cwIlNzU3jiB3mcYb9BPbIolSPHq
+	j9495NIvD+rHnbIQO/anNIa+uJlic8DaTvZirrLxv12DN2+q1VuLb1F1KPJu2ltfaW7myrxt7frWt
+	ZyUnuLHIeamrtoOhBhiblNNkF/cCbx1lZyNDLNJJKUYBTbAX09jI6KBCpstw0FmwITwJjsQAuzp3p
+	Rn3JgRrF6XBwuAp9QVwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBjBk-007lL1-V2; Wed, 13 Jul 2022 20:42:28 +0000
-Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
+	id 1oBkkZ-008e2l-FA; Wed, 13 Jul 2022 22:22:31 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBjBi-007lDz-7n
-	for linux-rockchip@lists.infradead.org; Wed, 13 Jul 2022 20:42:27 +0000
-Received: by mail-qk1-x736.google.com with SMTP id 20so9549472qky.5
-        for <linux-rockchip@lists.infradead.org>; Wed, 13 Jul 2022 13:42:19 -0700 (PDT)
+	id 1oBkkW-008dza-0O
+	for linux-rockchip@lists.infradead.org; Wed, 13 Jul 2022 22:22:30 +0000
+Received: by mail-ej1-x632.google.com with SMTP id ss3so164877ejc.11
+        for <linux-rockchip@lists.infradead.org>; Wed, 13 Jul 2022 15:22:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=EgA3xZH3t9Zi9zRLOrZeaQRW5jyanhvvZI8yTDXgSs4=;
-        b=e3pT9sVk4ebu5rxOkVvi3A5vzXF3/bx9rOT9OycSA2cJYBt0jTTnMtcmx66L1h8f3K
-         HgERgnUfpUdtrTCrL5qNcQm2LccwN85lIvfgA0H8jmjV9qPJlelJn995PeGUUNhZLHbV
-         yAZ5NMYOrjY73ZZwlPTBbuw/49518KwjQx1mwAVnBgVR5uZi6w8RRD3RKnXlSjSJoxbZ
-         PdYzpYTrxHm3q7zwOiSFisCq4AIuWwktIaZFDkXHaZO/YvcLaBjFiqtcEBxanSMt4h9s
-         UK9CvmS6OOZNcnJPNFpXhtKERK1US62God8WWgp294lvESo3sP+0hEpqkdnLot/0KZtp
-         g8jQ==
+        d=kohlschutter-com.20210112.gappssmtp.com; s=20210112;
+        h=from:content-transfer-encoding:mime-version:subject:message-id:date
+         :to;
+        bh=pQm/h5cc7p63jEzDc2/PjwaXQCdshE0JwFSB1IlnVb8=;
+        b=7dtdSUVhMGijDVe8wvX5oRl4wxjP1wsXnlSBk+043qVgC7zfF4z4VewgDw5uqlz8UV
+         784zBtoD0K3TMhI03emrGS4USqsLWxlJ842C5E/uyNRCluSBPmYhxUdLlN1k/NtKjANg
+         t2l6X5rKQCiLN2T6FVHYozBe0viAGA/QLT2bLR9g/suGAXk4kaChCSStc+SLC6/B/sS0
+         /flF5/N0+sq12ohdXz0XaarI4R/j81xS0k+5AGB0HGlzrdhkN/M7Fz87oC676om7JATt
+         pRZtZQy1Kf2F1eVpvX/6un5BEPYZarthL92OpYTKxfH9J+HgyBHdGzpaYHA7FqFo2Dov
+         LB2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=EgA3xZH3t9Zi9zRLOrZeaQRW5jyanhvvZI8yTDXgSs4=;
-        b=8EJ2vmHgEprg5bAVW4t2/0l4OyrMDHH5+HWhwuNK9W/F5cqCh0JycIv6eK51zIdWWQ
-         xzIM2fmjMy0h/U7h0yJ4eYWNoiP3v85qWZ493bMst8iau4x/zlfq/sEk4NqHriQvIe1w
-         4aYenmkHl8OErzc/PIoivLkg/RqvWtFut7QSqHKkWnlRSuC79CcRm0fDZu5nRIJt30+R
-         Gz34iAtXTLLGUzMzoAhMwT1IDaoFEQ9u0MmWSZA4DZtJKo5BgKZrh6gtz/ZZNIJQHQRt
-         QOI9pPBgm1H9ww/9KAXLqqIkGqK9jju+v2aQtaxbMnR45gmRiYTcyGYhiXRrL5sGo9+n
-         L3BA==
-X-Gm-Message-State: AJIora+FISVwjuRGgSFH+qnGqtZw0KoaLSYws7UPl3JshEQBI47Qy7G+
-	HPuYkTcHgD6CseDpH58+o+8=
-X-Google-Smtp-Source: AGRyM1v52gaCFcbVPmIqwbN58q5YtVm3AqVJBDc6aU4aFpenuHjRPorXmWi30FmHMGI23odMN4w6eQ==
-X-Received: by 2002:a37:806:0:b0:6b5:c19d:bbfc with SMTP id 6-20020a370806000000b006b5c19dbbfcmr90053qki.155.1657744938660;
-        Wed, 13 Jul 2022 13:42:18 -0700 (PDT)
-Received: from localhost ([2601:4c1:c100:1230:7360:5d5d:6684:e04b])
-        by smtp.gmail.com with ESMTPSA id m6-20020ac807c6000000b00315a5fa4bf6sm10194336qth.7.2022.07.13.13.42.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Jul 2022 13:42:18 -0700 (PDT)
-Date: Wed, 13 Jul 2022 13:42:17 -0700
-From: Yury Norov <yury.norov@gmail.com>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Sebastian Fricke <sebastian.fricke@collabora.com>,
-	Linux Media Mailing List <linux-media@vger.kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>, knaerzche@gmail.com,
-	Collabora Kernel ML <kernel@collabora.com>,
-	bob.beckett@collabora.com,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
-	linux-staging@lists.linux.dev, nicolas.dufresne@collabora.com,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>
-Subject: Re: [PATCH 3/6] bitops: bitmap helper to set variable length values
-Message-ID: <Ys8uKUKErpoWL873@yury-laptop>
-References: <20220713163201.136202-1-sebastian.fricke@collabora.com>
- <Ys8Txuq9/u/EL6sj@yury-laptop>
- <CAHp75VeOLfKw4-+Dpn54yy6j=tdiBNA_2Kvhj7mUUjTD-M_vYA@mail.gmail.com>
- <Ys8gpl3m+vvEM7Sy@yury-laptop>
- <CAHp75VeGSWoq-a10nA9NLKBEX7L_eiL0zPMJHUbX=c64wG8hkg@mail.gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAHp75VeGSWoq-a10nA9NLKBEX7L_eiL0zPMJHUbX=c64wG8hkg@mail.gmail.com>
+        h=x-gm-message-state:from:content-transfer-encoding:mime-version
+         :subject:message-id:date:to;
+        bh=pQm/h5cc7p63jEzDc2/PjwaXQCdshE0JwFSB1IlnVb8=;
+        b=ldAWCdP96JWjjOB+xMJz3fhB54bdpT8aG9dBsh3T17Vj8FnjX6Y/w03tlL4ReX7Naq
+         KgXCh9112+NLpKZv0b3LLsTrxDH2m4CKztAYFm9gdx7/km3ETB6V6BiLQCRRg7nZ5ffT
+         DaG1YrVkJRL12TgfeuhbueC4ptMoKN5Jo7b46Gh6tkFxNFlmuDhcCG2jO9tAezRxq0Sy
+         4ACdiF67xcpI9gPJ8QpkWcuj4DCq8WVWymzOe6C8tN92/kY9aLAKEyalhSiwdWV/7BND
+         PJLvCjZBrnamJHYhs72u0qEzsrpNpnIJVCZhtbyh1iRjqHQbVUmmHhg79N4umvVUm2Ob
+         2w4A==
+X-Gm-Message-State: AJIora/ox7uhYKPn2SrFZgN2bm3u4yFxFrbd6hrEoKqAgQYK3B/nSD80
+	ot5Sw3UBzX+1eaVAjU4PAB3Z9Q==
+X-Google-Smtp-Source: AGRyM1vmoqVV3QU0wWaPibUGD+7z0kkmOmVlx4xPn1tbz7nXmubFlbaOgslmtIhht5sjZKRpkrziHg==
+X-Received: by 2002:a17:907:7e94:b0:72b:53d2:c004 with SMTP id qb20-20020a1709077e9400b0072b53d2c004mr5681911ejc.387.1657750945203;
+        Wed, 13 Jul 2022 15:22:25 -0700 (PDT)
+Received: from smtpclient.apple (ip5b434222.dynamic.kabel-deutschland.de. [91.67.66.34])
+        by smtp.gmail.com with ESMTPSA id d26-20020a170906345a00b00726e51b6d7dsm5403470ejb.195.2022.07.13.15.22.24
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 13 Jul 2022 15:22:24 -0700 (PDT)
+From: =?utf-8?Q?Christian_Kohlsch=C3=BCtter?= <christian@kohlschutter.com>
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.100.31\))
+Subject: [PATCH] arm64: dts: rockchip: Fix SD card init on rk3399-nanopi4 
+Message-Id: <C639AD88-77A1-4485-BAEA-2FF8FC15A844@kohlschutter.com>
+Date: Thu, 14 Jul 2022 00:22:23 +0200
+To: Heiko Stuebner <heiko@sntech.de>,
+ linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+X-Mailer: Apple Mail (2.3696.100.31)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_134226_310984_F4C7F6F8 
-X-CRM114-Status: GOOD (  24.03  )
+X-CRM114-CacheID: sfid-20220713_152228_288295_1169EC15 
+X-CRM114-Status: UNSURE (   9.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,71 +83,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 13, 2022 at 10:14:24PM +0200, Andy Shevchenko wrote:
-> On Wed, Jul 13, 2022 at 9:44 PM Yury Norov <yury.norov@gmail.com> wrote:
-> > On Wed, Jul 13, 2022 at 09:10:33PM +0200, Andy Shevchenko wrote:
-> > > On Wed, Jul 13, 2022 at 8:56 PM Yury Norov <yury.norov@gmail.com> wrote:
-> > > > On Wed, Jul 13, 2022 at 06:31:59PM +0200, Sebastian Fricke wrote:
-> > >
-> > > ...
-> > >
-> > > > I'd suggest you to try implementing
-> > > >         bitmap_copy_from(dst, src, dst_off, len)
-> > > > or even
-> > > >         bitmap_copy_from(dst, dst_off, src, src_off, len)
-> > > > if you expect that you'll need more flexibility in the future.
-> > >
-> > > Do you think it would be useful?
-> > >
-> > > We have bitmap_replace() & bitmap_remap(). Wouldn't that be enough?
-> >
-> > bitmap_replace and bitmap_remap have no an 'offset' parameter.
-> 
-> True.
-> 
-> But then it's a bit too generic to have this src_off, no?
-
-That's why I said:
-
-> > > > if you expect that you'll need more flexibility in the future.
-
-My preferred option is bitmap_copy_from(dst, src, dst_off, len).
-
-> I would rather expect for asymmetrical bitmaps that the other side
-> will be either one of the fixed width types (it makes sense to have
-> for 32- or 64-bit arguments.
-
-Look at patch #6 - it copies 1,4,5,9,10,32,37... - pretty much a random
-number number of bits.
- 
-> When you have a source bitmap of x bits and  you would like to copy it
-> into a y-bit one, I would think that either you have a small amount of
-> bits in x anyway, or x is a full-sized bitmap (same order as y).
-
-It sounds like a speculation to me. Why shouldn't we let people to
-copy with an offset any number of bits? 
-
-> Also
-> keep in mind that granularity is long, so less than long it makes no
-> sense.
-> 
->   bitmap_copy_from_T(unsigned long *map, start, len, T src),
-> 
-> where T is type, start is the offset in map, len is the amount of bits
-> from src starting from 0. That's what is required in most of the cases
-> I believe.
-
-But not in Sebastian's case, according to patch #6.
-
-Thanks,
-Yury
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+bW1jL1NELWNhcmQgaW5pdGlhbGl6YXRpb24gbWF5IHNvbWV0aW1lcyBmYWlsIG9uIE5hbm9QaSBy
+NHMgd2l0aAoibW1jMTogcHJvYmxlbSByZWFkaW5nIFNEIFN0YXR1cyByZWdpc3RlciIgLwoibW1j
+MTogZXJyb3IgLTExMCB3aGlsc3QgaW5pdGlhbGlzaW5nIFNEIGNhcmQiCgpNb3Jlb3ZlciwgcmVi
+b290aW5nIHdvdWxkIGFsc28gc29tZXRpbWVzIGhhbmcuCgpTaWduZWQtb2ZmLWJ5OiBDaHJpc3Rp
+YW4gS29obHNjaMO8dHRlciA8Y2hyaXN0aWFuQGtvaGxzY2h1dHRlci5jb20+Ci0tLQogYXJjaC9h
+cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktbmFub3BpNC5kdHNpIHwgNiArKystLS0KIDEg
+ZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDMgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0
+IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktbmFub3BpNC5kdHNpIGIvYXJj
+aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktbmFub3BpNC5kdHNpCmluZGV4IDhjMGZm
+NmM5NmUwMy4uOTE3ODk4MDFhYjAzIDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
+Y2tjaGlwL3JrMzM5OS1uYW5vcGk0LmR0c2kKKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
+Y2hpcC9yazMzOTktbmFub3BpNC5kdHNpCkBAIC02NywxMCArNjcsMTAgQEAgdmNjMXY4X3MzOiB2
+Y2MxdjgtczMgewogCXZjYzN2MF9zZDogdmNjM3YwLXNkIHsKIAkJY29tcGF0aWJsZSA9ICJyZWd1
+bGF0b3ItZml4ZWQiOwogCQllbmFibGUtYWN0aXZlLWhpZ2g7Ci0JCWdwaW8gPSA8JmdwaW8wIFJL
+X1BBMSBHUElPX0FDVElWRV9ISUdIPjsKKwkJZ3BpbyA9IDwmZ3BpbzAgUktfUEQ2IEdQSU9fQUNU
+SVZFX0hJR0g+OwogCQlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwogCQlwaW5jdHJsLTAgPSA8
+JnNkbW1jMF9wd3JfaD47Ci0JCXJlZ3VsYXRvci1hbHdheXMtb247CisJCXJlZ3VsYXRvci1ib290
+LW9uOwogCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDwzMDAwMDAwPjsKIAkJcmVndWxhdG9y
+LW1heC1taWNyb3ZvbHQgPSA8MzAwMDAwMD47CiAJCXJlZ3VsYXRvci1uYW1lID0gInZjYzN2MF9z
+ZCI7CkBAIC01ODAsNyArNTgwLDcgQEAgd2lmaV9yZWdfb25faDogd2lmaS1yZWdfb24taCB7CiAK
+IAlzZG1tYyB7CiAJCXNkbW1jMF9kZXRfbDogc2RtbWMwLWRldC1sIHsKLQkJCXJvY2tjaGlwLHBp
+bnMgPSA8MCBSS19QQTcgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfdXA+OworCQkJcm9ja2NoaXAs
+cGlucyA9IDwwIFJLX1BENiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF91cD47CiAJCX07CiAKIAkJ
+c2RtbWMwX3B3cl9oOiBzZG1tYzAtcHdyLWggewotLSAKMi4zNi4xCgoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
