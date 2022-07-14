@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFF6CC43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Jul 2022 04:23:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7B46C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Jul 2022 04:25:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ce5MTSZtf82RX+Rnwcsszar4OzCVLmdy8RiQech4fX0=; b=FhRPHcKlCSqTtq
-	ZrAhLVPluTK6L5VYN3UtjlVAcjt8GwCb5TKgcghSUf7yzWKVAaBstNjEIXRo13Rhjy5yY/qO34PVV
-	pRxjAQAOrT2CjhtnjNnd4jL5I8PqYhGTXrkJq9nPmvQt71hYR5NnlzFK+tRH4eonsJ6Igk4CbimzG
-	Utc/Bghc05+iVejAj82yibV9U81wu64sMYdKX14vqUNSAacizcow6zQtheltfJ/IaGDKEoG0D/g01
-	YJSyREyzmaON+bBNWouUF+rLxP0bj+KXqSsGNATtKwhgmkFQPgLs5Iw/aAZb97ZoCaVqh3MVrbfUM
-	fCsNYeqEWVw27T2ru7Qw==;
+	List-Owner; bh=VSaR5fkS4QpBqp+ZYqYdZFCBF9ZzVpuEwknMTlBT/CQ=; b=eSmWqg/iXlv14m
+	mRiAsyEoXq3nzNr//qHsgzvs4ZHqzSSvbIleVzWhDswSWgu0hpNOnBnUhA6e+UsV4TqZEJ4/Z2pT3
+	HxcenhfI296vVAEOAa7OsGIXFJDnjrcCMdeT1IzCXj0uxUM3ylSKzkHSj2DRPc9dd06ghbPyIeTV1
+	H8lYUXXA1CilhpWDB6ro7rmg9UF7A6xL+fSxnsf2tyotIoZCBEw0CLl9ToFjN7nRGXivLKOyGJPSJ
+	MMKAGerPibf+InQyBR5Zfk75DCCOfXZ2WSzrVluBiNMXbM+/+t+THEQBOLoOhYbUo78qlUQHYgtLH
+	+W3RtpfteyfPT9yFYagw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBqNn-00AaVw-Ib; Thu, 14 Jul 2022 04:23:23 +0000
+	id 1oBqPf-00AcAg-59; Thu, 14 Jul 2022 04:25:19 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBqNX-00AaK4-02; Thu, 14 Jul 2022 04:23:09 +0000
+	id 1oBqPN-00AbxQ-PR; Thu, 14 Jul 2022 04:25:03 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 646E661E9A;
-	Thu, 14 Jul 2022 04:23:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8CB63C385A5;
-	Thu, 14 Jul 2022 04:23:04 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 3D17B61EBA;
+	Thu, 14 Jul 2022 04:25:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C639DC341C6;
+	Thu, 14 Jul 2022 04:24:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1657772585;
-	bh=eSz5cAic2YhTWxKYXA054F8AqKddUkNlYy8xxeu0kIU=;
+	s=k20201202; t=1657772701;
+	bh=Oq7MFp+9EbBfXsG+8LyCMYbE6sRp6KgYoNoYOPIDKxQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=uHMPpszY0/LkvVHOI2rAZAp9SqJGXexuaFD7/wcoQAZUuRmVIw74hla54krjiTqmN
-	 SLGO1pGkOaKwpn+gb6Pe+/XNcaKdNfCctlx0rJFFRvyQQOuzkSlg7vPRtmO/jEnl+N
-	 zghFv8z6Zmgb+RZXimrCcFHeWc3oIH6gxziIDHCbOG64L3/yYbNxDXE7AxqSCDI6UI
-	 oVYWy7yUE+gLbwflHwkcxQzMnvKzVHdGrHbPo6via0NHgH6W3t1YHVObmrbYQSOlUU
-	 X1japoWN/43GeXRyyTpr7LFXrERT/23PW4fQha1dAvDdlPo0Ygv9Asdlqk+PAbgx18
-	 P8DLoJD2GGuPQ==
+	b=Kl+Y6qOxwFcuyhNRp2TExA97WnckDU+90q05eiUyrqlBLIbJ2VGN6Dn9A9XiDfvBP
+	 znkJTU2gI8U5m9I/0hvBDxvfpuhspMYOPIWoeBi9cLDqmJ4OgaS7fB4qJgeotPiczL
+	 JVuozouj/dSkQUByLpgcsrlt9IkLF/sIuIMLwKutu7jF1Oll0dR+kiBTJiPCn22dp/
+	 Wc9pD4yEgQjZt4dvRs+HgUrSWxgye7odS6rIw/8lJzrHl6pzLyHvi7q2DJYUb6CC17
+	 grh6sVbRIF6KbjTyGRK+uo/mJmv2PWXEUNxdd6W2qu10uxbjpZE6Dg8b2UQKGoR2DM
+	 5qT/S5NbiqavA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -54,17 +54,17 @@ Cc: Judy Hsiao <judyhsiao@chromium.org>,
 	alsa-devel@alsa-project.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.18 16/41] ASoC: rockchip: i2s: switch BCLK to GPIO
-Date: Thu, 14 Jul 2022 00:21:56 -0400
-Message-Id: <20220714042221.281187-16-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.15 12/28] ASoC: rockchip: i2s: switch BCLK to GPIO
+Date: Thu, 14 Jul 2022 00:24:13 -0400
+Message-Id: <20220714042429.281816-12-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220714042221.281187-1-sashal@kernel.org>
-References: <20220714042221.281187-1-sashal@kernel.org>
+In-Reply-To: <20220714042429.281816-1-sashal@kernel.org>
+References: <20220714042429.281816-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220713_212307_157949_15094570 
+X-CRM114-CacheID: sfid-20220713_212501_985535_766615E1 
 X-CRM114-Status: GOOD (  21.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,7 +112,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 129 insertions(+), 31 deletions(-)
 
 diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 4ce5d2579387..99a128a666fb 100644
+index 2880a0537646..bde0ceaf100d 100644
 --- a/sound/soc/rockchip/rockchip_i2s.c
 +++ b/sound/soc/rockchip/rockchip_i2s.c
 @@ -13,6 +13,7 @@
@@ -123,7 +123,7 @@ index 4ce5d2579387..99a128a666fb 100644
  #include <linux/pm_runtime.h>
  #include <linux/regmap.h>
  #include <linux/spinlock.h>
-@@ -54,8 +55,40 @@ struct rk_i2s_dev {
+@@ -55,8 +56,40 @@ struct rk_i2s_dev {
  	const struct rk_i2s_pins *pins;
  	unsigned int bclk_ratio;
  	spinlock_t lock; /* tx/rx lock */
@@ -164,7 +164,7 @@ index 4ce5d2579387..99a128a666fb 100644
  static int i2s_runtime_suspend(struct device *dev)
  {
  	struct rk_i2s_dev *i2s = dev_get_drvdata(dev);
-@@ -92,38 +125,49 @@ static inline struct rk_i2s_dev *to_info(struct snd_soc_dai *dai)
+@@ -93,38 +126,49 @@ static inline struct rk_i2s_dev *to_info(struct snd_soc_dai *dai)
  	return snd_soc_dai_get_drvdata(dai);
  }
  
@@ -230,7 +230,7 @@ index 4ce5d2579387..99a128a666fb 100644
  
  			regmap_read(i2s->regmap, I2S_CLR, &val);
  
-@@ -138,44 +182,57 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
+@@ -139,44 +183,57 @@ static void rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
  			}
  		}
  	}
@@ -297,7 +297,7 @@ index 4ce5d2579387..99a128a666fb 100644
  			/* Should wait for clear operation to finish */
  			while (val) {
  				regmap_read(i2s->regmap, I2S_CLR, &val);
-@@ -187,7 +244,12 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
+@@ -188,7 +245,12 @@ static void rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
  			}
  		}
  	}
@@ -310,7 +310,7 @@ index 4ce5d2579387..99a128a666fb 100644
  }
  
  static int rockchip_i2s_set_fmt(struct snd_soc_dai *cpu_dai,
-@@ -425,17 +487,26 @@ static int rockchip_i2s_trigger(struct snd_pcm_substream *substream,
+@@ -426,17 +488,26 @@ static int rockchip_i2s_trigger(struct snd_pcm_substream *substream,
  	case SNDRV_PCM_TRIGGER_RESUME:
  	case SNDRV_PCM_TRIGGER_PAUSE_RELEASE:
  		if (substream->stream == SNDRV_PCM_STREAM_CAPTURE)
@@ -343,7 +343,7 @@ index 4ce5d2579387..99a128a666fb 100644
  		break;
  	default:
  		ret = -EINVAL;
-@@ -736,6 +807,33 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
+@@ -737,6 +808,33 @@ static int rockchip_i2s_probe(struct platform_device *pdev)
  	}
  
  	i2s->bclk_ratio = 64;
