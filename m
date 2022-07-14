@@ -4,56 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21AB6C43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Jul 2022 11:27:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2B71C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 Jul 2022 11:41:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+V+eQPDQdJP998HH7eEkMlZNiMJvtToCWMK3gkCbVqc=; b=KftQS/ko5Ff38a
-	Zyiw5QwJ90chaGBd9DTPCXe6yt+ChwXyCAmgoEPmqzmMx0pgcpGb6D7Ei2VbOnb6gXGzOLL7b1yUu
-	mIiEjdhGu4X39Dm69osXldZRL4rbPrM8h7KWE5Lq3ZsJTpMKIrn3VwMIePne9Mt6+tNBxuJF75uM/
-	Tc7UCst9Fm/3tzATify2PA3rxNgf5RlFZEuMOa6UdwdaTh11SiTVTLtFgZrPhe+odO9ectbaFZslA
-	Uib6mKNDx/wxHB3zFDsLkYb9eKlZvh/hHKq7lwyz/1CWz8ZzYsK1Of07u6x0fgGs/llGt6Lzhlflu
-	0Ec0MnKYYtmXoaPJs/xA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bwXETxN/L7iRP67zT88tg+Zipk6CoP1qcy2e2Lwq2v8=; b=k+dnOxFr0GvgvdQShyzeAuatmj
+	Cg+YSWVhnmSOfiPGd2P0yPD3fOaPufKkuRClSo89pydr4K53nOYIiZsrlXcT1m5KRLZzNjwZ7PcEy
+	hGm8hVUkJhI+zHjEU3wn0EyXHGsDPFuuNXg2BdN3dOGY5Dy5ALin6GDNqtP/r63i+7GYBkqg4dP3c
+	0lKS3ix4xaPpS/LhmdU+IX8kdJwZc5poPyy0HUBaZqod3dwnXR0cwNUxTx9Pa5aeeg79Ws/cdIaop
+	AYAyO26pJd/oTGvjTrf7+kDKUK1JPLKG03Q55+h7Ym0gIoMexroZfeqPsgiFi8zBoyUB8dxUnYRQo
+	OOqPVUng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBx0X-00DkaH-LI; Thu, 14 Jul 2022 11:27:49 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oBwzI-00DjkW-Uu; Thu, 14 Jul 2022 11:26:34 +0000
-Received: from pyrite.rasen.tech (softbank036240121080.bbtec.net [36.240.121.80])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 39A94B6D;
-	Thu, 14 Jul 2022 13:26:27 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657797991;
-	bh=ZxTbxnlie+Wlyg8T6x/3ntfPeyG9Qg5LqofNnNl8uLc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Ebq2o46Or9cio8SAL7Ul1WEgfflrHat6S+feUbDD0wjjUU1FiJSpoEoizeggJUbUs
-	 S3XRLU09GbP4hcj0iQX3HC/mBctGCvqco/wgp36mVRGMGy8687ynUhzIlnkkqViW/H
-	 XzAD/Q34iQWpmx+mgHTt62h59u2ptTRlth7enIo4=
-From: Paul Elder <paul.elder@ideasonboard.com>
-To: linux-media@vger.kernel.org
-Cc: Paul Elder <paul.elder@ideasonboard.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	laurent.pinchart@ideasonboard.com,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] media: rkisp1: Add UYVY as an output format
-Date: Thu, 14 Jul 2022 20:26:03 +0900
-Message-Id: <20220714112603.1117335-3-paul.elder@ideasonboard.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220714112603.1117335-1-paul.elder@ideasonboard.com>
-References: <20220714112603.1117335-1-paul.elder@ideasonboard.com>
+	id 1oBxDi-00DrsU-PV; Thu, 14 Jul 2022 11:41:26 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oBxDV-00DrlY-Sc; Thu, 14 Jul 2022 11:41:15 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D0E2613D5;
+	Thu, 14 Jul 2022 04:41:10 -0700 (PDT)
+Received: from [10.57.86.49] (unknown [10.57.86.49])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 685453F792;
+	Thu, 14 Jul 2022 04:41:09 -0700 (PDT)
+Message-ID: <103b714c-b07c-f016-1062-84bd94786b22@arm.com>
+Date: Thu, 14 Jul 2022 12:41:04 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix SD card init on rk3399-nanopi4
+Content-Language: en-GB
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ =?UTF-8?Q?Christian_Kohlsch=c3=bctter?= <christian@kohlschutter.com>
+References: <C639AD88-77A1-4485-BAEA-2FF8FC15A844@kohlschutter.com>
+ <12878108.O9o76ZdvQC@diego>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <12878108.O9o76ZdvQC@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220714_042633_203455_27422A29 
-X-CRM114-Status: GOOD (  14.43  )
+X-CRM114-CacheID: sfid-20220714_044114_060595_D6A7B673 
+X-CRM114-Status: GOOD (  20.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,105 +59,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for UYVY as an output format. The uv_swap bit in the
-MI_XTD_FORMAT_CTRL register that is used for the NV formats does not
-work for packed YUV formats. Thus, UYVY support is implemented via
-byte-swapping. This method clearly does not work for implementing
-support for YVYU and VYUY.
-
-Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-
----
-UYVY for the self path has not been tested because no device supports
-it. The rk3399 has a self path, but does not have the
-MI_OUTPUT_ALIGN_FORMAT register and thus does not support UYVY. The
-i.MX8MP does support UYVY, but does not have a self path.
----
- .../platform/rockchip/rkisp1/rkisp1-capture.c | 40 +++++++++++++++++++
- 1 file changed, 40 insertions(+)
-
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-index 85fd85fe208c..77496ccef7ec 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-@@ -97,6 +97,12 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_UYVY,
-+		.uv_swap = 0,
-+		.yc_swap = 1,
-+		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
- 		.uv_swap = 0,
-@@ -231,6 +237,13 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_UYVY,
-+		.uv_swap = 0,
-+		.yc_swap = 1,
-+		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
-+		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
- 		.uv_swap = 0,
-@@ -464,6 +477,20 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
- 		rkisp1_write(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL, reg);
- 	}
- 
-+	/*
-+	 * uv swapping with the MI_XTD_FORMAT_CTRL register only works for
-+	 * NV12/NV21 and NV16/NV61, so instead use byte swap to support UYVY.
-+	 * YVYU and VYUY cannot be supported with this method.
-+	 */
-+	if (rkisp1->info->features & RKISP1_FEATURE_MI_OUTPUT_ALIGN) {
-+		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
-+		if (cap->pix.cfg->yc_swap)
-+			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-+		else
-+			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-+		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
-+	}
-+
- 	rkisp1_mi_config_ctrl(cap);
- 
- 	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
-@@ -505,6 +532,19 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
- 		rkisp1_write(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL, reg);
- 	}
- 
-+	/*
-+	 * uv swapping with the MI_XTD_FORMAT_CTRL register only works for
-+	 * NV12/NV21 and NV16/NV61, so instead use byte swap to support UYVY.
-+	 * YVYU and VYUY cannot be supported with this method.
-+	 */
-+	if (rkisp1->info->features & RKISP1_FEATURE_MI_OUTPUT_ALIGN) {
-+		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
-+		if (cap->pix.cfg->yc_swap)
-+			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
-+		else
-+			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
-+		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
-+	}
- 	rkisp1_mi_config_ctrl(cap);
- 
- 	mi_ctrl = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
--- 
-2.30.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjAyMi0wNy0xNCAwMDo0MSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gSGkgQ2hyaXN0aWFu
+LAo+IAo+IEFtIERvbm5lcnN0YWcsIDE0LiBKdWxpIDIwMjIsIDAwOjIyOjIzIENFU1Qgc2Nocmll
+YiBDaHJpc3RpYW4gS29obHNjaMO8dHRlcjoKPj4gbW1jL1NELWNhcmQgaW5pdGlhbGl6YXRpb24g
+bWF5IHNvbWV0aW1lcyBmYWlsIG9uIE5hbm9QaSByNHMgd2l0aAo+PiAibW1jMTogcHJvYmxlbSBy
+ZWFkaW5nIFNEIFN0YXR1cyByZWdpc3RlciIgLwo+PiAibW1jMTogZXJyb3IgLTExMCB3aGlsc3Qg
+aW5pdGlhbGlzaW5nIFNEIGNhcmQiCj4+Cj4+IE1vcmVvdmVyLCByZWJvb3Rpbmcgd291bGQgYWxz
+byBzb21ldGltZXMgaGFuZy4KPj4KPiAKPiBOaXQ6IGhlcmUgdGhlIGNvbW1pdCBtZXNzYWdlIHNo
+b3VsZCBjb250aW51ZSB3aXRoIHNvbWV0aGluZyBsaWtlOgo+IC0tLS0tCj4gVGhpcyBpcyBjYXVz
+ZWQgYnkgdGhlIHZjYzN2MC1zZCByZWd1bGF0b3IgcmVmZXJlbmNpbmcgdGhlIHdyb25nIGdwaW8u
+Cj4gCj4gRml4IHRoZSByZWd1bGF0b3IgdG8gdXNlIHRoZSBjb3JyZWN0IHBpbiBhbmQgZHJvcCB0
+aGUgYWx3YXlzLW9uIHByb3BlcnR5Lgo+IC0tLS0tCj4+IFNpZ25lZC1vZmYtYnk6IENocmlzdGlh
+biBLb2hsc2Now7x0dGVyIDxjaHJpc3RpYW5Aa29obHNjaHV0dGVyLmNvbT4KPj4gLS0tCj4+ICAg
+YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktbmFub3BpNC5kdHNpIHwgNiArKyst
+LS0KPj4gICAxIGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+
+Pgo+PiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktbmFu
+b3BpNC5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktbmFub3BpNC5k
+dHNpCj4+IGluZGV4IDhjMGZmNmM5NmUwMy4uOTE3ODk4MDFhYjAzIDEwMDY0NAo+PiAtLS0gYS9h
+cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1uYW5vcGk0LmR0c2kKPj4gKysrIGIv
+YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktbmFub3BpNC5kdHNpCj4+IEBAIC02
+NywxMCArNjcsMTAgQEAgdmNjMXY4X3MzOiB2Y2MxdjgtczMgewo+PiAgIAl2Y2MzdjBfc2Q6IHZj
+YzN2MC1zZCB7Cj4+ICAgCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4+ICAgCQll
+bmFibGUtYWN0aXZlLWhpZ2g7Cj4+IC0JCWdwaW8gPSA8JmdwaW8wIFJLX1BBMSBHUElPX0FDVElW
+RV9ISUdIPjsKPj4gKwkJZ3BpbyA9IDwmZ3BpbzAgUktfUEQ2IEdQSU9fQUNUSVZFX0hJR0g+Owo+
+IAo+IFRoZSBpbnRlcmVzdGluZyBxdWVzdGlvbiB3b3VsZCBiZSBob3cgbmFuby1waS1zcGVjaWZp
+YyB0aGF0IGdwaW8gaXMuCj4gCj4gSS5lLiB0aGlzIGlzIHRoZSByazMzOTktbmFub3BpNC5kdHNp
+IHRoYXQgaXMgc2hhcmVkIGJ5IG11bHRpcGxlIGJvYXJkIHR5cGVzLAo+IHNvIGNhbiB5b3UgY2hl
+Y2sgaW4gc2NoZW1hdGljcyBpZiBncGlvMC1kNiBpcyBhbHdheXMgdXNlZCBvbiBhbGwgb2YgdGhl
+bT8KCk9uIHRoZSBSNFMgc2NoZW1hdGljLCB0aGlzIGlzIEdQSU8wX0ExIHNhbWUgYXMgdGhlIG90
+aGVycy4gR1BJTzAgZG9lc24ndCAKZXZlbiBoYXZlIGEgYmFuayBEIG9uIFJLMzM5OSwgaXQgb25s
+eSBnb2VzIHVwIHRvIEI1IDovCgo+IAo+IFRoYW5rcwo+IEhlaWtvCj4gCj4+ICAgCQlwaW5jdHJs
+LW5hbWVzID0gImRlZmF1bHQiOwo+PiAgIAkJcGluY3RybC0wID0gPCZzZG1tYzBfcHdyX2g+Owo+
+PiAtCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+PiArCQlyZWd1bGF0b3ItYm9vdC1vbjsKPj4gICAJ
+CXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDMwMDAwMDA+Owo+PiAgIAkJcmVndWxhdG9yLW1h
+eC1taWNyb3ZvbHQgPSA8MzAwMDAwMD47Cj4+ICAgCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2MzdjBf
+c2QiOwo+PiBAQCAtNTgwLDcgKzU4MCw3IEBAIHdpZmlfcmVnX29uX2g6IHdpZmktcmVnX29uLWgg
+ewo+PiAgIAo+PiAgIAlzZG1tYyB7Cj4+ICAgCQlzZG1tYzBfZGV0X2w6IHNkbW1jMC1kZXQtbCB7
+Cj4+IC0JCQlyb2NrY2hpcCxwaW5zID0gPDAgUktfUEE3IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxs
+X3VwPjsKPj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8MCBSS19QRDYgUktfRlVOQ19HUElPICZwY2Zn
+X3B1bGxfdXA+OwoKLi4uYW5kIGNsYWltaW5nIHRoZSBjYXJkIGRldGVjdCBpcyBvbiB0aGUgc2Ft
+ZSBub24tZXhpc3RlbnQgcGluIGFzIHRoZSAKcmVndWxhdG9yIGVuYWJsZSBpcyBjbGVhcmx5IGV2
+ZW4gbW9yZSB3cm9uZy4KCklzIHRoaXMgYW5vdGhlciBjYXNlIHdoZXJlIGEgVUhTIGNhcmQgaXMg
+aW52b2x2ZWQsIHN1Y2ggdGhhdCBWQ0NfU0RJTyAKZ2V0cyBsZWZ0IGF0IDEuOFYgYWZ0ZXIgYSBy
+ZWJvb3QsIHNvIHN1YnNlcXVlbnQgYXR0ZW1wdHMgdG8gZG8gdGhlIAppbml0aWFsIGhhbmRzaGFr
+ZSB3aGVyZSB0aGUgY2FyZCBpcyBleHBlY3RpbmcgM1YgbG9naWMgbGV2ZWxzIGZhaWw/IChBS0Eg
+CnRoZSBUaW5rZXJib2FyZCBwcm9ibGVtKS4gSG9iYmxpbmcgdGhlIHJlZ3VsYXRvciBzdWNoIHRo
+YXQgTGludXggY2FuIApuZXZlciBhY3R1YWxseSB0dXJuIFZDQzNWMF9TRCBvZmYsIHRodXMgdGhl
+IGNhcmQgbmV2ZXIgZ2V0cyByZXNldCwgbWlnaHQgCmFwcGVhciB0byAid29yayIsIGJ1dCBpc24n
+dCB0aGUgcmlnaHQgdGhpbmcgdG8gZG8uCgpSb2Jpbi4KCj4+ICAgCQl9Owo+PiAgIAo+PiAgIAkJ
+c2RtbWMwX3B3cl9oOiBzZG1tYzAtcHdyLWggewo+Pgo+IAo+IAo+IAo+IAo+IAo+IF9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4gTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
