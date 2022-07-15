@@ -4,56 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13D63C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Jul 2022 11:05:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D5AEC43334
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Jul 2022 11:47:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aJrwLU40xpBpF/XWDU4Xobl+j61IaG1/D8Z/jaqHW+4=; b=UQE6CiSc7/n1N+
-	Gyn6H784aCV1wnTtXe7mfx9L5Y7pPC+dcv3ndJs3l2RauyYUvr3QJbVunRqJFf74E030Bc7jrQSSb
-	aXIC/YSkT8UkBF5ln3GPGNRtWd0YqAzzQGJ9acoh1nDXfvu273cFeWu2KRfJbBhIqwIzRT5Ak5NK4
-	bJy5xgCKoRKy2s7Wx6mtdOZMa0d/hHqJ1LIgndfeqDvV5VT4GSQ67h188PGd1EboB99B2U2VbKHWG
-	N5MSrq9x85eRAuIjzdayJM2TXSm4XL5923DgJ2f0va5fY62ZwjoRaHDROKmgn/3//BZE1l2lVw2KP
-	DMnlfMXIpY1xXV/q7l1A==;
+	List-Owner; bh=0dzOFHPUmBJLZygaKqmT0pDwEe4M01idKJYa2m9O4Qo=; b=jZORcw/pXQykMf
+	GAxbZ24aMKff9qxw+TY3q97c3E/MmAv8Y2XYnK7O0CLay2ibc/7qdXlTei9dsfdVOIoob1MrTqFDp
+	jIpX0CXY5vVnrpQsPug80VOLu84KC8sA5/ZqrEdgGszL0Phc1cTROJoQlTqqUZ+9R0ZUpPopo+aFt
+	M/TAkPxNloMVomWflFl1caNnQ4Rl20KJWWuKkwwz/cyeUm8iewqmo8W0uvoTm3+CxhW66dTgonYpl
+	Z7GlWFGh6ISx4hs6UnykPf/jckwVpEF3uYDr0cMFMVq3hMsBAqyQagDtZ1xHj/b9fYqws0cxXkRP/
+	eU6gwrAe1rLyGy0wIAEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCJ8A-006Un5-Jh; Fri, 15 Jul 2022 11:05:10 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCJ86-006UlB-NS
-	for linux-rockchip@lists.infradead.org; Fri, 15 Jul 2022 11:05:08 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0BD251474;
-	Fri, 15 Jul 2022 04:05:05 -0700 (PDT)
-Received: from [10.57.86.139] (unknown [10.57.86.139])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id BC2113F73D;
-	Fri, 15 Jul 2022 04:05:01 -0700 (PDT)
-Message-ID: <7be996ee-9977-129b-08e2-12bde7ac9cd7@arm.com>
-Date: Fri, 15 Jul 2022 12:04:56 +0100
+	id 1oCJmt-006iBy-Ra; Fri, 15 Jul 2022 11:47:15 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oCJmg-006i4W-Qb; Fri, 15 Jul 2022 11:47:05 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id E54DDB82B88;
+	Fri, 15 Jul 2022 11:46:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 98DD0C341C0;
+	Fri, 15 Jul 2022 11:46:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1657885616;
+	bh=xvZyNnGSCcy3Lvy/C71cmlBONyz628YZEwgqmOeu+b0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=uJAW/jqU6EuTyXxbMshSmaBdGkOSK1Spk9CgWMJrRr0RGdIZStJiR8qs36zV6B5WS
+	 RWMcSJkBm8Np/klKLJhxWIhx+J+qHnE4eupqc6wmR0HH3Hx4lC1Cbj10ozlMNTCB8B
+	 qc5QoStTX2bO5iubwu+tSFnlvfCvep4NOUpgTsTSIL67KYLujvBvHktfzUyJgSl9n2
+	 6a5uXHjlr0z3EAeS3FL8dGqtQbfXWJIeHAPHmN9BL7EXdzj5+XG8MTrsQSLR36BcSr
+	 M3oAUMAMsEn05slWMOJau6/brGmSoXA7kf2UoM8kO9waTiB4sR7N7Iawdv5d/7JLrp
+	 7xbKSPB2lp1kw==
+Date: Fri, 15 Jul 2022 17:16:52 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: linux-rockchip@lists.infradead.org,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Kishon Vijay Abraham I <kishon@ti.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Liang Chen <cl@rock-chips.com>, Simon Xue <xxm@rock-chips.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 3/5] phy: rockchip: Support PCIe v3
+Message-ID: <YtFTrEzefxIYswnj@matsya>
+References: <20220619082605.7935-1-linux@fw-web.de>
+ <20220619082605.7935-4-linux@fw-web.de>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH 0/6] RkVDEC HEVC driver
-Content-Language: en-GB
-To: Sebastian Fricke <sebastian.fricke@collabora.com>,
- linux-media@vger.kernel.org
-Cc: jernej.skrabec@gmail.com, knaerzche@gmail.com, kernel@collabora.com,
- bob.beckett@collabora.com, ezequiel@vanguardiasur.com.ar,
- mchehab@kernel.org, gregkh@linuxfoundation.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-staging@lists.linux.dev, nicolas.dufresne@collabora.com,
- Yury Norov <yury.norov@gmail.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>
-References: <20220713162449.133738-1-sebastian.fricke@collabora.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20220713162449.133738-1-sebastian.fricke@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20220619082605.7935-4-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_040506_896605_62922133 
-X-CRM114-Status: GOOD (  33.80  )
+X-CRM114-CacheID: sfid-20220715_044703_175559_F6F0C1C9 
+X-CRM114-Status: GOOD (  46.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,168 +80,470 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-07-13 17:24, Sebastian Fricke wrote:
-> Implement the HEVC codec variation for the RkVDEC driver. Currently only
-> the RK3399 is supported, but it is possible to enable the RK3288 as it
-> also supports this codec.
+On 19-06-22, 10:26, Frank Wunderlich wrote:
+> From: Shawn Lin <shawn.lin@rock-chips.com>
 > 
-> Based on top of the media tree @ef7fcbbb9eabbe86d2287484bf366dd1821cc6b8
-> and the HEVC uABI MR by Benjamin Gaignard.
-> (https://patchwork.linuxtv.org/project/linux-media/list/?series=8360)
+> RK3568 supports PCIe v3 using not Combphy like PCIe v2 on rk3566.
+> It use a dedicated PCIe-phy. Add support for this.
 > 
-> Tested with the GStreamer V4L2 HEVC plugin:
-> (https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/1079)
+> Initial support by Shawn Lin, modifications by Peter Geis and Frank
+> Wunderlich.
 > 
-> Current Fluster score:
-> `Ran 131/147 tests successfully               in 278.568 secs`
-> with
-> `python3 fluster.py run -d GStreamer-H.265-V4L2SL-Gst1.0 -ts JCT-VC-HEVC_V1 -j1`
+> Add data-lanes property for splitting pcie-lanes across controllers.
 > 
-> failed conformance tests:
-> - DBLK_D_VIXS_2 (Success on Hantro G2)
-> - DSLICE_A_HHI_5 (Success on Hantro G2)
-> - EXT_A_ericsson_4 (Success on Hantro G2)
-> - PICSIZE_A_Bossen_1 (Hardware limitation)
-> - PICSIZE_B_Bossen_1 (Hardware limitation)
-> - PICSIZE_C_Bossen_1 (Hardware limitation)
-> - PICSIZE_D_Bossen_1 (Hardware limitation)
-> - PPS_A_qualcomm_7 (Success on Hantro G2)
-> - SAODBLK_A_MainConcept_4 (Success on Hantro G2)
-> - SAODBLK_B_MainConcept_4 (Success on Hantro G2)
-> - SLIST_B_Sony_9 (Success on Hantro G2)
-> - SLIST_D_Sony_9 (Success on Hantro G2)
-> - TSUNEQBD_A_MAIN10_Technicolor_2 (Success on Hantro G2)
-> - VPSSPSPPS_A_MainConcept_1 (Success on Hantro G2)
-> - WPP_D_ericsson_MAIN10_2 (Fail on Hantro G2)
-> - WPP_D_ericsson_MAIN_2 (Fail on Hantro G2)
+> The data-lanes is an array where x=0 means lane is disabled and  x > 0
+> means controller x is assigned to phy lane.
 > 
-> Not tested with FFMpeg so far.
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Suggested-by: Peter Geis <pgwipeout@gmail.com>
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+> ---
+> v4:
+> - change u8 lane-map to u32 data-lanes
 > 
-> Known issues:
-> - Unable to reliably decode multiple videos concurrently
-> - The SAODBLK_* tests timeout if the timeout time in fluster is lower than 120
-> - Currently the uv_virstride is calculated in a manner that is hardcoded
-> for the two available formats NV12 and NV15. (@config_registers)
+> v3:
+> - change dt-binding include
+> - change reset to devm_reset_control_get_optional_exclusive
+>   exit on error and lower severity of message if unset
+> - fix from peter: disable reg-write for phy-mode in rockchip_p3phy_probe
+> - move bifurcation/lane-map support from PCIe to phy driver
 > 
-> Notable design decisions:
-> - I opted for a bitfield to represent the PPS memory blob as it is the
-> perfect tool for that job. It describes the memory layout with any
-> additional required documentation, is easy to read and a native language
-> tool for that job
+> v2:
+> - move dt-bindings header into separate patch
+> - use BIT-macro
+> - make constants better readable
+> - use dev_err instead of pr_*
+> - change dt-binding include due to renaming (phy-snps-pcie3.h => phy-rockchip-pcie3.h)
+> - use exclusive variant of devm_reset_control_get{,_exclusive}
+> - fix semicolon.cocci warnings reported by kernel test robot <lkp@intel.com>
+> 
+> ---
+> driver was taken from linux 5.10 based on in
+> https://github.com/JeffyCN/mirrors
+> which now has disappeared
+> 
+> Update phy-rockchip-snps-pcie3.c
+> 
+> Fix messages for data-lanes
+> 
+> Update phy-rockchip-snps-pcie3.c
+> 
+> Fix comment for data-lanes
+> ---
+>  drivers/phy/rockchip/Kconfig                  |   9 +
+>  drivers/phy/rockchip/Makefile                 |   1 +
+>  .../phy/rockchip/phy-rockchip-snps-pcie3.c    | 317 ++++++++++++++++++
+>  include/linux/phy/pcie.h                      |  12 +
+>  4 files changed, 339 insertions(+)
+>  create mode 100644 drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
+>  create mode 100644 include/linux/phy/pcie.h
+> 
+> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
+> index 9022e395c056..94360fc96a6f 100644
+> --- a/drivers/phy/rockchip/Kconfig
+> +++ b/drivers/phy/rockchip/Kconfig
+> @@ -83,6 +83,15 @@ config PHY_ROCKCHIP_PCIE
+>  	help
+>  	  Enable this to support the Rockchip PCIe PHY.
+>  
+> +config PHY_ROCKCHIP_SNPS_PCIE3
+> +	tristate "Rockchip Snps PCIe3 PHY Driver"
+> +	depends on (ARCH_ROCKCHIP && OF) || COMPILE_TEST
+> +	depends on HAS_IOMEM
+> +	select GENERIC_PHY
+> +	select MFD_SYSCON
+> +	help
+> +	  Enable this to support the Rockchip snps PCIe3 PHY.
+> +
+>  config PHY_ROCKCHIP_TYPEC
+>  	tristate "Rockchip TYPEC PHY Driver"
+>  	depends on OF && (ARCH_ROCKCHIP || COMPILE_TEST)
+> diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
+> index a5041efb5b8f..7eab129230d1 100644
+> --- a/drivers/phy/rockchip/Makefile
+> +++ b/drivers/phy/rockchip/Makefile
+> @@ -8,5 +8,6 @@ obj-$(CONFIG_PHY_ROCKCHIP_INNO_HDMI)	+= phy-rockchip-inno-hdmi.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_NANENG_COMBO_PHY)	+= phy-rockchip-naneng-combphy.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_PCIE)		+= phy-rockchip-pcie.o
+> +obj-$(CONFIG_PHY_ROCKCHIP_SNPS_PCIE3)	+= phy-rockchip-snps-pcie3.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_TYPEC)	+= phy-rockchip-typec.o
+>  obj-$(CONFIG_PHY_ROCKCHIP_USB)		+= phy-rockchip-usb.o
+> diff --git a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
+> new file mode 100644
+> index 000000000000..e2be53492618
+> --- /dev/null
+> +++ b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
+> @@ -0,0 +1,317 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Rockchip PCIE3.0 phy driver
+> + *
+> + * Copyright (C) 2020 Rockchip Electronics Co., Ltd.
 
-Can I point out how terrible an idea this is? The C language gives 
-virtually zero guarantee about how bitfields are actually represented in 
-memory. Platform ABIs (e.g. [1]) might nail things down a bit more, but 
-different platforms are free to make completely different choices so 
-portability still goes out the window. Even for a single platform, 
-different compilers (or at worst even different version of one compiler) 
-can still make incompatible choices e.g. WRT alignment of packed 
-members. Even if you narrow the scope as far as a specific version of 
-AArch64 GCC, I think this is still totally broken for big-endian.
+2022 now :)
 
-The fact that you've had to use nonsensical types to trick a compiler 
-into meeting your expectations should already be a clue to how fragile 
-this is in general.
+> + */
+> +
+> +#include <linux/clk.h>
+> +#include <linux/delay.h>
+> +#include <linux/io.h>
+> +#include <linux/iopoll.h>
+> +#include <linux/kernel.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/module.h>
+> +#include <linux/of_device.h>
+> +#include <linux/phy/pcie.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/regmap.h>
+> +#include <linux/reset.h>
+> +
+> +/* Register for RK3568 */
+> +#define GRF_PCIE30PHY_CON1			0x4
+> +#define GRF_PCIE30PHY_CON6			0x18
+> +#define GRF_PCIE30PHY_CON9			0x24
+> +#define GRF_PCIE30PHY_STATUS0			0x80
+> +#define SRAM_INIT_DONE(reg)			(reg & BIT(14))
+> +
+> +#define RK3568_BIFURCATION_LANE_0_1		BIT(0)
+> +
+> +/* Register for RK3588 */
+> +#define PHP_GRF_PCIESEL_CON			0x100
+> +#define RK3588_PCIE3PHY_GRF_CMN_CON0		0x0
+> +#define RK3588_PCIE3PHY_GRF_PHY0_STATUS1	0x904
+> +#define RK3588_PCIE3PHY_GRF_PHY1_STATUS1	0xa04
+> +#define RK3588_SRAM_INIT_DONE(reg)		(reg & BIT(0))
+> +
+> +#define RK3588_BIFURCATION_LANE_0_1		BIT(0)
+> +#define RK3588_BIFURCATION_LANE_2_3		BIT(1)
+> +#define RK3588_LANE_AGGREGATION		BIT(2)
+> +
+> +struct rockchip_p3phy_ops;
+> +
+> +struct rockchip_p3phy_priv {
+> +	const struct rockchip_p3phy_ops *ops;
+> +	void __iomem *mmio;
+> +	/* mode: RC, EP */
+> +	int mode;
+> +	/* pcie30_phymode: Aggregation, Bifurcation */
+> +	int pcie30_phymode;
+> +	struct regmap *phy_grf;
+> +	struct regmap *pipe_grf;
+> +	struct reset_control *p30phy;
+> +	struct phy *phy;
+> +	struct clk_bulk_data *clks;
+> +	int num_clks;
+> +	int num_lanes;
+> +	u32 lanes[4];
+> +};
+> +
+> +struct rockchip_p3phy_ops {
+> +	int (*phy_init)(struct rockchip_p3phy_priv *priv);
+> +};
+> +
+> +static int rockchip_p3phy_set_mode(struct phy *phy, enum phy_mode mode, int submode)
+> +{
+> +	struct rockchip_p3phy_priv *priv = phy_get_drvdata(phy);
+> +
+> +	/* Actually We don't care EP/RC mode, but just record it */
+> +	switch (submode) {
+> +	case PHY_MODE_PCIE_RC:
+> +		priv->mode = PHY_MODE_PCIE_RC;
+> +		break;
+> +	case PHY_MODE_PCIE_EP:
+> +		priv->mode = PHY_MODE_PCIE_EP;
+> +		break;
+> +	default:
+> +		dev_err(&phy->dev, "%s, invalid mode\n", __func__);
+> +		return -EINVAL;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int rockchip_p3phy_rk3568_init(struct rockchip_p3phy_priv *priv)
+> +{
+> +	struct phy *phy = priv->phy;
+> +	bool bifurcation = false;
+> +	int ret;
+> +	u32 reg;
+> +
+> +	/* Deassert PCIe PMA output clamp mode */
+> +	regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON9, BIT(15) | BIT(31));
 
-> - The RPS memory blob is created using a bitmap implementation, which
-> uses a common Kernel API to avoid reinventing the wheel and to keep the
-> code clean.
+Can we define these bits..?
 
-Similarly, Linux bitmaps are designed for use as, well, bitmaps. Abusing 
-them as a data interchange format for bit-aligned numerical values is 
-far from "clean" semantically. And I'm pretty sure it's also broken for 
-big-endian.
+> +
+> +	for (int i = 0; i < priv->num_lanes; i++) {
+> +		dev_info(&phy->dev, "lane number %d, val %d\n", i, priv->lanes[i]);
+> +		if (priv->lanes[i] > 1)
+> +			bifurcation = true;
+> +	}
+> +
+> +	/* Set bifurcation if needed, and it doesn't care RC/EP */
+> +	if (bifurcation) {
+> +		dev_info(&phy->dev, "bifurcation enabled\n");
+> +		regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON6,
+> +			     (0xf << 16) | RK3568_BIFURCATION_LANE_0_1);
 
-This kind of stuff may be standard practice in embedded development 
-where you're targeting a specific MCU with a specific toolchain, but I 
-don't believe it's suitable for upstream Linux. It would take pretty 
-much the same number of lines to use GENMASK definitions and bitfield.h 
-helpers to pack values into words which can then be written to memory in 
-a guaranteed format and endianness (certainly for the PPS; for the RPS 
-it may well end up a bit longer, but would be self-documenting and 
-certainly more readable than those loops). It mostly just means that for 
-any field which crosses a word boundary you'll end up with 2 definitions 
-and 2 assignments, which is hardly a problem (and in some ways more 
-honest about what's actually going on).
+upper word 0xf?
 
-Thanks,
-Robin.
+> +		regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON1,
+> +			     BIT(15) | BIT(31));
 
-[1] 
-https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst#bit-fields
+again define bits please
 
-> - I deliberatly opted against the macro solution used in H264, which
-> declares Macros in mid function and declares the fields of the memory
-> blob as macros as well. And I would be glad to refactor the H264 code if
-> desired by the maintainer to use common Kernel APIs and native language
-> elements.
-> - The giant static array of cabac values is moved to a separate c file,
-> I did so because a separate .h file would be incorrect as it doesn't
-> expose anything of any value for any other file than the rkvdec-hevc.c
-> file. Other options were:
->    - Calculating the values instead of storing the results (doesn't seem
->    to be worth it)
->    - Supply them via firmware (Adding firmware makes the whole software
->    way more complicated and the usage of the driver less obvious)
-> 
-> Ignored Checkpatch warnings (as it fits to the current style of the file):
-> ```
-> WARNING: line length of 162 exceeds 100 columns
-> #115: FILE: drivers/media/v4l2-core/v4l2-common.c:265:
-> +               { .format = V4L2_PIX_FMT_NV15,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 5, 5, 0, 0 }, .hdiv = 2, .vdiv = 2,
-> 
-> ERROR: trailing statements should be on next line
-> #128: FILE: drivers/media/v4l2-core/v4l2-ioctl.c:1305:
-> +       case V4L2_PIX_FMT_NV15:         descr = "10-bit Y/CbCr 4:2:0 (Packed)"; break;
-> ```
-> 
-> v4l2-compliance test:
-> ```
-> Total for rkvdec device /dev/video3: 46, Succeeded: 46, Failed: 0, Warnings: 0
-> ```
-> 
-> kselftest module run for the bitmap changes:
-> ```
-> $ sudo insmod /usr/lib/modules/5.19.0-rc3-finalseries/kernel/lib/test_bitmap.ko
-> [   71.751716] test_bitmap: parselist: 14: input is '0-2047:128/256' OK, Time: 1750
-> [   71.751787] test_bitmap: bitmap_print_to_pagebuf: input is '0-32767
-> [   71.751787] ', Time: 6708
-> [   71.760373] test_bitmap: set_value: 6/6 tests correct
-> ```
-> 
-> Jonas Karlman (2):
->    media: v4l2: Add NV15 pixel format
->    media: v4l2-common: Add helpers to calculate bytesperline and
->      sizeimage
-> 
-> Sebastian Fricke (4):
->    bitops: bitmap helper to set variable length values
->    staging: media: rkvdec: Add valid pixel format check
->    staging: media: rkvdec: Enable S_CTRL IOCTL
->    staging: media: rkvdec: Add HEVC backend
-> 
->   .../media/v4l/pixfmt-yuv-planar.rst           |   53 +
->   drivers/media/v4l2-core/v4l2-common.c         |   79 +-
->   drivers/media/v4l2-core/v4l2-ioctl.c          |    1 +
->   drivers/staging/media/rkvdec/Makefile         |    2 +-
->   drivers/staging/media/rkvdec/TODO             |   22 +-
->   .../staging/media/rkvdec/rkvdec-hevc-data.c   | 1844 +++++++++++++++++
->   drivers/staging/media/rkvdec/rkvdec-hevc.c    |  859 ++++++++
->   drivers/staging/media/rkvdec/rkvdec-regs.h    |    1 +
->   drivers/staging/media/rkvdec/rkvdec.c         |  182 +-
->   drivers/staging/media/rkvdec/rkvdec.h         |    3 +
->   include/linux/bitmap.h                        |   39 +
->   include/uapi/linux/videodev2.h                |    1 +
->   lib/test_bitmap.c                             |   47 +
->   13 files changed, 3066 insertions(+), 67 deletions(-)
->   create mode 100644 drivers/staging/media/rkvdec/rkvdec-hevc-data.c
->   create mode 100644 drivers/staging/media/rkvdec/rkvdec-hevc.c
-> 
+> +	} else {
+> +		dev_info(&phy->dev, "bifurcation disabled\n");
+
+debug level?
+
+> +		regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON6,
+> +			     (0xf << 16) & ~RK3568_BIFURCATION_LANE_0_1);
+> +	}
+> +
+> +	reset_control_deassert(priv->p30phy);
+> +
+> +	ret = regmap_read_poll_timeout(priv->phy_grf,
+> +				       GRF_PCIE30PHY_STATUS0,
+> +				       reg, SRAM_INIT_DONE(reg),
+> +				       0, 500);
+> +	if (ret)
+> +		dev_err(&priv->phy->dev, "%s: lock failed 0x%x, check input refclk and power supply\n",
+> +		       __func__, reg);
+> +	return ret;
+> +}
+> +
+> +static const struct rockchip_p3phy_ops rk3568_ops = {
+> +	.phy_init = rockchip_p3phy_rk3568_init,
+> +};
+> +
+> +static int rockchip_p3phy_rk3588_init(struct rockchip_p3phy_priv *priv)
+> +{
+> +	u32 reg = 0;
+> +	u8 mode = 0;
+> +	int ret;
+> +
+> +	/* Deassert PCIe PMA output clamp mode */
+> +	regmap_write(priv->phy_grf, RK3588_PCIE3PHY_GRF_CMN_CON0, BIT(8) | BIT(24));
+> +
+> +	/* Set bifurcation if needed */
+> +	for (int i = 0; i < priv->num_lanes; i++) {
+> +		if (!priv->lanes[i])
+> +			mode |= (BIT(i) << 3);
+> +
+> +		if (priv->lanes[i] > 1)
+> +			mode |= (BIT(i) >> 1);
+> +	}
+> +
+> +	if (!mode)
+> +		reg = RK3588_LANE_AGGREGATION;
+> +	else {
+> +		if (mode & (BIT(0) | BIT(1)))
+> +			reg |= RK3588_BIFURCATION_LANE_0_1;
+> +
+> +		if (mode & (BIT(2) | BIT(3)))
+> +			reg |= RK3588_BIFURCATION_LANE_2_3;
+> +	}
+> +
+> +	regmap_write(priv->phy_grf, RK3588_PCIE3PHY_GRF_CMN_CON0, (0x7<<16) | reg);
+> +
+> +	/* Set pcie1ln_sel in PHP_GRF_PCIESEL_CON */
+> +	if (!IS_ERR(priv->pipe_grf)) {
+> +		reg = (mode & (BIT(6) | BIT(7))) >> 6;
+> +		if (reg)
+> +			regmap_write(priv->pipe_grf, PHP_GRF_PCIESEL_CON,
+> +				     (reg << 16) | reg);
+> +	}
+> +
+> +	reset_control_deassert(priv->p30phy);
+> +
+> +	ret = regmap_read_poll_timeout(priv->phy_grf,
+> +				       RK3588_PCIE3PHY_GRF_PHY0_STATUS1,
+> +				       reg, RK3588_SRAM_INIT_DONE(reg),
+> +				       0, 500);
+> +	ret |= regmap_read_poll_timeout(priv->phy_grf,
+> +					RK3588_PCIE3PHY_GRF_PHY1_STATUS1,
+> +					reg, RK3588_SRAM_INIT_DONE(reg),
+> +					0, 500);
+> +	if (ret)
+> +		pr_err("%s: lock failed 0x%x, check input refclk and power supply\n",
+> +		       __func__, reg);
+
+Can this be made dev_err too, I still see bunch of pr_ and at least here
+you have driver context... while at it drop the __func__ from these logs
+too please
+
+
+> +	return ret;
+> +}
+> +
+> +static const struct rockchip_p3phy_ops rk3588_ops = {
+> +	.phy_init = rockchip_p3phy_rk3588_init,
+> +};
+> +
+> +static int rochchip_p3phy_init(struct phy *phy)
+> +{
+> +	struct rockchip_p3phy_priv *priv = phy_get_drvdata(phy);
+> +	int ret;
+> +
+> +	ret = clk_bulk_prepare_enable(priv->num_clks, priv->clks);
+> +	if (ret) {
+> +		pr_err("failed to enable PCIe bulk clks %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	reset_control_assert(priv->p30phy);
+> +	udelay(1);
+> +
+> +	if (priv->ops->phy_init) {
+> +		ret = priv->ops->phy_init(priv);
+> +		if (ret)
+> +			clk_bulk_disable_unprepare(priv->num_clks, priv->clks);
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +static int rochchip_p3phy_exit(struct phy *phy)
+> +{
+> +	struct rockchip_p3phy_priv *priv = phy_get_drvdata(phy);
+> +
+> +	clk_bulk_disable_unprepare(priv->num_clks, priv->clks);
+> +	reset_control_assert(priv->p30phy);
+> +	return 0;
+> +}
+> +
+> +static const struct phy_ops rochchip_p3phy_ops = {
+> +	.init = rochchip_p3phy_init,
+> +	.exit = rochchip_p3phy_exit,
+> +	.set_mode = rockchip_p3phy_set_mode,
+> +	.owner = THIS_MODULE,
+> +};
+> +
+> +static int rockchip_p3phy_probe(struct platform_device *pdev)
+> +{
+> +	struct phy_provider *phy_provider;
+> +	struct device *dev = &pdev->dev;
+> +	struct rockchip_p3phy_priv *priv;
+> +	struct device_node *np = dev->of_node;
+> +	struct resource *res;
+> +	int ret;
+> +
+> +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+> +	if (!priv)
+> +		return -ENOMEM;
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	priv->mmio = devm_ioremap_resource(dev, res);
+> +	if (IS_ERR(priv->mmio)) {
+> +		ret = PTR_ERR(priv->mmio);
+> +		return ret;
+> +	}
+> +
+> +	priv->ops = of_device_get_match_data(&pdev->dev);
+> +	if (!priv->ops) {
+> +		dev_err(&pdev->dev, "no of match data provided\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	priv->phy_grf = syscon_regmap_lookup_by_phandle(np, "rockchip,phy-grf");
+> +	if (IS_ERR(priv->phy_grf)) {
+> +		dev_err(dev, "failed to find rockchip,phy_grf regmap\n");
+> +		return PTR_ERR(priv->phy_grf);
+> +	}
+> +
+> +	priv->pipe_grf = syscon_regmap_lookup_by_phandle(dev->of_node,
+> +							 "rockchip,pipe-grf");
+> +	if (IS_ERR(priv->pipe_grf))
+> +		dev_info(dev, "failed to find rockchip,pipe_grf regmap\n");
+> +
+> +	priv->num_lanes = of_property_read_variable_u32_array(dev->of_node, "data-lanes",
+> +							     priv->lanes, 2,
+> +							     ARRAY_SIZE(priv->lanes));
+> +
+> +	/* if no data-lanes assume aggregation */
+> +	if (priv->num_lanes == -EINVAL) {
+> +		dev_dbg(dev, "no data-lanes property found\n");
+> +		priv->num_lanes = 1;
+> +		priv->lanes[0] = 1;
+> +	} else if (priv->num_lanes < 0) {
+> +		dev_err(dev, "failed to read data-lanes property %d\n", priv->num_lanes);
+> +		return priv->num_lanes;
+> +	}
+> +
+> +	priv->phy = devm_phy_create(dev, NULL, &rochchip_p3phy_ops);
+> +	if (IS_ERR(priv->phy)) {
+> +		dev_err(dev, "failed to create combphy\n");
+> +		return PTR_ERR(priv->phy);
+> +	}
+> +
+> +	priv->p30phy = devm_reset_control_get_optional_exclusive(dev, "phy");
+> +	if (IS_ERR(priv->p30phy)) {
+> +		return dev_err_probe(dev, PTR_ERR(priv->p30phy),
+> +				     "failed to get phy reset control\n");
+> +	}
+> +	if (!priv->p30phy)
+> +		dev_info(dev, "no phy reset control specified\n");
+> +
+> +	priv->num_clks = devm_clk_bulk_get_all(dev, &priv->clks);
+> +	if (priv->num_clks < 1)
+> +		return -ENODEV;
+> +
+> +	dev_set_drvdata(dev, priv);
+> +	phy_set_drvdata(priv->phy, priv);
+> +	phy_provider = devm_of_phy_provider_register(dev, of_phy_simple_xlate);
+> +	return PTR_ERR_OR_ZERO(phy_provider);
+> +}
+> +
+> +static const struct of_device_id rockchip_p3phy_of_match[] = {
+> +	{ .compatible = "rockchip,rk3568-pcie3-phy", .data = &rk3568_ops },
+> +	{ .compatible = "rockchip,rk3588-pcie3-phy", .data = &rk3588_ops },
+> +	{ },
+> +};
+> +MODULE_DEVICE_TABLE(of, rockchip_p3phy_of_match);
+> +
+> +static struct platform_driver rockchip_p3phy_driver = {
+> +	.probe	= rockchip_p3phy_probe,
+> +	.driver = {
+> +		.name = "rockchip-snps-pcie3-phy",
+> +		.of_match_table = rockchip_p3phy_of_match,
+> +	},
+> +};
+> +module_platform_driver(rockchip_p3phy_driver);
+> +MODULE_DESCRIPTION("Rockchip Synopsys PCIe 3.0 PHY driver");
+> +MODULE_LICENSE("GPL");
+> diff --git a/include/linux/phy/pcie.h b/include/linux/phy/pcie.h
+> new file mode 100644
+> index 000000000000..93c997f520fe
+> --- /dev/null
+> +++ b/include/linux/phy/pcie.h
+> @@ -0,0 +1,12 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
+
+Header is 2021 !
+
+> + */
+> +#ifndef __PHY_PCIE_H
+> +#define __PHY_PCIE_H
+> +
+> +#define PHY_MODE_PCIE_RC 20
+> +#define PHY_MODE_PCIE_EP 21
+> +#define PHY_MODE_PCIE_BIFURCATION 22
+> +
+> +#endif
+> -- 
+> 2.34.1
+
+-- 
+~Vinod
 
 _______________________________________________
 Linux-rockchip mailing list
