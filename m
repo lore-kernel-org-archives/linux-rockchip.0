@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB20FC43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Jul 2022 07:44:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C617C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Jul 2022 07:49:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rE5yu8AM4qbEr5Uw0CIHbixe7gSWYxa145jnZrRXKpM=; b=48VFtbOOQ08jRW
-	r08lNejqowotonEhY1e5o/qoSxVtaQp0oNiAxYjdXcanGuZGkyA4S2FKzmsB+62kSFLHVe5+f1KBB
-	up/jKi80krNbbDDItREzxvG7C3ePB5SeTlUJM5E2GxvG4XtDy5ZY2MKzpxwajjUOkcBe9wUdE94BC
-	YEjU3hVM/fsURmDJMgFJRBCunW8RY/vE42+V3m82yzy76w554mHnJaLj3gZ+xuSfvT5Q1u/tUHZjt
-	EV4gZ9wOK5Chx2CfU+QK+lxKGhGiIabOSuFj9doW279QqZtUdytHRO1gXQCf4/8kYo+32987eLhfH
-	OSZlfpD5GvMEzVLJjiWA==;
+	List-Owner; bh=1qEoxSQixkxo3Q+2zU4wcRZHsAVyvt4VAgIkoAfbpnE=; b=xhJwfOweBAb9WC
+	dJc7dKolL7sX32lKORoTWaTJ3sQdPd5yLR6A3usAqonrxKtLFOecjwh/tJTaTZ08/kmiyDXRBlZVa
+	wzcQKVAMBYHXdQ4xJbQupNnIoEVNeE1lFizi6G/GsscGThNYGq5QNxtEiHnt5XvzfqFnH/+81jjfg
+	ft8RxH3QP0bfNy0Ev6A2fsQW83FiiFiUwIJEYXqVk1uoXbkl+t1EOo4GKzrdT6bIFsaUXBI+sPtjL
+	UuQEEkjZ2Accqw/7TED6NsgrVRUv3ckznQrlgyVKgybVtjqctHk9WLuf/LkOOe8ofDtGqm8eZX2HN
+	Y4u/sUW7KV2Lz3EMsVXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCG0B-0051BN-SK; Fri, 15 Jul 2022 07:44:43 +0000
+	id 1oCG4h-0052i8-Hh; Fri, 15 Jul 2022 07:49:23 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCG09-0051AP-Pm
-	for linux-rockchip@lists.infradead.org; Fri, 15 Jul 2022 07:44:43 +0000
+	id 1oCG4e-0052el-8n
+	for linux-rockchip@lists.infradead.org; Fri, 15 Jul 2022 07:49:22 +0000
 Received: from pyrite.rasen.tech (softbank036240121080.bbtec.net [36.240.121.80])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7A4E1993;
-	Fri, 15 Jul 2022 09:44:33 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id AB09A9DA;
+	Fri, 15 Jul 2022 09:49:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657871075;
-	bh=EYq45zGoUpOXunsfzllgRnepVXXmx+WGLuPM9ZT1l9U=;
+	s=mail; t=1657871358;
+	bh=Bt/pJcRuoKsM/OI6zV1vuU32ogiLivegrT1nhtUhFKw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WmSEmGcLE4C6+NHwAFufW+M0JB+gd9R58ZpbC+Ha77LJBdXjXZje+YHcKGWe2bDmX
-	 zwLRIeCrLjvZIv/xzsy4p9nC2LvxvBGC/5FuvZUBaGYtMPJLwL2bBQzZ4gQuRWEwup
-	 Bv0Mo5JjklzFFEUcJ7MNPGCIFaOQtBeSSLwvqI0I=
-Date: Fri, 15 Jul 2022 16:44:28 +0900
+	b=uW/vtrURVcYWV51DaLEXEktZ0ncawK1ldlMrlBjFhAvZMRldunzCEPYXSWAuVsC6V
+	 hitlY+C6+9lhqkqUflECfY2am8/gQsq57KteGfI1i3iz89P4e3uasfRoJbgkzUt4vg
+	 fcbtai7SorlV8+2ETz198GiOof/NClXyh06p5kgY=
+Date: Fri, 15 Jul 2022 16:49:11 +0900
 From: paul.elder@ideasonboard.com
 To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	Dafna Hirschfeld <dafna@fastmail.com>,
 	Florian Sylvestre <fsylvestre@baylibre.com>
-Subject: Re: [PATCH 1/3] media: rockchip: rkisp1: Set DPCC methods enable
- bits inside loop
-Message-ID: <20220715074428.GE3411283@pyrite.rasen.tech>
+Subject: Re: [PATCH 3/3] media: rockchip: rkisp1: Define macros for DPCC
+ configurations in UAPI
+Message-ID: <20220715074911.GF3411283@pyrite.rasen.tech>
 References: <20220616160456.21549-1-laurent.pinchart@ideasonboard.com>
- <20220616160456.21549-2-laurent.pinchart@ideasonboard.com>
+ <20220616160456.21549-4-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220616160456.21549-2-laurent.pinchart@ideasonboard.com>
+In-Reply-To: <20220616160456.21549-4-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_004442_014500_B673A500 
-X-CRM114-Status: GOOD (  15.36  )
+X-CRM114-CacheID: sfid-20220715_004920_493690_E27DD638 
+X-CRM114-Status: GOOD (  18.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,49 +70,137 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Laurent,
 
-On Thu, Jun 16, 2022 at 07:04:54PM +0300, Laurent Pinchart wrote:
-> The rkisp1_dpcc_config() function looks over methods sets to configure
-> them, but sets the RKISP1_CIF_ISP_DPCC_METHODS_SET_* registers outside
-> of the loop with hand-unrolled code. Move this to the loop to simplify
-> the code.
+On Thu, Jun 16, 2022 at 07:04:56PM +0300, Laurent Pinchart wrote:
+> Extend the UAPI rkisp1-config.h header with macros for all DPCC
+> configuration fields. While at it, clarify of fix issues in the DPCC
+> documentation.
 > 
 > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
 Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
 
 > ---
->  drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 10 ++++------
->  1 file changed, 4 insertions(+), 6 deletions(-)
+>  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  1 -
+>  include/uapi/linux/rkisp1-config.h            | 77 +++++++++++++++----
+>  2 files changed, 61 insertions(+), 17 deletions(-)
 > 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> index c88a9c0fa86e..140012fa18f0 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> @@ -18,6 +18,8 @@
->  #define RKISP1_ISP_PARAMS_REQ_BUFS_MIN	2
->  #define RKISP1_ISP_PARAMS_REQ_BUFS_MAX	8
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+> index dc01f968c19d..a931f7216e9b 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+> @@ -620,7 +620,6 @@
+>  /* DPCC */
+>  #define RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE		BIT(0)
+>  #define RKISP1_CIF_ISP_DPCC_MODE_GRAYSCALE_MODE		BIT(1)
+> -#define RKISP1_CIF_ISP_DPCC_MODE_STAGE1_ENABLE		BIT(2)
+>  #define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_MASK		GENMASK(3, 0)
+>  #define RKISP1_CIF_ISP_DPCC_SET_USE_MASK		GENMASK(3, 0)
+>  #define RKISP1_CIF_ISP_DPCC_METHODS_SET_MASK		0x00001f1f
+> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
+> index 583ca0d9a79d..730673ecc63d 100644
+> --- a/include/uapi/linux/rkisp1-config.h
+> +++ b/include/uapi/linux/rkisp1-config.h
+> @@ -117,7 +117,46 @@
+>  /*
+>   * Defect Pixel Cluster Correction
+>   */
+> -#define RKISP1_CIF_ISP_DPCC_METHODS_MAX       3
+> +#define RKISP1_CIF_ISP_DPCC_METHODS_MAX				3
+> +
+> +#define RKISP1_CIF_ISP_DPCC_MODE_STAGE1_ENABLE			(1U << 2)
+> +
+> +#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_STAGE1_INCL_G_CENTER	(1U << 0)
+> +#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_STAGE1_INCL_RB_CENTER	(1U << 1)
+> +#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_STAGE1_G_3X3		(1U << 2)
+> +#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_STAGE1_RB_3X3		(1U << 3)
+> +
+> +/* 0-2 for sets 1-3 */
+> +#define RKISP1_CIF_ISP_DPCC_SET_USE_STAGE1_USE_SET(n)		((n) << 0)
+> +#define RKISP1_CIF_ISP_DPCC_SET_USE_STAGE1_USE_FIX_SET		(1U << 3)
+> +
+> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_PG_GREEN_ENABLE		(1U << 0)
+> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_LC_GREEN_ENABLE		(1U << 1)
+> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RO_GREEN_ENABLE		(1U << 2)
+> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RND_GREEN_ENABLE	(1U << 3)
+> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RG_GREEN_ENABLE		(1U << 4)
+> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_PG_RED_BLUE_ENABLE	(1U << 8)
+> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_LC_RED_BLUE_ENABLE	(1U << 9)
+> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RO_RED_BLUE_ENABLE	(1U << 10)
+> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RND_RED_BLUE_ENABLE	(1U << 11)
+> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RG_RED_BLUE_ENABLE	(1U << 12)
+> +
+> +#define RKISP1_CIF_ISP_DPCC_LINE_THRESH_G(v)			((v) << 0)
+> +#define RKISP1_CIF_ISP_DPCC_LINE_THRESH_RB(v)			((v) << 8)
+> +#define RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_G(v)			((v) << 0)
+> +#define RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_RB(v)			((v) << 8)
+> +#define RKISP1_CIF_ISP_DPCC_PG_FAC_G(v)				((v) << 0)
+> +#define RKISP1_CIF_ISP_DPCC_PG_FAC_RB(v)			((v) << 8)
+> +#define RKISP1_CIF_ISP_DPCC_RND_THRESH_G(v)			((v) << 0)
+> +#define RKISP1_CIF_ISP_DPCC_RND_THRESH_RB(v)			((v) << 8)
+> +#define RKISP1_CIF_ISP_DPCC_RG_FAC_G(v)				((v) << 0)
+> +#define RKISP1_CIF_ISP_DPCC_RG_FAC_RB(v)			((v) << 8)
+> +
+> +#define RKISP1_CIF_ISP_DPCC_RO_LIMITS_n_G(n, v)			((v) << ((n) * 4))
+> +#define RKISP1_CIF_ISP_DPCC_RO_LIMITS_n_RB(n, v)		((v) << ((n) * 4 + 2))
+> +
+> +#define RKISP1_CIF_ISP_DPCC_RND_OFFS_n_G(n, v)			((v) << ((n) * 4))
+> +#define RKISP1_CIF_ISP_DPCC_RND_OFFS_n_RB(n, v)			((v) << ((n) * 4 + 2))
 >  
-> +#define RKISP1_ISP_DPCC_METHODS_SET(n) \
-> +			(RKISP1_CIF_ISP_DPCC_METHODS_SET_1 + 0x4 * (n))
->  #define RKISP1_ISP_DPCC_LINE_THRESH(n) \
->  			(RKISP1_CIF_ISP_DPCC_LINE_THRESH_1 + 0x14 * (n))
->  #define RKISP1_ISP_DPCC_LINE_MAD_FAC(n) \
-> @@ -66,13 +68,9 @@ static void rkisp1_dpcc_config(struct rkisp1_params *params,
->  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_SET_USE,
->  		     arg->set_use);
+>  /*
+>   * Denoising pre filter
+> @@ -249,16 +288,20 @@ struct rkisp1_cif_isp_bls_config {
+>  };
 >  
-> -	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_METHODS_SET_1,
-> -		     arg->methods[0].method);
-> -	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_METHODS_SET_2,
-> -		     arg->methods[1].method);
-> -	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_METHODS_SET_3,
-> -		     arg->methods[2].method);
->  	for (i = 0; i < RKISP1_CIF_ISP_DPCC_METHODS_MAX; i++) {
-> +		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_METHODS_SET(i),
-> +			     arg->methods[i].method);
->  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_LINE_THRESH(i),
->  			     arg->methods[i].line_thresh);
->  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_LINE_MAD_FAC(i),
+>  /**
+> - * struct rkisp1_cif_isp_dpcc_methods_config - Methods Configuration used by DPCC
+> + * struct rkisp1_cif_isp_dpcc_methods_config - DPCC methods set configuration
+>   *
+> - * Methods Configuration used by Defect Pixel Cluster Correction
+> + * This structure stores the configuration of one set of methods for the DPCC
+> + * algorithm. Multiple methods can be selected in each set (independently for
+> + * the Green and Red/Blue components) through the @method field, the result is
+> + * the logical AND of all enabled methods. The remaining fields set thresholds
+> + * and factors for each method.
+>   *
+> - * @method: Method enable bits
+> - * @line_thresh: Line threshold
+> - * @line_mad_fac: Line MAD factor
+> - * @pg_fac: Peak gradient factor
+> - * @rnd_thresh: Rank Neighbor Difference threshold
+> - * @rg_fac: Rank gradient factor
+> + * @method: Method enable bits (RKISP1_CIF_ISP_DPCC_METHODS_SET_*)
+> + * @line_thresh: Line threshold (RKISP1_CIF_ISP_DPCC_LINE_THRESH_*)
+> + * @line_mad_fac: Line Mean Absolute Difference factor (RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_*)
+> + * @pg_fac: Peak gradient factor (RKISP1_CIF_ISP_DPCC_PG_FAC_*)
+> + * @rnd_thresh: Rank Neighbor Difference threshold (RKISP1_CIF_ISP_DPCC_RND_THRESH_*)
+> + * @rg_fac: Rank gradient factor (RKISP1_CIF_ISP_DPCC_RG_FAC_*)
+>   */
+>  struct rkisp1_cif_isp_dpcc_methods_config {
+>  	__u32 method;
+> @@ -272,14 +315,16 @@ struct rkisp1_cif_isp_dpcc_methods_config {
+>  /**
+>   * struct rkisp1_cif_isp_dpcc_config - Configuration used by DPCC
+>   *
+> - * Configuration used by Defect Pixel Cluster Correction
+> + * Configuration used by Defect Pixel Cluster Correction. Three sets of methods
+> + * can be configured and selected through the @set_use field. The result is the
+> + * logical OR of all enabled sets.
+>   *
+> - * @mode: dpcc output mode
+> - * @output_mode: whether use hard coded methods
+> - * @set_use: stage1 methods set
+> - * @methods: methods config
+> - * @ro_limits: rank order limits
+> - * @rnd_offs: differential rank offsets for rank neighbor difference
+> + * @mode: DPCC mode (RKISP1_CIF_ISP_DPCC_MODE_*)
+> + * @output_mode: Interpolation output mode (RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_*)
+> + * @set_use: Methods sets selection (RKISP1_CIF_ISP_DPCC_SET_USE_*)
+> + * @methods: Methods sets configuration
+> + * @ro_limits: Rank order limits (RKISP1_CIF_ISP_DPCC_RO_LIMITS_*)
+> + * @rnd_offs: Differential rank offsets for rank neighbor difference (RKISP1_CIF_ISP_DPCC_RND_OFFS_*)
+>   */
+>  struct rkisp1_cif_isp_dpcc_config {
+>  	__u32 mode;
 
 _______________________________________________
 Linux-rockchip mailing list
