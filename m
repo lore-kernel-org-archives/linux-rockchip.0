@@ -4,54 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9F52C43334
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Jul 2022 07:56:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13D63C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Jul 2022 11:05:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t/gpq2DFFM4tPSgmBguMR5sLJy5T6nl0KWpuKNw4yaA=; b=P5mgT01nczZHCY
-	rKPwd1y2e0n9upWeke1ayvyHCM/y4CLlYd1UBr/fPhg0Dgoy6L4tjxIRHNt5yfDtM52SdbdMJPRWx
-	b7p17Lnxtxi0gUYSC6sGCrVJK7tRoYS/KoLfBMNEbsma7TPCFmOOkscln88JNIBKD2PxWvv9lrqfk
-	VNObr7rFvDZmiuddCemY+f0+vyGKNJfMAyHl3kHRJbU9El1mx+8UFnlG2O11sclj8Lt+fahqHrgHE
-	awGeLQpz3WFt9mD5Q69IC5mOsMaQP8Dh6bra1XgamcE52zPPDsqYQTOIa/8hmjVWE+s6Rt+jihs++
-	ecJS6hr/r/Jr4gC72z9g==;
+	List-Owner; bh=aJrwLU40xpBpF/XWDU4Xobl+j61IaG1/D8Z/jaqHW+4=; b=UQE6CiSc7/n1N+
+	Gyn6H784aCV1wnTtXe7mfx9L5Y7pPC+dcv3ndJs3l2RauyYUvr3QJbVunRqJFf74E030Bc7jrQSSb
+	aXIC/YSkT8UkBF5ln3GPGNRtWd0YqAzzQGJ9acoh1nDXfvu273cFeWu2KRfJbBhIqwIzRT5Ak5NK4
+	bJy5xgCKoRKy2s7Wx6mtdOZMa0d/hHqJ1LIgndfeqDvV5VT4GSQ67h188PGd1EboB99B2U2VbKHWG
+	N5MSrq9x85eRAuIjzdayJM2TXSm4XL5923DgJ2f0va5fY62ZwjoRaHDROKmgn/3//BZE1l2lVw2KP
+	DMnlfMXIpY1xXV/q7l1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCGBr-005AK0-9e; Fri, 15 Jul 2022 07:56:47 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCGBo-005AEl-4C
-	for linux-rockchip@lists.infradead.org; Fri, 15 Jul 2022 07:56:45 +0000
-Received: from pyrite.rasen.tech (softbank036240121080.bbtec.net [36.240.121.80])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 4730B9DA;
-	Fri, 15 Jul 2022 09:56:39 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657871802;
-	bh=OFAwvcCQ+xnrg0sobPK445OypitvJbUT52dT575p/6I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=viNBOLgtFLcEiCQ+KQYCIv3nXHmhihq1qKqCH4Nwz4w3CgH7Nw60cOfXE/mkGRE2h
-	 Mpo2+7qn61Ro6fMC3XwSEWgdmvDjns4+6SBppt+dWEjThnFxcCBeYeW217XWP09F+R
-	 bWwz0TzTK+st/DnH+9SxFRbN24/DikciKQ42hZCQ=
-Date: Fri, 15 Jul 2022 16:56:35 +0900
-From: paul.elder@ideasonboard.com
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Florian Sylvestre <fsylvestre@baylibre.com>
-Subject: Re: [PATCH 2/3] media: rockchip: rkisp1: Mask invalid bits in DPCC
- parameters
-Message-ID: <20220715075635.GG3411283@pyrite.rasen.tech>
-References: <20220616160456.21549-1-laurent.pinchart@ideasonboard.com>
- <20220616160456.21549-3-laurent.pinchart@ideasonboard.com>
+	id 1oCJ8A-006Un5-Jh; Fri, 15 Jul 2022 11:05:10 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oCJ86-006UlB-NS
+	for linux-rockchip@lists.infradead.org; Fri, 15 Jul 2022 11:05:08 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0BD251474;
+	Fri, 15 Jul 2022 04:05:05 -0700 (PDT)
+Received: from [10.57.86.139] (unknown [10.57.86.139])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id BC2113F73D;
+	Fri, 15 Jul 2022 04:05:01 -0700 (PDT)
+Message-ID: <7be996ee-9977-129b-08e2-12bde7ac9cd7@arm.com>
+Date: Fri, 15 Jul 2022 12:04:56 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220616160456.21549-3-laurent.pinchart@ideasonboard.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 0/6] RkVDEC HEVC driver
+Content-Language: en-GB
+To: Sebastian Fricke <sebastian.fricke@collabora.com>,
+ linux-media@vger.kernel.org
+Cc: jernej.skrabec@gmail.com, knaerzche@gmail.com, kernel@collabora.com,
+ bob.beckett@collabora.com, ezequiel@vanguardiasur.com.ar,
+ mchehab@kernel.org, gregkh@linuxfoundation.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-staging@lists.linux.dev, nicolas.dufresne@collabora.com,
+ Yury Norov <yury.norov@gmail.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Rasmus Villemoes <linux@rasmusvillemoes.dk>
+References: <20220713162449.133738-1-sebastian.fricke@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20220713162449.133738-1-sebastian.fricke@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_005644_349735_9ABCCA43 
-X-CRM114-Status: GOOD (  19.65  )
+X-CRM114-CacheID: sfid-20220715_040506_896605_62922133 
+X-CRM114-Status: GOOD (  33.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,152 +65,168 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
-
-On Thu, Jun 16, 2022 at 07:04:55PM +0300, Laurent Pinchart wrote:
-> Restrict the DPCC configuration that can be set by userspace to valid
-> register bits. To do so, reorganize the related register macros to
-> define valid bitmasks, as well as bits of the DPCC mode register.
+On 2022-07-13 17:24, Sebastian Fricke wrote:
+> Implement the HEVC codec variation for the RkVDEC driver. Currently only
+> the RK3399 is supported, but it is possible to enable the RK3288 as it
+> also supports this codec.
 > 
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
-Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
-
-> ---
->  .../platform/rockchip/rkisp1/rkisp1-params.c  | 44 ++++++++++++-------
->  .../platform/rockchip/rkisp1/rkisp1-regs.h    | 26 +++++------
->  2 files changed, 41 insertions(+), 29 deletions(-)
+> Based on top of the media tree @ef7fcbbb9eabbe86d2287484bf366dd1821cc6b8
+> and the HEVC uABI MR by Benjamin Gaignard.
+> (https://patchwork.linuxtv.org/project/linux-media/list/?series=8360)
 > 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> index 140012fa18f0..94e834cd2a21 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> @@ -58,35 +58,47 @@ static void rkisp1_dpcc_config(struct rkisp1_params *params,
->  	unsigned int i;
->  	u32 mode;
->  
-> -	/* avoid to override the old enable value */
-> +	/*
-> +	 * The enable bit is controlled in rkisp1_isp_isr_other_config() and
-> +	 * must be preserved. The grayscale mode should be configured
-> +	 * automatically based on the media bus code on the ISP sink pad, so
-> +	 * only the STAGE1_ENABLE bit can be set by userspace.
-> +	 */
->  	mode = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_DPCC_MODE);
-> -	mode &= RKISP1_CIF_ISP_DPCC_ENA;
-> -	mode |= arg->mode & ~RKISP1_CIF_ISP_DPCC_ENA;
-> +	mode &= RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE;
-> +	mode |= arg->mode & RKISP1_CIF_ISP_DPCC_MODE_STAGE1_ENABLE;
->  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_MODE, mode);
-> +
->  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_OUTPUT_MODE,
-> -		     arg->output_mode);
-> +		     arg->output_mode & RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_MASK);
->  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_SET_USE,
-> -		     arg->set_use);
-> +		     arg->set_use & RKISP1_CIF_ISP_DPCC_SET_USE_MASK);
->  
->  	for (i = 0; i < RKISP1_CIF_ISP_DPCC_METHODS_MAX; i++) {
->  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_METHODS_SET(i),
-> -			     arg->methods[i].method);
-> +			     arg->methods[i].method &
-> +			     RKISP1_CIF_ISP_DPCC_METHODS_SET_MASK);
->  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_LINE_THRESH(i),
-> -			     arg->methods[i].line_thresh);
-> +			     arg->methods[i].line_thresh &
-> +			     RKISP1_CIF_ISP_DPCC_LINE_THRESH_MASK);
->  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_LINE_MAD_FAC(i),
-> -			     arg->methods[i].line_mad_fac);
-> +			     arg->methods[i].line_mad_fac &
-> +			     RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_MASK);
->  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_PG_FAC(i),
-> -			     arg->methods[i].pg_fac);
-> +			     arg->methods[i].pg_fac &
-> +			     RKISP1_CIF_ISP_DPCC_PG_FAC_MASK);
->  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_RND_THRESH(i),
-> -			     arg->methods[i].rnd_thresh);
-> +			     arg->methods[i].rnd_thresh &
-> +			     RKISP1_CIF_ISP_DPCC_RND_THRESH_MASK);
->  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_RG_FAC(i),
-> -			     arg->methods[i].rg_fac);
-> +			     arg->methods[i].rg_fac &
-> +			     RKISP1_CIF_ISP_DPCC_RG_FAC_MASK);
->  	}
->  
->  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_RND_OFFS,
-> -		     arg->rnd_offs);
-> +		     arg->rnd_offs & RKISP1_CIF_ISP_DPCC_RND_OFFS_MASK);
->  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_RO_LIMITS,
-> -		     arg->ro_limits);
-> +		     arg->ro_limits & RKISP1_CIF_ISP_DPCC_RO_LIMIT_MASK);
->  }
->  
->  /* ISP black level subtraction interface function */
-> @@ -1214,11 +1226,11 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
->  		if (module_ens & RKISP1_CIF_ISP_MODULE_DPCC)
->  			rkisp1_param_set_bits(params,
->  					      RKISP1_CIF_ISP_DPCC_MODE,
-> -					      RKISP1_CIF_ISP_DPCC_ENA);
-> +					      RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE);
->  		else
->  			rkisp1_param_clear_bits(params,
->  						RKISP1_CIF_ISP_DPCC_MODE,
-> -						RKISP1_CIF_ISP_DPCC_ENA);
-> +						RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE);
->  	}
->  
->  	/* update bls config */
-> @@ -1580,7 +1592,7 @@ void rkisp1_params_configure(struct rkisp1_params *params,
->  void rkisp1_params_disable(struct rkisp1_params *params)
->  {
->  	rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_DPCC_MODE,
-> -				RKISP1_CIF_ISP_DPCC_ENA);
-> +				RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE);
->  	rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_LSC_CTRL,
->  				RKISP1_CIF_ISP_LSC_CTRL_ENA);
->  	rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_BLS_CTRL,
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> index dd3e6c38be67..dc01f968c19d 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> @@ -618,19 +618,19 @@
->  #define RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA_READ(x)	(((x) >> 11) & 1)
->  
->  /* DPCC */
-> -/* ISP_DPCC_MODE */
-> -#define RKISP1_CIF_ISP_DPCC_ENA				BIT(0)
-> -#define RKISP1_CIF_ISP_DPCC_MODE_MAX			0x07
-> -#define RKISP1_CIF_ISP_DPCC_OUTPUTMODE_MAX		0x0F
-> -#define RKISP1_CIF_ISP_DPCC_SETUSE_MAX			0x0F
-> -#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RESERVED	0xFFFFE000
-> -#define RKISP1_CIF_ISP_DPCC_LINE_THRESH_RESERVED	0xFFFF0000
-> -#define RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_RESERVED	0xFFFFC0C0
-> -#define RKISP1_CIF_ISP_DPCC_PG_FAC_RESERVED		0xFFFFC0C0
-> -#define RKISP1_CIF_ISP_DPCC_RND_THRESH_RESERVED		0xFFFF0000
-> -#define RKISP1_CIF_ISP_DPCC_RG_FAC_RESERVED		0xFFFFC0C0
-> -#define RKISP1_CIF_ISP_DPCC_RO_LIMIT_RESERVED		0xFFFFF000
-> -#define RKISP1_CIF_ISP_DPCC_RND_OFFS_RESERVED		0xFFFFF000
-> +#define RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE		BIT(0)
-> +#define RKISP1_CIF_ISP_DPCC_MODE_GRAYSCALE_MODE		BIT(1)
-> +#define RKISP1_CIF_ISP_DPCC_MODE_STAGE1_ENABLE		BIT(2)
-> +#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_MASK		GENMASK(3, 0)
-> +#define RKISP1_CIF_ISP_DPCC_SET_USE_MASK		GENMASK(3, 0)
-> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_MASK		0x00001f1f
-> +#define RKISP1_CIF_ISP_DPCC_LINE_THRESH_MASK		0x0000ffff
-> +#define RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_MASK		0x00003f3f
-> +#define RKISP1_CIF_ISP_DPCC_PG_FAC_MASK			0x00003f3f
-> +#define RKISP1_CIF_ISP_DPCC_RND_THRESH_MASK		0x0000ffff
-> +#define RKISP1_CIF_ISP_DPCC_RG_FAC_MASK			0x00003f3f
-> +#define RKISP1_CIF_ISP_DPCC_RO_LIMIT_MASK		0x00000fff
-> +#define RKISP1_CIF_ISP_DPCC_RND_OFFS_MASK		0x00000fff
->  
->  /* BLS */
->  /* ISP_BLS_CTRL */
+> Tested with the GStreamer V4L2 HEVC plugin:
+> (https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/1079)
+> 
+> Current Fluster score:
+> `Ran 131/147 tests successfully               in 278.568 secs`
+> with
+> `python3 fluster.py run -d GStreamer-H.265-V4L2SL-Gst1.0 -ts JCT-VC-HEVC_V1 -j1`
+> 
+> failed conformance tests:
+> - DBLK_D_VIXS_2 (Success on Hantro G2)
+> - DSLICE_A_HHI_5 (Success on Hantro G2)
+> - EXT_A_ericsson_4 (Success on Hantro G2)
+> - PICSIZE_A_Bossen_1 (Hardware limitation)
+> - PICSIZE_B_Bossen_1 (Hardware limitation)
+> - PICSIZE_C_Bossen_1 (Hardware limitation)
+> - PICSIZE_D_Bossen_1 (Hardware limitation)
+> - PPS_A_qualcomm_7 (Success on Hantro G2)
+> - SAODBLK_A_MainConcept_4 (Success on Hantro G2)
+> - SAODBLK_B_MainConcept_4 (Success on Hantro G2)
+> - SLIST_B_Sony_9 (Success on Hantro G2)
+> - SLIST_D_Sony_9 (Success on Hantro G2)
+> - TSUNEQBD_A_MAIN10_Technicolor_2 (Success on Hantro G2)
+> - VPSSPSPPS_A_MainConcept_1 (Success on Hantro G2)
+> - WPP_D_ericsson_MAIN10_2 (Fail on Hantro G2)
+> - WPP_D_ericsson_MAIN_2 (Fail on Hantro G2)
+> 
+> Not tested with FFMpeg so far.
+> 
+> Known issues:
+> - Unable to reliably decode multiple videos concurrently
+> - The SAODBLK_* tests timeout if the timeout time in fluster is lower than 120
+> - Currently the uv_virstride is calculated in a manner that is hardcoded
+> for the two available formats NV12 and NV15. (@config_registers)
+> 
+> Notable design decisions:
+> - I opted for a bitfield to represent the PPS memory blob as it is the
+> perfect tool for that job. It describes the memory layout with any
+> additional required documentation, is easy to read and a native language
+> tool for that job
+
+Can I point out how terrible an idea this is? The C language gives 
+virtually zero guarantee about how bitfields are actually represented in 
+memory. Platform ABIs (e.g. [1]) might nail things down a bit more, but 
+different platforms are free to make completely different choices so 
+portability still goes out the window. Even for a single platform, 
+different compilers (or at worst even different version of one compiler) 
+can still make incompatible choices e.g. WRT alignment of packed 
+members. Even if you narrow the scope as far as a specific version of 
+AArch64 GCC, I think this is still totally broken for big-endian.
+
+The fact that you've had to use nonsensical types to trick a compiler 
+into meeting your expectations should already be a clue to how fragile 
+this is in general.
+
+> - The RPS memory blob is created using a bitmap implementation, which
+> uses a common Kernel API to avoid reinventing the wheel and to keep the
+> code clean.
+
+Similarly, Linux bitmaps are designed for use as, well, bitmaps. Abusing 
+them as a data interchange format for bit-aligned numerical values is 
+far from "clean" semantically. And I'm pretty sure it's also broken for 
+big-endian.
+
+This kind of stuff may be standard practice in embedded development 
+where you're targeting a specific MCU with a specific toolchain, but I 
+don't believe it's suitable for upstream Linux. It would take pretty 
+much the same number of lines to use GENMASK definitions and bitfield.h 
+helpers to pack values into words which can then be written to memory in 
+a guaranteed format and endianness (certainly for the PPS; for the RPS 
+it may well end up a bit longer, but would be self-documenting and 
+certainly more readable than those loops). It mostly just means that for 
+any field which crosses a word boundary you'll end up with 2 definitions 
+and 2 assignments, which is hardly a problem (and in some ways more 
+honest about what's actually going on).
+
+Thanks,
+Robin.
+
+[1] 
+https://github.com/ARM-software/abi-aa/blob/main/aapcs64/aapcs64.rst#bit-fields
+
+> - I deliberatly opted against the macro solution used in H264, which
+> declares Macros in mid function and declares the fields of the memory
+> blob as macros as well. And I would be glad to refactor the H264 code if
+> desired by the maintainer to use common Kernel APIs and native language
+> elements.
+> - The giant static array of cabac values is moved to a separate c file,
+> I did so because a separate .h file would be incorrect as it doesn't
+> expose anything of any value for any other file than the rkvdec-hevc.c
+> file. Other options were:
+>    - Calculating the values instead of storing the results (doesn't seem
+>    to be worth it)
+>    - Supply them via firmware (Adding firmware makes the whole software
+>    way more complicated and the usage of the driver less obvious)
+> 
+> Ignored Checkpatch warnings (as it fits to the current style of the file):
+> ```
+> WARNING: line length of 162 exceeds 100 columns
+> #115: FILE: drivers/media/v4l2-core/v4l2-common.c:265:
+> +               { .format = V4L2_PIX_FMT_NV15,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 2, .bpp = { 5, 5, 0, 0 }, .hdiv = 2, .vdiv = 2,
+> 
+> ERROR: trailing statements should be on next line
+> #128: FILE: drivers/media/v4l2-core/v4l2-ioctl.c:1305:
+> +       case V4L2_PIX_FMT_NV15:         descr = "10-bit Y/CbCr 4:2:0 (Packed)"; break;
+> ```
+> 
+> v4l2-compliance test:
+> ```
+> Total for rkvdec device /dev/video3: 46, Succeeded: 46, Failed: 0, Warnings: 0
+> ```
+> 
+> kselftest module run for the bitmap changes:
+> ```
+> $ sudo insmod /usr/lib/modules/5.19.0-rc3-finalseries/kernel/lib/test_bitmap.ko
+> [   71.751716] test_bitmap: parselist: 14: input is '0-2047:128/256' OK, Time: 1750
+> [   71.751787] test_bitmap: bitmap_print_to_pagebuf: input is '0-32767
+> [   71.751787] ', Time: 6708
+> [   71.760373] test_bitmap: set_value: 6/6 tests correct
+> ```
+> 
+> Jonas Karlman (2):
+>    media: v4l2: Add NV15 pixel format
+>    media: v4l2-common: Add helpers to calculate bytesperline and
+>      sizeimage
+> 
+> Sebastian Fricke (4):
+>    bitops: bitmap helper to set variable length values
+>    staging: media: rkvdec: Add valid pixel format check
+>    staging: media: rkvdec: Enable S_CTRL IOCTL
+>    staging: media: rkvdec: Add HEVC backend
+> 
+>   .../media/v4l/pixfmt-yuv-planar.rst           |   53 +
+>   drivers/media/v4l2-core/v4l2-common.c         |   79 +-
+>   drivers/media/v4l2-core/v4l2-ioctl.c          |    1 +
+>   drivers/staging/media/rkvdec/Makefile         |    2 +-
+>   drivers/staging/media/rkvdec/TODO             |   22 +-
+>   .../staging/media/rkvdec/rkvdec-hevc-data.c   | 1844 +++++++++++++++++
+>   drivers/staging/media/rkvdec/rkvdec-hevc.c    |  859 ++++++++
+>   drivers/staging/media/rkvdec/rkvdec-regs.h    |    1 +
+>   drivers/staging/media/rkvdec/rkvdec.c         |  182 +-
+>   drivers/staging/media/rkvdec/rkvdec.h         |    3 +
+>   include/linux/bitmap.h                        |   39 +
+>   include/uapi/linux/videodev2.h                |    1 +
+>   lib/test_bitmap.c                             |   47 +
+>   13 files changed, 3066 insertions(+), 67 deletions(-)
+>   create mode 100644 drivers/staging/media/rkvdec/rkvdec-hevc-data.c
+>   create mode 100644 drivers/staging/media/rkvdec/rkvdec-hevc.c
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
