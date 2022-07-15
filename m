@@ -4,69 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 916F5C433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Jul 2022 00:05:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53694C433EF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Jul 2022 05:36:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7F+9679qo9cBbMRV84dTb4AnLenExf20MlQccjuQSH8=; b=u9Y1O2f0SvEAIa
-	RRZkkrCVKioAIyOZfdXL2YppFIvRcgFUwDjzmkar1/5+oJTiAio1GwiEWU1PxRrGmw7MohWjzPkSD
-	UAHZQKCDo6Oumgq8MyDhziqh4oGEkySRELx3d8ojrrOPSR4PAk9qdN/Y0b/SxsW+YkjknsYE95zFL
-	fQGlALXKfpCMr7DkXTPheUpOVss+b5kQu2czZ3TcKEnnWte4Q+bpfM/jnLeOq/UTZnM3NZrBlr5cU
-	GY3zIly7TIiI20Cw1ZBYEjHOEmG7j7H0yH2js/jRppNleKYJjJvPodBciLWGQTzKH8fnNgbi9NwQl
-	aDca+gIhLP6ywLXEvP6A==;
+	List-Owner; bh=o8hXFdO8AU0iaQ+aV7Ab0XCisNbCF4fbyaXqcDuXdBA=; b=o1wDCGAijqheeW
+	rCgg2Z/1VMX7RqQQASA5iDpyL74k+osbpRVCFThZ2yNqb6SgAVZ4AnjyiOE2p9ZEmuI8eLUCFj+2U
+	3nO9iOEjXm7CVM253KZR7XtLQcDlk/opSeiRk7huzWEsZVaS5t2+jhL8XaqEWk8UIUOIvwWeBovjF
+	p9Bj/JzUZQF2lswwYsvAbOKBRuJ0yHj+fCKiXQJf2U+S4jVMV9Thkk/Q8ZKdTRkkIoCAZsXy/Pxie
+	n+jamugSqj+Rw5Dvune2/OZST/odnvxN4rIxeyMUI0MVqkSwWyGovPSGec3v+yZU9Qkf5kZGc08ZL
+	aqAhjVjKkfZsuvyD2oCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oC8pb-002jES-Tw; Fri, 15 Jul 2022 00:05:19 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1oCDzZ-004TBq-U3; Fri, 15 Jul 2022 05:35:57 +0000
+Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oC8pY-002jCZ-3v
-	for linux-rockchip@lists.infradead.org; Fri, 15 Jul 2022 00:05:18 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A2DB69DA;
-	Fri, 15 Jul 2022 02:05:10 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657843510;
-	bh=eUrWlueduRgSkr9QAPg6mJaG55bmEBeshRDPqeUsPhM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=t+ys3+MLbVdT5iTS6NTWCpHz2R2ecFFLvH78hMoP1bCBqV2mo10mZexYRSrVHjbYU
-	 GWBBMHR6M0jGcPcPiCqI/Nzq2TqdHia5FWD5f6IlWXqxDTqAmebfa/q0yV+gzc68RV
-	 BI5KJTGx+8rBVCIso+Dsuboay3jPlBa6SC4PgyVw=
-Date: Fri, 15 Jul 2022 03:04:39 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Sebastian Fricke <sebastian.fricke@collabora.com>,
-	linux-media@vger.kernel.org, jernej.skrabec@gmail.com,
-	knaerzche@gmail.com, kernel@collabora.com,
-	bob.beckett@collabora.com, ezequiel@vanguardiasur.com.ar,
-	mchehab@kernel.org, gregkh@linuxfoundation.org,
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev, Jonas Karlman <jonas@kwiboo.se>,
-	Yury Norov <yury.norov@gmail.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Ming Qian <ming.qian@nxp.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Ricardo Ribalda <ribalda@chromium.org>,
-	Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
-	Sergey Senozhatsky <senozhatsky@chromium.org>
-Subject: Re: [PATCH 1/6] media: v4l2: Add NV15 pixel format
-Message-ID: <YtCvF+kAfeiTduW+@pendragon.ideasonboard.com>
-References: <20220713162449.133738-1-sebastian.fricke@collabora.com>
- <20220713162449.133738-2-sebastian.fricke@collabora.com>
- <Ys8OzDzXmmCHI9qb@pendragon.ideasonboard.com>
- <acded11db2957b4e9d4f8df44f82dc1babe7aae0.camel@collabora.com>
+	id 1oCDzV-004TB7-Md; Fri, 15 Jul 2022 05:35:55 +0000
+Received: by mail-il1-x12b.google.com with SMTP id d4so2045864ilc.8;
+        Thu, 14 Jul 2022 22:35:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=jYAWOOGtFlkiPG/21I7baDMXyOiUU0gckUwJzmfvwVo=;
+        b=LXP7zqiq3V8qxuINIqGk6Lz9zv+XREfojszRJdCNcksqKFsuAIte5OdR5gPw9FOWkZ
+         iKPN4sNsVyn3wswEfGaqvCi7nAc+/1UyOIj7gB/ZniGfpZHHOPacEuGKuW0IfKGJHjfS
+         MNEZeNLRygOEoCRq1QKYb7mxYusiVsAJQ5oza8cbBh3GJ5MhUx0Mck1TpCtoVqiL2N1Z
+         lLKk0YW4wt5um6nED796GFuC9E3fWRtaxmMfn2mXW4Mly/kkNgF35wLMo7v4xxbyRq3X
+         G9hEYp4bUJas+Z6Z32oNj8TszzWfHFmU1nx6yU17/a7GczRgJUuHUnLnFyp4+ympyKNI
+         DTew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=jYAWOOGtFlkiPG/21I7baDMXyOiUU0gckUwJzmfvwVo=;
+        b=1K7MnrgXskty/Qiq90Xebw1+y/8bXZGKQsEm31wPid4g9CCpZ45jJDyT3A+jKLVffs
+         wNBbQFFTdV+GnyS8vK2lDoA+jc37+fdWvjKvykKm0HfEZtZnGhB3ztffLtcyv+Tm/1up
+         4/CTBg0HM34tMHHJcA6m/dSjDB4gsW4dhpRTmFyyeOSWHqKVoZ1OYTNAB0tnKyjs6HtC
+         YyKjQapo3XFY17EwllqBlDgvvfWFvAEQA4jNYzvldsdUX0doQzvPE7ADaBQR37UzGq0P
+         E10woHtfx2GfG/uy6X0ZoOvMMQJNqeu8StdIMUFOtjuS9GDpVFPloV48cGfy66CWjH3+
+         GOMg==
+X-Gm-Message-State: AJIora+Ere3UxtCt+rQnDhab0Zw+ngPI4R/rpXvHDWOQB6nEsxDNS8lJ
+	n7Xd+++7ylD2V1Yo0/KQ6/zjKujhA2GM7CDnPP4=
+X-Google-Smtp-Source: AGRyM1ub23J3OVvO9vrhvoc+99/w7w7FMUkJp4c4jpx89FzhqkMUGqZ5GsWn6mekMOlprLXKEknDD5j4IlqQOQP/F5k=
+X-Received: by 2002:a05:6e02:1b85:b0:2dc:c1c5:c444 with SMTP id
+ h5-20020a056e021b8500b002dcc1c5c444mr541688ili.81.1657863350838; Thu, 14 Jul
+ 2022 22:35:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <acded11db2957b4e9d4f8df44f82dc1babe7aae0.camel@collabora.com>
+References: <CAK4VdL3-BEBzgVXTMejrAmDjOorvoGDBZ14UFrDrKxVEMD2Zjg@mail.gmail.com>
+ <1jczjzt05k.fsf@starbuckisacylon.baylibre.com> <CAK4VdL2=1ibpzMRJ97m02AiGD7_sN++F3SCKn6MyKRZX_nhm=g@mail.gmail.com>
+ <6b04d864-7642-3f0a-aac0-a3db84e541af@gmail.com> <CAK4VdL0gpz_55aYo6pt+8h14FHxaBmo5kNookzua9+0w+E4JcA@mail.gmail.com>
+ <1e828df4-7c5d-01af-cc49-3ef9de2cf6de@gmail.com> <1j8rts76te.fsf@starbuckisacylon.baylibre.com>
+ <a4d3fef1-d410-c029-cdff-4d90f578e2da@gmail.com> <CAK4VdL08sdZV7o7Bw=cutdmoCEi1NYB-yisstLqRuH7QcHOHvA@mail.gmail.com>
+ <435b2a9d-c3c6-a162-331f-9f47f69be5ac@gmail.com> <CAK4VdL28nWstiS09MYq5nbtiL+aMbNc=Hzv5F0-VMuNKmX9R+Q@mail.gmail.com>
+ <1j5yonnp1a.fsf@starbuckisacylon.baylibre.com> <44006194-eab1-7ae2-3cc8-41c210efd0b1@gmail.com>
+ <CACdvmAhcyNXViJgk6o6oAoYvAjAg-NFD74Eym_nGHJx3YAqjzw@mail.gmail.com> <1j35g8gavs.fsf@starbuckisacylon.baylibre.com>
+In-Reply-To: <1j35g8gavs.fsf@starbuckisacylon.baylibre.com>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Fri, 15 Jul 2022 11:05:35 +0530
+Message-ID: <CANAwSgQBz_VKhkRmMnYdbq2FJiMg5pvp12Ar32SQrU=mYiH2Ug@mail.gmail.com>
+Subject: Re: net: stmmac: dwmac-meson8b: interface sometimes does not come up
+ at boot
+To: Jerome Brunet <jbrunet@baylibre.com>
+Cc: Da Xue <da@lessconfused.com>, Heiner Kallweit <hkallweit1@gmail.com>, 
+	Erico Nunes <nunes.erico@gmail.com>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
+	Jose Abreu <joabreu@synopsys.com>, Kevin Hilman <khilman@baylibre.com>, 
+	Neil Armstrong <narmstrong@baylibre.com>, linux-amlogic@lists.infradead.org, 
+	netdev@vger.kernel.org, 
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-sunxi@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220714_170516_359249_2EE36EF0 
-X-CRM114-Status: GOOD (  32.66  )
+X-CRM114-CacheID: sfid-20220714_223553_785490_97378B15 
+X-CRM114-Status: GOOD (  62.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,150 +92,162 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBKdWwgMTQsIDIwMjIgYXQgMDk6MDI6MzhBTSAtMDQwMCwgTmljb2xhcyBEdWZyZXNu
-ZSB3cm90ZToKPiBMZSBtZXJjcmVkaSAxMyBqdWlsbGV0IDIwMjIgw6AgMjE6MjggKzAzMDAsIExh
-dXJlbnQgUGluY2hhcnQgYSDDqWNyaXTCoDoKPiA+IEhpIFNlYmFzdGlhbiBhbmQgSm9uYXMsCj4g
-PiAKPiA+IFRoYW5rIHlvdSBmb3IgdGhlIHBhdGNoLgo+ID4gCj4gPiBPbiBXZWQsIEp1bCAxMywg
-MjAyMiBhdCAwNjoyNDo0NlBNICswMjAwLCBTZWJhc3RpYW4gRnJpY2tlIHdyb3RlOgo+ID4gPiBG
-cm9tOiBKb25hcyBLYXJsbWFuIDxqb25hc0Brd2lib28uc2U+Cj4gPiA+IAo+ID4gPiBBZGQgdGhl
-IE5WMTUgcGl4ZWwgZm9ybWF0IHVzZWQgYnkgdGhlIFJvY2tjaGlwIFZpZGVvIERlY29kZXIgZm9y
-IDEwLWJpdAo+ID4gPiBidWZmZXJzLgo+ID4gPiAKPiA+ID4gTlYxNSBpcyBhIHBhY2tlZCAxMC1i
-aXQgNDoyOjAgWS9DYkNyIGZvcm1hdCBzaW1pbGFyIHRvIFAwMTAgYW5kIFAyMTAgYnV0Cj4gPiA+
-IGhhcyBubyBwYWRkaW5nIGJldHdlZW4gY29tcG9uZW50cy4gSW5zdGVhZCwgbHVtaW5hbmNlIGFu
-ZCBjaHJvbWluYW5jZQo+ID4gPiBzYW1wbGVzIGFyZSBncm91cGVkIGludG8gNHMgc28gdGhhdCBl
-YWNoIGdyb3VwIGlzIHBhY2tlZCBpbnRvIGFuIGludGVnZXIKPiA+ID4gbnVtYmVyIG9mIGJ5dGVz
-Ogo+ID4gPiAKPiA+ID4gWVlZWSA9IFVWVVYgPSA0ICogMTAgYml0cyA9IDQwIGJpdHMgPSA1IGJ5
-dGVzCj4gPiA+IAo+ID4gPiBUaGUgJzE1JyBzdWZmaXggcmVmZXJzIHRvIHRoZSBvcHRpbXVtIGVm
-ZmVjdGl2ZSBiaXRzIHBlciBwaXhlbCB3aGljaCBpcwo+ID4gPiBhY2hpZXZlZCB3aGVuIHRoZSB0
-b3RhbCBudW1iZXIgb2YgbHVtaW5hbmNlIHNhbXBsZXMgaXMgYSBtdWx0aXBsZSBvZiA4Cj4gPiA+
-IGZvciBOVjE1Lgo+ID4gPiAKPiA+ID4gU2lnbmVkLW9mZi1ieTogSm9uYXMgS2FybG1hbiA8am9u
-YXNAa3dpYm9vLnNlPgo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBTZWJhc3RpYW4gRnJpY2tlIDxzZWJh
-c3RpYW4uZnJpY2tlQGNvbGxhYm9yYS5jb20+Cj4gPiA+IC0tLQo+ID4gPiAgLi4uL21lZGlhL3Y0
-bC9waXhmbXQteXV2LXBsYW5hci5yc3QgICAgICAgICAgIHwgNTMgKysrKysrKysrKysrKysrKysr
-Kwo+ID4gPiAgZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jb21tb24uYyAgICAgICAgIHwg
-IDIgKwo+ID4gPiAgZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jICAgICAgICAg
-IHwgIDEgKwo+ID4gPiAgaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oICAgICAgICAgICAg
-ICAgIHwgIDEgKwo+ID4gPiAgNCBmaWxlcyBjaGFuZ2VkLCA1NyBpbnNlcnRpb25zKCspCj4gPiA+
-IAo+ID4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0
-bC9waXhmbXQteXV2LXBsYW5hci5yc3QgYi9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVk
-aWEvdjRsL3BpeGZtdC15dXYtcGxhbmFyLnJzdAo+ID4gPiBpbmRleCBhOTAwZmY2NjkxMWEuLjQy
-YWIzZmU0NjY3ZiAxMDA2NDQKPiA+ID4gLS0tIGEvRG9jdW1lbnRhdGlvbi91c2Vyc3BhY2UtYXBp
-L21lZGlhL3Y0bC9waXhmbXQteXV2LXBsYW5hci5yc3QKPiA+ID4gKysrIGIvRG9jdW1lbnRhdGlv
-bi91c2Vyc3BhY2UtYXBpL21lZGlhL3Y0bC9waXhmbXQteXV2LXBsYW5hci5yc3QKPiA+ID4gQEAg
-LTc5LDYgKzc5LDEzIEBAIEFsbCBjb21wb25lbnRzIGFyZSBzdG9yZWQgd2l0aCB0aGUgc2FtZSBu
-dW1iZXIgb2YgYml0cyBwZXIgY29tcG9uZW50Lgo+ID4gPiAgICAgICAgLSBDciwgQ2IKPiA+ID4g
-ICAgICAgIC0gWWVzCj4gPiA+ICAgICAgICAtIExpbmVhcgo+ID4gPiArICAgICogLSBWNEwyX1BJ
-WF9GTVRfTlYxNQo+ID4gPiArICAgICAgLSAnTlYxNScKPiA+ID4gKyAgICAgIC0gMTUKPiA+ID4g
-KyAgICAgIC0gNDoyOjAKPiA+ID4gKyAgICAgIC0gQ2IsIENyCj4gPiA+ICsgICAgICAtIFllcwo+
-ID4gPiArICAgICAgLSBMaW5lYXIKPiA+ID4gICAgICAqIC0gVjRMMl9QSVhfRk1UX05WMTJNCj4g
-PiA+ICAgICAgICAtICdOTTEyJwo+ID4gPiAgICAgICAgLSA4Cj4gPiA+IEBAIC0xNzYsNiArMTgz
-LDcgQEAgaG9yaXpvbnRhbGx5Lgo+ID4gPiAgCj4gPiA+ICAuLiBfVjRMMi1QSVgtRk1ULU5WMTI6
-Cj4gPiA+ICAuLiBfVjRMMi1QSVgtRk1ULU5WMjE6Cj4gPiA+ICsuLiBfVjRMMi1QSVgtRk1ULU5W
-MTU6Cj4gPiA+ICAuLiBfVjRMMi1QSVgtRk1ULU5WMTJNOgo+ID4gPiAgLi4gX1Y0TDItUElYLUZN
-VC1OVjIxTToKPiA+ID4gIC4uIF9WNEwyLVBJWC1GTVQtUDAxMDoKPiA+ID4gQEAgLTU3MCw2ICs1
-NzgsNTEgQEAgRGF0YSBpbiB0aGUgMTAgaGlnaCBiaXRzLCB6ZXJvcyBpbiB0aGUgNiBsb3cgYml0
-cywgYXJyYW5nZWQgaW4gbGl0dGxlIGVuZGlhbiBvcmQKPiA+ID4gICAgICAgIC0gQ2JcIDpzdWI6
-YDExYAo+ID4gPiAgICAgICAgLSBDclwgOnN1YjpgMTFgCj4gPiA+ICAKPiA+ID4gKy4uIF9WNEwy
-X1BJWF9GTVRfTlYxNToKPiA+ID4gKwo+ID4gPiArTlYxNQo+ID4gPiArLS0tLQo+ID4gPiArCj4g
-PiA+ICtMaWtlIFAwMTAgYnV0IGEgcGFja2VkIDEwLWJpdCA0OjI6MCBzZW1pLXBsYW5hciBZL0Ni
-Q3IgZm9ybWF0IHdpdGhvdXQgcGFkZGluZyBiZXR3ZWVuIGNvbXBvbmVudHMuCj4gPiAKPiA+ICJw
-YWNrZWQgMTAtYml0IHNlbWktcGxhbmFyIiBzb3VuZHMgY29uZnVzaW5nLCBhcyAicGFja2VkIFlV
-ViIgdXN1YWxseQo+ID4gcmVmZXJzIHRvIFlVWVYtc3R5bGUgZm9ybWF0cywgYnV0IEknbSBub3Qg
-c3VyZSBob3cgdG8gZXhwcmVzcyB0aGF0Cj4gPiBiZXR0ZXIuCj4gCj4gUGVyaGFwczoKPiAKPiAi
-U2ltaWxhciB0byBQMDEwICgxMC1iaXQgNDoiOjAgc2VtaS1wbGFuZXIgWS9DYkNyKSwgdGhvdWdo
-IHVubGlrZSBQMDEwLCB0aGUKPiB0aGVyZSBpcyBub3QgcGFkZGluZyBiZXR3ZWVuIGNvbXBvbmVu
-dHMuIgo+IAo+ID4gPiArSW5zdGVhZCwgbHVtaW5hbmNlIGFuZCBjaHJvbWluYW5jZSBzYW1wbGVz
-IGFyZSBncm91cGVkIGludG8gNHMgc28gdGhhdCBlYWNoIGdyb3VwIGlzIHBhY2tlZCBpbnRvIGFu
-IGludGVnZXIKPiA+ID4gK251bWJlciBvZiBieXRlczoKPiA+IAo+ID4gQ291bGQgeW91IHBsZWFz
-ZSB3cmFwIHRoZSBkZXNjcmlwdGlvbiBhdCA4MCBjb2x1bW5zID8KPiA+IAo+ID4gPiArWVlZWSA9
-IFVWVVYgPSA0ICogMTAgYml0cyA9IDQwIGJpdHMgPSA1IGJ5dGVzCj4gPiA+ICsKPiA+ID4gKy4u
-IGZsYXQtdGFibGU6OiBTYW1wbGUgNHg0IE5WMTUgSW1hZ2UKPiA+ID4gKyAgICA6aGVhZGVyLXJv
-d3M6ICAwCj4gPiA+ICsgICAgOnN0dWItY29sdW1uczogMAo+ID4gPiArCj4gPiA+ICsgICAgKiAt
-IHN0YXJ0ICsgMDoKPiA+ID4gKyAgICAgIC0gWSdcIDpzdWI6YDAwYAo+ID4gPiArICAgICAgLSBZ
-J1wgOnN1YjpgMDFgCj4gPiA+ICsgICAgICAtIFknXCA6c3ViOmAwMmAKPiA+ID4gKyAgICAgIC0g
-WSdcIDpzdWI6YDAzYAo+ID4gPiArICAgICogLSBzdGFydCArIDg6Cj4gPiA+ICsgICAgICAtIFkn
-XCA6c3ViOmAxMGAKPiA+ID4gKyAgICAgIC0gWSdcIDpzdWI6YDExYAo+ID4gPiArICAgICAgLSBZ
-J1wgOnN1YjpgMTJgCj4gPiA+ICsgICAgICAtIFknXCA6c3ViOmAxM2AKPiA+ID4gKyAgICAqIC0g
-c3RhcnQgKyAxNjoKPiA+ID4gKyAgICAgIC0gWSdcIDpzdWI6YDIwYAo+ID4gPiArICAgICAgLSBZ
-J1wgOnN1YjpgMjFgCj4gPiA+ICsgICAgICAtIFknXCA6c3ViOmAyMmAKPiA+ID4gKyAgICAgIC0g
-WSdcIDpzdWI6YDIzYAo+ID4gPiArICAgICogLSBzdGFydCArIDI0Ogo+ID4gPiArICAgICAgLSBZ
-J1wgOnN1YjpgMzBgCj4gPiA+ICsgICAgICAtIFknXCA6c3ViOmAzMWAKPiA+ID4gKyAgICAgIC0g
-WSdcIDpzdWI6YDMyYAo+ID4gPiArICAgICAgLSBZJ1wgOnN1YjpgMzNgCj4gPiA+ICsgICAgKiAt
-IHN0YXJ0ICsgMzI6Cj4gPiA+ICsgICAgICAtIENiXCA6c3ViOmAwMGAKPiA+ID4gKyAgICAgIC0g
-Q3JcIDpzdWI6YDAwYAo+ID4gPiArICAgICAgLSBDYlwgOnN1YjpgMDFgCj4gPiA+ICsgICAgICAt
-IENyXCA6c3ViOmAwMWAKPiA+ID4gKyAgICAqIC0gc3RhcnQgKyA0MDoKPiA+ID4gKyAgICAgIC0g
-Q2JcIDpzdWI6YDEwYAo+ID4gPiArICAgICAgLSBDclwgOnN1YjpgMTBgCj4gPiA+ICsgICAgICAt
-IENiXCA6c3ViOmAxMWAKPiA+ID4gKyAgICAgIC0gQ3JcIDpzdWI6YDExYAo+ID4gCj4gPiBUaGlz
-IGRvZXNuJ3QgbG9vayByaWdodC4gWW91IG5lZWQgdG8gZGVzY3JpYmUgdGhlIGRhdGEgYXQgdGhl
-IGJpdCBsZXZlbCwKPiA+IHNvIHNob3cgaG93IHRoZSAxMC1iaXQgc2FtcGxlcyBhcmUgcGFja2Vk
-IGludG8gYnl0ZXMuCj4gCj4gQSB3b3JkIG9mIE5WMTUgaXMgNDAgYml0cywgc28gMSB3b3JkIG9m
-IE5WMTIgaXMgNSBieXRlcywgNCBwaXhlbHMuIEkgYmVsaWV2ZQo+IHRoZXJlIGlzIG5vIGNob2lj
-ZSBoZXJlIGJ1dCB0byBkZXNjcmliZSA0IHBpeGVscyBmb3IgWSBwbGFuZSwgYW5kIDQgcGl4ZWxz
-IGZvcgo+IENiQ3IgcGxhbmUuIFRoaXMgbWlnaHQgYmUgYSBiaXQgYmlnIHRob3VnaC4KCkkgYWdy
-ZWUsIGl0IG1heSBub3QgYmUgdGhlIHByZXR0aWVzdCwgYnV0IEknZCByYXRoZXIgaGF2ZSBhIGxh
-cmdlciB0YWJsZQp0aGFuIGEgZm9ybWF0IHRoYXQgaXMgdW5kZXJzdG9vZCBkaWZmZXJlbnRseSBi
-eSBkaWZmZXJlbnQgZHJpdmVycy4gQmVlbgp0aGVyZSwgZG9uZSB0aGF0LCBub3QgYWdhaW4gOi0p
-Cgo+ID4gPiArCj4gPiA+ICAuLiByYXc6OiBsYXRleAo+ID4gPiAgCj4gPiA+ICAgICAgXGVuZGdy
-b3VwCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWNvbW1v
-bi5jIGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jb21tb24uYwo+ID4gPiBpbmRleCAx
-ZTM4YWQ4OTA2YTIuLjIzYTBjYjAyZWEzYSAxMDA2NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9tZWRp
-YS92NGwyLWNvcmUvdjRsMi1jb21tb24uYwo+ID4gPiArKysgYi9kcml2ZXJzL21lZGlhL3Y0bDIt
-Y29yZS92NGwyLWNvbW1vbi5jCj4gPiA+IEBAIC0yNjIsNiArMjYyLDggQEAgY29uc3Qgc3RydWN0
-IHY0bDJfZm9ybWF0X2luZm8gKnY0bDJfZm9ybWF0X2luZm8odTMyIGZvcm1hdCkKPiA+ID4gIAkJ
-LyogWVVWIHBsYW5hciBmb3JtYXRzICovCj4gPiA+ICAJCXsgLmZvcm1hdCA9IFY0TDJfUElYX0ZN
-VF9OVjEyLCAgICAucGl4ZWxfZW5jID0gVjRMMl9QSVhFTF9FTkNfWVVWLCAubWVtX3BsYW5lcyA9
-IDEsIC5jb21wX3BsYW5lcyA9IDIsIC5icHAgPSB7IDEsIDIsIDAsIDAgfSwgLmhkaXYgPSAyLCAu
-dmRpdiA9IDIgfSwKPiA+ID4gIAkJeyAuZm9ybWF0ID0gVjRMMl9QSVhfRk1UX05WMjEsICAgIC5w
-aXhlbF9lbmMgPSBWNEwyX1BJWEVMX0VOQ19ZVVYsIC5tZW1fcGxhbmVzID0gMSwgLmNvbXBfcGxh
-bmVzID0gMiwgLmJwcCA9IHsgMSwgMiwgMCwgMCB9LCAuaGRpdiA9IDIsIC52ZGl2ID0gMiB9LAo+
-ID4gPiArCQl7IC5mb3JtYXQgPSBWNEwyX1BJWF9GTVRfTlYxNSwgICAgLnBpeGVsX2VuYyA9IFY0
-TDJfUElYRUxfRU5DX1lVViwgLm1lbV9wbGFuZXMgPSAxLCAuY29tcF9wbGFuZXMgPSAyLCAuYnBw
-ID0geyA1LCA1LCAwLCAwIH0sIC5oZGl2ID0gMiwgLnZkaXYgPSAyLAo+ID4gPiArCQkgIC5ibG9j
-a193ID0geyA0LCAyLCAwLCAwIH0sIC5ibG9ja19oID0geyAxLCAxLCAwLCAwIH0gfSwKPiA+ID4g
-IAkJeyAuZm9ybWF0ID0gVjRMMl9QSVhfRk1UX05WMTYsICAgIC5waXhlbF9lbmMgPSBWNEwyX1BJ
-WEVMX0VOQ19ZVVYsIC5tZW1fcGxhbmVzID0gMSwgLmNvbXBfcGxhbmVzID0gMiwgLmJwcCA9IHsg
-MSwgMiwgMCwgMCB9LCAuaGRpdiA9IDIsIC52ZGl2ID0gMSB9LAo+ID4gPiAgCQl7IC5mb3JtYXQg
-PSBWNEwyX1BJWF9GTVRfTlY2MSwgICAgLnBpeGVsX2VuYyA9IFY0TDJfUElYRUxfRU5DX1lVViwg
-Lm1lbV9wbGFuZXMgPSAxLCAuY29tcF9wbGFuZXMgPSAyLCAuYnBwID0geyAxLCAyLCAwLCAwIH0s
-IC5oZGl2ID0gMiwgLnZkaXYgPSAxIH0sCj4gPiA+ICAJCXsgLmZvcm1hdCA9IFY0TDJfUElYX0ZN
-VF9OVjI0LCAgICAucGl4ZWxfZW5jID0gVjRMMl9QSVhFTF9FTkNfWVVWLCAubWVtX3BsYW5lcyA9
-IDEsIC5jb21wX3BsYW5lcyA9IDIsIC5icHAgPSB7IDEsIDIsIDAsIDAgfSwgLmhkaXYgPSAxLCAu
-dmRpdiA9IDEgfSwKPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0
-bDItaW9jdGwuYyBiL2RyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItaW9jdGwuYwo+ID4gPiBp
-bmRleCBlMjUyNjcwMTI5NGUuLjllNTUxMGNiMjU1ZSAxMDA2NDQKPiA+ID4gLS0tIGEvZHJpdmVy
-cy9tZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jCj4gPiA+ICsrKyBiL2RyaXZlcnMvbWVkaWEv
-djRsMi1jb3JlL3Y0bDItaW9jdGwuYwo+ID4gPiBAQCAtMTMwMiw2ICsxMzAyLDcgQEAgc3RhdGlj
-IHZvaWQgdjRsX2ZpbGxfZm10ZGVzYyhzdHJ1Y3QgdjRsMl9mbXRkZXNjICpmbXQpCj4gPiA+ICAJ
-Y2FzZSBWNEwyX1BJWF9GTVRfTTQyMDoJCWRlc2NyID0gIllVViA0OjI6MCAoTTQyMCkiOyBicmVh
-azsKPiA+ID4gIAljYXNlIFY0TDJfUElYX0ZNVF9OVjEyOgkJZGVzY3IgPSAiWS9DYkNyIDQ6Mjow
-IjsgYnJlYWs7Cj4gPiA+ICAJY2FzZSBWNEwyX1BJWF9GTVRfTlYyMToJCWRlc2NyID0gIlkvQ3JD
-YiA0OjI6MCI7IGJyZWFrOwo+ID4gPiArCWNhc2UgVjRMMl9QSVhfRk1UX05WMTU6CQlkZXNjciA9
-ICIxMC1iaXQgWS9DYkNyIDQ6MjowIChQYWNrZWQpIjsgYnJlYWs7Cj4gPiA+ICAJY2FzZSBWNEwy
-X1BJWF9GTVRfTlYxNjoJCWRlc2NyID0gIlkvQ2JDciA0OjI6MiI7IGJyZWFrOwo+ID4gPiAgCWNh
-c2UgVjRMMl9QSVhfRk1UX05WNjE6CQlkZXNjciA9ICJZL0NyQ2IgNDoyOjIiOyBicmVhazsKPiA+
-ID4gIAljYXNlIFY0TDJfUElYX0ZNVF9OVjI0OgkJZGVzY3IgPSAiWS9DYkNyIDQ6NDo0IjsgYnJl
-YWs7Cj4gPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmggYi9p
-bmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmgKPiA+ID4gaW5kZXggNWE3M2I5MmZmZTRkLi40
-N2ZmMzRkNmI3OWYgMTAwNjQ0Cj4gPiA+IC0tLSBhL2luY2x1ZGUvdWFwaS9saW51eC92aWRlb2Rl
-djIuaAo+ID4gPiArKysgYi9pbmNsdWRlL3VhcGkvbGludXgvdmlkZW9kZXYyLmgKPiA+ID4gQEAg
-LTU5OCw2ICs1OTgsNyBAQCBzdHJ1Y3QgdjRsMl9waXhfZm9ybWF0IHsKPiA+ID4gIC8qIHR3byBw
-bGFuZXMgLS0gb25lIFksIG9uZSBDciArIENiIGludGVybGVhdmVkICAqLwo+ID4gPiAgI2RlZmlu
-ZSBWNEwyX1BJWF9GTVRfTlYxMiAgICB2NGwyX2ZvdXJjYygnTicsICdWJywgJzEnLCAnMicpIC8q
-IDEyICBZL0NiQ3IgNDoyOjAgICovCj4gPiA+ICAjZGVmaW5lIFY0TDJfUElYX0ZNVF9OVjIxICAg
-IHY0bDJfZm91cmNjKCdOJywgJ1YnLCAnMicsICcxJykgLyogMTIgIFkvQ3JDYiA0OjI6MCAgKi8K
-PiA+ID4gKyNkZWZpbmUgVjRMMl9QSVhfRk1UX05WMTUgICAgdjRsMl9mb3VyY2MoJ04nLCAnVics
-ICcxJywgJzUnKSAvKiAxNSAgWS9DYkNyIDQ6MjowIDEwLWJpdCBwYWNrZWQgKi8KPiA+ID4gICNk
-ZWZpbmUgVjRMMl9QSVhfRk1UX05WMTYgICAgdjRsMl9mb3VyY2MoJ04nLCAnVicsICcxJywgJzYn
-KSAvKiAxNiAgWS9DYkNyIDQ6MjoyICAqLwo+ID4gPiAgI2RlZmluZSBWNEwyX1BJWF9GTVRfTlY2
-MSAgICB2NGwyX2ZvdXJjYygnTicsICdWJywgJzYnLCAnMScpIC8qIDE2ICBZL0NyQ2IgNDoyOjIg
-ICovCj4gPiA+ICAjZGVmaW5lIFY0TDJfUElYX0ZNVF9OVjI0ICAgIHY0bDJfZm91cmNjKCdOJywg
-J1YnLCAnMicsICc0JykgLyogMjQgIFkvQ2JDciA0OjQ6NCAgKi8KCi0tIApSZWdhcmRzLAoKTGF1
-cmVudCBQaW5jaGFydAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+Hi Jerome
+
+On Mon, 13 Jun 2022 at 15:10, Jerome Brunet <jbrunet@baylibre.com> wrote:
+>
+>
+> On Sat 11 Jun 2022 at 17:00, Da Xue <da@lessconfused.com> wrote:
+>
+> > On Wed, Mar 9, 2022 at 3:42 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
+> >
+> >  On 09.03.2022 15:57, Jerome Brunet wrote:
+> >  >
+> >  > On Wed 09 Mar 2022 at 15:45, Erico Nunes <nunes.erico@gmail.com> wrote:
+> >  >
+> >  >> On Sun, Mar 6, 2022 at 1:56 PM Heiner Kallweit <hkallweit1@gmail.com> wrote:
+> >  >>> You could try the following (quick and dirty) test patch that fully mimics
+> >  >>> the vendor driver as found here:
+> >  >>> https://github.com/khadas/linux/blob/buildroot-aml-4.9/drivers/amlogic/ethernet/phy/amlogic.c
+> >  >>>
+> >  >>> First apply
+> >  >>> https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net.git/commit/?id=a502a8f04097e038c3daa16c5202a9538116d563
+> >  >>> This patch is in the net tree currently and should show up in linux-next
+> >  >>> beginning of the week.
+> >  >>>
+> >  >>> On top please apply the following (it includes the test patch your working with).
+> >  >>
+> >  >> I triggered test jobs with this configuration (latest mainline +
+> >  >> a502a8f0409 + test patch for vendor driver behaviour), and the results
+> >  >> are pretty much the same as with the previous test patch from this
+> >  >> thread only.
+> >  >> That is, I never got the issue with non-functional link up anymore,
+> >  >> but I get the (rare) issue with link not going up.
+> >  >> The reproducibility is still extremely low, in the >1% range.
+> >  >
+> >  > Low reproducibility means the problem is still there, or at least not
+> >  > understood completly.
+> >  >
+> >  > I understand the benefit from the user standpoint.
+> >  >
+> >  > Heiner if you are going to continue from the test patch you sent,
+> >  > I would welcome some explanation with each of the changes.
+> >  >
+> >  The latest test patch was purely for checking whether we see any
+> >  difference in behavior between vendor driver and the mainlined
+> >  version. It's in no way meant to be applied to mainline.
+> >
+> >  > We know very little about this IP and I'm not very confortable with
+> >  > tweaking/aligning with AML sdk "blindly" on a driver that has otherwise
+> >  > been working well so far.
+> >  >
+> >
+> >  This touches one thing I wanted to ask anyway: Supposedly Amlogic
+> >  didn't develop an own Ethernet PHY, and if they licensed an existing
+> >  IP then it should be similar to some other existing PHY (that may
+> >  have a driver in phylib).
+> >
+> >  Then what I'll do is submit the following small change that brought
+> >  the error rate significantly down according to Erico's tests.
+> >
+> >  -       phy_trigger_machine(phydev);
+> >  +       if (irq_status & INTSRC_ANEG_COMPLETE)
+> >  +               phy_queue_state_machine(phydev, msecs_to_jiffies(100));
+> >  +       else
+> >  +               phy_trigger_machine(phydev);
+> >
+> >  > Thx
+> >  >
+> >  >>
+> >  >> So at this point, I'm not sure how much more effort to invest into
+> >  >> this. Given the rate is very low and the fallback is it will just
+> >  >> reset the link and proceed to work, I think the situation would
+> >  >> already be much better with the solution from that test patch being
+> >  >> merged. If you propose that as a patch separately, I'm happy to test
+> >  >> the final submitted patch again and provide feedback there. Or if
+> >  >> there is another solution to try, I can try with that too.
+> >  >>
+> >  >> Thanks
+> >  >>
+> >  >>
+> >  >> Erico
+> >  >
+> >
+> >  Heiner
+> >
+> > To help reproduce this problem, I have had this problem for as long as I can remember and it still occurs with this patch.
+>
+> Same here, on both gxl and g12a. Occurrence remains unchanged.
+> The is even reproduced if the PHY is switched to polling mode so the
+> merged change, related to the IRQ handling, is very unlikely to fix the
+> problem.
+>
+> >
+> > This doesn't happen on first boot most of the time. It happens on reboot consistently. I have tested with AML-S805X-CC board, AML-S905X-CC V1, and V2 boards.
+> >
+>
+> On my side, I confirm the network never seems to get stuck in u-boot but
+> it might break in Linux, even on the first boot after a power up from
+> what I have seen so far.
+>
+> > I am on u-boot 22.04 with 5.18.3 which includes the patch.
+> > u-boot brings up ethernet on start and can grab an IP.
+> > Linux brings up ethernet and can grab an IP.
+> > reboot
+> > u-boot can grab an IP.
+> > Linux does not get anything.
+> > I have to do ip link set dev eth0 down && up once or more to get ethernet to work again.
+> > Sometimes it spams meson8b-dwmac c9410000.ethernet eth0: Reset adapter. If it spams this, ethernet is dead and can't be recovered.
+>
+> I tried several things, none showing any improvement so far
+> * Make sure LPI/EEE is disabled
+> * Add the ethernet reset from the main controller on the MAC
+> * Test the various DMA modes of STMMAC
+> * Port the differences from u-boot and the vendor kernel in the Phy driver
+>
+> I have also tried to go back in time, up to v4.19 but the problem is actually
+> already there. It occurs at lot less though.
+> Since v5.6+ the occurence is quite high: approx 1 in 4 boots
+> On v4.19: 1 in 50 boots - up to 150.
+>
+> >
+>
+> When the problem happen
+> * link is reported up
+> * ifconfig / MAC is claiming to be sending packets (Tx increasing - no Rx)
+> * I see no traffic with wireshark
+>
+> The packets are getting lost somewhere. Can't say for sure if it is in
+> the MAC or the PHY.
+>
+> > This is fixed via power cycle so I'm assuming some register is not reset or maybe the IP is stuck.
+> >
+>
+> `ethtool -r eth0` also seems to work around the problem.
+> This trigs the restart of so many things, it is close to an un/replug of
+> the ethernet cable :/
+>
+
+Have you give a try for setting up a regulator for ethernet and
+implementing runtime power management
+
+Best Regards
+-Anand
+> > Best,
+> > Da Xue
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
