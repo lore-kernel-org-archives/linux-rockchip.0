@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DEFFC433EF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 Jul 2022 23:15:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA8F5C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Jul 2022 00:25:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
 	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m+8nj48i6SGM6wMOBRYevC+icyaDwuqN/OR321uLmcw=; b=zN7cErNvpB0B4n
-	U6lA9AjIh559LbLR68ZYiKH58ozzvI4sFsAVni2WmfU4qTn/BJDJrqhf3PSBRGmT0yjvy4ztoZ1HA
-	Hf90HHXDloQYiDNMybjTK88kv8bF1OgO0IVUuz8LI1CnjdUe4yYWPlYT/5l3NnVG+CW10zHIpZEiP
-	3+KtDzpktgchRD8gIO4cqGE4H86aR+loIUK/cd/lJyELu1ENoW1mqTeYyaWMlENDBYlhCfF2+biyH
-	OaawjOoC6Tg8LFzdVdd14YYPx5/TDBtCmzhhSR95F1g0u7T3s43ZyG3F+CB1SFcjq2NkaaoEbQrC/
-	r3pXRQXLLOgRrBW2LcHA==;
+	List-Owner; bh=RpE1p51W0CY5bHNjlb9dFsf6Oa14yZ/mjtbVbjMp4Fg=; b=kP/P3pDO/gVO9C
+	DmUl8S0HOMHxLozrVCMkFbU3xbJvTiTVsLCOEmCUR5ZVYDJhno+daNclCY2ZPBAMRU8K8/+KW+A9W
+	/oJGleqhsePwt9nwLydisP3KG7MgFZUE5EK2zRnBC5fcVazs+r6gYyZDtTWcX6OBG5bGhT4ElYRXd
+	lWSbbj/bxjlv2eJRr1+B/nj2eKtKDxVYf+4iQStXyY927nlbIY0GrfuqEvOAHbAylRNmZonx0X8yh
+	p/yF5HP95u6rpLNUcp3ey3DESCE25n56YCmu5PcxYtBFb5StrOKDoKGbVSOZiIQSVsAH5uUMk3gh7
+	gDOEHZKuQ9h/ntJcpK5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCUWi-00B2xT-HH; Fri, 15 Jul 2022 23:15:16 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1oCVcA-00BSQU-Ku; Sat, 16 Jul 2022 00:24:58 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCTsL-00Anlc-PV
-	for linux-rockchip@lists.infradead.org; Fri, 15 Jul 2022 22:33:41 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id y4so8017083edc.4
-        for <linux-rockchip@lists.infradead.org>; Fri, 15 Jul 2022 15:33:32 -0700 (PDT)
+	id 1oCVc7-00BSOU-5a
+	for linux-rockchip@lists.infradead.org; Sat, 16 Jul 2022 00:24:57 +0000
+Received: by mail-ed1-x530.google.com with SMTP id t3so8259593edd.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 15 Jul 2022 17:24:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=kohlschutter-com.20210112.gappssmtp.com; s=20210112;
         h=mime-version:subject:from:in-reply-to:date:cc
          :content-transfer-encoding:message-id:references:to;
-        bh=76JC0t9LbhiWqJ9c7y773RaCGcRxX9GUE05Rg0MDK+4=;
-        b=cxaJhA8kubAdEIOHAjA59STazGw/8l7Dig24ByRHAaBT0QSAU20+qVeIba5HSZc6aI
-         bHoQ+oiIzqn4om474i0bxnj9Q6wDJqidq5C4NEKQbR2NGEHm8s+DoN8Yl4QbJQw1eoYb
-         dcvkxRiG3vdQLrAuaB6pMvFS+CXSaV7Vf21i6/B1ihvL1LkqyuJmaf6d9zx39JypZkAU
-         VLj0ax2rZ+DIvbKbwf5u8lQOylKE5dC+e/CVu0htHs0ZR18BEwP3maEnHqw0AMA9k8+Z
-         ktbjbRdQq1X8f04jhkQiEaJTN7wMvgWTo2YMOcXwMHwQgE3G4/oCZBQBKFm8i1qQwR3t
-         t36Q==
+        bh=8jfxx4RE1L6PObFpgYLe3VGx/xPkN6IIKKF2vyixvto=;
+        b=ttBa2UbBKeBcedM5VCbE2dF8Fb8R/tnG19G+WXwTVbSTqG1oTp0u3QXSuu1yDvokh5
+         QXrrUTBTPgr3mZoAe3NujogoGOPhJdD2szIDo2vVUq3JJk2MePiO/6tGLzFXgX44/krw
+         LMaZ469mjAQqsvWglYLYkHeSrFiElKTVV43gRkho0rZagwiCj71D7bKSEmJK93pf6XQQ
+         Rnbc1PfQESfvMLcDXLcxF5mkioWaARjstUxs1yJ/rlWOPxYXGtUzwiXDFL1eg5WnBe+C
+         g5TVlKenKgBYv06m4uUJCVYS9n02AocDoDUnJ/tFBuW+kUj+wFYw7atCNe8IJ18JXRUx
+         wrnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
          :content-transfer-encoding:message-id:references:to;
-        bh=76JC0t9LbhiWqJ9c7y773RaCGcRxX9GUE05Rg0MDK+4=;
-        b=m3EBakSlenQoLWiCMRTOuHommwe7N2QosdSqsy2x5ObfUXy0Nepd91gp+n2a/vnXGR
-         E2FjmQ8MOae48z5KoAeOwME91/vpj15qtf7mICKE+xioo9sSuhVL6eXkAHkDttWZ7RLG
-         7kFSOgga0YJB6aPTHCS6hUvRf6xzD4URlr2ZjL+Ce7HstQ86mSf3TWxrJw3OGMpK6SZ+
-         6OQmTimMkNjGeeJKvQF7wiR0YZ41YtRsZE8IwSbqXNVoPeurlepQZjrPPa7WU1VMrt71
-         TlJLltGOC+5njJUu+GQUCANl4PxCEzspvTGO4ITWggPiHz4W8lVT3oSP0Cqw7j6m3l/y
-         gERw==
-X-Gm-Message-State: AJIora+tgwcmBa3t8iUCfZM9X/SFPndQv1OiWiZU7sx5HHlRFWor6FmQ
-	/UJupqA5Able6h4Sx4kL09EalA==
-X-Google-Smtp-Source: AGRyM1t/u2jjmV7/R6F6DGJ3m++32lPifqZ4JkCBXP1dlNz4t2qr0k+nLIeoKlklRBaGwWGalcw2Yg==
-X-Received: by 2002:aa7:c657:0:b0:43a:4a68:bcc5 with SMTP id z23-20020aa7c657000000b0043a4a68bcc5mr22746058edr.337.1657924410165;
-        Fri, 15 Jul 2022 15:33:30 -0700 (PDT)
+        bh=8jfxx4RE1L6PObFpgYLe3VGx/xPkN6IIKKF2vyixvto=;
+        b=1NUqJAv8iYGqzOWCi7MEYpmPQ6lOJjt4rSQs5BFuHOtJHe9lGOUwBI9u98IuOkLk9z
+         uqp8VFYWG9LVbT+N22kj1WsAgXymquQ3lr1AVjlJUghuBOjqCqr3F/QPBTnTQdRJOkIL
+         YlKCreRdi5WcTwlzwCKJDWEWzIx8+4GHp4QcHchMk8qedi54NEEq4PPOszrLtZMkhP9j
+         91HLw3l3CUOkgwn6AUTwgLF+SD3UO83Rzm9SkpqussZskSdb0MEeGvRi4g99GTiovSOI
+         ls+u74k7RnAVnaQRsVW1pcKsnX9ERlQkx8LbDyBjLpGpq8A+VjDb9V1vk1mnaVazULEd
+         T27w==
+X-Gm-Message-State: AJIora8q7ur6mQ6YjZfIxxanSMvuxhX0h4FB4KgBotOffYM18FX/KgT8
+	bcII3UY5t7nHvWkBQFdWwCSwrA==
+X-Google-Smtp-Source: AGRyM1tNcup+VZRbETUlw1suyFlV8QtfS2LSShbACHnJArc2NkI0rR1/KyBV9KTkE5dfB2Ut08q/Cw==
+X-Received: by 2002:a05:6402:148d:b0:43a:8f93:1d1 with SMTP id e13-20020a056402148d00b0043a8f9301d1mr22124080edv.57.1657931091445;
+        Fri, 15 Jul 2022 17:24:51 -0700 (PDT)
 Received: from smtpclient.apple (ip5b434222.dynamic.kabel-deutschland.de. [91.67.66.34])
-        by smtp.gmail.com with ESMTPSA id p25-20020a056402155900b0043aa17dc199sm3564771edx.90.2022.07.15.15.33.28
+        by smtp.gmail.com with ESMTPSA id gj10-20020a170907740a00b00726c0e63b94sm2547537ejc.27.2022.07.15.17.24.50
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 15 Jul 2022 15:33:29 -0700 (PDT)
+        Fri, 15 Jul 2022 17:24:50 -0700 (PDT)
 Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.100.31\))
 Subject: Re: [PATCH v4] arm64: dts: rockchip: Fix SD card init on
  rk3399-nanopi4
 From: =?utf-8?Q?Christian_Kohlsch=C3=BCtter?= <christian@kohlschutter.com>
-In-Reply-To: <daf3b61c-d886-98eb-0443-de233d742041@arm.com>
-Date: Sat, 16 Jul 2022 00:33:28 +0200
+In-Reply-To: <CDF716FC-F6CF-44A9-84D9-B48C46E6AC2C@kohlschutter.com>
+Date: Sat, 16 Jul 2022 02:24:49 +0200
 Cc: wens@kernel.org,
  =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
  Markus Reichl <m.reichl@fivetechno.de>,
@@ -71,7 +71,7 @@ Cc: wens@kernel.org,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
  linux-kernel <linux-kernel@vger.kernel.org>,
  Linux MMC List <linux-mmc@vger.kernel.org>
-Message-Id: <CDF716FC-F6CF-44A9-84D9-B48C46E6AC2C@kohlschutter.com>
+Message-Id: <3912A668-9F73-40FD-8993-5060F632238A@kohlschutter.com>
 References: <C639AD88-77A1-4485-BAEA-2FF8FC15A844@kohlschutter.com>
  <12878108.O9o76ZdvQC@diego> <103b714c-b07c-f016-1062-84bd94786b22@arm.com>
  <9AF1E75F-5947-49B0-887D-82C426527B99@kohlschutter.com>
@@ -88,11 +88,12 @@ References: <C639AD88-77A1-4485-BAEA-2FF8FC15A844@kohlschutter.com>
  <9405b97a-6758-ad4e-ccff-eed072096539@arm.com>
  <BF7CC548-88C9-4889-8A41-8E99C31EF81C@kohlschutter.com>
  <daf3b61c-d886-98eb-0443-de233d742041@arm.com>
+ <CDF716FC-F6CF-44A9-84D9-B48C46E6AC2C@kohlschutter.com>
 To: Robin Murphy <robin.murphy@arm.com>
 X-Mailer: Apple Mail (2.3696.100.31)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_153334_089506_BB146BD8 
-X-CRM114-Status: GOOD (  22.43  )
+X-CRM114-CacheID: sfid-20220715_172455_453116_E2C10E6A 
+X-CRM114-Status: GOOD (  16.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,66 +105,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-PiBBbSAxNS4wNy4yMDIyIHVtIDIxOjM4IHNjaHJpZWIgUm9iaW4gTXVycGh5IDxyb2Jpbi5tdXJw
-aHlAYXJtLmNvbT46Cj4gCj4gT24gMjAyMi0wNy0xNSAyMDowNCwgQ2hyaXN0aWFuIEtvaGxzY2jD
-vHR0ZXIgd3JvdGU6Cj4+IEFtIDE1LjA3LjIwMjIgdW0gMjA6NTcgc2NocmllYiBSb2JpbiBNdXJw
-aHkgPHJvYmluLm11cnBoeUBhcm0uY29tPjoKPj4+IAo+Pj4gT24gMjAyMi0wNy0xNSAxOToxMSwg
-Um9iaW4gTXVycGh5IHdyb3RlOgo+Pj4+IE9uIDIwMjItMDctMTUgMTg6MTYsIENocmlzdGlhbiBL
-b2hsc2Now7x0dGVyIHdyb3RlOgo+Pj4+PiBPSywgdGhpcyB0b29rIG1lIGEgd2hpbGUgdG8gZmln
-dXJlIG91dC4KPj4+Pj4gCj4+Pj4+IFdoZW4gbm8gdW5kZXJ2b2x0YWdlIGxpbWl0IGlzIGNvbmZp
-Z3VyZWQsIEkgY2FuIHJlbGlhYmx5IHRyaWdnZXIgdGhlIGluaXRpYWxpemF0aW9uIGJ1ZyB1cG9u
-IGJvb3QuCj4+Pj4+IFdoZW4gdGhlIGxpbWl0IGlzIHNldCB0byAzLjBWLCBpdCByYXJlbHkgb2Nj
-dXJzLCBidXQganVzdCBhZnRlciBJIHNlbmQgdGhlIHYzIHBhdGNoLCBJIHdhcyBhYmxlIHRvIHJl
-cHJvZHVjZS4uLgo+Pj4+IFdlbGwgdGhpcyBoYXMgdG8gYmUgaW4gdGhlIHJ1bm5pbmcgZm9yICJ3
-ZWlyZGVzdCBwbGFjZWJvIGV2ZXIiLi4uIDovCj4+Pj4gQWxsIGl0IGFjdHVhbGx5IHNlZW1zIHRv
-IGFjaGlldmUgaXMgcHJpbnRpbmcgYW4gZXJyb3JbMV0gKHRoaXMgaXMgYWZ0ZXIgYWxsIGEgdGlu
-eSA1LXBpbiBmaXhlZC12b2x0YWdlIExETyByZWd1bGF0b3IsIG5vdCBhbiBpbnRlbGxpZ2VudCBQ
-TUlDKSwgYW5kIGlmIHRoYXQgbWFrZXMgYW4gYXBwcmVjaWFibGUgZGlmZmVyZW5jZSB0aGVuIHRo
-ZXJlIGhhcyB0byBiZSBzb21lIGtpbmQgb2Ygd2VpcmQgdGltaW5nIGNvbmRpdGlvbiBhdCBwbGF5
-LiBNYXliZSByZWd1bGF0b3JfcmVnaXN0ZXIoKSBlbmRzIHVwIHR1cm5pbmcgaXQgb2ZmIGFuZCBv
-biBhZ2FpbiByYXBpZGx5IGVub3VnaCB0aGF0IHRoZSBjYXJkIHNlZXMgYSB2b2x0YWdlIGJyb3du
-b3V0IGFuZCBnbGl0Y2hlcywgYW5kIGFkZGluZyBtb3JlIGRlbGF5IGJ5IHByaW50aW5nIHRvIHRo
-ZSBjb25zb2xlIHNvbWV3aGVyZSBpbiB0aGUgbWlkZGxlIGdpdmVzIGl0IGVub3VnaCB0aW1lIHRv
-IGFjdCBhcyBhIHByb3BlciBwb3dlciBjeWNsZSB3aXRoIG5vIGlsbCBlZmZlY3Q/Cj4+PiAKPj4+
-IC4uLmFuZCBhcHBhcmVudGx5IHRoZSBhbnN3ZXIgaXMgeWVzLCBpdCBzZWVtcyB0byBiZSBkb2lu
-ZyBleGFjdGx5IHRoYXQgKHNlZSBhdHRhY2hlZCkuIEJ1dCBzZWVtaW5nbHkgbXkgU0QgY2FyZHMg
-ZG9uJ3QgbWluZCwgb3IgbWF5YmUgbXkgVDQgYm9hcmQgaGFwcGVucyB0byBoYXZlIG1vcmUgY2Fw
-YWNpdGFuY2UgdGhhbiBDaHJpc3RpYW4ncyBSNFMgc28gbXkgdm9sdGFnZSBkaXAgaXNuJ3QgYXMg
-YmFkLCBvciBib3RoLgo+Pj4gCj4+PiBTbyBpdCBzZWVtcyBsaWtlIHRoZSBzb2x1dGlvbiBoZXJl
-IG1pZ2h0IGluZGVlZCBzaW1wbHkgYmUgdG8gcmVtb3ZlIHRoZSByZWd1bGF0b3ItYWx3YXlzLW9u
-IHdoaWNoIGRvZXNuJ3Qgc2VlbSB0byBoYXZlIGFueSByZWFzb24gdG8gYmUgaGVyZSBhbnl3YXku
-IFdpdGhvdXQgdGhhdCwgdGhlIGVuYWJsZSBzdGF5cyBsb3cgdW50aWwgdGhlIE1NQyBkcml2ZXIg
-cHJvYmVzIGFuZCBjbGFpbXMgaXQsIHdoaWNoIGlzIHRoZW4gbWFzc2l2ZWx5IGxvbmdlciB0aGFu
-IHRoZSB0aW1lIGl0IHRha2VzIGZvciBWQ0MzVjBfU0QgdG8gcmFtcCBkb3duIGNvbXBsZXRlbHku
-Cj4+PiAKPj4+IFJvYmluLgo+PiBSZW1vdmluZyAicmVndWxhdG9yLWFsd2F5cy1vbiIgaGFzIHRo
-ZSBlZmZlY3QgdGhhdCB0aGUgc3lzdGVtIGZyZWV6ZXMgdXBvbiByZWJvb3QuCj4gCj4gQWgsIHJp
-Z2h0IChjYW4gd2UgZmFzdC1mb3J3YXJkIHRvIGEgd29ybGQgd2hlcmUgZXZlcnlvbmUgaGFzIGEg
-cmVsaWFibGUgYm9vdGxvYWRlciBpbiBTUEkgZmxhc2ggb3Igc2ltaWxhcj8pLiBJcyB0aGF0IG1v
-cmUgZ2xpdGNoaW5nLCBvciBhIGZpcm13YXJlIGJ1ZyBub3QgcmVzZXR0aW5nIHRoZSBHUElPcyB0
-byB0aGVpciBkZWZhdWx0IHN0YXRlIG9uIHdhcm0gcmVzZXQsIEkgd29uZGVyLgo+IAo+PiBUaGVy
-ZSBtYXkgd2VsbCBiZSBhbm90aGVyIGJ1ZyBzbHVtYmVyaW5nIGluIHRoZSBjb2RlYmFzZSB0aGF0
-IGlzIGNpcmN1bXZlbnRlZCBieSAxLiBhZGRpbmcgYSBkZWxheSBpbiB0aGUgY29kZSBhbmQgMi4g
-bm90IHR1cm5pbmcgdGhlIHJlZ3VsYXRvciBvZmYgdXBvbiBzaHV0ZG93bi4KPiAKPiBZZXMsIGl0
-IHNlZW1zIHN1Ym9wdGltYWwgdGhhdCB0aGUgcmVndWxhdG9yIGNvcmUgYWxsb3dzIHRoaXMgZ2xp
-dGNoIHdoZXJlIGFuIGFsd2F5cy1vbiByZWd1bGF0b3Igd2hpY2ggaXMgYWxyZWFkeSBvbiBnZXRz
-IHR1cm5lZCBvZmYgYXQgYWxsLCBidXQgSSBndWVzcyB0aGF0J3MgaXRzIG93biBwcm9ibGVtLiBJ
-biB0aGUgbWVhbnRpbWUsIG9mZi1vbi1kZWxheS11cyBzb3VuZHMgbGlrZSB0aGUgbW9zdCBsaWtl
-bHkgcHJvcGVydHkgdG8gYmFuZGFnZSB0aGlzIGxvY2FsbHkuIEknbSBzZWVpbmcgYSBmYWxsIHRp
-bWUgaW4gdGhlIG9yZGVyIG9mIG1pbGxpc2Vjb25kcyAoYXR0YWNoZWQpLCBzbyB3ZSdkIHByb2Jh
-Ymx5IHdhbnQgYSBmYWlyIGNodW5rIG9mIHRoYXQgdG8gYmUgc2FmZS4KPiAKPiBSb2Jpbi48U0RT
-MDAwMDMucG5nPgoKSSB0aGluayB3ZSBoYXZlIGEgd2F5IHdoZXJlIHRoZXJlJ3Mgbm8gbmVlZCB0
-byBwaWNrIGEgZGVsYXkgdmFsdWUgdGhhdCBtYXkgdWx0aW1hdGVseSBub3Qgd29yayBpbiBhbGwg
-Y2FzZXMuCkZvbGxvd2luZyB1cCB3aXRoICJbUEFUQ0hdIHJlZ3VsYXRvcjogY29yZTogUmVzb2x2
-ZSBzdXBwbHkgbmFtZSBlYXJsaWVyIHRvIHByZXZlbnQgZG91YmxlLWluaXQiIFsxXQoKVGhhbmsg
-eW91IHNvIG11Y2ggZm9yIGhlbHBpbmcgbWUgZ2V0dGluZyB0aGF0IGZhciEgSXQgd291bGQgYmUg
-Z3JlYXQgaWYgeW91J2Qga2VlcCBmb2xsb3dpbmcgdGhlIHRocmVhZC4KCkJlc3QsCkNocmlzdGlh
-bgoKWzFdIGh0dHBzOi8vd3d3LnNwaW5pY3MubmV0L2xpc3RzL2tlcm5lbC9tc2c0NDQwMzY1Lmh0
-bWwKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+>> 
+>>> There may well be another bug slumbering in the codebase that is circumvented by 1. adding a delay in the code and 2. not turning the regulator off upon shutdown.
+>> 
+>> Yes, it seems suboptimal that the regulator core allows this glitch where an always-on regulator which is already on gets turned off at all, but I guess that's its own problem. In the meantime, off-on-delay-us sounds like the most likely property to bandage this locally. I'm seeing a fall time in the order of milliseconds (attached), so we'd probably want a fair chunk of that to be safe.
+>> 
+>> Robin.<SDS00003.png>
+> 
+> I think we have a way where there's no need to pick a delay value that may ultimately not work in all cases.
+> Following up with "[PATCH] regulator: core: Resolve supply name earlier to prevent double-init" [1]
+> 
+> Thank you so much for helping me getting that far! It would be great if you'd keep following the thread.
+> 
+> Best,
+> Christian
+> 
+> [1] https://www.spinics.net/lists/kernel/msg4440365.html
+
+@Robin,
+
+oddly enough, setting off-on-delay-us with values of up to a second (1000000 us) still results in failed inits.
+I hope we can find another bandage until the regular-core patch gets merged.
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
