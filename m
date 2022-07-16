@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B4F0C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Jul 2022 05:57:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE5FEC433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Jul 2022 06:13:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2Ln663GYM31n16kqJr2o1VbS0SpKVGM90iyG2yzND7w=; b=H+EmE8nONycIjgxELvmvPdxn7M
-	RKqO6TINdYA4L6tY+2rLAkjCDZnzIf/TVtgRYo73OwJkzdZX68g7PGqp/iI9A05YUR3NWl8n2ERqY
-	wp4mvsTuwjdBYkvAIIBF8UMRAGhS4M131aDawym5oD5RBIh4YzMtjN7ivMGHzn8w2MUBkU/ylcvMf
-	VbQ0TTHOTLLbyABTQMvOLWbx8YtxCSHMaptHyN5NpojcXmdE6B82LTvXgge/unuRU/XgAj6Y4utIg
-	y3CK8jGXzwjBclXEDbN714qr2YwySd4pL5enaFnhmMGyX57HkzGdU+qQDMwx4veujZnCTfnl65QNh
-	Bg0o4blA==;
+	bh=1BkndWjVp1j/Qo7+j0y/wGZI+sfrCXTVpBqn5uSaDqc=; b=NjVUzifHB2v+pkZtnLPWLmeePN
+	6lWCVeWkkqnZ7CxuQ5Jf/eNIcTwh6a4LXHULgLw95cilPCXkfKjkjZUWXqCtytl87V8Y4fQDLg8Ro
+	VZS2maWVN36maZAyfj7pqMVAPv3zDJB990nsdOFD4U2aLMHTtjPwvU4iC9ZVvbOZgNvs1OCaHYvEH
+	C5h6/Sn+tK89ankWU/C13S9DKMyF9NXjK9keG1vVWXBFMsFasU3jthRz2U3oDQj0LOkJrTD1X6AL7
+	jE8l3z7OEj/0uaWTMmr5HtJ7Lg2K/oC64Lcln0J8vdL4YEKxCRCEIuXoqJnbFRgCwynBCt6NXzY+A
+	I7dPwXwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCanR-00E5Fo-Nc; Sat, 16 Jul 2022 05:56:57 +0000
-Received: from out5-smtp.messagingengine.com ([66.111.4.29])
+	id 1oCb32-00E8Q5-1w; Sat, 16 Jul 2022 06:13:04 +0000
+Received: from out3-smtp.messagingengine.com ([66.111.4.27])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCanO-00E5F9-Ma
-	for linux-rockchip@lists.infradead.org; Sat, 16 Jul 2022 05:56:56 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
-	by mailout.nyi.internal (Postfix) with ESMTP id 99E255C0097;
-	Sat, 16 Jul 2022 01:56:53 -0400 (EDT)
+	id 1oCb2y-00E8MG-63
+	for linux-rockchip@lists.infradead.org; Sat, 16 Jul 2022 06:13:01 +0000
+Received: from compute2.internal (compute2.nyi.internal [10.202.2.46])
+	by mailout.nyi.internal (Postfix) with ESMTP id 2FB805C0049;
+	Sat, 16 Jul 2022 02:12:52 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
-  by compute3.internal (MEProxy); Sat, 16 Jul 2022 01:56:53 -0400
+  by compute2.internal (MEProxy); Sat, 16 Jul 2022 02:12:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
 	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
 	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm3; t=1657951013; x=1658037413; bh=PW3mJzmicw
-	8UB2/rc8VrHQMws6ZIHtm00kQkfxdM83s=; b=o35o5HEJXvPFydQEOL0aXXJbt3
-	GSF7fTWckdhU9EZh8k2/5F94J6NfOBrThQ+kBAYNc58Iwn3N50iNlF5DsIpLH+Ug
-	qHrwp+1QdvKGnQWeG4Wb5Xp7bHx4wXGhJQ7TXEH60kOuL8whaFHi9OeuhG4DQvNW
-	zEJWYrfIluRfJiFYyGrSWw5WpglxQl5BJ4Je3rdIAgjd5bj0Ejo0n1lguULlJQu9
-	szpDyYt4NKZJr+czCR+AVXgpDtZEKFSR+OuTPjheOFwIYdHapngaKQ9KxdMTT3xz
-	yL3wrrHvLOZtqUb7TCjNFIT01iHthBPC5qpPbVa4bv9KIBY1ZGf/iMvzQAWQ==
+	:subject:to:to; s=fm3; t=1657951972; x=1658038372; bh=9aVaeCfojG
+	QgOfJ0P0V135IK2SdR9Yxo1/vx8xaYZtk=; b=jWUsPgF56hEbNe6YIxGUNKDQh9
+	uRuvESRIgHMAthUE+54piRjjOH1a3jfAHTnlsykKnFUbIzwdukX7QsuYBD0DHa9D
+	y6o/r5PsPxEVOtzBOzcBQOH8cK+oD/Il4FSPz87Xiu32MhP8wPNFpsFhY0EebC2r
+	p3bdpEFy2NiITKuzIOOWkaTje5cFALzXug8SKYh6P9fTTT4Qi03kQgEkh2SBXMRn
+	OgCNfCrnT3LJsEwPiIIut0KUUCLTW3Dmv+G8icnuz4xrpeFJStNj1JodBzdxXoeL
+	JsJkz1+GGOa+kJKpc2q1NpPZ+QmlspZ0LAPmLcwUZ7hCnuRHYEf9TB/b4VHQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
 	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
 	:mime-version:references:reply-to:sender:subject:subject:to:to
 	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm3; t=1657951013; x=1658037413; bh=PW3mJzmicw8UB2/rc8VrHQMws6ZI
-	Htm00kQkfxdM83s=; b=NmsbD88DQ5/6OSg8WzP7JGOUxVDtFyybM3qG7xiY7lii
-	jR3qJKCaEOP+g3Z8Uk37FTyrKu0AbuKI+OAKVFi8qEQky8Le1WILetNpR0FWAfPB
-	2yD9GDFCZvI3ymoXqe83//V8i8USjbU5tsBAZ5W77KeaOGWqDSqdBscUB1CLqEIB
-	UxtZ17t8RkXMtCypQPLKiFme55KbBUe1/w60iNfoe/DobSPUsJHMnGMNVYYlzqZc
-	3SYSDF6zh+HDOxufSGcBph3dm+gd8nO3pa589GUiK3qRkM/eGnx7QnHKr2/EknKK
-	9Y8G/iruyTiin7TMflsn8Xo3wQUEOx7U0yYPd67vrw==
-X-ME-Sender: <xms:JVPSYuJvm1Mm3x3ELmIt3tl4xgqEyew07qBYFmchvZ1Jf1TB-wNGpw>
-    <xme:JVPSYmLLAahy9S88P2erkHv2wCyns2dHpZdrTFU8RpJCee-n7D3z8hqG7y98vA9YE
-    D9k7WG08AYYaTonXa8>
-X-ME-Received: <xmr:JVPSYuv8NZfZJ-PGkVOLF2jPPoT0sLOsi-LsP76OViyOeM-KuKj9Iw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudekvddguddtvdcutefuodetggdotefrod
+	fm3; t=1657951972; x=1658038372; bh=9aVaeCfojGQgOfJ0P0V135IK2SdR
+	9Yxo1/vx8xaYZtk=; b=TvR5Pu6pYZv0LLssctvEo6GMeppScDwSbVXWqKeZc9iI
+	tNW1s1bk7OzV+tTldoG2xGXUpkZHzzBF2TQvv+LnHYKyok4TPOY6RtWbqC7tAdP2
+	pVRW3hX6LqDzIbai3q87EsTGbYL8CB1yRvbkvfpcm65iqo2iXQxvdZmKFOhc1Ifl
+	K7+C4GWg2U4cUvX7vz+RtSB5+VVW0R+4ZOZ8RpyyK3unrjej77aJ4c7hymie5Gng
+	O+vb6CKEVklHugziiRSRTicU612rrMKZp8xfdUmciiFvoy+D6N29FZZPmqaEyh7m
+	ywX9SItjggXfIyDg+sUd8YJ4Ocen00RkK1FJSVIZag==
+X-ME-Sender: <xms:41bSYmTYU1ovPbIwy_kEM6G6iiO57t3vFizN6nPNlhyWGyceORjyqw>
+    <xme:41bSYrwWQ0ZRWZvyJwdpY7-EX7FdzJZLmNghKZ7Ks5zcPy9cEJlyaqKi_WYwTun2w
+    zew2dun8HEijdNEylg>
+X-ME-Received: <xmr:41bSYj3urSUH6eoyZQIPa5HfzMk4RRVC8KPHtF_KVAIVhuNLhbLRBw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudekvddguddthecutefuodetggdotefrod
     ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
     necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
     enucfjughrpeffhffvvefukfhfgggtuggjsehttdertddttdejnecuhfhrohhmpeffrghf
@@ -64,14 +64,14 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrudekvddguddtvdcutefuodetgg
     cuggftrfgrthhtvghrnhepvdehtdeludekgeevleefuedvudejieetheekvdfhteekffdu
     jefhfedtudehvdeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilh
     hfrhhomhepuggrfhhnrgesfhgrshhtmhgrihhlrdgtohhm
-X-ME-Proxy: <xmx:JVPSYjY-vxraZ1QZUz5Q1Lu7ZbG9AB4BmlZ7b4I0W8PcwKop14PZgg>
-    <xmx:JVPSYlbFXZ-tmVU3PpyKZYw0q5xI_hV1PLX5oyu2F4gpNGSvQZIttA>
-    <xmx:JVPSYvDlZho0nnZ5BsUc2dE0-QL04zi-nE4E6geGwepW-HLZm7WFIQ>
-    <xmx:JVPSYpEZbIE1I3dduHJ6MvPxfd8m5Sgs2o_w8UQ9KO7nogD1vNWT9A>
+X-ME-Proxy: <xmx:41bSYiCqOBraIZtSkqONZTIJyNDnFc78RHjwENAzpJi5HO8oozLtxg>
+    <xmx:41bSYvjzvOTMCbcwXGqc4lpfMEONd6Xr69DA-QSsRPJoAYYPaT9h_Q>
+    <xmx:41bSYupMK6F3gsekCE5XNDVu9UUx7G8YtBLHe_S-xrGr9wKJRz8ybA>
+    <xmx:5FbSYsul1AQlFUVyux1dOCkbG2Hg3YLP1xjZqfTlzTl86JUAElJr4A>
 Feedback-ID: i0e894699:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 16 Jul 2022 01:56:51 -0400 (EDT)
-Date: Sat, 16 Jul 2022 08:56:48 +0300
+ 16 Jul 2022 02:12:50 -0400 (EDT)
+Date: Sat, 16 Jul 2022 09:12:47 +0300
 From: Dafna Hirschfeld <dafna@fastmail.com>
 To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
@@ -79,15 +79,15 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	Florian Sylvestre <fsylvestre@baylibre.com>
 Subject: Re: [PATCH 2/3] media: rockchip: rkisp1: Mask invalid bits in DPCC
  parameters
-Message-ID: <20220716055648.unpih6bsy6cpj5ld@guri>
+Message-ID: <20220716061247.dil4rt6zac2jzu6y@guri>
 References: <20220616160456.21549-1-laurent.pinchart@ideasonboard.com>
  <20220616160456.21549-3-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20220616160456.21549-3-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220715_225654_835687_3099FAB1 
-X-CRM114-Status: GOOD (  10.63  )
+X-CRM114-CacheID: sfid-20220715_231300_326318_5BF18604 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,6 +128,14 @@ On 16.06.2022 19:04, Laurent Pinchart wrote:
 >+	 * The enable bit is controlled in rkisp1_isp_isr_other_config() and
 >+	 * must be preserved. The grayscale mode should be configured
 >+	 * automatically based on the media bus code on the ISP sink pad, so
+
+I see you add RKISP1_CIF_ISP_DPCC_MODE_GRAYSCALE_MODE in this patch.
+Shouldn't you add a patch that set/unset it according to the isp sink pad
+as this doc says?
+
+Thanks,
+Dafna
+
 >+	 * only the STAGE1_ENABLE bit can be set by userspace.
 >+	 */
 > 	mode = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_DPCC_MODE);
@@ -229,12 +237,6 @@ On 16.06.2022 19:04, Laurent Pinchart wrote:
 >+#define RKISP1_CIF_ISP_DPCC_MODE_STAGE1_ENABLE		BIT(2)
 >+#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_MASK		GENMASK(3, 0)
 >+#define RKISP1_CIF_ISP_DPCC_SET_USE_MASK		GENMASK(3, 0)
-
-Why are these two masks use GENMASK and other don't?
-
-
-Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
-
 >+#define RKISP1_CIF_ISP_DPCC_METHODS_SET_MASK		0x00001f1f
 >+#define RKISP1_CIF_ISP_DPCC_LINE_THRESH_MASK		0x0000ffff
 >+#define RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_MASK		0x00003f3f
