@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1A85C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Jul 2022 11:48:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3FC3C43334
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Jul 2022 11:50:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d7p5+zQTJhf4Z3vakCAGaL8WEWmM+zghXXcUaqVnXxQ=; b=pqgYpcbkYrf22b
-	572KK4JutQkEaAIvWtpwVCUN/xGX3rS19iv+UIIQQr2HADNGIxIFDesbBZaaG4hCnWmN9VhMYccWd
-	5GED3oLojRqqXkH6S+6uhMi0ufjNHAPxKV1jET+SS1DZ1TA+/VN3rHrAj6un47OtzHPePyjdjbumH
-	Lp3YbAnPJf7NQVViMkMxiqJa0fBNMgc1vt6ExUXFO1LorRtTNKuOeNtAC70YoB2z+vpZc/E4i+1d7
-	xBjVjFTgCj/zio3YPAer7X7xyiYoOm0vqt7teugPMRzB/WjLsrt1EWW+vnBKW11lvgOFRDSRSQGJj
-	gi0Nzo3qdSLqhM5G/tQQ==;
+	List-Owner; bh=tga3/lfwMqZ8Uz6vqcHv1ydOzRvbA9Kn62RKfozKF+E=; b=t4KdyHD2u5UvfG
+	6i9gA6k8+RTyD4vpKFlgEqICmEoH63f4ZoBh8cyKOaCkDsob5TwGMiifsP3aTv9Qo0lRlFtC2r5iG
+	CmMgrh7SpGadMFJSCPf1mjw0e0qCkhEnKCIVo9X8gtSl77AR9PAjm8CnRRE7MR5z12VOM4A2ijyK+
+	30UD1SxNBMZai+TZg6cJc7SdOlMI3Bjitk4wl2gMG7ZTmFUg9lmJbofctWBIjowvtAX1kG2Qd9ibr
+	2tG0JWst7c5rqtLFWLjetMDr3iaHbjsLY7VfqS3BqYfq5GyN/Yb6o2WTHuOCTh/uSe3rkdPS8Q/Uu
+	nN12pkhlqsf5BypsC/TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCgHZ-00Fpcl-6V; Sat, 16 Jul 2022 11:48:25 +0000
+	id 1oCgJV-00FqPb-QS; Sat, 16 Jul 2022 11:50:25 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCgHW-00FpaJ-NP
-	for linux-rockchip@lists.infradead.org; Sat, 16 Jul 2022 11:48:24 +0000
+	id 1oCgJS-00FqOQ-W9
+	for linux-rockchip@lists.infradead.org; Sat, 16 Jul 2022 11:50:24 +0000
 Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 876106E0;
-	Sat, 16 Jul 2022 13:48:17 +0200 (CEST)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 497046E0;
+	Sat, 16 Jul 2022 13:50:21 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657972097;
-	bh=mZ5rcksLVqIrAYnKdzzfgI+bFe9rNt9SPFqUM6Q2ypo=;
+	s=mail; t=1657972221;
+	bh=+FKgBte36O9JHEFQ7+RIN7qE3/ujeQfKosbgaVQ73Ow=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=K0/cSjBWMGWOaDlkzDO6m0+Sn8BgJo/ws+AiSwZfLtsrGvwPU3O4BuCFtv7G3fPLx
-	 +IxIbt9aQR9xZ9s8plvB5xEvN/VQ1lu2+dOu50E38xCqVaw4OLwHgIkzDGc6stk4AF
-	 rBEXyhos69BgYa0RinBHqlz+mgES1dQUs9AMU9ZQ=
-Date: Sat, 16 Jul 2022 14:47:45 +0300
+	b=eP9VxPw4efMZ8BnUZKRXvw6N6uHhlMDsFo4OanGoaeUTn7wQj1t/ivflhrb5YZgjc
+	 ZhD40/+2EORFts02FFQE2hLqLcAUZ65VzAqBWJRRkvlol0OxXWKXpPbDWsXJgz9MYq
+	 Rt33xjoozwZaMWBm8lNfSi7gMOlMrKGSk6DP4bQw=
+Date: Sat, 16 Jul 2022 14:49:49 +0300
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Dafna Hirschfeld <dafna@fastmail.com>
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
@@ -43,16 +43,16 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	Florian Sylvestre <fsylvestre@baylibre.com>
 Subject: Re: [PATCH 2/3] media: rockchip: rkisp1: Mask invalid bits in DPCC
  parameters
-Message-ID: <YtKlYSxp5JP/nI6k@pendragon.ideasonboard.com>
+Message-ID: <YtKl3coiUuG8fISt@pendragon.ideasonboard.com>
 References: <20220616160456.21549-1-laurent.pinchart@ideasonboard.com>
  <20220616160456.21549-3-laurent.pinchart@ideasonboard.com>
- <20220716055648.unpih6bsy6cpj5ld@guri>
+ <20220716061247.dil4rt6zac2jzu6y@guri>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220716055648.unpih6bsy6cpj5ld@guri>
+In-Reply-To: <20220716061247.dil4rt6zac2jzu6y@guri>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220716_044822_949158_D9219C76 
-X-CRM114-Status: GOOD (  22.11  )
+X-CRM114-CacheID: sfid-20220716_045023_217525_04462322 
+X-CRM114-Status: GOOD (  23.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,9 +69,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dafna,
-
-On Sat, Jul 16, 2022 at 08:56:48AM +0300, Dafna Hirschfeld wrote:
+On Sat, Jul 16, 2022 at 09:12:47AM +0300, Dafna Hirschfeld wrote:
 > On 16.06.2022 19:04, Laurent Pinchart wrote:
 > > Restrict the DPCC configuration that can be set by userspace to valid
 > > register bits. To do so, reorganize the related register macros to
@@ -96,6 +94,15 @@ On Sat, Jul 16, 2022 at 08:56:48AM +0300, Dafna Hirschfeld wrote:
 > > +	 * The enable bit is controlled in rkisp1_isp_isr_other_config() and
 > > +	 * must be preserved. The grayscale mode should be configured
 > > +	 * automatically based on the media bus code on the ISP sink pad, so
+> 
+> I see you add RKISP1_CIF_ISP_DPCC_MODE_GRAYSCALE_MODE in this patch.
+> Shouldn't you add a patch that set/unset it according to the isp sink pad
+> as this doc says?
+
+I should, but the driver doesn't support (yet) greyscale sensors
+(MEDIA_BUS_FMT_Y8_1X8 and other bus widths are not mentioned anywhere),
+so I can't do that yet.
+
 > > +	 * only the STAGE1_ENABLE bit can be set by userspace.
 > > +	 */
 > >  	mode = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_DPCC_MODE);
@@ -197,25 +204,6 @@ On Sat, Jul 16, 2022 at 08:56:48AM +0300, Dafna Hirschfeld wrote:
 > > +#define RKISP1_CIF_ISP_DPCC_MODE_STAGE1_ENABLE		BIT(2)
 > > +#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_MASK		GENMASK(3, 0)
 > > +#define RKISP1_CIF_ISP_DPCC_SET_USE_MASK		GENMASK(3, 0)
-> 
-> Why are these two masks use GENMASK and other don't?
-
-Good question. Probably because the above two are new and I didn't think
-about changing the other ones.
-
-For RKISP1_CIF_ISP_DPCC_METHODS_SET_MASK, would you rather keep
-
-#define RKISP1_CIF_ISP_DPCC_METHODS_SET_MASK		0x00001f1f
-
-or have
-
-#define RKISP1_CIF_ISP_DPCC_METHODS_SET_MASK		(GENMASK(12 ,8) | GENMASK(4, 0))
-
-? I think the former is easier to read and match against datasheets, but
-I don't mind much either way.
-
-> Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
-> 
 > > +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_MASK		0x00001f1f
 > > +#define RKISP1_CIF_ISP_DPCC_LINE_THRESH_MASK		0x0000ffff
 > > +#define RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_MASK		0x00003f3f
