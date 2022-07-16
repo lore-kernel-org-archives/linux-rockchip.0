@@ -4,55 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3FC3C43334
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Jul 2022 11:50:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37FEECCA481
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 Jul 2022 11:58:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tga3/lfwMqZ8Uz6vqcHv1ydOzRvbA9Kn62RKfozKF+E=; b=t4KdyHD2u5UvfG
-	6i9gA6k8+RTyD4vpKFlgEqICmEoH63f4ZoBh8cyKOaCkDsob5TwGMiifsP3aTv9Qo0lRlFtC2r5iG
-	CmMgrh7SpGadMFJSCPf1mjw0e0qCkhEnKCIVo9X8gtSl77AR9PAjm8CnRRE7MR5z12VOM4A2ijyK+
-	30UD1SxNBMZai+TZg6cJc7SdOlMI3Bjitk4wl2gMG7ZTmFUg9lmJbofctWBIjowvtAX1kG2Qd9ibr
-	2tG0JWst7c5rqtLFWLjetMDr3iaHbjsLY7VfqS3BqYfq5GyN/Yb6o2WTHuOCTh/uSe3rkdPS8Q/Uu
-	nN12pkhlqsf5BypsC/TQ==;
+	List-Owner; bh=mS1OzzTsxgGMN8+U0KDI4V1b10IUTtMLAgIHxGheseI=; b=DJj2PVJ2OAw4Ou
+	406L52lwHMcKEHp0CW/Q8x9CwAgUhuKPgiGehG+LlGOv9d2d5iobKa0Zug9bcNFcOerpsp4WS++se
+	/hqmcR2qnDvriz9a8KrlahKTbJBHelt0fQoAY0XKb5HPQ4oqLscZP61r8z33NWPiaJy2c9vbRs535
+	DkJhFHrUMgtxJB0bf+5/NtjeBidUd8SsNAgbV+MTGWL+vUAyyoz+C92hQfIaCzaI/9sHbhkGGd/4M
+	jT7zBxtEqCUo/EH8CTq6bey9/NcTPWabmboumS2ABtBhIttZYavTIdtDJp5VrDAzf0T0tuArwQJ4Y
+	RSyPBoyCyMTxQznun2SA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCgJV-00FqPb-QS; Sat, 16 Jul 2022 11:50:25 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1oCgQt-00FsyA-N9; Sat, 16 Jul 2022 11:58:03 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oCgJS-00FqOQ-W9
-	for linux-rockchip@lists.infradead.org; Sat, 16 Jul 2022 11:50:24 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 497046E0;
-	Sat, 16 Jul 2022 13:50:21 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1657972221;
-	bh=+FKgBte36O9JHEFQ7+RIN7qE3/ujeQfKosbgaVQ73Ow=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eP9VxPw4efMZ8BnUZKRXvw6N6uHhlMDsFo4OanGoaeUTn7wQj1t/ivflhrb5YZgjc
-	 ZhD40/+2EORFts02FFQE2hLqLcAUZ65VzAqBWJRRkvlol0OxXWKXpPbDWsXJgz9MYq
-	 Rt33xjoozwZaMWBm8lNfSi7gMOlMrKGSk6DP4bQw=
-Date: Sat, 16 Jul 2022 14:49:49 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Florian Sylvestre <fsylvestre@baylibre.com>
-Subject: Re: [PATCH 2/3] media: rockchip: rkisp1: Mask invalid bits in DPCC
- parameters
-Message-ID: <YtKl3coiUuG8fISt@pendragon.ideasonboard.com>
-References: <20220616160456.21549-1-laurent.pinchart@ideasonboard.com>
- <20220616160456.21549-3-laurent.pinchart@ideasonboard.com>
- <20220716061247.dil4rt6zac2jzu6y@guri>
+	id 1oCgQr-00Fswa-1f; Sat, 16 Jul 2022 11:58:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+	s=badeba3b8450; t=1657972653;
+	bh=mr/pCYiVaMNMV+tbkPhD40SBlpbSeCNm1zKJ+o4vbaM=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=k35R4OnElnQiIEBbrBO2jLhjxs/arS4e9u8sBwC7wxXWp7z9QVZQjpn20Xw4yASl9
+	 D43cI7VbghaqzWgFB3ZnLSjMre1XiR4LxpsxSBk3yrDInhWgd/xFGsnDKwe2BikAQA
+	 PZG5dalEB/VLrWFyxkQT5CxhGLsNsDmAjr9kdq6c=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.77.159] ([80.245.77.159]) by web-mail.gmx.net
+ (3c-app-gmx-bap26.server.lan [172.19.172.96]) (via HTTP); Sat, 16 Jul 2022
+ 13:57:33 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220716061247.dil4rt6zac2jzu6y@guri>
+Message-ID: <trinity-7c08bee0-07dc-4e45-8157-50aa7fa7c3cc-1657972653195@3c-app-gmx-bap26>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Vinod Koul <vkoul@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>,
+ Liang Chen <cl@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-rockchip@lists.infradead.org,
+ Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner
+ <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, Johan Jonker
+ <jbx6244@gmail.com>, Yifeng Zhao <yifeng.zhao@rock-chips.com>, Michael
+ Riesch <michael.riesch@wolfvision.net>, Simon Xue <xxm@rock-chips.com>,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Shawn
+ Lin <shawn.lin@rock-chips.com>, Liang Chen <cl@rock-chips.com>
+Subject: Aw: Re: [PATCH v4 3/5] phy: rockchip: Support PCIe v3
+Date: Sat, 16 Jul 2022 13:57:33 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <YtFTrEzefxIYswnj@matsya>
+References: <20220619082605.7935-1-linux@fw-web.de>
+ <20220619082605.7935-4-linux@fw-web.de> <YtFTrEzefxIYswnj@matsya>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:Ll0lW5FfOy8PK39ATKJ4/5EoQQotC9SLpE+mR2q2O3zLIVgoCKp1HAEYafnZ2klS2sSAg
+ rOHkZVbW243ld09DQApdR5rPZOgmo3j8OZAfCIN8ObpP9JzuULItUViL2vPtyhGjcHC952WOQydW
+ pSbIgnn/ufx/w9G/WaWKaPl/D8V0lFf6QHSkCv2vqFFAOmRgph11FjcSIxMnzsLmlkPYUQT6jsrW
+ EAfi17jfK9lzMkTfvzY3BqosHPZ2AzpEryhLVO+GVCdCFPw4DnSgTLBuUZCdjgiQtoHwrhEMlf+r
+ wk=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:WtWHZiRozh8=:gbLjeos4Y+pt3jyN6qW9cs
+ gYBkeTFO9vX/UGcr7AzIYKcMm9zvwZk0fAwkWac5adpiV2lm4J2ynqjJaNvuv0coQ9Pc1WNwY
+ oqGG2uCUNi2eZRNatQu2i9+ThGdvgsPuE8KIaKvWzkf5rNnRdiZT3MhZDqT6dhBR5DCkvNXGd
+ Qvc0DpsYMq9FTYGnbP2sVLij3jj798d92c6ELBK2465eT8MZSHxwIywCK281T5J4FjqOfadN5
+ SBtarvHQ7r2oXUO7ZQNywMw7F8fDtaZM/OGswmz60F7RtO1EbqZ2XuaYnF08OdDu7SDgsvDET
+ iUKKmY4bvfFT8rrJGooZq2rRi6sCQ9iHs1jPJGUxd+jWg7pECVoP7pNm5Xe5JjBA3P8aS/OgM
+ J6idQYvrc/BpeN6WQ6Zzx3p0477/UEBnTxN/IURgxdzkUWdtKm1ZcNby0c2zcPdq+XjP8iv3O
+ mYBWbKB1VFqsMp/CBZb7lInSwB2NzC+BkdpCsB/8ij/ELFz9yBnqSCdKM2BIhjThD1sVSXPvb
+ TCNb5bPW9jf/9gZiUWDhkPyPZ0VkMpQ+phJA00M4OB1zhv+kPWgZ8d1ysWP2gT6aCotlUnn+3
+ mOgcLP1W2NcB+kerxAlVbwCLKJbbuUp0GWH7kpqmasyWeUcTnGaq1wfZvDs7DPjRuIxoWB8yy
+ Dwp1akwpexbmyIY+Wlkr0tMFpq2sEXkrgycwJAWChf2RKuxSNF4FMopu55hx1rhpm5vKcnKor
+ YN1eNE25CdlB4jMynamVbJ41Db86oxrgoGzKSIsri4HHbWfNmWndEvV9XIFC8q8xwmPMgXhTu
+ oimi6gI
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220716_045023_217525_04462322 
-X-CRM114-Status: GOOD (  23.21  )
+X-CRM114-CacheID: sfid-20220716_045801_428121_CEA8DC30 
+X-CRM114-Status: GOOD (  22.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,157 +95,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jul 16, 2022 at 09:12:47AM +0300, Dafna Hirschfeld wrote:
-> On 16.06.2022 19:04, Laurent Pinchart wrote:
-> > Restrict the DPCC configuration that can be set by userspace to valid
-> > register bits. To do so, reorganize the related register macros to
-> > define valid bitmasks, as well as bits of the DPCC mode register.
-> > 
-> > Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > ---
-> >  .../platform/rockchip/rkisp1/rkisp1-params.c  | 44 ++++++++++++-------
-> >  .../platform/rockchip/rkisp1/rkisp1-regs.h    | 26 +++++------
-> >  2 files changed, 41 insertions(+), 29 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > index 140012fa18f0..94e834cd2a21 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-> > @@ -58,35 +58,47 @@ static void rkisp1_dpcc_config(struct rkisp1_params *params,
-> >  	unsigned int i;
-> >  	u32 mode;
-> > 
-> > -	/* avoid to override the old enable value */
-> > +	/*
-> > +	 * The enable bit is controlled in rkisp1_isp_isr_other_config() and
-> > +	 * must be preserved. The grayscale mode should be configured
-> > +	 * automatically based on the media bus code on the ISP sink pad, so
-> 
-> I see you add RKISP1_CIF_ISP_DPCC_MODE_GRAYSCALE_MODE in this patch.
-> Shouldn't you add a patch that set/unset it according to the isp sink pad
-> as this doc says?
+Hi
 
-I should, but the driver doesn't support (yet) greyscale sensors
-(MEDIA_BUS_FMT_Y8_1X8 and other bus widths are not mentioned anywhere),
-so I can't do that yet.
+thanks for review.
 
-> > +	 * only the STAGE1_ENABLE bit can be set by userspace.
-> > +	 */
-> >  	mode = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_DPCC_MODE);
-> > -	mode &= RKISP1_CIF_ISP_DPCC_ENA;
-> > -	mode |= arg->mode & ~RKISP1_CIF_ISP_DPCC_ENA;
-> > +	mode &= RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE;
-> > +	mode |= arg->mode & RKISP1_CIF_ISP_DPCC_MODE_STAGE1_ENABLE;
-> >  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_MODE, mode);
+> Gesendet: Freitag, 15. Juli 2022 um 13:46 Uhr
+> Von: "Vinod Koul" <vkoul@kernel.org>
+> > + * Copyright (C) 2020 Rockchip Electronics Co., Ltd.
+>
+> 2022 now :)
+
+ok, i change it
+
+> > +	/* Deassert PCIe PMA output clamp mode */
+> > +	regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON9, BIT(15) | BIT(31));
+>
+> Can we define these bits..?
+
+i have no naming found for it as these are not described in the TRM
+
+maybe Peter or Liang/Shawn has these?
+
 > > +
-> >  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_OUTPUT_MODE,
-> > -		     arg->output_mode);
-> > +		     arg->output_mode & RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_MASK);
-> >  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_SET_USE,
-> > -		     arg->set_use);
-> > +		     arg->set_use & RKISP1_CIF_ISP_DPCC_SET_USE_MASK);
-> > 
-> >  	for (i = 0; i < RKISP1_CIF_ISP_DPCC_METHODS_MAX; i++) {
-> >  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_METHODS_SET(i),
-> > -			     arg->methods[i].method);
-> > +			     arg->methods[i].method &
-> > +			     RKISP1_CIF_ISP_DPCC_METHODS_SET_MASK);
-> >  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_LINE_THRESH(i),
-> > -			     arg->methods[i].line_thresh);
-> > +			     arg->methods[i].line_thresh &
-> > +			     RKISP1_CIF_ISP_DPCC_LINE_THRESH_MASK);
-> >  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_LINE_MAD_FAC(i),
-> > -			     arg->methods[i].line_mad_fac);
-> > +			     arg->methods[i].line_mad_fac &
-> > +			     RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_MASK);
-> >  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_PG_FAC(i),
-> > -			     arg->methods[i].pg_fac);
-> > +			     arg->methods[i].pg_fac &
-> > +			     RKISP1_CIF_ISP_DPCC_PG_FAC_MASK);
-> >  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_RND_THRESH(i),
-> > -			     arg->methods[i].rnd_thresh);
-> > +			     arg->methods[i].rnd_thresh &
-> > +			     RKISP1_CIF_ISP_DPCC_RND_THRESH_MASK);
-> >  		rkisp1_write(params->rkisp1, RKISP1_ISP_DPCC_RG_FAC(i),
-> > -			     arg->methods[i].rg_fac);
-> > +			     arg->methods[i].rg_fac &
-> > +			     RKISP1_CIF_ISP_DPCC_RG_FAC_MASK);
-> >  	}
-> > 
-> >  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_RND_OFFS,
-> > -		     arg->rnd_offs);
-> > +		     arg->rnd_offs & RKISP1_CIF_ISP_DPCC_RND_OFFS_MASK);
-> >  	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_DPCC_RO_LIMITS,
-> > -		     arg->ro_limits);
-> > +		     arg->ro_limits & RKISP1_CIF_ISP_DPCC_RO_LIMIT_MASK);
-> >  }
-> > 
-> >  /* ISP black level subtraction interface function */
-> > @@ -1214,11 +1226,11 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
-> >  		if (module_ens & RKISP1_CIF_ISP_MODULE_DPCC)
-> >  			rkisp1_param_set_bits(params,
-> >  					      RKISP1_CIF_ISP_DPCC_MODE,
-> > -					      RKISP1_CIF_ISP_DPCC_ENA);
-> > +					      RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE);
-> >  		else
-> >  			rkisp1_param_clear_bits(params,
-> >  						RKISP1_CIF_ISP_DPCC_MODE,
-> > -						RKISP1_CIF_ISP_DPCC_ENA);
-> > +						RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE);
-> >  	}
-> > 
-> >  	/* update bls config */
-> > @@ -1580,7 +1592,7 @@ void rkisp1_params_configure(struct rkisp1_params *params,
-> >  void rkisp1_params_disable(struct rkisp1_params *params)
-> >  {
-> >  	rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_DPCC_MODE,
-> > -				RKISP1_CIF_ISP_DPCC_ENA);
-> > +				RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE);
-> >  	rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_LSC_CTRL,
-> >  				RKISP1_CIF_ISP_LSC_CTRL_ENA);
-> >  	rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_BLS_CTRL,
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > index dd3e6c38be67..dc01f968c19d 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> > @@ -618,19 +618,19 @@
-> >  #define RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA_READ(x)	(((x) >> 11) & 1)
-> > 
-> >  /* DPCC */
-> > -/* ISP_DPCC_MODE */
-> > -#define RKISP1_CIF_ISP_DPCC_ENA				BIT(0)
-> > -#define RKISP1_CIF_ISP_DPCC_MODE_MAX			0x07
-> > -#define RKISP1_CIF_ISP_DPCC_OUTPUTMODE_MAX		0x0F
-> > -#define RKISP1_CIF_ISP_DPCC_SETUSE_MAX			0x0F
-> > -#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RESERVED	0xFFFFE000
-> > -#define RKISP1_CIF_ISP_DPCC_LINE_THRESH_RESERVED	0xFFFF0000
-> > -#define RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_RESERVED	0xFFFFC0C0
-> > -#define RKISP1_CIF_ISP_DPCC_PG_FAC_RESERVED		0xFFFFC0C0
-> > -#define RKISP1_CIF_ISP_DPCC_RND_THRESH_RESERVED		0xFFFF0000
-> > -#define RKISP1_CIF_ISP_DPCC_RG_FAC_RESERVED		0xFFFFC0C0
-> > -#define RKISP1_CIF_ISP_DPCC_RO_LIMIT_RESERVED		0xFFFFF000
-> > -#define RKISP1_CIF_ISP_DPCC_RND_OFFS_RESERVED		0xFFFFF000
-> > +#define RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE		BIT(0)
-> > +#define RKISP1_CIF_ISP_DPCC_MODE_GRAYSCALE_MODE		BIT(1)
-> > +#define RKISP1_CIF_ISP_DPCC_MODE_STAGE1_ENABLE		BIT(2)
-> > +#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_MASK		GENMASK(3, 0)
-> > +#define RKISP1_CIF_ISP_DPCC_SET_USE_MASK		GENMASK(3, 0)
-> > +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_MASK		0x00001f1f
-> > +#define RKISP1_CIF_ISP_DPCC_LINE_THRESH_MASK		0x0000ffff
-> > +#define RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_MASK		0x00003f3f
-> > +#define RKISP1_CIF_ISP_DPCC_PG_FAC_MASK			0x00003f3f
-> > +#define RKISP1_CIF_ISP_DPCC_RND_THRESH_MASK		0x0000ffff
-> > +#define RKISP1_CIF_ISP_DPCC_RG_FAC_MASK			0x00003f3f
-> > +#define RKISP1_CIF_ISP_DPCC_RO_LIMIT_MASK		0x00000fff
-> > +#define RKISP1_CIF_ISP_DPCC_RND_OFFS_MASK		0x00000fff
-> > 
-> >  /* BLS */
-> >  /* ISP_BLS_CTRL */
+> > +	for (int i = 0; i < priv->num_lanes; i++) {
+> > +		dev_info(&phy->dev, "lane number %d, val %d\n", i, priv->lanes[i]);
+> > +		if (priv->lanes[i] > 1)
+> > +			bifurcation = true;
+> > +	}
+> > +
+> > +	/* Set bifurcation if needed, and it doesn't care RC/EP */
+> > +	if (bifurcation) {
+> > +		dev_info(&phy->dev, "bifurcation enabled\n");
+> > +		regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON6,
+> > +			     (0xf << 16) | RK3568_BIFURCATION_LANE_0_1);
+>
+> upper word 0xf?
 
--- 
-Regards,
+afaik yes (write-enable), is there any other more readable way?
 
-Laurent Pinchart
+> > +		regmap_write(priv->phy_grf, GRF_PCIE30PHY_CON1,
+> > +			     BIT(15) | BIT(31));
+>
+> again define bits please
+
+these are not documented too
+
+> > +	} else {
+> > +		dev_info(&phy->dev, "bifurcation disabled\n");
+>
+> debug level?
+
+i made them same as the "bifurcation enabled" to have always an info about it in dmesg.
+
+> > +	if (ret)
+> > +		pr_err("%s: lock failed 0x%x, check input refclk and power supply\n",
+> > +		       __func__, reg);
+>
+> Can this be made dev_err too, I still see bunch of pr_ and at least here
+> you have driver context... while at it drop the __func__ from these logs
+> too please
+
+ok, i'll change it
+
+> > diff --git a/include/linux/phy/pcie.h b/include/linux/phy/pcie.h
+> > new file mode 100644
+> > index 000000000000..93c997f520fe
+> > --- /dev/null
+> > +++ b/include/linux/phy/pcie.h
+> > @@ -0,0 +1,12 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +/*
+> > + * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
+>
+> Header is 2021 !
+
+i'll change
+
+> --
+> ~Vinod
+
+regards Frank
 
 _______________________________________________
 Linux-rockchip mailing list
