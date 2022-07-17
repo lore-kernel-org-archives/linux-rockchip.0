@@ -4,75 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BA47C43334
-	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Jul 2022 18:05:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90E63C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Jul 2022 19:29:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=glafE6VqCGj3rq9/e/DYEVpCZj0LD8upgZ3OXQ2epsA=; b=uJOmv5ZhFt8xP5
-	KcemN1l0fcYmEdcQf5RVr2HE4kiok59/UjRhRGKxs1Z/vGRrDRWwN1hI4WoGdTbUyNLFDQ2+8Ef3U
-	9OvAClBUYHZKdvHHt+Rr6jqNeKIxoeXkcwtCPpEXj2trSXLBFv2sIl15n5fiXAH8UBgK0JogddrTh
-	AUMh1LzCYo+eLh4Zh6EVt8U3i/4v1QaGjpzr9LxMwfr0QGkeNxoMbpR9kgTtApUa/p3yLFnZ8sD69
-	b+bJj0GX0pRqtoix3JXXFk4X0l7ujObJfZ5CLDo/OJqkWMqoeVjMcrs0zIxGnODIoO9JYezRnYe77
-	qQhvIOUMCmdtyN1GiOsA==;
+	List-Archive:List-Unsubscribe:List-Id:To:Cc:Date:Message-Id:Subject:
+	Mime-Version:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=/K0STObiIfCdnqYA3pVIltFyBskKw0ctpGzldPPkkMQ=; b=HC+
+	XLiaHmu2AuDjzNR9TfbPpnZeOTrb0DecrmLkr8hUY2Uvss4kYWOeFdegLOKfAEVyg9Mtbm9fU+Dw/
+	maBpVdodEZNmfMsU+WpLAEMAka/tbc0f8FWiPJyAf8HIBh0bYu05y50jFkzidpk9g4ah9W0fmHRz0
+	0AQo87qv1zHxmsUbUIwAwjA3ZaCvjbVqvlJ3BPNtMdI8Tzd/ja50vCzjNfuimQ01nFU0H6nnD/6fq
+	sQr5aLJ3hifJp1v/GdFBTkxEaHmYurANDwe1q5PPQDe7ItO8kXNumFjhaixplTwL8au5TK076XJ5I
+	2ipEPQ/b2o9CEiYDy1Wgz8qyhDRgPug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oD8dL-0080E4-0L; Sun, 17 Jul 2022 18:04:47 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1oD9wz-008FEd-Cv; Sun, 17 Jul 2022 19:29:09 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oD8dI-0080CK-Ft
-	for linux-rockchip@lists.infradead.org; Sun, 17 Jul 2022 18:04:45 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id l23so17674708ejr.5
-        for <linux-rockchip@lists.infradead.org>; Sun, 17 Jul 2022 11:04:42 -0700 (PDT)
+	id 1oD9ww-008FDC-5D
+	for linux-rockchip@lists.infradead.org; Sun, 17 Jul 2022 19:29:07 +0000
+Received: by mail-ed1-x535.google.com with SMTP id t3so12812564edd.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 17 Jul 2022 12:29:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=ud+TiF4m7po1mW1dB/x6b4A3m6M8l0fbva/VpZQi14c=;
-        b=FxNWquaV+Q2u3r53vP3PvbW3SUDtJj1N3as3fbawmSweX+S4JIs9G56MhAXbCdFtPS
-         i89HzEmOa702OM5Swsr7Rmx3JOddculd2jzyQsR+O4C30lnTHQS6QOWgcA3Btb7rkmb7
-         C5kTCpHyiHF8W7L/o6KNDq09I24aUv9t/6GDrpC/G3vTkMGeWLvOQU/0SLRXEQE1FTck
-         p5OLjv1nMlpV8fa1X6KzNDyokIU/IY+vKJxhmMZLmRaivx1REmESBnjBMfPIl20FjuIM
-         oaB4X5NWbUzFkb3clks0JSNgw4c11OkDJ20D5JEWHOKXXUFV1YQj/9IzRuKtXRY9UH2w
-         om9g==
+        d=kohlschutter-com.20210112.gappssmtp.com; s=20210112;
+        h=from:content-transfer-encoding:mime-version:subject:message-id:date
+         :cc:to;
+        bh=xXctcMyuUmlawA3nFYo56xgNoTbeCn1PRUaqrpg5K6E=;
+        b=ZpSFJBjLczjzFvqWi4xf6rD2u41QbN6ixUWvq4q5pvigNainMwifZSgf75VyxrlPAf
+         sQgXbaMvxeNjQaJWdiMJetC17XtmkeuTf2mKXLFKa54rSGwY0+8uff0tn4nHEilysL6f
+         VyjRfO2Sx7diYK5Ps4+ch4/83peRJzMKXy5zHVWFjT0TdnRigeEPGU1KZHm+NxG32ucC
+         zxeCoo0+GSlrw+DvexE3T3InHv6l7W9b/5NnAS7Xa4nfY1YsLILXclbpHRVRm29kA72w
+         OOdFi7tuHFTa9us2m+oJV93aABLzwTRNXNkjn2QpYiJ3uQhTDysv0L1nS04zf+3ZFJC+
+         aPOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=ud+TiF4m7po1mW1dB/x6b4A3m6M8l0fbva/VpZQi14c=;
-        b=xk2GeekYBnIJCmgp3NgOTdVHI7H7D+S2BdyRTdz51CQ54fq9gvPsTI1lwqnxiOLZbo
-         VBjEe4y+lqKK80qMelNE03gDnRNNgce4yGo4jRzUfwAMFg+3KMdYu1cxTvKD7pvZ+6vv
-         vTEg+B1btd8TTSckqxpUXXnzwI6CcgIdWOYzrJ2b4LgbwZj0xlksPYwc61HrE/g8uJ5z
-         HvSAs1vUt5YwZ1oVAZLSgRTtMbp891Ss/rYU4dxhetj7aOREM8lMapKFMkhpND38Qqpb
-         ou9aa0EbBY+4LcqvlvLFq7m3VZmm/vrf+H6GO2QFDy4sb/ZFLSdEsQRbRCgW8tGCv1aO
-         0gnA==
-X-Gm-Message-State: AJIora9OXyr9WxXLdo+KLH04zYhrZN04LF1/sz29DWhpVY0XIsR+bHwF
-	aUjcJjZ5m+F3Yv1fw3f5T6uSfFOsVYsJRGj7dN0=
-X-Google-Smtp-Source: AGRyM1sggsKtIoIR3xT/PdFqUXyUnRgGplbzzeIJ9XlVHsoJIJaQT6uK7ehAMmkwjuzx/TSF4Fr2QNAkBhqLkbPBmU0=
-X-Received: by 2002:a17:907:3f89:b0:72b:60ee:29cf with SMTP id
- hr9-20020a1709073f8900b0072b60ee29cfmr22624401ejc.316.1658081081230; Sun, 17
- Jul 2022 11:04:41 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220630230713.10580-1-laurent.pinchart@ideasonboard.com>
- <20220630230713.10580-49-laurent.pinchart@ideasonboard.com>
- <CAHCN7xKVzrExUvK+fEKiTXV71J5K-VOcqxVFrew0f2dN5mjAOQ@mail.gmail.com>
- <YtQjN6/hQpJautjv@pendragon.ideasonboard.com> <YtQpXg87MorpTnRd@pendragon.ideasonboard.com>
-In-Reply-To: <YtQpXg87MorpTnRd@pendragon.ideasonboard.com>
-From: Adam Ford <aford173@gmail.com>
-Date: Sun, 17 Jul 2022 13:04:30 -0500
-Message-ID: <CAHCN7xJn8MENsPVxW6qUGBRJHx4=ZR6exJWVGWVFzHdxz-1jKg@mail.gmail.com>
-Subject: Re: [PATCH v2 48/55] media: rkisp1: Add match data for i.MX8MP ISP
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-media <linux-media@vger.kernel.org>, 
-	"open list:HANTRO VPU CODEC DRIVER" <linux-rockchip@lists.infradead.org>, Dafna Hirschfeld <dafna@fastmail.com>, 
-	Heiko Stuebner <heiko@sntech.de>, Helen Koike <helen.koike@collabora.com>, 
-	Paul Elder <paul.elder@ideasonboard.com>
+        h=x-gm-message-state:from:content-transfer-encoding:mime-version
+         :subject:message-id:date:cc:to;
+        bh=xXctcMyuUmlawA3nFYo56xgNoTbeCn1PRUaqrpg5K6E=;
+        b=o3CDlJEK1PuUbqkK+DGzuyqWpZzQP/9RoAZtTD6RyODqBN3+nVcjnFoedsgxYkBSi7
+         RyNIi4+6s1n9c7VPF6/cwIh5ed4L+3v9E6fJf+wcGn3bE9A8wLGVMhVBHcT3yRN9rgw/
+         ji3e89zQrRxptJUtFUB3XVcapMUUo3jp3+NkLiVuqEYMyPrBAP3T6XkQ8zwWSZjyq5cN
+         2JxsOAR2rq4imqyZyDQ8x6dqxxjj0695nLTpusffEh+A9xlYUkYqlx3Tj9usPvDoI7Xg
+         e6cpcmG+CO7nuN8fwEId1/UkrNYPNzBN0fauLU9jSQd9Lmo42aojoWGyqXc2wtiuwAws
+         RUtw==
+X-Gm-Message-State: AJIora85RB8C0OLSxyyxq6rTV+onyk48vdziFYJfvk34ai5xZmUtf29j
+	QDGufovVG5HiltjSgd7K80S+LA==
+X-Google-Smtp-Source: AGRyM1vFPngnTHOdEyGGe9wlwswHpg+d4JNRLJTxJLUUakuz8oH/gNyvv0Ar9Ezb/ipbBjAMqefHVA==
+X-Received: by 2002:aa7:cac7:0:b0:43a:c5ba:24a6 with SMTP id l7-20020aa7cac7000000b0043ac5ba24a6mr32372348edt.84.1658086144315;
+        Sun, 17 Jul 2022 12:29:04 -0700 (PDT)
+Received: from smtpclient.apple (ip5b434222.dynamic.kabel-deutschland.de. [91.67.66.34])
+        by smtp.gmail.com with ESMTPSA id lc10-20020a170906f90a00b0070efa110afcsm4676844ejb.83.2022.07.17.12.29.02
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 17 Jul 2022 12:29:03 -0700 (PDT)
+From: =?utf-8?Q?Christian_Kohlsch=C3=BCtter?= <christian@kohlschutter.com>
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.100.31\))
+Subject: [PATCH] arm64: dts: rockchip: rk3399-nanopi4: Fix voltage regulator
+ config
+Message-Id: <963AF33B-54B7-4172-92D1-E2898E256A7E@kohlschutter.com>
+Date: Sun, 17 Jul 2022 21:29:01 +0200
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>
+To: Robin Murphy <robin.murphy@arm.com>,
+ wens@kernel.org,
+ =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Markus Reichl <m.reichl@fivetechno.de>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Linux MMC List <linux-mmc@vger.kernel.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>
+X-Mailer: Apple Mail (2.3696.100.31)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220717_110444_595697_A00A9C37 
-X-CRM114-Status: GOOD (  33.20  )
+X-CRM114-CacheID: sfid-20220717_122906_285071_D4507678 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,117 +89,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 17, 2022 at 10:23 AM Laurent Pinchart
-<laurent.pinchart@ideasonboard.com> wrote:
->
-> Hi Adam,
->
-> On Sun, Jul 17, 2022 at 05:56:56PM +0300, Laurent Pinchart wrote:
-> > On Fri, Jul 15, 2022 at 06:56:57AM -0500, Adam Ford wrote:
-> > > On Thu, Jun 30, 2022 at 6:27 PM Laurent Pinchart wrote:
-> > > >
-> > > > From: Paul Elder <paul.elder@ideasonboard.com>
-> > > >
-> > > > Add match data to the rkisp1 driver to match the i.MX8MP ISP.
-> > >
-> > > I am testing this series on an i.MX8MP with two Sony IMX219 cameras in
-> > > 4-lane mode.
-> > > From what I can tell, the ISP_1 doesn't enumerate if ISP_0 is already
-> > > enumerated.  My guess is that the name of the ISP is hard-coded so the
-> > > second instance isn't able to load because the names conflict.  I
-> > > don't see any errors, so it's just a guess.
-> >
-> > I'll have a look.
-Thanks!
->
-> Both ISP instances probe successfully for me, with two different sensors
-> though (IMX327 and IMX296). Can you share more information about your
-> issue ?
-
-I'll double check the repo I am using as my starting base when I get
-back into the office tomorrow.  I'll rebase my device tree changes if
-I don't have the latest and let you know what I am seeing.
-
-adam
->
-> > > > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > > > ---
-> > > >  .../platform/rockchip/rkisp1/rkisp1-dev.c     | 22 +++++++++++++++++++
-> > > >  include/uapi/linux/rkisp1-config.h            |  3 +++
-> > > >  2 files changed, 25 insertions(+)
-> > > >
-> > > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > > > index f2475c6235ea..a41f89807dd7 100644
-> > > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> > > > @@ -496,6 +496,24 @@ static const struct rkisp1_info rk3399_isp_info = {
-> > > >         .features = RKISP1_FEATURE_MIPI_CSI2,
-> > > >  };
-> > > >
-> > > > +static const char * const imx8mp_isp_clks[] = {
-> > > > +       "isp",
-> > > > +       "hclk",
-> > > > +       "aclk",
-> > > > +};
-> > > > +
-> > > > +static const struct rkisp1_isr_data imx8mp_isp_isrs[] = {
-> > > > +       { NULL, rkisp1_isr },
-> > > > +};
-> > > > +
-> > > > +static const struct rkisp1_info imx8mp_isp_info = {
-> > > > +       .clks = imx8mp_isp_clks,
-> > > > +       .clk_size = ARRAY_SIZE(imx8mp_isp_clks),
-> > > > +       .isrs = imx8mp_isp_isrs,
-> > > > +       .isr_size = ARRAY_SIZE(imx8mp_isp_isrs),
-> > > > +       .isp_ver = IMX8MP_V10,
-> > > > +};
-> > > > +
-> > > >  static const struct of_device_id rkisp1_of_match[] = {
-> > > >         {
-> > > >                 .compatible = "rockchip,px30-cif-isp",
-> > > > @@ -505,6 +523,10 @@ static const struct of_device_id rkisp1_of_match[] = {
-> > > >                 .compatible = "rockchip,rk3399-cif-isp",
-> > > >                 .data = &rk3399_isp_info,
-> > > >         },
-> > > > +       {
-> > > > +               .compatible = "fsl,imx8mp-isp",
-> > > > +               .data = &imx8mp_isp_info,
-> > > > +       },
-> > > >         {},
-> > > >  };
-> > > >  MODULE_DEVICE_TABLE(of, rkisp1_of_match);
-> > > > diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-> > > > index 583ca0d9a79d..40677d47825c 100644
-> > > > --- a/include/uapi/linux/rkisp1-config.h
-> > > > +++ b/include/uapi/linux/rkisp1-config.h
-> > > > @@ -140,12 +140,15 @@
-> > > >   * @RKISP1_V11: declared in the original vendor code, but not used
-> > > >   * @RKISP1_V12: used at least in rk3326 and px30
-> > > >   * @RKISP1_V13: used at least in rk1808
-> > > > + * @IMX8MP_V10: used in at least imx8mp
-> > > >   */
-> > > >  enum rkisp1_cif_isp_version {
-> > > >         RKISP1_V10 = 10,
-> > > >         RKISP1_V11,
-> > > >         RKISP1_V12,
-> > > >         RKISP1_V13,
-> > > > +       /* TODO Choose a better version for this */
-> > > > +       IMX8MP_V10,
-> > > >  };
-> > > >
-> > > >  enum rkisp1_cif_isp_histogram_mode {
->
-> --
-> Regards,
->
-> Laurent Pinchart
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QSBzZXJpZXMgb2YgaXNzdWVzIGV4aXN0IGFyb3VuZCB0aGUgInZjYzN2MF9zZCIgdm9sdGFnZSBy
+ZWd1bGF0b3IgdGhhdAptYWRlIGl0IG5lY2Vzc2FyeSB0byBtYXJrIGl0ICJhbHdheXMtb24iLgoK
+V2l0aCB0aGUgcGF0Y2ggInJlZ3VsYXRvcjogY29yZTogUmVzb2x2ZSBzdXBwbHkgbmFtZSBlYXJs
+aWVyIHRvIHByZXZlbnQKZG91YmxlLWluaXQiLCB0aGlzIG9wdGlvbiBpcyBubyBsb25nZXIgbmVj
+ZXNzYXJ5LgoKUmVtb3ZpbmcgdGhpcyBvcHRpb24gbm90IG9ubHkgcHJldmVudHMgYSBoYW5nIHdo
+ZW4gcmVib290aW5nIE5hbm9waSBSNFMsCml0IGFsc28gZW5zdXJlcyB0aGF0IGJvb3Rsb2FkZXJz
+IGxpa2UgdS1ib290IGNhbiBib290IGZyb20gYW4gU0QgY2FyZApyaWdodCBhd2F5LCB3aXRob3V0
+IG91dC1vZi10cmVlIHBhdGNoZXMgdGhhdCByZS1pbml0aWFsaXplIHZvbHRhZ2UgbGV2ZWxzLgoK
+U2lnbmVkLW9mZi1ieTogQ2hyaXN0aWFuIEtvaGxzY2jDvHR0ZXIgPGNocmlzdGlhbkBrb2hsc2No
+dXR0ZXIuY29tPgotLS0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW5hbm9w
+aTQuZHRzaSB8IDEgLQogMSBmaWxlIGNoYW5nZWQsIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQg
+YS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1uYW5vcGk0LmR0c2kgYi9hcmNo
+L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1uYW5vcGk0LmR0c2kKaW5kZXggOGMwZmY2
+Yzk2ZTAzLi41NWI5M2VhYzJmOTkgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcmszMzk5LW5hbm9waTQuZHRzaQorKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
+aGlwL3JrMzM5OS1uYW5vcGk0LmR0c2kKQEAgLTcwLDcgKzcwLDYgQEAgdmNjM3YwX3NkOiB2Y2Mz
+djAtc2QgewogCQlncGlvID0gPCZncGlvMCBSS19QQTEgR1BJT19BQ1RJVkVfSElHSD47CiAJCXBp
+bmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7CiAJCXBpbmN0cmwtMCA9IDwmc2RtbWMwX3B3cl9oPjsK
+LQkJcmVndWxhdG9yLWFsd2F5cy1vbjsKIAkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MzAw
+MDAwMD47CiAJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMwMDAwMDA+OwogCQlyZWd1bGF0
+b3ItbmFtZSA9ICJ2Y2MzdjBfc2QiOwotLSAKMi4zNi4xCgoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
