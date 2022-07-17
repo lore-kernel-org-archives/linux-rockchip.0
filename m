@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4A55C433EF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Jul 2022 19:32:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F38F0C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 17 Jul 2022 23:04:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LqLyk9u2Az4WzXxUGgYjwDGCDGROydLaZ8dJoYuaxws=; b=QbU5JjKKdsZilA
-	Tion0OX1dO7OsbbQXdgNhQGqLmbxjzVrPxcm2bm8POICCmLaWpFIYlZWM0smrrTsDfQOu7LHZYZDC
-	ZeyXSVh8eq4JDbQzVgQvCcMcT7pbU2K91qiBPyQH1uVWbkXP8RZPj8BOZ10uTAb4rMHIOtt46TjRV
-	KDXLU0twbq3VgEytFbgXTMHCFCxkZfY3mwkWnZxJx9EjXhA1f+kw1ihnw1FZtq4igE9OIeti9xON7
-	xQHpiTnq7Dv+I2icc0usRP7cVm8UpG/MHIIAUGkS9q8CpI9vHEFaSQZHYPr5W9HxFMTgzv8kXUBIZ
-	UUev/7uAylagi/9u+hEw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3MGd2ACmp8J0e5U9pZA+MOoEse6qU6tKD7N1Mzccoak=; b=orKvwG+VfWjY+Tn/DwCdJ2HVz6
+	KQqvcCMudj9+OXoNmX3ps33gS+4xPO7uRMuTZCDX3McnlcN5fcsZpXmr0aOStX/p1Y/IbZaShLf2C
+	yaoUJOOr7xJaV+knpJnqd/eIHFkUlXDYRZQBQ8M0tkFn3U1HkBX+jL7KELFlZZLoB3sfwW0XeW39f
+	ViYpZqjQ2ptC44YNcLxDll1yU7AsfQFKW3IpCLpvPmk/GlcFYgQgDuaE8bHTjUFuxeZt5nMARVhcp
+	rjZvhVECTpC5xyEcF79uz41Wj0hk9XPKga1E4HYCZ4n/YYeCWDv9alhTAStAwSuPvV00jhpHPZb5v
+	jpvjUqMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDA0K-008GBB-DJ; Sun, 17 Jul 2022 19:32:36 +0000
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+	id 1oDDJE-009AFJ-Ml; Sun, 17 Jul 2022 23:04:20 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDA0A-008G7j-J5
-	for linux-rockchip@lists.infradead.org; Sun, 17 Jul 2022 19:32:27 +0000
-Received: by mail-ed1-x533.google.com with SMTP id t3so12819344edd.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 17 Jul 2022 12:32:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=kohlschutter-com.20210112.gappssmtp.com; s=20210112;
-        h=mime-version:subject:from:in-reply-to:date:cc
-         :content-transfer-encoding:message-id:references:to;
-        bh=bzc8+SMTjAuL3hWfjVp5UNr8nKbzbn5xX+8BRCLvn/4=;
-        b=SOKAhVvf6ZDCy89DcFq/ROSdecedn2B5HAoiH+Zlxisou3tv6x1m9OCk4lR2Ptu4YX
-         7XT17iXG3fF0xyeDQcMEkQYDfMgaehCg8Y8j85DeA0HNp+6XWNKgPWafMZvkscRje2cS
-         WNOhnoLJytL/UErwoiQPnjDRuwCKx3/HV5cJT6GGUmBiLgrSMCehrIgNoUvPOyqMDJQT
-         /ahT+Hx6xANcVl6af018LBUYIUoh2cVbKE4aOHvg3cdTuFyWK0qNXj9LEY21RSUjgfaC
-         kxli4VW6VRzAPCGOVNGwGvnq/lWDHSS8ISlmzEWQBmR9b0kDCqUEq3d9pAGpAhDM17N1
-         vNgg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
-         :content-transfer-encoding:message-id:references:to;
-        bh=bzc8+SMTjAuL3hWfjVp5UNr8nKbzbn5xX+8BRCLvn/4=;
-        b=3hFPI2sh12E9SnrCfXtB1J0+wxSGgyvkuRWA/OVYERebZ7tZBvc99hZr1G2HriVRYa
-         3mNEN/DhZhJ3uNN7RvN15Y4DWusjuL5PL01ImfOE2kGv88bndtszMFspAvAmqOMFh+T+
-         SzIsYEYge8eG6EngfS1p/mriZjLih8FgyjhBj8gCQzyL6k7/XuuGdKkoFssW1Ci2T6M7
-         xRK2zeja3AcPFezR9giFIRiK/flM3taU+itq4/j6nJAiUc25m4w71UqLgkz+tpjqWH4x
-         CuwufxW4aaKKRGaufDt3LS5xOzR9b8AQtBmZ3J7tU+0FVt894RZb4ApGoq25t8xfBclW
-         9tyA==
-X-Gm-Message-State: AJIora+70+iwUw92W/y2d/xrcLfdHdphvv3vgAr15fjfMqQOzATDVU7q
-	SgaeZJXdMkCs+9uHgBP3LgYYSA==
-X-Google-Smtp-Source: AGRyM1uF29btnV+ubkEnBmWrWy6/jD2F1VNvGsr1evGz6n+Z/04BFjDfx0RbVWmdkajKBB5gjDa+fA==
-X-Received: by 2002:a05:6402:4016:b0:43a:f310:9522 with SMTP id d22-20020a056402401600b0043af3109522mr32447659eda.200.1658086344896;
-        Sun, 17 Jul 2022 12:32:24 -0700 (PDT)
-Received: from smtpclient.apple (ip5b434222.dynamic.kabel-deutschland.de. [91.67.66.34])
-        by smtp.gmail.com with ESMTPSA id p13-20020a05640210cd00b00435a62d35b5sm7177568edu.45.2022.07.17.12.32.23
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 17 Jul 2022 12:32:24 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.100.31\))
-Subject: Re: [PATCH] arm64: dts: rockchip: rk3399-nanopi4: Fix voltage
- regulator config
-From: =?utf-8?Q?Christian_Kohlsch=C3=BCtter?= <christian@kohlschutter.com>
-In-Reply-To: <963AF33B-54B7-4172-92D1-E2898E256A7E@kohlschutter.com>
-Date: Sun, 17 Jul 2022 21:32:23 +0200
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>
-Message-Id: <750501EB-8A79-459B-89B8-E9064632A68B@kohlschutter.com>
-References: <963AF33B-54B7-4172-92D1-E2898E256A7E@kohlschutter.com>
-To: Robin Murphy <robin.murphy@arm.com>,
- wens@kernel.org,
- =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Markus Reichl <m.reichl@fivetechno.de>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Linux MMC List <linux-mmc@vger.kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>
-X-Mailer: Apple Mail (2.3696.100.31)
+	id 1oDDJ2-009AAX-Pp; Sun, 17 Jul 2022 23:04:10 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id A3EC3B80EB7;
+	Sun, 17 Jul 2022 23:04:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C09EC341C0;
+	Sun, 17 Jul 2022 23:04:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1658099043;
+	bh=IPeBIHmETf2O6wdyfCK0PR/zEOWzTcVCzm7iP2DJHDU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RgQq0B6e+i5l9xDOvXFdov0SJX+cZ0qaW54Lug3UowEykKCTpf0es9VM+tS4CCAnF
+	 IrDb1y+v1xkrc2+PnqpVOG2BiaTC5AZF6C7HZbin9M/fOttDIW/SKcEJOnearBm0E4
+	 W+F5k/2NR24Ac454Qlmzojs0ohoF2FHzIYm3MW0UjKQeQWeEFnMYrvP424BXeJG4Xl
+	 omuV/ZWdxgZxNM6fJlvQTom2tmNIuTTLRxhdxw4WTirATWgHQPF52iFOrfh08ddE/O
+	 farPpHz/MVdnbi8+mHXmvCCVnNwNE2Tw1fNcwRmD4bXITd8qlkeItkN5g3k35ST3x6
+	 viaQ2ogp096vg==
+Date: Sun, 17 Jul 2022 19:04:02 -0400
+From: Sasha Levin <sashal@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-kernel@vger.kernel.org, stable@vger.kernel.org,
+	Judy Hsiao <judyhsiao@chromium.org>,
+	Mark Brown <broonie@kernel.org>, lgirdwood@gmail.com,
+	perex@perex.cz, tiwai@suse.com, heiko@sntech.de,
+	alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH AUTOSEL 5.15 12/28] ASoC: rockchip: i2s: switch BCLK to
+ GPIO
+Message-ID: <YtSVYq/47XmF6V0b@sashalap>
+References: <20220714042429.281816-1-sashal@kernel.org>
+ <20220714042429.281816-12-sashal@kernel.org>
+ <CAGXv+5Fnj4-bHksi5ymy6LwOrmv_9yQ1aBSOpM4wGbGy2QGZUQ@mail.gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAGXv+5Fnj4-bHksi5ymy6LwOrmv_9yQ1aBSOpM4wGbGy2QGZUQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220717_123226_640138_50AC2A03 
-X-CRM114-Status: GOOD (  17.42  )
+X-CRM114-CacheID: sfid-20220717_160409_003388_4E8C72E4 
+X-CRM114-Status: GOOD (  12.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,40 +73,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhpcyBwYXRjaCBvYnZpb3VzbHkgcmVxdWlyZXMgInJlZ3VsYXRvcjogY29yZTogUmVzb2x2ZSBz
-dXBwbHkgbmFtZSBlYXJsaWVyIHRvIHByZXZlbnQgZG91YmxlLWluaXQiIGFuZCBvYnNvbGV0ZXMg
-IltQQVRDSCB2NV0gYXJtNjQ6IGR0czogcm9ja2NoaXA6IEZpeCBTRCBjYXJkIGluaXQgb24gcmsz
-Mzk5LW5hbm9waTQiLgpUaGUgbGF0dGVyIHBhdGNoIG1heSBzdGlsbCBiZSB1c2VmdWwgZm9yIGV4
-aXN0aW5nIGtlcm5lbHMgd2hlcmUgb25lIGNhbiByZWNvbXBpbGUgdGhlIGRldmljZSB0cmVlIHNl
-cGFyYXRlbHkuCgo+IEFtIDE3LjA3LjIwMjIgdW0gMjE6Mjkgc2NocmllYiBDaHJpc3RpYW4gS29o
-bHNjaMO8dHRlciA8Y2hyaXN0aWFuQGtvaGxzY2h1dHRlci5jb20+Ogo+IAo+IEEgc2VyaWVzIG9m
-IGlzc3VlcyBleGlzdCBhcm91bmQgdGhlICJ2Y2MzdjBfc2QiIHZvbHRhZ2UgcmVndWxhdG9yIHRo
-YXQKPiBtYWRlIGl0IG5lY2Vzc2FyeSB0byBtYXJrIGl0ICJhbHdheXMtb24iLgo+IAo+IFdpdGgg
-dGhlIHBhdGNoICJyZWd1bGF0b3I6IGNvcmU6IFJlc29sdmUgc3VwcGx5IG5hbWUgZWFybGllciB0
-byBwcmV2ZW50Cj4gZG91YmxlLWluaXQiLCB0aGlzIG9wdGlvbiBpcyBubyBsb25nZXIgbmVjZXNz
-YXJ5Lgo+IAo+IFJlbW92aW5nIHRoaXMgb3B0aW9uIG5vdCBvbmx5IHByZXZlbnRzIGEgaGFuZyB3
-aGVuIHJlYm9vdGluZyBOYW5vcGkgUjRTLAo+IGl0IGFsc28gZW5zdXJlcyB0aGF0IGJvb3Rsb2Fk
-ZXJzIGxpa2UgdS1ib290IGNhbiBib290IGZyb20gYW4gU0QgY2FyZAo+IHJpZ2h0IGF3YXksIHdp
-dGhvdXQgb3V0LW9mLXRyZWUgcGF0Y2hlcyB0aGF0IHJlLWluaXRpYWxpemUgdm9sdGFnZSBsZXZl
-bHMuCj4gCj4gU2lnbmVkLW9mZi1ieTogQ2hyaXN0aWFuIEtvaGxzY2jDvHR0ZXIgPGNocmlzdGlh
-bkBrb2hsc2NodXR0ZXIuY29tPgo+IC0tLQo+IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAv
-cmszMzk5LW5hbm9waTQuZHRzaSB8IDEgLQo+IDEgZmlsZSBjaGFuZ2VkLCAxIGRlbGV0aW9uKC0p
-Cj4gCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW5h
-bm9waTQuZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW5hbm9waTQu
-ZHRzaQo+IGluZGV4IDhjMGZmNmM5NmUwMy4uNTViOTNlYWMyZjk5IDEwMDY0NAo+IC0tLSBhL2Fy
-Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW5hbm9waTQuZHRzaQo+ICsrKyBiL2Fy
-Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW5hbm9waTQuZHRzaQo+IEBAIC03MCw3
-ICs3MCw2IEBAIHZjYzN2MF9zZDogdmNjM3YwLXNkIHsKPiAJCWdwaW8gPSA8JmdwaW8wIFJLX1BB
-MSBHUElPX0FDVElWRV9ISUdIPjsKPiAJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gCQlw
-aW5jdHJsLTAgPSA8JnNkbW1jMF9wd3JfaD47Cj4gLQkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPiAJ
-CXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDMwMDAwMDA+Owo+IAkJcmVndWxhdG9yLW1heC1t
-aWNyb3ZvbHQgPSA8MzAwMDAwMD47Cj4gCQlyZWd1bGF0b3ItbmFtZSA9ICJ2Y2MzdjBfc2QiOwo+
-IC0tIAo+IDIuMzYuMQo+IAo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+On Thu, Jul 14, 2022 at 12:29:27PM +0800, Chen-Yu Tsai wrote:
+>Hi,
+>
+>On Thu, Jul 14, 2022 at 12:25 PM Sasha Levin <sashal@kernel.org> wrote:
+>>
+>> From: Judy Hsiao <judyhsiao@chromium.org>
+>>
+>> [ Upstream commit a5450aba737dae3ee1a64b282e609d8375d6700c ]
+>>
+>> We discoverd that the state of BCLK on, LRCLK off and SD_MODE on
+>> may cause the speaker melting issue. Removing LRCLK while BCLK
+>> is present can cause unexpected output behavior including a large
+>> DC output voltage as described in the Max98357a datasheet.
+>>
+>> In order to:
+>>   1. prevent BCLK from turning on by other component.
+>>   2. keep BCLK and LRCLK being present at the same time
+>>
+>> This patch switches BCLK to GPIO func before LRCLK output, and
+>> configures BCLK func back during LRCLK is output.
+>>
+>> Without this fix, BCLK is turned on 11 ms earlier than LRCK by the
+>> da7219.
+>> With this fix, BCLK is turned on only 0.4 ms earlier than LRCK by
+>> the rockchip codec.
+>>
+>> Signed-off-by: Judy Hsiao <judyhsiao@chromium.org>
+>> Link: https://lore.kernel.org/r/20220615045643.3137287-1-judyhsiao@chromium.org
+>> Signed-off-by: Mark Brown <broonie@kernel.org>
+>> Signed-off-by: Sasha Levin <sashal@kernel.org>
+>
+>Please drop this one from all stable branches. It caused more problems
+>than it fixed and will be reverted for 5.19 [1]. The same patch, along
+>with a proper follow-up fix, are queued up for 5.20.
+
+Now dropped, thanks!
+
+-- 
+Thanks,
+Sasha
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
