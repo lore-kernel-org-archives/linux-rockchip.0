@@ -4,76 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60E93C43334
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jul 2022 06:44:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 776B7C43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jul 2022 08:40:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dhCMewSN9Gii5mDKmn+IWHBgMdIFAk0sMgN1kcNWW/s=; b=xtyCz2NAgRp64s
-	Km6m0QBK4efApmBl083JXLo69yFoKxrRPZ+45W0SyvQNDkf7GZKAWEf6MHtL+rdQFNGkX/hYEFFqL
-	Gq8Hh4koPTlwqLZ5WQPD2rPjfLMgVMa6tWKNp68jfaPaE5E3+fUig6EctBXBcWgA7uvUnvl8Wq1bi
-	+wqSLO4iHZWrT2NFs2dYE6c8zLz1un0gPDariVx9ZGYUCoLjU3DYWLXAq02+zPdJSzxb/xBCAC0ck
-	soQ6AA63lQ0719JhR8VrzTDBnf3QsQACRUjy4awgh7FKOHmwq/DLtFk8gaXg66bTnq48e72UOrLVA
-	TE1HQaXAPpMYXyVKXQ3g==;
+	List-Owner; bh=Rr+xOZ8f5nqCGJQ/wt3N8F/PLP5X1lUp6yu0YD6vRGU=; b=yEcEUX+oi1FWk6
+	MXr1DmtqwUOpcbfE3ZJ+Ypt4F0lXaJTWG0ycNN6QJD1fUR7x44J6IcTxcDebZMZ9ff5ugr18eQia6
+	SmH+DztUayLRSqXzYkpsw/RymqnF301mr5jl5KKjP4dkqYvEcF8nAbf8H37K2cO0z8hn0+dA8JTq4
+	YguC5ec4FUERe0bd2LV8ZePxoA1Xnk2oAlmOzkTgjsRg9nmshOokizJLiq6DwJxNnauXCYw5i0bBr
+	U/lgbDNasznOww1aI1hDhH6bJRL8jpkd0D1YKIYZDIOnkPz6Gr2vpxmd0uyqLKsb4W0gx/I3HpQwl
+	EhdldNzefFy7jVxDxqhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDKUO-00BHWT-6H; Mon, 18 Jul 2022 06:44:20 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1oDMIx-00BoEN-SK; Mon, 18 Jul 2022 08:40:39 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDKUD-00BHTb-Fj; Mon, 18 Jul 2022 06:44:10 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id x91so13953364ede.1;
-        Sun, 17 Jul 2022 23:44:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=MU6KvRw9oUiosk9iNJZEva46TvY9a6ly1/UmmRb7+pc=;
-        b=eE+WuVP5QBk/uvd2VNurfHx4gbXUdV/PTPdGQJtEzGqYqlWTmNjwAvbQHQBqbypXUC
-         JrCduep2LlxYAaJL8H3nu4+Lqq5dausufRlrhr/QnNxMjtKTdQfzrSpYN00EdEoNFm3p
-         xCG57Zs8AWOd7yWD6cwdaLn4P+GMg4NegGcz+SV+ZhbsFOxXeAwyWVIBQa41wWlIkOyv
-         ouQDDM019CzszLh+NuOTwnUdiIU4A3DWWlPfGJw80hNtgLaS8ZrLgNEecMHHZDak28j0
-         Lz8j+xHyZou5CHaM/NxxBiTLRdxyFjMjxS9B0JbMQcJE9zgaq7IT3dG6kg9+UFfkN8du
-         npiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=MU6KvRw9oUiosk9iNJZEva46TvY9a6ly1/UmmRb7+pc=;
-        b=6oPNauk+fcfZhfoXpQN5FIKA7ekMwTCfTXkK86dbOMsuKZppgu0SqS36F3DQLJphzG
-         aG1pByUyOAcaB3MCcKNLUInf95aKREHMkjTnUi6BofB2lRs6AbC0WG+sz1v89TBVHb2T
-         /1sj19NcxO0LskFUgAv6BgkxHtHx9lF3K9uDbOxtR8v7rzFR3uZZQO6ZtlMhOYhQCpg6
-         Hz6Wqh6Pitc00p/Ry684Of1//W60YArTgdWFTr2xHM4hrE5XZyyt8MhjM1vwTBOzBlue
-         qPdv5optFWogaywTKSz9wA3v/EMV0fJX7c5LiXIA/+8tsG8t6k0Wwk2kGvTr5GDPOMyC
-         X1rQ==
-X-Gm-Message-State: AJIora/QGWxxhFoInT5mcvsnk9m3UTjq7Q/AoeoIR7HLrPieeiA0tgQe
-	FX7sn7uNpWhqxP8Vr8pV/EPORssyQxQ=
-X-Google-Smtp-Source: AGRyM1tEkwjOYckD6D53C0eCd+2u0KOttLBEhE46rvAyaRUFkVfkcucNiFKo3R9kCMN5l0dmS4QLTw==
-X-Received: by 2002:a05:6402:2895:b0:43b:1e47:c132 with SMTP id eg21-20020a056402289500b0043b1e47c132mr28987655edb.425.1658126646909;
-        Sun, 17 Jul 2022 23:44:06 -0700 (PDT)
-Received: from localhost.localdomain (84-72-105-84.dclient.hispeed.ch. [84.72.105.84])
-        by smtp.gmail.com with ESMTPSA id h10-20020aa7cdca000000b0043ab5939ecbsm8030847edw.59.2022.07.17.23.44.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 17 Jul 2022 23:44:06 -0700 (PDT)
-From: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1oDMIH-00Bnto-31; Mon, 18 Jul 2022 08:39:58 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:4754:89ee:32c6:e620])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 441056601A12;
+	Mon, 18 Jul 2022 09:39:53 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1658133593;
+	bh=VGO6bJB0It56njxoW1ZluHISXuIAwk0hlWOpYr3qvh0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=izorKfV6D59nkihSVVKwQzSDN6Be6j30U2dXb1Obk6eo/wo2kD4uc10x9gpPwKBez
+	 LCuYFa3wmKb1txsaIlMzbu9X3P9OY7ldwE9iQVKcchwLub1flI/Al8DY6J2Wrg+Us6
+	 +dQUhW1zx0fLkn6aDgZ5mr382mVn1Xgi5nfywkJbjYPa0rAnxsbZ+aaZRkrlAPeAeD
+	 oZn3P0PbCbYtXQAjp78j3SZx/b+XceGR9DHogelEN05zCeKLFPjJmhALUHUVRcCgP7
+	 kX+uzdMm4NyQcA1xnayA5AM/u8WgZHUBN2XCWDrYUm/QhPdNYe+s8KMv8hPa38TPyQ
+	 4OLYDHIsr+zyg==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	hverkuil@xs4all.nl,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	mripard@kernel.org,
+	paul.kocialkowski@bootlin.com,
+	wens@csie.org,
+	jernej.skrabec@gmail.com,
+	samuel@sholland.org,
+	nicolas.dufresne@collabora.com,
+	andrzej.p@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Add analog audio output on quartz64-b
-Date: Mon, 18 Jul 2022 08:43:36 +0200
-Message-Id: <20220718064336.822773-1-frattaroli.nicolas@gmail.com>
-X-Mailer: git-send-email 2.37.1
+	linux-staging@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v2 0/7]  Enable 10bits bitstream for Hantro/G2 HEVC codec
+Date: Mon, 18 Jul 2022 10:39:38 +0200
+Message-Id: <20220718083945.200845-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220717_234409_566258_706363A5 
-X-CRM114-Status: GOOD (  13.58  )
+X-CRM114-CacheID: sfid-20220718_013957_289546_23ED1EC9 
+X-CRM114-Status: GOOD (  10.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,83 +86,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds the necessary device tree changes to enable analog
-audio output on the PINE64 Quartz64 Model B with its RK809
-codec.
+Since v1 Jernej patches to support 10 bits decoding have been merged.
+This v2 rebase the previously send patches and add Ezequiel reviewed-by
+tag.
+This series add 10bits support for newer hardware blocks (i.e without
+legacy regs) and for HEVC codec.
 
-The headphone detection pin is left out for now because I couldn't
-get it to work and am not sure if it even matters, but for future
-reference: It's pin GPIO4 RK_PC4, named HP_DET_L_GPIO4_C4 in the
-schematic.
+It based tested on IMX8MQ with HEVC conformance tests.
+The results are that all 10bits bitstreams are OK.
 
-Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
----
- .../boot/dts/rockchip/rk3566-quartz64-b.dts   | 32 ++++++++++++++++++-
- 1 file changed, 31 insertions(+), 1 deletion(-)
+The problematic point raise by this series is the question of where 
+to put HEVC validation function. Does it have to be only hantro_try_ctrl()
+or shall it be done also in .run().
+This series doesn't change that behavoir so I will argue in farvor to
+merge it and to work on this validation time problem when unstaging 
+the driver.
+Hans, Ezequiel may that sound acceptable for you ? 
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-index 02d5f5a8ca03..a53cf81494fd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-@@ -42,6 +42,21 @@ led-user {
- 		};
- 	};
- 
-+	rk809-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,name = "Analog RK809";
-+		simple-audio-card,mclk-fs = <256>;
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&i2s1_8ch>;
-+		};
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&rk809>;
-+		};
-+	};
-+
- 	sdio_pwrseq: sdio-pwrseq {
- 		status = "okay";
- 		compatible = "mmc-pwrseq-simple";
-@@ -177,11 +192,16 @@ rk809: pmic@20 {
- 		reg = <0x20>;
- 		interrupt-parent = <&gpio0>;
- 		interrupts = <RK_PA7 IRQ_TYPE_LEVEL_LOW>;
-+		assigned-clocks = <&cru I2S1_MCLKOUT_TX>;
-+		assigned-clock-parents = <&cru CLK_I2S1_8CH_TX>;
-+		clock-names = "mclk";
-+		clocks = <&cru I2S1_MCLKOUT_TX>;
- 		clock-output-names = "rk808-clkout1", "rk808-clkout2";
- 
- 		pinctrl-names = "default";
--		pinctrl-0 = <&pmic_int>;
-+		pinctrl-0 = <&pmic_int>, <&i2s1m0_mclk>;
- 		rockchip,system-power-controller;
-+		#sound-dai-cells = <0>;
- 		wakeup-source;
- 		#clock-cells = <1>;
- 
-@@ -420,6 +440,16 @@ &i2c5 {
- 	status = "disabled";
- };
- 
-+&i2s1_8ch {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&i2s1m0_sclktx
-+		     &i2s1m0_lrcktx
-+		     &i2s1m0_sdi0
-+		     &i2s1m0_sdo0>;
-+	rockchip,trcm-sync-tx-only;
-+	status = "okay";
-+};
-+
- &mdio1 {
- 	rgmii_phy1: ethernet-phy@1 {
- 		compatible = "ethernet-phy-ieee802.3-c22";
+Regards,
+Benjamin
+
+Benjamin Gaignard (7):
+  media: hantro: Store HEVC bit depth in context
+  media: hantro: HEVC: Fix auxilary buffer size calculation
+  media: hantro: HEVC: Fix chroma offset computation
+  media: hantro: postproc: Configure output regs to support 10bit
+  media: Hantro: HEVC: Allows 10-bit bitstream
+  media: hantro: imx8m: Enable 10bit decoding
+  media: hantro: Allows luma and chroma depth to be different
+
+ .../staging/media/hantro/hantro_g2_hevc_dec.c |  4 +--
+ drivers/staging/media/hantro/hantro_hevc.c    | 13 +++++----
+ .../staging/media/hantro/hantro_postproc.c    |  7 ++++-
+ drivers/staging/media/hantro/imx8m_vpu_hw.c   | 27 +++++++++++++++++++
+ 4 files changed, 40 insertions(+), 11 deletions(-)
+
 -- 
-2.37.1
+2.32.0
 
 
 _______________________________________________
