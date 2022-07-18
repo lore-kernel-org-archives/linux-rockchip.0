@@ -4,55 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E957C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jul 2022 10:13:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9306C43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jul 2022 12:02:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:In-Reply-To:To:References:
+	Date:Subject:Mime-Version:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OS+uVgeriul5f4am8CHlz7OqNzQIDo6ikL6Q601X3pE=; b=Bh920eIRqvqrNn
-	Gp93InIzkDgPL3bABUOJF4rFosaRvdmUNEABf5C5toCKMHLqweGeoBbz/Ix/p+nfhrz8Q443pY77u
-	Y/khiINks9SFQdqFv6qTY1ae8NqEx3MfDkK/QLTMlka8c2EkRp/fOLxc5TtLdFWHbcArKt6C63ToB
-	5gBR2KCzWvhuOntwxZa3Cdcj2KupOgU/HB35h93R4bWLmfPNQqafxmbzj8naMAnbWbSVYSf8l4Vvb
-	SHAvaL9++hBbgJd28lCqctSV8sM3M9p8Ae0/tdQZ2UCOEjjLR6wTvWDZhAGUWNP4N/ffd3Uf7926W
-	1CXfEtMesSgPY3cpTR3A==;
+	List-Owner; bh=6MAAGRwhy7cDhngsSqFxmqs+ReRL+Sde4inDCtomBOg=; b=STjw0NjqO5clEl
+	QfnXUT/lfmjZM9NC3FPtmrCu37TJpHeeYFwvdifVzqJSwvhjFIrRKgDRimphDXigFavOLEeCXNLGc
+	pTd0Cw5zzWfC4xiaoYsIDdXrqmpFkzxfhQMp2GncLwPXBikkHVRrnYGSW8JkZwQIQ9uBLxjZhtkAt
+	RGhOKBjMECUjbLOObg7DVs636G1Fi62o6DQ4ivmVPxcjEiGgLZZediV5ifP5fl5CkvseqZh7avTmX
+	FdTlJcOKN7UsbD6XZfOrjTXFbNnb9+/TEeVQakR+MMPkWf0agPss9FHTTkLgHPhKtO2UarBO3U16j
+	oWhFkjBUg8F2zX61ztFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDNkT-00CNuX-KF; Mon, 18 Jul 2022 10:13:09 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oDPSD-00D43n-2y; Mon, 18 Jul 2022 12:02:25 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDNkH-00CNpQ-Df; Mon, 18 Jul 2022 10:13:00 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 3E184B81082;
-	Mon, 18 Jul 2022 10:12:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD49FC341C0;
-	Mon, 18 Jul 2022 10:12:49 +0000 (UTC)
-Message-ID: <f3162b4e-a2ab-326b-f905-360dc63bc143@xs4all.nl>
-Date: Mon, 18 Jul 2022 12:12:47 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.10.0
-Subject: Re: [PATCH v2 0/7] Enable 10bits bitstream for Hantro/G2 HEVC codec
-Content-Language: en-US
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, mchehab@kernel.org,
- ezequiel@vanguardiasur.com.ar, p.zabel@pengutronix.de,
- gregkh@linuxfoundation.org, mripard@kernel.org,
- paul.kocialkowski@bootlin.com, wens@csie.org, jernej.skrabec@gmail.com,
- samuel@sholland.org, nicolas.dufresne@collabora.com, andrzej.p@collabora.com
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
- kernel@collabora.com
-References: <20220718083945.200845-1-benjamin.gaignard@collabora.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <20220718083945.200845-1-benjamin.gaignard@collabora.com>
+	id 1oDPS1-00D3x0-Nq
+	for linux-rockchip@lists.infradead.org; Mon, 18 Jul 2022 12:02:15 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 8-20020a05600c024800b003a2fe343db1so7187653wmj.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 18 Jul 2022 05:02:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=kohlschutter-com.20210112.gappssmtp.com; s=20210112;
+        h=from:content-transfer-encoding:mime-version:subject:date:references
+         :to:in-reply-to:message-id;
+        bh=/Wjhe1Q4ojz7rsMCyD5ctxYAYQynJVyQzOqbmq13x+M=;
+        b=VBEN/bhJNUvzckZpVfCiDdHgAK7UigIWSvfal3rwFk/4tpUC4IOIkEAj5G+4goZB6h
+         Wt1GdfMgSvRlczraz0wEPEkH1JI6uv0ItpYQti+5E5oBSwJSU2KUmMWIha0Tf9+Q4EH+
+         HoJw/Cnl2rlwNMwvUCcXrEPcmcVvKMv4r6OG9DZJZEWevaMj99FBXji3gIa1V1KDQxa/
+         OGZxbwDjQcEX77iv70P4fDjJ1jl9CNoN+6pa/+cz9k8AIt+0NK0XlUFfcmZF+H4TtuEx
+         ehoPL9VfA52v6hQo5Msl65DUNHwQoywx8ez+UB1MIMNAAh+oLxr54svJD3Tnxn/noiVW
+         i6dg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:content-transfer-encoding:mime-version
+         :subject:date:references:to:in-reply-to:message-id;
+        bh=/Wjhe1Q4ojz7rsMCyD5ctxYAYQynJVyQzOqbmq13x+M=;
+        b=gPdVdcaABYh3P247Ms9sd345wPo3Ugmz2QrToDd6e1W4j0KGcXaTuyn8mpxKA5PTra
+         9OA+338lfFphamKxTxLHmTN+CO9kKejUDShkFMst2DlMHkE9CGWupCufytFBId2oj3q8
+         BewYZUxtZblFHsd8Aa60iZYvLivDBLDV28Am50BelVhTjMiFxLBLqhvoSREqt6Ptmo0r
+         /BMruTegaJ7HpiCUl3MlCbOtReYgTmtAlhlXgvk/wYpuCqVEl5cZlR6KZ1nrkhUIqCM4
+         e5d/0JysRph9hmu/5ciDYJSknXowq0VhsgbEFLRDNjnGr68hItKWnZey+I9N9QLsb7/7
+         GaAA==
+X-Gm-Message-State: AJIora+5XLP+SGqTybLXza9vREf658Mpikc/TQjbJLGz6LTTRJruGFZb
+	EfOAWUMDBNfVbyqRpTy4F4RFjQ==
+X-Google-Smtp-Source: AGRyM1tBFMDGVyuDtUpZDJKZn/k9znCha3K7cNXmOzqGeRLKOzqZjr0gyk4atocyOVVdijeJqID0XQ==
+X-Received: by 2002:a05:600c:1f0a:b0:3a3:15a8:a8e1 with SMTP id bd10-20020a05600c1f0a00b003a315a8a8e1mr8485096wmb.167.1658145729122;
+        Mon, 18 Jul 2022 05:02:09 -0700 (PDT)
+Received: from smtpclient.apple (ip5b434222.dynamic.kabel-deutschland.de. [91.67.66.34])
+        by smtp.gmail.com with ESMTPSA id o3-20020adfeac3000000b0021d6ac977fasm10639696wrn.69.2022.07.18.05.02.07
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Jul 2022 05:02:08 -0700 (PDT)
+From: =?utf-8?Q?Christian_Kohlsch=C3=BCtter?= <christian@kohlschutter.com>
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.100.31\))
+Subject: [PATCH v2] arm64: dts: rockchip: rk3399-nanopi4: Fix voltage
+ regulator config
+Date: Mon, 18 Jul 2022 14:02:07 +0200
+References: <963AF33B-54B7-4172-92D1-E2898E256A7E@kohlschutter.com>
+To: Robin Murphy <robin.murphy@arm.com>,
+ wens@kernel.org,
+ =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Markus Reichl <m.reichl@fivetechno.de>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Linux MMC List <linux-mmc@vger.kernel.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>
+In-Reply-To: <963AF33B-54B7-4172-92D1-E2898E256A7E@kohlschutter.com>
+Message-Id: <14EE0603-99C5-49AE-BDDB-C22C5B1924E2@kohlschutter.com>
+X-Mailer: Apple Mail (2.3696.100.31)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_031257_626884_D6C0644D 
-X-CRM114-Status: GOOD (  21.84  )
+X-CRM114-CacheID: sfid-20220718_050213_989607_715976D4 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,62 +91,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 7/18/22 10:39, Benjamin Gaignard wrote:
-> Since v1 Jernej patches to support 10 bits decoding have been merged.
-> This v2 rebase the previously send patches and add Ezequiel reviewed-by
-> tag.
-> This series add 10bits support for newer hardware blocks (i.e without
-> legacy regs) and for HEVC codec.
-> 
-> It based tested on IMX8MQ with HEVC conformance tests.
-> The results are that all 10bits bitstreams are OK.
-> 
-> The problematic point raise by this series is the question of where 
-> to put HEVC validation function. Does it have to be only hantro_try_ctrl()
-> or shall it be done also in .run().
-> This series doesn't change that behavoir so I will argue in farvor to
-> merge it and to work on this validation time problem when unstaging 
-> the driver.
-> Hans, Ezequiel may that sound acceptable for you ? 
-
-Hmm, the hantro driver will be unstaged either this week or (hopefully)
-very early on in the next cycle. So I think you should no longer consider
-hantro as a staging driver but as a regular mainline driver.
-
-This series definitely won't make the 5.20 cut, so I think it makes more
-sense to get this right before merging it.
-
-Regards,
-
-	Hans
-
-> 
-> Regards,
-> Benjamin
-> 
-> Benjamin Gaignard (7):
->   media: hantro: Store HEVC bit depth in context
->   media: hantro: HEVC: Fix auxilary buffer size calculation
->   media: hantro: HEVC: Fix chroma offset computation
->   media: hantro: postproc: Configure output regs to support 10bit
->   media: Hantro: HEVC: Allows 10-bit bitstream
->   media: hantro: imx8m: Enable 10bit decoding
->   media: hantro: Allows luma and chroma depth to be different
-> 
->  .../staging/media/hantro/hantro_g2_hevc_dec.c |  4 +--
->  drivers/staging/media/hantro/hantro_hevc.c    | 13 +++++----
->  .../staging/media/hantro/hantro_postproc.c    |  7 ++++-
->  drivers/staging/media/hantro/imx8m_vpu_hw.c   | 27 +++++++++++++++++++
->  4 files changed, 40 insertions(+), 11 deletions(-)
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QSBzZXJpZXMgb2YgaXNzdWVzIGV4aXN0IGFyb3VuZCB0aGUgInZjYzN2MF9zZCIgdm9sdGFnZSBy
+ZWd1bGF0b3IgdGhhdAptYWRlIGl0IG5lY2Vzc2FyeSB0byBtYXJrIGl0ICJhbHdheXMtb24iLgoK
+V2l0aCB0aGUgcGF0Y2ggInJlZ3VsYXRvcjogY29yZTogUmVzb2x2ZSBzdXBwbHkgbmFtZSBlYXJs
+aWVyIHRvIHByZXZlbnQKZG91YmxlLWluaXQiLCB0aGlzIG9wdGlvbiBpcyBubyBsb25nZXIgbmVj
+ZXNzYXJ5LgoKU2lnbmVkLW9mZi1ieTogQ2hyaXN0aWFuIEtvaGxzY2jDvHR0ZXIgPGNocmlzdGlh
+bkBrb2hsc2NodXR0ZXIuY29tPgotLS0KYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMz
+OTktbmFub3BpNC5kdHNpIHwgMSAtCjEgZmlsZSBjaGFuZ2VkLCAxIGRlbGV0aW9uKC0pCgpkaWZm
+IC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktbmFub3BpNC5kdHNp
+IGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktbmFub3BpNC5kdHNpCmluZGV4
+IDhjMGZmNmM5NmUwMy4uNTViOTNlYWMyZjk5IDEwMDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3Qv
+ZHRzL3JvY2tjaGlwL3JrMzM5OS1uYW5vcGk0LmR0c2kKKysrIGIvYXJjaC9hcm02NC9ib290L2R0
+cy9yb2NrY2hpcC9yazMzOTktbmFub3BpNC5kdHNpCkBAIC03MCw3ICs3MCw2IEBAIHZjYzN2MF9z
+ZDogdmNjM3YwLXNkIHsKCQlncGlvID0gPCZncGlvMCBSS19QQTEgR1BJT19BQ1RJVkVfSElHSD47
+CgkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKCQlwaW5jdHJsLTAgPSA8JnNkbW1jMF9wd3Jf
+aD47Ci0JCXJlZ3VsYXRvci1hbHdheXMtb247CgkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8
+MzAwMDAwMD47CgkJcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MzAwMDAwMD47CgkJcmVndWxh
+dG9yLW5hbWUgPSAidmNjM3YwX3NkIjsKLS0gCjIuMzYuMQoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
