@@ -4,100 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45DDEC43334
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 Jul 2022 21:05:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23A81C43334
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 Jul 2022 22:19:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:In-Reply-To:To:References:
-	Date:Subject:Mime-Version:From:Reply-To:Cc:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F60YgRUBPEjyzBTQ9Ycr9fT+z8pxeoBA59WYwauLiAQ=; b=xOq2Gap4d2R0iD
-	m2hwcAkTTC9t6RCNW9mGwmMZl1bqY85epSS3qRKvkoGSqSdp8vy9ygpG9bS59AScZDEnHLqwcWIkZ
-	fOZfUW1lWXyx12P8Boay6Un2LvpiuXo5X0AAoNCCkzK0QXw0+fnGr3ipmrQRfvWIhDC5PsM10HxRs
-	932sT4n7DzQuN8Htkft/NKlrH3c0uOxcR2PN5nTEZEmEiEg+cBEyPi6vespKNqAGGO1WlYWncqwKh
-	uYX0WN7uxGcIOPSwf0+Wv67YAgDwUkiiAH/agkYIwyVFlJXQquzk7pc4sEyismzkExwJceLIvc8LE
-	vyZ34w3J/GCRPr+UD0OA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mKB7Kr6WIke8OsYzD8cHjMva0XUTggzOkR6/U81byw0=; b=ln2aUFPA7z3vTT
+	6XTM9AVshSLBpkXhiAf+jBQpDFwmnoN1jCh5F7Uf1DdcD1Mdhq+DwotXSNeY4plIfPlGRBQyJIOyO
+	OsDvdbLru7ZM0ZJ5JcqYcD5slsvD0AolqF9iHPghdllnaJVH7iyK1J0eGd58zW1lYDeCmbV3PE+cR
+	RFQcV1NUOphV8xz4vWJWpQoOGO4HBoTxwY/dN1GzAx814MAKKlf2dd9lYNujbpV169LBsyR1g/+gd
+	bgELuqcMZP1BZhGzJSlZ2KNhIc9r8znOOGCQup1URj8lZBtbxq9A8nrFC82ZPwwoo7EYLcPqv8QnG
+	bWxtGfAcjYm8+zDNy83g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDXvH-001Ng1-8b; Mon, 18 Jul 2022 21:04:59 +0000
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+	id 1oDvYB-00Dfmz-5e; Tue, 19 Jul 2022 22:18:43 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDXv6-001NXP-DJ
-	for linux-rockchip@lists.infradead.org; Mon, 18 Jul 2022 21:04:49 +0000
-Received: by mail-ed1-x52e.google.com with SMTP id t3so17069560edd.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 18 Jul 2022 14:04:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=kohlschutter-com.20210112.gappssmtp.com; s=20210112;
-        h=from:content-transfer-encoding:mime-version:subject:date:references
-         :to:in-reply-to:message-id;
-        bh=lgYxQ6VDW00cU97BocyveA5Xw2LA05J8ZBbZjuEjBbs=;
-        b=ysRZ20nSv1AY8vsUIYaB1KCb7Q30mE3E6K7n7d95wId/RdkNd+qdCO7zLW56+1lhQx
-         FMAM3HJmvHH/obQ6GgmbKtJC5GXi2HgDaNV6K344sLUkdnRiGUnYNHG8msV+0ACStmvf
-         p8Il0CHFw8LAeE8GpBIH6v9wj8AdFvCoamt3z45quczVKBP0WAzHocSWT5duzbo33hoP
-         Xj+nasYNkfyWb2VkRfgNNq5R0v9Y4cUzdKTVhK4HCIhxA1y0eNXu6RRzhwNHhzbEpsVB
-         +QevqZ4FAxbXohECqUjQJWRr/f+73oGlYrgrVKbUFRRNGFl6aBOzivd7IZmAufOh1GMx
-         o6fQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:content-transfer-encoding:mime-version
-         :subject:date:references:to:in-reply-to:message-id;
-        bh=lgYxQ6VDW00cU97BocyveA5Xw2LA05J8ZBbZjuEjBbs=;
-        b=R4s5A+V/PcfAnFCfkj/TE2SAwpJHjzUYufzRGraGiFF6JZnLpeJKeevpSaN2EhVuSj
-         61pBfsTYRhSbnjyH64r+kn3bRNtvN9fwgRRqtDCle9Hg8q8MQ5QyzEPdP59N3ShJNhSz
-         xZmjU5pUTkvS1uR3g4oEn7YtPANU3u1ZdHND2eSEJ/AuKCH/kKf7jELLrt8koe8tRXi/
-         J5qSWfLApcvtwGj0MEhqN0mi9RqF6lFo/DL6IW1qH8zFgNItZQAKzPGwrLvEwwzMTvSq
-         TXokU2w4kgEVd/BjrMod/p869hb3J0HOKnQxZMHwB+0oziDBT081euRbQtuV/FGDUEfI
-         K+2w==
-X-Gm-Message-State: AJIora9maHkXwo1NW1r8g0IcizhMxthpWpHKy0aVYCFkemBp0Le06mfP
-	d5/u6h1LMXDAUGck8S2lQzBPlw==
-X-Google-Smtp-Source: AGRyM1uMAGPcbJs10DHZgwCacO7JwWJg0/uGhTxHr3qyP+y4XQdgLemNimWtsQu4TGNXOnTXmYe6Bg==
-X-Received: by 2002:a05:6402:440c:b0:43a:1124:e56a with SMTP id y12-20020a056402440c00b0043a1124e56amr40569237eda.134.1658178284768;
-        Mon, 18 Jul 2022 14:04:44 -0700 (PDT)
-Received: from smtpclient.apple (ip5b434222.dynamic.kabel-deutschland.de. [91.67.66.34])
-        by smtp.gmail.com with ESMTPSA id sa42-20020a1709076d2a00b007081282cbd8sm5885440ejc.76.2022.07.18.14.04.43
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Jul 2022 14:04:44 -0700 (PDT)
-From: =?utf-8?Q?Christian_Kohlsch=C3=BCtter?= <christian@kohlschutter.com>
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.100.31\))
-Subject: Re: [PATCH v6] arm64: dts: rockchip: Fix SD card init on
- rk3399-nanopi4
-Date: Mon, 18 Jul 2022 23:04:43 +0200
-References: <C639AD88-77A1-4485-BAEA-2FF8FC15A844@kohlschutter.com>
- <12878108.O9o76ZdvQC@diego> <103b714c-b07c-f016-1062-84bd94786b22@arm.com>
- <9AF1E75F-5947-49B0-887D-82C426527B99@kohlschutter.com>
- <590f7a08-a6ca-be54-4254-363343642a52@arm.com>
- <A6B896E5-CD25-4441-B6A5-0BE1FA284B2C@kohlschutter.com>
- <A9634366-A012-43D2-B253-8BB9BF6005C7@kohlschutter.com>
- <CAGb2v65Ehbu1wrib2CzF1fDZuD3fHZQDhKfVusyUF9KnxTvi+Q@mail.gmail.com>
- <5ca9bd94-54d9-04f8-0098-a56ffb6f5fe1@arm.com>
- <502b3fbe-3077-407e-6010-a8cb3ffce7d6@arm.com>
- <449292CA-CE60-4B90-90F7-295FBFEAB3F8@kohlschutter.com>
- <73F9AED0-D2A8-4294-B6E1-1B92D2A36529@kohlschutter.com>
- <115AD6A4-021B-4879-BFB5-BC7689A0203E@kohlschutter.com>
- <17a4c6f6-d79c-a7b2-860f-e5944b778f9f@arm.com>
- <9405b97a-6758-ad4e-ccff-eed072096539@arm.com>
- <BF7CC548-88C9-4889-8A41-8E99C31EF81C@kohlschutter.com>
- <daf3b61c-d886-98eb-0443-de233d742041@arm.com>
- <CDF716FC-F6CF-44A9-84D9-B48C46E6AC2C@kohlschutter.com>
- <3912A668-9F73-40FD-8993-5060F632238A@kohlschutter.com>
- <7E830C9F-BB5D-4EFC-B3F4-1C580E9326A3@kohlschutter.com>
- <E5A1A1E7-449F-4161-87B9-7A6CA0CAA42C@kohlschutter.com>
- <C153DF3B-C5F7-42E5-8A86-D9193578C96A@kohlschutter.com>
-To: Robin Murphy <robin.murphy@arm.com>,
- wens@kernel.org,
- =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Markus Reichl <m.reichl@fivetechno.de>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Linux MMC List <linux-mmc@vger.kernel.org>
-In-Reply-To: <C153DF3B-C5F7-42E5-8A86-D9193578C96A@kohlschutter.com>
-Message-Id: <38DFE34C-E4A5-4DBB-AC57-5D92D703B877@kohlschutter.com>
-X-Mailer: Apple Mail (2.3696.100.31)
+	id 1oDvY8-00Dfh2-2N
+	for linux-rockchip@lists.infradead.org; Tue, 19 Jul 2022 22:18:41 +0000
+Received: from pendragon.lan (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0577B6DB;
+	Wed, 20 Jul 2022 00:18:31 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1658269112;
+	bh=1UQ2DWYkdJuPG1ovOYdbfxwr0S6/nQLbSjuND1B7970=;
+	h=From:To:Cc:Subject:Date:From;
+	b=upD7Y032thaNCk/kk3HC3TyI20LPGsKFQiUGFpgIsAnE/llYS7TqZCF7q9/bnG33o
+	 WB6IoBqdi+PoIv98tneDTMbJts8yQhwv/fyida+qT8b2zvpm+Gm6Q3Cf4fpJZVmlCa
+	 dsmAxNK6F+VJXrSB4jW/CzmNvotmrpW9vAnui/D4=
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: libcamera-devel@lists.libcamera.org
+Cc: Dafna Hirschfeld <dafna@fastmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Paul Elder <paul.elder@ideasonboard.com>,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] media: rkisp1: Add and use rkisp1_has_feature() macro
+Date: Wed, 20 Jul 2022 01:17:51 +0300
+Message-Id: <20220719221751.4159-1-laurent.pinchart@ideasonboard.com>
+X-Mailer: git-send-email 2.35.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220718_140448_458043_1F8379FD 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20220719_151840_361285_E000B7C3 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,29 +60,107 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gMTguMDcuMjAyMiB1bSAxNDowNSBzY2hyaWViIENocmlzdGlhbiBLb2hsc2Now7x0dGVyIDxj
-aHJpc3RpYW5Aa29obHNjaHV0dGVyLmNvbT46Cj4gCj4+IEFtIDE4LjA3LjIwMjIgdW0gMTQ6MDQg
-c2NocmllYiBDaHJpc3RpYW4gS29obHNjaMO8dHRlciA8Y2hyaXN0aWFuQGtvaGxzY2h1dHRlci5j
-b20+Ogo+PiAKPj4gbW1jL1NELWNhcmQgaW5pdGlhbGl6YXRpb24gbWF5IGZhaWwgb24gTmFub1Bp
-IFI0UyB3aXRoCj4+ICJtbWMxOiBwcm9ibGVtIHJlYWRpbmcgU0QgU3RhdHVzIHJlZ2lzdGVyIiAv
-Cj4+ICJtbWMxOiBlcnJvciAtMTEwIHdoaWxzdCBpbml0aWFsaXNpbmcgU0QgY2FyZCIKPj4gZWl0
-aGVyIG9uIGNvbGQgYm9vdCBvciBhZnRlciBhIHJlYm9vdC4KPiAuLi4KPiBXYWxraW5nIGJhY2sg
-b24gbXkgY2xhaW0gaW4gdGhlIGNvbW1pdCBtZXNzYWdlIHRoYXQgbm8gZnVydGhlciBwYXRjaGVz
-IGFyZSBuZWVkZWQgZm9yIHRoZSB1LWJvb3QgaW50ZWdyYXRpb24gdG8gd29yay4KPiBPdGhlciB0
-aGFuIHRoYXQsIHRoZSBhY3R1YWwgcGF0Y2ggaXMgdW5jaGFuZ2VkLgoKSSBjYW4gbm8gbG9uZ2Vy
-IHZlcmlmeSB0aGF0IHRoZSB2NiBwYXRjaCBhY3R1YWxseSBpbmNyZWFzZXMgdXNlX2NvdW50IHRv
-IDIuCgpBdCB0aGlzIHBvaW50LCBJIGRvbid0IGhhdmUgYSBwdXJlbHkgZGV2aWNlIHRyZWUtYmFz
-ZWQgZml4IHRoYXQgd29ya3MgcmVsaWFibHksIHRoZXJlZm9yZSBuZWNlc3NpdGF0aW5nIHRoZSBj
-b2RlIGNoYW5nZXMgaW4gcmVndWxhdG9yL2NvcmUuYy4KSWYgYW55b25lIG9mIHlvdSBrbm93cyBh
-IHdheSB0byByZWxpYWJseSBpbmNyZWFzZSB2Y2MzdjBfc2QncyB1c2VfY291bnQgKCJjYXQgL3N5
-cy9rZXJuZWwvZGVidWcvcmVndWxhdG9yL3ZjYzN2MF9zZC91c2VfY291bnQiKSB0byBhdCBsZWFz
-dCAyLCB0aGVuIHdlIGNhbiByZW1vdmUgdGhlIHJlZ3VsYXRvci1hbHdheXMtb24gc3RhdGVtZW50
-LgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+Simplify feature tests with a macro that shortens lines.
+
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+ .../media/platform/rockchip/rkisp1/rkisp1-common.h |  3 +++
+ .../media/platform/rockchip/rkisp1/rkisp1-dev.c    | 14 +++++++-------
+ 2 files changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+index 8056997d5c29..0aae802464ac 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+@@ -111,6 +111,9 @@ enum rkisp1_feature {
+ 	RKISP1_FEATURE_MIPI_CSI2 = BIT(0),
+ };
+ 
++#define rkisp1_has_feature(rkisp1, feature) \
++	((rkisp1)->info->features & RKISP1_FEATURE_##feature)
++
+ /*
+  * struct rkisp1_info - Model-specific ISP Information
+  *
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index f2475c6235ea..e348d8c86861 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -206,7 +206,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
+ 		switch (reg) {
+ 		case 0:
+ 			/* MIPI CSI-2 port */
+-			if (!(rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)) {
++			if (!rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+ 				dev_err(rkisp1->dev,
+ 					"internal CSI must be available for port 0\n");
+ 				ret = -EINVAL;
+@@ -338,7 +338,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
+ 	unsigned int i;
+ 	int ret;
+ 
+-	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
++	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+ 		/* Link the CSI receiver to the ISP. */
+ 		ret = media_create_pad_link(&rkisp1->csi.sd.entity,
+ 					    RKISP1_CSI_PAD_SRC,
+@@ -390,7 +390,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
+ 
+ static void rkisp1_entities_unregister(struct rkisp1_device *rkisp1)
+ {
+-	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
++	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
+ 		rkisp1_csi_unregister(rkisp1);
+ 	rkisp1_params_unregister(rkisp1);
+ 	rkisp1_stats_unregister(rkisp1);
+@@ -423,7 +423,7 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
+ 	if (ret)
+ 		goto error;
+ 
+-	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
++	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+ 		ret = rkisp1_csi_register(rkisp1);
+ 		if (ret)
+ 			goto error;
+@@ -590,7 +590,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 		goto err_unreg_v4l2_dev;
+ 	}
+ 
+-	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
++	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
+ 		ret = rkisp1_csi_init(rkisp1);
+ 		if (ret)
+ 			goto err_unreg_media_dev;
+@@ -611,7 +611,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+ err_unreg_entities:
+ 	rkisp1_entities_unregister(rkisp1);
+ err_cleanup_csi:
+-	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
++	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
+ 		rkisp1_csi_cleanup(rkisp1);
+ err_unreg_media_dev:
+ 	media_device_unregister(&rkisp1->media_dev);
+@@ -630,7 +630,7 @@ static int rkisp1_remove(struct platform_device *pdev)
+ 	v4l2_async_nf_cleanup(&rkisp1->notifier);
+ 
+ 	rkisp1_entities_unregister(rkisp1);
+-	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
++	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
+ 		rkisp1_csi_cleanup(rkisp1);
+ 	rkisp1_debug_cleanup(rkisp1);
+ 
+-- 
+Regards,
+
+Laurent Pinchart
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
