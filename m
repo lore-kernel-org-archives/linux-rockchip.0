@@ -4,45 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57031C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jul 2022 09:16:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83FCFC43334
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jul 2022 09:16:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/+fH4r47XQTTHXjLhFMfD6Y3oa+OvIZ0OZezWPbNYdk=; b=Qfj5p/Gsmoyy2H
-	uCCcDHhtz5mHnW8iFmh9lQZ865jo4gU2kj048TcOl9Hygexh9OHkzTXx2RUz1muFIj8g2eqLaU9qv
-	nGcQeZ3StROxy7K+/4/7skW1YDlUN6DggXATrpStpNG6BUwFb5iMjQeJbl+BZVdeiNMncj8JYk194
-	1HAVrcSiuD8if/vkh+0FwVWMxUnxG2kQnCPf0o89QWJerL6w25HStpLGdaMMTJCop4KOEHx7qpYbx
-	7FCeYfgsuBvXhYxHs3jvvpl/MMXkY4mI8z2Ce+x+GamrK7NRklceNzu1Dp8VM1NjYVeUYENlNj65x
-	bJmzAONKLK0Y0JbgZ0Cg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NRBew1ztZUh0tz1WYjB9JHE2jNrTb1XencKNmdt23CI=; b=akP3ICwpafyD8d
+	vaTWib3e6r2LFPyA2k/yuRDnK/u3FtLgB+aZoaRunNn5AX0wo6sH3J0yQwi5kOgCWDnClAxdd/OwQ
+	bekDWm+CpLzCTAdCK3F6ZNtowpSIDLMXMRrkLEu8J2hoi/ONE8cGejtQv0WqjBkrlH9n9iXVcgegT
+	HeiFb3cQ+2GunOkcgMqPluTbZtWPNEOhuFJS7t6C949m7I4+iuc505w+A201uIJq6DP/dif2zlDI3
+	Od+pRpvo+osDi19KNwxlXDqBKq/gldq0BcN005RY4+rue6B3iGUztVKOwBjQO7/SNVwrBklchvLvw
+	hWx9qoWjFIQh6//gz/Xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE5o6-0037jk-Cg; Wed, 20 Jul 2022 09:15:50 +0000
-Received: from relay10.mail.gandi.net ([217.70.178.230])
+	id 1oE5oK-0037r8-O9; Wed, 20 Jul 2022 09:16:04 +0000
+Received: from mail-db8eur05on2066.outbound.protection.outlook.com ([40.107.20.66] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE5o3-0037g3-N9
-	for linux-rockchip@lists.infradead.org; Wed, 20 Jul 2022 09:15:49 +0000
-Received: (Authenticated sender: jacopo@jmondi.org)
-	by mail.gandi.net (Postfix) with ESMTPSA id 50945240004;
-	Wed, 20 Jul 2022 09:15:38 +0000 (UTC)
-Date: Wed, 20 Jul 2022 11:15:36 +0200
-From: Jacopo Mondi <jacopo@jmondi.org>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: libcamera-devel@lists.libcamera.org, linux-rockchip@lists.infradead.org,
-	Dafna Hirschfeld <dafna@fastmail.com>
-Subject: Re: [libcamera-devel] [PATCH] media: rkisp1: Add and use
- rkisp1_has_feature() macro
-Message-ID: <20220720091536.atwmju6pfhfekwim@uno.localdomain>
-References: <20220719221751.4159-1-laurent.pinchart@ideasonboard.com>
+	id 1oE5o7-0037hf-MB; Wed, 20 Jul 2022 09:15:53 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SLGB8ULKWjoJjlPlyoj1GvXJ9NA/kyOxmBvS0HHtI0sePDn+V/YbYW9edAsw9YeTxMGUSR2ELDfV/WlgJJaLUYGNcAp4rcPnaw3AyfJ49Cur4xbNLMez3+QVfE+oPsE3ghif/MUclYEj6IOscSQFhKs8BsMPoFOM1b0KViZBwnqBrZUeCwVxyzBkvuaJt6vmRuxold8Oqa2q8FB+5c7fbGxEIr9QQnffL/FxhbyAFg9pHEzbPbXHyIEdYh78ST+2QndIracsKxCVrWeRQJ8+Oc72GLRneRVBxEuB3JIOzo0NbrKSgu+iJucNSEuNTKez5h9nqLvIw3bT8FPap3fcQQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=P8DF1s5WrwmrwwUmlEp6RwKEYGF2Sy/Vka4kl+zTXRc=;
+ b=mB+uvh3VvESIoQOKlyDV03r3kf7Ujwj9/YBqPFNj075OQNTeaFvhuTpgXy/6moJiSO+WDZw7LTeXyC6xXLTsMVYN95JjJLyz18aiYqd+Ff5CSrSzQ+klj0H1wylVsrT5yp7ZrbSZa1gx8L1hDJkyEShEpv0ZFBR09CLfXxpgoxjKCgR65GzpggfVuglJV+cFL9yKqrPTKiuOOYOPF2FlXLFETU+qphw65BUCg+H4hO4TdhDPzTS6EUJt17gbnZjNcPdTcfnzRHCXbjyvY661aXZohlmpZsebE2FcN7GBxypGcqMHrEgiL2g8dRKDk6xqdS+J8ZlXyiLU2VsbMUaVFA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wolfvision.net; dmarc=pass action=none
+ header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=P8DF1s5WrwmrwwUmlEp6RwKEYGF2Sy/Vka4kl+zTXRc=;
+ b=2mgkAhLzozI9D47bJlTuuU/yTrcximJpbBbbEIhxSQt3hLS7jWwA6kG538/sjp5yWLbpMgWn8GPUhjAB50XjpHorkUGbSVSUTB9MVOh6wVOVbejZHUBuHXfEN0Gfjp3WHzjfuVKgtXjJxnmAMvy597Gezn2z7qyIl6ccHvRo9ag=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wolfvision.net;
+Received: from AM4PR0802MB2131.eurprd08.prod.outlook.com
+ (2603:10a6:200:5c::22) by VI1PR08MB3934.eurprd08.prod.outlook.com
+ (2603:10a6:803:df::22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5458.18; Wed, 20 Jul
+ 2022 09:15:43 +0000
+Received: from AM4PR0802MB2131.eurprd08.prod.outlook.com
+ ([fe80::dcaa:905c:ff8:1f5b]) by AM4PR0802MB2131.eurprd08.prod.outlook.com
+ ([fe80::dcaa:905c:ff8:1f5b%9]) with mapi id 15.20.5458.018; Wed, 20 Jul 2022
+ 09:15:43 +0000
+From: Michael Riesch <michael.riesch@wolfvision.net>
+To: linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Kishon Vijay Abraham I <kishon@ti.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Liang Chen <cl@rock-chips.com>
+Subject: [PATCH 0/3] Add support for the RK356x variant of the Inno CSI DPHY
+Date: Wed, 20 Jul 2022 11:15:24 +0200
+Message-Id: <20220720091527.1270365-1-michael.riesch@wolfvision.net>
+X-Mailer: git-send-email 2.30.2
+X-ClientProxiedBy: ZR0P278CA0129.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:40::8) To AM4PR0802MB2131.eurprd08.prod.outlook.com
+ (2603:10a6:200:5c::22)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220719221751.4159-1-laurent.pinchart@ideasonboard.com>
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: cda34942-328d-4f94-56f8-08da6a306c41
+X-MS-TrafficTypeDiagnostic: VI1PR08MB3934:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	yVaM0Uliu9kiVYz/BFIQokil/XCmB/E68rxTXbkvhCKouuI2POQzVYLVQdfziNZtRGXsaj7YuFeKH75a/d2aHS1jhVo/zdji+yWKz9Q4ZVnyT/bHbDCVHKjswpPAgDrq+Ft7cq9syAJJM+ajAt8keIzdKmi+pySp9nhe2tIAGMlv7B0rEKb7JRlDwvrqFxz44KPI9QFFALste+a9ICLUsvW4zzovV3rsikK+AuYTCD0acwEnIxiJwzzDnQIH2fhjqDtoTGYJvxjN24nqoFTAGIGvhU9+j8bus0QivwTcRJyuRof81jfWWwnaJvPKat4K1hfwhfTxTDCmZt3GJLb9imTXJD0vBzTFS5A7H45V4SQtF2Q4PHAeSHKdeyLSBC67KRva0nZseSQ+T722valin3spUd7EeHbqRp7Jw42oU1/vMx577XKeqGFc8ig0HTkdZABS1SIRSGRkHpMZU2jVEjU/LQiGLQXVqEER0din2iYfWWzflUrsE49iVyHYFN8Wc4X1BThUgdOb5jA78rZReVig+gi6p7h9uAVP5RUeeUuz8g6+LRMff0Umn76Vs03Ct5cEyAJJJ/a07FXJa2yIBV7wwFVtUpBu1bqB+wKSIRM52V3Cf/Ddon57mn8UBUJdSSehXD5dSh1++GDoz+ds5qrxzI/a0Zv+PykZY4jNDkG9a/nhNL65HqqUNqpkJRuBX6UDEG1g+JoedjPl24DSknJf6mAU2xnr4p1kRZ6Bgwg=
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM4PR0802MB2131.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230016)(4636009)(346002)(39840400004)(396003)(376002)(366004)(136003)(38100700002)(52116002)(41300700001)(6506007)(6666004)(8936002)(7416002)(5660300002)(6486002)(2616005)(478600001)(1076003)(66476007)(8676002)(66946007)(66556008)(6512007)(54906003)(316002)(4326008)(2906002)(186003)(44832011)(36756003)(86362001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?nMFryQfNESHQbCUJrYU7UrsldKACyNN126q57MORakXkbGO9vNM5ktLG5Tm+?=
+ =?us-ascii?Q?cslfY/ujOLlya6d9hQWN5viW7dovgrse/zkKGN8rCh2GvwLmg3oCws+fCTHP?=
+ =?us-ascii?Q?VgTFcFEZbkgjH0sNDJzBVtgh2dkDbZjpV36kQgWzeBLSYKsMVFENwJgmQwhJ?=
+ =?us-ascii?Q?fQMgw8PlIv19r8kboolgUVkgix2/2Kg/Ero4AdhlUEfgLeiRemzXfxWnoXM/?=
+ =?us-ascii?Q?3QW01EOuITpnExxq6yHIXC2vQ4TuF4AJ5bWfY9q3wfZ3VdW97hh7blVynO36?=
+ =?us-ascii?Q?yaxoTyGstWpKTxbD26Ys+Jotd1jGKD/JzrHb2RnXk9UHHyWyxejHIpFFtwPw?=
+ =?us-ascii?Q?41YUdnKJh625gHJoeM3pw0dLoadqipIFz+vg/mQizr0ot0m/XnD66O8qZjKz?=
+ =?us-ascii?Q?Qn+3IFxgT1pLJp/FcxIlIgGcIZFSN/e7oSDGoE3Of1JEA1vg/kjrpCyXNJuW?=
+ =?us-ascii?Q?NpU6Qewpzn7DjCW6BJTQEMd89Br2fKUpYHJ8gMLDWGhQCn4c9Wo+P9jyqWWc?=
+ =?us-ascii?Q?9/KL7J4wfMDIymfZRa6bIQOq1X6Ro61+bpxgdpUSGXEuWSFYme9BeEy7Cdgf?=
+ =?us-ascii?Q?vpWNaEB1dNyBRFm2uAln13Wuj3Hpg2zLMw/dZchh04sbjDSqqP6rzdhNfJ3o?=
+ =?us-ascii?Q?azds1LKAvLgE+umU6MJZ6Vzp6GBQPgr0WNf1NJKc8Dj6R9e2UNmGwb6lqN7J?=
+ =?us-ascii?Q?cLjG092aRxHWW8ke4S0UCYl/nx/9WThpMf0OjAL6fi2KxjMd2bNWYSCRs2FL?=
+ =?us-ascii?Q?gUgDy4NpaJe0UrmVXpX7aGSKsE7hlK5gxxBaLy9NptRIPbKGBmk+4oBNxH4f?=
+ =?us-ascii?Q?ST8I63OkKOXPMqwja/cPVv/nf6rx1scs5bhDAdr+itZwKisbN2jFe315A/BU?=
+ =?us-ascii?Q?2YRlEnFlNEanSWRMvNCizg/oaTYMMejiu7909qbhYhVV3FK2nkNASAV5pOF+?=
+ =?us-ascii?Q?JVXEm54ehlXIa7v7tot9+yxWN47NBGUheIve0kfc4j2a9ZFuWsC/qrddEOnp?=
+ =?us-ascii?Q?IqpkJDQlxh5C4KU+aSc7YxoAo3Mk4o1jXg0klqA7m4GF+m2Vmgq6oIRmfF06?=
+ =?us-ascii?Q?aK3YTmt5geAh+7k8B2KkPhv9FoNmWkBZCPtqCk1AxSfy4iroNdk6VD+5imKX?=
+ =?us-ascii?Q?NwazZNtiap5Wkj1artmzVP6l/qtJKIX6AfREkanuflQxfyoDCWzvQHBYAicc?=
+ =?us-ascii?Q?IFZKDj9kpFJeneBS5ZZGItjTl/7U4GrEkoIqTcXmpW6x3a40JmdOUMyFxgMR?=
+ =?us-ascii?Q?M4u5ZwPHeemGtRs4DqudXZrCNIFXuNWNnY82p6oFn94cQujVFXgV4acLzk8J?=
+ =?us-ascii?Q?0Aj9JwAxwiROOkEmHCGWv7Ld1CoKa9jmaWlHv6tez7z9usXLMYe7L02879U3?=
+ =?us-ascii?Q?7H4vvsCfzOyxkdkPwf20oA7xuHt08lSoT+8/LRbM2r8cJi+o2IQp3tn4g3yq?=
+ =?us-ascii?Q?qKUA4MNy6ITvESTomG1ly5qOqvth1N1dZobIBlZ7cIcwFFT9b2O0h3ZhDj+g?=
+ =?us-ascii?Q?0QF41jMVqNWMBdLNMSY6ytfWxL3Nppj6SCq5oQTDKkMB8YcasYzEfxfUo1Ws?=
+ =?us-ascii?Q?vk/ddFybZPp1jLD31c/O77X27R1hOGhqfZKk5SbJKZqgB7tIjxPMS5rifQC/?=
+ =?us-ascii?Q?iGzZsPxkDcWUHSVvpHDEw3wc4N4StGf8kdpXCTjYPgQgTwerBM5N8tEFKiop?=
+ =?us-ascii?Q?nzcEPA=3D=3D?=
+X-OriginatorOrg: wolfvision.net
+X-MS-Exchange-CrossTenant-Network-Message-Id: cda34942-328d-4f94-56f8-08da6a306c41
+X-MS-Exchange-CrossTenant-AuthSource: AM4PR0802MB2131.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jul 2022 09:15:43.5417
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 9oWSi7BjVjsWzd4Q0aC8BpWYL30cESSawuc4PSZHiGWSoliZbJokXZVR/jpEEKm/dXf00DOI6Uczk8oDKv9xE8lg8WPaOIbHLVMm304LWtc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB3934
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_021548_047337_7ADB99ED 
-X-CRM114-Status: GOOD (  15.99  )
+X-CRM114-CacheID: sfid-20220720_021551_770579_3E9145D9 
+X-CRM114-Status: GOOD (  10.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,106 +142,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent
+Hi all,
 
-On Wed, Jul 20, 2022 at 01:17:51AM +0300, Laurent Pinchart via libcamera-devel wrote:
-> Simplify feature tests with a macro that shortens lines.
->
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> ---
->  .../media/platform/rockchip/rkisp1/rkisp1-common.h |  3 +++
->  .../media/platform/rockchip/rkisp1/rkisp1-dev.c    | 14 +++++++-------
->  2 files changed, 10 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index 8056997d5c29..0aae802464ac 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+This series adds support for the variant of the Innosilicon MIPI CSI DPHY that
+can be found in Rockchip RK356x SoCs.
 
-Was this meant for linux-media ? :)
+Please note that only the basic operating mode is supported, in which all four
+CSI lanes are controlled by the Rockchip ISP. Split lane operation (e.g., two
+lanes to ISP and two lanes to VICAP) is not supported.
 
-> @@ -111,6 +111,9 @@ enum rkisp1_feature {
->  	RKISP1_FEATURE_MIPI_CSI2 = BIT(0),
->  };
->
-> +#define rkisp1_has_feature(rkisp1, feature) \
-> +	((rkisp1)->info->features & RKISP1_FEATURE_##feature)
-> +
->  /*
->   * struct rkisp1_info - Model-specific ISP Information
->   *
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> index f2475c6235ea..e348d8c86861 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> @@ -206,7 +206,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
->  		switch (reg) {
->  		case 0:
->  			/* MIPI CSI-2 port */
-> -			if (!(rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)) {
-> +			if (!rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
->  				dev_err(rkisp1->dev,
->  					"internal CSI must be available for port 0\n");
->  				ret = -EINVAL;
-> @@ -338,7 +338,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
->  	unsigned int i;
->  	int ret;
->
-> -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
-> +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
->  		/* Link the CSI receiver to the ISP. */
->  		ret = media_create_pad_link(&rkisp1->csi.sd.entity,
->  					    RKISP1_CSI_PAD_SRC,
-> @@ -390,7 +390,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
->
->  static void rkisp1_entities_unregister(struct rkisp1_device *rkisp1)
->  {
-> -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
-> +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
->  		rkisp1_csi_unregister(rkisp1);
->  	rkisp1_params_unregister(rkisp1);
->  	rkisp1_stats_unregister(rkisp1);
-> @@ -423,7 +423,7 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
->  	if (ret)
->  		goto error;
->
-> -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
-> +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
->  		ret = rkisp1_csi_register(rkisp1);
->  		if (ret)
->  			goto error;
-> @@ -590,7 +590,7 @@ static int rkisp1_probe(struct platform_device *pdev)
->  		goto err_unreg_v4l2_dev;
->  	}
->
-> -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
-> +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
->  		ret = rkisp1_csi_init(rkisp1);
->  		if (ret)
->  			goto err_unreg_media_dev;
-> @@ -611,7 +611,7 @@ static int rkisp1_probe(struct platform_device *pdev)
->  err_unreg_entities:
->  	rkisp1_entities_unregister(rkisp1);
->  err_cleanup_csi:
-> -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
-> +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
->  		rkisp1_csi_cleanup(rkisp1);
->  err_unreg_media_dev:
->  	media_device_unregister(&rkisp1->media_dev);
-> @@ -630,7 +630,7 @@ static int rkisp1_remove(struct platform_device *pdev)
->  	v4l2_async_nf_cleanup(&rkisp1->notifier);
->
->  	rkisp1_entities_unregister(rkisp1);
-> -	if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
-> +	if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
->  		rkisp1_csi_cleanup(rkisp1);
->  	rkisp1_debug_cleanup(rkisp1);
->
-> --
-> Regards,
->
-> Laurent Pinchart
->
+This has been tested on a Radxa ROCK3 Model A board together with an IMX219
+camera sensor and a patched version of the rkisp1 driver (with support for the
+RK356x variant V2.1 added in a very crude way).
+
+Looking forward to your comments!
+
+Best regards,
+Michael
+
+Michael Riesch (3):
+  dt-bindings: phy: add compatible for rk356x to rockchip-inno-csi-dphy
+  phy: rockchip: add support for the rk356x variant to
+    rockchip-inno-csidphy
+  arm64: dts: rockchip: add csi dphy node to rk356x
+
+ .../bindings/phy/rockchip-inno-csi-dphy.yaml  |  1 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      | 12 ++++++++++
+ .../phy/rockchip/phy-rockchip-inno-csidphy.c  | 24 +++++++++++++++++++
+ 3 files changed, 37 insertions(+)
+
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
