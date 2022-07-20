@@ -4,50 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCDF1C433EF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jul 2022 12:48:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEF27C43334
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jul 2022 17:23:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RjAngbR40PsDlOQcKILJBNaBz/hS/7KdabxPw0zutuU=; b=x0IglP2Z+S3GVI
-	Q5lRlANGjydpWiXljtlvqOepz36ZKAWBJP4sO1JiQ0/OLn57Fxqka2/nYa7ACFT302CKHpA8maJeE
-	3+UuoiKFtD5d4jL+ZODUm+tGM2ZldrS79oFzkmCDJav1XiQVenGoM0Z+nqeZ2yRZxHrB4EGou33hK
-	TWXmxdX7KmuRB4UzSuX39yAShMZK1oxAdLYzF8/8uQYBYuOwhlnWHJngHlmh6CB5+t7dh2dKWzq36
-	6pprxr9KmBSggseVuH/cLsasfLuIa5f6DIg2K0ihmDVhlJ3J4Qr0A71Jd7IfYWY/VA0LXGY84xXNX
-	x+bLPwq02RZqCpYGYuvQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jwUtv7yDco8KGdjpk2iF+1Djnnph+PkdZ5VaZi2kdNs=; b=lVrh+h3qSDHSok
+	S0ZOtj1HqLn0uwrVMTSpN0NLv1nhhCZifh+GqvrcyP741gLcEqee5WTfaxG3GO6Ak2mBVmq29mzaP
+	64LY8OIPdE2D+HD1Ln1uGdQA8W5jlQbLtUxAFPl6BiWaiYTejg++hInSbYGACOgSLu/MJhoZN2+Tf
+	ldyVz/P5Tek05nH8pHIuQOBjr0H3xwPUtIHpN6VFMnjj2HZC9QDNwVdxmF15T+d/YgHYqYvZZeE29
+	Bm6iLgAVdaEt5rOh5QgxWmGpQGKnqrmT2XUCRzHHTBjbfau7Na56U+G5+mqBLKHlsP0k6ULhFdZmA
+	H++VnLWFjQuoBDo6dtjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE97s-005V1A-Vn; Wed, 20 Jul 2022 12:48:29 +0000
+	id 1oEDPh-008a3k-Df; Wed, 20 Jul 2022 17:23:09 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oE97p-005Usg-Ry
-	for linux-rockchip@lists.infradead.org; Wed, 20 Jul 2022 12:48:27 +0000
-Received: from pendragon.ideasonboard.com (cpc89244-aztw30-2-0-cust3082.18-1.cable.virginm.net [86.31.172.11])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 20C436DB;
-	Wed, 20 Jul 2022 14:48:15 +0200 (CEST)
+	id 1oEDPW-008Zrn-E3; Wed, 20 Jul 2022 17:22:59 +0000
+Received: from pyrite.rasen.tech (softbank036240121080.bbtec.net [36.240.121.80])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B38AC6DB;
+	Wed, 20 Jul 2022 19:22:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1658321295;
-	bh=3BQewCSCcJ6YC3KW50l1ItyaKjSNqmtT2xPibi47J3M=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=hxjEKHddaJqXbzesaXAv4iaXrjjnPWJBnludJmGc9aWhlZHqp4vgV4J40NwN6yd+c
-	 RLiO4/qM0scBqlPMXNhQHPCKXlk/ejfzZVzg4rYSl1tI2X7wJhh0wbOs312Swqw77F
-	 VE383sJNF5IoU3k8PEldplVn+pcRlQlls7rfll/c=
+	s=mail; t=1658337766;
+	bh=cdhTFwAUWu0BfU4pY0Qx+ICqevNTT6nB/e0kgl797cc=;
+	h=From:To:Cc:Subject:Date:From;
+	b=TEXeCjaR2aW8XsTlPI5AgJxKkEneJwOgJEzZGHwHRc13Rp1YG3xJGwiCDtL/IMsrb
+	 lz88eHiL+fzSblDMj2gTWiuY1hEcNNYd1kVqXw8bqz/y64+DmIMkXevKdRkxN8kZ0C
+	 yLmHbsIYYLkfynThQ/rnXeZGAEXNdBLxLsXvnMWo=
+From: Paul Elder <paul.elder@ideasonboard.com>
+To: linux-media@vger.kernel.org
+Cc: Paul Elder <paul.elder@ideasonboard.com>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	laurent.pinchart@ideasonboard.com
+Subject: [PATCH] media: rkisp1: Implement ENUM_FRAMESIZES
+Date: Thu, 21 Jul 2022 02:22:31 +0900
+Message-Id: <20220720172231.4019063-1-paul.elder@ideasonboard.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-In-Reply-To: <20220719222432.4356-1-laurent.pinchart@ideasonboard.com>
-References: <20220719222432.4356-1-laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH] media: rkisp1: Add and use rkisp1_has_feature() macro
-From: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>, Heiko Stuebner <heiko@sntech.de>, Paul Elder <paul.elder@ideasonboard.com>, linux-rockchip@lists.infradead.org
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, linux-media@vger.kernel.org
-Date: Wed, 20 Jul 2022 13:48:12 +0100
-Message-ID: <165832129287.2021905.5325737808156196561@Monstersaurus>
-User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220720_054826_082828_1EF2C2D2 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20220720_102258_656605_143FB750 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,110 +69,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Laurent Pinchart (2022-07-19 23:24:32)
-> Simplify feature tests with a macro that shortens lines.
-> 
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Implement VIDIOC_ENUM_FRAMESIZES for the rkisp1 capture devices.
 
-Given how we use it on VSP1 too, I certainly prefer this style of
-helper!
+Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
+---
+ .../platform/rockchip/rkisp1/rkisp1-capture.c | 26 +++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+index c494afbc21b4..74106a01ded7 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+@@ -1245,6 +1245,31 @@ static int rkisp1_enum_fmt_vid_cap_mplane(struct file *file, void *priv,
+ 	return -EINVAL;
+ }
+ 
++static int rkisp1_enum_framesizes(struct file *file, void *fh,
++				  struct v4l2_frmsizeenum *fsize)
++{
++	struct rkisp1_capture *cap = video_drvdata(file);
++	const unsigned int max_widths[] = { RKISP1_RSZ_MP_SRC_MAX_WIDTH,
++					    RKISP1_RSZ_SP_SRC_MAX_WIDTH };
++	const unsigned int max_heights[] = { RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
++					     RKISP1_RSZ_SP_SRC_MAX_HEIGHT};
++
++	if (fsize->index != 0)
++		return -EINVAL;
++
++	fsize->type = V4L2_FRMSIZE_TYPE_STEPWISE;
++
++	fsize->stepwise.min_width = RKISP1_RSZ_SRC_MIN_WIDTH;
++	fsize->stepwise.max_width = max_widths[cap->id];
++	fsize->stepwise.step_width = 2;
++
++	fsize->stepwise.min_height = RKISP1_RSZ_SRC_MIN_HEIGHT;
++	fsize->stepwise.max_height = max_heights[cap->id];
++	fsize->stepwise.step_height = 2;
++
++	return 0;
++}
++
+ static int rkisp1_s_fmt_vid_cap_mplane(struct file *file,
+ 				       void *priv, struct v4l2_format *f)
+ {
+@@ -1294,6 +1319,7 @@ static const struct v4l2_ioctl_ops rkisp1_v4l2_ioctl_ops = {
+ 	.vidioc_s_fmt_vid_cap_mplane = rkisp1_s_fmt_vid_cap_mplane,
+ 	.vidioc_g_fmt_vid_cap_mplane = rkisp1_g_fmt_vid_cap_mplane,
+ 	.vidioc_enum_fmt_vid_cap = rkisp1_enum_fmt_vid_cap_mplane,
++	.vidioc_enum_framesizes = rkisp1_enum_framesizes,
+ 	.vidioc_querycap = rkisp1_querycap,
+ 	.vidioc_subscribe_event = v4l2_ctrl_subscribe_event,
+ 	.vidioc_unsubscribe_event = v4l2_event_unsubscribe,
+-- 
+2.30.2
 
-
-> ---
-> Sending to the correct mailing list this time, sorry for the noise.
-> ---
->  .../media/platform/rockchip/rkisp1/rkisp1-common.h |  3 +++
->  .../media/platform/rockchip/rkisp1/rkisp1-dev.c    | 14 +++++++-------
->  2 files changed, 10 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> index 8056997d5c29..0aae802464ac 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-> @@ -111,6 +111,9 @@ enum rkisp1_feature {
->         RKISP1_FEATURE_MIPI_CSI2 = BIT(0),
->  };
->  
-> +#define rkisp1_has_feature(rkisp1, feature) \
-> +       ((rkisp1)->info->features & RKISP1_FEATURE_##feature)
-> +
->  /*
->   * struct rkisp1_info - Model-specific ISP Information
->   *
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> index f2475c6235ea..e348d8c86861 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-> @@ -206,7 +206,7 @@ static int rkisp1_subdev_notifier_register(struct rkisp1_device *rkisp1)
->                 switch (reg) {
->                 case 0:
->                         /* MIPI CSI-2 port */
-> -                       if (!(rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)) {
-> +                       if (!rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
->                                 dev_err(rkisp1->dev,
->                                         "internal CSI must be available for port 0\n");
->                                 ret = -EINVAL;
-> @@ -338,7 +338,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
->         unsigned int i;
->         int ret;
->  
-> -       if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
-> +       if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
->                 /* Link the CSI receiver to the ISP. */
->                 ret = media_create_pad_link(&rkisp1->csi.sd.entity,
->                                             RKISP1_CSI_PAD_SRC,
-> @@ -390,7 +390,7 @@ static int rkisp1_create_links(struct rkisp1_device *rkisp1)
->  
->  static void rkisp1_entities_unregister(struct rkisp1_device *rkisp1)
->  {
-> -       if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
-> +       if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
->                 rkisp1_csi_unregister(rkisp1);
->         rkisp1_params_unregister(rkisp1);
->         rkisp1_stats_unregister(rkisp1);
-> @@ -423,7 +423,7 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
->         if (ret)
->                 goto error;
->  
-> -       if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
-> +       if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
->                 ret = rkisp1_csi_register(rkisp1);
->                 if (ret)
->                         goto error;
-> @@ -590,7 +590,7 @@ static int rkisp1_probe(struct platform_device *pdev)
->                 goto err_unreg_v4l2_dev;
->         }
->  
-> -       if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2) {
-> +       if (rkisp1_has_feature(rkisp1, MIPI_CSI2)) {
->                 ret = rkisp1_csi_init(rkisp1);
->                 if (ret)
->                         goto err_unreg_media_dev;
-> @@ -611,7 +611,7 @@ static int rkisp1_probe(struct platform_device *pdev)
->  err_unreg_entities:
->         rkisp1_entities_unregister(rkisp1);
->  err_cleanup_csi:
-> -       if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
-> +       if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
->                 rkisp1_csi_cleanup(rkisp1);
->  err_unreg_media_dev:
->         media_device_unregister(&rkisp1->media_dev);
-> @@ -630,7 +630,7 @@ static int rkisp1_remove(struct platform_device *pdev)
->         v4l2_async_nf_cleanup(&rkisp1->notifier);
->  
->         rkisp1_entities_unregister(rkisp1);
-> -       if (rkisp1->info->features & RKISP1_FEATURE_MIPI_CSI2)
-> +       if (rkisp1_has_feature(rkisp1, MIPI_CSI2))
->                 rkisp1_csi_cleanup(rkisp1);
->         rkisp1_debug_cleanup(rkisp1);
->  
-> -- 
-> Regards,
-> 
-> Laurent Pinchart
->
 
 _______________________________________________
 Linux-rockchip mailing list
