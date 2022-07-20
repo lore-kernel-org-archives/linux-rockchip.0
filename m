@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30C0FCCA487
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jul 2022 01:19:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3ECBC433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jul 2022 01:20:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VFI8zh3ro9kD1STMhHAMs8NERe26ksyl7hqg7+uvOqI=; b=fvj8PjvrEKTkwf
-	Wcsdd8Uj16CQOyPl8X86rvK6McN2BgNZiVvw/XsROFWGHP8jU9lHK5REoBLDZBsZVvMHKGBuOkfnD
-	wstgrcoDjm/rtAWZBYpYTh1l3kU/ANlQrg7SjHLobWDmS8piXM/k02Zv/Gc/8+zHoJgyVMrz4Z/dN
-	BhMJblvOGhvR7tAKvOtDfxcGz2vUrcQdqNAIU0rG7+mDXRvLQpOxbAPUhtqcF93k+VCh0fuN1NZwh
-	jkTKYPFyZilrGfeRq/rVuHO1TLCj4gylmHA35Kdx+CbFHKHaruhnAjn7SgZsWdmfJLmiB/mqo0y89
-	p3MvzGNV/lqD2y7HeEog==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ezPKiY1ia/wTSBD/Tnikb9/rBA6EwA3vIU9dooMKooQ=; b=zi5ypZRlNt2paB
+	z8NXFtm6JazA9B+shPg2bESnkrX1AtgW1ufAVDWFDcqll4fQ1VjwEOwOwSipZhgM7rZMnBdHYbJJx
+	ZWsDVHIrA53JbnFnQJvgnlY7ACfK/HOwj9LwZMaNcfFrq0j+89ch5zOH7h6vmtsQLd92UCSDIrG1q
+	sQhP015j89sb+c7xemC6mAlX8JmWJWaV2u7bpsh/NQNDg+i0Jjkig9KSwALlFgKaZFBvdXEUTpKV9
+	VQr5cSDPl0+nCoVpCHrfRgWsUgfnEqKkLMVs2hzn5/I3jwaXnCeldx6OdVCZVQtQivZI14s+q2453
+	fYl5667LyrP2LtzbwM4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDyNN-00FZMI-GI; Wed, 20 Jul 2022 01:19:45 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oDyO7-00FaQa-PY; Wed, 20 Jul 2022 01:20:31 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDyLI-00FW2A-0h; Wed, 20 Jul 2022 01:17:37 +0000
+	id 1oDyLw-00FXAi-RF; Wed, 20 Jul 2022 01:18:18 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 8863A6173B;
-	Wed, 20 Jul 2022 01:17:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 21507C341CA;
-	Wed, 20 Jul 2022 01:17:34 +0000 (UTC)
+	by sin.source.kernel.org (Postfix) with ESMTPS id D35FACE1E9A;
+	Wed, 20 Jul 2022 01:18:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D201C341C6;
+	Wed, 20 Jul 2022 01:18:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658279855;
-	bh=ZtW/0VVuXnVd4D9WDVweixR/stTys6Z95/e5OU0s8nk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=X0vfODJGrNfemZNUVgmoL6a118xfkIL6SIQFteauEkURgizV39Kcq/+0ZS8yr0h+t
-	 mSgDD4Kv3rIglFh76xc9ILFXFwWwF9vpIYFcRjiSqD1BNmjo9bEDs6mecEpq0WkLPF
-	 3Z/evs1r38xBXjDOmIOBexuC3QxORaKLuniMucphsI4FutcizEqov1FbfBC8sCNtjk
-	 aKlUUdpZCA9BWysXVb6+FXIR2Y+9SXBkqAbyUUiMTqWuRD4iSyua7XtUIPBOJtfkau
-	 ptD+A5EV3fCZzWrwk2PePlg6tBKiZ1mEIDJsDj0LWYjVJF0s7u3k/E7A38Q2lMAKkt
-	 +Ax8mYEErMbGA==
+	s=k20201202; t=1658279893;
+	bh=pb3cpnjBpEYa0WxQYvtBi3WfBxB0MMHYLLqnB4iubCw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=P5vakekvRaDP7bPeZU92Ec3LjPVrJllJ/XEMRScxCR559jiSA5Hlq4dkF+ExEOFPJ
+	 04SDaMekvwBYf0RqLD7ua+fsZRj1MeQFUdv7wfEMXF1C5GhWwLaCS/NFtPR/Pk9omC
+	 3oaaellv+mYZ1sID3j7y3FUSdL+qvcrY3A2ognSIPCo80A0ygPXmTqsFWnmLWXjCVH
+	 dqZP6a28B63mLg+syJvq0miDy5OuvmD6T+MC3NM1mDo60r8sSh+F/jHbTXl8UoTUzY
+	 iVn1vcdZTiXiE5iVxEkU7IXro9zqcYCqaiD39SavtfiQdWtMqUqqo2hYPhkffXdFXK
+	 Nr92cjWjiUidQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -50,18 +50,16 @@ Cc: Liang He <windhl@126.com>,
 	linux@armlinux.org.uk,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 02/16] ARM: rockchip: Add missing of_node_put() in rockchip_suspend_init()
-Date: Tue, 19 Jul 2022 21:17:16 -0400
-Message-Id: <20220720011730.1025099-2-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 1/8] ARM: rockchip: Add missing of_node_put() in rockchip_suspend_init()
+Date: Tue, 19 Jul 2022 21:18:03 -0400
+Message-Id: <20220720011810.1025308-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220720011730.1025099-1-sashal@kernel.org>
-References: <20220720011730.1025099-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220719_181736_120159_346E7C8C 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20220719_181817_107503_4FC371CD 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,10 +93,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/mach-rockchip/pm.c b/arch/arm/mach-rockchip/pm.c
-index 87389d9456b9..30d781d80fe0 100644
+index 0592534e0b88..66ea37a846c8 100644
 --- a/arch/arm/mach-rockchip/pm.c
 +++ b/arch/arm/mach-rockchip/pm.c
-@@ -311,7 +311,7 @@ void __init rockchip_suspend_init(void)
+@@ -318,7 +318,7 @@ void __init rockchip_suspend_init(void)
  					     &match);
  	if (!match) {
  		pr_err("Failed to find PMU node\n");
@@ -107,7 +105,7 @@ index 87389d9456b9..30d781d80fe0 100644
  	}
  	pm_data = (struct rockchip_pm_data *) match->data;
  
-@@ -320,9 +320,12 @@ void __init rockchip_suspend_init(void)
+@@ -327,9 +327,12 @@ void __init rockchip_suspend_init(void)
  
  		if (ret) {
  			pr_err("%s: matches init error %d\n", __func__, ret);
