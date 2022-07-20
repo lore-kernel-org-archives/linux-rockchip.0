@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C561C43334
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jul 2022 01:14:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58DB8C433EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 Jul 2022 01:16:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VFI8zh3ro9kD1STMhHAMs8NERe26ksyl7hqg7+uvOqI=; b=CmqPDy+Pp70p/M
-	rb/SIgiug+7eknl0eZrHITDlQxY2+QaiopwUeiA94sLMz/dWZnPuKMwyCbele/ymInqtGTqLNEDmq
-	9AgQd//wRHzqdqZh2pEtdlvxXLUdRRa1J+JqBwXOlmQ7qFgSl+sLeZBBQ2p1p8O3izu45Jz+DxPxl
-	nRoUK/dyT8MNAdJToY63+r1OXzgpyPParMFipZHQ49B5i3hAWJiP1Mv1a0ZemD2gkQmn/M9c1oY+2
-	amhggzoLZb8yvsJPfX3rkqru4bLMeAsbrCg+wgL5uRxDQbrK0jdBsT0Tw56RAHrSkTMS/g9KcGopn
-	nt4YXvKcHzeQERmzFE+g==;
+	List-Owner; bh=VFI8zh3ro9kD1STMhHAMs8NERe26ksyl7hqg7+uvOqI=; b=gY/Gisr4MdOMO/
+	mT9logeRJ5aeBM5DlEZCpXbDdsq76mrD2GzYl2rlZia6d7nogNRipi7M+DyWKDHC9kUDx+p3BU3RV
+	Hh2N04jMP5DxhKmgrRW5Dxgzh9tGXQjtVH+HIVMSFaOEPPgPL+ggztz7p8KQFyujwFpcg4jZjOHJq
+	A2+P6u88F8qQcNvnFRqD+SgGl1JHiSn++CP9c7HBuvdA9rrhxDl/7K13rkiiIse6MV5uWplcvCQ/t
+	DK3Ix/fDF3Zrcu0YQx7EbHTK04ZwFbrPyQREN1delDiyWsL87m+5QpcJzxxRbjPZoUYHtc9mrcCGj
+	APdhBA6DycM0jAGAC1Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDyI8-00FRGY-Pb; Wed, 20 Jul 2022 01:14:20 +0000
+	id 1oDyKU-00FUu4-VB; Wed, 20 Jul 2022 01:16:46 +0000
 Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oDyHm-00FQl5-QJ; Wed, 20 Jul 2022 01:14:00 +0000
+	id 1oDyK8-00FUEJ-GW; Wed, 20 Jul 2022 01:16:26 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 988ADB81DEA;
-	Wed, 20 Jul 2022 01:13:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 208A0C341D2;
-	Wed, 20 Jul 2022 01:13:54 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 1E1C0B81DE7;
+	Wed, 20 Jul 2022 01:16:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECFC8C341CF;
+	Wed, 20 Jul 2022 01:16:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1658279635;
+	s=k20201202; t=1658279780;
 	bh=ZtW/0VVuXnVd4D9WDVweixR/stTys6Z95/e5OU0s8nk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CFs9HMpMMDPrxgviPiwnERzphmqIpLz4B1O+MKqdUa8faPDLFGhLBCSK60ou43lPh
-	 S6GYSd00Sfm6emfQoqxOjMJYWES2IIqXGNpmv+IHwGsA2czTX/Ng7hEKBxaCwlErQC
-	 G3iIex7j7SRHm24kxApP9hDFj4FsLUJoiD/5Uvtl2/wOoJQSXydEUSzH7MallMdWvm
-	 qcSSjBoEHlDaRx5Nu/Lk8h+Y1oCx122N0Or/epffNlH2uOWQ+NANb+qvDER5+ZbSZp
-	 R6UC3F3w06cvtKAmbstF/ONAoUdd21ado2ydMuSFmzckAociNNrKqw72pTl1TFyoa/
-	 wGYRZaYTubB3g==
+	b=Fe7FErsw2QNY2bgd8htmJBkAzzBn4XDiVLCaSm0iQtRd8DZXTMF0tk/l+marveK2+
+	 rRgQPAA0+REktH/tcemn3sSP02lLG85v61IpANv8Ju2KC44SPbEHt2fdQngaUxd1bT
+	 ZS/zZkuBq2SzHKAWB9mV7CrjhhajA15DJ/5D2Imzy6a4fvyB5jRrJ986W7Jg/uP8QG
+	 Nd4KNVNU/CxDI/xXMn8ExwKTjV/I3chy+zFUTOpxtwRJgThFuTUvbP9fCI9nFpnfXR
+	 NXQwF++T05kZGtzu3ntNHp3jtado/dXyfmwxINk5Nzrc+5i80WlkIlw646XwUH111f
+	 IDjgaRhXwiS/A==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -50,18 +50,18 @@ Cc: Liang He <windhl@126.com>,
 	linux@armlinux.org.uk,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 02/42] ARM: rockchip: Add missing of_node_put() in rockchip_suspend_init()
-Date: Tue, 19 Jul 2022 21:13:10 -0400
-Message-Id: <20220720011350.1024134-2-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.10 02/25] ARM: rockchip: Add missing of_node_put() in rockchip_suspend_init()
+Date: Tue, 19 Jul 2022 21:15:53 -0400
+Message-Id: <20220720011616.1024753-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220720011350.1024134-1-sashal@kernel.org>
-References: <20220720011350.1024134-1-sashal@kernel.org>
+In-Reply-To: <20220720011616.1024753-1-sashal@kernel.org>
+References: <20220720011616.1024753-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220719_181359_131858_B94D8C36 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20220719_181624_830567_F62EDFE4 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
