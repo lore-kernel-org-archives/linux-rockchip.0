@@ -4,84 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6BBFCCA488
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jul 2022 16:18:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B40ACC43334
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jul 2022 16:19:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LNIiV75GhWSBgzG32f26gWtwCTLat22qiUtQe9Ov/qQ=; b=Bzo6t625lAyoHX
-	t4FAwhJ+VUBvYuh5GTBjfoWmBkGKMkyieDsRaJ5iF0Ky8mLkHhqg/SichlacBNlSFGYyjp0AcT2wq
-	hR0rjrKatWpjrnRPPOTKmklBujudmu1xntU4+0vtEcIqm+dInaar6inukrAqerza074EWCysSbUgq
-	wk2jSpOG3Ntc1W9ngHLq5Q1JjCYnDJcdgU9vWAQRVCqY+CrEYV8gCzqBKrIbfBHrzfg11iJXXg3K6
-	FsFkKjURhTsBD02z8uo2MudOydsMaF3A5q08Ufi6B4MUI61Rd/5HWSTdSuTraencxVCgLI2zeZhYR
-	XiHM0Y/MuwGlTPFO5rfw==;
+	List-Owner; bh=sX63MYA8llZZTfgyS9UzdHxo2ddCuovxOZ6qGmFswW0=; b=DTtEzN4BBn9/5m
+	Citc0Qqe0wNU0Xga1G6sHHHzL0GKaiIJ1xbmgZLXvqaQjCJ9JPW8wiZMpOePlO5QJW8ZYwpGpqSLb
+	670YoFQ+vHNpobYB7YKouoV8vNWqvmMoXRkRBLD/1X1Xh1Gc32uo8/3j8+ROi3WbyU6TE5z43E0Jt
+	OWfhs3ybWV5BPAKeFgh/ihK/kMs5GIehEXlRJ8yCwCBntHX9UvvbbXKk/gFTPOZfzm5tkodpBDjIO
+	XyvwvSN9qrn+0RJZ4ggR65Wbt/wIZ/sEZ0KvWfjjd/n2/qVu0kNEWG90AeK1qXLbs9VH9dFJx7cdB
+	gtHD9OBa+MZ7meiggYYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEYsl-009ozE-Vr; Thu, 21 Jul 2022 16:18:36 +0000
-Received: from mail-oi1-x22d.google.com ([2607:f8b0:4864:20::22d])
+	id 1oEYtB-009pMi-G5; Thu, 21 Jul 2022 16:19:01 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEYrp-009o6Q-IC; Thu, 21 Jul 2022 16:17:42 +0000
-Received: by mail-oi1-x22d.google.com with SMTP id s188so2614204oie.0;
-        Thu, 21 Jul 2022 09:17:37 -0700 (PDT)
+	id 1oEYsj-009ovy-Pd
+	for linux-rockchip@lists.infradead.org; Thu, 21 Jul 2022 16:18:36 +0000
+Received: by mail-ed1-x530.google.com with SMTP id x91so2812331ede.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 21 Jul 2022 09:18:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=qfxcejjHeyex4VQvosRLrnPyCM/B5UjLJM1CrVybsho=;
-        b=ofFRZAPpnml2jJbMgrn/nl6bQeWmr3qy34t+IReklvJN4V7QIAA8h5ia9LQaYE6XQK
-         Vk4dtCXg9EbHN72E1iZuYyVsC/ikG15WhtU8f7hUTgEtD/7Nso6sC+IgYKERI1LSLdMP
-         +sn4MvYjQJNRkcbr8kDyO97uLZJmzQ0bg3yVTb0cRzax8x4vbEYgGMOcUIVcMlIJcMAG
-         3oI8rp0Savf/0d8X/mZUpetOjGs9pAC4/A7j9NtmkKojWJiae6OURlq+5M8ykPcSWO4y
-         gLX6vAm8KuDP4H93QFzO7AtpJ44SOc/Ps3vTac0J0G7xqW0u40+gHiFbNacfJJGR75ST
-         S2lg==
+        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=Y7Sgywf3E5lnHflxXetoxFDIr/4IQhhtYrLjSpg3prA=;
+        b=zrvA2ZDk5alHLAzK3+XsnSX1ypJ7izkkIYVWjsxKjnKJtJsYJa7B3yNL8qPXrScfdj
+         hD7nuPlkWAuObYnHBieSn81xjt/FStU3maDbsst4tD8/EdgkpH3MFFZAILn5jpLfDYln
+         Yu5ubkVe555N8z+bf+nUd/Ll2l7aoADPK1AC5TWo0z4lYtymkuqerUm6ZNckLXODZqdd
+         2epvm8TS60m3LE7NYaWnBXrSwPWAbo4SgmB2bZzIhd06xVRKTZZIdJWFf1EG3r1XQe+C
+         012+UvnPxzTAkvJggqky1dAYyL2U/gFymhuehRupChupQz1/0WckVwc73Nmc3RjAltR+
+         8BuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=qfxcejjHeyex4VQvosRLrnPyCM/B5UjLJM1CrVybsho=;
-        b=ugGRwZePt64C4xoPf2RxxGjY+tyhC8Sq8eUGjmysVzM195pcQRV08uqVcG+Nv1lGme
-         8yg+CCrGlHVO4cITiPnBao7m3+U/OZTibVYOya+F/I8vCkt0rqPg9Ffnho4R9bHFQSI6
-         VHjeChMYYW5E7SfKY0HVv2gqrNQqtMdezhE8QOZuqo8aN2/um6ftIlcIwu5zOUzVn5Pk
-         J7s9WZTN8I7kO5E9HUUhrajlSXus13QLs/dkIXo2JAbu32yyPwjG9mso1CdhtxgmkHCa
-         e1xMlfPlakklQxXKUO0EXnWtUrcryCWJR8MKP1xuy9+siEsTzHriiocyTY88O1DT62Jg
-         55aw==
-X-Gm-Message-State: AJIora8MsXI6DfFra36amypHOQWofpnhz8sniHZBMI7R/wy5xwHuL2tL
-	QfTbWN829oLi5ivA7ov0nPU=
-X-Google-Smtp-Source: AGRyM1sJkIccVLZ8frleOkSwQSvhc5BeVyXQEXEkmc4NpSqHnPMg2NmWA5ialWtZjzm+RoW4Dac3fA==
-X-Received: by 2002:a05:6808:90e:b0:33a:7280:ba2 with SMTP id w14-20020a056808090e00b0033a72800ba2mr4981693oih.80.1658420256175;
-        Thu, 21 Jul 2022 09:17:36 -0700 (PDT)
-Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com. [76.183.134.35])
-        by smtp.gmail.com with ESMTPSA id cy18-20020a056830699200b0061cc06a886csm951732otb.9.2022.07.21.09.17.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 Jul 2022 09:17:35 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-pm@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	zhangqing@rock-chips.com,
-	zyw@rock-chips.com,
-	jon.lin@rock-chips.com,
-	sre@kernel.org,
-	heiko@sntech.de,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	lee.jones@linaro.org,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Maya Matuszczyk <maccraft123mc@gmail.com>
-Subject: [RESEND 3/4 v7] power: supply: Add charger driver for Rockchip RK817
-Date: Thu, 21 Jul 2022 11:17:17 -0500
-Message-Id: <20220721161718.29800-4-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220721161718.29800-1-macroalpha82@gmail.com>
-References: <20220721161718.29800-1-macroalpha82@gmail.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=Y7Sgywf3E5lnHflxXetoxFDIr/4IQhhtYrLjSpg3prA=;
+        b=dPQ8FACOz48m4DjYe4T41d9pdV1waqdp2PMYRrgD3AAB79Ciw0zdRgPbH/eZU96rOM
+         1x9+/2VEeg1uushaOpacnL91FSYewUfuj6GpiOzEJw93rSoiIwVE0O4iPD5VIuGTuXzl
+         2goNPnmraNKKRlMJFP8nnzojgKNZQ9jpIRVqcvMe0D/maomIOkd4a7NiRqtiiXGOGvXS
+         XFmerfQ/I1SL3LNvunojDxVX9wOxQHOJ+LycazRgCxJOEDSHFyOyvgH3cVhDL7rxN7nl
+         ojwTd7oNQhUxaOBFwlEpdMhyacqv+oNbFzi5cZVpoHvWYNnvJkC5OeX0U1nSIDnmHbaU
+         vGEQ==
+X-Gm-Message-State: AJIora9s8ESN8ZDwty8UR71jghwtT3hnxURNVCL7Cd2i//itG4JNbBbt
+	Vqr+TutJEMv0jOD9odbgxU9Rly87v00XuX2qWBoCuA==
+X-Google-Smtp-Source: AGRyM1s1NYSSPKZaycGflP/aF1QNGYR/Y9xz3FhNnWzw98xiIKwh3mRVWCLFiLeh/KNHrKgM56Ch6e+wV8LWRQsp7Hc=
+X-Received: by 2002:a05:6402:4381:b0:43b:cb55:ae3c with SMTP id
+ o1-20020a056402438100b0043bcb55ae3cmr519701edc.45.1658420310851; Thu, 21 Jul
+ 2022 09:18:30 -0700 (PDT)
 MIME-Version: 1.0
+References: <20220713162449.133738-1-sebastian.fricke@collabora.com>
+ <7be996ee-9977-129b-08e2-12bde7ac9cd7@arm.com> <f05896551f8545af3c7352a6bd38248e038b61d2.camel@collabora.com>
+ <20220721161609.zyhhg3smbusl6koz@basti-XPS-13-9310>
+In-Reply-To: <20220721161609.zyhhg3smbusl6koz@basti-XPS-13-9310>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Thu, 21 Jul 2022 13:18:19 -0300
+Message-ID: <CAAEAJfB1JCrVTVBMs_kFnuM1NrUi=j5+N9WAi6N5PUH5L6tHfw@mail.gmail.com>
+Subject: Re: [PATCH 0/6] RkVDEC HEVC driver
+To: Sebastian Fricke <sebastian.fricke@collabora.com>
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>, Robin Murphy <robin.murphy@arm.com>, 
+	linux-media <linux-media@vger.kernel.org>, =?UTF-8?Q?Jernej_=C5=A0krabec?= <jernej.skrabec@gmail.com>, 
+	Alex Bee <knaerzche@gmail.com>, Collabora Kernel ML <kernel@collabora.com>, 
+	Robert Beckett <bob.beckett@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Greg KH <gregkh@linuxfoundation.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+	"open list:STAGING SUBSYSTEM" <linux-staging@lists.linux.dev>, Yury Norov <yury.norov@gmail.com>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220721_091737_676089_93A08961 
-X-CRM114-Status: GOOD (  33.35  )
+X-CRM114-CacheID: sfid-20220721_091834_258123_9BA6801F 
+X-CRM114-Status: GOOD (  54.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,1222 +89,190 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
-
-Add support for the Rockchip rk817 battery charger integrated into the
-rk817 PMIC.
-
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
----
- drivers/power/supply/Kconfig         |    6 +
- drivers/power/supply/Makefile        |    1 +
- drivers/power/supply/rk817_charger.c | 1157 ++++++++++++++++++++++++++
- 3 files changed, 1164 insertions(+)
- create mode 100644 drivers/power/supply/rk817_charger.c
-
-diff --git a/drivers/power/supply/Kconfig b/drivers/power/supply/Kconfig
-index 1aa8323ad9f6..56e70a68679a 100644
---- a/drivers/power/supply/Kconfig
-+++ b/drivers/power/supply/Kconfig
-@@ -708,6 +708,12 @@ config CHARGER_BQ256XX
- 	  charge management and system power path management devices for single
- 	  cell Li-ion and Li-polymer batteries.
- 
-+config CHARGER_RK817
-+	tristate "Rockchip RK817 PMIC Battery Charger"
-+	depends on MFD_RK808
-+	help
-+	  Say Y to include support for Rockchip RK817 Battery Charger.
-+
- config CHARGER_SMB347
- 	tristate "Summit Microelectronics SMB3XX Battery Charger"
- 	depends on I2C
-diff --git a/drivers/power/supply/Makefile b/drivers/power/supply/Makefile
-index 7f02f36aea55..3040a1de81b8 100644
---- a/drivers/power/supply/Makefile
-+++ b/drivers/power/supply/Makefile
-@@ -91,6 +91,7 @@ obj-$(CONFIG_CHARGER_BQ2515X)	+= bq2515x_charger.o
- obj-$(CONFIG_CHARGER_BQ25890)	+= bq25890_charger.o
- obj-$(CONFIG_CHARGER_BQ25980)	+= bq25980_charger.o
- obj-$(CONFIG_CHARGER_BQ256XX)	+= bq256xx_charger.o
-+obj-$(CONFIG_CHARGER_RK817)	+= rk817_charger.o
- obj-$(CONFIG_CHARGER_SMB347)	+= smb347-charger.o
- obj-$(CONFIG_CHARGER_TPS65090)	+= tps65090-charger.o
- obj-$(CONFIG_CHARGER_TPS65217)	+= tps65217_charger.o
-diff --git a/drivers/power/supply/rk817_charger.c b/drivers/power/supply/rk817_charger.c
-new file mode 100644
-index 000000000000..65a846b7f79e
---- /dev/null
-+++ b/drivers/power/supply/rk817_charger.c
-@@ -0,0 +1,1157 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * Charger Driver for Rockchip rk817
-+ *
-+ * Copyright (c) 2021
-+ *
-+ * Authors: Maya Matuszczyk <maccraft123mc@gmail.com>
-+ *	    Chris Morgan <macromorgan@hotmail.com>
-+ */
-+
-+#include <linux/mfd/rk808.h>
-+#include <linux/irq.h>
-+#include <linux/of_gpio.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/power_supply.h>
-+#include <asm/unaligned.h>
-+
-+/* Charging statuses reported by hardware register */
-+enum rk817_charge_status {
-+	CHRG_OFF,
-+	DEAD_CHRG,
-+	TRICKLE_CHRG,
-+	CC_OR_CV_CHRG,
-+	CHARGE_FINISH,
-+	USB_OVER_VOL,
-+	BAT_TMP_ERR,
-+	BAT_TIM_ERR,
-+};
-+
-+/* Max charging current read to/written from hardware register.
-+ * Note how highest value corresponding to 0x7 is the lowest
-+ * current, this is per the datasheet.
-+ */
-+enum rk817_chg_cur {
-+	CHG_1A,
-+	CHG_1_5A,
-+	CHG_2A,
-+	CHG_2_5A,
-+	CHG_2_75A,
-+	CHG_3A,
-+	CHG_3_5A,
-+	CHG_0_5A,
-+};
-+
-+struct rk817_charger {
-+	struct device *dev;
-+	struct rk808 *rk808;
-+
-+	struct power_supply *bat_ps;
-+	struct power_supply *chg_ps;
-+	bool plugged_in;
-+	bool battery_present;
-+
-+	/* voltage_k and voltage_b values are used to calibrate the ADC
-+	 * voltage readings. While they are documented in the BSP kernel and
-+	 * datasheet as voltage_k and voltage_b, there is no further
-+	 * information explaining them in more detail.
-+	 */
-+
-+	uint32_t voltage_k;
-+	uint32_t voltage_b;
-+
-+	/* soc - state of charge - like the BSP this is stored as a percentage,
-+	 * to the thousandth. BSP has a display state of charge (dsoc) and a
-+	 * remaining state of charge (rsoc). This value will be used for both
-+	 * purposes here so we don't do any fancy math to try and "smooth" the
-+	 * charge and just report it as it is. Note for example an soc of 100
-+	 * is stored as 100000, an soc of 50 is stored as 50000, etc.
-+	 */
-+	int soc;
-+
-+	/* Capacity of battery when fully charged, equal or less than design
-+	 * capacity depending upon wear. BSP kernel saves to nvram in mAh,
-+	 * so this value is in mAh not the standard uAh.
-+	 */
-+	int fcc_mah;
-+
-+	/* Calibrate the SOC on a fully charged battery, this way we can use
-+	 * the calibrated SOC value to correct for columb counter drift.
-+	 */
-+	bool soc_cal;
-+
-+	/* Implementation specific immutable properties from device tree */
-+	int res_div;
-+	int sleep_enter_current_ua;
-+	int sleep_filter_current_ua;
-+	int bat_charge_full_design_uah;
-+	int bat_voltage_min_design_uv;
-+	int bat_voltage_max_design_uv;
-+
-+	/* Values updated periodically by driver for display. */
-+	int charge_now_uah;
-+	int volt_avg_uv;
-+	int cur_avg_ua;
-+	int max_chg_cur_ua;
-+	int max_chg_volt_uv;
-+	int charge_status;
-+	int charger_input_volt_avg_uv;
-+
-+	/* Work queue to periodically update values. */
-+	struct delayed_work work;
-+};
-+
-+/* ADC coefficients extracted from BSP kernel */
-+#define ADC_TO_CURRENT(adc_value, res_div)	\
-+	(adc_value * 172 / res_div)
-+
-+#define CURRENT_TO_ADC(current, samp_res)	\
-+	(current * samp_res / 172)
-+
-+#define CHARGE_TO_ADC(capacity, res_div)	\
-+	(capacity * res_div * 3600 / 172 * 1000)
-+
-+#define ADC_TO_CHARGE_UAH(adc_value, res_div)	\
-+	(adc_value / 3600 * 172 / res_div)
-+
-+static u8 rk817_chg_cur_to_reg(u32 chg_cur_ma)
-+{
-+	if (chg_cur_ma >= 3500)
-+		return CHG_3_5A;
-+	else if (chg_cur_ma >= 3000)
-+		return CHG_3A;
-+	else if (chg_cur_ma >= 2750)
-+		return CHG_2_75A;
-+	else if (chg_cur_ma >= 2500)
-+		return CHG_2_5A;
-+	else if (chg_cur_ma >= 2000)
-+		return CHG_2A;
-+	else if (chg_cur_ma >= 1500)
-+		return CHG_1_5A;
-+	else if (chg_cur_ma >= 1000)
-+		return CHG_1A;
-+	else if (chg_cur_ma >= 500)
-+		return CHG_0_5A;
-+	else
-+		return -EINVAL;
-+}
-+
-+static int rk817_chg_cur_from_reg(u8 reg)
-+{
-+	switch (reg) {
-+	case CHG_0_5A:
-+		return 500000;
-+	case CHG_1A:
-+		return 1000000;
-+	case CHG_1_5A:
-+		return 1500000;
-+	case CHG_2A:
-+		return 2000000;
-+	case CHG_2_5A:
-+		return 2500000;
-+	case CHG_2_75A:
-+		return 2750000;
-+	case CHG_3A:
-+		return 3000000;
-+	case CHG_3_5A:
-+		return 3500000;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static void rk817_bat_calib_vol(struct rk817_charger *charger)
-+{
-+	uint32_t vcalib0 = 0;
-+	uint32_t vcalib1 = 0;
-+	u8 bulk_reg[2];
-+
-+	/* calibrate voltage */
-+	regmap_bulk_read(charger->rk808->regmap, RK817_GAS_GAUGE_VCALIB0_H,
-+			 bulk_reg, 2);
-+	vcalib0 = get_unaligned_be16(bulk_reg);
-+
-+	regmap_bulk_read(charger->rk808->regmap, RK817_GAS_GAUGE_VCALIB1_H,
-+			 bulk_reg, 2);
-+	vcalib1 = get_unaligned_be16(bulk_reg);
-+
-+	/* values were taken from BSP kernel */
-+	charger->voltage_k = (4025 - 2300) * 1000 /
-+			     ((vcalib1 - vcalib0) ? (vcalib1 - vcalib0) : 1);
-+	charger->voltage_b = 4025 - (charger->voltage_k * vcalib1) / 1000;
-+}
-+
-+static void rk817_bat_calib_cur(struct rk817_charger *charger)
-+{
-+	u8 bulk_reg[2];
-+
-+	/* calibrate current */
-+	regmap_bulk_read(charger->rk808->regmap, RK817_GAS_GAUGE_IOFFSET_H,
-+			 bulk_reg, 2);
-+	regmap_bulk_write(charger->rk808->regmap, RK817_GAS_GAUGE_CAL_OFFSET_H,
-+			  bulk_reg, 2);
-+}
-+
-+/* note that only the fcc_mah is really used by this driver, the other values
-+ * are to ensure we can remain backwards compatible with the BSP kernel.
-+ */
-+static int rk817_record_battery_nvram_values(struct rk817_charger *charger)
-+{
-+	u8 bulk_reg[3];
-+	int ret;
-+
-+	/* write the soc value to the nvram location used by the BSP kernel
-+	 * for the dsoc value.
-+	 */
-+	put_unaligned_le24(charger->soc, bulk_reg);
-+	ret = regmap_bulk_write(charger->rk808->regmap, RK817_GAS_GAUGE_BAT_R1,
-+				bulk_reg, 3);
-+	if (ret < 0)
-+		return ret;
-+	/* write the same value to the nvram location used by the BSP kernel
-+	 * for the rsoc value.
-+	 */
-+	put_unaligned_le24(charger->soc, bulk_reg);
-+	ret = regmap_bulk_write(charger->rk808->regmap, RK817_GAS_GAUGE_DATA0,
-+				bulk_reg, 3);
-+	if (ret < 0)
-+		return ret;
-+	/* write the fcc_mah in mAh, just as the BSP kernel does. */
-+	put_unaligned_le24(charger->fcc_mah, bulk_reg);
-+	ret = regmap_bulk_write(charger->rk808->regmap, RK817_GAS_GAUGE_DATA3,
-+				bulk_reg, 3);
-+	if (ret < 0)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static int rk817_bat_calib_cap(struct rk817_charger *charger)
-+{
-+	struct rk808 *rk808 = charger->rk808;
-+	int tmp, charge_now, charge_now_adc, volt_avg;
-+	u8 bulk_reg[4];
-+
-+	/* Calibrate the soc and fcc on a fully charged battery */
-+
-+	if (charger->charge_status == CHARGE_FINISH && (!charger->soc_cal)) {
-+		/* soc should be 100000 and columb counter should show the full
-+		 * charge capacity. Note that if the device is unplugged for a
-+		 * period of several days the columb counter will have a large
-+		 * margin of error, so setting it back to the full charge on
-+		 * a completed charge cycle should correct this (my device was
-+		 * showing 33% battery after 3 days unplugged when it should
-+		 * have been closer to 95% based on voltage and charge
-+		 * current).
-+		 */
-+
-+		charger->soc = 100000;
-+		charge_now_adc = CHARGE_TO_ADC(charger->fcc_mah,
-+					       charger->res_div);
-+		put_unaligned_be32(charge_now_adc, bulk_reg);
-+		regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_Q_INIT_H3,
-+				  bulk_reg, 4);
-+
-+		charger->soc_cal = 1;
-+		dev_dbg(charger->dev,
-+			"Fully charged. SOC is %d, full capacity is %d\n",
-+			charger->soc, charger->fcc_mah * 1000);
-+	}
-+
-+	/* The columb counter can drift up slightly, so we should correct for
-+	 * it. But don't correct it until we're at 100% soc.
-+	 */
-+	if (charger->charge_status == CHARGE_FINISH && charger->soc_cal) {
-+		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_Q_PRES_H3,
-+				 bulk_reg, 4);
-+		charge_now_adc = get_unaligned_be32(bulk_reg);
-+		if (charge_now_adc < 0)
-+			return charge_now_adc;
-+		charge_now = ADC_TO_CHARGE_UAH(charge_now_adc,
-+					       charger->res_div);
-+
-+		/* Re-init columb counter with updated values to correct drift.
-+		 */
-+		if (charge_now / 1000 > charger->fcc_mah) {
-+			dev_dbg(charger->dev,
-+				"Recalibrating columb counter to %d uah\n",
-+				charge_now);
-+			/* Order of operations matters here to ensure we keep
-+			 * enough precision until the last step to keep from
-+			 * making needless updates to columb counter.
-+			 */
-+			charge_now_adc = CHARGE_TO_ADC(charger->fcc_mah,
-+					 charger->res_div);
-+			put_unaligned_be32(charge_now_adc, bulk_reg);
-+			regmap_bulk_write(rk808->regmap,
-+					  RK817_GAS_GAUGE_Q_INIT_H3,
-+					  bulk_reg, 4);
-+		}
-+	}
-+
-+	/* Calibrate the fully charged capacity when we previously had a full
-+	 * battery (soc_cal = 1) and are now empty (at or below minimum design
-+	 * voltage). If our columb counter is still positive, subtract that
-+	 * from our fcc value to get a calibrated fcc, and if our columb
-+	 * counter is negative add that to our fcc (but not to exceed our
-+	 * design capacity).
-+	 */
-+	regmap_bulk_read(charger->rk808->regmap, RK817_GAS_GAUGE_BAT_VOL_H,
-+			 bulk_reg, 2);
-+	tmp = get_unaligned_be16(bulk_reg);
-+	volt_avg = (charger->voltage_k * tmp) + 1000 * charger->voltage_b;
-+	if (volt_avg <= charger->bat_voltage_min_design_uv &&
-+	    charger->soc_cal) {
-+		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_Q_PRES_H3,
-+				 bulk_reg, 4);
-+		charge_now_adc = get_unaligned_be32(bulk_reg);
-+		charge_now = ADC_TO_CHARGE_UAH(charge_now_adc,
-+					       charger->res_div);
-+		/* Note, if charge_now is negative this will add it (what we
-+		 * want) and if it's positive this will subtract (also what
-+		 * we want).
-+		 */
-+		charger->fcc_mah = charger->fcc_mah - (charge_now / 1000);
-+
-+		dev_dbg(charger->dev,
-+			"Recalibrating full charge capacity to %d uah\n",
-+			charger->fcc_mah * 1000);
-+	}
-+
-+	rk817_record_battery_nvram_values(charger);
-+
-+	return 0;
-+}
-+
-+static void rk817_read_props(struct rk817_charger *charger)
-+{
-+	int tmp, reg;
-+	u8 bulk_reg[4];
-+
-+	/* Recalibrate voltage and current readings if we need to BSP does both
-+	 * on CUR_CALIB_UPD, ignoring VOL_CALIB_UPD. Curiously enough, both
-+	 * documentation and the BSP show that you perform an update if bit 7
-+	 * is 1, but you clear the status by writing a 1 to bit 7.
-+	 */
-+	regmap_read(charger->rk808->regmap, RK817_GAS_GAUGE_ADC_CONFIG1, &reg);
-+	if (reg & RK817_VOL_CUR_CALIB_UPD) {
-+		rk817_bat_calib_cur(charger);
-+		rk817_bat_calib_vol(charger);
-+		regmap_write_bits(charger->rk808->regmap,
-+				  RK817_GAS_GAUGE_ADC_CONFIG1,
-+				  RK817_VOL_CUR_CALIB_UPD,
-+				  RK817_VOL_CUR_CALIB_UPD);
-+	}
-+
-+	/* Update reported charge. */
-+	regmap_bulk_read(charger->rk808->regmap, RK817_GAS_GAUGE_Q_PRES_H3,
-+			 bulk_reg, 4);
-+	tmp = get_unaligned_be32(bulk_reg);
-+	charger->charge_now_uah = ADC_TO_CHARGE_UAH(tmp, charger->res_div);
-+	if (charger->charge_now_uah < 0)
-+		charger->charge_now_uah = 0;
-+	if (charger->charge_now_uah > charger->fcc_mah * 1000)
-+		charger->charge_now_uah = charger->fcc_mah * 1000;
-+
-+	/* Update soc based on reported charge. */
-+	charger->soc = charger->charge_now_uah * 100 / charger->fcc_mah;
-+
-+	/* Update reported voltage. */
-+	regmap_bulk_read(charger->rk808->regmap, RK817_GAS_GAUGE_BAT_VOL_H,
-+			 bulk_reg, 2);
-+	tmp = get_unaligned_be16(bulk_reg);
-+	charger->volt_avg_uv = (charger->voltage_k * tmp) + 1000 *
-+				charger->voltage_b;
-+
-+	/* Update reported current. Note value from registers is a signed 16
-+	 * bit int.
-+	 */
-+	regmap_bulk_read(charger->rk808->regmap, RK817_GAS_GAUGE_BAT_CUR_H,
-+			 bulk_reg, 2);
-+	tmp = (short int)get_unaligned_be16(bulk_reg);
-+	charger->cur_avg_ua = ADC_TO_CURRENT(tmp, charger->res_div);
-+
-+	/* Update the max charge current. This value shouldn't change, but we
-+	 * can read it to report what the PMIC says it is instead of simply
-+	 * returning the default value.
-+	 */
-+	regmap_read(charger->rk808->regmap, RK817_PMIC_CHRG_OUT, &reg);
-+	charger->max_chg_cur_ua =
-+		rk817_chg_cur_from_reg(reg & RK817_CHRG_CUR_SEL);
-+
-+	/* Update max charge voltage. Like the max charge current this value
-+	 * shouldn't change, but we can report what the PMIC says.
-+	 */
-+	regmap_read(charger->rk808->regmap, RK817_PMIC_CHRG_OUT, &reg);
-+	charger->max_chg_volt_uv = ((((reg & RK817_CHRG_VOL_SEL) >> 4) *
-+				    50000) + 4100000);
-+
-+	/* Check if battery still present. */
-+	regmap_read(charger->rk808->regmap, RK817_PMIC_CHRG_STS, &reg);
-+	charger->battery_present = (reg & RK817_BAT_EXS);
-+
-+	/* Get which type of charge we are using (if any). */
-+	regmap_read(charger->rk808->regmap, RK817_PMIC_CHRG_STS, &reg);
-+	charger->charge_status = (reg >> 4) & 0x07;
-+
-+	/* Get charger input voltage. Note that on my example hardware (an
-+	 * Odroid Go Advance) the voltage of the power connector is measured
-+	 * on the register labelled USB in the datasheet; I don't know if this
-+	 * is how it is designed or just a quirk of the implementation. I
-+	 * believe this will also measure the voltage of the USB output when in
-+	 * OTG mode, if that is the case we may need to change this in the
-+	 * future to return 0 if the power supply status is offline (I can't
-+	 * test this with my current implementation. Also, when the voltage
-+	 * should be zero sometimes the ADC still shows a single bit (which
-+	 * would register as 20000uv). When this happens set it to 0.
-+	 */
-+	regmap_bulk_read(charger->rk808->regmap, RK817_GAS_GAUGE_USB_VOL_H,
-+			 bulk_reg, 2);
-+	reg = get_unaligned_be16(bulk_reg);
-+	if (reg > 1) {
-+		tmp = ((charger->voltage_k * reg / 1000 + charger->voltage_b) *
-+		       60 / 46);
-+		charger->charger_input_volt_avg_uv = tmp * 1000;
-+	} else {
-+		charger->charger_input_volt_avg_uv = 0;
-+	}
-+
-+	/* Calibrate battery capacity and soc. */
-+	rk817_bat_calib_cap(charger);
-+}
-+
-+static int rk817_bat_get_prop(struct power_supply *ps,
-+		enum power_supply_property prop,
-+		union power_supply_propval *val)
-+{
-+	struct rk817_charger *charger = power_supply_get_drvdata(ps);
-+
-+	switch (prop) {
-+	case POWER_SUPPLY_PROP_PRESENT:
-+		val->intval = charger->battery_present;
-+		break;
-+	case POWER_SUPPLY_PROP_STATUS:
-+		if (charger->cur_avg_ua < 0) {
-+			val->intval = POWER_SUPPLY_STATUS_DISCHARGING;
-+			break;
-+		}
-+		switch (charger->charge_status) {
-+		case CHRG_OFF:
-+			val->intval = POWER_SUPPLY_STATUS_NOT_CHARGING;
-+			break;
-+		/* Dead charge is documented, but not explained. I never
-+		 * observed it but assume it's a pre-charge for a dead
-+		 * battery.
-+		 */
-+		case DEAD_CHRG:
-+		case TRICKLE_CHRG:
-+		case CC_OR_CV_CHRG:
-+			val->intval = POWER_SUPPLY_STATUS_CHARGING;
-+			break;
-+		case CHARGE_FINISH:
-+			val->intval = POWER_SUPPLY_STATUS_FULL;
-+			break;
-+		default:
-+			val->intval = POWER_SUPPLY_STATUS_UNKNOWN;
-+			return -EINVAL;
-+
-+		}
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_TYPE:
-+		switch (charger->charge_status) {
-+		case CHRG_OFF:
-+		case CHARGE_FINISH:
-+			val->intval = POWER_SUPPLY_CHARGE_TYPE_NONE;
-+			break;
-+		case TRICKLE_CHRG:
-+			val->intval = POWER_SUPPLY_CHARGE_TYPE_TRICKLE;
-+			break;
-+		case DEAD_CHRG:
-+		case CC_OR_CV_CHRG:
-+			val->intval = POWER_SUPPLY_CHARGE_TYPE_STANDARD;
-+			break;
-+		default:
-+			val->intval = POWER_SUPPLY_CHARGE_TYPE_UNKNOWN;
-+			break;
-+		}
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_FULL:
-+		val->intval = charger->fcc_mah * 1000;
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN:
-+		val->intval = charger->bat_charge_full_design_uah;
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_EMPTY_DESIGN:
-+		val->intval = 0;
-+		break;
-+	case POWER_SUPPLY_PROP_CHARGE_NOW:
-+		val->intval = charger->charge_now_uah;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN:
-+		val->intval = charger->bat_voltage_min_design_uv;
-+		break;
-+	case POWER_SUPPLY_PROP_CAPACITY:
-+		/* Add 500 so that values like 99999 are 100% not 99%. */
-+		val->intval = (charger->soc + 500) / 1000;
-+		if (val->intval > 100)
-+			val->intval = 100;
-+		if (val->intval < 0)
-+			val->intval = 0;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_AVG:
-+		val->intval = charger->volt_avg_uv;
-+		break;
-+	case POWER_SUPPLY_PROP_CURRENT_AVG:
-+		val->intval = charger->cur_avg_ua;
-+		break;
-+	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX:
-+		val->intval = charger->max_chg_cur_ua;
-+		break;
-+	case POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX:
-+		val->intval = charger->max_chg_volt_uv;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN:
-+		val->intval = charger->bat_voltage_max_design_uv;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+	return 0;
-+}
-+
-+static int rk817_chg_get_prop(struct power_supply *ps,
-+			      enum power_supply_property prop,
-+			      union power_supply_propval *val)
-+{
-+	struct rk817_charger *charger = power_supply_get_drvdata(ps);
-+
-+	switch (prop) {
-+	case POWER_SUPPLY_PROP_ONLINE:
-+		val->intval = charger->plugged_in;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN:
-+		/* max voltage from datasheet at 5.5v (default 5.0v) */
-+		val->intval = 5500000;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN:
-+		/* min voltage from datasheet at 3.8v (default 5.0v) */
-+		val->intval = 3800000;
-+		break;
-+	case POWER_SUPPLY_PROP_VOLTAGE_AVG:
-+		val->intval = charger->charger_input_volt_avg_uv;
-+		break;
-+	/* While it's possible that other implementations could use different
-+	 * USB types, the current implementation for this PMIC (the Odroid Go
-+	 * Advance) only uses a dedicated charging port with no rx/tx lines.
-+	 */
-+	case POWER_SUPPLY_PROP_USB_TYPE:
-+		val->intval = POWER_SUPPLY_USB_TYPE_DCP;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+	return 0;
-+
-+}
-+
-+static irqreturn_t rk817_plug_in_isr(int irq, void *cg)
-+{
-+	struct rk817_charger *charger;
-+
-+	charger = (struct rk817_charger *)cg;
-+	charger->plugged_in = 1;
-+	power_supply_changed(charger->chg_ps);
-+	power_supply_changed(charger->bat_ps);
-+	/* try to recalibrate capacity if we hit full charge. */
-+	charger->soc_cal = 0;
-+
-+	rk817_read_props(charger);
-+
-+	dev_dbg(charger->dev, "Power Cord Inserted\n");
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static irqreturn_t rk817_plug_out_isr(int irq, void *cg)
-+{
-+	struct rk817_charger *charger;
-+	struct rk808 *rk808;
-+
-+	charger = (struct rk817_charger *)cg;
-+	rk808 = charger->rk808;
-+	charger->plugged_in = 0;
-+	power_supply_changed(charger->bat_ps);
-+	power_supply_changed(charger->chg_ps);
-+
-+	/* For some reason the bits of RK817_PMIC_CHRG_IN reset whenever the
-+	 * power cord is unplugged. This was not documented in the BSP kernel
-+	 * or the datasheet and only discovered by trial and error. Set minimum
-+	 * USB input voltage to 4.5v and enable USB voltage input limit.
-+	 */
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN,
-+			  RK817_USB_VLIM_SEL, (0x05 << 4));
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN, RK817_USB_VLIM_EN,
-+			  (0x01 << 7));
-+
-+	/* Set average USB input current limit to 1.5A and enable USB current
-+	 * input limit.
-+	 */
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN,
-+			  RK817_USB_ILIM_SEL, 0x03);
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN, RK817_USB_ILIM_EN,
-+			  (0x01 << 3));
-+
-+	rk817_read_props(charger);
-+
-+	dev_dbg(charger->dev, "Power Cord Removed\n");
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static enum power_supply_property rk817_bat_props[] = {
-+	POWER_SUPPLY_PROP_PRESENT,
-+	POWER_SUPPLY_PROP_STATUS,
-+	POWER_SUPPLY_PROP_CHARGE_TYPE,
-+	POWER_SUPPLY_PROP_CHARGE_FULL,
-+	POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN,
-+	POWER_SUPPLY_PROP_CHARGE_EMPTY_DESIGN,
-+	POWER_SUPPLY_PROP_CHARGE_NOW,
-+	POWER_SUPPLY_PROP_CONSTANT_CHARGE_VOLTAGE_MAX,
-+	POWER_SUPPLY_PROP_VOLTAGE_AVG,
-+	POWER_SUPPLY_PROP_CONSTANT_CHARGE_CURRENT_MAX,
-+	POWER_SUPPLY_PROP_CURRENT_AVG,
-+	POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN,
-+	POWER_SUPPLY_PROP_CAPACITY,
-+	POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN,
-+};
-+
-+static enum power_supply_property rk817_chg_props[] = {
-+	POWER_SUPPLY_PROP_ONLINE,
-+	POWER_SUPPLY_PROP_USB_TYPE,
-+	POWER_SUPPLY_PROP_VOLTAGE_MAX_DESIGN,
-+	POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN,
-+	POWER_SUPPLY_PROP_VOLTAGE_AVG,
-+};
-+
-+static enum power_supply_usb_type rk817_usb_type[] = {
-+	POWER_SUPPLY_USB_TYPE_DCP,
-+	POWER_SUPPLY_USB_TYPE_UNKNOWN,
-+};
-+
-+static const struct power_supply_desc rk817_bat_desc = {
-+	.name = "rk817-battery",
-+	.type = POWER_SUPPLY_TYPE_BATTERY,
-+	.properties = rk817_bat_props,
-+	.num_properties = ARRAY_SIZE(rk817_bat_props),
-+	.get_property = rk817_bat_get_prop,
-+};
-+
-+static const struct power_supply_desc rk817_chg_desc = {
-+	.name = "rk817-charger",
-+	.type = POWER_SUPPLY_TYPE_USB,
-+	.usb_types = rk817_usb_type,
-+	.num_usb_types = ARRAY_SIZE(rk817_usb_type),
-+	.properties = rk817_chg_props,
-+	.num_properties = ARRAY_SIZE(rk817_chg_props),
-+	.get_property = rk817_chg_get_prop,
-+};
-+
-+static int rk817_read_battery_nvram_values(struct rk817_charger *charger)
-+{
-+	u8 bulk_reg[3];
-+	int ret;
-+
-+	/* Read the nvram data for full charge capacity. */
-+	ret = regmap_bulk_read(charger->rk808->regmap,
-+			       RK817_GAS_GAUGE_DATA3, bulk_reg, 3);
-+	if (ret < 0)
-+		return ret;
-+	charger->fcc_mah = get_unaligned_le24(bulk_reg);
-+
-+	/* Sanity checking for values equal to zero or less than would be
-+	 * practical for this device (BSP Kernel assumes 500mAH or less) for
-+	 * practicality purposes.
-+	 */
-+	if (charger->fcc_mah < 500) {
-+		dev_info(charger->dev,
-+			 "Invalid NVRAM max charge, setting to %u uAH\n",
-+			 charger->bat_charge_full_design_uah);
-+		charger->fcc_mah = charger->bat_charge_full_design_uah / 1000;
-+	}
-+
-+	/* Read the nvram for state of charge. */
-+	ret = regmap_bulk_read(charger->rk808->regmap,
-+			       RK817_GAS_GAUGE_BAT_R1, bulk_reg, 3);
-+	if (ret < 0)
-+		return ret;
-+	charger->soc = get_unaligned_le24(bulk_reg);
-+
-+	return 0;
-+}
-+
-+static int
-+rk817_read_or_set_full_charge_on_boot(struct rk817_charger *charger,
-+				struct power_supply_battery_info *bat_info)
-+{
-+	struct rk808 *rk808 = charger->rk808;
-+	u8 bulk_reg[4];
-+	u32 boot_voltage, boot_charge_mah, tmp;
-+	int ret, reg, off_time;
-+	int soc_tmp1, soc_tmp2, soc_tmp3;
-+	bool first_boot;
-+
-+	/* Check if the battery is uninitalized. If it is, the columb counter
-+	 * needs to be set up.
-+	 */
-+	ret = regmap_read(rk808->regmap, RK817_GAS_GAUGE_GG_STS, &reg);
-+	if (ret < 0)
-+		return ret;
-+	first_boot = reg & RK817_BAT_CON;
-+	/* If the battery is uninitialized, use the poweron voltage and an ocv
-+	 * lookup to guess our charge. The number won't be very accurate until
-+	 * we hit either our minimum voltage (0%) or full charge (100%).
-+	 */
-+	if (first_boot) {
-+		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_PWRON_VOL_H,
-+				 bulk_reg, 2);
-+		tmp = get_unaligned_be16(bulk_reg);
-+		boot_voltage = (charger->voltage_k * tmp) +
-+				1000 * charger->voltage_b;
-+		/* Since only implementation has no working thermistor, assume
-+		 * 20C for OCV lookup. If lookup fails, report error with OCV
-+		 * table.
-+		 */
-+		charger->soc = power_supply_batinfo_ocv2cap(bat_info,
-+							    boot_voltage,
-+							    20) * 1000;
-+		if (charger->soc < 0)
-+			charger->soc = 0;
-+
-+		/* Guess that full charge capacity is the design capacity */
-+		charger->fcc_mah = charger->bat_charge_full_design_uah / 1000;
-+		/* Set battery as "set up". BSP driver uses this value even
-+		 * though datasheet claims it's a read-only value.
-+		 */
-+		regmap_write_bits(rk808->regmap, RK817_GAS_GAUGE_GG_STS,
-+				  RK817_BAT_CON, 0);
-+		/* Save nvram values */
-+		ret = rk817_record_battery_nvram_values(charger);
-+		if (ret < 0)
-+			return ret;
-+	} else {
-+		ret = rk817_read_battery_nvram_values(charger);
-+		if (ret < 0)
-+			return ret;
-+
-+		regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_Q_PRES_H3,
-+				 bulk_reg, 4);
-+		tmp = get_unaligned_be32(bulk_reg);
-+		if (tmp < 0)
-+			tmp = 0;
-+		boot_charge_mah = ADC_TO_CHARGE_UAH(tmp,
-+						    charger->res_div) / 1000;
-+		/* Check if the columb counter has been off for more than 300
-+		 * minutes as it tends to drift downward. If so, re-init soc
-+		 * with the boot voltage instead. Note the unit values for the
-+		 * OFF_CNT register appear to be in decaminutes and stops
-+		 * counting at 2550 (0xFF) minutes. BSP kernel used OCV, but
-+		 * for me occasionally that would show invalid values. Boot
-+		 * voltage is only accurate for me on first poweron (not
-+		 * reboots), but we shouldn't ever encounter an OFF_CNT more
-+		 * than 0 on a reboot anyway.
-+		 */
-+		regmap_read(rk808->regmap, RK817_GAS_GAUGE_OFF_CNT, &off_time);
-+		if (off_time >= 30) {
-+			regmap_bulk_read(rk808->regmap,
-+					 RK817_GAS_GAUGE_PWRON_VOL_H,
-+					 bulk_reg, 2);
-+			tmp = get_unaligned_be16(bulk_reg);
-+			boot_voltage = (charger->voltage_k * tmp) +
-+					1000 * charger->voltage_b;
-+			charger->soc =
-+				power_supply_batinfo_ocv2cap(bat_info,
-+							     boot_voltage,
-+							     20) * 1000;
-+		} else {
-+			charger->soc = (boot_charge_mah * 1000 * 100 /
-+					charger->fcc_mah);
-+		}
-+	}
-+
-+	regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_PWRON_VOL_H,
-+			 bulk_reg, 2);
-+	tmp = get_unaligned_be16(bulk_reg);
-+	boot_voltage = (charger->voltage_k * tmp) + 1000 * charger->voltage_b;
-+	soc_tmp1 = power_supply_batinfo_ocv2cap(bat_info,
-+						boot_voltage, 20) * 1000;
-+	regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_Q_PRES_H3,
-+			 bulk_reg, 4);
-+	tmp = get_unaligned_be32(bulk_reg);
-+	if (tmp < 0)
-+		tmp = 0;
-+	boot_charge_mah = ADC_TO_CHARGE_UAH(tmp, charger->res_div) / 1000;
-+	soc_tmp2 = (boot_charge_mah * 1000 * 100 / charger->fcc_mah);
-+	regmap_bulk_read(rk808->regmap, RK817_GAS_GAUGE_OCV_VOL_H,
-+			 bulk_reg, 2);
-+	tmp = get_unaligned_be16(bulk_reg);
-+	boot_voltage = (charger->voltage_k * tmp) + 1000 * charger->voltage_b;
-+	soc_tmp3 = power_supply_batinfo_ocv2cap(bat_info,
-+						boot_voltage, 20) * 1000;
-+
-+	/* Now we have our full charge capacity and soc, init the columb
-+	 * counter.
-+	 */
-+	boot_charge_mah = charger->soc * charger->fcc_mah / 100 / 1000;
-+	if (boot_charge_mah > charger->fcc_mah)
-+		boot_charge_mah = charger->fcc_mah;
-+	tmp = CHARGE_TO_ADC(boot_charge_mah, charger->res_div);
-+	put_unaligned_be32(tmp, bulk_reg);
-+	ret = regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_Q_INIT_H3,
-+			  bulk_reg, 4);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* Set QMAX value to max design capacity. */
-+	tmp = CHARGE_TO_ADC((charger->bat_charge_full_design_uah / 1000),
-+			    charger->res_div);
-+	put_unaligned_be32(tmp, bulk_reg);
-+	ret = regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_Q_MAX_H3,
-+				bulk_reg, 4);
-+	if (ret < 0)
-+		return ret;
-+
-+	return 0;
-+}
-+
-+static int rk817_battery_init(struct rk817_charger *charger,
-+			      struct power_supply_battery_info *bat_info)
-+{
-+	struct rk808 *rk808 = charger->rk808;
-+	u32 tmp, max_chg_vol_mv, max_chg_cur_ma;
-+	u8 max_chg_vol_reg, chg_term_i_reg, max_chg_cur_reg;
-+	int ret, chg_term_ma;
-+	u8 bulk_reg[2];
-+
-+	/* Get initial plug state */
-+	regmap_read(rk808->regmap, RK817_SYS_STS, &tmp);
-+	charger->plugged_in = (tmp & RK817_PLUG_IN_STS);
-+
-+	/* Turn on all ADC functions to measure battery, USB, and sys voltage,
-+	 * as well as batt temp. Note only tested implementation so far does
-+	 * not use a battery with a thermistor.
-+	 */
-+	regmap_write(rk808->regmap, RK817_GAS_GAUGE_ADC_CONFIG0, 0xfc);
-+
-+	/* Set relax mode voltage sampling interval and ADC offset calibration
-+	 * interval to 8 minutes to mirror BSP kernel. Set voltage and current
-+	 * modes to average to mirror BSP kernel.
-+	 */
-+	regmap_write(rk808->regmap, RK817_GAS_GAUGE_GG_CON, 0x04);
-+
-+	/* Calibrate voltage like the BSP does here. */
-+	rk817_bat_calib_vol(charger);
-+
-+	/* Write relax threshold, derived from sleep enter current. */
-+	tmp = CURRENT_TO_ADC(charger->sleep_enter_current_ua,
-+			     charger->res_div);
-+	put_unaligned_be16(tmp, bulk_reg);
-+	regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_RELAX_THRE_H,
-+			  bulk_reg, 2);
-+
-+	/* Write sleep sample current, derived from sleep filter current. */
-+	tmp = CURRENT_TO_ADC(charger->sleep_filter_current_ua,
-+			     charger->res_div);
-+	put_unaligned_be16(tmp, bulk_reg);
-+	regmap_bulk_write(rk808->regmap, RK817_GAS_GAUGE_SLEEP_CON_SAMP_CUR_H,
-+			  bulk_reg, 2);
-+
-+	/* Restart battery relax voltage */
-+	regmap_write_bits(rk808->regmap, RK817_GAS_GAUGE_GG_STS,
-+			  RK817_RELAX_VOL_UPD, (0x0 << 2));
-+
-+	/* Set OCV Threshold Voltage to 127.5mV. This was hard coded like this
-+	 * in the BSP.
-+	 */
-+	regmap_write(rk808->regmap, RK817_GAS_GAUGE_OCV_THRE_VOL, 0xff);
-+
-+	/* Set maximum charging voltage to battery max voltage. Trying to be
-+	 * incredibly safe with these value, as setting them wrong could
-+	 * overcharge the battery, which would be very bad.
-+	 */
-+	max_chg_vol_mv = bat_info->constant_charge_voltage_max_uv / 1000;
-+	max_chg_cur_ma = bat_info->constant_charge_current_max_ua / 1000;
-+
-+	if (max_chg_vol_mv < 4100) {
-+		return dev_err_probe(charger->dev, -EINVAL,
-+		       "invalid max charger voltage, value %u unsupported\n",
-+			max_chg_vol_mv * 1000);
-+	}
-+	if (max_chg_vol_mv > 4450) {
-+		dev_info(charger->dev,
-+			 "Setting max charge voltage to 4450000uv\n");
-+		max_chg_vol_mv = 4450;
-+	}
-+
-+	if (max_chg_cur_ma < 500) {
-+		return dev_err_probe(charger->dev, -EINVAL,
-+		       "invalid max charger current, value %u unsupported\n",
-+		       max_chg_cur_ma * 1000);
-+	}
-+	if (max_chg_cur_ma > 3500)
-+		dev_info(charger->dev,
-+			 "Setting max charge current to 3500000ua\n");
-+
-+	/* Now that the values are sanity checked, if we subtract 4100 from the
-+	 * max voltage and divide by 50, we conviently get the exact value for
-+	 * the registers, which are 4.1v, 4.15v, 4.2v, 4.25v, 4.3v, 4.35v,
-+	 * 4.4v, and 4.45v; these correspond to values 0x00 through 0x07.
-+	 */
-+	max_chg_vol_reg = (max_chg_vol_mv - 4100) / 50;
-+
-+	max_chg_cur_reg = rk817_chg_cur_to_reg(max_chg_cur_ma);
-+
-+	if (max_chg_vol_reg < 0 || max_chg_vol_reg > 7) {
-+		return dev_err_probe(charger->dev, -EINVAL,
-+		       "invalid max charger voltage, value %u unsupported\n",
-+		       max_chg_vol_mv * 1000);
-+	}
-+	if (max_chg_cur_reg < 0 || max_chg_cur_reg > 7) {
-+		return dev_err_probe(charger->dev, -EINVAL,
-+		       "invalid max charger current, value %u unsupported\n",
-+		       max_chg_cur_ma * 1000);
-+	}
-+
-+	/* Write the values to the registers, and deliver an emergency warning
-+	 * in the event they are not written correctly.
-+	 */
-+	ret = regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_OUT,
-+				RK817_CHRG_VOL_SEL, (max_chg_vol_reg << 4));
-+	if (ret) {
-+		dev_emerg(charger->dev,
-+			  "Danger, unable to set max charger voltage: %u\n",
-+			  ret);
-+	}
-+
-+	ret = regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_OUT,
-+				RK817_CHRG_CUR_SEL, max_chg_cur_reg);
-+	if (ret) {
-+		dev_emerg(charger->dev,
-+			  "Danger, unable to set max charger current: %u\n",
-+			  ret);
-+	}
-+
-+	/* Set charge finishing mode to analog */
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_TERM,
-+			  RK817_CHRG_TERM_ANA_DIG, (0x0 << 2));
-+
-+	/* Set charge finish current, warn if value not in range and keep
-+	 * default.
-+	 */
-+	chg_term_ma = bat_info->charge_term_current_ua / 1000;
-+	if (chg_term_ma < 150 || chg_term_ma > 400) {
-+		dev_warn(charger->dev,
-+			 "Invalid charge termination %u, keeping default\n",
-+			 chg_term_ma * 1000);
-+		chg_term_ma = 200;
-+	}
-+
-+	/* Values of 150ma, 200ma, 300ma, and 400ma correspond to 00, 01, 10,
-+	 * and 11.
-+	 */
-+	chg_term_i_reg = (chg_term_ma - 100) / 100;
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_TERM,
-+			  RK817_CHRG_TERM_ANA_SEL, chg_term_i_reg);
-+
-+	ret = rk817_read_or_set_full_charge_on_boot(charger, bat_info);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* Set minimum USB input voltage to 4.5v and enable USB voltage input
-+	 * limit.
-+	 */
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN,
-+			  RK817_USB_VLIM_SEL, (0x05 << 4));
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN, RK817_USB_VLIM_EN,
-+			  (0x01 << 7));
-+
-+	/* Set average USB input current limit to 1.5A and enable USB current
-+	 * input limit.
-+	 */
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN,
-+			  RK817_USB_ILIM_SEL, 0x03);
-+	regmap_write_bits(rk808->regmap, RK817_PMIC_CHRG_IN, RK817_USB_ILIM_EN,
-+			  (0x01 << 3));
-+
-+	return 0;
-+}
-+
-+static void rk817_charging_monitor(struct work_struct *work)
-+{
-+	struct rk817_charger *charger;
-+
-+	charger = container_of(work, struct rk817_charger, work.work);
-+
-+	rk817_read_props(charger);
-+
-+	/* Run every 8 seconds like the BSP driver did. */
-+	schedule_delayed_work(&charger->work, msecs_to_jiffies(8000));
-+}
-+
-+static int rk817_charger_probe(struct platform_device *pdev)
-+{
-+	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
-+	struct rk817_charger *charger;
-+	struct device_node *node;
-+	struct power_supply_battery_info *bat_info;
-+	struct device *dev = &pdev->dev;
-+	struct power_supply_config pscfg = {};
-+	int plugin_irq, plugout_irq;
-+	int of_value;
-+	int ret;
-+
-+	node = of_get_child_by_name(dev->parent->of_node, "charger");
-+	if (!node)
-+		return -ENODEV;
-+
-+	charger = devm_kzalloc(&pdev->dev, sizeof(*charger), GFP_KERNEL);
-+	if (!charger)
-+		return -ENOMEM;
-+
-+	charger->rk808 = rk808;
-+
-+	charger->dev = &pdev->dev;
-+	platform_set_drvdata(pdev, charger);
-+
-+	rk817_bat_calib_vol(charger);
-+
-+	pscfg.drv_data = charger;
-+	pscfg.of_node = node;
-+
-+	/* Get sample resistor value. Note only values of 10000 or 20000
-+	 * microohms are allowed. Schematic for my test implementation (an
-+	 * Odroid Go Advance) shows a 10 milliohm resistor for reference.
-+	 */
-+	ret = of_property_read_u32(node, "rockchip,resistor-sense-micro-ohms",
-+				   &of_value);
-+	if (ret < 0) {
-+		return dev_err_probe(dev, ret,
-+				     "Error reading sample resistor value\n");
-+	}
-+	/* Store as a 1 or a 2, since all we really use the value for is as a
-+	 * divisor in some calculations.
-+	 */
-+	charger->res_div = (of_value == 20000) ? 2 : 1;
-+
-+	/* Get sleep enter current value. Not sure what this value is for
-+	 * other than to help calibrate the relax threshold.
-+	 */
-+	ret = of_property_read_u32(node,
-+				   "rockchip,sleep-enter-current-microamp",
-+				   &of_value);
-+	if (ret < 0) {
-+		return dev_err_probe(dev, ret,
-+				     "Error reading sleep enter cur value\n");
-+	}
-+	charger->sleep_enter_current_ua = of_value;
-+
-+	/* Get sleep filter current value */
-+	ret = of_property_read_u32(node,
-+				   "rockchip,sleep-filter-current-microamp",
-+				   &of_value);
-+	if (ret < 0) {
-+		return dev_err_probe(dev, ret,
-+				     "Error reading sleep filter cur value\n");
-+	}
-+
-+	charger->sleep_filter_current_ua = of_value;
-+
-+	charger->bat_ps = devm_power_supply_register(&pdev->dev,
-+						     &rk817_bat_desc, &pscfg);
-+
-+	charger->chg_ps = devm_power_supply_register(&pdev->dev,
-+						     &rk817_chg_desc, &pscfg);
-+
-+	if (IS_ERR(charger->chg_ps))
-+		return dev_err_probe(dev, -EINVAL,
-+				     "Battery failed to probe\n");
-+
-+	if (IS_ERR(charger->chg_ps))
-+		return dev_err_probe(dev, -EINVAL,
-+				     "Charger failed to probe\n");
-+
-+	ret = power_supply_get_battery_info(charger->bat_ps,
-+					    &bat_info);
-+	if (ret) {
-+		return dev_err_probe(dev, ret,
-+				     "Unable to get battery info: %d\n", ret);
-+	}
-+
-+	if ((!bat_info->charge_full_design_uah) ||
-+	    (!bat_info->voltage_min_design_uv) ||
-+	    (!bat_info->voltage_max_design_uv) ||
-+	    (!bat_info->constant_charge_voltage_max_uv) ||
-+	    (!bat_info->constant_charge_current_max_ua) ||
-+	    (!bat_info->charge_term_current_ua)) {
-+		return dev_err_probe(dev, -EINVAL,
-+				     "Required battery info missing.\n");
-+	}
-+
-+	charger->bat_charge_full_design_uah = bat_info->charge_full_design_uah;
-+	charger->bat_voltage_min_design_uv = bat_info->voltage_min_design_uv;
-+	charger->bat_voltage_max_design_uv = bat_info->voltage_max_design_uv;
-+
-+	/* Has to run after power_supply_get_battery_info as it depends on some
-+	 * values discovered from that routine.
-+	 */
-+	ret = rk817_battery_init(charger, bat_info);
-+	if (ret)
-+		return ret;
-+
-+	power_supply_put_battery_info(charger->bat_ps, bat_info);
-+
-+	plugin_irq = platform_get_irq(pdev, 0);
-+	if (plugin_irq < 0)
-+		return plugin_irq;
-+
-+	plugout_irq = platform_get_irq(pdev, 1);
-+	if (plugout_irq < 0)
-+		return plugout_irq;
-+
-+	ret = devm_request_threaded_irq(charger->dev, plugin_irq, NULL,
-+					rk817_plug_in_isr,
-+					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
-+					"rk817_plug_in", charger);
-+	if (ret) {
-+		return dev_err_probe(&pdev->dev, ret,
-+				      "plug_in_irq request failed!\n");
-+	}
-+
-+	ret = devm_request_threaded_irq(charger->dev, plugout_irq, NULL,
-+					rk817_plug_out_isr,
-+					IRQF_TRIGGER_RISING | IRQF_ONESHOT,
-+					"rk817_plug_out", charger);
-+	if (ret) {
-+		return dev_err_probe(&pdev->dev, ret,
-+				     "plug_out_irq request failed!\n");
-+	}
-+
-+	INIT_DELAYED_WORK(&charger->work, rk817_charging_monitor);
-+	/* Get and populate the first set of values. */
-+	schedule_delayed_work(&charger->work, 0);
-+
-+	return 0;
-+}
-+
-+
-+static struct platform_driver rk817_charger_driver = {
-+	.probe    = rk817_charger_probe,
-+	.driver   = {
-+		.name  = "rk817-charger",
-+	},
-+};
-+module_platform_driver(rk817_charger_driver);
-+
-+MODULE_DESCRIPTION("Battery power supply driver for RK817 PMIC");
-+MODULE_AUTHOR("Maya Matuszczyk <maccraft123mc@gmail.com>");
-+MODULE_LICENSE("GPL");
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBKdWwgMjEsIDIwMjIgYXQgMToxNiBQTSBTZWJhc3RpYW4gRnJpY2tlCjxzZWJhc3Rp
+YW4uZnJpY2tlQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Cj4gSGV5IE5pY29sYXMgJiBSb2JpbiwK
+Pgo+IFRoYW5rcyBmb3IgdGhlIGZlZWRiYWNrLgo+Cj4gT24gMTUuMDcuMjAyMiAxMTozNiwgTmlj
+b2xhcyBEdWZyZXNuZSB3cm90ZToKPiA+TGUgdmVuZHJlZGkgMTUganVpbGxldCAyMDIyIMOgIDEy
+OjA0ICswMTAwLCBSb2JpbiBNdXJwaHkgYSDDqWNyaXQgOgo+ID4+IE9uIDIwMjItMDctMTMgMTc6
+MjQsIFNlYmFzdGlhbiBGcmlja2Ugd3JvdGU6Cj4gPj4gPiBJbXBsZW1lbnQgdGhlIEhFVkMgY29k
+ZWMgdmFyaWF0aW9uIGZvciB0aGUgUmtWREVDIGRyaXZlci4gQ3VycmVudGx5IG9ubHkKPiA+PiA+
+IHRoZSBSSzMzOTkgaXMgc3VwcG9ydGVkLCBidXQgaXQgaXMgcG9zc2libGUgdG8gZW5hYmxlIHRo
+ZSBSSzMyODggYXMgaXQKPiA+PiA+IGFsc28gc3VwcG9ydHMgdGhpcyBjb2RlYy4KPiA+PiA+Cj4g
+Pj4gPiBCYXNlZCBvbiB0b3Agb2YgdGhlIG1lZGlhIHRyZWUgQGVmN2ZjYmJiOWVhYmJlODZkMjI4
+NzQ4NGJmMzY2ZGQxODIxY2M2YjgKPiA+PiA+IGFuZCB0aGUgSEVWQyB1QUJJIE1SIGJ5IEJlbmph
+bWluIEdhaWduYXJkLgo+ID4+ID4gKGh0dHBzOi8vcGF0Y2h3b3JrLmxpbnV4dHYub3JnL3Byb2pl
+Y3QvbGludXgtbWVkaWEvbGlzdC8/c2VyaWVzPTgzNjApCj4gPj4gPgo+ID4+ID4gVGVzdGVkIHdp
+dGggdGhlIEdTdHJlYW1lciBWNEwyIEhFVkMgcGx1Z2luOgo+ID4+ID4gKGh0dHBzOi8vZ2l0bGFi
+LmZyZWVkZXNrdG9wLm9yZy9nc3RyZWFtZXIvZ3N0cmVhbWVyLy0vbWVyZ2VfcmVxdWVzdHMvMTA3
+OSkKPiA+PiA+Cj4gPj4gPiBDdXJyZW50IEZsdXN0ZXIgc2NvcmU6Cj4gPj4gPiBgUmFuIDEzMS8x
+NDcgdGVzdHMgc3VjY2Vzc2Z1bGx5ICAgICAgICAgICAgICAgaW4gMjc4LjU2OCBzZWNzYAo+ID4+
+ID4gd2l0aAo+ID4+ID4gYHB5dGhvbjMgZmx1c3Rlci5weSBydW4gLWQgR1N0cmVhbWVyLUguMjY1
+LVY0TDJTTC1Hc3QxLjAgLXRzIEpDVC1WQy1IRVZDX1YxIC1qMWAKPiA+PiA+Cj4gPj4gPiBmYWls
+ZWQgY29uZm9ybWFuY2UgdGVzdHM6Cj4gPj4gPiAtIERCTEtfRF9WSVhTXzIgKFN1Y2Nlc3Mgb24g
+SGFudHJvIEcyKQo+ID4+ID4gLSBEU0xJQ0VfQV9ISElfNSAoU3VjY2VzcyBvbiBIYW50cm8gRzIp
+Cj4gPj4gPiAtIEVYVF9BX2VyaWNzc29uXzQgKFN1Y2Nlc3Mgb24gSGFudHJvIEcyKQo+ID4+ID4g
+LSBQSUNTSVpFX0FfQm9zc2VuXzEgKEhhcmR3YXJlIGxpbWl0YXRpb24pCj4gPj4gPiAtIFBJQ1NJ
+WkVfQl9Cb3NzZW5fMSAoSGFyZHdhcmUgbGltaXRhdGlvbikKPiA+PiA+IC0gUElDU0laRV9DX0Jv
+c3Nlbl8xIChIYXJkd2FyZSBsaW1pdGF0aW9uKQo+ID4+ID4gLSBQSUNTSVpFX0RfQm9zc2VuXzEg
+KEhhcmR3YXJlIGxpbWl0YXRpb24pCj4gPj4gPiAtIFBQU19BX3F1YWxjb21tXzcgKFN1Y2Nlc3Mg
+b24gSGFudHJvIEcyKQo+ID4+ID4gLSBTQU9EQkxLX0FfTWFpbkNvbmNlcHRfNCAoU3VjY2VzcyBv
+biBIYW50cm8gRzIpCj4gPj4gPiAtIFNBT0RCTEtfQl9NYWluQ29uY2VwdF80IChTdWNjZXNzIG9u
+IEhhbnRybyBHMikKPiA+PiA+IC0gU0xJU1RfQl9Tb255XzkgKFN1Y2Nlc3Mgb24gSGFudHJvIEcy
+KQo+ID4+ID4gLSBTTElTVF9EX1NvbnlfOSAoU3VjY2VzcyBvbiBIYW50cm8gRzIpCj4gPj4gPiAt
+IFRTVU5FUUJEX0FfTUFJTjEwX1RlY2huaWNvbG9yXzIgKFN1Y2Nlc3Mgb24gSGFudHJvIEcyKQo+
+ID4+ID4gLSBWUFNTUFNQUFNfQV9NYWluQ29uY2VwdF8xIChTdWNjZXNzIG9uIEhhbnRybyBHMikK
+PiA+PiA+IC0gV1BQX0RfZXJpY3Nzb25fTUFJTjEwXzIgKEZhaWwgb24gSGFudHJvIEcyKQo+ID4+
+ID4gLSBXUFBfRF9lcmljc3Nvbl9NQUlOXzIgKEZhaWwgb24gSGFudHJvIEcyKQo+ID4+ID4KPiA+
+PiA+IE5vdCB0ZXN0ZWQgd2l0aCBGRk1wZWcgc28gZmFyLgo+ID4+ID4KPiA+PiA+IEtub3duIGlz
+c3VlczoKPiA+PiA+IC0gVW5hYmxlIHRvIHJlbGlhYmx5IGRlY29kZSBtdWx0aXBsZSB2aWRlb3Mg
+Y29uY3VycmVudGx5Cj4gPj4gPiAtIFRoZSBTQU9EQkxLXyogdGVzdHMgdGltZW91dCBpZiB0aGUg
+dGltZW91dCB0aW1lIGluIGZsdXN0ZXIgaXMgbG93ZXIgdGhhbiAxMjAKPiA+PiA+IC0gQ3VycmVu
+dGx5IHRoZSB1dl92aXJzdHJpZGUgaXMgY2FsY3VsYXRlZCBpbiBhIG1hbm5lciB0aGF0IGlzIGhh
+cmRjb2RlZAo+ID4+ID4gZm9yIHRoZSB0d28gYXZhaWxhYmxlIGZvcm1hdHMgTlYxMiBhbmQgTlYx
+NS4gKEBjb25maWdfcmVnaXN0ZXJzKQo+ID4+ID4KPiA+PiA+IE5vdGFibGUgZGVzaWduIGRlY2lz
+aW9uczoKPiA+PiA+IC0gSSBvcHRlZCBmb3IgYSBiaXRmaWVsZCB0byByZXByZXNlbnQgdGhlIFBQ
+UyBtZW1vcnkgYmxvYiBhcyBpdCBpcyB0aGUKPiA+PiA+IHBlcmZlY3QgdG9vbCBmb3IgdGhhdCBq
+b2IuIEl0IGRlc2NyaWJlcyB0aGUgbWVtb3J5IGxheW91dCB3aXRoIGFueQo+ID4+ID4gYWRkaXRp
+b25hbCByZXF1aXJlZCBkb2N1bWVudGF0aW9uLCBpcyBlYXN5IHRvIHJlYWQgYW5kIGEgbmF0aXZl
+IGxhbmd1YWdlCj4gPj4gPiB0b29sIGZvciB0aGF0IGpvYgo+ID4+Cj4gPj4gQ2FuIEkgcG9pbnQg
+b3V0IGhvdyB0ZXJyaWJsZSBhbiBpZGVhIHRoaXMgaXM/IFRoZSBDIGxhbmd1YWdlIGdpdmVzCj4g
+Pj4gdmlydHVhbGx5IHplcm8gZ3VhcmFudGVlIGFib3V0IGhvdyBiaXRmaWVsZHMgYXJlIGFjdHVh
+bGx5IHJlcHJlc2VudGVkIGluCj4gPj4gbWVtb3J5LiBQbGF0Zm9ybSBBQklzIChlLmcuIFsxXSkg
+bWlnaHQgbmFpbCB0aGluZ3MgZG93biBhIGJpdCBtb3JlLCBidXQKPiA+PiBkaWZmZXJlbnQgcGxh
+dGZvcm1zIGFyZSBmcmVlIHRvIG1ha2UgY29tcGxldGVseSBkaWZmZXJlbnQgY2hvaWNlcyBzbwo+
+ID4+IHBvcnRhYmlsaXR5IHN0aWxsIGdvZXMgb3V0IHRoZSB3aW5kb3cuIEV2ZW4gZm9yIGEgc2lu
+Z2xlIHBsYXRmb3JtLAo+ID4+IGRpZmZlcmVudCBjb21waWxlcnMgKG9yIGF0IHdvcnN0IGV2ZW4g
+ZGlmZmVyZW50IHZlcnNpb24gb2Ygb25lIGNvbXBpbGVyKQo+ID4+IGNhbiBzdGlsbCBtYWtlIGlu
+Y29tcGF0aWJsZSBjaG9pY2VzIGUuZy4gV1JUIGFsaWdubWVudCBvZiBwYWNrZWQKPiA+PiBtZW1i
+ZXJzLiBFdmVuIGlmIHlvdSBuYXJyb3cgdGhlIHNjb3BlIGFzIGZhciBhcyBhIHNwZWNpZmljIHZl
+cnNpb24gb2YKPiA+PiBBQXJjaDY0IEdDQywgSSB0aGluayB0aGlzIGlzIHN0aWxsIHRvdGFsbHkg
+YnJva2VuIGZvciBiaWctZW5kaWFuLgo+ID4+Cj4gPj4gVGhlIGZhY3QgdGhhdCB5b3UndmUgaGFk
+IHRvIHVzZSBub25zZW5zaWNhbCB0eXBlcyB0byB0cmljayBhIGNvbXBpbGVyCj4gPj4gaW50byBt
+ZWV0aW5nIHlvdXIgZXhwZWN0YXRpb25zIHNob3VsZCBhbHJlYWR5IGJlIGEgY2x1ZSB0byBob3cg
+ZnJhZ2lsZQo+ID4+IHRoaXMgaXMgaW4gZ2VuZXJhbC4KPiA+Pgo+ID4+ID4gLSBUaGUgUlBTIG1l
+bW9yeSBibG9iIGlzIGNyZWF0ZWQgdXNpbmcgYSBiaXRtYXAgaW1wbGVtZW50YXRpb24sIHdoaWNo
+Cj4gPj4gPiB1c2VzIGEgY29tbW9uIEtlcm5lbCBBUEkgdG8gYXZvaWQgcmVpbnZlbnRpbmcgdGhl
+IHdoZWVsIGFuZCB0byBrZWVwIHRoZQo+ID4+ID4gY29kZSBjbGVhbi4KPiA+Pgo+ID4+IFNpbWls
+YXJseSwgTGludXggYml0bWFwcyBhcmUgZGVzaWduZWQgZm9yIHVzZSBhcywgd2VsbCwgYml0bWFw
+cy4gQWJ1c2luZwo+ID4+IHRoZW0gYXMgYSBkYXRhIGludGVyY2hhbmdlIGZvcm1hdCBmb3IgYml0
+LWFsaWduZWQgbnVtZXJpY2FsIHZhbHVlcyBpcwo+ID4+IGZhciBmcm9tICJjbGVhbiIgc2VtYW50
+aWNhbGx5LiBBbmQgSSdtIHByZXR0eSBzdXJlIGl0J3MgYWxzbyBicm9rZW4gZm9yCj4gPj4gYmln
+LWVuZGlhbi4KPiA+Pgo+ID4+IFRoaXMga2luZCBvZiBzdHVmZiBtYXkgYmUgc3RhbmRhcmQgcHJh
+Y3RpY2UgaW4gZW1iZWRkZWQgZGV2ZWxvcG1lbnQKPiA+PiB3aGVyZSB5b3UncmUgdGFyZ2V0aW5n
+IGEgc3BlY2lmaWMgTUNVIHdpdGggYSBzcGVjaWZpYyB0b29sY2hhaW4sIGJ1dCBJCj4gPj4gZG9u
+J3QgYmVsaWV2ZSBpdCdzIHN1aXRhYmxlIGZvciB1cHN0cmVhbSBMaW51eC4gSXQgd291bGQgdGFr
+ZSBwcmV0dHkKPiA+PiBtdWNoIHRoZSBzYW1lIG51bWJlciBvZiBsaW5lcyB0byB1c2UgR0VOTUFT
+SyBkZWZpbml0aW9ucyBhbmQgYml0ZmllbGQuaAo+ID4+IGhlbHBlcnMgdG8gcGFjayB2YWx1ZXMg
+aW50byB3b3JkcyB3aGljaCBjYW4gdGhlbiBiZSB3cml0dGVuIHRvIG1lbW9yeSBpbgo+ID4+IGEg
+Z3VhcmFudGVlZCBmb3JtYXQgYW5kIGVuZGlhbm5lc3MgKGNlcnRhaW5seSBmb3IgdGhlIFBQUzsg
+Zm9yIHRoZSBSUFMKPiA+PiBpdCBtYXkgd2VsbCBlbmQgdXAgYSBiaXQgbG9uZ2VyLCBidXQgd291
+bGQgYmUgc2VsZi1kb2N1bWVudGluZyBhbmQKPiA+PiBjZXJ0YWlubHkgbW9yZSByZWFkYWJsZSB0
+aGFuIHRob3NlIGxvb3BzKS4gSXQgbW9zdGx5IGp1c3QgbWVhbnMgdGhhdCBmb3IKPiA+PiBhbnkg
+ZmllbGQgd2hpY2ggY3Jvc3NlcyBhIHdvcmQgYm91bmRhcnkgeW91J2xsIGVuZCB1cCB3aXRoIDIg
+ZGVmaW5pdGlvbnMKPiA+PiBhbmQgMiBhc3NpZ25tZW50cywgd2hpY2ggaXMgaGFyZGx5IGEgcHJv
+YmxlbSAoYW5kIGluIHNvbWUgd2F5cyBtb3JlCj4gPj4gaG9uZXN0IGFib3V0IHdoYXQncyBhY3R1
+YWxseSBnb2luZyBvbikuCj4gPgo+ID5UaGFua3MgZm9yIHRoZSBmZWVkYmFjaywgaW4gbXVsdGlt
+ZWRpYSAodW5saWtlIHJlZ2lzdGVyIHByb2dyYW1taW5nKSwgd2UgZG9uJ3QKPiA+cmVhbGx5IGNv
+bnNpZGVyIGJpdHN0cmVhbXMgYXMgYml0bWFwIG9yIGJpdGZpZWxkLiBXaGF0IHdlIGRvIHJlYWxs
+eSBleHBlY3QgaXMgdG8KPiA+dXNlIGJpdCB3cml0ZXIgaGVscGVycyAoYW5kIHNvbWV0aW1lcyBh
+IGJpdCByZWFkZXIgdGhvdWdoIHdlIHRyeSBhbmQgYXZvaWQgdGhlCj4gPnNlY29uZCBvbmUgaW4g
+dGhlICBrZXJuZWwpLiBJdHMgbW9yZSBvZiBsZXNzIGEgY3Vyc29yIChhIGJpdCBwb3NpdGlvbikg
+aW50byBhCj4gPm1lbW9yeSB0aGF0IGFkdmFuY2Ugd2hpbGUgd3JpdGluZy4gQSBiaXQgd3JpdGVy
+IHNob3VsZCBoZWxwIHByb3RlY3QgYWdhaW5zdAo+ID5vdmVyZmxvdyB0b28uCj4gPgo+ID5XaGVu
+IHdyaXRpbmcgbGV0cyBzYXkgYSBjaGFpbiBvZiA4IGJpdHMgZnJvbSBhIGNoYXIsIGEgcHJvcGVy
+IGhlbHBlciBpcyBleHBlY3RlZAo+ID50byBiZSB2ZXJ5IGV4cGxpY2l0IG9uIHRoZSBvcmRlcmlu
+ZyAod3JpdGVfdThfbGUvYmUgb3Igc29tZXRoaW5nIGJldHRlciB3b3JkZWQpLgo+ID5JIHdvdWxk
+IHJhdGhlciBsaWtlIHRvIHNlZSBhbGwgdGhlc2UgYmxvYnMgd3JpdHRlbiB0aGlzIHdheSBwZXJz
+b25hbGx5IHRoZW4KPiA+aGF2aW5nIGEgY2xlYXJlZCBidWZmZXIgYW5kIHdyaXRpbmcgdXNpbmcg
+Yml0IG9mZnNldHMuCj4gPgo+ID5QZXJoYXBzIEkgbWF5IHN1Z2dlc3QgdG8gc3RhcnQgd2l0aCBp
+bXBsZW1lbnRpbmcganVzdCB0aGF0IGluc2lkZSB0aGlzIGRyaXZlcj8KPiA+SXQgaXNuJ3QgdmVy
+eSBoYXJkLCBhbmQgdGhlbiB0aGUgaW1wbGVtZW50YXRpb24gY2FuIGJlIHJlZHVjZWQgbGF0ZXIg
+YW5kIHNoYXJlZAo+ID5sYXRlciwgd2l0aCB3aGF0ZXZlciBleGlzdHMgd2l0aG91dCBkZXZpYXRp
+bmcgZnJvbSB0aGUgaW50ZW50IG9mIHRoZSBleGlzdGluZwo+ID5BUEkgPyBJIGRvIGJlbGlldmUg
+dGhhdCBoYXZpbmcgdGhpcyBpbiBsaW51eC1tZWRpYSBjYW4gYmUgdXNlZnVsIGluIHRoZSBmdXR1
+cmUuCj4gPldlIHdpbGwgbm90YWJseSBuZWVkIHRvIGV4dGVuZCBzdWNoIGEgaGVscGVyIHdpdGgg
+bXVsdGltZWRpYSBzcGVjaWZpYyBjb2RpbmcKPiA+dGVjaG5pcXVlIChnb2xvbWIsIGJvb2xlYW4g
+Y29kaW5nLCBldGMuKSBmb3IgdXNlIGluIHN0YXRlbGVzcyBlbmNvZGVyIGRyaXZlcnMuCj4KPiBJ
+IGN1cnJlbnRseSBkZXNpZ24gYSBnZW5lcmFsIGJpdC13cml0ZXIgQVBJIHRvIGhhbmRsZSB0aGUg
+bWVudGlvbmVkCj4gaXNzdWVzIGNvcnJlY3RseS4gSSdsbCBwb3N0IGl0IGFzIHBhcnQgb2YgVjIs
+IGR1ZSB0byBteSBjdXJyZW50IHdvcmtsb2FkCj4gdGhpcyB3aWxsIGhhcHBlbiBpbiAzIHdlZWtz
+IGF0IHRoZSBlYXJsaWVzdC4KPgoKSSB3b25kZXIgaWYgdGhpcyBpcyByZWFsbHkgdGhlIGNvcnJl
+Y3QgYXBwcm9hY2guCgpJbnRyb2R1Y2luZyBhIG5ldyBBUEkgYW5kIGFkZGluZyBIRVZDIHN1cHBv
+cnQgYXQgdGhlIHNhbWUgdGltZSwKc291bmRzIGxpa2Ugc2NvcGUgY3JlZXAgdG8gbWUuCgpIb3cg
+YWJvdXQgeW91IGZpcnN0IGludHJvZHVjZSBIRVZDIGFuZCB0aGVuIHdlIG1vdmUgdG8gdGhlIG5l
+dyBBUEk/CkEgZ2VuZXJpYyBiaXQtd3JpdGVyIEFQSSBtaWdodCByZWFsbHkgdGFrZSBhIGxvbmcg
+dGltZSB0byBnZXQgbWFpbmxpbmVkLgoKVGhhbmtzIQpFemVxdWllbAoKPiA+Cj4gPk5pY29sYXMK
+PiA+Cj4gPj4KPiA+PiBUaGFua3MsCj4gPj4gUm9iaW4uCj4KPiBHcmVldGluZ3MsCj4gU2ViYXN0
+aWFuCj4KPiA+Pgo+ID4+IFsxXQo+ID4+IGh0dHBzOi8vZ2l0aHViLmNvbS9BUk0tc29mdHdhcmUv
+YWJpLWFhL2Jsb2IvbWFpbi9hYXBjczY0L2FhcGNzNjQucnN0I2JpdC1maWVsZHMKPiA+Pgo+ID4+
+ID4gLSBJIGRlbGliZXJhdGx5IG9wdGVkIGFnYWluc3QgdGhlIG1hY3JvIHNvbHV0aW9uIHVzZWQg
+aW4gSDI2NCwgd2hpY2gKPiA+PiA+IGRlY2xhcmVzIE1hY3JvcyBpbiBtaWQgZnVuY3Rpb24gYW5k
+IGRlY2xhcmVzIHRoZSBmaWVsZHMgb2YgdGhlIG1lbW9yeQo+ID4+ID4gYmxvYiBhcyBtYWNyb3Mg
+YXMgd2VsbC4gQW5kIEkgd291bGQgYmUgZ2xhZCB0byByZWZhY3RvciB0aGUgSDI2NCBjb2RlIGlm
+Cj4gPj4gPiBkZXNpcmVkIGJ5IHRoZSBtYWludGFpbmVyIHRvIHVzZSBjb21tb24gS2VybmVsIEFQ
+SXMgYW5kIG5hdGl2ZSBsYW5ndWFnZQo+ID4+ID4gZWxlbWVudHMuCj4gPj4gPiAtIFRoZSBnaWFu
+dCBzdGF0aWMgYXJyYXkgb2YgY2FiYWMgdmFsdWVzIGlzIG1vdmVkIHRvIGEgc2VwYXJhdGUgYyBm
+aWxlLAo+ID4+ID4gSSBkaWQgc28gYmVjYXVzZSBhIHNlcGFyYXRlIC5oIGZpbGUgd291bGQgYmUg
+aW5jb3JyZWN0IGFzIGl0IGRvZXNuJ3QKPiA+PiA+IGV4cG9zZSBhbnl0aGluZyBvZiBhbnkgdmFs
+dWUgZm9yIGFueSBvdGhlciBmaWxlIHRoYW4gdGhlIHJrdmRlYy1oZXZjLmMKPiA+PiA+IGZpbGUu
+IE90aGVyIG9wdGlvbnMgd2VyZToKPiA+PiA+ICAgIC0gQ2FsY3VsYXRpbmcgdGhlIHZhbHVlcyBp
+bnN0ZWFkIG9mIHN0b3JpbmcgdGhlIHJlc3VsdHMgKGRvZXNuJ3Qgc2VlbQo+ID4+ID4gICAgdG8g
+YmUgd29ydGggaXQpCj4gPj4gPiAgICAtIFN1cHBseSB0aGVtIHZpYSBmaXJtd2FyZSAoQWRkaW5n
+IGZpcm13YXJlIG1ha2VzIHRoZSB3aG9sZSBzb2Z0d2FyZQo+ID4+ID4gICAgd2F5IG1vcmUgY29t
+cGxpY2F0ZWQgYW5kIHRoZSB1c2FnZSBvZiB0aGUgZHJpdmVyIGxlc3Mgb2J2aW91cykKPiA+PiA+
+Cj4gPj4gPiBJZ25vcmVkIENoZWNrcGF0Y2ggd2FybmluZ3MgKGFzIGl0IGZpdHMgdG8gdGhlIGN1
+cnJlbnQgc3R5bGUgb2YgdGhlIGZpbGUpOgo+ID4+ID4gYGBgCj4gPj4gPiBXQVJOSU5HOiBsaW5l
+IGxlbmd0aCBvZiAxNjIgZXhjZWVkcyAxMDAgY29sdW1ucwo+ID4+ID4gIzExNTogRklMRTogZHJp
+dmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1jb21tb24uYzoyNjU6Cj4gPj4gPiArICAgICAgICAg
+ICAgICAgeyAuZm9ybWF0ID0gVjRMMl9QSVhfRk1UX05WMTUsICAgIC5waXhlbF9lbmMgPSBWNEwy
+X1BJWEVMX0VOQ19ZVVYsIC5tZW1fcGxhbmVzID0gMSwgLmNvbXBfcGxhbmVzID0gMiwgLmJwcCA9
+IHsgNSwgNSwgMCwgMCB9LCAuaGRpdiA9IDIsIC52ZGl2ID0gMiwKPiA+PiA+Cj4gPj4gPiBFUlJP
+UjogdHJhaWxpbmcgc3RhdGVtZW50cyBzaG91bGQgYmUgb24gbmV4dCBsaW5lCj4gPj4gPiAjMTI4
+OiBGSUxFOiBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmM6MTMwNToKPiA+PiA+
+ICsgICAgICAgY2FzZSBWNEwyX1BJWF9GTVRfTlYxNTogICAgICAgICBkZXNjciA9ICIxMC1iaXQg
+WS9DYkNyIDQ6MjowIChQYWNrZWQpIjsgYnJlYWs7Cj4gPj4gPiBgYGAKPiA+PiA+Cj4gPj4gPiB2
+NGwyLWNvbXBsaWFuY2UgdGVzdDoKPiA+PiA+IGBgYAo+ID4+ID4gVG90YWwgZm9yIHJrdmRlYyBk
+ZXZpY2UgL2Rldi92aWRlbzM6IDQ2LCBTdWNjZWVkZWQ6IDQ2LCBGYWlsZWQ6IDAsIFdhcm5pbmdz
+OiAwCj4gPj4gPiBgYGAKPiA+PiA+Cj4gPj4gPiBrc2VsZnRlc3QgbW9kdWxlIHJ1biBmb3IgdGhl
+IGJpdG1hcCBjaGFuZ2VzOgo+ID4+ID4gYGBgCj4gPj4gPiAkIHN1ZG8gaW5zbW9kIC91c3IvbGli
+L21vZHVsZXMvNS4xOS4wLXJjMy1maW5hbHNlcmllcy9rZXJuZWwvbGliL3Rlc3RfYml0bWFwLmtv
+Cj4gPj4gPiBbICAgNzEuNzUxNzE2XSB0ZXN0X2JpdG1hcDogcGFyc2VsaXN0OiAxNDogaW5wdXQg
+aXMgJzAtMjA0NzoxMjgvMjU2JyBPSywgVGltZTogMTc1MAo+ID4+ID4gWyAgIDcxLjc1MTc4N10g
+dGVzdF9iaXRtYXA6IGJpdG1hcF9wcmludF90b19wYWdlYnVmOiBpbnB1dCBpcyAnMC0zMjc2Nwo+
+ID4+ID4gWyAgIDcxLjc1MTc4N10gJywgVGltZTogNjcwOAo+ID4+ID4gWyAgIDcxLjc2MDM3M10g
+dGVzdF9iaXRtYXA6IHNldF92YWx1ZTogNi82IHRlc3RzIGNvcnJlY3QKPiA+PiA+IGBgYAo+ID4+
+ID4KPiA+PiA+IEpvbmFzIEthcmxtYW4gKDIpOgo+ID4+ID4gICAgbWVkaWE6IHY0bDI6IEFkZCBO
+VjE1IHBpeGVsIGZvcm1hdAo+ID4+ID4gICAgbWVkaWE6IHY0bDItY29tbW9uOiBBZGQgaGVscGVy
+cyB0byBjYWxjdWxhdGUgYnl0ZXNwZXJsaW5lIGFuZAo+ID4+ID4gICAgICBzaXplaW1hZ2UKPiA+
+PiA+Cj4gPj4gPiBTZWJhc3RpYW4gRnJpY2tlICg0KToKPiA+PiA+ICAgIGJpdG9wczogYml0bWFw
+IGhlbHBlciB0byBzZXQgdmFyaWFibGUgbGVuZ3RoIHZhbHVlcwo+ID4+ID4gICAgc3RhZ2luZzog
+bWVkaWE6IHJrdmRlYzogQWRkIHZhbGlkIHBpeGVsIGZvcm1hdCBjaGVjawo+ID4+ID4gICAgc3Rh
+Z2luZzogbWVkaWE6IHJrdmRlYzogRW5hYmxlIFNfQ1RSTCBJT0NUTAo+ID4+ID4gICAgc3RhZ2lu
+ZzogbWVkaWE6IHJrdmRlYzogQWRkIEhFVkMgYmFja2VuZAo+ID4+ID4KPiA+PiA+ICAgLi4uL21l
+ZGlhL3Y0bC9waXhmbXQteXV2LXBsYW5hci5yc3QgICAgICAgICAgIHwgICA1MyArCj4gPj4gPiAg
+IGRyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItY29tbW9uLmMgICAgICAgICB8ICAgNzkgKy0K
+PiA+PiA+ICAgZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRsMi1pb2N0bC5jICAgICAgICAgIHwg
+ICAgMSArCj4gPj4gPiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvTWFrZWZpbGUgICAg
+ICAgICB8ICAgIDIgKy0KPiA+PiA+ICAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9UT0RP
+ICAgICAgICAgICAgIHwgICAyMiArLQo+ID4+ID4gICAuLi4vc3RhZ2luZy9tZWRpYS9ya3ZkZWMv
+cmt2ZGVjLWhldmMtZGF0YS5jICAgfCAxODQ0ICsrKysrKysrKysrKysrKysrCj4gPj4gPiAgIGRy
+aXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLWhldmMuYyAgICB8ICA4NTkgKysrKysr
+KysKPiA+PiA+ICAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMtcmVncy5oICAg
+IHwgICAgMSArCj4gPj4gPiAgIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMg
+ICAgICAgICB8ICAxODIgKy0KPiA+PiA+ICAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9y
+a3ZkZWMuaCAgICAgICAgIHwgICAgMyArCj4gPj4gPiAgIGluY2x1ZGUvbGludXgvYml0bWFwLmgg
+ICAgICAgICAgICAgICAgICAgICAgICB8ICAgMzkgKwo+ID4+ID4gICBpbmNsdWRlL3VhcGkvbGlu
+dXgvdmlkZW9kZXYyLmggICAgICAgICAgICAgICAgfCAgICAxICsKPiA+PiA+ICAgbGliL3Rlc3Rf
+Yml0bWFwLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICA0NyArCj4gPj4gPiAgIDEz
+IGZpbGVzIGNoYW5nZWQsIDMwNjYgaW5zZXJ0aW9ucygrKSwgNjcgZGVsZXRpb25zKC0pCj4gPj4g
+PiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRl
+Yy1oZXZjLWRhdGEuYwo+ID4+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5n
+L21lZGlhL3JrdmRlYy9ya3ZkZWMtaGV2Yy5jCj4gPj4gPgo+ID4+Cj4gPgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
+ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
