@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8DFAC43334
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jul 2022 16:59:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B08D5C433EF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 Jul 2022 17:06:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pBSfk/2Hf4NgZ20vdBaC1LRDeX6iaKp+DV9q7PdjjY8=; b=0lGN4t2cvUUH9odquqsz70Qc8L
-	vGJzYMN5Ii064s34yGJtDTIzmJo9TBDt656fWHpgURZEuLWsoZ9qbj0F0ysP+s3RPATWhEbLtTWL5
-	MzQc1GUJ/8l1nis+J2cDGexLeXOxeQeKbD5VsVTWkXP3Kk1fihRtMs8vu1fuU4eWeZ9mxibY/6Zbe
-	OATcsTFC8+hSkdsWxg/+9DBHDbYYaxLtfdBuvGGKMt1OkhseZti3F2gG4rC8sF6HTHd55Ibg5G/rk
-	URfpXvva2y2oV1IIq22iqLJ3VRHUs5QUNTDjxmqaaxVvPwTjyzw2+xOF7Abu6AtQS2NLHupPduMfT
-	VaacYjQQ==;
+	bh=SGut+tW6ZhmJL+IRuIf7W+k2U7Brs9smcCRbXClhf7U=; b=TA0WtE75X0A4VwU6espLJ6CF/s
+	VrEV4nRiI7c717C7k3A0tF1G0U2zImFBBfY7ars3ZpMO8FIZJuK45XvdIj5aAxArTPW2kKeCDwqyd
+	Ur5+RvexgXKvC6MadOhuA76D982E9fYGTsEixcU402zHtzPpU58q5kCqB1jSjz49pE9pgYJTzODwf
+	/kymOquZgNwhAeCoyC3wJZFu3LQ53ThiKlZsz8npq/P3I6SCDRqoBYJ7QqelqXnnGb+lvx+5McVMP
+	x0hc3sjHvv9FaMgfZmCEAs3warTwtC+pRxzhhmW7EVL8C/UnQR+4sc98aldEaHwEbkekdirRMz6l4
+	zQd8eHQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEZVy-00AO4q-Ry; Thu, 21 Jul 2022 16:59:06 +0000
+	id 1oEZcQ-00AS0X-GJ; Thu, 21 Jul 2022 17:05:46 +0000
 Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oEZVv-00ANxO-E5
-	for linux-rockchip@lists.infradead.org; Thu, 21 Jul 2022 16:59:05 +0000
+	id 1oEZcO-00ARzr-5G
+	for linux-rockchip@lists.infradead.org; Thu, 21 Jul 2022 17:05:45 +0000
 Received: from localhost (dynamic-089-204-139-174.89.204.139.pool.telefonica.de [89.204.139.174])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sebastianfricke)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6A6426601AB9;
-	Thu, 21 Jul 2022 17:59:01 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 429A96601ABB;
+	Thu, 21 Jul 2022 18:05:42 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1658422741;
-	bh=nytjLL1qqhxW1al82U0BuwYCZTfI48D3p8N0FpybNgU=;
+	s=mail; t=1658423142;
+	bh=FoeOIMjJ3nvLwW8C/6cVGGWNd/VWco4Un0vi/mWNUjo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=htOvEoeIYIh8p5vABCMSkf28ZUGJq5tbnbIH2LD0eatDIbVprolQ78XXCICqk0EoL
-	 KPK0u0afkhxWJf24FfcwVvSN/fZWuz8j35MXEor2AT4BbHeccMoXR3oXdQwCoxuP6k
-	 pm8t43DIv6YK+F5P/1TulCM16uJz7E6N7dBqS5WfKDP2R8FmKRW7NvusKynodb06Lw
-	 MbUIAOs1RUURlpddBJfoDFdaQluoTmzYIAh4R+m1Ez0lH1nUMmoafJ/uuShnfqJus0
-	 brnreWc6jDAXTqJq0PoxP7Bm1TGW2Q0FVEea4hWEVvl0V6HNGXj3j71rLy04DE7xCr
-	 S/9BB4yYCRDKg==
-Date: Thu, 21 Jul 2022 18:58:57 +0200
+	b=JDsLd+3hm6DpoMQwa1Z4koJcjzZqb/0zdLycCEYzZvEZoJEVKRTIz9MszbqPHm5P3
+	 P1EUkPVJeBtpZ0YpdYeeIWZm7yrMhPUo8Xk/YK/xhmSc1Ay9mXg+Pjzb4t4myxAKWv
+	 /RL2FdZvsIaa8C2QezBYPZ/mahvozCnUNv0NE5c0RoWW8wmZORd+XWNvayrZv6G0By
+	 4/HScJ/R4Aw/a/2VJPmW0z83p0ZDxGpGJyiJZCYvNfXrT/dYKaM1ZxXCYuSR/Z8Q1z
+	 2pRQHJSSHjb6BsFU2aMuPeMHcpPDgXbvD8tvhRGfflk/VqH0RxgucT75XQFb4sf4FS
+	 sKnICVoH+L0SA==
+Date: Thu, 21 Jul 2022 19:05:39 +0200
 From: Sebastian Fricke <sebastian.fricke@collabora.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	linux-media@vger.kernel.org, jernej.skrabec@gmail.com,
-	knaerzche@gmail.com, kernel@collabora.com,
-	bob.beckett@collabora.com, ezequiel@vanguardiasur.com.ar,
-	mchehab@kernel.org, gregkh@linuxfoundation.org,
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev, Jonas Karlman <jonas@kwiboo.se>,
-	Yury Norov <yury.norov@gmail.com>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
-	Hans Verkuil <hverkuil@xs4all.nl>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Ming Qian <ming.qian@nxp.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Ricardo Ribalda <ribalda@chromium.org>,
-	Andrzej Pietrasiewicz <andrzej.p@collabora.com>,
-	Sergey Senozhatsky <senozhatsky@chromium.org>
-Subject: Re: [PATCH 1/6] media: v4l2: Add NV15 pixel format
-Message-ID: <20220721165857.euuywbja3kw5m43g@basti-XPS-13-9310>
-References: <20220713162449.133738-1-sebastian.fricke@collabora.com>
- <20220713162449.133738-2-sebastian.fricke@collabora.com>
- <Ys8OzDzXmmCHI9qb@pendragon.ideasonboard.com>
- <acded11db2957b4e9d4f8df44f82dc1babe7aae0.camel@collabora.com>
- <YtCvF+kAfeiTduW+@pendragon.ideasonboard.com>
+To: Andy Shevchenko <andy.shevchenko@gmail.com>
+Cc: Yury Norov <yury.norov@gmail.com>,
+	Linux Media Mailing List <linux-media@vger.kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>, knaerzche@gmail.com,
+	Collabora Kernel ML <kernel@collabora.com>,
+	bob.beckett@collabora.com,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+	linux-staging@lists.linux.dev, nicolas.dufresne@collabora.com,
+	andrzej.p@collabora.com,
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>
+Subject: Re: [PATCH 3/6] bitops: bitmap helper to set variable length values
+Message-ID: <20220721170539.57z5kcxtgxuh3qma@basti-XPS-13-9310>
+References: <20220713163201.136202-1-sebastian.fricke@collabora.com>
+ <Ys8Txuq9/u/EL6sj@yury-laptop>
+ <CAHp75VeOLfKw4-+Dpn54yy6j=tdiBNA_2Kvhj7mUUjTD-M_vYA@mail.gmail.com>
+ <Ys8gpl3m+vvEM7Sy@yury-laptop>
+ <CAHp75VeGSWoq-a10nA9NLKBEX7L_eiL0zPMJHUbX=c64wG8hkg@mail.gmail.com>
+ <Ys8uKUKErpoWL873@yury-laptop>
+ <Ys/835VdAYRVYdXW@smile.fi.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <YtCvF+kAfeiTduW+@pendragon.ideasonboard.com>
+In-Reply-To: <Ys/835VdAYRVYdXW@smile.fi.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220721_095903_768803_2E214D3D 
-X-CRM114-Status: GOOD (  31.77  )
+X-CRM114-CacheID: sfid-20220721_100544_485466_848ADA08 
+X-CRM114-Status: GOOD (  29.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,157 +84,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGV5IExhdXJlbnQgYW5kIE5pY29sYXMsCgpPbiAxNS4wNy4yMDIyIDAzOjA0LCBMYXVyZW50IFBp
-bmNoYXJ0IHdyb3RlOgo+T24gVGh1LCBKdWwgMTQsIDIwMjIgYXQgMDk6MDI6MzhBTSAtMDQwMCwg
-Tmljb2xhcyBEdWZyZXNuZSB3cm90ZToKPj4gTGUgbWVyY3JlZGkgMTMganVpbGxldCAyMDIyIMOg
-IDIxOjI4ICswMzAwLCBMYXVyZW50IFBpbmNoYXJ0IGEgw6ljcml0wqA6Cj4+ID4gSGkgU2ViYXN0
-aWFuIGFuZCBKb25hcywKPj4gPgo+PiA+IFRoYW5rIHlvdSBmb3IgdGhlIHBhdGNoLgoKVGhhbmsg
-eW91IGZvciB5b3VyIHJldmlldyA6KS4KCj4+ID4KPj4gPiBPbiBXZWQsIEp1bCAxMywgMjAyMiBh
-dCAwNjoyNDo0NlBNICswMjAwLCBTZWJhc3RpYW4gRnJpY2tlIHdyb3RlOgo+PiA+ID4gRnJvbTog
-Sm9uYXMgS2FybG1hbiA8am9uYXNAa3dpYm9vLnNlPgo+PiA+ID4KPj4gPiA+IEFkZCB0aGUgTlYx
-NSBwaXhlbCBmb3JtYXQgdXNlZCBieSB0aGUgUm9ja2NoaXAgVmlkZW8gRGVjb2RlciBmb3IgMTAt
-Yml0Cj4+ID4gPiBidWZmZXJzLgo+PiA+ID4KPj4gPiA+IE5WMTUgaXMgYSBwYWNrZWQgMTAtYml0
-IDQ6MjowIFkvQ2JDciBmb3JtYXQgc2ltaWxhciB0byBQMDEwIGFuZCBQMjEwIGJ1dAo+PiA+ID4g
-aGFzIG5vIHBhZGRpbmcgYmV0d2VlbiBjb21wb25lbnRzLiBJbnN0ZWFkLCBsdW1pbmFuY2UgYW5k
-IGNocm9taW5hbmNlCj4+ID4gPiBzYW1wbGVzIGFyZSBncm91cGVkIGludG8gNHMgc28gdGhhdCBl
-YWNoIGdyb3VwIGlzIHBhY2tlZCBpbnRvIGFuIGludGVnZXIKPj4gPiA+IG51bWJlciBvZiBieXRl
-czoKPj4gPiA+Cj4+ID4gPiBZWVlZID0gVVZVViA9IDQgKiAxMCBiaXRzID0gNDAgYml0cyA9IDUg
-Ynl0ZXMKPj4gPiA+Cj4+ID4gPiBUaGUgJzE1JyBzdWZmaXggcmVmZXJzIHRvIHRoZSBvcHRpbXVt
-IGVmZmVjdGl2ZSBiaXRzIHBlciBwaXhlbCB3aGljaCBpcwo+PiA+ID4gYWNoaWV2ZWQgd2hlbiB0
-aGUgdG90YWwgbnVtYmVyIG9mIGx1bWluYW5jZSBzYW1wbGVzIGlzIGEgbXVsdGlwbGUgb2YgOAo+
-PiA+ID4gZm9yIE5WMTUuCj4+ID4gPgo+PiA+ID4gU2lnbmVkLW9mZi1ieTogSm9uYXMgS2FybG1h
-biA8am9uYXNAa3dpYm9vLnNlPgo+PiA+ID4gU2lnbmVkLW9mZi1ieTogU2ViYXN0aWFuIEZyaWNr
-ZSA8c2ViYXN0aWFuLmZyaWNrZUBjb2xsYWJvcmEuY29tPgo+PiA+ID4gLS0tCj4+ID4gPiAgLi4u
-L21lZGlhL3Y0bC9waXhmbXQteXV2LXBsYW5hci5yc3QgICAgICAgICAgIHwgNTMgKysrKysrKysr
-KysrKysrKysrKwo+PiA+ID4gIGRyaXZlcnMvbWVkaWEvdjRsMi1jb3JlL3Y0bDItY29tbW9uLmMg
-ICAgICAgICB8ICAyICsKPj4gPiA+ICBkcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3Rs
-LmMgICAgICAgICAgfCAgMSArCj4+ID4gPiAgaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5o
-ICAgICAgICAgICAgICAgIHwgIDEgKwo+PiA+ID4gIDQgZmlsZXMgY2hhbmdlZCwgNTcgaW5zZXJ0
-aW9ucygrKQo+PiA+ID4KPj4gPiA+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL3VzZXJzcGFj
-ZS1hcGkvbWVkaWEvdjRsL3BpeGZtdC15dXYtcGxhbmFyLnJzdCBiL0RvY3VtZW50YXRpb24vdXNl
-cnNwYWNlLWFwaS9tZWRpYS92NGwvcGl4Zm10LXl1di1wbGFuYXIucnN0Cj4+ID4gPiBpbmRleCBh
-OTAwZmY2NjkxMWEuLjQyYWIzZmU0NjY3ZiAxMDA2NDQKPj4gPiA+IC0tLSBhL0RvY3VtZW50YXRp
-b24vdXNlcnNwYWNlLWFwaS9tZWRpYS92NGwvcGl4Zm10LXl1di1wbGFuYXIucnN0Cj4+ID4gPiAr
-KysgYi9Eb2N1bWVudGF0aW9uL3VzZXJzcGFjZS1hcGkvbWVkaWEvdjRsL3BpeGZtdC15dXYtcGxh
-bmFyLnJzdAo+PiA+ID4gQEAgLTc5LDYgKzc5LDEzIEBAIEFsbCBjb21wb25lbnRzIGFyZSBzdG9y
-ZWQgd2l0aCB0aGUgc2FtZSBudW1iZXIgb2YgYml0cyBwZXIgY29tcG9uZW50Lgo+PiA+ID4gICAg
-ICAgIC0gQ3IsIENiCj4+ID4gPiAgICAgICAgLSBZZXMKPj4gPiA+ICAgICAgICAtIExpbmVhcgo+
-PiA+ID4gKyAgICAqIC0gVjRMMl9QSVhfRk1UX05WMTUKPj4gPiA+ICsgICAgICAtICdOVjE1Jwo+
-PiA+ID4gKyAgICAgIC0gMTUKPj4gPiA+ICsgICAgICAtIDQ6MjowCj4+ID4gPiArICAgICAgLSBD
-YiwgQ3IKPj4gPiA+ICsgICAgICAtIFllcwo+PiA+ID4gKyAgICAgIC0gTGluZWFyCj4+ID4gPiAg
-ICAgICogLSBWNEwyX1BJWF9GTVRfTlYxMk0KPj4gPiA+ICAgICAgICAtICdOTTEyJwo+PiA+ID4g
-ICAgICAgIC0gOAo+PiA+ID4gQEAgLTE3Niw2ICsxODMsNyBAQCBob3Jpem9udGFsbHkuCj4+ID4g
-Pgo+PiA+ID4gIC4uIF9WNEwyLVBJWC1GTVQtTlYxMjoKPj4gPiA+ICAuLiBfVjRMMi1QSVgtRk1U
-LU5WMjE6Cj4+ID4gPiArLi4gX1Y0TDItUElYLUZNVC1OVjE1Ogo+PiA+ID4gIC4uIF9WNEwyLVBJ
-WC1GTVQtTlYxMk06Cj4+ID4gPiAgLi4gX1Y0TDItUElYLUZNVC1OVjIxTToKPj4gPiA+ICAuLiBf
-VjRMMi1QSVgtRk1ULVAwMTA6Cj4+ID4gPiBAQCAtNTcwLDYgKzU3OCw1MSBAQCBEYXRhIGluIHRo
-ZSAxMCBoaWdoIGJpdHMsIHplcm9zIGluIHRoZSA2IGxvdyBiaXRzLCBhcnJhbmdlZCBpbiBsaXR0
-bGUgZW5kaWFuIG9yZAo+PiA+ID4gICAgICAgIC0gQ2JcIDpzdWI6YDExYAo+PiA+ID4gICAgICAg
-IC0gQ3JcIDpzdWI6YDExYAo+PiA+ID4KPj4gPiA+ICsuLiBfVjRMMl9QSVhfRk1UX05WMTU6Cj4+
-ID4gPiArCj4+ID4gPiArTlYxNQo+PiA+ID4gKy0tLS0KPj4gPiA+ICsKPj4gPiA+ICtMaWtlIFAw
-MTAgYnV0IGEgcGFja2VkIDEwLWJpdCA0OjI6MCBzZW1pLXBsYW5hciBZL0NiQ3IgZm9ybWF0IHdp
-dGhvdXQgcGFkZGluZyBiZXR3ZWVuIGNvbXBvbmVudHMuCj4+ID4KPj4gPiAicGFja2VkIDEwLWJp
-dCBzZW1pLXBsYW5hciIgc291bmRzIGNvbmZ1c2luZywgYXMgInBhY2tlZCBZVVYiIHVzdWFsbHkK
-Pj4gPiByZWZlcnMgdG8gWVVZVi1zdHlsZSBmb3JtYXRzLCBidXQgSSdtIG5vdCBzdXJlIGhvdyB0
-byBleHByZXNzIHRoYXQKPj4gPiBiZXR0ZXIuCj4+Cj4+IFBlcmhhcHM6Cj4+Cj4+ICJTaW1pbGFy
-IHRvIFAwMTAgKDEwLWJpdCA0OiI6MCBzZW1pLXBsYW5lciBZL0NiQ3IpLCB0aG91Z2ggdW5saWtl
-IFAwMTAsIHRoZQo+PiB0aGVyZSBpcyBub3QgcGFkZGluZyBiZXR3ZWVuIGNvbXBvbmVudHMuIgoK
-SSdsbCB0YWtlIHRoYXQgZm9yIFYyLgoKPj4KPj4gPiA+ICtJbnN0ZWFkLCBsdW1pbmFuY2UgYW5k
-IGNocm9taW5hbmNlIHNhbXBsZXMgYXJlIGdyb3VwZWQgaW50byA0cyBzbyB0aGF0IGVhY2ggZ3Jv
-dXAgaXMgcGFja2VkIGludG8gYW4gaW50ZWdlcgo+PiA+ID4gK251bWJlciBvZiBieXRlczoKPj4g
-Pgo+PiA+IENvdWxkIHlvdSBwbGVhc2Ugd3JhcCB0aGUgZGVzY3JpcHRpb24gYXQgODAgY29sdW1u
-cyA/CgpXaWxsIGRvLgoKPj4gPgo+PiA+ID4gK1lZWVkgPSBVVlVWID0gNCAqIDEwIGJpdHMgPSA0
-MCBiaXRzID0gNSBieXRlcwo+PiA+ID4gKwo+PiA+ID4gKy4uIGZsYXQtdGFibGU6OiBTYW1wbGUg
-NHg0IE5WMTUgSW1hZ2UKPj4gPiA+ICsgICAgOmhlYWRlci1yb3dzOiAgMAo+PiA+ID4gKyAgICA6
-c3R1Yi1jb2x1bW5zOiAwCj4+ID4gPiArCj4+ID4gPiArICAgICogLSBzdGFydCArIDA6Cj4+ID4g
-PiArICAgICAgLSBZJ1wgOnN1YjpgMDBgCj4+ID4gPiArICAgICAgLSBZJ1wgOnN1YjpgMDFgCj4+
-ID4gPiArICAgICAgLSBZJ1wgOnN1YjpgMDJgCj4+ID4gPiArICAgICAgLSBZJ1wgOnN1YjpgMDNg
-Cj4+ID4gPiArICAgICogLSBzdGFydCArIDg6Cj4+ID4gPiArICAgICAgLSBZJ1wgOnN1YjpgMTBg
-Cj4+ID4gPiArICAgICAgLSBZJ1wgOnN1YjpgMTFgCj4+ID4gPiArICAgICAgLSBZJ1wgOnN1Yjpg
-MTJgCj4+ID4gPiArICAgICAgLSBZJ1wgOnN1YjpgMTNgCj4+ID4gPiArICAgICogLSBzdGFydCAr
-IDE2Ogo+PiA+ID4gKyAgICAgIC0gWSdcIDpzdWI6YDIwYAo+PiA+ID4gKyAgICAgIC0gWSdcIDpz
-dWI6YDIxYAo+PiA+ID4gKyAgICAgIC0gWSdcIDpzdWI6YDIyYAo+PiA+ID4gKyAgICAgIC0gWSdc
-IDpzdWI6YDIzYAo+PiA+ID4gKyAgICAqIC0gc3RhcnQgKyAyNDoKPj4gPiA+ICsgICAgICAtIFkn
-XCA6c3ViOmAzMGAKPj4gPiA+ICsgICAgICAtIFknXCA6c3ViOmAzMWAKPj4gPiA+ICsgICAgICAt
-IFknXCA6c3ViOmAzMmAKPj4gPiA+ICsgICAgICAtIFknXCA6c3ViOmAzM2AKPj4gPiA+ICsgICAg
-KiAtIHN0YXJ0ICsgMzI6Cj4+ID4gPiArICAgICAgLSBDYlwgOnN1YjpgMDBgCj4+ID4gPiArICAg
-ICAgLSBDclwgOnN1YjpgMDBgCj4+ID4gPiArICAgICAgLSBDYlwgOnN1YjpgMDFgCj4+ID4gPiAr
-ICAgICAgLSBDclwgOnN1YjpgMDFgCj4+ID4gPiArICAgICogLSBzdGFydCArIDQwOgo+PiA+ID4g
-KyAgICAgIC0gQ2JcIDpzdWI6YDEwYAo+PiA+ID4gKyAgICAgIC0gQ3JcIDpzdWI6YDEwYAo+PiA+
-ID4gKyAgICAgIC0gQ2JcIDpzdWI6YDExYAo+PiA+ID4gKyAgICAgIC0gQ3JcIDpzdWI6YDExYAo+
-PiA+Cj4+ID4gVGhpcyBkb2Vzbid0IGxvb2sgcmlnaHQuIFlvdSBuZWVkIHRvIGRlc2NyaWJlIHRo
-ZSBkYXRhIGF0IHRoZSBiaXQgbGV2ZWwsCj4+ID4gc28gc2hvdyBob3cgdGhlIDEwLWJpdCBzYW1w
-bGVzIGFyZSBwYWNrZWQgaW50byBieXRlcy4KPj4KPj4gQSB3b3JkIG9mIE5WMTUgaXMgNDAgYml0
-cywgc28gMSB3b3JkIG9mIE5WMTIgaXMgNSBieXRlcywgNCBwaXhlbHMuIEkgYmVsaWV2ZQo+PiB0
-aGVyZSBpcyBubyBjaG9pY2UgaGVyZSBidXQgdG8gZGVzY3JpYmUgNCBwaXhlbHMgZm9yIFkgcGxh
-bmUsIGFuZCA0IHBpeGVscyBmb3IKPj4gQ2JDciBwbGFuZS4gVGhpcyBtaWdodCBiZSBhIGJpdCBi
-aWcgdGhvdWdoLgo+Cj5JIGFncmVlLCBpdCBtYXkgbm90IGJlIHRoZSBwcmV0dGllc3QsIGJ1dCBJ
-J2QgcmF0aGVyIGhhdmUgYSBsYXJnZXIgdGFibGUKPnRoYW4gYSBmb3JtYXQgdGhhdCBpcyB1bmRl
-cnN0b29kIGRpZmZlcmVudGx5IGJ5IGRpZmZlcmVudCBkcml2ZXJzLiBCZWVuCj50aGVyZSwgZG9u
-ZSB0aGF0LCBub3QgYWdhaW4gOi0pCgpJJ2xsIHByZXBhcmUgc29tZXRoaW5nIGZvciBWMiAoYXQg
-bXkgY3VycmVudCB3b3JrbG9hZCBpbiBhYm91dCAzIHdlZWtzCmF0IHRoZSBlYXJsaWVzdCkuCgpH
-cmVldGluZ3MsClNlYmFzdGlhbgoKPgo+PiA+ID4gKwo+PiA+ID4gIC4uIHJhdzo6IGxhdGV4Cj4+
-ID4gPgo+PiA+ID4gICAgICBcZW5kZ3JvdXAKPj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21l
-ZGlhL3Y0bDItY29yZS92NGwyLWNvbW1vbi5jIGIvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUvdjRs
-Mi1jb21tb24uYwo+PiA+ID4gaW5kZXggMWUzOGFkODkwNmEyLi4yM2EwY2IwMmVhM2EgMTAwNjQ0
-Cj4+ID4gPiAtLS0gYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWNvbW1vbi5jCj4+ID4g
-PiArKysgYi9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWNvbW1vbi5jCj4+ID4gPiBAQCAt
-MjYyLDYgKzI2Miw4IEBAIGNvbnN0IHN0cnVjdCB2NGwyX2Zvcm1hdF9pbmZvICp2NGwyX2Zvcm1h
-dF9pbmZvKHUzMiBmb3JtYXQpCj4+ID4gPiAgCQkvKiBZVVYgcGxhbmFyIGZvcm1hdHMgKi8KPj4g
-PiA+ICAJCXsgLmZvcm1hdCA9IFY0TDJfUElYX0ZNVF9OVjEyLCAgICAucGl4ZWxfZW5jID0gVjRM
-Ml9QSVhFTF9FTkNfWVVWLCAubWVtX3BsYW5lcyA9IDEsIC5jb21wX3BsYW5lcyA9IDIsIC5icHAg
-PSB7IDEsIDIsIDAsIDAgfSwgLmhkaXYgPSAyLCAudmRpdiA9IDIgfSwKPj4gPiA+ICAJCXsgLmZv
-cm1hdCA9IFY0TDJfUElYX0ZNVF9OVjIxLCAgICAucGl4ZWxfZW5jID0gVjRMMl9QSVhFTF9FTkNf
-WVVWLCAubWVtX3BsYW5lcyA9IDEsIC5jb21wX3BsYW5lcyA9IDIsIC5icHAgPSB7IDEsIDIsIDAs
-IDAgfSwgLmhkaXYgPSAyLCAudmRpdiA9IDIgfSwKPj4gPiA+ICsJCXsgLmZvcm1hdCA9IFY0TDJf
-UElYX0ZNVF9OVjE1LCAgICAucGl4ZWxfZW5jID0gVjRMMl9QSVhFTF9FTkNfWVVWLCAubWVtX3Bs
-YW5lcyA9IDEsIC5jb21wX3BsYW5lcyA9IDIsIC5icHAgPSB7IDUsIDUsIDAsIDAgfSwgLmhkaXYg
-PSAyLCAudmRpdiA9IDIsCj4+ID4gPiArCQkgIC5ibG9ja193ID0geyA0LCAyLCAwLCAwIH0sIC5i
-bG9ja19oID0geyAxLCAxLCAwLCAwIH0gfSwKPj4gPiA+ICAJCXsgLmZvcm1hdCA9IFY0TDJfUElY
-X0ZNVF9OVjE2LCAgICAucGl4ZWxfZW5jID0gVjRMMl9QSVhFTF9FTkNfWVVWLCAubWVtX3BsYW5l
-cyA9IDEsIC5jb21wX3BsYW5lcyA9IDIsIC5icHAgPSB7IDEsIDIsIDAsIDAgfSwgLmhkaXYgPSAy
-LCAudmRpdiA9IDEgfSwKPj4gPiA+ICAJCXsgLmZvcm1hdCA9IFY0TDJfUElYX0ZNVF9OVjYxLCAg
-ICAucGl4ZWxfZW5jID0gVjRMMl9QSVhFTF9FTkNfWVVWLCAubWVtX3BsYW5lcyA9IDEsIC5jb21w
-X3BsYW5lcyA9IDIsIC5icHAgPSB7IDEsIDIsIDAsIDAgfSwgLmhkaXYgPSAyLCAudmRpdiA9IDEg
-fSwKPj4gPiA+ICAJCXsgLmZvcm1hdCA9IFY0TDJfUElYX0ZNVF9OVjI0LCAgICAucGl4ZWxfZW5j
-ID0gVjRMMl9QSVhFTF9FTkNfWVVWLCAubWVtX3BsYW5lcyA9IDEsIC5jb21wX3BsYW5lcyA9IDIs
-IC5icHAgPSB7IDEsIDIsIDAsIDAgfSwgLmhkaXYgPSAxLCAudmRpdiA9IDEgfSwKPj4gPiA+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmMgYi9kcml2ZXJz
-L21lZGlhL3Y0bDItY29yZS92NGwyLWlvY3RsLmMKPj4gPiA+IGluZGV4IGUyNTI2NzAxMjk0ZS4u
-OWU1NTEwY2IyNTVlIDEwMDY0NAo+PiA+ID4gLS0tIGEvZHJpdmVycy9tZWRpYS92NGwyLWNvcmUv
-djRsMi1pb2N0bC5jCj4+ID4gPiArKysgYi9kcml2ZXJzL21lZGlhL3Y0bDItY29yZS92NGwyLWlv
-Y3RsLmMKPj4gPiA+IEBAIC0xMzAyLDYgKzEzMDIsNyBAQCBzdGF0aWMgdm9pZCB2NGxfZmlsbF9m
-bXRkZXNjKHN0cnVjdCB2NGwyX2ZtdGRlc2MgKmZtdCkKPj4gPiA+ICAJY2FzZSBWNEwyX1BJWF9G
-TVRfTTQyMDoJCWRlc2NyID0gIllVViA0OjI6MCAoTTQyMCkiOyBicmVhazsKPj4gPiA+ICAJY2Fz
-ZSBWNEwyX1BJWF9GTVRfTlYxMjoJCWRlc2NyID0gIlkvQ2JDciA0OjI6MCI7IGJyZWFrOwo+PiA+
-ID4gIAljYXNlIFY0TDJfUElYX0ZNVF9OVjIxOgkJZGVzY3IgPSAiWS9DckNiIDQ6MjowIjsgYnJl
-YWs7Cj4+ID4gPiArCWNhc2UgVjRMMl9QSVhfRk1UX05WMTU6CQlkZXNjciA9ICIxMC1iaXQgWS9D
-YkNyIDQ6MjowIChQYWNrZWQpIjsgYnJlYWs7Cj4+ID4gPiAgCWNhc2UgVjRMMl9QSVhfRk1UX05W
-MTY6CQlkZXNjciA9ICJZL0NiQ3IgNDoyOjIiOyBicmVhazsKPj4gPiA+ICAJY2FzZSBWNEwyX1BJ
-WF9GTVRfTlY2MToJCWRlc2NyID0gIlkvQ3JDYiA0OjI6MiI7IGJyZWFrOwo+PiA+ID4gIAljYXNl
-IFY0TDJfUElYX0ZNVF9OVjI0OgkJZGVzY3IgPSAiWS9DYkNyIDQ6NDo0IjsgYnJlYWs7Cj4+ID4g
-PiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oIGIvaW5jbHVkZS91
-YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oCj4+ID4gPiBpbmRleCA1YTczYjkyZmZlNGQuLjQ3ZmYzNGQ2
-Yjc5ZiAxMDA2NDQKPj4gPiA+IC0tLSBhL2luY2x1ZGUvdWFwaS9saW51eC92aWRlb2RldjIuaAo+
-PiA+ID4gKysrIGIvaW5jbHVkZS91YXBpL2xpbnV4L3ZpZGVvZGV2Mi5oCj4+ID4gPiBAQCAtNTk4
-LDYgKzU5OCw3IEBAIHN0cnVjdCB2NGwyX3BpeF9mb3JtYXQgewo+PiA+ID4gIC8qIHR3byBwbGFu
-ZXMgLS0gb25lIFksIG9uZSBDciArIENiIGludGVybGVhdmVkICAqLwo+PiA+ID4gICNkZWZpbmUg
-VjRMMl9QSVhfRk1UX05WMTIgICAgdjRsMl9mb3VyY2MoJ04nLCAnVicsICcxJywgJzInKSAvKiAx
-MiAgWS9DYkNyIDQ6MjowICAqLwo+PiA+ID4gICNkZWZpbmUgVjRMMl9QSVhfRk1UX05WMjEgICAg
-djRsMl9mb3VyY2MoJ04nLCAnVicsICcyJywgJzEnKSAvKiAxMiAgWS9DckNiIDQ6MjowICAqLwo+
-PiA+ID4gKyNkZWZpbmUgVjRMMl9QSVhfRk1UX05WMTUgICAgdjRsMl9mb3VyY2MoJ04nLCAnVics
-ICcxJywgJzUnKSAvKiAxNSAgWS9DYkNyIDQ6MjowIDEwLWJpdCBwYWNrZWQgKi8KPj4gPiA+ICAj
-ZGVmaW5lIFY0TDJfUElYX0ZNVF9OVjE2ICAgIHY0bDJfZm91cmNjKCdOJywgJ1YnLCAnMScsICc2
-JykgLyogMTYgIFkvQ2JDciA0OjI6MiAgKi8KPj4gPiA+ICAjZGVmaW5lIFY0TDJfUElYX0ZNVF9O
-VjYxICAgIHY0bDJfZm91cmNjKCdOJywgJ1YnLCAnNicsICcxJykgLyogMTYgIFkvQ3JDYiA0OjI6
-MiAgKi8KPj4gPiA+ICAjZGVmaW5lIFY0TDJfUElYX0ZNVF9OVjI0ICAgIHY0bDJfZm91cmNjKCdO
-JywgJ1YnLCAnMicsICc0JykgLyogMjQgIFkvQ2JDciA0OjQ6NCAgKi8KPgo+LS0gCj5SZWdhcmRz
-LAo+Cj5MYXVyZW50IFBpbmNoYXJ0CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hey Yury and Andy,
+
+thanks for you review and discussion, after some further communication
+with Nicolas Dufresne and Andrzej Pietrasiewicz, we came to the
+conclusion that I will prepare a more general bit-writer API, which fits
+better to the use-case we have on a lot of multimedia hardware.
+
+I'll probably reuse the bitmap API as the backbone of that
+implementation and use the `*_set8` to write the content back to memory,
+but as we have a few more potential users for such an API, I'll strive
+towards creating a new kernel API instead of extending an existing API
+that isn't designed for our use-case.
+
+Thanks a lot for your input and ideas.
+
+Greetings,
+Sebastian
+
+On 14.07.2022 14:24, Andy Shevchenko wrote:
+>On Wed, Jul 13, 2022 at 01:42:17PM -0700, Yury Norov wrote:
+>> On Wed, Jul 13, 2022 at 10:14:24PM +0200, Andy Shevchenko wrote:
+>> > On Wed, Jul 13, 2022 at 9:44 PM Yury Norov <yury.norov@gmail.com> wrote:
+>> > > On Wed, Jul 13, 2022 at 09:10:33PM +0200, Andy Shevchenko wrote:
+>> > > > On Wed, Jul 13, 2022 at 8:56 PM Yury Norov <yury.norov@gmail.com> wrote:
+>> > > > > On Wed, Jul 13, 2022 at 06:31:59PM +0200, Sebastian Fricke wrote:
+>
+>...
+>
+>> > > > > I'd suggest you to try implementing
+>> > > > >         bitmap_copy_from(dst, src, dst_off, len)
+>> > > > > or even
+>> > > > >         bitmap_copy_from(dst, dst_off, src, src_off, len)
+>> > > > > if you expect that you'll need more flexibility in the future.
+>> > > >
+>> > > > Do you think it would be useful?
+>> > > >
+>> > > > We have bitmap_replace() & bitmap_remap(). Wouldn't that be enough?
+>> > >
+>> > > bitmap_replace and bitmap_remap have no an 'offset' parameter.
+>> >
+>> > True.
+>> >
+>> > But then it's a bit too generic to have this src_off, no?
+>>
+>> That's why I said:
+>>
+>> > > > > if you expect that you'll need more flexibility in the future.
+>>
+>> My preferred option is bitmap_copy_from(dst, src, dst_off, len).
+>>
+>> > I would rather expect for asymmetrical bitmaps that the other side
+>> > will be either one of the fixed width types (it makes sense to have
+>> > for 32- or 64-bit arguments.
+>>
+>> Look at patch #6 - it copies 1,4,5,9,10,32,37... - pretty much a random
+>> number number of bits.
+>
+>It's too poor randomness, as u64 covers all what in patch 6.
+>
+>> > When you have a source bitmap of x bits and  you would like to copy it
+>> > into a y-bit one, I would think that either you have a small amount of
+>> > bits in x anyway, or x is a full-sized bitmap (same order as y).
+>>
+>> It sounds like a speculation to me. Why shouldn't we let people to
+>> copy with an offset any number of bits?
+>
+>Because it's a common case. You have a value in the register / variable, which
+>naturally is one of the POD types. Now you want to inject this into bitmap at
+>the arbitrary offset. Value itself also needs to be variadic size in bits.
+>
+>Basically what he is trying to achieve is something like bitfield.h API over
+>bitmaps. Dunno, if actually bitfield.h in the certain driver wouldn't be
+>enough.
+>
+>> > Also
+>> > keep in mind that granularity is long, so less than long it makes no
+>> > sense.
+>> >
+>> >   bitmap_copy_from_T(unsigned long *map, start, len, T src),
+>> >
+>> > where T is type, start is the offset in map, len is the amount of bits
+>> > from src starting from 0. That's what is required in most of the cases
+>> > I believe.
+>>
+>> But not in Sebastian's case, according to patch #6.
+>
+>I think it's a case, see above.
+>
+>-- 
+>With Best Regards,
+>Andy Shevchenko
+>
+>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
