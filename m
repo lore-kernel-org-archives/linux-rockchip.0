@@ -4,79 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E708BC43334
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Jul 2022 21:05:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABC93C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Jul 2022 21:24:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BANDsrDeIBFPGnKVnyGCtfTwG+l3YIChdfLUXMnmbR8=; b=2jygLoqQNU84s+
-	1y+DHbcKMg0/Rwpmye9ki8fEbLqHvcpCEZh+SwCS28OLBOoMRIKEzAoidvRAnk3PGBO7PN9UIrYzE
-	JL4OHLRqO9LaD/SIbxdKfFzfbgRJKAljD+nj50r2nC7XnYuaXfLmeLreGPmjdiAzJZW9wCuHngLDZ
-	hfmPyEaCY7SuZ6BCWOSHWKQDFZX05LjJfSJ1NWEvqKz6HDXjWw6bLL4/tteKVKhdnpgLsAI8OGB4U
-	mlGIZ2/hdLiZcaVK86rv9h2goGhmhHFrrv5CYWeV6skTdNRCHvC/m8Lnh48NP//1D9McX3iZRkXar
-	JHN7EjmPQzBdoy4MG+qA==;
+	List-Owner; bh=W0lAUwpgDEipdeI948GkVSsiysptaW3kaHTJJNz1dak=; b=nAlhYjzMNKx7WK
+	gO8PEqUyfk11BUw4bZ8ZHAMhQRXtIoQCwePTAV3IeHySKPjPeKIP7cYNw/qVHhTOfjnm+Zx6v6mqV
+	6pb5quhbF/YHyyztgJGpYiS0eNNOYAyZvpfdzxoteAFTgsWYIp2NNhhx1FWPojbd5GmLHy1zTDSSQ
+	ipuaRlLAzCnqFnNaRGdeYnKYkLfdMkrfoo5O8+IooZCvlpxK7LeG0sCy/JtKqTZQi03u/5CQSZCgZ
+	9FRafqvSPZ+FsBAc4xlfIi6vvhoBq2r9Ycj1iP+EI0EVhgbDTbazCCEBi9Iydr3YlcOc2Phhah/oj
+	TRGlST7AI1mRKjrOW0Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFMJA-007JE0-IQ; Sat, 23 Jul 2022 21:05:08 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1oFMbL-007T4K-5V; Sat, 23 Jul 2022 21:23:55 +0000
+Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFM0Y-0079I9-Lt
-	for linux-rockchip@lists.infradead.org; Sat, 23 Jul 2022 20:45:56 +0000
-Received: by mail-pf1-x432.google.com with SMTP id w185so7183651pfb.4
-        for <linux-rockchip@lists.infradead.org>; Sat, 23 Jul 2022 13:45:54 -0700 (PDT)
+	id 1oFMBl-007Faj-Rm
+	for linux-rockchip@lists.infradead.org; Sat, 23 Jul 2022 20:57:31 +0000
+Received: by mail-lj1-x22f.google.com with SMTP id a10so9036441ljj.5
+        for <linux-rockchip@lists.infradead.org>; Sat, 23 Jul 2022 13:57:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=y2X4hBgWJ5M3qcpU2Yj23INzw0af6N00euO3mnLniHU=;
-        b=vQz45ZqcsffyC1SskJaeS+KSyktsNS9Qn3Ay4JgjPWJzB7+P14ug5wFF8HoxLaT+qH
-         6iRpgUGAGYU+RJZf2IR4624qznEwqecQLmDnyeS2IoruPQd0cWVLC15PKRybvW0IxUIf
-         d5oah9D9MC4GGXF91Th6itXySGXUGdWYBBfs98rPThudtjEYHjZQUj4V5IuRhOU18iTX
-         nUS1jWjmuE8UFuHTuuSOa6XMKOACxKtrnxsBtczIbVGSZui5G6gPHp/oQPGRZkn+0eLV
-         x1u62jXmlCXoi+jtTbqCr9dDeW2x2f7K3Mg+dpUTeWd1I5hGdpuvcBuY6EFB7X0b2aYx
-         zSww==
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=GXqHBBrsmPel+pa53zazqpINe57WFI4H4RqOdxGeCY0=;
+        b=Ilg+UwCPMZCeIpP30G9ycB79XDhMvyeAV5kSfo2NWyH43hWYoNcGab0RjrCzyGF1Xg
+         7CrEIjmJO/BOb4qdpQ4FWCgXM+6lfWOPhqimLdhKImznCbHFbWSfVcVO7WF1vDIg0WtL
+         XlsfZsKH5EAaxquODjIZHc6cGx9aWTwhLhe+QTkxmoCQ4eItR7iXLMqrKUA4uBkBiH/c
+         wqi1aM0AaB1v1UCLFnjHADTyezQYD159+HHdsVJ0l2AXxsU/NtIGn0GLIso9o6FXf23a
+         mHEQJiWMCpNtrPGsMxLhwOlTELBJOjq8Xv15zV/ZqnDZl/F+ImCQ4uxM8mQd2tUzrdbn
+         Qvqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=y2X4hBgWJ5M3qcpU2Yj23INzw0af6N00euO3mnLniHU=;
-        b=KqHb9b/KVGQO6UBagjr5d6LsjqKQOxbybHJzz+QtbUmMpsdCJa2BVNXxE1InAcL4L0
-         eiAQn5+RGksS/b9wJz6P3PRn+CUV/v6Ac0xEcZuoBmYUT8WdXG7mqYvhj4s46trNtyV+
-         T9jIY+Vm11y7A6dK3i1gZxpVWaaQUGpposw/u1eGTYmcGoJ0luxcL35pamjOTFRkhAJ9
-         W8Cuj8D/i1vrA+L++B+zTILGDqRyG9ztd2T2N00Uj0OYDn4Bk+UEqph/dNh+h7HKMSsh
-         vNRpMjH/PK1qvgQYaM8fI62XHplJ9VpNzo2GhMTB4AJTU9KUouoMrtX/wqKcSG1FaDzV
-         M95g==
-X-Gm-Message-State: AJIora9Rvgiw1jrKw6/MIXYoyE8s+8HEemcbXfM9tuGFEHwlwH0ds/vA
-	9OCXttj7pjep5gonVBRTU4uis8Mn40oljyV98JUQsw==
-X-Google-Smtp-Source: AGRyM1tTjCYloHNRD4pj5g9L0ejn2QlFQY4tvRYYRXez7E6lEaXUUk6JKXxPvsNRbV8uKedhaLcIIA==
-X-Received: by 2002:a63:551:0:b0:419:9286:56 with SMTP id 78-20020a630551000000b0041992860056mr4888343pgf.267.1658609153512;
-        Sat, 23 Jul 2022 13:45:53 -0700 (PDT)
-Received: from localhost.localdomain ([2405:201:c00a:a073:a406:cc30:f4ec:f10a])
-        by smtp.gmail.com with ESMTPSA id u14-20020a170902e80e00b0016a6caacaefsm6187950plg.103.2022.07.23.13.45.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 23 Jul 2022 13:45:53 -0700 (PDT)
-From: Jagan Teki <jagan@edgeble.ai>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH 22/22] ARM: configs: Add RV1126 ECM0 fragment config
-Date: Sun, 24 Jul 2022 02:13:35 +0530
-Message-Id: <20220723204335.750095-23-jagan@edgeble.ai>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220723204335.750095-1-jagan@edgeble.ai>
-References: <20220723204335.750095-1-jagan@edgeble.ai>
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=GXqHBBrsmPel+pa53zazqpINe57WFI4H4RqOdxGeCY0=;
+        b=pmZpypfV22gxqgUQCivzkAY/BZfd9BhQK9SdwugvNuEaDu4y+RxRQaPlOfydybyxoN
+         hQ4xXFtsWVfCrsZUkapFX//7jstUEnwVhdZjzh1jGQsz9VN57G+kNhZ1stq5Dk5h16XA
+         gZ/66uhoFR2KVpgAsaSUcewueMs/u0/A+zyY9jQj+bfjlNdady5MlUG1ZOyrmGkp5GWL
+         4VPjMhuQNZhpC/eTl58R143Ap6CNTNHSyOljYh1Vdi1Q6xF/ukTFD/PhwKs6JwWkY0UT
+         0yF3eSsoHSYxLCQCeegzCHaj61Pyrwyzdhb6dA20oNdKqdd/+6cc0wmVYsEVW1y9dUVG
+         RmTQ==
+X-Gm-Message-State: AJIora95EB8z/sXFQ/CAk3SMLp9kEr8x9nw3I7FGGCQpeZlptfAGvrM1
+	L6flrnUZIEZaSk+XvHOI2mW+7Q==
+X-Google-Smtp-Source: AGRyM1uNoNmxWnBuVTmEiohN1eoOBdO6IQfMVIgNygXDqC//h7C2nfwugZvpCZ4nZzt0ecycY/bn8w==
+X-Received: by 2002:a2e:9cd8:0:b0:25e:ec:237c with SMTP id g24-20020a2e9cd8000000b0025e00ec237cmr717ljj.277.1658609847745;
+        Sat, 23 Jul 2022 13:57:27 -0700 (PDT)
+Received: from [192.168.10.173] (93.81-167-86.customer.lyse.net. [81.167.86.93])
+        by smtp.gmail.com with ESMTPSA id k19-20020a192d13000000b00478772eb18esm1831476lfj.92.2022.07.23.13.57.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 23 Jul 2022 13:57:27 -0700 (PDT)
+Message-ID: <4e086144-a367-a22d-3cf8-8d1018d433d4@linaro.org>
+Date: Sat, 23 Jul 2022 22:57:25 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH 01/22] dt-bindings: power: rockchip: Document RV1126
+ power-controller
+Content-Language: en-US
+To: Jagan Teki <jagan@edgeble.ai>, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Kever Yang <kever.yang@rock-chips.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org
+References: <20220723204335.750095-1-jagan@edgeble.ai>
+ <20220723204335.750095-2-jagan@edgeble.ai>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220723204335.750095-2-jagan@edgeble.ai>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220723_134554_771327_F8428C98 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20220723_135729_919630_17E23DF2 
+X-CRM114-Status: UNSURE (   8.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,24 +97,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Signed-off-by: Jagan Teki <jagan@edgeble.ai>
----
- arch/arm/configs/rv1126-ecm0.config | 3 +++
- 1 file changed, 3 insertions(+)
- create mode 100644 arch/arm/configs/rv1126-ecm0.config
+On 23/07/2022 22:43, Jagan Teki wrote:
+> Document dt-bindings for RV1126 power-controller.
+> 
+> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+> ---
+>  .../devicetree/bindings/power/rockchip,power-controller.yaml    | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
 
-diff --git a/arch/arm/configs/rv1126-ecm0.config b/arch/arm/configs/rv1126-ecm0.config
-new file mode 100644
-index 000000000000..8219c2d4d794
---- /dev/null
-+++ b/arch/arm/configs/rv1126-ecm0.config
-@@ -0,0 +1,3 @@
-+CONFIG_RTC_DRV_RK808=y
-+CONFIG_COMMON_CLK_RK808=y
-+CONFIG_ROCKCHIP_SARADC=y
--- 
-2.25.1
 
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
