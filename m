@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B598C43334
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Jul 2022 20:52:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3D23C433EF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 Jul 2022 20:54:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZMwBKsXMggqKK8ymZo923+6TBXZuwTzNKi9XSH8AexM=; b=K9eB0V0/IWkrCB
-	yfdJ5hj2B9hQHdVIKQy05gWnlcDP94aKF8QEVZajnaYecrOgpr0WL2n9vslKawUSDN8+JeHDNVbNq
-	K+dOEbNpr3tzTKiM/rSa8e/DPPTWPm5/6otx4g9sT8twQBXrr8dY+uWbmLgwa8KshpbAdSSd5AJ+C
-	Rbrw3a9OI5155zrgRqBR30wcNWT4kM85bydg+qxwPQnEiEAbK/c6QnRDualmXD2Ts4lqEmOfS8o8H
-	b4/p0DM1KcOx8wXCV58nTyzSXqfUijl3cl4MXDGCiM/a+zp/u/CtZbEbkoxsmr8wvw/rr287GVsKG
-	vvImSsHA78rFqpQ9LSTg==;
+	List-Owner; bh=PxPVdGPenM0bjLU3IlngBdC+O5p/ivfzkRFkSJk/I4E=; b=kqLLs6k5wlFEUf
+	pFXY+/tw2vTXsQIFpr2BvmHtOwSaU+MjqShMFNZLZw3K3oVmryY244djzrW4ts9s6xaP8BPl0HO4c
+	hB/JhO1mPS/UV9mY5TghXSQQa35xVipi21IpF3ROZlCk4YrmAUmb1V78StF032oLXVP7sAyf5v+lU
+	pbMrTSYkOpNlaZA1wLyUxa/tL9Fr0O1x9M/4V9jwtOu2BkiP6J/L4UwYEcgmSMU23LCP49QpMgyki
+	QobJjm2DAV6sqWURnLxobTHhq4gZFrbvy9pfs2VqKq5Q81wXKZNVwZhigIDwCr03E7xung1RrMNhr
+	7bHGjs1VuqAME6lUzofQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFM6t-007CwU-9l; Sat, 23 Jul 2022 20:52:27 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1oFM98-007EA0-UW; Sat, 23 Jul 2022 20:54:46 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oFLzi-0078jR-MJ
-	for linux-rockchip@lists.infradead.org; Sat, 23 Jul 2022 20:45:03 +0000
-Received: by mail-pg1-x532.google.com with SMTP id e132so7077389pgc.5
-        for <linux-rockchip@lists.infradead.org>; Sat, 23 Jul 2022 13:45:02 -0700 (PDT)
+	id 1oFLzo-0078qD-9P
+	for linux-rockchip@lists.infradead.org; Sat, 23 Jul 2022 20:45:11 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id f3-20020a17090ac28300b001f22d62bfbcso5668164pjt.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 23 Jul 2022 13:45:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=nm6nbnjiRxOXdwLeEjeC2uCR3G6MiXh9QLA4PcvlHnQ=;
-        b=vlvVPqYjbWIuDFylCT25W5n7UQUMi8m1drHLX+dbutIk+9mv1oSGvrZ0LtMlk8APWs
-         lms8CPKvpzrnOr8rbb/e0cB7RPB54h1FPWAcwUbyQnDCpIC1C6a8PUyhnUoNCilYO4dl
-         0fYQ7cXBA7vxqZ0+iMOj8KBtmYYwxyTZIVvaOhIUdqZlmDhRfhjkIccIvqYbRpXF0MST
-         Bf/u4cuoVzhx+Ux7/hTYyull+3+emOQZVfvZ7d2fj6RuvH+5dnfzvybi108bbOWS64rW
-         ftD6Ftgk2OrCMcguPvYE7bJbtOJ78p5HRnbVOpGv6AGQbgrh//NgfxvmYp3pwo/9yxoc
-         vaPg==
+        bh=CDlZ43oVhMYzaJDMMEIQR/19nBX7GQkCpkJpfhIXaE4=;
+        b=H5izq+9RNqowV2xQCwZ1phKisiPMaiZGQhQux0gqZdhw12XqLt7sYj81uKCO/orbAU
+         WljPrx5D6PKiDiyS55gw2BJu1KvnGE/j3rbcLGQ/h3EwdRug6qC412Qngok8ZpO/i34X
+         jUZvKZQT5P6gwirZictIKupqhGEvjBLQP06lMKlttIu8tSuKGNeHTfiTprALQvXCnEB/
+         IqhiXRm7ipDUjTEVtLRdgea6BXpnRN2y8xeN3yQeJsfReJgLs4yONG5hF7YuUcrtMn9A
+         AQCmLy16sFZdu3tc8kcDBRhn+9/RXD886Mm6Rxp3DtGQL3l6AN9j+P9Q10aqKQvgcJOa
+         qqRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=nm6nbnjiRxOXdwLeEjeC2uCR3G6MiXh9QLA4PcvlHnQ=;
-        b=BeoByiYzvJO6BvWlZcCMd4NrtXhdpUmatK/WXYTDqFxu/Q+Z641oVCvE0XURsxkF+2
-         8HyGm61HbZjTao4R+B6vcLSpRw+8dAnuAEj9zii9A0R+CrlZNxXhu5FlDONon6NnFwA3
-         ATIewjrn1Gchi7gVm8C7rG4IsJfQ/JyHPXgsTFctgp7TzCZFWlClWDvt3J6X9tRQwah9
-         7BMHLE2HdZTAgAmazaDYtrkuapiu+jN+/FxQPlxm96JmMewXS1xn8ZRKXjwKfhw0ASBg
-         /FvcPuQRKPJ26wr10JssGUFKPnVNm0P0BsszWskHb3GxvGoat5exhHBeXxIZUANLhNJK
-         aIIA==
-X-Gm-Message-State: AJIora/rEEqjh4QHImqnvs6VJ8ZyveoB80TCJYL18+Wa+UtZBTQsPQ0N
-	33gxbpAdmTQskj6tYhrrEFRchg==
-X-Google-Smtp-Source: AGRyM1sv3HopWmXThwMmwnr7aevYu7HQJ/mn8QlwfTlpt2lag/EL36qjUcSON+NPzM107+hSgArTNA==
-X-Received: by 2002:a63:d006:0:b0:419:b272:9e6d with SMTP id z6-20020a63d006000000b00419b2729e6dmr4996894pgf.608.1658609102346;
-        Sat, 23 Jul 2022 13:45:02 -0700 (PDT)
+        bh=CDlZ43oVhMYzaJDMMEIQR/19nBX7GQkCpkJpfhIXaE4=;
+        b=zHkGRv6c6GzPMB1K6HpJWvLdGffvIWxM6R8J51Tz0DNvi8WK6vj3w9bMD0ve7y59hu
+         37UA1VzyPI1G3H5jzInRdjXtXIFWmLxXIBQ3HnahO+jZiS/MCYjPcQHgqVxLxpfyGnDg
+         O9sSv5ceheMBewi1sRVDHSappYbnfTZLKXTtP2Buq/5Q+sDYrrUsGYK+QdZTCEzv/RtE
+         wGLB5rdO2L6sF7z8j8AGVMdaaZR5HqDb2ULdx/P4mPZ3YJ7UkZimZjSNlXvd1APgA8MY
+         GixpY6cyYL/bV9BizRJm27gmjWjx5xvxWpxnvnMXPdFOuCRMCTDFtYR2uT/t5tMn+Ml0
+         kDJg==
+X-Gm-Message-State: AJIora8rY0rXZiSd+XATv9KDKYU8rh1lR3ydN3GiRfncRqeGZREr7Tr7
+	2Vs/9+B0cLSA3G50Ue8lGBVOOg==
+X-Google-Smtp-Source: AGRyM1uKWl2D5HfdXUQ3QXMbTNGZZwYYJeIdpLvK8pfNQkcRpnYmb7mKs1rdeDZE7l5dKAnANb41eQ==
+X-Received: by 2002:a17:902:ecc7:b0:16d:66eb:bb88 with SMTP id a7-20020a170902ecc700b0016d66ebbb88mr1477383plh.170.1658609107695;
+        Sat, 23 Jul 2022 13:45:07 -0700 (PDT)
 Received: from localhost.localdomain ([2405:201:c00a:a073:a406:cc30:f4ec:f10a])
-        by smtp.gmail.com with ESMTPSA id u14-20020a170902e80e00b0016a6caacaefsm6187950plg.103.2022.07.23.13.44.58
+        by smtp.gmail.com with ESMTPSA id u14-20020a170902e80e00b0016a6caacaefsm6187950plg.103.2022.07.23.13.45.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 23 Jul 2022 13:45:02 -0700 (PDT)
+        Sat, 23 Jul 2022 13:45:07 -0700 (PDT)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -67,15 +67,15 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH 14/22] dt-bindings: soc: rockchip: Document RV1126 grf
-Date: Sun, 24 Jul 2022 02:13:27 +0530
-Message-Id: <20220723204335.750095-15-jagan@edgeble.ai>
+Subject: [PATCH 15/22] dt-bindings: soc: rockchip: Document RV1126 pmugrf
+Date: Sun, 24 Jul 2022 02:13:28 +0530
+Message-Id: <20220723204335.750095-16-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220723204335.750095-1-jagan@edgeble.ai>
 References: <20220723204335.750095-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220723_134502_770553_BBA3571A 
+X-CRM114-CacheID: sfid-20220723_134508_614996_6A5AEF1F 
 X-CRM114-Status: UNSURE (   9.18  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -94,7 +94,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document compatible string for Rockchip RV1126 grf.
+Document compatible string for Rockchip RV1126 pmugrf.
 
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
@@ -102,14 +102,14 @@ Signed-off-by: Jagan Teki <jagan@edgeble.ai>
  1 file changed, 1 insertion(+)
 
 diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index 75a2b8bb25fb..dd7090d668f5 100644
+index dd7090d668f5..521fbcb8eeb9 100644
 --- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
 +++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -45,6 +45,7 @@ properties:
-               - rockchip,rk3568-pmugrf
+@@ -46,6 +46,7 @@ properties:
                - rockchip,rv1108-grf
                - rockchip,rv1108-pmugrf
-+              - rockchip,rv1126-grf
+               - rockchip,rv1126-grf
++              - rockchip,rv1126-pmugrf
            - const: syscon
            - const: simple-mfd
  
