@@ -4,103 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFA9DC433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jul 2022 21:27:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34DCFC43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jul 2022 22:22:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QNDdj38rXOVDG2lf6CQl3kQwcLZJfifazHPeq+hajoA=; b=CgAxHhjtetmM7m
-	ChqutbIy9UxYG4Rxwrtt1J1aYKEX1b231EPIDZ1wsSdJ2OVpZu5rLw3kV1THf3mRXW/iCqXTLQ0S5
-	+KFNNbJFGD6cFBzK5YIKtuUZVf/fF2Lk4gKT7HYwNLg+pjAKynozT/Fg+S+r0lAgT3RKNvJdDj8Qb
-	8zvGQxMQDM4YSk9EFqS+cEykADnq9wov5Ua965VP97g3rSl+TBFFhFG3T9jqu31X8JdMv4ufwBY8y
-	L+h3kilK1vcCZWCKnZ+eNxlD/xj1wWr99/X/mOS4+OGNfhW9zonPMyLG4K2AcV1edO3Ozho8lHDUd
-	WBrNwzqk5+Jk1qFQveGg==;
+	List-Owner; bh=n/PcnZILYgW+jyUdsTbQ0EvaTKgd5HtiAxrhvbCoG28=; b=raYr/D0q22fiNi
+	Oq466Q2VUoZqEfz9etLkXzp+mnXE9OL5Ltba/fJyU9mu7l72fFqudVb2xcBDycU2VvCOU+gjW4a/3
+	YK0/TWeXEsaBJsQu9dXhh1uNOVmxfbMgvQV5//g4VeqbTjuPyjzn0w3CdBXsxAI9K+s+ofZAyiPi4
+	SgQ6Bjmx1l6RWaoJN6cQnD8OtNEF3daDkwyqb/M3BIGngU1Q1upYOB0PQQVqxw+EPxqQc55W5gotv
+	EBiXjuzQY8INh9OoGWJNIsw5708X31oyU19abnMWtPXNnXm7ldsk6DP58a8odDNzQXAF59pT7JPAn
+	iB2d1y/ZbeZ/ezSJQYNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG5bT-002frt-W1; Mon, 25 Jul 2022 21:27:04 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1oG6Sv-00398K-S3; Mon, 25 Jul 2022 22:22:17 +0000
+Received: from mail-ot1-f54.google.com ([209.85.210.54])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG5bR-002fog-Bk
-	for linux-rockchip@lists.infradead.org; Mon, 25 Jul 2022 21:27:02 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id z13so17705690wro.13
-        for <linux-rockchip@lists.infradead.org>; Mon, 25 Jul 2022 14:26:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linexp-org.20210112.gappssmtp.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=bjRNYXxMr1okCGj2grS3n0YP83rNlXVFleMjal7EwMQ=;
-        b=OIuAB0R9S3R0tuYdjIBG57LQF+mePnOC043+5qSLc1ib/ai4upOfIOdf9MDbpdnNAY
-         69xcbFujx7clZjtfBx2AUniExqL68WETLo/ro5plYDHF2dm2jcHUCA28R+s5M7sEHYzm
-         qK/QpGx9jxJ5xqBF3xC1QgPtx5U2luys/7100ia1pEVzJFeylfZShNIXVqkEwDKjrkGy
-         1HAml7bDM5OgPBk4jhKEBRnvThszfIQF2aSegtuyuZ/o8J0brue7cCq9gmoCwjOawwdD
-         zgUCWqGAW4VLdmBLEAJjBI3zC5s5biq0FFb5WW8ngU1liX7hVifrFJkKSJ5/onXXmBvX
-         QHJg==
+	id 1oG6St-00395N-Rx; Mon, 25 Jul 2022 22:22:17 +0000
+Received: by mail-ot1-f54.google.com with SMTP id z12-20020a056830128c00b0061c8168d3faso9715123otp.7;
+        Mon, 25 Jul 2022 15:22:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=bjRNYXxMr1okCGj2grS3n0YP83rNlXVFleMjal7EwMQ=;
-        b=haY5BbGfsd1PI2ZS88ym38Fuj+6O6ViJvGRwu1U2wJwWXbApN/+UtAorhEe2zbgtU3
-         mjKP3Lx9VABzV8qNlQbtNjuQmUu9AykErD3j5rME9YD7fquQSBakVLPFUeb+0mf7+K4d
-         7BSubTo4mdAgmOxqeSRhW9nYpZZcaDKYvDABTuqmlhcaCbTkGBmStHYwzyHWQgtwi6uV
-         8SQvzW3FBjMNgc4LiAyUGWB6X1ezAhwC6RqccreERHwVCi+nt9dVKhMHUGKTXkcOA6d/
-         Gv2Ve23QY3jgmH9/OowmLuuU/SMwvbJe+2hogJ1QEwu2vRMuz0HuEWs4KNkuMjkqgPuH
-         nriw==
-X-Gm-Message-State: AJIora9qagOrrEh1lkiS7Qi6Z7z7yumnU2F6xqQ+unMgQi+j6f+MGTMS
-	/AfFTUfA0vB3/aGroH5kvAf8RA==
-X-Google-Smtp-Source: AGRyM1sGJg6voMCj36V47GPyX5uHOVj+RQfDFEEN855bo6t/AOnZ4PIQMt6CH6kefeVtmha+prt3zA==
-X-Received: by 2002:a5d:514e:0:b0:21e:4fe8:cbb2 with SMTP id u14-20020a5d514e000000b0021e4fe8cbb2mr8557499wrt.162.1658784417139;
-        Mon, 25 Jul 2022 14:26:57 -0700 (PDT)
-Received: from mai.box.freepro.com ([2a05:6e02:1041:c10:1780:8e54:dd38:6668])
-        by smtp.gmail.com with ESMTPSA id r17-20020a5d52d1000000b0021d68a504cbsm12668772wrv.94.2022.07.25.14.26.55
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=usnmbR/AmFXf0Qdhxn6n0uStsPRrPklSyxofovA7ixo=;
+        b=Gm+6kgoBKslMlS95MhvbegjCpLeJY2NIc772gWeG0GyxtX0UmvcaZXehmhSlO/PKIs
+         h0/lAfoctWDob4LA+ETXoQI6+AZmld0L+56qQ9mTvUgnna7iycdVRHM1GrdHuh2QiS/A
+         qVc0g7OjTygOykT7CaojSkoik+PvM4P5K92A0hnh1xfP+BD7+gmfNCAp/ECS2a8zadOg
+         HdNqUEKO7BZjiYxT9Dcu5Wt5zTe+7xmCxP3YPpaOAXFdm/mtSWiGD3WtrFt8TM4nXnW9
+         ZtaJpuYZTS7MvbUKuR6gIDNaWVIJECgPVSRId2jBNSqTOpyzw114b5pfBjdUQLLI7EFq
+         W1EQ==
+X-Gm-Message-State: AJIora85Srrg9IBtjs05DwI77L6kMhg6ffPL+tQL3CK3U8ZwlA8IlfjI
+	/ci9cfKBGlHk9XlsgBT1vw==
+X-Google-Smtp-Source: AGRyM1vN8EPdmzVTTKufoNx4fMFcuAy/FFxvpsZpHOw3pLDW7a+ZmZ+FUbbvHDo2ZRb7xwrcjSXdpw==
+X-Received: by 2002:a05:6830:600f:b0:619:1d62:60c2 with SMTP id bx15-20020a056830600f00b006191d6260c2mr5553879otb.11.1658787732972;
+        Mon, 25 Jul 2022 15:22:12 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id v188-20020a4a5ac5000000b00435b646f160sm5316984ooa.5.2022.07.25.15.22.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Jul 2022 14:26:56 -0700 (PDT)
-From: Daniel Lezcano <daniel.lezcano@linexp.org>
-To: daniel.lezcano@linaro.org,
-	rafael@kernel.org
-Cc: rui.zhang@intel.com,
-	linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	khilman@baylibre.com,
-	abailon@baylibre.com,
-	lukasz.luba@arm.com,
-	broonie@kernel.org,
-	damien.lemoal@opensource.wdc.com,
-	heiko@sntech.de,
-	hayashi.kunihiko@socionext.com,
-	mhiramat@kernel.org,
-	talel@amazon.com,
-	thierry.reding@gmail.com,
-	digetx@gmail.com,
-	jonathanh@nvidia.com,
-	anarsoul@gmail.com,
-	tiny.windzz@gmail.com,
-	baolin.wang7@gmail.com,
-	f.fainelli@gmail.com,
-	bjorn.andersson@linaro.org,
-	mcoquelin.stm32@gmail.com,
-	glaroque@baylibre.com,
-	miquel.raynal@bootlin.com,
-	shawnguo@kernel.org,
-	niklas.soderlund@ragnatech.se,
-	matthias.bgg@gmail.com,
-	j-keerthy@ti.com,
-	Amit Kucheria <amitk@kernel.org>,
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
-Subject: [PATCH v2 03/32] thermal/drivers/rockchip: Switch to new of API
-Date: Mon, 25 Jul 2022 23:26:08 +0200
-Message-Id: <20220725212637.2818207-4-daniel.lezcano@linexp.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220725212637.2818207-1-daniel.lezcano@linexp.org>
-References: <20220725212637.2818207-1-daniel.lezcano@linexp.org>
+        Mon, 25 Jul 2022 15:22:12 -0700 (PDT)
+Received: (nullmailer pid 2848618 invoked by uid 1000);
+	Mon, 25 Jul 2022 22:22:10 -0000
+Date: Mon, 25 Jul 2022 16:22:10 -0600
+From: Rob Herring <robh@kernel.org>
+To: Michael Riesch <michael.riesch@wolfvision.net>
+Cc: linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Sascha Hauer <s.hauer@pengutronix.de>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, Liang Chen <cl@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/3] dt-bindings: phy: add compatible for rk356x to
+ rockchip-inno-csi-dphy
+Message-ID: <20220725222210.GA2848546-robh@kernel.org>
+References: <20220720091527.1270365-1-michael.riesch@wolfvision.net>
+ <20220720091527.1270365-2-michael.riesch@wolfvision.net>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220720091527.1270365-2-michael.riesch@wolfvision.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_142701_420299_C63EEB74 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20220725_152215_934530_847002AF 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,69 +79,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The thermal OF code has a new API allowing to migrate the OF
-initialization to a simpler approach. The ops are no longer device
-tree specific and are the generic ones provided by the core code.
+On Wed, 20 Jul 2022 11:15:25 +0200, Michael Riesch wrote:
+> The driver for the Innosilicon MIPI CSI DPHY is compatible with the variant
+> in the Rockchip RK356x SoCs. Add the compatible string to the binding.
+> 
+> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+> ---
+>  .../devicetree/bindings/phy/rockchip-inno-csi-dphy.yaml          | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-Convert the ops to the thermal_zone_device_ops format and use the new
-API to register the thermal zone with these generic ops.
-
-Signed-off-by: Daniel Lezcano <daniel.lezcano@linexp.org>
----
- drivers/thermal/rockchip_thermal.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-index dc3a9c276a09..819e059cde71 100644
---- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -1211,9 +1211,9 @@ static irqreturn_t rockchip_thermal_alarm_irq_thread(int irq, void *dev)
- 	return IRQ_HANDLED;
- }
- 
--static int rockchip_thermal_set_trips(void *_sensor, int low, int high)
-+static int rockchip_thermal_set_trips(struct thermal_zone_device *tz, int low, int high)
- {
--	struct rockchip_thermal_sensor *sensor = _sensor;
-+	struct rockchip_thermal_sensor *sensor = tz->devdata;
- 	struct rockchip_thermal_data *thermal = sensor->thermal;
- 	const struct rockchip_tsadc_chip *tsadc = thermal->chip;
- 
-@@ -1224,9 +1224,9 @@ static int rockchip_thermal_set_trips(void *_sensor, int low, int high)
- 				     sensor->id, thermal->regs, high);
- }
- 
--static int rockchip_thermal_get_temp(void *_sensor, int *out_temp)
-+static int rockchip_thermal_get_temp(struct thermal_zone_device *tz, int *out_temp)
- {
--	struct rockchip_thermal_sensor *sensor = _sensor;
-+	struct rockchip_thermal_sensor *sensor = tz->devdata;
- 	struct rockchip_thermal_data *thermal = sensor->thermal;
- 	const struct rockchip_tsadc_chip *tsadc = sensor->thermal->chip;
- 	int retval;
-@@ -1239,7 +1239,7 @@ static int rockchip_thermal_get_temp(void *_sensor, int *out_temp)
- 	return retval;
- }
- 
--static const struct thermal_zone_of_device_ops rockchip_of_thermal_ops = {
-+static const struct thermal_zone_device_ops rockchip_of_thermal_ops = {
- 	.get_temp = rockchip_thermal_get_temp,
- 	.set_trips = rockchip_thermal_set_trips,
- };
-@@ -1326,8 +1326,8 @@ rockchip_thermal_register_sensor(struct platform_device *pdev,
- 
- 	sensor->thermal = thermal;
- 	sensor->id = id;
--	sensor->tzd = devm_thermal_zone_of_sensor_register(&pdev->dev, id,
--					sensor, &rockchip_of_thermal_ops);
-+	sensor->tzd = devm_thermal_of_zone_register(&pdev->dev, id, sensor,
-+						    &rockchip_of_thermal_ops);
- 	if (IS_ERR(sensor->tzd)) {
- 		error = PTR_ERR(sensor->tzd);
- 		dev_err(&pdev->dev, "failed to register sensor %d: %d\n",
--- 
-2.25.1
-
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
