@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00911C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jul 2022 23:25:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5E63C43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jul 2022 23:26:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wKW4H7o1X8Eg/6S9f84LKQFZzxwVxCyXHsc4Ifn6F3g=; b=t1Y/raY8xSpa0w
-	XBMvMrxyOQPK/Fnniv8ZYiHZiZrY2Y/xZ2xQuZd4RGq1dZ9n8w1F9bImLN9b6zNqFha/jISLCRjfq
-	0VOs8sMknzSHyDKheLyl3Cg7qI3K84BlkXVkrnou6sGRBsirG4ap6LLGfL4nsraurU46Y6rL3aorS
-	lNeYvDczxeOlW14EsDqDw1H+UFe/j0LwucKmPQjRsyRCZtVxATX0aVZQ3YOe4v42tSU6ORXWkEOHG
-	hcrfioFYeqIyFk9LWpGA58vWFgLgNS6U85h/0lGZORe0saavGlSfxSC+etnmUX8dqJVUzdO5ZYrbj
-	dFQSVe+6EvasypIKcGxw==;
+	List-Owner; bh=SYS9cU+LSB70Oa9Rdg+GkG1DATNsa02zB0kh1WguDLU=; b=4nI7iLKuoDwMr2
+	3s755MmsTFlZ3dOePLjqvRkpSINK4zDX00Lb7MmY49n/3VITKUmBB4J9SAU1pLFBv/lB42zE5Msfr
+	BuL3h0vnbCitGyswUM4kFusx2NHR+Mk+u0zVW0CEEYaICdRgQv1WzU0/ARx6Zk49KZE+RiAyngG4E
+	8LH6Rqib+uDCJRmqW9Lv1+1mCiu21P4r18k1MDpssNH53LXCIyh+OT356GYF74K6AzmUKCvPsJzKh
+	77lUHIltl239FSwmJjg5o37sDCYhQ5X4yiSXpTUVAl4zv74TVRxgYt7is3FRfMjBvFiHmuZCm9A8o
+	uvTKzy93oTpm4ACFR5vQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG7S9-004Dpw-BT; Mon, 25 Jul 2022 23:25:33 +0000
-Received: from mail-oa1-f44.google.com ([209.85.160.44])
+	id 1oG7So-004E5o-0J; Mon, 25 Jul 2022 23:26:14 +0000
+Received: from mail-oa1-f48.google.com ([209.85.160.48])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG7Ry-004DlC-5H; Mon, 25 Jul 2022 23:25:23 +0000
-Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-10d8880d055so16725368fac.8;
-        Mon, 25 Jul 2022 16:25:20 -0700 (PDT)
+	id 1oG7Sc-004Dzu-Rj; Mon, 25 Jul 2022 23:26:03 +0000
+Received: by mail-oa1-f48.google.com with SMTP id 586e51a60fabf-10d83692d5aso16773297fac.1;
+        Mon, 25 Jul 2022 16:26:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=dCsn9dzCh6KqkTVcJHWRZAMN2f7ONnySyxeXvQofuFk=;
-        b=tPnSQ26kujyPQ6Fpnrezlv5pxhYx87MG6XWRMijIfcYrQgzugzrGPsPJ6dh6Y7+hRu
-         bsqr0ez9byX6gulZBSpOTstXUQKCkGYCwhEKRD2UELO3XVMc/4TU0ppQglo01HmEdppS
-         lf+gExaN54Vc89ZgAdjlTh1S8lzFNCtkWlKuqPt5iK7l5ZZaAjLA+eVvq/IBMsf/VS/Y
-         rRkgbVWCw5G5UiijRm1fAotPxMVRmNkTDBPXUxwDdPTAqepowsPuXapQgMThW3Xdxcq0
-         ewbmi2f5tWwEWn3NMACjlk9fFw9kQMnXhaNnQXK+eA25eivwNesTv54feleHKsgBLyoI
-         2kgQ==
-X-Gm-Message-State: AJIora/rKgiroWQdPZxhN5XRycS7KBVASGxjBlOzD+shqvsfD4oB3Lqg
-	oKqlB8KTTYIHQ3kMt7BvQg==
-X-Google-Smtp-Source: AGRyM1u6PwB1RBpooueI1Ajoq8Nis2ce7rhmBLUoV8FkFFrEgRqWytwkZpjeDnVeAFnBKbEe6ONYsw==
-X-Received: by 2002:a05:6870:79d:b0:10d:8416:e59d with SMTP id en29-20020a056870079d00b0010d8416e59dmr7265810oab.85.1658791520057;
-        Mon, 25 Jul 2022 16:25:20 -0700 (PDT)
+        bh=v54UcLfyNQ1djxWgf+PNCyjRPCvW5pNaYLYPVrtUUVk=;
+        b=FMZWRlYsb4ewqaRpkro+cPhpEb0hJ6Mv14VSBjkSWeQdjrqjJJZ37exT91BhSzG6ix
+         lAGKkQlrFD0GLrkN3SOQvDDGxDyBAYPLQUbcbgRST+cBAsRxlvUbZrFOS6xC3S1epvM1
+         0iAxEmf8H8eHIfx22m3sYZAwj+ZyqXka5feAA/WXTUKusiaVhZ+5ctqLa4zd3+ejqtjJ
+         oxKAoFuCtHghAgmDYtoME1LVOgA8T7E3h5thVZzg41aqxb+B6cZt73khUxioiVvHyfOB
+         +pus9F0/sJgcP01+ZAU2KW3/cMQcvqnlB/CUiwfJdWkaM1TFUmRaw29wTXdXmTBzRGY6
+         XfLA==
+X-Gm-Message-State: AJIora+9T1tpTNJEGk0JkKFvSjpVaMgWpTn42qDFJAbe/oQAKwszobqw
+	EbYQOkCCJ/rWxJSDLCbTFyAJ1gX44g==
+X-Google-Smtp-Source: AGRyM1srtAmK8NHbVXrYUZ4su3pd3Y2epHDoAbNdb6EhMrK2frR71syluwbeuW9KB2n+NGTbMVMdiw==
+X-Received: by 2002:a05:6870:344c:b0:10c:236a:79f8 with SMTP id i12-20020a056870344c00b0010c236a79f8mr15912644oah.24.1658791559772;
+        Mon, 25 Jul 2022 16:25:59 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id n8-20020a056870240800b0010d7242b623sm6652099oap.21.2022.07.25.16.25.18
+        by smtp.gmail.com with ESMTPSA id f2-20020a4ad802000000b00434ace74464sm5351784oov.16.2022.07.25.16.25.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Jul 2022 16:25:19 -0700 (PDT)
-Received: (nullmailer pid 2950657 invoked by uid 1000);
-	Mon, 25 Jul 2022 23:25:17 -0000
-Date: Mon, 25 Jul 2022 17:25:17 -0600
+        Mon, 25 Jul 2022 16:25:59 -0700 (PDT)
+Received: (nullmailer pid 2951881 invoked by uid 1000);
+	Mon, 25 Jul 2022 23:25:57 -0000
+Date: Mon, 25 Jul 2022 17:25:57 -0600
 From: Rob Herring <robh@kernel.org>
 To: Jagan Teki <jagan@edgeble.ai>
-Cc: Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-clk@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Finley Xiao <finley.xiao@rock-chips.com>
-Subject: Re: [PATCH 10/22] clk: rockchip: Add RV1126 clock controller
-Message-ID: <20220725232517.GA2949355-robh@kernel.org>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, Kever Yang <kever.yang@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-mmc@vger.kernel.org
+Subject: Re: [PATCH 11/22] dt-bindings: mmc: rockchip-dw-mshc: Document
+ Rockchip RV1126
+Message-ID: <20220725232557.GA2951823-robh@kernel.org>
 References: <20220723204335.750095-1-jagan@edgeble.ai>
- <20220723204335.750095-11-jagan@edgeble.ai>
+ <20220723204335.750095-12-jagan@edgeble.ai>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220723204335.750095-11-jagan@edgeble.ai>
+In-Reply-To: <20220723204335.750095-12-jagan@edgeble.ai>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_162522_225258_BE9FE996 
-X-CRM114-Status: GOOD (  14.14  )
+X-CRM114-CacheID: sfid-20220725_162602_913614_9C8A43D2 
+X-CRM114-Status: GOOD (  10.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,35 +79,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jul 24, 2022 at 02:13:23AM +0530, Jagan Teki wrote:
-> Add clock controller support for RV1126 SoC.
+On Sun, 24 Jul 2022 02:13:24 +0530, Jagan Teki wrote:
+> Add a compatible string for Rockchip RV1126 SoC.
 > 
-> Clock & Reset Unit (CRU) in RV1126 support clocks for CRU
-> and CRU_PMU blocks.
-> 
-> This patch is trying to add minimal Clock-Architecture Diagram's
-> inferred from [1] authored by Finley Xiao.
-> 
-> [1] https://github.com/rockchip-linux/kernel/blob/develop-4.19/drivers/clk/rockchip/clk-rv1126.c
-> 
-> Cc: linux-clk@vger.kernel.org
-> Cc: Michael Turquette <mturquette@baylibre.com>
-> Cc: Stephen Boyd <sboyd@kernel.org>
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Cc: linux-mmc@vger.kernel.org
+> Cc: Ulf Hansson <ulf.hansson@linaro.org>
 > Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 > ---
->  drivers/clk/rockchip/Kconfig           |    7 +
->  drivers/clk/rockchip/Makefile          |    1 +
->  drivers/clk/rockchip/clk-rv1126.c      | 1107 ++++++++++++++++++++++++
->  drivers/clk/rockchip/clk.h             |   19 +
+>  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
->  include/dt-bindings/clock/rv1126-cru.h |  632 ++++++++++++++
-
-This goes with the binding patch.
-
->  5 files changed, 1766 insertions(+)
->  create mode 100644 drivers/clk/rockchip/clk-rv1126.c
->  create mode 100644 include/dt-bindings/clock/rv1126-cru.h
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
