@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE7F0C433EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jul 2022 23:27:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5199DC43334
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 Jul 2022 23:27:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xWydy+Tcaf5hfioULckiZFFyYs+CbO8NMNMRVOAy6T4=; b=b2yLrQdZGiS7mL
-	PqQBAYYNJ/9UGz1YLSD92pcPWQQ0D240KTU9LXT22IkG2y1WmGHDWCvTJ2Esc1TkFxO+3il5kfGXk
-	k52OugjfvwZYsjiW/LdFjpMdHg0VIFwqD7/VlOh5DC3jQTP5OO+8NQxReYOaWV8Vjs3ZP22z4U3zs
-	hRkq8A1qmByzF4YSeKh20SkPPdnhWvyvS66EsLKmZgIhavQiNXv0BsAPQE8pgftVyaSjAH3Znoc57
-	K1jcEHo67ZYXLjirZ26Zxi10u8fS9vdmEjgImL0A8Z5FKuOcugs2i5GCkDW9bUy38/Pz4DCqrG+jg
-	1AbjW7BCdj3blBgFWgKQ==;
+	List-Owner; bh=Ao7Br6sCiz7gdb3FP2DYstXSGvrqxCtQW2yzgAlHqPI=; b=cELrWkc66C5Sas
+	LSnbLGqGo/1cpmI33nG/esan59/prkoMge1RD0YSDqsFez7ydDfpQlKXyRlL0qdg/b/ZxOF+sw07T
+	PAukdAz3YBwcSibb7gW/3lhxKw/8Sij+nw18yNzLegaRs8BILoslpvSYRH1OCPwCX+pT6aZkg7Ii7
+	unT4Idj7Z+jtJla+4BUK/XKS73nsEQKZDpAstVUjZ3Hpovu5/JbBoLvw9Unr2fnvLL2CEEjrNY2d9
+	TTwAGMGY/OA2QBF66FW6ue7gWs8wLKivSb0NypLmjqGrCMEMFpKn2w9zKKQltpiG0aSVQGFNoYf/I
+	upEdMtu7BNoXn/nAVVTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG7TS-004EmX-4o; Mon, 25 Jul 2022 23:26:54 +0000
-Received: from mail-oa1-f45.google.com ([209.85.160.45])
+	id 1oG7U3-004FuY-Oy; Mon, 25 Jul 2022 23:27:31 +0000
+Received: from mail-oa1-f44.google.com ([209.85.160.44])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oG7T4-004EF8-Sb; Mon, 25 Jul 2022 23:26:32 +0000
-Received: by mail-oa1-f45.google.com with SMTP id 586e51a60fabf-10d8880d055so16728108fac.8;
-        Mon, 25 Jul 2022 16:26:30 -0700 (PDT)
+	id 1oG7TE-004ELS-8V; Mon, 25 Jul 2022 23:26:42 +0000
+Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-10cf9f5b500so16750120fac.2;
+        Mon, 25 Jul 2022 16:26:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
          :mime-version:content-disposition:in-reply-to;
-        bh=KXH2/C7+h2pO7+Y9s9xtLMw52B4nuatqH7Df0xFd4NA=;
-        b=XcIA8Fua6NGrNQ4bfaMW5Vs7fWu+z/8mMSepYuXaTv9jpY2eI3AB49G3J8xv1PewN+
-         3yAFnUTPCZvnz5q0tLBrR/j3fv/NRYQuwxX8KPC+BolA2WYqJ8/M9A8rH+76UQisf9EB
-         fWIl6kQUHG8nn9qE6x7EVQAlG/SoPPq4NIwVwli6a0N4ZxxAF0jYhntcBMDeKQnnPxAR
-         gxZm3QWmYNSvz7gfF58Jkfpp2B3oONoioSdi9GZS+I1egWwii+rb18cTNYIFTzsIoynu
-         rH94xQvAbLNnK+72mGqHdHQ891ZkdG3QbVyr/wxyXX3tzP7eVLHWFlOThxXzygIDxdy0
-         SF0w==
-X-Gm-Message-State: AJIora+bag3GTL9KexHE8ZgM0WFTFtkHV03F2gzY0W/GdnEdw1icI9eq
-	wKnrTx2vvqjxFFTW6aibMw==
-X-Google-Smtp-Source: AGRyM1vEVOAB5g+N1v4Cztmp/RT7BLlrQBeHObl65LRMEdFIfHeBjVlizsSkBkZQFNtZuPNbphemiw==
-X-Received: by 2002:a05:6870:2103:b0:101:4016:b2c6 with SMTP id f3-20020a056870210300b001014016b2c6mr7533821oae.32.1658791590114;
-        Mon, 25 Jul 2022 16:26:30 -0700 (PDT)
+        bh=Oq1X6bn8Fh1Xcb7a6kom5IWyOfExZ/FEaLv/zGoCOUM=;
+        b=lryH2XFCvAS2TOzlWyLB7AZTJve2+67Rn8JLA+sLiWisa0ZI+1ZPypajhTuA07iKnU
+         A3JdyMhdhyVzIPZVWrs3fryJyE4zaL271ricLrFRLeqUA+ph27vTNSFPy9UEKpm5UIq9
+         tqfmXO0BF4KezYrI28AGaDVddu7DYV9lbG3gHrTZIYrB3EQOSKid6mtplql6/tx2WAtw
+         rAaYKi2KKKs0kChIKaAw55jbSFVpl9/0FrmCVbUUj63ug6H7k8LNUtRR+AwDi51m1wpc
+         mNsXzPT+1YF+3Px7vh9Athum4vGoviPB+CIJi1en04zZQcuN/r+6FMeMIRl1xMeVlXew
+         Da3A==
+X-Gm-Message-State: AJIora8sH0bquLxH7kpfYNptWUjryq2xe0ZxyL7A5/mpPPHlZYrl0Dwh
+	9DXtJkq39VAusimQ+pvdCheizWNg0Q==
+X-Google-Smtp-Source: AGRyM1uNlPnVZfWaLwPUg1k89hoeKLKv6crDi1rKvo6RUbixRgvPHl/seEdwb88bE19RLL9kw2ll/Q==
+X-Received: by 2002:a05:6870:8094:b0:10d:bebb:d796 with SMTP id q20-20020a056870809400b0010dbebbd796mr7980955oab.262.1658791599569;
+        Mon, 25 Jul 2022 16:26:39 -0700 (PDT)
 Received: from robh.at.kernel.org ([64.188.179.248])
-        by smtp.gmail.com with ESMTPSA id p13-20020a056830130d00b0061b8653b0c9sm5568316otq.22.2022.07.25.16.26.28
+        by smtp.gmail.com with ESMTPSA id e15-20020a4ada0f000000b0035eb4e5a6b6sm5332490oou.12.2022.07.25.16.26.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Jul 2022 16:26:29 -0700 (PDT)
-Received: (nullmailer pid 2953023 invoked by uid 1000);
-	Mon, 25 Jul 2022 23:26:28 -0000
-Date: Mon, 25 Jul 2022 17:26:28 -0600
+        Mon, 25 Jul 2022 16:26:39 -0700 (PDT)
+Received: (nullmailer pid 2953381 invoked by uid 1000);
+	Mon, 25 Jul 2022 23:26:37 -0000
+Date: Mon, 25 Jul 2022 17:26:37 -0600
 From: Rob Herring <robh@kernel.org>
 To: Jagan Teki <jagan@edgeble.ai>
-Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 14/22] dt-bindings: soc: rockchip: Document RV1126 grf
-Message-ID: <20220725232628.GA2952988-robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 15/22] dt-bindings: soc: rockchip: Document RV1126 pmugrf
+Message-ID: <20220725232637.GA2953329-robh@kernel.org>
 References: <20220723204335.750095-1-jagan@edgeble.ai>
- <20220723204335.750095-15-jagan@edgeble.ai>
+ <20220723204335.750095-16-jagan@edgeble.ai>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220723204335.750095-15-jagan@edgeble.ai>
+In-Reply-To: <20220723204335.750095-16-jagan@edgeble.ai>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220725_162630_971455_68F796BC 
-X-CRM114-Status: GOOD (  10.22  )
+X-CRM114-CacheID: sfid-20220725_162640_339230_CD856EB2 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,8 +78,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 24 Jul 2022 02:13:27 +0530, Jagan Teki wrote:
-> Document compatible string for Rockchip RV1126 grf.
+On Sun, 24 Jul 2022 02:13:28 +0530, Jagan Teki wrote:
+> Document compatible string for Rockchip RV1126 pmugrf.
 > 
 > Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 > ---
