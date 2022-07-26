@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B45C19F2C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Jul 2022 13:57:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A38B3C00140
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 Jul 2022 15:01:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BuWzv3B8f0AoBfCMVRk0h0FrCwwOwiCeVzkvAiPlTqM=; b=pmxnQXSUUY3lny
-	Fz9vuikC19sCfdaef8oGV6HdbF4xwezksq2F82+YTkOhvMzDjwvN7F/yOOoNe/AVPVeGm0BqqX2M6
-	sPOiU9z1NMO4Ei1xYNJ4go+4l19SucuTznucgDHtw5FpLC2igVJE2yq068bI6t1f5xjc8xnFFHI0b
-	5ZNwlDcTh6E2NOVMlrmimEaauoAYCbbCDyIbatuBQ+3wHzb4Wz88mD3gMg6e2gcuFmEAAo3wc8fPb
-	KSCo+z5BFb4omYHdy4DIDghAMT2KMRh/UonnyK1+t5EFbrFyyybl5RZIvtA1O+z/56QAoeqhrESeA
-	dygU6mZ2oc1ZGpIISddA==;
+	List-Owner; bh=t5NNhMSUwtP0nzTy7amL2xp3NXA4IKv7cFT7Weu7xBs=; b=svs4YAEmaiglYL
+	/io7B/Dkx2WXB1H3nAPWsmhsHSkf3Ktinc68V7ZfQeZMLeqyGHbWp91R0ac+qd7TGbATdTOBvM+Gv
+	qmOLzUyfBRs/+ODbq+7fEGCKtp1uY7+lAFZeqf3s480GCIA0donoAEJwKmywRFPfb2kPlSXH+mEn2
+	IB/6VjxIbxqem0fhwBW2tGRumN72JR8zLTAr12v0VCPfpDRs0eFB5fRLegdCJqVVfdTbXa1bcLuCZ
+	WiJR81kpgIyecNEO3JTBuEGpUJUZ6m8xmTfCCurqvB6MbICw0DrU1+10nAlV/VISOEnsW6zhaOe2T
+	mG/Gbl+nOaaRJ+bZaaow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGKrp-00HTZw-A0; Tue, 26 Jul 2022 13:44:57 +0000
-Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32])
+	id 1oGM3n-000PoZ-H8; Tue, 26 Jul 2022 15:01:23 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oGKrm-00HTWy-Mo
-	for linux-rockchip@lists.infradead.org; Tue, 26 Jul 2022 13:44:56 +0000
-Received: by mail-io1-xd32.google.com with SMTP id l24so11191563ion.13
-        for <linux-rockchip@lists.infradead.org>; Tue, 26 Jul 2022 06:44:53 -0700 (PDT)
+	id 1oGM3l-000Pk6-7v
+	for linux-rockchip@lists.infradead.org; Tue, 26 Jul 2022 15:01:22 +0000
+Received: by mail-lf1-x132.google.com with SMTP id d17so20968823lfa.12
+        for <linux-rockchip@lists.infradead.org>; Tue, 26 Jul 2022 08:01:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
+        d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=3sg0+bj79T4lUnFNDlgphNi3BOPuqpEValbE02nToJo=;
-        b=g/LGzUesna7SjtItQmKFQ9pgi/BlEOtA1B2YgV0QmvX3mAhFInLBX+8yBjuv0e5gpO
-         C7f8/V0bIoKSSloxlBZbMvUYGCis1a1lwyey2fMhxpeGcjg5rVLBbOYBxzWObLKep8vu
-         INE0iVq7Hfc4IdtRKvjQ4GPWO/1fuxmm8Bk7Mx4n+CGihmE0HddFrlBVDFl3/WMhDjs6
-         dhOnw4RmBXTyTDpCB7FgtXn1c4fRUHlc7rQhStKgi11w2l2X4qQxsnW48pYdpvWYhZS5
-         VNrxKOmZ9KLYO/g53KX7tQnK3oFdLrRKTTaPNkRg+DikwLZHl9+ZyxdYuVsVbQTzrss4
-         qErw==
+        bh=/Abp4O2phjlQwqXSiq9vrzI7rfG09ZHavgh2SmBCZxI=;
+        b=FNgYeohdCATVAP7X2iU36R9MeHDqIbl1lqmT50Bo1fwMpKLGUi26xD8u7IdsBxpDNr
+         Wr66GNWgOu5zxSsqL/8P7lyTUyVZ+aN6us+npUllII5a1OB0/qOkaX0t0gy3zcEySwFo
+         DEYukwmIhobCcct4j6e0Lrn58FTitKxBfWgQSw8pxQWFmS9BhxdRdaMI8cm618dc3rVK
+         4Ok/3YT3C3L6Fs1CIH0OYz201C/kLUg3DUrQDRzMAvm7aB/iA2Dcp7LrIIugeGyjSVW2
+         NSitrE1iGO764X6mIHq1mZDJXJgWIGdMbAEcP8YIoidic1iUBcteMr6K8ie06+8OsP3r
+         ah9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=3sg0+bj79T4lUnFNDlgphNi3BOPuqpEValbE02nToJo=;
-        b=7/3c7FlvZBu+0efvfLBnxFzDk4cPv0SkgPGQJ3AXolK+BU0qprLRdVH+SyVeRpPJde
-         XM1pnSee6OSQMbZvR6aoPxZ2eCd9Cv7xNHIW8CQkrsT0tm/9dxrLSNGljbrjVyCriHBF
-         k9dblutpgkQZ1vMZR67d7ogE7thI8rtZg1Fq8P6XrzqllE71NdX11SXEia4D+OHnXFKg
-         uiaLfQ6D/64NZx+qkDC+UAi8fuYV8n9HoGX8EG7NtwfixLf8Ryp8BSnThhcKBTHg7xcn
-         oZtcQADvJ77SQrxTUKUMZqdJpxQVA8RdCVthsC2FKrXfQQunR47+6Y1Bz7TQaAiMyu35
-         nuCA==
-X-Gm-Message-State: AJIora9fjQp0LkOmYjfOR60QFdOG/YB//WvHtM0iYyn5Nzsco5ojlS2w
-	EiRAgwPCwkYeB7WvMiEfsowyzziejYHqR3vfkav6ag==
-X-Google-Smtp-Source: AGRyM1uq1rM8MT8d/wz/N5sPh0/sqPAh+n6MB8ouXkjmJvHbq65SJIqtmCAxxT/s12a1j6n71R7YjbXdKZBASS571T4=
-X-Received: by 2002:a05:6638:31c1:b0:33f:2450:46a9 with SMTP id
- n1-20020a05663831c100b0033f245046a9mr6851405jav.45.1658843093031; Tue, 26 Jul
- 2022 06:44:53 -0700 (PDT)
+        bh=/Abp4O2phjlQwqXSiq9vrzI7rfG09ZHavgh2SmBCZxI=;
+        b=AoDAwYyVdEDBZP2DYpfecZ8wg0heolJ3RP+OXzaH9/wpfkBKH0z99yln+pMVIP78fy
+         BcjItmWOkGYUNGNam00LEK6YqzBquz/ASzBcdc215MiHqGTko+YcR+bki7NwxgjsDlee
+         qZ7VEr11pJsnA5/UOOVJpfpow95Mo7AHciyP2I/xSIbqkE+GUscL9DvqrpsFhXQj2aDH
+         BpFV+UW1AwNClCQAr92SWDJWathSEi6YOpn7ih4rWbblqKEE6VtceB9F4uXoNY49zXnl
+         5HqbV4yKcFGgF269jaqtqKPvUNEPyBS1Xcfn2MpzcoM+F3+bReBk0x7odhNBzEeiSLfa
+         1Uog==
+X-Gm-Message-State: AJIora/NOCORfsoutQOUguTZzkjc6dDZk5/1IYTsCMhkbSf7xbSuPcWb
+	UFCj29ExNLunE08PDSctTELd9zAko7nu374yBnaGKQ==
+X-Google-Smtp-Source: AGRyM1tWqxY9BYKQk44juX1eKWFfDs070weNDGQdXByMLPBbsJzkZx2RmQqqnjwR5M0SiaGb9Mt98TJpDepqL0XK05E=
+X-Received: by 2002:ac2:4249:0:b0:48a:9f05:776a with SMTP id
+ m9-20020ac24249000000b0048a9f05776amr1542411lfl.184.1658847676121; Tue, 26
+ Jul 2022 08:01:16 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220723204335.750095-1-jagan@edgeble.ai> <20220723204335.750095-3-jagan@edgeble.ai>
- <e1d57de9-060b-bd58-2cea-85f41f75e7be@linaro.org>
-In-Reply-To: <e1d57de9-060b-bd58-2cea-85f41f75e7be@linaro.org>
-From: Jagan Teki <jagan@edgeble.ai>
-Date: Tue, 26 Jul 2022 19:14:42 +0530
-Message-ID: <CA+VMnFwNqm57StGj_JyTT2TM56uD-nFjxCekEH6aKYDMhEuxjw@mail.gmail.com>
-Subject: Re: [PATCH 02/22] dt-bindings: power: Add power-domain header for RV1126
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+References: <20220723204335.750095-1-jagan@edgeble.ai> <20220723204335.750095-12-jagan@edgeble.ai>
+In-Reply-To: <20220723204335.750095-12-jagan@edgeble.ai>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 26 Jul 2022 17:00:38 +0200
+Message-ID: <CAPDyKFp0bqiAnvQpNwD5JzKe4vUAGe7RH6Gog6VScqbea376iw@mail.gmail.com>
+Subject: Re: [PATCH 11/22] dt-bindings: mmc: rockchip-dw-mshc: Document
+ Rockchip RV1126
+To: Jagan Teki <jagan@edgeble.ai>
 Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, 
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
+	devicetree@vger.kernel.org, linux-mmc@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220726_064454_978203_44529BDC 
-X-CRM114-Status: GOOD (  14.89  )
+X-CRM114-CacheID: sfid-20220726_080121_302353_BECDC041 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,34 +87,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 24 Jul 2022 at 02:28, Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
+On Sat, 23 Jul 2022 at 22:44, Jagan Teki <jagan@edgeble.ai> wrote:
 >
-> On 23/07/2022 22:43, Jagan Teki wrote:
-> > Add power-domain header for RV1126 SoC from description in TRM.
-> >
-> > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> > Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-> > ---
-> >  include/dt-bindings/power/rv1126-power.h | 34 ++++++++++++++++++++++++
-> >  1 file changed, 34 insertions(+)
-> >  create mode 100644 include/dt-bindings/power/rv1126-power.h
-> >
-> > diff --git a/include/dt-bindings/power/rv1126-power.h b/include/dt-bindings/power/rv1126-power.h
-> > new file mode 100644
-> > index 000000000000..f15930ff06f7
-> > --- /dev/null
-> > +++ b/include/dt-bindings/power/rv1126-power.h
-> > @@ -0,0 +1,34 @@
-> > +/* SPDX-License-Identifier: GPL-2.0 */
+> Add a compatible string for Rockchip RV1126 SoC.
 >
-> Dual license and a blank line,  please.
+> Cc: linux-mmc@vger.kernel.org
+> Cc: Ulf Hansson <ulf.hansson@linaro.org>
+> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 
-Yes, all rockchip power includes (at least here) are GPL-2.0 what is
-the issue with it?
+Applied for next, thanks!
 
-Thanks,
-Jagan.
+Kind regards
+Uffe
+
+
+> ---
+>  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> index 54fb59820d2b..8d888b435817 100644
+> --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> @@ -39,6 +39,7 @@ properties:
+>                - rockchip,rk3399-dw-mshc
+>                - rockchip,rk3568-dw-mshc
+>                - rockchip,rv1108-dw-mshc
+> +              - rockchip,rv1126-dw-mshc
+>            - const: rockchip,rk3288-dw-mshc
+>
+>    reg:
+> --
+> 2.25.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
