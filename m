@@ -4,56 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FBA6C04A68
-	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Jul 2022 14:20:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E4EDC04A68
+	for <linux-rockchip@archiver.kernel.org>; Thu, 28 Jul 2022 14:35:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2okiemRHz2EhxSPE5hRE7eEGy1s3mfk6qSG8KpF93jg=; b=zTvmRuxAVrKjm1
-	gVlZnKMDIVCVnr0wdysmnKsyTLEYzZ5BTPoMC3AHpQEFbP0aZC3sVcHikomL13J9rMClIxoMnLoKm
-	oTOJWRyhQTWvGON9gIXR1S2WsFxfhyXjt7FdX5h/YZlbw9yHebonRsxp17mge6PQEbev/p3N9pA26
-	CDvsr/iCDE5D3fjLWnLUgrdiET/s3k2mew30XlrUYBDFz+usKhCnaijhywX1fz6lFxZSL5h6x3bZc
-	bxmCBj9S6PDvuYGfo7RW1uW4QOjy4CxyU0VfATtxKCD9qNoGVgWmibeXTl/Z46KTr9ZbMrFw8qM93
-	q3PyPSxmWyJFDRzmC+Qw==;
+	List-Owner; bh=V8URWwwunl3bn0W6lg3nP6iDKaFJI1u3QWwrL3khrk4=; b=bTTwr1R/YXQJCF
+	JStnJTkrn8JbOdKvfJT/wOCltFbYHJWVZ3GcrwXMLKN0cyx2vgN+2r6cTX2mo/6csIFLdswEDjn8P
+	lM6ifyzkkkMvewbrUiNAPedJt2mBFWpTHMv1V3XaGMZMYmLZSivcacp8FwhzNksYBhNotacMFRrq9
+	A3D0gNHhryfIQuWHN5ArjBg882qKMmEhLYvQ8uVE4v/BEW7zPuTBD5d7HpMt/6oV/430295ilOIZ8
+	3DEqERjb7nqSkZe7gjklRfWFSHsAgKgAq6z5C5zCGHbRKpXeYtwHp+Tbc+2TxJ/9fLUJYcfvdwXMU
+	fbHlSZQJZlhrgo5Mhuog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oH4NM-00A4xQ-Ke; Thu, 28 Jul 2022 14:20:32 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oH4NA-00A4ox-Tp; Thu, 28 Jul 2022 14:20:22 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 3F76B56D;
-	Thu, 28 Jul 2022 16:20:16 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1659018016;
-	bh=q2BB39MP0tZQIZRXCzJWG56ZohL9stJRt4VHYJFO6jI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZdxDrewPgpInaF+/7uxPx56GKvm1lJ9F8meoFeXq4J7bQBXB7t8kpFLE/IGm6bKUx
-	 bUA5e4m0I2FcgWDEZ/LA1AFzIAMjQAiYhb1iSWxQBMUHS503HkRXj9bvVTItANOGX2
-	 TtGyE9q2UGlzqYgGlSxfCffkO0t1Wvi+XtARQiYE=
-Date: Thu, 28 Jul 2022 17:20:13 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: paul.elder@ideasonboard.com
-Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] media: rkisp1: Add UYVY as an output format
-Message-ID: <YuKbHdiZD5JGE/GY@pendragon.ideasonboard.com>
-References: <20220714112603.1117335-1-paul.elder@ideasonboard.com>
- <20220714112603.1117335-3-paul.elder@ideasonboard.com>
- <YtcwZSbXlSaaMjcd@pendragon.ideasonboard.com>
- <20220728125259.GL3984498@pyrite.rasen.tech>
+	id 1oH4bw-00AAWX-CC; Thu, 28 Jul 2022 14:35:36 +0000
+Received: from [87.245.175.230] (helo=mail.baikalelectronics.com)
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oH4bS-00AAL3-5f; Thu, 28 Jul 2022 14:35:07 +0000
+Received: from mail (mail.baikal.int [192.168.51.25])
+	by mail.baikalelectronics.com (Postfix) with ESMTP id 3116F16D7;
+	Thu, 28 Jul 2022 17:37:24 +0300 (MSK)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.baikalelectronics.com 3116F16D7
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=baikalelectronics.ru; s=mail; t=1659019044;
+	bh=+s7o1dgS7jcJL/33p7Pa1tcwz5jis+xOv5qW3LlQbsE=;
+	h=From:To:CC:Subject:Date:In-Reply-To:References:From;
+	b=bGrO1wbsKdA4wWhF9fMgV7SiwCtLkaa9ZjnBPWUoSmV+0Zor9ysZMpksFRri1XiBG
+	 /tZsI5DOefW2DdTJZPtSEtcj9ovLr/PTnrnBcsi7n1hjnqGqRWkbh+P1Dr5n2BAxHE
+	 CXeQj18rw6Peld609I6smeNeR2EwvYBpn/BV9dk0=
+Received: from localhost (192.168.53.207) by mail (192.168.51.25) with
+ Microsoft SMTP Server (TLS) id 15.0.1395.4; Thu, 28 Jul 2022 17:34:59 +0300
+From: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+To: Rob Herring <robh+dt@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Bjorn Helgaas
+	<bhelgaas@google.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Jingoo
+ Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+	Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>, Simon
+ Xue <xxm@rock-chips.com>
+CC: Serge Semin <Sergey.Semin@baikalelectronics.ru>, Serge Semin
+	<fancer.lancer@gmail.com>, Alexey Malahov
+	<Alexey.Malahov@baikalelectronics.ru>, Pavel Parkhomenko
+	<Pavel.Parkhomenko@baikalelectronics.ru>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Frank Li
+	<Frank.Li@nxp.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	<linux-pci@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>
+Subject: [PATCH v4 11/17] dt-bindings: PCI: dwc: Apply common schema to Rockchip DW PCIe nodes
+Date: Thu, 28 Jul 2022 17:34:21 +0300
+Message-ID: <20220728143427.13617-12-Sergey.Semin@baikalelectronics.ru>
+In-Reply-To: <20220728143427.13617-1-Sergey.Semin@baikalelectronics.ru>
+References: <20220728143427.13617-1-Sergey.Semin@baikalelectronics.ru>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220728125259.GL3984498@pyrite.rasen.tech>
+X-ClientProxiedBy: MAIL.baikal.int (192.168.51.25) To mail (192.168.51.25)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220728_072021_142791_2BBAD414 
-X-CRM114-Status: GOOD (  35.63  )
+X-CRM114-CacheID: sfid-20220728_073506_418783_D0D94C4E 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,136 +79,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Paul,
+As the DT-bindings description states the Rockchip PCIe controller is
+based on the DW PCIe RP IP-core thus its DT-nodes are supposed to be
+compatible with the common DW PCIe controller schema. Let's make sure they
+evaluated against it by referring to the snps,dw-pcie-common.yaml schema
+in the allOf sub-schemas composition.
 
-On Thu, Jul 28, 2022 at 09:52:59PM +0900, paul.elder@ideasonboard.com wrote:
-> On Wed, Jul 20, 2022 at 01:29:57AM +0300, Laurent Pinchart wrote:
-> > On Thu, Jul 14, 2022 at 08:26:03PM +0900, Paul Elder wrote:
-> > > Add support for UYVY as an output format. The uv_swap bit in the
-> > > MI_XTD_FORMAT_CTRL register that is used for the NV formats does not
-> > > work for packed YUV formats. Thus, UYVY support is implemented via
-> > > byte-swapping. This method clearly does not work for implementing
-> > > support for YVYU and VYUY.
-> > > 
-> > > Signed-off-by: Paul Elder <paul.elder@ideasonboard.com>
-> > > 
-> > > ---
-> > > UYVY for the self path has not been tested because no device supports
-> > > it. The rk3399 has a self path, but does not have the
-> > > MI_OUTPUT_ALIGN_FORMAT register and thus does not support UYVY. The
-> > > i.MX8MP does support UYVY, but does not have a self path.
-> > 
-> > I'm tempted to drop it then, as the code below isn't correct given that
-> > you use the same register for both MP and SP. Let's address MP only for
-> > now.
-> 
-> The same register is used for both MP and SP. They just have different
-> bits. Which is why we'd need the read-write cycle, assuming that there
-> exists a device that has both an SP and the MI_OUTPUT_ALIGN_FORMAT
-> register.
+Signed-off-by: Serge Semin <Sergey.Semin@baikalelectronics.ru>
 
-Indeed, I had missed that. The documentation is confusing, the register
-is described as "Output align format for main path", has both
-mp_byte_swap and sp_byte_swap, but no sp equivalent to mp_lsb_alignment
-(maybe the self path doesn't support raw outputs though ?).
+---
 
-I'm OK keeping support for both paths, but I think the
-MI_OUTPUT_ALIGN_FORMAT register should then be initialized to a default
-value somewhere.
+Changelog v3:
+- This is a new patch created on v3 lap of the series.
+---
+ Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-> > > ---
-> > >  .../platform/rockchip/rkisp1/rkisp1-capture.c | 40 +++++++++++++++++++
-> > >  1 file changed, 40 insertions(+)
-> > > 
-> > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> > > index 85fd85fe208c..77496ccef7ec 100644
-> > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-> > > @@ -97,6 +97,12 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
-> > >  		.uv_swap = 0,
-> > >  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-> > >  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> > > +	}, {
-> > > +		.fourcc = V4L2_PIX_FMT_UYVY,
-> > > +		.uv_swap = 0,
-> > > +		.yc_swap = 1,
-> > > +		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-> > > +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> > >  	}, {
-> > >  		.fourcc = V4L2_PIX_FMT_YUV422P,
-> > >  		.uv_swap = 0,
-> > > @@ -231,6 +237,13 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
-> > >  		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
-> > >  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-> > >  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> > > +	}, {
-> > > +		.fourcc = V4L2_PIX_FMT_UYVY,
-> > > +		.uv_swap = 0,
-> > > +		.yc_swap = 1,
-> > > +		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
-> > > +		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-> > > +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-> > >  	}, {
-> > >  		.fourcc = V4L2_PIX_FMT_YUV422P,
-> > >  		.uv_swap = 0,
-> > > @@ -464,6 +477,20 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
-> > >  		rkisp1_write(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL, reg);
-> > >  	}
-> > >  
-> > > +	/*
-> > > +	 * uv swapping with the MI_XTD_FORMAT_CTRL register only works for
-> > 
-> > s@uv@U/V@
-> > 
-> > > +	 * NV12/NV21 and NV16/NV61, so instead use byte swap to support UYVY.
-> > > +	 * YVYU and VYUY cannot be supported with this method.
-> > > +	 */
-> > > +	if (rkisp1->info->features & RKISP1_FEATURE_MI_OUTPUT_ALIGN) {
-> > > +		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
-> > > +		if (cap->pix.cfg->yc_swap)
-> > > +			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-> > > +		else
-> > > +			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_MP_BYTE_SWAP_BYTES;
-> > > +		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
-> > 
-> > As the register is not initialized anywhere, it would be better to write
-> > it fully here instead of a read-modify-write cycle. Same comments below.
-> > 
-> > > +	}
-> > > +
-> > >  	rkisp1_mi_config_ctrl(cap);
-> > >  
-> > >  	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
-> > > @@ -505,6 +532,19 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
-> > >  		rkisp1_write(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL, reg);
-> > >  	}
-> > >  
-> > > +	/*
-> > > +	 * uv swapping with the MI_XTD_FORMAT_CTRL register only works for
-> > > +	 * NV12/NV21 and NV16/NV61, so instead use byte swap to support UYVY.
-> > > +	 * YVYU and VYUY cannot be supported with this method.
-> > > +	 */
-> > > +	if (rkisp1->info->features & RKISP1_FEATURE_MI_OUTPUT_ALIGN) {
-> > > +		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT);
-> > > +		if (cap->pix.cfg->yc_swap)
-> > > +			reg |= RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
-> > > +		else
-> > > +			reg &= ~RKISP1_CIF_OUTPUT_ALIGN_FORMAT_SP_BYTE_SWAP_BYTES;
-> > > +		rkisp1_write(rkisp1, RKISP1_CIF_MI_OUTPUT_ALIGN_FORMAT, reg);
-> > > +	}
-> > 
-> > Missing blank line.
-> > 
-> > Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > 
-> > >  	rkisp1_mi_config_ctrl(cap);
-> > >  
-> > >  	mi_ctrl = rkisp1_read(rkisp1, RKISP1_CIF_MI_CTRL);
-
+diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+index bc0a9d1db750..2afdc43a27ed 100644
+--- a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
++++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+@@ -14,10 +14,11 @@ maintainers:
+ description: |+
+   RK3568 SoC PCIe host controller is based on the Synopsys DesignWare
+   PCIe IP and thus inherits all the common properties defined in
+-  designware-pcie.txt.
++  snps,dw-pcie-common.yaml.
+ 
+ allOf:
+   - $ref: /schemas/pci/pci-bus.yaml#
++  - $ref: /schemas/pci/snps,dw-pcie-common.yaml#
+ 
+ properties:
+   compatible:
 -- 
-Regards,
+2.35.1
 
-Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
