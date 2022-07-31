@@ -4,60 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68EADC00140
-	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Jul 2022 17:52:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97B94C00140
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Jul 2022 17:53:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Tnpn/ZQK/9RDV2UtoPz7xIv5EN7vAB0ka5FxrLcPK3g=; b=SN6SgYt8fa6j+X
-	9JWsFV9wkODVjI0lAfQOA5Hhj4X6HdGJE+yVRuZItmfxDdnvJhEK3w7mrZ6zVmXJwgRM7jqyPHvPi
-	9W6v0vrghO3auTjqXWpf/NBUxFyYPvjXZWp/enUOPF7ZoDgFin8JUhMVri9fh5h1Lfk44vOPxHGHY
-	zxGnLIKXyHsXBci10R00Q3UEi1BvhxjD+6HRsfxaXiJm0TSefD/KJ+LC6IMsVrgFgzvS/GdiVmhLz
-	q+AMmXXJbGsKvsyhWOJY+wGgWVV80bsnG96NTW9GauIOekdpr/kWv05HQWBsBuLq+bpw5ZykmWFi8
-	jmG4p2gCaMz9lHgg9nIw==;
+	List-Owner; bh=oG095898aMxobGjwapIhoCWIaQPLqIpvtDz4QHFruF0=; b=nzammNLeAZoErO
+	OaF8bp0ChGOfVtdcDO+WpMTNff9A2YUoKoGxTZvTTnm+2YFnIdXW7uXIO1ACyV0N6ohlVRPIJn++9
+	VMpSnZvxWvYgmGCKpDY7vUgmOG3QjXALknsanwsfzXRnoyux9CJoLQi07UoB4+IbdYqVjeSNQAxl2
+	HCVo9Vz2fqpRpy+zKsq+8aCpXqySMiDEvNUd8gC/jxrSzaXzoGR6tLzq6Hbdo18cVTL2EtgZ9tidH
+	ebrkcRUB96VNZgOgzKAGPFiL1hhvytaGRLU0A2xVEzmaD0gP9m7b5sdFEcXA67a6BilC+TwUqMoi/
+	cVSlni2XwJikt4grqcUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oID7O-00EggG-4E; Sun, 31 Jul 2022 17:52:46 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1oID8G-00EhBd-TT; Sun, 31 Jul 2022 17:53:40 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oID33-00EeDA-3F
-	for linux-rockchip@lists.infradead.org; Sun, 31 Jul 2022 17:48:21 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id t2-20020a17090a4e4200b001f21572f3a4so9771087pjl.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 31 Jul 2022 10:48:10 -0700 (PDT)
+	id 1oID3B-00EeLc-0v
+	for linux-rockchip@bombadil.infradead.org; Sun, 31 Jul 2022 17:48:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=vofowt60zIc/lnFVlyI4BeBG85w8rxNk/k1iZ0Ct+8A=; b=Pm7KYD6OLurWX5/d6PKKLCSpAp
+	tvs1x0XSZ4WPHxRT2irBNDvYYlj2I6+j1yA1Wem0XFO9DAqM7T7qHumde9udxzN/xrFQ82a9Q6ZPC
+	aDMfDPAcQ3m+Ogr0zz1+UI69YhHbmtNzjyWlODspolihYjBwJ8y2CO3D7XXemX58kvVn0wnZed0uE
+	Uj0WUsx0Yyc7I3uzdeJ68Sc6zdI7CV1cemkBD40weqxLh7BlBlNomFYkN2oZyWwpqKIZt+KsptgMh
+	eMYOXmNDWM+FtdYKjhcJFET0u6haq/lYzi1NaOW9YRYk3K01JJh7re4GDbO4FEquAS91gRSm6ywoo
+	eDF584Sw==;
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oID35-002DcT-53
+	for linux-rockchip@lists.infradead.org; Sun, 31 Jul 2022 17:48:22 +0000
+Received: by mail-pl1-x632.google.com with SMTP id m2so1801754pls.4
+        for <linux-rockchip@lists.infradead.org>; Sun, 31 Jul 2022 10:48:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=/EX9ef1Nq9yX6Pu4anXNYfBGTc5U9cZkWJG7nY5yiiQ=;
-        b=PfmwiK0X4uI/9VLair3AH3u4JWe12FZK/TVa+K00CrbMUy/N4lQ5LaSzKyda7GYgGl
-         qtdGToX1OP9CMOqQ8hdgSO3mKMXf5gliKs6vM+9QDU7tvlSkE1AQT4jJidZHyaNSC/AS
-         OkfyO0sEju+OJSj+hJEtKSSElzJkMF7uLQ76Mf03BkCs/fXhDfOzCCsbmpQh2eKvj+yj
-         TPPm4zMRhK2pPwza1Jx+PYxqF6mPXk8glTKmRZAC+bcWMxqN3laVBCvJE9U8RYc+r+1v
-         sbvzzfhRz1Gj70vZeTR00UI/jpHEQn8TLx83cOJjt2i6zIOqkqhpzSrR7HhKmdbQHJUC
-         jfKw==
+        bh=vofowt60zIc/lnFVlyI4BeBG85w8rxNk/k1iZ0Ct+8A=;
+        b=ar8l0q9L46UWX+F9Te/v4KS9Qv+yBtO9qlnaSB7xA56F6wxLpdimuSzgf+Yd4agg6u
+         wLLhi/OI2E4eoB5bZez0owlgCLZ1PYl9A+/JQ3Pm7MCrcR1yhCB5N6fqcBaizCykahkV
+         yeyvccrWse5G1tIIESVKF1uGfIvQ1d+RxcSfGb4D1nhkHuQ5f5UJ2EmESIr+Zznefr6w
+         3YKRUD7t1iN8DJa8de3JLj/gZH45AB2pC1fH3gVLQ+ksBgMdfCMbW+6fOqdt4jeC6gOu
+         j2Af2OauFURpdlr8/MiTxSRKgQZ1GA1EGbr++tp+hCVdmH1+zdAVBTGnxiL2NgGyVber
+         Ykww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=/EX9ef1Nq9yX6Pu4anXNYfBGTc5U9cZkWJG7nY5yiiQ=;
-        b=lpzFZ6m4d2PF0dsu8199c177fLS7wA9aq6uJqhisd2bO/hEmIt9ihDysW3XrXdK1sX
-         J9jJLz2iLCGnzA4jfXnwf+u9/Ib7skjnTevFRF5qu5dfu62XtjYAzqGX0vIYej/0rT7T
-         mqEYcjTCbChcNkrc7E9F3KEaOXf4B+ElB2MnDCh778LGtXKjtzR/8FMiHVyP/voeO+zb
-         jnARFPR0Q8TX3TVdFY70GHqG2ozhxGfmdAj/t53plABY2GjA6Y28LnfclefT8/E0CDK3
-         R5sRnl0OIWYjG/X3GvGH1EJAdJFy3I2e4rGb2WSKOuJ37TnvpnRLKosFe2I4lw1XytiF
-         C4qQ==
-X-Gm-Message-State: ACgBeo2HmjZ87rjndT3+KB6eb4UWkfcpdYvgoKLp9cKORiy7uE745w/X
-	UQTJSH3Pyfp4XmVe0JSKMohGmQ==
-X-Google-Smtp-Source: AA6agR5G7x+22NIOm3gvRh0fd0O3cFoZRqUEanRRX/sEiYwyMWtrMyS/SVslrrkFpFqpnM/FshB6BQ==
-X-Received: by 2002:a17:902:6ac5:b0:16d:1664:39c9 with SMTP id i5-20020a1709026ac500b0016d166439c9mr13078665plt.104.1659289689678;
-        Sun, 31 Jul 2022 10:48:09 -0700 (PDT)
+        bh=vofowt60zIc/lnFVlyI4BeBG85w8rxNk/k1iZ0Ct+8A=;
+        b=3FyieRezl4RqrnmY6oM2Mux3mZEiKhFmt7buvR0u6k0CLQuBZeHWNL9XwlYGr8R4wE
+         qvtmigbNFTD8d5S8yqE0eqRdHbce2RjmcUnktFnbq6TAW7+7M95Q8Gsi1L5jKMBnnN+6
+         Qa+71tK619QG9Tb7dwDKxwVpo0ub4ubrxLZsSCvG5IfptVe0W/q8XnRzenGWAjhx2E4Y
+         r4FV8B6DDjRE1I0Zzxx02T3ERLf3ciJo36dyazRXabVDDkaX7UI5AQN3iASxoJBMZwpy
+         Qc5F3ddD6peG8g0xRZ0vinti3SUmETTwGoPx9neeuV2GY28NAq+j+KFbRbmUcFK7NsjT
+         hOpQ==
+X-Gm-Message-State: ACgBeo0WWVY4xk/8JCqh/9zLuB9i/+pz+ZA2m8eJze13/WoU3KltpbhU
+	wdKktaJNWFEF9Slpcbg7RX6WYg==
+X-Google-Smtp-Source: AA6agR4d276bFmsiyju9FRb8KWzEgmWCJbVK/qluicSptnCXw2Eq+I1YDnJA5AFgCC5tAqrvE7lLDQ==
+X-Received: by 2002:a17:90a:6b45:b0:1e3:3cfa:3104 with SMTP id x5-20020a17090a6b4500b001e33cfa3104mr15915990pjl.113.1659289693383;
+        Sun, 31 Jul 2022 10:48:13 -0700 (PDT)
 Received: from localhost.localdomain ([2405:201:c00a:a073:c5e8:48d3:6a8c:6418])
-        by smtp.gmail.com with ESMTPSA id n5-20020a170903110500b0016d3935eff0sm7812062plh.176.2022.07.31.10.48.05
+        by smtp.gmail.com with ESMTPSA id n5-20020a170903110500b0016d3935eff0sm7812062plh.176.2022.07.31.10.48.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 31 Jul 2022 10:48:09 -0700 (PDT)
+        Sun, 31 Jul 2022 10:48:13 -0700 (PDT)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -66,21 +80,21 @@ To: Heiko Stuebner <heiko@sntech.de>,
 Cc: linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	Elaine Zhang <zhangqing@rock-chips.com>,
+	Jagan Teki <jagan@edgeble.ai>,
 	linux-clk@vger.kernel.org,
 	Michael Turquette <mturquette@baylibre.com>,
 	Stephen Boyd <sboyd@kernel.org>,
-	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH v2 08/20] clk: rockchip: Add MUXTBL variant
-Date: Sun, 31 Jul 2022 23:17:14 +0530
-Message-Id: <20220731174726.72631-9-jagan@edgeble.ai>
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: [PATCH v2 09/20] dt-bindings: clock: rockchip: Document RV1126 CRU
+Date: Sun, 31 Jul 2022 23:17:15 +0530
+Message-Id: <20220731174726.72631-10-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220731174726.72631-1-jagan@edgeble.ai>
 References: <20220731174726.72631-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220731_104817_154086_C1AD96E5 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20220731_184819_742644_144B7D27 
+X-CRM114-Status: GOOD (  14.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,126 +111,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Elaine Zhang <zhangqing@rock-chips.com>
-
-A clock branch consisting of a mux with non-standard
-select values.
-The parent in Mux table is sorted by priority.
+Document dt-bindings for Rockchip RV1126 clock controller.
 
 Cc: linux-clk@vger.kernel.org
 Cc: Michael Turquette <mturquette@baylibre.com>
 Cc: Stephen Boyd <sboyd@kernel.org>
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
 Changes for v2:
-- none
+- fixed title
+- remove '|' in description
+- add one example
 
- drivers/clk/rockchip/clk.c | 27 +++++++++++++++++++++------
- drivers/clk/rockchip/clk.h | 17 +++++++++++++++++
- 2 files changed, 38 insertions(+), 6 deletions(-)
+ .../bindings/clock/rockchip,rv1126-cru.yaml   | 62 +++++++++++++++++++
+ 1 file changed, 62 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rv1126-cru.yaml
 
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index bb8a844309bf..e63d4f20b479 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -40,6 +40,7 @@ static struct clk *rockchip_clk_register_branch(const char *name,
- 		const char *const *parent_names, u8 num_parents,
- 		void __iomem *base,
- 		int muxdiv_offset, u8 mux_shift, u8 mux_width, u8 mux_flags,
-+		u32 *mux_table,
- 		int div_offset, u8 div_shift, u8 div_width, u8 div_flags,
- 		struct clk_div_table *div_table, int gate_offset,
- 		u8 gate_shift, u8 gate_flags, unsigned long flags,
-@@ -62,6 +63,7 @@ static struct clk *rockchip_clk_register_branch(const char *name,
- 		mux->shift = mux_shift;
- 		mux->mask = BIT(mux_width) - 1;
- 		mux->flags = mux_flags;
-+		mux->table = mux_table;
- 		mux->lock = lock;
- 		mux_ops = (mux_flags & CLK_MUX_READ_ONLY) ? &clk_mux_ro_ops
- 							: &clk_mux_ops;
-@@ -270,6 +272,8 @@ static struct clk *rockchip_clk_register_frac_branch(
- 		frac_mux->shift = child->mux_shift;
- 		frac_mux->mask = BIT(child->mux_width) - 1;
- 		frac_mux->flags = child->mux_flags;
-+		if (child->mux_table)
-+			frac_mux->table = child->mux_table;
- 		frac_mux->lock = lock;
- 		frac_mux->hw.init = &init;
- 
-@@ -444,11 +448,21 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
- 		/* catch simple muxes */
- 		switch (list->branch_type) {
- 		case branch_mux:
--			clk = clk_register_mux(NULL, list->name,
--				list->parent_names, list->num_parents,
--				flags, ctx->reg_base + list->muxdiv_offset,
--				list->mux_shift, list->mux_width,
--				list->mux_flags, &ctx->lock);
-+			if (list->mux_table)
-+				clk = clk_register_mux_table(NULL, list->name,
-+					list->parent_names, list->num_parents,
-+					flags,
-+					ctx->reg_base + list->muxdiv_offset,
-+					list->mux_shift, list->mux_width,
-+					list->mux_flags, list->mux_table,
-+					&ctx->lock);
-+			else
-+				clk = clk_register_mux(NULL, list->name,
-+					list->parent_names, list->num_parents,
-+					flags,
-+					ctx->reg_base + list->muxdiv_offset,
-+					list->mux_shift, list->mux_width,
-+					list->mux_flags, &ctx->lock);
- 			break;
- 		case branch_muxgrf:
- 			clk = rockchip_clk_register_muxgrf(list->name,
-@@ -506,7 +520,8 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
- 				ctx->reg_base, list->muxdiv_offset,
- 				list->mux_shift,
- 				list->mux_width, list->mux_flags,
--				list->div_offset, list->div_shift, list->div_width,
-+				list->mux_table, list->div_offset,
-+				list->div_shift, list->div_width,
- 				list->div_flags, list->div_table,
- 				list->gate_offset, list->gate_shift,
- 				list->gate_flags, flags, &ctx->lock);
-diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
-index 7aa45cc70287..93937fb1d368 100644
---- a/drivers/clk/rockchip/clk.h
-+++ b/drivers/clk/rockchip/clk.h
-@@ -448,6 +448,7 @@ struct rockchip_clk_branch {
- 	u8				mux_shift;
- 	u8				mux_width;
- 	u8				mux_flags;
-+	u32				*mux_table;
- 	int				div_offset;
- 	u8				div_shift;
- 	u8				div_width;
-@@ -680,6 +681,22 @@ struct rockchip_clk_branch {
- 		.gate_offset	= -1,				\
- 	}
- 
-+#define MUXTBL(_id, cname, pnames, f, o, s, w, mf, mt)		\
-+	{							\
-+		.id		= _id,				\
-+		.branch_type	= branch_mux,			\
-+		.name		= cname,			\
-+		.parent_names	= pnames,			\
-+		.num_parents	= ARRAY_SIZE(pnames),		\
-+		.flags		= f,				\
-+		.muxdiv_offset	= o,				\
-+		.mux_shift	= s,				\
-+		.mux_width	= w,				\
-+		.mux_flags	= mf,				\
-+		.gate_offset	= -1,				\
-+		.mux_table	= mt,				\
-+	}
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rv1126-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rv1126-cru.yaml
+new file mode 100644
+index 000000000000..0998f8b922bd
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/rockchip,rv1126-cru.yaml
+@@ -0,0 +1,62 @@
++# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/clock/rockchip,rv1126-cru.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- #define MUXGRF(_id, cname, pnames, f, o, s, w, mf)		\
- 	{							\
- 		.id		= _id,				\
++title: Rockchip RV1126 Clock and Reset Unit
++
++maintainers:
++  - Jagan Teki <jagan@edgeble.ai>
++  - Finley Xiao <finley.xiao@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++description:
++  The RV1126 clock controller generates the clock and also implements a
++  reset controller for SoC peripherals.
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rv1126-cru
++      - rockchip,rv1126-pmucru
++
++  reg:
++    maxItems: 1
++
++  "#clock-cells":
++    const: 1
++
++  "#reset-cells":
++    const: 1
++
++  clocks:
++    maxItems: 1
++
++  clock-names:
++    const: xin24m
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the syscon managing the "general register files" (GRF),
++      if missing pll rates are not changeable, due to the missing pll
++      lock status.
++
++required:
++  - compatible
++  - reg
++  - "#clock-cells"
++  - "#reset-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    cru: clock-controller@ff490000 {
++      compatible = "rockchip,rv1126-cru";
++      reg = <0xff490000 0x1000>;
++      rockchip,grf = <&grf>;
++      #clock-cells = <1>;
++      #reset-cells = <1>;
++    };
 -- 
 2.25.1
 
