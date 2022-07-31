@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B6CAC00140
-	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Jul 2022 17:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68EADC00140
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Jul 2022 17:52:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ok3fS0TeAnP7JOKK7mPSCCM2IpgfHxS8oeOwAlSAULs=; b=apnvL3Gnn0naMy
-	Rf8U1I3+dG6IkQ+g4zRRWCcLkHj8J1i5mnu8JVv8/ijeSb5VzCaBBZ7rr7Bv/e4GVY049Al4mjhMF
-	CfzuA8dVY8jr0JFRr+rp/Ooms+woSguEr1cIbl7ugBiBJhvZqXPRGvNLT0eoon0WLQG7me7E9g9AT
-	JK9KQazRNCm39BChZcmf4a7xgnIH1pmOC8D3s41I72DcuyRfUIJ1YWE80U+z/PL0/4jh+brniv/hP
-	KWdSecTWIiK6iigcoLAvVAZIDsMITDHAmw4lcTi1+VGE6i43IT04FUtXynTREmYCsFh0wRSpQCjxa
-	ZpfRuWV5xcEWKkoVNOUw==;
+	List-Owner; bh=Tnpn/ZQK/9RDV2UtoPz7xIv5EN7vAB0ka5FxrLcPK3g=; b=SN6SgYt8fa6j+X
+	9JWsFV9wkODVjI0lAfQOA5Hhj4X6HdGJE+yVRuZItmfxDdnvJhEK3w7mrZ6zVmXJwgRM7jqyPHvPi
+	9W6v0vrghO3auTjqXWpf/NBUxFyYPvjXZWp/enUOPF7ZoDgFin8JUhMVri9fh5h1Lfk44vOPxHGHY
+	zxGnLIKXyHsXBci10R00Q3UEi1BvhxjD+6HRsfxaXiJm0TSefD/KJ+LC6IMsVrgFgzvS/GdiVmhLz
+	q+AMmXXJbGsKvsyhWOJY+wGgWVV80bsnG96NTW9GauIOekdpr/kWv05HQWBsBuLq+bpw5ZykmWFi8
+	jmG4p2gCaMz9lHgg9nIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oID5v-00Efp1-Ds; Sun, 31 Jul 2022 17:51:15 +0000
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+	id 1oID7O-00EggG-4E; Sun, 31 Jul 2022 17:52:46 +0000
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oID2r-00Ee7W-TH
-	for linux-rockchip@lists.infradead.org; Sun, 31 Jul 2022 17:48:08 +0000
-Received: by mail-pf1-x430.google.com with SMTP id y141so8648229pfb.7
-        for <linux-rockchip@lists.infradead.org>; Sun, 31 Jul 2022 10:48:05 -0700 (PDT)
+	id 1oID33-00EeDA-3F
+	for linux-rockchip@lists.infradead.org; Sun, 31 Jul 2022 17:48:21 +0000
+Received: by mail-pj1-x1035.google.com with SMTP id t2-20020a17090a4e4200b001f21572f3a4so9771087pjl.0
+        for <linux-rockchip@lists.infradead.org>; Sun, 31 Jul 2022 10:48:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=wEEaPdNaHzbAfi8DEnolFdq8cyPBl3wAEb2nEVG+jp8=;
-        b=TIivx8k5Ccc9tGmFSqJ9j1mEauFbATV1LMn7XURejuN1uCbUVNo+YIEC5/GbGy73XK
-         GuL1o8TuaDKWqV+rymbCpNCAFZOFpvcjFBAJBXd250qdzq8ntZykyUEXrTRr7KcY+0EV
-         2ZbjVfirPeHIlcTEC3NbdM5SzwkqOOVEFrq+EgeMm6H6aZYA2x3w0Bsgkw7rvBvWufi/
-         vxI57jpepUBb8s1U1itxaUqkYjx4sQffWJjGnzAkG3P3XT6rvzTqxA0HoDz48UdKE1eN
-         cx6+kpH/JkPeyPlcCp7as9MkhpWivglFwzo8qHvaybZfEqNus/97SO0fcGU5+eD8b1QM
-         zIQw==
+        bh=/EX9ef1Nq9yX6Pu4anXNYfBGTc5U9cZkWJG7nY5yiiQ=;
+        b=PfmwiK0X4uI/9VLair3AH3u4JWe12FZK/TVa+K00CrbMUy/N4lQ5LaSzKyda7GYgGl
+         qtdGToX1OP9CMOqQ8hdgSO3mKMXf5gliKs6vM+9QDU7tvlSkE1AQT4jJidZHyaNSC/AS
+         OkfyO0sEju+OJSj+hJEtKSSElzJkMF7uLQ76Mf03BkCs/fXhDfOzCCsbmpQh2eKvj+yj
+         TPPm4zMRhK2pPwza1Jx+PYxqF6mPXk8glTKmRZAC+bcWMxqN3laVBCvJE9U8RYc+r+1v
+         sbvzzfhRz1Gj70vZeTR00UI/jpHEQn8TLx83cOJjt2i6zIOqkqhpzSrR7HhKmdbQHJUC
+         jfKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=wEEaPdNaHzbAfi8DEnolFdq8cyPBl3wAEb2nEVG+jp8=;
-        b=kyZ5cAc1zbF1p/yWq+JS5ZS/zBi/idwYZhB1wXyTgcUBSgd1Btm4qj2ES4acF2w5SV
-         5diOL99vcpSKIxmIi+4fDpAUjl/CIbJomEYk6MYtG3HWypV+TaHSB652U65r4AjQkhCs
-         iAyr9n5Rhs/rOXqMCCz5kqQc3Q3/u70rA4L0nz1W3cA46o3pyUmHHIvwfYqCSIU85Rr9
-         DNR8usKbFhKwC3yEo35Fof4HNjgbBK6s9Ql6OoaqDIq/962jFRNwdCkb+nytAkenRPeN
-         7TFavyfjM+m3fi7ecUHKNAcuY7SBtcGvvj8Szg+RKDmIZvfQYqloT0gFDSi2QjpFZwF1
-         fhbQ==
-X-Gm-Message-State: AJIora86S9UxKL1XBUOfF5CZfSminUhVvG4gVWJj9ubFAZnIUwoBqEKq
-	XUUj5JayjDsYOaZAaRLD6d1y+w==
-X-Google-Smtp-Source: AGRyM1tHou39pF0Bun0DF52zKtv3NxNyeBr+v8+g28nNP74VqLbe8yRsZTpYg9MiCjwLKYLIc+dMYg==
-X-Received: by 2002:a05:6a00:1d26:b0:52b:fb6f:e44d with SMTP id a38-20020a056a001d2600b0052bfb6fe44dmr12869018pfx.6.1659289685474;
-        Sun, 31 Jul 2022 10:48:05 -0700 (PDT)
+        bh=/EX9ef1Nq9yX6Pu4anXNYfBGTc5U9cZkWJG7nY5yiiQ=;
+        b=lpzFZ6m4d2PF0dsu8199c177fLS7wA9aq6uJqhisd2bO/hEmIt9ihDysW3XrXdK1sX
+         J9jJLz2iLCGnzA4jfXnwf+u9/Ib7skjnTevFRF5qu5dfu62XtjYAzqGX0vIYej/0rT7T
+         mqEYcjTCbChcNkrc7E9F3KEaOXf4B+ElB2MnDCh778LGtXKjtzR/8FMiHVyP/voeO+zb
+         jnARFPR0Q8TX3TVdFY70GHqG2ozhxGfmdAj/t53plABY2GjA6Y28LnfclefT8/E0CDK3
+         R5sRnl0OIWYjG/X3GvGH1EJAdJFy3I2e4rGb2WSKOuJ37TnvpnRLKosFe2I4lw1XytiF
+         C4qQ==
+X-Gm-Message-State: ACgBeo2HmjZ87rjndT3+KB6eb4UWkfcpdYvgoKLp9cKORiy7uE745w/X
+	UQTJSH3Pyfp4XmVe0JSKMohGmQ==
+X-Google-Smtp-Source: AA6agR5G7x+22NIOm3gvRh0fd0O3cFoZRqUEanRRX/sEiYwyMWtrMyS/SVslrrkFpFqpnM/FshB6BQ==
+X-Received: by 2002:a17:902:6ac5:b0:16d:1664:39c9 with SMTP id i5-20020a1709026ac500b0016d166439c9mr13078665plt.104.1659289689678;
+        Sun, 31 Jul 2022 10:48:09 -0700 (PDT)
 Received: from localhost.localdomain ([2405:201:c00a:a073:c5e8:48d3:6a8c:6418])
-        by smtp.gmail.com with ESMTPSA id n5-20020a170903110500b0016d3935eff0sm7812062plh.176.2022.07.31.10.48.01
+        by smtp.gmail.com with ESMTPSA id n5-20020a170903110500b0016d3935eff0sm7812062plh.176.2022.07.31.10.48.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 31 Jul 2022 10:48:05 -0700 (PDT)
+        Sun, 31 Jul 2022 10:48:09 -0700 (PDT)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -66,21 +66,21 @@ To: Heiko Stuebner <heiko@sntech.de>,
 Cc: linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	Jagan Teki <jagan@edgeble.ai>,
-	linux-gpio@vger.kernel.org,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Jianqun Xu <jay.xu@rock-chips.com>,
-	Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH v2 07/20] pinctrl: rockchip: Add RV1126 pinctrl support
-Date: Sun, 31 Jul 2022 23:17:13 +0530
-Message-Id: <20220731174726.72631-8-jagan@edgeble.ai>
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	linux-clk@vger.kernel.org,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Jagan Teki <jagan@edgeble.ai>
+Subject: [PATCH v2 08/20] clk: rockchip: Add MUXTBL variant
+Date: Sun, 31 Jul 2022 23:17:14 +0530
+Message-Id: <20220731174726.72631-9-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220731174726.72631-1-jagan@edgeble.ai>
 References: <20220731174726.72631-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220731_104805_995471_C74957B1 
-X-CRM114-Status: GOOD (  21.10  )
+X-CRM114-CacheID: sfid-20220731_104817_154086_C1AD96E5 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,481 +97,126 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RV1126 has five GPIOs groups - GPIO0 in PD_MMU and GPIO1-4
-in PD_BUS.
+From: Elaine Zhang <zhangqing@rock-chips.com>
 
-In GPIO0, up to Lower C group GPIO0_C[3:0] is part of PMU
-but rest of the groups from there are part of GRF.
+A clock branch consisting of a mux with non-standard
+select values.
+The parent in Mux table is sorted by priority.
 
-Added pinctrl support for RV1126 and the pull, drv and schmitt
-calculations are inferred from [1] authored by Jianqun Xu.
-
-[1] https://github.com/rockchip-linux/kernel/blob/develop-4.19/drivers/pinctrl/pinctrl-rockchip.c
-
-Cc: linux-gpio@vger.kernel.org
-Cc: Linus Walleij <linus.walleij@linaro.org>
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+Cc: linux-clk@vger.kernel.org
+Cc: Michael Turquette <mturquette@baylibre.com>
+Cc: Stephen Boyd <sboyd@kernel.org>
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
 Changes for v2:
 - none
 
- drivers/pinctrl/pinctrl-rockchip.c | 333 ++++++++++++++++++++++++++++-
- drivers/pinctrl/pinctrl-rockchip.h |   1 +
- 2 files changed, 327 insertions(+), 7 deletions(-)
+ drivers/clk/rockchip/clk.c | 27 +++++++++++++++++++++------
+ drivers/clk/rockchip/clk.h | 17 +++++++++++++++++
+ 2 files changed, 38 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 32e41395fc76..a91061f9c2ac 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -57,6 +57,7 @@
- #define IOMUX_UNROUTED		BIT(3)
- #define IOMUX_WIDTH_3BIT	BIT(4)
- #define IOMUX_WIDTH_2BIT	BIT(5)
-+#define IOMUX_L_SOURCE_PMU	BIT(6)
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index bb8a844309bf..e63d4f20b479 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -40,6 +40,7 @@ static struct clk *rockchip_clk_register_branch(const char *name,
+ 		const char *const *parent_names, u8 num_parents,
+ 		void __iomem *base,
+ 		int muxdiv_offset, u8 mux_shift, u8 mux_width, u8 mux_flags,
++		u32 *mux_table,
+ 		int div_offset, u8 div_shift, u8 div_width, u8 div_flags,
+ 		struct clk_div_table *div_table, int gate_offset,
+ 		u8 gate_shift, u8 gate_flags, unsigned long flags,
+@@ -62,6 +63,7 @@ static struct clk *rockchip_clk_register_branch(const char *name,
+ 		mux->shift = mux_shift;
+ 		mux->mask = BIT(mux_width) - 1;
+ 		mux->flags = mux_flags;
++		mux->table = mux_table;
+ 		mux->lock = lock;
+ 		mux_ops = (mux_flags & CLK_MUX_READ_ONLY) ? &clk_mux_ro_ops
+ 							: &clk_mux_ops;
+@@ -270,6 +272,8 @@ static struct clk *rockchip_clk_register_frac_branch(
+ 		frac_mux->shift = child->mux_shift;
+ 		frac_mux->mask = BIT(child->mux_width) - 1;
+ 		frac_mux->flags = child->mux_flags;
++		if (child->mux_table)
++			frac_mux->table = child->mux_table;
+ 		frac_mux->lock = lock;
+ 		frac_mux->hw.init = &init;
  
- #define PIN_BANK(id, pins, label)			\
- 	{						\
-@@ -147,6 +148,21 @@
- 		.pull_type[3] = pull3,					\
+@@ -444,11 +448,21 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ 		/* catch simple muxes */
+ 		switch (list->branch_type) {
+ 		case branch_mux:
+-			clk = clk_register_mux(NULL, list->name,
+-				list->parent_names, list->num_parents,
+-				flags, ctx->reg_base + list->muxdiv_offset,
+-				list->mux_shift, list->mux_width,
+-				list->mux_flags, &ctx->lock);
++			if (list->mux_table)
++				clk = clk_register_mux_table(NULL, list->name,
++					list->parent_names, list->num_parents,
++					flags,
++					ctx->reg_base + list->muxdiv_offset,
++					list->mux_shift, list->mux_width,
++					list->mux_flags, list->mux_table,
++					&ctx->lock);
++			else
++				clk = clk_register_mux(NULL, list->name,
++					list->parent_names, list->num_parents,
++					flags,
++					ctx->reg_base + list->muxdiv_offset,
++					list->mux_shift, list->mux_width,
++					list->mux_flags, &ctx->lock);
+ 			break;
+ 		case branch_muxgrf:
+ 			clk = rockchip_clk_register_muxgrf(list->name,
+@@ -506,7 +520,8 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ 				ctx->reg_base, list->muxdiv_offset,
+ 				list->mux_shift,
+ 				list->mux_width, list->mux_flags,
+-				list->div_offset, list->div_shift, list->div_width,
++				list->mux_table, list->div_offset,
++				list->div_shift, list->div_width,
+ 				list->div_flags, list->div_table,
+ 				list->gate_offset, list->gate_shift,
+ 				list->gate_flags, flags, &ctx->lock);
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 7aa45cc70287..93937fb1d368 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -448,6 +448,7 @@ struct rockchip_clk_branch {
+ 	u8				mux_shift;
+ 	u8				mux_width;
+ 	u8				mux_flags;
++	u32				*mux_table;
+ 	int				div_offset;
+ 	u8				div_shift;
+ 	u8				div_width;
+@@ -680,6 +681,22 @@ struct rockchip_clk_branch {
+ 		.gate_offset	= -1,				\
  	}
  
-+#define PIN_BANK_IOMUX_FLAGS_OFFSET(id, pins, label, iom0, iom1, iom2,	\
-+				    iom3, offset0, offset1, offset2,	\
-+				    offset3)				\
-+	{								\
-+		.bank_num	= id,					\
-+		.nr_pins	= pins,					\
-+		.name		= label,				\
-+		.iomux		= {					\
-+			{ .type = iom0, .offset = offset0 },		\
-+			{ .type = iom1, .offset = offset1 },		\
-+			{ .type = iom2, .offset = offset2 },		\
-+			{ .type = iom3, .offset = offset3 },		\
-+		},							\
++#define MUXTBL(_id, cname, pnames, f, o, s, w, mf, mt)		\
++	{							\
++		.id		= _id,				\
++		.branch_type	= branch_mux,			\
++		.name		= cname,			\
++		.parent_names	= pnames,			\
++		.num_parents	= ARRAY_SIZE(pnames),		\
++		.flags		= f,				\
++		.muxdiv_offset	= o,				\
++		.mux_shift	= s,				\
++		.mux_width	= w,				\
++		.mux_flags	= mf,				\
++		.gate_offset	= -1,				\
++		.mux_table	= mt,				\
 +	}
 +
- #define PIN_BANK_IOMUX_DRV_FLAGS_OFFSET(id, pins, label, iom0, iom1,	\
- 					iom2, iom3, drv0, drv1, drv2,	\
- 					drv3, offset0, offset1,		\
-@@ -443,6 +459,37 @@ static struct rockchip_mux_recalced_data rv1108_mux_recalced_data[] = {
- 	},
- };
- 
-+static struct rockchip_mux_recalced_data rv1126_mux_recalced_data[] = {
-+	{
-+		.num = 0,
-+		.pin = 20,
-+		.reg = 0x10000,
-+		.bit = 0,
-+		.mask = 0xf
-+	},
-+	{
-+		.num = 0,
-+		.pin = 21,
-+		.reg = 0x10000,
-+		.bit = 4,
-+		.mask = 0xf
-+	},
-+	{
-+		.num = 0,
-+		.pin = 22,
-+		.reg = 0x10000,
-+		.bit = 8,
-+		.mask = 0xf
-+	},
-+	{
-+		.num = 0,
-+		.pin = 23,
-+		.reg = 0x10000,
-+		.bit = 12,
-+		.mask = 0xf
-+	},
-+};
-+
- static  struct rockchip_mux_recalced_data rk3128_mux_recalced_data[] = {
- 	{
- 		.num = 2,
-@@ -642,6 +689,103 @@ static struct rockchip_mux_route_data px30_mux_route_data[] = {
- 	RK_MUXROUTE_SAME(1, RK_PB7, 2, 0x184, BIT(16 + 9) | BIT(9)), /* uart3-rxm1 */
- };
- 
-+static struct rockchip_mux_route_data rv1126_mux_route_data[] = {
-+	RK_MUXROUTE_GRF(3, RK_PD2, 1, 0x10260, WRITE_MASK_VAL(0, 0, 0)), /* I2S0_MCLK_M0 */
-+	RK_MUXROUTE_GRF(3, RK_PB0, 3, 0x10260, WRITE_MASK_VAL(0, 0, 1)), /* I2S0_MCLK_M1 */
-+
-+	RK_MUXROUTE_GRF(0, RK_PD4, 4, 0x10260, WRITE_MASK_VAL(3, 2, 0)), /* I2S1_MCLK_M0 */
-+	RK_MUXROUTE_GRF(1, RK_PD5, 2, 0x10260, WRITE_MASK_VAL(3, 2, 1)), /* I2S1_MCLK_M1 */
-+	RK_MUXROUTE_GRF(2, RK_PC7, 6, 0x10260, WRITE_MASK_VAL(3, 2, 2)), /* I2S1_MCLK_M2 */
-+
-+	RK_MUXROUTE_GRF(1, RK_PD0, 1, 0x10260, WRITE_MASK_VAL(4, 4, 0)), /* I2S2_MCLK_M0 */
-+	RK_MUXROUTE_GRF(2, RK_PB3, 2, 0x10260, WRITE_MASK_VAL(4, 4, 1)), /* I2S2_MCLK_M1 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PD4, 2, 0x10260, WRITE_MASK_VAL(12, 12, 0)), /* PDM_CLK0_M0 */
-+	RK_MUXROUTE_GRF(3, RK_PC0, 3, 0x10260, WRITE_MASK_VAL(12, 12, 1)), /* PDM_CLK0_M1 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PC6, 1, 0x10264, WRITE_MASK_VAL(0, 0, 0)), /* CIF_CLKOUT_M0 */
-+	RK_MUXROUTE_GRF(2, RK_PD1, 3, 0x10264, WRITE_MASK_VAL(0, 0, 1)), /* CIF_CLKOUT_M1 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PA4, 5, 0x10264, WRITE_MASK_VAL(5, 4, 0)), /* I2C3_SCL_M0 */
-+	RK_MUXROUTE_GRF(2, RK_PD4, 7, 0x10264, WRITE_MASK_VAL(5, 4, 1)), /* I2C3_SCL_M1 */
-+	RK_MUXROUTE_GRF(1, RK_PD6, 3, 0x10264, WRITE_MASK_VAL(5, 4, 2)), /* I2C3_SCL_M2 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PA0, 7, 0x10264, WRITE_MASK_VAL(6, 6, 0)), /* I2C4_SCL_M0 */
-+	RK_MUXROUTE_GRF(4, RK_PA0, 4, 0x10264, WRITE_MASK_VAL(6, 6, 1)), /* I2C4_SCL_M1 */
-+
-+	RK_MUXROUTE_GRF(2, RK_PA5, 7, 0x10264, WRITE_MASK_VAL(9, 8, 0)), /* I2C5_SCL_M0 */
-+	RK_MUXROUTE_GRF(3, RK_PB0, 5, 0x10264, WRITE_MASK_VAL(9, 8, 1)), /* I2C5_SCL_M1 */
-+	RK_MUXROUTE_GRF(1, RK_PD0, 4, 0x10264, WRITE_MASK_VAL(9, 8, 2)), /* I2C5_SCL_M2 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PC0, 5, 0x10264, WRITE_MASK_VAL(11, 10, 0)), /* SPI1_CLK_M0 */
-+	RK_MUXROUTE_GRF(1, RK_PC6, 3, 0x10264, WRITE_MASK_VAL(11, 10, 1)), /* SPI1_CLK_M1 */
-+	RK_MUXROUTE_GRF(2, RK_PD5, 6, 0x10264, WRITE_MASK_VAL(11, 10, 2)), /* SPI1_CLK_M2 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PC0, 2, 0x10264, WRITE_MASK_VAL(12, 12, 0)), /* RGMII_CLK_M0 */
-+	RK_MUXROUTE_GRF(2, RK_PB7, 2, 0x10264, WRITE_MASK_VAL(12, 12, 1)), /* RGMII_CLK_M1 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PA1, 3, 0x10264, WRITE_MASK_VAL(13, 13, 0)), /* CAN_TXD_M0 */
-+	RK_MUXROUTE_GRF(3, RK_PA7, 5, 0x10264, WRITE_MASK_VAL(13, 13, 1)), /* CAN_TXD_M1 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PA4, 6, 0x10268, WRITE_MASK_VAL(0, 0, 0)), /* PWM8_M0 */
-+	RK_MUXROUTE_GRF(2, RK_PD7, 5, 0x10268, WRITE_MASK_VAL(0, 0, 1)), /* PWM8_M1 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PA5, 6, 0x10268, WRITE_MASK_VAL(2, 2, 0)), /* PWM9_M0 */
-+	RK_MUXROUTE_GRF(2, RK_PD6, 5, 0x10268, WRITE_MASK_VAL(2, 2, 1)), /* PWM9_M1 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PA6, 6, 0x10268, WRITE_MASK_VAL(4, 4, 0)), /* PWM10_M0 */
-+	RK_MUXROUTE_GRF(2, RK_PD5, 5, 0x10268, WRITE_MASK_VAL(4, 4, 1)), /* PWM10_M1 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PA7, 6, 0x10268, WRITE_MASK_VAL(6, 6, 0)), /* PWM11_IR_M0 */
-+	RK_MUXROUTE_GRF(3, RK_PA1, 5, 0x10268, WRITE_MASK_VAL(6, 6, 1)), /* PWM11_IR_M1 */
-+
-+	RK_MUXROUTE_GRF(1, RK_PA5, 3, 0x10268, WRITE_MASK_VAL(8, 8, 0)), /* UART2_TX_M0 */
-+	RK_MUXROUTE_GRF(3, RK_PA2, 1, 0x10268, WRITE_MASK_VAL(8, 8, 1)), /* UART2_TX_M1 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PC6, 3, 0x10268, WRITE_MASK_VAL(11, 10, 0)), /* UART3_TX_M0 */
-+	RK_MUXROUTE_GRF(1, RK_PA7, 2, 0x10268, WRITE_MASK_VAL(11, 10, 1)), /* UART3_TX_M1 */
-+	RK_MUXROUTE_GRF(3, RK_PA0, 4, 0x10268, WRITE_MASK_VAL(11, 10, 2)), /* UART3_TX_M2 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PA4, 4, 0x10268, WRITE_MASK_VAL(13, 12, 0)), /* UART4_TX_M0 */
-+	RK_MUXROUTE_GRF(2, RK_PA6, 4, 0x10268, WRITE_MASK_VAL(13, 12, 1)), /* UART4_TX_M1 */
-+	RK_MUXROUTE_GRF(1, RK_PD5, 3, 0x10268, WRITE_MASK_VAL(13, 12, 2)), /* UART4_TX_M2 */
-+
-+	RK_MUXROUTE_GRF(3, RK_PA6, 4, 0x10268, WRITE_MASK_VAL(15, 14, 0)), /* UART5_TX_M0 */
-+	RK_MUXROUTE_GRF(2, RK_PB0, 4, 0x10268, WRITE_MASK_VAL(15, 14, 1)), /* UART5_TX_M1 */
-+	RK_MUXROUTE_GRF(2, RK_PA0, 3, 0x10268, WRITE_MASK_VAL(15, 14, 2)), /* UART5_TX_M2 */
-+
-+	RK_MUXROUTE_PMU(0, RK_PB6, 3, 0x0114, WRITE_MASK_VAL(0, 0, 0)), /* PWM0_M0 */
-+	RK_MUXROUTE_PMU(2, RK_PB3, 5, 0x0114, WRITE_MASK_VAL(0, 0, 1)), /* PWM0_M1 */
-+
-+	RK_MUXROUTE_PMU(0, RK_PB7, 3, 0x0114, WRITE_MASK_VAL(2, 2, 0)), /* PWM1_M0 */
-+	RK_MUXROUTE_PMU(2, RK_PB2, 5, 0x0114, WRITE_MASK_VAL(2, 2, 1)), /* PWM1_M1 */
-+
-+	RK_MUXROUTE_PMU(0, RK_PC0, 3, 0x0114, WRITE_MASK_VAL(4, 4, 0)), /* PWM2_M0 */
-+	RK_MUXROUTE_PMU(2, RK_PB1, 5, 0x0114, WRITE_MASK_VAL(4, 4, 1)), /* PWM2_M1 */
-+
-+	RK_MUXROUTE_PMU(0, RK_PC1, 3, 0x0114, WRITE_MASK_VAL(6, 6, 0)), /* PWM3_IR_M0 */
-+	RK_MUXROUTE_PMU(2, RK_PB0, 5, 0x0114, WRITE_MASK_VAL(6, 6, 1)), /* PWM3_IR_M1 */
-+
-+	RK_MUXROUTE_PMU(0, RK_PC2, 3, 0x0114, WRITE_MASK_VAL(8, 8, 0)), /* PWM4_M0 */
-+	RK_MUXROUTE_PMU(2, RK_PA7, 5, 0x0114, WRITE_MASK_VAL(8, 8, 1)), /* PWM4_M1 */
-+
-+	RK_MUXROUTE_PMU(0, RK_PC3, 3, 0x0114, WRITE_MASK_VAL(10, 10, 0)), /* PWM5_M0 */
-+	RK_MUXROUTE_PMU(2, RK_PA6, 5, 0x0114, WRITE_MASK_VAL(10, 10, 1)), /* PWM5_M1 */
-+
-+	RK_MUXROUTE_PMU(0, RK_PB2, 3, 0x0114, WRITE_MASK_VAL(12, 12, 0)), /* PWM6_M0 */
-+	RK_MUXROUTE_PMU(2, RK_PD4, 5, 0x0114, WRITE_MASK_VAL(12, 12, 1)), /* PWM6_M1 */
-+
-+	RK_MUXROUTE_PMU(0, RK_PB1, 3, 0x0114, WRITE_MASK_VAL(14, 14, 0)), /* PWM7_IR_M0 */
-+	RK_MUXROUTE_PMU(3, RK_PA0, 5, 0x0114, WRITE_MASK_VAL(14, 14, 1)), /* PWM7_IR_M1 */
-+
-+	RK_MUXROUTE_PMU(0, RK_PB0, 1, 0x0118, WRITE_MASK_VAL(1, 0, 0)), /* SPI0_CLK_M0 */
-+	RK_MUXROUTE_PMU(2, RK_PA1, 1, 0x0118, WRITE_MASK_VAL(1, 0, 1)), /* SPI0_CLK_M1 */
-+	RK_MUXROUTE_PMU(2, RK_PB2, 6, 0x0118, WRITE_MASK_VAL(1, 0, 2)), /* SPI0_CLK_M2 */
-+
-+	RK_MUXROUTE_PMU(0, RK_PB6, 2, 0x0118, WRITE_MASK_VAL(2, 2, 0)), /* UART1_TX_M0 */
-+	RK_MUXROUTE_PMU(1, RK_PD0, 5, 0x0118, WRITE_MASK_VAL(2, 2, 1)), /* UART1_TX_M1 */
-+};
-+
- static struct rockchip_mux_route_data rk3128_mux_route_data[] = {
- 	RK_MUXROUTE_SAME(1, RK_PB2, 1, 0x144, BIT(16 + 3) | BIT(16 + 4)), /* spi-0 */
- 	RK_MUXROUTE_SAME(1, RK_PD3, 3, 0x144, BIT(16 + 3) | BIT(16 + 4) | BIT(3)), /* spi-1 */
-@@ -877,8 +1021,12 @@ static int rockchip_get_mux(struct rockchip_pin_bank *bank, int pin)
- 	if (bank->iomux[iomux_num].type & IOMUX_GPIO_ONLY)
- 		return RK_FUNC_GPIO;
- 
--	regmap = (bank->iomux[iomux_num].type & IOMUX_SOURCE_PMU)
--				? info->regmap_pmu : info->regmap_base;
-+	if (bank->iomux[iomux_num].type & IOMUX_SOURCE_PMU)
-+		regmap = info->regmap_pmu;
-+	else if (bank->iomux[iomux_num].type & IOMUX_L_SOURCE_PMU)
-+		regmap = (pin % 8 < 4) ? info->regmap_pmu : info->regmap_base;
-+	else
-+		regmap = info->regmap_base;
- 
- 	/* get basic quadrupel of mux registers and the correct reg inside */
- 	mux_type = bank->iomux[iomux_num].type;
-@@ -987,8 +1135,12 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
- 
- 	dev_dbg(dev, "setting mux of GPIO%d-%d to %d\n", bank->bank_num, pin, mux);
- 
--	regmap = (bank->iomux[iomux_num].type & IOMUX_SOURCE_PMU)
--				? info->regmap_pmu : info->regmap_base;
-+	if (bank->iomux[iomux_num].type & IOMUX_SOURCE_PMU)
-+		regmap = info->regmap_pmu;
-+	else if (bank->iomux[iomux_num].type & IOMUX_L_SOURCE_PMU)
-+		regmap = (pin % 8 < 4) ? info->regmap_pmu : info->regmap_base;
-+	else
-+		regmap = info->regmap_base;
- 
- 	/* get basic quadrupel of mux registers and the correct reg inside */
- 	mux_type = bank->iomux[iomux_num].type;
-@@ -1268,6 +1420,119 @@ static int rv1108_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
- 	return 0;
- }
- 
-+#define RV1126_PULL_PMU_OFFSET		0x40
-+#define RV1126_PULL_GRF_GPIO1A0_OFFSET	0x10108
-+#define RV1126_PULL_PINS_PER_REG	8
-+#define RV1126_PULL_BITS_PER_PIN	2
-+#define RV1126_PULL_BANK_STRIDE		16
-+#define RV1126_GPIO_C4_D7(p)		(p >= 20 && p <= 31) /* GPIO0_C4 ~ GPIO0_D7 */
-+
-+static int rv1126_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
-+					int pin_num, struct regmap **regmap,
-+					int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	/* The first 24 pins of the first bank are located in PMU */
-+	if (bank->bank_num == 0) {
-+		if (RV1126_GPIO_C4_D7(pin_num)) {
-+			*regmap = info->regmap_base;
-+			*reg = RV1126_PULL_GRF_GPIO1A0_OFFSET;
-+			*reg -= (((31 - pin_num) / RV1126_PULL_PINS_PER_REG + 1) * 4);
-+			*bit = pin_num % RV1126_PULL_PINS_PER_REG;
-+			*bit *= RV1126_PULL_BITS_PER_PIN;
-+			return 0;
-+		}
-+		*regmap = info->regmap_pmu;
-+		*reg = RV1126_PULL_PMU_OFFSET;
-+	} else {
-+		*reg = RV1126_PULL_GRF_GPIO1A0_OFFSET;
-+		*regmap = info->regmap_base;
-+		*reg += (bank->bank_num - 1) * RV1126_PULL_BANK_STRIDE;
-+	}
-+
-+	*reg += ((pin_num / RV1126_PULL_PINS_PER_REG) * 4);
-+	*bit = (pin_num % RV1126_PULL_PINS_PER_REG);
-+	*bit *= RV1126_PULL_BITS_PER_PIN;
-+
-+	return 0;
-+}
-+
-+#define RV1126_DRV_PMU_OFFSET		0x20
-+#define RV1126_DRV_GRF_GPIO1A0_OFFSET	0x10090
-+#define RV1126_DRV_BITS_PER_PIN		4
-+#define RV1126_DRV_PINS_PER_REG		4
-+#define RV1126_DRV_BANK_STRIDE		32
-+
-+static int rv1126_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
-+				       int pin_num, struct regmap **regmap,
-+				       int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+
-+	/* The first 24 pins of the first bank are located in PMU */
-+	if (bank->bank_num == 0) {
-+		if (RV1126_GPIO_C4_D7(pin_num)) {
-+			*regmap = info->regmap_base;
-+			*reg = RV1126_DRV_GRF_GPIO1A0_OFFSET;
-+			*reg -= (((31 - pin_num) / RV1126_DRV_PINS_PER_REG + 1) * 4);
-+			*reg -= 0x4;
-+			*bit = pin_num % RV1126_DRV_PINS_PER_REG;
-+			*bit *= RV1126_DRV_BITS_PER_PIN;
-+			return 0;
-+		}
-+		*regmap = info->regmap_pmu;
-+		*reg = RV1126_DRV_PMU_OFFSET;
-+	} else {
-+		*regmap = info->regmap_base;
-+		*reg = RV1126_DRV_GRF_GPIO1A0_OFFSET;
-+		*reg += (bank->bank_num - 1) * RV1126_DRV_BANK_STRIDE;
-+	}
-+
-+	*reg += ((pin_num / RV1126_DRV_PINS_PER_REG) * 4);
-+	*bit = pin_num % RV1126_DRV_PINS_PER_REG;
-+	*bit *= RV1126_DRV_BITS_PER_PIN;
-+
-+	return 0;
-+}
-+
-+#define RV1126_SCHMITT_PMU_OFFSET		0x60
-+#define RV1126_SCHMITT_GRF_GPIO1A0_OFFSET	0x10188
-+#define RV1126_SCHMITT_BANK_STRIDE		16
-+#define RV1126_SCHMITT_PINS_PER_GRF_REG		8
-+#define RV1126_SCHMITT_PINS_PER_PMU_REG		8
-+
-+static int rv1126_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
-+					   int pin_num,
-+					   struct regmap **regmap,
-+					   int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+	int pins_per_reg;
-+
-+	if (bank->bank_num == 0) {
-+		if (RV1126_GPIO_C4_D7(pin_num)) {
-+			*regmap = info->regmap_base;
-+			*reg = RV1126_SCHMITT_GRF_GPIO1A0_OFFSET;
-+			*reg -= (((31 - pin_num) / RV1126_SCHMITT_PINS_PER_GRF_REG + 1) * 4);
-+			*bit = pin_num % RV1126_SCHMITT_PINS_PER_GRF_REG;
-+			return 0;
-+		}
-+		*regmap = info->regmap_pmu;
-+		*reg = RV1126_SCHMITT_PMU_OFFSET;
-+		pins_per_reg = RV1126_SCHMITT_PINS_PER_PMU_REG;
-+	} else {
-+		*regmap = info->regmap_base;
-+		*reg = RV1126_SCHMITT_GRF_GPIO1A0_OFFSET;
-+		pins_per_reg = RV1126_SCHMITT_PINS_PER_GRF_REG;
-+		*reg += (bank->bank_num - 1) * RV1126_SCHMITT_BANK_STRIDE;
-+	}
-+	*reg += ((pin_num / pins_per_reg) * 4);
-+	*bit = pin_num % pins_per_reg;
-+
-+	return 0;
-+}
-+
- #define RK3308_SCHMITT_PINS_PER_REG		8
- #define RK3308_SCHMITT_BANK_STRIDE		16
- #define RK3308_SCHMITT_GRF_OFFSET		0x1a0
-@@ -1998,6 +2263,12 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 		goto config;
- 	}
- 
-+	if (ctrl->type == RV1126) {
-+		rmask_bits = RV1126_DRV_BITS_PER_PIN;
-+		ret = strength;
-+		goto config;
-+	}
-+
- 	ret = -EINVAL;
- 	for (i = 0; i < ARRAY_SIZE(rockchip_perpin_drv_list[drv_type]); i++) {
- 		if (rockchip_perpin_drv_list[drv_type][i] == strength) {
-@@ -2168,6 +2439,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 		break;
- 	case PX30:
- 	case RV1108:
-+	case RV1126:
- 	case RK3188:
- 	case RK3288:
- 	case RK3308:
-@@ -2416,6 +2688,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
- 		return pull ? false : true;
- 	case PX30:
- 	case RV1108:
-+	case RV1126:
- 	case RK3188:
- 	case RK3288:
- 	case RK3308:
-@@ -2889,12 +3162,14 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
- 
- 			/* preset iomux offset value, set new start value */
- 			if (iom->offset >= 0) {
--				if (iom->type & IOMUX_SOURCE_PMU)
-+				if ((iom->type & IOMUX_SOURCE_PMU) ||
-+				    (iom->type & IOMUX_L_SOURCE_PMU))
- 					pmu_offs = iom->offset;
- 				else
- 					grf_offs = iom->offset;
- 			} else { /* set current iomux offset */
--				iom->offset = (iom->type & IOMUX_SOURCE_PMU) ?
-+				iom->offset = ((iom->type & IOMUX_SOURCE_PMU) ||
-+					       (iom->type & IOMUX_L_SOURCE_PMU)) ?
- 							pmu_offs : grf_offs;
- 			}
- 
-@@ -2919,7 +3194,7 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
- 			inc = (iom->type & (IOMUX_WIDTH_4BIT |
- 					    IOMUX_WIDTH_3BIT |
- 					    IOMUX_WIDTH_2BIT)) ? 8 : 4;
--			if (iom->type & IOMUX_SOURCE_PMU)
-+			if ((iom->type & IOMUX_SOURCE_PMU) || (iom->type & IOMUX_L_SOURCE_PMU))
- 				pmu_offs += inc;
- 			else
- 				grf_offs += inc;
-@@ -3178,6 +3453,48 @@ static struct rockchip_pin_ctrl rv1108_pin_ctrl = {
- 	.schmitt_calc_reg	= rv1108_calc_schmitt_reg_and_bit,
- };
- 
-+static struct rockchip_pin_bank rv1126_pin_banks[] = {
-+	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0",
-+			     IOMUX_WIDTH_4BIT | IOMUX_SOURCE_PMU,
-+			     IOMUX_WIDTH_4BIT | IOMUX_SOURCE_PMU,
-+			     IOMUX_WIDTH_4BIT | IOMUX_L_SOURCE_PMU,
-+			     IOMUX_WIDTH_4BIT),
-+	PIN_BANK_IOMUX_FLAGS_OFFSET(1, 32, "gpio1",
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    0x10010, 0x10018, 0x10020, 0x10028),
-+	PIN_BANK_IOMUX_FLAGS(2, 32, "gpio2",
-+			     IOMUX_WIDTH_4BIT,
-+			     IOMUX_WIDTH_4BIT,
-+			     IOMUX_WIDTH_4BIT,
-+			     IOMUX_WIDTH_4BIT),
-+	PIN_BANK_IOMUX_FLAGS(3, 32, "gpio3",
-+			     IOMUX_WIDTH_4BIT,
-+			     IOMUX_WIDTH_4BIT,
-+			     IOMUX_WIDTH_4BIT,
-+			     IOMUX_WIDTH_4BIT),
-+	PIN_BANK_IOMUX_FLAGS(4, 2, "gpio4",
-+			     IOMUX_WIDTH_4BIT, 0, 0, 0),
-+};
-+
-+static struct rockchip_pin_ctrl rv1126_pin_ctrl = {
-+	.pin_banks		= rv1126_pin_banks,
-+	.nr_banks		= ARRAY_SIZE(rv1126_pin_banks),
-+	.label			= "RV1126-GPIO",
-+	.type			= RV1126,
-+	.grf_mux_offset		= 0x10004, /* mux offset from GPIO0_D0 */
-+	.pmu_mux_offset		= 0x0,
-+	.iomux_routes		= rv1126_mux_route_data,
-+	.niomux_routes		= ARRAY_SIZE(rv1126_mux_route_data),
-+	.iomux_recalced		= rv1126_mux_recalced_data,
-+	.niomux_recalced	= ARRAY_SIZE(rv1126_mux_recalced_data),
-+	.pull_calc_reg		= rv1126_calc_pull_reg_and_bit,
-+	.drv_calc_reg		= rv1126_calc_drv_reg_and_bit,
-+	.schmitt_calc_reg	= rv1126_calc_schmitt_reg_and_bit,
-+};
-+
- static struct rockchip_pin_bank rk2928_pin_banks[] = {
- 	PIN_BANK(0, 32, "gpio0"),
- 	PIN_BANK(1, 32, "gpio1"),
-@@ -3568,6 +3885,8 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
- 		.data = &px30_pin_ctrl },
- 	{ .compatible = "rockchip,rv1108-pinctrl",
- 		.data = &rv1108_pin_ctrl },
-+	{ .compatible = "rockchip,rv1126-pinctrl",
-+		.data = &rv1126_pin_ctrl },
- 	{ .compatible = "rockchip,rk2928-pinctrl",
- 		.data = &rk2928_pin_ctrl },
- 	{ .compatible = "rockchip,rk3036-pinctrl",
-diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-index ec46f8815ac9..4759f336941e 100644
---- a/drivers/pinctrl/pinctrl-rockchip.h
-+++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -186,6 +186,7 @@
- enum rockchip_pinctrl_type {
- 	PX30,
- 	RV1108,
-+	RV1126,
- 	RK2928,
- 	RK3066B,
- 	RK3128,
+ #define MUXGRF(_id, cname, pnames, f, o, s, w, mf)		\
+ 	{							\
+ 		.id		= _id,				\
 -- 
 2.25.1
 
