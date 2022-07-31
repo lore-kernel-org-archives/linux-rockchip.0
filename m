@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE5EBC25B06
-	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Jul 2022 17:48:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71D13C00140
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 Jul 2022 17:48:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2WzPAgq4J/Koc+jvV4Qqtcun0q+XJVGnFVeZMIroIpQ=; b=eGdnXS3ElRS21f
-	66lu9frrp5veIiYRrzf4NuVEZpe3XzyNY+bx99hhVa0CFHKR1kGZvIdxr2vfGA22dtqI/m06t3o7w
-	NHlgzct0GRSipqrtgAnyZ8qZgaZJ5YZiVVeDEx7cQzSRZ5h1zW1z5nWmGU5ZfbvlHTuUWCVX6ecWy
-	JN8yz5I6xErGScvQFempZiBLjnslAnFIsLHMDA1qSZF2H0bxnD8NdlK7tnOcnMyZIYIkcNOHtdHTx
-	3p9w92Z8vp/DVUr9huwnCUzzbUSXTMai7IeDyiFjy9QEsXU9I69YIeig5IBTvGeY9CXSYxa+rSSiK
-	uq1/TEXsWK1jbwCy/WrQ==;
+	List-Owner; bh=2k1sjl0cjgfxrsBUu2ijjom6P01ULOPipqC88XL3g10=; b=e84tgvIvk/fg1y
+	wQXku/RDuxEeUHSTkF2SDWOEB01kF+l0PPpXK/iINuUa/JvaHySz+PkGs5eyiIExXhnMi4JiyKdAK
+	utyZD8dgStRbkq+qxFt1z7rHHJcEoBTk29PaZW8+Hbc2kJyb/+Rg8ckRcJdD6EN8KAzGIJGkMBOlL
+	JEbUlGDmIUE85cXyXw5ouGE8G66Yu76Z9UFTWp48Hvux1Q4+3GTFP0fQ5uiGCfPXIkZOL6JCVrLJx
+	FJQQsq1/3Pcz4zc5zAlXR4X/6ThFNd4/hoJFQBiyGAvRE1qvcuZvReNBp8n/3pkAKkz1DKOzDlcEb
+	gs3KWXZhM3nBU+zqnhMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oID2w-00EeDb-Um; Sun, 31 Jul 2022 17:48:10 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1oID3Y-00Eeaa-9T; Sun, 31 Jul 2022 17:48:48 +0000
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oID2W-00Ee0J-Ax
-	for linux-rockchip@lists.infradead.org; Sun, 31 Jul 2022 17:47:45 +0000
-Received: by mail-pf1-x431.google.com with SMTP id 130so837817pfv.13
-        for <linux-rockchip@lists.infradead.org>; Sun, 31 Jul 2022 10:47:43 -0700 (PDT)
+	id 1oID2Z-00Ee2D-C7
+	for linux-rockchip@lists.infradead.org; Sun, 31 Jul 2022 17:47:48 +0000
+Received: by mail-pg1-x535.google.com with SMTP id 23so7815930pgc.8
+        for <linux-rockchip@lists.infradead.org>; Sun, 31 Jul 2022 10:47:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=U2DiOWMYZFeHnRa08EHHJ0cCs+siq8/3MXdBn4KTO2Y=;
-        b=hHVYfk2kF1c2Cvc/IY+diqQ+nLtoCgz/8WF10wB1Zw8lSoUls341h6uRxHJ7DH0DzH
-         Dk7/duCxbhRGU7oI53iXp1UNST4Ov+EtJDnXk0R4YObPRkPf6JS5nvIQ7hhNMM1fF2MW
-         D+NCztsFTjVBYOhU7OiO8BTu9chHFbOdRU9g9uYDcJ6ls92A50ndvyTbwUgA9nB8Ev6v
-         /zTAUs4BdGjCTr7LUC5ihiAqJrptFvsVeto69Q367TR4LPVmggKyeOB2JDjDpJj0ORd2
-         hb9HPiI/jB1Go2535Gr5DQe5KlVfd2uJVA39HeVrYGCoqSaQS34cYeUIpGycBzNry3Y6
-         ckkw==
+        bh=hNp+zXQtih6SV1d7Y3TwxaTJ8vdr23qkoBd9YNJH1oQ=;
+        b=zIkygsKa/ie+N46RVweKCsJfT/QlkqGUQWBSEK085Xglo4851t93ARMH9s1q9gXtzF
+         mnsHKCSNC99qpKxTykBxHA+Vcx3Yw8mHFSAW+32o0nixVHWR/czTCjvoXDTAGdPNxonH
+         SBvIhLeZJKtJRlGGnvLoA8PHQjg/S7h0fJ0Y8TgO18oouG5VotA1NkzrdnhurAXArb+9
+         A6X2LxxREIzOAwmxfSqza1Juz7XVwUdc7SA10dxPw3X9fFgGUjSF2sBZ16ncrDwSFXmd
+         IyVGnIRBceuNf9WEg448FYpugkP2J7w3iz8NLzFvxKd/HcgnHhRgI2X4EbaCz5XZOvac
+         uqAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=U2DiOWMYZFeHnRa08EHHJ0cCs+siq8/3MXdBn4KTO2Y=;
-        b=RUCmZmTEz63JQb56f42gJbUy4DJbOQO9CbAU2B+qWMzUlPgKGM1hrJjB0Z3ibAe1cq
-         vda8fdq+vTFnlp58QCDuoyEFmiJTemd1SdkvE02o9GbjiDOMKd4EWY4+37Ty1+F1ZkFp
-         sZdpKStWPQAKMcPeMeA+xIKcAy6ifEilA5W+ml22SGLsSIRG2rR1JoVcV/OVmIL9Um/W
-         0boF2OQc3hmuIQf2Ru5w+JHrBrtaVaYEwCrkPAiRaxJIJ8Eon+rSHfX1VcnIYGvhN2jo
-         re2aGNdCqDdlRVxBvJCSmoqiCG+xvXLhrtKUvOAvGsieTMxa58hcu99rUQc+bIaA2C3R
-         j3ug==
-X-Gm-Message-State: AJIora8SI27RSt35Jp9i1BqpB558ThBo9yN9YDGvgdx5Xy6wzCLK54Qi
-	ktt7aZbFbaCgrRRU9Rop2i0rPg==
-X-Google-Smtp-Source: AGRyM1uaJfmronFGB+ZUvm13gkXPbJ/0qUk6hV1sqPdsvxye1qkF37x1j5WqbI7BatUbuqsdCPR0ww==
-X-Received: by 2002:a63:d646:0:b0:41a:6c24:d829 with SMTP id d6-20020a63d646000000b0041a6c24d829mr10483905pgj.470.1659289662680;
-        Sun, 31 Jul 2022 10:47:42 -0700 (PDT)
+        bh=hNp+zXQtih6SV1d7Y3TwxaTJ8vdr23qkoBd9YNJH1oQ=;
+        b=u1skhJDXIVV2HfS7vHMSTelLdzIXcnfWYa0x+FuOjPrsqoI/+06/mDOlHNh00jr/m9
+         i5gOxWvYXb7w4ZI2zUsAP78IFIf3egJ1ehVM2X1J/PnjmyAj/LtSoPtrwCiTrqBtZnAJ
+         yWXddbFt+5BWhcCSi61DcIwFAMzuEMO0bvnEYxlTlpelDcC8dEhquAO6wpgakp2kHLN0
+         /Qcf9lO6/0HaRt4eS1BSRoW4xU7kUUgCvFSPpt9HWIOYC22Jdn1VSvoFCToALT+TiVR7
+         BekOuk1wRgpH/DMaqGmqsPQIycpUq7/hAd5DpBIZeh9hug1iWFsREHJOA0PcHdMsjKmk
+         26Tg==
+X-Gm-Message-State: AJIora+H/alNI4o5W+CSEEAGcN8ZHaK/F0tbTB85H1I0cLHz6F2vZlsi
+	pkIIDtZP9mp8IIrnimKMH+AqXw==
+X-Google-Smtp-Source: AGRyM1uxj4Y4o4w0/ySjDNkP99FefLttWtVg7uFLpnxnoH5UbFra+6aJcfga6ZFZPTCrgQ6Gr9KiMw==
+X-Received: by 2002:a05:6a00:24d6:b0:52b:ee89:ecb2 with SMTP id d22-20020a056a0024d600b0052bee89ecb2mr12967794pfv.15.1659289666321;
+        Sun, 31 Jul 2022 10:47:46 -0700 (PDT)
 Received: from localhost.localdomain ([2405:201:c00a:a073:c5e8:48d3:6a8c:6418])
-        by smtp.gmail.com with ESMTPSA id n5-20020a170903110500b0016d3935eff0sm7812062plh.176.2022.07.31.10.47.39
+        by smtp.gmail.com with ESMTPSA id n5-20020a170903110500b0016d3935eff0sm7812062plh.176.2022.07.31.10.47.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 31 Jul 2022 10:47:42 -0700 (PDT)
+        Sun, 31 Jul 2022 10:47:46 -0700 (PDT)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -67,18 +67,17 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Jagan Teki <jagan@edgeble.ai>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v2 01/20] dt-bindings: power: rockchip: Document RV1126 power-controller
-Date: Sun, 31 Jul 2022 23:17:07 +0530
-Message-Id: <20220731174726.72631-2-jagan@edgeble.ai>
+	Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v2 02/20] dt-bindings: power: Add power-domain header for RV1126
+Date: Sun, 31 Jul 2022 23:17:08 +0530
+Message-Id: <20220731174726.72631-3-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220731174726.72631-1-jagan@edgeble.ai>
 References: <20220731174726.72631-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220731_104744_405415_4CE238FE 
-X-CRM114-Status: UNSURE (   9.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220731_104747_424460_1F10B77F 
+X-CRM114-Status: GOOD (  11.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,37 +94,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document dt-bindings for RV1126 power-controller.
+Add power-domain header for RV1126 SoC from description in TRM.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
 Changes for v2:
-- collect Krzysztof ack
+- add blank line
 
- .../devicetree/bindings/power/rockchip,power-controller.yaml    | 2 ++
- 1 file changed, 2 insertions(+)
+ include/dt-bindings/power/rv1126-power.h | 35 ++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+ create mode 100644 include/dt-bindings/power/rv1126-power.h
 
-diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-index 3deb0fc8dfd3..602f08a76f2c 100644
---- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-+++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
-@@ -41,6 +41,7 @@ properties:
-       - rockchip,rk3368-power-controller
-       - rockchip,rk3399-power-controller
-       - rockchip,rk3568-power-controller
-+      - rockchip,rv1126-power-controller
- 
-   "#power-domain-cells":
-     const: 1
-@@ -119,6 +120,7 @@ $defs:
-           "include/dt-bindings/power/rk3368-power.h"
-           "include/dt-bindings/power/rk3399-power.h"
-           "include/dt-bindings/power/rk3568-power.h"
-+          "include/dt-bindings/power/rv1126-power.h"
- 
-       clocks:
-         minItems: 1
+diff --git a/include/dt-bindings/power/rv1126-power.h b/include/dt-bindings/power/rv1126-power.h
+new file mode 100644
+index 000000000000..38a68e000d38
+--- /dev/null
++++ b/include/dt-bindings/power/rv1126-power.h
+@@ -0,0 +1,35 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++
++#ifndef __DT_BINDINGS_POWER_RV1126_POWER_H__
++#define __DT_BINDINGS_POWER_RV1126_POWER_H__
++
++/* VD_CORE */
++#define RV1126_PD_CPU_0		0
++#define RV1126_PD_CPU_1		1
++#define RV1126_PD_CPU_2		2
++#define RV1126_PD_CPU_3		3
++#define RV1126_PD_CORE_ALIVE	4
++
++/* VD_PMU */
++#define RV1126_PD_PMU		5
++#define RV1126_PD_PMU_ALIVE	6
++
++/* VD_NPU */
++#define RV1126_PD_NPU		7
++
++/* VD_VEPU */
++#define RV1126_PD_VEPU		8
++
++/* VD_LOGIC */
++#define RV1126_PD_VI		9
++#define RV1126_PD_VO		10
++#define RV1126_PD_ISPP		11
++#define RV1126_PD_VDPU		12
++#define RV1126_PD_CRYPTO	13
++#define RV1126_PD_DDR		14
++#define RV1126_PD_NVM		15
++#define RV1126_PD_SDIO		16
++#define RV1126_PD_USB		17
++#define RV1126_PD_LOGIC_ALIVE	18
++
++#endif
 -- 
 2.25.1
 
