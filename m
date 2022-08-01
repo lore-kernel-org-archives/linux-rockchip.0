@@ -4,85 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A0CAC00144
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Aug 2022 18:01:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47D09C19F2C
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Aug 2022 18:37:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QEgHXlY8EzApG6y9osP/dK+jspw5A3IVCbI7CLjvzZk=; b=r5/lSdwwGrQGy6
-	KfCcAymeUGGgaCDQYfHfEOFMWJHdToIaDZCFD5WcXznz2GJT4g/5faHLc8+WZ2hyCsq+uMwsQglbo
-	AtKbbaekY5F2R6kklEa3+h7PmWHLm1OQcOR8VxiwmQaYo3gJh9vSfatEc7hLXkI3fxY5ZM1Mf91Ww
-	GleRsUGet24WTF8h70ZtCdiiugtFLsOL2GGlcQV1jWDS1ksB3SGiZaYSQ0eVADZxPvSAGjVyTTYcs
-	ZXmk2h3jEUGWuW/Yr2RAG4omkuKEETsIyWgAbQKhH7YwUf/gRpFIf5+BUnov4BNJFMvfRtw0xA1yu
-	D+ejDa3I4/RsSmEwGBaw==;
+	List-Owner; bh=j9u3CzAU8l+Y39LMWfILQgs7ADRwvio3zIx8F+JfA1I=; b=jkL2UsYJRjGBi5
+	vyrB2h0+M6tIVh9RrygGt+ndaDr9j1glL2ru6CSlFSwvBQbJ59LcMhDqg56mmiPd0cppcw6We+94F
+	TmAzH3WHhbjJbKMnnzd8gR0w51X986uCjrssDI1Y03xbpUQ/6MgFbvmJhPgxLUuQKO5foHqJXxIkH
+	qfGegOw8IuzZvRJHXnWVRt8IpjmHvQKpauHRm5Dmwyf/b1lwB0ZSOMwPOzyIufK2KcnuU9aa6M7T0
+	tdVRbaONx0acn4igQG2dzviLQGd+yob6hYGIPcy6vWTU/LAgBl1xe39fwqM7z1tAp64H02MA+X1Db
+	RSjfIadTm5CxtGUmqrow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIZjH-008WIb-Ir; Mon, 01 Aug 2022 18:01:23 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1oIaHy-00961x-Sd; Mon, 01 Aug 2022 18:37:14 +0000
+Received: from mout.gmx.net ([212.227.17.22])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIZj5-008VxL-5v
-	for linux-rockchip@lists.infradead.org; Mon, 01 Aug 2022 18:01:14 +0000
-Received: by mail-lj1-x234.google.com with SMTP id s14so13176657ljh.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 01 Aug 2022 11:01:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=uZR/I+yAkBmW0w7mHOk3YtgLxlXC2BKh5JL5UtMmwBs=;
-        b=q+w6TE6z8roa1FS6pRp+tOhYcqoLK1RRU14NW5VdOJfv8hFjDkUklpCbJ0Zl4zmPBn
-         RCi6pAbq34Qsp896AIPfQsEXgp4FmQ9P1asmBO/5jNtq7wXUDfX9UCfCUp3jhB94dxOx
-         bAfL/QhWup7fU2XaCntjtXmyRRdyLfc1J5QqEsljVEOHviQjSxVn6v6KmX9MNtiMfOBW
-         dnz6oXrJCAYm4G2Mnz5cwr+o4qtZcKhtz7JY4LiK5ZTLRkgstfhGCAjZP+43gi7bNxDZ
-         hXwUACWS4Bigbxoz64aX9jfwSxHSRwx7i+EkjPU2ySYW/48LpOqbvlmdZYAvjHNZ2/d8
-         m36w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=uZR/I+yAkBmW0w7mHOk3YtgLxlXC2BKh5JL5UtMmwBs=;
-        b=ty5+aDBeUOq0pEOVnoV796UlmgIcSuSqgMrPIfM+Z9unNKKEDP6xfQiOvjhFSoQaaz
-         8BiRmgcTUq2wp7+7hcEx2Tl/rFnTZFNTYXhMqcw34A/MYCNL7DPQ+Kyc64X8U4A52z3Y
-         ZFlfy7TO13iuAoVas0NDXOouRHViz34sM6ss+eGiS8Bf5hoi5p15maQbncHO5eipqmOD
-         9gmt8gL2qpNCZ6DmgHp7alS3wvLBMgrSUgZDkyh9E7GLULi9SjlzY+vhfGZG77C2B1LI
-         8ig/stlw4YTRcftQnfFxmRuBy+Tl+CpTZnHx4qGCxuYRsrGi+gIf7hy4aI0he+duCym4
-         8ydQ==
-X-Gm-Message-State: AJIora/KaEAAY3vmYOz7hhsiyBezJn8J2nhvaWWhTFwNPAH2mpKD885y
-	V6Cd0MVwxynXQy2pXCR/UTeQur268qTG0X9CkEE=
-X-Google-Smtp-Source: AGRyM1s+ieLndbXdmOHTogelfkNm1sPX5Vt3Z6RRXxCaWFy4HZux37fvLIAz14ZPc21Ux3ijqkBQBA==
-X-Received: by 2002:a2e:934f:0:b0:250:a7bc:2b8f with SMTP id m15-20020a2e934f000000b00250a7bc2b8fmr5464878ljh.512.1659376866299;
-        Mon, 01 Aug 2022 11:01:06 -0700 (PDT)
-Received: from [192.168.1.6] ([213.161.169.44])
-        by smtp.gmail.com with ESMTPSA id c15-20020a056512324f00b0048ae7b7b077sm1151293lfr.200.2022.08.01.11.01.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 01 Aug 2022 11:01:05 -0700 (PDT)
-Message-ID: <57faa0a7-301c-c60c-6831-00a351ed3ea5@linaro.org>
-Date: Mon, 1 Aug 2022 20:01:03 +0200
+	id 1oIaHv-0095rE-Sz
+	for linux-rockchip@lists.infradead.org; Mon, 01 Aug 2022 18:37:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+	s=badeba3b8450; t=1659379016;
+	bh=XpvW2KGm+7Eri6BgmGU4YVNAdPx/qqDZZ5a0Ia/rFD8=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=Fw3fVD2WM08K/0HVTLZ2V7MVgR2Oxb4McHFcPbv0GxYM4G1R1tRSZTJjzg1GGaYpi
+	 dduj2WkceGMMkRN6Jy1Enbc69ErIgIbEyxn7SpubI/dD0RqLAKprDNTRo8j1Fgko74
+	 TV1jJSRvWjgzUJAMC9UAZL/53YdCe31soLgJ0hOg=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [217.61.146.18] ([217.61.146.18]) by web-mail.gmx.net
+ (3c-app-gmx-bap33.server.lan [172.19.172.103]) (via HTTP); Mon, 1 Aug 2022
+ 20:36:56 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [RESEND 3/4 v7] power: supply: Add charger driver for Rockchip
- RK817
-Content-Language: en-US
-To: Chris Morgan <macroalpha82@gmail.com>, kernel test robot <lkp@intel.com>
-Cc: linux-pm@vger.kernel.org, kbuild-all@lists.01.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, zhangqing@rock-chips.com, zyw@rock-chips.com,
- jon.lin@rock-chips.com, sre@kernel.org, heiko@sntech.de,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, lee.jones@linaro.org,
- Chris Morgan <macromorgan@hotmail.com>,
- Maya Matuszczyk <maccraft123mc@gmail.com>
-References: <20220721161718.29800-4-macroalpha82@gmail.com>
- <202207242227.mttUkfTB-lkp@intel.com>
- <20220729162828.GB102@wintermute.localdomain>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220729162828.GB102@wintermute.localdomain>
+Message-ID: <trinity-851eda2a-519f-4ef6-ad2b-6870b3b682ff-1659379016837@3c-app-gmx-bap33>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Rob Herring <robh+dt@kernel.org>
+Cc: linux-rockchip@lists.infradead.org, Peter Geis <pgwipeout@gmail.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Krzysztof Kozlowski
+ <krzysztof.kozlowski@linaro.org>
+Subject: Aw: [PATCH v4 1/5] dt-bindings: phy: rockchip: add PCIe v3 phy
+Date: Mon, 1 Aug 2022 20:36:56 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20220619082605.7935-2-linux@fw-web.de>
+References: <20220619082605.7935-1-linux@fw-web.de>
+ <20220619082605.7935-2-linux@fw-web.de>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:INYgd8sb5GwLhiYt1Oy6FRHG6fA+Q6hpN6/UBzkegZzsjpAhCC2fjEQUPhCW1MT5tuFLM
+ 2OYlXf415NJLSTb83XzGlZnZjaF5yD0W3Xk+cIaYwpwz4DKbaxeDwJDSl2N2kXBNEwcqPHYFAmIW
+ NbaX2eO4Kqq2j5CTMBF5CmcFcW+YcNQiy3BDBQx1Liiebh3s/R48dnMX3AzVIkMFegBM5GIzTBTS
+ /JB/AVB9L7Ld9wQCnuHu/vJzFiNThZz4xi3gZAJZXZpNtYoZMWOPza8Lbo4x5/3/LzJIIuvymiyn
+ j4=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:Fx+Jw1pgeQ4=:D0VKvQE83yj6hlucNV3ytP
+ lEOHz4WpPymLe7+Hpg56BICeU/8a5CB+EJ7TOzVImKqHq+nLP4BcVzzFynNAlUbuw7M+FiCXL
+ G39E7XO1+3apzT+/7F5LJ/asHhKSAQgSTrYmWCV3bE64aZTmM9COoGmHeovmXxnyH1FldmlQM
+ jkweOFPbR2osMbMD700ODlbhDFv3WbvIcD8p3SRSRL9qUpOl+vzrPnq/P92k2dgs/Znq+lj5x
+ 1+DbcRvLX9zuLb0PbZomlqBf5vkW/SP9m24cqB7fQIYG2F1CzaKk4KrW++xcbwPRRh/hHsyaQ
+ YkTZ7/U+zWGzX5NqesQVhYyY3tueJ+B67Ts/hDOBVzyaYTqbB0QlwIHZoI4i+QWzP6j8iEuaC
+ 75MFF7CCPcxJuvdEI+wL0Ql0svnp5xlAx3TlPWaK6e0tKMgPkCouT+eVE7iZk2ZMfkbfsBP7j
+ 27a4b+Ft/IEnMuPgqk1ckXVwltUdy3rf7v2xWEOpEuVNnwOT8U0Ptc/xI5GJaaRgvuuOvOlRY
+ 9gZajBU/5H/hjs7H9rOC6g9jZHwPc1IVgc9CvvZ2Sq6a68N0A6OTvhz/xcOhCyAjnSKdkLTj7
+ FFmNx7/bPDUBTGQu5cHup21HtP6y818kYS5vMdqjJtIyLyRIDvZwALAsc/myONlISlJJUlcRm
+ 54bfo93kBSNSI9F56nnhpiFGysNc6KGqPIcQGeGc28OWN5XQGatlw6IfdDxnd1zCkdASx2jRp
+ 1qkqmE3jI1sBpKVKp8WXeXmfw6lo7xTb4LIS0OO7JCZtV8cC2sBJ2i/r5FJkEakEf6/row2Zb
+ Qds8BZb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220801_110111_399325_CAE2F692 
-X-CRM114-Status: GOOD (  17.45  )
+X-CRM114-CacheID: sfid-20220801_113712_404740_D5271A00 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,37 +91,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 29/07/2022 18:28, Chris Morgan wrote:
-> On Sun, Jul 24, 2022 at 10:58:00PM +0800, kernel test robot wrote:
->> Hi Chris,
->>
->> Thank you for the patch! Perhaps something to improve:
-> 
-> I'm afraid I'm not sure the best way to fix this. The only thing I can
-> think of is for now the driver should only be for systems with a
-> Rockchip RK817 PMIC (to my knowledge only ARM based systems from
-> Rockchip),
+Hi Rob,
 
-Why? We want to compile test everything everywhere,
+this (and the other bindings) part is marked as "not applicable", but without comment...it is not clear
+to me why it is not yet applied or how to proceed.
 
->  but it looks like the arch was set as parisc. 
+https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20220619082605.7935-2-linux@fw-web.de/
 
-The arch itself does not matter unless the actual warning is specific to it.
+Do you expect driver-changes which will change binding too?
 
-> Even still,
-> as long as some of the functions ahead of it don't error out each
-> of those variables should be used. Is there a way to confirm these
-> warnings?
+should i resend it unchanged in v5 (when 5.20-rc1 is out)? or do you try to move the data-lanes into
+phy-provider which i have not got working?
 
-Just compile and see by yourself. The error should be visible on
-multiple archs. If not, then use parisc. Ubuntu provides most of cross
-compilers so it's extra easy to use. The ones not provided by Ubuntu are
-also here:
-https://mirrors.edge.kernel.org/pub/tools/crosstool/
-
-
-Best regards,
-Krzysztof
+regards Frank
 
 _______________________________________________
 Linux-rockchip mailing list
