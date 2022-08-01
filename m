@@ -4,59 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45A75C19F2A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Aug 2022 13:21:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D29A8C00144
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Aug 2022 14:30:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E82YLrSB6ktnNulzavuSFaLiKylKnNIB2P+5M3M4CF4=; b=iYNB4Sis4+otIG
-	TxM4Z6kiTqm2kcjYD6JBpGt6QujP5Y1PdMmffPMkzM9uF4tkxbPb2FkWU8ZN9BXgT4aLncvZ7QaOi
-	lXc1h5glQLbsjEmItCtMKpWB1yTzkAtbnEllMd1PEPr9uiwu767eX5z18Rim90AZulJYjjJvAB3B3
-	TKH50VAuy783dTBrCdGORzuPhrlgog6Ua50y7b4HkBDifW3C9Hs7SUTd8JWY7AHz0i10JGowrkdCB
-	YzrpG4pTNZJSJUyAfQ/rH5cJkSJ1vuKBFkPxNKazQqRY/NC2aetJ9r64t2HTxWbCsdEZKvxZQRcwa
-	Co9ob5jVLnW6X7+DMXAA==;
+	List-Owner; bh=pLal3OBGcCIvT4XVqHWBUVqchRGtqGruPTg8GGl6qU8=; b=sSBGaCYWRZv6NF
+	XJFwoV1ah+w7kP3qvx9NxL9+QXjUHpR1k6lfB1ygKdlWQ+3ySUFDK2QzbjhYQvdsYOcwEth58eYN7
+	ccE+gCbLSGvCS/iiF/QYUatIZWcY8QFhO0dDRbQ6a2y6OPbjmVXQHp6mpynUQJK89nONUdUciEVmo
+	QTamta8KIHxsTrpjclEtoiZPiHizBoCyvMy/OgVc80ZKqaTBVylGpzRZ62WWW8KvwRA/9knygcFIj
+	B4CzgtSUQ9VLVU9h8Lz4e10v3EQEqDcyJ+zP3nkHU0ilqFenzMEFcZdzsOVQj8dgQymMgnqh5vm8D
+	1rKi8qEnsoFgTYK0xNSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIVMZ-006eFe-Le; Mon, 01 Aug 2022 13:21:39 +0000
-Received: from vps0.lunn.ch ([185.16.172.187])
+	id 1oIWRD-0074Zi-Aa; Mon, 01 Aug 2022 14:30:31 +0000
+Received: from mail-io1-f49.google.com ([209.85.166.49])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIVMU-006eAb-34; Mon, 01 Aug 2022 13:21:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=JchUgS3AND2KrD9SW33lCa9oqse37xDjVqhvYqPDv8w=; b=VZGS96FkiA2dFNNR5oRLReILXo
-	3ka1SyuXsMVClvL+9taxoPbqFEpys8dLBljrXyVIyn8XBr6ASe2DgIoK7K88SSNxFUfOZIfX+LMxi
-	3yesJW1SDXAKDjwbPzK6x4ECLR1uBMK/2zgHVxHjghXUA9RYBt2faH6uUKa9/MT7BR4w=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1oIVMN-00C9nm-M8; Mon, 01 Aug 2022 15:21:27 +0200
-Date: Mon, 1 Aug 2022 15:21:27 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Da Xue <da@lessconfused.com>
-Cc: Heiner Kallweit <hkallweit1@gmail.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
-	"open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Subject: Re: Meson GXL and Rockchip PHY based on same IP?
-Message-ID: <YufTV0osXcH+IPZ6@lunn.ch>
-References: <ca9560eb-af9c-3cfa-c35e-388e7e71aab7@gmail.com>
- <CAFBinCCMinq1U2Pqn2LPjC9c+HqfHjvW81b1ENMxdoGmB6byEw@mail.gmail.com>
- <88d6ef05-f77a-57a2-f34a-e3998a8d70d4@gmail.com>
- <CACdvmAgSvsYj6zorYDrBaEUvZzPi_c0XpVzx3fz8nHp8+TXMuQ@mail.gmail.com>
+	id 1oIWR2-0074TW-7d; Mon, 01 Aug 2022 14:30:21 +0000
+Received: by mail-io1-f49.google.com with SMTP id c185so8485745iof.7;
+        Mon, 01 Aug 2022 07:30:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
+        bh=0dbqmbbrnh6eHwm9n5c6wq1oHU5KlKV/W4sU8ErOXro=;
+        b=zvxJMp539ghCc4pFsDh7A2FVUDwPP7VdatRiwrvutzid/jrP5UViludtEgU8kI5tPC
+         AagELaFWZTIDUnJ8u/WAD39rPhaIXwHB/Isp13jIoGJ4x+Jt6cjxh31SGm1PgpTwNnuG
+         dvrrpZXyxC/xHhYVVZpsSSbxdpausYa1vxbISZMp8cLEwhdsQTgHbRkLAGCCIBp/umh4
+         /PqBIJiQHHVl/54Zck9llk3nWXW+Bm84UxuVurLEfyW3aW0qTIkGRUrVT0Dr+DSVQIiv
+         E/1es7RyhG0sCPzhUccwssiu+uGUgriJXQzPTuXmm7yXp0g9w4CqIoC1Yaa080Pj/+cO
+         qgPA==
+X-Gm-Message-State: AJIora8+Olqkx6rnOoOJiMQDCfqOthKdxqcgncXrmk1OWCIu/CjorLKX
+	Kl8c1VTVnGipHdXi8NdwXg==
+X-Google-Smtp-Source: AGRyM1v5SwV/IkWt6ScPuoGGKKT/r+zR56rXpY8ZELh6SwE0TzxAIPSBHHoxSMGwgoWx4+L2i4xBhg==
+X-Received: by 2002:a05:6602:27cd:b0:669:3d8d:4d77 with SMTP id l13-20020a05660227cd00b006693d8d4d77mr5626127ios.216.1659364219057;
+        Mon, 01 Aug 2022 07:30:19 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id j15-20020a056e02014f00b002de42539fddsm3267754ilr.68.2022.08.01.07.30.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 Aug 2022 07:30:18 -0700 (PDT)
+Received: (nullmailer pid 974343 invoked by uid 1000);
+	Mon, 01 Aug 2022 14:30:17 -0000
+Date: Mon, 1 Aug 2022 08:30:17 -0600
+From: Rob Herring <robh@kernel.org>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: robh+dt@kernel.org, kuba@kernel.org, linux-arm-kernel@lists.infradead.org, edumazet@google.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, netdev@vger.kernel.org, linux-rockchip@lists.infradead.org, davem@davemloft.net, heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org, pabeni@redhat.com
+Subject: Re: [PATCH v2 1/3] dt-bindings: net: convert emac_rockchip.txt to
+ YAML
+Message-ID: <20220801143017.GA973438-robh@kernel.org>
+References: <20220603163539.537-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CACdvmAgSvsYj6zorYDrBaEUvZzPi_c0XpVzx3fz8nHp8+TXMuQ@mail.gmail.com>
+In-Reply-To: <20220603163539.537-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220801_062134_177658_4F372FAB 
-X-CRM114-Status: UNSURE (   4.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220801_073020_296767_6F1FD84A 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,12 +78,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> Per Jerome, both are OmniPHY IP.
+On Fri, 03 Jun 2022 18:35:37 +0200, Johan Jonker wrote:
+> Convert emac_rockchip.txt to YAML.
+> 
+> Changes against original bindings:
+>   Add mdio sub node.
+>   Add extra clock for rk3036
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
+> 
+> Changed V2:
+>   use phy
+>   rename to rockchip,emac.yaml
+>   add more requirements
+> ---
+>  .../devicetree/bindings/net/emac_rockchip.txt |  52 --------
+>  .../bindings/net/rockchip,emac.yaml           | 115 ++++++++++++++++++
+>  2 files changed, 115 insertions(+), 52 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/net/emac_rockchip.txt
+>  create mode 100644 Documentation/devicetree/bindings/net/rockchip,emac.yaml
+> 
 
-NXP bought OmniPHY in 2018. So we should keep an eye on NXP PHY
-drivers.
-
-	Andrew
+Looks like this fell through the cracks. Applied, thanks!
 
 _______________________________________________
 Linux-rockchip mailing list
