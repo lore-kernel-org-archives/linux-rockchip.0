@@ -4,46 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6519C00140
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Aug 2022 09:54:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09A8AC00140
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Aug 2022 10:38:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DngMRiSuyvF6Zrbfq11rPrkORzVb2yrrpHsimtQMFLM=; b=3pVyakhs1n2xbm
-	eD/NNlHWmwpOYd1vMr2lekRpzOtcBW4CBVUpk/a6+0FFT/2QQ9BJheFCDOObKeuh8gCIt7E83gtgK
-	a8NPjuFZap/eGXcuV5Lr9sJQxLDOP4fzKeOwh7drVyYL43pnikVma9e/+N1qU0IcF2yaclyk/kREd
-	PUb3jmXF3p9SHtuVXHirSOWzOAyrhd+fH8eldmcBk4DJJ1ZF92vm9dG10tKTEXudU00i/DkSzgfss
-	R9FLLRY06AY5OSrgBRmPrkCNWyGyy5FNOhsXDtKUtf6J7/5uByRkJv9RyTumUdotK82/UpzofcJ3Q
-	rD9sxewmnR/rYg/5BxlA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Jxvs8BTn/3eVKu0upAoBnWgH4Zj3jpDU/NA0hS1gsSg=; b=1mr7adCdygIJ1g
+	QkvYbVN7yF4pPnEmYczi2bm+qJKME3afuinx/LJSR62qZh14rdEwpFEoD0ERCmHiwP396Hg+Hk2ba
+	CvGUbu/uREUUXuuvPsyktfgvTY1cdtyuO5qW/jKV4oqoch9ourfcWLyQZpC9/egjvWMvgy4Jb7pzU
+	HWBcykyq6PQe6+VuIsLT70YD9dH7fbBpgV8smyk+ieCiTI/1oNFGrBF/A0ISJ1kumArdcYGVp3P7y
+	YwG6oUKIjsPq9LE6G/ehsADrOXaHCzUW3dQr/jLkzCpQEszyGn/13kFHUHoNmOdwc8s+8Oh4N8e4d
+	2/mZe8/gmSI5o7fg/dFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIoax-00Cb61-3U; Tue, 02 Aug 2022 09:53:47 +0000
-Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
+	id 1oIpIB-00Cy5u-4q; Tue, 02 Aug 2022 10:38:27 +0000
+Received: from mail-lj1-x236.google.com ([2a00:1450:4864:20::236])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIoaZ-00Canv-7b; Tue, 02 Aug 2022 09:53:25 +0000
-Received: (Authenticated sender: foss@0leil.net)
-	by mail.gandi.net (Postfix) with ESMTPSA id 6151DFF811;
-	Tue,  2 Aug 2022 09:53:13 +0000 (UTC)
-From: Quentin Schulz <foss+kernel@0leil.net>
-To: 
-Cc: linus.walleij@linaro.org,
-	heiko@sntech.de,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>
-Subject: [RFC PATCH 0/1] Making Rockchip IO domains dependency from other devices explicit
-Date: Tue,  2 Aug 2022 11:52:51 +0200
-Message-Id: <20220802095252.2486591-1-foss+kernel@0leil.net>
-X-Mailer: git-send-email 2.37.1
+	id 1oIpHx-00Cxw6-L0
+	for linux-rockchip@lists.infradead.org; Tue, 02 Aug 2022 10:38:16 +0000
+Received: by mail-lj1-x236.google.com with SMTP id r14so15189417ljp.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 02 Aug 2022 03:38:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=GrIjh3GlcFwuItne32waJbd9J1zlfDiAzXhQEGRXDrY=;
+        b=t6X0fGr0WgyiUFeT+Ch/Oii7o+V/fVb1rxgum5SUjglZfPXkTRf7W4wOnWhPNoxmfz
+         2VIcBDaUA42e1aoi6KTNlFmNCOThZzPMswmbTeI745T3lHJ/GNKFjY4OPOS8YwdNpu77
+         mAKSLsNHoPA8kZTyJhIfJ7Z5a1CdrkCozJIAY7+30Ji0VM1wOar4uDEJEdlqh0bYRmXI
+         Y4oxn9ojfBLusOIeOrskFFiWqJWOMqMrXAhwLGyoZFpPrvSRp3oMiiotCRn8uKFyL+LW
+         i8rnh5Vn3Mxiy7kCt2miEq23Llsscoe7XPW9Uod2Df0mckMAoB0yiUMvfECv3W2D03uu
+         VZyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=GrIjh3GlcFwuItne32waJbd9J1zlfDiAzXhQEGRXDrY=;
+        b=0kxfAbc+SB/UkdrkzcyY2xef6lyI+/mCjJeLK2CHrwh+QEMVfoGf6OMn7OlQOyBSla
+         exfnlJ/Zis31dhZ40+E0ioO/NbM8nlk+OBzAH4qe4NOCGYq7bjhO2msGhMnQGuC0+7fr
+         UQQQ8P9c1kHJQWbcvwTSuOeeecp3WfuDyv60018QYc+RsTHjYue7od1hUCWXOMTlPFfO
+         1VmrrbjA5f0IRJH0jHFWWbatu7mvISBHSvOGG7tkW1hQA+AcvOVGIzTMQtPTceEw8gyF
+         C6vEb+t7d/VmiU1tKdHRkgZ6+yvfM6ET7RE61j8dO7agsr91ir5w/BlQHSbJg3OiaAVO
+         LmfQ==
+X-Gm-Message-State: ACgBeo3fwjOJpXLXyVm15MMe0shFAgYS3U3CoLdD0ARF8DtErPY7ROn0
+	SrqoVjODOCebbVfOcsoCkbPoxxcMRt/Fi8cC
+X-Google-Smtp-Source: AA6agR5wPg0NxYYzaGcWWg1zRYH0xtKJ9HqiX12XQ9f4cedMfO/EbzgnbNeWejPdykRbIRwGE2jXZA==
+X-Received: by 2002:a2e:9813:0:b0:25e:4aa1:e51d with SMTP id a19-20020a2e9813000000b0025e4aa1e51dmr3887614ljj.298.1659436689258;
+        Tue, 02 Aug 2022 03:38:09 -0700 (PDT)
+Received: from [192.168.1.6] ([213.161.169.44])
+        by smtp.gmail.com with ESMTPSA id a3-20020a19e303000000b0048a68fe3745sm2056986lfh.34.2022.08.02.03.38.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 02 Aug 2022 03:38:08 -0700 (PDT)
+Message-ID: <4f8b8b98-c0ef-4924-6ff1-ccfeae77fc21@linaro.org>
+Date: Tue, 2 Aug 2022 12:38:06 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH v2 02/20] dt-bindings: power: Add power-domain header for
+ RV1126
+Content-Language: en-US
+To: Jagan Teki <jagan@edgeble.ai>, Heiko Stuebner <heiko@sntech.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Kever Yang <kever.yang@rock-chips.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, Elaine Zhang <zhangqing@rock-chips.com>
+References: <20220731174726.72631-1-jagan@edgeble.ai>
+ <20220731174726.72631-3-jagan@edgeble.ai>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220731174726.72631-3-jagan@edgeble.ai>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220802_025323_625689_A2B546DB 
-X-CRM114-Status: GOOD (  22.04  )
+X-CRM114-CacheID: sfid-20220802_033813_733318_367A509C 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,101 +96,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+On 31/07/2022 19:47, Jagan Teki wrote:
+> Add power-domain header for RV1126 SoC from description in TRM.
+> 
+> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+> ---
+> Changes for v2:
+> - add blank line
+> 
+>  include/dt-bindings/power/rv1126-power.h | 35 ++++++++++++++++++++++++
+>  1 file changed, 35 insertions(+)
+>  create mode 100644 include/dt-bindings/power/rv1126-power.h
+> 
+> diff --git a/include/dt-bindings/power/rv1126-power.h b/include/dt-bindings/power/rv1126-power.h
 
-This is a follow-up to the mail sent almost two months ago asking for
-guidance: https://lore.kernel.org/lkml/778790a4-1239-e9d9-0549-6760a8792ceb@theobroma-systems.com/
+Vendor in filename is needed.
 
-This is what I could come up with but I'm not too happy about it so feel
-free to give some ideas or other possible implementations that would
-have less downsides than this one.
+> new file mode 100644
+> index 000000000000..38a68e000d38
+> --- /dev/null
+> +++ b/include/dt-bindings/power/rv1126-power.h
+> @@ -0,0 +1,35 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
 
-Some background on IO domains on Rockchip:
+Dual license, please, unless some copyrights are no allowing this.
 
-On some Rockchip SoCs, some SoC pins are split in what are called IO
-domains.
 
-An IO domain is supplied power externally, by regulators from a PMIC for
-example. This external power supply is then used by the IO domain as
-"supply" for the IO pins if they are outputs.
 
-Each IO domain can configure which voltage the IO pins will be operating
-on (1.8V or 3.3V).
-
-There already exists an IO domain driver for Rockchip SoCs[1]. This
-driver allows to explicit the relationship between the external power
-supplies and IO domains[2]. This makes sure the regulators are enabled
-by the Linux kernel so the IO domains are supplied with power and
-correctly configured as per the supplied voltage.
-This driver is a regulator consumer and does not offer any other
-interface for device dependency.
-
-However, IO pins belonging to an IO domain need to have this IO domain
-correctly configured before they are being used otherwise they do not
-operate correctly (in our case, a pin configured as output clock was
-oscillating between 0 and 150mV instead of the expected 1V8).
-
-In order to make this dependency transparent to the consumer of those
-pins and not add Rockchip-specific code to third party drivers (a camera
-driver in our case), it is hooked into the pinctrl driver which is
-Rockchip-specific obviously.
-
-Unfortunately, the dependency is not about the ultimate presence of the
-io-domain devices but more that prior to being able to use pins,
-the io-domain devices need to be probed. However of_find_device_by_node
-does not provide this information, hence the check whether the
-platform_device actually has its drvdata structure set (it defaults to
-NULL until it is filled by the driver during the probe of the device).
-
-Moreover, this dependency needs to be explicit on a pinmux level
-and postponed after the probe of the pinctrl driver because a circular
-dependency is observed otherwise with the following:
-pinctrl device depends on the io-domain device which depends on
-regulators from a PMIC on i2c which requires the i2c bus pins to be
-muxed from the pinctrl device.
-Instead, the pinmux dependency on IO domain is checked in set_mux
-callback and returns EPROBE_DEFER if the IO domain device hasn't probed
-yet.
-
-I wanted to add the appropriate rockchip,io-domains DT property to
-existing pinmux DT node. However, *all* of PX30's belong to an IO
-domain, including the i2c bus on which the PMIC supplying the power to
-the IO domain is on. Since the PMIC can be virtually on any i2c bus, a
-specific pinmux cannot be omitted or ignored, therefore none are added
-and it's up to the board maintainers to add them themselves. This is
-also assumed only necessary for IO domain that are configured
-differently by the bootloader or by register defaults (3V3 for
-RK3399/PX30) than their expected values in Linux and whose supplied
-power is fixed (e.g. not expected to be able to change from 3V3 to 1V8).
-
-The hope is to not have to handle the io domain configuration in
-the bootloader as it is currently done, c.f.
-https://elixir.bootlin.com/u-boot/latest/source/board/theobroma-systems/puma_rk3399/puma-rk3399.c#L28
-(we'll need an additional IO domain configuration for a camera soon).
-
-However, this still relies on IO domains defaults or bootloader
-configuration to be able to omit some IO domain<->pinmux relationships
-to avoid circular dependencies.
-
-I don't know how well this RFC implementation would work with
-suspend/resume.
-
-[1] drivers/soc/rockchip/io-domain.c
-[2] Documentation/devicetree/bindings/power/rockchip-io-domain.yaml
-
-Cheers,
-Quentin
-
-Quentin Schulz (1):
-  pinctrl: rockchip: add support for per-pinmux io-domain dependency
-
- drivers/pinctrl/pinctrl-rockchip.c | 19 +++++++++++++++++++
- drivers/pinctrl/pinctrl-rockchip.h |  1 +
- 2 files changed, 20 insertions(+)
-
--- 
-2.37.1
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
