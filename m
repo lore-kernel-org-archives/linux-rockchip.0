@@ -4,29 +4,29 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E8F7C00140
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Aug 2022 09:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6519C00140
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Aug 2022 09:54:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=02KC+UhLS+sVRKUQwcoPlWBYQk5Z90HAsjRZaqbutmw=; b=M14QZqoKqG7iEo
-	UfBNhVBUSHojC0jVJx3cCFgu1z9PB/mFsPabFOSJ5GxxDphPlBf23hievMeYGETU6DuAXc8ieQDzu
-	8LQg3e0Q5sEZNp8nLUF82POSZJ1aT35Inu4duh7ahAXfFi4dkzaCBtGt6N5ybPMjaJU3hPF/sEZ/T
-	Vh9gKzFrTxOSgS4rIo0ogI9WE2sSaAKxnLouqe854yG0lyNpnRT0M5VOi36jNqICf7jCbgPh/kYHM
-	eQRziYEuSq/6IfjnT42gunF+YUcAK98gDhHmLXebETtjXO5oTJgjqQWctwdX9hRfZZV2AyZyG3pvL
-	BzI6KDL9X0kXnc2fqBxg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DngMRiSuyvF6Zrbfq11rPrkORzVb2yrrpHsimtQMFLM=; b=3pVyakhs1n2xbm
+	eD/NNlHWmwpOYd1vMr2lekRpzOtcBW4CBVUpk/a6+0FFT/2QQ9BJheFCDOObKeuh8gCIt7E83gtgK
+	a8NPjuFZap/eGXcuV5Lr9sJQxLDOP4fzKeOwh7drVyYL43pnikVma9e/+N1qU0IcF2yaclyk/kREd
+	PUb3jmXF3p9SHtuVXHirSOWzOAyrhd+fH8eldmcBk4DJJ1ZF92vm9dG10tKTEXudU00i/DkSzgfss
+	R9FLLRY06AY5OSrgBRmPrkCNWyGyy5FNOhsXDtKUtf6J7/5uByRkJv9RyTumUdotK82/UpzofcJ3Q
+	rD9sxewmnR/rYg/5BxlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIoaw-00Cb5l-8U; Tue, 02 Aug 2022 09:53:46 +0000
+	id 1oIoax-00Cb61-3U; Tue, 02 Aug 2022 09:53:47 +0000
 Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oIoaZ-00CaoL-6d; Tue, 02 Aug 2022 09:53:25 +0000
+	id 1oIoaZ-00Canv-7b; Tue, 02 Aug 2022 09:53:25 +0000
 Received: (Authenticated sender: foss@0leil.net)
-	by mail.gandi.net (Postfix) with ESMTPSA id 4FF8CFF808;
-	Tue,  2 Aug 2022 09:53:15 +0000 (UTC)
+	by mail.gandi.net (Postfix) with ESMTPSA id 6151DFF811;
+	Tue,  2 Aug 2022 09:53:13 +0000 (UTC)
 From: Quentin Schulz <foss+kernel@0leil.net>
 To: 
 Cc: linus.walleij@linaro.org,
@@ -36,16 +36,14 @@ Cc: linus.walleij@linaro.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Quentin Schulz <quentin.schulz@theobroma-systems.com>
-Subject: [RFC PATCH 1/1] pinctrl: rockchip: add support for per-pinmux io-domain dependency
-Date: Tue,  2 Aug 2022 11:52:52 +0200
-Message-Id: <20220802095252.2486591-2-foss+kernel@0leil.net>
+Subject: [RFC PATCH 0/1] Making Rockchip IO domains dependency from other devices explicit
+Date: Tue,  2 Aug 2022 11:52:51 +0200
+Message-Id: <20220802095252.2486591-1-foss+kernel@0leil.net>
 X-Mailer: git-send-email 2.37.1
-In-Reply-To: <20220802095252.2486591-1-foss+kernel@0leil.net>
-References: <20220802095252.2486591-1-foss+kernel@0leil.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220802_025323_627243_C31DD89F 
-X-CRM114-Status: GOOD (  18.54  )
+X-CRM114-CacheID: sfid-20220802_025323_625689_A2B546DB 
+X-CRM114-Status: GOOD (  22.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,6 +61,15 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+
+This is a follow-up to the mail sent almost two months ago asking for
+guidance: https://lore.kernel.org/lkml/778790a4-1239-e9d9-0549-6760a8792ceb@theobroma-systems.com/
+
+This is what I could come up with but I'm not too happy about it so feel
+free to give some ideas or other possible implementations that would
+have less downsides than this one.
+
+Some background on IO domains on Rockchip:
 
 On some Rockchip SoCs, some SoC pins are split in what are called IO
 domains.
@@ -92,78 +99,59 @@ pins and not add Rockchip-specific code to third party drivers (a camera
 driver in our case), it is hooked into the pinctrl driver which is
 Rockchip-specific obviously.
 
+Unfortunately, the dependency is not about the ultimate presence of the
+io-domain devices but more that prior to being able to use pins,
+the io-domain devices need to be probed. However of_find_device_by_node
+does not provide this information, hence the check whether the
+platform_device actually has its drvdata structure set (it defaults to
+NULL until it is filled by the driver during the probe of the device).
+
+Moreover, this dependency needs to be explicit on a pinmux level
+and postponed after the probe of the pinctrl driver because a circular
+dependency is observed otherwise with the following:
+pinctrl device depends on the io-domain device which depends on
+regulators from a PMIC on i2c which requires the i2c bus pins to be
+muxed from the pinctrl device.
+Instead, the pinmux dependency on IO domain is checked in set_mux
+callback and returns EPROBE_DEFER if the IO domain device hasn't probed
+yet.
+
+I wanted to add the appropriate rockchip,io-domains DT property to
+existing pinmux DT node. However, *all* of PX30's belong to an IO
+domain, including the i2c bus on which the PMIC supplying the power to
+the IO domain is on. Since the PMIC can be virtually on any i2c bus, a
+specific pinmux cannot be omitted or ignored, therefore none are added
+and it's up to the board maintainers to add them themselves. This is
+also assumed only necessary for IO domain that are configured
+differently by the bootloader or by register defaults (3V3 for
+RK3399/PX30) than their expected values in Linux and whose supplied
+power is fixed (e.g. not expected to be able to change from 3V3 to 1V8).
+
+The hope is to not have to handle the io domain configuration in
+the bootloader as it is currently done, c.f.
+https://elixir.bootlin.com/u-boot/latest/source/board/theobroma-systems/puma_rk3399/puma-rk3399.c#L28
+(we'll need an additional IO domain configuration for a camera soon).
+
+However, this still relies on IO domains defaults or bootloader
+configuration to be able to omit some IO domain<->pinmux relationships
+to avoid circular dependencies.
+
+I don't know how well this RFC implementation would work with
+suspend/resume.
+
 [1] drivers/soc/rockchip/io-domain.c
 [2] Documentation/devicetree/bindings/power/rockchip-io-domain.yaml
 
-Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
----
+Cheers,
+Quentin
+
+Quentin Schulz (1):
+  pinctrl: rockchip: add support for per-pinmux io-domain dependency
+
  drivers/pinctrl/pinctrl-rockchip.c | 19 +++++++++++++++++++
  drivers/pinctrl/pinctrl-rockchip.h |  1 +
  2 files changed, 20 insertions(+)
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 32e41395fc76..c3c2801237b5 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -24,6 +24,8 @@
- #include <linux/of_address.h>
- #include <linux/of_device.h>
- #include <linux/of_irq.h>
-+#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
- #include <linux/pinctrl/machine.h>
- #include <linux/pinctrl/pinconf.h>
- #include <linux/pinctrl/pinctrl.h>
-@@ -2370,6 +2372,12 @@ static int rockchip_pmx_set(struct pinctrl_dev *pctldev, unsigned selector,
- 	dev_dbg(dev, "enable function %s group %s\n",
- 		info->functions[selector].name, info->groups[group].name);
- 
-+	if (info->groups[group].io_domain &&
-+	    !platform_get_drvdata(info->groups[group].io_domain)) {
-+		dev_err(info->dev, "IO domain device is required but not probed yet, deferring...");
-+		return -EPROBE_DEFER;
-+	}
-+
- 	/*
- 	 * for each pin in the pin group selected, program the corresponding
- 	 * pin function number in the config register.
-@@ -2663,6 +2671,7 @@ static int rockchip_pinctrl_parse_groups(struct device_node *np,
- {
- 	struct device *dev = info->dev;
- 	struct rockchip_pin_bank *bank;
-+	struct device_node *node;
- 	int size;
- 	const __be32 *list;
- 	int num;
-@@ -2684,6 +2693,16 @@ static int rockchip_pinctrl_parse_groups(struct device_node *np,
- 	if (!size || size % 4)
- 		return dev_err_probe(dev, -EINVAL, "wrong pins number or pins and configs should be by 4\n");
- 
-+	node = of_parse_phandle(np, "rockchip,io-domains", 0);
-+	if (node) {
-+		grp->io_domain = of_find_device_by_node(node);
-+		of_node_put(node);
-+		if (!grp->io_domain) {
-+			dev_err(info->dev, "couldn't find IO domain device\n");
-+			return -ENODEV;
-+		}
-+	}
-+
- 	grp->npins = size / 4;
- 
- 	grp->pins = devm_kcalloc(dev, grp->npins, sizeof(*grp->pins), GFP_KERNEL);
-diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-index ec46f8815ac9..56bc008eb7df 100644
---- a/drivers/pinctrl/pinctrl-rockchip.h
-+++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -434,6 +434,7 @@ struct rockchip_pin_group {
- 	unsigned int			npins;
- 	unsigned int			*pins;
- 	struct rockchip_pin_config	*data;
-+	struct platform_device		*io_domain;
- };
- 
- /**
 -- 
 2.37.1
 
