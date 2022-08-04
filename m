@@ -4,83 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF8A0C19F2B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Aug 2022 10:44:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D37BDC19F2A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Aug 2022 18:26:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L9Yk+eAvS1B+ETy41/f/wK5ZPW4f24mhR0UkQrR+kk0=; b=cg1uPtMhMUcQX+
-	toJ1qkV2EhTnoaC7/oPgZCwg4p5kktpOMusDcXxcknt2y5eA80y+5DB5EfcUQIvax3HVvKt6zjQjF
-	/GC339/LfeF6ZInMHbZhtQCdIZA1RcMqR1Ppg68G953MPKwt4oMeNPl0iNceFd3mEm8gIOZfrQNf1
-	GRxnUpKIIvacx/3lOm/P8KHI48gh8VIXwSdQiVENVYnxvy/fRjU6jnVn1jt81+E5GlmNQE5bZL0rL
-	UcGCqq9XuzesRmE8uSFVmY4r3Xnuhjo/BCn5F4LxcLhYkaaNsDjZUmrqJ3f8E0GgEYQsn0/qkHcTe
-	Uy6A0mgdhyaWwrH3PKkQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/gVBHBNdQIZPlIEoANphgJ0lzHjNhn5kD1OxDLFVKwU=; b=If3qT/5bUsWBYl
+	P5jhH4jtxFOUuJdagNkh81qzprlNQRGg8UESrtmO1wq3zUKYQV5+3sOt8smL8jVCgGgY19Kh3ch1E
+	zphCT8K0xmYW4ZClViiHo0MZ8NuCzvXzr902VWIT2Tta4puDRKqToZIp+EGZEATdLG0Fq90SrsPA5
+	YOfWIg4DUPBDGHVUtokd3XoBHF/TeQCKnL7gJUj37K8urIzVqCY45DuXOUfFWWiYWdFgxU99S1H7S
+	gl2/Azy02zLgKIQptciM/x5R6GZOc/+ZVMuV/CHaSAyR3HhD2Xap7lza6Q7oz5yiSxP/QWrOKnIST
+	FqwRcXOBBmuScGyUid+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJYLG-005J4i-Bk; Thu, 04 Aug 2022 10:44:38 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1oJfYI-008CRZ-6M; Thu, 04 Aug 2022 18:26:34 +0000
+Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJYLC-005J1O-KA
-	for linux-rockchip@lists.infradead.org; Thu, 04 Aug 2022 10:44:36 +0000
-Received: by mail-ed1-x530.google.com with SMTP id w3so9136447edc.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 04 Aug 2022 03:44:32 -0700 (PDT)
+	id 1oJfYF-008CP5-4U
+	for linux-rockchip@lists.infradead.org; Thu, 04 Aug 2022 18:26:32 +0000
+Received: by mail-io1-xd2c.google.com with SMTP id o2so316757iof.8
+        for <linux-rockchip@lists.infradead.org>; Thu, 04 Aug 2022 11:26:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=kohlschutter-com.20210112.gappssmtp.com; s=20210112;
-        h=mime-version:subject:from:in-reply-to:date:cc
-         :content-transfer-encoding:message-id:references:to;
-        bh=N7EQU9MlWTC84hNYcDq54sTO0o6CB2OpePDIIDMkHEg=;
-        b=e0iyDEWH8R0ix9gFWmNDk9YNInINTAfTGWPNXlGZ8OMK+TPX9jji6h0kvB6L+BpDdY
-         RipD+0jXzrAyZ+OkRzyYzvJYfdDPS8GfQ4Xz36S+hcy0arEIC6qFnPyRvyAxjJbwbw9Y
-         BkJhymEuvYgaXbydzpH67xbEm7Winn6br50iX4+zdoRvCpzc+HkMGOvgG1kLnvOxPMHi
-         dJxj+q8sX5Pe7PyQtSycORO1LwgYX+4RhNhyU/2MQzjdkRt+ZvnC5SIQaHEf6ugxMOdp
-         h9dM7HEcF5nu3pivSWyRw++MMLqeCxd+igKMaZ110OpZAoHmFrNoKwsIyT4QPYrhzSa7
-         UMIA==
+        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=s9D0tQ74Aa05V8FxxaIPM4SruGrj8130+5XIa4Wmvs8=;
+        b=EmKih+SAWAnsaIbzoUmlsTtIZzpu31YmTHPBdqHpLl1SUSO2BXE1j0E+/xwXaUcPZ3
+         E1637Utk4DDpqUQ2q3HwVHmlmphpr0gVb/wihqnjLbuLjIFPKGRMX/ZRLQD5jcM5iOKq
+         YSJqZ9jukqFRNvs8x6KLoIkCR2KYIqBpleMXCisyoVC8w+3Sb/GBp2nfPhIXo1517npH
+         jR7Brns0PCGWijOVIvcFgPh2kgWqHlQFfmm8QJgp3J83HCSabNWo2QyqmvZ1qPEAWeU9
+         TCw0Ymc2o7cQmcJGX5/e4LoFmL3IkaO4YEG5IQNT7s1dXfxrQ+PmDdAwXSRzHwy9ZxWJ
+         hLHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
-         :content-transfer-encoding:message-id:references:to;
-        bh=N7EQU9MlWTC84hNYcDq54sTO0o6CB2OpePDIIDMkHEg=;
-        b=AaIGoEnv8FBisj6wRagwtfflKJnWkQrzteAGbSNmraJT0GUkI6A88kUO7x5f/mWlI4
-         vLFCT2ClCGPxbumipIiVGvEwc2YC/pUmQtqWATOiGX4cAR86ndDXuC3b51BCyWgzawYe
-         GqAPQqrxri0Icfneto2eDfyJCz3YFuO90lVbZkOmJVBaGClVCmuCdO5fvkR4CPiBTg+l
-         0npGP7ER37nNrz6Dd3yNyjy9AxAtk6/BSpkoCE1+rqkQyfXnWZoAJIiFkugMdqT34vSe
-         HOdtjFZHMhimyE1Xx+yjBJ5vGaYgmVp4SwIHlmvJ7tWJrgnj7/Yb7wpHFlyv0sfHtcw7
-         zpoQ==
-X-Gm-Message-State: ACgBeo2BeQBSD9bS4HSxqEayK9mKJUVjykqwp2Rdual9VR7ALqSKmu6C
-	z6qNbNBI52OdOcINqhFnmNSWJw==
-X-Google-Smtp-Source: AA6agR4I7dWQve6sjghtE3KmTh1uLv4ZCrvLNX0EISZW4vrScpvPY/nB4JDA11L9k5O50hG6G0+Mvg==
-X-Received: by 2002:a05:6402:32a8:b0:43e:5490:295f with SMTP id f40-20020a05640232a800b0043e5490295fmr1365826eda.193.1659609871260;
-        Thu, 04 Aug 2022 03:44:31 -0700 (PDT)
-Received: from smtpclient.apple (ip5b434222.dynamic.kabel-deutschland.de. [91.67.66.34])
-        by smtp.gmail.com with ESMTPSA id 17-20020a170906211100b0072b2378027csm220357ejt.26.2022.08.04.03.44.30
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 04 Aug 2022 03:44:30 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.1\))
-Subject: [PATCH v3] regulator: core: Resolve supply name earlier to prevent
- double-init
-From: =?utf-8?Q?Christian_Kohlsch=C3=BCtter?= <christian@kohlschutter.com>
-In-Reply-To: <CAEwRq=qe+Frwpe=Zr4n_8A6vjOJnV3noegdnHSN7NTazkKejBA@mail.gmail.com>
-Date: Thu, 4 Aug 2022 12:44:29 +0200
-Cc: =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Liam Girdwood <lgirdwood@gmail.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Linux MMC List <linux-mmc@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Markus Reichl <m.reichl@fivetechno.de>,
- Robin Murphy <robin.murphy@arm.com>,
- wens@kernel.org
-Message-Id: <EC5FFA28-21D3-4FBB-B188-7DB1C9E1AA9E@kohlschutter.com>
-References: <CAEwRq=qe+Frwpe=Zr4n_8A6vjOJnV3noegdnHSN7NTazkKejBA@mail.gmail.com>
-To: Vincent Legoll <vincent.legoll@gmail.com>,
- Mark Brown <broonie@kernel.org>
-X-Mailer: Apple Mail (2.3696.120.41.1.1)
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=s9D0tQ74Aa05V8FxxaIPM4SruGrj8130+5XIa4Wmvs8=;
+        b=2G5Tckb0Q4IjSJI03Y98i+08Z07WVSPyS1fUSdFCeZcDpxzsJ87lcsLVv94OyP5LrS
+         xkLg9kCTBxM6feU4N5e9vy4CfLaKzidCyc5p4onsM9bEMLEeCQX9z2qlcR59r1877Udt
+         0OCqrEc7uQV3o7UPPkXJ9Uq02VIcJtTZ7NsZ7bamyD2zM/B1D/xZwF5OvJYGZinjV7KC
+         ngu4ev/BUV84Zd97y6wcJaYwRATKqEZVX9MnUDUJD+YBtAaUF2o4EYR9aQBShnY2HLBI
+         DXETaeoN8w2m/cEwX+FFrDsEy3Ac6xBMtmuKDq0qLhX2GO/PXjYlhpdaniBWChaSCqoj
+         Y3HA==
+X-Gm-Message-State: ACgBeo1E5VFuQX3lZBD2ntNRqcISHmDexWVJa/31z3EaD8ttlw0Y1utv
+	84AWGsdXTrGmlAp/rUmdiin+yRNg1ui5bdAv6k/Bjg==
+X-Google-Smtp-Source: AA6agR5WO/o7DOwqWNudivwJicstDS4jkVZeA9cf9xkke/45dOQQnhVRLBFQXaab8TmYHMkOxJ/V8NJ36MpX/b5Iyk8=
+X-Received: by 2002:a02:ac03:0:b0:342:89b5:99af with SMTP id
+ a3-20020a02ac03000000b0034289b599afmr1390657jao.305.1659637586759; Thu, 04
+ Aug 2022 11:26:26 -0700 (PDT)
+MIME-Version: 1.0
+References: <20220731174726.72631-1-jagan@edgeble.ai> <20220731174726.72631-3-jagan@edgeble.ai>
+ <4f8b8b98-c0ef-4924-6ff1-ccfeae77fc21@linaro.org> <CA+VMnFwQFLNbtgX0RR5vLq29tvU3HBpcyrtrksOsxF5s=W7=UQ@mail.gmail.com>
+ <20220803223343.GA2737695-robh@kernel.org>
+In-Reply-To: <20220803223343.GA2737695-robh@kernel.org>
+From: Jagan Teki <jagan@edgeble.ai>
+Date: Thu, 4 Aug 2022 23:56:15 +0530
+Message-ID: <CA+VMnFz9H1RPR+wTjnhgD+DK=-5=yhn1WjGfbjZ5P6q+4gGoQw@mail.gmail.com>
+Subject: Re: [PATCH v2 02/20] dt-bindings: power: Add power-domain header for RV1126
+To: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Kever Yang <kever.yang@rock-chips.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	Elaine Zhang <zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220804_034434_671397_0A64F3B8 
-X-CRM114-Status: GOOD (  19.55  )
+X-CRM114-CacheID: sfid-20220804_112631_418730_53E9BA5E 
+X-CRM114-Status: GOOD (  23.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,112 +89,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Previously, an unresolved regulator supply reference upon calling
-regulator_register on an always-on or boot-on regulator caused
-set_machine_constraints to be called twice.
+On Thu, 4 Aug 2022 at 04:03, Rob Herring <robh@kernel.org> wrote:
+>
+> On Wed, Aug 03, 2022 at 03:54:56PM +0530, Jagan Teki wrote:
+> > On Tue, 2 Aug 2022 at 16:08, Krzysztof Kozlowski
+> > <krzysztof.kozlowski@linaro.org> wrote:
+> > >
+> > > On 31/07/2022 19:47, Jagan Teki wrote:
+> > > > Add power-domain header for RV1126 SoC from description in TRM.
+> > > >
+> > > > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+> > > > Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+> > > > ---
+> > > > Changes for v2:
+> > > > - add blank line
+> > > >
+> > > >  include/dt-bindings/power/rv1126-power.h | 35 ++++++++++++++++++++++++
+> > > >  1 file changed, 35 insertions(+)
+> > > >  create mode 100644 include/dt-bindings/power/rv1126-power.h
+> > > >
+> > > > diff --git a/include/dt-bindings/power/rv1126-power.h b/include/dt-bindings/power/rv1126-power.h
+> > >
+> > > Vendor in filename is needed.
+> >
+> > Yes this follows how similar rockchip vendor notation
+> >
+> > $ ls include/dt-bindings/power/rk3* -l
+> >  include/dt-bindings/power/rk3036-power.h
+> >  include/dt-bindings/power/rk3066-power.h
+> >  include/dt-bindings/power/rk3128-power.h
+> >  include/dt-bindings/power/rk3188-power.h
+> >  include/dt-bindings/power/rk3228-power.h
+> >  include/dt-bindings/power/rk3288-power.h
+> >  include/dt-bindings/power/rk3328-power.h
+> >  include/dt-bindings/power/rk3366-power.h
+> >  include/dt-bindings/power/rk3368-power.h
+> >  include/dt-bindings/power/rk3399-power.h
+> >  include/dt-bindings/power/rk3568-power.h
+> >
+> > >
+> > > > new file mode 100644
+> > > > index 000000000000..38a68e000d38
+> > > > --- /dev/null
+> > > > +++ b/include/dt-bindings/power/rv1126-power.h
+> > > > @@ -0,0 +1,35 @@
+> > > > +/* SPDX-License-Identifier: GPL-2.0 */
+> > >
+> > > Dual license, please, unless some copyrights are no allowing this.
+> >
+> > Yes, as we discussed in v1 - I'm not liable to change so I keep this as it is.
+>
+> I assume that would be Rockchip. Can someone from Rockchip please give
+> an okay here to dual license?
 
-This in turn may initialize the regulator twice, leading to voltage
-glitches that are timing-dependent. A simple, unrelated configuration
-change may be enough to hide this problem, only to be surfaced by
-chance.
+Kever or Heiko - any comments on this?
 
-One such example is the SD-Card voltage regulator in a NanoPI R4S that
-would not initialize reliably unless the registration flow was just
-complex enough to allow the regulator to properly reset between calls.
-
-Fix this by re-arranging regulator_register, trying resolve the
-regulator's supply early enough that set_machine_constraints does not
-need to be called twice.
-
-Signed-off-by: Christian Kohlsch=C3=BCtter <christian@kohlschutter.com>
----
- drivers/regulator/core.c | 51 +++++++++++++++++++++++++---------------
- 1 file changed, 32 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/regulator/core.c b/drivers/regulator/core.c
-index 398c8d6afd4..5c2b97ea633 100644
---- a/drivers/regulator/core.c
-+++ b/drivers/regulator/core.c
-@@ -5492,7 +5492,38 @@ regulator_register(const struct regulator_desc =
-*regulator_desc,
- 	BLOCKING_INIT_NOTIFIER_HEAD(&rdev->notifier);
- 	INIT_DELAYED_WORK(&rdev->disable_work, regulator_disable_work);
-=20
--	/* preform any regulator specific init */
-+	/* set regulator constraints */
-+	if (init_data)
-+		rdev->constraints =3D kmemdup(&init_data->constraints,
-+					    sizeof(*rdev->constraints),
-+					    GFP_KERNEL);
-+	else
-+		rdev->constraints =3D =
-kzalloc(sizeof(*rdev->constraints),
-+					    GFP_KERNEL);
-+	if (!rdev->constraints) {
-+		ret =3D -ENOMEM;
-+		goto clean;
-+	}
-+
-+	if (init_data && init_data->supply_regulator)
-+		rdev->supply_name =3D init_data->supply_regulator;
-+	else if (regulator_desc->supply_name)
-+		rdev->supply_name =3D regulator_desc->supply_name;
-+
-+	if ((rdev->supply_name && !rdev->supply) && rdev->constraints
-+		&& (rdev->constraints->always_on || =
-rdev->constraints->boot_on)) {
-+		/* Try to resolve the name of the supplying regulator =
-here first
-+		 * so we prevent double-initializing the regulator, =
-which may
-+		 * cause timing-specific voltage brownouts/glitches that =
-are
-+		 * hard to debug.
-+		 */
-+		ret =3D regulator_resolve_supply(rdev);
-+		if (ret)
-+			rdev_dbg(rdev, "unable to resolve supply early: =
-%pe\n",
-+					 ERR_PTR(ret));
-+	}
-+
-+	/* perform any regulator specific init */
- 	if (init_data && init_data->regulator_init) {
- 		ret =3D init_data->regulator_init(rdev->reg_data);
- 		if (ret < 0)
-@@ -5518,24 +5549,6 @@ regulator_register(const struct regulator_desc =
-*regulator_desc,
- 		    (unsigned long) atomic_inc_return(&regulator_no));
- 	dev_set_drvdata(&rdev->dev, rdev);
-=20
--	/* set regulator constraints */
--	if (init_data)
--		rdev->constraints =3D kmemdup(&init_data->constraints,
--					    sizeof(*rdev->constraints),
--					    GFP_KERNEL);
--	else
--		rdev->constraints =3D =
-kzalloc(sizeof(*rdev->constraints),
--					    GFP_KERNEL);
--	if (!rdev->constraints) {
--		ret =3D -ENOMEM;
--		goto wash;
--	}
--
--	if (init_data && init_data->supply_regulator)
--		rdev->supply_name =3D init_data->supply_regulator;
--	else if (regulator_desc->supply_name)
--		rdev->supply_name =3D regulator_desc->supply_name;
--
- 	ret =3D set_machine_constraints(rdev);
- 	if (ret =3D=3D -EPROBE_DEFER) {
- 		/* Regulator might be in bypass mode and so needs its =
-supply
---=20
-2.36.2
-
-
-
+Thanks,
+Jagan.
 
 _______________________________________________
 Linux-rockchip mailing list
