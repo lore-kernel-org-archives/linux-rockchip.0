@@ -4,73 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E92DC19F2D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Aug 2022 09:50:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF8A0C19F2B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Aug 2022 10:44:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=onKJ7oSH2OW3mgAIr9Gma7hbaHyu5ZuaSTlMCL925js=; b=3NDgu9fmh/ZOh9
-	uZ6SUSQyqgNHgtgFXVGlh0qoPpEp4uyMmj9YfA24PCCciN37FFyx6eowmpsvomKAED5cv99RW1P/G
-	v0gDEfdEtwtQUx4fmK+FbNMtYBLL3Im96RIyfh6I7nSSvtbGUhCwWw0gytVZiwyIQoL8gucaYkS63
-	EgrO8aP7V6dc5mpItuifUAsI+tOhKG0YEw0Uf01qMNt457aShA+sVPfsu6KlyEcLlpthp7YpBFJLx
-	dV1CuP0t20VhDVB0qHTXMxz6B2pqe/bwsO798wDc6kz7hcjhfCx8kI/p/HW/JkH/E9gd7yB6JnP1E
-	UFr+fxy5x5YhwBCxwAQg==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=L9Yk+eAvS1B+ETy41/f/wK5ZPW4f24mhR0UkQrR+kk0=; b=cg1uPtMhMUcQX+
+	toJ1qkV2EhTnoaC7/oPgZCwg4p5kktpOMusDcXxcknt2y5eA80y+5DB5EfcUQIvax3HVvKt6zjQjF
+	/GC339/LfeF6ZInMHbZhtQCdIZA1RcMqR1Ppg68G953MPKwt4oMeNPl0iNceFd3mEm8gIOZfrQNf1
+	GRxnUpKIIvacx/3lOm/P8KHI48gh8VIXwSdQiVENVYnxvy/fRjU6jnVn1jt81+E5GlmNQE5bZL0rL
+	UcGCqq9XuzesRmE8uSFVmY4r3Xnuhjo/BCn5F4LxcLhYkaaNsDjZUmrqJ3f8E0GgEYQsn0/qkHcTe
+	Uy6A0mgdhyaWwrH3PKkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJXU6-004ybc-6m; Thu, 04 Aug 2022 09:49:42 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1oJYLG-005J4i-Bk; Thu, 04 Aug 2022 10:44:38 +0000
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oJXTu-004yVx-ET; Thu, 04 Aug 2022 09:49:32 +0000
-Received: by mail-wr1-x433.google.com with SMTP id j15so16512073wrr.2;
-        Thu, 04 Aug 2022 02:49:28 -0700 (PDT)
+	id 1oJYLC-005J1O-KA
+	for linux-rockchip@lists.infradead.org; Thu, 04 Aug 2022 10:44:36 +0000
+Received: by mail-ed1-x530.google.com with SMTP id w3so9136447edc.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 04 Aug 2022 03:44:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc;
-        bh=jf6rQzWg9XKx/4I7TLqmE7aH4TSjEP5xXPJunNqSOyo=;
-        b=YyR4TFTALZdOKf6UBX8SDF3Px8qtx8DUe449U0on/FHPvOlKR1mppH2M9R6o+HMU1B
-         HJEczZ3Iu4kE3jpHQeHLzJU+bICJBzgAttQumRjJUyPX2GaxoL06yhk3BhRVPHLtGUSg
-         D1xyeqHYcbGD+ql7RlmL/2dLdga1eObVFrptcCGh2inU+35g6etgkYF5aODPwUv4eGWY
-         fYwL9vRyjZniZPyUpPKatwZbBztduliAAFP9HakU5ZT072lQ54FygCEQlfmFkxs0FqiM
-         iQCIwM3/s7DBk1w29IvcTAowkYYVXg9PUZqQb4Zm86BeQkmoC47wMKpFHyiOMcyBc4KJ
-         cPHw==
+        d=kohlschutter-com.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:subject:from:in-reply-to:date:cc
+         :content-transfer-encoding:message-id:references:to;
+        bh=N7EQU9MlWTC84hNYcDq54sTO0o6CB2OpePDIIDMkHEg=;
+        b=e0iyDEWH8R0ix9gFWmNDk9YNInINTAfTGWPNXlGZ8OMK+TPX9jji6h0kvB6L+BpDdY
+         RipD+0jXzrAyZ+OkRzyYzvJYfdDPS8GfQ4Xz36S+hcy0arEIC6qFnPyRvyAxjJbwbw9Y
+         BkJhymEuvYgaXbydzpH67xbEm7Winn6br50iX4+zdoRvCpzc+HkMGOvgG1kLnvOxPMHi
+         dJxj+q8sX5Pe7PyQtSycORO1LwgYX+4RhNhyU/2MQzjdkRt+ZvnC5SIQaHEf6ugxMOdp
+         h9dM7HEcF5nu3pivSWyRw++MMLqeCxd+igKMaZ110OpZAoHmFrNoKwsIyT4QPYrhzSa7
+         UMIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
-        bh=jf6rQzWg9XKx/4I7TLqmE7aH4TSjEP5xXPJunNqSOyo=;
-        b=ATe01zgNNm9yXt43OynbprBL+x0ZuceNuu3jn1H4derObJqHXzVkxWCufyvWsCql/G
-         wPpFKYWcugmgeAgdNFhS5CZhVTYjL6PyCXX/HTUW/nf/cYYpvT+HI92pFEoQ3iu4h9KG
-         gPsPM3YfJEF6fGs37JT4wSnxRBUe76+0ntpMLbRX8CR5sv632B22jy0ORx8X7oCVj9V1
-         4oaoFfvoS/jmG+JBpdzyXK9YurcGcR7z0aJb/ME90WurHIDp/pBUKnlN5dbpJfzM/4JJ
-         uzb9Lz+F7dTKgOEzVWF/7u5yWt1xu2rCA/49x/c7JhqCOgOs6OyKfy5TZDe3s23ZC98I
-         ZAIg==
-X-Gm-Message-State: ACgBeo18aMiD1YUSzas98shlJCRzRyJLxwADiLeJnTu56tDSe6byA7VK
-	ph1MUVmDCFDI0kdhRiInKcWwuMv7WxwOnaaGDFn1Cyz9CkgrZ2pq
-X-Google-Smtp-Source: AA6agR7xLOWYmPNSQmmTeLo+20pG87QI8F2XC5TJ2AqFstiTtnsMHYG62WaR/6cgnhISHEN3k2q2M0UAJNx+FNhoFpI=
-X-Received: by 2002:a5d:410a:0:b0:220:5ff7:3968 with SMTP id
- l10-20020a5d410a000000b002205ff73968mr801540wrp.689.1659606567069; Thu, 04
- Aug 2022 02:49:27 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220622003140.30365-1-pgwipeout@gmail.com> <88f2de00-32e3-ed74-082f-c0972a81f0f8@fivetechno.de>
-In-Reply-To: <88f2de00-32e3-ed74-082f-c0972a81f0f8@fivetechno.de>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Thu, 4 Aug 2022 11:49:15 +0200
-Message-ID: <CAMdYzYoTLjRW1FgwfizUu-+k0R4tCO78qYa7MEpgfz99aj3SvQ@mail.gmail.com>
-Subject: Re: [BUG BISECT] phy: rockchip-inno-usb2: Sync initial otg state
-To: Markus Reichl <m.reichl@fivetechno.de>
-Cc: Heiko Stuebner <heiko@sntech.de>, Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, 
-	Samuel Holland <samuel@sholland.org>, 
-	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, 
-	arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+        h=x-gm-message-state:mime-version:subject:from:in-reply-to:date:cc
+         :content-transfer-encoding:message-id:references:to;
+        bh=N7EQU9MlWTC84hNYcDq54sTO0o6CB2OpePDIIDMkHEg=;
+        b=AaIGoEnv8FBisj6wRagwtfflKJnWkQrzteAGbSNmraJT0GUkI6A88kUO7x5f/mWlI4
+         vLFCT2ClCGPxbumipIiVGvEwc2YC/pUmQtqWATOiGX4cAR86ndDXuC3b51BCyWgzawYe
+         GqAPQqrxri0Icfneto2eDfyJCz3YFuO90lVbZkOmJVBaGClVCmuCdO5fvkR4CPiBTg+l
+         0npGP7ER37nNrz6Dd3yNyjy9AxAtk6/BSpkoCE1+rqkQyfXnWZoAJIiFkugMdqT34vSe
+         HOdtjFZHMhimyE1Xx+yjBJ5vGaYgmVp4SwIHlmvJ7tWJrgnj7/Yb7wpHFlyv0sfHtcw7
+         zpoQ==
+X-Gm-Message-State: ACgBeo2BeQBSD9bS4HSxqEayK9mKJUVjykqwp2Rdual9VR7ALqSKmu6C
+	z6qNbNBI52OdOcINqhFnmNSWJw==
+X-Google-Smtp-Source: AA6agR4I7dWQve6sjghtE3KmTh1uLv4ZCrvLNX0EISZW4vrScpvPY/nB4JDA11L9k5O50hG6G0+Mvg==
+X-Received: by 2002:a05:6402:32a8:b0:43e:5490:295f with SMTP id f40-20020a05640232a800b0043e5490295fmr1365826eda.193.1659609871260;
+        Thu, 04 Aug 2022 03:44:31 -0700 (PDT)
+Received: from smtpclient.apple (ip5b434222.dynamic.kabel-deutschland.de. [91.67.66.34])
+        by smtp.gmail.com with ESMTPSA id 17-20020a170906211100b0072b2378027csm220357ejt.26.2022.08.04.03.44.30
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 04 Aug 2022 03:44:30 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.1\))
+Subject: [PATCH v3] regulator: core: Resolve supply name earlier to prevent
+ double-init
+From: =?utf-8?Q?Christian_Kohlsch=C3=BCtter?= <christian@kohlschutter.com>
+In-Reply-To: <CAEwRq=qe+Frwpe=Zr4n_8A6vjOJnV3noegdnHSN7NTazkKejBA@mail.gmail.com>
+Date: Thu, 4 Aug 2022 12:44:29 +0200
+Cc: =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Linux MMC List <linux-mmc@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Markus Reichl <m.reichl@fivetechno.de>,
+ Robin Murphy <robin.murphy@arm.com>,
+ wens@kernel.org
+Message-Id: <EC5FFA28-21D3-4FBB-B188-7DB1C9E1AA9E@kohlschutter.com>
+References: <CAEwRq=qe+Frwpe=Zr4n_8A6vjOJnV3noegdnHSN7NTazkKejBA@mail.gmail.com>
+To: Vincent Legoll <vincent.legoll@gmail.com>,
+ Mark Brown <broonie@kernel.org>
+X-Mailer: Apple Mail (2.3696.120.41.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220804_024930_513123_EC69D813 
-X-CRM114-Status: GOOD (  20.60  )
+X-CRM114-CacheID: sfid-20220804_034434_671397_0A64F3B8 
+X-CRM114-Status: GOOD (  19.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,94 +92,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBBdWcgMiwgMjAyMiBhdCAyOjM5IFBNIE1hcmt1cyBSZWljaGwgPG0ucmVpY2hsQGZp
-dmV0ZWNobm8uZGU+IHdyb3RlOgo+Cj4gSGksCj4KPiB3aXRoIGxpbnV4LW5leHQtMjAyMjA3Mjgg
-cmszMzk5LXJvYy1wYyBkb2VzIG5vdCBib290Lgo+IEJpc2VjdGluZyBwb2ludGVkIHRvIHRoaXMg
-Y29tbWl0Lgo+IEJ5IHJldmVydGluZyB0aGlzIGNvbW1pdCB0aGUgYm9hcmQgYm9vdHMgYWdhaW4u
-CgpUaGFuayB5b3UgZm9yIHJlcG9ydGluZyB0aGlzLCBzb21lb25lIHdhcyBraW5kIGVub3VnaCB0
-byByZXByb2R1Y2UgdGhlCnByb2JsZW0gb24gdGhlIHJvY2twcm82NCBhbmQgY29uZmlybWVkIHRo
-aXMgaXMgYW4gaXNzdWUuIEFzIEkgd29uJ3QKaGF2ZSBhY2Nlc3MgdG8gbXkgaGFyZHdhcmUgdW50
-aWwgbmV4dCBtb250aCwgd2Ugc2hvdWxkIHByb2JhYmx5IHJldmVydAp0aGlzIHVudGlsIHRoZSBy
-b290IGNhdXNlIGNhbiBiZSBpZGVudGlmaWVkLgoKVmVyeSBSZXNwZWN0ZnVsbHksClBldGVyIEdl
-aXMKCj4KPiBbICAgIDIuMzk4NzAwXSBVbmFibGUgdG8gaGFuZGxlIGtlcm5lbCBOVUxMIHBvaW50
-ZXIgZGVyZWZlcmVuY2UgYXQgdmlydHVhbCBhZGRyZXNzCj4gMDAwMDAwMDAwMDAwMDAwOAo+IFsg
-ICAgMi4zOTk1MTddIE1lbSBhYm9ydCBpbmZvOgo+IFsgICAgMi4zOTk3NzJdICAgRVNSID0gMHgw
-MDAwMDAwMDk2MDAwMDA0Cj4gWyAgICAyLjQwMDExNF0gICBFQyA9IDB4MjU6IERBQlQgKGN1cnJl
-bnQgRUwpLCBJTCA9IDMyIGJpdHMKPiBbICAgIDIuNDAwNTk0XSAgIFNFVCA9IDAsIEZuViA9IDAK
-PiBbICAgIDIuNDAwODczXSAgIEVBID0gMCwgUzFQVFcgPSAwCj4gWyAgICAyLjQwMTE2MV0gICBG
-U0MgPSAweDA0OiBsZXZlbCAwIHRyYW5zbGF0aW9uIGZhdWx0Cj4gWyAgICAyLjQwMTYwMl0gRGF0
-YSBhYm9ydCBpbmZvOgo+IFsgICAgMi40MDE4NjRdICAgSVNWID0gMCwgSVNTID0gMHgwMDAwMDAw
-NAo+IFsgICAgMi40MDIyMTJdICAgQ00gPSAwLCBXblIgPSAwCj4gWyAgICAyLjQwMjQ4NF0gdXNl
-ciBwZ3RhYmxlOiA0ayBwYWdlcywgNDgtYml0IFZBcywgcGdkcD0wMDAwMDAwMDAxMzc2MDAwCj4g
-WyAgICAyLjQwMzA3MV0gWzAwMDAwMDAwMDAwMDAwMDhdIHBnZD0wMDAwMDAwMDAwMDAwMDAwLCBw
-NGQ9MDAwMDAwMDAwMDAwMDAwMAo+IFsgICAgMi40MDM2ODddIEludGVybmFsIGVycm9yOiBPb3Bz
-OiA5NjAwMDAwNCBbIzFdIFNNUAo+IFsgICAgMi40MDQxMzBdIE1vZHVsZXMgbGlua2VkIGluOiBp
-cF90YWJsZXMgeF90YWJsZXMgaXB2NiB4aGNpX3BsYXRfaGNkIHhoY2lfaGNkCj4gZHdjMyByb2Nr
-Y2hpcGRybSBkcm1fY21hX2hlbHBlciBhbmFsb2dpeF9kcCBkd19oZG1pIHJlYWx0ZWsgZHJtX2Rp
-c3BsYXlfaGVscGVyCj4gZHdjM19vZl9zaW1wbGUgZHdfbWlwaV9kc2kgZWhjaV9wbGF0Zm9ybSBv
-aGNpX3BsYXRmb3JtIG9oY2lfaGNkIGVoY2lfaGNkCj4gZHJtX2ttc19oZWxwZXIgZHdtYWNfcmsg
-c3lzY29weWFyZWEgc3lzZmlsbHJlY3Qgc3RtbWFjX3BsYXRmb3JtIHN5c2ltZ2JsdAo+IGZiX3N5
-c19mb3BzIHVzYmNvcmUgc3RtbWFjIHBjc194cGNzIGRybSBwaHlsaW5rIGRybV9wYW5lbF9vcmll
-bnRhdGlvbl9xdWlya3MKPiBbICAgIDIuNDA3MTU1XSBDUFU6IDQgUElEOiA3MSBDb21tOiBrd29y
-a2VyLzQ6NiBOb3QgdGFpbnRlZAo+IDUuMTkuMC1yYzgtbmV4dC0yMDIyMDcyOCAjNDM3Cj4gWyAg
-ICAyLjQwNzg2OF0gSGFyZHdhcmUgbmFtZTogRmlyZWZseSBST0MtUkszMzk5LVBDIE1lenphbmlu
-ZSBCb2FyZCAoRFQpCj4gWyAgICAyLjQwODQ0OF0gV29ya3F1ZXVlOiBldmVudHMgcm9ja2NoaXBf
-dXNiMnBoeV9vdGdfc21fd29yawo+IFsgICAgMi40MDg5NThdIHBzdGF0ZTogNjAwMDAwMDUgKG5a
-Q3YgZGFpZiAtUEFOIC1VQU8gLVRDTyAtRElUIC1TU0JTIEJUWVBFPS0tKQo+IFsgICAgMi40MTE2
-MzRdIHBjIDogcm9ja2NoaXBfdXNiMnBoeV9vdGdfc21fd29yaysweDUwLzB4MzMwCj4gWyAgICAy
-LjQxNDMzMl0gbHIgOiBwcm9jZXNzX29uZV93b3JrKzB4MWQ4LzB4MzgwCj4gWyAgICAyLjQxNjk0
-OF0gc3AgOiBmZmZmODAwMDA5MzczZDYwCj4gWyAgICAyLjQxOTQwNl0geDI5OiBmZmZmODAwMDA5
-MzczZDYwIHgyODogMDAwMDAwMDAwMDAwMDAwMCB4Mjc6IDAwMDAwMDAwMDAwMDAwMDAKPiBbICAg
-IDIuNDIyMTk5XSB4MjY6IGZmZmYwMDAwZjc3OWZjYjggeDI1OiBmZmZmMDAwMGY3N2EzYTA1IHgy
-NDogMDAwMDAwMDAwMDAwMDAwYwo+IFsgICAgMi40MjQ5NzhdIHgyMzogMDAwMDAwMDAwMDAwMDAw
-MCB4MjI6IGZmZmYwMDAwMDEwYzgyNTggeDIxOiBmZmZmODAwMDA4ODhlYzEwCj4gWyAgICAyLjQy
-Nzc2OF0geDIwOiBmZmZmMDAwMDAxMGM4MmYwIHgxOTogMDAwMDAwMDAwMDAwMDAwYyB4MTg6IDAw
-MDAwMDAwMDAwMDAwMDEKPiBbICAgIDIuNDMwNjA0XSB4MTc6IDAwMDAwMDA0MDA0NGZmZmYgeDE2
-OiAwMDQwMDAzNGI1NTAzNTEwIHgxNTogMDAwMDAwMDAwMDAwMDAwMAo+IFsgICAgMi40MzMzOTBd
-IHgxNDogZmZmZjAwMDAwMDcwODAwMCB4MTM6IGZmZmY4MDAwZWVjOTYwMDAgeDEyOiAwMDAwMDAw
-MDM0ZDRkOTFkCj4gWyAgICAyLjQzNjE4NV0geDExOiAwMDAwMDAwMDAwMDAwMDAwIHgxMDogMDAw
-MDAwMDAwMDAwMGExMCB4OSA6IGZmZmYwMDAwMDFhYTdhNzQKPiBbICAgIDIuNDM4OTU4XSB4OCA6
-IGZlZmVmZWZlZmVmZWZlZmYgeDcgOiAwMDAwMDAwMDAwMDAwMDE4IHg2IDogZmZmZjAwMDAwMWFh
-N2E3NAo+IFsgICAgMi40NDE2NjhdIHg1IDogMDAwMDczNzQ2ZTY1NzY2NSB4NCA6IDAwMDAwMDAw
-MDAwMDAwMmYgeDMgOiBmZmZmMDAwMDAzNTZjODA4Cj4gWyAgICAyLjQ0NDQwN10geDIgOiBmZmZm
-ODAwMDA5MzczZGE0IHgxIDogMDAwMDAwMDAwMDAwZTJhYyB4MCA6IGZmZmY4MDAwMDg4OGViMzQK
-PiBbICAgIDIuNDQ3MTkwXSBDYWxsIHRyYWNlOgo+IFsgICAgMi40NDk1NTddICByb2NrY2hpcF91
-c2IycGh5X290Z19zbV93b3JrKzB4NTAvMHgzMzAKPiBbICAgIDIuNDUyMTY5XSAgcHJvY2Vzc19v
-bmVfd29yaysweDFkOC8weDM4MAo+IFsgICAgMi40NTQ2ODRdICB3b3JrZXJfdGhyZWFkKzB4MTcw
-LzB4NGUwCj4gWyAgICAyLjQ1NzA1Nl0gIGt0aHJlYWQrMHhkOC8weGRjCj4gWyAgICAyLjQ1OTM1
-NF0gIHJldF9mcm9tX2ZvcmsrMHgxMC8weDIwCj4gWyAgICAyLjQ2MTcyOF0gQ29kZTogOTEwMzcw
-MTUgMjk1YmUwMDEgZjk0MDNjNzcgYjk0MGU0MTMgKGY5NDAwNmUwKQo+IFsgICAgMi40NjQzMzhd
-IC0tLVsgZW5kIHRyYWNlIDAwMDAwMDAwMDAwMDAwMDAgXS0tLQo+Cj4gQW0gMjIuMDYuMjIgdW0g
-MDI6MzEgc2NocmllYiBQZXRlciBHZWlzOgo+ID4gVGhlIGluaXRpYWwgb3RnIHN0YXRlIGZvciB0
-aGUgcGh5IGRlZmF1bHRzIHRvIGRldmljZSBtb2RlLiBUaGUgYWN0dWFsCj4gPiBzdGF0ZSBpc24n
-dCBkZXRlY3RlZCB1bnRpbCBhbiBJRCBJUlEgZmlyZXMuIEZpeCB0aGlzIGJ5IHN5bmNpbmcgdGhl
-IElECj4gPiBzdGF0ZSBkdXJpbmcgaW5pdGlhbGl6YXRpb24uCj4gPgo+ID4gRml4ZXM6IDUxYTli
-MmMwM2RkMyAoInBoeTogcm9ja2NoaXAtaW5uby11c2IyOiBIYW5kbGUgSUQgSVJRIikKPiA+IFNp
-Z25lZC1vZmYtYnk6IFBldGVyIEdlaXMgPHBnd2lwZW91dEBnbWFpbC5jb20+Cj4gPiAtLS0KPiA+
-ICAgZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLWlubm8tdXNiMi5jIHwgNiArKysr
-KysKPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKQo+ID4KPiA+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtaW5uby11c2IyLmMgYi9kcml2
-ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtaW5uby11c2IyLmMKPiA+IGluZGV4IDY3MTE2
-NTlmNzI3Yy4uNmU0NDA2OTYxN2RmIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9waHkvcm9ja2No
-aXAvcGh5LXJvY2tjaGlwLWlubm8tdXNiMi5jCj4gPiArKysgYi9kcml2ZXJzL3BoeS9yb2NrY2hp
-cC9waHktcm9ja2NoaXAtaW5uby11c2IyLmMKPiA+IEBAIC0xMTYyLDYgKzExNjIsMTIgQEAgc3Rh
-dGljIGludCByb2NrY2hpcF91c2IycGh5X290Z19wb3J0X2luaXQoc3RydWN0IHJvY2tjaGlwX3Vz
-YjJwaHkgKnJwaHksCj4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEVY
-VENPTl9VU0JfSE9TVCwgJnJwb3J0LT5ldmVudF9uYik7Cj4gPiAgICAgICAgICAgICAgIGlmIChy
-ZXQpCj4gPiAgICAgICAgICAgICAgICAgICAgICAgZGV2X2VycihycGh5LT5kZXYsICJyZWdpc3Rl
-ciBVU0IgSE9TVCBub3RpZmllciBmYWlsZWRcbiIpOwo+ID4gKwo+ID4gKyAgICAgICAgICAgICBp
-ZiAoIW9mX3Byb3BlcnR5X3JlYWRfYm9vbChycGh5LT5kZXYtPm9mX25vZGUsICJleHRjb24iKSkg
-ewo+ID4gKyAgICAgICAgICAgICAgICAgICAgIC8qIGRvIGluaXRpYWwgc3luYyBvZiB1c2Igc3Rh
-dGUgKi8KPiA+ICsgICAgICAgICAgICAgICAgICAgICByZXQgPSBwcm9wZXJ0eV9lbmFibGVkKHJw
-aHktPmdyZiwgJnJwb3J0LT5wb3J0X2NmZy0+dXRtaV9pZCk7Cj4gPiArICAgICAgICAgICAgICAg
-ICAgICAgZXh0Y29uX3NldF9zdGF0ZV9zeW5jKHJwaHktPmVkZXYsIEVYVENPTl9VU0JfSE9TVCwg
-IXJldCk7Cj4gPiArICAgICAgICAgICAgIH0KPiA+ICAgICAgIH0KPiA+Cj4gPiAgIG91dDoKPgo+
-IEdydcOfLAo+IC0tCj4gTWFya3VzIFJlaWNobAoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Previously, an unresolved regulator supply reference upon calling
+regulator_register on an always-on or boot-on regulator caused
+set_machine_constraints to be called twice.
+
+This in turn may initialize the regulator twice, leading to voltage
+glitches that are timing-dependent. A simple, unrelated configuration
+change may be enough to hide this problem, only to be surfaced by
+chance.
+
+One such example is the SD-Card voltage regulator in a NanoPI R4S that
+would not initialize reliably unless the registration flow was just
+complex enough to allow the regulator to properly reset between calls.
+
+Fix this by re-arranging regulator_register, trying resolve the
+regulator's supply early enough that set_machine_constraints does not
+need to be called twice.
+
+Signed-off-by: Christian Kohlsch=C3=BCtter <christian@kohlschutter.com>
+---
+ drivers/regulator/core.c | 51 +++++++++++++++++++++++++---------------
+ 1 file changed, 32 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/regulator/core.c b/drivers/regulator/core.c
+index 398c8d6afd4..5c2b97ea633 100644
+--- a/drivers/regulator/core.c
++++ b/drivers/regulator/core.c
+@@ -5492,7 +5492,38 @@ regulator_register(const struct regulator_desc =
+*regulator_desc,
+ 	BLOCKING_INIT_NOTIFIER_HEAD(&rdev->notifier);
+ 	INIT_DELAYED_WORK(&rdev->disable_work, regulator_disable_work);
+=20
+-	/* preform any regulator specific init */
++	/* set regulator constraints */
++	if (init_data)
++		rdev->constraints =3D kmemdup(&init_data->constraints,
++					    sizeof(*rdev->constraints),
++					    GFP_KERNEL);
++	else
++		rdev->constraints =3D =
+kzalloc(sizeof(*rdev->constraints),
++					    GFP_KERNEL);
++	if (!rdev->constraints) {
++		ret =3D -ENOMEM;
++		goto clean;
++	}
++
++	if (init_data && init_data->supply_regulator)
++		rdev->supply_name =3D init_data->supply_regulator;
++	else if (regulator_desc->supply_name)
++		rdev->supply_name =3D regulator_desc->supply_name;
++
++	if ((rdev->supply_name && !rdev->supply) && rdev->constraints
++		&& (rdev->constraints->always_on || =
+rdev->constraints->boot_on)) {
++		/* Try to resolve the name of the supplying regulator =
+here first
++		 * so we prevent double-initializing the regulator, =
+which may
++		 * cause timing-specific voltage brownouts/glitches that =
+are
++		 * hard to debug.
++		 */
++		ret =3D regulator_resolve_supply(rdev);
++		if (ret)
++			rdev_dbg(rdev, "unable to resolve supply early: =
+%pe\n",
++					 ERR_PTR(ret));
++	}
++
++	/* perform any regulator specific init */
+ 	if (init_data && init_data->regulator_init) {
+ 		ret =3D init_data->regulator_init(rdev->reg_data);
+ 		if (ret < 0)
+@@ -5518,24 +5549,6 @@ regulator_register(const struct regulator_desc =
+*regulator_desc,
+ 		    (unsigned long) atomic_inc_return(&regulator_no));
+ 	dev_set_drvdata(&rdev->dev, rdev);
+=20
+-	/* set regulator constraints */
+-	if (init_data)
+-		rdev->constraints =3D kmemdup(&init_data->constraints,
+-					    sizeof(*rdev->constraints),
+-					    GFP_KERNEL);
+-	else
+-		rdev->constraints =3D =
+kzalloc(sizeof(*rdev->constraints),
+-					    GFP_KERNEL);
+-	if (!rdev->constraints) {
+-		ret =3D -ENOMEM;
+-		goto wash;
+-	}
+-
+-	if (init_data && init_data->supply_regulator)
+-		rdev->supply_name =3D init_data->supply_regulator;
+-	else if (regulator_desc->supply_name)
+-		rdev->supply_name =3D regulator_desc->supply_name;
+-
+ 	ret =3D set_machine_constraints(rdev);
+ 	if (ret =3D=3D -EPROBE_DEFER) {
+ 		/* Regulator might be in bypass mode and so needs its =
+supply
+--=20
+2.36.2
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
