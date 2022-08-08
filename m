@@ -4,70 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 044B3C25B0C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Aug 2022 06:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57350C00140
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Aug 2022 07:24:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iRHSHRcp0PNd4P0ekSM78hH/w4XtZv6up1mbHzeOuEE=; b=1ssPkGfm2US8nV
-	8Mj2aoR5YGWX9m9TUsJhU6G+XGkMPUUghAHadkK6ea2WHaXHLA17imFQB6gtB8yLU/xfKx1RtvFh2
-	gW1JLwVmF4mTiXOw/ZfX6KDCBiPVubqIFRCAaSIDl3Zt1Bs8gwJkVrv8Uzjzu7o+jGc8qvwjHy4A5
-	B9+TzCxt2sUuwcRhohEj8d5yLT2qf6GHlGlLyaYFE08lh2geK7J0zDFgGipmJszUtIgZgT7ZNKGEC
-	pX0GYNggi0iiEXjCqi/vaWSN31l4pyBsNVb/TxoQ1pnIMr8O3Mt/u8Oeea4U0rTEzHTycWGVcBStH
-	W2Fz5l5u1lF6ZfVEQz5A==;
+	List-Owner; bh=1h8HSysrWc+e2nKFALU0E5eZ8lRkxzPmBSgA6OlPXQo=; b=sV/Xjrowo6QxNe
+	ZAn3obHywCvXE4S00JSUXizp+f0vOf4LpOTXlBdKoGSDb2YRYhaaccsrHII4tGL6J80aJCaWDPclE
+	3BFr1zKaBjM0Ia5h0MGNLlhCvkEvVBRriqkJnvvDeitn0x54V7oU1vpNGzQLuQhWaFVGyhd2k+45G
+	qo3rmskc6Gc4qRS9rDmv/pAE3y61k6U5vqcqVfWwGyHR922MVLEqp77+m2G3qGFr16z8pTrj2A2Ku
+	HtagJMhsRCMgOpVLegYnqerqzT7R55qXzFESCG2cpVCrK0Rp5F+veTLStwT/ColRrN+7DdMAjQWqN
+	fnV+eNGWjgFc+D5TinZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKwPG-00BtNU-48; Mon, 08 Aug 2022 06:38:30 +0000
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e])
+	id 1oKx7n-00C6f0-Qn; Mon, 08 Aug 2022 07:24:31 +0000
+Received: from out1-smtp.messagingengine.com ([66.111.4.25])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oKwPE-00BtLK-1K
-	for linux-rockchip@lists.infradead.org; Mon, 08 Aug 2022 06:38:29 +0000
-Received: by mail-lj1-x22e.google.com with SMTP id r14so8813450ljp.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 07 Aug 2022 23:38:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=tJaOlNJnvpuuVPsZGu5FsCCSJWxw4AyuPGJcjlxUqJM=;
-        b=QcM0epFzISH7qYgagFl0U3HjKMvbLzNfLfjKL9vsGamNlRrxJnxeiCkKE7G0AVHva3
-         lg7tcddwWBDimD4g9gJ7DUGy87M35PjrIcjRjEF0ocfo9sgBVlx8W/nEylfuWuzzU5oZ
-         E+6fXw+osXINDcT+SxphuPk1pYQAxUJ7VcTMren9hIFlzVkdy+cKDhMKKhNaE9ebDM3o
-         UQCxDOkuIcHkuJMyV53YpqUDVHERRM9Z7T0sJLYTzsctFCJf1XyzExmT65Z8F73zCukM
-         LxPNjXrGrrPxN/kvmQ+Fbvtc2TDtlBB5+/eyqMVCf6LdrRV3APvi4P542hcijXQKoDtv
-         1rww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=tJaOlNJnvpuuVPsZGu5FsCCSJWxw4AyuPGJcjlxUqJM=;
-        b=ok5VHtW81z7/vz9mzNZs5neUsRPVLVV8Mm8YZYb5gGfj8O/YiMgxiRqy5FayPtcVwr
-         sayEC6/Q7VCNPWM9qC5f1+BzH84XGwvLoUasW9nakjg8JA5+Kt/qgY4XnhTzlLmeMINF
-         StaeWUehNJMobzuUxe0fBi13/fWhnzdGV9BnT62kfYV4YnaUIJ+N1DokQL3IySqTNuBI
-         XwvzuGBphHI1oqZuTU0LKvxdHor1CPHDV2DDrIYuqSr/rM5mqMQO6NirxTABGQAXas1/
-         kltQw0jyz5zAp4Uz0LPH3gZefOEZQGYD28FaxALGR4uFlTpuCRmmwq8AQkYBPD3GTYkV
-         zq0w==
-X-Gm-Message-State: ACgBeo2an8gtHNaKptizf+Q2zbYgYo1apFcB9UHCIDz1YtmEcHa1Lfxm
-	p4tZfmc4AuH49pC/HZB/hAmGfA==
-X-Google-Smtp-Source: AA6agR5AIWN6XBF5CyoMX8w9eG5KkshT9AMUozo8DvOohVm3dA7uhHirEgBpJOn+eohjxc5srQCecw==
-X-Received: by 2002:a2e:81d8:0:b0:25e:4ede:6d61 with SMTP id s24-20020a2e81d8000000b0025e4ede6d61mr4960452ljg.410.1659940703752;
-        Sun, 07 Aug 2022 23:38:23 -0700 (PDT)
-Received: from [192.168.1.39] ([83.146.140.105])
-        by smtp.gmail.com with ESMTPSA id m1-20020a056512114100b0048b27215fb3sm1321898lfg.41.2022.08.07.23.38.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 07 Aug 2022 23:38:23 -0700 (PDT)
-Message-ID: <cf320916-c88b-0c4a-7515-24318f1b85b2@linaro.org>
-Date: Mon, 8 Aug 2022 09:38:21 +0300
+	id 1oKx7c-00C6Ze-CP; Mon, 08 Aug 2022 07:24:22 +0000
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+	by mailout.nyi.internal (Postfix) with ESMTP id 8BCC25C010C;
+	Mon,  8 Aug 2022 03:24:13 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute3.internal (MEProxy); Mon, 08 Aug 2022 03:24:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	tom-fitzhenry.me.uk; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to; s=fm1; t=1659943453; x=1660029853; bh=cfXKwT2L2W
+	iIMULrPjrMghFNOd45gLJ8rGZDCFh9GPU=; b=Yxus/l2iuHs/pwJkTM5C2gwHgL
+	UrFT8YFfm0lEgdIxeujotqg9e211oeMqw1iTPt5eHJtNmiPbXkSMkhP/M/d0xfi6
+	32BnX5MwKINQ299Z8EjoTH6Qo3uzAL0yQNp+CL4BbmnNFAOXgHIViwQ5gzHIOoFX
+	rF7EnTDAwwNOaHb84ds/aatwnUJbYCz195mKMxTNc5lYvYPoQ5WRYjUIGb5vrzPR
+	ApqgH/sU3iRE1hWJNfsTenoVwRKCK7Su48oHa5v5j9d9Uhe78DsDb/T75T9+ex+i
+	HHL0mcmZmUCZ4Nm+Qh30R5dDDMtRNwrhZJc48gwZNfBUfGOdh22iID48qFmg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:date:date:feedback-id:feedback-id:from:from
+	:in-reply-to:in-reply-to:message-id:mime-version:references
+	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1659943453; x=
+	1660029853; bh=cfXKwT2L2WiIMULrPjrMghFNOd45gLJ8rGZDCFh9GPU=; b=C
+	rxpsC7Yb13DKjBueJjjiYgKO9XsT4cFdLaILTPN9er+gboMsVHqfCnn75oteoJ+S
+	o/vx5xd+du0zwxLCdEypAheFShKgLZnt+JDEv+f6oa72sctaqGXwK/2zYcONNon6
+	j6Wx2iaq7KFZu95Saeyodpd0OjEL1F6LZl9vf0milcS83keP3RQZrZdL8Gw+/5yT
+	Y4yEXkbeH/BtHDIQX7d26knJtwWbtL5HZQYxP5cRhSK4qTLrvrsjfQIkMPAa9o3m
+	kARXmoETQ8437f9GxYStnZ5/wLSruPIhWZbFpelZHkC+P53UtSTWQWHRCuRtTO/4
+	fqXn/kXl9z3IiifxQceOA==
+X-ME-Sender: <xms:HLrwYgB62IxBquFN-LI7ebW5i4FFdTztOfuh0HaW8NSspyWZpEjPuw>
+    <xme:HLrwYigOvjW2NutFojZXfH8WkDUJjggmUe3GFBbDziAH37yE1U9TL0ISfLfKQ9DaW
+    IC2kqxmqmCljPQDkw>
+X-ME-Received: <xmr:HLrwYjlP5FbLSr5uzkG5xcYlRZ8aWT0Qn_Mc8M2aRIdWxzsTyILkPAqt3ww7LZQTk6ZzRTWtfrHNS4Ppx2Vn4tVk>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvdefjedguddujecutefuodetggdotefrod
+    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
+    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+    enucfjughrpefkffggfgfuvfevfhfhjggtgfesthejredttdefjeenucfhrhhomhepvfho
+    mhcuhfhithiihhgvnhhrhicuoehtohhmsehtohhmqdhfihhtiihhvghnrhihrdhmvgdruh
+    hkqeenucggtffrrghtthgvrhhnpedvgeehhefhtdffuddvtddvhfdtudeuhfejhfetvdeg
+    teelfeduheejfefgtdekieenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluh
+    hsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepthhomhesthhomhdq
+    fhhithiihhgvnhhrhidrmhgvrdhukh
+X-ME-Proxy: <xmx:HLrwYmxd0tnTDdadZDzkGmBfDKfDMsTa--QtOxp2g_Sf5pmicu5WTg>
+    <xmx:HLrwYlSTVMIk-abDMxsck8i9-PWeQDPDlSQYUn8mKDKLeVkXPp6Rdw>
+    <xmx:HLrwYhbPtuQaSXKNA5d6fjfQhWw6Z7kzi2QeGU_hCZ6yLJ5q42VUVQ>
+    <xmx:HbrwYhqO5YY-HidK0Q7p-sb0UFfuB3VhDqvkkKDlxA43D4sOz_Zvdg>
+Feedback-ID: iefc945ae:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 8 Aug 2022 03:24:09 -0400 (EDT)
+Message-ID: <88cea6f0-c76a-a1e6-48bf-1c0598df4df6@tom-fitzhenry.me.uk>
+Date: Mon, 8 Aug 2022 17:24:06 +1000
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.0.3
 Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: Add initial support for
  Pine64 PinePhone Pro
-Content-Language: en-US
-To: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>,
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
  Caleb Connolly <kc@postmarketos.org>, robh+dt@kernel.org,
  krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de
 Cc: megi@xff.cz, martijn@brixit.nl, ayufan@ayufan.eu,
@@ -77,11 +90,14 @@ References: <20220805234411.303055-1-tom@tom-fitzhenry.me.uk>
  <20220805234411.303055-4-tom@tom-fitzhenry.me.uk>
  <f9cbc047-f30f-e711-3213-56fcbb7bbc8a@postmarketos.org>
  <9a168a20-1fd1-5d73-1d33-bd2f054d60d7@tom-fitzhenry.me.uk>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <9a168a20-1fd1-5d73-1d33-bd2f054d60d7@tom-fitzhenry.me.uk>
+ <cf320916-c88b-0c4a-7515-24318f1b85b2@linaro.org>
+Content-Language: en-US
+From: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
+In-Reply-To: <cf320916-c88b-0c4a-7515-24318f1b85b2@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220807_233828_128123_3C5D667C 
-X-CRM114-Status: GOOD (  21.04  )
+X-CRM114-CacheID: sfid-20220808_002421_037109_4A0C17D5 
+X-CRM114-Status: UNSURE (   8.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,56 +109,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 06/08/2022 04:37, Tom Fitzhenry wrote:
-> On 6/8/22 12:10, Caleb Connolly wrote:
->> I was surprised to see this series, and this patch especially.
->> An almost ready to submit version of this patch with considerably more 
->> functionality has been sat around for a while but unfortunately never 
->> sent [1].
+On 8/8/22 16:38, Krzysztof Kozlowski wrote:
+>> I agree authorship is important, and thus Kamil, Martijn and Megi are
+>> listed as Co-developed-by in this patch.
 > 
-> Firstly, thank you for your review!
-> 
-> I'm not sure why that other patch series has never been submitted. It 
-> was prepared 3 months ago (unbeknownst to me, at the time of v1), but 
-> since then has not been submitted.
-> 
-> I would feel uncomfortable submitting that patch series, since I am not 
-> familiar with parts of the full DT. In time I intend to be, but for now 
-> I think we'd benefit from having a base DT mainlined, on top of which we 
-> can iterate and parallelise.
-> 
->> According to the link below (and my own knowledge of PPP development) 
->> Kamil is the original author of this patch, both Kamil and Martijn 
->> created the initial version of the devicetree. Given that you're using 
->> their work as a base, Kamil's authorship should be respected in the 
->> patch you submit.
-> 
-> I agree authorship is important, and thus Kamil, Martijn and Megi are 
-> listed as Co-developed-by in this patch.
+> But you miss their SoB... Without them you should not send it. It does
+> not pass checkpatch, does it?
 
-But you miss their SoB... Without them you should not send it. It does
-not pass checkpatch, does it?
-
-> 
->> Their original patch [2] contained SoBs from them and Martijn, those are 
->> both missing below. Both of their signed-off-by tags should be added 
->> before this patch hits the mailing list, and the same for Ondrej. The 
->> order also seems wrong (Ondrej should be last before you).
-> 
-> Yes, this patch's acceptance is blocked until all Co-developed-by 
-> authors (Kamil, Martjin, Megi) provide their Signed-off-by to this patch.
-
-You add SoB based on original work. When you send a patch, it is
-expected to be ready (so having correct DCO chain), not incomplete from
-our process point of view.
-
-Best regards,
-Krzysztof
+Sorry, my bad. I see 
+https://www.kernel.org/doc/html/latest/process/submitting-patches.html 
+lists to use checkpatch. I had read this but had since forgotten. I will 
+ensure future patches pass checkpatch.
 
 _______________________________________________
 Linux-rockchip mailing list
