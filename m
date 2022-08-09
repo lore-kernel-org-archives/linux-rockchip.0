@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F12EEC19F2D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Aug 2022 18:44:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99218C19F2D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Aug 2022 19:55:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/XjS0+J3YPE4MXxQS7Ok3/UQP3rux1BRPUQUsD4SrP0=; b=bNOgDosSkB06Gdw0xJem27Glg2
-	fqywHQiutes8EbgObkN1FZDyXnZLKnkkdMZ6lTsubld9XGHGS0TDJTjRkOg2F3wKTyY3VpzZbw4ya
-	PwBugWulPreQCnVXv7F+6OFkm6Pk14/Vj1DVa4Js9B6tdTqhE+jLa+eHqTpJUPi/e1yP2i4Y3K0kM
-	MovGK3Jjxe8jt0F+XgPRAtUUbQ5nsxHYe6AI0a8ZU02jqzQwsxp2YKAM6iWS9VE5qpnuG74w+PN5Q
-	bdad2qWGvsZ9J3Zw5g1u1+k3w4YZTT8RKJTt5SJsPeWV4aRxAQcPXwXTihmjCgr0Q3HFsNJOjG/SS
-	c/MNMyrw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3AeUylZm8m0vVURMrXHGrb543YtRuFFvYzK6hkXpt4c=; b=zJZVoz0RvYnRqc
+	0F8yRLtozfvv6/z+6RDe+kjUpE1i6PZ2CyL09JpzgKJKyO8bUAh6GWa4UCLdqrtHueVoTFiCoYYwE
+	VTtDYWqV/5lUKBASnz8n9tHuDSZH3B0UpKpWht2mKYS3c5zMo2rYPHjFo7I1EakfM6N+K4VZEe5bS
+	lCQuhMnep5F2hQJOccZjXZSd0XdQivf1JB7XocDVPVLTdzOT7xEJZ4SsCxqRDzoChuEbvfjIU6UnE
+	qniBeJSLJFwKpTaMgXwwSXynCNloYrOu1SwHC3DvkFoGKpRhY04c+37jjvY0mE15z4f7lv/o7YJU5
+	mE+/3INlGojQFicdLnaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oLUCl-005bXx-9N; Tue, 09 Aug 2022 18:43:51 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1oLVJw-0063BE-5U; Tue, 09 Aug 2022 19:55:20 +0000
+Received: from mail-io1-f41.google.com ([209.85.166.41])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oLUCi-005bUO-B8
-	for linux-rockchip@lists.infradead.org; Tue, 09 Aug 2022 18:43:49 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <mgr@pengutronix.de>)
-	id 1oLUCR-0005YX-Q3; Tue, 09 Aug 2022 20:43:31 +0200
-Received: from mgr by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <mgr@pengutronix.de>)
-	id 1oLUCQ-0000nP-Ee; Tue, 09 Aug 2022 20:43:30 +0200
-Date: Tue, 9 Aug 2022 20:43:30 +0200
-From: Michael Grzeschik <mgr@pengutronix.de>
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 2/3] media: hantro: Add support for RK356x JPEG encoder
-Message-ID: <20220809184330.GA4380@pengutronix.de>
-References: <20220427224438.335327-1-frattaroli.nicolas@gmail.com>
- <20220427224438.335327-3-frattaroli.nicolas@gmail.com>
- <20220809124508.GL14307@pengutronix.de>
+	id 1oLVJt-00638l-VY; Tue, 09 Aug 2022 19:55:19 +0000
+Received: by mail-io1-f41.google.com with SMTP id g15so3969969iob.0;
+        Tue, 09 Aug 2022 12:55:16 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
+        bh=NmRiglbyS3f2eZJNSmpjxkkODRr60iCR5V5oFeVX7Yg=;
+        b=fP4I1a8zAWG5pwUm7BrxC6S6IXP7YvRssDOB9utZt1A5+lKG+XWX2oz/sc73/zy7a8
+         kPZiRbJqb50Ax9O3xeSRRBvccZ3cFarkQ0TdTYvUw8hC84JWln/uNh7JpZTnArRxgUDh
+         Pjs3RbWyO5XpVOStjE27urGGoWpaOld6meG6O6KD1T8l3YvB33lbLl2hXmBEgqU9tj59
+         OQtE7XjhB8KjJGIaImZ1vB5Y5xrtALgaytriZUkLau/f23Atxw3knNDFZv9BUstYhcrg
+         OGPec7rCenI1OezqtiZYsIfuVlvjyrryi41Qk7yYMCJeeytfABqkNQ3roRItDVvgjzVK
+         WNWg==
+X-Gm-Message-State: ACgBeo3ThzIjPkp2ZqOzOt65DAAxPyEztVhynrzhmBh9+3OZqH/JoB+Q
+	jfJcX632Z6YLgHGoGHrECZroPBmDYQ==
+X-Google-Smtp-Source: AA6agR6cqChrqIDYR3Ko5vcObSAMv92y6qwdjRLtpx40VfdXKfVMvdj5N5v2nZfgMRstlLkPya01EQ==
+X-Received: by 2002:a05:6638:3801:b0:343:29b3:d459 with SMTP id i1-20020a056638380100b0034329b3d459mr2398142jav.302.1660074916021;
+        Tue, 09 Aug 2022 12:55:16 -0700 (PDT)
+Received: from robh.at.kernel.org ([64.188.179.248])
+        by smtp.gmail.com with ESMTPSA id s17-20020a02b151000000b003433b686389sm139055jah.62.2022.08.09.12.55.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 09 Aug 2022 12:55:15 -0700 (PDT)
+Received: (nullmailer pid 2286622 invoked by uid 1000);
+	Tue, 09 Aug 2022 19:55:13 -0000
+Date: Tue, 9 Aug 2022 13:55:13 -0600
+From: Rob Herring <robh@kernel.org>
+To: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
+Cc: ayufan@ayufan.eu, linux-rockchip@lists.infradead.org, martijn@brixit.nl, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, heiko@sntech.de, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org, megi@xff.cz
+Subject: Re: [PATCH v2 2/3] dt-bindings: arm: rockchip: Add PinePhone Pro
+ bindings
+Message-ID: <20220809195513.GA2286588-robh@kernel.org>
+References: <20220805234411.303055-1-tom@tom-fitzhenry.me.uk>
+ <20220805234411.303055-3-tom@tom-fitzhenry.me.uk>
 MIME-Version: 1.0
-In-Reply-To: <20220809124508.GL14307@pengutronix.de>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: mgr@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <20220805234411.303055-3-tom@tom-fitzhenry.me.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220809_114348_416638_5F7E91DE 
-X-CRM114-Status: GOOD (  23.93  )
+X-CRM114-CacheID: sfid-20220809_125518_033300_14081361 
+X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,115 +75,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3935440554821542345=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Sat, 06 Aug 2022 09:44:10 +1000, Tom Fitzhenry wrote:
+> Document board compatible names for Pine64 PinePhonePro.
+> 
+> https://wiki.pine64.org/wiki/PinePhone_Pro
+> 
+> Signed-off-by: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
+> ---
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
 
---===============3935440554821542345==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="azLHFNyN32YCQGCU"
-Content-Disposition: inline
-
-
---azLHFNyN32YCQGCU
-Content-Type: text/plain; charset=us-ascii; format=flowed
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Aug 09, 2022 at 02:45:08PM +0200, Michael Grzeschik wrote:
->On Thu, Apr 28, 2022 at 12:44:37AM +0200, Nicolas Frattaroli wrote:
->>The RK3566 and RK3568 SoCs come with a small Hantro instance which
->>is solely dedicated to encoding JPEG. This patch adds the necessary
->>structs to the Hantro driver to allow it to function.
->>
->>Tested with the following GStreamer command:
->>
->>gst-launch-1.0 videotestsrc ! v4l2jpegenc ! matroskamux ! \
->>              filesink location=3Dfoo.mkv
->
->I just tried this pipeline on v5.19. The filesize generated is increasing =
-and
->data is generated. However the content seems to be unusable.
->
->When playing foo.mkv with e.g. vlc the following errors, that no JPEG data=
- was found
->in the images, is generated:
->
->
->[mjpeg @ 0x7f2f08c1f780] No JPEG data found in image
->[mjpeg @ 0x7f2f08c1f780] No JPEG data found in image
->[mjpeg @ 0x7f2f08c1f780] No JPEG data found in image
->...
->
->
->The same with gstreamer:
->
->gst-launch-1.0 filesrc location=3Dfoo.mkv ! decodebin ! glimagesink
->../ext/jpeg/gstjpegdec.c(1418): gst_jpeg_dec_handle_frame (): /GstPipeline=
-:pipeline0/GstDecodeBin:decodebin0/GstJpegDec:jpegdec0:
->Decode error #53: Not a JPEG file: starts with 0x00 0x00
->..
->
->
->Do you have an idea why that is? Did you test the pipeline with an earlier
->kernelversion and validated the generated content of foo.mkv?
-
-After further debugging, I found out that my latest port of the bootlin
-patches to support h264 encoding broke the hantro driver somehow.
-
-https://git.pengutronix.de/cgit/mgr/linux/log/?h=3Dv5.19/topic/rk3568-vepu-=
-h264-stateless-bootlin
-
-The good news about that is; it is possible that the same issue
-was the cause that I thought the h264 encoding is not supported on
-the VEPU121. So the support is still unknown
-
-I will come back to that.
-
-Regards,
-Michael
-
-
---=20
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
-
---azLHFNyN32YCQGCU
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEElXvEUs6VPX6mDPT8C+njFXoeLGQFAmLyqs8ACgkQC+njFXoe
-LGQItRAAj/Maz6S+qvjgj2qxwTHOXNKpxXLuukYWID55zyIjCBhMX0TmPsGTIQQD
-bkD2FB31dykYjtx5JepDztiDPoTFe1JH8FFrnOR/d1rNl40oZRVefBBMxgcS3niF
-PZXOD0tQ3Z3jyXOVD9AUPUJWsJl0w5ROBJjtkgCpF0KfH+29S90xPe3ktFZaU6bY
-KScHe3dLKEKNEHs/6tjgI3VphHabmxcFj3iucSm88jio8GLx67uWN6rKjKkZxHz8
-f5yw6Ta96yVUL3G0mPrlMVL4SlI7jnEinbGL5lYHXO5sfKej4nZfLEIbtVxXTHP2
-TfHup6Ws6dFAoYUcKTGwvzblbtH5Y/6Nk8LyCud/NZT3DBEr9MZRbjizlC/QGeAY
-yjryjYiCJMxi0f7IkhCGYupBRKb7eofugJAymiaMKHrGRctRSXUfj0twHxrBzMz6
-fYVWhYqSmjrZjsRIqg1q0GUu24kG1UtCnvqnkhSJIvSGYpIXmKeeKkDaEVhD0V6r
-wP2VX0dJfbf5Jp9zpNynVY0YacOngis5muLKTnbBeATXEH1Inv+ShzoaiHRrk1t8
-FQ6IFRv8HiR+zZFy4y3vWDo4m1xzoRR03Jmhf/CYBASPIHhQk3oU3ArqtEEigkA9
-OO2fTaFTnrFipkOSgysdGAl9/KXpuwXFdmiwoXmWlzj1ZEsFlGI=
-=BxJZ
------END PGP SIGNATURE-----
-
---azLHFNyN32YCQGCU--
-
-
---===============3935440554821542345==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3935440554821542345==--
-
