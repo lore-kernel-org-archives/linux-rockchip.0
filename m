@@ -4,67 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F529C19F2A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 11 Aug 2022 16:03:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32B27C19F2D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 12 Aug 2022 14:33:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r2deflVniQq6hJgJiQUIwaDlICMFrJwmckqzQ8UA7w4=; b=RsPe9Cd5CSZhrj
-	X/wvaktIq/5kLimbRPjmXWr42z3QXG1TTgzHCh17k5W13lWb4Z2BmZwfPX9wpKSXJ66VTnE9eNjn5
-	UZ+dgo51c80d85VR9ZhIRIYn5rAcB2dHp9+80xzOfgVXz0Fb5iVGUE7aGBoH38LzEnbGmforntkr/
-	5gZUYlCNUZWIP73PLqVmaTzxZ6g/4EnfJk3Lqx9UmQd8HJaUHrDUWhHJ8EzwJzWyvNi/eKr2I4IOu
-	ey2m2T3Ocr+GoyGlGaMabP6q40MjMCv4cbqi1Dvjh8QdLQ1HzEzMeO/e2NZOK36h3p89qrnG3zUxQ
-	iu/JScWuDoSW+hnDEhLg==;
+	List-Owner; bh=6Va+OiXEkaQR9Eolgf+a8cOUZjbrIswd7P9xZEF/UJs=; b=DseHI2pj+xhQmR
+	uYk0XCGJaHTTuhJ8lWH3C+cwE6WMvRtWYt8NwmWr+n7S1J4mT4P/plx88HuO54TBTSIBEPEHVZBRd
+	Dh71SrKkelCVoReXkoyXVWA0jlr+aTz3mD59G98s7s04crBZAmhJZ9Dg2gBgXb3DSi9taNmJxKtPl
+	TGoXNTJvSjDMQTGRxnfqLoj4gH9+w97hKfBWTQwovehXAtGPjGPqKdxsgvL8SMQAbPLViVvBkC9Ab
+	fnGW3zSXMOWFlBDCbL5DwTtQacCgWDqh4oUSQWVTHgRG2R3/1AZSnTc2X7wRePN4bh8grJzZjRy57
+	mFQDXAOP/AOMMYb24AjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMAdv-00EdVH-Gq; Thu, 11 Aug 2022 16:02:43 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oMVie-008xot-T8; Fri, 12 Aug 2022 14:33:00 +0000
+Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oMAda-00EdAb-Jd; Thu, 11 Aug 2022 16:02:24 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0323761381;
-	Thu, 11 Aug 2022 16:02:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01C33C433D6;
-	Thu, 11 Aug 2022 16:02:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1660233741;
-	bh=BV8jj4uDtRkShNpde69E+aTS/tFXYjqy6nYKYoj5vrs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=B8GU+AZK72+70tPLCON3fNdIHBnIFzv7jfaQ1wDfwdBQtnMBAI34ljr14tlQGcJsj
-	 TuAr/rY/UjfMq/v4L0duEa+GFZlKS1iAVtOkaWXLneZHITlM2oMjM2S7xStw5tYwGd
-	 Zq3z8I3iAs6A0k0qps4Or+nuShJ1MuZEiN9l85ShIAoG7vlR1QZwhg2sgrh/JUQD3J
-	 +pgyxoyO2B16HixQbcTMXDaL+Ur50BUtV8YBNyI5syvjqB24x7vzbx+Xs6E7hsW5dY
-	 Ercx/sGTfdmwgxwHGGMjoFUmCbpR2eQt4Le9V+dA6X3y1a5Uwc9oiOTYy5SElRet0h
-	 GLFy+iTHk8Ylw==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
+	id 1oMViZ-008xiT-57; Fri, 12 Aug 2022 14:32:59 +0000
+Received: by mail-ot1-x32a.google.com with SMTP id h9-20020a9d5549000000b0063727299bb4so665470oti.9;
+        Fri, 12 Aug 2022 07:32:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc;
+        bh=ORAgmiG57p/S9ocR1iRk76VvyBsd1+DxcS7O0rlHDs0=;
+        b=L19EYLdShAwN3qzEFR6fD2T75Fo5SjgH9YAE1tB7BZwbamNWm69s2TazBuiEWpVdjP
+         6q90Et1+osane5GyjPjHIy/N7zHzKxkZtj3iLNBKt1AZZtGDaRrGGXmERhGxR5P8bcYb
+         EkHQVxOwW5nmHP/KaWYGKrMA+b1I621PC7b87OhtknlVyKmNHxa3ncfUa9GQxcEZUd+Z
+         aLpauA69TRhf1xl6Piz8oQHi1D5vQnzaGxicUSsJpLGz/SpcIdCy3qbrV2WE/KfoNdGr
+         frF+a2SAfgDJ0+yRRP8MBG1SGcY+tkHN2VGLKMgOTI3t8v6YRs/AJj5uCYhlT1SMx2Kx
+         7rhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
+        bh=ORAgmiG57p/S9ocR1iRk76VvyBsd1+DxcS7O0rlHDs0=;
+        b=BIQURCzOIqueZOjB6oN9PNJERpU8D+6mpGYzOn0mS7KwjTZGsdvWOuj7WfdEE3LlZ4
+         zNX67yX48x2DSRy5x8op+PW5bHYsCfGYd6uWBbAPpiT0+fDbbGG/xJBcoeuBfofUFMiY
+         OhTKJGQsD8AdccJniQiVWDunLloGXHbsQxfC0GQsiBnTJd+dGnjUjiWbgEgS6b7ExtwE
+         Fw6BSj81shPC7yWwjtdBlUPk5PZA12MPMAHDhW0MqSGsi8DkX2GaE9qCE/O3duerJiMK
+         JQFVvT0M0DbHfZnwcfbulokS5anSeS+QpEkuoSj2eL4/lKjZuXQBPvajV+U/AFfRdAZM
+         /BVQ==
+X-Gm-Message-State: ACgBeo1kcs7nukHGPVwkO2vAdilNEXEaSwzb/TEuZXR9nk1CK3Z2NAbo
+	VWAYbASyxrCQ5WEOfV5hfUolDirDvP0=
+X-Google-Smtp-Source: AA6agR5VxJHnzw9+8xRuZYBQGYnX+/ThoSrZzHgyNEu8fN+Id2bgeKZHZFCAIxPWejdhKq8FHKUUaA==
+X-Received: by 2002:a05:6830:16d9:b0:637:2e86:68a8 with SMTP id l25-20020a05683016d900b006372e8668a8mr1497242otr.334.1660314772643;
+        Fri, 12 Aug 2022 07:32:52 -0700 (PDT)
+Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com. [76.183.134.35])
+        by smtp.gmail.com with ESMTPSA id n28-20020a0568080a1c00b003436fa2c23bsm282879oij.7.2022.08.12.07.32.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 12 Aug 2022 07:32:52 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	vkoul@kernel.org,
+	kishon@ti.com,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	daniel@ffwll.ch,
+	airlied@linux.ie,
 	heiko@sntech.de,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 53/69] media: rkisp1: Disable runtime PM in probe error path
-Date: Thu, 11 Aug 2022 11:56:02 -0400
-Message-Id: <20220811155632.1536867-53-sashal@kernel.org>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220811155632.1536867-1-sashal@kernel.org>
-References: <20220811155632.1536867-1-sashal@kernel.org>
+	hjc@rock-chips.com,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [RFC 1/4] dt-bindings: display: rockchip-dsi: add rk3568 compatible
+Date: Fri, 12 Aug 2022 09:32:44 -0500
+Message-Id: <20220812143247.25825-2-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220812143247.25825-1-macroalpha82@gmail.com>
+References: <20220812143247.25825-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220811_090222_758553_989B17A7 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20220812_073255_224480_8344D783 
+X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,45 +98,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+From: Chris Morgan <macromorgan@hotmail.com>
 
-[ Upstream commit 13c9810281f8b24af9b7712cd84a1fce61843e93 ]
+The rk3568 uses the same dw-mipi-dsi controller as previous Rockchip
+SOCs, so add a compatible string for it.
 
-If the v4l2_device_register() call fails, runtime PM is left enabled.
-Fix it.
-
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Reviewed-by: Dafna Hirschfeld <dafna@fastmail.com>
-Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>
-Signed-off-by: Mauro Carvalho Chehab <mchehab@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ .../bindings/display/rockchip/dw_mipi_dsi_rockchip.txt           | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-index 560f928c3752..79cfa99f2a64 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-@@ -514,7 +514,7 @@ static int rkisp1_probe(struct platform_device *pdev)
- 
- 	ret = v4l2_device_register(rkisp1->dev, &rkisp1->v4l2_dev);
- 	if (ret)
--		return ret;
-+		goto err_pm_runtime_disable;
- 
- 	ret = media_device_register(&rkisp1->media_dev);
- 	if (ret) {
-@@ -534,6 +534,7 @@ static int rkisp1_probe(struct platform_device *pdev)
- 	media_device_unregister(&rkisp1->media_dev);
- err_unreg_v4l2_dev:
- 	v4l2_device_unregister(&rkisp1->v4l2_dev);
-+err_pm_runtime_disable:
- 	pm_runtime_disable(&pdev->dev);
- 	return ret;
- }
+diff --git a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+index 39792f051d2d..9a223df8530c 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
++++ b/Documentation/devicetree/bindings/display/rockchip/dw_mipi_dsi_rockchip.txt
+@@ -8,6 +8,7 @@ Required properties:
+ 	"rockchip,px30-mipi-dsi", "snps,dw-mipi-dsi"
+ 	"rockchip,rk3288-mipi-dsi", "snps,dw-mipi-dsi"
+ 	"rockchip,rk3399-mipi-dsi", "snps,dw-mipi-dsi"
++	"rockchip,rk3568-mipi-dsi", "snps,dw-mipi-dsi"
+ - reg: Represent the physical address range of the controller.
+ - interrupts: Represent the controller's interrupt to the CPU(s).
+ - clocks, clock-names: Phandles to the controller's pll reference
 -- 
-2.35.1
+2.25.1
 
 
 _______________________________________________
