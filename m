@@ -4,98 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34965C25B06
-	for <linux-rockchip@archiver.kernel.org>; Sun, 14 Aug 2022 22:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1442C00140
+	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Aug 2022 04:29:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y1QW+FMnn4loc6vhloFQAxEAnxHdO/BpWJ2ZDuXPwWQ=; b=jwK0W4LuOzORDf
-	mJsT7iQWvuw4eKl3usccmfBDPliPPYTmx7snDOLE24ADVdyJ6fhQ7uqYlSW102PKg7aBdQQ6CYKME
-	DmL+hm05mLEcWE/em/k0w2EsahNM5ASFlat1vql0HzqwwRQfLgyeS/Dzk6xRgj6r4H3ppP942GvWJ
-	fN16TxsGTb6JxXT6nKs63nV59tyfL6jSNasFlDaKJP3Oxhk3GZPK9YiWP/n5J/VsfgHQ71plBtUMP
-	u2K5QsSH+BrDpWZ5vOtJg3ginm4pIohZ8wuvNN8HnKHP0zsSfwAYDBOpPBOjMBRkOyGHtQ+E5eNX5
-	DKo00pKfYaufo66lcvJQ==;
+	List-Owner; bh=Zap/75xbRuZJGjJV1yDbHOTAOXzAChl8PYMFwCIFL+U=; b=YVEVMWCtskglEA
+	EQX69nuYa1zAvH120VYQvZFkCGVLmW/pbr/3REdVx5GuxUYolb2MWq2b2jxE7RR6yMfcqn+txFoSI
+	OQmjv5cLKuC+P/9a0pZ9IRtxqasYxYmbFFdF1tCpyhj4T5CzgXNJHe1DG9eTjnm37f0DgZtTOUgtv
+	bFTWit5ozELLaSGj+Ciz/wiPSdmT6h0ZMEiAh5aFAqhfc1Ki8niLtC1M0q2ybuC8CklXu2IfS8Q7o
+	dwLGMAdZrZGpAF+ILxFQvu8xE0jFvIOVPuD+TKm5G8sRj03Rgsh5/nT8vZmys2wDXI6zMxB8n256Q
+	6KTkHmGK9ys+JbJMVUUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNLg7-009Oep-0e; Sun, 14 Aug 2022 22:01:51 +0000
-Received: from out2-smtp.messagingengine.com ([66.111.4.26])
+	id 1oNRj1-00BCr4-RS; Mon, 15 Aug 2022 04:29:15 +0000
+Received: from mail-m11876.qiye.163.com ([115.236.118.76])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNLfv-009Oat-NZ; Sun, 14 Aug 2022 22:01:41 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
-	by mailout.nyi.internal (Postfix) with ESMTP id 5540D5C0039;
-	Sun, 14 Aug 2022 18:01:36 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
-  by compute3.internal (MEProxy); Sun, 14 Aug 2022 18:01:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=undef.tools; h=
-	cc:cc:content-transfer-encoding:content-type:date:date:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:sender:subject:subject:to:to; s=fm1; t=1660514496; x=
-	1660600896; bh=/N3ZJwMAuJKQJaLlb+5nhdHUlf08GWvC6v41/Xejl+U=; b=x
-	lK5hEAvRjyvkoTXfINnBahnjIYJHP+GfNL0MaIZxCfWpEegPDjesCrG4oETdCh2T
-	JpxLIWJh11b28A0E3qpAcdHzp5ng8BlJsPNF9zg/LIAC3JuSBfZOcVBPdxN/ALSZ
-	JQLHpTH7nHHG6pD5kQO45vqgHj7BlVTf9CBIjGOVP56qfEdkz9OyWJSSJYjtgrJP
-	67ZAi59dU4sJX8z9EKTAgvNnA5Q8VCVOx6Hy5WBJ/pRZ30bhAC1bJivfIbDy2BVh
-	QIsZItddkgpeY3Tj1V14QZgl+qes/mwCek38q/9NHWhvB5x6fc7Ho1nyNRMYYO32
-	VjZnrH3yc1VSoXc2SCQxA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:date:date:feedback-id:feedback-id:from:from
-	:in-reply-to:in-reply-to:message-id:mime-version:references
-	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1660514496; x=
-	1660600896; bh=/N3ZJwMAuJKQJaLlb+5nhdHUlf08GWvC6v41/Xejl+U=; b=J
-	NQaUkm4Fe/AlZMS5GBleTwq4sC7yCbf0SqagIxbXqpe1CXbbEkk/WBfeDz8bIQVp
-	x4SgQD/pjUnvd2X0V5959jefvXqSkU/kiUyCjDBNJcKSJzQWYDVqLms0dXmP2a/I
-	PZqaqyMRW1fvFYSlkBuRxWU/h8uwECfcuwzUYPZj7VnKnsieSi+zjyratj3qBlsz
-	axPRn8Fzj/kI5Hg1wzGRJ5vHvZiNWW6nrGqQRQnEHR2FgXKXy8B80nO7bCZnmZQR
-	Msjys/sU5YDzi8TobV8WXB8jCNHFXHoxgbqf7foeIog1s/SqCwufY1EVQPP1hiPe
-	gsiZMveKvFlTmRFFY1pWA==
-X-ME-Sender: <xms:vnD5YsV1vQ3t6ALRWjpPp33qCgjgTKbRYQQ_O2d98f3lCRQ0Qjca7A>
-    <xme:vnD5Ygk_DMGmx__aEbWR0z7dCYMjGf38XDgsVqbNTwMgE0BqKp370G_jvfujoOtv5
-    fs063N9h6MdYwmMC_U>
-X-ME-Received: <xmr:vnD5YgZFhRS0qPf4xt93VxKcOatQuGXL-zAEtWe3cSTduvh6GDOuslRdclOtVpNl2oH_8rB6fG6oalSRhP756kJjrQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvdehuddgtdejucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepkfffgggfuffvvehfhfgjtgfgsehtjeertddtfeejnecuhfhrohhmpeflrghr
-    rhgrhhcuifhoshgsvghllhcuoehkvghrnhgvlhesuhhnuggvfhdrthhoohhlsheqnecugg
-    ftrfgrthhtvghrnhepvedtgeffledtjeegkeevfeegieevgffhveeuteduleeileetffel
-    hfduheevhffgnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrh
-    homhepkhgvrhhnvghlsehunhguvghfrdhtohholhhs
-X-ME-Proxy: <xmx:vnD5YrUzLZOhvg1AQ4ACTDahXthnJVg1Q2f8HipwqI4rPYT3cUuVfA>
-    <xmx:vnD5Ymlm0yNblouP4Nc17d3aBbdNXyrGfQAKHDcIhL4IQ95gk-jnCg>
-    <xmx:vnD5YgeNtyZLKZ21XaVsz-LZs8VXPwDo24fa8iC5MXbcWvi3PQhe2g>
-    <xmx:wHD5Yrir-iNt9pquSWGrIzaAPRu8b4qZxo-ndXRFG-1Q4ShX6-OfmQ>
-Feedback-ID: id76147eb:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sun,
- 14 Aug 2022 18:01:30 -0400 (EDT)
-Message-ID: <821647de-be45-557a-e1eb-2e70e186f2d8@undef.tools>
-Date: Mon, 15 Aug 2022 08:01:52 +1000
+	id 1oNRix-00BCmk-1k
+	for linux-rockchip@lists.infradead.org; Mon, 15 Aug 2022 04:29:13 +0000
+Received: from [172.16.12.93] (unknown [58.22.7.114])
+	by mail-m11876.qiye.163.com (Hmail) with ESMTPA id DD87B3C0560;
+	Mon, 15 Aug 2022 12:29:01 +0800 (CST)
+Message-ID: <61c26023-7503-4fe4-fa2b-b33b1dd055de@rock-chips.com>
+Date: Mon, 15 Aug 2022 12:29:01 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Subject: Re: [PATCH] media: rockchip: rga: Fix probe rga_parse_dt bugs
-Content-Language: en-AU
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Jacob Chen <jacob-chen@iotwrt.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Linux Media Mailing List <linux-media@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- arm-mail-list <linux-arm-kernel@lists.infradead.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- phone-devel@vger.kernel.org, Ondrej Jirman <megi@xff.cz>
-References: <20220814040806.7523-1-kernel@undef.tools>
- <CAMdYzYoD9kM_RNs0t=7qc9Tyt9j-cD0DEQD0sR5cEkkGifFSSA@mail.gmail.com>
-From: Jarrah Gosbell <kernel@undef.tools>
-In-Reply-To: <CAMdYzYoD9kM_RNs0t=7qc9Tyt9j-cD0DEQD0sR5cEkkGifFSSA@mail.gmail.com>
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v2 00/11] Add Rockchip IDB device
+Content-Language: en-US
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: sjg@chromium.org, philipp.tomsich@vrull.eu, xypron.glpk@gmx.de,
+ yifeng.zhao@rock-chips.com, jon.lin@rock-chips.com, u-boot@lists.denx.de,
+ linux-rockchip@lists.infradead.org, miquel.raynal@bootlin.com,
+ michael@amarulasolutions.com, dario.binacchi@amarulasolutions.com
+References: <a1458a7b-2043-6397-3107-2d1fdf08c8e1@gmail.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+In-Reply-To: <a1458a7b-2043-6397-3107-2d1fdf08c8e1@gmail.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVlCGR9MVh1CHUxOGBlNTUlDTVUTARMWGhIXJB
+	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktISkxVS1kG
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PTo6HCo*Az08FR8CQxIeAT0a
+	NwwKCx5VSlVKTU1LTkhMTE9JTU9JVTMWGhIXVRAeDR4JVQIaFRw7CRQYEFYYExILCFUYFBZFWVdZ
+	EgtZQVlOQ1VJSVVMVUpKT1lXWQgBWUFMQ0xJNwY+
+X-HM-Tid: 0a829fc323822eb2kusndd87b3c0560
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220814_150140_027879_15E8E1F4 
-X-CRM114-Status: UNSURE (   9.20  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220814_212911_458671_73750817 
+X-CRM114-Status: GOOD (  32.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,23 +69,172 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Johan,
 
-On 8/14/22 23:12, Peter Geis wrote:
->>          ret = rga_parse_dt(rga);
->> -       if (ret)
->> +       if (ret) {
->>                  dev_err(&pdev->dev, "Unable to parse OF data\n");
-> If this can return EPROBE_DEFER, shouldn't this be dev_err_probe
-> instead of dev_err?
+On 2022/7/10 02:48, Johan Jonker wrote:
+> Add Rockchip IDB device for U-boot.
 
 
-Looking into it that does make more sense. I suspect it wasn't done this 
-way originally because dev_err_probe isn't used elsewhere in rga.c. I'll 
-send a v2 with that change shortly.
+I'm sorry, there is no "Rockchip IDB device".
+
+Rockchip BootRom need a boot structure date, we name it "IDB" data, 
+which is common structure
+
+for all the storage media including EMMC, SD, SPI, and NAND.
+
+I think what you try to do is add the RKNAND controller driver in 
+RK3066, and the IDB data implement
+
+in rknand, just like there are some different in rksd and rkspi.
+
+I think it's better to adapt RK NAND driver to MTD framwork instead of a 
+new RKNAND type in block layer,
+
+because even in rockchip, the rknand adapt to block driver has been 
+superseded and deprecated to use in new code.
 
 
-Thanks for the review.
-
+Thanks,
+- Kever
+>
+> On Rockchip SoCs with a NAND as boot device the information data base (IDB) loaded
+> by the boot ROM is stored at the beginning of several erase blocks.
+> Rewriting NAND blocks makes them wear out, so some spare blocks and a writing strategy
+> are required. A closed source usbplug uses block: 2,3,4,5,6 for example.
+> Block 0 and 1 is in use for other data.
+> For compatible reasons this device follows this approach in line with other
+> Rockchip products and modules for now.
+>
+> The Rockchip boot ROM requires a particular file format for booting from NAND:
+>
+>    It starts with 512-byte (IDB sector 0), RC4 encoded header and is aligned to NAND page size.
+>    Rockchip fills sector 1,2 and 3 here with more data structures, but that is not required
+>    by the boot ROM. It just makes it easier to identify the IDB date and version.
+>
+>    Then 2KB pieces (4 x 512 byte sectors) of spl and tpl data aligned to the NAND page size in a
+>    fixed pattern with empty pages.
+>
+> Size of spl and tpl must be aligned to 2KB.
+> Empty NAND pages/sectors not in use should fill with 0xFF padding to increase NAND durability.
+>
+> Create a IDB image for the flash tools below with:
+>
+> #### For RK30 with NAND only ####
+>
+> printf "RK30" > tplspl.bin
+> dd if=u-boot-tpl.bin >> tplspl.bin
+> truncate -s %2048 tplspl.bin
+> truncate -s %2048 u-boot-spl.bin
+> ./mkimage -v -n rk3066 -T rksd -d ./tplspl.bin:./u-boot-spl.bin out
+>
+> #### For other Rockchip SoCs with NAND ####
+>
+> ./mkimage -v -n rk3188 -T rksd -d ./u-boot-tpl.bin:./u-boot-spl.bin out
+>
+> or if more data structures for IDB sector 1, 2 (RC4) and 3 (RC4) are needed then use a custom
+> image tool as mainline only has basic support for IDB sector 0.
+>
+> In order to transfer data from a host (PC) via USB existing methods are used.
+> This driver creates an GPT EFI block driver to work with the
+> U-boot commands "rockusb" and "ums".
+> IDB data is inserted 'on the fly' as if it were a normal disk in blocks with 512 byte.
+> Changing disk parameters is not allowed.
+>
+> The IDB device driver looks for block driver sector 64 to start with and calculates the IDB size.
+> When the last sector is received it erases a NAND block and writes IDB sectors to NAND in a pattern.
+> Written data is verified. If not identical that NAND erase block is freed.
+> As last thing the remaining IDB blocks are scanned and made available for reading.
+>
+> Normal U-boot operation contains 2 steps:
+>
+> 1 - start IDB device
+> 2 - start USB gadget (rockusb or ums)
+>
+> U-boot IDB commands:
+>
+> idb start - start IDB device
+> idb stop  - stop IDB blk device
+> idb info  - show IDB device info
+>
+> Host (PC) tool commands combinations that work:
+>
+> U-boot					linux
+> rockusb 0 idb 0
+> 					upgrade_tool pl
+> 					upgrade_tool wl 64 upgrade_tool_wl_64.bin
+> 					upgrade_tool rl 64 512 upgrade_tool_rl_64_512.bin
+> 					upgrade_tool rd
+>
+> 					rkdeveloptool ppt
+> 					rkdeveloptool wlx loader1 rkdeveloptool_wlx_loader1.bin
+> 					rkdeveloptool wl 64 rkdeveloptool_wl_64.bin
+> 					rkdeveloptool rl 64 512 rkdeveloptool_rl_64_512.bin
+> 					rkdeveloptool rd
+>
+> 					rkflashtool w 64 512 < rkflashtool_w_64_512.bin
+> 					rkflashtool r 64 512 > rkflashtool_r_64_512.bin
+>
+> ums 0 idb 0
+> 					dd if=ums_0_idb_0_wr.bin of=/dev/sda1
+> 					dd if=/dev/sda1 of=ums_0_idb_0_rd.bin
+>
+> Tested with:
+>    MK808 rk3066
+>
+> Not tested:
+>    nfc type V8, V9
+>
+> TODO:
+>    This is placed in the mach-rockchip directory,
+>    so we can re-use/combine the source with a usbplug or RK NAND FTL driver
+>    with no MTD frame work bloatware ;) in a Makefile.
+>
+>    IDB header V2
+>
+>    Writing strategy improvement
+>
+>    etc, etc
+>
+> Changed V2:
+>    remove CamelCases
+>    split patch block driver
+>    split patch optinal stop and info cmd
+>    split patch optinal sector1 info
+>    split patch optinal randomizer
+>
+> Johan Jonker (11):
+>    rockchip: idb: prepare IDB block device
+>    rockchip: idb: add basic functions
+>    rockchip: idb: add IDB block device
+>    rockchip: idb: add info and stop command
+>    rockchip: idb: add sector1 info
+>    rockchip: idb: add randomizer option
+>    rockchip: spl: allow more boot devices
+>    rockchip: rk3066: add Rockchip IDB block device as boot action
+>    arm: dts: rockchip: sync rk3066/rk3188 DT files from Linux
+>    arm: dts: rockchip: enable nfc node in spl for rk3066 mk808
+>    rockchip: configs: mk808: add idb configs
+>
+>   arch/arm/dts/rk3066a-mk808-u-boot.dtsi |    8 +
+>   arch/arm/dts/rk3066a-mk808.dts         |   18 +
+>   arch/arm/dts/rk3066a.dtsi              |    3 +-
+>   arch/arm/dts/rk3188-radxarock.dts      |    3 +-
+>   arch/arm/dts/rk3188.dtsi               |   24 +-
+>   arch/arm/dts/rk3xxx-u-boot.dtsi        |    4 +
+>   arch/arm/mach-rockchip/Kconfig         |   12 +
+>   arch/arm/mach-rockchip/Makefile        |    1 +
+>   arch/arm/mach-rockchip/rk3066/rk3066.c |   11 +
+>   arch/arm/mach-rockchip/rockchip_idb.c  | 1694 ++++++++++++++++++++++++
+>   arch/arm/mach-rockchip/spl.c           |    5 +-
+>   configs/mk808_defconfig                |    4 +
+>   drivers/block/blk-uclass.c             |    2 +
+>   include/blk.h                          |    1 +
+>   include/dm/uclass-id.h                 |    1 +
+>   include/efi_loader.h                   |    4 +
+>   lib/efi_loader/efi_device_path.c       |   30 +
+>   17 files changed, 1812 insertions(+), 13 deletions(-)
+>   create mode 100644 arch/arm/mach-rockchip/rockchip_idb.c
+>
 
 _______________________________________________
 Linux-rockchip mailing list
