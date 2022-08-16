@@ -4,44 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49951C00140
-	for <linux-rockchip@archiver.kernel.org>; Mon, 15 Aug 2022 22:29:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC161C2BB41
+	for <linux-rockchip@archiver.kernel.org>; Tue, 16 Aug 2022 07:51:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FFhYBKq0G6a67EYC9kcuTexNeFL7FWDI7sYgIrKd3h8=; b=gJAqpC9D7sMUf9
-	0ZB3yo9ivbgmC6+eQIYHyegregIf1M02j2lkFmbaMzUaEcic1O/9TJSGnfmgjPSkPz6tCLi9yeiPo
-	05tFMlF+w2a3GcJY3mSsPLFcto6eSwz3djruNVbiZxWQkMYqyE1xlQ/b+qPZFf1nXkzkK26NWQojN
-	2sbyDEy+nRul+DXzwqkAEyu7WZV5UrdgBa31nEq1GJZjJC7yVYDt70j3eubcaWZpka7I5n/8L39BH
-	IgPwfZEXu31FRpxcVu1/pZBFuoYqEAHrVQX+pyabOnmmZ3M8UXGdKsCn9dRxnJt+AS/3608j0mR5R
-	LMYP1hgNJT5AuvrpSdDA==;
+	List-Owner; bh=JMwGK+cktdDQ8lC5lGHgYf2eFRuTcFYeauULJSqOu68=; b=k59aTAgmn0Fa/H
+	Q7qfu260EA7+XwWVnQXWOG7dzwUhsgV2jxQ94aJ7WFriq4Ed8dE9THieRzTZ+weriMbj4WQWWlf8q
+	YnDqvVEoAggUa6XeFtBpqMf9cBJRvGT8SEiQfImAz47dDZ/uXZcJVDQ4FsTt6IlMiGl0OqHVpyFxp
+	1zeWsV6y4Kvr8aFFOFwszLmXbsdYu9zfLjwlI7oFDKX7CvvEhZSvJErslXwPypXiJvM1vO9S6X8B9
+	fTG26cR8wqKnSJQ8YdbBW9k2N6t94pp9xDLHeAxX79MnVgt8WfChJPWIf+7WkTmWfBjSEEnVvr3gp
+	TyUWBFcxqOAFJrMKvABg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNiaZ-006aBt-7N; Mon, 15 Aug 2022 22:29:39 +0000
-Received: from proxmox1.postmarketos.org ([213.239.216.189])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oNiaK-006YwV-PN; Mon, 15 Aug 2022 22:29:28 +0000
-Received: from [192.168.0.12] (cpc76482-cwma10-2-0-cust629.7-3.cable.virginm.net [86.14.22.118])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits))
-	(No client certificate requested)
-	by proxmox1.postmarketos.org (Postfix) with ESMTPSA id 614F414015B;
-	Mon, 15 Aug 2022 22:27:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=postmarketos.org;
-	s=donut; t=1660602439;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=s4c/Vn6NcaEIBanYavvPzdPCSkOe7p2YV5ZnRO6hBVo=;
-	b=K+yGhokSqhjDbxedPjnTfMtnzoCBVOpwha9JSweOL3UkbsYYHBHuYqieLGLtus9nWhgMss
-	9j+68mD0P+dZKPBizNlr2eSWRMpb5XkXkQFx9ps4Nv3SO/5+cibj4TBjvcJSYEakViwRTi
-	W1GKZNRo9smsI1+IBrYYoJOgER6/luM=
-Message-ID: <5ea0a9d7-cd14-1acc-3bd8-828c7b5e55ad@postmarketos.org>
-Date: Mon, 15 Aug 2022 23:27:19 +0100
+	id 1oNrMK-00FnfW-BO; Tue, 16 Aug 2022 07:51:32 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oNrLm-00Fn2s-Ka
+	for linux-rockchip@lists.infradead.org; Tue, 16 Aug 2022 07:51:00 +0000
+Received: by mail-lf1-x134.google.com with SMTP id c28so9667190lfh.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 16 Aug 2022 00:50:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=SsFQ1RIKNiJVmQ5p1REhokCaS6zA2xCDkzmoDwE4rX4=;
+        b=C0vovSaBtU3Al/+uuR5jDDnyI0+U1TP282RQhz+GQNbnU36bQz68AnK5kXLHecmF5A
+         axOm3+W83f958RvgYeCKIkNS2glYVCYOrnGKMtcBNOEjCW2uEZGCp/UIoq7k0PGgNCe5
+         IaLDe0R3RR1+G0S1Ta/V8OGoA+zrMQfpq/kxlJLuwZ59Ta0nAWPVpHdpCdi34td8WLod
+         +0DGSh8mHtK0ro69ztI/vT43EY7+SsTZHhb8LaHHU9qoZHW8097OXTkZNeLHKhY9DQnA
+         5xW1kRi7YOtHwZRwFAanL8RrpAUc+Ty/vJstUKxz0zzGyY1L13nix0HgOmjzc9TIGFxx
+         3pmQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=SsFQ1RIKNiJVmQ5p1REhokCaS6zA2xCDkzmoDwE4rX4=;
+        b=JvQx6Et/wYbazPyBVTQlmnHsbDX4+lPOnqN9zGYpNjFlEzSFj4jLYFsgM6WPOTfU0f
+         041u2nZVCySGArovK8w84+9ymxVh+Lw7BwxXTChGeT00maNwNUOR43q/Y34TjGG6/Hak
+         hlsraRlcrX1Dr/fF++SZmXRvQOkxL0iUpys4iDn7GiJydMWp8vl18qtetn9azGrgzKKd
+         PwsdgWeHUIfl+TYZMVdYU8KUD9eUuvYgt3lTmIaCIXrhQPj6CkkdKQS6Al/6hl0x1IYn
+         P8KSYBD8B2lmfjpsJTw3JnkpP7Hqgot/ldzXz/VZNL9Oeu9xnWyYX47S/JHeYh0QtQ36
+         w1zQ==
+X-Gm-Message-State: ACgBeo0bGV4d/A0NDgaAPGbAEyG/d9BCMtGoHKrqQfQxnDGH85dyyEim
+	tLnOP8mOVTHRRUN4u1qEaAXc7qW0R9WATh1W
+X-Google-Smtp-Source: AA6agR61EpgIZo4areU1VwiZwwTCgopZu+2bI0uZ3goHpEzDHA9edBrmuCgn1s1AR0GHg0VZ6JjiWA==
+X-Received: by 2002:a05:6512:1050:b0:491:dda4:1e2c with SMTP id c16-20020a056512105000b00491dda41e2cmr3973398lfb.467.1660636256607;
+        Tue, 16 Aug 2022 00:50:56 -0700 (PDT)
+Received: from ?IPV6:2001:14bb:ae:539c:1782:dd68:b0c1:c1a4? (d15l54g8c71znbtrbzt-4.rev.dnainternet.fi. [2001:14bb:ae:539c:1782:dd68:b0c1:c1a4])
+        by smtp.gmail.com with ESMTPSA id u11-20020ac258cb000000b0048b13d0b896sm1308697lfo.141.2022.08.16.00.50.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 16 Aug 2022 00:50:56 -0700 (PDT)
+Message-ID: <c547ac5f-e4e8-d043-22bf-626cc580a69a@linaro.org>
+Date: Tue, 16 Aug 2022 10:50:54 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.12.0
@@ -55,13 +75,13 @@ Cc: martijn@brixit.nl, ayufan@ayufan.eu, megi@xff.cz,
  linux-rockchip@lists.infradead.org, phone-devel@vger.kernel.org,
  linux-kernel@vger.kernel.org
 References: <20220815123004.252014-1-tom@tom-fitzhenry.me.uk>
- <4zqDGP71uKXjwgNqkEOaMdU5T3XKr7axd17DLLCEvoOEw1B_fov8tUyaGeNDyu9A1YYUkpRW2G33Uzs0CIkDoQ==@protonmail.internalid>
  <20220815123004.252014-2-tom@tom-fitzhenry.me.uk>
-From: Caleb Connolly <kc@postmarketos.org>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 In-Reply-To: <20220815123004.252014-2-tom@tom-fitzhenry.me.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220815_152925_047918_89F8F82E 
-X-CRM114-Status: GOOD (  12.12  )
+X-CRM114-CacheID: sfid-20220816_005058_737112_9A4F9F2B 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,44 +93,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 15/08/2022 13:30, Tom Fitzhenry wrote:
+On 15/08/2022 15:30, Tom Fitzhenry wrote:
 > Document board compatible names for Pine64 PinePhonePro.
 > 
 > https://wiki.pine64.org/wiki/PinePhone_Pro
 > 
 > Signed-off-by: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
 
-Reviewed-by: Caleb Connolly <kc@postmarketos.org>
-> ---
->   Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->   1 file changed, 5 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index 7811ba64149cb..8ddedbd1ce317 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -494,6 +494,11 @@ properties:
->             - const: pine64,pinenote
->             - const: rockchip,rk3566
-> 
-> +      - description: Pine64 PinePhonePro
-> +        items:
-> +          - const: pine64,pinephone-pro
-> +          - const: rockchip,rk3399
-> +
->         - description: Pine64 Rock64
->           items:
->             - const: pine64,rock64
-> --
-> 2.37.1
-> 
+Please add Acked-by/Reviewed-by tags when posting new versions. However,
+there's no need to repost patches *only* to add the tags. The upstream
+maintainer will do that for acks received on the version they apply.
+
+https://elixir.bootlin.com/linux/v5.17/source/Documentation/process/submitting-patches.rst#L540
+
+If a tag was not added on purpose, please state why and what changed.
+
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
