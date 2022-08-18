@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFE66C28B2B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Aug 2022 13:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A125C00140
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Aug 2022 13:03:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ENvbIpziFQN9tBgqvd/Qp0n+pPkuGYUiQWyaNk4DCLk=; b=Rdq6PA/ZtIqgSE
-	b01Q6gbeNa2J64bVisXoDXQR4YYftQTKPAvfGnM/pUqoqruGg137/TyXNjw2XstH9biAXOAzfMmwk
-	5m+DnHY/IZ1xXG7Of1mva/2DxqTQPt/qDPMwJi1U1s7uBUmBf7fnknMfzod95LI2ndW7KcM3l6DWY
-	TzcW0pJI2Td3bF+lMwY2+rMQgWSuAWBGYzo6+RxRNP8X2sGj9cR6BUPCwbSfdUX/HPXQEyogVL/ry
-	tYhdHwNVh1NGVrJjrUXR98HgT4Huz0Qu/BPQYovWRBtzPEzKGZm54x8B3sFCrELhXQZaatvXtsZP3
-	ObLdT6o4uz6kQthTjCQg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MO1IRFT/dY9GoiFO/L2q4BHABIAn/sl9JE9PAc8RiuY=; b=2ktFIoF2joq/o6
+	JMupVWN8hBfw2+KZ+G7UIO9BYURbm3HBzKTqQg+8v+4Tw0LqcixYjpcRk3YKpKy94odO61+CdOYuw
+	/CllCpa3isI98kf9GCw8XY9QA4KP1sb+b4lFJ/p2M+EgRCuiGVmU7WosNm5fLTsjEKnQXPV0jfdOH
+	Zru5sydvlrWKcR9eKMuFbyf3bcBS/01eauXPNMN/q16rWrolaBReE1FUa1KZpTX+C30OjofJcuxIV
+	+NNGRv4bSFv4COJGUoJk4B/3Vjwr6amlajROnbQ1xtsntiWpGuNvwetQ/ApzkFrU9uh3bg9+ZZsPq
+	utwiPUccrhOuz0tlgPHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOfAQ-0050Oe-MY; Thu, 18 Aug 2022 13:02:34 +0000
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+	id 1oOfBG-00512R-RY; Thu, 18 Aug 2022 13:03:26 +0000
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOeqI-004jeo-U1
-	for linux-rockchip@lists.infradead.org; Thu, 18 Aug 2022 12:41:50 +0000
-Received: by mail-pg1-x535.google.com with SMTP id v4so1193368pgi.10
-        for <linux-rockchip@lists.infradead.org>; Thu, 18 Aug 2022 05:41:39 -0700 (PDT)
+	id 1oOeqP-004jo4-N3
+	for linux-rockchip@lists.infradead.org; Thu, 18 Aug 2022 12:41:55 +0000
+Received: by mail-pj1-x1030.google.com with SMTP id t2-20020a17090a4e4200b001f21572f3a4so1751223pjl.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 18 Aug 2022 05:41:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc;
-        bh=TUnKJIFQ1zZdAILaN3dEonwQtoPz0tBuedLrOJLMjrg=;
-        b=DM0MbALTY5xAWuobL5DJkF+L+dd6Lx2UVDdjW5x7e+eHKp/9AKeydwlvzbFj+l2rrd
-         XF+TNS17zGAKNl9ydWq5e4PwcjrVwcM0gnN9TkUmQdAN9yuYeR+GcKzqs7Y99eR5/wNX
-         YVD1iQKxXn6E/aq0zXUgctHLF7mBaqKqav/DnHKcEYljnk7XhyKNrrMDnr3jwhHsEkz8
-         Vznc173Cnfpp9oFcQJ9aULdrU1ZNx4kPP0RCZM5/mP6iqbZchBRDbwOY7Q+QfLpMYnX2
-         sKgbia/I8DuPDFMFQEdoNw/3ET9axaSjdE7rx7Qx3wlZ90CuGoHQ4Epi/dj7w3modASq
-         6w+g==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc;
+        bh=HNe8OjtuDLj5v9aJsCXWAHFoyP90hwZE71BrK38QUl4=;
+        b=PBEVfS6VsCV3HMXg3O4fwDnT3BDnD0hhGS2WfTotDq4+NpqhKf6WaWx1xoeMsZytY2
+         tWAkhCeELCZD+wtrQKDZS5U/o3PTeMaUCPzoHpxHcLMfO+S02kJ85T/mBtjHqpHYN8Me
+         kK5GQig70ioDRCzvsA1lDnRZvPtooqu0JrDluXHxk7L5IfqkPG8JoIPq4vWSnGuQGeMG
+         QmJvuPyeSUSg9xsVf3SZJVlkccjHMRStnTnyM6zXAkI7EakWNkmLxjy1wa/MmWUQnc+H
+         bZI70j3KbdC3lXQl6Z6MhiON5mIPrH/y0nA/UtTdtNlcGDG2YKriiLsoi0GF0zXUmXsl
+         rjZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc;
-        bh=TUnKJIFQ1zZdAILaN3dEonwQtoPz0tBuedLrOJLMjrg=;
-        b=J5blTaJAdeVM9Y3Zed+oHwmiFKyYYWJ9DTuN50X6vOUMsp9/ZddHv0V7bTRLsIs70/
-         PCDX35eu+TgFqlD93Arr3c2hELlfYdXwnrM112u6APv0kDMCmkvylwgnP7oU81p52950
-         5OWVYf3LhKXgnUu5iuT4zywaPzyX/7N5tdFTplgSy7Z+pPxIdXwxqnqw24tAaRJGDd5g
-         VFFcq4bDV+gz9t/qtOE/EdT0x7dbMY2ANS+VdMWXl8p0Ym7L6YbumL3XPyD0gtRvmoHT
-         rWylyhtYcCKoVmH/7Z8fzyUvhHms8NjK1T9CH+fW4jQoY5SMC/v9sDAfGDER3aC4MGq6
-         hULg==
-X-Gm-Message-State: ACgBeo1apB8cUENwioI06Y44Yo93aAe7UPgmtzJaL5YYhSHd5nwW66cJ
-	WaMLCohCHJBpy3gQUTxzebDWpQ==
-X-Google-Smtp-Source: AA6agR5NkPX0+2g1ubxM6fQKnGgUdjIU2IZh1Y18KiBFcX7FjFcNKwYzlt8S0149MUflTuCygRWaHg==
-X-Received: by 2002:a63:db0b:0:b0:429:f039:74c5 with SMTP id e11-20020a63db0b000000b00429f03974c5mr2295308pgg.551.1660826499316;
-        Thu, 18 Aug 2022 05:41:39 -0700 (PDT)
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
+        bh=HNe8OjtuDLj5v9aJsCXWAHFoyP90hwZE71BrK38QUl4=;
+        b=V6SpUhixTlAWYVxBfMPsH7sbaLKqs+BxCD31kklPw1do8sTYyktbHZG00EEojZOxcU
+         4gaeyPCJn5mdrEYwNzaXFMxdp7u6lcXaYolgmSbDEteb2g0IzFu5UB0LpQDGcP6SmvY/
+         D0gVeQ/tyKbB0yLbnUFkyMfB4I3viBYM+aSSiADhQatC74+I7s1anPQzAXmU5Iwl3KVh
+         VtfpeImMvNJdRsh39+zOMiRhfi32sjU44kBEUKmsiC67+0gb1KKc/B+H05rDQ4VReImp
+         AyeLcvnAewXIZxLoIhxcxVrhIG6shmCvymREUcubSmM+1EU3SxLy10h61ImUEZEF/Bqh
+         csdw==
+X-Gm-Message-State: ACgBeo0/GcklPjFb9sGFjLvrL55bxzyiUYZiXXGp9SOsVQUszkNQxSUd
+	6dQC5Jit9LjJU07Ne0GzYZSX9Q==
+X-Google-Smtp-Source: AA6agR5zkWAePmMjjHCcIQYEfFLMf8eAwSpeQl2HICBulyh0PEGjsJxTciTIS8uxmKepNNc4glShMA==
+X-Received: by 2002:a17:902:b114:b0:16e:f1e0:51da with SMTP id q20-20020a170902b11400b0016ef1e051damr2462836plr.0.1660826510285;
+        Thu, 18 Aug 2022 05:41:50 -0700 (PDT)
 Received: from localhost.localdomain ([2405:201:c00a:a073:d1c4:8ea9:aedc:add1])
-        by smtp.gmail.com with ESMTPSA id x6-20020aa78f06000000b005302cef1684sm1495651pfr.34.2022.08.18.05.41.36
+        by smtp.gmail.com with ESMTPSA id x6-20020aa78f06000000b005302cef1684sm1495651pfr.34.2022.08.18.05.41.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Aug 2022 05:41:39 -0700 (PDT)
+        Thu, 18 Aug 2022 05:41:50 -0700 (PDT)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -66,15 +66,18 @@ To: Heiko Stuebner <heiko@sntech.de>,
 Cc: linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH v3 00/19] ARM: Add Rockchip RV1126 support
-Date: Thu, 18 Aug 2022 18:11:13 +0530
-Message-Id: <20220818124132.125304-1-jagan@edgeble.ai>
+	Jagan Teki <jagan@edgeble.ai>,
+	Elaine Zhang <zhangqing@rock-chips.com>
+Subject: [PATCH v3 03/19] soc: rockchip: power-domain: Add RV1126 power domains
+Date: Thu, 18 Aug 2022 18:11:16 +0530
+Message-Id: <20220818124132.125304-4-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220818124132.125304-1-jagan@edgeble.ai>
+References: <20220818124132.125304-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220818_054147_112235_04290D3D 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20220818_054153_801085_AFD90012 
+X-CRM114-Status: GOOD (  12.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,86 +94,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RV1126 is a high-performance vision processor SoC for IPC/CVR,
-especially for AI related application.
+Add power domains support for RV1126 SoC.
 
-It is based on quad-core ARM Cortex-A7 32-bit core which integrates
-NEON and FPU. There is a 32KB I-cache and 32KB D-cache for each core
-and 512KB unified L2 cache. It has build-in NPU supports INT8/INT16
-hybrid operation and computing power is up to 2.0TOPs.
+Cypto, VO and NPU domains will add it future patches.
 
-This patch series add basic core support for Rockchip RV1126 and
-v2 for the series can be found at [2].
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+---
+Changes for v3:
+- update the header
+Changes for v2:
+- none
 
-Tested in Edgeble AI Edge Compute Module 0.
+ drivers/soc/rockchip/pm_domains.c | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-Anyone interested, please have a look on this repo [1]
-
-[2] https://patchwork.kernel.org/project/linux-arm-kernel/cover/20220731174726.72631-1-jagan@edgeble.ai/
-[1] https://github.com/edgeble/linux-next/commits/ecm0-v4
-
-Any inputs?
-Jagan.
-
-Elaine Zhang (1):
-  clk: rockchip: Add MUXTBL variant
-
-Jagan Teki (17):
-  dt-bindings: power: Add power-domain header for RV1126
-  dt-bindings: power: rockchip: Document RV1126 power-controller
-  soc: rockchip: power-domain: Add RV1126 power domains
-  dt-bindings: power: rockchip: Document RV1126 PMU IO domains
-  dt-bindings: pinctrl: rockchip: Document RV1126 pinctrl
-  pinctrl: rockchip: Add RV1126 pinctrl support
-  clk: rockchip: Add dt-binding header for RV1126
-  dt-bindings: clock: rockchip: Document RV1126 CRU
-  Add clock controller support for RV1126 SoC.
-  dt-bindings: soc: rockchip: Document RV1126 grf
-  dt-bindings: soc: rockchip: Document RV1126 pmugrf
-  ARM: dts: rockchip: Add Rockchip RV1126 pinctrl
-  ARM: dts: rockchip: Add Rockchip RV1126 SoC
-  dt-bindings: vendor-prefixes: Add Edgeble AI Technologies Pvt. Ltd.
-  dt-bindings: arm: rockchip: Add Edgeble AI Edge Compute Module 0 Carrier
-  ARM: dts: rockchip: rv1126: Add Edgeble AI Edge Compute Module 0
-  ARM: dts: rockchip: rv1126: Add Edgeble AI Edge Compute Module 0 Carrier
-
-Jianqun Xu (1):
-  soc: rockchip: io-domain: Add RV1126 IO domains
-
- .../devicetree/bindings/arm/rockchip.yaml     |    6 +
- .../bindings/clock/rockchip,rv1126-cru.yaml   |   62 +
- .../bindings/pinctrl/rockchip,pinctrl.yaml    |    1 +
- .../power/rockchip,power-controller.yaml      |    2 +
- .../bindings/power/rockchip-io-domain.yaml    |   30 +
- .../devicetree/bindings/soc/rockchip/grf.yaml |    2 +
- .../devicetree/bindings/vendor-prefixes.yaml  |    2 +
- MAINTAINERS                                   |    2 +-
- arch/arm/boot/dts/Makefile                    |    1 +
- .../boot/dts/rv1126-edgeble-ecm0-carrier.dts  |   38 +
- .../rv1126-edgeble-edge-compute-module-0.dtsi |  353 ++++++
- arch/arm/boot/dts/rv1126-pinctrl.dtsi         |  302 +++++
- arch/arm/boot/dts/rv1126.dtsi                 |  500 ++++++++
- drivers/clk/rockchip/Kconfig                  |    7 +
- drivers/clk/rockchip/Makefile                 |    1 +
- drivers/clk/rockchip/clk-rv1126.c             | 1107 +++++++++++++++++
- drivers/clk/rockchip/clk.c                    |   27 +-
- drivers/clk/rockchip/clk.h                    |   36 +
- drivers/pinctrl/pinctrl-rockchip.c            |  333 ++++-
- drivers/pinctrl/pinctrl-rockchip.h            |    1 +
- drivers/soc/rockchip/io-domain.c              |   20 +
- drivers/soc/rockchip/pm_domains.c             |   29 +
- .../dt-bindings/clock/rockchip,rv1126-cru.h   |  632 ++++++++++
- .../dt-bindings/power/rockchip,rv1126-power.h |   35 +
- 24 files changed, 3515 insertions(+), 14 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rv1126-cru.yaml
- create mode 100644 arch/arm/boot/dts/rv1126-edgeble-ecm0-carrier.dts
- create mode 100644 arch/arm/boot/dts/rv1126-edgeble-edge-compute-module-0.dtsi
- create mode 100644 arch/arm/boot/dts/rv1126-pinctrl.dtsi
- create mode 100644 arch/arm/boot/dts/rv1126.dtsi
- create mode 100644 drivers/clk/rockchip/clk-rv1126.c
- create mode 100644 include/dt-bindings/clock/rockchip,rv1126-cru.h
- create mode 100644 include/dt-bindings/power/rockchip,rv1126-power.h
-
+diff --git a/drivers/soc/rockchip/pm_domains.c b/drivers/soc/rockchip/pm_domains.c
+index 89795abac951..3aaadab2716e 100644
+--- a/drivers/soc/rockchip/pm_domains.c
++++ b/drivers/soc/rockchip/pm_domains.c
+@@ -19,6 +19,7 @@
+ #include <linux/mfd/syscon.h>
+ #include <soc/rockchip/pm_domains.h>
+ #include <dt-bindings/power/px30-power.h>
++#include <dt-bindings/power/rockchip,rv1126-power.h>
+ #include <dt-bindings/power/rk3036-power.h>
+ #include <dt-bindings/power/rk3066-power.h>
+ #include <dt-bindings/power/rk3128-power.h>
+@@ -126,6 +127,9 @@ struct rockchip_pmu {
+ #define DOMAIN_PX30(name, pwr, status, req, wakeup)		\
+ 	DOMAIN_M(name, pwr, status, req, (req) << 16, req, wakeup)
+ 
++#define DOMAIN_RV1126(name, pwr, req, idle, wakeup)		\
++	DOMAIN_M(name, pwr, pwr, req, idle, idle, wakeup)
++
+ #define DOMAIN_RK3288(name, pwr, status, req, wakeup)		\
+ 	DOMAIN(name, pwr, status, req, req, (req) << 16, wakeup)
+ 
+@@ -855,6 +859,16 @@ static const struct rockchip_domain_info px30_pm_domains[] = {
+ 	[PX30_PD_GPU]		= DOMAIN_PX30("gpu",      BIT(15), BIT(15), BIT(2),  false),
+ };
+ 
++static const struct rockchip_domain_info rv1126_pm_domains[] = {
++	[RV1126_PD_VEPU]	= DOMAIN_RV1126("vepu", BIT(2),  BIT(9),  BIT(9), false),
++	[RV1126_PD_VI]		= DOMAIN_RV1126("vi", BIT(4),  BIT(6),  BIT(6),  false),
++	[RV1126_PD_ISPP]	= DOMAIN_RV1126("ispp", BIT(1), BIT(8), BIT(8),  false),
++	[RV1126_PD_VDPU]	= DOMAIN_RV1126("vdpu", BIT(3), BIT(10), BIT(10), false),
++	[RV1126_PD_NVM]		= DOMAIN_RV1126("nvm", BIT(7), BIT(11), BIT(11),  false),
++	[RV1126_PD_SDIO]	= DOMAIN_RV1126("sdio", BIT(8), BIT(13), BIT(13),  false),
++	[RV1126_PD_USB]		= DOMAIN_RV1126("usb", BIT(9), BIT(15), BIT(15),  false),
++};
++
+ static const struct rockchip_domain_info rk3036_pm_domains[] = {
+ 	[RK3036_PD_MSCH]	= DOMAIN_RK3036("msch", BIT(14), BIT(23), BIT(30), true),
+ 	[RK3036_PD_CORE]	= DOMAIN_RK3036("core", BIT(13), BIT(17), BIT(24), false),
+@@ -1128,6 +1142,17 @@ static const struct rockchip_pmu_info rk3568_pmu = {
+ 	.domain_info = rk3568_pm_domains,
+ };
+ 
++static const struct rockchip_pmu_info rv1126_pmu = {
++	.pwr_offset = 0x110,
++	.status_offset = 0x108,
++	.req_offset = 0xc0,
++	.idle_offset = 0xd8,
++	.ack_offset = 0xd0,
++
++	.num_domains = ARRAY_SIZE(rv1126_pm_domains),
++	.domain_info = rv1126_pm_domains,
++};
++
+ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
+ 	{
+ 		.compatible = "rockchip,px30-power-controller",
+@@ -1177,6 +1202,10 @@ static const struct of_device_id rockchip_pm_domain_dt_match[] = {
+ 		.compatible = "rockchip,rk3568-power-controller",
+ 		.data = (void *)&rk3568_pmu,
+ 	},
++	{
++		.compatible = "rockchip,rv1126-power-controller",
++		.data = (void *)&rv1126_pmu,
++	},
+ 	{ /* sentinel */ },
+ };
+ 
 -- 
 2.25.1
 
