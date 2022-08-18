@@ -4,79 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF69AC00140
-	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Aug 2022 13:21:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98A30C32772
+	for <linux-rockchip@archiver.kernel.org>; Thu, 18 Aug 2022 13:25:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LUUuyqq4Xlsxmq5i3F5Gu5DfA0+J3BeeVsXoab/rGro=; b=1i0zqRGvcZifuW
-	4phqviJyJujVhc0pe3lfeTtShINk8FqEc/J3hQzpkHJUZsp7IhiBCIdXySn8VCge/P3igGt+PFKed
-	POSUkVlkHw/SgpDyWeJuB4ovnBg9OVOadIPsvdSCxJWHW9B45xj2Rhj4AyJolQhBbSaCUWPmg3icn
-	9hzlDFHEgyITziHXvMhb/CzU4wOiSmr6dAVCA4SCbTlcYsRtLLzLBfrGTKpvrLRZwpPWCe1whu0Zj
-	psIDohMu1dMLRDo2mWHvLLUxlHfGFaBdBS62JqEITmPoYtpQgl4EXiQqt0qia86Jw+9zZUQjhTKC4
-	kK/yRQJeKCUdmsSYSZFA==;
+	List-Owner; bh=Vho0CsBM2BbffarjTHC473AWim6NgUJSZr2CejVi1ks=; b=GrSRt/uYKNWuMJ
+	vIcWnIZUY2BEvoyEExYHXu/eyFPOEz51n+aXPdfmJIoshk+GDRw3Ipe7T5gh2Xy3OkDspS4sYaW3u
+	TRwyCsX0PSbj/5oDIv1BjJFn3SifP6WJ5H/jR8aJX3pedxlYfiIi1HYivz518PAvSBdP6t0MI+KuD
+	m6kAsLTBDuk21zwCm4jYzzZFLapeYjYzdydDRapRoUm+FKYH5cVQnLgINUzA3RBiV9uLc+QBv9ckO
+	4pkCaU6aTsfTSNtgMB14mOYkuQTePk2Qqh0Q/dnSAeRakmabAQ/eQ2O8fLxU5uP2nEiogKLMC74oF
+	2ZQI5eW1J3kIYawD0Y7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOfSU-005IFl-Ms; Thu, 18 Aug 2022 13:21:14 +0000
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+	id 1oOfVv-005LNW-K2; Thu, 18 Aug 2022 13:24:47 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOerP-004kbO-Rc
-	for linux-rockchip@lists.infradead.org; Thu, 18 Aug 2022 12:42:57 +0000
-Received: by mail-pg1-x533.google.com with SMTP id v4so1195615pgi.10
-        for <linux-rockchip@lists.infradead.org>; Thu, 18 Aug 2022 05:42:54 -0700 (PDT)
+	id 1oOevP-004nfU-Ef
+	for linux-rockchip@lists.infradead.org; Thu, 18 Aug 2022 12:47:06 +0000
+Received: by mail-wr1-x435.google.com with SMTP id n4so1598586wrp.10
+        for <linux-rockchip@lists.infradead.org>; Thu, 18 Aug 2022 05:46:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
+        d=kohlschutter-com.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=vCHsjUT/CIgoiPKWpJGWF0bqXuEAYoFTuk01CLPUBNU=;
-        b=6oRvSgWHqhnC1ZagHb+AJVJZ8O8XqnyXss0FRwyzpkY5VhFmV2KMozJrdnDEwpvDtC
-         X9oxTj7HANQ/N3WfmfXHBlVuhgOxS09NVoUytzxr0dZNmqnlyvRst08Y1oQtoOD1w7ZX
-         ura6NS+Kyd8sSNg/VAiNiYDugXeESYc5pDhdPTJoQ/9V6dqPyc+9zxjO2nNmjQ8qarXo
-         ALY9WY8rPAxTEQSe7/UNUZVimMpU9A6lCBy7NGwWLvTDoq10VdBiOhHLMRT4CouIaTo4
-         5NTCzhcsxwyQi7Icvblx37JkS0m2B5twe1Z8KPCT9X9MBE9QJXsLPeMGoaym30zZrNbg
-         y0vQ==
+        bh=tA1R14Sg29SD+OU/KrtHL4uyHeuXBhNpWPoNMcJBZBc=;
+        b=KGZRJ7mnecJzTW9KKPgbHSz9k+hCFduy9ztHKv9FJHxLUw5es+Te9JWtvk08tZkiMG
+         b7FAVfUf1pbTfq9G+9v+rQDCFT68/GOhTblK5DmfrOhTxwj1XBa+ujasgC3eCMd3telC
+         TXOr6WMgOsLwU9oXp0Kuk1MJuRKyXf0xOCGC2CFkc8HZ064b1PcHiWsNNB4EHK7WA82F
+         0glADvqN5hFRHpxIbMQ4qHClMWqwihuxZ9exY1xCDEKv6QmMfDOdp46jEkgauOOjlDwk
+         hEZ8wDv9KBaOdQlh0oR+xZ+V46TSQ0Dl1yxAvFzJ8pjuSRaq4fu3rQcldJTe7EtmweMw
+         AJWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=vCHsjUT/CIgoiPKWpJGWF0bqXuEAYoFTuk01CLPUBNU=;
-        b=0j00Inqpko7dkmIuetRLBHehaWgo3aSWNwsKBeyRUCM3+YldRroxa04BEBfgJb9p8a
-         kB3cgolGCyrR5/162gy7Lud8ERM8t8sj0BE/wZyPE65gGkeNXm6gkEspoqAJNoDMijb7
-         Hq8m5DWUX1I4mIAz9R8kDu7cmQSx3u8PNcZOTCqCHoJPDuATuhUBX3RbNkHZb1a3e7l+
-         nbX6zDhRHuOjMw9J+tyyMjEVMv5vbpgZ58jITp39nBy5ynqVOp1pHtcEWbQFtX9xnP1S
-         t8UW2GKPywabpLH++aSrAjLrXgQu4//5ATYx4exgyZJ+Q0UgJqNtv4+mGqtz9+Sxd5av
-         ynQQ==
-X-Gm-Message-State: ACgBeo2tFkj4g52gj8JKe9+i+3W/4FGw+ygBBGl/+kwfVVJ9AH5Kq1nh
-	63gah6b8jWIj3E9qMoyVBp0dhg==
-X-Google-Smtp-Source: AA6agR7rRaVO+Oqxf1oh8pMqIXQwS4xGr2HaNRVwOU7G3onHD0txkGXFVR6GYOEmUSgWBHNnLcuHEw==
-X-Received: by 2002:a63:8142:0:b0:429:f9f9:8fb5 with SMTP id t63-20020a638142000000b00429f9f98fb5mr2332689pgd.619.1660826573618;
-        Thu, 18 Aug 2022 05:42:53 -0700 (PDT)
-Received: from localhost.localdomain ([2405:201:c00a:a073:d1c4:8ea9:aedc:add1])
-        by smtp.gmail.com with ESMTPSA id x6-20020aa78f06000000b005302cef1684sm1495651pfr.34.2022.08.18.05.42.50
+        bh=tA1R14Sg29SD+OU/KrtHL4uyHeuXBhNpWPoNMcJBZBc=;
+        b=Fa1DZAChaOWe2AVX9kPQYJdoNE3Ut3M2yMSh7yWFMjm5D6/MNby3HYZ7fvuD4oQZ5u
+         wSyyqhBx/VrcVpODtMb/kW7SvNT5yME35nhHNjBCTHGd6c8loQjrWG/jXU7xsinr/0Z/
+         oeYDcAJ77pJVoY9j4XhpsZQf5S1neUtCDlD5qx6MILLK/VgZ4wcbGBvvopF7iXNgKT3N
+         gICDQLypIA3Ns1zDe+1uAUuj9HbG9N2sF2TJ4sCM1DRVJi+7GAjcZU2WAXX9XI2WufXN
+         NavzcwKSVJonp/Q/I6Ev7ALyFIycJ7ocTvmXW569XKHdfZATRHyX1W2wHNytIV7kE5pO
+         7JHg==
+X-Gm-Message-State: ACgBeo3y9NTwK8SpjaNvzXWpYJD1l/2iS0+DpU+Ao6GWK/tKH/nBAKn1
+	cUGsuZq4GXwPAbRksZqBd0v0rg==
+X-Google-Smtp-Source: AA6agR530W/+EKo2o0KHAo/XNpXNqu6Oo57BaqO6dvk2mtHtcuvLeT62hVx9REO/7HO5AUtUiLOaMg==
+X-Received: by 2002:a05:6000:3c6:b0:220:5efd:423c with SMTP id b6-20020a05600003c600b002205efd423cmr1616366wrg.214.1660826818469;
+        Thu, 18 Aug 2022 05:46:58 -0700 (PDT)
+Received: from p330.kohl.home (ip5b434222.dynamic.kabel-deutschland.de. [91.67.66.34])
+        by smtp.gmail.com with ESMTPSA id t24-20020a7bc3d8000000b003a5bd5ea215sm1975741wmj.37.2022.08.18.05.46.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 18 Aug 2022 05:42:53 -0700 (PDT)
-From: Jagan Teki <jagan@edgeble.ai>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-arm-kernel@lists.infradead.org,
+        Thu, 18 Aug 2022 05:46:57 -0700 (PDT)
+From: =?UTF-8?q?Christian=20Kohlschu=CC=88tter?= <christian@kohlschutter.com>
+To: broonie@kernel.org
+Cc: christian@kohlschutter.com,
+	heiko@sntech.de,
+	lgirdwood@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mmc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Jagan Teki <jagan@edgeble.ai>
-Subject: [PATCH v3 19/19] ARM: dts: rockchip: rv1126: Add Edgeble AI Edge Compute Module 0 Carrier
-Date: Thu, 18 Aug 2022 18:11:32 +0530
-Message-Id: <20220818124132.125304-20-jagan@edgeble.ai>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220818124132.125304-1-jagan@edgeble.ai>
-References: <20220818124132.125304-1-jagan@edgeble.ai>
+	m.reichl@fivetechno.de,
+	robin.murphy@arm.com,
+	vincent.legoll@gmail.com,
+	wens@kernel.org
+Subject: [PATCH v4] regulator: core: Resolve supply name earlier to prevent double-init
+Date: Thu, 18 Aug 2022 12:46:47 +0000
+Message-Id: <20220818124646.6005-1-christian@kohlschutter.com>
+X-Mailer: git-send-email 2.36.2
+In-Reply-To: <YvorNPDQQr2SH/NF@sirena.org.uk>
+References: <YvorNPDQQr2SH/NF@sirena.org.uk>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220818_054255_953084_8A4B1052 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20220818_054703_745442_977ED307 
+X-CRM114-Status: GOOD (  16.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,107 +92,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Edge Compute Module 0 Carrier is an industrial form factor evaluation
-board from Edgeble AI.
-
-General features:
-- microSD slot
-- 2x MIPI CSI2 connectors
-- MIPI DSI connector
-- 2x USB Host
-- 1x USB OTG
-- Ethernet
-- mini PCIe
-- Onboard PoE
-- RS485, RS232, CAN
-- Micro Phone array
-- Speaker
-- RTC battery slot
-- 40-pin expansion
-
-Edge Compute Module 0 needs to mount on top of this Carrier board for
-creating Edge Compute Module 0 Carrier platform.
-
-Add support for it.
-
-Signed-off-by: Jagan Teki <jagan@edgeble.ai>
----
-Changes for v3:
-- none
-Changes for v2:
-- change easy and meaningful dts name
-
- arch/arm/boot/dts/Makefile                    |  1 +
- .../boot/dts/rv1126-edgeble-ecm0-carrier.dts  | 38 +++++++++++++++++++
- 2 files changed, 39 insertions(+)
- create mode 100644 arch/arm/boot/dts/rv1126-edgeble-ecm0-carrier.dts
-
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 5112f493f494..361b68e5019e 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -1097,6 +1097,7 @@ dtb-$(CONFIG_ARCH_RENESAS) += \
- dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rv1108-elgin-r1.dtb \
- 	rv1108-evb.dtb \
-+	rv1126-edgeble-ecm0-carrier.dtb \
- 	rk3036-evb.dtb \
- 	rk3036-kylin.dtb \
- 	rk3066a-bqcurie2.dtb \
-diff --git a/arch/arm/boot/dts/rv1126-edgeble-ecm0-carrier.dts b/arch/arm/boot/dts/rv1126-edgeble-ecm0-carrier.dts
-new file mode 100644
-index 000000000000..150bfb9bd04a
---- /dev/null
-+++ b/arch/arm/boot/dts/rv1126-edgeble-ecm0-carrier.dts
-@@ -0,0 +1,38 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2020 Rockchip Electronics Co., Ltd.
-+ * Copyright (c) 2022 Edgeble AI Technologies Pvt. Ltd.
-+ */
-+
-+/dts-v1/;
-+#include "rv1126.dtsi"
-+#include "rv1126-edgeble-edge-compute-module-0.dtsi"
-+
-+/ {
-+	model = "Edgeble AI Edge Compute Module 0 Carrier board";
-+	compatible = "edgeble,edge-compute-module-0-carrier",
-+		     "edgeble,edge-compute-module-0", "rockchip,rv1126";
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	card-detect-delay = <200>;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_bus4 &sdmmc0_det>;
-+	rockchip,default-sample-phase = <90>;
-+	sd-uhs-sdr12;
-+	sd-uhs-sdr25;
-+	sd-uhs-sdr104;
-+	vqmmc-supply = <&vccio_sd>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogQ2hyaXN0aWFuIEtvaGxzY2jDvHR0ZXIgPGNocmlzdGlhbkBrb2hsc2NodXR0ZXIuY29t
+PgoKUHJldmlvdXNseSwgYW4gdW5yZXNvbHZlZCByZWd1bGF0b3Igc3VwcGx5IHJlZmVyZW5jZSB1
+cG9uIGNhbGxpbmcKcmVndWxhdG9yX3JlZ2lzdGVyIG9uIGFuIGFsd2F5cy1vbiBvciBib290LW9u
+IHJlZ3VsYXRvciBjYXVzZWQKc2V0X21hY2hpbmVfY29uc3RyYWludHMgdG8gYmUgY2FsbGVkIHR3
+aWNlLgoKVGhpcyBpbiB0dXJuIG1heSBpbml0aWFsaXplIHRoZSByZWd1bGF0b3IgdHdpY2UsIGxl
+YWRpbmcgdG8gdm9sdGFnZQpnbGl0Y2hlcyB0aGF0IGFyZSB0aW1pbmctZGVwZW5kZW50LiBBIHNp
+bXBsZSwgdW5yZWxhdGVkIGNvbmZpZ3VyYXRpb24KY2hhbmdlIG1heSBiZSBlbm91Z2ggdG8gaGlk
+ZSB0aGlzIHByb2JsZW0sIG9ubHkgdG8gYmUgc3VyZmFjZWQgYnkKY2hhbmNlLgoKT25lIHN1Y2gg
+ZXhhbXBsZSBpcyB0aGUgU0QtQ2FyZCB2b2x0YWdlIHJlZ3VsYXRvciBpbiBhIE5hbm9QSSBSNFMg
+dGhhdAp3b3VsZCBub3QgaW5pdGlhbGl6ZSByZWxpYWJseSB1bmxlc3MgdGhlIHJlZ2lzdHJhdGlv
+biBmbG93IHdhcyBqdXN0CmNvbXBsZXggZW5vdWdoIHRvIGFsbG93IHRoZSByZWd1bGF0b3IgdG8g
+cHJvcGVybHkgcmVzZXQgYmV0d2VlbiBjYWxscy4KCkZpeCB0aGlzIGJ5IHJlLWFycmFuZ2luZyBy
+ZWd1bGF0b3JfcmVnaXN0ZXIsIHRyeWluZyByZXNvbHZlIHRoZQpyZWd1bGF0b3IncyBzdXBwbHkg
+ZWFybHkgZW5vdWdoIHRoYXQgc2V0X21hY2hpbmVfY29uc3RyYWludHMgZG9lcyBub3QKbmVlZCB0
+byBiZSBjYWxsZWQgdHdpY2UuCgpTaWduZWQtb2ZmLWJ5OiBDaHJpc3RpYW4gS29obHNjaHXMiHR0
+ZXIgPGNocmlzdGlhbkBrb2hsc2NodXR0ZXIuY29tPgotLS0KIGRyaXZlcnMvcmVndWxhdG9yL2Nv
+cmUuYyB8IDUyICsrKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLS0tLS0KIDEgZmls
+ZSBjaGFuZ2VkLCAzMyBpbnNlcnRpb25zKCspLCAxOSBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQg
+YS9kcml2ZXJzL3JlZ3VsYXRvci9jb3JlLmMgYi9kcml2ZXJzL3JlZ3VsYXRvci9jb3JlLmMKaW5k
+ZXggZDgzNzNjYjA0ZjkuLmE1MDMzYzZiYTAxIDEwMDY0NAotLS0gYS9kcml2ZXJzL3JlZ3VsYXRv
+ci9jb3JlLmMKKysrIGIvZHJpdmVycy9yZWd1bGF0b3IvY29yZS5jCkBAIC01NDk2LDcgKzU0OTYs
+MzkgQEAgcmVndWxhdG9yX3JlZ2lzdGVyKGNvbnN0IHN0cnVjdCByZWd1bGF0b3JfZGVzYyAqcmVn
+dWxhdG9yX2Rlc2MsCiAJQkxPQ0tJTkdfSU5JVF9OT1RJRklFUl9IRUFEKCZyZGV2LT5ub3RpZmll
+cik7CiAJSU5JVF9ERUxBWUVEX1dPUksoJnJkZXYtPmRpc2FibGVfd29yaywgcmVndWxhdG9yX2Rp
+c2FibGVfd29yayk7CiAKLQkvKiBwcmVmb3JtIGFueSByZWd1bGF0b3Igc3BlY2lmaWMgaW5pdCAq
+LworCS8qIHNldCByZWd1bGF0b3IgY29uc3RyYWludHMgKi8KKwlpZiAoaW5pdF9kYXRhKQorCQly
+ZGV2LT5jb25zdHJhaW50cyA9IGttZW1kdXAoJmluaXRfZGF0YS0+Y29uc3RyYWludHMsCisJCQkJ
+CSAgICBzaXplb2YoKnJkZXYtPmNvbnN0cmFpbnRzKSwKKwkJCQkJICAgIEdGUF9LRVJORUwpOwor
+CWVsc2UKKwkJcmRldi0+Y29uc3RyYWludHMgPSBremFsbG9jKHNpemVvZigqcmRldi0+Y29uc3Ry
+YWludHMpLAorCQkJCQkgICAgR0ZQX0tFUk5FTCk7CisJaWYgKCFyZGV2LT5jb25zdHJhaW50cykg
+eworCQlyZXQgPSAtRU5PTUVNOworCQlnb3RvIGNsZWFuOworCX0KKworCWlmIChpbml0X2RhdGEg
+JiYgaW5pdF9kYXRhLT5zdXBwbHlfcmVndWxhdG9yKQorCQlyZGV2LT5zdXBwbHlfbmFtZSA9IGlu
+aXRfZGF0YS0+c3VwcGx5X3JlZ3VsYXRvcjsKKwllbHNlIGlmIChyZWd1bGF0b3JfZGVzYy0+c3Vw
+cGx5X25hbWUpCisJCXJkZXYtPnN1cHBseV9uYW1lID0gcmVndWxhdG9yX2Rlc2MtPnN1cHBseV9u
+YW1lOworCisJaWYgKChyZGV2LT5zdXBwbHlfbmFtZSAmJiAhcmRldi0+c3VwcGx5KSAmJgorCQkJ
+KHJkZXYtPmNvbnN0cmFpbnRzLT5hbHdheXNfb24gfHwKKwkJCSByZGV2LT5jb25zdHJhaW50cy0+
+Ym9vdF9vbikpIHsKKwkJLyogVHJ5IHRvIHJlc29sdmUgdGhlIG5hbWUgb2YgdGhlIHN1cHBseWlu
+ZyByZWd1bGF0b3IgaGVyZSBmaXJzdAorCQkgKiBzbyB3ZSBwcmV2ZW50IGRvdWJsZS1pbml0aWFs
+aXppbmcgdGhlIHJlZ3VsYXRvciwgd2hpY2ggbWF5CisJCSAqIGNhdXNlIHRpbWluZy1zcGVjaWZp
+YyB2b2x0YWdlIGJyb3dub3V0cy9nbGl0Y2hlcyB0aGF0IGFyZQorCQkgKiBoYXJkIHRvIGRlYnVn
+LgorCQkgKi8KKwkJcmV0ID0gcmVndWxhdG9yX3Jlc29sdmVfc3VwcGx5KHJkZXYpOworCQlpZiAo
+cmV0KQorCQkJcmRldl9kYmcocmRldiwgInVuYWJsZSB0byByZXNvbHZlIHN1cHBseSBlYXJseTog
+JXBlXG4iLAorCQkJCQkgRVJSX1BUUihyZXQpKTsKKwl9CisKKwkvKiBwZXJmb3JtIGFueSByZWd1
+bGF0b3Igc3BlY2lmaWMgaW5pdCAqLwogCWlmIChpbml0X2RhdGEgJiYgaW5pdF9kYXRhLT5yZWd1
+bGF0b3JfaW5pdCkgewogCQlyZXQgPSBpbml0X2RhdGEtPnJlZ3VsYXRvcl9pbml0KHJkZXYtPnJl
+Z19kYXRhKTsKIAkJaWYgKHJldCA8IDApCkBAIC01NTIyLDI0ICs1NTU0LDYgQEAgcmVndWxhdG9y
+X3JlZ2lzdGVyKGNvbnN0IHN0cnVjdCByZWd1bGF0b3JfZGVzYyAqcmVndWxhdG9yX2Rlc2MsCiAJ
+CSAgICAodW5zaWduZWQgbG9uZykgYXRvbWljX2luY19yZXR1cm4oJnJlZ3VsYXRvcl9ubykpOwog
+CWRldl9zZXRfZHJ2ZGF0YSgmcmRldi0+ZGV2LCByZGV2KTsKIAotCS8qIHNldCByZWd1bGF0b3Ig
+Y29uc3RyYWludHMgKi8KLQlpZiAoaW5pdF9kYXRhKQotCQlyZGV2LT5jb25zdHJhaW50cyA9IGtt
+ZW1kdXAoJmluaXRfZGF0YS0+Y29uc3RyYWludHMsCi0JCQkJCSAgICBzaXplb2YoKnJkZXYtPmNv
+bnN0cmFpbnRzKSwKLQkJCQkJICAgIEdGUF9LRVJORUwpOwotCWVsc2UKLQkJcmRldi0+Y29uc3Ry
+YWludHMgPSBremFsbG9jKHNpemVvZigqcmRldi0+Y29uc3RyYWludHMpLAotCQkJCQkgICAgR0ZQ
+X0tFUk5FTCk7Ci0JaWYgKCFyZGV2LT5jb25zdHJhaW50cykgewotCQlyZXQgPSAtRU5PTUVNOwot
+CQlnb3RvIHdhc2g7Ci0JfQotCi0JaWYgKGluaXRfZGF0YSAmJiBpbml0X2RhdGEtPnN1cHBseV9y
+ZWd1bGF0b3IpCi0JCXJkZXYtPnN1cHBseV9uYW1lID0gaW5pdF9kYXRhLT5zdXBwbHlfcmVndWxh
+dG9yOwotCWVsc2UgaWYgKHJlZ3VsYXRvcl9kZXNjLT5zdXBwbHlfbmFtZSkKLQkJcmRldi0+c3Vw
+cGx5X25hbWUgPSByZWd1bGF0b3JfZGVzYy0+c3VwcGx5X25hbWU7Ci0KIAlyZXQgPSBzZXRfbWFj
+aGluZV9jb25zdHJhaW50cyhyZGV2KTsKIAlpZiAocmV0ID09IC1FUFJPQkVfREVGRVIpIHsKIAkJ
+LyogUmVndWxhdG9yIG1pZ2h0IGJlIGluIGJ5cGFzcyBtb2RlIGFuZCBzbyBuZWVkcyBpdHMgc3Vw
+cGx5Ci0tIAoyLjM2LjIKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
