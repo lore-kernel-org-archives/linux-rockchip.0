@@ -4,50 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB2DBC25B0E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Aug 2022 07:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66281C25B0E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Aug 2022 08:23:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=31cW6t3VMzsNkOdOkdU3uMXBMWyGdcbEszDPK8YPqGg=; b=HjDsS+O7MFcE4o
-	rP3b4P/ll+3abIm9fxoaGmsALvg/JyqUE+HmuyoQ8xl6W7GftHBp1CVg48xNxqeZckVKh4pN03L/8
-	ChHWARLt9PuUYj+jHJQcYs/M5ZY0voWPGayKdkPSdTJJau3784gv9PqU1dTAujs7EbCEES1CJVARj
-	vdbh0Vvwv2pt+s5lXsYDlnce+QpICm2NpefsPhNjHFyU40lE+nra9+JoA0RfXweLldcPnIi3rJ5ko
-	8SZej3bwDW/nRGrtuS/47OpsyZpGt1vfoeVEtn7cKiVzZ+OJZRxLPHmgTorM8oeqpso32BuUPccNW
-	SRe1IlKrMCJ8uopDgd/Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VBoVll2FCxRN9WmTKc0+PqvavnwQic+QGDytINyuCLY=; b=SmziROF4fdFMQWLWtNJettHoKD
+	Z5GRBj2ZYQFK3hmsvZy4rFjl8VttG8uOjPq1ESZ1bYPzEBpP4KhqrgONCxH1TrrMaMsrMJu32P6un
+	zUuZhIbUcF0kDNSW2Xkdcg0FzbXl2W/NvA6IJByPzyqgo0Y2EhKO/l4PQyav3zD650qYkFYJL/VyB
+	rJwpLlOaXUFaWYJ9imNlFRwkTkIVKJepY8SEUXocGqlhc6YWxQl0WA3R5oRkLATypxdOOoj9Vk0SD
+	DXJ9PQSFp/NalYEmGTYW7GrwD0RUE7/8CfnYdispmminn/6ytr2EORGGcil+QH31kP7C2ndUSK57r
+	aVf+2xRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOwnm-003dPK-4b; Fri, 19 Aug 2022 07:52:22 +0000
-Received: from mail.fadrush.pl ([54.37.225.211])
+	id 1oOxHP-0040MG-MX; Fri, 19 Aug 2022 08:22:59 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOwnj-003dJf-Fu
-	for linux-rockchip@lists.infradead.org; Fri, 19 Aug 2022 07:52:20 +0000
-Received: by mail.fadrush.pl (Postfix, from userid 1002)
-	id B31D8228F0; Fri, 19 Aug 2022 07:51:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fadrush.pl; s=mail;
-	t=1660895535; bh=bD6j9gIFU6CLTaCGl0Ow9oeIxtirvTfMeNZSfLEZQ+I=;
-	h=Date:From:To:Subject:From;
-	b=dPnlK8YltwCRfhx7Bvsk+BF8fpXOu9FKLrr7C7Gsy0hDdUphbFlM+kYujKyP4v5Ha
-	 kYlDOW2B5JzOvi9Y1DIkKWHtt8f9XVRvHpxvJcs7CldMbHEi5DsJipRLxhshyIeOZ0
-	 bZyiXfBcYhUj2r3LNJhtpXroFvGiSG86JvXrECEIyDrr1n8eZIZR4Q1q0yIqIQdnQS
-	 uoQIxYf1glw0WKGzkJ8oBQV6sP81528B8tk/X3/OAF6nakWh2NNSYZzKoW0JwKtMSE
-	 gabGLSqDC5Yo59oYLhVstKB5sT5Psgdmaq5iQURgVOJQvnDSrNnoapEH6/oY+EMgtc
-	 C0jXEOWpeSUcQ==
-Received: by mail.fadrush.pl for <linux-rockchip@lists.infradead.org>; Fri, 19 Aug 2022 07:51:16 GMT
-Message-ID: <20220819064500-0.1.14.8ozc.0.wo3xf5ma28@fadrush.pl>
-Date: Fri, 19 Aug 2022 07:51:16 GMT
-From: "Jakub Olejniczak" <jakub.olejniczak@fadrush.pl>
-To: <linux-rockchip@lists.infradead.org>
-Subject: =?UTF-8?Q?Zwi=C4=99kszenie_p=C5=82ynno=C5=9Bci_finansowej?=
-X-Mailer: mail.fadrush.pl
+	id 1oOxHG-0040Dn-MO
+	for linux-rockchip@lists.infradead.org; Fri, 19 Aug 2022 08:22:52 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1oOxH8-0004of-3W; Fri, 19 Aug 2022 10:22:42 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1oOxH5-000g1u-IS; Fri, 19 Aug 2022 10:22:39 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1oOxH4-00Chdh-N7; Fri, 19 Aug 2022 10:22:38 +0200
+Date: Fri, 19 Aug 2022 10:22:35 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: zhaoxiao <zhaoxiao@uniontech.com>
+Cc: thierry.reding@gmail.com, heiko@sntech.de, linux-pwm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3] pwm: rockchip: Convert to use dev_err_probe()
+Message-ID: <20220819082235.ygyw3spkbpookzyy@pengutronix.de>
+References: <20220819070756.14895-1-zhaoxiao@uniontech.com>
 MIME-Version: 1.0
+In-Reply-To: <20220819070756.14895-1-zhaoxiao@uniontech.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220819_005219_749764_B2DE627C 
-X-CRM114-Status: UNSURE (   1.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220819_012250_757796_73A414D2 
+X-CRM114-Status: GOOD (  20.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,24 +66,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============3518410927059821859=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKa29udGFrdHVqxJkgc2nEmSB6IFBhxYRzdHdlbSwgcG9uaWV3YcW8IGNo
-Y2lhxYJieW0gemFwcm9wb25vd2HEhyB3eWdvZG5lIHJvendpxIV6YW5pZSwga3TDs3JlIHVtb8W8
-bGl3aSBQYcWEc3R3YSBmaXJtaWUgc3RhYmlsbnkgcm96d8Ozai4gCgpLb25rdXJlbmN5am5lIG90
-b2N6ZW5pZSB3eW1hZ2EgY2nEhWfFgmVnbyB1bGVwc3phbmlhIGkgcG9zemVyemVuaWEgb2ZlcnR5
-LCBjbyB6IGtvbGVpIHdpxIXFvGUgc2nEmSB6IGtvbmllY3pub8WbY2nEhSBpbndlc3Rvd2FuaWEu
-IEJyYWsgb2Rwb3dpZWRuaWVnbyBrYXBpdGHFgnUgcG93YcW8bmllIG9ncmFuaWN6YSB0ZW1wbyBy
-b3p3b2p1IGZpcm15LgoKT2Qgd2llbHUgbGF0IHogcG93b2R6ZW5pZW0gcG9tYWdhbSBmaXJtb20g
-dyB1enlza2FuaXUgbmFqbGVwc3plaiBmb3JteSBmaW5hbnNvd2FuaWEgeiBiYW5rdSBvcmF6IFVF
-LiBNYW0gc3RhxYJ5Y2ggS2xpZW50w7N3LCBrdMOzcnp5IG5hZGFsIGNoxJl0bmllIGtvcnp5c3Rh
-asSFIHogbW9pY2ggdXPFgnVnLCBhIHRha8W8ZSBwb2xlY2FqxIUgamUgaW5ueW0uCgpDenkgY2hj
-aWVsaWJ5IFBhxYRzdHdvIHNrb3J6eXN0YcSHIHogcG9tb2N5IHd5a3dhbGlmaWtvd2FuZWdvIGkg
-ZG/Fm3dpYWRjem9uZWdvIGRvcmFkY3kgZmluYW5zb3dlZ28/CgoKUG96ZHJhd2lhbQpKYWt1YiBP
-bGVqbmljemFrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+
+--===============3518410927059821859==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="2ashbpe5mzbtgjqm"
+Content-Disposition: inline
+
+
+--2ashbpe5mzbtgjqm
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Aug 19, 2022 at 03:07:56PM +0800, zhaoxiao wrote:
+> It's fine to call dev_err_probe() in ->probe() when error code is known.
+> Convert the driver to use dev_err_probe().
+>=20
+> Signed-off-by: zhaoxiao <zhaoxiao@uniontech.com>
+> ---
+>  v3: 1.There is no need to assign it to 'ret', and use PTR_ERR(pc->pclk) =
+directly.
+>      2.add the return before dev_err_probe().
+>  drivers/pwm/pwm-rockchip.c | 14 ++++----------
+>  1 file changed, 4 insertions(+), 10 deletions(-)
+>=20
+> diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
+> index f3647b317152..eda1bd49d260 100644
+> --- a/drivers/pwm/pwm-rockchip.c
+> +++ b/drivers/pwm/pwm-rockchip.c
+> @@ -328,18 +328,12 @@ static int rockchip_pwm_probe(struct platform_devic=
+e *pdev)
+>  	else
+>  		pc->pclk =3D pc->clk;
+> =20
+> -	if (IS_ERR(pc->pclk)) {
+> -		ret =3D PTR_ERR(pc->pclk);
+> -		if (ret !=3D -EPROBE_DEFER)
+> -			dev_err(&pdev->dev, "Can't get APB clk: %d\n", ret);
+> -		return ret;
+> -	}
+> +	if (IS_ERR(pc->pclk))
+> +		return dev_err_probe(&pdev->dev, PTR_ERR(pc->pclk), "Can't get APB clk=
+\n");
+> =20
+>  	ret =3D clk_prepare_enable(pc->clk);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "Can't prepare enable PWM clk: %d\n", ret);
+> -		return ret;
+> -	}
+> +	if (ret)
+> +		return dev_err_probe(&pdev->dev, ret, "Can't prepare enable PWM clk\n"=
+);
+> =20
+>  	ret =3D clk_prepare_enable(pc->pclk);
+>  	if (ret) {
+
+Still missing two dev_err() that are unconverted ...
+
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--2ashbpe5mzbtgjqm
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmL/SEgACgkQwfwUeK3K
+7AmYCAf+JNAnIXa6WEgqFlr9kJ6eRLkB5TuFo0vd5ix980QQR+G0ouBvA6+aiEyP
+vagnbM2Ln+ld6ZJGCqgAKwbQcjXTB5x2QZ7r0m4lDetPJKXyHbp5wG0OxAgubbrt
+tA1u1h6gV98fN5nQhJ21AmP27ysF8zAr50aK7oq0T+6T0AKTDzT0cjeZTdFbX2zb
+td/aTKo9RZ9CotP9OXpXPuQV2z/wvsmnqzSwhAG1oyqPq6hDU2BcMGbZdx6fOzTm
+Tlist939BIzup5wRGA1rFceLYb3A4esTq0/TrnGYiwWXxk3E33eWJw/GQYlQ/DgQ
+eudXywcnEeJJ321bqFFVKwIPxImj8A==
+=eUfy
+-----END PGP SIGNATURE-----
+
+--2ashbpe5mzbtgjqm--
+
+
+--===============3518410927059821859==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3518410927059821859==--
+
