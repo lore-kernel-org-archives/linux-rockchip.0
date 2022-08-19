@@ -4,57 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7EAEC25B0E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Aug 2022 07:08:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB2DBC25B0E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 19 Aug 2022 07:52:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KDy99DcvqFWMbXIUMRzpBC2ZGrF8bgvBN+MgbUB3zaw=; b=QDIADFeEPm9X7V
-	k9ns9CP2bunX7CFS9/wSiugsQ0S54BzdItjldFR6OdmxGOzBVxswxCI6lXpeF68kuWwhjoGJwdeoz
-	krN+lcquO5XSxgWbbX1n5yut8bveM7qqpFeeAyYmO+2UDvFPqQHud8a/nOpt8/E+DBdPnTyuKXuVo
-	9EJE8h5qDkRSzZfbj6AEN3gsMdbdN+NXFEd8CCah+PlEWc2J0Udod1qRc+ewAjo9iAbt+88ZNTi23
-	uxAvUhXjlCp3qNg7B8fKyCMCARlXPnKzM7J8RzhHFGdLoDD00gPHp2zSGs+R8xQwKy0VZRGKB0NsS
-	7ZZe6679TzpZ4orV1Bug==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=31cW6t3VMzsNkOdOkdU3uMXBMWyGdcbEszDPK8YPqGg=; b=HjDsS+O7MFcE4o
+	rP3b4P/ll+3abIm9fxoaGmsALvg/JyqUE+HmuyoQ8xl6W7GftHBp1CVg48xNxqeZckVKh4pN03L/8
+	ChHWARLt9PuUYj+jHJQcYs/M5ZY0voWPGayKdkPSdTJJau3784gv9PqU1dTAujs7EbCEES1CJVARj
+	vdbh0Vvwv2pt+s5lXsYDlnce+QpICm2NpefsPhNjHFyU40lE+nra9+JoA0RfXweLldcPnIi3rJ5ko
+	8SZej3bwDW/nRGrtuS/47OpsyZpGt1vfoeVEtn7cKiVzZ+OJZRxLPHmgTorM8oeqpso32BuUPccNW
+	SRe1IlKrMCJ8uopDgd/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOw7c-0034Zv-14; Fri, 19 Aug 2022 07:08:48 +0000
-Received: from smtpbgjp3.qq.com ([54.92.39.34])
+	id 1oOwnm-003dPK-4b; Fri, 19 Aug 2022 07:52:22 +0000
+Received: from mail.fadrush.pl ([54.37.225.211])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oOw7O-00344t-7M; Fri, 19 Aug 2022 07:08:36 +0000
-X-QQ-mid: bizesmtp70t1660892882t7gg8drd
-Received: from localhost.localdomain ( [123.114.60.34])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Fri, 19 Aug 2022 15:08:00 +0800 (CST)
-X-QQ-SSF: 01400000002000D0U000B00A0000000
-X-QQ-FEAT: QityeSR92A0+yWSjjTB+IV8pKbCs/7cP9P/foXuOyx46FWXJK6UkeN9TfHSeh
-	k2nb5FbStNEBg6w+wZB3rQFMQ63eo8yZVOFmJZ/8T2vCfABNU/b/5u0/8VUA2wP3SE6Gxo/
-	T7S8cIG+y+raPFt2oUZmcL2175HQVTt7+/r6zq/kyat7ArX6Unm/vwDAFUD1UWnIJ3biMeX
-	fiLk8i+2b6fKngOnmaN9bt7dF++F3GyhSL0xnvsdNuBLWXntJEmhoHddaryH0+fIHhDoM4Z
-	GxYH+ToyEnFO6skNCVqeeEmZVbK/sMygxrQojN3Da855Pbea7sbPF/QcNpB8FoLH7p2dIga
-	escZsEpTwPMh1uXBgfig67RP8fzIWPIWEdf0l9hlL5iH5Gw4kUCTbK8IuQMnQ==
-X-QQ-GoodBg: 2
-From: zhaoxiao <zhaoxiao@uniontech.com>
-To: thierry.reding@gmail.com,
-	heiko@sntech.de
-Cc: u.kleine-koenig@pengutronix.de,
-	linux-pwm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	zhaoxiao <zhaoxiao@uniontech.com>
-Subject: [PATCH v3] pwm: rockchip: Convert to use dev_err_probe()
-Date: Fri, 19 Aug 2022 15:07:56 +0800
-Message-Id: <20220819070756.14895-1-zhaoxiao@uniontech.com>
-X-Mailer: git-send-email 2.20.1
+	id 1oOwnj-003dJf-Fu
+	for linux-rockchip@lists.infradead.org; Fri, 19 Aug 2022 07:52:20 +0000
+Received: by mail.fadrush.pl (Postfix, from userid 1002)
+	id B31D8228F0; Fri, 19 Aug 2022 07:51:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fadrush.pl; s=mail;
+	t=1660895535; bh=bD6j9gIFU6CLTaCGl0Ow9oeIxtirvTfMeNZSfLEZQ+I=;
+	h=Date:From:To:Subject:From;
+	b=dPnlK8YltwCRfhx7Bvsk+BF8fpXOu9FKLrr7C7Gsy0hDdUphbFlM+kYujKyP4v5Ha
+	 kYlDOW2B5JzOvi9Y1DIkKWHtt8f9XVRvHpxvJcs7CldMbHEi5DsJipRLxhshyIeOZ0
+	 bZyiXfBcYhUj2r3LNJhtpXroFvGiSG86JvXrECEIyDrr1n8eZIZR4Q1q0yIqIQdnQS
+	 uoQIxYf1glw0WKGzkJ8oBQV6sP81528B8tk/X3/OAF6nakWh2NNSYZzKoW0JwKtMSE
+	 gabGLSqDC5Yo59oYLhVstKB5sT5Psgdmaq5iQURgVOJQvnDSrNnoapEH6/oY+EMgtc
+	 C0jXEOWpeSUcQ==
+Received: by mail.fadrush.pl for <linux-rockchip@lists.infradead.org>; Fri, 19 Aug 2022 07:51:16 GMT
+Message-ID: <20220819064500-0.1.14.8ozc.0.wo3xf5ma28@fadrush.pl>
+Date: Fri, 19 Aug 2022 07:51:16 GMT
+From: "Jakub Olejniczak" <jakub.olejniczak@fadrush.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: =?UTF-8?Q?Zwi=C4=99kszenie_p=C5=82ynno=C5=9Bci_finansowej?=
+X-Mailer: mail.fadrush.pl
 MIME-Version: 1.0
-X-QQ-SENDSIZE: 520
-Feedback-ID: bizesmtp:uniontech.com:qybglogicsvr:qybglogicsvr1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220819_000834_576050_12D425B6 
-X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-CacheID: sfid-20220819_005219_749764_B2DE627C 
+X-CRM114-Status: UNSURE (   1.24  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -67,53 +59,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-It's fine to call dev_err_probe() in ->probe() when error code is known.
-Convert the driver to use dev_err_probe().
-
-Signed-off-by: zhaoxiao <zhaoxiao@uniontech.com>
----
- v3: 1.There is no need to assign it to 'ret', and use PTR_ERR(pc->pclk) directly.
-     2.add the return before dev_err_probe().
- drivers/pwm/pwm-rockchip.c | 14 ++++----------
- 1 file changed, 4 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-index f3647b317152..eda1bd49d260 100644
---- a/drivers/pwm/pwm-rockchip.c
-+++ b/drivers/pwm/pwm-rockchip.c
-@@ -328,18 +328,12 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
- 	else
- 		pc->pclk = pc->clk;
- 
--	if (IS_ERR(pc->pclk)) {
--		ret = PTR_ERR(pc->pclk);
--		if (ret != -EPROBE_DEFER)
--			dev_err(&pdev->dev, "Can't get APB clk: %d\n", ret);
--		return ret;
--	}
-+	if (IS_ERR(pc->pclk))
-+		return dev_err_probe(&pdev->dev, PTR_ERR(pc->pclk), "Can't get APB clk\n");
- 
- 	ret = clk_prepare_enable(pc->clk);
--	if (ret) {
--		dev_err(&pdev->dev, "Can't prepare enable PWM clk: %d\n", ret);
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "Can't prepare enable PWM clk\n");
- 
- 	ret = clk_prepare_enable(pc->pclk);
- 	if (ret) {
--- 
-2.20.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LAoKa29udGFrdHVqxJkgc2nEmSB6IFBhxYRzdHdlbSwgcG9uaWV3YcW8IGNo
+Y2lhxYJieW0gemFwcm9wb25vd2HEhyB3eWdvZG5lIHJvendpxIV6YW5pZSwga3TDs3JlIHVtb8W8
+bGl3aSBQYcWEc3R3YSBmaXJtaWUgc3RhYmlsbnkgcm96d8Ozai4gCgpLb25rdXJlbmN5am5lIG90
+b2N6ZW5pZSB3eW1hZ2EgY2nEhWfFgmVnbyB1bGVwc3phbmlhIGkgcG9zemVyemVuaWEgb2ZlcnR5
+LCBjbyB6IGtvbGVpIHdpxIXFvGUgc2nEmSB6IGtvbmllY3pub8WbY2nEhSBpbndlc3Rvd2FuaWEu
+IEJyYWsgb2Rwb3dpZWRuaWVnbyBrYXBpdGHFgnUgcG93YcW8bmllIG9ncmFuaWN6YSB0ZW1wbyBy
+b3p3b2p1IGZpcm15LgoKT2Qgd2llbHUgbGF0IHogcG93b2R6ZW5pZW0gcG9tYWdhbSBmaXJtb20g
+dyB1enlza2FuaXUgbmFqbGVwc3plaiBmb3JteSBmaW5hbnNvd2FuaWEgeiBiYW5rdSBvcmF6IFVF
+LiBNYW0gc3RhxYJ5Y2ggS2xpZW50w7N3LCBrdMOzcnp5IG5hZGFsIGNoxJl0bmllIGtvcnp5c3Rh
+asSFIHogbW9pY2ggdXPFgnVnLCBhIHRha8W8ZSBwb2xlY2FqxIUgamUgaW5ueW0uCgpDenkgY2hj
+aWVsaWJ5IFBhxYRzdHdvIHNrb3J6eXN0YcSHIHogcG9tb2N5IHd5a3dhbGlmaWtvd2FuZWdvIGkg
+ZG/Fm3dpYWRjem9uZWdvIGRvcmFkY3kgZmluYW5zb3dlZ28/CgoKUG96ZHJhd2lhbQpKYWt1YiBP
+bGVqbmljemFrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
