@@ -4,43 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEB8EC28D13
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Aug 2022 23:44:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C49C28D13
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Aug 2022 23:45:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ey5tltLgVyt26482If5mC9Nbv3mbw11VEzWb73fDW/g=; b=voUYWgX1dShiYH
-	X5HXOarrBHbSy0kT0qWbGT8IzbbQ2jx8T9uwSNHAnVJg5w1NCntHk4cTlpNdHpsfRPuHk2Xr61+Dc
-	DBZ0ya4eNXlrFLcXW9JSP4KvG2jC4Tl96JOI5yEslCdlMNaQkmNuM1DBUqcN4CL0cIrTwAkmSBdrU
-	4kiB5WCrXVq9NkNUK9GnEc+ez82NYD1QW4Ck+bwvwKzp+XCrKCQ5zidFQqK4CYBPQHFWrq/52dtqW
-	07RTnCHGMOOPj/Q4yltoDUdV3B1S2QsI34P0xjmRycIqWwhalp+2jtH3vI6Kz60tB3aFnTi5X+KRB
-	RwCgh4rsS2j3UkXq7OdQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nlaO6Ha2Y7NG7xBb/v2O6i9CqHTBMN3JXXaxvpNNCRQ=; b=CJMJeUlEtNKc8e
+	7FxwGvLdGtwq3qTdTyg1IWt822WZZOWUZaNrMiQK3/swIasNXefUmPahKPV/+JSCAw05c0GtIOPzG
+	LwYJmhL1fi9GFrqqwHroMh6kGe1fPqkn/kUSy17xRO3IqhnWlysEyAoJcRHaQALGc/YyByR9k94bl
+	uvNHu4+LPDVwleio6uS/DQ/7+IOM9+TkXCJKYoLPvF9wnmEUdD1RNVhw1tVgH55OnPs4+HbMc6Lak
+	OR6NPMY0znPusIk5lXBxlRw3ZTM5Mc0imQS183pRU95eGJSqHer+JCwZMohfpLPoeu67910kMMFX3
+	926o+k0YbC/q8UatundQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQH5Z-00G6CX-LM; Mon, 22 Aug 2022 23:44:13 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1oQH6a-00G6ow-8m; Mon, 22 Aug 2022 23:45:16 +0000
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQH5G-00G62k-SP; Mon, 22 Aug 2022 23:43:58 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1oQH5A-00013b-GV; Tue, 23 Aug 2022 01:43:48 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Quentin Schulz <foss+kernel@0leil.net>, Ulf Hansson <ulf.hansson@linaro.org>, "Rafael J. Wysocki" <rafael@kernel.org>, Linus Walleij <linus.walleij@linaro.org>
-Cc: linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Quentin Schulz <quentin.schulz@theobroma-systems.com>
-Subject: Re: [RFC PATCH 0/1] Making Rockchip IO domains dependency from other devices explicit
-Date: Tue, 23 Aug 2022 01:43:46 +0200
-Message-ID: <2696616.PYKUYFuaPT@diego>
-In-Reply-To: <CACRpkdZXTtar73-HP8_wcAsCYw7JOgPwkXZt-_3s0GdoggBABw@mail.gmail.com>
-References: <20220802095252.2486591-1-foss+kernel@0leil.net> <CACRpkdZXTtar73-HP8_wcAsCYw7JOgPwkXZt-_3s0GdoggBABw@mail.gmail.com>
+	id 1oQH6V-00G6kF-Tq
+	for linux-rockchip@lists.infradead.org; Mon, 22 Aug 2022 23:45:13 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id 1so4661461pfu.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 22 Aug 2022 16:45:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc;
+        bh=d0Csk6K/KRDvQOW2pJh/wb18v7EwQgVkPuj58liA9sk=;
+        b=d0OjFOtnA74HEPODGOej0roBiHJdXfjGLLMCSA7Dja6dRiZnZ+AIa+/Zq6lX5Ml6bR
+         UhWPfGcABUeKPxY8LkSuTJTdmMgY16YD6uRueoeouqYr0jwXhuQd/vC3haQPN33MOxo8
+         p3cbT1GhwmDy66zEiQ8KCJgxILUB/5DBIK8oc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc;
+        bh=d0Csk6K/KRDvQOW2pJh/wb18v7EwQgVkPuj58liA9sk=;
+        b=Woy38qrej1XqgyXKUHM02DHzdqfraP4HzxTya9irMtNdPddhA9Mtb8FE9wY21RjDX2
+         /KhrYiNy/PsKkFszABuzG/jnjTW+kwFbi75/CxOXcZmu5dGdFlqrO1z2LYvBoQUI8/ux
+         GuIJkk2yDJp1l9NPJEp9TXXUSPXrRQp6n827HQwZ7OR82EaB2thVlUnp4GK1CFBLNfuC
+         4P+GWm+qB6ExY1fUFjxaE7T1EV+PtYFxRjdBBhWtX9540cddiLrert2GskeJQDPUKvxq
+         QNU/48Hhzh1LPiAqJFgM7U/5QtDN76wSUCXTScpK53+KSD1sHJSJOQu6yIRZF/K0AG9o
+         K92g==
+X-Gm-Message-State: ACgBeo0ySPB07MPn77Ix7ICyPpu4ISQxlwUUWeZJVo9R3QhrMXoAWmR3
+	axbga6hLmhSpOpn64HZqim/x8A==
+X-Google-Smtp-Source: AA6agR4N9JHSXn0/iMlmacfOfIr0W8bQdy9dMMxR+LBeppeS0cmq9y8V81RI4gycpJsfnvP43c5qaA==
+X-Received: by 2002:a63:8749:0:b0:41d:89d4:ce3d with SMTP id i70-20020a638749000000b0041d89d4ce3dmr17913148pge.344.1661211910403;
+        Mon, 22 Aug 2022 16:45:10 -0700 (PDT)
+Received: from localhost ([2620:15c:202:201:34e2:c40e:42d3:27e0])
+        by smtp.gmail.com with UTF8SMTPSA id h196-20020a6283cd000000b005367043e163sm4063261pfe.28.2022.08.22.16.45.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 22 Aug 2022 16:45:09 -0700 (PDT)
+From: Brian Norris <briannorris@chromium.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Douglas Anderson <dianders@chromium.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	Brian Norris <briannorris@chromium.org>
+Subject: [PATCH] arm64: dts: rockchip: Pull up wlan wake# on Gru-Bob
+Date: Mon, 22 Aug 2022 16:45:04 -0700
+Message-Id: <20220822164453.1.I75c57b48b0873766ec993bdfb7bc1e63da5a1637@changeid>
+X-Mailer: git-send-email 2.37.2.609.g9ff673ca1a-goog
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220822_164356_780276_79CF2FAE 
-X-CRM114-Status: GOOD (  28.70  )
+X-CRM114-CacheID: sfid-20220822_164512_026603_7D29F082 
+X-CRM114-Status: GOOD (  12.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,76 +87,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Linus,
+The Gru-Bob board does not have a pull-up resistor on its
+WLAN_HOST_WAKE# pin, but Kevin does. The production/vendor kernel
+specified the pin configuration correctly as a pull-up, but this didn't
+get ported correctly to upstream.
 
-Am Montag, 22. August 2022, 10:38:11 CEST schrieb Linus Walleij:
-> On Tue, Aug 2, 2022 at 11:53 AM Quentin Schulz <foss+kernel@0leil.net> wrote:
-> 
-> > Some background on IO domains on Rockchip:
-> >
-> > On some Rockchip SoCs, some SoC pins are split in what are called IO
-> > domains.
-> >
-> > An IO domain is supplied power externally, by regulators from a PMIC for
-> > example. This external power supply is then used by the IO domain as
-> > "supply" for the IO pins if they are outputs.
-> >
-> > Each IO domain can configure which voltage the IO pins will be operating
-> > on (1.8V or 3.3V).
-> >
-> > There already exists an IO domain driver for Rockchip SoCs[1]. This
-> > driver allows to explicit the relationship between the external power
-> > supplies and IO domains[2]. This makes sure the regulators are enabled
-> > by the Linux kernel so the IO domains are supplied with power and
-> > correctly configured as per the supplied voltage.
-> > This driver is a regulator consumer and does not offer any other
-> > interface for device dependency.
-> 
-> What makes me confused about the patch is the relationship, if any,
-> between this "IO domain" and generic power domains (genpd) that has
-> been worked on for ~10 years.
-> 
-> I am worried that we are reinventing the world.
+This means Bob's WLAN_HOST_WAKE# pin is floating, causing inconsistent
+wakeup behavior.
 
-In a nutshell, the Rockchip io-domains handle the voltages of specific
-pin-groups. I.e. mostly it is just switching between 1.8V and 3.3V .
+Note that bt_host_wake_l has a similar dynamic, but apparently the
+upstream choice was to redundantly configure both internal and external
+pull-up on Kevin (see the "Kevin has an external pull up" comment in
+rk3399-gru.dtsi). This doesn't cause any functional problem, although
+it's perhaps wasteful.
 
-The voltage itself is always set in a (i2c-)regulator but there is a
-separate step necessary to tell the soc this information.
+Fixes: 8559bbeeb849 ("arm64: dts: rockchip: add Google Bob")
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
 
-3.3 -> 1.8: set regulator to 1.8, tell io-domain "we're at 1.8 now"
-1.8 -> 3.3: tell io-domain "3.3", set regulator to 3.3.
+ arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts         | 5 +++++
+ arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 1 +
+ 2 files changed, 6 insertions(+)
 
-There is supposedly a soc-health-issue if you set the regulator to 3.3
-while the io-domain thinks it's at 1.8 .
-
-
-So the io-domain driver right now, just attaches to the regulator, catches
-the voltage-change events and sets the io-domain setting accordingly.
-
-
-What Quentin is trying to solve is a probe-dependency issue that can
-happen when stuff is built into the kernel, the regulator has probed
-the regulator using driver has probed, but the io.domain driver hasn't,
-as that also only attached to the regulator as described above.
-
-Heiko
-
-
-> While my intuitive feeling is that genpd power domains are only on-chip
-> and not considering off-chip pins, I am not so sure that it warrants
-> its own abstraction and want to know whether this can be retrofit into
-> genpd rather than inventing this?
-> 
-> Documentation/devicetree/bindings/power/power-domain.yaml
-> include/linux/pm_domain.h
-> 
-> Yours,
-> Linus Walleij
-> 
-
-
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
+index 31ebb4e5fd33..0f9cc042d9bf 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
+@@ -88,3 +88,8 @@ h1_int_od_l: h1-int-od-l {
+ 		};
+ 	};
+ };
++
++&wlan_host_wake_l {
++	/* Kevin has an external pull up, but Bob does not. */
++	rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+index cd074641884b..45796b9fd94f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+@@ -578,6 +578,7 @@ wifi_perst_l: wifi-perst-l {
+ 	};
+ 
+ 	wlan_host_wake_l: wlan-host-wake-l {
++		/* Kevin has an external pull up, but Bob does not */
+ 		rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 	};
+ };
+-- 
+2.37.2.609.g9ff673ca1a-goog
 
 
 _______________________________________________
