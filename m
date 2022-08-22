@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1BCCC28D13
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Aug 2022 08:54:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A95DC28D13
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Aug 2022 09:11:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e+NIfFrvKlfVgRXosphtSWTYSzOay3FaXuxuq53mCK8=; b=0/QPY6MmkNGyZA
-	TD74FWs7TVbCGru/brJKkyEZ3L1n54QtGpyGw81Bcbn5mQK2WKVDSzrRMmTqEM1NAkN1FcPGork5c
-	emoffUsEhp7RS34ihCU6Ej3a79jnzzR7Zj8GBbuyR4w6tNQGrrGS8oOmL0qi2bbD3uYF/jjdUhcyw
-	2w1BYTSRZ5gL3fJEtVrpvlnW1z9Zo5ttBCWt88zuCTM3CTCoIPE1U4eWfrMtK97QaEAK49ItJYXqU
-	8rXBOmf2VF8HSBkD1VGDbVYO/SUv5wb8sI/rwPt1aAXDLaWyDBRln0Plc0oJa4BDQP5S08wgHKBsP
-	kYDjsGLoczh7lATOttxw==;
+	List-Owner; bh=joaqwECF24ApKJEUJOStRB3Y0uIaCKLCL8HSQu4qrO0=; b=Ke8emnJJve7jKa
+	4Ytr9xj2cS7nArhHo3m1CJ9LU8I3Dy4c/qO9n9U6kb65B9cGJmtQ+7wm9CvHoy3VsinN5GD9Ff2SJ
+	Jrxv7yFRNbzmMUPvdGy+GwKR5Yv1Slg8eGtSdE0tcWuq7hqu1bXkZZQnG8HzIz5Ne7cqB+WDzSPE0
+	tZgICXK3Zf1Xq6nPjdoDCAyt9mJ2ujq0qd1eItbSRsYdDoMoauWlALTR7cgtGW3/phDpIBjqOWx4c
+	2aaoUIKKR7JXskOlo5WybHRE8MKBb2Q/chPUrClqO0n8LTZ5XprxjdzlalAPPxj6JwmYkLpZIAgoL
+	WP1HwDIUS1LYWhFxU+Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ3Ce-006hPo-C3; Mon, 22 Aug 2022 08:54:36 +0000
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+	id 1oQ3T2-006rNh-23; Mon, 22 Aug 2022 09:11:32 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ2wy-006YTD-Md
-	for linux-rockchip@lists.infradead.org; Mon, 22 Aug 2022 08:38:28 +0000
-Received: by mail-ej1-x62d.google.com with SMTP id ce26so3976125ejb.11
-        for <linux-rockchip@lists.infradead.org>; Mon, 22 Aug 2022 01:38:24 -0700 (PDT)
+	id 1oQ3L9-006mYr-Np
+	for linux-rockchip@lists.infradead.org; Mon, 22 Aug 2022 09:03:25 +0000
+Received: by mail-ed1-x533.google.com with SMTP id w10so838952edc.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 22 Aug 2022 02:03:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=5OBoHrdlmLoJOWu5Z6u5wsXYdDXsGII6yOBzDwmmk64=;
-        b=Q5AWfYM/rPqlMVN4qyTDPaeV/0+Fk0sK5jGatklasd63Xvzc/Kde3ny7t+KQZiqhIi
-         xsESJzpeoc5Lj7GBHNkmN+DL75GF2tfoLYlTL0t5oybt5T4qkzTZOtSnum4SCRoVeD+5
-         OwXvk2cy7EyTb3Gu6Hkp4xMVbEeb1iQSjZIJPPlEuaZSTW7Bq71o5TtgXC8JUKif7xJ8
-         vvKdA/XZ8SX+JhfY6W5XqInUgwpTUMu5HM0oEiNREievTLz9/od5tYsgeuCNeCISgGJI
-         7BYkKKmxWsn9xLuTDXk1pJ8ACucfi4oWsaMV/NjeMxbD2ocFyhJNvN9MVGBz62abvbCY
-         QbSQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc;
+        bh=PfP60D9HcZlcTmmRkDILCGp84nMKR71wAxP/XLHNcOc=;
+        b=dcOe3X+PKAbEoSgP1SZmV125Z3qv1XttTwkArPyYcr4xSsp1l0HctYY2pv0uExaNHs
+         BSjz8aI9/G3YSdKhzFhH4CM26Cp3NbzkVihaziCi6knnGjVWDuodYzoqNDXyfNKbrhPb
+         UHDG2NBq7HvBzE/cVwbtE5cAhkXQhMN87foLuPRlelhuP82lAzr5Yde41DKpyBIzO+mN
+         HIVVXPLUopYlfKhEimJOiRXK27dIR5p0EdpWDotSbKPfnQzDABmMtGMYeN6kyfaZbYRN
+         0s61P20Acr+L1GVSLBYmoWZlAAvXC2NhF9tw6XT5iUBlLjrqMQ71IR+FoqGenpIcgCK0
+         3j0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=5OBoHrdlmLoJOWu5Z6u5wsXYdDXsGII6yOBzDwmmk64=;
-        b=Z5DJ9jj9PmXIh0V2IAVZimg+OwPBNTIAEE3DjYtwsdjPMG6xXK9aQeqNXsCpjjRa+w
-         R7kHWmOCu6xM26n4C1w529qNC/arv8x/z6PXOPva+gLCDz2GxlzZHS2gIEMW3pwlBokJ
-         ym1jorW1V2GvybTwq/qiDNzQH24wsr7rarKgPYu/D/OFeXxf0SRalkpqm58bw2vsyZOs
-         MQjFXiJbJJk38DEtc0ysyo3/nBiFykF7xop1NQWFIh0oDdjx6w+t8urI3IZXwnJtJqkO
-         DMzu/lcxcx5vIi9MICO7KMPo+5lBBwA24RcOw7vEXNn9jaqtoHpk+bFQp2ErbPsf8+g8
-         19Ow==
-X-Gm-Message-State: ACgBeo2qAMJf/J40XImaS4TN2O8G9LiehjHIFiQZ/Aotr5rQNAwP6obZ
-	XOEsLT0ZeiY2PzMkl4yijEHMT4nqOwfhYiwx0du3BscFgknIFQ==
-X-Google-Smtp-Source: AA6agR6ZR63Fh74m2vscZd7j1aOwLRpZQ7CAvO0GxPchmdyIMOJWkKrwFuKZZRefZqXis0gsyYLXWca4nOtfLFidPho=
-X-Received: by 2002:a17:906:58c8:b0:6fe:91d5:18d2 with SMTP id
- e8-20020a17090658c800b006fe91d518d2mr12458571ejs.190.1661157503046; Mon, 22
- Aug 2022 01:38:23 -0700 (PDT)
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
+        bh=PfP60D9HcZlcTmmRkDILCGp84nMKR71wAxP/XLHNcOc=;
+        b=6LBn9rVkfatGrB4A9PxpSn7drCcvJ7n5p92G9YOCWX/fh2MFhJBUo1N0iuQjtoNc3f
+         VD+tOHxeCh018uNsjh/wqfTzGfjTX9JMApuNj4PidMooKHFSAbip8bY/Kqo/U6cPcE84
+         a2ssoazSlzyzCOdmIAnyFZj5s/Vp1ym8x+TzzxJO/EOpYU5i2sEKkETpZEwGc3703v8v
+         gNDLlJBuRKQG93MzY2peNrk9bs8eTVObOlzhN1yfCZx7NSqydApcrlYU4GbjxXy4GtEW
+         d6ea6nfbOH07MyIs4fm3ade/yZBfkE/LRFk3S/GFzj2uZ0UFtsWI62phjZk5295nFW8N
+         anCA==
+X-Gm-Message-State: ACgBeo2F5+BCk58ygjcUZ4w/H1LRGy+X5ma4ey65Q+MBqJrQPXomPOkt
+	Et8X6tB1CrjYJLQHsu2gwPrAUVdSJAb1ve5s4kTPxA==
+X-Google-Smtp-Source: AA6agR4jfiw9ukbwgaBM5kt0WK81+CDs8BDK8ocqBwlyo9nrKF50l8XJTQbKiqdo/xZ0koN9LAIfirRH7ThqRuR3Ic4=
+X-Received: by 2002:a05:6402:1f8c:b0:43e:8fab:76c with SMTP id
+ c12-20020a0564021f8c00b0043e8fab076cmr15225219edc.126.1661158999829; Mon, 22
+ Aug 2022 02:03:19 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220802095252.2486591-1-foss+kernel@0leil.net>
-In-Reply-To: <20220802095252.2486591-1-foss+kernel@0leil.net>
+References: <20220808025121.110223-1-jhlspies@gmail.com>
+In-Reply-To: <20220808025121.110223-1-jhlspies@gmail.com>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 22 Aug 2022 10:38:11 +0200
-Message-ID: <CACRpkdZXTtar73-HP8_wcAsCYw7JOgPwkXZt-_3s0GdoggBABw@mail.gmail.com>
-Subject: Re: [RFC PATCH 0/1] Making Rockchip IO domains dependency from other
- devices explicit
-To: Quentin Schulz <foss+kernel@0leil.net>, Ulf Hansson <ulf.hansson@linaro.org>, 
-	"Rafael J. Wysocki" <rafael@kernel.org>
-Cc: heiko@sntech.de, linux-gpio@vger.kernel.org, 
+Date: Mon, 22 Aug 2022 11:03:08 +0200
+Message-ID: <CACRpkda6VoNjJfKY3+oCvdB+V6O_4cumKpjVSdBb9e8mEmHF6g@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: rockchip: Enhance support for IRQ_TYPE_EDGE_BOTH
+To: =?UTF-8?B?Sm/Do28gSC4gU3BpZXM=?= <jhlspies@gmail.com>
+Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Heiko Stuebner <heiko@sntech.de>, Jianqun Xu <jay.xu@rock-chips.com>, 
+	Maya Matuszczyk <maccraft123mc@gmail.com>, linux-gpio@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, 
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220822_013824_882072_CD2C3123 
-X-CRM114-Status: GOOD (  17.21  )
+X-CRM114-CacheID: sfid-20220822_020323_837929_74998778 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,51 +82,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 2, 2022 at 11:53 AM Quentin Schulz <foss+kernel@0leil.net> wrote:
-
-> Some background on IO domains on Rockchip:
->
-> On some Rockchip SoCs, some SoC pins are split in what are called IO
-> domains.
->
-> An IO domain is supplied power externally, by regulators from a PMIC for
-> example. This external power supply is then used by the IO domain as
-> "supply" for the IO pins if they are outputs.
->
-> Each IO domain can configure which voltage the IO pins will be operating
-> on (1.8V or 3.3V).
->
-> There already exists an IO domain driver for Rockchip SoCs[1]. This
-> driver allows to explicit the relationship between the external power
-> supplies and IO domains[2]. This makes sure the regulators are enabled
-> by the Linux kernel so the IO domains are supplied with power and
-> correctly configured as per the supplied voltage.
-> This driver is a regulator consumer and does not offer any other
-> interface for device dependency.
-
-What makes me confused about the patch is the relationship, if any,
-between this "IO domain" and generic power domains (genpd) that has
-been worked on for ~10 years.
-
-I am worried that we are reinventing the world.
-
-While my intuitive feeling is that genpd power domains are only on-chip
-and not considering off-chip pins, I am not so sure that it warrants
-its own abstraction and want to know whether this can be retrofit into
-genpd rather than inventing this?
-
-Documentation/devicetree/bindings/power/power-domain.yaml
-include/linux/pm_domain.h
-
-Yours,
-Linus Walleij
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBBdWcgOCwgMjAyMiBhdCA0OjUzIEFNIEpvw6NvIEguIFNwaWVzIDxqaGxzcGllc0Bn
+bWFpbC5jb20+IHdyb3RlOgoKPiBTd2l0Y2hpbmcgYmV0d2VlbiBmYWxsaW5nL3Jpc2luZyBlZGdl
+cyBmb3IgSVJRX1RZUEVfRURHRV9CT1RIIG9uIHBpbnMgdGhhdAo+IHJlcXVpcmUgZGVib3VuY2Ug
+Y2FuIGNhdXNlIHRoZSBkZXZpY2UgdG8gbG9zZSBldmVudHMgZHVlIHRvIGEgZGVzeW5jCj4gYmV0
+d2VlbiBwaW4gc3RhdGUgYW5kIGlycSB0eXBlLgo+Cj4gVGhpcyBwcm9ibGVtIGlzIHJlc29sdmVk
+IGJ5IHN3aXRjaGluZyBiZXR3ZWVuIElSUV9UWVBFX0xFVkVMX0xPVyBhbmQKPiBJUlFfVFlQRV9M
+RVZFTF9ISUdIIGluc3RlYWQuCj4KPiBGaXhlczogOTM2ZWUyNiAoImdwaW8vcm9ja2NoaXA6IGFk
+ZCBkcml2ZXIgZm9yIHJvY2tjaGlwIGdwaW8iKQo+IFNpZ25lZC1vZmYtYnk6IEpvw6NvIEguIFNw
+aWVzIDxqaGxzcGllc0BnbWFpbC5jb20+CgpObyByZWFjdGlvbiBmcm9tIG1haW50YWluZXJzIHNv
+IEknbSBqdXN0IGdvbm5hIGFzc3VtZSB0aGlzIGZpeCBpcwpjb3JyZWN0IGFuZCBhcHBsaWVkIGZv
+ciBmaXhlcy4KCllvdXJzLApMaW51cyBXYWxsZWlqCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
