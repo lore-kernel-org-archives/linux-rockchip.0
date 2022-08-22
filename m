@@ -4,73 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BE96C28D13
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Aug 2022 07:51:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5EB5C28D13
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Aug 2022 08:34:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FEpkegEDOoHqbt7X40oY4F73/3J6RuU2swfSDjGqzQ4=; b=ksLFg2WaUtcchL
-	WuUG6zc5QnUosEv2fngJPC/pY9d7fq8e58Zxct8JOC5PDliv95dBmCrcZKSAooJ57zagT0c90gANb
-	YCz//O5Cmh0F+R3q7qZFLRNAJNJwsNCzaxdNDbRDT4cX4rDJ0Le0ahJG3Bh4Bsc8wUFNtQyr6+rEp
-	5fOeC288qdj2+aImh35/g6Lx4GuFlBMZoGk9wROBNUuistdqwpE3dnV/qY3+fJVEWNMGC9MaRoryN
-	5aWPxAtoxRh0q/Z8fGUMqtgGpMSBsJT7qJWaMkLg6yXNFrC/3EpznnLF4Lcl9iBongOTYQXfDyNgU
-	fk/DEBakprPgAM27CQ/A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DQ8uX3bR761lO8KU+Bq4/ZkezPaMBCPmM7Sp3OgZAvU=; b=ua6HGlIS3Mu3lx
+	Posav0pd2yYWvjGE+sXLlT69SZnE34Z32rj8Cm8sWlyIgKsbSviEezpZhSodwI6CNBBs0AndCuWxo
+	3c/fHzJCOv2nY8q3cQ+0GpMysjK8StKKSKiCSU3tC64QHSGuXGWDdreYoX8MDnZ0KB31sQ6zO/mus
+	7ULm/oGNvvJZUB7GFZz69q2SshlU1AHJk2c/JxyFP/B5zdc3lZNLAdY5kZdcpu4g9lA3w4ZiT8St2
+	7bYVvlAtb5+SXRtNjqhnBgKqndZmuH084X0er4IoKKpSlYq+HqfL9+hx+iDG1DiXm6ViZAJZlelkJ
+	0fL8ug4S+JoN6oGjgk5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ2Do-0068st-Nm; Mon, 22 Aug 2022 07:51:44 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1oQ2t6-006WAo-73; Mon, 22 Aug 2022 08:34:24 +0000
+Received: from smtpbgbr2.qq.com ([54.207.22.56])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ2Dl-0068oh-N1
-	for linux-rockchip@lists.infradead.org; Mon, 22 Aug 2022 07:51:43 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id gi31so13003110ejc.5
-        for <linux-rockchip@lists.infradead.org>; Mon, 22 Aug 2022 00:51:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=BZfpU+SmYe52WAmg/Y7YBFP2XZSNeH6d6wib4TE2Z9s=;
-        b=ueyXxGZSP+icZgmjpMxuxXG9X+4oo1se8JikeHzkHDin7aKmYKPF05fNpJGyE7Uqq4
-         Fha+jPocAO+rxOgV1yGiG6Vt+bLwLqsgS+HTLzIb48u/J8Xe322a3l88MCS7wH3wfZNw
-         BJzKa1uBmGhTa9nER2dBRU3mAwmpVK9aP+oXQCJxcFrBgb1fEmpUkC3QXZfY7fNjVo3f
-         CW9s4iC9DatwZz92upQLt2QSf8DRK70BncEXeEdnVop/1Or0XCZPDx3sCkHSD/WWqHKq
-         OTrdiqfv+D/DLSzLeVif6b2s00E8xqBkcfG7a6ZjkexZb8DOz9lmOGYRBFuJeN2H2ysI
-         Ee9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=BZfpU+SmYe52WAmg/Y7YBFP2XZSNeH6d6wib4TE2Z9s=;
-        b=iEIDTPXgJ8tCIdwbOCnQMQPaNWkbptc5LsWy7ZsEobb/da5aE4czx6pwP6xcKQyvyg
-         eh3Fp7Rwe9ZDoRFl7JehFeeSowBCKNh4spJZQABfXlo6nYKtC6Pdb272ethKF4MMJwAP
-         QVxRyIHbZHlQVEep2Ax6o9AgHZw/8fpKfMttHWnLib9C1W5epccQtuqfsl2dx/GZb0Lw
-         5R2GArzovkjKPsi/lKdln867gnMHxSgZz8wDuz4L2EAIBCs1neRJcePXplhb0lfTg+0+
-         C2oXI4oXRQqjC5+vY+RZGHTDv9IezO9aT9la0YNfM8OVocAIdv/08n3EZmL6dXWT6tb5
-         Qy9Q==
-X-Gm-Message-State: ACgBeo15Bn02xJNMZbULjK3CNetAcZd12A1hkeBxu9YTNtEsxi9X5hJS
-	k48YwfkNoIznEOiZwZHukeZmUFEMVLaC+W5y9kpOEQ==
-X-Google-Smtp-Source: AA6agR6/5iy/cSsM7dMB8N/ny1F6pJoOvfU2NJ9VVbMZM47NCmG9dGwl7hBHWAbzjFVTdCkFFBUX5ufcsmNvui4YXhg=
-X-Received: by 2002:a17:907:9686:b0:73d:1de0:7fbe with SMTP id
- hd6-20020a170907968600b0073d1de07fbemr9075080ejc.500.1661154699618; Mon, 22
- Aug 2022 00:51:39 -0700 (PDT)
+	id 1oQ2em-006O3Y-F4; Mon, 22 Aug 2022 08:19:41 +0000
+X-QQ-mid: bizesmtp79t1661156333tn1skwkr
+Received: from localhost.localdomain ( [123.114.60.34])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Mon, 22 Aug 2022 16:18:52 +0800 (CST)
+X-QQ-SSF: 01400000002000D0U000B00A0000000
+X-QQ-FEAT: abDNkBO9wxGSSTXraPu2eHWuksMIwlUpD0v3GkNTcQZh7Wdc/Fr0iBTHZKnOE
+	NXeDfgC69XIwvzXui9ShjI/mipkDaSqfvKmfaGM4CISezq40clj1tmVOENDzf9j+1mlXo7f
+	Qi/ngMCE4t/2piN6qAueBA/fNKLqN1B/wILObQCby95uuG+rs4KL0VBAL6z9urAJCRBP4LZ
+	lmD/1RJEDyipWN/5IrJ42lY6+RGmitY1n3M9vd8qTYw5u4LefxeROAmT0GQhi/2qB5th4cp
+	XrY4vTzaHSffTYBrJ0LY+1xHef+vQ6p53zD4Vxi71Z5AgnNJwbkVmwW7bvHg63TdaGPiHVd
+	QlYaFEJUY78MbAzsygTxNn7+QscQfipg7EqoSO+3klEAD6fB+XR9Vi7CK1VTw==
+X-QQ-GoodBg: 2
+From: zhaoxiao <zhaoxiao@uniontech.com>
+To: thierry.reding@gmail.com,
+	heiko@sntech.de
+Cc: u.kleine-koenig@pengutronix.de,
+	linux-pwm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	zhaoxiao <zhaoxiao@uniontech.com>
+Subject: [PATH v5] pwm: rockchip: Convert to use dev_err_probe()
+Date: Mon, 22 Aug 2022 16:18:48 +0800
+Message-Id: <20220822081848.5126-1-zhaoxiao@uniontech.com>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20220818124132.125304-1-jagan@edgeble.ai> <20220818124132.125304-8-jagan@edgeble.ai>
-In-Reply-To: <20220818124132.125304-8-jagan@edgeble.ai>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Mon, 22 Aug 2022 09:51:28 +0200
-Message-ID: <CACRpkdZvv5vqXLb6CgHTpB6uCo1V68KZG8av0acBW3fegmpX-Q@mail.gmail.com>
-Subject: Re: [PATCH v3 07/19] pinctrl: rockchip: Add RV1126 pinctrl support
-To: Jagan Teki <jagan@edgeble.ai>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, 
-	Jianqun Xu <jay.xu@rock-chips.com>, Sugar Zhang <sugar.zhang@rock-chips.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: bizesmtp:uniontech.com:qybglogicsvr:qybglogicsvr1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220822_005141_808388_C728BFD5 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20220822_011937_431140_7EAF5177 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,32 +71,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 18, 2022 at 2:42 PM Jagan Teki <jagan@edgeble.ai> wrote:
+It's fine to call dev_err_probe() in ->probe() when error code is known.
+Convert the driver to use dev_err_probe().
 
-> RV1126 has five GPIOs groups - GPIO0 in PD_MMU and GPIO1-4
-> in PD_BUS.
->
-> In GPIO0, up to Lower C group GPIO0_C[3:0] is part of PMU
-> but rest of the groups from there are part of GRF.
->
-> Added pinctrl support for RV1126 and the pull, drv and schmitt
-> calculations are inferred from [1] authored by Jianqun Xu.
->
-> [1] https://github.com/rockchip-linux/kernel/blob/develop-4.19/drivers/pinctrl/pinctrl-rockchip.c
->
-> Cc: linux-gpio@vger.kernel.org
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-> ---
-> Changes for v3, v2:
-> - none
+Signed-off-by: zhaoxiao <zhaoxiao@uniontech.com>
+---
+ v5: delete the redundant ret and %d.
+ drivers/pwm/pwm-rockchip.c | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
 
-This patch applied to the pinctrl tree for v6.1.
+diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
+index f3647b317152..a5af859217c1 100644
+--- a/drivers/pwm/pwm-rockchip.c
++++ b/drivers/pwm/pwm-rockchip.c
+@@ -328,22 +328,16 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
+ 	else
+ 		pc->pclk = pc->clk;
+ 
+-	if (IS_ERR(pc->pclk)) {
+-		ret = PTR_ERR(pc->pclk);
+-		if (ret != -EPROBE_DEFER)
+-			dev_err(&pdev->dev, "Can't get APB clk: %d\n", ret);
+-		return ret;
+-	}
++	if (IS_ERR(pc->pclk))
++		return dev_err_probe(&pdev->dev, PTR_ERR(pc->pclk), "Can't get APB clk\n");
+ 
+ 	ret = clk_prepare_enable(pc->clk);
+-	if (ret) {
+-		dev_err(&pdev->dev, "Can't prepare enable PWM clk: %d\n", ret);
+-		return ret;
+-	}
++	if (ret)
++		return dev_err_probe(&pdev->dev, ret, "Can't prepare enable PWM clk\n");
+ 
+ 	ret = clk_prepare_enable(pc->pclk);
+ 	if (ret) {
+-		dev_err(&pdev->dev, "Can't prepare enable APB clk: %d\n", ret);
++		dev_err_probe(&pdev->dev, ret, "Can't prepare enable APB clk\n");
+ 		goto err_clk;
+ 	}
+ 
+@@ -360,7 +354,7 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
+ 
+ 	ret = pwmchip_add(&pc->chip);
+ 	if (ret < 0) {
+-		dev_err(&pdev->dev, "pwmchip_add() failed: %d\n", ret);
++		dev_err_probe(&pdev->dev, ret, "pwmchip_add() failed\n");
+ 		goto err_pclk;
+ 	}
+ 
+-- 
+2.20.1
 
-Yours,
-Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
