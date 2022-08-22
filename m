@@ -4,79 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 486FAC28D13
-	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Aug 2022 07:42:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2701AC28D13
+	for <linux-rockchip@archiver.kernel.org>; Mon, 22 Aug 2022 07:51:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=7g05k3JM1bEEDrKfsz/XtZOY0M3ouWS6HvAms4UAbmo=; b=FSi803/dBg0c5o
-	7+WGgTv5pl843S4v0CuL2wi6YFwPeAZsjtDlpN1p6ID3XhbkzfcQJI5q8tuInWVnNGyE7WpkioWiD
-	DB+PUQ3+Fg8djPp+Ad2xr+C9ga5U7U8E4IUrcYXuHcEtK/mED0GPnNS2zvanR2azYF2nYvk3go4fB
-	6KFDYKE2iloV0VCwepEzzq9LJ2S6LyLjtRxiyNzj3uqoG+ZwMgEZKPkVyIh4q7yGMbzqr4srRtx6E
-	7V40F/0dtSZAmgpPTzyvSnj0mhOee4jPwGd4mWxEK7SyQFdabEqb5GZfvHzLzHUTdMbBn8ELQnfPn
-	UWNJrcVF0lLqqeFQOF0g==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=65/einXSWfcPgoQRDiXpr+iAaJgoI0DWBOEZnJ5f2bo=; b=C2JQHko08MMSD4
+	02a2nmFSJps2wgGdcpqdrt8R3vsB9pHufDuTZAtpmyY3JUflsJHJsc/fFWXX2N0U5dCx8U8gVBAlD
+	CCuUMHG7nd8Irr6n5w2Mpjqw6PQWGbadv2zPi4hernjpPgIjmKu520w1PTj78TdQVBwTKDK1U1O5Q
+	lVtMQyd9JneID2St5xaFhXLnmkL9lxlgUIdi3KJlhstB8RyzxA+AH900LOFljm5y5UCrn52L/lRXO
+	KoXPnyJPWCsYxT0Pn6oBl9+OBwFAARUR+Il+T4Z616KTo4WU6/Xzok+iwSvhBJ1Z3ZsTFO/QRgKvl
+	BvSb1HoeAXrP7nBU90bQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ24k-0063Q6-OO; Mon, 22 Aug 2022 07:42:22 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1oQ2DX-0068fa-Eu; Mon, 22 Aug 2022 07:51:27 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQ24f-0063Kw-0X
-	for linux-rockchip@lists.infradead.org; Mon, 22 Aug 2022 07:42:19 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id p18so9170738plr.8
-        for <linux-rockchip@lists.infradead.org>; Mon, 22 Aug 2022 00:42:14 -0700 (PDT)
+	id 1oQ2DH-0068Ua-M1
+	for linux-rockchip@lists.infradead.org; Mon, 22 Aug 2022 07:51:13 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id n7so1352884ejh.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 22 Aug 2022 00:51:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=friendlyarm-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc;
-        bh=7QyUas+FLnoDjvpQTXVOSCYRlddQJ/V4Mg+5MhKdl9Q=;
-        b=QPO//93mdKVvWHp2CKcq0d+X658L9tym1FpekTAlU2DNGlkkPpdqsqEOBCqdEC4SVj
-         utYuG74InxUGt9KzeUDvA6XbZTGQBy+Z/19vOVnrl+8udG84eiZKN2qCYycA4FZRrvgT
-         CUDkkUzrPy04StLWUM+kH/uDVUlAnmiS2NH4Jywu1V1MovqJVwzSWGdoWlAdwxNXOmcV
-         BcyDOn3W74jFZlyglbXGywdLgkwQPoHBXWgniop+2bn3wrYNftabqNPAK+vmJh5/HZ82
-         o3wgmP7+n1OuyDam+Tzcsx2saB6boTlqIS5J1ZVdo/jr8Q4tXTbNYwMJXcdL+Vo2TtZ1
-         VJ7Q==
+        d=linaro.org; s=google;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=X/e0sUGzNGa4XatfY2HnLYxSIYjraGrcGgPCXIi/SH4=;
+        b=p/dfF5WWiVj3NcT+TOqGCRz9kDKav+hCC7ytBLCjOHmYBbY3WzfaiOVHZJJLPiY7ZD
+         gm4IoKS2TbFvcOJ7EJtpsLpcBep5CmybCoVvP1bXAGk97MS7aNaBVGOD3zqp/mLZuxjw
+         sebOdE7zQ0fR8l/3L3PP3fv+NuX13xr3MtBBCHmp3NCQ9AEJKts+CA7AUuxWsRUovwX3
+         N2/sAXxbxZba5IdloZQNoI79sM1dDVtoMEXyLgky929dT0FN1YrY02AZntbtCd6fk9Iv
+         NOFLF2jTh924yvjqt5A4da1qmT5BEe1dTXamy1sxelLYfcxaTRF4EBtFkfi65xq2TStq
+         ZjqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc;
-        bh=7QyUas+FLnoDjvpQTXVOSCYRlddQJ/V4Mg+5MhKdl9Q=;
-        b=qWRouW/6YXzYc7/Wm8d8WJEElhc5wLSNgO7quZaJTX/qHI5Ozr7eBy3uOKf3T5B1Sf
-         TJMtgUHSbLQd3zfFJNtNhsv/oiS0FkogGygFeZYKXOY8lXwgolOxYGfBag+JFuHCdu88
-         8WXPGnXiI7Ddo+bb1iYdlkFq8ZxMbJweicI+QWXVqL52i4eehOBW4Sc06Yib07S/AJpq
-         r0rMWyVdFa1OgLgpzoRoBKPjPbVsL/mkN30H6YEJzYqTfa4ixJxeGP3zWSFuq+Otpxk7
-         buuegg29mtxclbcZlTrNK07Eb76jSPqT6+52OlRJzlPqjqN3Xph911euKQjNNELR3vop
-         tOFQ==
-X-Gm-Message-State: ACgBeo3UirUgZVka1ZbKdeC1QkUiZEak5vEgqAOPa7U+KSKxs1gYJp9x
-	pKwdNuVcj+yTZEpZvKhgP4UYuD9ktJTxIQYxX3QGkN+l
-X-Google-Smtp-Source: AA6agR5IRJNG091ZHau7uJZbUp8ZOq74fSoZSXgaKeNT8eQQ7nf9J+rsRcnPQS/9g+Rnrr3t8QcdqA==
-X-Received: by 2002:a17:902:ba96:b0:170:9f15:b997 with SMTP id k22-20020a170902ba9600b001709f15b997mr18513567pls.34.1661154134357;
-        Mon, 22 Aug 2022 00:42:14 -0700 (PDT)
-Received: from jensen.next ([113.109.76.237])
-        by smtp.gmail.com with ESMTPSA id s21-20020a170903201500b0016bf5557690sm2936254pla.4.2022.08.22.00.42.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 Aug 2022 00:42:13 -0700 (PDT)
-From: Jensen Huang <jensenhuang@friendlyarm.com>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Vinod Koul <vkoul@kernel.org>,
-	Chris Ruehl <chris.ruehl@gtsys.com.hk>
-Cc: Jensen Huang <jensenhuang@friendlyarm.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: add enable-strobe-pulldown to emmc phy on rk3399
-Date: Mon, 22 Aug 2022 15:41:39 +0800
-Message-Id: <20220822074139.3810-1-jensenhuang@friendlyarm.com>
-X-Mailer: git-send-email 2.37.0
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=X/e0sUGzNGa4XatfY2HnLYxSIYjraGrcGgPCXIi/SH4=;
+        b=gWmwKqFmMcTzJKSR9dWs2H3SoRtbYBRkGIzF5nygDCu+8pNSS1FuskudAsc/wbWLm8
+         t3mWCdBItQ943TQvHYIpcONjiVdRO3COcVuWfDCTjPqR+G2amumLvU4Q4HBwoRLgKyO5
+         lTol0YLXBEN4NCRnhNGEnB/uwAknlqc55+mFM6LavOO1sFfvv5qEoZtLI1VwHI95cOd8
+         hz4uVKuy3U1bVw2lrqx1/1hdvA6pI0BmUudiAsZA+7Jehs7NIEAp6m8EN3up6y4IF5XM
+         UVnsxhnxFfkeduQi8nnh2AvqhNyJDL4coIDUn410+/2dO+KzmO3kHh8ajoYskklq5y/9
+         JIXA==
+X-Gm-Message-State: ACgBeo1MsYGwzDShzc/4kKZB3pH0TXwHwUs58Chp0+QstKa4xj9u8OsP
+	V4Dgl9iZp2rnwksdjVX9hqCc7Zb9DJ/tZmZj4V5y1w==
+X-Google-Smtp-Source: AA6agR7uLIVK3T7IxhbVmoLbLjMTG5c912qcrQBKemUAnACqvkhKAjq74FAhRld9ll/zFYHAdHegCnDcGa4LtNFN0zQ=
+X-Received: by 2002:a17:907:9628:b0:731:1e3:b168 with SMTP id
+ gb40-20020a170907962800b0073101e3b168mr12261197ejc.526.1661154668591; Mon, 22
+ Aug 2022 00:51:08 -0700 (PDT)
 MIME-Version: 1.0
+References: <20220818124132.125304-1-jagan@edgeble.ai> <20220818124132.125304-7-jagan@edgeble.ai>
+In-Reply-To: <20220818124132.125304-7-jagan@edgeble.ai>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Mon, 22 Aug 2022 09:50:57 +0200
+Message-ID: <CACRpkdbJg-u-Lh-T9MQuaL+OYFOSU=ToCyAx+dvoZ9WsCEBT7Q@mail.gmail.com>
+Subject: Re: [PATCH v3 06/19] dt-bindings: pinctrl: rockchip: Document RV1126 pinctrl
+To: Jagan Teki <jagan@edgeble.ai>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, linux-gpio@vger.kernel.org, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220822_004217_334850_E6ABE0AA 
-X-CRM114-Status: UNSURE (   6.69  )
+X-CRM114-CacheID: sfid-20220822_005111_879573_D93B1DD2 
+X-CRM114-Status: UNSURE (   9.98  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,29 +88,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Internal pull-down for strobe line (GRF_EMMCPHY_CON2[9]) was disabled
-by commit 8b5c2b45b8f0, which causes I/O error in HS400 mode.
+On Thu, Aug 18, 2022 at 2:42 PM Jagan Teki <jagan@edgeble.ai> wrote:
 
-Tested on NanoPC-T4.
+> Document dt-bindings for RV1126 SoC pinctrl support.
+>
+> Cc: linux-gpio@vger.kernel.org
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+> ---
+> Changes for v3:
+> - none
 
-Fixes: 8b5c2b45b8f0 ("phy: rockchip: set pulldown for strobe line in dts")
-Signed-off-by: Jensen Huang <jensenhuang@friendlyarm.com>
+This patch applied to the pinctrl tree for v6.1.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 9d5b0e8c9cca..9491cafbbaa3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -1561,6 +1561,7 @@ emmc_phy: phy@f780 {
- 			clock-names = "emmcclk";
- 			drive-impedance-ohm = <50>;
- 			#phy-cells = <0>;
-+			rockchip,enable-strobe-pulldown;
- 			status = "disabled";
- 		};
- 
--- 
-2.37.0
-
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
