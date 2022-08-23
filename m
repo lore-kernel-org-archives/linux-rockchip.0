@@ -4,43 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97616C32774
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Aug 2022 18:00:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E4E0C32772
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Aug 2022 18:43:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NyLbI/01aejDj9yAGpWG7MiUMV5XPD9J+uj5ykIUDn4=; b=zePCkXO3/mWrck
-	u0nRTKuH8/SgHLg2Dr58TyZYcmlAFjDMhi1nAPQIFqrQjTyGZWVty5waXAxE79j0xfO6j98Lo5pKl
-	Gw6kK4v/nRdz2eg+JvnUZaXdeng/BVTvYBcm191Iobq2He74ZUU+v1ZQ5N2HUl8cAL2lpLaBIFQrZ
-	FULR2aYE8RTJrhcRXTl/inyo70NdkFAENtQAOuG+L/+Z0oJ2DisLioTjUDVPWsgYTD+ETQ6ofADHB
-	hvohDctt5y/SzSOLntijoozKfolZwsOlpUcqKGsEDAVIEIrTAt1dhfY/W08tsA3HiSZmhsaOTJp8D
-	0nJESwVG5JMoRdryKRhg==;
+	List-Owner; bh=LYAx8uUa2Fs0gb5PTuqUva69lsdCOuxPBqco6EAzHew=; b=ac1qSedUmc862L
+	0fGzbjv7iSAGf6TlYPE6rjnDSZO3Iwd2Q5iOotxCxkiK05oFpLhRExpDsjIx9QDSImDfLMINx8LlV
+	enPxC59GzsDgTDUC47c6V/rZQ82ohei0+pyfaeJrTP/ySvKTSuRnJIS5zXWN9Gw3+K8/UauTJMigl
+	LOh0jaDdRzfaMnnJkW4e8X3KbRr5Vn+wN1mNzPdU0FiNA8Dxni8IyAASk/YGK1y/fxSyXlNjmsP0U
+	CUw/HnT0X4Akrp6ALBH38ECEXmmBqDTVf5dKczT8bWfWlo5MgZ1TNAVBwxSG1cfOkNeh71b5bR8I9
+	SRlRTZvw9jSb8zSDvlXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQYC1-007vlM-A9; Tue, 23 Aug 2022 18:00:01 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1oQYsQ-0089hy-23; Tue, 23 Aug 2022 18:43:50 +0000
+Received: from mail-dm6nam10olkn2046.outbound.protection.outlook.com ([40.92.41.46] helo=NAM10-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQYBq-007vc9-4P; Tue, 23 Aug 2022 17:59:51 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1oQYBm-0006NS-G1; Tue, 23 Aug 2022 19:59:46 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Stephen Boyd <sboyd@kernel.org>, Jagan Teki <jagan@edgeble.ai>
-Cc: Kever Yang <kever.yang@rock-chips.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-clk@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: Re: [PATCH v3 10/19] dt-bindings: clock: rockchip: Document RV1126 CRU
-Date: Tue, 23 Aug 2022 19:59:45 +0200
-Message-ID: <6086608.Sb9uPGUboI@diego>
-In-Reply-To: <CA+VMnFyJOCc-RzENYs9L+U4VeJgEpMmZeSLZahcNdnL7_Cvw9Q@mail.gmail.com>
-References: <20220818124132.125304-1-jagan@edgeble.ai> <20220818212913.7FC43C433D6@smtp.kernel.org> <CA+VMnFyJOCc-RzENYs9L+U4VeJgEpMmZeSLZahcNdnL7_Cvw9Q@mail.gmail.com>
+	id 1oQYsO-0089Zc-1Y
+	for linux-rockchip@lists.infradead.org; Tue, 23 Aug 2022 18:43:49 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hAO4LD+okeZ1GtoLkmghqU6UTKliwOTqYQJd3VClSIxj+uX4wF6Ty7NV5f/yoLzT3x8vPX9noWB++XnyUbz8z4TfGSMrHlaC9kqHQFqt7enFTZv4EZQBzlDR8t7qkWemN1Cdnq+SBPGFhalw60Lg/uNj0FNDA2I683Aym+/0b5qgW8xufMeKk4ANZxZlDisIe+XLk2N33vgxeqta6kSbLBnBl2vgOmC9WJBLEhUuFlaGHID5WNV3cmR6w2yUkpi/Xle4X/6ythOrSSQ9fVSQU4SsXw8ID8YFTM/XLSEijJoEeD0CX+6+lq4ZRKBvxnrxBb3E31fKK6WZyKSmXAC3Ug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=g4XMeTBAHoz5LjOdOQIqEJI7eMkB95Li4Bw88vlAjTE=;
+ b=V35JndU9nMOZCf1ly+zZGd9jhILLI7xPd+NaLS/fLDAyc6MvCkLsOkIpR4rELXNSpy7BjhVBd9GhrUKT+IjWwj+Of1VM+ha/Y3TXZAPab7eyZWWurtLgOrlHX9N7Lv0SMESrXY1n6zgQSdCNrKe6sk7RZugz+uJuVUQ9aP4gBh6/DgWWlGIAR7W97P6vzaL1q1YMcnRamZaAwNl6QnS3gKUs0zbQkaFtMt4fdYtTIxb7/WfUS+4zwEd4kQZWSo085auXkEYqhjyCWFXM5PuPlUSn2s7dywLB7aUNBqf+RNt6s3+NWL0n4GrH9wk6BR1lfKxd6KHDbwuvSQq7d2LiQw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=g4XMeTBAHoz5LjOdOQIqEJI7eMkB95Li4Bw88vlAjTE=;
+ b=IOUldoxxDLztXbBMedFidS82wjpEf73jBoIqQB3FqDd3e/YdOhGj8Yj8YV8YTEo7vd8P6yzYXxAdjc2JCdcQRh/BssgIKecnatfRmB1jnkd4Q0+5jwZ6QKZ37L0EvFWgiwmjban7/R8odjScapvFRA6veaWrMPf8Y5DNC/b6do4/TjRx6VSyfubyVCoevYXjGNo6m81++E6InkBsLOem9U1tCfn/kedjJsWLKo2AZ3k2CZTYy56bXFurcNlbQJoFgz6nu9e+Jx6NKwiO4ikboHdx8e1S2TbyKV/+HjDZhPbqTrkfheVIEgl4jzp+D00ANlSNc9uiF1sftFsoK05g1w==
+Received: from SN6PR06MB5342.namprd06.prod.outlook.com (2603:10b6:805:f9::31)
+ by BYAPR06MB5349.namprd06.prod.outlook.com (2603:10b6:a03:d5::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5546.21; Tue, 23 Aug
+ 2022 18:43:40 +0000
+Received: from SN6PR06MB5342.namprd06.prod.outlook.com
+ ([fe80::20e7:bc40:7e9d:b46e]) by SN6PR06MB5342.namprd06.prod.outlook.com
+ ([fe80::20e7:bc40:7e9d:b46e%4]) with mapi id 15.20.5546.022; Tue, 23 Aug 2022
+ 18:43:40 +0000
+Date: Tue, 23 Aug 2022 13:43:37 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-pm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	zhangqing@rock-chips.com, zyw@rock-chips.com,
+	jon.lin@rock-chips.com, heiko@sntech.de,
+	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
+	lee@kernel.org, Maya Matuszczyk <maccraft123mc@gmail.com>
+Subject: Re: [PATCH v8 3/4] power: supply: Add charger driver for Rockchip
+ RK817
+Message-ID:  <SN6PR06MB5342D31AA67E4BBBAC1F934EA5709@SN6PR06MB5342.namprd06.prod.outlook.com>
+References: <20220808173809.11320-1-macroalpha82@gmail.com>
+ <20220808173809.11320-4-macroalpha82@gmail.com>
+ <20220823163540.dg2z7fngaqklejvx@mercury.elektranox.org>
+Content-Disposition: inline
+In-Reply-To: <20220823163540.dg2z7fngaqklejvx@mercury.elektranox.org>
+X-TMN: [JQ2eVutySnoXgGeTYuRolKvpsDL21Avu]
+X-ClientProxiedBy: SA9PR10CA0015.namprd10.prod.outlook.com
+ (2603:10b6:806:a7::20) To SN6PR06MB5342.namprd06.prod.outlook.com
+ (2603:10b6:805:f9::31)
+X-Microsoft-Original-Message-ID:  <20220823184337.GA9384@wintermute.localdomain>
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 08ff96dc-69e5-4f80-f24c-08da8537657d
+X-MS-TrafficTypeDiagnostic: BYAPR06MB5349:EE_
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	wORwy+FalHdtJIMyKqzBEkiBSOoHQFW8KocwOWLTacRHJjtVP8iRSSmpFpazEp5VMJwMc8Nxqsg4xc7ucVS/TGE1gfFBaO/U04/nCe+Mei92GumM6ONFsUt3J/l7MhH9A8Nb58fmzlc1BFCqfRUkdIb7VwCLxeMeVRUGQvkLpXZwkYfEQzQqFSFaEGI2CLGGA1CdCCyLc6EPQJSSWg/dEdEm9X0JvaQPZiXRNfazZrT649+b7X/yx3mMR8SayUuW60BVi1go8E+Ytjkzin35je3msq2a8fhh5xxWiKWmys1x9gypFJE/S1MnIqKspaZeznf+w3jnxJfTFSgvI8Atf0Wztg3rFqT1Bft0adBKLokSqi9c8et3pDzV9lcKf6LZSCc2lNYb9vCnq0X0q34OmcNDHq0CAZd9d8JyZHq4KXEPDRWOCpa23QAQz4aO7WJtS1yCl2SbSH2kAQ0KAwrZrooqiTCbDS/wR9BHg2w87htnmJ57MhtBD9VCd/CE+pOKp57SBDOWy6RsnT6NaL1WwYshSlYhlidXClhvJaKSuikcvOY65oxephjzz22xZu8hyI5t5GUr1TrTuz9gM4xGGFEsxyj4J9Bz7o7viZ75xA/2m8/LCWhlsy2gaL+AMEiRXNwUNGzb/ox3CYwxYtPYFUxNboxEmAGJhJRnnSieBCskDwi7UZhTp+Hyl0TQHMhG
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?uSaTCkaOXZO/Ar1QzOUF1TO+HRLEZgC1NidBbcra6Kbd5ww+wL5noaETtDKM?=
+ =?us-ascii?Q?RGZeePrmtU3Iu3QOx3yZTQ9qNWlBm17ZQiUtHX+KvxmtwYOV58X/6ldC9bY2?=
+ =?us-ascii?Q?UtGvF9NCkyO7CXs3akSu2itZgj566HdlTTkpX/95Dvgewt+AW+0bTV0rvxSe?=
+ =?us-ascii?Q?DqEONFSH4ZQiZqruLdsgzWRaJz7Sqqxvv214nnqrvzZIAPAS/Y792N1IVc2e?=
+ =?us-ascii?Q?06Od5FDIKXHaM9YVRDvUSj4enLCKQSGXpClBc6oxhnURUEIGkFygCxi8godK?=
+ =?us-ascii?Q?6jd+i8HqmmpCv3Ro8psGoWyfiBNEMSLtnRjh2U+5yRmrLRgu019tA7XPNSdE?=
+ =?us-ascii?Q?N8Zzu9x4vSpq9YYqOBrssSJRRzDNu4HI/DsgShlZ3djICR6GLW34k5LQSUL6?=
+ =?us-ascii?Q?qHqKHlM4uRJaC/2M9GVarbo4ir6dgmcs5cRiSeGuESJYtFTVIxLeyQiRJ7gV?=
+ =?us-ascii?Q?4tysy+Gx7lR4GDHBHulK1H1iRWD+C6GMyXJi933A3sHh7h5g8eGHt8S635lX?=
+ =?us-ascii?Q?F2KweF5DfFbZDPMhRl+VJehP15xLh2szR+aX9yanhc3LarQ2PpU1pw4anUnT?=
+ =?us-ascii?Q?lW+zqi10gvoqbmEYp8n9h/dJ/2ilZgVZ5grVzGZ4WFZD11XiDxlomhLz/VIV?=
+ =?us-ascii?Q?EffxCM/6/34Q4fP8294i+tuPHqUhsFvzfVWkoFhVA+g+CVTmvEDRVHuXLcDJ?=
+ =?us-ascii?Q?WJpXfKHkSfSuC9SfMHsaMy9ZZPhWIvC4277ODWvJ17Lz96C+UlGMRqbg/x//?=
+ =?us-ascii?Q?DVu0X13Ff3Nn5WDy7NYjfBv8B55z/ANkGvVx3P9JnMaHI20tSh+WaL4tN/0g?=
+ =?us-ascii?Q?7vaPpvsh/VWmoLgqs748CZIiuddh4pOd63Mttg+EMG3j1OZGFQNHWv4LiR1H?=
+ =?us-ascii?Q?t/rdp7jvea4PCJiVAFVLyPSDPUu0aKjIYQmhAePtz6jRalxIloaVgs9sC1fx?=
+ =?us-ascii?Q?e+7zFSHFbLibncYRE3R6HOVNBrc33OANnG7BpbVK4ws+CD1S4U0H+qg66MZt?=
+ =?us-ascii?Q?ZRP4Y63IzYKO3LtWba30UilZtDPiT+/D6vWD4V4SZKBTjLFRxvZUX5P1kM1M?=
+ =?us-ascii?Q?ygZolU7Y7g1fxPXzFPFYYakRd+J6prnIRs/uBnAWOqo5nWBKYjfjiQbNSsBG?=
+ =?us-ascii?Q?P6PHig8uoaUVy8Zh+qwWdPuU01hbdabJDLEkXdx7GMnQ7OHWdQytUbGL0SiA?=
+ =?us-ascii?Q?ep9VyPNdVIZOG/34VViGHrt+CdYs34kDo2C6vyuroQ28D/y+QFTflZqjNqcg?=
+ =?us-ascii?Q?HqdrlAtt2+YoiZbYK/WnQHI7KxEpkyaQHNgRr0kgDw=3D=3D?=
+X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-89723.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 08ff96dc-69e5-4f80-f24c-08da8537657d
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR06MB5342.namprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Aug 2022 18:43:40.5513
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 	00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR06MB5349
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_105950_213349_3E11ED1D 
-X-CRM114-Status: GOOD (  17.12  )
+X-CRM114-CacheID: sfid-20220823_114348_203114_EC6A6375 
+X-CRM114-Status: GOOD (  19.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,45 +129,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 19. August 2022, 23:20:03 CEST schrieb Jagan Teki:
-> On Fri, 19 Aug 2022 at 02:59, Stephen Boyd <sboyd@kernel.org> wrote:
-> >
-> > Quoting Jagan Teki (2022-08-18 05:41:23)
-> > > +
-> > > +  clocks:
-> > > +    maxItems: 1
-> > > +
-> > > +  clock-names:
-> > > +    const: xin24m
-> > > +
-> > > +  rockchip,grf:
-> > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > +    description:
-> > > +      Phandle to the syscon managing the "general register files" (GRF),
-> > > +      if missing pll rates are not changeable, due to the missing pll
-> > > +      lock status.
-> > > +
-> > > +required:
-> > > +  - compatible
-> > > +  - reg
-> > > +  - "#clock-cells"
-> > > +  - "#reset-cells"
-> >
-> > Why aren't clocks required?
+On Tue, Aug 23, 2022 at 06:35:40PM +0200, Sebastian Reichel wrote:
+> Hi,
 > 
-> I don't see any clocks being used by cru in rv1126 [1] so that is the
-> reason I didn't add any. Let me know if it is something that is
-> mandatory to add even if it's unused.
-> [1] https://github.com/rockchip-linux/kernel/blob/develop-4.19/arch/arm/boot/dts/rv1126.dtsi#L1074
+> On Mon, Aug 08, 2022 at 12:38:08PM -0500, Chris Morgan wrote:
+> > From: Chris Morgan <macromorgan@hotmail.com>
+> > 
+> > Add support for the Rockchip rk817 battery charger integrated into the
+> > rk817 PMIC.
+> > 
+> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> > Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+> > ---
+> 
+> Looks mostly good. Just three things:
+> 
+> > [...]
+> > --- /dev/null
+> > +++ b/drivers/power/supply/rk817_charger.c
+> > @@ -0,0 +1,1151 @@
+> > +// SPDX-License-Identifier: GPL-2.0-only
+> > +/*
+> > + * Charger Driver for Rockchip rk817
+> > + *
+> > + * Copyright (c) 2021
+> 
+> The Copyright line is incomplete.
 
-Our clock drivers normally just expect that xin24m to be present
-but that xin24m _is_ a clock dependency for the cru and for a lot
-of Rockchip SoCs Johan did update both the binding and the dtsi-s
-to make that explicit when converting the binding over to yaml
+Thank you, I'll update it to say 
+Copyright (c) 2021 Maya Matuszczyk <maccraft123mc@gmail.com> since
+while it's heavily modified it's based on her original work.
 
-See for example the rk3399.
+> 
+> > + *
+> > + * Authors: Maya Matuszczyk <maccraft123mc@gmail.com>
+> > + *	    Chris Morgan <macromorgan@hotmail.com>
+> > + */
+> > +
+> > +#include <linux/mfd/rk808.h>
+> > +#include <linux/irq.h>
+> > +#include <linux/of_gpio.h>
+> > [...]
+> 
+> Why are you including of_gpio.h? You are not using any.
 
-Heiko
+Thanks, sorry. I'll change it to just linux/of.h since I am using a few
+things from that. Might have been from a previous version where I had
+used GPIOs instead of PMIC registers to detect charger status.
+
+> 
+> > +	INIT_DELAYED_WORK(&charger->work, rk817_charging_monitor);
+> > +	/* Get and populate the first set of values. */
+> > +	schedule_delayed_work(&charger->work, 0);
+> > [...]
+> 
+> what happens with the delayed work when you remove the driver?
+> Check for devm_delayed_work_autocancel().
+
+I'll test using that and submit again once I've confirmed it works.
+Thank you for all your feedback.
+
+> 
+> 
+> -- Sebastian
 
 
 
