@@ -4,54 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1BB9C32772
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Aug 2022 17:24:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2138C32772
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Aug 2022 17:56:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=spgRtjYWlg3/7pwmtf+R6s3lbj17pX93wnN2FNds+x4=; b=S83ysURBTO8ZHR
-	PlzX8GQq4CoECiwcv3klfCnUR0VoWc/C8WKUAmp9OyCG/IGfEH3Ho/AfAKb0qm3Hgp2eB6sUteTJ0
-	PQdRbjZSP/8uSohqYioq7EtAsC2uG1CMW/6BewOnW9uoJzpqoeb99wa5yiKN5UnGN1lIlH8OqUfvi
-	4aUcY+q3ogAWts0ulVRZ8bJerjguOLzN+oa9mCOK9RrsshjGvnwNitnQ9OJY7yPOJ7ftnVEtJsixJ
-	Ca1fWpX05lTBFz9jY4O5OIS8cYgWWLUl652zKWimo9SKcUsNWOkmQyWGxrfr7SfQs/IyYXsMKsfKV
-	lncsldYGLe0N6RiG1uZA==;
+	List-Owner; bh=xXn99GBF5TRdgKnk9/SNKY0NNYcZA3bQyS+VsWrFvJA=; b=dqHUHWDFcldvDT
+	7c2i4HTF9k8t5F7EJ80EUW/RGSu1IiFQzd1oBSHv0X7iMwMLF6HvH2oVvmdZxnOnVwdavN09gRN/8
+	qEqtbabw6/zjzbCZJ8fuSGjfnDAaxWK5asfZX+bX3Drdakf/l7/MId5UmHbZXGHkVdsErJBaTPhn2
+	HcSD0YmoQ+4yPx/23iPczPW29ZuRApfbpUzQS69DcfdPN8M1eVvqehc0Ax7Z1U9rww7qAbMbYYN1e
+	h/NkP4ufc/CtHKnys/ljA55Ctt72kWYvL0UeJLeq1BidwXzUTcLb785OhbsWAb7QllLjKk7teJgnN
+	Ipu/wxiTSUb6ChesCaGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQXdt-007hQb-CB; Tue, 23 Aug 2022 17:24:45 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1oQY8d-007tIF-8y; Tue, 23 Aug 2022 17:56:31 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQXdq-007hOs-7S
-	for linux-rockchip@lists.infradead.org; Tue, 23 Aug 2022 17:24:43 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 71ACB2B3;
-	Tue, 23 Aug 2022 19:24:40 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1661275480;
-	bh=JYsUTl6OKO8+/awD+6c1bDVOSss66ZqHUueZFtF5eRw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZW3gAuT4hozfIEWgBjsT55mmpyXaTSVqs1KdJTn1s5AEiVFlgZdRTy+MiQY1qkdKi
-	 UN+7cy1jKISPOXF4VhRO8y11t0CFo3QUDLlRyro7pXme3nB9Nugud9e5iHCvRMlvDf
-	 NpWop77g3hdpHC7NojEwBNcB+EwxT1HJc4Yliml8=
-Date: Tue, 23 Aug 2022 20:24:36 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Dafna Hirschfeld <dafna@fastmail.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Florian Sylvestre <fsylvestre@baylibre.com>
-Subject: Re: [PATCH 3/3] media: rockchip: rkisp1: Define macros for DPCC
- configurations in UAPI
-Message-ID: <YwUNVML8WLWs0ib4@pendragon.ideasonboard.com>
-References: <20220616160456.21549-1-laurent.pinchart@ideasonboard.com>
- <20220616160456.21549-4-laurent.pinchart@ideasonboard.com>
+	id 1oQY8R-007t8k-Ui; Tue, 23 Aug 2022 17:56:21 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1oQY8L-0006Mb-Bi; Tue, 23 Aug 2022 19:56:13 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>, Kever Yang <kever.yang@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Finley Xiao <finley.xiao@rock-chips.com>
+Subject: Re: [PATCH v3 09/19] clk: rockchip: Add dt-binding header for RV1126
+Date: Tue, 23 Aug 2022 19:56:12 +0200
+Message-ID: <3175969.jE0xQCEvom@diego>
+In-Reply-To: <CA+VMnFwE8jBxXwQPVEzEUosxjuEVMNGB9NnBuHYDw_360qJztQ@mail.gmail.com>
+References: <20220818124132.125304-1-jagan@edgeble.ai> <20220822181009.GA80526-robh@kernel.org> <CA+VMnFwE8jBxXwQPVEzEUosxjuEVMNGB9NnBuHYDw_360qJztQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220616160456.21549-4-laurent.pinchart@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_102442_445904_31B57E5D 
-X-CRM114-Status: GOOD (  19.59  )
+X-CRM114-CacheID: sfid-20220823_105620_020204_E5B4B4DD 
+X-CRM114-Status: GOOD (  27.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,143 +57,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dafna,
-
-Would you be able to review this patch ?
-
-On Thu, Jun 16, 2022 at 07:04:56PM +0300, Laurent Pinchart wrote:
-> Extend the UAPI rkisp1-config.h header with macros for all DPCC
-> configuration fields. While at it, clarify of fix issues in the DPCC
-> documentation.
+Am Dienstag, 23. August 2022, 14:57:20 CEST schrieb Jagan Teki:
+> On Mon, 22 Aug 2022 at 23:40, Rob Herring <robh@kernel.org> wrote:
+> >
+> > On Thu, Aug 18, 2022 at 06:11:22PM +0530, Jagan Teki wrote:
+> > > Add the dt-bindings header for the Rockchip RV1126, that gets shared
+> > > between the clock controller and the clock references in the dts.
+> > >
+> > > Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> > > Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+> > > ---
+> > > Changes for v3:
+> > > - update the file name
+> > > Changes for v2:
+> > > - exclude from clk patch
+> > >
+> > >  .../dt-bindings/clock/rockchip,rv1126-cru.h   | 632 ++++++++++++++++++
+> > >  1 file changed, 632 insertions(+)
+> > >  create mode 100644 include/dt-bindings/clock/rockchip,rv1126-cru.h
+> > >
+> > > diff --git a/include/dt-bindings/clock/rockchip,rv1126-cru.h b/include/dt-bindings/clock/rockchip,rv1126-cru.h
+> > > new file mode 100644
+> > > index 000000000000..cfba8226ded2
+> > > --- /dev/null
+> > > +++ b/include/dt-bindings/clock/rockchip,rv1126-cru.h
+> > > @@ -0,0 +1,632 @@
+> > > +/* SPDX-License-Identifier: GPL-2.0 */
+> >
+> > Dual license please. Need an ack from Rockchip for that (and not just
+> > on this one).
 > 
-> Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> ---
->  .../platform/rockchip/rkisp1/rkisp1-regs.h    |  1 -
->  include/uapi/linux/rkisp1-config.h            | 77 +++++++++++++++----
->  2 files changed, 61 insertions(+), 17 deletions(-)
+> Heiko or Kever.
 > 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> index dc01f968c19d..a931f7216e9b 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-> @@ -620,7 +620,6 @@
->  /* DPCC */
->  #define RKISP1_CIF_ISP_DPCC_MODE_DPCC_ENABLE		BIT(0)
->  #define RKISP1_CIF_ISP_DPCC_MODE_GRAYSCALE_MODE		BIT(1)
-> -#define RKISP1_CIF_ISP_DPCC_MODE_STAGE1_ENABLE		BIT(2)
->  #define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_MASK		GENMASK(3, 0)
->  #define RKISP1_CIF_ISP_DPCC_SET_USE_MASK		GENMASK(3, 0)
->  #define RKISP1_CIF_ISP_DPCC_METHODS_SET_MASK		0x00001f1f
-> diff --git a/include/uapi/linux/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-> index 583ca0d9a79d..730673ecc63d 100644
-> --- a/include/uapi/linux/rkisp1-config.h
-> +++ b/include/uapi/linux/rkisp1-config.h
-> @@ -117,7 +117,46 @@
->  /*
->   * Defect Pixel Cluster Correction
->   */
-> -#define RKISP1_CIF_ISP_DPCC_METHODS_MAX       3
-> +#define RKISP1_CIF_ISP_DPCC_METHODS_MAX				3
-> +
-> +#define RKISP1_CIF_ISP_DPCC_MODE_STAGE1_ENABLE			(1U << 2)
-> +
-> +#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_STAGE1_INCL_G_CENTER	(1U << 0)
-> +#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_STAGE1_INCL_RB_CENTER	(1U << 1)
-> +#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_STAGE1_G_3X3		(1U << 2)
-> +#define RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_STAGE1_RB_3X3		(1U << 3)
-> +
-> +/* 0-2 for sets 1-3 */
-> +#define RKISP1_CIF_ISP_DPCC_SET_USE_STAGE1_USE_SET(n)		((n) << 0)
-> +#define RKISP1_CIF_ISP_DPCC_SET_USE_STAGE1_USE_FIX_SET		(1U << 3)
-> +
-> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_PG_GREEN_ENABLE		(1U << 0)
-> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_LC_GREEN_ENABLE		(1U << 1)
-> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RO_GREEN_ENABLE		(1U << 2)
-> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RND_GREEN_ENABLE	(1U << 3)
-> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RG_GREEN_ENABLE		(1U << 4)
-> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_PG_RED_BLUE_ENABLE	(1U << 8)
-> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_LC_RED_BLUE_ENABLE	(1U << 9)
-> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RO_RED_BLUE_ENABLE	(1U << 10)
-> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RND_RED_BLUE_ENABLE	(1U << 11)
-> +#define RKISP1_CIF_ISP_DPCC_METHODS_SET_RG_RED_BLUE_ENABLE	(1U << 12)
-> +
-> +#define RKISP1_CIF_ISP_DPCC_LINE_THRESH_G(v)			((v) << 0)
-> +#define RKISP1_CIF_ISP_DPCC_LINE_THRESH_RB(v)			((v) << 8)
-> +#define RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_G(v)			((v) << 0)
-> +#define RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_RB(v)			((v) << 8)
-> +#define RKISP1_CIF_ISP_DPCC_PG_FAC_G(v)				((v) << 0)
-> +#define RKISP1_CIF_ISP_DPCC_PG_FAC_RB(v)			((v) << 8)
-> +#define RKISP1_CIF_ISP_DPCC_RND_THRESH_G(v)			((v) << 0)
-> +#define RKISP1_CIF_ISP_DPCC_RND_THRESH_RB(v)			((v) << 8)
-> +#define RKISP1_CIF_ISP_DPCC_RG_FAC_G(v)				((v) << 0)
-> +#define RKISP1_CIF_ISP_DPCC_RG_FAC_RB(v)			((v) << 8)
-> +
-> +#define RKISP1_CIF_ISP_DPCC_RO_LIMITS_n_G(n, v)			((v) << ((n) * 4))
-> +#define RKISP1_CIF_ISP_DPCC_RO_LIMITS_n_RB(n, v)		((v) << ((n) * 4 + 2))
-> +
-> +#define RKISP1_CIF_ISP_DPCC_RND_OFFS_n_G(n, v)			((v) << ((n) * 4))
-> +#define RKISP1_CIF_ISP_DPCC_RND_OFFS_n_RB(n, v)			((v) << ((n) * 4 + 2))
->  
->  /*
->   * Denoising pre filter
-> @@ -249,16 +288,20 @@ struct rkisp1_cif_isp_bls_config {
->  };
->  
->  /**
-> - * struct rkisp1_cif_isp_dpcc_methods_config - Methods Configuration used by DPCC
-> + * struct rkisp1_cif_isp_dpcc_methods_config - DPCC methods set configuration
->   *
-> - * Methods Configuration used by Defect Pixel Cluster Correction
-> + * This structure stores the configuration of one set of methods for the DPCC
-> + * algorithm. Multiple methods can be selected in each set (independently for
-> + * the Green and Red/Blue components) through the @method field, the result is
-> + * the logical AND of all enabled methods. The remaining fields set thresholds
-> + * and factors for each method.
->   *
-> - * @method: Method enable bits
-> - * @line_thresh: Line threshold
-> - * @line_mad_fac: Line MAD factor
-> - * @pg_fac: Peak gradient factor
-> - * @rnd_thresh: Rank Neighbor Difference threshold
-> - * @rg_fac: Rank gradient factor
-> + * @method: Method enable bits (RKISP1_CIF_ISP_DPCC_METHODS_SET_*)
-> + * @line_thresh: Line threshold (RKISP1_CIF_ISP_DPCC_LINE_THRESH_*)
-> + * @line_mad_fac: Line Mean Absolute Difference factor (RKISP1_CIF_ISP_DPCC_LINE_MAD_FAC_*)
-> + * @pg_fac: Peak gradient factor (RKISP1_CIF_ISP_DPCC_PG_FAC_*)
-> + * @rnd_thresh: Rank Neighbor Difference threshold (RKISP1_CIF_ISP_DPCC_RND_THRESH_*)
-> + * @rg_fac: Rank gradient factor (RKISP1_CIF_ISP_DPCC_RG_FAC_*)
->   */
->  struct rkisp1_cif_isp_dpcc_methods_config {
->  	__u32 method;
-> @@ -272,14 +315,16 @@ struct rkisp1_cif_isp_dpcc_methods_config {
->  /**
->   * struct rkisp1_cif_isp_dpcc_config - Configuration used by DPCC
->   *
-> - * Configuration used by Defect Pixel Cluster Correction
-> + * Configuration used by Defect Pixel Cluster Correction. Three sets of methods
-> + * can be configured and selected through the @set_use field. The result is the
-> + * logical OR of all enabled sets.
->   *
-> - * @mode: dpcc output mode
-> - * @output_mode: whether use hard coded methods
-> - * @set_use: stage1 methods set
-> - * @methods: methods config
-> - * @ro_limits: rank order limits
-> - * @rnd_offs: differential rank offsets for rank neighbor difference
-> + * @mode: DPCC mode (RKISP1_CIF_ISP_DPCC_MODE_*)
-> + * @output_mode: Interpolation output mode (RKISP1_CIF_ISP_DPCC_OUTPUT_MODE_*)
-> + * @set_use: Methods sets selection (RKISP1_CIF_ISP_DPCC_SET_USE_*)
-> + * @methods: Methods sets configuration
-> + * @ro_limits: Rank order limits (RKISP1_CIF_ISP_DPCC_RO_LIMITS_*)
-> + * @rnd_offs: Differential rank offsets for rank neighbor difference (RKISP1_CIF_ISP_DPCC_RND_OFFS_*)
->   */
->  struct rkisp1_cif_isp_dpcc_config {
->  	__u32 mode;
+> Can you comment on this?
 
--- 
-Regards,
+I guess this is more a question for Kever,
 
-Laurent Pinchart
+@Kever can Rockchip allow that dual licensing for the dt-binding header
+(MIT as second license I think - at least like all the other binding headers)
+both in this patch and also in the other header-patches of this series?
+
+Thanks
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
