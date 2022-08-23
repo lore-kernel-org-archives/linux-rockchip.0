@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57B52C32789
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Aug 2022 19:30:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA752C38142
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Aug 2022 19:30:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Yz1LRfHSbBHiu8uV3rztccaJ4GyLBBNS3ud70N2+JOU=; b=A3QyfRd8Rm/cpZ
-	dOEHHobuQC2i2vHBQhcPaRXZ46N7oAdH6MnjHI1o69GocmFSMDIEoKgScmViqjwbUD7KSEI1y9X9L
-	UE+wnHyD57ob1O4ZHf2e/ZIib+T9LkCPRY1G7F0vutkmFlICs0PnEEV2VBhI2iu26YtKk4wGDBdww
-	UmKF6y0UmldkQ7JmxRXZnbbXT5JecYOm9kSoilPrMFMeiac5dF1sig4O0UngkPgSe/dBapzUtOoqu
-	32TCJJEBL52yaCpfZwtZ757MorMmb+D4O2jKqSEwSzN3CCRiTCBfCI3nkL1zCSROhKUcTWZyq4/hO
-	IDeAs/vGkwV6RelBF2hw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=S1ZOCS7u7RkxqBGaHHtyFGNmTpet3KGmAEkw3XITKu4=; b=VLYROSvgyVOKx2
+	pp37jZIioFLCX3T2MYAWuhliX7GmFLpkF1Ljz8+wHmXC9f/eO9JyfOAAmpCsuIxxtT/Hiy5HdBpZI
+	pDcKDeallGVFWO+0yFUNP/zrs04GRFCB4tg3bFjkJWYT89tezFkdew7oM9QD3nFEx/C6HcFeNCLBY
+	LMA3GdZt/s4pHYulEdOWwNkerYJTG2VIDHjXy6rq5QIEdF7hyaHhgQFFtresCsCZVp6ByOQE9KeC6
+	+tnxa30Wz4rJSfaQ5Jn+6sbnIWAKjcJX3f0HoVtj0iesrg4/oz7J1GvtDQxKQk9+bbRJz2rFWTlNp
+	yXndcq5bX0fzV7cz8yMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQZbU-008aoz-A3; Tue, 23 Aug 2022 19:30:24 +0000
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
+	id 1oQZbZ-008aqu-MI; Tue, 23 Aug 2022 19:30:29 +0000
+Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQZbR-008anw-LZ
-	for linux-rockchip@lists.infradead.org; Tue, 23 Aug 2022 19:30:23 +0000
-Received: by mail-ot1-x336.google.com with SMTP id 92-20020a9d0be5000000b0063946111607so1129674oth.10
-        for <linux-rockchip@lists.infradead.org>; Tue, 23 Aug 2022 12:30:19 -0700 (PDT)
+	id 1oQZbW-008aog-Dg
+	for linux-rockchip@lists.infradead.org; Tue, 23 Aug 2022 19:30:27 +0000
+Received: by mail-oi1-x230.google.com with SMTP id s199so17189792oie.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 23 Aug 2022 12:30:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc;
-        bh=EKugTN3Kgin3cEbbvkgL1cX5qdU5yshSaKzBh9bfce4=;
-        b=NkXPFG7GqlLUaoIuid2nLkc/iAg8Grc8gNbkaxBg1esX9hI9+Zov6ugtHFvHcY5TKr
-         yS2zPgEuQegOEq5l0nX01RmjcIEHxexzGGKchbDVMWKmpBodAnEJMv5PlEyETT7GePS0
-         oEHS1fpuPnBvhiHqDC8VC6m3ZsezjSMVICWXWShXBUJkvpltURYB1RRsktms5mQSDESR
-         ejd5BM8QHA4xnQgSEgjWOuKNOZfwScTlHM3nqfK/dvRnC4jQqCy8eAJv0L03U/QUnqS9
-         yC1zowlsSdXY6I5WIu3JNVdrr8WLCv2Ra//aJkm1f9OpYJLsNxbADxVWjB6EkdEzRnqM
-         WK7A==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc;
+        bh=2GZridEIMW8CPRQ+2eZ76vH2Oowxq5t+h5oKo5idFyk=;
+        b=dMqnqKGcGz1UnYzbfddE4tCtY5Hy6uoMm13x+BrWH8ZrfAqQ1a0HHKxgdFqDYrZ4k9
+         oLCtN7XMVeZVndgPbVM8OKn2IuVAif0WeeT5WiZqvXw75dh8Zzao/jVLTaviSoLCKS5r
+         l+XJ4t3bd7WAkzthhAWq3+yGH/cPJUI8+IHAPDGBX0eHCHGtYKeg1A23I4jPoBfp/UaM
+         FH5v2HRyXznLBhDqcs107Fu+raytowHqpeJzd2GX3VrNzY7FoUnqkXCj3oznQB+98Pvx
+         04hbE2/s8RY+39NeJYg7i9lU45zDdmEBeiUade499lhE27ilw1d/IERdmJDALLE5g+46
+         vl5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc;
-        bh=EKugTN3Kgin3cEbbvkgL1cX5qdU5yshSaKzBh9bfce4=;
-        b=deVTbPL12hb7slvOLsbDLta0pbAYVOKVTLLQjsMueLH1UD6nyQbkRWnvDR/t6QRl7X
-         XDzoQheJJo6Nlrt/BLdUqmyq0zwt7MNQwmdtkiDRcGbKXWAxd2Eh4INY9tqgYvEKTgI7
-         wpHTJvFSJPiIFIROkINpJSoIsI/LzRejcc+Tkb///DzOkOD5hsibM17iW8VsGl96Kw89
-         T90Gym/rqiamxu/eO1vFTIRD8aYBHlJ8QuDLK/FoMCpO3zKFTJxSPRLD9EmFFj48bTLi
-         Nm9Kh06uguR0vACelbn6jt9CtGFW4HFnk4lcm9AS97wA+EWHjWneIyulmzE7BwawWXGE
-         plbA==
-X-Gm-Message-State: ACgBeo3v2/Qkbax8yW34cqY6VtFzXEzn4hqmzI7X+MQfzyypxP2NhVl3
-	dvonWRuZvAxATzWucz8Vfk/zfuU18aQ=
-X-Google-Smtp-Source: AA6agR5rMWimknJ6mMd5f6g7a9XsVC+kNeOa1YgDM7DbPb5CP72kjxLsZiVs6SRKbXRrUhF0WRAccA==
-X-Received: by 2002:a9d:f43:0:b0:638:c3c4:73ee with SMTP id 61-20020a9d0f43000000b00638c3c473eemr9471672ott.186.1661283018864;
-        Tue, 23 Aug 2022 12:30:18 -0700 (PDT)
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
+        bh=2GZridEIMW8CPRQ+2eZ76vH2Oowxq5t+h5oKo5idFyk=;
+        b=Na3OVGtwWpR2DfK/kaUly7i/tLNzhPcjVE2bhzEqtOLOwiGSqpK8WE2sByukD0Vjjx
+         emnLrBPM3lSNkyVvBiufp1eAIVmzUgqP9eVetMppdb936srEhwGVgdIaPETjMEoQmmLm
+         qAV1Nsa65EqyNEB3oKblww/MmuIXneQ1b6i+t/cuvKAqIdLewTW3Z5xUJ3A0uDE/ySu+
+         Y/ACxoAL9ce8tTkbykpFz6OS8s2K9LRoSdibueQUd1yQDK2/5eJBfkWMOnCuP+P6VSx1
+         WuIX0DgN+OCR2gqnbFI8tv5IrwvDwLIHOV2b82REJiboHENLtrdhcyQ2qOYGftWqRHVS
+         E5sw==
+X-Gm-Message-State: ACgBeo2UfccyvR2pYKgC0sKnFgXJvEzH2GXRT7YFdkjApSXBaLKF4RO0
+	c+f/dgYO9uMhW/+vAEEREmGsHaLNAIQ=
+X-Google-Smtp-Source: AA6agR6FQTc7FBuSeJDq8R2LCle7aCYOQ1HXmFoH0IhXw/srpqQcLT+Ap4fH4iW+DGzGAbUyT66T1w==
+X-Received: by 2002:aca:1109:0:b0:343:25d4:9b36 with SMTP id 9-20020aca1109000000b0034325d49b36mr2005439oir.0.1661283023480;
+        Tue, 23 Aug 2022 12:30:23 -0700 (PDT)
 Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com. [76.183.134.35])
-        by smtp.gmail.com with ESMTPSA id f36-20020a056871072400b0011382da43aesm4070372oap.16.2022.08.23.12.30.17
+        by smtp.gmail.com with ESMTPSA id f36-20020a056871072400b0011382da43aesm4070372oap.16.2022.08.23.12.30.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 Aug 2022 12:30:18 -0700 (PDT)
+        Tue, 23 Aug 2022 12:30:23 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-pm@vger.kernel.org,
@@ -72,14 +72,16 @@ Cc: linux-pm@vger.kernel.org,
 	robh+dt@kernel.org,
 	lee@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V9 0/4] power: supply: Add Support for RK817 Charger
-Date: Tue, 23 Aug 2022 14:30:11 -0500
-Message-Id: <20220823193015.10229-1-macroalpha82@gmail.com>
+Subject: [PATCH V9 4/4] arm64: dts: rockchip: add rk817 chg to Odroid Go Advance
+Date: Tue, 23 Aug 2022 14:30:15 -0500
+Message-Id: <20220823193015.10229-5-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220823193015.10229-1-macroalpha82@gmail.com>
+References: <20220823193015.10229-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_123021_753026_53A66D36 
-X-CRM114-Status: GOOD (  17.40  )
+X-CRM114-CacheID: sfid-20220823_123026_487863_7C58AD49 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,101 +100,61 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-This series is to add support for the Rockchip rk817 battery charger
-which is present in all Rockchip RK817 PMICs. The driver was written
-as a joint effort by Maya Matuszczyk <maccraft123mc@gmail.com> and
-myself Chris Morgan <macromorgan@hotmail.com>.
+Add the new rk817 charger driver to the Odroid Go Advance. Create a
+monitored battery node as well for the charger to use. All values
+from monitored battery are gathered from the BSP kernel for the
+Odroid Go Advance provided by HardKernel.
 
-The driver requires some basic parameters be described about the
-battery in the devicetree such as the maximum capacity, the minimum
-and maximum voltage for the battery, the maximum charge current, the
-maximum charge voltage, and the value of sample resistors and sleep
-currents.
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+---
+ .../boot/dts/rockchip/rk3326-odroid-go2.dts   | 26 +++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-The hardware itself contains an ADC capable of measuring the voltage,
-current, and temperature of the battery (though my implementation of an
-Odroid Go Advance lacks a thermistor for temperature). It also contains
-a columb counter, registers for tracking the measured voltage and
-current at boot, and a few bytes of nvram for storing data.
-
-Changes from V8:
- - Updated copyright notice.
- - Replaced linux/of_gpio.h header with of.h.
- - Changed to use devm_delayed_work_autocancel to manage work queue.
-
-Changes from V7:
- - Fix error reported by kernel test robot <lkp@intel.com> in patch v7.
-   Problem appeared to be related to incomplete removal of fields I
-   used previously in debugging.
-
-Changes from V6:
- - Updated devicetree binding patch to reference the required
-   prerequisite patch in the correct manner (relocated it below the ---
-   and pointed it to lore.kernel.org).
-
-Changes from V5:
- - Renamed mfd-cell from "battery" to "charger".
- - Added note for devicetree binding documentation that it requires
-   application of an additional pending patch (to convert documentation
-   to yaml).
-
-Changes from V4:
- - Massively redesigned the battery driver to improve measurement
-   accuracy and reliability. Driver now checks values every 8
-   seconds (mimicking BSP driver behavior), or whenever a plug event
-   is detected.
- - Removed OCV, boot voltage, and boot current as values were found
-   to be unreliable.
- - Updated first-boot behavior to perform a "best guess" at capacity.
- - Added ability to calibrate columb counter to full state of charge
-   when charger reports full, and added ability calibrate full charge
-   capacity when battery discharges from full charge to minimum
-   voltage.
- - Expose state of charge as capacity (in percents).
- - Updated storing of values to nvram to preserve compatibility with
-   BSP kernel.
-
-Changes from V3:
-
- - Corrected issues in device tree documentation.
- - Added additional logic to battery to correct for columb counter
-   drift when the device stays plugged in at a full charge state.
-
-Changes from V2:
-
- - Updated devicetree bindings to use common property units.
- - Removed unneeded includes.
- - Updated rk817_chg_cur_to_reg to make more legible.
- - Simplified formula for displaying calibrated voltage.
- - Updated power supply type to POWER_SUPPLY_TYPE_USB.
- - Implemented get/put_unaligned macros for bulk reads and writes.
- - Changed numerous dev_err() to dev_err_probe().
- - Call power_supply_put_battery_info() at end of probe function.
- - Removed unneeded whitespace.
-
-Changes from V1:
-
- - Fixed a CLANG warning regarding an uninitalized variable.
- - Fixed a CLANG warning regarding a pointer as a bool value always
-   returning as true.
- - Added Maya Matuszczyk to the Signed-off-by.
-
-Chris Morgan (4):
-  dt-bindings: Add Rockchip rk817 battery charger support
-  mfd: Add Rockchip rk817 battery charger support
-  power: supply: Add charger driver for Rockchip RK817
-  arm64: dts: rockchip: add rk817 chg to Odroid Go Advance
-
- .../bindings/mfd/rockchip,rk817.yaml          |   48 +
- .../boot/dts/rockchip/rk3326-odroid-go2.dts   |   26 +
- drivers/mfd/rk808.c                           |   16 +-
- drivers/power/supply/Kconfig                  |    6 +
- drivers/power/supply/Makefile                 |    1 +
- drivers/power/supply/rk817_charger.c          | 1157 +++++++++++++++++
- include/linux/mfd/rk808.h                     |   91 ++
- 7 files changed, 1344 insertions(+), 1 deletion(-)
- create mode 100644 drivers/power/supply/rk817_charger.c
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+index 415aa9ff8bd4..72899a714310 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+@@ -52,6 +52,25 @@ backlight: backlight {
+ 		pwms = <&pwm1 0 25000 0>;
+ 	};
+ 
++	battery: battery {
++		compatible = "simple-battery";
++		charge-full-design-microamp-hours = <3000000>;
++		charge-term-current-microamp = <300000>;
++		constant-charge-current-max-microamp = <2000000>;
++		constant-charge-voltage-max-microvolt = <4200000>;
++		factory-internal-resistance-micro-ohms = <180000>;
++		voltage-max-design-microvolt = <4100000>;
++		voltage-min-design-microvolt = <3500000>;
++
++		ocv-capacity-celsius = <20>;
++		ocv-capacity-table-0 =	<4046950 100>, <4001920 95>, <3967900 90>, <3919950 85>,
++					<3888450 80>, <3861850 75>, <3831540 70>, <3799130 65>,
++					<3768190 60>, <3745650 55>, <3726610 50>, <3711630 45>,
++					<3696720 40>, <3685660 35>, <3674950 30>, <3663050 25>,
++					<3649470 20>, <3635260 15>, <3616920 10>, <3592440 5>,
++					<3574170 0>;
++	};
++
+ 	gpio-keys {
+ 		compatible = "gpio-keys";
+ 		pinctrl-names = "default";
+@@ -472,6 +491,13 @@ usb_midu: BOOST {
+ 			};
+ 		};
+ 
++		rk817_charger: charger {
++			monitored-battery = <&battery>;
++			rockchip,resistor-sense-micro-ohms = <10000>;
++			rockchip,sleep-enter-current-microamp = <300000>;
++			rockchip,sleep-filter-current-microamp = <100000>;
++		};
++
+ 		rk817_codec: codec {
+ 			rockchip,mic-in-differential;
+ 		};
 -- 
 2.25.1
 
