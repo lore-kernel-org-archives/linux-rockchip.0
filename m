@@ -4,79 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B11AC32772
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Aug 2022 14:48:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 936B4C32789
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Aug 2022 14:57:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DmgwaJj5MIxXG3V98m1eK0bRb+725CqeAy7ps95sXQE=; b=qR5d86h3OxbaDB
-	Y7+Pb58AzqGsv87vL1dw2pH47kUXdhL6UtTEa3cR2dAZSxp+ZYuP5NW3yzMCffz4JS+OtWAQnlOrH
-	elSApmrGJX2i/Me/FgkHuNKI6t3jFoWoA99NadD384gDLrlQB1f1mVcQTbTUn9EmgjQD95bS7VKmv
-	7b5omh+pjInoHFVWN1Sj7Tqppxn+fnN+0AbqYPWbBzgF3nLiIOysBS0VKItBQkYhErGF1TcKcIeQP
-	lCR008oymcLMSEVkggq0rNkN3JufiD76s7x2hdqvFijEi57n4PxTvOD227o7GNYdzIhpmtPN0p4tI
-	B6Tonhhm09giqmVcfx+A==;
+	List-Owner; bh=SxMpT6fpPInnI39QU8B3ByLNHiRzB+HdsouozgRiw54=; b=DTgLnnHFYGoDlm
+	Z6E9m5Q0BXK49cCy9eUfsQd/ZEb1Q0iCFjAsY1l5O17IQRC9pR2Gk4F8cjbOSe/Q+UfKe2xiGwnuC
+	eYvynMSjuMsCb8jbwZYY/9HvOdMiyH5M5l+kfLZlDtAU3Z83Gezg14vy6hB055tJhuOiHlM7Y/6Qu
+	qXNrhmfDfspYsjNdfJCojBr3nEKlHDwdTnSoKR8vHVjNzdkMaptrVkMmC/Z+oXBUwgkjuwKphLWcn
+	Wa+XNTJ3gucMaHZIS5gDAsRNGIgXTKrBiZKahiXEx37td9urOmPOUsonuqAWWA+N88iJZYBuS9z4s
+	aW7iCZ7cA+bEU3XgjXAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQVBy-006itJ-MV; Tue, 23 Aug 2022 14:47:46 +0000
-Received: from mail-qt1-x830.google.com ([2607:f8b0:4864:20::830])
+	id 1oQVLQ-006lmY-Af; Tue, 23 Aug 2022 14:57:32 +0000
+Received: from mail-oa1-f41.google.com ([209.85.160.41])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQVBo-006iny-5k; Tue, 23 Aug 2022 14:47:37 +0000
-Received: by mail-qt1-x830.google.com with SMTP id r6so1450760qtx.6;
-        Tue, 23 Aug 2022 07:47:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc;
-        bh=b8EYUe3JugOX0krlcI4SIAy+UPYGVeLR4PxCSdVOZKA=;
-        b=kds/eg8K8iDSgVtBJnyCXPYIJMTjIe4TyWFlnVvOJk99djqYpAvmv2YGgDbvzOJPeA
-         cE2QB/DTRvulIqdttMXeB9CLHfx2bIc2bsNRauw5PA0xGRIeStBVoAoHKLlT6RPuGZuV
-         qFHH/TY6hqKpwWuWFIjJ5jikWkkWE4fBYdn+eyxk5YbSy7FNs9SK0jNuni93x7hSD0vs
-         kQIqtSBLS3ML00Sq65XA8Ax7JZBDQriWvnPMN0ME5oOoRi/EZWOhMBsxT4kCByC5E9Qt
-         PNM2JAFW7DafoTylAIZxeFPmkjhy3JFfkDuIgwzcQPEch9CAFRi7E4qa/uqBiOaS3J3v
-         PYBA==
+	id 1oQVLC-006lek-92; Tue, 23 Aug 2022 14:57:20 +0000
+Received: by mail-oa1-f41.google.com with SMTP id 586e51a60fabf-11c5505dba2so17058262fac.13;
+        Tue, 23 Aug 2022 07:57:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc;
-        bh=b8EYUe3JugOX0krlcI4SIAy+UPYGVeLR4PxCSdVOZKA=;
-        b=n1ncioIaFmzv82jbLR/aS8quWKk5iMpQ09JDeCTyA+x/onxWRUK+UrdGQ+8KaPEeGM
-         l0OskOt0pAl+zB4klBHmnP/Gel57wgYIRSh/V7kb3RCdrZFQHR6k6cDeIbelIc9LJDzC
-         JnJM5zkYv7hzOtOHktQQhIghHGb4EBW99rD8jO4Sm4MdCzfd1OGoIB66jt8pBMQvLKX3
-         1p8NMu/CE5BcBpCw3cebQUBnHuHJPDUB1fl75Hb748r9FYjLBknAK+nHEQlH4MlDDebP
-         RnQs6g697rY7oftBrA+oXCwH6aQns+vOEqjlS8BeS5OfxTelNar2iJTXMPn9SM+wYomg
-         bCHg==
-X-Gm-Message-State: ACgBeo1OIP9yDSBExf7V2g2GSGDvB0pzpKwAFbRmAvewQdTnlHC5Dz9+
-	Rki7M8gLyuKAsVCLEkYK/UmPlCPTG8qN6A==
-X-Google-Smtp-Source: AA6agR5pSSGs0EgS8b/26ah8lKzgSPS8zmBy7jeWzv2OusfHLi0QCQsN/9wfq3U41+VJTU8fy5CYcw==
-X-Received: by 2002:ac8:7f83:0:b0:343:869a:7db9 with SMTP id z3-20020ac87f83000000b00343869a7db9mr19705477qtj.46.1661266052867;
-        Tue, 23 Aug 2022 07:47:32 -0700 (PDT)
-Received: from master-x64.sparksnet ([2601:153:901:9131::10])
-        by smtp.gmail.com with ESMTPSA id y9-20020a05620a25c900b006bb83c2be40sm13304284qko.59.2022.08.23.07.47.31
+        bh=6vKFgG/f4olyJVJpZJ7xkmGvVQtzgpp9UOpLpTbBPqo=;
+        b=8Fbz3aIqRVV8n9VAHKLvEHLV4RRCCld74G0+E3j5zrpvY00+PBXjzTxXXulOPHL9zO
+         yGpf0RI2hZJHW1NxHMWLLQhq9vrtI666I7EAF1b+auRrJ3U8TqEY/iT1ge4rAMY1M4ww
+         iRBRAujV7XGTkfa08bcCTVGyPXJG/FLR/aNA2MK6DyTIBXW5yQ9vHQplmHT+mf5Tnpim
+         hjXtoG92H6E9tsmwKSkvbiL7LxgdaWUfAS3Nk/PdFG8CvM45y6moOsab4x5Srl1sneGd
+         9sQJ5ZS04LShwmD6YWpjIjI4pN+47N1a3YU1oq3rmumi/wNUAMCg/he9eQk3OnKqKV2Z
+         1EUw==
+X-Gm-Message-State: ACgBeo2Su54qQAd5qo+kxrl7wx6MJvZs+wxM0sCoO5lVq3wKBrulzYsk
+	G46B5J1limIVM8kGvpU7zw==
+X-Google-Smtp-Source: AA6agR7GsswgCm1oVUYqFahlkY5PDkMbKcIWNl1BzDcfp9UNHL7YH48DtHNxx8jPoayC/XAVDNTv7g==
+X-Received: by 2002:a05:6871:152:b0:11d:b1e3:737e with SMTP id z18-20020a056871015200b0011db1e3737emr1079705oab.249.1661266634692;
+        Tue, 23 Aug 2022 07:57:14 -0700 (PDT)
+Received: from xps15.. (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.googlemail.com with ESMTPSA id t1-20020a056870600100b0011c65559b04sm3840637oaa.34.2022.08.23.07.57.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 23 Aug 2022 07:47:32 -0700 (PDT)
-From: Peter Geis <pgwipeout@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Kishon Vijay Abraham I <kishon@ti.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Samuel Holland <samuel@sholland.org>
-Cc: Markus Reichl <m.reichl@fivetechno.de>,
-	Michael Riesch <michael.riesch@wolfvision.net>,
-	linux-phy@lists.infradead.org,
+        Tue, 23 Aug 2022 07:57:13 -0700 (PDT)
+From: Rob Herring <robh@kernel.org>
+To: Lee Jones <lee@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Tim Harvey <tharvey@gateworks.com>,
+	Robert Jones <rjones@gateworks.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	- <patches@opensource.cirrus.com>,
+	Steve Twiss <stwiss.opensource@diasemi.com>,
+	Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Amelie Delaunay <amelie.delaunay@foss.st.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Renner Berthing <kernel@esmil.dk>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] phy: rockchip-inno-usb2: Return zero after otg sync
-Date: Tue, 23 Aug 2022 10:47:28 -0400
-Message-Id: <20220823144728.47068-1-pgwipeout@gmail.com>
-X-Mailer: git-send-email 2.25.1
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: [PATCH] dt-bindings: mfd: Add missing (unevaluated|additional)Properties on child nodes
+Date: Tue, 23 Aug 2022 09:56:35 -0500
+Message-Id: <20220823145649.3118479-4-robh@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_074736_237432_1FC8BFD0 
-X-CRM114-Status: GOOD (  11.06  )
+X-CRM114-CacheID: sfid-20220823_075718_356504_CA73D2BC 
+X-CRM114-Status: GOOD (  15.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,53 +102,540 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The otg sync state patch reuses the ret variable, but fails to set it to
-zero after use. This leads to a situation when the otg port is in
-peripheral mode where the otg phy aborts halfway through setup.  It also
-fails to account for a failure to register the extcon notifier. Fix this
-by using our own variable and skipping otg sync in case of failure.
+In order to ensure only documented properties are present, node schemas
+must have unevaluatedProperties or additionalProperties set to false
+(typically).
 
-Fixes: 8dc60f8da22f ("phy: rockchip-inno-usb2: Sync initial otg state")
-
-Reported-by: Markus Reichl <m.reichl@fivetechno.de>
-Reported-by: Michael Riesch <michael.riesch@wolfvision.net>
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
-Tested-by: Markus Reichl <m.reichl@fivetechno.de>
+Signed-off-by: Rob Herring <robh@kernel.org>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ .../mfd/allwinner,sun6i-a31-prcm.yaml         | 40 +++++++++++++++++++
+ .../mfd/allwinner,sun8i-a23-prcm.yaml         | 10 +++++
+ .../bindings/mfd/cirrus,lochnagar.yaml        |  5 +++
+ .../devicetree/bindings/mfd/dlg,da9063.yaml   |  7 ++--
+ .../bindings/mfd/gateworks-gsc.yaml           |  5 ++-
+ .../bindings/mfd/maxim,max14577.yaml          |  1 +
+ .../bindings/mfd/maxim,max77843.yaml          |  1 +
+ .../bindings/mfd/rockchip,rk817.yaml          |  2 +
+ .../bindings/mfd/silergy,sy7636a.yaml         |  1 +
+ .../bindings/mfd/st,stm32-lptimer.yaml        |  4 ++
+ .../bindings/mfd/st,stm32-timers.yaml         |  3 ++
+ .../devicetree/bindings/mfd/st,stmfx.yaml     |  1 +
+ .../bindings/mfd/stericsson,ab8500.yaml       | 22 ++++++++++
+ .../devicetree/bindings/mfd/ti,tps65086.yaml  |  1 +
+ .../bindings/mfd/x-powers,axp152.yaml         |  1 +
+ 15 files changed, 100 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 0b1e9337ee8e..d579a22c61df 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -1124,7 +1124,7 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
- 					  struct rockchip_usb2phy_port *rport,
- 					  struct device_node *child_np)
- {
--	int ret;
-+	int ret, id;
+diff --git a/Documentation/devicetree/bindings/mfd/allwinner,sun6i-a31-prcm.yaml b/Documentation/devicetree/bindings/mfd/allwinner,sun6i-a31-prcm.yaml
+index d131759ccaf3..021d33cb3dd6 100644
+--- a/Documentation/devicetree/bindings/mfd/allwinner,sun6i-a31-prcm.yaml
++++ b/Documentation/devicetree/bindings/mfd/allwinner,sun6i-a31-prcm.yaml
+@@ -22,6 +22,7 @@ properties:
+ patternProperties:
+   "^.*_(clk|rst)$":
+     type: object
++    unevaluatedProperties: false
  
- 	rport->port_id = USB2PHY_PORT_OTG;
- 	rport->port_cfg = &rphy->phy_cfg->port_cfgs[USB2PHY_PORT_OTG];
-@@ -1164,11 +1164,12 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
- 					EXTCON_USB_HOST, &rport->event_nb);
- 		if (ret)
- 			dev_err(rphy->dev, "register USB HOST notifier failed\n");
-+			goto out;
+     properties:
+       compatible:
+@@ -34,6 +35,45 @@ patternProperties:
+           - fixed-factor-clock
  
- 		if (!of_property_read_bool(rphy->dev->of_node, "extcon")) {
- 			/* do initial sync of usb state */
--			ret = property_enabled(rphy->grf, &rport->port_cfg->utmi_id);
--			extcon_set_state_sync(rphy->edev, EXTCON_USB_HOST, !ret);
-+			id = property_enabled(rphy->grf, &rport->port_cfg->utmi_id);
-+			extcon_set_state_sync(rphy->edev, EXTCON_USB_HOST, !id);
- 		}
- 	}
+     allOf:
++      - if:
++          properties:
++            compatible:
++              contains:
++                const: fixed-factor-clock
++
++        then:
++          $ref: /schemas/clock/fixed-factor-clock.yaml#
++
++      - if:
++          properties:
++            compatible:
++              contains:
++                const: allwinner,sun4i-a10-mod0-clk
++
++        then:
++          properties:
++            "#clock-cells":
++              const: 0
++
++            # Already checked in the main schema
++            compatible: true
++
++            clocks:
++              maxItems: 2
++
++            clock-output-names:
++              maxItems: 1
++
++            phandle: true
++
++          required:
++            - "#clock-cells"
++            - compatible
++            - clocks
++            - clock-output-names
++
++          additionalProperties: false
++
+       - if:
+           properties:
+             compatible:
+diff --git a/Documentation/devicetree/bindings/mfd/allwinner,sun8i-a23-prcm.yaml b/Documentation/devicetree/bindings/mfd/allwinner,sun8i-a23-prcm.yaml
+index aa5e683b236c..01f4f5210574 100644
+--- a/Documentation/devicetree/bindings/mfd/allwinner,sun8i-a23-prcm.yaml
++++ b/Documentation/devicetree/bindings/mfd/allwinner,sun8i-a23-prcm.yaml
+@@ -22,6 +22,7 @@ properties:
+ patternProperties:
+   "^.*(clk|rst|codec).*$":
+     type: object
++    unevaluatedProperties: false
  
+     properties:
+       compatible:
+@@ -36,6 +37,15 @@ patternProperties:
+       - compatible
+ 
+     allOf:
++      - if:
++          properties:
++            compatible:
++              contains:
++                const: fixed-factor-clock
++
++        then:
++          $ref: /schemas/clock/fixed-factor-clock.yaml#
++
+       - if:
+           properties:
+             compatible:
+diff --git a/Documentation/devicetree/bindings/mfd/cirrus,lochnagar.yaml b/Documentation/devicetree/bindings/mfd/cirrus,lochnagar.yaml
+index ad285cb480c9..86f7341eb7e1 100644
+--- a/Documentation/devicetree/bindings/mfd/cirrus,lochnagar.yaml
++++ b/Documentation/devicetree/bindings/mfd/cirrus,lochnagar.yaml
+@@ -144,6 +144,7 @@ properties:
+       CODECs digital core if not being provided by an internal regulator.
+     type: object
+     $ref: /schemas/regulator/regulator.yaml#
++    unevaluatedProperties: false
+     properties:
+       compatible:
+         enum:
+@@ -161,6 +162,7 @@ properties:
+       CODECs MICVDD.
+     type: object
+     $ref: /schemas/regulator/regulator.yaml#
++    unevaluatedProperties: false
+     properties:
+       compatible:
+         enum:
+@@ -177,6 +179,7 @@ properties:
+       Initialisation data for the MIC1VDD supplies.
+     type: object
+     $ref: /schemas/regulator/regulator.yaml#
++    unevaluatedProperties: false
+     properties:
+       compatible:
+         enum:
+@@ -202,6 +205,7 @@ properties:
+       Initialisation data for the MIC2VDD supplies.
+     type: object
+     $ref: /schemas/regulator/regulator.yaml#
++    unevaluatedProperties: false
+     properties:
+       compatible:
+         enum:
+@@ -228,6 +232,7 @@ properties:
+       the CODECs analog and 1.8V digital supplies.
+     type: object
+     $ref: /schemas/regulator/regulator.yaml#
++    unevaluatedProperties: false
+     properties:
+       compatible:
+         enum:
+diff --git a/Documentation/devicetree/bindings/mfd/dlg,da9063.yaml b/Documentation/devicetree/bindings/mfd/dlg,da9063.yaml
+index d71933460e90..54b47bd4c6aa 100644
+--- a/Documentation/devicetree/bindings/mfd/dlg,da9063.yaml
++++ b/Documentation/devicetree/bindings/mfd/dlg,da9063.yaml
+@@ -71,8 +71,9 @@ properties:
+ 
+   regulators:
+     type: object
++    additionalProperties: false
+     patternProperties:
+-      "^(ldo[1-11]|bcore[1-2]|bpro|bmem|bio|bperi)$":
++      "^(ldo([1-9]|1[01])|bcore[1-2]|bpro|bmem|bio|bperi)$":
+         $ref: /schemas/regulator/regulator.yaml
+         unevaluatedProperties: false
+ 
+@@ -112,7 +113,7 @@ examples:
+         };
+ 
+         regulators {
+-          regulator-bcore1 {
++          bcore1 {
+             regulator-name = "BCORE1";
+             regulator-min-microvolt = <300000>;
+             regulator-max-microvolt = <1570000>;
+@@ -120,7 +121,7 @@ examples:
+             regulator-max-microamp = <2000000>;
+             regulator-boot-on;
+           };
+-          regulator-ldo11 {
++          ldo11 {
+             regulator-name = "LDO_11";
+             regulator-min-microvolt = <900000>;
+             regulator-max-microvolt = <3600000>;
+diff --git a/Documentation/devicetree/bindings/mfd/gateworks-gsc.yaml b/Documentation/devicetree/bindings/mfd/gateworks-gsc.yaml
+index 5e0fe3ebe1d2..acb9c54942d9 100644
+--- a/Documentation/devicetree/bindings/mfd/gateworks-gsc.yaml
++++ b/Documentation/devicetree/bindings/mfd/gateworks-gsc.yaml
+@@ -46,6 +46,7 @@ properties:
+ 
+   adc:
+     type: object
++    additionalProperties: false
+     description: Optional hardware monitoring module
+ 
+     properties:
+@@ -59,8 +60,9 @@ properties:
+         const: 0
+ 
+     patternProperties:
+-      "^channel@[0-9]+$":
++      "^channel@[0-9a-f]+$":
+         type: object
++        additionalProperties: false
+         description: |
+           Properties for a single ADC which can report cooked values
+           (i.e. temperature sensor based on thermister), raw values
+@@ -113,6 +115,7 @@ properties:
+ patternProperties:
+   "^fan-controller@[0-9a-f]+$":
+     type: object
++    additionalProperties: false
+     description: Optional fan controller
+ 
+     properties:
+diff --git a/Documentation/devicetree/bindings/mfd/maxim,max14577.yaml b/Documentation/devicetree/bindings/mfd/maxim,max14577.yaml
+index 52edd1bf549f..995e96ee7445 100644
+--- a/Documentation/devicetree/bindings/mfd/maxim,max14577.yaml
++++ b/Documentation/devicetree/bindings/mfd/maxim,max14577.yaml
+@@ -39,6 +39,7 @@ properties:
+ 
+   extcon:
+     type: object
++    additionalProperties: false
+     properties:
+       compatible:
+         enum:
+diff --git a/Documentation/devicetree/bindings/mfd/maxim,max77843.yaml b/Documentation/devicetree/bindings/mfd/maxim,max77843.yaml
+index f30f96bbff43..2e2a2a86b57d 100644
+--- a/Documentation/devicetree/bindings/mfd/maxim,max77843.yaml
++++ b/Documentation/devicetree/bindings/mfd/maxim,max77843.yaml
+@@ -32,6 +32,7 @@ properties:
+ 
+   motor-driver:
+     type: object
++    additionalProperties: false
+     properties:
+       compatible:
+         const: maxim,max77843-haptic
+diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+index bfc1720adc43..9b2378312ce2 100644
+--- a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
++++ b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
+@@ -87,6 +87,7 @@ properties:
+     patternProperties:
+       "^(LDO_REG[1-9]|DCDC_REG[1-4]|BOOST|OTG_SWITCH)$":
+         type: object
++        unevaluatedProperties: false
+         $ref: ../regulator/regulator.yaml#
+     unevaluatedProperties: false
+ 
+@@ -111,6 +112,7 @@ properties:
+       additional properties are required for the codec, this node can be
+       omitted.
+     type: object
++    additionalProperties: false
+     properties:
+       rockchip,mic-in-differential:
+         type: boolean
+diff --git a/Documentation/devicetree/bindings/mfd/silergy,sy7636a.yaml b/Documentation/devicetree/bindings/mfd/silergy,sy7636a.yaml
+index 6de74c701635..ee0be32ac020 100644
+--- a/Documentation/devicetree/bindings/mfd/silergy,sy7636a.yaml
++++ b/Documentation/devicetree/bindings/mfd/silergy,sy7636a.yaml
+@@ -42,6 +42,7 @@ properties:
+       vcom:
+         type: object
+         $ref: /schemas/regulator/regulator.yaml#
++        unevaluatedProperties: false
+         description:
+           The regulator for the compenstation voltage. Enabling/disabling this
+           enables/disables the entire device.
+diff --git a/Documentation/devicetree/bindings/mfd/st,stm32-lptimer.yaml b/Documentation/devicetree/bindings/mfd/st,stm32-lptimer.yaml
+index a58f08aa430d..d950dd5d48bd 100644
+--- a/Documentation/devicetree/bindings/mfd/st,stm32-lptimer.yaml
++++ b/Documentation/devicetree/bindings/mfd/st,stm32-lptimer.yaml
+@@ -46,6 +46,7 @@ properties:
+ 
+   pwm:
+     type: object
++    additionalProperties: false
+ 
+     properties:
+       compatible:
+@@ -60,6 +61,7 @@ properties:
+ 
+   counter:
+     type: object
++    additionalProperties: false
+ 
+     properties:
+       compatible:
+@@ -70,6 +72,7 @@ properties:
+ 
+   timer:
+     type: object
++    additionalProperties: false
+ 
+     properties:
+       compatible:
+@@ -81,6 +84,7 @@ properties:
+ patternProperties:
+   "^trigger@[0-9]+$":
+     type: object
++    additionalProperties: false
+ 
+     properties:
+       compatible:
+diff --git a/Documentation/devicetree/bindings/mfd/st,stm32-timers.yaml b/Documentation/devicetree/bindings/mfd/st,stm32-timers.yaml
+index 5db00af8e116..e2c3c3b44abb 100644
+--- a/Documentation/devicetree/bindings/mfd/st,stm32-timers.yaml
++++ b/Documentation/devicetree/bindings/mfd/st,stm32-timers.yaml
+@@ -69,6 +69,7 @@ properties:
+ 
+   pwm:
+     type: object
++    additionalProperties: false
+ 
+     properties:
+       compatible:
+@@ -104,6 +105,7 @@ properties:
+ 
+   counter:
+     type: object
++    additionalProperties: false
+ 
+     properties:
+       compatible:
+@@ -115,6 +117,7 @@ properties:
+ patternProperties:
+   "^timer@[0-9]+$":
+     type: object
++    additionalProperties: false
+ 
+     properties:
+       compatible:
+diff --git a/Documentation/devicetree/bindings/mfd/st,stmfx.yaml b/Documentation/devicetree/bindings/mfd/st,stmfx.yaml
+index b2a4e4aa7ff6..b4d54302582f 100644
+--- a/Documentation/devicetree/bindings/mfd/st,stmfx.yaml
++++ b/Documentation/devicetree/bindings/mfd/st,stmfx.yaml
+@@ -57,6 +57,7 @@ properties:
+     patternProperties:
+       "^[a-zA-Z]*-pins$":
+         type: object
++        additionalProperties: false
+ 
+         allOf:
+           - $ref: ../pinctrl/pinmux-node.yaml
+diff --git a/Documentation/devicetree/bindings/mfd/stericsson,ab8500.yaml b/Documentation/devicetree/bindings/mfd/stericsson,ab8500.yaml
+index 623a4b5cd27a..6c8d42f27fe8 100644
+--- a/Documentation/devicetree/bindings/mfd/stericsson,ab8500.yaml
++++ b/Documentation/devicetree/bindings/mfd/stericsson,ab8500.yaml
+@@ -51,6 +51,7 @@ properties:
+       provides the reference clock for the entire U8500 system and
+       the DB8500 counterpart.
+     type: object
++    additionalProperties: false
+ 
+     properties:
+       compatible:
+@@ -63,6 +64,7 @@ properties:
+     description: Node describing the AB8500 GPIO controller. A few
+       GPIO pins available for misc usage.
+     type: object
++    additionalProperties: false
+ 
+     properties:
+       compatible:
+@@ -78,6 +80,7 @@ properties:
+   rtc:
+     description: Node describing the AB8500 battery-backed RTC.
+     type: object
++    additionalProperties: false
+ 
+     properties:
+       compatible:
+@@ -337,34 +340,40 @@ properties:
+         description: The voltage for the auxilary LDO regulator 1
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_aux2:
+         description: The voltage for the auxilary LDO regulator 2
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_aux3:
+         description: The voltage for the auxilary LDO regulator 3
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_aux4:
+         description: The voltage for the auxilary LDO regulator 4
+           only present on AB8505
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_aux5:
+         description: The voltage for the auxilary LDO regulator 5
+           only present on AB8505
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_aux6:
+         description: The voltage for the auxilary LDO regulator 6
+           only present on AB8505
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       # There is never any AUX7 regulator which is confusing
+ 
+@@ -373,18 +382,21 @@ properties:
+           only present on AB8505
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_intcore:
+         description: The LDO regulator for the internal core voltage
+           of the AB8500
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_adc:
+         description: Analog power regulator for the analog to digital converter
+           ADC, only present on AB8505
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_tvout:
+         description: The voltage for the TV output regulator, incidentally
+@@ -393,33 +405,39 @@ properties:
+           Only present on AB8500.
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_audio:
+         description: The LDO regulator for the audio codec output
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_anamic1:
+         description: The LDO regulator for the analog microphone 1
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_anamic2:
+         description: The LDO regulator for the analog microphone 2
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_dmic:
+         description: The LDO regulator for the digital microphone
+           only present on AB8500
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ldo_ana:
+         description: Analog power regulator for CSI and DSI interfaces,
+           Camera Serial Interface CSI and Display Serial Interface DSI.
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+     required:
+       - compatible
+@@ -442,16 +460,19 @@ properties:
+         description: The voltage for the VSMPS1 external regulator
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ext2:
+         description: The voltage for the VSMPS2 external regulator
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+       ab8500_ext3:
+         description: The voltage for the VSMPS3 external regulator
+         type: object
+         $ref: ../regulator/regulator.yaml#
++        unevaluatedProperties: false
+ 
+     required:
+       - compatible
+@@ -462,6 +483,7 @@ patternProperties:
+   "^pwm@[1-9]+?$":
+     type: object
+     $ref: ../pwm/pwm.yaml#
++    unevaluatedProperties: false
+     description: Represents each of the PWM blocks in the AB8500
+ 
+     properties:
+diff --git a/Documentation/devicetree/bindings/mfd/ti,tps65086.yaml b/Documentation/devicetree/bindings/mfd/ti,tps65086.yaml
+index 6aeedda3be15..3fdd9cb5b347 100644
+--- a/Documentation/devicetree/bindings/mfd/ti,tps65086.yaml
++++ b/Documentation/devicetree/bindings/mfd/ti,tps65086.yaml
+@@ -38,6 +38,7 @@ properties:
+ 
+   regulators:
+     type: object
++    additionalProperties: false
+     description: |
+       List of child nodes that specify the regulator initialization data.
+       Child nodes must be named after their hardware counterparts:
+diff --git a/Documentation/devicetree/bindings/mfd/x-powers,axp152.yaml b/Documentation/devicetree/bindings/mfd/x-powers,axp152.yaml
+index 3a53bae611bc..b9b71ba33893 100644
+--- a/Documentation/devicetree/bindings/mfd/x-powers,axp152.yaml
++++ b/Documentation/devicetree/bindings/mfd/x-powers,axp152.yaml
+@@ -260,6 +260,7 @@ properties:
+       "^(([a-f])?ldo[0-9]|dcdc[0-7a-e]|ldo(_|-)io(0|1)|(dc1)?sw|rtc(_|-)ldo|drivevbus|dc5ldo)$":
+         $ref: /schemas/regulator/regulator.yaml#
+         type: object
++        unevaluatedProperties: false
+ 
+         properties:
+           regulator-ramp-delay:
 -- 
-2.25.1
+2.34.1
 
 
 _______________________________________________
