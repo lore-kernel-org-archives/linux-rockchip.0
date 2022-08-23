@@ -4,65 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E09AFC32772
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Aug 2022 16:36:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF91FC32772
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Aug 2022 17:21:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ARIkaSClzZvX5H2LStQeXToiQzK3f0t6GO/7Urc2Trk=; b=nhv1wuAfEa3kLxak0msdF6orbp
-	RC9YdEMpin4ODzM04DrM6LBYDV4Tt5zAL/PvF9CXn4QB3kk2gFkNVCavZhLPTXZWP7xgY4uNLK3G6
-	RoH/tNtvYFhyv5luWcFDM8gpbdFILVO4nNZIl6hvBAwWxmTjRHc/AlzvbKo+aOGHkQtAzX6D0x6Vy
-	/FVCiKa1a+PDvXx2KQOg4Vi76wtSmE6EQfSm8eg4n7oPilEGv43O/uKqwUbp7C9qhJ1OtswIR0ia0
-	I7M5tGfop6BB3DjuMv3gR7Wd19D5RrDYmANR7lYi92/DkZcSmvR5F8vqK6QP/oPJSJrQI1HnYJr97
-	xo6eQmJg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cbl4HmGl+FVKBsn+DokNmW8n9hmyWWexLZ6t3z5O8h8=; b=ZwfJ6PcUCObbon
+	fvOcOdjK6qCeJYEq0ecigfbI9aBkp2dXF0EOTMZvalvXs0WqFSMptyhpC96bLQoGyi1UuGIykmJS8
+	g2PVGtWHFC7aXphgLHEEXNf6N4LxgYLlWsx5l54glehVDNAUThN5z1ZiqQLZBkliQAGtliOqbSyh9
+	5pf8+oWYFFNutKSnaLDIpM7TTdip+3zyrBgUsvzMuE0xeKCbpPEMi9v9Sw1+nA0y56IuJCPzlIxQF
+	eJa6cqlVwGTfioVUcVdQvnwICZ5xfiMcmwYaZ/MBtMZOoKkva54T2A/ehLpATFLkzZ9tKUPiP1woC
+	u0PYVCmXQzuDujqmpekA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQWsZ-007K5F-48; Tue, 23 Aug 2022 16:35:51 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oQXb2-007gam-8E; Tue, 23 Aug 2022 17:21:48 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQWsW-007K3c-FN
-	for linux-rockchip@lists.infradead.org; Tue, 23 Aug 2022 16:35:50 +0000
-Received: from mercury (dyndsl-091-096-061-143.ewe-ip-backbone.de [91.96.61.143])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E72116601E65;
-	Tue, 23 Aug 2022 17:35:42 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661272543;
-	bh=I6/l5FGc7ng1XkPNikT1+GnIIzKiHFAjYhBWZniQqKQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LTvZeaO67T89sCDY/LfxjlPyaxUmC5spbMAWMBgrLvVvGqNwBg/v9UwAtxSt/FGyU
-	 T9KsVGgM48VVpgrt9HYfphE+25n7pWC9FTxSqt5YrVwFTGpz5vwmJCyn4Kyw0Fkm+o
-	 Mp+bbLWjcncgLGTEC32GSjaW7pROWNSMs0pYzwcUeHmiyR2/QpbfmHFuOOYuOzM6Nq
-	 2J0E/SUzCR1P7/ueMhZ1aSyNYV+0wpgQ9YvpDyyDddCVOlONnx213wxA5NLvx4Flpo
-	 OQMbWwHC6PEo4slCYRDf76Bhya7uwTXHEt0D5h1pV2ezcYQ9jPV59c2pQXl1vDvKeS
-	 Y02efsHVpXBZw==
-Received: by mercury (Postfix, from userid 1000)
-	id 9688210607D1; Tue, 23 Aug 2022 18:35:40 +0200 (CEST)
-Date: Tue, 23 Aug 2022 18:35:40 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, zhangqing@rock-chips.com,
-	zyw@rock-chips.com, jon.lin@rock-chips.com, heiko@sntech.de,
-	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
-	lee@kernel.org, Chris Morgan <macromorgan@hotmail.com>,
-	Maya Matuszczyk <maccraft123mc@gmail.com>
-Subject: Re: [PATCH v8 3/4] power: supply: Add charger driver for Rockchip
- RK817
-Message-ID: <20220823163540.dg2z7fngaqklejvx@mercury.elektranox.org>
-References: <20220808173809.11320-1-macroalpha82@gmail.com>
- <20220808173809.11320-4-macroalpha82@gmail.com>
+	id 1oQXaz-007gZU-Qx
+	for linux-rockchip@lists.infradead.org; Tue, 23 Aug 2022 17:21:47 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi [62.78.145.57])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id CEEE42B3;
+	Tue, 23 Aug 2022 19:21:40 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1661275301;
+	bh=uPq8ZZQ+OcZ1X7uRG6oWZhvCe2Tjho9kMr40zJBYIjE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=dhvikmst3EiiJO5J6hkjdYHQjACCvNBP9Xi8wpfQVfApTfTcsdU+6xRQNCpFR9Y41
+	 VfKtZF9kfJ76H1VZ9rBEE4sjz61M7ZZBjbaGdnDLAwnFF0xheiDjmCbQMg18YIfyyi
+	 IixVo0ojyO1hKLkGmvGWEO1eayJHYMS6Z0yH1UDI=
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: linux-media@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Florian Sylvestre <fsylvestre@baylibre.com>,
+	Paul Elder <paul.elder@ideasonboard.com>
+Subject: [PATCH v1.1 4/5] media: rkisp1: Use correct macro for gradient registers
+Date: Tue, 23 Aug 2022 20:21:36 +0300
+Message-Id: <20220823172136.9342-1-laurent.pinchart@ideasonboard.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220817021850.20460-5-laurent.pinchart@ideasonboard.com>
+References: <20220817021850.20460-5-laurent.pinchart@ideasonboard.com>
 MIME-Version: 1.0
-In-Reply-To: <20220808173809.11320-4-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_093548_769960_6340B5AF 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20220823_102146_069331_9FCE997C 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,104 +63,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4817417816452715904=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The rkisp1_lsc_config() function incorrectly uses the
+RKISP1_CIF_ISP_LSC_SECT_SIZE() macro for the gradient registers. Replace
+it with the correct macro, and rename it from
+RKISP1_CIF_ISP_LSC_GRAD_SIZE() to RKISP1_CIF_ISP_LSC_SECT_GRAD() as the
+corresponding registers store the gradients for each sector, not a size.
+This doesn't cause any functional change as the two macros are defined
+identically (the size and gradient registers store fields in the same
+number of bits at the same positions).
 
---===============4817417816452715904==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="k5vvuauyyxuzzv7f"
-Content-Disposition: inline
+Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+---
+Changes since v1:
 
+- Rename RKISP1_CIF_ISP_LSC_GRAD_SIZE to RKISP1_CIF_ISP_LSC_SECT_GRAD
+---
+ drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 4 ++--
+ drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h   | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
---k5vvuauyyxuzzv7f
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+index aa6efa4c6e9e..123c26fc1679 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
+@@ -334,7 +334,7 @@ static void rkisp1_lsc_config(struct rkisp1_params *params,
+ 		rkisp1_write(rkisp1, RKISP1_CIF_ISP_LSC_XSIZE(i), data);
+ 
+ 		/* program x grad tables */
+-		data = RKISP1_CIF_ISP_LSC_SECT_SIZE(arg->x_grad_tbl[i * 2],
++		data = RKISP1_CIF_ISP_LSC_SECT_GRAD(arg->x_grad_tbl[i * 2],
+ 						    arg->x_grad_tbl[i * 2 + 1]);
+ 		rkisp1_write(rkisp1, RKISP1_CIF_ISP_LSC_XGRAD(i), data);
+ 
+@@ -344,7 +344,7 @@ static void rkisp1_lsc_config(struct rkisp1_params *params,
+ 		rkisp1_write(rkisp1, RKISP1_CIF_ISP_LSC_YSIZE(i), data);
+ 
+ 		/* program y grad tables */
+-		data = RKISP1_CIF_ISP_LSC_SECT_SIZE(arg->y_grad_tbl[i * 2],
++		data = RKISP1_CIF_ISP_LSC_SECT_GRAD(arg->y_grad_tbl[i * 2],
+ 						    arg->y_grad_tbl[i * 2 + 1]);
+ 		rkisp1_write(rkisp1, RKISP1_CIF_ISP_LSC_YGRAD(i), data);
+ 	}
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+index 2ad24deedec8..39b2ac58196e 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
+@@ -619,7 +619,7 @@
+ 	(((v0) & 0x1FFF) | (((v1) & 0x1FFF) << 13))
+ #define RKISP1_CIF_ISP_LSC_SECT_SIZE(v0, v1)      \
+ 	(((v0) & 0xFFF) | (((v1) & 0xFFF) << 16))
+-#define RKISP1_CIF_ISP_LSC_GRAD_SIZE(v0, v1)      \
++#define RKISP1_CIF_ISP_LSC_SECT_GRAD(v0, v1)      \
+ 	(((v0) & 0xFFF) | (((v1) & 0xFFF) << 16))
+ 
+ /* LSC: ISP_LSC_TABLE_SEL */
+-- 
+Regards,
 
-Hi,
+Laurent Pinchart
 
-On Mon, Aug 08, 2022 at 12:38:08PM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
->=20
-> Add support for the Rockchip rk817 battery charger integrated into the
-> rk817 PMIC.
->=20
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
-> ---
-
-Looks mostly good. Just three things:
-
-> [...]
-> --- /dev/null
-> +++ b/drivers/power/supply/rk817_charger.c
-> @@ -0,0 +1,1151 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Charger Driver for Rockchip rk817
-> + *
-> + * Copyright (c) 2021
-
-The Copyright line is incomplete.
-
-> + *
-> + * Authors: Maya Matuszczyk <maccraft123mc@gmail.com>
-> + *	    Chris Morgan <macromorgan@hotmail.com>
-> + */
-> +
-> +#include <linux/mfd/rk808.h>
-> +#include <linux/irq.h>
-> +#include <linux/of_gpio.h>
-> [...]
-
-Why are you including of_gpio.h? You are not using any.
-
-> +	INIT_DELAYED_WORK(&charger->work, rk817_charging_monitor);
-> +	/* Get and populate the first set of values. */
-> +	schedule_delayed_work(&charger->work, 0);
-> [...]
-
-what happens with the delayed work when you remove the driver?
-Check for devm_delayed_work_autocancel().
-
-
--- Sebastian
-
---k5vvuauyyxuzzv7f
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmMFAdEACgkQ2O7X88g7
-+ppU0A//Yz5BcYSiP+zyEzc3W5m3O+PVqEUTr1SyNqEARs3Su6fNpDlNiXQonkya
-U4z59eDVQxQDPb3Am/KQucBJFy7stxk8yO5iRWhhth58Jw6RiEfaW/fwnRSQLjrY
-6o/vjCM3eqB0mHjdzEbA5pLHpBCWQuA2iBM8V+FjB7tMUH72xqn8ttrXRXc9NgFJ
-q2BVbhlfolxl2CkukIK1idKPOm0OyW48MIVygKkZL8BOXpjrryt9WeFDpmoqriLL
-noo4DBOXvBAE1qnh58qGAp1YANsHO9zK6DB7OydvIst2LDpn0nC94BPvSmDPr94R
-/GiRcK3FnNUcuYGg9uSy82EufO9p6zSKL37EN2Ly3DLVzyQ3r8f7KRUQGiksfx04
-bd+Z2oELZ2X9lLxnPE0Ti0YI7pElfnkB+IMhQi2mUIUSeFbhvmyyhbfrbLAIatII
-tfqYCLTJVHSl3iogbhOgXigROAs5qO5hBz/FESIxNDdlwTIjAsIVjzI0mfHN6uWf
-GsmA9xm05An72dT1QGQPR4ebZnKS0oCABwKfSYWtLruJqpvVM3S/jEF3tcgEogoJ
-QvNT4ExsjxI7tdjfu5P9f3tVKfAcl/p6gVtMJvn/rC4XeNAtarYI8Z1KXoy02Aq5
-iU8psfucnjtIDrwssc+d+hcF+v41sKS/QPA0zlVt6fp3FXfTPVM=
-=eosH
------END PGP SIGNATURE-----
-
---k5vvuauyyxuzzv7f--
-
-
---===============4817417816452715904==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4817417816452715904==--
-
