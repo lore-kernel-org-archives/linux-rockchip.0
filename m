@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26DD7C32772
-	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Aug 2022 12:46:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCF5DC32772
+	for <linux-rockchip@archiver.kernel.org>; Tue, 23 Aug 2022 12:46:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rfyKFZju8Em6sPzI5fTm92A/zf9Ff3DoLErC1lhdiLc=; b=f5f2J2rSu3Sqsq
-	cnr4y3mxTTxm3YentFOY1/zaw3lhgJfB+Ah4AEaiUKyNpf4JaT1Rw1/gYCov2fGI1jySbepRslDJO
-	fbqN5IPjcI/9Ok9YLDrsSG4d36e9IvVG0WwJUaDBvQtqf5Fu15rbwhzbTZYLnD3wJX7If5L4LEj+y
-	abzK+0jf437oDKhxYIAfZvAkX5/Db6sw9boe68g0C3SA+MEcMLyPr+s5hAbuf8ycgZLgYANZLza6R
-	kT5HfIkN9U/s0geg6bgtNg3+NuoN2BjENLiwyanqlkeONh4PlloVyOVo4A94ACPgqH5XjxGw9SEJi
-	BnDFGcPeXHwQnTn2GSiQ==;
+	List-Owner; bh=gEqYaB0knZY+MwMB6MVpdY/mVH1bIvjDy6N5w4SvUAw=; b=s55r/QzDRpzTQp
+	ucVtY8eqXsE+WYmHarxk8cgKsT4BoHrNFjtsR7yctIbRpwmqDGIqv4RrDO0qhVFXwK40ZZZWnMMos
+	dRfLfcWoQmaOODWTWlth4LfqOL/UyFmLOMR5hxCbZxODZRuxwPRZF6+0i2itSLacT1lePsPSGRjVI
+	hO9Zrcmc+HJZbv3lgh1AzY//kKhGMeGtGAv10OgQRuzBi2LCULFo7iQkRNY1QVtZ4m9f035WiQutJ
+	FX89C6zpGblMtL/wh6sCih9yUxhpuFAMtMqkcDmReP5EZEPDrrU9XhVVWlViVBlJscVShNvANWwPP
+	nxtD6SOfDvEdu7ye7vrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQTIb-0060WW-68; Tue, 23 Aug 2022 12:46:29 +0000
+	id 1oQTIg-0060ZT-UK; Tue, 23 Aug 2022 12:46:34 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQT9Y-005vqE-2D; Tue, 23 Aug 2022 12:37:11 +0000
+	id 1oQT9Y-005vpz-2E; Tue, 23 Aug 2022 12:37:11 +0000
 Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1oQT9Q-0004gV-EY; Tue, 23 Aug 2022 14:37:00 +0200
+	id 1oQT9Q-0004gV-4j; Tue, 23 Aug 2022 14:37:00 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Peter Geis <pgwipeout@gmail.com>,
 	Rob Herring <robh+dt@kernel.org>
 Cc: Heiko Stuebner <heiko@sntech.de>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Add analog audio output on quartz64-b
-Date: Tue, 23 Aug 2022 14:36:56 +0200
-Message-Id: <166125820548.1301371.13535238054179966253.b4-ty@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: Lower sd speed on quartz64-b
+Date: Tue, 23 Aug 2022 14:36:55 +0200
+Message-Id: <166125820548.1301371.1518743032133249224.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220721083301.3711-1-frattaroli.nicolas@gmail.com>
-References: <20220721083301.3711-1-frattaroli.nicolas@gmail.com>
+In-Reply-To: <20220721044307.48641-1-frattaroli.nicolas@gmail.com>
+References: <20220721044307.48641-1-frattaroli.nicolas@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220823_053708_274295_D499A560 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20220823_053708_169948_87EE111F 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,20 +65,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 21 Jul 2022 10:33:00 +0200, Nicolas Frattaroli wrote:
-> This adds the necessary device tree changes to enable analog
-> audio output on the PINE64 Quartz64 Model B with its RK809
-> codec.
+On Thu, 21 Jul 2022 06:43:06 +0200, Nicolas Frattaroli wrote:
+> The previously stated speed of sdr-104 is too high for the hardware
+> to reliably communicate with some fast SD cards.
 > 
-> The headphone detection pin is left out for now because I couldn't
-> get it to work and am not sure if it even matters, but for future
-> reference: It's pin GPIO4 RK_PC4, named HP_DET_L_GPIO4_C4 in the
-> schematic.
+> Lower this to sd-uhs-sdr50 to fix this.
+> 
+> Fixes: dcc8c66bef79 ("arm64: dts: rockchip: add Pine64 Quartz64-B device tree")
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Add analog audio output on quartz64-b
-      commit: db7ad41538439a3dcfebd738959c7526b4e7d528
+[1/1] arm64: dts: rockchip: Lower sd speed on quartz64-b
+      commit: 1ea90b2d293fd8b1f3377c9ed08364ff6f2a8562
 
 Best regards,
 -- 
