@@ -4,73 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A46BAC00140
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Aug 2022 10:18:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC919C00140
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Aug 2022 12:03:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/3aEP65T8DUQybcerpdy1Wib330QJJsZKVT1OQt9p6c=; b=CvuNHaOyntmF+h
-	J6OEpEvFr4w4u+hqZ+m29ETf/1subF7AQnf0loTVmZ9x0pnfL46jqQogC+6CiFcpre/L5gIaY3o81
-	wQhVBzAO7GKXCNMJ500flZY7OSNSZpOe0j5piHultTpnpNJJ7cCXp1LbHMB7NzFLX6btmb0Xg1HaV
-	an8iZKFVh6Lp9DGYjFRCz4PT5c4oYJepxpXK6oyoimL5afliFKJCROVK+IN3CBVWzUcN6GYBKiU2x
-	ygFe54Q11NnSsZoyMew/dyWDrP2kE/vK1HOb+5xyKk34mZPZo8iEp2AuKroVSEnKGUHOiJiYSZuUf
-	ODxU0akpA3GZR4EUQ2BQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4XizLDKpqHtrmiKasyAnaFiuNNfNhMp2dQgKpD1TQME=; b=Q0OOxs3hBr/pFjDHMo8ZxtWwhY
+	4SclkrnoWSDDUfPNXaMIFKAmqw2ZUeBw6Bk/JPqEoIiHfDkIaBwFONmFFvC6ZrNe32OViUsBnnxYT
+	gz7EprsFrE/rmDi27gSnl66OyeDfwwr3RuxBnZjtXyGyhMXbRlaveTR6pFMb0hs7SMPG/KUVKiN5W
+	/mIjO1EinbiN0+Xdi5KJ6t3Jho1Rpax6ruLxPJVtWhqy9t+gN07sGtXOD55z5E9mTAhrQvbZHJl12
+	XLkbrlQw4DfGgJeozAvGj/t+MvvS674Nom5z9HBk5Oes/fSUtzfJNONOiOYqQBb3a3IZ8gsXamyhR
+	Orb0Dgvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQnSZ-00C0C2-Jg; Wed, 24 Aug 2022 10:18:07 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1oQp6I-00CfRg-AN; Wed, 24 Aug 2022 12:03:14 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQnSO-00C07i-Na; Wed, 24 Aug 2022 10:17:58 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id z16so1365378wrh.10;
-        Wed, 24 Aug 2022 03:17:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=2rEDI8nneWR8uBhC0k6la2EvHD4yLzs+a+6fUoYoKU4=;
-        b=VFeU530PAmK3n65fcXn1z65tSUzwYLn85+ojxSycSOPVQcheykt616CE28AJr0U3SN
-         WEwvG4O8Wn+wPOXom3oZdoxlCbYU0rvZSTXRgr8Xn9jVyIc4dbpJrVE9sn2c0xkg9yE4
-         m72FqQyOrhyqyoY4JiFaZOhyOJH095QKXbX/jwHZzpMMGl23vDec+NOLToJ5lkCCTcbQ
-         bxnb/saWP3f2H5q2mDOY6tovIJc4bFcZ/u4UvTf4DiCXiun4CiMT1fB5sEI1EJA/tHxQ
-         ZONjdcHmDa3AnyGz3zLzKDdBmv85QfIdlr9xdYrPKcWJs4/KcjrejIuyx+1R33YoBCYm
-         vAOA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=2rEDI8nneWR8uBhC0k6la2EvHD4yLzs+a+6fUoYoKU4=;
-        b=wEiShzAEfaRos//VUea+KvL/uOsYV1wftGjLt757pDnOvbMDkLVH03a5wxnIH7Qy98
-         eCTSElv6CanLEAE2ENvV9YFGoffVhFBfaEELWErrW/DPtxjEFjL2zxk2SE2fuzmZ/ycZ
-         BYmJLcKYt1SHuRo2CnYFGhHYM9B3fMm3cCicv6orOPFpFw0YOHJ3GRNu95O+gAP2jDuj
-         CZVKhxnJrh2o09pH3dI0JAEGtI/yNhGlM1Ta9ek9yxaC5nPprvi8a4lSfTQDJsvrjPy8
-         I66TQbelarvTHxu3KX2ZoW4NeVh+gz+8xMFuW9x5XjTEhOUlRw0by5gj8U+5BgDv7tOJ
-         h4fQ==
-X-Gm-Message-State: ACgBeo1H901NcAMkIX06Thd/6t0DC+JqYDf4k9YYoADu+Ts1+LZsb2sG
-	HNwSofaWlgip2XzqkiSzeBixrmBIYMi94M25bbc=
-X-Google-Smtp-Source: AA6agR7sQ+Joxq+aq8uIl+CNG/GIrqr+nGL3cJhEBxurQU45bDdJBx8cY5FhIPu5261Cv1lHhcYULOg7B0jFQMr9xIA=
-X-Received: by 2002:a5d:45c1:0:b0:225:2803:e791 with SMTP id
- b1-20020a5d45c1000000b002252803e791mr15643183wrs.539.1661336270818; Wed, 24
- Aug 2022 03:17:50 -0700 (PDT)
+	id 1oQp6E-00CfN6-JG
+	for linux-rockchip@lists.infradead.org; Wed, 24 Aug 2022 12:03:12 +0000
+Message-ID: <8196e3a7-8ab7-0577-6557-12334ebf8a4b@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1661342584;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=v37ScZl081Z1xIVBiJ5FdZbzgYPvnHs8IdtyEy/iojI=;
+	b=X3S07cd/QLVtlFze9hXvVMkiSFI9aQ+cz8MqnQNv0gmcbyhGaemL8QESyblEzdTro7AufQ
+	JmzUke/bZU7IWa7omfzrzRp/47Ks5iPcvTW/vIc2Tv9OdFkAJypWEisWQDscxGTFg2wJlo
+	w3z5vpvP0OhJjxMhts3C3mLNOssXEgCzr7CCb7ffe+iEkPIRiYkbrhPxW1aRWhb4vTcDS2
+	8Wz4L3QIrA2J08rDU/rXWnY3NsuLx9W7WcddagHAyHIxOEuU7qhVn3L3ylLILECWgE/oHl
+	mIbg5kTah6bWHHgE8Sp0n/moVCRgS8Jrd6Ohp3yZBGSvPk0vhGtXabvanfKCmA==
+Date: Wed, 24 Aug 2022 14:03:02 +0200
 MIME-Version: 1.0
-References: <20220823144728.47068-1-pgwipeout@gmail.com> <86198a8a-96d4-5856-bc2d-44bf352c82fe@wolfvision.net>
-In-Reply-To: <86198a8a-96d4-5856-bc2d-44bf352c82fe@wolfvision.net>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Wed, 24 Aug 2022 12:17:39 +0200
-Message-ID: <CAMdYzYopzOJ2RtWtYgP3G4ESVMFhCqU3fOQq_kCc1g51ZDZ=bA@mail.gmail.com>
-Subject: Re: [PATCH v2] phy: rockchip-inno-usb2: Return zero after otg sync
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Heiko Stuebner <heiko@sntech.de>, Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, 
-	Samuel Holland <samuel@sholland.org>, Markus Reichl <m.reichl@fivetechno.de>, 
-	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, 
-	arm-mail-list <linux-arm-kernel@lists.infradead.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 0/2] drm/rockchip: dw_hdmi: Add 4k@30 support
+Content-Language: da-DK
+To: linux-rockchip@lists.infradead.org
+References: <20220822152017.1523679-1-s.hauer@pengutronix.de>
+ <ef70b8b7-c1ff-a6b9-077b-83ea48c66c24@wolfvision.net>
+ <20220824071022.GP17485@pengutronix.de>
+From: Dan Johansen <strit@manjaro.org>
+Organization: Manjaro ARM
+In-Reply-To: <20220824071022.GP17485@pengutronix.de>
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=strit@manjaro.org smtp.mailfrom=strit@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220824_031756_790638_8EFE37FD 
-X-CRM114-Status: GOOD (  23.83  )
+X-CRM114-CacheID: sfid-20220824_050311_154915_2EB8B61E 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,77 +65,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 24, 2022 at 7:33 AM Michael Riesch
-<michael.riesch@wolfvision.net> wrote:
->
-> Hi Peter,
->
-> On 8/23/22 16:47, Peter Geis wrote:
-> > The otg sync state patch reuses the ret variable, but fails to set it to
-> > zero after use. This leads to a situation when the otg port is in
-> > peripheral mode where the otg phy aborts halfway through setup.  It also
-> > fails to account for a failure to register the extcon notifier. Fix this
-> > by using our own variable and skipping otg sync in case of failure.
-> >
-> > Fixes: 8dc60f8da22f ("phy: rockchip-inno-usb2: Sync initial otg state")
-> >
-> > Reported-by: Markus Reichl <m.reichl@fivetechno.de>
-> > Reported-by: Michael Riesch <michael.riesch@wolfvision.net>
-> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> > Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
-> > Tested-by: Markus Reichl <m.reichl@fivetechno.de>
-> > ---
-> >  drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 7 ++++---
-> >  1 file changed, 4 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > index 0b1e9337ee8e..d579a22c61df 100644
-> > --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> > @@ -1124,7 +1124,7 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
-> >                                         struct rockchip_usb2phy_port *rport,
-> >                                         struct device_node *child_np)
-> >  {
-> > -     int ret;
-> > +     int ret, id;
-> >
-> >       rport->port_id = USB2PHY_PORT_OTG;
-> >       rport->port_cfg = &rphy->phy_cfg->port_cfgs[USB2PHY_PORT_OTG];
-> > @@ -1164,11 +1164,12 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
-> >                                       EXTCON_USB_HOST, &rport->event_nb);
-> >               if (ret)
->
-> This needs braces, right?
->
->         if (ret) {
-> >                       dev_err(rphy->dev, "register USB HOST notifier failed\n");
-> > +                     goto out;
->
->         }
->
-> With the braces the patch works as expected.
+Hi Sasha.
 
-Yup, thanks for that. I hate working without access to my hardware.
+Great to see work being done to enable HiDPI support in rockchip-drm.
 
+Would it be possible to add 2k/1440p too or is it included in this patch?
+
+Den 24.08.2022 kl. 09.10 skrev Sascha Hauer:
+> On Wed, Aug 24, 2022 at 07:43:03AM +0200, Michael Riesch wrote:
+>> Hi Sascha,
+>>
+>> Can you Cc: linux-rockchip list to get more feedback?
+> Yes, will do that next time.
 >
-> Thanks and best regards,
-> Michael
+>> On 8/22/22 17:20, Sascha Hauer wrote:
+>>> This series adds support for 4k@30 to the rockchip HDMI controller. This
+>>> has been tested on a rk3568 rock3a board. It should be possible to add
+>>> 4k@60 support the same way, but it doesn't work for me, so let's add
+>>> 4k@30 as a first step.
+>>>
+>>> Sascha
+>>>
+>>> Sascha Hauer (2):
+>>>    drm/rockchip: dw_hdmi: relax mode_valid hook
+>>>    drm/rockchip: dw_hdmi: Add support for 4k@30 resolution
+>> Great stuff, thanks!
+>>
+>> On a Radxa ROCK3 Model A with a HP 27f 4k monitor
+>>
+>> Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
+> Thanks
 >
-> >
-> >               if (!of_property_read_bool(rphy->dev->of_node, "extcon")) {
-> >                       /* do initial sync of usb state */
-> > -                     ret = property_enabled(rphy->grf, &rport->port_cfg->utmi_id);
-> > -                     extcon_set_state_sync(rphy->edev, EXTCON_USB_HOST, !ret);
-> > +                     id = property_enabled(rphy->grf, &rport->port_cfg->utmi_id);
-> > +                     extcon_set_state_sync(rphy->edev, EXTCON_USB_HOST, !id);
-> >               }
-> >       }
-> >
+> Sascha
+>
+-- 
+Kind regards
+*Dan Johansen*
+Project lead of the *Manjaro ARM* project
+Manjaro-ARM <https://manjaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
