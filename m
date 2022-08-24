@@ -4,85 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B51CC32796
-	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Aug 2022 14:58:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FACDC32796
+	for <linux-rockchip@archiver.kernel.org>; Wed, 24 Aug 2022 16:08:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M6f0CDS+zGxn3hVNt6RxGSAzQ3DWXG1ngA6BAtYqwME=; b=CYEr0SJ+5aDcly
-	pjSUVkg9QO/4W0C59pBYuQG5anM+dVkaj9mcpWcs0ag/g/gX4bc5RCrhis1SsdQq3pVXtG5iU21E5
-	34UBGJHhL4Pc0cBRtWy27iZHWWGfOWn3tVe+DAdCgu0IdxW9UjkXqvK4kb8OlOFzN+58Y8y3fI/b3
-	x91h0aS7ih0dJBAvNZnk3r6YBIoCq/TqYzuP2b34HccfevZKC+4LTtkwkKz2gxoaHyf5GTykkjhxo
-	JaL5zayJOG3CPhfZJ/WIMk2VoKAR+U5Z2bA8Avh459AE0Nyv3m2hc7cYshqS2TlHy7i1esmrTSI0m
-	8AZpWbH+Vj6DGM80oafA==;
+	List-Owner; bh=tz/8yH5W8ijCiV9ucD37oZ2HIfixNKaG6F4QBKvD9BQ=; b=UMTGtZYiQvi7Jz
+	OUCDuuyU6xTskU/teF3GHrH2G17zf/ezTi6DTmrpeGVT2klH/8UqEULrNhJZ+yswjgutMu5FK6ib/
+	vBisFKKqIBzc5N3hp36+0OAoDCXrVuXNioakWScGqYsgm+ZfJ4Uc6bsgIHIvRiATlPQ80vzgZSO2h
+	W0hci6fCSz8SIPNr9bpruDVf4wFwfqssmBrTScRiVCyKc6aW0Yid7ee9rVUZHlAwp3ZTEIqEvOPmI
+	MsvKkidipC/dMA2O/BBFMtcntYLkTPo2T19oeFT4NGRUjl82xmolck83VA7s80gJD8QpRKE0fKhRQ
+	U6I68AHpBa2qGoriPYYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQrpe-00DpSn-30; Wed, 24 Aug 2022 14:58:14 +0000
-Received: from mail-io1-xd2c.google.com ([2607:f8b0:4864:20::d2c])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oQrpS-00DpMn-Np
-	for linux-rockchip@lists.infradead.org; Wed, 24 Aug 2022 14:58:04 +0000
-Received: by mail-io1-xd2c.google.com with SMTP id r141so13561080iod.4
-        for <linux-rockchip@lists.infradead.org>; Wed, 24 Aug 2022 07:58:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc;
-        bh=yF4Z8Wba5KOhLWJ2hFirrTICWXMXcXiCQAsAVYho6bs=;
-        b=SDns1Nk4QoTPheeQ1bpwTTyzwsCPkpnhEUdDJ1mLOtNBX5aaBxoN/Pd1JSweF1nXog
-         DJd0OqK+z9SN3tXaoigWDHgRkIkvbEq+bygb3E91A/dOfk49qRSp1wuS3phar/YBrnz8
-         3SWwE/rsMfEFGfKz5ysQW9BzcVYkjdOGYHTV4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
-        bh=yF4Z8Wba5KOhLWJ2hFirrTICWXMXcXiCQAsAVYho6bs=;
-        b=WuU82xaUSIFFCHWQN0ky/vfahdRLHBunG9MyyN+7r49jf2ubfmwZNZv2IKXzUxERtH
-         4fAcLGZKkFgm/KbMUiBaiNMko+29s/ItQh4+ns70QhWs9INXxxD47k8IsKM8kf6dF++O
-         B4O4Qf2OlYYbkDj7ReGrYpQ3np+kARmN9JbV4+YJYusGMzo2/yqfdinVJMDZZ2Xcxngj
-         4nPhEqHB/+Wn6ZUW96V6xS3bbb27fZByYivnSKSuaQ9O53PgAUUCGmx9YKQoJ6dQyvaH
-         wkZf2tpTgLka9s6Thi8rgLzQ8rcvNdBD/r/4kjFY87bsSu27U/ijsSxafES+xTi+kvl7
-         smGw==
-X-Gm-Message-State: ACgBeo2Go9hcPSO6GlFdz3hDNRGnmSVKa0ieHBfklhkfiggqeg3dPGCR
-	bM3N21K3rW8nqA2Tvgjbapfm8svVl9Wqn6+y7/I=
-X-Google-Smtp-Source: AA6agR5UF6CdTiE1Z77jRAhtyod05aAUGKxRYsoLpuAWUusjmyLY5UVr8eKWFMq59WDbv24YnLsOHw==
-X-Received: by 2002:a05:6638:1450:b0:346:8a18:737c with SMTP id l16-20020a056638145000b003468a18737cmr14838295jad.149.1661353079110;
-        Wed, 24 Aug 2022 07:57:59 -0700 (PDT)
-Received: from mail-il1-f181.google.com (mail-il1-f181.google.com. [209.85.166.181])
-        by smtp.gmail.com with ESMTPSA id cb13-20020a0566381b0d00b00349fc533abesm1467997jab.123.2022.08.24.07.57.58
-        for <linux-rockchip@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 24 Aug 2022 07:57:58 -0700 (PDT)
-Received: by mail-il1-f181.google.com with SMTP id h8so4991660ili.11
-        for <linux-rockchip@lists.infradead.org>; Wed, 24 Aug 2022 07:57:58 -0700 (PDT)
-X-Received: by 2002:a92:60e:0:b0:2e8:f08b:de04 with SMTP id
- x14-20020a92060e000000b002e8f08bde04mr2131199ilg.177.1661353077650; Wed, 24
- Aug 2022 07:57:57 -0700 (PDT)
+	id 1oQsvE-00EHbi-GI; Wed, 24 Aug 2022 16:08:04 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oQsvB-00EHYT-Ki
+	for linux-rockchip@lists.infradead.org; Wed, 24 Aug 2022 16:08:03 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 91ED6106F;
+	Wed, 24 Aug 2022 09:08:01 -0700 (PDT)
+Received: from [10.57.15.180] (unknown [10.57.15.180])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 661923FAF5;
+	Wed, 24 Aug 2022 09:07:56 -0700 (PDT)
+Message-ID: <a279a697-6960-c517-8984-335aa207126a@arm.com>
+Date: Wed, 24 Aug 2022 17:07:50 +0100
 MIME-Version: 1.0
-References: <20220822074139.3810-1-jensenhuang@friendlyarm.com>
- <23552842.6Emhk5qWAg@diego> <CAD=FV=W-ajJDfYcP3P8Jyk_KgsUAbdTtmwiNXqJ=Ab2ojgrUGw@mail.gmail.com>
- <CAMpZ1qEe7xFr+XaXsS_hWDLnGGA8PfzQiToOjY1N_1ctyQ+KxA@mail.gmail.com>
-In-Reply-To: <CAMpZ1qEe7xFr+XaXsS_hWDLnGGA8PfzQiToOjY1N_1ctyQ+KxA@mail.gmail.com>
-From: Doug Anderson <dianders@chromium.org>
-Date: Wed, 24 Aug 2022 07:57:44 -0700
-X-Gmail-Original-Message-ID: <CAD=FV=U-=2GpQTb0N1p3Qe2TAb=JhyZJw2V8T-qbLs5TYhW7qA@mail.gmail.com>
-Message-ID: <CAD=FV=U-=2GpQTb0N1p3Qe2TAb=JhyZJw2V8T-qbLs5TYhW7qA@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: add enable-strobe-pulldown to emmc
- phy on rk3399
-To: Jensen Huang <jensenhuang@friendlyarm.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Vinod Koul <vkoul@kernel.org>, 
-	Chris Ruehl <chris.ruehl@gtsys.com.hk>, Brian Norris <briannorris@chromium.org>, 
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, 
-	Linux ARM <linux-arm-kernel@lists.infradead.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
+ Thunderbird/102.1.2
+Subject: Re: [PATCH 1/2] drm/rockchip: dw_hdmi: relax mode_valid hook
+Content-Language: en-GB
+To: Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org
+Cc: Michael Riesch <michael.riesch@wolfvision.net>,
+ Sandy Huang <hjc@rock-chips.com>, kernel@pengutronix.de,
+ linux-rockchip@lists.infradead.org
+References: <20220822152017.1523679-1-s.hauer@pengutronix.de>
+ <20220822152017.1523679-2-s.hauer@pengutronix.de>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20220822152017.1523679-2-s.hauer@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220824_075802_825916_A784159F 
-X-CRM114-Status: GOOD (  28.57  )
+X-CRM114-CacheID: sfid-20220824_090801_788197_49D50CA9 
+X-CRM114-Status: GOOD (  21.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,50 +60,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpPbiBUdWUsIEF1ZyAyMywgMjAyMiBhdCA4OjExIFBNIEplbnNlbiBIdWFuZwo8amVuc2Vu
-aHVhbmdAZnJpZW5kbHlhcm0uY29tPiB3cm90ZToKPgo+IEhpLAo+Cj4gU29ycnkgZm9yIHNlbmRp
-bmcgYW4gZW1haWwgaW4gSFRNTCBmb3JtYXQuCj4KPiBJIHJlYWxpemVkIHRoYXQgb25seSBzb21l
-IGRldmljZXMgbWF5IGJlIGFmZmVjdGVkLCBzbyBJIGNvbnNpZGVyZWQKPiBtb2RpZnlpbmcgcmsz
-Mzk5LW5hbm9waTQuZHRzaSBvbmx5LAo+IGJ1dCBvdGhlciBib2FyZHMgd2l0aG91dCBleHRlcm5h
-bCBwdWxsLWRvd24gc2hvdWxkIHN0aWxsIG5lZWQgdGhpcyBwYXRjaC4KCkkgZ3Vlc3MgdGhlIG90
-aGVyIGFsdGVybmF0aXZlIHdvdWxkIGJlIHRvIGNoYW5nZSBob3cgdGhlIGR0IHByb3BlcnR5Cndv
-cmtzLiBZb3UgY291bGQgc2F5OgoKMS4gSWYgYGVuYWJsZS1zdHJvYmUtcHVsbGRvd25gIGlzIHNl
-dCB0aGVuIGVuYWJsZSB0aGUgc3Ryb2JlIHB1bGxkb3duLgoKMi4gSWYgYGVuYWJsZS1zdHJvYmUt
-cHVsbGRvd25gIGlzIG5vdCBzZXQgdGhlbiBkb24ndCB0b3VjaCB0aGUgcGluIGluCnRoZSBrZXJu
-ZWwuCgozLiBJZiBzb21lb25lIGxhdGVyIG5lZWRzIHRvIGV4cGxpY2l0bHkgZGlzYWJsZSB0aGUg
-c3Ryb2JlIHB1bGxkb3duCnRoZXkgY291bGQgYWRkIGEgbmV3IHByb3BlcnR5IGxpa2UgYGRpc2Fi
-bGUtc3Ryb2JlLXB1bGxkb3duYC4KCgpPYnZpb3VzbHkgdGhlcmUgYXJlIHRyYWRlb2ZmcyBiZXR3
-ZWVuIHRoYXQgYW5kIHdoYXQgeW91J3ZlIGRvbmUgYW5kCkknbSBoYXBweSB0byBsZXQgb3RoZXJz
-IG1ha2UgdGhlIGNhbGwgb2Ygd2hpY2ggdGhleSdkIHByZWZlci4KCgo+IEJSLAo+IEplbnNlbgo+
-Cj4gT24gVHVlLCBBdWcgMjMsIDIwMjIgYXQgMTA6MTMgUE0gRG91ZyBBbmRlcnNvbiA8ZGlhbmRl
-cnNAY2hyb21pdW0ub3JnPiB3cm90ZToKPiA+Cj4gPiBIaSwKPiA+Cj4gPiBPbiBUdWUsIEF1ZyAy
-MywgMjAyMiBhdCA0OjUzIEFNIEhlaWtvIFN0w7xibmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3Rl
-Ogo+ID4gPgo+ID4gPiBBbSBNb250YWcsIDIyLiBBdWd1c3QgMjAyMiwgMDk6NDE6MzkgQ0VTVCBz
-Y2hyaWViIEplbnNlbiBIdWFuZzoKPiA+ID4gPiBJbnRlcm5hbCBwdWxsLWRvd24gZm9yIHN0cm9i
-ZSBsaW5lIChHUkZfRU1NQ1BIWV9DT04yWzldKSB3YXMgZGlzYWJsZWQKPiA+ID4gPiBieSBjb21t
-aXQgOGI1YzJiNDViOGYwLCB3aGljaCBjYXVzZXMgSS9PIGVycm9yIGluIEhTNDAwIG1vZGUuCj4g
-PiA+ID4KPiA+ID4gPiBUZXN0ZWQgb24gTmFub1BDLVQ0Lgo+ID4gPiA+Cj4gPiA+ID4gRml4ZXM6
-IDhiNWMyYjQ1YjhmMCAoInBoeTogcm9ja2NoaXA6IHNldCBwdWxsZG93biBmb3Igc3Ryb2JlIGxp
-bmUgaW4gZHRzIikKPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBKZW5zZW4gSHVhbmcgPGplbnNlbmh1
-YW5nQGZyaWVuZGx5YXJtLmNvbT4KPiA+ID4KPiA+ID4gb2ssIHNvIHRoaXMgbG9va3MgbGlrZSBp
-dCByZXN0b3JlcyBwcmV2aW91cyBmdW5jdGlvbmFsaXR5Lgo+ID4gPgo+ID4gPiBJJ20ganVzdCB3
-b25kZXJpbmcgYXMgdGhlICJvZmZlbmRpbmciIHBhdGNoIGlzIGZyb20gMjAyMCwgd2h5IHRoaXMK
-PiA+ID4gb25seSB0dXJucyB1cCBub3cuIEFueSBpZGVhcz8KPiA+Cj4gPiBBaCwgSSBzZWUuIFNv
-IGJlZm9yZSB0aGUgb2ZmZW5kaW5nIHBhdGNoIHdlIHVzZWQgdG8ganVzdCBsZWF2ZSB0aGUKPiA+
-IHB1bGwgc3RhdGUgYXQgd2hhdGV2ZXIgdGhlIGRlZmF1bHQgd2FzIHdoZW4gdGhlIGtlcm5lbCB3
-YXMgYm9vdGVkLgo+ID4gQWZ0ZXIgdGhlIG9mZmVuZGluZyBwYXRjaCB3ZSBjaG9zZSBhIGRlZmF1
-bHQuCj4gPgo+ID4gT24ga2V2aW4gSSBzZWUgYW4gZXh0ZXJuYWwgcHVsbCBkb3duIG9uIHRoaXMg
-bGluZS4gRW5hYmxpbmcgYm90aCB0aGUKPiA+IGludGVybmFsIGFuZCBleHRlcm5hbCBpcyBwcm9i
-YWJseSBub3QgYSBodWdlIGRlYWwsIGl0J2xsIGp1c3QgYWZmZWN0Cj4gPiB0aGUgc3RyZW5ndGgg
-b2YgdGhlIHB1bGwuCj4gPgo+ID4gT24gYm9iIEkgX3RoaW5rXyB0aGUgZXh0ZXJuYWwgcHVsbCBk
-b3duIGlzIGFsc28gc3R1ZmZlZC4KPiA+Cj4gPiAuLi5zbyBJIGd1ZXNzIHRoYXQgd291bGQgZXhw
-bGFpbiB3aHkgaXQgZGlkbid0IGNhdXNlIGEgcHJvYmxlbSBmb3IgYXQKPiA+IGxlYXN0IHRob3Nl
-IHR3byBib2FyZHM/Cj4gPgo+ID4gLURvdWcKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
-Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On 2022-08-22 16:20, Sascha Hauer wrote:
+> The driver checks if the pixel clock of the given mode matches an entry
+> in the mpll config table. The frequencies in the mpll table are meant as
+> a frequency range up to which the entry works, not as a frequency that
+> must match the pixel clock. Return MODE_OK when the pixelclock is
+> smaller than one of the mpll frequencies to allow for more display
+> resolutions.
+
+Has the issue been fixed that this table is also used to validate modes 
+on RK3328, which doesn't even *have* the Synopsys phy? Last time I 
+looked, that tended to lead to complete display breakage when the proper 
+phy driver later decides it doesn't like a pixel clock that mode_valid 
+already said was OK.
+
+The more general concern is that these known-good clock rates are good, 
+but others may not be even when nominally supported, which I suspect is 
+the dirty secret of why it was implemented this way to begin with. I 
+would really really love this patch so my RK3399 board can drive my 
+1920x1200 monitor at native resolution, but on the other hand my RK3288 
+box generates such a crap 154MHz clock for that mode that - unless 
+that's been improved in the meantime too - patch #2 might be almost be 
+considered a regression if it means such a setup would start defaulting 
+to an unusably glitchy display instead of falling back to 1920x1080 
+which does at least work perfectly (even if the slightly squished aspect 
+ratio is ugly).
+
+Thanks,
+Robin.
+
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
+> ---
+>   drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> index c14f888938688..b6b662dabedc6 100644
+> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+> @@ -251,7 +251,7 @@ dw_hdmi_rockchip_mode_valid(struct dw_hdmi *hdmi, void *data,
+>   	int i;
+>   
+>   	for (i = 0; mpll_cfg[i].mpixelclock != (~0UL); i++) {
+> -		if (pclk == mpll_cfg[i].mpixelclock) {
+> +		if (pclk <= mpll_cfg[i].mpixelclock) {
+>   			valid = true;
+>   			break;
+>   		}
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
