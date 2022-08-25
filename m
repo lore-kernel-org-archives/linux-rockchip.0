@@ -4,82 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D2EDC28D13
-	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Aug 2022 12:54:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC1DCC28D13
+	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Aug 2022 13:32:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GbQoFWE/OyNw592PhNXSex205/SEyizH4eNUYJWUtSk=; b=Nu1+ba5TM3l2lg
-	ipxJkOpjnTs9hjAm3B4jdClSpmQnB3VtH0kSnkth6qIMKTZ0ryCg/zi5Rg7OkWAIMj2WTBCYeixv6
-	SU9O38Elknj6zRjOIVO4rUYECYa67CgPDJioJkk48wwrPhf7wF7jSXrebpauaZzRpdQoUtIjJfnkm
-	0R2nCeW5FPNJse70ekrlZsHjjSuGVus2bRLsTLlymcm5HMIxg3WmkXgli0NTuaRaHff5jdCDaJIfU
-	S5knkZN35yo2gac52HCwuO85ImmZoWCjqNkUXhAZG6JgpuoFkGIDjgEd3rs9/HjVfs3dVJiImXBrW
-	cxaaCc2Gp07m303gboJQ==;
+	List-Owner; bh=SvUGjanwDqF4eQPTUdEynfq8SeHzhmpFpZRhKFt1LJ0=; b=FEmZyoAZFJinme
+	azgDstYpUYpB8puNGG9qLAoO59j2nQF8XIzhnGIoAVKPWUZ5Nfk9MGvPj6yBQ7fFSTJUuOJZx3LUa
+	3fwiiwbGbPIwUXdjshLRvTFezzkRfvVhaGhL0ppdyt4BN9ffAfLoyjKg+izAe7gH0LAKssN6XMIAI
+	MdEXCEpqNCc0hKBDGRy/v1SW4pfVBPH90K5mAccd1p/dA50or0bku9H+V7JMIyeKJ/Z5aPV1XykzJ
+	93hcMyMY54LEx8W2WDoQ5rjMLPZKPp0spTZA2pK5o+DkPKwIprSZf+6S4GdNk5KnuylrPiV+4SGt0
+	dGqVsE8SqoFimpCTVrWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRCNE-00E4JI-DQ; Thu, 25 Aug 2022 12:54:16 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1oRCy0-00EpaZ-Ny; Thu, 25 Aug 2022 13:32:16 +0000
+Received: from mx0b-001ae601.pphosted.com ([67.231.152.168])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRCNB-00E4Ei-Q2
-	for linux-rockchip@lists.infradead.org; Thu, 25 Aug 2022 12:54:15 +0000
-Received: by mail-lf1-x134.google.com with SMTP id d8so15714602lfq.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 25 Aug 2022 05:54:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id:from:to:cc;
-        bh=jxnsfnBGG5VdB1lVE8fH5s5A95cPwiONxnAdHX4wr9E=;
-        b=klwh1VXiA5wDmk/YAhXp+jeLzscceYd/KnNYYrIaoLUP/n4pB+7vjTNlVP87H84vtg
-         omexKvtVBswab1oB7uhQlVWE68k12W1KTU6UfZa7gZdvHZF1uGq7S/vUQnF3kEIMW5O1
-         NCr4/kn51J0eFpYYS6S6QY/BVwGt7LfHsuy2XcYbtnXbm1uZlLFjhFpbX9X4uQVUw4Zb
-         OreVCVPUkr2d2z8xnkj0CEoXwKzkxfgDMFb1plzMTvKvRcihZpvnJLv0uleSvXgJ2FHt
-         66SQA+Sd1ZEXoo5wOwVwD+dGBy82BvemWfw+4dINocqZhxXi1Y6KO3F+0CnNhsSfl+9R
-         GKsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:subject:from:references:cc:to
-         :content-language:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc;
-        bh=jxnsfnBGG5VdB1lVE8fH5s5A95cPwiONxnAdHX4wr9E=;
-        b=bEGa/CH+C40Uf6o9Nu25X3QkURRQqXs1EWK7VfoozJM4mRkxkrY3iNlBzlmRPCypo1
-         PtIFZsohR6OgUaz9+H8dZ+NskR+CfIhLWVgWloszI8ZIC2+FLfZYL9Q6VKUdbauYVuw4
-         1BCxwxpROMzpFu2Eu1wWWsTGQTj+HijgMjaLYspbsTVYObTpui7LYqhrF3M10JTskjKN
-         kFzfxveV7+Kk4QzSS6lDzMf3AH2ak4veyrUkctfhCkaBwrAJ++pOvU3RBsaVoX6lki5y
-         uI7LD6Sv1EEphI8/huvkI9gQAOVhbAeDyxGaNd1xKF6R8dR2IZ7meZiBOE/pRBXtJRuQ
-         faCw==
-X-Gm-Message-State: ACgBeo1hMgTDzs511tfDeK7Vqyu5wupE00xY+C1BD56KRTbcaIjShLEf
-	k85tlb5U2t7nQVtMOgPoUNU=
-X-Google-Smtp-Source: AA6agR66kK7+dDe6VMrnf/smOFnmyCX9KsjAqm/QN0PsFuXucy+qetKfTjxkAsbjQFftWAmWKT7PaA==
-X-Received: by 2002:a05:6512:c11:b0:492:f0b1:1628 with SMTP id z17-20020a0565120c1100b00492f0b11628mr1052778lfu.682.1661432048414;
-        Thu, 25 Aug 2022 05:54:08 -0700 (PDT)
-Received: from [172.16.194.42] ([213.255.186.46])
-        by smtp.gmail.com with ESMTPSA id x10-20020a056512078a00b0048a757d1303sm477008lfr.217.2022.08.25.05.54.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 25 Aug 2022 05:54:07 -0700 (PDT)
-Message-ID: <66b99ce4-752a-17e7-3213-26a898abd4a8@gmail.com>
-Date: Thu, 25 Aug 2022 15:54:06 +0300
+	id 1oRCvp-00EoLU-5g; Thu, 25 Aug 2022 13:30:03 +0000
+Received: from pps.filterd (m0077474.ppops.net [127.0.0.1])
+	by mx0b-001ae601.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 27P6MixA004380;
+	Thu, 25 Aug 2022 08:29:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cirrus.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=PODMain02222019;
+ bh=gJwGJFOg+PHJxQ8GqbYk+5x4TFGmNBMycRNhoucedzk=;
+ b=dOsfC2wk+NU/FTwxvM+o+MtI+cRTYtIl7fNr+UKOqHpdjYsklEgJFYb1uYciDDXGH6nN
+ NyIZeYrogjNXqTE6CKdPKtSvHYkGYY14DXr6VXHIFV/OufVxEVY2UM+q7QcKkgXxyHlo
+ ioEUtAmWpOqDzw1gg+n6AQLdXvEDLZnNxb++2gdEoXtSZtLecuT8JT2QYcSoSYCAlRbV
+ 92trEPxPVQitk4PiZBknHGFrBFQKU2+rh9uyb6YBErw2Zpa9W8tMS/515/9eMKVQAwId
+ rRy4Mvfs4aBKFEEK59HutkLBtc0Tfvpk0Sr980Gk7blSvvt0LsK+d52gUo8opnSrTcmd sQ== 
+Received: from ediex01.ad.cirrus.com ([84.19.233.68])
+	by mx0b-001ae601.pphosted.com (PPS) with ESMTPS id 3j5a3ra2a6-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 25 Aug 2022 08:29:41 -0500
+Received: from ediex01.ad.cirrus.com (198.61.84.80) by ediex01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1118.9; Thu, 25 Aug
+ 2022 08:29:39 -0500
+Received: from ediswmail.ad.cirrus.com (198.61.86.93) by ediex01.ad.cirrus.com
+ (198.61.84.80) with Microsoft SMTP Server id 15.2.1118.9 via Frontend
+ Transport; Thu, 25 Aug 2022 08:29:39 -0500
+Received: from ediswmail.ad.cirrus.com (ediswmail.ad.cirrus.com [198.61.86.93])
+	by ediswmail.ad.cirrus.com (Postfix) with ESMTP id 13DC3B0E;
+	Thu, 25 Aug 2022 13:29:39 +0000 (UTC)
+Date: Thu, 25 Aug 2022 13:29:39 +0000
+From: Charles Keepax <ckeepax@opensource.cirrus.com>
+To: Rob Herring <robh@kernel.org>
+CC: Lee Jones <lee@kernel.org>,
+        Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>,
+        Chen-Yu Tsai <wens@csie.org>,
+        Jernej
+ Skrabec <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>,
+        Richard Fitzgerald <rf@opensource.cirrus.com>,
+        Tim Harvey
+	<tharvey@gateworks.com>,
+        Robert Jones <rjones@gateworks.com>,
+        Chanwoo Choi
+	<cw00.choi@samsung.com>,
+        Bartlomiej Zolnierkiewicz
+	<b.zolnierkie@samsung.com>,
+        Heiko Stuebner <heiko@sntech.de>,
+        Fabrice Gasnier
+	<fabrice.gasnier@foss.st.com>,
+        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue <alexandre.torgue@foss.st.com>,
+        Maxime Ripard
+	<mripard@kernel.org>, - <patches@opensource.cirrus.com>,
+        Steve Twiss
+	<stwiss.opensource@diasemi.com>,
+        Chris Zhong <zyw@rock-chips.com>,
+        Zhang Qing
+	<zhangqing@rock-chips.com>,
+        Alistair Francis <alistair@alistair23.me>,
+        Amelie
+ Delaunay <amelie.delaunay@foss.st.com>,
+        Linus Walleij
+	<linus.walleij@linaro.org>,
+        Renner Berthing <kernel@esmil.dk>,
+        Krzysztof
+ Kozlowski <krzk@kernel.org>, <devicetree@vger.kernel.org>,
+        <linux-arm-kernel@lists.infradead.org>, <linux-sunxi@lists.linux.dev>,
+        <linux-kernel@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
+        <linux-stm32@st-md-mailman.stormreply.com>
+Subject: Re: [PATCH] dt-bindings: mfd: Add missing
+ (unevaluated|additional)Properties on child nodes
+Message-ID: <20220825132939.GO92394@ediswmail.ad.cirrus.com>
+References: <20220823145649.3118479-4-robh@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.12.0
-Content-Language: en-US
-To: Chris Morgan <macroalpha82@gmail.com>, linux-rockchip@lists.infradead.org
-Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
- zhangqing@rock-chips.com, zyw@rock-chips.com, jon.lin@rock-chips.com,
- maccraft123mc@gmail.com, sre@kernel.org, heiko@sntech.de,
- krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, lee@kernel.org,
- Chris Morgan <macromorgan@hotmail.com>
-References: <20220823193015.10229-1-macroalpha82@gmail.com>
- <20220823193015.10229-4-macroalpha82@gmail.com>
-From: Matti Vaittinen <mazziesaccount@gmail.com>
-Subject: Re: [PATCH V9 3/4] power: supply: Add charger driver for Rockchip
- RK817
-In-Reply-To: <20220823193015.10229-4-macroalpha82@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20220823145649.3118479-4-robh@kernel.org>
+User-Agent: Mutt/1.5.21 (2010-09-15)
+X-Proofpoint-GUID: sT2u7Xs6q1g-zrXUkym3ve5E5LQDcjOO
+X-Proofpoint-ORIG-GUID: sT2u7Xs6q1g-zrXUkym3ve5E5LQDcjOO
+X-Proofpoint-Spam-Reason: safe
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_055413_881591_6D6F2507 
-X-CRM114-Status: GOOD (  23.02  )
+X-CRM114-CacheID: sfid-20220825_063001_474154_C348EF01 
+X-CRM114-Status: GOOD (  14.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,112 +116,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 8/23/22 22:30, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+On Tue, Aug 23, 2022 at 09:56:35AM -0500, Rob Herring wrote:
+> In order to ensure only documented properties are present, node schemas
+> must have unevaluatedProperties or additionalProperties set to false
+> (typically).
 > 
-> Add support for the Rockchip rk817 battery charger integrated into the
-> rk817 PMIC.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
+> Signed-off-by: Rob Herring <robh@kernel.org>
 > ---
->   drivers/power/supply/Kconfig         |    6 +
->   drivers/power/supply/Makefile        |    1 +
->   drivers/power/supply/rk817_charger.c | 1157 ++++++++++++++++++++++++++
->   3 files changed, 1164 insertions(+)
->   create mode 100644 drivers/power/supply/rk817_charger.c
-> 
-> +
-> +static void rk817_charging_monitor(struct work_struct *work)
-> +{
-> +	struct rk817_charger *charger;
-> +
-> +	charger = container_of(work, struct rk817_charger, work.work);
-> +
-> +	rk817_read_props(charger);
-> +
-> +	/* Run every 8 seconds like the BSP driver did. */
-> +	queue_delayed_work(system_wq, &charger->work, msecs_to_jiffies(8000));
-> +}
 
-I really think we would benefit from some more framework code which 
-could handle the periodic polling tasks and the coulomb counter drift 
-corrections when battery is full/relaxed. I think I might revive the 
-simple-gauge patch series...
+Acked-by: Charles Keepax <ckeepax@opensource.cirrus.com>
 
-> +
-> +static int rk817_charger_probe(struct platform_device *pdev)
-> +{
-> +
-> +	charger->sleep_filter_current_ua = of_value;
-> +
-> +	charger->bat_ps = devm_power_supply_register(&pdev->dev,
-> +						     &rk817_bat_desc, &pscfg);
-> +
-> +	charger->chg_ps = devm_power_supply_register(&pdev->dev,
-> +						     &rk817_chg_desc, &pscfg);
-
-Hmm. I think I should respin the patch which added interface for getting 
-the battery info w/o psy-device. Now we need to take into account the 
-situation where the psy-core accesses the driver after the registration 
-- and prior filling the battery details from the battery node (below) :/
-
-> +
-> +	if (IS_ERR(charger->chg_ps))
-> +		return dev_err_probe(dev, -EINVAL,
-> +				     "Battery failed to probe\n");
-> +
-> +	if (IS_ERR(charger->chg_ps))
-> +		return dev_err_probe(dev, -EINVAL,
-> +				     "Charger failed to probe\n");
-> +
-> +	ret = power_supply_get_battery_info(charger->bat_ps,
-> +					    &bat_info);
-> +	if (ret) {
-> +		return dev_err_probe(dev, ret,
-> +				     "Unable to get battery info: %d\n", ret);
-> +	} > +
-> +	if ((!bat_info->charge_full_design_uah) ||
-> +	    (!bat_info->voltage_min_design_uv) ||
-> +	    (!bat_info->voltage_max_design_uv) ||
-> +	    (!bat_info->constant_charge_voltage_max_uv) ||
-> +	    (!bat_info->constant_charge_current_max_ua) ||
-> +	    (!bat_info->charge_term_current_ua)) {
-> +		return dev_err_probe(dev, -EINVAL,
-> +				     "Required battery info missing.\n");
-> +	}
-
-Just a question - should the values be compared to -EINVAL (I think the 
-power_supply_get_battery_info() did internally initialize many of the 
-fields to -EINVAL and not to 0?). Maybe I am wrong...
-
-> +
-> +	charger->bat_charge_full_design_uah = bat_info->charge_full_design_uah;
-> +	charger->bat_voltage_min_design_uv = bat_info->voltage_min_design_uv;
-> +	charger->bat_voltage_max_design_uv = bat_info->voltage_max_design_uv;
-> +
-
-Generally, I did _really_ like the proper commenting/documenting of the 
-driver. In my eyes this looked like one nice piece of a driver.
-
-When the error checking of values returned by the 
-power_supply_get_battery_info() is checked - FWIW:
-Reviewed-By: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
-
-Yours
-   -- Matti
-
--- 
-Matti Vaittinen
-Linux kernel developer at ROHM Semiconductors
-Oulu Finland
-
-~~ When things go utterly wrong vim users can always type :help! ~~
+Thanks,
+Charles
 
 _______________________________________________
 Linux-rockchip mailing list
