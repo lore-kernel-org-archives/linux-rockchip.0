@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D60BECAA27
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8BABECAA2C
 	for <linux-rockchip@archiver.kernel.org>; Thu, 25 Aug 2022 19:40:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,33 +12,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kxASUbwsNYC54gy/4+OEBTMFWEsn3MwQcFDXg9IXWyo=; b=Wn8bcqTil/MLP/
-	7/65Qw388puG+aL0vvUV2sTZm5DmR5pSg59lL0jjZnsuAhBCjWKrV4U/Yl/qOV3WgX52mJ4B3wJq0
-	iXgjvtXOJ0qu1ea2NCTpWhDZlYv0w1MD43M0xtaAh4Jdb1jvzhmNLY++g4BIQsn1qPhRv//+ZiEzw
-	pYVj1kPAA8pdywFtaaxYoHbCEcn/d6ERiq198K11XF49IiwwVg8frMbZXxEGoxR+3cjqRJj8jwqt2
-	EoHUZz9PdRcO9gnZaJ+jXMRW3B17/N9K3LuZsH3W3zDGxhdwIb/FOU+hQW/8zDnW1dp2Ec4/BtFvm
-	SFx+6hBPGfj6JUKII3Fw==;
+	List-Owner; bh=wa201J0EvxHDswX0b+S1peZwh3VzcUE9geXft8Nxdb0=; b=np5Izr4IJ23nBE
+	fbJOmxZ5W65yOP4KFSKralh78EhCf8sXV2BIITPnwO4DoFUa42ahab2vhunE/IdhM92avREQ0jXqb
+	X5sP2JGn777WbkQr9UnxQvZmubEX9r+BXiuEQ7xxEbVVUGzFECL+9sLulxhIkWXXeaoTY2vujfXWz
+	odYbof+cUG8vmuX1KeqUkBOK5kvlCHKhmlXKNLYaNXoPZyVD7ZXbTlfbPcteKLmwatXN8DYYwvItZ
+	eiNHJ6gA6YB862rlJB6zzelMDKJXr/8HOYNSidEIotPWL/lTZHFbwKARL3msECRDynd1TguVaX3f9
+	Ni6tpFv/erAGoLjQS3jg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRIiS-002nAK-7j; Thu, 25 Aug 2022 19:40:36 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
+	id 1oRIiT-002nBF-P1; Thu, 25 Aug 2022 19:40:37 +0000
+Received: from mxout3.routing.net ([2a03:2900:1:a::8])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRIgx-002mGf-64; Thu, 25 Aug 2022 19:39:06 +0000
+	id 1oRIgx-002mH2-Uq; Thu, 25 Aug 2022 19:39:06 +0000
 Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
-	by mxout1.routing.net (Postfix) with ESMTP id ED46F4075D;
-	Thu, 25 Aug 2022 19:38:59 +0000 (UTC)
+	by mxout3.routing.net (Postfix) with ESMTP id CD4306261C;
+	Thu, 25 Aug 2022 19:39:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
 	s=20200217; t=1661456340;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=h6FvBDGJ4ENDKARTuI+hxFdo2LgCLW63BKWghaHNeAk=;
-	b=er+amFnVmjd0hO2EeMBCdjlpjRCDvdrJgmWED0HVitcNtxyWVE7ADsX/W5+HLjinYHVOR/
-	cL4g2cvuVZfGZ+269zI7Xk58Z64okwxNeMm8cjr4bncGpuLgS+ND6iefgfvN4vQcbnNjUF
-	GioUaPq2AkKACuMY3SjaYgCSjUPlPX4=
+	bh=PQynK8vX4UUco6n9XqG4i+p2gcsTMBlSQC8hGYn+Bbs=;
+	b=XbMt58BWU+895QhiTJkCR40/1m/ipzkqSYsu9wA2ZD3UsbVYzIJkAJD5AeG6oHz5EA8b1/
+	0tvUEwTUfyrao/+sZ7DAg9lBXQA1r+3wyJMCLfUJQxGvo/xCYNjuz6bZHPXfmLpoDY/UdB
+	XCTjx3885mWOd0njZy70egPBqjMcGMk=
 Received: from frank-G5.. (fttx-pool-80.245.75.185.bambit.de [80.245.75.185])
-	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 0ED46403A9;
+	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id E8B4140353;
 	Thu, 25 Aug 2022 19:38:59 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: linux-rockchip@lists.infradead.org
@@ -59,17 +59,17 @@ Cc: Frank Wunderlich <frank-w@public-files.de>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v5 4/5] arm64: dts: rockchip: rk3568: Add PCIe v3 nodes
-Date: Thu, 25 Aug 2022 21:38:35 +0200
-Message-Id: <20220825193836.54262-5-linux@fw-web.de>
+Subject: [PATCH v5 5/5] arm64: dts: rockchip: Add PCIe v3 nodes to BPI-R2-Pro
+Date: Thu, 25 Aug 2022 21:38:36 +0200
+Message-Id: <20220825193836.54262-6-linux@fw-web.de>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220825193836.54262-1-linux@fw-web.de>
 References: <20220825193836.54262-1-linux@fw-web.de>
 MIME-Version: 1.0
-X-Mail-ID: 6f5cf5b8-cdf1-4e4c-989f-806817eb6869
+X-Mail-ID: e310ba6b-b5fd-4900-87e7-e545edccfe8a
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220825_123903_693492_480F58B1 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20220825_123904_308896_B12C15DC 
+X-CRM114-Status: GOOD (  13.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,158 +88,188 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add nodes to rk356x devicetree to support PCIe v3.
+Add Nodes to Bananapi-R2-Pro board to support PCIe v3 and
+set PCIe related regulators to always on.
 
-Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+Suggested-by: Peter Geis <pgwipeout@gmail.com>
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
+v5:
+- rebase on 6.0-rc1
+- add pinctrl for pcie
+- fix ngff pwr_en_h gpio for hw ref 1.1
+
 v4:
-- update pcie3 reg/ranges
+- change u8 lane-map to u32 data-lanes
 
 v3:
-- fix from Peter: change bus-range and msi-map, msi-map needs
-  to start from 0x0
+- squash lane-map over bifurcation property
+- add comment which slot is M2 and which one if mPCIe
+- fixes from Peter:
+  - drop regulator-always-on/regulator-boot-on from regulators
+  - increase startup-delay-us for regulators
+  - set phy-mode on PCIe3-phy
+  - add num-lanes to PCIe overrides
+  - add usb node for to PCIe/m2
+  - move lane-map from PCIe controller to PCIe-phy
 
 v2:
-- change to compatible with soc-part
-- change rockchip,bifurcation to vendor unspecific bifurcation
+- underscores in nodenames
+- rockchip,bifurcation to vendor unspecific bifurcation
+- fix trailing space
 ---
- arch/arm64/boot/dts/rockchip/rk3568.dtsi | 122 +++++++++++++++++++++++
- 1 file changed, 122 insertions(+)
+ .../boot/dts/rockchip/rk3568-bpi-r2-pro.dts   | 117 ++++++++++++++++++
+ 1 file changed, 117 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-index 2bdf8c7e9765..ba67b58f05b7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -42,6 +42,128 @@ qos_sata0: qos@fe190200 {
- 		reg = <0x0 0xfe190200 0x0 0x20>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+index 93d383b8be87..40b90c052634 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+@@ -86,6 +86,66 @@ vcc5v0_sys: vcc5v0-sys {
+ 		vin-supply = <&dc_12v>;
  	};
  
-+	pcie30_phy_grf: syscon@fdcb8000 {
-+		compatible = "rockchip,rk3568-pcie3-phy-grf", "syscon";
-+		reg = <0x0 0xfdcb8000 0x0 0x10000>;
++	pcie30_avdd0v9: pcie30-avdd0v9 {
++		compatible = "regulator-fixed";
++		regulator-name = "pcie30_avdd0v9";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <900000>;
++		regulator-max-microvolt = <900000>;
++		vin-supply = <&vcc3v3_sys>;
 +	};
 +
-+	pcie30phy: phy@fe8c0000 {
-+		compatible = "rockchip,rk3568-pcie3-phy";
-+		reg = <0x0 0xfe8c0000 0x0 0x20000>;
-+		#phy-cells = <0>;
-+		clocks = <&pmucru CLK_PCIE30PHY_REF_M>, <&pmucru CLK_PCIE30PHY_REF_N>,
-+			 <&cru PCLK_PCIE30PHY>;
-+		clock-names = "refclk_m", "refclk_n", "pclk";
-+		resets = <&cru SRST_PCIE30PHY>;
-+		reset-names = "phy";
-+		rockchip,phy-grf = <&pcie30_phy_grf>;
-+		status = "disabled";
++	pcie30_avdd1v8: pcie30-avdd1v8 {
++		compatible = "regulator-fixed";
++		regulator-name = "pcie30_avdd1v8";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		vin-supply = <&vcc3v3_sys>;
 +	};
 +
-+	pcie3x1: pcie@fe270000 {
-+		compatible = "rockchip,rk3568-pcie";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x0 0xf>;
-+		clocks = <&cru ACLK_PCIE30X1_MST>, <&cru ACLK_PCIE30X1_SLV>,
-+			 <&cru ACLK_PCIE30X1_DBI>, <&cru PCLK_PCIE30X1>,
-+			 <&cru CLK_PCIE30X1_AUX_NDFT>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk", "aux";
-+		device_type = "pci";
-+		interrupts = <GIC_SPI 160 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 159 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 158 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 157 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 156 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie3x1_intc 0>,
-+				<0 0 0 2 &pcie3x1_intc 1>,
-+				<0 0 0 3 &pcie3x1_intc 2>,
-+				<0 0 0 4 &pcie3x1_intc 3>;
-+		linux,pci-domain = <1>;
-+		num-ib-windows = <6>;
-+		num-ob-windows = <2>;
-+		max-link-speed = <3>;
-+		msi-map = <0x0 &gic 0x1000 0x1000>;
-+		num-lanes = <1>;
-+		phys = <&pcie30phy>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3568_PD_PIPE>;
-+		reg = <0x3 0xc0400000 0x0 0x00400000>,
-+		      <0x0 0xfe270000 0x0 0x00010000>,
-+		      <0x3 0x7f000000 0x0 0x01000000>;
-+		ranges = <0x01000000 0x0 0x3ef00000 0x3 0x7ef00000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0x00000000 0x3 0x40000000 0x0 0x3ef00000>;
-+		reg-names = "dbi", "apb", "config";
-+		resets = <&cru SRST_PCIE30X1_POWERUP>;
-+		reset-names = "pipe";
-+		/* bifurcation; lane1 when using 1+1 */
-+		status = "disabled";
++	/* pi6c pcie clock generator feeds both ports */
++	vcc3v3_pi6c_05: vcc3v3-pi6c-05-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc3v3_pcie";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		enable-active-high;
++		gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
++		startup-delay-us = <200000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
 +
-+		pcie3x1_intc: legacy-interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 157 IRQ_TYPE_EDGE_RISING>;
++	/* actually fed by vcc3v3_sys, dependent on pi6c clock generator */
++	vcc3v3_minipcie: vcc3v3-minipcie-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc3v3_minipcie";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		enable-active-high;
++		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&minipcie_enable_h>;
++		startup-delay-us = <50000>;
++		vin-supply = <&vcc3v3_pi6c_05>;
++	};
++
++	/* actually fed by vcc3v3_sys, dependent on pi6c clock generator */
++	vcc3v3_ngff: vcc3v3-ngff-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc3v3_ngff";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		enable-active-high;
++		gpio = <&gpio0 RK_PB7 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&ngffpcie_enable_h>;
++		startup-delay-us = <50000>;
++		vin-supply = <&vcc3v3_pi6c_05>;
++	};
++
+ 	vcc5v0_usb: vcc5v0_usb {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc5v0_usb";
+@@ -513,6 +573,32 @@ rgmii_phy1: ethernet-phy@0 {
+ 	};
+ };
+ 
++&pcie30phy {
++	data-lanes = <1 2>;
++	phy-supply = <&vcc3v3_pi6c_05>;
++	status = "okay";
++};
++
++&pcie3x1 {
++	/* M.2 slot */
++	num-lanes = <1>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&ngffpcie_reset_h>;
++	reset-gpios = <&gpio3 RK_PA1 GPIO_ACTIVE_HIGH>;
++	vpcie3v3-supply = <&vcc3v3_ngff>;
++	status = "okay";
++};
++
++&pcie3x2 {
++	/* mPCIe slot */
++	num-lanes = <1>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&minipcie_reset_h>;
++	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
++	vpcie3v3-supply = <&vcc3v3_minipcie>;
++	status = "okay";
++};
++
+ &pinctrl {
+ 	leds {
+ 		blue_led_pin: blue-led-pin {
+@@ -529,6 +615,24 @@ hym8563_int: hym8563-int {
+ 		};
+ 	};
+ 
++	pcie {
++		minipcie_enable_h: minipcie-enable-h {
++			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none_drv_level_5>;
++		};
++
++		ngffpcie_enable_h: ngffpcie-enable-h {
++			rockchip,pins = <0 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none_drv_level_5>;
++		};
++
++		minipcie_reset_h: minipcie-reset-h {
++			rockchip,pins = <2 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none_drv_level_5>;
++		};
++
++		ngffpcie_reset_h: ngffpcie-reset-h {
++			rockchip,pins = <3 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none_drv_level_5>;
 +		};
 +	};
 +
-+	pcie3x2: pcie@fe280000 {
-+		compatible = "rockchip,rk3568-pcie";
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		bus-range = <0x0 0xf>;
-+		clocks = <&cru ACLK_PCIE30X2_MST>, <&cru ACLK_PCIE30X2_SLV>,
-+			 <&cru ACLK_PCIE30X2_DBI>, <&cru PCLK_PCIE30X2>,
-+			 <&cru CLK_PCIE30X2_AUX_NDFT>;
-+		clock-names = "aclk_mst", "aclk_slv",
-+			      "aclk_dbi", "pclk", "aux";
-+		device_type = "pci";
-+		interrupts = <GIC_SPI 165 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 164 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 163 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 162 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 161 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "sys", "pmc", "msg", "legacy", "err";
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie3x2_intc 0>,
-+				<0 0 0 2 &pcie3x2_intc 1>,
-+				<0 0 0 3 &pcie3x2_intc 2>,
-+				<0 0 0 4 &pcie3x2_intc 3>;
-+		linux,pci-domain = <2>;
-+		num-ib-windows = <6>;
-+		num-ob-windows = <2>;
-+		max-link-speed = <3>;
-+		msi-map = <0x0 &gic 0x2000 0x1000>;
-+		num-lanes = <2>;
-+		phys = <&pcie30phy>;
-+		phy-names = "pcie-phy";
-+		power-domains = <&power RK3568_PD_PIPE>;
-+		reg = <0x3 0xc0800000 0x0 0x00400000>,
-+		      <0x0 0xfe280000 0x0 0x00010000>,
-+		      <0x3 0xbf000000 0x0 0x01000000>;
-+		ranges = <0x01000000 0x0 0x3ef00000 0x3 0xbef00000 0x0 0x00100000>,
-+			 <0x02000000 0x0 0x00000000 0x3 0x80000000 0x0 0x3ef00000>;
-+		reg-names = "dbi", "apb", "config";
-+		resets = <&cru SRST_PCIE30X2_POWERUP>;
-+		reset-names = "pipe";
-+		/* bifurcation; lane0 when using 1+1 */
-+		status = "disabled";
+ 	pmic {
+ 		pmic_int: pmic_int {
+ 			rockchip,pins =
+@@ -708,6 +812,19 @@ &usb2phy0_otg {
+ 	status = "okay";
+ };
+ 
++&usb2phy1 {
++	/* USB for PCIe/M2 */
++	status = "okay";
++};
 +
-+		pcie3x2_intc: legacy-interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+			interrupt-parent = <&gic>;
-+			interrupts = <GIC_SPI 162 IRQ_TYPE_EDGE_RISING>;
-+		};
-+	};
++&usb2phy1_host {
++	status = "okay";
++};
 +
- 	gmac0: ethernet@fe2a0000 {
- 		compatible = "rockchip,rk3568-gmac", "snps,dwmac-4.20a";
- 		reg = <0x0 0xfe2a0000 0x0 0x10000>;
++&usb2phy1_otg {
++	status = "okay";
++};
++
+ &vop {
+ 	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
+ 	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
 -- 
 2.34.1
 
