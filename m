@@ -4,76 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E07CDECAAA3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Aug 2022 08:54:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E5E5ECAAA3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 26 Aug 2022 12:04:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Uzh+XjHeKYlEukDSA5xjhwlUXZ4AEevTZdjJRqJo0HU=; b=DNNBYmA4pGS0r2
-	VRx4SYGn0nXNO7152AYDG+Mrt0A/dpirqkaacpvyJbvewRXk4lewJLE+eLq3kiHygaygUswhdbVRF
-	WvGA7TCjUBmoSgOkHdffZmUcff0zR9JloFqOLS6daO4nCMie+D2mzmDEdKPT75BcXR0VnwsWAIBLI
-	IBz/j8UIBVaBb1T24JTI1Dj80i9x46NC4Kojljj4ZZwcOLUoSbD1neRM0OGnpUX3ZAiJJIyQbsipH
-	niktgu4vkeagB4Lt6PoI7SnhswhwaHyIUKMke6BxWePEXDgKgsmYeKlPy/p/CBPTTOZlZx5BhdR/B
-	IcgnuKdrKTz+4723Ye+A==;
+	List-Owner; bh=U3XzO2EuKrWd1jJfYJ1gKNe+z98bzMXyxgPlsp8xI6M=; b=YHmpMQuxJdnu7o
+	tnJUWFvb/T3Q9zXduN9Zo31IXGo/lxsn6doOzv8cDKQ76mF4Boy48/1K+bDhqG35rVeB9eqkkdW6J
+	Fr3DnkaFmMIApuF9iFFIOQy/VLKzrJ1MT+G30ndyAz8pv94c9fjE6uFXjj/rJHVfOBCpghuvVzrCN
+	9rQ7P1FAuWgpOnETKzRP4SwTiA6Zbxqojx725KdPKH2eRgWd+S7BAU9yuN3elPMMJafyhzoRK9vDU
+	erXUtdkeEXIcnsmrTG7Mu/SXjif0N4P4Bqblp8mfE2+14sqK9U3Qn1bOcFdNfPptt2/2RNWiBu2Oe
+	JuhqV6Zhylaai1nDDzCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRV6i-00HSNt-HJ; Fri, 26 Aug 2022 08:54:28 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1oRY4A-002KSj-RH; Fri, 26 Aug 2022 12:04:02 +0000
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRV6b-00HSB3-B4
-	for linux-rockchip@lists.infradead.org; Fri, 26 Aug 2022 08:54:27 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id u9so1908863ejy.5
-        for <linux-rockchip@lists.infradead.org>; Fri, 26 Aug 2022 01:54:21 -0700 (PDT)
+	id 1oRY46-002KLm-Um
+	for linux-rockchip@lists.infradead.org; Fri, 26 Aug 2022 12:04:01 +0000
+Received: by mail-yw1-x112b.google.com with SMTP id 00721157ae682-334dc616f86so30209567b3.8
+        for <linux-rockchip@lists.infradead.org>; Fri, 26 Aug 2022 05:03:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=WalmlB4EN49W8PL0fcaiWMZot+zjYgZWStfQtsL0AgI=;
-        b=qwkHN+LuWi6f574jTt2roEdWyygA2QfKiSCTrbp87K7G4JVLFh0lgVm1CRPbtGqYAx
-         9nKM+5zJeJjT9k3UnxaN4OJ+5a+3CpddlFNzxa0o5GKFBmI+xbUI3AaErHI/H1nwEXwW
-         CsKz/cVEuHZowhCwHv6zBhWpbipqrfwh9Y1l5qlvI1VflxZCkteZf4wHWf2DxOr+trQA
-         yZyBu5WWHGbzz0pwWdAEi/ij4SNC5C4lfUiis6LB39sHk9DXV0L/zz9D6WKcGnjRvl2C
-         jzl7VQ1yIFwcl0/HgwVMBz5QIUqXkWWBlNJ1K4BC3O0Kwh8g7geFPUGgb04GZum/8bZf
-         7azA==
+        d=friendlyarm-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc;
+        bh=nMtNIpyaxV6n6y1j4kQGb3c6ARKMgnzuDhHNiwEVBA4=;
+        b=NDXiZwcPZjtmeIncwlMtPlhsL6rDiS/IDxaxVsoPMFZbAprw6sE4IhTH1pd7ZBiU8n
+         Lz+K/SwbUm2CzgbeGFBJ4zLa/SMhAKc70eTfAi9+XBUGZ3DIkJUrmn6yMll46vjB0C6v
+         vvp14qIMvKqsiLCGAfO4mGTHJqQOk8t9A+Sdg1RFmsPnJKfYd/L20bU5Q3mTb/sWqyeD
+         VnY2tjHPxu7AntPtHTerHp2KDD6id6NEpy6yuKLhuiY+GHebX1xP6F5ripEBeRvOPnf0
+         a5Zg2dgJPOPSdBlPgKXMZN60iV52WsjLYLX/F7C2pwCxIPfe75Ff2khcY/rmRoTeLgbM
+         +Q+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=WalmlB4EN49W8PL0fcaiWMZot+zjYgZWStfQtsL0AgI=;
-        b=68jgafqT+3prb6/sFu4GmQhHp8RaPdlwBNIjOR70YknocDIBfyduLs8blSGpfUaYjl
-         p2wJDZEbtAn7O2JVgP5uEH4dqcnNTY5sbWldqDe/IDdNb3iPg54W1bCaGHXYOzJ7WeZN
-         F8J19scoQPFqE2AyjQCMnxJh8qqEQFYEuqlYizVKHyihzQeWNvCppc2xsLzymMzgVvEH
-         nv4ELjRxi7myKX4eHYqke6IUioeduCn8cYBxcXXRFVbfOEg3WVCduaAqy1GfsBxK9EMr
-         4Ibt8WCLskAGp5aZFnid5nKIUGMMs5IARe5lsoWxRBFGKZx8vLrjtSdewUaIyZb7VlNJ
-         0fXg==
-X-Gm-Message-State: ACgBeo119NTEzriL+r28FbLzQaKJ4qQCLaD6y9yezQHTC6whg1RVegTz
-	yiij9EZt3t6NolMAdGTlsrq8df1d72e+idOBBAOWhg==
-X-Google-Smtp-Source: AA6agR5mY4IzTZnOBmdMG5ApfDuP/zrM1AZzzp4ayXmEtVjtONhAK+SU1czh4Zr9AJXwYjKlSbIxw+414mLWAXkPXlY=
-X-Received: by 2002:a17:906:478f:b0:73d:7919:b23 with SMTP id
- cw15-20020a170906478f00b0073d79190b23mr4509164ejc.690.1661504059817; Fri, 26
- Aug 2022 01:54:19 -0700 (PDT)
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc;
+        bh=nMtNIpyaxV6n6y1j4kQGb3c6ARKMgnzuDhHNiwEVBA4=;
+        b=gQm+Hqi8Vt4jPozDBRkibldWqPY843PS666tkxYWm6tLsegCZVpHUzVlwB9u7wBDqT
+         OL6djXT3gnlJa6gp9IMQSgqZJ7yWC63xQkl8BKAaMLvZ6IpqBTWReKDeigFnDGunq4Lj
+         kRNIkWW96qU4gLmD4kykCAhwKMn+72CUzs7/QmXvgtZFjD0k8MuwXVbTpkYm+IW8tvBn
+         KXl6OThoe07Jx83mbAFJDhd4Rhv55OqbRlGoOsmvvwJ33QX70l+Ngnq9cpqbsLnz+UAQ
+         nm7SHh1XE8ub/srYx3vJplJb2XchQk3UFBX0Dpx3dOUPVHVIizdPzmtm+QYyknzIbrWu
+         XOpw==
+X-Gm-Message-State: ACgBeo0sfF4AFXGv+SWYeIe+E0xWCcli1kfASFZPOkO85+hnMZogS4SC
+	RXUV8/UwlX+h8TZZaJKmXNpFxK6Ij2gFpLnxPPNuaCNthyJRJ7h3
+X-Google-Smtp-Source: AA6agR6GAz4sMztYMnrEfA1yl8CfSLqn+NtlwlcSGb20UhZtyE2nH6eK1+0G+qYfDcSJubGiroR8mCp+hNugAhCXgrI=
+X-Received: by 2002:a0d:ea90:0:b0:33d:faad:db54 with SMTP id
+ t138-20020a0dea90000000b0033dfaaddb54mr2214939ywe.116.1661515434826; Fri, 26
+ Aug 2022 05:03:54 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220820095933.20234-1-jeffy.chen@rock-chips.com>
- <20220820095933.20234-2-jeffy.chen@rock-chips.com> <CAD=FV=X0qJ2OC1SrAmhSQ5YeKEwvsSCbfVGPh457YYEuPCbRtg@mail.gmail.com>
- <5cb0a457-b667-76e5-d383-6e93457d5d12@rock-chips.com>
-In-Reply-To: <5cb0a457-b667-76e5-d383-6e93457d5d12@rock-chips.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 26 Aug 2022 10:54:08 +0200
-Message-ID: <CACRpkdY1jQH+-o6y84w0WtJT1erRnJzCcg0jjgRHVDUw4q97QQ@mail.gmail.com>
-Subject: Re: [PATCH 2/2] gpio/rockchip: Toggle edge trigger mode after acking
-To: Chen Jeffy <jeffy.chen@rock-chips.com>
-Cc: Doug Anderson <dianders@chromium.org>, Heiko Stuebner <heiko@sntech.de>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Bartosz Golaszewski <brgl@bgdev.pl>, 
-	LKML <linux-kernel@vger.kernel.org>, 
-	"open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+References: <20220822074139.3810-1-jensenhuang@friendlyarm.com>
+ <23552842.6Emhk5qWAg@diego> <CAD=FV=W-ajJDfYcP3P8Jyk_KgsUAbdTtmwiNXqJ=Ab2ojgrUGw@mail.gmail.com>
+ <CAMpZ1qEe7xFr+XaXsS_hWDLnGGA8PfzQiToOjY1N_1ctyQ+KxA@mail.gmail.com> <CAD=FV=U-=2GpQTb0N1p3Qe2TAb=JhyZJw2V8T-qbLs5TYhW7qA@mail.gmail.com>
+In-Reply-To: <CAD=FV=U-=2GpQTb0N1p3Qe2TAb=JhyZJw2V8T-qbLs5TYhW7qA@mail.gmail.com>
+From: Jensen Huang <jensenhuang@friendlyarm.com>
+Date: Fri, 26 Aug 2022 20:03:43 +0800
+Message-ID: <CAMpZ1qGya8zr-QJZHY4OqEg0NLo_db6ttnf6Ai2NHdUL1+6qBw@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: add enable-strobe-pulldown to emmc
+ phy on rk3399
+To: Doug Anderson <dianders@chromium.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+	Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Vinod Koul <vkoul@kernel.org>, 
+	Chris Ruehl <chris.ruehl@gtsys.com.hk>, Brian Norris <briannorris@chromium.org>, 
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, 
 	Linux ARM <linux-arm-kernel@lists.infradead.org>, 
-	Brian Norris <briannorris@chromium.org>
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220826_015421_447440_D22A5BE5 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20220826_050359_267882_4374D579 
+X-CRM114-Status: GOOD (  31.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,45 +87,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 23, 2022 at 4:50 AM Chen Jeffy <jeffy.chen@rock-chips.com> wrote:
-
-> The thing is, we are currently toggling the trigger mode to make sure it
-> matches the current GPIO level (e.g. level low -> rising edge mode),
-> than ack it in gpio IRQ handler.
-
-Yes this is an old trick, I don't know if I invented it again for Linux in
-commit cc890cd78acd7ab03442907d354b6af34e973cb3
-in 2011, surely the trick must be well known.
-
-Back then I did it like this:
-
-+       val = readl(U300_PIN_REG(offset, icr));
-+       /* Set mode depending on state */
-+       if (u300_gpio_get(&gpio->chip, offset)) {
-+               /* High now, let's trigger on falling edge next then */
-+               writel(val & ~U300_PIN_BIT(offset), U300_PIN_REG(offset, icr));
-+               dev_dbg(gpio->dev, "next IRQ on falling edge on pin %d\n",
-+                       offset);
-+       } else {
-+               /* Low now, let's trigger on rising edge next then */
-+               writel(val | U300_PIN_BIT(offset), U300_PIN_REG(offset, icr));
-+               dev_dbg(gpio->dev, "next IRQ on rising edge on pin %d\n",
-+                       offset);
-+       }
-
-Notice that I read the current level of the raw input to decide what the next
-trigger should be. The Rockchip driver does not do this, maybe that works
-better?
-
-Yours,
-Linus Walleij
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpUaGFua3MhCkkgdW5kZXJzdGFuZCB0aGF0IHRoaXMgcGF0Y2ggZG9lcyBwb3RlbnRpYWxs
+eSBhZmZlY3QgYm9hcmRzIHdpdGgKZXh0ZXJuYWwgcHVsbCBkb3duLgpUbyBhdm9pZCB0aGlzLCBJ
+IHdpbGwgbW92ZSBgZW5hYmxlLXN0cm9iZS1wdWxsZG93bmAgdG8KcmszMzk5LW5hbm9waTQuZHRz
+aSBhbmQgc2VuZCBwYXRjaCB2Mi4KCgpCUiwKSmVuc2VuCgpPbiBXZWQsIEF1ZyAyNCwgMjAyMiBh
+dCAxMDo1OCBQTSBEb3VnIEFuZGVyc29uIDxkaWFuZGVyc0BjaHJvbWl1bS5vcmc+IHdyb3RlOgo+
+Cj4gSGksCj4KPiBPbiBUdWUsIEF1ZyAyMywgMjAyMiBhdCA4OjExIFBNIEplbnNlbiBIdWFuZwo+
+IDxqZW5zZW5odWFuZ0BmcmllbmRseWFybS5jb20+IHdyb3RlOgo+ID4KPiA+IEhpLAo+ID4KPiA+
+IFNvcnJ5IGZvciBzZW5kaW5nIGFuIGVtYWlsIGluIEhUTUwgZm9ybWF0Lgo+ID4KPiA+IEkgcmVh
+bGl6ZWQgdGhhdCBvbmx5IHNvbWUgZGV2aWNlcyBtYXkgYmUgYWZmZWN0ZWQsIHNvIEkgY29uc2lk
+ZXJlZAo+ID4gbW9kaWZ5aW5nIHJrMzM5OS1uYW5vcGk0LmR0c2kgb25seSwKPiA+IGJ1dCBvdGhl
+ciBib2FyZHMgd2l0aG91dCBleHRlcm5hbCBwdWxsLWRvd24gc2hvdWxkIHN0aWxsIG5lZWQgdGhp
+cyBwYXRjaC4KPgo+IEkgZ3Vlc3MgdGhlIG90aGVyIGFsdGVybmF0aXZlIHdvdWxkIGJlIHRvIGNo
+YW5nZSBob3cgdGhlIGR0IHByb3BlcnR5Cj4gd29ya3MuIFlvdSBjb3VsZCBzYXk6Cj4KPiAxLiBJ
+ZiBgZW5hYmxlLXN0cm9iZS1wdWxsZG93bmAgaXMgc2V0IHRoZW4gZW5hYmxlIHRoZSBzdHJvYmUg
+cHVsbGRvd24uCj4KPiAyLiBJZiBgZW5hYmxlLXN0cm9iZS1wdWxsZG93bmAgaXMgbm90IHNldCB0
+aGVuIGRvbid0IHRvdWNoIHRoZSBwaW4gaW4KPiB0aGUga2VybmVsLgo+Cj4gMy4gSWYgc29tZW9u
+ZSBsYXRlciBuZWVkcyB0byBleHBsaWNpdGx5IGRpc2FibGUgdGhlIHN0cm9iZSBwdWxsZG93bgo+
+IHRoZXkgY291bGQgYWRkIGEgbmV3IHByb3BlcnR5IGxpa2UgYGRpc2FibGUtc3Ryb2JlLXB1bGxk
+b3duYC4KPgo+Cj4gT2J2aW91c2x5IHRoZXJlIGFyZSB0cmFkZW9mZnMgYmV0d2VlbiB0aGF0IGFu
+ZCB3aGF0IHlvdSd2ZSBkb25lIGFuZAo+IEknbSBoYXBweSB0byBsZXQgb3RoZXJzIG1ha2UgdGhl
+IGNhbGwgb2Ygd2hpY2ggdGhleSdkIHByZWZlci4KPgo+Cj4gPiBCUiwKPiA+IEplbnNlbgo+ID4K
+PiA+IE9uIFR1ZSwgQXVnIDIzLCAyMDIyIGF0IDEwOjEzIFBNIERvdWcgQW5kZXJzb24gPGRpYW5k
+ZXJzQGNocm9taXVtLm9yZz4gd3JvdGU6Cj4gPiA+Cj4gPiA+IEhpLAo+ID4gPgo+ID4gPiBPbiBU
+dWUsIEF1ZyAyMywgMjAyMiBhdCA0OjUzIEFNIEhlaWtvIFN0w7xibmVyIDxoZWlrb0BzbnRlY2gu
+ZGU+IHdyb3RlOgo+ID4gPiA+Cj4gPiA+ID4gQW0gTW9udGFnLCAyMi4gQXVndXN0IDIwMjIsIDA5
+OjQxOjM5IENFU1Qgc2NocmllYiBKZW5zZW4gSHVhbmc6Cj4gPiA+ID4gPiBJbnRlcm5hbCBwdWxs
+LWRvd24gZm9yIHN0cm9iZSBsaW5lIChHUkZfRU1NQ1BIWV9DT04yWzldKSB3YXMgZGlzYWJsZWQK
+PiA+ID4gPiA+IGJ5IGNvbW1pdCA4YjVjMmI0NWI4ZjAsIHdoaWNoIGNhdXNlcyBJL08gZXJyb3Ig
+aW4gSFM0MDAgbW9kZS4KPiA+ID4gPiA+Cj4gPiA+ID4gPiBUZXN0ZWQgb24gTmFub1BDLVQ0Lgo+
+ID4gPiA+ID4KPiA+ID4gPiA+IEZpeGVzOiA4YjVjMmI0NWI4ZjAgKCJwaHk6IHJvY2tjaGlwOiBz
+ZXQgcHVsbGRvd24gZm9yIHN0cm9iZSBsaW5lIGluIGR0cyIpCj4gPiA+ID4gPiBTaWduZWQtb2Zm
+LWJ5OiBKZW5zZW4gSHVhbmcgPGplbnNlbmh1YW5nQGZyaWVuZGx5YXJtLmNvbT4KPiA+ID4gPgo+
+ID4gPiA+IG9rLCBzbyB0aGlzIGxvb2tzIGxpa2UgaXQgcmVzdG9yZXMgcHJldmlvdXMgZnVuY3Rp
+b25hbGl0eS4KPiA+ID4gPgo+ID4gPiA+IEknbSBqdXN0IHdvbmRlcmluZyBhcyB0aGUgIm9mZmVu
+ZGluZyIgcGF0Y2ggaXMgZnJvbSAyMDIwLCB3aHkgdGhpcwo+ID4gPiA+IG9ubHkgdHVybnMgdXAg
+bm93LiBBbnkgaWRlYXM/Cj4gPiA+Cj4gPiA+IEFoLCBJIHNlZS4gU28gYmVmb3JlIHRoZSBvZmZl
+bmRpbmcgcGF0Y2ggd2UgdXNlZCB0byBqdXN0IGxlYXZlIHRoZQo+ID4gPiBwdWxsIHN0YXRlIGF0
+IHdoYXRldmVyIHRoZSBkZWZhdWx0IHdhcyB3aGVuIHRoZSBrZXJuZWwgd2FzIGJvb3RlZC4KPiA+
+ID4gQWZ0ZXIgdGhlIG9mZmVuZGluZyBwYXRjaCB3ZSBjaG9zZSBhIGRlZmF1bHQuCj4gPiA+Cj4g
+PiA+IE9uIGtldmluIEkgc2VlIGFuIGV4dGVybmFsIHB1bGwgZG93biBvbiB0aGlzIGxpbmUuIEVu
+YWJsaW5nIGJvdGggdGhlCj4gPiA+IGludGVybmFsIGFuZCBleHRlcm5hbCBpcyBwcm9iYWJseSBu
+b3QgYSBodWdlIGRlYWwsIGl0J2xsIGp1c3QgYWZmZWN0Cj4gPiA+IHRoZSBzdHJlbmd0aCBvZiB0
+aGUgcHVsbC4KPiA+ID4KPiA+ID4gT24gYm9iIEkgX3RoaW5rXyB0aGUgZXh0ZXJuYWwgcHVsbCBk
+b3duIGlzIGFsc28gc3R1ZmZlZC4KPiA+ID4KPiA+ID4gLi4uc28gSSBndWVzcyB0aGF0IHdvdWxk
+IGV4cGxhaW4gd2h5IGl0IGRpZG4ndCBjYXVzZSBhIHByb2JsZW0gZm9yIGF0Cj4gPiA+IGxlYXN0
+IHRob3NlIHR3byBib2FyZHM/Cj4gPiA+Cj4gPiA+IC1Eb3VnCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
