@@ -4,87 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88516ECAAD4
-	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Aug 2022 02:16:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A55DECAAD2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 27 Aug 2022 08:50:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EWq08z8OALNcFCu/WMo5zZPdKM1QEMvMqG/F2BP1DFE=; b=SAjOq9pDgxpNff
-	NxtFaRzqRbcTBOFBiDgukVNd/93qRWIvardG98EJzAByaibBEms4qN921gheB+c2y68ek0bPhWXqJ
-	3bl9ly5wjLCHY5tEk8VNnEwjyEYvjKHWaZqSfuMbLvzItqpQPg5Qbqqy9SfXUQL9mv4yjoqYYLJG8
-	lBjFaUiHMJdKwcbd1fy6j46P7FDdfWczH6m/Uw5PNmU/GvizUBs+U5UNcGVPR7aEoFk+Ifs/ebWdf
-	IziOH3bxRFo/q6bH4+j6l2BpUPwcwz9Rvpj/w1EcT9aPZvXe8PealB1p8DEDV4yL1WqM6uYq0f/KC
-	f3g+TlWI/WGk2YBfM58g==;
+	List-Owner; bh=lf7AHaP5jDkWH9inwTXEfZeHCY0Qgo8QPCko5h9E2gs=; b=lWFL0fDtfdadUw
+	wfZGF86MM8Z8ZKwu2Aj6poHbaOU7Gtp4Ixv28XNoWE0GC+7Dmzl2IU2hLGvIGqLTpEwHnFnnNZ6f1
+	xpHRsIMvRWWg1ttwSGhiGEALkge7lg4dCw5wuq87VXGQ41JHtwotT0lyGjW5pGLD62w79IMZlDiQN
+	ENPi9p26jO+IZGRK/DFbJsAq1s+quYFVWdGyERHCUKyKgJsKbPmHxHRHXXqpMzk7QVQzQWOsFzUVs
+	sCFDdz1xotHMBtMpcdXUz2/wvnH2EU9jnkfkSUhQ+6CE3QsC/G0F4jJSWqZrLlKwEWBi61s8QaMHH
+	6o3Tf+a1qYHCVG3+Sy2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRlNG-000NWD-Ff; Sat, 27 Aug 2022 02:16:38 +0000
-Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
+	id 1oRrWM-006B0T-SE; Sat, 27 Aug 2022 08:50:26 +0000
+Received: from mout.gmx.net ([212.227.15.18])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oRlND-000NTC-EB
-	for linux-rockchip@lists.infradead.org; Sat, 27 Aug 2022 02:16:36 +0000
-Received: by mail-ot1-x335.google.com with SMTP id q39-20020a056830442700b0063889adc0ddso2203012otv.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 26 Aug 2022 19:16:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=mf/Wnkxtmv95NHNcpXu8kZiy3UcFnPoDPtvznQq/TNc=;
-        b=R0/8MZkc1X84R5o5lHg0/6TgAc20liCy5Idnswb8aTUKOu8gN4gCpVw0nJB/INIWo1
-         N69UI7Fg20nivbMHbK4/Jtqe+OLUp+ytlmt1uRr0Zr8EfTHBX1flgmdbN7OXvTT8bBow
-         DvbeMTuQC7KSoc1CrNbGx+KJzMJrLe99Nf2z6oVGltBGdMijm3eHmpwD2a6XmSJczzSt
-         2Tv6egOlX2/UWa79ssBIx8IFHqJyzMnFYE7Ds33MTq9MmO9VdS3mSb0AjyH0XhCnG8ih
-         DgXSGXPEM4pRzjbGmvUQpClMNLhfgbj42t8AvOVaubiul5dlScpX3HPHLZHZU1UnZtK8
-         yk6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=mf/Wnkxtmv95NHNcpXu8kZiy3UcFnPoDPtvznQq/TNc=;
-        b=mSjjM9zaVeA9BYI/JCs6RlDv/nXtkJGsRMPUZTmyHVjJNJp0Cb/wW9tz9UJ6ac+I0r
-         2PBW2idQK6cy9qZSwnmWw0vVbC9K2OECgDn5MFxBe7gpNW6CtJy3uE8VB6stLyihHSiY
-         WRcp81q2ZUwx9eCwgNSb0Hq/0e4KYYfjbK9o+8D9NWoLVe9mWD89xCK3N+VTxBnW0dGo
-         sbbEM98C91F2lRbvgUbhEwhJGfoAXrMJHfP7x4N3UnaJkqUZOQXg7LWlPWbrPw9yXmvJ
-         YeKYbGv/1ZBtHo81q+QY/U/vlyqu/MzmFgkdQczQHM6/q4Qgwa9yYUQibawTrsB98AWE
-         qkDQ==
-X-Gm-Message-State: ACgBeo3dATKlBvWUWJtEr2SfIFBv0Fq30spcxok+nqcEAd1AGFhRcPhf
-	k34wR6lKEkmQs3Z6hnYEujM=
-X-Google-Smtp-Source: AA6agR6BRf2WLexC57rqPJP4tMDOlY7NXO7AFX9dF6VDD+b9KLd0oaFyxcQ7XN3KytOTQOMfT7S8bA==
-X-Received: by 2002:a05:6830:25c4:b0:637:2a66:1dfd with SMTP id d4-20020a05683025c400b006372a661dfdmr2368113otu.383.1661566594237;
-        Fri, 26 Aug 2022 19:16:34 -0700 (PDT)
-Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com. [76.183.134.35])
-        by smtp.gmail.com with ESMTPSA id q4-20020a9d7c84000000b0061cd208fadesm1925752otn.71.2022.08.26.19.16.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Aug 2022 19:16:33 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-pm@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	zhangqing@rock-chips.com,
-	zyw@rock-chips.com,
-	jon.lin@rock-chips.com,
-	maccraft123mc@gmail.com,
-	sre@kernel.org,
-	heiko@sntech.de,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org,
-	lee@kernel.org,
-	philip@pscan.uk,
-	mazziesaccount@gmail.com,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH V10 1/4] dt-bindings: Add Rockchip rk817 battery charger support
-Date: Fri, 26 Aug 2022 21:16:20 -0500
-Message-Id: <20220827021623.23829-2-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220827021623.23829-1-macroalpha82@gmail.com>
-References: <20220827021623.23829-1-macroalpha82@gmail.com>
+	id 1oRrWI-006Aqd-Pt; Sat, 27 Aug 2022 08:50:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+	s=badeba3b8450; t=1661590200;
+	bh=sLqA9Nhv1LxIrayZxnMdcIGoDvAaLN5XDUzwmP9YimQ=;
+	h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=EdR/oW4bV7hX9TXH3hCs1b8ae02GLGT8/zQXzlH33lbg2FD7EK5m+etim2qbck7Lo
+	 KX46ga/l4XBAVynrKpj7gZqYlvgfEw0jKA707w0FqjIumz+4siXiW5elrQ8P/Pr3sz
+	 DnDH3mOSIdBFfvuU833dhdLFKth5dbjzKQ9PkuCE=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.78.141] ([80.245.78.141]) by web-mail.gmx.net
+ (3c-app-gmx-bs16.server.lan [172.19.170.68]) (via HTTP); Sat, 27 Aug 2022
+ 10:50:00 +0200
 MIME-Version: 1.0
+Message-ID: <trinity-88fbbdbe-de76-4479-9580-70edc34a4181-1661590200169@3c-app-gmx-bs16>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Cc: Frank Wunderlich <linux@fw-web.de>, linux-rockchip@lists.infradead.org,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Rob
+ Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Yifeng Zhao
+ <yifeng.zhao@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>, Peter Geis
+ <pgwipeout@gmail.com>, Simon Xue <xxm@rock-chips.com>, Liang Chen
+ <cl@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Aw: Re: [PATCH v5 5/5] arm64: dts: rockchip: Add PCIe v3 nodes to
+ BPI-R2-Pro
+Date: Sat, 27 Aug 2022 10:50:00 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <cae915f6-c951-ba97-346d-00922c85067d@linaro.org>
+References: <20220825193836.54262-1-linux@fw-web.de>
+ <20220825193836.54262-6-linux@fw-web.de>
+ <cae915f6-c951-ba97-346d-00922c85067d@linaro.org>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:ymlk8MTehRHvDLV/NMrQKgASYE/0aSiP2iwFAlrEWCCttBVnPTYScFUExZcU50B+XqKmI
+ BuXBhJkCJj+2+/eoNz7ggJl2WQsoY705NyEf1FfXeY6RoQRbpXbEhBcjGEgshMvFE1b/kzeklzyz
+ Jc+/8hiL2Y17nZT3O8suJSkmPFwGr0/x8ClhHdnHuXhW8+f/AtXrnSC0ajepwD78P6b2Wi5iFTRu
+ gZMdH2cYUDUn7qoiKoSAr5SVtZCbW0Yzw4xk9lH9dbzVhilPFBKfkY6PPotFi6k0Y4A/KyPx9UB5
+ ak=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:14K1gCFI7Lg=:IESHyz8gkpbbCdxNp9VwOq
+ g91zU7UP3wl4gBf5hwPu1Kt/Ci46gU1S5IePgbdx27d4rk+8XLkZZkTbe4lwX+bOQXhBdC9AR
+ FpG19k2DcAhUm3pDO5Cao94DPHxIasUiUjs5+TjmYes7jAfNiZeAEdiqqHVeu1m+EN4XU+Bxq
+ CxYPS63stl1VPJxrUVO5aAlOeiWVJMpHx39GTls0vFHhTsNp2VyKd1Qm+rkIATDq7NuwMk2Wr
+ PyroUfSCVp4LucSYsVvpjRhCn/OKjFR7ZTBNejGRVei+Q7qM22t3UI5zBj7e4fe9e0uY2K2j0
+ a2lzJQrhy0bcptY4+HdG2EbkQwGouZRiHTxqHF7NCf+cKg/E8i4ibWIaFilmNjL0eWj9YAewG
+ a+C7+3ejYYjoX9Y181gr2SuHQ8ATaVS8DaQfN/trfJnJH+MlfALu0IjXAWY4WPJeM+Fhx2Fqb
+ rW9GucSJyWptQaz8Fv9HvM0xundhAFv79C0boRusyZQ7ZxCL2ZW3cfiqJsn5I+N5BXAXldxwW
+ dLxaNx66xtaSb4VDHIPUjVFrfl/8TFf/Zy44PmjFq5m4VZJ62iF7dF5K1dvh4s+bvm7g8ly9n
+ C35AmnZ2vbGAOQ6RDuuCcaZuhMQT3ZB6arKVCfYBG469OZ4HatS/HHnnWudZyvYv/SE0/HZkg
+ ptCNpN7LXjFAZJK6V9fG0wXfFH0mJ4Vo0m4j3gsJc9FulmhYpPVUxYxO5HZRTRpMzDoNN8Lw2
+ idg2jRqNtU72VknArJFbOHJG4CX0CYNV1TbgpJ2XTQgJQRKWTcYcrt70zam6gq9hpKV5oHSXA
+ +Ho6+gE
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220826_191635_500115_7FDD109D 
-X-CRM114-Status: GOOD (  11.98  )
+X-CRM114-CacheID: sfid-20220827_015023_412116_7BBD09EA 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,96 +97,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+Hi
 
-Create dt-binding documentation to document rk817 battery and charger
-usage. New device-tree properties have been added.
+> Gesendet: Freitag, 26. August 2022 um 08:50 Uhr
+> Von: "Krzysztof Kozlowski" <krzysztof.kozlowski@linaro.org>
+> On 25/08/2022 22:38, Frank Wunderlich wrote:
+> > From: Frank Wunderlich <frank-w@public-files.de>
 
-- rockchip,resistor-sense-micro-ohms: The value in microohms of the
-                                      sample resistor.
-- rockchip,sleep-enter-current-microamp: The value in microamps of the
-                                         sleep enter current.
-- rockchip,sleep-filter-current: The value in microamps of the sleep
-                                 filter current.
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+> > index 93d383b8be87..40b90c052634 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+> > @@ -86,6 +86,66 @@ vcc5v0_sys: vcc5v0-sys {
+> >  		vin-supply = <&dc_12v>;
+> >  	};
+> >
+> > +	pcie30_avdd0v9: pcie30-avdd0v9 {
+>
+> Use consistent naming, so if other nodes have "regulator" suffix, use it
+> here as well.
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Signed-off-by: Maya Matuszczyk <maccraft123mc@gmail.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
- .../bindings/mfd/rockchip,rk817.yaml          | 50 +++++++++++++++++++
- 1 file changed, 50 insertions(+)
+only these 3 new have the suffix:
 
-diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
-index bfc1720adc43..5b11184a3936 100644
---- a/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
-+++ b/Documentation/devicetree/bindings/mfd/rockchip,rk817.yaml
-@@ -117,6 +117,49 @@ properties:
-         description:
-           Describes if the microphone uses differential mode.
- 
-+  charger:
-+    description: |
-+      The child node for the charger to hold additional properties. If a
-+      battery is not in use, this node can be omitted.
-+    type: object
-+    properties:
-+      monitored-battery:
-+        description: |
-+          A phandle to a monitored battery node that contains a valid
-+          value for:
-+          charge-full-design-microamp-hours,
-+          charge-term-current-microamp,
-+          constant-charge-current-max-microamp,
-+          constant-charge-voltage-max-microvolt,
-+          voltage-max-design-microvolt,
-+          voltage-min-design-microvolt,
-+          and a valid ocv-capacity table.
-+
-+      rockchip,resistor-sense-micro-ohms:
-+        description: |
-+          Value in microohms of the battery sense resistor. This value is
-+          used by the driver to set the correct divisor value to translate
-+          ADC readings into the proper units of measure.
-+        enum: [10000, 20000]
-+
-+      rockchip,sleep-enter-current-microamp:
-+        description: |
-+          Value in microamps of the sleep enter current for the charger.
-+          Value is used by the driver to calibrate the relax threshold.
-+
-+      rockchip,sleep-filter-current-microamp:
-+        description:
-+          Value in microamps of the sleep filter current for the charger.
-+          Value is used by the driver to derive the sleep sample current.
-+
-+    required:
-+      - monitored-battery
-+      - rockchip,resistor-sense-micro-ohms
-+      - rockchip,sleep-enter-current-microamp
-+      - rockchip,sleep-filter-current-microamp
-+
-+    additionalProperties: false
-+
- allOf:
-   - if:
-       properties:
-@@ -323,6 +366,13 @@ examples:
-                 };
-             };
- 
-+            rk817_charger: charger {
-+                monitored-battery = <&battery>;
-+                rockchip,resistor-sense-micro-ohms = <10000>;
-+                rockchip,sleep-enter-current-microamp = <300000>;
-+                rockchip,sleep-filter-current-microamp = <100000>;
-+            };
-+
-             rk817_codec: codec {
-                 rockchip,mic-in-differential;
-             };
--- 
-2.25.1
+vcc3v3_pi6c_05: vcc3v3-pi6c-05-regulator
+vcc3v3_minipcie: vcc3v3-minipcie-regulator
+vcc3v3_ngff: vcc3v3-ngff-regulator
 
+so i would drop it there...
+
+so i end up with (including existing ones to compare):
+
+vcc3v3_sys: vcc3v3-sys
+vcc5v0_sys: vcc5v0-sys
+pcie30_avdd0v9: pcie30-avdd0v9
+pcie30_avdd1v8: pcie30-avdd1v8
+vcc3v3_pi6c_05: vcc3v3-pi6c-05
+vcc3v3_minipcie: vcc3v3-minipcie
+vcc3v3_ngff: vcc3v3-ngff
+vcc5v0_usb: vcc5v0_usb
+vcc5v0_usb_host: vcc5v0-usb-host
+vcc5v0_usb_otg: vcc5v0-usb-otg
+
+is this ok?
+
+maybe swap avdd* and pcie30 part to have voltage in front of function.
+
+> > +		compatible = "regulator-fixed";
+> > +		regulator-name = "pcie30_avdd0v9";
+> > +		regulator-always-on;
+> > +		regulator-boot-on;
+> > +		regulator-min-microvolt = <900000>;
+> > +		regulator-max-microvolt = <900000>;
+> > +		vin-supply = <&vcc3v3_sys>;
+> > +	};
+> > +
+> > +	pcie30_avdd1v8: pcie30-avdd1v8 {
+>
+> Ditto.
+>
+>
+> > +		compatible = "regulator-fixed";
+> > +		regulator-name = "pcie30_avdd1v8";
+> > +		regulator-always-on;
+> > +		regulator-boot-on;
+> > +		regulator-min-microvolt = <1800000>;
+> > +		regulator-max-microvolt = <1800000>;
+> > +		vin-supply = <&vcc3v3_sys>;
+> > +	};
+> > +
+> > +	/* pi6c pcie clock generator feeds both ports */
+> > +	vcc3v3_pi6c_05: vcc3v3-pi6c-05-regulator {
+> > +		compatible = "regulator-fixed";
+> > +		regulator-name = "vcc3v3_pcie";
+> > +		regulator-min-microvolt = <3300000>;
+> > +		regulator-max-microvolt = <3300000>;
+> > +		enable-active-high;
+> > +		gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
+> > +		startup-delay-us = <200000>;
+> > +		vin-supply = <&vcc5v0_sys>;
+> > +	};
+> > +
+>
+> Best regards,
+> Krzysztof
+>
 
 _______________________________________________
 Linux-rockchip mailing list
