@@ -4,74 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D309C0502C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Aug 2022 16:40:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2773DC6FA69
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Aug 2022 17:02:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fPsZlNT+vvxiE4CN8hcsnM0u+195gnG/Ulcyn8JGn0k=; b=NTjyvvavRSe2Wu
-	eQsJZcC2ZgKuLfp3DnQwaqfIAoxnOIJwzarp0Mwd6lODQdZmtDbtLVdDlwRVYktuolt8CUDmJ/LHP
-	5g0ZSQa/lAyh5wifovpZVu3TZ96Mz6bmEQTSruwLnYNG/TsXVeWZKLm4IIMljAcxgTR1hU96L0jAh
-	jFKS58cqvyMYUYdfWPtR53eEpAOniZnNY1yDODXYXpXXlYOyf5VsdwAvMVvQiv34H6je6ZzaTSAAj
-	ORxO4xMfYI52qDbBGO0RkHWxlsiBrG5HeYI0Nz63K6+2ne4yOgsonYVsViDZiIIdBuFMCKxuqbVht
-	ln74iGUINHqGw3yYr7Yg==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5KOoiieSC2hTccPazwz9jc8KtScst9GB5WIm5I3at2k=; b=oy3AwVXkun4vKY
+	F1Q7ciBWUy55MEIH6oTy9Igt9yrCkBimdCWC1h7RT+o7Ry4cTfbEpuc7v2bZRUQcwF0gA+jK1c0a6
+	0N/2v8pp3Iq+NI2r3CEqDI4zstaYdTPoNHxSfNXk5rL6yX3kj0oIdEf6eo4L+mJ/sc2KleDY9FKXu
+	8br+IwTcD0sN75Fqm5wKqj2EHdMLQMQz3sgwcHz/Qitm0ArOc7kJfBd31rhtxSR7UQcFKmhlZQg6w
+	4lOcZJOdUD+GnbAuJJWDxdS83xQYIp3McW4tcjriOxQxJQ0ZCRAqs8vf1HXvWSaD9TNmX252PxHeS
+	bXUqYLAwsJ6VNouhvO8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oShni-00Bp5O-PA; Mon, 29 Aug 2022 16:39:50 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1oSi97-00By7a-83; Mon, 29 Aug 2022 17:01:57 +0000
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oShWk-00Bi0F-6B; Mon, 29 Aug 2022 16:22:28 +0000
-Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:3d67:aec0:f788:1143])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id AC9776601F01;
-	Mon, 29 Aug 2022 17:22:12 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661790133;
-	bh=KNBM1Ycd4hgicIVPBAmq9OSHzMCSnL+16JukGewVOMo=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=L6KP9dbqiR2QXE3ioXkmpSrTTs+yLaskjMI+VkZTz7k6mJPXv7s79Kw0FMOEIADYm
-	 fBrxFjWwqiN5tVgoUUNuFSREv2fOBm0B+0pOk0vN09BBa1CrTZkSpXfGnJGBs57dbY
-	 9fNxfwGHE2TVfIqzpC6b6Fu2d4PnbNIErbopE5VvXLvzYaKuEhhJRFd1ZEtTLdZQI4
-	 K9nv+Gc9VDlg/+4YzqSowQXWYiLHV+8f45im+K8xhmOPkN/3aCck3/d7mXO1Q9NWS+
-	 IElQA3jcbDiU/2idfWfZhXe20KEIL15Unb+c5MAZGaQVbyqQTN/cXb9CjSj3M3HZhd
-	 VcwrqzDUpVdDg==
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-To: mchehab@kernel.org,
-	hverkuil@xs4all.nl,
-	ezequiel@vanguardiasur.com.ar,
-	p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org,
-	mripard@kernel.org,
-	paul.kocialkowski@bootlin.com,
-	wens@csie.org,
-	jernej.skrabec@gmail.com,
-	samuel@sholland.org,
-	nicolas.dufresne@collabora.com,
-	andrzej.p@collabora.com
-Cc: linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-staging@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v3 7/7] media: hantro: Allows luma and chroma depth to be different
-Date: Mon, 29 Aug 2022 18:21:59 +0200
-Message-Id: <20220829162159.881588-8-benjamin.gaignard@collabora.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20220829162159.881588-1-benjamin.gaignard@collabora.com>
-References: <20220829162159.881588-1-benjamin.gaignard@collabora.com>
-MIME-Version: 1.0
+	id 1oSi8v-00By4x-UM
+	for linux-rockchip@lists.infradead.org; Mon, 29 Aug 2022 17:01:47 +0000
+Received: by mail-ed1-x52a.google.com with SMTP id t5so10938927edc.11
+        for <linux-rockchip@lists.infradead.org>; Mon, 29 Aug 2022 10:01:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=kohlschutter-com.20210112.gappssmtp.com; s=20210112;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:from:to:cc;
+        bh=bTARlCeOibrBAZlTV6Fk9ACuYXQ1cVcNl7i+g8mazqU=;
+        b=hVzqRNsdQaTATFlTRZEAUtegZzrniojbBze7lC0I1DCFGyj6BkyQ5+0ggqZhq7zSSU
+         6zy7RkbawwAYK000WcoS4z9DbiDoTtUzmOPxwjv5oeD3bBDK4xrd2tMZamPQsOvGfnNa
+         UpB9OXBiQo3k2aWxOmoOL5iUfv0LCkTMr3iyb59yIqgyN01+zKEJu1xTJsbfHqDZK05h
+         X+jAloKUs5wfYSVw8Q7s4Ql2Snaj6uXlu/EJ7yoJfmF1RPB/1UlQynzfsSmZU7vLktoD
+         c+/Dmzo7x0JhxUkbT1OAsiGFb9etA7VWwcvKSzGLX+vse77NW3ypLtFoJCpKrJrXQB2r
+         PrPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc;
+        bh=bTARlCeOibrBAZlTV6Fk9ACuYXQ1cVcNl7i+g8mazqU=;
+        b=BYJNhk8LymDUqdFK3oJhfcrexZ01NKIjddVsCjyma6dfxYLsJuTA0fnBJZbzxTqbAo
+         v0b1o+scPcDG5B8PbTPuE0wbR9SBF180kquwqiY32vp6Ya9mnL32h8oqAAwvAeXcXxO1
+         lH0Nd2rMDHANGlI2XUmNynoZkdZ+krflEezvbFmZBLicozB58EmTGZO34zwcLUhhaJCM
+         54/0DnBVw2O8acIsGqj6qnHjVIY6V4ADbb7wXkuNzlI4jx+Mwb1Hm9C3Og3awWis3Mjq
+         7M4xL2HzOtReLaTrCq0JswjCMdjYDJI8dFPZLvtmkGIf3Yl7p1N9RZLqKjBQMWacXenH
+         oatA==
+X-Gm-Message-State: ACgBeo2zYYCE96CRaw576F9pp1mqp9NMpo99mLt0oLEA/i1H9/jRGcst
+	xGHMkAAEXf+rhqFzLFW5p4iSnQ==
+X-Google-Smtp-Source: AA6agR4R+kKRn6AXknM8I0Gcw14CKYwx4jBXyZeW4PcPSqKr5gZ/66Zs3WorLAtQqLsDEX0N1uLleg==
+X-Received: by 2002:a05:6402:138f:b0:43d:8ed5:c841 with SMTP id b15-20020a056402138f00b0043d8ed5c841mr17596592edv.27.1661792500845;
+        Mon, 29 Aug 2022 10:01:40 -0700 (PDT)
+Received: from smtpclient.apple (ip5b434222.dynamic.kabel-deutschland.de. [91.67.66.34])
+        by smtp.gmail.com with ESMTPSA id gl10-20020a170906e0ca00b0073dbfd33a8dsm4697277ejb.21.2022.08.29.10.01.39
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 29 Aug 2022 10:01:40 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.1\))
+Subject: Re: [PATCH v5] regulator: core: Resolve supply name earlier to
+ prevent double-init
+From: =?utf-8?Q?Christian_Kohlsch=C3=BCtter?= <christian@kohlschutter.com>
+In-Reply-To: <YwzerCnjvTKsEyIi@sirena.org.uk>
+Date: Mon, 29 Aug 2022 19:01:38 +0200
+Cc: =?utf-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Linux MMC List <linux-mmc@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Markus Reichl <m.reichl@fivetechno.de>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Vincent Legoll <vincent.legoll@gmail.com>,
+ wens@kernel.org
+Message-Id: <479AFACA-866E-4B3B-B0C2-ABA83591DA56@kohlschutter.com>
+References: <932DEB17-70FB-4416-80B3-C48A7C31848F@kohlschutter.com>
+ <20220825212842.7176-1-christian@kohlschutter.com>
+ <YwzerCnjvTKsEyIi@sirena.org.uk>
+To: Mark Brown <broonie@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>
+X-Mailer: Apple Mail (2.3696.120.41.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_092218_386628_38BDB184 
-X-CRM114-Status: GOOD (  10.02  )
+X-CRM114-CacheID: sfid-20220829_100145_997915_D8C1A6A0 
+X-CRM114-Status: GOOD (  15.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,43 +95,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Luma and chroma depth are set on different hardware registers.
-Even if they aren't identical the bitstream can be compliant
-to HEVC specifications and decoded by the hardware.
-
-With this patch TSUNEQBD_A_MAIN10_Technicolor_2 conformance test
-is successfully decoded.
-
-Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
----
- drivers/media/platform/verisilicon/hantro_drv.c | 3 ---
- 1 file changed, 3 deletions(-)
-
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 7c75922e2e98..8cb4a68c9119 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -271,9 +271,6 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
- 	} else if (ctrl->id == V4L2_CID_STATELESS_HEVC_SPS) {
- 		const struct v4l2_ctrl_hevc_sps *sps = ctrl->p_new.p_hevc_sps;
- 
--		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
--			/* Luma and chroma bit depth mismatch */
--			return -EINVAL;
- 		if (sps->bit_depth_luma_minus8 != 0 && sps->bit_depth_luma_minus8 != 2)
- 			/* Only 8-bit and 10-bit are supported */
- 			return -EINVAL;
--- 
-2.32.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+PiBPbiAyOS4gQXVnIDIwMjIsIGF0IDE3OjQzLCBNYXJrIEJyb3duIDxicm9vbmllQGtlcm5lbC5v
+cmc+IHdyb3RlOgo+IAo+IE9uIFRodSwgQXVnIDI1LCAyMDIyIGF0IDA5OjI4OjQyUE0gKzAwMDAs
+IENocmlzdGlhbiBLb2hsc2Now7x0dGVyIHdyb3RlOgo+PiBQcmV2aW91c2x5LCBhbiB1bnJlc29s
+dmVkIHJlZ3VsYXRvciBzdXBwbHkgcmVmZXJlbmNlIHVwb24gY2FsbGluZwo+PiByZWd1bGF0b3Jf
+cmVnaXN0ZXIgb24gYW4gYWx3YXlzLW9uIG9yIGJvb3Qtb24gcmVndWxhdG9yIGNhdXNlZAo+PiBz
+ZXRfbWFjaGluZV9jb25zdHJhaW50cyB0byBiZSBjYWxsZWQgdHdpY2UuCj4gCj4gUGxlYXNlIGRv
+IG5vdCBzdWJtaXQgbmV3IHZlcnNpb25zIG9mIGFscmVhZHkgYXBwbGllZCBwYXRjaGVzLCBwbGVh
+c2UKPiBzdWJtaXQgaW5jcmVtZW50YWwgdXBkYXRlcyB0byB0aGUgZXhpc3RpbmcgY29kZS4gIE1v
+ZGlmeWluZyBleGlzdGluZwo+IGNvbW1pdHMgY3JlYXRlcyBwcm9ibGVtcyBmb3Igb3RoZXIgdXNl
+cnMgYnVpbGRpbmcgb24gdG9wIG9mIHRob3NlCj4gY29tbWl0cyBzbyBpdCdzIGJlc3QgcHJhY3Rp
+Y2UgdG8gb25seSBjaGFuZ2UgcHViaXNoZWQgZ2l0IGNvbW1pdHMgaWYKPiBhYnNvbHV0ZWx5IGVz
+c2VudGlhbC4KPiAKPiBQbGVhc2UgZG9uJ3Qgc2VuZCBuZXcgcGF0Y2hlcyBpbiByZXBseSB0byBv
+bGQgcGF0Y2hlcyBvciBzZXJpZXNlcywgdGhpcwo+IG1ha2VzIGl0IGhhcmRlciBmb3IgYm90aCBw
+ZW9wbGUgYW5kIHRvb2xzIHRvIHVuZGVyc3RhbmQgd2hhdCBpcyBnb2luZwo+IG9uIC0gaXQgY2Fu
+IGJ1cnkgdGhpbmdzIGluIG1haWxib3hlcyBhbmQgbWFrZSBpdCBkaWZmaWN1bHQgdG8ga2VlcCB0
+cmFjawo+IG9mIHdoYXQgY3VycmVudCBwYXRjaGVzIGFyZSwgYm90aCBmb3IgdGhlIG5ldyBwYXRj
+aGVzIGFuZCB0aGUgb2xkIG9uZXMuCgpNeSBhcG9sb2dpZXMsIEkgd2Fzbid0IGF3YXJlIHRoYXQn
+cyBub3QgdGhlIHByZWZlcnJlZCB3YXkgZm9yd2FyZC4KCkZvbGxvd2luZyB1cCB3aXRoICJyZWd1
+bGF0b3I6IGNvcmU6IEZpeCByZWd1bGF0b3Igc3VwcGx5IHJlZ2lzdHJhdGlvbiB3aXRoIHN5c2Zz
+Iiwgc2VlCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDIyMDgyOTE2NTU0My4yNDg1Ni0x
+LWNocmlzdGlhbkBrb2hsc2NodXR0ZXIuY29tLwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
