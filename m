@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 598E3ECAAD2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Aug 2022 20:29:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C244ECAAD2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Aug 2022 21:01:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TpJFKzmb7qmfOupU62ngjrlMR3L82GOsDX5ojFuDL6s=; b=g2OH1EhWDWQr2J
-	+YJgB6LD0BZCBQoDVk5clPi8xnaCYs61227THz/OfB+T+vnz35Gd2nLsyqc5mzoK9Fw8Vn7ToBDHx
-	K5bfnaNyClN4Y9rGrRL4HuWS5pRQD3UVsT4/VtRomSc4YtbK1R3tRqyP4LGYEOFM+C6hQzqzB8nuD
-	ujoX+EtvVfsGx2WOWsdUCRrfmTXeh09a/AEfmQv6ctMyHiREqXi6LeU/9dbA+4QOew6LCctdW5KIo
-	uZYYFrK1h6d7oNgk6VK7QKZNq2HN9sXQeU7Mp0OsbYjrmqbxAC2ZVLhgxRGdV0Kku2J4yXOK7j4dM
-	patjHgHlNQ4MC6WU61zw==;
+	List-Owner; bh=bL4AZ50bo2aTeF0yagYlVOmMwQjeGUslsvinHPt6L0U=; b=1AqL6v04Lrhdt/
+	cTSJqFT0zDRoDRqGbDcoYdDP/BaU4mMPEgRgCGAdx4sLFMM2DNHn6J5DTbz2iRruk6H9ZBDUgbtvI
+	wHqURtGo1KYaU6ck+nMm1nwvG+7LlWQoW+ECpdDvBdrTFFOxNasua+8uxYlIklO7AumJYVuAzqixY
+	XYE6VlfbIxKXnf+H/e5ObNOX6jlkX1kbf6+SjGWRj/OfVQkmU92T6vGXZi0YIbjeAD2RoltAOdO7K
+	5kPxhsr0u6uf1mizswQOGjEq/05QLI88/lFUjuJ7MRubhurU3yJrx6d5ywJB+UZePoiJO5ZlhgG3z
+	pIUTtCItpnATTdE+nSeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSlNl-00CdAw-PY; Mon, 29 Aug 2022 20:29:17 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1oSltG-00Chgh-77; Mon, 29 Aug 2022 21:01:50 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSlNa-00Cd9U-RX
-	for linux-rockchip@lists.infradead.org; Mon, 29 Aug 2022 20:29:08 +0000
-Received: by mail-ej1-x632.google.com with SMTP id bj12so17981403ejb.13
-        for <linux-rockchip@lists.infradead.org>; Mon, 29 Aug 2022 13:29:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=amarulasolutions.com; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=iBDrYuK38tP07AWX3QFXuLOTrIhoz52xxnkZBhXnKGc=;
-        b=eFddmdZPTAsCg08ovPXyoXSHP6EXZ0661ss+xIP0mD30x6tQaHosOhgiWaSkYc7ypK
-         2lpIjsDNS2wSj2/YBuO8s2SHN2v2MvSfIRO3z764xmDPke4LY8oxmu8r798mZqARRua0
-         b/qCsQ6lTXYRQZeq5ey6d0bEbJUXpmrzlu0Do=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=iBDrYuK38tP07AWX3QFXuLOTrIhoz52xxnkZBhXnKGc=;
-        b=fCVg7C5mA79LBu29um5QoINx/JjCiwTJfmRuoTQDTLFS68wGSoNUTj209PJNEq0bcr
-         xqjRZyfPKDHI9rOYOtVHgR3Ocaq51jyaFrAq+G2nDhEgE6XmoULl3LxlTYH9CXBuZRSt
-         zpJn77FF5tU/SW1nSiMVMriHU6TcPI+wS+O0PvEJ/2jbh1qn1gpsvToWgepLa0uMHylI
-         Z6yWvGTitnBpg5OdS9Rf9k4qGQZLf9pQdbSSiaZ64c3y03QSbhHJqZdDXGOF9DGUMeYM
-         I7+Sj4kqDDfMT/M9WbwxErL121caICz9wVabS//OJOCbgxmdY9gsGSd75/VIGk1u2VhW
-         wMsg==
-X-Gm-Message-State: ACgBeo06WWnpaXozGmlWRLxY5SG5imsXwU+I+OGaf2skGqkJHW5R6EQO
-	h+lQiTYnnM/rh0NDcBjqPP7keA043fx6ImiEvmaJmA==
-X-Google-Smtp-Source: AA6agR6x/XIaAtR0Mo8JnsIAoaBx+9lRxsyXhIku7RHf1MsEnL3pU3ewTtuOL4HG9TWgyomlKkagwsvL9tX6SCpjqqs=
-X-Received: by 2002:a17:907:6089:b0:734:be0c:e0cd with SMTP id
- ht9-20020a170907608900b00734be0ce0cdmr15135531ejc.474.1661804943116; Mon, 29
- Aug 2022 13:29:03 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220824080903.3696847-2-jagan@amarulasolutions.com> <20220829201752.518374-1-naoki@radxa.com>
-In-Reply-To: <20220829201752.518374-1-naoki@radxa.com>
-From: Jagan Teki <jagan@amarulasolutions.com>
-Date: Tue, 30 Aug 2022 01:58:52 +0530
-Message-ID: <CAMty3ZDxvaFSYpjYniXwpA6Wfyyn=c8mW5XNNUaiuqSb1niC9w@mail.gmail.com>
+	id 1oSltE-00Chfx-6Q; Mon, 29 Aug 2022 21:01:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=iqIv4sABVpdVdVt7JtDCslnwrcUtQpposJ9/40m8aWA=; b=KGWEFsrTMtT9pxLPxIQ3RxVrn8
+	YWTXOuK3Q85s/QXXCi830mRY6C/PM/I9iPvz3dv1wB5eekW+gVDp7hU2VnOEG3FB8asaO6jdIn5A9
+	O7OD5KP0ZC0it0Oaa6DleVaTTDa/nTnA4mSgKhZZngwjjFTxEbes9zkg9PeUvu/f/z+j6hJpceF2U
+	zublbbdaj27qWmIXVGhjJony0QP4YETSHE1byaIVBF/+NiV1J8G8mZLrriLXmGIxiC44FFXQRFO8d
+	AN8KF2Yckhtfm/kkdbEBcnYF7dkJGP8BXXzqADnAFTkEIlL1GsL7krrKb3YO+8qI2VDTzp9QkLyiy
+	16FtQtdg==;
+Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oSlt8-003P3B-QO; Mon, 29 Aug 2022 21:01:47 +0000
+Received: from secure.fukaumi.org ([10.0.0.2])
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 27TL15mO030743;
+	Tue, 30 Aug 2022 06:01:06 +0900
+From: FUKAUMI Naoki <naoki@radxa.com>
+To: jagan@amarulasolutions.com
+Cc: abbaraju.manojsai@amarulasolutions.com, devicetree@vger.kernel.org,
+        heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org,
+        linux-amarula@amarulasolutions.com,
+        linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, naoki@radxa.com,
+        robh+dt@kernel.org, stephen@radxa.com
 Subject: Re: [PATCH 2/2] arm64: dts: rockchip: rk3399: Radxa ROCK 4C+
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: abbaraju.manojsai@amarulasolutions.com, devicetree@vger.kernel.org, 
-	heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org, 
-	linux-amarula@amarulasolutions.com, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, robh+dt@kernel.org, stephen@radxa.com
+Date: Mon, 29 Aug 2022 21:01:03 +0000
+Message-Id: <20220829210103.518467-1-naoki@radxa.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <CAMty3ZDxvaFSYpjYniXwpA6Wfyyn=c8mW5XNNUaiuqSb1niC9w@mail.gmail.com>
+References: <CAMty3ZDxvaFSYpjYniXwpA6Wfyyn=c8mW5XNNUaiuqSb1niC9w@mail.gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_132906_915397_9D219D2C 
-X-CRM114-Status: GOOD (  15.08  )
+X-CRM114-CacheID: sfid-20220829_220143_349229_37B18A89 
+X-CRM114-Status: UNSURE (   8.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,65 +75,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 30, 2022 at 1:48 AM FUKAUMI Naoki <naoki@radxa.com> wrote:
->
-> Hello,
->
-> thank you very much for your work!
->
-> > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-4c-plus.dtb
->
-> this is not an objection, just a note for me, currently our(Radxa)
-> u-boot try to load "rk3399-rock-pi-4c-plus.dtb".
->
-> > +#include "rk3399-opp.dtsi"
->
-> ROCK 4C+ has RK3399-T. it needs different opp table.
+sorry, I noticed I sent previous email to wrong thread (v1, not v2).
 
-Yes, I will update this in V3.
+> > > +&sdmmc {
+> > > +     bus-width = <4>;
+> > > +     cap-mmc-highspeed;
+> > > +     cap-sd-highspeed;
+> > > +     card-detect-delay = <800>;
+> > > +     disable-wp;
+> > > +     pinctrl-names = "default";
+> > > +     pinctrl-0 = <&sdmmc_clk &sdmmc_cd &sdmmc_cmd &sdmmc_bus4>;
+> > > +     vqmmc-supply = <&vccio_sd>;
+> > > +     status = "okay";
+> > > +};
+> >
+> > does card detect work for you? it doesn't work for me. I think it
+> > needs
+> 
+> Yes. it is detecting for me. I've booted from SD. 2022.03.04 V1.2
+> revision board.
 
->
-> > +     aliases {
-> > +             mmc0 = &sdmmc;
->
-> please add
->
->                 mmc1 = &sdhci;
->
-> as like as other ROCK (Pi) 4 series.
->
-> > +&hdmi_sound {
-> > +     status = "okay";
-> > +};
->
-> please add
->
-> &i2s2 {
->         status = "okay";
-> };
->
-> too.
->
-> > +&sdmmc {
-> > +     bus-width = <4>;
-> > +     cap-mmc-highspeed;
-> > +     cap-sd-highspeed;
-> > +     card-detect-delay = <800>;
-> > +     disable-wp;
-> > +     pinctrl-names = "default";
-> > +     pinctrl-0 = <&sdmmc_clk &sdmmc_cd &sdmmc_cmd &sdmmc_bus4>;
-> > +     vqmmc-supply = <&vccio_sd>;
-> > +     status = "okay";
-> > +};
->
-> does card detect work for you? it doesn't work for me. I think it
-> needs
+I have same board, but I'm using eMMC as boot media. do you have any
+eMMC module?
 
-Yes. it is detecting for me. I've booted from SD. 2022.03.04 V1.2
-revision board.
+what I tried was inserting uSD card while running Linux on eMMC. it
+didn't work.
 
-Thanks,
-Jagan.
+Best regards,
+
+--
+FUKAUMI Naoki
 
 _______________________________________________
 Linux-rockchip mailing list
