@@ -4,56 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 385F9ECAAD2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Aug 2022 16:39:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A421C0502C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Aug 2022 16:39:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5+yw0FepyFPPxPo8VUn4qjPAp5M2bUxhDqlkYX4Kt7M=; b=KQByd27KvUXgGC
-	uzqzvXvcDaIL4apYm0CcIkcFnHCob8Afppof0Id4Wbv1AFHnDdTkVyVO5LHdn8CtunkSKa7nAfQtr
-	G9CGIVDUPpHrzjNY4r6mC8usdHQLtv83UOJNjgc8l0VPiulP9i3hIoUsbG+iODd1NQM3FOVAypvRk
-	YMwD6AHwChaTJeqjikbhIAG7+UThR7LNUzOFqMns4FsY+O6WfQHDboljy4p6JpEoDSfj5tAJsrSCG
-	PoISZdHHm6nc0WbrQNYMpXRTvDx78mb7KbIkGbEehqvQQsDlp1MvFm3YrsghTXf39nwbGxEopDOsC
-	EzBdxEN6WdPQE3g0Atbw==;
+	List-Owner; bh=/41nHOzx+BKguOt8fr4Bz55c9Eemd8iR0oL6Y+cIze0=; b=FNi7MGApo0x3wR
+	hpVVZLB0FJecnpQUB8JRp5sU7cH54ag/gFuLL0P+EBI4wzNtNNx1YaY2N75rc7uO7gDlCEvKxzlPH
+	66JrGpovbJytlbzv2QEDOAMM4/xZTz8bQ27Kw5SWbd3iSS96c68zDhlulht9EU8fIllZSkX6YUJ+Z
+	gXGKR9NGpQMuskq8UW9J3OJyGILKjMUojMrh9glN0OWOBhXuty5eJuA/twBRhUnYOwbYL8sipGGDh
+	3HWP8inbU/9w9J0jYrSpWXeMCxsDvZotURv46xSjbaI7zyZR0r13TYqTF6lsfd3xEGGgV9KPfgWUP
+	kHzyn4g0EvHXOlZE6rug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oShnd-00Bp38-DQ; Mon, 29 Aug 2022 16:39:45 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1oShnb-00Bp1v-2I; Mon, 29 Aug 2022 16:39:43 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oShWq-00Bi4A-CI; Mon, 29 Aug 2022 16:22:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=3dHdwOr6Fy6rNMey1AdMypO76cRPxQZpmoQKf6+wF10=; b=RktDMOqLNsc55Ji9yw7Kpl2M+I
-	wXmSLDXIFxcUGAnMITfl+Xy4usVjgpH89DkNb4NUNE9IUhdv5WCdcFQTyF0G9cFOMTZosdAgU9GWA
-	EUWVBuzpM/Mdulun67h1zzTZ2YOoSOMo0QxAGbKZTW0QrncJ8363ifMENb6VDDjiEa+KLt6zGzkF9
-	PgpEQ3PX7Ade1fmvW1Iso12mN6ZmfgtcIjxMUbD4U0aGwQjq/uBWzVSyL721qBazvu9Br9PRufwP9
-	SouXUWoo0rd85x4A/d4x3ggzgL1Ev2MB8KHE6ODvwxbQf1SPiFG9hE7BTwBOSi0dEP5O6yNAn7hjn
-	BdIOWSqQ==;
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oShWl-007Xli-Mn; Mon, 29 Aug 2022 16:22:21 +0000
+	id 1oShWj-00Bhxk-FS; Mon, 29 Aug 2022 16:22:24 +0000
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:3d67:aec0:f788:1143])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 068816601D9F;
-	Mon, 29 Aug 2022 17:22:12 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A0E7B6601EFE;
+	Mon, 29 Aug 2022 17:22:10 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661790132;
-	bh=jZ9NFVqXi4FQciS5KmPkM1ahnD1FjnqqnfI6QhWlEm4=;
+	s=mail; t=1661790131;
+	bh=1QjEDfeYtMg2LvAMK7jYApMsPkNYBRfLQFsRT9YF/R8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=cf/AEloyBREGq4t/Ig1uPq1ztSBRbE+Ig1ZC6/54KHIiFeIEg3wYhnCwbFlTp0/Zf
-	 ti9D2TrdsQar/pwDzZdzJ3FuZB0YML9NEv+/3Azyl/vq3Gd0PPuftiG2nU7QtohKie
-	 eWkUycBI9Up/bjEPhjnhgmhE2ZmPnc9SNIKzOXaMq95YtiA3RIfT/Lv1++cGdsHajO
-	 bKTP1clnY0JTKr7XuH2snFYb4Ug92iyqQaL+cfZ0nrvgGyv0sUHPzIVXH3kNm952EI
-	 DuKsUrF5d1SDKrNI+1T9XHGaIyKMCM4OuChjJrFGjwHeSE0Hamego4BJaBY4qmNjD9
-	 85okJvjK/b4Gg==
+	b=VHIEPeN8LeBrF70kVPqEXxSeXnjS1QujvHicAi5AqDiw68GwAvEAjlWb6dpsRB3fO
+	 WC+YNedLJmmy5fePlSezXbQua2cI4jSV90YjogB9N5tsOgMsx55kSyNld+0ZdHUAS1
+	 /x/YfQ9n/DSh7Ox+5vBseQktvwwEbR2NyyS4KDqHb+64tLOSG55yO7IrtO4q7yiPRh
+	 f8dV7Bp7qjtKV19vOiy7vpjh/fDwZQn3692GXGaKcSZbTZTNHhQmZqfKPC24bvB+RO
+	 JRMNbCVbNYAH9BpwGlQG5CWbohacYpLuz9KHJ32lywSRNWJeYvwFBaFHrPjnEmzQth
+	 8EX45HCDvxSLg==
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: mchehab@kernel.org,
 	hverkuil@xs4all.nl,
@@ -75,17 +62,16 @@ Cc: linux-media@vger.kernel.org,
 	linux-sunxi@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Subject: [PATCH v3 6/7] media: hantro: imx8m: Enable 10bit decoding
-Date: Mon, 29 Aug 2022 18:21:58 +0200
-Message-Id: <20220829162159.881588-7-benjamin.gaignard@collabora.com>
+Subject: [PATCH v3 4/7] media: hantro: postproc: Configure output regs to support 10bit
+Date: Mon, 29 Aug 2022 18:21:56 +0200
+Message-Id: <20220829162159.881588-5-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <20220829162159.881588-1-benjamin.gaignard@collabora.com>
 References: <20220829162159.881588-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_172219_925401_9E7C2B52 
-X-CRM114-Status: UNSURE (   8.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220829_092217_683439_55982DDC 
+X-CRM114-Status: GOOD (  11.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,58 +88,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Expose 10bit pixel formats to enable 10bit decoding in IMX8M SoCs.
+Move output format setting in postproc and make sure that
+8/10bit configuration is correctly set.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
 ---
- .../media/platform/verisilicon/imx8m_vpu_hw.c | 27 +++++++++++++++++++
- 1 file changed, 27 insertions(+)
+ drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c | 2 --
+ drivers/media/platform/verisilicon/hantro_postproc.c    | 7 ++++++-
+ 2 files changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-index 77f574fdfa77..b390228fd3b4 100644
---- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-@@ -162,12 +162,39 @@ static const struct hantro_fmt imx8m_vpu_g2_postproc_fmts[] = {
- 			.step_height = MB_DIM,
- 		},
- 	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_P010,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.postprocessed = true,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = MB_DIM,
-+		},
-+	},
- };
+diff --git a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
+index a917079a6ed3..a9d4ac84a8d8 100644
+--- a/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
++++ b/drivers/media/platform/verisilicon/hantro_g2_hevc_dec.c
+@@ -167,8 +167,6 @@ static void set_params(struct hantro_ctx *ctx)
+ 	hantro_reg_write(vpu, &g2_bit_depth_y_minus8, sps->bit_depth_luma_minus8);
+ 	hantro_reg_write(vpu, &g2_bit_depth_c_minus8, sps->bit_depth_chroma_minus8);
  
- static const struct hantro_fmt imx8m_vpu_g2_dec_fmts[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12_4L4,
- 		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
-+		.frmsize = {
-+			.min_width = FMT_MIN_WIDTH,
-+			.max_width = FMT_UHD_WIDTH,
-+			.step_width = TILE_MB_DIM,
-+			.min_height = FMT_MIN_HEIGHT,
-+			.max_height = FMT_UHD_HEIGHT,
-+			.step_height = TILE_MB_DIM,
-+		},
-+	},
-+	{
-+		.fourcc = V4L2_PIX_FMT_P010_4L4,
-+		.codec_mode = HANTRO_MODE_NONE,
-+		.match_depth = true,
- 		.frmsize = {
- 			.min_width = FMT_MIN_WIDTH,
- 			.max_width = FMT_UHD_WIDTH,
+-	hantro_reg_write(vpu, &g2_output_8_bits, 0);
+-
+ 	hantro_reg_write(vpu, &g2_hdr_skip_length, compute_header_skip_length(ctx));
+ 
+ 	min_log2_cb_size = sps->log2_min_luma_coding_block_size_minus3 + 3;
+diff --git a/drivers/media/platform/verisilicon/hantro_postproc.c b/drivers/media/platform/verisilicon/hantro_postproc.c
+index a0928c508434..09d8cf942689 100644
+--- a/drivers/media/platform/verisilicon/hantro_postproc.c
++++ b/drivers/media/platform/verisilicon/hantro_postproc.c
+@@ -114,6 +114,7 @@ static void hantro_postproc_g2_enable(struct hantro_ctx *ctx)
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct vb2_v4l2_buffer *dst_buf;
+ 	int down_scale = down_scale_factor(ctx);
++	int out_depth;
+ 	size_t chroma_offset;
+ 	dma_addr_t dst_dma;
+ 
+@@ -132,8 +133,9 @@ static void hantro_postproc_g2_enable(struct hantro_ctx *ctx)
+ 		hantro_write_addr(vpu, G2_RS_OUT_LUMA_ADDR, dst_dma);
+ 		hantro_write_addr(vpu, G2_RS_OUT_CHROMA_ADDR, dst_dma + chroma_offset);
+ 	}
++
++	out_depth = hantro_get_format_depth(ctx->dst_fmt.pixelformat);
+ 	if (ctx->dev->variant->legacy_regs) {
+-		int out_depth = hantro_get_format_depth(ctx->dst_fmt.pixelformat);
+ 		u8 pp_shift = 0;
+ 
+ 		if (out_depth > 8)
+@@ -141,6 +143,9 @@ static void hantro_postproc_g2_enable(struct hantro_ctx *ctx)
+ 
+ 		hantro_reg_write(ctx->dev, &g2_rs_out_bit_depth, out_depth);
+ 		hantro_reg_write(ctx->dev, &g2_pp_pix_shift, pp_shift);
++	} else {
++		hantro_reg_write(vpu, &g2_output_8_bits, out_depth > 8 ? 0 : 1);
++		hantro_reg_write(vpu, &g2_output_format, out_depth > 8 ? 1 : 0);
+ 	}
+ 	hantro_reg_write(vpu, &g2_out_rs_e, 1);
+ }
 -- 
 2.32.0
 
