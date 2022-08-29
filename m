@@ -4,62 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D50E8ECAAD5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Aug 2022 15:44:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70C9BC0502C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 29 Aug 2022 16:35:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FF5Dsaoj9pg/czJnBLNrEDIMJ2LKMEjgu5zJpyA/Ax8=; b=Wo/2TBPK0iTi7kb8x7W3W+TSW9
-	5Yy8qTbjCo157750Cuqc7Y4O6a/NgSIMDkHwxho4QouUZydYndewlYPbRJa2B4J+XoQBX8IzmBZK5
-	0y22AMr0SeyUGfu6Y3fyGaoOagPMk9q5h/eT8J2NE5WJ1Dxu8iAIqqQ2hZzsqq9RuYUkanPeD3LsD
-	6uR/p76n/SJmRG7UVXnVq6pBtcdu6rRWC13CU2Qi8Qj4ZaBKTnfrlPrtkT4tbsb2fkkN5LWI2/yDW
-	yFHNd1hgRmyWPb8DTQkoPeNUq5qxE98LGe7tHitHpNZXHAAOgZJGxDN6y6TwEHLNGGN2PTNtoKvHp
-	ieVfbaMg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=QoBbFhLNntdtu/ZdVn6J/jjoyV3nke7bNIapu2Xv1dc=; b=2KDTAUvRwGOOE/
+	QSBTFkuq539fDXWxstMLYzinvRd0krVuBmXut1OexAm9/EF4AgUqaodo/G2x/V7jE+MX/lOppgfDo
+	W48bq0ZYvEsxsDLtYNyK8YAujcDh7D8eebM1Z/bfnR5qPvVw8fd2pXzQsTQYzs4shCJv/YxXFQcql
+	eIeQlNnLNjOxJP8Ts8vEvO5Pa04QPpAb8msnQdC/OD/9e2ZnLE6ESc4y/A//0aLQxs9g98/PkSotB
+	+CSPsgi4fNC98kVqRk/mRx7rDbo1iKVPHlzvhdKGMd2uLSqlnK5ZUbH1nJe8Luoxs4kPN5NKbjf+Z
+	hEuRUS5FoJ0jy5UtDj2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSgvj-00BRGe-8V; Mon, 29 Aug 2022 15:44:03 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oShiz-00Bn6e-5y; Mon, 29 Aug 2022 16:34:57 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSgvR-00BR8D-Gx; Mon, 29 Aug 2022 15:43:46 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	id 1oShWd-00Bhvs-L9; Mon, 29 Aug 2022 16:22:16 +0000
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:3d67:aec0:f788:1143])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 0B9EE6119E;
-	Mon, 29 Aug 2022 15:43:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8CFEFC433C1;
-	Mon, 29 Aug 2022 15:43:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661787824;
-	bh=4PNAQAvCUsFccSS7sDfDcRqqhjiiTiNWG27WrEY28OI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NKiPFxEX8ubsQZXf3x3GDEhZKfzWFkDh/W8D6dA3aCQiLFZBB/J7N/q+PjVnbJ1/V
-	 L9K/kqa3TDPoVUGTviXCoQyiCj/cF38wUL6/mnz1t7aleC50cJ0uRCf7I3oB9aLeAy
-	 bNZYUt+P3Wqr7OqFnaOUL6FolVKD5oJjqr6pQQDEz53J5lcVBGqzaO6H2kE59mNJvC
-	 QedDom7+52MdJePLmkk6OgVWwrvyxQI8b7xrz8D13R1U0momnloSeT9hbClgkcS3h1
-	 O1opywiXcmanWyhAhWh95j4QigAq1JuMcJM9ntUZbroudSSkuMEpC8OuZPKpTlPbkr
-	 RYl50BMuZmeDQ==
-Date: Mon, 29 Aug 2022 16:43:40 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Christian =?iso-8859-1?Q?Kohlsch=FCtter?= <christian@kohlschutter.com>
-Cc: m.szyprowski@samsung.com, heiko@sntech.de, lgirdwood@gmail.com,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	m.reichl@fivetechno.de, robin.murphy@arm.com,
-	vincent.legoll@gmail.com, wens@kernel.org
-Subject: Re: [PATCH v5] regulator: core: Resolve supply name earlier to
- prevent double-init
-Message-ID: <YwzerCnjvTKsEyIi@sirena.org.uk>
-References: <932DEB17-70FB-4416-80B3-C48A7C31848F@kohlschutter.com>
- <20220825212842.7176-1-christian@kohlschutter.com>
+	(Authenticated sender: benjamin.gaignard)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id D42376600360;
+	Mon, 29 Aug 2022 17:22:07 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1661790128;
+	bh=iBVc29gKZFKqyDDdPbh8NNqE2+5tS5jY80daWeZGfmw=;
+	h=From:To:Cc:Subject:Date:From;
+	b=i6qHqulyX4bx1mBsTqn1R7eaM5k9788KC9y/nCwrzs43gu99+zGQZLJgy21cV0gEk
+	 IdQ0bsVqESQOv40FBuADSyI2x0mZHF9XYkgtw8fqNDWoDMv/TenC7+vwCyNnFd+Rqp
+	 ZEfLa5EmB/Q/d1Wq+M9w1ISzETPO4R9WACAuWg8un+gsyeDPUnBqJw786ogbShNwtX
+	 SahsN/L8+LbNqtxpxPdcRUaBpJ8Nmz1OylEo8RMvqDmIVhEyiMWGatkCW/YIXZG4L8
+	 A7N0VpcyvJ6YMF8HGE9YhX895bUMAH2ylC7CJVJahqG2e8ldq+GdMrK+q8lFimP3iP
+	 ErSui+dKCqkow==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: mchehab@kernel.org,
+	hverkuil@xs4all.nl,
+	ezequiel@vanguardiasur.com.ar,
+	p.zabel@pengutronix.de,
+	gregkh@linuxfoundation.org,
+	mripard@kernel.org,
+	paul.kocialkowski@bootlin.com,
+	wens@csie.org,
+	jernej.skrabec@gmail.com,
+	samuel@sholland.org,
+	nicolas.dufresne@collabora.com,
+	andrzej.p@collabora.com
+Cc: linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-staging@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	kernel@collabora.com,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v3 0/7] Enable 10bits bitstream for Hantro/G2 HEVC codec
+Date: Mon, 29 Aug 2022 18:21:52 +0200
+Message-Id: <20220829162159.881588-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-In-Reply-To: <20220825212842.7176-1-christian@kohlschutter.com>
-X-Cookie: Necessity is a mother.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_084345_623976_F782D53F 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20220829_092211_968755_A7A80138 
+X-CRM114-Status: UNSURE (   8.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,66 +82,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2131095469107580346=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This series add 10bits support for newer hardware blocks (i.e without
+legacy regs) and for HEVC codec.
 
---===============2131095469107580346==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="7tSS3dt8q5rPP2p4"
-Content-Disposition: inline
+Tested on IMX8MQ with HEVC conformance tests, the result is that all 
+10bits bitstreams are OK.
 
+version 3:
+- Based on top of Ezequiel's patch "media: destage Hantro VPU driver"
 
---7tSS3dt8q5rPP2p4
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Benjamin Gaignard (7):
+  media: hantro: Store HEVC bit depth in context
+  media: hantro: HEVC: Fix auxilary buffer size calculation
+  media: hantro: HEVC: Fix chroma offset computation
+  media: hantro: postproc: Configure output regs to support 10bit
+  media: Hantro: HEVC: Allows 10-bit bitstream
+  media: hantro: imx8m: Enable 10bit decoding
+  media: hantro: Allows luma and chroma depth to be different
 
-On Thu, Aug 25, 2022 at 09:28:42PM +0000, Christian Kohlsch=FCtter wrote:
-> Previously, an unresolved regulator supply reference upon calling
-> regulator_register on an always-on or boot-on regulator caused
-> set_machine_constraints to be called twice.
+ .../media/platform/verisilicon/hantro_drv.c   | 14 ++++++----
+ .../platform/verisilicon/hantro_g2_hevc_dec.c |  4 +--
+ .../media/platform/verisilicon/hantro_hevc.c  |  4 +--
+ .../platform/verisilicon/hantro_postproc.c    |  7 ++++-
+ .../media/platform/verisilicon/imx8m_vpu_hw.c | 27 +++++++++++++++++++
+ 5 files changed, 45 insertions(+), 11 deletions(-)
 
-Please do not submit new versions of already applied patches, please
-submit incremental updates to the existing code.  Modifying existing
-commits creates problems for other users building on top of those
-commits so it's best practice to only change pubished git commits if
-absolutely essential.
+-- 
+2.32.0
 
-Please don't send new patches in reply to old patches or serieses, this
-makes it harder for both people and tools to understand what is going
-on - it can bury things in mailboxes and make it difficult to keep track
-of what current patches are, both for the new patches and the old ones.
-
---7tSS3dt8q5rPP2p4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmMM3qsACgkQJNaLcl1U
-h9BzXgf+KnfusKtcsjB9ILjjP2+jZth8EOVUrcSQ1eWVsI26muwHmEE91v4C7YFv
-EtgzW4cRU0k9M766Mk6UaZUqToxKcmAvfP2sUg/VzHrlXljLq5+B8a+3SSGNNoe+
-G2adSxucfxIpqqn9HXAJJTcpPuVUUX53LpYdXdw7yxrQr8jmVqGCR1YfrRnfgIgW
-nG+n2JowmobA5H8B2nT3GA5QYyrsCwWUXJEjytf0JEGEEPOCXlylTcsBAE3Yr+RG
-6FsUXXRlLaz0rlpWjCSjIgQNiYfhE0rW6KSLSiaaLJ0ZtVAoHonnpsxWWXVgXdXP
-aLJ5Jp+VPK36CkS8Yjx6Ds25ptvv8Q==
-=CJmJ
------END PGP SIGNATURE-----
-
---7tSS3dt8q5rPP2p4--
-
-
---===============2131095469107580346==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2131095469107580346==--
-
