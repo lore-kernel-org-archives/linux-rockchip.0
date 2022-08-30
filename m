@@ -4,58 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAB37ECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 18:53:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48F74ECAAD5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 19:20:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E8TvPDy0NDTj6Gn4B20bVqzkqR+QCQMzNA5v0MQqWAs=; b=V+Nvvif7+AxIZD
-	cTTT//LdYHrrfO+W4zWI/BgOAELIgNKQi3uKVhFXZHWNnm/rOJF61iTU6r1ud93jI1G25sJPVXSeJ
-	O0ge/ilKJCREhNhC6HVQomSV2JyOiqnf4SXPbsMJkOlFHonT4n4yhfvMZ4Aguzh9jwXRg/cJmaXHD
-	uW9xKVcF7ztVKSxP/f+jUSPtacBzSGfrDPUrsY/G0CnEU08mRit18aWAU/PETFrOlUA0WZ66AHLDC
-	kBAVQ6ylQnk7h6Z3mC/NRdBLOIJxPoKCo8trPwuMCSWjmU/CjUWcljx8wYzJkeBRxeEylWnTF8/9k
-	J6NqhsZJi8B9HwvN/qHQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LyuO9gPD4P8fuolk34QcP4QWfz8pSmsOMJMTFIvh/Ac=; b=TGm9M2WfaCtNtX
+	U5CRTosInJWA+Dw2Kc6G6TH+606UpqA9bLJnB4NLdh7oz/OyHtAmNtYUkiIhPSKUaW+T539LlM+yK
+	9Vx7SFoN0Uid2RdKkzAKahXEUiw8qmgMksrnl46Ac0xI4C9pd0Jyu67+LZr91sSsEye0o1bz4p/PP
+	TtBSXKqI7dvySuFNpt1rqWGTCQnxdzGmV0xOQ9BYc0ScBLmIVWpHHtvEksUxsGoNKg9W/tyW/JIXH
+	yTA7BPJJZTDj3WCtvBkDoQU3g2Y/f36DJ+fn6LtXcb1p9CG0PGelJTTvyZjfgq5aB64CAhY64Ko3d
+	5CWsVRHXaf51iz7l0seg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT6MZ-001J4X-B4; Tue, 30 Aug 2022 18:53:27 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oT6mA-001Q0h-9I; Tue, 30 Aug 2022 19:19:54 +0000
+Received: from mga09.intel.com ([134.134.136.24])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT6MV-001J2e-P3
-	for linux-rockchip@lists.infradead.org; Tue, 30 Aug 2022 18:53:25 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 6DEF3B81D81;
-	Tue, 30 Aug 2022 18:53:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62060C433D6;
-	Tue, 30 Aug 2022 18:53:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1661885601;
-	bh=n2oCNckMdWFuTnsc9BCHrAKAiEPqoAK9e1Dl3nAkMYA=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=aJGnySLbRmkplRrzI8eOM4Lv9QBHleBdnI1+59aeZesedGt53LEYzDwQHWqHVUNt0
-	 4hmlKBilLm3UOCQgYRP5HZQ16DvlcA4qXFvU6kMlXbX11xEeo20nb3atR97/9wUNE0
-	 mjBWi8qDPSs7j6SMC0F8jEJME7yF4TLsHpj4MsU1DCWmVihA+7xiv1DT3zxbgm81Pi
-	 phG8Xb3CV+2kvyAW+O0Jt+4ZOpnQU0b7tM2YN4km8IRsKztphe1kYlk1K8WTzwIJl8
-	 1uEEkgElZXWryg5XGM/ecPgDdESdf5Fn8Gu74QqwZDbw3tjYYB595pAnIDNUhJpnRA
-	 h80ACPHDtmn1g==
-From: Mark Brown <broonie@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, kernel@collabora.com, linux-spi@vger.kernel.org
-In-Reply-To: <20220830124452.33561-1-sebastian.reichel@collabora.com>
-References: <20220830124452.33561-1-sebastian.reichel@collabora.com>
-Subject: Re: [PATCH 1/1] spi: spi-rockchip: Add rk3588-spi compatible
-Message-Id: <166188559907.1148585.13680922112371234952.b4-ty@kernel.org>
-Date: Tue, 30 Aug 2022 19:53:19 +0100
+	id 1oT6lq-001PsF-Ho; Tue, 30 Aug 2022 19:19:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1661887174; x=1693423174;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=uJOZWhccZ3us4fdCO9fKE4vmJtXRD4HlA06beGQNfHw=;
+  b=SkdAxiMsp0pm/o5Nnj5C93KBDuzx19c/y9cJRVNVQO4Eq3BaLzWqc1Wg
+   wx/9vOfdHEYm6Wfm7lSVueUuYGm7n8rozSIqq40SCrz+yMEQy7HwlLKie
+   uP47zNhIskWiYNGcIq6CEkW4v7jmNYUn/AODIGrK4fbjdMdKU6tScBOvV
+   oU3mN422Q5/dicV1mi6R6mgPY7ol4T0waocdN9DS+zhZKNb6aMXCNMivo
+   B7tDt7B3tqu4wp/71qbPshodPa0voeEROFrVM+xfeDHtimHYv+EdY8pgg
+   v94CpR8zfCBNjATogv3xfLoBD3n/NKHbKnUIiys9tsw97za1Qd22c+di0
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10455"; a="296064976"
+X-IronPort-AV: E=Sophos;i="5.93,275,1654585200"; 
+   d="scan'208";a="296064976"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Aug 2022 12:19:29 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,275,1654585200"; 
+   d="scan'208";a="588745431"
+Received: from black.fi.intel.com ([10.237.72.28])
+  by orsmga006.jf.intel.com with ESMTP; 30 Aug 2022 12:19:26 -0700
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+	id 6E6D0AD; Tue, 30 Aug 2022 22:19:41 +0300 (EEST)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Linus Walleij <linus.walleij@linaro.org>,
+	Jianqun Xu <jay.xu@rock-chips.com>,
+	linux-gpio@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: Bartosz Golaszewski <brgl@bgdev.pl>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 1/1] gpio: rockchip: Switch to use fwnode instead of of_node
+Date: Tue, 30 Aug 2022 22:19:39 +0300
+Message-Id: <20220830191939.56436-1-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-X-Mailer: b4 0.10.0-dev-65ba7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_115323_979627_B64A72F1 
-X-CRM114-Status: GOOD (  12.22  )
+X-CRM114-CacheID: sfid-20220830_121934_684627_4CF1D357 
+X-CRM114-Status: GOOD (  18.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,39 +83,170 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 30 Aug 2022 14:44:52 +0200, Sebastian Reichel wrote:
-> This adds a compatible string for the SPI controller found in
-> the RK3588 and RK3588s SoCs.
-> 
-> 
+GPIO library now accepts fwnode as a firmware node, so
+switch the driver to use it.
 
-Applied to
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/gpio/gpio-rockchip.c       | 32 ++++++++++++++++--------------
+ drivers/pinctrl/pinctrl-rockchip.h |  6 ++++--
+ 2 files changed, 21 insertions(+), 17 deletions(-)
 
-   broonie/spi.git for-next
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index bb50335239ac..6e847f326ff4 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -20,6 +20,7 @@
+ #include <linux/of_device.h>
+ #include <linux/of_irq.h>
+ #include <linux/pinctrl/pinconf-generic.h>
++#include <linux/property.h>
+ #include <linux/regmap.h>
+ 
+ #include "../pinctrl/core.h"
+@@ -518,7 +519,7 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
+ 	struct irq_chip_generic *gc;
+ 	int ret;
+ 
+-	bank->domain = irq_domain_add_linear(bank->of_node, 32,
++	bank->domain = irq_domain_create_linear(bank->fwnode, 32,
+ 					&irq_generic_chip_ops, NULL);
+ 	if (!bank->domain) {
+ 		dev_warn(bank->dev, "could not init irq domain for bank %s\n",
+@@ -606,14 +607,14 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+ 	 * files which don't set the "gpio-ranges" property or systems that
+ 	 * utilize ACPI the driver has to call gpiochip_add_pin_range().
+ 	 */
+-	if (!of_property_read_bool(bank->of_node, "gpio-ranges")) {
+-		struct device_node *pctlnp = of_get_parent(bank->of_node);
++	if (!fwnode_property_read_bool(bank->fwnode, "gpio-ranges")) {
++		struct fwnode_handle *parent = fwnode_get_parent(bank->fwnode);
+ 		struct pinctrl_dev *pctldev = NULL;
+ 
+ 		if (!pctlnp)
+ 			return -ENODATA;
+ 
+-		pctldev = of_pinctrl_get(pctlnp);
++		pctldev = of_pinctrl_get(to_of_node(parent));
+ 		if (!pctldev)
+ 			return -ENODEV;
+ 
+@@ -641,10 +642,11 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+ 
+ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+ {
++	struct device_node *node = to_of_node(bank->fwnode);
+ 	struct resource res;
+ 	int id = 0;
+ 
+-	if (of_address_to_resource(bank->of_node, 0, &res)) {
++	if (of_address_to_resource(node, 0, &res)) {
+ 		dev_err(bank->dev, "cannot find IO resource for bank\n");
+ 		return -ENOENT;
+ 	}
+@@ -653,11 +655,11 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+ 	if (IS_ERR(bank->reg_base))
+ 		return PTR_ERR(bank->reg_base);
+ 
+-	bank->irq = irq_of_parse_and_map(bank->of_node, 0);
++	bank->irq = irq_of_parse_and_map(node, 0);
+ 	if (!bank->irq)
+ 		return -EINVAL;
+ 
+-	bank->clk = of_clk_get(bank->of_node, 0);
++	bank->clk = of_clk_get(node, 0);
+ 	if (IS_ERR(bank->clk))
+ 		return PTR_ERR(bank->clk);
+ 
+@@ -668,7 +670,7 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+ 	if (id == GPIO_TYPE_V2 || id == GPIO_TYPE_V2_1) {
+ 		bank->gpio_regs = &gpio_regs_v2;
+ 		bank->gpio_type = GPIO_TYPE_V2;
+-		bank->db_clk = of_clk_get(bank->of_node, 1);
++		bank->db_clk = of_clk_get(node, 1);
+ 		if (IS_ERR(bank->db_clk)) {
+ 			dev_err(bank->dev, "cannot find debounce clk\n");
+ 			clk_disable_unprepare(bank->clk);
+@@ -704,22 +706,22 @@ rockchip_gpio_find_bank(struct pinctrl_dev *pctldev, int id)
+ static int rockchip_gpio_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+-	struct device_node *np = dev->of_node;
+-	struct device_node *pctlnp = of_get_parent(np);
++	struct fwnode_handle *fwnode = dev_fwnode(dev);
++	struct fwnode_handle *parent = fwnode_get_parent(fwnode);
+ 	struct pinctrl_dev *pctldev = NULL;
+ 	struct rockchip_pin_bank *bank = NULL;
+ 	struct rockchip_pin_deferred *cfg;
+ 	static int gpio;
+ 	int id, ret;
+ 
+-	if (!np || !pctlnp)
++	if (!parent)
+ 		return -ENODEV;
+ 
+-	pctldev = of_pinctrl_get(pctlnp);
++	pctldev = of_pinctrl_get(to_of_node(parent));
+ 	if (!pctldev)
+ 		return -EPROBE_DEFER;
+ 
+-	id = of_alias_get_id(np, "gpio");
++	id = of_alias_get_id(to_of_node(fwnode), "gpio");
+ 	if (id < 0)
+ 		id = gpio++;
+ 
+@@ -728,7 +730,7 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
+ 		return -EINVAL;
+ 
+ 	bank->dev = dev;
+-	bank->of_node = np;
++	bank->fwnode = fwnode;
+ 
+ 	raw_spin_lock_init(&bank->slock);
+ 
+@@ -776,7 +778,7 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
+ 	mutex_unlock(&bank->deferred_lock);
+ 
+ 	platform_set_drvdata(pdev, bank);
+-	dev_info(dev, "probed %pOF\n", np);
++	dev_info(dev, "probed %pfw\n", fwnode);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
+index 4759f336941e..411ed6a09842 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.h
++++ b/drivers/pinctrl/pinctrl-rockchip.h
+@@ -18,6 +18,8 @@
+ #ifndef _PINCTRL_ROCKCHIP_H
+ #define _PINCTRL_ROCKCHIP_H
+ 
++struct fwnode_handle;
++
+ #define RK_GPIO0_A0	0
+ #define RK_GPIO0_A1	1
+ #define RK_GPIO0_A2	2
+@@ -299,7 +301,7 @@ struct rockchip_drv {
+  * @drv: array describing the 4 drive strength sources of the bank
+  * @pull_type: array describing the 4 pull type sources of the bank
+  * @valid: is all necessary information present
+- * @of_node: dt node of this bank
++ * @fwnode: firmware node of this bank
+  * @drvdata: common pinctrl basedata
+  * @domain: irqdomain of the gpio bank
+  * @gpio_chip: gpiolib chip
+@@ -327,7 +329,7 @@ struct rockchip_pin_bank {
+ 	struct rockchip_drv		drv[4];
+ 	enum rockchip_pin_pull_type	pull_type[4];
+ 	bool				valid;
+-	struct device_node		*of_node;
++	struct fwnode_handle		*fwnode;
+ 	struct rockchip_pinctrl		*drvdata;
+ 	struct irq_domain		*domain;
+ 	struct gpio_chip		gpio_chip;
+-- 
+2.35.1
 
-Thanks!
-
-[1/1] spi: spi-rockchip: Add rk3588-spi compatible
-      commit: fb43eb0a930ca9474484b1ff04c3fd532efdc8e3
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 _______________________________________________
 Linux-rockchip mailing list
