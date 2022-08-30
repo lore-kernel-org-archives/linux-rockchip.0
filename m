@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48F74ECAAD5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 19:20:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53782ECAAD5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 19:33:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LyuO9gPD4P8fuolk34QcP4QWfz8pSmsOMJMTFIvh/Ac=; b=TGm9M2WfaCtNtX
-	U5CRTosInJWA+Dw2Kc6G6TH+606UpqA9bLJnB4NLdh7oz/OyHtAmNtYUkiIhPSKUaW+T539LlM+yK
-	9Vx7SFoN0Uid2RdKkzAKahXEUiw8qmgMksrnl46Ac0xI4C9pd0Jyu67+LZr91sSsEye0o1bz4p/PP
-	TtBSXKqI7dvySuFNpt1rqWGTCQnxdzGmV0xOQ9BYc0ScBLmIVWpHHtvEksUxsGoNKg9W/tyW/JIXH
-	yTA7BPJJZTDj3WCtvBkDoQU3g2Y/f36DJ+fn6LtXcb1p9CG0PGelJTTvyZjfgq5aB64CAhY64Ko3d
-	5CWsVRHXaf51iz7l0seg==;
+	List-Owner; bh=Yg1pPS76o9yoHpBHBLzXGEn5VOrA93/iqH0wO+3R4R4=; b=rTcaoE5+4WUVvx
+	rpC2E/opjWzw3+X7JG8jynQeQtzA5OSiuMIIFN/HbGiihJFOa+Did5z/TD4tlvFUc5BhoUNAwG5SI
+	GspyumPNRGSE2UXFfZEupKGdbEHEQyseUuhee76jma7rvrYD8l2J4k7HsXPJSXX/zK225i0AVkinP
+	zeYEkl85RHzFFkDLVT2lmR/r/sq9W0084fQSSjmm438srsrkO35waxntt4t9SZNUUUFUmyNjmSaKa
+	6y2dLyOUT7icFy1IXgslc/JsK/8OH5hJN8S7S19Tmief3x5N1J8z81eedShdKfgKM/lLVVzTsKKdr
+	oy3yrsmvTUpDC4+1qMkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT6mA-001Q0h-9I; Tue, 30 Aug 2022 19:19:54 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1oT6yu-001TC4-0A; Tue, 30 Aug 2022 19:33:04 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT6lq-001PsF-Ho; Tue, 30 Aug 2022 19:19:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1661887174; x=1693423174;
-  h=from:to:cc:subject:date:message-id:mime-version:
-   content-transfer-encoding;
-  bh=uJOZWhccZ3us4fdCO9fKE4vmJtXRD4HlA06beGQNfHw=;
-  b=SkdAxiMsp0pm/o5Nnj5C93KBDuzx19c/y9cJRVNVQO4Eq3BaLzWqc1Wg
-   wx/9vOfdHEYm6Wfm7lSVueUuYGm7n8rozSIqq40SCrz+yMEQy7HwlLKie
-   uP47zNhIskWiYNGcIq6CEkW4v7jmNYUn/AODIGrK4fbjdMdKU6tScBOvV
-   oU3mN422Q5/dicV1mi6R6mgPY7ol4T0waocdN9DS+zhZKNb6aMXCNMivo
-   B7tDt7B3tqu4wp/71qbPshodPa0voeEROFrVM+xfeDHtimHYv+EdY8pgg
-   v94CpR8zfCBNjATogv3xfLoBD3n/NKHbKnUIiys9tsw97za1Qd22c+di0
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10455"; a="296064976"
-X-IronPort-AV: E=Sophos;i="5.93,275,1654585200"; 
-   d="scan'208";a="296064976"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Aug 2022 12:19:29 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,275,1654585200"; 
-   d="scan'208";a="588745431"
-Received: from black.fi.intel.com ([10.237.72.28])
-  by orsmga006.jf.intel.com with ESMTP; 30 Aug 2022 12:19:26 -0700
-Received: by black.fi.intel.com (Postfix, from userid 1003)
-	id 6E6D0AD; Tue, 30 Aug 2022 22:19:41 +0300 (EEST)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Linus Walleij <linus.walleij@linaro.org>,
-	Jianqun Xu <jay.xu@rock-chips.com>,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1oT6yh-001T7d-O6
+	for linux-rockchip@lists.infradead.org; Tue, 30 Aug 2022 19:32:53 +0000
+Received: by mail-pl1-x632.google.com with SMTP id c2so12096463plo.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 30 Aug 2022 12:32:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc;
+        bh=OYzA9p0n5o59safiaW4KMlIlfnAxPamL+boi+em99/M=;
+        b=W851mZSHA2NuVBwcGoGcf21aojaeZQ6itzde6gqVH7X2Aejqg6gmKniUdZpYCGwMgr
+         /VYzjXwux5er4xhFoJ0SDpu1AxswH9or1LBBQDLKe2Ys/Yy9YyeyaOpZ8rS2ida5eoV6
+         X2Ic6/yFW7PMZ82ej3p8GBPLvZV4vcpIpyLIg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc;
+        bh=OYzA9p0n5o59safiaW4KMlIlfnAxPamL+boi+em99/M=;
+        b=zj/vZskePr7Xr8ZKKJaNh9ASwOc/bRZwoZBcJVmHtRT8WVUeUcaS8ONm9n0KWzPna1
+         a6NBBeNGluddel+KpJHYobp2UFDKiwEkABzMb23eMeCHT2N/aop8I5nha29RrwS1HWg8
+         SHR/hNTcHG5FaHe06U/nw9tK32QQaYOkllqN2E86QZlN+mh/0DhXzaPt+SR8k3RP5zxp
+         +Apcn2JEkWadLt4UuDKrjBWTqDthjT6sskVqlLccem8vxBzd+l4OVhZoDTYn+ZWDy6nL
+         stbid7KsPpTCosdSyt9PUMLlQulU+u9Pj9JeBNyfnCwKA343J/K/pttC7u5paXZBQOIv
+         VVvQ==
+X-Gm-Message-State: ACgBeo2CMQZvNfe57Ze0HUr/+mFaCXQ99D0TOVJA2uoKbo2fyBwxh+uf
+	hbRGzTwxT7WboW6+8bfDx8VRXQ==
+X-Google-Smtp-Source: AA6agR5a1ydzTy5CU1whWuOm/VAiahfPCvqjM4F31B9VPVSXp3Z7Evq1Nk8FjLUtWiUUav60coeBOQ==
+X-Received: by 2002:a17:902:d501:b0:174:c4c9:9b77 with SMTP id b1-20020a170902d50100b00174c4c99b77mr10894828plg.67.1661887965373;
+        Tue, 30 Aug 2022 12:32:45 -0700 (PDT)
+Received: from localhost ([2620:15c:202:201:d14a:ebf8:88f1:35e])
+        by smtp.gmail.com with UTF8SMTPSA id z5-20020a17090a66c500b001f334aa9170sm8868376pjl.48.2022.08.30.12.32.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 30 Aug 2022 12:32:44 -0700 (PDT)
+From: Brian Norris <briannorris@chromium.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: zain wang <wzz@rock-chips.com>,
+	Lin Huang <hl@rock-chips.com>,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Subject: [PATCH v1 1/1] gpio: rockchip: Switch to use fwnode instead of of_node
-Date: Tue, 30 Aug 2022 22:19:39 +0300
-Message-Id: <20220830191939.56436-1-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.35.1
+	linux-arm-kernel@lists.infradead.org,
+	Douglas Anderson <dianders@chromium.org>,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Brian Norris <briannorris@chromium.org>
+Subject: [PATCH] arm64: dts: rockchip: Set RK3399-Gru PCLK_EDP to 24 MHz
+Date: Tue, 30 Aug 2022 12:32:33 -0700
+Message-Id: <20220830123231.1.I98d30623f13b785ca77094d0c0fd4339550553b6@changeid>
+X-Mailer: git-send-email 2.37.2.672.g94769d06f0-goog
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_121934_684627_4CF1D357 
-X-CRM114-Status: GOOD (  18.68  )
+X-CRM114-CacheID: sfid-20220830_123251_842667_ACAB5BD1 
+X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,169 +90,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-GPIO library now accepts fwnode as a firmware node, so
-switch the driver to use it.
+We've found the AUX channel to be less reliable with PCLK_EDP at a
+higher rate (typically 25 MHz). This is especially important on systems
+with PSR-enabled panels (like Gru-Kevin), since we make heavy, constant
+use of AUX.
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+According to Rockchip, using any rate other than 24 MHz can cause
+"problems between syncing the PHY an PCLK", which leads to all sorts of
+unreliabilities around register operations.
+
+Signed-off-by: zain wang <wzz@rock-chips.com>
+Signed-off-by: Brian Norris <briannorris@chromium.org>
 ---
- drivers/gpio/gpio-rockchip.c       | 32 ++++++++++++++++--------------
- drivers/pinctrl/pinctrl-rockchip.h |  6 ++++--
- 2 files changed, 21 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index bb50335239ac..6e847f326ff4 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -20,6 +20,7 @@
- #include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/pinctrl/pinconf-generic.h>
-+#include <linux/property.h>
- #include <linux/regmap.h>
+ arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+index 45796b9fd94f..ee6095baba4d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+@@ -244,6 +244,14 @@ &dmc {
+ &edp {
+ 	status = "okay";
  
- #include "../pinctrl/core.h"
-@@ -518,7 +519,7 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
- 	struct irq_chip_generic *gc;
- 	int ret;
- 
--	bank->domain = irq_domain_add_linear(bank->of_node, 32,
-+	bank->domain = irq_domain_create_linear(bank->fwnode, 32,
- 					&irq_generic_chip_ops, NULL);
- 	if (!bank->domain) {
- 		dev_warn(bank->dev, "could not init irq domain for bank %s\n",
-@@ -606,14 +607,14 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
- 	 * files which don't set the "gpio-ranges" property or systems that
- 	 * utilize ACPI the driver has to call gpiochip_add_pin_range().
- 	 */
--	if (!of_property_read_bool(bank->of_node, "gpio-ranges")) {
--		struct device_node *pctlnp = of_get_parent(bank->of_node);
-+	if (!fwnode_property_read_bool(bank->fwnode, "gpio-ranges")) {
-+		struct fwnode_handle *parent = fwnode_get_parent(bank->fwnode);
- 		struct pinctrl_dev *pctldev = NULL;
- 
- 		if (!pctlnp)
- 			return -ENODATA;
- 
--		pctldev = of_pinctrl_get(pctlnp);
-+		pctldev = of_pinctrl_get(to_of_node(parent));
- 		if (!pctldev)
- 			return -ENODEV;
- 
-@@ -641,10 +642,11 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
- 
- static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
- {
-+	struct device_node *node = to_of_node(bank->fwnode);
- 	struct resource res;
- 	int id = 0;
- 
--	if (of_address_to_resource(bank->of_node, 0, &res)) {
-+	if (of_address_to_resource(node, 0, &res)) {
- 		dev_err(bank->dev, "cannot find IO resource for bank\n");
- 		return -ENOENT;
- 	}
-@@ -653,11 +655,11 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
- 	if (IS_ERR(bank->reg_base))
- 		return PTR_ERR(bank->reg_base);
- 
--	bank->irq = irq_of_parse_and_map(bank->of_node, 0);
-+	bank->irq = irq_of_parse_and_map(node, 0);
- 	if (!bank->irq)
- 		return -EINVAL;
- 
--	bank->clk = of_clk_get(bank->of_node, 0);
-+	bank->clk = of_clk_get(node, 0);
- 	if (IS_ERR(bank->clk))
- 		return PTR_ERR(bank->clk);
- 
-@@ -668,7 +670,7 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
- 	if (id == GPIO_TYPE_V2 || id == GPIO_TYPE_V2_1) {
- 		bank->gpio_regs = &gpio_regs_v2;
- 		bank->gpio_type = GPIO_TYPE_V2;
--		bank->db_clk = of_clk_get(bank->of_node, 1);
-+		bank->db_clk = of_clk_get(node, 1);
- 		if (IS_ERR(bank->db_clk)) {
- 			dev_err(bank->dev, "cannot find debounce clk\n");
- 			clk_disable_unprepare(bank->clk);
-@@ -704,22 +706,22 @@ rockchip_gpio_find_bank(struct pinctrl_dev *pctldev, int id)
- static int rockchip_gpio_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
--	struct device_node *np = dev->of_node;
--	struct device_node *pctlnp = of_get_parent(np);
-+	struct fwnode_handle *fwnode = dev_fwnode(dev);
-+	struct fwnode_handle *parent = fwnode_get_parent(fwnode);
- 	struct pinctrl_dev *pctldev = NULL;
- 	struct rockchip_pin_bank *bank = NULL;
- 	struct rockchip_pin_deferred *cfg;
- 	static int gpio;
- 	int id, ret;
- 
--	if (!np || !pctlnp)
-+	if (!parent)
- 		return -ENODEV;
- 
--	pctldev = of_pinctrl_get(pctlnp);
-+	pctldev = of_pinctrl_get(to_of_node(parent));
- 	if (!pctldev)
- 		return -EPROBE_DEFER;
- 
--	id = of_alias_get_id(np, "gpio");
-+	id = of_alias_get_id(to_of_node(fwnode), "gpio");
- 	if (id < 0)
- 		id = gpio++;
- 
-@@ -728,7 +730,7 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 
- 	bank->dev = dev;
--	bank->of_node = np;
-+	bank->fwnode = fwnode;
- 
- 	raw_spin_lock_init(&bank->slock);
- 
-@@ -776,7 +778,7 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
- 	mutex_unlock(&bank->deferred_lock);
- 
- 	platform_set_drvdata(pdev, bank);
--	dev_info(dev, "probed %pOF\n", np);
-+	dev_info(dev, "probed %pfw\n", fwnode);
- 
- 	return 0;
- }
-diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-index 4759f336941e..411ed6a09842 100644
---- a/drivers/pinctrl/pinctrl-rockchip.h
-+++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -18,6 +18,8 @@
- #ifndef _PINCTRL_ROCKCHIP_H
- #define _PINCTRL_ROCKCHIP_H
- 
-+struct fwnode_handle;
++	/*
++	 * eDP PHY/clk don't sync reliably at anything other than 24 MHz. Only
++	 * set this here, because rk3399-gru.dtsi ensures we can generate this
++	 * off GPLL=600MHz, whereas some other RK3399 boards may not.
++	 */
++	assigned-clocks = <&cru PCLK_EDP>;
++	assigned-clock-rates = <24000000>;
 +
- #define RK_GPIO0_A0	0
- #define RK_GPIO0_A1	1
- #define RK_GPIO0_A2	2
-@@ -299,7 +301,7 @@ struct rockchip_drv {
-  * @drv: array describing the 4 drive strength sources of the bank
-  * @pull_type: array describing the 4 pull type sources of the bank
-  * @valid: is all necessary information present
-- * @of_node: dt node of this bank
-+ * @fwnode: firmware node of this bank
-  * @drvdata: common pinctrl basedata
-  * @domain: irqdomain of the gpio bank
-  * @gpio_chip: gpiolib chip
-@@ -327,7 +329,7 @@ struct rockchip_pin_bank {
- 	struct rockchip_drv		drv[4];
- 	enum rockchip_pin_pull_type	pull_type[4];
- 	bool				valid;
--	struct device_node		*of_node;
-+	struct fwnode_handle		*fwnode;
- 	struct rockchip_pinctrl		*drvdata;
- 	struct irq_domain		*domain;
- 	struct gpio_chip		gpio_chip;
+ 	ports {
+ 		edp_out: port@1 {
+ 			reg = <1>;
 -- 
-2.35.1
+2.37.2.672.g94769d06f0-goog
 
 
 _______________________________________________
