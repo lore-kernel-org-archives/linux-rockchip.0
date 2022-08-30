@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F56EECAAD4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 10:04:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FF19C0502A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 12:45:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2kBGgJyDS8TQc9UA1vh+yV9mRfqoCBDyYfueLPJK9t8=; b=Vxz8vE6yOMud6y
-	C7cNU1J+fP2/FPJXBxkXt3+5R2S4PT1/ZxOI+8yxClJSKR+hvDXTis0KygN4BAYOObdCfIvQMF5nU
-	83vxuS5+lXuo4mywp2Oh3PwCf6GOzBB/moWtLhMR8CaoOt5MqSnQ0aj453Gi7Jz4f8qKLAzXQ2pAF
-	bxK1jc4WtGOdiXfE6a+FqU/YQH/ycDpTjQAdiEpv1IrQD0lhgx6OOB68eAGTSSRsz2IO1sSkEfw6v
-	FYbumyuZkeefZZc6q9iGzdEk5L9APwA/Fdibzvqs0Cjgd57ZsgKxhHaabB2ugeDwWOcRswU0friQ0
-	cFxBnrMwtOWEx5jDF+Ow==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=99xoMEeiXIbA3LlBFcEMgHzzBTmchwxZcKzMKUwvqhI=; b=AXWBS0w6lW6eTv
+	jjfL/2tCK2j6zR53ltf13gb4Qx4ggmJOE1btWxllMoq6JfpnEOG6Y/jETobn5oCp5esbI7Plo8Aes
+	lvZnuNMVRZYwynMC2BoPCk1IQPTzYb420Uz7JLlP/C9fC758ik1er3PMgj/6NhiWADsDiKGSKzBQv
+	vGKcQmQU99+sMcu4RNtRL+8LI7FFU6G05ZHEAoltj1WQlRkizJVsR3ennk5E9RZUzcfAkofh0ZVTV
+	yX7AQenZ/zxpDztFxATTB96SBKaoAnLapvbTCirxXfbLHCIIbMFmi0O5mA1FEecaRAUOR0iHdQGx/
+	YDeTPnVk42qYDlDXRIMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSy6t-00G0Xf-N3; Tue, 30 Aug 2022 10:04:43 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1oT0cR-00GuKJ-AH; Tue, 30 Aug 2022 12:45:27 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oSy2u-00FyV3-14
-	for linux-rockchip@lists.infradead.org; Tue, 30 Aug 2022 10:00:37 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id bd26-20020a05600c1f1a00b003a5e82a6474so5813614wmb.4
-        for <linux-rockchip@lists.infradead.org>; Tue, 30 Aug 2022 03:00:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=0b21QXH6O+BTSjJFC+3rM4trmoZDQJp1tN7KcWJ7AWo=;
-        b=bj2skJMvdzjz078Ov7MeI6BrC+N8Z5RAt9LSxeTNWaAnfcX8+MsUHuhMzu6Zr43jXl
-         5eYhsEw9px1Nr+tnrxEsaTOoR2yVUPieVwxjNScLwOhaMlJWU4hQBD6dhxYJMR8uOcor
-         vVG1GtsCq7uf6ByVQ9ZNo6fepvO8/Ok3rtJfuXaSI2CHFZZn/04ojSlQQRVWucmrnauV
-         2Htia78+PAK8OqN2EiI+gwGHBBnlaQ4BKEz1X6+7kjG725Bx1m5INH+w9BABmX2/EPhK
-         1nv5lhnddkrwyEQHNAgxL4HnwjXIAiHaayAilECTJYlSW+2n2Ts92WPKc85Tb4391coD
-         suTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=0b21QXH6O+BTSjJFC+3rM4trmoZDQJp1tN7KcWJ7AWo=;
-        b=WsNfkumO61BQ/2ARpGEog3XsTXvY1wTbdnMtczKJiDPSFBCxSu+zjG9ypFSynDE+ZA
-         ODJuO+wZoSnrh2oXSjVd9ORfRdgK1T/N7cpim0e/N3PCWQgL1MHywD1s8AC/AZcF7bvr
-         5VcTk/5gmDz3JBz7FYYjF5ZgXkb2w7IeEux19/f8clr3VW9nh4wld8rIr0VdUUPwXJi4
-         0PRlMEyJBM5iMsOIQCQI/eoFR5frR1h3aqjiHiaXaHdW2uRgmNCT9BHxV+45qiji7K7Q
-         owddJLraxyvMr3Db/RiOBY+ywai8QcaRDUoaOFO+OIDFtbBYhe9esFn9IagRl5uZohl4
-         8hPQ==
-X-Gm-Message-State: ACgBeo1SF2Co4Nr7UE81IlLPWdJBTpC53ZDSVVagmdaliTSw+O308oPL
-	FhYk3+qrpVdEJcjiqUpQY487J2mySslWM2Y/xCrBnQ==
-X-Google-Smtp-Source: AA6agR6aNmu8tqzPRfJhzC1q15Zhh3XEe9S9CQ3NvFq+tQCjwhaY+BTSAAxNwSJGvY+m7hbap1HrnznQheLiT4TU10o=
-X-Received: by 2002:a05:600c:1550:b0:3a6:1d8c:247e with SMTP id
- f16-20020a05600c155000b003a61d8c247emr9133266wmg.63.1661853630619; Tue, 30
- Aug 2022 03:00:30 -0700 (PDT)
+	id 1oT0cL-00GuCo-EI
+	for linux-rockchip@lists.infradead.org; Tue, 30 Aug 2022 12:45:25 +0000
+Received: from jupiter.universe (dyndsl-091-096-062-005.ewe-ip-backbone.de [91.96.62.5])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6C11D6601E7E;
+	Tue, 30 Aug 2022 13:45:01 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1661863501;
+	bh=2VRCEincVJjT627e3Nw49HHXJWUdruE/J5OpojuwlDg=;
+	h=From:To:Cc:Subject:Date:From;
+	b=PY8+M/HLYy844jYchmDmj30gZp1VxCjOid7+REt9WtFD9iaX3XtaI2AmqVgbUTwUz
+	 pg0BbTXqbw700etFM2n2n+kx8DXfu8UWWoQD3Dgl0avjGm6CI6zHuAEjEXFAGEHnkr
+	 D0KvlB+DAgn7BD572H0kxaqN8bGBJvagVNfGvUvU3t2dHtoJ+3qCeG2lcS6nT532GQ
+	 1sRCWfUKSn/TTmmkVx7Gkzpar25GMiI9UR7HKPExn0w0lAGF6VTfPfeqxJGofD/Mk8
+	 xiNzbs4ZOmAZFJycbu1uvrGg+H3mOqcxtKtqr22jLZjBjswuTfeqjVOkvxHDZlK/DA
+	 l9bUI5y7E+o2w==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 5BD1E48015C; Tue, 30 Aug 2022 14:44:59 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Mark Brown <broonie@kernel.org>,
+	linux-spi@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH 1/1] spi: spi-rockchip: Add rk3588-spi compatible
+Date: Tue, 30 Aug 2022 14:44:52 +0200
+Message-Id: <20220830124452.33561-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-References: <20220829065044.1736-1-anand@edgeble.ai>
-In-Reply-To: <20220829065044.1736-1-anand@edgeble.ai>
-From: Jagan Teki <jagan@edgeble.ai>
-Date: Tue, 30 Aug 2022 15:30:19 +0530
-Message-ID: <CA+VMnFwF4UVah9rbdhwjbuTuYFXwNFuDD==x0oYDxYiO+V-c-Q@mail.gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: net: rockchip-dwmac: add rv1126
- compatible string
-To: Anand Moon <anand@edgeble.ai>
-Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	David Wu <david.wu@rock-chips.com>, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_030036_347605_0997F709 
-X-CRM114-Status: GOOD (  14.72  )
+X-CRM114-CacheID: sfid-20220830_054521_928160_20EC3B11 
+X-CRM114-Status: UNSURE (   8.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,28 +79,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 29 Aug 2022 at 12:23, Anand Moon <anand@edgeble.ai> wrote:
->
-> Add compatible string for RV1126 gmac, and constrain it to
-> be compatible with Synopsys dwmac 4.20a.
->
-> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-> Signed-off-by: Anand Moon <anand@edgeble.ai>
-> ---
->  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> index 083623c8d718..346e248a6ba5 100644
-> --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> @@ -26,6 +26,7 @@ select:
->            - rockchip,rk3399-gmac
->            - rockchip,rk3568-gmac
->            - rockchip,rv1108-gmac
-> +          - rockchip,rv1126-gmac
+This adds a compatible string for the SPI controller found in
+the RK3588 and RK3588s SoCs.
 
-it needs to be in the properties menu as well.
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+No driver changes are required for rk3588 SPI support.
+---
+ Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+index 52a78a2e362e..21f2de785102 100644
+--- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
++++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+@@ -34,6 +34,7 @@ properties:
+               - rockchip,rk3368-spi
+               - rockchip,rk3399-spi
+               - rockchip,rk3568-spi
++              - rockchip,rk3588-spi
+               - rockchip,rv1126-spi
+           - const: rockchip,rk3066-spi
+ 
+-- 
+2.35.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
