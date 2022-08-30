@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A41DECAAD5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 04:56:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4065EECAAD5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 05:34:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JUy41iYlBUHV8XDEfn4QlHaWbb969iQ2Yn7C64eAmLc=; b=mxgWth2Npfx/XH
-	+7R/3d9TTK/90xPAb/vsiO0yfqy+g6rAYsLxnEJFCASAUq1wCK9OovmTFIsCeupvM5GDyv4OH2CGB
-	XcyvhRLn0CDNwRxTCaxr+tej4E3rarssGQaeej7z32XC2gGD4pyUs2d3eJKW3CuJ5hJkLJsv+pkGe
-	Pc/XicQFskqATJc1AZNMpOQ6pQOhVxxGPb2dmALeSSZ7+9T7cQwlahKcGvB4OM5v4Q3UZjTJ7IDlr
-	qCtwRjq28dlAKjKHmderNolTIU3KhhytWPghbUJ01UeRGoWmf16t15rbnLTY9SsY6mz/o5FAbI+Fi
-	lALBgiR8ZsmWR+8M4+yg==;
+	List-Owner; bh=UMxYbVjJyjwc8AYGTML/AoE0B32XxfN+1vCkvqlzlmc=; b=tZa/Sb7LVWP2PR
+	uoVtjgc9AmWIOqGZ1GzKXf6GuQzJAt7QZ4O/UJHrQ7f9TWUwLcQf6d+37b65FNi0W8r7Z0nUjITrG
+	NL8y48Kzu8HQONtrNQgKgS/7cQemltPFbH2vMSNHosNbQNx+cCZPFzM/f4ztHB1g4vnmYAlq6ZHx/
+	kyd0lbj4QfoHiYqo8WzBtqLj5gnSIO1Avm155gBjXffjG2GtV/rdpd/0my7d46qC2tefBM+U/a/xe
+	kUrA/Q3aGK8+aQAPOH/lvFY4FvOmjSCmsIVWBLVRk2iROfXbmllo6GQGqyxZSLvGceeYZRWnPwUDq
+	ZRyn1Rcq1mTqXQHhCH3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oStIY-00E5xH-GI; Tue, 30 Aug 2022 04:56:26 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1oStt3-00EC7E-3W; Tue, 30 Aug 2022 05:34:09 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oStIM-00E5uJ-Nh
-	for linux-rockchip@lists.infradead.org; Tue, 30 Aug 2022 04:56:16 +0000
-Received: by mail-ed1-x536.google.com with SMTP id a36so8831275edf.5
-        for <linux-rockchip@lists.infradead.org>; Mon, 29 Aug 2022 21:56:13 -0700 (PDT)
+	id 1oStsp-00EC4Q-Um
+	for linux-rockchip@lists.infradead.org; Tue, 30 Aug 2022 05:33:57 +0000
+Received: by mail-ed1-x531.google.com with SMTP id b16so12717174edd.4
+        for <linux-rockchip@lists.infradead.org>; Mon, 29 Aug 2022 22:33:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=amarulasolutions.com; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc;
-        bh=Ct12KTYjiiY5loIbV4mY2fxWIuXj8jz58iaHIjxHic8=;
-        b=lna4QNb5nnAPp1vH6NVXtxzsSFkSKU2mg3KMsHJJ7kj++9vTwz1uSkt33p1QTddnAa
-         LU5go2AcbcSI9C8eoj+0B6yhKdjLkr2c53xALiMcYPrkEXq732K9mhl0QuQXNpxY6p2z
-         CPQcO2yc+iTb46wsdrmcqhfv9a562NHCDRDp8=
+        bh=iSQy0KuABBA4DDaz+1FIthx+BQumzv6M9MzfzutPt+k=;
+        b=fzhKvRCo1IN2z5/WF0zmktc9X8/AYmrVdDTxPYjL8vW21MLqDJNdkBsaY+8WeI3F6j
+         fCoMDtxn0tGAdgnndZbDI+x3tdRGXI5Joci78NVq7F4vNwj6f4d/jRBYUg0Bt/+k4n+m
+         00xA+EEGk46uGisaNqjga+EzueL7QLFKnomAg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc;
-        bh=Ct12KTYjiiY5loIbV4mY2fxWIuXj8jz58iaHIjxHic8=;
-        b=R6UJC0vBH8jLQggfmzMjt+TO7fPY5ZAAmO9Z2z7EGipruBepLX0484OOlXLMsFkmc3
-         6Yd2yQdXK/9wL+OMxMXlFD1MXBS4NCZsvXxp+vZeDHasmYHQqzeUSSy6TKIoN6VqWxpF
-         qk3OAw2GMDYuvssGLwm4q071pnBxAMReikTDPrPGiW/oP0VSjWnjDw/oE4BuJYoIjdD1
-         87pSPsDbr/slHP7n02C5indxDje04PMMiTZh9K8ETwMZaQGPR2DtoJOUWT6BcCUTOH2p
-         5h4o5YuZKv0hyqevnA9Q3WP/331urNgD3FKBI9Sz/SWfPSsel0WcozgGI190LT/x2G8S
-         Nmaw==
-X-Gm-Message-State: ACgBeo2FsvP7LVgU9A9bTCCBU5kgwRnmCXTvQPjzh45cpWk7RAe0M9JA
-	Y+wqC9z+juHtqQZOfvc5n6Aslk5VCFH1NPUWxbucMQ==
-X-Google-Smtp-Source: AA6agR6EQyA/TtFnUUL9Y3HVLcIWTXWS3OJ7y6+paUu/xnq251VjV3BwtIHPo4hCcXe200uGbKf2wdtcN8dOv0eEf+M=
-X-Received: by 2002:a05:6402:4303:b0:448:7014:ed8f with SMTP id
- m3-20020a056402430300b004487014ed8fmr6625364edc.335.1661835372254; Mon, 29
- Aug 2022 21:56:12 -0700 (PDT)
+        bh=iSQy0KuABBA4DDaz+1FIthx+BQumzv6M9MzfzutPt+k=;
+        b=JZQ5HhhX1n15MPtVYlhn+TAnk+2TO8ko9yN8v+w7TSnzhiaefL3kdyuJ2xviYe70+a
+         h389BpAA5bMsBUqpuowyIgYEYfpW3uhSVD/h3kffWMfDK0JazKpmeuySGhM6Q7JipmzS
+         wx8UqeeyiUI64+OKFAoR80JKse4Uzv1abrzgJ4z/tpcQ7K9JuRy0hd7Irt7M+qN1L2ZY
+         3DzZWVgUUHgQ1Z5kF5mxhQ+uvYmDNdK53vGsIHLXo8aGRgv5N9V0mgb/1AfitxF5sK0N
+         y+kG2me3lYup+s5sVjmEuSPhCRms08BGujBEyPZtj8vOQv+zRxji8151/kFgDYVCVQRf
+         jBAQ==
+X-Gm-Message-State: ACgBeo05M7rqRwLdyVAuQyWpjpjrwKxC9rIvjxwenYScBnmh02I7pd0A
+	3/36GR3QbL1r/lkH35VemVY6rA7w+hzmXAgiiHF2vg==
+X-Google-Smtp-Source: AA6agR6YxkdEnYvmegWsKXfKaUARXyifhSTC1u9R8gdv1mZBWHTcvhaJBQJgtfmybRtD565LDMBKCgKnx5YqZaUOQms=
+X-Received: by 2002:a05:6402:34d2:b0:448:9fac:206e with SMTP id
+ w18-20020a05640234d200b004489fac206emr3973021edc.171.1661837634234; Mon, 29
+ Aug 2022 22:33:54 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220824080903.3696847-2-jagan@amarulasolutions.com> <20220829201752.518374-1-naoki@radxa.com>
-In-Reply-To: <20220829201752.518374-1-naoki@radxa.com>
+References: <CAMty3ZDxvaFSYpjYniXwpA6Wfyyn=c8mW5XNNUaiuqSb1niC9w@mail.gmail.com>
+ <20220829210103.518467-1-naoki@radxa.com>
+In-Reply-To: <20220829210103.518467-1-naoki@radxa.com>
 From: Jagan Teki <jagan@amarulasolutions.com>
-Date: Tue, 30 Aug 2022 10:26:01 +0530
-Message-ID: <CAMty3ZAEetiD4kTLeRVved2wb_uK-MqZ3h3TQByQa-0j9TQqRg@mail.gmail.com>
+Date: Tue, 30 Aug 2022 11:03:42 +0530
+Message-ID: <CAMty3ZD2QDPKwAvJWB=kTJ+5ZtcdZhcT+No9joTkvBWnrKRmOQ@mail.gmail.com>
 Subject: Re: [PATCH 2/2] arm64: dts: rockchip: rk3399: Radxa ROCK 4C+
 To: FUKAUMI Naoki <naoki@radxa.com>
 Cc: abbaraju.manojsai@amarulasolutions.com, devicetree@vger.kernel.org, 
@@ -65,8 +66,8 @@ Cc: abbaraju.manojsai@amarulasolutions.com, devicetree@vger.kernel.org,
 	linux-amarula@amarulasolutions.com, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org, robh+dt@kernel.org, stephen@radxa.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220829_215614_872955_6843E722 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20220829_223356_032280_5554F6EA 
+X-CRM114-Status: GOOD (  13.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,34 +84,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 30, 2022 at 1:48 AM FUKAUMI Naoki <naoki@radxa.com> wrote:
+On Tue, Aug 30, 2022 at 2:31 AM FUKAUMI Naoki <naoki@radxa.com> wrote:
 >
-> Hello,
+> sorry, I noticed I sent previous email to wrong thread (v1, not v2).
 >
-> thank you very much for your work!
+> > > > +&sdmmc {
+> > > > +     bus-width = <4>;
+> > > > +     cap-mmc-highspeed;
+> > > > +     cap-sd-highspeed;
+> > > > +     card-detect-delay = <800>;
+> > > > +     disable-wp;
+> > > > +     pinctrl-names = "default";
+> > > > +     pinctrl-0 = <&sdmmc_clk &sdmmc_cd &sdmmc_cmd &sdmmc_bus4>;
+> > > > +     vqmmc-supply = <&vccio_sd>;
+> > > > +     status = "okay";
+> > > > +};
+> > >
+> > > does card detect work for you? it doesn't work for me. I think it
+> > > needs
+> >
+> > Yes. it is detecting for me. I've booted from SD. 2022.03.04 V1.2
+> > revision board.
 >
-> > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-4c-plus.dtb
+> I have same board, but I'm using eMMC as boot media. do you have any
+> eMMC module?
 >
-> this is not an objection, just a note for me, currently our(Radxa)
-> u-boot try to load "rk3399-rock-pi-4c-plus.dtb".
->
-> > +#include "rk3399-opp.dtsi"
->
-> ROCK 4C+ has RK3399-T. it needs different opp table.
->
-> > +     aliases {
-> > +             mmc0 = &sdmmc;
->
-> please add
->
->                 mmc1 = &sdhci;
->
-> as like as other ROCK (Pi) 4 series.
+> what I tried was inserting uSD card while running Linux on eMMC. it
+> didn't work.
 
-are you sure? other use the same.
+Here is booted from SD with eMMC inserted on board.
+https://gist.github.com/openedev/85fb939664b6f0803c9ce02c5b275167
 
-mmc0 = &sdmmc;
-mmc1 = &sdhci;
+Jagan.
 
 _______________________________________________
 Linux-rockchip mailing list
