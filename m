@@ -4,82 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91262ECAAD1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 18:17:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAB37ECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 18:53:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7IhxROabqfyWnREM4HDRIiEdhH2dCMII01uTIlfLOHQ=; b=hp8gGDKGsomFxt
-	YyGuHyzfOps52qFPKikBqtdmHPuUCMvwErjg7sTqZIev2h5iwmT3YT54FRAkvkpWqhV9u6m4KS4a2
-	Y50PO9+haIM+UZVUFDq4ZsQBvCGOMTo8KCWRb5jUUYvccGS2IM+3jHMhtcRErRq1uIg4nKOYkhvhO
-	EJdvcAdjtbbzkgT3h1w0WSkdzleIVr0NYR9wmDrZAtRs/Aygip6kFjzUYjTdSVeyXDe9+EmPFVyMD
-	jL+4YqL5xwxRFsoY70eFIRmjzDtG1IZ5+GnfYUODOHf8OGAZn+iBfiq9JqVVSiPaRYzJ9S5Jpt4hJ
-	m0p1L/1h1JzuZjdzLQXw==;
+	List-Owner; bh=E8TvPDy0NDTj6Gn4B20bVqzkqR+QCQMzNA5v0MQqWAs=; b=V+Nvvif7+AxIZD
+	cTTT//LdYHrrfO+W4zWI/BgOAELIgNKQi3uKVhFXZHWNnm/rOJF61iTU6r1ud93jI1G25sJPVXSeJ
+	O0ge/ilKJCREhNhC6HVQomSV2JyOiqnf4SXPbsMJkOlFHonT4n4yhfvMZ4Aguzh9jwXRg/cJmaXHD
+	uW9xKVcF7ztVKSxP/f+jUSPtacBzSGfrDPUrsY/G0CnEU08mRit18aWAU/PETFrOlUA0WZ66AHLDC
+	kBAVQ6ylQnk7h6Z3mC/NRdBLOIJxPoKCo8trPwuMCSWjmU/CjUWcljx8wYzJkeBRxeEylWnTF8/9k
+	J6NqhsZJi8B9HwvN/qHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT5nv-0018fX-AW; Tue, 30 Aug 2022 18:17:39 +0000
-Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
+	id 1oT6MZ-001J4X-B4; Tue, 30 Aug 2022 18:53:27 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT5nj-0018bW-9M
-	for linux-rockchip@lists.infradead.org; Tue, 30 Aug 2022 18:17:29 +0000
-Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-11eab59db71so14827084fac.11
-        for <linux-rockchip@lists.infradead.org>; Tue, 30 Aug 2022 11:17:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc;
-        bh=/oobhOGqi42449FzVMt/oGmisZwCvSy7BW4jgCCfch0=;
-        b=VpcBG8Kr9vdsWOXvnH/lxth7STxi7dPMe1S74WAQ0tsnMozC2LRIB+dqX1liq81G2Y
-         yyPmtCE49iIH9Fhy/cwlPemm2EGu9uniW2KsQuiF7MX+MYVFMBaMOjvwx46TrqqqRbGl
-         8XBzxZUSiHCaXKTvBxmFYuUo6Zwb1pFbLMRXsm4k7H9NogSa0vxs+LhF5EvK3e7gR2//
-         bZeUNISUliBPshw1v7PEqeHOzBzk/dUbVf5KyKBqPjWgrajFewGmNDFNb7w+KbjxQWhZ
-         UeDcBrELMkpX3E1DzJ9aovTWQ9WWdwofMXXyXTNFaT6J86/MkQfqpmI/54EVY9g1Ia6R
-         3SwA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc;
-        bh=/oobhOGqi42449FzVMt/oGmisZwCvSy7BW4jgCCfch0=;
-        b=5p3jc4yb9aiVqo7WF51UfAWhKskfxFRRj+4UWHQY1V1ZltiIcYiVb3YUefnAj0THH9
-         wMkYGHr+2umFLxPoKoJGE0UC3HeEJJZuWHPCxxJP1sim4zQbXzMUdOdQUgwQGgQ4HIGO
-         h0xCIm91hNX8QDfpYroVZ3NiI3RA/Ex/8Xl9nWll6HVFQhZflPkb803t5YNIMB8z/gLa
-         A0JK2N9kJhQymUwil+zqFnBPwHsvwETXpBZ6IFcOzaEYq+GZYKJ/aaqc2PoUUBu5pDjF
-         3bfJTxMGzLyn9l7NPqb3nMNCPcJdJCz9RLqGc47rDchg2LJjI+1DwmSyMkIdY/vQD7+T
-         +nDA==
-X-Gm-Message-State: ACgBeo0eLA22JWe+kPaiMgegn4uZ+p3lEjiUmHKpL8w808ucIZijw9Oe
-	DXgJBUu2WeMX0SZTcLYgN2QKcw==
-X-Google-Smtp-Source: AA6agR4PjkWk+Bc8nvP17VYGP14YkKDkOOcw6aw7cjJ213TLpMFs5PvxMnyRL7Ny9EsqHgqfqYsRJg==
-X-Received: by 2002:a05:6870:328d:b0:10d:ce86:ceee with SMTP id q13-20020a056870328d00b0010dce86ceeemr10941976oac.80.1661883443167;
-        Tue, 30 Aug 2022 11:17:23 -0700 (PDT)
-Received: from eze-laptop ([190.190.187.68])
-        by smtp.gmail.com with ESMTPSA id p7-20020a056830130700b006396521c804sm7532039otq.55.2022.08.30.11.17.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Aug 2022 11:17:22 -0700 (PDT)
-Date: Tue, 30 Aug 2022 15:17:16 -0300
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: mchehab@kernel.org, hverkuil@xs4all.nl, p.zabel@pengutronix.de,
-	gregkh@linuxfoundation.org, mripard@kernel.org,
-	paul.kocialkowski@bootlin.com, wens@csie.org,
-	jernej.skrabec@gmail.com, samuel@sholland.org,
-	nicolas.dufresne@collabora.com, andrzej.p@collabora.com,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-staging@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	kernel@collabora.com
-Subject: Re: [PATCH v3 1/7] media: hantro: Store HEVC bit depth in context
-Message-ID: <Yw5ULOEDLWaHQav7@eze-laptop>
-References: <20220829162159.881588-1-benjamin.gaignard@collabora.com>
- <20220829162159.881588-2-benjamin.gaignard@collabora.com>
+	id 1oT6MV-001J2e-P3
+	for linux-rockchip@lists.infradead.org; Tue, 30 Aug 2022 18:53:25 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 6DEF3B81D81;
+	Tue, 30 Aug 2022 18:53:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 62060C433D6;
+	Tue, 30 Aug 2022 18:53:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1661885601;
+	bh=n2oCNckMdWFuTnsc9BCHrAKAiEPqoAK9e1Dl3nAkMYA=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=aJGnySLbRmkplRrzI8eOM4Lv9QBHleBdnI1+59aeZesedGt53LEYzDwQHWqHVUNt0
+	 4hmlKBilLm3UOCQgYRP5HZQ16DvlcA4qXFvU6kMlXbX11xEeo20nb3atR97/9wUNE0
+	 mjBWi8qDPSs7j6SMC0F8jEJME7yF4TLsHpj4MsU1DCWmVihA+7xiv1DT3zxbgm81Pi
+	 phG8Xb3CV+2kvyAW+O0Jt+4ZOpnQU0b7tM2YN4km8IRsKztphe1kYlk1K8WTzwIJl8
+	 1uEEkgElZXWryg5XGM/ecPgDdESdf5Fn8Gu74QqwZDbw3tjYYB595pAnIDNUhJpnRA
+	 h80ACPHDtmn1g==
+From: Mark Brown <broonie@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, kernel@collabora.com, linux-spi@vger.kernel.org
+In-Reply-To: <20220830124452.33561-1-sebastian.reichel@collabora.com>
+References: <20220830124452.33561-1-sebastian.reichel@collabora.com>
+Subject: Re: [PATCH 1/1] spi: spi-rockchip: Add rk3588-spi compatible
+Message-Id: <166188559907.1148585.13680922112371234952.b4-ty@kernel.org>
+Date: Tue, 30 Aug 2022 19:53:19 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220829162159.881588-2-benjamin.gaignard@collabora.com>
+X-Mailer: b4 0.10.0-dev-65ba7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_111727_559710_6517EA5B 
-X-CRM114-Status: GOOD (  18.06  )
+X-CRM114-CacheID: sfid-20220830_115323_979627_B64A72F1 
+X-CRM114-Status: GOOD (  12.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,60 +72,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
-
-On Mon, Aug 29, 2022 at 06:21:53PM +0200, Benjamin Gaignard wrote:
-> Store HEVC bit depth in context.
-> Bit depth is equal to hevc sps bit_depth_luma_minus8 + 8.
+On Tue, 30 Aug 2022 14:44:52 +0200, Sebastian Reichel wrote:
+> This adds a compatible string for the SPI controller found in
+> the RK3588 and RK3588s SoCs.
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> 
 
-Reviewed-by: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Applied to
 
-Looks good!
-
-I have limited access to the hardware at the moment.
-
-Can you make sure things look good not only for HEVC
-but also for the other codecs?
+   broonie/spi.git for-next
 
 Thanks!
-Ezequiel
 
-> ---
-> version 3:
-> - Based on top of Ezequiel's patch "media: destage Hantro VPU driver"
->  drivers/media/platform/verisilicon/hantro_drv.c | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
-> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-> index 2036f72eeb4a..1dd8312d824c 100644
-> --- a/drivers/media/platform/verisilicon/hantro_drv.c
-> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-> @@ -251,6 +251,11 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
->  
->  static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
->  {
-> +	struct hantro_ctx *ctx;
-> +
-> +	ctx = container_of(ctrl->handler,
-> +			   struct hantro_ctx, ctrl_handler);
-> +
->  	if (ctrl->id == V4L2_CID_STATELESS_H264_SPS) {
->  		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
->  
-> @@ -272,6 +277,8 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
->  		if (sps->bit_depth_luma_minus8 != 0)
->  			/* Only 8-bit is supported */
->  			return -EINVAL;
-> +
-> +		ctx->bit_depth = sps->bit_depth_luma_minus8 + 8;
->  	} else if (ctrl->id == V4L2_CID_STATELESS_VP9_FRAME) {
->  		const struct v4l2_ctrl_vp9_frame *dec_params = ctrl->p_new.p_vp9_frame;
->  
-> -- 
-> 2.32.0
-> 
+[1/1] spi: spi-rockchip: Add rk3588-spi compatible
+      commit: fb43eb0a930ca9474484b1ff04c3fd532efdc8e3
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-rockchip mailing list
