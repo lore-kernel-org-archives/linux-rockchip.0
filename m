@@ -4,75 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2D41ECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 20:18:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57A5EECAAD5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 20:18:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UmKfapLuWUaY1UCYAhqsoD7PUBQtJ93TW2eJ0X/pwNA=; b=njjvXQ7ZIB0L34
-	FEwyYbr4Kq34SipJcXnL7ShngjejlkJCtsaa+fI385DQpMbTmqNsMfWSrSQgkV42hI+nCJ106rRxw
-	ijEPGpJSpNPfNom1qtpcO3JweyRI0aKqLohl+1I075IHODz/hkMLjGlFB0cYBBnt3bnT466zKifD/
-	REaQVnsOYfFjnb7WS01BmzZCgh9snUKS6IrxrvzqO/28GIsxF52HyvqJxuuQkCm6n0H5llolykZF/
-	eyGg+AKmwpRexReVCbmC3l8EKEn6L/ua+3/CzcZ28dYV+DIw5et0qJCGCMNCecSESd4m7iiPXuuv7
-	loAGSOHRa15XHMESWhHw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KHN0uEgWeQ+qEYwvDf0X4YDrorsEE1y/0r0HV43mhVE=; b=Y7TRthK3uq9YLm
+	FXM3YcrVWhq4/WHFnJEihN+2PENZPYoSgaY6Fr/vxTHPf215bNpwol/eaFxSi1K/JYXAQ7e1e3ydf
+	10usWyTaT7VMhMZnOzGXNQWteTFbE/x/9UInIZsKlLjc3DRkIqgk/48OBElHOZ1qz1Ko8xzMvqx0W
+	048YGc3UW8D/5ViHS1/wFWRUqLLKoW8iu6NzKi2pu5+Z2bZVgxPiT7QnFBA0yB0ZJNev48hydSqXi
+	3pxUgyWBKm5JbZH53SWlYg0yEd4mP8SVyVw9RJMwa47/jDJdzunTpG9ai0p4E79Ne8vu3YgoaHGQs
+	LnVuqTZ3TPJXMvcJU/sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT7gd-001oSC-M4; Tue, 30 Aug 2022 20:18:15 +0000
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+	id 1oT7gs-001odV-CU; Tue, 30 Aug 2022 20:18:30 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT7gM-001oHi-94
-	for linux-rockchip@lists.infradead.org; Tue, 30 Aug 2022 20:18:00 +0000
-Received: by mail-pl1-x62b.google.com with SMTP id l3so12177654plb.10
-        for <linux-rockchip@lists.infradead.org>; Tue, 30 Aug 2022 13:17:55 -0700 (PDT)
+	id 1oT7go-001oZD-PT
+	for linux-rockchip@lists.infradead.org; Tue, 30 Aug 2022 20:18:29 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id p5so13943130lfc.6
+        for <linux-rockchip@lists.infradead.org>; Tue, 30 Aug 2022 13:18:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc;
-        bh=8Amg5b56oQl+ZjuCqznlrXnzwH450EVUCei1qHh8YaA=;
-        b=cLHGfYpFjKg4LfQbdwq1ncMirzhvpWWcCdSP0WPnrYpwI08hPAR57Vp2rkQqSa9qF3
-         hbHyzoQCOctpv6ij5bBZOau+F77S2b1Nkp4Chiv+Y7dCdL+SG+iogvYy+JZfeDxyjxHp
-         tn60S3B9Ag2xe1RJovoMsTfrD1cotR/e7tnkE=
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc;
+        bh=1yeP3DjVWaMGF9lHlaP/DrKMq/Tp9AtHGNc7ptmf5YA=;
+        b=CVPzEkz5uPI8rDre+RUzmevOwuldj7MWQUhT749lZ0N2Tv8G+sg/fIPVM+Zs6FKpWa
+         drrtDv3XsftxYHApfXVOwWowWUlQj3eVEY3Q6fepbpIKIV07GtgLdZgKcb6TRRL6auBu
+         Rq9Gy61LL2U9VHkNyUjdNl160fz/KcwQY2Siw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc;
-        bh=8Amg5b56oQl+ZjuCqznlrXnzwH450EVUCei1qHh8YaA=;
-        b=lZInJi6+6Mv11phMRXT3bZHje0U6tEyn3KsdsGd75qqAZDNGs5luwX+XULz+heHOfR
-         9bNnM3fziPsMS1vJST7QJFT9ur5bf+UdRPkDi+kaBV5QXyo+3SEhDwTh3Cu/Q06gFsC1
-         /oJ3STeXtU+aIKUrP/1imG+v9IS04rADrDM/tNZ3cmdNJyeaI3C51Ol2lkBvI2l4WxIy
-         nmtT65DmnIxbyHWmADSgP2ecKUTBuB0A0XhVdtMisXWFcBXdmU5pYonZJT3XJUFgwFzK
-         WurgZj04kAg/kP3zEijvc9gTeMEvfqdEu2LKlMFfubI2meF9Jbods1IB6FlJyTgHChpJ
-         6kJA==
-X-Gm-Message-State: ACgBeo2cstR/5jUZaB0Xag4S4TGVzy84P7gOddP90rDONoEZ93X126Db
-	KLr6G/uhc3gdFZCl8YOt5ln+Zw==
-X-Google-Smtp-Source: AA6agR71P/HmC5vMFbdfvfVHoIYJy/fkqJ/ObJltZwgbWIk8mUDynhEUCoJF82BTs1NDNqkjbf5weQ==
-X-Received: by 2002:a17:90b:1e4a:b0:1f5:4f69:d6b4 with SMTP id pi10-20020a17090b1e4a00b001f54f69d6b4mr25598894pjb.164.1661890675446;
-        Tue, 30 Aug 2022 13:17:55 -0700 (PDT)
-Received: from localhost ([2620:15c:202:201:d14a:ebf8:88f1:35e])
-        by smtp.gmail.com with UTF8SMTPSA id x196-20020a6286cd000000b00536816c0d4asm10036104pfd.147.2022.08.30.13.17.54
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=1yeP3DjVWaMGF9lHlaP/DrKMq/Tp9AtHGNc7ptmf5YA=;
+        b=TMqp05dj2RTwYdw+EOrsMqfEF0VVQrrMwEd+SZJZSpkWPweCArgnl60knHOOVXkuSA
+         tzWHzSDbza5t3CBlvWuOxx++BuftQOzS9JDOHSVCJM6J0HEPsKsWsbloWnsboGqHAPZW
+         8Nv7fHjJ/6EzOmJhMsDG/dMt5E30wWjU1MVrLcAF0Sz6yN8VZInWoTHVif134GCJW3N/
+         /5X0SYLHqHqk5cMM/lCuv0Pgz3ys2k3I2GPJkB9sM4NwnJKpJZYPkJ5QCMiUktlr7Mxo
+         LecD4P/srQkr3FTb0Cn0eAbtdmN6LQ5MwJZETLAHSPD4mN1ct4fTCWn8l0mku8PZJ5dq
+         1JPA==
+X-Gm-Message-State: ACgBeo0ljSCUzCHw66GBV3TaM9U+o20pAiOD/atLMWhqsu3q2t52Laf2
+	VuC7ZAerukPH4HsmWkomuKHtBzC0MP6hbw==
+X-Google-Smtp-Source: AA6agR7KutJJaHAJeQZFyAW6NK+cvB1VGzbTe4lSsg/DixX0RAQuVhZ+YlPr4H1ITOJpgmu/hvtyeA==
+X-Received: by 2002:a05:6512:1156:b0:48a:fdea:520a with SMTP id m22-20020a056512115600b0048afdea520amr8767162lfg.138.1661890702754;
+        Tue, 30 Aug 2022 13:18:22 -0700 (PDT)
+Received: from mail-lj1-f170.google.com (mail-lj1-f170.google.com. [209.85.208.170])
+        by smtp.gmail.com with ESMTPSA id g23-20020a2e3917000000b00265181ff814sm979040lja.97.2022.08.30.13.18.21
+        for <linux-rockchip@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 Aug 2022 13:17:55 -0700 (PDT)
-From: Brian Norris <briannorris@chromium.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	zain wang <wzz@rock-chips.com>,
-	linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	Douglas Anderson <dianders@chromium.org>,
-	Lin Huang <hl@rock-chips.com>,
-	Brian Norris <briannorris@chromium.org>
-Subject: [PATCH v2] arm64: dts: rockchip: Set RK3399-Gru PCLK_EDP to 24 MHz
-Date: Tue, 30 Aug 2022 13:16:17 -0700
-Message-Id: <20220830131212.v2.1.I98d30623f13b785ca77094d0c0fd4339550553b6@changeid>
-X-Mailer: git-send-email 2.37.2.672.g94769d06f0-goog
+        Tue, 30 Aug 2022 13:18:22 -0700 (PDT)
+Received: by mail-lj1-f170.google.com with SMTP id y10so9417563ljq.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 30 Aug 2022 13:18:21 -0700 (PDT)
+X-Received: by 2002:a05:651c:241:b0:25e:65bd:3a8a with SMTP id
+ x1-20020a05651c024100b0025e65bd3a8amr7863518ljn.206.1661890700872; Tue, 30
+ Aug 2022 13:18:20 -0700 (PDT)
 MIME-Version: 1.0
+References: <20220830123231.1.I98d30623f13b785ca77094d0c0fd4339550553b6@changeid>
+ <CAD=FV=XO++XMrdZmupY8ED97W6AaU=H=sB2PN=6EpRxOOo4Afw@mail.gmail.com>
+In-Reply-To: <CAD=FV=XO++XMrdZmupY8ED97W6AaU=H=sB2PN=6EpRxOOo4Afw@mail.gmail.com>
+From: Brian Norris <briannorris@chromium.org>
+Date: Tue, 30 Aug 2022 13:18:09 -0700
+X-Gmail-Original-Message-ID: <CA+ASDXO_iqH8pPmPPH2=3RWVVDKa2XYLNEp4P=1r+b4=VsxNHw@mail.gmail.com>
+Message-ID: <CA+ASDXO_iqH8pPmPPH2=3RWVVDKa2XYLNEp4P=1r+b4=VsxNHw@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Set RK3399-Gru PCLK_EDP to 24 MHz
+To: Doug Anderson <dianders@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, 
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+	Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_131758_325027_BEBE4717 
-X-CRM114-Status: UNSURE (   9.74  )
+X-CRM114-CacheID: sfid-20220830_131826_892519_4E416DA5 
+X-CRM114-Status: UNSURE (   9.70  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,51 +95,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: zain wang <wzz@rock-chips.com>
+On Tue, Aug 30, 2022 at 12:51 PM Doug Anderson <dianders@chromium.org> wrote:
+> nit: Sinze zain wang's SoB is first then I think either the patch
+> needs to be "From" zain wang or you need some different tagging, like
+> Co-Developed-by or something.
 
-We've found the AUX channel to be less reliable with PCLK_EDP at a
-higher rate (typically 25 MHz). This is especially important on systems
-with PSR-enabled panels (like Gru-Kevin), since we make heavy, constant
-use of AUX.
+Urgh, I think I did a conflicting combination of --reedit-message= and
+--reset-author when cherry-picking / rewriting. Fixed for v2.
 
-According to Rockchip, using any rate other than 24 MHz can cause
-"problems between syncing the PHY an PCLK", which leads to all sorts of
-unreliabilities around register operations.
+> Reviewed-by: Douglas Anderson <dianders@chromium.org>
 
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
-Signed-off-by: zain wang <wzz@rock-chips.com>
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
-
-Changes in v2:
- * Add Doug's reviewed-by
- * Set authorship correctly
-
- arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-index 45796b9fd94f..ee6095baba4d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-@@ -244,6 +244,14 @@ &dmc {
- &edp {
- 	status = "okay";
- 
-+	/*
-+	 * eDP PHY/clk don't sync reliably at anything other than 24 MHz. Only
-+	 * set this here, because rk3399-gru.dtsi ensures we can generate this
-+	 * off GPLL=600MHz, whereas some other RK3399 boards may not.
-+	 */
-+	assigned-clocks = <&cru PCLK_EDP>;
-+	assigned-clock-rates = <24000000>;
-+
- 	ports {
- 		edp_out: port@1 {
- 			reg = <1>;
--- 
-2.37.2.672.g94769d06f0-goog
-
+Thanks!
 
 _______________________________________________
 Linux-rockchip mailing list
