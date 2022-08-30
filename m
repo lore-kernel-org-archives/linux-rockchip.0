@@ -4,76 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53782ECAAD5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 19:33:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48B6DECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 30 Aug 2022 19:52:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Yg1pPS76o9yoHpBHBLzXGEn5VOrA93/iqH0wO+3R4R4=; b=rTcaoE5+4WUVvx
-	rpC2E/opjWzw3+X7JG8jynQeQtzA5OSiuMIIFN/HbGiihJFOa+Did5z/TD4tlvFUc5BhoUNAwG5SI
-	GspyumPNRGSE2UXFfZEupKGdbEHEQyseUuhee76jma7rvrYD8l2J4k7HsXPJSXX/zK225i0AVkinP
-	zeYEkl85RHzFFkDLVT2lmR/r/sq9W0084fQSSjmm438srsrkO35waxntt4t9SZNUUUFUmyNjmSaKa
-	6y2dLyOUT7icFy1IXgslc/JsK/8OH5hJN8S7S19Tmief3x5N1J8z81eedShdKfgKM/lLVVzTsKKdr
-	oy3yrsmvTUpDC4+1qMkw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zBqG0e9wl/l4Xh0u/MEy59l/+pGeogpBL+z0skQnTgY=; b=mltTLHDOa7ZN4Q
+	0/XbrhyMbf5XhFkjNqcwFYdVZCU7DoEy++oEG7Jkd6+wOY/uSOX//FMve4bhjhzQsMxsol0GRc0Tn
+	wastB4KkXJOPgFg7SjuAc6AbVbpTfdtrYmFSEcpYDEJgnBT2iu8hfFyuDTEy5AkgzYDMx9ha1KyaS
+	AUzlt1pk1lA91Sp2IOz1jde40L+V0KyUDDeTpJpq+BLG1MdkalmuW8HkgCG61dNlUFAW3ouTNS0cm
+	5ANFSnZEAe0bj6Mw0SYaySOEktlJn8MgivJRmAHdEFpobXDOs0Xk3xa1Mg60OFLg1kUal3QeGzkx4
+	cwiw/vRvrTq8WIrS4e/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT6yu-001TC4-0A; Tue, 30 Aug 2022 19:33:04 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1oT7HK-001ZaQ-Ol; Tue, 30 Aug 2022 19:52:06 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oT6yh-001T7d-O6
-	for linux-rockchip@lists.infradead.org; Tue, 30 Aug 2022 19:32:53 +0000
-Received: by mail-pl1-x632.google.com with SMTP id c2so12096463plo.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 30 Aug 2022 12:32:45 -0700 (PDT)
+	id 1oT7Gu-001ZOR-39
+	for linux-rockchip@lists.infradead.org; Tue, 30 Aug 2022 19:51:41 +0000
+Received: by mail-ed1-x534.google.com with SMTP id y64so3813966ede.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 30 Aug 2022 12:51:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc;
-        bh=OYzA9p0n5o59safiaW4KMlIlfnAxPamL+boi+em99/M=;
-        b=W851mZSHA2NuVBwcGoGcf21aojaeZQ6itzde6gqVH7X2Aejqg6gmKniUdZpYCGwMgr
-         /VYzjXwux5er4xhFoJ0SDpu1AxswH9or1LBBQDLKe2Ys/Yy9YyeyaOpZ8rS2ida5eoV6
-         X2Ic6/yFW7PMZ82ej3p8GBPLvZV4vcpIpyLIg=
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date;
+        bh=y2BsAU9V1vGdt8p536WRg36dWX8Oh3MzpJrUWzUelg0=;
+        b=PKO9Ih5HCXvgFcNbUeRyybhQkiOyrhvI0hcbzTdHIAMDpYBWL9GHOUDjjY9UdWnRNU
+         Z5Ojdi4hHX6CCebuGU0G1jKXT+BjL/h/yF6zBNhY0o6zuOgUIOcw5bMFsvIG9jbbgq4F
+         5Iq5WrNcC4ROpyxhCYHMZPO3M5Fhv7/kemXOs=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc;
-        bh=OYzA9p0n5o59safiaW4KMlIlfnAxPamL+boi+em99/M=;
-        b=zj/vZskePr7Xr8ZKKJaNh9ASwOc/bRZwoZBcJVmHtRT8WVUeUcaS8ONm9n0KWzPna1
-         a6NBBeNGluddel+KpJHYobp2UFDKiwEkABzMb23eMeCHT2N/aop8I5nha29RrwS1HWg8
-         SHR/hNTcHG5FaHe06U/nw9tK32QQaYOkllqN2E86QZlN+mh/0DhXzaPt+SR8k3RP5zxp
-         +Apcn2JEkWadLt4UuDKrjBWTqDthjT6sskVqlLccem8vxBzd+l4OVhZoDTYn+ZWDy6nL
-         stbid7KsPpTCosdSyt9PUMLlQulU+u9Pj9JeBNyfnCwKA343J/K/pttC7u5paXZBQOIv
-         VVvQ==
-X-Gm-Message-State: ACgBeo2CMQZvNfe57Ze0HUr/+mFaCXQ99D0TOVJA2uoKbo2fyBwxh+uf
-	hbRGzTwxT7WboW6+8bfDx8VRXQ==
-X-Google-Smtp-Source: AA6agR5a1ydzTy5CU1whWuOm/VAiahfPCvqjM4F31B9VPVSXp3Z7Evq1Nk8FjLUtWiUUav60coeBOQ==
-X-Received: by 2002:a17:902:d501:b0:174:c4c9:9b77 with SMTP id b1-20020a170902d50100b00174c4c99b77mr10894828plg.67.1661887965373;
-        Tue, 30 Aug 2022 12:32:45 -0700 (PDT)
-Received: from localhost ([2620:15c:202:201:d14a:ebf8:88f1:35e])
-        by smtp.gmail.com with UTF8SMTPSA id z5-20020a17090a66c500b001f334aa9170sm8868376pjl.48.2022.08.30.12.32.43
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date;
+        bh=y2BsAU9V1vGdt8p536WRg36dWX8Oh3MzpJrUWzUelg0=;
+        b=uIsaK4mFSodmMU4lqpfrJGwJ2JwYXp0awhOVJelnobB7AnzucHRWMIuVsFxcvNshkr
+         Pj9CpN0P20nUFJuP/hJAfxKm5MDfhfeiQEP9TTfSroaFsM0EbU1nVcOSkoer59RP9eHx
+         U9az3jZvyOrYiQSmxjRz1ANSjJKGSJogNMjLS6L02pTQxtjTVkZbWgwKQjTxY/T9n7ex
+         QOqvNAgDN11U/j8mCPqvClOLT/lxp9bfMXP3aHhybPr0p/WMx7U/ObL7YkNrWY++byUF
+         1qRuGKamTT9aJfnG6wOjjKV1q1DeqhVCtOOSs0NYGUmzi7rEXIF3tbjNVf8D4ON2XC7s
+         f8xA==
+X-Gm-Message-State: ACgBeo17JIA9fSrhVBhZggYhzSgODCPVfExQvOjPtsAYzAu5ujYwaOMP
+	4tMZ1muvWxT84rvjpZXz/zzn8Sj3nep2geGp
+X-Google-Smtp-Source: AA6agR7CWEeYQziD/MlE8kFOQ0sC4qE2Q1Kk9oCnisuuLWCqBagxV0wVobbxRYC9l04nS9FCI0v2fw==
+X-Received: by 2002:a05:6402:120d:b0:448:e049:c665 with SMTP id c13-20020a056402120d00b00448e049c665mr2393201edw.70.1661889097608;
+        Tue, 30 Aug 2022 12:51:37 -0700 (PDT)
+Received: from mail-wr1-f48.google.com (mail-wr1-f48.google.com. [209.85.221.48])
+        by smtp.gmail.com with ESMTPSA id fv29-20020a170907509d00b00711edab7622sm6209784ejc.40.2022.08.30.12.51.36
+        for <linux-rockchip@lists.infradead.org>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 30 Aug 2022 12:32:44 -0700 (PDT)
-From: Brian Norris <briannorris@chromium.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: zain wang <wzz@rock-chips.com>,
-	Lin Huang <hl@rock-chips.com>,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	Douglas Anderson <dianders@chromium.org>,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	Brian Norris <briannorris@chromium.org>
-Subject: [PATCH] arm64: dts: rockchip: Set RK3399-Gru PCLK_EDP to 24 MHz
-Date: Tue, 30 Aug 2022 12:32:33 -0700
-Message-Id: <20220830123231.1.I98d30623f13b785ca77094d0c0fd4339550553b6@changeid>
-X-Mailer: git-send-email 2.37.2.672.g94769d06f0-goog
+        Tue, 30 Aug 2022 12:51:36 -0700 (PDT)
+Received: by mail-wr1-f48.google.com with SMTP id e20so15569237wri.13
+        for <linux-rockchip@lists.infradead.org>; Tue, 30 Aug 2022 12:51:36 -0700 (PDT)
+X-Received: by 2002:a5d:6881:0:b0:225:28cb:332f with SMTP id
+ h1-20020a5d6881000000b0022528cb332fmr9826377wru.405.1661889096492; Tue, 30
+ Aug 2022 12:51:36 -0700 (PDT)
 MIME-Version: 1.0
+References: <20220830123231.1.I98d30623f13b785ca77094d0c0fd4339550553b6@changeid>
+In-Reply-To: <20220830123231.1.I98d30623f13b785ca77094d0c0fd4339550553b6@changeid>
+From: Doug Anderson <dianders@chromium.org>
+Date: Tue, 30 Aug 2022 12:51:22 -0700
+X-Gmail-Original-Message-ID: <CAD=FV=XO++XMrdZmupY8ED97W6AaU=H=sB2PN=6EpRxOOo4Afw@mail.gmail.com>
+Message-ID: <CAD=FV=XO++XMrdZmupY8ED97W6AaU=H=sB2PN=6EpRxOOo4Afw@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Set RK3399-Gru PCLK_EDP to 24 MHz
+To: Brian Norris <briannorris@chromium.org>
+Cc: Heiko Stuebner <heiko@sntech.de>, zain wang <wzz@rock-chips.com>, Lin Huang <hl@rock-chips.com>, 
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+	Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220830_123251_842667_ACAB5BD1 
-X-CRM114-Status: UNSURE (   9.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220830_125140_209096_B77D615C 
+X-CRM114-Status: GOOD (  22.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,44 +93,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-We've found the AUX channel to be less reliable with PCLK_EDP at a
-higher rate (typically 25 MHz). This is especially important on systems
-with PSR-enabled panels (like Gru-Kevin), since we make heavy, constant
-use of AUX.
+Hi,
 
-According to Rockchip, using any rate other than 24 MHz can cause
-"problems between syncing the PHY an PCLK", which leads to all sorts of
-unreliabilities around register operations.
+On Tue, Aug 30, 2022 at 12:32 PM Brian Norris <briannorris@chromium.org> wrote:
+>
+> We've found the AUX channel to be less reliable with PCLK_EDP at a
+> higher rate (typically 25 MHz). This is especially important on systems
+> with PSR-enabled panels (like Gru-Kevin), since we make heavy, constant
+> use of AUX.
+>
+> According to Rockchip, using any rate other than 24 MHz can cause
+> "problems between syncing the PHY an PCLK", which leads to all sorts of
+> unreliabilities around register operations.
+>
+> Signed-off-by: zain wang <wzz@rock-chips.com>
+> Signed-off-by: Brian Norris <briannorris@chromium.org>
 
-Signed-off-by: zain wang <wzz@rock-chips.com>
-Signed-off-by: Brian Norris <briannorris@chromium.org>
----
+nit: Sinze zain wang's SoB is first then I think either the patch
+needs to be "From" zain wang or you need some different tagging, like
+Co-Developed-by or something.
 
- arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 8 ++++++++
- 1 file changed, 8 insertions(+)
+> ---
+>
+>  arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+> index 45796b9fd94f..ee6095baba4d 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+> @@ -244,6 +244,14 @@ &dmc {
+>  &edp {
+>         status = "okay";
+>
+> +       /*
+> +        * eDP PHY/clk don't sync reliably at anything other than 24 MHz. Only
+> +        * set this here, because rk3399-gru.dtsi ensures we can generate this
+> +        * off GPLL=600MHz, whereas some other RK3399 boards may not.
+> +        */
+> +       assigned-clocks = <&cru PCLK_EDP>;
+> +       assigned-clock-rates = <24000000>;
+> +
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-index 45796b9fd94f..ee6095baba4d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-@@ -244,6 +244,14 @@ &dmc {
- &edp {
- 	status = "okay";
- 
-+	/*
-+	 * eDP PHY/clk don't sync reliably at anything other than 24 MHz. Only
-+	 * set this here, because rk3399-gru.dtsi ensures we can generate this
-+	 * off GPLL=600MHz, whereas some other RK3399 boards may not.
-+	 */
-+	assigned-clocks = <&cru PCLK_EDP>;
-+	assigned-clock-rates = <24000000>;
-+
- 	ports {
- 		edp_out: port@1 {
- 			reg = <1>;
--- 
-2.37.2.672.g94769d06f0-goog
+Yeah, this looks right to me. From my memory of the problem:
 
+* For some reason, some devices hit it more than others (maybe just
+process variance?)
+
+* The problem affected nearly any register read or write on the eDP
+controller and wasn't rk3399 specific (other Rockchip models were
+impacted) but the failure rate was crazy low so it wasn't discovered
+until rk3399 came about and we implemented PSR and the number of
+register reads/writes to the eDP controller went through the roof.
+
+* Most other devices use GPLL at 594 so that they can use it to make
+certain standard HDMI rates. Changing other devices so GPLL = 600
+wouldn't be trivial.
+
+* It's fairly hard to change GPLL to 600 without coordinating with the
+bootloader. Certainly it could be possible, but you'd have to make
+sure that no important devices were impacted at boot when doing the
+change. gru devices bootloaders are the only known ones to set GPLL to
+600 MHz.
+
+
+So:
+
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
 
 _______________________________________________
 Linux-rockchip mailing list
