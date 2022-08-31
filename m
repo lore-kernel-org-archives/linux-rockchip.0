@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F093C0502C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Aug 2022 21:55:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5688BC0502C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Aug 2022 21:55:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3EAD5hStBaOHnxdu5KaUDWiu9ai4uo2JcZE48d3dNnw=; b=chJ+fSgDy2zL++
-	6n4uomFEXV8AIFKnIrQ2neTkHoyRQcxMn/8Xiq83INydUXbXFrCtD977HrmzEcYO70tpw3XlX6D2o
-	t8vGSHS80Iv9D522RwiGaPLEDcHmnj87e04wMn0sI0Li0pcjvJw91nT97DOjxlZuoF7hIRci1aJo6
-	J0fsK3eOYR3uoHgdFHFr5xNwCMUkqtkMX+bmSsfUMmHUkRlS3i9ydRi7fuD9053mPVW2XlZdyBBEc
-	KFZKBZ8UQ3PUytw3fXQSeaQIXBc1NVXaQf511yXaTpWGFCOcbedH2y5TyfUhzYXr7nwMvXGZklnzH
-	SQGLS2pExb/Y0RRHbjOw==;
+	List-Owner; bh=cMwD3yXum8eggA86bA+NBOXP4ixMkwF3y85PeCJF6V4=; b=xwVoQFWzoLLRLU
+	9dUOeptnG9XUpQPU3vxtRjVn+s+4E69CMDoj4Nd12C6MCI1AF91/x/sDpee/Ou877zqyOG3HTz4Sf
+	X8WiaEfZLPjayJ5MA3uDQZHYZMJ0juimDn1brcj64tKt+RrMRFi6j2P7cZrQ1mPaPClOnIyPSt2VL
+	Me3bJXWM9aHaYAlNTGJgNVU4bX1Mk1QG9iMAr0UAuUg01iViv3Xxp+O3MP5+laTxLMqofnQl+bHf0
+	pF7frcTpjFHqDX9Ce4OHjp7oZGHPRFfygb4+oHVs9f6vWAdvAKGOeKtmO4zSE5BWZWiK6SJU1Z/PL
+	O56NyA9rU7AHON1rkEZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTVfm-008Lye-I0; Wed, 31 Aug 2022 21:54:58 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oTVfp-008M0S-Bx; Wed, 31 Aug 2022 21:55:01 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTVfi-008Ltr-TW
-	for linux-rockchip@lists.infradead.org; Wed, 31 Aug 2022 21:54:56 +0000
+	id 1oTVfi-008Lts-TO
+	for linux-rockchip@lists.infradead.org; Wed, 31 Aug 2022 21:54:58 +0000
 Received: from jupiter.universe (dyndsl-091-096-057-024.ewe-ip-backbone.de [91.96.57.24])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5733A6601DF5;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5BE2B6601DF6;
 	Wed, 31 Aug 2022 22:54:45 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1661982885;
-	bh=xRma2ETMM0olKUTQ9twqk7M53dgq+Xn0+iYfdk15l2U=;
+	bh=5S+4m0o6lH0iFlvtkGlOEp3g8stIwnHQ52TSa2RRK6c=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=cxwpgh3NwSEO8ERU50SzpwKurAaSO/Wac2etpDgb6izeuLxIpwL/WNrOskN7lWhdU
-	 +QVZOtfHa2LQajvQ7zeta9F8T5fpRjtyLHFC/sPx6/I0kOgthSQSXzsXkrVtUEvaol
-	 JToxMlE004SJi83B+zciceaDzldMFlToXUOdBHB9aO590qzKFMaRtKbHZ6TnnUONlo
-	 mBG77VJRtlgibj6UGAVtcTrm/ZQ/GefI7UZSFGvmvJR9U1dgvH6rTN4DXbeSigO269
-	 pqLju7ZOFGbssUzkDMx2U7fcLkTREv23Ak6FzmIoXF8h9yJpE+q4r35r6KQ/FHMh38
-	 vCoGa2dR9EjSQ==
+	b=JaO8psS7z1SFSvVqPOp+mlLunxmGYrPVQ59onOohztFOHnnUrm9huXUNK7C0ZuZeP
+	 SiPmsMV2t4cBkLTLycypG5mXWCzvXKTtF799TotVYhbSPtceq+hnygEe7E+YAprNOS
+	 phS1O6fzkMbn3vptqOIcuPSS1bKOAK1VgIwiyXbVLLPwO0Bby4ZgnmndYg4CvZ7mly
+	 nXJFM8L7sGGjt2CF+yijwU0B3w+lgDr4OmL6o3WtDqQWkkbiIgy0zvFadCNk7WO1u/
+	 eZB7ZpU4/G8GP2GycKk+VfFta0KngLd7n0Tp6iYye2TsY3lLsuxIYviXgRVeGzPONA
+	 q8Q+SkSMKeRAA==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 3233A4805C2; Wed, 31 Aug 2022 23:54:43 +0200 (CEST)
+	id 368594805C4; Wed, 31 Aug 2022 23:54:43 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -61,16 +61,16 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH 02/13] mfd: rk808: use dev_err_probe
-Date: Wed, 31 Aug 2022 23:54:26 +0200
-Message-Id: <20220831215437.117880-3-sebastian.reichel@collabora.com>
+Subject: [PATCH 04/13] regulator: rk808: reduce 'struct rk808' usage
+Date: Wed, 31 Aug 2022 23:54:28 +0200
+Message-Id: <20220831215437.117880-5-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220831215437.117880-1-sebastian.reichel@collabora.com>
 References: <20220831215437.117880-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220831_145455_204405_B07EF490 
-X-CRM114-Status: GOOD (  14.18  )
+X-CRM114-CacheID: sfid-20220831_145455_207968_E45E7F71 
+X-CRM114-Status: GOOD (  17.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,101 +87,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use dev_err_probe instead of dev_err in probe function,
-which simplifies code a little bit and prints the error
-code.
+Reduce usage of 'struct rk808' (driver data of the parent MFD), so
+that only the chip variant field is still being accessed directly.
+This allows restructuring the MFD driver to support SPI based
+PMICs.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/mfd/rk808.c | 50 ++++++++++++++++-----------------------------
- 1 file changed, 18 insertions(+), 32 deletions(-)
+ drivers/regulator/rk808-regulator.c | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-index c17fea1d48ca..e793de9146f7 100644
---- a/drivers/mfd/rk808.c
-+++ b/drivers/mfd/rk808.c
-@@ -650,18 +650,14 @@ static int rk808_probe(struct i2c_client *client,
+diff --git a/drivers/regulator/rk808-regulator.c b/drivers/regulator/rk808-regulator.c
+index 127dc2e2e690..ce9c64cadeba 100644
+--- a/drivers/regulator/rk808-regulator.c
++++ b/drivers/regulator/rk808-regulator.c
+@@ -14,7 +14,6 @@
  
- 	/* Read chip variant */
- 	msb = i2c_smbus_read_byte_data(client, pmic_id_msb);
--	if (msb < 0) {
--		dev_err(&client->dev, "failed to read the chip id at 0x%x\n",
--			RK808_ID_MSB);
--		return msb;
--	}
-+	if (msb < 0)
-+		return dev_err_probe(&client->dev, msb, "failed to read the chip id at 0x%x\n",
-+				     RK808_ID_MSB);
+ #include <linux/delay.h>
+ #include <linux/gpio.h>
+-#include <linux/i2c.h>
+ #include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/of_gpio.h>
+@@ -1286,19 +1285,23 @@ static int rk808_regulator_dt_parse_pdata(struct device *dev,
+ static int rk808_regulator_probe(struct platform_device *pdev)
+ {
+ 	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
+-	struct i2c_client *client = rk808->i2c;
+ 	struct regulator_config config = {};
+ 	struct regulator_dev *rk808_rdev;
+ 	struct rk808_regulator_data *pdata;
+ 	const struct regulator_desc *regulators;
++	struct regmap *regmap;
+ 	int ret, i, nregulators;
  
- 	lsb = i2c_smbus_read_byte_data(client, pmic_id_lsb);
--	if (lsb < 0) {
--		dev_err(&client->dev, "failed to read the chip id at 0x%x\n",
--			RK808_ID_LSB);
--		return lsb;
--	}
-+	if (lsb < 0)
-+		return dev_err_probe(&client->dev, lsb, "failed to read the chip id at 0x%x\n",
-+				     RK808_ID_LSB);
++	regmap = dev_get_regmap(pdev->dev.parent, NULL);
++	if (!regmap)
++		return -ENODEV;
++
+ 	pdata = devm_kzalloc(&pdev->dev, sizeof(*pdata), GFP_KERNEL);
+ 	if (!pdata)
+ 		return -ENOMEM;
  
- 	rk808->variant = ((msb << 8) | lsb) & RK8XX_ID_MSK;
- 	dev_info(&client->dev, "chip id: 0x%x\n", (unsigned int)rk808->variant);
-@@ -710,44 +706,34 @@ static int rk808_probe(struct i2c_client *client,
- 	i2c_set_clientdata(client, rk808);
+-	ret = rk808_regulator_dt_parse_pdata(&pdev->dev, &client->dev,
+-					     rk808->regmap, pdata);
++	ret = rk808_regulator_dt_parse_pdata(&pdev->dev, pdev->dev.parent,
++					     regmap, pdata);
+ 	if (ret < 0)
+ 		return ret;
  
- 	rk808->regmap = devm_regmap_init_i2c(client, rk808->regmap_cfg);
--	if (IS_ERR(rk808->regmap)) {
--		dev_err(&client->dev, "regmap initialization failed\n");
--		return PTR_ERR(rk808->regmap);
--	}
-+	if (IS_ERR(rk808->regmap))
-+		return dev_err_probe(&client->dev, PTR_ERR(rk808->regmap),
-+				     "regmap initialization failed\n");
- 
--	if (!client->irq) {
--		dev_err(&client->dev, "No interrupt support, no core IRQ\n");
--		return -EINVAL;
--	}
-+	if (!client->irq)
-+		return dev_err_probe(&client->dev, -EINVAL, "No interrupt support, no core IRQ\n");
- 
- 	ret = devm_regmap_add_irq_chip(&client->dev, rk808->regmap, client->irq,
- 				       IRQF_ONESHOT, -1,
- 				       rk808->regmap_irq_chip, &rk808->irq_data);
--	if (ret) {
--		dev_err(&client->dev, "Failed to add irq_chip %d\n", ret);
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(&client->dev, ret, "Failed to add irq_chip\n");
- 
- 	for (i = 0; i < nr_pre_init_regs; i++) {
- 		ret = regmap_update_bits(rk808->regmap,
- 					pre_init_reg[i].addr,
- 					pre_init_reg[i].mask,
- 					pre_init_reg[i].value);
--		if (ret) {
--			dev_err(&client->dev,
--				"0x%x write err\n",
--				pre_init_reg[i].addr);
--			return ret;
--		}
-+		if (ret)
-+			return dev_err_probe(&client->dev, ret, "0x%x write err\n",
-+					     pre_init_reg[i].addr);
+@@ -1326,21 +1329,22 @@ static int rk808_regulator_probe(struct platform_device *pdev)
+ 		nregulators = RK818_NUM_REGULATORS;
+ 		break;
+ 	default:
+-		dev_err(&client->dev, "unsupported RK8XX ID %lu\n",
++		dev_err(&pdev->dev, "unsupported RK8XX ID %lu\n",
+ 			rk808->variant);
+ 		return -EINVAL;
  	}
  
- 	ret = devm_mfd_add_devices(&client->dev, PLATFORM_DEVID_NONE,
- 			      cells, nr_cells, NULL, 0,
- 			      regmap_irq_get_domain(rk808->irq_data));
--	if (ret) {
--		dev_err(&client->dev, "failed to add MFD devices %d\n", ret);
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(&client->dev, ret, "failed to add MFD devices\n");
+-	config.dev = &client->dev;
++	config.dev = &pdev->dev;
++	config.dev->of_node = pdev->dev.parent->of_node;
+ 	config.driver_data = pdata;
+-	config.regmap = rk808->regmap;
++	config.regmap = regmap;
  
- 	if (of_property_read_bool(np, "rockchip,system-power-controller")) {
- 		ret = devm_register_sys_off_handler(&client->dev,
+ 	/* Instantiate the regulators */
+ 	for (i = 0; i < nregulators; i++) {
+ 		rk808_rdev = devm_regulator_register(&pdev->dev,
+ 						     &regulators[i], &config);
+ 		if (IS_ERR(rk808_rdev)) {
+-			dev_err(&client->dev,
++			dev_err(&pdev->dev,
+ 				"failed to register %d regulator\n", i);
+ 			return PTR_ERR(rk808_rdev);
+ 		}
 -- 
 2.35.1
 
