@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7845C65C0D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38808C0502C
 	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Aug 2022 21:55:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,38 +12,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dxKQQOKbmGtQXcSp966zcO2zOqxW98LuqyragE7goIE=; b=CIWa3OOx5D0s98
-	TtLYy615poaYjpLMtG2oivFBJ0/+AfgH13z4bfInU0cI1UEg3IW7XgKbc9B2BwKZCJ3mlx9Yy2QFJ
-	L6siETYf1L2esIvk8XXgCg0JvfZvAJhZtWSeTxbG29wSpA62RduzMofY7b+xcadf4fw8mRkXgGRR1
-	Lm2RsIZ6+tky1pZiVzEghvFucWUOSRVC4zQkGgBBKeI0ZLV3gfW8VD55g3QdMQrH6iHdTBTO9medO
-	Pd/6+t6NAR+Hiy0/fYAQwZWoI3jJgHhjNg2sWYfn6ZpCwQ9f4DQiU0mMT+YqnXlWTvX+TIogCa2Xw
-	YjMkkrLlJZI5Ehd3yRZA==;
+	List-Owner; bh=iUmZkWROOvIUSVEJ7Q10DNqyo17/A6Ey5tnDHUpzfg0=; b=lC18YXw8UMEga0
+	YmkrMozw8Um29flxuwQMG0stTMnI2yGjUaeIyZlltVGrgKZ/joibFZnW4VUJrKlPWA33yN0HiOszI
+	5a1HWb8kmE7OJzeziFhYjgB0MEN+54cSRvhx6qyURJl625dirCpalLrGLSbUsGqR+RHA906sgPu/I
+	SMthFjGROJUW/i+xaLMPeR/jNgJo41SZG32aRI1XKt7vz7Sw5RzGeCH7tDCtkdVoGaw14SGBfamhu
+	99EDlT/6CBEhAtduaKeSQJ2Xgdk8JS8qKPvphLrBYsYMIW9ZbpycCqQYekX0s7U+h5sJQ81E+DYIS
+	7e3pZBrMRNmaAtOhBIvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTVfr-008M1X-Ar; Wed, 31 Aug 2022 21:55:03 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oTVft-008M2j-5X; Wed, 31 Aug 2022 21:55:05 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTVfi-008Ltn-TV
-	for linux-rockchip@lists.infradead.org; Wed, 31 Aug 2022 21:54:58 +0000
+	id 1oTVfl-008LxP-Mc
+	for linux-rockchip@lists.infradead.org; Wed, 31 Aug 2022 21:54:59 +0000
 Received: from jupiter.universe (dyndsl-091-096-057-024.ewe-ip-backbone.de [91.96.57.24])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4030B6601DF0;
-	Wed, 31 Aug 2022 22:54:45 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 4755E6601E36;
+	Wed, 31 Aug 2022 22:54:47 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661982885;
-	bh=s6um36bR3kLKecIG+7jDV13ngBnOF98lUyD4ZvCww6w=;
+	s=mail; t=1661982887;
+	bh=R4fBrM9rqeqbOvgCgAUdSKO4cpSM8keuJE8guAqZn9c=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=aosjWFxSIx+3UhlqDgyiKIrMX/GCNjueT5Af0pdMKoBgxv3yX2+pABzoaVilebQTu
-	 21Xv1nwse2kodYteSGx3OIwAf/dQuo6TWZr4seVkH7nZ4q974zHdKGOvloU41QLWW9
-	 qfeMy5ymEhuyGZbtBohC8upHZDUb1b5aehJ8upa1cvOKfSJLZkPPRyCcMu5Q+TEI7/
-	 +ahWMSiG3stsQWIwlA4yHPjUWJqI66rse01lhhVm1mjiq/evauZCcUlj0cwrSP6oyA
-	 PjOApKFQyxY/X+DBDEKp23kXLAg1Zmbn2AUq483BPeWMJAw+lJaiqdS3UEVSlNQljF
-	 3rJlXwpygs5Lw==
+	b=goIa8C14+4amkitdwx4vWfZ0nrDE1rHpvJC5r2NrdJVS5l5RnGTdJIAk+BDPlsrGh
+	 ZzmzaTbz+68AXlkISA4rE6aG1TIg/UETtNk//50oWFWCfO64zpL2gBizvAEb9dlk2a
+	 UMDlDtfvh2+6jYiz15PomsqL54zp3qMgNx1xfWgr2QN7m68jVEQiJlZClIw8XunGnk
+	 0PzOY7RfUweXqjlR2E1wiQhYYkerQL6bW9gWOXPvYZsu6VAziaeLHhBvI3jZHVjdmn
+	 lIkv5qhyGTOyDBxpAkYObbGzKai/IqpoX2Gqep5hrSAI466qP1a70/3ysRtbg7aoY8
+	 opCjGfZUkfISA==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 347024805C3; Wed, 31 Aug 2022 23:54:43 +0200 (CEST)
+	id 3B00748078D; Wed, 31 Aug 2022 23:54:43 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -61,16 +61,16 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH 03/13] clk: RK808: reduce 'struct rk808' usage
-Date: Wed, 31 Aug 2022 23:54:27 +0200
-Message-Id: <20220831215437.117880-4-sebastian.reichel@collabora.com>
+Subject: [PATCH 06/13] mfd: rk808: replace 'struct i2c_client' with 'struct device'
+Date: Wed, 31 Aug 2022 23:54:30 +0200
+Message-Id: <20220831215437.117880-7-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220831215437.117880-1-sebastian.reichel@collabora.com>
 References: <20220831215437.117880-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220831_145455_249098_87AD4F9E 
-X-CRM114-Status: GOOD (  18.25  )
+X-CRM114-CacheID: sfid-20220831_145457_889336_CE9E5043 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,130 +87,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Reduce usage of 'struct rk808' (driver data of the parent MFD), so
-that only the chip variant field is still being accessed directly.
-This allows restructuring the MFD driver to support SPI based
-PMICs.
+Put 'struct device' pointer into the MFD platform_data instead
+of the 'struct i2c_client' pointer. This simplifies the code
+and prepares the MFD for SPI support.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/clk/clk-rk808.c | 34 ++++++++++++++++------------------
- 1 file changed, 16 insertions(+), 18 deletions(-)
+ drivers/mfd/rk808.c       | 6 +++---
+ include/linux/mfd/rk808.h | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/clk/clk-rk808.c b/drivers/clk/clk-rk808.c
-index 32f833d732ed..f7412b137e5e 100644
---- a/drivers/clk/clk-rk808.c
-+++ b/drivers/clk/clk-rk808.c
-@@ -12,10 +12,9 @@
- #include <linux/slab.h>
- #include <linux/platform_device.h>
- #include <linux/mfd/rk808.h>
--#include <linux/i2c.h>
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index e793de9146f7..7baa0e484ac0 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -556,7 +556,7 @@ static int rk808_power_off(struct sys_off_data *data)
+ 	}
+ 	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
+ 	if (ret)
+-		dev_err(&rk808->i2c->dev, "Failed to shutdown device!\n");
++		dev_err(rk808->dev, "Failed to shutdown device!\n");
  
- struct rk808_clkout {
--	struct rk808 *rk808;
-+	struct regmap		*regmap;
- 	struct clk_hw		clkout1_hw;
- 	struct clk_hw		clkout2_hw;
+ 	return NOTIFY_DONE;
+ }
+@@ -579,7 +579,7 @@ static int rk808_restart(struct sys_off_data *data)
+ 	}
+ 	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
+ 	if (ret)
+-		dev_err(&rk808->i2c->dev, "Failed to restart device!\n");
++		dev_err(rk808->dev, "Failed to restart device!\n");
+ 
+ 	return NOTIFY_DONE;
+ }
+@@ -702,7 +702,7 @@ static int rk808_probe(struct i2c_client *client,
+ 		return -EINVAL;
+ 	}
+ 
+-	rk808->i2c = client;
++	rk808->dev = &client->dev;
+ 	i2c_set_clientdata(client, rk808);
+ 
+ 	rk808->regmap = devm_regmap_init_i2c(client, rk808->regmap_cfg);
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index 58602032e642..9937b068fa82 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -696,7 +696,7 @@ enum {
  };
-@@ -31,9 +30,8 @@ static int rk808_clkout2_enable(struct clk_hw *hw, bool enable)
- 	struct rk808_clkout *rk808_clkout = container_of(hw,
- 							 struct rk808_clkout,
- 							 clkout2_hw);
--	struct rk808 *rk808 = rk808_clkout->rk808;
  
--	return regmap_update_bits(rk808->regmap, RK808_CLK32OUT_REG,
-+	return regmap_update_bits(rk808_clkout->regmap, RK808_CLK32OUT_REG,
- 				  CLK32KOUT2_EN, enable ? CLK32KOUT2_EN : 0);
- }
- 
-@@ -52,10 +50,9 @@ static int rk808_clkout2_is_prepared(struct clk_hw *hw)
- 	struct rk808_clkout *rk808_clkout = container_of(hw,
- 							 struct rk808_clkout,
- 							 clkout2_hw);
--	struct rk808 *rk808 = rk808_clkout->rk808;
- 	uint32_t val;
- 
--	int ret = regmap_read(rk808->regmap, RK808_CLK32OUT_REG, &val);
-+	int ret = regmap_read(rk808_clkout->regmap, RK808_CLK32OUT_REG, &val);
- 
- 	if (ret < 0)
- 		return ret;
-@@ -93,9 +90,8 @@ static int rk817_clkout2_enable(struct clk_hw *hw, bool enable)
- 	struct rk808_clkout *rk808_clkout = container_of(hw,
- 							 struct rk808_clkout,
- 							 clkout2_hw);
--	struct rk808 *rk808 = rk808_clkout->rk808;
- 
--	return regmap_update_bits(rk808->regmap, RK817_SYS_CFG(1),
-+	return regmap_update_bits(rk808_clkout->regmap, RK817_SYS_CFG(1),
- 				  RK817_CLK32KOUT2_EN,
- 				  enable ? RK817_CLK32KOUT2_EN : 0);
- }
-@@ -115,10 +111,9 @@ static int rk817_clkout2_is_prepared(struct clk_hw *hw)
- 	struct rk808_clkout *rk808_clkout = container_of(hw,
- 							 struct rk808_clkout,
- 							 clkout2_hw);
--	struct rk808 *rk808 = rk808_clkout->rk808;
- 	unsigned int val;
- 
--	int ret = regmap_read(rk808->regmap, RK817_SYS_CFG(1), &val);
-+	int ret = regmap_read(rk808_clkout->regmap, RK817_SYS_CFG(1), &val);
- 
- 	if (ret < 0)
- 		return 0;
-@@ -153,18 +148,21 @@ static const struct clk_ops *rkpmic_get_ops(long variant)
- static int rk808_clkout_probe(struct platform_device *pdev)
- {
- 	struct rk808 *rk808 = dev_get_drvdata(pdev->dev.parent);
--	struct i2c_client *client = rk808->i2c;
--	struct device_node *node = client->dev.of_node;
-+	struct device *dev = &pdev->dev;
- 	struct clk_init_data init = {};
- 	struct rk808_clkout *rk808_clkout;
- 	int ret;
- 
--	rk808_clkout = devm_kzalloc(&client->dev,
-+	dev->of_node = pdev->dev.parent->of_node;
-+
-+	rk808_clkout = devm_kzalloc(dev,
- 				    sizeof(*rk808_clkout), GFP_KERNEL);
- 	if (!rk808_clkout)
- 		return -ENOMEM;
- 
--	rk808_clkout->rk808 = rk808;
-+	rk808_clkout->regmap = dev_get_regmap(pdev->dev.parent, NULL);
-+	if (!rk808_clkout->regmap)
-+		return -ENODEV;
- 
- 	init.parent_names = NULL;
- 	init.num_parents = 0;
-@@ -173,10 +171,10 @@ static int rk808_clkout_probe(struct platform_device *pdev)
- 	rk808_clkout->clkout1_hw.init = &init;
- 
- 	/* optional override of the clockname */
--	of_property_read_string_index(node, "clock-output-names",
-+	of_property_read_string_index(dev->of_node, "clock-output-names",
- 				      0, &init.name);
- 
--	ret = devm_clk_hw_register(&client->dev, &rk808_clkout->clkout1_hw);
-+	ret = devm_clk_hw_register(dev, &rk808_clkout->clkout1_hw);
- 	if (ret)
- 		return ret;
- 
-@@ -185,10 +183,10 @@ static int rk808_clkout_probe(struct platform_device *pdev)
- 	rk808_clkout->clkout2_hw.init = &init;
- 
- 	/* optional override of the clockname */
--	of_property_read_string_index(node, "clock-output-names",
-+	of_property_read_string_index(dev->of_node, "clock-output-names",
- 				      1, &init.name);
- 
--	ret = devm_clk_hw_register(&client->dev, &rk808_clkout->clkout2_hw);
-+	ret = devm_clk_hw_register(dev, &rk808_clkout->clkout2_hw);
- 	if (ret)
- 		return ret;
- 
+ struct rk808 {
+-	struct i2c_client		*i2c;
++	struct device			*dev;
+ 	struct regmap_irq_chip_data	*irq_data;
+ 	struct regmap			*regmap;
+ 	long				variant;
 -- 
 2.35.1
 
