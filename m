@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10AFAC0502C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Aug 2022 21:55:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4424EC65C0D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 31 Aug 2022 21:55:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ivOvQqFndGza1URasz4BxKwDgF3v2tF2ebuV0Sn1Ijg=; b=gWI30QY6JXAGjh
-	yvKCYrrLb1E7Mb9c7zC3AlcG1wgB5Ml+8Qht4OImDD7+0W56ud9GNcuEhOitp6UR5irUyO9PXYPt0
-	IG/q2w+q/VEjcPJLcX0bGzC5/AQeZY2GJcjNg5UPMv3XaJr6UzVk5pDNYKdKsWAxucTpZVk2Vpou5
-	ryicj2Cq8cssmSmknrlA4rFRApLP8wh0VK5rsf6og80weycB5ExahB+GNiPbjgcgqim/yLc/F30Il
-	X+WPk4IFimkZbZS3MDwF18wtm3aRE4pTyCvsuo8AzB7+h6dpMxMgt+prEHdhwPG5mR013IexNWd65
-	T/86jxgtDsF+6F+SvM+Q==;
+	List-Owner; bh=+2XohQ0Q2z1R2CIpZx0/K2LafpnTwXvz3sfHsK1iGp4=; b=fewBs3tYLd7Cx1
+	PHnUy1Ed/ds1zPftYNCPQnDuhnmNUj4TPsRv9O9R0QAQxQ2RhCi6HQFaU7XLOWY3YapkH+JF7/FVp
+	LMSpxNJ/ggPIkMDc9okBvfU6nSh4P7gibBqEyEukY8Fyj6luygnG5EVsDK7DbJ9RFyTCTMhzwoy/j
+	MMeTrJLxy/CQM5zSJUiK/01sntOZb9Q9wX3qSzcGq5uc9jLGxfSpmbo2+P2zX2wumlcS14yqc5+IK
+	WX6jae99ky17aiwezazBPlSdK+rKEM4U++YkbNmb5ePABzgMJxjOxxMhKrOSazOQnAyhDolNmecn/
+	n0/KwFzoxIsgD/fyieIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTVfs-008M28-7L; Wed, 31 Aug 2022 21:55:04 +0000
+	id 1oTVft-008M39-Qz; Wed, 31 Aug 2022 21:55:05 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTVfi-008Ltq-TP
-	for linux-rockchip@lists.infradead.org; Wed, 31 Aug 2022 21:54:58 +0000
+	id 1oTVfl-008LxO-Md
+	for linux-rockchip@lists.infradead.org; Wed, 31 Aug 2022 21:55:00 +0000
 Received: from jupiter.universe (dyndsl-091-096-057-024.ewe-ip-backbone.de [91.96.57.24])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 52D2B6601DF4;
-	Wed, 31 Aug 2022 22:54:45 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 3CD376601E12;
+	Wed, 31 Aug 2022 22:54:47 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1661982885;
-	bh=IM+Bej5pINQkC3tmilDIvrNJfMrYRMJBQqOcyrnxP/g=;
+	s=mail; t=1661982887;
+	bh=3faowH+5ibRfyzdhAh0qyCYur20Vl2sYg1H59CoLmc4=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=JU46dlcFsfea3ueCVo+o42Udfhbv7Q0N6vFU2q7FCO82cwourRnVWz70W1e2ZNAqp
-	 YEAGXGGrcBY6GJWyhVuzYnd84Xq5XrE/KAhAAebvgi/jywtdrLoav6hnUBvfXahIS6
-	 M39SHK9ryEts1zRACY95jSlaCNdfGwwF1jp42cMaoNv4qJxrmKq07/THUh9Jv6z3Vl
-	 ddJwA4/GUF/7gqz7O1jwfHBj/9OKFo+UdF2mBDUJIE1pPFYWtAMKIhM8/oq7VH/58M
-	 YC0fMPevLjqOD/79nIfJIGU1ipRE+Y7wy/ND2kl5r7FRKtSbB7jspcMB0K+NwripYb
-	 Pz0WA+RcgqJYw==
+	b=fd+g3qiAfN11Ak6tvtgg8KQbUBQmazjK2z/dulEmRmpHkf3ts7O2VWZjBcwMTwxh6
+	 bpAhyUwOs/6dO7cYhBw36CKMpEn8VotDYB1baNJxQlFO6eSPuaHADjmzFSHHeNcw9X
+	 um3muE62bIrLEl4se1arRUbUJsbfoc6XI2tILm+Lnduz4CUyNPPnOPoBwyyYhom1Yz
+	 c+GawUgDWpzn8HUiPADQ2TMt5Epfy+Di3URGw/Mk6aAOFCW9i+T3Nh4+IHvLj96qKa
+	 p8SKMRVyII2GVWV0pwsgSaYDf6pZ3bcQ8z7rseQx9gGsszvjVCSuTiMMTze8td6ncn
+	 w1COAQnnfPhzg==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 2F9C648015E; Wed, 31 Aug 2022 23:54:43 +0200 (CEST)
+	id 38D374805C5; Wed, 31 Aug 2022 23:54:43 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -61,16 +61,16 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCH 01/13] mfd: rk808: convert to device managed resources
-Date: Wed, 31 Aug 2022 23:54:25 +0200
-Message-Id: <20220831215437.117880-2-sebastian.reichel@collabora.com>
+Subject: [PATCH 05/13] rtc: rk808: reduce 'struct rk808' usage
+Date: Wed, 31 Aug 2022 23:54:29 +0200
+Message-Id: <20220831215437.117880-6-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220831215437.117880-1-sebastian.reichel@collabora.com>
 References: <20220831215437.117880-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220831_145455_235386_617C6A50 
-X-CRM114-Status: GOOD (  18.32  )
+X-CRM114-CacheID: sfid-20220831_145457_894566_534C1601 
+X-CRM114-Status: GOOD (  20.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,152 +87,215 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fully convert the driver to device managed resources.
+Reduce usage of 'struct rk808' (driver data of the parent MFD), so
+that only the chip variant field is still being accessed directly.
+This allows restructuring the MFD driver to support SPI based
+PMICs.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/mfd/rk808.c | 66 +++++++++++++++------------------------------
- 1 file changed, 22 insertions(+), 44 deletions(-)
+ drivers/rtc/rtc-rk808.c | 47 ++++++++++++++++++-----------------------
+ 1 file changed, 20 insertions(+), 27 deletions(-)
 
-diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
-index 4142b638e5fa..c17fea1d48ca 100644
---- a/drivers/mfd/rk808.c
-+++ b/drivers/mfd/rk808.c
-@@ -527,13 +527,11 @@ static const struct regmap_irq_chip rk818_irq_chip = {
- 	.init_ack_masked = true,
+diff --git a/drivers/rtc/rtc-rk808.c b/drivers/rtc/rtc-rk808.c
+index e920da8c08da..2d9bcb3ce1e3 100644
+--- a/drivers/rtc/rtc-rk808.c
++++ b/drivers/rtc/rtc-rk808.c
+@@ -14,7 +14,6 @@
+ #include <linux/bcd.h>
+ #include <linux/mfd/rk808.h>
+ #include <linux/platform_device.h>
+-#include <linux/i2c.h>
+ 
+ /* RTC_CTRL_REG bitfields */
+ #define BIT_RTC_CTRL_REG_STOP_RTC_M		BIT(0)
+@@ -51,7 +50,7 @@ struct rk_rtc_compat_reg {
  };
  
--static struct i2c_client *rk808_i2c_client;
--
--static void rk808_pm_power_off(void)
-+static int rk808_power_off(struct sys_off_data *data)
+ struct rk808_rtc {
+-	struct rk808 *rk808;
++	struct regmap *regmap;
+ 	struct rtc_device *rtc;
+ 	struct rk_rtc_compat_reg *creg;
+ 	int irq;
+@@ -97,12 +96,11 @@ static void gregorian_to_rockchip(struct rtc_time *tm)
+ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
  {
-+	struct rk808 *rk808 = data->cb_data;
- 	int ret;
- 	unsigned int reg, bit;
--	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
- 
- 	switch (rk808->variant) {
- 	case RK805_ID:
-@@ -554,16 +552,18 @@ static void rk808_pm_power_off(void)
- 		bit = DEV_OFF;
- 		break;
- 	default:
--		return;
-+		return NOTIFY_DONE;
- 	}
- 	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
- 	if (ret)
--		dev_err(&rk808_i2c_client->dev, "Failed to shutdown device!\n");
-+		dev_err(&rk808->i2c->dev, "Failed to shutdown device!\n");
-+
-+	return NOTIFY_DONE;
- }
- 
--static int rk808_restart_notify(struct notifier_block *this, unsigned long mode, void *cmd)
-+static int rk808_restart(struct sys_off_data *data)
- {
--	struct rk808 *rk808 = i2c_get_clientdata(rk808_i2c_client);
-+	struct rk808 *rk808 = data->cb_data;
- 	unsigned int reg, bit;
+ 	struct rk808_rtc *rk808_rtc = dev_get_drvdata(dev);
+-	struct rk808 *rk808 = rk808_rtc->rk808;
+ 	u8 rtc_data[NUM_TIME_REGS];
  	int ret;
  
-@@ -579,16 +579,11 @@ static int rk808_restart_notify(struct notifier_block *this, unsigned long mode,
- 	}
- 	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
- 	if (ret)
--		dev_err(&rk808_i2c_client->dev, "Failed to restart device!\n");
-+		dev_err(&rk808->i2c->dev, "Failed to restart device!\n");
- 
- 	return NOTIFY_DONE;
- }
- 
--static struct notifier_block rk808_restart_handler = {
--	.notifier_call = rk808_restart_notify,
--	.priority = 192,
--};
--
- static void rk8xx_shutdown(struct i2c_client *client)
- {
- 	struct rk808 *rk808 = i2c_get_clientdata(client);
-@@ -725,9 +720,9 @@ static int rk808_probe(struct i2c_client *client,
- 		return -EINVAL;
- 	}
- 
--	ret = regmap_add_irq_chip(rk808->regmap, client->irq,
--				  IRQF_ONESHOT, -1,
--				  rk808->regmap_irq_chip, &rk808->irq_data);
-+	ret = devm_regmap_add_irq_chip(&client->dev, rk808->regmap, client->irq,
-+				       IRQF_ONESHOT, -1,
-+				       rk808->regmap_irq_chip, &rk808->irq_data);
+ 	/* Force an update of the shadowed registers right now */
+-	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
++	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
+ 				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
+ 				 BIT_RTC_CTRL_REG_RTC_GET_TIME);
  	if (ret) {
- 		dev_err(&client->dev, "Failed to add irq_chip %d\n", ret);
+@@ -116,7 +114,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
+ 	 * 32khz. If we clear the GET_TIME bit here, the time of i2c transfer
+ 	 * certainly more than 31.25us: 16 * 2.5us at 400kHz bus frequency.
+ 	 */
+-	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
++	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
+ 				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
+ 				 0);
+ 	if (ret) {
+@@ -124,7 +122,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
  		return ret;
-@@ -751,17 +746,23 @@ static int rk808_probe(struct i2c_client *client,
- 			      regmap_irq_get_domain(rk808->irq_data));
+ 	}
+ 
+-	ret = regmap_bulk_read(rk808->regmap, rk808_rtc->creg->seconds_reg,
++	ret = regmap_bulk_read(rk808_rtc->regmap, rk808_rtc->creg->seconds_reg,
+ 			       rtc_data, NUM_TIME_REGS);
  	if (ret) {
- 		dev_err(&client->dev, "failed to add MFD devices %d\n", ret);
--		goto err_irq;
-+		return ret;
+ 		dev_err(dev, "Failed to bulk read rtc_data: %d\n", ret);
+@@ -148,7 +146,6 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
+ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
+ {
+ 	struct rk808_rtc *rk808_rtc = dev_get_drvdata(dev);
+-	struct rk808 *rk808 = rk808_rtc->rk808;
+ 	u8 rtc_data[NUM_TIME_REGS];
+ 	int ret;
+ 
+@@ -163,7 +160,7 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
+ 	rtc_data[6] = bin2bcd(tm->tm_wday);
+ 
+ 	/* Stop RTC while updating the RTC registers */
+-	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
++	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
+ 				 BIT_RTC_CTRL_REG_STOP_RTC_M,
+ 				 BIT_RTC_CTRL_REG_STOP_RTC_M);
+ 	if (ret) {
+@@ -171,14 +168,14 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
+ 		return ret;
  	}
  
- 	if (of_property_read_bool(np, "rockchip,system-power-controller")) {
--		rk808_i2c_client = client;
--		pm_power_off = rk808_pm_power_off;
-+		ret = devm_register_sys_off_handler(&client->dev,
-+				    SYS_OFF_MODE_POWER_OFF_PREPARE, SYS_OFF_PRIO_HIGH,
-+				    &rk808_power_off, rk808);
-+		if (ret)
-+			return dev_err_probe(&client->dev, ret,
-+					     "failed to register poweroff handler\n");
+-	ret = regmap_bulk_write(rk808->regmap, rk808_rtc->creg->seconds_reg,
++	ret = regmap_bulk_write(rk808_rtc->regmap, rk808_rtc->creg->seconds_reg,
+ 				rtc_data, NUM_TIME_REGS);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to bull write rtc_data: %d\n", ret);
+ 		return ret;
+ 	}
+ 	/* Start RTC again */
+-	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
++	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
+ 				 BIT_RTC_CTRL_REG_STOP_RTC_M, 0);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to update RTC control: %d\n", ret);
+@@ -191,12 +188,11 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
+ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ {
+ 	struct rk808_rtc *rk808_rtc = dev_get_drvdata(dev);
+-	struct rk808 *rk808 = rk808_rtc->rk808;
+ 	u8 alrm_data[NUM_ALARM_REGS];
+ 	uint32_t int_reg;
+ 	int ret;
  
- 		switch (rk808->variant) {
- 		case RK809_ID:
- 		case RK817_ID:
--			ret = register_restart_handler(&rk808_restart_handler);
-+			ret = devm_register_sys_off_handler(&client->dev,
-+							    SYS_OFF_MODE_RESTART, SYS_OFF_PRIO_HIGH,
-+							    &rk808_restart, rk808);
- 			if (ret)
- 				dev_warn(&client->dev, "failed to register rst handler, %d\n", ret);
- 			break;
-@@ -771,28 +772,6 @@ static int rk808_probe(struct i2c_client *client,
- 		}
+-	ret = regmap_bulk_read(rk808->regmap,
++	ret = regmap_bulk_read(rk808_rtc->regmap,
+ 			       rk808_rtc->creg->alarm_seconds_reg,
+ 			       alrm_data, NUM_ALARM_REGS);
+ 	if (ret) {
+@@ -212,7 +208,7 @@ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ 	alrm->time.tm_year = (bcd2bin(alrm_data[5] & YEARS_REG_MSK)) + 100;
+ 	rockchip_to_gregorian(&alrm->time);
+ 
+-	ret = regmap_read(rk808->regmap, rk808_rtc->creg->int_reg, &int_reg);
++	ret = regmap_read(rk808_rtc->regmap, rk808_rtc->creg->int_reg, &int_reg);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to read RTC INT REG: %d\n", ret);
+ 		return ret;
+@@ -228,10 +224,9 @@ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ 
+ static int rk808_rtc_stop_alarm(struct rk808_rtc *rk808_rtc)
+ {
+-	struct rk808 *rk808 = rk808_rtc->rk808;
+ 	int ret;
+ 
+-	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->int_reg,
++	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->int_reg,
+ 				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M, 0);
+ 
+ 	return ret;
+@@ -239,10 +234,9 @@ static int rk808_rtc_stop_alarm(struct rk808_rtc *rk808_rtc)
+ 
+ static int rk808_rtc_start_alarm(struct rk808_rtc *rk808_rtc)
+ {
+-	struct rk808 *rk808 = rk808_rtc->rk808;
+ 	int ret;
+ 
+-	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->int_reg,
++	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->int_reg,
+ 				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M,
+ 				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M);
+ 
+@@ -252,7 +246,6 @@ static int rk808_rtc_start_alarm(struct rk808_rtc *rk808_rtc)
+ static int rk808_rtc_setalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ {
+ 	struct rk808_rtc *rk808_rtc = dev_get_drvdata(dev);
+-	struct rk808 *rk808 = rk808_rtc->rk808;
+ 	u8 alrm_data[NUM_ALARM_REGS];
+ 	int ret;
+ 
+@@ -272,7 +265,7 @@ static int rk808_rtc_setalarm(struct device *dev, struct rtc_wkalrm *alrm)
+ 	alrm_data[4] = bin2bcd(alrm->time.tm_mon + 1);
+ 	alrm_data[5] = bin2bcd(alrm->time.tm_year - 100);
+ 
+-	ret = regmap_bulk_write(rk808->regmap,
++	ret = regmap_bulk_write(rk808_rtc->regmap,
+ 				rk808_rtc->creg->alarm_seconds_reg,
+ 				alrm_data, NUM_ALARM_REGS);
+ 	if (ret) {
+@@ -313,20 +306,18 @@ static int rk808_rtc_alarm_irq_enable(struct device *dev,
+ static irqreturn_t rk808_alarm_irq(int irq, void *data)
+ {
+ 	struct rk808_rtc *rk808_rtc = data;
+-	struct rk808 *rk808 = rk808_rtc->rk808;
+-	struct i2c_client *client = rk808->i2c;
+ 	int ret;
+ 
+-	ret = regmap_write(rk808->regmap, rk808_rtc->creg->status_reg,
++	ret = regmap_write(rk808_rtc->regmap, rk808_rtc->creg->status_reg,
+ 			   RTC_STATUS_MASK);
+ 	if (ret) {
+-		dev_err(&client->dev,
++		dev_err(&rk808_rtc->rtc->dev,
+ 			"%s:Failed to update RTC status: %d\n", __func__, ret);
+ 		return ret;
  	}
  
--	return 0;
--
--err_irq:
--	regmap_del_irq_chip(client->irq, rk808->irq_data);
--	return ret;
--}
--
--static int rk808_remove(struct i2c_client *client)
--{
--	struct rk808 *rk808 = i2c_get_clientdata(client);
--
--	regmap_del_irq_chip(client->irq, rk808->irq_data);
--
--	/**
--	 * pm_power_off may points to a function from another module.
--	 * Check if the pointer is set by us and only then overwrite it.
--	 */
--	if (pm_power_off == rk808_pm_power_off)
--		pm_power_off = NULL;
--
--	unregister_restart_handler(&rk808_restart_handler);
--
- 	return 0;
+ 	rtc_update_irq(rk808_rtc->rtc, 1, RTC_IRQF | RTC_AF);
+-	dev_dbg(&client->dev,
++	dev_dbg(&rk808_rtc->rtc->dev,
+ 		 "%s:irq=%d\n", __func__, irq);
+ 	return IRQ_HANDLED;
  }
+@@ -404,10 +395,12 @@ static int rk808_rtc_probe(struct platform_device *pdev)
+ 		break;
+ 	}
+ 	platform_set_drvdata(pdev, rk808_rtc);
+-	rk808_rtc->rk808 = rk808;
++	rk808_rtc->regmap = dev_get_regmap(pdev->dev.parent, NULL);
++	if (!rk808_rtc->regmap)
++		return -ENODEV;
  
-@@ -850,7 +829,6 @@ static struct i2c_driver rk808_i2c_driver = {
- 		.pm = &rk8xx_pm_ops,
- 	},
- 	.probe    = rk808_probe,
--	.remove   = rk808_remove,
- 	.shutdown = rk8xx_shutdown,
- };
+ 	/* start rtc running by default, and use shadowed timer. */
+-	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
++	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
+ 				 BIT_RTC_CTRL_REG_STOP_RTC_M |
+ 				 BIT_RTC_CTRL_REG_RTC_READSEL_M,
+ 				 BIT_RTC_CTRL_REG_RTC_READSEL_M);
+@@ -417,7 +410,7 @@ static int rk808_rtc_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
  
+-	ret = regmap_write(rk808->regmap, rk808_rtc->creg->status_reg,
++	ret = regmap_write(rk808_rtc->regmap, rk808_rtc->creg->status_reg,
+ 			   RTC_STATUS_MASK);
+ 	if (ret) {
+ 		dev_err(&pdev->dev,
 -- 
 2.35.1
 
