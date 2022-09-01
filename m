@@ -4,75 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8453EECAAD1
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Sep 2022 07:08:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BF72ECAAD1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Sep 2022 07:25:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WSrWtXM7cAtRH6QO50qnAtzswawp8NOmKx2AhJEhIz0=; b=Crsm+ieu7jBWtI
-	1tv57aHKPdT2rCEx33tZYgjOdtO38ctCxBAZc7slq94NK6Lfdwj38rNuefv5tkYxC2aEnHtS4+Cgb
-	DyMFHCa3YV6m8ggb1otXF2nYBMzWs/zg0kyVwX5kV3kUnQ05zgI/qaK9LmcMrKcF130uZrgoNT9KT
-	xcg3OIE5g8GjAfad1HNZGbgxDfqBLdubkAcDuQEl7wcfvAvpUtd4Cf3Ni9Ec+nfVzRku2ZSG7V/AP
-	RDgKVTd+uyOwzJDH48ipApjxm9UoUgp8Z2kLhr1O9YMQgqNJYWCRk2zkebsQdxqtLiRSQ3Tm5xND/
-	v1nwEVLp/9iggPa4yxvw==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Mime-Version:References:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	List-Owner; bh=e4kFVQihm5yHX1iWJVEup+s8TvtFpAq1fC51L+UHWQs=; b=2qo0mr0zEkthvJ
+	1R6m3qdZ4CI43r8PCT9LYaXcaX/pfD29/0F1t6X4RzBrbUjS8PpyiURCnkwhDN3FA38Zu2HUds3E6
+	qFOWo7jB+KJpswW10TiwNog1o7ABA9kug1qelL89wS07oFjok+hbe15ju79uVcDtsu33t/4ICTTX9
+	Kn+7PyfOzmwazT98hRd3fuXVSRE6vk/bA7kxCbbQNveFZgZkWAj2Ir1+3Qhbk6QE0EkpbyM/N5Nix
+	OMGP/yCb8huSTHqAaAqEyFVZhhhGjYEXC/Omn77/U/5kYTY7jIdm02hZknVlk4skhwroXPyYF94L2
+	D2SRj4qSL0cgJfF/CcYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTeJf-00ACal-4z; Thu, 01 Sep 2022 07:08:43 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1oTeZt-00AI9J-L6; Thu, 01 Sep 2022 07:25:29 +0000
+Received: from mail-m11873.qiye.163.com ([115.236.118.73])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTeJb-00ACYg-C9
-	for linux-rockchip@lists.infradead.org; Thu, 01 Sep 2022 07:08:41 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id y3so32781091ejc.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 01 Sep 2022 00:08:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc;
-        bh=T1a2n0TNcrK8BG/SkAbOxT72skaz9m2THYBGPmVrqkw=;
-        b=hnKeXWRs7+MUYSmsPy4UqpjsS42ETkbAratKcQZCLzvtCI9QigOVlPzGm7UlQvMheR
-         DLWpprUoJK1JeArbPQsC0LzSfdnv0WGYJ+ZvFIWeY0K0/iQdH8pwCLg+VZtDwRZNzXPo
-         SYs9vIf8hxuJ4NJbcl5cw/f5B4hYupasTRAeSm/NgH1pcC/dv2oBW8D87H4lw9BbZhDc
-         EAfRLhTk2lq72fDYZt7eTrEa8qHVZTRTzK1v2Rpt8ABTN+Q9G2/iQzr0kJWXZ/yQPtP1
-         YiuXdWhW5DGUAzOisxqVl13XHXVm0ZMTldz0QDgKsvDQvfoETIZOe0PsU1ix89NrFj5O
-         L2IQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc;
-        bh=T1a2n0TNcrK8BG/SkAbOxT72skaz9m2THYBGPmVrqkw=;
-        b=zAkM2Ek21eVcnMZOSpCEMJNSiPshrCldNXlx7M2Ka2HasgvAVLLbSdiTcRBot4naYP
-         spn4OhReYbLCOqezLPNJ0IB0D+m660mTztAUPQ7myKxd2WsDldSiV/jkeN7eCi4srCqp
-         FYo5QBg9tVTLmp0ljt4w2y/83I2spj7wbpzXyf6Qcw9BP9VUnH5bBeRPN6If0JZWk/Ij
-         a315UBCA24dhY4B2RDhp+q8vHJxtpWtPYmT6szjKbp7Kt/tyATnEF3K7t/x/zuLqSPu4
-         W6qN3NTSEf4MllLPQ0hH9XWOexoEPa/v5XrfuIitgyl/wv5+HYAB6ZVGB91Wr1bM1EL/
-         PsKQ==
-X-Gm-Message-State: ACgBeo1/IbRdFIFE67aaUqaA2nkleuABJmWyWKZlLQEhHCuyNRLMp+aH
-	wRCxi4jIwwWh8dhrWIrzFMTg4PLBzZFjXE7UPQ3M+Q==
-X-Google-Smtp-Source: AA6agR6pWO4tm1B3xV/+1WwC/UgTI+pM0Sz8blfO7fCz7raFul87Ipx2LIG7Rkcc6bOZUHhhJ/DfIORZELtiTal/q6M=
-X-Received: by 2002:a17:906:8a4e:b0:730:9fcd:d988 with SMTP id
- gx14-20020a1709068a4e00b007309fcdd988mr22695166ejc.636.1662016117115; Thu, 01
- Sep 2022 00:08:37 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220831134516.78108-1-andriy.shevchenko@linux.intel.com>
- <CAMRc=MdQiBHr3cDPWN_PRj2nGVoG-GJJyRNrHNwTaAUvz=35ew@mail.gmail.com> <2022090109473952058033@rock-chips.com>
-In-Reply-To: <2022090109473952058033@rock-chips.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Thu, 1 Sep 2022 09:08:26 +0200
-Message-ID: <CAMRc=McXoBqm-SBJTWdULZGep98V5-z3O9Dygkd07H=Z2k0-HA@mail.gmail.com>
-Subject: Re: Re: [PATCH v2 1/1] gpio: rockchip: Switch to use fwnode instead
- of of_node
-To: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	"linus.walleij" <linus.walleij@linaro.org>, linux-gpio <linux-gpio@vger.kernel.org>, 
+	id 1oTeZh-00AI1S-5A; Thu, 01 Sep 2022 07:25:20 +0000
+Received: from DESKTOP-SG5V5EA (unknown [58.22.7.114])
+	by mail-m11873.qiye.163.com (Hmail) with ESMTPA id 2A404900D69;
+	Thu,  1 Sep 2022 15:25:12 +0800 (CST)
+Date: Thu, 1 Sep 2022 15:25:12 +0800
+From: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
+To: "Bartosz Golaszewski" <brgl@bgdev.pl>
+Cc: "Andy Shevchenko" <andriy.shevchenko@linux.intel.com>, 
+	linus.walleij <linus.walleij@linaro.org>, 
+	linux-gpio <linux-gpio@vger.kernel.org>, 
 	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
 	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+	"Linux Kernel Mailing List" <linux-kernel@vger.kernel.org>, 
+	=?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
+Subject: Re: Re: [PATCH v2 1/1] gpio: rockchip: Switch to use fwnode instead of of_node
+References: <20220831134516.78108-1-andriy.shevchenko@linux.intel.com>, 
+	<CAMRc=MdQiBHr3cDPWN_PRj2nGVoG-GJJyRNrHNwTaAUvz=35ew@mail.gmail.com>, 
+	<2022090109473952058033@rock-chips.com>, 
+	<CAMRc=McXoBqm-SBJTWdULZGep98V5-z3O9Dygkd07H=Z2k0-HA@mail.gmail.com>
+X-Priority: 3
+X-Has-Attach: no
+X-Mailer: Foxmail 7.2.19.158[cn]
+Mime-Version: 1.0
+Message-ID: <2022090115251208267537@rock-chips.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVlDGE9IVhoeSR8aGRhOHxpPSFUTARMWGhIXJB
+	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktISkxVSktLWQY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MhQ6GAw5Ez04I0wfIwlWAhRD
+	Dj0wCT9VSlVKTU1JS0pMSkpJQ0hMVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
+	WU5DVUlJVUxVSkpPWVdZCAFZQUpPS09NNwY+
+X-HM-Tid: 0a82f7f089372eafkusn2a404900d69
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_000839_644765_B89F59BB 
-X-CRM114-Status: GOOD (  30.73  )
+X-CRM114-CacheID: sfid-20220901_002517_505413_8F4A87AD 
+X-CRM114-Status: GOOD (  21.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,196 +68,166 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 1, 2022 at 3:47 AM jay.xu@rock-chips.com
-<jay.xu@rock-chips.com> wrote:
->
-> Hi
->
-> --------------
-> jay.xu@rock-chips.com
-> >On Wed, Aug 31, 2022 at 3:45 PM Andy Shevchenko
-> ><andriy.shevchenko@linux.intel.com> wrote:
-> >>
-> >> GPIO library now accepts fwnode as a firmware node, so
-> >> switch the driver to use it.
-> >>
-> >> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> >> ---
-> >> v2: fixed compilation errors (LKP), replace some OF calls (Bart)
-> >>  drivers/gpio/gpio-rockchip.c       | 38 +++++++++++-------------------
-> >>  drivers/pinctrl/pinctrl-rockchip.h |  2 --
-> >>  2 files changed, 14 insertions(+), 26 deletions(-)
-> >>
-> >> diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-> >> index bb50335239ac..e8fa99fd4c80 100644
-> >> --- a/drivers/gpio/gpio-rockchip.c
-> >> +++ b/drivers/gpio/gpio-rockchip.c
-> >> @@ -14,12 +14,11 @@
-> >>  #include <linux/init.h>
-> >>  #include <linux/interrupt.h>
-> >>  #include <linux/io.h>
-> >> +#include <linux/mod_devicetable.h>
-> >>  #include <linux/module.h>
-> >>  #include <linux/of.h>
-> >> -#include <linux/of_address.h>
-> >> -#include <linux/of_device.h>
-> >> -#include <linux/of_irq.h>
-> >>  #include <linux/pinctrl/pinconf-generic.h>
-> >> +#include <linux/property.h>
-> >>  #include <linux/regmap.h>
-> >>
-> >>  #include "../pinctrl/core.h"
-> >> @@ -518,7 +517,7 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
-> >>         struct irq_chip_generic *gc;
-> >>         int ret;
-> >>
-> >> -       bank->domain = irq_domain_add_linear(bank->of_node, 32,
-> >> +       bank->domain = irq_domain_create_linear(dev_fwnode(bank->dev), 32,
-> >>                                         &irq_generic_chip_ops, NULL);
-> >>         if (!bank->domain) {
-> >>                 dev_warn(bank->dev, "could not init irq domain for bank %s\n",
-> >> @@ -606,14 +605,10 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
-> >>          * files which don't set the "gpio-ranges" property or systems that
-> >>          * utilize ACPI the driver has to call gpiochip_add_pin_range().
-> >>          */
-> >> -       if (!of_property_read_bool(bank->of_node, "gpio-ranges")) {
-> >> -               struct device_node *pctlnp = of_get_parent(bank->of_node);
-> >> +       if (!device_property_read_bool(bank->dev, "gpio-ranges")) {
-> >>                 struct pinctrl_dev *pctldev = NULL;
-> >>
-> >> -               if (!pctlnp)
-> >> -                       return -ENODATA;
-> >> -
-> >> -               pctldev = of_pinctrl_get(pctlnp);
-> >> +               pctldev = pinctrl_get(bank->dev->parent);
-> >>                 if (!pctldev)
-> >>                         return -ENODEV;
-> >>
-> >> @@ -641,23 +636,20 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
-> >>
-> >>  static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
-> >>  {
-> >> +       struct platform_device *pdev = to_platform_device(bank->dev);
-> >> +       struct device_node *np = bank->dev->of_node;
-> >>         struct resource res;
-> >>         int id = 0;
-> >>
-> >> -       if (of_address_to_resource(bank->of_node, 0, &res)) {
-> >> -               dev_err(bank->dev, "cannot find IO resource for bank\n");
-> >> -               return -ENOENT;
-> >> -       }
-> >> -
-> >> -       bank->reg_base = devm_ioremap_resource(bank->dev, &res);
-> >> +       bank->reg_base = devm_platform_ioremap_resource(pdev, 0);
-> >>         if (IS_ERR(bank->reg_base))
-> >>                 return PTR_ERR(bank->reg_base);
-> >>
-> >> -       bank->irq = irq_of_parse_and_map(bank->of_node, 0);
-> >> +       bank->irq = platform_get_irq(pdev, 0);
-> >>         if (!bank->irq)
-> >>                 return -EINVAL;
-> >>
-> >> -       bank->clk = of_clk_get(bank->of_node, 0);
-> >> +       bank->clk = of_clk_get(np, 0);
-> >
-> >Why did you stop above? Why not regular clk_get here?
-> >
-> >>         if (IS_ERR(bank->clk))
-> >>                 return PTR_ERR(bank->clk);
-> >>
-> >> @@ -668,7 +660,7 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
-> >>         if (id == GPIO_TYPE_V2 || id == GPIO_TYPE_V2_1) {
-> >>                 bank->gpio_regs = &gpio_regs_v2;
-> >>                 bank->gpio_type = GPIO_TYPE_V2;
-> >> -               bank->db_clk = of_clk_get(bank->of_node, 1);
-> >> +               bank->db_clk = of_clk_get(np, 1);
-> >
-> >Ah, the clocks don't have names in DT? That's unfortunate...
->
-> The patch add 'clock-names' property for gpio dt node, after that, the driver can change to
-> devm_clk_get(dev, "bus");
-> devm_clk_get(dev, "db");
->
-
-We can't unfortunately, we need to remain compatible with existing DTs.
-
-Bart
-
-> https://patchwork.kernel.org/project/linux-rockchip/patch/20220901013101.2634480-2-jay.xu@rock-chips.com
->
-> >
-> >Bart
-> >
-> >>                 if (IS_ERR(bank->db_clk)) {
-> >>                         dev_err(bank->dev, "cannot find debounce clk\n");
-> >>                         clk_disable_unprepare(bank->clk);
-> >> @@ -705,17 +697,16 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
-> >>  {
-> >>         struct device *dev = &pdev->dev;
-> >>         struct device_node *np = dev->of_node;
-> >> -       struct device_node *pctlnp = of_get_parent(np);
-> >>         struct pinctrl_dev *pctldev = NULL;
-> >>         struct rockchip_pin_bank *bank = NULL;
-> >>         struct rockchip_pin_deferred *cfg;
-> >>         static int gpio;
-> >>         int id, ret;
-> >>
-> >> -       if (!np || !pctlnp)
-> >> +       if (!dev->parent)
-> >>                 return -ENODEV;
-> >>
-> >> -       pctldev = of_pinctrl_get(pctlnp);
-> >> +       pctldev = pinctrl_get(dev->parent);
-> >>         if (!pctldev)
-> >>                 return -EPROBE_DEFER;
-> >>
-> >> @@ -728,7 +719,6 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
-> >>                 return -EINVAL;
-> >>
-> >>         bank->dev = dev;
-> >> -       bank->of_node = np;
-> >>
-> >>         raw_spin_lock_init(&bank->slock);
-> >>
-> >> @@ -776,7 +766,7 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
-> >>         mutex_unlock(&bank->deferred_lock);
-> >>
-> >>         platform_set_drvdata(pdev, bank);
-> >> -       dev_info(dev, "probed %pOF\n", np);
-> >> +       dev_info(dev, "probed %pfw\n", dev_fwnode(dev));
-> >>
-> >>         return 0;
-> >>  }
-> >> diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-> >> index 4759f336941e..37a0501bcc03 100644
-> >> --- a/drivers/pinctrl/pinctrl-rockchip.h
-> >> +++ b/drivers/pinctrl/pinctrl-rockchip.h
-> >> @@ -299,7 +299,6 @@ struct rockchip_drv {
-> >>   * @drv: array describing the 4 drive strength sources of the bank
-> >>   * @pull_type: array describing the 4 pull type sources of the bank
-> >>   * @valid: is all necessary information present
-> >> - * @of_node: dt node of this bank
-> >>   * @drvdata: common pinctrl basedata
-> >>   * @domain: irqdomain of the gpio bank
-> >>   * @gpio_chip: gpiolib chip
-> >> @@ -327,7 +326,6 @@ struct rockchip_pin_bank {
-> >>         struct rockchip_drv             drv[4];
-> >>         enum rockchip_pin_pull_type     pull_type[4];
-> >>         bool                            valid;
-> >> -       struct device_node              *of_node;
-> >>         struct rockchip_pinctrl         *drvdata;
-> >>         struct irq_domain               *domain;
-> >>         struct gpio_chip                gpio_chip;
-> >> --
-> >> 2.35.1
-> >>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGnCoEJhcnQKCi0tLS0tLS0tLS0tLS0tCmpheS54dUByb2NrLWNoaXBzLmNvbQo+T24gVGh1LCBT
+ZXAgMSwgMjAyMiBhdCAzOjQ3IEFNIGpheS54dUByb2NrLWNoaXBzLmNvbQo+PGpheS54dUByb2Nr
+LWNoaXBzLmNvbT4gd3JvdGU6Cj4+Cj4+IEhpCj4+Cj4+IC0tLS0tLS0tLS0tLS0tCj4+IGpheS54
+dUByb2NrLWNoaXBzLmNvbQo+PiA+T24gV2VkLCBBdWcgMzEsIDIwMjIgYXQgMzo0NSBQTSBBbmR5
+IFNoZXZjaGVua28KPj4gPjxhbmRyaXkuc2hldmNoZW5rb0BsaW51eC5pbnRlbC5jb20+IHdyb3Rl
+Ogo+PiA+Pgo+PiA+PiBHUElPIGxpYnJhcnkgbm93IGFjY2VwdHMgZndub2RlIGFzIGEgZmlybXdh
+cmUgbm9kZSwgc28KPj4gPj4gc3dpdGNoIHRoZSBkcml2ZXIgdG8gdXNlIGl0Lgo+PiA+Pgo+PiA+
+PiBTaWduZWQtb2ZmLWJ5OiBBbmR5IFNoZXZjaGVua28gPGFuZHJpeS5zaGV2Y2hlbmtvQGxpbnV4
+LmludGVsLmNvbT4KPj4gPj4gLS0tCj4+ID4+IHYyOiBmaXhlZCBjb21waWxhdGlvbiBlcnJvcnMg
+KExLUCksIHJlcGxhY2Ugc29tZSBPRiBjYWxscyAoQmFydCkKPj4gPj7CoCBkcml2ZXJzL2dwaW8v
+Z3Bpby1yb2NrY2hpcC5jwqDCoMKgwqDCoMKgIHwgMzggKysrKysrKysrKystLS0tLS0tLS0tLS0t
+LS0tLS0tCj4+ID4+wqAgZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtcm9ja2NoaXAuaCB8wqAgMiAt
+LQo+PiA+PsKgIDIgZmlsZXMgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgMjYgZGVsZXRpb25z
+KC0pCj4+ID4+Cj4+ID4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby1yb2NrY2hpcC5j
+IGIvZHJpdmVycy9ncGlvL2dwaW8tcm9ja2NoaXAuYwo+PiA+PiBpbmRleCBiYjUwMzM1MjM5YWMu
+LmU4ZmE5OWZkNGM4MCAxMDA2NDQKPj4gPj4gLS0tIGEvZHJpdmVycy9ncGlvL2dwaW8tcm9ja2No
+aXAuYwo+PiA+PiArKysgYi9kcml2ZXJzL2dwaW8vZ3Bpby1yb2NrY2hpcC5jCj4+ID4+IEBAIC0x
+NCwxMiArMTQsMTEgQEAKPj4gPj7CoCAjaW5jbHVkZSA8bGludXgvaW5pdC5oPgo+PiA+PsKgICNp
+bmNsdWRlIDxsaW51eC9pbnRlcnJ1cHQuaD4KPj4gPj7CoCAjaW5jbHVkZSA8bGludXgvaW8uaD4K
+Pj4gPj4gKyNpbmNsdWRlIDxsaW51eC9tb2RfZGV2aWNldGFibGUuaD4KPj4gPj7CoCAjaW5jbHVk
+ZSA8bGludXgvbW9kdWxlLmg+Cj4+ID4+wqAgI2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4+ID4+IC0j
+aW5jbHVkZSA8bGludXgvb2ZfYWRkcmVzcy5oPgo+PiA+PiAtI2luY2x1ZGUgPGxpbnV4L29mX2Rl
+dmljZS5oPgo+PiA+PiAtI2luY2x1ZGUgPGxpbnV4L29mX2lycS5oPgo+PiA+PsKgICNpbmNsdWRl
+IDxsaW51eC9waW5jdHJsL3BpbmNvbmYtZ2VuZXJpYy5oPgo+PiA+PiArI2luY2x1ZGUgPGxpbnV4
+L3Byb3BlcnR5Lmg+Cj4+ID4+wqAgI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgo+PiA+Pgo+PiA+
+PsKgICNpbmNsdWRlICIuLi9waW5jdHJsL2NvcmUuaCIKPj4gPj4gQEAgLTUxOCw3ICs1MTcsNyBA
+QCBzdGF0aWMgaW50IHJvY2tjaGlwX2ludGVycnVwdHNfcmVnaXN0ZXIoc3RydWN0IHJvY2tjaGlw
+X3Bpbl9iYW5rICpiYW5rKQo+PiA+PsKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IGlycV9jaGlwX2dl
+bmVyaWMgKmdjOwo+PiA+PsKgwqDCoMKgwqDCoMKgwqAgaW50IHJldDsKPj4gPj4KPj4gPj4gLcKg
+wqDCoMKgwqDCoCBiYW5rLT5kb21haW4gPSBpcnFfZG9tYWluX2FkZF9saW5lYXIoYmFuay0+b2Zf
+bm9kZSwgMzIsCj4+ID4+ICvCoMKgwqDCoMKgwqAgYmFuay0+ZG9tYWluID0gaXJxX2RvbWFpbl9j
+cmVhdGVfbGluZWFyKGRldl9md25vZGUoYmFuay0+ZGV2KSwgMzIsCj4+ID4+wqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqAgJmlycV9nZW5lcmljX2NoaXBfb3BzLCBOVUxMKTsKPj4gPj7CoMKgwqDCoMKg
+wqDCoMKgIGlmICghYmFuay0+ZG9tYWluKSB7Cj4+ID4+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgZGV2X3dhcm4oYmFuay0+ZGV2LCAiY291bGQgbm90IGluaXQgaXJxIGRvbWFpbiBm
+b3IgYmFuayAlc1xuIiwKPj4gPj4gQEAgLTYwNiwxNCArNjA1LDEwIEBAIHN0YXRpYyBpbnQgcm9j
+a2NoaXBfZ3Bpb2xpYl9yZWdpc3RlcihzdHJ1Y3Qgcm9ja2NoaXBfcGluX2JhbmsgKmJhbmspCj4+
+ID4+wqDCoMKgwqDCoMKgwqDCoMKgICogZmlsZXMgd2hpY2ggZG9uJ3Qgc2V0IHRoZSAiZ3Bpby1y
+YW5nZXMiIHByb3BlcnR5IG9yIHN5c3RlbXMgdGhhdAo+PiA+PsKgwqDCoMKgwqDCoMKgwqDCoCAq
+IHV0aWxpemUgQUNQSSB0aGUgZHJpdmVyIGhhcyB0byBjYWxsIGdwaW9jaGlwX2FkZF9waW5fcmFu
+Z2UoKS4KPj4gPj7CoMKgwqDCoMKgwqDCoMKgwqAgKi8KPj4gPj4gLcKgwqDCoMKgwqDCoCBpZiAo
+IW9mX3Byb3BlcnR5X3JlYWRfYm9vbChiYW5rLT5vZl9ub2RlLCAiZ3Bpby1yYW5nZXMiKSkgewo+
+PiA+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgZGV2aWNlX25vZGUgKnBj
+dGxucCA9IG9mX2dldF9wYXJlbnQoYmFuay0+b2Zfbm9kZSk7Cj4+ID4+ICvCoMKgwqDCoMKgwqAg
+aWYgKCFkZXZpY2VfcHJvcGVydHlfcmVhZF9ib29sKGJhbmstPmRldiwgImdwaW8tcmFuZ2VzIikp
+IHsKPj4gPj7CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgcGluY3RybF9k
+ZXYgKnBjdGxkZXYgPSBOVUxMOwo+PiA+Pgo+PiA+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoCBpZiAoIXBjdGxucCkKPj4gPj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIHJldHVybiAtRU5PREFUQTsKPj4gPj4gLQo+PiA+PiAtwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoCBwY3RsZGV2ID0gb2ZfcGluY3RybF9nZXQocGN0bG5wKTsKPj4gPj4g
+K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcGN0bGRldiA9IHBpbmN0cmxfZ2V0KGJhbmst
+PmRldi0+cGFyZW50KTsKPj4gPj7CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAo
+IXBjdGxkZXYpCj4+ID4+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgIHJldHVybiAtRU5PREVWOwo+PiA+Pgo+PiA+PiBAQCAtNjQxLDIzICs2MzYsMjAgQEAg
+c3RhdGljIGludCByb2NrY2hpcF9ncGlvbGliX3JlZ2lzdGVyKHN0cnVjdCByb2NrY2hpcF9waW5f
+YmFuayAqYmFuaykKPj4gPj4KPj4gPj7CoCBzdGF0aWMgaW50IHJvY2tjaGlwX2dldF9iYW5rX2Rh
+dGEoc3RydWN0IHJvY2tjaGlwX3Bpbl9iYW5rICpiYW5rKQo+PiA+PsKgIHsKPj4gPj4gK8KgwqDC
+oMKgwqDCoCBzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2ID0gdG9fcGxhdGZvcm1fZGV2aWNl
+KGJhbmstPmRldik7Cj4+ID4+ICvCoMKgwqDCoMKgwqAgc3RydWN0IGRldmljZV9ub2RlICpucCA9
+IGJhbmstPmRldi0+b2Zfbm9kZTsKPj4gPj7CoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCByZXNvdXJj
+ZSByZXM7Cj4+ID4+wqDCoMKgwqDCoMKgwqDCoCBpbnQgaWQgPSAwOwo+PiA+Pgo+PiA+PiAtwqDC
+oMKgwqDCoMKgIGlmIChvZl9hZGRyZXNzX3RvX3Jlc291cmNlKGJhbmstPm9mX25vZGUsIDAsICZy
+ZXMpKSB7Cj4+ID4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGRldl9lcnIoYmFuay0+
+ZGV2LCAiY2Fubm90IGZpbmQgSU8gcmVzb3VyY2UgZm9yIGJhbmtcbiIpOwo+PiA+PiAtwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm4gLUVOT0VOVDsKPj4gPj4gLcKgwqDCoMKgwqDC
+oCB9Cj4+ID4+IC0KPj4gPj4gLcKgwqDCoMKgwqDCoCBiYW5rLT5yZWdfYmFzZSA9IGRldm1faW9y
+ZW1hcF9yZXNvdXJjZShiYW5rLT5kZXYsICZyZXMpOwo+PiA+PiArwqDCoMKgwqDCoMKgIGJhbmst
+PnJlZ19iYXNlID0gZGV2bV9wbGF0Zm9ybV9pb3JlbWFwX3Jlc291cmNlKHBkZXYsIDApOwo+PiA+
+PsKgwqDCoMKgwqDCoMKgwqAgaWYgKElTX0VSUihiYW5rLT5yZWdfYmFzZSkpCj4+ID4+wqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJuIFBUUl9FUlIoYmFuay0+cmVnX2Jhc2Up
+Owo+PiA+Pgo+PiA+PiAtwqDCoMKgwqDCoMKgIGJhbmstPmlycSA9IGlycV9vZl9wYXJzZV9hbmRf
+bWFwKGJhbmstPm9mX25vZGUsIDApOwo+PiA+PiArwqDCoMKgwqDCoMKgIGJhbmstPmlycSA9IHBs
+YXRmb3JtX2dldF9pcnEocGRldiwgMCk7Cj4+ID4+wqDCoMKgwqDCoMKgwqDCoCBpZiAoIWJhbmst
+PmlycSkKPj4gPj7CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm4gLUVJTlZB
+TDsKPj4gPj4KPj4gPj4gLcKgwqDCoMKgwqDCoCBiYW5rLT5jbGsgPSBvZl9jbGtfZ2V0KGJhbmst
+Pm9mX25vZGUsIDApOwo+PiA+PiArwqDCoMKgwqDCoMKgIGJhbmstPmNsayA9IG9mX2Nsa19nZXQo
+bnAsIDApOwo+PiA+Cj4+ID5XaHkgZGlkIHlvdSBzdG9wIGFib3ZlPyBXaHkgbm90IHJlZ3VsYXIg
+Y2xrX2dldCBoZXJlPwo+PiA+Cj4+ID4+wqDCoMKgwqDCoMKgwqDCoCBpZiAoSVNfRVJSKGJhbmst
+PmNsaykpCj4+ID4+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJuIFBUUl9F
+UlIoYmFuay0+Y2xrKTsKPj4gPj4KPj4gPj4gQEAgLTY2OCw3ICs2NjAsNyBAQCBzdGF0aWMgaW50
+IHJvY2tjaGlwX2dldF9iYW5rX2RhdGEoc3RydWN0IHJvY2tjaGlwX3Bpbl9iYW5rICpiYW5rKQo+
+PiA+PsKgwqDCoMKgwqDCoMKgwqAgaWYgKGlkID09IEdQSU9fVFlQRV9WMiB8fCBpZCA9PSBHUElP
+X1RZUEVfVjJfMSkgewo+PiA+PsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGJhbmst
+PmdwaW9fcmVncyA9ICZncGlvX3JlZ3NfdjI7Cj4+ID4+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgYmFuay0+Z3Bpb190eXBlID0gR1BJT19UWVBFX1YyOwo+PiA+PiAtwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoCBiYW5rLT5kYl9jbGsgPSBvZl9jbGtfZ2V0KGJhbmstPm9mX25v
+ZGUsIDEpOwo+PiA+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBiYW5rLT5kYl9jbGsg
+PSBvZl9jbGtfZ2V0KG5wLCAxKTsKPj4gPgo+PiA+QWgsIHRoZSBjbG9ja3MgZG9uJ3QgaGF2ZSBu
+YW1lcyBpbiBEVD8gVGhhdCdzIHVuZm9ydHVuYXRlLi4uCj4+Cj4+IFRoZSBwYXRjaCBhZGQgJ2Ns
+b2NrLW5hbWVzJyBwcm9wZXJ0eSBmb3IgZ3BpbyBkdCBub2RlLCBhZnRlciB0aGF0LCB0aGUgZHJp
+dmVyIGNhbiBjaGFuZ2UgdG8KPj4gZGV2bV9jbGtfZ2V0KGRldiwgImJ1cyIpOwo+PiBkZXZtX2Ns
+a19nZXQoZGV2LCAiZGIiKTsKPj4KPgo+V2UgY2FuJ3QgdW5mb3J0dW5hdGVseSwgd2UgbmVlZCB0
+byByZW1haW4gY29tcGF0aWJsZSB3aXRoIGV4aXN0aW5nIERUcy4KPiAKQXMgc2FpZCBpbiB0aGUg
+cGF0Y2ggY29tbWVudCwgdGhlICdjbG9jay1uYW1lcycgaXMgbm90ICdyZXF1aXJlZCcgc2luY2Ug
+ZXhpc3RpbmcgRFRzCkRvIHRoZSBkcml2ZXIgY2FuIHRyeSBnZXQgYnkgaWQgZmlyc3QgYW5kIHRo
+ZW4gZG8gYSBzZWNvbmQgdHJ5IHdpdGggbGVnZW5jeSB3YXkgd2l0aG91dCBpZCA/CgpvciBvdGhl
+ciBzdWdnZXN0aW9uID8KCj5CYXJ0Cj4KPj4gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9w
+cm9qZWN0L2xpbnV4LXJvY2tjaGlwL3BhdGNoLzIwMjIwOTAxMDEzMTAxLjI2MzQ0ODAtMi1qYXku
+eHVAcm9jay1jaGlwcy5jb20KPj4KPj4gPgo+PiA+QmFydAo+PiA+Cj4+ID4+wqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgaWYgKElTX0VSUihiYW5rLT5kYl9jbGspKSB7Cj4+ID4+wqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGRldl9lcnIoYmFu
+ay0+ZGV2LCAiY2Fubm90IGZpbmQgZGVib3VuY2UgY2xrXG4iKTsKPj4gPj7CoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY2xrX2Rpc2FibGVfdW5wcmVwYXJl
+KGJhbmstPmNsayk7Cj4+ID4+IEBAIC03MDUsMTcgKzY5NywxNiBAQCBzdGF0aWMgaW50IHJvY2tj
+aGlwX2dwaW9fcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4gPj7CoCB7Cj4+
+ID4+wqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgZGV2aWNlICpkZXYgPSAmcGRldi0+ZGV2Owo+PiA+
+PsKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IGRldmljZV9ub2RlICpucCA9IGRldi0+b2Zfbm9kZTsK
+Pj4gPj4gLcKgwqDCoMKgwqDCoCBzdHJ1Y3QgZGV2aWNlX25vZGUgKnBjdGxucCA9IG9mX2dldF9w
+YXJlbnQobnApOwo+PiA+PsKgwqDCoMKgwqDCoMKgwqAgc3RydWN0IHBpbmN0cmxfZGV2ICpwY3Rs
+ZGV2ID0gTlVMTDsKPj4gPj7CoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCByb2NrY2hpcF9waW5fYmFu
+ayAqYmFuayA9IE5VTEw7Cj4+ID4+wqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3Qgcm9ja2NoaXBfcGlu
+X2RlZmVycmVkICpjZmc7Cj4+ID4+wqDCoMKgwqDCoMKgwqDCoCBzdGF0aWMgaW50IGdwaW87Cj4+
+ID4+wqDCoMKgwqDCoMKgwqDCoCBpbnQgaWQsIHJldDsKPj4gPj4KPj4gPj4gLcKgwqDCoMKgwqDC
+oCBpZiAoIW5wIHx8ICFwY3RsbnApCj4+ID4+ICvCoMKgwqDCoMKgwqAgaWYgKCFkZXYtPnBhcmVu
+dCkKPj4gPj7CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm4gLUVOT0RFVjsK
+Pj4gPj4KPj4gPj4gLcKgwqDCoMKgwqDCoCBwY3RsZGV2ID0gb2ZfcGluY3RybF9nZXQocGN0bG5w
+KTsKPj4gPj4gK8KgwqDCoMKgwqDCoCBwY3RsZGV2ID0gcGluY3RybF9nZXQoZGV2LT5wYXJlbnQp
+Owo+PiA+PsKgwqDCoMKgwqDCoMKgwqAgaWYgKCFwY3RsZGV2KQo+PiA+PsKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybiAtRVBST0JFX0RFRkVSOwo+PiA+Pgo+PiA+PiBAQCAt
+NzI4LDcgKzcxOSw2IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZ3Bpb19wcm9iZShzdHJ1Y3QgcGxh
+dGZvcm1fZGV2aWNlICpwZGV2KQo+PiA+PsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IHJldHVybiAtRUlOVkFMOwo+PiA+Pgo+PiA+PsKgwqDCoMKgwqDCoMKgwqAgYmFuay0+ZGV2ID0g
+ZGV2Owo+PiA+PiAtwqDCoMKgwqDCoMKgIGJhbmstPm9mX25vZGUgPSBucDsKPj4gPj4KPj4gPj7C
+oMKgwqDCoMKgwqDCoMKgIHJhd19zcGluX2xvY2tfaW5pdCgmYmFuay0+c2xvY2spOwo+PiA+Pgo+
+PiA+PiBAQCAtNzc2LDcgKzc2Niw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZ3Bpb19wcm9iZShz
+dHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+PiA+PsKgwqDCoMKgwqDCoMKgwqAgbXV0ZXhf
+dW5sb2NrKCZiYW5rLT5kZWZlcnJlZF9sb2NrKTsKPj4gPj4KPj4gPj7CoMKgwqDCoMKgwqDCoMKg
+IHBsYXRmb3JtX3NldF9kcnZkYXRhKHBkZXYsIGJhbmspOwo+PiA+PiAtwqDCoMKgwqDCoMKgIGRl
+dl9pbmZvKGRldiwgInByb2JlZCAlcE9GXG4iLCBucCk7Cj4+ID4+ICvCoMKgwqDCoMKgwqAgZGV2
+X2luZm8oZGV2LCAicHJvYmVkICVwZndcbiIsIGRldl9md25vZGUoZGV2KSk7Cj4+ID4+Cj4+ID4+
+wqDCoMKgwqDCoMKgwqDCoCByZXR1cm4gMDsKPj4gPj7CoCB9Cj4+ID4+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL3BpbmN0cmwvcGluY3RybC1yb2NrY2hpcC5oIGIvZHJpdmVycy9waW5jdHJsL3BpbmN0
+cmwtcm9ja2NoaXAuaAo+PiA+PiBpbmRleCA0NzU5ZjMzNjk0MWUuLjM3YTA1MDFiY2MwMyAxMDA2
+NDQKPj4gPj4gLS0tIGEvZHJpdmVycy9waW5jdHJsL3BpbmN0cmwtcm9ja2NoaXAuaAo+PiA+PiAr
+KysgYi9kcml2ZXJzL3BpbmN0cmwvcGluY3RybC1yb2NrY2hpcC5oCj4+ID4+IEBAIC0yOTksNyAr
+Mjk5LDYgQEAgc3RydWN0IHJvY2tjaGlwX2RydiB7Cj4+ID4+wqDCoCAqIEBkcnY6IGFycmF5IGRl
+c2NyaWJpbmcgdGhlIDQgZHJpdmUgc3RyZW5ndGggc291cmNlcyBvZiB0aGUgYmFuawo+PiA+PsKg
+wqAgKiBAcHVsbF90eXBlOiBhcnJheSBkZXNjcmliaW5nIHRoZSA0IHB1bGwgdHlwZSBzb3VyY2Vz
+IG9mIHRoZSBiYW5rCj4+ID4+wqDCoCAqIEB2YWxpZDogaXMgYWxsIG5lY2Vzc2FyeSBpbmZvcm1h
+dGlvbiBwcmVzZW50Cj4+ID4+IC0gKiBAb2Zfbm9kZTogZHQgbm9kZSBvZiB0aGlzIGJhbmsKPj4g
+Pj7CoMKgICogQGRydmRhdGE6IGNvbW1vbiBwaW5jdHJsIGJhc2VkYXRhCj4+ID4+wqDCoCAqIEBk
+b21haW46IGlycWRvbWFpbiBvZiB0aGUgZ3BpbyBiYW5rCj4+ID4+wqDCoCAqIEBncGlvX2NoaXA6
+IGdwaW9saWIgY2hpcAo+PiA+PiBAQCAtMzI3LDcgKzMyNiw2IEBAIHN0cnVjdCByb2NrY2hpcF9w
+aW5fYmFuayB7Cj4+ID4+wqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3Qgcm9ja2NoaXBfZHJ2wqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgIGRydls0XTsKPj4gPj7CoMKgwqDCoMKgwqDCoMKgIGVudW0gcm9j
+a2NoaXBfcGluX3B1bGxfdHlwZcKgwqDCoMKgIHB1bGxfdHlwZVs0XTsKPj4gPj7CoMKgwqDCoMKg
+wqDCoMKgIGJvb2zCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgdmFsaWQ7Cj4+ID4+IC3CoMKgwqDCoMKgwqAgc3RydWN0IGRldmljZV9ub2RlwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgKm9mX25vZGU7Cj4+ID4+wqDCoMKgwqDCoMKgwqDCoCBz
+dHJ1Y3Qgcm9ja2NoaXBfcGluY3RybMKgwqDCoMKgwqDCoMKgwqAgKmRydmRhdGE7Cj4+ID4+wqDC
+oMKgwqDCoMKgwqDCoCBzdHJ1Y3QgaXJxX2RvbWFpbsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAgKmRvbWFpbjsKPj4gPj7CoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBncGlvX2NoaXDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZ3Bpb19jaGlwOwo+PiA+PiAtLQo+PiA+PiAyLjM1LjEK
+Pj4gPj4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
