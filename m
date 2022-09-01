@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F249ECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Sep 2022 12:59:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A67DC64991
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Sep 2022 13:00:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eT9GMXn7Vwb4e8vZb8XJre+Hof76M0lavL9xiubNAG8=; b=nycV9Prru4p6DX
-	2IGmORuzNAQ/JitUFb7a4b2imJOAK5P0NAsihtQwO3K/9dpEWL6DbV6ESS1JhO1T7inecvFuy0q0s
-	P2cJGX8K+q8MnMvSAabWafkCLV4agozymuWI5at5aAyiXce9UlNdvDKgtmtZDP/PEMCB1xk2Tsdmf
-	ZotOU0h/XMEXbWxfJUAqk71R/wY18IlYwJYkayFnjAf9w03h6rjVuTySIcAa/hL7HM42blMGLqd1H
-	s9tJhMCCgp7/Jsy5meCv4zpoivibOLSJW5sAKbecoYabvnIftbqpGrgqjPKKX4RoKEOuTau3xRzzy
-	mLylwYF7SRXf0yC2ETVQ==;
+	List-Owner; bh=JjPLQ8ndJQMWudtiG2QquBS/NVK/fk4TyO+tnpdkAQ4=; b=zswUHIQRIIuhuu
+	Mx7TyV3Wu1gMZ+N7VQiwxaEOJzfncv8fdGZ7klGssrUwmZcu7IWMGjnGfCxUGizgKhoAF8nzlYM8Q
+	8WJCqhWsO/zcctj/JPHqKz+Dz1oRnHfdAdM08EoPHrcyQhNwmqEdVlEr1fxF6X+mRDh7VeeA26ybA
+	4UQexy28FWxKa8tkoWT/EI9FLM8OzBYDZtACDRPy/DdkPLyFKiBK30lSiqXF//3JC/BLzAgjLIMXa
+	vnwD0vSTqPWm6yfObBZfdwKRGt2Oql565wAmp0o096+qWrqXGEj6IntFfUtNRIWX9eC2RAoKZ2z2A
+	eDaAxrAjH7PwWqrmljGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTjnI-00Bp5e-9a; Thu, 01 Sep 2022 12:59:40 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1oTjo3-00BpW8-Eu; Thu, 01 Sep 2022 13:00:27 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTjlC-00Bnqx-Bd
-	for linux-rockchip@lists.infradead.org; Thu, 01 Sep 2022 12:57:33 +0000
-Received: by mail-wr1-x429.google.com with SMTP id s7so7342681wro.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 01 Sep 2022 05:57:28 -0700 (PDT)
+	id 1oTjlE-00BnlR-RE
+	for linux-rockchip@lists.infradead.org; Thu, 01 Sep 2022 12:57:35 +0000
+Received: by mail-wm1-x334.google.com with SMTP id n17-20020a05600c501100b003a84bf9b68bso1392852wmr.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 01 Sep 2022 05:57:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=qyY6PIoueQAjdQkJpr95FFSpU/MQ1Lr//mbpQ6WJHPc=;
-        b=PnizueE7SuyQolh8Oet44iXCrxxm6TtFCghA2ZgwBYs6I04OTAKpGknUvNE16D+awd
-         cEGx6nj0m4j7IS4RKsCrMXPh0wkJbmPgxHbu//8liPxM3XMj1ZT2poDIAW87RQR/Wik/
-         zECPjorxfcq/kNsHtCro8ICv1nDCqJNizHODfJWSWNW8ZQiM+4USrBCFPaur92OgEd53
-         lIywFdkDC8tFhBlOtIjmqivmcDwbqKou4Kz9im5cjXcDZe3SCPRA3h7NVOCb1oKvhTba
-         DpI0K6HTCps46wI4UEbyveMaROrFsw7zYq5wX745efvXj45E8hksztze6wNrb1o/pQZb
-         ugzg==
+        bh=UGbdJwhNtYNfg6qIard96SGzNtmQLkXSB3qcyDfr1D0=;
+        b=nvCpnmb8jah/uvSGvsRoFxZOzQ8kHjn3sRRCi7oormBTVSNT1nzMZ3oGO5OpJ9Aled
+         jXc3djAkPi3nY8uY3QF1o6lmIqan9qNBZfOLTS705qYwIfRH23ospQ8Kc/+ng8zK/YEr
+         CC9mkXu2lO1KygF3l1LE8jSCxcSsFM1WAZvmh/JlVoVmTck6sOICx5jiObumUL6GabvD
+         2yBH0CCZccpqy8zq16T9AyWreBvB4YFwYaW2gQJj5zMXXecayFOhYa+pnYym6DoLnFPd
+         /STu8vzR0WrmuTGe+D/sgmM3xtmfzQnDAunwyG/aLN0bf6tQra8wzFPnvhYgjl5kauYP
+         BtYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=qyY6PIoueQAjdQkJpr95FFSpU/MQ1Lr//mbpQ6WJHPc=;
-        b=PGfYm5YebbLa8aU4heEOHF0HVZORo2AjOPhdyprVVq3w7bI6pFFkjVrIOeRz5SI/S6
-         yQ2rA1ZJHisihAI5i1aDaElLnAc0A7d0RY6+qI2e1RfpUVprPD2pG4RvptYCJB47K3NR
-         HuEcvBq2umbD8oDV5epea5RHuDuFFn3YYXVOQmqjJTmEw7LjnwUJv2kZSzkCIYQQ0jY7
-         Fw+3FgKrzUUCnqYJ6MQQaydRXBYQyHaabJd6fXa7JNfBFfYEZ7YYpblm4FmoXyYHazER
-         KzL7fuzUngcu8kWirGwBFcyrLeYzeOj82GWQse1nitqnxlAwlXul0Y2WGTNzTG+6okHL
-         u1WA==
-X-Gm-Message-State: ACgBeo3lwKfGHk5oObtbSyhatoBwm0Vp8aBTzvxIsqTpd+56XzNLCWRd
-	ouSV2aZkDjba6U/hMEItlEzYjQ==
-X-Google-Smtp-Source: AA6agR5dS6LAxCuurRlldqNzNUXj75avhc0zCSFTPWtT634KS0b77/EY4pnLtnhINiKR75ojCdy6ew==
-X-Received: by 2002:a05:6000:713:b0:226:ea6c:2d7d with SMTP id bs19-20020a056000071300b00226ea6c2d7dmr5035534wrb.293.1662037047204;
-        Thu, 01 Sep 2022 05:57:27 -0700 (PDT)
+        bh=UGbdJwhNtYNfg6qIard96SGzNtmQLkXSB3qcyDfr1D0=;
+        b=71Vn4d0xw/lrt8cnxC/WM4GAeej4eCXbp6IWD9BEuFNZ5QzJPRYEUxY/g9gq9Rd/8H
+         SJuLmEhLxJRpg7ek5Yk1B+gYc4ESeTjcWnq8533QySTx0t8oB3yweIuIJwhQm4sXdqgq
+         06rfQvcpfKNGRDpclM3m3zfeoCc+jniPlteqAUCRrFiKllf2hk4LxlDT5iOTntCDFBQb
+         X4CSs5n1oM+5o5RjNXNfp1AWNF8OdbMv6eXl+NKOKs80DCsLszfXD5z1O2FKu5tATC/D
+         jOG13MBUnAlLninotPnelbJWv61dUT/OxephBxOMfMGoRoBTZO94HHgn8+w4GhFSit03
+         LjKA==
+X-Gm-Message-State: ACgBeo25Ei0LUYOrtewcLMknQXA9sKGs9LOCsx7ZnBXEUaa8ISb+ls0f
+	erFb41CHc1NH399awNPI6wOZtw==
+X-Google-Smtp-Source: AA6agR7hm/9hq1CGW665g1CStTpRyc759WX3zqlmvZRmsea3f53pWLC+bK0cmUHso0Tv7laRT7a2tw==
+X-Received: by 2002:a7b:cd14:0:b0:3a5:c5b3:508 with SMTP id f20-20020a7bcd14000000b003a5c5b30508mr4977843wmj.179.1662037052281;
+        Thu, 01 Sep 2022 05:57:32 -0700 (PDT)
 Received: from localhost.localdomain (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id v5-20020a5d59c5000000b002257fd37877sm15556709wry.6.2022.09.01.05.57.26
+        by smtp.googlemail.com with ESMTPSA id v5-20020a5d59c5000000b002257fd37877sm15556709wry.6.2022.09.01.05.57.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Sep 2022 05:57:26 -0700 (PDT)
+        Thu, 01 Sep 2022 05:57:31 -0700 (PDT)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: heiko@sntech.de,
 	herbert@gondor.apana.org.au,
@@ -75,16 +75,16 @@ Cc: linux-crypto@vger.kernel.org,
 	linux-clk@vger.kernel.org,
 	Corentin Labbe <clabbe@baylibre.com>,
 	John Keeping <john@metanate.com>
-Subject: [PATCH v9 10/33] crypto: rockchip: rework by using crypto_engine
-Date: Thu,  1 Sep 2022 12:56:47 +0000
-Message-Id: <20220901125710.3733083-11-clabbe@baylibre.com>
+Subject: [PATCH v9 15/33] crypto: rockchip: use clk_bulk to simplify clock management
+Date: Thu,  1 Sep 2022 12:56:52 +0000
+Message-Id: <20220901125710.3733083-16-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220901125710.3733083-1-clabbe@baylibre.com>
 References: <20220901125710.3733083-1-clabbe@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_055730_444733_40A36CDE 
-X-CRM114-Status: GOOD (  23.21  )
+X-CRM114-CacheID: sfid-20220901_055732_901413_74367310 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,894 +101,122 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Instead of doing manual queue management, let's use the crypto/engine
-for that.
-In the same time, rework the requests handling to be easier to
-understand (and fix all bugs related to them).
+rk3328 does not have the same clock names than rk3288, instead of using a complex
+clock management, let's use clk_bulk to simplify their handling.
 
-Fixes: ce0183cb6464b ("crypto: rockchip - switch to skcipher API")
 Reviewed-by: John Keeping <john@metanate.com>
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- drivers/crypto/Kconfig                        |   1 +
- drivers/crypto/rockchip/rk3288_crypto.c       | 152 +----------
- drivers/crypto/rockchip/rk3288_crypto.h       |  39 +--
- drivers/crypto/rockchip/rk3288_crypto_ahash.c | 144 +++++-----
- .../crypto/rockchip/rk3288_crypto_skcipher.c  | 250 +++++++++---------
- 5 files changed, 221 insertions(+), 365 deletions(-)
+ drivers/crypto/rockchip/rk3288_crypto.c | 66 ++++---------------------
+ drivers/crypto/rockchip/rk3288_crypto.h |  6 +--
+ 2 files changed, 11 insertions(+), 61 deletions(-)
 
-diff --git a/drivers/crypto/Kconfig b/drivers/crypto/Kconfig
-index 113b35f69598..c30b5a39c2ac 100644
---- a/drivers/crypto/Kconfig
-+++ b/drivers/crypto/Kconfig
-@@ -674,6 +674,7 @@ config CRYPTO_DEV_ROCKCHIP
- 	select CRYPTO_CBC
- 	select CRYPTO_DES
- 	select CRYPTO_AES
-+	select CRYPTO_ENGINE
- 	select CRYPTO_LIB_DES
- 	select CRYPTO_MD5
- 	select CRYPTO_SHA1
 diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
-index b3db096e2ec2..1afb65eee6c9 100644
+index 399829ef92e0..a635029ac71d 100644
 --- a/drivers/crypto/rockchip/rk3288_crypto.c
 +++ b/drivers/crypto/rockchip/rk3288_crypto.c
-@@ -65,149 +65,24 @@ static void rk_crypto_disable_clk(struct rk_crypto_info *dev)
- 	clk_disable_unprepare(dev->sclk);
- }
- 
--static int check_alignment(struct scatterlist *sg_src,
--			   struct scatterlist *sg_dst,
--			   int align_mask)
--{
--	int in, out, align;
--
--	in = IS_ALIGNED((uint32_t)sg_src->offset, 4) &&
--	     IS_ALIGNED((uint32_t)sg_src->length, align_mask);
--	if (!sg_dst)
--		return in;
--	out = IS_ALIGNED((uint32_t)sg_dst->offset, 4) &&
--	      IS_ALIGNED((uint32_t)sg_dst->length, align_mask);
--	align = in && out;
--
--	return (align && (sg_src->length == sg_dst->length));
--}
--
--static int rk_load_data(struct rk_crypto_info *dev,
--			struct scatterlist *sg_src,
--			struct scatterlist *sg_dst)
--{
--	unsigned int count;
--
--	count = min(dev->left_bytes, sg_src->length);
--	dev->left_bytes -= count;
--
--	if (!dma_map_sg(dev->dev, sg_src, 1, DMA_TO_DEVICE)) {
--		dev_err(dev->dev, "[%s:%d] dma_map_sg(src)  error\n",
--				__func__, __LINE__);
--		return -EINVAL;
--	}
--	dev->addr_in = sg_dma_address(sg_src);
--
--	if (sg_dst) {
--		if (!dma_map_sg(dev->dev, sg_dst, 1, DMA_FROM_DEVICE)) {
--			dev_err(dev->dev,
--					"[%s:%d] dma_map_sg(dst)  error\n",
--					__func__, __LINE__);
--			dma_unmap_sg(dev->dev, sg_src, 1,
--					DMA_TO_DEVICE);
--			return -EINVAL;
--		}
--		dev->addr_out = sg_dma_address(sg_dst);
--	}
--	dev->count = count;
--	return 0;
--}
--
--static void rk_unload_data(struct rk_crypto_info *dev)
--{
--	struct scatterlist *sg_in, *sg_out;
--
--	sg_in = dev->sg_src;
--	dma_unmap_sg(dev->dev, sg_in, 1, DMA_TO_DEVICE);
--
--	if (dev->sg_dst) {
--		sg_out = dev->sg_dst;
--		dma_unmap_sg(dev->dev, sg_out, 1, DMA_FROM_DEVICE);
--	}
--}
--
- static irqreturn_t rk_crypto_irq_handle(int irq, void *dev_id)
+@@ -22,47 +22,16 @@ static int rk_crypto_enable_clk(struct rk_crypto_info *dev)
  {
- 	struct rk_crypto_info *dev  = platform_get_drvdata(dev_id);
- 	u32 interrupt_status;
+ 	int err;
  
--	spin_lock(&dev->lock);
- 	interrupt_status = CRYPTO_READ(dev, RK_CRYPTO_INTSTS);
- 	CRYPTO_WRITE(dev, RK_CRYPTO_INTSTS, interrupt_status);
- 
-+	dev->status = 1;
- 	if (interrupt_status & 0x0a) {
- 		dev_warn(dev->dev, "DMA Error\n");
--		dev->err = -EFAULT;
-+		dev->status = 0;
- 	}
--	tasklet_schedule(&dev->done_task);
-+	complete(&dev->complete);
- 
--	spin_unlock(&dev->lock);
- 	return IRQ_HANDLED;
- }
- 
--static int rk_crypto_enqueue(struct rk_crypto_info *dev,
--			      struct crypto_async_request *async_req)
--{
--	unsigned long flags;
--	int ret;
--
--	spin_lock_irqsave(&dev->lock, flags);
--	ret = crypto_enqueue_request(&dev->queue, async_req);
--	if (dev->busy) {
--		spin_unlock_irqrestore(&dev->lock, flags);
--		return ret;
+-	err = clk_prepare_enable(dev->sclk);
+-	if (err) {
+-		dev_err(dev->dev, "[%s:%d], Couldn't enable clock sclk\n",
+-			__func__, __LINE__);
+-		goto err_return;
 -	}
--	dev->busy = true;
--	spin_unlock_irqrestore(&dev->lock, flags);
--	tasklet_schedule(&dev->queue_task);
--
--	return ret;
--}
--
--static void rk_crypto_queue_task_cb(unsigned long data)
--{
--	struct rk_crypto_info *dev = (struct rk_crypto_info *)data;
--	struct crypto_async_request *async_req, *backlog;
--	unsigned long flags;
--	int err = 0;
--
--	dev->err = 0;
--	spin_lock_irqsave(&dev->lock, flags);
--	backlog   = crypto_get_backlog(&dev->queue);
--	async_req = crypto_dequeue_request(&dev->queue);
--
--	if (!async_req) {
--		dev->busy = false;
--		spin_unlock_irqrestore(&dev->lock, flags);
--		return;
+-	err = clk_prepare_enable(dev->aclk);
+-	if (err) {
+-		dev_err(dev->dev, "[%s:%d], Couldn't enable clock aclk\n",
+-			__func__, __LINE__);
+-		goto err_aclk;
 -	}
--	spin_unlock_irqrestore(&dev->lock, flags);
--
--	if (backlog) {
--		backlog->complete(backlog, -EINPROGRESS);
--		backlog = NULL;
+-	err = clk_prepare_enable(dev->hclk);
+-	if (err) {
+-		dev_err(dev->dev, "[%s:%d], Couldn't enable clock hclk\n",
+-			__func__, __LINE__);
+-		goto err_hclk;
 -	}
--
--	dev->async_req = async_req;
--	err = dev->start(dev);
--	if (err)
--		dev->complete(dev->async_req, err);
--}
--
--static void rk_crypto_done_task_cb(unsigned long data)
--{
--	struct rk_crypto_info *dev = (struct rk_crypto_info *)data;
--
--	if (dev->err) {
--		dev->complete(dev->async_req, dev->err);
--		return;
+-	err = clk_prepare_enable(dev->dmaclk);
+-	if (err) {
+-		dev_err(dev->dev, "[%s:%d], Couldn't enable clock dmaclk\n",
+-			__func__, __LINE__);
+-		goto err_dmaclk;
 -	}
--
--	dev->err = dev->update(dev);
--	if (dev->err)
--		dev->complete(dev->async_req, dev->err);
--}
--
- static struct rk_crypto_tmp *rk_cipher_algs[] = {
- 	&rk_ecb_aes_alg,
- 	&rk_cbc_aes_alg,
-@@ -300,8 +175,6 @@ static int rk_crypto_probe(struct platform_device *pdev)
- 	if (err)
- 		goto err_crypto;
- 
--	spin_lock_init(&crypto_info->lock);
--
- 	crypto_info->reg = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(crypto_info->reg)) {
- 		err = PTR_ERR(crypto_info->reg);
-@@ -351,17 +224,11 @@ static int rk_crypto_probe(struct platform_device *pdev)
- 	crypto_info->dev = &pdev->dev;
- 	platform_set_drvdata(pdev, crypto_info);
- 
--	tasklet_init(&crypto_info->queue_task,
--		     rk_crypto_queue_task_cb, (unsigned long)crypto_info);
--	tasklet_init(&crypto_info->done_task,
--		     rk_crypto_done_task_cb, (unsigned long)crypto_info);
--	crypto_init_queue(&crypto_info->queue, 50);
-+	crypto_info->engine = crypto_engine_alloc_init(&pdev->dev, true);
-+	crypto_engine_start(crypto_info->engine);
-+	init_completion(&crypto_info->complete);
- 
- 	rk_crypto_enable_clk(crypto_info);
--	crypto_info->load_data = rk_load_data;
--	crypto_info->unload_data = rk_unload_data;
--	crypto_info->enqueue = rk_crypto_enqueue;
--	crypto_info->busy = false;
- 
- 	err = rk_crypto_register(crypto_info);
- 	if (err) {
-@@ -373,9 +240,9 @@ static int rk_crypto_probe(struct platform_device *pdev)
- 	return 0;
- 
- err_register_alg:
--	tasklet_kill(&crypto_info->queue_task);
--	tasklet_kill(&crypto_info->done_task);
-+	crypto_engine_exit(crypto_info->engine);
- err_crypto:
-+	dev_err(dev, "Crypto Accelerator not successfully registered\n");
+-	return err;
+-err_dmaclk:
+-	clk_disable_unprepare(dev->hclk);
+-err_hclk:
+-	clk_disable_unprepare(dev->aclk);
+-err_aclk:
+-	clk_disable_unprepare(dev->sclk);
+-err_return:
++	err = clk_bulk_prepare_enable(dev->num_clks, dev->clks);
++	if (err)
++		dev_err(dev->dev, "Could not enable clock clks\n");
++
  	return err;
  }
  
-@@ -385,8 +252,7 @@ static int rk_crypto_remove(struct platform_device *pdev)
- 
- 	rk_crypto_unregister();
- 	rk_crypto_disable_clk(crypto_tmp);
--	tasklet_kill(&crypto_tmp->done_task);
--	tasklet_kill(&crypto_tmp->queue_task);
-+	crypto_engine_exit(crypto_tmp->engine);
- 	return 0;
+ static void rk_crypto_disable_clk(struct rk_crypto_info *dev)
+ {
+-	clk_disable_unprepare(dev->dmaclk);
+-	clk_disable_unprepare(dev->hclk);
+-	clk_disable_unprepare(dev->aclk);
+-	clk_disable_unprepare(dev->sclk);
++	clk_bulk_disable_unprepare(dev->num_clks, dev->clks);
  }
  
+ /*
+@@ -266,27 +235,10 @@ static int rk_crypto_probe(struct platform_device *pdev)
+ 		goto err_crypto;
+ 	}
+ 
+-	crypto_info->aclk = devm_clk_get(&pdev->dev, "aclk");
+-	if (IS_ERR(crypto_info->aclk)) {
+-		err = PTR_ERR(crypto_info->aclk);
+-		goto err_crypto;
+-	}
+-
+-	crypto_info->hclk = devm_clk_get(&pdev->dev, "hclk");
+-	if (IS_ERR(crypto_info->hclk)) {
+-		err = PTR_ERR(crypto_info->hclk);
+-		goto err_crypto;
+-	}
+-
+-	crypto_info->sclk = devm_clk_get(&pdev->dev, "sclk");
+-	if (IS_ERR(crypto_info->sclk)) {
+-		err = PTR_ERR(crypto_info->sclk);
+-		goto err_crypto;
+-	}
+-
+-	crypto_info->dmaclk = devm_clk_get(&pdev->dev, "apb_pclk");
+-	if (IS_ERR(crypto_info->dmaclk)) {
+-		err = PTR_ERR(crypto_info->dmaclk);
++	crypto_info->num_clks = devm_clk_bulk_get_all(&pdev->dev,
++						      &crypto_info->clks);
++	if (crypto_info->num_clks < 3) {
++		err = -EINVAL;
+ 		goto err_crypto;
+ 	}
+ 
 diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
-index a7de5738f6dc..65ed645e0168 100644
+index ddbb9246ce16..28bf09fe1c1d 100644
 --- a/drivers/crypto/rockchip/rk3288_crypto.h
 +++ b/drivers/crypto/rockchip/rk3288_crypto.h
-@@ -5,9 +5,11 @@
- #include <crypto/aes.h>
- #include <crypto/internal/des.h>
- #include <crypto/algapi.h>
-+#include <linux/dma-mapping.h>
- #include <linux/interrupt.h>
- #include <linux/delay.h>
- #include <linux/scatterlist.h>
-+#include <crypto/engine.h>
- #include <crypto/internal/hash.h>
- #include <crypto/internal/skcipher.h>
+@@ -190,10 +190,8 @@
  
-@@ -193,39 +195,15 @@ struct rk_crypto_info {
+ struct rk_crypto_info {
+ 	struct device			*dev;
+-	struct clk			*aclk;
+-	struct clk			*hclk;
+-	struct clk			*sclk;
+-	struct clk			*dmaclk;
++	struct clk_bulk_data		*clks;
++	int num_clks;
  	struct reset_control		*rst;
  	void __iomem			*reg;
  	int				irq;
--	struct crypto_queue		queue;
--	struct tasklet_struct		queue_task;
--	struct tasklet_struct		done_task;
--	struct crypto_async_request	*async_req;
--	int 				err;
--	/* device lock */
--	spinlock_t			lock;
--
--	/* the public variable */
--	struct scatterlist		*sg_src;
--	struct scatterlist		*sg_dst;
--	struct scatterlist		*first;
--	unsigned int			left_bytes;
--	size_t				src_nents;
--	size_t				dst_nents;
--	unsigned int			total;
--	unsigned int			count;
--	dma_addr_t			addr_in;
--	dma_addr_t			addr_out;
--	bool				busy;
--	int (*start)(struct rk_crypto_info *dev);
--	int (*update)(struct rk_crypto_info *dev);
--	void (*complete)(struct crypto_async_request *base, int err);
--	int (*load_data)(struct rk_crypto_info *dev,
--			 struct scatterlist *sg_src,
--			 struct scatterlist *sg_dst);
--	void (*unload_data)(struct rk_crypto_info *dev);
--	int (*enqueue)(struct rk_crypto_info *dev,
--		       struct crypto_async_request *async_req);
-+
-+	struct crypto_engine *engine;
-+	struct completion complete;
-+	int status;
- };
- 
- /* the private variable of hash */
- struct rk_ahash_ctx {
-+	struct crypto_engine_ctx enginectx;
- 	struct rk_crypto_info		*dev;
- 	/* for fallback */
- 	struct crypto_ahash		*fallback_tfm;
-@@ -235,10 +213,12 @@ struct rk_ahash_ctx {
- struct rk_ahash_rctx {
- 	struct ahash_request		fallback_req;
- 	u32				mode;
-+	int nrsg;
- };
- 
- /* the private variable of cipher */
- struct rk_cipher_ctx {
-+	struct crypto_engine_ctx enginectx;
- 	struct rk_crypto_info		*dev;
- 	unsigned int			keylen;
- 	u8				key[AES_MAX_KEY_SIZE];
-@@ -247,6 +227,7 @@ struct rk_cipher_ctx {
- };
- 
- struct rk_cipher_rctx {
-+	u8 backup_iv[AES_BLOCK_SIZE];
- 	u32				mode;
- 	struct skcipher_request fallback_req;   // keep at the end
- };
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-index c762e462eb57..edd40e16a3f0 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-@@ -9,6 +9,7 @@
-  * Some ideas are from marvell/cesa.c and s5p-sss.c driver.
-  */
- #include <linux/device.h>
-+#include <asm/unaligned.h>
- #include "rk3288_crypto.h"
- 
- /*
-@@ -72,16 +73,12 @@ static int zero_message_process(struct ahash_request *req)
- 	return 0;
- }
- 
--static void rk_ahash_crypto_complete(struct crypto_async_request *base, int err)
-+static void rk_ahash_reg_init(struct ahash_request *req)
- {
--	if (base->complete)
--		base->complete(base, err);
--}
--
--static void rk_ahash_reg_init(struct rk_crypto_info *dev)
--{
--	struct ahash_request *req = ahash_request_cast(dev->async_req);
- 	struct rk_ahash_rctx *rctx = ahash_request_ctx(req);
-+	struct crypto_ahash *tfm = crypto_ahash_reqtfm(req);
-+	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
-+	struct rk_crypto_info *dev = tctx->dev;
- 	int reg_status;
- 
- 	reg_status = CRYPTO_READ(dev, RK_CRYPTO_CTRL) |
-@@ -108,7 +105,7 @@ static void rk_ahash_reg_init(struct rk_crypto_info *dev)
- 					  RK_CRYPTO_BYTESWAP_BRFIFO |
- 					  RK_CRYPTO_BYTESWAP_BTFIFO);
- 
--	CRYPTO_WRITE(dev, RK_CRYPTO_HASH_MSG_LEN, dev->total);
-+	CRYPTO_WRITE(dev, RK_CRYPTO_HASH_MSG_LEN, req->nbytes);
- }
- 
- static int rk_ahash_init(struct ahash_request *req)
-@@ -206,44 +203,59 @@ static int rk_ahash_digest(struct ahash_request *req)
- 
- 	if (!req->nbytes)
- 		return zero_message_process(req);
--	else
--		return dev->enqueue(dev, &req->base);
-+
-+	return crypto_transfer_hash_request_to_engine(dev->engine, req);
- }
- 
--static void crypto_ahash_dma_start(struct rk_crypto_info *dev)
-+static void crypto_ahash_dma_start(struct rk_crypto_info *dev, struct scatterlist *sg)
- {
--	CRYPTO_WRITE(dev, RK_CRYPTO_HRDMAS, dev->addr_in);
--	CRYPTO_WRITE(dev, RK_CRYPTO_HRDMAL, (dev->count + 3) / 4);
-+	CRYPTO_WRITE(dev, RK_CRYPTO_HRDMAS, sg_dma_address(sg));
-+	CRYPTO_WRITE(dev, RK_CRYPTO_HRDMAL, sg_dma_len(sg) / 4);
- 	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, RK_CRYPTO_HASH_START |
- 					  (RK_CRYPTO_HASH_START << 16));
- }
- 
--static int rk_ahash_set_data_start(struct rk_crypto_info *dev)
-+static int rk_hash_prepare(struct crypto_engine *engine, void *breq)
-+{
-+	struct ahash_request *areq = container_of(breq, struct ahash_request, base);
-+	struct crypto_ahash *tfm = crypto_ahash_reqtfm(areq);
-+	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
-+	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
-+	int ret;
-+
-+	ret = dma_map_sg(tctx->dev->dev, areq->src, sg_nents(areq->src), DMA_TO_DEVICE);
-+	if (ret <= 0)
-+		return -EINVAL;
-+
-+	rctx->nrsg = ret;
-+
-+	return 0;
-+}
-+
-+static int rk_hash_unprepare(struct crypto_engine *engine, void *breq)
- {
--	int err;
-+	struct ahash_request *areq = container_of(breq, struct ahash_request, base);
-+	struct crypto_ahash *tfm = crypto_ahash_reqtfm(areq);
-+	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
-+	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
- 
--	err = dev->load_data(dev, dev->sg_src, NULL);
--	if (!err)
--		crypto_ahash_dma_start(dev);
--	return err;
-+	dma_unmap_sg(tctx->dev->dev, areq->src, rctx->nrsg, DMA_TO_DEVICE);
-+	return 0;
- }
- 
--static int rk_ahash_start(struct rk_crypto_info *dev)
-+static int rk_hash_run(struct crypto_engine *engine, void *breq)
- {
--	struct ahash_request *req = ahash_request_cast(dev->async_req);
--	struct crypto_ahash *tfm;
--	struct rk_ahash_rctx *rctx;
--
--	dev->total = req->nbytes;
--	dev->left_bytes = req->nbytes;
--	dev->sg_dst = NULL;
--	dev->sg_src = req->src;
--	dev->first = req->src;
--	dev->src_nents = sg_nents(req->src);
--	rctx = ahash_request_ctx(req);
-+	struct ahash_request *areq = container_of(breq, struct ahash_request, base);
-+	struct crypto_ahash *tfm = crypto_ahash_reqtfm(areq);
-+	struct rk_ahash_rctx *rctx = ahash_request_ctx(areq);
-+	struct rk_ahash_ctx *tctx = crypto_ahash_ctx(tfm);
-+	struct scatterlist *sg = areq->src;
-+	int err = 0;
-+	int i;
-+	u32 v;
-+
- 	rctx->mode = 0;
- 
--	tfm = crypto_ahash_reqtfm(req);
- 	switch (crypto_ahash_digestsize(tfm)) {
- 	case SHA1_DIGEST_SIZE:
- 		rctx->mode = RK_CRYPTO_HASH_SHA1;
-@@ -255,30 +267,26 @@ static int rk_ahash_start(struct rk_crypto_info *dev)
- 		rctx->mode = RK_CRYPTO_HASH_MD5;
- 		break;
- 	default:
--		return -EINVAL;
-+		err =  -EINVAL;
-+		goto theend;
- 	}
- 
--	rk_ahash_reg_init(dev);
--	return rk_ahash_set_data_start(dev);
--}
-+	rk_ahash_reg_init(areq);
- 
--static int rk_ahash_crypto_rx(struct rk_crypto_info *dev)
--{
--	int err = 0;
--	struct ahash_request *req = ahash_request_cast(dev->async_req);
--	struct crypto_ahash *tfm;
--
--	dev->unload_data(dev);
--	if (dev->left_bytes) {
--		if (sg_is_last(dev->sg_src)) {
--			dev_warn(dev->dev, "[%s:%d], Lack of data\n",
--					__func__, __LINE__);
--			err = -ENOMEM;
--			goto out_rx;
-+	while (sg) {
-+		reinit_completion(&tctx->dev->complete);
-+		tctx->dev->status = 0;
-+		crypto_ahash_dma_start(tctx->dev, sg);
-+		wait_for_completion_interruptible_timeout(&tctx->dev->complete,
-+							  msecs_to_jiffies(2000));
-+		if (!tctx->dev->status) {
-+			dev_err(tctx->dev->dev, "DMA timeout\n");
-+			err = -EFAULT;
-+			goto theend;
- 		}
--		dev->sg_src = sg_next(dev->sg_src);
--		err = rk_ahash_set_data_start(dev);
--	} else {
-+		sg = sg_next(sg);
-+	}
-+
- 		/*
- 		 * it will take some time to process date after last dma
- 		 * transmission.
-@@ -289,18 +297,20 @@ static int rk_ahash_crypto_rx(struct rk_crypto_info *dev)
- 		 * efficiency, and make it response quickly when dma
- 		 * complete.
- 		 */
--		while (!CRYPTO_READ(dev, RK_CRYPTO_HASH_STS))
--			udelay(10);
--
--		tfm = crypto_ahash_reqtfm(req);
--		memcpy_fromio(req->result, dev->reg + RK_CRYPTO_HASH_DOUT_0,
--			      crypto_ahash_digestsize(tfm));
--		dev->complete(dev->async_req, 0);
--		tasklet_schedule(&dev->queue_task);
-+	while (!CRYPTO_READ(tctx->dev, RK_CRYPTO_HASH_STS))
-+		udelay(10);
-+
-+	for (i = 0; i < crypto_ahash_digestsize(tfm) / 4; i++) {
-+		v = readl(tctx->dev->reg + RK_CRYPTO_HASH_DOUT_0 + i * 4);
-+		put_unaligned_le32(v, areq->result + i * 4);
- 	}
- 
--out_rx:
--	return err;
-+theend:
-+	local_bh_disable();
-+	crypto_finalize_hash_request(engine, breq, err);
-+	local_bh_enable();
-+
-+	return 0;
- }
- 
- static int rk_cra_hash_init(struct crypto_tfm *tfm)
-@@ -314,9 +324,6 @@ static int rk_cra_hash_init(struct crypto_tfm *tfm)
- 	algt = container_of(alg, struct rk_crypto_tmp, alg.hash);
- 
- 	tctx->dev = algt->dev;
--	tctx->dev->start = rk_ahash_start;
--	tctx->dev->update = rk_ahash_crypto_rx;
--	tctx->dev->complete = rk_ahash_crypto_complete;
- 
- 	/* for fallback */
- 	tctx->fallback_tfm = crypto_alloc_ahash(alg_name, 0,
-@@ -325,10 +332,15 @@ static int rk_cra_hash_init(struct crypto_tfm *tfm)
- 		dev_err(tctx->dev->dev, "Could not load fallback driver.\n");
- 		return PTR_ERR(tctx->fallback_tfm);
- 	}
-+
- 	crypto_ahash_set_reqsize(__crypto_ahash_cast(tfm),
- 				 sizeof(struct rk_ahash_rctx) +
- 				 crypto_ahash_reqsize(tctx->fallback_tfm));
- 
-+	tctx->enginectx.op.do_one_request = rk_hash_run;
-+	tctx->enginectx.op.prepare_request = rk_hash_prepare;
-+	tctx->enginectx.op.unprepare_request = rk_hash_unprepare;
-+
- 	return 0;
- }
- 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-index d067b7f09165..67a7e05d5ae3 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-@@ -9,6 +9,7 @@
-  * Some ideas are from marvell-cesa.c and s5p-sss.c driver.
-  */
- #include <linux/device.h>
-+#include <crypto/scatterwalk.h>
- #include "rk3288_crypto.h"
- 
- #define RK_CRYPTO_DEC			BIT(0)
-@@ -70,19 +71,15 @@ static int rk_cipher_fallback(struct skcipher_request *areq)
- 	return err;
- }
- 
--static void rk_crypto_complete(struct crypto_async_request *base, int err)
--{
--	if (base->complete)
--		base->complete(base, err);
--}
--
- static int rk_handle_req(struct rk_crypto_info *dev,
- 			 struct skcipher_request *req)
- {
-+	struct crypto_engine *engine = dev->engine;
-+
- 	if (rk_cipher_need_fallback(req))
- 		return rk_cipher_fallback(req);
- 
--	return dev->enqueue(dev, &req->base);
-+	return crypto_transfer_skcipher_request_to_engine(engine, req);
- }
- 
- static int rk_aes_setkey(struct crypto_skcipher *cipher,
-@@ -265,25 +262,21 @@ static int rk_des3_ede_cbc_decrypt(struct skcipher_request *req)
- 	return rk_handle_req(dev, req);
- }
- 
--static void rk_ablk_hw_init(struct rk_crypto_info *dev)
-+static void rk_ablk_hw_init(struct rk_crypto_info *dev, struct skcipher_request *req)
- {
--	struct skcipher_request *req =
--		skcipher_request_cast(dev->async_req);
- 	struct crypto_skcipher *cipher = crypto_skcipher_reqtfm(req);
- 	struct crypto_tfm *tfm = crypto_skcipher_tfm(cipher);
- 	struct rk_cipher_rctx *rctx = skcipher_request_ctx(req);
- 	struct rk_cipher_ctx *ctx = crypto_skcipher_ctx(cipher);
--	u32 ivsize, block, conf_reg = 0;
-+	u32 block, conf_reg = 0;
- 
- 	block = crypto_tfm_alg_blocksize(tfm);
--	ivsize = crypto_skcipher_ivsize(cipher);
- 
- 	if (block == DES_BLOCK_SIZE) {
- 		rctx->mode |= RK_CRYPTO_TDES_FIFO_MODE |
- 			     RK_CRYPTO_TDES_BYTESWAP_KEY |
- 			     RK_CRYPTO_TDES_BYTESWAP_IV;
- 		CRYPTO_WRITE(dev, RK_CRYPTO_TDES_CTRL, rctx->mode);
--		memcpy_toio(dev->reg + RK_CRYPTO_TDES_IV_0, req->iv, ivsize);
- 		memcpy_toio(ctx->dev->reg + RK_CRYPTO_TDES_KEY1_0, ctx->key, ctx->keylen);
- 		conf_reg = RK_CRYPTO_DESSEL;
- 	} else {
-@@ -296,7 +289,6 @@ static void rk_ablk_hw_init(struct rk_crypto_info *dev)
- 		else if (ctx->keylen == AES_KEYSIZE_256)
- 			rctx->mode |= RK_CRYPTO_AES_256BIT_key;
- 		CRYPTO_WRITE(dev, RK_CRYPTO_AES_CTRL, rctx->mode);
--		memcpy_toio(dev->reg + RK_CRYPTO_AES_IV_0, req->iv, ivsize);
- 		memcpy_toio(ctx->dev->reg + RK_CRYPTO_AES_KEY_0, ctx->key, ctx->keylen);
- 	}
- 	conf_reg |= RK_CRYPTO_BYTESWAP_BTFIFO |
-@@ -306,133 +298,138 @@ static void rk_ablk_hw_init(struct rk_crypto_info *dev)
- 		     RK_CRYPTO_BCDMA_ERR_ENA | RK_CRYPTO_BCDMA_DONE_ENA);
- }
- 
--static void crypto_dma_start(struct rk_crypto_info *dev)
-+static void crypto_dma_start(struct rk_crypto_info *dev,
-+			     struct scatterlist *sgs,
-+			     struct scatterlist *sgd, unsigned int todo)
- {
--	CRYPTO_WRITE(dev, RK_CRYPTO_BRDMAS, dev->addr_in);
--	CRYPTO_WRITE(dev, RK_CRYPTO_BRDMAL, dev->count / 4);
--	CRYPTO_WRITE(dev, RK_CRYPTO_BTDMAS, dev->addr_out);
-+	CRYPTO_WRITE(dev, RK_CRYPTO_BRDMAS, sg_dma_address(sgs));
-+	CRYPTO_WRITE(dev, RK_CRYPTO_BRDMAL, todo);
-+	CRYPTO_WRITE(dev, RK_CRYPTO_BTDMAS, sg_dma_address(sgd));
- 	CRYPTO_WRITE(dev, RK_CRYPTO_CTRL, RK_CRYPTO_BLOCK_START |
- 		     _SBF(RK_CRYPTO_BLOCK_START, 16));
- }
- 
--static int rk_set_data_start(struct rk_crypto_info *dev)
-+static int rk_cipher_run(struct crypto_engine *engine, void *async_req)
- {
--	int err;
--	struct skcipher_request *req =
--		skcipher_request_cast(dev->async_req);
--	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(req);
--	struct rk_cipher_rctx *rctx = skcipher_request_ctx(req);
-+	struct skcipher_request *areq = container_of(async_req, struct skcipher_request, base);
-+	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(areq);
- 	struct rk_cipher_ctx *ctx = crypto_skcipher_ctx(tfm);
--	u32 ivsize = crypto_skcipher_ivsize(tfm);
--	u8 *src_last_blk = page_address(sg_page(dev->sg_src)) +
--		dev->sg_src->offset + dev->sg_src->length - ivsize;
--
--	/* Store the iv that need to be updated in chain mode.
--	 * And update the IV buffer to contain the next IV for decryption mode.
--	 */
--	if (rctx->mode & RK_CRYPTO_DEC) {
--		memcpy(ctx->iv, src_last_blk, ivsize);
--		sg_pcopy_to_buffer(dev->first, dev->src_nents, req->iv,
--				   ivsize, dev->total - ivsize);
--	}
--
--	err = dev->load_data(dev, dev->sg_src, dev->sg_dst);
--	if (!err)
--		crypto_dma_start(dev);
--	return err;
--}
--
--static int rk_ablk_start(struct rk_crypto_info *dev)
--{
--	struct skcipher_request *req =
--		skcipher_request_cast(dev->async_req);
--	unsigned long flags;
-+	struct rk_cipher_rctx *rctx = skcipher_request_ctx(areq);
-+	struct scatterlist *sgs, *sgd;
- 	int err = 0;
-+	int ivsize = crypto_skcipher_ivsize(tfm);
-+	int offset;
-+	u8 iv[AES_BLOCK_SIZE];
-+	u8 biv[AES_BLOCK_SIZE];
-+	u8 *ivtouse = areq->iv;
-+	unsigned int len = areq->cryptlen;
-+	unsigned int todo;
-+
-+	ivsize = crypto_skcipher_ivsize(tfm);
-+	if (areq->iv && crypto_skcipher_ivsize(tfm) > 0) {
-+		if (rctx->mode & RK_CRYPTO_DEC) {
-+			offset = areq->cryptlen - ivsize;
-+			scatterwalk_map_and_copy(rctx->backup_iv, areq->src,
-+						 offset, ivsize, 0);
-+		}
-+	}
- 
--	dev->left_bytes = req->cryptlen;
--	dev->total = req->cryptlen;
--	dev->sg_src = req->src;
--	dev->first = req->src;
--	dev->src_nents = sg_nents(req->src);
--	dev->sg_dst = req->dst;
--	dev->dst_nents = sg_nents(req->dst);
--
--	spin_lock_irqsave(&dev->lock, flags);
--	rk_ablk_hw_init(dev);
--	err = rk_set_data_start(dev);
--	spin_unlock_irqrestore(&dev->lock, flags);
--	return err;
--}
--
--static void rk_iv_copyback(struct rk_crypto_info *dev)
--{
--	struct skcipher_request *req =
--		skcipher_request_cast(dev->async_req);
--	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(req);
--	struct rk_cipher_rctx *rctx = skcipher_request_ctx(req);
--	struct rk_cipher_ctx *ctx = crypto_skcipher_ctx(tfm);
--	u32 ivsize = crypto_skcipher_ivsize(tfm);
-+	sgs = areq->src;
-+	sgd = areq->dst;
- 
--	/* Update the IV buffer to contain the next IV for encryption mode. */
--	if (!(rctx->mode & RK_CRYPTO_DEC)) {
--		memcpy(req->iv,
--		       sg_virt(dev->sg_dst) + dev->sg_dst->length - ivsize,
--		       ivsize);
-+	while (sgs && sgd && len) {
-+		if (!sgs->length) {
-+			sgs = sg_next(sgs);
-+			sgd = sg_next(sgd);
-+			continue;
-+		}
-+		if (rctx->mode & RK_CRYPTO_DEC) {
-+			/* we backup last block of source to be used as IV at next step */
-+			offset = sgs->length - ivsize;
-+			scatterwalk_map_and_copy(biv, sgs, offset, ivsize, 0);
-+		}
-+		if (sgs == sgd) {
-+			err = dma_map_sg(ctx->dev->dev, sgs, 1, DMA_BIDIRECTIONAL);
-+			if (err <= 0) {
-+				err = -EINVAL;
-+				goto theend_iv;
-+			}
-+		} else {
-+			err = dma_map_sg(ctx->dev->dev, sgs, 1, DMA_TO_DEVICE);
-+			if (err <= 0) {
-+				err = -EINVAL;
-+				goto theend_iv;
-+			}
-+			err = dma_map_sg(ctx->dev->dev, sgd, 1, DMA_FROM_DEVICE);
-+			if (err <= 0) {
-+				err = -EINVAL;
-+				goto theend_sgs;
-+			}
-+		}
-+		err = 0;
-+		rk_ablk_hw_init(ctx->dev, areq);
-+		if (ivsize) {
-+			if (ivsize == DES_BLOCK_SIZE)
-+				memcpy_toio(ctx->dev->reg + RK_CRYPTO_TDES_IV_0, ivtouse, ivsize);
-+			else
-+				memcpy_toio(ctx->dev->reg + RK_CRYPTO_AES_IV_0, ivtouse, ivsize);
-+		}
-+		reinit_completion(&ctx->dev->complete);
-+		ctx->dev->status = 0;
-+
-+		todo = min(sg_dma_len(sgs), len);
-+		len -= todo;
-+		crypto_dma_start(ctx->dev, sgs, sgd, todo / 4);
-+		wait_for_completion_interruptible_timeout(&ctx->dev->complete,
-+							  msecs_to_jiffies(2000));
-+		if (!ctx->dev->status) {
-+			dev_err(ctx->dev->dev, "DMA timeout\n");
-+			err = -EFAULT;
-+			goto theend;
-+		}
-+		if (sgs == sgd) {
-+			dma_unmap_sg(ctx->dev->dev, sgs, 1, DMA_BIDIRECTIONAL);
-+		} else {
-+			dma_unmap_sg(ctx->dev->dev, sgs, 1, DMA_TO_DEVICE);
-+			dma_unmap_sg(ctx->dev->dev, sgd, 1, DMA_FROM_DEVICE);
-+		}
-+		if (rctx->mode & RK_CRYPTO_DEC) {
-+			memcpy(iv, biv, ivsize);
-+			ivtouse = iv;
-+		} else {
-+			offset = sgd->length - ivsize;
-+			scatterwalk_map_and_copy(iv, sgd, offset, ivsize, 0);
-+			ivtouse = iv;
-+		}
-+		sgs = sg_next(sgs);
-+		sgd = sg_next(sgd);
- 	}
--}
--
--static void rk_update_iv(struct rk_crypto_info *dev)
--{
--	struct skcipher_request *req =
--		skcipher_request_cast(dev->async_req);
--	struct crypto_skcipher *tfm = crypto_skcipher_reqtfm(req);
--	struct rk_cipher_rctx *rctx = skcipher_request_ctx(req);
--	struct rk_cipher_ctx *ctx = crypto_skcipher_ctx(tfm);
--	u32 ivsize = crypto_skcipher_ivsize(tfm);
--	u8 *new_iv = NULL;
- 
--	if (rctx->mode & RK_CRYPTO_DEC) {
--		new_iv = ctx->iv;
--	} else {
--		new_iv = page_address(sg_page(dev->sg_dst)) +
--			 dev->sg_dst->offset + dev->sg_dst->length - ivsize;
-+	if (areq->iv && ivsize > 0) {
-+		offset = areq->cryptlen - ivsize;
-+		if (rctx->mode & RK_CRYPTO_DEC) {
-+			memcpy(areq->iv, rctx->backup_iv, ivsize);
-+			memzero_explicit(rctx->backup_iv, ivsize);
-+		} else {
-+			scatterwalk_map_and_copy(areq->iv, areq->dst, offset,
-+						 ivsize, 0);
-+		}
- 	}
- 
--	if (ivsize == DES_BLOCK_SIZE)
--		memcpy_toio(dev->reg + RK_CRYPTO_TDES_IV_0, new_iv, ivsize);
--	else if (ivsize == AES_BLOCK_SIZE)
--		memcpy_toio(dev->reg + RK_CRYPTO_AES_IV_0, new_iv, ivsize);
--}
-+theend:
-+	local_bh_disable();
-+	crypto_finalize_skcipher_request(engine, areq, err);
-+	local_bh_enable();
-+	return 0;
- 
--/* return:
-- *	true	some err was occurred
-- *	fault	no err, continue
-- */
--static int rk_ablk_rx(struct rk_crypto_info *dev)
--{
--	int err = 0;
--	struct skcipher_request *req =
--		skcipher_request_cast(dev->async_req);
--
--	dev->unload_data(dev);
--	if (dev->left_bytes) {
--		rk_update_iv(dev);
--		if (sg_is_last(dev->sg_src)) {
--			dev_err(dev->dev, "[%s:%d] Lack of data\n",
--					__func__, __LINE__);
--			err = -ENOMEM;
--			goto out_rx;
--		}
--		dev->sg_src = sg_next(dev->sg_src);
--		dev->sg_dst = sg_next(dev->sg_dst);
--		err = rk_set_data_start(dev);
-+theend_sgs:
-+	if (sgs == sgd) {
-+		dma_unmap_sg(ctx->dev->dev, sgs, 1, DMA_BIDIRECTIONAL);
- 	} else {
--		rk_iv_copyback(dev);
--		/* here show the calculation is over without any err */
--		dev->complete(dev->async_req, 0);
--		tasklet_schedule(&dev->queue_task);
-+		dma_unmap_sg(ctx->dev->dev, sgs, 1, DMA_TO_DEVICE);
-+		dma_unmap_sg(ctx->dev->dev, sgd, 1, DMA_FROM_DEVICE);
- 	}
--out_rx:
-+theend_iv:
- 	return err;
- }
- 
-@@ -446,9 +443,6 @@ static int rk_ablk_init_tfm(struct crypto_skcipher *tfm)
- 	algt = container_of(alg, struct rk_crypto_tmp, alg.skcipher);
- 
- 	ctx->dev = algt->dev;
--	ctx->dev->start = rk_ablk_start;
--	ctx->dev->update = rk_ablk_rx;
--	ctx->dev->complete = rk_crypto_complete;
- 
- 	ctx->fallback_tfm = crypto_alloc_skcipher(name, 0, CRYPTO_ALG_NEED_FALLBACK);
- 	if (IS_ERR(ctx->fallback_tfm)) {
-@@ -460,6 +454,8 @@ static int rk_ablk_init_tfm(struct crypto_skcipher *tfm)
- 	tfm->reqsize = sizeof(struct rk_cipher_rctx) +
- 		crypto_skcipher_reqsize(ctx->fallback_tfm);
- 
-+	ctx->enginectx.op.do_one_request = rk_cipher_run;
-+
- 	return 0;
- }
- 
 -- 
 2.35.1
 
