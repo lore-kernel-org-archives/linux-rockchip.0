@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08430ECAAD2
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Sep 2022 07:07:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8453EECAAD1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Sep 2022 07:08:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l9fup2cpDRYHH8ULzIvh1ZMjKofFDYqsDUOGVY3XN5I=; b=wvrenFBFkuw8Jg
-	sHb99YZ54xFMCTMGTvO9weuNIz6RGTgzWCndZm7+6OZIN2vj/5krprxUWTsC1+C2qI1SbotRGdEQ5
-	8GfkZe9x5mVYQNQnFz9Nk9u5a7Cxgy8WG2W5jhZ5jyKesbkRDa6pZoe9rw8qFCyKl9aRg/JVRIN+Y
-	FcZ2qZ/0qWvJQ6wzYYWLqDpvID2CFmwlb5Tob8dt7oeJRV2MfPUYZEzRx7mu7beivAK76q5zYR8TK
-	q90Flg37/aY/6OIAVtfmOIYFYcDuk0P0xG/zoWRI1Nue4/V2TLUu1R+2LIUSpOj1awr+I2fzbKqPs
-	DpeOVKpaE+KNK+REZM6g==;
+	List-Owner; bh=WSrWtXM7cAtRH6QO50qnAtzswawp8NOmKx2AhJEhIz0=; b=Crsm+ieu7jBWtI
+	1tv57aHKPdT2rCEx33tZYgjOdtO38ctCxBAZc7slq94NK6Lfdwj38rNuefv5tkYxC2aEnHtS4+Cgb
+	DyMFHCa3YV6m8ggb1otXF2nYBMzWs/zg0kyVwX5kV3kUnQ05zgI/qaK9LmcMrKcF130uZrgoNT9KT
+	xcg3OIE5g8GjAfad1HNZGbgxDfqBLdubkAcDuQEl7wcfvAvpUtd4Cf3Ni9Ec+nfVzRku2ZSG7V/AP
+	RDgKVTd+uyOwzJDH48ipApjxm9UoUgp8Z2kLhr1O9YMQgqNJYWCRk2zkebsQdxqtLiRSQ3Tm5xND/
+	v1nwEVLp/9iggPa4yxvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTeHx-00ABlC-02; Thu, 01 Sep 2022 07:06:57 +0000
-Received: from mail-yb1-xb2e.google.com ([2607:f8b0:4864:20::b2e])
+	id 1oTeJf-00ACal-4z; Thu, 01 Sep 2022 07:08:43 +0000
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTeHl-00ABgI-Ul
-	for linux-rockchip@lists.infradead.org; Thu, 01 Sep 2022 07:06:47 +0000
-Received: by mail-yb1-xb2e.google.com with SMTP id g5so7347588ybg.11
-        for <linux-rockchip@lists.infradead.org>; Thu, 01 Sep 2022 00:06:43 -0700 (PDT)
+	id 1oTeJb-00ACYg-C9
+	for linux-rockchip@lists.infradead.org; Thu, 01 Sep 2022 07:08:41 +0000
+Received: by mail-ej1-x62c.google.com with SMTP id y3so32781091ejc.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 01 Sep 2022 00:08:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
+        d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date;
-        bh=OkrB7u5zO7yhs7suwu7hn8qSqPX9t4VFobbA5eBLtMA=;
-        b=F257pApWGKrYCUXD6jfvvpcz01RxcYotLK3hhuKEAwBLQWaXdlYkytdlDHaMhZ0vdp
-         fKSwIhYkMkSbSw/rSKe/kuOUHDoZfDS9HaOiR5Zlmf2L9q+6OtGAaoT98B8ubwA3FkMt
-         AFbthgCqoCfWcFRQRS11Er3xaYgrTAcJFHhVchvthH3mKqYc9GNxxJArWtH8vz5FVKZD
-         murNAJt4g2NSzpFQ88dJEVB57RldbFiXnMQUfcytK4QDFnI3sdKgXc8kMJMgsGOmOY0G
-         XPLMXp9knlitf0IzP9NXehUe5Mt2mIyU0Kg8YLJGVM6s8iJ7ld/PS1ZBI3nhqpVPHyzI
-         Z3AA==
+         :mime-version:from:to:cc;
+        bh=T1a2n0TNcrK8BG/SkAbOxT72skaz9m2THYBGPmVrqkw=;
+        b=hnKeXWRs7+MUYSmsPy4UqpjsS42ETkbAratKcQZCLzvtCI9QigOVlPzGm7UlQvMheR
+         DLWpprUoJK1JeArbPQsC0LzSfdnv0WGYJ+ZvFIWeY0K0/iQdH8pwCLg+VZtDwRZNzXPo
+         SYs9vIf8hxuJ4NJbcl5cw/f5B4hYupasTRAeSm/NgH1pcC/dv2oBW8D87H4lw9BbZhDc
+         EAfRLhTk2lq72fDYZt7eTrEa8qHVZTRTzK1v2Rpt8ABTN+Q9G2/iQzr0kJWXZ/yQPtP1
+         YiuXdWhW5DGUAzOisxqVl13XHXVm0ZMTldz0QDgKsvDQvfoETIZOe0PsU1ix89NrFj5O
+         L2IQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=OkrB7u5zO7yhs7suwu7hn8qSqPX9t4VFobbA5eBLtMA=;
-        b=xWcvX1OwMCfhiA+y0r05bKt5YXNg9y+fEhc9sSNwfxdDkCgOoi8UniMKEvqXcvQiMO
-         VupnAjYNbBOc63W2UjnkHKUcu7Ec1d9m7T7OnmuLm6UFUCQ+ZXJVnbTzu2hEc9oQME96
-         bpkcjLaoHDE5zK6zzxPmVALpR8hvqD0ph/9tANCIrloUBHa4JISVuzOQCAI6rFgUDFv9
-         VWd+P0Xuj7yY3ogPO5DxEGHCHog+WdT7RYQXM0q+RfHb5Uhg/z/X5kkWmltnIrDR84ne
-         yqFkPwx4W9clHObXUeaxNq8etbS9+qMRvBvYK2pBhe4TFm1BAO+5s7oqrmTzF7Hdwty6
-         Hrrg==
-X-Gm-Message-State: ACgBeo0yCs6iDqrDnOeed7x1BE1VODl6cNmw/R1TOVzO5OJ7V4kwd65p
-	exImrNjLAE1lNE3r2w9SobhcVlxmGJheqq3Cr1q3bA==
-X-Google-Smtp-Source: AA6agR6B1joMY2QehQj/lQc1Wp2scBlnM8pWTOh1nJljf40TrREeO+mjpMy/OatZLnIGjI8y3nxT5YnLNmLsDn2ag4M=
-X-Received: by 2002:a25:8a83:0:b0:671:786a:e2cc with SMTP id
- h3-20020a258a83000000b00671786ae2ccmr17400206ybl.145.1662016002769; Thu, 01
- Sep 2022 00:06:42 -0700 (PDT)
+         :mime-version:x-gm-message-state:from:to:cc;
+        bh=T1a2n0TNcrK8BG/SkAbOxT72skaz9m2THYBGPmVrqkw=;
+        b=zAkM2Ek21eVcnMZOSpCEMJNSiPshrCldNXlx7M2Ka2HasgvAVLLbSdiTcRBot4naYP
+         spn4OhReYbLCOqezLPNJ0IB0D+m660mTztAUPQ7myKxd2WsDldSiV/jkeN7eCi4srCqp
+         FYo5QBg9tVTLmp0ljt4w2y/83I2spj7wbpzXyf6Qcw9BP9VUnH5bBeRPN6If0JZWk/Ij
+         a315UBCA24dhY4B2RDhp+q8vHJxtpWtPYmT6szjKbp7Kt/tyATnEF3K7t/x/zuLqSPu4
+         W6qN3NTSEf4MllLPQ0hH9XWOexoEPa/v5XrfuIitgyl/wv5+HYAB6ZVGB91Wr1bM1EL/
+         PsKQ==
+X-Gm-Message-State: ACgBeo1/IbRdFIFE67aaUqaA2nkleuABJmWyWKZlLQEhHCuyNRLMp+aH
+	wRCxi4jIwwWh8dhrWIrzFMTg4PLBzZFjXE7UPQ3M+Q==
+X-Google-Smtp-Source: AA6agR6pWO4tm1B3xV/+1WwC/UgTI+pM0Sz8blfO7fCz7raFul87Ipx2LIG7Rkcc6bOZUHhhJ/DfIORZELtiTal/q6M=
+X-Received: by 2002:a17:906:8a4e:b0:730:9fcd:d988 with SMTP id
+ gx14-20020a1709068a4e00b007309fcdd988mr22695166ejc.636.1662016117115; Thu, 01
+ Sep 2022 00:08:37 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220829065044.1736-1-anand@edgeble.ai> <e4d6eba8-497f-adb2-6f34-35883b8ec50d@linaro.org>
-In-Reply-To: <e4d6eba8-497f-adb2-6f34-35883b8ec50d@linaro.org>
-From: Anand Moon <anand@edgeble.ai>
-Date: Thu, 1 Sep 2022 12:36:32 +0530
-Message-ID: <CACF1qneLHv1egFE0r0Rw+cJLh1hESJ95_VTjnT4WxzmBX21sGg@mail.gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: net: rockchip-dwmac: add rv1126
- compatible string
-To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Cc: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	David Wu <david.wu@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220831134516.78108-1-andriy.shevchenko@linux.intel.com>
+ <CAMRc=MdQiBHr3cDPWN_PRj2nGVoG-GJJyRNrHNwTaAUvz=35ew@mail.gmail.com> <2022090109473952058033@rock-chips.com>
+In-Reply-To: <2022090109473952058033@rock-chips.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Thu, 1 Sep 2022 09:08:26 +0200
+Message-ID: <CAMRc=McXoBqm-SBJTWdULZGep98V5-z3O9Dygkd07H=Z2k0-HA@mail.gmail.com>
+Subject: Re: Re: [PATCH v2 1/1] gpio: rockchip: Switch to use fwnode instead
+ of of_node
+To: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	"linus.walleij" <linus.walleij@linaro.org>, linux-gpio <linux-gpio@vger.kernel.org>, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_000646_114928_C512D9BE 
-X-CRM114-Status: GOOD (  18.46  )
+X-CRM114-CacheID: sfid-20220901_000839_644765_B89F59BB 
+X-CRM114-Status: GOOD (  30.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,43 +89,189 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
-
-On Tue, 30 Aug 2022 at 15:21, Krzysztof Kozlowski
-<krzysztof.kozlowski@linaro.org> wrote:
+On Thu, Sep 1, 2022 at 3:47 AM jay.xu@rock-chips.com
+<jay.xu@rock-chips.com> wrote:
 >
-> On 29/08/2022 09:50, Anand Moon wrote:
-> > Add compatible string for RV1126 gmac, and constrain it to
-> > be compatible with Synopsys dwmac 4.20a.
+> Hi
+>
+> --------------
+> jay.xu@rock-chips.com
+> >On Wed, Aug 31, 2022 at 3:45 PM Andy Shevchenko
+> ><andriy.shevchenko@linux.intel.com> wrote:
+> >>
+> >> GPIO library now accepts fwnode as a firmware node, so
+> >> switch the driver to use it.
+> >>
+> >> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> >> ---
+> >> v2: fixed compilation errors (LKP), replace some OF calls (Bart)
+> >>  drivers/gpio/gpio-rockchip.c       | 38 +++++++++++-------------------
+> >>  drivers/pinctrl/pinctrl-rockchip.h |  2 --
+> >>  2 files changed, 14 insertions(+), 26 deletions(-)
+> >>
+> >> diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+> >> index bb50335239ac..e8fa99fd4c80 100644
+> >> --- a/drivers/gpio/gpio-rockchip.c
+> >> +++ b/drivers/gpio/gpio-rockchip.c
+> >> @@ -14,12 +14,11 @@
+> >>  #include <linux/init.h>
+> >>  #include <linux/interrupt.h>
+> >>  #include <linux/io.h>
+> >> +#include <linux/mod_devicetable.h>
+> >>  #include <linux/module.h>
+> >>  #include <linux/of.h>
+> >> -#include <linux/of_address.h>
+> >> -#include <linux/of_device.h>
+> >> -#include <linux/of_irq.h>
+> >>  #include <linux/pinctrl/pinconf-generic.h>
+> >> +#include <linux/property.h>
+> >>  #include <linux/regmap.h>
+> >>
+> >>  #include "../pinctrl/core.h"
+> >> @@ -518,7 +517,7 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
+> >>         struct irq_chip_generic *gc;
+> >>         int ret;
+> >>
+> >> -       bank->domain = irq_domain_add_linear(bank->of_node, 32,
+> >> +       bank->domain = irq_domain_create_linear(dev_fwnode(bank->dev), 32,
+> >>                                         &irq_generic_chip_ops, NULL);
+> >>         if (!bank->domain) {
+> >>                 dev_warn(bank->dev, "could not init irq domain for bank %s\n",
+> >> @@ -606,14 +605,10 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+> >>          * files which don't set the "gpio-ranges" property or systems that
+> >>          * utilize ACPI the driver has to call gpiochip_add_pin_range().
+> >>          */
+> >> -       if (!of_property_read_bool(bank->of_node, "gpio-ranges")) {
+> >> -               struct device_node *pctlnp = of_get_parent(bank->of_node);
+> >> +       if (!device_property_read_bool(bank->dev, "gpio-ranges")) {
+> >>                 struct pinctrl_dev *pctldev = NULL;
+> >>
+> >> -               if (!pctlnp)
+> >> -                       return -ENODATA;
+> >> -
+> >> -               pctldev = of_pinctrl_get(pctlnp);
+> >> +               pctldev = pinctrl_get(bank->dev->parent);
+> >>                 if (!pctldev)
+> >>                         return -ENODEV;
+> >>
+> >> @@ -641,23 +636,20 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+> >>
+> >>  static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+> >>  {
+> >> +       struct platform_device *pdev = to_platform_device(bank->dev);
+> >> +       struct device_node *np = bank->dev->of_node;
+> >>         struct resource res;
+> >>         int id = 0;
+> >>
+> >> -       if (of_address_to_resource(bank->of_node, 0, &res)) {
+> >> -               dev_err(bank->dev, "cannot find IO resource for bank\n");
+> >> -               return -ENOENT;
+> >> -       }
+> >> -
+> >> -       bank->reg_base = devm_ioremap_resource(bank->dev, &res);
+> >> +       bank->reg_base = devm_platform_ioremap_resource(pdev, 0);
+> >>         if (IS_ERR(bank->reg_base))
+> >>                 return PTR_ERR(bank->reg_base);
+> >>
+> >> -       bank->irq = irq_of_parse_and_map(bank->of_node, 0);
+> >> +       bank->irq = platform_get_irq(pdev, 0);
+> >>         if (!bank->irq)
+> >>                 return -EINVAL;
+> >>
+> >> -       bank->clk = of_clk_get(bank->of_node, 0);
+> >> +       bank->clk = of_clk_get(np, 0);
 > >
-> > Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-> > Signed-off-by: Anand Moon <anand@edgeble.ai>
-> > ---
-> >  Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 1 +
-> >  1 file changed, 1 insertion(+)
+> >Why did you stop above? Why not regular clk_get here?
 > >
-> > diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> > index 083623c8d718..346e248a6ba5 100644
-> > --- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> > +++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
-> > @@ -26,6 +26,7 @@ select:
-> >            - rockchip,rk3399-gmac
-> >            - rockchip,rk3568-gmac
-> >            - rockchip,rv1108-gmac
-> > +          - rockchip,rv1126-gmac
+> >>         if (IS_ERR(bank->clk))
+> >>                 return PTR_ERR(bank->clk);
+> >>
+> >> @@ -668,7 +660,7 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+> >>         if (id == GPIO_TYPE_V2 || id == GPIO_TYPE_V2_1) {
+> >>                 bank->gpio_regs = &gpio_regs_v2;
+> >>                 bank->gpio_type = GPIO_TYPE_V2;
+> >> -               bank->db_clk = of_clk_get(bank->of_node, 1);
+> >> +               bank->db_clk = of_clk_get(np, 1);
+> >
+> >Ah, the clocks don't have names in DT? That's unfortunate...
 >
-> That's not a complete change. What about the other place listing
-> compatibles? Did you test the bindings on your DTS?
+> The patch add 'clock-names' property for gpio dt node, after that, the driver can change to
+> devm_clk_get(dev, "bus");
+> devm_clk_get(dev, "db");
 >
-Yes, I missed the properties menu, will update it in the next version.
+
+We can't unfortunately, we need to remain compatible with existing DTs.
+
+Bart
+
+> https://patchwork.kernel.org/project/linux-rockchip/patch/20220901013101.2634480-2-jay.xu@rock-chips.com
 >
-> Best regards,
-> Krzysztof
-
-Thanks
-
-
--Anand
+> >
+> >Bart
+> >
+> >>                 if (IS_ERR(bank->db_clk)) {
+> >>                         dev_err(bank->dev, "cannot find debounce clk\n");
+> >>                         clk_disable_unprepare(bank->clk);
+> >> @@ -705,17 +697,16 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
+> >>  {
+> >>         struct device *dev = &pdev->dev;
+> >>         struct device_node *np = dev->of_node;
+> >> -       struct device_node *pctlnp = of_get_parent(np);
+> >>         struct pinctrl_dev *pctldev = NULL;
+> >>         struct rockchip_pin_bank *bank = NULL;
+> >>         struct rockchip_pin_deferred *cfg;
+> >>         static int gpio;
+> >>         int id, ret;
+> >>
+> >> -       if (!np || !pctlnp)
+> >> +       if (!dev->parent)
+> >>                 return -ENODEV;
+> >>
+> >> -       pctldev = of_pinctrl_get(pctlnp);
+> >> +       pctldev = pinctrl_get(dev->parent);
+> >>         if (!pctldev)
+> >>                 return -EPROBE_DEFER;
+> >>
+> >> @@ -728,7 +719,6 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
+> >>                 return -EINVAL;
+> >>
+> >>         bank->dev = dev;
+> >> -       bank->of_node = np;
+> >>
+> >>         raw_spin_lock_init(&bank->slock);
+> >>
+> >> @@ -776,7 +766,7 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
+> >>         mutex_unlock(&bank->deferred_lock);
+> >>
+> >>         platform_set_drvdata(pdev, bank);
+> >> -       dev_info(dev, "probed %pOF\n", np);
+> >> +       dev_info(dev, "probed %pfw\n", dev_fwnode(dev));
+> >>
+> >>         return 0;
+> >>  }
+> >> diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
+> >> index 4759f336941e..37a0501bcc03 100644
+> >> --- a/drivers/pinctrl/pinctrl-rockchip.h
+> >> +++ b/drivers/pinctrl/pinctrl-rockchip.h
+> >> @@ -299,7 +299,6 @@ struct rockchip_drv {
+> >>   * @drv: array describing the 4 drive strength sources of the bank
+> >>   * @pull_type: array describing the 4 pull type sources of the bank
+> >>   * @valid: is all necessary information present
+> >> - * @of_node: dt node of this bank
+> >>   * @drvdata: common pinctrl basedata
+> >>   * @domain: irqdomain of the gpio bank
+> >>   * @gpio_chip: gpiolib chip
+> >> @@ -327,7 +326,6 @@ struct rockchip_pin_bank {
+> >>         struct rockchip_drv             drv[4];
+> >>         enum rockchip_pin_pull_type     pull_type[4];
+> >>         bool                            valid;
+> >> -       struct device_node              *of_node;
+> >>         struct rockchip_pinctrl         *drvdata;
+> >>         struct irq_domain               *domain;
+> >>         struct gpio_chip                gpio_chip;
+> >> --
+> >> 2.35.1
+> >>
 
 _______________________________________________
 Linux-rockchip mailing list
