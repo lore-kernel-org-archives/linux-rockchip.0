@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 862D8ECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Sep 2022 13:03:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 979C4ECAAD3
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Sep 2022 13:05:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eISxcxz/GNtEsrHiuCo0dwSle6B04pJLXpQZ7j65feE=; b=ewwJ9IyMoJEyMF
-	RoKtz/5+2pEymowhPG+YMNGS7l1AwxnV4MfxAdQl6oxIboxzlncFDIHXGnTZdn0HUs7lIS0xNcO6s
-	bwqy+alm7FRgrFqJ1//yn1/J0bNKMY6X9uCJi6yaebB6UdHsp+md5Hj608uh1TdOQkflR8HqyMMN0
-	xO1zx2d4dksOkSfkQ1WYJV4bzWJ/Zo5J+yhp+zSZJ/+g+RsUywBh2jKzcfb/G0tPXZfbSVZT1iGVj
-	46HjzZge6HQNCJ4GzqvctNXc5A3/Je9Jcc4K7dPNZ7MpE1SbaKbYKtsJRQTKKTTkiioCo4OESRHCK
-	Kk7xlsIpbqLogjzzndUg==;
+	List-Owner; bh=4yUFm+Vvs1p9hY6KzCEkltw4qRvzP9fc8rVhfhJ2kGc=; b=V9/2BA2bkxczWg
+	FxvN4e1KE/6TujUkAFUlAdgtbvpz3Aupg7Ydn7ZOi8bk1JMRJ0+1UMkmb87xfnbDKVwSz3A6MMVU2
+	ZRqszj4mAI9ZO0Kp5orFU1oPDtMRrXTewvvXJBftStO04RAvBYYRbHOdVylGZSREculhE4sF56azi
+	ORK6tuqb57fjaFDjpGbklV7AOJWliXSS2kaknid5EqVkJyPhmFRJgKv8l/8WS35r9IK5YwHnynhwJ
+	UdIehOLJo3hXAmy1BzAMe5lRnevO4TxXzoz+xxDrlCQL+TDGy4tLwecAfudQuhMeAXc4A4nmIRs1u
+	SgmmcZ2hgr3WBAuIb0Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTjqW-00BqmV-UJ; Thu, 01 Sep 2022 13:03:00 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1oTjt7-00Bry4-4D; Thu, 01 Sep 2022 13:05:41 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTjlP-00Bnmo-6J
-	for linux-rockchip@lists.infradead.org; Thu, 01 Sep 2022 12:57:44 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id d12-20020a05600c34cc00b003a83d20812fso1400632wmq.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 01 Sep 2022 05:57:43 -0700 (PDT)
+	id 1oTjlU-00Bnqw-6P
+	for linux-rockchip@lists.infradead.org; Thu, 01 Sep 2022 12:57:49 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id u17so2984101wrp.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 01 Sep 2022 05:57:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=baylibre-com.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=a7kQbSuJBA+hO+22/DPT0818Q67abekR8AZbfSsKp0c=;
-        b=u9zUrow7UUAI2VuY0iwmPzhV8W5dimlC/350NOd2L3tXR2TZ/Nejbgiu/1bUp5pYcO
-         k9S3Fj5VZEa8osLdkf+cvWPER3AuYQHXUEKzBTff2yUHC2iPzTceaJnWcADh24dpOKpm
-         jDRWx7WJyXWqyuzNAK3YlbLpMPZmXq4Ci18YqdMYtKaqWfu4eoXbvMj/3N2q7FGw9E15
-         QS9377Jv3ULe3GZXDAD8/3QySkbxZF9Q0tfdSJezyhxJcUgU5qavpXwifl1vDJ4MqpK3
-         hcsHBmoAcbV1R/bSB2zmafCBfNXA/xyugF9qGieoy0Cx5yR4dEG+/gMfOLtMrSR53/1x
-         7CnA==
+        bh=ScW8Amy0Gr2Hkf7kzoiIS1O1Eux9N8ylUQeMnxBh6Sw=;
+        b=WpRNqtD32G+3VXh6yIKYBPrmb+zCw0eWCMGUETzxgJFBPMkKqyV2XXTUEVL3bB9lA5
+         3ZpCh7cUh11qqeprb1tDQYtOc656wOAriDaO77vcaNt/cBnxTq8JtVkWaJOm4lUE07x4
+         17oQ+bGPK244nUuVEUZCT7Opxcmzq2jTmEfrWuAMfrnARnYZ5z0LkfHfISnBaiVoi2nN
+         JzDxvk5wYDBYyi/Kw266cJs9UXI4eLKuC5pE3RyvEZIJJKfe2VMRhAdzn9KljQVhUaEQ
+         uo7XZ9xkUYr2+eBxatSBQI9dBX89irAbBKWYDM6Fh5BCISHNFyW7YWlcwvC89B5ZyyvF
+         V72Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=a7kQbSuJBA+hO+22/DPT0818Q67abekR8AZbfSsKp0c=;
-        b=WvK24Lx0JFnj+Zof48mBzHqmnCRLADEy/+t9txP7U3FWOD47KVsEyDO+LtvWaqPNHi
-         6PZ9kFOED1ek+JQEG7SWpps6zHxQ9GNPe9eUbg7yM4nv0OyUSZ93tXbSSqqSX0qeyboq
-         fLXWe7ByIfZ4WfjAepF1T09wR/7buP1kF9TKvJoATH6avqQHtbFibSwqySKAmIji14TR
-         3dmAdwE08N2pnabOw4zu94A5KSiOhIIdrBmrV4RJkrwIL+QfuOvk7n2gHxuvB8sAMkeR
-         dvE5S7g5uNwADPZnEBXnNc5C39c+xhKoV8BYpPpHCDMFWH/lja6JtxlHj/zY5Ds3moWl
-         GjSg==
-X-Gm-Message-State: ACgBeo3N8uwv3s5CPfhmPvaxbp2FhF9gbCv90bYKx8pq8OIy/KMOD4ZV
-	uOMXwSEWpCZZXgTYnnx1dIYD3Q==
-X-Google-Smtp-Source: AA6agR5VvcCXGzWQESlA+LLQuf2ieHTUv+0KU0BzRwd+V6NbSjvJ0o3/pRpLlVr4iK7FMU49/1c9LQ==
-X-Received: by 2002:a05:600c:1e88:b0:3a6:2ca3:f7f2 with SMTP id be8-20020a05600c1e8800b003a62ca3f7f2mr5334042wmb.7.1662037062715;
-        Thu, 01 Sep 2022 05:57:42 -0700 (PDT)
+        bh=ScW8Amy0Gr2Hkf7kzoiIS1O1Eux9N8ylUQeMnxBh6Sw=;
+        b=PGfsXI8VTSIG/YXJMZWwUePm97DDKbgpVcyQTp6IdD1n/yiMnk4/NnHG8kmFOPmdK8
+         Py7g0FiDTrdIBxeZCvWekhOEW490SkubY6fG1f6R72FRJTumPfJcjzZRnLi1iHgVY/9q
+         MhwiLutYU1h2K9pWmN2Ema2pTu1LM+TKgfvNWuQ2HWjm0lgfd7YcfK2DoMDYWJOVuRld
+         Re+ORHkjKGts4sBTyjYbKwfKsEyJieg2M1U/QWmSxIjdeTZXZjouond19gUaqSiL6SXK
+         MhBvEeBmWUL9A2mpMAPHpSGOYVUJcSR5Vv5Pxf1wrAdWera2koDiocbwM6M/bT0uTukb
+         Ty4w==
+X-Gm-Message-State: ACgBeo2pGav3aiEjYFI94GnOjMumGOJVefGrVLzrdytDFust/2OdVios
+	FecM3sj0YpV1Op5FPARiDd65Hw==
+X-Google-Smtp-Source: AA6agR6rB8gjTK7NdpzsVyVUMSws/NHG9SnF2+q8j5mnmC7DReVnKqjfyyVJ8nI91V1cro2ZXhDwlQ==
+X-Received: by 2002:adf:f942:0:b0:225:82f9:1c0f with SMTP id q2-20020adff942000000b0022582f91c0fmr14878784wrr.332.1662037067736;
+        Thu, 01 Sep 2022 05:57:47 -0700 (PDT)
 Received: from localhost.localdomain (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id v5-20020a5d59c5000000b002257fd37877sm15556709wry.6.2022.09.01.05.57.41
+        by smtp.googlemail.com with ESMTPSA id v5-20020a5d59c5000000b002257fd37877sm15556709wry.6.2022.09.01.05.57.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Sep 2022 05:57:42 -0700 (PDT)
+        Thu, 01 Sep 2022 05:57:47 -0700 (PDT)
 From: Corentin Labbe <clabbe@baylibre.com>
 To: heiko@sntech.de,
 	herbert@gondor.apana.org.au,
@@ -74,16 +74,16 @@ Cc: linux-crypto@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-clk@vger.kernel.org,
 	Corentin Labbe <clabbe@baylibre.com>
-Subject: [PATCH v9 25/33] dt-bindings: crypto: rockchip: convert to new driver bindings
-Date: Thu,  1 Sep 2022 12:57:02 +0000
-Message-Id: <20220901125710.3733083-26-clabbe@baylibre.com>
+Subject: [PATCH v9 30/33] crypto: rockchip: Check for clocks numbers and their frequencies
+Date: Thu,  1 Sep 2022 12:57:07 +0000
+Message-Id: <20220901125710.3733083-31-clabbe@baylibre.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220901125710.3733083-1-clabbe@baylibre.com>
 References: <20220901125710.3733083-1-clabbe@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_055743_265718_633E67A0 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20220901_055748_259988_DF66B3D4 
+X-CRM114-Status: GOOD (  20.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,118 +100,169 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The latest addition to the rockchip crypto driver need to update the
-driver bindings.
+Add the number of clocks needed for each compatible.
+Rockchip's datasheet give maximum frequencies for some clocks, so add
+checks for verifying they are within limits. Let's start with rk3288 for
+clock frequency check, other will came later.
 
 Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 ---
- .../crypto/rockchip,rk3288-crypto.yaml        | 79 +++++++++++++++++--
- 1 file changed, 71 insertions(+), 8 deletions(-)
+ drivers/crypto/rockchip/rk3288_crypto.c | 75 +++++++++++++++++++++----
+ drivers/crypto/rockchip/rk3288_crypto.h | 16 +++++-
+ 2 files changed, 79 insertions(+), 12 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml b/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
-index 8a219d439d02..b7870a4cbdbe 100644
---- a/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
-+++ b/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
-@@ -13,6 +13,8 @@ properties:
-   compatible:
-     enum:
-       - rockchip,rk3288-crypto
-+      - rockchip,rk3328-crypto
-+      - rockchip,rk3399-crypto
+diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
+index c92559b83f7d..232dc625d6e5 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto.c
++++ b/drivers/crypto/rockchip/rk3288_crypto.c
+@@ -14,10 +14,58 @@
+ #include <linux/module.h>
+ #include <linux/platform_device.h>
+ #include <linux/of.h>
++#include <linux/of_device.h>
+ #include <linux/clk.h>
+ #include <linux/crypto.h>
+ #include <linux/reset.h>
  
-   reg:
-     maxItems: 1
-@@ -21,21 +23,82 @@ properties:
-     maxItems: 1
- 
-   clocks:
-+    minItems: 3
-     maxItems: 4
- 
-   clock-names:
--    items:
--      - const: aclk
--      - const: hclk
--      - const: sclk
--      - const: apb_pclk
-+    minItems: 3
-+    maxItems: 4
- 
-   resets:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 3
- 
-   reset-names:
--    items:
--      - const: crypto-rst
-+    minItems: 1
-+    maxItems: 3
++static const struct rk_variant rk3288_variant = {
++	.num_clks = 4,
++	.rkclks = {
++		{ "sclk", 150000000},
++	}
++};
 +
-+allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3288-crypto
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 4
-+        clock-names:
-+          items:
-+            - const: aclk
-+            - const: hclk
-+            - const: sclk
-+            - const: apb_pclk
-+        resets:
-+          maxItems: 1
-+        reset-names:
-+          items:
-+            - const: crypto-rst
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3328-crypto
-+    then:
-+      properties:
-+        clocks:
-+          maxItems: 3
-+        clock-names:
-+          items:
-+            - const: hclk_master
-+            - const: hclk_slave
-+            - const: sclk
-+        resets:
-+          maxItems: 1
-+        reset-names:
-+          items:
-+            - const: crypto-rst
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3399-crypto
-+    then:
-+      properties:
-+        clocks:
-+          maxItems: 3
-+        clock-names:
-+          items:
-+            - const: hclk_master
-+            - const: hclk_slave
-+            - const: sclk
-+        resets:
-+          minItems: 3
-+        reset-names:
-+          items:
-+            - const: rst_master
-+            - const: rst_slave
-+            - const: crypto-rst
++static const struct rk_variant rk3328_variant = {
++	.num_clks = 3,
++};
++
++static int rk_crypto_get_clks(struct rk_crypto_info *dev)
++{
++	int i, j, err;
++	unsigned long cr;
++
++	dev->num_clks = devm_clk_bulk_get_all(dev->dev, &dev->clks);
++	if (dev->num_clks < dev->variant->num_clks) {
++		dev_err(dev->dev, "Missing clocks, got %d instead of %d\n",
++			dev->num_clks, dev->variant->num_clks);
++		return -EINVAL;
++	}
++
++	for (i = 0; i < dev->num_clks; i++) {
++		cr = clk_get_rate(dev->clks[i].clk);
++		for (j = 0; j < ARRAY_SIZE(dev->variant->rkclks); j++) {
++			if (dev->variant->rkclks[j].max == 0)
++				continue;
++			if (strcmp(dev->variant->rkclks[j].name, dev->clks[i].id))
++				continue;
++			if (cr > dev->variant->rkclks[j].max) {
++				err = clk_set_rate(dev->clks[i].clk,
++						   dev->variant->rkclks[j].max);
++				if (err)
++					dev_err(dev->dev, "Fail downclocking %s from %lu to %lu\n",
++						dev->variant->rkclks[j].name, cr,
++						dev->variant->rkclks[j].max);
++				else
++					dev_info(dev->dev, "Downclocking %s from %lu to %lu\n",
++						 dev->variant->rkclks[j].name, cr,
++						 dev->variant->rkclks[j].max);
++			}
++		}
++	}
++	return 0;
++}
++
+ static int rk_crypto_enable_clk(struct rk_crypto_info *dev)
+ {
+ 	int err;
+@@ -201,8 +249,12 @@ static void rk_crypto_unregister(void)
+ }
  
- required:
-   - compatible
+ static const struct of_device_id crypto_of_id_table[] = {
+-	{ .compatible = "rockchip,rk3288-crypto" },
+-	{ .compatible = "rockchip,rk3328-crypto" },
++	{ .compatible = "rockchip,rk3288-crypto",
++	  .data = &rk3288_variant,
++	},
++	{ .compatible = "rockchip,rk3328-crypto",
++	  .data = &rk3328_variant,
++	},
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(of, crypto_of_id_table);
+@@ -220,6 +272,15 @@ static int rk_crypto_probe(struct platform_device *pdev)
+ 		goto err_crypto;
+ 	}
+ 
++	crypto_info->dev = &pdev->dev;
++	platform_set_drvdata(pdev, crypto_info);
++
++	crypto_info->variant = of_device_get_match_data(&pdev->dev);
++	if (!crypto_info->variant) {
++		dev_err(&pdev->dev, "Missing variant\n");
++		return -EINVAL;
++	}
++
+ 	crypto_info->rst = devm_reset_control_get(dev, "crypto-rst");
+ 	if (IS_ERR(crypto_info->rst)) {
+ 		err = PTR_ERR(crypto_info->rst);
+@@ -236,12 +297,9 @@ static int rk_crypto_probe(struct platform_device *pdev)
+ 		goto err_crypto;
+ 	}
+ 
+-	crypto_info->num_clks = devm_clk_bulk_get_all(&pdev->dev,
+-						      &crypto_info->clks);
+-	if (crypto_info->num_clks < 3) {
+-		err = -EINVAL;
++	err = rk_crypto_get_clks(crypto_info);
++	if (err)
+ 		goto err_crypto;
+-	}
+ 
+ 	crypto_info->irq = platform_get_irq(pdev, 0);
+ 	if (crypto_info->irq < 0) {
+@@ -259,9 +317,6 @@ static int rk_crypto_probe(struct platform_device *pdev)
+ 		goto err_crypto;
+ 	}
+ 
+-	crypto_info->dev = &pdev->dev;
+-	platform_set_drvdata(pdev, crypto_info);
+-
+ 	crypto_info->engine = crypto_engine_alloc_init(&pdev->dev, true);
+ 	crypto_engine_start(crypto_info->engine);
+ 	init_completion(&crypto_info->complete);
+diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
+index ff9fc25972eb..ac979d67ced9 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto.h
++++ b/drivers/crypto/rockchip/rk3288_crypto.h
+@@ -188,14 +188,26 @@
+ #define CRYPTO_WRITE(dev, offset, val)	  \
+ 		writel_relaxed((val), ((dev)->reg + (offset)))
+ 
++#define RK_MAX_CLKS 4
++
++struct rk_clks {
++	const char *name;
++	unsigned long max;
++};
++
++struct rk_variant {
++	int num_clks;
++	struct rk_clks rkclks[RK_MAX_CLKS];
++};
++
+ struct rk_crypto_info {
+ 	struct device			*dev;
+ 	struct clk_bulk_data		*clks;
+-	int num_clks;
++	int				num_clks;
+ 	struct reset_control		*rst;
+ 	void __iomem			*reg;
+ 	int				irq;
+-
++	const struct rk_variant *variant;
+ 	struct crypto_engine *engine;
+ 	struct completion complete;
+ 	int status;
 -- 
 2.35.1
 
