@@ -4,101 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82030ECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Sep 2022 13:31:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFD74ECAAD3
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Sep 2022 13:36:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dMscJtp68Bm1C3vm1JdDa8HEdZgAprFBWuiMnOnaWFo=; b=lp0hfqM3m/R9dL
-	XaRd4jWtxKGuK+neI74HJymc/g51G/aFNWlwLwZre6qXTghCfnNMbr2tYGKS6a0uj0UwvaHQauTD1
-	1/z5IwRlWPpI11CVprP359guAF9Oov3vv2cuWtzHNnS7lcMxZziAdNlUeu+c3hsodyUQDlkFI2o7K
-	WAAN9rytD07YhXHK+imnS8+3Tna5mgFUb0xwl0qTIzAaJVbhb3WoUQhN/xBQTw521Vp92rcg42HGB
-	i57M+SXhVSj1ttA4t39ZA9j5BPX7egya+ejldvmxkHKVuRoXi3yQ1qxrAWvJgCHvcx5KuhHygJEXu
-	0gPnzDNEopPuRc8VhbKQ==;
+	List-Owner; bh=kjgKP50lb+tunWWtBnyHy2v5qucYCemgDuF520E+bnc=; b=eoordIMG3M/ysZ
+	xGRA42jaj17gdsOwWb82+VfOQ82tN+8HLfKrTFFoENc3oUThI+cmF52Pt3fHy/mhSOq1LaJcO23AF
+	QMOP7PcgJWWZ+WPRQ+gTvb/CKLibqppSXXOkwe9xW3nRVQjGgy4ZnQuTXk5uiR4DgtJ+Brs7dinrp
+	8QaDSxeb35q9cfxEh5llqypPEbL1/bPXvNMDY45JnjBZ5OuNFtvTtrh/piKG4JOJVTe+TSJXXcYnP
+	2hxep3gJnX8wbNKceZNjqdTFvwbO553GLPOvSIape40XfGPBlfITYO87EaJYWyy7HxbrYW+a9tyID
+	zwpWEvcEpY9eL/QY7LWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTkHg-00C3uG-3T; Thu, 01 Sep 2022 13:31:04 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1oTkMo-00C6lG-KU; Thu, 01 Sep 2022 13:36:22 +0000
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTk7L-00By8c-S8
-	for linux-rockchip@bombadil.infradead.org; Thu, 01 Sep 2022 13:20:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=V0VQZblY3ilqDl88ksU7sNdmpCxvXcKe3g1VMncWlyM=; b=ui/I6qZEqkC69RmEjOHWQymGgC
-	+JhhwPMgNo8/QqlBHKMvV/l/pj4Opf2hPqaaHnsoT93hZ3MWNOfGAvHQRfnLrDWQm4Gf3f2KrdNHJ
-	tRlcgdbrpeIZZ48n8uWdcS2izPU1WLXYov/VowZej6NVMwuaja8vjJNdJeS7LL7CRjk+m4iTw6d79
-	cIVZmV8nKeQWJ+iFGdetZBf6uPeSKx5ETAAjU63jbGF5ZGlv/Y2zucC+BIqKSgeEq/v/jBr1JI+EQ
-	czVDSzwuRO6VNzVyRxR7T7VHH5tBw9BzUyX2K/kjbUdBbB1dUXnytitcS8sHcfFjErfE7eZj5tC3d
-	RTfSr2SQ==;
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTjlM-0062bI-8H
-	for linux-rockchip@lists.infradead.org; Thu, 01 Sep 2022 12:57:43 +0000
-Received: by mail-wm1-x332.google.com with SMTP id h204-20020a1c21d5000000b003a5b467c3abso1309315wmh.5
-        for <linux-rockchip@lists.infradead.org>; Thu, 01 Sep 2022 05:57:37 -0700 (PDT)
+	id 1oTkJc-00C4rL-R6
+	for linux-rockchip@lists.infradead.org; Thu, 01 Sep 2022 13:33:08 +0000
+Received: by mail-lf1-x12f.google.com with SMTP id j14so14090557lfu.4
+        for <linux-rockchip@lists.infradead.org>; Thu, 01 Sep 2022 06:33:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc;
-        bh=V0VQZblY3ilqDl88ksU7sNdmpCxvXcKe3g1VMncWlyM=;
-        b=gPuilAw3In4sLBTLM/O3vTLJNCLuJQ5jb5eL8ZFv5Iod4QUNem/h1qDSlfrvHCZAH8
-         StWFIZtraRSdayz/b8z2Uk255VLarodlWjpxmNQO3x55mRbO6oST1UZ+d/20MkU+phu/
-         VaB0M32Q3mv6CrBMLUK+O8MXHkK99vMTSVvNAiCTQ1NSBEaHo2MC/jSe/LyzsaMI4gm4
-         W/iQ5YkVSsD+xWGiyvqvVDvSGdeSKISF5mhc1CVLVYFGa8x0vE2b6dBFZXGAU90miEP6
-         tebB/BELlN5r4d6nYxD2kXK7h9wPZr15bO+/9wajk8pDXQ+I4em2hC2XVubS6+pmNmtE
-         JUTA==
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc;
+        bh=lOxkROm5BlJdPkNzAhb8DK30tpxtm74Zgf5BrOPOkjk=;
+        b=peuXjUSnwtog8QxfPaggji++nc5Lp0DPi/OHO5FBWsyhQAvSyC+yFRq5nZFPwzpXlK
+         xKfOV04BxRyfEd0T17SaPMWH7Il85PlF/ym04nxbGl87IR+nWepWSdtPicuOxBWtYYth
+         75qXrtkvWzz+fumO4UhKqQ6QID8DP5kVotlsbJx0R+VHn3gJsfRtZLJ4L2gmxL92irjB
+         RPYTDnnodfZr8GtDvShjHTeHl6WpKQwQoaIAXE3InlMmMUdtgNioPqiewXKyaJ51Li6Q
+         73MSpnCkuA4fg31DVO5Qf6yMNKYRoPnHGyz/xO3H5yb97bE8j9Nv7O/FGGfmF826bujM
+         TEFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc;
-        bh=V0VQZblY3ilqDl88ksU7sNdmpCxvXcKe3g1VMncWlyM=;
-        b=VnVoBNyZBiAWl2LxIWldRicdjYQZbNcfz2c+r3kfrMzNkpF2IZNDSRfi2mDOJrcGtG
-         4+/4ycM2ciI/NzbUpuws24PDO1SBB0f9HmW9CTUHJ3aFas+DCTcWSI/y3y8Jlfjhonzx
-         +aQ/s6LGxo0ZNnmInp/M5fZV0Llk5RCQ09Fd/MWs0RChhGr+z9Iee9PwZ3i6bQnS0vYi
-         Tpp2mM+Vqkl1C1gX7bwUZeRymj9mc055wQx79RP3ZxvO3rBJ0wKxHX2d0EBdyUdz8UFa
-         +//ETLI9HYKUln5eKM9aSynNYcN8VyVlJdixRWhOxL0DtfhQv3/Dz+43SVCrFOEphKrM
-         BF9Q==
-X-Gm-Message-State: ACgBeo3lcV7K57B5iYrbAvMihjkimt5BNILdSZtCc0KxTuVcXUtGLCAR
-	livZFgShGTZ5XS5N+Wj9RJy2ng==
-X-Google-Smtp-Source: AA6agR5+OPEH3cDQuiUwxXjulon0wpg02exBkXOVsbW35hMY72r4YlI1sLLApT1+xM6Cm+7PqZpHIA==
-X-Received: by 2002:a05:600c:3541:b0:3a6:28e4:c458 with SMTP id i1-20020a05600c354100b003a628e4c458mr5163013wmq.188.1662037056497;
-        Thu, 01 Sep 2022 05:57:36 -0700 (PDT)
-Received: from localhost.localdomain (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id v5-20020a5d59c5000000b002257fd37877sm15556709wry.6.2022.09.01.05.57.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Sep 2022 05:57:36 -0700 (PDT)
-From: Corentin Labbe <clabbe@baylibre.com>
-To: heiko@sntech.de,
-	herbert@gondor.apana.org.au,
-	ardb@kernel.org,
-	davem@davemloft.net,
-	krzysztof.kozlowski+dt@linaro.org,
-	mturquette@baylibre.com,
-	robh+dt@kernel.org,
-	sboyd@kernel.org
-Cc: linux-crypto@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-clk@vger.kernel.org,
-	Corentin Labbe <clabbe@baylibre.com>,
-	John Keeping <john@metanate.com>
-Subject: [PATCH v9 19/33] crypto: rockchip: add support for rk3328
-Date: Thu,  1 Sep 2022 12:56:56 +0000
-Message-Id: <20220901125710.3733083-20-clabbe@baylibre.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220901125710.3733083-1-clabbe@baylibre.com>
-References: <20220901125710.3733083-1-clabbe@baylibre.com>
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc;
+        bh=lOxkROm5BlJdPkNzAhb8DK30tpxtm74Zgf5BrOPOkjk=;
+        b=JEQ5HbvUgbmDa4A9MthiX0IFm4e8bPCkL3pz0DMdmaVQa9Guwb9Ds2NTYlIspN+tg7
+         T2uEwKV2SlktDpQF675da1IzSMyMZtxcSc4Aiu9Ruza/v4NvIMLy8+1pRqUpwz5vy1KE
+         dnGLFZojKfGBNMBVQeDXVCgdy0yXf3iH9NdIeKK3PhjIP64itq3a5LkhVpvzzLFva8d9
+         MFDLUiaX0BsNxy6SLUdSv0IyuS4mRfUuNg6tJY1Hp5KyU3KU/Cj6OPvxrftPoPX6iQ1w
+         Fs3KJ8pUqZXx/k+8m+ca9XWbvTzASd0Ps1OCbspZdAC+4rN89HE4WGxtW7DlfPC0L1lF
+         Y+ow==
+X-Gm-Message-State: ACgBeo3mhuYLI0GszYHi2kRpBc812NmM9rMADbLJoHNny/CSw1STKaFe
+	MdbeaEU5X5VllWS6/rGM5VdcDiCWetTcKLLG
+X-Google-Smtp-Source: AA6agR4lGx3pWN3YYJj1clY+UtNqdC1Pt+tHaQfJ5z1paLpoOYGENH7MVRoYDC7wbdGJ4QYIUaNs2A==
+X-Received: by 2002:a05:6512:3996:b0:492:dacb:33ce with SMTP id j22-20020a056512399600b00492dacb33cemr10101487lfu.445.1662039180939;
+        Thu, 01 Sep 2022 06:33:00 -0700 (PDT)
+Received: from [192.168.28.124] (balticom-73-99-134.balticom.lv. [109.73.99.134])
+        by smtp.gmail.com with ESMTPSA id q13-20020a19a40d000000b0049300f40c5bsm328830lfc.299.2022.09.01.06.32.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 01 Sep 2022 06:33:00 -0700 (PDT)
+Message-ID: <6840d3fa-329a-5508-7647-2b8d09272b41@linaro.org>
+Date: Thu, 1 Sep 2022 16:32:59 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH 3/3] dt-bindings: gpio: rockchip,gpio add optional
+ 'gpio-ranges'
+Content-Language: en-US
+To: Jianqun Xu <jay.xu@rock-chips.com>, linus.walleij@linaro.org,
+ heiko@sntech.de
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20220901012944.2634398-1-jay.xu@rock-chips.com>
+ <20220901012944.2634398-6-jay.xu@rock-chips.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220901012944.2634398-6-jay.xu@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_135740_322138_84708558 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20220901_063304_944176_563707B9 
+X-CRM114-Status: GOOD (  16.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,29 +95,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rk3328 could be used as-is by the rockchip driver.
+On 01/09/2022 04:29, Jianqun Xu wrote:
+> Add a optional property 'gpio-ranges', such as
+>     gpio-ranges = <&pinctrl 0 0 32>;
+> 
+> When the gpio nodes are under pinctrl, the property 'gpio-ranges' is
+> a optional property, but when they are under root node, the property
+> 'gpio-ranges' is a required property.
+> 
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> ---
+>  .../devicetree/bindings/gpio/rockchip,gpio-bank.yaml       | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> index d4e42c2b995b..7a075fcea75f 100644
+> --- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
+> @@ -49,7 +49,12 @@ required:
+>    - interrupt-controller
+>    - "#interrupt-cells"
+>  
+> -additionalProperties: false
+> +additionalProperties: true
 
-Reviewed-by: John Keeping <john@metanate.com>
-Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
----
- drivers/crypto/rockchip/rk3288_crypto.c | 1 +
- 1 file changed, 1 insertion(+)
+That's not correct. It should stay false.
 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
-index a635029ac71d..c92559b83f7d 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto.c
-@@ -202,6 +202,7 @@ static void rk_crypto_unregister(void)
- 
- static const struct of_device_id crypto_of_id_table[] = {
- 	{ .compatible = "rockchip,rk3288-crypto" },
-+	{ .compatible = "rockchip,rk3328-crypto" },
- 	{}
- };
- MODULE_DEVICE_TABLE(of, crypto_of_id_table);
--- 
-2.35.1
+> +  gpio-ranges:
+> +    maxItems: 1
+> +    description: |
+> +      The property is a optional if gpio node under pinctrl node;
+> +      but it is a required property if the gpio is under root node.
 
+This is not in proper place.
+
+Does not look like you tested the bindings. Please run `make
+dt_binding_check` (see
+Documentation/devicetree/bindings/writing-schema.rst for instructions).
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
