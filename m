@@ -4,81 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFD74ECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Sep 2022 13:36:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3C2CECAAD1
+	for <linux-rockchip@archiver.kernel.org>; Thu,  1 Sep 2022 13:57:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kjgKP50lb+tunWWtBnyHy2v5qucYCemgDuF520E+bnc=; b=eoordIMG3M/ysZ
-	xGRA42jaj17gdsOwWb82+VfOQ82tN+8HLfKrTFFoENc3oUThI+cmF52Pt3fHy/mhSOq1LaJcO23AF
-	QMOP7PcgJWWZ+WPRQ+gTvb/CKLibqppSXXOkwe9xW3nRVQjGgy4ZnQuTXk5uiR4DgtJ+Brs7dinrp
-	8QaDSxeb35q9cfxEh5llqypPEbL1/bPXvNMDY45JnjBZ5OuNFtvTtrh/piKG4JOJVTe+TSJXXcYnP
-	2hxep3gJnX8wbNKceZNjqdTFvwbO553GLPOvSIape40XfGPBlfITYO87EaJYWyy7HxbrYW+a9tyID
-	zwpWEvcEpY9eL/QY7LWg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=/r5svVAH6v1uHWPHA5ERNqsC72ibhrDyrGNm0g2CPqE=; b=0pgMiuqmVq5fXc
+	Eyf9b2UIuAe3a6NXO4p7pzVbQg4xiUgnrPR7CSvwxbS+ww+uWS6LKsADaZPwY5eJZGAlqAs5azA4q
+	EomAa+FFsDzz53FGi37gWwq2qeMafQrYbfXFZ/TsY1K4rHSKxbJXzyd/wPcicFNA7y5ti01TI2BzV
+	1K4nBiDmP41GSw4hujND4ly2sVHQu/Hu2wknQmMomuH+4HjFASknsa5MCsISo+VVlP/Aa/9yMcDWH
+	VlembEoVj6j3HaNVjU5xLlG6S9toFlUTaAxumh8Up9ZfgM4OZRA6W9q9CpT32igFoBJDLjgpII6kx
+	DbEyS/dn8mo9rZtyt42A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTkMo-00C6lG-KU; Thu, 01 Sep 2022 13:36:22 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1oTkge-00CGEj-7H; Thu, 01 Sep 2022 13:56:52 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oTkJc-00C4rL-R6
-	for linux-rockchip@lists.infradead.org; Thu, 01 Sep 2022 13:33:08 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id j14so14090557lfu.4
-        for <linux-rockchip@lists.infradead.org>; Thu, 01 Sep 2022 06:33:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc;
-        bh=lOxkROm5BlJdPkNzAhb8DK30tpxtm74Zgf5BrOPOkjk=;
-        b=peuXjUSnwtog8QxfPaggji++nc5Lp0DPi/OHO5FBWsyhQAvSyC+yFRq5nZFPwzpXlK
-         xKfOV04BxRyfEd0T17SaPMWH7Il85PlF/ym04nxbGl87IR+nWepWSdtPicuOxBWtYYth
-         75qXrtkvWzz+fumO4UhKqQ6QID8DP5kVotlsbJx0R+VHn3gJsfRtZLJ4L2gmxL92irjB
-         RPYTDnnodfZr8GtDvShjHTeHl6WpKQwQoaIAXE3InlMmMUdtgNioPqiewXKyaJ51Li6Q
-         73MSpnCkuA4fg31DVO5Qf6yMNKYRoPnHGyz/xO3H5yb97bE8j9Nv7O/FGGfmF826bujM
-         TEFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc;
-        bh=lOxkROm5BlJdPkNzAhb8DK30tpxtm74Zgf5BrOPOkjk=;
-        b=JEQ5HbvUgbmDa4A9MthiX0IFm4e8bPCkL3pz0DMdmaVQa9Guwb9Ds2NTYlIspN+tg7
-         T2uEwKV2SlktDpQF675da1IzSMyMZtxcSc4Aiu9Ruza/v4NvIMLy8+1pRqUpwz5vy1KE
-         dnGLFZojKfGBNMBVQeDXVCgdy0yXf3iH9NdIeKK3PhjIP64itq3a5LkhVpvzzLFva8d9
-         MFDLUiaX0BsNxy6SLUdSv0IyuS4mRfUuNg6tJY1Hp5KyU3KU/Cj6OPvxrftPoPX6iQ1w
-         Fs3KJ8pUqZXx/k+8m+ca9XWbvTzASd0Ps1OCbspZdAC+4rN89HE4WGxtW7DlfPC0L1lF
-         Y+ow==
-X-Gm-Message-State: ACgBeo3mhuYLI0GszYHi2kRpBc812NmM9rMADbLJoHNny/CSw1STKaFe
-	MdbeaEU5X5VllWS6/rGM5VdcDiCWetTcKLLG
-X-Google-Smtp-Source: AA6agR4lGx3pWN3YYJj1clY+UtNqdC1Pt+tHaQfJ5z1paLpoOYGENH7MVRoYDC7wbdGJ4QYIUaNs2A==
-X-Received: by 2002:a05:6512:3996:b0:492:dacb:33ce with SMTP id j22-20020a056512399600b00492dacb33cemr10101487lfu.445.1662039180939;
-        Thu, 01 Sep 2022 06:33:00 -0700 (PDT)
-Received: from [192.168.28.124] (balticom-73-99-134.balticom.lv. [109.73.99.134])
-        by smtp.gmail.com with ESMTPSA id q13-20020a19a40d000000b0049300f40c5bsm328830lfc.299.2022.09.01.06.32.59
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 01 Sep 2022 06:33:00 -0700 (PDT)
-Message-ID: <6840d3fa-329a-5508-7647-2b8d09272b41@linaro.org>
-Date: Thu, 1 Sep 2022 16:32:59 +0300
+	id 1oTkfN-00CFY9-Cx
+	for linux-rockchip@lists.infradead.org; Thu, 01 Sep 2022 13:55:34 +0000
+Received: from jupiter.universe (dyndsl-037-138-187-177.ewe-ip-backbone.de [37.138.187.177])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7EA5C660038D;
+	Thu,  1 Sep 2022 14:55:30 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1662040530;
+	bh=S/Fwz+sP2OV+s9AizJMsolHEAHaDJPcK93omLyO1qQM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=RcXNM05FgwGRKfefzMc+c3TlyhYkVm/ErV7nXEhRx1FjyWIUX+vBVuM3THG7Log/X
+	 wuaaymVOPULdXidN1lcoflZvoljfzYeqIgNla2n8tOjDH+EQC4/Mk29GmECMd9Jy8R
+	 672g5NtzzAbLtwO+46TIBfhAKHcXYk1dH93VqvTnKJWv7KwdlcM66DYK7Lh1Je5AVB
+	 BIAIsiGo+OXkGzjZKt5sj4Jmj800IbNZHhrtLdsU9dOYghKz3phsFDC6HK9ZPkNYG7
+	 ySd9rk9qV3wzlvze1rglpM6wp1emjAMBDwUkrWxBhwRbTGhYjMUJebT72fcBrPzSWn
+	 TQIZSUpWs7jhw==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 2E88A48015C; Thu,  1 Sep 2022 15:55:28 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: Thierry Reding <thierry.reding@gmail.com>,
+	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-pwm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCH 1/1] dt-bindings: pwm: rockchip: Add description for rk3588
+Date: Thu,  1 Sep 2022 15:55:23 +0200
+Message-Id: <20220901135523.52151-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH 3/3] dt-bindings: gpio: rockchip,gpio add optional
- 'gpio-ranges'
-Content-Language: en-US
-To: Jianqun Xu <jay.xu@rock-chips.com>, linus.walleij@linaro.org,
- heiko@sntech.de
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
- linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20220901012944.2634398-1-jay.xu@rock-chips.com>
- <20220901012944.2634398-6-jay.xu@rock-chips.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220901012944.2634398-6-jay.xu@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220901_063304_944176_563707B9 
-X-CRM114-Status: GOOD (  16.83  )
+X-CRM114-CacheID: sfid-20220901_065533_676061_CFC63637 
+X-CRM114-Status: UNSURE (   9.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,46 +80,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 01/09/2022 04:29, Jianqun Xu wrote:
-> Add a optional property 'gpio-ranges', such as
->     gpio-ranges = <&pinctrl 0 0 32>;
-> 
-> When the gpio nodes are under pinctrl, the property 'gpio-ranges' is
-> a optional property, but when they are under root node, the property
-> 'gpio-ranges' is a required property.
-> 
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> ---
->  .../devicetree/bindings/gpio/rockchip,gpio-bank.yaml       | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-> index d4e42c2b995b..7a075fcea75f 100644
-> --- a/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/rockchip,gpio-bank.yaml
-> @@ -49,7 +49,12 @@ required:
->    - interrupt-controller
->    - "#interrupt-cells"
->  
-> -additionalProperties: false
-> +additionalProperties: true
+Add "rockchip,rk3588-pwm" compatible string for PWM nodes found
+on a rk3588 platform.
 
-That's not correct. It should stay false.
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+No driver changes required.
+---
+ Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-> +  gpio-ranges:
-> +    maxItems: 1
-> +    description: |
-> +      The property is a optional if gpio node under pinctrl node;
-> +      but it is a required property if the gpio is under root node.
+diff --git a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+index a336ff9364a9..f946861e3f8a 100644
+--- a/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
++++ b/Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml
+@@ -30,6 +30,7 @@ properties:
+               - rockchip,px30-pwm
+               - rockchip,rk3308-pwm
+               - rockchip,rk3568-pwm
++              - rockchip,rk3588-pwm
+           - const: rockchip,rk3328-pwm
+ 
+   reg:
+-- 
+2.35.1
 
-This is not in proper place.
-
-Does not look like you tested the bindings. Please run `make
-dt_binding_check` (see
-Documentation/devicetree/bindings/writing-schema.rst for instructions).
-
-Best regards,
-Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
