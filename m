@@ -4,70 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6867C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Sep 2022 21:05:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D76FDECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Sep 2022 21:10:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MWoV5C4Q5E1QPdzqhgKNq+MWG3zy/jaRpWtSHVOa490=; b=izCiM1jWmFRIiv
-	t4NSNrYz0x60kQn5strjlqkE47tywERcQSqs4MzgkPPLu2aM+Fj7gAOnoQ7eK+7hiUIGAb/tKkf4+
-	KSWIIwfEOzgp2sj5sL4zNvFzeJyfTWgs05dQsVcsEeAdeKCpqFP8qKeMgwhNPAofCWEVsp0IGwl33
-	GiJeMCDwClKedEe7CTfXkj3ziGt4whU6Qh6XRJW4zfqULYbexRxS2y//sNjm+Wl+FQp6VZPqDq4hL
-	bH+Ad5RVSANLucZzXWgpNGKBQIOLYicJFItDL8uMhjKTddnP+u/wxYuvPkSS8IPVodCLZ6362IKvZ
-	hvImr8/bP6gEXRD8ZH8w==;
+	List-Owner; bh=0jy7jyT3JtMox1eHHHMl3foz92Zoy+3VsyMHlAW0fFc=; b=U5CENFIlKDJdD9
+	eS+YVLEUBjXJDAxVHIY/q9wmBV0EmtfvGaZ5nJ25WOG4JBihTTywqWRQVFv2yHHzPW/BPCle1mUhV
+	wl7csg7M1DOn0MO3cJTQvoe3FqRmRn1T1Js7pacQtRpnjK0yECKvTuL/MaOM9twmvSe0Cdqx/rIyh
+	HzUrwNPAH15jTvKVZZebLQo8inNdvhhiadZ1ieYZ6VmEPExZWENX2MZ1JXtTnNhm5kfYKXeJABmeT
+	1G+Ep4o61uvP3i8TuFBvR4L1qVtPR6s1AMWllYRaWUQ1qxBo1b9ZLyL+ue6Jwb21XJOHZnVulq7yW
+	3QP+9GSasga1ybt/Q/eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oUDqz-00AzHy-Ii; Fri, 02 Sep 2022 21:05:29 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oUDvW-00B1wE-E3; Fri, 02 Sep 2022 21:10:10 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oUDqw-00AzED-4K
-	for linux-rockchip@lists.infradead.org; Fri, 02 Sep 2022 21:05:27 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id BDB0AB82D9A
-	for <linux-rockchip@lists.infradead.org>; Fri,  2 Sep 2022 21:05:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 696E6C433B5
-	for <linux-rockchip@lists.infradead.org>; Fri,  2 Sep 2022 21:05:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1662152722;
-	bh=qsStvP91ihR00dZ3kRmIXS3gp2oRIvI8e0UNRUUK9iU=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=vAJhH9VGjiTcp8aOmKgoX2qbddBxsvkgr2d6lCX/VRYDIE/oguVxxJOd/jijB7cQF
-	 oR1O8LNuncj7abV5/XBJTKfieox1lMWGsI4VgTwLCk61T6RyTHGKFSAdlyRe+NmM5Q
-	 8y/plzRcnodjc6wckvFYL7q7uVdcxp8a6rgoK1CkjIcc28UYmtWjhstYbQV0ITlAEJ
-	 cCZgrPPU+uhjhtmmVTBSr9inXHgSEuyjT1LGrWcQbsHgKrK9GHqUcKmvPYbyT1M2CX
-	 0FYRj4AdT3XVfPT28xY31lCgROOpPV+b135QkLsI7nvUmrqeMJyR9kQzdyeoEtytFy
-	 SXLZzXUUZOPNw==
-Received: by mail-vk1-f180.google.com with SMTP id i129so1548847vke.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 02 Sep 2022 14:05:22 -0700 (PDT)
-X-Gm-Message-State: ACgBeo1cdNgJonRCwbOq0ef03bP0SD3Mcgc1y64dIS+/aaGlf+9xKio4
-	CaREI7n7Iar5jDQO3ZTumGCSdbp6vnUuQp9UbA==
-X-Google-Smtp-Source: AA6agR79pK/SefjTsDIGybHBwpAL12OW8gkE42VozV7uuODUesaBGzPfzSjt1j5VQri5uu5iiMGzNCMQcvSX6NfVS3U=
-X-Received: by 2002:a1f:d241:0:b0:398:3e25:d2dd with SMTP id
- j62-20020a1fd241000000b003983e25d2ddmr359225vkg.15.1662152721285; Fri, 02 Sep
- 2022 14:05:21 -0700 (PDT)
+	id 1oUDvR-00B1qr-Q0
+	for linux-rockchip@lists.infradead.org; Fri, 02 Sep 2022 21:10:09 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1oUDvE-0006Uo-0g; Fri, 02 Sep 2022 23:09:52 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Jianqun Xu <jay.xu@rock-chips.com>, Peter Geis <pgwipeout@gmail.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH v1 1/3] gpio: rockchip: make gpio work without cru module
+Date: Fri, 02 Sep 2022 23:09:51 +0200
+Message-ID: <4679451.ZaRXLXkqSa@diego>
+In-Reply-To: <CAMdYzYrJWnkYneEuJ+dA0EU1QiTkBOkGz1+zn=H5rA-qfS88+Q@mail.gmail.com>
+References: <20220901012944.2634398-1-jay.xu@rock-chips.com> <20220901012944.2634398-3-jay.xu@rock-chips.com> <CAMdYzYrJWnkYneEuJ+dA0EU1QiTkBOkGz1+zn=H5rA-qfS88+Q@mail.gmail.com>
 MIME-Version: 1.0
-References: <20220902060426.2980951-1-jay.xu@rock-chips.com> <20220902060426.2980951-2-jay.xu@rock-chips.com>
-In-Reply-To: <20220902060426.2980951-2-jay.xu@rock-chips.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Fri, 2 Sep 2022 16:05:10 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqJ4vXG5b5m5631Jb0ESbjn5z0u2sgKOrXf1BR-qOgeV_w@mail.gmail.com>
-Message-ID: <CAL_JsqJ4vXG5b5m5631Jb0ESbjn5z0u2sgKOrXf1BR-qOgeV_w@mail.gmail.com>
-Subject: Re: [PATCH 1/2] dt-bindings: gpio: rockchip: add clock-names
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, "heiko@sntech.de" <heiko@sntech.de>, 
-	devicetree@vger.kernel.org, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	"open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_140526_342408_CEB64F1E 
-X-CRM114-Status: GOOD (  14.15  )
+X-CRM114-CacheID: sfid-20220902_141005_913435_8BFAFD17 
+X-CRM114-Status: GOOD (  28.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,25 +58,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 2, 2022 at 1:04 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
->
-> Add 'clock-names' to the gpio dt node. so the driver could get clocks by
-> a const char id, this patch names the clock-names as
->   - 'bus': the apb clock for cpu to access the gpio controller
->   - 'db': the debounce clock for cpu to set debounce clock rate
->
-> Since the old dt nodes may have no clock-names, this patch not make them
-> as part of 'required properties'.
->
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> ---
->  .../devicetree/bindings/gpio/rockchip,gpio-bank.yaml        | 6 ++++++
->  1 file changed, 6 insertions(+)
+Am Freitag, 2. September 2022, 20:38:27 CEST schrieb Peter Geis:
+> On Wed, Aug 31, 2022 at 9:30 PM Jianqun Xu <jay.xu@rock-chips.com> wrote:
+> >
+> > In some case the system may has no builtin cru module, the gpio driver
+> > will fail to get periph clock and debounce clock.
+> >
+> > On rockchip SoCs, the pclk and dbg clk are default to be enabled and
+> > ungated, the gpio possible to work without cru module.
+> >
+> > This patch makes gpio work fine without cru module.
+> 
+> What happens if the cru probes later and these clocks become available
+> but aren't claimed so clk_disable_unused shuts them down?
 
-Can Rockchip please address DT binding header licensing:
+Also the clock controller for the soc is such a basic component, who
+in their right mind would build a kernel without it and expect anything
+to work.
 
-https://lore.kernel.org/all/20220630220409.GA3396626-robh@kernel.org/
-https://lore.kernel.org/all/20220902210141.GA403234-robh@kernel.org/
+My guess is that is simply hacking around that Android thingy with their
+common kernel but vendors being allowed to move all the "special" code
+to modules. We had this untested cru-module in mainline for a while
+before people found out that the module part seemingly never was
+tested ;-) .
+
+The gpio driver is of course dependent on its clock supply, so hacking
+around that seems really like a very bad idea.
+
+
+Heiko
+
+
+
+> 
+> >
+> > Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> > ---
+> >  drivers/gpio/gpio-rockchip.c | 14 +++++++++-----
+> >  1 file changed, 9 insertions(+), 5 deletions(-)
+> >
+> > diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+> > index a4c4e4584f5b..1da0324445cc 100644
+> > --- a/drivers/gpio/gpio-rockchip.c
+> > +++ b/drivers/gpio/gpio-rockchip.c
+> > @@ -195,6 +195,9 @@ static int rockchip_gpio_set_debounce(struct gpio_chip *gc,
+> >         unsigned int cur_div_reg;
+> >         u64 div;
+> >
+> > +       if (!bank->db_clk)
+> > +               return -ENOENT;
+> > +
+> >         if (bank->gpio_type == GPIO_TYPE_V2 && !IS_ERR(bank->db_clk)) {
+> >                 div_debounce_support = true;
+> >                 freq = clk_get_rate(bank->db_clk);
+> > @@ -654,8 +657,10 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+> >                 return -EINVAL;
+> >
+> >         bank->clk = of_clk_get(bank->of_node, 0);
+> > -       if (IS_ERR(bank->clk))
+> > -               return PTR_ERR(bank->clk);
+> > +       if (IS_ERR(bank->clk)) {
+> > +               bank->clk = NULL;
+> > +               dev_warn(bank->dev, "works without clk pm\n");
+> > +       }
+> >
+> >         clk_prepare_enable(bank->clk);
+> >         id = readl(bank->reg_base + gpio_regs_v2.version_id);
+> > @@ -666,9 +671,8 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+> >                 bank->gpio_type = GPIO_TYPE_V2;
+> >                 bank->db_clk = of_clk_get(bank->of_node, 1);
+> >                 if (IS_ERR(bank->db_clk)) {
+> > -                       dev_err(bank->dev, "cannot find debounce clk\n");
+> > -                       clk_disable_unprepare(bank->clk);
+> > -                       return -EINVAL;
+> > +                       bank->db_clk = NULL;
+> > +                       dev_warn(bank->dev, "works without debounce clk pm\n");
+> >                 }
+> >         } else {
+> >                 bank->gpio_regs = &gpio_regs_v1;
+> > --
+> > 2.25.1
+> >
+> >
+> > _______________________________________________
+> > Linux-rockchip mailing list
+> > Linux-rockchip@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
