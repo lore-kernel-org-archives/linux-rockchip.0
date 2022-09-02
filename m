@@ -4,73 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52906C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Sep 2022 18:38:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EADAAECAAD5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Sep 2022 18:46:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DqG5MGi2h5Yv30sBgPU28SJhnvmzkxnZ3S5AE/jlmE0=; b=gct0sRfw2QOw1N
-	kQb0T7PxcRpFvIi3R4GfI5eg54i8xzd8NQrup0vV5DnyEpqzWbtkHSKwW3iXkY0Pp1V0tjIBR8TMM
-	VuDSfTPNq7gt+qSfaDfkT53BMy2HtkrLwg9c/qvKAhfM4nrpdUB3MaC0scgnJy3waQY2IAd1opv1G
-	6q8Hom02GYZnHkylhTf7GvthMdQy9IlCuUYJOCEPeVDCi38Wkvc8Y2dLvbuY7BQzvbnfdN76NgCTQ
-	SK6Lc08dapYzGOj4sDpy6YyXkdnUmzZ6W0HAKSMzmSVs9V7XD8Y/iu6gs6kCQ2bJmWPsWkaTH3Zzs
-	1Obtx7R7RuO0j/o2990Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xK/Wa4/RCMoCDEogj8yOEoKTst1HMB6DcPqZjGefFKA=; b=H0hu1FFxl2Rvsb
+	zuS+zaMvlJ2A932LgQhALDirDMqVsHTpmBQozVRJx0+z3yRTRGa42Ju72LpUH3GnCIOKIPgBGZioh
+	2syAAPn59O4U+FFOyY8wwi6RfNdjZMooWzuA/wUEHqAyipXBCqdj+ro6clGOtn2lAuCcmQG4HyS1V
+	zoDckm5sP4TmFwBEGWNgZ9nqtA6NaFggAuHgjC3jdAbLqN+oCI1/HHv5OWiGrYbuq4JEPCzMhxYfq
+	dbvOOsbvxyANvYim+nZsBKnijlH5bnsuM+/Iar2BNyB1HJ3TmDuUZduTcBMdV4uRQZsnLGfjal2Ti
+	3aoIxfnwgEqcEytDYJug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oUBYw-009caW-Vv; Fri, 02 Sep 2022 18:38:43 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1oUBg3-009jDc-M2; Fri, 02 Sep 2022 18:46:03 +0000
+Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oUBYu-009cTb-UR
-	for linux-rockchip@lists.infradead.org; Fri, 02 Sep 2022 18:38:42 +0000
-Received: by mail-wm1-x334.google.com with SMTP id n17-20020a05600c501100b003a84bf9b68bso1905539wmr.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 02 Sep 2022 11:38:39 -0700 (PDT)
+	id 1oUBfq-009ivL-6C; Fri, 02 Sep 2022 18:45:51 +0000
+Received: by mail-qv1-xf30.google.com with SMTP id y17so2093435qvr.5;
+        Fri, 02 Sep 2022 11:45:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date;
-        bh=KRBpWIIOAMoQv9wtE6dulvyX3AYtHX5SB44uGSNhJyI=;
-        b=Px7jAILUCAFlfGuvs+hykUNWhfQLqfQSUuOdzD7e+bG+6NdMsVnUUGC+bpXDi4zUR6
-         /ruHz+ECkBoOkZLWE0OkV6vhABX15JzKlivqXKsjk4BQgAkfc5lqPAOIIBeKUnrbbDn9
-         rBlT53UdDv0gsGf369G1oPYwFAdyypi53SeD0dB50CVHA7xbQlYzDhU/IPHcbHeetKNB
-         VmsL4aI2MSxg8LV+3V98dKA/dWbmU7H8hjO8Q3Pmpc21fQ+TcrCZQYTeo7XzRmYKrOzn
-         ed01x8iMxcxiNJ+vkzPX813B6m7RgeKzGRQDpyk9aR8DGtmBgUN+vlnfLLjmlmYCH7Ki
-         x/BQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date;
+        bh=l8lXRjJOTwa1pdbI6AHOCcVerD9joOqdaqD9HG8JOnk=;
+        b=JT/5wswXZeLkBTP7NJmehoUSznJrZkjGyuGX1VZeMQR87I5/I/NvC9NhtkHkHevMSL
+         5paJSt0K5hZEpDRgeCxtFxnTKXpFoCEV5uLmC/RZa8nU/JMLoii/ODoudvh4JSNPln9r
+         flyLLR6wueAYBsGUk77HDDs8p+nAmTgUWFfhoFCyFIqr7XLImMfoEFRtCs1YTxbSlbin
+         TMdomDl3vxaGu21qX/p1bUgflUS3QboZZAC8Zyc6O/qyjTSOXXu1b7Z73pYtVziaRZxz
+         ZZJyGa4LwaeeHT8W4jwcUJgY238hFy1EK660+OjBPTyX+qcLKcGymUVM2WQSDdOVKze8
+         BBNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=KRBpWIIOAMoQv9wtE6dulvyX3AYtHX5SB44uGSNhJyI=;
-        b=IeeBGLRIXuQ663Lc22uV/2NQ4Gl0vmKs2ejwKHg0yGc1c+rvuE02938KQZfS2xWbX5
-         baXMgHw9gnmYT78TO+4l51ybET0+ZER4/8p852oX08+205cLtqVP+DHkvt3XOH1za6Sj
-         d21vSgu+lmpJeG4R9RT7moS7uImCO0Z1snsKQhCHpYzam6WHeqKzcVzZsSIB6CJUngoM
-         4To/U3cvzMSNmywqL7vWlL1lg4qD8JIReyYNuTs4zHKrnj1ztELYoMjSFHoEQxLG61yt
-         moFOIDRr2kb294rMxDZZ93xRPSonmg7CcPv92uagT+8Pyq7vaO1cA/uP9E0639DAj8QX
-         lriw==
-X-Gm-Message-State: ACgBeo0k+5zMlq3B+qVk1ESXFAPDG4AtR2wmCdjtqQ8meb5q2EVtOb85
-	VdhNiYxIke0Uh7Y2NMOUbZ4N01/5vnFhf3UFKrY=
-X-Google-Smtp-Source: AA6agR5ibS0Npyh4KJH1Y192QaepP43nEKu0nHfQZ7E5Gxxc4EZESN2CfSoGKIHcfXf5k5ctWD/qpukL26mROVqx188=
-X-Received: by 2002:a05:600c:5114:b0:3a5:cb1f:6bf3 with SMTP id
- o20-20020a05600c511400b003a5cb1f6bf3mr3824753wms.65.1662143918730; Fri, 02
- Sep 2022 11:38:38 -0700 (PDT)
-MIME-Version: 1.0
-References: <20220901012944.2634398-1-jay.xu@rock-chips.com> <20220901012944.2634398-3-jay.xu@rock-chips.com>
-In-Reply-To: <20220901012944.2634398-3-jay.xu@rock-chips.com>
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date;
+        bh=l8lXRjJOTwa1pdbI6AHOCcVerD9joOqdaqD9HG8JOnk=;
+        b=n256435TY9Pmn1rSaIF+RR1W+7kdDzKoajDYgnYOb9SliO3lYLAYxlkp1jINlOFIy9
+         FdvGeNS07lPRAc7QzqwIErUKqbH8Hy1CL3qqxU0iKORmV/pcoXRip+xlMWsLNADNbKU0
+         23Z0paZgt/qJZLPgLzruObv+Ja6n7QLRPoPg9T/oDBGlWUoF6Dbq+C6Gqd2vT3QmOw+h
+         LG+jvno/oPApdTQlfrnHVL9HGJyZQAN51eIiwNCQrsjA/sdJ90NcBP278qFcOLnCvubF
+         pMrl9k1vUeCxGcpYhFDYaKyVXWR9+mp5PeU6h2VV4yN5rltvUjrxt6XSRtbGYgbXCCAf
+         1fWw==
+X-Gm-Message-State: ACgBeo3eCnF0QJhIoLLwcDhwQmTC3lAge4bxOJG4CNh04chpAViiNl7P
+	8BeTs+Me1/JZ1pWLvXXkuFYYPq/Gqx0PZw==
+X-Google-Smtp-Source: AA6agR7rAtz5HXoZEwSh+DlfA67M7HYVo7709S81K0h8mjg1oqA4O4cUjrdXJOOpwysFE1THXuW/zg==
+X-Received: by 2002:a05:6214:1a43:b0:49a:f1ea:d8e1 with SMTP id fi3-20020a0562141a4300b0049af1ead8e1mr2795452qvb.103.1662144348356;
+        Fri, 02 Sep 2022 11:45:48 -0700 (PDT)
+Received: from master-x64.sparksnet ([2601:153:901:9131::10])
+        by smtp.gmail.com with ESMTPSA id a2-20020a05622a02c200b003447ee0a6bfsm884723qtx.17.2022.09.02.11.45.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 02 Sep 2022 11:45:47 -0700 (PDT)
 From: Peter Geis <pgwipeout@gmail.com>
-Date: Fri, 2 Sep 2022 14:38:27 -0400
-Message-ID: <CAMdYzYrJWnkYneEuJ+dA0EU1QiTkBOkGz1+zn=H5rA-qfS88+Q@mail.gmail.com>
-Subject: Re: [PATCH v1 1/3] gpio: rockchip: make gpio work without cru module
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, 
-	"open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Kishon Vijay Abraham I <kishon@ti.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Samuel Holland <samuel@sholland.org>,
+	Peter Geis <pgwipeout@gmail.com>
+Cc: Markus Reichl <m.reichl@fivetechno.de>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v4] phy: rockchip-inno-usb2: Return zero after otg sync
+Date: Fri,  2 Sep 2022 14:45:42 -0400
+Message-Id: <20220902184543.1234835-1-pgwipeout@gmail.com>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_113841_022334_26395277 
-X-CRM114-Status: GOOD (  22.56  )
+X-CRM114-CacheID: sfid-20220902_114550_252901_AE11859D 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,72 +93,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 31, 2022 at 9:30 PM Jianqun Xu <jay.xu@rock-chips.com> wrote:
->
-> In some case the system may has no builtin cru module, the gpio driver
-> will fail to get periph clock and debounce clock.
->
-> On rockchip SoCs, the pclk and dbg clk are default to be enabled and
-> ungated, the gpio possible to work without cru module.
->
-> This patch makes gpio work fine without cru module.
+The otg sync state patch reuses the ret variable, but fails to set it to
+zero after use. This leads to a situation when the otg port is in
+peripheral mode where the otg phy aborts halfway through setup.  It also
+fails to account for a failure to register the extcon notifier. Fix this
+by using our own variable and skipping otg sync in case of failure.
 
-What happens if the cru probes later and these clocks become available
-but aren't claimed so clk_disable_unused shuts them down?
+Fixes: 8dc60f8da22f ("phy: rockchip-inno-usb2: Sync initial otg state")
+Reported-by: Markus Reichl <m.reichl@fivetechno.de>
+Reported-by: Michael Riesch <michael.riesch@wolfvision.net>
+Signed-off-by: Peter Geis <pgwipeout@gmail.com>
+Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
+Tested-by: Markus Reichl <m.reichl@fivetechno.de>
+---
+Changelog:
+v4
+- fix a checkpatch style error (thanks Vinod)
+v3
+- add missing brackets around new goto
+v2
+- switch to using our own variable
+- add missing goto to skip sync in case of registration failure
+---
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
->
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> ---
->  drivers/gpio/gpio-rockchip.c | 14 +++++++++-----
->  1 file changed, 9 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-> index a4c4e4584f5b..1da0324445cc 100644
-> --- a/drivers/gpio/gpio-rockchip.c
-> +++ b/drivers/gpio/gpio-rockchip.c
-> @@ -195,6 +195,9 @@ static int rockchip_gpio_set_debounce(struct gpio_chip *gc,
->         unsigned int cur_div_reg;
->         u64 div;
->
-> +       if (!bank->db_clk)
-> +               return -ENOENT;
-> +
->         if (bank->gpio_type == GPIO_TYPE_V2 && !IS_ERR(bank->db_clk)) {
->                 div_debounce_support = true;
->                 freq = clk_get_rate(bank->db_clk);
-> @@ -654,8 +657,10 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
->                 return -EINVAL;
->
->         bank->clk = of_clk_get(bank->of_node, 0);
-> -       if (IS_ERR(bank->clk))
-> -               return PTR_ERR(bank->clk);
-> +       if (IS_ERR(bank->clk)) {
-> +               bank->clk = NULL;
-> +               dev_warn(bank->dev, "works without clk pm\n");
-> +       }
->
->         clk_prepare_enable(bank->clk);
->         id = readl(bank->reg_base + gpio_regs_v2.version_id);
-> @@ -666,9 +671,8 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
->                 bank->gpio_type = GPIO_TYPE_V2;
->                 bank->db_clk = of_clk_get(bank->of_node, 1);
->                 if (IS_ERR(bank->db_clk)) {
-> -                       dev_err(bank->dev, "cannot find debounce clk\n");
-> -                       clk_disable_unprepare(bank->clk);
-> -                       return -EINVAL;
-> +                       bank->db_clk = NULL;
-> +                       dev_warn(bank->dev, "works without debounce clk pm\n");
->                 }
->         } else {
->                 bank->gpio_regs = &gpio_regs_v1;
-> --
-> 2.25.1
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index 0b1e9337ee8e..e6ededc51523 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -1124,7 +1124,7 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
+ 					  struct rockchip_usb2phy_port *rport,
+ 					  struct device_node *child_np)
+ {
+-	int ret;
++	int ret, id;
+ 
+ 	rport->port_id = USB2PHY_PORT_OTG;
+ 	rport->port_cfg = &rphy->phy_cfg->port_cfgs[USB2PHY_PORT_OTG];
+@@ -1162,13 +1162,15 @@ static int rockchip_usb2phy_otg_port_init(struct rockchip_usb2phy *rphy,
+ 
+ 		ret = devm_extcon_register_notifier(rphy->dev, rphy->edev,
+ 					EXTCON_USB_HOST, &rport->event_nb);
+-		if (ret)
++		if (ret) {
+ 			dev_err(rphy->dev, "register USB HOST notifier failed\n");
++			goto out;
++		}
+ 
+ 		if (!of_property_read_bool(rphy->dev->of_node, "extcon")) {
+ 			/* do initial sync of usb state */
+-			ret = property_enabled(rphy->grf, &rport->port_cfg->utmi_id);
+-			extcon_set_state_sync(rphy->edev, EXTCON_USB_HOST, !ret);
++			id = property_enabled(rphy->grf, &rport->port_cfg->utmi_id);
++			extcon_set_state_sync(rphy->edev, EXTCON_USB_HOST, !id);
+ 		}
+ 	}
+ 
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
