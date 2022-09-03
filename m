@@ -4,92 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C973BECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Sep 2022 03:10:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C369ECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Sat,  3 Sep 2022 03:38:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VYAbpD/qEddVpcieLV0ZlTlm+MjzJ0Fu5+bPfYQn9IA=; b=Qh6NGxnGwyDRBpVSkDU7exb2M2
-	phDmHT8qT5artMhgh4GbNxucJTtclQZhsVE+AjCfF7lVtvYqJODfjKSxbAWbnVjkkz0wKJ/8VvXYZ
-	I6XgQLwl2ENRgcmDYlkxu5/x+HBZW/jTa4CQU0I8qlGE5OOByShyK5VCPuTn9wbVCGq05XBAR+fh8
-	Ccv8rjScSE6/kkhr8BizFK1Ib3jsx5yMmjFG3B7mEEiR7leHK1Ahck/LNosH8MKMTfqsutbeCKqM4
-	32vjSjFyTLG3VJM7Kc1IUFDZ3Ci6dILRoerxxe4AiIOMXl+a2dgXoPLoLwbVz8nhPr2RO/hF+TEcQ
-	0qmpbU7Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=W0m4wJFI+tG/8p8wN/gQHSXwzj00G94FqwzIbE/h13w=; b=M+wfporfD6D+VG
+	mRmDIUWNwBqzZL7Cw+46lPynKNG34n8PIgxMyHAcByYD7uzQVX2FZaQJv3nSQViaTyNZsMOLsysl8
+	yRNSIDTBT3FIiAXC5aVWlHqrCxB5K55mrW0PQox4NL2aUJH0CIm910yh7c9PF8KJLuuh+PBPjUTPV
+	8yDDttWn2ApzOe7muIJDn+jGxCEngXaeG9x0J7Ix7MFLHNGmMLvqmSruVjWJNsaymiepcbw/EUObD
+	RTZGTyIMkhj9wMet3To9AGm6IubqXXhWCWFX/aI1CHbGxjoPYikwY9zwE/p5H7HOKSZ8Rp4BoRjtJ
+	uHrf4D0coeOZJ4vPnC8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oUJXi-00GngV-5B; Sat, 03 Sep 2022 03:09:58 +0000
-Received: from wout4-smtp.messagingengine.com ([64.147.123.20])
+	id 1oUJz3-00HE8z-FA; Sat, 03 Sep 2022 03:38:13 +0000
+Received: from mail-m11873.qiye.163.com ([115.236.118.73])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oUJXd-00GnWP-H4
-	for linux-rockchip@lists.infradead.org; Sat, 03 Sep 2022 03:09:56 +0000
-Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailout.west.internal (Postfix) with ESMTP id 73BD1320091E;
-	Fri,  2 Sep 2022 23:09:48 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute5.internal (MEProxy); Fri, 02 Sep 2022 23:09:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
-	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm1; t=1662174587; x=1662260987; bh=TMewPnjkVF
-	uhJ2+Q4N0pEmpuR5uQftNVYw9Y5MLoJhY=; b=k/G48JdUpXMY1oCemsSosmmN/q
-	iYkURJ8W2G+XqjukakBRMNDqexAOFNbG4i6x73vm+riauywjkPOpBS3cY6Ar2ZaQ
-	r0RZqS44qMI3BW/xUzIqH/EUXbp6g0vq7jYmj8ztXN/zVFDpfVeVLfLPcMaZ1XF7
-	DA5WDdYk6hUmTrXNyK0I8ub4TGJCTp+1mQC1cAJFRE5RwPXpTaXXuQY9pUlzm/Vx
-	Urtzxk8i3HeKvY9P2SqLt9nxsa/Ljmc/afxqTx40QUNtetpiujPyuYf6QN6M76xs
-	s6MwHmeyqAvYwPnoLXZ1GbTHTqrBLtfTm9vjEhhv1Ce5mP2Mce5vjXtxjzlw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm1; t=1662174587; x=1662260987; bh=TMewPnjkVFuhJ2+Q4N0pEmpuR5uQ
-	ftNVYw9Y5MLoJhY=; b=IfxY2sJ4x4ZUF32HmpyqgmX1MgziIwsw0kfouRDtePdi
-	umQU5LDcQZFzjXgVPHMzfq4jo+/OJA+Pyc5xFW+LIpLZhfEotkkGwdVSdOmgMA5y
-	cnPOKMm+n2/r9cIaBj1JoWNif7CwbruQl8hLyBzpFnTJ4aWHq2eibysbNcggjc8I
-	Q8ZE19WT0XcCz+ix07njJ3s2dkWbu4arXkSlXt3H/VJfY4e37Yc0Ck6VGbrueADG
-	aTYhf8wNC93O2ZPj6SPau2524NeyknkPpVFJBxpycfMSf9++U5HhDDPRDwQILaTM
-	nRVEh8jSgLRyw8fFCvqNrbrbkXiniOALFttBWWiXRg==
-X-ME-Sender: <xms:e8USY9L5hbMmTOLzd28EpBGAzvWFKQ_6nNLuToutY0oPENxh9CyZKg>
-    <xme:e8USY5ImDIC2ACN-wuzcY0Ekk1A-nRiqG3WVOrHKoIHk4YfYe7x1GM3T9ZXCSg17J
-    OgFQTuWPtnQJBBGk9w>
-X-ME-Received: <xmr:e8USY1vwy5GMsyoDgMgeDIaenfVOaFef75W2CD_QhLg72IknO14DLA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvdeluddgjedtucetufdoteggodetrfdotf
-    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
-    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
-    cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtjeenucfhrhhomhepffgrfhhn
-    rgcujfhirhhstghhfhgvlhguuceouggrfhhnrgesfhgrshhtmhgrihhlrdgtohhmqeenuc
-    ggtffrrghtthgvrhhnpeehiedvjeehvdffleekffdvjedvieehhedttefhvddtueefueek
-    lefhteduudfgjeenucffohhmrghinhepihhnfhhrrgguvggrugdrohhrghenucevlhhush
-    htvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegurghfnhgrsehfrghs
-    thhmrghilhdrtghomh
-X-ME-Proxy: <xmx:e8USY-aEjhAiio3w253D6zCVVNMZpi4Uvc8yIpX9kfR1wrGfP8Tosw>
-    <xmx:e8USY0b-YEx2I8tJjvsQL1V9cNs9sKaBcgZYGFn7EKjlTeE5-Ic_eA>
-    <xmx:e8USYyDELUfPiALVF0VBXAaXpYubeprFEZjJzdQpdQwIx-iVfdrouA>
-    <xmx:e8USY7VgPe-H57OPTJ-2fOi48Z1mN2qTyZkENWpeQn7p1ZxjZa2MFQ>
-Feedback-ID: i0e894699:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
- 2 Sep 2022 23:09:45 -0400 (EDT)
-Date: Sat, 3 Sep 2022 06:09:42 +0300
-From: Dafna Hirschfeld <dafna@fastmail.com>
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	Heiko Stuebner <heiko@sntech.de>,
-	Florian Sylvestre <fsylvestre@baylibre.com>,
-	Paul Elder <paul.elder@ideasonboard.com>
-Subject: Re: [PATCH v1.1 5/5] media: rkisp1: Configure LSC after enabling the
- ISP
-Message-ID: <20220903030942.o2t5j2njbaizn4al@guri>
-References: <20220817021850.20460-6-laurent.pinchart@ideasonboard.com>
- <20220823172156.9374-1-laurent.pinchart@ideasonboard.com>
+	id 1oUJyy-00HE50-Ss
+	for linux-rockchip@lists.infradead.org; Sat, 03 Sep 2022 03:38:11 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by mail-m11873.qiye.163.com (Hmail) with ESMTPA id 80B62900181;
+	Sat,  3 Sep 2022 11:38:02 +0800 (CST)
+From: Jianqun Xu <jay.xu@rock-chips.com>
+To: heiko@sntech.de,
+	linus.walleij@linaro.org,
+	brgl@bgdev.pl
+Cc: andriy.shevchenko@linux.intel.com,
+	linux-gpio@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.or,
+	huangtao@rock-chips.com,
+	Jianqun Xu <jay.xu@rock-chips.com>
+Subject: [PATCH] gpio: rockchip: support acpi
+Date: Sat,  3 Sep 2022 11:38:00 +0800
+Message-Id: <20220903033800.3266723-1-jay.xu@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220823172156.9374-1-laurent.pinchart@ideasonboard.com>
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVkZQ0JIVh4ZSE5LGE4eQ00YGFUTARMWGhIXJB
+	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktDSUNVSktLWQY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MzY6FSo6Nj0iEDkNKREhQi8w
+	QlYaC05VSlVKTU1JSkxNSUNISkNMVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
+	WU5DVUlJVUxVSkpPWVdZCAFZQUpKT0pJNwY+
+X-HM-Tid: 0a83016d48712eafkusn80b62900181
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220902_200954_207776_BAC0347A 
-X-CRM114-Status: GOOD (  23.11  )
+X-CRM114-CacheID: sfid-20220902_203809_305121_8AD93B6D 
+X-CRM114-Status: GOOD (  24.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,359 +64,378 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23.08.2022 20:21, Laurent Pinchart wrote:
->The ISP8000Nano v18.02 (found in the i.MX8MP) requires the ISP to be
->enabled (as indicated by the ISP_CTRL.ISP_ENABLE bit) to configure the
->lens shading table in internal RAM. The driver currently configures all
->ISP initial parameters before enabling the ISP, which causes the LSC RAM
->to not be initialized properly.
->
->To fix this, split the rkisp1_params_configure() function into a
->rkisp1_params_pre_configure() and a rkisp1_params_post_configure(). The
->former configures all ISP parameters but LSC, while the latter
->configures LSC. To implement this, the rkisp1_params_apply_params_cfg()
->function is deconstructed, with two small helpers created to deal with
->the parameters buffers, which are then used in rkisp1_params_isr(),
->rkisp1_params_pre_configure() and rkisp1_params_post_configure().
->
->While this initialization ordering is only needed for the ISP8000Nano
->v18.02, it doesn't affect other ISP versions negatively, and can thus be
->followed unconditionally.
->
->Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->---
->Changes since v1:
->
->- Fix typo
->---
-> .../platform/rockchip/rkisp1/rkisp1-common.h  |  29 ++-
-> .../platform/rockchip/rkisp1/rkisp1-isp.c     |   9 +-
-> .../platform/rockchip/rkisp1/rkisp1-params.c  | 169 ++++++++++++------
-> 3 files changed, 143 insertions(+), 64 deletions(-)
->
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->index 1383c13e22b8..8b317060ab97 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
->@@ -589,19 +589,32 @@ void rkisp1_sd_adjust_crop(struct v4l2_rect *crop,
->  */
-> const struct rkisp1_mbus_info *rkisp1_mbus_info_get_by_code(u32 mbus_code);
->
->-/* rkisp1_params_configure - configure the params when stream starts.
->- *			     This function is called by the isp entity upon stream starts.
->- *			     The function applies the initial configuration of the parameters.
->+/*
->+ * rkisp1_params_pre_configure - Configure the params before stream start
->  *
->- * @params:	  pointer to rkisp1_params.
->+ * @params:	  pointer to rkisp1_params
->  * @bayer_pat:	  the bayer pattern on the isp video sink pad
->  * @quantization: the quantization configured on the isp's src pad
->  * @ycbcr_encoding: the ycbcr_encoding configured on the isp's src pad
->+ *
->+ * This function is called by the ISP entity just before the ISP gets started.
->+ * It applies the initial ISP parameters from the first params buffer, but
->+ * skips LSC as it needs to be configured after the ISP is started.
->  */
->-void rkisp1_params_configure(struct rkisp1_params *params,
->-			     enum rkisp1_fmt_raw_pat_type bayer_pat,
->-			     enum v4l2_quantization quantization,
->-			     enum v4l2_ycbcr_encoding ycbcr_encoding);
->+void rkisp1_params_pre_configure(struct rkisp1_params *params,
->+				 enum rkisp1_fmt_raw_pat_type bayer_pat,
->+				 enum v4l2_quantization quantization,
->+				 enum v4l2_ycbcr_encoding ycbcr_encoding);
->+
->+/*
->+ * rkisp1_params_post_configure - Configure the params after stream start
->+ *
->+ * @params:	  pointer to rkisp1_params
->+ *
->+ * This function is called by the ISP entity just after the ISP gets started.
->+ * It applies the initial ISP LSC parameters from the first params buffer.
->+ */
->+void rkisp1_params_post_configure(struct rkisp1_params *params);
->
-> /* rkisp1_params_disable - disable all parameters.
->  *			   This function is called by the isp entity upon stream start
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->index 20c01e0e2e17..81a8fe66f5a7 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
->@@ -343,9 +343,9 @@ static int rkisp1_config_isp(struct rkisp1_isp *isp,
-> 		src_frm = rkisp1_isp_get_pad_fmt(isp, NULL,
-> 						 RKISP1_ISP_PAD_SOURCE_VIDEO,
-> 						 V4L2_SUBDEV_FORMAT_ACTIVE);
->-		rkisp1_params_configure(&rkisp1->params, sink_fmt->bayer_pat,
->-					src_frm->quantization,
->-					src_frm->ycbcr_enc);
->+		rkisp1_params_pre_configure(&rkisp1->params, sink_fmt->bayer_pat,
->+					    src_frm->quantization,
->+					    src_frm->ycbcr_enc);
-> 	}
->
-> 	return 0;
->@@ -462,6 +462,9 @@ static int rkisp1_isp_start(struct rkisp1_isp *isp, struct media_pad *source)
-> 	       RKISP1_CIF_ISP_CTRL_ISP_INFORM_ENABLE;
-> 	rkisp1_write(rkisp1, RKISP1_CIF_ISP_CTRL, val);
->
->+	if (isp->src_fmt->pixel_enc == V4L2_PIXEL_ENC_BAYER)
->+		rkisp1_params_post_configure(&rkisp1->params);
+This patch fix driver to support acpi by following changes:
+ * support get gpio bank number from uid of acpi
+ * try to get clocks for dt nodes but for acpi
+ * try to get clocks by a char id first, if a dt patch applied
 
-hi,
-I see that the pre-configure is actually called when format is not bayer.
+Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+---
+ drivers/gpio/gpio-rockchip.c | 232 +++++++++++++++++++++--------------
+ 1 file changed, 143 insertions(+), 89 deletions(-)
 
-Thanks,
-Dafna
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index ebb50c25a461..e9c899b843a2 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -6,9 +6,9 @@
+  * Copyright (c) 2021 Rockchip Electronics Co. Ltd.
+  */
+ 
++#include <linux/acpi.h>
+ #include <linux/bitops.h>
+ #include <linux/clk.h>
+-#include <linux/device.h>
+ #include <linux/err.h>
+ #include <linux/gpio/driver.h>
+ #include <linux/init.h>
+@@ -16,10 +16,9 @@
+ #include <linux/io.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+-#include <linux/of_address.h>
+-#include <linux/of_device.h>
+-#include <linux/of_irq.h>
++#include <linux/platform_device.h>
+ #include <linux/pinctrl/pinconf-generic.h>
++#include <linux/property.h>
+ #include <linux/regmap.h>
+ 
+ #include "../pinctrl/core.h"
+@@ -29,6 +28,8 @@
+ #define GPIO_TYPE_V2		(0x01000C2B)  /* GPIO Version ID 0x01000C2B */
+ #define GPIO_TYPE_V2_1		(0x0101157C)  /* GPIO Version ID 0x0101157C */
+ 
++#define GPIO_MAX_PINS	(32)
++
+ static const struct rockchip_gpio_regs gpio_regs_v1 = {
+ 	.port_dr = 0x00,
+ 	.port_ddr = 0x04,
+@@ -200,6 +201,9 @@ static int rockchip_gpio_set_debounce(struct gpio_chip *gc,
+ 	if (bank->gpio_type == GPIO_TYPE_V2 && !IS_ERR(bank->db_clk)) {
+ 		div_debounce_support = true;
+ 		freq = clk_get_rate(bank->db_clk);
++		if (!freq)
++			return -EINVAL;
++
+ 		max_debounce = (GENMASK(23, 0) + 1) * 2 * 1000000 / freq;
+ 		if (debounce > max_debounce)
+ 			return -EINVAL;
+@@ -507,7 +511,7 @@ static int rockchip_interrupts_register(struct rockchip_pin_bank *bank)
+ 	struct irq_chip_generic *gc;
+ 	int ret;
+ 
+-	bank->domain = irq_domain_add_linear(bank->of_node, 32,
++	bank->domain = irq_domain_create_linear(dev_fwnode(bank->dev), 32,
+ 					&irq_generic_chip_ops, NULL);
+ 	if (!bank->domain) {
+ 		dev_warn(bank->dev, "could not init irq domain for bank %s\n",
+@@ -578,6 +582,16 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+ 	gc->label = bank->name;
+ 	gc->parent = bank->dev;
+ 
++	if (!gc->base)
++		gc->base = GPIO_MAX_PINS * bank->bank_num;
++	if (!gc->ngpio)
++		gc->ngpio = GPIO_MAX_PINS;
++	if (!gc->label) {
++		gc->label = kasprintf(GFP_KERNEL, "gpio%d", bank->bank_num);
++		if (!gc->label)
++			return -ENOMEM;
++	}
++
+ 	ret = gpiochip_add_data(gc, bank);
+ 	if (ret) {
+ 		dev_err(bank->dev, "failed to add gpiochip %s, %d\n",
+@@ -585,35 +599,6 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+ 		return ret;
+ 	}
+ 
+-	/*
+-	 * For DeviceTree-supported systems, the gpio core checks the
+-	 * pinctrl's device node for the "gpio-ranges" property.
+-	 * If it is present, it takes care of adding the pin ranges
+-	 * for the driver. In this case the driver can skip ahead.
+-	 *
+-	 * In order to remain compatible with older, existing DeviceTree
+-	 * files which don't set the "gpio-ranges" property or systems that
+-	 * utilize ACPI the driver has to call gpiochip_add_pin_range().
+-	 */
+-	if (!of_property_read_bool(bank->of_node, "gpio-ranges")) {
+-		struct device_node *pctlnp = of_get_parent(bank->of_node);
+-		struct pinctrl_dev *pctldev = NULL;
+-
+-		if (!pctlnp)
+-			return -ENODATA;
+-
+-		pctldev = of_pinctrl_get(pctlnp);
+-		if (!pctldev)
+-			return -ENODEV;
+-
+-		ret = gpiochip_add_pin_range(gc, dev_name(pctldev->dev), 0,
+-					     gc->base, gc->ngpio);
+-		if (ret) {
+-			dev_err(bank->dev, "Failed to add pin range\n");
+-			goto fail;
+-		}
+-	}
+-
+ 	ret = rockchip_interrupts_register(bank);
+ 	if (ret) {
+ 		dev_err(bank->dev, "failed to register interrupt, %d\n", ret);
+@@ -628,47 +613,18 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+ 	return ret;
+ }
+ 
+-static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
++static void rockchip_gpio_get_ver(struct rockchip_pin_bank *bank)
+ {
+-	struct resource res;
+-	int id = 0;
+-
+-	if (of_address_to_resource(bank->of_node, 0, &res)) {
+-		dev_err(bank->dev, "cannot find IO resource for bank\n");
+-		return -ENOENT;
+-	}
+-
+-	bank->reg_base = devm_ioremap_resource(bank->dev, &res);
+-	if (IS_ERR(bank->reg_base))
+-		return PTR_ERR(bank->reg_base);
+-
+-	bank->irq = irq_of_parse_and_map(bank->of_node, 0);
+-	if (!bank->irq)
+-		return -EINVAL;
+-
+-	bank->clk = of_clk_get(bank->of_node, 0);
+-	if (IS_ERR(bank->clk))
+-		return PTR_ERR(bank->clk);
+-
+-	clk_prepare_enable(bank->clk);
+-	id = readl(bank->reg_base + gpio_regs_v2.version_id);
++	int id = readl(bank->reg_base + gpio_regs_v2.version_id);
+ 
+ 	/* If not gpio v2, that is default to v1. */
+ 	if (id == GPIO_TYPE_V2 || id == GPIO_TYPE_V2_1) {
+ 		bank->gpio_regs = &gpio_regs_v2;
+ 		bank->gpio_type = GPIO_TYPE_V2;
+-		bank->db_clk = of_clk_get(bank->of_node, 1);
+-		if (IS_ERR(bank->db_clk)) {
+-			dev_err(bank->dev, "cannot find debounce clk\n");
+-			clk_disable_unprepare(bank->clk);
+-			return -EINVAL;
+-		}
+ 	} else {
+ 		bank->gpio_regs = &gpio_regs_v1;
+ 		bank->gpio_type = GPIO_TYPE_V1;
+ 	}
+-
+-	return 0;
+ }
+ 
+ static struct rockchip_pin_bank *
+@@ -690,40 +646,118 @@ rockchip_gpio_find_bank(struct pinctrl_dev *pctldev, int id)
+ 	return found ? bank : NULL;
+ }
+ 
++static int rockchip_gpio_of_get_bank_id(struct device *dev)
++{
++	static int gpio;
++	int bank_id = -1;
++
++	if (IS_ENABLED(CONFIG_OF) && dev->of_node) {
++		bank_id = of_alias_get_id(dev->of_node, "gpio");
++		if (bank_id < 0)
++			bank_id = gpio++;
++	}
++
++	return bank_id;
++}
++
++#ifdef CONFIG_ACPI
++static int rockchip_gpio_acpi_get_bank_id(struct device *dev)
++{
++	struct acpi_device *adev;
++	unsigned long bank_id = -1;
++	const char *uid;
++	int ret;
++
++	adev = ACPI_COMPANION(dev);
++	if (!adev)
++		return -ENXIO;
++
++	uid = acpi_device_uid(adev);
++	if (!uid || !(*uid)) {
++		dev_err(dev, "Cannot retrieve UID\n");
++		return -ENODEV;
++	}
++
++	ret = kstrtoul(uid, 0, &bank_id);
++
++	return !ret ? bank_id : -ERANGE;
++}
++#else
++static int rockchip_gpio_acpi_get_bank_id(struct device *dev)
++{
++	return -ENOENT;
++}
++#endif /* CONFIG_ACPI */
++
+ static int rockchip_gpio_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+-	struct device_node *np = dev->of_node;
+-	struct device_node *pctlnp = of_get_parent(np);
+ 	struct pinctrl_dev *pctldev = NULL;
+ 	struct rockchip_pin_bank *bank = NULL;
+-	struct rockchip_pin_deferred *cfg;
+-	static int gpio;
+-	int id, ret;
++	struct rockchip_pin_output_deferred *cfg;
++	int bank_id = 0;
++	int ret;
+ 
+-	if (!np || !pctlnp)
+-		return -ENODEV;
++	bank_id = rockchip_gpio_acpi_get_bank_id(dev);
++	if (bank_id < 0) {
++		bank_id = rockchip_gpio_of_get_bank_id(dev);
++		if (bank_id < 0)
++			return bank_id;
++	}
+ 
+-	pctldev = of_pinctrl_get(pctlnp);
+-	if (!pctldev)
+-		return -EPROBE_DEFER;
++	if (!ACPI_COMPANION(dev)) {
++		struct device_node *pctlnp = of_get_parent(dev->of_node);
+ 
+-	id = of_alias_get_id(np, "gpio");
+-	if (id < 0)
+-		id = gpio++;
++		pctldev = of_pinctrl_get(pctlnp);
++		if (!pctldev)
++			return -EPROBE_DEFER;
+ 
+-	bank = rockchip_gpio_find_bank(pctldev, id);
+-	if (!bank)
+-		return -EINVAL;
++		bank = rockchip_gpio_find_bank(pctldev, bank_id);
++		if (!bank)
++			return -ENODEV;
++	}
++
++	if (!bank) {
++		bank = devm_kzalloc(dev, sizeof(*bank), GFP_KERNEL);
++		if (!bank)
++			return -ENOMEM;
++	}
+ 
++	bank->bank_num = bank_id;
+ 	bank->dev = dev;
+-	bank->of_node = np;
++
++	bank->reg_base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(bank->reg_base))
++		return PTR_ERR(bank->reg_base);
++
++	bank->irq = platform_get_irq(pdev, 0);
++	if (bank->irq < 0)
++		return bank->irq;
+ 
+ 	raw_spin_lock_init(&bank->slock);
+ 
+-	ret = rockchip_get_bank_data(bank);
+-	if (ret)
+-		return ret;
++	if (!ACPI_COMPANION(dev)) {
++		bank->clk = devm_clk_get(dev, "bus");
++		if (IS_ERR(bank->clk)) {
++			bank->clk = of_clk_get(dev->of_node, 0);
++			if (IS_ERR(bank->clk)) {
++				dev_err(dev, "fail to get apb clock\n");
++				return PTR_ERR(bank->clk);
++			}
++		}
++
++		bank->db_clk = devm_clk_get(dev, "db");
++		if (IS_ERR(bank->db_clk)) {
++			bank->db_clk = of_clk_get(dev->of_node, 1);
++			if (IS_ERR(bank->db_clk))
++				bank->db_clk = NULL;
++		}
++	}
++
++	clk_prepare_enable(bank->clk);
++	clk_prepare_enable(bank->db_clk);
++
++	rockchip_gpio_get_ver(bank);
+ 
+ 	/*
+ 	 * Prevent clashes with a deferred output setting
+@@ -733,14 +767,27 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
+ 
+ 	ret = rockchip_gpiolib_register(bank);
+ 	if (ret) {
+-		clk_disable_unprepare(bank->clk);
+-		mutex_unlock(&bank->deferred_lock);
+-		return ret;
++		dev_err(bank->dev, "Failed to register gpio %d\n", ret);
++		goto err_unlock;
++	}
++
++	if (!device_property_read_bool(bank->dev, "gpio-ranges") && pctldev) {
++		struct gpio_chip *gc = &bank->gpio_chip;
++
++		ret = gpiochip_add_pin_range(gc, dev_name(pctldev->dev), 0,
++					     gc->base, gc->ngpio);
++		if (ret) {
++			dev_err(bank->dev, "Failed to add pin range\n");
++			goto err_unlock;
++		}
+ 	}
+ 
+ 	while (!list_empty(&bank->deferred_pins)) {
+ 		cfg = list_first_entry(&bank->deferred_pins,
+ 				       struct rockchip_pin_deferred, head);
++		if (!cfg)
++			break;
++
+ 		list_del(&cfg->head);
+ 
+ 		switch (cfg->param) {
+@@ -765,9 +812,15 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
+ 	mutex_unlock(&bank->deferred_lock);
+ 
+ 	platform_set_drvdata(pdev, bank);
+-	dev_info(dev, "probed %pOF\n", np);
++	dev_info(dev, "probed %pfw\n", dev_fwnode(dev));
+ 
+ 	return 0;
++err_unlock:
++	mutex_unlock(&bank->deferred_lock);
++	clk_disable_unprepare(bank->clk);
++	clk_disable_unprepare(bank->db_clk);
++
++	return ret;
+ }
+ 
+ static int rockchip_gpio_remove(struct platform_device *pdev)
+@@ -775,6 +828,7 @@ static int rockchip_gpio_remove(struct platform_device *pdev)
+ 	struct rockchip_pin_bank *bank = platform_get_drvdata(pdev);
+ 
+ 	clk_disable_unprepare(bank->clk);
++	clk_disable_unprepare(bank->db_clk);
+ 	gpiochip_remove(&bank->gpio_chip);
+ 
+ 	return 0;
+-- 
+2.25.1
 
->+
-> 	return 0;
-> }
->
->diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
->index 123c26fc1679..d8731ebbf479 100644
->--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
->+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
->@@ -1297,22 +1297,6 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
-> 						RKISP1_CIF_ISP_CTRL_ISP_GAMMA_IN_ENA);
-> 	}
->
->-	/* update lsc config */
->-	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_LSC)
->-		rkisp1_lsc_config(params,
->-				  &new_params->others.lsc_config);
->-
->-	if (module_en_update & RKISP1_CIF_ISP_MODULE_LSC) {
->-		if (module_ens & RKISP1_CIF_ISP_MODULE_LSC)
->-			rkisp1_param_set_bits(params,
->-					      RKISP1_CIF_ISP_LSC_CTRL,
->-					      RKISP1_CIF_ISP_LSC_CTRL_ENA);
->-		else
->-			rkisp1_param_clear_bits(params,
->-						RKISP1_CIF_ISP_LSC_CTRL,
->-						RKISP1_CIF_ISP_LSC_CTRL_ENA);
->-	}
->-
-> 	/* update awb gains */
-> 	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN)
-> 		params->ops->awb_gain_config(params, &new_params->others.awb_gain_config);
->@@ -1429,6 +1413,33 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
-> 	}
-> }
->
->+static void
->+rkisp1_isp_isr_lsc_config(struct rkisp1_params *params,
->+			  const struct rkisp1_params_cfg *new_params)
->+{
->+	unsigned int module_en_update, module_cfg_update, module_ens;
->+
->+	module_en_update = new_params->module_en_update;
->+	module_cfg_update = new_params->module_cfg_update;
->+	module_ens = new_params->module_ens;
->+
->+	/* update lsc config */
->+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_LSC)
->+		rkisp1_lsc_config(params,
->+				  &new_params->others.lsc_config);
->+
->+	if (module_en_update & RKISP1_CIF_ISP_MODULE_LSC) {
->+		if (module_ens & RKISP1_CIF_ISP_MODULE_LSC)
->+			rkisp1_param_set_bits(params,
->+					      RKISP1_CIF_ISP_LSC_CTRL,
->+					      RKISP1_CIF_ISP_LSC_CTRL_ENA);
->+		else
->+			rkisp1_param_clear_bits(params,
->+						RKISP1_CIF_ISP_LSC_CTRL,
->+						RKISP1_CIF_ISP_LSC_CTRL_ENA);
->+	}
->+}
->+
-> static void rkisp1_isp_isr_meas_config(struct rkisp1_params *params,
-> 				       struct  rkisp1_params_cfg *new_params)
-> {
->@@ -1490,47 +1501,60 @@ static void rkisp1_isp_isr_meas_config(struct rkisp1_params *params,
-> 	}
-> }
->
->-static void rkisp1_params_apply_params_cfg(struct rkisp1_params *params,
->-					   unsigned int frame_sequence)
->+static bool rkisp1_params_get_buffer(struct rkisp1_params *params,
->+				     struct rkisp1_buffer **buf,
->+				     struct rkisp1_params_cfg **cfg)
-> {
->-	struct rkisp1_params_cfg *new_params;
->-	struct rkisp1_buffer *cur_buf = NULL;
->-
-> 	if (list_empty(&params->params))
->-		return;
->+		return false;
->
->-	cur_buf = list_first_entry(&params->params,
->-				   struct rkisp1_buffer, queue);
->+	*buf = list_first_entry(&params->params, struct rkisp1_buffer, queue);
->+	*cfg = vb2_plane_vaddr(&(*buf)->vb.vb2_buf, 0);
->
->-	new_params = (struct rkisp1_params_cfg *)vb2_plane_vaddr(&cur_buf->vb.vb2_buf, 0);
->+	return true;
->+}
->
->-	rkisp1_isp_isr_other_config(params, new_params);
->-	rkisp1_isp_isr_meas_config(params, new_params);
->+static void rkisp1_params_complete_buffer(struct rkisp1_params *params,
->+					  struct rkisp1_buffer *buf,
->+					  unsigned int frame_sequence)
->+{
->+	list_del(&buf->queue);
->
->-	/* update shadow register immediately */
->-	rkisp1_param_set_bits(params, RKISP1_CIF_ISP_CTRL, RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD);
->-
->-	list_del(&cur_buf->queue);
->-
->-	cur_buf->vb.sequence = frame_sequence;
->-	vb2_buffer_done(&cur_buf->vb.vb2_buf, VB2_BUF_STATE_DONE);
->+	buf->vb.sequence = frame_sequence;
->+	vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_DONE);
-> }
->
-> void rkisp1_params_isr(struct rkisp1_device *rkisp1)
-> {
->-	/*
->-	 * This isr is called when the ISR finishes processing a frame (RKISP1_CIF_ISP_FRAME).
->-	 * Configurations performed here will be applied on the next frame.
->-	 * Since frame_sequence is updated on the vertical sync signal, we should use
->-	 * frame_sequence + 1 here to indicate to userspace on which frame these parameters
->-	 * are being applied.
->-	 */
->-	unsigned int frame_sequence = rkisp1->isp.frame_sequence + 1;
-> 	struct rkisp1_params *params = &rkisp1->params;
->+	struct rkisp1_params_cfg *new_params;
->+	struct rkisp1_buffer *cur_buf;
->
-> 	spin_lock(&params->config_lock);
->-	rkisp1_params_apply_params_cfg(params, frame_sequence);
->
->+	if (!rkisp1_params_get_buffer(params, &cur_buf, &new_params))
->+		goto unlock;
->+
->+	rkisp1_isp_isr_other_config(params, new_params);
->+	rkisp1_isp_isr_lsc_config(params, new_params);
->+	rkisp1_isp_isr_meas_config(params, new_params);
->+
->+	/* update shadow register immediately */
->+	rkisp1_param_set_bits(params, RKISP1_CIF_ISP_CTRL,
->+			      RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD);
->+
->+	/*
->+	 * This isr is called when the ISR finishes processing a frame
->+	 * (RKISP1_CIF_ISP_FRAME). Configurations performed here will be
->+	 * applied on the next frame. Since frame_sequence is updated on the
->+	 * vertical sync signal, we should use frame_sequence + 1 here to
->+	 * indicate to userspace on which frame these parameters are being
->+	 * applied.
->+	 */
->+	rkisp1_params_complete_buffer(params, cur_buf,
->+				      rkisp1->isp.frame_sequence + 1);
->+
->+unlock:
-> 	spin_unlock(&params->config_lock);
-> }
->
->@@ -1573,9 +1597,18 @@ static const struct rkisp1_cif_isp_afc_config rkisp1_afc_params_default_config =
-> 	14
-> };
->
->-static void rkisp1_params_config_parameter(struct rkisp1_params *params)
->+void rkisp1_params_pre_configure(struct rkisp1_params *params,
->+				 enum rkisp1_fmt_raw_pat_type bayer_pat,
->+				 enum v4l2_quantization quantization,
->+				 enum v4l2_ycbcr_encoding ycbcr_encoding)
-> {
-> 	struct rkisp1_cif_isp_hst_config hst = rkisp1_hst_params_default_config;
->+	struct rkisp1_params_cfg *new_params;
->+	struct rkisp1_buffer *cur_buf;
->+
->+	params->quantization = quantization;
->+	params->ycbcr_encoding = ycbcr_encoding;
->+	params->raw_type = bayer_pat;
->
-> 	params->ops->awb_meas_config(params, &rkisp1_awb_params_default_config);
-> 	params->ops->awb_meas_enable(params, &rkisp1_awb_params_default_config,
->@@ -1599,20 +1632,50 @@ static void rkisp1_params_config_parameter(struct rkisp1_params *params)
-> 	spin_lock_irq(&params->config_lock);
->
-> 	/* apply the first buffer if there is one already */
->-	rkisp1_params_apply_params_cfg(params, 0);
->
->+	if (!rkisp1_params_get_buffer(params, &cur_buf, &new_params))
->+		goto unlock;
->+
->+	rkisp1_isp_isr_other_config(params, new_params);
->+	rkisp1_isp_isr_meas_config(params, new_params);
->+
->+	/* update shadow register immediately */
->+	rkisp1_param_set_bits(params, RKISP1_CIF_ISP_CTRL,
->+			      RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD);
->+
->+unlock:
-> 	spin_unlock_irq(&params->config_lock);
-> }
->
->-void rkisp1_params_configure(struct rkisp1_params *params,
->-			     enum rkisp1_fmt_raw_pat_type bayer_pat,
->-			     enum v4l2_quantization quantization,
->-			     enum v4l2_ycbcr_encoding ycbcr_encoding)
->+void rkisp1_params_post_configure(struct rkisp1_params *params)
-> {
->-	params->quantization = quantization;
->-	params->ycbcr_encoding = ycbcr_encoding;
->-	params->raw_type = bayer_pat;
->-	rkisp1_params_config_parameter(params);
->+	struct rkisp1_params_cfg *new_params;
->+	struct rkisp1_buffer *cur_buf;
->+
->+	spin_lock_irq(&params->config_lock);
->+
->+	/*
->+	 * Apply LSC parameters from the first buffer (if any is already
->+	 * available. This must be done after the ISP gets started in the
->+	 * ISP8000Nano v18.02 (found in the i.MX8MP) as access to the LSC RAM
->+	 * is gated by the ISP_CTRL.ISP_ENABLE bit. As this initialization
->+	 * ordering doesn't affect other ISP versions negatively, do so
->+	 * unconditionally.
->+	 */
->+
->+	if (!rkisp1_params_get_buffer(params, &cur_buf, &new_params))
->+		goto unlock;
->+
->+	rkisp1_isp_isr_lsc_config(params, new_params);
->+
->+	/* update shadow register immediately */
->+	rkisp1_param_set_bits(params, RKISP1_CIF_ISP_CTRL,
->+			      RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD);
->+
->+	rkisp1_params_complete_buffer(params, cur_buf, 0);
->+
->+unlock:
->+	spin_unlock_irq(&params->config_lock);
-> }
->
-> /*
->-- 
->Regards,
->
->Laurent Pinchart
->
->
->_______________________________________________
->Linux-rockchip mailing list
->Linux-rockchip@lists.infradead.org
->http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
