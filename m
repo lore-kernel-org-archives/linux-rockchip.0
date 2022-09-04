@@ -4,54 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE95FECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Sep 2022 17:23:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B80E5ECAAD3
+	for <linux-rockchip@archiver.kernel.org>; Sun,  4 Sep 2022 17:23:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Wg2Yx9CQGFvN6s476OGNrbN13QUvwMeH5hIpbb5UyMY=; b=lVY72D6hozaOuK
-	JsFr/F0ouKIBGnsxPp3+v8sZMbqahDIRIaooteoG3hjJg8kPLPGXwtZB8W6d4pmKoniJkTgqPEsNI
-	woShUnbucpDcetJ4BJVbPJy+H5qRjorBbnU0o06ctf4ltfqXDjWm1941q/XD2g5M5173pu+gDzUaP
-	Zz8TIaNsb5U/1HVXgYThBJsOutE1Jb753duf31hbqGLYGrFwLzPqsq1WFY+tqC3G/hByOnebEVD8J
-	i03BS6NLWhi8TT0b+Y0x3QuIfmgdfE5HiGKD55SrfOJIiXfmAiSoToWpELr+4tICgbERdBTVp14He
-	KLVPym4N9ocIIIn6FIHA==;
+	List-Owner; bh=43uii45PJu0/+Xg2C5HYY/tiNswpZ08RlbdLqwYuBAc=; b=fGmrwfa0Xk/gRV
+	P//IiYQDQX9mAfi7Bwpb2nnM0o/YqK/KDZbGY4V/5xp1RymLID61ir9NtVtAk227R3rmujt4ac2CB
+	pwuYNugg7vJrRxRofSw5MNjqfDdIPLqny7GzxyIicDpdZyIOSiTIj6GYSeXVrHYebshOxkT3e3wi9
+	WAeBktHowGmJRy5SkosNXXV1xnZqMGNbwB4mWA0tY6i/i9DyxyaHbf3Ynk6OfCiyTsyokdeOrNB4O
+	nyWb/ISpYZihQVXOpkVvvGr5OdXLLcbZ/RamZ1xf+vW6L5eU22jpEJGlzAJjUFD6CaAhv+K/SbUWB
+	CWEkTZ++ZpqjIgfxs6MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oUtLA-008UYN-W7; Sun, 04 Sep 2022 17:23:25 +0000
+	id 1oUtLV-008Unw-6P; Sun, 04 Sep 2022 17:23:45 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oUtKJ-008TtH-TP; Sun, 04 Sep 2022 17:22:33 +0000
+	id 1oUtKM-008Tup-9y; Sun, 04 Sep 2022 17:22:35 +0000
 Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1oUtKD-0000tW-1f; Sun, 04 Sep 2022 19:22:25 +0200
+	id 1oUtKB-0000tW-61; Sun, 04 Sep 2022 19:22:23 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>,
-	krzysztof.kozlowski+dt@linaro.org,
-	robh+dt@kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	phone-devel@vger.kernel.org,
+To: Andy Yan <andyshrk@163.com>,
 	linux-rockchip@lists.infradead.org,
-	martijn@brixit.nl,
 	devicetree@vger.kernel.org,
-	ayufan@ayufan.eu,
+	robh+dt@kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	megi@xff.cz
-Subject: Re: (subset) [PATCH v3 0/2] Add support for the Pine64 PinePhone Pro phone
-Date: Sun,  4 Sep 2022 19:22:20 +0200
-Message-Id: <166231195330.2423948.14614733347050654545.b4-ty@sntech.de>
+	linux-arm-kernel@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2 0/3] Add support for rk3399 based eaidk-610
+Date: Sun,  4 Sep 2022 19:22:16 +0200
+Message-Id: <166231195329.2423948.3022216609132415714.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220815123004.252014-1-tom@tom-fitzhenry.me.uk>
-References: <20220815123004.252014-1-tom@tom-fitzhenry.me.uk>
+In-Reply-To: <20220709102902.2753851-1-andyshrk@163.com>
+References: <20220709102902.2753851-1-andyshrk@163.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220904_102231_987605_483CA946 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20220904_102234_367712_400E4C1E 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,28 +63,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 15 Aug 2022 22:30:02 +1000, Tom Fitzhenry wrote:
-> PinePhone Pro is a RK3399 based phone produced by Pine64.
+On Sat, 9 Jul 2022 18:29:02 +0800, Andy Yan wrote:
+> EAIDK-610 is from OPEN AI LAB and popularly used by university
+> students.
 > 
-> Add a basic DTS for it. This is a working base that will allow myself and
-> others to add more nodes.
-> 
-> Changes since v2:
-> * Used rk3399-opp.dtsi (+ disabled) rather than introducing rk3399-t-opp.dtsi
-> * Removed superfluous comments.
-> * Followed DT Generic Names Recommendation
-> * Set 'From:' of DTS patch to be Martijn, the primary contributor to the DT.
+> Specification:
+> - Rockchip RK3399
+> - LPDDR3 4GB
+> - TF sd scard slot
+> - eMMC
+> - AP6255 for WiFi + BT
+> - Gigabit ethernet
+> - HDMI out
+> - 40 pin header
+> - USB 2.0 x 2
+> - USB 3.0 x 1
+> - USB 3.0 Type-C x 1
+> - 12V DC Power supply
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] dt-bindings: arm: rockchip: Add PinePhone Pro bindings
-      commit: 23c5f10981474b44ce1726e3753cbb7ac20d6548
-
-applied together with v5 of the actual board dts patch
-which was missing the binding.
-
+[1/3] dt-bindings: vendor-prefixes: Add OPEN AI LAB
+      commit: 467dcf345613a779efc3af1dce88a576079666e6
+[2/3] dt-bindings: arm: rockchip: Add EAIDK-610
+      commit: a15ca48b6451b7af27323749f35d0f9929f83f73
+[3/3] arm64: dts: rockchip: Add dts for a rk3399 based board EAIDK-610
+      commit: 904f983256fdd24bde974bf2f38fbacd3edbcd80
 
 Best regards,
 -- 
