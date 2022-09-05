@@ -4,100 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81F8AECAAD5
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Sep 2022 20:53:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F69FECAAD3
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Sep 2022 21:01:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PKAPUK0g0RAWjnbfsT3wjBWizhZH09GL6RLk8n8CceM=; b=pfuxzAi8nqphRg
-	UfTE49vmGyVkm15eWWw+wUX+jU/bPuXkNm/xRffnAHiNRs5N+WpnGa/SBcGPuOj0r13s1qge1gl9b
-	TRo7UT8Z4KPM3mGnxpYmiOLqlHxqo3feiH7SdrB0AMjbjpY/gXfUReIbrlVZwQk8ERqJtT2fCoK7g
-	BTmzn9KdrR8x+3vkN/wXwHEXAKjq7n86qQulALSiTe2UjGay814R3XHKyQ3moaVJiqqFttxmgAtDU
-	/il/xzxE+fkFbC3A3B4TIo8sWANx8xUjarewmi3nV3b3bnJ5j5Lpdsd8CiRQxvnUM1O86nEUUAx4u
-	zbBKouDDRsxx//fjxqpg==;
+	List-Owner; bh=qD+MZaNKXbZ/Sj9U98A4f6i95mMtIMm7PEOcwW9GZbA=; b=xvx65xTreS+aOt
+	vBdTx2TaYwF2tD/Ihr0EkEJw2fNQ0oGMhZ65MFz7hljOAZuReTCy1WEv1ZNNOm+CvufgTLw+PM0kU
+	4S3iXo/pFxyi1PoCM8LYnWFz2SgxhMPjvtmt3Vb6KIMkiKx1Hw8JZ1WnBsbR5ZgnUOWoWElRTmZbV
+	vjNNOgO+LMoxihA/12KaltwG60BMpwMuIj4nPPlz/lGHBTSHib4+unxONb+A/ccQqjBzVzHV0ElB5
+	kZGylVWccC10Ygoqqh1xUYj/81lq95fftq2b4iG8SnTXE+09/yARRDKbvmKWkfvLWy2dgTZWisAto
+	C+HtcwOfGmSLtSDT7Qpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVJ6A-00CEBB-DT; Mon, 05 Sep 2022 20:53:38 +0000
+	id 1oVJD4-00Cpav-Ki; Mon, 05 Sep 2022 21:00:46 +0000
 Received: from out2-smtp.messagingengine.com ([66.111.4.26])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVJ5o-00CBk7-Sz; Mon, 05 Sep 2022 20:53:19 +0000
+	id 1oVJCl-00CnfM-Is; Mon, 05 Sep 2022 21:00:29 +0000
 Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
-	by mailout.nyi.internal (Postfix) with ESMTP id 380B65C00FC;
-	Mon,  5 Sep 2022 16:53:02 -0400 (EDT)
+	by mailout.nyi.internal (Postfix) with ESMTP id 9CD2A5C014E;
+	Mon,  5 Sep 2022 17:00:26 -0400 (EDT)
 Received: from mailfrontend1 ([10.202.2.162])
-  by compute5.internal (MEProxy); Mon, 05 Sep 2022 16:53:02 -0400
+  by compute5.internal (MEProxy); Mon, 05 Sep 2022 17:00:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	tom-fitzhenry.me.uk; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:from:from:in-reply-to:in-reply-to
 	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm1; t=1662411182; x=1662497582; bh=/E+mnHRRBW
-	yX/W5H9Rh/7o3lZ0qxrudPegg0jcNTaaQ=; b=lekK+370pndbyQoVOuQNWcC7cM
-	lz7iJJLPFEyOkxqodeUvaG+AMjbotls6QlZJ9XDnckpsf52aOUDrS5qQbxViJ6XL
-	2LD17ts4571ZOcnJb44QXJotFIf/HwJsdNGe6l4QsBliDDvJnzWbSc6uItf9/A96
-	ADZSzu0PN5OfBBxRpI8JhH74K6P/pvB2toNnIGevY2Yv2mmULs/1r467/e3AWqeA
-	pilzVgBllKniVFljTToqzD8CoCWmR7TabfIrx6Lwy3klbxkdCw6UP5LuozUtxqeJ
-	dPkE48e+tVZTevDt23wtA5fMFIjhbPhmCc6bI1FY2RzltTGb7/b8+6zL4MwQ==
+	:subject:to:to; s=fm1; t=1662411626; x=1662498026; bh=ShSceNjCXY
+	gqlgBupuWbsBOM3+5FczhjpSjrgN/tPBw=; b=hV+tg69dqWA+xmw0VuLGZ1wS0j
+	LQS9f5DNqUhkgxKBz+hC4abYW044ziml/s3nMwukDJtO3I9VJrR5YjyqQO00+zzc
+	B4nAPJ2JdDQoYLns+9oEB+RdSeunz/6dgLqIXBHjDV8wJx+casJ1pXJzGnrWFZAX
+	0uGnmPjNmhsisd3fqgTerkPAnDvDMgeSESqK235TN4kdGahU1RHUAS1T7xvjdPDQ
+	7TpAw6hRXo3YTHwVWK8YyDz+yR6itswAyyGStnN7s9Qq07kgmiozrIO9BhoKtnJc
+	5+S9aQl3U9mU+05CAfvNc0yKBSymjIa0ArQ6+rsO2TRmpFWHEQWKx+dOge9A==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
 	messagingengine.com; h=cc:cc:content-transfer-encoding
 	:content-type:date:date:feedback-id:feedback-id:from:from
 	:in-reply-to:in-reply-to:message-id:mime-version:references
 	:reply-to:sender:subject:subject:to:to:x-me-proxy:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1662411182; x=
-	1662497582; bh=/E+mnHRRBWyX/W5H9Rh/7o3lZ0qxrudPegg0jcNTaaQ=; b=L
-	c7Dp+hwgWOJJLffBHym2b8HyncaDXlQyd1H9Iybyyou7Eozc5J9k/8LvOdlAL1Mp
-	su+XaOx8sTowjDBaXD7n2ZPpKvy/W9DiDghaC/LYI5/lIsGI/Ca1ZaS8aD9n7cbY
-	kRcJLGIeGpVULG28IxdfMErJrFNBtBF5Uw3lRhiHp7yr7Oh0hLw92N30fOyCuuFk
-	btEfChtYZN0JTVC6JkdeaFCo0PGFJsm6a6SlZao7PMHKkY28BOSn7X6G5QGAxmIo
-	utMQ7pzOMck7P57ekKwkkJM9q/sJtIhq2BUKkL9ZO8Dum33b+oLcJomCgIHFnfok
-	SFlXP9QC0GzZ9vXt42SWA==
-X-ME-Sender: <xms:rGEWY6qmZAZFohihjKT2p9uBpVh13saLlHHn9ol4BrDfT4WsTR3RvQ>
-    <xme:rGEWY4rORX8s_G7VtsEXImBo7TCmqrvwv72h35VvajgkgdjFkSmMVc9leD_s43dVr
-    DsMrKa50XPHvzpnyA>
-X-ME-Received: <xmr:rGEWY_NE4fI3-Ntko7eznigt-i-cMM_1PrRma_sF-8hl_DiWkm1CAmLZ-BiAyrevKRvh5081EyASF8OeAPsnwJ0N>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvdeliedgudeitdcutefuodetggdotefrod
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1662411626; x=
+	1662498026; bh=ShSceNjCXYgqlgBupuWbsBOM3+5FczhjpSjrgN/tPBw=; b=S
+	9RJDP3Hv+KNNm5TY/9KO/XrA/LX9KcuR8CqQ56bQrp5jezsc3g9RZLBUg3ZMamK0
+	ssE3PqG1UcUC/ZHvdUBOBxYOngmxzkiNzyBQyvFfCUtahNFpmD2l5ZFlUzUzHJLO
+	zCUmoo6TWFIAYydqVd2MEw2zEOm3VKnoBr121ZFXPNnFYsOQvH4PRofb0WhAEPxf
+	j5sEhGiOc2Xiveji53eMfeqXGZfLbk4vTZpfoacAGClEVibuLhM251yX7Ha17j0z
+	QZZnXoK/rTmYxMdGx1mOHKNCIBo85sCRFh+90+pHVc1yB8fR6m8nzFkMNn22fgyr
+	ml7oCiGrgkNJkO8BJrFAg==
+X-ME-Sender: <xms:amMWYxBWSgoM0nwamImilLGxTpw6eSDy_u980l9tIMY2gn-tvtCUrQ>
+    <xme:amMWY_ggr6mXUa6jBwVnafTdkQGicI049q1H-LpJbXBCUB5U2YKyy5TsGtv2RHcNR
+    RkPL-YJ6fsAsg4QOg>
+X-ME-Received: <xmr:amMWY8kxMAOMFMw2tbIDDKUREQ9ZdpctmP-CrDdOvbxgX7RSg0lfUCleYYYUgRUv1GaJo7oyZUrzBrELCELUnLGL>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrvdeliedgudeiudcutefuodetggdotefrod
     ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
     necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-    enucfjughrpefkffggfgfuvfevfhfhjggtgfesthejredttdefjeenucfhrhhomhepvfho
+    enucfjughrpefkffggfgfvvehfhffujggtgfesthejredttdefjeenucfhrhhomhepvfho
     mhcuhfhithiihhgvnhhrhicuoehtohhmsehtohhmqdhfihhtiihhvghnrhihrdhmvgdruh
-    hkqeenucggtffrrghtthgvrhhnpeekueeijeefueffkeekteegleevjeeiteehiedvtdej
-    iedvvdelvdffvddvtdeugfenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmh
+    hkqeenucggtffrrghtthgvrhhnpeetudelveejvdffjeevvdelvdffhefgueefgedtffev
+    geevudfgieegleeikeetudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmh
     grihhlfhhrohhmpehtohhmsehtohhmqdhfihhtiihhvghnrhihrdhmvgdruhhk
-X-ME-Proxy: <xmx:rGEWY54ZxFy6uKNnZ2tzcFZuOfc_IBmxa3VXA4wVXHF_vyJEOV3f5w>
-    <xmx:rGEWY56gboyxkZkWoQfx__ePNsm_Kfo_9ujRo57Am8Vp5Ka7mB81Ig>
-    <xmx:rGEWY5jz9sX-9MWwTVHemnk8HATmmyqA_EEEvuUBFjKeX545qScGug>
-    <xmx:rmEWY4S0VP1l11CI8IY2nv1G_fgdZrvmOb4AMYYX5GVi8-baPKJTKw>
+X-ME-Proxy: <xmx:amMWY7w0byClwP9hCHFbHd6qSpM6iWzqgixAGov07PjC7IILgYwYfA>
+    <xmx:amMWY2QgTpojgUbCpgRzunuPhiv4B-J422HEbei2lHllaCGg8r6kxA>
+    <xmx:amMWY-Y-dPng0Dj4D3q4oHwz3oo-GoAJMSwDlRuGEfStZjzBYQm2sg>
+    <xmx:amMWY7KTzYdu8qq6Oke_X22ea1wf5IjO3fpQIl3ixJmHwvBi-VpIiA>
 Feedback-ID: iefc945ae:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 5 Sep 2022 16:52:57 -0400 (EDT)
-Message-ID: <00406e34-dee8-ba68-f2dd-c0c0634b42f6@tom-fitzhenry.me.uk>
-Date: Tue, 6 Sep 2022 06:52:53 +1000
+ 5 Sep 2022 17:00:23 -0400 (EDT)
+Message-ID: <1da905ff-482e-2d78-ec5d-3c2f9c99f613@tom-fitzhenry.me.uk>
+Date: Tue, 6 Sep 2022 07:00:22 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.0.3
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix SD card controller probe on
- Pinephone Pro
-To: Ondrej Jirman <megi@xff.cz>, linux-rockchip@lists.infradead.org
-Cc: Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Martijn Braam <martijn@brixit.nl>,
- Caleb Connolly <kc@postmarketos.org>,
- Arnaud Ferraris <arnaud.ferraris@gmail.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <n@nfraprado.net>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>,
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- open list <linux-kernel@vger.kernel.org>
-References: <20220904233652.3197885-1-megi@xff.cz>
 Content-Language: en-US
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+Cc: phone-devel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20220829050040.17330-1-tom@tom-fitzhenry.me.uk>
+ <166231195330.2423948.5394487959576836993.b4-ty@sntech.de>
 From: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
-In-Reply-To: <20220904233652.3197885-1-megi@xff.cz>
+Subject: Re: [PATCH v5 0/1] Add support for the Pine64 PinePhone Pro phone
+In-Reply-To: <166231195330.2423948.5394487959576836993.b4-ty@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220905_135317_602701_7BD6A92E 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20220905_140027_741326_69800BEA 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,25 +107,39 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 5/9/22 09:36, Ondrej Jirman wrote:
-> Voltage constraints on vccio_sd are invalid. They don't match the voltages
-> that LDO9 can generate, and this causes rk808-regulator driver to fail
-> to probe with -EINVAL when it tries to apply the constraints during boot.
-
-On most boots, the SD card probe succeeds, and is able to be mounted.
-
-On some boots, however, I observe this bug with error message:
-
-vccio_sd: failed to apply 3150000-3150000uV constraint: -EINVAL
-
+On 5/9/22 03:22, Heiko Stuebner wrote:
+> On Mon, 29 Aug 2022 15:00:39 +1000, Tom Fitzhenry wrote:
+>> PinePhone Pro is a RK3399 based phone produced by Pine64.
+>>
+>> Add a basic DTS for it. This is a working base that will allow myself and
+>> others to add more nodes.
+>>
+>> Relies on "dt-bindings: arm: rockchip: Add PinePhone Pro bindings"[0].
+>>
+>> [...]
 > 
-> Fix the constraints to something that LDO9 can be actually configured for.
+> Applied, thanks!
 > 
-> Fixes: 78a21c7d5952 ("arm64: dts: rockchip: Add initial support for Pine64 PinePhone Pro")
-> Signed-off-by: Ondrej Jirman <megi@xff.cz>
+> [1/1] arm64: dts: rockchip: Add initial support for Pine64 PinePhone Pro
+>        commit: 78a21c7d59520e72ebea667fe8745a4371d9fe86
+> 
+> 
+> Why was the dt-binding addition missing?
+> I've pulled the binding from v3 now.
+> 
+> While it is true that you should not resend patches just to add Acks,
+> when re-sending a whole series that includes other changes it's still
+> necessary to keep all patches together ;-)
 
-Reviewed-by: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
-Tested-by: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
+Ah, I had misinterpreted previous advice on when it was necessary to 
+repost patches.
+
+I did wonder how maintainers would then discover the set of patches, and 
+so included the "Relies on [..." text above.
+
+I will ensure patch series are complete in future.
+
+Thanks for your patience and review! :)
 
 _______________________________________________
 Linux-rockchip mailing list
