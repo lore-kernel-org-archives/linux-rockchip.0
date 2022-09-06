@@ -4,60 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCD82C6FA89
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Sep 2022 16:57:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99688ECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Sep 2022 17:39:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5uELP3iZpOq8MpG888bC5zIdmv270brxOppyq6qTsME=; b=fp9FVvM0PAC88O
-	spyioW/3evRqEg+GIW0fJ1WYJcEzBR3aUGr+xlc2WRTa3zXgwTQDWlvsqpntp6g/WpOAnsEdQn6CS
-	RBt6TBx1RYAsH6fNFAGQykb1DLWDf1JfgsGqlhPESYN0Z3sxHiGjEEk5RAbCnvTdOLSdqSR72eCo8
-	ona3/Uh2agNVlgMbRyyYFy5D4e+5QSmDk/JQTrQOPIU7Iv8liPqe8N3I5IJv6S5vcEgP/G66/+lQf
-	HNchqCyyAhmwxziUpGbN9RR716APQ2mBtBJ7C95wWY3PgR5pcR5SsBpE7QaLKx5DGb5AvPeTqdCDN
-	aqUzcLQhpXhnJkS8hEGA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=AywSAteqoXEeqSpHu7ENAfwzN4Ap/BkDEiEQ2jTyGOA=; b=0cWlto/4RCuggy
+	pi1gKmox8Rs8Bp83bd3+wi4P57h83t7C+DCobLeqBP4W0f0WOtvNv+CQHMk65RjxLg600uW6mIrxX
+	oCzUfCNZt5bn+FrQlyiAG+BgfxPoWYUfVP4U4aSv1QRQa4FaihDcaLd3jAwjvxBNEYzpZPIzYyenV
+	DYbeSe6pp+Gw1ltSQEeNckaol+8foeDlmMg3ihxI32imlyAAADeHh0KwuOLTgWs+fj0u1T93BVJ/B
+	5yojnx4P/o0fnBiBx9O1JKQFiiJbP9BbY5YtpMwd7/v9RZN9QdzYY3aiEzBs+xxjmawCPKDuR85HP
+	4FgIebGshpdWohXLf3tQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVbt7-00FfyE-Og; Tue, 06 Sep 2022 16:57:25 +0000
-Received: from mxout1.routing.net ([2a03:2900:1:a::a])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVbeZ-00FWtr-0d; Tue, 06 Sep 2022 16:42:24 +0000
-Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
-	by mxout1.routing.net (Postfix) with ESMTP id 6976E3FE7B;
-	Tue,  6 Sep 2022 16:42:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=20200217; t=1662482539;
+	id 1oVcXv-00G22E-Na; Tue, 06 Sep 2022 17:39:35 +0000
+Received: from proxmox1.postmarketos.org ([213.239.216.189])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oVcX8-00G1fd-Bs; Tue, 06 Sep 2022 17:38:53 +0000
+Received: from [192.168.0.10] (cpc76482-cwma10-2-0-cust629.7-3.cable.virginm.net [86.14.22.118])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by proxmox1.postmarketos.org (Postfix) with ESMTPSA id 9B401140290;
+	Tue,  6 Sep 2022 17:38:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=postmarketos.org;
+	s=donut; t=1662485919;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=QRC0LjWCpKR80cgSMNrWil7cnZSqEOA34xP3hwF51bA=;
-	b=yQY2J6tnXjlaWInCHefixbPylHoetaBROJ3AoCQimujPUctaCuHdUHSBpcVZTjss+MjWK8
-	JXTGKTTLh8n0yPAnyHlQF4CK/XHZem4ZHn+Q5xCqmA5N5KasrCe+kpHYTKLb/f/f+vSYct
-	cCWW1mCrOnySkO7Vk9X25GjVFA3NZmQ=
-Received: from frank-G5.. (fttx-pool-80.245.76.100.bambit.de [80.245.76.100])
-	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 8979F400CB;
-	Tue,  6 Sep 2022 16:42:18 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: linux-rockchip@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2] arm64: dts: rockchip: Add regulator suffix to BPI-R2-Pro
-Date: Tue,  6 Sep 2022 18:42:12 +0200
-Message-Id: <20220906164212.84835-1-linux@fw-web.de>
-X-Mailer: git-send-email 2.34.1
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=PjIGV+X0CntldVOFb9jTWJQTomTec7OgnlQDriVdhO0=;
+	b=Zpx6+ZD+n5X+0Gli+wptGeFBPOSG7f9yi8QoIJUHf36rxg/qd8MVrbcOjoPabQRXUJ9VO1
+	tC3ZpQIEOHrgn2G+WAwEOpsVKhqMO/1zonuw9a/TzzRrfH9OmSs4m6o+PKDxBgE7HSMkF5
+	Wtrhvmf+LMojWU1oHlLjoYTsYfFPvGg=
+Message-ID: <57395b20-6352-8414-3078-cdad6bbbe999@postmarketos.org>
+Date: Tue, 6 Sep 2022 18:38:38 +0100
 MIME-Version: 1.0
-X-Mail-ID: 96c322ae-13cf-4cf9-b3ca-76ac40a8fb3a
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.12.0
+Subject: Re: [PATCH] arm64: dts: rockchip: add BT/wifi nodes to Pinephone Pro
+Content-Language: en-US
+To: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ phone-devel@vger.kernel.org
+References: <Rk3c--Dksit7gaQSddtVEaF5_7FlNYE4KZKQKaLsRu2GXMXoBgp5C2DSPNublHMr6E135nPS2B9JkQyf6aSZjw==@protonmail.internalid>
+ <20220906124713.1683587-1-tom@tom-fitzhenry.me.uk>
+From: Caleb Connolly <kc@postmarketos.org>
+In-Reply-To: <20220906124713.1683587-1-tom@tom-fitzhenry.me.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_094223_264235_DD313D5B 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220906_103850_250668_B1737C45 
+X-CRM114-Status: GOOD (  16.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,86 +71,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
 
-Add -regulator suffix to regulator names on Banana Pi R2 Pro board as
-discussed on Mailinglist
 
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
----
-https://patchwork.kernel.org/project/linux-rockchip/patch/20220825193836.54262-6-linux@fw-web.de/
+On 06/09/2022 13:47, Tom Fitzhenry wrote:
+> Pinephone Pro includes a AzureWave AW-CM256SM wifi (sdio0) and
+> bt (uart0) combo module, which is based on Cypress
+> CYP43455 (BCM43455).
+> 
+> Signed-off-by: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
+> ---
+>   .../dts/rockchip/rk3399-pinephone-pro.dts     | 69 +++++++++++++++++++
+>   1 file changed, 69 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+> index 2e058c3150256..096238126e4c1 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+> @@ -43,6 +43,20 @@ key-power {
+>   		};
+>   	};
+> 
+> +	/* Power sequence for SDIO WiFi module */
 
-v2: change _ to - in vcc5v0_usb node
----
- arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+This comment isn't needed, instead give the node a better name/label
+> +	sdio_pwrseq: sdio-pwrseq {
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-index 7a8d55a898f5..950613595f42 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
-@@ -46,7 +46,7 @@ green_led: led-1 {
- 		};
- 	};
- 
--	dc_12v: dc-12v {
-+	dc_12v: dc-12v-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "dc_12v";
- 		regulator-always-on;
-@@ -66,7 +66,7 @@ hdmi_con_in: endpoint {
- 		};
- 	};
- 
--	vcc3v3_sys: vcc3v3-sys {
-+	vcc3v3_sys: vcc3v3-sys-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v3_sys";
- 		regulator-always-on;
-@@ -76,7 +76,7 @@ vcc3v3_sys: vcc3v3-sys {
- 		vin-supply = <&dc_12v>;
- 	};
- 
--	vcc5v0_sys: vcc5v0-sys {
-+	vcc5v0_sys: vcc5v0-sys-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc5v0_sys";
- 		regulator-always-on;
-@@ -146,7 +146,7 @@ vcc3v3_ngff: vcc3v3-ngff-regulator {
- 		vin-supply = <&vcc3v3_pi6c_05>;
- 	};
- 
--	vcc5v0_usb: vcc5v0_usb {
-+	vcc5v0_usb: vcc5v0-usb-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc5v0_usb";
- 		regulator-always-on;
-@@ -156,7 +156,7 @@ vcc5v0_usb: vcc5v0_usb {
- 		vin-supply = <&dc_12v>;
- 	};
- 
--	vcc5v0_usb_host: vcc5v0-usb-host {
-+	vcc5v0_usb_host: vcc5v0-usb-host-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
- 		gpio = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
-@@ -168,7 +168,7 @@ vcc5v0_usb_host: vcc5v0-usb-host {
- 		vin-supply = <&vcc5v0_usb>;
- 	};
- 
--	vcc5v0_usb_otg: vcc5v0-usb-otg {
-+	vcc5v0_usb_otg: vcc5v0-usb-otg-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
- 		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
--- 
-2.34.1
-
+	wifi_pwrseq: sdio-pwrseq-wifi {
+> +		compatible = "mmc-pwrseq-simple";
+> +		clocks = <&rk818 1>;
+> +		clock-names = "ext_clock";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&wifi_enable_h_pin>;
+> +		post-power-on-delay-ms = <100>;
+> +		power-off-delay-us = <500000>;
+> +
+> +		/* WL_REG_ON on module */
+> +		reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
+> +	};
+> +
+>   	vcc_sys: vcc-sys-regulator {
+>   		compatible = "regulator-fixed";
+>   		regulator-name = "vcc_sys";
+> @@ -360,11 +374,31 @@ vsel2_pin: vsel2-pin {
+>   		};
+>   	};
+> 
+> +	sdio-pwrseq {
+> +		wifi_enable_h_pin: wifi-enable-h-pin {
+> +			rockchip,pins = <0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+>   	sound {
+>   		vcc1v8_codec_en: vcc1v8-codec-en {
+>   			rockchip,pins = <3 RK_PA4 RK_FUNC_GPIO &pcfg_pull_down>;
+>   		};
+>   	};
+> +
+> +	wireless-bluetooth {
+> +		bt_wake_pin: bt-wake-pin {
+> +			rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +
+> +		bt_host_wake_pin: bt-host-wake-pin {
+> +			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +
+> +		bt_reset_pin: bt-reset-pin {
+> +			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+>   };
+> 
+>   &sdmmc {
+> @@ -380,6 +414,20 @@ &sdmmc {
+>   	status = "okay";
+>   };
+> 
+> +&sdio0 {
+> +	bus-width = <4>;
+> +	cap-sd-highspeed;
+> +	cap-sdio-irq;
+> +	disable-wp;
+> +	keep-power-in-suspend;
+> +	mmc-pwrseq = <&sdio_pwrseq>;
+> +	non-removable;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+> +	sd-uhs-sdr104;
+> +	status = "okay";
+> +};
+> +
+>   &sdhci {
+>   	bus-width = <8>;
+>   	mmc-hs200-1_8v;
+> @@ -393,6 +441,27 @@ &tsadc {
+>   	status = "okay";
+>   };
+> 
+> +&uart0 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
+> +	uart-has-rtscts;
+> +	status = "okay";
+> +
+> +	bluetooth {
+> +		compatible = "brcm,bcm4345c5";
+> +		clocks = <&rk818 1>;
+> +		clock-names = "lpo";
+> +		device-wakeup-gpios = <&gpio2 RK_PD2 GPIO_ACTIVE_HIGH>;
+> +		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
+> +		max-speed = <1500000>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&bt_host_wake_pin &bt_wake_pin &bt_reset_pin>;
+> +		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
+> +		vbat-supply = <&vcc3v3_sys>;
+> +		vddio-supply = <&vcc_1v8>;
+> +	};
+> +};
+> +
+>   &uart2 {
+>   	status = "okay";
+>   };
+> --
+> 2.37.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
