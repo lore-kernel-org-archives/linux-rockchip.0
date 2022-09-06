@@ -4,80 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44A99ECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Sep 2022 15:24:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A651DECAAD5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Sep 2022 15:31:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rIAgTOBt5jYED7L+CDPvx3qtcSVbAFcZUEat8KpCa8w=; b=mHDgSCZWaiQvK/
-	mR9Z1QYQAPi51jPiQ9VMUWqee0Zr2GONZ8MyWGFPI0Ixj3NX19nQJgv185fF3R2WYyh234SCVVMf5
-	pI+noc+ca2GuqFAwGc6EfVE+MCMroA/367k/nBJUhHZ47okmI4EjEeBGg9tXiU5hiOUXhIKLzLD8O
-	MQS1PuEPPZNSxiNCBHOA59VtJE4/YsPGGU7Fy4IDn9SrHCEw0LhTHZvHNJBPgwxmYzBJ9lqXtKxdi
-	hbtNL4qzjXOQIo3OUyK5KcTP2rg8HAoGbBMKnJYGxOYMO6wCSwuJ4egFuFyYXTInB6BQ73YAxCu0+
-	q/5AduZCt+Pn5BWKbIMA==;
+	List-Owner; bh=m9SF6GNRffztzCyduzzJG9BE48St2YeMiTLdz0gJtq0=; b=UWlMhW8hN7r4bq
+	mxZVnOpXjOWHkdVnEE+F3TC68b4n0ATGKcrHWcmDQ9/qGgcIm+Ve888LAiuO+risABMV2aTkEXvJM
+	Mtl/7PQOpdmXAoNKpliIOpYDxeS8vknVq00HUnuBDFl4Z1jBPELP6maamaMpXPVrCYxIsmoTkE4I5
+	oDJb+GrPk0n6Dfx7Qz49soLSUolvUr8hpnas8gCrIy8ZkpN0emLcfP/UkrmpHjblrqerx6VgTIFUj
+	dIE4aM2g5SG1BYYT4GW5u3xXF2ZOQ7Hweo+gB1JRn+nskv2+d6AUq3kQ3Dex+Qgk5os4nd7dDPfzG
+	aax6y70zcqofDL7sLI7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVaRO-00ElJq-JI; Tue, 06 Sep 2022 15:24:42 +0000
-Received: from mail-oa1-f42.google.com ([209.85.160.42])
+	id 1oVaXZ-00Eozx-9e; Tue, 06 Sep 2022 15:31:05 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVZfZ-00EM9h-Em; Tue, 06 Sep 2022 14:35:19 +0000
-Received: by mail-oa1-f42.google.com with SMTP id 586e51a60fabf-11ee4649dfcso28696809fac.1;
-        Tue, 06 Sep 2022 07:35:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=/kxQ4Wf8GnR3MVwBOujAJ+Hv9NvGQDMILNpayVx9ZUo=;
-        b=vAhRj2INwGdVEkMkA7BeWWntPGP8xpDuTeNBkQQYrGIjeLwCZ8U+7GJd9wFvjQY6MH
-         fWkbCqNIN2pubWO069oSyV7ZxvxYG4V5cNVAtn2dsS6gD3g9g4m6lkU0vTjmXX/J7WWX
-         lVjcyG23GdT59OGCKiL3OT+JKYk81IilkYRU2WYPEvHak22g/XLkCk0qEvJQPRSZpigO
-         /twFqI+0E2BRDUgHICuNZia3URsphP3DLwhLm0XyMWwRSIqQl9UxUzxYDYiYt4gK0M8x
-         xEt0gLl9pzlXcARtpBHrB+0dJvMSIDUBU8qgpwnpXd8iGyWgmYiJqgKaV8Q9RqIIXxUp
-         GO+Q==
-X-Gm-Message-State: ACgBeo269Nq2wPdmG0umH2nP6N5pyZhX8L+pDc0EgcXE88VSMfQH1sHn
-	+epnIDNl+OsOCYu4GIupNw==
-X-Google-Smtp-Source: AA6agR6/8rkfV5hK1hzRmCIqS5PFSgyizUYdaaaJmNYKCFgBxD4OCF+1PwIGz3teG7GN32hHgOxiaw==
-X-Received: by 2002:a05:6870:6314:b0:10b:9595:62db with SMTP id s20-20020a056870631400b0010b959562dbmr11632116oao.128.1662474912399;
-        Tue, 06 Sep 2022 07:35:12 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id a3-20020a056870a18300b001278a63bfc9sm2169288oaf.1.2022.09.06.07.35.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Sep 2022 07:35:11 -0700 (PDT)
-Received: (nullmailer pid 456502 invoked by uid 1000);
-	Tue, 06 Sep 2022 14:35:10 -0000
-Date: Tue, 6 Sep 2022 09:35:10 -0500
-From: Rob Herring <robh@kernel.org>
-To: Lee Jones <lee@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Chen-Yu Tsai <wens@csie.org>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
-	Charles Keepax <ckeepax@opensource.cirrus.com>, 
-	Richard Fitzgerald <rf@opensource.cirrus.com>, Tim Harvey <tharvey@gateworks.com>, 
-	Robert Jones <rjones@gateworks.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
-	Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Maxime Ripard <mripard@kernel.org>, 
-	- <patches@opensource.cirrus.com>, Steve Twiss <stwiss.opensource@diasemi.com>, 
-	Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>, 
-	Alistair Francis <alistair@alistair23.me>, Amelie Delaunay <amelie.delaunay@foss.st.com>, 
-	Linus Walleij <linus.walleij@linaro.org>, Renner Berthing <kernel@esmil.dk>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH] dt-bindings: mfd: Add missing
- (unevaluated|additional)Properties on child nodes
-Message-ID: <20220906143510.GA454672-robh@kernel.org>
-References: <20220823145649.3118479-4-robh@kernel.org>
- <YxYH+POIURB9RO7T@google.com>
+	id 1oVZij-00ENa9-P0; Tue, 06 Sep 2022 14:38:36 +0000
+Received: from jupiter.universe (dyndsl-037-138-186-136.ewe-ip-backbone.de [37.138.186.136])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 6605F6601F4B;
+	Tue,  6 Sep 2022 15:38:29 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1662475109;
+	bh=Gt/PPB04fvYukqskuRxnbybWAL1EFuXj4nMYNDzKjU8=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=Y/aCmtgYD4miEKu84cNJhrx6aYlgOtM6uCvhNgkUaMziey5L7xvvlEUCe2I/aHy9c
+	 U7j4My/sMP7DIw2PSrIOkp09LepFdOlauTzBUaQmu4vj21hnKwQ/77dXtU2m9UP8m8
+	 mj7d8td9zPNi/RV6fJXgDJYVw2eKL3sPn4Ub8+gJKvEQ77vXgyq2F1llBx6/Q/W+NZ
+	 dglK/9krOLbRUYMknDxusdCUXsXVkkgjc+OCTzI+YDQXKQP/hJc69d3r7sRVWoZYut
+	 3VBVJz6+5QFzQDydeVgyXw3VREONG6hOmS8VD0hytUPJny2WUGhX9baMb6MYPiaX4F
+	 Vhn95akbvfnAw==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 3DE8248016C; Tue,  6 Sep 2022 16:38:27 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Lee Jones <lee@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	kernel@collabora.com,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCHv3 2/6] dt-bindings: add power-domain header for rk3588
+Date: Tue,  6 Sep 2022 16:38:21 +0200
+Message-Id: <20220906143825.199089-3-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220906143825.199089-1-sebastian.reichel@collabora.com>
+References: <20220906143825.199089-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YxYH+POIURB9RO7T@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_073517_708565_4BD4C281 
-X-CRM114-Status: GOOD (  15.94  )
+X-CRM114-CacheID: sfid-20220906_073834_081525_5FE7DC72 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,39 +80,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 05, 2022 at 03:37:15PM +0100, Lee Jones wrote:
-> On Tue, 23 Aug 2022, Rob Herring wrote:
-> 
-> > In order to ensure only documented properties are present, node schemas
-> > must have unevaluatedProperties or additionalProperties set to false
-> > (typically).
-> > 
-> > Signed-off-by: Rob Herring <robh@kernel.org>
-> > ---
-> >  .../mfd/allwinner,sun6i-a31-prcm.yaml         | 40 +++++++++++++++++++
-> >  .../mfd/allwinner,sun8i-a23-prcm.yaml         | 10 +++++
-> >  .../bindings/mfd/cirrus,lochnagar.yaml        |  5 +++
-> >  .../devicetree/bindings/mfd/dlg,da9063.yaml   |  7 ++--
-> >  .../bindings/mfd/gateworks-gsc.yaml           |  5 ++-
-> >  .../bindings/mfd/maxim,max14577.yaml          |  1 +
-> >  .../bindings/mfd/maxim,max77843.yaml          |  1 +
-> >  .../bindings/mfd/rockchip,rk817.yaml          |  2 +
-> >  .../bindings/mfd/silergy,sy7636a.yaml         |  1 +
-> >  .../bindings/mfd/st,stm32-lptimer.yaml        |  4 ++
-> >  .../bindings/mfd/st,stm32-timers.yaml         |  3 ++
-> >  .../devicetree/bindings/mfd/st,stmfx.yaml     |  1 +
-> >  .../bindings/mfd/stericsson,ab8500.yaml       | 22 ++++++++++
-> >  .../devicetree/bindings/mfd/ti,tps65086.yaml  |  1 +
-> >  .../bindings/mfd/x-powers,axp152.yaml         |  1 +
-> >  15 files changed, 100 insertions(+), 4 deletions(-)
-> 
-> What are your plans for this set?
-> 
-> Want me to merge it?
+From: Finley Xiao <finley.xiao@rock-chips.com>
 
-Yes, please.
+Add all the power domains listed in the RK3588 TRM.
 
-Rob
+Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ include/dt-bindings/power/rk3588-power.h | 69 ++++++++++++++++++++++++
+ 1 file changed, 69 insertions(+)
+ create mode 100644 include/dt-bindings/power/rk3588-power.h
+
+diff --git a/include/dt-bindings/power/rk3588-power.h b/include/dt-bindings/power/rk3588-power.h
+new file mode 100644
+index 000000000000..1b92fec013cb
+--- /dev/null
++++ b/include/dt-bindings/power/rk3588-power.h
+@@ -0,0 +1,69 @@
++/* SPDX-License-Identifier: (GPL-2.0 or MIT) */
++#ifndef __DT_BINDINGS_POWER_RK3588_POWER_H__
++#define __DT_BINDINGS_POWER_RK3588_POWER_H__
++
++/* VD_LITDSU */
++#define RK3588_PD_CPU_0		0
++#define RK3588_PD_CPU_1		1
++#define RK3588_PD_CPU_2		2
++#define RK3588_PD_CPU_3		3
++
++/* VD_BIGCORE0 */
++#define RK3588_PD_CPU_4		4
++#define RK3588_PD_CPU_5		5
++
++/* VD_BIGCORE1 */
++#define RK3588_PD_CPU_6		6
++#define RK3588_PD_CPU_7		7
++
++/* VD_NPU */
++#define RK3588_PD_NPU		8
++#define RK3588_PD_NPUTOP	9
++#define RK3588_PD_NPU1		10
++#define RK3588_PD_NPU2		11
++
++/* VD_GPU */
++#define RK3588_PD_GPU		12
++
++/* VD_VCODEC */
++#define RK3588_PD_VCODEC	13
++#define RK3588_PD_RKVDEC0	14
++#define RK3588_PD_RKVDEC1	15
++#define RK3588_PD_VENC0		16
++#define RK3588_PD_VENC1		17
++
++/* VD_DD01 */
++#define RK3588_PD_DDR01		18
++
++/* VD_DD23 */
++#define RK3588_PD_DDR23		19
++
++/* VD_LOGIC */
++#define RK3588_PD_CENTER	20
++#define RK3588_PD_VDPU		21
++#define RK3588_PD_RGA30		22
++#define RK3588_PD_AV1		23
++#define RK3588_PD_VOP		24
++#define RK3588_PD_VO0		25
++#define RK3588_PD_VO1		26
++#define RK3588_PD_VI		27
++#define RK3588_PD_ISP1		28
++#define RK3588_PD_FEC		29
++#define RK3588_PD_RGA31		30
++#define RK3588_PD_USB		31
++#define RK3588_PD_PHP		32
++#define RK3588_PD_GMAC		33
++#define RK3588_PD_PCIE		34
++#define RK3588_PD_NVM		35
++#define RK3588_PD_NVM0		36
++#define RK3588_PD_SDIO		37
++#define RK3588_PD_AUDIO		38
++#define RK3588_PD_SECURE	39
++#define RK3588_PD_SDMMC		40
++#define RK3588_PD_CRYPTO	41
++#define RK3588_PD_BUS		42
++
++/* VD_PMU */
++#define RK3588_PD_PMU1		43
++
++#endif
+-- 
+2.35.1
 
 
 _______________________________________________
