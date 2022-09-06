@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2914DC38145
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Sep 2022 17:51:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 027BBECAAD5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Sep 2022 17:52:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ab1WUyFeLGfn+vBPVdDwm7xGAxwXLI89wfU7MmEd388=; b=oljwVjaL20TC2Q
-	agOvPhBZETya8VHjMC+Y4pOvmwtu4Wv8nrpvtsoSxa8xq+Ks39nF7BkYCZN4Q31xBXzWA6Mz1Mk7A
-	Q6OEjhcL/l7vemummVM2se2kx4Nc9Q4H2Rz6UKDG4iDqPiesS2wr4nE/2b7GnA0WsNZRPXFNqyyv2
-	HYnGYRIgE/xMqFG/AmzHhtIpbLwz/YAtJYPSj+172bcbWsSEniNaCyobA0gHPx8UVEg1ZQfkP1hkM
-	33dJzCw/7nMos9kBKA5USEkxuIJDTN+MtY6XHk2tkrkRXHpQyt3KIYdiowsVS2QlzpjyuYXCLgbhV
-	+gouPOdfedMPHhhldK8Q==;
+	List-Owner; bh=L7nRXXBtWEuF0SqstX96pAADOGpVQKPKLJwoku56Ft8=; b=tuGDdWkTrflqgx
+	zwKvSfMFtYZwzQmF564cyfLUlN0nHXdPk12oitkBmLdOkU/O93OWyk8TCCb2/XlIGXW4X+dCpYHZE
+	RXpWgwNR3Uvo6zmuK8RcMBkaIAq4fihk+Y/LWY0W8CFjJqyq/RhfvnSrh+c1r+AozeVgAjCfzw22t
+	FhnnhNUNxAZNnTtsXEUF2qpEl3z4ZGpwZXFYoQLfav5Tj6G2gyziros3IbewKJtWoXGYe5HYdt3mn
+	kOOm0v/0AxSXRSuFrqhiUXbX/OKc3wxEQxn5e3e8W3ZJh42HFMr+3TJ1W7bG+RfHf2ot+oLLzyw1a
+	eoFv7T//6DKrMWhjREzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVcjZ-00G7x8-2n; Tue, 06 Sep 2022 17:51:37 +0000
-Received: from mail-oa1-x36.google.com ([2001:4860:4864:20::36])
+	id 1oVcjj-00G84Y-Na; Tue, 06 Sep 2022 17:51:47 +0000
+Received: from mail-oo1-xc29.google.com ([2607:f8b0:4864:20::c29])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVcge-00G6Da-B7; Tue, 06 Sep 2022 17:48:39 +0000
-Received: by mail-oa1-x36.google.com with SMTP id 586e51a60fabf-1279948d93dso10206859fac.10;
-        Tue, 06 Sep 2022 10:48:34 -0700 (PDT)
+	id 1oVcgc-00G6Cd-8s; Tue, 06 Sep 2022 17:48:40 +0000
+Received: by mail-oo1-xc29.google.com with SMTP id q6-20020a4aa886000000b0044b06d0c453so2044357oom.11;
+        Tue, 06 Sep 2022 10:48:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=sWRT5BEhVQS6Pr9dXQ62RZ1oRnXZDfj0TarvCCPaFKc=;
-        b=bWRIf7+vrCgw7Hi6rPLpo976LR+CnntWyAQ933h2ln/uxNTYxyDX9wQI1ba1Hu4vRC
-         01aflH0cSU1gbCItvjxMIp231+l8//1Itmew0zbTVulu7ibsxVGdyJPan03HhRqTtRa9
-         RjZl+gPqGgl5IUgvv4tUw7s9btr8heTMuJabPKosT0EPs6QGpgq7TdXKXeGzswMvv+lL
-         RAf2o3B8062JS4tmREybuT24yBb7hOKGiZZFfuuirENqsyUdsQqVA2has3YTlK7AyD6H
-         ZefnhdccvYKnONb2W47HUkOGfWpnXooxSzJwHADw4F7iMoYH7wLSYcHUldEI/E8b8Lok
-         qSZg==
+        bh=Z861jG7BMhx/UqAm+BGR/UQTJzU7P1PboLjcZWY5WRs=;
+        b=LqcTc00u+oeRZejpL1N3HqNcfAJDrWhIBRQ2xgjGMPx6CmMtjgbLbbeJm+Pj/0lqWa
+         1bm/L8YEZdDIKdB2QCxPD8HzVkB8cD687s8croIEOkwnf2VonIynKgO2BTriZsqRWeUv
+         FhvbQnrSLzRnjH68kAiZRHm0h3tkV+E0niHAQYWwWt79ukPNrTRsZv66suR5DCrRB6p0
+         YVkFfeB/tcmYUMgz7UCb9ukJsFrCg8LZeSq/ulRBC/VZlKQdYVjPHkP6+nrUTVrh8Fxz
+         Ah7tTNV2DV6FFVqz59tjTeDQTz2QHHDMcdn0MsFBSjEPpSot4DlokBofMQNW/LBLgSn7
+         GT8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=sWRT5BEhVQS6Pr9dXQ62RZ1oRnXZDfj0TarvCCPaFKc=;
-        b=Ifag8WuEp3YdfqqcocfFlSktTTNyBYWyPCdxEvS9WsIWHEfuG28SKA6Kf90I6x1e7l
-         knbTAuzybEPkfcIBrovImfGYo32qRCeIWyvXIMfURNri8gE15528te7sZJsj7GvLwn9f
-         MwZ4C18Nqwchg02cDl1CX0SXw+UFX2tAtBo9bYhayoxXt45+Y5H59nROBFUhhdxjNN2n
-         CebkcGor8ZgQVTKS1aBBEhJjGcxLD7g6rKesRghl/Qq3hHAB409XdNuHZUfSgJf4E9x9
-         zJMlGCuf/68/UV5fKp5Ht0yB9OFVIBp9WM4qaocZfZgq0VGEInIn1oxup6G+AP3GoiFx
-         bS4w==
-X-Gm-Message-State: ACgBeo2R2tPmstjGX/H5LXgw6KskN/csU8cuHfaQkLYRRNpJf2OzwJxz
-	jNo+nnGYup0gR2VVLFuebHHKyic3jCY=
-X-Google-Smtp-Source: AA6agR54mQEhVuh4IwsAy1uuYpGPrkNC/wN76hmiGBP+wIhQiytZlMxIv3W0PDUpIqJw2LEFJ/vhzg==
-X-Received: by 2002:aca:6546:0:b0:343:4701:7e13 with SMTP id j6-20020aca6546000000b0034347017e13mr9978759oiw.12.1662486513930;
-        Tue, 06 Sep 2022 10:48:33 -0700 (PDT)
+        bh=Z861jG7BMhx/UqAm+BGR/UQTJzU7P1PboLjcZWY5WRs=;
+        b=YlrfsGYfMjXi4V63lIA9f23rvnM35Tv/ET73UiYao+5WA1zPzpLLUcBxv1FeivQb+/
+         tScwI148K1O6yURWRhhr9+AORBIanmBhm0YUf7/WyHRRWpouuxhodFLri+betckqvt63
+         RNgbq4SZ7BtzJ7d/1aqL94v38UNN0dOF0mPWH2F83SfCMFWwYA8IHlneJ9VdrydLNaLn
+         KguTykyqYFaM8n28mVjWsoDDBX5O7dmvaTr4sI9GaSB5cWk30Y4rksG5SedtWBSVkVNh
+         M38EoKdZVYw55uSb0ewqKdPB4Bc3tmJt2RmSLu/LqsSINvHTgGuTRzJnc0t7jFCuEALy
+         cMew==
+X-Gm-Message-State: ACgBeo0WIlDE7pKEiwU2EjUTg8uqXbipMOV0sNvQ2LO1p14c5YB2lu2X
+	OZEQ3KHa86BU1t2eY9S7AzZcR9mbCMU=
+X-Google-Smtp-Source: AA6agR5s+SV66YlDAHlmbOWm3Y9nLF+z1E5cig2we8mv7ZwsFpF1I68ZOTDKjho4zGBrFodk5eHsMw==
+X-Received: by 2002:a4a:dcc2:0:b0:449:129e:17cd with SMTP id h2-20020a4adcc2000000b00449129e17cdmr18648183oou.98.1662486511693;
+        Tue, 06 Sep 2022 10:48:31 -0700 (PDT)
 Received: from wintermute.localdomain (cpe-76-183-134-35.tx.res.rr.com. [76.183.134.35])
-        by smtp.gmail.com with ESMTPSA id o186-20020aca41c3000000b00344afa2b08bsm5568065oia.26.2022.09.06.10.48.32
+        by smtp.gmail.com with ESMTPSA id o186-20020aca41c3000000b00344afa2b08bsm5568065oia.26.2022.09.06.10.48.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Sep 2022 10:48:33 -0700 (PDT)
+        Tue, 06 Sep 2022 10:48:31 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: linux-phy@lists.infradead.org,
@@ -75,17 +75,16 @@ Cc: linux-phy@lists.infradead.org,
 	heiko@sntech.de,
 	hjc@rock-chips.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH v2 5/5] arm64: dts: rockchip: Add DSI and DSI-DPHY nodes to rk356x
-Date: Tue,  6 Sep 2022 12:48:23 -0500
-Message-Id: <20220906174823.28561-6-macroalpha82@gmail.com>
+Subject: [PATCH v2 3/5] drm/rockchip: dsi: add rk3568 support
+Date: Tue,  6 Sep 2022 12:48:21 -0500
+Message-Id: <20220906174823.28561-4-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220906174823.28561-1-macroalpha82@gmail.com>
 References: <20220906174823.28561-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_104837_079913_6BE72B33 
-X-CRM114-Status: UNSURE (   8.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220906_104837_127298_5AEFF9CD 
+X-CRM114-Status: GOOD (  15.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,104 +103,103 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-This adds the DSI controller nodes and DSI-DPHY controller nodes to the
-rk356x device tree.
+Add the compatible and GRF definitions for the RK3568 soc.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 72 ++++++++++++++++++++++++
- 1 file changed, 72 insertions(+)
+ .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 51 ++++++++++++++++++-
+ 1 file changed, 49 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-index 319981c3e9f7..d150568fde82 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-@@ -699,6 +699,54 @@ vop_mmu: iommu@fe043e00 {
- 		status = "disabled";
- 	};
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 110e83aad9bb..bf6948125b84 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -179,6 +179,23 @@
+ #define RK3399_TXRX_SRC_SEL_ISP0	BIT(4)
+ #define RK3399_TXRX_TURNREQUEST		GENMASK(3, 0)
  
-+	dsi0: dsi@fe060000 {
-+		compatible = "rockchip,rk3568-mipi-dsi", "snps,dw-mipi-dsi";
-+		reg = <0x00 0xfe060000 0x00 0x10000>;
-+		interrupts = <GIC_SPI 68 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-names = "pclk", "hclk";
-+		clocks = <&cru PCLK_DSITX_0>, <&cru HCLK_VO>;
-+		phy-names = "dphy";
-+		phys = <&mipi_dphy0>;
-+		power-domains = <&power RK3568_PD_VO>;
-+		reset-names = "apb";
-+		resets = <&cru SRST_P_DSITX_0>;
-+		rockchip,grf = <&grf>;
-+		status = "disabled";
++#define RK3568_GRF_VO_CON2		0x0368
++#define RK3568_DSI0_SKEWCALHS		(0x1f << 11)
++#define RK3568_DSI0_FORCETXSTOPMODE	(0xf << 4)
++#define RK3568_DSI0_TURNDISABLE		BIT(2)
++#define RK3568_DSI0_FORCERXMODE		BIT(0)
 +
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
++/*
++ * Note these registers do not appear in the datasheet, they are
++ * however present in the BSP driver which is where these values
++ * come from. Name GRF_VO_CON3 is assumed.
++ */
++#define RK3568_GRF_VO_CON3		0x36c
++#define RK3568_DSI1_SKEWCALHS		(0x1f << 11)
++#define RK3568_DSI1_FORCETXSTOPMODE	(0xf << 4)
++#define RK3568_DSI1_TURNDISABLE		BIT(2)
++#define RK3568_DSI1_FORCERXMODE		BIT(0)
 +
-+			port@0 {
-+				reg = <0>;
-+			};
-+		};
-+	};
-+
-+	dsi1: dsi@fe070000 {
-+		compatible = "rockchip,rk3568-mipi-dsi", "snps,dw-mipi-dsi";
-+		reg = <0x0 0xfe070000 0x0 0x10000>;
-+		interrupts = <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-names = "pclk", "hclk";
-+		clocks = <&cru PCLK_DSITX_1>, <&cru HCLK_VO>;
-+		phy-names = "dphy";
-+		phys = <&mipi_dphy1>;
-+		power-domains = <&power RK3568_PD_VO>;
-+		reset-names = "apb";
-+		resets = <&cru SRST_P_DSITX_1>;
-+		rockchip,grf = <&grf>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+			};
-+		};
-+	};
-+
- 	hdmi: hdmi@fe0a0000 {
- 		compatible = "rockchip,rk3568-dw-hdmi";
- 		reg = <0x0 0xfe0a0000 0x0 0x20000>;
-@@ -1594,6 +1642,30 @@ combphy2: phy@fe840000 {
- 		status = "disabled";
- 	};
+ #define HIWORD_UPDATE(val, mask)	(val | (mask) << 16)
  
-+	mipi_dphy0: mipi-dphy@fe850000 {
-+		compatible = "rockchip,rk3568-dsi-dphy";
-+		reg = <0x0 0xfe850000 0x0 0x10000>;
-+		clock-names = "ref", "pclk";
-+		clocks = <&pmucru CLK_MIPIDSIPHY0_REF>, <&cru PCLK_MIPIDSIPHY0>;
-+		#phy-cells = <0>;
-+		power-domains = <&power RK3568_PD_VO>;
-+		reset-names = "apb";
-+		resets = <&cru SRST_P_MIPIDSIPHY0>;
-+		status = "disabled";
-+	};
+ enum {
+@@ -735,8 +752,9 @@ static void dw_mipi_dsi_rockchip_config(struct dw_mipi_dsi_rockchip *dsi)
+ static void dw_mipi_dsi_rockchip_set_lcdsel(struct dw_mipi_dsi_rockchip *dsi,
+ 					    int mux)
+ {
+-	regmap_write(dsi->grf_regmap, dsi->cdata->lcdsel_grf_reg,
+-		mux ? dsi->cdata->lcdsel_lit : dsi->cdata->lcdsel_big);
++	if (dsi->cdata->lcdsel_grf_reg < 0)
++		regmap_write(dsi->grf_regmap, dsi->cdata->lcdsel_grf_reg,
++			mux ? dsi->cdata->lcdsel_lit : dsi->cdata->lcdsel_big);
+ }
+ 
+ static int
+@@ -963,6 +981,8 @@ static int dw_mipi_dsi_rockchip_bind(struct device *dev,
+ 		DRM_DEV_ERROR(dev, "Failed to create drm encoder\n");
+ 		goto out_pll_clk;
+ 	}
++	rockchip_drm_encoder_set_crtc_endpoint_id(&dsi->encoder,
++						  dev->of_node, 0, 0);
+ 
+ 	ret = dw_mipi_dsi_bind(dsi->dmd, &dsi->encoder.encoder);
+ 	if (ret) {
+@@ -1612,6 +1632,30 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
+ 	{ /* sentinel */ }
+ };
+ 
++static const struct rockchip_dw_dsi_chip_data rk3568_chip_data[] = {
++	{
++		.reg = 0xfe060000,
++		.lcdsel_grf_reg = -1,
++		.lanecfg1_grf_reg = RK3568_GRF_VO_CON2,
++		.lanecfg1 = HIWORD_UPDATE(0, RK3568_DSI0_SKEWCALHS |
++					  RK3568_DSI0_FORCETXSTOPMODE |
++					  RK3568_DSI0_TURNDISABLE |
++					  RK3568_DSI0_FORCERXMODE),
++		.max_data_lanes = 4,
++	},
++	{
++		.reg = 0xfe070000,
++		.lcdsel_grf_reg = -1,
++		.lanecfg1_grf_reg = RK3568_GRF_VO_CON3,
++		.lanecfg1 = HIWORD_UPDATE(0, RK3568_DSI1_SKEWCALHS |
++					  RK3568_DSI1_FORCETXSTOPMODE |
++					  RK3568_DSI1_TURNDISABLE |
++					  RK3568_DSI1_FORCERXMODE),
++		.max_data_lanes = 4,
++	},
++	{ /* sentinel */ }
++};
 +
-+	mipi_dphy1: mipi-dphy@fe860000 {
-+		compatible = "rockchip,rk3568-dsi-dphy";
-+		reg = <0x0 0xfe860000 0x0 0x10000>;
-+		clock-names = "ref", "pclk";
-+		clocks = <&pmucru CLK_MIPIDSIPHY1_REF>, <&cru PCLK_MIPIDSIPHY1>;
-+		#phy-cells = <0>;
-+		power-domains = <&power RK3568_PD_VO>;
-+		reset-names = "apb";
-+		resets = <&cru SRST_P_MIPIDSIPHY1>;
-+		status = "disabled";
-+	};
-+
- 	usb2phy0: usb2phy@fe8a0000 {
- 		compatible = "rockchip,rk3568-usb2phy";
- 		reg = <0x0 0xfe8a0000 0x0 0x10000>;
+ static const struct of_device_id dw_mipi_dsi_rockchip_dt_ids[] = {
+ 	{
+ 	 .compatible = "rockchip,px30-mipi-dsi",
+@@ -1622,6 +1666,9 @@ static const struct of_device_id dw_mipi_dsi_rockchip_dt_ids[] = {
+ 	}, {
+ 	 .compatible = "rockchip,rk3399-mipi-dsi",
+ 	 .data = &rk3399_chip_data,
++	}, {
++	 .compatible = "rockchip,rk3568-mipi-dsi",
++	 .data = &rk3568_chip_data,
+ 	},
+ 	{ /* sentinel */ }
+ };
 -- 
 2.25.1
 
