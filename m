@@ -4,69 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95484ECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Sep 2022 16:41:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCD82C6FA89
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Sep 2022 16:57:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G7T9GEQV20wm2PVQZq2ixo7V6nzyhK6ldWLNiAh3tj0=; b=lIJ823zmx1JQKq
-	9RkCErCmtA2Lr8eCRqCB0x159wlAXdOtWVchefD3MrsSNMBz1RKfVxTFvs3GyaCO2s+g05IoZaxIT
-	2wh6MZzEiMkZXo3EcV26LO5qt9UWuHGwrgWOnuTjbwVWZl+b5dmwivfP3qxFuUosGgMRQPfDJsspa
-	Dur2mgbXe5h9TFJGHHugs9k0bUDsSLo6oZagS61oBB5gSk1/QAGIiU7FvqV9WiO8wXGFw5pegsXTZ
-	Si+5MLI9R9ahBSq7kZk1pa5DN1x2/QwEgTXd4QLXFAWbQHZaDQEPSc68dPg39/KlPBzPZOauFldLX
-	mXB1B/5W11nNLmahz7Ag==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5uELP3iZpOq8MpG888bC5zIdmv270brxOppyq6qTsME=; b=fp9FVvM0PAC88O
+	spyioW/3evRqEg+GIW0fJ1WYJcEzBR3aUGr+xlc2WRTa3zXgwTQDWlvsqpntp6g/WpOAnsEdQn6CS
+	RBt6TBx1RYAsH6fNFAGQykb1DLWDf1JfgsGqlhPESYN0Z3sxHiGjEEk5RAbCnvTdOLSdqSR72eCo8
+	ona3/Uh2agNVlgMbRyyYFy5D4e+5QSmDk/JQTrQOPIU7Iv8liPqe8N3I5IJv6S5vcEgP/G66/+lQf
+	HNchqCyyAhmwxziUpGbN9RR716APQ2mBtBJ7C95wWY3PgR5pcR5SsBpE7QaLKx5DGb5AvPeTqdCDN
+	aqUzcLQhpXhnJkS8hEGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVbdu-00FWSk-AV; Tue, 06 Sep 2022 16:41:42 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1oVbt7-00FfyE-Og; Tue, 06 Sep 2022 16:57:25 +0000
+Received: from mxout1.routing.net ([2a03:2900:1:a::a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVbHT-00FJ96-Gx
-	for linux-rockchip@lists.infradead.org; Tue, 06 Sep 2022 16:18:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1662481111; x=1694017111;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=ss+4F9J/CaZwcdY2cXJmGtJLU9XMyJzPA/NDr04u5pk=;
-  b=ILAnqEmZoHkHE55z5SAOYB5Uy5pwMVcwAP+dOxLk0fi6pbxxqo2ceuHc
-   QjU1iFMrzQuDXRWfY7lMhzYhQRiZDWsk+doSMprOImZqmN4b1UD3vyBvc
-   Yypzu9Ksz05zm9gcl4ztC+5v9P7VQBndU3XA3qUp2bm04cbtJEJI/ZnKz
-   KROk2X82sqTra2G2ADnk9BKrWciJO/jTkZ95DtOv+2od/pyZ9WS4c4Ej/
-   CM/q40fZ7C+IA6lCCNuuM03uQhxACVF5eJAzmNCaFlNTvWB/o2nhxMtK9
-   IU4FcEcptnP+M82vGOrkTmft7lJRMhUzxDRrDwh4Njqbf3AY14LZiIDmR
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10462"; a="276376043"
-X-IronPort-AV: E=Sophos;i="5.93,294,1654585200"; 
-   d="scan'208";a="276376043"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Sep 2022 09:18:27 -0700
-X-IronPort-AV: E=Sophos;i="5.93,294,1654585200"; 
-   d="scan'208";a="565153728"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Sep 2022 09:18:25 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1oVbHK-009BpZ-0c;
-	Tue, 06 Sep 2022 19:18:22 +0300
-Date: Tue, 6 Sep 2022 19:18:21 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: heiko@sntech.de, linus.walleij@linaro.org, brgl@bgdev.pl,
-	linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.or, huangtao@rock-chips.com
-Subject: Re: [PATCH v2] gpio: rockchip: support acpi
-Message-ID: <YxdyzRWDi+jwW2iN@smile.fi.intel.com>
-References: <20220906013025.3302530-1-jay.xu@rock-chips.com>
+	id 1oVbeZ-00FWtr-0d; Tue, 06 Sep 2022 16:42:24 +0000
+Received: from mxbox1.masterlogin.de (unknown [192.168.10.88])
+	by mxout1.routing.net (Postfix) with ESMTP id 6976E3FE7B;
+	Tue,  6 Sep 2022 16:42:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+	s=20200217; t=1662482539;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=QRC0LjWCpKR80cgSMNrWil7cnZSqEOA34xP3hwF51bA=;
+	b=yQY2J6tnXjlaWInCHefixbPylHoetaBROJ3AoCQimujPUctaCuHdUHSBpcVZTjss+MjWK8
+	JXTGKTTLh8n0yPAnyHlQF4CK/XHZem4ZHn+Q5xCqmA5N5KasrCe+kpHYTKLb/f/f+vSYct
+	cCWW1mCrOnySkO7Vk9X25GjVFA3NZmQ=
+Received: from frank-G5.. (fttx-pool-80.245.76.100.bambit.de [80.245.76.100])
+	by mxbox1.masterlogin.de (Postfix) with ESMTPSA id 8979F400CB;
+	Tue,  6 Sep 2022 16:42:18 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-rockchip@lists.infradead.org
+Cc: Frank Wunderlich <frank-w@public-files.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] arm64: dts: rockchip: Add regulator suffix to BPI-R2-Pro
+Date: Tue,  6 Sep 2022 18:42:12 +0200
+Message-Id: <20220906164212.84835-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220906013025.3302530-1-jay.xu@rock-chips.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+X-Mail-ID: 96c322ae-13cf-4cf9-b3ca-76ac40a8fb3a
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_091831_611181_801ABA71 
-X-CRM114-Status: GOOD (  18.53  )
+X-CRM114-CacheID: sfid-20220906_094223_264235_DD313D5B 
+X-CRM114-Status: UNSURE (   9.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,127 +74,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 06, 2022 at 09:30:25AM +0800, Jianqun Xu wrote:
-> This patch fix driver to support acpi by following changes:
->  * support get gpio bank number from uid of acpi
->  * try to get clocks for dt nodes but for acpi
->  * try to get clocks by a char id first, if a dt patch applied
+From: Frank Wunderlich <frank-w@public-files.de>
 
-...
+Add -regulator suffix to regulator names on Banana Pi R2 Pro board as
+discussed on Mailinglist
 
-> -	bank->domain = irq_domain_add_linear(bank->of_node, 32,
-> +	bank->domain = irq_domain_create_linear(dev_fwnode(bank->dev), 32,
->  					&irq_generic_chip_ops, NULL);
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+https://patchwork.kernel.org/project/linux-rockchip/patch/20220825193836.54262-6-linux@fw-web.de/
 
-Should it be converted to use GPIO_MAX_PINS at the same time?
+v2: change _ to - in vcc5v0_usb node
+---
+ arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-...
-
-> +static int rockchip_gpio_of_get_bank_id(struct device *dev)
-> +{
-> +	static int gpio;
-> +	int bank_id = -1;
-
-> +	if (IS_ENABLED(CONFIG_OF) && dev->of_node) {
-
-Can't is_of_node() be sufficient check?
-
-> +		bank_id = of_alias_get_id(dev->of_node, "gpio");
-> +		if (bank_id < 0)
-> +			bank_id = gpio++;
-> +	}
-> +
-> +	return bank_id;
-> +}
-
-...
-
-> +#ifdef CONFIG_ACPI
-
-Why?
-
-> +static int rockchip_gpio_acpi_get_bank_id(struct device *dev)
-> +{
-> +	struct acpi_device *adev;
-> +	unsigned long bank_id = -1;
-> +	const char *uid;
-> +	int ret;
-> +
-> +	adev = ACPI_COMPANION(dev);
-> +	if (!adev)
-> +		return -ENXIO;
-> +
-> +	uid = acpi_device_uid(adev);
-> +	if (!uid || !(*uid)) {
-> +		dev_err(dev, "Cannot retrieve UID\n");
-> +		return -ENODEV;
-
-Why is it a fatal error? Can't be the same approach as for OF be used?
-
-> +	}
-> +
-> +	ret = kstrtoul(uid, 0, &bank_id);
-> +
-> +	return !ret ? bank_id : -ERANGE;
-
-Use standard pattern, i.e.
-
-	if (ret)
-		return ret;
-
-> +}
-> +#else
-> +static int rockchip_gpio_acpi_get_bank_id(struct device *dev)
-> +{
-> +	return -ENOENT;
-> +}
-> +#endif /* CONFIG_ACPI */
-
-...
-
-> +	int bank_id = 0;
-
-Redundant assignment.
-
-...
-
-> +	if (!ACPI_COMPANION(dev)) {
-
-One of:
-
-	is_of_node()
-	!is_acpi_node()
-
-?
-
-...
-
-> +	if (!ACPI_COMPANION(dev)) {
-
-Ditto.
-
-But looking how this disrupts the code, just leave OF and ACPI parts separate,
-don't mix them.
-
-...
-
-> +	if (!device_property_read_bool(bank->dev, "gpio-ranges") && pctldev) {
-> +		struct gpio_chip *gc = &bank->gpio_chip;
-> +
-> +		ret = gpiochip_add_pin_range(gc, dev_name(pctldev->dev), 0,
-> +					     gc->base, gc->ngpio);
-> +		if (ret) {
-> +			dev_err(bank->dev, "Failed to add pin range\n");
-> +			goto err_unlock;
-> +		}
->  	}
-
-Why? What's wrong with GPIO library doing this for all chips?
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+index 7a8d55a898f5..950613595f42 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+@@ -46,7 +46,7 @@ green_led: led-1 {
+ 		};
+ 	};
+ 
+-	dc_12v: dc-12v {
++	dc_12v: dc-12v-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "dc_12v";
+ 		regulator-always-on;
+@@ -66,7 +66,7 @@ hdmi_con_in: endpoint {
+ 		};
+ 	};
+ 
+-	vcc3v3_sys: vcc3v3-sys {
++	vcc3v3_sys: vcc3v3-sys-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc3v3_sys";
+ 		regulator-always-on;
+@@ -76,7 +76,7 @@ vcc3v3_sys: vcc3v3-sys {
+ 		vin-supply = <&dc_12v>;
+ 	};
+ 
+-	vcc5v0_sys: vcc5v0-sys {
++	vcc5v0_sys: vcc5v0-sys-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc5v0_sys";
+ 		regulator-always-on;
+@@ -146,7 +146,7 @@ vcc3v3_ngff: vcc3v3-ngff-regulator {
+ 		vin-supply = <&vcc3v3_pi6c_05>;
+ 	};
+ 
+-	vcc5v0_usb: vcc5v0_usb {
++	vcc5v0_usb: vcc5v0-usb-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc5v0_usb";
+ 		regulator-always-on;
+@@ -156,7 +156,7 @@ vcc5v0_usb: vcc5v0_usb {
+ 		vin-supply = <&dc_12v>;
+ 	};
+ 
+-	vcc5v0_usb_host: vcc5v0-usb-host {
++	vcc5v0_usb_host: vcc5v0-usb-host-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+ 		gpio = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
+@@ -168,7 +168,7 @@ vcc5v0_usb_host: vcc5v0-usb-host {
+ 		vin-supply = <&vcc5v0_usb>;
+ 	};
+ 
+-	vcc5v0_usb_otg: vcc5v0-usb-otg {
++	vcc5v0_usb_otg: vcc5v0-usb-otg-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+ 		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.34.1
 
 
 _______________________________________________
