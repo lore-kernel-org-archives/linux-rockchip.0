@@ -4,60 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BED3ECAAD5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Sep 2022 13:36:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44A99ECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Sep 2022 15:24:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W2oCTvxbxdPKUx6JZfuj7t6ejicNF3f7hQN/28LQszY=; b=X/Rd1C305Qi4U4
-	X43X/vdAXrOiE8xcqGJLmvy+ab3uaeKTEPhKiCA+xBJMC8PWDSEnuJhE7dxzTCdFSpHfEHKW4/Som
-	I2NZbOOgpIhzOBz+JySlfwcsiPaM3L3lLLLxQvZryIhNavngtcJrqXaJ6Lq/KYEICwAnnD/QnNzYh
-	iZARO5lEIpb7yIy9JDM8QWq3Ubs8zB+BiEJ0GW00dyYFWUCeUdNlxkCh9pMkyqNbCUUj45NGFzSbq
-	OZZ4YggprXFpFQExgZQW3C7hHnt1vviYU5ksnW35p0UZRLoptuL/rUJz5hiXtezmLB+OzApC1sOfK
-	P8LSF93BWOOPHHtQk4gg==;
+	List-Owner; bh=rIAgTOBt5jYED7L+CDPvx3qtcSVbAFcZUEat8KpCa8w=; b=mHDgSCZWaiQvK/
+	mR9Z1QYQAPi51jPiQ9VMUWqee0Zr2GONZ8MyWGFPI0Ixj3NX19nQJgv185fF3R2WYyh234SCVVMf5
+	pI+noc+ca2GuqFAwGc6EfVE+MCMroA/367k/nBJUhHZ47okmI4EjEeBGg9tXiU5hiOUXhIKLzLD8O
+	MQS1PuEPPZNSxiNCBHOA59VtJE4/YsPGGU7Fy4IDn9SrHCEw0LhTHZvHNJBPgwxmYzBJ9lqXtKxdi
+	hbtNL4qzjXOQIo3OUyK5KcTP2rg8HAoGbBMKnJYGxOYMO6wCSwuJ4egFuFyYXTInB6BQ73YAxCu0+
+	q/5AduZCt+Pn5BWKbIMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVYkS-00DrcY-U0; Tue, 06 Sep 2022 13:36:16 +0000
-Received: from vps.xff.cz ([195.181.215.36])
+	id 1oVaRO-00ElJq-JI; Tue, 06 Sep 2022 15:24:42 +0000
+Received: from mail-oa1-f42.google.com ([209.85.160.42])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVYjz-00DrDj-Vy; Tue, 06 Sep 2022 13:35:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
-	t=1662471339; bh=CGyEzQ7Ohr5A/cWCuHJ4L2zyjQiyb+aYxH/EYO9OTGU=;
-	h=Date:From:To:Cc:Subject:X-My-GPG-KeyId:References:From;
-	b=PvaKeuuyqsDS6jTFvvDc+oQyBZ900VRvVuiY9zEzWgmQT2bghS1tGDnZtAfNrqt7m
-	 4RmcEsomUuSZM/1n/E7qULITo1PFJMgVP95voEjg4QO00/noepJqEaKyKXghW8eI2O
-	 K2NtwwAVGZ8J/TnTs+7PaCHZGbTUqfeR2mGac+CI=
-Date: Tue, 6 Sep 2022 15:35:39 +0200
-From: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>
-To: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	phone-devel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: add BT/wifi nodes to Pinephone Pro
-Message-ID: <20220906133539.6ghjlzbs2ozgsa7v@core>
-Mail-Followup-To: =?utf-8?Q?Ond=C5=99ej?= Jirman <megi@xff.cz>,
-	Tom Fitzhenry <tom@tom-fitzhenry.me.uk>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	phone-devel@vger.kernel.org
-X-My-GPG-KeyId: EBFBDDE11FB918D44D1F56C1F9F0A873BE9777ED
- <https://xff.cz/key.txt>
-References: <20220906124713.1683587-1-tom@tom-fitzhenry.me.uk>
+	id 1oVZfZ-00EM9h-Em; Tue, 06 Sep 2022 14:35:19 +0000
+Received: by mail-oa1-f42.google.com with SMTP id 586e51a60fabf-11ee4649dfcso28696809fac.1;
+        Tue, 06 Sep 2022 07:35:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=/kxQ4Wf8GnR3MVwBOujAJ+Hv9NvGQDMILNpayVx9ZUo=;
+        b=vAhRj2INwGdVEkMkA7BeWWntPGP8xpDuTeNBkQQYrGIjeLwCZ8U+7GJd9wFvjQY6MH
+         fWkbCqNIN2pubWO069oSyV7ZxvxYG4V5cNVAtn2dsS6gD3g9g4m6lkU0vTjmXX/J7WWX
+         lVjcyG23GdT59OGCKiL3OT+JKYk81IilkYRU2WYPEvHak22g/XLkCk0qEvJQPRSZpigO
+         /twFqI+0E2BRDUgHICuNZia3URsphP3DLwhLm0XyMWwRSIqQl9UxUzxYDYiYt4gK0M8x
+         xEt0gLl9pzlXcARtpBHrB+0dJvMSIDUBU8qgpwnpXd8iGyWgmYiJqgKaV8Q9RqIIXxUp
+         GO+Q==
+X-Gm-Message-State: ACgBeo269Nq2wPdmG0umH2nP6N5pyZhX8L+pDc0EgcXE88VSMfQH1sHn
+	+epnIDNl+OsOCYu4GIupNw==
+X-Google-Smtp-Source: AA6agR6/8rkfV5hK1hzRmCIqS5PFSgyizUYdaaaJmNYKCFgBxD4OCF+1PwIGz3teG7GN32hHgOxiaw==
+X-Received: by 2002:a05:6870:6314:b0:10b:9595:62db with SMTP id s20-20020a056870631400b0010b959562dbmr11632116oao.128.1662474912399;
+        Tue, 06 Sep 2022 07:35:12 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id a3-20020a056870a18300b001278a63bfc9sm2169288oaf.1.2022.09.06.07.35.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 Sep 2022 07:35:11 -0700 (PDT)
+Received: (nullmailer pid 456502 invoked by uid 1000);
+	Tue, 06 Sep 2022 14:35:10 -0000
+Date: Tue, 6 Sep 2022 09:35:10 -0500
+From: Rob Herring <robh@kernel.org>
+To: Lee Jones <lee@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Chen-Yu Tsai <wens@csie.org>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, 
+	Charles Keepax <ckeepax@opensource.cirrus.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Tim Harvey <tharvey@gateworks.com>, 
+	Robert Jones <rjones@gateworks.com>, Chanwoo Choi <cw00.choi@samsung.com>, 
+	Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Maxime Ripard <mripard@kernel.org>, 
+	- <patches@opensource.cirrus.com>, Steve Twiss <stwiss.opensource@diasemi.com>, 
+	Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>, 
+	Alistair Francis <alistair@alistair23.me>, Amelie Delaunay <amelie.delaunay@foss.st.com>, 
+	Linus Walleij <linus.walleij@linaro.org>, Renner Berthing <kernel@esmil.dk>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH] dt-bindings: mfd: Add missing
+ (unevaluated|additional)Properties on child nodes
+Message-ID: <20220906143510.GA454672-robh@kernel.org>
+References: <20220823145649.3118479-4-robh@kernel.org>
+ <YxYH+POIURB9RO7T@google.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220906124713.1683587-1-tom@tom-fitzhenry.me.uk>
+In-Reply-To: <YxYH+POIURB9RO7T@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_063548_900060_B71CC823 
-X-CRM114-Status: GOOD (  18.27  )
+X-CRM114-CacheID: sfid-20220906_073517_708565_4BD4C281 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,66 +89,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gVG9tLAoKT24gVHVlLCBTZXAgMDYsIDIwMjIgYXQgMTA6NDc6MTNQTSArMTAwMCwgVG9t
-IEZpdHpoZW5yeSB3cm90ZToKPiBQaW5lcGhvbmUgUHJvIGluY2x1ZGVzIGEgQXp1cmVXYXZlIEFX
-LUNNMjU2U00gd2lmaSAoc2RpbzApIGFuZAo+IGJ0ICh1YXJ0MCkgY29tYm8gbW9kdWxlLCB3aGlj
-aCBpcyBiYXNlZCBvbiBDeXByZXNzCj4gQ1lQNDM0NTUgKEJDTTQzNDU1KS4KPiAKPiBTaWduZWQt
-b2ZmLWJ5OiBUb20gRml0emhlbnJ5IDx0b21AdG9tLWZpdHpoZW5yeS5tZS51az4KPiAtLS0KPiAg
-Li4uL2R0cy9yb2NrY2hpcC9yazMzOTktcGluZXBob25lLXByby5kdHMgICAgIHwgNjkgKysrKysr
-KysrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgNjkgaW5zZXJ0aW9ucygrKQo+IAo+IGRp
-ZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1waW5lcGhvbmUt
-cHJvLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXBpbmVwaG9uZS1w
-cm8uZHRzCj4gaW5kZXggMmUwNThjMzE1MDI1Ni4uMDk2MjM4MTI2ZTRjMSAxMDA2NDQKPiAtLS0g
-YS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1waW5lcGhvbmUtcHJvLmR0cwo+
-ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXBpbmVwaG9uZS1wcm8u
-ZHRzCj4gQEAgLTQzLDYgKzQzLDIwIEBAIGtleS1wb3dlciB7Cj4gIAkJfTsKPiAgCX07Cj4gIAo+
-ICsJLyogUG93ZXIgc2VxdWVuY2UgZm9yIFNESU8gV2lGaSBtb2R1bGUgKi8KPiArCXNkaW9fcHdy
-c2VxOiBzZGlvLXB3cnNlcSB7Cj4gKwkJY29tcGF0aWJsZSA9ICJtbWMtcHdyc2VxLXNpbXBsZSI7
-Cj4gKwkJY2xvY2tzID0gPCZyazgxOCAxPjsKPiArCQljbG9jay1uYW1lcyA9ICJleHRfY2xvY2si
-Owo+ICsJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gKwkJcGluY3RybC0wID0gPCZ3aWZp
-X2VuYWJsZV9oX3Bpbj47Cj4gKwkJcG9zdC1wb3dlci1vbi1kZWxheS1tcyA9IDwxMDA+Owo+ICsJ
-CXBvd2VyLW9mZi1kZWxheS11cyA9IDw1MDAwMDA+OwoKRG8gd2UgcmVhbGx5IG5lZWQgc3VjaCBs
-b25nIGRlbGF5cz8gQWxtb3N0IG5vIGJvYXJkcyBpbiByb2NrY2hpcC8gdXNlIHN1Y2gKZGVsYXlz
-IGF0IGFsbCwgYW5kIGlmIHRoZXkgZG8gdGhleSBkb24ndCB1c3VhbGx5IHVzZSBwb3dlciBvZmYg
-ZGVsYXkuCgo+ICsJCS8qIFdMX1JFR19PTiBvbiBtb2R1bGUgKi8KPiArCQlyZXNldC1ncGlvcyA9
-IDwmZ3BpbzAgUktfUEIyIEdQSU9fQUNUSVZFX0xPVz47Cj4gKwl9Owo+ICsKPiAgCXZjY19zeXM6
-IHZjYy1zeXMtcmVndWxhdG9yIHsKPiAgCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7
-Cj4gIAkJcmVndWxhdG9yLW5hbWUgPSAidmNjX3N5cyI7Cj4gQEAgLTM2MCwxMSArMzc0LDMxIEBA
-IHZzZWwyX3BpbjogdnNlbDItcGluIHsKPiAgCQl9Owo+ICAJfTsKPiAgCj4gKwlzZGlvLXB3cnNl
-cSB7Cj4gKwkJd2lmaV9lbmFibGVfaF9waW46IHdpZmktZW5hYmxlLWgtcGluIHsKPiArCQkJcm9j
-a2NoaXAscGlucyA9IDwwIFJLX1BCMiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPiAr
-CQl9Owo+ICsJfTsKPiArCj4gIAlzb3VuZCB7Cj4gIAkJdmNjMXY4X2NvZGVjX2VuOiB2Y2Mxdjgt
-Y29kZWMtZW4gewo+ICAJCQlyb2NrY2hpcCxwaW5zID0gPDMgUktfUEE0IFJLX0ZVTkNfR1BJTyAm
-cGNmZ19wdWxsX2Rvd24+Owo+ICAJCX07Cj4gIAl9Owo+ICsKPiArCXdpcmVsZXNzLWJsdWV0b290
-aCB7Cj4gKwkJYnRfd2FrZV9waW46IGJ0LXdha2UtcGluIHsKPiArCQkJcm9ja2NoaXAscGlucyA9
-IDwyIFJLX1BEMiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPiArCQl9Owo+ICsKPiAr
-CQlidF9ob3N0X3dha2VfcGluOiBidC1ob3N0LXdha2UtcGluIHsKPiArCQkJcm9ja2NoaXAscGlu
-cyA9IDwwIFJLX1BBNCBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF9ub25lPjsKPiArCQl9Owo+ICsK
-PiArCQlidF9yZXNldF9waW46IGJ0LXJlc2V0LXBpbiB7Cj4gKwkJCXJvY2tjaGlwLHBpbnMgPSA8
-MCBSS19QQjEgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfbm9uZT47Cj4gKwkJfTsKPiArCX07Cj4g
-IH07Cj4gIAo+ICAmc2RtbWMgewoKc2VlIGJlbG93Cgo+IEBAIC0zODAsNiArNDE0LDIwIEBAICZz
-ZG1tYyB7Cj4gIAlzdGF0dXMgPSAib2theSI7Cj4gIH07Cj4gIAo+ICsmc2RpbzAgewoKc2QnaSdv
-MCBjb21lcyBiZWZvcmUgJ20nIGluIHRoZSBhbHBoYWJldC4KCj4gKwlidXMtd2lkdGggPSA8ND47
-Cj4gKwljYXAtc2QtaGlnaHNwZWVkOwo+ICsJY2FwLXNkaW8taXJxOwo+ICsJZGlzYWJsZS13cDsK
-PiArCWtlZXAtcG93ZXItaW4tc3VzcGVuZDsKPiArCW1tYy1wd3JzZXEgPSA8JnNkaW9fcHdyc2Vx
-PjsKPiArCW5vbi1yZW1vdmFibGU7Cj4gKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ICsJ
-cGluY3RybC0wID0gPCZzZGlvMF9idXM0ICZzZGlvMF9jbWQgJnNkaW8wX2Nsaz47Cj4gKwlzZC11
-aHMtc2RyMTA0Owo+ICsJc3RhdHVzID0gIm9rYXkiOwoKSXQgbWlnaHQgYWxzbyBiZSBnb29kIHRv
-IGFkZCB0aGUgd2lmaSBub2RlLCBhbmQgaG9va3VwIHRoZSBpbnRlcnJ1cHQgbGluZSBhbmQKcGlu
-Y3RybHMsIHNvIHRoYXQgV29XIHdvcmtzLCB3aGlsZSB5b3UncmUgYXQgaXQuCgpTZWUgZWcuIGh0
-dHBzOi8vZWxpeGlyLmJvb3RsaW4uY29tL2xpbnV4L3Y1LjE5Ljcvc291cmNlL2FyY2gvYXJtNjQv
-Ym9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvY2stcGktNGItcGx1cy5kdHMjTDMwCgpMb29rcyBs
-aWtlIFdJRklfSE9TVF9XQUtFX0wgaXMgaG9va2VkIHRvIEdQSU80X0QwL1BDSUVfQ0xLUkVRbkJf
-dSBhY2NvcmRpbmcKdG8gdGhlIHNjaGVtYXRpYy4gTGV0J3MgaG9wZSBHUElPNF9EIHdpbGwgY29u
-c2lkZXIgMS44ViBhcyBoaWdoLCBiZWNhdXNlIFNvQwpHUElPNF9EIGlzIGluIDMuMFYgZG9tYWlu
-IGFuZCBWRERJTyBvZiB3aWZpIGNoaXAgaXMgMS44Vi4KCk90aGVyIHRoYW4gdGhhdCwKClJldmll
-d2VkLWJ5OiBPbmTFmWVqIEppcm1hbiA8bWVnaUB4ZmYuY3o+CgpUaGFuayB5b3UgYW5kIGtpbmQg
-cmVnYXJkcywKCW8uCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+On Mon, Sep 05, 2022 at 03:37:15PM +0100, Lee Jones wrote:
+> On Tue, 23 Aug 2022, Rob Herring wrote:
+> 
+> > In order to ensure only documented properties are present, node schemas
+> > must have unevaluatedProperties or additionalProperties set to false
+> > (typically).
+> > 
+> > Signed-off-by: Rob Herring <robh@kernel.org>
+> > ---
+> >  .../mfd/allwinner,sun6i-a31-prcm.yaml         | 40 +++++++++++++++++++
+> >  .../mfd/allwinner,sun8i-a23-prcm.yaml         | 10 +++++
+> >  .../bindings/mfd/cirrus,lochnagar.yaml        |  5 +++
+> >  .../devicetree/bindings/mfd/dlg,da9063.yaml   |  7 ++--
+> >  .../bindings/mfd/gateworks-gsc.yaml           |  5 ++-
+> >  .../bindings/mfd/maxim,max14577.yaml          |  1 +
+> >  .../bindings/mfd/maxim,max77843.yaml          |  1 +
+> >  .../bindings/mfd/rockchip,rk817.yaml          |  2 +
+> >  .../bindings/mfd/silergy,sy7636a.yaml         |  1 +
+> >  .../bindings/mfd/st,stm32-lptimer.yaml        |  4 ++
+> >  .../bindings/mfd/st,stm32-timers.yaml         |  3 ++
+> >  .../devicetree/bindings/mfd/st,stmfx.yaml     |  1 +
+> >  .../bindings/mfd/stericsson,ab8500.yaml       | 22 ++++++++++
+> >  .../devicetree/bindings/mfd/ti,tps65086.yaml  |  1 +
+> >  .../bindings/mfd/x-powers,axp152.yaml         |  1 +
+> >  15 files changed, 100 insertions(+), 4 deletions(-)
+> 
+> What are your plans for this set?
+> 
+> Want me to merge it?
+
+Yes, please.
+
+Rob
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
