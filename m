@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5F75ECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Sep 2022 15:31:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3885DC6FA83
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Sep 2022 15:33:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8iMaQA6a2P/WQ4EeWJjZTPtGu7RkDqvHddWBV4IpJ4Y=; b=o7n/NwjRj4HUWm
-	CY3mr5O71I5ZayGjQKaW5ZQtkZrIx9TuWahEb5SKRXe9RENV7kVUioYmG4DiLXQ6xXa+AeeRYNkLL
-	lVkxFEhQuYsh2pNYDoiITUseHx6YOzXtBuWFFYnLoGCI/wCUeXr4QX9ZzPLtOwx0hjpZ61Bgj5edf
-	Xu0qn4/QMTp660s2AQzNMWg/bLtoHLuvrFUmEsJeuVqEndMAv9jK6U3DiJlebyT3uODzw6FcxSR2R
-	06pvYHOXB+UomaYHi+/NsG09rXWd3q41gLoC/YnKq2R4WrO4vSXwRFiL3r/srW9jDlxz+Yj8EfNxs
-	2MwIVDnHx9oE2FzP2g6A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hI4rEynzQ2W1rpDv3Dy9fqjgG/qrJRKmPqQbu/4RFNI=; b=oBM7Dv3+t8fJRT
+	wNtzy9nJr7aLGR89mirSoL0hNzas2OgrdZDZzd2wOTSmWX4ZScqmHRz0Kcy5z5uICnqHMLjtmPU1J
+	14hzpag4gj6xT5/kYuuSqnIWJQUSDmJJgh99WJXrT8yLzB4ZVvhuxauO7yr7NgKER+rZte7c3peAL
+	JvuvcXsqJE151pnEdwjPXGAxJLNWEQZOFr8EDsBQQPFz7uSFyokGYgxUoFXi+vPAgbvete+htdztD
+	rt2gxsvUM2pZyLd/V7Q0IE5NEAzjqypNCr+YBIpcQl/BeGf6txmoVj2eLOTLTuQEmWRfUIinPHxSZ
+	nG8AAIZcceKUJmrGbj3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVaY8-00EpL1-9C; Tue, 06 Sep 2022 15:31:40 +0000
+	id 1oVaZN-00Eq0q-I1; Tue, 06 Sep 2022 15:32:57 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVZij-00ENaH-P6; Tue, 06 Sep 2022 14:38:36 +0000
+	id 1oVZij-00ENa6-Mm; Tue, 06 Sep 2022 14:38:37 +0000
 Received: from jupiter.universe (dyndsl-037-138-186-136.ewe-ip-backbone.de [37.138.186.136])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 7B3526601F4E;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 54E4B6601EB2;
 	Tue,  6 Sep 2022 15:38:29 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1662475109;
-	bh=daMVbHhJlfYnraGydjiMLwVLDPoX/A9fX4QnmXX8FIc=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kPKg7OlumI98E1w2CGAoqiEg7NrnHFPXDytTJoVkxWzpc4V4uzvpxFBFpXR1bXYo9
-	 uAiwbj9eeS0wZuGI115xXJa6a23zJQ+esPTjd7VVZjbjAXvODTYU7amNNqvq//Z/3j
-	 kb0xqFJRlDQUtbVpzJH4T9nmWhIEU54+Tt/LKGAULvpTspD9Gn4E+tYbtRGXyIe1mP
-	 Nb4cZxx9WZr3KHqG4NCQ0rTehmbotouIOOnNORp4TqkUc5xDY4gMc1qtNF4yNWAA83
-	 T02IMHi7v3OON+Oa3qQ8v9qb5IPHIT0dmgJPpFpFZiwK8AMByAg7tedLatiJNk3t+4
-	 RiBKcitiuRZ6g==
+	bh=VxbOG2sadGEGRc4OdZfIwIpf3196HCUi9fT6eUHVLI0=;
+	h=From:To:Cc:Subject:Date:From;
+	b=QQlGyZ+uYUSlPfONQ78w2XAeqZATYW7uSVoxdj+AnMy0aJVxwZU2amdeUWpRjxg0u
+	 4W3qvz8gqRIwM+K4Vi3tpQro82XGgZMCHewuu7+76q6/kcP8qyxmHcyYlPdgsdgnBG
+	 cY9Olo3ukndWzzsRqiUtZ61370udsHmPW3Ya65xySfjDS+mcbO+gq6HyETsYsji2NU
+	 H7MVlPSM7oYT3T27jYBtzLYjgY96hTnWviHX/JbJ/LLZnw1lXT1trpfUp6jS8yvEVT
+	 Z+1PAruwd2OHyMDKbvO5OfYTlgV2WNwAM/3q1SEZTMiRXszB+NwxK07xUptoL020nh
+	 yPiRxyq2+RJfg==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 4252348016E; Tue,  6 Sep 2022 16:38:27 +0200 (CEST)
+	id 394F2480165; Tue,  6 Sep 2022 16:38:27 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Lee Jones <lee@kernel.org>
@@ -52,19 +52,15 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCHv3 4/6] dt-bindings: mfd: syscon: Add rk3588 QoS register compatible
-Date: Tue,  6 Sep 2022 16:38:23 +0200
-Message-Id: <20220906143825.199089-5-sebastian.reichel@collabora.com>
+	kernel@collabora.com
+Subject: [PATCHv3 0/6] RK3588 Power Domain Support
+Date: Tue,  6 Sep 2022 16:38:19 +0200
+Message-Id: <20220906143825.199089-1-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220906143825.199089-1-sebastian.reichel@collabora.com>
-References: <20220906143825.199089-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220906_073834_128668_A92AA17F 
-X-CRM114-Status: UNSURE (   9.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220906_073834_121663_FE05AEB3 
+X-CRM114-Status: GOOD (  10.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,26 +77,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Document rk3588 compatible for QoS registers.
+Hi,
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
- 1 file changed, 1 insertion(+)
+This adds power domain support for the new RK3588(s) SoC
+series. The series has been tested with ethernet on the
+RK3588 EVB1 board.
 
-diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-index c10f0b577268..5369a56b8be1 100644
---- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-+++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-@@ -59,6 +59,7 @@ properties:
-               - rockchip,rk3368-qos
-               - rockchip,rk3399-qos
-               - rockchip,rk3568-qos
-+              - rockchip,rk3588-qos
-               - samsung,exynos3-sysreg
-               - samsung,exynos4-sysreg
-               - samsung,exynos5-sysreg
+Changes since PATCHv2:
+ * https://lore.kernel.org/all/20220831182629.79255-1-sebastian.reichel@collabora.com/
+   (Note: I accidently send PATCHv2 with an incorrect patch version)
+ * Change license of DT header after message from Finley Xiao (Thanks!)
+ * Add Lee Jones to Cc list for the MFD DT binding
+ * Collected further Acked-by for DT bindings
+
+Changes since PATCHv1:
+ * https://lore.kernel.org/all/20220623162309.243766-1-sebastian.reichel@collabora.com/
+ * Rebased to v6.0-rc1
+ * Fixed typos when referencing rk3588
+ * Collected Acked-by for the DT binding
+
+-- Sebastian
+
+Elaine Zhang (1):
+  soc: rockchip: power-domain: do not enable PD
+
+Finley Xiao (2):
+  dt-bindings: add power-domain header for rk3588
+  soc: rockchip: power-domain: add power domain support for rk3588
+
+Sebastian Reichel (3):
+  dt-bindings: arm: rockchip: add rk5388 compatible string to pmu.yaml
+  dt-bindings: power: rockchip: Add bindings for rk3588
+  dt-bindings: mfd: syscon: Add rk3588 QoS register compatible
+
+ .../devicetree/bindings/arm/rockchip/pmu.yaml |   2 +
+ .../devicetree/bindings/mfd/syscon.yaml       |   1 +
+ .../power/rockchip,power-controller.yaml      |   2 +
+ drivers/soc/rockchip/pm_domains.c             | 101 +++++++++++++++---
+ include/dt-bindings/power/rk3588-power.h      |  69 ++++++++++++
+ 5 files changed, 162 insertions(+), 13 deletions(-)
+ create mode 100644 include/dt-bindings/power/rk3588-power.h
+
 -- 
 2.35.1
 
