@@ -4,78 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DD08C54EE9
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 19:53:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DEB1C38145
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 20:39:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jvkjDiRnFM4z+phJwzEY+c5WLl+EDBwm0WK/mGfmuj0=; b=oefdcOjHyW6HKO
-	20iN1r4VYUe9CrJAmosS6hKsGMmK+alfOLDWFiD3hk4+A6/GEYuvauNqxkLikeXY79GQCYWyuC0nj
-	/ye+zTPkaHqccYyT3yJ4NfhibtUD7HVC0QlIqqEq8w+Y/jlYjgSq8uiupIuF7S4pIszYEL6Z/CRyl
-	7IEzA5CAH12U4C/oX+ieXQ91ofkZCK/4t7xPRoPgZUAKQCaXhN2tAaV3MveRC6LnSXvjUl566I+VX
-	66PeQ2ZYZUeT2utp6HclLF9KCmZVZoPMby84ib5SACJfvXtcJQ1AJA3DuPM6DlpaShK7rfeKmDxXx
-	BBVFSc1S4B3eZoq0XiuA==;
+	List-Owner; bh=qyiDrjymMvH9475CzPkYmsK4QSOEB4L7sXWeOWdC3CA=; b=xJu+XmvDoF5h/V
+	R1R95bfFSetZHV5EslpObrS/1S4lcLLmTqGcsHV/yx4fF3Nr+f9a+BFS3M3+GEy3ie4Cgo9u2bJON
+	j6AUNdZZNI0XxqhV/DiXriNaRSAeuS998gc2PAfXEOuycfMnFiETGQN52O3I/x3a39tZ0GuIztKeS
+	VyzNlra1dKHtvshEpjOxy6FiHIR3JymCIWrH16XCL45PBDZeMT6F6eFCXqUZI6bqibIbjeJAplkYQ
+	Fi3UH30wnBSHEy50ynRTUc3aS1X0ifC8YHOeQpd19z3hiUd6N+dFPtYjsYi1567T4IGxz8CJ7UyLW
+	La33hoBtTgf8oejIoBpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oW17H-009DGz-Dg; Wed, 07 Sep 2022 19:53:43 +0000
-Received: from mga06b.intel.com ([134.134.136.31] helo=mga06.intel.com)
+	id 1oW1p4-009gBL-OM; Wed, 07 Sep 2022 20:38:58 +0000
+Received: from mail-oa1-f53.google.com ([209.85.160.53])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oW17E-009DBH-7L; Wed, 07 Sep 2022 19:53:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1662580420; x=1694116420;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=/MI/RJuZ0sD3riUI6YGQ3T4oFUBUNCRNrhNMnbIuoG0=;
-  b=P2bz9zdp+0OV4VqriFRJeL7Y5GQ385+/p2P+XDbjvdbo9yIs2ctcbv1g
-   w4qwgBmncz5s9pOIXFVc0HqbO5Dy3AYYYXu4XXJm9JqRaQlUUhw7x25W/
-   GfOu4c8XtMLIo+8He8PsTyn4lOjVHZvOKWTLEXHqjjqhmlxuaC9jWLjli
-   Qe0HLwr5pz5BjYAMocmG7aVjZD8Wv4lBEc1m+ESEEh7MYWmKQWjW8NWpg
-   bpqQAa4hOFzLE1rzPp4qtdNJ3nbD1L1GHJBUd5rXZsYYc8IHmRW4ZDi4b
-   H9/KGTs7cdDC57LnvwKaLbRtR6fjENu6IZc4sWSUh9BbgLd6V49uGe8KT
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10463"; a="358715376"
-X-IronPort-AV: E=Sophos;i="5.93,297,1654585200"; 
-   d="scan'208";a="358715376"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Sep 2022 12:53:32 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,297,1654585200"; 
-   d="scan'208";a="614618487"
-Received: from lkp-server02.sh.intel.com (HELO 95dfd251caa2) ([10.239.97.151])
-  by orsmga002.jf.intel.com with ESMTP; 07 Sep 2022 12:53:27 -0700
-Received: from kbuild by 95dfd251caa2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1oW171-0006uL-06;
-	Wed, 07 Sep 2022 19:53:27 +0000
-Date: Thu, 8 Sep 2022 03:53:02 +0800
-From: kernel test robot <lkp@intel.com>
-To: luca.ceresoli@bootlin.com, alsa-devel@alsa-project.org,
-	linux-rockchip@lists.infradead.org
-Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH 7/8] ASoC: codecs: Add RK3308 internal audio codec driver
-Message-ID: <202209080340.RFBeIVm2-lkp@intel.com>
-References: <20220907142124.2532620-8-luca.ceresoli@bootlin.com>
+	id 1oW1p1-009gAE-Ff; Wed, 07 Sep 2022 20:38:57 +0000
+Received: by mail-oa1-f53.google.com with SMTP id 586e51a60fabf-127d10b4f19so13213900fac.9;
+        Wed, 07 Sep 2022 13:38:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=wj0FlR0iIjBwEoHz1x7C+h5eigEetu70PRRI7k8iZXI=;
+        b=Hu1CJSazW6JgHB86nlsB731A6a6ffxYAVdxqWH4jRGi23TntQPNkn2HD1FYChmaZFg
+         JmTrX8RSH2HS9WJXLuthneBkP72gfctsFyB3JWPqLx/M+pEHsm8+96e4+la1ohubxNlZ
+         RpQK3iiFMJEmaN4SbW/ZFqvbAVSgH2h5oAGD9FM8JfpTNhfgo+8ZxQHek0ux9tuQpndP
+         W8iWnZ7z5MuKoiVuvITsz7D2O+3XMgYNEbzS10sDMGFsF8Dmss9WjiYV5GcW4eoxICmL
+         K+gwB+IL9Hfypj8EBXwanSn7ZHG/AwKjRYL4UUTQBbLLRLikHLXxFiXPQMxGE4dBTg0J
+         RG0w==
+X-Gm-Message-State: ACgBeo2+hSU+zXtgir5ReN5hlTqRiPkD2lp6vlPle8HuGIPOY9v1EPvg
+	6pTwfV0L3USV2oBXV0QNNw==
+X-Google-Smtp-Source: AA6agR4/Q5cbO4dYciSTsb3yHN0PCRBBmZM4f/2Aw8gY/7KQS5uOU1UdBufXQ5dMUiyzRiI3S/G4dw==
+X-Received: by 2002:a05:6870:7394:b0:126:6f7b:15a2 with SMTP id z20-20020a056870739400b001266f7b15a2mr121415oam.227.1662583134465;
+        Wed, 07 Sep 2022 13:38:54 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id bk26-20020a056830369a00b00636c81d4109sm7572324otb.46.2022.09.07.13.38.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Sep 2022 13:38:53 -0700 (PDT)
+Received: (nullmailer pid 299944 invoked by uid 1000);
+	Wed, 07 Sep 2022 20:38:53 -0000
+Date: Wed, 7 Sep 2022 15:38:53 -0500
+From: Rob Herring <robh@kernel.org>
+To: Corentin Labbe <clabbe@baylibre.com>
+Cc: heiko@sntech.de, herbert@gondor.apana.org.au, ardb@kernel.org, davem@davemloft.net, krzysztof.kozlowski+dt@linaro.org, mturquette@baylibre.com, sboyd@kernel.org, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org
+Subject: Re: [PATCH v9 25/33] dt-bindings: crypto: rockchip: convert to new
+ driver bindings
+Message-ID: <20220907203853.GA288174-robh@kernel.org>
+References: <20220901125710.3733083-1-clabbe@baylibre.com>
+ <20220901125710.3733083-26-clabbe@baylibre.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220907142124.2532620-8-luca.ceresoli@bootlin.com>
+In-Reply-To: <20220901125710.3733083-26-clabbe@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220907_125340_371583_B9E954E6 
-X-CRM114-Status: GOOD (  16.32  )
+X-CRM114-CacheID: sfid-20220907_133855_547210_BB8087D6 
+X-CRM114-Status: GOOD (  21.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,66 +79,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Thu, Sep 01, 2022 at 12:57:02PM +0000, Corentin Labbe wrote:
+> The latest addition to the rockchip crypto driver need to update the
+> driver bindings.
 
-I love your patch! Perhaps something to improve:
+This sounds like you changed the driver, so change the binding. That 
+would be an ABI break. But it looks like you are adding support for new 
+h/w, so say that. Bindings aren't about a driver.
 
-[auto build test WARNING on broonie-sound/for-next]
-[also build test WARNING on rockchip/for-next tiwai-sound/for-next linus/master v6.0-rc4 next-20220907]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> 
+> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> ---
+>  .../crypto/rockchip,rk3288-crypto.yaml        | 79 +++++++++++++++++--
+>  1 file changed, 71 insertions(+), 8 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml b/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
+> index 8a219d439d02..b7870a4cbdbe 100644
+> --- a/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
+> +++ b/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
+> @@ -13,6 +13,8 @@ properties:
+>    compatible:
+>      enum:
+>        - rockchip,rk3288-crypto
+> +      - rockchip,rk3328-crypto
+> +      - rockchip,rk3399-crypto
+>  
+>    reg:
+>      maxItems: 1
+> @@ -21,21 +23,82 @@ properties:
+>      maxItems: 1
+>  
+>    clocks:
+> +    minItems: 3
+>      maxItems: 4
+>  
+>    clock-names:
+> -    items:
+> -      - const: aclk
+> -      - const: hclk
+> -      - const: sclk
+> -      - const: apb_pclk
+> +    minItems: 3
+> +    maxItems: 4
+>  
+>    resets:
+> -    maxItems: 1
+> +    minItems: 1
+> +    maxItems: 3
+>  
+>    reset-names:
+> -    items:
+> -      - const: crypto-rst
+> +    minItems: 1
+> +    maxItems: 3
+> +
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: rockchip,rk3288-crypto
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 4
+> +        clock-names:
+> +          items:
+> +            - const: aclk
+> +            - const: hclk
+> +            - const: sclk
+> +            - const: apb_pclk
+> +        resets:
+> +          maxItems: 1
+> +        reset-names:
+> +          items:
+> +            - const: crypto-rst
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: rockchip,rk3328-crypto
+> +    then:
+> +      properties:
+> +        clocks:
+> +          maxItems: 3
+> +        clock-names:
+> +          items:
+> +            - const: hclk_master
+> +            - const: hclk_slave
+> +            - const: sclk
 
-url:    https://github.com/intel-lab-lkp/linux/commits/luca-ceresoli-bootlin-com/Add-support-for-the-internal-RK3308-audio-codec/20220907-222555
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-config: riscv-randconfig-r042-20220907 (https://download.01.org/0day-ci/archive/20220908/202209080340.RFBeIVm2-lkp@intel.com/config)
-compiler: clang version 16.0.0 (https://github.com/llvm/llvm-project c55b41d5199d2394dd6cdb8f52180d8b81d809d4)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install riscv cross compiling tool for clang build
-        # apt-get install binutils-riscv64-linux-gnu
-        # https://github.com/intel-lab-lkp/linux/commit/786c160ad64ae5a6c5266184b12ecf2674db2fbe
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review luca-ceresoli-bootlin-com/Add-support-for-the-internal-RK3308-audio-codec/20220907-222555
-        git checkout 786c160ad64ae5a6c5266184b12ecf2674db2fbe
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=riscv SHELL=/bin/bash sound/soc/codecs/
+Do we really need new names? Was 'aclk' not the bus master clock?
 
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
+If the clocks and resets aren't the same, then maybe these 2 new chips 
+should be their own binding.
 
-All warnings (new ones prefixed by >>):
+> +        resets:
+> +          maxItems: 1
+> +        reset-names:
+> +          items:
+> +            - const: crypto-rst
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: rockchip,rk3399-crypto
+> +    then:
+> +      properties:
+> +        clocks:
+> +          maxItems: 3
+> +        clock-names:
+> +          items:
+> +            - const: hclk_master
+> +            - const: hclk_slave
+> +            - const: sclk
+> +        resets:
+> +          minItems: 3
+> +        reset-names:
+> +          items:
+> +            - const: rst_master
+> +            - const: rst_slave
 
->> sound/soc/codecs/rk3308_codec.c:2007:6: warning: variable 'err' set but not used [-Wunused-but-set-variable]
-           int err;
-               ^
-   1 warning generated.
+'rst_' is redundant, drop.
 
-
-vim +/err +2007 sound/soc/codecs/rk3308_codec.c
-
-  2003	
-  2004	static int rk3308_codec_parse_dt(struct rk3308_codec_priv *rk3308)
-  2005	{
-  2006		struct device_node *np = rk3308->dev->of_node;
-> 2007		int err;
-  2008	
-  2009		/* Default value is 0 */
-  2010		err = of_property_read_u32(np, "rockchip,micbias-avdd-multiplier",
-  2011					   &rk3308->micbias_avdd_mult);
-  2012		if (rk3308->micbias_avdd_mult >= RK3308_CODEC_MICBIAS_NUM)
-  2013			return dev_err_probe(rk3308->dev, -EINVAL,
-  2014					     "Invalid value for 'rockchip,micbias-avdd-multiplier'\n");
-  2015	
-  2016		return 0;
-  2017	}
-  2018	
-
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+> +            - const: crypto-rst
+>  
+>  required:
+>    - compatible
+> -- 
+> 2.35.1
+> 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
