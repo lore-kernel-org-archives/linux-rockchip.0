@@ -4,65 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DEB1C38145
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 20:39:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D2E4C54EE9
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 21:07:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qyiDrjymMvH9475CzPkYmsK4QSOEB4L7sXWeOWdC3CA=; b=xJu+XmvDoF5h/V
-	R1R95bfFSetZHV5EslpObrS/1S4lcLLmTqGcsHV/yx4fF3Nr+f9a+BFS3M3+GEy3ie4Cgo9u2bJON
-	j6AUNdZZNI0XxqhV/DiXriNaRSAeuS998gc2PAfXEOuycfMnFiETGQN52O3I/x3a39tZ0GuIztKeS
-	VyzNlra1dKHtvshEpjOxy6FiHIR3JymCIWrH16XCL45PBDZeMT6F6eFCXqUZI6bqibIbjeJAplkYQ
-	Fi3UH30wnBSHEy50ynRTUc3aS1X0ifC8YHOeQpd19z3hiUd6N+dFPtYjsYi1567T4IGxz8CJ7UyLW
-	La33hoBtTgf8oejIoBpg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iRsdPXwZcmKB+6ivc5vF7kdAa15d076q7cyWsWLez7I=; b=CjHDMf3hInEHzk
+	x54C4biRo3GEMQln2ZZX9Eot3qYTGFSnFLOn08OoxXQ522RJ4vKNK8AQ42o4fXmN9+MqvVqRUoxzC
+	yANP8GDxX6SHnoTjrCTcFTMN93Pgjc0EtlRVY3C+3FRZKuT/Qx+cT+EQK5sqeRhAfKeijuUpTcQ5W
+	U1IltbgKmNXrQv+1DIn2ruYglBZ5fXjwMObpOh3B7ax4796qZhKjpa2TMUAqVbR1IVFTSHaQLU40n
+	QO88jpyENVKXvavx7T937zi28xjscc6m4zp8GjjoCktCAjMLWQqP9t2e3URoaQsb7s65GfMkoo8jb
+	BDpipVFFt07O2ndVVBMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oW1p4-009gBL-OM; Wed, 07 Sep 2022 20:38:58 +0000
-Received: from mail-oa1-f53.google.com ([209.85.160.53])
+	id 1oW2GN-009vKy-2I; Wed, 07 Sep 2022 21:07:11 +0000
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oW1p1-009gAE-Ff; Wed, 07 Sep 2022 20:38:57 +0000
-Received: by mail-oa1-f53.google.com with SMTP id 586e51a60fabf-127d10b4f19so13213900fac.9;
-        Wed, 07 Sep 2022 13:38:55 -0700 (PDT)
+	id 1oW2GJ-009vEh-RI
+	for linux-rockchip@lists.infradead.org; Wed, 07 Sep 2022 21:07:09 +0000
+Received: by mail-pf1-x42d.google.com with SMTP id y136so10889127pfb.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 07 Sep 2022 14:07:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date;
+        bh=tm5/tm/bOKGw+ZnlX8h2AbJd7n/3kcmAPIwiCqemhIM=;
+        b=x7ypNYi2j2uvb8XQ9craSoAh2QNE3532j+e+pZG6ZhxotdgrQgsztR4QwOhk5485Yg
+         ZYQ439NwiR04A/2DWciEI4MqLu+Ay2Jt2Izj4I/uzLYqz77oMWjcZZxlr9e+u1dHV96n
+         z3Svs0OdnJkfwBaMcdAq8+qT3PqaXmAP1GSOflxkFcsP678j3vlrUN8qMCLVuOugw4rF
+         y8z7P1Czucmb1QSWC2a/hb5v0Q5lP3SvANK8TSpbKTw5ao9H68v4Z77W9jI71uqsIUs9
+         maT5vsRIJ7F/eDxUr9k0eGGr4msmgmamcpae7Jy3tUE2RViDRHov5J1aVFmsRk3Zwehz
+         kMZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=wj0FlR0iIjBwEoHz1x7C+h5eigEetu70PRRI7k8iZXI=;
-        b=Hu1CJSazW6JgHB86nlsB731A6a6ffxYAVdxqWH4jRGi23TntQPNkn2HD1FYChmaZFg
-         JmTrX8RSH2HS9WJXLuthneBkP72gfctsFyB3JWPqLx/M+pEHsm8+96e4+la1ohubxNlZ
-         RpQK3iiFMJEmaN4SbW/ZFqvbAVSgH2h5oAGD9FM8JfpTNhfgo+8ZxQHek0ux9tuQpndP
-         W8iWnZ7z5MuKoiVuvITsz7D2O+3XMgYNEbzS10sDMGFsF8Dmss9WjiYV5GcW4eoxICmL
-         K+gwB+IL9Hfypj8EBXwanSn7ZHG/AwKjRYL4UUTQBbLLRLikHLXxFiXPQMxGE4dBTg0J
-         RG0w==
-X-Gm-Message-State: ACgBeo2+hSU+zXtgir5ReN5hlTqRiPkD2lp6vlPle8HuGIPOY9v1EPvg
-	6pTwfV0L3USV2oBXV0QNNw==
-X-Google-Smtp-Source: AA6agR4/Q5cbO4dYciSTsb3yHN0PCRBBmZM4f/2Aw8gY/7KQS5uOU1UdBufXQ5dMUiyzRiI3S/G4dw==
-X-Received: by 2002:a05:6870:7394:b0:126:6f7b:15a2 with SMTP id z20-20020a056870739400b001266f7b15a2mr121415oam.227.1662583134465;
-        Wed, 07 Sep 2022 13:38:54 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id bk26-20020a056830369a00b00636c81d4109sm7572324otb.46.2022.09.07.13.38.53
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date;
+        bh=tm5/tm/bOKGw+ZnlX8h2AbJd7n/3kcmAPIwiCqemhIM=;
+        b=76L6T9yMID2FmCO+Bbp1pFvmJJJE+MefWLhCyMj1BRBrjxikjhwEQdB85BWUH1DyWY
+         sM17Wo+xL/Q77A5ER93FHQ2O0LrfG77gax1ywoPOz9FTl389G3W0O95V9JSASpKcyEMQ
+         C93B3Nj1rhJPpzzN4r2bCB5j72OvL/33TSwv6MBqNKZmX6vNdq3WdV42TiY5pYsq+O0j
+         EdiBqwItzEDjEZSwj5pEiNdp+mVr6w0et/8E/QpmeFIDffftPpHP9nqQjNqZJYN68kcD
+         ZM2RtKp3cWucTByqxHGB+mFK85QCEFD4VOcQ7KMcERmQ4KQQIZG983zo1NxQFabJeiVk
+         gGrA==
+X-Gm-Message-State: ACgBeo1i5EUFTcG0A2EQLjpfwG4BBGe5eBt/l3mQnbaU6xdxUEIeLLS5
+	l8BNpavI1KaEO3scS/xUfvlm6w==
+X-Google-Smtp-Source: AA6agR6KR05rx/q/yr2bK+5wDAzujpFCnEW70ybxCculrOSDfSrMK2grU+8l7dxRUgRSY5z/y1pe5g==
+X-Received: by 2002:a63:1c2:0:b0:430:710d:4c85 with SMTP id 185-20020a6301c2000000b00430710d4c85mr4980472pgb.12.1662584822610;
+        Wed, 07 Sep 2022 14:07:02 -0700 (PDT)
+Received: from archl-hc1b.. ([103.51.75.56])
+        by smtp.gmail.com with ESMTPSA id c23-20020a63d517000000b0042ba1a95235sm10999198pgg.86.2022.09.07.14.06.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Sep 2022 13:38:53 -0700 (PDT)
-Received: (nullmailer pid 299944 invoked by uid 1000);
-	Wed, 07 Sep 2022 20:38:53 -0000
-Date: Wed, 7 Sep 2022 15:38:53 -0500
-From: Rob Herring <robh@kernel.org>
-To: Corentin Labbe <clabbe@baylibre.com>
-Cc: heiko@sntech.de, herbert@gondor.apana.org.au, ardb@kernel.org, davem@davemloft.net, krzysztof.kozlowski+dt@linaro.org, mturquette@baylibre.com, sboyd@kernel.org, linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org
-Subject: Re: [PATCH v9 25/33] dt-bindings: crypto: rockchip: convert to new
- driver bindings
-Message-ID: <20220907203853.GA288174-robh@kernel.org>
-References: <20220901125710.3733083-1-clabbe@baylibre.com>
- <20220901125710.3733083-26-clabbe@baylibre.com>
+        Wed, 07 Sep 2022 14:07:02 -0700 (PDT)
+From: Anand Moon <anand@edgeble.ai>
+To: "David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	David Wu <david.wu@rock-chips.com>
+Cc: Anand Moon <anand@edgeble.ai>,
+	Jagan Teki <jagan@edgeble.ai>,
+	netdev@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [v2 1/2] dt-bindings: net: rockchip-dwmac: add rv1126 compatible
+Date: Wed,  7 Sep 2022 21:06:45 +0000
+Message-Id: <20220907210649.12447-1-anand@edgeble.ai>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220901125710.3733083-26-clabbe@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220907_133855_547210_BB8087D6 
-X-CRM114-Status: GOOD (  21.20  )
+X-CRM114-CacheID: sfid-20220907_140708_066362_438076FC 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,142 +98,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 01, 2022 at 12:57:02PM +0000, Corentin Labbe wrote:
-> The latest addition to the rockchip crypto driver need to update the
-> driver bindings.
+Add compatible string for RV1126 gmac, and constrain it to
+be compatible with Synopsys dwmac 4.20a.
 
-This sounds like you changed the driver, so change the binding. That 
-would be an ABI break. But it looks like you are adding support for new 
-h/w, so say that. Bindings aren't about a driver.
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+Signed-off-by: Anand Moon <anand@edgeble.ai>
+---
+v2: add missing compatible string to property
+    added reviewed by Heiko Stuebner.
+---
+ Documentation/devicetree/bindings/net/rockchip-dwmac.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-> 
-> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
-> ---
->  .../crypto/rockchip,rk3288-crypto.yaml        | 79 +++++++++++++++++--
->  1 file changed, 71 insertions(+), 8 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml b/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
-> index 8a219d439d02..b7870a4cbdbe 100644
-> --- a/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
-> +++ b/Documentation/devicetree/bindings/crypto/rockchip,rk3288-crypto.yaml
-> @@ -13,6 +13,8 @@ properties:
->    compatible:
->      enum:
->        - rockchip,rk3288-crypto
-> +      - rockchip,rk3328-crypto
-> +      - rockchip,rk3399-crypto
->  
->    reg:
->      maxItems: 1
-> @@ -21,21 +23,82 @@ properties:
->      maxItems: 1
->  
->    clocks:
-> +    minItems: 3
->      maxItems: 4
->  
->    clock-names:
-> -    items:
-> -      - const: aclk
-> -      - const: hclk
-> -      - const: sclk
-> -      - const: apb_pclk
-> +    minItems: 3
-> +    maxItems: 4
->  
->    resets:
-> -    maxItems: 1
-> +    minItems: 1
-> +    maxItems: 3
->  
->    reset-names:
-> -    items:
-> -      - const: crypto-rst
-> +    minItems: 1
-> +    maxItems: 3
-> +
-> +allOf:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3288-crypto
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 4
-> +        clock-names:
-> +          items:
-> +            - const: aclk
-> +            - const: hclk
-> +            - const: sclk
-> +            - const: apb_pclk
-> +        resets:
-> +          maxItems: 1
-> +        reset-names:
-> +          items:
-> +            - const: crypto-rst
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3328-crypto
-> +    then:
-> +      properties:
-> +        clocks:
-> +          maxItems: 3
-> +        clock-names:
-> +          items:
-> +            - const: hclk_master
-> +            - const: hclk_slave
-> +            - const: sclk
+diff --git a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+index 083623c8d718..b28bc6774bf0 100644
+--- a/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/rockchip-dwmac.yaml
+@@ -26,6 +26,7 @@ select:
+           - rockchip,rk3399-gmac
+           - rockchip,rk3568-gmac
+           - rockchip,rv1108-gmac
++          - rockchip,rv1126-gmac
+   required:
+     - compatible
+ 
+@@ -47,6 +48,7 @@ properties:
+               - rockchip,rk3368-gmac
+               - rockchip,rk3399-gmac
+               - rockchip,rv1108-gmac
++              - rockchip,rv1126-gmac
+       - items:
+           - enum:
+               - rockchip,rk3568-gmac
+-- 
+2.37.3
 
-Do we really need new names? Was 'aclk' not the bus master clock?
-
-If the clocks and resets aren't the same, then maybe these 2 new chips 
-should be their own binding.
-
-> +        resets:
-> +          maxItems: 1
-> +        reset-names:
-> +          items:
-> +            - const: crypto-rst
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3399-crypto
-> +    then:
-> +      properties:
-> +        clocks:
-> +          maxItems: 3
-> +        clock-names:
-> +          items:
-> +            - const: hclk_master
-> +            - const: hclk_slave
-> +            - const: sclk
-> +        resets:
-> +          minItems: 3
-> +        reset-names:
-> +          items:
-> +            - const: rst_master
-> +            - const: rst_slave
-
-'rst_' is redundant, drop.
-
-> +            - const: crypto-rst
->  
->  required:
->    - compatible
-> -- 
-> 2.35.1
-> 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
