@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5B28C54EE9
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 16:02:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9A8FC54EE9
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 16:03:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=opCUvdkMxM/D97KwZANpujph3TiHJTmsF7cSDHRCy70=; b=zVWMKeCzgLslNU
-	obxxELBIFKeaV51hNFeuEQUou1YXAfXTSZ9/Sr8CrHf0WUkdBmkBXJ73rZCTLloQAkiZXruuHhORk
-	cJLkyjwigMrFH6gc+QRB4P1kP32R1yLMly+LHRpGB4Qna5ZRfiF2c8bvQXadQZh/ZlPyq1R6riFlf
-	7AIrAA2ZE6zzs5klgoKqCzCJt+MpNigwxNu/YYUEZvRpP+wPYAqS+NMon8jrv+uPBzU1h6CsxUarP
-	9qya9U/+D/RmQ+9Wc66TP7ImMYj6xV8ANWCr07no+v6w8rGIjnh0nmhIDH0fmSvFN37dnB/UzbkSw
-	6XpfV+/s5jjM15vhFcig==;
+	List-Owner; bh=v7jbwfC4DVIcaAMXWaTiWlD1ILKDhwaKS+mHCkBO8wU=; b=G80wT/b/I0KUnS
+	saHbtb7jBinfzwnk3BxRHyfYQrbW0j82CEdMDC9YptXRXYKoPiRJVmnxQSexF6n9PKBhGRN4c5ry2
+	4kTrPHZo9kkLQOtq1z6i/+AKY304jCPIfRPewsTY61YKbrp/2wt5s0ms7ZVDDvqBTip9F6Kevx0lm
+	W/XEHunEedFwSOnzz6QqTGAlZk3o6+7Dx1sQEG+hWWm5NKs4KVyqGbqvkyqG8O5RxdkTwcit24qyu
+	5DXoaxepqUzPWzl2+AXgVlfEsZe0KnZJArHBWryUTE2qfOcZXIDlV0P1uXUd8s5Z/lJbkZEFv5TiC
+	AxGmNXa5bn6efjbANOzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVxVg-007Ymu-KW; Wed, 07 Sep 2022 16:02:40 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1oVxVu-007Ytq-8m; Wed, 07 Sep 2022 16:02:54 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVxVY-007Yiy-Dx
-	for linux-rockchip@lists.infradead.org; Wed, 07 Sep 2022 16:02:33 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id n65-20020a17090a5ac700b001fbb4fad865so15275282pji.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 07 Sep 2022 09:02:29 -0700 (PDT)
+	id 1oVxVc-007YkY-QU
+	for linux-rockchip@lists.infradead.org; Wed, 07 Sep 2022 16:02:38 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id fv3so8898953pjb.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 07 Sep 2022 09:02:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=afSHfpUxnx3q9ntKQjr5xt/kVuSAfsXr+C9GfFVRDd4=;
-        b=sseBowAH5ISZmkxAYb24ceYU3uCJmbJT+Fk6bT8rILtssfyoK9sUWy46GJR0Scyl70
-         ojH3VejTvM81sbYXTiXGfxT9Z6qbzK/Z41l9gnZuwm6RmWsnDg6tUIgLXHUc4CjY9Fov
-         BGxojsGeaNTzBZYDBAfY4S4ElY2Eimf1YztfHgNEs1qdelfX0/JK1uq5kCXWSoBZYHYO
-         ZcWvGq17DeS1nmU1SYd3U04WTIsHjYSj4tYMIruH7RdfG3dv/2xiBkZORgZ8mRvpmKTG
-         p++sAb/6EYe78tMkhtlMJIh9MoBRGOwC/aeY4r3WJbOnsZICNMGm3rWY2nAL8mR5uE7g
-         gmdQ==
+        bh=jLaf/5NHXDrr37rXgj5J2aSIlPrAjSKXcBsh3e3FWQY=;
+        b=cxeyf2uX1X91oEvejkorId5aX0Ks8DCIid8AsOPLsYCNNS8EbPNM5gGli9xi5jMraO
+         SijHN0T7lmu5vvyuZuv7yEM7udHqhVHfBkoh4s/nzEI7gjuhdRe8cSsGb4gvBvlFM+2G
+         LtL7+T/PYVHiczqBIWJHJ8TczkZZHSVKNBMsj8VhIfuq6CmZZgqKWhQlNgYYw1suNfEQ
+         jri5+ywwBS79zgNP5SpuZQAkIO1PyRayiY9o/uGW7qJdvtpltbTHbervqmXgL/z0Ip9K
+         rmq+bS8VO/nlPbIo0/YcF46F0qWy3M864toopfrSlNVCKKwFs0axmeaRkE6Wity9AOoE
+         WgPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=afSHfpUxnx3q9ntKQjr5xt/kVuSAfsXr+C9GfFVRDd4=;
-        b=YT78LvozlU5PIXpELy1eYGjBKJt+kQf1LCmc2wB0UhTG6xjxDPEH8TGIiWjuxWLlkK
-         fQGLNjcveekC5qC8TuX4Lm8KUFDAdsjvsaUMLMNMcaCTmwmkmrupRiZfWhrsG//d6h6M
-         BWCKnMNYaeyfW6ab6nxuUqLEIV1XYmFmoJs5dovcQfpgjKSOmxUPp7/ifVGSs30QbEry
-         RZvbLPWKSItf9uJx+5kRSVgGfy9cv0VNWuGfyn1vMbbH2uai3QC/86qSigv0247ZIOlf
-         z8SvLABwblc8E0x8AUcPw+XCsy8Em7tjrOiwyUg5IbnxixECZzSpiSn5DcUnaT/e7yQw
-         jAEQ==
-X-Gm-Message-State: ACgBeo0hsakXyBj8duJz05+7WZ73qRtaZZS7sa5gb36+cQltAeW5DGiF
-	gg8/xRh4svKnLWB9b5Jd1CnMBA==
-X-Google-Smtp-Source: AA6agR4EQG/wNWPdbtT/ZZVcElmxLEu6XFTylREBCm9ZmDxny83+bS3kcd0dOR35qD7faC4NwOGf9Q==
-X-Received: by 2002:a17:903:2309:b0:176:de48:e940 with SMTP id d9-20020a170903230900b00176de48e940mr4528698plh.15.1662566548714;
-        Wed, 07 Sep 2022 09:02:28 -0700 (PDT)
+        bh=jLaf/5NHXDrr37rXgj5J2aSIlPrAjSKXcBsh3e3FWQY=;
+        b=FJO50vREC0js+6uq0LmVv+8yJw7HoypqddrsGsPkIIHg1bOf715BH+DErOejE/SZZc
+         CKnTo2G5zbRNHikabTyuDhjJajDUEUUwo7kHUNCMc2osxDoQPDrY/ss6gMs++/RGEjyW
+         I5U1lQAG5K94VSTKN0uDsuPb0eZ17txCjh0Evutoz+vMAFZjVJBr14G8aOidKlU+uD+x
+         zrVduwbZc1VDFzCdYpK+nrg+6/sumI4FfDz5TXA4PZfXHKfPTvs6T/TYwlEFw3mDhkdv
+         LBGDb+CK7n2Fz0o3VYSfJ6O0vo+X35H2J8tdvJKo6C3ElH5/3qOOgoC5fRCgjMzNH0f5
+         9N+Q==
+X-Gm-Message-State: ACgBeo0tOZwkiuzi9DgUeDMtvuLHjJ5twr1kkrHEOoHOpt4rJtm3LNAa
+	04LWvKMEObphWnlBqFJBK1ryhg==
+X-Google-Smtp-Source: AA6agR5sApjijE2qHLIwWXNgROi9CG8KxBKXkSVjqjgG2rNO+vQBt9sQkV786oUWx5oAEt4bxD8gJg==
+X-Received: by 2002:a17:902:db08:b0:176:d40e:4b57 with SMTP id m8-20020a170902db0800b00176d40e4b57mr4489839plx.172.1662566553960;
+        Wed, 07 Sep 2022 09:02:33 -0700 (PDT)
 Received: from localhost.localdomain ([23.27.44.184])
-        by smtp.gmail.com with ESMTPSA id x13-20020a17090a1f8d00b001f510175984sm14919719pja.41.2022.09.07.09.02.24
+        by smtp.gmail.com with ESMTPSA id x13-20020a17090a1f8d00b001f510175984sm14919719pja.41.2022.09.07.09.02.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Sep 2022 09:02:28 -0700 (PDT)
+        Wed, 07 Sep 2022 09:02:33 -0700 (PDT)
 From: Jagan Teki <jagan@edgeble.ai>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -67,19 +67,21 @@ To: Heiko Stuebner <heiko@sntech.de>,
 Cc: linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	Jagan Teki <jagan@edgeble.ai>,
-	linux-i2c@vger.kernel.org,
-	David Wu <david.wu@rock-chips.com>
-Subject: [PATCH v4 01/13] i2c: rk3x: Add rv1126 support
-Date: Wed,  7 Sep 2022 21:31:55 +0530
-Message-Id: <20220907160207.3845791-2-jagan@edgeble.ai>
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	linux-clk@vger.kernel.org,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Jagan Teki <jagan@edgeble.ai>
+Subject: [PATCH v4 02/13] clk: rockchip: Add MUXTBL variant
+Date: Wed,  7 Sep 2022 21:31:56 +0530
+Message-Id: <20220907160207.3845791-3-jagan@edgeble.ai>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220907160207.3845791-1-jagan@edgeble.ai>
 References: <20220907160207.3845791-1-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220907_090232_489718_AA8DF1A2 
-X-CRM114-Status: GOOD (  11.58  )
+X-CRM114-CacheID: sfid-20220907_090236_944572_F64DB1F2 
+X-CRM114-Status: GOOD (  14.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,45 +98,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add i2c support for Rockchip RV1126 SoC.
+From: Elaine Zhang <zhangqing@rock-chips.com>
 
-Cc: linux-i2c@vger.kernel.org
-Signed-off-by: David Wu <david.wu@rock-chips.com>
+A clock branch consisting of a mux with non-standard
+select values.
+The parent in Mux table is sorted by priority.
+
+Cc: linux-clk@vger.kernel.org
+Cc: Michael Turquette <mturquette@baylibre.com>
+Cc: Stephen Boyd <sboyd@kernel.org>
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 ---
 Changes for v4:
-- new patch
+- rebase on -next
+Changes for v3, v2:
+- none
 
- drivers/i2c/busses/i2c-rk3x.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ drivers/clk/rockchip/clk.c | 27 +++++++++++++++++++++------
+ drivers/clk/rockchip/clk.h | 17 +++++++++++++++++
+ 2 files changed, 38 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index 2e98e7793bba..d1658ed76562 100644
---- a/drivers/i2c/busses/i2c-rk3x.c
-+++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -1165,6 +1165,11 @@ static const struct rk3x_i2c_soc_data rv1108_soc_data = {
- 	.calc_timings = rk3x_i2c_v1_calc_timings,
- };
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index bb8a844309bf..e63d4f20b479 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -40,6 +40,7 @@ static struct clk *rockchip_clk_register_branch(const char *name,
+ 		const char *const *parent_names, u8 num_parents,
+ 		void __iomem *base,
+ 		int muxdiv_offset, u8 mux_shift, u8 mux_width, u8 mux_flags,
++		u32 *mux_table,
+ 		int div_offset, u8 div_shift, u8 div_width, u8 div_flags,
+ 		struct clk_div_table *div_table, int gate_offset,
+ 		u8 gate_shift, u8 gate_flags, unsigned long flags,
+@@ -62,6 +63,7 @@ static struct clk *rockchip_clk_register_branch(const char *name,
+ 		mux->shift = mux_shift;
+ 		mux->mask = BIT(mux_width) - 1;
+ 		mux->flags = mux_flags;
++		mux->table = mux_table;
+ 		mux->lock = lock;
+ 		mux_ops = (mux_flags & CLK_MUX_READ_ONLY) ? &clk_mux_ro_ops
+ 							: &clk_mux_ops;
+@@ -270,6 +272,8 @@ static struct clk *rockchip_clk_register_frac_branch(
+ 		frac_mux->shift = child->mux_shift;
+ 		frac_mux->mask = BIT(child->mux_width) - 1;
+ 		frac_mux->flags = child->mux_flags;
++		if (child->mux_table)
++			frac_mux->table = child->mux_table;
+ 		frac_mux->lock = lock;
+ 		frac_mux->hw.init = &init;
  
-+static const struct rk3x_i2c_soc_data rv1126_soc_data = {
-+	.grf_offset = 0x118,
-+	.calc_timings = rk3x_i2c_v1_calc_timings,
-+};
+@@ -444,11 +448,21 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ 		/* catch simple muxes */
+ 		switch (list->branch_type) {
+ 		case branch_mux:
+-			clk = clk_register_mux(NULL, list->name,
+-				list->parent_names, list->num_parents,
+-				flags, ctx->reg_base + list->muxdiv_offset,
+-				list->mux_shift, list->mux_width,
+-				list->mux_flags, &ctx->lock);
++			if (list->mux_table)
++				clk = clk_register_mux_table(NULL, list->name,
++					list->parent_names, list->num_parents,
++					flags,
++					ctx->reg_base + list->muxdiv_offset,
++					list->mux_shift, list->mux_width,
++					list->mux_flags, list->mux_table,
++					&ctx->lock);
++			else
++				clk = clk_register_mux(NULL, list->name,
++					list->parent_names, list->num_parents,
++					flags,
++					ctx->reg_base + list->muxdiv_offset,
++					list->mux_shift, list->mux_width,
++					list->mux_flags, &ctx->lock);
+ 			break;
+ 		case branch_muxgrf:
+ 			clk = rockchip_clk_register_muxgrf(list->name,
+@@ -506,7 +520,8 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ 				ctx->reg_base, list->muxdiv_offset,
+ 				list->mux_shift,
+ 				list->mux_width, list->mux_flags,
+-				list->div_offset, list->div_shift, list->div_width,
++				list->mux_table, list->div_offset,
++				list->div_shift, list->div_width,
+ 				list->div_flags, list->div_table,
+ 				list->gate_offset, list->gate_shift,
+ 				list->gate_flags, flags, &ctx->lock);
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 7aa45cc70287..93937fb1d368 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -448,6 +448,7 @@ struct rockchip_clk_branch {
+ 	u8				mux_shift;
+ 	u8				mux_width;
+ 	u8				mux_flags;
++	u32				*mux_table;
+ 	int				div_offset;
+ 	u8				div_shift;
+ 	u8				div_width;
+@@ -680,6 +681,22 @@ struct rockchip_clk_branch {
+ 		.gate_offset	= -1,				\
+ 	}
+ 
++#define MUXTBL(_id, cname, pnames, f, o, s, w, mf, mt)		\
++	{							\
++		.id		= _id,				\
++		.branch_type	= branch_mux,			\
++		.name		= cname,			\
++		.parent_names	= pnames,			\
++		.num_parents	= ARRAY_SIZE(pnames),		\
++		.flags		= f,				\
++		.muxdiv_offset	= o,				\
++		.mux_shift	= s,				\
++		.mux_width	= w,				\
++		.mux_flags	= mf,				\
++		.gate_offset	= -1,				\
++		.mux_table	= mt,				\
++	}
 +
- static const struct rk3x_i2c_soc_data rk3066_soc_data = {
- 	.grf_offset = 0x154,
- 	.calc_timings = rk3x_i2c_v0_calc_timings,
-@@ -1195,6 +1200,10 @@ static const struct of_device_id rk3x_i2c_match[] = {
- 		.compatible = "rockchip,rv1108-i2c",
- 		.data = &rv1108_soc_data
- 	},
-+	{
-+		.compatible = "rockchip,rv1126-i2c",
-+		.data = &rv1126_soc_data
-+	},
- 	{
- 		.compatible = "rockchip,rk3066-i2c",
- 		.data = &rk3066_soc_data
+ #define MUXGRF(_id, cname, pnames, f, o, s, w, mf)		\
+ 	{							\
+ 		.id		= _id,				\
 -- 
 2.25.1
 
