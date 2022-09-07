@@ -4,83 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CF46C54EE9
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 12:54:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5103BC38145
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 14:22:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ExBibevS38n57ojCJKTvea/lxMSNC0CaE2lnw2qcv04=; b=TpgZ+6zxBxA07Q
-	MvwivrTmljkJDgKw5ae8+OQUT5zsZ36NBHFehe8v+qgbtNxoBILRC731T3hQAXuPdPpGU6+HrWZ3x
-	4vvL3QJsZaigja0mMoAmisRw9uZUxz3XVkT3ZVqeYZ+t8POy23XhRQ75GvLmzBD5Lq1GbZkewff97
-	o49L1qbHOj7SxW56thr6zq5phY3XsEHOssyM0YGzHbVgYHYO0JidFLLKVuJs75wGqw1xlFnDsoiDO
-	JmL9uq75juPDyRm31nDtbTembc82shB3pSJuqzsGTKLpZEUJAHQaHzW8+0MB+Mno3aGCR153Dgx3Z
-	d1WD6a79Z43Ls2aoGV0w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=H2QmgVIVUEaAER2KMwFGWctbctJi3Za9rdjEME0HES4=; b=T94cDHqEXgdfvk
+	55hww9t1S6mR0VuUETW8y+204fpI/Q6q2tvCzbTdLz7mtj7EYtU2tCfBZIYcu+a2cmP+NPMKaIvbG
+	wK2boAS4JWnQ/dtixw5IunM8TnTDJp9MYJvKUAWe6UysH5MgIWpQQOjwhM07Mg5/RnF4RAMveqgYM
+	Sw8BI5XC8fZ7qh2MohtJvTDnJ2WvpoTFCnm0z/yHswwoqJfma0VOWhiMmXsQW4IkHFu7WHb2pYMv2
+	qggAwDEUCinlEiKQH2e7A5cHGMG0bAquwPqXK8hJepzRZAweCla0wUxBeBLfE4CPowLrfNoqxgDOM
+	2+B7IJicwfbGXk0NOs6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVuZs-006Hel-RJ; Wed, 07 Sep 2022 12:54:48 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1oVvw9-006oP9-4R; Wed, 07 Sep 2022 14:21:53 +0000
+Received: from relay12.mail.gandi.net ([217.70.178.232])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVuZo-006Hcj-UV
-	for linux-rockchip@lists.infradead.org; Wed, 07 Sep 2022 12:54:47 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id q7so22291796lfu.5
-        for <linux-rockchip@lists.infradead.org>; Wed, 07 Sep 2022 05:54:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=cy/trsDd8yLTVEJh558cDfunHTs2Qb/idq4sWa7wWtQ=;
-        b=QiseaVKCS5hUrwI2xGuLM/GjaR8lfhJQrIIsBqcLm8+s8oHqS0PtwAmV8ReO7E1HUE
-         UWVzN2lW2f8oY4uGFGT4H4xNxxMYDjDJt4dt87iK4ESQAiK3dBHBAx0tVAAra8tGmFeT
-         2AM5LZbyIClWoAb+bTcLpwYa3i+7MNLHHay6eWOHtUcccntXWpLtjK/M68Qt2U3lENFR
-         6rNsm9h4S83DOoqsrjFbqJQisYTzrJXkMjJz+2gIHbpJww7rVylEsinQ4BbDcT9/mWEZ
-         5SK0hfZgjT6EAwdx29hg5boGYbrEj+hEdtUNOKT3sLXrgEp3Nh5K6iz95zj8DkF54xG9
-         JDfQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=cy/trsDd8yLTVEJh558cDfunHTs2Qb/idq4sWa7wWtQ=;
-        b=kvSdMIunkd85FiOnpjq7u0RiccBP0hbJOJv2vMwk3AqWnFxGngqrQ5oyFXnIiHuNUT
-         SYpkSvNqGgVqvB7DtbVauGKpa6VTBwaAihvxc1a7HFoSnBeTqjcKxeH6e0k46r1vicWJ
-         p4cTzUmtMlsoKkgHiBNEh+na1QPlOC9LMuy8soaUQYYb5Hetj23REmfuJsYnVhMsJbXM
-         xU77KEdRvqFxliV0erzrbcxuU9iL4lgO1v91vIRcl/WUAnwHXoc4dyF8mUI2C44HRUAy
-         HjVQQRWocnrVULCXekvWTlfz9z4xC5rVNEvgsVPKraIxBXE5KxRA7nJOhpEkx5sLwpVg
-         ME+g==
-X-Gm-Message-State: ACgBeo1IFY7GPaGV4V6I5Y56wwbVKpEyRRqIn4m3LoE6zrzjPbKSVF9Y
-	QhlXrdM3eCqLSUF+/zcAJi8IAw==
-X-Google-Smtp-Source: AA6agR4X82GuLVgZJmrma1mw0oOP+orTMPigc9OEMYQBmWdiVJQeXqwdqzGeABYFTlI5gKlLDikahQ==
-X-Received: by 2002:a05:6512:2255:b0:492:f5b8:ef2d with SMTP id i21-20020a056512225500b00492f5b8ef2dmr1009522lfu.128.1662555283241;
-        Wed, 07 Sep 2022 05:54:43 -0700 (PDT)
-Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id z12-20020a056512370c00b0049465afdd38sm2470499lfr.108.2022.09.07.05.54.42
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Sep 2022 05:54:42 -0700 (PDT)
-Message-ID: <2ae421c4-5e14-d4f5-1cd4-df227d3b85d0@linaro.org>
-Date: Wed, 7 Sep 2022 14:54:41 +0200
+	id 1oVvvv-006oHy-Rt; Wed, 07 Sep 2022 14:21:41 +0000
+Received: from booty.fritz.box (unknown [77.244.183.192])
+	(Authenticated sender: luca.ceresoli@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPA id 20F56200002;
+	Wed,  7 Sep 2022 14:21:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1662560494;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=7RATQ1JbATm9X+Wc/5gqBHh5cXHWLcY7/Zz0xbFDNbo=;
+	b=e71aa7ZeQb+9niVLutMjhbHbiGoOVQXyA8/LYnJf6HK/XgDE2v/9cdl/QMBMw0CBJA83wA
+	xQMwsyTWB1jngIHRUMyqlxrTakDtZsGdB2iEE3oFTOlOcONVb5V6RwXiV+Sz9uENIZBgb0
+	tkcriO403wd1xDp0mW+Ju7ShSvsJiJhVdIMkf5hCNe6c58QDR/sukT7fefkIofgjXft5UA
+	ZxnZ3K7/6l8ACrICnNUQOh0ZKVvt4vBja9CLE5I2G1tTPSWs9rs0Gr1xvyYsIzqc6m3ZHi
+	xiQdInb+cbNKXyPL0Vj/5Per31+MIKNsHcGRhKBOg8Z79DH3E2rFmDxYPYnclA==
+From: luca.ceresoli@bootlin.com
+To: alsa-devel@alsa-project.org,
+	linux-rockchip@lists.infradead.org
+Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Johan Jonker <jbx6244@gmail.com>,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH 0/8] Add support for the internal RK3308 audio codec
+Date: Wed,  7 Sep 2022 16:21:16 +0200
+Message-Id: <20220907142124.2532620-1-luca.ceresoli@bootlin.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Add regulator suffix to
- BPI-R2-Pro
-Content-Language: en-US
-To: Frank Wunderlich <linux@fw-web.de>, linux-rockchip@lists.infradead.org
-Cc: Frank Wunderlich <frank-w@public-files.de>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220906164212.84835-1-linux@fw-web.de>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220906164212.84835-1-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220907_055445_025039_922289CE 
-X-CRM114-Status: UNSURE (   8.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220907_072140_206490_5CF387AC 
+X-CRM114-Status: GOOD (  16.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,22 +81,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 06/09/2022 18:42, Frank Wunderlich wrote:
-> From: Frank Wunderlich <frank-w@public-files.de>
-> 
-> Add -regulator suffix to regulator names on Banana Pi R2 Pro board as
-> discussed on Mailinglist
-> 
-> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
-> ---
-> https://patchwork.kernel.org/project/linux-rockchip/patch/20220825193836.54262-6-linux@fw-web.de/
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
+This series of patches adds support to use the internal audio codec of the
+Rockchip RK3308 SoC. This codec is internally connected to the I2S
+peripherals on the same chip, and it has some peculiarities arising from
+that interconnection.
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+For proper bidirectional operation with the internal codec, the I2S
+peripheral needs two clock sources (tx and rx), while connection with an
+external codec commonly needs only one. Since v5.16 there is a driver for
+the I2S in sound/soc/rockchip/rockchip_i2s_tdm.c, but it does not correctly
+handle receiving those two clocks via the .set_sysclk op. Patch 5 fixes
+that.
 
+However the simple-audio-card and audio-graph-card sound card drivers do
+not support calling .set_sysclk twice, thus patch 6 makes the .init op of
+struct asoc_simple_priv overridable by a driver in order to be able to call
+.set_sysclk twice and thus configure both clocks.
 
-Best regards,
-Krzysztof
+Patch 7 adds the codec driver and patch 8 builds on top of all the above by
+implementing a simple RK3308-specific audio card, based on
+audio-graph-card. This card sets all the I2S input clocks.
+
+Patches 1-2 add DT bindings for the codec and the card. Patches 3-4 add to
+the SoC DT file two I2S controllers (those which are internally connected
+to the internal codec) and the codec itself.
+
+Luca
+
+Luca Ceresoli (8):
+  ASoC: rockchip: rk3308: add internal audio codec bindings
+  ASoC: rockchip: rk3308: add audio card bindings
+  arm64: dts: rockchip: add i2s_8ch_2 and i2s_8ch_3
+  arm64: dts: rockchip: add the internal audio codec
+  ASoC: rockchip: i2s-tdm: Fix clk_id usage in .set_sysclk()
+  ASoC: audio-graph: let dai_link->init be overridable
+  ASoC: codecs: Add RK3308 internal audio codec driver
+  ASoC: rockchip: add new RK3308 sound card
+
+ .../rockchip,rk3308-audio-graph-card.yaml     |   50 +
+ .../bindings/sound/rockchip,rk3308-codec.yaml |  102 +
+ MAINTAINERS                                   |   14 +
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi      |   68 +
+ .../dt-bindings/sound/rockchip,rk3308-codec.h |   15 +
+ include/sound/simple_card_utils.h             |    1 +
+ sound/soc/codecs/Kconfig                      |   11 +
+ sound/soc/codecs/Makefile                     |    2 +
+ sound/soc/codecs/rk3308_codec.c               | 2122 +++++++++++++++++
+ sound/soc/codecs/rk3308_codec.h               |  648 +++++
+ sound/soc/generic/audio-graph-card.c          |    2 +
+ sound/soc/rockchip/Kconfig                    |   14 +
+ sound/soc/rockchip/Makefile                   |    1 +
+ sound/soc/rockchip/rockchip_i2s_tdm.c         |   18 +-
+ sound/soc/rockchip/rockchip_rk3308_card.c     |   97 +
+ 15 files changed, 3159 insertions(+), 6 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3308-audio-graph-card.yaml
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml
+ create mode 100644 include/dt-bindings/sound/rockchip,rk3308-codec.h
+ create mode 100644 sound/soc/codecs/rk3308_codec.c
+ create mode 100644 sound/soc/codecs/rk3308_codec.h
+ create mode 100644 sound/soc/rockchip/rockchip_rk3308_card.c
+
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
