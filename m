@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DEFEC38145
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 14:23:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 771B5C54EE9
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 14:23:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lLN6nSp3ZmVqAPTChaVjZKHJjF0KUasBhIVIpGSltVU=; b=qjbjjmZ1GnXL/5
-	IH5xKWbdOJDIMJIrkNVtX8+tcohMa8fMxIGBZaRhlV49T/E3hNpRuRfFshTL4cOFKojFU6gUvJb5j
-	jdaSC92ph4zf6TDUzYNlQsJILFyBHadOXZ3Rp6blhgMOg8DoEoBqoXfJkntRqM93/EWhUkyDP/A9X
-	eUx1ugSGPTjhpEdnGOiChYb5Gr9l7SUIxOd/FXR+9bm/w+PO7l3O4tmYdrJS9KBNtJUhVmbu/mTu3
-	RQaFQRhLWkQsUFFTWb8RZLjHtADHmokwJeNR8uKG7azkazkYus8wNOCkhiLg9+IG1CwVMmXSQqZ8l
-	MBhABe8scGc/bJl2vSBA==;
+	List-Owner; bh=3Kr8Rzo5BxSfYRAx4XMj3um/UWXKFdNgGQZrWILatRE=; b=WXIKjjtMX1PduV
+	Nl6Cwq5OUmOdlTF7jGogZ39bjo9sA5rbz7zmUpJgJagjr8kWf4dccFyJaxNQGm63WwRXVR9dg5qq6
+	oizMaXjbc9RYT5Y+0YSgHRnCsHBTrfnFYdqW4wvVWlyMHLeTRTenm7JGzYcvu4m3dSYpYZ9D3zuTl
+	MBtzrYZ4/48a9bVwAoJ3MDG8VZpsrqzrPqGsgkNoVn2UoEzvhlpbyq7tK1spBz2a26wVfWoO0xY55
+	yT8SRWLJamNorIIlVTydfG6q4UZUT/bJx4/HLGMewVeuwq6+qPKp1vwliKpMykRJe9cWc2c3FvXoM
+	V12e+F1PLaea1fCBdbng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVvxD-006p4x-Cm; Wed, 07 Sep 2022 14:22:59 +0000
+	id 1oVvxV-006pH2-KU; Wed, 07 Sep 2022 14:23:17 +0000
 Received: from relay12.mail.gandi.net ([2001:4b98:dc4:8::232])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVvwQ-006oXq-6F; Wed, 07 Sep 2022 14:22:12 +0000
+	id 1oVvwQ-006oWF-60; Wed, 07 Sep 2022 14:22:12 +0000
 Received: from booty.fritz.box (unknown [77.244.183.192])
 	(Authenticated sender: luca.ceresoli@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPA id 4695B20000D;
-	Wed,  7 Sep 2022 14:22:06 +0000 (UTC)
+	by mail.gandi.net (Postfix) with ESMTPA id F2C2920000F;
+	Wed,  7 Sep 2022 14:22:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1662560527;
+	t=1662560526;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=d12YAjeraqwxRD2IqjgZc6aJaYWV3WXQkVFDeRXfBTA=;
-	b=LSdOFgZfPTa/D1VumgCk6xEvKgX/7vfoT/oRTJ6fjbcCp0KIlM2iMoFtlZqgfNcVGW33/9
-	oR1WVXzp6lZl78tIxjrey5/180SsjzMs0j95C83GbnU2XQvOB2vUWNVeH+M6UqZO0K+AIZ
-	u4rVWAXY3rp6Ubn1hoUwRapgyWPvbFMRymdPeC7ITbsw+K75+rfcwtNHcz3x2IuRu/uRF0
-	g443E9DIOjYXDKBbRmhaOSDl8vq+CESYUjQhL3pSMlJn/cHZw30ttO3vRN8i67WjOvUSUI
-	dDEsxGXCg8IrZTOBezF6EnEvqs9kUouoZfeVnGcOqZWP5iw9371KlePqH2pgtg==
+	bh=VgbxwdFt5PQppcOV7X5ar9OBFO85n+/rhDp625ejemw=;
+	b=K3xa18hD5THvri4wHGXS1ynPnBzxFd5Zor2sm9QM6SMroLfr12HiVYVsbewqW89p0iqgV4
+	IlnnpUFS8seVJT3Mtv0E7rprRb3KqgTrVixWJN+fNMl6fibdHrWSEwwduzd3sEN9D7C5Kf
+	7R+Hh0+gkO0A4KbbemjizLE5quL2C8M20AJgKZJhM1WaQ1sNXjU+2lpBbooX5O5HfXNQAx
+	q/o/FegSFyelVAKO3y8zlWkcJtcN+6eGCdGElS9d+wfZg76iBu4oazIuQ7Bww9Ry0x2qvA
+	rIYgWb+yghfJ2U2bCudSsu/kIAyKbz6kVQr6rHL9gI+PC6OAaCk3UAm1q4QbRg==
 From: luca.ceresoli@bootlin.com
 To: alsa-devel@alsa-project.org,
 	linux-rockchip@lists.infradead.org
@@ -58,16 +58,16 @@ Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>,
 	Philipp Zabel <p.zabel@pengutronix.de>,
 	Johan Jonker <jbx6244@gmail.com>,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 3/8] arm64: dts: rockchip: add i2s_8ch_2 and i2s_8ch_3
-Date: Wed,  7 Sep 2022 16:21:19 +0200
-Message-Id: <20220907142124.2532620-4-luca.ceresoli@bootlin.com>
+Subject: [PATCH 2/8] ASoC: rockchip: rk3308: add audio card bindings
+Date: Wed,  7 Sep 2022 16:21:18 +0200
+Message-Id: <20220907142124.2532620-3-luca.ceresoli@bootlin.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220907142124.2532620-1-luca.ceresoli@bootlin.com>
 References: <20220907142124.2532620-1-luca.ceresoli@bootlin.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220907_072210_608069_59EF007A 
-X-CRM114-Status: GOOD (  11.20  )
+X-CRM114-CacheID: sfid-20220907_072210_610228_7C8EE8FB 
+X-CRM114-Status: GOOD (  14.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,78 +86,88 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
-These are I2S engines internally connected to the built-in audio codec.
+Add device tree bindings document for the audio card based on the internal
+I2S of the Rockchip RK3308 SoC.
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 54 ++++++++++++++++++++++++
- 1 file changed, 54 insertions(+)
+ .../rockchip,rk3308-audio-graph-card.yaml     | 50 +++++++++++++++++++
+ MAINTAINERS                                   |  5 ++
+ 2 files changed, 55 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3308-audio-graph-card.yaml
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index 2dfa67f1cd67..093b70563b23 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -571,6 +571,60 @@ dmac1: dma-controller@ff2d0000 {
- 		#dma-cells = <1>;
- 	};
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3308-audio-graph-card.yaml b/Documentation/devicetree/bindings/sound/rockchip,rk3308-audio-graph-card.yaml
+new file mode 100644
+index 000000000000..8445a69dcdbb
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/rockchip,rk3308-audio-graph-card.yaml
+@@ -0,0 +1,50 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/rockchip,rk3308-audio-graph-card.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip RK3308 Audio card based on internal I2S
++
++maintainers:
++  - Luca Ceresoli <luca.ceresoli@bootlin.com>
++
++allOf:
++  - $ref: /schemas/sound/audio-graph.yaml#
++
++properties:
++  compatible:
++    const: rockchip,rk3308-audio-graph-card
++
++required:
++  - compatible
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    sound {
++        compatible = "rockchip,rk3308-audio-graph-card";
++        dais = <&i2s_8ch_2_port>;
++    };
++
++    i2s_8ch_2 {
++        i2s_8ch_2_port: port {
++            i2s_8ch_2_endpoint: endpoint {
++                remote-endpoint = <&acodec_endpoint>;
++                dai-format = "i2s";
++
++                /* The RK3308 acodec has no clock dividers, use the CPU */
++                bitclock-master = <&i2s_8ch_2_endpoint>;
++                frame-master = <&i2s_8ch_2_endpoint>;
++            };
++        };
++    };
++
++    acodec {
++        port {
++            acodec_endpoint: endpoint {
++                remote-endpoint = <&i2s_8ch_2_endpoint>;
++            };
++        };
++    };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index d53a8e74cb1e..079bdd95dc49 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -17594,6 +17594,11 @@ S:	Maintained
+ F:	Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml
+ F:	include/dt-bindings/sound/rockchip,rk3308-codec.h
  
-+	/*
-+	 * - can be clock producer or consumer
-+	 * - up to 8 capture channels and 2 playback channels
-+	 * - connected internally to audio codec
-+	 */
-+	i2s_8ch_2: i2s@ff320000 {
-+		compatible = "rockchip,rk3308-i2s-tdm";
-+		reg = <0x0 0xff320000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 50 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-names = "mclk_tx", "mclk_rx", "hclk",
-+			      "mclk_tx_src", "mclk_rx_src",
-+			      "mclk_root0", "mclk_root1";
-+		clocks = <&cru SCLK_I2S2_8CH_TX>,
-+			 <&cru SCLK_I2S2_8CH_RX>,
-+			 <&cru HCLK_I2S2_8CH>,
-+			 <&cru SCLK_I2S2_8CH_TX_SRC>,
-+			 <&cru SCLK_I2S2_8CH_RX_SRC>,
-+			 <&cru PLL_VPLL0>,
-+			 <&cru PLL_VPLL1>;
-+		dmas = <&dmac1 5>, <&dmac1 4>;
-+		dma-names = "rx", "tx";
-+		resets = <&cru SRST_I2S2_8CH_TX_M>, <&cru SRST_I2S2_8CH_RX_M>;
-+		reset-names = "tx-m", "rx-m";
-+		rockchip,grf = <&grf>;
-+		status = "disabled";
-+	};
++ROCKCHIP RK3308 SOUND CARD DRIVER
++M:	Luca Ceresoli <luca.ceresoli@bootlin.com>
++S:	Maintained
++F:	Documentation/devicetree/bindings/sound/rockchip,rk3308-audio-graph-card.yaml
 +
-+	/*
-+	 * - can be clock consumer only
-+	 * - up to 4 capture channels, no playback
-+	 * - connected internally to audio codec
-+	 */
-+	i2s_8ch_3: i2s@ff330000 {
-+		compatible = "rockchip,rk3308-i2s-tdm";
-+		reg = <0x0 0xff330000 0x0 0x1000>;
-+		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-names = "mclk_tx", "mclk_rx", "hclk",
-+			      "mclk_tx_src", "mclk_rx_src",
-+			      "mclk_root0", "mclk_root1";
-+		clocks = <&cru SCLK_I2S3_8CH_TX>,
-+			 <&cru SCLK_I2S3_8CH_RX>,
-+			 <&cru HCLK_I2S3_8CH>,
-+			 <&cru SCLK_I2S3_8CH_TX_SRC>,
-+			 <&cru SCLK_I2S3_8CH_RX_SRC>,
-+			 <&cru PLL_VPLL0>,
-+			 <&cru PLL_VPLL1>;
-+		dmas = <&dmac1 7>;
-+		dma-names = "rx";
-+		resets = <&cru SRST_I2S3_8CH_TX_M>, <&cru SRST_I2S3_8CH_RX_M>;
-+		reset-names = "tx-m", "rx-m";
-+		rockchip,grf = <&grf>;
-+		status = "disabled";
-+	};
-+
- 	i2s_2ch_0: i2s@ff350000 {
- 		compatible = "rockchip,rk3308-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x0 0xff350000 0x0 0x1000>;
+ ROCKCHIP VIDEO DECODER DRIVER
+ M:	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+ L:	linux-media@vger.kernel.org
 -- 
 2.34.1
 
