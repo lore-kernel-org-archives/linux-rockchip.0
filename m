@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4F73ECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 08:33:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10D22C38145
+	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 08:35:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5aPXHJiuV7jCP9vJ/TPWS+Y/+846+3k+wkID+gNKaM8=; b=fOt7xzHVMjED4P
-	cPGuh/cRouf3OsaL6IBFh584RLk/7IPM/n8gcmf1wKh1cecLABrHZEe/XNYL8hz+o+hI7JTGcH1vk
-	BjUzN+HVaO8bmqCTx4oy/cTuBs6h3BYvU67EtlS3E0ULvl1VnM0sheaFozDN2j2GQCVktlxZsHrrH
-	Gu0Hg0qpibk9rQVA+uEdw4FvulM76Red3RrBkdPCLrhNAKjUmPvC2OlfawpBSOO5Y8JuLAm1RrleU
-	tPgJnnCKmVGbqVQSKxSrP+i5HhoHu1pfN0c56nNfGzURmcUJD6whmGu35+MprR2O/oCIc+Pl2+wSd
-	Akaj0XZjTKfP+PSJ0xAA==;
+	List-Owner; bh=VzL4i8M8rmP5lFR2eHbe1+h2K33M7LeAwXkIFEcuniI=; b=OewOabHIsiibYB
+	by0k4G3oRHzypnPs2WJcykDGqh5EtZgkV/ppbP/xpvpbdrEczO951RUNOJKnJhHhTYRkpTZAC885f
+	ZxQ274QfY5g0rvq4PGQtKpcDZ7a3dbny1mjmymrCQN26W8klmxjLCI5GUYQyYO7Dpz27Nk2OTZTf3
+	9cH8GE1rM5Fix5S5VVdcCP6t9VzSYrFEdRobc3Z07okxF5pZh6VKXL6ztq3zOmea4tQ7QwWvfqV+P
+	ycXKhrDmyxhMAhGOg+DorCh7M+n6yxqa40tQTZKlbQb//YQlUnJZKKEszSE4wh0HZryWxrBNMBW/i
+	mpkh+g7ylhCjtOS0ktdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVqV4-004JOQ-DX; Wed, 07 Sep 2022 08:33:34 +0000
+	id 1oVqX6-004L51-FJ; Wed, 07 Sep 2022 08:35:40 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oVqJh-004BR2-FL; Wed, 07 Sep 2022 08:21:50 +0000
+	id 1oVqOD-004Eqe-QK; Wed, 07 Sep 2022 08:26:31 +0000
 Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1oVqJc-00040V-IP; Wed, 07 Sep 2022 10:21:44 +0200
+	id 1oVqO6-00042j-Sn; Wed, 07 Sep 2022 10:26:22 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: FUKAUMI Naoki <naoki@radxa.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, FUKAUMI Naoki <naoki@radxa.com>
-Subject: Re: [PATCH 1/2] arm64: dts: rockchip: add LED for ROCK Pi 4A/B/C/A+/B+
-Date: Wed, 07 Sep 2022 10:21:43 +0200
-Message-ID: <19268570.jiFIW2sfyF@diego>
-In-Reply-To: <20220907045925.1284785-1-naoki@radxa.com>
-References: <20220907045925.1284785-1-naoki@radxa.com>
+To: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Caleb Connolly <kc@postmarketos.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, phone-devel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: add BT/wifi nodes to Pinephone Pro
+Date: Wed, 07 Sep 2022 10:26:21 +0200
+Message-ID: <46977559.XUcTiDjVJD@diego>
+In-Reply-To: <57395b20-6352-8414-3078-cdad6bbbe999@postmarketos.org>
+References: <Rk3c--Dksit7gaQSddtVEaF5_7FlNYE4KZKQKaLsRu2GXMXoBgp5C2DSPNublHMr6E135nPS2B9JkQyf6aSZjw==@protonmail.internalid> <20220906124713.1683587-1-tom@tom-fitzhenry.me.uk> <57395b20-6352-8414-3078-cdad6bbbe999@postmarketos.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220907_012149_574178_D33CBA9E 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20220907_012629_922899_FD76FE70 
+X-CRM114-Status: GOOD (  22.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,80 +57,144 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-Am Mittwoch, 7. September 2022, 06:59:24 CEST schrieb FUKAUMI Naoki:
-> only user_led2 (blue) is supported.
+Am Dienstag, 6. September 2022, 19:38:38 CEST schrieb Caleb Connolly:
 > 
-> user_led1 (green) is not connected to any gpio so it cannot be
-> controlled.
+> On 06/09/2022 13:47, Tom Fitzhenry wrote:
+> > Pinephone Pro includes a AzureWave AW-CM256SM wifi (sdio0) and
+> > bt (uart0) combo module, which is based on Cypress
+> > CYP43455 (BCM43455).
+> > 
+> > Signed-off-by: Tom Fitzhenry <tom@tom-fitzhenry.me.uk>
+> > ---
+> >   .../dts/rockchip/rk3399-pinephone-pro.dts     | 69 +++++++++++++++++++
+> >   1 file changed, 69 insertions(+)
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+> > index 2e058c3150256..096238126e4c1 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+> > @@ -43,6 +43,20 @@ key-power {
+> >   		};
+> >   	};
+> > 
+> > +	/* Power sequence for SDIO WiFi module */
 > 
-> Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
-> ---
->  .../boot/dts/rockchip/rk3399-rock-pi-4.dtsi   | 20 +++++++++++++++++++
->  1 file changed, 20 insertions(+)
+> This comment isn't needed, instead give the node a better name/label
+> > +	sdio_pwrseq: sdio-pwrseq {
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-> index 401e1ae9d944..49126560b30b 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-> @@ -6,6 +6,7 @@
->  
->  /dts-v1/;
->  #include <dt-bindings/input/linux-event-codes.h>
-> +#include <dt-bindings/leds/common.h>
->  #include <dt-bindings/pwm/pwm.h>
->  #include "rk3399.dtsi"
->  #include "rk3399-opp.dtsi"
-> @@ -27,6 +28,19 @@ clkin_gmac: external-gmac-clock {
->  		#clock-cells = <0>;
->  	};
->  
-> +	leds {
-> +		compatible = "gpio-leds";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&user_led2>;
-> +
-> +		user_led2 {
+> 	wifi_pwrseq: sdio-pwrseq-wifi {
 
-Node names should definitly use "-" not underscores.
+I guess, I'd move the components around a tiny bit and go with
 
-Also gpio-leds define a pattern for node names in the yaml binding:
-	"(^led-[0-9a-f]$|led)":
+	wifi_pwrseq: sdio-wifi-pwrseq {
 
-So running dtbscheck on those new nodes should have found new
-errors with that addition.
-
-See commit e916d85b922f ("arm64: dts: rockchip: rename and label gpio-led subnodes")
-where existing already were already converted to be binding compliant.
+So far everywhere the "-pwrseq" is at the end and while I don't
+think that this is enforced (yet), keeping some sort of consistency
+might be nice :-) 
 
 
 Heiko
 
 
-> +			function = LED_FUNCTION_STATUS;
-> +			color = <LED_COLOR_ID_BLUE>;
-> +			gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
-> +			linux,default-trigger = "heartbeat";
-> +		};
-> +	};
-> +
->  	sdio_pwrseq: sdio-pwrseq {
->  		compatible = "mmc-pwrseq-simple";
->  		clocks = <&rk808 1>;
-> @@ -553,6 +567,12 @@ hp_int: hp-int {
->  		};
->  	};
->  
-> +	leds {
-> +		user_led2: user-led2 {
-> +			rockchip,pins = <3 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
->  	pcie {
->  		pcie_pwr_en: pcie-pwr-en {
->  			rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +		compatible = "mmc-pwrseq-simple";
+> > +		clocks = <&rk818 1>;
+> > +		clock-names = "ext_clock";
+> > +		pinctrl-names = "default";
+> > +		pinctrl-0 = <&wifi_enable_h_pin>;
+> > +		post-power-on-delay-ms = <100>;
+> > +		power-off-delay-us = <500000>;
+> > +
+> > +		/* WL_REG_ON on module */
+> > +		reset-gpios = <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
+> > +	};
+> > +
+> >   	vcc_sys: vcc-sys-regulator {
+> >   		compatible = "regulator-fixed";
+> >   		regulator-name = "vcc_sys";
+> > @@ -360,11 +374,31 @@ vsel2_pin: vsel2-pin {
+> >   		};
+> >   	};
+> > 
+> > +	sdio-pwrseq {
+> > +		wifi_enable_h_pin: wifi-enable-h-pin {
+> > +			rockchip,pins = <0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +		};
+> > +	};
+> > +
+> >   	sound {
+> >   		vcc1v8_codec_en: vcc1v8-codec-en {
+> >   			rockchip,pins = <3 RK_PA4 RK_FUNC_GPIO &pcfg_pull_down>;
+> >   		};
+> >   	};
+> > +
+> > +	wireless-bluetooth {
+> > +		bt_wake_pin: bt-wake-pin {
+> > +			rockchip,pins = <2 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +		};
+> > +
+> > +		bt_host_wake_pin: bt-host-wake-pin {
+> > +			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +		};
+> > +
+> > +		bt_reset_pin: bt-reset-pin {
+> > +			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +		};
+> > +	};
+> >   };
+> > 
+> >   &sdmmc {
+> > @@ -380,6 +414,20 @@ &sdmmc {
+> >   	status = "okay";
+> >   };
+> > 
+> > +&sdio0 {
+> > +	bus-width = <4>;
+> > +	cap-sd-highspeed;
+> > +	cap-sdio-irq;
+> > +	disable-wp;
+> > +	keep-power-in-suspend;
+> > +	mmc-pwrseq = <&sdio_pwrseq>;
+> > +	non-removable;
+> > +	pinctrl-names = "default";
+> > +	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+> > +	sd-uhs-sdr104;
+> > +	status = "okay";
+> > +};
+> > +
+> >   &sdhci {
+> >   	bus-width = <8>;
+> >   	mmc-hs200-1_8v;
+> > @@ -393,6 +441,27 @@ &tsadc {
+> >   	status = "okay";
+> >   };
+> > 
+> > +&uart0 {
+> > +	pinctrl-names = "default";
+> > +	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
+> > +	uart-has-rtscts;
+> > +	status = "okay";
+> > +
+> > +	bluetooth {
+> > +		compatible = "brcm,bcm4345c5";
+> > +		clocks = <&rk818 1>;
+> > +		clock-names = "lpo";
+> > +		device-wakeup-gpios = <&gpio2 RK_PD2 GPIO_ACTIVE_HIGH>;
+> > +		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
+> > +		max-speed = <1500000>;
+> > +		pinctrl-names = "default";
+> > +		pinctrl-0 = <&bt_host_wake_pin &bt_wake_pin &bt_reset_pin>;
+> > +		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
+> > +		vbat-supply = <&vcc3v3_sys>;
+> > +		vddio-supply = <&vcc_1v8>;
+> > +	};
+> > +};
+> > +
+> >   &uart2 {
+> >   	status = "okay";
+> >   };
+> > --
+> > 2.37.1
+> > 
 > 
 
 
