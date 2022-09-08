@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BD23ECAAD3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E849C54EE9
 	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 00:31:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,38 +12,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LJ/anaMbhQ2I3HvduYMoVXCpaktzOZ9+zOC8PiuLaOU=; b=YMXYfvMznbuqZj
-	ergNdtisciwUUDU6u26vnck+OZXettYkV6rMqK55lsnJLzAdOWv5aze5fit0Z/6/lspc2KtTnHhxY
-	g7gRouzVnrAQvyLQs1VyVqyUyTzARvtp/BoD7z+5SuShoT3ftz+dGLV5IgzsFyRkXTKqwYD8wO8oN
-	IeS5mSC8gG66RsnMxwfenH7Qhyt3L/is2D9oGqLi7Eudek5XLHBzGiPNSmW8b+k3+WAp4nm4NaGrD
-	zOpqQTRUj1YJSwUQ1HR59soY7INvxUxKN1OnnwMpVhJqtvSz0oXr5Hcm0r/PTwBFk8v871pyxNGO1
-	v2oPSOfWJg8LUJ7t6psg==;
+	List-Owner; bh=IMrec87aE/8/EUfc6pH/O3iF9kSWqhKPwfEGZpGC3N0=; b=cRas11QvuNMLS8
+	HKoX3oPbOeDyyCnEbvfLX/pVER4DxyGFQ8DzCM1CtAbbCQ1A61OMh92kmQ4xsxJ9V7rW5MwFuPi7K
+	iZPdF2YmmUsmGLRpBO8iqH3JOH5FIcvuBqKmlv2q5pchcHarJQYfSKNmRadADBFF8WcOn+T2DH6E/
+	g/1NXYjkBTxZmTsZynKTbuSp5FmKKOcFqHKdxq3iHov/F096HC+4hakbc1eAkrwJtD3dNmoLWJSHT
+	j2jCEh3dNerFMfZqNCHf2FLTJSFnI/3BvzrI3am1F6vlisFMTdOTn/G295sjnzaMv/y+XzI3rb9kn
+	9/Pou0P+b+uyJwQWO0fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oW5S9-00DG2I-Im; Thu, 08 Sep 2022 00:31:33 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oW5SF-00DGLl-Aw; Thu, 08 Sep 2022 00:31:39 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oW5Rx-00DFJX-1H
-	for linux-rockchip@lists.infradead.org; Thu, 08 Sep 2022 00:31:25 +0000
+	id 1oW5Rz-00DFSR-14
+	for linux-rockchip@lists.infradead.org; Thu, 08 Sep 2022 00:31:27 +0000
 Received: from jupiter.universe (dyndsl-095-033-158-249.ewe-ip-backbone.de [95.33.158.249])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id A70896601F7D;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id B7A616601F7F;
 	Thu,  8 Sep 2022 01:31:14 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1662597074;
-	bh=0IQkKKrWviqP+DaaIRZGIHRLFt3pmMMqqP1bRI8JOfQ=;
+	s=mail; t=1662597075;
+	bh=XYYcbtJgv25KvQnOUHgNscwzxwqtYPVJyKex1PCPoKw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=kBNDlY5f+IwbeIqdgUoAGvAKRs4LTPPzFCBETVDeKLM9UcPREM+fF7yXM3r02ylIC
-	 DS6g7i5JWxAxrsbcaaEnk0rrDfkwyJGDe+ejEe4gV/jR124E9aSDhfVWHfNGC+Twvf
-	 l5rHzj2CRWVUMf6eAfzD/Ek54fs2GLn0Qn7R7YIcm7WBZd0pdG32B+B48wtmQsg9Lw
-	 w0ErkFp0UxK+77wtypyfmLMaDLhJgSibYEjytEzTBvYeieyfYLsg0ORvnlTTQGSFRQ
-	 qAeX6ZWsAYkQDUVg6IiOJYUlOhrSTZ+1EyJ319RP1edM+7+4/n46gQuCb6PdsoF2zf
-	 MCAUzABF1ehTA==
+	b=SlGmjVVzqOM5wEBDIyOplN6EJceYlDScrjsNpi054wNUUACeMzKYLSG1fHPciCnWv
+	 02jwkCu91qI9zGhzO32zToyNfYS48d6YZcIii4zhCGuSYxhFkTD6k9yKkyMThhc5Nn
+	 VnzeB1WI3SS5d5044Mqf/NZ3c2Qier0EPAwAFIVeorEBj9e98ZeFKuQPCfdzJlDkBr
+	 yR7i5/aXRxkwTEHL04WEo4bdBFV5HJG/sCT73PofZaIL/HU0h/JFFSNb2GC6F4S7a5
+	 aeD+S8cO5khtH0vdE/iBDMjMcGmGB5f5/HNtUGZ+6+ESJjyAWtpEj+I5blmcHIV5B9
+	 lFt6ziLnB0TPw==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 6DF62480792; Thu,  8 Sep 2022 02:31:09 +0200 (CEST)
+	id 7466D48079F; Thu,  8 Sep 2022 02:31:09 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -60,17 +60,18 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCHv2 08/13] dt-bindings: mfd: add rk806 binding
-Date: Thu,  8 Sep 2022 02:31:02 +0200
-Message-Id: <20220908003107.220143-9-sebastian.reichel@collabora.com>
+	kernel@collabora.com,
+	shengfei Xu <xsf@rock-chips.com>
+Subject: [PATCHv2 10/13] pinctrl: rk805: add rk806 pinctrl support
+Date: Thu,  8 Sep 2022 02:31:04 +0200
+Message-Id: <20220908003107.220143-11-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220908003107.220143-1-sebastian.reichel@collabora.com>
 References: <20220908003107.220143-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220907_173121_429229_E1A778EF 
-X-CRM114-Status: GOOD (  14.26  )
+X-CRM114-CacheID: sfid-20220907_173123_380306_5E077A41 
+X-CRM114-Status: GOOD (  22.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,408 +88,336 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add DT binding document for Rockchip's RK806 PMIC.
+Add support for rk806 dvs pinctrl to the existing rk805
+driver.
 
+This has been implemented using shengfei Xu's rk806
+specific driver from the vendor tree as reference.
+
+Co-Developed-by: shengfei Xu <xsf@rock-chips.com>
+Signed-off-by: shengfei Xu <xsf@rock-chips.com>
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../bindings/mfd/rockchip,rk806.yaml          | 388 ++++++++++++++++++
- 1 file changed, 388 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+ drivers/pinctrl/pinctrl-rk805.c | 189 ++++++++++++++++++++++++++++----
+ 1 file changed, 168 insertions(+), 21 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
-new file mode 100644
-index 000000000000..80216440bd9f
---- /dev/null
-+++ b/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
-@@ -0,0 +1,388 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mfd/rockchip,rk806.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/pinctrl/pinctrl-rk805.c b/drivers/pinctrl/pinctrl-rk805.c
+index 7c1f7408fb9a..2639a9ee82cd 100644
+--- a/drivers/pinctrl/pinctrl-rk805.c
++++ b/drivers/pinctrl/pinctrl-rk805.c
+@@ -1,10 +1,12 @@
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ /*
+- * Pinctrl driver for Rockchip RK805 PMIC
++ * Pinctrl driver for Rockchip RK805/RK806 PMIC
+  *
+  * Copyright (c) 2017, Fuzhou Rockchip Electronics Co., Ltd
++ * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
+  *
+  * Author: Joseph Chen <chenjh@rock-chips.com>
++ * Author: Xu Shengfei <xsf@rock-chips.com>
+  *
+  * Based on the pinctrl-as3722 driver
+  */
+@@ -44,6 +46,7 @@ struct rk805_pin_group {
+ 
+ /*
+  * @reg: gpio setting register;
++ * @fun_reg: functions select register;
+  * @fun_mask: functions select mask value, when set is gpio;
+  * @dir_mask: input or output mask value, when set is output, otherwise input;
+  * @val_mask: gpio set value, when set is level high, otherwise low;
+@@ -56,6 +59,7 @@ struct rk805_pin_group {
+  */
+ struct rk805_pin_config {
+ 	u8 reg;
++	u8 fun_reg;
+ 	u8 fun_msk;
+ 	u8 dir_msk;
+ 	u8 val_msk;
+@@ -80,22 +84,50 @@ enum rk805_pinmux_option {
+ 	RK805_PINMUX_GPIO,
+ };
+ 
++enum rk806_pinmux_option {
++	RK806_PINMUX_FUN0 = 0,
++	RK806_PINMUX_FUN1,
++	RK806_PINMUX_FUN2,
++	RK806_PINMUX_FUN3,
++	RK806_PINMUX_FUN4,
++	RK806_PINMUX_FUN5,
++};
 +
-+title: RK806 Power Management Integrated Circuit
+ enum {
+ 	RK805_GPIO0,
+ 	RK805_GPIO1,
+ };
+ 
++enum {
++	RK806_GPIO_DVS1,
++	RK806_GPIO_DVS2,
++	RK806_GPIO_DVS3
++};
 +
-+maintainers:
-+  - Sebastian Reichel <sebastian.reichel@collabora.com>
+ static const char *const rk805_gpio_groups[] = {
+ 	"gpio0",
+ 	"gpio1",
+ };
+ 
++static const char *const rk806_gpio_groups[] = {
++	"gpio_pwrctrl1",
++	"gpio_pwrctrl2",
++	"gpio_pwrctrl3",
++};
 +
-+description: |
-+  Rockchip RK806 series PMIC. This device consists of an spi or
-+  i2c controlled MFD that includes multiple switchable regulators.
+ /* RK805: 2 output only GPIOs */
+ static const struct pinctrl_pin_desc rk805_pins_desc[] = {
+ 	PINCTRL_PIN(RK805_GPIO0, "gpio0"),
+ 	PINCTRL_PIN(RK805_GPIO1, "gpio1"),
+ };
+ 
++/* RK806 */
++static const struct pinctrl_pin_desc rk806_pins_desc[] = {
++	PINCTRL_PIN(RK806_GPIO_DVS1, "gpio_pwrctrl1"),
++	PINCTRL_PIN(RK806_GPIO_DVS2, "gpio_pwrctrl2"),
++	PINCTRL_PIN(RK806_GPIO_DVS3, "gpio_pwrctrl3"),
++};
 +
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk806
+ static const struct rk805_pin_function rk805_pin_functions[] = {
+ 	{
+ 		.name = "gpio",
+@@ -105,6 +137,45 @@ static const struct rk805_pin_function rk805_pin_functions[] = {
+ 	},
+ };
+ 
++static const struct rk805_pin_function rk806_pin_functions[] = {
++	{
++		.name = "pin_fun0",
++		.groups = rk806_gpio_groups,
++		.ngroups = ARRAY_SIZE(rk806_gpio_groups),
++		.mux_option = RK806_PINMUX_FUN0,
++	},
++	{
++		.name = "pin_fun1",
++		.groups = rk806_gpio_groups,
++		.ngroups = ARRAY_SIZE(rk806_gpio_groups),
++		.mux_option = RK806_PINMUX_FUN1,
++	},
++	{
++		.name = "pin_fun2",
++		.groups = rk806_gpio_groups,
++		.ngroups = ARRAY_SIZE(rk806_gpio_groups),
++		.mux_option = RK806_PINMUX_FUN2,
++	},
++	{
++		.name = "pin_fun3",
++		.groups = rk806_gpio_groups,
++		.ngroups = ARRAY_SIZE(rk806_gpio_groups),
++		.mux_option = RK806_PINMUX_FUN3,
++	},
++	{
++		.name = "pin_fun4",
++		.groups = rk806_gpio_groups,
++		.ngroups = ARRAY_SIZE(rk806_gpio_groups),
++		.mux_option = RK806_PINMUX_FUN4,
++	},
++	{
++		.name = "pin_fun5",
++		.groups = rk806_gpio_groups,
++		.ngroups = ARRAY_SIZE(rk806_gpio_groups),
++		.mux_option = RK806_PINMUX_FUN5,
++	},
++};
 +
-+  reg:
-+    maxItems: 1
+ static const struct rk805_pin_group rk805_pin_groups[] = {
+ 	{
+ 		.name = "gpio0",
+@@ -118,6 +189,24 @@ static const struct rk805_pin_group rk805_pin_groups[] = {
+ 	},
+ };
+ 
++static const struct rk805_pin_group rk806_pin_groups[] = {
++	{
++		.name = "gpio_pwrctrl1",
++		.pins = { RK806_GPIO_DVS1 },
++		.npins = 1,
++	},
++	{
++		.name = "gpio_pwrctrl2",
++		.pins = { RK806_GPIO_DVS2 },
++		.npins = 1,
++	},
++	{
++		.name = "gpio_pwrctrl3",
++		.pins = { RK806_GPIO_DVS3 },
++		.npins = 1,
++	}
++};
 +
-+  interrupts:
-+    maxItems: 1
+ #define RK805_GPIO0_VAL_MSK	BIT(0)
+ #define RK805_GPIO1_VAL_MSK	BIT(1)
+ 
+@@ -132,6 +221,40 @@ static const struct rk805_pin_config rk805_gpio_cfgs[] = {
+ 	},
+ };
+ 
++#define RK806_PWRCTRL1_DR	BIT(0)
++#define RK806_PWRCTRL2_DR	BIT(1)
++#define RK806_PWRCTRL3_DR	BIT(2)
++#define RK806_PWRCTRL1_DATA	BIT(4)
++#define RK806_PWRCTRL2_DATA	BIT(5)
++#define RK806_PWRCTRL3_DATA	BIT(6)
++#define RK806_PWRCTRL1_FUN	GENMASK(2, 0)
++#define RK806_PWRCTRL2_FUN	GENMASK(6, 4)
++#define RK806_PWRCTRL3_FUN	GENMASK(2, 0)
 +
-+  gpio-controller: true
++static struct rk805_pin_config rk806_gpio_cfgs[] = {
++	{
++		.fun_reg = RK806_SLEEP_CONFIG0,
++		.fun_msk = RK806_PWRCTRL1_FUN,
++		.reg = RK806_SLEEP_GPIO,
++		.val_msk = RK806_PWRCTRL1_DATA,
++		.dir_msk = RK806_PWRCTRL1_DR,
++	},
++	{
++		.fun_reg = RK806_SLEEP_CONFIG0,
++		.fun_msk = RK806_PWRCTRL2_FUN,
++		.reg = RK806_SLEEP_GPIO,
++		.val_msk = RK806_PWRCTRL2_DATA,
++		.dir_msk = RK806_PWRCTRL2_DR,
++	},
++	{
++		.fun_reg = RK806_SLEEP_CONFIG1,
++		.fun_msk = RK806_PWRCTRL3_FUN,
++		.reg = RK806_SLEEP_GPIO,
++		.val_msk = RK806_PWRCTRL3_DATA,
++		.dir_msk = RK806_PWRCTRL3_DR,
++	}
++};
 +
-+  '#gpio-cells':
-+    const: 2
+ /* generic gpio chip */
+ static int rk805_gpio_get(struct gpio_chip *chip, unsigned int offset)
+ {
+@@ -289,19 +412,13 @@ static int _rk805_pinctrl_set_mux(struct pinctrl_dev *pctldev,
+ 	if (!pci->pin_cfg[offset].fun_msk)
+ 		return 0;
+ 
+-	if (mux == RK805_PINMUX_GPIO) {
+-		ret = regmap_update_bits(pci->rk808->regmap,
+-					 pci->pin_cfg[offset].reg,
+-					 pci->pin_cfg[offset].fun_msk,
+-					 pci->pin_cfg[offset].fun_msk);
+-		if (ret) {
+-			dev_err(pci->dev, "set gpio%d GPIO failed\n", offset);
+-			return ret;
+-		}
+-	} else {
+-		dev_err(pci->dev, "Couldn't find function mux %d\n", mux);
+-		return -EINVAL;
+-	}
++	mux <<= ffs(pci->pin_cfg[offset].fun_msk) - 1;
++	ret = regmap_update_bits(pci->rk808->regmap,
++				 pci->pin_cfg[offset].fun_reg,
++				 pci->pin_cfg[offset].fun_msk, mux);
 +
-+  vcc1-supply:
-+    description:
-+      The input supply for dcdc-reg1.
++	if (ret)
++		dev_err(pci->dev, "set gpio%d func%d failed\n", offset, mux);
+ 
+ 	return 0;
+ }
+@@ -317,6 +434,22 @@ static int rk805_pinctrl_set_mux(struct pinctrl_dev *pctldev,
+ 	return _rk805_pinctrl_set_mux(pctldev, offset, mux);
+ }
+ 
++static int rk805_pinctrl_gpio_request_enable(struct pinctrl_dev *pctldev,
++					     struct pinctrl_gpio_range *range,
++					     unsigned int offset)
++{
++	struct rk805_pctrl_info *pci = pinctrl_dev_get_drvdata(pctldev);
 +
-+  vcc2-supply:
-+    description:
-+      The input supply for dcdc-reg2.
++	switch (pci->rk808->variant) {
++	case RK805_ID:
++		return _rk805_pinctrl_set_mux(pctldev, offset, RK805_PINMUX_GPIO);
++	case RK806_ID:
++		return _rk805_pinctrl_set_mux(pctldev, offset, RK806_PINMUX_FUN5);
++	}
 +
-+  vcc3-supply:
-+    description:
-+      The input supply for dcdc-reg3.
++	return -ENOTSUPP;
++}
 +
-+  vcc4-supply:
-+    description:
-+      The input supply for dcdc-reg4.
-+
-+  vcc5-supply:
-+    description:
-+      The input supply for dcdc-reg5.
-+
-+  vcc6-supply:
-+    description:
-+      The input supply for dcdc-reg6.
-+
-+  vcc7-supply:
-+    description:
-+      The input supply for dcdc-reg7.
-+
-+  vcc8-supply:
-+    description:
-+      The input supply for dcdc-reg8.
-+
-+  vcc9-supply:
-+    description:
-+      The input supply for dcdc-reg9.
-+
-+  vcc10-supply:
-+    description:
-+      The input supply for dcdc-reg10.
-+
-+  vcc11-supply:
-+    description:
-+      The input supply for pldo-reg1, pldo-reg2 and pldo-reg3.
-+
-+  vcc12-supply:
-+    description:
-+      The input supply for pldo-reg4 and pldo-reg5.
-+
-+  vcc13-supply:
-+    description:
-+      The input supply for nldo-reg1, nldo-reg2 and nldo-reg3.
-+
-+  vcc14-supply:
-+    description:
-+      The input supply for nldo-reg4 and nldo-reg5.
-+
-+  vcca-supply:
-+    description:
-+      The input supply for pldo-reg6.
-+
-+  regulators:
-+    type: object
-+    patternProperties:
-+      "^(dcdc-reg([1-9]|10)|[pn]ldo_reg[1-6])$":
-+        type: object
-+        $ref: /schemas/regulator/regulator.yaml#
-+    unevaluatedProperties: false
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/pinctrl/rockchip.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/gpio/gpio.h>
-+    spi {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        pmic@0 {
-+            compatible = "rockchip,rk806";
-+            reg = <0x0>;
-+
-+            interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
-+
-+            vcc1-supply = <&vcc5v0_sys>;
-+            vcc2-supply = <&vcc5v0_sys>;
-+            vcc3-supply = <&vcc5v0_sys>;
-+            vcc4-supply = <&vcc5v0_sys>;
-+            vcc5-supply = <&vcc5v0_sys>;
-+            vcc6-supply = <&vcc5v0_sys>;
-+            vcc7-supply = <&vcc5v0_sys>;
-+            vcc8-supply = <&vcc5v0_sys>;
-+            vcc9-supply = <&vcc5v0_sys>;
-+            vcc10-supply = <&vcc5v0_sys>;
-+            vcc11-supply = <&vcc_2v0_pldo_s3>;
-+            vcc12-supply = <&vcc5v0_sys>;
-+            vcc13-supply = <&vcc5v0_sys>;
-+            vcc14-supply = <&vcc_1v1_nldo_s3>;
-+            vcca-supply = <&vcc5v0_sys>;
-+
-+            regulators {
-+                vdd_gpu_s0: dcdc-reg1 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <550000>;
-+                    regulator-max-microvolt = <950000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_gpu_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+
-+                vdd_npu_s0: dcdc-reg2 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <550000>;
-+                    regulator-max-microvolt = <950000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_npu_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+
-+                vdd_log_s0: dcdc-reg3 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <750000>;
-+                    regulator-max-microvolt = <750000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_log_s0";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <750000>;
-+                    };
-+                };
-+
-+                vdd_vdenc_s0: dcdc-reg4 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <550000>;
-+                    regulator-max-microvolt = <950000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_vdenc_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+
-+                vdd_gpu_mem_s0: dcdc-reg5 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <675000>;
-+                    regulator-max-microvolt = <950000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_gpu_mem_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+
-+                vdd_npu_mem_s0: dcdc-reg6 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <675000>;
-+                    regulator-max-microvolt = <950000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_npu_mem_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+
-+                vcc_2v0_pldo_s3: dcdc-reg7 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <2000000>;
-+                    regulator-max-microvolt = <2000000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_2v0_pldo_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <2000000>;
-+                    };
-+                };
-+
-+                vdd_vdenc_mem_s0: dcdc-reg8 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <675000>;
-+                    regulator-max-microvolt = <950000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_vdenc_mem_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+
-+                vdd2_ddr_s3: dcdc-reg9 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-name = "vdd2_ddr_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                    };
-+                };
-+
-+                vcc_1v1_nldo_s3: dcdc-reg10 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <1100000>;
-+                    regulator-max-microvolt = <1100000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vcc_1v1_nldo_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <1100000>;
-+                    };
-+                };
-+
-+                avcc_1v8_s0: pldo-reg1 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <1800000>;
-+                    regulator-max-microvolt = <1800000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "avcc_1v8_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+
-+                vdd1_1v8_ddr_s3: pldo-reg2 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <1800000>;
-+                    regulator-max-microvolt = <1800000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd1_1v8_ddr_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <1800000>;
-+                    };
-+                };
-+
-+                vcc_1v8_s3: pldo-reg3 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <1800000>;
-+                    regulator-max-microvolt = <1800000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vcc_1v8_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <1800000>;
-+                    };
-+                };
-+
-+                vcc_3v3_s0: pldo-reg4 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <3300000>;
-+                    regulator-max-microvolt = <3300000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vcc_3v3_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+
-+                vccio_sd_s0: pldo-reg5 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <1800000>;
-+                    regulator-max-microvolt = <3300000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vccio_sd_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+
-+                master_pldo6_s3: pldo-reg6 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <1800000>;
-+                    regulator-max-microvolt = <1800000>;
-+                    regulator-name = "master_pldo6_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <1800000>;
-+                    };
-+                };
-+
-+                vdd_0v75_s3: nldo-reg1 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <750000>;
-+                    regulator-max-microvolt = <750000>;
-+                    regulator-ramp-delay = <12500>;
-+                    regulator-name = "vdd_0v75_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <750000>;
-+                    };
-+                };
-+
-+                vdd2l_0v9_ddr_s3: nldo-reg2 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <900000>;
-+                    regulator-max-microvolt = <900000>;
-+                    regulator-name = "vdd2l_0v9_ddr_s3";
-+                    regulator-state-mem {
-+                        regulator-on-in-suspend;
-+                        regulator-suspend-microvolt = <900000>;
-+                    };
-+                };
-+
-+                master_nldo3: nldo-reg3 {
-+                    regulator-name = "master_nldo3";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+
-+                avdd_0v75_s0: nldo-reg4 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <750000>;
-+                    regulator-max-microvolt = <750000>;
-+                    regulator-name = "avdd_0v75_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+
-+                vdd_0v85_s0: nldo-reg5 {
-+                    regulator-always-on;
-+                    regulator-boot-on;
-+                    regulator-min-microvolt = <850000>;
-+                    regulator-max-microvolt = <850000>;
-+                    regulator-name = "vdd_0v85_s0";
-+                    regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                    };
-+                };
-+            };
-+        };
-+    };
+ static int rk805_pmx_gpio_set_direction(struct pinctrl_dev *pctldev,
+ 					struct pinctrl_gpio_range *range,
+ 					unsigned int offset, bool input)
+@@ -324,13 +457,6 @@ static int rk805_pmx_gpio_set_direction(struct pinctrl_dev *pctldev,
+ 	struct rk805_pctrl_info *pci = pinctrl_dev_get_drvdata(pctldev);
+ 	int ret;
+ 
+-	/* switch to gpio function */
+-	ret = _rk805_pinctrl_set_mux(pctldev, offset, RK805_PINMUX_GPIO);
+-	if (ret) {
+-		dev_err(pci->dev, "set gpio%d mux failed\n", offset);
+-		return ret;
+-	}
+-
+ 	/* set direction */
+ 	if (!pci->pin_cfg[offset].dir_msk)
+ 		return 0;
+@@ -352,6 +478,7 @@ static const struct pinmux_ops rk805_pinmux_ops = {
+ 	.get_function_name	= rk805_pinctrl_get_func_name,
+ 	.get_function_groups	= rk805_pinctrl_get_func_groups,
+ 	.set_mux		= rk805_pinctrl_set_mux,
++	.gpio_request_enable	= rk805_pinctrl_gpio_request_enable,
+ 	.gpio_set_direction	= rk805_pmx_gpio_set_direction,
+ };
+ 
+@@ -364,6 +491,7 @@ static int rk805_pinconf_get(struct pinctrl_dev *pctldev,
+ 
+ 	switch (param) {
+ 	case PIN_CONFIG_OUTPUT:
++	case PIN_CONFIG_INPUT_ENABLE:
+ 		arg = rk805_gpio_get(&pci->gpio_chip, pin);
+ 		break;
+ 	default:
+@@ -393,6 +521,12 @@ static int rk805_pinconf_set(struct pinctrl_dev *pctldev,
+ 			rk805_gpio_set(&pci->gpio_chip, pin, arg);
+ 			rk805_pmx_gpio_set_direction(pctldev, NULL, pin, false);
+ 			break;
++		case PIN_CONFIG_INPUT_ENABLE:
++			if (pci->rk808->variant != RK805_ID && arg) {
++				rk805_pmx_gpio_set_direction(pctldev, NULL, pin, true);
++				break;
++			}
++			fallthrough;
+ 		default:
+ 			dev_err(pci->dev, "Properties not supported\n");
+ 			return -ENOTSUPP;
+@@ -448,6 +582,18 @@ static int rk805_pinctrl_probe(struct platform_device *pdev)
+ 		pci->pin_cfg = rk805_gpio_cfgs;
+ 		pci->gpio_chip.ngpio = ARRAY_SIZE(rk805_gpio_cfgs);
+ 		break;
++	case RK806_ID:
++		pci->pins = rk806_pins_desc;
++		pci->num_pins = ARRAY_SIZE(rk806_pins_desc);
++		pci->functions = rk806_pin_functions;
++		pci->num_functions = ARRAY_SIZE(rk806_pin_functions);
++		pci->groups = rk806_pin_groups;
++		pci->num_pin_groups = ARRAY_SIZE(rk806_pin_groups);
++		pci->pinctrl_desc.pins = rk806_pins_desc;
++		pci->pinctrl_desc.npins = ARRAY_SIZE(rk806_pins_desc);
++		pci->pin_cfg = rk806_gpio_cfgs;
++		pci->gpio_chip.ngpio = ARRAY_SIZE(rk806_gpio_cfgs);
++		break;
+ 	default:
+ 		dev_err(&pdev->dev, "unsupported RK805 ID %lu\n",
+ 			pci->rk808->variant);
+@@ -488,5 +634,6 @@ static struct platform_driver rk805_pinctrl_driver = {
+ module_platform_driver(rk805_pinctrl_driver);
+ 
+ MODULE_DESCRIPTION("RK805 pin control and GPIO driver");
++MODULE_AUTHOR("Xu Shengfei <xsf@rock-chips.com>");
+ MODULE_AUTHOR("Joseph Chen <chenjh@rock-chips.com>");
+ MODULE_LICENSE("GPL v2");
 -- 
 2.35.1
 
