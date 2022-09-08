@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A50CAC38145
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 09:00:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A7EC38145
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 09:48:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FFkWMvaEPmI8hu6zWD9ZRVsphIMdprIq4M0f1zAf7h4=; b=QSNEm5Bi2W1aQs
-	CmiKmUPdXbRhGPiCCISzRArhKjeciFaz7hwUFC1vr1ynpCx8EOonZI0fy74oT6NWr1fEKi71vzPVi
-	Y74cldq97nWoXSpjSJ/7vPvydq3QM7I7RZjWFqpOCzirYaJlE1ChPeqzektn7FfH8dmDzAfFaknzy
-	tFx/zNXUaV5zMhA5OPUifuhs1rFB7e+KhnRqGR9cXbzJhncIoBuu/JHlVz6WxI4lnc+NhXEpteFby
-	2xSzL+U5M3uLO8vZOkeodajpyQ6I57BUJDAugfMWqZAH2ypkFqEfQ2LOfW4n4oesSSxGbs+QYMwwV
-	Qd8ii/YjsM+LUAQ7Y66A==;
+	List-Owner; bh=hebDSBJl4sIOnYRKHPVKcP7WqVqIBTYSnuDEkCXv2is=; b=t2Vb16ZP0Pbjwr
+	vWGry03tGkA8u+H9Rt56JHE68kjBz3p+sXJqmo8VAV7SfBjRSIyRxrWTdB0YNuCL8saDdpQt3Gz5a
+	RE+7yJoxKtbcHT4fcOE7cgPANgK7g00R9uTBhZgiUTu7X9AocpJrCwDKIVKPQFO+UQBxSZeV8B6CM
+	E/uHjbIBAzelVaPUgAv6K9mZZ7O69DGrmgdTVny/EBzRoixnWgXu3oRx7EIjx06kEEsmgNGH3MNt6
+	JWfBD7AgwVgC5Mlbn22V1GRNovZm09Y8kbkoMY2OnL5OhTTaJoaDbbUIailU01SAR4yAumhnT1C3O
+	mv8hp5C5p4RqMBdSW3XQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWDOa-001FmJ-8F; Thu, 08 Sep 2022 09:00:24 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1oWE95-001nBb-Lz; Thu, 08 Sep 2022 09:48:27 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWDOX-001Fjh-SG
-	for linux-rockchip@lists.infradead.org; Thu, 08 Sep 2022 09:00:23 +0000
-Received: by mail-lj1-x234.google.com with SMTP id y18so4327788ljh.12
-        for <linux-rockchip@lists.infradead.org>; Thu, 08 Sep 2022 02:00:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=Ly9IEYTInP8tS6e927ZRVIe99VpHkJBnPnaAyl8oAUQ=;
-        b=NfJYCPTU0FSTkctPFB601rskf+uu1n4QI7Ee/ejRS5GsPfHvoJ0DwKNQ58zs8Lwt1U
-         dQBSVO4jGReIsIffEyNBr+p8XgiSlQr/Red47hz7EB1QlsJaW/ZjTworgo3tCCn18BaJ
-         xqKO69a8CfFieoSNKv0N/dgCXa8dJUhuRcejnewhfalw0FizXCCxWY/E2sa9gSTWa0dm
-         VpaeKdUu7LZHLbKHbYdlLVBg7iO0VOvddIbZOr8sPt00Nr2Fw6ELhQYJB2/I0zGI+PYb
-         shiQLOBh/fy4bk+IIZdFdcBt0YNi4UutinHvjBY3XulereemLXZJeW4V4jyl/5pm0X/f
-         2Y6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=Ly9IEYTInP8tS6e927ZRVIe99VpHkJBnPnaAyl8oAUQ=;
-        b=vMy5qPaLAOKQ5MeAv+mMCQI6Tc+rCGv0Imfn084+hbrTdj4eTgP55whB5kVD1Ol/jj
-         ZuGhqala1mKJXeRuObfYNWorBh4I6EYjAZ7ygFoZeGCfZkHrIfAaWRnZH3+9YmlotPda
-         btGUlsGe2q+7Ew9xsXKENJ8DS1fjAcv8anYuNLy1sH4hvEpNi0StslInWkj/xZ2o1qGv
-         zzw75knuuIm5lp36NgsEtzmENRrlNfTqUDO7ObNoKBRxVC4yBPWqpIL92T7eHLuo9n46
-         R8lIxPeULct+wx4WnoBgi8U2HzF2UlcKztwybGhFT1YYDDJ1/EmyQDZLYJkpZw9TQkW8
-         ZuYA==
-X-Gm-Message-State: ACgBeo3TUlLQePFvvyceDQxXA9RJGtkvDmrsSCIrhbuZV1UOBerK/SwI
-	9sQ62IAL50zZZVtisOp8zbToeA==
-X-Google-Smtp-Source: AA6agR6y9hLVMc5n964fka1mBct1yqVVvdizyIoXKoRfIG/TFKTZIAwVYcC1/xRy+j7g4Vwkz3AL+A==
-X-Received: by 2002:a2e:8188:0:b0:25e:4ae6:5503 with SMTP id e8-20020a2e8188000000b0025e4ae65503mr2044547ljg.412.1662627617599;
-        Thu, 08 Sep 2022 02:00:17 -0700 (PDT)
-Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id m9-20020a056512358900b004979df1c1fasm1468931lfr.61.2022.09.08.02.00.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 08 Sep 2022 02:00:17 -0700 (PDT)
-Message-ID: <d5c88236-6c6b-2583-7f96-55e7a428d1b7@linaro.org>
-Date: Thu, 8 Sep 2022 11:00:15 +0200
+	id 1oWE8h-001n32-JV; Thu, 08 Sep 2022 09:48:05 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 05738B82051;
+	Thu,  8 Sep 2022 09:48:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15870C433D6;
+	Thu,  8 Sep 2022 09:47:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1662630480;
+	bh=twVKFDNBiJV5imqH0rJ1FX3tasybHNqPAbjuEtEEwBo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FTq/jmjllxhZf4zqdTbijiuwMtav33tMrjaok6lXSDwstIvkbH0YUMS4yDf20f60i
+	 ZVdSXww5SMFHSElQwpEitJ9FoqjQZ/g4EkeyQPPUI4epDqcZs9o3EOIdfmhDAdMH6s
+	 YEItpf+8/16v3s554D+vQ39R+LZgo0XQmgjJ3bnbJeI9DmBSt/4PIr9tbPQz7deN6T
+	 krbmFeljz554fQy/FmUfKvuJxkUqcxkXN6f60A+LJy6KsdS90OIev6KZ6oW5cPDebA
+	 gQqyywgAeG4xCdRFKRyTA4LgOblHtVFa2LL71xeynVJxwELW4CkSkO9t+VgKvREazq
+	 m2yHENAGjSIgw==
+Date: Thu, 8 Sep 2022 10:47:51 +0100
+From: Lee Jones <lee@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Chen-Yu Tsai <wens@csie.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Samuel Holland <samuel@sholland.org>,
+	Charles Keepax <ckeepax@opensource.cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Tim Harvey <tharvey@gateworks.com>,
+	Robert Jones <rjones@gateworks.com>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	- <patches@opensource.cirrus.com>,
+	Steve Twiss <stwiss.opensource@diasemi.com>,
+	Chris Zhong <zyw@rock-chips.com>,
+	Zhang Qing <zhangqing@rock-chips.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Amelie Delaunay <amelie.delaunay@foss.st.com>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Renner Berthing <kernel@esmil.dk>,
+	Krzysztof Kozlowski <krzk@kernel.org>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH] dt-bindings: mfd: Add missing
+ (unevaluated|additional)Properties on child nodes
+Message-ID: <Yxm6R21Uw0/ghRsn@google.com>
+References: <20220823145649.3118479-4-robh@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [v2 1/2] dt-bindings: net: rockchip-dwmac: add rv1126 compatible
-Content-Language: en-US
-To: Anand Moon <anand@edgeble.ai>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, David Wu <david.wu@rock-chips.com>
-Cc: Jagan Teki <jagan@edgeble.ai>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220907210649.12447-1-anand@edgeble.ai>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220907210649.12447-1-anand@edgeble.ai>
+Content-Disposition: inline
+In-Reply-To: <20220823145649.3118479-4-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_020022_040736_F2C2FAAE 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220908_024803_835590_F0784152 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,31 +92,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 07/09/2022 23:06, Anand Moon wrote:
-> Add compatible string for RV1126 gmac, and constrain it to
-> be compatible with Synopsys dwmac 4.20a.
-> 
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-> Signed-off-by: Anand Moon <anand@edgeble.ai>
-> ---
-> v2: add missing compatible string to property
->     added reviewed by Heiko Stuebner.
-> ---
-
-
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-
-
-Best regards,
-Krzysztof
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCAyMyBBdWcgMjAyMiwgUm9iIEhlcnJpbmcgd3JvdGU6Cgo+IEluIG9yZGVyIHRvIGVu
+c3VyZSBvbmx5IGRvY3VtZW50ZWQgcHJvcGVydGllcyBhcmUgcHJlc2VudCwgbm9kZSBzY2hlbWFz
+Cj4gbXVzdCBoYXZlIHVuZXZhbHVhdGVkUHJvcGVydGllcyBvciBhZGRpdGlvbmFsUHJvcGVydGll
+cyBzZXQgdG8gZmFsc2UKPiAodHlwaWNhbGx5KS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVy
+cmluZyA8cm9iaEBrZXJuZWwub3JnPgo+IC0tLQo+ICAuLi4vbWZkL2FsbHdpbm5lcixzdW42aS1h
+MzEtcHJjbS55YW1sICAgICAgICAgfCA0MCArKysrKysrKysrKysrKysrKysrCj4gIC4uLi9tZmQv
+YWxsd2lubmVyLHN1bjhpLWEyMy1wcmNtLnlhbWwgICAgICAgICB8IDEwICsrKysrCj4gIC4uLi9i
+aW5kaW5ncy9tZmQvY2lycnVzLGxvY2huYWdhci55YW1sICAgICAgICB8ICA1ICsrKwo+ICAuLi4v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvZGxnLGRhOTA2My55YW1sICAgfCAgNyArKy0tCj4gIC4u
+Li9iaW5kaW5ncy9tZmQvZ2F0ZXdvcmtzLWdzYy55YW1sICAgICAgICAgICB8ICA1ICsrLQo+ICAu
+Li4vYmluZGluZ3MvbWZkL21heGltLG1heDE0NTc3LnlhbWwgICAgICAgICAgfCAgMSArCj4gIC4u
+Li9iaW5kaW5ncy9tZmQvbWF4aW0sbWF4Nzc4NDMueWFtbCAgICAgICAgICB8ICAxICsKPiAgLi4u
+L2JpbmRpbmdzL21mZC9yb2NrY2hpcCxyazgxNy55YW1sICAgICAgICAgIHwgIDIgKwo+ICAuLi4v
+YmluZGluZ3MvbWZkL3NpbGVyZ3ksc3k3NjM2YS55YW1sICAgICAgICAgfCAgMSArCj4gIC4uLi9i
+aW5kaW5ncy9tZmQvc3Qsc3RtMzItbHB0aW1lci55YW1sICAgICAgICB8ICA0ICsrCj4gIC4uLi9i
+aW5kaW5ncy9tZmQvc3Qsc3RtMzItdGltZXJzLnlhbWwgICAgICAgICB8ICAzICsrCj4gIC4uLi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9zdCxzdG1meC55YW1sICAgICB8ICAxICsKPiAgLi4uL2Jp
+bmRpbmdzL21mZC9zdGVyaWNzc29uLGFiODUwMC55YW1sICAgICAgIHwgMjIgKysrKysrKysrKwo+
+ICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvdGksdHBzNjUwODYueWFtbCAgfCAgMSArCj4g
+IC4uLi9iaW5kaW5ncy9tZmQveC1wb3dlcnMsYXhwMTUyLnlhbWwgICAgICAgICB8ICAxICsKPiAg
+MTUgZmlsZXMgY2hhbmdlZCwgMTAwIGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCgpBcHBs
+aWVkLCB0aGFua3MuCgotLSAKTGVlIEpvbmVzIFvmnY7nkLzmlq9dCgpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
+c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
