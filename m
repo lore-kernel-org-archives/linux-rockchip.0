@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB028C38145
-	for <linux-rockchip@archiver.kernel.org>; Wed,  7 Sep 2022 23:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9826ECAAD3
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 00:31:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mx0tLRPE0eU450iCSkyBLFNFPiJv3aqQs2q/AYah/V4=; b=PqXTKhB+EWus6d
-	/uVJatxZc6iNFNBy+o5Hv1Q+qrxcX7g5e2YhTvyhwuRWGIHmujkeRtd1vA83aoz5TQ1RlAvh1T7rH
-	o2o/1Rpnn+2PXJUNS5m7iWBKi3FWy1tAtm/bPjqONr+WJUI700azRM4VO5Yw15u4SSuRVb+bsueFN
-	/q49AmK7qarjseD947WIrMEYiDkJ/k17YFPuxLsaOawlz+X1Nfo65aT1dlOjWHbqAxuPhK3Ntev0q
-	/DrJTWVMZrPSY8dALBoGmAXrF5/sGYQ3BpxrSzfvqVnv4AMohwOMZlAIZ3cpuaXhYYaB3+/yv0H1I
-	99zjnqrPc1iCIicl7utg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bIzGcE1tckEAl4ra/PmHgUniQZ4n79Gnh8a+5suVLzc=; b=UFPleee4hQ/r3h
+	KIxN3+9CQpes4rYkKx0+ADSsK7A2kDnk+ITwW95MmNjDVtO8XXhrAdCOOjU0FcgQuZ+LJ2FsXaSN0
+	v3iYSZsr8T1O5xQnTXlERPcWd0+IGqdT7P7Gf6jOA3MBvU/ZuFyI1kZMOQzKcFSmcFUV+WsZtNJFW
+	Kj0Szp0gx23QnvGlal2ccV8GdwF4/4KnRYnBCyn3tgSMIETeaR3JUT6mj19Mu2C4f3mp8lmmBDkYB
+	krIBfRd9F2/mxftxhMJrg/hr6ivaXl0L24EoQhLCcXnvuOq5HylPxOso8Ehxy2bFvlJnWrjYEgKZf
+	zZX8tGgGI2KDj5KXR+Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oW4ra-00CJCD-LU; Wed, 07 Sep 2022 23:53:46 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1oW5Ry-00DFSp-Cm; Thu, 08 Sep 2022 00:31:22 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oW4rX-00CJ8U-Gw
-	for linux-rockchip@lists.infradead.org; Wed, 07 Sep 2022 23:53:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1662594823; x=1694130823;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=afq7WfcNMyREFRVD0+o2whWINHeS3DxNx3J5qZCgnl8=;
-  b=FylZrIfGVVaapOi1cJozB+fNOb7CrEc5lykSSDfbH9dIC+z1E9T5cL6h
-   YvlNiuQouRT4ExyQsA+CqY2HhEG/owvJMlvqGIY/cp2z0ndC3P8BAgSB4
-   +ZkwLzF1i79XiRYKQs+KBADAzx8PRzk9TZdsqoAv88ohFBRXLw2XgFSyw
-   zOqe13g5j4XoeX9+b+6jOA4/+OpEaGuU0pEUOVQ7uYP6VPnTqsaTiteUp
-   tbeWZ5Mg9tIDuNR/5aiJBh8xMcr43zr5AmiI9h8Aq7r9i4i8HPp6chpzD
-   Ii+xw9x+uUGoK5ndkYoE8sSZtFkygYJ5WQO/vHkoIvbfaUapUbYEM+NFN
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10463"; a="276761371"
-X-IronPort-AV: E=Sophos;i="5.93,298,1654585200"; 
-   d="scan'208";a="276761371"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Sep 2022 16:53:39 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,298,1654585200"; 
-   d="scan'208";a="740475974"
-Received: from lkp-server02.sh.intel.com (HELO 95dfd251caa2) ([10.239.97.151])
-  by orsmga004.jf.intel.com with ESMTP; 07 Sep 2022 16:53:37 -0700
-Received: from kbuild by 95dfd251caa2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1oW4rQ-00076P-1Y;
-	Wed, 07 Sep 2022 23:53:36 +0000
-Date: Thu, 8 Sep 2022 07:52:52 +0800
-From: kernel test robot <lkp@intel.com>
-To: Jianqun Xu <jay.xu@rock-chips.com>, heiko@sntech.de,
-	linus.walleij@linaro.org, brgl@bgdev.pl
-Cc: kbuild-all@lists.01.org, andriy.shevchenko@linux.intel.com,
-	linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	Jianqun Xu <jay.xu@rock-chips.com>
-Subject: Re: [PATCH v3 RESEND] gpio: rockchip: support acpi
-Message-ID: <202209080711.fRu3ImWL-lkp@intel.com>
-References: <20220907092722.3333752-1-jay.xu@rock-chips.com>
+	id 1oW5Rt-00DEcI-8d
+	for linux-rockchip@lists.infradead.org; Thu, 08 Sep 2022 00:31:19 +0000
+Received: from jupiter.universe (dyndsl-095-033-158-249.ewe-ip-backbone.de [95.33.158.249])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 1B9086601F71;
+	Thu,  8 Sep 2022 01:31:12 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1662597072;
+	bh=3EKYdeI9ImBwId2uHj5bb7bVDUAL+ak9O+UkE2ID4FM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=EdHO5H2S9Ran9kSXk41JTPAejXUYbg203Fp58VoPUxpC7b7j0SOL8NcIxedmUtWjg
+	 0uYi+hcQvtbjrEvLH09pO7ZBKZyDt52p4mP5dPOcwaauuDSXpxf52k4YLt9NiV4rkI
+	 USSQDPbp86hk7aZpQ2BxV03v0uuKgb4Mz5OGcCgA37t+IAanXutPqji3RilEBo8PYk
+	 1oj10Bdajd6QJ4hVDQYHFwkEPYRYeeQ/GRWBxONOYnHHLSOoRHdcaszRsOXtW0OOQg
+	 0MYxTZRAs7sK55dDS3CsDHHj7rQgK45TOSzrlFXgS2K55kbXxFgG6icqlWshntfNA6
+	 JSQ1uutFvUWlg==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 5A2C248056F; Thu,  8 Sep 2022 02:31:09 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lee Jones <lee@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCHv2 00/13] Introduce RK806 Support
+Date: Thu,  8 Sep 2022 02:30:54 +0200
+Message-Id: <20220908003107.220143-1-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220907092722.3333752-1-jay.xu@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220907_165343_676603_775CDBA8 
-X-CRM114-Status: GOOD (  16.11  )
+X-CRM114-CacheID: sfid-20220907_173117_562247_F019C596 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,135 +85,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jianqun,
+Hi,
 
-Thank you for the patch! Yet something to improve:
+The Rockchip RK3588 Evaluation Boards use SPI connected RK806
+PMICs. Downstream this is handled by a new driver, but apart
+from being SPI connected this chip is quite similar to the
+ther Rockchip PMICs (also RK806 is promoted to also support
+I2C). Thus this series instead updates RK808.
 
-[auto build test ERROR on rockchip/for-next]
-[also build test ERROR on linus/master v6.0-rc4 next-20220907]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Changelog since PATCHv2:
+ * https://lore.kernel.org/all/20220831215437.117880-1-sebastian.reichel@collabora.com/
+ * Collect Acked-by
+ * Avoid if/else checks for regulator id in rk806 regulator driver
+ * Fix indentation in DTS example section of the rk806 binding
+ * Use absolute path for regulator.yaml referencing in the rk806 binding
+ * Reduce pattern for DCDC regulators to only allow 1-10
+ * replace uppercase name with lowercase ones in regulator names
+ * replace _ with - in regulator names
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Jianqun-Xu/gpio-rockchip-support-acpi/20220907-172920
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
-config: loongarch-buildonly-randconfig-r002-20220907 (https://download.01.org/0day-ci/archive/20220908/202209080711.fRu3ImWL-lkp@intel.com/config)
-compiler: loongarch64-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/6b62c564dce1d94e9256d98661e5a7ae396627fb
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Jianqun-Xu/gpio-rockchip-support-acpi/20220907-172920
-        git checkout 6b62c564dce1d94e9256d98661e5a7ae396627fb
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=loongarch SHELL=/bin/bash drivers/gpio/
+-- Sebastian
 
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
+Sebastian Reichel (13):
+  mfd: rk808: convert to device managed resources
+  mfd: rk808: use dev_err_probe
+  clk: RK808: reduce 'struct rk808' usage
+  regulator: rk808: reduce 'struct rk808' usage
+  rtc: rk808: reduce 'struct rk808' usage
+  mfd: rk808: replace 'struct i2c_client' with 'struct device'
+  mfd: rk808: split into core and i2c
+  dt-bindings: mfd: add rk806 binding
+  mfd: rk8xx: add rk806 support
+  pinctrl: rk805: add rk806 pinctrl support
+  regulator: rk808: Use dev_err_probe
+  regulator: rk808: add rk806 support
+  ASoC: rk817: Remove 'select REGMAP_I2C'
 
-All errors (new ones prefixed by >>):
-
-   In file included from include/linux/build_bug.h:5,
-                    from include/linux/bits.h:22,
-                    from include/linux/ioport.h:13,
-                    from include/linux/acpi.h:12,
-                    from drivers/gpio/gpio-rockchip.c:9:
-   drivers/gpio/gpio-rockchip.c: In function 'rockchip_gpio_of_get_bank_id':
-   drivers/gpio/gpio-rockchip.c:666:27: error: passing argument 1 of 'is_of_node' from incompatible pointer type [-Werror=incompatible-pointer-types]
-     666 |         if (is_of_node(dev->of_node)) {
-         |                        ~~~^~~~~~~~~
-         |                           |
-         |                           struct device_node *
-   include/linux/compiler.h:58:52: note: in definition of macro '__trace_if_var'
-      58 | #define __trace_if_var(cond) (__builtin_constant_p(cond) ? (cond) : __trace_if_value(cond))
-         |                                                    ^~~~
-   drivers/gpio/gpio-rockchip.c:666:9: note: in expansion of macro 'if'
-     666 |         if (is_of_node(dev->of_node)) {
-         |         ^~
-   In file included from include/linux/irqdomain.h:35,
-                    from include/linux/acpi.h:13:
-   include/linux/of.h:155:59: note: expected 'const struct fwnode_handle *' but argument is of type 'struct device_node *'
-     155 | static inline bool is_of_node(const struct fwnode_handle *fwnode)
-         |                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
-   drivers/gpio/gpio-rockchip.c:666:27: error: passing argument 1 of 'is_of_node' from incompatible pointer type [-Werror=incompatible-pointer-types]
-     666 |         if (is_of_node(dev->of_node)) {
-         |                        ~~~^~~~~~~~~
-         |                           |
-         |                           struct device_node *
-   include/linux/compiler.h:58:61: note: in definition of macro '__trace_if_var'
-      58 | #define __trace_if_var(cond) (__builtin_constant_p(cond) ? (cond) : __trace_if_value(cond))
-         |                                                             ^~~~
-   drivers/gpio/gpio-rockchip.c:666:9: note: in expansion of macro 'if'
-     666 |         if (is_of_node(dev->of_node)) {
-         |         ^~
-   include/linux/of.h:155:59: note: expected 'const struct fwnode_handle *' but argument is of type 'struct device_node *'
-     155 | static inline bool is_of_node(const struct fwnode_handle *fwnode)
-         |                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
-   drivers/gpio/gpio-rockchip.c:666:27: error: passing argument 1 of 'is_of_node' from incompatible pointer type [-Werror=incompatible-pointer-types]
-     666 |         if (is_of_node(dev->of_node)) {
-         |                        ~~~^~~~~~~~~
-         |                           |
-         |                           struct device_node *
-   include/linux/compiler.h:69:10: note: in definition of macro '__trace_if_value'
-      69 |         (cond) ?                                        \
-         |          ^~~~
-   include/linux/compiler.h:56:28: note: in expansion of macro '__trace_if_var'
-      56 | #define if(cond, ...) if ( __trace_if_var( !!(cond , ## __VA_ARGS__) ) )
-         |                            ^~~~~~~~~~~~~~
-   drivers/gpio/gpio-rockchip.c:666:9: note: in expansion of macro 'if'
-     666 |         if (is_of_node(dev->of_node)) {
-         |         ^~
-   include/linux/of.h:155:59: note: expected 'const struct fwnode_handle *' but argument is of type 'struct device_node *'
-     155 | static inline bool is_of_node(const struct fwnode_handle *fwnode)
-         |                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~
-   drivers/gpio/gpio-rockchip.c: In function 'rockchip_gpio_probe':
->> drivers/gpio/gpio-rockchip.c:882:46: error: unterminated argument list invoking macro "if"
-     882 | MODULE_DEVICE_TABLE(of, rockchip_gpio_match);
-         |                                              ^
->> drivers/gpio/gpio-rockchip.c:883: error: expected '(' at end of input
-   drivers/gpio/gpio-rockchip.c:721:9: note: '-Wmisleading-indentation' is disabled from this point onwards, since column-tracking was disabled due to the size of the code/headers
-     721 |         if (!is_acpi_node(dev_fwnode(dev)) {
-         |         ^~
-   drivers/gpio/gpio-rockchip.c:721:9: note: adding '-flarge-source-files' will allow for more column-tracking support, at the expense of compilation time and memory
-   drivers/gpio/gpio-rockchip.c:721:9: error: expected declaration or statement at end of input
-   drivers/gpio/gpio-rockchip.c:712:13: warning: unused variable 'ret' [-Wunused-variable]
-     712 |         int ret;
-         |             ^~~
-   drivers/gpio/gpio-rockchip.c:710:35: warning: unused variable 'bank' [-Wunused-variable]
-     710 |         struct rockchip_pin_bank *bank = NULL;
-         |                                   ^~~~
-   drivers/gpio/gpio-rockchip.c:709:29: warning: unused variable 'pctldev' [-Wunused-variable]
-     709 |         struct pinctrl_dev *pctldev = NULL;
-         |                             ^~~~~~~
-   drivers/gpio/gpio-rockchip.c: At top level:
-   drivers/gpio/gpio-rockchip.c:706:12: warning: 'rockchip_gpio_probe' defined but not used [-Wunused-function]
-     706 | static int rockchip_gpio_probe(struct platform_device *pdev)
-         |            ^~~~~~~~~~~~~~~~~~~
-   drivers/gpio/gpio-rockchip.c:643:1: warning: 'rockchip_gpio_find_bank' defined but not used [-Wunused-function]
-     643 | rockchip_gpio_find_bank(struct pinctrl_dev *pctldev, int id)
-         | ^~~~~~~~~~~~~~~~~~~~~~~
-   drivers/gpio/gpio-rockchip.c:628:13: warning: 'rockchip_gpio_get_ver' defined but not used [-Wunused-function]
-     628 | static void rockchip_gpio_get_ver(struct rockchip_pin_bank *bank)
-         |             ^~~~~~~~~~~~~~~~~~~~~
-   drivers/gpio/gpio-rockchip.c:584:12: warning: 'rockchip_gpiolib_register' defined but not used [-Wunused-function]
-     584 | static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
-         |            ^~~~~~~~~~~~~~~~~~~~~~~~~
-   cc1: some warnings being treated as errors
-
-
-vim +/if +882 drivers/gpio/gpio-rockchip.c
-
-936ee2675eee1f Jianqun Xu 2021-08-16  878  
-936ee2675eee1f Jianqun Xu 2021-08-16  879  MODULE_DESCRIPTION("Rockchip gpio driver");
-936ee2675eee1f Jianqun Xu 2021-08-16  880  MODULE_ALIAS("platform:rockchip-gpio");
-936ee2675eee1f Jianqun Xu 2021-08-16  881  MODULE_LICENSE("GPL v2");
-936ee2675eee1f Jianqun Xu 2021-08-16 @882  MODULE_DEVICE_TABLE(of, rockchip_gpio_match);
+ .../bindings/mfd/rockchip,rk806.yaml          | 388 +++++++++++++
+ drivers/clk/clk-rk808.c                       |  34 +-
+ drivers/mfd/Kconfig                           |  19 +
+ drivers/mfd/Makefile                          |   4 +-
+ drivers/mfd/{rk808.c => rk8xx-core.c}         | 343 ++++--------
+ drivers/mfd/rk8xx-i2c.c                       | 205 +++++++
+ drivers/mfd/rk8xx-spi.c                       | 128 +++++
+ drivers/pinctrl/pinctrl-rk805.c               | 189 ++++++-
+ drivers/regulator/rk808-regulator.c           | 508 +++++++++++++++++-
+ drivers/rtc/rtc-rk808.c                       |  47 +-
+ include/linux/mfd/rk808.h                     | 417 +++++++++++++-
+ sound/soc/codecs/Kconfig                      |   1 -
+ 12 files changed, 1976 insertions(+), 307 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+ rename drivers/mfd/{rk808.c => rk8xx-core.c} (71%)
+ create mode 100644 drivers/mfd/rk8xx-i2c.c
+ create mode 100644 drivers/mfd/rk8xx-spi.c
 
 -- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+2.35.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
