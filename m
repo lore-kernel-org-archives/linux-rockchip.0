@@ -4,71 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65D6DC38145
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 11:32:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AFE9C38145
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 11:49:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FgJzrIQ7xvw4fvMlRzVScLMy6x4J+3c6cE52EKNHnEs=; b=rm3KvuLlsgvqtKT15t0uo+joZ/
-	jRoa/v6B5O0JtZ0SSBU8DzhdmmKVfjqj9qX7Dt3Io5KMKv3s7rvfVtBkclZwl2l6bocpAPEsHTvs+
-	mVqMW3ksWPqdRxMzNyLgOv0btglzWSv4/xM7NziSPSIFBZOxIye0RgGPLu1aDvgRoUgkJQfESUE/T
-	mXPrD3s8d++SeHsHwWBGTdeEt+SkCewbtBzwHrgP3MUP6TYG0pnlcz07T4HTKV+5dK8sT8QaJotVz
-	A5kjQVEjSQyNkeocVLOMNvPkIgYT1DnFxCGP6qzHMnUIx6e8S3WYTrOOYlzxmgHYRF6EEcDYn3v3r
-	hoPUbT7A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ms8DwE80o72AIlyVK/BR7qJH2YAQdFP/WnSW5MBL/t0=; b=FKCWyiDZ2DMVQS
+	9R+R264e64qU8s72OsytVkR/lXgFD59VSEdvpgIrVVy9QOBa8JhU32CARCTjvaXxpfwCZVH8zXqHU
+	4sXpZFT+C4+tPAMT/UgwSg0PSN18rAyDIVq0lv8GpnbB++uuigxcZbjgvhNqfunB+ufgvSEYun3m+
+	mlT+FZnne9yyxAYz5JuN15KFRzeETklszgwRqT+eL2pqv+BOrhGlBj2tquhp0RxjvfT03C1GbMKbR
+	jUvOZUMCtISF9MbyHmcae1h88K888TqPkBFVj41GdsoUvoTrCgcgoz3N8mXy1esOKUmCoDwpR8VHl
+	ypKNKmd2hBh9k4lURAyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWFlI-002kwD-1T; Thu, 08 Sep 2022 11:32:00 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oWG2P-002u7g-Gv; Thu, 08 Sep 2022 11:49:41 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWFlE-002kr9-Ae
-	for linux-rockchip@lists.infradead.org; Thu, 08 Sep 2022 11:31:58 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 897A261CB5;
-	Thu,  8 Sep 2022 11:31:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76E61C433D6;
-	Thu,  8 Sep 2022 11:31:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1662636715;
-	bh=Gx9EBlgO2Bqzbdb7MMDBfkrSeePtZm8kTIdRWWYF0Ls=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=W8V8oNrHvYalaCxsTonTabUx6HyWkAXsziB1v3VBixK/RiGk5yfy/HBmECl0rbB00
-	 ix80mv3ds2Mfe6j8bQsBEsLGTn9vPj2xrNdXxeA1/H2yVbS53eGTvqIYtTtffvtYbq
-	 UjCCiWWwxPRKQYMcWH4MI5fDBgsFQln+URVYAuKE7qo4eqcdVUKLq09tddZtuZmA3E
-	 JmX9jZG5joav1RQeiBFN4jWVSuieIMdK2dyZQR1p7cHEfauEQxhmVZqgopAjNHlB6W
-	 HgZHrLDKK8hG5IfDP62b2+0Uy7ZgCH0lzoF23aJEwZpv5QIi2WpB9+TkyeJFhZdZsT
-	 UvObv2OAfNs7w==
-Date: Thu, 8 Sep 2022 12:31:48 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Matti Vaittinen <mazziesaccount@gmail.com>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Lee Jones <lee@kernel.org>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alessandro Zummo <a.zummo@towertech.it>,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com,
-	shengfei Xu <xsf@rock-chips.com>
-Subject: Re: [PATCHv2 12/13] regulator: rk808: add rk806 support
-Message-ID: <YxnSpE7/oNti9KKK@sirena.org.uk>
-References: <20220908003107.220143-1-sebastian.reichel@collabora.com>
- <20220908003107.220143-13-sebastian.reichel@collabora.com>
- <88f6110b-94b7-484d-cc37-d7f72c88090a@gmail.com>
+	id 1oWG2M-002u5D-Gv
+	for linux-rockchip@lists.infradead.org; Thu, 08 Sep 2022 11:49:40 +0000
+Received: by mail-lf1-x134.google.com with SMTP id z25so27320634lfr.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 08 Sep 2022 04:49:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=srioTK6KsCPJy0yU+c6+tCB1HEEi/KQ9lo+WsB/Dyi4=;
+        b=pe7ujTnMRAtFZJxkWsN5z/obj9g6VXrSDkMirgfCrTziYv9bw0qHLSdPjKnOaBZMu2
+         gFJHxrTrCEmPkpDpAoKuRyCfBfxIyeyONErIBJBGmNEtLdN1GrlbWPUHvZzUtw5CmJvO
+         CobR7oIhLc4ioRiIOpMh6Gf6ZVRwlpDxyn16h8IddatEBjNJsbEfifqrjI7tLDKNaksv
+         mmxNKAYOMD8xwq+7fIaDoF5ZejgFoHy9vmRUnZDu4sE6yk5aYm7ePzKx1oXcd4SsFI1A
+         +9IhMt7OczyNJ75DwKHYVHqgL9qNwbGI2NvA3czQldQWgNYoviTpLAlJBZN3mX/wEKQm
+         awoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=srioTK6KsCPJy0yU+c6+tCB1HEEi/KQ9lo+WsB/Dyi4=;
+        b=TYPIkqtHzKTfhmeuDLF9lfUxHJ3TCpEwNaH2pRGE5Guybpdl8fmSGSwb3yBAgJH6rW
+         kE41RgQIsGYhFOij8RbiGxWYmr1r63J9bJKjKWDm887UvouWzQVKQI0+yNMqCLWZOZKC
+         h5P4nQmM9J4Lb+FJRLGOs2gJaM+nAjNfleP+qBkSq/tXKaOq7UuIWcsG7vUJZuMDjylK
+         41+Czu3KqYxLbZqu4JL4j9WzjDdCFaGh/4+7OB1serj+EYtS0IHnIeZj66tCBhoe5P38
+         47hj/AWP42nWfu7LzD3Ib2SWRbWjBbgrjeZcIFuvhtqnPNvLD68PqcIhBI8P58Qw3iwi
+         z4bA==
+X-Gm-Message-State: ACgBeo1zQ+nBF+u09DG74tlImfQbyxftQzKip/VGzKzyrQ3zYfXL4EcG
+	0TqpTdmOe+pZVI/v9Q/dfamjSw==
+X-Google-Smtp-Source: AA6agR4oUsEtw6uTpZlyCNzA5SlmDM2bsf9JfE82EcGp2pWiO/h1kTgoyWh83rCQTlx51j+HQcNLnw==
+X-Received: by 2002:a05:6512:1520:b0:492:daab:8382 with SMTP id bq32-20020a056512152000b00492daab8382mr2830583lfb.151.1662637776115;
+        Thu, 08 Sep 2022 04:49:36 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id o9-20020a05651205c900b004947e89ae4bsm202530lfo.294.2022.09.08.04.49.34
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 08 Sep 2022 04:49:35 -0700 (PDT)
+Message-ID: <aeabc681-9416-d25d-693a-30ba99f1796d@linaro.org>
+Date: Thu, 8 Sep 2022 13:49:34 +0200
 MIME-Version: 1.0
-In-Reply-To: <88f6110b-94b7-484d-cc37-d7f72c88090a@gmail.com>
-X-Cookie: Metermaids eat their young.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH 2/8] ASoC: rockchip: rk3308: add audio card bindings
+Content-Language: en-US
+To: luca.ceresoli@bootlin.com, alsa-devel@alsa-project.org,
+ linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Johan Jonker <jbx6244@gmail.com>,
+ Chris Morgan <macromorgan@hotmail.com>
+References: <20220907142124.2532620-1-luca.ceresoli@bootlin.com>
+ <20220907142124.2532620-3-luca.ceresoli@bootlin.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220907142124.2532620-3-luca.ceresoli@bootlin.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_043156_450421_6EB81E4B 
-X-CRM114-Status: GOOD (  14.57  )
+X-CRM114-CacheID: sfid-20220908_044938_622051_E86A3D08 
+X-CRM114-Status: GOOD (  20.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,65 +96,117 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8655655810773554137=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 07/09/2022 16:21, luca.ceresoli@bootlin.com wrote:
+> From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+> 
+> Add device tree bindings document for the audio card based on the internal
+> I2S of the Rockchip RK3308 SoC.
 
---===============8655655810773554137==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zfjnbY86D6IxZX3o"
-Content-Disposition: inline
+Use subject prefixes matching the subsystem (git log --oneline -- ...).
+
+> 
+> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+> ---
+>  .../rockchip,rk3308-audio-graph-card.yaml     | 50 +++++++++++++++++++
+>  MAINTAINERS                                   |  5 ++
+>  2 files changed, 55 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3308-audio-graph-card.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3308-audio-graph-card.yaml b/Documentation/devicetree/bindings/sound/rockchip,rk3308-audio-graph-card.yaml
+> new file mode 100644
+> index 000000000000..8445a69dcdbb
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/rockchip,rk3308-audio-graph-card.yaml
+> @@ -0,0 +1,50 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/rockchip,rk3308-audio-graph-card.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip RK3308 Audio card based on internal I2S
+> +
+> +maintainers:
+> +  - Luca Ceresoli <luca.ceresoli@bootlin.com>
+> +
+> +allOf:
+> +  - $ref: /schemas/sound/audio-graph.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    const: rockchip,rk3308-audio-graph-card
+
+Is "graph" part of device name or you just put it there because of other
+schema? The compatible should reflect the device name, not some other
+pieces in Linux or in bindings.
+
+> +
+> +required:
+> +  - compatible
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    sound {
+> +        compatible = "rockchip,rk3308-audio-graph-card";
+> +        dais = <&i2s_8ch_2_port>;
+> +    };
+> +
+> +    i2s_8ch_2 {
+
+No underscores in node names. Generic node names. This does not look
+like related example...
+
+> +        i2s_8ch_2_port: port {
+> +            i2s_8ch_2_endpoint: endpoint {
+> +                remote-endpoint = <&acodec_endpoint>;
+> +                dai-format = "i2s";
+> +
+> +                /* The RK3308 acodec has no clock dividers, use the CPU */
+> +                bitclock-master = <&i2s_8ch_2_endpoint>;
+> +                frame-master = <&i2s_8ch_2_endpoint>;
+> +            };
+> +        };
+> +    };
+> +
+> +    acodec {
+
+codec or audio-codec
+
+> +        port {
+> +            acodec_endpoint: endpoint {
+> +                remote-endpoint = <&i2s_8ch_2_endpoint>;
+> +            };
+> +        };
+> +    };
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index d53a8e74cb1e..079bdd95dc49 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -17594,6 +17594,11 @@ S:	Maintained
+>  F:	Documentation/devicetree/bindings/sound/rockchip,rk3308-codec.yaml
+>  F:	include/dt-bindings/sound/rockchip,rk3308-codec.h
+>  
+> +ROCKCHIP RK3308 SOUND CARD DRIVER
+> +M:	Luca Ceresoli <luca.ceresoli@bootlin.com>
+> +S:	Maintained
+> +F:	Documentation/devicetree/bindings/sound/rockchip,rk3308-audio-graph-card.yaml
+> +
+>  ROCKCHIP VIDEO DECODER DRIVER
+>  M:	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+>  L:	linux-media@vger.kernel.org
 
 
---zfjnbY86D6IxZX3o
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Thu, Sep 08, 2022 at 10:45:40AM +0300, Matti Vaittinen wrote:
-> On 9/8/22 03:31, Sebastian Reichel wrote:
-
-> > +static int rk806_set_voltage(struct regulator_dev *rdev,
-> > +			     int req_min_uV, int req_max_uV,
-> > +			     unsigned int *selector)
-
-> Hmm. Maybe this is not necessary? I wonder if we could get away just with
-> the .map and .set_voltage_sel (regulator_get_voltage_sel_regmap() and
-> regulator_map_voltage_linear_range()).
-
-Not just can, should.  Drivers should not mix and match voltage based
-and selector based operations, and they should always try to implement
-selector based operations unless there's a specific reason to do
-otherwise.
-
---zfjnbY86D6IxZX3o
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmMZ0qMACgkQJNaLcl1U
-h9A3iAf/RV6xulcLF3Uiq6Nup7Itd0N4Nsi3t+C2+D49b18Gq28gAKZucesUpjfz
-gVO5YeJnNX6gJnia1jDhxTAVa8r+Xy1K+6WmQGpYbfCECmTmS1v9GB3uIfOPyp5m
-iWrne12WJjo1b0a52D6/EyFT2okKjmR6qNYf37LVcomneLWl/KnXnPQmcK6vhbkY
-gwBklAF5YL822NCgx65aO4cgqkfIm/w7KK+y6h5DTzmXw5h+Ldi11+tMS65g5Oax
-77RzRDaU91PhGv9DSN94iBnvEmXGigofOJQ9vz/HRYOTmBUNPsu5dVxXdgeVhWqY
-4b6pMpBw61OJXeC3ETKEaS/j2jQfeA==
-=GRVt
------END PGP SIGNATURE-----
-
---zfjnbY86D6IxZX3o--
-
-
---===============8655655810773554137==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8655655810773554137==--
-
