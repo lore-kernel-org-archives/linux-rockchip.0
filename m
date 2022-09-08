@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F954C38145
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 12:34:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07E63C6FA8D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 12:35:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+xG9buykU33HJoSIm4oSPJCIHezyoeuBaBZU2oSl4Ng=; b=3YjpXZ38x4JsxO
-	vQqUpdC0Ay/jdtu5RDEgk+/+IQViHpgYpv5QYbA3hcjNV9uJX78JleBd80auL+M6sMYdvnOSrPukQ
-	QFsNGCg2WCqz8STK1Io0GkcewvH3n8aXbgDXE6skO50wTyDZqpUUA1U/Akqe6KvAwkc224VTh7o9T
-	WwrZb+9WzKxe9e46kNzI61m+G2xf+8oG8JjK9nunzrmlDc7FdXWk4xrreX1U4fsVokdQejEUHOSIa
-	tFMj5iF+keugy8pL1P93wOrjMd9sFVL6gdo6N03VAtFUJxBTbzNFfCKeIgyr+OXrf+pFvOh3dnC8v
-	PD0e6zCHnwuKaGhBfbcA==;
+	List-Owner; bh=P2UneQg16cvwKKGQvytaL3RviYiHzZGYSvj7xt1A8nU=; b=OTYz3OCDp32f+6
+	4cEwTEQS53bQ5Yrsl2Bi7cWBNMKQA50m/nK6XYmyuzBbPVGKU5iV5pyINoxcOWaVE0YVkbQD/faWR
+	T6bfOB0epqwxgZvfG2tH7bZF/x6BhfCL3QWMyQj1Flx7Oe1Y9cFzDRGEislwyjt0j2UtISoiollQ0
+	VRQm1TKCZt3HloKvFkAH3jEkKjGMo4/hFBq54OgWesOz+HkfuBOWMN17LcYv6H0unXFkLDVrVOtCG
+	raNWKgwrmq+QfTLU3F2jrCgAsuk8s1MATUX+Rok9tpmKkJNQn4SIs9HM7xJkXX83B+Elt2iYlbD1a
+	M5SuI2p3+uUfbJAu4tpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWGjW-003JBV-MZ; Thu, 08 Sep 2022 12:34:14 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1oWGkO-003JlC-Hq; Thu, 08 Sep 2022 12:35:08 +0000
+Received: from mail-oa1-f53.google.com ([209.85.160.53])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWGjU-003J9h-Gl
-	for linux-rockchip@lists.infradead.org; Thu, 08 Sep 2022 12:34:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1662640452; x=1694176452;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=PrfI4l+5o4OiyZA22z1Fo4qmJ7C/rSZhfad3+necbdw=;
-  b=h+8IHp1X1UBLl7FljJndFIzr5RYOUswAR3t+JF43Pev+4a4qpgAgCmBi
-   O5XlnDWfID/4YJMYZCcOLsRy8BxhTMStNSSAi1GKSAM63u+fGSav0UuPY
-   eKsOJ0TCV7IU3E1SDlyWR1wHiMdC5NOu2EAmsLZU7FpL1LNFADBk7lCnN
-   4f4wEYnRcLz3BVWcPIHkifOSe/+gDp8xCgq94aUiRhB+wVjTaeT/kBWWd
-   fXWd7c4q5+/QZBmYUYQm01qxMBpVOu8odnKsyKebdMhW0gzhdyYsItxCV
-   3eUBZL9ek52U9qq3r6LEZIuOoeD/4SmaMlc/mQpwvXgYdJM2w2q4GnU6z
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10463"; a="298490004"
-X-IronPort-AV: E=Sophos;i="5.93,300,1654585200"; 
-   d="scan'208";a="298490004"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Sep 2022 05:34:10 -0700
-X-IronPort-AV: E=Sophos;i="5.93,300,1654585200"; 
-   d="scan'208";a="676661067"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Sep 2022 05:34:08 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1oWGjO-00A7RX-0B;
-	Thu, 08 Sep 2022 15:34:06 +0300
-Date: Thu, 8 Sep 2022 15:34:05 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: heiko@sntech.de, linus.walleij@linaro.org, brgl@bgdev.pl,
-	linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v4] gpio: rockchip: support acpi
-Message-ID: <YxnhPd9CnjfcJfzR@smile.fi.intel.com>
-References: <20220908072621.3415957-1-jay.xu@rock-chips.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220908072621.3415957-1-jay.xu@rock-chips.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+	id 1oWGkL-003Jia-BB
+	for linux-rockchip@lists.infradead.org; Thu, 08 Sep 2022 12:35:07 +0000
+Received: by mail-oa1-f53.google.com with SMTP id 586e51a60fabf-1274ec87ad5so29014798fac.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 08 Sep 2022 05:35:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=message-id:date:subject:references:in-reply-to:cc:to:from
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=Jtr3p5j/5DRL0YbjSC8bWCtn5/EBjL0frgBB2T6QJQs=;
+        b=MlOsj34YvbC2PdzeD5Pp8j0CSOnlqzXgrGLKiJddkEQcdIR5uhDVKrYNxAuB9zEp4o
+         83xZl483+YcTMxjg4NmXx9AlEv3xZ8z2vlrPPF/1vmzXThU8kohRVK+KPKwt/vuXML+Y
+         HvHtOriluZzivuLU2Th3DR9UIGoSJzLs6NktdKDrGqd1/8TSaTgjBgtzHt4mcuglewXW
+         A/OG0TA+ZKwRnjhPeuktXILZSFSV7k2P+ii26M9S0YeiIfBy+hgcKHXtxvmrGtyg1XSV
+         BDqb7qLpFjo1iXT2C83pjfoGghF2vuXGctRJi7oiA8KGiU2B6B1PQ+/y/D9cGEtfN404
+         m0QQ==
+X-Gm-Message-State: ACgBeo2xWFHkAVi95/TZvjY8TyKFBZJMho1onDejtCghAjAj7B7WjUyI
+	aQ+2Kmj5bpgD+GUyWMvNVA==
+X-Google-Smtp-Source: AA6agR6Eir+ai1AypOeRyNPLX6bOtb5zKFX1YkGCr8hnsznL/Uw2peWhUP3YRVLOTVBWk77FhE3P/w==
+X-Received: by 2002:a05:6871:72a:b0:127:7b8e:feca with SMTP id f42-20020a056871072a00b001277b8efecamr1715936oap.193.1662640503661;
+        Thu, 08 Sep 2022 05:35:03 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id v18-20020a056870b51200b0011f22e74d5fsm5374067oap.20.2022.09.08.05.35.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Sep 2022 05:35:03 -0700 (PDT)
+Received: (nullmailer pid 2262543 invoked by uid 1000);
+	Thu, 08 Sep 2022 12:35:00 -0000
+From: Rob Herring <robh@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Michael Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org, Lee Jones <lee@kernel.org>, Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, devicetree@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>, Linus Walleij <linus.walleij@linaro.org>, kernel@collabora.com, Heiko Stuebner <heiko@sntech.de>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, Alexandre Belloni <alexandre.belloni@bootlin.com>, Stephen Boyd <sboyd@kernel.org>
+In-Reply-To: <20220908003107.220143-9-sebastian.reichel@collabora.com>
+References: <20220908003107.220143-1-sebastian.reichel@collabora.com> <20220908003107.220143-9-sebastian.reichel@collabora.com>
+Subject: Re: [PATCHv2 08/13] dt-bindings: mfd: add rk806 binding
+Date: Thu, 08 Sep 2022 07:35:00 -0500
+Message-Id: <1662640500.364305.2262542.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_053412_628775_58BDE5A0 
-X-CRM114-Status: GOOD (  23.64  )
+X-CRM114-CacheID: sfid-20220908_053505_415010_5A90C337 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,117 +71,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 08, 2022 at 03:26:21PM +0800, Jianqun Xu wrote:
-> This patch fix driver to support acpi by following changes:
->  * support get gpio bank number from uid of acpi
->  * try to get clocks for dt nodes but for acpi
->  * try to get clocks by a char id first, if a dt patch applied
+On Thu, 08 Sep 2022 02:31:02 +0200, Sebastian Reichel wrote:
+> Add DT binding document for Rockchip's RK806 PMIC.
+> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+>  .../bindings/mfd/rockchip,rk806.yaml          | 388 ++++++++++++++++++
+>  1 file changed, 388 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
+> 
 
-...
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-> +	if (!gc->label) {
+yamllint warnings/errors:
 
-See below.
+dtschema/dtc warnings/errors:
+/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/rockchip,rk806.example.dtb: pmic@0: regulators: Unevaluated properties are not allowed ('nldo-reg1', 'nldo-reg2', 'nldo-reg3', 'nldo-reg4', 'nldo-reg5', 'pldo-reg1', 'pldo-reg2', 'pldo-reg3', 'pldo-reg4', 'pldo-reg5', 'pldo-reg6' were unexpected)
+	From schema: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/mfd/rockchip,rk806.yaml
 
-> +		gc->label = kasprintf(GFP_KERNEL, "gpio%d", bank->bank_num);
-> +		if (!gc->label)
-> +			return -ENOMEM;
-> +	}
+doc reference errors (make refcheckdocs):
 
-...
+See https://patchwork.ozlabs.org/patch/
 
-> -	/*
-> -	 * For DeviceTree-supported systems, the gpio core checks the
-> -	 * pinctrl's device node for the "gpio-ranges" property.
-> -	 * If it is present, it takes care of adding the pin ranges
-> -	 * for the driver. In this case the driver can skip ahead.
-> -	 *
-> -	 * In order to remain compatible with older, existing DeviceTree
-> -	 * files which don't set the "gpio-ranges" property or systems that
-> -	 * utilize ACPI the driver has to call gpiochip_add_pin_range().
-> -	 */
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
 
-Why did you remove this comment? It's exactly an answer to what I was asking.
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
-> +	if (!device_property_read_bool(bank->dev, "gpio-ranges") && pctldev) {
->  		ret = gpiochip_add_pin_range(gc, dev_name(pctldev->dev), 0,
->  					     gc->base, gc->ngpio);
->  		if (ret) {
->  			dev_err(bank->dev, "Failed to add pin range\n");
-> -			goto fail;
-> +			goto err_remove;
->  		}
->  	}
+pip3 install dtschema --upgrade
 
-...
-
-> +	if (!bank->name)
-
-It's not obvious check for this. Perhaps you can synchronize above to have
-the same check and add a comment why bank->name presence guarantees that
-label wasn't allocated by us here.
-
-OTOH, why not to use devm_kasprintf()?
-
-> +		kfree(gc->label);
-
-...
-
-> +static int rockchip_gpio_get_clocks(struct rockchip_pin_bank *bank)
-> +{
-> +	struct device *dev = bank->dev;
-> +	struct fwnode_handle *fwnode = dev_fwnode(dev);
-> +	int ret;
-> +
-> +	if (!is_of_node(fwnode))
-> +		return 0;
-> +
-> +	bank->clk = devm_clk_get(dev, "bus");
-> +	if (IS_ERR(bank->clk)) {
-> +		bank->clk = of_clk_get(to_of_node(fwnode), 0);
-> +		if (IS_ERR(bank->clk)) {
-> +			dev_err(dev, "fail to get apb clock\n");
-> +			return PTR_ERR(bank->clk);
-> +		}
-> +	}
-> +
-> +	ret = clk_prepare_enable(bank->clk);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	bank->db_clk = devm_clk_get(dev, "db");
-> +	if (IS_ERR(bank->db_clk)) {
-> +		bank->db_clk = of_clk_get(to_of_node(fwnode), 1);
-> +		if (IS_ERR(bank->db_clk))
-> +			bank->db_clk = NULL;
-> +	}
-> +
-> +	ret = clk_prepare_enable(bank->db_clk);
-> +	if (ret < 0) {
-
-> +		clk_disable_unprepare(bank->clk);
-
-You can't mix devm_ with non-devm_ calls.
-
-> +		return ret;
-> +	}
-
-...
-
-> +	if (!bank->name)
-> +		kfree(gc->label);
-
-As per above.
-
--- 
-With Best Regards,
-Andy Shevchenko
-
+Please check and re-submit.
 
 
 _______________________________________________
