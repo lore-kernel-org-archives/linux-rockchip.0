@@ -4,83 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24A7EC38145
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 09:48:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27166ECAAD5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 10:58:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hebDSBJl4sIOnYRKHPVKcP7WqVqIBTYSnuDEkCXv2is=; b=t2Vb16ZP0Pbjwr
-	vWGry03tGkA8u+H9Rt56JHE68kjBz3p+sXJqmo8VAV7SfBjRSIyRxrWTdB0YNuCL8saDdpQt3Gz5a
-	RE+7yJoxKtbcHT4fcOE7cgPANgK7g00R9uTBhZgiUTu7X9AocpJrCwDKIVKPQFO+UQBxSZeV8B6CM
-	E/uHjbIBAzelVaPUgAv6K9mZZ7O69DGrmgdTVny/EBzRoixnWgXu3oRx7EIjx06kEEsmgNGH3MNt6
-	JWfBD7AgwVgC5Mlbn22V1GRNovZm09Y8kbkoMY2OnL5OhTTaJoaDbbUIailU01SAR4yAumhnT1C3O
-	mv8hp5C5p4RqMBdSW3XQ==;
+	List-Owner; bh=1sRUM/t0wifCBqO3GRL6Vhsuu96Iyw7bSxJSS6A/mDg=; b=oYc/KANhjrfnV8
+	369DA5ADpg+xPyVTEzYP74x4i/wuBUwuvFa1oFt4RjGYbwfOPFRQA6kUpgrZALLOJByyDAuQ+luA/
+	8pMmSLqsw18+HgTo8FhdMco4sOFMMGgmP3v2YpPslRZZji8dtRfohx++Lfe1vZ9qsAJIvhbplKDtA
+	sv9Cz79gdJ25guQndjAh37F3j66s3W3sXkSP0zeEmDNxzmO+rk7ilTpkKw2TSf+AVy3WNmqJdEWZF
+	Ms4DBhAdnyXeLOIWv2mnuQiAvL37PZ0NYCPVEfDzwtzkIqWxtJcpc+9gIOpHvyHnU0Jy1gJyJVpx1
+	lW4llJCkCf8ms/PUuhuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWE95-001nBb-Lz; Thu, 08 Sep 2022 09:48:27 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oWFEW-002UdL-UE; Thu, 08 Sep 2022 10:58:08 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWE8h-001n32-JV; Thu, 08 Sep 2022 09:48:05 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 05738B82051;
-	Thu,  8 Sep 2022 09:48:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15870C433D6;
-	Thu,  8 Sep 2022 09:47:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1662630480;
-	bh=twVKFDNBiJV5imqH0rJ1FX3tasybHNqPAbjuEtEEwBo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=FTq/jmjllxhZf4zqdTbijiuwMtav33tMrjaok6lXSDwstIvkbH0YUMS4yDf20f60i
-	 ZVdSXww5SMFHSElQwpEitJ9FoqjQZ/g4EkeyQPPUI4epDqcZs9o3EOIdfmhDAdMH6s
-	 YEItpf+8/16v3s554D+vQ39R+LZgo0XQmgjJ3bnbJeI9DmBSt/4PIr9tbPQz7deN6T
-	 krbmFeljz554fQy/FmUfKvuJxkUqcxkXN6f60A+LJy6KsdS90OIev6KZ6oW5cPDebA
-	 gQqyywgAeG4xCdRFKRyTA4LgOblHtVFa2LL71xeynVJxwELW4CkSkO9t+VgKvREazq
-	 m2yHENAGjSIgw==
-Date: Thu, 8 Sep 2022 10:47:51 +0100
-From: Lee Jones <lee@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Charles Keepax <ckeepax@opensource.cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Tim Harvey <tharvey@gateworks.com>,
-	Robert Jones <rjones@gateworks.com>,
-	Chanwoo Choi <cw00.choi@samsung.com>,
-	Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	- <patches@opensource.cirrus.com>,
-	Steve Twiss <stwiss.opensource@diasemi.com>,
-	Chris Zhong <zyw@rock-chips.com>,
-	Zhang Qing <zhangqing@rock-chips.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Amelie Delaunay <amelie.delaunay@foss.st.com>,
-	Linus Walleij <linus.walleij@linaro.org>,
-	Renner Berthing <kernel@esmil.dk>,
-	Krzysztof Kozlowski <krzk@kernel.org>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH] dt-bindings: mfd: Add missing
- (unevaluated|additional)Properties on child nodes
-Message-ID: <Yxm6R21Uw0/ghRsn@google.com>
-References: <20220823145649.3118479-4-robh@kernel.org>
+	id 1oWFEU-002Ub9-Pj
+	for linux-rockchip@lists.infradead.org; Thu, 08 Sep 2022 10:58:08 +0000
+Received: by mail-lf1-x133.google.com with SMTP id z25so27116084lfr.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 08 Sep 2022 03:58:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=antfYS9CLMVQjoxq/t8g85oFIDvnTn3dzLrv3hZENl4=;
+        b=Ntkh6WCu0pxXWpACDQuiRU5VFkn8LBrt/pLT5MPHvHa/AwSfwVkuB6PORbKnR4bA9G
+         9+YMccu0nvkshOnU3uICq+UaoMcC8Fx8gmw8fLpBa+X2oshWlUL7W9pPcFT8caQbK3JB
+         VIRD9ynibkix+K2u33yoTdHKsVXdFbVgfjMDht8+4Q1wwLgv1r6NOlqV57NT9RbKX+z3
+         ZvmY8eagnKerJ2voJgW2VD/70jDVPz0B6G/qX14xBgSDaTq0F0yoWRb0+v75MIbHDteg
+         VGHAnigqH3WE8FilG+oj+xb9JYQi7kuvOEWeaeUzJFbPreXwWUNLFrQY9Cs5goAmsl/O
+         rtAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=antfYS9CLMVQjoxq/t8g85oFIDvnTn3dzLrv3hZENl4=;
+        b=aFB+vEhBWayweHTbwi4Yy6kSNLzvEuStOhNQB1XILcDmjyPjAJGKnQo7xJ3++YP/Fs
+         6MAseglHEwXTEVB5IiWga2oeNjgW855Q5j0yNeUedD1pykNh/Tl5u1S6zSHvttUTjV9W
+         44/+u/F+8edbphIgfBq3SQsWddxQ5yXGYTs1Ep2W5QtrERKqr1V3Q1/P+m9H8ov87SR2
+         cfK5e0GU4wT0i3BVvK1VW+XtsYXruxCD/oVhRP3jv+sOMAogN/FibGkMRKB5kO2UWXJo
+         KPhBlK747I3TolBMrKSanSEEQ98SxEQ+pGU50nSBrnuFvqWaJdAG78FFw7RoT1TZSux5
+         R5+w==
+X-Gm-Message-State: ACgBeo1TiPNb9JmJORsWWY74fOtcBpwTgCQywxQ6ZBamxUGFxb3HQSAn
+	bctpjgTJ/tA7dNLQjNOOkU8ajA==
+X-Google-Smtp-Source: AA6agR4I706BLfaiL+d2jUeE+l8ZvCBicR6HGvKGkJFxogWGEMMiEug0S/q1OWf4gErFrUPjIV1zIA==
+X-Received: by 2002:a05:6512:258b:b0:496:fadd:55f9 with SMTP id bf11-20020a056512258b00b00496fadd55f9mr2836471lfb.356.1662634682929;
+        Thu, 08 Sep 2022 03:58:02 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id p15-20020ac24ecf000000b00497a3e2a191sm1171992lfr.112.2022.09.08.03.58.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 08 Sep 2022 03:58:01 -0700 (PDT)
+Message-ID: <be1c2903-c2af-74b3-b34c-5f8ee4935fad@linaro.org>
+Date: Thu, 8 Sep 2022 12:58:00 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220823145649.3118479-4-robh@kernel.org>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH 1/2] dt-bindings: gpio: rockchip: add clock-names
+Content-Language: en-US
+To: Jianqun Xu <jay.xu@rock-chips.com>, linus.walleij@linaro.org,
+ heiko@sntech.de
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20220901013101.2634480-1-jay.xu@rock-chips.com>
+ <20220901013101.2634480-2-jay.xu@rock-chips.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220901013101.2634480-2-jay.xu@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_024803_835590_F0784152 
-X-CRM114-Status: GOOD (  13.42  )
+X-CRM114-CacheID: sfid-20220908_035806_867310_52C184EE 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,33 +90,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMyBBdWcgMjAyMiwgUm9iIEhlcnJpbmcgd3JvdGU6Cgo+IEluIG9yZGVyIHRvIGVu
-c3VyZSBvbmx5IGRvY3VtZW50ZWQgcHJvcGVydGllcyBhcmUgcHJlc2VudCwgbm9kZSBzY2hlbWFz
-Cj4gbXVzdCBoYXZlIHVuZXZhbHVhdGVkUHJvcGVydGllcyBvciBhZGRpdGlvbmFsUHJvcGVydGll
-cyBzZXQgdG8gZmFsc2UKPiAodHlwaWNhbGx5KS4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBSb2IgSGVy
-cmluZyA8cm9iaEBrZXJuZWwub3JnPgo+IC0tLQo+ICAuLi4vbWZkL2FsbHdpbm5lcixzdW42aS1h
-MzEtcHJjbS55YW1sICAgICAgICAgfCA0MCArKysrKysrKysrKysrKysrKysrCj4gIC4uLi9tZmQv
-YWxsd2lubmVyLHN1bjhpLWEyMy1wcmNtLnlhbWwgICAgICAgICB8IDEwICsrKysrCj4gIC4uLi9i
-aW5kaW5ncy9tZmQvY2lycnVzLGxvY2huYWdhci55YW1sICAgICAgICB8ICA1ICsrKwo+ICAuLi4v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvZGxnLGRhOTA2My55YW1sICAgfCAgNyArKy0tCj4gIC4u
-Li9iaW5kaW5ncy9tZmQvZ2F0ZXdvcmtzLWdzYy55YW1sICAgICAgICAgICB8ICA1ICsrLQo+ICAu
-Li4vYmluZGluZ3MvbWZkL21heGltLG1heDE0NTc3LnlhbWwgICAgICAgICAgfCAgMSArCj4gIC4u
-Li9iaW5kaW5ncy9tZmQvbWF4aW0sbWF4Nzc4NDMueWFtbCAgICAgICAgICB8ICAxICsKPiAgLi4u
-L2JpbmRpbmdzL21mZC9yb2NrY2hpcCxyazgxNy55YW1sICAgICAgICAgIHwgIDIgKwo+ICAuLi4v
-YmluZGluZ3MvbWZkL3NpbGVyZ3ksc3k3NjM2YS55YW1sICAgICAgICAgfCAgMSArCj4gIC4uLi9i
-aW5kaW5ncy9tZmQvc3Qsc3RtMzItbHB0aW1lci55YW1sICAgICAgICB8ICA0ICsrCj4gIC4uLi9i
-aW5kaW5ncy9tZmQvc3Qsc3RtMzItdGltZXJzLnlhbWwgICAgICAgICB8ICAzICsrCj4gIC4uLi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL21mZC9zdCxzdG1meC55YW1sICAgICB8ICAxICsKPiAgLi4uL2Jp
-bmRpbmdzL21mZC9zdGVyaWNzc29uLGFiODUwMC55YW1sICAgICAgIHwgMjIgKysrKysrKysrKwo+
-ICAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9tZmQvdGksdHBzNjUwODYueWFtbCAgfCAgMSArCj4g
-IC4uLi9iaW5kaW5ncy9tZmQveC1wb3dlcnMsYXhwMTUyLnlhbWwgICAgICAgICB8ICAxICsKPiAg
-MTUgZmlsZXMgY2hhbmdlZCwgMTAwIGluc2VydGlvbnMoKyksIDQgZGVsZXRpb25zKC0pCgpBcHBs
-aWVkLCB0aGFua3MuCgotLSAKTGVlIEpvbmVzIFvmnY7nkLzmlq9dCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 01/09/2022 03:31, Jianqun Xu wrote:
+> Add 'clock-names' to the gpio dt node. so the driver could get clocks by
+> a const char id, this patch names the clock-names as
+>   - 'bus': the apb clock for cpu to access the gpio controller
+>   - 'db': the debounce clock for cpu to set debounce clock rate
+> 
+> Since the old dt nodes may have no clock-names, this patch not make them
+> as part of 'required properties'.
+> 
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+
+I see this patch sent three times... version your patches.
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
