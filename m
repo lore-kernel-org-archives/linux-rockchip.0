@@ -4,89 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B919C54EE9
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 15:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 162B4C38145
+	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 15:44:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2X2r75GTtuzPdOqrGPEXpmDjLIbIO5uBtBKSJviMyEI=; b=LMlnowpxFqWAVY
-	jcrCRki8/wZGmK3kPToyF550RxQxtlDV5g/e+jdKaKos5LzdwrK2qYrXXBwHAIM6yanKWIkd5kCSw
-	UAxDqrT41toQOWGsMOuTEBV26e/QdfEy8YEuURYAjT0pT8y4c68b9ToUu/Nkc0ujAz47+2PNk06xT
-	ap71Goq7YNfVqtaGpnrOEZHGBJz5Bcp2M0rWpoHTllvFiamktnO7kztj+azhOO9EusXYEcGSGo1Yu
-	d9nmHp/mcU9tDzAvev8rvK2s+g9LRhZkQcC9JQnRl8UZvbhdobH0V5MaJSqmYhKNocQFIZKzW1WvD
-	Zzirpk39IZZtqZ2HGG+g==;
+	List-Owner; bh=Vx6jPYGKAq/rgJVFkzAuA124Q+qX5QtqjCZ2JH0TJUk=; b=VTMxy4vEeygpU/
+	N3rl/EY8bOWutlMIhW9ltyOw3/JJ//B6TZ0Gw/BMd8m4rVEmkY8FUWtklSER1mIOVjHuwy7uxyXuE
+	gHILbk8fI69EzsHwfUapqdsTJM34P5ALh02WOc/A7DyLP6RS0X7EARvhuS/FEEBRN0i2SRuV8Q+nt
+	nSz0H1p5a6p51e1flv4l/82sk0g/t8Ihl1zoQxS97XB1uBghWngsU4I01L5Z5MCwNrjsxor0Uycnr
+	IaoAAWxv9+oA0uFU038W7EzLkTvLoL2gkObMNPj959bcLMI2nt3e6AQbSiC7Jc8drQmtgz7Vn8A/V
+	gblkQ0UKYni2xZUJXwVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWJcN-005JDN-73; Thu, 08 Sep 2022 15:39:03 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1oWJgz-005Ltu-3v; Thu, 08 Sep 2022 15:43:49 +0000
+Received: from relay7-d.mail.gandi.net ([217.70.183.200])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWJSE-005Ckg-3Y
-	for linux-rockchip@lists.infradead.org; Thu, 08 Sep 2022 15:28:35 +0000
-Received: by mail-lf1-x134.google.com with SMTP id z25so28367975lfr.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 08 Sep 2022 08:28:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=4i5CLL5zXNm8xAxFuL3WcPaDXJBLZrrT7gdqgJWsssM=;
-        b=zTRaEBM8h/AgHiP43wRrK2eOvAhRe/F6UVkH7Us0KM5pGBJwh6gnpMRabZsbFR1PpE
-         l+2qclNxfjXdvhEoOaKViykvcrnPUncG4G2/sycriPDrfmeLDVaizgLHRxRGny2lwmr4
-         1tKttNWHXT7q5d2Yfwq2a7MhRZmGgktP/YPGKBG38Ged+lIxQm82obdCnOlMF8mbR8zm
-         iAz/SCLyLQBsD1kHVumD1hsB4xSdBxRPrgBEdbH1HOMLAAGzm9Pbu3+owyiszQSHPHme
-         uJfepAr2Sq8RFVoSMQ3RrrxCRiZWZ/LNFSKidz2TMVXTjPf2QV7Pa1Zof9cXcMc27cAc
-         HyOA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=4i5CLL5zXNm8xAxFuL3WcPaDXJBLZrrT7gdqgJWsssM=;
-        b=TnD4UP2yUCqk59jJu3/yNTq2R2KyE3rLpfkdiuCF6P/vJbQkobBx1YwXuPHHqL26Ql
-         KNKXwAu4dGljaWN7VilORFKE7IWTlgkusTatnEW7QtH6oeCwDBYj4WIfgzbIHVuPCzRU
-         D7rxErmkAxd6AzOvIX6Wou6+05QECTLwi1icWmiLCokwjoSZr86nQKj0Le5pRwdsJUSy
-         WEx9EavWVD47yE0Bv2plMnfdLcLCcVqEv9JDwZrVQUNSIqpdr6UwQ3U8wje3Ir50xaWU
-         vgQRsM4xmBqdEkAOucObA6DkudpR51C6oNQ9tYKnpXYwisMXrTC8yxH7zmaLBwr0xJ2X
-         RDfQ==
-X-Gm-Message-State: ACgBeo3qon7gu8SOG7gVpdVtoL48Q0ZcQcgWBY9UxTP18umtd59pZg+f
-	WzGTSG3+qqP1y5kZEHlFOMue7dpx12vZLQ==
-X-Google-Smtp-Source: AA6agR5nuVkUg8vPgHt4g1SIgYv4bRvUoTVvbvAyY8N9q6d7yOOuKKJanXMI+72+uSgRSg908eTvBw==
-X-Received: by 2002:a05:6512:a8c:b0:48b:3e1c:c3ad with SMTP id m12-20020a0565120a8c00b0048b3e1cc3admr2960257lfu.678.1662650910246;
-        Thu, 08 Sep 2022 08:28:30 -0700 (PDT)
-Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id x13-20020a056512078d00b0049759682c88sm1761246lfr.190.2022.09.08.08.28.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 08 Sep 2022 08:28:29 -0700 (PDT)
-Message-ID: <d1b0360d-f32c-6311-5078-370c36f40ad9@linaro.org>
-Date: Thu, 8 Sep 2022 17:28:28 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH 2/8] ASoC: rockchip: rk3308: add audio card bindings
-Content-Language: en-US
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org,
+	id 1oWJX3-005G0h-Hx; Thu, 08 Sep 2022 15:33:35 +0000
+Received: from booty (unknown [77.244.183.192])
+	(Authenticated sender: luca.ceresoli@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPSA id 0AE112000D;
+	Thu,  8 Sep 2022 15:33:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1662651208;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=kdKcGQxR+2v+D+uRgeMyPmOl42z47nLjBaXhbBwGaX4=;
+	b=LSkfEC257xBfJ7nk91EuX3eNbR1eWBKmOhi/2jbiRnJWsWWq0x9DNdejtL8mmjyo/JhfSD
+	vIa4Onqili2PeIydC+IpO0plkswuunIq6xH5dfe9yWSD1ov7ivzekxg5jH6l18X1JH2bz1
+	IrzgpSAEX+6FxT7Z79Mkq4htLlndiPiL7tSFoWCsXjuNFKEiEh3MOCsmHloxNiXI14/sbM
+	woCoE1YHHxtyHDYVn43AEJLV0j0pkupNCzYbIi2eaMiIwEjpfptfCOzEyug57Cpnb3rlQy
+	nf/vKZ+Gvg3UZDVIbQmLZTbVIIrrW8Oh7gB9iuWPJOaK5BYtDga0EHgV6G6IuA==
+Date: Thu, 8 Sep 2022 17:33:23 +0200
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: kbuild@lists.01.org, alsa-devel@alsa-project.org,
+ linux-rockchip@lists.infradead.org, lkp@intel.com, kbuild-all@lists.01.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Johan Jonker <jbx6244@gmail.com>,
- Chris Morgan <macromorgan@hotmail.com>
-References: <20220907142124.2532620-1-luca.ceresoli@bootlin.com>
- <20220907142124.2532620-3-luca.ceresoli@bootlin.com>
- <aeabc681-9416-d25d-693a-30ba99f1796d@linaro.org>
- <20220908172016.6e23df8c@booty>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220908172016.6e23df8c@booty>
+ linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Mark
+ Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof
+ Kozlowski <krzk@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Jaroslav
+ Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Nicolas Frattaroli
+ <frattaroli.nicolas@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Johan Jonker <jbx6244@gmail.com>, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH 7/8] ASoC: codecs: Add RK3308 internal audio codec
+ driver
+Message-ID: <20220908173323.3981a056@booty>
+In-Reply-To: <202209082103.F4ICyyHT-lkp@intel.com>
+References: <20220907142124.2532620-8-luca.ceresoli@bootlin.com>
+	<202209082103.F4ICyyHT-lkp@intel.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_082834_160917_3CFA2206 
-X-CRM114-Status: GOOD (  16.32  )
+X-CRM114-CacheID: sfid-20220908_083333_914505_7CCC1799 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,42 +80,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 08/09/2022 17:20, Luca Ceresoli wrote:
-> Hello Krzysztof,
-> 
-> thank you for reviewing my patches.
-> 
-> On Thu, 8 Sep 2022 13:49:34 +0200
-> Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org> wrote:
-> 
->> On 07/09/2022 16:21, luca.ceresoli@bootlin.com wrote:
->>> From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-> 
-> [...]
-> 
->>> +properties:
->>> +  compatible:
->>> +    const: rockchip,rk3308-audio-graph-card  
->>
->> Is "graph" part of device name or you just put it there because of other
->> schema?
-> 
-> Indeed this comes from the "audio-graph-card" compatible string.
-> 
->> The compatible should reflect the device name, not some other
->> pieces in Linux or in bindings.
-> 
-> Would it be OK to rename it to rockchip,rk3308-audio-card (i.e. drop
-> the "graph-" infix)?
-> 
-> Fixes for the other comments you made to this and the other patches are
-> already queued for v2.
+Hello Dan,
 
-Yes, either rockchip,rk3308-audio-card or rockchip,rk3308-audio
+On Thu, 8 Sep 2022 16:35:19 +0300
+Dan Carpenter <dan.carpenter@oracle.com> wrote:
 
+> Hi,
+> 
+> https://git-scm.com/docs/git-format-patch#_base_tree_information]
+> 
+> url:    https://github.com/intel-lab-lkp/linux/commits/luca-ceresoli-bootlin-com/Add-support-for-the-internal-RK3308-audio-codec/20220907-222555
+> base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+> config: arc-randconfig-m031-20220908 (https://download.01.org/0day-ci/archive/20220908/202209082103.F4ICyyHT-lkp@intel.com/config)
+> compiler: arceb-elf-gcc (GCC) 12.1.0
+> 
+> If you fix the issue, kindly add following tag where applicable
+> Reported-by: kernel test robot <lkp@intel.com>
+> Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+> 
+> smatch warnings:
+> sound/soc/codecs/rk3308_codec.c:748 rk3308_set_dai_fmt() error: uninitialized symbol 'is_master'.
+> sound/soc/codecs/rk3308_codec.c:998 rk3308_codec_digital_fadeout() warn: always true condition '(l_dgain >= (0 << 0)) => (0-u32max >= 0)'
+> sound/soc/codecs/rk3308_codec.c:998 rk3308_codec_digital_fadeout() warn: always true condition '(l_dgain >= (0 << 0)) => (0-u32max >= 0)'
+> 
+> vim +/is_master +748 sound/soc/codecs/rk3308_codec.c
+> 
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  680  static int rk3308_set_dai_fmt(struct snd_soc_dai *codec_dai,
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  681  			      unsigned int fmt)
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  682  {
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  683  	struct snd_soc_component *component = codec_dai->component;
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  684  	struct rk3308_codec_priv *rk3308 = snd_soc_component_get_drvdata(component);
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  685  	const unsigned int inv_bits = fmt & SND_SOC_DAIFMT_INV_MASK;
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  686  	const bool inv_bitclk =
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  687  		(inv_bits & SND_SOC_DAIFMT_IB_IF) ||
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  688  		(inv_bits & SND_SOC_DAIFMT_IB_NF);
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  689  	const bool inv_frmclk =
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  690  		(inv_bits & SND_SOC_DAIFMT_IB_IF) ||
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  691  		(inv_bits & SND_SOC_DAIFMT_NB_IF);
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  692  
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  693  	unsigned int adc_aif1 = 0, adc_aif2 = 0, dac_aif1 = 0, dac_aif2 = 0;
+> 786c160ad64ae5 Luca Ceresoli 2022-09-07  694  	int grp, is_master;
+> 
+> is_master needs to be initialized to false.
 
-Best regards,
-Krzysztof
+Fixed both, and also made is_master a bool for clarity. Changes queued
+for v2.
+
+Thank you.
+-- 
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
