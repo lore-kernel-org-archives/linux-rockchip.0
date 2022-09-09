@@ -4,67 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 079D8ECAAD5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 17:12:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51556ECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 17:28:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r0A7Fm2N02pgz0+c07N6ekl9VqWrBpLrIu2YOu2QFik=; b=0V3/wyYFMukJSS
-	aie0Hh01PVhV9U9EmcYRxSG2Y57f85LWB7nRzLj+QQyj57iMHy7desxf3DJo8A0cmvztTu5SCXNa7
-	ZpeI8d/cPPX0J1ZL8QjvHlxR6cemCYJWDY0FIKhe2+W5TZTiHcYnVSadadeYp7zckTA5WtfTy84a0
-	YQnpWNv9i8aWg0SogZoK3wrItNx3TWTa2WpfqiQMkKTwQZcfKCwTH4/ZW4rKUmKw6edQ3dgglFcm9
-	YY04cl9oeH/hI8hjFFQXBdaRgUeTYoFBQMIwQv3NP/9aKJoWDpgxWhZeGSbxR9fQSl5dqvQFe/QTw
-	9Vo/f7F5KDYwDsm2nWMw==;
+	List-Owner; bh=wo+TTckg1tfnR6ri36WUGu8M+aSWSq0yh56oE1iBNns=; b=Da4z8zJJtsLkKI
+	bCHPaeUagWjN7zkSggFvOR+gir1yJQtVV6HguTPv/9ICO4scaAHT8px/Qh1OS90QKY/21cbSDpx4x
+	5a9Kh7X+9zmipHjAculd3IyxBFxlCu8td5U2qVDUxEmaD/xj8KYw7fBO0wFN9Go5VvHy3xybocc2w
+	XZbNSPNCc4JRpEKM3HBBZzb+g94TsisZ23hUI+09IAXKSt3JjUPIBr6QalciS3mKVqi9t5eg5a0md
+	DUFhRodv7+X1R+8PAE1Jh9Cn4y778G7HGAPw3I5fEVdC1RC9HCjGbJgQarM+Si5S+sy4beqgwcK00
+	PfwNMmMM3PeuI4ELMhig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWhXn-000eOm-0K; Fri, 09 Sep 2022 17:11:55 +0000
-Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
+	id 1oWhnq-000k9W-BT; Fri, 09 Sep 2022 17:28:30 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWhXb-000eEr-4Z; Fri, 09 Sep 2022 17:11:45 +0000
-Received: from booty (unknown [77.244.183.192])
-	(Authenticated sender: luca.ceresoli@bootlin.com)
-	by mail.gandi.net (Postfix) with ESMTPSA id D87C240002;
-	Fri,  9 Sep 2022 17:11:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
-	t=1662743497;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=qzTczB6munZOD4DwLGAw/A7taonsXXSbVs8d7tpSJ3M=;
-	b=czkgcDmevNYuTr84omI64YQ7bf32DFyD3vn9t5gdj9ru9e9w3lYITFnCP81FR2oWOiIGcV
-	90THyh7b8kJx7inMaW213VE8lE3bsvtuAktpMsIgl5iWB2KGweR/DZwgzzEEGioTjG3Bc4
-	bMYCCaSCIgNncZ0bAbv9wTcKF5QnHtBRSjnDUtm2Y/j6Za9Rm+XMC97wtkGhplR7ufE+uF
-	8xf40iVDGPzxYQVrNxJTvY9Wh8N1VsudkoYasIXba+j6YvZ7DaTf5aFtwgmWqPfYWMnE6o
-	eIbP+4Y/E1GJ4ct9jDDmsphv8IzVtnkfFQWtFYelErFspv2kVc5nytaKcZP8sg==
-Date: Fri, 9 Sep 2022 19:11:32 +0200
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Rob
- Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Nicolas
- Frattaroli <frattaroli.nicolas@gmail.com>, Philipp Zabel
- <p.zabel@pengutronix.de>, Johan Jonker <jbx6244@gmail.com>, Chris Morgan
- <macromorgan@hotmail.com>
-Subject: Re: [PATCH 7/8] ASoC: codecs: Add RK3308 internal audio codec
- driver
-Message-ID: <20220909191132.6920ba09@booty>
-In-Reply-To: <YxoX+G5OFVDTX7s3@sirena.org.uk>
-References: <20220907142124.2532620-1-luca.ceresoli@bootlin.com>
-	<20220907142124.2532620-8-luca.ceresoli@bootlin.com>
-	<YxoX+G5OFVDTX7s3@sirena.org.uk>
-Organization: Bootlin
-X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
+	id 1oWhng-000k7B-4M; Fri, 09 Sep 2022 17:28:21 +0000
+Received: from [213.70.33.226] (helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1oWhnW-0006sv-JQ; Fri, 09 Sep 2022 19:28:10 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Jagan Teki <jagan@edgeble.ai>, linux-i2c@vger.kernel.org, David Wu <david.wu@rock-chips.com>
+Subject: Re: [PATCH v4 01/13] i2c: rk3x: Add rv1126 support
+Date: Fri, 09 Sep 2022 19:28:09 +0200
+Message-ID: <6158946.mvXUDI8C0e@phil>
+In-Reply-To: <20220907160207.3845791-2-jagan@edgeble.ai>
+References: <20220907160207.3845791-1-jagan@edgeble.ai> <20220907160207.3845791-2-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_101143_519891_5915AED9 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20220909_102820_206482_C2F4D4F6 
+X-CRM114-Status: GOOD (  19.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,25 +57,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Mark,
+Hi Jagan,
 
-On Thu, 8 Sep 2022 17:27:36 +0100
-Mark Brown <broonie@kernel.org> wrote:
+it looks like this is missing Wolfram Sang, the i2c maintainer?
 
-> On Wed, Sep 07, 2022 at 04:21:23PM +0200, luca.ceresoli@bootlin.com wrote:
+Am Mittwoch, 7. September 2022, 18:01:55 CEST schrieb Jagan Teki:
+> Add i2c support for Rockchip RV1126 SoC.
+> 
+> Cc: linux-i2c@vger.kernel.org
+> Signed-off-by: David Wu <david.wu@rock-chips.com>
+> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 
-Thank you for taking the time to review my patch in such detail! This
-is my first contribution to ALSA, and it was not clear to me which
-parts of the existing vendor driver needed even more cleanups than I
-have already done. I will probably get back to you with specific
-questions later on, while addressing your comments.
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-Best regards,
-Luca
--- 
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+
+Heiko
+
+> ---
+> Changes for v4:
+> - new patch
+> 
+>  drivers/i2c/busses/i2c-rk3x.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
+> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+> index 2e98e7793bba..d1658ed76562 100644
+> --- a/drivers/i2c/busses/i2c-rk3x.c
+> +++ b/drivers/i2c/busses/i2c-rk3x.c
+> @@ -1165,6 +1165,11 @@ static const struct rk3x_i2c_soc_data rv1108_soc_data = {
+>  	.calc_timings = rk3x_i2c_v1_calc_timings,
+>  };
+>  
+> +static const struct rk3x_i2c_soc_data rv1126_soc_data = {
+> +	.grf_offset = 0x118,
+> +	.calc_timings = rk3x_i2c_v1_calc_timings,
+> +};
+> +
+>  static const struct rk3x_i2c_soc_data rk3066_soc_data = {
+>  	.grf_offset = 0x154,
+>  	.calc_timings = rk3x_i2c_v0_calc_timings,
+> @@ -1195,6 +1200,10 @@ static const struct of_device_id rk3x_i2c_match[] = {
+>  		.compatible = "rockchip,rv1108-i2c",
+>  		.data = &rv1108_soc_data
+>  	},
+> +	{
+> +		.compatible = "rockchip,rv1126-i2c",
+> +		.data = &rv1126_soc_data
+> +	},
+>  	{
+>  		.compatible = "rockchip,rk3066-i2c",
+>  		.data = &rk3066_soc_data
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
