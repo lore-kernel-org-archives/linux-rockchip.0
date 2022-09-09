@@ -4,58 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78223ECAAD5
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 15:30:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 079D8ECAAD5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 17:12:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gopc3g9G4RvQkf05vk3ITdYBYSn0b2Uqoltbcfz1Fqo=; b=gGe6lNK9QkXmiu
-	cwJcYjSbTOE+curXA6hDPsx0MWVqEDmPuxx/1FrHP7GORIDnGcPRyTi+MfzKdp5/1eEKzEGr4YYHf
-	+OYI0romX8CXdp/OZL195Tv7Uorhb8PIjUo0EXiEAwty0I3ANW7fbtFfjVKO3y0nmruvYWaaOGCFm
-	jOOkiyVH0AIOxcy1PWNJMMa7ro5ckC1VVCxNjzMYlwbphSdmBl0EOhIy5oPYUx/nw7zhKshoPVAwT
-	zcJfdwspSNOEHcRi4YGR4XOu3hjjUCm9/YfFqROg226G+CUr8HTrs2dnKiwWfkLcRvhbsKvxclK3G
-	b5CJDg+RwF+mdIXKc0eQ==;
+	List-Owner; bh=r0A7Fm2N02pgz0+c07N6ekl9VqWrBpLrIu2YOu2QFik=; b=0V3/wyYFMukJSS
+	aie0Hh01PVhV9U9EmcYRxSG2Y57f85LWB7nRzLj+QQyj57iMHy7desxf3DJo8A0cmvztTu5SCXNa7
+	ZpeI8d/cPPX0J1ZL8QjvHlxR6cemCYJWDY0FIKhe2+W5TZTiHcYnVSadadeYp7zckTA5WtfTy84a0
+	YQnpWNv9i8aWg0SogZoK3wrItNx3TWTa2WpfqiQMkKTwQZcfKCwTH4/ZW4rKUmKw6edQ3dgglFcm9
+	YY04cl9oeH/hI8hjFFQXBdaRgUeTYoFBQMIwQv3NP/9aKJoWDpgxWhZeGSbxR9fQSl5dqvQFe/QTw
+	9Vo/f7F5KDYwDsm2nWMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWfxS-00HS7S-9Q; Fri, 09 Sep 2022 15:30:18 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1oWhXn-000eOm-0K; Fri, 09 Sep 2022 17:11:55 +0000
+Received: from relay2-d.mail.gandi.net ([2001:4b98:dc4:8::222])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWfxO-00HS5A-FP; Fri, 09 Sep 2022 15:30:15 +0000
-Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1oWfxD-0006GD-6x; Fri, 09 Sep 2022 17:30:03 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Chris Morgan <macroalpha82@gmail.com>,
-	linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	pgwipeout@gmail.com,
-	vkoul@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>,
-	cl@rock-chips.com,
-	s.hauer@pengutronix.de,
-	hjc@rock-chips.com,
-	dri-devel@lists.freedesktop.org,
-	kishon@ti.com,
-	airlied@linux.ie,
-	krzysztof.kozlowski+dt@linaro.org,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	robh+dt@kernel.org
-Subject: Re: (subset) [PATCH v2 0/5] rockchip-dsi for rk3568
-Date: Fri,  9 Sep 2022 17:30:00 +0200
-Message-Id: <166273738605.3499664.11822406703030868338.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220906174823.28561-1-macroalpha82@gmail.com>
-References: <20220906174823.28561-1-macroalpha82@gmail.com>
+	id 1oWhXb-000eEr-4Z; Fri, 09 Sep 2022 17:11:45 +0000
+Received: from booty (unknown [77.244.183.192])
+	(Authenticated sender: luca.ceresoli@bootlin.com)
+	by mail.gandi.net (Postfix) with ESMTPSA id D87C240002;
+	Fri,  9 Sep 2022 17:11:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=gm1;
+	t=1662743497;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qzTczB6munZOD4DwLGAw/A7taonsXXSbVs8d7tpSJ3M=;
+	b=czkgcDmevNYuTr84omI64YQ7bf32DFyD3vn9t5gdj9ru9e9w3lYITFnCP81FR2oWOiIGcV
+	90THyh7b8kJx7inMaW213VE8lE3bsvtuAktpMsIgl5iWB2KGweR/DZwgzzEEGioTjG3Bc4
+	bMYCCaSCIgNncZ0bAbv9wTcKF5QnHtBRSjnDUtm2Y/j6Za9Rm+XMC97wtkGhplR7ufE+uF
+	8xf40iVDGPzxYQVrNxJTvY9Wh8N1VsudkoYasIXba+j6YvZ7DaTf5aFtwgmWqPfYWMnE6o
+	eIbP+4Y/E1GJ4ct9jDDmsphv8IzVtnkfFQWtFYelErFspv2kVc5nytaKcZP8sg==
+Date: Fri, 9 Sep 2022 19:11:32 +0200
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Rob
+ Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Nicolas
+ Frattaroli <frattaroli.nicolas@gmail.com>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Johan Jonker <jbx6244@gmail.com>, Chris Morgan
+ <macromorgan@hotmail.com>
+Subject: Re: [PATCH 7/8] ASoC: codecs: Add RK3308 internal audio codec
+ driver
+Message-ID: <20220909191132.6920ba09@booty>
+In-Reply-To: <YxoX+G5OFVDTX7s3@sirena.org.uk>
+References: <20220907142124.2532620-1-luca.ceresoli@bootlin.com>
+	<20220907142124.2532620-8-luca.ceresoli@bootlin.com>
+	<YxoX+G5OFVDTX7s3@sirena.org.uk>
+Organization: Bootlin
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_083014_549481_FE743436 
-X-CRM114-Status: GOOD (  12.63  )
+X-CRM114-CacheID: sfid-20220909_101143_519891_5915AED9 
+X-CRM114-Status: GOOD (  11.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,29 +81,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 6 Sep 2022 12:48:18 -0500, Chris Morgan wrote:
-> This series adds support for the dsi and dphy controllers on the
-> Rockchip RK3568. I can confirm that for the Rockchip RK3568 this
-> current series DOES WORK now, but it requires rolling back clk changes
-> made for the HDMI driver. If the clock changes are not rolled back, the
-> image on the screen is shifted about 100 pixels to the right.
-> 
-> Clk changes in question:
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/clk/rockchip/clk-rk3568.c?id=ff3187eabb5ce478d15b6ed62eb286756adefac3
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/drivers/clk/rockchip/clk-rk3568.c?id=6e69052f01d9131388cfcfaee929120118a267f4
-> 
-> [...]
+Hello Mark,
 
-Applied, thanks!
+On Thu, 8 Sep 2022 17:27:36 +0100
+Mark Brown <broonie@kernel.org> wrote:
 
-[1/5] dt-bindings: display: rockchip-dsi: add rk3568 compatible
-      commit: 1c3b502e4327e8e24e617a6f922df72870c0cb5f
-[3/5] drm/rockchip: dsi: add rk3568 support
-      commit: f3aaa6125b6f1532d3276d705b1a3791f18a872a
+> On Wed, Sep 07, 2022 at 04:21:23PM +0200, luca.ceresoli@bootlin.com wrote:
+
+Thank you for taking the time to review my patch in such detail! This
+is my first contribution to ALSA, and it was not clear to me which
+parts of the existing vendor driver needed even more cleanups than I
+have already done. I will probably get back to you with specific
+questions later on, while addressing your comments.
 
 Best regards,
+Luca
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
