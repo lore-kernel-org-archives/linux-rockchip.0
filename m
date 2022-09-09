@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C9E3ECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 17:55:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D892CECAAD3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 17:55:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PvFCFUN9PIppY7PAHSdn3TkPGUZAJfDChP6/S5+eR5w=; b=OjkQkr6/VNqj4y
-	tBl/IFyBPPtHMOFO+7S6IJ1Ub5wTxKhtIAQgKsdzkk8eKO2APbJSaGrflejZdqT0vD0nZmHOCYf5t
-	caF9e5zI0iIxUg/f8UZj1PDNokidmFouUi5I+ZT1pHRTd/LyDUgvJkhrYPTPGAaKAxyzcYNVAYUeq
-	MWZxYqy9hB0CP244JZt/w16iWLIUboRKWS3hTFuatlbErK/j4pwwvgqh+eLtkF8B6BjLlx/DFWGoC
-	M2nP2+/J+rSDX1SVrDHnq1fSEe/WAGEPtm+QX/AUBTQf0+/ZIlqRnsbPXL2fjTAgd6cRzpfkp0s/S
-	zte7AQNMeTxU+t71/AnQ==;
+	List-Owner; bh=hvwhWv1srtKOT8yK+NrMcEZxRrWUbMNcgEQJQai5f1s=; b=x/bAtgE+nSOVhk
+	IXQ2VpdqRej+TrCl+fvJTAjAPUpdUe+ddkZCw0lmaEJO5ToQ/FjzeJW/4bjKt1BYMq+iE5TOiZze/
+	/DPmIyEta9qDUOhtPRxXck2j/P8g9bMJFdTDyFhhYxo3eQX9EnENYclrEmo59Nxrq/1AhjqwATxLv
+	PPb0zT0euIgxKpx82g6I+g9NrTVieFsWKday+BdcxSNBLuEPRiHygx/v6SG33JGXj3WUl9TYptaaa
+	dl3a/sQ0wUIl+HkOrzqimORLQJJDG6OFiHAwWdINFL3IiH1wN5CmW7bItDiRvHvj0uDDhYIsjXKR3
+	qGFGcNpXiCo13EsF+HNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWiE9-000tyV-3E; Fri, 09 Sep 2022 17:55:41 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1oWiEA-000u0L-T3; Fri, 09 Sep 2022 17:55:42 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWiE3-000toW-T0
-	for linux-rockchip@lists.infradead.org; Fri, 09 Sep 2022 17:55:39 +0000
+	id 1oWiE3-000toZ-UU
+	for linux-rockchip@lists.infradead.org; Fri, 09 Sep 2022 17:55:41 +0000
 Received: from jupiter.universe (dyndsl-095-033-168-128.ewe-ip-backbone.de [95.33.168.128])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id E2A7E6601FD5;
-	Fri,  9 Sep 2022 18:55:30 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 0FDE26601FDA;
+	Fri,  9 Sep 2022 18:55:31 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1662746131;
-	bh=X3yfj13to2tg/D84twn9byIRBMZ9DxelBTecqBK6ZEM=;
+	bh=8stJgy1VPCfU5DVw17GhITOy/49LFnJuLhhIki2x9VQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=grnBPc6gZsmmKZT/6mEFxGsNGBdG6q+FRyg2ll/EpY2dbfBYz4TJr3IeWDeATDqFS
-	 m1YFpK8AzTWJVMAAYfYXIWs1nRyFe9YJrcL88w3WHiu0aItzMZm2JZG5I8NvrOQdXS
-	 uRK+mxzoTBrDJnLEvj24OhgZYEXEEmQO3nbIft9yMC7/utKVi38fo7PqHWkfPLIXxo
-	 jv50ogJIxKxxfOyJ2UTLn7JFfzyWwDafmYsEzPy9kSjmSyO85YNKIIZwHG1P/AjEap
-	 oYrQyAK7gbe9ljy8EDa/9BInQxmMtVM9HLyPue84DIREkVAxzoHpesvRm4r/ih/taB
-	 r8PEKwBrRl6+w==
+	b=BRM5cIeJ57j9zv132vTDkdJF3Gob3UsKsl/frBg09zIBskE+jyFABCWEAVaUmCWQ1
+	 O75uV6qxc0I2A+477x/Zo+LdwiI1zIObpCZMU4kAuDcOJoNf4oqc1aZI/IXftuL3IO
+	 HzESg9uk+C0ORU9XtIKi0iKWAFhaaGGo5ymLMt1pO7oyMQ6Hqgoz/CvnW0YNWETswV
+	 GG0OBXAPq1Gc4krBg8QXhdLrLvYFhxOyJflk7gqunNBxjopyZ+FlWNik3PIYZqDqZ7
+	 /xF/OE9QJ+mGj0ImCLkeGYohhOLn/0+Tr+ABJqVMAgjO2Dyv+NZbo2yGWrJQ5DXvxw
+	 cXG6VBAqmBq4w==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 1D042480170; Fri,  9 Sep 2022 19:55:27 +0200 (CEST)
+	id 2603B48058D; Fri,  9 Sep 2022 19:55:27 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>,
@@ -61,16 +61,16 @@ Cc: Michael Turquette <mturquette@baylibre.com>,
 	linux-kernel@vger.kernel.org,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
 	kernel@collabora.com
-Subject: [PATCHv3 05/14] rtc: rk808: reduce 'struct rk808' usage
-Date: Fri,  9 Sep 2022 19:55:13 +0200
-Message-Id: <20220909175522.179175-6-sebastian.reichel@collabora.com>
+Subject: [PATCHv3 09/14] mfd: rk8xx: add rk806 support
+Date: Fri,  9 Sep 2022 19:55:17 +0200
+Message-Id: <20220909175522.179175-10-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220909175522.179175-1-sebastian.reichel@collabora.com>
 References: <20220909175522.179175-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_105536_232510_FBD5B30D 
-X-CRM114-Status: GOOD (  20.31  )
+X-CRM114-CacheID: sfid-20220909_105536_345275_B1975E11 
+X-CRM114-Status: GOOD (  28.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,216 +87,753 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Reduce usage of 'struct rk808' (driver data of the parent MFD), so
-that only the chip variant field is still being accessed directly.
-This allows restructuring the MFD driver to support SPI based
-PMICs.
+Add support for SPI connected rk806, which is used by the RK3588
+evaluation boards. The PMIC is advertised to support I2C and SPI,
+but the evaluation boards all use SPI. Thus only SPI support is
+added here.
 
-Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/rtc/rtc-rk808.c | 47 ++++++++++++++++++-----------------------
- 1 file changed, 20 insertions(+), 27 deletions(-)
+ drivers/mfd/Kconfig       |  14 ++
+ drivers/mfd/Makefile      |   1 +
+ drivers/mfd/rk8xx-core.c  |  67 ++++++-
+ drivers/mfd/rk8xx-spi.c   | 128 ++++++++++++
+ include/linux/mfd/rk808.h | 409 ++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 617 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/mfd/rk8xx-spi.c
 
-diff --git a/drivers/rtc/rtc-rk808.c b/drivers/rtc/rtc-rk808.c
-index e920da8c08da..2d9bcb3ce1e3 100644
---- a/drivers/rtc/rtc-rk808.c
-+++ b/drivers/rtc/rtc-rk808.c
-@@ -14,7 +14,6 @@
- #include <linux/bcd.h>
- #include <linux/mfd/rk808.h>
- #include <linux/platform_device.h>
--#include <linux/i2c.h>
+diff --git a/drivers/mfd/Kconfig b/drivers/mfd/Kconfig
+index acb7133d6db6..e300727b4006 100644
+--- a/drivers/mfd/Kconfig
++++ b/drivers/mfd/Kconfig
+@@ -1160,6 +1160,20 @@ config MFD_RK8XX_I2C
+ 	  through I2C interface. The device supports multiple sub-devices
+ 	  including interrupts, RTC, LDO & DCDC regulators, and onkey.
  
- /* RTC_CTRL_REG bitfields */
- #define BIT_RTC_CTRL_REG_STOP_RTC_M		BIT(0)
-@@ -51,7 +50,7 @@ struct rk_rtc_compat_reg {
++config MFD_RK8XX_SPI
++	tristate "Rockchip RK806 Power Management Chip"
++	depends on SPI && OF
++	select MFD_CORE
++	select REGMAP_SPI
++	select REGMAP_IRQ
++	select MFD_RK808
++	help
++	  If you say yes here you get support for the RK806 Power Management
++	  chips.
++	  This driver provides common support for accessing the device
++	  through SPI interface. The device supports multiple sub-devices
++	  including interrupts, LDO & DCDC regulators, and onkey.
++
+ config MFD_RN5T618
+ 	tristate "Ricoh RN5T567/618 PMIC"
+ 	depends on I2C
+diff --git a/drivers/mfd/Makefile b/drivers/mfd/Makefile
+index 25ac617a5e6b..e67d8d36d8a0 100644
+--- a/drivers/mfd/Makefile
++++ b/drivers/mfd/Makefile
+@@ -217,6 +217,7 @@ obj-$(CONFIG_MFD_NTXEC)		+= ntxec.o
+ obj-$(CONFIG_MFD_RC5T583)	+= rc5t583.o rc5t583-irq.o
+ obj-$(CONFIG_MFD_RK808)		+= rk8xx-core.o
+ obj-$(CONFIG_MFD_RK8XX_I2C)	+= rk8xx-i2c.o
++obj-$(CONFIG_MFD_RK8XX_SPI)	+= rk8xx-spi.o
+ obj-$(CONFIG_MFD_RN5T618)	+= rn5t618.o
+ obj-$(CONFIG_MFD_SEC_CORE)	+= sec-core.o sec-irq.o
+ obj-$(CONFIG_MFD_SYSCON)	+= syscon.o
+diff --git a/drivers/mfd/rk8xx-core.c b/drivers/mfd/rk8xx-core.c
+index d0ce17d98fdc..8ba2416178a9 100644
+--- a/drivers/mfd/rk8xx-core.c
++++ b/drivers/mfd/rk8xx-core.c
+@@ -39,6 +39,11 @@ static const struct resource rk805_key_resources[] = {
+ 	DEFINE_RES_IRQ(RK805_IRQ_PWRON_FALL),
  };
  
- struct rk808_rtc {
--	struct rk808 *rk808;
-+	struct regmap *regmap;
- 	struct rtc_device *rtc;
- 	struct rk_rtc_compat_reg *creg;
- 	int irq;
-@@ -97,12 +96,11 @@ static void gregorian_to_rockchip(struct rtc_time *tm)
- static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
- {
- 	struct rk808_rtc *rk808_rtc = dev_get_drvdata(dev);
--	struct rk808 *rk808 = rk808_rtc->rk808;
- 	u8 rtc_data[NUM_TIME_REGS];
++static struct resource rk806_pwrkey_resources[] = {
++	DEFINE_RES_IRQ(RK806_IRQ_PWRON_FALL),
++	DEFINE_RES_IRQ(RK806_IRQ_PWRON_RISE),
++};
++
+ static const struct resource rk817_pwrkey_resources[] = {
+ 	DEFINE_RES_IRQ(RK817_IRQ_PWRON_RISE),
+ 	DEFINE_RES_IRQ(RK817_IRQ_PWRON_FALL),
+@@ -59,6 +64,16 @@ static const struct mfd_cell rk805s[] = {
+ 	},
+ };
+ 
++static const struct mfd_cell rk806s[] = {
++	{ .name = "rk805-pinctrl", },
++	{
++		.name = "rk805-pwrkey",
++		.num_resources = ARRAY_SIZE(rk806_pwrkey_resources),
++		.resources = &rk806_pwrkey_resources[0],
++	},
++	{ .name = "rk808-regulator", },
++};
++
+ static const struct mfd_cell rk808s[] = {
+ 	{ .name = "rk808-clkout", },
+ 	{ .name = "rk808-regulator", },
+@@ -108,6 +123,12 @@ static const struct rk808_reg_data rk805_pre_init_reg[] = {
+ 	{RK805_THERMAL_REG, TEMP_HOTDIE_MSK, TEMP115C},
+ };
+ 
++static const struct rk808_reg_data rk806_pre_init_reg[] = {
++	{RK806_GPIO_INT_CONFIG, RK806_INT_POL_MSK, RK806_INT_POL_L},
++	{RK806_SYS_CFG3, RK806_SLAVE_RESTART_FUN_MSK, RK806_SLAVE_RESTART_FUN_EN},
++	{RK806_SYS_OPTION, RK806_SYS_ENB2_2M_MSK, RK806_SYS_ENB2_2M_EN},
++};
++
+ static const struct rk808_reg_data rk808_pre_init_reg[] = {
+ 	{ RK808_BUCK3_CONFIG_REG, BUCK_ILMIN_MASK,  BUCK_ILMIN_150MA },
+ 	{ RK808_BUCK4_CONFIG_REG, BUCK_ILMIN_MASK,  BUCK_ILMIN_200MA },
+@@ -258,6 +279,27 @@ static const struct regmap_irq rk805_irqs[] = {
+ 	},
+ };
+ 
++static const struct regmap_irq rk806_irqs[] = {
++	/* INT_STS0 IRQs */
++	REGMAP_IRQ_REG(RK806_IRQ_PWRON_FALL, 0, RK806_INT_STS_PWRON_FALL),
++	REGMAP_IRQ_REG(RK806_IRQ_PWRON_RISE, 0, RK806_INT_STS_PWRON_RISE),
++	REGMAP_IRQ_REG(RK806_IRQ_PWRON, 0, RK806_INT_STS_PWRON),
++	REGMAP_IRQ_REG(RK806_IRQ_PWRON_LP, 0, RK806_INT_STS_PWRON_LP),
++	REGMAP_IRQ_REG(RK806_IRQ_HOTDIE, 0, RK806_INT_STS_HOTDIE),
++	REGMAP_IRQ_REG(RK806_IRQ_VDC_RISE, 0, RK806_INT_STS_VDC_RISE),
++	REGMAP_IRQ_REG(RK806_IRQ_VDC_FALL, 0, RK806_INT_STS_VDC_FALL),
++	REGMAP_IRQ_REG(RK806_IRQ_VB_LO, 0, RK806_INT_STS_VB_LO),
++	/* INT_STS1 IRQs */
++	REGMAP_IRQ_REG(RK806_IRQ_REV0, 1, RK806_INT_STS_REV0),
++	REGMAP_IRQ_REG(RK806_IRQ_REV1, 1, RK806_INT_STS_REV1),
++	REGMAP_IRQ_REG(RK806_IRQ_REV2, 1, RK806_INT_STS_REV2),
++	REGMAP_IRQ_REG(RK806_IRQ_CRC_ERROR, 1, RK806_INT_STS_CRC_ERROR),
++	REGMAP_IRQ_REG(RK806_IRQ_SLP3_GPIO, 1, RK806_INT_STS_SLP3_GPIO),
++	REGMAP_IRQ_REG(RK806_IRQ_SLP2_GPIO, 1, RK806_INT_STS_SLP2_GPIO),
++	REGMAP_IRQ_REG(RK806_IRQ_SLP1_GPIO, 1, RK806_INT_STS_SLP1_GPIO),
++	REGMAP_IRQ_REG(RK806_IRQ_WDT, 1, RK806_INT_STS_WDT),
++};
++
+ static const struct regmap_irq rk808_irqs[] = {
+ 	/* INT_STS */
+ 	[RK808_IRQ_VOUT_LO] = {
+@@ -408,6 +450,18 @@ static struct regmap_irq_chip rk805_irq_chip = {
+ 	.init_ack_masked = true,
+ };
+ 
++static struct regmap_irq_chip rk806_irq_chip = {
++	.name = "rk806",
++	.irqs = rk806_irqs,
++	.num_irqs = ARRAY_SIZE(rk806_irqs),
++	.num_regs = 2,
++	.irq_reg_stride = 2,
++	.mask_base = RK806_INT_MSK0,
++	.status_base = RK806_INT_STS0,
++	.ack_base = RK806_INT_STS0,
++	.init_ack_masked = true,
++};
++
+ static const struct regmap_irq_chip rk808_irq_chip = {
+ 	.name = "rk808",
+ 	.irqs = rk808_irqs,
+@@ -534,6 +588,7 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
+ 	struct rk808 *rk808;
+ 	const struct rk808_reg_data *pre_init_reg;
+ 	const struct mfd_cell *cells;
++	bool dual_support = false;
+ 	int nr_pre_init_regs;
+ 	int nr_cells;
  	int ret;
- 
- 	/* Force an update of the shadowed registers right now */
--	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
-+	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
- 				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
- 				 BIT_RTC_CTRL_REG_RTC_GET_TIME);
- 	if (ret) {
-@@ -116,7 +114,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
- 	 * 32khz. If we clear the GET_TIME bit here, the time of i2c transfer
- 	 * certainly more than 31.25us: 16 * 2.5us at 400kHz bus frequency.
- 	 */
--	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
-+	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
- 				 BIT_RTC_CTRL_REG_RTC_GET_TIME,
- 				 0);
- 	if (ret) {
-@@ -124,7 +122,7 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
- 		return ret;
- 	}
- 
--	ret = regmap_bulk_read(rk808->regmap, rk808_rtc->creg->seconds_reg,
-+	ret = regmap_bulk_read(rk808_rtc->regmap, rk808_rtc->creg->seconds_reg,
- 			       rtc_data, NUM_TIME_REGS);
- 	if (ret) {
- 		dev_err(dev, "Failed to bulk read rtc_data: %d\n", ret);
-@@ -148,7 +146,6 @@ static int rk808_rtc_readtime(struct device *dev, struct rtc_time *tm)
- static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
- {
- 	struct rk808_rtc *rk808_rtc = dev_get_drvdata(dev);
--	struct rk808 *rk808 = rk808_rtc->rk808;
- 	u8 rtc_data[NUM_TIME_REGS];
- 	int ret;
- 
-@@ -163,7 +160,7 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
- 	rtc_data[6] = bin2bcd(tm->tm_wday);
- 
- 	/* Stop RTC while updating the RTC registers */
--	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
-+	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
- 				 BIT_RTC_CTRL_REG_STOP_RTC_M,
- 				 BIT_RTC_CTRL_REG_STOP_RTC_M);
- 	if (ret) {
-@@ -171,14 +168,14 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
- 		return ret;
- 	}
- 
--	ret = regmap_bulk_write(rk808->regmap, rk808_rtc->creg->seconds_reg,
-+	ret = regmap_bulk_write(rk808_rtc->regmap, rk808_rtc->creg->seconds_reg,
- 				rtc_data, NUM_TIME_REGS);
- 	if (ret) {
- 		dev_err(dev, "Failed to bull write rtc_data: %d\n", ret);
- 		return ret;
- 	}
- 	/* Start RTC again */
--	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
-+	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
- 				 BIT_RTC_CTRL_REG_STOP_RTC_M, 0);
- 	if (ret) {
- 		dev_err(dev, "Failed to update RTC control: %d\n", ret);
-@@ -191,12 +188,11 @@ static int rk808_rtc_set_time(struct device *dev, struct rtc_time *tm)
- static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
- {
- 	struct rk808_rtc *rk808_rtc = dev_get_drvdata(dev);
--	struct rk808 *rk808 = rk808_rtc->rk808;
- 	u8 alrm_data[NUM_ALARM_REGS];
- 	uint32_t int_reg;
- 	int ret;
- 
--	ret = regmap_bulk_read(rk808->regmap,
-+	ret = regmap_bulk_read(rk808_rtc->regmap,
- 			       rk808_rtc->creg->alarm_seconds_reg,
- 			       alrm_data, NUM_ALARM_REGS);
- 	if (ret) {
-@@ -212,7 +208,7 @@ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
- 	alrm->time.tm_year = (bcd2bin(alrm_data[5] & YEARS_REG_MSK)) + 100;
- 	rockchip_to_gregorian(&alrm->time);
- 
--	ret = regmap_read(rk808->regmap, rk808_rtc->creg->int_reg, &int_reg);
-+	ret = regmap_read(rk808_rtc->regmap, rk808_rtc->creg->int_reg, &int_reg);
- 	if (ret) {
- 		dev_err(dev, "Failed to read RTC INT REG: %d\n", ret);
- 		return ret;
-@@ -228,10 +224,9 @@ static int rk808_rtc_readalarm(struct device *dev, struct rtc_wkalrm *alrm)
- 
- static int rk808_rtc_stop_alarm(struct rk808_rtc *rk808_rtc)
- {
--	struct rk808 *rk808 = rk808_rtc->rk808;
- 	int ret;
- 
--	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->int_reg,
-+	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->int_reg,
- 				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M, 0);
- 
- 	return ret;
-@@ -239,10 +234,9 @@ static int rk808_rtc_stop_alarm(struct rk808_rtc *rk808_rtc)
- 
- static int rk808_rtc_start_alarm(struct rk808_rtc *rk808_rtc)
- {
--	struct rk808 *rk808 = rk808_rtc->rk808;
- 	int ret;
- 
--	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->int_reg,
-+	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->int_reg,
- 				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M,
- 				 BIT_RTC_INTERRUPTS_REG_IT_ALARM_M);
- 
-@@ -252,7 +246,6 @@ static int rk808_rtc_start_alarm(struct rk808_rtc *rk808_rtc)
- static int rk808_rtc_setalarm(struct device *dev, struct rtc_wkalrm *alrm)
- {
- 	struct rk808_rtc *rk808_rtc = dev_get_drvdata(dev);
--	struct rk808 *rk808 = rk808_rtc->rk808;
- 	u8 alrm_data[NUM_ALARM_REGS];
- 	int ret;
- 
-@@ -272,7 +265,7 @@ static int rk808_rtc_setalarm(struct device *dev, struct rtc_wkalrm *alrm)
- 	alrm_data[4] = bin2bcd(alrm->time.tm_mon + 1);
- 	alrm_data[5] = bin2bcd(alrm->time.tm_year - 100);
- 
--	ret = regmap_bulk_write(rk808->regmap,
-+	ret = regmap_bulk_write(rk808_rtc->regmap,
- 				rk808_rtc->creg->alarm_seconds_reg,
- 				alrm_data, NUM_ALARM_REGS);
- 	if (ret) {
-@@ -313,20 +306,18 @@ static int rk808_rtc_alarm_irq_enable(struct device *dev,
- static irqreturn_t rk808_alarm_irq(int irq, void *data)
- {
- 	struct rk808_rtc *rk808_rtc = data;
--	struct rk808 *rk808 = rk808_rtc->rk808;
--	struct i2c_client *client = rk808->i2c;
- 	int ret;
- 
--	ret = regmap_write(rk808->regmap, rk808_rtc->creg->status_reg,
-+	ret = regmap_write(rk808_rtc->regmap, rk808_rtc->creg->status_reg,
- 			   RTC_STATUS_MASK);
- 	if (ret) {
--		dev_err(&client->dev,
-+		dev_err(&rk808_rtc->rtc->dev,
- 			"%s:Failed to update RTC status: %d\n", __func__, ret);
- 		return ret;
- 	}
- 
- 	rtc_update_irq(rk808_rtc->rtc, 1, RTC_IRQF | RTC_AF);
--	dev_dbg(&client->dev,
-+	dev_dbg(&rk808_rtc->rtc->dev,
- 		 "%s:irq=%d\n", __func__, irq);
- 	return IRQ_HANDLED;
- }
-@@ -404,10 +395,12 @@ static int rk808_rtc_probe(struct platform_device *pdev)
+@@ -555,6 +610,14 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
+ 		cells = rk805s;
+ 		nr_cells = ARRAY_SIZE(rk805s);
  		break;
- 	}
- 	platform_set_drvdata(pdev, rk808_rtc);
--	rk808_rtc->rk808 = rk808;
-+	rk808_rtc->regmap = dev_get_regmap(pdev->dev.parent, NULL);
-+	if (!rk808_rtc->regmap)
-+		return -ENODEV;
++	case RK806_ID:
++		rk808->regmap_irq_chip = &rk806_irq_chip;
++		pre_init_reg = rk806_pre_init_reg;
++		nr_pre_init_regs = ARRAY_SIZE(rk806_pre_init_reg);
++		cells = rk806s;
++		nr_cells = ARRAY_SIZE(rk806s);
++		dual_support = true;
++		break;
+ 	case RK808_ID:
+ 		rk808->regmap_irq_chip = &rk808_irq_chip;
+ 		pre_init_reg = rk808_pre_init_reg;
+@@ -588,7 +651,7 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
+ 		return dev_err_probe(dev, -EINVAL, "No interrupt support, no core IRQ\n");
  
- 	/* start rtc running by default, and use shadowed timer. */
--	ret = regmap_update_bits(rk808->regmap, rk808_rtc->creg->ctrl_reg,
-+	ret = regmap_update_bits(rk808_rtc->regmap, rk808_rtc->creg->ctrl_reg,
- 				 BIT_RTC_CTRL_REG_STOP_RTC_M |
- 				 BIT_RTC_CTRL_REG_RTC_READSEL_M,
- 				 BIT_RTC_CTRL_REG_RTC_READSEL_M);
-@@ -417,7 +410,7 @@ static int rk808_rtc_probe(struct platform_device *pdev)
- 		return ret;
+ 	ret = devm_regmap_add_irq_chip(dev, rk808->regmap, irq,
+-				       IRQF_ONESHOT, -1,
++				       IRQF_ONESHOT | (dual_support ? IRQF_SHARED : 0), -1,
+ 				       rk808->regmap_irq_chip, &rk808->irq_data);
+ 	if (ret)
+ 		return dev_err_probe(dev, ret, "Failed to add irq_chip\n");
+@@ -603,7 +666,7 @@ int rk8xx_probe(struct device *dev, int variant, unsigned int irq, struct regmap
+ 					     pre_init_reg[i].addr);
  	}
  
--	ret = regmap_write(rk808->regmap, rk808_rtc->creg->status_reg,
-+	ret = regmap_write(rk808_rtc->regmap, rk808_rtc->creg->status_reg,
- 			   RTC_STATUS_MASK);
- 	if (ret) {
- 		dev_err(&pdev->dev,
+-	ret = devm_mfd_add_devices(dev, PLATFORM_DEVID_NONE,
++	ret = devm_mfd_add_devices(dev, dual_support ? PLATFORM_DEVID_AUTO : PLATFORM_DEVID_NONE,
+ 			      cells, nr_cells, NULL, 0,
+ 			      regmap_irq_get_domain(rk808->irq_data));
+ 	if (ret)
+diff --git a/drivers/mfd/rk8xx-spi.c b/drivers/mfd/rk8xx-spi.c
+new file mode 100644
+index 000000000000..82f150afb9fe
+--- /dev/null
++++ b/drivers/mfd/rk8xx-spi.c
+@@ -0,0 +1,128 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * MFD spi driver for Rockchip RK806
++ *
++ * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
++ *
++ * Author: Xu Shengfei <xsf@rock-chips.com>
++ */
++
++#include <linux/interrupt.h>
++#include <linux/mfd/core.h>
++#include <linux/mfd/rk808.h>
++#include <linux/module.h>
++#include <linux/regmap.h>
++#include <linux/spi/spi.h>
++
++static const struct regmap_range rk806_volatile_ranges[] = {
++	/* regmap_reg_range(RK806_INT_STS0, RK806_GPIO_INT_CONFIG), */
++	regmap_reg_range(RK806_POWER_EN0, RK806_POWER_EN5),
++	regmap_reg_range(0x70, 0x7a),
++};
++
++static const struct regmap_access_table rk806_volatile_table = {
++	.yes_ranges = rk806_volatile_ranges,
++	.n_yes_ranges = ARRAY_SIZE(rk806_volatile_ranges),
++};
++
++static const struct regmap_config rk806_regmap_config_spi = {
++	.reg_bits = 8,
++	.val_bits = 8,
++	.cache_type = REGCACHE_RBTREE,
++	.volatile_table = &rk806_volatile_table,
++};
++
++static int rk806_spi_bus_write(void *context, const void *data, size_t count)
++{
++	struct device *dev = context;
++	struct spi_device *spi = to_spi_device(dev);
++	const char *val = ((const char*) data) + 1;
++	char addr;
++	char buffer[4] = { 0 };
++
++	// TODO: support writing multiple values at once
++	if (count != 2) {
++		dev_err(&spi->dev, "regmap write err!\n");
++		return -EINVAL;
++	}
++
++	/* Copy address to read from into first element of SPI buffer. */
++	memcpy(&addr, data, sizeof(char));
++
++	buffer[0] = RK806_CMD_WRITE | (count - 2);
++	buffer[1] = addr;
++	buffer[2] = RK806_REG_H;
++	buffer[3] = val[0];
++
++	return spi_write(spi, &buffer, sizeof(buffer));
++}
++
++static int rk806_spi_bus_read(void *context,
++			      const void *reg,
++			      size_t reg_size,
++			      void *val,
++			      size_t val_size)
++{
++	struct device *dev = context;
++	struct spi_device *spi = to_spi_device(dev);
++	char addr;
++	char txbuf[3] = { 0 };
++
++	if (reg_size != sizeof(char) || val_size < 1)
++		return -EINVAL;
++
++	/* Copy address to read from into first element of SPI buffer. */
++	memcpy(&addr, reg, sizeof(char));
++
++	txbuf[0] = RK806_CMD_READ | (val_size - 1);
++	txbuf[1] = addr;
++	txbuf[2] = RK806_REG_H;
++
++	return spi_write_then_read(spi, txbuf, 3, val, val_size);
++}
++
++static const struct regmap_bus rk806_regmap_bus_spi = {
++	.write = rk806_spi_bus_write,
++	.read = rk806_spi_bus_read,
++	.reg_format_endian_default = REGMAP_ENDIAN_NATIVE,
++	.val_format_endian_default = REGMAP_ENDIAN_NATIVE,
++};
++
++static int rk8xx_spi_probe(struct spi_device *spi)
++{
++	struct regmap *regmap;
++
++	regmap = devm_regmap_init(&spi->dev, &rk806_regmap_bus_spi,
++				  &spi->dev, &rk806_regmap_config_spi);
++	if (IS_ERR(regmap))
++		return dev_err_probe(&spi->dev, PTR_ERR(regmap),
++				     "Failed to initialize register map\n");
++
++	return rk8xx_probe(&spi->dev, RK806_ID, spi->irq, regmap);
++}
++
++static const struct of_device_id rk8xx_spi_of_match[] = {
++	{ .compatible = "rockchip,rk806", },
++	{ /* sentinel */ }
++};
++MODULE_DEVICE_TABLE(of, rk8xx_spi_of_match);
++
++static const struct spi_device_id rk8xx_spi_id_table[] = {
++	{ "rk806", 0 },
++	{ /* sentinel */ }
++};
++MODULE_DEVICE_TABLE(spi, rk8xx_spi_id_table);
++
++static struct spi_driver rk8xx_spi_driver = {
++	.driver		= {
++		.name	= "rk8xx-spi",
++		.of_match_table = rk8xx_spi_of_match,
++	},
++	.probe		= rk8xx_spi_probe,
++	.id_table	= rk8xx_spi_id_table,
++};
++module_spi_driver(rk8xx_spi_driver);
++
++MODULE_AUTHOR("Xu Shengfei <xsf@rock-chips.com>");
++MODULE_DESCRIPTION("RK8xx SPI PMIC driver");
++MODULE_LICENSE("GPL v2");
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index c5ddfb0e5353..70f2ca745244 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -289,6 +289,414 @@ enum rk805_reg {
+ #define RK805_INT_ALARM_EN		(1 << 3)
+ #define RK805_INT_TIMER_EN		(1 << 2)
+ 
++/* RK806 */
++#define RK806_POWER_EN0			0x0
++#define RK806_POWER_EN1			0x1
++#define RK806_POWER_EN2			0x2
++#define RK806_POWER_EN3			0x3
++#define RK806_POWER_EN4			0x4
++#define RK806_POWER_EN5			0x5
++#define RK806_POWER_SLP_EN0		0x6
++#define RK806_POWER_SLP_EN1		0x7
++#define RK806_POWER_SLP_EN2		0x8
++#define RK806_POWER_DISCHRG_EN0		0x9
++#define RK806_POWER_DISCHRG_EN1		0xA
++#define RK806_POWER_DISCHRG_EN2		0xB
++#define RK806_BUCK_FB_CONFIG		0xC
++#define RK806_SLP_LP_CONFIG		0xD
++#define RK806_POWER_FPWM_EN0		0xE
++#define RK806_POWER_FPWM_EN1		0xF
++#define RK806_BUCK1_CONFIG		0x10
++#define RK806_BUCK2_CONFIG		0x11
++#define RK806_BUCK3_CONFIG		0x12
++#define RK806_BUCK4_CONFIG		0x13
++#define RK806_BUCK5_CONFIG		0x14
++#define RK806_BUCK6_CONFIG		0x15
++#define RK806_BUCK7_CONFIG		0x16
++#define RK806_BUCK8_CONFIG		0x17
++#define RK806_BUCK9_CONFIG		0x18
++#define RK806_BUCK10_CONFIG		0x19
++#define RK806_BUCK1_ON_VSEL		0x1A
++#define RK806_BUCK2_ON_VSEL		0x1B
++#define RK806_BUCK3_ON_VSEL		0x1C
++#define RK806_BUCK4_ON_VSEL		0x1D
++#define RK806_BUCK5_ON_VSEL		0x1E
++#define RK806_BUCK6_ON_VSEL		0x1F
++#define RK806_BUCK7_ON_VSEL		0x20
++#define RK806_BUCK8_ON_VSEL		0x21
++#define RK806_BUCK9_ON_VSEL		0x22
++#define RK806_BUCK10_ON_VSEL		0x23
++#define RK806_BUCK1_SLP_VSEL		0x24
++#define RK806_BUCK2_SLP_VSEL		0x25
++#define RK806_BUCK3_SLP_VSEL		0x26
++#define RK806_BUCK4_SLP_VSEL		0x27
++#define RK806_BUCK5_SLP_VSEL		0x28
++#define RK806_BUCK6_SLP_VSEL		0x29
++#define RK806_BUCK7_SLP_VSEL		0x2A
++#define RK806_BUCK8_SLP_VSEL		0x2B
++#define RK806_BUCK9_SLP_VSEL		0x2D
++#define RK806_BUCK10_SLP_VSEL		0x2E
++#define RK806_BUCK_DEBUG1		0x30
++#define RK806_BUCK_DEBUG2		0x31
++#define RK806_BUCK_DEBUG3		0x32
++#define RK806_BUCK_DEBUG4		0x33
++#define RK806_BUCK_DEBUG5		0x34
++#define RK806_BUCK_DEBUG6		0x35
++#define RK806_BUCK_DEBUG7		0x36
++#define RK806_BUCK_DEBUG8		0x37
++#define RK806_BUCK_DEBUG9		0x38
++#define RK806_BUCK_DEBUG10		0x39
++#define RK806_BUCK_DEBUG11		0x3A
++#define RK806_BUCK_DEBUG12		0x3B
++#define RK806_BUCK_DEBUG13		0x3C
++#define RK806_BUCK_DEBUG14		0x3D
++#define RK806_BUCK_DEBUG15		0x3E
++#define RK806_BUCK_DEBUG16		0x3F
++#define RK806_BUCK_DEBUG17		0x40
++#define RK806_BUCK_DEBUG18		0x41
++#define RK806_NLDO_IMAX			0x42
++#define RK806_NLDO1_ON_VSEL		0x43
++#define RK806_NLDO2_ON_VSEL		0x44
++#define RK806_NLDO3_ON_VSEL		0x45
++#define RK806_NLDO4_ON_VSEL		0x46
++#define RK806_NLDO5_ON_VSEL		0x47
++#define RK806_NLDO1_SLP_VSEL		0x48
++#define RK806_NLDO2_SLP_VSEL		0x49
++#define RK806_NLDO3_SLP_VSEL		0x4A
++#define RK806_NLDO4_SLP_VSEL		0x4B
++#define RK806_NLDO5_SLP_VSEL		0x4C
++#define RK806_PLDO_IMAX			0x4D
++#define RK806_PLDO1_ON_VSEL		0x4E
++#define RK806_PLDO2_ON_VSEL		0x4F
++#define RK806_PLDO3_ON_VSEL		0x50
++#define RK806_PLDO4_ON_VSEL		0x51
++#define RK806_PLDO5_ON_VSEL		0x52
++#define RK806_PLDO6_ON_VSEL		0x53
++#define RK806_PLDO1_SLP_VSEL		0x54
++#define RK806_PLDO2_SLP_VSEL		0x55
++#define RK806_PLDO3_SLP_VSEL		0x56
++#define RK806_PLDO4_SLP_VSEL		0x57
++#define RK806_PLDO5_SLP_VSEL		0x58
++#define RK806_PLDO6_SLP_VSEL		0x59
++#define RK806_CHIP_NAME			0x5A
++#define RK806_CHIP_VER			0x5B
++#define RK806_OTP_VER			0x5C
++#define RK806_SYS_STS			0x5D
++#define RK806_SYS_CFG0			0x5E
++#define RK806_SYS_CFG1			0x5F
++#define RK806_SYS_OPTION		0x61
++#define RK806_SLEEP_CONFIG0		0x62
++#define RK806_SLEEP_CONFIG1		0x63
++#define RK806_SLEEP_CTR_SEL0		0x64
++#define RK806_SLEEP_CTR_SEL1		0x65
++#define RK806_SLEEP_CTR_SEL2		0x66
++#define RK806_SLEEP_CTR_SEL3		0x67
++#define RK806_SLEEP_CTR_SEL4		0x68
++#define RK806_SLEEP_CTR_SEL5		0x69
++#define RK806_DVS_CTRL_SEL0		0x6A
++#define RK806_DVS_CTRL_SEL1		0x6B
++#define RK806_DVS_CTRL_SEL2		0x6C
++#define RK806_DVS_CTRL_SEL3		0x6D
++#define RK806_DVS_CTRL_SEL4		0x6E
++#define RK806_DVS_CTRL_SEL5		0x6F
++#define RK806_DVS_START_CTRL		0x70
++#define RK806_SLEEP_GPIO		0x71
++#define RK806_SYS_CFG3			0x72
++#define RK806_ON_SOURCE			0x74
++#define RK806_OFF_SOURCE		0x75
++#define RK806_PWRON_KEY			0x76
++#define RK806_INT_STS0			0x77
++#define RK806_INT_MSK0			0x78
++#define RK806_INT_STS1			0x79
++#define RK806_INT_MSK1			0x7A
++#define RK806_GPIO_INT_CONFIG		0x7B
++#define RK806_DATA_REG0			0x7C
++#define RK806_DATA_REG1			0x7D
++#define RK806_DATA_REG2			0x7E
++#define RK806_DATA_REG3			0x7F
++#define RK806_DATA_REG4			0x80
++#define RK806_DATA_REG5			0x81
++#define RK806_DATA_REG6			0x82
++#define RK806_DATA_REG7			0x83
++#define RK806_DATA_REG8			0x84
++#define RK806_DATA_REG9			0x85
++#define RK806_DATA_REG10		0x86
++#define RK806_DATA_REG11		0x87
++#define RK806_DATA_REG12		0x88
++#define RK806_DATA_REG13		0x89
++#define RK806_DATA_REG14		0x8A
++#define RK806_DATA_REG15		0x8B
++#define RK806_TM_REG			0x8C
++#define RK806_OTP_EN_REG		0x8D
++#define RK806_FUNC_OTP_EN_REG		0x8E
++#define RK806_TEST_REG1			0x8F
++#define RK806_TEST_REG2			0x90
++#define RK806_TEST_REG3			0x91
++#define RK806_TEST_REG4			0x92
++#define RK806_TEST_REG5			0x93
++#define RK806_BUCK_VSEL_OTP_REG0	0x94
++#define RK806_BUCK_VSEL_OTP_REG1	0x95
++#define RK806_BUCK_VSEL_OTP_REG2	0x96
++#define RK806_BUCK_VSEL_OTP_REG3	0x97
++#define RK806_BUCK_VSEL_OTP_REG4	0x98
++#define RK806_BUCK_VSEL_OTP_REG5	0x99
++#define RK806_BUCK_VSEL_OTP_REG6	0x9A
++#define RK806_BUCK_VSEL_OTP_REG7	0x9B
++#define RK806_BUCK_VSEL_OTP_REG8	0x9C
++#define RK806_BUCK_VSEL_OTP_REG9	0x9D
++#define RK806_NLDO1_VSEL_OTP_REG0	0x9E
++#define RK806_NLDO1_VSEL_OTP_REG1	0x9F
++#define RK806_NLDO1_VSEL_OTP_REG2	0xA0
++#define RK806_NLDO1_VSEL_OTP_REG3	0xA1
++#define RK806_NLDO1_VSEL_OTP_REG4	0xA2
++#define RK806_PLDO_VSEL_OTP_REG0	0xA3
++#define RK806_PLDO_VSEL_OTP_REG1	0xA4
++#define RK806_PLDO_VSEL_OTP_REG2	0xA5
++#define RK806_PLDO_VSEL_OTP_REG3	0xA6
++#define RK806_PLDO_VSEL_OTP_REG4	0xA7
++#define RK806_PLDO_VSEL_OTP_REG5	0xA8
++#define RK806_BUCK_EN_OTP_REG1		0xA9
++#define RK806_NLDO_EN_OTP_REG1		0xAA
++#define RK806_PLDO_EN_OTP_REG1		0xAB
++#define RK806_BUCK_FB_RES_OTP_REG1	0xAC
++#define RK806_OTP_RESEV_REG0		0xAD
++#define RK806_OTP_RESEV_REG1		0xAE
++#define RK806_OTP_RESEV_REG2		0xAF
++#define RK806_OTP_RESEV_REG3		0xB0
++#define RK806_OTP_RESEV_REG4		0xB1
++#define RK806_BUCK_SEQ_REG0		0xB2
++#define RK806_BUCK_SEQ_REG1		0xB3
++#define RK806_BUCK_SEQ_REG2		0xB4
++#define RK806_BUCK_SEQ_REG3		0xB5
++#define RK806_BUCK_SEQ_REG4		0xB6
++#define RK806_BUCK_SEQ_REG5		0xB7
++#define RK806_BUCK_SEQ_REG6		0xB8
++#define RK806_BUCK_SEQ_REG7		0xB9
++#define RK806_BUCK_SEQ_REG8		0xBA
++#define RK806_BUCK_SEQ_REG9		0xBB
++#define RK806_BUCK_SEQ_REG10		0xBC
++#define RK806_BUCK_SEQ_REG11		0xBD
++#define RK806_BUCK_SEQ_REG12		0xBE
++#define RK806_BUCK_SEQ_REG13		0xBF
++#define RK806_BUCK_SEQ_REG14		0xC0
++#define RK806_BUCK_SEQ_REG15		0xC1
++#define RK806_BUCK_SEQ_REG16		0xC2
++#define RK806_BUCK_SEQ_REG17		0xC3
++#define RK806_HK_TRIM_REG1		0xC4
++#define RK806_HK_TRIM_REG2		0xC5
++#define RK806_BUCK_REF_TRIM_REG1	0xC6
++#define RK806_BUCK_REF_TRIM_REG2	0xC7
++#define RK806_BUCK_REF_TRIM_REG3	0xC8
++#define RK806_BUCK_REF_TRIM_REG4	0xC9
++#define RK806_BUCK_REF_TRIM_REG5	0xCA
++#define RK806_BUCK_OSC_TRIM_REG1	0xCB
++#define RK806_BUCK_OSC_TRIM_REG2	0xCC
++#define RK806_BUCK_OSC_TRIM_REG3	0xCD
++#define RK806_BUCK_OSC_TRIM_REG4	0xCE
++#define RK806_BUCK_OSC_TRIM_REG5	0xCF
++#define RK806_BUCK_TRIM_ZCDIOS_REG1	0xD0
++#define RK806_BUCK_TRIM_ZCDIOS_REG2	0xD1
++#define RK806_NLDO_TRIM_REG1		0xD2
++#define RK806_NLDO_TRIM_REG2		0xD3
++#define RK806_NLDO_TRIM_REG3		0xD4
++#define RK806_PLDO_TRIM_REG1		0xD5
++#define RK806_PLDO_TRIM_REG2		0xD6
++#define RK806_PLDO_TRIM_REG3		0xD7
++#define RK806_TRIM_ICOMP_REG1		0xD8
++#define RK806_TRIM_ICOMP_REG2		0xD9
++#define RK806_EFUSE_CONTROL_REGH	0xDA
++#define RK806_FUSE_PROG_REG		0xDB
++#define RK806_MAIN_FSM_STS_REG		0xDD
++#define RK806_FSM_REG			0xDE
++#define RK806_TOP_RESEV_OFFR		0xEC
++#define RK806_TOP_RESEV_POR		0xED
++#define RK806_BUCK_VRSN_REG1		0xEE
++#define RK806_BUCK_VRSN_REG2		0xEF
++#define RK806_NLDO_RLOAD_SEL_REG1	0xF0
++#define RK806_PLDO_RLOAD_SEL_REG1	0xF1
++#define RK806_PLDO_RLOAD_SEL_REG2	0xF2
++#define RK806_BUCK_CMIN_MX_REG1		0xF3
++#define RK806_BUCK_CMIN_MX_REG2		0xF4
++#define RK806_BUCK_FREQ_SET_REG1	0xF5
++#define RK806_BUCK_FREQ_SET_REG2	0xF6
++#define RK806_BUCK_RS_MEABS_REG1	0xF7
++#define RK806_BUCK_RS_MEABS_REG2	0xF8
++#define RK806_BUCK_RS_ZDLEB_REG1	0xF9
++#define RK806_BUCK_RS_ZDLEB_REG2	0xFA
++#define RK806_BUCK_RSERVE_REG1		0xFB
++#define RK806_BUCK_RSERVE_REG2		0xFC
++#define RK806_BUCK_RSERVE_REG3		0xFD
++#define RK806_BUCK_RSERVE_REG4		0xFE
++#define RK806_BUCK_RSERVE_REG5		0xFF
++
++/* INT_STS Register field definitions */
++#define RK806_INT_STS_PWRON_FALL	BIT(0)
++#define RK806_INT_STS_PWRON_RISE	BIT(1)
++#define RK806_INT_STS_PWRON		BIT(2)
++#define RK806_INT_STS_PWRON_LP		BIT(3)
++#define RK806_INT_STS_HOTDIE		BIT(4)
++#define RK806_INT_STS_VDC_RISE		BIT(5)
++#define RK806_INT_STS_VDC_FALL		BIT(6)
++#define RK806_INT_STS_VB_LO		BIT(7)
++#define RK806_INT_STS_REV0		BIT(0)
++#define RK806_INT_STS_REV1		BIT(1)
++#define RK806_INT_STS_REV2		BIT(2)
++#define RK806_INT_STS_CRC_ERROR		BIT(3)
++#define RK806_INT_STS_SLP3_GPIO		BIT(4)
++#define RK806_INT_STS_SLP2_GPIO		BIT(5)
++#define RK806_INT_STS_SLP1_GPIO		BIT(6)
++#define RK806_INT_STS_WDT		BIT(7)
++
++/* spi command */
++#define RK806_CMD_READ			0
++#define RK806_CMD_WRITE			BIT(7)
++#define RK806_CMD_CRC_EN		BIT(6)
++#define RK806_CMD_CRC_DIS		0
++#define RK806_CMD_LEN_MSK		0x0f
++#define RK806_REG_H			0x00
++
++#define VERSION_AB		0x01
++
++enum rk806_reg_id {
++	RK806_ID_DCDC1 = 0,
++	RK806_ID_DCDC2,
++	RK806_ID_DCDC3,
++	RK806_ID_DCDC4,
++	RK806_ID_DCDC5,
++	RK806_ID_DCDC6,
++	RK806_ID_DCDC7,
++	RK806_ID_DCDC8,
++	RK806_ID_DCDC9,
++	RK806_ID_DCDC10,
++
++	RK806_ID_NLDO1,
++	RK806_ID_NLDO2,
++	RK806_ID_NLDO3,
++	RK806_ID_NLDO4,
++	RK806_ID_NLDO5,
++
++	RK806_ID_PLDO1,
++	RK806_ID_PLDO2,
++	RK806_ID_PLDO3,
++	RK806_ID_PLDO4,
++	RK806_ID_PLDO5,
++	RK806_ID_PLDO6,
++	RK806_ID_END,
++};
++
++/* Define the rk806 IRQ numbers */
++enum rk806_irqs {
++	/* INT_STS0 registers */
++	RK806_IRQ_PWRON_FALL,
++	RK806_IRQ_PWRON_RISE,
++	RK806_IRQ_PWRON,
++	RK806_IRQ_PWRON_LP,
++	RK806_IRQ_HOTDIE,
++	RK806_IRQ_VDC_RISE,
++	RK806_IRQ_VDC_FALL,
++	RK806_IRQ_VB_LO,
++
++	/* INT_STS0 registers */
++	RK806_IRQ_REV0,
++	RK806_IRQ_REV1,
++	RK806_IRQ_REV2,
++	RK806_IRQ_CRC_ERROR,
++	RK806_IRQ_SLP3_GPIO,
++	RK806_IRQ_SLP2_GPIO,
++	RK806_IRQ_SLP1_GPIO,
++	RK806_IRQ_WDT,
++};
++
++/* VCC1 low voltage threshold */
++enum rk806_lv_sel {
++	VB_LO_SEL_2800,
++	VB_LO_SEL_2900,
++	VB_LO_SEL_3000,
++	VB_LO_SEL_3100,
++	VB_LO_SEL_3200,
++	VB_LO_SEL_3300,
++	VB_LO_SEL_3400,
++	VB_LO_SEL_3500,
++};
++
++/* system shut down voltage select */
++enum rk806_uv_sel {
++	VB_UV_SEL_2700,
++	VB_UV_SEL_2800,
++	VB_UV_SEL_2900,
++	VB_UV_SEL_3000,
++	VB_UV_SEL_3100,
++	VB_UV_SEL_3200,
++	VB_UV_SEL_3300,
++	VB_UV_SEL_3400,
++};
++
++/* pin function */
++enum rk806_pwrctrl_fun {
++	PWRCTRL_NULL_FUN,
++	PWRCTRL_SLP_FUN,
++	PWRCTRL_POWOFF_FUN,
++	PWRCTRL_RST_FUN,
++	PWRCTRL_DVS_FUN,
++	PWRCTRL_GPIO_FUN,
++};
++
++/* pin pol */
++enum rk806_pin_level {
++	POL_LOW,
++	POL_HIGH,
++};
++
++enum rk806_vsel_ctr_sel {
++	CTR_BY_NO_EFFECT,
++	CTR_BY_PWRCTRL1,
++	CTR_BY_PWRCTRL2,
++	CTR_BY_PWRCTRL3,
++};
++
++enum rk806_dvs_ctr_sel {
++	CTR_SEL_NO_EFFECT,
++	CTR_SEL_DVS_START1,
++	CTR_SEL_DVS_START2,
++	CTR_SEL_DVS_START3,
++};
++
++enum rk806_pin_dr_sel {
++	RK806_PIN_INPUT,
++	RK806_PIN_OUTPUT,
++};
++
++#define RK806_INT_POL_MSK		BIT(1)
++#define RK806_INT_POL_H			BIT(1)
++#define RK806_INT_POL_L			0
++
++#define RK806_SLAVE_RESTART_FUN_MSK	BIT(1)
++#define RK806_SLAVE_RESTART_FUN_EN	BIT(1)
++#define RK806_SLAVE_RESTART_FUN_OFF	0
++
++#define RK806_SYS_ENB2_2M_MSK		BIT(1)
++#define RK806_SYS_ENB2_2M_EN		BIT(1)
++#define RK806_SYS_ENB2_2M_OFF		0
++
++enum rk806_int_fun {
++	RK806_INT_ONLY,
++	RK806_INT_ADN_WKUP,
++};
++
++enum rk806_dvs_mode {
++	RK806_DVS_NOT_SUPPORT,
++	RK806_DVS_START1,
++	RK806_DVS_START2,
++	RK806_DVS_START3,
++	RK806_DVS_PWRCTRL1,
++	RK806_DVS_PWRCTRL2,
++	RK806_DVS_PWRCTRL3,
++	RK806_DVS_START_PWRCTR1,
++	RK806_DVS_START_PWRCTR2,
++	RK806_DVS_START_PWRCTR3,
++	RK806_DVS_END,
++};
++
+ /* RK808 IRQ Definitions */
+ #define RK808_IRQ_VOUT_LO	0
+ #define RK808_IRQ_VB_LO		1
+@@ -689,6 +1097,7 @@ enum {
+ 
+ enum {
+ 	RK805_ID = 0x8050,
++	RK806_ID = 0x8060,
+ 	RK808_ID = 0x0000,
+ 	RK809_ID = 0x8090,
+ 	RK817_ID = 0x8170,
 -- 
 2.35.1
 
