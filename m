@@ -4,43 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51556ECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 17:28:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0331FECAAD5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 17:55:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wo+TTckg1tfnR6ri36WUGu8M+aSWSq0yh56oE1iBNns=; b=Da4z8zJJtsLkKI
-	bCHPaeUagWjN7zkSggFvOR+gir1yJQtVV6HguTPv/9ICO4scaAHT8px/Qh1OS90QKY/21cbSDpx4x
-	5a9Kh7X+9zmipHjAculd3IyxBFxlCu8td5U2qVDUxEmaD/xj8KYw7fBO0wFN9Go5VvHy3xybocc2w
-	XZbNSPNCc4JRpEKM3HBBZzb+g94TsisZ23hUI+09IAXKSt3JjUPIBr6QalciS3mKVqi9t5eg5a0md
-	DUFhRodv7+X1R+8PAE1Jh9Cn4y778G7HGAPw3I5fEVdC1RC9HCjGbJgQarM+Si5S+sy4beqgwcK00
-	PfwNMmMM3PeuI4ELMhig==;
+	List-Owner; bh=xWs6ZAa/MI2+XzetOCstv90icNTwbfxt7XYrioZmbho=; b=4TXp3ajZy9U2Ea
+	9Os5npCiCCZpoaY9til9tKW+2D5bbX88cqkb0ABEHlUyBopNJE7e9ygZB0ffa4i3ZKBDAyktUBuP0
+	pene0BVUVSnnPDDJt7b0iffcaCd9TShbIeu5d0UaLVaqpL8vtb+DZqGs67w4xZFt7NqBhaizOFtSp
+	PKFMAvqjI8Fgszk064JqHysBSnJN3fwsAXCW4ZME/DOsc1c/ASG3CDPtMXJ4XwNQf9U0DTgW1ynzo
+	NKqUlYJdriMxrjLc+oHEI0EbxsOucdGy10hvvSfx+tSnG6CCOQhI7uuZJjfITPebMDtvc5p66TLQV
+	bBcJB8w7knkLMCD9/iTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWhnq-000k9W-BT; Fri, 09 Sep 2022 17:28:30 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1oWiE8-000tyD-Nh; Fri, 09 Sep 2022 17:55:40 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWhng-000k7B-4M; Fri, 09 Sep 2022 17:28:21 +0000
-Received: from [213.70.33.226] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1oWhnW-0006sv-JQ; Fri, 09 Sep 2022 19:28:10 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Jagan Teki <jagan@edgeble.ai>, linux-i2c@vger.kernel.org, David Wu <david.wu@rock-chips.com>
-Subject: Re: [PATCH v4 01/13] i2c: rk3x: Add rv1126 support
-Date: Fri, 09 Sep 2022 19:28:09 +0200
-Message-ID: <6158946.mvXUDI8C0e@phil>
-In-Reply-To: <20220907160207.3845791-2-jagan@edgeble.ai>
-References: <20220907160207.3845791-1-jagan@edgeble.ai> <20220907160207.3845791-2-jagan@edgeble.ai>
+	id 1oWiE3-000toX-TQ
+	for linux-rockchip@lists.infradead.org; Fri, 09 Sep 2022 17:55:37 +0000
+Received: from jupiter.universe (dyndsl-095-033-168-128.ewe-ip-backbone.de [95.33.168.128])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id EB1196601FD7;
+	Fri,  9 Sep 2022 18:55:30 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1662746131;
+	bh=wCJsNLkxYKL/el2Fx65/D1FjMyWbbflEjA0WI2oWEFg=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=hJL7pc1ft8/OpM9pgb/9/GAgFhUtk2kYp+lfMx28driYknAU66BolV8TeMD6ZUJP3
+	 zSZVlIG3IImPFKuK83lqQwL956cEqJu2bFz+Fex94XlkbknLreF4NAhsUcLayQGFFl
+	 D7ByEVY0uZfhFtGr24Xf8GS/+RWUKSae2ybk0eFB7Q/A6ot9RnQKC/mWAW7Mpls5k4
+	 xKH1ZHS2Tau+b8bHCxMJKCpajvjkNCknykro5L8nuehQMgkz2x8WrRz1UPMLc++rNR
+	 TlmO4vUtdO3Uyulsu29GgmThyQJX5cEsxi6HS6qRG0b+mpKoyoJeZU7WIaWd4S2G2O
+	 b2/kRA7K9MpUw==
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 1FD0D48044C; Fri,  9 Sep 2022 19:55:27 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Lee Jones <lee@kernel.org>
+Cc: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Alessandro Zummo <a.zummo@towertech.it>,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCHv3 06/14] mfd: rk808: replace 'struct i2c_client' with 'struct device'
+Date: Fri,  9 Sep 2022 19:55:14 +0200
+Message-Id: <20220909175522.179175-7-sebastian.reichel@collabora.com>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220909175522.179175-1-sebastian.reichel@collabora.com>
+References: <20220909175522.179175-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_102820_206482_C2F4D4F6 
-X-CRM114-Status: GOOD (  19.17  )
+X-CRM114-CacheID: sfid-20220909_105536_097478_E4E3C0AC 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,60 +87,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jagan,
+Put 'struct device' pointer into the MFD platform_data instead
+of the 'struct i2c_client' pointer. This simplifies the code
+and prepares the MFD for SPI support.
 
-it looks like this is missing Wolfram Sang, the i2c maintainer?
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ drivers/mfd/rk808.c       | 6 +++---
+ include/linux/mfd/rk808.h | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-Am Mittwoch, 7. September 2022, 18:01:55 CEST schrieb Jagan Teki:
-> Add i2c support for Rockchip RV1126 SoC.
-> 
-> Cc: linux-i2c@vger.kernel.org
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
-
-Heiko
-
-> ---
-> Changes for v4:
-> - new patch
-> 
->  drivers/i2c/busses/i2c-rk3x.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-> index 2e98e7793bba..d1658ed76562 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -1165,6 +1165,11 @@ static const struct rk3x_i2c_soc_data rv1108_soc_data = {
->  	.calc_timings = rk3x_i2c_v1_calc_timings,
->  };
->  
-> +static const struct rk3x_i2c_soc_data rv1126_soc_data = {
-> +	.grf_offset = 0x118,
-> +	.calc_timings = rk3x_i2c_v1_calc_timings,
-> +};
-> +
->  static const struct rk3x_i2c_soc_data rk3066_soc_data = {
->  	.grf_offset = 0x154,
->  	.calc_timings = rk3x_i2c_v0_calc_timings,
-> @@ -1195,6 +1200,10 @@ static const struct of_device_id rk3x_i2c_match[] = {
->  		.compatible = "rockchip,rv1108-i2c",
->  		.data = &rv1108_soc_data
->  	},
-> +	{
-> +		.compatible = "rockchip,rv1126-i2c",
-> +		.data = &rv1126_soc_data
-> +	},
->  	{
->  		.compatible = "rockchip,rk3066-i2c",
->  		.data = &rk3066_soc_data
-> 
-
-
-
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index 8b18a9d9cb74..518c6deec4b1 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -556,7 +556,7 @@ static int rk808_power_off(struct sys_off_data *data)
+ 	}
+ 	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
+ 	if (ret)
+-		dev_err(&rk808->i2c->dev, "Failed to shutdown device!\n");
++		dev_err(rk808->dev, "Failed to shutdown device!\n");
+ 
+ 	return NOTIFY_DONE;
+ }
+@@ -579,7 +579,7 @@ static int rk808_restart(struct sys_off_data *data)
+ 	}
+ 	ret = regmap_update_bits(rk808->regmap, reg, bit, bit);
+ 	if (ret)
+-		dev_err(&rk808->i2c->dev, "Failed to restart device!\n");
++		dev_err(rk808->dev, "Failed to restart device!\n");
+ 
+ 	return NOTIFY_DONE;
+ }
+@@ -700,7 +700,7 @@ static int rk808_probe(struct i2c_client *client,
+ 		return -EINVAL;
+ 	}
+ 
+-	rk808->i2c = client;
++	rk808->dev = &client->dev;
+ 	i2c_set_clientdata(client, rk808);
+ 
+ 	rk808->regmap = devm_regmap_init_i2c(client, rk808->regmap_cfg);
+diff --git a/include/linux/mfd/rk808.h b/include/linux/mfd/rk808.h
+index 58602032e642..9937b068fa82 100644
+--- a/include/linux/mfd/rk808.h
++++ b/include/linux/mfd/rk808.h
+@@ -696,7 +696,7 @@ enum {
+ };
+ 
+ struct rk808 {
+-	struct i2c_client		*i2c;
++	struct device			*dev;
+ 	struct regmap_irq_chip_data	*irq_data;
+ 	struct regmap			*regmap;
+ 	long				variant;
+-- 
+2.35.1
 
 
 _______________________________________________
