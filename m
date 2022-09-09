@@ -4,89 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE93FECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 22:09:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42200ECAAD3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 23:11:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0IZIY464Slx5hL3XaLeJtvA0fv10faNJOpcgxvcGkO4=; b=OoGkYVZA/lJnIt
-	p84DGPwdUIWFrSRWlcSSkhN+soFMAIan1TWb/quqpWMswK1mpDw5Zydt9UdTLs8AihqE2BKqOndLB
-	otFcQRJeo0MluIMqc5WBh1k3Z/lIxNBzFpmU1lZkXBSMiHHFuVM0DZduVPEkfdJ8AKSBEXKfhkWUZ
-	xC48YacsXwT72MSrne9av4R1MXnUuTiHR/mxflI3ljaIUEgSvgxWoh5EvTF6D/7H0yyt3TEwYH1Js
-	0gvNRTxPJ6BnD8YwgDo1N07KUsToect2hzrMxCYyqTcpVar7HW7QurSy8+CIpBGSOZE9t6go+e+6f
-	aXCQrh/ObpOb435c3pLg==;
+	List-Owner; bh=hbzahSzbNY4PfQ73ty0RK7Wn9QuG6/LYP/fIvNu/fGY=; b=AK32UDOor41pEV
+	K/ZgwZMbnWeOvlwk2qrjGTKvuYWQd6Z5hi6gvN1mP8BL9r9wtlqUNX6/lFXNxzvRxUPgsmaOSuTkq
+	hQUNbqzd19e3u4tzWLnBqNpoA3YAdTXesVVl08tLa6qOsqfvUWSxgpUtLc4fUHMS56fyi7/0IgrM7
+	+3ngFhIABkM2ypejC+h1wWJd+L3h1E2h1biNJ19AhLc2k2C2IVXUXE3Ui5t8Z/N/7oYRcUs8M4yqo
+	mD4Enu1W9cLreXozrMO6iJNiPbxxcmh3rNxIAQKN+grw1YlXYWjlkOGW0OubKUi/8zklsP+PvSY89
+	HdGY06vdsPiwxw71gSrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWmC3-003OSt-Vu; Fri, 09 Sep 2022 22:09:48 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1oWn9a-003iHy-Sa; Fri, 09 Sep 2022 23:11:18 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWm52-003HuI-Sz; Fri, 09 Sep 2022 22:02:34 +0000
-Received: by mail-ej1-x636.google.com with SMTP id l14so7124317eja.7;
-        Fri, 09 Sep 2022 15:02:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
-         :cc:subject:date;
-        bh=5wDSQei0VH/0N0cIYpX+WvxREvgCAsAfy7LHoQVjBlQ=;
-        b=pzeyCMXPWtw5W3TzsjGLnySXo8soVYUYeJ9xFygN5yMcAFfkmo68Mn5NVSDaAqvEef
-         eMfcgrKdofMIrb0NkC9c/9Vds5bjV3ktzlLzWstteZoyzJiblmObGx9yNFJOzwAvY7lO
-         1KY9hKyA68Qr0+/E5uvCFdh+SbIOxQgl4kCdLO3bEGLkkfQGP9D/Q9zv03tqjXBbFmW/
-         wQA877zU19eUftI9o02PkytlYbM/sujtsOJ3kUS0dJ/fdCEs1YH93ga6tw2Zt32RLYLH
-         dvfsrtjWpLuPSgMAfQYmTNPST7qelX0TgYFbw5w+81Sytx+Gi4mwLwH/2plVR4zEjN9H
-         7bkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:subject:from:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=5wDSQei0VH/0N0cIYpX+WvxREvgCAsAfy7LHoQVjBlQ=;
-        b=rk+1/hsMdoeIxmH+tATqYhqdrZHrL/Onu2/vQTUlvgwfLABZcAYNh8L6xx5+tvsooD
-         mpsd+VK8iqncIzQENiyfdPbkvkSXz5jAKW3gGdCVfrLiitbfIVgp8y3VBeK2wAyyDx/b
-         CePEOUN8eVuDGFvrUQVEYwQNqskRstvdOOwTSxlSJMokC+67F8/cGj912X9tdf6PmLFv
-         1tcH41oxnRUDVUq1gGShuv6do8eugxvgXY/xjMvm55fHlJUFlonb/oJvge1bXM9/43BZ
-         lg1H55U8d3E/JHCFl8BMKzLwqM2/Uv3bRt1aGFw9wrwoCs/i/mNQbgjeYvh/9+xXSZ/+
-         kVbA==
-X-Gm-Message-State: ACgBeo1jNEtXInUBj5cOpKu6hbZOpx4JtVup+o/cO0mXvv0fHgha/wBg
-	1E4BV8TIMFRXexVf3Ht2gfw=
-X-Google-Smtp-Source: AA6agR5i2KdDv0Rikxka5ZmZqz4fP9NU9rl0imXOMXzTXa+EpchEAZGLS2pB1pzRZUktqmDJgOVSoQ==
-X-Received: by 2002:a17:907:3d8e:b0:741:8ebe:3464 with SMTP id he14-20020a1709073d8e00b007418ebe3464mr11326966ejc.747.1662760952366;
-        Fri, 09 Sep 2022 15:02:32 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id x17-20020a1709065ad100b0073d87068042sm804845ejs.110.2022.09.09.15.02.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Sep 2022 15:02:32 -0700 (PDT)
-Message-ID: <405db21d-154e-fed0-7524-ace1cef0203c@gmail.com>
-Date: Sat, 10 Sep 2022 00:02:30 +0200
+	id 1oWn9P-003i8t-A4
+	for Linux-rockchip@lists.infradead.org; Fri, 09 Sep 2022 23:11:09 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=phil.lan)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1oWn9K-0000Qa-Qe; Sat, 10 Sep 2022 01:11:02 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-media@vger.kernel.org,
+	Linux-rockchip@lists.infradead.org,
+	Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: (subset) [PATCH v2 1/3] media: hantro: Add support for Hantro G1 on RK356x
+Date: Sat, 10 Sep 2022 01:10:58 +0200
+Message-Id: <166276502654.27767.16487805522519550521.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.35.1
+In-Reply-To: <20220214212955.1178947-1-piotr.oniszczuk@gmail.com>
+References: <20220214212955.1178947-1-piotr.oniszczuk@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v1 02/11] dt-bindings: i2c: rockchip: add rockchip,rk3128-i2c
-To: kever.yang@rock-chips.com
-Cc: sjg@chromium.org, philipp.tomsich@vrull.eu, robh+dt@kernel.org,
- krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, ulf.hansson@linaro.org,
- miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com, kishon@ti.com,
- vkoul@kernel.org, thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
- gregkh@linuxfoundation.org, broonie@kernel.org, wim@linux-watchdog.org,
- linux@roeck-us.net, zhangqing@rock-chips.com, jamie@jamieiles.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-i2c@vger.kernel.org, linux-mmc@vger.kernel.org,
- linux-mtd@lists.infradead.org, linux-phy@lists.infradead.org,
- linux-pwm@vger.kernel.org, linux-serial@vger.kernel.org,
- linux-spi@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-watchdog@vger.kernel.org
-References: <20220909212543.17428-1-jbx6244@gmail.com>
-Content-Language: en-US
-In-Reply-To: <20220909212543.17428-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_150233_025212_41A38D6C 
-X-CRM114-Status: UNSURE (   7.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220909_161107_473348_616BAE29 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,28 +61,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add rockchip,rk3128-i2c compatible string.
+On Mon, 14 Feb 2022 22:29:53 +0100, Piotr Oniszczuk wrote:
+> RK356x has Hantro G1 video decoder capable to decode MPEG2/H.264/VP8
+> video formats.
+> 
+> This patch adds support for RK356x family in existing Hantro
+> video decoder kernel driver.
+> 
+> Tested on [1] with FFmpeg v4l2_request code taken from [2]
+> with MPEG2, H.642 and VP8 samples with results [3].
+> 
+> [...]
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Applied, thanks!
 
-diff --git a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
-index ee9f8b91d..82b9d6682 100644
---- a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
-+++ b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
-@@ -29,6 +29,7 @@ properties:
-       - items:
-           - enum:
-               - rockchip,rk3036-i2c
-+              - rockchip,rk3128-i2c
-               - rockchip,rk3368-i2c
-           - const: rockchip,rk3288-i2c
-       - items:
+[2/3] arm64: dts: rockchip: Add VPU support for RK3568/RK3566
+      commit: 944be6fba401639e5bf2a8bc9f5e781e6cc4b4d4
+
+Best regards,
 -- 
-2.20.1
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
