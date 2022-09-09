@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8468EECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 09:06:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA06DC6FA82
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 09:06:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z2rv6ncEfflmlFDqDv7K285MFBYdixhBJ8aq5MOrWhk=; b=14t2atNFMjuZWd
-	HiWc8YXj/S6B7NK1KiXr51vZ2cpUq0dr2vtwhMBkVb5MRrtG1aHvTKV8eWZiLY5Sj3s0VIvXHd61N
-	eC9np7TM+2HYrdkIQIW+gCanykzAOKj2nsKGWFaM2vXhwpT8cmgU6TRhDhtbhmb+9kBwZg54Y0NT1
-	UPcW3dZrcmAjWJq+Yf7lGgkhluLN3ShAIHbf/2pSdvlw6R0LM7RuWboD5EsFHrSGmsvD6cHNzYzhf
-	jVgmY7OEivNUrSMpfaZIx9z59vERMBXdyvMyYptZu7JFywYpD4E9kL2wwkAoR9O1kbzDMEbmX1hre
-	XqpWZUnpUpEwhZy3obYw==;
+	List-Owner; bh=ayAVEr8i8wQjXgBadExs27M5DGFi0BWhfqwc1iEfGWA=; b=hreqNYwbrErtJC
+	ID+3SyaT2RL0bsXwUw30iTYa8c8nSxUX5dCAGpgNe/A3Kv8h3m0jT67QAuXCeLV0qPcmOcFcgNoeP
+	GjREjpEOqSbMiwN5i8Ap2pF1q2huesI1yYVv4WXZVcQKMMMTKqGGw0uAvHMf52haruUQK/QoSGhFB
+	RaQ7o9MoIqfoTYTXDYaXUSSxsSNCM0X1eXhfq1c+bIc9P1PHrbWxT5JjVM5u1uz9HvBL7aUjYo1x2
+	WKIV9v1goGtVu2hYQZnTdP9AjfPmbbvkQoWG2P+aEhCOCVJmuVGDjwAE9K0MPNRuZ2glHL9SnBqQd
+	zgzfyxrwHhzorNMogIHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWZxc-00EtzP-Vm; Fri, 09 Sep 2022 09:06:05 +0000
+	id 1oWZxg-00Eu1f-2M; Fri, 09 Sep 2022 09:06:08 +0000
 Received: from mail-m11883.qiye.163.com ([115.236.118.83])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWZxZ-00Etwi-W2
-	for linux-rockchip@lists.infradead.org; Fri, 09 Sep 2022 09:06:03 +0000
+	id 1oWZxb-00Etxp-9F
+	for linux-rockchip@lists.infradead.org; Fri, 09 Sep 2022 09:06:04 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11883.qiye.163.com (Hmail) with ESMTPA id 34DDD840555;
-	Fri,  9 Sep 2022 17:06:00 +0800 (CST)
+	by mail-m11883.qiye.163.com (Hmail) with ESMTPA id 61FC48404DD;
+	Fri,  9 Sep 2022 17:06:01 +0800 (CST)
 From: Jianqun Xu <jay.xu@rock-chips.com>
 To: heiko@sntech.de,
 	linus.walleij@linaro.org,
@@ -36,23 +36,23 @@ Cc: brgl@bgdev.pl,
 	linux-gpio@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH 1/6] ARM: dts: rockchip: add gpio alias for gpio dt nodes
-Date: Fri,  9 Sep 2022 17:05:53 +0800
-Message-Id: <20220909090558.3609190-2-jay.xu@rock-chips.com>
+Subject: [PATCH 3/6] arm64: dts: rockchip: add gpio alias for gpio dt nodes
+Date: Fri,  9 Sep 2022 17:05:55 +0800
+Message-Id: <20220909090558.3609190-4-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220909090558.3609190-1-jay.xu@rock-chips.com>
 References: <20220909090558.3609190-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVkZQkgaVh4dQ0JITUsfTB0fT1UTARMWGhIXJB
-	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktITkhVSktLWQY+
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pio6Tjo*Cz0iUTZRNEJJTEIc
-	OilPCRdVSlVKTU1JTEpPSE1LTE9JVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
-	WU5DVUlJVUxVSkpPWVdZCAFZQUhNT0M3Bg++
-X-HM-Tid: 0a83217fb2372eb8kusn34ddd840555
+	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVlCGkJJVkNMGk5PQkpCHkIaHVUTARMWGhIXJB
+	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktPSElVSktLWQY+
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mxw6PRw6LT0dHDY5NE0DTE4Y
+	HxcKCSlVSlVKTU1JTEpPSE1JS09NVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
+	WU5DVUlJVUxVSkpPWVdZCAFZQUhITU03Bg++
+X-HM-Tid: 0a83217fb6e02eb8kusn61fc48404dd
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_020602_190472_DA279659 
-X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-CacheID: sfid-20220909_020603_488842_D617B2FC 
+X-CRM114-Status: UNSURE (   8.59  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,50 +75,34 @@ new gpio driver to get the index of gpio controller for driver.
 
 Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 ---
- arch/arm/boot/dts/rk3036.dtsi  | 3 +++
- arch/arm/boot/dts/rk3066a.dtsi | 6 ++++++
- arch/arm/boot/dts/rk322x.dtsi  | 4 ++++
- arch/arm/boot/dts/rk3288.dtsi  | 9 +++++++++
- arch/arm/boot/dts/rk3xxx.dtsi  | 4 ++++
- 5 files changed, 26 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi | 5 +++++
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 4 ++++
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi | 4 ++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 5 +++++
+ 4 files changed, 18 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index 9b0f0497567d..912c21667dd4 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -17,6 +17,9 @@ / {
- 	interrupt-parent = <&gic>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+index 2dfa67f1cd67..fa189701cdc9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+@@ -20,6 +20,11 @@ / {
+ 	#size-cells = <2>;
  
  	aliases {
 +		gpio0 = &gpio0;
 +		gpio1 = &gpio1;
 +		gpio2 = &gpio2;
++		gpio3 = &gpio3;
++		gpio4 = &gpio4;
  		i2c0 = &i2c0;
  		i2c1 = &i2c1;
  		i2c2 = &i2c2;
-diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
-index de9915d946f7..fe565440d6ad 100644
---- a/arch/arm/boot/dts/rk3066a.dtsi
-+++ b/arch/arm/boot/dts/rk3066a.dtsi
-@@ -13,6 +13,12 @@
- / {
- 	compatible = "rockchip,rk3066a";
- 
-+	aliases {
-+		gpio4 = &gpio4;
-+		gpio5 = &gpio5;
-+		gpio6 = &gpio6;
-+	};
-+
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index ffc16d6b97e1..a814e813a5da 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -15,6 +15,10 @@ / {
- 	interrupt-parent = <&gic>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 49ae15708a0b..22c2857bcdcf 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -20,6 +20,10 @@ / {
+ 	#size-cells = <2>;
  
  	aliases {
 +		gpio0 = &gpio0;
@@ -128,11 +112,26 @@ index ffc16d6b97e1..a814e813a5da 100644
  		serial0 = &uart0;
  		serial1 = &uart1;
  		serial2 = &uart2;
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 487b0e03d4b4..4d5184e27389 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -19,6 +19,15 @@ / {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+index a4c5aaf1f457..fc7e3f2bc786 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+@@ -20,6 +20,10 @@ / {
+ 
+ 	aliases {
+ 		ethernet0 = &gmac;
++		gpio0 = &gpio0;
++		gpio1 = &gpio1;
++		gpio2 = &gpio2;
++		gpio3 = &gpio3;
+ 		i2c0 = &i2c0;
+ 		i2c1 = &i2c1;
+ 		i2c2 = &i2c2;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 9d5b0e8c9cca..caffcaee2d6c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -20,6 +20,11 @@ / {
  
  	aliases {
  		ethernet0 = &gmac;
@@ -141,25 +140,6 @@ index 487b0e03d4b4..4d5184e27389 100644
 +		gpio2 = &gpio2;
 +		gpio3 = &gpio3;
 +		gpio4 = &gpio4;
-+		gpio5 = &gpio5;
-+		gpio6 = &gpio6;
-+		gpio7 = &gpio7;
-+		gpio8 = &gpio8;
- 		i2c0 = &i2c0;
- 		i2c1 = &i2c1;
- 		i2c2 = &i2c2;
-diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
-index 616a828e0c6e..e2cb4b51d02f 100644
---- a/arch/arm/boot/dts/rk3xxx.dtsi
-+++ b/arch/arm/boot/dts/rk3xxx.dtsi
-@@ -16,6 +16,10 @@ / {
- 
- 	aliases {
- 		ethernet0 = &emac;
-+		gpio0 = &gpio0;
-+		gpio1 = &gpio1;
-+		gpio2 = &gpio2;
-+		gpio3 = &gpio3;
  		i2c0 = &i2c0;
  		i2c1 = &i2c1;
  		i2c2 = &i2c2;
