@@ -4,57 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94574ECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 19:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9BF6ECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 21:53:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tPMW9siFzHMxHepWN8zWUFGNd+vxQiCwfrMxs/xUX3E=; b=WfMoVUKnHIBwLe
-	2X5tAqCK+2SnuqLLXdHQu4fc3zJWPSnDwHTJYx5DdO4961nx9cmR17fBxymzQKW8UN/sg1q0mShUN
-	XVuXWtF7uvh9vnoOKLK+JUGLWcYD9+td4F9kSM+kZl2wvhTNvvQ9JfnRFojQ7JLIAkCkWwa86MlQj
-	pwfHC5Z7rIk8T5YX6sSrFI9ndIs/o4UqwF882y80HPxDFnUyM3zuJcRVSbTqLbu8xAgqHWyAls9Gh
-	eBAShE6L1+Y0t4jqJBqgRa3nWiM0IG4MWQlJPQF7Q0i+cDC0mGzDztcUfxcYTeoMrgYexdtsZXXx1
-	6vcmEOL1KNbH33N3JR9Q==;
+	List-Owner; bh=1exeQo6nnU2fnqijODKomEcD2qEnx3Hp7khMrX7lDZI=; b=WmxvM5xOnWfbMP
+	96Of6SSkeHP72zL/CIX5NE52ygywkKACpThn4Up54A7cdY1JYHT0X/3L39COmoxNrfA+q2hNwDwPp
+	Y1zTGLfyVR4Z8GhDVJbkz6X1mA1QT1wu8OQ7eHnjiFSXvfuyT33JfZrx4ib8sB4TeDWTWyuKiCsCQ
+	xJbjeGfXh2sNbMqUDYsJfXLg//Nkc+p8fDuAQP0oUrYglOSJmSQsdTmtW20iArAhb6iN/JTXiCoca
+	8jfi14Mz4QAf+66aPe6MIQk024fxXAelmJqAyTTZ/YAyVBb3An1VQMz67yTbwPoBavuZAOmIT3AKM
+	27rE/m3OQGaABMId6KZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWk3G-002CqV-R3; Fri, 09 Sep 2022 19:52:34 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1oWlwM-003EJ2-SW; Fri, 09 Sep 2022 21:53:34 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWk2l-002CO4-Km; Fri, 09 Sep 2022 19:52:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=7BHSZjHop+9HJ/9aV1BpN8oh93FjP5eLEzQbgHt/QW4=; b=k87kDKS1kGTw+fz/SQMUbnbjon
-	DvqG/gUzpdxlpSRwhiBkLAprWSMozTjJKh2yj2f1zBm9Lqt5Sk6R1+y1UDWDu9/iqvlqEY2cbImDD
-	Mll/U3zlpVP0KMYVxm1kLk891S09nbyLzdg4zYCenYW4Sgldcg6MfOW2UFSzpLPgxqvjtSDQkpBWV
-	zpjAiXr461u1h2xRV14AD4A49Jc3+0b9q0rZrioyltlEe1MmhAbWRFy4Fbyp0hNvAWBdhO3sc3zM/
-	8Sj3FdvNEjbkpxYTkl+yfGAHkPdabzUCWpdHlwMo06f2hJvuiJdOeG63pS4AHRDpYcK1Ds/qFPrVG
-	qDYU4sIg==;
-Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
-	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWk2f-00DWYa-IE; Fri, 09 Sep 2022 19:52:04 +0000
-Received: from secure.fukaumi.org ([10.0.0.2])
-	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 289Joxel025079;
-	Sat, 10 Sep 2022 04:51:00 +0900
-From: FUKAUMI Naoki <naoki@radxa.com>
-To: heiko@sntech.de
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
-        FUKAUMI Naoki <naoki@radxa.com>
-Subject: [PATCH 4/6] arm64: dts: rockchip: rk3399-rock-4: fix regulator name
-Date: Fri,  9 Sep 2022 19:50:04 +0000
-Message-Id: <20220909195006.127957-4-naoki@radxa.com>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20220909195006.127957-1-naoki@radxa.com>
-References: <20220909195006.127957-1-naoki@radxa.com>
+	id 1oWlwJ-003EGW-FA; Fri, 09 Sep 2022 21:53:33 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1oWlwE-0008Pa-Qn; Fri, 09 Sep 2022 23:53:26 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org, Frank Wunderlich <linux@fw-web.de>
+Cc: Frank Wunderlich <frank-w@public-files.de>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Add regulator suffix to BPI-R2-Pro
+Date: Fri, 09 Sep 2022 23:53:26 +0200
+Message-ID: <17097488.0ZKypZ73Fx@diego>
+In-Reply-To: <20220906155503.10971-1-linux@fw-web.de>
+References: <20220906155503.10971-1-linux@fw-web.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220909_205158_137665_ACEFEEF0 
-X-CRM114-Status: UNSURE (   7.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220909_145331_535682_1DE16014 
+X-CRM114-Status: GOOD (  17.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,103 +57,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-fix regulator name
+Am Dienstag, 6. September 2022, 17:55:03 CEST schrieb Frank Wunderlich:
+> From: Frank Wunderlich <frank-w@public-files.de>
+> 
+> Add -regulator suffix to regulator names on Banana Pi R2 Pro board as
+> discussed on Mailinglist
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
-ref:
- https://dl.radxa.com/rockpi4/docs/hw/rockpi4/rockpi4_v13_sch_20181112.pdf
+looks like my b4 thanks mail got lost, so manually:
 
-Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
----
- .../boot/dts/rockchip/rk3399-rock-pi-4.dtsi   | 25 ++++++++++---------
- 1 file changed, 13 insertions(+), 12 deletions(-)
+applied for 6.1
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index 6464a6729729..bb1dcf319b02 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -136,24 +136,25 @@ vcc5v0_host: vcc5v0-host-regulator {
- 		vin-supply = <&vcc5v0_sys>;
- 	};
- 
--	vcc5v0_typec: vcc5v0-typec-regulator {
-+	vbus_typec: vbus-typec-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
- 		gpio = <&gpio1 RK_PA3 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&vcc5v0_typec_en>;
--		regulator-name = "vcc5v0_typec";
-+		regulator-name = "vbus_typec";
- 		regulator-always-on;
- 		vin-supply = <&vcc5v0_sys>;
- 	};
- 
--	vcc_lan: vcc3v3-phy-regulator {
-+	vcc3v3_lan: vcc3v3-lan-regulator {
- 		compatible = "regulator-fixed";
--		regulator-name = "vcc_lan";
-+		regulator-name = "vcc3v3_lan";
- 		regulator-always-on;
- 		regulator-boot-on;
- 		regulator-min-microvolt = <3300000>;
- 		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc3v3_sys>;
- 	};
- 
- 	vdd_log: vdd-log {
-@@ -200,7 +201,7 @@ &gmac {
- 	assigned-clocks = <&cru SCLK_RMII_SRC>;
- 	assigned-clock-parents = <&clkin_gmac>;
- 	clock_in_out = "input";
--	phy-supply = <&vcc_lan>;
-+	phy-supply = <&vcc3v3_lan>;
- 	phy-mode = "rgmii";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&rgmii_pins>;
-@@ -305,8 +306,8 @@ regulator-state-mem {
- 				};
- 			};
- 
--			vcc1v8_codec: LDO_REG1 {
--				regulator-name = "vcc1v8_codec";
-+			vcca1v8_codec: LDO_REG1 {
-+				regulator-name = "vcca1v8_codec";
- 				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-min-microvolt = <1800000>;
-@@ -316,8 +317,8 @@ regulator-state-mem {
- 				};
- 			};
- 
--			vcc1v8_hdmi: LDO_REG2 {
--				regulator-name = "vcc1v8_hdmi";
-+			vcca1v8_hdmi: LDO_REG2 {
-+				regulator-name = "vcca1v8_hdmi";
- 				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-min-microvolt = <1800000>;
-@@ -374,8 +375,8 @@ regulator-state-mem {
- 				};
- 			};
- 
--			vcc0v9_hdmi: LDO_REG7 {
--				regulator-name = "vcc0v9_hdmi";
-+			vcca0v9_hdmi: LDO_REG7 {
-+				regulator-name = "vcca0v9_hdmi";
- 				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-min-microvolt = <900000>;
-@@ -517,7 +518,7 @@ &io_domains {
- 	status = "okay";
- 
- 	bt656-supply = <&vcc_3v0>;
--	audio-supply = <&vcc1v8_codec>;
-+	audio-supply = <&vcca1v8_codec>;
- 	sdmmc-supply = <&vcc_sdio>;
- 	gpio1830-supply = <&vcc_3v0>;
- };
--- 
-2.30.2
+Thanks
+Heiko
+
+> ---
+> https://patchwork.kernel.org/project/linux-rockchip/patch/20220825193836.54262-6-linux@fw-web.de/
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+> index 7a8d55a898f5..432469697544 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
+> @@ -46,7 +46,7 @@ green_led: led-1 {
+>  		};
+>  	};
+>  
+> -	dc_12v: dc-12v {
+> +	dc_12v: dc-12v-regulator {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "dc_12v";
+>  		regulator-always-on;
+> @@ -66,7 +66,7 @@ hdmi_con_in: endpoint {
+>  		};
+>  	};
+>  
+> -	vcc3v3_sys: vcc3v3-sys {
+> +	vcc3v3_sys: vcc3v3-sys-regulator {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "vcc3v3_sys";
+>  		regulator-always-on;
+> @@ -76,7 +76,7 @@ vcc3v3_sys: vcc3v3-sys {
+>  		vin-supply = <&dc_12v>;
+>  	};
+>  
+> -	vcc5v0_sys: vcc5v0-sys {
+> +	vcc5v0_sys: vcc5v0-sys-regulator {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "vcc5v0_sys";
+>  		regulator-always-on;
+> @@ -146,7 +146,7 @@ vcc3v3_ngff: vcc3v3-ngff-regulator {
+>  		vin-supply = <&vcc3v3_pi6c_05>;
+>  	};
+>  
+> -	vcc5v0_usb: vcc5v0_usb {
+> +	vcc5v0_usb: vcc5v0_usb-regulator {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "vcc5v0_usb";
+>  		regulator-always-on;
+> @@ -156,7 +156,7 @@ vcc5v0_usb: vcc5v0_usb {
+>  		vin-supply = <&dc_12v>;
+>  	};
+>  
+> -	vcc5v0_usb_host: vcc5v0-usb-host {
+> +	vcc5v0_usb_host: vcc5v0-usb-host-regulator {
+>  		compatible = "regulator-fixed";
+>  		enable-active-high;
+>  		gpio = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
+> @@ -168,7 +168,7 @@ vcc5v0_usb_host: vcc5v0-usb-host {
+>  		vin-supply = <&vcc5v0_usb>;
+>  	};
+>  
+> -	vcc5v0_usb_otg: vcc5v0-usb-otg {
+> +	vcc5v0_usb_otg: vcc5v0-usb-otg-regulator {
+>  		compatible = "regulator-fixed";
+>  		enable-active-high;
+>  		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
+> 
+
+
+
 
 
 _______________________________________________
