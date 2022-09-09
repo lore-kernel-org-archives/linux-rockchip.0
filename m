@@ -4,68 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18B42C38145
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Sep 2022 16:36:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF6B1ECAAD5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Sep 2022 01:38:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jMWCpAbhaOsoCNal/+NQWodTSmzUPdXUohO9MYwoYsU=; b=bLTq3JEbvxwMS3BJiiBZN1+1Bq
-	8df12QMwSGr/cmxjZZqZe+OzhUKKCZClr9hhAeZfV4lhYtktx/74COhf/W/4Dht+J2bnGTzGfLwHI
-	4Z7K9ZzArWoUrUvAm0P9g0kEDRmokMftQ/ZtiYpPnRWaaIuu+6Jupxs47sXbjUhvp7efhv0WsHdNL
-	/X/x/5ldCxZu02kfklv1jCLnI1dv2alAMUoY4Wsysv1S/z8Y66lz0T+BEL/R0d/foN5ZRiLr1EK51
-	VBNh4PftUK47BX8cGNOCMxy8i4DlmbJc9GPRZwmyExhszDZIdAYnaDRTC9ByWDDRo5SYXU+UA/3KG
-	IdHLTxSA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=y4HvxE0E50psqHTJ6KiS9dR9smYBmCs2XtzuHNSku3s=; b=woCLQlDvAaslbo
+	DrOzFVhRaFm6E5PqoekxPQr79miFTCPoKU2KpUV/TFsrkDoz0fgoFOwCbPb7ku6PKxEm6V3aWcNmN
+	Ba2J6n2DsZo4rCLjYyE9p49Z9ShWiSqwtpALACry4t0diHTgbQ7/XtX8kjVpTQJkFLSAkMbFc4hdT
+	Pmt2aqPVC23QKEZhUmZXO3ZTndzscNhLH1EIOWef1JgKycijsRyrTHmcO0SyJZ25cPi6Qa6ghzmyJ
+	AdXZHKku2uSY2SaDgBudajZakC7Avl5MpipZHdSk60p+uat4fVLMpgtK4nKdqpiRO3uDYF41+cZIA
+	Rsg4YR2kADND5pxs++zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWKWE-005rHj-Pr; Thu, 08 Sep 2022 16:36:46 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1oWSyF-00ApUH-6Y; Fri, 09 Sep 2022 01:38:15 +0000
+Received: from mail-oo1-f43.google.com ([209.85.161.43])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oWKW4-005rCH-FZ; Thu, 08 Sep 2022 16:36:37 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id DBCEB61D09;
-	Thu,  8 Sep 2022 16:36:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D8FEC433C1;
-	Thu,  8 Sep 2022 16:36:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1662654994;
-	bh=z+EAy5tr+0u3cXH5bl2QTwxzn2sBd84H77A80gvaElU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=alCtEdhdRgiGW9ouvPeAWzLHKBgiFcKflgrGN4umL8ZgvwlCt/vuOHyxMsZlaOknf
-	 6r9awQI3KJ/7JMagoAP2TYbUZN+ihpRJrrqBzXa0775dC/zJbek88ugWWH8ijBKMDC
-	 SUC1n4tLJ6YaGJCuyYtOMcnKMI3iUxNLqChE4V+nIxwxlaG4jwtRkgHCczbCOAEqhJ
-	 JjMm9OSWn4KDv5OWHKig1nleHbxkCmn3AcoAW7Wg6MUXy6vvE+a8ecf7NZ12roYK26
-	 S6toLc9x/ERxzgQLxng2NdgAf1E69bbExqT0yMCbsK+y0EZw6pF++kBtjsMRAhrnVB
-	 MjlSz3kQONVtA==
-Date: Thu, 8 Sep 2022 17:36:27 +0100
-From: Mark Brown <broonie@kernel.org>
-To: luca.ceresoli@bootlin.com
-Cc: alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>, Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Johan Jonker <jbx6244@gmail.com>,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH 5/8] ASoC: rockchip: i2s-tdm: Fix clk_id usage in
- .set_sysclk()
-Message-ID: <YxoaC5OAv/oES+jQ@sirena.org.uk>
-References: <20220907142124.2532620-1-luca.ceresoli@bootlin.com>
- <20220907142124.2532620-6-luca.ceresoli@bootlin.com>
+	id 1oWSy8-00ApSH-DV; Fri, 09 Sep 2022 01:38:13 +0000
+Received: by mail-oo1-f43.google.com with SMTP id l40-20020a4a94eb000000b00472717928b5so72748ooi.1;
+        Thu, 08 Sep 2022 18:38:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=nRIFgaZTQg3GTMp42p+xtgZU3B5YCuKF0IgaGfelaL8=;
+        b=6Qkjo4n03nybdKeHcuu/0WqJ8IzAHMbuc5UrRbhD5eAu9FE7Keb8XVmj4K3iZqHq16
+         JnryuyNQoKiRXIuOg89ET3tmBD6Qrlwb3fuhtxX9Epfbc/gpm6gSthbD17Nfe179+D5n
+         RI+D+aLUTm1fi3Zeagj5WVKA86aDJUGGXO1BQ3FFKVsYeFrWXbEQOA9c3tzI61ypu6hL
+         dcixA5i4r+gyJB/w7UXVNiVTs8uvM3UDTjGITFpQWPAX4admC7pU2OEz3OQTWz8xT1fR
+         DSKzHOgWMi7yBnqxhm2GmQ5Rlxwo0nEbBecSfxt3hCpOhd0BXzMocUAsEjetQQX8Nn0o
+         406g==
+X-Gm-Message-State: ACgBeo2HqN6QQ9/5AKep7lKsfNM06xeyagtsUj9FTL27Hh/yY281HGIt
+	Q14Z0QlxKzPPatuZv7UmQw==
+X-Google-Smtp-Source: AA6agR5Ri1cpDqeioMDMRveNKAA9XWfPiesLEzehJ7tTC54BrN5u5TocdJnGNPB59gIW0p0DXxZjDw==
+X-Received: by 2002:a4a:d085:0:b0:448:93e6:bb67 with SMTP id i5-20020a4ad085000000b0044893e6bb67mr3980181oor.55.1662687486989;
+        Thu, 08 Sep 2022 18:38:06 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id w20-20020a056871061400b0012763819bcasm411419oan.50.2022.09.08.18.38.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Sep 2022 18:38:06 -0700 (PDT)
+Received: (nullmailer pid 3737271 invoked by uid 1000);
+	Fri, 09 Sep 2022 01:38:05 -0000
+Date: Thu, 8 Sep 2022 20:38:05 -0500
+From: Rob Herring <robh@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: kishon@ti.com, hjc@rock-chips.com, linux-phy@lists.infradead.org, cl@rock-chips.com, vkoul@kernel.org, robh+dt@kernel.org, Chris Morgan <macromorgan@hotmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, pgwipeout@gmail.com, krzysztof.kozlowski+dt@linaro.org, s.hauer@pengutronix.de, airlied@linux.ie
+Subject: Re: [PATCH v2 2/5] dt-bindings: phy-rockchip-inno-dsidphy: add
+ compatible for rk3568
+Message-ID: <20220909013805.GA3737238-robh@kernel.org>
+References: <20220906174823.28561-1-macroalpha82@gmail.com>
+ <20220906174823.28561-3-macroalpha82@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20220907142124.2532620-6-luca.ceresoli@bootlin.com>
-X-Cookie: Metermaids eat their young.
+Content-Disposition: inline
+In-Reply-To: <20220906174823.28561-3-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220908_093636_574957_B0AF639C 
-X-CRM114-Status: GOOD (  16.58  )
+X-CRM114-CacheID: sfid-20220908_183808_474746_AFDDD29C 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,75 +75,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5868703029760372777=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Tue, 06 Sep 2022 12:48:20 -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add a compatible string for the rk3568 dsi-dphy.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  .../devicetree/bindings/phy/rockchip,px30-dsi-dphy.yaml          | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
---===============5868703029760372777==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="n9PmSJv+Ru1ZxyoW"
-Content-Disposition: inline
-
-
---n9PmSJv+Ru1ZxyoW
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Wed, Sep 07, 2022 at 04:21:21PM +0200, luca.ceresoli@bootlin.com wrote:
-
-> -static int rockchip_i2s_tdm_set_sysclk(struct snd_soc_dai *cpu_dai, int stream,
-> +static int rockchip_i2s_tdm_set_sysclk(struct snd_soc_dai *cpu_dai, int clk_id,
->  				       unsigned int freq, int dir)
->  {
->  	struct rk_i2s_tdm_dev *i2s_tdm = to_info(cpu_dai);
-> @@ -978,15 +981,18 @@ static int rockchip_i2s_tdm_set_sysclk(struct snd_soc_dai *cpu_dai, int stream,
->  	if (i2s_tdm->clk_trcm) {
->  		i2s_tdm->mclk_tx_freq = freq;
->  		i2s_tdm->mclk_rx_freq = freq;
-> +
-> +		dev_dbg(i2s_tdm->dev, "mclk freq: %u", freq);
->  	} else {
-> -		if (stream == SNDRV_PCM_STREAM_PLAYBACK)
-> +		if (clk_id == CLK_IDX_MCLK_TX)
->  			i2s_tdm->mclk_tx_freq = freq;
-> -		else
-> +		else if (clk_id == CLK_IDX_MCLK_RX)
->  			i2s_tdm->mclk_rx_freq = freq;
-> -	}
-> +		else
-> +			return -ENOTSUPP;
-
-This should be a switch statement for clarity and exensibility.
-
---n9PmSJv+Ru1ZxyoW
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmMaGgoACgkQJNaLcl1U
-h9AUXwf/Ybq47bEk4QDfoPEAToGlvieUKHsFJ8BDFyusjrLmwXm1GWgzWOuF7VuB
-rAHrRYsRWOIXHMW6oVOf+Zlll9w1n292d2eyelotnTsvAAgBi/vG6g4OmOtTD3I9
-W9rPB2x+xkR2rz/sQd/hbGxPxa6sU0ymEX5ScOuA9NejRSr3Y0t/GgY3LWOCKJsC
-2U9Oj5P/qX4qPDo/6Qf7ybfVr7jXwWsatgIzX5DyRpbKbvk9JbDMv5dssp9VStUU
-Q998qqb8+Reec2p62tuZd8JpotC3OVhkiSTcHeO0UCgcuLCz+QQ3PPxgESe9BQWG
-wUSmVEs8J1Ushh+d+5shIT+ZQyBApA==
-=MFhn
------END PGP SIGNATURE-----
-
---n9PmSJv+Ru1ZxyoW--
-
-
---===============5868703029760372777==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5868703029760372777==--
-
