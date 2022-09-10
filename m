@@ -4,84 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 072DCECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Sep 2022 19:55:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91E55C6FA82
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Sep 2022 20:14:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ousZcYOqQRtXmsub4PAUlZxCGAmR9Z0/J7Hn4fz8jqI=; b=MCLN9hqw3u3h2F
-	MiPJ7LV+gVQjEvE9zmu7q5/eevVXDzCwTT6Cl8abX9Qmp11QNqiE7aBj/+Pa0lrJ5vHdSM1nd6toL
-	4cD38UZ6kbpkFIZAdF96gZO2aQzo3Mq9wUsc9zuQF/uwE4sZFBXp7+nPfbZve8e7dUHGsPNQMfhNF
-	4TBiyVpRqykiVSM8zrjQMY652uAwyPDorqWNeMFawkbs6+0diQPbXlTg3p3YIJYV0KHDNl3lPU+ld
-	f0jc5AWZl0rCd5WXud8zCh0nZEu/LX2ydHgDvuYF8HIgZ4QnLflN6S+kIWPNUlajh72U2PrcE4a7C
-	dh67kjTK/8nraF/sx6Zw==;
+	List-Owner; bh=2URVJjN746HKKR7AmKTvDwkqexXqpmQRffM6ny1Nd74=; b=MTQyLxHyTxz+VB
+	k+bStPKr8o4iCXFmjz9Gg3B+3anN3aRK9g225hBTYr2Cs0C//GDFa09HjtdbuNguFOLHCMdcgf8Q4
+	l3b+LNqGmC/sqA9EiNmh9U7lwVayJ19zVvR/pB9E4KIjBznoQGE6zXqZKHOPBPW9L51PnsCjdMShQ
+	Kw7BxGb5/tiMC9vcNBdJVkNwK/KVQxl9Rnz3ntzvxCMH6j2DJVHFzIkiJqGLeeveiPYFEXCpA33LI
+	w51Nd+NcembaEknk+YECwSVqYaykGqcLTOZ1wlFxd0TGoXiD0joEJSxKXPEfIwy5M61TLCuitYsUx
+	27zPpKvRTYW5MNPs18aQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oX6Zg-00Cm3N-T6; Sat, 10 Sep 2022 19:55:32 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1oX6rZ-00CxM2-Uj; Sat, 10 Sep 2022 20:14:01 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oX6SW-00Ci2k-Sz; Sat, 10 Sep 2022 19:48:10 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id lc7so11638029ejb.0;
-        Sat, 10 Sep 2022 12:48:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=0gpqeUaUdq1jgASkshCgKRmA+Q1+uZQMqt4GLBoHHR4=;
-        b=SwwucSHlXm0YPfeeC4lZlFZ0Z+dOmRGPQkOla56HWKeyOlplorH3zvOV9tOGT3pmgF
-         kvpEpOd9jdcY25oRmAec19MKAehbtwqF4/ycOuVjaXqSGUzfJjVbCgHtOEu8FWujUIjs
-         /+Ivfh5ZGXeZ49lkWrMCSrY4sTUIgDrBmCrCD6IxYuOi59VWv+BNdWe1YHSTBkGmJFlB
-         2KyDVNOxbX4/G+lsR/g5/JKfn3SO7sjiVWxOB9kWgl5iX8/MwMUDSNolWdwZRplv3cFY
-         Gm+wmG0ZHynL0mG0Hp8Zb+4VDdU3o9bt1dTGa74Gp8Mvghr7eTk8gV9x+g2zYihY4txV
-         ibhg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=0gpqeUaUdq1jgASkshCgKRmA+Q1+uZQMqt4GLBoHHR4=;
-        b=tVO03i8PFBfGv9gLE4tYLPWXytfUza2hcyPK6AblhMmj3G14PdYnaxnKqPmmYmKw0N
-         7Da5id1oelW5N3IJgL8N58y2Hq8UmEIIPQqRXFjjbkoFud7aCVWUcKOrHabz4o5xVrQ7
-         0aCJzYv5+e8UKUdiUV4AvHf2y5vizmsnCVOvKfLsTT04fyAHfGcnYGyQzuvHN3d5AI5Q
-         a8r9I1dOMvI1mDjAm0M+0MoNdiL6Vg/PLvZp7ExTXBcqi6MDXip7aDO93Zfk/nRGCI7y
-         pbIUQO+SNOltot9PA5B/HBE08bcf44AaNMKMyWp8yC+uorMTAvGIeDOTJb1USt70gpwD
-         RlEw==
-X-Gm-Message-State: ACgBeo0guhyT1cnbF2udq60v5I/74SwEZeeBwQ/RbCFm024CNrTDxKWk
-	cz5LAOypLNC37RzqgSnNWXY=
-X-Google-Smtp-Source: AA6agR7X+LQPt9/yXz/e+j2Vs+LXI3PFWRHgchsO6YkfGoeC9fg48fhlEHAuSGAbjlI8W1ZTcSuhuA==
-X-Received: by 2002:a17:907:728c:b0:730:c005:5d93 with SMTP id dt12-20020a170907728c00b00730c0055d93mr14059967ejc.265.1662839286227;
-        Sat, 10 Sep 2022 12:48:06 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id ly9-20020a170906af4900b0073dde62713asm2090628ejb.89.2022.09.10.12.48.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 10 Sep 2022 12:48:05 -0700 (PDT)
-Message-ID: <1c13181b-8421-69d8-21ee-9742dd5f55dd@gmail.com>
-Date: Sat, 10 Sep 2022 21:48:04 +0200
+	id 1oX6Wq-00CkSj-KH; Sat, 10 Sep 2022 19:52:37 +0000
+Received: from ip5b412258.dynamic.kabel-deutschland.de ([91.65.34.88] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1oX6Wk-0005cp-Pv; Sat, 10 Sep 2022 21:52:30 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: broonie@kernel.org, Johan Jonker <jbx6244@gmail.com>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, linux-spi@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1] dt-bindings: spi: rockchip: add power-domains property
+Date: Sat, 10 Sep 2022 21:52:30 +0200
+Message-ID: <12107749.RiKt1P0BV1@diego>
+In-Reply-To: <64d03f6e-c578-3155-e3fb-53dbe53573eb@gmail.com>
+References: <64d03f6e-c578-3155-e3fb-53dbe53573eb@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH v1 03/11] dt-bindings: pwm: rockchip: add
- rockchip,rk3128-pwm
-Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, thierry.reding@gmail.com,
- u.kleine-koenig@pengutronix.de
-Cc: linux-rockchip@lists.infradead.org, philipp.tomsich@vrull.eu,
- linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
- robh+dt@kernel.org, devicetree@vger.kernel.org, linux-pwm@vger.kernel.org,
- kever.yang@rock-chips.com, zhangqing@rock-chips.com,
- linux-kernel@vger.kernel.org, heiko@sntech.de
-References: <20220909212543.17428-1-jbx6244@gmail.com>
- <f5dd0ee4-d97e-d878-ffde-c06e9b233e38@gmail.com>
- <1662821635.180247.34700.nullmailer@robh.at.kernel.org>
-From: Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <1662821635.180247.34700.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220910_124808_986585_1061AF60 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20220910_125236_713968_F737F74F 
+X-CRM114-Status: GOOD (  16.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,87 +57,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Reduced CC.
+Am Samstag, 10. September 2022, 20:56:28 CEST schrieb Johan Jonker:
+> The Rockchip rk3399 TRM mentions that pd_sdioaudio includes
+> sdio, spi, i2s and spdif. Add a power-domains property to
+> reduce notifications with spi-rockchip.yaml.
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 
-Hi Rob,
+Acked-by: Heiko Stuebner <heiko@sntech.de>
 
-The rk3328 and rv1108 PWM interrupt is chaired between blocks I think.
-For rv1108 the same interrupt is used for all PWM nodes.
-For rk3328 only added to one PWM node.
-Currently not in use in a Linux drivers??
 
-No consensus yet...on removing or parent node, so it stays as it is...
-Maybe if you have ideas things will change. ;)
+> ---
+>  Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+> index 52768894b..66e49947b 100644
+> --- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+> @@ -82,6 +82,9 @@ properties:
+>        where the "sleep" configuration may describe the state
+>        the pins should be in during system suspend.
+>  
+> +  power-domains:
+> +    maxItems: 1
+> +
+>  required:
+>    - compatible
+>    - reg
+> 
 
-Johan
 
-===
 
-See discussion:
-https://lore.kernel.org/linux-rockchip/20b7c702-9412-93b4-3174-e8633bc413d7@gmail.com/ 
 
-On 9/10/22 16:53, Rob Herring wrote:
-> On Sat, 10 Sep 2022 00:02:22 +0200, Johan Jonker wrote:
->> Add rockchip,rk3128-pwm compatible string.
->>
->> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
->> ---
->>  Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml | 1 +
->>  1 file changed, 1 insertion(+)
->>
-> 
-> Running 'make dtbs_check' with the schema in this patch gives the
-> following warnings. Consider if they are expected or the schema is
-> incorrect. These may not be new warnings.
-> 
-> Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-> This will change in the future.
-> 
-> Full log is available here: https://patchwork.ozlabs.org/patch/
-> 
-> 
-> pwm@10280000: 'interrupts' does not match any of the regexes: 'pinctrl-[0-9]+'
-> 	arch/arm/boot/dts/rv1108-elgin-r1.dtb
-> 	arch/arm/boot/dts/rv1108-evb.dtb
-> 
-> pwm@10280010: 'interrupts' does not match any of the regexes: 'pinctrl-[0-9]+'
-> 	arch/arm/boot/dts/rv1108-elgin-r1.dtb
-> 	arch/arm/boot/dts/rv1108-evb.dtb
-> 
-> pwm@10280020: 'interrupts' does not match any of the regexes: 'pinctrl-[0-9]+'
-> 	arch/arm/boot/dts/rv1108-elgin-r1.dtb
-> 	arch/arm/boot/dts/rv1108-evb.dtb
-> 
-> pwm@10280030: 'interrupts' does not match any of the regexes: 'pinctrl-[0-9]+'
-> 	arch/arm/boot/dts/rv1108-elgin-r1.dtb
-> 	arch/arm/boot/dts/rv1108-evb.dtb
-> 
-> pwm@20040000: 'interrupts' does not match any of the regexes: 'pinctrl-[0-9]+'
-> 	arch/arm/boot/dts/rv1108-elgin-r1.dtb
-> 	arch/arm/boot/dts/rv1108-evb.dtb
-> 
-> pwm@20040010: 'interrupts' does not match any of the regexes: 'pinctrl-[0-9]+'
-> 	arch/arm/boot/dts/rv1108-elgin-r1.dtb
-> 	arch/arm/boot/dts/rv1108-evb.dtb
-> 
-> pwm@20040020: 'interrupts' does not match any of the regexes: 'pinctrl-[0-9]+'
-> 	arch/arm/boot/dts/rv1108-elgin-r1.dtb
-> 	arch/arm/boot/dts/rv1108-evb.dtb
-> 
-> pwm@20040030: 'interrupts' does not match any of the regexes: 'pinctrl-[0-9]+'
-> 	arch/arm/boot/dts/rv1108-elgin-r1.dtb
-> 	arch/arm/boot/dts/rv1108-evb.dtb
-> 
-> pwm@ff1b0030: 'interrupts' does not match any of the regexes: 'pinctrl-[0-9]+'
-> 	arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dtb
-> 	arch/arm64/boot/dts/rockchip/rk3328-a1.dtb
-> 	arch/arm64/boot/dts/rockchip/rk3328-evb.dtb
-> 	arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dtb
-> 	arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dtb
-> 	arch/arm64/boot/dts/rockchip/rk3328-rock64.dtb
-> 	arch/arm64/boot/dts/rockchip/rk3328-rock-pi-e.dtb
-> 	arch/arm64/boot/dts/rockchip/rk3328-roc-pc.dtb
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
