@@ -4,53 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90AC0C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Sep 2022 14:16:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2822BECAAD3
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Sep 2022 14:30:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=T/aNOZx/Tj0V1sWY4Ui/7qc7E4FWoJmWy2ZAjlH+rD0=; b=yVzFnEStgL+QLw
-	+XNRcFB8nG43pd9s5HtuRe4WikA8FV4QjADDWo8li3vPFEXe8JaRDEtlxIs7awoj8ijeehPlE8Iiz
-	K9EaPisLNDl7nyFh6RHi4rZUWoGTzoSCrrkfH5epNa9UPhUxmr5THe92jI/AAm0bFUnWNoV3qzRAb
-	lGePUGQUkC9ed8oAcRzOWpIzvrON9O+ky1liDufyA5XnuOx+bDExkN3W/6b7rZgnWxMu+YaE9YKxx
-	aJJqvmUymn2N0jUUL9iUFcd2CJ5ZH6b7cjsSPwoOJcexIfZhaBEzkMLlQTGmCvBMKNGXlGgOyp64m
-	NO4hAaq9PhnEiV8O1NHQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=n9y9O1vPN0Mm1dea5r6XUfEKXwxyOnf4e4hWH57xupw=; b=Gtq8tn4dY8Or8T
+	syUxWuBu46ViAfePx51SAMCX9Df0ZfRX9QWghSbVTVbQAOUQcwo7q8YVrAkfzxS8Kx06a+8+ASlK0
+	mSWWoaCF9EAwJnwA9Hb3G7VUnzWc2WFybemPXTvHIHAnpcOFUTH3Bykil6qUF+gtPdek2H71bH/Be
+	sqEVvzgaO6TWv76uRSGfDA5uyESRW6II3VI+gkhOA6Kp/JetwBc/MR/QEUcwCgSrTxEWlRctwREqr
+	fLlNnQfKsJ39Db64oE7wRcl4rw4ehBx6GqtnATMkJn+/jXuDtBp5pKZ6vcVGXhk6DutDrg1/GyqDr
+	1jJLMfkmECe6cf5jM6Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oX1HW-00AhXn-Lm; Sat, 10 Sep 2022 14:16:26 +0000
-Received: from smtp-11.smtpout.orange.fr ([80.12.242.11] helo=smtp.smtpout.orange.fr)
+	id 1oX1VL-00Arkh-Tm; Sat, 10 Sep 2022 14:30:43 +0000
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oX1HL-00Ah7h-I6
-	for linux-rockchip@lists.infradead.org; Sat, 10 Sep 2022 14:16:17 +0000
-Received: from pop-os.home ([90.11.190.129])
-	by smtp.orange.fr with ESMTPA
-	id X1H3opcNk9RnzX1H3odu7c; Sat, 10 Sep 2022 16:16:01 +0200
-X-ME-Helo: pop-os.home
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Sat, 10 Sep 2022 16:16:01 +0200
-X-ME-IP: 90.11.190.129
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: Chanwoo Choi <cw00.choi@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Kyungmin Park <kyungmin.park@samsung.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: linux-kernel@vger.kernel.org,
-	kernel-janitors@vger.kernel.org,
-	Christophe JAILLET <christophe.jaillet@wanadoo.fr>,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] PM / devfreq: rockchip-dfi: Fix an error message
-Date: Sat, 10 Sep 2022 16:15:56 +0200
-Message-Id: <47627a29a443aedf3b36a4f72b3e1ad89933a0ea.1662819332.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.34.1
+	id 1oX1VA-00AriD-IV; Sat, 10 Sep 2022 14:30:33 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id q15-20020a17090a304f00b002002ac83485so4206253pjl.0;
+        Sat, 10 Sep 2022 07:30:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :sender:from:to:cc:subject:date;
+        bh=NfxfbFr6yb0xol1xxFYNDP3VjWYzuHsl9L6WlI3ZH0I=;
+        b=o8CJbWXfF7dDOkG/l5CIf/K/X51rljLp3Su1VTY6THuSv7r6HBvEecHssTHM10MXAz
+         SMIRv61RSwPsKDY0NpAu1a/8WXreef5wZy9lzEa1Tlvzo4qiIgqLpSckinSbLPpGmKsL
+         EwiXyjllU2nMgctHnqy9HkEHRPMBH784+q8IR7VxWoXuT+KHOceyVlmeYRVkvTcZHD7S
+         0F7WE+CRClm3Sg58TTzZkougAJkCokbofBPu9qntooE6rBkvjc7aWuKjmWes01f5kgM8
+         Rp0+peZSiyk8AqeSLwgtvnpxW87q7bi+pu+E+/OA5O0tWmP/AQCv+NXZVw9MjXpYLlCz
+         nUMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :sender:x-gm-message-state:from:to:cc:subject:date;
+        bh=NfxfbFr6yb0xol1xxFYNDP3VjWYzuHsl9L6WlI3ZH0I=;
+        b=dSwWmDijn6o6ALjM5mDB/Pt/X6Us1kkAvSTDPsVDNEhnza+R1HAuBy+R8DCK4doV2d
+         qB2zYQykPzT7mLuGlSjZMNlgoM8yWdtrsnvTl3tUZZvUK+EWgmkKH1ZsTrfpLho2EyCi
+         Q/a7nmV3tt1l+P7xftiMJ2vM/1UaF3DwLQo7UN/KO/saVhoctZHgF7gVzrYs1dQq9OgD
+         UAzy/lRNHlyYK7GtBl56H5ejbJVplZBB0UHRywVpdohTB9dWcd1b9ZGO/0iyCxjeP48H
+         357d4m/oLGZ5ymxeNGbKIhUZCWsTMZx+La6UOAdycEkHR7DzPsHDgAWkj1971CcESEAw
+         2gJA==
+X-Gm-Message-State: ACgBeo2Pre/P3HYVVKtIrrLPKul1MF4T4KH+dTZcuukzw3mFkLmgDYwX
+	hSA5btQZiiOx67UnOv4QGkA=
+X-Google-Smtp-Source: AA6agR45j1E2oUagm+srWFqub3Qu6YOOhrbPdG8/lVANoSphqwJKLExI6LaQWXuJkmIkirNUxO79XA==
+X-Received: by 2002:a17:90a:a60b:b0:200:919a:55a1 with SMTP id c11-20020a17090aa60b00b00200919a55a1mr14980138pjq.194.1662820230702;
+        Sat, 10 Sep 2022 07:30:30 -0700 (PDT)
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c? ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+        by smtp.gmail.com with ESMTPSA id n2-20020a170902d2c200b00176b63535adsm2328040plc.260.2022.09.10.07.30.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 10 Sep 2022 07:30:29 -0700 (PDT)
+Message-ID: <0dab9988-3a7e-77f2-de71-58e67cc79663@roeck-us.net>
+Date: Sat, 10 Sep 2022 07:30:27 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v1 07/11] dt-bindings: watchdog: rockchip: add
+ rockchip,rk3128-wdt
+Content-Language: en-US
+To: Johan Jonker <jbx6244@gmail.com>, kever.yang@rock-chips.com
+Cc: sjg@chromium.org, philipp.tomsich@vrull.eu, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, ulf.hansson@linaro.org,
+ miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com, kishon@ti.com,
+ vkoul@kernel.org, thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
+ gregkh@linuxfoundation.org, broonie@kernel.org, wim@linux-watchdog.org,
+ zhangqing@rock-chips.com, jamie@jamieiles.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-i2c@vger.kernel.org,
+ linux-mmc@vger.kernel.org, linux-mtd@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-pwm@vger.kernel.org,
+ linux-serial@vger.kernel.org, linux-spi@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-watchdog@vger.kernel.org
+References: <20220909212543.17428-1-jbx6244@gmail.com>
+ <a4da79fe-3449-6538-742f-790835ffe43a@gmail.com>
+From: Guenter Roeck <linux@roeck-us.net>
+In-Reply-To: <a4da79fe-3449-6538-742f-790835ffe43a@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220910_071615_778955_842BD355 
-X-CRM114-Status: GOOD (  13.38  )
+X-CRM114-CacheID: sfid-20220910_073032_637004_059C46E8 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,44 +98,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is a typo in the message. The clock name should be 'pclk_ddr_mon'.
-Fix it.
+On 9/9/22 15:01, Johan Jonker wrote:
+> Add rockchip,rk3128-wdt compatible string.
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 
-While at it, switch to dev_err_probe() which is less verbose, filters
--EPROBE_DEFER, and log the error code in a human readable way.
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
-This looks like a cut'n'paste typo from drivers/devfreq/rk3399_dmc.c
----
- drivers/devfreq/event/rockchip-dfi.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 9a88faaf8b27..39ac069cabc7 100644
---- a/drivers/devfreq/event/rockchip-dfi.c
-+++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -189,10 +189,9 @@ static int rockchip_dfi_probe(struct platform_device *pdev)
- 		return PTR_ERR(data->regs);
- 
- 	data->clk = devm_clk_get(dev, "pclk_ddr_mon");
--	if (IS_ERR(data->clk)) {
--		dev_err(dev, "Cannot get the clk dmc_clk\n");
--		return PTR_ERR(data->clk);
--	}
-+	if (IS_ERR(data->clk))
-+		return dev_err_probe(dev, PTR_ERR(data->clk),
-+				     "Cannot get the clk pclk_ddr_mon\n");
- 
- 	/* try to find the optional reference to the pmu syscon */
- 	node = of_parse_phandle(np, "rockchip,pmu", 0);
--- 
-2.34.1
+> ---
+>   Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
+> index 6461eb4f4..92df6e453 100644
+> --- a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
+> +++ b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
+> @@ -20,6 +20,7 @@ properties:
+>             - enum:
+>                 - rockchip,px30-wdt
+>                 - rockchip,rk3066-wdt
+> +              - rockchip,rk3128-wdt
+>                 - rockchip,rk3188-wdt
+>                 - rockchip,rk3228-wdt
+>                 - rockchip,rk3288-wdt
 
 
 _______________________________________________
