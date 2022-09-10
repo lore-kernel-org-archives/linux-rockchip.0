@@ -4,76 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 285D5C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Sep 2022 17:17:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64880C6FA82
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Sep 2022 18:57:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=97iTIklR8I5CoNrRwUCothib8zgk8gVGfBCO43BS7cI=; b=v0jspj4FqNd98O
-	03WmV/KLx8WLpifKF2K41r9GlvVAoodE+odDaED0x9dKAmloV5kvjJWshHaPjU0d3oat/Le2PHM+U
-	/JtpB4ekehdCQwAWfa/5Ya5OjdvLZEs/KFGzlcNWxJsx8++Kk34aax+olg++1nz5bWiSe1j0vyema
-	tbsCo8JE0pDzOLum+kVftJzj/x4YaTD0qOBsr1uihSoA2p4bdEPfOXnxT+c0XaXVpXlDP+0jV5Jdj
-	WoXQ2m2BvfsgOPdupf+TUQd1K0z+4EybAXj1u91yafGj5VZjw/mn24Afn6h9OFNJwEWC2OC6b8NEG
-	pEPXwZazy7osxF/ifunQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=j8dCGoFBFWCnB095n3Xm9kCAhc0d9ATwO6Q7Nn+1A+0=; b=k2VbZpxfQyAnXE
+	Z2Cz0mDHMMj4gKX5iRDXcNq8Xkf/43QtDA+OzUGI0MtH+zDZYlFW7JaFvSY5rsdzYfZdlfCA3SPEi
+	I3CVPPz4YFRAZcELVH/5Wpk3uX/iFV2/lszZiIyTD1vb4tYOiy9uew8/7STATtahku3n42ons4fC+
+	Dl74sfS2EsdpB3SxfTkoSqyi9dxX2c7p/qoJIP2tAndg0U1KlG4p+8xsEiSagGaTUX6giEctfZaHw
+	n59aPsIyJPzLdWvrnB6sksG+zE0r0u7sOC/1Dvx2jDvL0J4YDstEiwR3iM3+N03U5XW4UGmoFs3+m
+	L1UkMRTkn6jjGknLIIaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oX46f-00C1Ni-Kn; Sat, 10 Sep 2022 17:17:25 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1oX5eo-00CRhD-4y; Sat, 10 Sep 2022 18:56:46 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oX46d-00C1Ik-AE
-	for linux-rockchip@lists.infradead.org; Sat, 10 Sep 2022 17:17:24 +0000
-Received: by mail-wr1-x429.google.com with SMTP id d2so8375577wrn.1
-        for <linux-rockchip@lists.infradead.org>; Sat, 10 Sep 2022 10:17:21 -0700 (PDT)
+	id 1oX5ed-00CRWq-AR; Sat, 10 Sep 2022 18:56:36 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id gh9so11369635ejc.8;
+        Sat, 10 Sep 2022 11:56:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date;
-        bh=DA72L+KG252i9kApPGBzXI/xo+bqFuMURZhWoNRsroA=;
-        b=JLymezzOYumyEv8r/QBXmcL1h5IjSPtVoJwAul4iBSUf+wL52Gx3Wto17WNCmj1flr
-         XV8rdxJqC/isFai9msy52ZIg0dKS/6MFsWSs4dBo3gXHySO7zmZ71aJ89GMj05Vkpl73
-         nctHddOU8TZFlfBBTWxkCFlXL3RnBeGRqz5TG3MZ4g5mmdadwSTdsLjsjoDLSX3Kurzx
-         S99309l+g6ixooBW/huTKsygdBTQsSwVRy4vi5DiacOyBgVRa9PBXFlMc2Sme0+8S8sf
-         EM5GLztxDRU3NhNX1OeG9Qo+bWCN87OdadzTFHI/kw5RKVITTXcHLUunoudpX3Y0gaH9
-         G1gQ==
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date;
+        bh=3PplGYcFwa58sgJyq0s6GKaVr3wUW1D0jH7TKWDQs/0=;
+        b=qWwmi4l9tkhs+K+eUHh6fIlNVbj02RW1SDpguvVyPuvThzzfNg9bg2OztEF1cYiRTc
+         s5H9IgSqdamsiXQz/SkWKrUKZqxF5WgDo+x7IWiMS6thkN0YtolScBTDH1lZLNQJYxsI
+         g/GWUO/FqZq9YixXfYdM6Si5IlRsN4IU1G8e5H4Fq42KGQZnEAaqKLWYnSWx6A1KdWFO
+         PyiTSUaX0lrZ0K8rlKFMaR1jpnQVutklE1v+xncU3wblKEgj8qiVEdatVCyWn9qnEa/l
+         A4AeCDK9ZlWhr1t4SD3CTNS3qXjz6cNlJC4VDYrGLbJYefMw5dF8j0xUZ42lVAO5KPR2
+         0QYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=DA72L+KG252i9kApPGBzXI/xo+bqFuMURZhWoNRsroA=;
-        b=VLFE/hASiUfJJo1ClalMuo6bVzmAD899h+KqMrDnVd7MfnHXhcqzWlclHGNa0JXdou
-         vzaY5mr/uqGfekD7Yf+hDBG6NfBdno5qJOry4iGxCGP91Mk/FgoW4mhwO9ofUouACl6a
-         JFg5nIYzPRYAXEeoyU9dd6jyfycLpDttP2garZu1+S4Fs7i/dx0Rz+deZFfO2aI2haSK
-         bt8RA0C0nsQfagKkYwpmRijnk7bg9rBPEdkFtpZg43sfipp2g15WPxKuXweHe47PDKsp
-         ZSENeZd6PyRn7xnMsmwqTNdUPOCFWl3RsBBW71Q6ULOUlTHQtrVdE14UWNRq2B+wdVu+
-         EZlQ==
-X-Gm-Message-State: ACgBeo1GxSuBmrYULO7WMbhKB9hkwpzbU0NyZ08TChfskLnRIfFuLNHv
-	QOZN3Sd0arVHmLjTTsBcvAwTlMKW7+m0ZMH5dYA=
-X-Google-Smtp-Source: AA6agR5lQZ4TiPO6i2gR9pxcRxg3gi1IiN9ge5ynKwSZ6rQfoYbRb3AOY+FFkH7xzGRVadzq7K8VedRzHzbg1mFXOZw=
-X-Received: by 2002:adf:f64e:0:b0:228:b49b:20f1 with SMTP id
- x14-20020adff64e000000b00228b49b20f1mr10990941wrp.59.1662830240409; Sat, 10
- Sep 2022 10:17:20 -0700 (PDT)
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date;
+        bh=3PplGYcFwa58sgJyq0s6GKaVr3wUW1D0jH7TKWDQs/0=;
+        b=Wa8kLjS61PvtAyaodn2hl9Q8yCqCWHOGMzcaO6P2gvr1EZDqi7RIkuivLxErDLwSQT
+         sgXzKCYKcTGy2ac7vxkfgPWrqpVGEn87oxSSedXNGe4Y1jn+4XfG2oxwf8J5qYW6gjog
+         f/eksytqtvMhX2erpkpvmnnPMYcHQZeM+EymjxZAc35rc4KulT56xrDsmktBhOedk3rF
+         LHb93S5zD6PoPFDahPsQ7mX+gipeVnerJJ/aHtUSnzOKmmmZEGZHGbudYpAVaFCt1e1J
+         Ia1L3jOGH+bB6EWOENGtBBIlJtxGOloYWJSCqbhdg2yTjaYZSQXndLdKugKkRUPcfdcT
+         QMQA==
+X-Gm-Message-State: ACgBeo1sljn+y7764euivnov0u8KdGCNWrc9WowpYIHSxbroZPo/vZGt
+	U+ZU2jbsi+PYHBpgyvzJS7M=
+X-Google-Smtp-Source: AA6agR77n+mQgZTAm6u67SKl30loSrOlLzz5oqTb2H7JEQJz++WyB3Qxbiq6/Hgq/4xQMVJbsUKIrg==
+X-Received: by 2002:a17:907:96ab:b0:779:b7d8:41ba with SMTP id hd43-20020a17090796ab00b00779b7d841bamr6352676ejc.449.1662836190148;
+        Sat, 10 Sep 2022 11:56:30 -0700 (PDT)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id g22-20020a170906539600b0072f4f4dc038sm2045125ejo.42.2022.09.10.11.56.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 10 Sep 2022 11:56:29 -0700 (PDT)
+Message-ID: <64d03f6e-c578-3155-e3fb-53dbe53573eb@gmail.com>
+Date: Sat, 10 Sep 2022 20:56:28 +0200
 MIME-Version: 1.0
-References: <20220909175522.179175-1-sebastian.reichel@collabora.com> <20220909175522.179175-13-sebastian.reichel@collabora.com>
-In-Reply-To: <20220909175522.179175-13-sebastian.reichel@collabora.com>
-From: Matti Vaittinen <mazziesaccount@gmail.com>
-Date: Sat, 10 Sep 2022 20:17:09 +0300
-Message-ID: <CANhJrGMd_4pK0Avbngggs3BJme7WgrkhzvJ+VbL7-JYri37Dow@mail.gmail.com>
-Subject: Re: [PATCHv3 12/14] regulator: expose regmap_find_closest_bigger
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee@kernel.org>, 
-	Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
-	Linus Walleij <linus.walleij@linaro.org>, Mark Brown <broonie@kernel.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
-	Alessandro Zummo <a.zummo@towertech.it>, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v1] dt-bindings: spi: rockchip: add power-domains property
+To: broonie@kernel.org
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+ linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220910_101723_376267_5396506B 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20220910_115635_404242_9AA94183 
+X-CRM114-Status: UNSURE (   9.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,36 +91,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-pe 9. syysk. 2022 klo 21.21 Sebastian Reichel
-(sebastian.reichel@collabora.com) kirjoitti:
->
-> Expose and document the table lookup logic used by
-> regulator_set_ramp_delay_regmap, so that it can be
-> reused for devices that cannot be configured via
-> regulator_set_ramp_delay_regmap.
->
+The Rockchip rk3399 TRM mentions that pd_sdioaudio includes
+sdio, spi, i2s and spdif. Add a power-domains property to
+reduce notifications with spi-rockchip.yaml.
 
-I am always in favor of adding helpers to be used for common tasks. I
-am not demanding this (so please ignore my comment if you feel so) but
-I guess finding the "closest bigger" from a table is not ramp-delay or
-even regulator specific. I believe something like this might live
-under lib - if exported.
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Anyways, and whatever it is worth:
-Acked-by: Matti Vaittinen <matti.vaittinen@mazziesaccount@gmail.com>
-for exporting such a helper. (Or please disregard the ack if acks are
-reserved only for maintainers - It's just a sign that I think this is
-a good idea [even if it could live in lib])
-
-Yours
-    -- Matti
+diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+index 52768894b..66e49947b 100644
+--- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
++++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+@@ -82,6 +82,9 @@ properties:
+       where the "sleep" configuration may describe the state
+       the pins should be in during system suspend.
+ 
++  power-domains:
++    maxItems: 1
++
+ required:
+   - compatible
+   - reg
 -- 
+2.20.1
 
-Matti Vaittinen
-Linux kernel developer at ROHM Semiconductors
-Oulu Finland
-
-~~ When things go utterly wrong vim users can always type :help! ~~
 
 _______________________________________________
 Linux-rockchip mailing list
