@@ -4,77 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC204C54EE9
-	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Sep 2022 17:59:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E4CBC6FA83
+	for <linux-rockchip@archiver.kernel.org>; Sun, 11 Sep 2022 19:09:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ing1pnCzWJt9sGtLHaitbepIWvWsd1Ecu4yN5DdgC2A=; b=o9gD6Bu9psTwJd
-	iqW/085ZbA0NgYElEAyIvsdwD9wR9Rwot7pQONzDDeNNbDm7nbHsgygehVtwrYCiLV7QMRL4A+UQI
-	VR3sX9ZjPcAr/XLU6dxzTrCrmOfsi3ZW4brbxs6AS/tWstoqx4ryKRTSovdEixciGUn1sUQqTb6Ds
-	mgD5nkTd00tS/bE6GCfkURlU2IFA1jKmvBAv/0EWvicB03TQZwWsgExWUk6kSPCausnHU9iUpC1VY
-	Jm+aigTreJVQU5Yf1Q41nRHPah4W4jnqpWkxsFFlGxLCuNv7KUXX1am1xagbAiDFikgSn8O1QzG3j
-	EZcTJzZtgkV6CIFkegGw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=eTnHBBZBCybBzK0kbUcasNEQmAvzR1p1l6e2LdKVUXs=; b=tm37JzCHRyhsOY
+	PaBeq6qgU+WglSgjlAnCwkldMTjaQvaStbYS44Cgcqw/jgRHE1JZjnjdWoMNI9prG3CTBDrizU2bs
+	mpJWQfnfsCpRGsKb9108FtMbzjXw4FZF9y1WFKDB6nhSBMsIOxTU9YCXwmSFHFJLjV+5nZi1Fty4S
+	GBShhTwXN+Llf1S9KkjHeUfyhnppIneHYVBGzN1LyvJ2/076MnCdSQ3gquDzwOCRYC8WxqDhvzING
+	fZOigcgpH2r9xMWksr9dCetbxAA2f0mAP0WIQoXurtfBsekvTprbkHJPFckNC1TuQ5/sty20PiREh
+	1LBWKOG64tz56RreLLMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXREM-003d9H-Gh; Sun, 11 Sep 2022 17:58:54 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+	id 1oXSKp-0040be-02; Sun, 11 Sep 2022 19:09:39 +0000
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXREB-003d5l-BL; Sun, 11 Sep 2022 17:58:44 +0000
-Received: by mail-ed1-x536.google.com with SMTP id b35so9779791edf.0;
-        Sun, 11 Sep 2022 10:58:42 -0700 (PDT)
+	id 1oXSKd-0040XR-8C; Sun, 11 Sep 2022 19:09:28 +0000
+Received: by mail-lj1-x230.google.com with SMTP id a14so6098847ljj.8;
+        Sun, 11 Sep 2022 12:09:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date;
-        bh=HxRei77Xp8obrUM8ZKH0UQc8VS1BrZDO+yvP75r8n8Y=;
-        b=LNVxR1Dl3mdJNHZ6NRC5n4+AdHrxMiNdTjYO0xPECVmNAbS2r4XUNLYwNFrBIVlefq
-         ZLV4bnC8XkJYyNzaiSTk9bJzQRmfiZiSSSYjyg9fDyjdWHQElXmw2XsZGrieVJetsBDA
-         kTk4x6hjbH63kSNKYf29uWIH0KnF5cqsvbTsaYF89AY5ZvIndt+KHViZbzXRt1mtweyu
-         9X3mqEPaA2np+cAUqFmjAyk/aBXHZ9o9VIvaQ056C2pbQ0tjhozAQz2qsPBuETn8SjbH
-         VsWX1V2boT/Wl+WxxndsmEX7giquAllWLg63ocX3JJEHTP5uInkvvQszSI7+jdEETzkE
-         pg8g==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date;
+        bh=tCTaMrborU0W8DBPmUqi2wECvse4LZM0hNK6zHRPblk=;
+        b=CQOG14kLShfz067g8CLXUqGTlYcBnrmTafneZhZRjF2M/dyQkoyardlfBdPjguD/2z
+         NL+h0t1dDpd/yFZsT/Xq5JnnnnJdgBJ7I0+JvNtbJsOJbG/B55EM+FyfeRL7BZ5Lu3Yk
+         E8PPiLDrfUZ0IvfUQRBdy1vhAMUTpTVVcRS/axT57tcF1SXjSSCqOs+4W86pZrqbDrGs
+         e7BshBNz8kNV6FY0SivQ4al94xoofoQTguU8B1QsoWjOz1EddLS6zFMB1GXmJbTVL60l
+         ZkZYCCahkdQO/FzXWpRZRtnboYAkCGwJOJgDEPUrI/rjliXrYmEo/khE5dld112B+QdF
+         fiVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
-         :cc:subject:date;
-        bh=HxRei77Xp8obrUM8ZKH0UQc8VS1BrZDO+yvP75r8n8Y=;
-        b=EW4UJHZtBYwdz5LPhfYlAMD6qNAEfMUiluke4rLNbpyboVCFIMCqhW2tnaKIpnxN+x
-         zd4ihd1erfluFIEjvJVqelIkwIKLZvVYMFNFw6Mh9xiCeojmXc+wID2e16+cLknVb1zI
-         K9xICo0SdE4dKyk4Z1spMUzm00nfsrTDE/FI6Exo8lw84cNe77yEQ2F8V8uJGFyUqC90
-         Qcn0LkedE2mDVp436CgrZVNo+tntiALf850nT9kfKImsz5k5GzBHiz/ymjMQ/O1+KXZU
-         BlD9M/jdZ9bFLnPRYvyBn1rNuu+lKNTH0NfaMfnigm9eEaF0K1ISDmuZwUce3fUxRX0f
-         IDtw==
-X-Gm-Message-State: ACgBeo2SYsgbEb0lyexxdM5gyQXmUAzBx0qy6VegZAO08Du+tMMJXw1f
-	+yU870HJsrNGKf2rPhH/TvE=
-X-Google-Smtp-Source: AA6agR5Y2+l6SqfFS/nrVWrI/d8uzaeNYAGgi3ptnWeCv2FCpvhUWD9McTtnUfb599zcYZsKvTF1TA==
-X-Received: by 2002:a05:6402:1f86:b0:447:8edd:1c4b with SMTP id c6-20020a0564021f8600b004478edd1c4bmr19078351edc.163.1662919121378;
-        Sun, 11 Sep 2022 10:58:41 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id 1-20020a170906218100b00730b61d8a5esm3243305eju.61.2022.09.11.10.58.40
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 11 Sep 2022 10:58:40 -0700 (PDT)
-Message-ID: <12af4fe6-4d35-cb4a-f5f6-06e3aba990cb@gmail.com>
-Date: Sun, 11 Sep 2022 19:58:39 +0200
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=tCTaMrborU0W8DBPmUqi2wECvse4LZM0hNK6zHRPblk=;
+        b=E+Pd6Y5NNXiY71LZcF5Eik6D0SKjkeC85nqKpTY5OQHYZ3yvTtDQFWhfzdZlMhYW/v
+         i5wpQaENXEZGESwTCUdgOIZCaRFFzsumhhObwgNfrUoy6YyJJoTpZVzrerh3+65S1T/5
+         6RWozqZPZUIu0vniqCOj1JYmBTvit5UopV/li4ea/DAUifNlCURmG4WMOgdgR+pgb1Tf
+         1c95S1rxZqpsg8ONQ/7e13JDQgmTZ0L/tPJCBX/MOkjhOSs8PpEB1fk2xvpoXyX0jmG2
+         h4QPgChKRItXxS8vY2wtA1RM6SgfDwnxWjhz9H1tq5YUYjrJWWxf6Xy0RuthWGqrGFo/
+         NrMA==
+X-Gm-Message-State: ACgBeo3A/HpZGQc0iTaFEohyJZIvaR0aBplsgBnmD3HQuYmBv91Yb/hB
+	oFu3h1iYTG52rG9sh8IaoI8=
+X-Google-Smtp-Source: AA6agR6aFTDeIPxByx6Mn+MttrU/7Yrh3SmMHHG0l9rhKcA/COwzC2Q90BLB8vsDYVUwm2G+6umORA==
+X-Received: by 2002:a2e:9c1a:0:b0:26b:2bf7:9154 with SMTP id s26-20020a2e9c1a000000b0026b2bf79154mr5398729lji.417.1662923361212;
+        Sun, 11 Sep 2022 12:09:21 -0700 (PDT)
+Received: from mobilestation ([95.79.140.178])
+        by smtp.gmail.com with ESMTPSA id s9-20020a05651c048900b0026aca137046sm737794ljc.120.2022.09.11.12.09.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 11 Sep 2022 12:09:20 -0700 (PDT)
+Date: Sun, 11 Sep 2022 22:09:18 +0300
+From: Serge Semin <fancer.lancer@gmail.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Serge Semin <Sergey.Semin@baikalelectronics.ru>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Gustavo Pimentel <gustavo.pimentel@synopsys.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Simon Xue <xxm@rock-chips.com>,
+	Alexey Malahov <Alexey.Malahov@baikalelectronics.ru>,
+	Pavel Parkhomenko <Pavel.Parkhomenko@baikalelectronics.ru>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	linux-pci@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v5 13/20] dt-bindings: PCI: dwc: Apply common schema to
+ Rockchip DW PCIe nodes
+Message-ID: <20220911190918.foo2ccfmo4fhyyac@mobilestation>
+References: <20220822184701.25246-1-Sergey.Semin@baikalelectronics.ru>
+ <20220822184701.25246-14-Sergey.Semin@baikalelectronics.ru>
+ <20220831212631.GA277851-robh@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2] dt-bindings: spi: rockchip: add power-domains property
-To: broonie@kernel.org
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
- linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20220831212631.GA277851-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220911_105843_420733_6A9D6FD1 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220911_120927_451101_D9942AD9 
+X-CRM114-Status: GOOD (  18.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,38 +105,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip rk3399 TRM mentions that pd_sdioaudio includes
-sdio, spi, i2s and spdif. Add a power-domains property to
-to match reality with spi-rockchip.yaml.
+On Wed, Aug 31, 2022 at 04:26:31PM -0500, Rob Herring wrote:
+> On Mon, Aug 22, 2022 at 09:46:54PM +0300, Serge Semin wrote:
+> > As the DT-bindings description states the Rockchip PCIe controller is
+> > based on the DW PCIe RP IP-core thus its DT-nodes are supposed to be
+> > compatible with the common DW PCIe controller schema. Let's make sure they
+> > are evaluated against it by referring to the snps,dw-pcie.yaml schema in
+> > the allOf sub-schemas composition.
+> > 
+> > Signed-off-by: Serge Semin <Sergey.Semin@baikalelectronics.ru>
+> > 
+> > ---
+> > 
+> > Changelog v3:
+> > - This is a new patch created on v3 lap of the series.
+> > 
+> > Changelog v5:
+> > - Apply snps,dw-pcie.yaml instead of the snps,dw-pcie-common.yaml schema.
+> > ---
+> >  Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Acked-by: Heiko Stuebner <heiko@sntech.de>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
----
+> Shouldn't this come before/after patch 7?
 
-Changed V2:
-  Fix comment
----
- Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+It must be applied after the patch
+[PATCH v5 11/20] dt-bindings: PCI: dwc: Add clocks/resets common properties
+and after the rest of the resource-related patches submitted before
+that one.
 
-diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-index 52768894b..66e49947b 100644
---- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-@@ -82,6 +82,9 @@ properties:
-       where the "sleep" configuration may describe the state
-       the pins should be in during system suspend.
- 
-+  power-domains:
-+    maxItems: 1
-+
- required:
-   - compatible
-   - reg
--- 
-2.20.1
+-Sergey
 
+> 
+> Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
