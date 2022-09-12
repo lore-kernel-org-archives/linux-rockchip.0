@@ -4,75 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3B80C6FA83
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Sep 2022 19:22:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A785C6FA83
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Sep 2022 20:56:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rlWVEjM0VwNOhm/E13ps6a+XQtDMpVqo/kL7PX9Vv7Y=; b=cSP5852hK3D3w9
-	VRfQhLUlISwjQIyLimMT6gfSh7IGUt7YdrOuHjXZO/fYg6yi82R0d0LYDpjC5LuU4j7HPLqRSVHFu
-	QYTddthX64uZTQihxNhDYvW11t9bjVDbmRZMVMEfeoE+jBzuxj2mFrHdVrGAEvv++6bsO2iNmY0Oy
-	oGmQGiA/TIKgt5RrDk1TCRAETARnsk1xI3AezLwbk4PamlDQkJzlGz9xeSE168Gdc+eADK53J1SLV
-	9L97XGKa8fk2VtKGV36/t3mxUZPFD3jhzCFhR869//4b+LslmLmCeOpCQfH3RhkJ8TmpTjSUUuEZi
-	Cu4Vt+kPvsnlVlaIobmg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yiHZAlCK9YmIoAuhVjXbjCGHOGkKRh2/OucMF7jfVQo=; b=o6oKUEz/wjrbNf
+	DLOzViFXENu4YqCv5iK9ot8FqxAeTQVS0buXjVGMWMeRZAn4csFDnT6TWjkO6rnISfzVaoweMwrnC
+	vaY7gDqZVOcUVuuQxPdTWy7DTJpDpU3eBE6G1KlohNRMqmYzNKdx8hmSALS7CebffeFAOjmqC0aue
+	WyQ4OzzdNhlQ98T1KMExF81xAp/AtGg2DMq8Ey4YhWRnscLWo6rITYCulrU+HGMHDW3LJ+2Zg0m/b
+	hZj+b004B9HPYJ1n8wDDN6wDbmbNYAcROStwXvvdLu5x1RjPHihYIad+8I6n2xjX9Ghi2Z845/3dF
+	GEVxViN/r0WcSOexyTbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXp0i-00CvMd-8n; Mon, 12 Sep 2022 19:22:24 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1oXqTZ-00DrBR-OO; Mon, 12 Sep 2022 20:56:17 +0000
+Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oXp0f-00CvIm-5p
-	for linux-rockchip@lists.infradead.org; Mon, 12 Sep 2022 19:22:22 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id z9-20020a17090a468900b001ffff693b27so9155584pjf.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 12 Sep 2022 12:22:19 -0700 (PDT)
+	id 1oXqTV-00Dr6w-DK; Mon, 12 Sep 2022 20:56:15 +0000
+Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-127dca21a7dso26651391fac.12;
+        Mon, 12 Sep 2022 13:56:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date;
-        bh=ssS5zdl8ImzFpzzUh/59HsD/G3hcv1J/zHJhsPeEVKI=;
-        b=QTNd0+iDH81yMYKwvCkapX347WklRs1UjNbmqjqu+SixUF/dyK2U/L25vDmJoSKOi3
-         cldUN75Qt3pWVPV4ItiOTKw3QmVbfx2t9fO+kOp/uR+OVGSNK84/CGvdkYW2B6CYdcFW
-         Wq+yE+ym4VzTjz6ZEaev54lNyuvfsYAMRbx9WBKIbKDfFApLXXh7HCbQDbOWXbuV7e/Z
-         p4ZYhleNdJoMyxd/UMk4saHWkZIy8ocYbb+uic0g2UPbXa2o3re6fnkS/4PFf64IzvLj
-         h5/aLBm5eprqh9XYSKn6YxzUzZrJc1ikkmR4FgUwPDRheKWQz3X4hv09w283fMWLjILy
-         yfaw==
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date;
+        bh=3lZi4SDRtUkwdUacRohNSWHiGSF0fs1fzyFC2461Edc=;
+        b=WkXY3zxpNM4pZy+Rn+RzVt43wK6J5gqw6BMBNvqgrZUjxGYJmbxmJRFlo0nCbdhmkn
+         iy6Q8dnjftuV+6UFEKWFOcACpdeuyaYIT02j940idIOJaKGmzM9TLauJ9N1iFlYQZWv0
+         g+OMbEm/b8vSobE1Av2DJl+6G9RuGOuXFLpYALCwJjtRTuBEL/CHz2iF/DEj1P/Pq4/S
+         2WXzxjcXKknl7Wut1+bajlf2XpOpdb/32iJEnGPPUHrUcI6YQ2IeDjlk9OmBgqbZUVze
+         2ya979RP2ZiBsqrWo0I54aKQuQwRyj/0N4zl1/fNBZP84z20KPxc2YrB5313MPiuQKvt
+         5rLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=ssS5zdl8ImzFpzzUh/59HsD/G3hcv1J/zHJhsPeEVKI=;
-        b=Zyrstx4Oh+hbfC6nO2bEKIdqRI9qPNGCib+gzDBgGI/WH5XWzLvaJym5f2zWUn8RLn
-         apKudCehS1HX6XlGLblllA3FMCMXyhncBbCt76NY+VXzauEtj9CsAhJRgfgA0RVV54NQ
-         kz1X+IMnElaOvwDlOKy2I7doNkMhiqg3olR3lhfoeaKbH4IBN12Ip7Lin7dw2WcYkVpW
-         52rDcexpmhBwznnMiyzT0bmkJLamUB6DGxTvP1lj1CC4AmAQWo+HU5+yHHrDwm4LWLke
-         483eKHMbr6dt+NiCriuVgzFqZBUEKQRY1gQOESC5OM2bjkdKXdBtAZV8J0dlNxDqo1Qn
-         vqQw==
-X-Gm-Message-State: ACgBeo3B3aoOqiedLHfwdQcJmA7woqc/Wzh5iWeYUD+gCwyTMXnMIsc0
-	Wvq4uTqEY53sx1K7MkNPmLwGmwdDd76UBNfAhpkV7w==
-X-Google-Smtp-Source: AA6agR7HIYkNnScIvRpJFZ0Oo8uVvzZR00lzwcMhNhL2BpnUIm/nvmgBF7LUeuTXgD11N++k7tQH3Pa9XHu01N2sGa8=
-X-Received: by 2002:a17:90b:4f8d:b0:202:dd39:c03a with SMTP id
- qe13-20020a17090b4f8d00b00202dd39c03amr5104418pjb.71.1663010538983; Mon, 12
- Sep 2022 12:22:18 -0700 (PDT)
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date;
+        bh=3lZi4SDRtUkwdUacRohNSWHiGSF0fs1fzyFC2461Edc=;
+        b=waxnIeCwqrX7q8pw/ygseUQGaAnyG8BXRRO48SvX+Z5ae7I8Wi9JqNcdgVsyYodM1v
+         VydeqRuTogSqEHR37PsPWEtHQF8fMdeUdP+UXVylgqV6R8nDKWN4ZZ7GAdToqIbRB4yX
+         adG8Utb/3ME0WRRfbI3daaazxhM2mBmXSiSBH5GHJxEpr4xM1JTkiZhsKaiOhphenOOg
+         TseF0gpgcCMoPX1pJN+DiNqNQyTQXy6Mu9ntLCm80GHfuNCcx1sE9QUDojBHq8CsTXDK
+         /Vzx0YzIEohn+pyIZklZv2EAD+nlDGTDkRTv35y+wbFSBLd53gPkk6Aj/Olm8cwxn2VK
+         sOdw==
+X-Gm-Message-State: ACgBeo1ZmHD6lgeAj6GMV8/3Hua/nwqbU9cKhyzUiVCJ/7QeRqRiQamd
+	GEZp/fIlI9FjI/RQp3Ck5+51pPk4+iA=
+X-Google-Smtp-Source: AA6agR4bY4/Q+A/1klG5YdpGl9FPofNYsOkRWsxrCOPpa+0xLycNpXAH9Bs6WkOmFJcsQZBAl52tmA==
+X-Received: by 2002:a05:6870:c68a:b0:127:a3f9:2c16 with SMTP id cv10-20020a056870c68a00b00127a3f92c16mr119149oab.246.1663016171472;
+        Mon, 12 Sep 2022 13:56:11 -0700 (PDT)
+Received: from wintermute.localdomain (76-244-6-13.lightspeed.rcsntx.sbcglobal.net. [76.244.6.13])
+        by smtp.gmail.com with ESMTPSA id i21-20020a9d68d5000000b00639749ef262sm3385355oto.9.2022.09.12.13.56.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Sep 2022 13:56:11 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	linux-phy@lists.infradead.org,
+	cl@rock-chips.com,
+	s.hauer@pengutronix.de,
+	frattaroli.nicolas@gmail.com,
+	michael.riesch@wolfvision.net,
+	pgwipeout@gmail.com,
+	heiko@sntech.de,
+	krzysztof.kozlowski+dt@linaro.org,
+	robh+dt@kernel.org,
+	vkoul@kernel.org,
+	kishon@ti.com,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH v3 0/3] rockchip-dsi for rk3568
+Date: Mon, 12 Sep 2022 15:56:04 -0500
+Message-Id: <20220912205607.5969-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20220907160207.3845791-1-jagan@edgeble.ai> <20220907160207.3845791-2-jagan@edgeble.ai>
- <6158946.mvXUDI8C0e@phil>
-In-Reply-To: <6158946.mvXUDI8C0e@phil>
-From: Jagan Teki <jagan@edgeble.ai>
-Date: Tue, 13 Sep 2022 00:52:08 +0530
-Message-ID: <CA+VMnFz3+vx4b3H=v7g1q-ytKLRjohs2tGmeuA6sRfWA8J6BRw@mail.gmail.com>
-Subject: Re: [PATCH v4 01/13] i2c: rk3x: Add rv1126 support
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-i2c@vger.kernel.org, 
-	David Wu <david.wu@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220912_122221_244262_C37C9183 
-X-CRM114-Status: UNSURE (   8.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220912_135613_554396_82CD3A33 
+X-CRM114-Status: GOOD (  12.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,17 +96,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+From: Chris Morgan <macromorgan@hotmail.com>
 
-On Fri, 9 Sept 2022 at 22:58, Heiko Stuebner <heiko@sntech.de> wrote:
->
-> Hi Jagan,
->
-> it looks like this is missing Wolfram Sang, the i2c maintainer?
+This series adds support for the dsi and dphy controllers on the
+Rockchip RK3568.
 
-My bad. I will add him in the next version. Thanks.
+Tested on an Anbernic RG503, Anbernic RG353P, and Odroid Go Advance.
 
-Jagan.
+Changes since V2:
+ - Removed dsi controller patches, as those have been merged upstream.
+ - Removed notes about rolling back clock drivers. If I set the parent
+   clock of the VOP port I'm using to VPLL and set the clock rate of
+   PLL_VPLL to 500MHz this series works correctly for my panels without
+   rolling anything back (per Heiko this is the correct way).
+ - Added additional details about refactoring DPHY driver to add
+   2.5GHz for rk356x. All other devices still have a max speed of 1GHz.
+ - Notified Heiko that the BIT(5) for both PLL_POST_DIV_ENABLE and
+   PLL_POST_DIV_ENABLE_MASK is deliberate, because of how the
+   phy_update_bits() works.
+
+Changes since RFCv1:
+ - Identified cause of image shift (clock changes).
+ - Noted that driver works now.
+ - Added devicetree nodes for rk356x.dtsi.
+
+Chris Morgan (3):
+  dt-bindings: phy-rockchip-inno-dsidphy: add compatible  for rk3568
+  phy/rockchip: inno-dsidphy: Add support for rk3568
+  arm64: dts: rockchip: Add DSI and DSI-DPHY nodes to rk356x
+
+ .../bindings/phy/rockchip,px30-dsi-dphy.yaml  |   1 +
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi      |  72 +++++++
+ .../phy/rockchip/phy-rockchip-inno-dsidphy.c  | 204 ++++++++++++++----
+ 3 files changed, 231 insertions(+), 46 deletions(-)
+
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
