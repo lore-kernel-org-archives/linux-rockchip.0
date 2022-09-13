@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 349F0C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Sep 2022 14:07:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1698CC6FA82
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Sep 2022 14:07:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E5rHTuKQgc39IpnvdjZMeuOWlVWSeIPZb5mILmsVlKc=; b=f1/2dxuJeiB0wV
-	2e1myQvIHFoPXX6MSHBGGj/cAlUULDE6xj0QAkVOfG1nkgUqtnDCGu4x09yw5k92ViHRIORVEMjpe
-	fmmoScGZ69KGMx5RthkWzhNcJ5hChintinS/B7kaigLxh1i0ySXU40dTd7D3WTLeQ6aTWZ5+uaZ6R
-	VxuEwHrMY7oSzsGGRGaaJTFeMQcKkQYElbzy8pGdbS5MYuWnDRhe/YzovGfNBue6/AS016ttffCu9
-	ZLZHTp2ZrBmHNx+VoQ1x5Vyw2bgtlI8m4cDCsYFQwwlxGiCoBRsPGifa0iZ9WqAR40zey2KeEImER
-	L/wRr9e9gE25mNfOiHLA==;
+	List-Owner; bh=d1hTNSEFzNpdWXGe8YsI5OULgV1oDj8WfiISinZB7G0=; b=uPsQYzkZ3hlVkC
+	lA3hFExASiS4epxYS3E8pc16NSRVmZunzwOlK2dtjWZo/0L23rUUOz0/JIE4zIGoyyWdLG1IrWOtg
+	wpLxPmMwkF31sPXuJR4SWHi/C3HcQjuyNDIRm1hM8QuxueOyRLe20TxspqkLhs/cmMNUrtRZA/YSQ
+	k0x4tVI7zUE4sNf2HOPsYwjPdEyp8AmvSs9BWAySOWuokjLEue8igBI8qpLAtd8tiY4zeC6luHjnX
+	XqW7S1hskGrt3qagciAv4rJ/WWn2W/aiKgAI5rqDAidaLyB/7/zctcd9Djf+CRY2K8+CStO+a6CnB
+	DSR13KsQOBckLKPF9DwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY6ZA-00BIn6-Et; Tue, 13 Sep 2022 14:07:08 +0000
+	id 1oY6ZW-00BJ05-R4; Tue, 13 Sep 2022 14:07:30 +0000
 Received: from mail-oa1-f51.google.com ([209.85.160.51])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY6Y8-00BHZ1-51; Tue, 13 Sep 2022 14:06:07 +0000
-Received: by mail-oa1-f51.google.com with SMTP id 586e51a60fabf-1225219ee46so32402060fac.2;
-        Tue, 13 Sep 2022 07:06:03 -0700 (PDT)
+	id 1oY6YH-00BHZ1-KX; Tue, 13 Sep 2022 14:06:15 +0000
+Received: by mail-oa1-f51.google.com with SMTP id 586e51a60fabf-1225219ee46so32403579fac.2;
+        Tue, 13 Sep 2022 07:06:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=QVFIfgOtjiiqBqGuqPoOB28Jgr9wt0ctc+fKksUA9E4=;
-        b=em3PZyr0zWCWKRuOnMhrQaNTdGUarohg78jQXedW4VM/yumlizkF+zuGsb+con7XDK
-         mNOZKFWj4eqxiVTySq/5wBuhtf7/tKa01u3X8PAB459bUR5nrsPmWxiaKuAWfbxlL+sQ
-         mejozIbhoJ3l46f/m1PDelANWbqY/xAeGnA3/HQfs22+4qDs8dD+PcUtL7z6IQRKFVxK
-         AgM/TwCwK/cPKHXvdbch2LBB92YdQP70EM3oYU/ROLGnC/cAmNMR7qVdItGZgwqxkm4d
-         fR048iLqt5VE/0QTfgwsEiR4QTb8r7OwEv30OR8HREoqsrfu21vce+48NRRMbnLM0mHX
-         fXqA==
-X-Gm-Message-State: ACgBeo2pfPw1A+5HW3sx46bhMSExeTfQ9H++J7N2XThdcGK0M5dpBBWR
-	vlhc2Si1EITXtHkRud9Qxg==
-X-Google-Smtp-Source: AA6agR6Uh59tIqrYv6buS6ERBDFSApg5dMrnLMNOGP6F5OslqNg/DHtvwnxKsAIOrvT5pI93PeWyJA==
-X-Received: by 2002:a05:6870:d146:b0:127:76fd:382 with SMTP id f6-20020a056870d14600b0012776fd0382mr1815303oac.257.1663077962897;
-        Tue, 13 Sep 2022 07:06:02 -0700 (PDT)
+        bh=gPHBD3/yThDshlFcYv9k71widUkhofw1FDDYpv8K6pk=;
+        b=YpnBWRmUPfIUSlZkaTHu0d8GWjzS+fWUde7rqDLlhdHpuRZojQNqskb0Ix0BgGtuaM
+         LYb+eWeDGabyam9aSzlJwftZsz3wwBgy7UoirL6VhwKM1FBsq08nSdXw3ipib0dC+KL4
+         n1MUw+7PTR5+mxVecBcGEdpAEsHce1SmaeRCQXYGpmyWUJnHrJR2mXacAoXYIWzdoy2d
+         p8j2iaRzRShVOLhpAGwYJhV5Bu0uHrG5XyoRyYeuKC9/tIcx75irOPG7oH671oliimoM
+         /tk3+/neQExDQqoGjZRCcB/Yt0RqvxrA1I05bj0fn6ZcYozyJwGC5/wmfeCYT+yXxM1K
+         GBSQ==
+X-Gm-Message-State: ACgBeo0NYFzuXZdjNLEcOJpFNl8GBo3AkC4M4nAJnobSnsv9A40puv7H
+	JcCcCfGT4ezSPMewML6eVw==
+X-Google-Smtp-Source: AA6agR7aYuCePPGemiIdeL1jOXYKj30AqVdS1PK/922ZOdsnkY7FMM5ZgzSpgpw9aw4LGK2gnAELfg==
+X-Received: by 2002:a05:6870:c884:b0:118:ae35:e200 with SMTP id er4-20020a056870c88400b00118ae35e200mr2011500oab.244.1663077973166;
+        Tue, 13 Sep 2022 07:06:13 -0700 (PDT)
 Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id l2-20020a056808020200b00344f28a7a4csm5155623oie.22.2022.09.13.07.06.01
+        by smtp.gmail.com with ESMTPSA id 5-20020a9d0d85000000b0063975d170a8sm5980941ots.7.2022.09.13.07.06.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Sep 2022 07:06:02 -0700 (PDT)
-Received: (nullmailer pid 3592015 invoked by uid 1000);
-	Tue, 13 Sep 2022 14:06:01 -0000
-Date: Tue, 13 Sep 2022 09:06:01 -0500
+        Tue, 13 Sep 2022 07:06:12 -0700 (PDT)
+Received: (nullmailer pid 3592371 invoked by uid 1000);
+	Tue, 13 Sep 2022 14:06:11 -0000
+Date: Tue, 13 Sep 2022 09:06:11 -0500
 From: Rob Herring <robh@kernel.org>
 To: Johan Jonker <jbx6244@gmail.com>
-Cc: linux-watchdog@vger.kernel.org, wim@linux-watchdog.org, linux-serial@vger.kernel.org, linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org, richard@nod.at, vigneshr@ti.com, miquel.raynal@bootlin.com, kever.yang@rock-chips.com, linux-pwm@vger.kernel.org, linux-i2c@vger.kernel.org, jamie@jamieiles.com, robh+dt@kernel.org, kishon@ti.com, thierry.reding@gmail.com, linux-mmc@vger.kernel.org, linux-mtd@lists.infradead.org, gregkh@linuxfoundation.org, linux-spi@vger.kernel.org, u.kleine-koenig@pengutronix.de, broonie@kernel.org, philipp.tomsich@vrull.eu, devicetree@vger.kernel.org, linux@roeck-us.net, linux-usb@vger.kernel.org, ulf.hansson@linaro.org, sjg@chromium.org, heiko@sntech.de, zhangqing@rock-chips.com, vkoul@kernel.org
-Subject: Re: [PATCH v1 10/11] dt-bindings: soc: rockchip: grf: add
- rockchip,rk3128-grf
-Message-ID: <20220913140601.GA3591983-robh@kernel.org>
+Cc: zhangqing@rock-chips.com, broonie@kernel.org, u.kleine-koenig@pengutronix.de, linux-kernel@vger.kernel.org, philipp.tomsich@vrull.eu, miquel.raynal@bootlin.com, heiko@sntech.de, linux-mmc@vger.kernel.org, sjg@chromium.org, linux-rockchip@lists.infradead.org, gregkh@linuxfoundation.org, linux@roeck-us.net, linux-i2c@vger.kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, wim@linux-watchdog.org, linux-mtd@lists.infradead.org, linux-pwm@vger.kernel.org, richard@nod.at, kever.yang@rock-chips.com, devicetree@vger.kernel.org, linux-phy@lists.infradead.org, kishon@ti.com, linux-arm-kernel@lists.infradead.org, jamie@jamieiles.com, linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, linux-watchdog@vger.kernel.org, vkoul@kernel.org, linux-usb@vger.kernel.org, thierry.reding@gmail.com, vigneshr@ti.com, ulf.hansson@linaro.org
+Subject: Re: [PATCH v1 09/11] dt-bindings: phy: phy-rockchip-inno-usb2: add
+ rockchip,rk3128-usb2phy
+Message-ID: <20220913140611.GA3592344-robh@kernel.org>
 References: <20220909212543.17428-1-jbx6244@gmail.com>
- <fddc23ff-0c87-4998-1bdf-4dbfa4c74046@gmail.com>
+ <d477a077-a68f-e752-5192-807db80a9e68@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <fddc23ff-0c87-4998-1bdf-4dbfa4c74046@gmail.com>
+In-Reply-To: <d477a077-a68f-e752-5192-807db80a9e68@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_070604_287208_FE52DFEB 
-X-CRM114-Status: UNSURE (   7.42  )
+X-CRM114-CacheID: sfid-20220913_070613_921935_61F82586 
+X-CRM114-Status: UNSURE (   7.45  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,13 +80,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 10 Sep 2022 00:01:39 +0200, Johan Jonker wrote:
-> Add rockchip,rk3128-grf compatible string.
+On Sat, 10 Sep 2022 00:01:45 +0200, Johan Jonker wrote:
+> Add rockchip,rk3128-usb2phy compatible string.
 > 
 > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > ---
->  Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 2 ++
->  1 file changed, 2 insertions(+)
+>  .../devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml          | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 
 Acked-by: Rob Herring <robh@kernel.org>
