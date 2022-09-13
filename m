@@ -4,43 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2233DC54EE9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Sep 2022 10:28:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 410B3C6FA82
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Sep 2022 12:10:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KUOFqkGXDaSrDD7mGXn8KLf07dISxoKPJxi+VhCYUDE=; b=hjIoXnY5BhJlIo
-	0U53vqC4ihCnaGnCk77Rz7nX/Oba7+o32H/90WahmtY6zL/eR3v04aiUEg0D6k1TSeyDWerEMFUBy
-	MuaNfb5F96BVYFXRdRhltflt65+HG3evIjaIcyDPqwOT3ZAml6rV4vAdBD3WdHbAtFRTDQ7xB1E60
-	qLHtO7H5ImvImXe0AownB2olyUB3x4jzWf41PPO69Y/FGDzwS/U5mSLae3cN49Kw2EziwJyEigUzl
-	9pdIDNc7oo902Ux8/9YUdc4J9HY/gRCW3T03crGxsQRKV69QlZQYzKVFcxdj0THPK+w9qFzzqvmx/
-	h0S+crwF+o13v0UYf0Zw==;
+	List-Owner; bh=kRM0y8+kCkIyMNoFPjz/DwfX5H0t3bqUD1lnenLrm94=; b=gRwl0A0fNjfgzw
+	KVN0VWsr4x38LZtSwjBgq9/IRXA8fPrRR+ZtivJo5JnI63lS4JdWDadSRAGAN5gn7NjgL22bN2z6C
+	f6qmv0A5qGKXSXoMixpfJ2y+cc/6xD3GwrIdAna1UokdGBVJLzbD90HY9/m36/eFjNlDTyDqcL3YX
+	nC9Ks3LnhESy5d7wn+VBpHrOkxVhk5UbKuUok2aL0UDkXKtvx74aGbeMSfsvPBVp5UV2Q+kXFNtzA
+	3Z1nKEY/jSq5oj+g1hjqzOeNcXx8yvY9swtdiXyTT0Y+MKfsqfrxE8A19gz7Tzcf/bSKq6VTDvKTt
+	eOcNZt1QXmsYI9bXai3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY39r-006Z25-MK; Tue, 13 Sep 2022 10:28:47 +0000
+	id 1oY4kJ-009kdc-JS; Tue, 13 Sep 2022 12:10:31 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY33Y-006Swz-CL; Tue, 13 Sep 2022 10:22:19 +0000
+	id 1oY4kF-009kVV-T9
+	for linux-rockchip@lists.infradead.org; Tue, 13 Sep 2022 12:10:30 +0000
 Received: from [185.122.133.20] (helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1oY33V-00045I-Cl; Tue, 13 Sep 2022 12:22:13 +0200
+	id 1oY4kE-0004hC-9w; Tue, 13 Sep 2022 14:10:26 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Tianling Shen <cnsztl@gmail.com>, Tianling Shen <cnsztl@gmail.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4] arm64: dts: rockchip: add EEPROM node for NanoPi R4S
-Date: Tue, 13 Sep 2022 12:22:11 +0200
-Message-ID: <7426763.EvYhyI6sBW@phil>
-In-Reply-To: <20220911040628.13774-1-cnsztl@gmail.com>
-References: <20220911040628.13774-1-cnsztl@gmail.com>
+To: Furkan Kardame <f.kardame@manjaro.org>
+Cc: pgwipeout@gmail.com, linux-rockchip@lists.infradead.org, Furkan Kardame <f.kardame@manjaro.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable video output on Station M2
+Date: Tue, 13 Sep 2022 14:10:25 +0200
+Message-ID: <1736540.VLH7GnMWUR@phil>
+In-Reply-To: <20220627202208.45770-1-f.kardame@manjaro.org>
+References: <20220627202208.45770-1-f.kardame@manjaro.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_032217_792773_F9E03312 
-X-CRM114-Status: GOOD (  22.12  )
+X-CRM114-CacheID: sfid-20220913_051028_719848_71F097EA 
+X-CRM114-Status: GOOD (  16.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,71 +60,105 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
-Am Sonntag, 11. September 2022, 06:06:28 CEST schrieb Tianling Shen:
-> NanoPi R4S has a EEPROM attached to the 2nd I2C bus (U92), which
-> stores the MAC address.
-> 
-> FriendlyElec ship two versions of the R4S [1]: The standard as well
-> as the enterprise edition with only the enterprise edition including
-> the EEPROM chip that stores the unique MAC address.
+Am Montag, 27. Juni 2022, 22:22:08 CEST schrieb Furkan Kardame:
+> Add the device tree nodes to enable video output on the Station M2.
 
-This needs to go differently.
+what is this "Station M2". You're changing the rk3566-roc-pc device,
+which I think is "just" an SBC?
 
-If the eeprom is only preset on the enterprise-version, you need
-a separate devicetree for it, that provides the eeprom node.
-
-Declaring the eeprom "in error" on a device that doesn't have it,
-isn't the way to go.
-
-Look for example at rockchip/rk3399-nanopi-m4b.dts for reference
-on how to do it - and also remember to add the new binding
-for that board. And can also again declare the correct mac-address
-cell.
+Does the rk3566-roc-pc in general have a hdmi port as well?
 
 
 Heiko
 
+> Enable the GPU and HDMI nodes and fix the GPU regulator range.
 > 
-> 1. https://wiki.friendlyelec.com/wiki/index.php/NanoPi_R4S#Differences_Between_R4S_Standard_Version_.26_R4S_Enterprise_Version
-> 
-> Changes in v4:
-> - Removed `mac-address` cell as it breaks the standard edition
-> 
-> Changes in v3:
-> - Added address-cells and size-cells
-> 
-> Changes in v2:
-> - Added the size of EEPROM
-> - Added `mac-address` cell to pass the MAC address to kernel
-> - Removed `read-only` property in EEPROM node
-> 
-> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+> Signed-off-by: Furkan Kardame <f.kardame@manjaro.org>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts | 11 +++++++++++
->  1 file changed, 11 insertions(+)
+>  .../arm64/boot/dts/rockchip/rk3566-roc-pc.dts | 52 +++++++++++++++++++
+>  1 file changed, 52 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
-> index fe5b52610010..42c99573ab27 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
-> @@ -68,6 +68,17 @@ &emmc_phy {
->  	status = "disabled";
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
+> index 57759b66d..dba648c2f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
+> @@ -4,6 +4,7 @@
+>  
+>  #include <dt-bindings/gpio/gpio.h>
+>  #include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/soc/rockchip,vop2.h>
+>  #include "rk3566.dtsi"
+>  
+>  / {
+> @@ -27,6 +28,17 @@ gmac1_clkin: external-gmac1-clock {
+>  		#clock-cells = <0>;
+>  	};
+>  
+> +	hdmi-con {
+> +		compatible = "hdmi-connector";
+> +		type = "a";
+> +
+> +		port {
+> +			hdmi_con_in: endpoint {
+> +				remote-endpoint = <&hdmi_out_con>;
+> +			};
+> +		};
+> +	};
+> +
+>  	leds {
+>  		compatible = "gpio-leds";
+>  
+> @@ -149,6 +161,29 @@ &gmac1m0_clkinout
+>  	status = "okay";
 >  };
 >  
-> +&i2c2 {
-> +	eeprom@51 {
-> +		compatible = "microchip,24c02", "atmel,24c02";
-> +		reg = <0x51>;
-> +		pagesize = <16>;
-> +		size = <256>;
-> +		#address-cells = <1>;
-> +		#size-cells = <1>;
+> +&gpu {
+> +	mali-supply = <&vdd_gpu>;
+> +	status = "okay";
+> +};
+> +
+> +&hdmi {
+> +	avdd-0v9-supply = <&vdda0v9_image>;
+> +	avdd-1v8-supply = <&vcca1v8_image>;
+> +	status = "okay";
+> +};
+> +
+> +&hdmi_in {
+> +	hdmi_in_vp0: endpoint {
+> +		remote-endpoint = <&vp0_out_hdmi>;
 > +	};
 > +};
 > +
->  &i2c4 {
->  	status = "disabled";
+> +&hdmi_out {
+> +	hdmi_out_con: endpoint {
+> +		remote-endpoint = <&hdmi_con_in>;
+> +	};
+> +};
+> +
+>  &i2c0 {
+>  	status = "okay";
+>  
+> @@ -577,3 +612,20 @@ &usb_host0_ehci {
+>  &usb_host0_ohci {
+>  	status = "okay";
 >  };
+> +
+> +&vop {
+> +	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
+> +	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
+> +	status = "okay";
+> +};
+> +
+> +&vop_mmu {
+> +	status = "okay";
+> +};
+> +
+> +&vp0 {
+> +	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
+> +		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
+> +		remote-endpoint = <&hdmi_in_vp0>;
+> +	};
+> +};
 > 
 
 
