@@ -4,55 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12461C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Sep 2022 13:29:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40206C6FA93
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Sep 2022 14:06:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Subject:Cc:To:From:Message-Id:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0EAmzhykDrqF1HndQvzKZ83wOOlMwQL1VanaIhiF7Gs=; b=GE3xa5BMfY/N2u
-	uQ4Phw84LkrKuK+fYqbypUeE5cTC8TU+g+isZTbENHjYyJ6ECj5A7go0/SxC3FrTm998yvPM6+aBi
-	E5VLHsvzFb/K3pXU8qPeBf4EdT+YMNa5BlD7esOPaeB496Bn8z3eP/pHELsSpDZVAuT+ljCOpR6kI
-	qzTN2nDecyHvsgnQ+pcFgAz7jLRVDw4sa8nRar8F7cqa2vPPbuqL6xDbflmDpdLq0Aygye4788KrI
-	m7iR+FAaKV7ftZLlGeLx4QHWIyZRSZS3elVefMpNUTgTjzN8lsEaW0gWUvRTRJSp6xDFQIStoP5lX
-	y3C5EsldxyWujhQyWSuw==;
+	List-Owner; bh=wxlGS8xaJQxGYDJloGkWsfnNPOVHNU4jm6nQtFabgpQ=; b=pt5SGg7SrhDuNH
+	0JIZm6bZ1EP85nQy7Wi8Wdgfgas+lsUJ49nGIHfAIJqajC9C6NowrSLb9VbbXDfz6RsXu47x25qPw
+	TqGe0itXP5wy8Cm42/umIZQZNqOUBeNHzsaRyMuxMhjsAe86nd/0ADN6Fl+SpZPxz4wihBE+KENwN
+	gjx1zTORNWIMSNmzUW5TtL6ploqe1qkUDBavUSPdCQVMribwHRD7jHcBo4gPWOiSy/MCLm2AsWi2D
+	UC+SB8Cl5Sqg+/VPb76y/xcInv8sJZPbvG4tn07RnKHeMd2wV6x8Nt3Uoy/rCRdxSV8fL55oateve
+	RFImVlOJlmSV/t+bgu3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY5y2-00AduC-Ig; Tue, 13 Sep 2022 13:28:46 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1oY6Xz-00BHTC-Tz; Tue, 13 Sep 2022 14:05:55 +0000
+Received: from mail-oo1-f51.google.com ([209.85.161.51])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY5xz-00Adec-1V
-	for linux-rockchip@lists.infradead.org; Tue, 13 Sep 2022 13:28:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1663075718;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=1Et0zb8O0jFoKIIsS+vBt3lmecoPkRv5j4XH+o6jQ54=;
-	b=lMHd5FuzzzGS74xcAjICFvSRMS3KYKhxE62OrejCZ1rNOYzwJle/jcWZUxzcn/Aco5tsGc
-	yoE7RzsS7baRl5XtmtpIH32+GESVYkR6MQhsHbKIXhnaJBJFvdPEDrSrfihHYO3kw77teT
-	mWjluyk3hSJ+Ff3XBNk3cxvNch9d1Y4Gb1ij0Cz6BxzpXFfqVi6eKZG/GqBb92andv6v3W
-	p951LzcW0ukzyM1QOPFMypM8W+bZBEzra0vycimSG7z8IrNwcrdgy4pzQELZH9WAiq9sXg
-	7dmDBwT9H1a2XbuOZQrddvW3oDKyfMJgDinNWicg+VujF2WttMhZ+IWL52RNjw==
-Message-Id: <1663075629734.2781062349.2866584137@manjaro.org>
-From: Furkan Kardame <f.kardame@manjaro.org>
-To: Vincent Legoll <vincent.legoll@gmail.com>, Heiko Stuebner
- <heiko@sntech.de>
-Cc: pgwipeout@gmail.com, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable video output on Station
- M2
-Date: Tue, 13 Sep 2022 13:28:36 +0000
-In-Reply-To:  <CAEwRq=ryq3on+U+rqD_XiA0C9MkjFwxRhpLpdOf88yu=Vg-QrA@mail.gmail.com>
-References:  <CAEwRq=ryq3on+U+rqD_XiA0C9MkjFwxRhpLpdOf88yu=Vg-QrA@mail.gmail.com>
+	id 1oY6Xw-00BHHR-Ri; Tue, 13 Sep 2022 14:05:54 +0000
+Received: by mail-oo1-f51.google.com with SMTP id u19-20020a4a9e93000000b004757198549cso986026ook.0;
+        Tue, 13 Sep 2022 07:05:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=gUoMuqH8RQNLf6TD5ZgHBTjgUa9ZzQ80Xl0NxTsaRAQ=;
+        b=nFoXAl1dpqqpk/S02MnJm/FvW7oiIfKIZx3FMACOowYhDCtfUZP98KZKr/7oxjxHj5
+         azbDwIemXGd1dOlgf7bTozPcDC32lzy3wxaJY7EVZrLf0cEkn2u/n4Pf0DPgghM6pBG3
+         2AgWumjAzJ3qoOm9TD+8/fahRfgpjMBtZ7OUjZgpftcBqR340Kns00QilijzFqo6IeL/
+         64+F2EcC8QoyMmO2TuMWLahhRZinByI4NybInxWFr6QiN68xvsdRTtoVzIKs7Xuph3en
+         nnbtuCO3kotGBz5y1vYP8YqrKbRw/BTNeFOUFozfZV0YQG7KGeJ3TbS+0mAdB0IM4Vyd
+         nfEg==
+X-Gm-Message-State: ACgBeo0zZYaKhSpnXJJg+9fnTYDI6kae6HkkQfnZ2P7S0XDAND7m1uFj
+	rKY9a7X9a8BC5tqm2BMeYA==
+X-Google-Smtp-Source: AA6agR6RrtTNw9L8FzOsi4f1dPwDybzh223SP/qImE6imeHr6gssP4vZDFglDT81BonBYIffpKUqWw==
+X-Received: by 2002:a4a:b04e:0:b0:472:912a:63c9 with SMTP id g14-20020a4ab04e000000b00472912a63c9mr8418280oon.87.1663077951213;
+        Tue, 13 Sep 2022 07:05:51 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id k6-20020a056870818600b0010d7242b623sm7045343oae.21.2022.09.13.07.05.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Sep 2022 07:05:50 -0700 (PDT)
+Received: (nullmailer pid 3591626 invoked by uid 1000);
+	Tue, 13 Sep 2022 14:05:49 -0000
+Date: Tue, 13 Sep 2022 09:05:49 -0500
+From: Rob Herring <robh@kernel.org>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: philipp.tomsich@vrull.eu, linux-kernel@vger.kernel.org, sjg@chromium.org, heiko@sntech.de, thierry.reding@gmail.com, vigneshr@ti.com, linux-rockchip@lists.infradead.org, linux-mmc@vger.kernel.org, gregkh@linuxfoundation.org, linux@roeck-us.net, u.kleine-koenig@pengutronix.de, kishon@ti.com, robh+dt@kernel.org, miquel.raynal@bootlin.com, jamie@jamieiles.com, wim@linux-watchdog.org, broonie@kernel.org, krzysztof.kozlowski+dt@linaro.org, zhangqing@rock-chips.com, linux-watchdog@vger.kernel.org, linux-i2c@vger.kernel.org, linux-pwm@vger.kernel.org, vkoul@kernel.org, richard@nod.at, linux-mtd@lists.infradead.org, linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-serial@vger.kernel.org, linux-spi@vger.kernel.org, linux-usb@vger.kernel.org, ulf.hansson@linaro.org, kever.yang@rock-chips.com
+Subject: Re: [PATCH v1 01/11] dt-bindings: serial: rockchip: add
+ rockchip,rk3128-uart
+Message-ID: <20220913140549.GA3591205-robh@kernel.org>
+References: <20220909212543.17428-1-jbx6244@gmail.com>
+ <4f283231-2ed4-202b-0c23-157bce0841ee@gmail.com>
 MIME-Version: 1.0
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=f.kardame@manjaro.org smtp.mailfrom=f.kardame@manjaro.org
+Content-Disposition: inline
+In-Reply-To: <4f283231-2ed4-202b-0c23-157bce0841ee@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_062843_641676_836791C7 
-X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-CacheID: sfid-20220913_070552_946063_76C5D0C3 
+X-CRM114-Status: UNSURE (   7.66  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,26 +80,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello
+On Sat, 10 Sep 2022 00:01:28 +0200, Johan Jonker wrote:
+> Add rockchip,rk3128-uart compatible string.
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/serial/snps-dw-apb-uart.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-On Tuesday 13 September 2022 16:26:11 (+03:00), Vincent Legoll wrote:
-
-> Hello
->
-> On Tue, Sep 13, 2022 at 2:10 PM Heiko Stuebner <heiko@sntech.de> wrote:
-> > what is this "Station M2". You're changing the rk3566-roc-pc device,
-> > which I think is "just" an SBC?
->
-> I suppose this is it:
-> https://www.firefly.store/goods.php?id=142
->
-yes this is Station M2 = rk3566-roc-pc (Without case)  
-
--- 
---
-With best regards
-Furkan Kardame
-
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
