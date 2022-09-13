@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF5FDC54EE9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Sep 2022 10:13:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2233DC54EE9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Sep 2022 10:28:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xXLrVZyhNdO97l6Y29YvFh0ZD45WbKId9GLxUrzDki0=; b=jqs1nXEAwI/1Zf
-	Ja6TepQM6npiETISqt015IwNcuVifLLGmRH2ryisjEFdjdrZ8w530qEnAsGD+215g+u7CHiIZ2YvZ
-	uK1MtjCClX1RSvCYFuA8HqZLPSX6qgxrmwYIMeeHwyTCAZD1BFMiV8+O5/kh6FJX4q6X4LrIa9+5C
-	PclWCFeIT2Ls0UUXjD8Xl8l4Jf1MrfECbC/sVGUBeb6hxiswbDxpa9ntlXr1TRJjZKH6SURd6G2gE
-	MZy9XToJ/NP6/7LEHDWCg0Pab+Q9j6Zct5RRrgYr/B/9DmXoJ+JPs6K5Y1as+xfbwKegh03lvXJBi
-	TL8CR6hF4W0Kv7cYbywQ==;
+	List-Owner; bh=KUOFqkGXDaSrDD7mGXn8KLf07dISxoKPJxi+VhCYUDE=; b=hjIoXnY5BhJlIo
+	0U53vqC4ihCnaGnCk77Rz7nX/Oba7+o32H/90WahmtY6zL/eR3v04aiUEg0D6k1TSeyDWerEMFUBy
+	MuaNfb5F96BVYFXRdRhltflt65+HG3evIjaIcyDPqwOT3ZAml6rV4vAdBD3WdHbAtFRTDQ7xB1E60
+	qLHtO7H5ImvImXe0AownB2olyUB3x4jzWf41PPO69Y/FGDzwS/U5mSLae3cN49Kw2EziwJyEigUzl
+	9pdIDNc7oo902Ux8/9YUdc4J9HY/gRCW3T03crGxsQRKV69QlZQYzKVFcxdj0THPK+w9qFzzqvmx/
+	h0S+crwF+o13v0UYf0Zw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY2uy-006JUb-Oh; Tue, 13 Sep 2022 10:13:24 +0000
+	id 1oY39r-006Z25-MK; Tue, 13 Sep 2022 10:28:47 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY2ug-006J3C-4c; Tue, 13 Sep 2022 10:13:08 +0000
+	id 1oY33Y-006Swz-CL; Tue, 13 Sep 2022 10:22:19 +0000
 Received: from [185.122.133.20] (helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1oY2ue-00042A-QF; Tue, 13 Sep 2022 12:13:04 +0200
+	id 1oY33V-00045I-Cl; Tue, 13 Sep 2022 12:22:13 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Jagan Teki <jagan@edgeble.ai>, linux-clk@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Finley Xiao <finley.xiao@rock-chips.com>
-Subject: Re: [PATCH v4 05/13] clk: rockchip: Add clock controller support for RV1126 SoC.
-Date: Tue, 13 Sep 2022 12:13:03 +0200
-Message-ID: <2196383.iZASKD2KPV@phil>
-In-Reply-To: <20220907160207.3845791-6-jagan@edgeble.ai>
-References: <20220907160207.3845791-1-jagan@edgeble.ai> <20220907160207.3845791-6-jagan@edgeble.ai>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Tianling Shen <cnsztl@gmail.com>, Tianling Shen <cnsztl@gmail.com>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4] arm64: dts: rockchip: add EEPROM node for NanoPi R4S
+Date: Tue, 13 Sep 2022 12:22:11 +0200
+Message-ID: <7426763.EvYhyI6sBW@phil>
+In-Reply-To: <20220911040628.13774-1-cnsztl@gmail.com>
+References: <20220911040628.13774-1-cnsztl@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_031307_246132_BC6E6888 
-X-CRM114-Status: GOOD (  16.81  )
+X-CRM114-CacheID: sfid-20220913_032217_792773_F9E03312 
+X-CRM114-Status: GOOD (  22.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,108 +57,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jagan,
+Hi,
 
-Am Mittwoch, 7. September 2022, 18:01:59 CEST schrieb Jagan Teki:
-> Clock & Reset Unit (CRU) in RV1126 support clocks for CRU
-> and CRU_PMU blocks.
+Am Sonntag, 11. September 2022, 06:06:28 CEST schrieb Tianling Shen:
+> NanoPi R4S has a EEPROM attached to the 2nd I2C bus (U92), which
+> stores the MAC address.
 > 
-> This patch is trying to add minimal Clock-Architecture Diagram's
-> inferred from [1] authored by Finley Xiao.
-> 
-> [1] https://github.com/rockchip-linux/kernel/blob/develop-4.19/drivers/clk/rockchip/clk-rv1126.c
-> 
-> Cc: linux-clk@vger.kernel.org
-> Cc: Michael Turquette <mturquette@baylibre.com>
-> Cc: Stephen Boyd <sboyd@kernel.org>
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
-> ---
+> FriendlyElec ship two versions of the R4S [1]: The standard as well
+> as the enterprise edition with only the enterprise edition including
+> the EEPROM chip that stores the unique MAC address.
 
-[...]
+This needs to go differently.
 
-> +static void __init rv1126_pmu_clk_init(struct device_node *np)
-> +{
-> +	struct rockchip_clk_provider *ctx;
-> +	void __iomem *reg_base;
-> +
-> +	reg_base = of_iomap(np, 0);
-> +	if (!reg_base) {
-> +		pr_err("%s: could not map cru pmu region\n", __func__);
-> +		return;
-> +	}
-> +
-> +	ctx = rockchip_clk_init(np, reg_base, CLKPMU_NR_CLKS);
-> +	if (IS_ERR(ctx)) {
-> +		pr_err("%s: rockchip pmu clk init failed\n", __func__);
-> +		return;
-> +	}
-> +
-> +	rockchip_clk_register_plls(ctx, rv1126_pmu_pll_clks,
-> +				   ARRAY_SIZE(rv1126_pmu_pll_clks),
-> +				   RV1126_GRF_SOC_STATUS0);
-> +
-> +	rockchip_clk_register_branches(ctx, rv1126_clk_pmu_branches,
-> +				       ARRAY_SIZE(rv1126_clk_pmu_branches));
-> +
-> +	rockchip_register_softrst(np, 2, reg_base + RV1126_PMU_SOFTRST_CON(0),
-> +				  ROCKCHIP_SOFTRST_HIWORD_MASK);
-> +
-> +	rockchip_clk_of_add_provider(np, ctx);
-> +}
-> +
-> +CLK_OF_DECLARE(rv1126_cru_pmu, "rockchip,rv1126-pmucru", rv1126_pmu_clk_init);
+If the eeprom is only preset on the enterprise-version, you need
+a separate devicetree for it, that provides the eeprom node.
 
-both of these want to be platform-drivers nowadays.
+Declaring the eeprom "in error" on a device that doesn't have it,
+isn't the way to go.
 
-Take a look at rk3399 and rk3568 for reference.
+Look for example at rockchip/rk3399-nanopi-m4b.dts for reference
+on how to do it - and also remember to add the new binding
+for that board. And can also again declare the correct mac-address
+cell.
 
-Thanks
+
 Heiko
 
+> 
+> 1. https://wiki.friendlyelec.com/wiki/index.php/NanoPi_R4S#Differences_Between_R4S_Standard_Version_.26_R4S_Enterprise_Version
+> 
+> Changes in v4:
+> - Removed `mac-address` cell as it breaks the standard edition
+> 
+> Changes in v3:
+> - Added address-cells and size-cells
+> 
+> Changes in v2:
+> - Added the size of EEPROM
+> - Added `mac-address` cell to pass the MAC address to kernel
+> - Removed `read-only` property in EEPROM node
+> 
+> Signed-off-by: Tianling Shen <cnsztl@gmail.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
+> index fe5b52610010..42c99573ab27 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dts
+> @@ -68,6 +68,17 @@ &emmc_phy {
+>  	status = "disabled";
+>  };
+>  
+> +&i2c2 {
+> +	eeprom@51 {
+> +		compatible = "microchip,24c02", "atmel,24c02";
+> +		reg = <0x51>;
+> +		pagesize = <16>;
+> +		size = <256>;
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +	};
+> +};
 > +
-> +static void __init rv1126_clk_init(struct device_node *np)
-> +{
-> +	struct rockchip_clk_provider *ctx;
-> +	void __iomem *reg_base;
-> +
-> +	reg_base = of_iomap(np, 0);
-> +	if (!reg_base) {
-> +		pr_err("%s: could not map cru region\n", __func__);
-> +		return;
-> +	}
-> +
-> +	ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
-> +	if (IS_ERR(ctx)) {
-> +		pr_err("%s: rockchip clk init failed\n", __func__);
-> +		iounmap(reg_base);
-> +		return;
-> +	}
-> +
-> +	rockchip_clk_register_plls(ctx, rv1126_pll_clks,
-> +				   ARRAY_SIZE(rv1126_pll_clks),
-> +				   RV1126_GRF_SOC_STATUS0);
-> +
-> +	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
-> +				     mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
-> +				     &rv1126_cpuclk_data, rv1126_cpuclk_rates,
-> +				     ARRAY_SIZE(rv1126_cpuclk_rates));
-> +
-> +	rockchip_clk_register_branches(ctx, rv1126_clk_branches,
-> +				       ARRAY_SIZE(rv1126_clk_branches));
-> +
-> +	rockchip_register_softrst(np, 15, reg_base + RV1126_SOFTRST_CON(0),
-> +				  ROCKCHIP_SOFTRST_HIWORD_MASK);
-> +
-> +	rockchip_register_restart_notifier(ctx, RV1126_GLB_SRST_FST, NULL);
-> +
-> +	rockchip_clk_protect_critical(rv1126_cru_critical_clocks,
-> +				      ARRAY_SIZE(rv1126_cru_critical_clocks));
-> +
-> +	rockchip_clk_of_add_provider(np, ctx);
-> +}
-> +
-> +CLK_OF_DECLARE(rv1126_cru, "rockchip,rv1126-cru", rv1126_clk_init);
+>  &i2c4 {
+>  	status = "disabled";
+>  };
+> 
 
 
 
