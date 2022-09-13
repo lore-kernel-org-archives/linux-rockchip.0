@@ -4,50 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38D98C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Sep 2022 10:12:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF5FDC54EE9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Sep 2022 10:13:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8yJD99jwinjd7CCyvbWPFtOVv102eQQOQHg2fCOFcfQ=; b=cgIqn4mUSSVq41
-	crd+sgnDAbCKTGeT8q5dDENekPMa5bljDj0h+arNhqcOgROK8lUzZVFmRAApcyj1qnQirpcPVu3BG
-	t273OjGv0PCNvkF+AyoyA2x0khCZC6SWa9N4qHq8lpr2ig/tWpYf9osrgCKm7tUNMaIKmzCdFbcIs
-	2elsyO65h56j1ZzpV88payE1+9Kzf6Wym9suoro61JgYq1xItXUnOVpq3ACFeHBsQxhOZCMG3f8da
-	TKEw9DyVuePDx8hnjqdANJHhkilIuID10K44Iu2Uer38rKcITXzHSbncxL2j36HO1qcYWwncL5pQ3
-	I+qo0E3NXVScRORZml4Q==;
+	List-Owner; bh=xXLrVZyhNdO97l6Y29YvFh0ZD45WbKId9GLxUrzDki0=; b=jqs1nXEAwI/1Zf
+	Ja6TepQM6npiETISqt015IwNcuVifLLGmRH2ryisjEFdjdrZ8w530qEnAsGD+215g+u7CHiIZ2YvZ
+	uK1MtjCClX1RSvCYFuA8HqZLPSX6qgxrmwYIMeeHwyTCAZD1BFMiV8+O5/kh6FJX4q6X4LrIa9+5C
+	PclWCFeIT2Ls0UUXjD8Xl8l4Jf1MrfECbC/sVGUBeb6hxiswbDxpa9ntlXr1TRJjZKH6SURd6G2gE
+	MZy9XToJ/NP6/7LEHDWCg0Pab+Q9j6Zct5RRrgYr/B/9DmXoJ+JPs6K5Y1as+xfbwKegh03lvXJBi
+	TL8CR6hF4W0Kv7cYbywQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY2tR-006H4K-D0; Tue, 13 Sep 2022 10:11:49 +0000
+	id 1oY2uy-006JUb-Oh; Tue, 13 Sep 2022 10:13:24 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oY2tB-006GVr-Qi; Tue, 13 Sep 2022 10:11:35 +0000
-Received: from [185.122.133.20] (helo=phil.access.network)
+	id 1oY2ug-006J3C-4c; Tue, 13 Sep 2022 10:13:08 +0000
+Received: from [185.122.133.20] (helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1oY2t2-00041R-Ez; Tue, 13 Sep 2022 12:11:24 +0200
+	id 1oY2ue-00042A-QF; Tue, 13 Sep 2022 12:13:04 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Kever Yang <kever.yang@rock-chips.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Jagan Teki <jagan@edgeble.ai>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [PATCH v4 00/13] ARM: Add Rockchip RV1126 support
-Date: Tue, 13 Sep 2022 12:11:21 +0200
-Message-Id: <166306385296.157212.75916596782039579.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220907160207.3845791-1-jagan@edgeble.ai>
-References: <20220907160207.3845791-1-jagan@edgeble.ai>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Jagan Teki <jagan@edgeble.ai>, linux-clk@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Finley Xiao <finley.xiao@rock-chips.com>
+Subject: Re: [PATCH v4 05/13] clk: rockchip: Add clock controller support for RV1126 SoC.
+Date: Tue, 13 Sep 2022 12:13:03 +0200
+Message-ID: <2196383.iZASKD2KPV@phil>
+In-Reply-To: <20220907160207.3845791-6-jagan@edgeble.ai>
+References: <20220907160207.3845791-1-jagan@edgeble.ai> <20220907160207.3845791-6-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_031133_914803_E4273B98 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20220913_031307_246132_BC6E6888 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,29 +57,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 7 Sep 2022 21:31:54 +0530, Jagan Teki wrote:
-> RV1126 is a high-performance vision processor SoC for IPC/CVR,
-> especially for AI related application.
+Hi Jagan,
+
+Am Mittwoch, 7. September 2022, 18:01:59 CEST schrieb Jagan Teki:
+> Clock & Reset Unit (CRU) in RV1126 support clocks for CRU
+> and CRU_PMU blocks.
 > 
-> It is based on quad-core ARM Cortex-A7 32-bit core which integrates
-> NEON and FPU. There is a 32KB I-cache and 32KB D-cache for each core
-> and 512KB unified L2 cache. It has build-in NPU supports INT8/INT16
-> hybrid operation and computing power is up to 2.0TOPs.
+> This patch is trying to add minimal Clock-Architecture Diagram's
+> inferred from [1] authored by Finley Xiao.
 > 
-> [...]
+> [1] https://github.com/rockchip-linux/kernel/blob/develop-4.19/drivers/clk/rockchip/clk-rv1126.c
+> 
+> Cc: linux-clk@vger.kernel.org
+> Cc: Michael Turquette <mturquette@baylibre.com>
+> Cc: Stephen Boyd <sboyd@kernel.org>
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+> ---
 
-Applied, thanks!
+[...]
 
-[02/13] clk: rockchip: Add MUXTBL variant
-        commit: 30d8b7d43c840f5907c0e688d41093f176ba8ac1
-[06/13] dt-bindings: soc: rockchip: Document RV1126 grf
-        commit: 26d8b279392ca93d9b725a3a05f6058db514b244
-[07/13] dt-bindings: soc: rockchip: Document RV1126 pmugrf
-        commit: 614ce48b63c80ddfb627c21f936675a702498528
+> +static void __init rv1126_pmu_clk_init(struct device_node *np)
+> +{
+> +	struct rockchip_clk_provider *ctx;
+> +	void __iomem *reg_base;
+> +
+> +	reg_base = of_iomap(np, 0);
+> +	if (!reg_base) {
+> +		pr_err("%s: could not map cru pmu region\n", __func__);
+> +		return;
+> +	}
+> +
+> +	ctx = rockchip_clk_init(np, reg_base, CLKPMU_NR_CLKS);
+> +	if (IS_ERR(ctx)) {
+> +		pr_err("%s: rockchip pmu clk init failed\n", __func__);
+> +		return;
+> +	}
+> +
+> +	rockchip_clk_register_plls(ctx, rv1126_pmu_pll_clks,
+> +				   ARRAY_SIZE(rv1126_pmu_pll_clks),
+> +				   RV1126_GRF_SOC_STATUS0);
+> +
+> +	rockchip_clk_register_branches(ctx, rv1126_clk_pmu_branches,
+> +				       ARRAY_SIZE(rv1126_clk_pmu_branches));
+> +
+> +	rockchip_register_softrst(np, 2, reg_base + RV1126_PMU_SOFTRST_CON(0),
+> +				  ROCKCHIP_SOFTRST_HIWORD_MASK);
+> +
+> +	rockchip_clk_of_add_provider(np, ctx);
+> +}
+> +
+> +CLK_OF_DECLARE(rv1126_cru_pmu, "rockchip,rv1126-pmucru", rv1126_pmu_clk_init);
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+both of these want to be platform-drivers nowadays.
+
+Take a look at rk3399 and rk3568 for reference.
+
+Thanks
+Heiko
+
+> +
+> +static void __init rv1126_clk_init(struct device_node *np)
+> +{
+> +	struct rockchip_clk_provider *ctx;
+> +	void __iomem *reg_base;
+> +
+> +	reg_base = of_iomap(np, 0);
+> +	if (!reg_base) {
+> +		pr_err("%s: could not map cru region\n", __func__);
+> +		return;
+> +	}
+> +
+> +	ctx = rockchip_clk_init(np, reg_base, CLK_NR_CLKS);
+> +	if (IS_ERR(ctx)) {
+> +		pr_err("%s: rockchip clk init failed\n", __func__);
+> +		iounmap(reg_base);
+> +		return;
+> +	}
+> +
+> +	rockchip_clk_register_plls(ctx, rv1126_pll_clks,
+> +				   ARRAY_SIZE(rv1126_pll_clks),
+> +				   RV1126_GRF_SOC_STATUS0);
+> +
+> +	rockchip_clk_register_armclk(ctx, ARMCLK, "armclk",
+> +				     mux_armclk_p, ARRAY_SIZE(mux_armclk_p),
+> +				     &rv1126_cpuclk_data, rv1126_cpuclk_rates,
+> +				     ARRAY_SIZE(rv1126_cpuclk_rates));
+> +
+> +	rockchip_clk_register_branches(ctx, rv1126_clk_branches,
+> +				       ARRAY_SIZE(rv1126_clk_branches));
+> +
+> +	rockchip_register_softrst(np, 15, reg_base + RV1126_SOFTRST_CON(0),
+> +				  ROCKCHIP_SOFTRST_HIWORD_MASK);
+> +
+> +	rockchip_register_restart_notifier(ctx, RV1126_GLB_SRST_FST, NULL);
+> +
+> +	rockchip_clk_protect_critical(rv1126_cru_critical_clocks,
+> +				      ARRAY_SIZE(rv1126_cru_critical_clocks));
+> +
+> +	rockchip_clk_of_add_provider(np, ctx);
+> +}
+> +
+> +CLK_OF_DECLARE(rv1126_cru, "rockchip,rv1126-cru", rv1126_clk_init);
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
