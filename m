@@ -4,64 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA315C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Sep 2022 16:34:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 866A1C6FA82
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Sep 2022 17:59:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NrPCI5ef7zorg9Bi9uSV+ew5YDSgO3SRzoXZrPEbph4=; b=08Y44EbfpNXpQV
-	Wf5OaxNNSQZnR5Ooq/gcfNVDyuAjcHSeXUsu2i3Z/JH5nqI117H91HfGGnu4Wrf10uXVF+0jD5iIR
-	81mg96delnUeY9Ux9oCLoQPW3bvTwzwI2izvc2LKLeaJd1lElxO+icQNDqN+aQsqdDUaZ/LIdRrun
-	x37nLYZnuHVeSwDIx9q/KJ43agkCbO44TYDoqnprw1KzsoEY4+gAvMNKfQZ4GGiSfTGCxfvD1lB/C
-	cvf8jTEoltjzFjqPea4l6+VreChvVeYkao8l+6LMPn3zFZyLIvg7bFZM6/gSQHJjENDkY0/e8vc9Y
-	ZvJYlmlnAyDAe79ZWJxA==;
+	List-Owner; bh=cndOshk8Sn++fZNPUwAbEotHU3bqpbfannH5pml3WPI=; b=EvQygAuWIJi7KW
+	iO3NZvVGAacPTJMaXdXsYEb4UScjz5TPlprz/vU5qXFQI5sJ9aWW9PzAIc0RoPOfEaJM0aydtjGYa
+	38LnSxWQFYB9RMeKx1hH8GAbQt+fpB1LRYj3qSbZ517L0mJOGAkggQ+/BChJm7RkXpaFIRaU0xHEJ
+	yc3wo+LGDFRVuOa6Yq59h3k5QO2AmNMpncVbFUjATnd4AdNse9J5dHzFFlzazsLQ2mwnVa7+Tgfx7
+	HecwJ6orOHUVLoclK4pT82ANjQ/nKM5tsEmgVw2rLOG0aK9fLzBIIJaxXDv6xjKmP97LIzoh9zfZH
+	B3m+qZ4dDF6T9S+bFNcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYVKi-005DU8-GB; Wed, 14 Sep 2022 16:33:52 +0000
-Received: from mail-oa1-f50.google.com ([209.85.160.50])
+	id 1oYWfG-006Hd2-4T; Wed, 14 Sep 2022 17:59:10 +0000
+Received: from mail-dm6nam11on2085.outbound.protection.outlook.com ([40.107.223.85] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYVKW-005DPe-81; Wed, 14 Sep 2022 16:33:41 +0000
-Received: by mail-oa1-f50.google.com with SMTP id 586e51a60fabf-11eab59db71so42419091fac.11;
-        Wed, 14 Sep 2022 09:33:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=T3drauNo4474IH1JoGI0Vn3Xbi0rGq0VprM15Edh8TM=;
-        b=6IQ+iPxB7f1PF0frOakeF7S/x8YNRd/ouKJt+xHUHWpEqoadnd5ltyARapZ5ghtrLi
-         vyDHfykQXr2To2cxoEq7otvG51gz+EwI9DspBsRXbQqvwiZC4jBidoURvZyqUZm2Ov3S
-         1VoJfz+y3MM4ATeXJjzNO2pvb8OkZqGfuUrVwqEhBe95e3vIiU9nhqQ+pp+inHZDNMIA
-         AVcLGBxzJBAFpnSkzoxSd3IHGPLdjKJCHb9ZLps9w9dUHFPwcG7guxnQXZPfb3WcYgFZ
-         n4AV6E7YWG4WBr0g0thEg9VTRpVrYu3UopcyRk0YSzgDHMNuxk3hhLF5D7oFzSl0G32u
-         Ow+w==
-X-Gm-Message-State: ACgBeo2DJph3CGhu80UtmwBcGk3mapinwYCylEqVKGZ5g5R3K2EX/K86
-	5Uj4A8Fu3YLPtySjxUbEAw==
-X-Google-Smtp-Source: AA6agR4eVxZknyBEVeZga8UrMOTrl7yQYSfSQLeC6YZzw2Wb9Qoc1A2M/mTT+P26xb9XO234lk0UIg==
-X-Received: by 2002:a05:6808:2129:b0:34f:d098:d5bd with SMTP id r41-20020a056808212900b0034fd098d5bdmr2327082oiw.136.1663173219480;
-        Wed, 14 Sep 2022 09:33:39 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id x14-20020a056830114e00b0063a82e6f3f9sm7390367otq.14.2022.09.14.09.33.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Sep 2022 09:33:39 -0700 (PDT)
-Received: (nullmailer pid 2540774 invoked by uid 1000);
-	Wed, 14 Sep 2022 16:33:38 -0000
-Date: Wed, 14 Sep 2022 11:33:38 -0500
-From: Rob Herring <robh@kernel.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: heiko@sntech.de, zhangqing@rock-chips.com, finley.xiao@rock-chips.com, shawn.lin@rock-chips.com, zhengxing@rock-chips.com, jeffy.chen@rock-chips.com, jay.xu@rock-chips.com, krzysztof.kozlowski+dt@linaro.org, sboyd@kernel.org, mturquette@baylibre.com, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1] dt-bindings: clock: rockchip: change
- SPDX-License-Identifier
-Message-ID: <20220914163338.GA2503697-robh@kernel.org>
-References: <d70fa056-608d-0c19-7948-c67b15a4246e@gmail.com>
+	id 1oYWf3-006HON-Hj; Wed, 14 Sep 2022 17:58:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SmNdax0qEWkAxfcr/I8C+sjwFrnbTeqp9W7ighHJIcPx5YgsRq4NDXfU2IPw7uBwWRBI8Hno6xlKqiN7AtYnjJPZHMArUGExHdtqk6Xr4PiAFRMHqTY4hfOmUonYCvrvqFEx9zVf+KL83HEzxInjAD5FESyHR5wi9HSBpH1BJqDaSnXYaoxFjqBSvY6seootFu73v9eP/4rmo0J7NbAN+n2ikDMqSMVLr+t1/Os/p0o444MNu7ydpjLOkFg7sehO8BbohYNXBdjhDvPUZdBY4rYHSL/Q6SGeJRx9V9lkHcFq6HF9w2QIw3Cl9BSKAs4w9AvZoVBMiyCuyhWUP/QfFQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=YhEDLnyAed1XbDWQZvuwYdpfPEqiEn+SuWCDdfZC7Bo=;
+ b=RMIhmXJBcp3ZLtZ0AFePnCbKqQIX+LwS7XEomk/DRkSiYHQTwP4iztb8R1tiick2PgQVT+yx10JaEvRfIvzmEOkq8aBKKd+VgErhbQE2mV55Pxx/kRU3MEgrWD1Jo7gGErRf5lWlKhQBwaLk+WdisvOhpJj2EqKIivesQxAibLI7I04T49M0w2al0IKfATENpkBsu1RrrBj+z6lujC0qOIrb5Pyc2VpH53gmQuK3ulyBm5wH/epm/gP4FjH6E383tDaQYXacr143cUQa20ZvaU2c1GVQYdLr73+g18c5LXY8j3JwmNUGpIgIUxz6dsDdXtF5hYJEbRyZMKVHZa1OrQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=8bytes.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YhEDLnyAed1XbDWQZvuwYdpfPEqiEn+SuWCDdfZC7Bo=;
+ b=knLEzMLNTbpBNjFGBsc9QdsMPC5wGfDv1f87L23XytJFf97rnOgQqrdOXayXg0omfUg4J6ryrE7qsRgjWCZp3zvpv0dBuMd1FwoEmYN1j9oMU0jcJ7Zj9ijrr+MEt2OenXEmm2A7csijTdhqyLGapC/gADK7imd/EQev9cKbuzvUiCkXrDWq1QxwrZ9WTWl/T/xwE92t4PPQMh/IT+mJ90kEk42raQ5n+EIaYiuUrCzzF1rYe9nQ93iARjXcY2jXgBNOysXdhRweCk7gpASjaruHZgtPOR+dnckaFGdRE07Q2cvVOhekXfRM/Y2abXYKLjN4+o2hkbtGh4KG0rCpfw==
+Received: from BN0PR04CA0048.namprd04.prod.outlook.com (2603:10b6:408:e8::23)
+ by PH8PR12MB7349.namprd12.prod.outlook.com (2603:10b6:510:217::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.22; Wed, 14 Sep
+ 2022 17:58:52 +0000
+Received: from BN8NAM11FT009.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:408:e8:cafe::76) by BN0PR04CA0048.outlook.office365.com
+ (2603:10b6:408:e8::23) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.14 via Frontend
+ Transport; Wed, 14 Sep 2022 17:58:52 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ BN8NAM11FT009.mail.protection.outlook.com (10.13.176.65) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.5632.12 via Frontend Transport; Wed, 14 Sep 2022 17:58:50 +0000
+Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26; Wed, 14 Sep
+ 2022 10:58:30 -0700
+Received: from drhqmail201.nvidia.com (10.126.190.180) by
+ rnnvmail202.nvidia.com (10.129.68.7) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.29; Wed, 14 Sep 2022 10:58:30 -0700
+Received: from drhqmail201.nvidia.com (10.126.190.180) by
+ drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.29; Wed, 14 Sep 2022 10:58:30 -0700
+Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com
+ (10.126.190.180) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29 via Frontend
+ Transport; Wed, 14 Sep 2022 10:58:28 -0700
+Date: Wed, 14 Sep 2022 10:58:27 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Jason Gunthorpe <jgg@nvidia.com>, Jean-Philippe Brucker
+	<jean-philippe@linaro.org>
+CC: <joro@8bytes.org>, <suravee.suthikulpanit@amd.com>, <will@kernel.org>,
+	<robin.murphy@arm.com>, <robdclark@gmail.com>, <dwmw2@infradead.org>,
+	<baolu.lu@linux.intel.com>, <agross@kernel.org>,
+	<bjorn.andersson@linaro.org>, <konrad.dybcio@somainline.org>,
+	<matthias.bgg@gmail.com>, <heiko@sntech.de>, <orsonzhai@gmail.com>,
+	<baolin.wang@linux.alibaba.com>, <zhang.lyra@gmail.com>,
+	<thierry.reding@gmail.com>, <sricharan@codeaurora.org>,
+	<yong.wu@mediatek.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
+	<tglx@linutronix.de>, <shameerali.kolothum.thodi@huawei.com>,
+	<thunder.leizhen@huawei.com>, <christophe.jaillet@wanadoo.fr>,
+	<yangyingliang@huawei.com>, <jon@solid-run.com>, <iommu@lists.linux.dev>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
+	<virtualization@lists.linux-foundation.org>
+Subject: Re: [PATCH 4/5] iommu: Regulate errno in ->attach_dev callback
+ functions
+Message-ID: <YyIWQ6rX6AR9KX5E@Asurada-Nvidia>
+References: <20220913082448.31120-1-nicolinc@nvidia.com>
+ <20220913082448.31120-5-nicolinc@nvidia.com>
+ <YyB3F/o3RfymqiFW@myrica>
+ <YyGaqsXSDMn8R12R@nvidia.com>
+ <YyGjtsB2Yq4fQICS@myrica>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <d70fa056-608d-0c19-7948-c67b15a4246e@gmail.com>
+In-Reply-To: <YyGjtsB2Yq4fQICS@myrica>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN8NAM11FT009:EE_|PH8PR12MB7349:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4c649da3-c755-4818-22ab-08da967ac7ea
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	0u1Gd2VASnQoiNDd/j4N1JkMz4Zq6CkhssDo7b8L8D5IeSfUyoXVzPddWGghC1lw60liB1SahMCBP2NYAY6IiTP7ms18KbqH3lIqupnkM8Imgci5hw5ZYV2BNsOzRbERD9eTxU1IFNzwPPGpNPa2yYFPpMSLDBWS6tqDII00boRmhI3PIkgT0YRtpwwupHnXYQTmLDE+VBC9zOmO2RtrMGdE26o8JsFKJyFmbV8jxmI4xO7RCT19gs5Cpl3rihGdciF0uhj+hvprG4jT13L2Gj4UaoPC2rA7QCb19FOvpo9mMQDUAsw0tGHj8BCbOvcFP1Z9yvJeDEQtr3jwlCfvCEelrByiZ7iBw1VY/p2RcsmB99WS76mhNe0SRBSz2YBIc8XG2CokyVQ8JXSKcifr5+JEUMpWvO1k89Qt2lPZRgdDzoZ3Bb7lvqO/mxEjIa0izB+NEmy4uCsLwnfZdPcGAx+iPMBp3HV1Sa8b23xQbiBYfOC9Er4xd6C7UhKR+N6/s7PrrigMLR20ctYtJ+bOhk1RhddEoypJah1A4KMcIcutm4qfknJjIxMbu/kpO+FAa2ddAs8iGM45DV5WPIWorssHXgurO0us+jnzSkWMsdVClySorgIk2Hfa4TtHKmVY95359LRbNQwR3/Hl4XXWXfwE6jo4wSu2ZDEuYGB80y9MRP5VhN5cPq3JJhxr1JPp/kAWPdPV3OgRVMvYmFKc9nj6exkwNF32/TbXY5ZDwQKSwQn2t//3vEuonp0XKf8yrI64SnOb/CrZ3PMg2TWJig==
+X-Forefront-Antispam-Report: 	CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230022)(4636009)(396003)(376002)(136003)(346002)(39860400002)(451199015)(40470700004)(36840700001)(46966006)(82740400003)(54906003)(55016003)(7416002)(356005)(82310400005)(70206006)(7636003)(40480700001)(7406005)(8676002)(186003)(478600001)(5660300002)(47076005)(83380400001)(316002)(4326008)(9686003)(70586007)(8936002)(36860700001)(336012)(40460700003)(86362001)(110136005)(41300700001)(2906002)(26005)(33716001)(426003);DIR:OUT;SFP:1101;
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Sep 2022 17:58:50.8502
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4c649da3-c755-4818-22ab-08da967ac7ea
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT009.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB7349
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_093340_318979_1A34D11F 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20220914_105857_618033_E533BFB8 
+X-CRM114-Status: GOOD (  22.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,30 +144,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 14, 2022 at 12:50:45PM +0200, Johan Jonker wrote:
-> Change SPDX-License-Identifier to (GPL-2.0-only OR BSD-2-Clause)
-> for Rockchip clock bindings.
+On Wed, Sep 14, 2022 at 10:49:42AM +0100, Jean-Philippe Brucker wrote:
+> External email: Use caution opening links or attachments
 > 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
 > 
-> Request for copyright holder approval.
+> On Wed, Sep 14, 2022 at 06:11:06AM -0300, Jason Gunthorpe wrote:
+> > On Tue, Sep 13, 2022 at 01:27:03PM +0100, Jean-Philippe Brucker wrote:
+> > > I think in the future it will be too easy to forget about the constrained
+> > > return value of attach() while modifying some other part of the driver,
+> > > and let an external helper return EINVAL. So I'd rather not propagate ret
+> > > from outside of viommu_domain_attach() and finalise().
+> >
+> > Fortunately, if -EINVAL is wrongly returned it only creates an
+> > inefficiency, not a functional problem. So we do not need to be
+> > precise here.
+> 
+> Ah fair. In that case the attach_dev() documentation should indicate that
+> EINVAL is a hint, so that callers don't rely on it (currently words "must"
+> and "exclusively" indicate that returning EINVAL for anything other than
+> device-domain incompatibility is unacceptable). The virtio-iommu
+> implementation may well return EINVAL from the virtio stack or from the
+> host response.
 
-Who is that? Please add Cc entries above for who that is. It's authors 
-of the files below and the original .txt files.
+How about this?
 
-> ---
->  Documentation/devicetree/bindings/clock/rockchip,px30-cru.yaml  | 2 +-
->  .../devicetree/bindings/clock/rockchip,rk3036-cru.yaml          | 2 +-
->  .../devicetree/bindings/clock/rockchip,rk3188-cru.yaml          | 2 +-
->  .../devicetree/bindings/clock/rockchip,rk3228-cru.yaml          | 2 +-
->  .../devicetree/bindings/clock/rockchip,rk3288-cru.yaml          | 2 +-
->  .../devicetree/bindings/clock/rockchip,rk3308-cru.yaml          | 2 +-
->  .../devicetree/bindings/clock/rockchip,rk3368-cru.yaml          | 2 +-
->  .../devicetree/bindings/clock/rockchip,rk3399-cru.yaml          | 2 +-
->  .../devicetree/bindings/clock/rockchip,rk3568-cru.yaml          | 2 +-
->  .../devicetree/bindings/clock/rockchip,rv1108-cru.yaml          | 2 +-
->  10 files changed, 10 insertions(+), 10 deletions(-)
++ * * EINVAL    - mainly, device and domain are incompatible, or something went
++ *               wrong with the domain. It's suggested to avoid kernel prints
++ *               along with this errno. And it's better to convert any EINVAL
++ *               returned from kAPIs to ENODEV if it is device-specific, or to
++ *               some other reasonable errno being listed below
+
+> > > Since we can't guarantee that APIs like virtio or ida won't ever return
+> > > EINVAL, we should set all return values:
+> >
+> > I dislike this alot, it squashes all return codes to try to optimize
+> > an obscure failure path :(
+
+Hmm...should I revert all the driver changes back to this version?
 
 _______________________________________________
 Linux-rockchip mailing list
