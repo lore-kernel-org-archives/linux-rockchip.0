@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9326ECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Sep 2022 06:49:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96B66ECAAD8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Sep 2022 07:33:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y/p3k9yQYIBv5LNis6TQj0u+Ryws1hCTxbAjVDot4bs=; b=YT+RgI3JoB2USQ
-	j+8eWO84ZFy4hO/L32jPSf8blgu8mgdOLUJ6VyL4+59BejrnsQwpICU7SGpc49cD9qghAvVJbH7ey
-	ALKCbslFl/rPhVM2Nz7dcygnPdLgee2PfCcnM1XIuD+10dZ7BtAZXqBtU28CyYvRRPMhKlnaMwwwd
-	ZzJov9E6aOvKCjT/PpcrwG0JaCl8wodPStsD84vdMFAtF2Tnw6EYnrBhOdGc+KdTUq7rKXz8sVSVn
-	YIOsdAzSTrtBPChIiQW5LIJ2M+g4j3BmhYcXrqrad3vOWpsNfMIOeRct7FBd9CLE/XcjC3G2yTCst
-	9fXdKpoTHRa1+n35W07A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vy95swq2XfHIlfhzQ3jAw8LHWjAK2+0kTc176Xi4rhI=; b=HTdFyfCy8Ll5ObWvxFfeFqUlOP
+	nyMBPel4JSy5ldqoJUQUpacpxosGv4jeOAj3salA4dUcP7TgyScwy+lBR+LUfBm2G1ZVwhaAKAo2a
+	HxA7UTpiIc5x8cU6KsDM+YwJ2mCKwhMBRSkoKMHQSJ0SzW1nzp0RXmHb50uhLRt9R+PBGaLps/v4K
+	XQch3/YB6BFlnPagaYt3hVK3Rt7+Uyf7+ZcQ6TTLD+K6xYJKtvkKB93QX9+32JEQI9tH4Wg+/52Ha
+	BL1IfoIZlUudDghH5O4KCKFcf03FI4sEcR1ppHkZyqZ7XFdW5D7Vf+KKEJsr01Rt9doYyojBu7krK
+	0qn3UhWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYMDN-008v3J-Df; Wed, 14 Sep 2022 06:49:41 +0000
+	id 1oYMtW-009oMZ-9e; Wed, 14 Sep 2022 07:33:14 +0000
 Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYMDJ-008uwt-1o
-	for linux-rockchip@lists.infradead.org; Wed, 14 Sep 2022 06:49:39 +0000
-Received: from ptx.hi.pengutronix.de ([2001:67c:670:100:1d::c0])
+	id 1oYMtU-009nvX-9h
+	for linux-rockchip@lists.infradead.org; Wed, 14 Sep 2022 07:33:13 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1oYMDC-0002dk-W6; Wed, 14 Sep 2022 08:49:31 +0200
-Received: from sha by ptx.hi.pengutronix.de with local (Exim 4.92)
-	(envelope-from <sha@pengutronix.de>)
-	id 1oYMD9-0005Nr-1h; Wed, 14 Sep 2022 08:49:27 +0200
-Date: Wed, 14 Sep 2022 08:49:27 +0200
-From: Sascha Hauer <sha@pengutronix.de>
-To: Michael Riesch <michael.riesch@wolfvision.net>
-Cc: Chris Morgan <macroalpha82@gmail.com>, dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org, daniel@ffwll.ch,
-	airlied@linux.ie, heiko@sntech.de, hjc@rock-chips.com,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH] drm/rockchip: vop2: Fix Null Pointer Dereference on
- Multiple VPs
-Message-ID: <20220914064927.GS6477@pengutronix.de>
-References: <20220912180242.499-1-macroalpha82@gmail.com>
- <d8a86990-6d9f-9ca0-326a-e5706f924516@wolfvision.net>
+	(envelope-from <ukl@pengutronix.de>)
+	id 1oYMtS-00076d-Ep; Wed, 14 Sep 2022 09:33:10 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1oYMtS-000eOy-63; Wed, 14 Sep 2022 09:33:08 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1oYMtQ-000lNc-69; Wed, 14 Sep 2022 09:33:08 +0200
+Date: Wed, 14 Sep 2022 09:33:05 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	kernel@collabora.com, linux-pwm@vger.kernel.org,
+	Rob Herring <robh+dt@kernel.org>,
+	Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH 1/1] dt-bindings: pwm: rockchip: Add description for
+ rk3588
+Message-ID: <20220914073305.4zorbsve75raiygd@pengutronix.de>
+References: <20220901135523.52151-1-sebastian.reichel@collabora.com>
+ <1662059695.095333.2226883.nullmailer@robh.at.kernel.org>
+ <20220913091202.2oawzrq2u5iiz6hq@pengutronix.de>
+ <20220913141601.fi6pl2xdo4xmtw6t@mercury.elektranox.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <d8a86990-6d9f-9ca0-326a-e5706f924516@wolfvision.net>
-X-Sent-From: Pengutronix Hildesheim
-X-URL: http://www.pengutronix.de/
-X-Accept-Language: de,en
-X-Accept-Content-Type: text/plain
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: 2001:67c:670:100:1d::c0
-X-SA-Exim-Mail-From: sha@pengutronix.de
+In-Reply-To: <20220913141601.fi6pl2xdo4xmtw6t@mercury.elektranox.org>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
 X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220913_234937_280225_2B43140F 
-X-CRM114-Status: GOOD (  42.74  )
+X-CRM114-CacheID: sfid-20220914_003312_360598_E726D85C 
+X-CRM114-Status: GOOD (  31.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,168 +73,100 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8217800301653458281=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 13, 2022 at 08:55:22AM +0200, Michael Riesch wrote:
+
+--===============8217800301653458281==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="d4hlshwof6wtcph6"
+Content-Disposition: inline
+
+
+--d4hlshwof6wtcph6
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Sep 13, 2022 at 04:16:01PM +0200, Sebastian Reichel wrote:
 > Hi,
-> 
-> On 9/12/22 20:02, Chris Morgan wrote:
-> > From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> Cc: Sascha -> any thoughts on this one?
-> 
-> Best regards,
-> Michael
-> 
-> > If I use more than one VP to output on an RK3566 based device I
-> > receive the following error (and then everything freezes):
-> > 
-> > [    0.838375] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000250
-> > [    0.839191] Mem abort info:
-> > [    0.839442]   ESR = 0x0000000096000005
-> > [    0.839785]   EC = 0x25: DABT (current EL), IL = 32 bits
-> > [    0.840256]   SET = 0, FnV = 0
-> > [    0.840530]   EA = 0, S1PTW = 0
-> > [    0.840821]   FSC = 0x05: level 1 translation fault
-> > [    0.841254] Data abort info:
-> > [    0.841512]   ISV = 0, ISS = 0x00000005
-> > [    0.841864]   CM = 0, WnR = 0
-> > [    0.842130] [0000000000000250] user address but active_mm is swapper
-> > [    0.842704] Internal error: Oops: 96000005 [#1] SMP
-> > [    0.843139] Modules linked in:
-> > [    0.843420] CPU: 0 PID: 37 Comm: kworker/u8:1 Not tainted 6.0.0-rc5+ #40
-> > [    0.844013] Hardware name: RG503 (DT)
-> > [    0.844343] Workqueue: events_unbound deferred_probe_work_func
-> > [    0.844871] pstate: 80000009 (Nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> > [    0.845487] pc : __drm_crtc_init_with_planes+0x48/0x2e4
-> > [    0.845956] lr : drm_crtc_init_with_planes+0x68/0x94
-> > [    0.846399] sp : ffffffc00a7a3710
-> > [    0.846695] x29: ffffffc00a7a3710 x28: ffffff8000fb4080 x27: ffffffc00a7a37a0
-> > [    0.847332] x26: ffffffc0097d01c7 x25: ffffff8000fb44d8 x24: ffffffc0097d01c7
-> > [    0.847967] x23: ffffffc009311870 x22: 0000000000000000 x21: 0000000000000008
-> > [    0.848603] x20: ffffff80010d0800 x19: ffffff8000fb44e8 x18: 0000000000000000
-> > [    0.849237] x17: 08000000000000d1 x16: 0800000000000091 x15: 08000000000000c1
-> > [    0.849874] x14: 0000000000000000 x13: 3432564e3631564e x12: 3231564e36314742
-> > [    0.850509] x11: 3631475234324742 x10: 000000000000002d x9 : ffffffc008682004
-> > [    0.851144] x8 : 00000000006f7475 x7 : 00000000fffffff0 x6 : ffffffc00a7a37a0
-> > [    0.851778] x5 : ffffffc0097d01c7 x4 : ffffffc009311870 x3 : 0000000000000000
-> > [    0.852412] x2 : 0000000000000008 x1 : ffffff8000fb44e8 x0 : ffffff80010d0800
-> > [    0.853048] Call trace:
-> > [    0.853270]  __drm_crtc_init_with_planes+0x48/0x2e4
-> > [    0.853706]  drm_crtc_init_with_planes+0x68/0x94
-> > [    0.854118]  vop2_bind+0x89c/0x920
-> > [    0.854429]  component_bind_all+0x18c/0x290
-> > [    0.854805]  rockchip_drm_bind+0xe4/0x1f0
-> > [    0.855166]  try_to_bring_up_aggregate_device+0x9c/0x290
-> > [    0.855639]  __component_add+0x110/0x168
-> > [    0.855991]  component_add+0x1c/0x28
-> > [    0.856312]  dw_mipi_dsi_rockchip_host_attach+0x98/0x10c
-> > [    0.856785]  dw_mipi_dsi_host_attach+0xbc/0xd0
-> > [    0.857184]  mipi_dsi_attach+0x30/0x44
-> > [    0.857521]  devm_mipi_dsi_attach+0x2c/0x70
-> > [    0.857896]  ams495qa01_probe+0x2d4/0x33c
-> > [    0.858257]  spi_probe+0x8c/0xb8
-> > [    0.858550]  really_probe+0x1e0/0x3b8
-> > [    0.858881]  __driver_probe_device+0x16c/0x184
-> > [    0.859278]  driver_probe_device+0x4c/0xfc
-> > [    0.859646]  __device_attach_driver+0xf0/0x170
-> > [    0.860043]  bus_for_each_drv+0xa4/0xcc
-> > [    0.860389]  __device_attach+0xfc/0x1a8
-> > [    0.860733]  device_initial_probe+0x1c/0x28
-> > [    0.861108]  bus_probe_device+0x38/0x9c
-> > [    0.861452]  deferred_probe_work_func+0xdc/0xf0
-> > [    0.861855]  process_one_work+0x1b0/0x260
-> > [    0.862217]  process_scheduled_works+0x4c/0x50
-> > [    0.862614]  worker_thread+0x1f0/0x26c
-> > [    0.862949]  kthread+0xc4/0xd4
-> > [    0.863227]  ret_from_fork+0x10/0x20
-> > [    0.863553] Code: aa0503fa f9002bfb aa0603fb b40000a2 (b9424840)
-> > [    0.864095] ---[ end trace 0000000000000000 ]---
-> > 
-> > A cursory reading of the datasheet suggests it's possible to have
-> > simultaneous output to 2 distinct outputs. On page 13 it states:
-> > 
-> > Support two simultaneous displays(same source) in the following interfaces:
-> > - MIPI_DSI_TX
-> > - LVDS
-> > - HDMI
-> > - eDP
-> > 
-> > In order to achieve this though, I need to output to VP0 and VP1 (or
-> > any 2 distinct VPs really). This is so I can have the ref clock set
-> > to 24MHz for the HDMI and the pixel clock of the DSI panel (for the
-> > example above it's 33.5MHz).  Currently, only by removing this code
-> > block is such a thing possible, though I'm not sure if long-term
-> > there should only be 1 CRTC for the rk3566 (and 2 CRTCs for 3568)
-> > along with a max of 2 encoders for rk3566 (and 3 encoders for 3568).
-> > 
-> > Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-> > 
-> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> > ---
-> >  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 14 --------------
-> >  1 file changed, 14 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > index e4631f515ba4..f18d7f6f9f86 100644
-> > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > @@ -2289,20 +2289,6 @@ static int vop2_create_crtc(struct vop2 *vop2)
-> >  		struct vop2_win *win = &vop2->win[i];
-> >  		u32 possible_crtcs;
-> >  
-> > -		if (vop2->data->soc_id == 3566) {
-> > -			/*
-> > -			 * On RK3566 these windows don't have an independent
-> > -			 * framebuffer. They share the framebuffer with smart0,
-> > -			 * esmart0 and cluster0 respectively.
-> > -			 */
-> > -			switch (win->data->phys_id) {
-> > -			case ROCKCHIP_VOP2_SMART1:
-> > -			case ROCKCHIP_VOP2_ESMART1:
-> > -			case ROCKCHIP_VOP2_CLUSTER1:
-> > -				continue;
-> > -			}
-> > -		}
+>=20
+> On Tue, Sep 13, 2022 at 11:12:02AM +0200, Uwe Kleine-K=F6nig wrote:
+> > Hello Rob,
+> >=20
+> > On Thu, Sep 01, 2022 at 02:14:55PM -0500, Rob Herring wrote:
+> > > On Thu, 01 Sep 2022 15:55:23 +0200, Sebastian Reichel wrote:
+> > > > Add "rockchip,rk3588-pwm" compatible string for PWM nodes found
+> > > > on a rk3588 platform.
+> > > >=20
+> > > > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > > > ---
+> > > > No driver changes required.
+> > > > ---
+> > > >  Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml | 1 +
+> > > >  1 file changed, 1 insertion(+)
+> > > >=20
+> > >=20
+> > > Running 'make dtbs_check' with the schema in this patch gives the
+> > > following warnings. Consider if they are expected or the schema is
+> > > incorrect. These may not be new warnings.
+> > >=20
+> > > Note that it is not yet a requirement to have 0 warnings for dtbs_che=
+ck.
+> > > This will change in the future.
+> >=20
+> > Is this a list of *new* warnings, or is the report (somewhat) orthogonal
+> > to the actual change and you just used the opportunity that someone
+> > touched the pwm-rockchip binding to point out that there is some cleanup
+> > to do?
+> >=20
+> > > Full log is available here: https://patchwork.ozlabs.org/patch/
+> >=20
+> > Hm, that gives me a 404.
+>=20
+> This is an existing problem with the rv1108 binding.
+> The rk3588 does not have pwm interrupts.
 
-Let me say that a "window" in the Rockchip terminology is what a plane
-is in the DRM terminology, and a video port (vp) corresponds to a crtc.
+I thought so, so:
 
-On the RK3566 some windows do not have their own framebuffer, for
-example the smart1 window always shows what the smart0 window shows.
-This "feature" makes these windows unusable as planes, so the idea is to
-simply not use them.
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
 
-If skipping these windows from initialization results in a NULL pointer
-deref then there's something wrong in the driver logic, but it's not the
-lines you are removing here that are wrong. Nothing should prevent you
-from using multiple VPs when the unusable windows on RK3566 are not
-registered.
+Best regards
+Uwe
 
-I looked over the VOP2 driver and haven't found the cause for the crash.
-I found another issue though which might bite you later. At some point
-we do a:
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
 
-	drm_plane_create_zpos_property(&win->base, win->win_id, 0,
-				       vop2->registered_num_wins - 1);
+--d4hlshwof6wtcph6
+Content-Type: application/pgp-signature; name="signature.asc"
 
-registered_num_wins is the total number of windows present in the
-system. What we should use here instead is the number of windows that
-are actually registered which would be 3 windows less in the RK3566
-case.
+-----BEGIN PGP SIGNATURE-----
 
-Sascha
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmMhg64ACgkQwfwUeK3K
+7AkzOQf/UlE4uRbME2zQ6MnFx1BbofJkGfho9rOJJtyCBopDKAYsf+bqwxmNKeL/
+JJn+OhgKkFgnnqDuhcxp/ObXO8s6hgc7bswXYjYLZ0suDQOnA6DaScHnuJdecNyY
+p9dmbYoGxtwI1LjGifz1J8DyC3Y9v2jZi6sd6hV10RGf4W9KYzWNUzwbm9U9LZQG
+G2aCxu5ilXJYhkPoUItBEzlGIyuhh9mcZ9viwPlPsC2Bf220DKVUE+wqfajFSeQ1
+rkteqmsJYIGQJuCleX/gEgnCy5XoCG3J3XkiVOwoYE5S0eSlMB/WAD4PH72ViTwi
+blpiE1JnAMoGaXeTLz7p8Ngd48dfJA==
+=I5Ps
+-----END PGP SIGNATURE-----
 
--- 
-Pengutronix e.K.                           |                             |
-Steuerwalder Str. 21                       | http://www.pengutronix.de/  |
-31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+--d4hlshwof6wtcph6--
+
+
+--===============8217800301653458281==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8217800301653458281==--
+
