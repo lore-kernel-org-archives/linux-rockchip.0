@@ -4,57 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FD84ECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Sep 2022 09:39:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3AF5ECAAD8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Sep 2022 09:55:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X+HSq+uYV4sOX3bhPrrRws+VibE5eidx/dY0bnCFBOk=; b=TIIL46dnffIk8h
-	5hBMO5aC0FG3eslN4u4bRgAK9lUYeSwIFTg3uyuAV6D5eoF36kw4+YvPn+kBmAyF6HntXKceDSosa
-	ciBDfgcghXeGXRypTh2UvxPXNGfquO9pzTmsOR3inKNlqM7y0HuCJ+IE2B7lefVg2MAqKYBQRUY7r
-	UwA9xfuHutNQZRPyKnWPBITdz5xXQnvtivyraMA2zWwOrqF9BpmcBSaFzvOxtvJhpMOOhDLiB8R3M
-	frzDyrnqs/vPcYItr8Car5T+HojT9w81sx4pC+ICfRBurIuvPYzneLU0Znx3LeUFbL5jpR2r5eGHU
-	UZinJOJdBAkz9MgGs8dA==;
+	List-Owner; bh=z/Dqp0f+QQyGF35DYby9GpAvOXFuuRCl75YGuqJBa6s=; b=U24cyByXSDe9Jy
+	UZirO7jdpiEe5f5z94l3B5jDwtghRG2ZAROZs4fZfxgX5hls4qKd00Bmw5UQgEdzusgeNpOofv95a
+	b5Jg1ybXZG/NcGm8Dq8TYPMLGaY3FAeA11N2+y4QCecCAV9bX+0TjPPSLVviaOY1DZJI8VTRcwYmD
+	CSfku12qq+mPFoF4Uy66l7Lanidu5klP/+DCFPGIMJncj7gLemHkpnqxWh7E7k8flPWXA60QDzw8J
+	a3VuwlorFz60Tc0JdHd2ZZVHs/zAd/6c5Wpao2ayW3S85mHLRru2jfd9LAi+fOo1ew9Paz6pEIt0r
+	+CKhNadNFyTfYwk3lkNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYOrN-00EMWN-Ay; Wed, 14 Sep 2022 09:39:09 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1oYP6y-00EYH6-CL; Wed, 14 Sep 2022 09:55:16 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYOgJ-00ED2E-E8; Wed, 14 Sep 2022 09:27:45 +0000
-Received: from [89.101.193.68] (helo=phil.sntech)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1oYOg3-0004qR-32; Wed, 14 Sep 2022 11:27:27 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Nathan Huckleberry <nhuck@google.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	David Airlie <airlied@linux.ie>,
-	Dan Carpenter <error27@gmail.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	linux-kernel@vger.kernel.org,
-	llvm@lists.linux.dev,
-	Tom Rix <trix@redhat.com>,
-	dri-devel@lists.freedesktop.org,
-	Nathan Chancellor <nathan@kernel.org>,
-	linux-rockchip@lists.infradead.org,
-	Nick Desaulniers <ndesaulniers@google.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] drm/rockchip: Fix return type of cdn_dp_connector_mode_valid
-Date: Wed, 14 Sep 2022 11:27:24 +0200
-Message-Id: <166314762584.32089.13970704876797531888.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220913205555.155149-1-nhuck@google.com>
-References: <20220913205555.155149-1-nhuck@google.com>
+	id 1oYP1j-00EU4B-34
+	for linux-rockchip@lists.infradead.org; Wed, 14 Sep 2022 09:49:53 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id t7so24753260wrm.10
+        for <linux-rockchip@lists.infradead.org>; Wed, 14 Sep 2022 02:49:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date;
+        bh=bbq4/4T4JjPGUfth20drkaf18DSxlzxy1kFL2s5Skkk=;
+        b=ExcJVlbc0ZagiH+Rt7hA0bIVbTU/NxhHDjFnmOG97vfk7AfET8oP8YY+6s84+Q+Kob
+         AJ5rZVaCR4FSyyotJ+Um7fBWBWoMhnq6QmyyFF+rO62RqwDs2N4Cn46ksL+KGnpwh78j
+         S9EN8XhjlqB4zz8tP/9vhz/LY6UjBPfju8CSPIQ4BAqdnZkjw88ejZd09ya3aFzcPlFx
+         1+nPK7TEXW2EAEnjLYIuPT+P98eFpC+AhVnQvUCuPinG4F1UA1iUwSzMXBNZ6rOAIuA5
+         rt96dfG3b4g5SHEDUERGZ840y1RY/kPx0dSau+lT3vebZafJpjfn+RBOIRHaCUGx6/1o
+         JI8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=bbq4/4T4JjPGUfth20drkaf18DSxlzxy1kFL2s5Skkk=;
+        b=JGgTl98RCCEKpLTA2dwPYLyl1hfk1VOygrFCu2zgVgC+3Pu6AMhKu5oPE345AnJziq
+         h08DEEcA7Y9oj95eDQXfSV0f1SIxuQDy4hDNt7qNWjDKqhKtV1rQ+Qr7Y4iJDHwJSQdx
+         euKiGyDKXFZh1WjE2yKBcgN7d/i7wdNiqHleCCzwr2PadavaQNXW+ItYxWm/kRuneRFw
+         /lPGgsaRRB+pgtyMjxEyPjG0/nGYUf7E2/GLF3t9zuSEb6AOwaWNYJsB6VN8VTxyMGrO
+         T2WfuxqtZKmUIDfW1vpcVgwMwmYD2X+DHoZrJuwBMvjpcyEyY/vmfFOXFwLmTG6qt26Z
+         ISXA==
+X-Gm-Message-State: ACgBeo1NTNRlGAIk6WUpkb303AsW06smNGCHkFUqlTHdAbkPxyxykS9u
+	I/kGOBvSdl8HBQ4cvA9pxbaGdQ==
+X-Google-Smtp-Source: AA6agR44NE7mkRWSZbkSxz7tUVdtOhV3Q3E9t0A41MbdOWdyWfvzOmpa8UdB3Zu6U/6tZw10e5zx/A==
+X-Received: by 2002:adf:e199:0:b0:228:60f6:f775 with SMTP id az25-20020adfe199000000b0022860f6f775mr20581130wrb.478.1663148987482;
+        Wed, 14 Sep 2022 02:49:47 -0700 (PDT)
+Received: from myrica (cpc92880-cmbg19-2-0-cust679.5-4.cable.virginm.net. [82.27.106.168])
+        by smtp.gmail.com with ESMTPSA id v12-20020adfe4cc000000b00228c8ed21c8sm13192128wrm.17.2022.09.14.02.49.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Sep 2022 02:49:47 -0700 (PDT)
+Date: Wed, 14 Sep 2022 10:49:42 +0100
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Nicolin Chen <nicolinc@nvidia.com>, joro@8bytes.org,
+	suravee.suthikulpanit@amd.com, will@kernel.org,
+	robin.murphy@arm.com, robdclark@gmail.com, dwmw2@infradead.org,
+	baolu.lu@linux.intel.com, agross@kernel.org,
+	bjorn.andersson@linaro.org, konrad.dybcio@somainline.org,
+	matthias.bgg@gmail.com, heiko@sntech.de, orsonzhai@gmail.com,
+	baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
+	thierry.reding@gmail.com, sricharan@codeaurora.org,
+	yong.wu@mediatek.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
+	tglx@linutronix.de, shameerali.kolothum.thodi@huawei.com,
+	thunder.leizhen@huawei.com, christophe.jaillet@wanadoo.fr,
+	yangyingliang@huawei.com, jon@solid-run.com, iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+	virtualization@lists.linux-foundation.org
+Subject: Re: [PATCH 4/5] iommu: Regulate errno in ->attach_dev callback
+ functions
+Message-ID: <YyGjtsB2Yq4fQICS@myrica>
+References: <20220913082448.31120-1-nicolinc@nvidia.com>
+ <20220913082448.31120-5-nicolinc@nvidia.com>
+ <YyB3F/o3RfymqiFW@myrica>
+ <YyGaqsXSDMn8R12R@nvidia.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <YyGaqsXSDMn8R12R@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_022743_529711_53F6BA33 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220914_024951_260801_BB9F9E76 
+X-CRM114-Status: GOOD (  16.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,25 +106,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 13 Sep 2022 13:55:55 -0700, Nathan Huckleberry wrote:
-> The mode_valid field in drm_connector_helper_funcs is expected to be of
-> type:
-> enum drm_mode_status (* mode_valid) (struct drm_connector *connector,
-> 				     struct drm_display_mode *mode);
+On Wed, Sep 14, 2022 at 06:11:06AM -0300, Jason Gunthorpe wrote:
+> On Tue, Sep 13, 2022 at 01:27:03PM +0100, Jean-Philippe Brucker wrote:
+> > I think in the future it will be too easy to forget about the constrained
+> > return value of attach() while modifying some other part of the driver,
+> > and let an external helper return EINVAL. So I'd rather not propagate ret
+> > from outside of viommu_domain_attach() and finalise().
 > 
-> The mismatched return type breaks forward edge kCFI since the underlying
-> function definition does not match the function hook definition.
+> Fortunately, if -EINVAL is wrongly returned it only creates an
+> inefficiency, not a functional problem. So we do not need to be
+> precise here.
+
+Ah fair. In that case the attach_dev() documentation should indicate that
+EINVAL is a hint, so that callers don't rely on it (currently words "must"
+and "exclusively" indicate that returning EINVAL for anything other than
+device-domain incompatibility is unacceptable). The virtio-iommu
+implementation may well return EINVAL from the virtio stack or from the
+host response.
+
+Thanks,
+Jean
+
 > 
-> [...]
-
-Applied, thanks!
-
-[1/1] drm/rockchip: Fix return type of cdn_dp_connector_mode_valid
-      commit: b0b9408f132623dc88e78adb5282f74e4b64bb57
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+> > Since we can't guarantee that APIs like virtio or ida won't ever return
+> > EINVAL, we should set all return values:
+> 
+> I dislike this alot, it squashes all return codes to try to optimize
+> an obscure failure path :(
+> 
+> Jason
 
 _______________________________________________
 Linux-rockchip mailing list
