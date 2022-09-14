@@ -4,57 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60631ECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Sep 2022 19:50:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B196CC6FA82
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Sep 2022 19:53:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2dbz6GBrc2nXqTFuMLmwsU75hoQFhx+y/HqL5S29/JE=; b=dzkG9ToIUUMEv3s9noLZpM0q5R
-	ENia66HtgXD7Qydx4qRfbKPLp04HCoNxT5N51cpKpj6+U+/RcbkeGls8mL2QhmGtohmVhR3Z3RJ7F
-	STDXjqRxOYVqXtI/qwRk7OvuOJ/xrfzpTN6tgEnacBHfOaZsbUxa5HEblYF6uYIpcIez2CL/IdCHK
-	auMOoIsJFw9EKPKlOcLO0c46QHIIWobx0czcYfqJ3gdJhxvfLyL0ud/jlRzTFI24lb41i0RmAvdac
-	zMmLAcvKaSBLdYdIqmZvdwDmNLcQ+KroQ6QVv0Xv1whMHJtf4vdZ7Sfn6m/AAHAT01rBS8iSAPtOe
-	JGVNRxWQ==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=a9SkLfi3GF6nLae24pSRFUTBBLYZ7aUtznK2uuWHmGU=; b=ak9smnszZ6Ax6Y
+	K1hlF7PNpwec30wl0qqFEntQ9PBH+S9OVIqU5l8EnM2eQLaF7Y89W2Vn+t1492VtnDH8SbnBTeL2p
+	X1jXsz+swzoKNTvZQEUp193oO/OK+dsPCMsadXbfJQCj2khfQZ4LktGZCKX5AIkRlMRqO6cFW2+H6
+	LToLLEMcw0XKHjJF3UjjforHvR1e13hntkYsCymGNX6Gwbx4wtuiKErgKK3h2jN9eomTgGZY01CbV
+	Knmgrek7/XQsekng4UlM7S22pVHtv/RjzeyGzMQLrZG9DRHAEB9maQ8dXWqSPUOJx+ThuQwhntQBS
+	QTXc7B6NJOfeI0M4L7MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYYPE-008bbJ-QY; Wed, 14 Sep 2022 19:50:44 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYYP3-008bPO-26
-	for linux-rockchip@lists.infradead.org; Wed, 14 Sep 2022 19:50:34 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1oYYOv-000279-OY; Wed, 14 Sep 2022 21:50:25 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
-	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1oYYOv-000krD-Pi; Wed, 14 Sep 2022 21:50:24 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
-	(envelope-from <ukl@pengutronix.de>)
-	id 1oYYOt-000vyV-Ge; Wed, 14 Sep 2022 21:50:23 +0200
-Date: Wed, 14 Sep 2022 21:50:19 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: zhaoxiao <zhaoxiao@uniontech.com>
-Cc: thierry.reding@gmail.com, heiko@sntech.de, linux-pwm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATH v5] pwm: rockchip: Convert to use dev_err_probe()
-Message-ID: <20220914195019.wfh3havo7l44nyzp@pengutronix.de>
-References: <20220822081848.5126-1-zhaoxiao@uniontech.com>
+	id 1oYYS6-008eB3-2o; Wed, 14 Sep 2022 19:53:42 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oYYRm-008dUo-B4; Wed, 14 Sep 2022 19:53:24 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 956841576;
+	Wed, 14 Sep 2022 12:53:23 -0700 (PDT)
+Received: from [10.57.18.118] (unknown [10.57.18.118])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 2CB443F73B;
+	Wed, 14 Sep 2022 12:53:12 -0700 (PDT)
+Message-ID: <5f049bb8-76e6-901a-9f8e-b48d270bc4a0@arm.com>
+Date: Wed, 14 Sep 2022 20:53:07 +0100
 MIME-Version: 1.0
-In-Reply-To: <20220822081848.5126-1-zhaoxiao@uniontech.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.2
+Subject: Re: [PATCH 4/5] iommu: Regulate errno in ->attach_dev callback
+ functions
+Content-Language: en-GB
+To: Nicolin Chen <nicolinc@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>
+Cc: joro@8bytes.org, suravee.suthikulpanit@amd.com, will@kernel.org,
+ robdclark@gmail.com, dwmw2@infradead.org, baolu.lu@linux.intel.com,
+ agross@kernel.org, bjorn.andersson@linaro.org, konrad.dybcio@somainline.org,
+ matthias.bgg@gmail.com, heiko@sntech.de, orsonzhai@gmail.com,
+ baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
+ thierry.reding@gmail.com, sricharan@codeaurora.org, yong.wu@mediatek.com,
+ vdumpa@nvidia.com, jonathanh@nvidia.com, tglx@linutronix.de,
+ shameerali.kolothum.thodi@huawei.com, thunder.leizhen@huawei.com,
+ christophe.jaillet@wanadoo.fr, yangyingliang@huawei.com, jon@solid-run.com,
+ iommu@lists.linux.dev, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-tegra@vger.kernel.org, virtualization@lists.linux-foundation.org
+References: <20220913082448.31120-1-nicolinc@nvidia.com>
+ <20220913082448.31120-5-nicolinc@nvidia.com> <YyB3F/o3RfymqiFW@myrica>
+ <YyGaqsXSDMn8R12R@nvidia.com> <YyGjtsB2Yq4fQICS@myrica>
+ <YyIWQ6rX6AR9KX5E@Asurada-Nvidia>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <YyIWQ6rX6AR9KX5E@Asurada-Nvidia>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_125033_121461_403C82A5 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20220914_125322_523583_7252DDD7 
+X-CRM114-Status: GOOD (  23.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,68 +73,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0898234747670790094=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 2022-09-14 18:58, Nicolin Chen wrote:
+> On Wed, Sep 14, 2022 at 10:49:42AM +0100, Jean-Philippe Brucker wrote:
+>> External email: Use caution opening links or attachments
+>>
+>>
+>> On Wed, Sep 14, 2022 at 06:11:06AM -0300, Jason Gunthorpe wrote:
+>>> On Tue, Sep 13, 2022 at 01:27:03PM +0100, Jean-Philippe Brucker wrote:
+>>>> I think in the future it will be too easy to forget about the constrained
+>>>> return value of attach() while modifying some other part of the driver,
+>>>> and let an external helper return EINVAL. So I'd rather not propagate ret
+>>>> from outside of viommu_domain_attach() and finalise().
+>>>
+>>> Fortunately, if -EINVAL is wrongly returned it only creates an
+>>> inefficiency, not a functional problem. So we do not need to be
+>>> precise here.
+>>
+>> Ah fair. In that case the attach_dev() documentation should indicate that
+>> EINVAL is a hint, so that callers don't rely on it (currently words "must"
+>> and "exclusively" indicate that returning EINVAL for anything other than
+>> device-domain incompatibility is unacceptable). The virtio-iommu
+>> implementation may well return EINVAL from the virtio stack or from the
+>> host response.
+> 
+> How about this?
+> 
+> + * * EINVAL    - mainly, device and domain are incompatible, or something went
+> + *               wrong with the domain. It's suggested to avoid kernel prints
+> + *               along with this errno. And it's better to convert any EINVAL
+> + *               returned from kAPIs to ENODEV if it is device-specific, or to
+> + *               some other reasonable errno being listed below
 
---===============0898234747670790094==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="hjtfz2vfkl6wa2pk"
-Content-Disposition: inline
+FWIW, I'd say something like:
 
+"The device and domain are incompatible. If this is due to some previous 
+configuration of the domain, drivers should not log an error, since it 
+is legitimate for callers to test reuse of an existing domain. 
+Otherwise, it may still represent some fundamental problem."
 
---hjtfz2vfkl6wa2pk
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+And then at the public interfaces state it from other angle:
 
+"The device and domain are incompatible. If the domain has already been 
+used or configured in some way, attaching the same device to a different 
+domain may be expected to succeed. Otherwise, it may still represent 
+some fundamental problem."
 
-On Mon, Aug 22, 2022 at 04:18:48PM +0800, zhaoxiao wrote:
-> It's fine to call dev_err_probe() in ->probe() when error code is known.
-> Convert the driver to use dev_err_probe().
->=20
-> Signed-off-by: zhaoxiao <zhaoxiao@uniontech.com>
+[ and to save another mail, I'm not sure copying the default comment for 
+ENOSPC is all that helpful either - what is "space" for something that 
+isn't a storage device? I'd guess limited hardware resources in some 
+form, but in the IOMMU context, potential confusion with address space 
+is maybe a little too close for comfort? ]
 
-Looks fine now:
+>>>> Since we can't guarantee that APIs like virtio or ida won't ever return
+>>>> EINVAL, we should set all return values:
+>>>
+>>> I dislike this alot, it squashes all return codes to try to optimize
+>>> an obscure failure path :(
+> 
+> Hmm...should I revert all the driver changes back to this version?
 
-Reviewed-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+Yeah, I don't think we need to go too mad here. Drivers shouldn't emit 
+their *own* -EINVAL unless appropriate, but if it comes back from some 
+external API then that implies something's gone unexpectedly wrong 
+anyway - maybe it's a transient condition and a subsequent different 
+attach might actually work out OK? We can't really say in general. 
+Besides, if the driver sees an error which implies it's done something 
+wrong itself, it probably shouldn't be trusted to try to reason about it 
+further. The caller can handle any error as long as we set their 
+expectations correctly.
 
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---hjtfz2vfkl6wa2pk
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmMiMHgACgkQwfwUeK3K
-7Akazgf+JObTEgkacuKZlOdRlYqDkIMo2O8xXlf2w/NdJzZD5k2xCQHFZRdWfXf6
-q4U+heL7Zf26lCpBDDMld09db6IVHJlt4K9fwS6ZpCWT2CwUIvbM4BAOkhZp0C0f
-1Yh0UM/j79+GD6gx1RjvBZMqPHT/qbzrwxcL1rwkF2MU0aNcRXCJdPXil2sDleH9
-FUzzkHxRYUALDfT6tYilF0QHIWX+0X/qc5eDTxySAdS58LrJ2pdArnirPbM8D1JP
-4NuqWQdjBpUFbgwKC0hQJzZsfUjzIJ2F5S9I8LrTeNqzHg18unNj1MIMviUvzjpe
-EzzB99kvi+EZgig0QTY+Rf0OfcQfWg==
-=XaE2
------END PGP SIGNATURE-----
-
---hjtfz2vfkl6wa2pk--
-
-
---===============0898234747670790094==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Robin.
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0898234747670790094==--
-
