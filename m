@@ -4,130 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 866A1C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Sep 2022 17:59:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60631ECAAD3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Sep 2022 19:50:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cndOshk8Sn++fZNPUwAbEotHU3bqpbfannH5pml3WPI=; b=EvQygAuWIJi7KW
-	iO3NZvVGAacPTJMaXdXsYEb4UScjz5TPlprz/vU5qXFQI5sJ9aWW9PzAIc0RoPOfEaJM0aydtjGYa
-	38LnSxWQFYB9RMeKx1hH8GAbQt+fpB1LRYj3qSbZ517L0mJOGAkggQ+/BChJm7RkXpaFIRaU0xHEJ
-	yc3wo+LGDFRVuOa6Yq59h3k5QO2AmNMpncVbFUjATnd4AdNse9J5dHzFFlzazsLQ2mwnVa7+Tgfx7
-	HecwJ6orOHUVLoclK4pT82ANjQ/nKM5tsEmgVw2rLOG0aK9fLzBIIJaxXDv6xjKmP97LIzoh9zfZH
-	B3m+qZ4dDF6T9S+bFNcA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2dbz6GBrc2nXqTFuMLmwsU75hoQFhx+y/HqL5S29/JE=; b=dzkG9ToIUUMEv3s9noLZpM0q5R
+	ENia66HtgXD7Qydx4qRfbKPLp04HCoNxT5N51cpKpj6+U+/RcbkeGls8mL2QhmGtohmVhR3Z3RJ7F
+	STDXjqRxOYVqXtI/qwRk7OvuOJ/xrfzpTN6tgEnacBHfOaZsbUxa5HEblYF6uYIpcIez2CL/IdCHK
+	auMOoIsJFw9EKPKlOcLO0c46QHIIWobx0czcYfqJ3gdJhxvfLyL0ud/jlRzTFI24lb41i0RmAvdac
+	zMmLAcvKaSBLdYdIqmZvdwDmNLcQ+KroQ6QVv0Xv1whMHJtf4vdZ7Sfn6m/AAHAT01rBS8iSAPtOe
+	JGVNRxWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYWfG-006Hd2-4T; Wed, 14 Sep 2022 17:59:10 +0000
-Received: from mail-dm6nam11on2085.outbound.protection.outlook.com ([40.107.223.85] helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+	id 1oYYPE-008bbJ-QY; Wed, 14 Sep 2022 19:50:44 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYWf3-006HON-Hj; Wed, 14 Sep 2022 17:58:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=SmNdax0qEWkAxfcr/I8C+sjwFrnbTeqp9W7ighHJIcPx5YgsRq4NDXfU2IPw7uBwWRBI8Hno6xlKqiN7AtYnjJPZHMArUGExHdtqk6Xr4PiAFRMHqTY4hfOmUonYCvrvqFEx9zVf+KL83HEzxInjAD5FESyHR5wi9HSBpH1BJqDaSnXYaoxFjqBSvY6seootFu73v9eP/4rmo0J7NbAN+n2ikDMqSMVLr+t1/Os/p0o444MNu7ydpjLOkFg7sehO8BbohYNXBdjhDvPUZdBY4rYHSL/Q6SGeJRx9V9lkHcFq6HF9w2QIw3Cl9BSKAs4w9AvZoVBMiyCuyhWUP/QfFQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=YhEDLnyAed1XbDWQZvuwYdpfPEqiEn+SuWCDdfZC7Bo=;
- b=RMIhmXJBcp3ZLtZ0AFePnCbKqQIX+LwS7XEomk/DRkSiYHQTwP4iztb8R1tiick2PgQVT+yx10JaEvRfIvzmEOkq8aBKKd+VgErhbQE2mV55Pxx/kRU3MEgrWD1Jo7gGErRf5lWlKhQBwaLk+WdisvOhpJj2EqKIivesQxAibLI7I04T49M0w2al0IKfATENpkBsu1RrrBj+z6lujC0qOIrb5Pyc2VpH53gmQuK3ulyBm5wH/epm/gP4FjH6E383tDaQYXacr143cUQa20ZvaU2c1GVQYdLr73+g18c5LXY8j3JwmNUGpIgIUxz6dsDdXtF5hYJEbRyZMKVHZa1OrQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=8bytes.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=YhEDLnyAed1XbDWQZvuwYdpfPEqiEn+SuWCDdfZC7Bo=;
- b=knLEzMLNTbpBNjFGBsc9QdsMPC5wGfDv1f87L23XytJFf97rnOgQqrdOXayXg0omfUg4J6ryrE7qsRgjWCZp3zvpv0dBuMd1FwoEmYN1j9oMU0jcJ7Zj9ijrr+MEt2OenXEmm2A7csijTdhqyLGapC/gADK7imd/EQev9cKbuzvUiCkXrDWq1QxwrZ9WTWl/T/xwE92t4PPQMh/IT+mJ90kEk42raQ5n+EIaYiuUrCzzF1rYe9nQ93iARjXcY2jXgBNOysXdhRweCk7gpASjaruHZgtPOR+dnckaFGdRE07Q2cvVOhekXfRM/Y2abXYKLjN4+o2hkbtGh4KG0rCpfw==
-Received: from BN0PR04CA0048.namprd04.prod.outlook.com (2603:10b6:408:e8::23)
- by PH8PR12MB7349.namprd12.prod.outlook.com (2603:10b6:510:217::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.22; Wed, 14 Sep
- 2022 17:58:52 +0000
-Received: from BN8NAM11FT009.eop-nam11.prod.protection.outlook.com
- (2603:10b6:408:e8:cafe::76) by BN0PR04CA0048.outlook.office365.com
- (2603:10b6:408:e8::23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.14 via Frontend
- Transport; Wed, 14 Sep 2022 17:58:52 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- BN8NAM11FT009.mail.protection.outlook.com (10.13.176.65) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5632.12 via Frontend Transport; Wed, 14 Sep 2022 17:58:50 +0000
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.26; Wed, 14 Sep
- 2022 10:58:30 -0700
-Received: from drhqmail201.nvidia.com (10.126.190.180) by
- rnnvmail202.nvidia.com (10.129.68.7) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.29; Wed, 14 Sep 2022 10:58:30 -0700
-Received: from drhqmail201.nvidia.com (10.126.190.180) by
- drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.29; Wed, 14 Sep 2022 10:58:30 -0700
-Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com
- (10.126.190.180) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.29 via Frontend
- Transport; Wed, 14 Sep 2022 10:58:28 -0700
-Date: Wed, 14 Sep 2022 10:58:27 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>, Jean-Philippe Brucker
-	<jean-philippe@linaro.org>
-CC: <joro@8bytes.org>, <suravee.suthikulpanit@amd.com>, <will@kernel.org>,
-	<robin.murphy@arm.com>, <robdclark@gmail.com>, <dwmw2@infradead.org>,
-	<baolu.lu@linux.intel.com>, <agross@kernel.org>,
-	<bjorn.andersson@linaro.org>, <konrad.dybcio@somainline.org>,
-	<matthias.bgg@gmail.com>, <heiko@sntech.de>, <orsonzhai@gmail.com>,
-	<baolin.wang@linux.alibaba.com>, <zhang.lyra@gmail.com>,
-	<thierry.reding@gmail.com>, <sricharan@codeaurora.org>,
-	<yong.wu@mediatek.com>, <vdumpa@nvidia.com>, <jonathanh@nvidia.com>,
-	<tglx@linutronix.de>, <shameerali.kolothum.thodi@huawei.com>,
-	<thunder.leizhen@huawei.com>, <christophe.jaillet@wanadoo.fr>,
-	<yangyingliang@huawei.com>, <jon@solid-run.com>, <iommu@lists.linux.dev>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-arm-msm@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-tegra@vger.kernel.org>,
-	<virtualization@lists.linux-foundation.org>
-Subject: Re: [PATCH 4/5] iommu: Regulate errno in ->attach_dev callback
- functions
-Message-ID: <YyIWQ6rX6AR9KX5E@Asurada-Nvidia>
-References: <20220913082448.31120-1-nicolinc@nvidia.com>
- <20220913082448.31120-5-nicolinc@nvidia.com>
- <YyB3F/o3RfymqiFW@myrica>
- <YyGaqsXSDMn8R12R@nvidia.com>
- <YyGjtsB2Yq4fQICS@myrica>
+	id 1oYYP3-008bPO-26
+	for linux-rockchip@lists.infradead.org; Wed, 14 Sep 2022 19:50:34 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1oYYOv-000279-OY; Wed, 14 Sep 2022 21:50:25 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1oYYOv-000krD-Pi; Wed, 14 Sep 2022 21:50:24 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1oYYOt-000vyV-Ge; Wed, 14 Sep 2022 21:50:23 +0200
+Date: Wed, 14 Sep 2022 21:50:19 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: zhaoxiao <zhaoxiao@uniontech.com>
+Cc: thierry.reding@gmail.com, heiko@sntech.de, linux-pwm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATH v5] pwm: rockchip: Convert to use dev_err_probe()
+Message-ID: <20220914195019.wfh3havo7l44nyzp@pengutronix.de>
+References: <20220822081848.5126-1-zhaoxiao@uniontech.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <YyGjtsB2Yq4fQICS@myrica>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN8NAM11FT009:EE_|PH8PR12MB7349:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4c649da3-c755-4818-22ab-08da967ac7ea
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	0u1Gd2VASnQoiNDd/j4N1JkMz4Zq6CkhssDo7b8L8D5IeSfUyoXVzPddWGghC1lw60liB1SahMCBP2NYAY6IiTP7ms18KbqH3lIqupnkM8Imgci5hw5ZYV2BNsOzRbERD9eTxU1IFNzwPPGpNPa2yYFPpMSLDBWS6tqDII00boRmhI3PIkgT0YRtpwwupHnXYQTmLDE+VBC9zOmO2RtrMGdE26o8JsFKJyFmbV8jxmI4xO7RCT19gs5Cpl3rihGdciF0uhj+hvprG4jT13L2Gj4UaoPC2rA7QCb19FOvpo9mMQDUAsw0tGHj8BCbOvcFP1Z9yvJeDEQtr3jwlCfvCEelrByiZ7iBw1VY/p2RcsmB99WS76mhNe0SRBSz2YBIc8XG2CokyVQ8JXSKcifr5+JEUMpWvO1k89Qt2lPZRgdDzoZ3Bb7lvqO/mxEjIa0izB+NEmy4uCsLwnfZdPcGAx+iPMBp3HV1Sa8b23xQbiBYfOC9Er4xd6C7UhKR+N6/s7PrrigMLR20ctYtJ+bOhk1RhddEoypJah1A4KMcIcutm4qfknJjIxMbu/kpO+FAa2ddAs8iGM45DV5WPIWorssHXgurO0us+jnzSkWMsdVClySorgIk2Hfa4TtHKmVY95359LRbNQwR3/Hl4XXWXfwE6jo4wSu2ZDEuYGB80y9MRP5VhN5cPq3JJhxr1JPp/kAWPdPV3OgRVMvYmFKc9nj6exkwNF32/TbXY5ZDwQKSwQn2t//3vEuonp0XKf8yrI64SnOb/CrZ3PMg2TWJig==
-X-Forefront-Antispam-Report: 	CIP:216.228.117.160;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail.nvidia.com;PTR:dc6edge1.nvidia.com;CAT:NONE;SFS:(13230022)(4636009)(396003)(376002)(136003)(346002)(39860400002)(451199015)(40470700004)(36840700001)(46966006)(82740400003)(54906003)(55016003)(7416002)(356005)(82310400005)(70206006)(7636003)(40480700001)(7406005)(8676002)(186003)(478600001)(5660300002)(47076005)(83380400001)(316002)(4326008)(9686003)(70586007)(8936002)(36860700001)(336012)(40460700003)(86362001)(110136005)(41300700001)(2906002)(26005)(33716001)(426003);DIR:OUT;SFP:1101;
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Sep 2022 17:58:50.8502
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4c649da3-c755-4818-22ab-08da967ac7ea
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a;Ip=[216.228.117.160];Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: 	BN8NAM11FT009.eop-nam11.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB7349
+In-Reply-To: <20220822081848.5126-1-zhaoxiao@uniontech.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_105857_618033_E533BFB8 
-X-CRM114-Status: GOOD (  22.19  )
+X-CRM114-CacheID: sfid-20220914_125033_121461_403C82A5 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,50 +66,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0898234747670790094=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 14, 2022 at 10:49:42AM +0100, Jean-Philippe Brucker wrote:
-> External email: Use caution opening links or attachments
-> 
-> 
-> On Wed, Sep 14, 2022 at 06:11:06AM -0300, Jason Gunthorpe wrote:
-> > On Tue, Sep 13, 2022 at 01:27:03PM +0100, Jean-Philippe Brucker wrote:
-> > > I think in the future it will be too easy to forget about the constrained
-> > > return value of attach() while modifying some other part of the driver,
-> > > and let an external helper return EINVAL. So I'd rather not propagate ret
-> > > from outside of viommu_domain_attach() and finalise().
-> >
-> > Fortunately, if -EINVAL is wrongly returned it only creates an
-> > inefficiency, not a functional problem. So we do not need to be
-> > precise here.
-> 
-> Ah fair. In that case the attach_dev() documentation should indicate that
-> EINVAL is a hint, so that callers don't rely on it (currently words "must"
-> and "exclusively" indicate that returning EINVAL for anything other than
-> device-domain incompatibility is unacceptable). The virtio-iommu
-> implementation may well return EINVAL from the virtio stack or from the
-> host response.
 
-How about this?
+--===============0898234747670790094==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="hjtfz2vfkl6wa2pk"
+Content-Disposition: inline
 
-+ * * EINVAL    - mainly, device and domain are incompatible, or something went
-+ *               wrong with the domain. It's suggested to avoid kernel prints
-+ *               along with this errno. And it's better to convert any EINVAL
-+ *               returned from kAPIs to ENODEV if it is device-specific, or to
-+ *               some other reasonable errno being listed below
 
-> > > Since we can't guarantee that APIs like virtio or ida won't ever return
-> > > EINVAL, we should set all return values:
-> >
-> > I dislike this alot, it squashes all return codes to try to optimize
-> > an obscure failure path :(
+--hjtfz2vfkl6wa2pk
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Hmm...should I revert all the driver changes back to this version?
+
+On Mon, Aug 22, 2022 at 04:18:48PM +0800, zhaoxiao wrote:
+> It's fine to call dev_err_probe() in ->probe() when error code is known.
+> Convert the driver to use dev_err_probe().
+>=20
+> Signed-off-by: zhaoxiao <zhaoxiao@uniontech.com>
+
+Looks fine now:
+
+Reviewed-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--hjtfz2vfkl6wa2pk
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmMiMHgACgkQwfwUeK3K
+7Akazgf+JObTEgkacuKZlOdRlYqDkIMo2O8xXlf2w/NdJzZD5k2xCQHFZRdWfXf6
+q4U+heL7Zf26lCpBDDMld09db6IVHJlt4K9fwS6ZpCWT2CwUIvbM4BAOkhZp0C0f
+1Yh0UM/j79+GD6gx1RjvBZMqPHT/qbzrwxcL1rwkF2MU0aNcRXCJdPXil2sDleH9
+FUzzkHxRYUALDfT6tYilF0QHIWX+0X/qc5eDTxySAdS58LrJ2pdArnirPbM8D1JP
+4NuqWQdjBpUFbgwKC0hQJzZsfUjzIJ2F5S9I8LrTeNqzHg18unNj1MIMviUvzjpe
+EzzB99kvi+EZgig0QTY+Rf0OfcQfWg==
+=XaE2
+-----END PGP SIGNATURE-----
+
+--hjtfz2vfkl6wa2pk--
+
+
+--===============0898234747670790094==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0898234747670790094==--
+
