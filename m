@@ -4,133 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AC87ECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Sep 2022 09:29:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 119DAECAAD3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Sep 2022 09:38:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C+oXKwFNJdJ5bZh1VlICKiQJSYmhy0OKqFuFzanEe20=; b=hdrwCqfkoXoQL8
-	4rClBHGV9NBQDZeYbo/U+xESfPTixgrK9ITTUdmiUh82AxNpLSGwz+lEFTCA3lRKtSavxsdh68LoK
-	H6iD68Jr8hKYGXAaDFGKytRwCzRR/F3585bw5zr1x7TEZPJlZi+bblnmHXVgNLQ7AlC/pQY9XXODv
-	mYDMkVz2rbAADby7SaYDoSzEmL/kEHS3Gjm7beJToer4JQ/1uvOaD++PzSIXRT3JKbomWD6Syfe9E
-	o7kNStMuS8bpnsq/TwYCbfHl0YDYu+2cwyeIYVIYpcBJJllZfESi1mLqDn7qJyLsK5wRNs8JDzLME
-	ikWYuYLSHjPJgCvXu68A==;
+	List-Owner; bh=uVD0zY7XogAAoEpx3LefHhePAqc9gD9NtGcrnxpaNu4=; b=kf16TPBm4iu1WI
+	kF5wW/yPV66tUK7jZWN8AZo4SSvEigaNClcXeQRh5KeIdrPHKR4ciVkuiOMlsWcmS6LXtIZoZhcax
+	lKgnXdypJ09Jz22JTh/yqtv88Kqg+ObznVqj3Bnm/E84ny3Lx+Qib+BWP2psCXDLPQ0Df2P0c5qa7
+	fCf2PP2ELUhgmJJeQEhs88JIbZjiEGqXlnXVOV5C4Edtx90/Y4B0VazKwptXNtTa4Sh90L+/4lGXN
+	qrHysl35ddF7JC+MkioN9nzS51k+Bdqr6Kup/Maj8uqb4hTY3A5AG3n6X4fllALAPTKkjwrkWWllz
+	s2Bq5LgeoEVjcmQCRj4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYOhY-00EDth-1g; Wed, 14 Sep 2022 09:29:00 +0000
-Received: from mail-mw2nam10on2047.outbound.protection.outlook.com ([40.107.94.47] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+	id 1oYOqu-00EM9p-Kx; Wed, 14 Sep 2022 09:38:40 +0000
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYOQN-00Dxxz-2r; Wed, 14 Sep 2022 09:11:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jqjEeCuWxNA1snZzMK8Jk1nvl8dF23+mYL1ncRPAr1KsJvxWGqq9heM2jU/zgnUeDawxoaRqMD4ktWp+pJFMAzNJdBmBLklnLkKnenkLMHrv6g193FQWS+q4SRpwsS/AOyKv96k30t4+Q9iNQFkffZyeDJnnA9jiDLdYOuR5uSN+mwJORD3LZnHjUamx1kmnBKQva6jWTo4ZUS6x1h6yXXvVFI2I+2G5/rNwrVotzFDv9JLX5RUuSU1nzmMAKMHNSqyZuWr6AEw3WlEMlj98bn+PQ98v5X/LNV+qvXvFXTxjzj8DWufXl0SNatloZIpj3/YknAlemFxApzjPKmd+Vg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6CgdsVOtwexyJHIaVRRSoHRaL4Shu61nh8PFdLHvq6U=;
- b=NZhWeQ+1yF2u/OD2I4zTpi27+04G5uha5Id+6qT/RA5SdZE9ECG4C2YNt7MivDFv69fPZA4noeDhQ3pF3eYd/t14aVV21YYxiZY0GJzgiusUgzifXk9AYdYXkllBe8XcHQC5Pp+mAdl8K4dnDdH3Qkn7rb9+RENgZne1o5h+5nK3PuVFysaaSxubDFGwV/foPoUeQulwhf+GtHt4wxQgTL2JdwiMtkHW3HIdz13JK/yVzhWWhcPQThLNElI6VELAoGVNqn4GPoa58T9lUSsw1+F90O0CPU0D6tnVfhjDQi9WFSeZw6I494JrYckg+DGZKqPfOljC97c8/OtffXsabQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6CgdsVOtwexyJHIaVRRSoHRaL4Shu61nh8PFdLHvq6U=;
- b=fEqj1J1L3y1MJZKRVpvcejPLZiR+auUGkPH5SGZPO4yaQXKO0djByEvi1AbAMb9Lzs7dvVaArcvv1qqowQi7UX5tniy7N/Y+IBa7WMlqV3sfyUdgbbWnSQr0Xe8Fns1c5SxxLdBBd+bVaTxWSbw3kn1DtKFZZXcRffHzcm1vOtF9X79WrplifQnDIFl9mEECSHZsrc7aTKgWztAO9YmnCAdMJTo8AfzN22ZiWDXnFR0Oc/H40/b/G9F235Tvr7EsWy1oIpU5hk9pgJrAnCEAamZz8KAELcTzzPS4NCkCNTil8LMQcu5uX5kvcPioM2UwyrubrHaW8rEa9/HgXKY3uw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
- by DM4PR12MB7597.namprd12.prod.outlook.com (2603:10b6:8:10b::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.12; Wed, 14 Sep
- 2022 09:11:10 +0000
-Received: from MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::462:7fe:f04f:d0d5]) by MN2PR12MB4192.namprd12.prod.outlook.com
- ([fe80::462:7fe:f04f:d0d5%7]) with mapi id 15.20.5612.022; Wed, 14 Sep 2022
- 09:11:09 +0000
-Date: Wed, 14 Sep 2022 06:11:06 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: Nicolin Chen <nicolinc@nvidia.com>, joro@8bytes.org,
-	suravee.suthikulpanit@amd.com, will@kernel.org,
-	robin.murphy@arm.com, robdclark@gmail.com, dwmw2@infradead.org,
-	baolu.lu@linux.intel.com, agross@kernel.org,
-	bjorn.andersson@linaro.org, konrad.dybcio@somainline.org,
-	matthias.bgg@gmail.com, heiko@sntech.de, orsonzhai@gmail.com,
-	baolin.wang@linux.alibaba.com, zhang.lyra@gmail.com,
-	thierry.reding@gmail.com, sricharan@codeaurora.org,
-	yong.wu@mediatek.com, vdumpa@nvidia.com, jonathanh@nvidia.com,
-	tglx@linutronix.de, shameerali.kolothum.thodi@huawei.com,
-	thunder.leizhen@huawei.com, christophe.jaillet@wanadoo.fr,
-	yangyingliang@huawei.com, jon@solid-run.com, iommu@lists.linux.dev,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
-	virtualization@lists.linux-foundation.org
-Subject: Re: [PATCH 4/5] iommu: Regulate errno in ->attach_dev callback
- functions
-Message-ID: <YyGaqsXSDMn8R12R@nvidia.com>
-References: <20220913082448.31120-1-nicolinc@nvidia.com>
- <20220913082448.31120-5-nicolinc@nvidia.com>
- <YyB3F/o3RfymqiFW@myrica>
-Content-Disposition: inline
-In-Reply-To: <YyB3F/o3RfymqiFW@myrica>
-X-ClientProxiedBy: LO2P123CA0026.GBRP123.PROD.OUTLOOK.COM (2603:10a6:600::14)
- To MN2PR12MB4192.namprd12.prod.outlook.com (2603:10b6:208:1d5::15)
+	id 1oYOeW-00EBtq-VW; Wed, 14 Sep 2022 09:25:56 +0000
+Received: by mail-ej1-x62d.google.com with SMTP id go34so33294407ejc.2;
+        Wed, 14 Sep 2022 02:25:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=f91nI9a9P/rz6jigHLe0JwBmL/nvLne+WOMNOvAxTEU=;
+        b=PRotcdMFmvmLdtVHJam6WtAHNvNFHNc05yVDgO8NUVV6g6CLikshU/8CrKwd7yx94f
+         uiWAsJcoer5hoIJvGbLwQFqqrEIQqNbwBa4uE2TIuiHr5FpmfKfD6JgkGJberJPiTFim
+         iLlydQrBMSMEdImuLcqdylBiJWi4nBD+AKORUVjU/Td6pN3URiZPTyeTl2iy4TZ34UXp
+         fZqe2n+Ye/Z8+m/FmQHDpA3aU+tjw8pGJy+Vbpk8iveAmej+TIClQCuyQlp1653ds2o0
+         9dOTthkWZDugptWcDi8JwoscOOMTWYtLbnKo/nrVSHOZ5J9F8DJ5S0Zk6dk/fabE48xr
+         XyAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=f91nI9a9P/rz6jigHLe0JwBmL/nvLne+WOMNOvAxTEU=;
+        b=2fcN+rAv1t9/wVggSK4TjqHHJyd4xnndqj8PH6NlcbR3HQOBlIOxPPhsk7rPxMczUw
+         5Aer/4ktZEMuXMYKOYiYQadaQMQKv2EioY7EAhS0u1SssTN++//4C+DCMcsi/WmtFT2d
+         UAhaVvOw6Pl9TjIYJ2/riLQkUpGLoLZuqs4dfVUj82zaDcmmifvUKji3QiFeGtjuCGxg
+         OAq9TD25h/SlE0CdjYM7jE/LhCglKf6cVzEpPE09ScYCSmTIvRG38TzH6KUXtCSg6CFv
+         HbPUHooP5qUEux/DI6aGAliysn17b53n5qh/7SYNGLJoOz9YSGJxn/TLSBeXwiSi6MH0
+         fV4w==
+X-Gm-Message-State: ACgBeo0mGtgEx3cxPrzVkwfyyi8cqAktaHZfwMQpL1NUS6joMzY4hImD
+	KYvQuIOU5hz3vb7TGnm86Uk=
+X-Google-Smtp-Source: AA6agR40eeXb4zpmw4i9qjHMaoxtTOGI6hd5lDVJv8VCDKHWZH//zmNJiDc9wDyn2UgqlO/rmKTOTQ==
+X-Received: by 2002:a17:907:6ea1:b0:77e:4c93:130a with SMTP id sh33-20020a1709076ea100b0077e4c93130amr8727419ejc.482.1663147550260;
+        Wed, 14 Sep 2022 02:25:50 -0700 (PDT)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id x24-20020a50d618000000b0044e01e2533asm9611121edi.43.2022.09.14.02.25.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 14 Sep 2022 02:25:49 -0700 (PDT)
+Message-ID: <aa1fc003-eef9-13bb-b21b-ebccb12dc257@gmail.com>
+Date: Wed, 14 Sep 2022 11:25:48 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN2PR12MB4192:EE_|DM4PR12MB7597:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8993b424-dbdc-42e3-eba8-08da9631101f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	Xp/Vf2W6Dv4jLI3CiFcwINcg81lQo83AmAS2lNaa3poF/e4IRSQu8qhd3CYzOKoVG/dSZ8EHBDt2SbPQ8No+eheKI7kfbQhTkvgpQpjf3Z1EZ4Tct1T1PwnjxEz/BtnljGbySdondzsWP/wmrIhrFWM8Gs9l55atzuBRj3vQXf6+S/5QL49kTaZELNl/hl62FglqYdn+gBHmPfkFD7y5hEpWpe6kLr8770+fa4HZyFhdwTEocNoUcbMWmNTLpxds3WTmQXT9jDtV7ALW7wjo+CbYOgL8AfqHPQFNzP7F21VvG6U9pjJE7pFmKNUgCSE6KGTTBDJTW3AfTil31SKbLWZGtLL3b7oaexzgOlzQR9VBvRonXtLIFRoqHczDSa3oIw+21IRhtVrBnfrqLRmtZPrqPvEkvhBGb1pObKR0woct8kMNPG7ZQcCewXJgpV9oNZ/m+/Ru4+CVDVFihnTwNkZq2thqgPqVu+90TtX1zxirp4Q63eYDp1YMHB41pI/kgCHcOqVm1tk/1+GEfctBrSGqtXvIGby2zYaU0Id1gFH2gX2ubqhEJw/ib+4vZxEzSqSzS3JuegYm2HqQfHufv3+172NuExuoh4jVp26MMUAt4alH2IWvBNRr7zKXI7ulzqge7PHODVNqL9FlQorgE5XKV/iVtApDMIhXQC2GQitGz3qqm861gzzXKN4+LoNTSvyVSPmAOJwmxCxlA7ZvQA==
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MN2PR12MB4192.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(366004)(396003)(346002)(376002)(39860400002)(136003)(451199015)(8676002)(66476007)(8936002)(36756003)(6916009)(26005)(2906002)(41300700001)(7416002)(6506007)(86362001)(7406005)(5660300002)(38100700002)(4326008)(316002)(4744005)(186003)(2616005)(83380400001)(6666004)(478600001)(66556008)(66946007)(6486002)(6512007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?7sDx4z4Ei7YWZg7fYs/La8uFhZkG4yg9yKcehgdk4qTHh62sxfvKknfRe/kg?=
- =?us-ascii?Q?u9+4y7SrTM94DRmNj2rvSojKXt0U4IuRCVZweYfM205vvMfA74JVt06aJ3Sq?=
- =?us-ascii?Q?GqfDODwQQP8dpzXaHGTMOjM8FPPZ1tGP5BIElkgj40Qm4UxnjgL76xZvghpQ?=
- =?us-ascii?Q?nFMJryeUBHTevipDajW+9nhzRfOoF3MjXiMdID2W9fc5anr+GE86GVucHVpr?=
- =?us-ascii?Q?D3eWTxb2bwg8RTyvNLPGetIYOVaNlR3BlPnqY/C992SIDnjQ7ER/8SuUOfAR?=
- =?us-ascii?Q?J7sV5qFPLEqRSmtR1bBfGkIGoFAPLsE4MY+Apc8H7p1C6IjIOkhCqOKBx0Ym?=
- =?us-ascii?Q?M+YEIyvZgdxDl7iJyIWVcYxZL0uX08Kg8lJU5iHh3BnylmgCFzBFvJqr4u4n?=
- =?us-ascii?Q?y+QJS824H+UeGFLu2HEtYx8AksqI4pkaSN6NfNOLw/KFBiqA6tOyZZJvoi+P?=
- =?us-ascii?Q?OCtgH2lbXLbdN/kkHvD9NbUhkdLuPnqtKbvCCJImSYKjlDcZqEGumHZZTUxQ?=
- =?us-ascii?Q?hW9fLZnC+5PIkBsrPg0zTsrrikMF77z1eBrDr/K5AF2htzEC7Qw8uUd661hE?=
- =?us-ascii?Q?6sY6vUsYThczJDulIUzuRO307pki++nYiR8WuIs8tfEYzYLhIfPlg/PjpBkx?=
- =?us-ascii?Q?8U/u8kE3FR2+Ybmt278u+3JNjweTX75oSq1TX669DsamxEzsjTdfpwcn7SWj?=
- =?us-ascii?Q?pZbPcFw5+JwteMC1nufH4h30UnskdinOlG1gounNulJfE0aq9otqz3o14CpL?=
- =?us-ascii?Q?XRGFlXvrzmdQrGL61BEbquKtyyOHH/gH8Kr+CHUFbKNZ2WRDvQC1zNKG5xpl?=
- =?us-ascii?Q?0Obe+Kyn6QFq/vsYSySoM0+zVwgZgQyibbuNovbQqMMONRkRcGiKdGgYtaRT?=
- =?us-ascii?Q?MkBpzeXg0s1swc9RVeOxFRuZDdhVLhhIberp/szlV1GdMWYLAtfbdtXLMn0q?=
- =?us-ascii?Q?Qyx5HDhi0bPuf6NmoqgrYI22Az+9nISNB+/12sxTHyAx8tQC6BzLLk7fqroj?=
- =?us-ascii?Q?4GeyJLlJu1YctjcFvt34uoUzMKLIqFkLOUPaoQl9YJ0VWdTOyZcDl3Wasjmr?=
- =?us-ascii?Q?nym4KIrgK4+IFNtYHnXuncFvLjKupjVWsxOF0duAk5JZMWxkm7HJmMh4ZU5W?=
- =?us-ascii?Q?c5M7/hsUiej6+tVhrZEn+L3xn7X61XSR4hT4Sso9J+Qji1EzWD8c/kwcSB78?=
- =?us-ascii?Q?RRYHeb+GY2CB5mwZGtZFmT1XEFzPgkPwgEWwacPOd3okgFKfhSxq6VkqZR/4?=
- =?us-ascii?Q?/wvF4OaUR4A2mHlDif8/h2Pu1skKTeYl3gur8dhEiAvdmPVDdZ8o/tVKOLC3?=
- =?us-ascii?Q?5j7fu3WX0MCHNYmoV275hUwM0MuAECkp1tFURVzC2GLl8PswoH86QYCQ9Yxk?=
- =?us-ascii?Q?6kRiubA377OvAyC+5GePz+nnA4BAxdKv2wzDfJpTZSqXY+zTCU2iEiKzo86h?=
- =?us-ascii?Q?6ehiQCy5lpIHdGL+qrErWZZ+2d1nAdjGBQHuvEhcb6xJXkH1C5KEpOnc4xe8?=
- =?us-ascii?Q?YKcQM8xK/iDv6AxAg8kumGeJZKTfVGmRhiooeecHqCMk0S48Z0RP6A/LAsqo?=
- =?us-ascii?Q?yhHC60Z8iaULCZmO9qU=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8993b424-dbdc-42e3-eba8-08da9631101f
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB4192.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Sep 2022 09:11:09.8187
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: GwxDJPdoj1wWUg2vxnSAk5/ijr1wZOZ1FiLVSz/Y4qBn4BPewMBS2mvVrKWDHttt
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB7597
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: [PATCH v1] dt-bindings: clock: convert rockchip,rk3128-cru.txt to
+ YAML
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>, heiko@sntech.de
+Cc: zhangqing@rock-chips.com, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, sboyd@kernel.org,
+ mturquette@baylibre.com, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <76d87f49-6a44-0a05-c9dc-af870fade924@gmail.com>
+ <14d7bbb5-51c4-8fc0-2303-f5164c6da903@linaro.org>
+From: Johan Jonker <jbx6244@gmail.com>
+In-Reply-To: <14d7bbb5-51c4-8fc0-2303-f5164c6da903@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_021115_562443_92D89322 
-X-CRM114-Status: UNSURE (   9.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220914_022553_075749_119F1416 
+X-CRM114-Status: GOOD (  26.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,23 +96,214 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 13, 2022 at 01:27:03PM +0100, Jean-Philippe Brucker wrote:
-> I think in the future it will be too easy to forget about the constrained
-> return value of attach() while modifying some other part of the driver,
-> and let an external helper return EINVAL. So I'd rather not propagate ret
-> from outside of viommu_domain_attach() and finalise().
 
-Fortunately, if -EINVAL is wrongly returned it only creates an
-inefficiency, not a functional problem. So we do not need to be
-precise here.
 
-> Since we can't guarantee that APIs like virtio or ida won't ever return
-> EINVAL, we should set all return values:
+On 9/12/22 12:51, Krzysztof Kozlowski wrote:
+> On 11/09/2022 23:20, Johan Jonker wrote:
+>> Convert rockchip,rk3128-cru.txt to YAML.
+>>
+>> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> 
+> Thank you for your patch. There is something to discuss/improve.
+> 
+>> diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.yaml
+>> new file mode 100644
+>> index 000000000..03e5d7f0e
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.yaml
+>> @@ -0,0 +1,73 @@
+>> +# SPDX-License-Identifier: GPL-2.0
+> 
 
-I dislike this alot, it squashes all return codes to try to optimize
-an obscure failure path :(
+> Can't it be Dual licensed?
 
-Jason
+That depends on Heiko and Rockchip.
+I can produce the patch for it, but I'm not in control whether they reply or not. 
+
+===============
+
+dt-bindings: add bindings for px30 clock controller
+@mmind
+Elaine Zhang authored and mmind committed on Jul 3, 2018 
+
+dt-bindings: add documentation for rk1108 cru
+@shawn1221
+@mmind
+shawn1221 authored and mmind committed on Nov 16, 2016 
+
+dt-bindings: add documentation of rk3036 clock controller
+@acgzx
+@mmind
+acgzx authored and mmind committed on Nov 23, 2015 
+
+dt-bindings: add documentation for rk3188 clock and reset unit
+@mmind
+mmind authored and Mike Turquette committed on Jul 13, 2014 
+
+dt-bindings: add documentation of rk3228 clock controller
+@JeffyCN
+@mmind
+JeffyCN authored and mmind committed on Dec 12, 2015 
+
+dt-bindings: add documentation for rk3288 cru
+@mmind
+mmind authored and Mike Turquette committed on Jul 13, 2014 
+
+dt-bindings: add documentation of rk3668 clock controller
+@mmind
+@bebarino
+mmind authored and bebarino committed on Jul 7, 2015 
+
+dt-bindings: Add bindings for rk3308 clock controller
+@finley1226
+@mmind
+finley1226 authored and mmind committed on Sep 5, 2019 
+
+dt-bindings: add bindings for rk3328 clock controller
+@mmind
+Elaine Zhang authored and mmind committed on Jan 5, 2017 
+
+dt-bindings: add documentation of rk3668 clock controller
+@mmind
+@bebarino
+mmind authored and bebarino committed on Jul 7, 2015 
+
+dt-bindings: add bindings for rk3399 clock controller
+@acgzx
+@mmind
+acgzx authored and mmind committed on Mar 28, 2016 
+
+
+> 
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/clock/rockchip,rk3128-cru.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: Rockchip RK3126/RK3128 Clock and Reset Unit (CRU)
+>> +
+>> +maintainers:
+>> +  - Elaine Zhang <zhangqing@rock-chips.com>
+>> +  - Heiko Stuebner <heiko@sntech.de>
+>> +
+>> +description: |
+>> +  The RK3126/RK3128 clock controller generates and supplies clock to various
+>> +  controllers within the SoC and also implements a reset controller for SoC
+>> +  peripherals.
+>> +  Each clock is assigned an identifier and client nodes can use this identifier
+>> +  to specify the clock which they consume. All available clocks are defined as
+>> +  preprocessor macros in the dt-bindings/clock/rk3128-cru.h headers and can be
+>> +  used in device tree sources. Similar macros exist for the reset sources in
+>> +  these files.
+>> +  There are several clocks that are generated outside the SoC. It is expected
+>> +  that they are defined using standard clock bindings with following
+>> +  clock-output-names:
+>> +    - "xin24m"     - crystal input       - required
+>> +    - "ext_i2s"    - external I2S clock  - optional
+>> +    - "gmac_clkin" - external GMAC clock - optional
+>> +
+>> +properties:
+>> +  compatible:
+>> +    enum:
+>> +      - rockchip,rk3126-cru
+>> +      - rockchip,rk3128-cru
+>> +
+>> +  reg:
+>> +    maxItems: 1
+>> +
+>> +  "#clock-cells":
+>> +    const: 1
+>> +
+>> +  "#reset-cells":
+>> +    const: 1
+>> +
+>> +  clocks:
+>> +    maxItems: 1
+>> +
+>> +  clock-names:
+>> +    const: xin24m
+> 
+
+> More clocks were mentioned in old binding.
+
+We go for a slow approach.
+The man with the hammer syndrome thinks that every hardware needs to described with the DT method.
+For clocks we do that in the clock driver with macros and structures.
+This works fine for Rockchip. If the need arises further proposals will be submitted.
+So thanks, but no thanks!
+
+
+In U-boot we can't filter clocks with exception for the cru node, so DTOC adds them to dt-plat.c with tpl size increase.
+When syncing DT changes must be made all over the place.
+
+static struct dtd_fixed_clock dtv_oscillator = {
+	.clock_frequency	= 0x16e3600,
+	.clock_output_names	= "xin24m",
+};
+U_BOOT_DRVINFO(oscillator) = {
+	.name		= "fixed_clock",
+	.plat		= &dtv_oscillator,
+	.plat_size	= sizeof(dtv_oscillator),
+	.parent_idx	= -1,
+};
+
+static struct dtd_rockchip_rk3066a_cru dtv_clock_controller_at_20000000 = {
+	.clocks			= {
+			{3, {}},},
+	.reg			= {0x20000000, 0x1000},
+	.rockchip_grf		= 0x9,
+};
+U_BOOT_DRVINFO(clock_controller_at_20000000) = {
+	.name		= "rockchip_rk3066a_cru",
+	.plat		= &dtv_clock_controller_at_20000000,
+	.plat_size	= sizeof(dtv_clock_controller_at_20000000),
+	.parent_idx	= -1,
+};
+
+Comment by Heiko:
+
+In the discussion Stephen had comments about the optional clocks, that
+have a circular dependency (xin24m -> cru -> i2c -> rtc -> xin32k -> cru) .
+After everyone put in their argument, the discussion itself just stopped.
+
+I've picked up the conversion patches anyway, as this is the status-quo
+in terms of modelling clocks on Rockchip, so the yaml conversion doesn't
+change anything in either direction and just transforms what is in the
+kernel right now into the yaml format which will improve devicetree checks
+a lot and also reduce the number of warnings emitted by the checker.
+
+https://lore.kernel.org/linux-rockchip/5781991.QJadu78ljV@phil/
+
+> 
+>> +
+>> +  rockchip,grf:
+>> +    $ref: /schemas/types.yaml#/definitions/phandle
+>> +    description:
+>> +      Phandle to the syscon managing the "general register files" (GRF),
+>> +      if missing pll rates are not changeable, due to the missing pll
+>> +      lock status.
+>> +
+>> +required:
+>> +  - compatible
+>> +  - reg
+>> +  - "#clock-cells"
+>> +  - "#reset-cells"
+>> +
+>> +additionalProperties: false
+>> +
+>> +examples:
+>> +  - |
+>> +    cru: clock-controller@20000000 {
+>> +      compatible = "rockchip,rk3128-cru";
+>> +      reg = <0x20000000 0x1000>;
+>> +      rockchip,grf = <&grf>;
+>> +      #clock-cells = <1>;
+>> +      #reset-cells = <1>;
+>> +    };
+> 
+> 
+> Best regards,
+> Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
