@@ -4,82 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1368BC6FA8A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Sep 2022 15:08:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95AECC6FA89
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Sep 2022 15:14:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3PzG/mmDcUzP+SSeFlHvW+WK3cErMP/j/5hvXMNwHRA=; b=jM+X9642mW7e2y
-	lsTVJmum32bpVXZ7dacjwqQ5Mr6o7pTf7zBGBDpKle1m5SAK27eK2npe/crEyCQ9gnpkFmtjKo5/A
-	BG8jfL/sITlAlIWRfQMSd6wq1h+9GGaD59/Miiw/UxpQ0cf9iEocqZFfY5TWVZLxWwb7coPwohz1m
-	4vzsmuzfmUJs4yFoFH+kpbd7MfcKNa42N8nziHBS53er1+coR92EKyQP0SPfS2+r6Aomm9wI8vFSh
-	lWmKI7PR73oyJNr2oHERVEzMfjUiqNFMSdeu7TWeybLlS2CDLrPA3eTUQVYE3NBB63LcyyTioiO7h
-	5TY3K9RHKuDT1EX2IEPw==;
+	List-Owner; bh=o39CCWg9YD9/W+/bEpdg6BkUmE9pzZMnb9KkyNmmsOk=; b=kNVsDvYRPFnitR
+	snaRTELE0pjMeXldOrlCBZySUFtw56oSBIYV6izYxyKCwaPD4OUWF7KQP82IVYXaNiQKD6/YXwmcA
+	Yo8yBTBeYl6Nqz9TXYbGA4AnPHzfi6zEGcKBpcGtreK8XKNauIwWozIHSqLCr8C9hRmCLP4pRtluz
+	MzUa9pM7REPaxT6lFW9sJ5YRKfI+oh8sgP57psIpKnBMjT1ey9OAcssAsyyMyhS+jFojyVmlYvhcr
+	Y4vhoqs3zJtjaFUsg6FgIpvJ1KyKXWCkzvHJdoBhENhTPSs0eJgdLrUIxVvNk8PwNWZ9NDwOzhm2U
+	CKzbxYLjU2b/LNWGCG4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYqTK-00BmDc-OE; Thu, 15 Sep 2022 15:08:10 +0000
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+	id 1oYqYv-00BzDV-47; Thu, 15 Sep 2022 15:13:57 +0000
+Received: from mail-dm6nam12olkn2027.outbound.protection.outlook.com ([40.92.22.27] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYqT8-00Bm9y-QW
-	for linux-rockchip@lists.infradead.org; Thu, 15 Sep 2022 15:08:00 +0000
-Received: by mail-wm1-x335.google.com with SMTP id e18so7924003wmq.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 15 Sep 2022 08:07:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=9mQUaPNceis8qparWDkrLv2BKnQ9SmM81stuAhhbzew=;
-        b=LsQo2JpTUkhTzfuDrJ9y/4GnGKTFwHW/PSWLYrWtomRbBWYjPZM14GvphXRuD7cPBp
-         k3JZ+7US/WNPMpgGXXwWecEDpG/BAvoYLpVJKNKVvQr+ezEuGx4gzqSMsVaF/Uotbwpj
-         dF3HxM8tD1HpTdAuiw4AdS00lvRWOBZP/FAQ1ekdtvTTikxyAoXPGZT/ocVSemAbMnV+
-         XFbG2AKYu/mvIPw9EgzPG2cLjvqbHSDNeXELIuoYPpjCeehPx5EN7xVHiyZDO/J8ArY7
-         iPln6G8fXhIaBuBbEARnBetbMcZrFpMkLXHmfmpqC3fCdbp0gi6CVp9TCgKi0/CLPxg9
-         vk8w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=9mQUaPNceis8qparWDkrLv2BKnQ9SmM81stuAhhbzew=;
-        b=8SPIwMJ/dbjYb/uqW2FYjlWYR2TLL9qnuVvj2e+yNzPbAEwYwmUle1ixPpnMyiUBF0
-         otZBXXBrf9CjBARWmi+2YnEej4HD1kz6nNDN1/3OglMHE+O0s2QJxXsqwShenR6NgnEp
-         tOT0ZvIHVX9/3h+Omb1YQgisi60Wds/xL/bipdPH+45szyWyvG4j/u0TkstHivfwHdEd
-         njeS4AwZtaUGoXd5La7sYhTGes8UyDIP2irudB6UQTMvMwxx8zm55JXQy4Q9Ti4QtzNX
-         lSr98ddmYuDFYZTFhKYCeEamQtMJzRfyiRBOgI5QV/haPr+eYVkMrGls05o0amuiYYCo
-         b7Ow==
-X-Gm-Message-State: ACgBeo2s213AlS2Uk6z41SQ1rpVGveBb2BWGsycaHDZ2HqYKqegj9R31
-	wLykSt3tqqji2fwdYtLtnEB++w==
-X-Google-Smtp-Source: AA6agR7MonZjlHNMXwe0IaiZO8G7Nw83j+6yzFvN9UU8Qb8D8xG5Ma8HaDtaJ4b0KHXmzJd/VpiUAw==
-X-Received: by 2002:a05:600c:4c22:b0:3b4:766a:4f76 with SMTP id d34-20020a05600c4c2200b003b4766a4f76mr6708741wmp.101.1663254475376;
-        Thu, 15 Sep 2022 08:07:55 -0700 (PDT)
-Received: from [10.119.22.201] ([89.101.193.72])
-        by smtp.gmail.com with ESMTPSA id h4-20020a5d5044000000b00228d67db06esm2904974wrt.21.2022.09.15.08.07.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Sep 2022 08:07:54 -0700 (PDT)
-Message-ID: <c46fd424-3517-9f66-dc8c-ed10ca3ef622@linaro.org>
-Date: Thu, 15 Sep 2022 16:07:54 +0100
+	id 1oYqYr-00BzBp-4S
+	for linux-rockchip@lists.infradead.org; Thu, 15 Sep 2022 15:13:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NVF1dcDkFH0wAQ/PWGvkKgmfML0lEYUgVJQamlre4BytH3DEl6QfGF3bowJR7Jwo8LcmkyNOIbnQeP3f+ljebrK2npj40U+v+aqZZeD3Zdtd+Dy7W/NV37nhZQAmswrXll7vc5ONJXmqRCOC+m8MtZMp3cgER65QANuPJjZEt20DYTb/9D66qdwoF6jvFIM6yMUOCq1lmKbRM+Du1yajv2MB9pLns0UdpSyww5Z625Ia+1Eyp62Mu88MS7tr+LPh79V5qgbDKiMvR8lbphuzw6Nx3sXcmVzY3TpDG8w4xE9c4RdF3UarJ5b8eDlLvkmZnGFbva/M9pw6+O9toXdRNg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Ih6iPK1WFQxXRsBAs087YdvGRv6FjKuTtBO5XXKaCIo=;
+ b=lgAsjLAUjNS2YwMMZN6FIyp6e9Pk00n9zQS5x0TwtYP6yWynFreXxsSpsjsjMb98oPh9cO12iPe/NI2dxadKw4g9dzK/yvQqiL7K79nnf05GPxFh/7QjS3+ojqcR0/Xpd2be7J8/xsFwmSRZXuUVols5zsTcFOk9GkS3cyVHTEDvB68/hmUh+dnsg61ZTVeeR4cp3lQNM2IKZUb3BXRdqk9/mfpCuSbmvZGkaulUzuIfZ2rcZ1Zr7Elpl8rLZ0bZtQzxc0UCh70gyR4KNlVa6laMEikc42U3EUqCW3z6+jEXRYkOmFar2f+nKvbbDfSb7s1222tPeiJrO6Hd4yvKBQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ih6iPK1WFQxXRsBAs087YdvGRv6FjKuTtBO5XXKaCIo=;
+ b=bMe5RFS76OWwik8MqBCFnG4SNqZ5RA0BOZ1SMLdpYXs1M2tBfJdAtE0JKeiFQsMaMq14eTdqHD1M5UE4EoDjg2d7annHFg0EhSukvRQ0qveufqP4pzkbEJLVxV9D9fjfpe282yXdqM3wsHs3WaG82J46/jN9dr7cDhwhE1xbJ/iljfpqsqFlLAygSiPXzcg4pXcU9WCPViitsndHudi4LP7yb6MA4SEPs96PGVUDCFYMEJFM43fbB48KeDWAhnpBWDNZiTCSTMIa5UuwZMRmbeYS8uU5UV6HWwfCSQRF4m23gOFfFQOpyytCd1TwS8yiiZm92vMPGxv3ySDK1OaeCg==
+Received: from SN6PR06MB5342.namprd06.prod.outlook.com (2603:10b6:805:f9::31)
+ by SN7PR06MB7039.namprd06.prod.outlook.com (2603:10b6:806:109::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5632.15; Thu, 15 Sep
+ 2022 15:13:48 +0000
+Received: from SN6PR06MB5342.namprd06.prod.outlook.com
+ ([fe80::433a:1493:6a39:ee43]) by SN6PR06MB5342.namprd06.prod.outlook.com
+ ([fe80::433a:1493:6a39:ee43%5]) with mapi id 15.20.5612.022; Thu, 15 Sep 2022
+ 15:13:48 +0000
+Date: Thu, 15 Sep 2022 10:13:44 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Sascha Hauer <sha@pengutronix.de>
+Cc: Michael Riesch <michael.riesch@wolfvision.net>,
+	Chris Morgan <macroalpha82@gmail.com>,
+	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+	daniel@ffwll.ch, airlied@linux.ie, heiko@sntech.de,
+	hjc@rock-chips.com
+Subject: Re: [PATCH] drm/rockchip: vop2: Fix Null Pointer Dereference on
+ Multiple VPs
+Message-ID:  <SN6PR06MB5342F0D99F3AF0D7149AD100A5499@SN6PR06MB5342.namprd06.prod.outlook.com>
+References: <20220912180242.499-1-macroalpha82@gmail.com>
+ <d8a86990-6d9f-9ca0-326a-e5706f924516@wolfvision.net>
+ <20220914064927.GS6477@pengutronix.de>
+ <SN6PR06MB53426F3713C84EDB67F65133A5469@SN6PR06MB5342.namprd06.prod.outlook.com>
+ <20220914133530.GW6477@pengutronix.de>
+Content-Disposition: inline
+In-Reply-To: <20220914133530.GW6477@pengutronix.de>
+X-TMN: [3RJwR//v0P95XSWTLqc4fELoH9o0Rt4n]
+X-ClientProxiedBy: DS7PR03CA0252.namprd03.prod.outlook.com
+ (2603:10b6:5:3b3::17) To SN6PR06MB5342.namprd06.prod.outlook.com
+ (2603:10b6:805:f9::31)
+X-Microsoft-Original-Message-ID:  <20220915151344.GA28567@wintermute.localdomain>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH] Changes phy configuration to expose sata in place of usb3
- on quartz64-a board
-Content-Language: en-US
-To: Alessandro Carminati <alessandro.carminati@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <YyIyo42QWvgJTBjL@lab.hqhome163.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <YyIyo42QWvgJTBjL@lab.hqhome163.com>
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN6PR06MB5342:EE_|SN7PR06MB7039:EE_
+X-MS-Office365-Filtering-Correlation-Id: ef4eb123-80d0-4bea-ab48-08da972ce3cb
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	W+aGYGZjIbTjX9F3gsFz9HSrFrX/iRtDdli/TazM3+7Di7oeOvNS5As+y+6gTr2x7vWiM3yDkFdJYpd0GHYxDEj3cZHowup+ahs5//Q1nOds0sfpnTPo3vaY9T+GViQYHDnGxjtPuih+XgPIrUDPtVA8FrHGEEJc5OXYzqZrCHy1V7JP1BjhfdHOSbNCbruxlIWLQpm7STEx5Tj1EmmKqCyGF+yd06wLimLwsqhcjPq7Dp4nI7YC2tNjyoCL0QetBXxR5qSVmZW7cv8XM9uGQDNGiJosS5Y5Pwz0X0NUthqDW2VL17fmLtsXlryabkruRRzxW8x3LniN+b1ADPE+nYibZN1GPg48oYzaZfokUS5u+uJZm1X/m3R7JHQ19LxTPWSh6B6lD752IHslaJDidQqC0ye7JSKhTZIaEiCnMM2i/pjFhoKmhakq4C1rknWxxpGDe34/ww4tjLdQv9jTeGTZsM+OGfFmIzPv4jloGRNipG5ceGEUbYJklyvUlwHNCg8UXGNmmXItxkXPlma7pZrbehulk3AuFmP3jQeRDlPxGf5QRbI04P6lfwoVuDDO/AgBjjApJT67CNpBLSeRvZaF0ZCK30rbENz+0X0llGz5Rotr9zAK+Bg405ksVKwFWJ/pQTNrWEXLaQg0czP9t9IY7VAI+FD0fAp+SnbNa/4=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?7bScDk/XNHnPvNs9NyjTIdLnzLVjXcdC7TjRh2P+hJCPbPI8b2XDE6EEZvrf?=
+ =?us-ascii?Q?1WTCwJy9AJnnc2DH+XYbMhF5OaYqL5Xcf5medlhJlwQZV9VqCRchC8L+zN72?=
+ =?us-ascii?Q?3n4IsLQw/OSjyh6DXKFcjNWSAI7cBml8OkTLDUNG7Lh8ZX0kq+KDwoluKXDK?=
+ =?us-ascii?Q?itE4TSfqctDuBmhCVYGvQy00wnDpNLwfrVQlAUhoxkLn9FU8QSNNgJNVsDEQ?=
+ =?us-ascii?Q?rQQZaXXhfrMIlr+XqCipYibdecxGSqjW8d6/S8TpmuR6nL9ucMBe3NKu73Vh?=
+ =?us-ascii?Q?T5kIBYoH5GkL5XTi5JbxGsgr9AXauAKcpyd5wnbJWhMCZLd9ZRzjkAouoZC2?=
+ =?us-ascii?Q?EZ2yjgFXGZ6HeDBbTWoNN54/He9rdf3e2nre03gwZ3h4JkX7WCTllVMlkYct?=
+ =?us-ascii?Q?wAZP0rT5/iCcUcCuXARCqkLBdrFJMVqU94GDWJd2yh2Z8XM6yogp54UWHLGW?=
+ =?us-ascii?Q?ts47Acad4h64oN+V69S5Mezgu8rLkjpCtOCvIQfleRxrrSEPdjJhQGwqkBTj?=
+ =?us-ascii?Q?fxuUvsWF9s7SY6oc9pCdj1BpoP0wFuVYvT6ESShhxZg//U5QeniSvPxjU4gv?=
+ =?us-ascii?Q?Q0gnCp0dS8xh9AE3cFsbLf6dHJdwwg+xeZt/EkjBwkeKLM6KH2U/KfncJ809?=
+ =?us-ascii?Q?N3En5SVQM+ibrgkQx8TRSETiqf2mFZq/SiC+Nhnxxi9+Tb8x8+2CSTpqFMgJ?=
+ =?us-ascii?Q?EEe4jwQnpqkpgymd2ckBpkIEBbYKCepQdqr7vy97n2Qr80oQqAUsYRKMXxef?=
+ =?us-ascii?Q?UoYupHWJcjwE0ldCbJlOQRxZkYiZ8zp7mIrdcj2AF1HXO8QcEV+PTcRr9+2k?=
+ =?us-ascii?Q?+qyU0HwdoS0OokvqdN7WiIwpgi1br9VXHRBUiKfA8IJLaH+6bXUCN4dQyCAc?=
+ =?us-ascii?Q?9brO27d+7++kRl0ZRN00vH2DQomebW3v6oozUoi+MLctYpprydsKBF+QS42r?=
+ =?us-ascii?Q?dwL39jOsMTJ7BUf1+OskNyWXOGaNH77AjNJ1NGiC8o5bpGHrJciMDfFrbD/G?=
+ =?us-ascii?Q?QmcDuatGu38Q2vCd7A54vLYiiR9S3GWtci7GzYh9g1kl7cWeySyYIaG7UBn8?=
+ =?us-ascii?Q?0H1iAo9IdRczOeKs2UZOlzMxU2jHyzuFl52LMdmNMgKjFFaNkV+Xnsozgwem?=
+ =?us-ascii?Q?UUruYhb519ly9HqTTJUHnMWbsGiTBTrK4FmcXp2M72WCJF2MNNLEK6+Vs7rx?=
+ =?us-ascii?Q?LBUiaNOw+gsDtMMnW9NiBnJP1c2CYl+20Ddyr7T4Yy59Y/KcIpzHNnqCut/Y?=
+ =?us-ascii?Q?boUN3CL2F2wY9DcxYYEkjOia7YZztzpdfVrec7uVWg=3D=3D?=
+X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-89723.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: ef4eb123-80d0-4bea-ab48-08da972ce3cb
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR06MB5342.namprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Sep 2022 15:13:48.7789
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 	00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR06MB7039
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_080758_905757_85E7B532 
-X-CRM114-Status: GOOD (  22.46  )
+X-CRM114-CacheID: sfid-20220915_081353_260202_06C01E5C 
+X-CRM114-Status: GOOD (  52.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,317 +130,227 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 14/09/2022 20:59, Alessandro Carminati wrote:
-> The Quartz64 board is built upon Rockchip RK3566.
-> Rockchip RK3566 has two combo phys.
-> The first connects USB3 and SATA ctrl1, and the second PCIe lane and SATA
-> ctrl2.
-> The second combo phy is hardwired to the PCIe slot, where for the first,
-> the hardware on the board provides both the USB3 connector and the SATA
-> connector.
-> This DT allows the users to switch the combo phy to the SATA connector.
+On Wed, Sep 14, 2022 at 03:35:30PM +0200, Sascha Hauer wrote:
+> On Wed, Sep 14, 2022 at 08:04:18AM -0500, Chris Morgan wrote:
+> > On Wed, Sep 14, 2022 at 08:49:27AM +0200, Sascha Hauer wrote:
+> > > On Tue, Sep 13, 2022 at 08:55:22AM +0200, Michael Riesch wrote:
+> > > > Hi,
+> > > > 
+> > > > On 9/12/22 20:02, Chris Morgan wrote:
+> > > > > From: Chris Morgan <macromorgan@hotmail.com>
+> > > > 
+> > > > Cc: Sascha -> any thoughts on this one?
+> > > > 
+> > > > Best regards,
+> > > > Michael
+> > > > 
+> > > > > If I use more than one VP to output on an RK3566 based device I
+> > > > > receive the following error (and then everything freezes):
+> > > > > 
+> > > > > [    0.838375] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000250
+> > > > > [    0.839191] Mem abort info:
+> > > > > [    0.839442]   ESR = 0x0000000096000005
+> > > > > [    0.839785]   EC = 0x25: DABT (current EL), IL = 32 bits
+> > > > > [    0.840256]   SET = 0, FnV = 0
+> > > > > [    0.840530]   EA = 0, S1PTW = 0
+> > > > > [    0.840821]   FSC = 0x05: level 1 translation fault
+> > > > > [    0.841254] Data abort info:
+> > > > > [    0.841512]   ISV = 0, ISS = 0x00000005
+> > > > > [    0.841864]   CM = 0, WnR = 0
+> > > > > [    0.842130] [0000000000000250] user address but active_mm is swapper
+> > > > > [    0.842704] Internal error: Oops: 96000005 [#1] SMP
+> > > > > [    0.843139] Modules linked in:
+> > > > > [    0.843420] CPU: 0 PID: 37 Comm: kworker/u8:1 Not tainted 6.0.0-rc5+ #40
+> > > > > [    0.844013] Hardware name: RG503 (DT)
+> > > > > [    0.844343] Workqueue: events_unbound deferred_probe_work_func
+> > > > > [    0.844871] pstate: 80000009 (Nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> > > > > [    0.845487] pc : __drm_crtc_init_with_planes+0x48/0x2e4
+> > > > > [    0.845956] lr : drm_crtc_init_with_planes+0x68/0x94
+> > > > > [    0.846399] sp : ffffffc00a7a3710
+> > > > > [    0.846695] x29: ffffffc00a7a3710 x28: ffffff8000fb4080 x27: ffffffc00a7a37a0
+> > > > > [    0.847332] x26: ffffffc0097d01c7 x25: ffffff8000fb44d8 x24: ffffffc0097d01c7
+> > > > > [    0.847967] x23: ffffffc009311870 x22: 0000000000000000 x21: 0000000000000008
+> > > > > [    0.848603] x20: ffffff80010d0800 x19: ffffff8000fb44e8 x18: 0000000000000000
+> > > > > [    0.849237] x17: 08000000000000d1 x16: 0800000000000091 x15: 08000000000000c1
+> > > > > [    0.849874] x14: 0000000000000000 x13: 3432564e3631564e x12: 3231564e36314742
+> > > > > [    0.850509] x11: 3631475234324742 x10: 000000000000002d x9 : ffffffc008682004
+> > > > > [    0.851144] x8 : 00000000006f7475 x7 : 00000000fffffff0 x6 : ffffffc00a7a37a0
+> > > > > [    0.851778] x5 : ffffffc0097d01c7 x4 : ffffffc009311870 x3 : 0000000000000000
+> > > > > [    0.852412] x2 : 0000000000000008 x1 : ffffff8000fb44e8 x0 : ffffff80010d0800
+> > > > > [    0.853048] Call trace:
+> > > > > [    0.853270]  __drm_crtc_init_with_planes+0x48/0x2e4
+> > > > > [    0.853706]  drm_crtc_init_with_planes+0x68/0x94
+> > > > > [    0.854118]  vop2_bind+0x89c/0x920
+> > > > > [    0.854429]  component_bind_all+0x18c/0x290
+> > > > > [    0.854805]  rockchip_drm_bind+0xe4/0x1f0
+> > > > > [    0.855166]  try_to_bring_up_aggregate_device+0x9c/0x290
+> > > > > [    0.855639]  __component_add+0x110/0x168
+> > > > > [    0.855991]  component_add+0x1c/0x28
+> > > > > [    0.856312]  dw_mipi_dsi_rockchip_host_attach+0x98/0x10c
+> > > > > [    0.856785]  dw_mipi_dsi_host_attach+0xbc/0xd0
+> > > > > [    0.857184]  mipi_dsi_attach+0x30/0x44
+> > > > > [    0.857521]  devm_mipi_dsi_attach+0x2c/0x70
+> > > > > [    0.857896]  ams495qa01_probe+0x2d4/0x33c
+> > > > > [    0.858257]  spi_probe+0x8c/0xb8
+> > > > > [    0.858550]  really_probe+0x1e0/0x3b8
+> > > > > [    0.858881]  __driver_probe_device+0x16c/0x184
+> > > > > [    0.859278]  driver_probe_device+0x4c/0xfc
+> > > > > [    0.859646]  __device_attach_driver+0xf0/0x170
+> > > > > [    0.860043]  bus_for_each_drv+0xa4/0xcc
+> > > > > [    0.860389]  __device_attach+0xfc/0x1a8
+> > > > > [    0.860733]  device_initial_probe+0x1c/0x28
+> > > > > [    0.861108]  bus_probe_device+0x38/0x9c
+> > > > > [    0.861452]  deferred_probe_work_func+0xdc/0xf0
+> > > > > [    0.861855]  process_one_work+0x1b0/0x260
+> > > > > [    0.862217]  process_scheduled_works+0x4c/0x50
+> > > > > [    0.862614]  worker_thread+0x1f0/0x26c
+> > > > > [    0.862949]  kthread+0xc4/0xd4
+> > > > > [    0.863227]  ret_from_fork+0x10/0x20
+> > > > > [    0.863553] Code: aa0503fa f9002bfb aa0603fb b40000a2 (b9424840)
+> > > > > [    0.864095] ---[ end trace 0000000000000000 ]---
+> > > > > 
+> > > > > A cursory reading of the datasheet suggests it's possible to have
+> > > > > simultaneous output to 2 distinct outputs. On page 13 it states:
+> > > > > 
+> > > > > Support two simultaneous displays(same source) in the following interfaces:
+> > > > > - MIPI_DSI_TX
+> > > > > - LVDS
+> > > > > - HDMI
+> > > > > - eDP
+> > > > > 
+> > > > > In order to achieve this though, I need to output to VP0 and VP1 (or
+> > > > > any 2 distinct VPs really). This is so I can have the ref clock set
+> > > > > to 24MHz for the HDMI and the pixel clock of the DSI panel (for the
+> > > > > example above it's 33.5MHz).  Currently, only by removing this code
+> > > > > block is such a thing possible, though I'm not sure if long-term
+> > > > > there should only be 1 CRTC for the rk3566 (and 2 CRTCs for 3568)
+> > > > > along with a max of 2 encoders for rk3566 (and 3 encoders for 3568).
+> > > > > 
+> > > > > Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
+> > > > > 
+> > > > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> > > > > ---
+> > > > >  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 14 --------------
+> > > > >  1 file changed, 14 deletions(-)
+> > > > > 
+> > > > > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > > > > index e4631f515ba4..f18d7f6f9f86 100644
+> > > > > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > > > > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> > > > > @@ -2289,20 +2289,6 @@ static int vop2_create_crtc(struct vop2 *vop2)
+> > > > >  		struct vop2_win *win = &vop2->win[i];
+> > > > >  		u32 possible_crtcs;
+> > > > >  
+> > > > > -		if (vop2->data->soc_id == 3566) {
+> > > > > -			/*
+> > > > > -			 * On RK3566 these windows don't have an independent
+> > > > > -			 * framebuffer. They share the framebuffer with smart0,
+> > > > > -			 * esmart0 and cluster0 respectively.
+> > > > > -			 */
+> > > > > -			switch (win->data->phys_id) {
+> > > > > -			case ROCKCHIP_VOP2_SMART1:
+> > > > > -			case ROCKCHIP_VOP2_ESMART1:
+> > > > > -			case ROCKCHIP_VOP2_CLUSTER1:
+> > > > > -				continue;
+> > > > > -			}
+> > > > > -		}
+> > > 
+> > > Let me say that a "window" in the Rockchip terminology is what a plane
+> > > is in the DRM terminology, and a video port (vp) corresponds to a crtc.
+> > > 
+> > > On the RK3566 some windows do not have their own framebuffer, for
+> > > example the smart1 window always shows what the smart0 window shows.
+> > > This "feature" makes these windows unusable as planes, so the idea is to
+> > > simply not use them.
+> > > 
+> > > If skipping these windows from initialization results in a NULL pointer
+> > > deref then there's something wrong in the driver logic, but it's not the
+> > > lines you are removing here that are wrong. Nothing should prevent you
+> > > from using multiple VPs when the unusable windows on RK3566 are not
+> > > registered.
+> > 
+> > I'll tell you what I "think" is causing the null pointer deref, but like
+> > always I reserve the right to be wrong.
+> > 
+> > The driver checks for the primary planes and assigns them to active
+> > video ports. For the rk3566 it's skipping the 3 planes mentioned
+> > above for the RK3566. As a result if there is more than 1 active video
+> > port for the rk3566 (or more than 2 for the rk3568 I'm assuming) it
+> > doesn't set vp->primary_plane = win for that port. Slightly below that
+> > it iterates through the active video ports again and runs
+> > drm_crtc_init_with_planes on them. Only in this case one of the ports
+> > doesn't have a plane, which is where it does the null pointer deref,
+> > because the plane is null.
 > 
-> Signed-off-by: Alessandro Carminati <alessandro.carminati@gmail.com>
+> Yes, you're right, that is likely the problem.
+> 
+> On RK3568 we have four windows that could serve as primary plane, so
+> there's enough for each of the three VPs. On RK3566 we only have two
+> windows, so once we use more than two active VPs we are running out of
+> primary planes.
+
+The datasheet states that it supports up to 2 simultaneous displays, so
+I think a hard limit of 2 VPs is fine for the rk3566.
+
+> 
+> I am writing these numbers because I think Esmart0-win0 could be used as
+> primary plane, but is marked as DRM_PLANE_TYPE_OVERLAY in
+> rk3568_vop_win_data[]. See the attached patch, if that's the problem it
+> should resolve your issue.
+
+This patch did indeed resolve my issue, and also allowed me to get both
+HDMI and DSI working simultaneously. It's not perfect (right now I'm
+displaying a 640x480 image on a 1080p display since my DSI panel runs
+at 640x480), but it works and that's great.
+
+> 
+> That is not enough though once three VPs are active on RK3566. The
+> Cluster windows could likely be used as primary planes as well, they are
+> probably just not marked as such because they only support AFBC modes.
+> 
+> Sascha
+> 
+> -------------------------8<-------------------------
+> 
+> From f98f53565ce868811581afbb18451dfea2646b07 Mon Sep 17 00:00:00 2001
+> From: Sascha Hauer <s.hauer@pengutronix.de>
+> Date: Wed, 14 Sep 2022 15:27:51 +0200
+> Subject: [PATCH] drm/rockchip: vop2: Register Esmart0-win0 as primary plane
+> 
+> Esmart0-win0 could serve as primary plane, so mark it as such. On
+> RK3568 this window will never be used as primary plane, because the
+> three windows at the beginning of the rk3568_vop_win_data[] array
+> will be used. On RK3566 however, two of the windows at the beginning
+> of the rk3568_vop_win_data[] array cannot not be used, so we end
+> up without primary planes when multiple VPs are active.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 > ---
->  .../dts/rockchip/rk3566-quartz64-a.sata.dts   | 839 ++++++++++++++++++
->  1 file changed, 839 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.sata.dts
+>  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.sata.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.sata.dts
-> new file mode 100644
-> index 000000000000..6ac21b729be7
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.sata.dts
-> @@ -0,0 +1,839 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +
-> +/dts-v1/;
-> +
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/soc/rockchip,vop2.h>
-> +#include "rk3566.dtsi"
-> +
-> +/ {
-> +	model = "Pine64 RK3566 Quartz64-A Board";
-> +	compatible = "pine64,quartz64-a", "rockchip,rk3566";
-> +
-> +	aliases {
-> +		ethernet0 = &gmac1;
-> +		mmc0 = &sdmmc0;
-> +		mmc1 = &sdhci;
-> +	};
-> +
-> +	chosen: chosen {
-> +		stdout-path = "serial2:1500000n8";
-> +	};
-> +
-> +	gmac1_clkin: external-gmac1-clock {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <125000000>;
-> +		clock-output-names = "gmac1_clkin";
-> +		#clock-cells = <0>;
-> +	};
-> +
-> +	fan: gpio_fan {
-
-No underscores in node names. Node name just "fan"
-
-> +		compatible = "gpio-fan";
-> +		gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
-> +		gpio-fan,speed-map = <0    0
-> +				      4500 1>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&fan_en_h>;
-> +		#cooling-cells = <2>;
-> +	};
-> +
-> +	hdmi-con {
-
-Node name: connector
-
-> +		compatible = "hdmi-connector";
-> +		type = "a";
-> +
-> +		port {
-> +			hdmi_con_in: endpoint {
-> +				remote-endpoint = <&hdmi_out_con>;
-> +			};
-> +		};
-> +	};
-> +
-> +	leds {
-> +		compatible = "gpio-leds";
-> +
-> +		led-work {
-> +			label = "work-led";
-> +			default-state = "off";
-> +			gpios = <&gpio0 RK_PD3 GPIO_ACTIVE_HIGH>;
-> +			pinctrl-names = "default";
-> +			pinctrl-0 = <&work_led_enable_h>;
-> +			retain-state-suspended;
-> +		};
-> +
-> +		led-diy {
-> +			label = "diy-led";
-> +			default-state = "on";
-> +			gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
-> +			linux,default-trigger = "heartbeat";
-> +			pinctrl-names = "default";
-> +			pinctrl-0 = <&diy_led_enable_h>;
-> +			retain-state-suspended;
-> +		};
-> +	};
-> +
-> +	rk817-sound {
-> +		compatible = "simple-audio-card";
-> +		simple-audio-card,format = "i2s";
-> +		simple-audio-card,name = "Analog RK817";
-> +		simple-audio-card,mclk-fs = <256>;
-> +
-> +		simple-audio-card,cpu {
-> +			sound-dai = <&i2s1_8ch>;
-> +		};
-> +
-> +		simple-audio-card,codec {
-> +			sound-dai = <&rk817>;
-> +		};
-> +	};
-> +
-> +	sdio_pwrseq: sdio-pwrseq {
-> +		compatible = "mmc-pwrseq-simple";
-> +		clocks = <&rk817 1>;
-> +		clock-names = "ext_clock";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&wifi_enable_h>;
-> +		post-power-on-delay-ms = <100>;
-> +		power-off-delay-us = <5000000>;
-> +		reset-gpios = <&gpio2 RK_PC2 GPIO_ACTIVE_LOW>;
-> +	};
-> +
-> +	spdif_dit: spdif-dit {
-> +		compatible = "linux,spdif-dit";
-> +		#sound-dai-cells = <0>;
-> +	};
-> +
-> +	spdif_sound: spdif-sound {
-> +		compatible = "simple-audio-card";
-> +		simple-audio-card,name = "SPDIF";
-> +
-> +		simple-audio-card,cpu {
-> +			sound-dai = <&spdif>;
-> +		};
-> +
-> +		simple-audio-card,codec {
-> +			sound-dai = <&spdif_dit>;
-> +		};
-> +	};
-> +
-> +	vcc12v_dcin: vcc12v_dcin {
-
-No underscores in node names, generic node name, so at least with
-regulator prefix or suffix.
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc12v_dcin";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <12000000>;
-> +		regulator-max-microvolt = <12000000>;
-> +	};
-> +
-> +	/* vbus feeds the rk817 usb input.
-> +	 * With no battery attached, also feeds vcc_bat+
-> +	 * via ON/OFF_BAT jumper
-> +	 */
-> +	vbus: vbus {
-
-Ditto
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vbus";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		vin-supply = <&vcc12v_dcin>;
-> +	};
-> +
-> +	vcc3v3_pcie_p: vcc3v3-pcie-p-regulator {
-
-And here you have suffix...
-
-> +		compatible = "regulator-fixed";
-> +		enable-active-high;
-> +		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pcie_enable_h>;
-> +		regulator-name = "vcc3v3_pcie_p";
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		vin-supply = <&vcc_3v3>;
-> +	};
-> +
-> +	vcc5v0_usb: vcc5v0_usb {
-
-Ditto
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc5v0_usb";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		vin-supply = <&vcc12v_dcin>;
-> +	};
-> +
-> +	/* all four ports are controlled by one gpio
-> +	 * the host ports are sourced from vcc5v0_usb
-> +	 * the otg port is sourced from vcc5v0_midu
-> +	 */
-> +	vcc5v0_usb20_host: vcc5v0_usb20_host {
-
-and in other places as well
-
-
-
-> +		compatible = "regulator-fixed";
-> +		enable-active-high;
-> +		gpio = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&vcc5v0_usb20_host_en>;
-> +		regulator-name = "vcc5v0_usb20_host";
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		vin-supply = <&vcc5v0_usb>;
-> +	};
-> +
-> +	vcc5v0_usb20_otg: vcc5v0_usb20_otg {
-> +		compatible = "regulator-fixed";
-> +		enable-active-high;
-> +		gpio = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
-> +		regulator-name = "vcc5v0_usb20_otg";
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		vin-supply = <&dcdc_boost>;
-> +	};
-> +
-> +	vcc3v3_sd: vcc3v3_sd {
-> +		compatible = "regulator-fixed";
-> +		enable-active-low;
-> +		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&vcc_sd_h>;
-> +		regulator-boot-on;
-> +		regulator-name = "vcc3v3_sd";
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		vin-supply = <&vcc_3v3>;
-> +	};
-> +
-> +	/* sourced from vbus and vcc_bat+ via rk817 sw5 */
-> +	vcc_sys: vcc_sys {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_sys";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <4400000>;
-> +		regulator-max-microvolt = <4400000>;
-> +		vin-supply = <&vbus>;
-> +	};
-> +
-> +	/* sourced from vcc_sys, sdio module operates internally at 3.3v */
-> +	vcc_wl: vcc_wl {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_wl";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		vin-supply = <&vcc_sys>;
-> +	};
-> +};
-> +
-> +&combphy1 {
-> +	status = "okay";
-> +};
-> +
-> +&combphy2 {
-> +	status = "okay";
-> +};
-> +
-> +&cpu0 {
-> +	cpu-supply = <&vdd_cpu>;
-> +};
-> +
-> +&cpu1 {
-> +	cpu-supply = <&vdd_cpu>;
-> +};
-> +
-> +&cpu2 {
-> +	cpu-supply = <&vdd_cpu>;
-> +};
-> +
-> +&cpu3 {
-> +	cpu-supply = <&vdd_cpu>;
-> +};
-> +
-> +&cpu_thermal {
-> +	trips {
-> +		cpu_hot: cpu_hot {
-
-No underscores in node names. Are you sure bindings/schema do not expect
-some specific name?
-
-> +			temperature = <55000>;
-> +			hysteresis = <2000>;
-> +			type = "active";
-> +		};
-> +	};
-
-
-Best regards,
-Krzysztof
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> index 9bf0637bf8e26..9d30aa73b5422 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> @@ -188,7 +188,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
+>  		.base = 0x1800,
+>  		.layer_sel_id = 2,
+>  		.supported_rotations = DRM_MODE_REFLECT_Y,
+> -		.type = DRM_PLANE_TYPE_OVERLAY,
+> +		.type = DRM_PLANE_TYPE_PRIMARY,
+>  		.max_upscale_factor = 8,
+>  		.max_downscale_factor = 8,
+>  		.dly = { 20, 47, 41 },
+> -- 
+> 2.30.2
+> 
+> 
+> -- 
+> Pengutronix e.K.                           |                             |
+> Steuerwalder Str. 21                       | https://nam12.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.pengutronix.de%2F&amp;data=05%7C01%7C%7Cc218aa7fea7b48286e2508da965601a4%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637987593394560183%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=b5aS8NGLknpQIax9gC474MTU9CHKJOgnUq28AXFH6MM%3D&amp;reserved=0  |
+> 31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
+> Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
 
 _______________________________________________
 Linux-rockchip mailing list
