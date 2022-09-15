@@ -4,70 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28ACFECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Sep 2022 08:44:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3444C6FA8A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Sep 2022 11:13:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/8E1gfXqfDUJpj9f8PhICe3QFkbEnbqMmSKxF7livZQ=; b=cKkOE5foCVFSqA
-	bt5yGeoqjf7wyjNpiirqOWMj1VCPhCJEKnSc8EBk4wJpZWN8RnfjVaLStbfL7NMePVGMT4zu0HyPx
-	GeS1XiLw+V6csbEuB6Eaoux2s7h4wxps0YMnqVJiekeg3dfHgs6W/qLZL9ydgkXW+WlWfKm1NfjEF
-	lGSmq6/e95bbRz3Skvn0zEfA5R2id7Yleroj2eHJ94ZT1irm/OZCbUFVY4h9h39F79AJNofDv7d4J
-	rTROA11wJ0e43/a5oSl3C+ndI2f47qo2wGJf4Y/+PXKj+fucbEpkJ435uiXCWjX9TdAjVAtEcHIjO
-	hbVcUnwLnpZb6lsn5Kfw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vrFehtIIEyhv3sxgiZ6mIzewPTylz3eUKOapff4ta4M=; b=ruZlXYD1w19hHG
+	aUDJfbCXeTkiho+9w8viTk/lKeBLEktkdgrV58+kmTl/DuOThB4DLLpzs5T2aia4P4fzYuuG7GMrD
+	zUuQiFG+AhTu8D13gHN111ZAa0jLYN0SqpG+fV3O7OOxMY9pMU86P8ciaiRaQ3xO+rIPb1cDCdPW3
+	VawNxVUXl5S+jUg83VsKD1oaddWllTrCFMiZcw85U66Lr1YXr1WDMqbn3BnoVNxqZOy6ZW83+LbrM
+	UST3WAhd/za5hUMk9khPVusQ+H2mSi2dxDPvnQ1QzHtOp4sj3EC5ggdwBRm3Suly4OU8oiME9p8Gk
+	Y25o6fVvhg57ggpFB8yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYkTn-004DHF-Qi; Thu, 15 Sep 2022 08:44:15 +0000
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+	id 1oYmnc-007Qrk-Bn; Thu, 15 Sep 2022 11:12:52 +0000
+Received: from wp126.webpack.hosteurope.de ([2a01:488:42:1000:50ed:8485::])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYkTg-004DCc-Vk
-	for linux-rockchip@lists.infradead.org; Thu, 15 Sep 2022 08:44:14 +0000
-Received: by mail-ej1-x62f.google.com with SMTP id go34so40489912ejc.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 15 Sep 2022 01:44:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date;
-        bh=DwAOYGfkO3OPDyozHAPWbPMkPR348pJzmEfWU7to/7k=;
-        b=oXf6/iVERcHsqGodxRep9TuWCJWvTfdY9ypaIjS2tUY73T/AwLKKOfBkntlSc0M6ej
-         QrhtpLPZokbxO8sZ73o8YHeU5YW6eu9n0N+1wTqlOCmaskCymBSnw4NxriYOGoCogVTt
-         rg81pmBLZAUXM4Mu+jpJoWx21CxGUC4AJDnob0er0KHwMO87F9anpout6+nvLLpwb7Qk
-         B847SbW58Vzm0Ju/uTL+rgU68OrIWDtlJjUT5w47UygecIQC0xyURIp2sOBPTki9zpPz
-         hZwseA8z8r1ttOHPsXF0JU1cyH594P24XGqCt4ydNTNtCTo6lF5MIz++Krl5ynQmR//2
-         kUWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=DwAOYGfkO3OPDyozHAPWbPMkPR348pJzmEfWU7to/7k=;
-        b=8CW1oAhAryh671VD9y2eFtD+Yn38Bamkv3s31eGr5EcY9txHfZJNInyR+Gh1yWGWAO
-         II31fjcNNcsmiPr27w7RLI12sRnwHhnlXDY3sOUaieHJ0Eju3h+6w7S39FxfmwyB+GtT
-         acCVwOkL0OlZ0SLA+ffsCTCax6K998/okD+fEsejQC3xwr86Kuc3yJF3OQO1YwjuXL6K
-         +rGvmrE/8DppqLjQC3Y8bNYPLxKao5HtXVGzLI1cSDcG9PTy5AoEsxUAk6JyDgJE6UqQ
-         o2KhKA81d/Oj6aKlGEZdsUGJLae4BpsTBYyILDJtfGVkSu6fG297mn/K/6a4TzE2UrzL
-         l6lg==
-X-Gm-Message-State: ACgBeo1QkdduLg3H0xcscUvRSFAZLQgm9f0uWgZt8nHukxf66mSMQkxF
-	Tpx+xg92K6P2sUZa5UDHyZ2vAsvwHxOmtn1gnX4bMA==
-X-Google-Smtp-Source: AA6agR7qBgBc5KmeBQr28AbsnuudedYYAi2g/wyqFIP7vkOBcYcpcojaKmcq8lIUYEj6ZIyMvsduovCHdHEw39PGJxc=
-X-Received: by 2002:a17:906:58c8:b0:6fe:91d5:18d2 with SMTP id
- e8-20020a17090658c800b006fe91d518d2mr29067878ejs.190.1663231443131; Thu, 15
- Sep 2022 01:44:03 -0700 (PDT)
+	id 1oYmnY-007QBY-Ud; Thu, 15 Sep 2022 11:12:50 +0000
+Received: from p5098d998.dip0.t-ipconnect.de ([80.152.217.152] helo=hermes.fivetechno.de); authenticated
+	by wp126.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	id 1oYmnM-0003Cv-HF; Thu, 15 Sep 2022 13:12:36 +0200
+X-Virus-Scanned: by amavisd-new 2.12.2 using newest ClamAV at
+	linuxbbg.five-lan.de
+Received: from roc-pc (p5098d998.dip0.t-ipconnect.de [80.152.217.152])
+	(authenticated bits=0)
+	by hermes.fivetechno.de (8.15.2/8.16.1/SUSE Linux 0.8) with ESMTPSA id 28FBCWc1020749
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NO);
+	Thu, 15 Sep 2022 13:12:32 +0200
+From: Markus Reichl <m.reichl@fivetechno.de>
+To: linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+        Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+        Heiko Stuebner <heiko@sntech.de>
+Cc: Markus Reichl <m.reichl@fivetechno.de>, devicetree@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: Add HDMI supplies on rk3399-roc-pc
+Date: Thu, 15 Sep 2022 13:11:36 +0200
+Message-Id: <20220915111138.1108-1-m.reichl@fivetechno.de>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-References: <20220915021320.80364-1-jay.xu@rock-chips.com> <20220915021320.80364-3-jay.xu@rock-chips.com>
-In-Reply-To: <20220915021320.80364-3-jay.xu@rock-chips.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 15 Sep 2022 10:43:52 +0200
-Message-ID: <CACRpkdZa7YNpO95=D0wyMWPXe6f8HYDwUhOfXdH15kjZYMGMeg@mail.gmail.com>
-Subject: Re: [PATCH 2/3] pinctrl: export function get_pinctrl_dev_from_devname()
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: jbx6244@gmail.com, heiko@sntech.de, andriy.shevchenko@linux.intel.com, 
-	brgl@bgdev.pl, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org
+X-bounce-key: webpack.hosteurope.de;m.reichl@fivetechno.de;1663240369;02f4babc;
+X-HE-SMSGID: 1oYmnM-0003Cv-HF
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_014409_080470_AD2DD104 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20220915_041249_174693_B00C6BA6 
+X-CRM114-Status: GOOD (  10.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,30 +66,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 15, 2022 at 4:13 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
+Add avdd-0v9-supply and avdd-1v8-supply to hdmi node for
+rk3399-roc-pc to silence dmesg warning and match the name
+of the 1v8 supply to the circuit sheet.
 
-> Export get_pinctrl_dev_from_devname() as GPL and add to pinctrl head file.
->
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> ---
->  drivers/pinctrl/core.c          | 1 +
->  include/linux/pinctrl/pinctrl.h | 1 +
+Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-If you add it to <linux/pinctrl/pinctrl.h> you need to remove it from
-drivers/pinctrl/core.h.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+index acb174d3a8c5..51d1bf25faae 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+@@ -274,6 +274,8 @@ &hdmi {
+ 	ddc-i2c-bus = <&i2c3>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&hdmi_cec>;
++	avdd-0v9-supply = <&vcca0v9_hdmi>;
++	avdd-1v8-supply = <&vcca1v8_hdmi>;
+ 	status = "okay";
+ };
+ 
+@@ -369,8 +371,8 @@ regulator-state-mem {
+ 				};
+ 			};
+ 
+-			vcc1v8_hdmi: LDO_REG2 {
+-				regulator-name = "vcc1v8_hdmi";
++			vcca1v8_hdmi: LDO_REG2 {
++				regulator-name = "vcca1v8_hdmi";
+ 				regulator-always-on;
+ 				regulator-boot-on;
+ 				regulator-min-microvolt = <1800000>;
+-- 
+2.30.2
 
-I suggest you just include the local header instead.
-
-#include "../pinctrl/pinctrl.h"
-
-Maybe not the most elegant but it keeps the interface private to
-pinctrl and GPIO and not broadcast to the entire kernel.
-
-If it looks very ugly, well then it is probably because this driver
-should move into drivers/pinctrl.
-
-Yours,
-Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
