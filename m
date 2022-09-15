@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90B54ECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Sep 2022 13:49:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA90CECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Sep 2022 14:41:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1/Yr6trOT+rhx2XEQF4mkRER92ralJRSnZCpwNIDQrg=; b=YMMYm4WFlWq4vl
-	UqGr+Ln5wyHcYKidKhca7VBuhN9jaz96w9nxHKwxeVAeR6aF36BrsvGp5T95SUMLCp7/PguN9RwK0
-	/D/iVXbSSBjVIkMByLyBvtvb12uUAkJbU5TosOuO92XlDLUUo2DSyyLw0HBjznQtKXvOtXqXJ+K75
-	hLnCOWjmabgTUPUt4NMaiSZUNBJDGEKwlTl2fw//SZGyCxB80JHjBsAumAwJxU4ygbqu5Af2tG2M7
-	OqgtwqqMT0SAgnpAk/PN434g6oz5VPIOQDjGEbJUGlkbcIklgVYeMT/GdgCPIeVpuisltauP43H1O
-	Viu/VpDGgaxlC4Grk6JA==;
+	List-Owner; bh=63yHnSuRslNWxAwDG2sMSRdsjyo0tEmAB11c7bNF+B4=; b=ufpvef5h0tZSxJ
+	TlkqpkhvX71TtH4JKXtYHYOxz3RwS+48xAS7XJhw413N7/L4BIiOaOK2aGit9Jb8xdWXFeTn/BZ4N
+	XL9ytbWx+Qimn7xUBkNIBsTsIqgZNYhcSNmskvuVPBMpGuHnZIpvSXwjEIEyzSdggoxJGwhs1PJ/7
+	HjAIu/6NzoGhP7M5gzICtSlHuCz/BvM6slm5Lk6JFCMlK21K4q34Aid8OETfeNXSMdqpklijQcqeM
+	RHLLtDZJfApc805xLYnRRa6KbVcAIBLFAoSkV7GkFzy+P6kE9GAgNQe5OBavUSMv5Xqb10VB4AX6n
+	0qeRDF9vtmkcVNLhg+bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYpFJ-009i3r-Ay; Thu, 15 Sep 2022 13:49:37 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYpEx-009hgv-JD; Thu, 15 Sep 2022 13:49:16 +0000
-Received: from [89.101.193.72] (helo=phil.sntech)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1oYpEt-00053R-QK; Thu, 15 Sep 2022 15:49:11 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: hjc@rock-chips.com,
-	Hugh Cole-Baker <sigmaris@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	ezequiel@collabora.com,
-	linux-rockchip@lists.infradead.org
-Subject: Re: (subset) [PATCH v2 0/3] drm/rockchip: support gamma control on RK3399
-Date: Thu, 15 Sep 2022 15:49:09 +0200
-Message-Id: <166324955276.172936.12777081012658137817.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20211019215843.42718-1-sigmaris@gmail.com>
-References: <20211019215843.42718-1-sigmaris@gmail.com>
+	id 1oYq35-00BJJP-Q9; Thu, 15 Sep 2022 14:41:03 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oYq2u-00BJBn-De; Thu, 15 Sep 2022 14:40:54 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7A7DC1682;
+	Thu, 15 Sep 2022 07:40:54 -0700 (PDT)
+Received: from [10.57.18.118] (unknown [10.57.18.118])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DA45B3F73D;
+	Thu, 15 Sep 2022 07:40:46 -0700 (PDT)
+Message-ID: <9196035b-273a-adca-2b87-c70bbab7f5c9@arm.com>
+Date: Thu, 15 Sep 2022 15:40:41 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.2
+Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: enable gamma control on
+ RK3399
+Content-Language: en-GB
+To: Hugh Cole-Baker <sigmaris@gmail.com>, heiko@sntech.de, hjc@rock-chips.com
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, ezequiel@collabora.com
+References: <20211019215843.42718-1-sigmaris@gmail.com>
+ <20211019215843.42718-4-sigmaris@gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <20211019215843.42718-4-sigmaris@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_064915_647227_EA340DEB 
-X-CRM114-Status: GOOD (  14.69  )
+X-CRM114-CacheID: sfid-20220915_074052_532605_61F0D9D7 
+X-CRM114-Status: GOOD (  13.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,33 +59,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 19 Oct 2021 22:58:40 +0100, Hugh Cole-Baker wrote:
-> This extends the Rockchip VOP driver to support setting the gamma LUT on the
-> RK3399 SoC. Previously, the driver supported gamma control for the RK3288
-> only. On the RK3399 the method for updating the LUT is slightly different.
-> This implementation was based on the code and description from the vendor
-> kernel [1].
+On 2021-10-19 22:58, Hugh Cole-Baker wrote:
+> Define the memory region on RK3399 VOPs containing the gamma LUT at
+> base+0x2000.
 > 
-> The RK3399 also has the address resources for the VOP general registers and
-> the gamma LUT located adjacent to each other, not on either side of the IOMMU
-> address as on the RK3288, but for simplicity this series follows the existing
-> DT binding which requires the gamma LUT as a second address resource.
+> Signed-off-by: Hugh Cole-Baker <sigmaris@gmail.com>
+> ---
 > 
-> [...]
+> Changes from v1: no changes in this patch
+> 
+>   arch/arm64/boot/dts/rockchip/rk3399.dtsi | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index 3871c7fd83b0..9cbf6ccdd256 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -1619,7 +1619,7 @@ i2s2: i2s@ff8a0000 {
+>   
+>   	vopl: vop@ff8f0000 {
+>   		compatible = "rockchip,rk3399-vop-lit";
+> -		reg = <0x0 0xff8f0000 0x0 0x3efc>;
+> +		reg = <0x0 0xff8f0000 0x0 0x2000>, <0x0 0xff8f2000 0x0 0x400>;
+>   		interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH 0>;
+>   		assigned-clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>;
+>   		assigned-clock-rates = <400000000>, <100000000>;
+> @@ -1676,7 +1676,7 @@ vopl_mmu: iommu@ff8f3f00 {
+>   
+>   	vopb: vop@ff900000 {
+>   		compatible = "rockchip,rk3399-vop-big";
+> -		reg = <0x0 0xff900000 0x0 0x3efc>;
+> +		reg = <0x0 0xff900000 0x0 0x2000>, <0x0 0xff902000 0x0 0x1000>;
 
-Applied, thanks!
+Doesn't the second range still need to be shorter than 0xf00 to avoid 
+overlapping the IOMMU?
 
-[3/3] arm64: dts: rockchip: enable gamma control on RK3399
-      commit: 3a5247120668041c8e9eb190497296656b66bf9a
+Robin.
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+>   		interrupts = <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH 0>;
+>   		assigned-clocks = <&cru ACLK_VOP0>, <&cru HCLK_VOP0>;
+>   		assigned-clock-rates = <400000000>, <100000000>;
 
 _______________________________________________
 Linux-rockchip mailing list
