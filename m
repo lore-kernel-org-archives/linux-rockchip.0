@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F7FCC6FA89
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Sep 2022 16:42:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F4BECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Sep 2022 16:53:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2F++aGhhBaWM1LKDzbk/R/2IqmU41KnWFwUmL49ylK8=; b=bIxHjK8P/mGGnf
-	7xr9VYFLgWftntRzCTUtfXnJU3tvajA6Mx9B5htVnOHOgeGssXKojWYTeMXvU8IcUq3+qBF9htf5s
-	AE59Ua+fNV0evKr7IffFc3p94fTKW8eAvq6I8X3kv7EVhrIcMgS/W32OcB+fsE9W8bhfu0jot+QMw
-	rBgXPlhF/42Imd+WiYFM3CGbKrprEQBqobQg+dCwRe4lPhbE9mzqE0FaBzKxh+qN3GBl/rvajZ2tQ
-	U6gWh/NvzlJIvElJCcYHdtscmVIj0c/eJ8OeQgyv6yz7EOQBbyWm9OUlfoP6KH41ETs/ojf2ra6u0
-	56elv9aZA8uYAfrTkoTw==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6L07I4vKJ26/mn8qfIv3+GP4459FEYcFblVL3S9/zpE=; b=f/+Q8yzCa1YUEg
+	ocJKkGUIniozTCUgF18fRg391bImb6fTziKdOHKEoYsdbDUX+COBpd6ccxJpdSRJwqhf+TfyIYRXK
+	wNmmTyQ1yXkjYtz5lFnDmrUY6J1AP0BCcCcMVXRriCyCyIWZ+9eLgc+RO3hGBK6feWkG2LQlT1U6W
+	8tg0lx9WLzDzBw9JAGUnCfO3wyXEcKkIUdrdbP5yoOfSs9uBX5cwwwGX1EInUexjcpFflVBs2aHdS
+	CkoWwSVdUzV/80yh5vnAUL9YaHp4ViR/VwrSdhLP2KHsEAEoEZd45cUOPf7q4z89wCW96qjrQilMT
+	aw8puvVFN0qvrwMom2mQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYrwA-00DcGq-V5; Thu, 15 Sep 2022 16:42:03 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1oYs72-00Dftt-IL; Thu, 15 Sep 2022 16:53:16 +0000
+Received: from mail-il1-x136.google.com ([2607:f8b0:4864:20::136])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYrug-00DbYL-Iz
-	for linux-rockchip@lists.infradead.org; Thu, 15 Sep 2022 16:40:34 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id q3so18330626pjg.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 15 Sep 2022 09:40:29 -0700 (PDT)
+	id 1oYs70-00Dfrn-4s; Thu, 15 Sep 2022 16:53:15 +0000
+Received: by mail-il1-x136.google.com with SMTP id x2so3727488ill.10;
+        Thu, 15 Sep 2022 09:53:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=4mAAPmx1dr3htSflbJRzTtGs+Or6ST2NLoVo87CFuDw=;
-        b=giZ7aNVTrEN7iMwHAROF3TCx7HdAWVIfiVh4xQsmQFCdp9zwVjINvRtzCg1ySNC4AC
-         tES2h26IRDgAZwNzXLPzhHYS5D99ZhteTabPHZYNtAOLqGLbdDZxNSy7NRrJBnSCXEx6
-         fmt1/h7rnS4wDaBHLzUDpWdT2JcW/JfrqKgtPIDEY+KxIlTyoDc42dCLlvnNbr168hxQ
-         Vk30diiUeT9MGrLuvCMY/GimKnZKsL+VGptgiVgZhVpMvC/VLpktlSAiuhszfOo6PQ/b
-         2NIBDoVnu6LLODqq418GraPZ+qqxEUAQQkw2XmQttenob6zUHkip9axDg2OymZdCCe1B
-         CRiw==
+        d=gmail.com; s=20210112;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:from:to:cc:subject:date;
+        bh=Ctva506wfgkNUCjN4L6nhIaTESGYUbw4ZySDGQZBtV8=;
+        b=oc7ESAuTdyerQ1dAIB3KzibBp3CNpWKq62EdBV7wU0Z2uItCGQMPyWdPnvV3H9TT25
+         0QuVHaVipjp3A0ZN7t62m/G7r7yefFahy0w+4uVZdMw2DBIaMC3qj9V7Seq+C5YKozVj
+         yneXcOL0pL1HSE5vO0jjrl90X19SyevnynQLQMNMAJr+cVklx2EPcmfaL5bcNA3snsc8
+         PmvzTNepfrObWYrBhaIb1xN8yFTkDzI/1C47FZv0WcmKWWZWL6voby+YTa+utTZbdki3
+         Vbd9GpmPCbvMIWOs8a4noOHpdhcx3v9jubIp2TNLkSOmwj5x1MMLSOxsdVLVMoAUwFlT
+         hnYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=4mAAPmx1dr3htSflbJRzTtGs+Or6ST2NLoVo87CFuDw=;
-        b=ksfNHspCli+CHd9ngj3FXTJ0ZD+BGHghpv4YbJwqHZi8QQwTtuuiigqyvBcIzAbKCS
-         phgjYTsTirWLqaTfy/xZS69yQkgLuejGdG1qt0KhyZdC8G7VcALN/+aI+1S3WTsth0VE
-         2oLhjGDgTT/EwymjzkCYsreb4Blxr8fn45RegXYA4UY9ptb4hofDR9QpA+zowqy4Vwru
-         6yJ2hdCteGxsNPLw1QdRCapLOg3Py8TxIJ3SqE6A2jhK/04NN/3rEGZ1TgOJlai6moyf
-         qF1VwDx61IdNjdWLifHJpUIEMpdsdIc9HD4qRf4ku2lce8kMN8efBi+HdNxLdkGkOK/r
-         SuKA==
-X-Gm-Message-State: ACrzQf3aky+4CrvZgjtRvS2H4HsteGfx7DJ8q6nIsQsJjKW71eK2gmqE
-	F3wWp8UEr9/1P2YWbY4A7Y3/sw==
-X-Google-Smtp-Source: AMsMyM4NZegCqX7VGX9RxIe9daACaG5PQaNXZMxGG0ya+9Netho8bCdYqnHxxfsrPXWRatRYf8UJXw==
-X-Received: by 2002:a17:902:f681:b0:178:2882:a135 with SMTP id l1-20020a170902f68100b001782882a135mr325187plg.2.1663260029043;
-        Thu, 15 Sep 2022 09:40:29 -0700 (PDT)
-Received: from localhost.localdomain ([2405:201:c00a:a073:f820:a732:fc7f:74df])
-        by smtp.gmail.com with ESMTPSA id x21-20020aa78f15000000b00540f3ac5fb8sm12841652pfr.69.2022.09.15.09.40.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Sep 2022 09:40:28 -0700 (PDT)
-From: Jagan Teki <jagan@edgeble.ai>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Kever Yang <kever.yang@rock-chips.com>
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Jagan Teki <jagan@edgeble.ai>,
-	Jon Lin <jon.lin@rock-chips.com>,
-	Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH v5 6/6] ARM: dts: rockchip: Add Rockchip RV1126 SoC
-Date: Thu, 15 Sep 2022 22:09:47 +0530
-Message-Id: <20220915163947.1922183-7-jagan@edgeble.ai>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220915163947.1922183-1-jagan@edgeble.ai>
-References: <20220915163947.1922183-1-jagan@edgeble.ai>
-MIME-Version: 1.0
+        bh=Ctva506wfgkNUCjN4L6nhIaTESGYUbw4ZySDGQZBtV8=;
+        b=lgtq6dLjNy3yv7oGe7h3YMzrlOPi3fBNhPN+2X+qG1tA1mqIRLCl7MAzi6Ui0DD8u5
+         AnCylSNz8dzBpCzllozCCRi1hV7FJi9wp6Z5MM6jNbC1F6P/sgBUb/PBnu6Q8fM1Ntns
+         gwpCJRgKUiXZYrMA6cYyssyGHqTIN1xZjhBY6NQOxcy35JwQc7OiP59dWqT76uTydnpa
+         cwI1X4+Z7E6CnrawrzFh9A0xZPQWNrKM3h1V+JLWWnVz7jlfbmvJ9m0FMSNQ9DiEtnvC
+         y1PMVTIyAjpSfHJgp1nD1021BeaItZIzrzHgt95p8qdHFsIta2GaXYTBqJSi9bMVpe4I
+         LXpQ==
+X-Gm-Message-State: ACrzQf0lrHbpSQ+7fHpwikcJdp5+1WkzZxW+wk/xJt2d0IhTL6q1DldB
+	eeWU9ecxcvm53DogWOoPXKRJd0IE+zfZrw==
+X-Google-Smtp-Source: AMsMyM4XSl+CKPYQP2VV2gOIV41ixVw4PiE9yGwFMqjXF1MGteHZTFrpA9iF45BxUtlB84ik5K6u2g==
+X-Received: by 2002:a05:6e02:178c:b0:2ee:3296:4c5 with SMTP id y12-20020a056e02178c00b002ee329604c5mr401656ilu.265.1663260791394;
+        Thu, 15 Sep 2022 09:53:11 -0700 (PDT)
+Received: from smtpclient.apple (ebrouter.sigmaris.info. [82.69.107.165])
+        by smtp.gmail.com with ESMTPSA id x12-20020a92d64c000000b002e97becb248sm8083874ilp.29.2022.09.15.09.53.09
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Sep 2022 09:53:10 -0700 (PDT)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.1\))
+Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: enable gamma control on
+ RK3399
+From: Hugh Cole-Baker <sigmaris@gmail.com>
+In-Reply-To: <9196035b-273a-adca-2b87-c70bbab7f5c9@arm.com>
+Date: Thu, 15 Sep 2022 17:53:07 +0100
+Cc: heiko@sntech.de,
+ hjc@rock-chips.com,
+ dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ ezequiel@collabora.com
+Message-Id: <7B966E6B-1D3F-4975-AC44-1840951257F1@gmail.com>
+References: <20211019215843.42718-1-sigmaris@gmail.com>
+ <20211019215843.42718-4-sigmaris@gmail.com>
+ <9196035b-273a-adca-2b87-c70bbab7f5c9@arm.com>
+To: Robin Murphy <robin.murphy@arm.com>
+X-Mailer: Apple Mail (2.3696.120.41.1.1)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_094030_684979_22F1B758 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20220915_095314_208108_5234A080 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,472 +95,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RV1126 is a high-performance vision processor SoC for IPC/CVR,
-especially for AI related application.
 
-It is based on quad-core ARM Cortex-A7 32-bit core which integrates
-NEON and FPU. There is a 32KB I-cache and 32KB D-cache for each core
-and 512KB unified L2 cache. It has build-in NPU supports INT8/INT16
-hybrid operation and computing power is up to 2.0TOPs.
+> On 15 Sep 2022, at 15:40, Robin Murphy <robin.murphy@arm.com> wrote:
+> 
+> On 2021-10-19 22:58, Hugh Cole-Baker wrote:
+>> Define the memory region on RK3399 VOPs containing the gamma LUT at
+>> base+0x2000.
+>> Signed-off-by: Hugh Cole-Baker <sigmaris@gmail.com>
+>> ---
+>> Changes from v1: no changes in this patch
+>>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> index 3871c7fd83b0..9cbf6ccdd256 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+>> @@ -1619,7 +1619,7 @@ i2s2: i2s@ff8a0000 {
+>>    	vopl: vop@ff8f0000 {
+>>  		compatible = "rockchip,rk3399-vop-lit";
+>> -		reg = <0x0 0xff8f0000 0x0 0x3efc>;
+>> +		reg = <0x0 0xff8f0000 0x0 0x2000>, <0x0 0xff8f2000 0x0 0x400>;
+>>  		interrupts = <GIC_SPI 119 IRQ_TYPE_LEVEL_HIGH 0>;
+>>  		assigned-clocks = <&cru ACLK_VOP1>, <&cru HCLK_VOP1>;
+>>  		assigned-clock-rates = <400000000>, <100000000>;
+>> @@ -1676,7 +1676,7 @@ vopl_mmu: iommu@ff8f3f00 {
+>>    	vopb: vop@ff900000 {
+>>  		compatible = "rockchip,rk3399-vop-big";
+>> -		reg = <0x0 0xff900000 0x0 0x3efc>;
+>> +		reg = <0x0 0xff900000 0x0 0x2000>, <0x0 0xff902000 0x0 0x1000>;
+> 
+> Doesn't the second range still need to be shorter than 0xf00 to avoid overlapping the IOMMU?
+> 
+> Robin.
 
-This patch add basic core dtsi support.
+This should be OK, the other registers are in the range ff900000-ff902000, the
+gamma LUT occupies the range ff902000-ff903000, and then the IOMMU registers
+begin at ff903f00. I don't see any overlaps with the IOMMU unless I'm
+misreading the dts.
 
-Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
-Signed-off-by: Jagan Teki <jagan@edgeble.ai>
----
-Changes for v5:
-- none
-Changes for v4:
-- update i2c0
-- rebase on -next
-Changes for v3:
-- update cru and power file names
-Changes for v2:
-- split pinctrl in separate patch
+>>  		interrupts = <GIC_SPI 118 IRQ_TYPE_LEVEL_HIGH 0>;
+>>  		assigned-clocks = <&cru ACLK_VOP0>, <&cru HCLK_VOP0>;
+>>  		assigned-clock-rates = <400000000>, <100000000>;
 
- arch/arm/boot/dts/rv1126.dtsi | 430 ++++++++++++++++++++++++++++++++++
- 1 file changed, 430 insertions(+)
- create mode 100644 arch/arm/boot/dts/rv1126.dtsi
-
-diff --git a/arch/arm/boot/dts/rv1126.dtsi b/arch/arm/boot/dts/rv1126.dtsi
-new file mode 100644
-index 000000000000..7d8e36e495ad
---- /dev/null
-+++ b/arch/arm/boot/dts/rv1126.dtsi
-@@ -0,0 +1,430 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd.
-+ * Copyright (c) 2022 Edgeble AI Technologies Pvt. Ltd.
-+ */
-+
-+#include <dt-bindings/clock/rockchip,rv1126-cru.h>
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/interrupt-controller/arm-gic.h>
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include <dt-bindings/power/rockchip,rv1126-power.h>
-+#include <dt-bindings/soc/rockchip,boot-mode.h>
-+
-+/ {
-+	#address-cells = <1>;
-+	#size-cells = <1>;
-+
-+	compatible = "rockchip,rv1126";
-+
-+	interrupt-parent = <&gic>;
-+
-+	aliases {
-+		i2c0 = &i2c0;
-+		serial0 = &uart0;
-+		serial1 = &uart1;
-+		serial2 = &uart2;
-+		serial3 = &uart3;
-+		serial4 = &uart4;
-+		serial5 = &uart5;
-+	};
-+
-+	cpus {
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		cpu0: cpu@f00 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0xf00>;
-+			clocks = <&cru ARMCLK>;
-+		};
-+
-+		cpu1: cpu@f01 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0xf01>;
-+			clocks = <&cru ARMCLK>;
-+		};
-+
-+		cpu2: cpu@f02 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0xf02>;
-+			clocks = <&cru ARMCLK>;
-+		};
-+
-+		cpu3: cpu@f03 {
-+			device_type = "cpu";
-+			compatible = "arm,cortex-a7";
-+			reg = <0xf03>;
-+			clocks = <&cru ARMCLK>;
-+		};
-+	};
-+
-+	arm-pmu {
-+		compatible = "arm,cortex-a7-pmu";
-+		interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 126 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-affinity = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>;
-+	};
-+
-+	timer {
-+		compatible = "arm,armv7-timer";
-+		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-+			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-+			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-+			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
-+		clock-frequency = <24000000>;
-+	};
-+
-+	xin24m: oscillator {
-+		compatible = "fixed-clock";
-+		clock-frequency = <24000000>;
-+		clock-output-names = "xin24m";
-+		#clock-cells = <0>;
-+	};
-+
-+	grf: syscon@fe000000 {
-+		compatible = "rockchip,rv1126-grf", "syscon", "simple-mfd";
-+		reg = <0xfe000000 0x20000>;
-+	};
-+
-+	pmugrf: syscon@fe020000 {
-+		compatible = "rockchip,rv1126-pmugrf", "syscon", "simple-mfd";
-+		reg = <0xfe020000 0x1000>;
-+
-+		pmu_io_domains: io-domains {
-+			compatible = "rockchip,rv1126-pmu-io-voltage-domain";
-+			status = "disabled";
-+		};
-+	};
-+
-+	qos_emmc: qos@fe860000 {
-+		compatible = "rockchip,rv1126-qos", "syscon";
-+		reg = <0xfe860000 0x20>;
-+	};
-+
-+	qos_nandc: qos@fe860080 {
-+		compatible = "rockchip,rv1126-qos", "syscon";
-+		reg = <0xfe860080 0x20>;
-+	};
-+
-+	qos_sfc: qos@fe860200 {
-+		compatible = "rockchip,rv1126-qos", "syscon";
-+		reg = <0xfe860200 0x20>;
-+	};
-+
-+	qos_sdio: qos@fe86c000 {
-+		compatible = "rockchip,rv1126-qos", "syscon";
-+		reg = <0xfe86c000 0x20>;
-+	};
-+
-+	gic: interrupt-controller@feff0000 {
-+		compatible = "arm,gic-400";
-+		interrupt-controller;
-+		#interrupt-cells = <3>;
-+		#address-cells = <0>;
-+
-+		reg = <0xfeff1000 0x1000>,
-+		      <0xfeff2000 0x2000>,
-+		      <0xfeff4000 0x2000>,
-+		      <0xfeff6000 0x2000>;
-+		interrupts = <GIC_PPI 9 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
-+	};
-+
-+	pmu: power-management@ff3e0000 {
-+		compatible = "rockchip,rv1126-pmu", "syscon", "simple-mfd";
-+		reg = <0xff3e0000 0x1000>;
-+
-+		power: power-controller {
-+			compatible = "rockchip,rv1126-power-controller";
-+			#power-domain-cells = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			power-domain@RV1126_PD_NVM {
-+				reg = <RV1126_PD_NVM>;
-+				clocks = <&cru HCLK_EMMC>,
-+					 <&cru CLK_EMMC>,
-+					 <&cru HCLK_NANDC>,
-+					 <&cru CLK_NANDC>,
-+					 <&cru HCLK_SFC>,
-+					 <&cru HCLK_SFCXIP>,
-+					 <&cru SCLK_SFC>;
-+				pm_qos = <&qos_emmc>,
-+					 <&qos_nandc>,
-+					 <&qos_sfc>;
-+				#power-domain-cells = <0>;
-+			};
-+
-+			power-domain@RV1126_PD_SDIO {
-+				reg = <RV1126_PD_SDIO>;
-+				clocks = <&cru HCLK_SDIO>,
-+					 <&cru CLK_SDIO>;
-+				pm_qos = <&qos_sdio>;
-+				#power-domain-cells = <0>;
-+			};
-+		};
-+	};
-+
-+	i2c0: i2c@ff3f0000 {
-+		compatible = "rockchip,rv1126-i2c", "rockchip,rk3399-i2c";
-+		reg = <0xff3f0000 0x1000>;
-+		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
-+		rockchip,grf = <&pmugrf>;
-+		clocks = <&pmucru CLK_I2C0>, <&pmucru PCLK_I2C0>;
-+		clock-names = "i2c", "pclk";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&i2c0_xfer>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		status = "disabled";
-+	};
-+
-+	dmac: dma-controller@ff4e0000 {
-+		compatible = "arm,pl330", "arm,primecell";
-+		reg = <0xff4e0000 0x4000>;
-+		interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 2 IRQ_TYPE_LEVEL_HIGH>;
-+		#dma-cells = <1>;
-+		arm,pl330-periph-burst;
-+		clocks = <&cru ACLK_DMAC>;
-+		clock-names = "apb_pclk";
-+	};
-+
-+	uart1: serial@ff410000 {
-+		compatible = "rockchip,rv1126-uart", "snps,dw-apb-uart";
-+		reg = <0xff410000 0x100>;
-+		interrupts = <GIC_SPI 13 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-frequency = <24000000>;
-+		clocks = <&pmucru SCLK_UART1>, <&pmucru PCLK_UART1>;
-+		clock-names = "baudclk", "apb_pclk";
-+		dmas = <&dmac 7>, <&dmac 6>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&uart1m0_xfer>;
-+		reg-shift = <2>;
-+		reg-io-width = <4>;
-+		status = "disabled";
-+	};
-+
-+	pmucru: clock-controller@ff480000 {
-+		compatible = "rockchip,rv1126-pmucru";
-+		reg = <0xff480000 0x1000>;
-+		rockchip,grf = <&grf>;
-+		#clock-cells = <1>;
-+		#reset-cells = <1>;
-+	};
-+
-+	cru: clock-controller@ff490000 {
-+		compatible = "rockchip,rv1126-cru";
-+		reg = <0xff490000 0x1000>;
-+		clocks = <&xin24m>;
-+		clock-names = "xin24m";
-+		rockchip,grf = <&grf>;
-+		#clock-cells = <1>;
-+		#reset-cells = <1>;
-+	};
-+
-+	uart0: serial@ff560000 {
-+		compatible = "rockchip,rv1126-uart", "snps,dw-apb-uart";
-+		reg = <0xff560000 0x100>;
-+		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-frequency = <24000000>;
-+		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
-+		clock-names = "baudclk", "apb_pclk";
-+		dmas = <&dmac 5>, <&dmac 4>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&uart0_xfer>;
-+		reg-shift = <2>;
-+		reg-io-width = <4>;
-+		status = "disabled";
-+	};
-+
-+	uart2: serial@ff570000 {
-+		compatible = "rockchip,rv1126-uart", "snps,dw-apb-uart";
-+		reg = <0xff570000 0x100>;
-+		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-frequency = <24000000>;
-+		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
-+		clock-names = "baudclk", "apb_pclk";
-+		dmas = <&dmac 9>, <&dmac 8>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&uart2m1_xfer>;
-+		reg-shift = <2>;
-+		reg-io-width = <4>;
-+		status = "disabled";
-+	};
-+
-+	uart3: serial@ff580000 {
-+		compatible = "rockchip,rv1126-uart", "snps,dw-apb-uart";
-+		reg = <0xff580000 0x100>;
-+		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-frequency = <24000000>;
-+		clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
-+		clock-names = "baudclk", "apb_pclk";
-+		dmas = <&dmac 11>, <&dmac 10>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&uart3m0_xfer>;
-+		reg-shift = <2>;
-+		reg-io-width = <4>;
-+		status = "disabled";
-+	};
-+
-+	uart4: serial@ff590000 {
-+		compatible = "rockchip,rv1126-uart", "snps,dw-apb-uart";
-+		reg = <0xff590000 0x100>;
-+		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-frequency = <24000000>;
-+		clocks = <&cru SCLK_UART4>, <&cru PCLK_UART4>;
-+		clock-names = "baudclk", "apb_pclk";
-+		dmas = <&dmac 13>, <&dmac 12>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&uart4m0_xfer>;
-+		reg-shift = <2>;
-+		reg-io-width = <4>;
-+		status = "disabled";
-+	};
-+
-+	uart5: serial@ff5a0000 {
-+		compatible = "rockchip,rv1126-uart", "snps,dw-apb-uart";
-+		reg = <0xff5a0000 0x100>;
-+		interrupts = <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
-+		clock-frequency = <24000000>;
-+		clocks = <&cru SCLK_UART5>, <&cru PCLK_UART5>;
-+		dmas = <&dmac 15>, <&dmac 14>;
-+		clock-names = "baudclk", "apb_pclk";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&uart5m0_xfer>;
-+		reg-shift = <2>;
-+		reg-io-width = <4>;
-+		status = "disabled";
-+	};
-+
-+	saradc: saradc@ff5e0000 {
-+		compatible = "rockchip,rk3399-saradc";
-+		reg = <0xff5e0000 0x100>;
-+		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
-+		#io-channel-cells = <1>;
-+		clocks = <&cru CLK_SARADC>, <&cru PCLK_SARADC>;
-+		clock-names = "saradc", "apb_pclk";
-+		resets = <&cru SRST_SARADC_P>;
-+		reset-names = "saradc-apb";
-+		status = "disabled";
-+	};
-+
-+	timer: timer@ff660000 {
-+		compatible = "rockchip,rk3288-timer";
-+		reg = <0xff660000 0x20>;
-+		interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru PCLK_TIMER>, <&cru CLK_TIMER0>;
-+		clock-names = "pclk", "timer";
-+	};
-+
-+	emmc: mmc@ffc50000 {
-+		compatible = "rockchip,rv1126-dw-mshc", "rockchip,rk3288-dw-mshc";
-+		reg = <0xffc50000 0x4000>;
-+		interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_EMMC>, <&cru CLK_EMMC>,
-+			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
-+		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-+		fifo-depth = <0x100>;
-+		max-frequency = <200000000>;
-+		power-domains = <&power RV1126_PD_NVM>;
-+		status = "disabled";
-+	};
-+
-+	sdmmc: mmc@ffc60000 {
-+		compatible = "rockchip,rv1126-dw-mshc", "rockchip,rk3288-dw-mshc";
-+		reg = <0xffc60000 0x4000>;
-+		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_SDMMC>, <&cru CLK_SDMMC>,
-+			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
-+		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-+		fifo-depth = <0x100>;
-+		max-frequency = <200000000>;
-+		status = "disabled";
-+	};
-+
-+	sdio: mmc@ffc70000 {
-+		compatible = "rockchip,rv1126-dw-mshc", "rockchip,rk3288-dw-mshc";
-+		reg = <0xffc70000 0x4000>;
-+		interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_SDIO>, <&cru CLK_SDIO>,
-+			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
-+		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-+		fifo-depth = <0x100>;
-+		max-frequency = <200000000>;
-+		power-domains = <&power RV1126_PD_SDIO>;
-+		status = "disabled";
-+	};
-+
-+	pinctrl: pinctrl {
-+		compatible = "rockchip,rv1126-pinctrl";
-+		rockchip,grf = <&grf>;
-+		rockchip,pmu = <&pmugrf>;
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+		ranges;
-+
-+		gpio0: gpio0@ff460000 {
-+			compatible = "rockchip,gpio-bank";
-+			reg = <0xff460000 0x100>;
-+			interrupts = <GIC_SPI 34 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&pmucru PCLK_GPIO0>, <&pmucru DBCLK_GPIO0>;
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+			interrupt-controller;
-+			#interrupt-cells = <2>;
-+		};
-+
-+		gpio1: gpio1@ff620000 {
-+			compatible = "rockchip,gpio-bank";
-+			reg = <0xff620000 0x100>;
-+			interrupts = <GIC_SPI 35 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru PCLK_GPIO1>, <&cru DBCLK_GPIO1>;
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+			interrupt-controller;
-+			#interrupt-cells = <2>;
-+		};
-+
-+		gpio2: gpio2@ff630000 {
-+			compatible = "rockchip,gpio-bank";
-+			reg = <0xff630000 0x100>;
-+			interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru PCLK_GPIO2>, <&cru DBCLK_GPIO2>;
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+			interrupt-controller;
-+			#interrupt-cells = <2>;
-+		};
-+
-+		gpio3: gpio3@ff640000 {
-+			compatible = "rockchip,gpio-bank";
-+			reg = <0xff640000 0x100>;
-+			interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru PCLK_GPIO3>, <&cru DBCLK_GPIO3>;
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+			interrupt-controller;
-+			#interrupt-cells = <2>;
-+		};
-+
-+		gpio4: gpio4@ff650000 {
-+			compatible = "rockchip,gpio-bank";
-+			reg = <0xff650000 0x100>;
-+			interrupts = <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru PCLK_GPIO4>, <&cru DBCLK_GPIO4>;
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+			interrupt-controller;
-+			#interrupt-cells = <2>;
-+		};
-+	};
-+};
-+
-+#include "rv1126-pinctrl.dtsi"
--- 
-2.25.1
+br, Hugh.
 
 
 _______________________________________________
