@@ -4,116 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95AECC6FA89
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Sep 2022 15:14:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E6CEECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Sep 2022 16:40:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o39CCWg9YD9/W+/bEpdg6BkUmE9pzZMnb9KkyNmmsOk=; b=kNVsDvYRPFnitR
-	snaRTELE0pjMeXldOrlCBZySUFtw56oSBIYV6izYxyKCwaPD4OUWF7KQP82IVYXaNiQKD6/YXwmcA
-	Yo8yBTBeYl6Nqz9TXYbGA4AnPHzfi6zEGcKBpcGtreK8XKNauIwWozIHSqLCr8C9hRmCLP4pRtluz
-	MzUa9pM7REPaxT6lFW9sJ5YRKfI+oh8sgP57psIpKnBMjT1ey9OAcssAsyyMyhS+jFojyVmlYvhcr
-	Y4vhoqs3zJtjaFUsg6FgIpvJ1KyKXWCkzvHJdoBhENhTPSs0eJgdLrUIxVvNk8PwNWZ9NDwOzhm2U
-	CKzbxYLjU2b/LNWGCG4A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JR8KsYVU/pagyfRbkauz20gI+0wHCaEiH2nmTbjH8so=; b=3nLgjMWXsmb9W4
+	Aq0TaxtkJzgbYbcPyCAmcN9LwLdBfDm4ZUWXr+iZtDrA7yMRfxtSnn5PA4QKNajjGnmg2p6zgURP3
+	yqGX6credgfWE+7t+9CLOE5D5trB/Y7BJxSQXTNXv1eJx2SDfl3gubx4kKPiZxfnBEyssQbv825o1
+	J4fCfpCcO1twszlVYB0YQKPQ2wL7YN4SwdhyJTwNW8U5ZumNpIwnvGS8jqf/JrOhmwJ/QNhh6DRJm
+	B+SkTwv/H44kFpFELNSQOnVWa4f+c1SXQiKPwrzg6XUnTNdgvdJVOrkMH02dvktVSdMTaVHTLRIF8
+	TTNBcV34xOU7jpO8zKSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYqYv-00BzDV-47; Thu, 15 Sep 2022 15:13:57 +0000
-Received: from mail-dm6nam12olkn2027.outbound.protection.outlook.com ([40.92.22.27] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
+	id 1oYruE-00DbO1-AN; Thu, 15 Sep 2022 16:40:02 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYqYr-00BzBp-4S
-	for linux-rockchip@lists.infradead.org; Thu, 15 Sep 2022 15:13:55 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NVF1dcDkFH0wAQ/PWGvkKgmfML0lEYUgVJQamlre4BytH3DEl6QfGF3bowJR7Jwo8LcmkyNOIbnQeP3f+ljebrK2npj40U+v+aqZZeD3Zdtd+Dy7W/NV37nhZQAmswrXll7vc5ONJXmqRCOC+m8MtZMp3cgER65QANuPJjZEt20DYTb/9D66qdwoF6jvFIM6yMUOCq1lmKbRM+Du1yajv2MB9pLns0UdpSyww5Z625Ia+1Eyp62Mu88MS7tr+LPh79V5qgbDKiMvR8lbphuzw6Nx3sXcmVzY3TpDG8w4xE9c4RdF3UarJ5b8eDlLvkmZnGFbva/M9pw6+O9toXdRNg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Ih6iPK1WFQxXRsBAs087YdvGRv6FjKuTtBO5XXKaCIo=;
- b=lgAsjLAUjNS2YwMMZN6FIyp6e9Pk00n9zQS5x0TwtYP6yWynFreXxsSpsjsjMb98oPh9cO12iPe/NI2dxadKw4g9dzK/yvQqiL7K79nnf05GPxFh/7QjS3+ojqcR0/Xpd2be7J8/xsFwmSRZXuUVols5zsTcFOk9GkS3cyVHTEDvB68/hmUh+dnsg61ZTVeeR4cp3lQNM2IKZUb3BXRdqk9/mfpCuSbmvZGkaulUzuIfZ2rcZ1Zr7Elpl8rLZ0bZtQzxc0UCh70gyR4KNlVa6laMEikc42U3EUqCW3z6+jEXRYkOmFar2f+nKvbbDfSb7s1222tPeiJrO6Hd4yvKBQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ih6iPK1WFQxXRsBAs087YdvGRv6FjKuTtBO5XXKaCIo=;
- b=bMe5RFS76OWwik8MqBCFnG4SNqZ5RA0BOZ1SMLdpYXs1M2tBfJdAtE0JKeiFQsMaMq14eTdqHD1M5UE4EoDjg2d7annHFg0EhSukvRQ0qveufqP4pzkbEJLVxV9D9fjfpe282yXdqM3wsHs3WaG82J46/jN9dr7cDhwhE1xbJ/iljfpqsqFlLAygSiPXzcg4pXcU9WCPViitsndHudi4LP7yb6MA4SEPs96PGVUDCFYMEJFM43fbB48KeDWAhnpBWDNZiTCSTMIa5UuwZMRmbeYS8uU5UV6HWwfCSQRF4m23gOFfFQOpyytCd1TwS8yiiZm92vMPGxv3ySDK1OaeCg==
-Received: from SN6PR06MB5342.namprd06.prod.outlook.com (2603:10b6:805:f9::31)
- by SN7PR06MB7039.namprd06.prod.outlook.com (2603:10b6:806:109::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5632.15; Thu, 15 Sep
- 2022 15:13:48 +0000
-Received: from SN6PR06MB5342.namprd06.prod.outlook.com
- ([fe80::433a:1493:6a39:ee43]) by SN6PR06MB5342.namprd06.prod.outlook.com
- ([fe80::433a:1493:6a39:ee43%5]) with mapi id 15.20.5612.022; Thu, 15 Sep 2022
- 15:13:48 +0000
-Date: Thu, 15 Sep 2022 10:13:44 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Sascha Hauer <sha@pengutronix.de>
-Cc: Michael Riesch <michael.riesch@wolfvision.net>,
-	Chris Morgan <macroalpha82@gmail.com>,
-	dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
-	daniel@ffwll.ch, airlied@linux.ie, heiko@sntech.de,
-	hjc@rock-chips.com
-Subject: Re: [PATCH] drm/rockchip: vop2: Fix Null Pointer Dereference on
- Multiple VPs
-Message-ID:  <SN6PR06MB5342F0D99F3AF0D7149AD100A5499@SN6PR06MB5342.namprd06.prod.outlook.com>
-References: <20220912180242.499-1-macroalpha82@gmail.com>
- <d8a86990-6d9f-9ca0-326a-e5706f924516@wolfvision.net>
- <20220914064927.GS6477@pengutronix.de>
- <SN6PR06MB53426F3713C84EDB67F65133A5469@SN6PR06MB5342.namprd06.prod.outlook.com>
- <20220914133530.GW6477@pengutronix.de>
-Content-Disposition: inline
-In-Reply-To: <20220914133530.GW6477@pengutronix.de>
-X-TMN: [3RJwR//v0P95XSWTLqc4fELoH9o0Rt4n]
-X-ClientProxiedBy: DS7PR03CA0252.namprd03.prod.outlook.com
- (2603:10b6:5:3b3::17) To SN6PR06MB5342.namprd06.prod.outlook.com
- (2603:10b6:805:f9::31)
-X-Microsoft-Original-Message-ID:  <20220915151344.GA28567@wintermute.localdomain>
+	id 1oYruB-00DbMK-H4
+	for linux-rockchip@lists.infradead.org; Thu, 15 Sep 2022 16:40:01 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id c24so17800214pgg.11
+        for <linux-rockchip@lists.infradead.org>; Thu, 15 Sep 2022 09:39:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=edgeble-ai.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date;
+        bh=RkWGT9yQHWHTXXm5E5ctM+LbterE/dY2uqCbfyonKt8=;
+        b=gumQQAFlGYvN9ynL/A+akjjufry3KtQo+pgN9JFbxSOCca2trA+55rKFztsyTHWXp+
+         Q/ZYiWAjIfkrV9xuonsyLrqgO/IfIIBNuEEF+6N2U94VkkyCkh2ZerlcUHW/IYsXwS15
+         gJOtRTgF32jkGnBySGruPhD05QGwg3XZHCP695yxkHljm+E4BOOsz7oAH3TZ4x0pFNjj
+         bUIiu5mcdYpK67zVBMeQGTsUAMg+x8tdziBDMWz+ZUiLREzFle5JFGa/9aORWVraGIdL
+         KsPxYVV1pvOjzYY/RJXuIV/AbAknbo/uAKWWFWBHH3UE+rQHnpuK2788Y1fw+yCb1poe
+         +RBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date;
+        bh=RkWGT9yQHWHTXXm5E5ctM+LbterE/dY2uqCbfyonKt8=;
+        b=QmBuv6bG88NApV4tZJ7Chtf4xfg1ZEWFdt06KUga7PO/k48WZb+wC+UUotUHEf4cXi
+         QtWl59cvUjZr0gh1Ejc2YByNeOSlN0XuN9ghZhk48eyRzkleB9fAqbbuCLkInAvaBmt+
+         tMbwyam4lsOcDAmTFJaFQ3AexSxmXTkudgS3kylV84/B6PeAUQa8defXNMhdvCfaO+zd
+         L2uLZGepM2jJ+QsoA+xFRBJ+6jlbE/p7zyUXJ08now9pBeAXKJ6OQFc05PjtvmUbJzyp
+         QldiXxFmnSAQ12DMFyuFJIckBxZVYPuCILd+k78sGwy6Y1wkJXxlkkllORF3veZhreyS
+         kMQg==
+X-Gm-Message-State: ACrzQf2sLuudmJ89/Fz4A145bosUqlbafaE94qfNT52hqbGtQN3f4gvO
+	OEncNFU0ifGvv8gRZzUo5tkQ5A==
+X-Google-Smtp-Source: AMsMyM6s2WDMJGPu8tV/Wn9Y9tLoRGIUCm5iTpZGgft29tWl675ANncBYsC09zQCOspfPZ+hKqyrPg==
+X-Received: by 2002:a63:564b:0:b0:42c:414a:95fd with SMTP id g11-20020a63564b000000b0042c414a95fdmr623215pgm.5.1663259997496;
+        Thu, 15 Sep 2022 09:39:57 -0700 (PDT)
+Received: from localhost.localdomain ([2405:201:c00a:a073:f820:a732:fc7f:74df])
+        by smtp.gmail.com with ESMTPSA id x21-20020aa78f15000000b00540f3ac5fb8sm12841652pfr.69.2022.09.15.09.39.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 Sep 2022 09:39:57 -0700 (PDT)
+From: Jagan Teki <jagan@edgeble.ai>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Kever Yang <kever.yang@rock-chips.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v5 0/6] ARM: Add Rockchip RV1126 support
+Date: Thu, 15 Sep 2022 22:09:41 +0530
+Message-Id: <20220915163947.1922183-1-jagan@edgeble.ai>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN6PR06MB5342:EE_|SN7PR06MB7039:EE_
-X-MS-Office365-Filtering-Correlation-Id: ef4eb123-80d0-4bea-ab48-08da972ce3cb
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	W+aGYGZjIbTjX9F3gsFz9HSrFrX/iRtDdli/TazM3+7Di7oeOvNS5As+y+6gTr2x7vWiM3yDkFdJYpd0GHYxDEj3cZHowup+ahs5//Q1nOds0sfpnTPo3vaY9T+GViQYHDnGxjtPuih+XgPIrUDPtVA8FrHGEEJc5OXYzqZrCHy1V7JP1BjhfdHOSbNCbruxlIWLQpm7STEx5Tj1EmmKqCyGF+yd06wLimLwsqhcjPq7Dp4nI7YC2tNjyoCL0QetBXxR5qSVmZW7cv8XM9uGQDNGiJosS5Y5Pwz0X0NUthqDW2VL17fmLtsXlryabkruRRzxW8x3LniN+b1ADPE+nYibZN1GPg48oYzaZfokUS5u+uJZm1X/m3R7JHQ19LxTPWSh6B6lD752IHslaJDidQqC0ye7JSKhTZIaEiCnMM2i/pjFhoKmhakq4C1rknWxxpGDe34/ww4tjLdQv9jTeGTZsM+OGfFmIzPv4jloGRNipG5ceGEUbYJklyvUlwHNCg8UXGNmmXItxkXPlma7pZrbehulk3AuFmP3jQeRDlPxGf5QRbI04P6lfwoVuDDO/AgBjjApJT67CNpBLSeRvZaF0ZCK30rbENz+0X0llGz5Rotr9zAK+Bg405ksVKwFWJ/pQTNrWEXLaQg0czP9t9IY7VAI+FD0fAp+SnbNa/4=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?7bScDk/XNHnPvNs9NyjTIdLnzLVjXcdC7TjRh2P+hJCPbPI8b2XDE6EEZvrf?=
- =?us-ascii?Q?1WTCwJy9AJnnc2DH+XYbMhF5OaYqL5Xcf5medlhJlwQZV9VqCRchC8L+zN72?=
- =?us-ascii?Q?3n4IsLQw/OSjyh6DXKFcjNWSAI7cBml8OkTLDUNG7Lh8ZX0kq+KDwoluKXDK?=
- =?us-ascii?Q?itE4TSfqctDuBmhCVYGvQy00wnDpNLwfrVQlAUhoxkLn9FU8QSNNgJNVsDEQ?=
- =?us-ascii?Q?rQQZaXXhfrMIlr+XqCipYibdecxGSqjW8d6/S8TpmuR6nL9ucMBe3NKu73Vh?=
- =?us-ascii?Q?T5kIBYoH5GkL5XTi5JbxGsgr9AXauAKcpyd5wnbJWhMCZLd9ZRzjkAouoZC2?=
- =?us-ascii?Q?EZ2yjgFXGZ6HeDBbTWoNN54/He9rdf3e2nre03gwZ3h4JkX7WCTllVMlkYct?=
- =?us-ascii?Q?wAZP0rT5/iCcUcCuXARCqkLBdrFJMVqU94GDWJd2yh2Z8XM6yogp54UWHLGW?=
- =?us-ascii?Q?ts47Acad4h64oN+V69S5Mezgu8rLkjpCtOCvIQfleRxrrSEPdjJhQGwqkBTj?=
- =?us-ascii?Q?fxuUvsWF9s7SY6oc9pCdj1BpoP0wFuVYvT6ESShhxZg//U5QeniSvPxjU4gv?=
- =?us-ascii?Q?Q0gnCp0dS8xh9AE3cFsbLf6dHJdwwg+xeZt/EkjBwkeKLM6KH2U/KfncJ809?=
- =?us-ascii?Q?N3En5SVQM+ibrgkQx8TRSETiqf2mFZq/SiC+Nhnxxi9+Tb8x8+2CSTpqFMgJ?=
- =?us-ascii?Q?EEe4jwQnpqkpgymd2ckBpkIEBbYKCepQdqr7vy97n2Qr80oQqAUsYRKMXxef?=
- =?us-ascii?Q?UoYupHWJcjwE0ldCbJlOQRxZkYiZ8zp7mIrdcj2AF1HXO8QcEV+PTcRr9+2k?=
- =?us-ascii?Q?+qyU0HwdoS0OokvqdN7WiIwpgi1br9VXHRBUiKfA8IJLaH+6bXUCN4dQyCAc?=
- =?us-ascii?Q?9brO27d+7++kRl0ZRN00vH2DQomebW3v6oozUoi+MLctYpprydsKBF+QS42r?=
- =?us-ascii?Q?dwL39jOsMTJ7BUf1+OskNyWXOGaNH77AjNJ1NGiC8o5bpGHrJciMDfFrbD/G?=
- =?us-ascii?Q?QmcDuatGu38Q2vCd7A54vLYiiR9S3GWtci7GzYh9g1kl7cWeySyYIaG7UBn8?=
- =?us-ascii?Q?0H1iAo9IdRczOeKs2UZOlzMxU2jHyzuFl52LMdmNMgKjFFaNkV+Xnsozgwem?=
- =?us-ascii?Q?UUruYhb519ly9HqTTJUHnMWbsGiTBTrK4FmcXp2M72WCJF2MNNLEK6+Vs7rx?=
- =?us-ascii?Q?LBUiaNOw+gsDtMMnW9NiBnJP1c2CYl+20Ddyr7T4Yy59Y/KcIpzHNnqCut/Y?=
- =?us-ascii?Q?boUN3CL2F2wY9DcxYYEkjOia7YZztzpdfVrec7uVWg=3D=3D?=
-X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-89723.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: ef4eb123-80d0-4bea-ab48-08da972ce3cb
-X-MS-Exchange-CrossTenant-AuthSource: SN6PR06MB5342.namprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Sep 2022 15:13:48.7789
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 	00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR06MB7039
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220915_081353_260202_06C01E5C 
-X-CRM114-Status: GOOD (  52.14  )
+X-CRM114-CacheID: sfid-20220915_093959_571411_7A2E7D16 
+X-CRM114-Status: GOOD (  11.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,227 +91,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 14, 2022 at 03:35:30PM +0200, Sascha Hauer wrote:
-> On Wed, Sep 14, 2022 at 08:04:18AM -0500, Chris Morgan wrote:
-> > On Wed, Sep 14, 2022 at 08:49:27AM +0200, Sascha Hauer wrote:
-> > > On Tue, Sep 13, 2022 at 08:55:22AM +0200, Michael Riesch wrote:
-> > > > Hi,
-> > > > 
-> > > > On 9/12/22 20:02, Chris Morgan wrote:
-> > > > > From: Chris Morgan <macromorgan@hotmail.com>
-> > > > 
-> > > > Cc: Sascha -> any thoughts on this one?
-> > > > 
-> > > > Best regards,
-> > > > Michael
-> > > > 
-> > > > > If I use more than one VP to output on an RK3566 based device I
-> > > > > receive the following error (and then everything freezes):
-> > > > > 
-> > > > > [    0.838375] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000250
-> > > > > [    0.839191] Mem abort info:
-> > > > > [    0.839442]   ESR = 0x0000000096000005
-> > > > > [    0.839785]   EC = 0x25: DABT (current EL), IL = 32 bits
-> > > > > [    0.840256]   SET = 0, FnV = 0
-> > > > > [    0.840530]   EA = 0, S1PTW = 0
-> > > > > [    0.840821]   FSC = 0x05: level 1 translation fault
-> > > > > [    0.841254] Data abort info:
-> > > > > [    0.841512]   ISV = 0, ISS = 0x00000005
-> > > > > [    0.841864]   CM = 0, WnR = 0
-> > > > > [    0.842130] [0000000000000250] user address but active_mm is swapper
-> > > > > [    0.842704] Internal error: Oops: 96000005 [#1] SMP
-> > > > > [    0.843139] Modules linked in:
-> > > > > [    0.843420] CPU: 0 PID: 37 Comm: kworker/u8:1 Not tainted 6.0.0-rc5+ #40
-> > > > > [    0.844013] Hardware name: RG503 (DT)
-> > > > > [    0.844343] Workqueue: events_unbound deferred_probe_work_func
-> > > > > [    0.844871] pstate: 80000009 (Nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> > > > > [    0.845487] pc : __drm_crtc_init_with_planes+0x48/0x2e4
-> > > > > [    0.845956] lr : drm_crtc_init_with_planes+0x68/0x94
-> > > > > [    0.846399] sp : ffffffc00a7a3710
-> > > > > [    0.846695] x29: ffffffc00a7a3710 x28: ffffff8000fb4080 x27: ffffffc00a7a37a0
-> > > > > [    0.847332] x26: ffffffc0097d01c7 x25: ffffff8000fb44d8 x24: ffffffc0097d01c7
-> > > > > [    0.847967] x23: ffffffc009311870 x22: 0000000000000000 x21: 0000000000000008
-> > > > > [    0.848603] x20: ffffff80010d0800 x19: ffffff8000fb44e8 x18: 0000000000000000
-> > > > > [    0.849237] x17: 08000000000000d1 x16: 0800000000000091 x15: 08000000000000c1
-> > > > > [    0.849874] x14: 0000000000000000 x13: 3432564e3631564e x12: 3231564e36314742
-> > > > > [    0.850509] x11: 3631475234324742 x10: 000000000000002d x9 : ffffffc008682004
-> > > > > [    0.851144] x8 : 00000000006f7475 x7 : 00000000fffffff0 x6 : ffffffc00a7a37a0
-> > > > > [    0.851778] x5 : ffffffc0097d01c7 x4 : ffffffc009311870 x3 : 0000000000000000
-> > > > > [    0.852412] x2 : 0000000000000008 x1 : ffffff8000fb44e8 x0 : ffffff80010d0800
-> > > > > [    0.853048] Call trace:
-> > > > > [    0.853270]  __drm_crtc_init_with_planes+0x48/0x2e4
-> > > > > [    0.853706]  drm_crtc_init_with_planes+0x68/0x94
-> > > > > [    0.854118]  vop2_bind+0x89c/0x920
-> > > > > [    0.854429]  component_bind_all+0x18c/0x290
-> > > > > [    0.854805]  rockchip_drm_bind+0xe4/0x1f0
-> > > > > [    0.855166]  try_to_bring_up_aggregate_device+0x9c/0x290
-> > > > > [    0.855639]  __component_add+0x110/0x168
-> > > > > [    0.855991]  component_add+0x1c/0x28
-> > > > > [    0.856312]  dw_mipi_dsi_rockchip_host_attach+0x98/0x10c
-> > > > > [    0.856785]  dw_mipi_dsi_host_attach+0xbc/0xd0
-> > > > > [    0.857184]  mipi_dsi_attach+0x30/0x44
-> > > > > [    0.857521]  devm_mipi_dsi_attach+0x2c/0x70
-> > > > > [    0.857896]  ams495qa01_probe+0x2d4/0x33c
-> > > > > [    0.858257]  spi_probe+0x8c/0xb8
-> > > > > [    0.858550]  really_probe+0x1e0/0x3b8
-> > > > > [    0.858881]  __driver_probe_device+0x16c/0x184
-> > > > > [    0.859278]  driver_probe_device+0x4c/0xfc
-> > > > > [    0.859646]  __device_attach_driver+0xf0/0x170
-> > > > > [    0.860043]  bus_for_each_drv+0xa4/0xcc
-> > > > > [    0.860389]  __device_attach+0xfc/0x1a8
-> > > > > [    0.860733]  device_initial_probe+0x1c/0x28
-> > > > > [    0.861108]  bus_probe_device+0x38/0x9c
-> > > > > [    0.861452]  deferred_probe_work_func+0xdc/0xf0
-> > > > > [    0.861855]  process_one_work+0x1b0/0x260
-> > > > > [    0.862217]  process_scheduled_works+0x4c/0x50
-> > > > > [    0.862614]  worker_thread+0x1f0/0x26c
-> > > > > [    0.862949]  kthread+0xc4/0xd4
-> > > > > [    0.863227]  ret_from_fork+0x10/0x20
-> > > > > [    0.863553] Code: aa0503fa f9002bfb aa0603fb b40000a2 (b9424840)
-> > > > > [    0.864095] ---[ end trace 0000000000000000 ]---
-> > > > > 
-> > > > > A cursory reading of the datasheet suggests it's possible to have
-> > > > > simultaneous output to 2 distinct outputs. On page 13 it states:
-> > > > > 
-> > > > > Support two simultaneous displays(same source) in the following interfaces:
-> > > > > - MIPI_DSI_TX
-> > > > > - LVDS
-> > > > > - HDMI
-> > > > > - eDP
-> > > > > 
-> > > > > In order to achieve this though, I need to output to VP0 and VP1 (or
-> > > > > any 2 distinct VPs really). This is so I can have the ref clock set
-> > > > > to 24MHz for the HDMI and the pixel clock of the DSI panel (for the
-> > > > > example above it's 33.5MHz).  Currently, only by removing this code
-> > > > > block is such a thing possible, though I'm not sure if long-term
-> > > > > there should only be 1 CRTC for the rk3566 (and 2 CRTCs for 3568)
-> > > > > along with a max of 2 encoders for rk3566 (and 3 encoders for 3568).
-> > > > > 
-> > > > > Fixes: 604be85547ce ("drm/rockchip: Add VOP2 driver")
-> > > > > 
-> > > > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> > > > > ---
-> > > > >  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 14 --------------
-> > > > >  1 file changed, 14 deletions(-)
-> > > > > 
-> > > > > diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > > > > index e4631f515ba4..f18d7f6f9f86 100644
-> > > > > --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > > > > +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> > > > > @@ -2289,20 +2289,6 @@ static int vop2_create_crtc(struct vop2 *vop2)
-> > > > >  		struct vop2_win *win = &vop2->win[i];
-> > > > >  		u32 possible_crtcs;
-> > > > >  
-> > > > > -		if (vop2->data->soc_id == 3566) {
-> > > > > -			/*
-> > > > > -			 * On RK3566 these windows don't have an independent
-> > > > > -			 * framebuffer. They share the framebuffer with smart0,
-> > > > > -			 * esmart0 and cluster0 respectively.
-> > > > > -			 */
-> > > > > -			switch (win->data->phys_id) {
-> > > > > -			case ROCKCHIP_VOP2_SMART1:
-> > > > > -			case ROCKCHIP_VOP2_ESMART1:
-> > > > > -			case ROCKCHIP_VOP2_CLUSTER1:
-> > > > > -				continue;
-> > > > > -			}
-> > > > > -		}
-> > > 
-> > > Let me say that a "window" in the Rockchip terminology is what a plane
-> > > is in the DRM terminology, and a video port (vp) corresponds to a crtc.
-> > > 
-> > > On the RK3566 some windows do not have their own framebuffer, for
-> > > example the smart1 window always shows what the smart0 window shows.
-> > > This "feature" makes these windows unusable as planes, so the idea is to
-> > > simply not use them.
-> > > 
-> > > If skipping these windows from initialization results in a NULL pointer
-> > > deref then there's something wrong in the driver logic, but it's not the
-> > > lines you are removing here that are wrong. Nothing should prevent you
-> > > from using multiple VPs when the unusable windows on RK3566 are not
-> > > registered.
-> > 
-> > I'll tell you what I "think" is causing the null pointer deref, but like
-> > always I reserve the right to be wrong.
-> > 
-> > The driver checks for the primary planes and assigns them to active
-> > video ports. For the rk3566 it's skipping the 3 planes mentioned
-> > above for the RK3566. As a result if there is more than 1 active video
-> > port for the rk3566 (or more than 2 for the rk3568 I'm assuming) it
-> > doesn't set vp->primary_plane = win for that port. Slightly below that
-> > it iterates through the active video ports again and runs
-> > drm_crtc_init_with_planes on them. Only in this case one of the ports
-> > doesn't have a plane, which is where it does the null pointer deref,
-> > because the plane is null.
-> 
-> Yes, you're right, that is likely the problem.
-> 
-> On RK3568 we have four windows that could serve as primary plane, so
-> there's enough for each of the three VPs. On RK3566 we only have two
-> windows, so once we use more than two active VPs we are running out of
-> primary planes.
+From: Jagan Teki <jagan@amarulasolutions.com>
 
-The datasheet states that it supports up to 2 simultaneous displays, so
-I think a hard limit of 2 VPs is fine for the rk3566.
+RV1126 is a high-performance vision processor SoC for IPC/CVR,
+especially for AI related application.
 
-> 
-> I am writing these numbers because I think Esmart0-win0 could be used as
-> primary plane, but is marked as DRM_PLANE_TYPE_OVERLAY in
-> rk3568_vop_win_data[]. See the attached patch, if that's the problem it
-> should resolve your issue.
+This series add left over patches from v4 [1]. The dts patches
+will send in another series as we have some naming convention
+updates.
 
-This patch did indeed resolve my issue, and also allowed me to get both
-HDMI and DSI working simultaneously. It's not perfect (right now I'm
-displaying a 640x480 image on a 1080p display since my DSI panel runs
-at 640x480), but it works and that's great.
+[1] https://patchwork.kernel.org/project/linux-arm-kernel/cover/20220907160207.3845791-1-jagan@edgeble.ai/
 
-> 
-> That is not enough though once three VPs are active on RK3566. The
-> Cluster windows could likely be used as primary planes as well, they are
-> probably just not marked as such because they only support AFBC modes.
-> 
-> Sascha
-> 
-> -------------------------8<-------------------------
-> 
-> From f98f53565ce868811581afbb18451dfea2646b07 Mon Sep 17 00:00:00 2001
-> From: Sascha Hauer <s.hauer@pengutronix.de>
-> Date: Wed, 14 Sep 2022 15:27:51 +0200
-> Subject: [PATCH] drm/rockchip: vop2: Register Esmart0-win0 as primary plane
-> 
-> Esmart0-win0 could serve as primary plane, so mark it as such. On
-> RK3568 this window will never be used as primary plane, because the
-> three windows at the beginning of the rk3568_vop_win_data[] array
-> will be used. On RK3566 however, two of the windows at the beginning
-> of the rk3568_vop_win_data[] array cannot not be used, so we end
-> up without primary planes when multiple VPs are active.
-> 
-> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
-> ---
->  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> index 9bf0637bf8e26..9d30aa73b5422 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> @@ -188,7 +188,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
->  		.base = 0x1800,
->  		.layer_sel_id = 2,
->  		.supported_rotations = DRM_MODE_REFLECT_Y,
-> -		.type = DRM_PLANE_TYPE_OVERLAY,
-> +		.type = DRM_PLANE_TYPE_PRIMARY,
->  		.max_upscale_factor = 8,
->  		.max_downscale_factor = 8,
->  		.dly = { 20, 47, 41 },
-> -- 
-> 2.30.2
-> 
-> 
-> -- 
-> Pengutronix e.K.                           |                             |
-> Steuerwalder Str. 21                       | https://nam12.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.pengutronix.de%2F&amp;data=05%7C01%7C%7Cc218aa7fea7b48286e2508da965601a4%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C637987593394560183%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=b5aS8NGLknpQIax9gC474MTU9CHKJOgnUq28AXFH6MM%3D&amp;reserved=0  |
-> 31137 Hildesheim, Germany                  | Phone: +49-5121-206917-0    |
-> Amtsgericht Hildesheim, HRA 2686           | Fax:   +49-5121-206917-5555 |
+Any inputs?
+Jagan.
+
+Jagan Teki (6):
+  i2c: rk3x: Add rv1126 support
+  clk: rockchip: Add dt-binding header for RV1126
+  dt-bindings: clock: rockchip: Document RV1126 CRU
+  clk: rockchip: Add clock controller support for RV1126 SoC.
+  ARM: dts: rockchip: Add Rockchip RV1126 pinctrl
+  ARM: dts: rockchip: Add Rockchip RV1126 SoC
+
+ .../bindings/clock/rockchip,rv1126-cru.yaml   |   62 +
+ MAINTAINERS                                   |    2 +-
+ arch/arm/boot/dts/rv1126-pinctrl.dtsi         |  212 +++
+ arch/arm/boot/dts/rv1126.dtsi                 |  430 ++++++
+ drivers/clk/rockchip/Kconfig                  |    7 +
+ drivers/clk/rockchip/Makefile                 |    1 +
+ drivers/clk/rockchip/clk-rv1126.c             | 1156 +++++++++++++++++
+ drivers/clk/rockchip/clk.h                    |   19 +
+ drivers/i2c/busses/i2c-rk3x.c                 |    9 +
+ .../dt-bindings/clock/rockchip,rv1126-cru.h   |  632 +++++++++
+ 10 files changed, 2529 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rv1126-cru.yaml
+ create mode 100644 arch/arm/boot/dts/rv1126-pinctrl.dtsi
+ create mode 100644 arch/arm/boot/dts/rv1126.dtsi
+ create mode 100644 drivers/clk/rockchip/clk-rv1126.c
+ create mode 100644 include/dt-bindings/clock/rockchip,rv1126-cru.h
+
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
