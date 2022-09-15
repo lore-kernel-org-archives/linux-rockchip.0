@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABC8AECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Sep 2022 02:25:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94576ECAAD8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Sep 2022 02:25:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VnlWcPoU/+zm0qYSmbIJZjinOto9IsujgIEkH5n4oJI=; b=27HbBhFeteNZi9
-	thH6lD1vJMwop5P0VaL65LSd14qGw0kjD1EAI3MM7xMGgJP9BlQguGg4yOyUxEqKztmJcVhs2A/jL
-	4oVDTUdtI2Tmgo5rwjkDfiz8FdnlHpqnHVx5vGO1cDqn7vJkAwoe1YYGcVqKvKS/q/vB4ESf+9/F8
-	nakWd8CHexYmXV0MAa4Lya1onK7cTyZJkr9ehCrO3HU7XCLfmEl4zc3HnRsM58/RgWLkU9QWghxMq
-	GGRZymdwy97i658sP95EduVhgIn9llhtHJtq72eT8+eubut72FO5BMCij0xf92zljVhXEJ7+O+FlO
-	kE//EP1HcmHiSBRLDZPA==;
+	List-Owner; bh=Om4oVAd7DLTVUomLorvmKn39Xp5Pp2o4pbbhNPdH1ms=; b=ZQvveZXFEUoQy6
+	zDe3dplX2rCAgwACnH/HCnYC9kNrjRQZK6/tfd465hbnlwHgpeVJDRBDTSgJ246EPQ37yAeNdH/lU
+	JjNBUxwIK9SrfBMh9fuoQ8TZdd9esQtZZYrw2f8+h0r/vpPiDNKI2AkoNqPpUlCZN1wGHipcp4sFj
+	WBYmhu0XbERSPpfUpYhnswWrcPolRxG3Wj2KhaRVE+YuRVXKxh5ypNhhZURKlXyIV1bwdc4JQ++TS
+	E9Xyb7rn7Z+2s2mKA7eyzAKNG1u9dbSiyLIg/rwsXS6xJncc9olbWeQ0odkX4CL0Be6yVkT4O7i5q
+	hg2/o1zSqZZ4kBxtOLuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYeZI-00FZ4t-LQ; Thu, 15 Sep 2022 02:25:32 +0000
-Received: from mail-io1-xd29.google.com ([2607:f8b0:4864:20::d29])
+	id 1oYeZT-00FZFz-Oc; Thu, 15 Sep 2022 02:25:43 +0000
+Received: from mail-il1-x129.google.com ([2607:f8b0:4864:20::129])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oYeZ5-00FYv2-UF; Thu, 15 Sep 2022 02:25:21 +0000
-Received: by mail-io1-xd29.google.com with SMTP id g8so11198891iob.0;
-        Wed, 14 Sep 2022 19:25:18 -0700 (PDT)
+	id 1oYeZ9-00FYwY-6O; Thu, 15 Sep 2022 02:25:24 +0000
+Received: by mail-il1-x129.google.com with SMTP id a9so9002129ilh.1;
+        Wed, 14 Sep 2022 19:25:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=FcCq5/dB7V3R5mFAoswVEVdxTdHGEshi3H6ToSrIfZc=;
-        b=nXZjYXKuI8InaINvQFGf0O6l5pLOWovrE5BlFiYToLUzE2rdk7W8IdY8F8qlptRLNP
-         7HcVJqrryB+5m6G/L8RM25h29asdAEth3DcIDvdWueTYXspof37QetUVs6lrfNMNphps
-         nVdmoazQWSglSi3PJFfnPBVGhQ1vvBZm9ssLnFqtgQxzuxywhyi4T46mgN/8Skh7fD7t
-         8lLDaIh2ZEssO0M2Zrgnu59+tJSkX4edEnVJeF0y8Fgct9k19QQf1yjhcOfkGO9SEQuO
-         YlTX4uMQgTR6hTqWp4ICA2VoAaXj8fHLbO381u5+pgMR/LxSpR6fyb80qslwvejn8ywc
-         KfVg==
+        bh=2NoktbIiSlqGVXDfDsvBOUaqmFnhtIoGi/ubnjmPmw0=;
+        b=n9+8j3Z+QrBs2/iOLNGP3f7ckPoQE6B8lPiep7Ltd6EquJAkn3H6+p0+c6TqYHBwRL
+         nLTHYLfS/yUxT6MB5hERxmRNUW9cXGEqE1IhBatA6EaavxjGtPWNAvyF51A+hM1Ahrh7
+         TNX/xc1qIwNfk4DwZkfnR/8yUpZ4rgpE09UlA5ZSKgQjsAMH76KvIJkfomlt1edO09XG
+         Bw24kzlMEiBIuUZVfTEms/+Q0DcogO9u5YcKh9K2joIgTGVgbpkMz2EZqw5B3odnJBpL
+         x2dMn9HG2JC50Ym+7vmeP6FnoYqlQYfA83NBAFvPgOfScbwV8XPpZ3pje+lnl1+o3ACs
+         2kbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=FcCq5/dB7V3R5mFAoswVEVdxTdHGEshi3H6ToSrIfZc=;
-        b=E7+vv6SctpmTY2p5gP4mjzxbRLQubbr4rt7iu16MaFuSW5IULZo/C8KNDSFxZTO4pR
-         wRALlmvhq8uGfwycAV+DV55ba9FYkG8fxx0TwbXJZRFayu7Ql96ExzVA/J6bO2lerRS4
-         qRWbKR+X2yCPhn0KFo6R5LFFElwkd+T3E0jclNqiOgTBXRzHjHmP3/DiTXCVOJgHc8Gl
-         vgTyFEUyj5FfVPIwDgmYj9n9YkWeBCSiJMvRoXgIyDJMgJqPBsw5IDnbCBPOQCXFRIzq
-         5Kh89/mxGYGlTYzdC0t9ilkXNf9VGYbrhJBmdLNjW48rqdbFMOZdP37Upcv3WDfWp8I7
-         cu/w==
-X-Gm-Message-State: ACgBeo3GLt+/8sE/R1Ssa3rGNuCIEW18MNLRx761MbbFnny7OIs7TfcU
-	jldxppLyCp5Fz9apnvK6Jbs=
-X-Google-Smtp-Source: AA6agR7UeT2Gsj8eCA5eJVM1A4mdD0avDGF633frBeNVkt98hM0mKYl/ldPoEiX6F4mEf7GrbROAHg==
-X-Received: by 2002:a05:6638:488d:b0:356:72f3:1c83 with SMTP id ct13-20020a056638488d00b0035672f31c83mr20134847jab.307.1663208717591;
-        Wed, 14 Sep 2022 19:25:17 -0700 (PDT)
+        bh=2NoktbIiSlqGVXDfDsvBOUaqmFnhtIoGi/ubnjmPmw0=;
+        b=mLtx3vJtpRUKcv7XY54X05p96flWiQSxtDV/NrIIR20d0+Pe6Pkw5saQYB8QyecpfD
+         q+Qhwv9ESI/+RivzVgW+5gJtmrZQ7lykCku+kyg3rIjEAnPeqYzzaQ2v0nPtGOfXIgmN
+         DVaBabrEi7Hz+6JeFG5Ko+jnv4Zf0Ra9oWDLSFSSTT0Q02X6xUb9ODNrnpWUt44gTnxx
+         qwwnmz/TgcJRjCwtwUwM3dt73mQTunBejvgf+zHv1iH2o6WvG8Sp+mnUJqDqoTIb1yfO
+         EZEu8Q/mTVdZaN28N0qzAyH+SFWghOWPlooqk6kroqLOdnoROpp/1BDQEeCXfMADn13N
+         D8Ng==
+X-Gm-Message-State: ACgBeo1wmSNRCa96XcAB6EZ6nQyhSNXYnSRxYRF3bTw5sUC/+gLTKY7Q
+	mWxI/tZvQcfRwBEhQiOyDl1F6a+layQejH7j
+X-Google-Smtp-Source: AA6agR4CbqdmJiT/nd3Gj9BxjZIEKPlErkGT+ql9DX2sJXmdOKYe8eBLeM6QlkOFEEHbAEpEdq6dgg==
+X-Received: by 2002:a05:6e02:508:b0:2eb:543:bd66 with SMTP id d8-20020a056e02050800b002eb0543bd66mr16094275ils.207.1663208719754;
+        Wed, 14 Sep 2022 19:25:19 -0700 (PDT)
 Received: from localhost.localdomain (tunnel525895-pt.tunnel.tserv15.lax1.ipv6.he.net. [2001:470:c:1200::2])
-        by smtp.googlemail.com with ESMTPSA id g3-20020a056602072300b006a11760aebbsm7238461iox.36.2022.09.14.19.25.15
+        by smtp.googlemail.com with ESMTPSA id g3-20020a056602072300b006a11760aebbsm7238461iox.36.2022.09.14.19.25.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Sep 2022 19:25:17 -0700 (PDT)
+        Wed, 14 Sep 2022 19:25:19 -0700 (PDT)
 From: Tianling Shen <cnsztl@gmail.com>
 To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
@@ -67,16 +67,17 @@ Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/2] dt-bindings: Add doc for FriendlyARM NanoPi R4S Enterprise Edition
-Date: Thu, 15 Sep 2022 10:25:10 +0800
-Message-Id: <20220915022511.4267-1-cnsztl@gmail.com>
+Subject: [PATCH 2/2] arm64: dts: rockchip: rk3399: Add NanoPi R4S Enterprise Edition
+Date: Thu, 15 Sep 2022 10:25:11 +0800
+Message-Id: <20220915022511.4267-2-cnsztl@gmail.com>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20220911040628.13774-1-cnsztl@gmail.com>
+In-Reply-To: <20220915022511.4267-1-cnsztl@gmail.com>
 References: <20220911040628.13774-1-cnsztl@gmail.com>
+ <20220915022511.4267-1-cnsztl@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220914_192519_992083_12B2425C 
-X-CRM114-Status: GOOD (  10.09  )
+X-CRM114-CacheID: sfid-20220914_192523_257498_C21A9B01 
+X-CRM114-Status: GOOD (  13.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,26 +94,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add devicetree binding documentation for the FriendlyARM NanoPi R4S
-Enterprise Edition.
+The only diffrence against the standrard edition is that the enterprise
+one has a built-in EEPROM chip which stores a globally unique MAC address.
 
 Signed-off-by: Tianling Shen <cnsztl@gmail.com>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../rockchip/rk3399-nanopi-r4s-enterprise.dts | 29 +++++++++++++++++++
+ 2 files changed, 30 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s-enterprise.dts
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 7811ba64149c..309f76b803a5 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -151,6 +151,7 @@ properties:
-               - friendlyarm,nanopi-m4b
-               - friendlyarm,nanopi-neo4
-               - friendlyarm,nanopi-r4s
-+              - friendlyarm,nanopi-r4s-enterprise
-           - const: rockchip,rk3399
- 
-       - description: GeekBuying GeekBox
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index ef79a672804a..04562f8b10ac 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -40,6 +40,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-m4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-m4b.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-neo4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-r4s.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-r4s-enterprise.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-orangepi.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-pinebook-pro.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s-enterprise.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s-enterprise.dts
+new file mode 100644
+index 000000000000..a23d11ca0eb6
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s-enterprise.dts
+@@ -0,0 +1,29 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++
++/dts-v1/;
++#include "rk3399-nanopi-r4s.dts"
++
++/ {
++	model = "FriendlyElec NanoPi R4S Enterprise Edition";
++	compatible = "friendlyarm,nanopi-r4s-enterprise", "rockchip,rk3399";
++};
++
++&gmac {
++	nvmem-cells = <&mac_address>;
++	nvmem-cell-names = "mac-address";
++};
++
++&i2c2 {
++	eeprom@51 {
++		compatible = "microchip,24c02", "atmel,24c02";
++		reg = <0x51>;
++		pagesize = <16>;
++		size = <256>;
++		#address-cells = <1>;
++		#size-cells = <1>;
++
++		mac_address: mac-address@fa {
++			reg = <0xfa 0x06>;
++		};
++	};
++};
 -- 
 2.25.1
 
