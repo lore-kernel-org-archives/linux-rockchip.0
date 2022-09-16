@@ -4,69 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 078A7ECAAD8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Sep 2022 19:30:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0297ECAAD8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Sep 2022 19:57:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PxtSJVi+NB3T8vpsuXrchdZl0iuvkdLgo6TubtpgT00=; b=GTYAJb8fPKbVbQHyo/MPDXBsjF
-	pnS+PSltEojWV0Spekd+qWJyLbasPG7Uoil3HlTRvGbFl+UKa2jiso+/jdA8swsbIgPCB+AQvNAYL
-	M+BXd0r3WQtGIWOh8kbAtTm82n4Z5ApZXWrliuY7ciNlne6T3tPORi4FtlHBanZ5tMiG6jQiGobnV
-	ZZWopXoLJuer9sRsWUlQQbVt98NQDYsXK9yK7uKIs0EAy6zpP0V3Bvwdi5a8MoEAGVBLZhGHTXRCs
-	KiutbetH/cwRF65aix3i0eyD7jPEwYb4UkFpqRwcp8upeU7pVobmiYL9iDI3ZDkaftRmUEiwfhyW1
-	9iFKtwGg==;
+	bh=AK8q/XE/urXQkt4lLmzyt+0y4v/xMSPxPyfHGrTcbCA=; b=ALxneEzpUgqmWGj0igMVA7/Ytq
+	9x/708xTGE071Bep73w6I2WQnwni893djxRTe50qoAJXMkggumJRpghdmCt2rX7WQf12cSpH/MECN
+	O8LyLvKEJQ54EZjMjY4pwJMPaUZlrZctR1XgSCwpyETOqIcgIi4tqblX94lvTcrCe/iuCoJE9m60N
+	xuI8/qto3DtMPO5vRSNspgBHJpSdX3Ay/tcPFot8Vl79J+JizM4+/zNr1MCVqQAI1YKeZEb6l/d8T
+	A1xZd4GUavQlwwJfQrgG8orUP2jZ8PC0OZjiJuNBUe17uBDJuOjXZ9ix+epD5hZUz1jWEPtmk04qp
+	iD/oDVew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZH2S-00GGxp-UQ; Fri, 16 Sep 2022 19:30:13 +0000
+	id 1oZHT0-00GU7r-EA; Fri, 16 Sep 2022 19:57:38 +0000
 Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZH1m-00GGjk-Rv; Fri, 16 Sep 2022 19:29:33 +0000
+	id 1oZHSk-00GU0f-Ea; Fri, 16 Sep 2022 19:57:23 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 4F6FA62D19;
-	Fri, 16 Sep 2022 19:29:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0E12C433D6;
-	Fri, 16 Sep 2022 19:29:27 +0000 (UTC)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 590A5620F0;
+	Fri, 16 Sep 2022 19:57:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2545C433D7;
+	Fri, 16 Sep 2022 19:57:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663356568;
-	bh=tzk3t7V8ttjBET+05bB6lS+OgI6VS5dvuGoiNpicLww=;
+	s=k20201202; t=1663358240;
+	bh=vCLtuY1TpVMliumE5DbT2WWZvJ7/teLjaPmFO/zeNJs=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RzbbWAXJW7SXapU3aGxzwC7Sa8pTk/Vea6SsDBwP4M97X8gqO9KDphV0fKC5AJ3Wl
-	 vjx690OkvIPiDHppuBWeAYYLBTjPddbvzwg6KI2NEBwmLYYgzg0e6OIw17ZO7A3G+k
-	 Goe3nbhelxdw9W9Z6/NrLurRpLUnEJnVmhoIrFfgnfI9HwbEUW8n3FpfiVQEcjDtJd
-	 ekxEFMcWS+v/W6PgUYLAu4V3tBLFiK7s5OjNCj22YN2z/uKrmfbtM12srhG7LCzXbi
-	 /TEdu6ILDL7j5aXufhxCgaon7RVMmIvJp6zS8nk76/4iAuqzwCoAJGZmTUzmOl05H+
-	 GB2K5Ntnw82nQ==
-Date: Fri, 16 Sep 2022 20:29:08 +0100
+	b=IOX0u1Ga5jI3fyqBR9wRY7ly+OLINlk+lX+/BsGejMs60jVRDL8sIKqdSt3XILF3S
+	 3K8SPRau6FUTQjVtbE6TEJNBmBOBPcPVQXi8OX57u4C0HVoKJPkMEEJ00ksU2lEwGs
+	 eneNMJ1+ZnjxnQkCh/cvuyCe2+sDYCEoDJMO2dCn8QTVKtHj5HclYZhNhoQ3rUjl8F
+	 tLS/O8FsgwubYS4qOpznp7bdKsC95dfNfY+vQCoCjDHNxc5H6XhL91QFFlfKlKIRzu
+	 6tQdmHN/uGcOz3u/YXt0EebKPWSOF1vo6zXrc1qJQEZh8QfmRKs6RTMPWgVqS4lGYT
+	 5hmw0V5iFK+MA==
+Date: Fri, 16 Sep 2022 20:57:18 +0100
 From: Wolfram Sang <wsa@kernel.org>
-To: Jagan Teki <jagan@edgeble.ai>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-i2c@vger.kernel.org, David Wu <david.wu@rock-chips.com>
-Subject: Re: [PATCH v5 1/6] i2c: rk3x: Add rv1126 support
-Message-ID: <YyTOhBJdK8l2ZTVQ@shikoro>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: kever.yang@rock-chips.com, sjg@chromium.org, philipp.tomsich@vrull.eu,
+	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+	heiko@sntech.de, ulf.hansson@linaro.org, miquel.raynal@bootlin.com,
+	richard@nod.at, vigneshr@ti.com, kishon@ti.com, vkoul@kernel.org,
+	thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
+	gregkh@linuxfoundation.org, broonie@kernel.org,
+	wim@linux-watchdog.org, linux@roeck-us.net,
+	zhangqing@rock-chips.com, jamie@jamieiles.com,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-i2c@vger.kernel.org, linux-mmc@vger.kernel.org,
+	linux-mtd@lists.infradead.org, linux-phy@lists.infradead.org,
+	linux-pwm@vger.kernel.org, linux-serial@vger.kernel.org,
+	linux-spi@vger.kernel.org, linux-usb@vger.kernel.org,
+	linux-watchdog@vger.kernel.org
+Subject: Re: [PATCH v1 02/11] dt-bindings: i2c: rockchip: add
+ rockchip,rk3128-i2c
+Message-ID: <YyTVHph1bCF/gfjL@shikoro>
 Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
-	Jagan Teki <jagan@edgeble.ai>, Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	linux-i2c@vger.kernel.org, David Wu <david.wu@rock-chips.com>
-References: <20220915163947.1922183-1-jagan@edgeble.ai>
- <20220915163947.1922183-2-jagan@edgeble.ai>
+	Johan Jonker <jbx6244@gmail.com>, kever.yang@rock-chips.com,
+	sjg@chromium.org, philipp.tomsich@vrull.eu, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+	ulf.hansson@linaro.org, miquel.raynal@bootlin.com, richard@nod.at,
+	vigneshr@ti.com, kishon@ti.com, vkoul@kernel.org,
+	thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
+	gregkh@linuxfoundation.org, broonie@kernel.org,
+	wim@linux-watchdog.org, linux@roeck-us.net,
+	zhangqing@rock-chips.com, jamie@jamieiles.com,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-i2c@vger.kernel.org, linux-mmc@vger.kernel.org,
+	linux-mtd@lists.infradead.org, linux-phy@lists.infradead.org,
+	linux-pwm@vger.kernel.org, linux-serial@vger.kernel.org,
+	linux-spi@vger.kernel.org, linux-usb@vger.kernel.org,
+	linux-watchdog@vger.kernel.org
+References: <20220909212543.17428-1-jbx6244@gmail.com>
+ <405db21d-154e-fed0-7524-ace1cef0203c@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20220915163947.1922183-2-jagan@edgeble.ai>
+In-Reply-To: <405db21d-154e-fed0-7524-ace1cef0203c@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220916_122931_017948_C501CD74 
-X-CRM114-Status: GOOD (  12.43  )
+X-CRM114-CacheID: sfid-20220916_125722_585949_47D19B78 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,58 +98,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1491795585715871361=="
+Content-Type: multipart/mixed; boundary="===============4861950189223724558=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============1491795585715871361==
+--===============4861950189223724558==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="F0ZKK/iF5YjAHD4y"
+	protocol="application/pgp-signature"; boundary="Vbp8ZsxZHEPG+tBR"
 Content-Disposition: inline
 
 
---F0ZKK/iF5YjAHD4y
+--Vbp8ZsxZHEPG+tBR
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Sep 15, 2022 at 10:09:42PM +0530, Jagan Teki wrote:
-> Add i2c support for Rockchip RV1126 SoC.
+On Sat, Sep 10, 2022 at 12:02:30AM +0200, Johan Jonker wrote:
+> Add rockchip,rk3128-i2c compatible string.
 >=20
-> Cc: linux-i2c@vger.kernel.org
-> Cc: Wolfram Sang <wsa@kernel.org>
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Signed-off-by: David Wu <david.wu@rock-chips.com>
-> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 
 Applied to for-next, thanks!
 
 
---F0ZKK/iF5YjAHD4y
+--Vbp8ZsxZHEPG+tBR
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmMkzoAACgkQFA3kzBSg
-KbZf2g//QOd14HvALQA/110/bhCs/fkCXunLYK8UNZnXsYR3gC1SFnK0uDv2ftAu
-L3fbFWEP9Us9KOcFK9VgQhc9sAEtU3lii8YUkaFd3GC7cAOi7p7zEaYSVQDdfs95
-IBlHYHC1AbiS8znPoH6arF1nqT9oz9qqlf94rIhnALlasOeErE4XcycottveI4sy
-F9upSlApWK1h1sVhYqT+FikVx7L4IxRk7RLbedngeaISQpcT29zsbCmFFkAwET/2
-jWcD1X5SVDD5u+iHYc4zrxKEWHWzngDBdt5+0GDPMg62hV/FtMu7ZAPpEuPsQ56s
-beDsOcj6Tm90G+pL5/0iXal/nw64YLFHVgzOeBPh3kznID+TBRr4dcxQekp7fz8T
-uL0San1A+Oy+E0qgqI+IOvb3tO0UWWwQznYGEw12Uh7dunF04MP/rA3tnyX9yvRR
-+nhd0fP6z6Uw3nSaX5ZwR+8pgM3tyBFAmk0O97iprY3yA3rvF3E4+f+rko9L4TKm
-e4z2WApfGFO2jwXtYRJ1vl0Bpoy/yibLvqibV8l2ugsboubBl3uvc3r+FOC4oox2
-RWtAbv4o86gJVEQPpXCKgDBYXUBYgnNVxEyotl1OEDe6MKAI8NLJkMy19xtwPZHI
-/KaBbvaGdDPpinc8FU4Th0jcHLbJTUkLL+eSVLsj8M1gaBzslaQ=
-=K0E9
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmMk1R4ACgkQFA3kzBSg
+KbY8YxAAqkmITIjJchmw2BH4eehoxFiSAW8VYh6gojn2S2RgQjSwZsHnR8E8FMIu
+eUeROZH0Wd/Mihi8hLz9Fm3/aTSxUss5Zj2hzFr2RGOHqsicHtx622HwdTakfM08
+6NFWuuBya9tGX4iujN+oQsnI1NA8mDPNEIE8tMEh1wBzOY5m/ijAJLIALJ/cB/qj
+4MGIK9aKg9PfU3nSd0b+9Dn7iZDClo6CnBeKCAHhUeF+DoKzdLsl3FQzNtcIxS1+
++NL48AB8Kst01hfZHKpuUriTDT2lXfBeQi5NEKNRyc+1fEWBshPat1tYRlEfs9BA
+WAHNZkh3q8qsSDPh2lufGmmOhuX3pUumWAwHfHgbZksNtPj5ldSTXhUciPPHeufb
+Rf+Ne4WaMMX4JOJJ70wMKn+ycaJYRulfiOacroqTqTH7rSX+NuioTEtITA2KMa3q
+4WfMmHrJe3qLPhEkLXabhrYwMcAWkHaPDJ6dJJbHfxRtR0F8y0DMpyJrCRsF9TcS
++8Hqcq+y5bxc9n/eDxSrSQXXoEQLBFjGeJfCz4D+n6oOWv/6dxMe8dZyU7vq/Ea8
+0DApwW0esWTGZuuV5r2xmncP/4+spn2C2FCOI1ZqCPs2T3Kd7DPBEMPnp7UQRZFO
+cVkNoe0c0N9yQjMEVi9+aqqDWefE6imYt3d3PXqcHEYoHYqHON4=
+=t7C7
 -----END PGP SIGNATURE-----
 
---F0ZKK/iF5YjAHD4y--
+--Vbp8ZsxZHEPG+tBR--
 
 
---===============1491795585715871361==
+--===============4861950189223724558==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -140,5 +156,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============1491795585715871361==--
+--===============4861950189223724558==--
 
