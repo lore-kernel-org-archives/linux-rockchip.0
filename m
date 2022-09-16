@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8925ECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Sep 2022 16:00:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CA28ECAAD8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Sep 2022 16:04:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4kPJu/mlpSdQSQr+P/3wIMTIWIn3yrF3nDCiVJXfKrw=; b=LVIOqFrkg9fQtN
-	9YIvgMvs0S6mhtRP5oiD3dOXW3TwK14rGlaJwmBYWqDMhzpyviQlbOM1C/ar8mOOk0f8mOcbj95Wr
-	WiDUujxxvJT1jfg8SbgMw5qEOna+2StgcPPQ4MPPNZTfXVfxfUIAA1SOIwb5Mh6cbpWhtfIQw2e8f
-	xPff7iTQtpwyy499CEGWazvNbelNzk+6wTdPpsMu3MxCj4VMmztQGSY02rMzQYE+oYPHennaXhrI0
-	nzGec1mzgNglhv+LtLs5oP48HVtO8FhXdx4KkXNRZ1eGy/ZuIvIvXHDr8FPZymRUnP+w2GZPr50KH
-	igcBRwud7yrd4TWqjBsw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From
+	:Date:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mAkAL/oD4mz7wautyb8luUQNgNGwh4CpEgp3VcPDfvw=; b=jD5+5y77uOgk6j
+	NBElI2f+wz8YYKVqpjcT4sdLDwaj6XYApVxxE/hVbCFOVfoCdNb5frIHZ27y+qEz9DGcLnCfJMnc+
+	JNN39tmwlkqSqIz5B4J65w32Rumd7dAyzABi2WjrqpaqSoU7oAta0XsiAs8xf7baOdtjWbo7dTgiN
+	2/1elR3kcCPZJzSF9eL3e/OhM4ej1PPuERxx+KXUZkSnmXS9RXEZ5cRWuqE9x0DliTvBugsUylb+f
+	LMAeLIbE68w3vj0ASO1cD8ZpKz6f32S3eGQj4jE5p7oguq6AQXFQLs8eSSH1y4/8pidNMlfULi5P9
+	wersRpYqxAodu2SJIVNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZDkh-00Eo49-Qc; Fri, 16 Sep 2022 15:59:39 +0000
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+	id 1oZDow-00EpsL-Ks; Fri, 16 Sep 2022 16:04:02 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZDkT-00Eny5-Dj; Fri, 16 Sep 2022 15:59:26 +0000
-Received: by mail-ej1-x635.google.com with SMTP id bj12so50322258ejb.13;
-        Fri, 16 Sep 2022 08:59:21 -0700 (PDT)
+	id 1oZDob-00EpjK-9m; Fri, 16 Sep 2022 16:03:42 +0000
+Received: by mail-ed1-x534.google.com with SMTP id z97so32117413ede.8;
+        Fri, 16 Sep 2022 09:03:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date;
-        bh=0eOqMrsEPlo8wf0Kb/kFeTkXHYSCkhl/zlKEpzl3GUU=;
-        b=gmfWSQs3LmqC3lPZz6lRjnb/2ggeGEEHLUBxU1OLJpLVLP4A7WoN54WvtK4PvmRago
-         DJ9oDYAR4M8yLdwcNKjJEqQrw2KjX20ioimVvQ+pgFXJsBbEYSKFYcD1ILYkCEV453tS
-         Jfaoy30nBTJHahfepA+1qFu9skK6DuZMvkYFOgrXUAmvuznVk1HPyPUVudHJNgg4w5Et
-         KKyGAz2tHFco7JBCiAn2U1suRoxbPiErP4StNYJdTevGeqKHu606Uj/UithsHYQkYqLA
-         kw+V+dTqrFrMDlXCZZ63vPwUH5+R8XvRfjoVwMeH5wmpQvpWeNardHMOtp444A5WTeee
-         rnzw==
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date;
+        bh=0tzsYhIa/dJvbCToayIrS0oYwHSfAteRC0zZoxGOrYs=;
+        b=ood1pSNoIDGVsXsJLLimQBf0wBeePDy5702cPx3nGCu0Tnl5hw29tfYIC6dLIOgtyI
+         FCvrpwOEjXHHFrpZ8hDRrIpUYxFl+eIS42VhT4Mj8vjyvHWojC675/LjbrLdtzIqeFMh
+         f8Y5jsO50gTRwTenIEEMto21rJ2DEVR7uTQOYNUkyJFRiynrJhVfYed2GCMrrcgIoIc5
+         JkAYBUZwukXx3y4hgSTK8IuDAvMvWCL6gzq9A/66QgqK1voi7i17NXA0da+TyO/VfiVF
+         +FKM1XvridpgPulfJUEikthb2GszkqrgaE49V+rRINW5pHeFY73yFj0ckEeI8Phxx7UZ
+         nzWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=0eOqMrsEPlo8wf0Kb/kFeTkXHYSCkhl/zlKEpzl3GUU=;
-        b=FeeNew1Y0PYRDeLgQYJzkkcZhMJiXXBTmglXT2uCvmqEycOJX8gI2sFDH2/aHYibnK
-         On7AOGDrYcBwjiOi4IcIhI34GVuIvYncvuRv3MQ2LTnyeOZOMVE0los5YvDr6f8Cnxzg
-         vUbga8T9qeCh62JUWbRpcVOA1yZaxg7A9PO09ApcCyHyFhsvcttN8XJBjww18z0quzUI
-         vRHQc6Mh2GFcIGFvI4OzVK+F2mc+viGRmy1DiqnfChDThp4Xg42QaAuvNkyPMDdytvvR
-         QGeZOHJIPlKIQKSGg/zdNTidqblnrFlKmg5DM51gedVFwupH0s73ETFK2w/p6D8ZsqtW
-         rGyg==
-X-Gm-Message-State: ACrzQf3e/XGLFEH715voxxDxVYwL/UByjTL3HsgPLJbmDzArZ/Hc0YXt
-	17dyIBWB36kZ8L+ieH8MRB4=
-X-Google-Smtp-Source: AMsMyM7d7ML3/4FI57O/qGJTqdztH/7vmNeZp6oIqHbhq3K1SwPiHviL8jifBmzWTeiZcHwH/46FZQ==
-X-Received: by 2002:a17:906:7945:b0:73b:e605:f31 with SMTP id l5-20020a170906794500b0073be6050f31mr4090685ejo.129.1663343959977;
-        Fri, 16 Sep 2022 08:59:19 -0700 (PDT)
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=0tzsYhIa/dJvbCToayIrS0oYwHSfAteRC0zZoxGOrYs=;
+        b=T9MRmptmrJKaubpAVBYV3cd+QZlAgNf+PvkHwLiVr9qLv7gs/VjJYs2IR2qZtrtsZP
+         jmKn8sIUOyFcLmfXBkTgn2ZsH9x78vXNHJyEwqzQgHHW5ihFTPrQs/P61CUM5tLFcHVj
+         V72Rst5JhgeI2uA7o9Jc8flzHhH7FsSmrIScQj0dP5gMoDf31l8ZiZuVUxMs1SbJR006
+         IQt1dGwRfh4VbvXUg7zlohFnlF3ngDBnXTqKeNfAPwVWoXTplN4+ca2XiV+y219AwLDQ
+         2EEC/hUaJkaLWm27zpJCUS9w6ivFmGE1MurxhlKhaHqUwxGANqAAqjAWeWbzSGHOIP8s
+         wkXw==
+X-Gm-Message-State: ACrzQf0eF7p6kHTfAlxQmNvM45XIZd0GPLVYH+lda2srXB1x1qq5geOd
+	5kHy3yj12PR6fE/3dFgoW0k=
+X-Google-Smtp-Source: AMsMyM5npQxF7K1v7kagePkuwRUXy27ta1vg9zfBOyLq7NF5/u9kulaO10bqfVSrJZ3HjJZO6N9woQ==
+X-Received: by 2002:a05:6402:34c8:b0:451:c7db:4984 with SMTP id w8-20020a05640234c800b00451c7db4984mr4523980edc.171.1663344217479;
+        Fri, 16 Sep 2022 09:03:37 -0700 (PDT)
 Received: from lab.hqhome163.com ([194.183.10.152])
-        by smtp.gmail.com with ESMTPSA id u3-20020a05640207c300b00451e3160451sm9437675edy.89.2022.09.16.08.59.18
+        by smtp.gmail.com with ESMTPSA id la6-20020a170907780600b0078015cebd8csm4780157ejc.117.2022.09.16.09.03.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Sep 2022 08:59:18 -0700 (PDT)
-Date: Fri, 16 Sep 2022 15:54:31 +0000
+        Fri, 16 Sep 2022 09:03:36 -0700 (PDT)
+Date: Fri, 16 Sep 2022 15:58:50 +0000
 From: Alessandro Carminati <alessandro.carminati@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>,
+To: Rob Herring <robh+dt@kernel.org>,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] Add sata version of the quartz64-a board
-Message-ID: <YyScN7ezdngpRxq/@lab.hqhome163.com>
-References: <YyRxx4zovhMMeQYV@lab.hqhome163.com>
- <2385186.jE0xQCEvom@phil>
- <2145659.NgBsaNRSFp@phil>
+Subject: [PATCH v3 1/3] arm64: dts: rockchip: k3566-quartz64-a: fix names
+ entries
+Message-ID: <YySdOhxoFI/hkRN3@lab.hqhome163.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <2145659.NgBsaNRSFp@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220916_085925_494481_8A650590 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20220916_090341_360257_857710D3 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,29 +88,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Thank you for the review.
-While I wait for the dt-maintainers direction, I will fix the patch following your advice.
-Shortly, I'll post the new version.
+Fixes: "No underscores in node names" general rule,
+Fixes: The newly agreed on scheme for regulators to have
+"-regulator" at the end
 
-Alessandro
+Signed-off-by: Alessandro Carminati <alessandro.carminati@gmail.com>
+---
+ .../boot/dts/rockchip/rk3566-quartz64-a.dts   | 22 +++++++++----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+index d943559b157c..a30b17fd3c27 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+@@ -28,7 +28,7 @@ gmac1_clkin: external-gmac1-clock {
+ 		#clock-cells = <0>;
+ 	};
+ 
+-	fan: gpio_fan {
++	fan: gpio-fan {
+ 		compatible = "gpio-fan";
+ 		gpios = <&gpio0 RK_PD5 GPIO_ACTIVE_HIGH>;
+ 		gpio-fan,speed-map = <0    0
+@@ -38,7 +38,7 @@ fan: gpio_fan {
+ 		#cooling-cells = <2>;
+ 	};
+ 
+-	hdmi-con {
++	hdmi-connector {
+ 		compatible = "hdmi-connector";
+ 		type = "a";
+ 
+@@ -116,7 +116,7 @@ simple-audio-card,codec {
+ 		};
+ 	};
+ 
+-	vcc12v_dcin: vcc12v_dcin {
++	vcc12v_dcin: vcc12v-dcin-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc12v_dcin";
+ 		regulator-always-on;
+@@ -139,7 +139,7 @@ vbus: vbus {
+ 		vin-supply = <&vcc12v_dcin>;
+ 	};
+ 
+-	vcc3v3_pcie_p: vcc3v3-pcie-p-regulator {
++	vcc3v3_pcie_p: vcc3v3-p-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+ 		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
+@@ -151,7 +151,7 @@ vcc3v3_pcie_p: vcc3v3-pcie-p-regulator {
+ 		vin-supply = <&vcc_3v3>;
+ 	};
+ 
+-	vcc5v0_usb: vcc5v0_usb {
++	vcc5v0_usb: vcc5v0-usb-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc5v0_usb";
+ 		regulator-always-on;
+@@ -165,7 +165,7 @@ vcc5v0_usb: vcc5v0_usb {
+ 	 * the host ports are sourced from vcc5v0_usb
+ 	 * the otg port is sourced from vcc5v0_midu
+ 	 */
+-	vcc5v0_usb20_host: vcc5v0_usb20_host {
++	vcc5v0_usb20_host: vcc5v0-usb20-host-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+ 		gpio = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
+@@ -177,7 +177,7 @@ vcc5v0_usb20_host: vcc5v0_usb20_host {
+ 		vin-supply = <&vcc5v0_usb>;
+ 	};
+ 
+-	vcc5v0_usb20_otg: vcc5v0_usb20_otg {
++	vcc5v0_usb20_otg: vcc5v0-usb20-otg-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+ 		gpio = <&gpio4 RK_PB5 GPIO_ACTIVE_HIGH>;
+@@ -187,7 +187,7 @@ vcc5v0_usb20_otg: vcc5v0_usb20_otg {
+ 		vin-supply = <&dcdc_boost>;
+ 	};
+ 
+-	vcc3v3_sd: vcc3v3_sd {
++	vcc3v3_sd: vcc3v3-sd-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-low;
+ 		gpio = <&gpio0 RK_PA5 GPIO_ACTIVE_LOW>;
+@@ -201,7 +201,7 @@ vcc3v3_sd: vcc3v3_sd {
+ 	};
+ 
+ 	/* sourced from vbus and vcc_bat+ via rk817 sw5 */
+-	vcc_sys: vcc_sys {
++	vcc_sys: vcc-sys-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc_sys";
+ 		regulator-always-on;
+@@ -212,7 +212,7 @@ vcc_sys: vcc_sys {
+ 	};
+ 
+ 	/* sourced from vcc_sys, sdio module operates internally at 3.3v */
+-	vcc_wl: vcc_wl {
++	vcc_wl: vcc-wl-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc_wl";
+ 		regulator-always-on;
+@@ -249,7 +249,7 @@ &cpu3 {
+ 
+ &cpu_thermal {
+ 	trips {
+-		cpu_hot: cpu_hot {
++		cpu_hot: cpu-hot {
+ 			temperature = <55000>;
+ 			hysteresis = <2000>;
+ 			type = "active";
+-- 
+2.34.1
 
-On Fri, Sep 16, 2022 at 03:18:28PM +0200, Heiko Stuebner wrote:
-> Hi again,
-> 
-> Am Freitag, 16. September 2022, 15:12:10 CEST schrieb Heiko Stuebner:
-> > > +&sata1 {
-> > > +	status = "okay";
-> > > +};
-> > 
-> > I guess you may want to disable the now unused usb controller?
-> 
-> ignore that ... I just realized that is was kept disabled by patch1
-> 
-> 
-> Heiko
-> 
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
