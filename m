@@ -4,89 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0297ECAAD8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Sep 2022 19:57:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B18D4ECAAA1
+	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Sep 2022 01:41:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AK8q/XE/urXQkt4lLmzyt+0y4v/xMSPxPyfHGrTcbCA=; b=ALxneEzpUgqmWGj0igMVA7/Ytq
-	9x/708xTGE071Bep73w6I2WQnwni893djxRTe50qoAJXMkggumJRpghdmCt2rX7WQf12cSpH/MECN
-	O8LyLvKEJQ54EZjMjY4pwJMPaUZlrZctR1XgSCwpyETOqIcgIi4tqblX94lvTcrCe/iuCoJE9m60N
-	xuI8/qto3DtMPO5vRSNspgBHJpSdX3Ay/tcPFot8Vl79J+JizM4+/zNr1MCVqQAI1YKeZEb6l/d8T
-	A1xZd4GUavQlwwJfQrgG8orUP2jZ8PC0OZjiJuNBUe17uBDJuOjXZ9ix+epD5hZUz1jWEPtmk04qp
-	iD/oDVew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4gaNl52kag5iSkWK35asa5WHCFePRG7/tApu7JQnYLw=; b=hcoEIag/HdPpiL
+	FoIAOdPJt8UBsmdd5jnQlOdSLj0OjDj17nI8l40jPeXappKREp7q4xDqcBXPjKq1pfB9ZSR+0F6Cb
+	Wy4rsz4c+t3UBv3lkKpOZHKLwXabfSrFHvjhm4sMBxoCW+68V4VjsNtXv39GpfEZZ/McutCpA66GT
+	9yF5HZ25up79RBy59RsZ3sBQ4v7Y8OrWvS9oZ1G+vntB1Mvlzl9Vtm3c/FX9NyJugridoM7WojFWk
+	iO4BMYJxsfgtzTfo+v54hkxfjnNYSvijKUqtek5OS5O/a0KAFRwBiRQI3f3xlmVSTca2TuY0GU465
+	WN2CVvsQo5eWfF0jnipQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZHT0-00GU7r-EA; Fri, 16 Sep 2022 19:57:38 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1oZMp4-001TRD-7a; Sat, 17 Sep 2022 01:40:46 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZHSk-00GU0f-Ea; Fri, 16 Sep 2022 19:57:23 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 590A5620F0;
-	Fri, 16 Sep 2022 19:57:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2545C433D7;
-	Fri, 16 Sep 2022 19:57:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663358240;
-	bh=vCLtuY1TpVMliumE5DbT2WWZvJ7/teLjaPmFO/zeNJs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IOX0u1Ga5jI3fyqBR9wRY7ly+OLINlk+lX+/BsGejMs60jVRDL8sIKqdSt3XILF3S
-	 3K8SPRau6FUTQjVtbE6TEJNBmBOBPcPVQXi8OX57u4C0HVoKJPkMEEJ00ksU2lEwGs
-	 eneNMJ1+ZnjxnQkCh/cvuyCe2+sDYCEoDJMO2dCn8QTVKtHj5HclYZhNhoQ3rUjl8F
-	 tLS/O8FsgwubYS4qOpznp7bdKsC95dfNfY+vQCoCjDHNxc5H6XhL91QFFlfKlKIRzu
-	 6tQdmHN/uGcOz3u/YXt0EebKPWSOF1vo6zXrc1qJQEZh8QfmRKs6RTMPWgVqS4lGYT
-	 5hmw0V5iFK+MA==
-Date: Fri, 16 Sep 2022 20:57:18 +0100
-From: Wolfram Sang <wsa@kernel.org>
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: kever.yang@rock-chips.com, sjg@chromium.org, philipp.tomsich@vrull.eu,
-	robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
-	heiko@sntech.de, ulf.hansson@linaro.org, miquel.raynal@bootlin.com,
-	richard@nod.at, vigneshr@ti.com, kishon@ti.com, vkoul@kernel.org,
-	thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
-	gregkh@linuxfoundation.org, broonie@kernel.org,
-	wim@linux-watchdog.org, linux@roeck-us.net,
-	zhangqing@rock-chips.com, jamie@jamieiles.com,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-mmc@vger.kernel.org,
-	linux-mtd@lists.infradead.org, linux-phy@lists.infradead.org,
-	linux-pwm@vger.kernel.org, linux-serial@vger.kernel.org,
-	linux-spi@vger.kernel.org, linux-usb@vger.kernel.org,
-	linux-watchdog@vger.kernel.org
-Subject: Re: [PATCH v1 02/11] dt-bindings: i2c: rockchip: add
- rockchip,rk3128-i2c
-Message-ID: <YyTVHph1bCF/gfjL@shikoro>
-Mail-Followup-To: Wolfram Sang <wsa@kernel.org>,
-	Johan Jonker <jbx6244@gmail.com>, kever.yang@rock-chips.com,
-	sjg@chromium.org, philipp.tomsich@vrull.eu, robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
-	ulf.hansson@linaro.org, miquel.raynal@bootlin.com, richard@nod.at,
-	vigneshr@ti.com, kishon@ti.com, vkoul@kernel.org,
-	thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
-	gregkh@linuxfoundation.org, broonie@kernel.org,
-	wim@linux-watchdog.org, linux@roeck-us.net,
-	zhangqing@rock-chips.com, jamie@jamieiles.com,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-mmc@vger.kernel.org,
-	linux-mtd@lists.infradead.org, linux-phy@lists.infradead.org,
-	linux-pwm@vger.kernel.org, linux-serial@vger.kernel.org,
-	linux-spi@vger.kernel.org, linux-usb@vger.kernel.org,
-	linux-watchdog@vger.kernel.org
-References: <20220909212543.17428-1-jbx6244@gmail.com>
- <405db21d-154e-fed0-7524-ace1cef0203c@gmail.com>
+	id 1oZMom-001TFQ-Pp; Sat, 17 Sep 2022 01:40:30 +0000
+Received: by mail-wr1-x431.google.com with SMTP id g3so17714013wrq.13;
+        Fri, 16 Sep 2022 18:40:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date;
+        bh=n9n8tkr4zFtS3Gqksx14AwLvb33nBr6DZn7TLl3O0b8=;
+        b=lIPZjSDpaEpyLGb30qkJZZTnrdz4VXMJzfCY4sA8XK7Lk3pWzWBBV0HneizM0Y27YU
+         zzk9S3FLFJnnX43iFrRFtv41QZS2O+rOcQXm4KVPiVvILCE/gE1gGP+Ac2ew8AR18xyY
+         Y9bn/cLS3oKmIQY/0z7+MBPLy5uuQ3j7h2aLvFkj/yqUNc0ez8JhhI0zKPuXVDc/i+GD
+         OcgDae24sXTk07m2cPbBiqg/zFAYu5yZ0wmpv6s7Hjszq6XIksAV7+7Ps+YCJVKDzf+D
+         wVvWXeaX8EWiAl0jaKTxnKzxt/v7fsekXh8/MvJYMEoSmsAt2fJPWjmNuuYNbTeUHClO
+         SvPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date;
+        bh=n9n8tkr4zFtS3Gqksx14AwLvb33nBr6DZn7TLl3O0b8=;
+        b=57DIAdna8+/r6kzaUEidqUrv2bcJLe0NCsadJjQtROZSq3NiiYzjONG7cs56qKnkOM
+         qNwP6dIxgFKGjXIHUHMFBvApmzpzg1UGBLZb/IEMmlwT1qWrJ4CVAS6/ckmH0ZeJHNzN
+         KQr5aekx3FrqeMgf5ua7kgSWk0g9IUd4OMNlCZI96ILFH0ySXfPCYsdRyeUR9EsWZT4k
+         FrmVFJBSnJeVbif/Ffux6wmD+RdVuBbRuMyomAkM6x5dq0r7oDVe4atfIfen1xMYXIZy
+         cWGGkDnY+9v3BYy9OI4T0znyooFpKHh77EPdZkiXdPjP4l+D2ffAH7BOzmcs8Vquc3cc
+         RJ8w==
+X-Gm-Message-State: ACrzQf35q61UvzkZ/IQiv6/f75dinQ50RSqYRGrpBAH6mVn1cwjepKbm
+	qcd/3sTgcfple3cKwZMdomq8o5qFx+PlvKlDyNkpypflb4s=
+X-Google-Smtp-Source: AMsMyM4v0vEb/RzDwFzi8XMH1K+KBvYVKNWnXZo51ZhOesp+cgw/Z7rqE2eD3iHn7w+A53KKYl9PRUoK4tGE2QHMBOs=
+X-Received: by 2002:a5d:598a:0:b0:22a:45af:1ce2 with SMTP id
+ n10-20020a5d598a000000b0022a45af1ce2mr4387382wri.539.1663378818197; Fri, 16
+ Sep 2022 18:40:18 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <405db21d-154e-fed0-7524-ace1cef0203c@gmail.com>
+References: <YySdhiqZgXpl0q/g@lab.hqhome163.com>
+In-Reply-To: <YySdhiqZgXpl0q/g@lab.hqhome163.com>
+From: Peter Geis <pgwipeout@gmail.com>
+Date: Fri, 16 Sep 2022 21:40:07 -0400
+Message-ID: <CAMdYzYovjSMZgpWd+ATWsv2piNc2ZtnKfB1cTBukvsnfG41g_w@mail.gmail.com>
+Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: k3566-quartz64-a: adds sata variant
+To: Alessandro Carminati <alessandro.carminati@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220916_125722_585949_47D19B78 
-X-CRM114-Status: UNSURE (   8.80  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220916_184028_854742_EC5D1CD1 
+X-CRM114-Status: GOOD (  20.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,63 +80,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4861950189223724558=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Fri, Sep 16, 2022 at 12:06 PM Alessandro Carminati
+<alessandro.carminati@gmail.com> wrote:
+>
+> The Quartz64 board is built upon Rockchip RK3566.
+> Rockchip RK3566 has two combo phys.
+> The first connects USB3 and SATA ctrl1, and the second PCIe lane and SATA
+> ctrl2.
+> The second combo phy is hardwired to the PCIe slot, where for the first,
+> the hardware on the board provides both the USB3 connector and the SATA
+> connector.
+> This DT allows the users to switch the combo phy to the SATA connector.
 
---===============4861950189223724558==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Vbp8ZsxZHEPG+tBR"
-Content-Disposition: inline
+Good Evening,
 
+NACK to this whole series. Neither works correctly in the hardware as
+is, and USB3 was decided to be left enabled as the SATA port will be
+removed completely in the next revision.
 
---Vbp8ZsxZHEPG+tBR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Very Respectfully,
+Peter Geis
 
-On Sat, Sep 10, 2022 at 12:02:30AM +0200, Johan Jonker wrote:
-> Add rockchip,rk3128-i2c compatible string.
->=20
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-
-Applied to for-next, thanks!
-
-
---Vbp8ZsxZHEPG+tBR
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmMk1R4ACgkQFA3kzBSg
-KbY8YxAAqkmITIjJchmw2BH4eehoxFiSAW8VYh6gojn2S2RgQjSwZsHnR8E8FMIu
-eUeROZH0Wd/Mihi8hLz9Fm3/aTSxUss5Zj2hzFr2RGOHqsicHtx622HwdTakfM08
-6NFWuuBya9tGX4iujN+oQsnI1NA8mDPNEIE8tMEh1wBzOY5m/ijAJLIALJ/cB/qj
-4MGIK9aKg9PfU3nSd0b+9Dn7iZDClo6CnBeKCAHhUeF+DoKzdLsl3FQzNtcIxS1+
-+NL48AB8Kst01hfZHKpuUriTDT2lXfBeQi5NEKNRyc+1fEWBshPat1tYRlEfs9BA
-WAHNZkh3q8qsSDPh2lufGmmOhuX3pUumWAwHfHgbZksNtPj5ldSTXhUciPPHeufb
-Rf+Ne4WaMMX4JOJJ70wMKn+ycaJYRulfiOacroqTqTH7rSX+NuioTEtITA2KMa3q
-4WfMmHrJe3qLPhEkLXabhrYwMcAWkHaPDJ6dJJbHfxRtR0F8y0DMpyJrCRsF9TcS
-+8Hqcq+y5bxc9n/eDxSrSQXXoEQLBFjGeJfCz4D+n6oOWv/6dxMe8dZyU7vq/Ea8
-0DApwW0esWTGZuuV5r2xmncP/4+spn2C2FCOI1ZqCPs2T3Kd7DPBEMPnp7UQRZFO
-cVkNoe0c0N9yQjMEVi9+aqqDWefE6imYt3d3PXqcHEYoHYqHON4=
-=t7C7
------END PGP SIGNATURE-----
-
---Vbp8ZsxZHEPG+tBR--
-
-
---===============4861950189223724558==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+>
+> Signed-off-by: Alessandro Carminati <alessandro.carminati@gmail.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/Makefile                   | 1 +
+>  arch/arm64/boot/dts/rockchip/rk3566-quartz64-a-sata.dts | 9 +++++++++
+>  2 files changed, 10 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-quartz64-a-sata.dts
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index 8c843f6fc3cc..1d5dd91d1a34 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -60,6 +60,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399pro-rock-pi-n10.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.1.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.2.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-a-usb3.dts
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-a-sata.dts
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-quartz64-b.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-roc-pc.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-soquartz-cm4.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a-sata.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a-sata.dts
+> new file mode 100644
+> index 000000000000..8620df7ec01e
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a-sata.dts
+> @@ -0,0 +1,9 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +
+> +/dts-v1/;
+> +
+> +#include "rk3566-quartz64-a.dtsi"
+> +
+> +&sata1 {
+> +       status = "okay";
+> +};
+> --
+> 2.34.1
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4861950189223724558==--
-
