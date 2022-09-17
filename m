@@ -4,92 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5BF0ECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Sep 2022 17:12:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4EBEC6FA82
+	for <linux-rockchip@archiver.kernel.org>; Sat, 17 Sep 2022 19:42:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:Subject:From:References:Cc:To:MIME-Version:Date:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qjceyVFpMDtCgl7ctiV/Bzx2UL69tEzWrO37Q1gzqsM=; b=ZmBWLa6HALlFtBVXMpova9w+fh
-	3/N7qs95Kr0KtknSKNrOkZ1TPQKE5I4NdIHkrjOceXx4t6BkXjM4foJpYbt8f4OEJu4rsjEWFmiI1
-	I3eAqLx9Wit2C0tA+WNpsvxLSczjo/4QppbaUB1gRdioGCfbWvoKFvD4Jc8FZ3ujV817DDFPawnkK
-	wf1Zi0J0ylXe7CwhQhoy+asdCFnSjCnPFatJ2Fo4iSvQCpTl1fBSTgknMOZ/s8TKteA+7N+WcyMEr
-	5Z+pqdH+sdZuAwDoDLrupshqhFBQ4RqfWSxIvL0X1xQTTj1VNVrRTQGEXR6tReTX5RiwC1oRqxJiZ
-	1YG5Z0eg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GPXqO48nJ6sPyyLZX6jzFXEFpVgrV+67q2NfJcvPFic=; b=kKVP79juMfd8A8
+	9StgKFr530G1aYLtUXzIvqc2MQBXu3pHQCLvwBBsalQ360isU4a/xCh5BOuZTmPX3n+9Ap9Pgtk97
+	Q7n5olqasPCjVeDDWKIZm8DvJ9l5TrrkiwsTqQzX7URI8Yo9SUNjDboSROgh8QlTlk4BYJc6DMBi0
+	rF5B/XFNpqFxOkMtfydthJ/qLR7ZEcoHjZHcaDO2RV5odniVcefr9BIreD141kSzTJZqw70LJNkAO
+	/PY+shCGb2250nJOx0B9yiDQfN2Tcm8rVwTjqa3ViahoNciQrB40qnKwyVqzrCyzrfBQkCsNRS0jM
+	c3Y9dDZFRGrSHGHjI0ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZbMq-007WRV-7W; Sat, 17 Sep 2022 17:12:36 +0000
-Received: from wout3-smtp.messagingengine.com ([64.147.123.19])
+	id 1oZdhm-008a1o-9r; Sat, 17 Sep 2022 19:42:22 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oZbMc-007WGz-JN; Sat, 17 Sep 2022 17:12:24 +0000
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
-	by mailout.west.internal (Postfix) with ESMTP id F2C1732009E6;
-	Sat, 17 Sep 2022 13:12:15 -0400 (EDT)
-Received: from mailfrontend1 ([10.202.2.162])
-  by compute1.internal (MEProxy); Sat, 17 Sep 2022 13:12:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=sholland.org; h=
-	cc:cc:content-type:date:date:from:from:in-reply-to:in-reply-to
-	:message-id:mime-version:references:reply-to:sender:subject
-	:subject:to:to; s=fm3; t=1663434735; x=1663521135; bh=bArj9BjU9M
-	rWjWVcoZXDDd7XqFxEELIP2Z5TIthfYVk=; b=SVGA9qYmWZbvg6SUImGujYkUDc
-	xnKDdzssqV1lEo+Vv3k1w06oU+RrET8ycLGUot7lBJVmHrBZKGxb3MmJ82/Anw88
-	AJb1NAnf4CU2KSzGSIuKpDYpIfSueYA7lpcUvuo+Ofi/1ZUQDCk32eRYlfWl0PgN
-	AHfaecunke3hHsRJ/3Dys0lWJXCdKbI09kOKszbXZgoPwwRu4FG6SSGSoZHMMHcu
-	UZz+8xCP4ZE7I1RBBSUCRSu1MSXRyVsR2iPzfOfzbgO30b3xcQhQyGhAJ4mV3ylU
-	HJWTYmJtH1cGvX6jBUTlZl75KtC2ORHAiwB3l+LHj9U+tSb3VfzyA0qZ9YEw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-type:date:date:feedback-id
-	:feedback-id:from:from:in-reply-to:in-reply-to:message-id
-	:mime-version:references:reply-to:sender:subject:subject:to:to
-	:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
-	fm2; t=1663434735; x=1663521135; bh=bArj9BjU9MrWjWVcoZXDDd7XqFxE
-	ELIP2Z5TIthfYVk=; b=BJhLKL6NlxKbNVJxypIbE3jKTF7sfLW56JLUJFeSnFDr
-	fRUzuxJUXoQraEHKuT7ErRqq5Q8dQp8C5vyBnRb5/8KLvcXvQU4h/0pSrIOj4OjA
-	0AkTCUljOMov1uS+4lhmDtz0Wv2YqxxsBW9B6PYv8DgkNM5WSlKxLwPfFGpHqJPZ
-	rUiz8sm+tkMpD6z3mZqT2s5B3zSlEFJ3Nj65Swm3KoTO3ToDZDCif+n3WQhPaGj5
-	VnoTZsg/aqVuWtcjF/85IxPGdijHWC6S9DodVhsHDGlVJM0C/EoDyTWF58zFtiDy
-	UW0VJ87HV9GT1iEpJpuqkF1nsnPPLUWpOLC8QfDW9Q==
-X-ME-Sender: <xms:7_8lY-MX254mTeZTPWhIxRp7v_MFTrEIUMxioNRczaqxUrlR0PYcQQ>
-    <xme:7_8lY885-aEo8IOMt9ray5X1Kn2W4cPIczz3APS-jkLzRvg_c4Mpo7xCL049MCGLp
-    lQSoB_C-bGFNBHDyA>
-X-ME-Received: <xmr:7_8lY1TvQaWlqQo9_gKZAnrsZ_xjSC3brIeR-ybeg6bqOm0HQKmRTeJFYSpA8rOdOJPv0FkBkhVwe5Vx8pdCyovc90CkujtrzIpKbcmrH8SH8b__Xxoc2_TwVw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvfedrfedvvddgudduvdcutefuodetggdotefrod
-    ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfgh
-    necuuegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-    enucfjughrpefkffggfgfvvehfhffujggtsehgtderredtfeejnecuhfhrohhmpefurghm
-    uhgvlhcujfholhhlrghnugcuoehsrghmuhgvlhesshhhohhllhgrnhgurdhorhhgqeenuc
-    ggtffrrghtthgvrhhnpeffjedtgedvtefgfeffhfekffffueeuudeltdehtdfguefggfet
-    leffteeiueeuueenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrh
-    fuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepshgrmhhuvghlsehshhholhhl
-    rghnugdrohhrgh
-X-ME-Proxy: <xmx:7_8lY-vKa1g8ro9PZg1AG1EkpjfUHwJzpD3CES2nxQqNwOPpk2Cudg>
-    <xmx:7_8lY2dMHJX7WKShJVCTt-NL3QmcbmGV1QB8WD91vk3wnEIc6-Y3Fg>
-    <xmx:7_8lYy2uiytYWNn-BOnqlyWSW7C9aSWOiQMGqjQV9VzmUalH7jK2Sg>
-    <xmx:7_8lY9xUW6M35mv7pLTaPShGomL97Ksfy5nNtzihtrzotmx7EOlp3w>
-Feedback-ID: i0ad843c9:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Sat,
- 17 Sep 2022 13:12:14 -0400 (EDT)
-Message-ID: <6779635c-a162-0b7e-d124-d88d1ed9e162@sholland.org>
-Date: Sat, 17 Sep 2022 12:12:13 -0500
+	id 1oZdha-008Zw1-Ha; Sat, 17 Sep 2022 19:42:12 +0000
+Received: by mail-ej1-x635.google.com with SMTP id lh5so14560345ejb.10;
+        Sat, 17 Sep 2022 12:42:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date;
+        bh=CLQ627bvA6g1Nc29K4V1qYeubKsKhvm7FZqgOaOV0JU=;
+        b=fpqOgsgO1oi0uxKU6EE/HhfV+NMAj7IoS7T6XWJtR0i3wUgpqqQPjSRsv3L6wQh+Tc
+         7VWQqzEqrnw4SoMDCJKIZjI032Q1xwUGgN5c3qD3ddFWLZID4QGFlqrRJiE1ax4Wb11J
+         ZEbz61w6d+iVmWEl6sAwOziW5AySYMrfixuth6EMf33vzZdGuWli7IudHCJoYtZLxW9T
+         +Zte/QIEThUoMzwUJMwuWnJM3N1xmBQT6cPyl6ZT7hS7zVVjt7eBV3g9RACGc2tBC+NX
+         AfRru1Bo1pz6NieDJop4iuhyvZEyol3vFhxlpt4xRXBg4ErM0piuorRgS6XMwXgcAkPi
+         QCkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date;
+        bh=CLQ627bvA6g1Nc29K4V1qYeubKsKhvm7FZqgOaOV0JU=;
+        b=CUBk/cSFDjH8Ivi/rRgvVcFkzE5IAeupkDfDAgpO303Npwz8Mle4PhVjhIhKIshcbS
+         z7D+OTxfwoLvMKeIZq4DZgCLRJ4U/yiI550CM0sIXdrF2syXD+Es8jO9Wtizu+dbvutp
+         xfANT0lkOtjXxULadayLKxUCOHiyxBifPOahknhG3OYLoqhjMnF0Yq+NLvXWO/sMbCXJ
+         sYhnWoDE1wOta/5m26gWVlKaGGQckJI6KwcKYqF7bT6ld/wJ4c7nqKB24W7uW6HUjn95
+         kl+J8xnheVv+r+02W2Q6hCHnEm7C2MlHOJa8Yi4aqQGL0lFaOyrGYUNd6ubKaZhEn2Pn
+         5qbQ==
+X-Gm-Message-State: ACrzQf06YLixIiVKKiU7Zm6SDiqDq6MXD0Eoihx8wu4Tlc0PCMmnLWUa
+	B/txuCgtVqApUrtO9J2pC7I=
+X-Google-Smtp-Source: AMsMyM7jLjrtYaOXMnxRLFhqP75wdZVPpFnUnEeOJGnJG/R+UWwRW2Ac4DoFjxqvQMVVIn8BzOEBjw==
+X-Received: by 2002:a17:906:7c8f:b0:771:3912:3942 with SMTP id w15-20020a1709067c8f00b0077139123942mr7855927ejo.387.1663443727868;
+        Sat, 17 Sep 2022 12:42:07 -0700 (PDT)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id w22-20020a17090633d600b0073d7e58b1bcsm12401924eja.157.2022.09.17.12.42.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 17 Sep 2022 12:42:07 -0700 (PDT)
+Message-ID: <614ccc3b-eb65-450e-d015-9c615a09a701@gmail.com>
+Date: Sat, 17 Sep 2022 21:42:06 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux ppc64le; rv:102.0) Gecko/20100101
- Thunderbird/102.2.2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v2] dt-bindings: clock: convert rockchip,rk3128-cru.txt to
+ YAML
+To: heiko@sntech.de, zhangqing@rock-chips.com
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, sboyd@kernel.org,
+ mturquette@baylibre.com, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Content-Language: en-US
-To: Mikhail Rudenko <mike.rudenko@gmail.com>
-Cc: stable@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
- Vinod Koul <vkoul@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-References: <20220917165820.2304306-1-mike.rudenko@gmail.com>
-From: Samuel Holland <samuel@sholland.org>
-Subject: Re: [PATCH] phy: rockchip-inno-usb2: Fix otg port initialization
-In-Reply-To: <20220917165820.2304306-1-mike.rudenko@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220917_101223_113134_E27099BC 
-X-CRM114-Status: GOOD (  27.33  )
+X-CRM114-CacheID: sfid-20220917_124210_636265_EF3621C3 
+X-CRM114-Status: GOOD (  18.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,208 +86,192 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3033414333280715527=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============3033414333280715527==
-Content-Language: en-US
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------K0GA3G7afvU1bjxDRtbK6COJ"
+Convert rockchip,rk3128-cru.txt to YAML.
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------------K0GA3G7afvU1bjxDRtbK6COJ
-Content-Type: multipart/mixed; boundary="------------wRWlrcMGJnKXP60IyA87aQ0o";
- protected-headers="v1"
-From: Samuel Holland <samuel@sholland.org>
-To: Mikhail Rudenko <mike.rudenko@gmail.com>
-Cc: stable@vger.kernel.org, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
- Vinod Koul <vkoul@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Peter Geis <pgwipeout@gmail.com>
-Message-ID: <6779635c-a162-0b7e-d124-d88d1ed9e162@sholland.org>
-Subject: Re: [PATCH] phy: rockchip-inno-usb2: Fix otg port initialization
-References: <20220917165820.2304306-1-mike.rudenko@gmail.com>
-In-Reply-To: <20220917165820.2304306-1-mike.rudenko@gmail.com>
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
 
---------------wRWlrcMGJnKXP60IyA87aQ0o
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Changed V2:
+  Use SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+  Add more clocks
 
-On 9/17/22 11:58, Mikhail Rudenko wrote:
-> There are two issues in rockchip_usb2phy_otg_port_init(): (1) even if
-> devm_extcon_register_notifier() returns error, the code proceeds to
-> the next if statement and (2) if no extcon is defined in of_node, the
-> return value of property_enabled() is reused as the return value of
-> the whole function. If the return value of property_enable() is
-> nonzero, (2) results in an unexpected probe failure and kernel panic
-> in delayed work:
+---
 
-This should be fixed by the following patch which is accepted already:
+Rockchip recently replied on other clock-patches to dual-license the
+binding.
 
-https://lore.kernel.org/lkml/20220902184543.1234835-1-pgwipeout@gmail.com=
-/
+https://lore.kernel.org/all/510d1180-bc8e-7820-c772-ed7f35447087@rock-chips.com/
+From Finley with an  @rock-chips.com address, so this should be ok.
 
->=20
->     Unable to handle kernel NULL pointer dereference at virtual address=
- 00000000
->     Mem abort info:
->       ESR =3D 0x0000000086000006
->       EC =3D 0x21: IABT (current EL), IL =3D 32 bits
->       SET =3D 0, FnV =3D 0
->       EA =3D 0, S1PTW =3D 0
->       FSC =3D 0x06: level 2 translation fault
->     user pgtable: 4k pages, 48-bit VAs, pgdp=3D00000000019dc000
->     [0000000000000000] pgd=3D080000000131a003, p4d=3D080000000131a003, =
-pud=3D080000000
->     Internal error: Oops: 86000006 [#1] PREEMPT SMP
->     Modules linked in: ipv6
->     CPU: 1 PID: 0 Comm: swapper/1 Not tainted 6.0.0-rc5 #114
->     Hardware name: FriendlyElec NanoPi M4 (DT)
->     pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=3D--)
->     pc : 0x0
->     lr : call_timer_fn.constprop.0+0x24/0x80
->     sp : ffff80000a40ba40
->     x29: ffff80000a40ba40 x28: 0000000000000000 x27: ffff80000a40baf0
->     x26: ffff800009e779c0 x25: ffff00007fb28070 x24: ffff00007fb28028
->     x23: ffff80000a40baf0 x22: 0000000000000000 x21: 0000000000000101
->     x20: ffff0000006ad880 x19: 0000000000000000 x18: 0000000000000006
->     x17: ffff8000761af000 x16: ffff80000800c000 x15: 0000000000004000
->     x14: ffff0000006ad880 x13: 000000000000030a x12: 0000000000000000
->     x11: ffff8000761af000 x10: ffff80000800bf40 x9 : ffff00007fb2d038
->     x8 : 0000000000000001 x7 : 0000000000000009 x6 : 0000000000000240
->     x5 : 0000000000000000 x4 : 0000000000000000 x3 : 0000000000000200
->     x2 : 000000003fffffff x1 : 0000000000000000 x0 : ffff0000016c9710
->     Call trace:
->      0x0
->      __run_timers+0x220/0x264
->      run_timer_softirq+0x20/0x40
->      __do_softirq+0x10c/0x298
->      __irq_exit_rcu+0xec/0xf4
->      irq_exit_rcu+0x10/0x1c
->      el1_interrupt+0x38/0x70
->      el1h_64_irq_handler+0x18/0x24
->      el1h_64_irq+0x64/0x68
->      cpuidle_enter_state+0x130/0x2fc
->      cpuidle_enter+0x38/0x50
->      do_idle+0x22c/0x2c0
->      cpu_startup_entry+0x24/0x30
->      secondary_start_kernel+0x130/0x14c
->      __secondary_switched+0xb0/0xb4
->     Code: bad PC value
->     ---[ end trace 0000000000000000 ]---
->     Kernel panic - not syncing: Oops: Fatal exception in interrupt
->     SMP: stopping secondary CPUs
->     Kernel Offset: disabled
->     CPU features: 0x4000,0820b021,00001086
->     Memory Limit: none
->     ---[ end Kernel panic - not syncing: Oops: Fatal exception in inter=
-rupt ]---
->=20
-> Refactor the control flow to avoid both issues. Since the code below
-> out: label does no cleanup, return error codes immediately instead of
-> using gotos and return success at the end of the function.
->=20
-> Cc: stable@vger.kernel.org
-> Fixes: 8dc60f8da22f ("phy: rockchip-inno-usb2: Sync initial otg state")=
+Document history:
 
-> Signed-off-by: Mikhail Rudenko <mike.rudenko@gmail.com>
-> ---
->  drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
->=20
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/ph=
-y/rockchip/phy-rockchip-inno-usb2.c
-> index 0b1e9337ee8e..d31b35d55927 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> @@ -1144,8 +1144,7 @@ static int rockchip_usb2phy_otg_port_init(struct =
-rockchip_usb2phy *rphy,
->  	rport->mode =3D of_usb_get_dr_mode_by_phy(child_np, -1);
->  	if (rport->mode =3D=3D USB_DR_MODE_HOST ||
->  	    rport->mode =3D=3D USB_DR_MODE_UNKNOWN) {
-> -		ret =3D 0;
-> -		goto out;
-> +		return 0;
->  	}
-> =20
->  	INIT_DELAYED_WORK(&rport->chg_work, rockchip_chg_detect_work);
-> @@ -1154,7 +1153,7 @@ static int rockchip_usb2phy_otg_port_init(struct =
-rockchip_usb2phy *rphy,
->  	ret =3D rockchip_usb2phy_port_irq_init(rphy, rport, child_np);
->  	if (ret) {
->  		dev_err(rphy->dev, "failed to init irq for host port\n");
-> -		goto out;
-> +		return ret;
->  	}
-> =20
->  	if (!IS_ERR(rphy->edev)) {
-> @@ -1162,8 +1161,10 @@ static int rockchip_usb2phy_otg_port_init(struct=
- rockchip_usb2phy *rphy,
-> =20
->  		ret =3D devm_extcon_register_notifier(rphy->dev, rphy->edev,
->  					EXTCON_USB_HOST, &rport->event_nb);
-> -		if (ret)
-> +		if (ret) {
->  			dev_err(rphy->dev, "register USB HOST notifier failed\n");
-> +			return ret;
-> +		}
-> =20
->  		if (!of_property_read_bool(rphy->dev->of_node, "extcon")) {
->  			/* do initial sync of usb state */
-> @@ -1172,8 +1173,7 @@ static int rockchip_usb2phy_otg_port_init(struct =
-rockchip_usb2phy *rphy,
->  		}
->  	}
-> =20
-> -out:
-> -	return ret;
-> +	return 0;
->  }
-> =20
->  static int rockchip_usb2phy_probe(struct platform_device *pdev)
+git log Documentation/devicetree/bindings/clock/*rk312*.txt
 
+Author: Elaine Zhang <zhangqing@rock-chips.com>
+    dt-bindings: add documentation for rk3126 clock
+Author: Elaine Zhang <zhangqing@rock-chips.com>
+    dt-bindings: add bindings for rk3128 clock controller
+---
+ .../bindings/clock/rockchip,rk3128-cru.txt    | 58 ---------------
+ .../bindings/clock/rockchip,rk3128-cru.yaml   | 74 +++++++++++++++++++
+ 2 files changed, 74 insertions(+), 58 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.yaml
 
---------------wRWlrcMGJnKXP60IyA87aQ0o--
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
+deleted file mode 100644
+index 6f8744fd301b..000000000000
+--- a/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
++++ /dev/null
+@@ -1,58 +0,0 @@
+-* Rockchip RK3126/RK3128 Clock and Reset Unit
+-
+-The RK3126/RK3128 clock controller generates and supplies clock to various
+-controllers within the SoC and also implements a reset controller for SoC
+-peripherals.
+-
+-Required Properties:
+-
+-- compatible: should be "rockchip,rk3126-cru" or "rockchip,rk3128-cru"
+-  "rockchip,rk3126-cru" - controller compatible with RK3126 SoC.
+-  "rockchip,rk3128-cru" - controller compatible with RK3128 SoC.
+-- reg: physical base address of the controller and length of memory mapped
+-  region.
+-- #clock-cells: should be 1.
+-- #reset-cells: should be 1.
+-
+-Optional Properties:
+-
+-- rockchip,grf: phandle to the syscon managing the "general register files"
+-  If missing pll rates are not changeable, due to the missing pll lock status.
+-
+-Each clock is assigned an identifier and client nodes can use this identifier
+-to specify the clock which they consume. All available clocks are defined as
+-preprocessor macros in the dt-bindings/clock/rk3128-cru.h headers and can be
+-used in device tree sources. Similar macros exist for the reset sources in
+-these files.
+-
+-External clocks:
+-
+-There are several clocks that are generated outside the SoC. It is expected
+-that they are defined using standard clock bindings with following
+-clock-output-names:
+- - "xin24m" - crystal input - required,
+- - "ext_i2s" - external I2S clock - optional,
+- - "gmac_clkin" - external GMAC clock - optional
+-
+-Example: Clock controller node:
+-
+-	cru: cru@20000000 {
+-		compatible = "rockchip,rk3128-cru";
+-		reg = <0x20000000 0x1000>;
+-		rockchip,grf = <&grf>;
+-
+-		#clock-cells = <1>;
+-		#reset-cells = <1>;
+-	};
+-
+-Example: UART controller node that consumes the clock generated by the clock
+-  controller:
+-
+-	uart2: serial@20068000 {
+-		compatible = "rockchip,serial";
+-		reg = <0x20068000 0x100>;
+-		interrupts = <GIC_SPI 22 IRQ_TYPE_LEVEL_HIGH>;
+-		clock-frequency = <24000000>;
+-		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
+-		clock-names = "sclk_uart", "pclk_uart";
+-	};
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.yaml
+new file mode 100644
+index 000000000000..b77aec3a6f8d
+--- /dev/null
++++ b/Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.yaml
+@@ -0,0 +1,74 @@
++# SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/clock/rockchip,rk3128-cru.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip RK3126/RK3128 Clock and Reset Unit (CRU)
++
++maintainers:
++  - Elaine Zhang <zhangqing@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++description: |
++  The RK3126/RK3128 clock controller generates and supplies clock to various
++  controllers within the SoC and also implements a reset controller for SoC
++  peripherals.
++  Each clock is assigned an identifier and client nodes can use this identifier
++  to specify the clock which they consume. All available clocks are defined as
++  preprocessor macros in the dt-bindings/clock/rk3128-cru.h headers and can be
++  used in device tree sources. Similar macros exist for the reset sources in
++  these files.
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3126-cru
++      - rockchip,rk3128-cru
++
++  reg:
++    maxItems: 1
++
++  "#clock-cells":
++    const: 1
++
++  "#reset-cells":
++    const: 1
++
++  clocks:
++    minItems: 1
++    maxItems: 3
++
++  clock-names:
++    minItems: 1
++    maxItems: 3
++    items:
++      enum:
++        - xin24m
++        - ext_i2s
++        - gmac_clkin
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the syscon managing the "general register files" (GRF),
++      if missing pll rates are not changeable, due to the missing pll
++      lock status.
++
++required:
++  - compatible
++  - reg
++  - "#clock-cells"
++  - "#reset-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    cru: clock-controller@20000000 {
++      compatible = "rockchip,rk3128-cru";
++      reg = <0x20000000 0x1000>;
++      rockchip,grf = <&grf>;
++      #clock-cells = <1>;
++      #reset-cells = <1>;
++    };
+-- 
+2.20.1
 
---------------K0GA3G7afvU1bjxDRtbK6COJ
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEE239ji78XkgB1UE6WE858W20av4sFAmMl/+0ACgkQE858W20a
-v4trmRAAjRhkWM61wmmM8tkmQuQfmQKYSxd5s0MqBALmXZnXsW449QkhSP27DZk9
-hN013x3eHaWfIwjm7jIf1kLgEL2etLkpD+5Fa/Hc7TgQ68hKUkGBAE1UPsTtGmNn
-b7hyLbzVu1K1Uv/jHcgFZ1nxQ6QecGukvU+T7HTMCQ+v2dpxy5VfZyaANrUv1jxI
-2vpsGXYXUr7iH0zGBmpwhNJvR1rA1kzO79q+ovcIWefuJgI2MkmMmeRZYpzWwCjm
-a70nSW7O70XJZFFMiHWasKsw0P7Zin/rDShKea3x7tKpukFzOx4c6BwSOKm9N6JH
-Cl5EQvSgPpiW5YO317TmOLrIXt3fqbtRsFRE6IDCsO+4vOdvVcB7/drghZqjmTmk
-N8J99QcJfQfeMk+CRRHD+aCTic7URa3IhxLs63Ny5Iv8WnuNyFQg2fo+CRnvOipp
-436T9wgICVNHiugpTTY8LOdbYTRd2FnppWORS65wyACqUzUhDPiFKUSKfEc2wPAc
-fQ6R8pBgggculq9YjPzAuHbOWXaUzHDBLP6KdEcZN3XBk1z1LbrjsgEQmf8msUES
-C6Lm7ioUVXAUY2/Pys4oq+R27pRXq8wfgFMRhS+bmkBEoYtsOj63GNbrGSy6nvCA
-1Pgtm9A7OOwBgZvZZI+FJEirbUFD3BJ3PceApBlUo9MZcqBqz+A=
-=5Ert
------END PGP SIGNATURE-----
-
---------------K0GA3G7afvU1bjxDRtbK6COJ--
-
-
---===============3033414333280715527==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3033414333280715527==--
-
