@@ -4,66 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8448AECAAA1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Sep 2022 21:01:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F358ECAAD3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Sep 2022 22:25:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=oXYOcAeW0KjpXRAme9PTB2iS2IZG+x0ikfve1dstVBA=; b=CNEHw+uxszlnJx
-	KfbSROewfFE4NrVUGI3Eqvypry97WYyTryNGdTEptn0MQGKcjcvRRsN5410ouGHBmb8ALFhgV/qi9
-	BTjFhlVTbVVrjjuEUTiQl1C7qkbhvmx0a2fMEv34AcuG4hLDcvtiUf0cKz1/LzxaqG7l0duFoccGl
-	nblm7zi94bJnl6Snjkijf1bA5ZO1gFAey3fmm/zhfglMHDdfrUtf8iVfO01wyXcilxFtomWFSrDvP
-	fydmt1HErqh7X5blibbtE2Gr3pIxdw07yG8Tpw1EajNtZeg3ZWBs6fXHwwqDUV4k1L+xXbWRIgos6
-	swsv6TAJ0dOCziy490sA==;
+	List-Owner; bh=NGsflumFN+AgAlafplpWdvL0wlRhIma+g6kvlZ/F5/Y=; b=ES/+afcbF6PcL9
+	ZSpiPbbD7aAWApoWtj9z7GIfoZzRjsXnOZPxsyzd53Xju88BZlP9ziWQOx9j1h03uE/2HE+lOZ/pL
+	lIn/sCiIqLmwcc1vnepFO7JLXX5r8MnGlvWQLH6MH5cLKHIGfS/EZKS2tuZZlqu2hmFdNsoDaMcsF
+	Im7MeuhKUpLhr5LYxsMEjP7YZQ7E7cUd2Fnxsmb0zWJPWpJiYTogV+AoHJiZSKueaCkKXxxOSsNxo
+	U9zhc6GsAVzFmwdRzXI2380vA7PgkZaineuzIhKmy2TcYTbVyrSkMWFaEv+v0RECEB1rpUTklq37t
+	VrjAgIdND1c3Vd8i+sDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaNt7-00FRgv-MB; Mon, 19 Sep 2022 21:01:09 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1oaPCg-00FqiL-HC; Mon, 19 Sep 2022 22:25:26 +0000
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaNt2-00FRdM-UQ
-	for linux-rockchip@lists.infradead.org; Mon, 19 Sep 2022 21:01:08 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id ED2C1B8207C;
-	Mon, 19 Sep 2022 21:01:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8D175C433D6;
-	Mon, 19 Sep 2022 21:00:59 +0000 (UTC)
-Authentication-Results: smtp.kernel.org;
-	dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com header.b="JKJ8HNnd"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105;
-	t=1663621257;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=P8nsYcfw0906oLqr46l4KFRxvKDrSDE9ZAD2yOL1xrQ=;
-	b=JKJ8HNnd91vSARdQudqALPbUN2a8AveZ390vDMzNmAE9QNRvEhjHQyMNY/Ldi3ydw+PAde
-	oQMm0M614o8gFGj/M7J7uvoR8WdHhPmNHkLw0xkc6xbnSHEvcab+Dui/5k+ZQUy0XJwIP4
-	LDDyx7A9E8MSV4+25/QWuM0UcKZopMU=
-Received: 	by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id a611b30a (TLSv1.3:TLS_AES_256_GCM_SHA384:256:NO);
-	Mon, 19 Sep 2022 21:00:56 +0000 (UTC)
-From: "Jason A. Donenfeld" <Jason@zx2c4.com>
-To: linux-kernel@vger.kernel.org,
-	linux-crypto@vger.kernel.org,
-	Herbert Xu <herbert@gondor.apana.org.au>
-Cc: "Jason A. Donenfeld" <Jason@zx2c4.com>,
-	Lin Jinhan <troy.lin@rock-chips.com>,
-	wevsty <ty@wevs.org>,
-	Mikhail Rudenko <mike.rudenko@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Lin Huang <hl@rock-chips.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH] hw_random: rockchip: import driver from vendor tree
-Date: Mon, 19 Sep 2022 23:00:25 +0200
-Message-Id: <20220919210025.2376254-1-Jason@zx2c4.com>
+	id 1oaPCU-00Fqb6-Da; Mon, 19 Sep 2022 22:25:16 +0000
+Received: by mail-ed1-x52f.google.com with SMTP id z2so1275224edi.1;
+        Mon, 19 Sep 2022 15:25:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date;
+        bh=krzfWY+U+C68iDb788Ps/isqFlp7Jns624VMj/Zic0w=;
+        b=fO8nIdegJnYZSRDU3a+VlcKRlEqWcPuKtYKcsYbLbVVbbLpAAJj12c0L6u2WrWWn4m
+         e4RgFEpnzIhLolF1MB10MsulZCjHG52OJM40NUQ6rS15bsMgPcPymwCvRvdf0U2FWGGE
+         iWnrFt4cOhDi4Xy0cRsNeFDhg96YxBmgbHQTTMr2MxspWaVf/IvLvJW1H6D6nvY4S7b9
+         zVtn3JMob54SIJ5CW5FA7qLuJK54S8vSfGizvauuJ7/iiF7AqDVB0xTknKcUK5Ja9D6d
+         CJvWv5I4VX+L3X16kgy+B7+R0a9Jz/WwBeM3PVJBFBlNQu+lNuEfw42BTpzFB+LVP5kx
+         ni0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
+         :cc:subject:date;
+        bh=krzfWY+U+C68iDb788Ps/isqFlp7Jns624VMj/Zic0w=;
+        b=o0Zmls+j/EA3zo8AgfsAmD9d4Nb2ZobnDoyLavTMTTTW2GBlAreQIwMq8GYTkcvowg
+         TrtOn4TXw6xJGf6KCnG3jOtZ8WY0xH7PMcUUU5BwrSilaztwwoOyTSmKZT+H+j7V5agz
+         CrsDervfJ2qNyh1HFYwLwdIfrQ0DQ1no2ZsjFIjy5HZJHdvNVPxIhvgD3nV8dwAzm9M6
+         1Ez294eEPfyXg0S7c0L6wKFetgAjjTdhZBMZueLWuopiGtJec9apg/xlmxuDgQIxJPxC
+         jVApBUE4oyoHj5nWgyBzi1k+1W/qltDJUm7I3dMDim3RbuVDCb7r1PFh2RwuUFBG2N6/
+         632g==
+X-Gm-Message-State: ACrzQf2INI9PRjDv8P0drMTxQ7VwmKxsz1qy+FIMc1J76CrfEzC+Getg
+	w/PQkeUEsASXo5zwFTXkY9w=
+X-Google-Smtp-Source: AMsMyM7aMIM27Gmv/KDNMjmjSw8seFcCELcWjbwpbxYL4wAjDBR/TRExa/X0MA2mps43ZhhKg1k2QA==
+X-Received: by 2002:aa7:c7d3:0:b0:44f:2776:31b with SMTP id o19-20020aa7c7d3000000b0044f2776031bmr17736474eds.251.1663626309950;
+        Mon, 19 Sep 2022 15:25:09 -0700 (PDT)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id e19-20020a50ec93000000b004528a535b44sm13694319edr.32.2022.09.19.15.25.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 19 Sep 2022 15:25:09 -0700 (PDT)
+Message-ID: <20c6a502-2ff5-bdb1-fb4f-0741f3a2c19c@gmail.com>
+Date: Tue, 20 Sep 2022 00:25:07 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v2] dt-bindings: clock: rockchip: change
+ SPDX-License-Identifier
+To: heiko@sntech.de, zhangqing@rock-chips.com, finley.xiao@rock-chips.com,
+ shawn.lin@rock-chips.com, zhengxing@rock-chips.com,
+ jeffy.chen@rock-chips.com, andy.yan@rock-chips.com,
+ mylene.josserand@collabora.com, nfraprado@collabora.com, eric@engestrom.ch
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, sboyd@kernel.org,
+ mturquette@baylibre.com, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_140105_519533_4CB9248C 
-X-CRM114-Status: GOOD (  27.21  )
+X-CRM114-CacheID: sfid-20220919_152514_505564_1950FDA6 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,454 +89,152 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip driver has long existed out of tree, but not upstream.
-There is support for it upstream in u-boot, but not in Linux proper.
-This commit imports the GPLv2 driver written by Lin Jinhan, together
-with the DTS and config blobs from Wevsty.
-
-Co-authored-by: Lin Jinhan <troy.lin@rock-chips.com>
-Co-authored-by: wevsty <ty@wevs.org>
-Tested-by: Mikhail Rudenko <mike.rudenko@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Lin Huang <hl@rock-chips.com>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Herbert Xu <herbert@gondor.apana.org.au>
-Cc: linux-rockchip@lists.infradead.org
-Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
----
- arch/arm64/boot/dts/rockchip/rk3328.dtsi |  11 +
- arch/arm64/boot/dts/rockchip/rk3399.dtsi |  10 +
- drivers/char/hw_random/Kconfig           |  13 +
- drivers/char/hw_random/Makefile          |   1 +
- drivers/char/hw_random/rockchip-rng.c    | 330 +++++++++++++++++++++++
- 5 files changed, 365 insertions(+)
- create mode 100644 drivers/char/hw_random/rockchip-rng.c
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 49ae15708a0b..f52589f5aa59 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -279,6 +279,17 @@ &pdmm0_sdi2_sleep
- 		status = "disabled";
- 	};
- 
-+	rng: rng@ff060000 {
-+		compatible = "rockchip,cryptov1-rng";
-+		reg = <0x0 0xff060000 0x0 0x4000>;
-+
-+		clocks = <&cru SCLK_CRYPTO>, <&cru HCLK_CRYPTO_SLV>;
-+		clock-names = "clk_crypto", "hclk_crypto";
-+		assigned-clocks = <&cru SCLK_CRYPTO>, <&cru HCLK_CRYPTO_SLV>;
-+		assigned-clock-rates = <150000000>, <100000000>;
-+		status = "disabled";
-+	};
-+
- 	grf: syscon@ff100000 {
- 		compatible = "rockchip,rk3328-grf", "syscon", "simple-mfd";
- 		reg = <0x0 0xff100000 0x0 0x1000>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 9d5b0e8c9cca..bd5ce85a063a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -2042,6 +2042,16 @@ edp_in_vopl: endpoint@1 {
- 		};
- 	};
- 
-+	rng: rng@ff8b8000 {
-+		compatible = "rockchip,cryptov1-rng";
-+		reg = <0x0 0xff8b8000 0x0 0x1000>;
-+		clocks = <&cru SCLK_CRYPTO1>, <&cru HCLK_S_CRYPTO1>;
-+		clock-names = "clk_crypto", "hclk_crypto";
-+		assigned-clocks = <&cru SCLK_CRYPTO1>, <&cru HCLK_S_CRYPTO1>;
-+		assigned-clock-rates = <150000000>, <100000000>;
-+		status = "okay";
-+	};
-+
- 	gpu: gpu@ff9a0000 {
- 		compatible = "rockchip,rk3399-mali", "arm,mali-t860";
- 		reg = <0x0 0xff9a0000 0x0 0x10000>;
-diff --git a/drivers/char/hw_random/Kconfig b/drivers/char/hw_random/Kconfig
-index 3da8e85f8aae..1dbe9a9b2944 100644
---- a/drivers/char/hw_random/Kconfig
-+++ b/drivers/char/hw_random/Kconfig
-@@ -372,6 +372,19 @@ config HW_RANDOM_STM32
- 
- 	  If unsure, say N.
- 
-+config HW_RANDOM_ROCKCHIP
-+	tristate "Rockchip Random Number Generator support"
-+	depends on ARCH_ROCKCHIP
-+	default HW_RANDOM
-+	help
-+	  This driver provides kernel-side support for the Random Number
-+	  Generator hardware found on Rockchip cpus.
-+
-+	  To compile this driver as a module, choose M here: the
-+	  module will be called rockchip-rng.
-+
-+	  If unsure, say Y.
-+
- config HW_RANDOM_PIC32
- 	tristate "Microchip PIC32 Random Number Generator support"
- 	depends on HW_RANDOM && MACH_PIC32
-diff --git a/drivers/char/hw_random/Makefile b/drivers/char/hw_random/Makefile
-index 3e948cf04476..852fb42e225b 100644
---- a/drivers/char/hw_random/Makefile
-+++ b/drivers/char/hw_random/Makefile
-@@ -34,6 +34,7 @@ obj-$(CONFIG_HW_RANDOM_IPROC_RNG200) += iproc-rng200.o
- obj-$(CONFIG_HW_RANDOM_ST) += st-rng.o
- obj-$(CONFIG_HW_RANDOM_XGENE) += xgene-rng.o
- obj-$(CONFIG_HW_RANDOM_STM32) += stm32-rng.o
-+obj-$(CONFIG_HW_RANDOM_ROCKCHIP) += rockchip-rng.o
- obj-$(CONFIG_HW_RANDOM_PIC32) += pic32-rng.o
- obj-$(CONFIG_HW_RANDOM_MESON) += meson-rng.o
- obj-$(CONFIG_HW_RANDOM_CAVIUM) += cavium-rng.o cavium-rng-vf.o
-diff --git a/drivers/char/hw_random/rockchip-rng.c b/drivers/char/hw_random/rockchip-rng.c
-new file mode 100644
-index 000000000000..c0121f1f542e
---- /dev/null
-+++ b/drivers/char/hw_random/rockchip-rng.c
-@@ -0,0 +1,330 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * rockchip-rng.c Random Number Generator driver for the Rockchip
-+ *
-+ * Copyright (c) 2018, Fuzhou Rockchip Electronics Co., Ltd.
-+ * Author: Lin Jinhan <troy.lin@rock-chips.com>
-+ *
-+ */
-+#include <linux/clk.h>
-+#include <linux/hw_random.h>
-+#include <linux/iopoll.h>
-+#include <linux/module.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
-+
-+#define _SBF(s, v)	((v) << (s))
-+#define HIWORD_UPDATE(val, mask, shift) \
-+			((val) << (shift) | (mask) << ((shift) + 16))
-+
-+#define ROCKCHIP_AUTOSUSPEND_DELAY		100
-+#define ROCKCHIP_POLL_PERIOD_US			100
-+#define ROCKCHIP_POLL_TIMEOUT_US		10000
-+#define RK_MAX_RNG_BYTE				(32)
-+
-+#define CRYPTO_V1_CTRL				0x0008
-+#define CRYPTO_V1_RNG_START			BIT(8)
-+#define CRYPTO_V1_RNG_FLUSH			BIT(9)
-+#define CRYPTO_V1_TRNG_CTRL			0x0200
-+#define CRYPTO_V1_OSC_ENABLE			BIT(16)
-+#define CRYPTO_V1_TRNG_SAMPLE_PERIOD(x)		(x)
-+#define CRYPTO_V1_TRNG_DOUT_0			0x0204
-+
-+#define CRYPTO_V2_RNG_CTL			0x0400
-+#define CRYPTO_V2_RNG_64_BIT_LEN		_SBF(4, 0x00)
-+#define CRYPTO_V2_RNG_128_BIT_LEN		_SBF(4, 0x01)
-+#define CRYPTO_V2_RNG_192_BIT_LEN		_SBF(4, 0x02)
-+#define CRYPTO_V2_RNG_256_BIT_LEN		_SBF(4, 0x03)
-+#define CRYPTO_V2_RNG_FATESY_SOC_RING		_SBF(2, 0x00)
-+#define CRYPTO_V2_RNG_SLOWER_SOC_RING_0		_SBF(2, 0x01)
-+#define CRYPTO_V2_RNG_SLOWER_SOC_RING_1		_SBF(2, 0x02)
-+#define CRYPTO_V2_RNG_SLOWEST_SOC_RING		_SBF(2, 0x03)
-+#define CRYPTO_V2_RNG_ENABLE			BIT(1)
-+#define CRYPTO_V2_RNG_START			BIT(0)
-+#define CRYPTO_V2_RNG_SAMPLE_CNT		0x0404
-+#define CRYPTO_V2_RNG_DOUT_0			0x0410
-+
-+struct rk_rng_soc_data {
-+	const char * const *clks;
-+	int clks_num;
-+	int (*rk_rng_read)(struct hwrng *rng, void *buf, size_t max, bool wait);
-+};
-+
-+struct rk_rng {
-+	struct device		*dev;
-+	struct hwrng		rng;
-+	void __iomem		*mem;
-+	struct rk_rng_soc_data	*soc_data;
-+	u32			clk_num;
-+	struct clk_bulk_data	*clk_bulks;
-+};
-+
-+static const char * const rk_rng_v1_clks[] = {
-+	"hclk_crypto",
-+	"clk_crypto",
-+};
-+
-+static const char * const rk_rng_v2_clks[] = {
-+	"hclk_crypto",
-+	"aclk_crypto",
-+	"clk_crypto",
-+	"clk_crypto_apk",
-+};
-+
-+static void rk_rng_writel(struct rk_rng *rng, u32 val, u32 offset)
-+{
-+	__raw_writel(val, rng->mem + offset);
-+}
-+
-+static u32 rk_rng_readl(struct rk_rng *rng, u32 offset)
-+{
-+	return __raw_readl(rng->mem + offset);
-+}
-+
-+static int rk_rng_init(struct hwrng *rng)
-+{
-+	int ret;
-+	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-+
-+	ret = clk_bulk_prepare_enable(rk_rng->clk_num, rk_rng->clk_bulks);
-+	if (ret < 0) {
-+		dev_err(rk_rng->dev, "failed to enable clks %d\n", ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static void rk_rng_cleanup(struct hwrng *rng)
-+{
-+	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-+
-+	clk_bulk_disable_unprepare(rk_rng->clk_num, rk_rng->clk_bulks);
-+}
-+
-+static void rk_rng_read_regs(struct rk_rng *rng, u32 offset, void *buf,
-+			     size_t size)
-+{
-+	u32 i, sample;
-+
-+	for (i = 0; i < size; i += 4) {
-+		sample = rk_rng_readl(rng, offset + i);
-+		memcpy(buf + i, &sample, sizeof(sample));
-+	}
-+}
-+
-+static int rk_rng_v1_read(struct hwrng *rng, void *buf, size_t max, bool wait)
-+{
-+	int ret = 0;
-+	u32 reg_ctrl = 0;
-+	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-+
-+	ret = pm_runtime_get_sync(rk_rng->dev);
-+	if (ret < 0) {
-+		pm_runtime_put_noidle(rk_rng->dev);
-+		return ret;
-+	}
-+
-+	/* enable osc_ring to get entropy, sample period is set as 100 */
-+	reg_ctrl = CRYPTO_V1_OSC_ENABLE | CRYPTO_V1_TRNG_SAMPLE_PERIOD(100);
-+	rk_rng_writel(rk_rng, reg_ctrl, CRYPTO_V1_TRNG_CTRL);
-+
-+	reg_ctrl = HIWORD_UPDATE(CRYPTO_V1_RNG_START, CRYPTO_V1_RNG_START, 0);
-+
-+	rk_rng_writel(rk_rng, reg_ctrl, CRYPTO_V1_CTRL);
-+
-+	ret = readl_poll_timeout(rk_rng->mem + CRYPTO_V1_CTRL, reg_ctrl,
-+				 !(reg_ctrl & CRYPTO_V1_RNG_START),
-+				 ROCKCHIP_POLL_PERIOD_US,
-+				 ROCKCHIP_POLL_TIMEOUT_US);
-+	if (ret < 0)
-+		goto out;
-+
-+	ret = min_t(size_t, max, RK_MAX_RNG_BYTE);
-+
-+	rk_rng_read_regs(rk_rng, CRYPTO_V1_TRNG_DOUT_0, buf, ret);
-+
-+out:
-+	/* close TRNG */
-+	rk_rng_writel(rk_rng, HIWORD_UPDATE(0, CRYPTO_V1_RNG_START, 0),
-+		      CRYPTO_V1_CTRL);
-+
-+	pm_runtime_mark_last_busy(rk_rng->dev);
-+	pm_runtime_put_sync_autosuspend(rk_rng->dev);
-+
-+	return ret;
-+}
-+
-+static int rk_rng_v2_read(struct hwrng *rng, void *buf, size_t max, bool wait)
-+{
-+	int ret = 0;
-+	u32 reg_ctrl = 0;
-+	struct rk_rng *rk_rng = container_of(rng, struct rk_rng, rng);
-+
-+	ret = pm_runtime_get_sync(rk_rng->dev);
-+	if (ret < 0) {
-+		pm_runtime_put_noidle(rk_rng->dev);
-+		return ret;
-+	}
-+
-+	/* enable osc_ring to get entropy, sample period is set as 100 */
-+	rk_rng_writel(rk_rng, 100, CRYPTO_V2_RNG_SAMPLE_CNT);
-+
-+	reg_ctrl |= CRYPTO_V2_RNG_256_BIT_LEN;
-+	reg_ctrl |= CRYPTO_V2_RNG_SLOWER_SOC_RING_0;
-+	reg_ctrl |= CRYPTO_V2_RNG_ENABLE;
-+	reg_ctrl |= CRYPTO_V2_RNG_START;
-+
-+	rk_rng_writel(rk_rng, HIWORD_UPDATE(reg_ctrl, 0xffff, 0),
-+			CRYPTO_V2_RNG_CTL);
-+
-+	ret = readl_poll_timeout(rk_rng->mem + CRYPTO_V2_RNG_CTL, reg_ctrl,
-+				 !(reg_ctrl & CRYPTO_V2_RNG_START),
-+				 ROCKCHIP_POLL_PERIOD_US,
-+				 ROCKCHIP_POLL_TIMEOUT_US);
-+	if (ret < 0)
-+		goto out;
-+
-+	ret = min_t(size_t, max, RK_MAX_RNG_BYTE);
-+
-+	rk_rng_read_regs(rk_rng, CRYPTO_V2_RNG_DOUT_0, buf, ret);
-+
-+out:
-+	/* close TRNG */
-+	rk_rng_writel(rk_rng, HIWORD_UPDATE(0, 0xffff, 0), CRYPTO_V2_RNG_CTL);
-+
-+	pm_runtime_mark_last_busy(rk_rng->dev);
-+	pm_runtime_put_sync_autosuspend(rk_rng->dev);
-+
-+	return ret;
-+}
-+
-+static const struct rk_rng_soc_data rk_rng_v1_soc_data = {
-+	.clks_num = ARRAY_SIZE(rk_rng_v1_clks),
-+	.clks = rk_rng_v1_clks,
-+	.rk_rng_read = rk_rng_v1_read,
-+};
-+
-+static const struct rk_rng_soc_data rk_rng_v2_soc_data = {
-+	.clks_num = ARRAY_SIZE(rk_rng_v2_clks),
-+	.clks = rk_rng_v2_clks,
-+	.rk_rng_read = rk_rng_v2_read,
-+};
-+
-+static const struct of_device_id rk_rng_dt_match[] = {
-+	{
-+		.compatible = "rockchip,cryptov1-rng",
-+		.data = (void *)&rk_rng_v1_soc_data,
-+	},
-+	{
-+		.compatible = "rockchip,cryptov2-rng",
-+		.data = (void *)&rk_rng_v2_soc_data,
-+	},
-+	{ },
-+};
-+
-+MODULE_DEVICE_TABLE(of, rk_rng_dt_match);
-+
-+static int rk_rng_probe(struct platform_device *pdev)
-+{
-+	int i;
-+	int ret;
-+	struct rk_rng *rk_rng;
-+	struct device_node *np = pdev->dev.of_node;
-+	const struct of_device_id *match;
-+
-+	rk_rng = devm_kzalloc(&pdev->dev, sizeof(struct rk_rng), GFP_KERNEL);
-+	if (!rk_rng)
-+		return -ENOMEM;
-+
-+	match = of_match_node(rk_rng_dt_match, np);
-+	rk_rng->soc_data = (struct rk_rng_soc_data *)match->data;
-+
-+	rk_rng->dev = &pdev->dev;
-+	rk_rng->rng.name    = "rockchip";
-+#ifndef CONFIG_PM
-+	rk_rng->rng.init    = rk_rng_init;
-+	rk_rng->rng.cleanup = rk_rng_cleanup,
-+#endif
-+	rk_rng->rng.read    = rk_rng->soc_data->rk_rng_read;
-+	rk_rng->rng.quality = 1024;
-+
-+	rk_rng->clk_bulks =
-+		devm_kzalloc(&pdev->dev, sizeof(*rk_rng->clk_bulks) *
-+			     rk_rng->soc_data->clks_num, GFP_KERNEL);
-+
-+	rk_rng->clk_num = rk_rng->soc_data->clks_num;
-+
-+	for (i = 0; i < rk_rng->soc_data->clks_num; i++)
-+		rk_rng->clk_bulks[i].id = rk_rng->soc_data->clks[i];
-+
-+	rk_rng->mem = devm_of_iomap(&pdev->dev, pdev->dev.of_node, 0, NULL);
-+	if (IS_ERR(rk_rng->mem))
-+		return PTR_ERR(rk_rng->mem);
-+
-+	ret = devm_clk_bulk_get(&pdev->dev, rk_rng->clk_num,
-+				rk_rng->clk_bulks);
-+	if (ret) {
-+		dev_err(&pdev->dev, "failed to get clks property\n");
-+		return ret;
-+	}
-+
-+	platform_set_drvdata(pdev, rk_rng);
-+
-+	pm_runtime_set_autosuspend_delay(&pdev->dev,
-+					ROCKCHIP_AUTOSUSPEND_DELAY);
-+	pm_runtime_use_autosuspend(&pdev->dev);
-+	pm_runtime_enable(&pdev->dev);
-+
-+	ret = devm_hwrng_register(&pdev->dev, &rk_rng->rng);
-+	if (ret) {
-+		pm_runtime_dont_use_autosuspend(&pdev->dev);
-+		pm_runtime_disable(&pdev->dev);
-+	}
-+
-+	return ret;
-+}
-+
-+#ifdef CONFIG_PM
-+static int rk_rng_runtime_suspend(struct device *dev)
-+{
-+	struct rk_rng *rk_rng = dev_get_drvdata(dev);
-+
-+	rk_rng_cleanup(&rk_rng->rng);
-+
-+	return 0;
-+}
-+
-+static int rk_rng_runtime_resume(struct device *dev)
-+{
-+	struct rk_rng *rk_rng = dev_get_drvdata(dev);
-+
-+	return rk_rng_init(&rk_rng->rng);
-+}
-+
-+static const struct dev_pm_ops rk_rng_pm_ops = {
-+	SET_RUNTIME_PM_OPS(rk_rng_runtime_suspend,
-+				rk_rng_runtime_resume, NULL)
-+	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
-+				pm_runtime_force_resume)
-+};
-+#endif
-+
-+static struct platform_driver rk_rng_driver = {
-+	.driver	= {
-+		.name	= "rockchip-rng",
-+#ifdef CONFIG_PM
-+		.pm	= &rk_rng_pm_ops,
-+#endif
-+		.of_match_table = rk_rng_dt_match,
-+	},
-+	.probe	= rk_rng_probe,
-+};
-+
-+module_platform_driver(rk_rng_driver);
-+
-+MODULE_DESCRIPTION("ROCKCHIP H/W Random Number Generator driver");
-+MODULE_AUTHOR("Lin Jinhan <troy.lin@rock-chips.com>");
-+MODULE_LICENSE("GPL v2");
--- 
-2.37.3
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Q2hhbmdlIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyIHRvIChHUEwtMi4wKyBPUiBNSVQpCmZvciBS
+b2NrY2hpcCBjbG9jayBiaW5kaW5ncy4KCkNjOiBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNo
+LmRlPgpDYzogRWxhaW5lIFpoYW5nIDx6aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+CkNjOiBYaW5n
+IFpoZW5nIDx6aGVuZ3hpbmdAcm9jay1jaGlwcy5jb20+CkNjOiBKZWZmeSBDaGVuIDxqZWZmeS5j
+aGVuQHJvY2stY2hpcHMuY29tPgpDYzogRmlubGV5IFhpYW8gPGZpbmxleS54aWFvQHJvY2stY2hp
+cHMuY29tPgpDYzogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgpDYzogU2hhd24g
+TGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+CkNjOiBFcmljIEVuZ2VzdHJvbSA8ZXJpY0Bl
+bmdlc3Ryb20uY2g+CkNjOiBNeWzDqG5lIEpvc3NlcmFuZCA8bXlsZW5lLmpvc3NlcmFuZEBjb2xs
+YWJvcmEuY29tPgpDYzogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJv
+cmEuY29tPgpTaWduZWQtb2ZmLWJ5OiBKb2hhbiBKb25rZXIgPGpieDYyNDRAZ21haWwuY29tPgot
+LS0KClJlcXVlc3QgZm9yIGNvcHlyaWdodCBob2xkZXIgYXBwcm92YWwuClJvY2tjaGlwIHJlY2Vu
+dGx5IHJlcGxpZWQgb24gb3RoZXIgY2xvY2stcGF0Y2hlcyB0byBkdWFsLWxpY2Vuc2UgdGhlCmJp
+bmRpbmcuCgpodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvNTEwZDExODAtYmM4ZS03ODIwLWM3
+NzItZWQ3ZjM1NDQ3MDg3QHJvY2stY2hpcHMuY29tLwpGcm9tIEZpbmxleSB3aXRoIGFuICBAcm9j
+ay1jaGlwcy5jb20gYWRkcmVzcywgc28gdGhpcyBzaG91bGQgYmUgb2suCgotLS0KCkNoYW5nZWQg
+VjI6CiAgVXNlIEdQTC0yLjArIE9SIE1JVCBsaWNlbnNlCiAgQWRkIG1vcmUgQ0MKCi0tLQoKZ2l0
+IGxvZyBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svKnB4MzAqLnR4dAoK
+QXV0aG9yOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgogICAgYXJtNjQ6IGR0czog
+cm9ja2NoaXA6IGRvY3VtZW50IGV4cGxpY2l0IHB4MzAgY3J1IGRlcGVuZGVuY2llcwoKQXV0aG9y
+OiBFbGFpbmUgWmhhbmcgPHpoYW5ncWluZ0Byb2NrLWNoaXBzLmNvbT4KICAgIGR0LWJpbmRpbmdz
+OiBhZGQgYmluZGluZ3MgZm9yIHB4MzAgY2xvY2sgY29udHJvbGxlcgoKPT09CgpnaXQgbG9nIERv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay8qcmszMDM2Ki50eHQKCkF1dGhv
+cjogWGluZyBaaGVuZyA8emhlbmd4aW5nQHJvY2stY2hpcHMuY29tPgogICAgY2xrOiByb2NrY2hp
+cDogcmszMDM2OiByZW5hbWUgZW1hYyBleHQgc291cmNlIGNsb2NrCgpBdXRob3I6IFhpbmcgWmhl
+bmcgPHpoZW5neGluZ0Byb2NrLWNoaXBzLmNvbT4KICAgIGR0LWJpbmRpbmdzOiBhZGQgZG9jdW1l
+bnRhdGlvbiBvZiByazMwMzYgY2xvY2sgY29udHJvbGxlcgoKPT09CgpnaXQgbG9nIERvY3VtZW50
+YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay8qcmszMTg4Ki50eHQKCkF1dGhvcjogRXJp
+YyBFbmdlc3Ryb20gPGVyaWNAZW5nZXN0cm9tLmNoPgogICAgRG9jdW1lbnRhdGlvbjogZHQ6IGNs
+b2NrOiBmaXggc3BlbGxpbmcgbWlzdGFrZXMKCkF1dGhvcjogSGVpa28gU3TDvGJuZXIgPGhlaWtv
+QHNudGVjaC5kZT4KICAgIGR0LWJpbmRpbmdzOiBhZGQgZG9jdW1lbnRhdGlvbiBmb3IgcmszMTg4
+IGNsb2NrIGFuZCByZXNldCB1bml0Cgo9PT0KCmdpdCBsb2cgRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL2Nsb2NrLypyazMyMjgqLnR4dAoKQXV0aG9yOiBKZWZmeSBDaGVuIDxqZWZm
+eS5jaGVuQHJvY2stY2hpcHMuY29tPgogICAgZHQtYmluZGluZ3M6IGFkZCBkb2N1bWVudGF0aW9u
+IG9mIHJrMzIyOCBjbG9jayBjb250cm9sbGVyCgo9PT0KCmdpdCBsb2cgRG9jdW1lbnRhdGlvbi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrLypyazMyODgqLnR4dAoKQXV0aG9yOiBNeWzDqG5lIEpv
+c3NlcmFuZCA8bXlsZW5lLmpvc3NlcmFuZEBjb2xsYWJvcmEuY29tPgogICAgZHQtYmluZGluZ3M6
+IGNsb2NrczogYWRkIHJrMzI4OHcgdmFyaWFudCBjb21wYXRpYmxlCgpBdXRob3I6IEVyaWMgRW5n
+ZXN0cm9tIDxlcmljQGVuZ2VzdHJvbS5jaD4KICAgIERvY3VtZW50YXRpb246IGR0OiBjbG9jazog
+Zml4IHNwZWxsaW5nIG1pc3Rha2VzCgpBdXRob3I6IEhlaWtvIFN0w7xibmVyIDxoZWlrb0BzbnRl
+Y2guZGU+CiAgICBkdC1iaW5kaW5nczogYWRkIGRvY3VtZW50YXRpb24gZm9yIHJrMzI4OCBjcnUK
+Cj09PQoKZ2l0IGxvZyBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svKnJr
+MzMwOCoudHh0CgpBdXRob3I6IEZpbmxleSBYaWFvIDxmaW5sZXkueGlhb0Byb2NrLWNoaXBzLmNv
+bT4KICAgIGR0LWJpbmRpbmdzOiBBZGQgYmluZGluZ3MgZm9yIHJrMzMwOCBjbG9jayBjb250cm9s
+bGVyCgo9PT0KCmdpdCBsb2cgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2Nr
+LypyazMzNjgqLnR4dAoKQXV0aG9yOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgog
+ICAgZHQtYmluZGluZ3M6IGFkZCBkb2N1bWVudGF0aW9uIG9mIHJrMzY2OCBjbG9jayBjb250cm9s
+bGVyCgo9PT0KCmdpdCBsb2cgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2Nr
+LypyazMzOTkqLnR4dAoKQXV0aG9yOiBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyA8bmZyYXByYWRv
+QGNvbGxhYm9yYS5jb20+CiAgICBkdC1iaW5kaW5nczogY2xrOiBDb252ZXJ0IHJvY2tjaGlwLHJr
+MzM5OS1jcnUgdG8gRFQgc2NoZW1hCgpBdXRob3I6IFhpbmcgWmhlbmcgPHpoZW5neGluZ0Byb2Nr
+LWNoaXBzLmNvbT4KICAgIGR0LWJpbmRpbmdzOiBjbGs6IGFkZCByb2NrY2hpcCxncmYgcHJvcGVy
+dHkgZm9yIFJLMzM5OQoKQXV0aG9yOiBYaW5nIFpoZW5nIDx6aGVuZ3hpbmdAcm9jay1jaGlwcy5j
+b20+CiAgICBkdC1iaW5kaW5nczogYWRkIGJpbmRpbmdzIGZvciByazMzOTkgY2xvY2sgY29udHJv
+bGxlcgoKPT09CgpnaXQgbG9nIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9j
+ay8qcmsxMSoudHh0CgpBdXRob3I6IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4K
+ICAgIGR0LWJpbmRpbmdzOiByazExMDgtY3J1OiByZW5hbWUgUksxMTA4IHRvIFJWMTEwOAoKQXV0
+aG9yOiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KICAgIGR0LWJpbmRpbmdz
+OiBhZGQgZG9jdW1lbnRhdGlvbiBmb3IgcmsxMTA4IGNydQotLS0KIERvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxweDMwLWNydS55YW1sICB8IDIgKy0KIC4u
+Li9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzAzNi1jcnUueWFtbCAgICAg
+ICAgICB8IDIgKy0KIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzIy
+OC1jcnUueWFtbCAgICAgICAgICB8IDIgKy0KIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2Nr
+L3JvY2tjaGlwLHJrMzI4OC1jcnUueWFtbCAgICAgICAgICB8IDIgKy0KIC4uLi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzMwOC1jcnUueWFtbCAgICAgICAgICB8IDIgKy0K
+IC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzM2OC1jcnUueWFtbCAg
+ICAgICAgICB8IDIgKy0KIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJr
+MzM5OS1jcnUueWFtbCAgICAgICAgICB8IDIgKy0KIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Ns
+b2NrL3JvY2tjaGlwLHJ2MTEwOC1jcnUueWFtbCAgICAgICAgICB8IDIgKy0KIDggZmlsZXMgY2hh
+bmdlZCwgOCBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL0RvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxweDMwLWNydS55YW1s
+IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHB4MzAt
+Y3J1LnlhbWwKaW5kZXggM2VlYzM4MWM3Y2Y1Li4wZjBmNjRiNmY4Y2IgMTAwNjQ0Ci0tLSBhL0Rv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxweDMwLWNydS55
+YW1sCisrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hp
+cCxweDMwLWNydS55YW1sCkBAIC0xLDQgKzEsNCBAQAotIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmll
+cjogR1BMLTIuMAorIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogKEdQTC0yLjArIE9SIE1JVCkK
+ICVZQU1MIDEuMgogLS0tCiAkaWQ6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL2Nsb2Nr
+L3JvY2tjaGlwLHB4MzAtY3J1LnlhbWwjCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2Rldmlj
+ZXRyZWUvYmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMDM2LWNydS55YW1sIGIvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzAzNi1jcnUueWFtbApp
+bmRleCAxMzc2MjMwZmVkZTYuLmJhNWI0NTQ2NDMxNSAxMDA2NDQKLS0tIGEvRG9jdW1lbnRhdGlv
+bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzAzNi1jcnUueWFtbAorKysg
+Yi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMDM2
+LWNydS55YW1sCkBAIC0xLDQgKzEsNCBAQAotIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BM
+LTIuMAorIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogKEdQTC0yLjArIE9SIE1JVCkKICVZQU1M
+IDEuMgogLS0tCiAkaWQ6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL2Nsb2NrL3JvY2tj
+aGlwLHJrMzAzNi1jcnUueWFtbCMKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
+ZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxyazMyMjgtY3J1LnlhbWwgYi9Eb2N1bWVudGF0aW9u
+L2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMjI4LWNydS55YW1sCmluZGV4
+IGNmN2RjMDFkOTQ3OC4uMTA1MGZmZjcyYWRlIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2Rl
+dmljZXRyZWUvYmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMjI4LWNydS55YW1sCisrKyBiL0Rv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxyazMyMjgtY3J1
+LnlhbWwKQEAgLTEsNCArMSw0IEBACi0jIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4w
+CisjIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiAoR1BMLTIuMCsgT1IgTUlUKQogJVlBTUwgMS4y
+CiAtLS0KICRpZDogaHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvY2xvY2svcm9ja2NoaXAs
+cmszMjI4LWNydS55YW1sIwpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzI4OC1jcnUueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxyazMyODgtY3J1LnlhbWwKaW5kZXggOTZi
+YzA1NzQ5ZTFhLi42NjU1ZTk3ZDUyZTQgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNl
+dHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxyazMyODgtY3J1LnlhbWwKKysrIGIvRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzI4OC1jcnUueWFt
+bApAQCAtMSw0ICsxLDQgQEAKLSMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAKKyMg
+U1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wKyBPUiBNSVQpCiAlWUFNTCAxLjIKIC0t
+LQogJGlkOiBodHRwOi8vZGV2aWNldHJlZS5vcmcvc2NoZW1hcy9jbG9jay9yb2NrY2hpcCxyazMy
+ODgtY3J1LnlhbWwjCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvY2xvY2svcm9ja2NoaXAscmszMzA4LWNydS55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzMwOC1jcnUueWFtbAppbmRleCA1MjNlZTU3
+OGE1ODYuLmZlYzM3ZjViODBmNiAxMDA2NDQKLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzMwOC1jcnUueWFtbAorKysgYi9Eb2N1bWVudGF0
+aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMzA4LWNydS55YW1sCkBA
+IC0xLDQgKzEsNCBAQAotIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMAorIyBTUERY
+LUxpY2Vuc2UtSWRlbnRpZmllcjogKEdQTC0yLjArIE9SIE1JVCkKICVZQU1MIDEuMgogLS0tCiAk
+aWQ6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL2Nsb2NrL3JvY2tjaGlwLHJrMzMwOC1j
+cnUueWFtbCMKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9j
+bG9jay9yb2NrY2hpcCxyazMzNjgtY3J1LnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
+YmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMzY4LWNydS55YW1sCmluZGV4IGFkYjY3ODc3NzIw
+ZC4uOTBhZjI0MmI0MWMxIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMzY4LWNydS55YW1sCisrKyBiL0RvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxyazMzNjgtY3J1LnlhbWwKQEAgLTEs
+NCArMSw0IEBACi0jIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wCisjIFNQRFgtTGlj
+ZW5zZS1JZGVudGlmaWVyOiAoR1BMLTIuMCsgT1IgTUlUKQogJVlBTUwgMS4yCiAtLS0KICRpZDog
+aHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvY2xvY2svcm9ja2NoaXAscmszMzY4LWNydS55
+YW1sIwpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2Nr
+L3JvY2tjaGlwLHJrMzM5OS1jcnUueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
+aW5ncy9jbG9jay9yb2NrY2hpcCxyazMzOTktY3J1LnlhbWwKaW5kZXggNTRkYTFlMzFlYTczLi4w
+Yjc1OGUwMTVlZTMgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9jbG9jay9yb2NrY2hpcCxyazMzOTktY3J1LnlhbWwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZp
+Y2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzM5OS1jcnUueWFtbApAQCAtMSw0ICsx
+LDQgQEAKLSMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb25seQorIyBTUERYLUxp
+Y2Vuc2UtSWRlbnRpZmllcjogKEdQTC0yLjArIE9SIE1JVCkKICVZQU1MIDEuMgogLS0tCiAkaWQ6
+IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL2Nsb2NrL3JvY2tjaGlwLHJrMzM5OS1jcnUu
+eWFtbCMKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9j
+ay9yb2NrY2hpcCxydjExMDgtY3J1LnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvY2xvY2svcm9ja2NoaXAscnYxMTA4LWNydS55YW1sCmluZGV4IDIwNDIxYzIyZjE4NC4u
+NDYxMWQ5MjBiOGRmIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvY2xvY2svcm9ja2NoaXAscnYxMTA4LWNydS55YW1sCisrKyBiL0RvY3VtZW50YXRpb24vZGV2
+aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxydjExMDgtY3J1LnlhbWwKQEAgLTEsNCAr
+MSw0IEBACi0jIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wCisjIFNQRFgtTGljZW5z
+ZS1JZGVudGlmaWVyOiAoR1BMLTIuMCsgT1IgTUlUKQogJVlBTUwgMS4yCiAtLS0KICRpZDogaHR0
+cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvY2xvY2svcm9ja2NoaXAscnYxMTA4LWNydS55YW1s
+IwotLSAKMi4yMC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
+ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
+aW51eC1yb2NrY2hpcAo=
