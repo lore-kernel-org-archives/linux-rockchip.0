@@ -4,80 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F358ECAAD3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Sep 2022 22:25:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B26BC6FA82
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Sep 2022 23:07:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=NGsflumFN+AgAlafplpWdvL0wlRhIma+g6kvlZ/F5/Y=; b=ES/+afcbF6PcL9
-	ZSpiPbbD7aAWApoWtj9z7GIfoZzRjsXnOZPxsyzd53Xju88BZlP9ziWQOx9j1h03uE/2HE+lOZ/pL
-	lIn/sCiIqLmwcc1vnepFO7JLXX5r8MnGlvWQLH6MH5cLKHIGfS/EZKS2tuZZlqu2hmFdNsoDaMcsF
-	Im7MeuhKUpLhr5LYxsMEjP7YZQ7E7cUd2Fnxsmb0zWJPWpJiYTogV+AoHJiZSKueaCkKXxxOSsNxo
-	U9zhc6GsAVzFmwdRzXI2380vA7PgkZaineuzIhKmy2TcYTbVyrSkMWFaEv+v0RECEB1rpUTklq37t
-	VrjAgIdND1c3Vd8i+sDQ==;
+	List-Owner; bh=0X+XCr3hiLTKQBd8zhKmaGdOzsY5qZcUtU2fEj255IQ=; b=AGcPBqaSz69ZAZ
+	u3pEREeessJTeTbXCODmC2TE2O7lPBRSj7R83xfeUBnX9dwnXLClv0Nmm+GUWfJ2PqnMVE/7Ve3Wr
+	LQvIh21Ai4UbzoLyDjlaKfCpSWcPnGSF2QAttthdejzJGZsIlBVHUgPpdzPyYUet3OCZGIe6s393Z
+	Zi+ArTljgJOER+pwHUn/T9NbXN28bX2zz+BZQeoNmrgeORtrV6cJHujA32LXqrup7oEkbvdDQ+6lf
+	IAhzywY5W5xWvS/IQkmk+zBim6xhxmWPv2sMoMHyBZpSEGgqEp88G8rAYOW2pUPUUUxKFNmkj9rdM
+	ysl4CzL2R45H62gwIjLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaPCg-00FqiL-HC; Mon, 19 Sep 2022 22:25:26 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1oaPrN-00G8sH-BK; Mon, 19 Sep 2022 23:07:29 +0000
+Received: from mga02.intel.com ([134.134.136.20])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaPCU-00Fqb6-Da; Mon, 19 Sep 2022 22:25:16 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id z2so1275224edi.1;
-        Mon, 19 Sep 2022 15:25:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date;
-        bh=krzfWY+U+C68iDb788Ps/isqFlp7Jns624VMj/Zic0w=;
-        b=fO8nIdegJnYZSRDU3a+VlcKRlEqWcPuKtYKcsYbLbVVbbLpAAJj12c0L6u2WrWWn4m
-         e4RgFEpnzIhLolF1MB10MsulZCjHG52OJM40NUQ6rS15bsMgPcPymwCvRvdf0U2FWGGE
-         iWnrFt4cOhDi4Xy0cRsNeFDhg96YxBmgbHQTTMr2MxspWaVf/IvLvJW1H6D6nvY4S7b9
-         zVtn3JMob54SIJ5CW5FA7qLuJK54S8vSfGizvauuJ7/iiF7AqDVB0xTknKcUK5Ja9D6d
-         CJvWv5I4VX+L3X16kgy+B7+R0a9Jz/WwBeM3PVJBFBlNQu+lNuEfw42BTpzFB+LVP5kx
-         ni0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:content-language:cc:to:subject:from
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
-         :cc:subject:date;
-        bh=krzfWY+U+C68iDb788Ps/isqFlp7Jns624VMj/Zic0w=;
-        b=o0Zmls+j/EA3zo8AgfsAmD9d4Nb2ZobnDoyLavTMTTTW2GBlAreQIwMq8GYTkcvowg
-         TrtOn4TXw6xJGf6KCnG3jOtZ8WY0xH7PMcUUU5BwrSilaztwwoOyTSmKZT+H+j7V5agz
-         CrsDervfJ2qNyh1HFYwLwdIfrQ0DQ1no2ZsjFIjy5HZJHdvNVPxIhvgD3nV8dwAzm9M6
-         1Ez294eEPfyXg0S7c0L6wKFetgAjjTdhZBMZueLWuopiGtJec9apg/xlmxuDgQIxJPxC
-         jVApBUE4oyoHj5nWgyBzi1k+1W/qltDJUm7I3dMDim3RbuVDCb7r1PFh2RwuUFBG2N6/
-         632g==
-X-Gm-Message-State: ACrzQf2INI9PRjDv8P0drMTxQ7VwmKxsz1qy+FIMc1J76CrfEzC+Getg
-	w/PQkeUEsASXo5zwFTXkY9w=
-X-Google-Smtp-Source: AMsMyM7aMIM27Gmv/KDNMjmjSw8seFcCELcWjbwpbxYL4wAjDBR/TRExa/X0MA2mps43ZhhKg1k2QA==
-X-Received: by 2002:aa7:c7d3:0:b0:44f:2776:31b with SMTP id o19-20020aa7c7d3000000b0044f2776031bmr17736474eds.251.1663626309950;
-        Mon, 19 Sep 2022 15:25:09 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
-        by smtp.gmail.com with ESMTPSA id e19-20020a50ec93000000b004528a535b44sm13694319edr.32.2022.09.19.15.25.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Sep 2022 15:25:09 -0700 (PDT)
-Message-ID: <20c6a502-2ff5-bdb1-fb4f-0741f3a2c19c@gmail.com>
-Date: Tue, 20 Sep 2022 00:25:07 +0200
+	id 1oaPrK-00G8rR-H3; Mon, 19 Sep 2022 23:07:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1663628846; x=1695164846;
+  h=date:from:to:cc:subject:message-id:mime-version:
+   content-transfer-encoding;
+  bh=705WJOdue58NafhZ3jROr0GP9JgBUxIfi5dZH5hR6WA=;
+  b=VoEp+Leh5tT+zQ8Umj9j2D3Z8N08Hm+FfzFLMlwBxmv0jakt5UxjjQz8
+   fjbY7c4m2/RWztxWDlUNrvJm/UCvtTFUxwOkFcPs2cY9f02BWh+euavS4
+   XUr7skrT0NtUz9HEKCP1bPC4ZZ7hvB5Ea1/0YvcZd/bykDOcKLElV8gkd
+   ecFRh7KCFLj/kXSkMKPw8ZD/KETYf9tLQXJnqi9SNvI4jzG/RBenEC+gl
+   3zhoMqKD9ovRp5wzu9cjz7b5CPmeyNcq2UUMtoAShm5SJ+RDjzuHxGwG2
+   SVBZzsFNuKS9rQN6+SGJwaJdfP7sAgyn9qknT05xPVEId3w42iyrph7RB
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10475"; a="286590438"
+X-IronPort-AV: E=Sophos;i="5.93,329,1654585200"; 
+   d="scan'208";a="286590438"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Sep 2022 16:07:25 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.93,329,1654585200"; 
+   d="scan'208";a="569841395"
+Received: from lkp-server01.sh.intel.com (HELO c0a60f19fe7e) ([10.239.97.150])
+  by orsmga003.jf.intel.com with ESMTP; 19 Sep 2022 16:07:22 -0700
+Received: from kbuild by c0a60f19fe7e with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1oaPrF-0002Hl-1e;
+	Mon, 19 Sep 2022 23:07:21 +0000
+Date: Tue, 20 Sep 2022 07:06:48 +0800
+From: kernel test robot <lkp@intel.com>
+To: Andrew Morton <akpm@linux-foundation.org>
+Cc: linux-scsi@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-parisc@vger.kernel.org, linux-mm@kvack.org,
+ linux-btrfs@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux.dev, dri-devel@lists.freedesktop.org,
+ Linux Memory Management List <linux-mm@kvack.org>
+Subject: [linux-next:master] BUILD REGRESSION
+ 4c9ca5b1597e3222177ba2a94658f78fa5ef4f58
+Message-ID: <6328f608.UcWATT4z3JbSJozt%lkp@intel.com>
+User-Agent: Heirloom mailx 12.5 6/20/10
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2] dt-bindings: clock: rockchip: change
- SPDX-License-Identifier
-To: heiko@sntech.de, zhangqing@rock-chips.com, finley.xiao@rock-chips.com,
- shawn.lin@rock-chips.com, zhengxing@rock-chips.com,
- jeffy.chen@rock-chips.com, andy.yan@rock-chips.com,
- mylene.josserand@collabora.com, nfraprado@collabora.com, eric@engestrom.ch
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, sboyd@kernel.org,
- mturquette@baylibre.com, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_152514_505564_1950FDA6 
-X-CRM114-Status: GOOD (  12.56  )
+X-CRM114-CacheID: sfid-20220919_160726_675799_A40B8956 
+X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,152 +79,235 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Q2hhbmdlIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyIHRvIChHUEwtMi4wKyBPUiBNSVQpCmZvciBS
-b2NrY2hpcCBjbG9jayBiaW5kaW5ncy4KCkNjOiBIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNo
-LmRlPgpDYzogRWxhaW5lIFpoYW5nIDx6aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+CkNjOiBYaW5n
-IFpoZW5nIDx6aGVuZ3hpbmdAcm9jay1jaGlwcy5jb20+CkNjOiBKZWZmeSBDaGVuIDxqZWZmeS5j
-aGVuQHJvY2stY2hpcHMuY29tPgpDYzogRmlubGV5IFhpYW8gPGZpbmxleS54aWFvQHJvY2stY2hp
-cHMuY29tPgpDYzogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgpDYzogU2hhd24g
-TGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+CkNjOiBFcmljIEVuZ2VzdHJvbSA8ZXJpY0Bl
-bmdlc3Ryb20uY2g+CkNjOiBNeWzDqG5lIEpvc3NlcmFuZCA8bXlsZW5lLmpvc3NlcmFuZEBjb2xs
-YWJvcmEuY29tPgpDYzogTsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJv
-cmEuY29tPgpTaWduZWQtb2ZmLWJ5OiBKb2hhbiBKb25rZXIgPGpieDYyNDRAZ21haWwuY29tPgot
-LS0KClJlcXVlc3QgZm9yIGNvcHlyaWdodCBob2xkZXIgYXBwcm92YWwuClJvY2tjaGlwIHJlY2Vu
-dGx5IHJlcGxpZWQgb24gb3RoZXIgY2xvY2stcGF0Y2hlcyB0byBkdWFsLWxpY2Vuc2UgdGhlCmJp
-bmRpbmcuCgpodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvNTEwZDExODAtYmM4ZS03ODIwLWM3
-NzItZWQ3ZjM1NDQ3MDg3QHJvY2stY2hpcHMuY29tLwpGcm9tIEZpbmxleSB3aXRoIGFuICBAcm9j
-ay1jaGlwcy5jb20gYWRkcmVzcywgc28gdGhpcyBzaG91bGQgYmUgb2suCgotLS0KCkNoYW5nZWQg
-VjI6CiAgVXNlIEdQTC0yLjArIE9SIE1JVCBsaWNlbnNlCiAgQWRkIG1vcmUgQ0MKCi0tLQoKZ2l0
-IGxvZyBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svKnB4MzAqLnR4dAoK
-QXV0aG9yOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgogICAgYXJtNjQ6IGR0czog
-cm9ja2NoaXA6IGRvY3VtZW50IGV4cGxpY2l0IHB4MzAgY3J1IGRlcGVuZGVuY2llcwoKQXV0aG9y
-OiBFbGFpbmUgWmhhbmcgPHpoYW5ncWluZ0Byb2NrLWNoaXBzLmNvbT4KICAgIGR0LWJpbmRpbmdz
-OiBhZGQgYmluZGluZ3MgZm9yIHB4MzAgY2xvY2sgY29udHJvbGxlcgoKPT09CgpnaXQgbG9nIERv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay8qcmszMDM2Ki50eHQKCkF1dGhv
-cjogWGluZyBaaGVuZyA8emhlbmd4aW5nQHJvY2stY2hpcHMuY29tPgogICAgY2xrOiByb2NrY2hp
-cDogcmszMDM2OiByZW5hbWUgZW1hYyBleHQgc291cmNlIGNsb2NrCgpBdXRob3I6IFhpbmcgWmhl
-bmcgPHpoZW5neGluZ0Byb2NrLWNoaXBzLmNvbT4KICAgIGR0LWJpbmRpbmdzOiBhZGQgZG9jdW1l
-bnRhdGlvbiBvZiByazMwMzYgY2xvY2sgY29udHJvbGxlcgoKPT09CgpnaXQgbG9nIERvY3VtZW50
-YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay8qcmszMTg4Ki50eHQKCkF1dGhvcjogRXJp
-YyBFbmdlc3Ryb20gPGVyaWNAZW5nZXN0cm9tLmNoPgogICAgRG9jdW1lbnRhdGlvbjogZHQ6IGNs
-b2NrOiBmaXggc3BlbGxpbmcgbWlzdGFrZXMKCkF1dGhvcjogSGVpa28gU3TDvGJuZXIgPGhlaWtv
-QHNudGVjaC5kZT4KICAgIGR0LWJpbmRpbmdzOiBhZGQgZG9jdW1lbnRhdGlvbiBmb3IgcmszMTg4
-IGNsb2NrIGFuZCByZXNldCB1bml0Cgo9PT0KCmdpdCBsb2cgRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL2Nsb2NrLypyazMyMjgqLnR4dAoKQXV0aG9yOiBKZWZmeSBDaGVuIDxqZWZm
-eS5jaGVuQHJvY2stY2hpcHMuY29tPgogICAgZHQtYmluZGluZ3M6IGFkZCBkb2N1bWVudGF0aW9u
-IG9mIHJrMzIyOCBjbG9jayBjb250cm9sbGVyCgo9PT0KCmdpdCBsb2cgRG9jdW1lbnRhdGlvbi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrLypyazMyODgqLnR4dAoKQXV0aG9yOiBNeWzDqG5lIEpv
-c3NlcmFuZCA8bXlsZW5lLmpvc3NlcmFuZEBjb2xsYWJvcmEuY29tPgogICAgZHQtYmluZGluZ3M6
-IGNsb2NrczogYWRkIHJrMzI4OHcgdmFyaWFudCBjb21wYXRpYmxlCgpBdXRob3I6IEVyaWMgRW5n
-ZXN0cm9tIDxlcmljQGVuZ2VzdHJvbS5jaD4KICAgIERvY3VtZW50YXRpb246IGR0OiBjbG9jazog
-Zml4IHNwZWxsaW5nIG1pc3Rha2VzCgpBdXRob3I6IEhlaWtvIFN0w7xibmVyIDxoZWlrb0BzbnRl
-Y2guZGU+CiAgICBkdC1iaW5kaW5nczogYWRkIGRvY3VtZW50YXRpb24gZm9yIHJrMzI4OCBjcnUK
-Cj09PQoKZ2l0IGxvZyBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svKnJr
-MzMwOCoudHh0CgpBdXRob3I6IEZpbmxleSBYaWFvIDxmaW5sZXkueGlhb0Byb2NrLWNoaXBzLmNv
-bT4KICAgIGR0LWJpbmRpbmdzOiBBZGQgYmluZGluZ3MgZm9yIHJrMzMwOCBjbG9jayBjb250cm9s
-bGVyCgo9PT0KCmdpdCBsb2cgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2Nr
-LypyazMzNjgqLnR4dAoKQXV0aG9yOiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgog
-ICAgZHQtYmluZGluZ3M6IGFkZCBkb2N1bWVudGF0aW9uIG9mIHJrMzY2OCBjbG9jayBjb250cm9s
-bGVyCgo9PT0KCmdpdCBsb2cgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2Nr
-LypyazMzOTkqLnR4dAoKQXV0aG9yOiBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyA8bmZyYXByYWRv
-QGNvbGxhYm9yYS5jb20+CiAgICBkdC1iaW5kaW5nczogY2xrOiBDb252ZXJ0IHJvY2tjaGlwLHJr
-MzM5OS1jcnUgdG8gRFQgc2NoZW1hCgpBdXRob3I6IFhpbmcgWmhlbmcgPHpoZW5neGluZ0Byb2Nr
-LWNoaXBzLmNvbT4KICAgIGR0LWJpbmRpbmdzOiBjbGs6IGFkZCByb2NrY2hpcCxncmYgcHJvcGVy
-dHkgZm9yIFJLMzM5OQoKQXV0aG9yOiBYaW5nIFpoZW5nIDx6aGVuZ3hpbmdAcm9jay1jaGlwcy5j
-b20+CiAgICBkdC1iaW5kaW5nczogYWRkIGJpbmRpbmdzIGZvciByazMzOTkgY2xvY2sgY29udHJv
-bGxlcgoKPT09CgpnaXQgbG9nIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9j
-ay8qcmsxMSoudHh0CgpBdXRob3I6IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4K
-ICAgIGR0LWJpbmRpbmdzOiByazExMDgtY3J1OiByZW5hbWUgUksxMTA4IHRvIFJWMTEwOAoKQXV0
-aG9yOiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KICAgIGR0LWJpbmRpbmdz
-OiBhZGQgZG9jdW1lbnRhdGlvbiBmb3IgcmsxMTA4IGNydQotLS0KIERvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxweDMwLWNydS55YW1sICB8IDIgKy0KIC4u
-Li9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzAzNi1jcnUueWFtbCAgICAg
-ICAgICB8IDIgKy0KIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzIy
-OC1jcnUueWFtbCAgICAgICAgICB8IDIgKy0KIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2Nr
-L3JvY2tjaGlwLHJrMzI4OC1jcnUueWFtbCAgICAgICAgICB8IDIgKy0KIC4uLi9kZXZpY2V0cmVl
-L2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzMwOC1jcnUueWFtbCAgICAgICAgICB8IDIgKy0K
-IC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzM2OC1jcnUueWFtbCAg
-ICAgICAgICB8IDIgKy0KIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJr
-MzM5OS1jcnUueWFtbCAgICAgICAgICB8IDIgKy0KIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Ns
-b2NrL3JvY2tjaGlwLHJ2MTEwOC1jcnUueWFtbCAgICAgICAgICB8IDIgKy0KIDggZmlsZXMgY2hh
-bmdlZCwgOCBpbnNlcnRpb25zKCspLCA4IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL0RvY3Vt
-ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxweDMwLWNydS55YW1s
-IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHB4MzAt
-Y3J1LnlhbWwKaW5kZXggM2VlYzM4MWM3Y2Y1Li4wZjBmNjRiNmY4Y2IgMTAwNjQ0Ci0tLSBhL0Rv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxweDMwLWNydS55
-YW1sCisrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hp
-cCxweDMwLWNydS55YW1sCkBAIC0xLDQgKzEsNCBAQAotIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmll
-cjogR1BMLTIuMAorIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogKEdQTC0yLjArIE9SIE1JVCkK
-ICVZQU1MIDEuMgogLS0tCiAkaWQ6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL2Nsb2Nr
-L3JvY2tjaGlwLHB4MzAtY3J1LnlhbWwjCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMDM2LWNydS55YW1sIGIvRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzAzNi1jcnUueWFtbApp
-bmRleCAxMzc2MjMwZmVkZTYuLmJhNWI0NTQ2NDMxNSAxMDA2NDQKLS0tIGEvRG9jdW1lbnRhdGlv
-bi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzAzNi1jcnUueWFtbAorKysg
-Yi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMDM2
-LWNydS55YW1sCkBAIC0xLDQgKzEsNCBAQAotIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BM
-LTIuMAorIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogKEdQTC0yLjArIE9SIE1JVCkKICVZQU1M
-IDEuMgogLS0tCiAkaWQ6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL2Nsb2NrL3JvY2tj
-aGlwLHJrMzAzNi1jcnUueWFtbCMKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJl
-ZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxyazMyMjgtY3J1LnlhbWwgYi9Eb2N1bWVudGF0aW9u
-L2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMjI4LWNydS55YW1sCmluZGV4
-IGNmN2RjMDFkOTQ3OC4uMTA1MGZmZjcyYWRlIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMjI4LWNydS55YW1sCisrKyBiL0Rv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxyazMyMjgtY3J1
-LnlhbWwKQEAgLTEsNCArMSw0IEBACi0jIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4w
-CisjIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiAoR1BMLTIuMCsgT1IgTUlUKQogJVlBTUwgMS4y
-CiAtLS0KICRpZDogaHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvY2xvY2svcm9ja2NoaXAs
-cmszMjI4LWNydS55YW1sIwpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzI4OC1jcnUueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxyazMyODgtY3J1LnlhbWwKaW5kZXggOTZi
-YzA1NzQ5ZTFhLi42NjU1ZTk3ZDUyZTQgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNl
-dHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxyazMyODgtY3J1LnlhbWwKKysrIGIvRG9jdW1l
-bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzI4OC1jcnUueWFt
-bApAQCAtMSw0ICsxLDQgQEAKLSMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAKKyMg
-U1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wKyBPUiBNSVQpCiAlWUFNTCAxLjIKIC0t
-LQogJGlkOiBodHRwOi8vZGV2aWNldHJlZS5vcmcvc2NoZW1hcy9jbG9jay9yb2NrY2hpcCxyazMy
-ODgtY3J1LnlhbWwjCmRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
-Z3MvY2xvY2svcm9ja2NoaXAscmszMzA4LWNydS55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0
-cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzMwOC1jcnUueWFtbAppbmRleCA1MjNlZTU3
-OGE1ODYuLmZlYzM3ZjViODBmNiAxMDA2NDQKLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
-L2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzMwOC1jcnUueWFtbAorKysgYi9Eb2N1bWVudGF0
-aW9uL2RldmljZXRyZWUvYmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMzA4LWNydS55YW1sCkBA
-IC0xLDQgKzEsNCBAQAotIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMAorIyBTUERY
-LUxpY2Vuc2UtSWRlbnRpZmllcjogKEdQTC0yLjArIE9SIE1JVCkKICVZQU1MIDEuMgogLS0tCiAk
-aWQ6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL2Nsb2NrL3JvY2tjaGlwLHJrMzMwOC1j
-cnUueWFtbCMKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9j
-bG9jay9yb2NrY2hpcCxyazMzNjgtY3J1LnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMzY4LWNydS55YW1sCmluZGV4IGFkYjY3ODc3NzIw
-ZC4uOTBhZjI0MmI0MWMxIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
-ZGluZ3MvY2xvY2svcm9ja2NoaXAscmszMzY4LWNydS55YW1sCisrKyBiL0RvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxyazMzNjgtY3J1LnlhbWwKQEAgLTEs
-NCArMSw0IEBACi0jIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wCisjIFNQRFgtTGlj
-ZW5zZS1JZGVudGlmaWVyOiAoR1BMLTIuMCsgT1IgTUlUKQogJVlBTUwgMS4yCiAtLS0KICRpZDog
-aHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvY2xvY2svcm9ja2NoaXAscmszMzY4LWNydS55
-YW1sIwpkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Nsb2Nr
-L3JvY2tjaGlwLHJrMzM5OS1jcnUueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9jbG9jay9yb2NrY2hpcCxyazMzOTktY3J1LnlhbWwKaW5kZXggNTRkYTFlMzFlYTczLi4w
-Yjc1OGUwMTVlZTMgMTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9jbG9jay9yb2NrY2hpcCxyazMzOTktY3J1LnlhbWwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZp
-Y2V0cmVlL2JpbmRpbmdzL2Nsb2NrL3JvY2tjaGlwLHJrMzM5OS1jcnUueWFtbApAQCAtMSw0ICsx
-LDQgQEAKLSMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb25seQorIyBTUERYLUxp
-Y2Vuc2UtSWRlbnRpZmllcjogKEdQTC0yLjArIE9SIE1JVCkKICVZQU1MIDEuMgogLS0tCiAkaWQ6
-IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL2Nsb2NrL3JvY2tjaGlwLHJrMzM5OS1jcnUu
-eWFtbCMKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9jbG9j
-ay9yb2NrY2hpcCxydjExMDgtY3J1LnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
-ZGluZ3MvY2xvY2svcm9ja2NoaXAscnYxMTA4LWNydS55YW1sCmluZGV4IDIwNDIxYzIyZjE4NC4u
-NDYxMWQ5MjBiOGRmIDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
-Z3MvY2xvY2svcm9ja2NoaXAscnYxMTA4LWNydS55YW1sCisrKyBiL0RvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxydjExMDgtY3J1LnlhbWwKQEAgLTEsNCAr
-MSw0IEBACi0jIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wCisjIFNQRFgtTGljZW5z
-ZS1JZGVudGlmaWVyOiAoR1BMLTIuMCsgT1IgTUlUKQogJVlBTUwgMS4yCiAtLS0KICRpZDogaHR0
-cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMvY2xvY2svcm9ja2NoaXAscnYxMTA4LWNydS55YW1s
-IwotLSAKMi4yMC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+branch HEAD: 4c9ca5b1597e3222177ba2a94658f78fa5ef4f58  Add linux-next specific files for 20220919
+
+Error/Warning reports:
+
+https://lore.kernel.org/linux-doc/202209200314.tChS7q2Y-lkp@intel.com
+https://lore.kernel.org/linux-doc/202209200341.be18yIBM-lkp@intel.com
+https://lore.kernel.org/linux-mm/202209150141.WgbAKqmX-lkp@intel.com
+https://lore.kernel.org/linux-mm/202209200603.Hpvoa8Ii-lkp@intel.com
+https://lore.kernel.org/llvm/202209192243.d80zUWVW-lkp@intel.com
+https://lore.kernel.org/llvm/202209200834.EFwaTsIj-lkp@intel.com
+
+Error/Warning: (recently discovered and may have been fixed)
+
+ERROR: modpost: "devm_ioremap_resource" [drivers/dma/fsl-edma.ko] undefined!
+ERROR: modpost: "devm_memremap" [drivers/misc/open-dice.ko] undefined!
+ERROR: modpost: "devm_memunmap" [drivers/misc/open-dice.ko] undefined!
+ERROR: modpost: "devm_platform_ioremap_resource" [drivers/char/xillybus/xillybus_of.ko] undefined!
+ERROR: modpost: "devm_platform_ioremap_resource" [drivers/clk/xilinx/clk-xlnx-clock-wizard.ko] undefined!
+ERROR: modpost: "ioremap" [drivers/tty/ipwireless/ipwireless.ko] undefined!
+ERROR: modpost: "iounmap" [drivers/net/ethernet/8390/pcnet_cs.ko] undefined!
+ERROR: modpost: "iounmap" [drivers/tty/ipwireless/ipwireless.ko] undefined!
+arch/parisc/lib/iomap.c:363:5: warning: no previous prototype for 'ioread64_lo_hi' [-Wmissing-prototypes]
+arch/parisc/lib/iomap.c:373:5: warning: no previous prototype for 'ioread64_hi_lo' [-Wmissing-prototypes]
+arch/parisc/lib/iomap.c:448:6: warning: no previous prototype for 'iowrite64_lo_hi' [-Wmissing-prototypes]
+arch/parisc/lib/iomap.c:454:6: warning: no previous prototype for 'iowrite64_hi_lo' [-Wmissing-prototypes]
+drivers/gpu/drm/drm_atomic_helper.c:802: warning: expecting prototype for drm_atomic_helper_check_wb_connector_state(). Prototype was for drm_atomic_helper_check_wb_encoder_state() instead
+drivers/iommu/ipmmu-vmsa.c:946:34: warning: unused variable 'ipmmu_of_ids' [-Wunused-const-variable]
+drivers/scsi/qla2xxx/qla_os.c:2854:23: warning: assignment to 'struct trace_array *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+drivers/scsi/qla2xxx/qla_os.c:2854:25: error: implicit declaration of function 'trace_array_get_by_name'; did you mean 'trace_array_set_clr_event'? [-Werror=implicit-function-declaration]
+drivers/scsi/qla2xxx/qla_os.c:2869:9: error: implicit declaration of function 'trace_array_put' [-Werror=implicit-function-declaration]
+fs/btrfs/extent-io-tree.c:165: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+fs/btrfs/extent-io-tree.c:217: warning: This comment starts with '/**', but isn't a kernel-doc comment. Refer Documentation/doc-guide/kernel-doc.rst
+mm/hugetlb.c:5565:14: warning: variable 'reserve_alloc' set but not used [-Wunused-but-set-variable]
+
+Unverified Error/Warning (likely false positive, please contact us if interested):
+
+ERROR: modpost: "__tsan_memcpy" [arch/s390/crypto/chacha_s390.ko] undefined!
+ERROR: modpost: "__tsan_memcpy" [arch/s390/crypto/ghash_s390.ko] undefined!
+ERROR: modpost: "__tsan_memcpy" [arch/s390/crypto/prng.ko] undefined!
+ERROR: modpost: "__tsan_memcpy" [arch/s390/crypto/sha3_512_s390.ko] undefined!
+ERROR: modpost: "__tsan_memset" [arch/s390/crypto/chacha_s390.ko] undefined!
+ERROR: modpost: "__tsan_memset" [arch/s390/crypto/ghash_s390.ko] undefined!
+ERROR: modpost: "__tsan_memset" [arch/s390/crypto/prng.ko] undefined!
+ERROR: modpost: "__tsan_memset" [arch/s390/crypto/sha3_512_s390.ko] undefined!
+ERROR: modpost: "__tsan_memset" [kernel/rcu/refscale.ko] undefined!
+ERROR: modpost: "__tsan_memset" [kernel/scftorture.ko] undefined!
+
+Error/Warning ids grouped by kconfigs:
+
+gcc_recent_errors
+|-- alpha-allyesconfig
+|   |-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|   |-- drivers-scsi-qla2xxx-qla_os.c:error:implicit-declaration-of-function-trace_array_get_by_name
+|   |-- drivers-scsi-qla2xxx-qla_os.c:error:implicit-declaration-of-function-trace_array_put
+|   `-- drivers-scsi-qla2xxx-qla_os.c:warning:assignment-to-struct-trace_array-from-int-makes-pointer-from-integer-without-a-cast
+|-- alpha-randconfig-r026-20220919
+|   `-- fs-btrfs-extent-io-tree.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+|-- arc-allyesconfig
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- arc-randconfig-r043-20220919
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- arm-allyesconfig
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- arm-defconfig
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- arm64-allyesconfig
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- i386-allyesconfig
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- i386-defconfig
+|   |-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|   `-- mm-hugetlb.c:warning:variable-reserve_alloc-set-but-not-used
+|-- i386-randconfig-a011-20220919
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- i386-randconfig-a012-20220919
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- i386-randconfig-a015-20220919
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- ia64-allmodconfig
+|   |-- drivers-scsi-qla2xxx-qla_os.c:error:implicit-declaration-of-function-trace_array_get_by_name
+|   |-- drivers-scsi-qla2xxx-qla_os.c:error:implicit-declaration-of-function-trace_array_put
+|   `-- drivers-scsi-qla2xxx-qla_os.c:warning:assignment-to-struct-trace_array-from-int-makes-pointer-from-integer-without-a-cast
+|-- loongarch-buildonly-randconfig-r004-20220919
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- loongarch-randconfig-r015-20220919
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- m68k-allmodconfig
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- m68k-allyesconfig
+|   |-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|   `-- fs-btrfs-extent-io-tree.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+|-- mips-allyesconfig
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- nios2-randconfig-r025-20220919
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- openrisc-randconfig-r003-20220919
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- openrisc-randconfig-r004-20220919
+|   `-- drivers-gpu-drm-drm_atomic_helper.c:warning:expecting-prototype-for-drm_atomic_helper_check_wb_connector_state().-Prototype-was-for-drm_atomic_helper_check_wb_encoder_state()-instead
+|-- parisc-allyesconfig
+clang_recent_errors
+|-- arm-buildonly-randconfig-r001-20220919
+|   |-- drivers-extcon-extcon-usbc-tusb320.c:warning:expecting-prototype-for-drivers-extcon-extcon-tusb320c().-Prototype-was-for-TUSB320_REG8()-instead
+|   `-- drivers-gpu-drm-tests-drm_mm_test.c:warning:stack-frame-size-()-exceeds-limit-()-in-__drm_test_mm_reserve
+|-- arm-defconfig
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_aclk_pdispp_p
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_aclk_pdnpu_p
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_aclk_pdvi_p
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_cif_out2io_p
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_clk_isp_p
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_clk_ispp_p
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_clk_npu_p
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_cpll_gpll_hpll_p
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_cpll_hpll_gpll_p
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_dclk_vop_p
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_gpll_cpll_apll_hpll_p
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_gpll_cpll_hpll_p
+|   |-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_gpll_usb480m_p
+|   `-- drivers-clk-rockchip-clk-rv1126.c:warning:unused-variable-mux_mipicsi_out2io_p
+|-- arm64-buildonly-randconfig-r005-20220919
+|   |-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-function-apply_alternatives_vdso
+|   `-- drivers-extcon-extcon-usbc-tusb320.c:warning:expecting-prototype-for-drivers-extcon-extcon-tusb320c().-Prototype-was-for-TUSB320_REG8()-instead
+|-- arm64-randconfig-r033-20220919
+|   `-- arch-arm64-kernel-alternative.c:warning:no-previous-prototype-for-function-apply_alternatives_vdso
+|-- hexagon-randconfig-r041-20220919
+|   `-- drivers-extcon-extcon-usbc-tusb320.c:warning:expecting-prototype-for-drivers-extcon-extcon-tusb320c().-Prototype-was-for-TUSB320_REG8()-instead
+|-- hexagon-randconfig-r045-20220919
+|   `-- drivers-extcon-extcon-usbc-tusb320.c:warning:expecting-prototype-for-drivers-extcon-extcon-tusb320c().-Prototype-was-for-TUSB320_REG8()-instead
+|-- i386-randconfig-a002-20220919
+|   `-- drivers-extcon-extcon-usbc-tusb320.c:warning:expecting-prototype-for-drivers-extcon-extcon-tusb320c().-Prototype-was-for-TUSB320_REG8()-instead
+|-- i386-randconfig-a005-20220919
+|   `-- drivers-extcon-extcon-usbc-tusb320.c:warning:expecting-prototype-for-drivers-extcon-extcon-tusb320c().-Prototype-was-for-TUSB320_REG8()-instead
+|-- i386-randconfig-a006-20220919
+|   `-- drivers-extcon-extcon-usbc-tusb320.c:warning:expecting-prototype-for-drivers-extcon-extcon-tusb320c().-Prototype-was-for-TUSB320_REG8()-instead
+|-- s390-randconfig-r005-20220919
+|   |-- ERROR:__tsan_memcpy-arch-s390-crypto-chacha_s390.ko-undefined
+|   |-- ERROR:__tsan_memcpy-arch-s390-crypto-ghash_s390.ko-undefined
+|   |-- ERROR:__tsan_memcpy-arch-s390-crypto-prng.ko-undefined
+|   |-- ERROR:__tsan_memcpy-arch-s390-crypto-sha3_512_s390.ko-undefined
+|   |-- ERROR:__tsan_memset-arch-s390-crypto-chacha_s390.ko-undefined
+|   |-- ERROR:__tsan_memset-arch-s390-crypto-ghash_s390.ko-undefined
+|   |-- ERROR:__tsan_memset-arch-s390-crypto-prng.ko-undefined
+|   |-- ERROR:__tsan_memset-arch-s390-crypto-sha3_512_s390.ko-undefined
+|   |-- ERROR:__tsan_memset-kernel-rcu-refscale.ko-undefined
+|   |-- ERROR:__tsan_memset-kernel-scftorture.ko-undefined
+|   `-- drivers-iommu-ipmmu-vmsa.c:warning:unused-variable-ipmmu_of_ids
+|-- x86_64-randconfig-a001-20220919
+|   `-- fs-btrfs-extent-io-tree.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+|-- x86_64-randconfig-a003-20220919
+|   `-- drivers-extcon-extcon-usbc-tusb320.c:warning:expecting-prototype-for-drivers-extcon-extcon-tusb320c().-Prototype-was-for-TUSB320_REG8()-instead
+|-- x86_64-randconfig-a006-20220919
+
+elapsed time: 726m
+
+configs tested: 57
+configs skipped: 2
+
+gcc tested configs:
+um                             i386_defconfig
+um                           x86_64_defconfig
+x86_64               randconfig-a012-20220919
+x86_64                              defconfig
+x86_64               randconfig-a011-20220919
+x86_64               randconfig-a013-20220919
+x86_64                               rhel-8.3
+x86_64               randconfig-a014-20220919
+powerpc                           allnoconfig
+x86_64               randconfig-a015-20220919
+x86_64               randconfig-a016-20220919
+x86_64                           allyesconfig
+i386                                defconfig
+sh                               allmodconfig
+mips                             allyesconfig
+powerpc                          allmodconfig
+arm                                 defconfig
+x86_64                          rhel-8.3-func
+x86_64                         rhel-8.3-kunit
+riscv                randconfig-r042-20220919
+x86_64                           rhel-8.3-kvm
+arc                  randconfig-r043-20220919
+arm64                            allyesconfig
+i386                             allyesconfig
+s390                 randconfig-r044-20220919
+arm                              allyesconfig
+x86_64                    rhel-8.3-kselftests
+x86_64                           rhel-8.3-syz
+ia64                             allmodconfig
+alpha                            allyesconfig
+arc                              allyesconfig
+i386                 randconfig-a012-20220919
+i386                 randconfig-a011-20220919
+i386                 randconfig-a013-20220919
+i386                 randconfig-a014-20220919
+m68k                             allmodconfig
+i386                 randconfig-a015-20220919
+arc                                 defconfig
+alpha                               defconfig
+m68k                             allyesconfig
+s390                             allmodconfig
+s390                                defconfig
+s390                             allyesconfig
+
+clang tested configs:
+x86_64               randconfig-a003-20220919
+x86_64               randconfig-a001-20220919
+x86_64               randconfig-a002-20220919
+i386                 randconfig-a001-20220919
+x86_64               randconfig-a004-20220919
+i386                 randconfig-a006-20220919
+i386                 randconfig-a002-20220919
+x86_64               randconfig-a006-20220919
+hexagon              randconfig-r041-20220919
+x86_64               randconfig-a005-20220919
+i386                 randconfig-a003-20220919
+hexagon              randconfig-r045-20220919
+i386                 randconfig-a004-20220919
+i386                 randconfig-a005-20220919
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
