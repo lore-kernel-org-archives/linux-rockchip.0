@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73401C6FA8B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Sep 2022 10:31:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD8E7C54EE9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Sep 2022 10:31:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KQmAd7CI37HF3RFZCHuq+28rccY+QWTnoQUKDZaa6Q8=; b=NhG5WrZlycp8fq
-	cnBzxTvLsZFYkUuYRu6AJZMm/e66QrIhIlJcmVkNP1Ga13LCnzDFtzPetkFGY89oAtdDmol6qB5rs
-	yl1Bpiy2E8TGR+mmRtoV6wPexWvEyuVVQHPoQLuyUnQmyJpDzg72OYlFeaV+6iY3Io9w04idXWUR3
-	YcWM5IUM7D7Y0wtY7dU1tDwudL6BLr5i3xlNr4RLUwatNco04f5YxMk4NOiy2dfaMdYMI8PKi4o07
-	4uHCLsLKhFSWZrkOmfbQCvWTAzU1Fz/nlgQVqV84Foglzmsz0AnQmONsjvMRgdFxMvL3M55ZIghNt
-	SltPE9f6FpXEyCE51Dbw==;
+	List-Owner; bh=1AUodBem7SCWqW+iHfrvq2Kv/Ki0E7PDuD0CNf29/ts=; b=vNK0beCyh2OZ2r
+	ktgbCRPDyahiereWDGcTiheXE++jat43IHPTxggmo4T9/xO/f9rFYPvU1Z6wUJpUI9J9zL/fsi2gO
+	0Uuj0fYHxVsetR4ha+oo0akjxj/LiPXceab+zZGfHsJaJLyef/WCjvLogTD52uZcTqwt1jcOcKNwj
+	j2QWhlbtQYwIcbdFbQmitg+Y18uXgX/oM5/J4fOuCxmejNzNJM2jrrITlydH6rNwm89a8Or8ZXTJE
+	GveiTx4v1k4XfN/gKcLHRd5/oEGi99/LspItSbgXGOs+EjXoa7/EzkzpGYoiyjrsZmI+YDXX4vUaQ
+	44LwGUwVDAG9K31M1CvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaaXI-002yNM-Hb; Tue, 20 Sep 2022 10:31:28 +0000
+	id 1oaaXJ-002yNg-1g; Tue, 20 Sep 2022 10:31:29 +0000
 Received: from mail-m11875.qiye.163.com ([115.236.118.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaaX5-002yHa-LZ
+	id 1oaaX5-002yGO-La
 	for linux-rockchip@lists.infradead.org; Tue, 20 Sep 2022 10:31:26 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11875.qiye.163.com (Hmail) with ESMTPA id 88F27280B5E;
-	Tue, 20 Sep 2022 18:31:11 +0800 (CST)
+	by mail-m11875.qiye.163.com (Hmail) with ESMTPA id D42C4280B58;
+	Tue, 20 Sep 2022 18:31:10 +0800 (CST)
 From: Jianqun Xu <jay.xu@rock-chips.com>
 To: linus.walleij@linaro.org,
 	heiko@sntech.de,
@@ -39,24 +39,24 @@ Cc: robert.moore@intel.com,
 	linux-kernel@vger.kernel.org,
 	lenb@kernel.org,
 	rafael@kernel.org,
-	Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH 02/20] pinctrl/rockchip: populate GPIO platform early
-Date: Tue, 20 Sep 2022 18:30:50 +0800
-Message-Id: <20220920103108.23074-3-jay.xu@rock-chips.com>
+	Hans de Goede <hdegoede@redhat.com>
+Subject: [PATCH 01/20] ACPI: utils: Add acpi_dev_uid_to_integer() helper to get _UID as integer
+Date: Tue, 20 Sep 2022 18:30:49 +0800
+Message-Id: <20220920103108.23074-2-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220920103108.23074-1-jay.xu@rock-chips.com>
 References: <20220920103108.23074-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVlDSkpOVh5PQ0xPTUxJSUlOSFUTARMWGhIXJB
-	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktPSElVSktLVUtZBg++
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NTY6Djo4Fz0qTRw2VgsuLyxI
-	TDJPFChVSlVKTU1ITU1CQ0xJSUtOVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
-	WU5DVUlJVUxVSkpPWVdZCAFZQUlOSks3Bg++
-X-HM-Tid: 0a835a73a4c42eb1kusn88f27280b5e
+	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVlCQ0hLVk5OQ00eSkNLSx4dH1UTARMWGhIXJB
+	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktISkxVSktLVUtZBg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Mhw6MCo6Qj0dURw3FxRCLykf
+	SQEwFExVSlVKTU1ITU1CQ0xKTktNVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
+	WU5DVUlJVUxVSkpPWVdZCAFZQUhCS083Bg++
+X-HM-Tid: 0a835a73a2102eb1kusnd42c4280b58
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_033118_690888_08378317 
-X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-CacheID: sfid-20220920_033118_716957_A80B04E2 
+X-CRM114-Status: UNSURE (   9.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,40 +74,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-It is better to register GPIO devices before pinctrl device, so move the
-populate GPIO platform early before pinctrl do really probe.
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+Some users interpret _UID only as integer and for them it's easier to
+have an integer representation of _UID. Add respective helper for that.
+
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Reviewed-by: Hans de Goede <hdegoede@redhat.com>
 ---
- drivers/pinctrl/pinctrl-rockchip.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/acpi/utils.c    | 24 ++++++++++++++++++++++++
+ include/acpi/acpi_bus.h |  1 +
+ include/linux/acpi.h    |  5 +++++
+ 3 files changed, 30 insertions(+)
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index a91061f9c2ac..25633c7b4244 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -3302,6 +3302,10 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
- 	if (!dev->of_node)
- 		return dev_err_probe(dev, -ENODEV, "device tree node not found\n");
+diff --git a/drivers/acpi/utils.c b/drivers/acpi/utils.c
+index 5a7b8065e77f..febf9b8da3a0 100644
+--- a/drivers/acpi/utils.c
++++ b/drivers/acpi/utils.c
+@@ -793,6 +793,30 @@ bool acpi_dev_hid_uid_match(struct acpi_device *adev,
+ }
+ EXPORT_SYMBOL(acpi_dev_hid_uid_match);
  
-+	ret = of_platform_populate(np, NULL, NULL, dev);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to register gpio device\n");
++/**
++ * acpi_dev_uid_to_integer - treat ACPI device _UID as integer
++ * @adev: ACPI device to get _UID from
++ * @integer: output buffer for integer
++ *
++ * Considers _UID as integer and converts it to @integer.
++ *
++ * Returns 0 on success, or negative error code otherwise.
++ */
++int acpi_dev_uid_to_integer(struct acpi_device *adev, u64 *integer)
++{
++	const char *uid;
 +
- 	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
- 	if (!info)
- 		return -ENOMEM;
-@@ -3360,10 +3364,6 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, info);
- 
--	ret = of_platform_populate(np, NULL, NULL, &pdev->dev);
--	if (ret)
--		return dev_err_probe(dev, ret, "failed to register gpio device\n");
--
- 	return 0;
++	if (!adev)
++		return -ENODEV;
++
++	uid = acpi_device_uid(adev);
++	if (!uid)
++		return -ENODATA;
++
++	return kstrtou64(uid, 0, integer);
++}
++EXPORT_SYMBOL(acpi_dev_uid_to_integer);
++
+ /**
+  * acpi_dev_found - Detect presence of a given ACPI device in the namespace.
+  * @hid: Hardware ID of the device.
+diff --git a/include/acpi/acpi_bus.h b/include/acpi/acpi_bus.h
+index e7d27373ff71..bd0db916f330 100644
+--- a/include/acpi/acpi_bus.h
++++ b/include/acpi/acpi_bus.h
+@@ -733,6 +733,7 @@ static inline bool acpi_device_can_poweroff(struct acpi_device *adev)
  }
  
+ bool acpi_dev_hid_uid_match(struct acpi_device *adev, const char *hid2, const char *uid2);
++int acpi_dev_uid_to_integer(struct acpi_device *adev, u64 *integer);
+ 
+ void acpi_dev_clear_dependencies(struct acpi_device *supplier);
+ bool acpi_dev_ready_for_enumeration(const struct acpi_device *device);
+diff --git a/include/linux/acpi.h b/include/linux/acpi.h
+index 6f64b2f3dc54..9434db02cb60 100644
+--- a/include/linux/acpi.h
++++ b/include/linux/acpi.h
+@@ -798,6 +798,11 @@ acpi_dev_hid_uid_match(struct acpi_device *adev, const char *hid2, const char *u
+ 	return false;
+ }
+ 
++static inline int acpi_dev_uid_to_integer(struct acpi_device *adev, u64 *integer)
++{
++	return -ENODEV;
++}
++
+ static inline struct acpi_device *
+ acpi_dev_get_first_match_dev(const char *hid, const char *uid, s64 hrv)
+ {
 -- 
 2.25.1
 
