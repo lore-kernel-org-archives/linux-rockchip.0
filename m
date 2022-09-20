@@ -4,59 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BD88C54EE9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Sep 2022 10:32:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF5F5C54EE9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Sep 2022 11:28:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xYWjhTVNw70b+3PlxH8ILwsQeSh1VXEmsGsktzasuqI=; b=Q19g2kk3/Q2evS
-	71ZHXVSLcNAP/gzAE3T1zA13DPF6du86RNTGWUMXZR7xZEr3R2Cd63r8Jteum+Z+yWv6eOSfWcPpC
-	GJ6y5PqcBms0FmHc1UoSm4zkIR2NJbKFXI6fDHlTV0uBY0Ds2pi4PSsEMWcd7l4r2ISXO5d6vG3/B
-	X5qGygms0pbwo4pN7qxxqeU0ELo+Nf2SxTZvGax2XQFu8w/hcoqmngvD3/2QeRlPtUON6yNVSKaYL
-	PHbwApHcX8z82IjYPMESNE7F7ZWvScCKdZsceiAWW3AQMMVf6tZ3g6LTR5OQe6cr1yq1mlcFANf+Q
-	mJqU3G1SMRfHuR8F24rA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=RXv3rFvHKKnmlBorrG9r0LbEHiPXAjUGO5IV/Oi224I=; b=FdxVev2n8IyEjl
+	x4iB2AHRz214NQx950gYQsh3coLF484dwgvZYYNR13MAK9pBHlWEtL6+JvNco+chrL1Q9wwXUmqE0
+	uPt34D+s7m7BiN5rz8QQIFrXppadP1mslQ18OLHE7yq5r+BMlYy8rBinfSRrR/X6myZKpC57Kx454
+	NY8HPyrXIdkGvkpuuYlgSXHiqYsY94yL6ANp5INGnWhzxT2yMqnta7Vvt0hjjzkURH4dH5Xy9aYRQ
+	FrygCdHILTkcZtFlCdEHNKWeDydR04l+bI8W5Oodf053ltGV72gajVO9F4Rhnl3g9El/s7hES6dON
+	a2vBFSXwHkFlBGpNFjXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaaXw-002zAH-Ei; Tue, 20 Sep 2022 10:32:08 +0000
-Received: from mail-m11875.qiye.163.com ([115.236.118.75])
+	id 1oabQE-003I7W-28; Tue, 20 Sep 2022 11:28:14 +0000
+Received: from mx0a-00128a01.pphosted.com ([148.163.135.77])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaaXM-002yRG-C5
-	for linux-rockchip@lists.infradead.org; Tue, 20 Sep 2022 10:31:36 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11875.qiye.163.com (Hmail) with ESMTPA id 42E5D280BD8;
-	Tue, 20 Sep 2022 18:31:24 +0800 (CST)
-From: Jianqun Xu <jay.xu@rock-chips.com>
-To: linus.walleij@linaro.org,
-	heiko@sntech.de,
-	brgl@bgdev.pl,
-	andriy.shevchenko@linux.intel.com
-Cc: robert.moore@intel.com,
-	robh@kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	lenb@kernel.org,
-	rafael@kernel.org,
-	Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH 19/20] gpio/rockchip: make GPIO module work well under ACPI enabled
-Date: Tue, 20 Sep 2022 18:31:07 +0800
-Message-Id: <20220920103108.23074-20-jay.xu@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220920103108.23074-1-jay.xu@rock-chips.com>
-References: <20220920103108.23074-1-jay.xu@rock-chips.com>
+	id 1oabQ7-003I2e-1x; Tue, 20 Sep 2022 11:28:09 +0000
+Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
+	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 28K81m58025096;
+	Tue, 20 Sep 2022 07:27:47 -0400
+Received: from nwd2mta4.analog.com ([137.71.173.58])
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3jpn468r05-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 20 Sep 2022 07:27:46 -0400
+Received: from ASHBMBX8.ad.analog.com (ASHBMBX8.ad.analog.com [10.64.17.5])
+	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 28KBRjx6060583
+	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Tue, 20 Sep 2022 07:27:45 -0400
+Received: from ASHBCASHYB4.ad.analog.com (10.64.17.132) by
+ ASHBMBX8.ad.analog.com (10.64.17.5) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.14; Tue, 20 Sep 2022 07:27:44 -0400
+Received: from ASHBMBX8.ad.analog.com (10.64.17.5) by
+ ASHBCASHYB4.ad.analog.com (10.64.17.132) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.14; Tue, 20 Sep 2022 07:27:44 -0400
+Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx8.ad.analog.com
+ (10.64.17.5) with Microsoft SMTP Server id 15.2.986.14 via Frontend
+ Transport; Tue, 20 Sep 2022 07:27:44 -0400
+Received: from nsa.ad.analog.com ([10.44.3.57])
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 28KBR4UM021723;
+	Tue, 20 Sep 2022 07:27:06 -0400
+From: =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>
+To: <linux-arm-kernel@lists.infradead.org>,
+        <linux-rockchip@lists.infradead.org>,
+        <linux-amlogic@lists.infradead.org>, <linux-imx@nxp.com>,
+        <linux-iio@vger.kernel.org>
+CC: Chunyan Zhang <zhang.lyra@gmail.com>,
+        Michael Hennerich
+	<Michael.Hennerich@analog.com>,
+        Martin Blumenstingl
+	<martin.blumenstingl@googlemail.com>,
+        Sascha Hauer <s.hauer@pengutronix.de>,
+        Cixi Geng <cixi.geng1@unisoc.com>, Kevin Hilman <khilman@baylibre.com>,
+        Vladimir Zapolskiy <vz@mleia.com>,
+        Pengutronix Kernel Team
+	<kernel@pengutronix.de>,
+        Alexandru Ardelean <aardelean@deviqon.com>,
+        "Fabio
+ Estevam" <festevam@gmail.com>,
+        Andriy Tryshnivskyy
+	<andriy.tryshnivskyy@opensynergy.com>,
+        Haibo Chen <haibo.chen@nxp.com>, "Shawn Guo" <shawnguo@kernel.org>,
+        Hans de Goede <hdegoede@redhat.com>,
+        Miquel Raynal <miquel.raynal@bootlin.com>,
+        Jerome Brunet
+	<jbrunet@baylibre.com>,
+        "Heiko Stuebner" <heiko@sntech.de>,
+        Florian Boor
+	<florian.boor@kernelconcepts.de>,
+        Ciprian Regus <ciprian.regus@analog.com>,
+        Lars-Peter Clausen <lars@metafoo.de>,
+        Andy Shevchenko
+	<andy.shevchenko@gmail.com>,
+        "Jonathan Cameron" <jic23@kernel.org>,
+        Neil
+ Armstrong <narmstrong@baylibre.com>,
+        "Baolin Wang"
+	<baolin.wang@linux.alibaba.com>,
+        Jyoti Bhayana <jbhayana@google.com>,
+        =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
+        Chen-Yu Tsai
+	<wens@csie.org>, Orson Zhai <orsonzhai@gmail.com>
+Subject: [PATCH 00/15] Make 'mlock' really private
+Date: Tue, 20 Sep 2022 13:28:06 +0200
+Message-ID: <20220920112821.975359-1-nuno.sa@analog.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVkaSUpJVh5DSUpOGkgeTEtDSFUTARMWGhIXJB
-	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktISkxVSktLVUtZBg++
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NzY6Fxw4TD0fFBwpVgodLxIy
-	GkgaCRpVSlVKTU1ITU1CQ0NPQk1DVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
-	WU5DVUlJVUxVSkpPWVdZCAFZQUpLT0lNNwY+
-X-HM-Tid: 0a835a73d67c2eb1kusn42e5d280bd8
+X-ADIRuleOP-NewSCL: Rule Triggered
+X-Proofpoint-ORIG-GUID: ctBCY4ybaJjBC-Xu6-vuJs0JpagJPQLg
+X-Proofpoint-GUID: ctBCY4ybaJjBC-Xu6-vuJs0JpagJPQLg
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.528,FMLib:17.11.122.1
+ definitions=2022-09-20_02,2022-09-16_01,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0 bulkscore=0
+ phishscore=0 clxscore=1011 spamscore=0 priorityscore=1501
+ lowpriorityscore=0 impostorscore=0 mlxlogscore=524 adultscore=0
+ malwarescore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2209130000 definitions=main-2209200068
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_033132_743497_7D39C744 
-X-CRM114-Status: GOOD (  28.83  )
+X-CRM114-CacheID: sfid-20220920_042807_180135_BC488A4D 
+X-CRM114-Status: GOOD (  14.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,311 +120,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The GPIO driver for Rockchip GPIO controller is seperated from rockchip
-pinctrl driver, at the first version, it keeps things original to make
-the patch easy to be reviewed, such as the GPIO driver must work with
-the pinctrl dt node to be its parent node.
-
-This patch wants to fix the driver to support ACPI since GPIO controller
-should work well during ACPI is enabled.
-
-This patch do changes including:
-- only get clocks when is_of_node since ACPI case not need.
-- use fwnode instead of of_node
-- use private device structure mostly copy from pinctrl
-- drop pinctrl related codes, pinctrl self should to find the gpiochip
-
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
----
- drivers/gpio/gpio-rockchip.c | 205 ++++++++++++++++++++---------------
- 1 file changed, 120 insertions(+), 85 deletions(-)
-
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index a94ebd95d285..01b214b84c71 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -18,20 +18,88 @@
- #include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/property.h>
--#include <linux/of_address.h>
--#include <linux/of_device.h>
--#include <linux/of_irq.h>
- #include <linux/regmap.h>
- 
--#include "../pinctrl/core.h"
--#include "../pinctrl/pinctrl-rockchip.h"
--
- #define GPIO_TYPE_V1		(0)           /* GPIO Version ID reserved */
- #define GPIO_TYPE_V2		(0x01000C2B)  /* GPIO Version ID 0x01000C2B */
- #define GPIO_TYPE_V2_1		(0x0101157C)  /* GPIO Version ID 0x0101157C */
- 
- #define GPIO_MAX_PINS	(32)
- 
-+/**
-+ * struct rockchip_gpio_regs
-+ * @port_dr: data register
-+ * @port_ddr: data direction register
-+ * @int_en: interrupt enable
-+ * @int_mask: interrupt mask
-+ * @int_type: interrupt trigger type, such as high, low, edge trigger type.
-+ * @int_polarity: interrupt polarity enable register
-+ * @int_bothedge: interrupt bothedge enable register
-+ * @int_status: interrupt status register
-+ * @int_rawstatus: int_status = int_rawstatus & int_mask
-+ * @debounce: enable debounce for interrupt signal
-+ * @dbclk_div_en: enable divider for debounce clock
-+ * @dbclk_div_con: setting for divider of debounce clock
-+ * @port_eoi: end of interrupt of the port
-+ * @ext_port: port data from external
-+ * @version_id: controller version register
-+ */
-+struct rockchip_gpio_regs {
-+	u32 port_dr;
-+	u32 port_ddr;
-+	u32 int_en;
-+	u32 int_mask;
-+	u32 int_type;
-+	u32 int_polarity;
-+	u32 int_bothedge;
-+	u32 int_status;
-+	u32 int_rawstatus;
-+	u32 debounce;
-+	u32 dbclk_div_en;
-+	u32 dbclk_div_con;
-+	u32 port_eoi;
-+	u32 ext_port;
-+	u32 version_id;
-+};
-+
-+/**
-+ * struct rockchip_pin_bank
-+ * @dev: the pinctrl device bind to the bank
-+ * @reg_base: register base of the gpio bank
-+ * @clk: clock of the gpio bank
-+ * @db_clk: clock of the gpio debounce
-+ * @irq: interrupt of the gpio bank
-+ * @saved_masks: Saved content of GPIO_INTEN at suspend time.
-+ * @pin_base: first pin number
-+ * @nr_pins: number of pins in this bank
-+ * @name: name of the bank
-+ * @bank_num: number of the bank, to account for holes
-+ * @domain: irqdomain of the gpio bank
-+ * @gpio_chip: gpiolib chip
-+ * @grange: gpio range
-+ * @slock: spinlock for the gpio bank
-+ * @toggle_edge_mode: bit mask to toggle (falling/rising) edge mode
-+ */
-+struct rockchip_pin_bank {
-+	struct gpio_chip		gpio_chip;
-+	struct device			*dev;
-+	void __iomem			*reg_base;
-+	struct clk			*clk;
-+	struct clk			*db_clk;
-+	int				irq;
-+	u32				saved_masks;
-+	u32				pin_base;
-+	u8				nr_pins;
-+	char				*name;
-+	u8				bank_num;
-+	struct device_node		*of_node;
-+	struct irq_domain		*domain;
-+	raw_spinlock_t			slock;
-+	const struct rockchip_gpio_regs	*gpio_regs;
-+	u32				gpio_type;
-+	u32				toggle_edge_mode;
-+};
-+
- static const struct rockchip_gpio_regs gpio_regs_v1 = {
- 	.port_dr = 0x00,
- 	.port_ddr = 0x04,
-@@ -607,35 +675,6 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
- 		return ret;
- 	}
- 
--	/*
--	 * For DeviceTree-supported systems, the gpio core checks the
--	 * pinctrl's device node for the "gpio-ranges" property.
--	 * If it is present, it takes care of adding the pin ranges
--	 * for the driver. In this case the driver can skip ahead.
--	 *
--	 * In order to remain compatible with older, existing DeviceTree
--	 * files which don't set the "gpio-ranges" property or systems that
--	 * utilize ACPI the driver has to call gpiochip_add_pin_range().
--	 */
--	if (!of_property_read_bool(bank->of_node, "gpio-ranges")) {
--		struct device_node *pctlnp = of_get_parent(bank->of_node);
--		struct pinctrl_dev *pctldev = NULL;
--
--		if (!pctlnp)
--			return -ENODATA;
--
--		pctldev = of_pinctrl_get(pctlnp);
--		if (!pctldev)
--			return -ENODEV;
--
--		ret = gpiochip_add_pin_range(gc, dev_name(pctldev->dev), 0,
--					     gc->base, gc->ngpio);
--		if (ret) {
--			dev_err(bank->dev, "Failed to add pin range\n");
--			goto fail;
--		}
--	}
--
- 	ret = rockchip_interrupts_register(bank);
- 	if (ret) {
- 		dev_err(bank->dev, "failed to register interrupt, %d\n", ret);
-@@ -650,52 +689,53 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
- 	return ret;
- }
- 
--static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
-+static int rockchip_gpio_set_regs(struct rockchip_pin_bank *bank)
- {
--	int id = 0;
-+	struct device *dev = bank->dev;
-+	struct fwnode_handle *fwnode = dev_fwnode(dev);
-+	int version_id;
-+	int ret;
- 
--	bank->clk = of_clk_get(bank->of_node, 0);
--	if (IS_ERR(bank->clk))
--		return PTR_ERR(bank->clk);
-+	if (is_of_node(fwnode)) {
-+		bank->clk = of_clk_get(to_of_node(fwnode), 0);
-+		if (IS_ERR(bank->clk))
-+			return PTR_ERR(bank->clk);
- 
--	clk_prepare_enable(bank->clk);
--	id = readl(bank->reg_base + gpio_regs_v2.version_id);
-+		ret = clk_prepare_enable(bank->clk);
-+		if (ret < 0)
-+			goto put_clk;
-+	}
- 
--	/* If not gpio v2, that is default to v1. */
--	if (id == GPIO_TYPE_V2 || id == GPIO_TYPE_V2_1) {
-+	version_id = readl(bank->reg_base + gpio_regs_v2.version_id);
-+	if (version_id == GPIO_TYPE_V2 || version_id == GPIO_TYPE_V2_1) {
- 		bank->gpio_regs = &gpio_regs_v2;
- 		bank->gpio_type = GPIO_TYPE_V2;
--		bank->db_clk = of_clk_get(bank->of_node, 1);
--		if (IS_ERR(bank->db_clk)) {
--			dev_err(bank->dev, "cannot find debounce clk\n");
--			clk_disable_unprepare(bank->clk);
--			return -EINVAL;
--		}
- 	} else {
- 		bank->gpio_regs = &gpio_regs_v1;
- 		bank->gpio_type = GPIO_TYPE_V1;
- 	}
- 
--	return 0;
--}
--
--static struct rockchip_pin_bank *
--rockchip_gpio_find_bank(struct pinctrl_dev *pctldev, int id)
--{
--	struct rockchip_pinctrl *info;
--	struct rockchip_pin_bank *bank;
--	int i, found = 0;
-+	if (bank->gpio_type == GPIO_TYPE_V2 && is_of_node(fwnode)) {
-+		bank->db_clk = of_clk_get(to_of_node(fwnode), 1);
-+		if (IS_ERR(bank->db_clk)) {
-+			ret = PTR_ERR(bank->db_clk);
-+			goto unprepare_clk;
-+		}
- 
--	info = pinctrl_dev_get_drvdata(pctldev);
--	bank = info->ctrl->pin_banks;
--	for (i = 0; i < info->ctrl->nr_banks; i++, bank++) {
--		if (bank->bank_num == id) {
--			found = 1;
--			break;
-+		ret = clk_prepare_enable(bank->db_clk);
-+		if (ret < 0) {
-+			clk_put(bank->db_clk);
-+			goto unprepare_clk;
- 		}
- 	}
- 
--	return found ? bank : NULL;
-+	return 0;
-+unprepare_clk:
-+	clk_disable_unprepare(bank->clk);
-+put_clk:
-+	clk_put(bank->clk);
-+
-+	return ret;
- }
- 
- static int rockchip_gpio_get_bank_id(struct device *dev)
-@@ -724,18 +764,20 @@ static int rockchip_gpio_get_bank_id(struct device *dev)
- static int rockchip_gpio_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
--	struct device_node *np = dev->of_node;
--	struct device_node *pctlnp = of_get_parent(np);
--	struct pinctrl_dev *pctldev = NULL;
--	struct rockchip_pin_bank *bank = NULL;
-+	struct rockchip_pin_bank *bank;
- 	int ret;
- 
--	if (!np || !pctlnp)
--		return -ENODEV;
-+	bank = devm_kzalloc(dev, sizeof(*bank), GFP_KERNEL);
-+	if (!bank)
-+		return -ENOMEM;
-+
-+	bank->reg_base = devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(bank->reg_base))
-+		return PTR_ERR(bank->reg_base);
- 
--	pctldev = of_pinctrl_get(pctlnp);
--	if (!pctldev)
--		return -EPROBE_DEFER;
-+	bank->irq = platform_get_irq(pdev, 0);
-+	if (bank->irq < 0)
-+		return bank->irq;
- 
- 	ret = rockchip_gpio_get_bank_id(dev);
- 	if (ret >= 0)
-@@ -744,22 +786,15 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
- 		goto err;
- 
- 	bank->dev = dev;
--	bank->of_node = np;
-+	bank->pin_base = GPIO_MAX_PINS * bank->bank_num;
-+	bank->nr_pins = GPIO_MAX_PINS;
- 
- 	raw_spin_lock_init(&bank->slock);
- 
--	ret = rockchip_get_bank_data(bank);
-+	ret = rockchip_gpio_set_regs(bank);
- 	if (ret)
- 		return ret;
- 
--	bank->reg_base = devm_platform_ioremap_resource(pdev, 0);
--	if (IS_ERR(bank->reg_base))
--		return PTR_ERR(bank->reg_base);
--
--	bank->irq = platform_get_irq(pdev, 0);
--	if (bank->irq < 0)
--		return bank->irq;
--
- 	ret = rockchip_gpiolib_register(bank);
- 	if (ret) {
- 		dev_err(bank->dev, "Failed to register gpio %d\n", ret);
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhpcyBwYXRjaHNldCBjbGVhbnMgYWxsIHRoZSBkcml2ZXJzIGRpcmVjdGx5IHVzaW5nIHRoZSBp
+aW9fZGV2aWNlICdtbG9jaycuDQpUaGlzIGxvY2sgaXMgcHJpdmF0ZSBhbmQgc2hvdWxkIG5vdCBi
+ZSB1c2VkIG91dHNpZGUgdGhlIGNvcmUgKG9yIGJ5IHVzaW5nDQpwcm9wZXIgaGVscGVycykuDQoN
+Ck1vc3Qgb2YgdGhlIGNvbnZlcnNpb25zIHdoZXJlIHN0cmFpZ2h0LCBidXQgdGhlcmUgYXJlIHNv
+bWUgdGhhdCByZWFsbHkgbmVlZA0KZXh0cmEgbG9va2luZy4gTWFpbmx5IHBhdGNoZXMgWzEzLzE1
+XSBhbmQgWzE0LzE1XSB3ZXJlIGEgYml0IGhhY2t5IHNpbmNlDQppaW9fZGV2aWNlX2NsYWltX2Rp
+cmVjdF9tb2RlKCkgZG9lcyBub3QgZml0IDEwMCUuIFRoZSByZWFzb24gaXMgdGhhdCB3ZQ0Kd2Fu
+dCB0byBjaGVjayBpZiB0aGUgZGV2aWNlIGlzIGJ1ZmZlcmluZyBhbmQgZG8gc29tZXRoaW5nIGlm
+IGl0IGlzIChpbg0Kd2hpY2ggY2FzZSB0aGUgQVBJIHJldHVybiAtRUJVU1kgYW5kIHJlbGVhc2Vk
+IHRoZSBsb2NrLiBJIGp1c3QgdXNlZCBhDQpjb21iaW5hdGlvbnMgb2YgbG9ja3MgdG8gZ2V0IGFy
+b3VuZCB0aGlzIChob3BlZnVsbHkgSSBkaWQgbm90IG1lc3NlZCB1cCkuDQoNCkkgd2FzIGFsc28g
+bm90IHN1cmUgaWYgcGF0Y2ggWzEvMTVdIGRlc2VydmVzIGEgRml4ZXM6IHRhZyBidXQsIHRvIG1l
+LCBpdA0KaXMgcmVhbGx5IGZpeGluZyBhIHBvdGVudGlhbCByYWNlIHNvIEkgYWRkZWQgaXQuDQoN
+Ck5vdGUgdGhhdCB0aGlzIHNlcmllcyB3YXMgb25seSBjb21waWxlZCB0ZXN0ZWQgdXNpbmcgYWxs
+eWVzY29uZmlnIGZvcg0KQVJNLiBJIHJhbiAnZ2l0IGdyZXAnIHRvIG1ha2Ugc3VyZSB0aGVyZSB3
+ZXJlIG5vIG1vcmUgdXNlcnMgb2YgJ21sb2NrJy4NCkhvcGVmdWxseSBJIGNvdmVyZWQgdGhlbSBh
+bGwuLi4NCg0KTnVubyBTw6EgKDE1KToNCiAgaWlvOiBhZGM6IGFkX3NpZ21hX2RlbHRhOiBkbyBu
+b3QgdXNlIGludGVybmFsIGlpb19kZXYgbG9jaw0KICBpaW86IGFkYzogYWQ3OTl4OiBkbyBub3Qg
+dXNlIGludGVybmFsIGlpb19kZXYgbG9jaw0KICBpaW86IGFkYzogYXhwMjg4X2FkYzogZG8gbm90
+IHVzZSBpbnRlcm5hbCBpaW9fZGV2IGxvY2sNCiAgaWlvOiBhZGM6IGlteDdkX2FkYzogZG8gbm90
+IHVzZSBpbnRlcm5hbCBpaW9fZGV2IGxvY2sNCiAgaWlvOiBhZGM6IGxwYzMyeHhfYWRjOiBkbyBu
+b3QgdXNlIGludGVybmFsIGlpb19kZXYgbG9jaw0KICBpaW86IGFkYzogbHRjMjk0Ny1jb3JlOiBk
+byBub3QgdXNlIGludGVybmFsIGlpb19kZXYgbG9jaw0KICBpaW86IGFkYzogbWVzb25fc2FyYWRj
+OiBkbyBub3QgdXNlIGludGVybmFsIGlpb19kZXYgbG9jaw0KICBpaW86IGFkYzogcm9ja2NoaXBf
+c2FyYWRjOiBkbyBub3QgdXNlIGludGVybmFsIGlpb19kZXYgbG9jaw0KICBpaW86IGFkYzogc2My
+N3h4X2FkYzogZG8gbm90IHVzZSBpbnRlcm5hbCBpaW9fZGV2IGxvY2sNCiAgaWlvOiBhZGM6IHZm
+NjEwX2FkYzogZG8gbm90IHVzZSBpbnRlcm5hbCBpaW9fZGV2IGxvY2sNCiAgaWlvOiBjb21tb246
+IHNjbWlfaWlvOiBkbyBub3QgdXNlIGludGVybmFsIGlpb19kZXYgbG9jaw0KICBpaW86IGZ5cm86
+IGl0ZzMyMDBfY29yZTogZG8gbm90IHVzZSBpbnRlcm5hbCBpaW9fZGV2IGxvY2sNCiAgaWlvOiBo
+ZWFsdGg6IG1heDMwMTAwOiBkbyBub3QgdXNlIGludGVybmFsIGlpb19kZXYgbG9jaw0KICBpaW86
+IGhlYWx0aDogbWF4MzAxMDI6IGRvIG5vdCB1c2UgaW50ZXJuYWwgaWlvX2RldiBsb2NrDQogIGlp
+bzogY29yZTogbW92ZSAnbWxvY2snIHRvICdzdHJ1Y3QgaWlvX2Rldl9vcGFxdWUnDQoNCiBkcml2
+ZXJzL2lpby9UT0RPICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgMyAtLS0NCiBkcml2ZXJz
+L2lpby9hZGMvYWQ3OTl4LmMgICAgICAgICAgICAgICAgICAgfCAxOCArKysrKysrKy0tLS0tDQog
+ZHJpdmVycy9paW8vYWRjL2FkX3NpZ21hX2RlbHRhLmMgICAgICAgICAgIHwgIDggKysrLS0tDQog
+ZHJpdmVycy9paW8vYWRjL2F4cDI4OF9hZGMuYyAgICAgICAgICAgICAgIHwgIDggKysrKy0tDQog
+ZHJpdmVycy9paW8vYWRjL2lteDdkX2FkYy5jICAgICAgICAgICAgICAgIHwgMTMgKysrKysrLS0t
+LQ0KIGRyaXZlcnMvaWlvL2FkYy9scGMzMnh4X2FkYy5jICAgICAgICAgICAgICB8IDEwICsrKysr
+LS0tDQogZHJpdmVycy9paW8vYWRjL2x0YzI0OTctY29yZS5jICAgICAgICAgICAgIHwgIDcgKysr
+LS0NCiBkcml2ZXJzL2lpby9hZGMvbHRjMjQ5Ny5oICAgICAgICAgICAgICAgICAgfCAgMiArKw0K
+IGRyaXZlcnMvaWlvL2FkYy9tZXNvbl9zYXJhZGMuYyAgICAgICAgICAgICB8IDEwICsrKysrLS0t
+DQogZHJpdmVycy9paW8vYWRjL3JvY2tjaGlwX3NhcmFkYy5jICAgICAgICAgIHwgMTQgKysrKysr
+LS0tLQ0KIGRyaXZlcnMvaWlvL2FkYy9zYzI3eHhfYWRjLmMgICAgICAgICAgICAgICB8IDEyICsr
+KysrKy0tLQ0KIGRyaXZlcnMvaWlvL2FkYy92ZjYxMF9hZGMuYyAgICAgICAgICAgICAgICB8IDMw
+ICsrKysrKysrKysrKysrLS0tLS0tLS0NCiBkcml2ZXJzL2lpby9jb21tb24vc2NtaV9zZW5zb3Jz
+L3NjbWlfaWlvLmMgfCAgOSArKysrKy0tDQogZHJpdmVycy9paW8vZ3lyby9pdGczMjAwX2NvcmUu
+YyAgICAgICAgICAgIHwgIDkgKysrKy0tLQ0KIGRyaXZlcnMvaWlvL2hlYWx0aC9tYXgzMDEwMC5j
+ICAgICAgICAgICAgICB8IDI0ICsrKysrKysrKysrKy0tLS0tDQogZHJpdmVycy9paW8vaGVhbHRo
+L21heDMwMTAyLmMgICAgICAgICAgICAgIHwgMjUgKysrKysrKysrKysrKy0tLS0tDQogZHJpdmVy
+cy9paW8vaW5kdXN0cmlhbGlvLWJ1ZmZlci5jICAgICAgICAgIHwgMjkgKysrKysrKysrKysrLS0t
+LS0tLS0tDQogZHJpdmVycy9paW8vaW5kdXN0cmlhbGlvLWNvcmUuYyAgICAgICAgICAgIHwgMTgg
+KysrKysrKy0tLS0tLQ0KIGRyaXZlcnMvaWlvL2luZHVzdHJpYWxpby1ldmVudC5jICAgICAgICAg
+ICB8ICA0ICstLQ0KIGRyaXZlcnMvaWlvL2luZHVzdHJpYWxpby10cmlnZ2VyLmMgICAgICAgICB8
+IDEyICsrKystLS0tLQ0KIGluY2x1ZGUvbGludXgvaWlvL2d5cm8vaXRnMzIwMC5oICAgICAgICAg
+ICB8ICAyICsrDQogaW5jbHVkZS9saW51eC9paW8vaWlvLW9wYXF1ZS5oICAgICAgICAgICAgIHwg
+IDIgKysNCiBpbmNsdWRlL2xpbnV4L2lpby9paW8uaCAgICAgICAgICAgICAgICAgICAgfCAgMyAt
+LS0NCiAyMyBmaWxlcyBjaGFuZ2VkLCAxNzUgaW5zZXJ0aW9ucygrKSwgOTcgZGVsZXRpb25zKC0p
+DQoNCi0tIA0KMi4zNy4zDQoNCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
