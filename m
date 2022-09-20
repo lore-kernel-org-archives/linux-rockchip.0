@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B888BECAAD8
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BD88C54EE9
 	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Sep 2022 10:32:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,21 +12,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lvgAebjkLUKxitN71/RyqCNLp7uDwZyUlF86AaRBPio=; b=aVoYzcuGcQmXaT
-	JB83PBRkFr9+CpPnZaMCpq2LRMLR9ZO2kWoATd7Y4z4CFq3ND0PF/sPWDStDlMC3S+Zmb3gM3HbEz
-	7qQ3UfX7sSWeG3dKUshsxDgflzO90lAvTGBG9W1MbAJk1nz7VK4SDZT3354MkQNvvkmzIixCLnFzx
-	mEWUqUxR4TVQH15iFGehUTbpyGN/pWiuzejQpl64J88TCJ/uaz+A+U/+kcbMij8S5LBpXjUb3RAz+
-	L+0LnsdfVG3fYpNejlKtPS9PB5GBjbRbQzBpYXlEzcdG+cf4YiwAszBeGZvmWzIxCer2tU0GipShk
-	LxGrFqPvkz+z0zE4P65w==;
+	List-Owner; bh=xYWjhTVNw70b+3PlxH8ILwsQeSh1VXEmsGsktzasuqI=; b=Q19g2kk3/Q2evS
+	71ZHXVSLcNAP/gzAE3T1zA13DPF6du86RNTGWUMXZR7xZEr3R2Cd63r8Jteum+Z+yWv6eOSfWcPpC
+	GJ6y5PqcBms0FmHc1UoSm4zkIR2NJbKFXI6fDHlTV0uBY0Ds2pi4PSsEMWcd7l4r2ISXO5d6vG3/B
+	X5qGygms0pbwo4pN7qxxqeU0ELo+Nf2SxTZvGax2XQFu8w/hcoqmngvD3/2QeRlPtUON6yNVSKaYL
+	PHbwApHcX8z82IjYPMESNE7F7ZWvScCKdZsceiAWW3AQMMVf6tZ3g6LTR5OQe6cr1yq1mlcFANf+Q
+	mJqU3G1SMRfHuR8F24rA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaaXv-002z8d-K2; Tue, 20 Sep 2022 10:32:07 +0000
+	id 1oaaXw-002zAH-Ei; Tue, 20 Sep 2022 10:32:08 +0000
 Received: from mail-m11875.qiye.163.com ([115.236.118.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaaXM-002yRH-CF
-	for linux-rockchip@lists.infradead.org; Tue, 20 Sep 2022 10:31:35 +0000
+	id 1oaaXM-002yRG-C5
+	for linux-rockchip@lists.infradead.org; Tue, 20 Sep 2022 10:31:36 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11875.qiye.163.com (Hmail) with ESMTPA id 05D0A280BDB;
+	by mail-m11875.qiye.163.com (Hmail) with ESMTPA id 42E5D280BD8;
 	Tue, 20 Sep 2022 18:31:24 +0800 (CST)
 From: Jianqun Xu <jay.xu@rock-chips.com>
 To: linus.walleij@linaro.org,
@@ -40,23 +40,23 @@ Cc: robert.moore@intel.com,
 	lenb@kernel.org,
 	rafael@kernel.org,
 	Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH 20/20] pinctrl/rockchip: find existed gpiochip by gpio label
-Date: Tue, 20 Sep 2022 18:31:08 +0800
-Message-Id: <20220920103108.23074-21-jay.xu@rock-chips.com>
+Subject: [PATCH 19/20] gpio/rockchip: make GPIO module work well under ACPI enabled
+Date: Tue, 20 Sep 2022 18:31:07 +0800
+Message-Id: <20220920103108.23074-20-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220920103108.23074-1-jay.xu@rock-chips.com>
 References: <20220920103108.23074-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVlDSRhMVkMeTBgeGh1OGU4YSVUTARMWGhIXJB
+	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVkaSUpJVh5DSUpOGkgeTEtDSFUTARMWGhIXJB
 	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktISkxVSktLVUtZBg++
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Ky46Ohw5HD0tSRwiPQoPLxRJ
-	DxQwCRlVSlVKTU1ITU1CQ0NOQ0hOVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
-	WU5DVUlJVUxVSkpPWVdZCAFZQU9PSUo3Bg++
-X-HM-Tid: 0a835a73d9e42eb1kusn05d0a280bdb
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NzY6Fxw4TD0fFBwpVgodLxIy
+	GkgaCRpVSlVKTU1ITU1CQ0NPQk1DVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
+	WU5DVUlJVUxVSkpPWVdZCAFZQUpLT0lNNwY+
+X-HM-Tid: 0a835a73d67c2eb1kusn42e5d280bd8
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_033132_612396_00539568 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20220920_033132_743497_7D39C744 
+X-CRM114-Status: GOOD (  28.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,90 +73,301 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently the pinctrl device acts as parent for the GPIO devices for
-Rockchip platform, the pinctrl driver creates the gpiochips and pass to
-the GPIO driver.
+The GPIO driver for Rockchip GPIO controller is seperated from rockchip
+pinctrl driver, at the first version, it keeps things original to make
+the patch easy to be reviewed, such as the GPIO driver must work with
+the pinctrl dt node to be its parent node.
 
-This patch makes the member of pinctrl structure from gpiochip to
-*gpiochip, switch to find existed gpiochips instead of creating them,
-that requires the GPIO driver to create them and earlier than the
-pinctrl driver.
+This patch wants to fix the driver to support ACPI since GPIO controller
+should work well during ACPI is enabled.
+
+This patch do changes including:
+- only get clocks when is_of_node since ACPI case not need.
+- use fwnode instead of of_node
+- use private device structure mostly copy from pinctrl
+- drop pinctrl related codes, pinctrl self should to find the gpiochip
 
 Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 ---
- drivers/pinctrl/pinctrl-rockchip.c | 24 +++++++++++++++++++++---
- drivers/pinctrl/pinctrl-rockchip.h |  2 +-
- 2 files changed, 22 insertions(+), 4 deletions(-)
+ drivers/gpio/gpio-rockchip.c | 205 ++++++++++++++++++++---------------
+ 1 file changed, 120 insertions(+), 85 deletions(-)
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 97af52bb5481..05e688cd8536 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -2725,7 +2725,7 @@ static int rockchip_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
- {
- 	struct rockchip_pinctrl *info = pinctrl_dev_get_drvdata(pctldev);
- 	struct rockchip_pin_bank *bank = pin_to_bank(info, pin);
--	struct gpio_chip *gpio = &bank->gpio_chip;
-+	struct gpio_chip *gpio = bank->gpio_chip;
- 	enum pin_config_param param;
- 	u32 arg;
- 	int i;
-@@ -2828,7 +2828,7 @@ static int rockchip_pinconf_get(struct pinctrl_dev *pctldev, unsigned int pin,
- {
- 	struct rockchip_pinctrl *info = pinctrl_dev_get_drvdata(pctldev);
- 	struct rockchip_pin_bank *bank = pin_to_bank(info, pin);
--	struct gpio_chip *gpio = &bank->gpio_chip;
-+	struct gpio_chip *gpio = bank->gpio_chip;
- 	enum pin_config_param param = pinconf_to_config_param(*config);
- 	u16 arg;
- 	int rc;
-@@ -3293,7 +3293,7 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
- 	struct rockchip_pin_ctrl *ctrl;
- 	struct resource *res;
- 	void __iomem *base;
--	int ret;
-+	int ret, i;
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index a94ebd95d285..01b214b84c71 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -18,20 +18,88 @@
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/property.h>
+-#include <linux/of_address.h>
+-#include <linux/of_device.h>
+-#include <linux/of_irq.h>
+ #include <linux/regmap.h>
  
- 	if (is_of_node(fwnode)) {
- 		ret = of_platform_populate(np, NULL, NULL, dev);
-@@ -3357,6 +3357,24 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+-#include "../pinctrl/core.h"
+-#include "../pinctrl/pinctrl-rockchip.h"
+-
+ #define GPIO_TYPE_V1		(0)           /* GPIO Version ID reserved */
+ #define GPIO_TYPE_V2		(0x01000C2B)  /* GPIO Version ID 0x01000C2B */
+ #define GPIO_TYPE_V2_1		(0x0101157C)  /* GPIO Version ID 0x0101157C */
+ 
+ #define GPIO_MAX_PINS	(32)
+ 
++/**
++ * struct rockchip_gpio_regs
++ * @port_dr: data register
++ * @port_ddr: data direction register
++ * @int_en: interrupt enable
++ * @int_mask: interrupt mask
++ * @int_type: interrupt trigger type, such as high, low, edge trigger type.
++ * @int_polarity: interrupt polarity enable register
++ * @int_bothedge: interrupt bothedge enable register
++ * @int_status: interrupt status register
++ * @int_rawstatus: int_status = int_rawstatus & int_mask
++ * @debounce: enable debounce for interrupt signal
++ * @dbclk_div_en: enable divider for debounce clock
++ * @dbclk_div_con: setting for divider of debounce clock
++ * @port_eoi: end of interrupt of the port
++ * @ext_port: port data from external
++ * @version_id: controller version register
++ */
++struct rockchip_gpio_regs {
++	u32 port_dr;
++	u32 port_ddr;
++	u32 int_en;
++	u32 int_mask;
++	u32 int_type;
++	u32 int_polarity;
++	u32 int_bothedge;
++	u32 int_status;
++	u32 int_rawstatus;
++	u32 debounce;
++	u32 dbclk_div_en;
++	u32 dbclk_div_con;
++	u32 port_eoi;
++	u32 ext_port;
++	u32 version_id;
++};
++
++/**
++ * struct rockchip_pin_bank
++ * @dev: the pinctrl device bind to the bank
++ * @reg_base: register base of the gpio bank
++ * @clk: clock of the gpio bank
++ * @db_clk: clock of the gpio debounce
++ * @irq: interrupt of the gpio bank
++ * @saved_masks: Saved content of GPIO_INTEN at suspend time.
++ * @pin_base: first pin number
++ * @nr_pins: number of pins in this bank
++ * @name: name of the bank
++ * @bank_num: number of the bank, to account for holes
++ * @domain: irqdomain of the gpio bank
++ * @gpio_chip: gpiolib chip
++ * @grange: gpio range
++ * @slock: spinlock for the gpio bank
++ * @toggle_edge_mode: bit mask to toggle (falling/rising) edge mode
++ */
++struct rockchip_pin_bank {
++	struct gpio_chip		gpio_chip;
++	struct device			*dev;
++	void __iomem			*reg_base;
++	struct clk			*clk;
++	struct clk			*db_clk;
++	int				irq;
++	u32				saved_masks;
++	u32				pin_base;
++	u8				nr_pins;
++	char				*name;
++	u8				bank_num;
++	struct device_node		*of_node;
++	struct irq_domain		*domain;
++	raw_spinlock_t			slock;
++	const struct rockchip_gpio_regs	*gpio_regs;
++	u32				gpio_type;
++	u32				toggle_edge_mode;
++};
++
+ static const struct rockchip_gpio_regs gpio_regs_v1 = {
+ 	.port_dr = 0x00,
+ 	.port_ddr = 0x04,
+@@ -607,35 +675,6 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+ 		return ret;
+ 	}
+ 
+-	/*
+-	 * For DeviceTree-supported systems, the gpio core checks the
+-	 * pinctrl's device node for the "gpio-ranges" property.
+-	 * If it is present, it takes care of adding the pin ranges
+-	 * for the driver. In this case the driver can skip ahead.
+-	 *
+-	 * In order to remain compatible with older, existing DeviceTree
+-	 * files which don't set the "gpio-ranges" property or systems that
+-	 * utilize ACPI the driver has to call gpiochip_add_pin_range().
+-	 */
+-	if (!of_property_read_bool(bank->of_node, "gpio-ranges")) {
+-		struct device_node *pctlnp = of_get_parent(bank->of_node);
+-		struct pinctrl_dev *pctldev = NULL;
+-
+-		if (!pctlnp)
+-			return -ENODATA;
+-
+-		pctldev = of_pinctrl_get(pctlnp);
+-		if (!pctldev)
+-			return -ENODEV;
+-
+-		ret = gpiochip_add_pin_range(gc, dev_name(pctldev->dev), 0,
+-					     gc->base, gc->ngpio);
+-		if (ret) {
+-			dev_err(bank->dev, "Failed to add pin range\n");
+-			goto fail;
+-		}
+-	}
+-
+ 	ret = rockchip_interrupts_register(bank);
+ 	if (ret) {
+ 		dev_err(bank->dev, "failed to register interrupt, %d\n", ret);
+@@ -650,52 +689,53 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+ 	return ret;
+ }
+ 
+-static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
++static int rockchip_gpio_set_regs(struct rockchip_pin_bank *bank)
+ {
+-	int id = 0;
++	struct device *dev = bank->dev;
++	struct fwnode_handle *fwnode = dev_fwnode(dev);
++	int version_id;
++	int ret;
+ 
+-	bank->clk = of_clk_get(bank->of_node, 0);
+-	if (IS_ERR(bank->clk))
+-		return PTR_ERR(bank->clk);
++	if (is_of_node(fwnode)) {
++		bank->clk = of_clk_get(to_of_node(fwnode), 0);
++		if (IS_ERR(bank->clk))
++			return PTR_ERR(bank->clk);
+ 
+-	clk_prepare_enable(bank->clk);
+-	id = readl(bank->reg_base + gpio_regs_v2.version_id);
++		ret = clk_prepare_enable(bank->clk);
++		if (ret < 0)
++			goto put_clk;
++	}
+ 
+-	/* If not gpio v2, that is default to v1. */
+-	if (id == GPIO_TYPE_V2 || id == GPIO_TYPE_V2_1) {
++	version_id = readl(bank->reg_base + gpio_regs_v2.version_id);
++	if (version_id == GPIO_TYPE_V2 || version_id == GPIO_TYPE_V2_1) {
+ 		bank->gpio_regs = &gpio_regs_v2;
+ 		bank->gpio_type = GPIO_TYPE_V2;
+-		bank->db_clk = of_clk_get(bank->of_node, 1);
+-		if (IS_ERR(bank->db_clk)) {
+-			dev_err(bank->dev, "cannot find debounce clk\n");
+-			clk_disable_unprepare(bank->clk);
+-			return -EINVAL;
+-		}
+ 	} else {
+ 		bank->gpio_regs = &gpio_regs_v1;
+ 		bank->gpio_type = GPIO_TYPE_V1;
+ 	}
+ 
+-	return 0;
+-}
+-
+-static struct rockchip_pin_bank *
+-rockchip_gpio_find_bank(struct pinctrl_dev *pctldev, int id)
+-{
+-	struct rockchip_pinctrl *info;
+-	struct rockchip_pin_bank *bank;
+-	int i, found = 0;
++	if (bank->gpio_type == GPIO_TYPE_V2 && is_of_node(fwnode)) {
++		bank->db_clk = of_clk_get(to_of_node(fwnode), 1);
++		if (IS_ERR(bank->db_clk)) {
++			ret = PTR_ERR(bank->db_clk);
++			goto unprepare_clk;
++		}
+ 
+-	info = pinctrl_dev_get_drvdata(pctldev);
+-	bank = info->ctrl->pin_banks;
+-	for (i = 0; i < info->ctrl->nr_banks; i++, bank++) {
+-		if (bank->bank_num == id) {
+-			found = 1;
+-			break;
++		ret = clk_prepare_enable(bank->db_clk);
++		if (ret < 0) {
++			clk_put(bank->db_clk);
++			goto unprepare_clk;
+ 		}
+ 	}
+ 
+-	return found ? bank : NULL;
++	return 0;
++unprepare_clk:
++	clk_disable_unprepare(bank->clk);
++put_clk:
++	clk_put(bank->clk);
++
++	return ret;
+ }
+ 
+ static int rockchip_gpio_get_bank_id(struct device *dev)
+@@ -724,18 +764,20 @@ static int rockchip_gpio_get_bank_id(struct device *dev)
+ static int rockchip_gpio_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+-	struct device_node *np = dev->of_node;
+-	struct device_node *pctlnp = of_get_parent(np);
+-	struct pinctrl_dev *pctldev = NULL;
+-	struct rockchip_pin_bank *bank = NULL;
++	struct rockchip_pin_bank *bank;
+ 	int ret;
+ 
+-	if (!np || !pctlnp)
+-		return -ENODEV;
++	bank = devm_kzalloc(dev, sizeof(*bank), GFP_KERNEL);
++	if (!bank)
++		return -ENOMEM;
++
++	bank->reg_base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(bank->reg_base))
++		return PTR_ERR(bank->reg_base);
+ 
+-	pctldev = of_pinctrl_get(pctlnp);
+-	if (!pctldev)
+-		return -EPROBE_DEFER;
++	bank->irq = platform_get_irq(pdev, 0);
++	if (bank->irq < 0)
++		return bank->irq;
+ 
+ 	ret = rockchip_gpio_get_bank_id(dev);
+ 	if (ret >= 0)
+@@ -744,22 +786,15 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
+ 		goto err;
+ 
+ 	bank->dev = dev;
+-	bank->of_node = np;
++	bank->pin_base = GPIO_MAX_PINS * bank->bank_num;
++	bank->nr_pins = GPIO_MAX_PINS;
+ 
+ 	raw_spin_lock_init(&bank->slock);
+ 
+-	ret = rockchip_get_bank_data(bank);
++	ret = rockchip_gpio_set_regs(bank);
  	if (ret)
  		return ret;
  
-+	for (i = 0; i < ctrl->nr_banks; i++) {
-+		struct gpio_chip *gc;
-+		struct rockchip_pin_bank *bank = &ctrl->pin_banks[i];
-+
-+		gc = gpiochip_find_by_name((void *)ctrl->pin_banks[i].name);
-+		if (!gc) {
-+			dev_err(dev, "fail to find gpiochip\n");
-+			return ret;
-+		}
-+
-+		ret = gpiochip_add_pin_range(gc, dev_name(dev), 0, gc->base, gc->ngpio);
-+		if (ret) {
-+			dev_err(dev, "fail to add pin range\n");
-+			return ret;
-+		}
-+		bank->gpio_chip = gc;
-+	}
-+
- 	platform_set_drvdata(pdev, info);
- 	dev_info(dev, "probed %pfw\n", fwnode);
- 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-index 3531633c0397..8b44e02bce97 100644
---- a/drivers/pinctrl/pinctrl-rockchip.h
-+++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -330,7 +330,7 @@ struct rockchip_pin_bank {
- 	struct device_node		*of_node;
- 	struct rockchip_pinctrl		*drvdata;
- 	struct irq_domain		*domain;
--	struct gpio_chip		gpio_chip;
-+	struct gpio_chip		*gpio_chip;
- 	struct pinctrl_gpio_range	grange;
- 	raw_spinlock_t			slock;
- 	const struct rockchip_gpio_regs	*gpio_regs;
+-	bank->reg_base = devm_platform_ioremap_resource(pdev, 0);
+-	if (IS_ERR(bank->reg_base))
+-		return PTR_ERR(bank->reg_base);
+-
+-	bank->irq = platform_get_irq(pdev, 0);
+-	if (bank->irq < 0)
+-		return bank->irq;
+-
+ 	ret = rockchip_gpiolib_register(bank);
+ 	if (ret) {
+ 		dev_err(bank->dev, "Failed to register gpio %d\n", ret);
 -- 
 2.25.1
 
