@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA387C6FA8B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Sep 2022 02:02:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54AF1ECAAD8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Sep 2022 03:34:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qACWDo3ChT5H1Mc7xYu1dndlKVXTgEg3/o6AyPzzvuM=; b=WeJSr7pHFQbuUN
-	HYaAPItrbpVu0WhAk8hRQF+6YFLqOcCbrYOFxbyu68Bl4jbyhVKFeG8SFdUGevwmmEUEHml1lDmXM
-	s0DFdboC9YH0kOEpnD4bYDrns6AfcTk3SzGQYmL3NrkoYC6FT3eHQS8KC3oFVBIcUv/3eoXSaH4Pn
-	2IaG15MMh9+Rfow4ITbNqab10RwaJoeLR3ZfqY9ufOt0tlb/laQ3TKMYCueEa8kr8PiqMLGasj/BY
-	DbNFjcc32oPyJmoChg2Ip+dTdMef5sWyXNGKt0bcMLrwgbgbp3CqTvP6g+FA8cFhGs7jwFtQCD00c
-	8OjXGQnfKMMY/Rlo3THw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ocFUMz+I8tsMaMsGJfY9NL4+INy/MnMUychTYvVLBEk=; b=Gw7NXHsSUnYXz/
+	UGuecwLS3uWaG0caUBIFBRUw4PKR3NJ6vQ8C8drYZDa4u2fGkU9O8oIHNpLBZMaT2375qRZdcKJiB
+	dc3yLIUX4/JNBrapJHqKrrsvSBYN+cA83eCxH9KZArIFCxMw+14vICHLDwwHJBON2d02Ycy4rQXYB
+	u+OLYE7HqIoCEURGOl+S+bAW5epOFYt7QYnyjQe1bB33F8sylm6QjImzC+JtV45fny9ny9iD/Q8A7
+	CN3xXBHuuxP9yXxCNCSrHnxCSJ9EBVUliwlEVvKP81oDOu+la/YWww154pccTP+db8XlTHkE6mwoF
+	wU0X3Ook/x2JtddY8SIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaSa3-00HAWs-Kq; Tue, 20 Sep 2022 02:01:48 +0000
-Received: from mail-m11879.qiye.163.com ([115.236.118.79])
+	id 1oaU1V-0002pa-EI; Tue, 20 Sep 2022 03:34:13 +0000
+Received: from mail-m11875.qiye.163.com ([115.236.118.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaSZz-00HAV1-RU
-	for linux-rockchip@lists.infradead.org; Tue, 20 Sep 2022 02:01:45 +0000
+	id 1oaU1R-0002jb-9j
+	for linux-rockchip@lists.infradead.org; Tue, 20 Sep 2022 03:34:11 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11879.qiye.163.com (Hmail) with ESMTPA id 714CA6806B2;
-	Tue, 20 Sep 2022 10:01:39 +0800 (CST)
+	by mail-m11875.qiye.163.com (Hmail) with ESMTPA id F02952805EB;
+	Tue, 20 Sep 2022 11:34:05 +0800 (CST)
 From: Jianqun Xu <jay.xu@rock-chips.com>
 To: jbx6244@gmail.com,
 	heiko@sntech.de,
@@ -37,22 +37,23 @@ Cc: brgl@bgdev.pl,
 	linux-gpio@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH v8 0/3] gpio: rockchip: support acpi
-Date: Tue, 20 Sep 2022 10:01:35 +0800
-Message-Id: <20220920020138.861083-1-jay.xu@rock-chips.com>
+Subject: [PATCH v3 1/2] pinctrl: rockchip: find gpiochip by gpio label
+Date: Tue, 20 Sep 2022 11:34:03 +0800
+Message-Id: <20220920033404.885527-2-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220920033404.885527-1-jay.xu@rock-chips.com>
+References: <20220920033404.885527-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVkZSEkdVkNCSUMeQkxCTE5OH1UTARMWGhIXJB
+	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVlCQ0tPVh9KSU1LTUIYTB0YH1UTARMWGhIXJB
 	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktISkxVSktLVUtZBg++
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OiI6Ayo4ND0tNh4wDSoeTQwi
-	KQxPFExVSlVKTU1ITUhCSEtLSkNKVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
-	WU5DVUlJVUxVSkpPWVdZCAFZQUlNS0g3Bg++
-X-HM-Tid: 0a8358a126902eb5kusn714ca6806b2
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6NRA6Qio6Mj0YDB0UAU8MTToO
+	IghPCTlVSlVKTU1ITU9PQ09NTElMVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
+	WU5DVUlJVUxVSkpPWVdZCAFZQU5LSUw3Bg++
+X-HM-Tid: 0a8358f5c85c2eb1kusnf02952805eb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220919_190144_106552_4924B6DC 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220919_203409_503970_C7FE0505 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,58 +70,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch fix driver to support acpi. A patch to pinctrl-rockchip.c will be pushed together.
+Currently the pinctrl device acts as parent for the GPIO devices for
+Rockchip platform, the pinctrl driver probes first and then populate the
+GPIO platform lastly.
 
-Andy Shevchenko (1):
-  ACPI: utils: Add acpi_dev_uid_to_integer() helper to get _UID as
-    integer
+This patch makes the pinctrl to populate GPIO platform firstly and then
+do probe after GPIO probed successfully. Also get the gpiochip by label.
 
-Jianqun Xu (2):
-  gpio: rockchip: support acpi
-  gpiolib: make gpiochip_find_by_name to be common function
+Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 41 ++++++++++++++++++++++--------
+ drivers/pinctrl/pinctrl-rockchip.h |  2 +-
+ 2 files changed, 31 insertions(+), 12 deletions(-)
 
- drivers/acpi/utils.c         |  24 +++
- drivers/gpio/gpio-rockchip.c | 326 +++++++++++++++++++----------------
- drivers/gpio/gpiolib.c       |  16 +-
- include/acpi/acpi_bus.h      |   1 +
- include/linux/acpi.h         |   5 +
- include/linux/gpio/driver.h  |  12 ++
- 6 files changed, 226 insertions(+), 158 deletions(-)
-
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index a91061f9c2ac..de86b2bc6380 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -2726,7 +2726,7 @@ static int rockchip_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+ {
+ 	struct rockchip_pinctrl *info = pinctrl_dev_get_drvdata(pctldev);
+ 	struct rockchip_pin_bank *bank = pin_to_bank(info, pin);
+-	struct gpio_chip *gpio = &bank->gpio_chip;
++	struct gpio_chip *gpio = bank->gpio_chip;
+ 	enum pin_config_param param;
+ 	u32 arg;
+ 	int i;
+@@ -2832,7 +2832,7 @@ static int rockchip_pinconf_get(struct pinctrl_dev *pctldev, unsigned int pin,
+ {
+ 	struct rockchip_pinctrl *info = pinctrl_dev_get_drvdata(pctldev);
+ 	struct rockchip_pin_bank *bank = pin_to_bank(info, pin);
+-	struct gpio_chip *gpio = &bank->gpio_chip;
++	struct gpio_chip *gpio = bank->gpio_chip;
+ 	enum pin_config_param param = pinconf_to_config_param(*config);
+ 	u16 arg;
+ 	int rc;
+@@ -3291,16 +3291,20 @@ static SIMPLE_DEV_PM_OPS(rockchip_pinctrl_dev_pm_ops, rockchip_pinctrl_suspend,
+ 
+ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+ {
+-	struct rockchip_pinctrl *info;
+ 	struct device *dev = &pdev->dev;
+-	struct device_node *np = dev->of_node, *node;
++	struct fwnode_handle *fwnode = dev_fwnode(dev);
++	struct rockchip_pinctrl *info;
+ 	struct rockchip_pin_ctrl *ctrl;
++	struct device_node *np, *node;
+ 	struct resource *res;
+ 	void __iomem *base;
+-	int ret;
++	int ret, i;
+ 
+-	if (!dev->of_node)
+-		return dev_err_probe(dev, -ENODEV, "device tree node not found\n");
++	if (is_of_node(fwnode)) {
++		ret = of_platform_populate(to_of_node(fwnode), NULL, NULL, NULL);
++		if (ret)
++			return dev_err_probe(dev, ret, "failed to register gpio device\n");
++	}
+ 
+ 	info = devm_kzalloc(dev, sizeof(*info), GFP_KERNEL);
+ 	if (!info)
+@@ -3358,11 +3362,26 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
+ 
+-	platform_set_drvdata(pdev, info);
++	for (i = 0; i < ctrl->nr_banks; i++) {
++		struct gpio_chip *gc;
++		struct rockchip_pin_bank *bank = &ctrl->pin_banks[i];
+ 
+-	ret = of_platform_populate(np, NULL, NULL, &pdev->dev);
+-	if (ret)
+-		return dev_err_probe(dev, ret, "failed to register gpio device\n");
++		gc = gpiochip_find_by_name((void *)ctrl->pin_banks[i].name);
++		if (!gc) {
++			dev_err(dev, "fail to find gpiochip\n");
++			return ret;
++		}
++
++		ret = gpiochip_add_pin_range(gc, dev_name(dev), 0, gc->base, gc->ngpio);
++		if (ret) {
++			dev_err(dev, "fail to add pin range\n");
++			return ret;
++		}
++		bank->gpio_chip = gc;
++	}
++
++	platform_set_drvdata(pdev, info);
++	dev_info(dev, "probed %pfw\n", fwnode);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
+index 4759f336941e..2be12e76b2c4 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.h
++++ b/drivers/pinctrl/pinctrl-rockchip.h
+@@ -330,7 +330,7 @@ struct rockchip_pin_bank {
+ 	struct device_node		*of_node;
+ 	struct rockchip_pinctrl		*drvdata;
+ 	struct irq_domain		*domain;
+-	struct gpio_chip		gpio_chip;
++	struct gpio_chip		*gpio_chip;
+ 	struct pinctrl_gpio_range	grange;
+ 	raw_spinlock_t			slock;
+ 	const struct rockchip_gpio_regs	*gpio_regs;
 -- 
-v8:
- - fix clk put in error path, acked by Andy Shevchenko
- - add pinconf set for pull and drive-strength
- - add a gpiochip_find_by_name patch, used by pinctrl
-
-v7:
- - drop pinctrl related codes to make gpio work without pinctrl, for acpi.
-
-v6:
- - remove dt patches from this serial patchset
- - fix clock get to only with index 0 for apb and 1 for debounce
- - move get iomem and irq first, suggested by Johan
-
-v5:
- - add patches to add gpio alias and clock-names
- - get clock by devm_clk_get()
- - restore gpio range add comment
- - other codingstyle
-
-v4: suggested by Andy Shevchenko
- - use dev_fwnode and to_of_node(fwnode) to replace dev->of_node
- - split to a separate rockchip_gpio_get_clocks
- - handle fail for clk_prepare_enable
- - other codingstyle
-
-v3: suggested by Andy Shevchenko
- - fix irq size (32) to GPIO_MAX_PINS
- - fix to use is_of_node or is_acpi_node
- - use standard pattern for error handle
- - remove redundant assignment
-
-v2:
- - fix rockchip_pin_output_deferred to rockchip_pin_deferred
 2.25.1
 
 
