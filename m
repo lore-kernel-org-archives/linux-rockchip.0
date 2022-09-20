@@ -4,30 +4,30 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE61BC6FA8B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Sep 2022 10:32:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E5EEECAAD8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Sep 2022 10:32:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fmbSn6mgrPH5CNWtlk9HkRsBeo9sSknFmjtlgQaMJVg=; b=U73sNvMExynxLv
-	BhinQ9CiU3VsRGLZPXwCZzfR02xBpxW58pnRuY2PsePPUi4IvYsqqh3FlCoDz5288D8Fi1IR8Lu31
-	4VfuVUwJVp+WnkX/2HQQgkVX6bWow4z7u4RWJTyKwC/NvE6/2XQ1CspR9hsUe3KNPgBxfGciZiHwy
-	NzMQ87ao9CNY5VQvS7Phd1PHAfCoG/tTybk2AYXTny02g6iVLFlB+7JcgveEllPLPM3th0WR4/Q3c
-	bPo/kwf3qoQHM5dKDSJHGMjTuk0mSx712XevPFMgKwKLqdzOqyL9KAi5FoIRRwtkAtLeFX7zICeUH
-	CG5HSlwn5B59K0JTTn+g==;
+	List-Owner; bh=uXnJslaHgQxRaDlZZmQAmCq/nDoB5/VhmRoUSLjCSMo=; b=dNbrLwcyYDlZ+Z
+	ZCD7EVjyBgzvSx3PmzASiEldRkrcR9JMxdsOQ9bbPYw6u8yFJuuD+2fzP/6GwDVpfmmxeXqp88go1
+	fIxxLr9mk9ibBkILwIliP+ffoOH/zfUyIW1OJMTqwdnOjdX+Jy8zx3Lhy8z0C7u8sgxFudNKGdkGN
+	BqZP6AMN7P8KrukSzQ+Y+KDcLpsLZ93PVvI+JY9Y1/Wqfgjc2w8XOPh8T6seBNj2NY8YhU1GQjQNW
+	S9mHBj8WiNTErBJB5Y5/bvXJ9yM0dqLHiR7ItcPGLqzjOiPLsf+dlxvg1wGba1cYCcQuHB5/80vHH
+	tnZe3Z/OxDE0WVNeE2Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaaXj-002ypM-0X; Tue, 20 Sep 2022 10:31:55 +0000
+	id 1oaaXq-002yyg-6j; Tue, 20 Sep 2022 10:32:02 +0000
 Received: from mail-m11875.qiye.163.com ([115.236.118.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oaaXI-002yLV-6g
-	for linux-rockchip@lists.infradead.org; Tue, 20 Sep 2022 10:31:31 +0000
+	id 1oaaXK-002yP7-M9
+	for linux-rockchip@lists.infradead.org; Tue, 20 Sep 2022 10:31:32 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11875.qiye.163.com (Hmail) with ESMTPA id B93FE280BA6;
-	Tue, 20 Sep 2022 18:31:15 +0800 (CST)
+	by mail-m11875.qiye.163.com (Hmail) with ESMTPA id 52F51280BC7;
+	Tue, 20 Sep 2022 18:31:21 +0800 (CST)
 From: Jianqun Xu <jay.xu@rock-chips.com>
 To: linus.walleij@linaro.org,
 	heiko@sntech.de,
@@ -40,23 +40,24 @@ Cc: robert.moore@intel.com,
 	lenb@kernel.org,
 	rafael@kernel.org,
 	Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH 08/20] gpiolib: make gpiochip_find_by_name to be common function
-Date: Tue, 20 Sep 2022 18:30:56 +0800
-Message-Id: <20220920103108.23074-9-jay.xu@rock-chips.com>
+Subject: [PATCH 15/20] gpio/rockchip: disable and put clocks when gpiolib register failed
+Date: Tue, 20 Sep 2022 18:31:03 +0800
+Message-Id: <20220920103108.23074-16-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220920103108.23074-1-jay.xu@rock-chips.com>
 References: <20220920103108.23074-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVlCGEMeVkIZTR4eSR5NT0lMTVUTARMWGhIXJB
-	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktITUpVSktLVUtZBg++
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MAg6Ixw*Kz0pNhwrFxQ8LxgO
-	FwswCipVSlVKTU1ITU1CQ0xNT0pIVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
-	WU5DVUlJVUxVSkpPWVdZCAFZQUhMSEw3Bg++
-X-HM-Tid: 0a835a73b52a2eb1kusnb93fe280ba6
+	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVkZTx9IVkodH01PSR9OQ0pPSFUTARMWGhIXJB
+	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktISkNVSktLVUtZBg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PCo6Fxw5PT0oKhwJLRQDLyMR
+	DQowCQhVSlVKTU1ITU1CQ0NJS0hMVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
+	WU5DVUlJVUxVSkpPWVdZCAFZQUlITkI3Bg++
+X-HM-Tid: 0a835a73cafe2eb1kusn52f51280bc7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220920_033128_504976_F0BF9904 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20220920_033130_893602_AC78AF13 
+X-CRM114-Status: UNSURE (   8.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,79 +74,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Move find_chip_by_name from gpiolib to the gpio/driver.h, also rename to
-gpiochip_find_by_name, make it to be a common function.
+When gpiolib register failed, the clocks should be disabled and put.
 
 Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 ---
- drivers/gpio/gpiolib.c      | 16 ++--------------
- include/linux/gpio/driver.h | 12 ++++++++++++
- 2 files changed, 14 insertions(+), 14 deletions(-)
+ drivers/gpio/gpio-rockchip.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpio/gpiolib.c b/drivers/gpio/gpiolib.c
-index cc9c0a12259e..c06334772c47 100644
---- a/drivers/gpio/gpiolib.c
-+++ b/drivers/gpio/gpiolib.c
-@@ -935,18 +935,6 @@ struct gpio_chip *gpiochip_find(void *data,
- }
- EXPORT_SYMBOL_GPL(gpiochip_find);
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index 4fcd75d710c1..09ed5c880dde 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -746,14 +746,21 @@ static int rockchip_gpio_probe(struct platform_device *pdev)
  
--static int gpiochip_match_name(struct gpio_chip *gc, void *data)
--{
--	const char *name = data;
--
--	return !strcmp(gc->label, name);
--}
--
--static struct gpio_chip *find_chip_by_name(const char *name)
--{
--	return gpiochip_find((void *)name, gpiochip_match_name);
--}
--
- #ifdef CONFIG_GPIOLIB_IRQCHIP
- 
- /*
-@@ -3660,7 +3648,7 @@ void gpiod_add_hogs(struct gpiod_hog *hogs)
- 		 * The chip may have been registered earlier, so check if it
- 		 * exists and, if so, try to hog the line now.
- 		 */
--		gc = find_chip_by_name(hog->chip_label);
-+		gc = gpiochip_find_by_name(hog->chip_label);
- 		if (gc)
- 			gpiochip_machine_hog(gc, hog);
+ 	ret = rockchip_gpiolib_register(bank);
+ 	if (ret) {
+-		clk_disable_unprepare(bank->clk);
+-		return ret;
++		dev_err(bank->dev, "Failed to register gpio %d\n", ret);
++		goto err_put_clk;
  	}
-@@ -3745,7 +3733,7 @@ static struct gpio_desc *gpiod_find(struct device *dev, const char *con_id,
- 			return ERR_PTR(-EPROBE_DEFER);
- 		}
  
--		gc = find_chip_by_name(p->key);
-+		gc = gpiochip_find_by_name(p->key);
+ 	platform_set_drvdata(pdev, bank);
+ 	dev_info(dev, "probed %pOF\n", np);
  
- 		if (!gc) {
- 			/*
-diff --git a/include/linux/gpio/driver.h b/include/linux/gpio/driver.h
-index 6aeea1071b1b..4ed26a7d98ff 100644
---- a/include/linux/gpio/driver.h
-+++ b/include/linux/gpio/driver.h
-@@ -618,6 +618,18 @@ extern int devm_gpiochip_add_data_with_key(struct device *dev, struct gpio_chip
- extern struct gpio_chip *gpiochip_find(void *data,
- 			      int (*match)(struct gpio_chip *gc, void *data));
+ 	return 0;
++err_put_clk:
++	clk_put(bank->clk);
++	clk_put(bank->db_clk);
++	clk_disable_unprepare(bank->clk);
++	clk_disable_unprepare(bank->db_clk);
++
++	return ret;
+ }
  
-+static int gpiochip_match_name(struct gpio_chip *gc, void *data)
-+{
-+	const char *name = data;
-+
-+	return !strcmp(gc->label, name);
-+}
-+
-+static inline struct gpio_chip *gpiochip_find_by_name(const char *name)
-+{
-+	return gpiochip_find((void *)name, gpiochip_match_name);
-+}
-+
- bool gpiochip_line_is_irq(struct gpio_chip *gc, unsigned int offset);
- int gpiochip_reqres_irq(struct gpio_chip *gc, unsigned int offset);
- void gpiochip_relres_irq(struct gpio_chip *gc, unsigned int offset);
+ static int rockchip_gpio_remove(struct platform_device *pdev)
 -- 
 2.25.1
 
