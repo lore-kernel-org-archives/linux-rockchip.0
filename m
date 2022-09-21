@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D4AEC6FA8B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Sep 2022 15:56:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10D3AC6FA82
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Sep 2022 15:56:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cDV8FT3fNxhCYEL3ZvG0j4WGHaGF2gAIZgFfAtaM4OE=; b=SY9jZGzr58++nn
-	aL+3Udn/IxxkjKcQFVvD/Woyz1Tg2IO9mcAMjFgbwFuHW2VCu3hRu/i6+AhlZy8ccKNw7YMJV8gc0
-	pp1lUuoTp+hedb22BaashcePne4+I1AWSPdZHyBxMfz1tni8RYHsUR4JvYjJnZ7xIbDh+YHl8DL0k
-	/4WjmfX03Raxjk74FyPy5xDZF3lJhy3E0VMacULMVD6Xf61sUdAuQUt8e5NYpkb9nxXOTGhh2Go6L
-	sRBC5YrmtrakHJi1Z/v4zy5KsBb2CGWI5XFjggdVKzBho/m3LuGO/IWmACUEM5ld1TdCeuNahJRRH
-	/2JOGWcV7OOJmAoo6Cqg==;
+	List-Owner; bh=uJGxXWvwLiyUsihZYP+Qjg8WQrQT+PLNqupdbTbg29I=; b=rUCkUDv2OeYtUg
+	aW6Jq/asMIRuDbGJJ8rWFnP9gMgacc8nu1Ed02DPHf8m2m80+APggFRZ2R3BvLFbo/BGB29s2F3IC
+	HV6rh8niQLRkgtqWf/TpxfaSjUka1GEjgogBEgNpUUO2Z8Kr8yg3rBahgGP82qZ6BvMQaUX23lVby
+	PESo1V/IBMpNuE0VhW/QAMvtKhBp8Zs8fYABX88jrpARoaK48Vp6bXfhfvGZFi5zhSY0IFdP/TxqA
+	rtkH1wjAK6gWfKKVXuytm3AutdApUg+FYe4wophd7xEPMpabONjt33SdJh/7m5vNZVCl0ABVFPiNC
+	t9hGXODVYHnTn4j4Bc9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ob24j-00BrWe-Br; Wed, 21 Sep 2022 15:55:49 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1ob25K-00Brtr-PZ; Wed, 21 Sep 2022 15:56:26 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ob23a-00Bqee-6K; Wed, 21 Sep 2022 15:54:41 +0000
+	id 1ob23h-00Bqkk-I6; Wed, 21 Sep 2022 15:54:47 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id BF393B830E5;
-	Wed, 21 Sep 2022 15:54:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44BC2C43143;
-	Wed, 21 Sep 2022 15:54:36 +0000 (UTC)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 1556BB830F4;
+	Wed, 21 Sep 2022 15:54:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88F4BC43470;
+	Wed, 21 Sep 2022 15:54:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1663775676;
-	bh=xFoYiczSMpmkPDUMzBxSpprsVJENIuKg5r3Cj61wDmo=;
+	s=k20201202; t=1663775683;
+	bh=EHC/n7xhzmgYc8Q35mSJNr/a7I3lBZt9N0cpfuYwGaI=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IcKH+J2Eus6q+ZNUnO6YylwMuH8V+a4a0E5a8AKaEX1tX+r+c+o95s28x4uLHkT7x
-	 U0/ejrbwyVctgsKkmilT9pg61lSX23DR+bvMT+Kzkp5Em9txwuwnLNqbWj4CdF34ey
-	 feAQFP2G1uzHrupqvy2S5Q1tvfoPW7V1jDF1HOeu5FIzZeQoxwTJdDbG9RnvZx3ylo
-	 +xwxH/ZHaCRgQAyMrnXhCsn0dkgQLrzIFV02SrMg7lpGl0WjjZwPudYmjW34dwav8e
-	 WwaN4MDhxRzHdXBwA/dwAXsi+g5ixUbizF++KtVsogFDr/l3o1pXCfvpyMnR8YYDom
-	 NfQFqt1/A9iuA==
+	b=LmqcQD/TR65Jb7bEkXZNafZLsz0HvMq87GLcEurQQO/tVOa8AA9Bzs+UkhEu0ui+j
+	 ddTVNV0/QnnE+PTS3dSAWCaA8tBdJw4oB8C2UMe7CN18Q2DT4ZE51P/3dFzkNPg0Cj
+	 aMwaMEt2H6JHbYJz86jBCDOX7oWkTAhcd44Mpo0Ba55kfWDb8g93LfmD0biVtyVJB1
+	 O67NREeThZm299vLZodUpXZTcuw46V9Z4byHSOtiAcfQ6qBfhOHaXEwKux/u9JNMck
+	 o9M2rzHzi/hlJJdy/EGxujcnCkgq0E6YoKdLmSOp7nQX9I0b8rpEN0Gs7wjGuMgWwa
+	 Z4rhyPBEMxvAQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -57,17 +57,17 @@ Cc: Nathan Huckleberry <nhuck@google.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 7/7] drm/rockchip: Fix return type of cdn_dp_connector_mode_valid
-Date: Wed, 21 Sep 2022 11:54:25 -0400
-Message-Id: <20220921155425.235273-7-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 5/5] drm/rockchip: Fix return type of cdn_dp_connector_mode_valid
+Date: Wed, 21 Sep 2022 11:54:36 -0400
+Message-Id: <20220921155436.235371-5-sashal@kernel.org>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220921155425.235273-1-sashal@kernel.org>
-References: <20220921155425.235273-1-sashal@kernel.org>
+In-Reply-To: <20220921155436.235371-1-sashal@kernel.org>
+References: <20220921155436.235371-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220921_085438_432891_A3DD37AE 
+X-CRM114-CacheID: sfid-20220921_085445_788424_D25BEC81 
 X-CRM114-Status: GOOD (  13.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -113,10 +113,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index dec54c70e008..857c47c69ef1 100644
+index 8f299d76b69b..67dae1354aa6 100644
 --- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
 +++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -276,8 +276,9 @@ static int cdn_dp_connector_get_modes(struct drm_connector *connector)
+@@ -275,8 +275,9 @@ static int cdn_dp_connector_get_modes(struct drm_connector *connector)
  	return ret;
  }
  
