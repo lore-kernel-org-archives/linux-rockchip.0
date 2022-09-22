@@ -4,75 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 683E0ECAAD8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Sep 2022 19:51:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 600F3C54EE9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Sep 2022 21:23:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=cG/P9BBs//qzr8rlILAxAetJ0CTKeb8kZz1t9C5BT8A=; b=ArbkNSk9z99xZs
-	oUErDHAY3DIvjM7JJM+3eFv61FLvf1oa/QMKl4KcLjjNOusYGJ79UatayDmcI6HcvkFuIW1oc3s/j
-	CFIw4TiqwAXV0Z1n25YuqeieXPgvh1jVC1A/gSxxxBwqXgIe1pMQQTnnC/mioWx6zFvg4SG3fHz9q
-	93MsGaSoqX5byx0Lrgrl7Qx1fZxF7MfinpBtWnETBrWGjHUffjVzBrJBFGBtKvY8wrwamRHcakjL+
-	5YmDDFvCo5oZ+PbgsKGHIsWSYW4WnY1Grk/dQg78MRq3agFR7Dg541pA4nB/PykebEjz0nsXVcsy/
-	NDm9ilbZQ6EWMQkIj0gQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BbaNsf45FZG6bA+Wf2WXF8ua0Q3Mvswat3uaN30mhoE=; b=Wkfz0IfiziIh1L
+	WZo9vb5X0vHbN65il/C87PB26On+NSdTfvWwd1dtHBj8mTX+9pDhZn74xZtRuIWatGamWa9eRMvpB
+	JS8WLIAqdVT2PDM8kb1umXu/jsAXfyv9aRE0mToqwe04GyhvC55/nEsmboB3+h1yPlDRXGSb4/JBi
+	C3FOCkkVHGoy5JYR8viyc5UiH3XKAq9f0dvdJfA2z9QlovTwfYdm3Mx0WvaIxSAoXgnT7N81fBQPe
+	U3UntX5yMaGrPDj/c1FhsPkEDy+nW3C6HdH476zWkrtkIqeXYoePElMwC4vbRPEkv+XXvGLUuHT/p
+	UzZH5rhjsDA3dyugZ3lA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obSDj-0000aG-Rl; Thu, 22 Sep 2022 19:50:51 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1obTfH-000Iqe-1U; Thu, 22 Sep 2022 21:23:23 +0000
+Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obSDh-0000ZY-Mn; Thu, 22 Sep 2022 19:50:51 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id q35-20020a17090a752600b002038d8a68fbso3565135pjk.0;
-        Thu, 22 Sep 2022 12:50:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date;
-        bh=5tt7YLxb3iDcVpONdfVeohLCDRWuffI/hhfrEZ2pSF8=;
-        b=h6xPN0Bjf71EYlB5n0zzVKm2rMfxWHbN8Qtm9w++gJd9s4D3wX0a+xO5brKr+kql9U
-         icW2Zo7Ws4YwHc4i3wCPPiMtQzlgZW6x/0ktbU+BpnXSJed18PsUovhmCHq6fnPw4CPE
-         JIfD6j/JsHZ8ft6Rk2g4KR20wEYmEiXSOJvodW1pctYaztBzZwcmPz1bFgtD4fQUV2t1
-         1BajaKC6U+x2NDN5OQsS3KMlkxCk+rOkwk4f9mUdSbpY4xlxHkW/OYXauvZD+lcdyXKH
-         uppNjM79vRC0iBPhZUhO5sGsg+WJWHdr2Q57UD6uE7QX6LjQGLkmNS1xbMtmyCJUfyJn
-         pz6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date;
-        bh=5tt7YLxb3iDcVpONdfVeohLCDRWuffI/hhfrEZ2pSF8=;
-        b=KQAsNoZEAz9iHD5YS6RVWAaIG87OUgtLUIHSQEapgnpri7qFYQDisQFJHAiiNrFImV
-         +jelxPU2/Feeclb6bdBAqOWw6DmI0irJOW5R8/u2CJjIGXGzymxzRtfI0bB+FRP5Lthn
-         m4tCbloHPgTCriboMB9nOPHeXJKPovB5iyfYO9TZBqAnakvDenskeDNJ7jo1aTzOaaD+
-         +3+VpZQ59lp5yZsEx0bGZSztmkcyfMst2YR2nYdsP1SlR4ddSDcHx7x5HCvG4bRfXPpB
-         v0lQegLJJD9n1cRVRMrpeO3jkf606DlTJ/Jdlds1eloS5SYUzaeIbgI/AW+ql2ojFl8d
-         jiOQ==
-X-Gm-Message-State: ACrzQf1t7P0/paPN7fi6nZdNghxb6MoeOXeLnJkdR8RITE/TZ5mTjr0q
-	dbRiD3XyYPLIhR+5oLKhx4XLVve+yPrzUw==
-X-Google-Smtp-Source: AMsMyM4BX2JAjVqDC5m12Arx98zHe3YmAcgOamIu6cZboc2pfDVDhkYwlkHNaehZJX/65gJcF6g5Gw==
-X-Received: by 2002:a17:90a:d3c2:b0:202:acc2:1686 with SMTP id d2-20020a17090ad3c200b00202acc21686mr5413161pjw.126.1663876247691;
-        Thu, 22 Sep 2022 12:50:47 -0700 (PDT)
-Received: from archl-hc1t.. ([103.51.72.15])
-        by smtp.gmail.com with ESMTPSA id n3-20020a170902e54300b001768517f99esm4446775plf.244.2022.09.22.12.50.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Sep 2022 12:50:47 -0700 (PDT)
-From: Anand Moon <linux.amoon@gmail.com>
-To: Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>
-Cc: Anand Moon <linux.amoon@gmail.com>,
-	linux-rockchip@lists.infradead.org,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: defconfig: Enable Synopsys DWC MSHC driver
-Date: Thu, 22 Sep 2022 19:20:48 +0000
-Message-Id: <20220922192050.2031-1-linux.amoon@gmail.com>
-X-Mailer: git-send-email 2.37.3
+	id 1obTee-000IeU-Uh; Thu, 22 Sep 2022 21:22:47 +0000
+Message-ID: <659fc2fe-f820-04ad-8a4f-224b4d4bd97b@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1663881758;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=ZYMCYi0P3f0uCs3zXu9KgEbi+wTwz81X89dKXGgBfIo=;
+	b=JnAKBACcsruAYDfVZcI5L8Dy8qhkZQMYhEYqqFRu9iscTDdGVSeRbyM8Kz4e3GNO4lw5pt
+	+iO2qmp2N8Hn/QtGZSuQEA8vyz7IoTTYWGqWV8RJCTjIFB3+4PMvUe/07xIsRw6mF2V7jZ
+	6zmBseXq2OyciOnMA7dGCRKJuWikOTE1jd5ny0RR0SYXEvrZGlnpZFWjiTr7RwUxvPD8IT
+	IegQIlu948/Dc0zokruQrCou/TT5IQaP4I7tsftNRMGrG5SUNn64ZkYqyD0wsAt8JI5Zzm
+	zwCLXLEO6aLXmPEaWWmpjX7koyZRCcdy1UufqQTShmgB3Xp6A47Oq2+k387m/g==
+Date: Thu, 22 Sep 2022 23:22:37 +0200
 MIME-Version: 1.0
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable HDMI and GPU on quartz64-b
+Content-Language: da-DK
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20220920143446.633956-1-frattaroli.nicolas@gmail.com>
+From: Dan Johansen <strit@manjaro.org>
+Organization: Manjaro ARM
+In-Reply-To: <20220920143446.633956-1-frattaroli.nicolas@gmail.com>
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=strit@manjaro.org smtp.mailfrom=strit@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_125049_763271_57C4F91C 
-X-CRM114-Status: GOOD (  10.56  )
+X-CRM114-CacheID: sfid-20220922_142245_677366_351F1EE8 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,35 +67,126 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the driver SDHCI support for the Synopsys DWC MSHC
-controller which can be found on Rockchip 356x SoCs.
+This seems to be based against linux-next and not mainline. It fails to 
+apply on mainline for me.
 
-Cc: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Anand Moon <linux.amoon@gmail.com>
----
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index d5b2d2dd4904..be1afd1020c6 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -914,6 +914,7 @@ CONFIG_MMC_SDHCI=y
- CONFIG_MMC_SDHCI_ACPI=y
- CONFIG_MMC_SDHCI_PLTFM=y
- CONFIG_MMC_SDHCI_OF_ARASAN=y
-+CONFIG_MMC_SDHCI_OF_DWCMSHC=y
- CONFIG_MMC_SDHCI_OF_ESDHC=y
- CONFIG_MMC_SDHCI_CADENCE=y
- CONFIG_MMC_SDHCI_ESDHC_IMX=y
+Den 20.09.2022 kl. 16.34 skrev Nicolas Frattaroli:
+> This enables the GPU and HDMI output (including HDMI audio) on
+> the PINE64 Quartz64 Model B single board computer.
+>
+> Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
+> ---
+>   .../boot/dts/rockchip/rk3566-quartz64-b.dts   | 60 +++++++++++++++++++
+>   1 file changed, 60 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+> index 0f623198970f..77b179cd20e7 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
+> @@ -4,6 +4,7 @@
+>   
+>   #include <dt-bindings/gpio/gpio.h>
+>   #include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/soc/rockchip,vop2.h>
+>   #include "rk3566.dtsi"
+>   
+>   / {
+> @@ -28,6 +29,17 @@ gmac1_clkin: external-gmac1-clock {
+>   		#clock-cells = <0>;
+>   	};
+>   
+> +	hdmi-con {
+> +		compatible = "hdmi-connector";
+> +		type = "a";
+> +
+> +		port {
+> +			hdmi_con_in: endpoint {
+> +				remote-endpoint = <&hdmi_out_con>;
+> +			};
+> +		};
+> +	};
+> +
+>   	leds {
+>   		compatible = "gpio-leds";
+>   
+> @@ -183,6 +195,33 @@ &gmac1m1_clkinout
+>   	status = "okay";
+>   };
+>   
+> +&gpu {
+> +	mali-supply = <&vdd_gpu>;
+> +	status = "okay";
+> +};
+> +
+> +&hdmi {
+> +	avdd-0v9-supply = <&vdda0v9_image>;
+> +	avdd-1v8-supply = <&vcca1v8_image>;
+> +	status = "okay";
+> +};
+> +
+> +&hdmi_in {
+> +	hdmi_in_vp0: endpoint {
+> +		remote-endpoint = <&vp0_out_hdmi>;
+> +	};
+> +};
+> +
+> +&hdmi_out {
+> +	hdmi_out_con: endpoint {
+> +		remote-endpoint = <&hdmi_con_in>;
+> +	};
+> +};
+> +
+> +&hdmi_sound {
+> +	status = "okay";
+> +};
+> +
+>   &i2c0 {
+>   	status = "okay";
+>   
+> @@ -456,6 +495,10 @@ &i2c5 {
+>   	status = "disabled";
+>   };
+>   
+> +&i2s0_8ch {
+> +	status = "okay";
+> +};
+> +
+>   &i2s1_8ch {
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&i2s1m0_sclktx
+The above part does not seem to exist in the current mainline (rc6) git 
+repo.
+> @@ -677,3 +720,20 @@ &usb_host0_ehci {
+>   &usb_host0_ohci {
+>   	status = "okay";
+>   };
+> +
+> +&vop {
+> +	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
+> +	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
+> +	status = "okay";
+> +};
+> +
+> +&vop_mmu {
+> +	status = "okay";
+> +};
+> +
+> +&vp0 {
+> +	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
+> +		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
+> +		remote-endpoint = <&hdmi_in_vp0>;
+> +	};
+> +};
 -- 
-2.37.3
-
+Kind regards
+*Dan Johansen*
+Project lead of the *Manjaro ARM* project
+Manjaro-ARM <https://manjaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
