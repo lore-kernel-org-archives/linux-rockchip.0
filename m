@@ -4,121 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79CF6C54EE9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Sep 2022 17:20:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 683E0ECAAD8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Sep 2022 19:51:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3jmWa6l2EWR9QQoPFpuFLgkRZ1djfHdsIoT/lqkOeqk=; b=RpngGCRvLF0Rbb
-	G8QPqqL8bEh3qE3D9WuiCe/W4g/Bv99lA6S7+IzMFTXSIaU2ouPyMIzGuoiRb2R3tQX7GUPTkwPEl
-	ZPNGlgEdbx1Xy0vVp1JWHJqwwu00N6CQbQo1tNOub70ggo8SM0XSNj7r1FLmJjkZB2BNAq6Nec/3r
-	pPfQTc9JB5e0rp4Eku9iWEX5ZuvJPeKEbFeTCdeA0pOcDTHnaeuXUI83/AyKYJgW8GdqMUR+Jp/D7
-	92iuCqhWzvl2iotWQ09Zjaq4rtTiK00jFh8H8ziQTOQT2fYhdUicHi7Zzb1UuppSYQ1rdY2HvXmmG
-	eKIKNAS7GQvOpCrsSCFw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cG/P9BBs//qzr8rlILAxAetJ0CTKeb8kZz1t9C5BT8A=; b=ArbkNSk9z99xZs
+	oUErDHAY3DIvjM7JJM+3eFv61FLvf1oa/QMKl4KcLjjNOusYGJ79UatayDmcI6HcvkFuIW1oc3s/j
+	CFIw4TiqwAXV0Z1n25YuqeieXPgvh1jVC1A/gSxxxBwqXgIe1pMQQTnnC/mioWx6zFvg4SG3fHz9q
+	93MsGaSoqX5byx0Lrgrl7Qx1fZxF7MfinpBtWnETBrWGjHUffjVzBrJBFGBtKvY8wrwamRHcakjL+
+	5YmDDFvCo5oZ+PbgsKGHIsWSYW4WnY1Grk/dQg78MRq3agFR7Dg541pA4nB/PykebEjz0nsXVcsy/
+	NDm9ilbZQ6EWMQkIj0gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obPs9-00H1tb-Uj; Thu, 22 Sep 2022 17:20:25 +0000
-Received: from mail-bn7nam10on2089.outbound.protection.outlook.com ([40.107.92.89] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+	id 1obSDj-0000aG-Rl; Thu, 22 Sep 2022 19:50:51 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obPry-00H1q4-Cw; Thu, 22 Sep 2022 17:20:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=hpUdcwX0+JTI7+NVJtz99+TuiaFkcYtR6KEmsR9hdH4l97KToWtYCiI/8vp91wFLGC9gRzIZhGcGNZNbd5l/gvGBv8jvimz6JLQ3XSSjvwaJ4EjZ48U6E0QHWrBhJzo6duCZjdwEmDKK1QpmFP5ygn/HU4ffBwAVCOc7iO6GDnCeAD+C4RHm6HZX0juAQeVOauoQ48wbavAjkk/JbFA6ulsWoBb/TsdRSJAijt3yKi1UUHEmG0MKpWiJ6OfYBgioh8rolGK9XifqSlUF361OWTsFg0OP9vJIX7NUMg6sMJ2midwXprZb+0YD9I5KQ+PtuFn00ZLbR1ccszvYInyLVw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hsz3hPgSRbQm5yitV+e0UVqtVHNnyb2jH/raRqfF9CU=;
- b=GLF/Eu3R+hJBZNiZK9nJhnv/tqHb0lAA/Ils4Exnq7rPdaWL5oMaNS1z+s8WUaoDV/qaCGdJLCCI/yogTddlRELZDC3WzwYxUYDEJL3MeuVFeK47zv3UYzZ7VTpjmJc+hOS04p7m+4F0aPNUCuKHjv4LA/ATViI29Qbz3l08hng9ajKEUPaWYzlvfFRGzFjJly5uIE5rt3TbgBljRCnrvSECHDZ+3VfzeN3NCtVEMOBAls5TCMMc1sGgml9rxWvye9u7nUcvFqjllux6RlW8Kns4S9lcdifYkwqL4chiCQ1mQeam58kVXpTfWyLctLrNYL2bpmuU0eNFV0c8zDAlpw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=labundy.com; dmarc=pass action=none header.from=labundy.com;
- dkim=pass header.d=labundy.com; arc=none
+	id 1obSDh-0000ZY-Mn; Thu, 22 Sep 2022 19:50:51 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id q35-20020a17090a752600b002038d8a68fbso3565135pjk.0;
+        Thu, 22 Sep 2022 12:50:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=NETORG5796793.onmicrosoft.com; s=selector1-NETORG5796793-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hsz3hPgSRbQm5yitV+e0UVqtVHNnyb2jH/raRqfF9CU=;
- b=hkLdLDMr/wdybEz8pZlNhTOHZs6lljKX7Wi8/qwVmlCJ7zYawyoTRojIiP3vEBHSmHUfaE4oHwDlcH45uU3uI0kdEAuU1wgdI2sYwGjmy3IFH8njgGhONOTLRQK2+5scsW3Ld3a2o5TEFep1Y+5GcLZskEoA2OagWCCiRVgLlUo=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=labundy.com;
-Received: from SN4PR0801MB3774.namprd08.prod.outlook.com
- (2603:10b6:803:43::21) by SA2PR08MB6603.namprd08.prod.outlook.com
- (2603:10b6:806:11d::10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.19; Thu, 22 Sep
- 2022 17:20:09 +0000
-Received: from SN4PR0801MB3774.namprd08.prod.outlook.com
- ([fe80::e9de:97f:447d:1cee]) by SN4PR0801MB3774.namprd08.prod.outlook.com
- ([fe80::e9de:97f:447d:1cee%6]) with mapi id 15.20.5632.021; Thu, 22 Sep 2022
- 17:20:08 +0000
-Date: Thu, 22 Sep 2022 12:20:06 -0500
-From: Jeff LaBundy <jeff@labundy.com>
-To: Quentin Schulz <foss+kernel@0leil.net>
-Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
-	dmitry.torokhov@gmail.com, klaus.goger@theobroma-systems.com,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-input@vger.kernel.org,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>
-Subject: Re: [PATCH 1/3] Input: add `SW_BOOT_ALT`
-Message-ID: <YyyZRt5j180KzGqc@nixie71>
-References: <20220922101211.3215888-1-foss+kernel@0leil.net>
- <20220922101211.3215888-2-foss+kernel@0leil.net>
-Content-Disposition: inline
-In-Reply-To: <20220922101211.3215888-2-foss+kernel@0leil.net>
-X-ClientProxiedBy: SN4PR0501CA0010.namprd05.prod.outlook.com
- (2603:10b6:803:40::23) To SN4PR0801MB3774.namprd08.prod.outlook.com
- (2603:10b6:803:43::21)
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date;
+        bh=5tt7YLxb3iDcVpONdfVeohLCDRWuffI/hhfrEZ2pSF8=;
+        b=h6xPN0Bjf71EYlB5n0zzVKm2rMfxWHbN8Qtm9w++gJd9s4D3wX0a+xO5brKr+kql9U
+         icW2Zo7Ws4YwHc4i3wCPPiMtQzlgZW6x/0ktbU+BpnXSJed18PsUovhmCHq6fnPw4CPE
+         JIfD6j/JsHZ8ft6Rk2g4KR20wEYmEiXSOJvodW1pctYaztBzZwcmPz1bFgtD4fQUV2t1
+         1BajaKC6U+x2NDN5OQsS3KMlkxCk+rOkwk4f9mUdSbpY4xlxHkW/OYXauvZD+lcdyXKH
+         uppNjM79vRC0iBPhZUhO5sGsg+WJWHdr2Q57UD6uE7QX6LjQGLkmNS1xbMtmyCJUfyJn
+         pz6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date;
+        bh=5tt7YLxb3iDcVpONdfVeohLCDRWuffI/hhfrEZ2pSF8=;
+        b=KQAsNoZEAz9iHD5YS6RVWAaIG87OUgtLUIHSQEapgnpri7qFYQDisQFJHAiiNrFImV
+         +jelxPU2/Feeclb6bdBAqOWw6DmI0irJOW5R8/u2CJjIGXGzymxzRtfI0bB+FRP5Lthn
+         m4tCbloHPgTCriboMB9nOPHeXJKPovB5iyfYO9TZBqAnakvDenskeDNJ7jo1aTzOaaD+
+         +3+VpZQ59lp5yZsEx0bGZSztmkcyfMst2YR2nYdsP1SlR4ddSDcHx7x5HCvG4bRfXPpB
+         v0lQegLJJD9n1cRVRMrpeO3jkf606DlTJ/Jdlds1eloS5SYUzaeIbgI/AW+ql2ojFl8d
+         jiOQ==
+X-Gm-Message-State: ACrzQf1t7P0/paPN7fi6nZdNghxb6MoeOXeLnJkdR8RITE/TZ5mTjr0q
+	dbRiD3XyYPLIhR+5oLKhx4XLVve+yPrzUw==
+X-Google-Smtp-Source: AMsMyM4BX2JAjVqDC5m12Arx98zHe3YmAcgOamIu6cZboc2pfDVDhkYwlkHNaehZJX/65gJcF6g5Gw==
+X-Received: by 2002:a17:90a:d3c2:b0:202:acc2:1686 with SMTP id d2-20020a17090ad3c200b00202acc21686mr5413161pjw.126.1663876247691;
+        Thu, 22 Sep 2022 12:50:47 -0700 (PDT)
+Received: from archl-hc1t.. ([103.51.72.15])
+        by smtp.gmail.com with ESMTPSA id n3-20020a170902e54300b001768517f99esm4446775plf.244.2022.09.22.12.50.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 22 Sep 2022 12:50:47 -0700 (PDT)
+From: Anand Moon <linux.amoon@gmail.com>
+To: Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>
+Cc: Anand Moon <linux.amoon@gmail.com>,
+	linux-rockchip@lists.infradead.org,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] arm64: defconfig: Enable Synopsys DWC MSHC driver
+Date: Thu, 22 Sep 2022 19:20:48 +0000
+Message-Id: <20220922192050.2031-1-linux.amoon@gmail.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN4PR0801MB3774:EE_|SA2PR08MB6603:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6cbd1e57-4511-4054-0caf-08da9cbeb300
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	jmaBGR1LpUE8Fy4n7Qcl7SBSyaS4IQVly7hcG88yXxoWERkUmv2SYMLc7WLhjeiKBGB4eLkReStFbIJ8cL1roRJR/h57onIRzGZFGO6JaDbGaHs6CrGZtKxPUEkhlfRLrgyicFmWSslC8OGtwXSs8WcUnqigQp1pkqQezUsRZbOCIUa5hPvub4NaotH2xRtMKjwfJRntbbDRowuWxxVO4F2UdSKfb7zaETWukuXj4YashaGACF9KkPwsVXBAms5EYA77aQeHEtV8yTk37w0xzgxmcEUCDx8gsUfSJcM2ftOcLZIe3szCBLfmOCBOEsdHNAqoaV/83GROarUgKL+xpzmb90COIqgrNw6vLxBwKLvI2aKsbM8jIfdlf7KzRYIG5F9uWubxcg16npM2xRlndcEqmLBJykrU9UGs4G044hNMPJDJ/cV/Tz6tktEgy5MMlxTTu3znk6b8yxalerQgLS6Topp2mEAnq3b7lK6E3DgnAopKfsIomtCOKV09U4/V6Z7fyRzDWOO39o+FBwCri5dFJVQK7sdEFox7vyUHZ2OwVd1XKnq/pM471/GljbyHUv3gbaEvaaAdCvdhgYGbgJ8W3hDLc6m8SKOWt1IwqKG44ZklZqWQCnECjrFe0FnSaci8oomMQpxyXifPgquiILsTtVol1iWQdJ+/9FW3gwwiffv0sc9B0xhTzYVp3KZhnnLCXGZ7YDacmRmHDOr8l2fFE+unsRMBzZjkSNLQyms4F4nxtVTljIjQXLGkWY1I
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SN4PR0801MB3774.namprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(7916004)(396003)(376002)(39830400003)(366004)(136003)(346002)(451199015)(38100700002)(2906002)(9686003)(26005)(6512007)(478600001)(83380400001)(186003)(7416002)(8936002)(6506007)(5660300002)(86362001)(8676002)(6486002)(316002)(41300700001)(4326008)(66476007)(66556008)(66946007)(33716001)(81973001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?bVY8WjxRKM2dST6jE40AQ974j5JUVSYFn2HjA2wIXrDM0wCg8P44pJcdBbF1?=
- =?us-ascii?Q?dYinTunXa4OeVON0bU9nBx1MYIo+D/hqL4Lpq+0ZWAG7bJoF0Wrkq5ScNVSC?=
- =?us-ascii?Q?YffNXh0vnR6hXng1bRX+sddhmJhjnqy7brDtk4Ca2Bn6jNx1RzlIw6lW7bg0?=
- =?us-ascii?Q?e7//Q7HqjArAiq72O2agdrRhG5nWEZGhsjdI621XLJvUTB1lf6izrdIppEbI?=
- =?us-ascii?Q?fe3pU4ilCy5e3d+uay4SnnWPS3KrGsnzoU8bhpJWhF+YgMlWkjpuXDjWGy2h?=
- =?us-ascii?Q?hZrjKYJUKA4SXRxUb1rWrgat//LUzdc2uIwBoQ5iqVaLab3/KzsoEa1vHMin?=
- =?us-ascii?Q?sMaKq9Qj0/PywMpV5UiJY6s4bX7hcTNaBscgkR9cN5NATMAFVkA29tqb3hLI?=
- =?us-ascii?Q?qIMLqEOtOlL1DK5i9Ckivv2O/grwpntO5lEWtUb/j3mwn5eWaeUr7SQPsF84?=
- =?us-ascii?Q?jd2MnD5s4sjZs4kUTpzDryf6QArTJyDx3gWcNo7FdgdaCbzo8nAIBsvQhd9x?=
- =?us-ascii?Q?HzSNdQLXh/cWRGjbhIr98jWB4ns/KTPkUCV3pv2yMvAcfK4IMNo6lCb6rWq1?=
- =?us-ascii?Q?UeyR+o5heW/06UM9TVwQ7X+ttGIA053OrFq4eGx2ls5oZ4mflvNHXX1yDMZk?=
- =?us-ascii?Q?0hxRTMby9Funs62jNCO/q5YKjtc8dOnYIHWMsVNVhr626mTQk921sIRMViaG?=
- =?us-ascii?Q?UeueBGtU07gMHPMl2m4r4HkUQ2llwbpYOGONm6oEAlQLTnFyvA4k5t7srBTV?=
- =?us-ascii?Q?3ZwRyvcoiMIZzYuJSueDemdAN2cCJiTDDUm2yUzJgDoS441s2EmfJ7hEbMoO?=
- =?us-ascii?Q?x7EmqVVYPmoUFL51W+iMA5rwOCUgXOKb07+tZbgX/exPZ9IwTd2C23HHScDe?=
- =?us-ascii?Q?dUukmRNE8pHYyBm47ZMSXNIOUFiQ90UVDP0TDz1ILtVCXUJnvbBSyrHqmNfi?=
- =?us-ascii?Q?TXABTRWfHQs0EUtnH1TVdHzg4zc+Z03KQiVgQLINdfkrROzHpX/EIuD5HO9p?=
- =?us-ascii?Q?iVkeEx8PT5x62wCjTk8NucEsak22ye+/hvlE028p6CHSx0e9xkVNbFNt22fc?=
- =?us-ascii?Q?QHkIaW9QRCTcmrPr1+CqXbb9/+yWrXhLXbHgVBZtIN6MEwbAWZXwkatDtS5Q?=
- =?us-ascii?Q?pQbsHjpjuT9OsRST527nm/XOwb0DwWIJX6MqinnNkUX6XLv6UmPVyv9Trxj0?=
- =?us-ascii?Q?KarKmFaIncllvzfd/EO94DfSBW9kIqr+5n6CyXPzPg1DWlZGgvnIYXgLRrE9?=
- =?us-ascii?Q?GXNCpYrwH93UxvgO0wsMXjNwYXIinL0yAYg1Kic7g9XZJRV24r8O+vX5W8Fv?=
- =?us-ascii?Q?z1x2Cr/ViwUKTtJ08WCMsBiWhbjzcLsJoPrmuEnOgAWdXWiwokf1A12wOuGR?=
- =?us-ascii?Q?RjyrjJrXeSrKF2WGWwyMagCev6ctWqukjICB+k/bIKWPpLTUpvsEQonXvHXd?=
- =?us-ascii?Q?2ZyA1hchYFwx+3TBUtGe+w6WmK/e2KxsaLEcWA8ehRsounN/4TqZj0AvOYfQ?=
- =?us-ascii?Q?YoIBN+4ck41CpT+kHhz8c86m2L5hr6NlL3DiInpv+iO6HjxEgCtt/vPpcQjT?=
- =?us-ascii?Q?OW1KNHNfyAvw4pkhTatQl7qiOUAs926WAHE375F7?=
-X-OriginatorOrg: labundy.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6cbd1e57-4511-4054-0caf-08da9cbeb300
-X-MS-Exchange-CrossTenant-AuthSource: SN4PR0801MB3774.namprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Sep 2022 17:20:08.8909
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 00b69d09-acab-4585-aca7-8fb7c6323e6f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: zI/wjyRMxD+/OS6sLUti5fIB/B3a49Se+ws3W0cVsJUfOU37OTvoF+SVQPN+5Z+a1KGBUxWP9d4HOaDf4+7Eew==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR08MB6603
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_102014_469890_449A128B 
-X-CRM114-Status: GOOD (  21.09  )
+X-CRM114-CacheID: sfid-20220922_125049_763271_57C4F91C 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,67 +89,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Quentin,
+Enable the driver SDHCI support for the Synopsys DWC MSHC
+controller which can be found on Rockchip 356x SoCs.
 
-On Thu, Sep 22, 2022 at 12:12:09PM +0200, Quentin Schulz wrote:
-> From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
-> 
-> This event code represents the firmware source to use at boot.
-> Value 0 means using "standard" firmware source, value 1 means using
-> "alternative" firmware source.
-> 
-> For example, some hardware has the ability to force the BOOTROM to load
-> the bootloader from a secondary firmware source (say SD card) instead of
-> trying with the standard first and then the secondary. This event allows
-> the userspace to know which firmware source was requested *in hardware*.
-> 
-> Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+---
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-This does not seem like the right approach, especially since the switch
-can easily be flipped after the state is already latched.
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index d5b2d2dd4904..be1afd1020c6 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -914,6 +914,7 @@ CONFIG_MMC_SDHCI=y
+ CONFIG_MMC_SDHCI_ACPI=y
+ CONFIG_MMC_SDHCI_PLTFM=y
+ CONFIG_MMC_SDHCI_OF_ARASAN=y
++CONFIG_MMC_SDHCI_OF_DWCMSHC=y
+ CONFIG_MMC_SDHCI_OF_ESDHC=y
+ CONFIG_MMC_SDHCI_CADENCE=y
+ CONFIG_MMC_SDHCI_ESDHC_IMX=y
+-- 
+2.37.3
 
-If the bootloader needs to pass information to the kernel (boot source or
-otherwise), a safer and more flexible approach is to share some variables
-in eMMC, or pass information using the kernel cmdline.
-
-> ---
->  include/linux/mod_devicetable.h        | 2 +-
->  include/uapi/linux/input-event-codes.h | 3 ++-
->  2 files changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/include/linux/mod_devicetable.h b/include/linux/mod_devicetable.h
-> index 549590e9c644..009e71376a61 100644
-> --- a/include/linux/mod_devicetable.h
-> +++ b/include/linux/mod_devicetable.h
-> @@ -326,7 +326,7 @@ struct pcmcia_device_id {
->  #define INPUT_DEVICE_ID_LED_MAX		0x0f
->  #define INPUT_DEVICE_ID_SND_MAX		0x07
->  #define INPUT_DEVICE_ID_FF_MAX		0x7f
-> -#define INPUT_DEVICE_ID_SW_MAX		0x10
-> +#define INPUT_DEVICE_ID_SW_MAX		0x11
->  #define INPUT_DEVICE_ID_PROP_MAX	0x1f
->  
->  #define INPUT_DEVICE_ID_MATCH_BUS	1
-> diff --git a/include/uapi/linux/input-event-codes.h b/include/uapi/linux/input-event-codes.h
-> index dff8e7f17074..8cd2b58c81d7 100644
-> --- a/include/uapi/linux/input-event-codes.h
-> +++ b/include/uapi/linux/input-event-codes.h
-> @@ -917,7 +917,8 @@
->  #define SW_MUTE_DEVICE		0x0e  /* set = device disabled */
->  #define SW_PEN_INSERTED		0x0f  /* set = pen inserted */
->  #define SW_MACHINE_COVER	0x10  /* set = cover closed */
-> -#define SW_MAX			0x10
-> +#define SW_BOOT_ALT		0x11  /* set = alternative boot firmware source */
-> +#define SW_MAX			0x11
->  #define SW_CNT			(SW_MAX+1)
->  
->  /*
-> -- 
-> 2.37.3
-> 
-
-Kind regards,
-Jeff LaBundy
 
 _______________________________________________
 Linux-rockchip mailing list
