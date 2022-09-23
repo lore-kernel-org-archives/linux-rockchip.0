@@ -4,52 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75648C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Sep 2022 14:52:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A782BC6FA82
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Sep 2022 15:19:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aj5VTOG/WnLLEyEBSxRb1OJ8EPl80sIj+H5Ow5nVwbs=; b=xZxvgnaDoTUL2S
-	QgGofZF4+/M7bJBAhmQjspwJfnrJOuhV/hKrIxJj1oQQ6IwXbkUoAjRr98dZ4Tsb4p3fr2YCqSgU0
-	AMbQ+kfTkOlsOvCbAVj42lNfXxAZhfPqVIdLxFZM4mMUnUkBQszNtBQDVsJCJHB9CXtM3ej9VL37c
-	cNBaGga22+Bao71olWAO0dyyBQyEC6A0h9PfIcRPrD5H9b6dJvLqlAW9Likp3Rgbv2jBBd0WoaZvt
-	32qcCFNpVvDK1fiBL3zMKgAKShYPS+LaYUaIDkE43MNBwPBPCb+T80lsl9GOEprTYv/WjXn0pe9Fa
-	LoXrHC74lRw0R7nAtb8Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VwOcutFUc4Fm4FLeWOUhUHs7laycZkodsW3LKy+8rZ4=; b=AH8XBsQgcbHZgwLkWnFhq4AsIT
+	NpWFgiL4aTKa5HzE4f2a/oORTlWoAJWDeFcV15bT68j3O5MI7GVXq0e2G2kNPmb4KThyorHoIPdOu
+	dYRDqL1wMjYmciPUOnoDw+ciKxmed8i8zeWvIw7q2aQGN66TnU02EuZfBP7Jc4d/EFxzHrekud4Pv
+	1qPSQRDCLuBC1n/Lpd7yMl+h+zGr+fFuYACdToW9wESiMypPFwwGbRqHA6mzFa2nlNXW06GkMct3P
+	90vL+/hue2YxObiU+FhJtEfJfCCRnd9JwZkdu4E4ZIEAmA35sao+JjlGBAqrdKBqCJShs9bIrDD6C
+	NZ2Eei+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obk2m-004hQI-7I; Fri, 23 Sep 2022 14:52:44 +0000
-Received: from relay3-d.mail.gandi.net ([217.70.183.195])
+	id 1obkST-004mZS-MJ; Fri, 23 Sep 2022 15:19:17 +0000
+Received: from pscan.eu ([31.193.140.172] helo=mail.pscan.uk)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obk2I-004hDV-C4; Fri, 23 Sep 2022 14:52:15 +0000
-Received: (Authenticated sender: foss@0leil.net)
-	by mail.gandi.net (Postfix) with ESMTPSA id C18C860005;
-	Fri, 23 Sep 2022 14:52:08 +0000 (UTC)
-From: Quentin Schulz <foss+kernel@0leil.net>
-To: 
-Cc: linus.walleij@linaro.org,
-	brgl@bgdev.pl,
-	heiko@sntech.de,
-	jay.xu@rock-chips.com,
-	linux-gpio@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	foss+kernel@0leil.net,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
-	stable@vger.kernel.org
-Subject: [PATCH 2/2] gpio: rockchip: request GPIO mux to pinctrl when setting direction
-Date: Fri, 23 Sep 2022 16:51:41 +0200
-Message-Id: <20220923145141.3463754-3-foss+kernel@0leil.net>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20220923145141.3463754-1-foss+kernel@0leil.net>
-References: <20220923145141.3463754-1-foss+kernel@0leil.net>
+	id 1obkSQ-004mXe-JW
+	for linux-rockchip@lists.infradead.org; Fri, 23 Sep 2022 15:19:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=pscan.uk;
+	s=2016050301; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=pbypITStEQhEMxhyL4Ix3Hbg+P6nfk4M2aef6prjZl0=; b=gk3oZcRjJ9toE5pALptBfwCLF8
+	QmVOFL3KskZTC09iwH5O2so05ctid684166SmIeXMgDld2r0sSRoMa21mt+js6r14D/stv+0151Q4
+	2eznExAmWbWw3GWjWtRwNP9ZslFHP+70sJP6DAnJr6Gg72yKLZphyKVqydBA5xSEf8i8=;
+Received: from host86-153-126-124.range86-153.btcentralplus.com ([86.153.126.124] helo=[192.168.1.77])
+	by mail.pscan.eu with esmtpsa  (TLS1.3) tls TLS_AES_128_GCM_SHA256
+	(Exim 4.94.2 (FreeBSD))
+	(envelope-from <subs@pscan.uk>)
+	id 1objKF-000F2x-3b; Fri, 23 Sep 2022 15:06:43 +0100
+Message-ID: <59ed09fd-70ee-7366-1993-2213b426e6c8@pscan.uk>
+Date: Fri, 23 Sep 2022 16:19:00 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.0
+Subject: Re: (subset) [PATCH v4 0/3] rockchip-dsi for rk3568
+To: linux-rockchip@lists.infradead.org, macromorgan@hotmail.com
+References: <20220919164616.12492-1-macroalpha82@gmail.com>
+ <166392923326.537565.15902590169294407373.b4-ty@sntech.de>
+From: Philip C <subs@pscan.uk>
+In-Reply-To: <166392923326.537565.15902590169294407373.b4-ty@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_075214_596749_611EB55F 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20220923_081915_028834_B118B140 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,54 +64,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+I am trying to get the MIPI-DSI output to work with the Pine64 7" LCD (a 
+Feiyang panel) on Quartz64-a.
 
-Before the split of gpio and pinctrl sections in their own driver,
-rockchip_set_mux was called in pinmux_ops.gpio_set_direction for
-configuring a pin in its GPIO function.
+I was able to get the previous DSI Enablement serious (as published on 
+September 6th) working on top of 6.0-RC4, with some help from Chris, but 
+I have not been able to recreate the same success with these latest 
+patches on top of 6.0-RC6.
 
-This is essential for cases where pinctrl is "bypassed" by gpio
-consumers otherwise the GPIO function is not configured for the pin and
-it does not work. Such was the case for the sysfs/libgpiod userspace
-GPIO handling.
+Has anyone else gotten their MIP-DSI output to work with these latest 
+patches?  and, would they be willing to share their kernel config and 
+DTS files with me?  I am probably missing one silly thing, but I don't 
+have the skills to figure out what it is.
 
-Let's call pinctrl_gpio_direction_input/output when setting the
-direction of a GPIO so that the pinctrl core requests from the rockchip
-pinctrl driver to put the pin in its GPIO function.
+I would like to get this working and repeatable and then share it with 
+the Pine64 community.
 
-Fixes: 9ce9a02039de ("pinctrl/rockchip: drop the gpio related codes")
-Fixes: 936ee2675eee ("gpio/rockchip: add driver for rockchip gpio")
-Cc: stable@vger.kernel.org
-Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
----
- drivers/gpio/gpio-rockchip.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+thanks, Philip
 
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index bb50335239ac8..b83913e1ee49e 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -156,6 +156,12 @@ static int rockchip_gpio_set_direction(struct gpio_chip *chip,
- 	unsigned long flags;
- 	u32 data = input ? 0 : 1;
- 
-+
-+	if (input)
-+		pinctrl_gpio_direction_input(bank->pin_base + offset);
-+	else
-+		pinctrl_gpio_direction_output(bank->pin_base + offset);
-+
- 	raw_spin_lock_irqsave(&bank->slock, flags);
- 	rockchip_gpio_writel_bit(bank, offset, data, bank->gpio_regs->port_ddr);
- 	raw_spin_unlock_irqrestore(&bank->slock, flags);
--- 
-2.37.3
-
+On 23/09/2022 11:34, Heiko Stuebner wrote:
+> On Mon, 19 Sep 2022 11:46:13 -0500, Chris Morgan wrote:
+>> This series adds support for the dsi and dphy controllers on the
+>> Rockchip RK3568.
+>>
+>> Tested on an Anbernic RG503, Anbernic RG353P, and Odroid Go Advance.
+>>
+>> Changes since V3:
+>>   - Added labels to bindings in rk356x.dtsi file to make it easier to
+>>     reference in board dts files.
+>>
+>> [...]
+> 
+> Applied, thanks!
+> 
+> [3/3] arm64: dts: rockchip: Add DSI and DSI-DPHY nodes to rk356x
+>        commit: e18d9b093006d8abd53e1ce13c0d5a8d0fcd5f64
+> 
+> Best regards,
 
 _______________________________________________
 Linux-rockchip mailing list
