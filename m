@@ -4,71 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB218ECAAD8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Sep 2022 16:01:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C72E8C6FA82
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Sep 2022 16:01:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=EJtJssQCKzYd/fTDsQMgRbPzgE7SoCf1cl4hQC8/igo=; b=wk2bccSugJGTUv
-	tx395/lz8qozse307VXVrD2R8XgvStb9bAGoJlSN0P4vTqerfPzaBNFsUd5Kglj+MWgkI1+xmIuBS
-	W5wUwTPAGp9mjpDkjoEUnRWcY5Nbj4Z74DHugreV55AocQkRkeqP/crHqTHWgR0N+qHp1fHl46WqD
-	pTdZl1n1t+D+0bJzPHfkiMtkU0oJqO8UIkf3Ubn1u7UYd/DlpwN1vzaz9RMuXynKJ0PwyMHHM5GnK
-	yUMt9J/blC7ASkrfCcUayMV8ynuicCOzHtE0xY9L6XnHChkpzhht/EkWARGSYz87B0jSHSm+I6cZ2
-	WvQcC+BHc6IuSlOoFU9Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DtAsw1WYAw69XgXrJFpPDpb0yjtuis1mSJ3ZAFTVE1k=; b=vw9hS9Dw+mNEJa
+	9/SSnKPPqTCcHRT0eh8bF2tKisK4wS5Nie5ND3M0DCMcig5i33M/mG60zid9dEMiLs+gU01K5tWr0
+	bPbIr/RgekiQNkQhHyEREFfghaZFt/qD5THCQjwH7gWHyfLO2re9PfO5aPqq9At+0FooFxPI99Bu9
+	DiGGBcElhckQKuaaMMpbzlf723vrqOypA8oeU6qUQ50x6OA3TKQpPVyg8YET+N+hXY2pxncbLM6Xi
+	XH4K6QBaBtfoNVL8e105SSseLXI8L3Jhs/0o36tVaLvaHgkXD3hfEeY8zOflPJr/CBPbRmdgdGAhj
+	D6TjsvW8fAfcAHRpl9HQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obl7S-004uon-Fw; Fri, 23 Sep 2022 16:01:38 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1obl7W-004uq4-Ps; Fri, 23 Sep 2022 16:01:42 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obl7P-004uns-Mk
-	for linux-rockchip@lists.infradead.org; Fri, 23 Sep 2022 16:01:36 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id s10so574714ljp.5
-        for <linux-rockchip@lists.infradead.org>; Fri, 23 Sep 2022 09:01:31 -0700 (PDT)
+	id 1obl7T-004uoX-Lv
+	for linux-rockchip@lists.infradead.org; Fri, 23 Sep 2022 16:01:40 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id a8so937533lff.13
+        for <linux-rockchip@lists.infradead.org>; Fri, 23 Sep 2022 09:01:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date;
-        bh=TAxhomyfG5Riy3i7DiepBXGLe6PCxMcqDR4hk3OXgUI=;
-        b=LIHMmaARN9uBjHM76oyinQfZ29R4tB5t1HVtaW3WOnwOKObxc0XtnhJ+JXqXHmD3xf
-         kKpNSGmXYJ6H+2TPJpfsdPRrE94t2x6lSEp+PZIO+qWtQjhxoxwgHwy46QY/yAbnrMrb
-         SIZF6cwwJmX697HpykwxOi4NJPhrkj3dVe1sxSCn1ICWpTVEAEhcV17/PdpGyQSWjBh1
-         tvszMo8HfKkf/tKNC0NIWEMtoAhlGGN61ZmaIx+mDDIVWCiLj7NZ44TilpnjZNRfcTkM
-         BPL48qTvYHhJj4Ql8RLgtE0/khQS3QMyPrHVhS6N+EKrpKGh6jm6IX6AhqKNGyKIVjW8
-         wQSg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+        bh=WJiaPWI4ho+8FHxOqPv+dFRnzfm9c15mn+xBya3bRCk=;
+        b=ZkvSFOCEJjel1SVESVlofwx+2agKdmr6Nn94YUchAQqns4ului8l0fQl+WOmMvNi1O
+         c1iY80ypK6KxKSP+YlXAfJwAJgOCpzx6l2ePqdz8gtl8RGKGSxhHDdat1q58+RkvdZFl
+         1gCY0NMlXkO8qVJ3PniLMJq3jos3wJ+6GOaKvSbis9FPJ/e8S/XXy09DPtutGMSylt8+
+         DR+Sr6CSejkshVZrC3jOs8BeuMji8PIaFPjp8uVAqDPzis760WHU+DrgfK/gqVz4Rk+n
+         EtOnoaZWoSKpxcM9HZJ47RhJWpb/PAo/O16UdFbGiLDrZ9xneARevyHmhzo6vs4HCyEM
+         Jv/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date;
-        bh=TAxhomyfG5Riy3i7DiepBXGLe6PCxMcqDR4hk3OXgUI=;
-        b=66tL7Q0+Nm85M+D5Dy8G2I0tH8M/Ytl5An9WYfRP9fRXgwh2nxgP5U7BimHZmn8uVO
-         EUVVeS5h9zKH9yn+dSWMyqrmv9hjeKTMDvewL162H/W/yPAt0iMFn3sdfLl9uNi5hDkf
-         KPvvzMvc9l+gdk3Xid2qswOxFz7Mewg+vrvGuoofJSsfZA5vtjcWJFWR99sC1RoJAriX
-         lrmjqcEhxlxFJi7Ocbw5a1xGHLG1u8V7CO9AzJr4CCcFgrpw0CQEeTqutyJR8QJAHhRB
-         YD4GNKQ2glDPXdovqR5KtNqeFXkgknvDQS+1gYzungw2tSb6mRQB9gY3qXg03zB2KHNH
-         pdhg==
-X-Gm-Message-State: ACrzQf2H5qTRMrqbT4xg8ALDOKItYmbcYxJCvOlBBiHBLBcNaiws6S8u
-	u0sQK+VOEcUajG/mGKyA5WRW5hm8+gMaYA==
-X-Google-Smtp-Source: AMsMyM5f6JDX9e98wOEInChkVV4hQk576hkhVm5pQmZx6w1pC360nIK2OkewGIlT93SdEkh9y/Jrow==
-X-Received: by 2002:a2e:50b:0:b0:26a:b7ec:59ea with SMTP id 11-20020a2e050b000000b0026ab7ec59eamr3284921ljf.312.1663948889945;
-        Fri, 23 Sep 2022 09:01:29 -0700 (PDT)
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=WJiaPWI4ho+8FHxOqPv+dFRnzfm9c15mn+xBya3bRCk=;
+        b=QK0FUkc/X2cBl2r9rxRJOy0lQqPcRyoMx3E8GpjahlHjdieBUp1PwLN+XqNVzyF9hh
+         pOXs/x0iaQEkelg2L8IFCTYjgFe8ziR3GNHNOHFe2XTNVlso3o2cJ+MIknmnzUQbiZFC
+         RqtdxeC+lWKHNqlE7J86rJqxTIUEfRwQKnipAG9UkG2Jhdr2ifMYD92fraU/GUeanYLd
+         VLgFUYJMaRH16IG27Xr2/YON0rFwyVhHTmJKbvAZZRQumW2OL9fC/3LQUSHVuyYG51Oh
+         U4aTG7A4Cj4pjc/tLC4GVkymz5KuDPCaiSUQEEu5KVwEaN3QoA/XDy7D2lPqsFt7tht7
+         29aA==
+X-Gm-Message-State: ACrzQf2iPjqwDKolPcVKDcrZQgF4viQOvB6pig3vGT5Pae2U17hlXjhw
+	9BydzcAR05KtX/dh9NzChhN5U0RT4Iu/iQ==
+X-Google-Smtp-Source: AMsMyM5fVsrY506yzT4DdZXtreCRU/dICSyxd3dcMI3W09dSPpWlwYxtEFWmZFJYoKuqbD28AsyRhA==
+X-Received: by 2002:a05:6512:39cb:b0:49a:d1e1:16df with SMTP id k11-20020a05651239cb00b0049ad1e116dfmr3580399lfu.438.1663948896230;
+        Fri, 23 Sep 2022 09:01:36 -0700 (PDT)
 Received: from U19.ag.local (static.187.76.181.135.clients.your-server.de. [135.181.76.187])
-        by smtp.gmail.com with ESMTPSA id n24-20020a05651203f800b00494792ea34esm1498611lfq.273.2022.09.23.09.01.29
+        by smtp.gmail.com with ESMTPSA id n24-20020a05651203f800b00494792ea34esm1498611lfq.273.2022.09.23.09.01.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Sep 2022 09:01:29 -0700 (PDT)
+        Fri, 23 Sep 2022 09:01:35 -0700 (PDT)
 From: Alibek Omarov <a1ba.omarov@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: Alibek Omarov <a1ba.omarov@gmail.com>
-Subject: [RFC PATCH 0/3] rockchip-lvds for rk3568
-Date: Fri, 23 Sep 2022 19:01:12 +0300
-Message-Id: <20220923160115.2946615-1-a1ba.omarov@gmail.com>
+Subject: [RFC PATCH 2/3] arm64: dts: rockchip: rk356x: add LVDS bindings
+Date: Fri, 23 Sep 2022 19:01:14 +0300
+Message-Id: <20220923160115.2946615-3-a1ba.omarov@gmail.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220923160115.2946615-1-a1ba.omarov@gmail.com>
+References: <20220923160115.2946615-1-a1ba.omarov@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_090135_776744_FBCBB229 
-X-CRM114-Status: UNSURE (   7.54  )
+X-CRM114-CacheID: sfid-20220923_090139_732010_8D4E8B35 
+X-CRM114-Status: UNSURE (   8.22  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,26 +89,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds support for the LVDS controller on the Rockchip RK3566 and
-RK3568.
+Exposes ports for VOP2 and for panel
 
-Tested on Autogramma Monitor RockChip, custom board based on Radxa Rock 3
-Computing Module Plus.
+Signed-off-by: Alibek Omarov <a1ba.omarov@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 25 ++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-Requires applied DSI DPHY patches by Chris Morgan, as LVDS controller
-does share PHY controller with MIPI DSI.
-
-Alibek Omarov (3):
-  drm/rockchip: lvds: add rk3568 support
-  arm64: dts: rockchip: rk356x: add LVDS bindings
-  dt-bindings: display: rockchip-lvds: add compatible string for RK3568
-
- .../display/rockchip/rockchip-lvds.txt        |   1 +
- arch/arm64/boot/dts/rockchip/rk356x.dtsi      |  25 +++
- drivers/gpu/drm/rockchip/rockchip_lvds.c      | 144 +++++++++++++++++-
- drivers/gpu/drm/rockchip/rockchip_lvds.h      |  10 ++
- 4 files changed, 173 insertions(+), 7 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index 0473d7ee2668..fea3319a6a4e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -787,6 +787,31 @@ hdmi_out: port@1 {
+ 		};
+ 	};
+ 
++	lvds: lvds {
++		compatible = "rockchip,rk3568-lvds";
++		clocks = <&cru PCLK_DSITX_0>;
++		clock-names = "pclk_lvds";
++		phys = <&dsi_dphy0>;
++		phy-names = "dphy";
++		power-domains = <&power RK3568_PD_VO>;
++		rockchip,grf = <&grf>;
++		rockchip,output = "lvds";
++		status = "disabled";
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			lvds_in: port@0 {
++				reg = <0>;
++			};
++
++			lvds_out: port@1 {
++				reg = <1>;
++			};
++		};
++	};
++
+ 	qos_gpu: qos@fe128000 {
+ 		compatible = "rockchip,rk3568-qos", "syscon";
+ 		reg = <0x0 0xfe128000 0x0 0x20>;
 -- 
 2.25.1
 
