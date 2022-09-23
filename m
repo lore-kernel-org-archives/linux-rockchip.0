@@ -4,44 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6257C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Sep 2022 10:50:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C6BC6FA82
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Sep 2022 13:34:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S0hRBnCGc6TGxSfed0djaOj+8bNSWsDDEyUKs8TEoak=; b=KaxvgJnqz9lmQ6
-	5y6MYU59V6OQHXDftwTzE0oFSNt0qhNW5EO/FM48DrC3q4XQxB9Gxg6MiWLCqZ/MMTuQ44iueVdwD
-	dBJwSuQUwY4bhIX/zSy4+EIwwNPIiLCgqGNGp59CoKTOYObM3oXnjV9xsu2ghkX0Ty1qsZz+xnLTa
-	0I4uC1f9WmoscfU0MFG/0o/NAFkK1hoXOkH2zV7SlS0jHfokQb7F13k+J+Z9wTASXJIcoXA66Z+DI
-	hwTIUIOo4EehocYMroPxfUNEhscN4ulWcPDlUYAGVuj6ovt6DYEh/ntBk1dmZpqZH0jbOfnbpxoh/
-	GTXRBz/odobJDga/zQ0Q==;
+	List-Owner; bh=R6fidLu7Y3MIvIYkvEYeSFAA1hMiDkm7y6ZUf5g+2fw=; b=EhDWEKsIcis41V
+	4MS2XFLHcy2KJUBH7PuN0zBgBbsYPD9NEBqQmF2xQWixOXs6Hi3ANnl/m+AgIYAW5nO/msPbYGHl8
+	UlAf72/XU5RG6feyk6Dy2a6Ame01F4taTtpdvwqwdjf8gb8nwW1UvANHosGrxFTw/wVvTXGfJqf+/
+	coTBmxrameZPWjuaUbcD2fPO5bm+BeO9ovlfFPaXAEpIJXhPqcBqZFvbC+9nezxM0ERgO3rRLzkcz
+	ZDg9BdapeNDzWlclU+grEpi1jwTY/CguMOQWxOxNAQ2MKizAd7LHSZYuumawIpXD8exv51AhiElsf
+	oz9LMFWSDmC8ytXpUupA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obgGJ-003l2o-Bf; Fri, 23 Sep 2022 10:50:27 +0000
+	id 1obioG-004RzY-Kf; Fri, 23 Sep 2022 13:33:40 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obgGG-003l09-F7
-	for linux-rockchip@lists.infradead.org; Fri, 23 Sep 2022 10:50:25 +0000
+	id 1obio5-004Rvz-Ry; Fri, 23 Sep 2022 13:33:31 +0000
 Received: from p508fdb48.dip0.t-ipconnect.de ([80.143.219.72] helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1obgG2-00062d-Uv; Fri, 23 Sep 2022 12:50:11 +0200
+	id 1obinv-00074F-K3; Fri, 23 Sep 2022 15:33:19 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: "linus. walleij" <linus.walleij@linaro.org>, "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
-Cc: Johan Jonker <jbx6244@gmail.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Bartosz Golaszewski <brgl@bgdev.pl>, linux-gpio <linux-gpio@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH v2 RESEND 0/2] rockchip pinctrl for acpi
-Date: Fri, 23 Sep 2022 12:50:10 +0200
-Message-ID: <2678726.jE0xQCEvom@phil>
-In-Reply-To: <202209231835365953827@rock-chips.com>
-References: <20220917060929.657778-1-jay.xu@rock-chips.com> <2419940.Icojqenx9y@phil> <202209231835365953827@rock-chips.com>
+To: Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Kever Yang <kever.yang@rock-chips.com>, Jagan Teki <jagan@edgeble.ai>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Jagan Teki <jagan@edgeble.ai>, Jon Lin <jon.lin@rock-chips.com>, Sugar Zhang <sugar.zhang@rock-chips.com>
+Subject: Re: [PATCH v5 6/6] ARM: dts: rockchip: Add Rockchip RV1126 SoC
+Date: Fri, 23 Sep 2022 15:33:18 +0200
+Message-ID: <2439124.NgBsaNRSFp@phil>
+In-Reply-To: <20220915163947.1922183-7-jagan@edgeble.ai>
+References: <20220915163947.1922183-1-jagan@edgeble.ai> <20220915163947.1922183-7-jagan@edgeble.ai>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_035024_539866_76378C69 
-X-CRM114-Status: GOOD (  20.17  )
+X-CRM114-CacheID: sfid-20220923_063329_938387_5D3D49A9 
+X-CRM114-Status: GOOD (  13.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,52 +57,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jay,
+Am Donnerstag, 15. September 2022, 18:39:47 CEST schrieb Jagan Teki:
+> RV1126 is a high-performance vision processor SoC for IPC/CVR,
+> especially for AI related application.
+> 
+> It is based on quad-core ARM Cortex-A7 32-bit core which integrates
+> NEON and FPU. There is a 32KB I-cache and 32KB D-cache for each core
+> and 512KB unified L2 cache. It has build-in NPU supports INT8/INT16
+> hybrid operation and computing power is up to 2.0TOPs.
+> 
+> This patch add basic core dtsi support.
+> 
+> Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+> Signed-off-by: Jagan Teki <jagan@edgeble.ai>
 
-Am Freitag, 23. September 2022, 12:35:36 CEST schrieb jay.xu@rock-chips.com:
-> Hi heiko
-> 
-> --------------
-> jay.xu@rock-chips.com
-> >Am Dienstag, 20. September 2022, 11:26:26 CEST schrieb Linus Walleij:
-> >> On Sat, Sep 17, 2022 at 8:09 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
-> >>
-> >> > These patch fixes to support acpi by:
-> >> > 1. populate gpio platform before pinctrl to probe
-> >> > 2. get gpiochip by finding from gpiochip list
-> >> > 3. get match data by device api
-> >> >
-> >> > Jianqun Xu (2):
-> >> >   pinctrl: rockchip: find gpiochip by name from gpio module
-> >> >   pinctrl: rockchip: get match data by device_get_match_data
-> >>
-> >> These look OK to me but I would feel better if Heiko or Andy ACK:ed
-> >> them so I give them a few more days to comment.
-> >
-> >Right now I'm actually quite confused as I seem to have a bunch
-> >of pinctrl/gpio-acpi patchsets of varying lengths in my inbox.
-> >
-> >There is a "v2", a "v8", a 20-patchset without version.
-> >It's all quite confusing.
-> > 
-> From v2 to v8, I summit fixes in one patch, and them sugguested by Andy, I try to separate them
-> into small patches 20-patchset.
-> 
-> The heart change is 
-> 
-> current
-> 1. pinctrl register first
-> 2. gpiochip register and find pinctrl device to add pin range
-> 
-> this patch fix to
-> 1. gpiochip register itself
-> 2. pinctrl register and find all gpiochips and add pin range
-> 
-> Please help to review directly to 20-patchset, I will add some suggested-by and acked-by later
+hmm, this series doesn't really provide any board for the rv1126,
+so we essentially don't even get any compile-time tests, as nothing
+is using this dtsi. Can we please change that?
 
-ok, I'll drop all the other acpi/pinctrl/gpio sets and move to the 20-patch-series.
-
-Thanks for the clarification
+Thanks
 Heiko
 
 
