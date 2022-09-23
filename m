@@ -4,74 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81FB6ECAAD8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Sep 2022 16:55:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96647C04A95
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Sep 2022 17:20:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
-	Date:Subject:Cc:To:From:References:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FzhCDHdWKjE22a+lQqcCNsFxxas5ApEd980Bo6ZcSw8=; b=sciftj4uYvRCF6
-	ZxXotxy6Y3fxzEWiza84GIqZjOHcNSAF594wnPcmzSbXiJpetwurOXcHvctBQvDJAiCY0w9V+BLk5
-	q0+NW/yWP0wH4hJKjB9aU3AyeeYuth78iR4y3z9w1xS7K9kMWY3s6qn1gO8XvNpXRtA3v8+EvcnzG
-	fHJeT6zV/87qp3ofZ4vf9KHt1IfuiAkolZC7sy1Nury/IUP4PgdTLLb8KVQhHVY8IVoNe+hbL/HW6
-	NWeOhRRV+RA/TxHKyjNJui9YZCNvSdqOMLEzYnmTryyczVJIeBo7gWXURRzPB1pbjciWX23eTB3AW
-	LD6ahdRR+HBPTvmS0+HA==;
+	List-Owner; bh=WAdUCS5xGsg/Nf6Lb5cFUQBFLCqlfaIUUYkF/fHQ31Y=; b=zNru1Tcfk6xBHX
+	xNdeyBMft2NtUUMFHDAokpNhkpxJAbihbG9mNcSKCRrwYRkO9OH6isWyaUSgBTxChGfTajUCH9+wl
+	fPlYtujdKt6ySuT1TVQRQ4YU1D69wgBiH+fYU92zpKAOAhIAngOclFyOlduhjpRTd7QiwSZ1FsV6b
+	Pn9/U8y28ALFZrbil9a/dt7vQQCplcVoagFl8vutODiacbVGvm5BYCj55yojGavEljBLYLSa7oCC0
+	N4m3vRQPPBCWISxrmp9lB1nOaq2mSiJwIW689ODTr3fyV2M3LEXj34gdRPB3r4OxDu7kS0xVwxmBE
+	I0zPbCVRXcGZH6grEgiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oblwu-00527a-QP; Fri, 23 Sep 2022 16:54:48 +0000
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+	id 1obmL4-0056wN-Us; Fri, 23 Sep 2022 17:19:46 +0000
+Received: from mail-mw2nam12on2046.outbound.protection.outlook.com ([40.107.244.46] helo=NAM12-MW2-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oblwq-005277-SL
-	for linux-rockchip@lists.infradead.org; Fri, 23 Sep 2022 16:54:46 +0000
-Received: by mail-lj1-x22a.google.com with SMTP id b24so723056ljk.6
-        for <linux-rockchip@lists.infradead.org>; Fri, 23 Sep 2022 09:54:40 -0700 (PDT)
+	id 1obmKt-0056uO-2U; Fri, 23 Sep 2022 17:19:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=aLM+UukZaw6SN2yhRq01545t/KWMKc+dfyEc7Vu5ZxfH3kHEHHhGQviqKOeNeqBXGtWhV/j9iA6ku/lPVoTmK1RkRuoy3iGmGyti4MWZNMJG5QXgX0RQrGt2MeY1C+oiM5vZy4V00GmWF3px8fdoT/nfrFa3crQUuDcdhoelJ/hnbMVt+xutDd50zrkX585smJ1D/Sy88Zd5HG8wxZWefsYLe1Ds7EDY3fqV3neJd8FTjtqQhsMhbTmGiQtPPZRQu2u2gtezmy+6/wsjWfQsVGnSkRYlztD7riSq04ge9s98eb0PUaTSvNEvdSF0/huR/W3gRLrI7GSL6OCEjQzaYg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zvzMuZsJGzeQ2URqF0cg5vQNo/BlazJ6vBgm+IWK/dI=;
+ b=eqMr3U9GrVfr+ftSofZZ6/wRevWLV8O5gExxL6exXDq5R0RoLu5jsGZhxnWHIPEUexO8BKd20kUp0qoyI8PGxj066Mu1H4MD9KF9rShnbEvmu90kF04xPJGEcxuHC4bxEf21P81xxmlWPZCec3h6V2r6qbqYx+eFSUBmG3JWHAOTHy6wFtFRJKJcbYfoGgCbV145uAntGzjQBRLnctQpiSvFo3pj0kRUDwsRwuiPLqv5OrrU3AfI/GueFu/3OGqrfNM994S9RMNn+uE7jewomtIXPPlJRylHWyoDQuZ0//Htl+pX21YuF/NgByQ6Tk4gIHlH/A7CxBvKBSGxhfG84w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=labundy.com; dmarc=pass action=none header.from=labundy.com;
+ dkim=pass header.d=labundy.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:from:to:cc:subject:date;
-        bh=tiXj+Dz4ei5i2qCVY3Rkx+BmGOyqwmCCzdG7Jn+QGTk=;
-        b=F3WN56PKWbphT1JrQEqmg1ejVprtZa1yknl9wkWc1vAXa5BEkMNrNIfguAqsVDjjbL
-         XfSPNl7+PApmhhGHXLzo73U9wnFiuzW0cTr6Ft+k5VnVMMEjO3I+vhsbiRxPfmYrW4gJ
-         BVNK56RJZHIUFNPIXrus+kKdMXgadZACOWjmdgh1wnXy7kzwmoXzA6k5kwnrnqX4bfFb
-         ZnCrj6f4ucWMn9wzbCANTxsuqzVasx77AVkO/AQabBw1cbN8TsghXSMaHKaXvk1RsxeL
-         yuXtWZqUHiqJCc9T3s6k3665Cyi+YE9/Z5VYJPPOVEJlEVcclVdLDV0Sq6AEjU8LVHY4
-         aveg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=mime-version:message-id:in-reply-to:date:subject:cc:to:from
-         :user-agent:references:x-gm-message-state:from:to:cc:subject:date;
-        bh=tiXj+Dz4ei5i2qCVY3Rkx+BmGOyqwmCCzdG7Jn+QGTk=;
-        b=6wMz4jJZvuV2lh/W1m3VbAVWvuc6ebeAT1SaPpIXZZPzsGKuMO3fjYBj1kyLbV3Y2T
-         wPvZiV5NrIKN6wUSzdwbU4tyUiCTVVyV2i2wf+j/8LUgd8ydXPy8ZgUKD0XZNBfIxTIr
-         r/JXU+iF6evigO8lgMuZ1Z8J7f6nlzFikD6FtOokT9DY63UsKPQRkHkujkdRr0Po3yxg
-         q+47VpdRZGHogK4KgZ0HmJHi/v3O7Y7NL15+LPBhk0G2Wo0J4bdSAbWQ/BDTGP2R8Kp5
-         GsawCeCIyWxnznF/9VDb9OTvycCiIMaueizloztRxKGcgCnRBm/EbIvE91IIgofswS4y
-         AQCA==
-X-Gm-Message-State: ACrzQf3XPaFEXW7iU6Ey/9LK/B9RaNTUpdHcskdHaBrDQKxcXPujqacb
-	6+KI1vvakSigpFja63NGwgMje6xJidueZw==
-X-Google-Smtp-Source: AMsMyM5HV1qCIpwo3CzmtrEeDU1GlAdxr2vws8CH3jh6cOQtK+2psMqirj8uVm+hFrG4i+Vr+MUhhw==
-X-Received: by 2002:a05:651c:199f:b0:26c:4a66:aa4e with SMTP id bx31-20020a05651c199f00b0026c4a66aa4emr3462192ljb.321.1663952078988;
-        Fri, 23 Sep 2022 09:54:38 -0700 (PDT)
-Received: from razdolb ([213.87.132.215])
-        by smtp.gmail.com with ESMTPSA id f12-20020a056512092c00b00498f0434efdsm1530694lft.19.2022.09.23.09.54.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 23 Sep 2022 09:54:38 -0700 (PDT)
-References: <20220923152000.GA444697@tom-ThinkPad-T14s-Gen-2i>
-User-agent: mu4e 1.9.0; emacs 28.2
-From: Mikhail Rudenko <mike.rudenko@gmail.com>
-To: Tommaso Merciai <tommaso.merciai@amarulasolutions.com>
-Cc: heiko@sntech.de, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: px30-evb crash on 6.0.0-rc6, u2phy_otg, otg-port issue
-Date: Fri, 23 Sep 2022 19:48:34 +0300
-In-reply-to: <20220923152000.GA444697@tom-ThinkPad-T14s-Gen-2i>
-Message-ID: <8735cihvzn.fsf@gmail.com>
+ d=NETORG5796793.onmicrosoft.com; s=selector1-NETORG5796793-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zvzMuZsJGzeQ2URqF0cg5vQNo/BlazJ6vBgm+IWK/dI=;
+ b=D6svZNvJaXcNhhuo7WpNs9pINB/Y025NqD4e15p+2HjruQGtVfZpuXSoLQ5xskYNVzU6k9awxVxAGdNlBCB2CkYWPty0r8eN/kXpruSEHPiydh63f50nGqN+oZ7gaxXlbFGOkVxjSGTYSF0tQgL7btbhN+QEDuVD8J357Hu6s/s=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=labundy.com;
+Received: from SN4PR0801MB3774.namprd08.prod.outlook.com
+ (2603:10b6:803:43::21) by PH0PR08MB7259.namprd08.prod.outlook.com
+ (2603:10b6:510:91::22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.14; Fri, 23 Sep
+ 2022 17:19:28 +0000
+Received: from SN4PR0801MB3774.namprd08.prod.outlook.com
+ ([fe80::afa7:70e3:c2c9:b680]) by SN4PR0801MB3774.namprd08.prod.outlook.com
+ ([fe80::afa7:70e3:c2c9:b680%7]) with mapi id 15.20.5654.020; Fri, 23 Sep 2022
+ 17:19:28 +0000
+Date: Fri, 23 Sep 2022 12:19:11 -0500
+From: Jeff LaBundy <jeff@labundy.com>
+To: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+Cc: Quentin Schulz <foss+kernel@0leil.net>, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+	dmitry.torokhov@gmail.com, klaus.goger@theobroma-systems.com,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-input@vger.kernel.org
+Subject: Re: [PATCH 1/3] Input: add `SW_BOOT_ALT`
+Message-ID: <Yy3qj432McMJ/5rl@nixie71>
+References: <20220922101211.3215888-1-foss+kernel@0leil.net>
+ <20220922101211.3215888-2-foss+kernel@0leil.net>
+ <YyyZRt5j180KzGqc@nixie71>
+ <7add41ad-2cff-adef-08c4-dbc02f7c7c31@theobroma-systems.com>
+Content-Disposition: inline
+In-Reply-To: <7add41ad-2cff-adef-08c4-dbc02f7c7c31@theobroma-systems.com>
+X-ClientProxiedBy: DS7PR03CA0297.namprd03.prod.outlook.com
+ (2603:10b6:5:3ad::32) To SN4PR0801MB3774.namprd08.prod.outlook.com
+ (2603:10b6:803:43::21)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN4PR0801MB3774:EE_|PH0PR08MB7259:EE_
+X-MS-Office365-Filtering-Correlation-Id: 00763e75-4af4-42f2-55b6-08da9d87c4f7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	TBmCipoNBllZPNFVxHJo7LAfk99pz0MLZ+2v2rYxGoMG651mBkDIH8sDPLqP7ZJG9CKPpOUwA236lH2SJo6eoR6QUtXsy3jiuodb2j558dTZV+bFpJIVZG/Widl6TrnydLIurGOWC/ShhOyVHpsOvXKmnRvAkQn7YBIExbSWRs3BkUeY/yWDXEY1XYCaXfDsBRh41D4WyD3A/hNKd46nhxz1igtk9cfbNnax05hiGJhJs4rGOk559qe7JGR/1Vw8Nf3bAnEO7KGHwyt6WqKYPcsms0MXYVIQ7evu9wRJM+Oi3s6h7q5sfytVDpDHlwyZ11k/nuvQxJz5+AaXkQB7uUaEsSG+8gls9HG2dyt43A4GOHlQ38db3sUg7pJPCAN12UT14awarECN0VRUDM9tSBYE2n8IELa/l6wBAC42vfE6xUgqevR4i7wPjGr2Uy+nISBRWO9hxPWWZOc6MBtIuIrPwy0LSdRDZV8aGweaDKF6roj7vWwD3rKub/IZNRL28zl1iE7CHWdiBjbDYQV074HQ1RCgtggpjqqYjrTdr9Rxo9mCcdVHeur9RoTWQXr8BqrN/YB8gWjcIeoTiDZ0nrIsfHT+tiFTG79KPKflEULntk68iKbHMt/IJJfwMKQo7MlOC9UOAWW0mdq6m903uPAG1wwUQ+sXl73JGu4Q2aSEBKQf8MQslbAn0nNm3cjqnu84KwFZDpvF2VzRoeBR+KkgP5YJTXmVDk2M5TM0oGNB7nNfW3Xdjd7HLrTBFOAZM9kOzBFLHjtbtXF1MPDkJZ6WwqDpfVqzSVVn++BANxA0k+xAthDsZr9j0AWRKmICIWxm+mex0toDUh2tGJ/cvw==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SN4PR0801MB3774.namprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(7916004)(346002)(396003)(136003)(366004)(39830400003)(376002)(451199015)(478600001)(4326008)(6512007)(26005)(5660300002)(8936002)(6506007)(9686003)(6916009)(33716001)(6666004)(186003)(41300700001)(53546011)(83380400001)(66946007)(2906002)(66476007)(7416002)(66556008)(316002)(38100700002)(6486002)(966005)(8676002)(86362001)(81973001)(15398625002)(43620500001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?mnZdiHmtb05zLTQ/7q+uOd/p2NOHcTKuIX2L4935SOuyIxvM5Oo5eecXr51T?=
+ =?us-ascii?Q?GcSS8HPEshqrKnN0+d/7RMSKQ2etdWqenUxblbvgb9qmk6F5Hv74TCvJ96E2?=
+ =?us-ascii?Q?rBCcmzPd5SczKkxrN2Od2qPogBsJZjpVy2NdQfmU57Ootw/qyRzRJHwtjjBv?=
+ =?us-ascii?Q?P8Mo1eX4IeP+vcBuHBvR6IM6Wf5sOuB3//2uIwx6JHr0o0M7z7OJR96bGib8?=
+ =?us-ascii?Q?yDJcF6zQPtLr4nhaW1yuarfiA562P8cC3RQw0EVjFPNlADqFOul3Ovp9lK+C?=
+ =?us-ascii?Q?PB6x2RAMLGCZZ82yQyUTPAwfZb0R2gVKB6eaGK08suIF6xqq+2LqEwwWmckg?=
+ =?us-ascii?Q?d5olsUdQrTMRmz/CC/9k1fyyq6s7NzvWJVWcPoocAxJHNfDV1pzCFPZRXsWm?=
+ =?us-ascii?Q?BO7MXQAlhMEv8LNb4IrLsx6D7TdemdY5d+uIG+IeGuPZgViKG1fiV9wC6GIU?=
+ =?us-ascii?Q?ZAFVrMYl0M1/tdyAPlYH4MUX+TSZgi+23owkCfr0EX9vn/LlUsGcL2sPz/zb?=
+ =?us-ascii?Q?kOwxmhLQRy3tqcjDI0jjs/gy88moCOcyUEahMt6pkdhu0Uq0yWrWFtwMVdJv?=
+ =?us-ascii?Q?VdnKrxCRoVwFMzUwhgAzf99Uz71KuavZ3ptIvnDwn7FdvtxAXVotkp3jbAqh?=
+ =?us-ascii?Q?/58lSyLSV71BU8InEF2f0lqBn5G9D0pFpuXlr1jnn8Rx7Q7xEKHw/UbG/d5z?=
+ =?us-ascii?Q?YY2hRqI8d+msHVV/J1Zx4GnW+cJFxnGH1+TFrA2orErILLqf+mBUazJHYc46?=
+ =?us-ascii?Q?LhSnnrHORFEzKgxeigYtYNPjqQTSp8ssTMKunpU5Y6flUw02gYAcoACxENeY?=
+ =?us-ascii?Q?yQR8CrUoczvnDzZg1TgFvD8mY6xw/SCSExQz+kOO5rPP+F9pTGlYvQIFmdzL?=
+ =?us-ascii?Q?aKZ3po0MRjloqtCkcOJuzhBc8mkAxBqiyjnKPNa/GXrupXvcboXm39DNuasb?=
+ =?us-ascii?Q?u+/dLvbT9pzJdhseFnlxDT6k159s3EUYecrp1v8xe+cF77NJ0Usq1sKfrYrq?=
+ =?us-ascii?Q?9G7KmL5Wa+OyFjN/49y105tPPj1Tmfp9efL+vbimp51+/YhlUrezS5iwB8m1?=
+ =?us-ascii?Q?6+6yA5rfC3BPkwCQZ7RNX14h5/oFuZEZOPl26eaRpnXryZ8FXBSKhsD+8Doe?=
+ =?us-ascii?Q?bn2KEbeVByGU6nOLzriKQenNPClcthjChAkVN937VujQKy2DVLioE+ZpTcT4?=
+ =?us-ascii?Q?fLuCa6T19lqWSB7ImeJwj2oAdVwhJiCMk8NXtcHmQwa5paxV3hzbTk+H5oNT?=
+ =?us-ascii?Q?2mkZBP4tZRNLMUiw3quVGAIkZQ7lFi9HkOdC15G06pnAPZvbri1yBSG4q9lO?=
+ =?us-ascii?Q?IdCH8qLn7XHxKtWYGJ1eQ/R1EEd2fXeS1xzRjLneUvgO2JMPErzGO5j5dny6?=
+ =?us-ascii?Q?DeZQmKVC+Nc5k8lK9paCp2Iyw16cfrRlr57LFh07th6Zn8vUqjYU/gdTDy40?=
+ =?us-ascii?Q?EJBC84e79A2URfYPJijXcfWAKK8iw0HXeiuAtMfLGBvR4jj5RqvGfUtwT0dF?=
+ =?us-ascii?Q?u0BN7Rq8yOmKeYODK2O8BGC+81RinxgXcp30rHbHb/8TVhTBS1H99BQKl8jv?=
+ =?us-ascii?Q?wcGAKPrr8OqWrbQrcXT3ndkoapJIpDUCCRm2CVQX?=
+X-OriginatorOrg: labundy.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 00763e75-4af4-42f2-55b6-08da9d87c4f7
+X-MS-Exchange-CrossTenant-AuthSource: SN4PR0801MB3774.namprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Sep 2022 17:19:27.9223
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 00b69d09-acab-4585-aca7-8fb7c6323e6f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: YE2phfFXKOZtNq2Cx3kj3VLzijT2jCr3tyPOJaLmo0ZQRI5KxwRacuk62wkrL6f/92i8IYC6JNWK4M0T+hn10A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR08MB7259
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_095444_977005_3BF1BD40 
-X-CRM114-Status: GOOD (  18.72  )
+X-CRM114-CacheID: sfid-20220923_101935_358085_A6048598 
+X-CRM114-Status: GOOD (  44.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,179 +137,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Quentin,
 
-Hi Tommaso,
+On Fri, Sep 23, 2022 at 10:25:58AM +0200, Quentin Schulz wrote:
+> Hi Jeff,
+> 
+> On 9/22/22 19:20, Jeff LaBundy wrote:
+> > Hi Quentin,
+> > 
+> > On Thu, Sep 22, 2022 at 12:12:09PM +0200, Quentin Schulz wrote:
+> > > From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+> > > 
+> > > This event code represents the firmware source to use at boot.
+> > > Value 0 means using "standard" firmware source, value 1 means using
+> > > "alternative" firmware source.
+> > > 
+> > > For example, some hardware has the ability to force the BOOTROM to load
+> > > the bootloader from a secondary firmware source (say SD card) instead of
+> > > trying with the standard first and then the secondary. This event allows
+> > > the userspace to know which firmware source was requested *in hardware*.
+> > > 
+> > > Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+> > 
+> > This does not seem like the right approach, especially since the switch
+> > can easily be flipped after the state is already latched.
+> > 
+> > If the bootloader needs to pass information to the kernel (boot source or
+> > otherwise), a safer and more flexible approach is to share some variables
+> > in eMMC, or pass information using the kernel cmdline.
+> > 
+> 
+> I made a terrible job at explaining what this switch is for, sorry.
+> 
+> Obviously, the state of the switch cannot represent which firmware boot
+> source was used as only the bootloader will be able to tell (since it
+> usually tries storage media in a specific order and the primary boot source
+> could get corrupted at one point in time). Anyway, like you rightfully
+> stated, this is useless "info" and the important one would be passed by the
+> bootloader to the kernel (possibly via Device Tree fixup in case of
+> Aarch64). U-Boot does this to set the memory node so this could be done
+> again with a different property or something like that. Anyways, not
+> something I'm really interested in.
+> 
+> I have a switch on my devkit which implements the BOOT_ALT#/BIOS_DISABLE#
+> functionality from the Q7 standard, see section 3.1.17 Miscellaneous Signals
+> in the specs:
+> https://sget.org/wp-content/uploads/2018/09/Qseven-Spec_2.1.pdf
+> 
+> """
+> BIOS_DISABLE#
+> /BOOT_ALT#
+> Module BIOS disable input signal. Pull low to disable
+> module's on-board BIOS. Allows off-module BIOS
+> implementations. This signal can also be used to disable
+> standard boot firmware flash device and enable an alternative
+> boot firmware source, for example a boot loader.
+> """
+> 
+> This is basically the configuration of the firmware boot source to use for
+> *the next boot*. It does not represent which boot source was used, nor which
+> one will effectively be used.
+> 
+> In our case, this switch electrically disables eMMC and SPI flashes and only
+> allow to boot from SD card (this switch is then electrically overridden by
+> another GPIO at runtime by the bootloader/Linux kernel, but the state of the
+> switch is still available to the user via another GPIO).
 
-On 2022-09-23 at 17:20 +02, Tommaso Merciai <tommaso.merciai@amarulasolutions.com> wrote:
+Thanks for the additional detail and the use-case is quite clear; I just
+don't think input is the right home for this. Input makes more sense for
+switches that a user may change during runtime with the expectation that
+an event handler effects some sort of response.
 
-> Hello Heiko,
-> I'm playing with px30_mini_evb_v11_20190507 board on linux 6.0.0-rc6.
-> We have some problems on "rockchip,px30-usb2phy" driver in particular in
-> u2phy_otg: otg-port node (px30-evb.dts). Disabling this I'm able to boot
-> the board:
->
-> &u2phy {
-> 	status = "okay";
->
-> 	u2phy_host: host-port {
-> 		status = "okay";
-> 	};
->
-> 	u2phy_otg: otg-port {
-> 		status = "disabled";
-> 	};
-> };
->
-> In particular we have some problems here:
->
-> diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-> index bd0b35cac83e3..42647cd660bbf 100644
-> --- a/drivers/clk/clk.c
-> +++ b/drivers/clk/clk.c
-> @@ -4084,7 +4084,9 @@ static int clk_nodrv_prepare_enable(struct clk_hw *hw)
->
-> static void clk_nodrv_disable_unprepare(struct clk_hw *hw)
-> {
->       WARN_ON_ONCE(1);
-> }
->
-> logs:
->
-> [    1.269466] rockchip-usb2phy: probe of ff2c0000.syscon:usb2phy@100 failed with error 1
-> [    1.279044] ------------[ cut here ]------------
-> [    1.284135] WARNING: CPU: 0 PID: 1 at drivers/clk/clk.c:4087 clk_nodrv_disable_unprepare+0x4/0x10
-> [    1.293913] Modules linked in:
-> [    1.297276] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 6.0.0-rc6-00220-gb82580766e4c #147
-> [    1.306172] Hardware name: Rockchip PX30 EVB (DT)
-> [    1.311338] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> [    1.318993] pc : clk_nodrv_disable_unprepare+0x4/0x10
-> [    1.324549] lr : clk_core_disable+0x60/0xb8
-> [    1.329152] sp : ffff80000a5eba20
-> [    1.332793] x29: ffff80000a5eba20 x28: 0000000000000007 x27: ffff800009b96068
-> [    1.340657] x26: ffff800009ad0400 x25: ffff80000a52b000 x24: 0000000000000000
-> [    1.348516] x23: ffff0000038f5300 x22: 0000000000000000 x21: 0000000000000000
-> [    1.356376] x20: ffff0000038f5300 x19: ffff0000038f5300 x18: ffff000002c76610
-> [    1.364240] x17: 000000005a2f9018 x16: 000000008b35b0bc x15: ffff000003097740
-> [    1.372100] x14: 0000000000000000 x13: ffff000002c76610 x12: ffff0000030976c0
-> [    1.379961] x11: 000000ffffffffff x10: ffff000002c76618 x9 : ffff000002c76610
-> [    1.387822] x8 : ffff0000038f5300 x7 : ffff000002ce0000 x6 : 0000000000000000
-> [    1.395683] x5 : 0000000000000000 x4 : 0000000000000000 x3 : ffff80000a592748
-> [    1.403545] x2 : 0000000000000001 x1 : ffff8000086d7c88 x0 : ffff00000366f8a8
-> [    1.411407] Call trace:
-> [    1.414091]  clk_nodrv_disable_unprepare+0x4/0x10
-> [    1.419269]  clk_core_disable_lock+0x24/0x40
-> [    1.423967]  clk_core_disable_unprepare+0x18/0x38
-> [    1.429145]  __clk_set_parent_after+0x60/0x68
-> [    1.433940]  clk_core_set_parent_nolock+0x160/0x250
-> [    1.439311]  clk_unregister+0xe4/0x240
-> [    1.443443]  rockchip_usb2phy_clk480m_unregister+0x28/0x38
-> [    1.449482]  devm_action_release+0x14/0x20
-> [    1.453996]  release_nodes+0x40/0x70
-> [    1.457934]  devres_release_all+0x94/0xe0
-> [    1.462344]  device_unbind_cleanup+0x18/0x68
-> [    1.467043]  really_probe+0x1d0/0x2b8
-> [    1.471070]  __driver_probe_device+0x7c/0xe8
-> [    1.475771]  driver_probe_device+0x38/0x100
-> [    1.480373]  __driver_attach+0xa8/0x138
-> [    1.484595]  bus_for_each_dev+0x7c/0xd8
-> [    1.488816]  driver_attach+0x24/0x30
-> [    1.492750]  bus_add_driver+0x15c/0x210
-> [    1.496968]  driver_register+0x64/0x120
-> [    1.501190]  __platform_driver_register+0x28/0x38
-> [    1.506367]  rockchip_usb2phy_driver_init+0x1c/0x28
-> [    1.511733]  do_one_initcall+0x60/0x1f0
-> [    1.515957]  kernel_init_freeable+0x22c/0x2a0
-> [    1.520757]  kernel_init+0x24/0x130
-> [    1.524604]  ret_from_fork+0x10/0x20
-> [    1.528539] ---[ end trace 0000000000000000 ]---
-> [    1.562178] EINJ: ACPI disabled.
->
-> and after a bit:
->
-> [    3.280015] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
-> [    3.280034] Mem abort info:
-> [    3.280037]   ESR = 0x0000000086000004
-> [    3.280041]   EC = 0x21: IABT (current EL), IL = 32 bits
-> [    3.280048]   SET = 0, FnV = 0
-> [    3.280052]   EA = 0, S1PTW = 0
-> [    3.280056]   FSC = 0x04: level 0 translation fault
-> [    3.280061] [0000000000000000] user address but active_mm is swapper
-> [    3.280069] Internal error: Oops: 86000004 [#1] PREEMPT SMP
-> [    3.280077] Modules linked in:
-> [    3.280092] CPU: 0 PID: 9 Comm: kworker/u8:0 Tainted: G        W          6.0.0-rc6-00220-gb82580766e4c #147
-> [    3.280103] Hardware name: Rockchip PX30 EVB (DT)
-> [    3.280111] Workqueue: events_unbound async_run_entry_fn
-> [    3.280140] pstate: 00000005 (nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> [    3.280150] pc : 0x0
-> [    3.280160] lr : call_timer_fn.isra.30+0x24/0x80
-> [    3.280171] sp : ffff80000a62b470
-> [    3.280175] x29: ffff80000a62b470 x28: 0000000000000010 x27: 0000000000000004
-> [    3.280190] x26: 0000000000000000 x25: 0000000000000000 x24: dead000000000122
-> [    3.280204] x23: ffff800009a03000 x22: ffff80000a1d7000 x21: 0000000000000000
-> [    3.280219] x20: 0000000000000101 x19: ffff000002d78000 x18: ffffffffffffffff
-> [    3.280234] x17: ffff800075f19000 x16: ffff800008004000 x15: 00009726b6a67ac4
-> [    3.280248] x14: 00000000000000c4 x13: 00000000000000c4 x12: ffff00007fb58d40
-> [    3.280262] x11: 4200000000000000 x10: ffff00007fb52070 x9 : 0000000000000001
-> [    3.280276] x8 : 0000000000000000 x7 : ffffffffffffffff x6 : 0000000000000000
-> [    3.280290] x5 : 0000000000000000 x4 : 0000000000000000 x3 : 0000000000000200
-> [    3.280303] x2 : 000000003fffffff x1 : 0000000000000000 x0 : ffff00000366fb10
-> [    3.280318] Call trace:
-> [    3.280322]  0x0
-> [    3.280329]  run_timer_softirq+0x3c0/0x408
-> [    3.280339]  __do_softirq+0x11c/0x288
-> [    3.280348]  irq_exit_rcu+0xe8/0x108
-> [    3.280361]  el1_interrupt+0x3c/0x70
-> [    3.280374]  el1h_64_irq_handler+0x18/0x28
-> [    3.280384]  el1h_64_irq+0x64/0x68
-> [    3.280391]  console_emit_next_record.constprop.47+0x1a8/0x2c8
-> [    3.280404]  console_unlock+0x1a0/0x1e0
-> [    3.280414]  vprintk_emit+0x1c4/0x2d0
-> [    3.280423]  dev_vprintk_emit+0x148/0x178
-> [    3.280431]  dev_printk_emit+0x64/0x88
-> [    3.280439]  __dev_printk+0x5c/0x7c
-> [    3.280447]  _dev_info+0x6c/0x90
-> [    3.280455]  dw_mci_setup_bus+0x114/0x218
-> [    3.280467]  dw_mci_set_ios+0x12c/0x270
-> [    3.280475]  mmc_power_up.part.21+0xa4/0xf8
-> [    3.280486]  mmc_start_host+0xac/0xb8
-> [    3.280494]  mmc_add_host+0x7c/0xe8
-> [    3.280503]  dw_mci_probe+0x970/0xfc8
-> [    3.280511]  dw_mci_pltfm_register+0xa0/0xd8
-> [    3.280520]  dw_mci_rockchip_probe+0x84/0x148
-> [    3.280530]  platform_probe+0x68/0xe0
-> [    3.280544]  really_probe+0xc0/0x2b8
-> [    3.280552]  __driver_probe_device+0x7c/0xe8
-> [    3.280561]  driver_probe_device+0x38/0x100
-> [    3.280570]  __driver_attach_async_helper+0x30/0x58
-> [    3.280579]  async_run_entry_fn+0x30/0xd8
-> [    3.280590]  process_one_work+0x1fc/0x350
-> [    3.280601]  worker_thread+0x44/0x440
-> [    3.280609]  kthread+0x10c/0x118
-> [    3.280617]  ret_from_fork+0x10/0x20
-> [    3.280639] Code: bad PC value
-> [    3.280652] ---[ end trace 0000000000000000 ]---
-> [    3.280661] Kernel panic - not syncing: Oops: Fatal exception in interrupt
-> [    3.280667] SMP: stopping secondary CPUs
-> [    3.280747] Kernel Offset: disabled
-> [    3.280750] CPU features: 0x0000,00000020,00001086
-> [    3.280758] Memory Limit: none
-> [    3.696667] ---[ end Kernel panic - not syncing: Oops: Fatal exception in interrupt ]---
->
-> I'm missing something? Let me know.
-> Thanks in advance.
+Such is the case for lid open/close and headphone insertion, but here we
+are just interested in the state of a muxed GPIO.
 
-I had a similar issue on Rockchip 3399 [1], maybe it is related to your case?
+> 
+> I have this switch on the board and I want to expose its state to the user,
+> if this new event code is not possible/a good idea what would you suggest we
+> could use?
+> 
+> Note that we already support the same switch but in a different way: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts#n167
+> We are just configuring the GPIOs into the GPIO mode with a pull-up, and
+> then it's up to the user to use gpiod or gpio-sysfs to check the state of
+> the GPIO used for this switch. I don't like this, very not user-friendly and
+> was looking for something better :)
 
-[1] https://lore.kernel.org/linux-phy/6779635c-a162-0b7e-d124-d88d1ed9e162@sholland.org/
+Actually, that's exactly what I was going to suggest. What in particular
+is not user-friendly about it?
 
->
-> Regards,
-> Tommaso
+Of course, this is just my opinion as a fellow customer of input and it
+is ultimately up to Dmitry.
 
+> 
+> Hope I explained myself a bit better this time, lemme know if I can clarify
+> anything.
+> 
+> Thanks!
+> Quentin
 
---
-Best regards,
-Mikhail Rudenko
+Kind regards,
+Jeff LaBundy
 
 _______________________________________________
 Linux-rockchip mailing list
