@@ -4,58 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 600F3C54EE9
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Sep 2022 21:23:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 578EAECAAD8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Sep 2022 07:39:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BbaNsf45FZG6bA+Wf2WXF8ua0Q3Mvswat3uaN30mhoE=; b=Wkfz0IfiziIh1L
-	WZo9vb5X0vHbN65il/C87PB26On+NSdTfvWwd1dtHBj8mTX+9pDhZn74xZtRuIWatGamWa9eRMvpB
-	JS8WLIAqdVT2PDM8kb1umXu/jsAXfyv9aRE0mToqwe04GyhvC55/nEsmboB3+h1yPlDRXGSb4/JBi
-	C3FOCkkVHGoy5JYR8viyc5UiH3XKAq9f0dvdJfA2z9QlovTwfYdm3Mx0WvaIxSAoXgnT7N81fBQPe
-	U3UntX5yMaGrPDj/c1FhsPkEDy+nW3C6HdH476zWkrtkIqeXYoePElMwC4vbRPEkv+XXvGLUuHT/p
-	UzZH5rhjsDA3dyugZ3lA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=31cW6t3VMzsNkOdOkdU3uMXBMWyGdcbEszDPK8YPqGg=; b=QiYKr77GK+10SR
+	e0GeMMp6CwAN62um0AOxi1ODTCjXe6rh+Y6iQqN96Lv0CqKzTh7SJc2HshPxOmVbwzKuHwNBC4GqT
+	WTGA11MQCH3YJfWrzWWSAbs85YCKekmDN+dRey9PjV6Q8NH8OG/I9kt1kwdfXfgwpRJyA4xyayTEl
+	o4fVD3kwsoFbwwUVnTIC0xd1jsMxAN9x4ggTRy6v8iYZpJEY/uFYXzuHFVB4fgOFaWRo/OR6PiAnf
+	cSRNtNA3ym3qtUoVIVLpULm+rZIvsKwz05KIzCFBaBn18DWCygH2V6KBsK2quHZiJcEGiy/SRTmEX
+	QzczXfloccRT6BJSfYBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obTfH-000Iqe-1U; Thu, 22 Sep 2022 21:23:23 +0000
-Received: from mail.manjaro.org ([2a01:4f8:c0c:51f3::1])
+	id 1obdHh-002k6D-IN; Fri, 23 Sep 2022 07:39:41 +0000
+Received: from mail.fadrush.pl ([54.37.225.211])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obTee-000IeU-Uh; Thu, 22 Sep 2022 21:22:47 +0000
-Message-ID: <659fc2fe-f820-04ad-8a4f-224b4d4bd97b@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1663881758;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ZYMCYi0P3f0uCs3zXu9KgEbi+wTwz81X89dKXGgBfIo=;
-	b=JnAKBACcsruAYDfVZcI5L8Dy8qhkZQMYhEYqqFRu9iscTDdGVSeRbyM8Kz4e3GNO4lw5pt
-	+iO2qmp2N8Hn/QtGZSuQEA8vyz7IoTTYWGqWV8RJCTjIFB3+4PMvUe/07xIsRw6mF2V7jZ
-	6zmBseXq2OyciOnMA7dGCRKJuWikOTE1jd5ny0RR0SYXEvrZGlnpZFWjiTr7RwUxvPD8IT
-	IegQIlu948/Dc0zokruQrCou/TT5IQaP4I7tsftNRMGrG5SUNn64ZkYqyD0wsAt8JI5Zzm
-	zwCLXLEO6aLXmPEaWWmpjX7koyZRCcdy1UufqQTShmgB3Xp6A47Oq2+k387m/g==
-Date: Thu, 22 Sep 2022 23:22:37 +0200
+	id 1obdHe-002k3B-8A
+	for linux-rockchip@lists.infradead.org; Fri, 23 Sep 2022 07:39:39 +0000
+Received: by mail.fadrush.pl (Postfix, from userid 1002)
+	id 275A7231FB; Fri, 23 Sep 2022 07:37:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=fadrush.pl; s=mail;
+	t=1663918772; bh=bD6j9gIFU6CLTaCGl0Ow9oeIxtirvTfMeNZSfLEZQ+I=;
+	h=Date:From:To:Subject:From;
+	b=meAgOwqaOGIu/VvG9g7PT4SBRgLWsi8ZBHcLafufloEYbmHbMrrCclcDZymrL6/yn
+	 pK/EAWA1Ry3EuTcqYzGAk0fn7o1AyZ8j1L9vla0Lu+TRQJr8cMtkeggPQt4aiFCpbw
+	 fJrztqHN30Vo3/0ewaFU3syIInO5PeV5eT70HR2jYXikcyvObFZZZ4ssyCbqXLKcpT
+	 DZ9RBEhIeDjZ0Vc10JEuYZodx5uk3ML15mMwRE4jbrdazpJQrwL1rkP5zTlFhEy7Z5
+	 SnqdRN83FfXEY533LXD3cCT4cNSWWU4jsWBLanI5IdaFMn9+g12o4WvV0mDOGmd744
+	 Jr33XAOdUZkHw==
+Received: by mail.fadrush.pl for <linux-rockchip@lists.infradead.org>; Fri, 23 Sep 2022 07:36:05 GMT
+Message-ID: <20220923064500-0.1.1t.h9ks.0.qpdvjeedsb@fadrush.pl>
+Date: Fri, 23 Sep 2022 07:36:05 GMT
+From: "Jakub Olejniczak" <jakub.olejniczak@fadrush.pl>
+To: <linux-rockchip@lists.infradead.org>
+Subject: =?UTF-8?Q?Zwi=C4=99kszenie_p=C5=82ynno=C5=9Bci_finansowej?=
+X-Mailer: mail.fadrush.pl
 MIME-Version: 1.0
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable HDMI and GPU on quartz64-b
-Content-Language: da-DK
-To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220920143446.633956-1-frattaroli.nicolas@gmail.com>
-From: Dan Johansen <strit@manjaro.org>
-Organization: Manjaro ARM
-In-Reply-To: <20220920143446.633956-1-frattaroli.nicolas@gmail.com>
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=strit@manjaro.org smtp.mailfrom=strit@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220922_142245_677366_351F1EE8 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20220923_003938_472585_118E70C2 
+X-CRM114-Status: UNSURE (   1.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,128 +59,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This seems to be based against linux-next and not mainline. It fails to 
-apply on mainline for me.
-
-Den 20.09.2022 kl. 16.34 skrev Nicolas Frattaroli:
-> This enables the GPU and HDMI output (including HDMI audio) on
-> the PINE64 Quartz64 Model B single board computer.
->
-> Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
-> ---
->   .../boot/dts/rockchip/rk3566-quartz64-b.dts   | 60 +++++++++++++++++++
->   1 file changed, 60 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-> index 0f623198970f..77b179cd20e7 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
-> @@ -4,6 +4,7 @@
->   
->   #include <dt-bindings/gpio/gpio.h>
->   #include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/soc/rockchip,vop2.h>
->   #include "rk3566.dtsi"
->   
->   / {
-> @@ -28,6 +29,17 @@ gmac1_clkin: external-gmac1-clock {
->   		#clock-cells = <0>;
->   	};
->   
-> +	hdmi-con {
-> +		compatible = "hdmi-connector";
-> +		type = "a";
-> +
-> +		port {
-> +			hdmi_con_in: endpoint {
-> +				remote-endpoint = <&hdmi_out_con>;
-> +			};
-> +		};
-> +	};
-> +
->   	leds {
->   		compatible = "gpio-leds";
->   
-> @@ -183,6 +195,33 @@ &gmac1m1_clkinout
->   	status = "okay";
->   };
->   
-> +&gpu {
-> +	mali-supply = <&vdd_gpu>;
-> +	status = "okay";
-> +};
-> +
-> +&hdmi {
-> +	avdd-0v9-supply = <&vdda0v9_image>;
-> +	avdd-1v8-supply = <&vcca1v8_image>;
-> +	status = "okay";
-> +};
-> +
-> +&hdmi_in {
-> +	hdmi_in_vp0: endpoint {
-> +		remote-endpoint = <&vp0_out_hdmi>;
-> +	};
-> +};
-> +
-> +&hdmi_out {
-> +	hdmi_out_con: endpoint {
-> +		remote-endpoint = <&hdmi_con_in>;
-> +	};
-> +};
-> +
-> +&hdmi_sound {
-> +	status = "okay";
-> +};
-> +
->   &i2c0 {
->   	status = "okay";
->   
-> @@ -456,6 +495,10 @@ &i2c5 {
->   	status = "disabled";
->   };
->   
-> +&i2s0_8ch {
-> +	status = "okay";
-> +};
-> +
->   &i2s1_8ch {
->   	pinctrl-names = "default";
->   	pinctrl-0 = <&i2s1m0_sclktx
-The above part does not seem to exist in the current mainline (rc6) git 
-repo.
-> @@ -677,3 +720,20 @@ &usb_host0_ehci {
->   &usb_host0_ohci {
->   	status = "okay";
->   };
-> +
-> +&vop {
-> +	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
-> +	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
-> +	status = "okay";
-> +};
-> +
-> +&vop_mmu {
-> +	status = "okay";
-> +};
-> +
-> +&vp0 {
-> +	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
-> +		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
-> +		remote-endpoint = <&hdmi_in_vp0>;
-> +	};
-> +};
--- 
-Kind regards
-*Dan Johansen*
-Project lead of the *Manjaro ARM* project
-Manjaro-ARM <https://manjaro.org>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RHppZcWEIGRvYnJ5LAoKa29udGFrdHVqxJkgc2nEmSB6IFBhxYRzdHdlbSwgcG9uaWV3YcW8IGNo
+Y2lhxYJieW0gemFwcm9wb25vd2HEhyB3eWdvZG5lIHJvendpxIV6YW5pZSwga3TDs3JlIHVtb8W8
+bGl3aSBQYcWEc3R3YSBmaXJtaWUgc3RhYmlsbnkgcm96d8Ozai4gCgpLb25rdXJlbmN5am5lIG90
+b2N6ZW5pZSB3eW1hZ2EgY2nEhWfFgmVnbyB1bGVwc3phbmlhIGkgcG9zemVyemVuaWEgb2ZlcnR5
+LCBjbyB6IGtvbGVpIHdpxIXFvGUgc2nEmSB6IGtvbmllY3pub8WbY2nEhSBpbndlc3Rvd2FuaWEu
+IEJyYWsgb2Rwb3dpZWRuaWVnbyBrYXBpdGHFgnUgcG93YcW8bmllIG9ncmFuaWN6YSB0ZW1wbyBy
+b3p3b2p1IGZpcm15LgoKT2Qgd2llbHUgbGF0IHogcG93b2R6ZW5pZW0gcG9tYWdhbSBmaXJtb20g
+dyB1enlza2FuaXUgbmFqbGVwc3plaiBmb3JteSBmaW5hbnNvd2FuaWEgeiBiYW5rdSBvcmF6IFVF
+LiBNYW0gc3RhxYJ5Y2ggS2xpZW50w7N3LCBrdMOzcnp5IG5hZGFsIGNoxJl0bmllIGtvcnp5c3Rh
+asSFIHogbW9pY2ggdXPFgnVnLCBhIHRha8W8ZSBwb2xlY2FqxIUgamUgaW5ueW0uCgpDenkgY2hj
+aWVsaWJ5IFBhxYRzdHdvIHNrb3J6eXN0YcSHIHogcG9tb2N5IHd5a3dhbGlmaWtvd2FuZWdvIGkg
+ZG/Fm3dpYWRjem9uZWdvIGRvcmFkY3kgZmluYW5zb3dlZ28/CgoKUG96ZHJhd2lhbQpKYWt1YiBP
+bGVqbmljemFrCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
+ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
+LXJvY2tjaGlwCg==
