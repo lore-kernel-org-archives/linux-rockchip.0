@@ -4,59 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39BC3C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Sep 2022 09:54:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0F10ECAAD8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Sep 2022 09:56:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=x3MN1Te7I51p1a5xfnd4ZHTs48Vjs88Ns0yCxB8hNY8=; b=K/du4EAAYCjhRg
-	ywy5y2tnILuYUdY5fDWnIA9n4u+E4wsPnrUE+b5qwoy8SGaybI8ih86M3OLc+lCwV69DSfI5KnVVh
-	vBOjlg/SVtUrfTRokxvuZJi2O+vJ+U4S94igzSMVWOfXimQNiMXGEjtWP9/L1c47Mi7/6kAONCdNS
-	MDyA+YhaomTra7JzDJ9NVrA7RYip0zw6pbRVMljohjN/lzmvHccg1pZhu0d/hbxm+9riV0FlKv9OZ
-	ilGmsg+3ViNUwmRQDISWnLtequlVg7ALPg1XBJyRM38UwO2ND2mpQzjYS4pB3+tYa2RrvKdZmqMWy
-	9j/oPnUJaDG+AQvvNLqw==;
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7UJCzw8I8/gDousaUTZ5R0bfHGuqxd/1yTdmHoIm/to=; b=C3fUOC1Mqpni56u4jRLojf5odK
+	WTe9qJKCH678vR0fPGErkPhNejYGotpR9syGlFUuH9gegUTWxSW9wf5aH5otT5i6/KES9dLjiuu8G
+	hvL5biLoqJS0CTTu/X2NYM63BYqvwRqFYjZ/Os7XDr8xbnVViO6dWYMsp1ikjajreMdF9VPHjctGJ
+	hYM0einjl4r6sr4Q/37rxUZOG5ZGYDG98yD2Wlq3cCY/fXZxVxwPu+tbB+Pqwh6wqw4BOC0e2g4NQ
+	AjcDZm456t9GK+N/VQoCeDNwcG6Rwh2F/Bm1kIgQ0J3sv7IrbhUfYdnF35gfFkHuhhVgEKabSPR3N
+	IDGEl/uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obfNq-003VRC-HF; Fri, 23 Sep 2022 09:54:10 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1obfPG-003Vqy-4K; Fri, 23 Sep 2022 09:55:38 +0000
+Received: from mail-dbaeur03on2082.outbound.protection.outlook.com ([40.107.104.82] helo=EUR03-DBA-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1obfNe-003VNW-IE; Fri, 23 Sep 2022 09:54:00 +0000
-Message-ID: <ad36710b-af7d-f9ca-fa04-cbb9acb5f123@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1663926833;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Gn6QZKyXCWPIw+IVFSiZn7BPyYuukt8qvGTzGCzdE74=;
-	b=qGx+rQKBiZpQYiOOhw61gYJMEMTi5KCbHoaWhDkr8vvIBNKNPnxaoxwdnqIMz7BiK75/LB
-	d/fIsv1MGiK821W8tNH1KTVnWTxvTLxoaOMxxciy1BcRQDgUZECRxdYcoPFnLhi6qgwAo5
-	mzycAHBmVztNl0D/toxAwxgnrnkqFu7frIeULSHDFfRI0RTeAxrwo9QifB1Aj0Zx167u4Z
-	3ai99uAdNtazNwCi+Mahi8vWwTGkiHfQ4UBgwI6x6TuXZZyGY0QGjii0B0vvFiNFyGvRu/
-	WSkn35dqslVd7O+qL/0TUWL4teDlXBK5DC1glHcIgdCkni6YjiJdVYxDF+urHg==
-Date: Fri, 23 Sep 2022 11:53:52 +0200
+	id 1obfP2-003Vkx-8J; Fri, 23 Sep 2022 09:55:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=aSQGjFKiVWFogI9sg9YMrHpGxpm1rRQnpzPZdN+blLGfkqAtG978DeS/5bnLKFt/xt42CJhNPQE+Uv5EtbzcBj3nliIA8Bj9ef4r54uBHCRpUTF+/j6dj8OvBbfzWHUJddpMvgfa9xkpcXoaU6Jg3HmOUdQMuciwh77aQA5lEtYuULQz1e32XleyHhp4pjzZrBombJLnAtO81eGq2kpz2WxOKYvNljNmyMTXBuEgpLb6NETAGsTcSM7CWy54siFxcMNPLC/Ym86CJO2JieGIvdtE6u8uMZ7z+yfEqDMGBn7xoY2ekDX8t2BO6RK/9+6VTit53lWVbiBdfOGURxny2A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=p+/yEMNaqBeiyVmqhHvUtpWO6NKfplsCbXcRx7ZHQM4=;
+ b=Y+cgEOkJ2WgTaMAX/VA4JpMh+Nh6j+IJKR7rD/St6ygyjhuI4DCKOQqNJzgBaa03orbvf1ZoOBaGQW14vGpXdAKy7AFhqoA/3EKqBwHZmQsIlcltJNGxLZ6/ETuj88bBIILwLfuWxEI3OV3wJtwLOkvVGMc3Cnzf7zTA+RnclXbl6JWunDSS6U6CCa4JMGDZgesLVhTlmY79sqsf3ELAJLRl49t/eQZSQA1txBavZ34ytG8TyE1I4kTHvuPnFJAv9WSN1K6SeCzwR/Di2TGE46EksXjoTN3s3W2Mf3iOBY1kGtGpLR4gQTb1KgvjDMCSwcavhsWX6drusO7O0Q+cYg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
+ header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=p+/yEMNaqBeiyVmqhHvUtpWO6NKfplsCbXcRx7ZHQM4=;
+ b=jXoPQZrPrVExfqSLXUY2u672DgWI5MRww0VKahFW2q4dFSrBt+hTTpJ5M44E+oly/cMho0P+vkJJSt27Kp1E2JlpH1j8mgkWFID1QUomhIcLbZEQ4hqrOOG7Drq86sgB0BiikuBboZo6Wka/hSewxQL2y2Blmmdb8lE7PVTLZ7ZJ7RqEV5FaVoSkFUFlFN7jigS1RFn1EVEumh81oV/V9X6LL3ThIhVhuPkK+kiq7QCRGZ/Q3e0k1/KBz5F/mZbbI1QLZFdmZFzvLXHV8dum3wytCp4snfp/Pnl/Ai72uGT5At5DwX1U6Dwu1UbXqGmDlxc0PR9wFGhv96STYBzdzQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
+Received: from DU2PR04MB8536.eurprd04.prod.outlook.com (2603:10a6:10:2d7::10)
+ by PAXPR04MB9278.eurprd04.prod.outlook.com (2603:10a6:102:2b8::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.20; Fri, 23 Sep
+ 2022 09:55:20 +0000
+Received: from DU2PR04MB8536.eurprd04.prod.outlook.com
+ ([fe80::5e5e:1989:e5ec:c833]) by DU2PR04MB8536.eurprd04.prod.outlook.com
+ ([fe80::5e5e:1989:e5ec:c833%3]) with mapi id 15.20.5654.020; Fri, 23 Sep 2022
+ 09:55:20 +0000
+Message-ID: <f72271d7-9f42-45e9-01a4-590bd20250ab@theobroma-systems.com>
+Date: Fri, 23 Sep 2022 11:55:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.1
+Subject: =?UTF-8?Q?Re=3a_=5bPATCH_2/3=5d_arm64=3a_dts=3a_rockchip=3a_add_PX3?=
+ =?UTF-8?Q?0-=c2=b5Q7_=28Ringneck=29_SoM_with_Haikou_baseboard?=
+Content-Language: en-US
+To: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>,
+ Quentin Schulz <foss+kernel@0leil.net>
+Cc: robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+ dmitry.torokhov@gmail.com, klaus.goger@theobroma-systems.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-input@vger.kernel.org
+References: <20220922101211.3215888-1-foss+kernel@0leil.net>
+ <20220922101211.3215888-3-foss+kernel@0leil.net>
+ <e481af15-7e37-47dc-b272-6d032b5dd7a7@linaro.org>
+From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+In-Reply-To: <e481af15-7e37-47dc-b272-6d032b5dd7a7@linaro.org>
+X-ClientProxiedBy: FR0P281CA0097.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:a9::10) To DU2PR04MB8536.eurprd04.prod.outlook.com
+ (2603:10a6:10:2d7::10)
 MIME-Version: 1.0
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable HDMI and GPU on quartz64-b
-Content-Language: da-DK
-To: Heiko Stuebner <heiko@sntech.de>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220920143446.633956-1-frattaroli.nicolas@gmail.com>
- <659fc2fe-f820-04ad-8a4f-224b4d4bd97b@manjaro.org> <2198677.PYKUYFuaPT@phil>
-From: Dan Johansen <strit@manjaro.org>
-Organization: Manjaro ARM
-In-Reply-To: <2198677.PYKUYFuaPT@phil>
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=strit@manjaro.org smtp.mailfrom=strit@manjaro.org
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR04MB8536:EE_|PAXPR04MB9278:EE_
+X-MS-Office365-Filtering-Correlation-Id: a5e38604-6d26-423b-bb54-08da9d49b98b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	dryiAxRp02V1tc8/+SmbTv4rae8LVdQ7WciyrZDmekzxptfneCgYuD2xhFwmL2Vwf3lvYgjwz4uxOKiP/tE+V/bxplAgGFbfOXKVLsUrFtA4+vbCPsggGdaf6ed2lkzkvk0i+v9Dm6SCZgGfazXDJp35ayEFCfGzRIsOHa2rkxomS8jetPDdmJ+XlTbURGdfqtQkWfLQ1/mhnmx5A9xfZkzfSJ0xZ0q1bcidax0TsSp/hyZ4LYPAAk/qQX7BgqksZFgWGi3tpHkvsRjTtWRk5squ5h4s/AhhTE2WZPQTrHs4HMo6ARSr9/UrrDiYlRHNBuZeAu8u9R5tPfgCQp3vieKxSESGY952Eare1hhdeLzYvOsjCUxEx7uUxqiAcVAqwuA95Rt26HUhqYG5pmqgu3UQhlbMkCaL5hH6WEYX1CxqyXtlZ2vbwvQO0HOvj9rJocWVmY5Jno6QLVk3MGaBL98+M+KV35P5o5job0Zm7q1FICyhgbNGmmI5Yj39hBbzpnFcKd/viUtm4sbyyyQU/KCPJgXa6/44cvysfHp7KbZW3GGCSmGeLWZlWqmfIzGSjt5t5qZc6uY5fh2NStOaJJ+DbBK78v7h+YREbqMVzZQVnaQ6wRmGTGs3jqhqrjsp3+XUhzfPrQk7BdlkKitsmR1rv/262ti2IPcTtDVhCNioVxJaCNYKfRRcwxlH6hxslIWfQ2eUr7Jmt124t78g40mRxfOQ2UAekcG1hmZfSqUNyMJTKgWOcPKZlpImAllKw9JU2H06Kx4/fO8znYF63HwVYwmydYbBUYwJ1XuaVUI=
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR04MB8536.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(346002)(396003)(39850400004)(136003)(366004)(376002)(451199015)(8936002)(31686004)(36756003)(31696002)(83380400001)(2616005)(186003)(86362001)(26005)(6512007)(2906002)(53546011)(41300700001)(6666004)(6506007)(38100700002)(44832011)(7416002)(478600001)(5660300002)(110136005)(6486002)(66946007)(4326008)(66476007)(66556008)(224303003)(316002)(43740500002)(45980500001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?YnJia2N6bzdUeHJaT0Y0Q0dyczVlV2JyQzFzRnI1OFJNcjZ2amRySWFFNEQr?=
+ =?utf-8?B?Y1lMRnY4VnBnK1VNZWdNbTNQQXpTcmYyTEMyMkRwU2JCeUdWeGU3dUNyUERI?=
+ =?utf-8?B?MDRNL2hCanh4NHMxcTl3V2cxamorSWhWQjlZSnprZXV4V3dIU252VjBzaUtX?=
+ =?utf-8?B?aGZzd1dwVXdka0EwRnM4MUR4L24rM2NzWFdtd3JGZ3F0WVgrV2xHRSsxd1pM?=
+ =?utf-8?B?TGE3Nkl2QllwMER0MU10SzhCUFJlZkNzWVl2aEZHNUpaTklINUR3NGowOCsv?=
+ =?utf-8?B?M01QSmUzbERZaUQwV2gxNUY0UTJXTTJqV2RsY09ONHY1NTlBaE14S3B4eWY0?=
+ =?utf-8?B?ditvWDN6dkovTS9vYUpscHFORVgvK2o0emllUEVJemdzdXJLTTJreUt4VFJF?=
+ =?utf-8?B?TTc4UlJOd2cxdy90aEpqSjFJNkl3MUZ4TE0wVVJwc2hCam10RHJHV1ZNQkhD?=
+ =?utf-8?B?b3JCbXByOWo0ODAySHcrVVZCQ3drQXNjS0Fuc3E2NXZxVjJMbDFCM05IVjN2?=
+ =?utf-8?B?T0ROazhsRWtuQk5CbkJPZDVwN2N4bHVDSCtoTDMzaUthVVV6RDY4ZHFkcm1L?=
+ =?utf-8?B?N3RxdnZrNjNkT1RzVlF3d1JrNXJjNVF3WW15andQSU1lYk1ZY2J5NEplZ1Vt?=
+ =?utf-8?B?TG5YZUNYb2RKcmNjVEFGc0VHVFB4cVF4bEdMVHNYYjZMYmx0TWlReUVFczY4?=
+ =?utf-8?B?dVR2cVJ3VENQaUpOME9NVk1CSk5PQm56d3VRcmNrdWE5WXhJaDhjejdxbFg3?=
+ =?utf-8?B?d0FFbG5TVkZVT1dqWitlTy9mL2FJeCtpNmFkc2FFSU9VUkI4elg0T1ZKZ2RU?=
+ =?utf-8?B?TGJEaDFNRCtKMGdvK2c1cWpIdHZvNjhkSkJZeXdMNjUwYlY4S1o5SVdVbXVk?=
+ =?utf-8?B?VEVrSWh5WUQxQkVnSHZreUdNdW4rMSsvYmx4M2JENVgrUGFoSXA4cFpyTXk5?=
+ =?utf-8?B?RkROZ3NIbWdLbVN1dnJTSTVhaFNiMGY1bUlBcUpyQklIbVpSZGt5aHFzcENF?=
+ =?utf-8?B?bXVybVhDN05IbmFYZFZ5MnFyUy90aDdjUUwyMzJwTHorNVFweCtSaFo3YWFl?=
+ =?utf-8?B?bVRzR0ZMZkVXejRPenhTa0V6bnFrSE1MTXA3dXJNZ0ZIRXdPWWZqQVhKR3pY?=
+ =?utf-8?B?TE9HZGNrV1dESmNNQWpxcXM1U1VURzlKRUNUUGJZaWYrRW1nR1ZLSlpveWwz?=
+ =?utf-8?B?c1pnR3ByMFJtNEFTNjYrYkc0ZnlEd3VxYVZ5SmxFVzVEQjMxam1mYnFLYWho?=
+ =?utf-8?B?dlFBZ3pGNkRqeThQTVFlMk0zY0JVbjFkaHZWelZlVy9MOHcxQzl1b1I4S1JD?=
+ =?utf-8?B?emc3bHUzL1MyQTBTWTV0S0F2di9GR1RWLzU4WktWTk9BSFJTdGtUS2lsdXht?=
+ =?utf-8?B?RkY4cGFYcytsSmVNbjhvbjFLSjFRMU91b1dUZm5JZkR3cEpsNURoc3djNHVE?=
+ =?utf-8?B?eUkxQVFDUDd0WHRtdzJzNENRbTVvUnQyVG4wd3gveUxldTFiSEZoVDZ4T3I3?=
+ =?utf-8?B?ZDJvSzM1eUxYTG1vUGtmT1B2RE9OeFdaVnp3ZTJJbzhZUEtMREFJZFlVTXhS?=
+ =?utf-8?B?NWNYY1I1ZTZQZEFWaEN4WnM4Z1VkTDMrWUNpaGx5eGNTbmZDUW5heFJzRXVZ?=
+ =?utf-8?B?bk5OMWl2MkVqNEJUT2hwcjlLUDQrTWljN2JqSStFZlBwL1JOUEc2TTJOSW1s?=
+ =?utf-8?B?TVl4Q0JKZU9OWDE5K09XcmdSdE0rcmJXRHhuNnVyK3Z6TDF3K1pRNDRIRDM2?=
+ =?utf-8?B?RDZaajUwUXRUazI4bzQyQ1B4VTlPOXpxQmpITFJ5RGRXQ2lPeWxUNXBhVUh5?=
+ =?utf-8?B?MzBaWXoxR2hXU2J0RUxkL081Qko2clpFWThQcVBreW5SZnFZelJnZjM3cUlw?=
+ =?utf-8?B?dGlVL3ArY3FjRXd6UGxzZXlKMVBhd1lDclJ2ViszSllVU1drMnZIWXJhUjBI?=
+ =?utf-8?B?dHZKSVU1RGxadVhNZlV3ajRhUFJ2QlZaTWRQTTVQei9vM2tnQi9jWUlDTzNa?=
+ =?utf-8?B?dUxjdUlkeHFUeEV5aFVIb0M0czJnWkJ0aVB4ZEhPU3RjS0JCQjhQUHBkNFBF?=
+ =?utf-8?B?NnBWQ2djYmVrTjFaNHhpc0RtdU51eCtGZFVHWEhYOWJmazFld1p4S0tKakF1?=
+ =?utf-8?B?TWtudWY1QXF3UGxqZEJFbGZnVzBXREVZZVkwVUlueDZnUFJEeFFQaFE4bjd6?=
+ =?utf-8?Q?gFp1ogtf1u+WAfhLGFlVQ4o=3D?=
+X-OriginatorOrg: theobroma-systems.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a5e38604-6d26-423b-bb54-08da9d49b98b
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR04MB8536.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Sep 2022 09:55:20.2920
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: /d5jnLU5VTtM/YhhXcqzhb4z3+BDbQT82M6mkekJeHNDRt82LA89kgsBECDHCivuGGfj5oyk0OwcD7iVpj65lOJu1OdvU6DuxyY7ILqYA5nTGI/bVX1p0nAcyvTNWgLP
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR04MB9278
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220923_025359_099797_F445EBC4 
-X-CRM114-Status: GOOD (  19.18  )
+X-CRM114-CacheID: sfid-20220923_025524_522404_36D646BA 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,156 +150,68 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Krzysztof,
 
-Den 23.09.2022 kl. 11.45 skrev Heiko Stuebner:
-> Hi,
->
-> Am Donnerstag, 22. September 2022, 23:22:37 CEST schrieb Dan Johansen:
->> This seems to be based against linux-next and not mainline. It fails to
->> apply on mainline for me.
-> I would not expect things any other way though :-) .
-> I.e. in the current cycle everything new is of course targetting
-> v6.1 and the Quartz boards already saw some other changes.
+On 9/22/22 14:45, Krzysztof Kozlowski wrote:
+> On 22/09/2022 12:12, Quentin Schulz wrote:
+[...]
+>> diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+>> new file mode 100644
+>> index 000000000000..74a7f1182c21
+>> --- /dev/null
+>> +++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+>> @@ -0,0 +1,347 @@
+>> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+>> +/*
+>> + * Copyright (c) 2022 Theobroma Systems Design und Consulting GmbH
+>> + */
+>> +
+>> +/dts-v1/;
+>> +#include "px30.dtsi"
+>> +
+>> +/ {
+>> +	aliases {
+>> +		mmc0 = &emmc;
+>> +		mmc1 = &sdio;
+>> +		rtc0 = &rtc_twi;
+>> +		rtc1 = &rk809;
+>> +	};
+>> +
+>> +	emmc_pwrseq: emmc-pwrseq {
+>> +		compatible = "mmc-pwrseq-emmc";
+>> +		pinctrl-0 = <&emmc_reset>;
+>> +		pinctrl-names = "default";
+>> +		reset-gpios = <&gpio1 RK_PB3 GPIO_ACTIVE_HIGH>;
+>> +	};
+>> +
+>> +	leds {
+>> +		compatible = "gpio-leds";
+> 
+> This belongs to DTSI.
+> 
 
-Ah okay. I have misunderstood the submitting process then.
+It is in the DTSI :)
 
-I was under the impression that a patch should always target the latest 
--rc1, in this case 6.0-rc1.
+>> +		pinctrl-names = "default";
+>> +		pinctrl-0 = <&module_led_pin>;
+>> +		status = "okay";
+> 
+> No need.
+> 
+>> +
+>> +		module_led: led-0 {
+> 
+> Why DTSI - which in logic comes first - starts with 1 and this is 0?\
+> 
 
-I did not know that when you are at rc6/rc7 it's okay to target 
-linux-next without
-mentioning it.
+The first diff in this patch is for the DTS, this is now the DTSI. So it 
+does have led-0 in the DTSI and led-1 in the DTS which I think is what 
+you're requesting here? Is this a correct assumption?
 
-Sorry for my noise.
+Ack for all other review comments, thanks!
 
->
->
->> Den 20.09.2022 kl. 16.34 skrev Nicolas Frattaroli:
->>> This enables the GPU and HDMI output (including HDMI audio) on
->>> the PINE64 Quartz64 Model B single board computer.
->>>
->>> Signed-off-by: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>
->>> ---
->>>    .../boot/dts/rockchip/rk3566-quartz64-b.dts   | 60 +++++++++++++++++++
->>>    1 file changed, 60 insertions(+)
->>>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
->>> index 0f623198970f..77b179cd20e7 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts
->>> @@ -4,6 +4,7 @@
->>>    
->>>    #include <dt-bindings/gpio/gpio.h>
->>>    #include <dt-bindings/pinctrl/rockchip.h>
->>> +#include <dt-bindings/soc/rockchip,vop2.h>
->>>    #include "rk3566.dtsi"
->>>    
->>>    / {
->>> @@ -28,6 +29,17 @@ gmac1_clkin: external-gmac1-clock {
->>>    		#clock-cells = <0>;
->>>    	};
->>>    
->>> +	hdmi-con {
->>> +		compatible = "hdmi-connector";
->>> +		type = "a";
->>> +
->>> +		port {
->>> +			hdmi_con_in: endpoint {
->>> +				remote-endpoint = <&hdmi_out_con>;
->>> +			};
->>> +		};
->>> +	};
->>> +
->>>    	leds {
->>>    		compatible = "gpio-leds";
->>>    
->>> @@ -183,6 +195,33 @@ &gmac1m1_clkinout
->>>    	status = "okay";
->>>    };
->>>    
->>> +&gpu {
->>> +	mali-supply = <&vdd_gpu>;
->>> +	status = "okay";
->>> +};
->>> +
->>> +&hdmi {
->>> +	avdd-0v9-supply = <&vdda0v9_image>;
->>> +	avdd-1v8-supply = <&vcca1v8_image>;
->>> +	status = "okay";
->>> +};
->>> +
->>> +&hdmi_in {
->>> +	hdmi_in_vp0: endpoint {
->>> +		remote-endpoint = <&vp0_out_hdmi>;
->>> +	};
->>> +};
->>> +
->>> +&hdmi_out {
->>> +	hdmi_out_con: endpoint {
->>> +		remote-endpoint = <&hdmi_con_in>;
->>> +	};
->>> +};
->>> +
->>> +&hdmi_sound {
->>> +	status = "okay";
->>> +};
->>> +
->>>    &i2c0 {
->>>    	status = "okay";
->>>    
->>> @@ -456,6 +495,10 @@ &i2c5 {
->>>    	status = "disabled";
->>>    };
->>>    
->>> +&i2s0_8ch {
->>> +	status = "okay";
->>> +};
->>> +
->>>    &i2s1_8ch {
->>>    	pinctrl-names = "default";
->>>    	pinctrl-0 = <&i2s1m0_sclktx
->> The above part does not seem to exist in the current mainline (rc6) git
->> repo.
-> which is of course already in linux-next, so this
-> patch just applied nicely.
->
->
-> Heiko
->
->>> @@ -677,3 +720,20 @@ &usb_host0_ehci {
->>>    &usb_host0_ohci {
->>>    	status = "okay";
->>>    };
->>> +
->>> +&vop {
->>> +	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
->>> +	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
->>> +	status = "okay";
->>> +};
->>> +
->>> +&vop_mmu {
->>> +	status = "okay";
->>> +};
->>> +
->>> +&vp0 {
->>> +	vp0_out_hdmi: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
->>> +		reg = <ROCKCHIP_VOP2_EP_HDMI0>;
->>> +		remote-endpoint = <&hdmi_in_vp0>;
->>> +	};
->>> +};
->
->
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
--- 
-Kind regards
-*Dan Johansen*
-Project lead of the *Manjaro ARM* project
-Manjaro-ARM <https://manjaro.org>
+Cheers,
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
