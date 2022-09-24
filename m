@@ -4,70 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29A71C32771
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Sep 2022 18:49:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34B91C32771
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Sep 2022 18:58:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i+6pb1JBpX6yziWJ8GXUt2z50WJMQjJ/9rjsxD3IlSM=; b=rzTkjyyi3zOyYm
-	9HJU7h1vdaBiC5lOt+h4hgXhTUxR6CcFTg1qG800I8vlwYzyXes6PdxxVD3oilLpWXok/NXd1Rjj/
-	EruEjiJxy2SfyetZGsJYESXtcsAbzlbZhwKvLj0GMzfnBsz6NCq2UEWwusNbmc1fTt1GdfjYZ9sRk
-	PWJ8IzrtcO2qtnBvNcQaG1vVLQwd/nAgqk6mLQnNUMoaC0XOEVeuYaJzzZejcJcE0LEu0Q/+RA3c0
-	sDzFQyCFIkyIwEYMb0mDzWQkzMAeoL9qIlCH5wXGS9EWumqEijlNk9ucBmZBThCsJmHQ994OWKv+T
-	St9+3oQhQNPaDYn2B1dw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SzmRsPeLSVJuhjcI86jO57J/4Pj93dqMed8zhJjk8eo=; b=zAsvxTUffoXocf
+	PomGZOfMqqEIoinzIhotJZjp+QIC4sD4g/D1Q5J6IBZoVaZiEyzcCgyzy04tuutGF+FIuWKMe1PmA
+	e8JvrT4z5V5KJQAN3L272mSivjKPaP3H48/HbyDa97W76Fi0YGxKckQXsRDOSYPOMAR5/bHulAJFz
+	EqtXCDisU36NDFWVnDrZxLqmTgy2W+0wyb8VlxizMRXGMBchZPMsf11XObV2X5lp6nfeIoUJ4+zFV
+	iYK6hhyGHtoCfxjlhvP+kKhjmFxwlCtlUy9MROCJPGsnqXUt7OdmmbSTetezbfs7m+PIjbwumHtl/
+	unYhlqINGrmASD2C/5Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocADV-008aol-EY; Sat, 24 Sep 2022 18:49:33 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1ocAMI-008dFB-Ch; Sat, 24 Sep 2022 18:58:38 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocADS-008amz-9h
-	for linux-rockchip@lists.infradead.org; Sat, 24 Sep 2022 18:49:32 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id l14so6668081eja.7
-        for <linux-rockchip@lists.infradead.org>; Sat, 24 Sep 2022 11:49:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=amarulasolutions.com; s=google;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date;
-        bh=WjKo6Oyl7aoGvy+HX8c8zK2mZLflRZ1Zl6NCxFQVrrA=;
-        b=GItFwGRHFXefaxrtzuvrhJWbJK8FGLy+nZTw6mI39xNYTk13DGz6iN3P1CJPAg5HEA
-         g0kJ5X4HV42FH9+vjcEHEOdNejSgw55wNtvk1iKIdJexzGI2D3AVx6WOiujqIb5EK46E
-         /zUmQndptVA1J7DaXyPUA1B3gY1FiGfjYvxFA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=WjKo6Oyl7aoGvy+HX8c8zK2mZLflRZ1Zl6NCxFQVrrA=;
-        b=76m+eXHhzpKwlJ8irAJpx5oox7IXgWszIgwzLekFFy3ors6y7zxYDREfwiuMUC3RW4
-         vwyV9I1QOWqsrX1qT1OgFEjCwByo2QWkJjFu2dU9rwouaHsObU6QP2IUUQL8LqjjqyBo
-         QPlwLKs/1yKN6jK2CCDkbHQFWIdp9pc4eA1KG6wbMVl+5CYdsQ5cJupHGoxA8tkhDzmk
-         lSzk5XZmWwrnYitZLDKeTG2+bpcg14p/ylsJqtVPOdZOcmY6US7PfN453JIGUMOkXyv6
-         iI2sXVyxyhfyg8yCd4PROPKittt4R6wVDqCFFd7g/NyTA0bV/1xesHhnCV3DvRzeQEM8
-         9m9w==
-X-Gm-Message-State: ACrzQf2A0zh9FcrtDr1/Yr/p2go1A+zjmNq7tfM4S0/OO4cRdvrUw2IW
-	GQ66RyxpDUM3Xquifw3AzkJInyM0CLHQw7UUqLV+zHfeMtwORg==
-X-Google-Smtp-Source: AMsMyM6f3D0UrlRtOhAjwWqxpk+Di9s+QLE+hSQ0sC3H0cRs+pnLGxzrJy8sfxKFZz+2Lb0lfGj+lX1DA8MrSDWljtY=
-X-Received: by 2002:a17:907:6087:b0:77a:51e9:8e86 with SMTP id
- ht7-20020a170907608700b0077a51e98e86mr12230663ejc.31.1664045368207; Sat, 24
- Sep 2022 11:49:28 -0700 (PDT)
+	id 1ocAMG-008dDo-HY; Sat, 24 Sep 2022 18:58:38 +0000
+Received: from p57b775e6.dip0.t-ipconnect.de ([87.183.117.230] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1ocAMD-0001hc-FK; Sat, 24 Sep 2022 20:58:33 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 6.1 #2
+Date: Sat, 24 Sep 2022 20:58:30 +0200
+Message-ID: <38114097.10thIPus4b@phil>
 MIME-Version: 1.0
-References: <4f398e4c-973b-7843-2f75-27324d109277@linaro.org>
- <CAOf5uwnfCCwHjSXTurMtyEpZc_tF8bH=fxfwBzOtHcfM_S4tYg@mail.gmail.com> <CAOf5uw=_+WQO7qH_Bxs5qEBn2_nemzuLiXdYe8+W_+OnFZNYkw@mail.gmail.com>
-In-Reply-To: <CAOf5uw=_+WQO7qH_Bxs5qEBn2_nemzuLiXdYe8+W_+OnFZNYkw@mail.gmail.com>
-From: Michael Nazzareno Trimarchi <michael@amarulasolutions.com>
-Date: Sat, 24 Sep 2022 20:49:16 +0200
-Message-ID: <CAOf5uw=G0AgB0FjKmGNavMoqhgq_nqQ55OE60gZmG7aVMwygaQ@mail.gmail.com>
-Subject: Re: v6.0-rc6 - arm64 / rock960 : kernel panic
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
-Cc: "Heiko St??bner" <heiko@sntech.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220924_114930_393138_66D05018 
-X-CRM114-Status: GOOD (  31.75  )
+X-CRM114-CacheID: sfid-20220924_115836_633539_8A3894C2 
+X-CRM114-Status: GOOD (  12.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,142 +50,101 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkKCgpPbiBTYXQsIFNlcCAyNCwgMjAyMiBhdCA4OjAxIFBNIE1pY2hhZWwgTmF6emFyZW5vIFRy
-aW1hcmNoaQo8bWljaGFlbEBhbWFydWxhc29sdXRpb25zLmNvbT4gd3JvdGU6Cj4KPiBPbiBTYXQs
-IFNlcCAyNCwgMjAyMiBhdCA3OjU4IFBNIE1pY2hhZWwgTmF6emFyZW5vIFRyaW1hcmNoaQo+IDxt
-aWNoYWVsQGFtYXJ1bGFzb2x1dGlvbnMuY29tPiB3cm90ZToKPiA+Cj4gPiBIaSBEYW5pZWwKPiA+
-Cj4gPiBPbiBTYXQsIFNlcCAyNCwgMjAyMiBhdCA3OjQzIFBNIERhbmllbCBMZXpjYW5vCj4gPiA8
-ZGFuaWVsLmxlemNhbm9AbGluYXJvLm9yZz4gd3JvdGU6Cj4gPiA+Cj4gPiA+IEhpLAo+ID4gPgo+
-ID4gPiB0aGVyZSBpcyBhIGtlcm5lbCBwYW5pYyBvbiBhIHJvY2s5NjAgYm9hcmQ6Cj4gPiA+Cj4g
-PiA+IEFmdGVyIGdpdCBiaXNlY3RpbmcsIEkgaGF2ZToKPiA+ID4KPiA+ID4gY29tbWl0IDE0ZmFj
-YmMxODcxYWUxNTQwNDY2Njc0N2I1MzE5YzA4ZTA0Yjg3NWEKPiA+ID4gTWVyZ2U6IGY1Yzk3ZGE4
-MDM3YiAzMjM0NjQ5MWRkZjIKPiA+ID4gQXV0aG9yOiBHcmVnIEtyb2FoLUhhcnRtYW4gPGdyZWdr
-aEBsaW51eGZvdW5kYXRpb24ub3JnPgo+ID4gPiBEYXRlOiAgIE1vbiBKdWwgMTEgMDg6MzI6NTgg
-MjAyMiArMDIwMAo+ID4gPgo+ID4gPiAgICAgIE1lcmdlIDUuMTktcmM2IGludG8gY2hhci1taXNj
-LW5leHQKPiA+ID4KPiA+ID4gICAgICBXZSBuZWVkIHRoZSBtaXNjIGRyaXZlciBmaXhlcyBpbiBo
-ZXJlIGFzIHdlbGwuCj4gPiA+Cj4gPiA+ICAgICAgU2lnbmVkLW9mZi1ieTogR3JlZyBLcm9haC1I
-YXJ0bWFuIDxncmVna2hAbGludXhmb3VuZGF0aW9uLm9yZz4KPiA+ID4KPiA+ID4gQW55IGNsdWU/
-Cj4gPgo+ID4gVGhhdCBjb2RlIHJlY2VpdmUgMy00IGNvbW1pdHMgZm9yIG9uZSBmaXgKPiA+Cj4g
-PiBkaWZmIC0tZ2l0IGEvc291bmQvc29jL3JvY2tjaGlwL3JvY2tjaGlwX2kycy5jCj4gPiBiL3Nv
-dW5kL3NvYy9yb2NrY2hpcC9yb2NrY2hpcF9pMnMuYwo+ID4gaW5kZXggZjVmMzU0MGE5ZTE4Li5h
-MzJhNDViMDliMDMgMTAwNjQ0Cj4gPiAtLS0gYS9zb3VuZC9zb2Mvcm9ja2NoaXAvcm9ja2NoaXBf
-aTJzLmMKPiA+ICsrKyBiL3NvdW5kL3NvYy9yb2NrY2hpcC9yb2NrY2hpcF9pMnMuYwo+ID4gQEAg
-LTgwMyw3ICs4MDMsNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2kyc19wcm9iZShzdHJ1Y3QgcGxh
-dGZvcm1fZGV2aWNlICpwZGV2KQo+ID4KPiA+ICAgICAgICAgaTJzLT5iY2xrX3JhdGlvID0gNjQ7
-Cj4gPiAgICAgICAgIGkycy0+cGluY3RybCA9IGRldm1fcGluY3RybF9nZXQoJnBkZXYtPmRldik7
-Cj4gPiAtICAgICAgIGlmICghSVNfRVJSKGkycy0+cGluY3RybCkpIHsKPiA+ICsgICAgICAgaWYg
-KCFJU19FUlJfT1JfTlVMTChpMnMtPnBpbmN0cmwpKSB7Cj4gPiAgICAgICAgICAgICAgICAgaTJz
-LT5iY2xrX29uID0gcGluY3RybF9sb29rdXBfc3RhdGUoaTJzLT5waW5jdHJsLCAiYmNsa19vbiIp
-Owo+ID4gICAgICAgICAgICAgICAgIGlmICghSVNfRVJSX09SX05VTEwoaTJzLT5iY2xrX29uKSkg
-ewo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgaTJzLT5iY2xrX29mZiA9Cj4gPiBwaW5jdHJs
-X2xvb2t1cF9zdGF0ZShpMnMtPnBpbmN0cmwsICJiY2xrX29mZiIpOwo+Cj4gSSBkb24ndCBzdXJl
-IGlmIHlvdSBjYW4gZ2V0IG51bGwgZnJvbSB0aGVyZSwgYnV0IHlvdSBoYXZlIHR3bwo+IGxvb2t1
-cF9zdGF0ZSBvbiB0aGF0IGZ1bmN0aW9uCj4KCkkgbmF2aWdhdGVkIGEgYml0IHRoZSBjb2RlIGFu
-ZCBzdGF0ZXMtPm5hbWUgb2YgcGluY3RybC0+c3RhdGUgc2hvdWxkCmJlIHRoZSBvZmZzZXQgZml2
-ZSB3aGVyZSB5b3UgaGF2ZSB0aGUgcGFuaWMuCgpXaGF0IGlzIG5vdCBjbGVhciBpcy4gSWYgd2Ug
-aXRlcmF0ZSB0aGUgbWFwIGFuZCB3ZSBkb24ndCBmaW5kIHRoZSBub2RlCgogICAgICAgcmV0ID0g
-cGluY3RybF9kdF90b19tYXAocCwgcGN0bGRldik7CiAgICAgICAgaWYgKHJldCA8IDApIHsKICAg
-ICAgICAgICAgICAgIGtmcmVlKHApOwogICAgICAgICAgICAgICAgcmV0dXJuIEVSUl9QVFIocmV0
-KTsKICAgICAgICB9CgogICAgICAgIGRldm5hbWUgPSBkZXZfbmFtZShkZXYpOwoKICAgICAgICBt
-dXRleF9sb2NrKCZwaW5jdHJsX21hcHNfbXV0ZXgpOwogICAgICAgIC8qIEl0ZXJhdGUgb3ZlciB0
-aGUgcGluIGNvbnRyb2wgbWFwcyB0byBsb2NhdGUgdGhlIHJpZ2h0IG9uZXMgKi8KICAgICAgICBm
-b3JfZWFjaF9tYXBzKG1hcHNfbm9kZSwgaSwgbWFwKSB7CgpUaGVuIGFkZF9zZXR0aW5nIGlzIG5v
-dCBjYWxsZWQgYW5kIG5hbWUgaXMgbm90IGFzc2lnbmVkCgpNaWNoYWVsCgo+IE1pY2hhZWwKPiA+
-Cj4gPiBNaWNoYWVsCj4gPgo+ID4gPgo+ID4gPgo+ID4gPiBbICAgIDIuMzc3Mzg2XSBVbmFibGUg
-dG8gaGFuZGxlIGtlcm5lbCBOVUxMIHBvaW50ZXIgZGVyZWZlcmVuY2UgYXQKPiA+ID4gdmlydHVh
-bCBhZGRyZXNzIDAwMDAwMDAwMDAwMDAwMDUKPiA+ID4gWyAgICAyLjM3NzM5MF0gTWVtIGFib3J0
-IGluZm86Cj4gPiA+IFsgICAgMi4zNzczOTJdICAgRVNSID0gMHgwMDAwMDAwMDk2MDAwMDA0Cj4g
-PiA+IFsgICAgMi4zNzk1MjldICAgRUMgPSAweDI1OiBEQUJUIChjdXJyZW50IEVMKSwgSUwgPSAz
-MiBiaXRzCj4gPiA+IFsgICAgMi4zNzk5OTRdICAgU0VUID0gMCwgRm5WID0gMAo+ID4gPiBbICAg
-IDIuMzgwMjYzXSAgIEVBID0gMCwgUzFQVFcgPSAwCj4gPiA+IFsgICAgMi4zODA1MzhdICAgRlND
-ID0gMHgwNDogbGV2ZWwgMCB0cmFuc2xhdGlvbiBmYXVsdAo+ID4gPiBbICAgIDIuMzgwOTY0XSBE
-YXRhIGFib3J0IGluZm86Cj4gPiA+IFsgICAgMi4zODEyMTddICAgSVNWID0gMCwgSVNTID0gMHgw
-MDAwMDAwNAo+ID4gPiBbICAgIDIuMzgxMzQzXSBtbWMyOiBTREhDSSBjb250cm9sbGVyIG9uIGZl
-MzMwMDAwLm1tYyBbZmUzMzAwMDAubW1jXQo+ID4gPiB1c2luZyBBRE1BCj4gPiA+IFsgICAgMi4z
-ODE1NThdICAgQ00gPSAwLCBXblIgPSAwCj4gPiA+IFsgICAgMi4zODI0MjZdIFswMDAwMDAwMDAw
-MDAwMDA1XSB1c2VyIGFkZHJlc3MgYnV0IGFjdGl2ZV9tbSBpcyBzd2FwcGVyCj4gPiA+IFsgICAg
-Mi4zODI5ODFdIEludGVybmFsIGVycm9yOiBPb3BzOiA5NjAwMDAwNCBbIzFdIFBSRUVNUFQgU01Q
-Cj4gPiA+IFsgICAgMi4zODM0NjhdIE1vZHVsZXMgbGlua2VkIGluOgo+ID4gPiBbICAgIDIuMzgz
-NzQwXSBDUFU6IDQgUElEOiAxIENvbW06IHN3YXBwZXIvMCBOb3QgdGFpbnRlZCA1LjE5LjAtcmM2
-KyAjNzI4Cj4gPiA+IFsgICAgMi4zODQzMTFdIEhhcmR3YXJlIG5hbWU6IDk2Ym9hcmRzIFJvY2s5
-NjAgKERUKQo+ID4gPiBbICAgIDIuMzg0NzE1XSBwc3RhdGU6IDYwMDAwMDA1IChuWkN2IGRhaWYg
-LVBBTiAtVUFPIC1UQ08gLURJVCAtU1NCUwo+ID4gPiBCVFlQRT0tLSkKPiA+ID4gWyAgICAyLjM4
-NTMyM10gcGMgOiBwaW5jdHJsX2xvb2t1cF9zdGF0ZSsweDIwLzB4YzAKPiA+ID4gWyAgICAyLjM4
-NTcyOV0gbHIgOiByb2NrY2hpcF9pMnNfcHJvYmUrMHgxYTgvMHg1NGMKPiA+ID4gWyAgICAyLjM4
-NjEzMF0gc3AgOiBmZmZmODAwMDA4MDRiYjMwCj4gPiA+IFsgICAgMi4zODY0MjBdIHgyOTogZmZm
-ZjgwMDAwODA0YmIzMCB4Mjg6IDAwMDAwMDAwMDAwMDAwMDAgeDI3Ogo+ID4gPiBmZmZmODAwMDA5
-ZjIwNGM4Cj4gPiA+IFsgICAgMi4zODcwNDhdIHgyNjogZmZmZjgwMDAwOWZjMTA2MCB4MjU6IGZm
-ZmY4MDAwMDlmYzEwNzggeDI0Ogo+ID4gPiBmZmZmMDAwMDAyNjkxYjY4Cj4gPiA+IFsgICAgMi4z
-ODc2NzNdIHgyMzogZmZmZjgwMDAwOTk2NzkzOCB4MjI6IGZmZmZmZmZmZmZmZmZmZWQgeDIxOgo+
-ID4gPiBmZmZmODAwMDA5ZTFlMGU4Cj4gPiA+IFsgICAgMi4zODgyOTldIHgyMDogZmZmZmZmZmZm
-ZmZmZmZlZCB4MTk6IGZmZmYwMDAwMDI1OTc0ODAgeDE4Ogo+ID4gPiBmZmZmZmZmZmZmZmZmZmZm
-Cj4gPiA+IFsgICAgMi4zODg5MjRdIHgxNzogMDAwMDAwMDQwMDQ0ZmZmZiB4MTY6IDAwNDAwMDM0
-YjU1MDM1MTAgeDE1Ogo+ID4gPiBmZmZmODAwMDg4MDRiNzg3Cj4gPiA+IFsgICAgMi4zODk1NTBd
-IHgxNDogMDAwMDAwMDAwMDAwMDAwMCB4MTM6IDZjNzI3NDYzNmU2OTcwMjAgeDEyOgo+ID4gPiA3
-MzMyNjkyMDY0NmU2OTY2Cj4gPiA+IFsgICAgMi4zOTAxNzZdIHgxMTogMjA2Zjc0MjA2NDY1NmM2
-OSB4MTA6IDYxNjYyMDNhNzMzMjY5MmUgeDkgOgo+ID4gPiA2NTZjNjk2MTY2MjAzYTczCj4gPiA+
-IFsgICAgMi4zOTA4MDFdIHg4IDogMzI2OTJlMzAzMDMwMzA2MSB4NyA6IDIwNWQzNjMyMzgzNjM3
-MzMgeDYgOgo+ID4gPiBmZmZmMDAwMDAxNjU3ODgwCj4gPiA+IFsgICAgMi4zOTE0MjVdIHg1IDog
-MDAwMDAwMDAwMDAwMDAwMCB4NCA6IDAwMDAwMDAwMDAwMDAwMDAgeDMgOgo+ID4gPiAwMDAwMDAw
-MDAwMDAwMDAwCj4gPiA+IFsgICAgMi4zOTIwNTFdIHgyIDogMDAwMDAwMDAwMDAwMDAwMCB4MSA6
-IGZmZmY4MDAwMDllMWUwZTggeDAgOgo+ID4gPiBmZmZmZmZmZmZmZmZmZmVkCj4gPiA+IFsgICAg
-Mi4zOTI2NzddIENhbGwgdHJhY2U6Cj4gPiA+IFsgICAgMi4zOTI4OTJdICBwaW5jdHJsX2xvb2t1
-cF9zdGF0ZSsweDIwLzB4YzAKPiA+ID4gWyAgICAyLjM5MzI2MV0gIHJvY2tjaGlwX2kyc19wcm9i
-ZSsweDFhOC8weDU0Ywo+ID4gPiBbICAgIDIuMzkzNjI5XSAgcGxhdGZvcm1fcHJvYmUrMHg2OC8w
-eGUwCj4gPiA+IFsgICAgMi4zOTM5NTRdICByZWFsbHlfcHJvYmUucGFydC4wKzB4OWMvMHgyYWMK
-PiA+ID4gWyAgICAyLjM5NDMyMV0gIF9fZHJpdmVyX3Byb2JlX2RldmljZSsweDk4LzB4MTQ0Cj4g
-PiA+IFsgICAgMi4zOTQ3MDNdICBkcml2ZXJfcHJvYmVfZGV2aWNlKzB4YWMvMHgxNDAKPiA+ID4g
-WyAgICAyLjM5NTA3MF0gIF9fZHJpdmVyX2F0dGFjaCsweGY4LzB4MWEwCj4gPiA+IFsgICAgMi4z
-OTU0MDddICBidXNfZm9yX2VhY2hfZGV2KzB4NzAvMHhkMAo+ID4gPiBbICAgIDIuMzk1NzQ2XSAg
-ZHJpdmVyX2F0dGFjaCsweDI0LzB4MzAKPiA+ID4gWyAgICAyLjM5NjA2M10gIGJ1c19hZGRfZHJp
-dmVyKzB4MTUwLzB4MjAwCj4gPiA+IFsgICAgMi4zOTY0MDFdICBkcml2ZXJfcmVnaXN0ZXIrMHg3
-OC8weDEzMAo+ID4gPiBbICAgIDIuMzk2NzM3XSAgX19wbGF0Zm9ybV9kcml2ZXJfcmVnaXN0ZXIr
-MHgyOC8weDM0Cj4gPiA+IFsgICAgMi4zOTcxNTBdICByb2NrY2hpcF9pMnNfZHJpdmVyX2luaXQr
-MHgxYy8weDI4Cj4gPiA+IFsgICAgMi4zOTc1NTBdICBkb19vbmVfaW5pdGNhbGwrMHg1MC8weDFj
-MAo+ID4gPiBbICAgIDIuMzk3ODkwXSAga2VybmVsX2luaXRfZnJlZWFibGUrMHgyMDgvMHgyOGMK
-PiA+ID4gWyAgICAyLjM5ODI3NF0gIGtlcm5lbF9pbml0KzB4MjgvMHgxM2MKPiA+ID4gWyAgICAy
-LjM5ODU4M10gIHJldF9mcm9tX2ZvcmsrMHgxMC8weDIwCj4gPiA+IFsgICAgMi4zOTg5MDFdIENv
-ZGU6IGFhMDAwM2Y0IGE5MDI1YmY1IGFhMDAwM2Y2IGFhMDEwM2Y1IChmODQxOGU5MykKPiA+ID4g
-WyAgICAyLjM5OTQzNV0gLS0tWyBlbmQgdHJhY2UgMDAwMDAwMDAwMDAwMDAwMCBdLS0tCj4gPiA+
-IFsgICAgMi4zOTk4ODddIEtlcm5lbCBwYW5pYyAtIG5vdCBzeW5jaW5nOiBBdHRlbXB0ZWQgdG8g
-a2lsbCBpbml0IQo+ID4gPiBleGl0Y29kZT0weDAwMDAwMDBiCj4gPiA+IFsgICAgMi40MDA1NTVd
-IFNNUDogc3RvcHBpbmcgc2Vjb25kYXJ5IENQVXMKPiA+ID4gWyAgICAyLjQwMDk4NF0gS2VybmVs
-IE9mZnNldDogMHg4MDAwMCBmcm9tIDB4ZmZmZjgwMDAwODAwMDAwMAo+ID4gPiBbICAgIDIuNDAx
-NDYzXSBQSFlTX09GRlNFVDogMHgwCj4gPiA+IFsgICAgMi40MDE3MTZdIENQVSBmZWF0dXJlczog
-MHg4MDAsMDAxMjc4MTEsMDAwMDEwODIKPiA+ID4gWyAgICAyLjQwMjEyOF0gTWVtb3J5IExpbWl0
-OiBub25lCj4gPiA+IFsgICAgMi40MDI0MDZdIC0tLVsgZW5kIEtlcm5lbCBwYW5pYyAtIG5vdCBz
-eW5jaW5nOiBBdHRlbXB0ZWQgdG8ga2lsbAo+ID4gPiBpbml0ISBleGl0Y29kZT0weDAwMDAwMDBi
-IF0tLS0KPiA+ID4KPiA+ID4KPiA+ID4gLS0KPiA+ID4gPGh0dHA6Ly93d3cubGluYXJvLm9yZy8+
-IExpbmFyby5vcmcg4pSCIE9wZW4gc291cmNlIHNvZnR3YXJlIGZvciBBUk0gU29Dcwo+ID4gPgo+
-ID4gPiBGb2xsb3cgTGluYXJvOiAgPGh0dHA6Ly93d3cuZmFjZWJvb2suY29tL3BhZ2VzL0xpbmFy
-bz4gRmFjZWJvb2sgfAo+ID4gPiA8aHR0cDovL3R3aXR0ZXIuY29tLyMhL2xpbmFyb29yZz4gVHdp
-dHRlciB8Cj4gPiA+IDxodHRwOi8vd3d3LmxpbmFyby5vcmcvbGluYXJvLWJsb2cvPiBCbG9nCj4g
-PiA+Cj4gPiA+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-Cj4gPiA+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+ID4gPiBMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCj4gPiA+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKPiA+Cj4gPgo+ID4KPiA+IC0tCj4gPiBNaWNoYWVs
-IE5henphcmVubyBUcmltYXJjaGkKPiA+IENvLUZvdW5kZXIgJiBDaGllZiBFeGVjdXRpdmUgT2Zm
-aWNlcgo+ID4gTS4gKzM5IDM0NyA5MTMgMjE3MAo+ID4gbWljaGFlbEBhbWFydWxhc29sdXRpb25z
-LmNvbQo+ID4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+ID4KPiA+IEFtYXJ1
-bGEgU29sdXRpb25zIEJWCj4gPiBKb29wIEdlZXNpbmt3ZWcgMTI1LCAxMTE0IEFCLCBBbXN0ZXJk
-YW0sIE5MCj4gPiBULiArMzEgKDApODUgMTExIDkxNzIKPiA+IGluZm9AYW1hcnVsYXNvbHV0aW9u
-cy5jb20KPiA+IHd3dy5hbWFydWxhc29sdXRpb25zLmNvbQo+Cj4KPgo+IC0tCj4gTWljaGFlbCBO
-YXp6YXJlbm8gVHJpbWFyY2hpCj4gQ28tRm91bmRlciAmIENoaWVmIEV4ZWN1dGl2ZSBPZmZpY2Vy
-Cj4gTS4gKzM5IDM0NyA5MTMgMjE3MAo+IG1pY2hhZWxAYW1hcnVsYXNvbHV0aW9ucy5jb20KPiBf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj4KPiBBbWFydWxhIFNvbHV0aW9ucyBC
-Vgo+IEpvb3AgR2Vlc2lua3dlZyAxMjUsIDExMTQgQUIsIEFtc3RlcmRhbSwgTkwKPiBULiArMzEg
-KDApODUgMTExIDkxNzIKPiBpbmZvQGFtYXJ1bGFzb2x1dGlvbnMuY29tCj4gd3d3LmFtYXJ1bGFz
-b2x1dGlvbnMuY29tCgoKCi0tCk1pY2hhZWwgTmF6emFyZW5vIFRyaW1hcmNoaQpDby1Gb3VuZGVy
-ICYgQ2hpZWYgRXhlY3V0aXZlIE9mZmljZXIKTS4gKzM5IDM0NyA5MTMgMjE3MAptaWNoYWVsQGFt
-YXJ1bGFzb2x1dGlvbnMuY29tCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KCkFt
-YXJ1bGEgU29sdXRpb25zIEJWCkpvb3AgR2Vlc2lua3dlZyAxMjUsIDExMTQgQUIsIEFtc3RlcmRh
-bSwgTkwKVC4gKzMxICgwKTg1IDExMSA5MTcyCmluZm9AYW1hcnVsYXNvbHV0aW9ucy5jb20Kd3d3
-LmFtYXJ1bGFzb2x1dGlvbnMuY29tCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Arnd, Kevin, Olof,
+
+please find below and in subsequent pull-requests
+some more Rockchip changes for for 6.1
+
+Please pull!
+
+Thanks
+Heiko
+
+
+The following changes since commit 91419ae0420f0c91a326655d687b740826d0a3f9:
+
+  arm64: dts: rockchip: use BCLK to GPIO switch on rk3399 (2022-09-10 01:08:48 +0200)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.1-rockchip-dts64-2
+
+for you to fetch changes up to 19d4aaf640913c5a8f1b06c9ef46287c32635299:
+
+  arm64: dts: rockchip: use pin constant for reset-gpios on px30-evb (2022-09-23 15:53:18 +0200)
+
+----------------------------------------------------------------
+RK3399-Nanopi-R4S-enterprise as variant board, Gru-Scarlet SKU variants,
+DSI support for rk356x, display-gamma-control for rk3399, display
+output for quartz64-b and rk3566-roc-pc, hdmi supplies for rk3399-roc-pc,
+some pinctrl improvements for the px30-evb and a number of changes to
+bring rk3399 rock4 and rock-pi4 structure closer to names used in schematics.
+
+----------------------------------------------------------------
+Brian Norris (2):
+      dt-bindings: arm: rockchip: Add gru-scarlet sku{2,4} variants
+      arm64: dts: rockchip: Support gru-scarlet sku{2,4} variants
+
+Chris Morgan (1):
+      arm64: dts: rockchip: Add DSI and DSI-DPHY nodes to rk356x
+
+FUKAUMI Naoki (6):
+      arm64: dts: rockchip: connect vcca_1v8 to APIO5_VDD on rk3399-rock-4c-plus
+      arm64: dts: rockchip: fix regulator structure on rk3399-rock-4c-plus
+      arm64: dts: rockchip: sort nodes/properties on rk3399-rock-4c-plus
+      arm64: dts: rockchip: fix regulator name on rk3399-rock-4
+      arm64: dts: rockchip: sort nodes/properties on rk3399-rock-4
+      arm64: dts: rockchip: add avdd-0v9-supply and avdd-1v8-supply on rk3399 rock 4c and pi4
+
+Furkan Kardame (1):
+      arm64: dts: rockchip: Enable video output on rk3566-roc-pc
+
+Hugh Cole-Baker (1):
+      arm64: dts: rockchip: enable gamma control on RK3399
+
+Markus Reichl (1):
+      arm64: dts: rockchip: Add HDMI supplies on rk3399-roc-pc
+
+Nicolas Frattaroli (1):
+      arm64: dts: rockchip: Enable HDMI and GPU on quartz64-b
+
+Quentin Schulz (1):
+      arm64: dts: rockchip: add i2s0 I2S/PDM/TDM 8ch controller to px30
+
+Tianling Shen (2):
+      dt-bindings: Add doc for FriendlyARM NanoPi R4S Enterprise Edition
+      arm64: dts: rockchip: Add RK3399 NanoPi R4S Enterprise Edition
+
+Tommaso Merciai (3):
+      arm64: dts: rockchip: set max drive-strength for cif_clkout_m0 on px30-evb
+      arm64: dts: rockchip: add pinctrl for mipi-pdn pin on px30-evb
+      arm64: dts: rockchip: use pin constant for reset-gpios on px30-evb
+
+ .../devicetree/bindings/arm/rockchip.yaml          |  28 +++-
+ arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+ arch/arm64/boot/dts/rockchip/px30-evb.dts          |  17 ++-
+ arch/arm64/boot/dts/rockchip/px30.dtsi             |  22 ++++
+ .../boot/dts/rockchip/rk3399-gru-scarlet-inx.dts   |  14 +-
+ .../dts/rockchip/rk3399-nanopi-r4s-enterprise.dts  |  29 +++++
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi    |   6 +-
+ .../boot/dts/rockchip/rk3399-rock-4c-plus.dts      | 114 ++++++++++-------
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi | 141 +++++++++++----------
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   4 +-
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts |  60 +++++++++
+ arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts     |  52 ++++++++
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi           |  80 ++++++++++++
+ 13 files changed, 445 insertions(+), 123 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s-enterprise.dts
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
