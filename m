@@ -4,42 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEB7BC32771
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Sep 2022 11:17:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69703C07E9D
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Sep 2022 11:30:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WRiWKodoQRBbD/F2DiMT1FVrmMgP1YtSZjArpwzbqdU=; b=bDKXyCSSRmO6Rs
-	NELR1euywguJK+ybOl8N65Fbr9fFZAyZSuufcc0eKdKSP4u0P6RNfO52izSUG9Ok8LoY+qxnMzsfl
-	x6aWc+PdXWE+Tv4HzWDq8KcYNVJX5oj0SquEMZIHYqaNZzI7IvS7uxErFtWddsDiDmG9qPhp9JGUQ
-	nTgSSbVcZSjW6HWtK+v4BYxEYzZOTVRrdDEcVGCEbSLsEJ6MfojFCCTi838q6w1r70U/ST83+V2IO
-	e1DxI199x8RbHzIahRstY0yqCojbK52W/BVBN4NN3n7Je3NLK3zzO4qw3VhBdTbXztweANnZl84rQ
-	1kIbYSOzQ/aiU+1YBA8w==;
+	List-Owner; bh=2slhv+R7WpcNcCK5jgGE7TpAYM+s6cVAPvwJpKlWwZc=; b=3o0HmsbMoQ1WhQ
+	r4kjtipqDAYHyxpGreVkA9Bzk6JCozpVCihWHCFFbsqKdW/KoUGTJvBx9TkQB0acxmOXMkArdRXwv
+	tbu/ijTZoeppGcak7dccJcV0tO4kERMuz5u+jEues5Ao3UK49YlPorrsFrsHyNAtXjxf4aa9k6YRK
+	Q3ryd7jJjeuMhmvSREhxbQ+8nzEGoluSfL0X+imw9wfC26NZhSMqBaGdl3bcLwkKcBZ8+ivn+094q
+	ydZU9F7Fb48QcTFNP1uFILo8vwgg1ENiUe3vP6GuAXSkBmI7dWq1f30i9P+U3FsGfus4gt0BZqbuC
+	hT59uRWRDpAPGVx09H2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oc3A3-006xIt-6z; Sat, 24 Sep 2022 11:17:31 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1oc3MU-006yZ7-OX; Sat, 24 Sep 2022 11:30:22 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oc3A0-006xHN-Sm
-	for linux-rockchip@lists.infradead.org; Sat, 24 Sep 2022 11:17:30 +0000
-Received: from p508fdd76.dip0.t-ipconnect.de ([80.143.221.118] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1oc39r-0007rw-Cl; Sat, 24 Sep 2022 13:17:19 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [GIT PULL] Rockchip clock changes for 6.1 #1
-Date: Sat, 24 Sep 2022 13:17:18 +0200
-Message-ID: <6719652.G0QQBjFxQf@phil>
+	id 1oc3MT-006yYh-2X; Sat, 24 Sep 2022 11:30:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
+	Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=a9mDCz2GEZfDqlVmLC9zSym3y5GkyEMnPpNofJI56vA=; b=v3N9l6QJvpl2ux7L7UmCQ0sLSY
+	1iMHm19w3NnEyexcIHETcdYrQo+NdnIoP0/9Rp7Zt7LjKwvGQa9cpvjWIajjzQ6SbXTGkVPG70Zpb
+	2xgZRW9SyD7/DWnjzowhBbrsY7JQfTcelDyp9eTGxwsReyLDlt/c/iF0F0DYs/GLHZ5EpkYbuVxwO
+	suw/UYxaRkP0Cz3tooE8K5qYe4UHTauz3CewDEz730/+3HaYXXbEhEDtTg9gFQTmMOfPbMdrEZqTA
+	4xJuXb+zhqo5ZdV+N3YhaZjCg9suKnzPofgggjugBuxka1JKdFn6eB6eG9DQuDVgewclBfvAcBNko
+	O9m8d2jg==;
+Received: from sakura.naobsd.org ([160.16.200.221] helo=mail.naobsd.org)
+	by casper.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1oc3MK-008eM1-7T; Sat, 24 Sep 2022 11:30:20 +0000
+Received: from secure.fukaumi.org ([10.0.0.2])
+	by mail.naobsd.org (8.14.4/8.14.4/Debian-4.1ubuntu1.1) with ESMTP id 28OBT5MA004632;
+	Sat, 24 Sep 2022 20:29:06 +0900
+From: FUKAUMI Naoki <naoki@radxa.com>
+To: heiko@sntech.de
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+        FUKAUMI Naoki <naoki@radxa.com>
+Subject: [PATCH] arm64: dts: rockchip: keep I2S1 disabled for GPIO function on ROCK Pi 4 series
+Date: Sat, 24 Sep 2022 11:28:12 +0000
+Message-Id: <20220924112812.1219-1-naoki@radxa.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220924_041728_961447_BF9C1038 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20220924_123012_802848_EE4A2880 
+X-CRM114-Status: UNSURE (   6.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -56,78 +69,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mike, Stephen,
+I2S1 pins are exposed on 40-pin header on Radxa ROCK Pi 4 series.
+their default function is GPIO, so I2S1 need to be disabled.
 
-please find below a pull-request with some Rockchip stuff.
+Signed-off-by: FUKAUMI Naoki <naoki@radxa.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
-Mainly the support for the clock-controller for the rv1126,
-another yaml conversion and relicensing the bindings to
-gpl2+MIT following DT guidelines.
-
-Please pull.
-
-Thanks
-Heiko
-
-
-The following changes since commit 1c23f9e627a7b412978b4e852793c5e3c3efc555:
-
-  Linux 6.0-rc2 (2022-08-21 17:32:54 -0700)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.1-rockchip-clock1
-
-for you to fetch changes up to fffa0fa4d029c10406d417dd33f630bee4b12c02:
-
-  dt-bindings: clock: rockchip: change SPDX-License-Identifier (2022-09-23 20:48:01 +0200)
-
-----------------------------------------------------------------
-A mux-variant clock using the table variant to select parents, clock
-controller for the rv1126 soc, conversion of rk3128 to yaml and relicensing
-of the yaml bindings to gpl2+MIT (following dt-binding guildelines)
-
-----------------------------------------------------------------
-Elaine Zhang (1):
-      clk: rockchip: Add MUXTBL variant
-
-Heiko Stuebner (1):
-      Merge branch 'v6.1-shared/clkids' into v6.1-clock/next
-
-Jagan Teki (3):
-      clk: rockchip: Add dt-binding header for RV1126
-      dt-bindings: clock: rockchip: Document RV1126 CRU
-      clk: rockchip: Add clock controller support for RV1126 SoC
-
-Johan Jonker (2):
-      dt-bindings: clock: convert rockchip,rk3128-cru.txt to YAML
-      dt-bindings: clock: rockchip: change SPDX-License-Identifier
-
- .../bindings/clock/rockchip,px30-cru.yaml          |    2 +-
- .../bindings/clock/rockchip,rk3036-cru.yaml        |    2 +-
- .../bindings/clock/rockchip,rk3128-cru.txt         |   58 -
- .../bindings/clock/rockchip,rk3128-cru.yaml        |   76 ++
- .../bindings/clock/rockchip,rk3228-cru.yaml        |    2 +-
- .../bindings/clock/rockchip,rk3288-cru.yaml        |    2 +-
- .../bindings/clock/rockchip,rk3308-cru.yaml        |    2 +-
- .../bindings/clock/rockchip,rk3368-cru.yaml        |    2 +-
- .../bindings/clock/rockchip,rk3399-cru.yaml        |    2 +-
- .../bindings/clock/rockchip,rv1108-cru.yaml        |    2 +-
- .../bindings/clock/rockchip,rv1126-cru.yaml        |   62 ++
- drivers/clk/rockchip/Kconfig                       |    7 +
- drivers/clk/rockchip/Makefile                      |    1 +
- drivers/clk/rockchip/clk-rv1126.c                  | 1138 ++++++++++++++++++++
- drivers/clk/rockchip/clk.c                         |   27 +-
- drivers/clk/rockchip/clk.h                         |   36 +
- include/dt-bindings/clock/rockchip,rv1126-cru.h    |  632 +++++++++++
- 17 files changed, 1981 insertions(+), 72 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.txt
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3128-cru.yaml
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rv1126-cru.yaml
- create mode 100644 drivers/clk/rockchip/clk-rv1126.c
- create mode 100644 include/dt-bindings/clock/rockchip,rv1126-cru.h
-
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+index 645ced6617a6..1f76d3501bda 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
+@@ -509,7 +509,6 @@ i2s0_p0_0: endpoint {
+ &i2s1 {
+ 	rockchip,playback-channels = <2>;
+ 	rockchip,capture-channels = <2>;
+-	status = "okay";
+ };
+ 
+ &i2s2 {
+-- 
+2.30.2
 
 
 _______________________________________________
