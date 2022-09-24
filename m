@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34B91C32771
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Sep 2022 18:58:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCA81C07E9D
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Sep 2022 19:00:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SzmRsPeLSVJuhjcI86jO57J/4Pj93dqMed8zhJjk8eo=; b=zAsvxTUffoXocf
-	PomGZOfMqqEIoinzIhotJZjp+QIC4sD4g/D1Q5J6IBZoVaZiEyzcCgyzy04tuutGF+FIuWKMe1PmA
-	e8JvrT4z5V5KJQAN3L272mSivjKPaP3H48/HbyDa97W76Fi0YGxKckQXsRDOSYPOMAR5/bHulAJFz
-	EqtXCDisU36NDFWVnDrZxLqmTgy2W+0wyb8VlxizMRXGMBchZPMsf11XObV2X5lp6nfeIoUJ4+zFV
-	iYK6hhyGHtoCfxjlhvP+kKhjmFxwlCtlUy9MROCJPGsnqXUt7OdmmbSTetezbfs7m+PIjbwumHtl/
-	unYhlqINGrmASD2C/5Dw==;
+	List-Owner; bh=1IgAgkx7byCPweJmzE2WsXfRg8sfK6w9lFBT64G26mg=; b=aM6p8vTsLMO2Y1
+	UhXu/s+h2Wfc4CRUGMjBAe4t5qZHUskTBGPCk97plxkbyUHc5qpz3BNTbCiTlQivn3WqUGaw77G50
+	V/hYe3yO40P6Hv53K+PjS9tXgZWQIi1fSo92kZk5LIkwB/Db2syTFOuxGaXivH0R77tuXXwlP0bdn
+	2Ntx3WCWi3p21wUsSbgWEM0AZBGuG6GsiG2Xuvqr7GvOAkxOwZ2XkAAnDDbkBXyRB7CRzDa9/blqv
+	zQ0Z74He/aDJo3hlksNDQWc0CL66X3+ctw0miVLancoMrT1oxy2+uFaWRp7SdZ7QlEis/dRjqdoBd
+	ojqd5fvZ/fhs2JJMQATg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocAMI-008dFB-Ch; Sat, 24 Sep 2022 18:58:38 +0000
+	id 1ocAO6-008e5d-Uu; Sat, 24 Sep 2022 19:00:30 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocAMG-008dDo-HY; Sat, 24 Sep 2022 18:58:38 +0000
+	id 1ocAO4-008e3X-AW; Sat, 24 Sep 2022 19:00:29 +0000
 Received: from p57b775e6.dip0.t-ipconnect.de ([87.183.117.230] helo=phil.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1ocAMD-0001hc-FK; Sat, 24 Sep 2022 20:58:33 +0200
+	id 1ocAO3-0001iI-11; Sat, 24 Sep 2022 21:00:27 +0200
 From: Heiko Stuebner <heiko@sntech.de>
 To: arm@kernel.org
 Cc: soc@kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts64 changes for 6.1 #2
-Date: Sat, 24 Sep 2022 20:58:30 +0200
-Message-ID: <38114097.10thIPus4b@phil>
+Subject: [GIT PULL] Rockchip driver changes for 6.1 #2
+Date: Sat, 24 Sep 2022 21:00:24 +0200
+Message-ID: <3790767.LM0AJKV5NW@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220924_115836_633539_8A3894C2 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20220924_120028_394241_7091BD4B 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,89 +58,41 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Arnd, Kevin, Olof,
 
-please find below and in subsequent pull-requests
-some more Rockchip changes for for 6.1
+I was somehow expecting more driver-stuff so while this
+could've also lived in the dts branch, I put it in the driver
+one, hence the separate pull.
 
-Please pull!
 
-Thanks
 Heiko
 
 
-The following changes since commit 91419ae0420f0c91a326655d687b740826d0a3f9:
+The following changes since commit 6541b424ce1dda616d3946e839f015c984df7a99:
 
-  arm64: dts: rockchip: use BCLK to GPIO switch on rk3399 (2022-09-10 01:08:48 +0200)
+  soc: rockchip: power-domain: add power domain support for rk3588 (2022-09-09 19:06:41 +0200)
 
 are available in the Git repository at:
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.1-rockchip-dts64-2
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.1-rockchip-drivers2
 
-for you to fetch changes up to 19d4aaf640913c5a8f1b06c9ef46287c32635299:
+for you to fetch changes up to adc4f190260a6c004f950992d8c9ee3aec8da38b:
 
-  arm64: dts: rockchip: use pin constant for reset-gpios on px30-evb (2022-09-23 15:53:18 +0200)
-
-----------------------------------------------------------------
-RK3399-Nanopi-R4S-enterprise as variant board, Gru-Scarlet SKU variants,
-DSI support for rk356x, display-gamma-control for rk3399, display
-output for quartz64-b and rk3566-roc-pc, hdmi supplies for rk3399-roc-pc,
-some pinctrl improvements for the px30-evb and a number of changes to
-bring rk3399 rock4 and rock-pi4 structure closer to names used in schematics.
+  dt-bindings: soc: rockchip: grf: add rockchip,rk3128-grf (2022-09-14 10:50:12 +0200)
 
 ----------------------------------------------------------------
-Brian Norris (2):
-      dt-bindings: arm: rockchip: Add gru-scarlet sku{2,4} variants
-      arm64: dts: rockchip: Support gru-scarlet sku{2,4} variants
+Some binding additions for rk3128 and rv1126
 
-Chris Morgan (1):
-      arm64: dts: rockchip: Add DSI and DSI-DPHY nodes to rk356x
+----------------------------------------------------------------
+Jagan Teki (2):
+      dt-bindings: soc: rockchip: Document RV1126 grf
+      dt-bindings: soc: rockchip: Document RV1126 pmugrf
 
-FUKAUMI Naoki (6):
-      arm64: dts: rockchip: connect vcca_1v8 to APIO5_VDD on rk3399-rock-4c-plus
-      arm64: dts: rockchip: fix regulator structure on rk3399-rock-4c-plus
-      arm64: dts: rockchip: sort nodes/properties on rk3399-rock-4c-plus
-      arm64: dts: rockchip: fix regulator name on rk3399-rock-4
-      arm64: dts: rockchip: sort nodes/properties on rk3399-rock-4
-      arm64: dts: rockchip: add avdd-0v9-supply and avdd-1v8-supply on rk3399 rock 4c and pi4
+Johan Jonker (2):
+      dt-bindings: arm: rockchip: pmu: add rockchip,rk3128-pmu
+      dt-bindings: soc: rockchip: grf: add rockchip,rk3128-grf
 
-Furkan Kardame (1):
-      arm64: dts: rockchip: Enable video output on rk3566-roc-pc
-
-Hugh Cole-Baker (1):
-      arm64: dts: rockchip: enable gamma control on RK3399
-
-Markus Reichl (1):
-      arm64: dts: rockchip: Add HDMI supplies on rk3399-roc-pc
-
-Nicolas Frattaroli (1):
-      arm64: dts: rockchip: Enable HDMI and GPU on quartz64-b
-
-Quentin Schulz (1):
-      arm64: dts: rockchip: add i2s0 I2S/PDM/TDM 8ch controller to px30
-
-Tianling Shen (2):
-      dt-bindings: Add doc for FriendlyARM NanoPi R4S Enterprise Edition
-      arm64: dts: rockchip: Add RK3399 NanoPi R4S Enterprise Edition
-
-Tommaso Merciai (3):
-      arm64: dts: rockchip: set max drive-strength for cif_clkout_m0 on px30-evb
-      arm64: dts: rockchip: add pinctrl for mipi-pdn pin on px30-evb
-      arm64: dts: rockchip: use pin constant for reset-gpios on px30-evb
-
- .../devicetree/bindings/arm/rockchip.yaml          |  28 +++-
- arch/arm64/boot/dts/rockchip/Makefile              |   1 +
- arch/arm64/boot/dts/rockchip/px30-evb.dts          |  17 ++-
- arch/arm64/boot/dts/rockchip/px30.dtsi             |  22 ++++
- .../boot/dts/rockchip/rk3399-gru-scarlet-inx.dts   |  14 +-
- .../dts/rockchip/rk3399-nanopi-r4s-enterprise.dts  |  29 +++++
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi    |   6 +-
- .../boot/dts/rockchip/rk3399-rock-4c-plus.dts      | 114 ++++++++++-------
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi | 141 +++++++++++----------
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   4 +-
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-b.dts |  60 +++++++++
- arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts     |  52 ++++++++
- arch/arm64/boot/dts/rockchip/rk356x.dtsi           |  80 ++++++++++++
- 13 files changed, 445 insertions(+), 123 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s-enterprise.dts
+ Documentation/devicetree/bindings/arm/rockchip/pmu.yaml | 2 ++
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 4 ++++
+ 2 files changed, 6 insertions(+)
 
 
 
