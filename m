@@ -4,61 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6676CC04A95
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Sep 2022 12:40:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A97B1C6FA82
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Sep 2022 12:49:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ydq39/4sMIA1+FKyDfo8WyAHERVpS9SeH1VCIY/wucI=; b=UsWd28DnQYbGdr
-	km0ViQ0gmOArFAXjVinOrJot9nHwjaiAMG107tu1EueYGDp+TCPgReBmaGG+kaaMgHN4RQZoDRO26
-	i453R/qqydtA8Xf+Oa0CIoUq9sPT6H59yIhrBtmXGjoGv+iI0oUxjJQvgMLuOEU9Rke600tE2lj8f
-	6TRP8LgzedJR9VZVUfIbV/XWtVP7fZWkAlxBIVqfnPyOuDA98QMfrJQY0vAS53/XEFOYyda+iMPhi
-	eljIudIjELtWQ1gFR87npKFwd0oCdGL9YlpLnQi1JVzq2xPwH6V4jUM/a5GUr8rb/nxQsdAxaz//l
-	5sEcoEewxs2vAyDPdT2w==;
+	List-Owner; bh=ZIoP/9eLItqzSz2hOQ/mrtiVTVrbqdeM+h5gJWOR3oQ=; b=dNkLuVdHWsQEjD
+	qadzsNSuMCxFvBAOxEoa4lZE52lbngnWsXahmJ6ZXjNKZijB3uYVI4L2ueBm+s8Vo5zd0g3ITLtXL
+	qtM6Tj7OnpgDrEGEdY+ZX84khH54qxEhQ+EDPeaTBwmJ8iwp32S2L+8/L+3J13o+XQGDr55AxDwuy
+	KbSG/c4zk2pHB4XDpkUZBUKW/NvgBxmpUgT7fHJIIjIHe2nhHf+0zb5UHBIfnHUxkLnXcFsNo96VR
+	3whN+WLVJYJGQ1EbU2qkFJ54mTM5kFznuzpsZSWPcPPcakHvcRVNuVbrzPPDNECCNkmsVTjoZWXRS
+	o4Thkgk7e3pLInR5YeJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocQvh-00DVld-F3; Sun, 25 Sep 2022 12:40:17 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1ocR3x-00DZSO-Ke; Sun, 25 Sep 2022 12:48:49 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocQvT-00DVcR-Sq; Sun, 25 Sep 2022 12:40:05 +0000
-Message-ID: <ce61fb9a-dcf4-27a2-ac03-62060a1512f9@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1664109595;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=OXUDIYwGS8VQVu3j8KhtahQQnFOQ52Ygtum7FlzQF2Q=;
-	b=eOF+RH4Gwk0Wt8HCyeyTDsQaH9OC+2fvvQtX/WG/mqdKDEO1c5HVQiAtdL1ahS+olMee36
-	Xt280jYvWK1ZDTUr13B0zYE2TVKgmgS9JH5ojzFrsUVupBzOoli90t+MZlUOX5BJcRKbfc
-	gqpOKDifPJO6HYTYe8QYMifHMdFkna8Zs1VyMY9CG3oKQCgtm2e9wy5pLKD7YIdXP5nk0V
-	1Ua4wKOlgHOP6FG/UyWp83qie5+8z0Y0HFKZzOQZVT3cUsQOV/CN4wa4hr9f9SSkCMwgZu
-	XbcFVY9x9wBaFNSigtTDjhf1tc+YEUt1dTBYTLwevb4C8Lzz1JPIcye5v7iwSA==
-Date: Sun, 25 Sep 2022 14:39:54 +0200
+	id 1ocR3n-00DZMk-3r
+	for linux-rockchip@lists.infradead.org; Sun, 25 Sep 2022 12:48:40 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id s6so6959675lfo.7
+        for <linux-rockchip@lists.infradead.org>; Sun, 25 Sep 2022 05:48:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=nabam-net.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+        bh=k0LfxC9fXdLeVg8llNzyGQ2aBnuToclD1TAWlwxISbg=;
+        b=2WCPKE4YIUXioVBIwaEN+GiNbb6cBHV2hWd/nOKEiVQeECh7yUNLrsZXUmj356yc9Q
+         PrmP98W9mY0koDEAPY9WWhT/DDHrM+CgPmRBX8pK7eHA79Ytaxxwk0dcbrHX7ZmggZdU
+         FV1K/dedeI6DzbIut3OULpJ0RZ+ij1/n+0URvI0Kr0pypvW1FODBCfvSBM0j1+SfoWrh
+         gTZ7/+a4C32JDSiUNFSWAtoG75x8KZfhenj6xdZQYzbvaxuTuNo4ngAZp3VuEmvatXq4
+         zqFqRsiggVqezPpAnCONNB3ycqvG5/kBAy+ZE0stuc6pcDSWuu0pi846f6sA/4lk/IiV
+         CYJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=k0LfxC9fXdLeVg8llNzyGQ2aBnuToclD1TAWlwxISbg=;
+        b=KP/Q54AahDZ3vdBDgiMO4NlS1nhO3tHA18EDy4s324jbKTZo4lpSdj+9h48MU4jiBg
+         GoKGdLgkhQxZxIoGIyVfUS7KMzCq6HbeghMUpJGYgMrjrPifaJmOuci+WQJQZuJ9nIJB
+         aZk0Rj2qp7KDhq9/ybqqNOUOsuWig7SwUnwAbXlV+z+Pu/I7/gS8Yc2E+digwkfIBsYm
+         0MG3/fjuH8r3tVU5D+ieqTyr5pmgbaHXPyJGl9LcwaDFySFFN5XYJ6cq2caC2yKTMKNr
+         hljZr6kyqXISh/xz85YApYtHeKzwfwH7rq2US/Nsw3mjTiYMsx/DgN4s2tBuFaT3eF8R
+         74CQ==
+X-Gm-Message-State: ACrzQf2fMuoarZurcTP/zsxvs/EsZm/IGHz7Yx6TiEhF2LI44sS1Mx79
+	Sj1ZOhmm0kIX1fW3f8dhzGrhMA==
+X-Google-Smtp-Source: AMsMyM54CDUIlE64+P9Eriqk9a7+P7Az0vpqkB2ry9nh3ZRl44jQqzOS2CeqezxlCs4Jw71ozzWBNg==
+X-Received: by 2002:a05:6512:22cf:b0:49e:860d:8f4e with SMTP id g15-20020a05651222cf00b0049e860d8f4emr6654780lfu.584.1664110114439;
+        Sun, 25 Sep 2022 05:48:34 -0700 (PDT)
+Received: from 16-inch.lan (c-7f0d225c.016-470-73746f7.bbcust.telenor.se. [92.34.13.127])
+        by smtp.googlemail.com with ESMTPSA id q7-20020a19f207000000b00494643db68fsm2204936lfh.81.2022.09.25.05.48.33
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 25 Sep 2022 05:48:33 -0700 (PDT)
+From: Lev Popov <leo@nabam.net>
+To: Dan Johansen <strit@manjaro.org>
+Cc: Lev Popov <leo@nabam.net>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] arm64: dts: rockchip: fix quartz64-a bluetooth configuration
+Date: Sun, 25 Sep 2022 14:48:24 +0200
+Message-Id: <20220925124825.71786-1-leo@nabam.net>
+X-Mailer: git-send-email 2.37.3
+In-Reply-To: <ce61fb9a-dcf4-27a2-ac03-62060a1512f9@manjaro.org>
+References: <ce61fb9a-dcf4-27a2-ac03-62060a1512f9@manjaro.org>
 MIME-Version: 1.0
-Subject: Re: [PATCH] arm64: dts: rockchip: fix quartz64-a bluetooth
- configuration
-To: Lev Popov <leo@nabam.net>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>
-Cc: Peter Geis <pgwipeout@gmail.com>,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Michael Riesch <michael.riesch@wolfvision.net>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20220925123144.70639-1-leo@nabam.net>
-Content-Language: da-DK
-From: Dan Johansen <strit@manjaro.org>
-Organization: Manjaro ARM
-In-Reply-To: <20220925123144.70639-1-leo@nabam.net>
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=strit@manjaro.org smtp.mailfrom=strit@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220925_054004_144031_FE29E92E 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20220925_054839_163639_7D4B8F0B 
+X-CRM114-Status: GOOD (  11.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,43 +93,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkRlbiAyNS4wOS4yMDIyIGtsLiAxNC4zMSBza3JldiBMZXYgUG9wb3Y6Cj4gRm9yICJRdWFydHo2
-NCBNb2RlbCBBIiBhZGQgbWlzc2luZyBSVFMgbGluZSB0byB0aGUgVUFSVCBpbnRlcmZhY2UgdXNl
-ZCBieQo+IGJsdWV0b290aCBhbmQgc3dhcCBibHVldG9vdGggaG9zdC13YWtldXAgYW5kIGRldmlj
-ZS13YWtldXAgZ3BpbyBwaW5zIHRvCj4gbWF0Y2ggdGhlIGJvYXJkcyBwaHlzaWNhbCBsYXlvdXQu
-IFRoaXMgY2hhbmdlcyBhcmUgbmVjZXNzYXJ5IHRvIG1ha2UKPiBibHVldG9vdGggcHJvdmlkZWQg
-YnkgdGhlIHdpcmVsZXNzIG1vZHVsZSB3b3JrLgpZb3Ugc2hvdWxkIGFkZApGaXhlczrCoCBjZDQx
-NGQ1YWMxZmRlZWNmMDYxNzczN2U2ODhhMWFmMDA4NTgyNTNhIChhcm02NDogZHRzOiByb2NrY2hp
-cDogCnJlbmFtZSBRdWFydHo2NC1BIGJsdWV0b290aCBncGlvcykKSSB0aGluaywgYXMgdGhhdCB3
-YXMgdGhlIGxhc3QgY29tbWl0IHRoYXQgdG91Y2hlZCB0aGUgZ3BpbyBsaW5lcy4KPiBTaWduZWQt
-b2ZmLWJ5OiBMZXYgUG9wb3YgPGxlb0BuYWJhbS5uZXQ+Cj4gLS0tCj4gICBhcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL3JrMzU2Ni1xdWFydHo2NC1hLmR0cyB8IDYgKysrLS0tCj4gICAxIGZp
-bGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdp
-dCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY2LXF1YXJ0ejY0LWEuZHRzIGIv
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtcXVhcnR6NjQtYS5kdHMKPiBpbmRl
-eCBhMDU0NjBiOTI0MTUuLjkxOTA4MDgxYzVlZCAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL3JrMzU2Ni1xdWFydHo2NC1hLmR0cwo+ICsrKyBiL2FyY2gvYXJtNjQv
-Ym9vdC9kdHMvcm9ja2NoaXAvcmszNTY2LXF1YXJ0ejY0LWEuZHRzCj4gQEAgLTc0MCw3ICs3NDAs
-NyBAQCAmdWFydDAgewo+ICAgCj4gICAmdWFydDEgewo+ICAgCXBpbmN0cmwtbmFtZXMgPSAiZGVm
-YXVsdCI7Cj4gLQlwaW5jdHJsLTAgPSA8JnVhcnQxbTBfeGZlciAmdWFydDFtMF9jdHNuPjsKPiAr
-CXBpbmN0cmwtMCA9IDwmdWFydDFtMF94ZmVyICZ1YXJ0MW0wX2N0c24gJnVhcnQxbTBfcnRzbj47
-Cj4gICAJc3RhdHVzID0gIm9rYXkiOwo+ICAgCXVhcnQtaGFzLXJ0c2N0czsKPiAgIAo+IEBAIC03
-NDgsOCArNzQ4LDggQEAgYmx1ZXRvb3RoIHsKPiAgIAkJY29tcGF0aWJsZSA9ICJicmNtLGJjbTQz
-NDM4LWJ0IjsKPiAgIAkJY2xvY2tzID0gPCZyazgxNyAxPjsKPiAgIAkJY2xvY2stbmFtZXMgPSAi
-bHBvIjsKPiAtCQlkZXZpY2Utd2FrZXVwLWdwaW9zID0gPCZncGlvMiBSS19QQzEgR1BJT19BQ1RJ
-VkVfSElHSD47Cj4gLQkJaG9zdC13YWtldXAtZ3Bpb3MgPSA8JmdwaW8yIFJLX1BDMCBHUElPX0FD
-VElWRV9ISUdIPjsKPiArCQlob3N0LXdha2V1cC1ncGlvcyA9IDwmZ3BpbzIgUktfUEMxIEdQSU9f
-QUNUSVZFX0hJR0g+Owo+ICsJCWRldmljZS13YWtldXAtZ3Bpb3MgPSA8JmdwaW8yIFJLX1BDMCBH
-UElPX0FDVElWRV9ISUdIPjsKPiAgIAkJc2h1dGRvd24tZ3Bpb3MgPSA8JmdwaW8yIFJLX1BCNyBH
-UElPX0FDVElWRV9ISUdIPjsKPiAgIAkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiAgIAkJ
-cGluY3RybC0wID0gPCZidF9ob3N0X3dha2VfbCAmYnRfd2FrZV9sICZidF9lbmFibGVfaD47Ci0t
-IApLaW5kIHJlZ2FyZHMKKkRhbiBKb2hhbnNlbioKUHJvamVjdCBsZWFkIG9mIHRoZSAqTWFuamFy
-byBBUk0qIHByb2plY3QKTWFuamFyby1BUk0gPGh0dHBzOi8vbWFuamFyby5vcmc+CgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+For "Quartz64 Model A" add missing RTS line to the UART interface used by
+bluetooth and swap bluetooth host-wakeup and device-wakeup gpio pins to
+match the boards physical layout. This changes are necessary to make
+bluetooth provided by the wireless module work.
+
+Fixes:  cd414d5ac1fdeecf0617737e688a1af00858253a (arm64: dts: rockchip: rename Quartz64-A bluetooth gpios)
+
+Signed-off-by: Lev Popov <leo@nabam.net>
+---
+ arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+index a05460b92415..91908081c5ed 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
+@@ -740,7 +740,7 @@ &uart0 {
+ 
+ &uart1 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&uart1m0_xfer &uart1m0_ctsn>;
++	pinctrl-0 = <&uart1m0_xfer &uart1m0_ctsn &uart1m0_rtsn>;
+ 	status = "okay";
+ 	uart-has-rtscts;
+ 
+@@ -748,8 +748,8 @@ bluetooth {
+ 		compatible = "brcm,bcm43438-bt";
+ 		clocks = <&rk817 1>;
+ 		clock-names = "lpo";
+-		device-wakeup-gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
+-		host-wakeup-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
++		device-wakeup-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
+ 		shutdown-gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
+-- 
+2.37.3
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
