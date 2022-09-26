@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54888C32771
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Sep 2022 18:39:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 634D2C07E9D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Sep 2022 18:40:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7kzWwxdQSvQSbOJp/cWA/O1lMMJKX46+Gxf6CwXAsxo=; b=z1OyCKJHN1jMxH
-	AfuFChUDrtm1q2tiFW6egL3NHaMKOZp55gERx5k2Vh9eq21VWliHb2+8z3fqnHqxZvO70BeD/qtTg
-	U6uspBTZnydtEH0wNXjQd5jvZeZvV5tS/XPB5jnvjNtZ5m8ANk9ZZUBzY+NQJnjwFqtWxjhNmzmPW
-	zLzTfMxksddgLUWOARO9gRJLHEC7gLgXFi1Wyv7IrWm4sPSCO2oqWW06HYq2wmUs+gj9T+1vBg86t
-	Kbg/hBUs0CicDP/ME3lS/I9V85Sr9+I9IWsgOjX6RBd0SxqCJ/bnrusXHDa1CKmm4p8DOvcI4zDQ0
-	v1DyjHecgpB522b62/fA==;
+	List-Owner; bh=+8z6oQxrHx7X4FGmkLKuBfcU8gnUpF6Ie+hwpDLBJ/M=; b=Rds+dN0+UsZMKG
+	xpxduO//1pMfYqAzhDDctxFAYh1D9YHhI2a54GtO9R/GD/8FMlzgdL5gqNDnjaWHy09JdqcMbQKB8
+	y3ltv4I6JSuJqzjvfpi/xNo7g9K61xG3tEFOfuJxTMCF+HtHbfH8zcOgU0PqS5z7ZoPUoEzVmRZVr
+	MeZCIkvhOOJjoGfnzWoAJlBzN9R2/TTm7Dt8sBukXQ4DkXWnK/2eZgVdrD/Eb5S/SYvxUsKQOxd2x
+	xcBcj5r9bJ/x062jU0z0ROVdh++bh2JaO2fh2E8VNjnnyT5NlWoui/Uil/F+2sGtn4FMfe5ON2VTX
+	KqEZuM711oIKbqmQhASg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oct10-006KDn-Mw; Mon, 26 Sep 2022 18:39:38 +0000
+	id 1oct1T-006KiA-KQ; Mon, 26 Sep 2022 18:40:07 +0000
 Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocsz7-006IIk-GR; Mon, 26 Sep 2022 18:37:44 +0000
+	id 1ocsz7-006IIj-Dh; Mon, 26 Sep 2022 18:37:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
 	; s=202004.hall; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Content-Type:From:Reply-To:
 	Subject:Content-ID:Content-Description:X-Debbugs-Cc;
-	bh=VGtINPdmigb+hvxoDDBg5P5cbXE3IySxZEaVA1DOgmE=; b=gpyCoZXyTfwEcD7kf9FUMZQPdT
-	QhD4IxGfbF4f1u2XzAw4/mvwEmFofavAuS+7/dxFK8+XlRdZZ6XP0ajrspLb1IdfveBhZ/1FYQ3gb
-	7UuB5wAqnDCiUjEdhiReWFKDt/NuJNo6fPHco2H9Q8LmA5EIgfERK2ie7aWza1tD7DJcIZh9r634c
-	/zY6QASkWw8V2onIa5gM0+LhnmvxmW7YccvhNOIV6qGHGIAudzf5KI4zBwN9Lpsv42GIHBfJIoBsD
-	S8fue3MuY9JL7Rt5r3nEB+PWWkcV0An0oYxvxRR8z0Q0OP0QRIfOTisp2E4Zvlyet1xE32bdgyjiY
-	H6q9Akjw==;
+	bh=kilOzW0pwUETTqeqUPsVrB9s7w7J8Zt9YgnjJdCajnk=; b=iI9i9CuIefkpcuji6V0Jtjk90n
+	VUmdj3sZvoUZHaHS8vWZlRJzwijvlY5GfiOH8OxLRps+HgECdStL438WyrRuBhaJRaASeLDOXh4tY
+	8/NQEr1VEIfHWzltCPen+fQkm6D5feO3TZUasSXY5fUjp0bOQE+nnNTJjyKFiPLMDvU+2F7nrZrvQ
+	5jAzjDWSIeK7emjPRfgxX6ECik7WIlig9eM/b1pk6ftkn0tUfeahMdigCyvS4uWRiGaIKP8hgDAMs
+	Hdtl6R29fTm45h/sepEFUpJnpRvlM+PY7Df0LXLpyl49nEZkWTyOUEavODXazi27gmyjv7oaD1HyC
+	loeDZF9g==;
 Received: from [2a01:e34:ec5d:a741:8a4c:7c4e:dc4c:1787] (helo=ohm.rr44.fr)
 	by hall.aurel32.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <aurelien@aurel32.net>)
-	id 1ocsz3-00B9Pc-FX; Mon, 26 Sep 2022 20:37:37 +0200
+	id 1ocsz3-00B9Pa-CB; Mon, 26 Sep 2022 20:37:37 +0200
 Received: from aurel32 by ohm.rr44.fr with local (Exim 4.96)
 	(envelope-from <aurelien@aurel32.net>)
-	id 1ocsz1-007wcT-29;
+	id 1ocsz1-007wcM-1y;
 	Mon, 26 Sep 2022 20:37:35 +0200
 From: Aurelien Jarno <aurelien@aurel32.net>
 To: Rob Herring <robh+dt@kernel.org>,
@@ -53,17 +53,16 @@ To: Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org (open list)
 Cc: Dongjin Kim <tobetter@gmail.com>,
 	Aurelien Jarno <aurelien@aurel32.net>
-Subject: [PATCH v2 11/13] arm64: dts: rockchip: Add SATA support to ODROID-M1
-Date: Mon, 26 Sep 2022 20:37:25 +0200
-Message-Id: <20220926183727.1893566-12-aurelien@aurel32.net>
+Subject: [PATCH v2 09/13] arm64: dts: rockchip: Enable the USB 2.0 ports on ODROID-M1
+Date: Mon, 26 Sep 2022 20:37:23 +0200
+Message-Id: <20220926183727.1893566-10-aurelien@aurel32.net>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220926183727.1893566-1-aurelien@aurel32.net>
 References: <20220926183727.1893566-1-aurelien@aurel32.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_113741_655680_95D1E010 
-X-CRM114-Status: UNSURE (   9.59  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220926_113741_492640_A0AEDF3F 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,40 +79,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the Combo PHY and SATA nodes in ODROID-M1.
+The Rockchip RK3568 has two USB OHCI/EHCI controllers connected to a PHY
+providing one host-only port and one OTG port. On the ODROID-M1, they
+are both used in host mode. The USB ports are powered by a DC/DC
+converter providing 5V and named VCC5V0_SYS on the schematics, followed
+by a power switch.
 
 Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
 ---
- arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ .../boot/dts/rockchip/rk3568-odroid-m1.dts    | 61 +++++++++++++++++++
+ 1 file changed, 61 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-index 8f7c9dd8c47c..a595014942aa 100644
+index 281d8fdc0885..595f56c41a15 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-@@ -153,6 +153,11 @@ &combphy1 {
- 	status = "okay";
+@@ -105,6 +105,28 @@ vcc3v3_sys: vcc3v3-sys-regulator {
+ 		regulator-max-microvolt = <3300000>;
+ 		vin-supply = <&dc_12v>;
+ 	};
++
++	vcc5v0_sys: vcc5v0-sys-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&dc_12v>;
++	};
++
++	vcc5v0_usb_host: vcc5v0-usb-host-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_usb_host";
++		enable-active-high;
++		gpio = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&vcc5v0_usb_host_en_pin>;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
  };
  
-+&combphy2 {
-+	/* used for SATA */
-+	status = "okay";
-+};
-+
  &cpu0 {
- 	cpu-supply = <&vdd_cpu>;
+@@ -449,6 +471,15 @@ hp_det_pin: hp-det-pin {
+ 			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
++
++	usb {
++		vcc5v0_usb_host_en_pin: vcc5v0-usb-host-en-pin {
++			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++		vcc5v0_usb_otg_en_pin: vcc5v0-usb-otg-en-pin {
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
  };
-@@ -524,6 +529,10 @@ &saradc {
+ 
+ &pmu_io_domains {
+@@ -546,6 +577,36 @@ &uart2 {
  	status = "okay";
  };
  
-+&sata2 {
++&usb_host0_ehci {
 +	status = "okay";
 +};
 +
- &sdhci {
- 	bus-width = <8>;
- 	max-frequency = <200000000>;
++&usb_host0_ohci {
++	status = "okay";
++};
++
++&usb_host1_ehci {
++	status = "okay";
++};
++
++&usb_host1_ohci {
++	status = "okay";
++};
++
++&usb2phy1 {
++	status = "okay";
++};
++
++&usb2phy1_host {
++	phy-supply = <&vcc5v0_usb_host>;
++	status = "okay";
++};
++
++&usb2phy1_otg {
++	phy-supply = <&vcc5v0_usb_host>;
++	status = "okay";
++};
++
+ &vop {
+ 	assigned-clocks = <&cru DCLK_VOP0>, <&cru DCLK_VOP1>;
+ 	assigned-clock-parents = <&pmucru PLL_HPLL>, <&cru PLL_VPLL>;
 -- 
 2.35.1
 
