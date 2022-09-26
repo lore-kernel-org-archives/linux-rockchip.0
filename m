@@ -4,59 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC86DC6FA82
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Sep 2022 18:02:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18617C6FA82
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Sep 2022 18:36:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XEAZdZwJCyQKW4nPkYqVIs4HASNLlQ7vTZoUzSKzvMk=; b=wHwlHBn3QFwqrr
-	XnVMOvckyHa3fPHDTwqvcCZ/bY1DSYcIdpEHBX5TZlcskwzcQVestfonCJMxljBilyOrDf67Ov11R
-	CD0xrVS8w0y3XYgOQaDfg9cWv/2Qj7I+WJh2ZsuOj48Bkvg4dNxUGojIwVJWk5MXY5VYyUCXUIq9h
-	aBOpHosiw1H5UgBmWRfdbOVr6Iz5V3qOAxrsUVxlJ6BivywFi9qP4mxpX8AsFK8Y56JtVrv24MYs3
-	saRmS8zzMOe/7OeYomkhAPJvUqDyBLnyLcksHtAMpS5cCCTsBzu0DkmaiTQr+MeyH8HnwVz1KZKCE
-	0AO6CVgZrry+hszAMZsQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=vvTd1jpfE6aCPFfqlP37w5+eENC8G2E945sjCknGSxA=; b=xXp0hYMgM32wAe
+	/jRDqxM7G1bWxFc/Ue2MMxIQYX/RzdPiMJRccxvcEBDLWcdxqyDwmL47JUh3/otTk4XNnJ2Q5uLjj
+	ov4m2eIivf1sH5swJt/je0Tj7jT53Ik3dVic2A6qW7lx339m2YS5CIH8OzPzkwoFxLq6JY/vZor88
+	ZH77TJbPEFp5R2mRbU4hSDax1yEuRhyFuqMZBANu9YXvGijxBwXrLaix4e7v4PT3iUKQyOcaJIm+g
+	b7J2G/uZTl1LxNF1N1xdJ3ao59yxmxkmJnxueKD1zC/KglnkkebYL0IlDskOxo4O1zYHwQbseaAUL
+	/wJaL4ngXv0TdLn8cCOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocsQk-006CVB-3g; Mon, 26 Sep 2022 18:02:10 +0000
-Received: from mail-m121145.qiye.163.com ([115.236.121.145])
+	id 1ocsxn-006I4R-4r; Mon, 26 Sep 2022 18:36:19 +0000
+Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocsQ9-006CHD-Gs; Mon, 26 Sep 2022 18:01:36 +0000
-Received: from amadeus-VLT-WX0.lan (unknown [218.85.118.195])
-	by mail-m121145.qiye.163.com (Hmail) with ESMTPA id 839518000E7;
-	Tue, 27 Sep 2022 02:01:26 +0800 (CST)
-From: Chukun Pan <amadeus@jmu.edu.cn>
-To: linux.amoon@gmail.com
-Cc: heiko@sntech.de,
-	krzysztof.kozlowski+dt@linaro.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	michael.riesch@wolfvision.net,
-	robh+dt@kernel.org,
-	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: [PATCH 3/3] arm64: dts: rockchip: Add PCIe v3 nodes to rock-3a
-Date: Tue, 27 Sep 2022 02:01:02 +0800
-Message-Id: <20220926180102.37614-4-amadeus@jmu.edu.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220926180102.37614-1-amadeus@jmu.edu.cn>
-References: <20220926061420.1248-1-linux.amoon@gmail.com>
- <20220926180102.37614-1-amadeus@jmu.edu.cn>
+	id 1ocsxb-006I2a-8k; Mon, 26 Sep 2022 18:36:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
+	; s=202004.hall; h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:
+	Subject:Cc:To:From:Content-Type:From:Reply-To:Subject:Content-ID:
+	Content-Description:In-Reply-To:References:X-Debbugs-Cc;
+	bh=GkVeS3Zk1J0hHqvSqxxRfJt58YzkCgCZ4A3BhN6JrU4=; b=uyfrzhLkkQ/vfdv0wE0XhNCvP2
+	9ee4002Jzqg2sW4OYSOMGtXOacGC5RsjewYs4RlmMwE+oKIyPIdglqeoNbkhopIQKWSlBUGzmhio0
+	hycAkmDKufj9WrAATBpx96XZL3sZu2a1vOSJ486zdjpNVD0S/QPbtSC6KJxbVeGUlNts0+odqKxBR
+	4BPG0ju3y5m8fphfDws69lXRjui65I40AShZKvDaTVTqtjgy13ZcRUCv544ThkhHdCA1A8XX2y0+5
+	CbkhQLMxvBfFUa10Lrpv0BnY7Y8CMDkjbeSTOnBEm2OsbIvt8SC6GZw5/dhSCgwHnrDoN6ZfhUXow
+	OXHIQyIA==;
+Received: from [2a01:e34:ec5d:a741:8a4c:7c4e:dc4c:1787] (helo=ohm.rr44.fr)
+	by hall.aurel32.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1ocsxH-00B9N6-0B; Mon, 26 Sep 2022 20:35:47 +0200
+Received: from aurel32 by ohm.rr44.fr with local (Exim 4.96)
+	(envelope-from <aurelien@aurel32.net>)
+	id 1ocsxG-007wYd-1Y;
+	Mon, 26 Sep 2022 20:35:46 +0200
+From: Aurelien Jarno <aurelien@aurel32.net>
+To: linux-kernel@vger.kernel.org
+Cc: Aurelien Jarno <aurelien@aurel32.net>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Peter Geis <pgwipeout@gmail.com>,
+	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
+Subject: [PATCH] arm64: dts: rockchip: Add missing rockchip,pipe-grf to rk3568 PCIe v3 PHY
+Date: Mon, 26 Sep 2022 20:35:32 +0200
+Message-Id: <20220926183533.1893371-1-aurelien@aurel32.net>
+X-Mailer: git-send-email 2.35.1
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaT0saVk1CTk4eSExNH05KGFUTARMWGhIXJBQOD1
-	lXWRgSC1lBWUlKQ1VDTlVKSkNVSkJOWVdZFhoPEhUdFFlBWU9LSFVKSktISkNVSktLVUtZBg++
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Pj46KQw5LT0eIggcDCgRSSkt
-	MAkaCw5VSlVKTU1PSUpOSUNMSk9MVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlK
-	Q1VDTlVKSkNVSkJOWVdZCAFZQUlNS0M3Bg++
-X-HM-Tid: 0a837af603ecb03akuuu839518000e7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_110133_763946_7BAEBC5A 
-X-CRM114-Status: UNSURE (   6.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220926_113607_342587_F83725BF 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,50 +78,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Nodes to Radxa ROCK3 Model A board to support PCIe v3.
+This commit fixes the error message
 
-Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+  rockchip-snps-pcie3-phy fe8c0000.phy: failed to find rockchip,pipe_grf regmap
+
+during boot by providing the missing rockchip,pipe-grf property.
+
+Fixes: faedfa5b40f0 ("arm64: dts: rockchip: Add PCIe v3 nodes to rk3568")
+Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
 ---
- arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3568.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-index 1b195355da2a..458a12af1120 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-@@ -547,6 +547,19 @@ &pcie2x1 {
- 	status = "okay";
- };
- 
-+&pcie30phy {
-+	status = "okay";
-+};
-+
-+&pcie3x2 {
-+	/* mPCIe slot */
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&minipcie_reset_h>;
-+	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_pcie>;
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	cam {
- 		vcc_cam_en: vcc_cam_en {
-@@ -583,6 +596,10 @@ pcie_enable_h: pcie-enable-h {
- 			rockchip,pins = <0 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
-+		minipcie_reset_h: minipcie-reset-h {
-+			rockchip,pins = <2 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
- 		ngffpcie_reset_h: ngffpcie-reset-h {
- 			rockchip,pins = <3 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+index ba67b58f05b7..8818b283ba11 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
+@@ -56,6 +56,7 @@ pcie30phy: phy@fe8c0000 {
+ 		clock-names = "refclk_m", "refclk_n", "pclk";
+ 		resets = <&cru SRST_PCIE30PHY>;
+ 		reset-names = "phy";
++		rockchip,pipe-grf = <&pipegrf>;
+ 		rockchip,phy-grf = <&pcie30_phy_grf>;
+ 		status = "disabled";
+ 	};
 -- 
-2.25.1
+2.35.1
 
 
 _______________________________________________
