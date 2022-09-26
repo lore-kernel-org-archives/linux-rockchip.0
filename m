@@ -4,84 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D21BC07E9D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Sep 2022 12:54:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 929A1C32771
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Sep 2022 12:58:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DkIAQGuRepEupXU/2mQVZPI6B4RLTVEEkdsFvGjwr9A=; b=N/sVcjMqECzE47
-	ncmutVUZjjxXIz639+UWIgfyMFj71UZOq1JIyLCc4rZKcuyYhy8bRpKD6fEqzytUwiroeNdccCQZT
-	/HP1UjpniLH2jngi+2EDWFgVowPL4woqVHH+NUReF34RioAdMH0ivacLIe1oWQEhjCPEmGE6zuEg/
-	nfu8p0uUC9FO+0dqx8Rn1+6WojZwbNM7Reu+YHD7fcSgO7Yk511onc0pBHwTWlS6s1PDkLRbfKug8
-	Eh31JYzaiA84VcZ4Trm1vgzmUg1JeiT6CsWaoSO1EqEBbJv4DW8SBWVhOB75g8Ef2cpickLyqO4YC
-	KFSgZbaVpiFw+EYTeddg==;
+	List-Owner; bh=5LmSUN1ZQ5c5+YZTn2QQIk1RbcVB8dkIQHD+GiFHHkA=; b=f+fkly66aeUHTT
+	hW5AGbooX1L85hyVeEByPhLa+UzzeXxRhrX0PQKra32K6ZQIcuLTBXSzX/IJ33yhQBYFtDZhiSj07
+	tvtbu3JBNxHQt7K+k1RddaK5+uV2lw27mbWyckL+CAxsFhCCdMvWiY8n3/zaLl6vqDK3h0sHYKSuG
+	xy7d37LSdur/S1o0yNLKvgptf8b3vN5786wai3+Ys6wWTBuMh54b0cXeyh/FosNQAZOi7Rq18JbtD
+	ur0IDtKzh4+YkOPnihe5LIGAgpUjHyFgPZaaFpbWurT5K69gDOwnuqCG4spyKebEjTH8ES3X96R1O
+	IAUJGH+shSS4ww2ZK0wA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocncg-004zLr-Mc; Mon, 26 Sep 2022 12:54:10 +0000
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+	id 1ocngz-0050Kv-Mm; Mon, 26 Sep 2022 12:58:37 +0000
+Received: from mail-dm6nam12olkn2056.outbound.protection.outlook.com ([40.92.22.56] helo=NAM12-DM6-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ocncd-004zKC-Gh
-	for linux-rockchip@lists.infradead.org; Mon, 26 Sep 2022 12:54:09 +0000
-Received: by mail-lj1-x234.google.com with SMTP id p5so7281373ljc.13
-        for <linux-rockchip@lists.infradead.org>; Mon, 26 Sep 2022 05:54:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=nabam-net.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=iorYNtrLY89hA3M2uo9zu8tdCvtrF7NjwvF7WRrO/5U=;
-        b=xYYLm7cOGYF2Vyoz2KFZEOJkJtBx7Mx4jZdHDj2GC5WchtiPipydI7B2UvI5zXbOEN
-         4DDNHjDfB+yMD6Tas5eZXn/Of2DdF/Ns4MdH6R0oQ4gnGeTfQ04ieE4meBgsCCa8AOg0
-         risAwjwrUpUUlI81j9m21RtaFHMLUgiNMa30fU1tJNU7uzxGi9DR/tb9s7nAgKJ+HuY8
-         qU7dpSVj9dsq/DCWSgaf1aX4ziMiI8MWZSLzVUQyPM3U34QYPp8g4KHkkIg52ZWCepj9
-         sUSZVcAaxPPoFUWV9Xqs2FLoKTpl1kCAeZYIVMAqZgTKX8bIVQ/RkFD8f9vobSO0v7+A
-         NVcQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=iorYNtrLY89hA3M2uo9zu8tdCvtrF7NjwvF7WRrO/5U=;
-        b=SQjZ5qiSSmczeltdBoQNh6qVe4nfBL2niTl4Aan78i2bd1i7JZP2ys1yYQR/q/bHVC
-         8RY+Pw0hA/0KFS3EqKNeKkxz5oZotLFHOGxlP3AlZXxM9DwzcPR7DooK0iMoemH0QMH0
-         esul4zMqg/D7zDFTVPn93+l0gqOfBWLazhHQFcggKXmmQjxCNDDpStUxPTEpAp3am0iX
-         fGEY2RwCbJDPess3WubtYQjYRuzWj6/HTob4B40yj0JB6WCb18dCGB3kynSJIZHvgMow
-         qpn5A0LFpfkCEmpQ9nJI8aDCuc9w9kf4h0t3zXFXzINIqFV2dHBhdrnAMhEmEaLygOQ/
-         QLtQ==
-X-Gm-Message-State: ACrzQf3dpC7NW4Focr6zIssltYWUzOOGWq63vhmvP93ZBSeurE+Rthj+
-	k2/c6WknOgCWXEZ5zzEWVZ+HIg==
-X-Google-Smtp-Source: AMsMyM50SWU4pS4xYv36iF42UW3GLEr4IvXbLPJoedh4+BC08jAN8LA9ONtEaabueblTk6/kUm64JA==
-X-Received: by 2002:a2e:a30f:0:b0:26d:9162:9451 with SMTP id l15-20020a2ea30f000000b0026d91629451mr2755347lje.164.1664196843171;
-        Mon, 26 Sep 2022 05:54:03 -0700 (PDT)
-Received: from 16-inch.lan (c-7f0d225c.016-470-73746f7.bbcust.telenor.se. [92.34.13.127])
-        by smtp.googlemail.com with ESMTPSA id d25-20020ac25459000000b0048af4dc964asm2530772lfn.73.2022.09.26.05.54.02
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Sep 2022 05:54:02 -0700 (PDT)
-From: Lev Popov <leo@nabam.net>
-To: Lev Popov <leo@nabam.net>
-Cc: Dan Johansen <strit@manjaro.org>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Peter Geis <pgwipeout@gmail.com>,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	id 1ocngv-0050JP-Om; Mon, 26 Sep 2022 12:58:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=FsXUiX8LymUc5fQn5toeDIG+rARHXr2DMtbDfti8HrD+NwY2asYbj5zM9YOdi8bdcgK2iiOwhjOYYwmaCnSRhAB1KIKmdu9buwBt64VW/bbZ6Bb3NSRMm5j6dOSAjU9YBUGpQrxqO0sqTCeLiw976ytmGeiOlig/sxltzwbaotjV9Oic0Jx3vT4EaO9NA48PEzVTF2MR+hiL51poQu2ieoOMvHmS0Nny2G8gOJ9oIEkvm8QQoCfI64tVA3XyHn0kWBgLgSCccMISeehh8sshdg2Zk9GRGSrWi0CpQU2nR9wmm87lPR8AbTxQmNP2hTbDB6SA3fQpTcftGZlhKYLMUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bXk7d7XzGxByzggUDXJa+WykKiqWva2vXEoZ6Ryta6I=;
+ b=Tjb3upFfMr3hE9ZkvbEJC+YBLlrIakA6SjVRSuvR4kNK1QuuTxABg5gdfzhb0NKMe/ZvXXtxyfdPiOtps/tRjpsSc3Qj1kOWboU5jTuRjhyf2XY34VDRjwfQU9WCxMsoZKBOXn0r2U+k+N5MGzrg8xFPTMUL0+MHhxieCv2TfvwbsgUIAvTvqQqygxmk0Rb7DY++n1NMv7Zw+K8gDwgihbI/Yvmz0pRVGGOuIptMcnSXS2nXMJfcBXw+NJj3NHx9259WJnodBZfGxX8n+dN3PLKkcjfAZRVAfZBhKwyU92mzo69rXH+q6nZfPx4y14ebWntqZ0a0bDwq2evJ3mRrxQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=bXk7d7XzGxByzggUDXJa+WykKiqWva2vXEoZ6Ryta6I=;
+ b=hmc3QBDPDXx2ho6e/SOwaYBgEV1uVB4Jflm/5QiQwguGyYqNMm3tvcTAYcE/xzDDn3cDsuTz1+wTiRVg2PiHAnDkIydAkr8irgJWKOfjO7wjtmoWNrffKcXDDhcJA9bxg/uUCcVgs5n4AOeAmEGWQ6IkkmdVJGd+lGIE/8l5RAFrqqAjcTr+hi9CtIJOEPdKg973wopuD7C0FUEyWt/tnRm3YTc96ouJm7I546SE5qEeYOOmeWaegvaf/PrKxXr7cCn4yyFAPTy0vfHztmQQ+1/SE0exk2XVl2ipG8pFHrgsKEOEMlMKtKNCkHcSFx76jnHjybUX4IznBdesThviyg==
+Received: from DM6PR06MB5337.namprd06.prod.outlook.com (2603:10b6:5:102::19)
+ by SN6PR06MB4384.namprd06.prod.outlook.com (2603:10b6:805:b4::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.25; Mon, 26 Sep
+ 2022 12:58:28 +0000
+Received: from DM6PR06MB5337.namprd06.prod.outlook.com
+ ([fe80::34f3:b22d:b19e:17c3]) by DM6PR06MB5337.namprd06.prod.outlook.com
+ ([fe80::34f3:b22d:b19e:17c3%4]) with mapi id 15.20.5654.025; Mon, 26 Sep 2022
+ 12:58:27 +0000
+Date: Mon, 26 Sep 2022 07:58:22 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Sascha Hauer <s.hauer@pengutronix.de>
+Cc: dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	kernel@pengutronix.de,
 	Michael Riesch <michael.riesch@wolfvision.net>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v4] arm64: dts: rockchip: fix quartz64-a bluetooth configuration
-Date: Mon, 26 Sep 2022 14:53:48 +0200
-Message-Id: <20220926125350.64783-1-leo@nabam.net>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <CAMdYzYpdhJ-wWN9UAppQvaNqK8Y_RadYv2v67gD5S_u=1ZXw0Q@mail.gmail.com>
-References: <CAMdYzYpdhJ-wWN9UAppQvaNqK8Y_RadYv2v67gD5S_u=1ZXw0Q@mail.gmail.com>
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] drm/rockchip: vop2: Register Esmart0-win0 as primary
+ plane
+Message-ID:  <DM6PR06MB53374DB0DD35094BD46858BAA5529@DM6PR06MB5337.namprd06.prod.outlook.com>
+References: <20220926081643.304759-1-s.hauer@pengutronix.de>
+Content-Disposition: inline
+In-Reply-To: <20220926081643.304759-1-s.hauer@pengutronix.de>
+X-TMN: [lcbL7M9XDvqU2h/yohNMh6UrHYHMsfhl]
+X-ClientProxiedBy: DM6PR14CA0053.namprd14.prod.outlook.com
+ (2603:10b6:5:18f::30) To DM6PR06MB5337.namprd06.prod.outlook.com
+ (2603:10b6:5:102::19)
+X-Microsoft-Original-Message-ID:  <20220926125822.GA17697@wintermute.localdomain>
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM6PR06MB5337:EE_|SN6PR06MB4384:EE_
+X-MS-Office365-Filtering-Correlation-Id: f8f7b7c9-2ee4-4d2d-b007-08da9fbecc2e
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	s7yJERJUhRbeNJOXZEY4d5dIHI/TbEIjf4MaIiUfD2pNrfGLOWYuWoypwtPwMC1ZatFs1ZFmmjxItk4aha8t/MuKp8u8UJ6lMnvQm0EL6/tB7IiEu9XC/tFqWCRF3034QC/EWNobpLYB/W9ytt8wroTaaDt2+RXOweGwHxn1xyuOxUfx49MPy/DfOXP4sMUh0wLxCI0HuytpyVj9gmeNviOoyQVA48Y/Sf9YCtcKObHcjuRp7BdsZ0yT26kJAqAcOmCo5wGbnE5H9VWZZxLmP8BedF12euAxBw+WHv4lenLco81UxXWQ0PVD5JBJeDDC7g+5qJLVQEi34FI6+XkA42TISZtS02gw0JhiG0J011NIchF0yIZ7OS/t7U+wWkz68U8x8Cpm4+o8ave0huG+IxAZGXtJ7miRTq9jFQ8vRWDnPAtQSl3yY+8tV8DxMYGHKPn4sXRj5G7c02not027ZyeOR99oZfE9kNgoA1URIMVqGCiMLBxK0nXy7ds4Qo0gNy24Dea80OifHeYpAb4WQN2LATlUtAHk+fJdKEYM+IOgMm9edkpYxxdiyAsjbYttYOkl1PE3zYaRE5YFQPCLpmvokz6e+SeqWsThtWdF2+XTxlj7c8W7Ojr7geL3R5i9GljZD/X0Qiy8yKiEDfC6PkzuKAIWz3lnnUiluUuYWh1A+u7qExxF0EhSIsjG4ap6
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?us-ascii?Q?Ie2QHSSObWXHGQWoYn0f/GP4SDz1vKQRt99aP7HhjRbq3+y5rzxitnodA5M3?=
+ =?us-ascii?Q?zCWD6QLhGx16uuACKKBfb6jr6UBz4ROSbQTGnPMZDCTLMlbIagvsbhs8iILn?=
+ =?us-ascii?Q?mdtzZS+d4HNxU9hpE32X8ZhcZoHpDbj1t2hUR31QBS1WxAsI5ErpB5yKx94x?=
+ =?us-ascii?Q?f8UIUXDxBGr5Bi2nSd0xF5pI/U99rVjXtb+yS+mGYY7U06rhCoukOZj1psIr?=
+ =?us-ascii?Q?l0yVrQB2I0LvguWBj6bltAhQsCpMLmWl1eXs05jU4mG7ktyPW2Kq22PJ+Abj?=
+ =?us-ascii?Q?yJ2VqP+fPUF7PMiOR6xFTUN/pIi3UUBSpfVDhvZF3azZlTinliaDiMqM+/zu?=
+ =?us-ascii?Q?hUZ5ri7Ay6UDGPkjqtNq0HL8Ob9ZLhpHU+yU4IXtJmFN1ZcdOO5SunvUP0o5?=
+ =?us-ascii?Q?E/7VEGc1Cv5ubulP4PgbAXV2BAwDUAWe+ErDJxXmPujZZbj7tf2t5r9eszKg?=
+ =?us-ascii?Q?Ea2K7wFkY5oSM8jP/Y0mJaOGUIvG5+6NTN2gjRA7q7urcgPqZYfpKlDFkTbY?=
+ =?us-ascii?Q?8oQvESsF1LI6xRM830ZCPjbBBpQ367fCq8/fFCq2lgG6eO9x/TPtgJ3xU+gO?=
+ =?us-ascii?Q?hm+tIPwqu20uasX2BXsNkLlru8xbM+CshIGoXRIZvshv4Cbzuj4rbUi7Qv2i?=
+ =?us-ascii?Q?LGNELW6uzV5dtWD+bPbleTQ6q3kYrOTdtRMUC+g57dNgVx2LBQYEuVHw740d?=
+ =?us-ascii?Q?m18AD4MqpUuGLLOnnL1y/L0F+jigy4CWowfRjTMdCPYZPa6QKjd+9zrdIqti?=
+ =?us-ascii?Q?n/VUpGdPyaP8oYTeuIWE5dFZvBfVo3sERL+O8QnC0jYvZO8JxN51TM9O7LlF?=
+ =?us-ascii?Q?n8r1zScY5BJaDS1GTu6ZbytDTi01hR39v/7/EqH1UWz6UVi3hVrqQhp2cbwR?=
+ =?us-ascii?Q?rJbPO3vlkeJGfK7w4SJ4bCL+ha5OOUNo99s/yjSkCFeOLhhzUK0fUHtmJrVw?=
+ =?us-ascii?Q?vYUCP5bqMv9YqF+RDMPjDssQ9DdXNFdp5sB+JhBftaM+y071pjpiyxb3ZQ2M?=
+ =?us-ascii?Q?aBRxYXf6UxMPNL6ZRUDnPKxcqHsAnTsHp1SN/u4s2r90xzwMpGUricl63+8X?=
+ =?us-ascii?Q?HmRLZJv67DZPs17VONdb4mLJhizYs6AON5ghhCgScIiqST/W+z/wyqazqdAr?=
+ =?us-ascii?Q?FDqM9MPaWAk75cdv5HYZv9omuBwVxmOBzfLnzjE4d8/QciW30fqjjsVEEOaR?=
+ =?us-ascii?Q?TX7LSZjzTK5zqRPShLFR19/nOrTwsOB2G63eAaKZM+Uqq451iFX0fVIKyum4?=
+ =?us-ascii?Q?xD7EpdoeuRa+ittGJ7k3dzwDFO1/D3Tpdfj/AyEjYA=3D=3D?=
+X-OriginatorOrg: sct-15-20-4755-11-msonline-outlook-89723.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: f8f7b7c9-2ee4-4d2d-b007-08da9fbecc2e
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR06MB5337.namprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2022 12:58:27.8308
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 	00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN6PR06MB4384
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_055407_804420_136E99D4 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20220926_055833_885479_3EAD62F7 
+X-CRM114-Status: GOOD (  19.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,54 +126,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-For "Quartz64 Model A" add missing RTS line to the UART interface used by
-bluetooth and swap bluetooth host-wakeup and device-wakeup gpio pins to
-match the boards physical layout. This changes are necessary to make
-bluetooth provided by the wireless module work.
+On Mon, Sep 26, 2022 at 10:16:43AM +0200, Sascha Hauer wrote:
+> Esmart0-win0 could serve as primary plane, so mark it as such. On
+> RK3568 this window will never be used as primary plane, because the
+> three windows at the beginning of the rk3568_vop_win_data[] array
+> will be used. On RK3566 however, two of the windows at the beginning
+> of the rk3568_vop_win_data[] array cannot not be used due to hardware
+> limitations, so without this patch we end up with CRTCs without primary
+> planes when multiple VPs are active.
+> 
+> Signed-off-by: Sascha Hauer <s.hauer@pengutronix.de>
 
-Also set max-speed on the bluetooth device as it's not automatically
-detected.
+I have been testing this for a few days and it works well for me on 2
+distinct rk3566 based devices (Anbernic RG353P and Anbernic RG503).
 
-Fixes: b33a22a1e7c4248608e533fc4fa524258b3fae84 (arm64: dts: rockchip: add basic dts for Pine64 Quartz64-A)
+Tested-by: Chris Morgan <macromorgan@hotmail.com>
 
-Signed-off-by: Lev Popov <leo@nabam.net>
----
- arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-index a05460b92415..25a8c781f4e7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-quartz64-a.dts
-@@ -740,7 +740,7 @@ &uart0 {
- 
- &uart1 {
- 	pinctrl-names = "default";
--	pinctrl-0 = <&uart1m0_xfer &uart1m0_ctsn>;
-+	pinctrl-0 = <&uart1m0_xfer &uart1m0_ctsn &uart1m0_rtsn>;
- 	status = "okay";
- 	uart-has-rtscts;
- 
-@@ -748,13 +748,14 @@ bluetooth {
- 		compatible = "brcm,bcm43438-bt";
- 		clocks = <&rk817 1>;
- 		clock-names = "lpo";
--		device-wakeup-gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
--		host-wakeup-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
-+		host-wakeup-gpios = <&gpio2 RK_PC1 GPIO_ACTIVE_HIGH>;
-+		device-wakeup-gpios = <&gpio2 RK_PC0 GPIO_ACTIVE_HIGH>;
- 		shutdown-gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
- 		vbat-supply = <&vcc_sys>;
- 		vddio-supply = <&vcca1v8_pmu>;
-+		max-speed = <3000000>;
- 	};
- };
- 
--- 
-2.37.3
-
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> index 9bf0637bf8e26..9d30aa73b5422 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+> @@ -188,7 +188,7 @@ static const struct vop2_win_data rk3568_vop_win_data[] = {
+>  		.base = 0x1800,
+>  		.layer_sel_id = 2,
+>  		.supported_rotations = DRM_MODE_REFLECT_Y,
+> -		.type = DRM_PLANE_TYPE_OVERLAY,
+> +		.type = DRM_PLANE_TYPE_PRIMARY,
+>  		.max_upscale_factor = 8,
+>  		.max_downscale_factor = 8,
+>  		.dly = { 20, 47, 41 },
+> -- 
+> 2.30.2
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
