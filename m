@@ -4,170 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B3A9C6FA82
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Sep 2022 09:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03B83C07E9D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Sep 2022 09:52:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:
-	References:Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MBiIGdJWrZkPTxsDleUkqNn/CZbtcXkgeA4ziAD5JTc=; b=2q6nTWHeTwc9xk
-	ORDWR84AZ0r+bsKocKGuX2ad2ghyEAIDqy4sNmFY+Gt4YDRQfwcVpT6xIZEO2J1cdtkOzP4nmqL9c
-	Jli6PUA06qjegetF9XJsZKevDyCMTocyLQIwW4Njs6d4hB6GupmBC+mBETZihJop3cPo/lGKzstqG
-	edyutwOgMnGQglEM9K+YlhJqEWmARPA1Qr5iem+yiUsTM93hbWmCUKWFuachO99JOIaTqFwttzYGI
-	2cVfVDkPKLFjPYYDO+kLiiAXt9LOLTB6MEJkcsSq5dTAzhpCP4m8FHP790ghn90UW1hXVBHyaCF8o
-	keu/2P167GejlJKgbUUA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eb1/hpAhxeBikilkvb5SiwJsEQ/Pn72IFIn6B3c7+/E=; b=YdbMGZeY9WscYdYVzMgVMBHIsv
+	a+/XogJkNifH6OvjHmDO1C0mL2R+3kn2yaiKy7XHpw3FrpcIONEva6pr3mgCnbLSPtZkOKnBjMTJM
+	v2AZsF2kVPDY85cFeXAH57sFq+0f3NBwjaDVN+9I367jxZu+vbHJDOU9TTKzgb3H30WE7RsANOdVE
+	FTRjRRRGN1WRas1s9spaCnr7nGjkbpzxsYp9OekgVhk87cAjU9V6zP5rxqC8CEaGSZ48uJEdmV7uv
+	OrOvjchDfw10rJKurOkMOKTXGLtqMresnQ1eYEu92VRUhif0yoBzDpNVw00/nvAx78TwrZ5Nx5m3U
+	SocPZ9Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ock4O-003SSp-5E; Mon, 26 Sep 2022 09:06:32 +0000
-Received: from esa.microchip.iphmx.com ([68.232.153.233])
+	id 1ockm7-003noK-06; Mon, 26 Sep 2022 09:51:43 +0000
+Received: from mail-dbaeur03on2086.outbound.protection.outlook.com ([40.107.104.86] helo=EUR03-DBA-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ock3r-003S9O-NU; Mon, 26 Sep 2022 09:06:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
-  t=1664183159; x=1695719159;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-id:content-transfer-encoding:
-   mime-version;
-  bh=/MbKK/Tnrpd7i5sPPg92iolNhX8uZRcmvfVp+94dc30=;
-  b=tVOocV+IUNekCnVJ6y+i45ytiwaSLKUurJhanmlSsV1XgUprJDALxS50
-   2AhfiR8s266KKpfpsgboOdmLRWRX42/LFLgrdglT9CcKhDvN6hMwzZnEp
-   xUEde7NQ6wraIv3oiQ2FuzKuNK7Fy1Yo1vYUWZNlrSz2EAxwj+rc9VVSs
-   CcuAaDa/bOyrMrnZEx5mN7MGCE4azCqk+wBuCVK5Qj9N8L6oa3U1RGzDy
-   XBBtauO0DFdsH+qIow2xWAKJCkBrqMeNxDhrJz7JXL+8BBNtkiAygCYLU
-   lSSVT+di2VFIim7dtAWnGLal0Ak+j+DIdJ6bYB4yuse5E5nftf+zlDP3W
-   g==;
-X-IronPort-AV: E=Sophos;i="5.93,345,1654585200"; 
-   d="scan'208";a="182065228"
-Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
-  by esa3.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256; 26 Sep 2022 02:05:53 -0700
-Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.12; Mon, 26 Sep 2022 02:05:51 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.12 via Frontend Transport; Mon, 26 Sep 2022 02:05:51 -0700
+	id 1ockYm-003hGz-3w; Mon, 26 Sep 2022 09:37:58 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BgqBLJqvOZXspcC4YX07tOE62nJMTt4DtnIwku2WaGD9oJb9nM/6APQS4rZecBhDlbi3rDOlpI6Olsj7sxUb/0h3tnRmzoSUe1GFMx453YRM2wP/Lu5CUOOzSA4Ac3bfWZ3UzegcdfR1IEMHwpL83JNQHumzTxsvsSSBxzJCwB3w2K2i7AH8XIkqIGe8GrjlN37I+b15hT4WZieAyxCsEz+h9ucTvsCPj5Pi9sXZxU/ve3uZ0iI21daso/q3t61QI4dYm4uQZBGWSD1HepJDQUp8zw8tCuPOYw85myhWf/9YOn5/7OJTvBJszKptyUNXewXco4u28/xm1gYq6WUnoA==
+ b=UyoPUzaSrD6zqRQOb9+dNTWrC2EVrYK8Pi8kYw2PymmC74VMtyvRv3b1Tr1q32EzhJgHZkoSaT2eAVT/Y3mloqaNv8R3hNe42lfaPZAJKA5Q8XHxp2GgC9ifGiU1Snv/aejh0YuwRKoVzHPFEiRwNHLyegjJWo0r4rWtyM8/GvBK476TtRJxeT++3Ca/gF+XHQPBKClzc5Hqd5md08xA6GzMC/SjKUZSxwSWnsDoxgCIpzZwx/f+merqk2rQTfa1co6SVI6nrTzyNbwTJtttmfOxzbIp+IvcPNY3VzP33qps325Pbyo7XZlEXT1TLDiJ3MC/5M1nTFlBNy7BIzAzUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/MbKK/Tnrpd7i5sPPg92iolNhX8uZRcmvfVp+94dc30=;
- b=A/WWo6USi8r29B2kLS09BWhdFoIiGNTM3hWWWcztVz7OtkSsr9vywsHV8D9QJGh80kHFsHpJSPsSft05Dog/88AMj8xy70hlK29JRrmD/goHnpfzMj47i/CzteiLi9kM4Szo81GNLopqu4m8EhFLgM0Uk7kNVYsC4MusTpziMS8nUOSeGMP5zsLZtDYT+nKFGVEzrzDjM37Mg4J9Zg+L4anSZwNsWDakcHqzjYMDwOxZMizT0tfRQAMSooRZxYitj7ywTFfTgD9Mie8XK5jc5vPCHEzNix3boBw7WbE5MPxfAzecO5WYGwBKctAYhC51ZdKSK2HNivyhe35k8Y03RA==
+ bh=2uP81slpwwQYd3sBkznfh9OBoGxg5txOXoaQsv4Er+8=;
+ b=ZPFzBrKhvOS8K8TvIPIY6oY9dvft+K/w8zROBgp3LrBNkeyb0xdLSnlGe3BZhVb+Pb1WiiLfGMCrIf+LRX79zibsA/72zqmclGve1uKl84ahym3L9ghKkQi/YVxU/UVCvcVvb9ZPLjDfdsl3X6LPfibpHrnrUFTu0/KRN5CfAIEvkfu/vOVtdfpBS70rtoUdbMSNdgSWDTftkQe82k+L014dJRRNJTHw+3mL/ONU4peZhC5Zj8WmpJUcFfkBtg15Moz96Cb9tObFZRP/k+b/WAWYonMDu3DbQiNbd9N3kNXzH4ITZKF2UzR0TNN3bBgNa/Nj/rbGna5ffIKw43rJpA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
+ smtp.mailfrom=theobroma-systems.com; dmarc=pass action=none
+ header.from=theobroma-systems.com; dkim=pass header.d=theobroma-systems.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=theobroma-systems.com;
+ s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/MbKK/Tnrpd7i5sPPg92iolNhX8uZRcmvfVp+94dc30=;
- b=nSEHKtYqHtl5U7xKGyhodPXuvGzMutkTENvhHTB7gpAbu3+FNw3ZaTysOfAqmO9J9IFq/4OYykBVdkvxcuWGZyySJYrrlXQcEcS0OMLDsIaUaJ4kwftgALG77AbbK+tqmAzBAFt+v03kh+cJ9VOj1fdYKCJxll15qo1oyAPMNno=
-Received: from BYAPR11MB2758.namprd11.prod.outlook.com (2603:10b6:a02:c9::11)
- by PH7PR11MB6546.namprd11.prod.outlook.com (2603:10b6:510:212::16) with
+ bh=2uP81slpwwQYd3sBkznfh9OBoGxg5txOXoaQsv4Er+8=;
+ b=H5dmM6wwQqqUH0yQyMdm8XlGQiB6f/VbHF6Ogzy9aWq36XnGqYyqATzlnf+AdNQ0qv37uIgeeLrFFlqE0Px/dRiD4AHHwF+1iwy1jaSLq2gUvJQ+5djoRO5XQsLo9aRnFwJPMNuFauJU3o8t/aKmM2mmFGXF7nqSmxrca/Z1oXgzRcFMCx0mMLztNHGWhR5j7HUJLfWy53DA0G/friMDVqCEge2aqfB0Pw7FOFyZFatBg6JTGKfkQBZ3NSCblTtZ0sqkbRy4NUzkw/RXDnEH0v1y+vhYkOTxwgtqjWizv28NNSvlaB8hnzIK79ytQppPLfzp8LBy27jNefP0ZFivvw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=theobroma-systems.com;
+Received: from DU2PR04MB8536.eurprd04.prod.outlook.com (2603:10a6:10:2d7::10)
+ by AM8PR04MB7748.eurprd04.prod.outlook.com (2603:10a6:20b:243::19) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.25; Mon, 26 Sep
- 2022 09:05:50 +0000
-Received: from BYAPR11MB2758.namprd11.prod.outlook.com
- ([fe80::5d0a:7887:8de:b815]) by BYAPR11MB2758.namprd11.prod.outlook.com
- ([fe80::5d0a:7887:8de:b815%7]) with mapi id 15.20.5654.025; Mon, 26 Sep 2022
- 09:05:50 +0000
-From: <Sergiu.Moga@microchip.com>
-To: <fancer.lancer@gmail.com>
-CC: <Tudor.Ambarus@microchip.com>, <pratyush@kernel.org>, <michael@walle.cc>,
-	<miquel.raynal@bootlin.com>, <richard@nod.at>, <vigneshr@ti.com>,
-	<broonie@kernel.org>, <Nicolas.Ferre@microchip.com>,
-	<alexandre.belloni@bootlin.com>, <Claudiu.Beznea@microchip.com>,
-	<chin-ting_kuo@aspeedtech.com>, <clg@kaod.org>, <joel@jms.id.au>,
-	<andrew@aj.id.au>, <kdasu.kdev@gmail.com>, <han.xu@nxp.com>,
-	<john.garry@huawei.com>, <matthias.bgg@gmail.com>, <avifishman70@gmail.com>,
-	<tmaimon77@gmail.com>, <tali.perry1@gmail.com>, <venture@google.com>,
-	<yuenn@google.com>, <benjaminfair@google.com>, <haibo.chen@nxp.com>,
-	<yogeshgaur.83@gmail.com>, <heiko@sntech.de>, <mcoquelin.stm32@gmail.com>,
-	<alexandre.torgue@foss.st.com>, <michal.simek@xilinx.com>,
-	<bcm-kernel-feedback-list@broadcom.com>, <linux-mtd@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <linux-spi@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-aspeed@lists.ozlabs.org>,
-	<openbmc@lists.ozlabs.org>, <linux-mediatek@lists.infradead.org>,
-	<linux-rockchip@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>
-Subject: Re: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
-Thread-Topic: [PATCH] spi: Replace `dummy.nbytes` with `dummy.ncycles`
-Thread-Index: AQHYxgbXv+Ia8IJsckeaEgMIjUdYyq3wyR0AgAC5KwA=
-Date: Mon, 26 Sep 2022 09:05:49 +0000
-Message-ID: <18e6e8a8-6412-7e31-21e0-6becd4400ac1@microchip.com>
-References: <20220911174551.653599-1-sergiu.moga@microchip.com>
- <20220925220304.buk3yuqoh6vszfci@mobilestation>
-In-Reply-To: <20220925220304.buk3yuqoh6vszfci@mobilestation>
-Accept-Language: en-US
+ 2022 09:37:47 +0000
+Received: from DU2PR04MB8536.eurprd04.prod.outlook.com
+ ([fe80::5e5e:1989:e5ec:c833]) by DU2PR04MB8536.eurprd04.prod.outlook.com
+ ([fe80::5e5e:1989:e5ec:c833%3]) with mapi id 15.20.5654.025; Mon, 26 Sep 2022
+ 09:37:47 +0000
+Message-ID: <953e4d00-110e-b337-3c6c-af008c843046@theobroma-systems.com>
+Date: Mon, 26 Sep 2022 11:37:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.2.1
+Subject: Re: [PATCH 1/3] Input: add `SW_BOOT_ALT`
 Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=microchip.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BYAPR11MB2758:EE_|PH7PR11MB6546:EE_
-x-ms-office365-filtering-correlation-id: 99d92481-1c72-4b54-3102-08da9f9e4e8b
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: D2+adhypESBve38Hocb1FelT+udgwClnCXlu9EikkiWe2Fy3yBmyghpHAjIHlobd18pOzKMgpJx1ucLJcBfjNghocptGx/Uw/u2jP3uR8qESJ6T5IUbkAuiPXrm0IIQwm0HU6uC7N996BxHX1aVwHlLrdoO+QioPD+Ix65kbQem2ZfFU27gwxMLWHQqNdVmDWW12sCovS2HfFuuXAPEh7N0grGzV3IKxvwHfK7C5oA3G3fE5kT6djZ0CRSeTFODkMRQ2qEIghDV+g1ZwDrIbTuZwSobvX676DMgXNA2kc3Jn6rVL5geMn+YdTREtU7nz1nBpiT7nwrFRHUqpKLfMai2baqAIcisXbNHCuxn/CUYAzlWffHwvN0YFD6Slnj49CQA0jzSNADiN02lw6G1IAjRh48/hm1B0MlK/R6wjdLtDs8MTrGeAPtyu6Zjcv75yoJ1UNBg9fTrgLY/Lk7JvdKE61HbH8e2IXLrd+ebQulPQ8dr6kSYf4GYQlDvcdxTewso6mwKpiACPqGK6OcJFExFEF4d7/zLCp2R4xFBi2vvIM8H9swb2RFnMdGp6NJ0Sr8qISt/B3v9R4PQtyIXomokFU5ZcyOU/NM7mjtBgZ/M8ddQoAkBaC0sZ8R+anEeMbXYKjF5VBZZb6rzcQ5fYVVH/ndmAWqZ23W5qyYB56EeKjo4ozwFoxiqiZGOFpo+srEr3vsdYUO8Wtd/rXgffwXhbH9uChQKJii6eUc/YaVF+2F5c4kGaNnacrWn0mUIvporo5bjzFMV9T05s1KRDHw7rflKBNi3J478QvybXLE/IJjav2cykndKim+p6ZlNDDoQXuEgPGkXDkuW2yxbRdA==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BYAPR11MB2758.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(366004)(346002)(396003)(376002)(136003)(39860400002)(451199015)(38070700005)(83380400001)(36756003)(38100700002)(122000001)(8676002)(66476007)(64756008)(66556008)(66446008)(91956017)(66946007)(76116006)(4326008)(8936002)(31696002)(30864003)(7416002)(2906002)(5660300002)(7406005)(53546011)(6506007)(86362001)(41300700001)(6486002)(2616005)(186003)(6512007)(478600001)(54906003)(316002)(6916009)(71200400001)(26005)(31686004)(81973001)(45980500001)(579004)(559001);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZG5JemkvQ1Q5bHJySFlSOUs2dDRWMUUyT3NNdC9vWXVBSzZuOFgxdTdVLzlk?=
- =?utf-8?B?K3IxdXFlLzI3RE5WL2JlREZIa3RVZ3kvbEFDSXdwVWNtRXljeE44MWdnNHBO?=
- =?utf-8?B?aVRURVFtYmducUFIakJmTnc5TEhjOW9JRjdyREJ2N0M2Z2VaMFNJM01Cd1pS?=
- =?utf-8?B?Z0RxeTc2OFRzV3JTM0hmZWVaVW5zNDlYQjdZQmtobmhsMWVERW8yUm5FSlBR?=
- =?utf-8?B?REFTUVVpSUc3dUZObTJDMVo5OEZMWnpUNmVaSVVRZlpQNmsrMWQ0K1oyVDQ1?=
- =?utf-8?B?cG8rajNNUExzKzJ0ZVRycXBrazFBS3lJb2RJaWk1U2RZekVaTXc3RDlOSThX?=
- =?utf-8?B?bGpVOWpQNjZmSHJNVk5rUzhqYUh0MC9sckdONkhzb3RzYUh1L0ZCTFZ5V3VL?=
- =?utf-8?B?bzYvbFptN3ZsUnk0L2pEZjdiSzlTaTJ4bzFWbS9hTTBxQWZPMVlQL2Q3OGZp?=
- =?utf-8?B?QmkvenNweWVFaFhISlgyS0M3WHBtb3kzVEMxUndqenFzNFZPbFVqZ0pyeENV?=
- =?utf-8?B?UTdETFlCTEVHcmZWWTV0dG9wUm4wL0oyN1FGdG5FWi9NOXprZW1Dckp5SjB5?=
- =?utf-8?B?cS9zWURwU0xPbEh3bFB2ZWNyVXFPeXBMNkUvQ0YyRTJjbWpncWRhcDUyQjhZ?=
- =?utf-8?B?dmhGam9pYzJPODRQazE1cnZtaW1oNy9aSUNyWklHRlZzV3c1d1ZMeFdKOUhB?=
- =?utf-8?B?VHc1b3ZIclh5YStRRm1TNFVLV3puRkRuZEdHdkVxTkpUNlRtZ1lneW1lVHVm?=
- =?utf-8?B?QktjTVIxRHAyTnREOVJ6ZTcyaHRJL3Y4NkZvQ1FJQXlwRkh6dm1PMjdnZk5E?=
- =?utf-8?B?aTFvRGVxQkY0MzYvb2ZHanNicDFLcnlVZ0JQY2Jzc3l5NzMrcCttS3pYWjNP?=
- =?utf-8?B?MWtvLzczWmxIRE5NWFpkVmwxaDEzV3VMOTZBS0xMTll4S1ZZQ3VrQ2F4Q0NW?=
- =?utf-8?B?WnV2RnBPbmZ5eHpiWlFYdGZnUFZ4bFhqVi8vWTQwbk5CYUtNOUIyNk41bkRu?=
- =?utf-8?B?NnFmYmtEaFdPZWFIdHUwSEc3U2xrUk50bTZQeHE2d0gzcVhGVHc4SmNldnl5?=
- =?utf-8?B?dmh3T2x0MUp1MXk4RGQ4MUJJTEs3N083UkxDaG9ZOGZhVXJZdWZYK01nV1Nm?=
- =?utf-8?B?Y0xyKysxYjdIMytXeGtxeTVmc3B4R0Q3TkZRK3dHU29kOEpOb2RHa3R6WXBl?=
- =?utf-8?B?MDdOaGJHM1F1Vjh0cHhpTHRHZ25xUUxMUTEyOFFjTkYyVnVnenA2ZWs0U0xW?=
- =?utf-8?B?ZFVodVVvMXJaRGxHZUVNemNuR1hPN0dWMklCalR4WnJpUmRLbjBKZHQ0d2ZW?=
- =?utf-8?B?a0VEZ3F2M2NYNDYraC9aQURtL3p3WkR4VDgxWi96eXNUS2VraW94WDhORXI4?=
- =?utf-8?B?eTdPM0prQ0x1QVQyUmdVQUwxTWk1MDB0WGxRNEpvMS83RUs5cXB6MnpJalpu?=
- =?utf-8?B?RjZkWEg2ejlNQXhycnk0TmtrRTYvYk9WS3kzVE5JQjVXT2pLNlJUMEN5ZjB6?=
- =?utf-8?B?TTU0RlBpb1llT1FscU5ZM05sRXpYeWV2U0ZxWElTNktsQkJaT0M4QVVON2t2?=
- =?utf-8?B?Tk84bUZFY1BqTlVHT3pyTWlNMVNxVVEvTlJZSkpVWUxIU1RJQ0VDenI3UTFH?=
- =?utf-8?B?MjBiNWhuWHgvUGhrdWwyQ2Y0ZnYzeGFWZDU2RmpLb2ZFVEs1QXBVem1FWW43?=
- =?utf-8?B?OFczaUlNTDgxWU5uU3ArUXRjTzd0bTBLSjdOWGEwUkIvL05LbXdOaTU5QUp1?=
- =?utf-8?B?RVdpSWNEMWkxWFNLelNTTkRTSmlTZGFhL0l2YXNsWGYyWDVzZmJUL29MaDVW?=
- =?utf-8?B?YlRYTXJudDdIUjMyc3ZvRmpsK2tueWVIejlXVmkwdGxKQUdEWFFJQ0drTFlG?=
- =?utf-8?B?VTEvY3BhekROemFWdm5pQnowYWt6b0F1WURibVZIU0lDUmFoVGNRN0ZkbTZZ?=
- =?utf-8?B?OGtiSW5iNjRBeEEyOFJqWU1Yd3N2aDNOc082a05kVFRhRW9FUHdxaDlwMDNY?=
- =?utf-8?B?cGY2dlFQL3N0UHI3bWRpbFRLeC9uWDJHTG93dXpNbVNBeU5Zek1DTXhYMEhZ?=
- =?utf-8?B?Mkx1dGJTbFdtRW1IUGxmdVUwYUxKV3RWWXVvMDRqVUxLNGl1TlQ5U25XcWZT?=
- =?utf-8?Q?MGwF7DzFSp81B/GLXrSkZ0xEP?=
-Content-ID: <13772AC8944C264D900D43E41190BD3A@namprd11.prod.outlook.com>
+To: Jeff LaBundy <jeff@labundy.com>
+Cc: Quentin Schulz <foss+kernel@0leil.net>, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+ dmitry.torokhov@gmail.com, klaus.goger@theobroma-systems.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-input@vger.kernel.org
+References: <20220922101211.3215888-1-foss+kernel@0leil.net>
+ <20220922101211.3215888-2-foss+kernel@0leil.net> <YyyZRt5j180KzGqc@nixie71>
+ <7add41ad-2cff-adef-08c4-dbc02f7c7c31@theobroma-systems.com>
+ <Yy3qj432McMJ/5rl@nixie71>
+From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+In-Reply-To: <Yy3qj432McMJ/5rl@nixie71>
+X-ClientProxiedBy: FR0P281CA0124.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:97::13) To DU2PR04MB8536.eurprd04.prod.outlook.com
+ (2603:10a6:10:2d7::10)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR04MB8536:EE_|AM8PR04MB7748:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2a27c9fa-ee6f-443d-2d31-08da9fa2c53d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 	AYJcguX0bj07uu8rl3TUrgO52rNUp3vBqR8kJM2mNSAToPZY6TglnVj2I2rbtQqLEdmPEzD/J3x7fW9kCsDqs5l3Sx+jytifXl1AXjx+sVSAppsIfcQg8j+2P7mvZJRkSazHQSUjnK2xV5IJ6XKauvDmav8Cm+qEGN7IvqkILSN3kpepO3VWSNR9aZpLBYwhrfwluUwQo+jE+xYPKobtMj3lcHzmIgCmCdMlph+JV5xS0jhSSOAFFR2v2b+1oPmSB7PX3PFqGT0xxb+ePTCKeoNAqRGVwRvkPvuegCJI4zfYcICX+uUUvR6h0ZMt44PAOm6ojeI2Wc1EDFYmtb3ojyDnLylpYCK0zNtPA+cRfukfVBMbssS19lS9rnGbQK7poMQ/CnLx7pDgPnC47j8wFxkK0w/P9kIqSMcEiIwTwCXv6zlkHLvf4Ci5BiT0bguckME0l1Nf2d9E4kS8xwZhxtF7yggbVEgLJ2Ju42oa5Ag+a2+gQvTQ7xqJWh6MYiWQwml13Q3JqAfHxrUVaY51mQtOv3QCQ+eT718ckPYf86CP7DihbWmHDSC1obOlJ0qm58LtKu6KKELWQtOpwAiVPkcilENi/wRH3OtfpnTJgTV20nPd/0Cq89LcE2bV1FykIdfvoHnfhxLnKD5o7uf/g/0saGLj2wSh1Ccz70ZXBmsf51kbj5t6Gu2IAbCmW4OrwFT5yaeRPsLTrBQp9GmUcnHWy6alo4p16DDC1eGDuhZ0yLOqA98eCJJ8cTWdl/LXISdpe0TtlSK8QSLWDE8R5P1anG99dvh5f0kPPa2e+Lj/swSYQARd0caUuoe6Aiaaj8E5T7VFvf6EI7Oc4xk75g==
+X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR04MB8536.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(396003)(376002)(136003)(366004)(39850400004)(346002)(451199015)(6916009)(966005)(316002)(6486002)(31686004)(478600001)(66946007)(66556008)(8676002)(4326008)(66476007)(41300700001)(6506007)(36756003)(5660300002)(44832011)(53546011)(7416002)(6512007)(26005)(2906002)(2616005)(8936002)(186003)(38100700002)(86362001)(31696002)(81973001)(43740500002)(45980500001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?cTk2UzZ0c1dCbGxVc2FFbGdXL1pOUWtuRHYzWUxWbVUrMnB5OExLaG11a0Rp?=
+ =?utf-8?B?NkdoakxNYzQvRzQ1TmRBTG9lREVqV2FHdDM1eUhyZFVlWFNMWXlqVmFwakJQ?=
+ =?utf-8?B?YVNyVHljQmJRUEo5bDBxdEtmRVJ2Wm44RmpBZlNFWitJMEtabnZHbUJjbTkw?=
+ =?utf-8?B?aU9zVFUzMWRQcFc2dllrb2dQWHBZOEV4SVNudEpNSVI4ZjJmMCtxR2NqTmps?=
+ =?utf-8?B?a1IzblhkQWhEVkZ3aU52WjlTWHVJeU9tNU0vMDB6R01PNkRWbDJoSkpBWTVy?=
+ =?utf-8?B?NTA2c2FOdHdISnZIeHFRODU3UlJENktnakpWNGZ0UjVPajBTY0pUNkJReHZu?=
+ =?utf-8?B?ZXJUdUk0aU5FbXoySGNBYklIcmpyb3p4dUNEbllVb2Ivbis4YXk0R1NvUUpL?=
+ =?utf-8?B?OUZWMWIzSEpNWHJibkhWcnh6Rm9nZEVCSUs1Z05uMXJUZHRKWG1WS0JXQWcw?=
+ =?utf-8?B?eldIWDFVSi9BRlNBSGxqTFF4WWx6TUVxbHFVNHlGWDVIbU9SZnYzdk1mamQ0?=
+ =?utf-8?B?dlB6dVVPYnZFWlcraXpRWVgvU2dJcjlHdVlWbW83MGlYRkVwdUNlblRLekI0?=
+ =?utf-8?B?WVRWUW1jaG9KVnNDU1ByaHV0Q3FtZXJKT1VNSko2ZXRHRTJldmR5cXNTS0ZN?=
+ =?utf-8?B?eS9vZEx6R0FPUjVEZ0U2VkdRZWtLU0psUDhUM3lGU0JieGJzL1lJbTdsbXhG?=
+ =?utf-8?B?a1AwRzRGZ1BHZTlhbG51Rkg3RkUyWnNvRWZWVHkvd1FXL3FqdDBRakRvVzli?=
+ =?utf-8?B?dTE4NjM0aklKQUFEdEkyZzhvaE9vQ3RjYmdwbUFiM3lKSFV4QWRCZFVjNC91?=
+ =?utf-8?B?Mm1JT01DM3lFam8vUWRDNzlvTi9qYVJWa0dVOWdlN0g0cUoyclhBeGlGdmF2?=
+ =?utf-8?B?a244K0F0SmFYVWdxVEhyczJwK0QvOWxYVU03YW1nNEg3eit6R1dtZkpPSk11?=
+ =?utf-8?B?Y2oyaFh0MVRoMkY3aUUwTTRVREtaQmJZUTFVQWhvb1pwM1drWHRHYXZuNUdu?=
+ =?utf-8?B?Q3RtbG1ES2Y4bEo1SDQvUkk0SE9ZZkozRXJmMXFpQ3FZbkJXZlhxZ1BsWThJ?=
+ =?utf-8?B?bmhCU3FyUGRwMFBKYkFFNzJ0QjF2anBPT1ZrTnBLaDlHVUxCWURNY3lwbTlv?=
+ =?utf-8?B?K2x4YjVHMzNPZ1hMcDlzT3BialQxUi9ENWNNbWtxT1M2N21uK0pXL0doWTVJ?=
+ =?utf-8?B?YjQyM01kS2xRZzBCOUczWFIySlJFKy9vamVDL1hLaTlhOTJHa3NBRERJS3VQ?=
+ =?utf-8?B?UjR2bW15ODRjdUl5YnpVcFlRZHRUNGpUZ2dTZnR0d2M3N0MxSXkzV3NuZkhK?=
+ =?utf-8?B?YmRJcFRzSWpBM0ZzMGsvRFN4NVpvZzg2L244VFR1dDQxejMyZ0ltcUd2OXJa?=
+ =?utf-8?B?UlZCQ2htc2R4RnpyUFViRFdvSGw2YlI1TFk4ZVNQdm51dXgrNnhVeklnM2Vw?=
+ =?utf-8?B?dDZsYytuSEYxZy9EUUUyS1p2TVl2WkFzMUkvbkVzeWwraGVrc0RnZ2JjaDFt?=
+ =?utf-8?B?enVvTzBySFJrRzk3ZU12b1BhNWdLMmhSTkRIRHhxTElEVHNPMTVJSmh1aVNV?=
+ =?utf-8?B?cDRVc0lNbHdXQXF0ZkZERlRYV3g2bzVUenozQ2U2ZlFJTlBIUlBlbDNRREly?=
+ =?utf-8?B?clYxTWx5SDhwVWtDaklYcEpBNTloVkFHVlVITUJVanpSOXhXd3A5VFBOUEJC?=
+ =?utf-8?B?eWJyc3ZPSFBuaHYxT0ptaGJHYzlrZDJCTWZjWmgzdTdsOHFQYmxTUmUxU1Ur?=
+ =?utf-8?B?clBMSno4ajEwSStORFJSQVJSUjlIUE9yZHBuNHlCTmhpNGVpYTRsaThIRmxY?=
+ =?utf-8?B?cjJwQ0p3ajc3QjR3OHpjdzRaT3ZoL3N2QVUzRFpWU1VEYUJuMEJ0cUptWEdz?=
+ =?utf-8?B?ZExiWGlleEZNUkh3S1FKaVRGSWhpb0JJaXFQK29qd3VIL3VnMUo5SXJKTm4x?=
+ =?utf-8?B?ZUorTmNPcmo5cUprcngzRnd0Z01vNUZheVRteXQyZkpsT25ha0ovVWk3ejRO?=
+ =?utf-8?B?dGJBeHlGWjNyM3NMdmFjSkppVHNBWkRQbHFyN0lPeHd6QnVnb29vNE1WL1R2?=
+ =?utf-8?B?WWhIeVo4dHhWR1hyNEdoSFcxNkxTdHQ1T2ZCaFNKRVRCSy9IWUJMcVhtdis1?=
+ =?utf-8?B?bjBCaTNxU3BkT2JSbkE2aWpOK1ovd0JjMjRnalBqSmU1a2E2RVZrNnBPSndG?=
+ =?utf-8?Q?y9nQskWMn7XsLwForAm43l8=3D?=
+X-OriginatorOrg: theobroma-systems.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2a27c9fa-ee6f-443d-2d31-08da9fa2c53d
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR04MB8536.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB2758.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 99d92481-1c72-4b54-3102-08da9f9e4e8b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Sep 2022 09:05:49.7115
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Sep 2022 09:37:47.2591
  (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Mw00cFkPOrtOtCU4WHf6yFjC9fp56s9GmDUA5ozJvoCIp7poEzJSKlO9T7xwONO3M2HEuzh/OPfJWLfMozOlZErxhKL0zEJU2TGtT2MuMaI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB6546
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: FNCKKrbvc7unmKOhrC/jb9RDnWPxA9rfeiMzEHmoQiK+6Io4s/7o5XtkyhZP69jwXP6mtMA9x5pgiqYNHunE9+Y0bDMUOt/sS1eiVIefQx7SZt2u1ZouVGFHMI64wu2Z
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM8PR04MB7748
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_020559_953202_BA7912C2 
-X-CRM114-Status: GOOD (  24.03  )
+X-CRM114-CacheID: sfid-20220926_023756_438487_7EA02E8A 
+X-CRM114-Status: GOOD (  22.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -179,657 +145,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26.09.2022 01:03, Serge Semin wrote:
-> Hello Sergiu
+Hi all,
+
+On 9/23/22 19:19, Jeff LaBundy wrote:
+[...]
+>>
+>> I have this switch on the board and I want to expose its state to the user,
+>> if this new event code is not possible/a good idea what would you suggest we
+>> could use?
+>>
+>> Note that we already support the same switch but in a different way: https://urldefense.proofpoint.com/v2/url?u=https-3A__git.kernel.org_pub_scm_linux_kernel_git_torvalds_linux.git_tree_arch_arm64_boot_dts_rockchip_rk3399-2Dpuma-2Dhaikou.dts-23n167&d=DwIBAg&c=_sEr5x9kUWhuk4_nFwjJtA&r=LYjLexDn7rXIzVmkNPvw5ymA1XTSqHGq8yBP6m6qZZ4njZguQhZhkI_-172IIy1t&m=vObtDja6hUlL_kVvKRILCvaQfklw1gl7TAW7cm5_9H_Yi00zkzGV6-D3yzazR2gU&s=0Xo-7CDmMoriaTNn_hJdMwftLlcY-tgopPcgzXfQtJE&e=
+>> We are just configuring the GPIOs into the GPIO mode with a pull-up, and
+>> then it's up to the user to use gpiod or gpio-sysfs to check the state of
+>> the GPIO used for this switch. I don't like this, very not user-friendly and
+>> was looking for something better :)
+> 
+> Actually, that's exactly what I was going to suggest. What in particular
+> is not user-friendly about it?
 > 
 
+The implementation we currently have in place for Puma Haikou is just 
+muxing the pins in their GPIO function with a pull-up. Nothing else. 
+This means the user still needs to know exactly which GPIO number is for 
+which signal/event. Not that great. Also does not allow for a consistent 
+user "experience" across modules on the same devkit (different GPIOs 
+depending on the SoM).
 
-Hello Serge,
+I had hoped gpio-hog in input mode would expose it to userspace but it 
+does not seem to?
 
+Anything to recommend so that we can export a GPIO line for a specific 
+function to usersapce without needing the user to know which GPIO number 
+they should look at?
 
-> On Sun, Sep 11, 2022 at 08:45:53PM +0300, Sergiu Moga wrote:
->> In order to properly represent the hardware functionality
->> in the core, avoid reconverting the number of dummy cycles
->> to the number of bytes and only work with the former.
->> Instead, let the drivers that do need this conversion do
->> it themselves.
->>
->> Signed-off-by: Sergiu Moga <sergiu.moga@microchip.com>
->> ---
->>   drivers/mtd/spi-nor/core.c        | 22 ++++----------
-> 
-> [...]
-> 
->>   drivers/spi/spi-dw-core.c         | 10 +++++--
-> 
-> [...]
-> 
->>   drivers/spi/spi-mem.c             | 27 +++++++++++------
-> 
-> [...]
-> 
->>   drivers/spi/spi-mtk-nor.c         | 48 +++++++++++++++++--------------
-> 
-> [...]
-> 
->>   drivers/spi/spi-zynq-qspi.c       | 15 ++++++----
->>   drivers/spi/spi-zynqmp-gqspi.c    |  8 ++++--
->>   include/linux/spi/spi-mem.h       | 10 +++----
->>   25 files changed, 234 insertions(+), 147 deletions(-)
->>
->> diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
->> index f2c64006f8d7..cc8ca824f912 100644
->> --- a/drivers/mtd/spi-nor/core.c
->> +++ b/drivers/mtd/spi-nor/core.c
->> @@ -88,7 +88,7 @@ void spi_nor_spimem_setup_op(const struct spi_nor *nor,
->>        if (op->addr.nbytes)
->>                op->addr.buswidth = spi_nor_get_protocol_addr_nbits(proto);
->>
-> 
-> 
-> 
->> -     if (op->dummy.nbytes)
->> +     if (op->dummy.ncycles)
->>                op->dummy.buswidth = spi_nor_get_protocol_addr_nbits(proto);
->>
->>        if (op->data.nbytes)
->> @@ -106,9 +106,6 @@ void spi_nor_spimem_setup_op(const struct spi_nor *nor,
->>                op->dummy.dtr = true;
->>                op->data.dtr = true;
->>
->> -             /* 2 bytes per clock cycle in DTR mode. */
->> -             op->dummy.nbytes *= 2;
->> -
->>                ext = spi_nor_get_cmd_ext(nor, op);
->>                op->cmd.opcode = (op->cmd.opcode << 8) | ext;
->>                op->cmd.nbytes = 2;
->> @@ -207,10 +204,7 @@ static ssize_t spi_nor_spimem_read_data(struct spi_nor *nor, loff_t from,
->>
->>        spi_nor_spimem_setup_op(nor, &op, nor->read_proto);
->>
->> -     /* convert the dummy cycles to the number of bytes */
->> -     op.dummy.nbytes = (nor->read_dummy * op.dummy.buswidth) / 8;
->> -     if (spi_nor_protocol_is_dtr(nor->read_proto))
->> -             op.dummy.nbytes *= 2;
->> +     op.dummy.ncycles = nor->read_dummy;
-> 
-> So according to this modification and what is done in the rest of the
-> patch, the dummy part of the SPI-mem operations now contains the number
-> of cycles only. Am I right to think that it means a number of dummy
-> clock oscillations? (Judging from what I've seen in the HW-manuals of
-> the SPI NOR memory devices most likely I am...)
+While I have your attention, I was wondering about the BATTERY event. We 
+have a BATLOW button, following the Q7 standard:
+"""
+Battery low input. This signal may be driven active low by external
+circuitry to signal that the system battery is low or may be used to
+signal some other external battery management event.
+"""
 
+Oddly vague, but the EV_BATTERY event is not really more precise though 
+(at least didn't find more precise information and the introducing 
+commit is a bit vague too on the usage). Was just wondering if there was 
+any specific usage for this event or if I'm using it correctly here?
 
+Cheers,
+Quentin
 
-Yes, you are correct.
-
-
-> If so the "ncycles" field
-> is now free from the "data" semantic. Then what is the meaning of the
-> "buswidth and "dtr" fields in the spi_mem_op.dummy field?
-> 
-
-
-It is still meaningful as it is used for the conversion by some drivers 
-to nbytes and I do not see how it goes out of the specification in any 
-way. So, at least for now, I do not see any reason to remove these fields.
-
-
->>
->>        usebouncebuf = spi_nor_spimem_bounce(nor, &op);
->>
->> @@ -455,7 +449,7 @@ int spi_nor_read_sr(struct spi_nor *nor, u8 *sr)
->>
->>                if (nor->reg_proto == SNOR_PROTO_8_8_8_DTR) {
->>                        op.addr.nbytes = nor->params->rdsr_addr_nbytes;
->> -                     op.dummy.nbytes = nor->params->rdsr_dummy;
->> +                     op.dummy.ncycles = nor->params->rdsr_dummy;
->>                        /*
->>                         * We don't want to read only one byte in DTR mode. So,
->>                         * read 2 and then discard the second byte.
->> @@ -1913,10 +1907,7 @@ static int spi_nor_spimem_check_readop(struct spi_nor *nor,
->>
->>        spi_nor_spimem_setup_op(nor, &op, read->proto);
->>
->> -     /* convert the dummy cycles to the number of bytes */
->> -     op.dummy.nbytes = (nor->read_dummy * op.dummy.buswidth) / 8;
->> -     if (spi_nor_protocol_is_dtr(nor->read_proto))
->> -             op.dummy.nbytes *= 2;
->> +     op.dummy.ncycles = nor->read_dummy;
->>
->>        return spi_nor_spimem_check_op(nor, &op);
->>   }
->> @@ -3034,10 +3025,7 @@ static int spi_nor_create_read_dirmap(struct spi_nor *nor)
->>
->>        spi_nor_spimem_setup_op(nor, op, nor->read_proto);
->>
->> -     /* convert the dummy cycles to the number of bytes */
->> -     op->dummy.nbytes = (nor->read_dummy * op->dummy.buswidth) / 8;
->> -     if (spi_nor_protocol_is_dtr(nor->read_proto))
->> -             op->dummy.nbytes *= 2;
->> +     op->dummy.ncycles = nor->read_dummy;
->>
->>        /*
->>         * Since spi_nor_spimem_setup_op() only sets buswidth when the number
-> 
-> [...]
-> 
->> diff --git a/drivers/spi/spi-dw-core.c b/drivers/spi/spi-dw-core.c
->> index f87d97ccd2d6..0ba5c7d0e66e 100644
->> --- a/drivers/spi/spi-dw-core.c
->> +++ b/drivers/spi/spi-dw-core.c
->> @@ -498,13 +498,17 @@ static bool dw_spi_supports_mem_op(struct spi_mem *mem,
->>   static int dw_spi_init_mem_buf(struct dw_spi *dws, const struct spi_mem_op *op)
->>   {
->>        unsigned int i, j, len;
->> -     u8 *out;
->> +     u8 *out, dummy_nbytes;
->>
->>        /*
->>         * Calculate the total length of the EEPROM command transfer and
->>         * either use the pre-allocated buffer or create a temporary one.
->>         */
->> -     len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
-> 
->> +     dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
-> 
-> 1. What about using the BITS_PER_BYTE macro (linux/bits.h) here? Since
-> you are adding a similar modification to so many drivers what about using
-> that macro there too?
-> 
-
-
-AFAICT BIT_PER_BYTE is meant to transparently indicate how many bits per 
-byte an arch has. Although, there is no place in the kernel from what I 
-can see that has BITS_PER_BYTE with a value other than 8, you cannot 
-deny that there exist architectures whose number of bits per byte may be 
-different from 8.
-
-Meanwhile, the JESD216E specification tells us in the Terms and 
-definitions chapter that
-"DWORD: Four consecutive 8-bit bytes used as the basic 32-bit building 
-block for headers and parameter tables." So it explicitly says that a 
-byte has 8 bits regardless of the arch.
-
-Therefore, I do not agree with replacing 8 with the BITS_PER_BYTE macro 
-as, IMO, it does not represent the same thing as the number of bits per 
-byte that the terms and definitions of the JESD216E specification refer to.
-
-
-> 2. buswidth is supposed to be always 1 in this driver (see the
-> dw_spi_supports_mem_op() method). So it can be dropped from the
-> statement above.
-> 
-> 3. Since the ncycles now contains a number of clock cycles there is no
-> point in taking the SPI bus-width into account at all. What is
-> meaningful is how many oscillations are supposed to be placed on the
-> CLK line before the data is available. So the op->dummy.ncycles /
-> BITS_PER_BYTE statement would be more appropriate here in any case.
-> 
-
-
-I can agee with this in the case of this driver, sure.
-
-
->> +     if (op->dummy.dtr)
->> +             dummy_nbytes *= 2;
-> 
-> DTR is unsupported by the controller. See, no spi_controller_mem_caps
-> initialized. So this part is redundant. The same is most likely
-> applicable for some of the DTR-related updates in this patch too
-> since the spi_controller_mem_caps structure is initialized in a few
-> drivers only.
-> 
-
-
-Agreed. Initially, wherever I was not sure, I just placed this if 
-condition to avoid breaking anything in case the driver does support 
-DTR. The same goes for your other related observations to other driver 
-modifications, with which I agree :).
-
-
->> +
->> +     len = op->cmd.nbytes + op->addr.nbytes + dummy_nbytes;
->>        if (op->data.dir == SPI_MEM_DATA_OUT)
->>                len += op->data.nbytes;
->>
->> @@ -525,7 +529,7 @@ static int dw_spi_init_mem_buf(struct dw_spi *dws, const struct spi_mem_op *op)
->>                out[i] = DW_SPI_GET_BYTE(op->cmd.opcode, op->cmd.nbytes - i - 1);
->>        for (j = 0; j < op->addr.nbytes; ++i, ++j)
->>                out[i] = DW_SPI_GET_BYTE(op->addr.val, op->addr.nbytes - j - 1);
->> -     for (j = 0; j < op->dummy.nbytes; ++i, ++j)
->> +     for (j = 0; j < dummy_nbytes; ++i, ++j)
->>                out[i] = 0x0;
->>
->>        if (op->data.dir == SPI_MEM_DATA_OUT)
-> 
-> [...]
-> 
->> diff --git a/drivers/spi/spi-mem.c b/drivers/spi/spi-mem.c
->> index 0c79193d9697..7b204963bb62 100644
->> --- a/drivers/spi/spi-mem.c
->> +++ b/drivers/spi/spi-mem.c
->> @@ -149,7 +149,7 @@ static bool spi_mem_check_buswidth(struct spi_mem *mem,
->>            spi_check_buswidth_req(mem, op->addr.buswidth, true))
->>                return false;
->>
->> -     if (op->dummy.nbytes &&
->> +     if (op->dummy.ncycles &&
->>            spi_check_buswidth_req(mem, op->dummy.buswidth, true))
->>                return false;
->>
->> @@ -202,7 +202,7 @@ static int spi_mem_check_op(const struct spi_mem_op *op)
->>                return -EINVAL;
->>
->>        if ((op->addr.nbytes && !op->addr.buswidth) ||
->> -         (op->dummy.nbytes && !op->dummy.buswidth) ||
->> +         (op->dummy.ncycles && !op->dummy.buswidth) ||
->>            (op->data.nbytes && !op->data.buswidth))
->>                return -EINVAL;
->>
->> @@ -315,7 +315,7 @@ int spi_mem_exec_op(struct spi_mem *mem, const struct spi_mem_op *op)
-> 
->>        struct spi_controller *ctlr = mem->spi->controller;
->>        struct spi_transfer xfers[4] = { };
->>        struct spi_message msg;
->> -     u8 *tmpbuf;
->> +     u8 *tmpbuf, dummy_nbytes;
->>        int ret;
-> 
-> Reverse xmas tree order?
-> 
->>
->>        ret = spi_mem_check_op(op);
->> @@ -343,7 +343,11 @@ int spi_mem_exec_op(struct spi_mem *mem, const struct spi_mem_op *op)
->>                        return ret;
->>        }
->>
-> 
->> -     tmpbufsize = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
->> +     dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
-> 
-> So ncycles now indeed is a number of CLK line oscillations. This most
-> likely will break the SPI Nand driver then, which still passes the
-> number of bytes to the SPI_MEM_OP_DUMMY() macro.
-> 
->> +     if (op->dummy.dtr)
->> +             dummy_nbytes *= 2;
-> 
-> Generic SPI-mem ops don't take the DTR mode into account. So I don't
-> see this necessary.
-> 
-
-
-You may be right, but this part of the code does take into consideration 
-the number of dummy.nbytes to calculate the xfer length. Therefore, 
-shouldn't this code block also know if the number of dummy nbytes is 
-actually double the amount that it calculated through the conversion 
-formula?
-
-
->> +
->> +     tmpbufsize = op->cmd.nbytes + op->addr.nbytes + dummy_nbytes;
->>
->>        /*
->>         * Allocate a buffer to transmit the CMD, ADDR cycles with kmalloc() so
->> @@ -379,15 +383,15 @@ int spi_mem_exec_op(struct spi_mem *mem, const struct spi_mem_op *op)
->>                totalxferlen += op->addr.nbytes;
->>        }
->>
->> -     if (op->dummy.nbytes) {
->> -             memset(tmpbuf + op->addr.nbytes + 1, 0xff, op->dummy.nbytes);
->> +     if (dummy_nbytes) {
->> +             memset(tmpbuf + op->addr.nbytes + 1, 0xff, dummy_nbytes);
->>                xfers[xferpos].tx_buf = tmpbuf + op->addr.nbytes + 1;
->> -             xfers[xferpos].len = op->dummy.nbytes;
->> +             xfers[xferpos].len = dummy_nbytes;
->>                xfers[xferpos].tx_nbits = op->dummy.buswidth;
->>                xfers[xferpos].dummy_data = 1;
->>                spi_message_add_tail(&xfers[xferpos], &msg);
->>                xferpos++;
->> -             totalxferlen += op->dummy.nbytes;
->> +             totalxferlen += dummy_nbytes;
->>        }
->>
->>        if (op->data.nbytes) {
->> @@ -456,12 +460,17 @@ int spi_mem_adjust_op_size(struct spi_mem *mem, struct spi_mem_op *op)
->>   {
-> 
->>        struct spi_controller *ctlr = mem->spi->controller;
->>        size_t len;
->> +     u8 dummy_nbytes;
-> 
-> reverse xmas tree?
-> 
->>
->>        if (ctlr->mem_ops && ctlr->mem_ops->adjust_op_size)
->>                return ctlr->mem_ops->adjust_op_size(mem, op);
->>
->> +     dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
->> +     if (op->dummy.dtr)
->> +             dummy_nbytes *= 2;
->> +
->>        if (!ctlr->mem_ops || !ctlr->mem_ops->exec_op) {
->> -             len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes;
->> +             len = op->cmd.nbytes + op->addr.nbytes + dummy_nbytes;
->>
->>                if (len > spi_max_transfer_size(mem->spi))
->>                        return -EINVAL;
-> 
-> [...]
-> 
->> diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
->> index d167699a1a96..f6870c6e911a 100644
->> --- a/drivers/spi/spi-mtk-nor.c
->> +++ b/drivers/spi/spi-mtk-nor.c
->> @@ -171,23 +171,18 @@ static bool need_bounce(struct mtk_nor *sp, const struct spi_mem_op *op)
->>
->>   static bool mtk_nor_match_read(const struct spi_mem_op *op)
->>   {
->> -     int dummy = 0;
->> -
->> -     if (op->dummy.nbytes)
->> -             dummy = op->dummy.nbytes * BITS_PER_BYTE / op->dummy.buswidth;
->> -
->>        if ((op->data.buswidth == 2) || (op->data.buswidth == 4)) {
->>                if (op->addr.buswidth == 1)
->> -                     return dummy == 8;
->> +                     return op->dummy.ncycles == 8;
->>                else if (op->addr.buswidth == 2)
->> -                     return dummy == 4;
->> +                     return op->dummy.ncycles == 4;
->>                else if (op->addr.buswidth == 4)
->> -                     return dummy == 6;
->> +                     return op->dummy.ncycles == 6;
->>        } else if ((op->addr.buswidth == 1) && (op->data.buswidth == 1)) {
->>                if (op->cmd.opcode == 0x03)
->> -                     return dummy == 0;
->> +                     return op->dummy.ncycles == 0;
->>                else if (op->cmd.opcode == 0x0b)
->> -                     return dummy == 8;
->> +                     return op->dummy.ncycles == 8;
->>        }
->>        return false;
->>   }
->> @@ -195,6 +190,10 @@ static bool mtk_nor_match_read(const struct spi_mem_op *op)
->>   static bool mtk_nor_match_prg(const struct spi_mem_op *op)
->>   {
->>        int tx_len, rx_len, prg_len, prg_left;
-> 
->> +     u8 dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
->> +
-> 
-> IMO it's better to move the initialization statement to a separate
-> line here.
-> 
->> +     if (op->dummy.dtr)
->> +             dummy_nbytes *= 2;
-> 
-> Does the MTK SPI driver support DTR? AFAICS it doesn't.
-> 
->>
->>        // prg mode is spi-only.
->>        if ((op->cmd.buswidth > 1) || (op->addr.buswidth > 1) ||
->> @@ -205,7 +204,7 @@ static bool mtk_nor_match_prg(const struct spi_mem_op *op)
->>
->>        if (op->data.dir == SPI_MEM_DATA_OUT) {
->>                // count dummy bytes only if we need to write data after it
->> -             tx_len += op->dummy.nbytes;
->> +             tx_len += dummy_nbytes;
->>
->>                // leave at least one byte for data
->>                if (tx_len > MTK_NOR_REG_PRGDATA_MAX)
->> @@ -221,7 +220,7 @@ static bool mtk_nor_match_prg(const struct spi_mem_op *op)
->>                        return false;
->>
->>                rx_len = op->data.nbytes;
->> -             prg_left = MTK_NOR_PRG_CNT_MAX / 8 - tx_len - op->dummy.nbytes;
->> +             prg_left = MTK_NOR_PRG_CNT_MAX / 8 - tx_len - dummy_nbytes;
->>                if (prg_left > MTK_NOR_REG_SHIFT_MAX + 1)
->>                        prg_left = MTK_NOR_REG_SHIFT_MAX + 1;
->>                if (rx_len > prg_left) {
->> @@ -230,11 +229,11 @@ static bool mtk_nor_match_prg(const struct spi_mem_op *op)
->>                        rx_len = prg_left;
->>                }
->>
->> -             prg_len = tx_len + op->dummy.nbytes + rx_len;
->> +             prg_len = tx_len + dummy_nbytes + rx_len;
->>                if (prg_len > MTK_NOR_PRG_CNT_MAX / 8)
->>                        return false;
->>        } else {
->> -             prg_len = tx_len + op->dummy.nbytes;
->> +             prg_len = tx_len + dummy_nbytes;
->>                if (prg_len > MTK_NOR_PRG_CNT_MAX / 8)
->>                        return false;
->>        }
->> @@ -244,15 +243,19 @@ static bool mtk_nor_match_prg(const struct spi_mem_op *op)
->>   static void mtk_nor_adj_prg_size(struct spi_mem_op *op)
->>   {
->>        int tx_len, tx_left, prg_left;
-> 
->> +     u8 dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
->> +
->> +     if (op->dummy.dtr)
->> +             dummy_nbytes *= 2;
-> 
-> ditto
-> 
->>
->>        tx_len = op->cmd.nbytes + op->addr.nbytes;
->>        if (op->data.dir == SPI_MEM_DATA_OUT) {
->> -             tx_len += op->dummy.nbytes;
->> +             tx_len += dummy_nbytes;
->>                tx_left = MTK_NOR_REG_PRGDATA_MAX + 1 - tx_len;
->>                if (op->data.nbytes > tx_left)
->>                        op->data.nbytes = tx_left;
->>        } else if (op->data.dir == SPI_MEM_DATA_IN) {
->> -             prg_left = MTK_NOR_PRG_CNT_MAX / 8 - tx_len - op->dummy.nbytes;
->> +             prg_left = MTK_NOR_PRG_CNT_MAX / 8 - tx_len - dummy_nbytes;
->>                if (prg_left > MTK_NOR_REG_SHIFT_MAX + 1)
->>                        prg_left = MTK_NOR_REG_SHIFT_MAX + 1;
->>                if (op->data.nbytes > prg_left)
->> @@ -312,7 +315,7 @@ static bool mtk_nor_supports_op(struct spi_mem *mem,
->>                        break;
->>                case SPI_MEM_DATA_OUT:
->>                        if ((op->addr.buswidth == 1) &&
->> -                         (op->dummy.nbytes == 0) &&
->> +                         (op->dummy.ncycles == 0) &&
->>                            (op->data.buswidth == 1))
->>                                return true;
->>                        break;
->> @@ -515,17 +518,20 @@ static int mtk_nor_spi_mem_prg(struct mtk_nor *sp, const struct spi_mem_op *op)
->>        int tx_len, prg_len;
->>        int i, ret;
->>        void __iomem *reg;
-> 
->> -     u8 bufbyte;
->> +     u8 bufbyte, dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
->> +
->> +     if (op->dummy.dtr)
->> +             dummy_nbytes *= 2;
-> 
-> ditto
-> 
->>
->>        tx_len = op->cmd.nbytes + op->addr.nbytes;
->>
->>        // count dummy bytes only if we need to write data after it
->>        if (op->data.dir == SPI_MEM_DATA_OUT)
->> -             tx_len += op->dummy.nbytes + op->data.nbytes;
->> +             tx_len += dummy_nbytes + op->data.nbytes;
->>        else if (op->data.dir == SPI_MEM_DATA_IN)
->>                rx_len = op->data.nbytes;
->>
->> -     prg_len = op->cmd.nbytes + op->addr.nbytes + op->dummy.nbytes +
->> +     prg_len = op->cmd.nbytes + op->addr.nbytes + dummy_nbytes +
->>                  op->data.nbytes;
->>
->>        // an invalid op may reach here if the caller calls exec_op without
->> @@ -550,7 +556,7 @@ static int mtk_nor_spi_mem_prg(struct mtk_nor *sp, const struct spi_mem_op *op)
->>        }
->>
->>        if (op->data.dir == SPI_MEM_DATA_OUT) {
->> -             for (i = 0; i < op->dummy.nbytes; i++, reg_offset--) {
->> +             for (i = 0; i < dummy_nbytes; i++, reg_offset--) {
->>                        reg = sp->base + MTK_NOR_REG_PRGDATA(reg_offset);
->>                        writeb(0, reg);
->>                }
-> 
-> [...]
-> 
->> diff --git a/drivers/spi/spi-zynq-qspi.c b/drivers/spi/spi-zynq-qspi.c
->> index 78f31b61a2aa..84b7db85548c 100644
->> --- a/drivers/spi/spi-zynq-qspi.c
->> +++ b/drivers/spi/spi-zynq-qspi.c
->> @@ -527,7 +527,10 @@ static int zynq_qspi_exec_mem_op(struct spi_mem *mem,
->>   {
->>        struct zynq_qspi *xqspi = spi_controller_get_devdata(mem->spi->master);
->>        int err = 0, i;
->> -     u8 *tmpbuf;
->> +     u8 *tmpbuf, dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
-> 
-> Separate line?
-> 
->> +
->> +     if (op->dummy.dtr)
->> +             dummy_nbytes *= 2;
-> 
-> Is DTR supported by the driver?
-> 
-
-
-Not from what I can see, but I was not 100% sure so I placed this if 
-statement here just in case.
-
-
-
->>
->>        dev_dbg(xqspi->dev, "cmd:%#x mode:%d.%d.%d.%d\n",
->>                op->cmd.opcode, op->cmd.buswidth, op->addr.buswidth,
->> @@ -568,17 +571,17 @@ static int zynq_qspi_exec_mem_op(struct spi_mem *mem,
->>                        err = -ETIMEDOUT;
->>        }
->>
->> -     if (op->dummy.nbytes) {
->> -             tmpbuf = kzalloc(op->dummy.nbytes, GFP_KERNEL);
->> +     if (dummy_nbytes) {
->> +             tmpbuf = kzalloc(dummy_nbytes, GFP_KERNEL);
->>                if (!tmpbuf)
->>                        return -ENOMEM;
->>
->> -             memset(tmpbuf, 0xff, op->dummy.nbytes);
->> +             memset(tmpbuf, 0xff, dummy_nbytes);
->>                reinit_completion(&xqspi->data_completion);
->>                xqspi->txbuf = tmpbuf;
->>                xqspi->rxbuf = NULL;
->> -             xqspi->tx_bytes = op->dummy.nbytes;
->> -             xqspi->rx_bytes = op->dummy.nbytes;
->> +             xqspi->tx_bytes = dummy_nbytes;
->> +             xqspi->rx_bytes = dummy_nbytes;
->>                zynq_qspi_write_op(xqspi, ZYNQ_QSPI_FIFO_DEPTH, true);
->>                zynq_qspi_write(xqspi, ZYNQ_QSPI_IEN_OFFSET,
->>                                ZYNQ_QSPI_IXR_RXTX_MASK);
->> diff --git a/drivers/spi/spi-zynqmp-gqspi.c b/drivers/spi/spi-zynqmp-gqspi.c
->> index c760aac070e5..b41abadef9a6 100644
->> --- a/drivers/spi/spi-zynqmp-gqspi.c
->> +++ b/drivers/spi/spi-zynqmp-gqspi.c
->> @@ -948,6 +948,10 @@ static int zynqmp_qspi_exec_op(struct spi_mem *mem,
->>        u32 genfifoentry = 0;
->>        u16 opcode = op->cmd.opcode;
->>        u64 opaddr;
-> 
->> +     u8 dummy_nbytes = (op->dummy.ncycles * op->dummy.buswidth) / 8;
->> +
->> +     if (op->dummy.dtr)
->> +             dummy_nbytes *= 2;
-> 
-> ditto
-> 
->>
->>        dev_dbg(xqspi->dev, "cmd:%#x mode:%d.%d.%d.%d\n",
->>                op->cmd.opcode, op->cmd.buswidth, op->addr.buswidth,
->> @@ -1006,14 +1010,14 @@ static int zynqmp_qspi_exec_op(struct spi_mem *mem,
->>                }
->>        }
->>
->> -     if (op->dummy.nbytes) {
->> +     if (dummy_nbytes) {
->>                xqspi->txbuf = NULL;
->>                xqspi->rxbuf = NULL;
->>                /*
->>                 * xqspi->bytes_to_transfer here represents the dummy circles
->>                 * which need to be sent.
->>                 */
->> -             xqspi->bytes_to_transfer = op->dummy.nbytes * 8 / op->dummy.buswidth;
->> +             xqspi->bytes_to_transfer = dummy_nbytes;
->>                xqspi->bytes_to_receive = 0;
->>                /*
->>                 * Using op->data.buswidth instead of op->dummy.buswidth here because
->> diff --git a/include/linux/spi/spi-mem.h b/include/linux/spi/spi-mem.h
->> index 2ba044d0d5e5..5fd45800af03 100644
->> --- a/include/linux/spi/spi-mem.h
->> +++ b/include/linux/spi/spi-mem.h
->> @@ -29,9 +29,9 @@
->>
->>   #define SPI_MEM_OP_NO_ADDR   { }
->>
-> 
->> -#define SPI_MEM_OP_DUMMY(__nbytes, __buswidth)                       \
->> +#define SPI_MEM_OP_DUMMY(__ncycles, __buswidth)              \
->>        {                                                       \
-> 
->> -             .nbytes = __nbytes,                             \
->> +             .ncycles = __ncycles,                           \
->>                .buswidth = __buswidth,                         \
-> 
-> Please make sure this update and the drivers/spi/spi-mem.c driver
-> alterations are coherent with the SPI Nand driver. See the macro usages:
-> include/linux/mtd/spinand.h: SPINAND_PAGE_READ_FROM_*().
-> 
-> -Sergey
->
-
-
-Yes, indeed, I should have paid more attention here. As I have 
-previously said,  I simply replaced dummy.nbytes with the code sequences 
-you now see. I should have checked for SPI_MEM_OP_DUMMY usages as well 
-since I changed its definition. Thank you! :)
-
-
->>        }
->>
->> @@ -83,8 +83,8 @@ enum spi_mem_data_dir {
->>    *         Note that only @addr.nbytes are taken into account in this
->>    *         address value, so users should make sure the value fits in the
->>    *         assigned number of bytes.
->> - * @dummy.nbytes: number of dummy bytes to send after an opcode or address. Can
->> - *             be zero if the operation does not require dummy bytes
->> + * @dummy.ncycles: number of dummy cycles after an opcode or address. Can
->> + *              be zero if the operation does not require dummy cycles
->>    * @dummy.buswidth: number of IO lanes used to transmit the dummy bytes
->>    * @dummy.dtr: whether the dummy bytes should be sent in DTR mode or not
->>    * @data.buswidth: number of IO lanes used to send/receive the data
->> @@ -112,7 +112,7 @@ struct spi_mem_op {
->>        } addr;
->>
->>        struct {
->> -             u8 nbytes;
->> +             u8 ncycles;
->>                u8 buswidth;
->>                u8 dtr : 1;
->>        } dummy;
->> --
->> 2.34.1
->>
-
-
-Regards,
-	Sergiu
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
