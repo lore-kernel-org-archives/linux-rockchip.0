@@ -4,134 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7C7DC6FA83
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Sep 2022 05:42:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6F31C07E9D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Sep 2022 07:56:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=UuLcglgKMZlN/JIiuVUqgG5RBP/FCCQeQ1NLTQPEjbg=; b=1jYgqNnfDU5grcBhOp7BtjeX+J
-	YTQ/luOG3SZI30huxVAMbnPaUDP+CE5G0oo0wA5fHtSmma0Mnz9AHV/XR/N2esZH2JiSWuCSy4i2B
-	Fwvrx70fyHF+s1ppLbSBZwZSzemWpAwCbDEQOMjldHohyxwdM6UIoJCEUuUBE0NSJW0DR/6h0jzfn
-	Jjx3GmM45q4/+xQW2sVM8Bkz3isEs1BZc3SGSRS69aSMfOTvN/7z0p1doooJa2g+O/hDgM/3Yx+P5
-	kQiMjcdrQx3fqgvEZec5D7jn7T6DD/exAscVD6aKMDahEf+wNLEOCULZ0fTTozvHQhvhlFJOw3S4Z
-	QWWbpCKg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=w2ewNjuPH3tCNpBACI9xMFukG8dznlgGn9auxf/TbSQ=; b=JKVfhY0kqXqCiC
+	mvmZdGsbjh1UgfE9IHwitCoZDUY9KuIhUQteCO1ae+lh9oipbcHI8Ed1N09bvI01HToks9Z3ZgWKN
+	3Pg0yXo/KlF0BVFzU+FUFPZ/5nERNknu3/oodFy56R4S89uqzZDZkGXxkh9pcgrcAZRicEzOX+7mB
+	Ta0kJipE4ak2aiA31MsKWBsMTj7DuJJ04BNcWDUXPVQ8npo7RE6HDoFdcesddGZlBkGrvcw8q+iAv
+	Wxle/WHEZnsH7E+NGfr5hwQoRw/xZwPIBXqQ1oFgSTBT3tfp3ceFlWqV4DqBIGENvyBfDpmdB1mDq
+	acLZVNIC99/96hWmaioA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od3MC-008Qnz-26; Tue, 27 Sep 2022 05:42:12 +0000
-Received: from mail-db8eur05on2049.outbound.protection.outlook.com ([40.107.20.49] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1od5Rc-008v0n-7a; Tue, 27 Sep 2022 07:55:56 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od3M9-008Qn9-5f; Tue, 27 Sep 2022 05:42:10 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=A16EzXoeEUaUputWzmYgGVi/ZjLm/AO1plOm1Jpu+U28FosejhoQBB8eIgJEhql/ZkpFbWHZK1E2HJWJfFFanih2LGU4o7tsFj1bIKR0XqaQQ7MyBWNQjSCl5XCmYWLZZZkhRUIkV5sks+h6lDqjobIhMSxaCcEfKlTclujeNe9EnjFS048dZBsKOJK+UhMU/tVNpnqv6CQlnVPl11m7IDkDxEEJg3hQJq+39PGLeFXVvHWbwTClp9jBzlJxJLvWIzunM0eSxUyEZ7K0+XST3kbNgH8uhdFPcr9QqpBS4ZeuRuZ2ILh1ouFGc6gzbZiTOPwdsFI737roW5cdTt+peA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=b+SeRhHPIVYNiF0rT3sB/vJbw4z0MF1y6sXdkhhp3BY=;
- b=IzuTAxI4T3UGHBCs8UMandlR01RsKUvyPEeG4VqknccBhb2TwRQRfUmvcnBxomHZeJxO2touIsBblnsDUA3snShHYU5LbYRHa0YD72AMeDD6aXy1FKyJGhgu52uD3JesUOll2zrr+so4Anaxk2QF8tZZ4HEV4HEG5SA/JvPEqKRBwz/MgUGxMKyqYKvwbW7ghJtB1GEWmshuVFF0y897WjhixHo5EFOxmJbYED8b00XS5jZhgDSCbI0j3oYQmLujBkPJwvO7TzwlGFG9oVsjBohCmzT+Ocaz4CV8rhc/fyK/gr1CzpAOzqHIy8X4Q+ktqmzKxoU1/YK1K1lFElWXWg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=wolfvision.net; dmarc=pass action=none
- header.from=wolfvision.net; dkim=pass header.d=wolfvision.net; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wolfvision.net;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=b+SeRhHPIVYNiF0rT3sB/vJbw4z0MF1y6sXdkhhp3BY=;
- b=YhGw7NLo8RM4achMvMW77dJPAwbkJYXJV0yodwucwZGBrhityuwpk1u1hMnBZQpptIqUvgDSN8euBmhErvUfBp9975hBbuWFoyiybWTrg21sCc3DvLVmxTMD4b3H/F/CrJG+uAODfDb2mA5AaKsUZv3/MBLPxNPyOHxEfpTWU6E=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=wolfvision.net;
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com (2603:10a6:10:416::5)
- by PAVPR08MB9187.eurprd08.prod.outlook.com (2603:10a6:102:30b::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5654.22; Tue, 27 Sep
- 2022 05:42:05 +0000
-Received: from DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::30bd:5198:8936:b796]) by DU0PR08MB9155.eurprd08.prod.outlook.com
- ([fe80::30bd:5198:8936:b796%9]) with mapi id 15.20.5654.025; Tue, 27 Sep 2022
- 05:42:05 +0000
-Message-ID: <f54aa330-3f19-b415-e62e-7edc0d1f0f3f@wolfvision.net>
-Date: Tue, 27 Sep 2022 07:42:02 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.0
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Add regulator suffix to rock-3a
-Content-Language: en-US
-To: Chukun Pan <amadeus@jmu.edu.cn>, linux.amoon@gmail.com
-Cc: heiko@sntech.de, krzysztof.kozlowski+dt@linaro.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- robh+dt@kernel.org
-References: <20220926061420.1248-1-linux.amoon@gmail.com>
- <20220926180102.37614-1-amadeus@jmu.edu.cn>
- <20220926180102.37614-2-amadeus@jmu.edu.cn>
-From: Michael Riesch <michael.riesch@wolfvision.net>
-In-Reply-To: <20220926180102.37614-2-amadeus@jmu.edu.cn>
-X-ClientProxiedBy: ZR0P278CA0074.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:22::7) To DU0PR08MB9155.eurprd08.prod.outlook.com
- (2603:10a6:10:416::5)
+	id 1od5RI-008unv-Nb
+	for linux-rockchip@lists.infradead.org; Tue, 27 Sep 2022 07:55:39 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id iv17so5974710wmb.4
+        for <linux-rockchip@lists.infradead.org>; Tue, 27 Sep 2022 00:55:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
+        bh=2nwWkT4441Zvq5igIAOKA8C0HAjPPXDmTRADPlAyhok=;
+        b=FhCg6N8IdLUqYun9zFfNxEKEFxD/HuGTkniM7ShtX24traaLVPnNCQf6esKBn0W/kg
+         3yjeiHkQXXz4+27KjUI70493oisSzR9M+ECcruAfQ7DAoW3K2SxW0OPUFapVTtqi9hR5
+         DEjiIryUck3YbGPpR/3H1zoaJlaK8HOPpPjJz3u1MSKuAUg07OS5wukM9QalNg/F6WQ4
+         qdi5dxstPbe57InTXy89Cw1DxqZFA+D7aWz4xTTnXeUZFjvQ86dPVGGZ5n+KlcS8iQD4
+         zk1b82sC3K3UwhhbL3n/c+tgU+UlqcbVBkgl9oi4xF/S1hwsKSLiTcDZ9suJmNp+ZnUi
+         bUyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=2nwWkT4441Zvq5igIAOKA8C0HAjPPXDmTRADPlAyhok=;
+        b=Ue6YW/lrbwJJFWOwZo541YsQMMZFcB7K9IktDuT/0W8uiOOgWRPDF79xs9/1NtIYtD
+         yQQ+y3DCdTmPJbTa1uMmrXo2VPHUa1MzxAx1AZWwZSxrMgJIzyHyIRNb72HokZnPaqWZ
+         o/QdwOQA/nRmnqA0yrfCHN0U0Yum/FnIonN2K7Ph62XWMoKf1JK0Iv1EUCCn9aA33VSE
+         CgAA4oVHlx+ndWTyGYnBbPCFueuLfw1471FgNCm+sGoAmkdZeT33D8dQEi+v1KJJHYNZ
+         2pR+jeJ6n0HAAJVt+9VElLUZX70Oy6CXxkfU7Q7kS4j0iDdvQvRRI4M6hitab+A8Sgy0
+         bvHQ==
+X-Gm-Message-State: ACrzQf0D3YpI5pSl1B2z75dlK245Ft1ZkesZbwjWLaYiRai3KaaE2QcH
+	QAr8ttId/Oy10sX7jjdrhwdl0A==
+X-Google-Smtp-Source: AMsMyM6h87WBvVreQkid4R2UnKxsEZtgzHIzUDroAKPttULMr+SwoIKne5+cNdtK+OWCySafkeOQVg==
+X-Received: by 2002:a05:600c:4f89:b0:3b4:a6fc:89e5 with SMTP id n9-20020a05600c4f8900b003b4a6fc89e5mr1531348wmq.149.1664265334129;
+        Tue, 27 Sep 2022 00:55:34 -0700 (PDT)
+Received: from localhost.localdomain (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
+        by smtp.googlemail.com with ESMTPSA id x8-20020adfdcc8000000b0022afbd02c69sm1076654wrm.56.2022.09.27.00.55.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 Sep 2022 00:55:33 -0700 (PDT)
+From: Corentin Labbe <clabbe@baylibre.com>
+To: heiko@sntech.de,
+	ardb@kernel.org,
+	davem@davemloft.net,
+	herbert@gondor.apana.org.au,
+	krzysztof.kozlowski+dt@linaro.org,
+	mturquette@baylibre.com,
+	robh+dt@kernel.org,
+	sboyd@kernel.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	linux-crypto@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Corentin Labbe <clabbe@baylibre.com>,
+	John Keeping <john@metanate.com>
+Subject: [PATCH v10 01/33] crypto: rockchip: use dev_err for error message about interrupt
+Date: Tue, 27 Sep 2022 07:54:39 +0000
+Message-Id: <20220927075511.3147847-2-clabbe@baylibre.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220927075511.3147847-1-clabbe@baylibre.com>
+References: <20220927075511.3147847-1-clabbe@baylibre.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DU0PR08MB9155:EE_|PAVPR08MB9187:EE_
-X-MS-Office365-Filtering-Correlation-Id: 08031253-4ede-4ce2-a64a-08daa04b0251
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	gyol0KOYhHzh35UFyJhP+eG+xKt9M7DcpPRNO5sqmASWsBCG7i0OvkY1Smox84PGymUXdgDg1sAhgNeIe2CIoBuAzMV7KVpcDBu6n7zPIetI6h1g/ibS71Nqkj0X/AHa16eXY4vm9qQHE6erGIv+R04avjgZOPjiB517rwl6nlqo8a/GOTEubptiT2MH4qlVcpGqOzkqDRyLIrBxQUCp18eQdUW7MQUqeLyNfpMzFTzJrNX531pa0CxXecP0WSGQn/PcZVTQjdolqmI7aqI1yySn76fw8yPjEoiD+ujiftbH1/EnwAmKcx1BX9uyD4dr1Ud/w4Bup4Uxe4KwlJHVrsXk7ku46lLE2Y4gf2g0e5RABtdz/KG8W3nmLbPGv+BXA+l+vVad3y1ybXXCVCa2x9B2TNARGLeKL+x3R0IdVWDbRoBAIL+8PsQprUUEAGr/nyM6g0qsLgdF5o9k9LPcCB1bNiG+0OAzsM3c2eMJOPPsN+2hw3feovTVDijrEL/lTls05EBRIAEuq1X7vzMFZ2Ilpx7cJjVm/8fH1zjvYJMFe3G1UaPZIC/O6S+S4Hf1A5UuJ5yG3OFDKEW+ofhfnrbSJ4+iw8GVklWNo/ampCK0qsDBAXLPi83O+FPPKamzPKwvjEy/5HUg97YrvQsN5B5Vivox+XMWzOsvLLzYz1097Ue3pCm+wYHgz+BhHqdor1tPyOJwRaGpnZQnf9u9p6O2Gv/6tlQBkx95jP0fKlggOiMlM4cOFxW52F7WZ05SGoVsUYxNgZFwjHqwBOUQI2wQD+v1i33w58Rmv+zj1U0=
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU0PR08MB9155.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(366004)(39850400004)(376002)(346002)(136003)(396003)(451199015)(6512007)(6506007)(44832011)(6666004)(66476007)(478600001)(53546011)(52116002)(38100700002)(8936002)(8676002)(41300700001)(5660300002)(66946007)(66556008)(4326008)(36756003)(186003)(31696002)(2616005)(83380400001)(86362001)(6486002)(2906002)(31686004)(316002)(45980500001)(43740500002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?UmVTZXJGUitaQ2dSTGVlMHdkMUdpRERUQklzVm5kdjEzTkpadlo0WCtEc094?=
- =?utf-8?B?OE0yRCt4M2h6aHhuL25Qclh4dmFPOTNrUXFrOXJTR3JZUU40VmVSVTMrd3Jx?=
- =?utf-8?B?VHRiYlc4NG1SVnNNc2dhdlV1bVI3eWxKOHJDL1JyRUlDODNsS3NBa1JXamtR?=
- =?utf-8?B?VnJlOS92VllIcWdKak9BRVkwZGs4bVRtcFRZR0NacDZaVEYzeG1wamdTYVVR?=
- =?utf-8?B?NmlKMVZEMVlGYmVVTmZFZ3ZrVEJaV3JGZGthRHhDL3dGZjZhbk9pU2dnTVdz?=
- =?utf-8?B?L21SdjA0M214SHpYbmtvM0dJc05QS2t1aFJNMEQ2aEExN0JZZldxWHlCcmlK?=
- =?utf-8?B?eEVRWnF3dUJ1MDNzdjRTaUVvQi9QT2tYZkJJakFiNWhhL2VrN3kxWGtZTlJo?=
- =?utf-8?B?dml3ZmNnblJSalR1WmdtOVZFS1l1MklWWTdEYnJUV1BVb3JwUkh2VWpZY3gw?=
- =?utf-8?B?WHh6bFRZVFg2RVZNSmx3eElKLzcyYkloWVBGNzhvTjFZSGdoM1JiazFjait6?=
- =?utf-8?B?b1RGQ0dJTkFiajRvRGhlWEdwTXJhNTdONDVzUW1RSDExM2pWL0YyYUhlVnNm?=
- =?utf-8?B?QW5pSC9KbjEwWHJqQnE1L3ZVUFUxMTBsdHVEbURncXdqOGFoTGRReklETWFL?=
- =?utf-8?B?aUwzQVRqYlczZndVSlBqL1lnczhSOHNJbVBYV3BqVUFBMzArUlhWY05ESlZH?=
- =?utf-8?B?WHBLK0wyZFR6ZGVvQ2kxNXVtOUhzcnQzMitscHpSVFZJZXNsOU9aTGhtVmdx?=
- =?utf-8?B?bG9nZFNmbTNnd3Jib1k2ZVpWYmhaUUpVa3Awb1pscTE5ZWFqRS9qNHp0L05z?=
- =?utf-8?B?QWxSNS84a2xwcmJXQkQvb3lyTVpFbjNnYWo3TG5SME9JL2ZwdEVlUkQzUHdX?=
- =?utf-8?B?clhacThJcWZjdU5yZTBnMUFOU0d1Y0JpNnpnNEdYYW93ekk3VzRldzFXWTlX?=
- =?utf-8?B?M0pYRE9VNWQwMVhkQjgzRzY1MTllTkV0bVNwVURDZEFHWHE0M3ViWFlvMHZq?=
- =?utf-8?B?V0Q2YUpVSFRiaGJPNHorUDhBTEZaWWRSeTMrbm1WbzRKRW40S2RnSXRveENS?=
- =?utf-8?B?L3RHOFVaQ0V5T3EyeHorTmlpNjYwcEIvK0lhR0lEQm95dXE5cXNzdXJCYW5J?=
- =?utf-8?B?Wjl6YW9MYWdTa0VBZWJlYlM1dWVMaTBNRk5rOSswMzlNZ0NXWUdSNThNYzBn?=
- =?utf-8?B?Mnd1akhoTHBYVGF0ZjJIUmpjcFVERW84bkp6VEpPTjZZNlRRK1NBZEJ0bU9h?=
- =?utf-8?B?TDF3b1JYQU9nOTVGVEhlVGlRbGlieFc4UFM3bDFZVm55VVZxd29vcjQ5Rm1C?=
- =?utf-8?B?cWRVT3FWajRBV2dObmhYUHI3NW4zUUNmbk9iT3dvcFhhSEhIcW9IWDhNdnYr?=
- =?utf-8?B?eXd4ZFlNMDdyK1ZrSmxvOFFZYjg5cnZIVnBabWptMW1JRlJYZDllb0poN1RY?=
- =?utf-8?B?dk1GdWVwUzZuUTZwZDgyS0ZmOGtBdE9aNlM1VHZIZjR4QXF5cWdQVkxETEN5?=
- =?utf-8?B?bWU0RCtURTUwdWpQMTdMaGZMakVLc1Mxc295YWt3bVJRQTIwWXBWcmlwbHFt?=
- =?utf-8?B?UXUxOVRpR2pCT1VoRGdHVlVURXVibmE0MFI5YzhDN3hyY083VklmQ2VtVkEz?=
- =?utf-8?B?NEZURHJvYUg2dnM3dGpXYVM3OFFiaWxGVEJvc0I2WWlWNGVNK2hYTFI3bFcr?=
- =?utf-8?B?YUZ1MUFtNHJQeXRWeXl4S091OE8rUXJDWVJiRjlrS1luSlgrMlNzMVZvRVdh?=
- =?utf-8?B?YVBDQy9IYWRxR3BVQmZhQVhGVDZLemRScjRCZGROaHpVak42dm5rN2U0TVN2?=
- =?utf-8?B?ZHJmZVNob084OEFXNWo4QTdmMkRTMTNOSjduc3FwOXlwR2NmanJtQ054ZUYx?=
- =?utf-8?B?WlU2ZmlKN2ZYWUc4T09VUXVPeHA2VEJRdXlXZk1ZelBaSFdEMzBQV1c5ZS9V?=
- =?utf-8?B?UHhMWk9kWDd2YmZDZkd5M3VQNnVpblBvbmJVcEN2NGJtaTAyUUpsanpJd3Iy?=
- =?utf-8?B?MFZKSFQvVEE0dWRERnZKS3MxeDBpenhZdEpJdzhHVVI3eW4wWjNjY1JVT3A4?=
- =?utf-8?B?SEQ2aiszMVpmdEo3NU11QkJCRmZCQ3c1SFllYVpWVUw3L3llOXZJZXZEenNn?=
- =?utf-8?B?L212d04xcHdaNTJwTkpBRVFrRUxGLzI1d2FrZjhHUXUzQjRUTlRtc29MSjJQ?=
- =?utf-8?B?Slh4YnZuclVmY1lZV3dZdTRvaFEvcVVGY2ZBMnQ4ZGg4TDlEWEY3M05XeG95?=
- =?utf-8?B?NVRONHdjeXR5ZGFGSHQ3NFdRaGFRPT0=?=
-X-OriginatorOrg: wolfvision.net
-X-MS-Exchange-CrossTenant-Network-Message-Id: 08031253-4ede-4ce2-a64a-08daa04b0251
-X-MS-Exchange-CrossTenant-AuthSource: DU0PR08MB9155.eurprd08.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Sep 2022 05:42:04.9492
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e94ec9da-9183-471e-83b3-51baa8eb804f
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: d1qaSPSxm6ibdq9xTODQPMP0EnDjmxnZZFfIcWIygChbeO+Udc7JgqFW0RooNOU+ySjlPP1031yuQ5aTYazeBX6uPNfrgRFv57cyplnQdkk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAVPR08MB9187
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220926_224209_470912_D18E2DA2 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20220927_005536_834343_D4CD3915 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,90 +102,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chukun,
+Interrupt is mandatory so the message should be printed as error.
 
-On 9/26/22 20:01, Chukun Pan wrote:
-> Add -regulator suffix to regulator names on Radxa ROCK3 Model A
-> board. This makes the naming more consistent.
-> 
-> Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
+Reviewed-by: John Keeping <john@metanate.com>
+Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+---
+ drivers/crypto/rockchip/rk3288_crypto.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Acked-by: Michael Riesch <michael.riesch@wolfvision.net>
+diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
+index 35d73061d156..45cc5f766788 100644
+--- a/drivers/crypto/rockchip/rk3288_crypto.c
++++ b/drivers/crypto/rockchip/rk3288_crypto.c
+@@ -371,8 +371,7 @@ static int rk_crypto_probe(struct platform_device *pdev)
+ 
+ 	crypto_info->irq = platform_get_irq(pdev, 0);
+ 	if (crypto_info->irq < 0) {
+-		dev_warn(crypto_info->dev,
+-			 "control Interrupt is not available.\n");
++		dev_err(&pdev->dev, "control Interrupt is not available.\n");
+ 		err = crypto_info->irq;
+ 		goto err_crypto;
+ 	}
+-- 
+2.35.1
 
-Thanks and best regards,
-Michael
-
-> ---
->  arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts | 14 +++++++-------
->  1 file changed, 7 insertions(+), 7 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> index fb87a168fe96..8adf672709e8 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-> @@ -60,7 +60,7 @@ simple-audio-card,codec {
->  		};
->  	};
->  
-> -	vcc12v_dcin: vcc12v-dcin {
-> +	vcc12v_dcin: vcc12v-dcin-regulator {
->  		compatible = "regulator-fixed";
->  		regulator-name = "vcc12v_dcin";
->  		regulator-always-on;
-> @@ -79,7 +79,7 @@ vcc3v3_pcie: vcc3v3-pcie-regulator {
->  		vin-supply = <&vcc5v0_sys>;
->  	};
->  
-> -	vcc3v3_sys: vcc3v3-sys {
-> +	vcc3v3_sys: vcc3v3-sys-regulator {
->  		compatible = "regulator-fixed";
->  		regulator-name = "vcc3v3_sys";
->  		regulator-always-on;
-> @@ -89,7 +89,7 @@ vcc3v3_sys: vcc3v3-sys {
->  		vin-supply = <&vcc12v_dcin>;
->  	};
->  
-> -	vcc5v0_sys: vcc5v0-sys {
-> +	vcc5v0_sys: vcc5v0-sys-regulator {
->  		compatible = "regulator-fixed";
->  		regulator-name = "vcc5v0_sys";
->  		regulator-always-on;
-> @@ -99,7 +99,7 @@ vcc5v0_sys: vcc5v0-sys {
->  		vin-supply = <&vcc12v_dcin>;
->  	};
->  
-> -	vcc5v0_usb: vcc5v0-usb {
-> +	vcc5v0_usb: vcc5v0-usb-regulator {
->  		compatible = "regulator-fixed";
->  		regulator-name = "vcc5v0_usb";
->  		regulator-always-on;
-> @@ -109,7 +109,7 @@ vcc5v0_usb: vcc5v0-usb {
->  		vin-supply = <&vcc12v_dcin>;
->  	};
->  
-> -	vcc5v0_usb_host: vcc5v0-usb-host {
-> +	vcc5v0_usb_host: vcc5v0-usb-host-regulator {
->  		compatible = "regulator-fixed";
->  		enable-active-high;
->  		gpio = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
-> @@ -144,7 +144,7 @@ vcc5v0_usb_otg: vcc5v0-usb-otg-regulator {
->  		vin-supply = <&vcc5v0_usb>;
->  	};
->  
-> -	vcc_cam: vcc-cam {
-> +	vcc_cam: vcc-cam-regulator {
->  		compatible = "regulator-fixed";
->  		enable-active-high;
->  		gpio = <&gpio1 RK_PB1 GPIO_ACTIVE_HIGH>;
-> @@ -160,7 +160,7 @@ regulator-state-mem {
->  		};
->  	};
->  
-> -	vcc_mipi: vcc-mipi {
-> +	vcc_mipi: vcc-mipi-regulator {
->  		compatible = "regulator-fixed";
->  		enable-active-high;
->  		gpio = <&gpio3 RK_PC0 GPIO_ACTIVE_HIGH>;
 
 _______________________________________________
 Linux-rockchip mailing list
