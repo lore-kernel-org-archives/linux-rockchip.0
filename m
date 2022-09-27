@@ -4,59 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7AB9C07E9D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Sep 2022 17:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDC73C54EE9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Sep 2022 18:16:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=viipVh77XYcW1pWe0nWSrIEBpyFIrpE6jP/1wsXq87U=; b=CyXdCrj1ALBenU
-	eEgyXrp2gNReu5LmmHP8TpqXOT30lQLaI1YAceypLxZ1t/oR+ccJUKuy2VtFihtSidAeKFI28b9op
-	D7rcptKhuZ55mXq0sL3K46pMRP8qE6a/O8bLMsroVTKyW9iPJGidN4CSdbn1MAe1E9DDahDHO4ePQ
-	O1ji+D3IGiIJmC60oH3rK1BUIsoYtOCfRDOqFujzzOSU7TAwDBiMOOlA0MlMNK+beTNWTdt2qRyi6
-	YzEjOPjJqRLa0Wfzv+ufZajMNjhX51zvqCGkvLc9Buq+Wyemi0VcRmqx9wM3PmaWLDShEmS8M88oU
-	4SwO+e5SG/Bew3cZ1Mkw==;
+	List-Owner; bh=puyTvYdZeJalUr8yj4RLIvz6u1WDozLk9ZYrMvtk2O8=; b=ayrdhtSTUE+RuH
+	hHRygJSPut7nuG+A+cvvYoYznoUj8AGJwOr++ciV9x8vovQMkw/j9fnjXa8GxO+oLXppfPF4M6fp9
+	UskBrryc7dznh8P+952msWBXs8pq8jdySSHBF+mwjSbgyEGE4DwfpLUxMTqzTm8IWKsRULzbPBOan
+	gkLZ1K/Cnxn3JDckNmY/WF3QBSIf+c/RfYooJmCz2K+sbJBc5qxDEy+uIfqRLD18PxfM6Apf3uQm9
+	XAGC2AsJdxANAahyuh7RMguKQ9UmJi3Jyn1KjBKZIXspJ8B9Vr4wgnik+QYyCpPi9Xos8f6BXIc+Q
+	+HRO6ZnHL4eaOlQdNyvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odEmY-00C4Zz-96; Tue, 27 Sep 2022 17:54:10 +0000
-Received: from mail.manjaro.org ([116.203.91.91])
+	id 1odF7p-00C7th-V8; Tue, 27 Sep 2022 18:16:09 +0000
+Received: from mail-m121145.qiye.163.com ([115.236.121.145])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odEmT-00C4VU-AB
-	for linux-rockchip@lists.infradead.org; Tue, 27 Sep 2022 17:54:07 +0000
-Message-ID: <2430a203-f8e7-7d78-3e9e-9e1d9c6826c9@manjaro.org>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
-	t=1664301235;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=rlXUgXCriowHMoD+UbuC8uS7M0ukzwfVFCBxHU+1p7U=;
-	b=xzFTW0vI6JFzJH/lQ5QyYcY0LOV+svwCyzJ3f9A7EvU8qat067mYCxMkjEt58GJ1fKDA33
-	u/chyZS/CLoKLuf+fAOIocu4ijMOtPxjoDAwU4gi7ZsbhZsw4DAKYvziPglkjYBRa7JJxH
-	0IbrHswHBsaUd5uN6n2Fzentz1MfY6bnhznYHzyd3rcFYgkGaVz/W6UYuQGSFMKeoB7kKy
-	4TUAGROoMcDY96oaueh8QLRV7yH0IxMEV8JXsM6llELKBzE3kh9+wfnVL39BBqgV6oft4A
-	T3YQUp4vpJ7cz0nKceN5dA5ykLsKZjvAQ6AMT3tLQI8rP0F3mSzthEOnd6HMkA==
-Date: Tue, 27 Sep 2022 19:53:54 +0200
+	id 1odF7V-00C7ph-HL; Tue, 27 Sep 2022 18:15:52 +0000
+Received: from amadeus-VLT-WX0.lan (unknown [218.85.118.195])
+	by mail-m121145.qiye.163.com (Hmail) with ESMTPA id 935608000A3;
+	Wed, 28 Sep 2022 02:15:37 +0800 (CST)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: linux.amoon@gmail.com
+Cc: heiko@sntech.de,
+	robh+dt@kernel.org,
+	michael.riesch@wolfvision.net,
+	krzysztof.kozlowski+dt@linaro.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: Re: [PATCH-next v1] arm64: dts: rockchip: Enable NVM Express PCIe controller on rock3a
+Date: Wed, 28 Sep 2022 02:15:30 +0800
+Message-Id: <20220927181531.5546-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <CANAwSgTyt2D-aEMMowO6d+0ddTQb46o0pWMahnr7ny2rjY7iaQ@mail.gmail.com>
+References: <CANAwSgTyt2D-aEMMowO6d+0ddTQb46o0pWMahnr7ny2rjY7iaQ@mail.gmail.com>
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 0/2] drm/rockchip: dw_hdmi: Add 4k@30 support
-Content-Language: da-DK
-To: Michael Riesch <michael.riesch@wolfvision.net>,
- Sascha Hauer <s.hauer@pengutronix.de>, dri-devel@lists.freedesktop.org
-Cc: linux-rockchip@lists.infradead.org, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, kernel@pengutronix.de,
- Robin Murphy <robin.murphy@arm.com>
-References: <20220926080435.259617-1-s.hauer@pengutronix.de>
- <cf2285dc-d732-0c6d-83bc-022f23f29524@wolfvision.net>
-From: Dan Johansen <strit@manjaro.org>
-Organization: Manjaro ARM
-In-Reply-To: <cf2285dc-d732-0c6d-83bc-022f23f29524@wolfvision.net>
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=strit@manjaro.org smtp.mailfrom=strit@manjaro.org
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaGklPVhhDGEJLSUNOH0oaS1UTARMWGhIXJBQOD1
+	lXWRgSC1lBWUlKQ1VDTlVKSkNVSkJOWVdZFhoPEhUdFFlBWU9LSFVKSUtDTk1VSktLVUtZBg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6Nj46FDo4Lz0hPg44FxM5PBY8
+	SB0aCyJVSlVKTU1PSEtJTkhDSkxOVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUlK
+	Q1VDTlVKSkNVSkJOWVdZCAFZQUlOSEg3Bg++
+X-HM-Tid: 0a8380295c56b03akuuu935608000a3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_105405_890141_273D9171 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20220927_111550_023235_C32E2C76 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,52 +66,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Anand,
 
-Den 26.09.2022 kl. 12.30 skrev Michael Riesch:
-> Hi Sascha,
->
-> On 9/26/22 10:04, Sascha Hauer wrote:
->> This series adds support for 4k@30 to the rockchip HDMI controller. This
->> has been tested on a rk3568 rock3a board. It should be possible to add
->> 4k@60 support the same way, but it doesn't work for me, so let's add
->> 4k@30 as a first step.
->> 														     Sascha
->>
->> Changes since v1:
->> - Allow non standard clock rates only on Synopsys phy as suggested by
->>    Robin Murphy
->>
->> Sascha Hauer (2):
->>    drm/rockchip: dw_hdmi: relax mode_valid hook
->>    drm/rockchip: dw_hdmi: Add support for 4k@30 resolution
->>
->>   drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 34 ++++++++++++++++-----
->>   1 file changed, 27 insertions(+), 7 deletions(-)
-> Thanks for the v2! On a RK3568 EVB1 with a HP 27f 4k monitor
->
-> Tested-by: Michael Riesch <michael.riesch@wolfvision.net>
+On 27-09-22, 19:16, Anand Moon wrote:
 
-Sadly this still doesn't give my display out on my 2k monitor. Not even 
-just 1080p picture like the old current implementation does.
+> As per the schematic below pice support with 2 regulators
+>
+> VCC3V3_PCIE        (SCT2250FPA)
+> VCC3V3_PI6C_03  (PI6C557-03 is a spread spectrum clock generator
+> supporting PCI Express and Ethernet requirements)
 
->
-> Best regards,
-> Michael
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> [0] https://dl.radxa.com/rock3/docs/hw/3a/rock3a_v1.3_sch.pdf
+
+Thanks for sharing, I rewrote this patch, can you try again?
+
+> No, it did not work on my board, see bool logs.
+> [0] https://pastebin.com/Lk93VFxg
+
+From the boot log, looks like ethernet is broken:
+  mdio_bus stmmac-0: MDIO device at address 0 is missing.
+  rk_gmac-dwmac fe010000.ethernet eth0: no phy at addr -1
+
+Actually I had this problem too, and reusing the "snps, reset"
+property solved it. What confuses me is am I doing something
+wrong or there is something wrong with the device tree now?
+
+Thanks,
+Chukun
+
+---
+Chukun Pan (1):
+  arm64: dts: rockchip: Add PCIe v3 nodes to rock-3a
+
+ .../boot/dts/rockchip/rk3568-rock-3a.dts      | 52 ++++++++++++++++++-
+ 1 file changed, 51 insertions(+), 1 deletion(-)
+
 -- 
-Kind regards
-*Dan Johansen*
-Project lead of the *Manjaro ARM* project
-Manjaro-ARM <https://manjaro.org>
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
