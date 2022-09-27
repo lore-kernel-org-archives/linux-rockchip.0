@@ -4,102 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5A7FC07E9D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Sep 2022 09:08:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 397D0C07E9D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Sep 2022 12:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0bul191y5Jj4ONLFkwiR2QDNCCkvMXgoXLV6wkEQ5tA=; b=2Ynbpo8lsB5DBF
-	YZcKSdcHfPOvg4M80fEUyZfpiuyOkLRTB192pscbl3PP3MUt5DmszDIjPyEJuou4R6kZRcViTlubu
-	ixaJWZhYD1kgTCSZwQz/COKr3KlWOAF3HyBpbEKJ9zYDmsNWs3lgBjB5/76aase8Nk4ahI7dCM5ju
-	fn/CcXTVXj7thlhoxdoskdhK60WKAfhpJLF7RdKQalSlk8+3fULILvJkdVaIBDWpL28i0sziPNPnU
-	VGm26mpdAM+z0YJfdMJRdzZF1o7sdG85BIpaj9XlPrsWVO+NvvbAshPFS+0eaJwLyLlE7+0oXALkW
-	OOoQoZMbcocHuEoz79yw==;
+	List-Owner; bh=hFCFMRbu4QhC3Rsz0JixfHWtI2KuWOjEsZRP3STx6iQ=; b=UaBz8+YYBgATzd
+	RHVIJOp+SAVAHvYC5dURyzbm5NazCKbyEODjez6fLcf8p3IhQBUTa2T/L0Zh/RUey5Yjoqc4Xd4Og
+	euuRgACbF5UkY4EcYbCqYGnk/2fFVWb6jWdbkUXpeFTZLO0cwjLPZdJZhocC4APOk8/sY3bvOKo+1
+	nseozh2eUOYy9LpW71PH4A05PPlEgur1fLTyExU/HZrUQjf5BFjonzMGQpAB2o1A5lqTmZGKtibwS
+	+kj1ET8hC1em35jegfDGr7oixIFMnaIHTvvELS9DxlpO/BmWkdp+UxLMoQu0HKyuNbaZbVhcHKkUh
+	LCf7yPl0O1+hsNyD87Rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od6Zp-009Oq6-Qj; Tue, 27 Sep 2022 09:08:29 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od6VB-009ML8-Nn
-	for linux-rockchip@bombadil.infradead.org; Tue, 27 Sep 2022 09:03:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=8+zNu8By2wCTRIvE0cQTAVxjDoLu9Skp/kq6mTlEw+Q=; b=X3vSOF4xXdcmM2/QLwY38W0c7i
-	5GqP11oFTEMzsFbl4JFPZmRF0FwEaZGzhAx7Lh8g8Uy47rMWu9Sw0rBFtGKMUS/VYR9zMYrSVMqCE
-	Qlkg5BSplXSQNZdhq4sKOPjGCCW69d/rE+r8TK4SPU6gtrM1MWxqB4/oH4Tb9ndILL0aSKg0lU2Ts
-	mYMQyoKUp5UIxlPN75IrtknBrjyZNhz9Nn7sTY0p9yTDI6Ods6yPI6IiUESZ+y1BqUJhUSHmUilqQ
-	g/rdQmFJYhy5BmhhrY2SimnXu+etTrMiu5acWRK5mRaJPfG0UUvZ7ZExONAvwZ7ZI93P7Bu3UErxO
-	18RC9UqQ==;
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
-	by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1od5RT-00GEkm-4g
-	for linux-rockchip@lists.infradead.org; Tue, 27 Sep 2022 07:55:51 +0000
-Received: by mail-wm1-x334.google.com with SMTP id o5so6000022wms.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 27 Sep 2022 00:55:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20210112.gappssmtp.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=8+zNu8By2wCTRIvE0cQTAVxjDoLu9Skp/kq6mTlEw+Q=;
-        b=pttI2/Au91o3zgibFACg8Nhk3ilBKuhylxhCeEhYU5JAGaaWvV/RBKC/mQQ2SFYGZM
-         OQLm8qX+wc0P+swBCmLlo40WQ0Grcxs+F7XW4nJw5p6z+JKD6MyvvSxV8g6IDZzqSV3A
-         ztpVCUU07lMC/50isJTvu6S769yKbp/FzFQ37td3+TnpoWBJzZchRZB5xmP/vOSZ4n2m
-         LxhxfQCqxT8geyv8oNIc+9i49aqRWVDG92Gj2Pg+pK7fGWaLSVdbpQpeoeprri4/s5tL
-         aswitSe4j0QM1hBiSAtW/0PEsgGRfznESnLz/KfA0zjwPkzi/1TN66LJdkdyItRPZMBH
-         Sp5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date;
-        bh=8+zNu8By2wCTRIvE0cQTAVxjDoLu9Skp/kq6mTlEw+Q=;
-        b=MRf4QFgjvJgFs1zpcKEzN1JtKSrB6tMvpY4PTmbj9gu9C255eRr1UPFA6hhZsef+HN
-         EmuMJ+hGR/A0SxPisrqrQnYrrOWE3Nt94WwkMLBcAKbT+OGD6TqYLYJFsL/JnMbyDPyB
-         kRiaAcBi1XS3vyQ/bJ8oLb3HWivwwl+xu3ckjHX8c8bcS2a/u7FQ0l/X886tLW8NmTSk
-         96lfWSutR9pYN1TvlCW4BtvNOk35sCU/AmskPrkJn30Aw0838ePUKT/l6kFPNSYV8V7U
-         2qO4qtNm4Y17XkxamwYOMuoakS3IUML8LV2rKmZEMKTngeOs7lV/6n4TwCnjd6nLeZo/
-         FPAA==
-X-Gm-Message-State: ACrzQf2bFfwVWWspMp/O1xWJOnn0jBhCFJqlYZJUxJFhOztxcaGdz4vL
-	iTDarrF7863f2NQIMpRT1QGToA==
-X-Google-Smtp-Source: AMsMyM5lBaQ5pnRqiZc7fxXzLCtvzbYRUjOCoeRyhLfmfsSlZ3HAXwtcnbTn/Shy28opSmHMjOiNXA==
-X-Received: by 2002:a7b:c451:0:b0:3b4:851f:d200 with SMTP id l17-20020a7bc451000000b003b4851fd200mr1679325wmi.196.1664265345418;
-        Tue, 27 Sep 2022 00:55:45 -0700 (PDT)
-Received: from localhost.localdomain (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr. [90.63.244.31])
-        by smtp.googlemail.com with ESMTPSA id x8-20020adfdcc8000000b0022afbd02c69sm1076654wrm.56.2022.09.27.00.55.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 Sep 2022 00:55:44 -0700 (PDT)
-From: Corentin Labbe <clabbe@baylibre.com>
-To: heiko@sntech.de,
-	ardb@kernel.org,
-	davem@davemloft.net,
-	herbert@gondor.apana.org.au,
-	krzysztof.kozlowski+dt@linaro.org,
-	mturquette@baylibre.com,
-	robh+dt@kernel.org,
-	sboyd@kernel.org
-Cc: linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-clk@vger.kernel.org,
-	linux-crypto@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Corentin Labbe <clabbe@baylibre.com>,
-	John Keeping <john@metanate.com>
-Subject: [PATCH v10 11/33] crypto: rockchip: rewrite type
-Date: Tue, 27 Sep 2022 07:54:49 +0000
-Message-Id: <20220927075511.3147847-12-clabbe@baylibre.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220927075511.3147847-1-clabbe@baylibre.com>
-References: <20220927075511.3147847-1-clabbe@baylibre.com>
+	id 1odAA8-00Adyk-Ca; Tue, 27 Sep 2022 12:58:12 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1odA9w-00Adse-8i; Tue, 27 Sep 2022 12:58:02 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id C0D941042;
+	Tue, 27 Sep 2022 05:57:59 -0700 (PDT)
+Received: from [10.57.65.170] (unknown [10.57.65.170])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 322003F792;
+	Tue, 27 Sep 2022 05:57:51 -0700 (PDT)
+Message-ID: <fcd5f62d-2059-6993-3f51-d8b65a9c8d7f@arm.com>
+Date: Tue, 27 Sep 2022 13:57:46 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [PATCH 1/3] Input: add `SW_BOOT_ALT`
+Content-Language: en-GB
+To: Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+ Jeff LaBundy <jeff@labundy.com>
+Cc: Quentin Schulz <foss+kernel@0leil.net>, robh+dt@kernel.org,
+ krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de,
+ dmitry.torokhov@gmail.com, klaus.goger@theobroma-systems.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-input@vger.kernel.org
+References: <20220922101211.3215888-1-foss+kernel@0leil.net>
+ <20220922101211.3215888-2-foss+kernel@0leil.net> <YyyZRt5j180KzGqc@nixie71>
+ <7add41ad-2cff-adef-08c4-dbc02f7c7c31@theobroma-systems.com>
+ <Yy3qj432McMJ/5rl@nixie71>
+ <953e4d00-110e-b337-3c6c-af008c843046@theobroma-systems.com>
+ <YzJYZrw09dXEihnn@nixie71>
+ <af9fa1c4-0db1-6776-c362-d375f934422e@theobroma-systems.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <af9fa1c4-0db1-6776-c362-d375f934422e@theobroma-systems.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_085548_677747_6B463B62 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20220927_055800_436721_AE5E3994 
+X-CRM114-Status: GOOD (  35.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,191 +68,105 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Instead of using a custom type for classify algorithms, let's just use
-already defined ones.
-And let's made a bit more verbose about what is registered.
+On 2022-09-27 09:51, Quentin Schulz wrote:
+> Hi Jeff,
+> 
+> On 9/27/22 03:56, Jeff LaBundy wrote:
+>> Hi Quentin,
+>>
+>> On Mon, Sep 26, 2022 at 11:37:45AM +0200, Quentin Schulz wrote:
+>>> Hi all,
+>>>
+>>> On 9/23/22 19:19, Jeff LaBundy wrote:
+>>> [...]
+>>>>>
+>>>>> I have this switch on the board and I want to expose its state to 
+>>>>> the user,
+>>>>> if this new event code is not possible/a good idea what would you 
+>>>>> suggest we
+>>>>> could use?
+>>>>>
+>>>>> Note that we already support the same switch but in a different 
+>>>>> way: 
+>>>>> https://urldefense.proofpoint.com/v2/url?u=https-3A__git.kernel.org_pub_scm_linux_kernel_git_torvalds_linux.git_tree_arch_arm64_boot_dts_rockchip_rk3399-2Dpuma-2Dhaikou.dts-23n167&d=DwIBAg&c=_sEr5x9kUWhuk4_nFwjJtA&r=LYjLexDn7rXIzVmkNPvw5ymA1XTSqHGq8yBP6m6qZZ4njZguQhZhkI_-172IIy1t&m=vObtDja6hUlL_kVvKRILCvaQfklw1gl7TAW7cm5_9H_Yi00zkzGV6-D3yzazR2gU&s=0Xo-7CDmMoriaTNn_hJdMwftLlcY-tgopPcgzXfQtJE&e=
+>>>>> We are just configuring the GPIOs into the GPIO mode with a 
+>>>>> pull-up, and
+>>>>> then it's up to the user to use gpiod or gpio-sysfs to check the 
+>>>>> state of
+>>>>> the GPIO used for this switch. I don't like this, very not 
+>>>>> user-friendly and
+>>>>> was looking for something better :)
+>>>>
+>>>> Actually, that's exactly what I was going to suggest. What in 
+>>>> particular
+>>>> is not user-friendly about it?
+>>>>
+>>>
+>>> The implementation we currently have in place for Puma Haikou is just 
+>>> muxing
+>>> the pins in their GPIO function with a pull-up. Nothing else. This 
+>>> means the
+>>> user still needs to know exactly which GPIO number is for which
+>>> signal/event. Not that great. Also does not allow for a consistent user
+>>> "experience" across modules on the same devkit (different GPIOs 
+>>> depending on
+>>> the SoM).
+>>>
+>>> I had hoped gpio-hog in input mode would expose it to userspace but 
+>>> it does
+>>> not seem to?
+>>
+>> No, I don't believe that is the case. That being said, you should be
+>> able to grep /sys/kernel/debug/gpio for the hog node's label and get
+>> the pin state (lo or hi).
+>>
+>>>
+>>> Anything to recommend so that we can export a GPIO line for a specific
+>>> function to usersapce without needing the user to know which GPIO number
+>>> they should look at?
+>>
+>> If debugfs won't work for your purposes, another option is to request
+>> the GPIO from a general-purpose platform driver and return one of two
+>> strings via sysfs.
+>>
+> 
+> This board will be fully supported upstream and I don't feel like this 
+> general-purpose platform driver would be accepted, but maybe I'm wrong.
+> 
+> I didn't know about the /sys/kernel/debug/gpio file just yet for some 
+> reason, so that's one way to do it, thanks for the info.
+> 
+> Good thing is that the kernel requests this pin in GPIO input mode so at 
+> least that's one less possible misconfiguration from userspace. Not so 
+> good thing is that you need to grep in this file and it's not that great 
+> for scripts :) We'll discuss internally what feels the best to us and go 
+> for it, thanks for the tips!
+> 
+> I'm wondering if allowing sysfs/libgpiod to access the state of GPIOs 
+> requested by the kernel would make sense on the subsystem level though. 
+> I'm sure I'm missing obvious security/HW-limitations pitfalls, but I 
+> think allowing userspace to get the value of a GPIO input pin requested 
+> by the kernel would be nice? Nothing for the input subsystem folks 
+> though :)
 
-Reviewed-by: John Keeping <john@metanate.com>
-Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
----
- drivers/crypto/rockchip/rk3288_crypto.c       | 26 +++++++++++++------
- drivers/crypto/rockchip/rk3288_crypto.h       |  7 +----
- drivers/crypto/rockchip/rk3288_crypto_ahash.c |  6 ++---
- .../crypto/rockchip/rk3288_crypto_skcipher.c  | 12 ++++-----
- 4 files changed, 28 insertions(+), 23 deletions(-)
+FWIW there was a series a while back proposing to add a boot status 
+interface, but I'm not sure if there was any further progress:
 
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
-index 1afb65eee6c9..8f9664acc78d 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto.c
-@@ -102,12 +102,22 @@ static int rk_crypto_register(struct rk_crypto_info *crypto_info)
- 
- 	for (i = 0; i < ARRAY_SIZE(rk_cipher_algs); i++) {
- 		rk_cipher_algs[i]->dev = crypto_info;
--		if (rk_cipher_algs[i]->type == ALG_TYPE_CIPHER)
--			err = crypto_register_skcipher(
--					&rk_cipher_algs[i]->alg.skcipher);
--		else
--			err = crypto_register_ahash(
--					&rk_cipher_algs[i]->alg.hash);
-+		switch (rk_cipher_algs[i]->type) {
-+		case CRYPTO_ALG_TYPE_SKCIPHER:
-+			dev_info(crypto_info->dev, "Register %s as %s\n",
-+				 rk_cipher_algs[i]->alg.skcipher.base.cra_name,
-+				 rk_cipher_algs[i]->alg.skcipher.base.cra_driver_name);
-+			err = crypto_register_skcipher(&rk_cipher_algs[i]->alg.skcipher);
-+			break;
-+		case CRYPTO_ALG_TYPE_AHASH:
-+			dev_info(crypto_info->dev, "Register %s as %s\n",
-+				 rk_cipher_algs[i]->alg.hash.halg.base.cra_name,
-+				 rk_cipher_algs[i]->alg.hash.halg.base.cra_driver_name);
-+			err = crypto_register_ahash(&rk_cipher_algs[i]->alg.hash);
-+			break;
-+		default:
-+			dev_err(crypto_info->dev, "unknown algorithm\n");
-+		}
- 		if (err)
- 			goto err_cipher_algs;
- 	}
-@@ -115,7 +125,7 @@ static int rk_crypto_register(struct rk_crypto_info *crypto_info)
- 
- err_cipher_algs:
- 	for (k = 0; k < i; k++) {
--		if (rk_cipher_algs[i]->type == ALG_TYPE_CIPHER)
-+		if (rk_cipher_algs[i]->type == CRYPTO_ALG_TYPE_SKCIPHER)
- 			crypto_unregister_skcipher(&rk_cipher_algs[k]->alg.skcipher);
- 		else
- 			crypto_unregister_ahash(&rk_cipher_algs[i]->alg.hash);
-@@ -128,7 +138,7 @@ static void rk_crypto_unregister(void)
- 	unsigned int i;
- 
- 	for (i = 0; i < ARRAY_SIZE(rk_cipher_algs); i++) {
--		if (rk_cipher_algs[i]->type == ALG_TYPE_CIPHER)
-+		if (rk_cipher_algs[i]->type == CRYPTO_ALG_TYPE_SKCIPHER)
- 			crypto_unregister_skcipher(&rk_cipher_algs[i]->alg.skcipher);
- 		else
- 			crypto_unregister_ahash(&rk_cipher_algs[i]->alg.hash);
-diff --git a/drivers/crypto/rockchip/rk3288_crypto.h b/drivers/crypto/rockchip/rk3288_crypto.h
-index 65ed645e0168..d924ea17402a 100644
---- a/drivers/crypto/rockchip/rk3288_crypto.h
-+++ b/drivers/crypto/rockchip/rk3288_crypto.h
-@@ -232,18 +232,13 @@ struct rk_cipher_rctx {
- 	struct skcipher_request fallback_req;   // keep at the end
- };
- 
--enum alg_type {
--	ALG_TYPE_HASH,
--	ALG_TYPE_CIPHER,
--};
--
- struct rk_crypto_tmp {
-+	u32 type;
- 	struct rk_crypto_info		*dev;
- 	union {
- 		struct skcipher_alg	skcipher;
- 		struct ahash_alg	hash;
- 	} alg;
--	enum alg_type			type;
- };
- 
- extern struct rk_crypto_tmp rk_ecb_aes_alg;
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_ahash.c b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-index edd40e16a3f0..d08e2438d356 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_ahash.c
-@@ -352,7 +352,7 @@ static void rk_cra_hash_exit(struct crypto_tfm *tfm)
- }
- 
- struct rk_crypto_tmp rk_ahash_sha1 = {
--	.type = ALG_TYPE_HASH,
-+	.type = CRYPTO_ALG_TYPE_AHASH,
- 	.alg.hash = {
- 		.init = rk_ahash_init,
- 		.update = rk_ahash_update,
-@@ -382,7 +382,7 @@ struct rk_crypto_tmp rk_ahash_sha1 = {
- };
- 
- struct rk_crypto_tmp rk_ahash_sha256 = {
--	.type = ALG_TYPE_HASH,
-+	.type = CRYPTO_ALG_TYPE_AHASH,
- 	.alg.hash = {
- 		.init = rk_ahash_init,
- 		.update = rk_ahash_update,
-@@ -412,7 +412,7 @@ struct rk_crypto_tmp rk_ahash_sha256 = {
- };
- 
- struct rk_crypto_tmp rk_ahash_md5 = {
--	.type = ALG_TYPE_HASH,
-+	.type = CRYPTO_ALG_TYPE_AHASH,
- 	.alg.hash = {
- 		.init = rk_ahash_init,
- 		.update = rk_ahash_update,
-diff --git a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-index 67a7e05d5ae3..1ed297f5d809 100644
---- a/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-+++ b/drivers/crypto/rockchip/rk3288_crypto_skcipher.c
-@@ -468,7 +468,7 @@ static void rk_ablk_exit_tfm(struct crypto_skcipher *tfm)
- }
- 
- struct rk_crypto_tmp rk_ecb_aes_alg = {
--	.type = ALG_TYPE_CIPHER,
-+	.type = CRYPTO_ALG_TYPE_SKCIPHER,
- 	.alg.skcipher = {
- 		.base.cra_name		= "ecb(aes)",
- 		.base.cra_driver_name	= "ecb-aes-rk",
-@@ -490,7 +490,7 @@ struct rk_crypto_tmp rk_ecb_aes_alg = {
- };
- 
- struct rk_crypto_tmp rk_cbc_aes_alg = {
--	.type = ALG_TYPE_CIPHER,
-+	.type = CRYPTO_ALG_TYPE_SKCIPHER,
- 	.alg.skcipher = {
- 		.base.cra_name		= "cbc(aes)",
- 		.base.cra_driver_name	= "cbc-aes-rk",
-@@ -513,7 +513,7 @@ struct rk_crypto_tmp rk_cbc_aes_alg = {
- };
- 
- struct rk_crypto_tmp rk_ecb_des_alg = {
--	.type = ALG_TYPE_CIPHER,
-+	.type = CRYPTO_ALG_TYPE_SKCIPHER,
- 	.alg.skcipher = {
- 		.base.cra_name		= "ecb(des)",
- 		.base.cra_driver_name	= "ecb-des-rk",
-@@ -535,7 +535,7 @@ struct rk_crypto_tmp rk_ecb_des_alg = {
- };
- 
- struct rk_crypto_tmp rk_cbc_des_alg = {
--	.type = ALG_TYPE_CIPHER,
-+	.type = CRYPTO_ALG_TYPE_SKCIPHER,
- 	.alg.skcipher = {
- 		.base.cra_name		= "cbc(des)",
- 		.base.cra_driver_name	= "cbc-des-rk",
-@@ -558,7 +558,7 @@ struct rk_crypto_tmp rk_cbc_des_alg = {
- };
- 
- struct rk_crypto_tmp rk_ecb_des3_ede_alg = {
--	.type = ALG_TYPE_CIPHER,
-+	.type = CRYPTO_ALG_TYPE_SKCIPHER,
- 	.alg.skcipher = {
- 		.base.cra_name		= "ecb(des3_ede)",
- 		.base.cra_driver_name	= "ecb-des3-ede-rk",
-@@ -580,7 +580,7 @@ struct rk_crypto_tmp rk_ecb_des3_ede_alg = {
- };
- 
- struct rk_crypto_tmp rk_cbc_des3_ede_alg = {
--	.type = ALG_TYPE_CIPHER,
-+	.type = CRYPTO_ALG_TYPE_SKCIPHER,
- 	.alg.skcipher = {
- 		.base.cra_name		= "cbc(des3_ede)",
- 		.base.cra_driver_name	= "cbc-des3-ede-rk",
--- 
-2.35.1
+https://lore.kernel.org/lkml/20220204072234.304543-1-joel@jms.id.au/
 
+Either way though, these kinds of GPIO (or ADC) configuration inputs for 
+things like boot functionality or board ID are just about common enough 
+that even if not tied in to any other specific interface, I reckon there 
+might be a valid argument to be made for a simple generic driver for 
+reporting the state of a named configuration input in a standardised 
+manner. Perhaps hwmon might be a better fit?
+
+Robin.
 
 _______________________________________________
 Linux-rockchip mailing list
