@@ -4,87 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D383C32771
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Sep 2022 07:35:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD0ECC32771
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Sep 2022 07:40:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a/HMvHoG4T15hrBAacG9sX5bdO19bL7okpmuD7OkARc=; b=X74+s5794KxwNS
-	A0oOngda9Al20m9iah1d6QIZuouIhlDIbkIf5BQ6H2x7uDgXUOdCBqNZsMJlD/tlBM9jdWM27qjJ5
-	NFwTsWIoiWDxYlXYXcS1yI3i7haSfWQxsT7o1c2lIRYX2N1qdKIMQqGF/UX66oJHDrLf/IDWrpcoR
-	5tY24DBERBSt8U4i/dGS6ZJNhgke1TdN/zC1LljSkqTJzjeOnU75QyK3/y5jOrzTElHgMs2rBnb8t
-	JeL17uuKXCa7XyDAzX2O3duLYDRM4HOf0oWqPkXOXWmO7Jvvz4YHwvj9fnx92utKOAQjqPhy2QzHq
-	T8iKnTm9JyURfu+GtIDA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BvtBLj9csQLnarDlz9nJPfps0bFO8IpXcDadj+9gBOw=; b=XdMaFp9dsSeez2gb/6Ofy+yCEP
+	SrJJwQQ1YpOqVReCm7BVx6QZQPnfuLWjXcdRScZo1a546QfvmU1z4cMGonHGpHgXTP/85aAv0Nhmg
+	N6+b3GSCisKdivH8YYop34EhfeAOWjzuczN2sfPZMFki7KFnS1tSx0I/Yh37i1cgtSCjP4BOjLaP8
+	ZEnxqYnY8gdmc4r20TR9wi/KEUM4m+4id5sf2dbdlsGjSXl4eyE1BJtb/9HKg8tdugGa4BErTTpXn
+	dzdjPG+ONZi/BEOQzo0/3Mzn59rxGEgLtlVWk23pm/MRcTdw64s/4B5L6gOV3tSOrea58z0qpOaAE
+	ZF5+zAVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odRbQ-00EYwj-Kg; Wed, 28 Sep 2022 07:35:32 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1odRfz-00EbVL-G3; Wed, 28 Sep 2022 07:40:15 +0000
+Received: from mail.manjaro.org ([116.203.91.91])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odRa7-00EYB6-Ny
-	for linux-rockchip@lists.infradead.org; Wed, 28 Sep 2022 07:34:13 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id bu25so17198880lfb.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 28 Sep 2022 00:34:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date;
-        bh=W84wrHvVvAgWhyh1WS/eLy6/o7Le2iFXNrohu7GUsCk=;
-        b=NBAnH1KSEUqlchKnxRsgUvFEv9abO5xjXfHwbhygSEOQVMkUlrbPqLu4kzyW/v5vkT
-         hf9Z/UL6un8qpptuEiDHQmkzduE+XekrebEoYp6CwU3pQJKQ7M0jx33VZbjgBeUHWUlO
-         xqwQ9yoNjMehBIQhzakLFglLgdkpNM8LJy24ygJ964lTnbV/OzJJEKPdi0oy8esg5M9q
-         S7JJXnwOrxJS438SXJcPp+wyiqg88B4HjbwO2OZQjQUu3hTzfxxMU5ehFmZmv30IOjaX
-         xwBUIa6xYf32/K2WPRsKOKlejej5lml/aDenDWAtLAt1xcpRhp4I+E/HfzLRAwmn8nFk
-         O3zQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date;
-        bh=W84wrHvVvAgWhyh1WS/eLy6/o7Le2iFXNrohu7GUsCk=;
-        b=B7TtN8ReSQPmIsYeK+joi6zHCmSG9UMVmAvitDcElosMkR2VkZp1nWl1oJiYW1ejJw
-         h/slc66Fuwn0PSR5XJ0wTekPdzGwUuoBuChjwdxxm9s1rVycCSO5xzLwkPzHExR0mkjG
-         u6TY4JwZ703tGOBPMZU5yzY297S/jHRMihDj0L28csVebtQJH+SaGHcSIUswD6EgjVU6
-         jGAoxwyJ8zb71+GCaCysYe1FXMWzZTrWDUGSn2ViX8bfXPDsZozTF2I1Yxl7GXhc4Xkg
-         31quDJ2JH5iTghjU0iU/RHtw6AX5stXIxo1sCFKytRjJSTBoW0mhYQHGd/aVpribwwKF
-         q0PA==
-X-Gm-Message-State: ACrzQf2qAEYWpxRC0TU7xOoJ69XAMGEqljxtcsKgFfR4n1a+jcRCxOoK
-	n3ESyhZAiQiXjWva4RPz36xfIg==
-X-Google-Smtp-Source: AMsMyM4s9FD4pbLqo1tYHW7wHCeJO/EhwQuexdGfirp3jEWQdNrKBFwJ9RvGgx9b18FtcGBH/PMTlw==
-X-Received: by 2002:a05:6512:1325:b0:4a1:d80e:1cd5 with SMTP id x37-20020a056512132500b004a1d80e1cd5mr5194661lfu.497.1664350447109;
-        Wed, 28 Sep 2022 00:34:07 -0700 (PDT)
-Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
-        by smtp.gmail.com with ESMTPSA id v9-20020a056512348900b0049465afdd38sm395786lfr.108.2022.09.28.00.34.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 28 Sep 2022 00:34:06 -0700 (PDT)
-Message-ID: <0e53c7c8-e04c-5a87-9703-02748b64e491@linaro.org>
-Date: Wed, 28 Sep 2022 09:34:04 +0200
+	id 1odRfd-00EbIn-Ce
+	for linux-rockchip@lists.infradead.org; Wed, 28 Sep 2022 07:39:56 +0000
+Message-ID: <22f7e797-1915-cd33-90b3-daa2525b4eab@manjaro.org>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=2021;
+	t=1664350788;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=oqp3PpgnwUebZ3o+bFEtB0PlIn4fj0SQtEr54VpPFCg=;
+	b=pBxSzH4GkYlnYTWVXuj1+KeEYPl7kHokxrR8NHXVxnGL3sgCQeRhsUBv1MK4M6KO6hLYZ7
+	jaCXoUwaDcU7H1H4yZ9nDLpO5yHmC6T4nElHs7zhtrcjpE/s9I5rtIOxA3LRjRxVyGuiDz
+	YEtoLpKqd/G08M8fQDm+90hnVmnFboxDH6SyEnYMILrMH0ABBAmTv5FGtd2FDP9nlBcDLc
+	Wpj45G9j0ry4sEPEcrcDYevKn4Ay6/Hor7ZOn522vW6UA06YHa+tXcllKdcG1f22dAxNKH
+	s7YdE6idTQLWoA9i4lqAUi/7Vh9NgD+grGlgFYh7KdwNdXlSoTdiYIa4r7n0Lw==
+Date: Wed, 28 Sep 2022 09:39:47 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.0
-Subject: Re: [PATCH v2 02/13] arm64: dts: rockchip: Add Hardkernel ODROID-M1
- board
-Content-Language: en-US
-To: Aurelien Jarno <aurelien@aurel32.net>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Heiko Stuebner <heiko@sntech.de>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>,
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- open list <linux-kernel@vger.kernel.org>
-Cc: Dongjin Kim <tobetter@gmail.com>
+Subject: Re: [PATCH v2 00/13] Add support for the Hardkernel ODROID-M1 board
+Content-Language: da-DK
+To: linux-rockchip@lists.infradead.org
 References: <20220926183727.1893566-1-aurelien@aurel32.net>
- <20220926183727.1893566-3-aurelien@aurel32.net>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <20220926183727.1893566-3-aurelien@aurel32.net>
+From: Dan Johansen <strit@manjaro.org>
+Organization: Manjaro ARM
+In-Reply-To: <20220926183727.1893566-1-aurelien@aurel32.net>
+Authentication-Results: ORIGINATING;
+	auth=pass smtp.auth=strit@manjaro.org smtp.mailfrom=strit@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_003411_830691_DECD8F01 
-X-CRM114-Status: GOOD (  16.26  )
+X-CRM114-CacheID: sfid-20220928_003953_989575_55A3B8D7 
+X-CRM114-Status: GOOD (  17.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,46 +63,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/09/2022 20:37, Aurelien Jarno wrote:
-> From: Dongjin Kim <tobetter@gmail.com>
-> 
-> This patch is to add a device tree for new board Hardkernel ODROID-M1
-> based on Rockchip RK3568, includes basic peripherals -
-> uart/eMMC/uSD/i2c and on-board ethernet.
 
-Thank you for your patch. There is something to discuss/improve.
-
-
-> 
-> Signed-off-by: Dongjin Kim <tobetter@gmail.com>
-> [aurelien@aurel32.net: addressed issues from initial review]
-> Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
-> ---
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3568-odroid-m1.dts    | 414 ++++++++++++++++++
->  2 files changed, 415 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index ef79a672804a..12e2ef73fe80 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -66,3 +66,4 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-soquartz-cm4.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-bpi-r2-pro.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-evb1-v10.dtb
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-rock-3a.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
-
-Mismatched order.
-
-Best regards,
-Krzysztof
-
+Den 26.09.2022 kl. 20.37 skrev Aurelien Jarno:
+> On the ODROID forum, Dongjin Kim said he is not planning to submit a new
+> version of the patchset adding support for the Hardkernel ODROID-M1
+> board. I therefore decided to address the issues reported during the
+> initial review, and I also did some small fixes either because some
+> things changed in the meantime on the kernel side or because I noticed
+> some warning or issues when using the hardware.
+>
+> I continued writing some additional patches to complete the ODROID M1
+> DTS to almost fully support the hardware, the drivers being already
+> present in the kernel.
+>
+> Changes since v1 (patches 1 & 2):
+> * Added Acked-by to the first patch
+> * Fixed indentation
+> * Removed unneeded labels
+> * Renamed labels to not use underscore
+> * Renamed regulator nodes
+> * Added -pin to pinctrl bindings
+> * Changed GPU related regulators to always on (see 2cda380102ff)
+> * Added phy-supply to gmac0
+> * Added supplies to sdhci
+> * Changed SD card speed to SDR50 from SDR104 (see 1ea90b2d293f)
+> * Fixed power LED polarity and set the default-state to "keep"
+>
+> Aurelien Jarno (11):
+>    arm64: dts: rockchip: add thermal support to ODROID-M1
+>    arm64: dts: rockchip: Add NOR flash to ODROID-M1
+>    arm64: dts: rockchip: Add analog audio on ODROID-M1
+>    arm64: dts: rockchip: Enable vop2 and hdmi tx on ODROID-M1
+>    arm64: dts: rockchip: Enable HDMI audio on ODROID-M1.
+>    arm64: dts: rockchip: Enable the GPU on ODROID-M1
+>    arm64: dts: rockchip: Enable the USB 2.0 ports on ODROID-M1
+>    arm64: dts: rockchip: Enable the USB 3.0 ports on ODROID-M1
+>    arm64: dts: rockchip: Add SATA support to ODROID-M1
+>    arm64: dts: rockchip: Add PCIEe v3 nodes to ODROID-M1
+>    arm64: dts: rockchip: Add IR receiver node to ODROID-M1
+>
+> Dongjin Kim (2):
+>    dt-bindings: rockchip: Add Hardkernel ODROID-M1 board
+>    arm64: dts: rockchip: Add Hardkernel ODROID-M1 board
+>
+>   .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+>   arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>   .../boot/dts/rockchip/rk3568-odroid-m1.dts    | 727 ++++++++++++++++++
+>   3 files changed, 733 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
+Tested-by: Dan Johansen <strit@manjaro.org>
+-- 
+Kind regards
+*Dan Johansen*
+Project lead of the *Manjaro ARM* project
+Manjaro-ARM <https://manjaro.org>
 
 _______________________________________________
 Linux-rockchip mailing list
