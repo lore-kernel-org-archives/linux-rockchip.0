@@ -4,71 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EC3DC54EE9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Sep 2022 21:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A315C32771
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Sep 2022 07:33:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1wO8XYDUlXVh/4vazjQQgIO0bW0wI3z4DZEvlvexgbs=; b=qrQ5407lhUtId6
-	w/1VMK6vXBxGdEazb4vwJiHKucAxIwp7NrObkiN6yPMkntY8VJF+vnakqAcK5KcVpB/345O5hl7iu
-	oXyNjxOMVcKD8bqBIIVqf2ILvCwY4fKc3ircfMmAgM9kmUgRb+Hop9R9+URpHaj6AQQyl/6QYJ8nU
-	9hi3GEwRbNGYt7IXQCxcAOtWAX5NEvlpAbPP7h2VhzFtukSHgGniNnU4R3hKX3ZStu1jgxDyHX0ZK
-	qUHLlgR6xC/lITvyiuLqG1ivgAbfpQn7j0O7nBBTdUCqKTSNo9qkfRSChzmGNnL/3RgCU2mM6I4mD
-	xC4RJjz/iCBknBBH8uMQ==;
+	List-Owner; bh=RJJ40lVodFpZZZ/ac2u7HV0CTRbsKh4Xigl/g2x/Gk0=; b=KltXRvdNwQ+guK
+	6Nop6OAkIimTT2yclDvHUgWOPO7d2sDcJUqS32ykUFxkeBULYdeXkBUsLEbO0QZ+WqPYFRLOfzc9d
+	pDMSkUIGFxOqoMhbKaiSRnE5nT5mEi/cyICqGAjJEZ8vW45ZVxKe7wUWtKGQ3w0OdqzS+NcxsQgOV
+	adOLP179FwzHsuAPmTA1M8T9vzJsVtnjFz8xhcJNcm+e5ZAY/eeF+xOhsQFdooqqdsPJXTj50c4Fv
+	zbwWfJvOZahp1s+uNNidGJTd3PRjIDWiZfta12ttKe2l1yoN7Je9hQ0vbdwMNnA1lDYoQhInAVefO
+	k53Os72rMEEl7YHqzv8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odIIz-00ClPx-P4; Tue, 27 Sep 2022 21:39:53 +0000
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
+	id 1odRZH-00EXwa-Jf; Wed, 28 Sep 2022 07:33:19 +0000
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odIIl-00ClAJ-30; Tue, 27 Sep 2022 21:39:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
-	; s=202004.hall; h=In-Reply-To:Content-Type:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Content-Transfer-Encoding:From:Reply-To:
-	Subject:Content-ID:Content-Description:X-Debbugs-Cc;
-	bh=2JMLfcmZeS6Sxey/juZszgrKjCQGK3qAWvZUg82Nalo=; b=DE817yt/jIg3i8+SdpFozjOoLX
-	O9WbPIlD+89sho1SMwwgLDKgMTxPJwFlwnO2Yido0b1bzVUUsqddDjM7x7NK2I/ulnI9GjVPKYrjs
-	DUlaIwgsY8rTKxQbPKyjuBWOyZw6RYW1pdR1WtXme2ayi1MXPD1OPnUbUxA2LYt1lQgiEPl4LSO5N
-	VUsD4IvPYZydEbA/mjKYd1Mn+iSOKXjYct3TGTJwRQnEDuvlMWOJwsed/5pMkpdUze9Gjzs6GTanC
-	uH01DAX1kp89bLWi23bY4hX07VpgzFxj4Cfm8J+LX+nrnY7sTliWjTpXAtvVk/mToI1ukf/w7uJzY
-	8frYoYTw==;
-Received: from [2a01:e34:ec5d:a741:8a4c:7c4e:dc4c:1787] (helo=ohm.rr44.fr)
-	by hall.aurel32.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1odIId-00C1hi-Hs; Tue, 27 Sep 2022 23:39:31 +0200
-Received: from aurel32 by ohm.rr44.fr with local (Exim 4.96)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1odIIc-000VSP-3D;
-	Tue, 27 Sep 2022 23:39:31 +0200
-Date: Tue, 27 Sep 2022 23:39:30 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Corentin Labbe <clabbe@baylibre.com>
-Cc: heiko@sntech.de, davem@davemloft.net, herbert@gondor.apana.org.au,
-	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH RFT 4/5] crypto: rockchip: support the new crypto IP for
- rk3568/rk3588
-Message-ID: <YzNtkiR/dD0aEZrv@aurel32.net>
-Mail-Followup-To: Corentin Labbe <clabbe@baylibre.com>, heiko@sntech.de,
-	davem@davemloft.net, herbert@gondor.apana.org.au,
-	krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org
-References: <20220927080048.3151911-1-clabbe@baylibre.com>
- <20220927080048.3151911-5-clabbe@baylibre.com>
+	id 1odRZ6-00EXuY-My
+	for linux-rockchip@lists.infradead.org; Wed, 28 Sep 2022 07:33:11 +0000
+Received: by mail-lj1-x233.google.com with SMTP id b24so13373299ljk.6
+        for <linux-rockchip@lists.infradead.org>; Wed, 28 Sep 2022 00:33:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date;
+        bh=Fnvc6r6j9p2Uw/maOlbdTsHQYeM4YFHUi6N23GCgfiE=;
+        b=Trxrl5FOcBfTyPyqjdwgGv1onqzcBiIgrzeFGhQANno1ZAMGpy9Rnvi+Qn+QmLpLi+
+         RB3E3B/Qrb9aE8NYowptIPSgui7tl/0Na0XhwjhnRa/YKqZKbbDinKZ90seqRCiGFLcC
+         1F1BlEqXorjYS0bxSpTdGbH4YigFAbS4LFp74iKR9IZi3AVuO+mRK3IJDTj/2733ZX1Z
+         AMca4V1uSeTuwPl592enNFfqTA22NtbZ5Sx3rNNXe6XOi2ox2yV8tjdN0/36VDUDLnyv
+         Cimfhn+UuCIpIofe0/hXlxifR5l1DQ+PD0VaNU4OKpqUCXIgi1SCxEGrE8W7roDS9Xv6
+         rZ7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date;
+        bh=Fnvc6r6j9p2Uw/maOlbdTsHQYeM4YFHUi6N23GCgfiE=;
+        b=jt0jIqi8qynr8oRwFFN9d2TgLeuXDrZZ2el46iX08Y6QWyOR0CrnCIovaRDrFYSmJD
+         57UtEEiCOflaS3f1UYKadu5zSe5P8xYnBO6T2mNVqV73GCf/mV5iw0pvbtrue5pyJEbq
+         wjNVwLSbmpvVV7gj4tLP+KXLW1E7nakEppTWy72D5DRzqJ+8Jk5J3ro29UUA0+aX/dHE
+         DC6wZmyFHx506GLQzdoNZVuce9uiv3f2ctr/GQmTji8Qr0j0xplwvwIcP7ik9lFRg9xM
+         Hj91zbXAh+Cnirkp8BdqOFltVLXoxpsHIksrRVpU/t3qWpWRzODSTnuF/L0xIvfg0Orx
+         TptQ==
+X-Gm-Message-State: ACrzQf0aYmuPw58dqHySd0k315GrHc06qcXRFZYBtZ48Eh5ifWfWSVXJ
+	YlN//4cVSkzTx1MHrGvAUxdOKA==
+X-Google-Smtp-Source: AMsMyM7Uc4iRNgLZGgIceGXd9cHAFSN8cYdcmMGhloG1FMIuZ7RUyiFPSHFJVcBvHdjHiefjvibdVQ==
+X-Received: by 2002:a05:651c:211:b0:26b:e743:b4b0 with SMTP id y17-20020a05651c021100b0026be743b4b0mr11252543ljn.527.1664350387148;
+        Wed, 28 Sep 2022 00:33:07 -0700 (PDT)
+Received: from [192.168.0.21] (78-11-189-27.static.ip.netia.com.pl. [78.11.189.27])
+        by smtp.gmail.com with ESMTPSA id a5-20020ac25e65000000b00499b57032c1sm393141lfr.144.2022.09.28.00.33.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 Sep 2022 00:33:06 -0700 (PDT)
+Message-ID: <61b52536-ddd9-bf2f-5a06-f083a39c34b3@linaro.org>
+Date: Wed, 28 Sep 2022 09:33:04 +0200
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220927080048.3151911-5-clabbe@baylibre.com>
-User-Agent: Mutt/2.2.7 (2022-08-07)
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [PATCH v2 01/13] dt-bindings: rockchip: Add Hardkernel ODROID-M1
+ board
+Content-Language: en-US
+To: Aurelien Jarno <aurelien@aurel32.net>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>,
+ "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+ open list <linux-kernel@vger.kernel.org>
+Cc: Dongjin Kim <tobetter@gmail.com>, Rob Herring <robh@kernel.org>
+References: <20220926183727.1893566-1-aurelien@aurel32.net>
+ <20220926183727.1893566-2-aurelien@aurel32.net>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20220926183727.1893566-2-aurelien@aurel32.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220927_143939_150248_C42753B2 
-X-CRM114-Status: GOOD (  14.73  )
+X-CRM114-CacheID: sfid-20220928_003308_778636_C254E68C 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,50 +101,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-09-27 08:00, Corentin Labbe wrote:
-> Rockchip rk3568 and rk3588 have a common crypto offloader IP.
-> This driver adds support for it.
+On 26/09/2022 20:37, Aurelien Jarno wrote:
+> From: Dongjin Kim <tobetter@gmail.com>
 > 
-> Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
+> Add device tree binding for Hardkernel ODROID-M1 board based on RK3568
+> SoC.
+> 
+> Signed-off-by: Dongjin Kim <tobetter@gmail.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 > ---
->  drivers/crypto/rockchip/Kconfig               |  28 +
->  drivers/crypto/rockchip/Makefile              |   5 +
->  drivers/crypto/rockchip/rk3588_crypto.c       | 646 ++++++++++++++++++
->  drivers/crypto/rockchip/rk3588_crypto.h       | 221 ++++++
->  drivers/crypto/rockchip/rk3588_crypto_ahash.c | 346 ++++++++++
->  .../crypto/rockchip/rk3588_crypto_skcipher.c  | 340 +++++++++
->  6 files changed, 1586 insertions(+)
->  create mode 100644 drivers/crypto/rockchip/rk3588_crypto.c
->  create mode 100644 drivers/crypto/rockchip/rk3588_crypto.h
->  create mode 100644 drivers/crypto/rockchip/rk3588_crypto_ahash.c
->  create mode 100644 drivers/crypto/rockchip/rk3588_crypto_skcipher.c
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
 > 
-> diff --git a/drivers/crypto/rockchip/Kconfig b/drivers/crypto/rockchip/Kconfig
-> index 1010d897d9ef..84ca1081fd0c 100644
-> --- a/drivers/crypto/rockchip/Kconfig
-> +++ b/drivers/crypto/rockchip/Kconfig
-> @@ -26,3 +26,31 @@ config CRYPTO_DEV_ROCKCHIP_DEBUG
->  	  Say y to enable Rockchip crypto debug stats.
->  	  This will create /sys/kernel/debug/rk3288_crypto/stats for displaying
->  	  the number of requests per algorithm and other internal stats.
-> +
-> +config CRYPTO_DEV_ROCKCHIP2
-> +	tristate "Rockchip's cryptographic offloader V2"
-> +	depends on OF && ARCH_ROCKCHIP
-> +	depends on PM
-> +	select CRYPTO_ECB
-> +	select CRYPTO_CBC
-> +	select CRYPTO_AES
-> +	select CRYPTO_MD5
-> +	select CRYPTO_SHA1
-> +	select CRYPTO_SHA256
-> +	select CRYPTO_SM3
+> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> index 7811ba64149c..d25a8a0bb2b5 100644
+> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> @@ -688,6 +688,11 @@ properties:
+>            - const: rockchip,rk3568-bpi-r2pro
+>            - const: rockchip,rk3568
+>  
+> +      - description: Rockchip RK3568 Hardkernel ODROID-M1
 
-That should be CRYPTO_SM3_GENERIC
+Description should be just "Hardkernel ODROID-M1" and then put in
+alphabetical order - before to other Rockchip boards.
 
--- 
-Aurelien Jarno                          GPG: 4096R/1DDD8C9B
-aurelien@aurel32.net                 http://www.aurel32.net
+
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
