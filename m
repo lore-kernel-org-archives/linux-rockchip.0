@@ -4,73 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C46F4C04A95
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Sep 2022 11:05:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53E3DC6FA82
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Sep 2022 11:49:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lHiYar/NeWYDGA5Ihuk0CHrQBsSOU2grldZGRL0LQ7c=; b=L1DqdM93hJ5XBy
-	o7XrxKz8xQwCG32kZAv5czqfQmiR3L7sLUi37k753tWvXqnoCaHRwfBZnP0K+P1PHWFMdzI704whi
-	lRSNK/d9IzNX5uA2kxtX6OklzXoXGU0SQW+dd6K9tWrRgNGv50R3j1g/O+stUOOVhMp79LMutCvAw
-	mTnDeli0EY8GiwW63mKPsrYoNuoowdwnc2R6h/wBgOunlFGgKOaB7CJZ2Mtw3iYO13ZqEx5bfWigc
-	MbzsWDpe9YhZsAz9VFDm5+sXzt2F6C/VOKQAfk+lWFnv66UMKCppm3OVBUXGW3oehUCas7psbKSNp
-	NVZeK+LGoJaotQnWDCRQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=b3tRTZmIl+NuYLPuZZEtFUoXCChpyHXEWF3ruHXlZLM=; b=pEh+YcOucyAPQuzyTGliI10Gaj
+	Q4upGePt5m6VCwZLiwKA2cVlPja3eytUgC2omlrYiTfTLOf3N3bfWEqrgz51vl1E2GjwZNPeMBTHK
+	xR7x3d2meJCS8g8f+e18ah5GCqOleH8mlSsrTF1jCPycv9bJiOhDFM9h3CHpWblST8n+ur/XbmZVs
+	JnmmkF9Nvoh7QElyWDpYuOa1F0ZsrwxwdNnHjNQZLUzoxl9ZYY1f/VeTMS4/oTY5R8jV2b4GMyWul
+	EmPpMP+Dl5w3/2TRnAham1ILQrVTAQFaGDqYmqSjadvq/lwFYz84V9ctZ4WWbwT0xw/14FoTx1ipJ
+	+XtMat7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odUsA-00Fpn5-PT; Wed, 28 Sep 2022 11:05:02 +0000
-Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f])
+	id 1odVYO-00G2mZ-IC; Wed, 28 Sep 2022 11:48:40 +0000
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odUs7-00Fplv-Rg; Wed, 28 Sep 2022 11:05:01 +0000
-Received: by mail-il1-x12f.google.com with SMTP id p10so46613iln.4;
-        Wed, 28 Sep 2022 04:04:59 -0700 (PDT)
+	id 1odVYL-00G2l6-Et
+	for linux-rockchip@lists.infradead.org; Wed, 28 Sep 2022 11:48:38 +0000
+Received: by mail-ej1-x634.google.com with SMTP id lh5so26560140ejb.10
+        for <linux-rockchip@lists.infradead.org>; Wed, 28 Sep 2022 04:48:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date;
-        bh=jwe/kOuCnsGDbPhUswVuxWf8gHbmYrH1aPx2on0iZ14=;
-        b=iAxFZ0rhpixeBY4gv84nzxw+y5HblIgPyiWaG1nCGBCcIrBqiCmCt6gB7+CNovrh4T
-         2EA710e3oTqe+zMo1xJtoKU3RC4UU43BbYhoyIUkF3Y+IMNmHwAw1rMhe0f+JMELJDWk
-         X/vLJarwSoS1sAoDSrXc/WXpD3s5KvIAfB4xIfYTexwJ0Tse3a/6OdcolBu7GCzxW7xT
-         iYtIswO8OkHt3UL1j1POLDw/vGUkwctmUe3XygXn/Wea95Zteufh+gKXbvzR90cZb/Ar
-         QPEpft/jdfV4zzGGeivYYvge3eRlDNEKQ+I1IDDj1P1d/beNypzHJe+SFWieCZRv2PgH
-         q/Nw==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date;
+        bh=FAnMZuS5mkc7/GZqDAnEmPbAang61hPFgfBqbFN5+NU=;
+        b=HrsqF6kwxvI3TCUD+MD8KMKGyFN1SbbYLjUa8hJJmfftQkQ2wTB2jpeqJhU8+tQybD
+         lkGwTsqyidGlU1FdIWKJxDCSoP82qAVnwVh9nHLg/fQ5iYIYXyj5Vcc9hwE6y8C/a7ls
+         6OmhZI69qcQkezB/PEXyUj6Mtrca5IBoyXum9xwck1ouUo9037zIf/CvSeK1zrwRWXAT
+         yOSQ5l1j2Dn22DiwCDI+mC3LvrMYwRPs2YEAajBUtWdNs9pCeWQ4ip9Qqh8nZR5Sphnz
+         b1CejcO6Gn8kMvUwpzDyqWPtSkRMyXQoSSwO8+LElAOF3+bsulUs4GTGNZFfX3R0w0fh
+         UQZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=jwe/kOuCnsGDbPhUswVuxWf8gHbmYrH1aPx2on0iZ14=;
-        b=3K+7a6if1ZNqAl6HKTTz2/DiGT9aTIKd0A/DEDpG7Xu5ogLeO5K0V1x7OqO/4dLNcj
-         q1t11pET2RYnfWxwDylb6CWH7+Xc0je5HACr35xqiwquL81eMwZ9ZxYjcA6cnIG26l2i
-         B3iesPtx4X6RTx9yDQkIXcjavscIbXYM9nNUIhH0ADmNYqPtfhQYCHQ4Z0y1GbqW2kXP
-         YkVXfW70ghfMWbybHeQ5a67gi4xVKgvGOdt3D2z2xT1ucpLd0Kce1vehYN0tFJrQeMWr
-         3wAiDBqJGSMd/8l8PEmD8UygiLGhnHRq4Xf83X2p/WvROs/LTEuPDlvIV70NF/nBzZWw
-         +60A==
-X-Gm-Message-State: ACrzQf3eE8xFG9V425o+sM3mFY2hWMylBRJNtSEWj1wLmKak1BfwKNl+
-	Y1qrntNs+ShPBbElnW3ZstPYL8ABD7ha82P0WQU=
-X-Google-Smtp-Source: AMsMyM4Gz2+5kp35fIp0/O/T05SuOIGpuqIhQaQMfxlfn5SU+fGpBCPRDRZaFXwRusB8s12f2zmpzgQFs29Q1vy0GZI=
-X-Received: by 2002:a05:6e02:6c9:b0:2f6:40e0:ab8d with SMTP id
- p9-20020a056e0206c900b002f640e0ab8dmr14818762ils.259.1664363098717; Wed, 28
- Sep 2022 04:04:58 -0700 (PDT)
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date;
+        bh=FAnMZuS5mkc7/GZqDAnEmPbAang61hPFgfBqbFN5+NU=;
+        b=w4Cg2lVyfqKrdtXpRS229rXCLtkoSy6ZQCrULkWRRuGn4QlxtsATd3AbB7rj7/6AaP
+         yb80WeA8lN5HTccJqw/FFFkzZVu2OIoPhEmseBRIEUvWJw9CLCVGidldYQVHvunWJ8Tj
+         iG0YrhbkY8KHq0L2BbJQK6i/0UnkmpWljVh32bjF0QNczrL4J1rp1ahSCxBGK6jCAq6U
+         dvsKhsV/OPhoPbMWwmr0DY0Pw19bzSo3s1D0H6+kBniRcuBJBE7XRMIiTTym+U8m859F
+         VvPPBOxDYVUtnj9bS60/dV35yPIeepaS8lxcZV5zS5wqQJL6xTuU5lKWmyhQwDUY1UJ5
+         f4qA==
+X-Gm-Message-State: ACrzQf35XBRVvdWcBrFhlflUHzC3PS05dw8tnThQxnJBi/mJ8G6yc4qg
+	l119Uvx6XxwnhvfFZfz0uPo=
+X-Google-Smtp-Source: AMsMyM4WwEDB6JZJPZtN7bJ9mXlKao260GKm95+zoKZOGuPLA7uJgHvU+mzh7nNYUlp3sd2QdLDQ9Q==
+X-Received: by 2002:a17:906:da85:b0:741:40a7:d08d with SMTP id xh5-20020a170906da8500b0074140a7d08dmr28764201ejb.263.1664365711886;
+        Wed, 28 Sep 2022 04:48:31 -0700 (PDT)
+Received: from orome (p200300e41f201d00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f20:1d00:f22f:74ff:fe1f:3a53])
+        by smtp.gmail.com with ESMTPSA id l17-20020a1709060cd100b0077fb63da010sm2246341ejh.114.2022.09.28.04.48.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 28 Sep 2022 04:48:30 -0700 (PDT)
+Date: Wed, 28 Sep 2022 13:48:29 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
+	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	kernel@collabora.com, linux-pwm@vger.kernel.org,
+	Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH 1/1] dt-bindings: pwm: rockchip: Add description for
+ rk3588
+Message-ID: <YzQ0jTmJCBwV+x2y@orome>
+References: <20220901135523.52151-1-sebastian.reichel@collabora.com>
+ <1662059695.095333.2226883.nullmailer@robh.at.kernel.org>
+ <20220913091202.2oawzrq2u5iiz6hq@pengutronix.de>
+ <20220913141601.fi6pl2xdo4xmtw6t@mercury.elektranox.org>
 MIME-Version: 1.0
-References: <CANAwSgTyt2D-aEMMowO6d+0ddTQb46o0pWMahnr7ny2rjY7iaQ@mail.gmail.com>
- <20220927181531.5546-1-amadeus@jmu.edu.cn>
-In-Reply-To: <20220927181531.5546-1-amadeus@jmu.edu.cn>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Wed, 28 Sep 2022 16:34:43 +0530
-Message-ID: <CANAwSgSf=JZ_JiK1Gh5EYR30KQ5Yh-w3GsxzcFVweKHPi7KuLg@mail.gmail.com>
-Subject: Re: [PATCH-next v1] arm64: dts: rockchip: Enable NVM Express PCIe
- controller on rock3a
-To: Chukun Pan <amadeus@jmu.edu.cn>
-Cc: heiko@sntech.de, robh+dt@kernel.org, michael.riesch@wolfvision.net, 
-	krzysztof.kozlowski+dt@linaro.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20220913141601.fi6pl2xdo4xmtw6t@mercury.elektranox.org>
+User-Agent: Mutt/2.2.7 (2022-08-07)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_040459_919406_88EEC0E7 
-X-CRM114-Status: GOOD (  22.58  )
+X-CRM114-CacheID: sfid-20220928_044837_520936_C9D5FE76 
+X-CRM114-Status: GOOD (  29.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,111 +92,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4443431054946915511=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chukun,
 
-On Tue, 27 Sept 2022 at 23:45, Chukun Pan <amadeus@jmu.edu.cn> wrote:
->
-> Hi Anand,
->
-> On 27-09-22, 19:16, Anand Moon wrote:
->
-> > As per the schematic below pice support with 2 regulators
-> >
-> > VCC3V3_PCIE        (SCT2250FPA)
-> > VCC3V3_PI6C_03  (PI6C557-03 is a spread spectrum clock generator
-> > supporting PCI Express and Ethernet requirements)
->
-> > [0] https://dl.radxa.com/rock3/docs/hw/3a/rock3a_v1.3_sch.pdf
->
-> Thanks for sharing, I rewrote this patch, can you try again?
->
+--===============4443431054946915511==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="dyGexfX47caB1lpi"
+Content-Disposition: inline
 
-No, It's not working on my board.
-I have to enable CONFIG_REGULATOR_DEBUG, See the logs below.
 
-[ 0.784121] reg-fixed-voltage vcc3v3-pi6c-03-regulator: vcc3v3_pi6c03
-supplying 3300000uV
-[ 0.784430] vcc3v3_pcie: 3300 mV, disabled
+--dyGexfX47caB1lpi
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-[0] https://pastebin.com/aEKQx1YZ
+On Tue, Sep 13, 2022 at 04:16:01PM +0200, Sebastian Reichel wrote:
+> Hi,
+>=20
+> On Tue, Sep 13, 2022 at 11:12:02AM +0200, Uwe Kleine-K=C3=B6nig wrote:
+> > Hello Rob,
+> >=20
+> > On Thu, Sep 01, 2022 at 02:14:55PM -0500, Rob Herring wrote:
+> > > On Thu, 01 Sep 2022 15:55:23 +0200, Sebastian Reichel wrote:
+> > > > Add "rockchip,rk3588-pwm" compatible string for PWM nodes found
+> > > > on a rk3588 platform.
+> > > >=20
+> > > > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> > > > ---
+> > > > No driver changes required.
+> > > > ---
+> > > >  Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml | 1 +
+> > > >  1 file changed, 1 insertion(+)
+> > > >=20
+> > >=20
+> > > Running 'make dtbs_check' with the schema in this patch gives the
+> > > following warnings. Consider if they are expected or the schema is
+> > > incorrect. These may not be new warnings.
+> > >=20
+> > > Note that it is not yet a requirement to have 0 warnings for dtbs_che=
+ck.
+> > > This will change in the future.
+> >=20
+> > Is this a list of *new* warnings, or is the report (somewhat) orthogonal
+> > to the actual change and you just used the opportunity that someone
+> > touched the pwm-rockchip binding to point out that there is some cleanup
+> > to do?
+> >=20
+> > > Full log is available here: https://patchwork.ozlabs.org/patch/
+> >=20
+> > Hm, that gives me a 404.
+>=20
+> This is an existing problem with the rv1108 binding.
+> The rk3588 does not have pwm interrupts.
 
-> > No, it did not work on my board, see bool logs.
-> > [0] https://pastebin.com/Lk93VFxg
->
-If you check the driver code it requires *data-line* and *num-lanes
-from the dts.
+Can somebody go and fix that, then?
 
-[ 0.725985] phy phy-fe8c0000.phy.4: lane number 0, val 1
-[ 0.726975] phy phy-fe8c0000.phy.4: rockchip_p3phy_rk3568_init: lock
-failed 0x6890000, check input refclk and power supply
-[ 0.728172] phy phy-fe8c0000.phy.4: phy init failed --> -110
-[ 0.728704] rockchip-dw-pcie: probe of 3c0800000.pcie failed with error -110
+Thierry
 
-> From the boot log, looks like ethernet is broken:
->   mdio_bus stmmac-0: MDIO device at address 0 is missing.
->   rk_gmac-dwmac fe010000.ethernet eth0: no phy at addr -1
->
-> Actually I had this problem too, and reusing the "snps, reset"
-> property solved it. What confuses me is am I doing something
-> wrong or there is something wrong with the device tree now?
->
+--dyGexfX47caB1lpi
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Yep, I have the following changes that work to bring the Ethernet up.
+-----BEGIN PGP SIGNATURE-----
 
-alarm@rock-3a:~/linux-next-5.y-devel$ git diff
-arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-index 097cee13885d..498b9b2af3ed 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-@@ -242,6 +242,11 @@ &gmac1 {
-        assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>;
-        assigned-clock-rates = <0>, <125000000>;
-        clock_in_out = "output";
-+
-+       snps,reset-gpio = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
-+       snps,reset-delays-us = <0 20000 100000>;
-+       snps,reset-active-low;
-+
-        phy-handle = <&rgmii_phy1>;
-        phy-mode = "rgmii-id";
-        pinctrl-names = "default";
-@@ -250,6 +255,8 @@ &gmac1m1_tx_bus2
-                     &gmac1m1_rx_bus2
-                     &gmac1m1_rgmii_clk
-                     &gmac1m1_rgmii_bus>;
-+       tx_delay = <0x30>;
-+       rx_delay = <0x10>;
-        status = "okay";
- };
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmM0NIoACgkQ3SOs138+
+s6FYPhAAkpWg63sPJIpWbx2dzxaJlV5QQ5A8JbcoHnFl5pL+PuMYkKkZkGfIRBRM
+CHHt5kM8cTqOloBa+/xgvBgYEA5Bb2n8qnUZLV7IGXgo2k7Aj4aC2trSn31K3z/l
+L7q3dOAAFZsR527T1Vww0iGx1tkGpet6/9MtQXvKbKG5oKrnPDDcCYaYU8kfaz3A
+QiiUQKVX1f1JQ9r2mbyNPSqEaj01H+dkzXUcsG08GjQ4uAQrdp6YOvfE9VipF43D
++vrwf39nSW7pZG+bL8OLgloo9Mi88IhcBD+w/kkpVeBrQEGOmDXjs0dX+ko83pN+
+9XCo2dVLdTs3l2JEaQVTLnWdRwjKvK2lrsduo/sIJxngpX3horO1N7fY4BVdAQOY
+Ftv6gtqMU+KZoerFsFzEHf0nVFjOBfjYxux2ovPToXfayn1Cf0JmyIXCGDdp6lTq
+yWfhVfW5cDEiRiNcrshz4G9IpH0yeaBTUrtGGBQL34WNzKVm6DZi3MWzfKyhnf8o
+i+ttdQJSs7zL/qkwpGYk0ntc4/RFkkwWVWya7R1fRFFxdcWs6CXQauudnhcehBCV
+zD6cacw/HFyYrsHhUt4vQpmcCdJ7myHHmS+PHSiuy6aQwgagEnCYQQfns+fBsFE/
+WKykGXVi5Ta74AnZX5YPEWRzxtz9U682w5XTjHxRDJLCBZpGSck=
+=KBC2
+-----END PGP SIGNATURE-----
 
-@@ -559,14 +566,11 @@ &i2s1_8ch {
- };
+--dyGexfX47caB1lpi--
 
- &mdio1 {
--       rgmii_phy1: ethernet-phy@0 {
-+       rgmii_phy1: ethernet-phy@1 {
-                compatible = "ethernet-phy-ieee802.3-c22";
--               reg = <0x0>;
-+               reg = <0x1>;
-                pinctrl-names = "default";
-                pinctrl-0 = <&eth_phy_rst>;
--               reset-assert-us = <20000>;
--               reset-deassert-us = <100000>;
--               reset-gpios = <&gpio3 RK_PB0 GPIO_ACTIVE_LOW>;
-        };
- };
 
-Thanks
--Anand
+--===============4443431054946915511==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4443431054946915511==--
+
