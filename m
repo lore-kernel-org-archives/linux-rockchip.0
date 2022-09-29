@@ -4,60 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95CAEC433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Sep 2022 15:42:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F228C433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Sep 2022 15:51:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+pK5ulhiwi7jZE4242U8fT47VzaM7RGw6GEXgXcISq8=; b=KzeKgA3LZlCX1z
-	UWhgdHZc0z91AsSQZCCZE7OsGZqn2a9DaEYxLnH7GOWm88loFkW9MXygLkT8vx8QgiywBvOnqG6Uc
-	ulv30skRxtqfNaSflguwi2X0ysVOJtrUFJdrWQfsThhCWoyZSvqI2eVL+SCs6MdwrXF1VI9pv8aWy
-	9xsul6HlzTucgUMpEPuG5GR4Bwl6iyvR5twoG7ZWIRrAPy3wwLjKVmdU6vfoG0O21MYMTLsQZSG81
-	wbLV18WqP5biMtpZuApDTnTMulOxw28DIK7pkuXE7TaFMxdugXm/oUt5fiUfZfvTHe7g+sGB+jGMz
-	qXX2QnAi300hRjxmaCcg==;
+	List-Owner; bh=2An57fuzo4B7E4lLAybXoU8x1luS6LuQ0udOvb96+7c=; b=D8Q/Zceu4MSnNR
+	sDZ2fAnItVdrSqU4rTCw/t2wv5Bokxs7hZQl0wQuTj7gbLhOIglZmUwWM+wxU7mZGEA0hULZx8NZC
+	jsLEaGRj93y4G1YeM9MOuxrIdrIZRv61DRnV2LU2vStB7x/wuTS9HfF0H1+r72+7UA+3DnBoYCauy
+	aetjYg44eRDRxwOQXHHKIPFgqfbLlgPGeabkTbYBYeD1x7nPDgcwmX/m2xujOsi0pso7hjd0ZZ1ir
+	KXiv6rAGLyffzyAoe/D2jq5hwHk5A12tQWwIOednxt0YGpD7w0LoIGZX+GyL0Uy+RnoX3ka7Bj2E/
+	Zu51Wtfdb1D+Vd7uQkdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odvfY-003vY9-MR; Thu, 29 Sep 2022 15:41:48 +0000
+	id 1odvoV-003yMp-Th; Thu, 29 Sep 2022 15:51:03 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odvfM-003vRv-Ez; Thu, 29 Sep 2022 15:41:38 +0000
+	id 1odvoK-003yJL-MZ; Thu, 29 Sep 2022 15:50:54 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6DB6615BF;
-	Thu, 29 Sep 2022 08:41:36 -0700 (PDT)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BCBFE15BF;
+	Thu, 29 Sep 2022 08:50:54 -0700 (PDT)
 Received: from [10.57.65.170] (unknown [10.57.65.170])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id AB29C3F792;
-	Thu, 29 Sep 2022 08:41:27 -0700 (PDT)
-Message-ID: <946d8ac2-6ff2-093a-ad3c-aa755e00d1dd@arm.com>
-Date: Thu, 29 Sep 2022 16:41:22 +0100
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id CEE953F792;
+	Thu, 29 Sep 2022 08:50:44 -0700 (PDT)
+Message-ID: <7ae39c9c-8424-8b65-ac09-c0e87f3b0f01@arm.com>
+Date: Thu, 29 Sep 2022 16:50:43 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
  Thunderbird/102.3.0
-Subject: Re: [PATCH v1 03/11] dt-bindings: pwm: rockchip: add
- rockchip,rk3128-pwm
+Subject: Re: [RFC PATCH v1 2/2] ARM: dts: rk3288: add the interrupts property
+ for PWM
 Content-Language: en-GB
-To: Johan Jonker <jbx6244@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, u.kleine-koenig@pengutronix.de,
- linux-rockchip@lists.infradead.org, philipp.tomsich@vrull.eu,
- linux-arm-kernel@lists.infradead.org, krzysztof.kozlowski+dt@linaro.org,
- devicetree@vger.kernel.org, linux-pwm@vger.kernel.org,
- kever.yang@rock-chips.com, zhangqing@rock-chips.com,
- linux-kernel@vger.kernel.org, heiko@sntech.de
-References: <20220909212543.17428-1-jbx6244@gmail.com>
- <f5dd0ee4-d97e-d878-ffde-c06e9b233e38@gmail.com>
- <1662821635.180247.34700.nullmailer@robh.at.kernel.org>
- <1c13181b-8421-69d8-21ee-9742dd5f55dd@gmail.com>
- <20220912162159.GA1397560-robh@kernel.org>
- <37fd8d4b-3a66-bc51-c2dc-76c9e756fed8@gmail.com> <YzQ3He2wyD2bgxz1@orome>
- <94d829a6-d8c2-2106-2d7d-91a8cd3875ae@gmail.com>
+To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
+Cc: thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
+ robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org,
+ sebastian.reichel@collabora.com, wxt@rock-chips.com,
+ kever.yang@rock-chips.com, linux-pwm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <6eba6c10-9c96-b40f-937a-e02d43b04cd7@gmail.com>
 From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <94d829a6-d8c2-2106-2d7d-91a8cd3875ae@gmail.com>
+In-Reply-To: <6eba6c10-9c96-b40f-937a-e02d43b04cd7@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220929_084136_755547_8D204391 
-X-CRM114-Status: GOOD (  29.38  )
+X-CRM114-CacheID: sfid-20220929_085052_859507_6B703ACC 
+X-CRM114-Status: GOOD (  17.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,185 +67,85 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-09-29 11:26, Johan Jonker wrote:
+On 2022-09-29 15:04, Johan Jonker wrote:
+> The Rockchip rk3288 SoC has 4-built-in PWM channels.
 > 
+> Configurable to operate in capture mode.
+> Measures the high/low polarity effective cycles of this input waveform
+> Generates a single interrupt at the transition of input waveform polarity
 > 
-> On 9/28/22 13:59, Thierry Reding wrote:
->> On Tue, Sep 13, 2022 at 04:38:32PM +0200, Johan Jonker wrote:
->>>
->>>
->>> On 9/12/22 18:21, Rob Herring wrote:
->>>> On Sat, Sep 10, 2022 at 09:48:04PM +0200, Johan Jonker wrote:
->>>>> Reduced CC.
->>>>>
->>>>> Hi Rob,
->>>>>
->>>>
->>>> Seemed like a simple enough warning to fix...
->>>
->>> Some examples for comment.
->>> Let us know what would be the better solution?
->>>
->>> ===========================================================================
->>>
->>> option1:
->>>
->>> 	combpwm0: combpwm0 {
->>> 		compatible = "rockchip,rv1108-combpwm";
->>> 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
->>> 		#address-cells = <2>;
->>> 		#size-cells = <2>;
->>>
->>> 		pwm0: pwm@20040000 {
->>> 			compatible = "rockchip,rv1108-pwm";
->>> 			reg = <0x20040000 0x10>;
->>> 		};
->>>
->>> 		pwm1: pwm@20040010 {
->>> 			compatible = "rockchip,rv1108-pwm";
->>> 			reg = <0x20040010 0x10>;
->>> 		};
->>>
->>> 		pwm2: pwm@20040020 {
->>> 			compatible = "rockchip,rv1108-pwm";
->>> 			reg = <0x20040020 0x10>;
->>> 		};
->>>
->>> 		pwm3: pwm@20040030 {
->>> 			compatible = "rockchip,rv1108-pwm";
->>> 			reg = <0x20040030 0x10>;
->>> 		};
->>> 	};
->>>
->>> PRO:
->>> - Existing driver might still work.
->>> CON:
->>> - New compatible needed to service the combined interrupts.
->>> - Driver change needed.
->>>
->>> ===========================================================================
->>> option 2:
->>>
->>> 	combpwm0: pwm@10280000 {
->>> 		compatible = "rockchip,rv1108-pwm";
->>> 		reg = <0x10280000 0x40>;
->>> 		interrupts = <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH>;
->>> 		#address-cells = <1>;
->>> 		#size-cells = <0>;
->>>
->>> 		pwm4: pwm-4@0 {
->>> 			reg = <0x0>;
->>> 		};
->>>
->>> 		pwm5: pwm-5@10 {
->>> 			reg = <0x10>;
->>> 		};
->>>
->>> 		pwm6: pwm-6@20 {
->>> 			reg = <0x20>;
->>> 		};
->>>
->>> 		pwm7: pwm-7@30 {
->>> 			reg = <0x30>;
->>> 		};
->>> 	};
->>>
->>> CON:
->>> - Driver change needed.
->>> - Not compatible with current drivers.
->>>
->>> ===========================================================================
->>>
->>> Current situation:
->>>
->>> 	pwm0: pwm@20040000 {
->>> 		compatible = "rockchip,rv1108-pwm", "rockchip,rk3288-pwm";
->>> 		reg = <0x20040000 0x10>;
->>> 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
->>> 	};
->>>
->>> 	pwm1: pwm@20040010 {
->>> 		compatible = "rockchip,rv1108-pwm", "rockchip,rk3288-pwm";
->>> 		reg = <0x20040010 0x10>;
->>> 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
->>> 	};
->>>
->>> 	pwm2: pwm@20040020 {
->>> 		compatible = "rockchip,rv1108-pwm", "rockchip,rk3288-pwm";
->>> 		reg = <0x20040020 0x10>;
->>> 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
->>> 	};
->>>
->>> 	pwm3: pwm@20040030 {
->>> 		compatible = "rockchip,rv1108-pwm", "rockchip,rk3288-pwm";
->>> 		reg = <0x20040030 0x10>;
->>> 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
->>> 	};
->>>
->>> CON:
->>> - The property "interrupts 39" can only be claimed ones by one probe function at the time.
->>> - Has a fall-back string for rk3288, but unknown identical behavior for interrupts ???
->>
+> Configurable to operate in continuous mode or one-shot mode.
+> One-shot operation will produce N + 1 periods of the waveform,
+> where N is the repeat counter value, and generates a single interrupt at
+> the end of operation.
+> Continuous mode generates the waveform continuously and
+> do not generates any interrupts.
 > 
->> To be honest, all three descriptions look wrong to me. From the above it
->> looks like this is simply one PWM controller with four channels, so it
->> should really be described as such, i.e.:
->>
->> 	pwm@20040030 {
->> 		compatible = "rockchip,rv1108-pwm";
->> 		reg = <0x20040030 0x40>;
->> 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
->> 	};
->>
-> 
-> Each PWM channel has it's own pinctrl.
-> Not all channel pins are always in use for PWM exclusively.
-> Your proposal would not allow pins to be used for other functions.
+> Add interrupts property to rk3288 PWM nodes.
 
-Why would you think that? It would just mean moving the pinctrl 
-selection down to the board level like for GPIOs - we manage just fine 
-with a single DT node per GPIO bank, and semantically PWMs have no 
-reason do be different. In fact on newer SoCs some PWM channels can be 
-muxed to multiple pins, so pinctrl really has to be at the board level 
-already in those casesa.
+As far as I can make out from the TRM, these are only valid when 
+GRF_SOC_CON2[0] = 0, otherwise it's in "new" RK_PWM mode using SPI 78 
+for all channels. Which apparently will be the case for anyone using 
+upstream U-Boot:
 
-The TRMs seem pretty clear that the "new" PWM block from RK3288 onwards 
-is a single module with 4 channels, not 4 independent controllers, so it 
-seems to have been an unfortunate mistake not to create a new binding 
-for it at that point. It would be a little fiddly, but far from 
-impossible, to make the driver support both the existing binding and a 
-new one (and I don't see how we could use the interrupt on newer SoCs 
-*without* a binding change, given that the interrupt status register is 
-outside any channel's current "reg"), but an old kernel with a new DT 
-would be more problematic. If we kept the existing compatibles then an 
-old driver would always use channel 0 regardless of what the consumer 
-requested; using new compatibles as well means the old kernel loses PWM 
-functionality entirely, which is arguably "safe", but I'm not sure if 
-it's really better or worse :/
+https://source.denx.de/u-boot/u-boot/-/blob/master/arch/arm/mach-rockchip/rk3288/rk3288.c#L83
 
+Thanks,
 Robin.
 
-> More ideas with this interrupt? Please advise.
+> Signed-off-by: Caesar Wang <wxt@rock-chips.com>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > 
-> ===
+> ---
 > 
-> The SoCs PWM are configurable to operate in continuous mode (default mainline) or one-shot mode or capture mode.
-> Is there any good example for one-shot mode interrupt use?
+> Original patch location:
+>    ARM: dts: rk3288: add the interrupts property for PWM
+>    https://github.com/rockchip-linux/kernel/commit/16b7b284618d1652e694f6286f575ce82f5f03e5
 > 
+> ---
 > 
->> Looking through existing Rockchip SoC DTSI files, though, it looks like
->> this has been done the wrong way since the beginning, so not sure if you
->> still want to fix it up.
->>
->> This whole problem of dealing with a shared interrupt wouldn't be a
->> problem if this was described properly.
->>
->> Thierry
+> "rockchip,rk3288-pwm" is in use as fall back string for Rockchip SoCs with combined
+> PWM interrupt.
+> ---
+>   arch/arm/boot/dts/rk3288.dtsi | 4 ++++
+>   1 file changed, 4 insertions(+)
 > 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> index 487b0e03d..1223aa369 100644
+> --- a/arch/arm/boot/dts/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rk3288.dtsi
+> @@ -675,6 +675,7 @@
+>   	pwm0: pwm@ff680000 {
+>   		compatible = "rockchip,rk3288-pwm";
+>   		reg = <0x0 0xff680000 0x0 0x10>;
+> +		interrupts = <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>;
+>   		#pwm-cells = <3>;
+>   		pinctrl-names = "default";
+>   		pinctrl-0 = <&pwm0_pin>;
+> @@ -685,6 +686,7 @@
+>   	pwm1: pwm@ff680010 {
+>   		compatible = "rockchip,rk3288-pwm";
+>   		reg = <0x0 0xff680010 0x0 0x10>;
+> +		interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>;
+>   		#pwm-cells = <3>;
+>   		pinctrl-names = "default";
+>   		pinctrl-0 = <&pwm1_pin>;
+> @@ -695,6 +697,7 @@
+>   	pwm2: pwm@ff680020 {
+>   		compatible = "rockchip,rk3288-pwm";
+>   		reg = <0x0 0xff680020 0x0 0x10>;
+> +		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH>;
+>   		#pwm-cells = <3>;
+>   		pinctrl-names = "default";
+>   		pinctrl-0 = <&pwm2_pin>;
+> @@ -705,6 +708,7 @@
+>   	pwm3: pwm@ff680030 {
+>   		compatible = "rockchip,rk3288-pwm";
+>   		reg = <0x0 0xff680030 0x0 0x10>;
+> +		interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>;
+>   		#pwm-cells = <3>;
+>   		pinctrl-names = "default";
+>   		pinctrl-0 = <&pwm3_pin>;
 
 _______________________________________________
 Linux-rockchip mailing list
