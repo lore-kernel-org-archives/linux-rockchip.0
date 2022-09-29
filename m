@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50970C6FA83
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Sep 2022 03:25:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF432C04A95
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Sep 2022 06:13:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Mime-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0WpL/p0o8Uz8sZgYTJaP+a1WTqXw1LovYYVkzcx9Bhw=; b=opU/JVawCNAKAL
-	s5PMrSXnv6Gh1DSHk6AcSnF8EGcLBbocIIxm9hjWmRRyLMaHu51T+TUinh09uZucMCQQIWceMszka
-	dlz/St4bL+CemxfziwPUaPjUagHpJHfj+LXKqzzj4Y6AgyNVaqE0e8z8H3oTwKO9Ql+yegR8nXFtS
-	0cqfnYy0+g6VFOY+f7edpuKbRxHc8BjRgbyqSx7liOgnX3PxUTW7rcyw/FEYkHkQ9hF8vt9Ya+dQv
-	eD+tAtJMVatYA7o1CpqHtnj0tv0IJLWyQfap4A1mgTieb2zSb+yi9D8b/+6P2VhiEPqLPOu8YgGeA
-	td3r1EYVLxNR27SVRx7g==;
+	List-Owner; bh=/ab5+tPjhEAcyqMn8gyrSaJCwkafRf6kdQeIiimhuXc=; b=OacL1/wVKDFL0h
+	8L7cvfe/zKmYoEmEcOZXzQOj5tQ5gj0NmSjwJdp6PFdlzxYxSI1TjMvmlv+cFMDLCWgy40qZXjH9H
+	ZM3v4IEGHLBkmBDcizvlrt+Oa2ulNEwoB3W0ZIf3dnnet/mF0ocfK8kGcQzrrNiIbScZ2miHiuyO7
+	cMUQqP8sk1Jffo+l5Y/ctUUihhzdFMwp87US6k2zZdAKK0DsI6S30PQ2Oe84bP8feEe63riR5Z/q0
+	E2dBgmaLzviR13y0cdnMWq/EL7Bf/JYQJPz1DtYrbXEm8/5GdSC8bhfDqdCatEPOHfTIcBsg5ymhh
+	qFGQdHp3YhcyUhFtFWeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odkAG-0013zY-JM; Thu, 29 Sep 2022 03:24:44 +0000
-Received: from mx-out2.startmail.com ([145.131.90.155])
+	id 1odmnh-001LIX-E0; Thu, 29 Sep 2022 06:13:37 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1odkAD-0013y0-5b
-	for linux-rockchip@lists.infradead.org; Thu, 29 Sep 2022 03:24:43 +0000
-Date: Wed, 28 Sep 2022 22:24:29 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=startmail.com;
-	s=2020-07; t=1664421873;
-	bh=S3V/oabjvo+o4Z5pvX2DO6gwx16MThlbck2ozz3F3sY=;
-	h=Date:From:To:Subject:Message-ID:References:Mime-Version:
-	 Content-Type:Content-Disposition:In-Reply-To:From:Subject:To:Date:
-	 Sender:Content-Type:Content-Transfer-Encoding:Content-Disposition:
-	 Mime-Version:Reply-To:In-Reply-To:References:Message-Id:Autocrypt;
-	b=yFuN/xtqXGxcPp2K65UESEaHwe/UeIfIeYNlKfEmRIB6BiQOeH4W7noan8bghrTb7
-	 3Eu0lbDiR5WpQWucHeZShw1IbOhuI4ER3mDNPLv50e5ZMnu3oBECf47taq5uZym08G
-	 CRualk1/dX3pY9+qziBV0L/PAwSYw6JabrCEMjMYrGjbbhhYCSQvo1DoytShpV3VHJ
-	 XWqUcYg1ojsGhAbCsKzwXS9L9TLxHvc1gOPGPjZo/LF89YU4M1tFb9E0Xshe1jvFKr
-	 lrhJ/B5REMZYy7hsBUqGKGmD8qJAo+Ew8u7DALPZY9UqMb1WJBgWe+sdz0h989Adt6
-	 fSIDQFueQVW1A==
-From: "Marty E. Plummer" <hanetzer@startmail.com>
-To: Simon Glass <sjg@chromium.org>
-Cc: U-Boot Mailing List <u-boot@lists.denx.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Philipp Tomsich <philipp.tomsich@theobroma-systems.com>,
-	Artem Lapkin <email2tema@gmail.com>,
-	Philipp Tomsich <philipp.tomsich@vrull.eu>,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
-	Xavier Drudis Ferran <xdrudis@tinet.cat>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [RFC PATCH 4/4] rockchip: rk3399: attempt to redirect uart2dbga
- to sdcard
-Message-ID: <20220929032429.lkk5ikxpxweke4xs@proprietary-killer>
-References: <20220922064704.1740759-1-hanetzer@startmail.com>
- <20220922064704.1740759-5-hanetzer@startmail.com>
- <CAPnjgZ3-a8eCdD7uqeW6QPXceSyUA2n2uDRE1Kddgsys_fGByg@mail.gmail.com>
-Mime-Version: 1.0
+	id 1odmnO-001LE5-Kn; Thu, 29 Sep 2022 06:13:19 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by dfw.source.kernel.org (Postfix) with ESMTPS id 2950762030;
+	Thu, 29 Sep 2022 06:13:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01035C433B5;
+	Thu, 29 Sep 2022 06:13:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1664431997;
+	bh=mptkJW/0D7J67zG5IWOS5/3OR8nh/364Sw8qadvLw8g=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=DuMZGNsY9JNwxVqBTv2Qkn8muzAHYMKKbbxpK1IVApLWICoOXYzqZNm4IvozgdTug
+	 pWqaMbMVCqB956gdbXAqYJ5xuDwFc9/nDzXBfzriQi+Qt2bRXyHdbzAkwHdo3Ps76m
+	 aIY4CJ/t9wx5LQkmL3iWD0R25kp9eh1xAsAH1OFceaoGsuQWAKfXRE1BJ7p/7y5K9F
+	 SlxF/SAqPWofOss6e/plGhOb5klg1oSQMqXTYvSpGHHcskKX02J0SjV6SC5XGJjhbY
+	 VsQ2dWU94e7LKwUcuYU7xRyKhmTNzzp8s22T5BFwfnmFp5pwY2kwnQgLbW6151osFL
+	 93YmbAbu6Z4hw==
+Date: Thu, 29 Sep 2022 11:43:12 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Aurelien Jarno <aurelien@aurel32.net>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	Peter Geis <pgwipeout@gmail.com>
+Subject: Re: [PATCH] phy: rockchip-snps-pcie3: only look for
+ rockchip,pipe-grf on rk3588
+Message-ID: <YzU3eLRCMmogyypi@matsya>
+References: <20220927051752.53089-1-aurelien@aurel32.net>
+MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAPnjgZ3-a8eCdD7uqeW6QPXceSyUA2n2uDRE1Kddgsys_fGByg@mail.gmail.com>
+In-Reply-To: <20220927051752.53089-1-aurelien@aurel32.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220928_202441_406335_A7C9DBF0 
-X-CRM114-Status: GOOD (  15.98  )
+X-CRM114-CacheID: sfid-20220928_231318_733538_E5F94621 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,33 +79,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 28, 2022 at 04:20:37AM -0600, Simon Glass wrote:
-> Hi Marty,
+On 27-09-22, 07:17, Aurelien Jarno wrote:
+> The rockchip,pipe-grf property is only used on rk3588, but not on
+> rk3568. Therefore this property is not present on rk3568 devices,
+> leading to the following message:
 > 
-> On Thu, 22 Sept 2022 at 00:47, Marty E. Plummer <hanetzer@startmail.com> wrote:
-> >
-> > The meat of my problem. rk3399 has the ability to redirect uart2 to
-> > sdcard pins. This setup half works; I can push input into the uart, but
-> > not see output.
-> >
-> > Signed-off-by: Marty E. Plummer <hanetzer@startmail.com>
-> >
-> > ---
-> >
-> >  arch/arm/dts/rk3399-gru.dtsi                   |  7 ++-----
-> >  arch/arm/dts/rk3399.dtsi                       |  4 ++--
-> >  .../arm/include/asm/arch-rockchip/grf_rk3399.h |  3 +++
-> >  arch/arm/mach-rockchip/rk3399/rk3399.c         | 18 +++++++++---------
-> >  4 files changed, 16 insertions(+), 16 deletions(-)
+>   rockchip-snps-pcie3-phy fe8c0000.phy: failed to find rockchip,pipe_grf regmap
 > 
-> Perhaps the C code could be behind a Kconfig, with a comment about how
-> to change the DT?
-> 
-Maybe if I do end up making this up for mainline inclusion, sure, but as
-of right now I just wanna get some console output to see why things
-aren't booting properly, so looking for dirty hax to work with for now.
-> Regards,
-> Simon
+> Fix that by only looking for this property on rk3588.
+
+Applied, thanks
+
+-- 
+~Vinod
 
 _______________________________________________
 Linux-rockchip mailing list
