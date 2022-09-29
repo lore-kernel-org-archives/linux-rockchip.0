@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08E39C433F5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Sep 2022 22:15:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65433C433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Sep 2022 22:15:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8Rg8eBASxLGqC/2Fb57ghMBy1CyR+JCUNMR7+f68wgI=; b=GiQR4jlyy0PGEc
-	WwwEqxD3oKHFG6NTCvodH0ZF83xsNtasYMRNLZB4+okALUNFwzWtNGaeniNDi7U90qeJuPGjP2SzF
-	EaPJCJdJ68SWPfQnsayNIhht+t8QdHTFlZ2HU/DufYws1GZFx1iazRAv7cVd/uvBAZV2aF2uvZ5HN
-	fhrB7B3io/PxQvRPt4p7tdxCm9R4cMmkaXuHiHhC5jDd4wNNKY8cJKX2D0OlCc55wMrGF3bp5NfMm
-	XJ6y4xs5LzuEbiFz0bfvxWkbHXupWfg1ftF6Sx1JWq9uH1j/kayPl/xZzn+VKTqLnfTAlNxUpQE4D
-	JK3gDz8SjXthrGd5YedQ==;
+	List-Owner; bh=9ado2gPl3fj6O36b3UZIdxphIJWE9D4kGvd9V43BPIQ=; b=nJdQvv+YdhyYfI
+	OSpcpTMm6Uslt9iPYND681VT67bC8cQfphdWvsHeh5pmV7fVKC2UBbC4nWrTHUeHagocrhEjdvS+4
+	42qvIgckFjuZJY/561atqbFdt6F7we08TL3R7mSt5Ak7zT+99J4JgfZ0he8LH/huHhJzTh0l8ayJM
+	fRrnbTeJ1J/JK2kKOx3DGiT5Y873ybOJrsT8mjywVb5YJpTGCmeLPTa1YbjtUOcbSZDIkzT1AZobX
+	tpLvgCG+kRtC0am+/3c1V9Zcz+aHljhpz8RhQns7fwvDZOWBS3FJXD5xn9CMjnbR+SaOSURi0Xqh1
+	li22WDMw5nz35F+7+Xaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oe1oF-005eIq-1m; Thu, 29 Sep 2022 22:15:11 +0000
-Received: from mail-oo1-f41.google.com ([209.85.161.41])
+	id 1oe1oi-005eRW-N0; Thu, 29 Sep 2022 22:15:40 +0000
+Received: from mail-oi1-f175.google.com ([209.85.167.175])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oe1o4-005eFx-AR; Thu, 29 Sep 2022 22:15:01 +0000
-Received: by mail-oo1-f41.google.com with SMTP id k11-20020a4ab28b000000b0047659ccfc28so1060160ooo.8;
-        Thu, 29 Sep 2022 15:14:59 -0700 (PDT)
+	id 1oe1of-005eQ9-J7; Thu, 29 Sep 2022 22:15:39 +0000
+Received: by mail-oi1-f175.google.com with SMTP id t62so3005991oie.10;
+        Thu, 29 Sep 2022 15:15:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=G3ixGfgN7BtiMl2GIJrXgjiRG+Ja3k65KHc2UeJTU2Y=;
-        b=z9lj0PJPzv4bkHGmj7lRo2XOa0BJmTgBj+BRIE+G5GZFeXuxchsAz7Zk+pWE6cY/Gl
-         eymtAWoFkflS4l+MYiuB3sq0ruSQRlVJqhf91uJcmEC7Bs0azfso4xgySnxLkgBstH9A
-         pkEpUwWz119irPhd54Ox8qtmws5chsC/5rYr+o9XGZYxW/vYw6/OaLs0+uLvLUAiNqWH
-         k7K4KqdwCWW1Uc61S6KsyoxmEikXfDrGasi/G44lsBtNudVxLpQVz2RVHlwVgG+Ht0b3
-         OeFNdY/Qd4X7ywfBB2Ak1XlroXNEqHducll0A1HDttM4Yq5UrKlFLzRRk8egDS6EnOS6
-         Yy2Q==
-X-Gm-Message-State: ACrzQf3VEe3N3rB0yxf4YFDDnURnUDe1H++dCtOmN76m4c/wZ8FfjHPs
-	gkeRph7TBgBIuChaPIP4Gg==
-X-Google-Smtp-Source: AMsMyM6X8fuxncInKY1HHajfMs3xBeGsJpxqmoGci0kg/caJyZtFTBc6uzl+qdSsE6tynspmpVwZHw==
-X-Received: by 2002:a9d:666:0:b0:655:d979:8a6 with SMTP id 93-20020a9d0666000000b00655d97908a6mr2406280otn.200.1664489699187;
-        Thu, 29 Sep 2022 15:14:59 -0700 (PDT)
+        bh=4BfKtAN74BiuLXzY75ghMuhJ1sBHsY4RPott4OBX9j8=;
+        b=S3W0HnyAp8Xk5P+dCoMim2HDY2p5tsgiLy/qXQpCLWcW+1gFcE2VDjbm01MaKAJICX
+         5odO5g9r/n1WtOrbJHdrmTPYvhQYmM/VJVfythLaJ/pz9rP79aVpe76fnYPCrHC2HyPq
+         cB9Q3WCcHwPuo2P9YCXdu+rkceNK2NXl2HXM/CB6QVOdvmgVT11m/JnIGo7UaCtvdHAy
+         zHNGhSSvC7lOwCPbtBkWwutKLIBC43Dz4zLpVqG3oqOEttjh9EZEniABebJVkzr+XPwz
+         w24XmS6sKvykImunssnth0uC5nMTsxaY+D5AwsOBKA+0bLUfwiWDnTpEa43O/PF/4bW4
+         M77w==
+X-Gm-Message-State: ACrzQf3/hvTDL7JZHa495vQ6at9DDibHG4vaVIr0Cq1tMm1MkUBHQrx/
+	iTfPsYPpKAmAvXogmXhduvQqzBTdxA==
+X-Google-Smtp-Source: AMsMyM793Cd8u3q+sjWrpJjjLQ0fbvmUagt931/u0RIvCAWtOjG21n+skk3xFBtXE3Ry/fZOtKPL0Q==
+X-Received: by 2002:a05:6808:d46:b0:350:cba9:1981 with SMTP id w6-20020a0568080d4600b00350cba91981mr7922656oik.130.1664489736371;
+        Thu, 29 Sep 2022 15:15:36 -0700 (PDT)
 Received: from macbook.herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id c6-20020a9d7846000000b0065892f42157sm199147otm.75.2022.09.29.15.14.58
+        by smtp.gmail.com with ESMTPSA id x65-20020a9d37c7000000b0065bf42c967fsm210418otb.19.2022.09.29.15.15.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Sep 2022 15:14:58 -0700 (PDT)
-Received: (nullmailer pid 2862895 invoked by uid 1000);
-	Thu, 29 Sep 2022 22:14:57 -0000
-Date: Thu, 29 Sep 2022 17:14:57 -0500
+        Thu, 29 Sep 2022 15:15:35 -0700 (PDT)
+Received: (nullmailer pid 2863698 invoked by uid 1000);
+	Thu, 29 Sep 2022 22:15:35 -0000
+Date: Thu, 29 Sep 2022 17:15:35 -0500
 From: Rob Herring <robh@kernel.org>
 To: Corentin Labbe <clabbe@baylibre.com>
-Cc: heiko@sntech.de, devicetree@vger.kernel.org, herbert@gondor.apana.org.au, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, mturquette@baylibre.com, linux-rockchip@lists.infradead.org, davem@davemloft.net, linux-clk@vger.kernel.org, ardb@kernel.org, krzysztof.kozlowski+dt@linaro.org, robh+dt@kernel.org, linux-crypto@vger.kernel.org, sboyd@kernel.org
-Subject: Re: [PATCH v10 25/33] dt-bindings: crypto: rockchip: add new
- compatible
-Message-ID: <166448969734.2862850.15734713971995985090.robh@kernel.org>
-References: <20220927075511.3147847-1-clabbe@baylibre.com>
- <20220927075511.3147847-26-clabbe@baylibre.com>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, herbert@gondor.apana.org.au, devicetree@vger.kernel.org, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, heiko@sntech.de, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, linux-crypto@vger.kernel.org
+Subject: Re: [PATCH RFT 2/5] dt-bindings: crypto: add support for
+ rockchip,crypto-rk3588
+Message-ID: <166448973449.2863631.5987990052207072258.robh@kernel.org>
+References: <20220927080048.3151911-1-clabbe@baylibre.com>
+ <20220927080048.3151911-3-clabbe@baylibre.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220927075511.3147847-26-clabbe@baylibre.com>
+In-Reply-To: <20220927080048.3151911-3-clabbe@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220929_151500_380198_22E4D714 
-X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-CacheID: sfid-20220929_151537_640876_357E8AE0 
+X-CRM114-Status: UNSURE (   9.74  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,13 +80,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 27 Sep 2022 07:55:03 +0000, Corentin Labbe wrote:
-> Since driver support new compatible, we need to update the driver bindings.
+On Tue, 27 Sep 2022 08:00:45 +0000, Corentin Labbe wrote:
+> Add device tree binding documentation for the Rockchip cryptographic
+> offloader V2.
 > 
 > Signed-off-by: Corentin Labbe <clabbe@baylibre.com>
 > ---
->  .../crypto/rockchip,rk3288-crypto.yaml        | 79 +++++++++++++++++--
->  1 file changed, 71 insertions(+), 8 deletions(-)
+>  .../crypto/rockchip,rk3588-crypto.yaml        | 71 +++++++++++++++++++
+>  1 file changed, 71 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
 > 
 
 Reviewed-by: Rob Herring <robh@kernel.org>
