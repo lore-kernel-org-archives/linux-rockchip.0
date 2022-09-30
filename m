@@ -4,52 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C95E5C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 13:21:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C8A8C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 15:17:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bqecZZwcjHxkebUPBNbiTJ1tbjGtBmJwyAzpfPOSxhk=; b=g7LeuJXH086+Qu
-	Gk9U2/3WOopng7JAyAapbyIcOXNgd2GSDz7Hj0UcY3nFIyiymc66Cym0g3aBoSIDLsgV9VcrniANZ
-	CF7ikcZEIDmB3b98SlgUR6B68LYfxtXab8eXVkSW+QTxHjfZhNfG0f/X9Lga2N5Qj5huBtE2TZSfo
-	zSY2uqpZ6QoyfHxxCxK+TI0nRCpxuqbmS3fwaQ3FSc3DFrTk3NUMwjI8VlzEV+k/qrmtLtRHPMOh+
-	SWvUPw8zAvN7JmsQOELZ0743rcfRlaCoR6IhTn4PMBE1q2OgD9mEigQTqkQf5Y1Kz84GynGavqXkF
-	Iyf5GUQoefS86VLHmPbw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=OffclPAsaM9HCAM16M0AI4PCJUmh2GBrohfPTak3zF8=; b=lz/qNpfKEejdiU
+	nWLdiVnu8sndoutKYG+dtf/lAvUHxiIIM9qsz8n0xeRwfPuAJRLxQo94AYy0OQgLKDCgoJAT3Jk0o
+	GYY0ek0itHzTBzTV5pEiuXPhP+b6TiZNDPpJUo1uOsoJSM1nOuUufp7lgFW2EiuSOzzshJWXLXmZE
+	0e3fhgBc92XR4yrS2HTvmhzCHhxWiniWrZVotm4M5vMP443ks0qIsnND1oXzf7ISdNee9Y4a9SkRN
+	BKGKdMgYs7jlgOsEW8uU+HsUdWYWtNBVw3+uHjcfjpP99k2IuIXDboPRetkhVBw3iLuoZe3umYlLy
+	PVyvMNI6OGkZEZVXakHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeFxP-009MFU-IR; Fri, 30 Sep 2022 13:21:35 +0000
-Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
+	id 1oeHkk-00A6ll-Qv; Fri, 30 Sep 2022 15:16:38 +0000
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeFwl-009Ltg-Fa; Fri, 30 Sep 2022 13:20:58 +0000
-Received: (Authenticated sender: foss@0leil.net)
-	by mail.gandi.net (Postfix) with ESMTPSA id 44FCC2000C;
-	Fri, 30 Sep 2022 13:20:49 +0000 (UTC)
-From: Quentin Schulz <foss+kernel@0leil.net>
-To: 
-Cc: linus.walleij@linaro.org,
-	brgl@bgdev.pl,
-	heiko@sntech.de,
-	jay.xu@rock-chips.com,
-	linux-gpio@vger.kernel.org,
+	id 1oeHk5-00A6OZ-JE
+	for linux-rockchip@lists.infradead.org; Fri, 30 Sep 2022 15:16:05 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id x1-20020a17090ab00100b001fda21bbc90so9374435pjq.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 30 Sep 2022 08:15:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date;
+        bh=bkGZlMCLcjGUMJh18RhP4Ctr01ZIOmKFkpG+F89/rcQ=;
+        b=cybBlknOX9/DfQdo0Xe980ssg21Q5o50iv9PUSvznC2qYrzK2NumO347QdFKTRyOHM
+         FY4hfsYNXFezlLbuarWagHuoz1s+oVb5jXi5mtBx5Hg9andKcny+jCAmaPHHIkYeJkPX
+         Nk2/IL12+8PjMxfSxrf2YNtcvLyJHguO1qIMQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date;
+        bh=bkGZlMCLcjGUMJh18RhP4Ctr01ZIOmKFkpG+F89/rcQ=;
+        b=ef4aNB0vaSrkH5PLTT6/leflwzb23LDXvJTM0xloiQbLUJKbUnzzNWOQjLQfKfhfhv
+         dh4vC70EKCBvZ/3Zejf79A/SD+NZiOurTj7dTX2t53F4ySUk29TE7TANmmYsggs8E2pi
+         u1PZyWUIUWogsR9Is991Hf6P12lajpv1PvX9KEPrhjmZe5y0L+8utOKahiIedV8ijNUz
+         yt4Nayfb9BYqkNc7xfrdH+NFQ92wA5MZ3ZG1C3Pt2TWhdE2ZJKuNuyvDDl2tXb/EMV/d
+         W8tQo0U/PeKuylVFaLDJ1UISOiy7hRHyhfKXOFDn8PmzPMajDDX1jGIEQdB3sZnEMw9u
+         o6ng==
+X-Gm-Message-State: ACrzQf0Xf9C3MOQvPmBoUnZvn0pJoizQdkQcVpc9LP6wTIjuwJOnfySk
+	YAN6GOkgwMVlODaNCYiJc4tRyQ==
+X-Google-Smtp-Source: AMsMyM7dgX6KIprJugnpW4W2X/BhsVT0zR5F1NzXqlIHS4EK3Do0GsiexPC5q7UZws3YeTuk7VrkxQ==
+X-Received: by 2002:a17:90a:9b12:b0:203:9b0:284e with SMTP id f18-20020a17090a9b1200b0020309b0284emr10424274pjp.116.1664550954797;
+        Fri, 30 Sep 2022 08:15:54 -0700 (PDT)
+Received: from judyhsiao0523.c.googlers.com.com (21.160.199.104.bc.googleusercontent.com. [104.199.160.21])
+        by smtp.gmail.com with ESMTPSA id z3-20020aa79e43000000b0053b9e5d365bsm1894355pfq.216.2022.09.30.08.15.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 30 Sep 2022 08:15:54 -0700 (PDT)
+From: Judy Hsiao <judyhsiao@chromium.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Lin Huang <hl@rock-chips.com>,
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	Shunqian Zheng <zhengsq@rock-chips.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Brian Norris <briannorris@chromium.org>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Chen-Yu Tsai <wenst@chromium.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	foss+kernel@0leil.net,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
-	stable@vger.kernel.org
-Subject: [PATCH v2 1/2] pinctrl: rockchip: add pinmux_ops.gpio_set_direction callback
-Date: Fri, 30 Sep 2022 15:20:32 +0200
-Message-Id: <20220930132033.4003377-2-foss+kernel@0leil.net>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20220930132033.4003377-1-foss+kernel@0leil.net>
-References: <20220930132033.4003377-1-foss+kernel@0leil.net>
+	Judy Hsiao <judyhsiao@chromium.org>
+Subject: [PATCH v1] ASoC: rockchip: i2s: use regmap_read_poll_timeout_atomic to poll I2S_CLR
+Date: Fri, 30 Sep 2022 15:15:46 +0000
+Message-Id: <20220930151546.2017667-1-judyhsiao@chromium.org>
+X-Mailer: git-send-email 2.38.0.rc1.362.ged0d419d3c-goog
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_062055_700514_6CF16DCC 
-X-CRM114-Status: GOOD (  11.51  )
+X-CRM114-CacheID: sfid-20220930_081557_709072_4833AF15 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,64 +94,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+1. Uses regmap_read_poll_timeout_atomic to poll I2S_CLR as it is called
+   within a spin lock.
 
-Before the split of gpio and pinctrl sections in their own driver,
-rockchip_set_mux was called in pinmux_ops.gpio_set_direction for
-configuring a pin in its GPIO function.
+2. Fixes the typo of break condition in regmap_read_poll_timeout_atomic.
 
-This is essential for cases where pinctrl is "bypassed" by gpio
-consumers otherwise the GPIO function is not configured for the pin and
-it does not work. Such was the case for the sysfs/libgpiod userspace
-GPIO handling.
-
-Let's re-implement the pinmux_ops.gpio_set_direction callback so that
-the gpio subsystem can request from the pinctrl driver to put the pin in
-its GPIO function.
-
-Fixes: 9ce9a02039de ("pinctrl/rockchip: drop the gpio related codes")
-Cc: stable@vger.kernel.org
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+Fixes: fbb0ec656ee5 ("ASoC: rockchip: i2s: use regmap_read_poll_timeout to poll I2S_CLR")
+Signed-off-by: Judy Hsiao <judyhsiao@chromium.org>
 ---
+ sound/soc/rockchip/rockchip_i2s.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-v2:
- - added Reviewed-by,
-
- drivers/pinctrl/pinctrl-rockchip.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 32e41395fc768..c84bd0e1ce5a6 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -2393,11 +2393,24 @@ static int rockchip_pmx_set(struct pinctrl_dev *pctldev, unsigned selector,
- 	return 0;
- }
- 
-+static int rockchip_pmx_gpio_set_direction(struct pinctrl_dev *pctldev,
-+					   struct pinctrl_gpio_range *range,
-+					   unsigned offset,
-+					   bool input)
-+{
-+	struct rockchip_pinctrl *info = pinctrl_dev_get_drvdata(pctldev);
-+	struct rockchip_pin_bank *bank;
-+
-+	bank = pin_to_bank(info, offset);
-+	return rockchip_set_mux(bank, offset - bank->pin_base, RK_FUNC_GPIO);
-+}
-+
- static const struct pinmux_ops rockchip_pmx_ops = {
- 	.get_functions_count	= rockchip_pmx_get_funcs_count,
- 	.get_function_name	= rockchip_pmx_get_func_name,
- 	.get_function_groups	= rockchip_pmx_get_groups,
- 	.set_mux		= rockchip_pmx_set,
-+	.gpio_set_direction	= rockchip_pmx_gpio_set_direction,
- };
- 
- /*
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index 28c86f5e435e..a8758ad68442 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -162,12 +162,12 @@ static int rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
+ 						 I2S_CLR_TXC | I2S_CLR_RXC);
+ 			if (ret < 0)
+ 				goto end;
+-			ret = regmap_read_poll_timeout(i2s->regmap,
+-						       I2S_CLR,
+-						       val,
+-						       val != 0,
+-						       20,
+-						       200);
++			ret = regmap_read_poll_timeout_atomic(i2s->regmap,
++							      I2S_CLR,
++							      val,
++							      val == 0,
++							      20,
++							      200);
+ 			if (ret < 0)
+ 				dev_warn(i2s->dev, "fail to clear: %d\n", ret);
+ 		}
+@@ -220,12 +220,12 @@ static int rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
+ 						 I2S_CLR_TXC | I2S_CLR_RXC);
+ 			if (ret < 0)
+ 				goto end;
+-			ret = regmap_read_poll_timeout(i2s->regmap,
+-						       I2S_CLR,
+-						       val,
+-						       val != 0,
+-						       20,
+-						       200);
++			ret = regmap_read_poll_timeout_atomic(i2s->regmap,
++							      I2S_CLR,
++							      val,
++							      val == 0,
++							      20,
++							      200);
+ 			if (ret < 0)
+ 				dev_warn(i2s->dev, "fail to clear: %d\n", ret);
+ 		}
 -- 
-2.37.3
+2.38.0.rc1.362.ged0d419d3c-goog
 
 
 _______________________________________________
