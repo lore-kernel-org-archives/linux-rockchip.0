@@ -4,59 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4A42C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 17:05:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 493BEC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 19:55:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ke5HWEicw/RrCivntTbglRvvOf+Y+G2nHATzzqXQHcY=; b=VuESSZ2MNArxCl
-	xgYBNYsguj2gTG3dooK0wGgDcRk1Zt76TmpOUK6NAZS+69lLK8CkEFCHL/QoFsgsLZQnXwerO/5T8
-	1VG8cnuNQk4sTaVDUy7xSdlYVtKngtBY0MKCoe0TXll+/ftdBet2F4lGq5l2QHPWPsN4Gdkqp4qGW
-	q36S254RqrTXSTGmsH3igDsTOjI/cwJOlE877fhOa/LkfSgo9PHlby8PuSFdBtwfW9hnbHG1yvbLW
-	L+hzBJMomU7bxHd+D4NfFY66uf0acR0SUNE4trwPIQ1/uK1DJAopDtSigP2W+yXHEiA9nG09yoC13
-	F06XV0YS9IUxv2tIdf1Q==;
+	List-Owner; bh=uMTXV3wz/hrChp4jrADrWWW2ew0tkQvHmTHlInEApFU=; b=PoYJK6O0+cVb/I
+	Hy0FoK7qsqqKKdmoOGKqi+6YnCYdgDLe3WdVyWec+njnrRTZEIKz/yu5nZNz0cgtIQrypitHU7kYD
+	980anpZJGID1tMUXZjSZHHPGO0ChF4RUyyFrya2xxcfHrjuaogYK/LM7qgWGOcLdwK0QRR4sqXioo
+	6tYnhkahw/mIQ3kMaOIOaXYKo3DsoHNZM+kWbjUaCkHvWJ6pN0jWb8UMvpZ2rXuoHMP0v4OEoExWn
+	wo4WoJYZAxASxs0MqKzINtRqLnvi/XQ0o4dxbq7tXdWcViD77F5PDAhOcy0q84UbEFgy5YsnS79Nm
+	jlAg3E0jEvuW0FUtlK5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeJRw-00AjKa-Ru; Fri, 30 Sep 2022 17:05:20 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1oeM6b-00BHYO-LE; Fri, 30 Sep 2022 19:55:29 +0000
+Received: from mail-oi1-f182.google.com ([209.85.167.182])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeJRm-00AjHz-9c; Fri, 30 Sep 2022 17:05:11 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id E8C97B82950;
-	Fri, 30 Sep 2022 17:05:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2712BC433D6;
-	Fri, 30 Sep 2022 17:05:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1664557507;
-	bh=KRPWFdHDwy6jFjizRpKLHPb3QET+jaDIqMKXoYQyKBE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=MwCBBA/YaOR0syu3zILaysBKPSt8hQiWGabe9TKQAW//NoSEWKIKMKQ7/H73joLnZ
-	 HSNOSUcKDEVSp8igks8pS2T31xC5nVF/vUH+7c/qzJZMV7MRlgVMUfS7kAWxhrK6LD
-	 IhMOtaaTqGigxYl/xfEihI/BoWxvoePNMvcKK8hozK/iqDkedZQiaFS9Y4OmEUV5I2
-	 n6nB0cXc5ID0Frde0a8QxXOAJjQw17kdF1nT0mUcY/Hp7Z1mRRls6m7mYIUEQ9YdvW
-	 MQTmeJlVsvXluDzJnfp6A/75nFlcyIB8svRIO+Tew5w2jK3KHObaxVnT3cdJmer0Pi
-	 1K2HqFtEguXiw==
-From: Mark Brown <broonie@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>, Judy Hsiao <judyhsiao@chromium.org>
-Cc: Elaine Zhang <zhangqing@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Lin Huang <hl@rock-chips.com>,
- Brian Norris <briannorris@chromium.org>, Jaroslav Kysela <perex@perex.cz>, linux-rockchip@lists.infradead.org,
- Chen-Yu Tsai <wenst@chromium.org>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Shunqian Zheng <zhengsq@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>
-In-Reply-To: <20220930151546.2017667-1-judyhsiao@chromium.org>
-References: <20220930151546.2017667-1-judyhsiao@chromium.org>
-Subject: Re: [PATCH v1] ASoC: rockchip: i2s: use regmap_read_poll_timeout_atomic to poll I2S_CLR
-Message-Id: <166455750485.778075.7092122068963727383.b4-ty@kernel.org>
-Date: Fri, 30 Sep 2022 18:05:04 +0100
+	id 1oeM6Z-00BHX7-Do; Fri, 30 Sep 2022 19:55:28 +0000
+Received: by mail-oi1-f182.google.com with SMTP id l5so5782651oif.7;
+        Fri, 30 Sep 2022 12:55:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
+        bh=WXdH6x0NPtS3zZSDVe1DST+IDEojPhNlnEp+XZLbnsc=;
+        b=Yi82RwbQZAEBwwOA7+T7A1/P08i5wBQSH6F1fYjdRMPV31vyCluwUUAVhgGJbUWdrs
+         8d1L6o0mFPhQobSo79m0rk39KJQsOeuweUCxu0VWB6r3LJTYl2+FH4nNs14vDDKmWDvK
+         8Ijd9bG/4fOGo9gwzh3SK/xvUL3jp0EKt/dFAc032KQwW+4PQUIdyARWAY12yORbwNPE
+         h8pxOyiBj/goNo64gbMIYLMrO45atNXlmPB3wvDSUMVZXyRsmOn5A20EtrOgO2QcRqEJ
+         XbbihnjvDI+5f4NVJ4AM2uDHDeqiEKmNmrDAAvWM4VxOMUayt6I9GGqZgdrdvW5+mP8m
+         iNlA==
+X-Gm-Message-State: ACrzQf2HLQzif+rH4J5l02pCLpK4sedygAVpJhaZbgf0lGu4uPkZSzeH
+	+V6D1QQvrf8rt9xQvpA/OQ==
+X-Google-Smtp-Source: AMsMyM7wPIzWL6a3LEKjW415lN5AtVUXqVOnW4wbyid1Wry6JTsly0Rj50yQaWEAFfqHW+7nD1+SFA==
+X-Received: by 2002:a05:6808:130a:b0:350:72d3:ea3f with SMTP id y10-20020a056808130a00b0035072d3ea3fmr4380486oiv.191.1664567725480;
+        Fri, 30 Sep 2022 12:55:25 -0700 (PDT)
+Received: from macbook.herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
+        by smtp.gmail.com with ESMTPSA id k28-20020a05680808dc00b00342df642fd3sm710126oij.48.2022.09.30.12.55.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 30 Sep 2022 12:55:25 -0700 (PDT)
+Received: (nullmailer pid 777338 invoked by uid 1000);
+	Fri, 30 Sep 2022 19:55:24 -0000
+Date: Fri, 30 Sep 2022 14:55:24 -0500
+From: Rob Herring <robh@kernel.org>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: linux-pwm@vger.kernel.org, thierry.reding@gmail.com, linux-rockchip@lists.infradead.org, u.kleine-koenig@pengutronix.de, krzysztof.kozlowski+dt@linaro.org, wxt@rock-chips.com, linux-kernel@vger.kernel.org, heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org, kever.yang@rock-chips.com, sebastian.reichel@collabora.com, linux-arm-kernel@lists.infradead.org
+Subject: Re: [RFC PATCH v1 1/2] dt-bindings: pwm: rockchip: add interrupts
+ property
+Message-ID: <166456772354.777288.8174901492888529492.robh@kernel.org>
+References: <94bcb278-7bb9-d173-497c-fe12682c4a17@gmail.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.10.0-dev-fc921
+Content-Disposition: inline
+In-Reply-To: <94bcb278-7bb9-d173-497c-fe12682c4a17@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_100510_501731_840E644E 
-X-CRM114-Status: GOOD (  13.39  )
+X-CRM114-CacheID: sfid-20220930_125527_485235_A71CB65C 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,41 +78,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 30 Sep 2022 15:15:46 +0000, Judy Hsiao wrote:
-> 1. Uses regmap_read_poll_timeout_atomic to poll I2S_CLR as it is called
->    within a spin lock.
+On Thu, 29 Sep 2022 16:04:00 +0200, Johan Jonker wrote:
+> The Rockchip SoCs have 4 or more built-in PWM channels.
 > 
-> 2. Fixes the typo of break condition in regmap_read_poll_timeout_atomic.
+> Configurable to operate in capture mode.
+> Measures the high/low polarity effective cycles of this input waveform
+> Generates a single interrupt at the transition of input waveform polarity
 > 
+> Configurable to operate in continuous mode or one-shot mode.
+> One-shot operation will produce N + 1 periods of the waveform,
+> where N is the repeat counter value, and generates a single interrupt at
+> the end of operation.
+> Continuous mode generates the waveform continuously and
+> do not generates any interrupts.
+> 
+> Older SoCs have an interrupt for each node.
+> Newer models share an interrupt.
+> 
+> Add interrupts property to the pwm-rockchip.yaml file.
+> DT describes hardware. Rockchip PWM driver support for
+> interrupts might not available.
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/pwm/pwm-rockchip.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
 > 
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/1] ASoC: rockchip: i2s: use regmap_read_poll_timeout_atomic to poll I2S_CLR
-      commit: f0c8d7468af0001b80b0c86802ee28063f800987
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
