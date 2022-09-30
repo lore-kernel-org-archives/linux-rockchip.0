@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91770C433FE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 15:41:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1773DC433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 15:43:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fjlfHDxOfjdJwOcGbM1REvT1YVvI1GA1CQZcdc7EvRM=; b=vxm2WSfEp0ljSF
-	nGpI2ymJmGWTETXQNrFKFeJs/Li1+V0xZBRC+OyNjXyZbngoghFX9IeM5XtbHk1Rwcd77eBlwvBME
-	bFmkGontDUYbGggar19MopwSJL6g6T1UrKluGzlgUjHD+NGghz6YC1LLd5JlwzoAnal2wuYlOKawI
-	dyMhmoJtIAjZ2TOtCUUZRDiKwDuu7vdBzv6Mitfi3ddKMf+1eU6ociKa8gS7sSS//6NXlNlqj5d0V
-	OAXPP6muhfcrxXCmSKz3auSW2L5eNYuH4hCwClgGKxcIoh5oN0Xv+unYy87qPPmq0z12XnEbc3+UE
-	iizwFtyTSHXFdmGjSOgw==;
+	List-Owner; bh=8E9uH1AutSle0L4daLIVnDS/8fiLfS/sVOywGjxwm44=; b=OBRKA3ERm6AZWQ
+	Tqwlz5urG4AcuweUZHepXa6Qhuso7yujlU2i2RxTRWTbijjUN/4sznLQ9mGfyXUJW1Pe3JsRIozJL
+	EqXaoab6MDLKG/tygMnStKqV8nj/X7MTH3pQeln9tMBUvNaSWxJ9rkPNjK1WBxqysf7ipBp4od1X9
+	ZEf+NX8VqLyEZbWdtMI81H9hqOZrFbBdh6+og8E5WFuhDjtW0qu5JwpweNBxOIeHuwWevJSOQJY/8
+	6ARzZJrJM45Itj0St79oIHr8hMiRr8xx5CaGMMcJkGJ3aSjRQG3abjDj+zGbnqj4hD+pvG7W0p7rU
+	LnygaS9nskTh6CYRIq0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeI8c-00AIhx-0m; Fri, 30 Sep 2022 15:41:18 +0000
+	id 1oeIAy-00AKDv-Il; Fri, 30 Sep 2022 15:43:44 +0000
 Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeI6V-00AHUq-8h; Fri, 30 Sep 2022 15:39:11 +0000
+	id 1oeI6a-00AHcw-EF; Fri, 30 Sep 2022 15:39:16 +0000
 Received: from jupiter.universe (dyndsl-091-096-057-200.ewe-ip-backbone.de [91.96.57.200])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 99DC766022EB;
-	Fri, 30 Sep 2022 16:39:01 +0100 (BST)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5313666022F7;
+	Fri, 30 Sep 2022 16:39:04 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1664552341;
-	bh=gzxxKtgPz0zdv2mxZ6OWrJHbUBiLqyIjiAPbp8xPbpI=;
+	s=mail; t=1664552344;
+	bh=f2J6aSdhOrco8r48KzyqFH7xfmYiAHooce2bTGVTOLA=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YKGjJG/ruRVmm0tnwFJbVi0129DlHgTp4Bg3bh+vxT+3eG9jhd4IsnAsG7wQU/uRH
-	 9XwaJuXZo6DS767KGMqPk0nhssxTWAlOG98+qrwPr+Q1BAycO0Sst7DGxXU003H1AI
-	 kFjuk8T3g58HPsXdNukKiIPb2vNhJnsjshOJE8LmCk/IhXqnYMFtcRNN71dlag4VPS
-	 p/ufmJRO1uRbsMIfBg7KSEyhoUFUvd15960upI2S7j+3swl2jOdkaPDJMaLnN4TMt9
-	 uAAs9kyhTrOUSrI+3hF/npltO+IRJJOpZg1wZSvJTUXwj+PfKyJe+pX6kB55cE5HCp
-	 DX4bNp93BeWAg==
+	b=aGw8rUef91nf5fjOJLcNKGqTHWVj+ZravbU2wiyILPyg0wDPkbYdKhG6b/3KeUlFm
+	 idh35TpjELpuuqM0pMvuVxWTNpGmQzU0nCGkDkc6kB4+xu8/sslS1mBGb0FyHU5oCq
+	 tiW+0Pu3+F5czH2c2+oFV10F9ieQVnzyhxCiHPOx6dVSnvii5u9S2+F7zVi8RTituW
+	 NGuImJvLWse0fuVk12crFXwI2lWhHNoViMs4NWbZ4/ocULfnK3TwxNEsMGclPkuTKZ
+	 q80Q0vJkveO7ig6TtEXs92EVx3bFLdyd9kzlugIHyPYMoxXU0EykkxiqaRF1Vbmclu
+	 K18KdkcyrF0wA==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 078F4480148; Fri, 30 Sep 2022 17:38:59 +0200 (CEST)
+	id 10F9F480163; Fri, 30 Sep 2022 17:38:59 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -53,19 +53,18 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	kernel@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCHv2 3/9] dt-bindings: clock: add rk3588 cru bindings
-Date: Fri, 30 Sep 2022 17:38:51 +0200
-Message-Id: <20220930153857.299396-4-sebastian.reichel@collabora.com>
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	kernel@collabora.com
+Subject: [PATCHv2 8/9] clk: rockchip: add lookup table support
+Date: Fri, 30 Sep 2022 17:38:56 +0200
+Message-Id: <20220930153857.299396-9-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20220930153857.299396-1-sebastian.reichel@collabora.com>
 References: <20220930153857.299396-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_083907_509734_3226BE4B 
-X-CRM114-Status: GOOD (  15.38  )
+X-CRM114-CacheID: sfid-20220930_083912_801499_CE32A12C 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,82 +81,133 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Elaine Zhang <zhangqing@rock-chips.com>
+Add support for mapping reset IDs to register offsets
+to support gapless continous platform reset IDs.
 
-Document the device tree bindings of the rockchip rk3588 SoC
-clock and reset unit.
-
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../bindings/clock/rockchip,rk3588-cru.yaml   | 58 +++++++++++++++++++
- 1 file changed, 58 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml
+ drivers/clk/rockchip/clk.h     | 21 +++++++++++++++------
+ drivers/clk/rockchip/softrst.c | 34 +++++++++++++++++++++++++---------
+ 2 files changed, 40 insertions(+), 15 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml b/Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml
-new file mode 100644
-index 000000000000..bb3856d75cdb
---- /dev/null
-+++ b/Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml
-@@ -0,0 +1,58 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/clock/rockchip,rk3588-cru.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
+index 4a84491faf39..65e1dc57c068 100644
+--- a/drivers/clk/rockchip/clk.h
++++ b/drivers/clk/rockchip/clk.h
+@@ -922,15 +922,24 @@ struct clk *rockchip_clk_register_halfdiv(const char *name,
+ 					  spinlock_t *lock);
+ 
+ #ifdef CONFIG_RESET_CONTROLLER
+-void rockchip_register_softrst(struct device_node *np,
+-			       unsigned int num_regs,
+-			       void __iomem *base, u8 flags);
++void rockchip_register_softrst_lut(struct device_node *np,
++				   const int *lookup_table,
++				   unsigned int num_regs,
++				   void __iomem *base, u8 flags);
+ #else
+-static inline void rockchip_register_softrst(struct device_node *np,
+-			       unsigned int num_regs,
+-			       void __iomem *base, u8 flags)
++static inline void rockchip_register_softrst_lut(struct device_node *np,
++				   const int *lookup_table,
++				   unsigned int num_regs,
++				   void __iomem *base, u8 flags)
+ {
+ }
+ #endif
+ 
++static inline void rockchip_register_softrst(struct device_node *np,
++					     unsigned int num_regs,
++					     void __iomem *base, u8 flags)
++{
++	return rockchip_register_softrst_lut(np, NULL, num_regs, base, flags);
++}
 +
-+title: Rockchip rk3588 Family Clock and Reset Control Module
+ #endif
+diff --git a/drivers/clk/rockchip/softrst.c b/drivers/clk/rockchip/softrst.c
+index 5d07266745b8..fd56aaefe6d1 100644
+--- a/drivers/clk/rockchip/softrst.c
++++ b/drivers/clk/rockchip/softrst.c
+@@ -12,6 +12,7 @@
+ 
+ struct rockchip_softrst {
+ 	struct reset_controller_dev	rcdev;
++	const int			*lut;
+ 	void __iomem			*reg_base;
+ 	int				num_regs;
+ 	int				num_per_reg;
+@@ -25,8 +26,13 @@ static int rockchip_softrst_assert(struct reset_controller_dev *rcdev,
+ 	struct rockchip_softrst *softrst = container_of(rcdev,
+ 						     struct rockchip_softrst,
+ 						     rcdev);
+-	int bank = id / softrst->num_per_reg;
+-	int offset = id % softrst->num_per_reg;
++	int bank, offset;
 +
-+maintainers:
-+  - Elaine Zhang <zhangqing@rock-chips.com>
-+  - Heiko Stuebner <heiko@sntech.de>
++	if (softrst->lut)
++		id = softrst->lut[id];
 +
-+description: |
-+  The RK3588 clock controller generates the clock and also implements a reset
-+  controller for SoC peripherals. For example it provides SCLK_UART2 and
-+  PCLK_UART2, as well as SRST_P_UART2 and SRST_S_UART2 for the second UART
-+  module.
-+  Each clock is assigned an identifier and client nodes can use this identifier
-+  to specify the clock which they consume. All available clock and reset IDs
-+  are defined as preprocessor macros in dt-binding headers.
++	bank = id / softrst->num_per_reg;
++	offset = id % softrst->num_per_reg;
+ 
+ 	if (softrst->flags & ROCKCHIP_SOFTRST_HIWORD_MASK) {
+ 		writel(BIT(offset) | (BIT(offset) << 16),
+@@ -52,8 +58,13 @@ static int rockchip_softrst_deassert(struct reset_controller_dev *rcdev,
+ 	struct rockchip_softrst *softrst = container_of(rcdev,
+ 						     struct rockchip_softrst,
+ 						     rcdev);
+-	int bank = id / softrst->num_per_reg;
+-	int offset = id % softrst->num_per_reg;
++	int bank, offset;
 +
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3588-cru
++	if (softrst->lut)
++		id = softrst->lut[id];
 +
-+  reg:
-+    maxItems: 1
-+
-+  "#clock-cells":
-+    const: 1
-+
-+  "#reset-cells":
-+    const: 1
-+
-+  rockchip,grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: >
-+      phandle to the syscon managing the "general register files". It is used
-+      for GRF muxes, if missing any muxes present in the GRF will not be
-+      available.
-+
-+required:
-+  - compatible
-+  - reg
-+  - "#clock-cells"
-+  - "#reset-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    cru: clock-controller@fd7c0000 {
-+      compatible = "rockchip,rk3588-cru";
-+      reg = <0xfd7c0000 0x5c000>;
-+      #clock-cells = <1>;
-+      #reset-cells = <1>;
-+    };
++	bank = id / softrst->num_per_reg;
++	offset = id % softrst->num_per_reg;
+ 
+ 	if (softrst->flags & ROCKCHIP_SOFTRST_HIWORD_MASK) {
+ 		writel((BIT(offset) << 16), softrst->reg_base + (bank * 4));
+@@ -77,9 +88,10 @@ static const struct reset_control_ops rockchip_softrst_ops = {
+ 	.deassert	= rockchip_softrst_deassert,
+ };
+ 
+-void rockchip_register_softrst(struct device_node *np,
+-			       unsigned int num_regs,
+-			       void __iomem *base, u8 flags)
++void rockchip_register_softrst_lut(struct device_node *np,
++				   const int *lookup_table,
++				   unsigned int num_regs,
++				   void __iomem *base, u8 flags)
+ {
+ 	struct rockchip_softrst *softrst;
+ 	int ret;
+@@ -91,13 +103,17 @@ void rockchip_register_softrst(struct device_node *np,
+ 	spin_lock_init(&softrst->lock);
+ 
+ 	softrst->reg_base = base;
++	softrst->lut = lookup_table;
+ 	softrst->flags = flags;
+ 	softrst->num_regs = num_regs;
+ 	softrst->num_per_reg = (flags & ROCKCHIP_SOFTRST_HIWORD_MASK) ? 16
+ 								      : 32;
+ 
+ 	softrst->rcdev.owner = THIS_MODULE;
+-	softrst->rcdev.nr_resets =  num_regs * softrst->num_per_reg;
++	if (lookup_table)
++		softrst->rcdev.nr_resets = num_regs;
++	else
++		softrst->rcdev.nr_resets = num_regs * softrst->num_per_reg;
+ 	softrst->rcdev.ops = &rockchip_softrst_ops;
+ 	softrst->rcdev.of_node = np;
+ 	ret = reset_controller_register(&softrst->rcdev);
+@@ -107,4 +123,4 @@ void rockchip_register_softrst(struct device_node *np,
+ 		kfree(softrst);
+ 	}
+ };
+-EXPORT_SYMBOL_GPL(rockchip_register_softrst);
++EXPORT_SYMBOL_GPL(rockchip_register_softrst_lut);
 -- 
 2.35.1
 
