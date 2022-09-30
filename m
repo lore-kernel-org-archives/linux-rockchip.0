@@ -4,80 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C8A8C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 15:17:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01FE9C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 15:26:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=OffclPAsaM9HCAM16M0AI4PCJUmh2GBrohfPTak3zF8=; b=lz/qNpfKEejdiU
-	nWLdiVnu8sndoutKYG+dtf/lAvUHxiIIM9qsz8n0xeRwfPuAJRLxQo94AYy0OQgLKDCgoJAT3Jk0o
-	GYY0ek0itHzTBzTV5pEiuXPhP+b6TiZNDPpJUo1uOsoJSM1nOuUufp7lgFW2EiuSOzzshJWXLXmZE
-	0e3fhgBc92XR4yrS2HTvmhzCHhxWiniWrZVotm4M5vMP443ks0qIsnND1oXzf7ISdNee9Y4a9SkRN
-	BKGKdMgYs7jlgOsEW8uU+HsUdWYWtNBVw3+uHjcfjpP99k2IuIXDboPRetkhVBw3iLuoZe3umYlLy
-	PVyvMNI6OGkZEZVXakHQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2hW1y3lnqsHvYtUAZSOGXCfEGeO3VnxfD+yxamlRjaw=; b=maSUfdY1a/f0/K
+	WVbqlozwwqTPO2B/p/uvSlGcY5yrNgUYhSGFJofp51OYZW+wK+ULPct8v4MSBDrtb/OeQxENYRohi
+	wQsJIvqx98nF+HKbxjaMBfOO7LKZnLiWvU6hrEkhNgJZF46jBr6SV4z2OIpQhm4qq5usuO6WKWm51
+	LnY6Rdmn6QwF4DqqYY+P7Ni+MpN3bC3wegubR4uWNrDBH6CFBIh63ki3uM8XmuTI05Z7oP9NG8VL0
+	Jd/ry5CP/x91sPFU1ZBTTFqjyRetAawTts6QKelH5zfoHOmy2rei2HKFHMb4jGIhT+xhq8BBDZ7Ex
+	yJ5kzzrxHvi1JpEsg4mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeHkk-00A6ll-Qv; Fri, 30 Sep 2022 15:16:38 +0000
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+	id 1oeHu4-00ABO9-Qy; Fri, 30 Sep 2022 15:26:16 +0000
+Received: from mail-m121145.qiye.163.com ([115.236.121.145])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeHk5-00A6OZ-JE
-	for linux-rockchip@lists.infradead.org; Fri, 30 Sep 2022 15:16:05 +0000
-Received: by mail-pj1-x102b.google.com with SMTP id x1-20020a17090ab00100b001fda21bbc90so9374435pjq.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 30 Sep 2022 08:15:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date;
-        bh=bkGZlMCLcjGUMJh18RhP4Ctr01ZIOmKFkpG+F89/rcQ=;
-        b=cybBlknOX9/DfQdo0Xe980ssg21Q5o50iv9PUSvznC2qYrzK2NumO347QdFKTRyOHM
-         FY4hfsYNXFezlLbuarWagHuoz1s+oVb5jXi5mtBx5Hg9andKcny+jCAmaPHHIkYeJkPX
-         Nk2/IL12+8PjMxfSxrf2YNtcvLyJHguO1qIMQ=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date;
-        bh=bkGZlMCLcjGUMJh18RhP4Ctr01ZIOmKFkpG+F89/rcQ=;
-        b=ef4aNB0vaSrkH5PLTT6/leflwzb23LDXvJTM0xloiQbLUJKbUnzzNWOQjLQfKfhfhv
-         dh4vC70EKCBvZ/3Zejf79A/SD+NZiOurTj7dTX2t53F4ySUk29TE7TANmmYsggs8E2pi
-         u1PZyWUIUWogsR9Is991Hf6P12lajpv1PvX9KEPrhjmZe5y0L+8utOKahiIedV8ijNUz
-         yt4Nayfb9BYqkNc7xfrdH+NFQ92wA5MZ3ZG1C3Pt2TWhdE2ZJKuNuyvDDl2tXb/EMV/d
-         W8tQo0U/PeKuylVFaLDJ1UISOiy7hRHyhfKXOFDn8PmzPMajDDX1jGIEQdB3sZnEMw9u
-         o6ng==
-X-Gm-Message-State: ACrzQf0Xf9C3MOQvPmBoUnZvn0pJoizQdkQcVpc9LP6wTIjuwJOnfySk
-	YAN6GOkgwMVlODaNCYiJc4tRyQ==
-X-Google-Smtp-Source: AMsMyM7dgX6KIprJugnpW4W2X/BhsVT0zR5F1NzXqlIHS4EK3Do0GsiexPC5q7UZws3YeTuk7VrkxQ==
-X-Received: by 2002:a17:90a:9b12:b0:203:9b0:284e with SMTP id f18-20020a17090a9b1200b0020309b0284emr10424274pjp.116.1664550954797;
-        Fri, 30 Sep 2022 08:15:54 -0700 (PDT)
-Received: from judyhsiao0523.c.googlers.com.com (21.160.199.104.bc.googleusercontent.com. [104.199.160.21])
-        by smtp.gmail.com with ESMTPSA id z3-20020aa79e43000000b0053b9e5d365bsm1894355pfq.216.2022.09.30.08.15.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Sep 2022 08:15:54 -0700 (PDT)
-From: Judy Hsiao <judyhsiao@chromium.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	Lin Huang <hl@rock-chips.com>,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	Shunqian Zheng <zhengsq@rock-chips.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Brian Norris <briannorris@chromium.org>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
+	id 1oeHtk-00ABGa-Fa; Fri, 30 Sep 2022 15:25:58 +0000
+Received: from amadeus-VLT-WX0.lan (unknown [110.81.126.164])
+	by mail-m121145.qiye.163.com (Hmail) with ESMTPA id 6618E800093;
+	Fri, 30 Sep 2022 23:25:40 +0800 (CST)
+From: Chukun Pan <amadeus@jmu.edu.cn>
+To: linux.amoon@gmail.com
+Cc: heiko@sntech.de,
+	robh+dt@kernel.org,
+	michael.riesch@wolfvision.net,
+	krzysztof.kozlowski+dt@linaro.org,
 	linux-kernel@vger.kernel.org,
-	Judy Hsiao <judyhsiao@chromium.org>
-Subject: [PATCH v1] ASoC: rockchip: i2s: use regmap_read_poll_timeout_atomic to poll I2S_CLR
-Date: Fri, 30 Sep 2022 15:15:46 +0000
-Message-Id: <20220930151546.2017667-1-judyhsiao@chromium.org>
-X-Mailer: git-send-email 2.38.0.rc1.362.ged0d419d3c-goog
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: [PATCH 0/1] Re: [PATCH-next v1] arm64: dts: rockchip: Enable NVM Express PCIe controller on rock3a
+Date: Fri, 30 Sep 2022 23:25:31 +0800
+Message-Id: <20220930152531.5910-1-amadeus@jmu.edu.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <CANAwSgSf=JZ_JiK1Gh5EYR30KQ5Yh-w3GsxzcFVweKHPi7KuLg@mail.gmail.com>
+References: <CANAwSgSf=JZ_JiK1Gh5EYR30KQ5Yh-w3GsxzcFVweKHPi7KuLg@mail.gmail.com>
 MIME-Version: 1.0
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkaSh1DVkhPTk0fSE1MHx9IT1UTARMWGhIXJBQOD1
+	lXWRgSC1lBWUpKS1VDSlVKSU1VSk1PWVdZFhoPEhUdFFlBWU9LSFVKSktISkNVSktLVUtZBg++
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6OjY6Kio5MD0iUVZJKEk3Ojk4
+	KBkwCStVSlVKTU1PTk5KTk9KS0pNVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpK
+	S1VDSlVKSU1VSk1PWVdZCAFZQUhMTU03Bg++
+X-HM-Tid: 0a838f00d7a0b03akuuu6618e800093
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_081557_709072_4833AF15 
-X-CRM114-Status: GOOD (  11.34  )
+X-CRM114-CacheID: sfid-20220930_082556_752223_0DA7E131 
+X-CRM114-Status: UNSURE (   7.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,62 +71,92 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-1. Uses regmap_read_poll_timeout_atomic to poll I2S_CLR as it is called
-   within a spin lock.
+Hi Anand,
 
-2. Fixes the typo of break condition in regmap_read_poll_timeout_atomic.
+> No, It's not working on my board.
+> If you check the driver code it requires *data-line* and *num-lanes
+> from the dts.
 
-Fixes: fbb0ec656ee5 ("ASoC: rockchip: i2s: use regmap_read_poll_timeout to poll I2S_CLR")
-Signed-off-by: Judy Hsiao <judyhsiao@chromium.org>
----
- sound/soc/rockchip/rockchip_i2s.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+I have successfully tested NVME hard drives on my board. See
+below for the patch, looking forward to your testing.
 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 28c86f5e435e..a8758ad68442 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -162,12 +162,12 @@ static int rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
- 						 I2S_CLR_TXC | I2S_CLR_RXC);
- 			if (ret < 0)
- 				goto end;
--			ret = regmap_read_poll_timeout(i2s->regmap,
--						       I2S_CLR,
--						       val,
--						       val != 0,
--						       20,
--						       200);
-+			ret = regmap_read_poll_timeout_atomic(i2s->regmap,
-+							      I2S_CLR,
-+							      val,
-+							      val == 0,
-+							      20,
-+							      200);
- 			if (ret < 0)
- 				dev_warn(i2s->dev, "fail to clear: %d\n", ret);
- 		}
-@@ -220,12 +220,12 @@ static int rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
- 						 I2S_CLR_TXC | I2S_CLR_RXC);
- 			if (ret < 0)
- 				goto end;
--			ret = regmap_read_poll_timeout(i2s->regmap,
--						       I2S_CLR,
--						       val,
--						       val != 0,
--						       20,
--						       200);
-+			ret = regmap_read_poll_timeout_atomic(i2s->regmap,
-+							      I2S_CLR,
-+							      val,
-+							      val == 0,
-+							      20,
-+							      200);
- 			if (ret < 0)
- 				dev_warn(i2s->dev, "fail to clear: %d\n", ret);
- 		}
+root@rock3a:~# lspci
+0000:00:00.0 PCI bridge: Rockchip Electronics Co., Ltd \
+             RK3568 Remote Signal Processor (rev 01)
+0000:01:00.0 Network controller: MEDIATEK Corp. MT7921 \
+             802.11ax PCI Express Wireless Network Adapter
+0002:00:00.0 PCI bridge: Rockchip Electronics Co., Ltd \
+             RK3568 Remote Signal Processor (rev 01)
+0002:01:00.0 Non-Volatile memory controller: Sandisk Corp \
+             PC SN520 NVMe SSD (rev 01)
+
+Patch:
+
+--- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
+@@ -67,6 +67,37 @@ vcc12v_dcin: vcc12v-dcin-regulator {
+ 		regulator-boot-on;
+ 	};
+ 
++	pcie30_avdd0v9: pcie30-avdd0v9-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "pcie30_avdd0v9";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <900000>;
++		regulator-max-microvolt = <900000>;
++		vin-supply = <&vcc3v3_sys>;
++	};
++
++	pcie30_avdd1v8: pcie30-avdd1v8-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "pcie30_avdd1v8";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		vin-supply = <&vcc3v3_sys>;
++	};
++
++	/* pi6c pcie clock generator */
++	vcc3v3_pi6c_03: vcc3v3-pi6c-03-regulator {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc3v3_pi6c_03";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
+ 	vcc3v3_pcie: vcc3v3-pcie-regulator {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -546,6 +577,19 @@ &pcie2x1 {
+ 	status = "okay";
+ };
+ 
++&pcie30phy {
++	phy-supply = <&vcc3v3_pi6c_03>;
++	status = "okay";
++};
++
++&pcie3x2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie30x2m1_pins>;
++	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
++	vpcie3v3-supply = <&vcc3v3_pcie>;
++	status = "okay";
++};
++
+ &pinctrl {
+ 	cam {
+ 		vcc_cam_en: vcc_cam_en {
 -- 
-2.38.0.rc1.362.ged0d419d3c-goog
+2.25.1
 
+Thanks,
+Chukun
 
 _______________________________________________
 Linux-rockchip mailing list
