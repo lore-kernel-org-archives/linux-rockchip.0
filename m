@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EDE0C433F5
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 10:26:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB75C433F5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 13:21:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=C53KpUdw6jQ3zBtAv50acR8ZwdPpy+AxFYu7sLQHJao=; b=u1LgAwfLYeybJu
-	xXFIqbMpIXl092TiVo+Ah6LNtDkl2ahnH3a2JTQyG2datEoy9xJ76ndiDdE0hfxl1L0874vw96mw2
-	SC/Yp01j6vcrUcR0cIdj69vBkI0AseiAXm/uDLF6PLfM/TEd22Ot9MJ+2NWnqoWtMfNVaH+86V0vh
-	iVoYIrjNh9Blas9DTiZpx69J4RVGc0Jli1VR5AYNKYXsEdmEfZgM5IWaQAiAbfXMj3a+ZA4aYgF2c
-	+pd6O7qtjq22EZLzZIx/cD54+3fccgA5NdtpHzRIxQw1Lvd764fhOKet3YvRVjdfxRO8kAvOabAGj
-	SwxdzIjll2Ak/e2ji7jw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Fyn8j4ya799vbPgsrxaq/RzULwMzoNGUxsVemZSten4=; b=iSRE8skys2qPEM
+	H2ZoQ7LxMdUS/m7+yR2NQLJmYUQVzI4SrIn56MmrVjzZeUtdleo3vEdakbOy6AQXR+aYX/JKeQ14p
+	+mo75jAWv/xYiH4jMgRg8k8pnh/NWrUrFy14J2i8iwf1z8P1oa9D3kw7Rs+yzcM1PUArn8eX+bEjf
+	pa15kSXDBlSrTjpzlP8HI1Up6KEkOpd1PAnu5iKJDZRJx3Vg/ENAlhoEexylwEdxl8ZrqhEJzE8j5
+	q2E36TllfR+ZqgDcLm0rN3FSVja+hbIDPvUU3PQWWmCIrQV9Cmrro/JabnBrQzJcJkLhA8LIZASqM
+	jPsAi1CKfw2F6GTyjr5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeDE4-008aHT-AT; Fri, 30 Sep 2022 10:26:36 +0000
-Received: from mail-m11878.qiye.163.com ([115.236.118.78])
+	id 1oeFxP-009MFI-9I; Fri, 30 Sep 2022 13:21:35 +0000
+Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeDE0-008aEb-Bv
-	for linux-rockchip@lists.infradead.org; Fri, 30 Sep 2022 10:26:34 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by mail-m11878.qiye.163.com (Hmail) with ESMTPA id 70C80740D03;
-	Fri, 30 Sep 2022 18:26:22 +0800 (CST)
-From: Jianqun Xu <jay.xu@rock-chips.com>
-To: heiko@sntech.de,
-	linus.walleij@linaro.org
-Cc: luca.ceresoli@bootlin.com,
+	id 1oeFwm-009LvB-Cm; Fri, 30 Sep 2022 13:20:58 +0000
+Received: (Authenticated sender: foss@0leil.net)
+	by mail.gandi.net (Postfix) with ESMTPSA id 2CB0020005;
+	Fri, 30 Sep 2022 13:20:51 +0000 (UTC)
+From: Quentin Schulz <foss+kernel@0leil.net>
+To: 
+Cc: linus.walleij@linaro.org,
+	brgl@bgdev.pl,
+	heiko@sntech.de,
+	jay.xu@rock-chips.com,
+	linux-gpio@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Jianqun Xu <jay.xu@rock-chips.com>
-Subject: [PATCH] pinctrl/rockchip: re-fix RK3308 pinmux bits
-Date: Fri, 30 Sep 2022 18:26:20 +0800
-Message-Id: <20220930102620.1568864-1-jay.xu@rock-chips.com>
-X-Mailer: git-send-email 2.25.1
+	linux-kernel@vger.kernel.org,
+	foss+kernel@0leil.net,
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+	stable@vger.kernel.org
+Subject: [PATCH v2 2/2] gpio: rockchip: request GPIO mux to pinctrl when setting direction
+Date: Fri, 30 Sep 2022 15:20:33 +0200
+Message-Id: <20220930132033.4003377-3-foss+kernel@0leil.net>
+X-Mailer: git-send-email 2.37.3
+In-Reply-To: <20220930132033.4003377-1-foss+kernel@0leil.net>
+References: <20220930132033.4003377-1-foss+kernel@0leil.net>
 MIME-Version: 1.0
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFJSktLSjdXWS1ZQUlXWQ8JGhUIEh9ZQVlDGksZVkwYSU4eTU4ZQxpJGFUTARMWGhIXJB
-	QOD1lXWRgSC1lBWU5DVUlJVUxVSkpPWVdZFhoPEhUdFFlBWU9LSFVKSktITUpVSktLVUtZBg++
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PzY6Hyo*Vj0uDFFRHwNOETFP
-	NglPCSpVSlVKTU1PTkhITkNJQkxDVTMWGhIXVREaAlUDDjsJFBgQVhgTEgsIVRgUFkVZV1kSC1lB
-	WU5DVUlJVUxVSkpPWVdZCAFZQU9DSUI3Bg++
-X-HM-Tid: 0a838deed2f72eb4kusn70c80740d03
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_032632_604187_8312160F 
-X-CRM114-Status: GOOD (  15.43  )
+X-CRM114-CacheID: sfid-20220930_062056_620254_E0C2A8CD 
+X-CRM114-Status: GOOD (  11.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,150 +66,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Part of pins from RK3308 SoCs have two registers to do pinmux, one is
-the origin register with 2bits named by gpioxx_sel, and another with
-3bits and named by gpioxx_sel_plus.
+From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 
-The default value is 2bits. But Rockchip downstream pinctrl driver has a
-soc init for RK3308 to switch to the 3bits path. The first patch
-upstream the support for RK3308 pinctrl but drop the soc init codes.
+Before the split of gpio and pinctrl sections in their own driver,
+rockchip_set_mux was called in pinmux_ops.gpio_set_direction for
+configuring a pin in its GPIO function.
 
-The commit 1f3e25a06883 ("pinctrl: rockchip: fix RK3308 pinmux bits") try
-to fix back to 2 bits path, but that will makes some iomux not be
-supported.
+This is essential for cases where pinctrl is "bypassed" by gpio
+consumers otherwise the GPIO function is not configured for the pin and
+it does not work. Such was the case for the sysfs/libgpiod userspace
+GPIO handling.
 
-This patch re-fix the pinmux bits to 3bits path.
+Let's call pinctrl_gpio_direction_input/output when setting the
+direction of a GPIO so that the pinctrl core requests from the rockchip
+pinctrl driver to put the pin in its GPIO function.
 
-Fixes: 1f3e25a06883 ("pinctrl: rockchip: fix RK3308 pinmux bits")
-
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+Fixes: 9ce9a02039de ("pinctrl/rockchip: drop the gpio related codes")
+Fixes: 936ee2675eee ("gpio/rockchip: add driver for rockchip gpio")
+Cc: stable@vger.kernel.org
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 ---
- drivers/pinctrl/pinctrl-rockchip.c | 84 ++++++++++++++++++++++++------
- 1 file changed, 67 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 32e41395fc76..293077450d10 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -535,35 +535,35 @@ static struct rockchip_mux_recalced_data rk3308_mux_recalced_data[] = {
- 		.bit = 8,
- 		.mask = 0xf
- 	}, {
--		/* gpio2a2_sel */
-+		/* gpio2a2_sel_plus */
- 		.num = 2,
- 		.pin = 2,
--		.reg = 0x40,
--		.bit = 4,
--		.mask = 0x3
-+		.reg = 0x608,
-+		.bit = 0,
-+		.mask = 0x7
- 	}, {
--		/* gpio2a3_sel */
-+		/* gpio2a3_sel_plus */
- 		.num = 2,
- 		.pin = 3,
--		.reg = 0x40,
--		.bit = 6,
--		.mask = 0x3
-+		.reg = 0x608,
-+		.bit = 4,
-+		.mask = 0x7
- 	}, {
--		/* gpio2c0_sel */
-+		/* gpio2c0_sel_plus */
- 		.num = 2,
- 		.pin = 16,
--		.reg = 0x50,
--		.bit = 0,
--		.mask = 0x3
-+		.reg = 0x610,
-+		.bit = 8,
-+		.mask = 0x7
- 	}, {
--		/* gpio3b2_sel */
-+		/* gpio3b2_sel_plus */
- 		.num = 3,
- 		.pin = 10,
--		.reg = 0x68,
--		.bit = 4,
--		.mask = 0x3
-+		.reg = 0x610,
-+		.bit = 0,
-+		.mask = 0x7
- 	}, {
--		/* gpio3b3_sel */
-+		/* gpio3b3_sel_plus */
- 		.num = 3,
- 		.pin = 11,
- 		.reg = 0x68,
-@@ -3014,6 +3014,50 @@ static int __maybe_unused rockchip_pinctrl_resume(struct device *dev)
- static SIMPLE_DEV_PM_OPS(rockchip_pinctrl_dev_pm_ops, rockchip_pinctrl_suspend,
- 			 rockchip_pinctrl_resume);
+v2:
+ - added Reviewed-by,
+ - added missing linux/pinctrl/consumer.h header,
+
+ drivers/gpio/gpio-rockchip.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index bb50335239ac8..9c976ad7208ef 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -19,6 +19,7 @@
+ #include <linux/of_address.h>
+ #include <linux/of_device.h>
+ #include <linux/of_irq.h>
++#include <linux/pinctrl/consumer.h>
+ #include <linux/pinctrl/pinconf-generic.h>
+ #include <linux/regmap.h>
+ 
+@@ -156,6 +157,12 @@ static int rockchip_gpio_set_direction(struct gpio_chip *chip,
+ 	unsigned long flags;
+ 	u32 data = input ? 0 : 1;
  
 +
-+static int rk3308_soc_data_init(struct rockchip_pinctrl *info)
-+{
-+	int ret;
++	if (input)
++		pinctrl_gpio_direction_input(bank->pin_base + offset);
++	else
++		pinctrl_gpio_direction_output(bank->pin_base + offset);
 +
-+	#define RK3308_GRF_SOC_CON13	(0x608)
-+	#define RK3308_GRF_SOC_CON15	(0x610)
-+
-+	/* RK3308_GRF_SOC_CON13 */
-+	#define RK3308_GRF_I2C3_IOFUNC_SRC_CTRL	(BIT(16 + 10) | BIT(10))
-+	#define RK3308_GRF_GPIO2A3_SEL_SRC_CTRL	(BIT(16 + 7)  | BIT(7))
-+	#define RK3308_GRF_GPIO2A2_SEL_SRC_CTRL	(BIT(16 + 3)  | BIT(3))
-+
-+	/* RK3308_GRF_SOC_CON15 */
-+	#define RK3308_GRF_GPIO2C0_SEL_SRC_CTRL	(BIT(16 + 11) | BIT(11))
-+	#define RK3308_GRF_GPIO3B3_SEL_SRC_CTRL	(BIT(16 + 7)  | BIT(7))
-+	#define RK3308_GRF_GPIO3B2_SEL_SRC_CTRL	(BIT(16 + 3)  | BIT(3))
-+
-+	/*
-+	 * Enable the special ctrl of selected sources.
-+	 *
-+	 * Example reference to GRF_SOC_CON13 description:
-+	 *
-+	 * gpio2a2_sel_src_ctrl
-+	 * IOMUX control source selection.
-+	 * 1'b0: use basic GPIO2A_IOMUX[gpio2a2_sel]
-+	 * 1'b1: use gpio2a2_sel_plus instead of GPIO2A_IOMUX[gpio2a2_sel]
-+	 */
-+
-+	ret = regmap_write(info->regmap_base, RK3308_GRF_SOC_CON13,
-+			   RK3308_GRF_I2C3_IOFUNC_SRC_CTRL |
-+			   RK3308_GRF_GPIO2A3_SEL_SRC_CTRL |
-+			   RK3308_GRF_GPIO2A2_SEL_SRC_CTRL);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_write(info->regmap_base, RK3308_GRF_SOC_CON15,
-+			   RK3308_GRF_GPIO2C0_SEL_SRC_CTRL |
-+			   RK3308_GRF_GPIO3B3_SEL_SRC_CTRL |
-+			   RK3308_GRF_GPIO3B2_SEL_SRC_CTRL);
-+
-+	return ret;
-+}
-+
- static int rockchip_pinctrl_probe(struct platform_device *pdev)
- {
- 	struct rockchip_pinctrl *info;
-@@ -3079,6 +3123,12 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
- 			return PTR_ERR(info->regmap_pmu);
- 	}
- 
-+	if (ctrl->type == RK3308) {
-+		ret = rk3308_soc_data_init(info);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	ret = rockchip_pinctrl_register(pdev, info);
- 	if (ret)
- 		return ret;
+ 	raw_spin_lock_irqsave(&bank->slock, flags);
+ 	rockchip_gpio_writel_bit(bank, offset, data, bank->gpio_regs->port_ddr);
+ 	raw_spin_unlock_irqrestore(&bank->slock, flags);
 -- 
-2.25.1
+2.37.3
 
 
 _______________________________________________
