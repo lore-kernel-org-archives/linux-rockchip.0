@@ -4,67 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54972C433FE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 05:18:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F1C2C43217
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 06:14:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RjtBlYMG4oZpAq8EUzvhh6gZJ4G5p29MkAhUKj3RtxU=; b=2iWuyYmjO+fq+1
-	3KH5amNFTZBnMIv3B7PSPjZmrMPPB6plLPZDmTPcHcawVefWlR/46X/dd6fDRbmAOJXxtRIc+sQGE
-	F9S/DeOXhbiSgTvUr2fHKjrYAQXyp0Ora8XvThsqI+IBRiu7GRqpzqHxCIregmgnSpneOZQDLyvyl
-	UyIFYrWJ8YdADI4VE0lMLO3JptQYf6tYmU/QdrU7MAo/sO9ZKnsFPpMnTkqX3/0R0PN2Y1XpxBXuS
-	EndOuBUDjwUPYU99iJCB/DoraYECWPsuQQo4iO/duvC96X2bxzOoGEQduaMzEMgMtlE8EEnagkihb
-	XWFC0elhRazDWhD7b8mQ==;
+	List-Owner; bh=puE/HE01nh9qkXjNiS14HfGehCyklyc2TShSgG9yrLE=; b=OQeYlhdxqC0DrJ
+	S99HrN7ZgtJQzhy7Smq6/jLxIBB3A+tvRwimCFYvV+7ihGQ4B3ZCB7Re2/ocSIS+HFuxrlbhvciVa
+	W1TfzicM790QIZba9EdfygMF43frXuKnYuIOdK0wPwbHFtO3sUkdO2lxHf9IG+c+0uAzA1KJWWXsq
+	/Eh35diatcb9nycO6kVglxfUfIWsk06Eka90x7ratIthJZjVyKIHqKCTpGgsn3hyRwyiJQqgJqgy3
+	CPvMgH0BZUMduIHvldxsrMMJDEa5WWUSqF3k26GY75LH84fXoQegQN64fMmwfF2CJ5Sq0FJOwLN13
+	60NiU9YrfTdxn6pY9dwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oe8Pe-007G2Y-Qs; Fri, 30 Sep 2022 05:18:14 +0000
-Received: from hall.aurel32.net ([2001:bc8:30d7:100::1])
+	id 1oe9He-007Sf2-Ev; Fri, 30 Sep 2022 06:14:02 +0000
+Received: from mail-tycjpn01on2102.outbound.protection.outlook.com ([40.107.114.102] helo=JPN01-TYC-obe.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oe8Ki-007CxX-Jd; Fri, 30 Sep 2022 05:13:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=aurel32.net
-	; s=202004.hall; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Content-Type:From:Reply-To:
-	Subject:Content-ID:Content-Description:X-Debbugs-Cc;
-	bh=DDAhsfiRYbh3/+MkjL9NfNU/4tzDdoR0tDFSXdyD3TA=; b=E07JNPks7+cdyR5S/HjUEMQalp
-	8dujHPsKnIJGQ33116zFm+44j+nJCm/fxVt89mqg8K70BPLijnVuWVUEmPf37FdLNL+MQZ9NJd73l
-	U1LiahMinRAzf09bxedNJe9svtoDpl4UjQOqAoC8uxZ9ysgmjnjFy0eJy8FGJmK4kB3DUkxJed243
-	jqhpDo3nOaeIirrjlNNHh7tU7SK6jdhG8+/8ZMDBP+ulKjYyCcFdI9jFPm7bIIRferQZYZaHuHU/v
-	5CTxsU/2eIr5JdQsVJ11JdDcOB4/2hSp5AY3orvKzMnvZ1Q3BU4H2dVW3lM9XnDj6455wB21WH+q5
-	PILNY7xA==;
-Received: from [2a01:e34:ec5d:a741:8a4c:7c4e:dc4c:1787] (helo=ohm.rr44.fr)
-	by hall.aurel32.net with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1oe8Kg-00Djfx-9C; Fri, 30 Sep 2022 07:13:06 +0200
-Received: from aurel32 by ohm.rr44.fr with local (Exim 4.96)
-	(envelope-from <aurelien@aurel32.net>)
-	id 1oe8Kf-001dwH-22;
-	Fri, 30 Sep 2022 07:13:05 +0200
-From: Aurelien Jarno <aurelien@aurel32.net>
-To: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
-	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
-	linux-kernel@vger.kernel.org (open list)
-Cc: Dongjin Kim <tobetter@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Dan Johansen <strit@manjaro.org>
-Subject: [PATCH v3 12/13] arm64: dts: rockchip: Add PCIEe v3 nodes to ODROID-M1
-Date: Fri, 30 Sep 2022 07:12:45 +0200
-Message-Id: <20220930051246.391614-13-aurelien@aurel32.net>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20220930051246.391614-1-aurelien@aurel32.net>
-References: <20220930051246.391614-1-aurelien@aurel32.net>
+	id 1oe9Ha-007SdF-TJ; Fri, 30 Sep 2022 06:14:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=B7Mb5pY0ij6kwxHPyAMulx0YCAkseRcJBs2rfwP3Up/xKk9ZO6Bt65W4hUy1ZSEo2/pT3uEtz1sW0/yeswkQpGnyu30ZSwbxomjBX8nHQP20baiAkm8DezHqOpogi2qhec6NxhSSESgNEo2WImIuJpTcxJ7qAgGJuyfFEKulpCUNK/Na49bnImkGdg/qj/ZkRjL12AqxjNTF7vrSvx38wl1it257q0QVJQMPux5o345GSgN/rSmPmFbXUEYvTElmB5HFM40hssM6Ppl9cFk2vQ5ssX+mzfxIovvHth/oiU4tKPYb4674MCbG6DnhRwyH1OajY7zMrD3/3e4qCdEYlA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=X6L2urzYeYTvkxOi91XsOQMcXIFp4cmHggDSnYkxVao=;
+ b=USeRv1FanYVubQf8CfcJK18Ik0yR6EAnOLmQH3F47571OiDc6MuKT3SE/V2OlQqyZviw5NkbOXD93xROOj8jrpE0oV36UL8nOKtGTkHJUcluv3np5XiozMvvJ6MH+Aii6P0jK6gCNvhy/gqgciUHHKUH2yxxlaRZW3VIWdnwXBcoPEdTzw6xp9ag4HylGhI7sZX5H6qUdjkoCjnmPRVcUGWR/kGZDmN1MrNx0Lf/h9W74FPqfX8y4e2Xmmbk6u6TBcy5p6jmL7uSwwIhFS6g3InldwzRh1LQFUS8E1UUthJtkFdMbUsHD91W5k4RSiqbYfY1rl95xKSzhUJ9PxfNmg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=bp.renesas.com; dmarc=pass action=none
+ header.from=bp.renesas.com; dkim=pass header.d=bp.renesas.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bp.renesas.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=X6L2urzYeYTvkxOi91XsOQMcXIFp4cmHggDSnYkxVao=;
+ b=JJidqJc8y0W0O/WCYP95/ZhTZ9Dqpqz/R0peJInMmftQjVg3cj4TfwBU6ZKyvIejkwDwbzBT9fXWJGGx6jbzHTexYZ4wIb9HrRsptjj8zSCLUosJnfNHqxLm0LFecIccFnLpGpnNgocIIuhfBv/AINe8iROQbcZ4r7W7/DBkRpk=
+Received: from OS0PR01MB5922.jpnprd01.prod.outlook.com (2603:1096:604:bb::5)
+ by TYCPR01MB7968.jpnprd01.prod.outlook.com (2603:1096:400:11d::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5676.23; Fri, 30 Sep
+ 2022 06:13:49 +0000
+Received: from OS0PR01MB5922.jpnprd01.prod.outlook.com
+ ([fe80::73a6:588d:1198:7262]) by OS0PR01MB5922.jpnprd01.prod.outlook.com
+ ([fe80::73a6:588d:1198:7262%7]) with mapi id 15.20.5676.023; Fri, 30 Sep 2022
+ 06:13:49 +0000
+From: Biju Das <biju.das.jz@bp.renesas.com>
+To: Thierry Reding <thierry.reding@gmail.com>, Johan Jonker
+	<jbx6244@gmail.com>
+CC: Rob Herring <robh@kernel.org>, "u.kleine-koenig@pengutronix.de"
+	<u.kleine-koenig@pengutronix.de>, "linux-rockchip@lists.infradead.org"
+	<linux-rockchip@lists.infradead.org>, "philipp.tomsich@vrull.eu"
+	<philipp.tomsich@vrull.eu>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "krzysztof.kozlowski+dt@linaro.org"
+	<krzysztof.kozlowski+dt@linaro.org>, "devicetree@vger.kernel.org"
+	<devicetree@vger.kernel.org>, "linux-pwm@vger.kernel.org"
+	<linux-pwm@vger.kernel.org>, "kever.yang@rock-chips.com"
+	<kever.yang@rock-chips.com>, "zhangqing@rock-chips.com"
+	<zhangqing@rock-chips.com>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, Geert
+ Uytterhoeven <geert+renesas@glider.be>
+Subject: RE: [PATCH v1 03/11] dt-bindings: pwm: rockchip: add
+ rockchip,rk3128-pwm
+Thread-Topic: [PATCH v1 03/11] dt-bindings: pwm: rockchip: add
+ rockchip,rk3128-pwm
+Thread-Index:  AQHYxJoFJRxl0VNTjEqBljMFY9Zfzq3YwRiAgABSLwCAAusVgIABdW4AgBdmg4CAAsE6kA==
+Date: Fri, 30 Sep 2022 06:13:49 +0000
+Message-ID:  <OS0PR01MB592218C1636537D396A8E08E86569@OS0PR01MB5922.jpnprd01.prod.outlook.com>
+References: <20220909212543.17428-1-jbx6244@gmail.com>
+ <f5dd0ee4-d97e-d878-ffde-c06e9b233e38@gmail.com>
+ <1662821635.180247.34700.nullmailer@robh.at.kernel.org>
+ <1c13181b-8421-69d8-21ee-9742dd5f55dd@gmail.com>
+ <20220912162159.GA1397560-robh@kernel.org>
+ <37fd8d4b-3a66-bc51-c2dc-76c9e756fed8@gmail.com> <YzQ3He2wyD2bgxz1@orome>
+In-Reply-To: <YzQ3He2wyD2bgxz1@orome>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=bp.renesas.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: OS0PR01MB5922:EE_|TYCPR01MB7968:EE_
+x-ms-office365-filtering-correlation-id: e7315491-2eb9-4b3b-1829-08daa2aaf0e6
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info:  FzKBTP7o08lCSsuOfI9qUrr9KmYgnKHXdbHSAPK809UBJactyWS/gKYjXNjXsBg9tX7gDx+Jb96WqbhjJtEjtDYmmbfGmOi1edZWaTSxJdFK86db162TCdftdjEwwBMlWVlLAAGHU6uAiX45w1/7mzNKJ+7ZWUWkoLeqxPdTkVLz2Yd80PFAcbQZmpAnzRzE/opb70XCFGhIgYRrDQF9MNjlXSvSY0398BAmKWNkul6cx/MMMWwzquvgpx5ZOJFpejxi/l/Nf2JkApbtfB4WJtQf6b8598CWghMCt6mXWsNorAw4rV67pr5vDpvo2bapn5Ys7y7cZ/QE+ZMPY98meQtJpteNa1kiFidrjBSqz7AtjXUWbu2VTsT1pSFY8rIYgnJUYlcRVbGgt3VzZBWvJftPVUFcD9SM/RpZ/+/4ruPTQcS4g2K4v+Omt0DxpBpUg1JqQdjx7eZmYWF9YGD7kk4EpfQCHpCoJe3iQLB56iRBbc2ofA0el61wufwc24qgD4wPwdASWSkBr0w1r57ah9OYlbVdvjUfGsO9Bnm9RWQRM9ricgDfBZh9jHH8KYsDkFSHEhgRdEYYoNC3eKcZQoyL86R642mgaji7pnAnlgJqccNMnqSyJR+PcS7pQlgYuNTzp/1sX1VYqk9Hrze1jZvHEfEqHJzHjNEgYD3lOM27IplNCoqwwIKOBlYUx/WUqC+eqoxMdXqdluBALSIIKI5zkTYsmhFcnCOrmY7LqiRtLvRbv6tdciV3E5ZaMQML7GHoIkuYkw1Jx1bxERcV8Q==
+x-forefront-antispam-report:  CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:OS0PR01MB5922.jpnprd01.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(4636009)(396003)(136003)(39860400002)(346002)(366004)(376002)(451199015)(71200400001)(38070700005)(8676002)(122000001)(38100700002)(110136005)(316002)(54906003)(66476007)(64756008)(66556008)(66446008)(86362001)(76116006)(66946007)(55016003)(4326008)(478600001)(83380400001)(6506007)(7416002)(5660300002)(53546011)(26005)(2906002)(9686003)(52536014)(7696005)(8936002)(33656002)(41300700001)(186003);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0:  =?us-ascii?Q?IDAjVpeqv0FNRfrhruJDBQNXw9kn2+EhNEfs7MIV5hT5VV54+zLArpBYg+Mp?=
+ =?us-ascii?Q?lNjRPSk4knal+8U3xfkcIqgnKZJWOSDFqvxjeC/MRPmxlxXXK9hMep5UnVuE?=
+ =?us-ascii?Q?VzbXOK7yhxNYDgxnCuqRoBFU7fW9cL4i5i+EgZ+Ia/Vs3z2/F5n6H2qEO8sk?=
+ =?us-ascii?Q?8VXoUOwf3n03uNFDAJD5I3FkB1bXQxiAZ4juuGHl+R2un/25KHpzzBMmYGA+?=
+ =?us-ascii?Q?vH1so/taCnh/hzXXO4uqctvtdM0GnWe2HJ+h5vSvI6Mptf09ik6I0LlWhKpq?=
+ =?us-ascii?Q?Yr2LPh/7X4PeZYd6GKk5pwSWaj5vmCRuBuHxHJ1VlxTL9GdlX1KP5WvHx2zL?=
+ =?us-ascii?Q?/a/dCM8bLqdcPlr+KBRuTcBBRdwNJi8Q8/JjnaV6G86mexcdzEXR4wlqG3Hc?=
+ =?us-ascii?Q?2R513nwV7y1I7Fu3g73qb1z/hFMZJhUr/uUdiHbu/CbSgYCylQJjLujmxf2n?=
+ =?us-ascii?Q?dtyVdfBM6vlYVIMf5GEVXzhx+ngCxg5jrbl6WKw13IhUH9YXHAvzZbDkjJFo?=
+ =?us-ascii?Q?0wFodh2wNkIYFzBWEP7ACGcUc2RYLIioWy7/V5k+aG/k6AYFrwNi2HoCQlGk?=
+ =?us-ascii?Q?sNXwlRgfsuHjxKz4gbp3atDXISUsA3NwF/90+RZvmbHLrLVEWa3ysEUi/fUa?=
+ =?us-ascii?Q?sllieTXnBWUWdnZpQ2DlzOLpjisT2gZbZhE3xGJLrfG3qPWy4Qp7G6QVaoE7?=
+ =?us-ascii?Q?4p+uUQgLB0v7ODSbgMRwUVRYe5tdqkwawv+PpLWgTzZImSY7IsXfAuBU4S3U?=
+ =?us-ascii?Q?X76BeCt51wRMyhp6v5ndP3mb9xhHKhGG6nfEaHkHVxrMYdi8nFj8FXVxFIqB?=
+ =?us-ascii?Q?rgg2YV5djPBjr6V8Z/e1p/WG3eSqn05dkKY4cdBeVPwSOqNrq4qbeCMR1G4s?=
+ =?us-ascii?Q?8tVBLXIx7tqOChgcP2ihqv7+TrilhdH5gDmKXsJae41OD6Nvk5fN9ScpvATH?=
+ =?us-ascii?Q?7RaIbfByjrxyPRkJlGF1hEg1teQI/AsGcV4op13pCXMLliSw0CWLLPpKz1xH?=
+ =?us-ascii?Q?72wCqynzDShr3nJ2w5c1/3ru1kuHpm3CumpE8dOOqYdxKjKG4wfUGFOkXN3T?=
+ =?us-ascii?Q?QHxntne7qqj2kp82drvmpSOAKjG8IjNSib30iQ3hr2oVJP6aED6lXVqtuD4E?=
+ =?us-ascii?Q?jiHf0m7wl7NZ/qVzAHECOzZkgtY6V9oo+e8Xav1v3iGcl9MW5kzJZ96X0qCZ?=
+ =?us-ascii?Q?T+IHijmCVKAWcOWL8+d1dfbb+C+sOhymj05jgZN/4hrMNI9wb7uXco7INS+X?=
+ =?us-ascii?Q?PRzt9yz3j71b9zW+LbD0hXv+a4yCJxzNqBHG2oGcyJoXhrkOrjFVRRI8se1B?=
+ =?us-ascii?Q?KDUT8x4liPIUbvuZI7dozBW5ff9m3jZXKxSkCejn73dlWUMqCX/0z0Zkjc/S?=
+ =?us-ascii?Q?XrPHId2Qpzvfa9cOYvjYG2urAloVmAUjSbvq1YpDyW0NcRCg2EDsItk/EpfE?=
+ =?us-ascii?Q?t6sYZoX66i7bAgAB1cstUPFgeBoHnsG07hjTiFViKyExC58I7rQfGbyW9Wbs?=
+ =?us-ascii?Q?eHEsswOJVtvz8Ohnxl6qZpJDs3y2FZ5tOKT6WefFZeu54mlvhlQk9O7MbXbZ?=
+ =?us-ascii?Q?z6KKfnkc0KLJ8emYY69YgputFsoScbM53IhHpB0lCtMpl/mCBSL2/1a7wVfE?=
+ =?us-ascii?Q?Mw=3D=3D?=
 MIME-Version: 1.0
+X-OriginatorOrg: bp.renesas.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: OS0PR01MB5922.jpnprd01.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e7315491-2eb9-4b3b-1829-08daa2aaf0e6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Sep 2022 06:13:49.5472
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 53d82571-da19-47e4-9cb4-625a166a4a2a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: bcneveLP8Fpcm00XWUOUQmmGvP4yHOsutO//Nm6Rz04v+K44XGuOcn9Bqc/349UTcaTcjtxZ8vcKVTyIuErVG978f7P0uqDzvY6R5VrK1Q8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYCPR01MB7968
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220929_221313_690727_F6E5432A 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220929_231358_976670_B144B357 
+X-CRM114-Status: GOOD (  20.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,76 +151,183 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add nodes to ODROID-M1 to support PCIe v3 on the M2 slot.
+Hi Thierry Reding,
 
-Signed-off-by: Aurelien Jarno <aurelien@aurel32.net>
-Tested-by: Dan Johansen <strit@manjaro.org>
----
- .../boot/dts/rockchip/rk3568-odroid-m1.dts    | 34 +++++++++++++++++++
- 1 file changed, 34 insertions(+)
+> Subject: Re: [PATCH v1 03/11] dt-bindings: pwm: rockchip: add
+> rockchip,rk3128-pwm
+> 
+> On Tue, Sep 13, 2022 at 04:38:32PM +0200, Johan Jonker wrote:
+> >
+> >
+> > On 9/12/22 18:21, Rob Herring wrote:
+> > > On Sat, Sep 10, 2022 at 09:48:04PM +0200, Johan Jonker wrote:
+> > >> Reduced CC.
+> > >>
+> > >> Hi Rob,
+> > >>
+> > >
+> > > Seemed like a simple enough warning to fix...
+> >
+> > Some examples for comment.
+> > Let us know what would be the better solution?
+> >
+> >
+> ======================================================================
+> > =====
+> >
+> > option1:
+> >
+> > 	combpwm0: combpwm0 {
+> > 		compatible = "rockchip,rv1108-combpwm";
+> > 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
+> > 		#address-cells = <2>;
+> > 		#size-cells = <2>;
+> >
+> > 		pwm0: pwm@20040000 {
+> > 			compatible = "rockchip,rv1108-pwm";
+> > 			reg = <0x20040000 0x10>;
+> > 		};
+> >
+> > 		pwm1: pwm@20040010 {
+> > 			compatible = "rockchip,rv1108-pwm";
+> > 			reg = <0x20040010 0x10>;
+> > 		};
+> >
+> > 		pwm2: pwm@20040020 {
+> > 			compatible = "rockchip,rv1108-pwm";
+> > 			reg = <0x20040020 0x10>;
+> > 		};
+> >
+> > 		pwm3: pwm@20040030 {
+> > 			compatible = "rockchip,rv1108-pwm";
+> > 			reg = <0x20040030 0x10>;
+> > 		};
+> > 	};
+> >
+> > PRO:
+> > - Existing driver might still work.
+> > CON:
+> > - New compatible needed to service the combined interrupts.
+> > - Driver change needed.
+> >
+> >
+> ======================================================================
+> > =====
+> > option 2:
+> >
+> > 	combpwm0: pwm@10280000 {
+> > 		compatible = "rockchip,rv1108-pwm";
+> > 		reg = <0x10280000 0x40>;
+> > 		interrupts = <GIC_SPI 38 IRQ_TYPE_LEVEL_HIGH>;
+> > 		#address-cells = <1>;
+> > 		#size-cells = <0>;
+> >
+> > 		pwm4: pwm-4@0 {
+> > 			reg = <0x0>;
+> > 		};
+> >
+> > 		pwm5: pwm-5@10 {
+> > 			reg = <0x10>;
+> > 		};
+> >
+> > 		pwm6: pwm-6@20 {
+> > 			reg = <0x20>;
+> > 		};
+> >
+> > 		pwm7: pwm-7@30 {
+> > 			reg = <0x30>;
+> > 		};
+> > 	};
+> >
+> > CON:
+> > - Driver change needed.
+> > - Not compatible with current drivers.
+> >
+> >
+> ======================================================================
+> > =====
+> >
+> > Current situation:
+> >
+> > 	pwm0: pwm@20040000 {
+> > 		compatible = "rockchip,rv1108-pwm", "rockchip,rk3288-pwm";
+> > 		reg = <0x20040000 0x10>;
+> > 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
+> > 	};
+> >
+> > 	pwm1: pwm@20040010 {
+> > 		compatible = "rockchip,rv1108-pwm", "rockchip,rk3288-pwm";
+> > 		reg = <0x20040010 0x10>;
+> > 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
+> > 	};
+> >
+> > 	pwm2: pwm@20040020 {
+> > 		compatible = "rockchip,rv1108-pwm", "rockchip,rk3288-pwm";
+> > 		reg = <0x20040020 0x10>;
+> > 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
+> > 	};
+> >
+> > 	pwm3: pwm@20040030 {
+> > 		compatible = "rockchip,rv1108-pwm", "rockchip,rk3288-pwm";
+> > 		reg = <0x20040030 0x10>;
+> > 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
+> > 	};
+> >
+> > CON:
+> > - The property "interrupts 39" can only be claimed ones by one probe
+> function at the time.
+> > - Has a fall-back string for rk3288, but unknown identical behavior
+> for interrupts ???
+> 
+> To be honest, all three descriptions look wrong to me. From the above
+> it looks like this is simply one PWM controller with four channels, so
+> it should really be described as such, i.e.:
+> 
+> 	pwm@20040030 {
+> 		compatible = "rockchip,rv1108-pwm";
+> 		reg = <0x20040030 0x40>;
+> 		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
+> 	};
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-index bd24ccf94e76..2f685c606bb9 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-odroid-m1.dts
-@@ -96,6 +96,19 @@ simple-audio-card,codec {
- 		};
- 	};
- 
-+	vcc3v3_pcie: vcc3v3-pcie-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_pcie";
-+		enable-active-high;
-+		gpio = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc3v3_pcie_en_pin>;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		startup-delay-us = <5000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
- 	vcc3v3_sys: vcc3v3-sys-regulator {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc3v3_sys";
-@@ -479,6 +492,18 @@ rgmii_phy0: ethernet-phy@0 {
- 	};
- };
- 
-+&pcie30phy {
-+	status = "okay";
-+};
-+
-+&pcie3x2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie_reset_pin>;
-+	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_pcie>;
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	fspi {
- 		fspi_dual_io_pins: fspi-dual-io-pins {
-@@ -503,6 +528,15 @@ led_work_pin: led-work-pin {
- 		};
- 	};
- 
-+	pcie {
-+		pcie_reset_pin: pcie-reset-pin {
-+			rockchip,pins = <2 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+		vcc3v3_pcie_en_pin: vcc3v3-pcie-en-pin {
-+			rockchip,pins = <4 RK_PA7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>;
--- 
-2.35.1
+Sorry to jump in.
 
+Renesas GPT has also similar case where we have large PWM IP block
+having 8 pwm channels. Each channel has it's Own pinctrl, unique registers, interrupts
+for each channel. But there are 4 sharable external trigger input pins for all the channels.
+
+If it is a single block like this, how will you associate pinctrl 
+with each channel?
+
+At board level if you specify <pin4 enabled>, without pwm channel
+specific information how will you configure channel4?
+
+Maybe something like this will help. Is it acceptable?
+
+	pwm@20040030 {
+		compatible = "rockchip,rv1108-pwm";
+		reg = <0x20040030 0x40>;
+		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
+
+		pwm4: pwm-4@0 {
+			reg = <0x0>;
+		};
+
+		pwm5: pwm-5@10 {
+			reg = <0x10>;
+		};
+
+		pwm6: pwm-6@20 {
+			reg = <0x20>;
+		};
+
+		pwm7: pwm-7@30 {
+			reg = <0x30>;
+		};
+	};
+
+
+Cheers,
+Biju
 
 _______________________________________________
 Linux-rockchip mailing list
