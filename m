@@ -4,29 +4,29 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BB75C433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8ED5DC4332F
 	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Sep 2022 13:21:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fyn8j4ya799vbPgsrxaq/RzULwMzoNGUxsVemZSten4=; b=iSRE8skys2qPEM
-	H2ZoQ7LxMdUS/m7+yR2NQLJmYUQVzI4SrIn56MmrVjzZeUtdleo3vEdakbOy6AQXR+aYX/JKeQ14p
-	+mo75jAWv/xYiH4jMgRg8k8pnh/NWrUrFy14J2i8iwf1z8P1oa9D3kw7Rs+yzcM1PUArn8eX+bEjf
-	pa15kSXDBlSrTjpzlP8HI1Up6KEkOpd1PAnu5iKJDZRJx3Vg/ENAlhoEexylwEdxl8ZrqhEJzE8j5
-	q2E36TllfR+ZqgDcLm0rN3FSVja+hbIDPvUU3PQWWmCIrQV9Cmrro/JabnBrQzJcJkLhA8LIZASqM
-	jPsAi1CKfw2F6GTyjr5A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=H8a1wrvMVEOutte94OJFJQ3RLOoU6SQM3UiTHyZqcBs=; b=Gmh6JcdvBRN5Nc
+	X6Qr8gAGfNo7LWDFB+8mdPz6Rmj8e2LfPAuuvECH5StpIbcefRBPeXxG08mR/LdNB8Ioe2DjSWRvj
+	XTaaL3/YgMyWqyGQcmN7XxYrJr/xj1JuX9sFA/T9/4ESG7p/M1mhXL6CcxelMim6rxsIWnQ5XW7Cu
+	s/PdmSmBkw2d80WeNHxKc5XJ3eQZf51Gip4nk9BjHLJwiuzQetgGHOW1W4dSzvSRxlEwxhu+cRjTT
+	B9/IsIVbg0/YaZyouEPJm7w1ehEAE3l5y5zHO/AvroHNy4AoPmLWtWHc4gmFmSAIOQi2V9pW+YwuH
+	UhOmazeuVtgosSHr761w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeFxP-009MFI-9I; Fri, 30 Sep 2022 13:21:35 +0000
-Received: from relay7-d.mail.gandi.net ([2001:4b98:dc4:8::227])
+	id 1oeFxP-009MFf-UD; Fri, 30 Sep 2022 13:21:35 +0000
+Received: from relay7-d.mail.gandi.net ([217.70.183.200])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oeFwm-009LvB-Cm; Fri, 30 Sep 2022 13:20:58 +0000
+	id 1oeFwk-009Ls2-VJ; Fri, 30 Sep 2022 13:20:58 +0000
 Received: (Authenticated sender: foss@0leil.net)
-	by mail.gandi.net (Postfix) with ESMTPSA id 2CB0020005;
-	Fri, 30 Sep 2022 13:20:51 +0000 (UTC)
+	by mail.gandi.net (Postfix) with ESMTPSA id F29AB20007;
+	Fri, 30 Sep 2022 13:20:45 +0000 (UTC)
 From: Quentin Schulz <foss+kernel@0leil.net>
 To: 
 Cc: linus.walleij@linaro.org,
@@ -38,18 +38,15 @@ Cc: linus.walleij@linaro.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	foss+kernel@0leil.net,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
-	stable@vger.kernel.org
-Subject: [PATCH v2 2/2] gpio: rockchip: request GPIO mux to pinctrl when setting direction
-Date: Fri, 30 Sep 2022 15:20:33 +0200
-Message-Id: <20220930132033.4003377-3-foss+kernel@0leil.net>
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>
+Subject: [PATCH v2 0/2] fix gpio-sysfs/libgpiod for rockchip
+Date: Fri, 30 Sep 2022 15:20:31 +0200
+Message-Id: <20220930132033.4003377-1-foss+kernel@0leil.net>
 X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20220930132033.4003377-1-foss+kernel@0leil.net>
-References: <20220930132033.4003377-1-foss+kernel@0leil.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220930_062056_620254_E0C2A8CD 
-X-CRM114-Status: GOOD (  11.66  )
+X-CRM114-CacheID: sfid-20220930_062055_165782_47C29D34 
+X-CRM114-Status: GOOD (  14.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,58 +65,42 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 
-Before the split of gpio and pinctrl sections in their own driver,
-rockchip_set_mux was called in pinmux_ops.gpio_set_direction for
-configuring a pin in its GPIO function.
+Since the split of gpio and pinctrl in their own driver, gpio-sysfs and
+libgpiod userspace GPIO handling has been broken because the pins aren't
+put into their GPIO function anymore since pinctrl subsystem is
+"bypassed" when requesting GPIOs from userspace.
 
-This is essential for cases where pinctrl is "bypassed" by gpio
-consumers otherwise the GPIO function is not configured for the pin and
-it does not work. Such was the case for the sysfs/libgpiod userspace
-GPIO handling.
+This fixes it by making the gpio driver actually request from the
+pinctrl subsystem to put the pin in its GPIO function when the GPIO
+direction is set in userspace.
 
-Let's call pinctrl_gpio_direction_input/output when setting the
-direction of a GPIO so that the pinctrl core requests from the rockchip
-pinctrl driver to put the pin in its GPIO function.
+I discovered the issue because we have a GPIO the user needs to control
+from userspace to flash FW on an on-board STM32 that is actually on the
+same pin as one used by the flash controller. Considering the storage
+medium tried by the BOOTROM is emmc->nor->nand->sdmmc, booting from emmc
+didn't show the issue because the default function for pins is GPIO and
+the flash controller pins didn't need to be muxed by the BOOTROM.
+However, if there's nothing on emmc, the BOOTROM does the pinmux for SPI
+controller and puts the pins in their flash mode and therefore the
+handling of that pin as a GPIO from userspace was not possible, but only
+when booting on something else than eMMC.
 
-Fixes: 9ce9a02039de ("pinctrl/rockchip: drop the gpio related codes")
-Fixes: 936ee2675eee ("gpio/rockchip: add driver for rockchip gpio")
-Cc: stable@vger.kernel.org
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
----
+This restores the behavior as seen in v5.14 and earlier.
 
 v2:
- - added Reviewed-by,
- - added missing linux/pinctrl/consumer.h header,
+ - fix missing header; reported by kernel test robot <lkp@intel.com>
 
- drivers/gpio/gpio-rockchip.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+Cheers,
+Quentin
 
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index bb50335239ac8..9c976ad7208ef 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -19,6 +19,7 @@
- #include <linux/of_address.h>
- #include <linux/of_device.h>
- #include <linux/of_irq.h>
-+#include <linux/pinctrl/consumer.h>
- #include <linux/pinctrl/pinconf-generic.h>
- #include <linux/regmap.h>
- 
-@@ -156,6 +157,12 @@ static int rockchip_gpio_set_direction(struct gpio_chip *chip,
- 	unsigned long flags;
- 	u32 data = input ? 0 : 1;
- 
-+
-+	if (input)
-+		pinctrl_gpio_direction_input(bank->pin_base + offset);
-+	else
-+		pinctrl_gpio_direction_output(bank->pin_base + offset);
-+
- 	raw_spin_lock_irqsave(&bank->slock, flags);
- 	rockchip_gpio_writel_bit(bank, offset, data, bank->gpio_regs->port_ddr);
- 	raw_spin_unlock_irqrestore(&bank->slock, flags);
+Quentin Schulz (2):
+  pinctrl: rockchip: add pinmux_ops.gpio_set_direction callback
+  gpio: rockchip: request GPIO mux to pinctrl when setting direction
+
+ drivers/gpio/gpio-rockchip.c       |  7 +++++++
+ drivers/pinctrl/pinctrl-rockchip.c | 13 +++++++++++++
+ 2 files changed, 20 insertions(+)
+
 -- 
 2.37.3
 
