@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2A7FC433F5
-	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Oct 2022 06:46:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FE59C433FE
+	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Oct 2022 06:46:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LiWEPSCbmCwuDilSH8OS3de9c8GJrFApj3G1csGrjzI=; b=KgWjCvarOrQoF8
-	4V09UGgIGwAiQNzItr2xnqntQBsQF66uBzIbxbWdJgyBh+cvTy0wyAU/R87YfyerV2Mq0CHFT7TKs
-	VbtU7G8FC9pNkqTtDQtDnJXTU8loPcYeyzDbxDwnDGVewz3U8yjPOZidvHeniwLKZyUEe3S//mrJp
-	mpOT4Cq3ApIbxAJGPD+4C97TGhEjA4j13mnjxs2Ysy5OhX357SY/xS4L5NaO+DL6ne1j1f1vP9nW4
-	5BfgPwtm5H4WRlKcn9SkmCWpodFym5m/iI12bXztTbxCAbUtZ29NV1AW0xH9H60VRXDSWUVDxPRRo
-	qk+1m9shTLsNYhUje0Aw==;
+	List-Owner; bh=3D+0o9lZ6Yf384Gf8LhJXj9TVXMfEN9w+JSNpu2dfho=; b=C0HASr7IuvwGlm
+	Eoe3GxPGLvg7e9EcTR4aTP3bWTlhP/FysD/RdRNSkqBY9o0y4y8lhThnDxLTStz8FetzU6llm0swY
+	yF7lxKuP/tfY+jc9Cj47Ly9Ofnri1ZpfBZ4233FuSNqGVx81nZKh4Qvm+r9nXkiD55XrThsHFEEnM
+	vAnctVH63VRSElVfCF5WUUGUI20c/AswebkqwLQMTIOMKk5TdujkOUpBKx9rIGiVggZfEcQQj4T3b
+	WK/4CUl95pyEO1D0EbyTurJ8r56XTJiQcRWJ907D8LMgPnkvJDI6acDliwE4PZgWM9K2xKGsDl7iX
+	e/qN384pUoSd2LlipRSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oesjn-0003zP-Er; Sun, 02 Oct 2022 06:46:07 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1oesjn-00040C-SB; Sun, 02 Oct 2022 06:46:07 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oesjS-0003nl-R1
-	for linux-rockchip@lists.infradead.org; Sun, 02 Oct 2022 06:45:49 +0000
-Received: by mail-ej1-x630.google.com with SMTP id l14so16519101eja.7
-        for <linux-rockchip@lists.infradead.org>; Sat, 01 Oct 2022 23:45:46 -0700 (PDT)
+	id 1oesjU-0003qL-7X
+	for linux-rockchip@lists.infradead.org; Sun, 02 Oct 2022 06:45:50 +0000
+Received: by mail-ej1-x635.google.com with SMTP id kg6so1193523ejc.9
+        for <linux-rockchip@lists.infradead.org>; Sat, 01 Oct 2022 23:45:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=amarulasolutions.com; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=+EFb6uk4cTnqBeI+5KKFVfi8qmpv//hil6I+XjIEg10=;
-        b=Z6eZABtXZW25w/5ZyMrjoGibSALBRFTBPOZ3m9ciR8K5cg5YYtOx+uYUCdFWVGG7vC
-         Fj8IrV/vXJ8t6J+fMB+I2+mkQIsc0hz6XEZxe/ffAXYEafz21v/MVLnMLO77sabS2aSm
-         ma9lsFZUE903KWzEhReXmALwvDgy4P3ehuLBw=
+        bh=I6XMIDzmAb5OEYRQrNrBJ64J1RkMPb1xdg1o6LLrqS4=;
+        b=kdPlUwALYdNbkW9cx2XLVNwgOxrzhu3xLLiNM5FmcdjmtgSxDjZiXivE9cURSlKI9G
+         THB25Gxkx5t8suAAn8LL2pI7YADY+GVOgVmXbiI2zDF9bH2yHej+i0+hvqZxj0Akp/p5
+         uh/tBzNaQX2p0eFbQeZw5FnMylVKKnY0W1Xc4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=+EFb6uk4cTnqBeI+5KKFVfi8qmpv//hil6I+XjIEg10=;
-        b=siyKpnXuc8y4IVahwi9KgC6mAU99FDnVsxD0k2HREuuNJu8clUkOj1OOkeiToNqTQj
-         mH38slwUbiVN8fYkxbzHorFhUSDFkFcmBKPjdLJsyFKur2dfqZIMPSyaGg5CStuZ3DMG
-         UuxLRPsxbL1ypfO5eNHYSd9TDPb5oKb/zjRUuaUeu9P26H+fNKAkCjhmItVV4rqVby0g
-         /+q3PsVi2MVUxkFXSBnIRqHFCXygLyq7a4hXlD/BQhn57QYNGeM/bMrdAbPrSUhkOQO3
-         wreVBLiro4/a+NFUQUXVJ4LaCy2GrJUoj0sHlFqr+fhA4SKgM3Nm59MVmQAgPLeL1093
-         zsfQ==
-X-Gm-Message-State: ACrzQf3sn69ACgjybkuylTo7dAHrJpxZrMbKE3T9YH62APE1V/UR4MSa
-	8gjXJSXz2SxmEnasWE6B9b+fbw==
-X-Google-Smtp-Source: AMsMyM4B5NnmV+Vv6ol70KZMuL8JEVXI/URE4cg0VGwaJQnYUbGUUGOKtgaodi64X9B7RZP0ZmTX1Q==
-X-Received: by 2002:a17:907:160d:b0:782:bc5d:162e with SMTP id hb13-20020a170907160d00b00782bc5d162emr11502660ejc.291.1664693145088;
-        Sat, 01 Oct 2022 23:45:45 -0700 (PDT)
+        bh=I6XMIDzmAb5OEYRQrNrBJ64J1RkMPb1xdg1o6LLrqS4=;
+        b=buS0jBXXjxJu7nEn/txkEGpHLE2ygIe6IAMxs27wfywTRhF8nTUBvVGePJUlKMofjc
+         PeKyLbefivGcmd9/ab2UT2k2BkV8AHBKIlFF0G1hmQr3fR1LJxpF/jFsMDdbVsOisfbj
+         whySGkA+JiLt1UlzGLPO05gGOYagA0pvUZ6BUB9Dch4uQKblBSvvMe6BHcKtvYTMAVux
+         YjOolvv4fyL4M/z2E8zBy2Yl+9u+n2grKks84goXY+G9pEpLjENfqq0OfR6E6un+GG2t
+         8/aX9dv2388LfF1tn3iqeCcSLNKI20I4CTLvenKKwUOwojrWQx/XQ5oDJnONfTvV3rMM
+         E2rw==
+X-Gm-Message-State: ACrzQf0Uof9anBtsjVQdy0b6nYom9gW2+080g9FTLeihmpf+dQCVohT6
+	Zb2CVfGdA6YWPVS05xnmWEnbxQ==
+X-Google-Smtp-Source: AMsMyM42Y13+9SuPHtB+8bbihrWVsma1thKzuBn20iHav0eL1jLmBw0Y9w2/3o+fg6AJtnqVC042IA==
+X-Received: by 2002:a17:907:2c67:b0:77d:740a:e9b1 with SMTP id ib7-20020a1709072c6700b0077d740ae9b1mr11198850ejc.614.1664693146999;
+        Sat, 01 Oct 2022 23:45:46 -0700 (PDT)
 Received: from panicking.. ([109.52.206.103])
-        by smtp.gmail.com with ESMTPSA id 26-20020a170906329a00b0077f5e96129fsm3569894ejw.158.2022.10.01.23.45.43
+        by smtp.gmail.com with ESMTPSA id 26-20020a170906329a00b0077f5e96129fsm3569894ejw.158.2022.10.01.23.45.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 01 Oct 2022 23:45:44 -0700 (PDT)
+        Sat, 01 Oct 2022 23:45:46 -0700 (PDT)
 From: Michael Trimarchi <michael@amarulasolutions.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -69,17 +69,16 @@ Cc: Kishon Vijay Abraham I <kishon@ti.com>,
 	linux-kernel@vger.kernel.org,
 	linux-phy@lists.infradead.org,
 	linux-amarula@amarulasolutions.com
-Subject: [RFC PATCH 1/4] phy: add PHY_MODE_TTL
-Date: Sun,  2 Oct 2022 08:45:37 +0200
-Message-Id: <20221002064540.2500257-2-michael@amarulasolutions.com>
+Subject: [RFC PATCH 2/4] phy: rockchip: Add inno_is_valid_phy_mode
+Date: Sun,  2 Oct 2022 08:45:38 +0200
+Message-Id: <20221002064540.2500257-3-michael@amarulasolutions.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221002064540.2500257-1-michael@amarulasolutions.com>
 References: <20221002064540.2500257-1-michael@amarulasolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221001_234546_911480_FC55FE3D 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221001_234548_294700_663ACC24 
+X-CRM114-Status: GOOD (  11.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,28 +95,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There are combo phys out there that can be switched between doing
-dsi, lvds, and ttl. So add a mode definition for it.
+The function is used to avoid to enable clock on the hardware
+if the mode requested is invalid
 
 Signed-off-by: Michael Trimarchi <michael@amarulasolutions.com>
 ---
- include/linux/phy/phy.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ .../phy/rockchip/phy-rockchip-inno-dsidphy.c  | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-diff --git a/include/linux/phy/phy.h b/include/linux/phy/phy.h
-index b1413757fcc3..87ae8c27ec57 100644
---- a/include/linux/phy/phy.h
-+++ b/include/linux/phy/phy.h
-@@ -42,7 +42,8 @@ enum phy_mode {
- 	PHY_MODE_MIPI_DPHY,
- 	PHY_MODE_SATA,
- 	PHY_MODE_LVDS,
--	PHY_MODE_DP
-+	PHY_MODE_DP,
-+	PHY_MODE_TTL
- };
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+index 630e01b5c19b..644cf73cfd53 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+@@ -217,6 +217,20 @@ static void phy_update_bits(struct inno_dsidphy *inno,
+ 	writel(tmp, inno->phy_base + reg);
+ }
  
- enum phy_media {
++static int inno_is_valid_phy_mode(struct inno_dsidphy *inno)
++{
++	switch (inno->mode) {
++	case PHY_MODE_MIPI_DPHY:
++		break;
++	case PHY_MODE_LVDS:
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	return 0;
++};
++
+ static unsigned long inno_dsidphy_pll_calc_rate(struct inno_dsidphy *inno,
+ 						unsigned long rate)
+ {
+@@ -495,6 +509,11 @@ static void inno_dsidphy_lvds_mode_enable(struct inno_dsidphy *inno)
+ static int inno_dsidphy_power_on(struct phy *phy)
+ {
+ 	struct inno_dsidphy *inno = phy_get_drvdata(phy);
++	int ret = 0;
++
++	ret = inno_is_valid_phy_mode(inno);
++	if (ret)
++		return ret;
+ 
+ 	clk_prepare_enable(inno->pclk_phy);
+ 	clk_prepare_enable(inno->ref_clk);
 -- 
 2.34.1
 
