@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B79D8C433FE
-	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Oct 2022 06:46:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98939C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sun,  2 Oct 2022 06:46:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iyZHQgb/YfJED9vznbtHrz1dOVxnusYf+xZgNK67tV4=; b=Wf44kAUnxwCAz5
-	TNZEcFT4klmOhfuIdt1IV8FTTM+qPEEYL5MpvKg4QSWnbxG1TTLu3arHxhAY+PGprh8FhfnB0LCj7
-	w9hCz5RQL98+bz0N5XKxdob7Wwpmb3bTARxLF2h7Mf9B0l93LlIret8uyI/tSPagusUewf3DPAjUT
-	9Evmp66yovkDMSZXPIO/kXe+YT41FibVYtnpJOtPHQKMXIOQOReWlzhfC47eIqfzMbIb3SWcJQuPf
-	tun/aB5xyil02YNUmxE46IMf+Fd/6SxUd7JniUPzH7A6f/mHQy8qL8il3n75SmCuekC9MMXHiBsQw
-	NjP/dsAlmvKoDwwlsV5g==;
+	List-Owner; bh=pJTix417PE/T+om+QJ775/IaL2qSMDO1PKkjnR4r518=; b=Jf4+FyAdCBqg2g
+	W5pjdY/z7ZE2qNjpp8/NnHpqVFldL3ZvMdHvFK6wS+IhpuQ0rndPVk63l0W0IdM1yxpT4vazn/OlT
+	lFUFBJzhZz7gcoy9UBixqrb18eCUrFBtI4GbLvHiRsZLIs9625aVQjFnBcStLYHjyIkQZBIPo04gZ
+	kY/8mUgCoeHG6VeQcr6DBeNqC5V0K1IaksJCT2jeDoUtd6EJNhmhlRYbjS6HqXhDp1dzXtLEx+0Hp
+	YHM/e9TQFhl0fnY5cyjOuiHxvy28EItk5AezTxJwMNMuJB8YjgUGXC7L3DjfSPn5YPNTJROOd5kpZ
+	D0q12Jusax6nHxgBDVSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oesk7-0004Cy-GY; Sun, 02 Oct 2022 06:46:27 +0000
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+	id 1oeskI-0004Iq-0T; Sun, 02 Oct 2022 06:46:38 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oesjX-0003rg-6x
+	id 1oesjX-0003sL-Qf
 	for linux-rockchip@lists.infradead.org; Sun, 02 Oct 2022 06:45:53 +0000
-Received: by mail-ed1-x529.google.com with SMTP id a13so10832616edj.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 01 Oct 2022 23:45:50 -0700 (PDT)
+Received: by mail-ej1-x629.google.com with SMTP id dv25so16503916ejb.12
+        for <linux-rockchip@lists.infradead.org>; Sat, 01 Oct 2022 23:45:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=amarulasolutions.com; s=google;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date;
-        bh=riE4lHaMXHSULeXJrv4hqGT03pNNa5PlNR8v7ryuD60=;
-        b=rsLBLijZiEznSvV9r7o+s1+gbRqyxGcXwwvhnVSRKOyAThP1CQ4D8FRgo4h14v4OuB
-         N4/KPuwLrtJJi5use8++OnPnxML8KbamdgvX+5FsTzDlbW51iEHl5Y3aAYzPpvNV595b
-         ClEQiXJ0dzWPUKO1e6FchUS4Cn6jE7iHF9xGA=
+        bh=gtEJxbrwC/UQVf48sJy2NN3O3k5LpfsDQAoSkyusABE=;
+        b=omdSgHFqEeX0hz1EWZZH2RbIMxysW7X/8zVjSEW3VJR+LCkBpPE1odjPVGPcB0lmXL
+         5PJDNgHjB0mFXedPPBGByQdvcpVTTIQqvLpluO80BG3siD9Ih2PB8ZIkB6EHqPAuoGBZ
+         BMd1fJ7hXzIUUDLgy6PF9mV9Ss/a4NsufzCvo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date;
-        bh=riE4lHaMXHSULeXJrv4hqGT03pNNa5PlNR8v7ryuD60=;
-        b=2Ecqm6mLM6A6+WV1Of7OFo/coJrOgF7FacPFeUzNsU/glxAhqwXDZThcsHwfNQHh4+
-         IBg+feVCYKcwPvKJoTtT5RJtrjlXQrBZ+ON6dYgfh5sGmAvqUdXG2Q/TTXWVyWIYpTf+
-         H2CYnh8w/s45BjOklw00ibJOR80KlsIem88szi9gGo40H+TM89L5U0qWSZpcFM+MwYlj
-         yCvOQkk8HXwFHTOPMS1BgiXy7z8rhTvw79qQPqQyaJ1d8VI3rV0QAWkL8AH28KfANwBQ
-         bULLfMCNRW1gvFOTAy+prEx3X7ptLCkPleb6uqL+0pRm8sAUDneDGVr5yYbKGvXIB2AG
-         juaw==
-X-Gm-Message-State: ACrzQf2AB4I6o7JT3F/yjQ+RaJxq2dmMLncOfLwmgH6Sng5BvifGOW+9
-	+oU9DjNQLczYxoMjExCKgHPl5Pf/nTzl4g==
-X-Google-Smtp-Source: AMsMyM5CVyyAdanMhvOm71Pk3KKLbggnhE3t2Sd+hxkylpEi/NEYUXHm12kfOKY78cBjLZ9qp3zzKg==
-X-Received: by 2002:a05:6402:448c:b0:457:52eb:b57e with SMTP id er12-20020a056402448c00b0045752ebb57emr14243393edb.178.1664693148777;
-        Sat, 01 Oct 2022 23:45:48 -0700 (PDT)
+        bh=gtEJxbrwC/UQVf48sJy2NN3O3k5LpfsDQAoSkyusABE=;
+        b=6ASdWBKXf9m0ptwgH3vs4a55BMhDY100eGEw0FQjiTXWpJa3CD6zdehLBKrzcOb4/8
+         jp4VCse2oJKTeUAl/GqPYv6WpRd9ibIPyESieEUkFipnm6rfUGXiDI2B8nv7Z23NGw6Z
+         NVSPMpGpXpqJBTwwOA/40TnNF1trImkzRzqp3861tWYYQhjBTBY+5bm/aMRYg84mWVd1
+         5G+FGWX2fdjBs7n9bQgHJ4QwuIJK6aE6q2ZZ0lnnciykyRGePiG9qWk93VDJnO8dJgMO
+         zy7eyzRfd0UAcs7e/5uLsCmw/8ie1eaCLWAXq4L3LYnW/tuqT6P5MpLSLRVBznRPtW0t
+         T/Fw==
+X-Gm-Message-State: ACrzQf1beLwA6cAiv+v7khQCeX/t0TNNEOti6mYjkW5P88WYxsmMcK1I
+	s7KjD1ZGUa60uidHH9KIqAPpKQ==
+X-Google-Smtp-Source: AMsMyM4nEOYig64C0tZ3Z7ad76GYPRbuqYMOi4q6qDnpwgFsU96JrriTtL5fgxNnqfSki698dg6/Lw==
+X-Received: by 2002:a17:907:3205:b0:770:8554:c4ee with SMTP id xg5-20020a170907320500b007708554c4eemr11785485ejb.39.1664693150522;
+        Sat, 01 Oct 2022 23:45:50 -0700 (PDT)
 Received: from panicking.. ([109.52.206.103])
-        by smtp.gmail.com with ESMTPSA id 26-20020a170906329a00b0077f5e96129fsm3569894ejw.158.2022.10.01.23.45.47
+        by smtp.gmail.com with ESMTPSA id 26-20020a170906329a00b0077f5e96129fsm3569894ejw.158.2022.10.01.23.45.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 01 Oct 2022 23:45:48 -0700 (PDT)
+        Sat, 01 Oct 2022 23:45:50 -0700 (PDT)
 From: Michael Trimarchi <michael@amarulasolutions.com>
 To: Sandy Huang <hjc@rock-chips.com>,
 	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
@@ -69,16 +69,16 @@ Cc: Kishon Vijay Abraham I <kishon@ti.com>,
 	linux-kernel@vger.kernel.org,
 	linux-phy@lists.infradead.org,
 	linux-amarula@amarulasolutions.com
-Subject: [RFC PATCH 3/4] phy: rockchip: Implement TTY phy mode
-Date: Sun,  2 Oct 2022 08:45:39 +0200
-Message-Id: <20221002064540.2500257-4-michael@amarulasolutions.com>
+Subject: [RFC PATCH 4/4] drm/rockchip: rgb: Add dphy connection to rgb output
+Date: Sun,  2 Oct 2022 08:45:40 +0200
+Message-Id: <20221002064540.2500257-5-michael@amarulasolutions.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20221002064540.2500257-1-michael@amarulasolutions.com>
 References: <20221002064540.2500257-1-michael@amarulasolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221001_234551_308216_2E5368BD 
-X-CRM114-Status: GOOD (  15.25  )
+X-CRM114-CacheID: sfid-20221001_234551_887188_75EA44D4 
+X-CRM114-Status: GOOD (  13.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,130 +95,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The rockchip phy can be programmed in 3 modes:
-- dsi
-- lvds
-- ttl
+Dispite the commit 1f0f015151727, the rgb output has an option
+to allow to sent the output pin using the dsi/lvds/ttl logic.
+The only way to do and stay on the same design is let the
+rockchip_rgb block to grab the handle if it is present and
+enable it. The present of this handle depends on dts configuration
 
-For instance in px30 there are two sets of rgb interface pins m0 and m1.
-The logic can go outside from the VOP using m0 set or go outside using
-the m1 set and the ttl logic enable. There are combination where a set
-of pin can be taken from m1 and m0 where all the two path are enabled.
+I have a full working example with an hardware with mixed lines
+on direct logic and using the phy, with the follow dts example:
 
-dsi and ttl enable share one register in their register area. Simple
-implementation is overlap the area where we want access the register
+panel: panel {
+	compatible = "panel-dpi";
+	...
+	panel-timing {
+		clock-frequency = <30000000>;
+		...
+	};
+
+	port {
+		panel_rgb_in: endpoint {
+			remote-endpoint = <&vopb_out_rgb>;
+		};
+	};
+};
+
+&vopb_out {
+        vopb_out_rgb: endpoint@2 {
+                reg = <2>;
+                remote-endpoint = <&panel_rgb_in>;
+        };
+};
+
+&vopb {
+        status = "okay";
+        pinctrl-names = "default", "sleep";
+        pinctrl-0 = <&lcdc_rgb_pins>;
+        pinctrl-1 = <&lcdc_sleep_pins>;
+
+        phys = <&dsi_dphy>;
+        phy-names = "dphy";
+};
 
 Signed-off-by: Michael Trimarchi <michael@amarulasolutions.com>
 ---
- .../phy/rockchip/phy-rockchip-inno-dsidphy.c  | 53 +++++++++++++++++++
- 1 file changed, 53 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_rgb.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
-index 644cf73cfd53..0af50d2e0402 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
-@@ -217,6 +217,17 @@ static void phy_update_bits(struct inno_dsidphy *inno,
- 	writel(tmp, inno->phy_base + reg);
- }
+diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+index 75eb7cca3d82..c725774a0f40 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+@@ -8,6 +8,7 @@
+ #include <linux/component.h>
+ #include <linux/media-bus-format.h>
+ #include <linux/of_graph.h>
++#include <linux/phy/phy.h>
  
-+static void host_update_bits(struct inno_dsidphy *inno,
-+			     u32 reg, u32 mask, u32 val)
-+{
-+	unsigned int tmp, orig;
-+
-+	orig = readl(inno->host_base + reg);
-+	tmp = orig & ~mask;
-+	tmp |= val & mask;
-+	writel(tmp, inno->host_base + reg);
-+}
-+
- static int inno_is_valid_phy_mode(struct inno_dsidphy *inno)
- {
- 	switch (inno->mode) {
-@@ -224,6 +235,10 @@ static int inno_is_valid_phy_mode(struct inno_dsidphy *inno)
- 		break;
- 	case PHY_MODE_LVDS:
- 		break;
-+	case PHY_MODE_TTL:
-+		if (IS_ERR(inno->host_base))
-+			return -EINVAL;
-+		break;
- 	default:
- 		return -EINVAL;
+ #include <drm/display/drm_dp_helper.h>
+ #include <drm/drm_atomic_helper.h>
+@@ -30,6 +31,7 @@ struct rockchip_rgb {
+ 	struct drm_bridge *bridge;
+ 	struct drm_encoder encoder;
+ 	struct drm_connector connector;
++	struct phy *dphy;
+ 	int output_mode;
+ };
+ 
+@@ -168,6 +170,22 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
+ 		goto err_free_connector;
  	}
-@@ -506,6 +521,32 @@ static void inno_dsidphy_lvds_mode_enable(struct inno_dsidphy *inno)
- 			LVDS_DATA_LANE2_EN | LVDS_DATA_LANE3_EN);
- }
  
-+static void inno_dsidphy_ttl_mode_enable(struct inno_dsidphy *inno)
-+{
-+	/* Select TTL mode */
-+	phy_update_bits(inno, REGISTER_PART_LVDS, 0x03,
-+			MODE_ENABLE_MASK, TTL_MODE_ENABLE);
-+	/* Reset digital logic */
-+	phy_update_bits(inno, REGISTER_PART_LVDS, 0x00,
-+			LVDS_DIGITAL_INTERNAL_RESET_MASK,
-+			LVDS_DIGITAL_INTERNAL_RESET_ENABLE);
-+	udelay(1);
-+	phy_update_bits(inno, REGISTER_PART_LVDS, 0x00,
-+			LVDS_DIGITAL_INTERNAL_RESET_MASK,
-+			LVDS_DIGITAL_INTERNAL_RESET_DISABLE);
-+	/* Enable digital logic */
-+	phy_update_bits(inno, REGISTER_PART_LVDS, 0x01,
-+			LVDS_DIGITAL_INTERNAL_ENABLE_MASK,
-+			LVDS_DIGITAL_INTERNAL_ENABLE);
-+	/* Enable analog driver */
-+	phy_update_bits(inno, REGISTER_PART_LVDS, 0x0b,
-+			LVDS_LANE_EN_MASK, LVDS_CLK_LANE_EN |
-+			LVDS_DATA_LANE0_EN | LVDS_DATA_LANE1_EN |
-+			LVDS_DATA_LANE2_EN | LVDS_DATA_LANE3_EN);
-+	/* Enable for clk lane in TTL mode */
-+	host_update_bits(inno, DSI_PHY_RSTZ, PHY_ENABLECLK, PHY_ENABLECLK);
-+}
++	/* PHY */
++	rgb->dphy = devm_phy_get(dev, "dphy");
++	if (!IS_ERR(rgb->dphy)) {
++		ret = phy_init(rgb->dphy);
++		if (ret)
++			return ERR_PTR(ret);
 +
- static int inno_dsidphy_power_on(struct phy *phy)
- {
- 	struct inno_dsidphy *inno = phy_get_drvdata(phy);
-@@ -533,6 +574,9 @@ static int inno_dsidphy_power_on(struct phy *phy)
- 	case PHY_MODE_LVDS:
- 		inno_dsidphy_lvds_mode_enable(inno);
- 		break;
-+	case PHY_MODE_TTL:
-+		inno_dsidphy_ttl_mode_enable(inno);
-+		break;
- 	default:
- 		return -EINVAL;
- 	}
-@@ -561,6 +605,10 @@ static int inno_dsidphy_power_off(struct phy *phy)
- 			LVDS_PLL_POWER_MASK | LVDS_BANDGAP_POWER_MASK,
- 			LVDS_PLL_POWER_OFF | LVDS_BANDGAP_POWER_DOWN);
++		ret = phy_set_mode(rgb->dphy, PHY_MODE_TTL);
++		if (ret)
++			return ERR_PTR(ret);
++
++		ret = phy_power_on(rgb->dphy);
++		if (ret)
++			return ERR_PTR(ret);
++	}
++
+ 	return rgb;
  
-+	/* Disable for clk lane in TTL mode */
-+	if (!IS_ERR(inno->host_base))
-+		host_update_bits(inno, DSI_PHY_RSTZ, PHY_ENABLECLK, 0);
-+
- 	pm_runtime_put(inno->dev);
- 	clk_disable_unprepare(inno->ref_clk);
- 	clk_disable_unprepare(inno->pclk_phy);
-@@ -576,6 +624,7 @@ static int inno_dsidphy_set_mode(struct phy *phy, enum phy_mode mode,
- 	switch (mode) {
- 	case PHY_MODE_MIPI_DPHY:
- 	case PHY_MODE_LVDS:
-+	case PHY_MODE_TTL:
- 		inno->mode = mode;
- 		break;
- 	default:
-@@ -630,6 +679,10 @@ static int inno_dsidphy_probe(struct platform_device *pdev)
- 	if (IS_ERR(inno->phy_base))
- 		return PTR_ERR(inno->phy_base);
- 
-+	inno->host_base = devm_platform_ioremap_resource(pdev, 1);
-+	if (IS_ERR(inno->host_base))
-+		dev_warn(dev, "TTL mode is not supported\n");
-+
- 	inno->ref_clk = devm_clk_get(dev, "ref");
- 	if (IS_ERR(inno->ref_clk)) {
- 		ret = PTR_ERR(inno->ref_clk);
+ err_free_connector:
 -- 
 2.34.1
 
