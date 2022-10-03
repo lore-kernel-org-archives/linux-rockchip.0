@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACDFFC433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Oct 2022 16:40:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C0E2C433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon,  3 Oct 2022 16:41:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vM0p17KzgUPCrUhs3G3hFneLHWOZaqqH3GSoYjX5nqw=; b=Tk3Ykviqi+CFbR
-	NoTOVRIKad5qzf7c2Um0L0CJP8CRGl4PrrwWRlQcvSjio8aYk2IbCKJjdPEUmBHKeg5hG7NSUDGDf
-	lIEgv44owET8WhpOZJBUbYVNcvrFSuXypVWkr/xTWh3KN2vGLmzXhThTy2jKZwxp4tBJmDI3RHNbI
-	q/cf9IBDFTfDAlL8wW3oRtfGCRlNn6CqHU2nMsS2akeZZcmzfWWAKqU3fN3DmUZYYAR6ban49pIn7
-	V6lpev2+ETNWJVGRSzA1AL7YJq1CIjuh1CvVnKC9qJENNF3ArClAom5V2odj//33A1/cnjyI5zXOt
-	dTuXpJzLPLJcOCoYvKVg==;
+	List-Owner; bh=kk66V6cp+xGVHoAJLdmMlBUWXyBJSBYi1iHFthdaU3s=; b=CFF7dIVo+sz7kj
+	iO0guLmh8lYF0DvOIH+Ixwl4rJi0KAoN7CRGtHgC7wzTiYO89aVGJNvv6FXpPOXoCAJELN5OhhESs
+	Bnp5lRss1eY8aBaTp2QLMTh76Z/4LGMZV3xEZ/27YmEOxQjQOUQ60B3BLVDywfuAMYg/Nx4EYHq1J
+	IAMRjB/oFV3lL7u2S0P5N1I2IQSi7jIW2SslupFx9agWh8M8OeWr5l3TBobYzwPke/UdqDnzPpvz9
+	1ZuObL2wrYtggw61nloXockGvGWUA8x0piZ9kCfSwiRgJHgu32sO0da3s5R/D1psLG5V7bP+nwk/e
+	r/p7xQkyYNbSpZZZk2RQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofOUE-006qWV-CV; Mon, 03 Oct 2022 16:40:10 +0000
-Received: from mail-oa1-f46.google.com ([209.85.160.46])
+	id 1ofOUp-006qw8-BG; Mon, 03 Oct 2022 16:40:47 +0000
+Received: from mail-oi1-f173.google.com ([209.85.167.173])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofOU2-006qNf-VO; Mon, 03 Oct 2022 16:40:00 +0000
-Received: by mail-oa1-f46.google.com with SMTP id 586e51a60fabf-13207a86076so9344752fac.3;
-        Mon, 03 Oct 2022 09:39:57 -0700 (PDT)
+	id 1ofOUX-006qiX-HS; Mon, 03 Oct 2022 16:40:30 +0000
+Received: by mail-oi1-f173.google.com with SMTP id n83so11851302oif.11;
+        Mon, 03 Oct 2022 09:40:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date;
-        bh=7+4YmPdd4Yd9qyYlmkjl9DXqLdEG2yOjN48nnp9UvcM=;
-        b=AM4X/q++zJFFNuzA2w9cmcRtyebmWudXV1eaIqIcP/8dONkeQXxFS72w1r9jRVvn1r
-         oqUKwh9VC1WEwW9GL5BXC9E8Y0s1TYYR4C99BkgZLBuFZOZ1iSA0n2L1U3iniZAbrXnX
-         RIXR4J0imJ3HTUxYH9jAKrvr209IFam6ypZScH9LaOf6Dzy7ZXBPcJ+WATq7uGnZEY9m
-         tyDoyH9P1yLKVO2vUvYsCM1qH8GJ7FGugR0IKeB0AY1qTdB9MlkyTplqNUEMhNoJT41G
-         dOOQZde8eEDo+sfMGiqXXIfkHyG4pUNEXzXncSia17R6ANptnMZg4V32ZfC0zRBTDf4x
-         9N+A==
-X-Gm-Message-State: ACrzQf23VVL6iJ4gFlH0wsM6IFMIzxjWKtv4/8MufPelgmgjOZHDawaS
-	B2l1JAnuQVk4qk0vykNrddtbiEo0uw==
-X-Google-Smtp-Source: AMsMyM73Ezu7mapOpxY5SWfvUkYjbgEhho+/TRFR/5PGUHxN2fF+88Mqk5GP3abf4M7saf+ctUoXPQ==
-X-Received: by 2002:a05:6870:d626:b0:132:9149:dc8a with SMTP id a38-20020a056870d62600b001329149dc8amr1205595oaq.141.1664815196861;
-        Mon, 03 Oct 2022 09:39:56 -0700 (PDT)
+        bh=dUvuIzgJodfgVf97IPfqmVH8ASWJfC3UD+ue7z319gg=;
+        b=n7ISWCux7shSsTqskXTDl/tsswT2z7ikCRg+TkChmiMdHREzY7qUzylRuE8n3+US2Y
+         agnw/UVHfWfRTjOvJLOtKHqVOPfZknMo0aE02SbZK7OwL8/EWMM/+RDmwlK9jcyUk2GX
+         zo4W6IXbz38eViZi74r2VtQ/bauEYKCr/gP27b+WMj4PZiOZzUGA5DdnaAsqh+aphI3/
+         oqP7pTlcWZh1bsDfxvcw+IQXAuIIIi1AhdfQaVRTKFm1fyevkio4EA+NEV+De3VjtKo2
+         IdD1UTqwMClsc7G9riMBUaMkYmb4HGMXqFggA1va7TeEG4YgpublkTTTGttBP1JqKY3q
+         VbcQ==
+X-Gm-Message-State: ACrzQf3YabgMKxJNQZgChxrxuVjphgG8FTF9B68V0WST3hyTpYssKkO3
+	DboR3hEu35Jt6RtGGTjz0Q==
+X-Google-Smtp-Source: AMsMyM46S7T8zkoU0K1q/9agKWVKk+bJQ1xjfYj4RnsLzzVteuo+aC5kPlgYOYcwAVCXpuJVkBFjyw==
+X-Received: by 2002:a05:6808:1597:b0:350:4f39:d7d2 with SMTP id t23-20020a056808159700b003504f39d7d2mr4147549oiw.125.1664815227733;
+        Mon, 03 Oct 2022 09:40:27 -0700 (PDT)
 Received: from macbook.herring.priv (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id c16-20020a056870c09000b0012c21a64a76sm3031062oad.24.2022.10.03.09.39.55
+        by smtp.gmail.com with ESMTPSA id s17-20020a0568301e1100b00659ba9f2872sm2485983otr.77.2022.10.03.09.40.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 03 Oct 2022 09:39:56 -0700 (PDT)
-Received: (nullmailer pid 2423947 invoked by uid 1000);
-	Mon, 03 Oct 2022 16:39:55 -0000
-Date: Mon, 3 Oct 2022 11:39:55 -0500
+        Mon, 03 Oct 2022 09:40:27 -0700 (PDT)
+Received: (nullmailer pid 2424625 invoked by uid 1000);
+	Mon, 03 Oct 2022 16:40:26 -0000
+Date: Mon, 3 Oct 2022 11:40:26 -0500
 From: Rob Herring <robh@kernel.org>
 To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux-clk@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, devicetree@vger.kernel.org, kernel@collabora.com, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Elaine Zhang <zhangqing@rock-chips.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk+dt@kernel.org>
-Subject: Re: [PATCHv2 2/9] dt-bindings: reset: add rk3588 reset definitions
-Message-ID: <166481519478.2423891.644032213788270415.robh@kernel.org>
+Cc: Elaine Zhang <zhangqing@rock-chips.com>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Michael Turquette <mturquette@baylibre.com>, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-clk@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCHv2 3/9] dt-bindings: clock: add rk3588 cru bindings
+Message-ID: <166481522561.2424566.15018819392287662556.robh@kernel.org>
 References: <20220930153857.299396-1-sebastian.reichel@collabora.com>
- <20220930153857.299396-3-sebastian.reichel@collabora.com>
+ <20220930153857.299396-4-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220930153857.299396-3-sebastian.reichel@collabora.com>
+In-Reply-To: <20220930153857.299396-4-sebastian.reichel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221003_093959_027284_AE936157 
-X-CRM114-Status: GOOD (  11.44  )
+X-CRM114-CacheID: sfid-20221003_094029_616882_6EF06B23 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,25 +78,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 30 Sep 2022 17:38:50 +0200, Sebastian Reichel wrote:
-> Add reset ID defines for rk3588.
+On Fri, 30 Sep 2022 17:38:51 +0200, Sebastian Reichel wrote:
+> From: Elaine Zhang <zhangqing@rock-chips.com>
 > 
-> Compared to the downstream bindings and previous rockchip
-> generations this uses continous gapless reset IDs starting
-> at 0 instead of register offsets as IDs. Thus all numbers
-> are different between upstream and downstream, but I kept
-> the names exactly the same.
+> Document the device tree bindings of the rockchip rk3588 SoC
+> clock and reset unit.
 > 
-> Co-Developed-by: Elaine Zhang <zhangqing@rock-chips.com>
 > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 > Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 > ---
->  .../dt-bindings/reset/rockchip,rk3588-cru.h   | 754 ++++++++++++++++++
->  1 file changed, 754 insertions(+)
->  create mode 100644 include/dt-bindings/reset/rockchip,rk3588-cru.h
+>  .../bindings/clock/rockchip,rk3588-cru.yaml   | 58 +++++++++++++++++++
+>  1 file changed, 58 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rk3588-cru.yaml
 > 
 
-Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
