@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B44EEC4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Oct 2022 07:17:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57667C433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Oct 2022 07:22:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0Ylvk4AAPc28BqH53USDLZbiKJfFv2Amj4FjNyh4N8A=; b=MTT6+QuhIhIdAd
-	clYaEIWViIRKp6ouCzwRamMhg3DkzJB8Rcl+SqslnQlPzmxXTJh2C91AtP6VwqCwp2Sc8IokPrknF
-	uLkQYsE6GT3Ysucn3rf0TIFu+JMOCGb/iZUB4ikGyJ2h9SGODrRRLA0ytBGVmns8Z5mdGSYhMt/qc
-	/JNca6GspcHalQ4xVQ3tZzVNr6+sQNg7dwBNNz7LOhrYDiFl2a2V3vyvcs8OBKX8gp5Yc0Xwn4DkC
-	auBs8/ACldt5byjBfWhk5StUUZ1bsCeUPMbblypMrMMJPO56kthai5tJQCFtcSditks8Wi9Yh5//v
-	3ebDj8xdLhnP+0hoks9Q==;
+	List-Owner; bh=LXEc8cDc+u/Ds1bmLky567oZspTZC0GF2uTxsxZmd/8=; b=osnkFer2gVL9lx
+	CZosJ8+RXG0Utxj+Kbrzd0iy8i1CllkDT0LZTj/sAJAc/WHBWk9kiXQ7vQcp/YcHqyipXg2nd9/4E
+	r+7ZYlAUOJub+Wtkvkh9wfagHscIcYAUS0Po4DGaGxCxf3aJUHRlucm8PmoJ0Vs25OKmqQ9UYnEal
+	A5e0D/zEBKjtQ0P7AJqgdkTfddxHfc5whrGj8Ak6EGf7nuqyPcwM9JG9P7FzsrZnCzSJOp34b3afW
+	O4Kl+fkqGR0KbKkbEm8OrqWCDMHHp7ab3MtOzE0YloeYAfRXFHL1k3XMzNvnOH36zSKPmIRGHi1h+
+	4NwBRN7wEzOu7pHDzDlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofcAq-008itV-Of; Tue, 04 Oct 2022 07:17:04 +0000
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	id 1ofcFf-008jSf-DO; Tue, 04 Oct 2022 07:22:03 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofcAo-008isd-E1
-	for linux-rockchip@lists.infradead.org; Tue, 04 Oct 2022 07:17:03 +0000
-Received: by mail-ed1-x532.google.com with SMTP id l22so16158699edj.5
-        for <linux-rockchip@lists.infradead.org>; Tue, 04 Oct 2022 00:17:00 -0700 (PDT)
+	id 1ofcFd-008jRu-05
+	for linux-rockchip@lists.infradead.org; Tue, 04 Oct 2022 07:22:02 +0000
+Received: by mail-ed1-x531.google.com with SMTP id m3so17610312eda.12
+        for <linux-rockchip@lists.infradead.org>; Tue, 04 Oct 2022 00:22:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date;
-        bh=FgVeTPqRw4B3XAH2kYr+aPe2b3d0JKi9DV9fMipPoGo=;
-        b=ey5bCSZ3PQTUCb+QiKsru+2J4XcK5RXGNjM47DG7oFIJNfIyH+Y8t1kwhXTWF/MhAm
-         CTIKcCwkCZmWoJimjMRO+exYfN22e18PScPPI0eTj7mHIO7m2Cl09sXvv1pceptE1Rfa
-         9I4pxv+cfVK/4LSBOmJ0bJbrG+BE7iSLFe2bX8V4ZMUJSajsFJAdDtd6C/L2PhN8+lZi
-         9CgHnje7bw0znV/nNxmxhItNAWce3myzuue1lTCtA6nfc6L+GKR9TYtmSeDPLZeS1YnH
-         JB2QsCG2+EMmycw1/leJMg/k2BBPJnW6xfX6amPFFrIHdhaohfHz/WrVKjzmuaoBD0Gz
-         CcWA==
+        bh=YnbrbPRNheE9mWTJE4BedbmANy/DirNPf0JAWTobUag=;
+        b=Ybdv/qRicXmIOsMNjXI17pstXqXaR+Dw56FsqSyGghn3qdM10JCt/1kETQokGMA5s9
+         RuSF1rWx0+G20ZnGzdTu/J+Hbs0U0u3xsP4kLTP1IfUZfSbM0fgcwMuybGdF0mkpx9YR
+         JpUFm2O6GQNeTi/T0sKDRarIsPnZ9tfr/mwKd6gVJke7pjvOBy0lbeEMZ+Z1vdEbnOgk
+         RDrcBeoQdkjc1tl4EgBeKQc7v0lvundIsRthU/ecEkVuVnYE98YPSJgd44H/5Q2JVn0a
+         CFR4oO4srums5XeARgyr/Iqi5b3Ex5etZbDOKXN+Z4IJX+/qpD41+QE6g+lL+3392VvN
+         kTFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=FgVeTPqRw4B3XAH2kYr+aPe2b3d0JKi9DV9fMipPoGo=;
-        b=djk+5Gu6E1VqEU65gD1ZoUEap1YIh8zlbUdeOuFzrOUnEJKQ7OSv2Cn2TR0dBMFVjz
-         PKTID6eZH595eo9/0gCW6rb44/stFXEtt0ppre/kyxZHyJrQBslS+/Otj8NryfZwUF5r
-         AW4haHnySoj8d+RMWhpP+TD6JkGgnR/avxfashLgKs8m11NqWRCuzx7PC92TnPaP6B2O
-         Rs/ptpbAwtvJ5H8eSX4PN8xVqCqaTH6dgaODx+9Q7XCyEucb+V9oMIcJwAHQnwZt4scB
-         bR5N+A5OyPM6d49u04LP24GE+HbDVu+G/2AhVSroegSS5PNq1w5dBOuEbs8TX3rV9sk4
-         96tg==
-X-Gm-Message-State: ACrzQf1KKc8NW+FTohbVt1HsY+Hn8cLZxUWXsYpGCemK5Wx27JVVSrCU
-	tdmkZjq4Ht4i9DQIYqges3zFmnZ46MDHhRYVDdlnrA==
-X-Google-Smtp-Source: AMsMyM7hSdj1S8kUyJJWdUvxk28dwWUaTuGGEOV58h89seD4YZSGchbmCIbbYfpHrcsoW+BONxwNGvucF9EZLaEysWI=
-X-Received: by 2002:aa7:c050:0:b0:453:4427:a947 with SMTP id
- k16-20020aa7c050000000b004534427a947mr22205982edo.172.1664867819366; Tue, 04
- Oct 2022 00:16:59 -0700 (PDT)
+        bh=YnbrbPRNheE9mWTJE4BedbmANy/DirNPf0JAWTobUag=;
+        b=ZbItOCCvDFZosEPHchd7wRmY8DnK4DeIswE8VHywTKijmhiqdLyOxOSAWpXHO1bOBC
+         md2VKc6T2Nsv7EH/5tPJDTKtFA26NrHLFyg7ncjQrZj8KvAueDIh1u7Daf2MzV/BwFgB
+         sWALJte6FRDZXP5ChHCPyeeg7xrdnHJaAj7sbtqj63fzX1AFASHinF2UpM5mpzzEgixK
+         cWod8IWLtMbmGsNfbG0BCtHm/c2ayuQwnXzOwcjsEyvwulg4jrMdyDVhNuX/4JHp2xLm
+         XX9sTlR5eHrEc83BKLefHoPhgfUB1W2syzB49eA0GeMD/qZmy+oD1/UYXbPf6wnV1b6i
+         7hEw==
+X-Gm-Message-State: ACrzQf0seCbgDl3+XujV3DvM5zeTOqQsR9YKFHqsrapMosNKxPXF78fE
+	yBxFC47kWphvir0Eh3go9iVZIVB4RcrPtIv+4ionXg==
+X-Google-Smtp-Source: AMsMyM5XQ5P+rNaBfvVVp11VNsr3Q3EQBWaj/a2JoRWmaNBmuDp6q5wWXSBdDuB7cAmux3QQv6S7B2+2BvxOZ2odGys=
+X-Received: by 2002:a05:6402:190f:b0:452:d6ba:a150 with SMTP id
+ e15-20020a056402190f00b00452d6baa150mr22017066edz.126.1664868119506; Tue, 04
+ Oct 2022 00:21:59 -0700 (PDT)
 MIME-Version: 1.0
-References: <20220920103108.23074-1-jay.xu@rock-chips.com> <20220920103108.23074-16-jay.xu@rock-chips.com>
- <CACRpkdb0wysqkSST7Qv+yy8g53oTpYWvbSqxLk6EVMEABQW4iA@mail.gmail.com>
-In-Reply-To: <CACRpkdb0wysqkSST7Qv+yy8g53oTpYWvbSqxLk6EVMEABQW4iA@mail.gmail.com>
+References: <20220930132033.4003377-1-foss+kernel@0leil.net>
+In-Reply-To: <20220930132033.4003377-1-foss+kernel@0leil.net>
 From: Linus Walleij <linus.walleij@linaro.org>
-Date: Tue, 4 Oct 2022 09:16:48 +0200
-Message-ID: <CACRpkdbgi1XZq=Nmeum=2Fvv68pxj=66nseAiv5HpVOsnMfx_A@mail.gmail.com>
-Subject: Re: [PATCH 15/20] gpio/rockchip: disable and put clocks when gpiolib
- register failed
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: heiko@sntech.de, brgl@bgdev.pl, andriy.shevchenko@linux.intel.com, 
-	robert.moore@intel.com, robh@kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, lenb@kernel.org, rafael@kernel.org
+Date: Tue, 4 Oct 2022 09:21:48 +0200
+Message-ID: <CACRpkdYOB4uy4wc+kchHioaQ+JSkoi3m6fimiLvLESRjwhaC1Q@mail.gmail.com>
+Subject: Re: [PATCH v2 0/2] fix gpio-sysfs/libgpiod for rockchip
+To: Quentin Schulz <foss+kernel@0leil.net>
+Cc: brgl@bgdev.pl, heiko@sntech.de, jay.xu@rock-chips.com, 
+	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221004_001702_485021_33A13163 
-X-CRM114-Status: UNSURE (   9.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221004_002201_079191_3C3CCCA7 
+X-CRM114-Status: GOOD (  20.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,26 +86,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 4, 2022 at 9:16 AM Linus Walleij <linus.walleij@linaro.org> wrote:
+On Fri, Sep 30, 2022 at 3:20 PM Quentin Schulz <foss+kernel@0leil.net> wrote:
 
-> On Tue, Sep 20, 2022 at 12:31 PM Jianqun Xu <jay.xu@rock-chips.com> wrote:
+> From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 >
-> > When gpiolib register failed, the clocks should be disabled and put.
-> >
-> > Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> (...)
-> > +err_put_clk:
-> > +       clk_put(bank->clk);
-> > +       clk_put(bank->db_clk);
-> > +       clk_disable_unprepare(bank->clk);
-> > +       clk_disable_unprepare(bank->db_clk);
+> Since the split of gpio and pinctrl in their own driver, gpio-sysfs and
+> libgpiod userspace GPIO handling has been broken because the pins aren't
+> put into their GPIO function anymore since pinctrl subsystem is
+> "bypassed" when requesting GPIOs from userspace.
 >
-> Always clk_disable_unprepare() before clk_put().
+> This fixes it by making the gpio driver actually request from the
+> pinctrl subsystem to put the pin in its GPIO function when the GPIO
+> direction is set in userspace.
 >
-> I think you can drop clk_put() if you switch to devres dev_clk_get()
-> instead.
+> I discovered the issue because we have a GPIO the user needs to control
+> from userspace to flash FW on an on-board STM32 that is actually on the
+> same pin as one used by the flash controller. Considering the storage
+> medium tried by the BOOTROM is emmc->nor->nand->sdmmc, booting from emmc
+> didn't show the issue because the default function for pins is GPIO and
+> the flash controller pins didn't need to be muxed by the BOOTROM.
+> However, if there's nothing on emmc, the BOOTROM does the pinmux for SPI
+> controller and puts the pins in their flash mode and therefore the
+> handling of that pin as a GPIO from userspace was not possible, but only
+> when booting on something else than eMMC.
+>
+> This restores the behavior as seen in v5.14 and earlier.
+>
+> v2:
+>  - fix missing header; reported by kernel test robot <lkp@intel.com>
 
-devm_clk_get() I mean.
+Patches applied to the pinctrl tree (also the GPIO patch) as that is the
+dependence point. Will go into v6.1 merge window.
 
 Yours,
 Linus Walleij
