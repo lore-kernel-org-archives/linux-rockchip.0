@@ -4,76 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D59CC433F5
-	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Oct 2022 19:53:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA0F6C433F5
+	for <linux-rockchip@archiver.kernel.org>; Tue,  4 Oct 2022 20:58:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9W3zNqXuqB/WJ/76rv7LhmPJZBJRpOLXviZNwvjhB1E=; b=35XA27DjszEY8A
-	0lDOS3hVgjv601qRmp61HIKY63F8GMtqggpBAqR/1HtOBNKIw4mIrlIWL6JIwG+LUw7xL5E2YjYxu
-	+orVSSvpK/HZqwv8uUYBFei+QulLa8K4e+Pl5hS6E3fcOpuW2WkkQ907pd84zoaTZJVITLs97WGWB
-	QXidAbgGLmpqPU0JyCYiGkFH6z2uSG/2vDplCSo5Jvv/DP/o3UWgYcTZOaltDnAZrlQSA0dDqbreq
-	bQOHLeroSf/MnknvW/muGs+nu8PVIhVERmOWHEA/y3GULsDS05tjM2OMRnmQMIrGzKXyvBrEjbY3T
-	iM7q97GV/8cPvlRo/j1A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wBGzACXnnl+BSdciLwW7a6NHIOtD8dKIP2KxrCdN1PQ=; b=b/DFwsyxXu6V2XAKO0qJjAKAlm
+	j8rPIZCsGpXXHSx2VWE8JxgHKW0zimWzj6pUuHRZIqtUlhIf6GqgKW8J713MAmEyBEpcJJV8jEPc8
+	ZqPGy4/uhmMfTAQRsC8DX390LMmFXbjnPNLVrFS/TYOBNHFK38G3qlFzz+/RV2MtKNocwEEQb+GeH
+	5uk2UQL/Wdv8M5CVWOw+oyoLmgmm5vKE/BnKqORbgFeFIX3imWsqlOLdPycHzSuFdPNfSWGg3vVyn
+	3im7z9xNRTke1EJqRJjdpWZzgBeUrK68fq+Y3CML0puWwGoSyJyB07YcexLp57SXTLNiEalxGMI7Y
+	frH26f5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofnyM-00AqiW-RL; Tue, 04 Oct 2022 19:52:58 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1ofozS-00BAen-NB; Tue, 04 Oct 2022 20:58:10 +0000
+Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofnyJ-00AqgV-HX; Tue, 04 Oct 2022 19:52:56 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id iv17so9588050wmb.4;
-        Tue, 04 Oct 2022 12:52:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date;
-        bh=Lf/FF/9SYo3o08dhujm/+mRrD5yIfHmp24VtbgWfiQg=;
-        b=JTNqoucW88MzuWpMd8jGLVmbLlrQflfsQPSZY3xPlLZRf467EDEbKym7aqC/352q3N
-         7csvxiGvkksL22I9qDHVMqVx5zDETp34UOItMDJ8+UcNWhjZxgfODniCZqKzpKOtW6rZ
-         EIkG9BlK8EGb/L8RWTR/6z6ZDn1YEhiZQKxs503c0u7LN1zQBbTrmQw8Rv32EqBHXO/x
-         +WJRIPzYQCqSkfe/pnUb68IXvHX5jyV90ka2LgPwNDMc2wwS7ryxusogLQtYKCKiu2TB
-         0IfzgfutreVTCvv4y/GVVfQ5XjrJhmPt/AmYTq1W70K6b9Dr7xxiDJcFYyyAG15zdYTN
-         +Hww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date;
-        bh=Lf/FF/9SYo3o08dhujm/+mRrD5yIfHmp24VtbgWfiQg=;
-        b=7KwgOABvISI/0+W+iY1zSKTMueoaFGHY/PH+cSFrHfzx5ygyYRwdxvmtJLu+EEj+iT
-         3lSBeXEOzqzZfCy6iSYDK+Lw5i9S6U1U0JM6D9lJlhRp+2t2Z2cmD7UIZ3V8NeKexUEi
-         Rt/rPPix/bH0kQZQQJra0FVfi2ktix7GXScsP4+tg5xVb9gKIANDVbRYogRWLyIj8Vox
-         GqPoS12twIxTPGooOVBWk3LSTQ2fapJBGCaAcxBji/fiDEPRFTlMI4EcpI0ByDBOzO+6
-         0YpoM/nhJ2NfKQeBhPVwNPsEaTl4LXWPvbeU1VcJiSX7pdvgDElIKqLiaoikrYcKK95L
-         HyLQ==
-X-Gm-Message-State: ACrzQf15XpQaXMUvfKa8Gn8NJ2beA1EzwiiVgDumION917+YlFnENEhv
-	UCc0FUNx22mG9qDh/BJhndZJd4GLY7xWi6Vr57Q=
-X-Google-Smtp-Source: AMsMyM5KAxvPsCr915qNm4tjN1FikabH8pJ6QcbZUzjDv/SeQZ3uRiIkxPKdpS91YdpI3Ql6sayY9PXhDMclIOa3Lxk=
-X-Received: by 2002:a05:600c:2191:b0:3b4:868a:aad3 with SMTP id
- e17-20020a05600c219100b003b4868aaad3mr963035wme.112.1664913170920; Tue, 04
- Oct 2022 12:52:50 -0700 (PDT)
+	id 1ofozH-00BAYy-8F; Tue, 04 Oct 2022 20:58:00 +0000
+Received: from mercury (unknown [185.209.196.162])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id A791A6602293;
+	Tue,  4 Oct 2022 21:57:47 +0100 (BST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1664917067;
+	bh=rOIF7LaAC+WUVJaWsdB3dj8dPLLF/TT6iHAASQJV/bQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jyD0WRDRXBhLgr1sTa2WExTxq0q+VMMHRlGKhs96nczEb0fEuSC+ICo11R4PYpvSU
+	 nlf4ITYzDetrChG53AipERX73WynNauggGFWlIyVZw7VEORqZSchn6q2vw2S7qYV9I
+	 d95KgrlPRESBHfgg0EKEHMHAwuqj65bYmrtHAV/78ETAjIISLObB3opn01Y/IdyXh+
+	 CeNc/OmUyc74UbxCMepkIuUR4FkoLFfbK2K6wY5ikd/lAJAI0YpDRj5lZIWo7rXfQP
+	 9Kg9uQtoosj7YD7UE9TB2fFPJylUhWkVWq8Aqc2l1ESI33RhBCBFCwjBflYaXADWI8
+	 cXLEvjEednbbg==
+Received: by mercury (Postfix, from userid 1000)
+	id B95411063330; Tue,  4 Oct 2022 22:57:44 +0200 (CEST)
+Date: Tue, 4 Oct 2022 22:57:44 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Frank Wunderlich <linux@fw-web.de>
+Cc: Rob Herring <robh@kernel.org>, linux-rockchip@lists.infradead.org,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Kishon Vijay Abraham I <kishon@ti.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+	Johan Jonker <jbx6244@gmail.com>, Peter Geis <pgwipeout@gmail.com>,
+	Simon Xue <xxm@rock-chips.com>, Liang Chen <cl@rock-chips.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+Subject: Re: [PATCH v5 1/5] dt-bindings: phy: rockchip: add PCIe v3 phy
+Message-ID: <20221004205744.q5eybgbx6syszsqq@mercury.elektranox.org>
+References: <20220825193836.54262-1-linux@fw-web.de>
+ <20220825193836.54262-2-linux@fw-web.de>
+ <20221004150929.GA1506199-robh@kernel.org>
+ <EC42D2C8-ACA5-4B6A-BC95-534CBDFC36C8@fw-web.de>
 MIME-Version: 1.0
-References: <20221004144304.536023-1-megi@xff.cz>
-In-Reply-To: <20221004144304.536023-1-megi@xff.cz>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Tue, 4 Oct 2022 15:52:39 -0400
-Message-ID: <CAMdYzYou74UoPFeLx-5Od6rXe+8Fr9AjRv6fuiaqDMXhiufmYA@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: rk356x: Fix PCIe register map and ranges
-To: Ondrej Jirman <megi@xff.cz>
-Cc: linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, 
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Michael Riesch <michael.riesch@wolfvision.net>, 
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Frank Wunderlich <frank-w@public-files.de>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
-	Yifeng Zhao <yifeng.zhao@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>, 
-	"open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, 
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	open list <linux-kernel@vger.kernel.org>
+In-Reply-To: <EC42D2C8-ACA5-4B6A-BC95-534CBDFC36C8@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221004_125255_609724_4114DC24 
-X-CRM114-Status: GOOD (  26.41  )
+X-CRM114-CacheID: sfid-20221004_135759_470853_E3C29EBC 
+X-CRM114-Status: GOOD (  17.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,86 +82,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6440873228862947325=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 4, 2022 at 10:43 AM Ondrej Jirman <megi@xff.cz> wrote:
 
-Good Afternoon,
+--===============6440873228862947325==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="esf23iwxvt2hw4gh"
+Content-Disposition: inline
 
 
->
-> I have two Realtek PCIe wifi cards connected over the 4 port
-> PCIe bridge to Quartz64-A. The cards fail to work, when nvme
-> SSD is connected at the same time to the bridge. Without nvme
-> connected, cards work fine. The issue seems to be related
-> to mixed use of devices which make use of I/O ranges and memory
-> ranges.
->
-> This mapping is designed to be more straightforward, inspired by
-> dt-bindings docs for sample pcie3x2 node:
->
->       reg = <0x3 0xc0800000 0x0 0x390000>,
->             <0x0 0xfe280000 0x0 0x10000>,
->             <0x3 0x80000000 0x0 0x100000>;
->       ranges = <0x81000000 0x0 0x80800000 0x3 0x80800000 0x0 0x100000>,
->                <0x83000000 0x0 0x80900000 0x3 0x80900000 0x0 0x3f700000>;
->
-> I noticed that this is crafted so that there doesn't need to be
-> any translation other than dropping the high dword bits, and I
-> modified the ranges for pcie2x1 to follow the same principle.
->
-> This change to the regs/ranges makes the issue go away and both
-> nvme and wifi cards work when connected at the same time to the
-> bridge.
->
-> Signed-off-by: Ondrej Jirman <megi@xff.cz>
-> ---
->  arch/arm64/boot/dts/rockchip/rk356x.dtsi | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> index 319981c3e9f7..e88e8c4fe25b 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
-> @@ -855,7 +855,8 @@ pcie2x1: pcie@fe260000 {
->                 compatible = "rockchip,rk3568-pcie";
->                 reg = <0x3 0xc0000000 0x0 0x00400000>,
->                       <0x0 0xfe260000 0x0 0x00010000>,
-> -                     <0x3 0x3f000000 0x0 0x01000000>;
-> +                     <0x3 0x00000000 0x0 0x01000000>;
-> +
->                 reg-names = "dbi", "apb", "config";
->                 interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>,
->                              <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>,
-> @@ -884,8 +885,8 @@ pcie2x1: pcie@fe260000 {
->                 phys = <&combphy2 PHY_TYPE_PCIE>;
->                 phy-names = "pcie-phy";
->                 power-domains = <&power RK3568_PD_PIPE>;
-> -               ranges = <0x01000000 0x0 0x3ef00000 0x3 0x3ef00000 0x0 0x00100000
-> -                         0x02000000 0x0 0x00000000 0x3 0x00000000 0x0 0x3ef00000>;
-> +               ranges =  <0x01000000 0x0 0x01000000 0x3 0x01000000 0x0 0x00100000
-> +                          0x02000000 0x0 0x02000000 0x3 0x02000000 0x0 0x3e000000>;
+--esf23iwxvt2hw4gh
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Have you verified these ranges do not regress the NVMe drive when it
-is connected directly to the controller? The reason we went with the
-configuration space we did was because the original space from
-downstream caused errors on NVMe drives when reading large amounts
-(>1GB) of data at a time.
+Hi,
 
-Very Respectfully,
-Peter Geis
+On Tue, Oct 04, 2022 at 05:19:11PM +0200, Frank Wunderlich wrote:
+> Am 4. Oktober 2022 17:09:29 MESZ schrieb Rob Herring <robh@kernel.org>:
+> >On Thu, Aug 25, 2022 at 09:38:32PM +0200, Frank Wunderlich wrote:
+> >> From: Frank Wunderlich <frank-w@public-files.de>
+>=20
+> >> +properties:
+> >> +  compatible:
+> >> +    enum:
+> >> +      - rockchip,rk3568-pcie3-phy
+> >
+> >The driver also has 'rockchip,rk3588-pcie3-phy'. Please send a fix=20
+> >adding it here or removing from the driver. Are they not compatible with=
+=20
+> >each other?
+>=20
+> Right, original driver has rk3588 support,but we can't test it.
+> Initialization and lane-mapping (bifurcation) was bit different.
+> So we wanted to upstream rk3568 first (but have not removed this
+> part from driver).
+>=20
+> I see that someone added rk3588 basic support and if he can test
+> rk3588 i can send compatible for it.
 
->                 resets = <&cru SRST_PCIE20_POWERUP>;
->                 reset-names = "pipe";
->                 #address-cells = <3>;
-> --
-> 2.37.3
->
+Basic rk3588 support is still WIP. At the moment patches for the CRU
+are still pending as well as base DT. I hope to land them for v6.2
+(so next merge window). At the same time I don't think PCIe support
+is realistic before v6.3.
+
+-- Sebastian
+
+--esf23iwxvt2hw4gh
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmM8nkEACgkQ2O7X88g7
++ppF5A//aMVPpjLHGUEf9ZvplEMOuOtVijERKVd+RRgN0E+HWDjY9kTSdKo0zfcU
+G3FTTyYJhZXSjZ6wAluSupAr2dnO8Ob8EnXdSUZtTKPrAZs6QkZETJpLkD25nf8i
+vOzeJcNy+8SvpO6WGhF4alc3E+T/lqVH19Cft9ZWCQM6cWy66IKpUdaWirPRmcIR
+qz8WQBUjtZ6z66itUppsc5ysDVRz0YXtNTekcfUHF3qxW4AVq07RdNCzOdPOv0Rh
+mXAMpCzm2MCAmYl3+WvtxIfHbS97ksKZ+M54UmlS+nAoaNJ/lM3FyjaYs9he8ApT
+JjDnyY2SbGhAiBXJ3WN0Ry/gxoEhm2Wjj30llsUE7ncc7UV0ADAB7zx3++V4ekLq
+MD21LyMoLY1G5mROtW8KN3SOAUrlD5f6/uWu/JbUOEXiMuJ5rgeVlwpcuqeRcLYc
+ZdTuJB/mijzlEAVr2p79gvNTrbStb6OU3o1YBJXi1lUlRk4eIgxL2ZgU/zaB2zmR
+5UVY0eNam56p2+8Y5NRsMTy2LXDWJLnagSoPuz25O0x8I4Kb0+pQ861Md6rNrj4C
+Gx4uieKw+KOnlZ8tdJ8mPflqVn7yvnT2WWhhCBi37idzZbm0CFPTKGZLCsjJPA++
+mSg0DQJtYs8tjIS3bTkNg1h0OMO4XIvfygU7pp5SsBb5hxehagA=
+=+xoE
+-----END PGP SIGNATURE-----
+
+--esf23iwxvt2hw4gh--
+
+
+--===============6440873228862947325==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6440873228862947325==--
+
