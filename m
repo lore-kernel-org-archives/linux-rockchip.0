@@ -4,96 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E290C433F5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Oct 2022 08:39:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 506CCC433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed,  5 Oct 2022 08:55:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wBFZ8wAflAvQXn/1MAG0opF+FnN5XI03E4gu7KP29uI=; b=EqvpXd8H1etqJ/
-	1o6enTKbT2FJVMhZ9BgyHE+UT/ttC3Llj+YxsVuVPRx9mo4HT5K1GBL87Xt3Oe4zOCv1kzPxGI9zu
-	E8m+Lm3ujf7lLEgTVhj/ALREd1NVJoCr2XTEZ33VQnILDK0DGzgniagY7APFFvp7LYvh1y4r8rZmx
-	CiEsxKWWYwqOPyPDDizpsHmiKh8RUfU6rvbYiFU75MDfeeRfLO3ZXy+PmKQwaCLiDoXxu243hTUnL
-	rr+M09sVWauUG09xcGgvbgyW6xUfM83VldmQ0yk03JxY7FwIGOY6mBmhn9eG5T635x4K7eX0JQoot
-	AIERjHNG7qQGqtVl+iPw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nMstuxnUU1vksv2gBkR3SHzVyWrf/C2Kv7FIe/Ju2zo=; b=dPZC6ll09AtsZT
+	xQ5Wcn3Y16aYdzXuSiw/b+UyFaKH6gxHHLrks8IMdTN3UoenOhXeCB24FcpIqV8f7ntArmSsKGjAT
+	X6EkdXmsnnYl8GufRqEQ4IVdq76NtA7bbVpCMWW3jiFjrzl7/Xr165bHPCNhwFG5f56Zu6rnXfQro
+	WNyhtmq91/fcaMFD3uFlrDa2JvZ2e0s08kPqA/f4GqBRnUSm9riFYGwZNR3THeCW2Naw4E16vi503
+	eNl8cmviVBDImmogpRHCuwt44HmX3QAR7fJF6k6RoT7fY/4Ft8mw0rtxtUCybOhxdcUB6mD4ASXpn
+	UPRvREC1LRJi16qlAbZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofzvl-00D5rx-0u; Wed, 05 Oct 2022 08:39:05 +0000
-Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c])
+	id 1og0BB-00DCpQ-7p; Wed, 05 Oct 2022 08:55:01 +0000
+Received: from vps.xff.cz ([195.181.215.36])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ofzvZ-00D5lG-VM; Wed, 05 Oct 2022 08:38:55 +0000
-Received: by mail-qt1-x82c.google.com with SMTP id d15so2254994qtw.8;
-        Wed, 05 Oct 2022 01:38:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date;
-        bh=TnA6JzSn4arjpTN/bPqQkDRPYmsMIf2Li73dTR0mpO0=;
-        b=ONwEbApRuyxgWRIpd/fuFOKiSWN/+DWE/CtRuW4q35CKbmuam6lJ8FPZbbXaCzNt7e
-         vlh8GTfwRQfxaUnQddKYrrlQawscqr07zE+f/YKbTNKGKkI7VP2Pt49F8vGDFt/+AGEA
-         gxJ6f0Y6JmtNxu2UQWhInCK2YbakqcdGNFaWRuWyGZIKwnUTuIY8xpORzDFXGfQLb34f
-         wZ2JiMfOhxmc1Fd0idbk7b+UqAtfxO+4YS/x97eXfPi80WYqE8T4LYLi7XDZjg3TU9zM
-         QBXDBiemVCqT4KCs2iTZM52aiaVRYm4c3daguXStjBa7zGXi/l4fqRJUjIY1ok5NnWYi
-         XD1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=mime-version:user-agent:content-transfer-encoding:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
-         :from:to:cc:subject:date;
-        bh=TnA6JzSn4arjpTN/bPqQkDRPYmsMIf2Li73dTR0mpO0=;
-        b=N8flPjlLblRDcLsyGQ2PTzPeF6U7jn19MCLuM5JFDFqtC4QD/mFljJXQk6+njmdIAI
-         qMXJ6X5WAE5hkuRJ8NGS7Zw6RnwVLkRS2GvtROZkuQIy+Q4Ih9aPGMnPTbf1btwnZY68
-         CNUUG97OJeUjRrAsB2MHirAc3JxDgCpNKuGBmKyq5eU4Q6KOkCXEJ0qSB9cuG7QOwX9H
-         GxUESy5xqwjJbqjQGPYV/OBJvpu82+voViTAo9gqAv3p7Cr3LvkVwjAIDMQWprAuXQC+
-         dqjiL/EXQg3TbsSc1G3Xx1SK0w4eiQr2lbzbsfnE8GPmA8bXdoIg9qLkH80d1xvGsIjE
-         K8CQ==
-X-Gm-Message-State: ACrzQf0xdr/mZeS9k6y8Gif2OVw/yMvlUtvkEYATQe+N/wxxJM9KP29t
-	3dnC9+mUBtC1eyhWsFUfLrk=
-X-Google-Smtp-Source: AMsMyM5S1zbtIP8pge6aYNhqSMP45dSoxmOnek1iAfkzj/AA75VShoWoiBhyIqiEwOtZAz7Gfw7d9w==
-X-Received: by 2002:a05:622a:8c:b0:35d:44d5:58f6 with SMTP id o12-20020a05622a008c00b0035d44d558f6mr22701862qtw.315.1664959125734;
-        Wed, 05 Oct 2022 01:38:45 -0700 (PDT)
-Received: from p200300f6ef036f005de6a4d0d791ed01.dip0.t-ipconnect.de (p200300f6ef036f005de6a4d0d791ed01.dip0.t-ipconnect.de. [2003:f6:ef03:6f00:5de6:a4d0:d791:ed01])
-        by smtp.gmail.com with ESMTPSA id g12-20020ac8580c000000b0035d4f68232esm14575313qtg.3.2022.10.05.01.38.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Oct 2022 01:38:45 -0700 (PDT)
-Message-ID: <f25507c2bfce7933684a2f1bfd00eb14609cd8b2.camel@gmail.com>
-Subject: Re: [PATCH v2 16/16] iio: core: move 'mlock' to 'struct
- iio_dev_opaque'
-From: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>, Nuno =?ISO-8859-1?Q?S=E1?=
-	 <nuno.sa@analog.com>
-Cc: linux-amlogic@lists.infradead.org, linux-imx@nxp.com, 
- linux-iio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Neil Armstrong
- <narmstrong@baylibre.com>, Shawn Guo <shawnguo@kernel.org>, Lars-Peter
- Clausen <lars@metafoo.de>, Jyoti Bhayana <jbhayana@google.com>, Hans de
- Goede <hdegoede@redhat.com>, Andriy Tryshnivskyy
- <andriy.tryshnivskyy@opensynergy.com>, Pengutronix Kernel Team
- <kernel@pengutronix.de>, Miquel Raynal <miquel.raynal@bootlin.com>, Cixi
- Geng <cixi.geng1@unisoc.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
- Ciprian Regus <ciprian.regus@analog.com>, Fabio Estevam
- <festevam@gmail.com>, Sascha Hauer <s.hauer@pengutronix.de>, Alexandru
- Ardelean <aardelean@deviqon.com>,  Florian Boor
- <florian.boor@kernelconcepts.de>, Michael Hennerich
- <Michael.Hennerich@analog.com>, Orson Zhai <orsonzhai@gmail.com>, Chen-Yu
- Tsai <wens@csie.org>, Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir
- Zapolskiy <vz@mleia.com>, Jerome Brunet <jbrunet@baylibre.com>, Haibo Chen
- <haibo.chen@nxp.com>, Kevin Hilman <khilman@baylibre.com>, Jonathan Cameron
- <jic23@kernel.org>
-Date: Wed, 05 Oct 2022 10:40:03 +0200
-In-Reply-To: <CAHp75VfpcrTpH83XqAC9xFrwYApORwoDcqmnhLLTkEWbj6zYVg@mail.gmail.com>
-References: <20221004134909.1692021-1-nuno.sa@analog.com>
-	 <20221004134909.1692021-17-nuno.sa@analog.com>
-	 <CAHp75VfpcrTpH83XqAC9xFrwYApORwoDcqmnhLLTkEWbj6zYVg@mail.gmail.com>
-User-Agent: Evolution 3.44.4 
+	id 1og0Az-00DClX-CA; Wed, 05 Oct 2022 08:54:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=xff.cz; s=mail;
+	t=1664960082; bh=ERXYUe3zAf8vP7NuLg3AyxqNSKcd5EgrDfNw6VaFtAE=;
+	h=From:To:Cc:Subject:Date:From;
+	b=wED3iXlYON+3ugRWAhh8WArtQXRUnvQ4x7xsacb0cmTigzpJSEoJmP61C/wr5c6qa
+	 BK5Knsbe7kLdWKVUBv+AompWWfeT+DFfJyiRuIX3NFuVfcIAV/v5Z7qXSrk9AEEtc0
+	 SgfLf/xrB1HB4jwaVIDTqu7ErOYra4AlPM+e1/Pc=
+From: Ondrej Jirman <megi@xff.cz>
+To: linux-rockchip@lists.infradead.org
+Cc: Ondrej Jirman <megi@xff.cz>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Peter Geis <pgwipeout@gmail.com>,
+	Michael Riesch <michael.riesch@wolfvision.net>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Frank Wunderlich <frank-w@public-files.de>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Yifeng Zhao <yifeng.zhao@rock-chips.com>,
+	Johan Jonker <jbx6244@gmail.com>,
+	devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+	linux-kernel@vger.kernel.org (open list)
+Subject: [PATCH v2] arm64: dts: rockchip: rk356x: Fix PCIe register map and ranges
+Date: Wed,  5 Oct 2022 10:54:38 +0200
+Message-Id: <20221005085439.740992-1-megi@xff.cz>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221005_013854_030402_C6947279 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20221005_015450_209010_BC6ED600 
+X-CRM114-Status: GOOD (  15.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,26 +65,113 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMDIyLTEwLTA0IGF0IDE3OjIxICswMzAwLCBBbmR5IFNoZXZjaGVua28gd3JvdGU6
-Cj4gT24gVHVlLCBPY3QgNCwgMjAyMiBhdCA0OjQ5IFBNIE51bm8gU8OhIDxudW5vLnNhQGFuYWxv
-Zy5jb20+IHdyb3RlOgo+ID4gCj4gPiBOb3cgdGhhdCB0aGVyZSBhcmUgbm8gbW9yZSB1c2VycyBh
-Y2Nlc3NpbmcgJ21sb2NrJyBkaXJlY3RseSwgd2UgY2FuCj4gPiBtb3ZlCj4gPiBpdCB0byB0aGUg
-aWlvX2RldiBwcml2YXRlIHN0cnVjdHVyZS4gSGVuY2UsIGl0J3Mgbm93IGV4cGxpY2l0IHRoYXQK
-PiA+IG5ldwo+ID4gZHJpdmVyJ3Mgc2hvdWxkIG5vdCBkaXJlY3RseSB0aGlzIGxvY2suCj4gCj4g
-dXNlIHRoaXMKPiAKPiAKPiBJIGxpa2UgdGhlIGVuZCByZXN1bHQhCj4gUmV2aWV3ZWQtYnk6IEFu
-ZHkgU2hldmNoZW5rbyA8YW5keS5zaGV2Y2hlbmtvQGdtYWlsLmNvbT4KPiAKPiBQLlMuIFNob3Vs
-ZG4ndCB3ZSBhbm5vdGF0ZSB0aGUgcmVzcGVjdGl2ZSBBUElzIHdpdGggbWlnaHRfc2xlZXAoKSBh
-bmQKPiBDbyAoaWYgaXQncyBub3QgZG9uZSB5ZXQpPwo+IAo+IAoKSG1tLCBJIHdvdWxkIHNheSB0
-aGlzIGlzIHRoZSBzYW1lIHN0b3J5IGFzIHdpdGggc3BhcnNlIGFubm90YXRpb25zLi4uIEkKZ3Vl
-c3MsIGF0IGxlYXN0LCBtaWdodF9zbGVlcCgpIHdvdWxkIG1ha2Ugc2Vuc2UgYnV0IEkgdGhpbmsg
-d2Ugc2hvdWxkCnByb2JhYmx5IGRvIGl0IGZvciB0aGUgY29tcGxldGUgSUlPIHN1YnN5c3RlbSB3
-aGVyZSBpdCBtYWtlcyBzZW5zZQppbnN0ZWFkIG9mIGhhdmluZyBpdCBpbiBqdXN0IHRoaXMgbmV3
-IEFQSS4KCi0gTnVubyBTw6EgCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+I have two Realtek PCIe wifi cards connected over the 4 port PCIe swtich
+to Quartz64-A. The cards fail to work, when nvme SSD is connected at the
+same time to the bridge. Without nvme connected, cards work fine. The
+issue seems to be related to mixed use of devices which make use of I/O
+ranges and memory ranges.
+
+This patch changes I/O, MEM and config mappings so that config and I/O
+mappings use the 0xf4000000 outbound address space, and MEM range uses
+the whole 0x300000000 outbound space.
+
+This is simialar to how BSP does the mappings.
+
+I changed num-ob-windows to value detected by the kernel so if for whatever
+reason the kernel ever starts respecting this DT property, it would not
+switch to sharing I/O and CFG spaces via a single iATU mapping for
+no reason.
+
+This change to the regs/ranges makes the issue go away and both nvme and
+wifi cards work when connected at the same time to the bridge. I tested
+the nvme with large amount of reads/writes, both behind the PCIe bridge
+and when directly connected to Quartz64-A board.
+
+Signed-off-by: Ondrej Jirman <megi@xff.cz>
+---
+BSP for reference: https://github.com/rockchip-linux/kernel/blob/develop-4.19/arch/arm64/boot/dts/rockchip/rk3568.dtsi#L2370
+
+v2:
+- change ranges to use 0x300000000 fully for MEM and make use of
+  the 0xf4000000 outbound range for IO and config
+- full retest with/without the switch
+- if lscpi/dmesg is useful in the future for comparison, see:
+  https://xff.cz/kernels/random/quartz64a-pcie/
+
+I used this script for the tests:
+
+#!/bin/bash
+
+OUT=/mnt/data
+n=8
+
+test -f /tmp/test.dat || \
+    dd if=/dev/urandom of=/tmp/test.dat bs=1M count=1024
+md5sum /tmp/test.dat
+
+i=0
+while test $i -lt $n
+do
+    dd if=/tmp/test.dat of=$OUT/test$i.dat bs=4M oflag=direct
+
+    i=$(($i+1))
+done
+
+i=0
+while test $i -lt $n
+do
+    dd if=$OUT/test$i.dat bs=4M iflag=direct | md5sum
+
+    i=$(($i+1))
+done
+
+
+ arch/arm64/boot/dts/rockchip/rk356x.dtsi | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk356x.dtsi b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+index 319981c3e9f7..99fd9543fc6f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk356x.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk356x.dtsi
+@@ -855,7 +855,8 @@ pcie2x1: pcie@fe260000 {
+ 		compatible = "rockchip,rk3568-pcie";
+ 		reg = <0x3 0xc0000000 0x0 0x00400000>,
+ 		      <0x0 0xfe260000 0x0 0x00010000>,
+-		      <0x3 0x3f000000 0x0 0x01000000>;
++		      <0x0 0xf4000000 0x0 0x01f00000>;
++
+ 		reg-names = "dbi", "apb", "config";
+ 		interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>,
+ 			     <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>,
+@@ -877,15 +878,15 @@ pcie2x1: pcie@fe260000 {
+ 				<0 0 0 4 &pcie_intc 3>;
+ 		linux,pci-domain = <0>;
+ 		num-ib-windows = <6>;
+-		num-ob-windows = <2>;
++		num-ob-windows = <8>;
+ 		max-link-speed = <2>;
+ 		msi-map = <0x0 &gic 0x0 0x1000>;
+ 		num-lanes = <1>;
+ 		phys = <&combphy2 PHY_TYPE_PCIE>;
+ 		phy-names = "pcie-phy";
+ 		power-domains = <&power RK3568_PD_PIPE>;
+-		ranges = <0x01000000 0x0 0x3ef00000 0x3 0x3ef00000 0x0 0x00100000
+-			  0x02000000 0x0 0x00000000 0x3 0x00000000 0x0 0x3ef00000>;
++		ranges = <0x01000000 0x0 0x00000000 0x0 0xf5f00000 0x0 0x00100000
++			  0x02000000 0x0 0x40000000 0x3 0x00000000 0x0 0x40000000>;
+ 		resets = <&cru SRST_PCIE20_POWERUP>;
+ 		reset-names = "pipe";
+ 		#address-cells = <3>;
+-- 
+2.37.3
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
