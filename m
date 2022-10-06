@@ -4,29 +4,29 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B627BC433FE
-	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Oct 2022 15:27:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31E2EC433FE
+	for <linux-rockchip@archiver.kernel.org>; Thu,  6 Oct 2022 15:27:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4vF4K/42zKHrqEjcOBRGf14/4DZM8USozcFkh1X52aI=; b=YOKjE4CcPNkKmV
-	94SViih71kNPHHF4RoH50qaUB3NaTVIqZVLP1QdtkAqy6+6lvgICqIX0w3bCddg20XShHkli2ncko
-	7R9wr2kSZpXZ+t3SDCNHodUdjvIJkt7SEnuRI6GiozBlYWD3aYM6un1SgQzymnVLSRN8J4YPfkMip
-	pijB9s8MhgXOnk5FHHPkZ/DXRrstanFdVJ4t5DxfKdP17kovm8F4Ol2+uQdR/3HkmJ9PXxyPcpZyX
-	cMzi0Jl18wm/RuIeNHMLorJt36GY1EzCHVUNLltrhW5VI+tEuwS7PKUuORqTogcV82wzwgMFqkMfe
-	Nc3leaB92m4r0SScz4uw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8APYWqT7paBnbMoj9Ra+0Q/sNxtnmywbn1CT/UW77X8=; b=W2WuAhvE4Gr4oL
+	XFZOOh8jUO3qY5qwvn+OA8R6iF/mrDc5YxPsQtrJk8ahp2kB3y7UxudHy1Nxuz/QNa3uuIrb3QxDQ
+	LTkkULR7r72fsyMCXBQq0IDQaTD40+wjVBz+RFrWCtGrrO/7EM+XTB8lTmSDFIeigY9Sle3sNlwLC
+	KY1Ema+FVEKPzb+niFu7X6QK4P25BSnsotKHGAWXJQjhOdVmJ/4x8/NMYKa7DMSJ9o+LoaQplt6HS
+	ye2axf4Zqd1RMSCh8jKPwPUrQmqGkHsHJ891OkITj3Lx0yo3uRhm1w9WP84dwu3QBLNeRQVd6Em26
+	NqNdYfylz+WvMyyRQ33A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogSmT-003NY7-KQ; Thu, 06 Oct 2022 15:27:25 +0000
+	id 1ogSmU-003NYR-G8; Thu, 06 Oct 2022 15:27:26 +0000
 Received: from mail-m121145.qiye.163.com ([115.236.121.145])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ogSl1-003Mne-UW; Thu, 06 Oct 2022 15:25:58 +0000
+	id 1ogSl1-003Mnc-Uc; Thu, 06 Oct 2022 15:25:58 +0000
 Received: from amadeus-VLT-WX0.lan (unknown [120.37.187.24])
-	by mail-m121145.qiye.163.com (Hmail) with ESMTPA id 90F188000CB;
-	Thu,  6 Oct 2022 23:25:46 +0800 (CST)
+	by mail-m121145.qiye.163.com (Hmail) with ESMTPA id 32D748000BE;
+	Thu,  6 Oct 2022 23:25:45 +0800 (CST)
 From: Chukun Pan <amadeus@jmu.edu.cn>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Michael Riesch <michael.riesch@wolfvision.net>,
@@ -36,25 +36,22 @@ Cc: Michael Riesch <michael.riesch@wolfvision.net>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Chukun Pan <amadeus@jmu.edu.cn>,
-	Anand Moon <linux.amoon@gmail.com>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: Add PCIe v3 nodes to rock-3a
-Date: Thu,  6 Oct 2022 23:25:24 +0800
-Message-Id: <20221006152524.502445-3-amadeus@jmu.edu.cn>
+	Chukun Pan <amadeus@jmu.edu.cn>
+Subject: [PATCH v2 0/2] arm64: dts: rockchip: enable pcie3 support for rock-3a
+Date: Thu,  6 Oct 2022 23:25:22 +0800
+Message-Id: <20221006152524.502445-1-amadeus@jmu.edu.cn>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20221006152524.502445-1-amadeus@jmu.edu.cn>
-References: <20221006152524.502445-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVkZThlPVklMTk8fGEtDSUMeSFUTARMWGhIXJBQOD1
+	tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlDGB0dVklMSRgeH04YTUpMGFUTARMWGhIXJBQOD1
 	lXWRgSC1lBWUpJS1VITFVKQ0xVSU9ZV1kWGg8SFR0UWUFZT0tIVUpKS0hKQ1VKS0tVS1kG
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PDo6Ixw5Mz0pPk8MCwwBViJL
-	IQ0KCi5VSlVKTU1OS01CQk9MSUtMVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpJ
-	S1VITFVKQ0xVSU9ZV1kIAVlBSE5LSDcG
-X-HM-Tid: 0a83ade717beb03akuuu90f188000cb
+X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6PRQ6Tjo6NT0hKk8fSAIZViww
+	LRMKCjBVSlVKTU1OS01CQk9OTExPVTMWGhIXVRoWGh8eDgg7ERYOVR4fDlUYFUVZV1kSC1lBWUpJ
+	S1VITFVKQ0xVSU9ZV1kIAVlBSk5NTzcG
+X-HM-Tid: 0a83ade71241b03akuuu32d748000be
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221006_082556_191064_8E8D3D97 
-X-CRM114-Status: UNSURE (   8.09  )
+X-CRM114-CacheID: sfid-20221006_082556_166256_D41F0CCB 
+X-CRM114-Status: UNSURE (   5.25  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,76 +69,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add Nodes to Radxa ROCK3 Model A board to support PCIe v3.
+Changes from v2:
+* Removed changes to pcie2x1 node.
+* Collected acked-by and tested-by.
 
-Tested-by: Anand Moon <linux.amoon@gmail.com>
-Signed-off-by: Chukun Pan <amadeus@jmu.edu.cn>
----
- .../boot/dts/rockchip/rk3568-rock-3a.dts      | 44 +++++++++++++++++++
- 1 file changed, 44 insertions(+)
+Chukun Pan (2):
+  arm64: dts: rockchip: Add regulator suffix to rock-3a
+  arm64: dts: rockchip: Add PCIe v3 nodes to rock-3a
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-index 8adf672709e8..c1fa917083ba 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3a.dts
-@@ -67,6 +67,37 @@ vcc12v_dcin: vcc12v-dcin-regulator {
- 		regulator-boot-on;
- 	};
- 
-+	pcie30_avdd0v9: pcie30-avdd0v9-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pcie30_avdd0v9";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <900000>;
-+		regulator-max-microvolt = <900000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	pcie30_avdd1v8: pcie30-avdd1v8-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "pcie30_avdd1v8";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc3v3_sys>;
-+	};
-+
-+	/* pi6c pcie clock generator */
-+	vcc3v3_pi6c_03: vcc3v3-pi6c-03-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_pi6c_03";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
- 	vcc3v3_pcie: vcc3v3-pcie-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -546,6 +577,19 @@ &pcie2x1 {
- 	status = "okay";
- };
- 
-+&pcie30phy {
-+	phy-supply = <&vcc3v3_pi6c_03>;
-+	status = "okay";
-+};
-+
-+&pcie3x2 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&pcie30x2m1_pins>;
-+	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
-+	vpcie3v3-supply = <&vcc3v3_pcie>;
-+	status = "okay";
-+};
-+
- &pinctrl {
- 	cam {
- 		vcc_cam_en: vcc_cam_en {
+ .../boot/dts/rockchip/rk3568-rock-3a.dts      | 58 ++++++++++++++++---
+ 1 file changed, 51 insertions(+), 7 deletions(-)
+
 -- 
 2.25.1
 
