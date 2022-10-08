@@ -4,80 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB7A5C433F5
-	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Oct 2022 18:22:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57334C433F5
+	for <linux-rockchip@archiver.kernel.org>; Sat,  8 Oct 2022 18:30:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Nq+sLMXq9JcRS55eX86oVhb3jAsuYY7VxSRYs5/VcE8=; b=YXdhDyFKtOM9ir
-	Jsj8SzKlZlJL7POMoMJf6hMbYYTL6z/FfjfqpyfVXsL8LJYuQ7yd+acApjWqcgsphDu4qcgALHGAD
-	a9cAOI9zZEw6KVtj/cQKmFiKOX0yzhRsVyS01LydizN5JugcAhFoucP7V0u/fXezsDgObY6W049g5
-	KGKkg0GyijWxR7UeAujjHLr6gN8jN/8BjSr2JEcxC9dtrhE5FJOuqLUymzN4uXCuu8wLoyWS6ccFQ
-	u8ctkB7MHdEk5wWI2LIccdGkY984iwjhuMbUD0pqAY19szVCqB/V9+gKNjfs1bsxWocT33sGh7O6V
-	+VJvKv9VMw6nHgrw02CQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=s/wVUxOs/hsYQ80wuu5vfXbHEjFLbpm4NNchlI8085Y=; b=Jb28oJLSe2V8sdrMkLkWOnEtDJ
+	s7sEGVMbytqltuN7wIx6k9nYKEr15njprWQiJlHd9SxK8w4Wi9KB0u6RpJG7sBIThHwmzN+o/8xjJ
+	8fR1u4C/aRNo2IwuR9Ldnowa/aqGpIs8OYBOrTen97Nv7FukmlsCWs5bYOqpMCw972TDshOZMRuEC
+	EMqGknBp9nyxxbJDsXKyzIoby/mkzkg9HFY1tm0W2ll80oVEa8lJQEFauBg7B+lugpaICpYUGsPZZ
+	ACoBcirqoDZE0syTqOW5oD1Sm3+gdYYxkjiu+wH2j73tumMyHVwWVzkwMlJ9mUsGsoppxTrvZz0Mb
+	QxtTEsoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohESJ-00Dxkc-F5; Sat, 08 Oct 2022 18:21:47 +0000
-Received: from mga12.intel.com ([192.55.52.136])
+	id 1ohEay-00DyDL-6E; Sat, 08 Oct 2022 18:30:44 +0000
+Received: from 31-193-140-172.static.as29550.net ([31.193.140.172] helo=mail.pscan.uk)
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohESG-00DxjA-Jb
-	for linux-rockchip@lists.infradead.org; Sat, 08 Oct 2022 18:21:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665253304; x=1696789304;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=OWIiubz5fdA83E6sHScFPXfGeMg/96S0x3o/FGgfFQA=;
-  b=aRKF0Ua6+L5Y+bACrz4/Chch6CXVGSHy9cf0DjwAQKDF3va8GgFU5b3n
-   YEJGotaV6w+s5bzhZx3pLUCWhC2qOjp/iTTEW4HOFpHi0nIWnx9Tqn4k0
-   dXGH9+UDTZ+Hs0SPvUwCZfCIffSThBfV+pE6uTdhF4T10E6xLDb1dMg99
-   VYj7f+JK+ugfJfnZFr8W6KrCRfesMR7a1a4Ab5n8UTnZe4UfzQ1oasI7t
-   E2G6dgpLEHxs702dd0m5po+KaLN6hIuocAiaraGeboZmD6HlkEHD9gK/h
-   aWxbmEp9m5t5PSVEVS4WQUdO1sGCcVqxM3CknG7qOuMqXHxWm8GEWjDkn
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10494"; a="283691400"
-X-IronPort-AV: E=Sophos;i="5.95,170,1661842800"; 
-   d="scan'208";a="283691400"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Oct 2022 11:21:41 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10494"; a="658706046"
-X-IronPort-AV: E=Sophos;i="5.95,170,1661842800"; 
-   d="scan'208";a="658706046"
-Received: from smile.fi.intel.com ([10.237.72.54])
-  by orsmga001.jf.intel.com with ESMTP; 08 Oct 2022 11:21:37 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.96)
-	(envelope-from <andriy.shevchenko@linux.intel.com>)
-	id 1ohES7-0048li-2p;
-	Sat, 08 Oct 2022 21:21:35 +0300
-Date: Sat, 8 Oct 2022 21:21:35 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
-Cc: "linus.walleij" <linus.walleij@linaro.org>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Bartosz Golaszewski <brgl@bgdev.pl>,
-	"robert.moore" <robert.moore@intel.com>, robh <robh@kernel.org>,
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	lenb <lenb@kernel.org>, rafael <rafael@kernel.org>
-Subject: Re: Re: [PATCH 11/20] gpio/rockchip: add of_node for gpiochip
-Message-ID: <Y0G/r+mp59qRVqby@smile.fi.intel.com>
-References: <20220920103108.23074-1-jay.xu@rock-chips.com>
- <20220920103108.23074-12-jay.xu@rock-chips.com>
- <CACRpkdZSCamhBD-M8CkZt6B3N9c2Jo_D3kwgOykj8+VJ_otYGQ@mail.gmail.com>
- <YzvvGValqxfIriGL@smile.fi.intel.com>
- <CACRpkdbA_h4m0cY98=0C2fCbTYEtowFRm9RF=tv=XSgjKxjcAQ@mail.gmail.com>
- <2022100814192810242455@rock-chips.com>
+	id 1ohEaw-00DyCn-0M
+	for linux-rockchip@lists.infradead.org; Sat, 08 Oct 2022 18:30:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=pscan.uk;
+	s=2016050301; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:Cc:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=oO8bUZZDKoT4Fb+7EEvM4K4qae/VkpDP0ELABrU/jmE=; b=O0vvvEGxFBTow0Jm/BRMMOBhvy
+	lSj9svpqt2wEW/+rTRFErwn6OxzRkA72ZLZyfcMxcFo92bIDfcHrzISeo6AVx1purZSYCeVydrbJQ
+	n840FFkOiFxg1qbViifUNfI7s/N2DgemnavGvaOES5kni/EaqlD5SpVa3ej1Xm/mdM6g=;
+Received: from host86-153-126-124.range86-153.btcentralplus.com ([86.153.126.124] helo=[192.168.1.77])
+	by mail.pscan.eu with esmtpsa  (TLS1.3) tls TLS_AES_128_GCM_SHA256
+	(Exim 4.94.2 (FreeBSD))
+	(envelope-from <subs@pscan.uk>)
+	id 1ohDSi-000Ack-LP
+	for linux-rockchip@lists.infradead.org; Sat, 08 Oct 2022 18:18:08 +0100
+Message-ID: <abba3972-fdd3-e783-8333-c81ed1f724e4@pscan.uk>
+Date: Sat, 8 Oct 2022 19:30:28 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2022100814192810242455@rock-chips.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.1
+Subject: Re: [PATCH V10 3/4] power: supply: Add charger driver for Rockchip
+ RK817
+To: linux-rockchip@lists.infradead.org
+References: <20220827021623.23829-1-macroalpha82@gmail.com>
+ <20220827021623.23829-4-macroalpha82@gmail.com>
+From: Philip C <subs@pscan.uk>
+In-Reply-To: <20220827021623.23829-4-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221008_112144_680299_26E675B9 
-X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-CacheID: sfid-20221008_113042_140378_4DA27C18 
+X-CRM114-Status: UNSURE (   3.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,24 +67,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Oct 08, 2022 at 02:19:28PM +0800, jay.xu@rock-chips.com wrote:
+I have a question about the RK817 driver.
 
-...
+In Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml it 
+says:-
+"extcon:
+     description:
+       Phandle to the extcon device providing the cable state for the 
+otg phy."
 
-> the gc->of_node is a fix for my patch serial, without this the gpiochip will fail to register.
+In the context of an RK356x/RK817 based device, is RK817 an "extcon 
+device" that provides the cable state?
 
-Do not use of_node. We have parent and fwnode members, use them according to your needs.
+should I have statement like:-
+&usb2phy0 {
+   extcon = <&rk817>;
+};
+?
 
--- 
-With Best Regards,
-Andy Shevchenko
+or maybe it should be extcon = <&otg_switch> ?
 
+In the BSP kernels it's done the other way round with the charger having 
+an extcon declaring a phandle to the phy like this:-
 
+rk817: pmic@20 {
+   charger {
+     extcon = <&usb2phy0>:
+   };
+};
+
+thanks, Philip C
 
 _______________________________________________
 Linux-rockchip mailing list
