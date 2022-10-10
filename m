@@ -4,49 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BFF0C433F5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Oct 2022 10:23:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD4FCC433F5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 10 Oct 2022 12:18:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P53gptZj4mKE0Fz/Tp0NsozXmzAxqJwxKY0n9igRnOM=; b=CJmQ63f2XU16/oTt+R9rxdteQD
-	hJ2DJybHgTT6mX9wNGDbvyY0RscoAtQUoPJAS/+GjQ/wYQO6oLIsOsao1gUZv6K3ROYEGBKllkr/T
-	dmxQlhRCzNQjKXuZl0V0+NEYx2u0ISTya25/3U7AFFt0wLFQ15F4LLNFhjc/8qGSMHYRa7U9fujv8
-	SVhgznLa7yMQlbrhj10oYBK8A+zAIiIXgILY8+gG5yWVr9wXWPOhEYQXVqrD0mGPJ4oH+UX18UUK5
-	G62aRG8GBy8wHZ6Kt02FtHI9y78YtG+dJEhH66HCGrvDBbo76o7d4toozaGyBX3aHlDwQ+PQ6SlVv
-	wih+HqBQ==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NoSnUaXk62qbOZ5GE5TM3flcj1VYrq4UrjASxoAasgk=; b=GfxvVSG0YL8Pn8EipHiwBmMs06
+	Bnw/GwJhM+f+9xykPb7B5WbyJQzCebJZE4AP2GrHDL1yfytoR84Si+eshL/H+cSqXEoBBgqd1cWIC
+	UcDfpV/OjarcF6KILHyHJ5veiTTOWakwSMc4xbaGoxCKnveGopqXRzAO00GOJitgrZMVEs3LTD7LO
+	TG3CeT4OmO1M/H5spxtwiaeXNuw9VrURWVzkifB51c1+mkT3sVKKBlg9VJXUNnhaCjQWvFbXr9yPz
+	xE7NHHSsCMvRDVSz7rO3FI1sMRwu6xgcPSqOAfHe9sdbYRJmh0Q8mPvgfSvNZ5I9UkJsLWm4HnvG5
+	0j/jO0oQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohpw0-000NPI-Nf; Mon, 10 Oct 2022 10:22:56 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ohpvw-000NMe-UI
-	for linux-rockchip@lists.infradead.org; Mon, 10 Oct 2022 10:22:55 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 858251480;
-	Mon, 10 Oct 2022 03:22:53 -0700 (PDT)
-Received: from [10.57.65.170] (unknown [10.57.65.170])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id ABC233F792;
-	Mon, 10 Oct 2022 03:22:46 -0700 (PDT)
-Message-ID: <9bb5e351-6ef3-94d7-92b8-009da91574db@arm.com>
-Date: Mon, 10 Oct 2022 11:22:41 +0100
+	id 1ohrjI-000nJr-0T; Mon, 10 Oct 2022 12:17:56 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
+	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+	id 1ohrin-000nBK-4t; Mon, 10 Oct 2022 12:17:28 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ams.source.kernel.org (Postfix) with ESMTPS id 24092B80E83;
+	Mon, 10 Oct 2022 12:17:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9BE3C433D6;
+	Mon, 10 Oct 2022 12:17:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1665404241;
+	bh=d21madazv7qgRmB3dsdX8U/gFrfBTVvnEC19ulvvUIc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=naL8axO4j7kz+pWoUNwOgsLgo7oXDWSKyVAtHTbJwPoWLNddUihAxSd03xc36cLxg
+	 LnnQffWeHTCnmsXRy3PepUcu39AN5WgPIIsW7YQauyIhHzEpnSJpaCJKy3dEDU0nUo
+	 eLnKrh62I4/9wsD7raC3Pp+2FztVCTJOB7Sq3OwN6erSmqou/w7DuRfLVPOM6UvnMx
+	 YiK2KwdLiiLqjWmyCnLw63SnZX5F+fhJeGWXJ/ypsV4mgZmbrO6p2hAomY1A7/C1fL
+	 IIqtgj/a4rll0PdNuJddI6M+8pUpXsS+sjzGHOMDGLmMYklWvw0JMDroIZOQucpxWt
+	 4JwSX5ZzaL/wg==
+Date: Mon, 10 Oct 2022 13:17:15 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Maxime Ripard <maxime@cerno.tech>, Stephen Boyd <sboyd@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: kernelci-results@groups.io, bot@kernelci.org, gtucker@collabora.com,
+	Alexander Stein <alexander.stein@ew.tq-group.com>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Naresh Kamboju <naresh.kamboju@linaro.org>,
+	Linux Kernel Functional Testing <lkft@linaro.org>,
+	linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: next/master bisection: baseline.login on rk3328-rock64
+Message-ID: <Y0QNSx+ZgqKSvPOC@sirena.org.uk>
+References: <634095b3.a70a0220.ad568.42a8@mx.google.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:102.0) Gecko/20100101
- Thunderbird/102.3.2
-Subject: Re: Regression/Help: RK3399: Internal error: SP/PC alignment
- exception: 8a000000 [#1] SMP
-To: Zhang Ning <zhangn1985@qq.com>, linux-rockchip@lists.infradead.org,
- debian-kernel@lists.debian.org
-References: <tencent_9826B01A920D622F16C778DA116DD2A59909@qq.com>
-Content-Language: en-GB
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <tencent_9826B01A920D622F16C778DA116DD2A59909@qq.com>
+In-Reply-To: <634095b3.a70a0220.ad568.42a8@mx.google.com>
+X-Cookie: This sentence no verb.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221010_032253_121042_D592DE48 
-X-CRM114-Status: GOOD (  15.03  )
+X-CRM114-CacheID: sfid-20221010_051725_536954_F76E6087 
+X-CRM114-Status: GOOD (  46.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,153 +72,642 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============6807365580126290510=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2022-10-10 04:54, Zhang Ning wrote:
-> Hi,
-> 
-> My Khadas Edge V is running debian bookworm, with debian's kernel release 5.18.?
-> after update to 5.19.?? I got below crash.
-> 
-> I also build kernel from upstream linux-6.0.0, and got same error.
-> 
-> this looks like a regression,
-> but I also have Amlogic SBCs and Asus Tinker(RK3288), running same kernel verions, no such issue.
-> 
-> from below crash log, it looks like error happens in idle driver, I also build a version with idle driver disabled,
-> and get a slight different crash: Fatal exception in interrupt
 
-The problem is in the USB2 phy driver, and it shows up as all manner of 
-weird symptoms. The fix is this patch:
+--===============6807365580126290510==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ToVdk7XFfLxJF69E"
+Content-Disposition: inline
 
-https://lore.kernel.org/linux-rockchip/20220902184543.1234835-1-pgwipeout@gmail.com/
 
-Robin.
+--ToVdk7XFfLxJF69E
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> I don't know how to do next, thus send an email to comunity.
-> 
-> below is crash log with init=/bin/sh
-> 
-> 
-> 
-> /dev/mmcblk2p1: clean, 202185/1908736 files, 1516916/7629568 blocks
-> done.
-> [    5.937959] EXT4-fs (mmcblk2p1): mounted filesystem with ordered data mode. Quota mode: none.
-> done.
-> Begin: Running /scripts/local-bottom ... done.
-> Begin: Running /scripts/init-bottom ... done.
-> /bin/sh: 0: can't access tty; job control turned off
-> # [    7.200507] Internal error: SP/PC alignment exception: 8a000000 [#1] SMP
-> [    7.201158] Modules linked in: ext4 crc16 mbcache jbd2 crc32c_generic xhci_plat_hcd xhci_hcd realtek rk808_regulator governor_simpleondemand dwc3 udc_core roles ulpi rockchipdrm dwmac_rk dw_hdmi crct10dif_ce pwm_regulator crct10dif_common cec fixed stmmac_platform dwc3_of_simple rc_core fan53555 stmmac pcs_xpcs gpio_keys phylink dw_mipi_dsi analogix_dp drm_display_helper drm_cma_helper of_mdio fixed_phy fwnode_mdio ohci_platform drm_kms_helper phy_rockchip_inno_usb2 ehci_platform ohci_hcd phy_rockchip_emmc pl330 phy_rockchip_pcie pwm_rockchip io_domain phy_rockchip_typec libphy adc_keys dw_mmc_rockchip ptp dw_mmc_pltfm ehci_hcd i2c_rk3x sdhci_of_arasan spi_rockchip sdhci_pltfm cqhci drm usbcore dw_mmc usb_common pps_core industrialio sdhci
-> [    7.207316] CPU: 2 PID: 0 Comm: swapper/2 Not tainted 6.0.0-trunk-arm64 #1  Debian 6.0-1~exp1
-> [    7.208091] Hardware name: Khadas Edge-V (DT)
-> [    7.208491] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> [    7.209125] pc : 0x1ffffffff
-> [    7.209404] lr : call_timer_fn+0x3c/0x154
-> [    7.209787] sp : ffff80000a033a00
-> [    7.210094] x29: ffff80000a033a00 x28: ffff800009b17000 x27: ffff80000a033ad0
-> [    7.210755] x26: ffff800009698008 x25: 0000000000000000 x24: ffff800009b1ea80
-> [    7.211416] x23: 0000000000000100 x22: 00000001ffffffff x21: ffff80000a033ad0
-> [    7.212077] x20: ffff0000f7743f40 x19: ffff0000f4b6bb10 x18: ffff80000a893cb8
-> [    7.212736] x17: ffff8000ee0a9000 x16: ffff800009e5c000 x15: 0000000000004000
-> [    7.213397] x14: 0000000000017700 x13: 0000000000000000 x12: 003d090000000000
-> [    7.214057] x11: 0000000000000040 x10: ffff0000f7743fb0 x9 : ffff800008161adc
-> [    7.214718] x8 : ffff80000a033ad8 x7 : 0000000000000009 x6 : 0000000000000240
-> [    7.215377] x5 : 0000000000000000 x4 : 0000000000000000 x3 : 0000000000000200
-> [    7.216035] x2 : 00000000fffee210 x1 : 00000001ffffffff x0 : ffff0000f4b6bb10
-> [    7.216697] Call trace:
-> [    7.216929]  0x1ffffffff
-> [    7.217172]  __run_timers+0x2d8/0x37c
-> [    7.217520]  run_timer_softirq+0x28/0x50
-> [    7.217890]  __do_softirq+0x120/0x350
-> [    7.218235]  __irq_exit_rcu+0x11c/0x14c
-> [    7.218601]  irq_exit_rcu+0x18/0x24
-> [    7.218933]  el1_interrupt+0x38/0x54
-> [    7.219275]  el1h_64_irq_handler+0x18/0x24
-> [    7.219660]  el1h_64_irq+0x64/0x68
-> [    7.219981]  cpuidle_enter_state+0xc0/0x440
-> [    7.220374]  cpuidle_enter+0x40/0x60
-> [    7.220711]  do_idle+0x234/0x2c0
-> [    7.221019]  cpu_startup_entry+0x30/0x3c
-> [    7.221387]  secondary_start_kernel+0x130/0x144
-> [    7.221812]  __secondary_switched+0xb0/0xb4
-> [    7.222211] Code: bad PC value
-> [    7.222505] ---[ end trace 0000000000000000 ]---
-> [    7.222930] Kernel panic - not syncing: SP/PC alignment exception: Fatal exception in interrupt
-> [    7.223711] SMP: stopping secondary CPUs
-> [    7.224214] Kernel Offset: disabled
-> [    7.224534] CPU features: 0x4000,0820b021,00001086
-> [    7.224974] Memory Limit: none
-> [    7.225264] ---[ end Kernel panic - not syncing: SP/PC alignment exception: Fatal exception in interrupt ]---
-> 
-> crash log with kernel defconfig from upstream linux-6.0.0.
-> 
-> Begin: Running /scripts/local-bottom ... done.
-> Begin: Running /scripts/init-bottom ... done.
-> /bin/sh: 0: can't access tty; job control turned off
-> # [    2.063727] rockchip-pcie f8000000.pcie: PCIe link training gen1 timeout!
-> [    2.064436] rockchip-pcie: probe of f8000000.pcie failed with error -110
-> [    2.847690] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
-> [    2.848539] Mem abort info:
-> [    2.848810]   ESR = 0x0000000086000004
-> [    2.849169]   EC = 0x21: IABT (current EL), IL = 32 bits
-> [    2.849669]   SET = 0, FnV = 0
-> [    2.849966]   EA = 0, S1PTW = 0
-> [    2.850270]   FSC = 0x04: level 0 translation fault
-> [    2.850729] user pgtable: 4k pages, 48-bit VAs, pgdp=00000000018d6000
-> [    2.851330] [0000000000000000] pgd=0000000000000000, p4d=0000000000000000
-> [    2.851979] Internal error: Oops: 86000004 [#1] PREEMPT SMP
-> [    2.852504] Modules linked in: phy_rockchip_pcie rockchipdrm rtc_rk808 analogix_dp dw_hdmi cec dw_mipi_dsi drm_display_helper drm_cma_helper drm_kms_helper dwmac_rk stmmac_platform stmmac drm pcs_xpcs pcie_rockchip_host adc_keys
-> [    2.854481] CPU: 2 PID: 0 Comm: swapper/2 Not tainted 6.0.0 #1
-> [    2.855034] Hardware name: Khadas Edge-V (DT)
-> [    2.855445] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-> [    2.856099] pc : 0x0
-> [    2.856329] lr : call_timer_fn.constprop.0+0x24/0x80
-> [    2.856816] sp : ffff80000a4f3aa0
-> [    2.857135] x29: ffff80000a4f3aa0 x28: 0000000000000000 x27: ffff80000a4f3b50
-> [    2.857820] x26: ffff800009fc79c0 x25: ffff0000f7778030 x24: ffff0000f7777fe8
-> [    2.858505] x23: ffff80000a4f3b50 x22: 0000000000000000 x21: 0000000000000101
-> [    2.859189] x20: ffff000000708000 x19: 0000000000000000 x18: 0000000000000000
-> [    2.859873] x17: ffff8000edd4d000 x16: ffff80000a3ec000 x15: 0000000000004000
-> [    2.860557] x14: 0000000000017700 x13: 0000000000000069 x12: 0000000000000000
-> [    2.861242] x11: 0000000000000000 x10: 0000000000000226 x9 : 0000000000000000
-> [    2.861924] x8 : 0000000000000001 x7 : 0000000000000009 x6 : 0000000000000240
-> [    2.862606] x5 : 0000000000000000 x4 : 0000000000000000 x3 : 0000000000000200
-> [    2.863289] x2 : 000000003fffffff x1 : 0000000000000000 x0 : ffff000000c05710
-> [    2.863973] Call trace:
-> [    2.864214]  0x0
-> [    2.864409]  __run_timers+0x220/0x264
-> [    2.864774]  run_timer_softirq+0x20/0x40
-> [    2.865163]  __do_softirq+0x10c/0x298
-> [    2.865523]  __irq_exit_rcu+0xec/0xf4
-> [    2.865888]  irq_exit_rcu+0x10/0x1c
-> [    2.866238]  el1_interrupt+0x38/0x70
-> [    2.866597]  el1h_64_irq_handler+0x18/0x24
-> [    2.867002]  el1h_64_irq+0x64/0x68
-> [    2.867338]  arch_cpu_idle+0x18/0x2c
-> [    2.867697]  default_idle_call+0x30/0x6c
-> [    2.868084]  do_idle+0x244/0x2c0
-> [    2.868407]  cpu_startup_entry+0x28/0x30
-> [    2.868791]  secondary_start_kernel+0x130/0x14c
-> [    2.869233]  __secondary_switched+0xb0/0xb4
-> [    2.869657] Code: bad PC value
-> [    2.869960] ---[ end trace 0000000000000000 ]---
-> [    2.870399] Kernel panic - not syncing: Oops: Fatal exception in interrupt
-> [    2.871034] SMP: stopping secondary CPUs
-> [    2.871418] Kernel Offset: disabled
-> [    2.871750] CPU features: 0x4000,0820b021,00001086
-> [    2.872204] Memory Limit: none
-> [    2.872507] ---[ end Kernel panic - not syncing: Oops: Fatal exception in interrupt ]---
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+On Fri, Oct 07, 2022 at 02:10:11PM -0700, KernelCI bot wrote:
+
+The KernelCI bisection bot found a boot problem on today's -next=20
+on rk3328-rock64 with a defconfig plus debug fragments triggered by
+cb1b1dd96241f ("clk: Set req_rate on reparenting").  The log doesn't
+show any obvious warnings but simply stalls out after:
+
+[  258.676722][    T1] pps_core: LinuxPPS API ver. 1 registered
+[  258.684929][    T1] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 =
+Rodolfo Giometti <giometti@linux.it>
+[  258.788655][    T1] PTP clock support registered
+[  259.246358][    T1] EDAC MC: Ver: 3.0.0
+
+It seems like the performance of the system has been dramatically
+reduced, current mainline boots with the same kernel config show we're
+reaching that point after only 5s:
+
+[    5.577047][    T1] PTP clock support registered
+[    5.585556][    T1] EDAC MC: Ver: 3.0.0
+
+and getting to a prompt after a bit over a minute which is much more
+viable.  There do seem to be a kasan issues in mainline in some
+combination of the clock and ASoC code though, log at:
+
+   https://storage.kernelci.org/mainline/master/v6.0-9423-g493ffd6605b2d/ar=
+m64/defconfig%2Bdebug/gcc-10/lab-baylibre/baseline-rk3328-rock64.txt
+
+The full config is:
+
+   https://storage.kernelci.org/next/master/next-20221005/arm64/defconfig+d=
+ebug/gcc-10/config/kernel.config
+
+The debug fragment is:
+
+   https://storage.kernelci.org/next/master/next-20221005/arm64/defconfig+d=
+ebug/gcc-10/config/kernelci.config
+
+I've left the full bot report, including links to the full logs and
+other information plus a tag for the bot below:
+
+> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+> * This automated bisection report was sent to you on the basis  *
+> * that you may be involved with the breaking commit it has      *
+> * found.  No manual investigation has been done to verify it,   *
+> * and the root cause of the problem may be somewhere else.      *
+> *                                                               *
+> * If you do send a fix, please include this trailer:            *
+> *   Reported-by: "kernelci.org bot" <bot@kernelci.org>          *
+> *                                                               *
+> * Hope this helps!                                              *
+> * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+>=20
+> next/master bisection: baseline.login on rk3328-rock64
+>=20
+> Summary:
+>   Start:      67ae4f7434cee Add linux-next specific files for 20221005
+>   Plain log:  https://storage.kernelci.org/next/master/next-20221005/arm6=
+4/defconfig+debug/gcc-10/lab-baylibre/baseline-rk3328-rock64.txt
+>   HTML log:   https://storage.kernelci.org/next/master/next-20221005/arm6=
+4/defconfig+debug/gcc-10/lab-baylibre/baseline-rk3328-rock64.html
+>   Result:     cb1b1dd96241f clk: Set req_rate on reparenting
+>=20
+> Checks:
+>   revert:     PASS
+>   verify:     PASS
+>=20
+> Parameters:
+>   Tree:       next
+>   URL:        https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-=
+next.git
+>   Branch:     master
+>   Target:     rk3328-rock64
+>   CPU arch:   arm64
+>   Lab:        lab-baylibre
+>   Compiler:   gcc-10
+>   Config:     defconfig+debug
+>   Test case:  baseline.login
+>=20
+> Breaking commit found:
+>=20
+> -------------------------------------------------------------------------=
+------
+> commit cb1b1dd96241f37ea41d241946d5153c48141cd5
+> Author: Maxime Ripard <maxime@cerno.tech>
+> Date:   Tue Aug 16 13:25:18 2022 +0200
+>=20
+>     clk: Set req_rate on reparenting
+>    =20
+>     If a non-rate clock started by default with a parent that never
+>     registered, core->req_rate will be 0. The expectation is that whenever
+>     the parent will be registered, req_rate will be updated with the new
+>     value that has just been computed.
+>    =20
+>     However, if that clock is a mux, clk_set_parent() can also make that
+>     clock no longer orphan. In this case however, we never update req_rat=
+e.
+>    =20
+>     The natural solution to this would be to update core->rate and
+>     core->req_rate in clk_reparent() by calling clk_recalc().
+>    =20
+>     However, this doesn't work in all cases. Indeed, clk_recalc() is call=
+ed
+>     by __clk_set_parent_before(), __clk_set_parent() and
+>     clk_core_reparent(). Both __clk_set_parent_before() and __clk_set_par=
+ent
+>     will call clk_recalc() with the enable_lock taken through a call to
+>     clk_enable_lock(), the underlying locking primitive being a spinlock.
+>    =20
+>     clk_recalc() calls the backing driver .recalc_rate hook, and that
+>     implementation might sleep if the underlying device uses a bus with
+>     accesses that might sleep, such as i2c.
+>    =20
+>     In such a situation, we would end up sleeping while holding a spinloc=
+k,
+>     and thus in an atomic section.
+>    =20
+>     In order to work around this, we can move the core->rate and
+>     core->req_rate update to the clk_recalc() calling sites, after the
+>     enable_lock has been released if it was taken.
+>    =20
+>     The only situation that could still be problematic is the
+>     clk_core_reparent() -> clk_reparent() case that doesn't have any
+>     locking. clk_core_reparent() is itself called by clk_hw_reparent(),
+>     which is then called by 4 drivers:
+>    =20
+>       * clk-stm32mp1.c, stm32/clk-stm32-core.c and tegra/clk-tegra210-emc=
+=2Ec
+>         use it in their set_parent implementation. The set_parent hook is
+>         only called by __clk_set_parent() and clk_change_rate(), both of
+>         them calling it without the enable_lock taken.
+>    =20
+>       * clk/tegra/clk-tegra124-emc.c calls it as part of its set_rate
+>         implementation. set_rate is only called by clk_change_rate(), aga=
+in
+>         without the enable_lock taken.
+>    =20
+>     In both cases we can't end up in a situation where the clk_hw_reparen=
+t()
+>     caller would hold a spinlock, so it seems like this is a good
+>     workaround.
+>    =20
+>     Let's also add some unit tests to make sure we cover the original bug.
+>    =20
+>     Tested-by: Alexander Stein <alexander.stein@ew.tq-group.com> # imx8mp
+>     Tested-by: Marek Szyprowski <m.szyprowski@samsung.com> # exynos4210, =
+meson g12b
+>     Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+>     Link: https://lore.kernel.org/r/20220816112530.1837489-14-maxime@cern=
+o.tech
+>     Tested-by: Linux Kernel Functional Testing <lkft@linaro.org>
+>     Tested-by: Naresh Kamboju <naresh.kamboju@linaro.org>
+>     Signed-off-by: Stephen Boyd <sboyd@kernel.org>
+>=20
+> diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+> index 53b28e63deae3..91bb1ea0e147b 100644
+> --- a/drivers/clk/clk.c
+> +++ b/drivers/clk/clk.c
+> @@ -1765,6 +1765,23 @@ static void clk_core_update_orphan_status(struct c=
+lk_core *core, bool is_orphan)
+>  		clk_core_update_orphan_status(child, is_orphan);
+>  }
+> =20
+> +/*
+> + * Update the orphan rate and req_rate of @core and all its children.
+> + */
+> +static void clk_core_update_orphan_child_rates(struct clk_core *core)
+> +{
+> +	struct clk_core *child;
+> +	unsigned long parent_rate =3D 0;
+> +
+> +	if (core->parent)
+> +		parent_rate =3D core->parent->rate;
+> +
+> +	core->rate =3D core->req_rate =3D clk_recalc(core, parent_rate);
+> +
+> +	hlist_for_each_entry(child, &core->children, child_node)
+> +		clk_core_update_orphan_child_rates(child);
+> +}
+> +
+>  static void clk_reparent(struct clk_core *core, struct clk_core *new_par=
+ent)
+>  {
+>  	bool was_orphan =3D core->orphan;
+> @@ -1834,6 +1851,8 @@ static struct clk_core *__clk_set_parent_before(str=
+uct clk_core *core,
+>  	clk_reparent(core, parent);
+>  	clk_enable_unlock(flags);
+> =20
+> +	clk_core_update_orphan_child_rates(core);
+> +
+>  	return old_parent;
+>  }
+> =20
+> @@ -1878,6 +1897,8 @@ static int __clk_set_parent(struct clk_core *core, =
+struct clk_core *parent,
+>  		flags =3D clk_enable_lock();
+>  		clk_reparent(core, old_parent);
+>  		clk_enable_unlock(flags);
+> +
+> +		clk_core_update_orphan_child_rates(core);
+>  		__clk_set_parent_after(core, old_parent, parent);
+> =20
+>  		return ret;
+> @@ -2506,6 +2527,7 @@ static void clk_core_reparent(struct clk_core *core,
+>  				  struct clk_core *new_parent)
+>  {
+>  	clk_reparent(core, new_parent);
+> +	clk_core_update_orphan_child_rates(core);
+>  	__clk_recalc_accuracies(core);
+>  	__clk_recalc_rates(core, POST_RATE_CHANGE);
+>  }
+> diff --git a/drivers/clk/clk_test.c b/drivers/clk/clk_test.c
+> index d3e121f21ae21..d1b1372f7aaa9 100644
+> --- a/drivers/clk/clk_test.c
+> +++ b/drivers/clk/clk_test.c
+> @@ -594,6 +594,41 @@ clk_test_orphan_transparent_multiple_parent_mux_set_=
+parent(struct kunit *test)
+>  	clk_put(clk);
+>  }
+> =20
+> +/*
+> + * Test that, for a mux that started orphan but got switched to a valid
+> + * parent, calling clk_drop_range() on the mux won't affect the parent
+> + * rate.
+> + */
+> +static void
+> +clk_test_orphan_transparent_multiple_parent_mux_set_parent_drop_range(st=
+ruct kunit *test)
+> +{
+> +	struct clk_multiple_parent_ctx *ctx =3D test->priv;
+> +	struct clk_hw *hw =3D &ctx->hw;
+> +	struct clk *clk =3D clk_hw_get_clk(hw, NULL);
+> +	struct clk *parent;
+> +	unsigned long parent_rate, new_parent_rate;
+> +	int ret;
+> +
+> +	parent =3D clk_hw_get_clk(&ctx->parents_ctx[1].hw, NULL);
+> +	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, parent);
+> +
+> +	parent_rate =3D clk_get_rate(parent);
+> +	KUNIT_ASSERT_GT(test, parent_rate, 0);
+> +
+> +	ret =3D clk_set_parent(clk, parent);
+> +	KUNIT_ASSERT_EQ(test, ret, 0);
+> +
+> +	ret =3D clk_drop_range(clk);
+> +	KUNIT_ASSERT_EQ(test, ret, 0);
+> +
+> +	new_parent_rate =3D clk_get_rate(clk);
+> +	KUNIT_ASSERT_GT(test, new_parent_rate, 0);
+> +	KUNIT_EXPECT_EQ(test, parent_rate, new_parent_rate);
+> +
+> +	clk_put(parent);
+> +	clk_put(clk);
+> +}
+> +
+>  /*
+>   * Test that, for a mux that started orphan but got switched to a valid
+>   * parent, the rate of the mux and its new parent are consistent.
+> @@ -625,6 +660,39 @@ clk_test_orphan_transparent_multiple_parent_mux_set_=
+parent_get_rate(struct kunit
+>  	clk_put(clk);
+>  }
+> =20
+> +/*
+> + * Test that, for a mux that started orphan but got switched to a valid
+> + * parent, calling clk_put() on the mux won't affect the parent rate.
+> + */
+> +static void
+> +clk_test_orphan_transparent_multiple_parent_mux_set_parent_put(struct ku=
+nit *test)
+> +{
+> +	struct clk_multiple_parent_ctx *ctx =3D test->priv;
+> +	struct clk *clk, *parent;
+> +	unsigned long parent_rate, new_parent_rate;
+> +	int ret;
+> +
+> +	parent =3D clk_hw_get_clk(&ctx->parents_ctx[1].hw, NULL);
+> +	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, parent);
+> +
+> +	clk =3D clk_hw_get_clk(&ctx->hw, NULL);
+> +	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, clk);
+> +
+> +	parent_rate =3D clk_get_rate(parent);
+> +	KUNIT_ASSERT_GT(test, parent_rate, 0);
+> +
+> +	ret =3D clk_set_parent(clk, parent);
+> +	KUNIT_ASSERT_EQ(test, ret, 0);
+> +
+> +	clk_put(clk);
+> +
+> +	new_parent_rate =3D clk_get_rate(parent);
+> +	KUNIT_ASSERT_GT(test, new_parent_rate, 0);
+> +	KUNIT_EXPECT_EQ(test, parent_rate, new_parent_rate);
+> +
+> +	clk_put(parent);
+> +}
+> +
+>  /*
+>   * Test that, for a mux that started orphan but got switched to a valid
+>   * parent, calling clk_set_rate_range() will affect the parent state if
+> @@ -658,6 +726,43 @@ clk_test_orphan_transparent_multiple_parent_mux_set_=
+parent_set_range_modified(st
+>  	clk_put(clk);
+>  }
+> =20
+> +/*
+> + * Test that, for a mux that started orphan but got switched to a valid
+> + * parent, calling clk_set_rate_range() won't affect the parent state if
+> + * its rate is within range.
+> + */
+> +static void
+> +clk_test_orphan_transparent_multiple_parent_mux_set_parent_set_range_unt=
+ouched(struct kunit *test)
+> +{
+> +	struct clk_multiple_parent_ctx *ctx =3D test->priv;
+> +	struct clk_hw *hw =3D &ctx->hw;
+> +	struct clk *clk =3D clk_hw_get_clk(hw, NULL);
+> +	struct clk *parent;
+> +	unsigned long parent_rate, new_parent_rate;
+> +	int ret;
+> +
+> +	parent =3D clk_hw_get_clk(&ctx->parents_ctx[1].hw, NULL);
+> +	KUNIT_ASSERT_NOT_ERR_OR_NULL(test, parent);
+> +
+> +	parent_rate =3D clk_get_rate(parent);
+> +	KUNIT_ASSERT_GT(test, parent_rate, 0);
+> +
+> +	ret =3D clk_set_parent(clk, parent);
+> +	KUNIT_ASSERT_EQ(test, ret, 0);
+> +
+> +	ret =3D clk_set_rate_range(clk,
+> +				 DUMMY_CLOCK_INIT_RATE - 1000,
+> +				 DUMMY_CLOCK_INIT_RATE + 1000);
+> +	KUNIT_ASSERT_EQ(test, ret, 0);
+> +
+> +	new_parent_rate =3D clk_get_rate(parent);
+> +	KUNIT_ASSERT_GT(test, new_parent_rate, 0);
+> +	KUNIT_EXPECT_EQ(test, parent_rate, new_parent_rate);
+> +
+> +	clk_put(parent);
+> +	clk_put(clk);
+> +}
+> +
+>  /*
+>   * Test that, for a mux whose current parent hasn't been registered yet,
+>   * calling clk_set_rate_range() will succeed, and will be taken into
+> @@ -724,8 +829,11 @@ clk_test_orphan_transparent_multiple_parent_mux_set_=
+range_set_parent_get_rate(st
+>  static struct kunit_case clk_orphan_transparent_multiple_parent_mux_test=
+_cases[] =3D {
+>  	KUNIT_CASE(clk_test_orphan_transparent_multiple_parent_mux_get_parent),
+>  	KUNIT_CASE(clk_test_orphan_transparent_multiple_parent_mux_set_parent),
+> +	KUNIT_CASE(clk_test_orphan_transparent_multiple_parent_mux_set_parent_d=
+rop_range),
+>  	KUNIT_CASE(clk_test_orphan_transparent_multiple_parent_mux_set_parent_g=
+et_rate),
+> +	KUNIT_CASE(clk_test_orphan_transparent_multiple_parent_mux_set_parent_p=
+ut),
+>  	KUNIT_CASE(clk_test_orphan_transparent_multiple_parent_mux_set_parent_s=
+et_range_modified),
+> +	KUNIT_CASE(clk_test_orphan_transparent_multiple_parent_mux_set_parent_s=
+et_range_untouched),
+>  	KUNIT_CASE(clk_test_orphan_transparent_multiple_parent_mux_set_range_ro=
+und_rate),
+>  	KUNIT_CASE(clk_test_orphan_transparent_multiple_parent_mux_set_range_se=
+t_parent_get_rate),
+>  	{}
+> @@ -1021,6 +1129,136 @@ static struct kunit_suite clk_orphan_transparent_=
+single_parent_test_suite =3D {
+>  	.test_cases =3D clk_orphan_transparent_single_parent_mux_test_cases,
+>  };
+> =20
+> +struct clk_single_parent_two_lvl_ctx {
+> +	struct clk_dummy_context parent_parent_ctx;
+> +	struct clk_dummy_context parent_ctx;
+> +	struct clk_hw hw;
+> +};
+> +
+> +static int
+> +clk_orphan_two_level_root_last_test_init(struct kunit *test)
+> +{
+> +	struct clk_single_parent_two_lvl_ctx *ctx;
+> +	int ret;
+> +
+> +	ctx =3D kunit_kzalloc(test, sizeof(*ctx), GFP_KERNEL);
+> +	if (!ctx)
+> +		return -ENOMEM;
+> +	test->priv =3D ctx;
+> +
+> +	ctx->parent_ctx.hw.init =3D
+> +		CLK_HW_INIT("intermediate-parent",
+> +			    "root-parent",
+> +			    &clk_dummy_single_parent_ops,
+> +			    CLK_SET_RATE_PARENT);
+> +	ret =3D clk_hw_register(NULL, &ctx->parent_ctx.hw);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ctx->hw.init =3D
+> +		CLK_HW_INIT("test-clk", "intermediate-parent",
+> +			    &clk_dummy_single_parent_ops,
+> +			    CLK_SET_RATE_PARENT);
+> +	ret =3D clk_hw_register(NULL, &ctx->hw);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ctx->parent_parent_ctx.rate =3D DUMMY_CLOCK_INIT_RATE;
+> +	ctx->parent_parent_ctx.hw.init =3D
+> +		CLK_HW_INIT_NO_PARENT("root-parent",
+> +				      &clk_dummy_rate_ops,
+> +				      0);
+> +	ret =3D clk_hw_register(NULL, &ctx->parent_parent_ctx.hw);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+> +
+> +static void
+> +clk_orphan_two_level_root_last_test_exit(struct kunit *test)
+> +{
+> +	struct clk_single_parent_two_lvl_ctx *ctx =3D test->priv;
+> +
+> +	clk_hw_unregister(&ctx->hw);
+> +	clk_hw_unregister(&ctx->parent_ctx.hw);
+> +	clk_hw_unregister(&ctx->parent_parent_ctx.hw);
+> +}
+> +
+> +/*
+> + * Test that, for a clock whose parent used to be orphan, clk_get_rate()
+> + * will return the proper rate.
+> + */
+> +static void
+> +clk_orphan_two_level_root_last_test_get_rate(struct kunit *test)
+> +{
+> +	struct clk_single_parent_two_lvl_ctx *ctx =3D test->priv;
+> +	struct clk_hw *hw =3D &ctx->hw;
+> +	struct clk *clk =3D clk_hw_get_clk(hw, NULL);
+> +	unsigned long rate;
+> +
+> +	rate =3D clk_get_rate(clk);
+> +	KUNIT_EXPECT_EQ(test, rate, DUMMY_CLOCK_INIT_RATE);
+> +
+> +	clk_put(clk);
+> +}
+> +
+> +/*
+> + * Test that, for a clock whose parent used to be orphan,
+> + * clk_set_rate_range() won't affect its rate if it is already within
+> + * range.
+> + *
+> + * See (for Exynos 4210):
+> + * https://lore.kernel.org/linux-clk/366a0232-bb4a-c357-6aa8-636e398e05e=
+b@samsung.com/
+> + */
+> +static void
+> +clk_orphan_two_level_root_last_test_set_range(struct kunit *test)
+> +{
+> +	struct clk_single_parent_two_lvl_ctx *ctx =3D test->priv;
+> +	struct clk_hw *hw =3D &ctx->hw;
+> +	struct clk *clk =3D clk_hw_get_clk(hw, NULL);
+> +	unsigned long rate;
+> +	int ret;
+> +
+> +	ret =3D clk_set_rate_range(clk,
+> +				 DUMMY_CLOCK_INIT_RATE - 1000,
+> +				 DUMMY_CLOCK_INIT_RATE + 1000);
+> +	KUNIT_ASSERT_EQ(test, ret, 0);
+> +
+> +	rate =3D clk_get_rate(clk);
+> +	KUNIT_ASSERT_GT(test, rate, 0);
+> +	KUNIT_EXPECT_EQ(test, rate, DUMMY_CLOCK_INIT_RATE);
+> +
+> +	clk_put(clk);
+> +}
+> +
+> +static struct kunit_case
+> +clk_orphan_two_level_root_last_test_cases[] =3D {
+> +	KUNIT_CASE(clk_orphan_two_level_root_last_test_get_rate),
+> +	KUNIT_CASE(clk_orphan_two_level_root_last_test_set_range),
+> +	{}
+> +};
+> +
+> +/*
+> + * Test suite for a basic, transparent, clock with a parent that is also
+> + * such a clock. The parent's parent is registered last, while the
+> + * parent and its child are registered in that order. The intermediate
+> + * and leaf clocks will thus be orphan when registered, but the leaf
+> + * clock itself will always have its parent and will never be
+> + * reparented. Indeed, it's only orphan because its parent is.
+> + *
+> + * These tests exercise the behaviour of the consumer API when dealing
+> + * with an orphan clock, and how we deal with the transition to a valid
+> + * parent.
+> + */
+> +static struct kunit_suite
+> +clk_orphan_two_level_root_last_test_suite =3D {
+> +	.name =3D "clk-orphan-two-level-root-last-test",
+> +	.init =3D clk_orphan_two_level_root_last_test_init,
+> +	.exit =3D clk_orphan_two_level_root_last_test_exit,
+> +	.test_cases =3D clk_orphan_two_level_root_last_test_cases,
+> +};
+> +
+>  /*
+>   * Test that clk_set_rate_range won't return an error for a valid range
+>   * and that it will make sure the rate of the clock is within the
+> @@ -1729,6 +1967,7 @@ kunit_test_suites(
+>  	&clk_multiple_parents_mux_test_suite,
+>  	&clk_orphan_transparent_multiple_parent_mux_test_suite,
+>  	&clk_orphan_transparent_single_parent_test_suite,
+> +	&clk_orphan_two_level_root_last_test_suite,
+>  	&clk_range_test_suite,
+>  	&clk_range_maximize_test_suite,
+>  	&clk_range_minimize_test_suite,
+> -------------------------------------------------------------------------=
+------
+>=20
+>=20
+> Git bisection log:
+>=20
+> -------------------------------------------------------------------------=
+------
+> git bisect start
+> # good: [40a5af128af54dc0fbd06e11ef2d8a693e25d33f] Merge tag 'samsung-dt-=
+dt64-6.1-2' of https://git.kernel.org/pub/scm/linux/kernel/git/krzk/linux i=
+nto arm/dt
+> git bisect good 40a5af128af54dc0fbd06e11ef2d8a693e25d33f
+> # bad: [67ae4f7434cee86ee318d46fb10b8a9840ad2e81] Add linux-next specific=
+ files for 20221005
+> git bisect bad 67ae4f7434cee86ee318d46fb10b8a9840ad2e81
+> # bad: [7755a2e51417434920d2727d1e8a13b6b7bc2a7b] Merge branch 'master' o=
+f git://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git
+> git bisect bad 7755a2e51417434920d2727d1e8a13b6b7bc2a7b
+> # good: [d4e9325a5c3e933944240648fb59b32cc8354536] Merge branch 'for-next=
+' of git://git.kernel.org/pub/scm/linux/kernel/git/krzk/linux.git
+> git bisect good d4e9325a5c3e933944240648fb59b32cc8354536
+> # good: [62c07983bef9d3e78e71189441e1a470f0d1e653] once: add DO_ONCE_SLOW=
+() for sleepable contexts
+> git bisect good 62c07983bef9d3e78e71189441e1a470f0d1e653
+> # bad: [15be0f33185304d3031c6226fe999be86aaeb0d4] Merge branch '9p-next' =
+of git://github.com/martinetd/linux
+> git bisect bad 15be0f33185304d3031c6226fe999be86aaeb0d4
+> # bad: [fb41178108eaf0ad17a9d76dc2be4cc46c57b47c] Merge branch 'next' of =
+git://git.kernel.org/pub/scm/linux/kernel/git/powerpc/linux.git
+> git bisect bad fb41178108eaf0ad17a9d76dc2be4cc46c57b47c
+> # bad: [0e343aed45e3f4f893ac2766331ca7961c164ec8] Merge branch 'clk-next'=
+ of git://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git
+> git bisect bad 0e343aed45e3f4f893ac2766331ca7961c164ec8
+> # good: [26bebbfed5bd06fd7202fd1befa6c2c935a593e8] Merge branches 'clk-ro=
+ckchip', 'clk-renesas', 'clk-microchip', 'clk-allwinner' and 'clk-imx' into=
+ clk-next
+> git bisect good 26bebbfed5bd06fd7202fd1befa6c2c935a593e8
+> # good: [f9efefdba95a5110a1346bb03acdd8ff3cdf557f] Merge branches 'clk-ba=
+ikal', 'clk-broadcom', 'clk-vc5' and 'clk-versaclock' into clk-next
+> git bisect good f9efefdba95a5110a1346bb03acdd8ff3cdf557f
+> # good: [3b989d7c1cfc79eb79676cd5440d0fbf98d42148] Merge branch 'for-next=
+' of git://git.kernel.org/pub/scm/linux/kernel/git/tegra/linux.git
+> git bisect good 3b989d7c1cfc79eb79676cd5440d0fbf98d42148
+> # bad: [718af795d3fd786928506cd5251597fbe29c7fda] clk: Change clk_core_in=
+it_rate_req prototype
+> git bisect bad 718af795d3fd786928506cd5251597fbe29c7fda
+> # good: [7d79c26b60e623a9a089d771f81c5997bda577cd] clk: tests: Add refere=
+nce to the orphan mux bug report
+> git bisect good 7d79c26b60e623a9a089d771f81c5997bda577cd
+> # good: [74933ef22c1c3d3d1456c2f949f1910ce2aab1f1] clk: tests: Add tests =
+for mux with multiple parents
+> git bisect good 74933ef22c1c3d3d1456c2f949f1910ce2aab1f1
+> # good: [3afb07231d603d51dca6a5d5e16d9d8f422f9b5f] clk: Take into account=
+ uncached clocks in clk_set_rate_range()
+> git bisect good 3afb07231d603d51dca6a5d5e16d9d8f422f9b5f
+> # bad: [cb1b1dd96241f37ea41d241946d5153c48141cd5] clk: Set req_rate on re=
+parenting
+> git bisect bad cb1b1dd96241f37ea41d241946d5153c48141cd5
+> # first bad commit: [cb1b1dd96241f37ea41d241946d5153c48141cd5] clk: Set r=
+eq_rate on reparenting
+> -------------------------------------------------------------------------=
+------
+>=20
+>=20
+> -=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-
+> Groups.io Links: You receive all messages sent to this group.
+> View/Reply Online (#32442): https://groups.io/g/kernelci-results/message/=
+32442
+> Mute This Topic: https://groups.io/mt/94189147/1131744
+> Group Owner: kernelci-results+owner@groups.io
+> Unsubscribe: https://groups.io/g/kernelci-results/unsub [broonie@kernel.o=
+rg]
+> -=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-=3D-
+>=20
+>=20
+
+--ToVdk7XFfLxJF69E
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmNEDUoACgkQJNaLcl1U
+h9Aizwf/Rpy8KNOzfv8snbMu/K0VaCMmabX6jV/lkgmxqclalEwXrHC3pTVBD6Ls
+lL3vOYoSSiJJmr0i3ywwv8ok2rEUY33Wrl9Ux40jmrkK8A/9ECLt/fvsTMnBwDym
+ht0ooKzZFLZdEevxvTM5tV7Eu8aA9mCHvHwZTpXRWSPmv4lajF0OyonUbGrP/K+X
+fnXCdkZtrYE9e4P+ZJFSrGnPHH+K3WbxV/Serl24h4TNK4xoAdp61HXWrR115o0W
+1ntN9b80wskVuWsjPVGAUDOrKxjbHWE7KpjWjw2MLTDIcKu3C1VfucTIoq/wNNJ6
+ekvT/QP7CpazLf0CikztocJLJEfPuA==
+=DxWZ
+-----END PGP SIGNATURE-----
+
+--ToVdk7XFfLxJF69E--
+
+
+--===============6807365580126290510==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6807365580126290510==--
+
