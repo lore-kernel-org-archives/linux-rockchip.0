@@ -4,71 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BCCDC433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Oct 2022 01:50:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CF38C433FE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 11 Oct 2022 04:42:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R0E5fTFhQ+6kppHMwXtyrWqOGfJd6Zp0XRud2wYgqhc=; b=OnjCGMFDoNFAVM
-	dt73J7DAqBoDO9RfcsYF9pp97CWVlgJ4ou2r12RB1AGzsRpob7/Em0Xl3Ru1YT8qev/+wBgh50p16
-	91Ra8lkqmf6GqIX1Em3wZiyLIMb3dddWzrsRwPpo9RHmNXcp8MVKVJn4wtPvjXBd57XW0qJ6HS93s
-	oVX9z6qQsIGRFEJjpZiTdU7nJbs1EiD0NDkFN5FBrHuymnXs3ht3/TAr4bDMhuPaPQVGrW+JlDks+
-	WhCVUc5ltxBHOjiCOOFKiDG0t4ShZm+BOh8kNPr0aOCeePO7Q+WFtlgVSdqRdwt8wQgFh6hvvjnYD
-	YzOJo4h7VZ8k63z8VSOg==;
+	List-Owner; bh=UGixTFzTYExnpUhg8ai17bu25IUFKYhk/6YktdTAuQU=; b=RE0cF4lgyVFoqA
+	xABbNNp4oYCdrRqMxEvcnGiLJu7tNQkWAVknM5xGBA1H2sl/906zR7FWcwbX23TUH/d/UKRIYfEfi
+	7SaGJ4o05qR9ukezT+5npPoX9trFOgUAVGJgVO05xC7dv9g9kgf2JXkHqnL+i1qhyq10aTdRclNlF
+	Unu2CfupnrMkczYTLJiw/egoQm+iMekfAhenXdSLZRKeL0K7FRGxeHoPxRK3In/an87z93K0BCGkt
+	CmdafdEcx9o+hFhPvVM8F1Pd0Pno5WScOHU+k5WTrslTe2g07VW0W3uA2n/XRX6wpmNhZHDN9HfSW
+	0mGAxGObVCj/1/LBhMxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oi4PA-002wqc-K6; Tue, 11 Oct 2022 01:50:00 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1oi75K-003GVh-Ty; Tue, 11 Oct 2022 04:41:42 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oi4P6-002wpq-UY
-	for linux-rockchip@lists.infradead.org; Tue, 11 Oct 2022 01:49:58 +0000
-Received: by mail-wm1-x333.google.com with SMTP id i64-20020a1c3b43000000b003c6bf423c71so215907wma.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 10 Oct 2022 18:49:55 -0700 (PDT)
+	id 1oi759-003GSq-Uv
+	for linux-rockchip@lists.infradead.org; Tue, 11 Oct 2022 04:41:34 +0000
+Received: by mail-pg1-x532.google.com with SMTP id s206so11904475pgs.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 10 Oct 2022 21:41:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=jicEMjtz6mRuFBKZc1GxKfx0ub+KShMfQywfLmlQ1cc=;
-        b=Bin48rQKCrs4x9RM2+dJDqdwfASr+mA5RQVlTOtY9gWz1fo1ecedXHhM+I/RqgtevI
-         eYLdm/QyU4fk9/0YHzQvp53/m8OIqiuSqh5AwO/i+Da1NS1zLkLeVjaeb3suNSc5uWcu
-         kMiqqW/+Ov2pu2synnh+CyH1M329/SHDuJwZJkG+osnmXICA73JFE8hnwxBJyJ7DzTrq
-         xW5JrHReqUuuazzFS/WbuZ7ha4MIO0RupdRsQTLnz8QluPefZpOU9kCpEKDy37SH0Dwy
-         RwHcR0cROQJma0npnELipQ35V5ZA1CfKgoElTSOAw0DiZSMuSZycCfop0wfHmBl3o66w
-         qKrA==
+        d=omnom-net.20210112.gappssmtp.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=RIvDTD88Q5aqj0y5uenzJkWztoDkBAY3byn/dBOudeE=;
+        b=EVA5wQHpq0CK/mlaafqza8TV+2AW5CwpjLiSkAtQMcrFNtma67C98aFiD6LL7oumiJ
+         4Z/4sh82hlDE9sHeBUO1GTAN5NfO8eXvfzZAz2yhpjIelZ5qyah8J4SZuY6grAcCgoES
+         1AX3vKcks4rGIpnMFwkxsJGhIL+Zd+/u9A9l8370pQAGbB3Y1kCXa6qJMxN4rDuyfsG6
+         rPP367hdQPMa9RTQ4xbwhFQGxpc00kwISKPWO1E2jK0z2Lq+lNu8+DqYGLcfU7aYb23E
+         KDbkB8X6gp6a/z9b6DNoRmTJ6BkfIVnSBs9u1wUEhZTWjrx0u9PFesGBfCUGL34TZ99H
+         W8aQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=jicEMjtz6mRuFBKZc1GxKfx0ub+KShMfQywfLmlQ1cc=;
-        b=IAcJSf5GT55mQ1BiLtYS0JvwDCWBOM9t3aYkDd7O2JSEkhY5tb28YtdAKoAbtKfb/x
-         XA18Kx35yyy6+tNJbqC6M/zpXYOZ3hlY788uCflNwKNrRffAzNv50P6bx3Rs9pqC5DMI
-         yYsgGeSEOhpzFXkon6YghLVyIpY5fOEdvbe+BbARw3DlPwpNPHS7Dc0h/YZMkBYvCu8f
-         68cvTDqLR69f4dRfyuxQbrghQNJGBOim1XBNjEkdzfA1LtluyB19wQdGMAL1l3Vo4O0f
-         vopOtEpALcCGG+4E1xbDD+NDpWfRurkLsUWXgNYNSRyrEOhphRMYt5zSbCsFQn+zXaLt
-         PDuQ==
-X-Gm-Message-State: ACrzQf2seuuwdwtZDfGoHXX7PJaPBz+cuD1ajQ6BFZCKtrjUJF7xiBvX
-	IT6zm5IMwrlzU8ErbWgUx0PsDHjMJiyv/cv7Ggk=
-X-Google-Smtp-Source: AMsMyM5USsKg/AD1g++ElT//c977lsYwWUBHeZUaV8p8dbuOFyEsMj97wzjuO0CWDiyFpjRabPVlKzjSDnPk1MaiC/k=
-X-Received: by 2002:a1c:ed11:0:b0:3b4:d3e1:bec with SMTP id
- l17-20020a1ced11000000b003b4d3e10becmr14472804wmh.196.1665452992858; Mon, 10
- Oct 2022 18:49:52 -0700 (PDT)
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=RIvDTD88Q5aqj0y5uenzJkWztoDkBAY3byn/dBOudeE=;
+        b=tXTQ0AbT2dj3nQQhOHP77EjHdZtxqN91uK/N/fxFGJ62kgt1S2ahC49F0L3TOsTGw9
+         rSZIWKilwYIUCuel+5YTlRvjKXgJfiPqT0JtrHF7bl9iqGGzOrNbSUM9nFMyXFWRG5b6
+         SLBatZQ1Nsx8/2Lh+meVgVxgUaIT/aSgLSI3aPueV+eN5kVq81w3sv6QsITplUpc3x9x
+         P0F1UOIUZw7ri5Qz3P+SxU4Y/2VJ24WYGBZ6jMHfapvwRw1nGTsZ0XiyVn7stkNITa+V
+         0QT85tZCdUoFWRNdea+aLaWZe9Gxy6LKkN5riXC8s2U5Cuh4j997AIjklWV2j2Kj5iQ0
+         rQUw==
+X-Gm-Message-State: ACrzQf035hCyv2ru7BBupAay60toaoKKCAaqqO+6HPiw+als23378gep
+	+9MyavU/w6etSC9Hx5s4fng02g==
+X-Google-Smtp-Source: AMsMyM5Ez+kjDNPf2UflpLcuXB5SAY/OVRHOD5ckuoNILqYaRp1mBkiKDWnx55PKC1x4lOInCKyTEw==
+X-Received: by 2002:aa7:9d11:0:b0:563:9272:b659 with SMTP id k17-20020aa79d11000000b005639272b659mr4800544pfp.86.1665463290135;
+        Mon, 10 Oct 2022 21:41:30 -0700 (PDT)
+Received: from [172.21.10.158] (119-18-16-128.771210.mel.static.aussiebb.net. [119.18.16.128])
+        by smtp.gmail.com with ESMTPSA id 123-20020a620481000000b00562832fc0ffsm7768342pfe.56.2022.10.10.21.41.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 10 Oct 2022 21:41:29 -0700 (PDT)
+Message-ID: <5bec43fe-ff81-bc68-7b62-9e605b7e1f42@omnom.net>
+Date: Tue, 11 Oct 2022 15:41:20 +1100
 MIME-Version: 1.0
-References: <0ec9541a-8d8c-0fc0-d158-73ba949169a3@pscan.uk> <SN6PR06MB5342D159E9E83EAA4FEE9CDBA5239@SN6PR06MB5342.namprd06.prod.outlook.com>
-In-Reply-To: <SN6PR06MB5342D159E9E83EAA4FEE9CDBA5239@SN6PR06MB5342.namprd06.prod.outlook.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Mon, 10 Oct 2022 21:49:40 -0400
-Message-ID: <CAMdYzYq6vbYgG_c1O3_pR1nNRWLK2QUim0rQ4PZiucU=vVK1Ng@mail.gmail.com>
-Subject: Re: More RK817 questions
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: Philip C <subs@pscan.uk>, Maciej Matuszczyk <maccraft123mc@gmail.com>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.1
+Subject: Re: [PATCH v5 1/5] dt-bindings: phy: rockchip: add PCIe v3 phy
+Content-Language: en-US
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Frank Wunderlich <linux@fw-web.de>
+Cc: Rob Herring <robh@kernel.org>, linux-rockchip@lists.infradead.org,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>,
+ Peter Geis <pgwipeout@gmail.com>, Simon Xue <xxm@rock-chips.com>,
+ Liang Chen <cl@rock-chips.com>, Shawn Lin <shawn.lin@rock-chips.com>,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+References: <20220825193836.54262-1-linux@fw-web.de>
+ <20220825193836.54262-2-linux@fw-web.de>
+ <20221004150929.GA1506199-robh@kernel.org>
+ <EC42D2C8-ACA5-4B6A-BC95-534CBDFC36C8@fw-web.de>
+ <20221004205744.q5eybgbx6syszsqq@mercury.elektranox.org>
+From: Andrew Powers-Holmes <aholmes@omnom.net>
+In-Reply-To: <20221004205744.q5eybgbx6syszsqq@mercury.elektranox.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221010_184957_028523_12E14E7B 
-X-CRM114-Status: GOOD (  46.73  )
+X-CRM114-CacheID: sfid-20221010_214132_007879_03F29EBA 
+X-CRM114-Status: GOOD (  16.45  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,110 +106,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 10, 2022 at 8:47 PM Chris Morgan <macromorgan@hotmail.com> wrote:
->
-> On Mon, Oct 10, 2022 at 08:33:48PM +0100, Philip C wrote:
-> > Hi Peter, Chris and Maya
+On 5/10/2022 7:57 am, Sebastian Reichel wrote:
+> Hi,
+> 
+> On Tue, Oct 04, 2022 at 05:19:11PM +0200, Frank Wunderlich wrote:
+>> Am 4. Oktober 2022 17:09:29 MESZ schrieb Rob Herring <robh@kernel.org>:
+>>> On Thu, Aug 25, 2022 at 09:38:32PM +0200, Frank Wunderlich wrote:
+>>>> From: Frank Wunderlich <frank-w@public-files.de>
+>>
+>>>> +properties:
+>>>> +  compatible:
+>>>> +    enum:
+>>>> +      - rockchip,rk3568-pcie3-phy
+>>>
+>>> The driver also has 'rockchip,rk3588-pcie3-phy'. Please send a fix 
+>>> adding it here or removing from the driver. Are they not compatible with 
+>>> each other?
+>>
+>> Right, original driver has rk3588 support,but we can't test it.
+>> Initialization and lane-mapping (bifurcation) was bit different.
+>> So we wanted to upstream rk3568 first (but have not removed this
+>> part from driver).
+>>
+>> I see that someone added rk3588 basic support and if he can test
+>> rk3588 i can send compatible for it.
+> 
+> Basic rk3588 support is still WIP. At the moment patches for the CRU
+> are still pending as well as base DT. I hope to land them for v6.2
+> (so next merge window). At the same time I don't think PCIe support
+> is realistic before v6.3.
 
-Good Evening,
+Hi all,
 
-> >
-> > I'm not going to bother with the rockchip list because I think that you are
-> > the only three that will be interested in this.
+I can confirm this patchset successfully brings up the PCIe 3.0
+controller/PHY on an RK3588 - I'm using a Pine64 QuartzPro64, which is
+very similar to the Rockchip RK3588-EVB1 board. Runs fine at x1, x2, x4
+lane widths and full 8GT/s lane throughput.
 
-I have added the Rockchip mailing list so they can get a heads up about this.
+The PCIe 2.0 lanes (which use the same PCIe controller driver) need some
+changes to the rockchip-naneng-combphy driver that I've not quite gotten
+to a working state, but that's unrelated to this series.
 
-> >
-> > I did a bit of hacking of the 4.19 BSP kernel on my device to see how the 5V
-> > rail of the USB port works, and I am pretty sure that I understand it now.
-> >
-> > I think that /power/supply/rk817_charger.c registers itself as an extcon
-> > with /phy/rockchip/phy-rockchip-inno-inno-usb2.c for notification when the
-> > state of usb2phy0 changes.
-> >
-> > Specifically within rk817_charger.c there is a function
-> > rk817_charge_host_evt_worker which reacts to the notifications from the phy
-> > and runs rk817_charge_set_otg_state(charge, USB_OTG_POWER_ON)
-> >
-> > This won't be true of all devices, only those (like mine) that have the
-> > EXTCON=<&usb2phy0> option set in dts for the RK817.
+I have a (very messy) tree based on v6.0 (on GitHub at [0]) with
+Sebastian's other RK3588 support patches dropped in, along with this
+series and a few other tweaks. Works quite well :)
 
-I suggest you look closely at how this was implemented in mainline.
-You'll notice we do things significantly differently.
+So insofar as RK3588 support is concerned,
 
-> >
-> > I have done enough experimentation with my device to prove that if I upset
-> > this particular mechanism that that 5V is not applied to the USB port when
-> > it should be, so I really do think that this is how it works in BSP.
-> >
-> > Looking in mainline is interesting, because the concept of another driver
-> > registering with phy-rockchip-inno-usb2.c for updates when the phy state
-> > changes are still there, all be it with different messages.
-> >
-> > So now for my questions:-
-> >
-> > Do you folks have any plans to write something into mainline rk817_charger.c
-> > to register with the phy for notifications and switch on the OTG power?
->
-> Not yet, but it's not a bad idea. Honestly I wonder if that's why my OTG USB
-> doesn't work on mainline... because I don't have the extcon set up properly.
+Tested-By: Andrew Powers-Holmes <aholmes@omnom.net>
 
-OTG works when set up correctly, look to the pinenote for how to set
-it up. It also works on soquartz when attached to a correct carrier
-board. There are a few kinks that needed to be worked out with the phy
-driver, they have landed in next and should trickle down to the stable
-kernels.
+[0] https://github.com/neggles/linux-quartz64/tree/qp64-pcie
 
->
-> >
-> > If not then would it be productive if I have a go myself?
->
-> Absolutely, let me know if you have questions. I might get around to it one day
-> but not in the next few weeks. I have a large stack of U-Boot technical debt I
-> have to pay.
-
-You really should have included the Rockchip, USB, and MFD mailing
-lists on this. That way they could tell you that the existing
-infrastructure does everything it needs to do. Downstream does a lot
-of naughty things to hack around limitations of hardware and the
-limitations of the coders. Mainline requires everything to be
-compliant with the various standards applicable, even if that means
-some things aren't capable of working to their full potential. It
-pushes for manufacturers to comply with the standards of the systems
-they implement.
-
->
-> >
-> > Do you consider rk817_charger.c the right place to have such code or should
-> > I be putting it somewhere else?
->
-> The rk817_charger.c driver in mainline currently only checks (via an IRQ) if
-> the power state has changed, if it has been plugged in or unplugged. Presumably
-> without looking at the phy driver you could always check the phy state when
-> this changes and then take the appropriate action? Otherwise we could set up
-> another IRQ or workqueue of some kind in the charger driver to listen for events
-> from the extcon.
->
-> The only gotcha is this *might* actually be something the main mfd rk808 driver
-> needs to do or the rk808 regulator driver (since I believe you need to simultaneously
-> shut off the BOOST regulator when you switch the OTG switch). Mark Brown/Broonie might
-> have some insight into that as he's the main guy for mfd drivers.
-
-The otg_switch is literally that, a switch. It exists to permit you to
-switch the voltage generated by the boost converter on and off to the
-usb_otg port when necessary without stopping the boost converter,
-which would kill anything else powered by it. The phy subsystem and
-the regulator subsystem handle this without the awful hacks downstream
-implemented. If you would like some help with getting your dts to
-work, you are welcome to reach out to the mailing list, or to me
-directly.
-
->
-> >
-> > thanks, Philip
-
-Very Respectfully,
-Peter Geis
+Cheers,
+A
 
 _______________________________________________
 Linux-rockchip mailing list
