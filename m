@@ -4,74 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92C9FC433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Oct 2022 13:53:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35124C433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Oct 2022 15:16:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KWAjBF/ppKLxgbJdIFu7ehIbjl3fP8pLFwYnbW4ez7g=; b=B60kBEgkcisrbs
-	ms9/vMtl1l7PfTbjqR2sj3p+SiiPkKcFDJUyO9NOwztmFPLT8taO6l2XUMBJFKPq2LTnA3TxGTGNo
-	8va8terCqIeYRq7s27gg+6BEUEDxXX2TtI6G2+cPrFz3YZC2tjMGnJQVXvyAy9tytGD1D+4nIONLa
-	nkGGPoQa5GDxsgjXNrbvZ47oPfprhmAqWbic+H4euXZMTXHqsmZNeM8QgOZX5hVmUZTJZ/FQbloSy
-	2HUPB9juUSFSfccizVxAwcoy8KgT0H4Ac42d6/yDD6ZPTgY41o0X0QyE0MMESOePgMydSYhqL4Rg0
-	tSaHq8/MyQ4i0iUzRhgQ==;
+	List-Owner; bh=UhV3Idu4UDbmeASWbphMAuyWhaEhzGolWBO8xO+43KQ=; b=o/7CELdgZFOxQI
+	SvW55txkS/D+mvMqvaDzqMjuNqMG+lev/25/wUi8anEiJ+fFmmXkwZ6ObECdbf7nffNL6wre5DuZM
+	F0xCr8na6sx/A3qbgJFDR0HH0JdUbYJgobKlUztalTWeRmJPvJaLDsYBlqfsBTIm+EuPLyrjSQD9D
+	GzPiOE7FQ5rTGzmk8Kx0I8DI9v77Wk3LUKj4K3EAbvIZJ/+5BhyLJKQGejZ7Rfod61kPiSzxR70cP
+	utT+ifLpr78LEaqYDE+EvuWCL9sgBYNVRYoTBS4PSWtTDVvp2V9nYHI8nionYpXj99f55Q3QatPlR
+	EcdVZa1ktv9X3uN7oTkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oicAH-008HQS-HS; Wed, 12 Oct 2022 13:52:53 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1oidSs-008Udc-Ad; Wed, 12 Oct 2022 15:16:10 +0000
+Received: from mx0a-00128a01.pphosted.com ([148.163.135.77])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1oicAF-008HPL-5S
-	for linux-rockchip@lists.infradead.org; Wed, 12 Oct 2022 13:52:52 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id bp11so13598943wrb.9
-        for <linux-rockchip@lists.infradead.org>; Wed, 12 Oct 2022 06:52:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=rSEv+KP57ztKlJpwjgBlKSclAvjRccx81GpFSFSxmhE=;
-        b=BLGGyCtVfEjtlMhnSmSnIzhN+fE1vXBrva4KXUqHzzb2r/9EndiselEvuF1f+HGGLd
-         Ci+YoeOWg4gWG+TFexQ+n6BOEdy3CAOIJad7oqtlaCDTTYMaeRSMmENnIrdDGFSwT0WO
-         UCfDctxI4SA7zvbetL6mN3qpYOPOG5Cc0j2NxPQpMq83IUNdT6enlQbXM4E3Bdo5BYp6
-         xZZo0JbocNgikwqUqKAER+e0MdiZcoFPllQDvc2oUek2ZXhPkkbeMuY8rwctK25xyd7y
-         wlvslofDrSHFZXct5wFcss0kWmQbUj/e77Bvv5m7FzOXjZHw/Kh9wcZHBLjNaVNXvdCc
-         O2vA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=rSEv+KP57ztKlJpwjgBlKSclAvjRccx81GpFSFSxmhE=;
-        b=wS66fKffe5apUhMVRihQVrdRChwSXwgmDs48fShz1U/JlQXPMLtS9J0QlQdDIoXPsz
-         ctnxDqqx3wzJf60XWJelFtzQDiJrWLjmzYIucS64LyxxcYSqr8bGSt6S16hFhtCzSjdM
-         eJSUtIn2EOQsSJDJ/2EyoVa63L0cYAu2QIsqmT1fQoQOS/YATlrb4rHJOgmJNfuIiOSE
-         dWI5/foBhcCxZ1FtztpG3TdPFYnnwe+F2lnt0k2MaUmamsTr5VXs1be/CTptl4XxdLB6
-         HRxT0gqyswIWRrAcQlhXD8eeujnnfUKVp4LfLaepnExcqQq/0D9ujslE6lbanjtzJt0r
-         hytQ==
-X-Gm-Message-State: ACrzQf11Veth5jzmHkEHtgaGGp3HqMurSg0B6WW8WJ7T3U/p5wLUocJD
-	Iyld0zg65qcMv0gwv8VZghzEr4gShUDhONtXqqs=
-X-Google-Smtp-Source: AMsMyM4JZXLKw2j1GbqS77f+b8Zh0/b6Juph2WjqOOtYeENFvCr1l+Uq/0kdRFawVqvPm08Y/Uv6Gy/mbnxjwn9uSqQ=
-X-Received: by 2002:a5d:6508:0:b0:22e:1af4:57f9 with SMTP id
- x8-20020a5d6508000000b0022e1af457f9mr18131767wru.539.1665582767612; Wed, 12
- Oct 2022 06:52:47 -0700 (PDT)
+	id 1oidSo-008Uar-FL; Wed, 12 Oct 2022 15:16:08 +0000
+Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
+	by mx0a-00128a01.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 29CDvmWG010798;
+	Wed, 12 Oct 2022 11:15:48 -0400
+Received: from nwd2mta4.analog.com ([137.71.173.58])
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3k3325xu46-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 12 Oct 2022 11:15:47 -0400
+Received: from ASHBMBX9.ad.analog.com (ASHBMBX9.ad.analog.com [10.64.17.10])
+	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 29CFFkrJ049233
+	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Wed, 12 Oct 2022 11:15:46 -0400
+Received: from ASHBCASHYB5.ad.analog.com (10.64.17.133) by
+ ASHBMBX9.ad.analog.com (10.64.17.10) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.14; Wed, 12 Oct 2022 11:15:45 -0400
+Received: from ASHBMBX8.ad.analog.com (10.64.17.5) by
+ ASHBCASHYB5.ad.analog.com (10.64.17.133) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.14; Wed, 12 Oct 2022 11:15:45 -0400
+Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx8.ad.analog.com
+ (10.64.17.5) with Microsoft SMTP Server id 15.2.986.14 via Frontend
+ Transport; Wed, 12 Oct 2022 11:15:45 -0400
+Received: from nsa.ad.analog.com ([10.44.3.62])
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 29CFEund022095;
+	Wed, 12 Oct 2022 11:15:35 -0400
+From: =?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>
+To: <linux-arm-kernel@lists.infradead.org>, <linux-iio@vger.kernel.org>,
+        <linux-amlogic@lists.infradead.org>,
+        <linux-rockchip@lists.infradead.org>, <linux-imx@nxp.com>
+CC: Chen-Yu Tsai <wens@csie.org>,
+        Andriy Tryshnivskyy
+	<andriy.tryshnivskyy@opensynergy.com>,
+        Ciprian Regus
+	<ciprian.regus@analog.com>,
+        Vladimir Zapolskiy <vz@mleia.com>, Cixi Geng
+	<cixi.geng1@unisoc.com>,
+        Neil Armstrong <narmstrong@baylibre.com>,
+        "Miquel
+ Raynal" <miquel.raynal@bootlin.com>,
+        Sascha Hauer <s.hauer@pengutronix.de>,
+        Heiko Stuebner <heiko@sntech.de>,
+        =?UTF-8?q?Nuno=20S=C3=A1?=
+	<nuno.sa@analog.com>,
+        Fabio Estevam <festevam@gmail.com>,
+        Jerome Brunet
+	<jbrunet@baylibre.com>,
+        Martin Blumenstingl
+	<martin.blumenstingl@googlemail.com>,
+        Pengutronix Kernel Team
+	<kernel@pengutronix.de>,
+        Baolin Wang <baolin.wang@linux.alibaba.com>,
+        "Hans
+ de Goede" <hdegoede@redhat.com>,
+        Alexandru Ardelean <aardelean@deviqon.com>,
+        Michael Hennerich <Michael.Hennerich@analog.com>,
+        Haibo Chen
+	<haibo.chen@nxp.com>, Lars-Peter Clausen <lars@metafoo.de>,
+        Jyoti Bhayana
+	<jbhayana@google.com>,
+        Jonathan Cameron <jic23@kernel.org>,
+        Andy Shevchenko
+	<andy.shevchenko@gmail.com>,
+        Florian Boor <florian.boor@kernelconcepts.de>,
+        Chunyan Zhang <zhang.lyra@gmail.com>, Orson Zhai <orsonzhai@gmail.com>,
+        "Shawn Guo" <shawnguo@kernel.org>, Kevin Hilman <khilman@baylibre.com>
+Subject: [PATCH v3 2/4] iio: health: max30100: do not use internal iio_dev lock
+Date: Wed, 12 Oct 2022 17:16:18 +0200
+Message-ID: <20221012151620.1725215-3-nuno.sa@analog.com>
+X-Mailer: git-send-email 2.38.0
+In-Reply-To: <20221012151620.1725215-1-nuno.sa@analog.com>
+References: <20221012151620.1725215-1-nuno.sa@analog.com>
 MIME-Version: 1.0
-References: <0ec9541a-8d8c-0fc0-d158-73ba949169a3@pscan.uk>
- <SN6PR06MB5342D159E9E83EAA4FEE9CDBA5239@SN6PR06MB5342.namprd06.prod.outlook.com>
- <CAMdYzYq6vbYgG_c1O3_pR1nNRWLK2QUim0rQ4PZiucU=vVK1Ng@mail.gmail.com>
- <4737d50e-5f5b-670c-227e-e3d84e4fb09d@pscan.uk> <9fb765d0-7648-288f-23a7-8d98da9b3561@pscan.uk>
-In-Reply-To: <9fb765d0-7648-288f-23a7-8d98da9b3561@pscan.uk>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Wed, 12 Oct 2022 09:52:36 -0400
-Message-ID: <CAMdYzYrs0zCQ8UGz7S4frsT3e27p6LbhKrX+OZ9DyjnV3_3kKQ@mail.gmail.com>
-Subject: Re: More RK817 questions
-To: Philip C <subs@pscan.uk>
-Cc: Chris Morgan <macromorgan@hotmail.com>, Maciej Matuszczyk <maccraft123mc@gmail.com>, 
-	"open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+X-ADIRuleOP-NewSCL: Rule Triggered
+X-Proofpoint-GUID: nM1f-X8TjScKJQm23JxZD5qneviuxiXN
+X-Proofpoint-ORIG-GUID: nM1f-X8TjScKJQm23JxZD5qneviuxiXN
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.545,FMLib:17.11.122.1
+ definitions=2022-10-12_07,2022-10-12_01,2022-06-22_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 bulkscore=0 spamscore=0
+ suspectscore=0 mlxscore=0 clxscore=1015 priorityscore=1501 impostorscore=0
+ malwarescore=0 phishscore=0 mlxlogscore=940 adultscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2209130000 definitions=main-2210120100
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221012_065251_230154_14644D16 
-X-CRM114-Status: GOOD (  29.59  )
+X-CRM114-CacheID: sfid-20221012_081606_601577_9E49A471 
+X-CRM114-Status: GOOD (  15.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,87 +121,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 11, 2022 at 5:49 PM Philip C <subs@pscan.uk> wrote:
->
-> Hello Peter.
-
-Good Morning,
-
->
-> My device, from the perspective of usb phy, OTG and regulators appears
-> to be identical to this one:-
->
-> https://github.com/rockchip-linux/kernel/blob/develop-4.19/arch/arm64/boot/dts/rockchip/rk3566-rk817-tablet-k108.dts
-
-So do you have a schematic for this? If not this is gonna require a
-bit of reverse engineering on your part.
-
->
-> I already have a debug console and mainline booting on it.  The single
-> USB type-C port looks like it might work except that when an OTG adapter
-> is plugged in the device doesn't supply 5.0V from boost as I want it to.
->
-> Looking at the mainline pinenote dts it looks different enough that it
-> doesn't help me (with the knowledge that I have).  The pinenote has a
-> wllsemi,wusb3801 connected to i2c3, but my device has no USB port chip
-> on any i2c bus that I can see.  Instead it has a vcc5v0_host_en pin on
-> GPIO3 RK_PA3 which I somewhat suspect is how the rk817 driver is
-> bringing up the power rail for the OTG adapter.
-
-Hopefully it has a USB Type-C chip on there to handle compliance stuff
-and pass along the filtered id signal to the phy even if it isn't tied
-to an i2c bus. Do you see the role switch occur when you plug and
-unplug the requisite cables? If role switch doesn't occur, you need to
-figure out why before moving on to voltage regulator control.
-
->
-> The line "extcon = <&usb2phy0>;" is at line 838 in the dts that I linked
-> above.  This is the line in BSP that registers the rk817 driver for
-> notifications from the usb phy driver, and which seems to cause
-> regulator "vcc5v0_host" to start feeding power to the USB port when an
-> OTG cable is detected.
->
-> I am completely stuck.  If you can have a look and tell me what to try
-> then I would be very greatful.
-
-The way Mainline handles this is you tie the port power regulator to
-the phy. When the phy enters a mode that requires the port to be
-powered, it calls the regulator subsystem to enable that regulator.
-I've seen boards where the boost power is fed to a gpio regulator.
-That regulator is tied directly to any non-otg port and to the
-otg-switch. You then use the otg switch to control the otg port power,
-but if the gpio line isn't *also* powered you get nothing. I see that
-tablet dts has a host regulator, so you might have this situation. You
-can always set the boost, otg-switch, and host regulators to always-on
-to see if you get power at the port for testing purposes only.
-
-You really need a schematic.
-
-Very Respectfully,
-Peter
-
->
-> thanks, Philip
->
->
->
->
-> On 11/10/2022 09:21, Philip C wrote:
-> > well if you really think that so many people will be interested in my
-> > incompetent ramblings ;-)
-> >
-> > I just noticed that there are a set of pinenote dts files in mainline.
-> > My bad for not noticing that.  I will have a look and see what I can
-> > figure out.
-> >
-> > thanks, PHilip
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlIHBhdHRlcm4gdXNlZCBpbiB0aGlzIGRldmljZSBkb2VzIG5vdCBxdWl0ZSBmaXQgaW4gdGhl
+Cmlpb19kZXZpY2VfY2xhaW1fZGlyZWN0X21vZGUoKSB0eXBpY2FsIHVzYWdlLiBJbiB0aGlzIGNh
+c2UsCmlpb19idWZmZXJfZW5hYmxlZCgpIHdhcyBiZWluZyB1c2VkIG5vdCB0byBwcmV2ZW50IHRo
+ZSByYXcgYWNjZXNzIGJ1dCB0bwphbGxvdyBpdC4gSGVuY2UsIGxldCdzIG1ha2UgdXNlIG9mIHRo
+ZSBuZXcKaWlvX2RldmljZV9jbGFpbV9idWZmZXJfbW9kZSgpIEFQSSB0byBtYWtlIHN1cmUgd2Ug
+c3RheSBpbiBidWZmZXJlZCBtb2RlCmR1cmluZyB0aGUgY29tcGxldGUgcmVhZC4KCk5vdGUgdGhh
+dCB3ZSBhcmUgc2hhZG93aW5nIHRoZSBlcnJvciBjb2RlIHJldHVybmVkIGJ5Cmlpb19kZXZpY2Vf
+Y2xhaW1fYnVmZmVyX21vZGUoKSBzbyB0aGF0IHdlIGtlZXAgdGhlIG9yaWdpbmFsIG9uZQooLUVB
+R0FJTikuIFRoZSByZWFzb24gaXMgdGhhdCBzb21lIHVzZXJzcGFjZSBzdGFjayBtaWdodCBhbHJl
+YWR5IGJlCnJlbHlpbmcgb24gdGhpcyBwYXJ0aWN1bGFyIGNvZGUgc28gdGhhdCB3ZSBhcmUgbm90
+IHRha2luZyBjaGFuY2VzIGFuZApsZWF2ZSBpdCBhbG9uZS4KClNpZ25lZC1vZmYtYnk6IE51bm8g
+U8OhIDxudW5vLnNhQGFuYWxvZy5jb20+Ci0tLQogZHJpdmVycy9paW8vaGVhbHRoL21heDMwMTAw
+LmMgfCA5ICsrKy0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgNiBkZWxl
+dGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2lpby9oZWFsdGgvbWF4MzAxMDAuYyBiL2Ry
+aXZlcnMvaWlvL2hlYWx0aC9tYXgzMDEwMC5jCmluZGV4IDJjY2E1ZTA1MTlmOC4uNmFjNDk5MDFj
+OWRhIDEwMDY0NAotLS0gYS9kcml2ZXJzL2lpby9oZWFsdGgvbWF4MzAxMDAuYworKysgYi9kcml2
+ZXJzL2lpby9oZWFsdGgvbWF4MzAxMDAuYwpAQCAtMzg3LDE4ICszODcsMTUgQEAgc3RhdGljIGlu
+dCBtYXgzMDEwMF9yZWFkX3JhdyhzdHJ1Y3QgaWlvX2RldiAqaW5kaW9fZGV2LAogCQkgKiBUZW1w
+ZXJhdHVyZSByZWFkaW5nIGNhbiBvbmx5IGJlIGFjcXVpcmVkIHdoaWxlIGVuZ2luZQogCQkgKiBp
+cyBydW5uaW5nCiAJCSAqLwotCQltdXRleF9sb2NrKCZpbmRpb19kZXYtPm1sb2NrKTsKLQotCQlp
+ZiAoIWlpb19idWZmZXJfZW5hYmxlZChpbmRpb19kZXYpKQorCQlpZiAoaWlvX2RldmljZV9jbGFp
+bV9idWZmZXJfbW9kZShpbmRpb19kZXYpKSB7CiAJCQlyZXQgPSAtRUFHQUlOOwotCQllbHNlIHsK
+KwkJfSBlbHNlIHsKIAkJCXJldCA9IG1heDMwMTAwX2dldF90ZW1wKGRhdGEsIHZhbCk7CiAJCQlp
+ZiAoIXJldCkKIAkJCQlyZXQgPSBJSU9fVkFMX0lOVDsKIAorCQkJaWlvX2RldmljZV9yZWxlYXNl
+X2J1ZmZlcl9tb2RlKGluZGlvX2Rldik7CiAJCX0KLQotCQltdXRleF91bmxvY2soJmluZGlvX2Rl
+di0+bWxvY2spOwogCQlicmVhazsKIAljYXNlIElJT19DSEFOX0lORk9fU0NBTEU6CiAJCSp2YWwg
+PSAxOyAgLyogMC4wNjI1ICovCi0tIAoyLjM4LjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
