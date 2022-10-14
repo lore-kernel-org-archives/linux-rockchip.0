@@ -4,62 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56D77C4332F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Oct 2022 15:07:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF256C4332F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 14 Oct 2022 15:22:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:CC:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZOWnQnsIlgYC9umyX8ZmCMtI+lEWzyRVsLO5g/y3/gI=; b=pLrSnGivXimv0T
-	CHiq9V7q0n9cnh6lSeGV5gJ8E13Kt3zTpYTHHaXwaSRbA+Bz3Ih9tgZmXg6feUF1quw4lCYZ49VHH
-	iKPcTWw1bTA3l+Jm7WSG5wO9XKV4bw91gxeSvuNXtztORI/1C9kbUBqq9OrwCZN8A1pNPO4o3UMUn
-	kI6OKb4Sc/n1QLdRzeSD942a3CeL8wtEA9JqiMvk3tMCBIOKd0OlDVcTojjQOCHAQuJf3e2juMzxA
-	o7mgajUM7M6nfcZ6VEBVv5taGw8sEYlCmkuKdHMBs07Z1V7AKAelHZY0uHsMIgVo+QRXuE02Ogjwe
-	vyNHqjez6CXZ1I8iAQVQ==;
+	List-Owner; bh=Q57gBH1aoOeBw6FWZaoXNcbpAAClHTnk5hHt53t8EEA=; b=nrb0exjZGfyvD3
+	j9yGLK+f6mFaytjHstFmNBcY/opNrlApGfxT4Gtw3xvzT/9szoxGP/91qJD63c0EOl1byF/hB9Ztl
+	MC9TXOq8WlEOQTMmMW5Ydh5K+NlFmg/O49WTcUgg4X5MepQ3w3b0KZTypGbiSU/G+Q3qvKbJr3RqA
+	XdSF2phkj9EGxUAwJjUKkFyJcc192MJqr3rSqam5XO9csgdn0USi3AC4QCMPSSxfbwGy4oC9oi5Gr
+	RxWzJWQbVrixM0UBIMNAPlzsPBnZ/wI/P2sACPbRUgOYO/yJrQZ83keJRWI84V6l9lTxWAhxobbMf
+	pW0Sq6t6OebLr1GoVIsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ojMHF-00F7kp-Cq; Fri, 14 Oct 2022 15:07:09 +0000
-Received: from 31-193-140-172.static.as29550.net ([31.193.140.172] helo=mail.pscan.uk)
+	id 1ojMVQ-00FAGJ-Mn; Fri, 14 Oct 2022 15:21:48 +0000
+Received: from frasgout.his.huawei.com ([185.176.79.56])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ojMHC-00F7il-Fu
-	for linux-rockchip@lists.infradead.org; Fri, 14 Oct 2022 15:07:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=pscan.uk;
-	s=2016050301; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=jJHB/Z3UZhGW42kD6cOBHuCWcOJvDSqAWEnQSgv+Sd8=; b=jRH9by9PCU+qeeDWS/7DNavwm9
-	ktH4RmCFFOthK0qvqGVdb/MtzBvbMI1LsHiVT979Ej/ks78GzPqr3O4xBOZuk08IYx/QFE4KR4POi
-	G4ckCtgmG0x8SeKwUJNYGEzbCE9iTi3PXEHkLbst1r/poe8qn/s2Hf4ng4+vV8BAHnHM=;
-Received: from host86-153-126-124.range86-153.btcentralplus.com ([86.153.126.124] helo=[192.168.1.77])
-	by mail.pscan.eu with esmtpsa  (TLS1.3) tls TLS_AES_128_GCM_SHA256
-	(Exim 4.94.2 (FreeBSD))
-	(envelope-from <subs@pscan.uk>)
-	id 1ojL8y-000HeW-Ou; Fri, 14 Oct 2022 14:54:32 +0100
-Message-ID: <9fcb7866-7200-70e8-85b3-60371280ab0c@pscan.uk>
-Date: Fri, 14 Oct 2022 16:06:46 +0100
+	id 1ojMVD-00FAAJ-S4; Fri, 14 Oct 2022 15:21:38 +0000
+Received: from fraeml714-chm.china.huawei.com (unknown [172.18.147.226])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4MpqpB4bcPz67FSP;
+	Fri, 14 Oct 2022 23:20:34 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (7.191.163.240) by
+ fraeml714-chm.china.huawei.com (10.206.15.33) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Fri, 14 Oct 2022 17:21:25 +0200
+Received: from localhost (10.202.226.42) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.31; Fri, 14 Oct
+ 2022 16:21:24 +0100
+Date: Fri, 14 Oct 2022 16:21:23 +0100
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: Nuno =?ISO-8859-1?Q?S=E1?= <noname.nuno@gmail.com>
+CC: Miquel Raynal <miquel.raynal@bootlin.com>, Nuno =?ISO-8859-1?Q?S=E1?=
+	<nuno.sa@analog.com>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-iio@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>, <linux-imx@nxp.com>, Chen-Yu Tsai
+	<wens@csie.org>, Andriy Tryshnivskyy <andriy.tryshnivskyy@opensynergy.com>,
+	Ciprian Regus <ciprian.regus@analog.com>, Vladimir Zapolskiy <vz@mleia.com>,
+	Cixi Geng <cixi.geng1@unisoc.com>, Neil Armstrong <narmstrong@baylibre.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>, Heiko Stuebner <heiko@sntech.de>,
+	Fabio Estevam <festevam@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, "Pengutronix Kernel
+ Team" <kernel@pengutronix.de>, Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Hans de Goede <hdegoede@redhat.com>, Alexandru Ardelean
+	<aardelean@deviqon.com>, Michael Hennerich <Michael.Hennerich@analog.com>,
+	Haibo Chen <haibo.chen@nxp.com>, Lars-Peter Clausen <lars@metafoo.de>, "Jyoti
+ Bhayana" <jbhayana@google.com>, Jonathan Cameron <jic23@kernel.org>, "Andy
+ Shevchenko" <andy.shevchenko@gmail.com>, Florian Boor
+	<florian.boor@kernelconcepts.de>, Chunyan Zhang <zhang.lyra@gmail.com>,
+	"Orson Zhai" <orsonzhai@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Kevin
+ Hilman <khilman@baylibre.com>
+Subject: Re: [PATCH v3 3/4] iio: health: max30102: do not use internal
+ iio_dev lock
+Message-ID: <20221014162123.00000420@huawei.com>
+In-Reply-To: <fccf3f41b32e881eb79ee78852fa40a62b134c00.camel@gmail.com>
+References: <20221012151620.1725215-1-nuno.sa@analog.com>
+	<20221012151620.1725215-4-nuno.sa@analog.com>
+	<20221012204556.7648df2e@xps-13>
+	<fccf3f41b32e881eb79ee78852fa40a62b134c00.camel@gmail.com>
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.29; i686-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.1
-Subject: Re: More RK817 questions
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: Chris Morgan <macromorgan@hotmail.com>,
- Maciej Matuszczyk <maccraft123mc@gmail.com>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
-References: <0ec9541a-8d8c-0fc0-d158-73ba949169a3@pscan.uk>
- <SN6PR06MB5342D159E9E83EAA4FEE9CDBA5239@SN6PR06MB5342.namprd06.prod.outlook.com>
- <CAMdYzYq6vbYgG_c1O3_pR1nNRWLK2QUim0rQ4PZiucU=vVK1Ng@mail.gmail.com>
- <4737d50e-5f5b-670c-227e-e3d84e4fb09d@pscan.uk>
- <9fb765d0-7648-288f-23a7-8d98da9b3561@pscan.uk>
- <CAMdYzYrs0zCQ8UGz7S4frsT3e27p6LbhKrX+OZ9DyjnV3_3kKQ@mail.gmail.com>
-From: Philip C <subs@pscan.uk>
-In-Reply-To: <CAMdYzYrs0zCQ8UGz7S4frsT3e27p6LbhKrX+OZ9DyjnV3_3kKQ@mail.gmail.com>
+X-Originating-IP: [10.202.226.42]
+X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221014_080706_606465_7638E2CE 
-X-CRM114-Status: GOOD (  15.61  )
+X-CRM114-CacheID: sfid-20221014_082136_249684_6E6D0A75 
+X-CRM114-Status: GOOD (  31.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,47 +85,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Peter
-> 
-> The way Mainline handles this is you tie the port power regulator to
-> the phy. When the phy enters a mode that requires the port to be
-> powered, it calls the regulator subsystem to enable that regulator.
-> I've seen boards where the boost power is fed to a gpio regulator.
-> That regulator is tied directly to any non-otg port and to the
-> otg-switch. You then use the otg switch to control the otg port power,
-> but if the gpio line isn't *also* powered you get nothing. I see that
-> tablet dts has a host regulator, so you might have this situation. You
-> can always set the boost, otg-switch, and host regulators to always-on
-> to see if you get power at the port for testing purposes only.
-> 
-> You really need a schematic.
-> 
+On Fri, 14 Oct 2022 09:25:59 +0200
+Nuno S=E1 <noname.nuno@gmail.com> wrote:
 
-This device has no dedicated USB chip.
+> On Wed, 2022-10-12 at 20:45 +0200, Miquel Raynal wrote:
+> > Hi Nuno,
+> > =
 
-The data lines connect straight to the RK3566.  It isn't possible for me 
-to trace them, but they must do because I have used rkdevtool on the 
-device (windows tool connecting directly to the SoC when there is no OS 
-running).  The same tool works on the quartz64a so the USB data lines 
-must connect straight to USB_OTG0_DP (R37) and USB_OTG0_DM (R38) just as 
-they do on the quartz64a.
+> > nuno.sa@analog.com=A0wrote on Wed, 12 Oct 2022 17:16:19 +0200:
+> >   =
 
-I have traced the 5V rail on the USB port, and, it connects to pin 55 
-labelled USB/OTG on the RK817.
+> > > The pattern used in this device does not quite fit in the
+> > > iio_device_claim_direct_mode() typical usage. In this case, we want
+> > > to
+> > > know if we are in buffered mode or not to know if the device is
+> > > powered
+> > > (buffer mode) or not. And depending on that max30102_get_temp()
+> > > will
+> > > power on the device if needed. Hence, in order to keep the same
+> > > functionality, we try to:
+> > > =
 
-The RK3566 SoC also has pins USB_OTG0_VBUSDET (T38) and USB_OTG0_ID 
-(T37) but I don't know specifically if or how they are used.
+> > > 1. Claim Buffered mode;
+> > > 2: If 1) succeeds call max30102_get_temp() without powering on the
+> > > =A0=A0 device;
+> > > 3: Release Buffered mode;
+> > > 4: If 1) fails, Claim Direct mode;
+> > > 5: If 4) succeeds call max30102_get_temp() with powering on the
+> > > device;
+> > > 6: Release Direct mode;
+> > > 7: If 4) fails, goto to 1) and try again.
+> > > =
 
-Would it be possible to help me create a dts for the USB/OTG port of 
-this device based on OTG adapter detection within the SoC itself, and 
-power for the port coming from the RK817 pin 55 please?
+> > > This dance between buffered and direct mode is not particularly
+> > > pretty
+> > > (as well as the loop introduced by the goto statement) but it does
+> > > allow
+> > > us to get rid of the mlock usage while keeping the same behavior.  =
 
-thanks, Philip
+> > =
+
+> > What about adding a TODO comment saying something like: "this comes
+> > from static analysis and helped dropping mlock access, but someone
+> > with
+> > the device needs to figure out if we can simplify this dance"?
+> > Because
+> > the reason behind all this is that we don't want to risk breaking the
+> > driver, but perhaps a simpler approach would work, right?
+> >   =
+
+> =
+
+> Hi Miquel,
+> =
+
+> AFAIU, either the device is powered (when buffer mode enabled) and we
+> can do the reading or it's not and we need to power it on/off
+> "manually" while making sure we don't race against enable/disabling
+> buffers. This "dance" is needed mainly to make sure that we grab
+> 'mlock' one way or another... The other way would be to use some
+> specific device lock together with a flag (as discussed) but as
+> discussed with Jonathan we decided to go down this road... So,
+> honestly, I don't really see the necessity of "marking" this code with
+> a TODO but of course if someone comes in with something simpler, great
+> :).
+
+Agreed.  I don't expect to see any improvement in this in the future
+so a TODO would just be noise and might encourage people to propose
+the 'get the lock on it's own function' that we are going through this
+dance to avoid adding.
+
+Jonathan
+
+> =
+
+> Anyways, as I said, I'm not really keen in spinning a new version to
+> add this comment so I will defer the decision to Jonathan :)  =
+
+> =
+
+> Thanks for the help!
+> - Nuno S=E1
+> =
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
