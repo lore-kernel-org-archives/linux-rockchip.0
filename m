@@ -4,162 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06882C4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Oct 2022 15:07:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF0AFC433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Oct 2022 18:30:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Subject:From:Cc:To:Date:Message-ID:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ViSadPNVpIUdQnTAZjxMD5PNP7DlqSBnxCabbY0RAj0=; b=H97pxc7gIUgnXt4zS8iG4CQLZo
-	63fB3dJg7WZ4AK2QpXMusv7CCSrxqU6UV2zuZ66L5t0MN6N+DcXdU2/b2fEt7Jmz0K92cgqoD0qNc
-	4hOqSqZalYBb4dEFuKmDinkg8ZesGvEkWwQHmjGwqSZxEIFjQtJDLSKGm4cswAVAUTzIlf48b6GPN
-	CUUlaXW3ITyAnMFWG1J8Vyq4S/+zQ6JvBj00Loe13OrYbEcfnHxo0ae7uE+ON9nZ9LiUG05g5qBO/
-	B9Uqn1pW68m1Y2BUxeddv9ZYFs1Fa5QhZ+LF3ntHVaj5KHTrqIG6lRa6i3Cftckng4Ly4vBN4sxKt
-	g3sRTUjA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=swhkFchRG2j5YSXtnbnOXTAIZuSEAbQfShBXLBSb94k=; b=hxx15uvolwDmu6
+	/G+CZmoqhR3qsNKgp+BLJ6dn6dQKxMLdAX7voto9VE3vyyOXeB4A+OCrYXm+QC8wjBI4lJ0SVYwIb
+	2lgmfwuzjNSKYCs+nR1/ZiNmEGyGEG5Ey4v/y46vx2HIJ+p6f2GhJ+/37XJVW14oNohy2rCWFvM/J
+	QecVr/OifboPb0/1f29v8wMiY8X+wgVio7PPTUaBftcUrwnNIWFDZOmgq6j65hf9Dw0JMHyLATVS9
+	dAOv0PVk5i05Cf8FDwgiopk5vfeBeJSQa3ECNp7dNb1jHKhetGZsJ6wSIxIO25lfnqNWy6ta6HeAF
+	sW67lv4uq6XrFiWb4w9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okRi4-00DApt-R7; Mon, 17 Oct 2022 15:07:20 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1okUso-00EHtd-Mm; Mon, 17 Oct 2022 18:30:38 +0000
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okRi2-00DAbA-38
-	for linux-rockchip@lists.infradead.org; Mon, 17 Oct 2022 15:07:19 +0000
-Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 29HEkaVr007666;
-	Mon, 17 Oct 2022 15:05:33 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=message-id : date :
- to : cc : from : subject : content-type : content-transfer-encoding :
- mime-version; s=corp-2022-7-12;
- bh=81FHj3sHELP4lHPjTIxa/QeutVoogwEP3wdYOuo0K+0=;
- b=BpH9CUIyWCcsk9ToodxZyWT/1jkvXOo77Bpozp+96og4tPyrUyIWBsHmItRglOaFLglM
- J8GRhBNO8LCnbM5gO7qTD1wZUZH8dDmJGsWko9EX/DRbJsyJqwCXEixhCiNz05HKbPG8
- cLqSppmj0+eKQLbWdPPEI9mePnLzy9UflHaYwqAqCXnboZOmO+R553cyNSN7IEK98Ojf
- 5J4Ay6ZZ7KKP4qVZWglX5mGjDSaDP4uZZtB4/C2mVfggFHS4Rr0vMVu1zESY3bDWFt1x
- I9pVOsabm+VRpebOiWc6pq3uYTrUh+mJOXsn984mP2DQH5BKHq4UKjT77D7T6F3toEX0 BQ== 
-Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3k7mw3bqyt-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 17 Oct 2022 15:04:34 +0000
-Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.17.1.5/8.17.1.5) with ESMTP id 29HCXRfp036466;
-	Mon, 17 Oct 2022 15:03:49 GMT
-Received: from nam10-mw2-obe.outbound.protection.outlook.com (mail-mw2nam10lp2104.outbound.protection.outlook.com [104.47.55.104])
-	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 3k8hterkq8-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 17 Oct 2022 15:03:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cP7IjVbvH6tAJ/1ZzpqtFvj2pP8khT6zZ19HUPQTfF5fIvAyW4fYzIs5thVmvTL71qAnS9PfcB9xOZsy0/KHbsxX16ykIjm1t/1aZUT9tnNV5CcnQ9Z/619vxrX7wA1bPvL1M4QuZEMys699AMVDO1PGRlCEORhu68qiIvg5h73TGbzprMieXX6dufOsAlZm6Ie6YmVKNnNhrmYnlwQGle7OHRim4J/nTybijQZgcPcJLgwgw/AkNCpJTtVgceyE5VqjxYs5qQj3HSP4ATUoyfb+509oy2n6OCQYHy+K2qqjKGUHUsNOb60XbvfP1bjhnFMrlSDbSNqRWLm7UWEFug==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=81FHj3sHELP4lHPjTIxa/QeutVoogwEP3wdYOuo0K+0=;
- b=FtFE5lmLGWXbieFMUqF4xTD8KXprMP/UhvJ38BvbvMOkJPbG8VOP1iQ5jyXukz8AM7/s1+GwE2phQz9E04G8R5J4jpbwI3uQJX4Zg7z8RLX+3qmi90ZQJe3Kh1WsP2rWPoa5oGNLnXdJxZJL9MxADrnzGy5536pdXTpQaM84Y+nJAs8aT05lGrT2lrewZXoqAhkXeJTvMuYZcz2vwVaRse62VNyg17w+vGg1wohwXXNH0AKp7PPASxcLikQ2huDbs7BJRUpv+CpjIeVex4hYW83FSJ4jEFfWBMm/8JwyM4sdmm8e3KQoMPjb1AK9ifMsvr97KIWwgRyMx5Z3/9mdBQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+	id 1okUsd-00EHr4-BQ; Mon, 17 Oct 2022 18:30:28 +0000
+Received: by mail-ed1-x529.google.com with SMTP id z97so17289246ede.8;
+        Mon, 17 Oct 2022 11:30:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=81FHj3sHELP4lHPjTIxa/QeutVoogwEP3wdYOuo0K+0=;
- b=gv62HStcx4C0sxzQTLrFZl2z6Pz5lwt+4sHFIfaJf1kopyn+VlcApB6niWgO4BL1dPRtcWlOEXU0yebpWZGb2HMRUrrOYRG/iXRa87tiDuAuiu9KVAG0cM+dt3ROwJOMXLm1jSqbsvquUXtxXu4rphCKM8fa9hRlBUUAZMCm32Y=
-Received: from PH8PR10MB6290.namprd10.prod.outlook.com (2603:10b6:510:1c1::7)
- by BLAPR10MB4836.namprd10.prod.outlook.com (2603:10b6:208:326::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5723.30; Mon, 17 Oct
- 2022 15:03:47 +0000
-Received: from PH8PR10MB6290.namprd10.prod.outlook.com
- ([fe80::452b:cff:c708:392d]) by PH8PR10MB6290.namprd10.prod.outlook.com
- ([fe80::452b:cff:c708:392d%9]) with mapi id 15.20.5723.033; Mon, 17 Oct 2022
- 15:03:46 +0000
-Message-ID: <364c0959-c82f-a93c-df02-87a04e1c2cea@oracle.com>
-Date: Mon, 17 Oct 2022 20:33:28 +0530
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.3.2
-Content-Language: en-US
-To: macroalpha82@gmail.com, hjc@rock-chips.com, heiko@sntech.de
-Cc: airlied@gmail.com, Dan Carpenter <dan.carpenter@oracle.com>,
-        daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
-        LKML <linux-kernel@vger.kernel.org>, kernel-janitors@vger.kernel.org,
-        linux-rockchip@lists.infradead.org,
-        Harshit Mogalapalli <harshit.m.mogalapalli@oracle.com>,
-        harshit.m.mogalapalli@gmail.com
-From: Harshit Mogalapalli <harshit.m.mogalapalli@oracle.com>
-Subject: [bug-report] Smatch warns unsigned comparison with zero in
- dw_mipi_dsi_rockchip_set_lcdsel()
-X-ClientProxiedBy: SG2P153CA0006.APCP153.PROD.OUTLOOK.COM (2603:1096::16) To
- PH8PR10MB6290.namprd10.prod.outlook.com (2603:10b6:510:1c1::7)
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1ygTaFM2xbm4f+3CnWyuW6YhAYiSOprMyGPvCYkz/T4=;
+        b=bcwiVIzGS1AnE11FxBrC4EJI4yYIXpkDDvkXNjOzLBOrdPpftEdG/bk1MmdY7yaumu
+         bWJxNRX1dAceXkrG0vUNchvTHH0sYHv7SEZ2IxlUVbAYeo2h4h+5N80qnvb5Q52i+R7y
+         NAdH8FgsQ1Diyv2AYEdi5cu0+xioeo6M/nsUCPx6UqIh0aoWwb5UVQBv57KG+7zZUQe+
+         wOSPUzlKQAcKw9VLG+DoxnJI3Z53He7V8zzEOJw+IHiTaDBp5yY6XmCAGHN6T6XyjSyz
+         TDWPqnb03lh1ftWgeXwnMWw4NdDLDvfNABAVUJgtmgKFy5UbeiZHUpqrtmvikAe4o3Yt
+         EQhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1ygTaFM2xbm4f+3CnWyuW6YhAYiSOprMyGPvCYkz/T4=;
+        b=Bn0ihpkttOoh4iGdldVvxMyNlVjXi9GdEahB3Sdu2Tm2V9oWUZvIu0LTMHjs1owRtL
+         iDEVfzgv8SbLMqL+cq55fK8MG7BP+LWGT39fQcoweNLyX6NYhk8R0EwciyURFIgkFoSz
+         E0j53Mmhb/mcR+7DriiYDM3asuMQIHQ8C5zPbdG7FXhV9qHollhq9LzulGxcxPvI0Y6v
+         x/MJglMrK9+kNOypYkZqemwwCL8bmsvofsdAlITQyvtz0rtLFUSkrhpMglaklu0tUJ0L
+         up7+8OHKTJbPUCPzwsRVShlsKVhDAtSQAQw86JkUT+pfnDwiTae/3fK5ksau6eYZ+slb
+         aA+Q==
+X-Gm-Message-State: ACrzQf2ZfrpMiesgvpjS/FBtHvV5r5isQUpnBgY2e19xXTQrN85/MmID
+	5tA9oE2xb1bPCZdWGY3a5vA=
+X-Google-Smtp-Source: AMsMyM5sbV5SFly/AwumCvNfkgH6wggl0rXYmoTZ/ws/1/9UFfhTbgh5LuL4LohxUTpqs4A7xUl2Hw==
+X-Received: by 2002:aa7:cd4f:0:b0:458:6077:c3ac with SMTP id v15-20020aa7cd4f000000b004586077c3acmr11616385edw.32.1666031424966;
+        Mon, 17 Oct 2022 11:30:24 -0700 (PDT)
+Received: from [192.168.2.4] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+        by smtp.gmail.com with ESMTPSA id b22-20020a170906d11600b0078d2d5b90f4sm6481422ejz.32.2022.10.17.11.30.23
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 17 Oct 2022 11:30:24 -0700 (PDT)
+Message-ID: <c4bf7723-b3b8-0955-5ba3-e4d05bdc835a@gmail.com>
+Date: Mon, 17 Oct 2022 20:30:23 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH8PR10MB6290:EE_|BLAPR10MB4836:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0e8f9b2d-6559-46a4-ecad-08dab050ca57
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 	ryETIoef3wFpqXZtete8fRoNOPE4Q98nGpwqdNa4cNCn7z/ZKsGJyKzq5SsAS6Tb1Tb7dJ+AnMt+QuHu0QARS3yObOBpxyJaMvxLon7eQOxTWq3ETDbFTiA4zICYWlar5Z6OaxBa1W+/KZhAuGZqp9C8d9ULHtC54F0fsgRA0lfAdxTTHGHibUDOa1z4Hnu1+NslKPKfliKR58vimG7K6QHwB2f0ZjI33OpAMMmArQk4oYx0TLyIix5GRcM6/iuwYGB0iqj0iEg7EzWB06dgKE9NZxRblID7yEPJ5+wp00v5qkv3AMP+Kx8TAe/8l5Xru9XhYxYWW3YTNEFNdyCs2O5izxt+3wt6a7XCGJOhuNuievG1LqQ67w2bFt8aHvRpFp/qkWHFnoVOVyl+uIsWgOPdHh9Quor7A5RrDvct8JbjRa8FtDISaJHyIbrG2p8j3TZZrlA6/Ej4Vs1KutUbhQYYcldjqJcA5alEGdHlPLoWBV73X3T4qEJZa1rIJrGp8OmRGK1Aay2c7egUKUBpq6FGP60A0ka9vYIvhq9i5NaQg6IKWbIJWaxcIMsyGi1cHPN0yi12DPNRaxonMevAEA76ttxAJitq9B1z3AQfejRNwvuLRk1wZXHt2axfC6Km8IqcAVN55kOEpLgDGaWnhFscoDUBwejhdBZ7jkX26AqdGuf4QZioZQI14aiERNqqJOCIxb34oAtqJBx+T5lz7Rb8DPafkM4BzKW7KZkK6dc2va5UT6yUPNyGQzm0JL5h6YN4NeNsOlKpMXZbOCgfw/AfaFiUghIxRkz+qInAZI0=
-X-Forefront-Antispam-Report: 	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH8PR10MB6290.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(366004)(396003)(39860400002)(136003)(376002)(346002)(451199015)(316002)(54906003)(186003)(36756003)(2616005)(6506007)(4326008)(2906002)(8936002)(26005)(4744005)(41300700001)(7416002)(86362001)(31696002)(6512007)(66556008)(66946007)(6666004)(66476007)(8676002)(5660300002)(38100700002)(31686004)(6486002)(478600001)(43740500002)(45980500001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 	=?utf-8?B?dTYyUEVYMXN6MDF3Zk94MGtxcWZDeVZmUThBckdBWjMzNnRjR3BJSzF1dUM0?=
- =?utf-8?B?QnVCRncvMk5oY1RFcXNUVGtXVkt0UmMzVmhnZ2tqMVVhSEZBYmwvVytTYnVK?=
- =?utf-8?B?WEtPNlNzY1pSWDUvZFlmL1lXbzIzZVBFZ2dVOHhzVDdTVytucXpmQUFwM3V3?=
- =?utf-8?B?dDRyNWRFTC9ySlczbjY3ZzRKMTZXaGx2aURvU25yOThyeXVnbWJOU3c2aUVX?=
- =?utf-8?B?TStoQSsvQ1VYY01vSHJmQXU0ZGRHcUVGTUk0eDFLMURMUVBTd3c3R2lYMFkx?=
- =?utf-8?B?VVRxejhvd2FLdzJpTWd4eVkzOXh3RmNmcVYvd2o5WVppL2NXcUJSdGZmRGFj?=
- =?utf-8?B?aU1GK1haNVp2YlE1dzlRd1doWWNkdHBpb0EwUnhVRVBRSitjMmd2bENuQnhL?=
- =?utf-8?B?cEoyVldmbzBWTERoM21obmQ0SWxQWkhKZ2Z3dU9UZEx4N1c0Y2lFL3JmUHJU?=
- =?utf-8?B?OVJwNXBpa2NrRmprUkptS2RyT2t0elN5Qk83RkZLSTUrbkdGdlpaVWxXYkti?=
- =?utf-8?B?MGNEdkVLM25zTGdQZDlmbzFuaUwxSnVvc1BGd3VSY3FOeDQwc2FHYVRyODJQ?=
- =?utf-8?B?VDBHS3E4V3hjNzZGUERSaWtnT0ZzTE9zblB3K0dHVTRvNzhta2IwallOR2hQ?=
- =?utf-8?B?Tk5HVityZm1UUDA2aWhXODExVExSVHdWRDVhd1RaTVZPMlhJV0JFMnQxKzl6?=
- =?utf-8?B?QkNCSnp3R3RGaGVLczdTUUdLTUJJTUN0NzlFYXhKSUx5Sk9XUDZkN1R0WUdU?=
- =?utf-8?B?eWFBSmtiZUsvR1RCSlBZaTFYOVFuamh6ejk0em9ZeEZvbzNuSEp2YnlYOW1V?=
- =?utf-8?B?V3NXRC9lYjNrZ3c2NDB3S2hKSWFWZjFCTkZQVVVNZ0k4YS94aWpvTkJlc3J1?=
- =?utf-8?B?ZzRTQWM3VnNXZHloV1Zrek9ROEdjT1RQamRRLy9tZDZZMUViWnNXWFRQTXd2?=
- =?utf-8?B?QnExMit5aXFUV0Z4OVZEVDBvSmlpN0QwSU0vZHVFQmRTYnVodEE3Um9yZElR?=
- =?utf-8?B?c2FVMC9XZjhjSWN5ZUFUaWpsN1lzbjIvbllyUVlpdkRkL1JublBRWDNQaE81?=
- =?utf-8?B?dUlEeXdJdnhBL0hRYVlKcmVOUzdtL1hzRXh2cThsakpkWDVqeFpjRlhod0Y4?=
- =?utf-8?B?YThFalZKeWtIL3RGTWxtSkRRbERvVHc3U0JwYVJmd20wVDFUOWxvc0hLU2J0?=
- =?utf-8?B?bGN6dzN6U3EwWGRCeVVKYTQ4TDgvRXZxcXl3dlQ3cjFvOE1GZnVtRGlzVDNp?=
- =?utf-8?B?UUUxM0lKb3dIdTVkNnl5WUN1dnE2cDJyK3ZqUDl6Y1hFdXBhUEZUZURVWW1o?=
- =?utf-8?B?bjg2TEFCTjBvOUc0WW9wQjRSeUZkSkdqeVpBUDIyL014VW5QUVBMRzhxREpR?=
- =?utf-8?B?WCtuZ2ZlYklKY0JId05zUmVNT2pMOU5VZUNLV3B6TnJGeFBMYTRrM0hqWThm?=
- =?utf-8?B?Y3I5elVhVEpaVzBjZS9YWTFENlUydk5BRjA0SFR5S3BBbXRpNHFjRE9DNlRq?=
- =?utf-8?B?ZVVhbkw0MWorUEU3QUtnTHoxZ21jOXpQdktzeHYyR0h6R1lBeGhBd3dkUlc0?=
- =?utf-8?B?YnZ3d0ZjdGdLeGFyK1RHMUN3Ti80NWJPN1dGQy9GTTgxMW5hS3loMWEySTFs?=
- =?utf-8?B?Z0o0YkJsVjBRUTl6WkNDWmFZM2RsbzBlbGRJTUdsWGRtY0tLeEgyVFZialpo?=
- =?utf-8?B?ZEN5ZTdsOGRrNUd4K3A5WmVCNXZYelo2bm53NE9DNXM3UTdITlNITU9rTzll?=
- =?utf-8?B?N25xNkxlNVdqek9DYnBjaVN4RHRIWnZwSjNJYkdPQVhyY01TaDJsN2hEdkli?=
- =?utf-8?B?dXJXODZydmE5b2YxNzhzMnhCMnl3a0s2R3ZxMlhtU3MzVFJ3cXQrMW5xZUhM?=
- =?utf-8?B?WW9FL1RlU1dMRzM1Skl1d29rMU5keWQ3Wm1sUG03ZGh5ekF1UWQ0NEQ1R29k?=
- =?utf-8?B?TC9VZWNPQjUxTHNPd1FRZ3BOZ2FmNEY3ZnVML202RzhOdGwzSlV1OWtSdEFK?=
- =?utf-8?B?SlhVVzJjOUhlL0Z6N25jeUtGUUhlc3FJWlp2bUVCUHJXa2RSeGNKRlBKeklG?=
- =?utf-8?B?cEJiUFhPaGp0Y2x3MjRkaUdRd01PV3RleHhqQ3pld3ByaXpqaTBNS0J0c0RO?=
- =?utf-8?B?QnhveVlrUWlxNE5DUW0vZ1lHcC9QcUhyenN1VURZWmc5V21ITmwwMnllSXUy?=
- =?utf-8?Q?DoQuvaJvBj29Yk+nhnGoU1o=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0e8f9b2d-6559-46a4-ecad-08dab050ca57
-X-MS-Exchange-CrossTenant-AuthSource: PH8PR10MB6290.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Oct 2022 15:03:46.8259
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: eOrB5CWL6E8tUEFcBs5A+QBrMEo7oEWUu8hBR4eOS4ELVUgOJw/4bYS8rwunnOsTS5oA+xkmXFypqQGzWto0lFq7ag92sKTk5ScNrqCVj1VYIcrcGIlwXKuBI6JQrBxN
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLAPR10MB4836
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.545,FMLib:17.11.122.1
- definitions=2022-10-17_12,2022-10-17_02,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=952 phishscore=0
- suspectscore=0 spamscore=0 adultscore=0 mlxscore=0 malwarescore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2209130000 definitions=main-2210170087
-X-Proofpoint-ORIG-GUID: jOagjt46aW9lWEgsFU_k91uIGnGJVYAK
-X-Proofpoint-GUID: jOagjt46aW9lWEgsFU_k91uIGnGJVYAK
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.0
+Subject: Re: [BUG] [PATCH] drm/rockchip: use generic fbdev setup
+To: Heiko Stuebner <heiko@sntech.de>, John Keeping <john@metanate.com>
+Cc: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20211029115014.264084-1-john@metanate.com>
+ <d814394b-86c3-beb1-ddd4-04c65004f138@gmail.com> <Y00o3M7SKAB/w9sW@donbot>
+ <2220890.jZfb76A358@phil>
+Content-Language: en-US
+From: Johan Jonker <jbx6244@gmail.com>
+In-Reply-To: <2220890.jZfb76A358@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221017_080718_282798_6FEAE63E 
-X-CRM114-Status: UNSURE (   9.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221017_113027_423580_01C339A2 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,38 +90,131 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
 
-Smatch warns:
-drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c:755 
-dw_mipi_dsi_rockchip_set_lcdsel() warn: unsigned 
-'dsi->cdata->lcdsel_grf_reg'
-is never less than zero.
+On 10/17/22 13:29, Heiko Stuebner wrote:
+> Am Montag, 17. Oktober 2022, 12:05:16 CEST schrieb John Keeping:
+>> Hi Johan,
+>>
+>> On Mon, Oct 17, 2022 at 10:11:32AM +0200, Johan Jonker wrote:
+>>> Your patch contribution causes a kernel panic on MK808 with Rockchip rk3066a SoC.
+>>> Would you like to contribute to fix this issue?
+>>> The assumtion that drm_fbdev_generic_setup() does what rockchip_drm_fbdev_init did is not true!
+>>> A revert makes it work again.
+>>
 
-static void dw_mipi_dsi_rockchip_set_lcdsel(struct dw_mipi_dsi_rockchip 
-*dsi,
-                                             int mux)
+>> It looks like there are 3 different ways to end up with -ENOMEM here,
+>> can you track down whether you're hitting one of the cases in
+>> rockchip_gem_prime_vmap() or if it's the iosys_map_is_null case in
+>> drm_gem_vmap()?
+
+It looks like it comes from rockchip_gem_prime_vmap() second return (2).
+
+====
+
+
+
+int rockchip_gem_prime_vmap(struct drm_gem_object *obj, struct iosys_map *map)
 {
-         if (dsi->cdata->lcdsel_grf_reg < 0)
-                 regmap_write(dsi->grf_regmap, dsi->cdata->lcdsel_grf_reg,
-                         mux ? dsi->cdata->lcdsel_lit : 
-dsi->cdata->lcdsel_big);
+	struct rockchip_gem_object *rk_obj = to_rockchip_obj(obj);
+
+	if (rk_obj->pages) {
+		void *vaddr = vmap(rk_obj->pages, rk_obj->num_pages, VM_MAP,
+				  pgprot_writecombine(PAGE_KERNEL));
+		if (!vaddr) {
+			printk("FBDEV rockchip_gem_prime_vmap 1");
+			return -ENOMEM;
+		}
+		iosys_map_set_vaddr(map, vaddr);
+		return 0;
+	}
+
+	if (rk_obj->dma_attrs & DMA_ATTR_NO_KERNEL_MAPPING) {
+
+////////////////
+
+		printk("FBDEV rockchip_gem_prime_vmap 2");
+
+////////////////
+		return -ENOMEM;
+	}
+	iosys_map_set_vaddr(map, rk_obj->kvaddr);
+
+	return 0;
 }
 
-'dsi->cdata->lcdsel_grf_reg' is of u32 type, it can never be less than zero.
-So the above if condition is an impossible one.
+====
 
-Note: 'lcdsel_grf_reg' is set to -1 at other places.
+[    7.678392] [drm:drm_client_modeset_probe] connector 39 enabled? yes
+[    7.678435] [drm:drm_client_modeset_probe] Not using firmware configuration
+[    7.678465] [drm:drm_client_modeset_probe] looking for cmdline mode on connector 39
+[    7.678494] [drm:drm_client_modeset_probe] looking for preferred mode on connector 39 0
+[    7.678521] [drm:drm_client_modeset_probe] found mode 1920x1080
+[    7.678545] [drm:drm_client_modeset_probe] picking CRTCs for 1920x1080 config
+[    7.678585] [drm:drm_client_modeset_probe] desired mode 1920x1080 set on crtc 35 (0,0)
+[    7.801673] Console: switching to colour frame buffer device 240x67
 
 
-Thanks,
-Harshit
+[    7.811047] FBDEV rockchip_gem_prime_vmap 2
+
+
+[    7.811071] ------------[ cut here ]------------
+[    7.811084] WARNING: CPU: 0 PID: 35 at drivers/gpu/drm/drm_fb_helper.c:471 drm_fb_helper_damage_work+0x138/0x3b4
+[    7.811198] rockchip-drm display-subsystem: Damage blitter failed: ret=-12
+[    7.811219] Modules linked in:
+[    7.811244] CPU: 0 PID: 35 Comm: kworker/0:4 Not tainted 6.0.0-next-20221013+ #46
+[    7.811281] Hardware name: Rockchip (Device Tree)
+[    7.811300] Workqueue: events drm_fb_helper_damage_work
+[    7.811352] Backtrace: 
+[    7.811370]  dump_backtrace from show_stack+0x20/0x24
+[    7.811431]  r7:000001d7 r6:00000009 r5:c0b2bc60 r4:60000013
+[    7.811444]  show_stack from dump_stack_lvl+0x48/0x54
+[    7.811512]  dump_stack_lvl from dump_stack+0x18/0x1c
+[    7.811580]  r5:c0586064 r4:c0b6374c
+[    7.811590]  dump_stack from __warn+0xdc/0x154
+[    7.811677]  __warn from warn_slowpath_fmt+0xa4/0xd8
+[    7.811740]  r7:000001d7 r6:c0b6374c r5:c1004ec8 r4:c0b639e8
+[    7.811750]  warn_slowpath_fmt from drm_fb_helper_damage_work+0x138/0x3b4
+[    7.811821]  r9:ef7cf105 r8:c15dfc00 r7:fffffff4 r6:c200b490 r5:c1004ec8 r4:c200b494
+[    7.811833]  drm_fb_helper_damage_work from process_one_work+0x230/0x518
+[    7.811912]  r10:c110d140 r9:ef7cf105 r8:00000000 r7:ef7cf100 r6:ef7cbf00 r5:c200e300
+[    7.811927]  r4:c200b494
+[    7.811936]  process_one_work from worker_thread+0x54/0x554
+[    7.811991]  r10:ef7cbf00 r9:00000008 r8:c1003d40 r7:ef7cbf1c r6:c200e318 r5:ef7cbf00
+[    7.812006]  r4:c200e300
+[    7.812015]  worker_thread from kthread+0xe8/0x104
+[    7.812100]  r10:f0929e84 r9:c200da00 r8:c169aa80 r7:c200e300 r6:c01419e4 r5:00000000
+[    7.812114]  r4:c200d780
+[    7.812124]  kthread from ret_from_fork+0x14/0x2c
+[    7.812178] Exception stack(0xf092dfb0 to 0xf092dff8)
+[    7.812205] dfa0:                                     00000000 00000000 00000000 00000000
+[    7.812232] dfc0: 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+[    7.812255] dfe0: 00000000 00000000 00000000 00000000 00000013 00000000
+[    7.812282]  r10:00000000 r9:00000000 r8:00000000 r7:00000000 r6:00000000 r5:c01491a8
+[    7.812299]  r4:c200d780 r3:00000001
+[    7.812309] ---[ end trace 0000000000000000 ]---
+[    7.812336] FBDEV rockchip_gem_prime_vmap 2
+[    7.889795] FBDEV rockchip_gem_prime_vmap 2
+[    7.890418] FBDEV rockchip_gem_prime_vmap 2
+[    7.899447] FBDEV rockchip_gem_prime_vmap 2
+[    7.905252] FBDEV rockchip_gem_prime_vmap 2
+
+>>
+>> I guess the memory usage increases slightly using the generic code and
+>> RK3066 has less memory available.
+> 
+> also rk3066 and rk3188 do not have an iommu, so rely
+> on cma allocations.
+> 
+> 
+> Heiko
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
