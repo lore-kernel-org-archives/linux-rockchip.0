@@ -4,50 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6FF2C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Oct 2022 08:44:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42D28C433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Oct 2022 10:02:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=WuJf85TSoDAKGxiZtCIRMZg3M7+BjvaJw7+C5S7TfE0=; b=fdAZxquQux+qJq
-	gOzSkBTmlnRTfEZ8aompGiKoaCQtCuiDLRPJifrBu1vVDqSRtIzx+c4b2RJuEJrO2cjVg9JSSyc3O
-	UsySPkTDVuqBkeF53Dx5m9FQahWeh1dYoUOMdhv6FdwP5yvKa/m+aMZBazRPmjvLCdgIHYLOZt/pB
-	DujAofFKdAIp91CxqpdC5pPm0XY3zMzEzvlrfLsLVexWwKffVtNTTWn41Ad31Fe4AptMfrGaBjc2s
-	0jSwtC41SvvTNQSYadSqoc9C7WJwcYm9GBu9FiUlZ3zjX7UtpODs2RszkAiq4sRO9vR4kFHzaQQK2
-	e9aGyOapKPPpOXP999FQ==;
+	List-Owner; bh=qscbw1/RTbYU8vnwokLU7KbtVRfgh2Qmtm1wb5DDw64=; b=Om/T7YxNNxhmdc
+	gxWf/txnc11qo1a/c9WFxNCPQe4uPoSpgwuLDcwHTdoUokubnqKbdiX9VwzfBnx84emJM5sGOm8D8
+	jpmbVkQekL7Pabh1FlF7pVDwY7ZXNYWloM69651yFl/nBi5JZK4ynxn/IbhyFmHBWCt/Hsub/SJy3
+	xTcXOgyLl3rpQ6+IeBV3dlst4K0wFL3yQPxpJu6ypEDET83JZbSvX+gdhnQ8PAV6DAcZDlx0gMZTc
+	18LpWNb+g4x/s13S+kRJB7en55nZRR7/b8nRruLSKl63LRw1JYhz4lSNSmzbO50cHydGt427vS8jW
+	8fweVWNcOaF+sWmB/bRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okLjc-009DEi-PT; Mon, 17 Oct 2022 08:44:32 +0000
-Received: from out30-44.freemail.mail.aliyun.com ([115.124.30.44])
+	id 1okMwe-00AC2U-4E; Mon, 17 Oct 2022 10:02:04 +0000
+Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okLjM-009Cyc-Qc; Mon, 17 Oct 2022 08:44:18 +0000
-X-Alimail-AntiSpam: AC=PASS;BC=-1|-1;BR=01201311R611e4;CH=green;DM=||false|;DS=||;FP=0|-1|-1|-1|0|-1|-1|-1;HT=ay29a033018045192;MF=jiapeng.chong@linux.alibaba.com;NM=1;PH=DS;RN=10;SR=0;TI=SMTPD_---0VSLCgh6_1665996241;
-Received: from localhost(mailfrom:jiapeng.chong@linux.alibaba.com fp:SMTPD_---0VSLCgh6_1665996241)
-          by smtp.aliyun-inc.com;
-          Mon, 17 Oct 2022 16:44:11 +0800
-From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-To: hjc@rock-chips.com
-Cc: heiko@sntech.de,
-	airlied@gmail.com,
-	daniel@ffwll.ch,
-	dri-devel@lists.freedesktop.org,
+	id 1okMwR-00AByS-T3; Mon, 17 Oct 2022 10:01:54 +0000
+Received: (Authenticated sender: foss@0leil.net)
+	by mail.gandi.net (Postfix) with ESMTPSA id 1C4F7E0006;
+	Mon, 17 Oct 2022 10:01:34 +0000 (UTC)
+From: Quentin Schulz <foss+kernel@0leil.net>
+To: robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org,
+	heiko@sntech.de,
+	foss+kernel@0leil.net
+Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jiapeng Chong <jiapeng.chong@linux.alibaba.com>,
-	Abaci Robot <abaci@linux.alibaba.com>
-Subject: [PATCH] drm/rockchip: dsi: Remove the unused function dsi_update_bits()
-Date: Mon, 17 Oct 2022 16:43:30 +0800
-Message-Id: <20221017084330.94117-1-jiapeng.chong@linux.alibaba.com>
-X-Mailer: git-send-email 2.20.1.7.g153144c
+	Quentin Schulz <quentin.schulz@theobroma-systems.com>
+Subject: [PATCH v2 0/2] add support for Theobroma Systems PX30-µQ7 (Ringneck) with Haikou devkit
+Date: Mon, 17 Oct 2022 12:01:14 +0200
+Message-Id: <20220930-upstream-ringneck-v2-0-6671694b6934@theobroma-systems.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221017_014417_053256_AAF5FE59 
-X-CRM114-Status: UNSURE (   6.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221017_030152_292550_C2436DE0 
+X-CRM114-Status: GOOD (  13.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,45 +56,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The function dsi_update_bits() is defined in the dw-mipi-dsi-rockchip.c
-file, but not called elsewhere, so delete this unused function.
-
-drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c:367:20: warning: unused function 'dsi_update_bits'.
-
-https://bugzilla.openanolis.cn/show_bug.cgi?id=2414
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
----
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 6 ------
- 1 file changed, 6 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index bf6948125b84..313231d886d2 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -364,12 +364,6 @@ static inline u32 dsi_read(struct dw_mipi_dsi_rockchip *dsi, u32 reg)
- 	return readl(dsi->base + reg);
- }
- 
--static inline void dsi_update_bits(struct dw_mipi_dsi_rockchip *dsi, u32 reg,
--				   u32 mask, u32 val)
--{
--	dsi_write(dsi, reg, (dsi_read(dsi, reg) & ~mask) | val);
--}
--
- static void dw_mipi_dsi_phy_write(struct dw_mipi_dsi_rockchip *dsi,
- 				  u8 test_code,
- 				  u8 test_data)
--- 
-2.20.1.7.g153144c
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogUXVlbnRpbiBTY2h1bHogPHF1ZW50aW4uc2NodWx6QHRoZW9icm9tYS1zeXN0ZW1zLmNv
+bT4KClRoZSBQWDMwLXVRNyAoUmluZ25lY2spIFNvTSBpcyBhIMK1UXNldmVuLWNvbXBhdGlibGUg
+KDQwbW14NzBtbSwgTVhNLTIzMApjb25uZWN0b3IpIHN5c3RlbS1vbi1tb2R1bGUgZnJvbSBUaGVv
+YnJvbWEgU3lzdGVtc1sxXSwgZmVhdHVyaW5nIHRoZQpSb2NrY2hpcCBQWDMwLgoKSXQgcHJvdmlk
+ZXMgdGhlIGZvbGxvd2luZyBmZWF0dXJlIHNldDoKKiB1cCB0byA0R0IgRERSNAoqIHVwIHRvIDEy
+OEdCIG9uLW1vZHVsZSBlTU1DICh3aXRoIDgtYml0IDEuOFYgaW50ZXJmYWNlKQoqIFNEIGNhcmQg
+KG9uIGEgYmFzZWJvYXJkKSB2aWEgZWRnZSBjb25uZWN0b3IKKiBGYXN0IEV0aGVybmV0IHdpdGgg
+b24tbW9kdWxlIFRJIERQODM4MjVJIFBIWQoqIE1JUEktRFNJL0xWRFMKKiBNSVBJLUNTSQoqIFVT
+QgotIDF4IFVTQiAyLjAgZHVhbC1yb2xlCi0gM3ggVVNCIDIuMCBob3N0Ciogb24tbW9kdWxlIFNU
+TTMyIENvcnRleC1NMCBjb21wYW5pb24gY29udHJvbGxlciwgaW1wbGVtZW50aW5nOgotIGxvdy1w
+b3dlciBSVEMgZnVuY3Rpb25hbGl0eSAoSVNMMTIwOCBlbXVsYXRpb24pCi0gZmFuIGNvbnRyb2xs
+ZXIgKEFNQzY4MjEgZW11bGF0aW9uKQotIFVTQjwtPkNBTiBicmlkZ2UgY29udHJvbGxlcgoqIG9u
+LW1vZHVsZSBFc3ByZXNzaWYgRVNQMzIgZm9yIEJsdWV0b290aCArIDIuNEdIeiBXaUZpCiogb24t
+bW9kdWxlIE5YUCBTRTA1eCBTZWN1cmUgRWxlbWVudAoKWzFdIGh0dHBzOi8vd3d3LnRoZW9icm9t
+YS1zeXN0ZW1zLmNvbS9zb20tcHJvZHVjdC9weDMwLSVDMiVCNXE3LwoKVGhlIEVzcHJlc3NpZiBF
+U1AzMiBzdXBwb3J0IGlzIG5vdCBhZGRlZCBpbiB0aGlzIHBhdGNoIHNlcmllcyBhcwp0aGVyZSds
+bCBiZSBzb21lIGNoYWxsZW5nZXMgYXJvdW5kIHRoZSBEZXZpY2UgVHJlZSBiaW5kaW5ncyB0aGF0
+IHdpbGwKcmVxdWlyZSBpdHMgb3duIHBhdGNoIHNlcmllcyBhbmQgZGlzY3Vzc2lvbi4KCk1JUEkt
+RFNJL0NTSSAiY29uc3VtZXJzIiB3aWxsIGNvbWUgbGF0ZXIgd2l0aCBhbiBhZGFwdGVyIGJvYXJk
+IG9uY2UgaXQKaXMgZGVzaWduZWQuCgpDaGVlcnMsClF1ZW50aW4KCnYyOgogLSBjaGFuZ2VkIEdQ
+SU8gdXNlZCBmb3Igc2xlZXAgYW5kIHdha2UgYnV0dG9ucyBzaW5jZSB2MS4yIEhXIHJld29yayAo
+djEuMSB3YXMKICAgZW5naW5lZXJpbmcgc2FtcGxlKSwKIC0gY2hhbmdlZCBHUElPIHVzZWQgZm9y
+IFBIWSByZXNldCBzaW5jZSB2MS4yIEhXIHJld29yayAodjEuMSB3YXMgZW5naW5lZXJpbmcKICAg
+c2FtcGxlKSwKIC0gZW5hYmxlZCBzYXJhZGMgdXNlZCBmb3IgbW9kdWxlIHZvbHRhZ2UgZmVlZGJh
+Y2sgYW5kIG1vZHVsZSBIVyB2ZXJzaW9uIGlkZW50aWZpZXIsCiAtIHVwZGF0ZWQgdmNjaW9fc2Qg
+Zm9yIDEuOFYtMy4zViBvcGVyYXRpb24gaW5zdGVhZCBvZiBmb3JjZWQgM1YsCiAtIGVuYWJsZWQg
+U0RSMTIsIFNEUjI1IGFuZCBTRFI1MCBmb3IgU0QgY2FyZCBjb250cm9sbGVyLAogLSBhZGRlZCB2
+cW1tYyBzdXBwbHkgZm9yIFNEIGNhcmQgY29udHJvbGxlciwKIC0gcmVtb3ZlZCBTV19CT09UX0FM
+VCBhZGRpdGlvbiB0byB0aGUgaW5wdXQgU1cgZXZlbnRzIGluIGZhdm9yIG9mIGEgR1BJTyBpbnB1
+dAogICBob2csCiAtIHJlbmFtZWQgbW9kZWwgcHJvcGVydHkgaW4gRFQgdG8gdXNlIHUgaW5zdGVh
+ZCBvZiDCtSBzaW5jZSBkdGMgZGlkbid0IGxpa2UgaXQsCiAtIHJlbmFtZWQgaGFpa291LWtleXMg
+RFQgbm9kZSBuYW1lIGludG8gZ3Bpby1rZXlzIHRvIG1hdGNoIERUIHN0YW5kYXJkCiAgIGV4cGVj
+dGF0aW9uLAogLSByZW5hbWVkIGdwaW8ta2V5cyBlbnRyaWVzIHdpdGggbG93ZXJjYXNlIGFuZCBk
+YXNoIGNoYXJhY3RlcnMgb25seSwKIC0gYWRkZWQgYnV0dG9uLSBvciBzd2l0Y2gtIHByZWZpeCBm
+b3IgZ3Bpby1rZXlzLAogLSByZW1vdmVkIGxhYmVsIGZvciBHUElPIExFRHMgaW4gZmF2b3Igb2Yg
+ZnVuY3Rpb24gYW5kIGNvbG9yIHByb3BlcnRpZXMsCiAtIHJlbmFtZWQgcmVndWxhdG9yIERUIG5v
+ZGUgbmFtZXMgdG8gYmUgc3VmZml4ZWQgd2l0aCAtcmVndWxhdG9yIGFzIHBlciBEVAogICBzdGFu
+ZGFyZCBleHBlY3RhdGlvbiwKIC0gYWRkZWQgR1BJTyBob2cgZm9yIEJJT1NfRElTQUJMRS9CT09U
+X0FMVCBvdmVycmlkZSBwaW4gKG1ha2VzIHN1cmUgdGhhdCB0aGUKICAgbGluZXMgdG8gZU1NQyBh
+bmQgU1BJLWZsYXNoZXMgYXJlIHdvcmtpbmcgZXZlbiBpZiB0aGUgaGFyZHdhcmUgc3dpdGNoCiAg
+IGRpc2FibGVkIHRoZW0gYXQgYm9vdCksCiAtIHJlbmFtZWQgcG1pY19pbnQgRFQgbm9kZSBuYW1l
+IGludG8gcG1pYy1pbnQsCiAtIHJlbW92ZWQgYSBjb3VwbGUgb2YgcmVkdW5kYW50IHN0YXR1cyA9
+IG9rYXksCiAtIGFkZGVkIEFja2VkLUJ5IGZvciBkdC1iaW5kaW5ncywKIC0gcmVwbGFjZWQgwrUg
+d2l0aCB1IGluIGR0LWJpbmRpbmdzIGRlc2NyaXB0aW9uIGp1c3QgZm9yIGNvbnNpc3RlbmN5LAoK
+VG86IFJvYiBIZXJyaW5nIDxyb2JoK2R0QGtlcm5lbC5vcmc+ClRvOiBLcnp5c3p0b2YgS296bG93
+c2tpIDxrcnp5c3p0b2Yua296bG93c2tpK2R0QGxpbmFyby5vcmc+ClRvOiBIZWlrbyBTdHVlYm5l
+ciA8aGVpa29Ac250ZWNoLmRlPgpDYzogZGV2aWNldHJlZUB2Z2VyLmtlcm5lbC5vcmcKQ2M6IGxp
+bnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpDYzogbGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpDYzogbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZwpTaWduZWQt
+b2ZmLWJ5OiBRdWVudGluIFNjaHVseiA8cXVlbnRpbi5zY2h1bHpAdGhlb2Jyb21hLXN5c3RlbXMu
+Y29tPgoKLS0tClF1ZW50aW4gU2NodWx6ICgyKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6
+IGFkZCBQWDMwLcK1UTcgKFJpbmduZWNrKSBTb00gd2l0aCBIYWlrb3UgYmFzZWJvYXJkCiAgICAg
+IGR0LWJpbmRpbmdzOiBhcm06IHJvY2tjaGlwOiBhZGQgVGhlb2Jyb21hIFN5c3RlbXMgUFgzMC3C
+tVE3IChSaW5nbmVjaykgd2l0aCBIYWlrb3UKCiAuLi4vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0v
+cm9ja2NoaXAueWFtbCAgICAgICAgICB8ICAgNSArCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
+aGlwL01ha2VmaWxlICAgICAgICAgICAgICB8ICAgMSArCiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAv
+cHgzMC1yaW5nbmVjay1oYWlrb3UuZHRzICAgICB8IDIzMiArKysrKysrKysrKysrCiBhcmNoL2Fy
+bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3B4MzAtcmluZ25lY2suZHRzaSAgICB8IDM4MiArKysrKysr
+KysrKysrKysrKysrKysKIDQgZmlsZXMgY2hhbmdlZCwgNjIwIGluc2VydGlvbnMoKykKLS0tCmJh
+c2UtY29tbWl0OiAyNmNkNGZlNWEyMDAxNmJlZDk2ZmNlMjhlMTkxMTVmMjM4Y2UzYTM2CmNoYW5n
+ZS1pZDogMjAyMjA5MzAtdXBzdHJlYW0tcmluZ25lY2stNmNlZjBjMDljZDg2CgpCZXN0IHJlZ2Fy
+ZHMsCi0tIApRdWVudGluIFNjaHVseiA8cXVlbnRpbi5zY2h1bHpAdGhlb2Jyb21hLXN5c3RlbXMu
+Y29tPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
