@@ -4,51 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77EF6C433FE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Oct 2022 10:26:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8C28C433FE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Oct 2022 11:29:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gqdaIoaBVgknIRuoSGlFbEQaIdpB1ChAPlM0IEkn91I=; b=eVNA+TH8/3yHBk
-	rFe6dOoko2gGztQAnGLuAf6zfaZgGFwtWeb9RgHtWO2kZ4Lm+MmajTIdZsGvnDRJHMi6mPAKLc8Pc
-	j5P6vZ4Eaz6LRmVlIrE4wPIH5XAdNripufHRcM6OkyUWT9lrEWUswwyBFmxfbs2h9iIdqeStn9a6/
-	9s8wdnRaIJrmrmWk8l1F2yU7rJDSByWD4opZ4IGbbc9MqkX9NWL0m36xqLls01KiP7hvkqXWqRKY0
-	RiK8IlEGahyHh8LE4mppPSbdZ9vlc26y5HL5alDgBI8MI8FnZayVxX8zKh6+hp3rJqAT2T/8o5JWZ
-	KWGXHNhgkOkHPWBZzrfw==;
+	List-Owner; bh=aDkT9h4zI/Qy3zh758FzjRlx2Bdpq6sXQla1vYYLGtI=; b=gVO95/xd4/qpvU
+	VwM+vD4c3jn7OIDxEhKwbhXtJpwNDs3zt8i8U+8ao1pMJd0Mxy7QbZuAZAYZpvEOaW/RGAFPBj12k
+	BY8LVPFNOKxCKreJfZUvj2RUTacdoxPIOEm09hZqY+apBbhtrNKYhRGkWDWK+mhNcW0fctX2f+gmB
+	0toWRXeiwaNIRsSV3PE3sBEGYvLDAtBaNKsahFuF1oyKPurCS5ttn+Hu39cMzbSHUrZ0TdgXv8oeZ
+	ueuW5Ajq7DhI5D+hEK0QpTwTghGQ8euyUL4gyqtv2eK5e4B6AV69unLtAggKrHFe/sJcboeOD7bKK
+	dIDXPwnSjdja3LiWBH2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okNKQ-00AGyF-C0; Mon, 17 Oct 2022 10:26:38 +0000
-Received: from relay4-d.mail.gandi.net ([2001:4b98:dc4:8::224])
+	id 1okOJQ-00AqWZ-0U; Mon, 17 Oct 2022 11:29:40 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okNJy-00AGou-LF; Mon, 17 Oct 2022 10:26:12 +0000
-Received: (Authenticated sender: foss@0leil.net)
-	by mail.gandi.net (Postfix) with ESMTPSA id A8DD5E000C;
-	Mon, 17 Oct 2022 10:26:06 +0000 (UTC)
-From: Quentin Schulz <foss+kernel@0leil.net>
-To: robh+dt@kernel.org,
-	krzysztof.kozlowski+dt@linaro.org,
-	heiko@sntech.de
-Cc: foss+kernel@0leil.net,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Quentin Schulz <quentin.schulz@theobroma-systems.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v2 2/2] =?utf-8?q?dt-bindings:=20arm:=20rockchip:=20add=20Theobro?= =?utf-8?q?ma=20Systems=20PX30-=C2=B5Q7=20(Ringneck)=20with=20Haikou?=
-Date: Mon, 17 Oct 2022 12:25:25 +0200
-Message-Id: <20220930-upstream-ringneck-v2-2-6671694b6934@theobroma-systems.com>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20220930-upstream-ringneck-v2-0-6671694b6934@theobroma-systems.com>
-References: <20220930-upstream-ringneck-v2-0-6671694b6934@theobroma-systems.com>
+	id 1okOJG-00AqUD-57; Mon, 17 Oct 2022 11:29:31 +0000
+Received: from p508fc122.dip0.t-ipconnect.de ([80.143.193.34] helo=phil.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1okOIy-0007hW-1b; Mon, 17 Oct 2022 13:29:12 +0200
+From: Heiko Stuebner <heiko@sntech.de>
+To: Johan Jonker <jbx6244@gmail.com>, John Keeping <john@metanate.com>
+Cc: dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [BUG] [PATCH] drm/rockchip: use generic fbdev setup
+Date: Mon, 17 Oct 2022 13:29:11 +0200
+Message-ID: <2220890.jZfb76A358@phil>
+In-Reply-To: <Y00o3M7SKAB/w9sW@donbot>
+References: <20211029115014.264084-1-john@metanate.com> <d814394b-86c3-beb1-ddd4-04c65004f138@gmail.com> <Y00o3M7SKAB/w9sW@donbot>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221017_032610_863529_FC1B23ED 
-X-CRM114-Status: UNSURE (   7.29  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221017_042930_198275_B90B9BBB 
+X-CRM114-Status: GOOD (  17.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,30 +52,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogUXVlbnRpbiBTY2h1bHogPHF1ZW50aW4uc2NodWx6QHRoZW9icm9tYS1zeXN0ZW1zLmNv
-bT4KCkFkZCBlbnRyeSBmb3IgdGhlIFRoZW9icm9tYSBTeXN0ZW1zIFBYMzAtwrVRNyAoUmluZ25l
-Y2spIHdpdGggSGFpa291CmRldmtpdC4KCkFja2VkLWJ5OiBLcnp5c3p0b2YgS296bG93c2tpIDxr
-cnp5c3p0b2Yua296bG93c2tpQGxpbmFyby5vcmc+ClNpZ25lZC1vZmYtYnk6IFF1ZW50aW4gU2No
-dWx6IDxxdWVudGluLnNjaHVsekB0aGVvYnJvbWEtc3lzdGVtcy5jb20+Ci0tLQogRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2FybS9yb2NrY2hpcC55YW1sIHwgNSArKysrKwogMSBm
-aWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vcm9ja2NoaXAueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9hcm0vcm9ja2NoaXAueWFtbAppbmRleCA3ODExYmE2NDE0OWNiLi42
-ZDI1NmIxYzFiNTg4IDEwMDY0NAotLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
-Z3MvYXJtL3JvY2tjaGlwLnlhbWwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
-bmdzL2FybS9yb2NrY2hpcC55YW1sCkBAIC02NTgsNiArNjU4LDExIEBAIHByb3BlcnRpZXM6CiAg
-ICAgICAgICAgLSBjb25zdDogcm9ja2NoaXAscnYxMTA4LWV2YgogICAgICAgICAgIC0gY29uc3Q6
-IHJvY2tjaGlwLHJ2MTEwOAogCisgICAgICAtIGRlc2NyaXB0aW9uOiBUaGVvYnJvbWEgU3lzdGVt
-cyBQWDMwLXVRNyB3aXRoIEhhaWtvdSBiYXNlYm9hcmQKKyAgICAgICAgaXRlbXM6CisgICAgICAg
-ICAgLSBjb25zdDogdHNkLHB4MzAtcmluZ25lY2staGFpa291CisgICAgICAgICAgLSBjb25zdDog
-cm9ja2NoaXAscHgzMAorCiAgICAgICAtIGRlc2NyaXB0aW9uOiBUaGVvYnJvbWEgU3lzdGVtcyBS
-SzMzNjgtdVE3IHdpdGggSGFpa291IGJhc2Vib2FyZAogICAgICAgICBpdGVtczoKICAgICAgICAg
-ICAtIGNvbnN0OiB0c2QscmszMzY4LWxpb24taGFpa291CgotLSAKYjQgMC4xMC4xCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
-YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Am Montag, 17. Oktober 2022, 12:05:16 CEST schrieb John Keeping:
+> Hi Johan,
+> 
+> On Mon, Oct 17, 2022 at 10:11:32AM +0200, Johan Jonker wrote:
+> > Your patch contribution causes a kernel panic on MK808 with Rockchip rk3066a SoC.
+> > Would you like to contribute to fix this issue?
+> > The assumtion that drm_fbdev_generic_setup() does what rockchip_drm_fbdev_init did is not true!
+> > A revert makes it work again.
+> 
+> It looks like there are 3 different ways to end up with -ENOMEM here,
+> can you track down whether you're hitting one of the cases in
+> rockchip_gem_prime_vmap() or if it's the iosys_map_is_null case in
+> drm_gem_vmap()?
+> 
+> I guess the memory usage increases slightly using the generic code and
+> RK3066 has less memory available.
+
+also rk3066 and rk3188 do not have an iommu, so rely
+on cma allocations.
+
+
+Heiko
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
