@@ -4,52 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4FB5C4332F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Oct 2022 12:36:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE1A4C4332F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Oct 2022 12:36:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zni04M9Oh01Vg7nsNCerpnfMxi2wpLdIoIkzBfWwCpc=; b=yGMafDZpaRh0qj
-	15jQ+m/jcYy2kASNxqIJRB2HovMjvo6gSImddM3Ja5p757xZj6TpRHMTTNO8XyYwrbMADIn7d/Hhc
-	eiBmg3I49ICn/6gfczOgef4KQHUCFCe9iEGelelYB67D3gNcel31QeuQGV9rcd3FsBHh1Umx7krUY
-	ZrZb3A0uPnKKs0nLcpSFNyVm+LZoT5g/kYESwpbOW9Be35wtFIr5v1bc9wUn/X/l5YRRwDPEKE+kR
-	/PmOaVgfG9jSMuvkVrlqCecwLN6HaV+8J1QC36ZOWOqdQKx6wIewTis+1kopkgGiXmHTSOo97uzZP
-	aHuMuhYa82CbYao4qtYQ==;
+	List-Owner; bh=Ug7SGkEnaiqJvZZezTcSmKef5sy/NRF9JJhpa7CfJR0=; b=WjtuTKlLE4ctd0
+	XRcI/MgH2kZpCE8EdaVPeoN45iD3qkq/cmYCL+U/WBMDtXAIUZ1jOCaVXy7Go3P+3h5dj1Y18imxw
+	WxaifOVm7T+n/ztslz5clDF3BfFPwpjhGTwziKBWiJrJhuM74iDRtbtRVnOFu7ZwpbXjp5aqAjaMa
+	pHK2or3SJtJTOvmJ/tOyR8vKB9SOKHzbZnRMwCY9qpL9cS6tK7nMvfZ03bWMsRasJ7CcaSKzTk7Mk
+	eyONb4jwp2yz1oX3v6FNT4vNHnXY/dijcY1c4r4ltqkz6sFlRuZKi1NUht6unZH3b1iRLQu/OO0+M
+	rw4dlaP4qVhwrBj3fVPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okPLc-00BZvu-Gu; Mon, 17 Oct 2022 12:36:00 +0000
+	id 1okPLz-00BaDa-MR; Mon, 17 Oct 2022 12:36:23 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okPKU-00BZKB-Gm; Mon, 17 Oct 2022 12:34:53 +0000
+	id 1okPKZ-00BZMT-60; Mon, 17 Oct 2022 12:34:57 +0000
 Received: from p508fc122.dip0.t-ipconnect.de ([80.143.193.34] helo=phil.fritz.box)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1okPKM-00087p-Ks; Mon, 17 Oct 2022 14:34:42 +0200
+	id 1okPKO-00087p-G0; Mon, 17 Oct 2022 14:34:44 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: Chukun Pan <amadeus@jmu.edu.cn>
+To: Lev Popov <leo@nabam.net>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
 	Rob Herring <robh+dt@kernel.org>,
 	linux-kernel@vger.kernel.org,
+	Dan Johansen <strit@manjaro.org>,
+	Peter Geis <pgwipeout@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
 	Michael Riesch <michael.riesch@wolfvision.net>,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 0/2] arm64: dts: rockchip: enable pcie3 support for rock-3a
-Date: Mon, 17 Oct 2022 14:34:33 +0200
-Message-Id: <166601006783.173248.8896110075615281181.b4-ty@sntech.de>
+Subject: Re: [PATCH v4] arm64: dts: rockchip: fix quartz64-a bluetooth configuration
+Date: Mon, 17 Oct 2022 14:34:39 +0200
+Message-Id: <166601006787.173248.7939745921519650115.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221006152524.502445-1-amadeus@jmu.edu.cn>
-References: <20221006152524.502445-1-amadeus@jmu.edu.cn>
+In-Reply-To: <20220926125350.64783-1-leo@nabam.net>
+References: <CAMdYzYpdhJ-wWN9UAppQvaNqK8Y_RadYv2v67gD5S_u=1ZXw0Q@mail.gmail.com> <20220926125350.64783-1-leo@nabam.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221017_053450_567364_641075E2 
-X-CRM114-Status: UNSURE (   9.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20221017_053455_247205_B496A5CB 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,23 +68,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 6 Oct 2022 23:25:22 +0800, Chukun Pan wrote:
-> Changes from v2:
-> * Removed changes to pcie2x1 node.
-> * Collected acked-by and tested-by.
+On Mon, 26 Sep 2022 14:53:48 +0200, Lev Popov wrote:
+> For "Quartz64 Model A" add missing RTS line to the UART interface used by
+> bluetooth and swap bluetooth host-wakeup and device-wakeup gpio pins to
+> match the boards physical layout. This changes are necessary to make
+> bluetooth provided by the wireless module work.
 > 
-> Chukun Pan (2):
->   arm64: dts: rockchip: Add regulator suffix to rock-3a
->   arm64: dts: rockchip: Add PCIe v3 nodes to rock-3a
+> Also set max-speed on the bluetooth device as it's not automatically
+> detected.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/2] arm64: dts: rockchip: Add regulator suffix to rock-3a
-      commit: 49665ab0ed5eed4fa7b8a6b236ff2df681c89673
-[2/2] arm64: dts: rockchip: Add PCIe v3 nodes to rock-3a
-      commit: 0522cd8112204d124d714eee7e9f0cac6de999d9
+[1/1] arm64: dts: rockchip: fix quartz64-a bluetooth configuration
+      commit: 2dcd7e0c821fe9b663f7d3382b6d2faa8edf2129
 
 Best regards,
 -- 
