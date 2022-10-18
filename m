@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C582EC4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Oct 2022 15:17:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E282C4332F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Oct 2022 15:17:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ld5NhyTEWhrucSMquTkrgiPVCZ+zzg61rpbjcP3NdYI=; b=rq1wsEgfv9jCCg
-	Gyk9MsYUpQ098s4nYP7/Wd9TCrslhl4suA83JVYlH1xlfoxc0CL52tWrxiABTraeN7m9vkMAnp8Vh
-	cg8+jeUm8ing+UqIAAO6flhxLZgUTA9B0Q+u7xXhaSJHV6/sE3sa890Vhy3KmKGjqKOmx8cNehiIh
-	//LAnjj7AfnerFiXYlvgBoZfJe4OHC4CY6jKhAEqdlqFskkmS78NuQFL5IFOxWQdBipyCU1cBhR9a
-	7RH+7nsr+fT7alwblce174fPO0PTVXfKw3Oe7yav3qHqg85gnC8QdyK+nwW6dmT3cUF3nQ7YF25LC
-	vdmkDl0f1KbwjtJeoeTw==;
+	List-Owner; bh=27E6UZYdLbRc0ukUp9TTloVHJQ0AKHb0NbvZ04RDaGA=; b=pltseWRKMMoJag
+	8WJ4Jb31RfPjK9vEc+lJSU4WJHtIL62soclD13cZNazMYJ8ssgob8pjtYLf7c6KEAmqMjt/AiveHb
+	nbjr5yZarNLgt9ZJ52t2PD/W72GN8cie9fmXgZXt9p6Q+AjLddmxYg+tku56VgM9aQV7jtkb/QoAd
+	xJw9FUvm1itIWlNk4OiPHEDuQ8g5gEaSlYBLoDuk9EORs5YaU9jPgxy/C8bpHaIAX9XAHP0EZjpx8
+	7BdLaQQKtZ8q7RHPZICPGZbXtH9kKF7bYWOZs1fB2xPgYHp0DKCBWzZW8gmIaDEFsrW89LxHUJUlr
+	l26F/scQytURg6ysq94Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okoLa-007V70-Ul; Tue, 18 Oct 2022 15:17:38 +0000
-Received: from madras.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e5ab])
+	id 1okoLY-007V5D-H3; Tue, 18 Oct 2022 15:17:36 +0000
+Received: from madras.collabora.co.uk ([46.235.227.172])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okoIX-007TF7-GH; Tue, 18 Oct 2022 15:14:31 +0000
+	id 1okoIV-007TE8-KX; Tue, 18 Oct 2022 15:14:30 +0000
 Received: from jupiter.universe (dyndsl-095-033-155-016.ewe-ip-backbone.de [95.33.155.16])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 5E7366602391;
+	by madras.collabora.co.uk (Postfix) with ESMTPSA id 50F7C660238F;
 	Tue, 18 Oct 2022 16:14:21 +0100 (BST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1666106061;
-	bh=GOZ1/v/sboetPJ8icM0X2o8q/pvskI6HnxCAh213vPA=;
+	bh=jJHEnIe1D+ZEFrgDtEJI+Axf/gJufH7/BD8/v9RQkxw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=Mjib4qAI1hZX/B68fQLRoFQ87MptcK8plCEOZaIDiQg9fhmIGqfvKTM9sFnG/4DYB
-	 1P8mfX2P1Eu+GxRPc7Y82uqGrKDT++m1qQ8OgTjZTwYujC7eIrcW3nltFUAvCgPMoz
-	 ZvKXnRmjIXia399nDeCu9lk40ZtrrHFHnUv+2LA+oM8KdtMPng10i9v51rC1alk+fZ
-	 dYol87biftUga74Gd2aB8n5FNtEU7inxCV6CpJDSBbhNh2aZ+oQvjKmis+Qvn8aJGl
-	 ZU7XM9aOa2kcHzS3tbuUm3gK3tcfg6ua09yJ1ZKucQE3pB0IGf1OoLpPk6JpyhJ0xB
-	 m8OuxDVQLe2Ng==
+	b=jPi8h5i012heT8El+U+24kQJ3xEvrzDGrAX2gUOTWMGvi2+3Wu72I1+TdZapbLyV/
+	 SQ9ik08U75bdwtU0TB6iUt14gO3fR1EwRhrl0B98pc759uADpJFduqMrzDYMLzxCR2
+	 xwB70L2oHW1YL+RtnIzuY/jWtDFeL4UPwFoxyYLEuV0Y+uQb3cd6HXzM+o6Y6bGX0n
+	 O6wfHdN7IxkaKF2MEPIUyxPl1zlBe8aZiSiN6iUmSqp35gaJCfmsN937RqtzI7augH
+	 WsTsXmVh1tSmqYxlQPeSiAy+CaeqNAoJE4vxK/zyfsoRsi9ZOw5LHxDkln/uwiJdHA
+	 bU2SXW1hi28mw==
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 3067C48032D; Tue, 18 Oct 2022 17:14:16 +0200 (CEST)
+	id 2C8C34801BE; Tue, 18 Oct 2022 17:14:16 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh+dt@kernel.org>,
@@ -53,18 +53,19 @@ Cc: Rob Herring <robh+dt@kernel.org>,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	devicetree@vger.kernel.org,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	kernel@collabora.com
-Subject: [PATCHv3 8/9] clk: rockchip: add lookup table support
-Date: Tue, 18 Oct 2022 17:14:06 +0200
-Message-Id: <20221018151407.63395-9-sebastian.reichel@collabora.com>
+	Elaine Zhang <zhangqing@rock-chips.com>,
+	kernel@collabora.com,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCHv3 6/9] clk: rockchip: clk-cpu: add mux setting for cpu change frequency
+Date: Tue, 18 Oct 2022 17:14:04 +0200
+Message-Id: <20221018151407.63395-7-sebastian.reichel@collabora.com>
 X-Mailer: git-send-email 2.35.1
 In-Reply-To: <20221018151407.63395-1-sebastian.reichel@collabora.com>
 References: <20221018151407.63395-1-sebastian.reichel@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221018_081429_871964_10239A95 
-X-CRM114-Status: GOOD (  14.81  )
+X-CRM114-CacheID: sfid-20221018_081427_992591_575965AC 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,143 +77,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for mapping reset IDs to register offsets
-to support gapless continous platform reset IDs.
-
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/clk/rockchip/clk.h     | 21 +++++++++++++++------
- drivers/clk/rockchip/softrst.c | 34 +++++++++++++++++++++++++---------
- 2 files changed, 40 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
-index 6e84ab85b372..7ee231d9585d 100644
---- a/drivers/clk/rockchip/clk.h
-+++ b/drivers/clk/rockchip/clk.h
-@@ -958,15 +958,24 @@ struct clk *rockchip_clk_register_halfdiv(const char *name,
- 					  spinlock_t *lock);
- 
- #ifdef CONFIG_RESET_CONTROLLER
--void rockchip_register_softrst(struct device_node *np,
--			       unsigned int num_regs,
--			       void __iomem *base, u8 flags);
-+void rockchip_register_softrst_lut(struct device_node *np,
-+				   const int *lookup_table,
-+				   unsigned int num_regs,
-+				   void __iomem *base, u8 flags);
- #else
--static inline void rockchip_register_softrst(struct device_node *np,
--			       unsigned int num_regs,
--			       void __iomem *base, u8 flags)
-+static inline void rockchip_register_softrst_lut(struct device_node *np,
-+				   const int *lookup_table,
-+				   unsigned int num_regs,
-+				   void __iomem *base, u8 flags)
- {
- }
- #endif
- 
-+static inline void rockchip_register_softrst(struct device_node *np,
-+					     unsigned int num_regs,
-+					     void __iomem *base, u8 flags)
-+{
-+	return rockchip_register_softrst_lut(np, NULL, num_regs, base, flags);
-+}
-+
- #endif
-diff --git a/drivers/clk/rockchip/softrst.c b/drivers/clk/rockchip/softrst.c
-index 5d07266745b8..fd56aaefe6d1 100644
---- a/drivers/clk/rockchip/softrst.c
-+++ b/drivers/clk/rockchip/softrst.c
-@@ -12,6 +12,7 @@
- 
- struct rockchip_softrst {
- 	struct reset_controller_dev	rcdev;
-+	const int			*lut;
- 	void __iomem			*reg_base;
- 	int				num_regs;
- 	int				num_per_reg;
-@@ -25,8 +26,13 @@ static int rockchip_softrst_assert(struct reset_controller_dev *rcdev,
- 	struct rockchip_softrst *softrst = container_of(rcdev,
- 						     struct rockchip_softrst,
- 						     rcdev);
--	int bank = id / softrst->num_per_reg;
--	int offset = id % softrst->num_per_reg;
-+	int bank, offset;
-+
-+	if (softrst->lut)
-+		id = softrst->lut[id];
-+
-+	bank = id / softrst->num_per_reg;
-+	offset = id % softrst->num_per_reg;
- 
- 	if (softrst->flags & ROCKCHIP_SOFTRST_HIWORD_MASK) {
- 		writel(BIT(offset) | (BIT(offset) << 16),
-@@ -52,8 +58,13 @@ static int rockchip_softrst_deassert(struct reset_controller_dev *rcdev,
- 	struct rockchip_softrst *softrst = container_of(rcdev,
- 						     struct rockchip_softrst,
- 						     rcdev);
--	int bank = id / softrst->num_per_reg;
--	int offset = id % softrst->num_per_reg;
-+	int bank, offset;
-+
-+	if (softrst->lut)
-+		id = softrst->lut[id];
-+
-+	bank = id / softrst->num_per_reg;
-+	offset = id % softrst->num_per_reg;
- 
- 	if (softrst->flags & ROCKCHIP_SOFTRST_HIWORD_MASK) {
- 		writel((BIT(offset) << 16), softrst->reg_base + (bank * 4));
-@@ -77,9 +88,10 @@ static const struct reset_control_ops rockchip_softrst_ops = {
- 	.deassert	= rockchip_softrst_deassert,
- };
- 
--void rockchip_register_softrst(struct device_node *np,
--			       unsigned int num_regs,
--			       void __iomem *base, u8 flags)
-+void rockchip_register_softrst_lut(struct device_node *np,
-+				   const int *lookup_table,
-+				   unsigned int num_regs,
-+				   void __iomem *base, u8 flags)
- {
- 	struct rockchip_softrst *softrst;
- 	int ret;
-@@ -91,13 +103,17 @@ void rockchip_register_softrst(struct device_node *np,
- 	spin_lock_init(&softrst->lock);
- 
- 	softrst->reg_base = base;
-+	softrst->lut = lookup_table;
- 	softrst->flags = flags;
- 	softrst->num_regs = num_regs;
- 	softrst->num_per_reg = (flags & ROCKCHIP_SOFTRST_HIWORD_MASK) ? 16
- 								      : 32;
- 
- 	softrst->rcdev.owner = THIS_MODULE;
--	softrst->rcdev.nr_resets =  num_regs * softrst->num_per_reg;
-+	if (lookup_table)
-+		softrst->rcdev.nr_resets = num_regs;
-+	else
-+		softrst->rcdev.nr_resets = num_regs * softrst->num_per_reg;
- 	softrst->rcdev.ops = &rockchip_softrst_ops;
- 	softrst->rcdev.of_node = np;
- 	ret = reset_controller_register(&softrst->rcdev);
-@@ -107,4 +123,4 @@ void rockchip_register_softrst(struct device_node *np,
- 		kfree(softrst);
- 	}
- };
--EXPORT_SYMBOL_GPL(rockchip_register_softrst);
-+EXPORT_SYMBOL_GPL(rockchip_register_softrst_lut);
--- 
-2.35.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogRWxhaW5lIFpoYW5nIDx6aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+CgpJbiBvcmRlciB0
+byBpbXByb3ZlIHRoZSBtYWluIGZyZXF1ZW5jeSBvZiBDUFUsIHRoZSBjbG9jayBwYXRoIG9mIENQ
+VSBpcwpzaW1wbGlmaWVkIGFzIGZvbGxvd3M6CiAgICAgICAgICAgICAgICAgICAgICAgICB8LS1c
+CiAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgXCAgICAgICAgICAgIHwtLVwKIC0tYXBsbC0t
+fFwgICAgICAgICAgICAgIHwgICAgXCAgICAgICAgICAgfCAgIFwKICAgICAgICAgfCB8LS1hcGxs
+X2NvcmUtLXwgICAgIFwgICAgICAgICAgfCAgICBcCiAtLTI0TS0tLXwvICAgICAgICAgICAgICB8
+bXV4MSB8LS1bZ2F0ZV0tLXxtdXgyfC0tLWNsa19jb3JlCiAgICAgICAgICAgICAgICAgICAgICAg
+ICB8ICAgICAvICAgICAgICAgIHwgICAgLwogLS1ncGxsLS18XCAgICAgICAgICAgICAgfCAgICAv
+ICAgIHwtLS0tLS18ICAgLwogICAgICAgICB8IHwtLWdwbGxfY29yZS0tfCAgIC8gICAgIHwgICAg
+ICB8LS0vCiAtLTI0TS0tLXwvICAgICAgICAgICAgICB8LS0vICAgICAgfAogICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIHwKIC0tLS0tLS1hcGxsX2RpcmVjdGx5LS0tLS0tLS0tLS0t
+LS18CgpXaGVuIHRoZSBDUFUgcmVxdWVzdHMgaGlnaCBmcmVxdWVuY3ksIHdlIHdhbnQgdG8gdXNl
+IE1VWDIgc2VsZWN0IHRoZQoiYXBsbF9kaXJlY3RseSIuCkF0IGxvdyBmcmVxdWVuY2llcyB1c2Ug
+TVVYMSB0byBzZWxlY3Qg4oCcYXBsbF9jb3JlIiBhbmQgdGhlbiBNVVgyIHRvCnNlbGVjdCAiYXBs
+bF9jb3JlX2dhdGUiLgoKSG93ZXZlciwgaW4gdGhpcyB3YXksIHRoZSBDUFUgZnJlcXVlbmN5IGNv
+bnZlcnNpb24gbmVlZHMgdG8gYmUKaW4gdGhlIGZvbGxvd2luZyBvcmRlcjoKMS4gTVVYMiBzZWxl
+Y3QgdG8gImFwbGxfY29yZV9nYXRlIiwgTVVYMSBzZWxlY3QgImdwbGxfY29yZSIKMi4gQXBsbCBz
+ZXRzIHNsb3dfbW9kZSwgc2V0cyBBUExMIHBhcmFtZXRlcnMsIGxvY2tzIEFQTEwsIGFuZCB0aGVu
+IEFQTEwKc2V0cyBub3JtYWxfbW9kZQozLiBNVVgxIHNlbGVjdCAiYXBsbF9jb3JlIiwgTVVYMiBz
+ZWxlY3QgImFwbGxfZGlyZWN0bHkiCgpTbyBhZGQgcHJlX211eHMgYW5kIHBvc3RfbXV4cyB0byBj
+b3ZlciB0aGlzIHNwZWNpYWwgcmVxdWlyZW1lbnRzLgoKU2lnbmVkLW9mZi1ieTogRWxhaW5lIFpo
+YW5nIDx6aGFuZ3FpbmdAcm9jay1jaGlwcy5jb20+CltyZWJhc2VdClNpZ25lZC1vZmYtYnk6IFNl
+YmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hlbEBjb2xsYWJvcmEuY29tPgotLS0KIGRy
+aXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1jcHUuYyB8IDQxICsrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysKIGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay5oICAgICB8ICAyICsrCiAyIGZp
+bGVzIGNoYW5nZWQsIDQzIGluc2VydGlvbnMoKykKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9y
+b2NrY2hpcC9jbGstY3B1LmMgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstY3B1LmMKaW5kZXgg
+MTFhYTIyNTliNTMyLi42ZWE3ZmJhOWY5ZTUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvY2xrL3JvY2tj
+aGlwL2Nsay1jcHUuYworKysgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstY3B1LmMKQEAgLTEx
+Myw2ICsxMTMsNDIgQEAgc3RhdGljIHZvaWQgcm9ja2NoaXBfY3B1Y2xrX3NldF9kaXZpZGVycyhz
+dHJ1Y3Qgcm9ja2NoaXBfY3B1Y2xrICpjcHVjbGssCiAJfQogfQogCitzdGF0aWMgdm9pZCByb2Nr
+Y2hpcF9jcHVjbGtfc2V0X3ByZV9tdXhzKHN0cnVjdCByb2NrY2hpcF9jcHVjbGsgKmNwdWNsaywK
+KwkJCQkJIGNvbnN0IHN0cnVjdCByb2NrY2hpcF9jcHVjbGtfcmF0ZV90YWJsZSAqcmF0ZSkKK3sK
+KwlpbnQgaTsKKworCS8qIGFsdGVybmF0ZSBwYXJlbnQgaXMgYWN0aXZlIG5vdy4gc2V0IHRoZSBw
+cmVfbXV4cyAqLworCWZvciAoaSA9IDA7IGkgPCBBUlJBWV9TSVpFKHJhdGUtPnByZV9tdXhzKTsg
+aSsrKSB7CisJCWNvbnN0IHN0cnVjdCByb2NrY2hpcF9jcHVjbGtfY2xrc2VsICpjbGtzZWwgPSAm
+cmF0ZS0+cHJlX211eHNbaV07CisKKwkJaWYgKCFjbGtzZWwtPnJlZykKKwkJCWJyZWFrOworCisJ
+CXByX2RlYnVnKCIlczogc2V0dGluZyByZWcgMHgleCB0byAweCV4XG4iLAorCQkJIF9fZnVuY19f
+LCBjbGtzZWwtPnJlZywgY2xrc2VsLT52YWwpOworCQl3cml0ZWwoY2xrc2VsLT52YWwsIGNwdWNs
+ay0+cmVnX2Jhc2UgKyBjbGtzZWwtPnJlZyk7CisJfQorfQorCitzdGF0aWMgdm9pZCByb2NrY2hp
+cF9jcHVjbGtfc2V0X3Bvc3RfbXV4cyhzdHJ1Y3Qgcm9ja2NoaXBfY3B1Y2xrICpjcHVjbGssCisJ
+CQkJCSAgY29uc3Qgc3RydWN0IHJvY2tjaGlwX2NwdWNsa19yYXRlX3RhYmxlICpyYXRlKQorewor
+CWludCBpOworCisJLyogYWx0ZXJuYXRlIHBhcmVudCBpcyBhY3RpdmUgbm93LiBzZXQgdGhlIG11
+eHMgKi8KKwlmb3IgKGkgPSAwOyBpIDwgQVJSQVlfU0laRShyYXRlLT5wb3N0X211eHMpOyBpKysp
+IHsKKwkJY29uc3Qgc3RydWN0IHJvY2tjaGlwX2NwdWNsa19jbGtzZWwgKmNsa3NlbCA9ICZyYXRl
+LT5wb3N0X211eHNbaV07CisKKwkJaWYgKCFjbGtzZWwtPnJlZykKKwkJCWJyZWFrOworCisJCXBy
+X2RlYnVnKCIlczogc2V0dGluZyByZWcgMHgleCB0byAweCV4XG4iLAorCQkJIF9fZnVuY19fLCBj
+bGtzZWwtPnJlZywgY2xrc2VsLT52YWwpOworCQl3cml0ZWwoY2xrc2VsLT52YWwsIGNwdWNsay0+
+cmVnX2Jhc2UgKyBjbGtzZWwtPnJlZyk7CisJfQorfQorCiBzdGF0aWMgaW50IHJvY2tjaGlwX2Nw
+dWNsa19wcmVfcmF0ZV9jaGFuZ2Uoc3RydWN0IHJvY2tjaGlwX2NwdWNsayAqY3B1Y2xrLAogCQkJ
+CQkgICBzdHJ1Y3QgY2xrX25vdGlmaWVyX2RhdGEgKm5kYXRhKQogewpAQCAtMTY1LDYgKzIwMSw5
+IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfY3B1Y2xrX3ByZV9yYXRlX2NoYW5nZShzdHJ1Y3Qgcm9j
+a2NoaXBfY3B1Y2xrICpjcHVjbGssCiAJCQkgICAgICAgY3B1Y2xrLT5yZWdfYmFzZSArIHJlZ19k
+YXRhLT5jb3JlX3JlZ1tpXSk7CiAJCX0KIAl9CisKKwlyb2NrY2hpcF9jcHVjbGtfc2V0X3ByZV9t
+dXhzKGNwdWNsaywgcmF0ZSk7CisKIAkvKiBzZWxlY3QgYWx0ZXJuYXRlIHBhcmVudCAqLwogCWlm
+IChyZWdfZGF0YS0+bXV4X2NvcmVfcmVnKQogCQl3cml0ZWwoSElXT1JEX1VQREFURShyZWdfZGF0
+YS0+bXV4X2NvcmVfYWx0LApAQCAtMjE5LDYgKzI1OCw4IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBf
+Y3B1Y2xrX3Bvc3RfcmF0ZV9jaGFuZ2Uoc3RydWN0IHJvY2tjaGlwX2NwdWNsayAqY3B1Y2xrLAog
+CQkJCSAgICAgcmVnX2RhdGEtPm11eF9jb3JlX3NoaWZ0KSwKIAkJICAgICAgIGNwdWNsay0+cmVn
+X2Jhc2UgKyByZWdfZGF0YS0+Y29yZV9yZWdbMF0pOwogCisJcm9ja2NoaXBfY3B1Y2xrX3NldF9w
+b3N0X211eHMoY3B1Y2xrLCByYXRlKTsKKwogCS8qIHJlbW92ZSBkaXZpZGVycyAqLwogCWZvciAo
+aSA9IDA7IGkgPCByZWdfZGF0YS0+bnVtX2NvcmVzOyBpKyspIHsKIAkJd3JpdGVsKEhJV09SRF9V
+UERBVEUoMCwgcmVnX2RhdGEtPmRpdl9jb3JlX21hc2tbaV0sCmRpZmYgLS1naXQgYS9kcml2ZXJz
+L2Nsay9yb2NrY2hpcC9jbGsuaCBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay5oCmluZGV4IDZl
+YjMxZDM2YzRjZC4uMjRkM2U1NmQzZjcxIDEwMDY0NAotLS0gYS9kcml2ZXJzL2Nsay9yb2NrY2hp
+cC9jbGsuaAorKysgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGsuaApAQCAtMzk5LDYgKzM5OSw4
+IEBAIHN0cnVjdCByb2NrY2hpcF9jcHVjbGtfY2xrc2VsIHsKIHN0cnVjdCByb2NrY2hpcF9jcHVj
+bGtfcmF0ZV90YWJsZSB7CiAJdW5zaWduZWQgbG9uZyBwcmF0ZTsKIAlzdHJ1Y3Qgcm9ja2NoaXBf
+Y3B1Y2xrX2Nsa3NlbCBkaXZzW1JPQ0tDSElQX0NQVUNMS19OVU1fRElWSURFUlNdOworCXN0cnVj
+dCByb2NrY2hpcF9jcHVjbGtfY2xrc2VsIHByZV9tdXhzW1JPQ0tDSElQX0NQVUNMS19OVU1fRElW
+SURFUlNdOworCXN0cnVjdCByb2NrY2hpcF9jcHVjbGtfY2xrc2VsIHBvc3RfbXV4c1tST0NLQ0hJ
+UF9DUFVDTEtfTlVNX0RJVklERVJTXTsKIH07CiAKIC8qKgotLSAKMi4zNS4xCgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
