@@ -4,43 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E954C433FE
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Oct 2022 09:18:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F1C9C433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Oct 2022 14:51:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QuBj2h/sfN0wddNO1StIuBULesYJzuCRkykZDj+bll4=; b=No2w3m6oOjkcgp
-	3LsdPcP7+KJdGn5pVx7CK0PTcIECnE9VML2672g92ujIvaMIbk+i84brAR5QKDx8vZWoc3yjy2wpd
-	rRGtfUZysIFUX+ZS+vsg9GysEzMSy2BL1niU99qj498VBKeoNgrhrTAIQGvy+pMs10aJRc+aHSd8E
-	faNQPwas3DT9Bl2yMEqKTGiZcLwR8UAfCn3HSdB2NaMHAB1QjGCf+FV4BLyd1KdnW+qqGXji5fO5x
-	DtIZs+wSak+FLcMdhObwEDVXQJcjAtiRURcJTf0tMPajHB1hk+F/6YuyGlihlmyE1yB78ZnBQ+G5o
-	C8T8BrQT33EqjfNLrXuQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=I4v1o7EoOToU7TdPi7Z71XG1Cxd3kAqeSC8z+rRpSoA=; b=DCBlZgmK33CfNH
+	jZ44S4CwJuNw6HIEDGuMVt69xPay7zCEndNd8cGETGpbwS7AyeuHCcQdAmXFQ0NrRvPiTCPAnkSVC
+	YSVxPtsxfMfRa/m+t20dMPr/EM7OBsXGvRZw71DURiMkw0NYuivIMGVJxfX7Ffozcymp1Ur3hfb3N
+	L4R7hMHlr70V2r9dTxZFmmMsDof6I6Tnvkb60E2/QAdHZfbo1CGAj1lhjh5eha1sdNBh1p62L9Ekw
+	c7Uev0XIIO9VOTqA8jMFGfWg/lbzN5V/T5NNLYYnDuMji35FD6N7WSvT3aVl0Jr24xwEMDWdU2tbP
+	fcfslkOHJIrIEAKjY0nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ol5D8-00HJBt-Kz; Wed, 19 Oct 2022 09:18:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1olAPj-002ty8-6p; Wed, 19 Oct 2022 14:51:23 +0000
+Received: from relay9-d.mail.gandi.net ([2001:4b98:dc4:8::229])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ol5CO-00HIkM-2Q; Wed, 19 Oct 2022 09:17:17 +0000
-Received: from p508fdae2.dip0.t-ipconnect.de ([80.143.218.226] helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1ol5C7-0004cp-PN; Wed, 19 Oct 2022 11:16:59 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Robin Murphy <robin.murphy@arm.com>, Uwe =?ISO-8859-1?Q?Kleine=2DK=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Johan Jonker <jbx6244@gmail.com>, thierry.reding@gmail.com, robh+dt@kernel.org, krzysztof.kozlowski+dt@linaro.org, sebastian.reichel@collabora.com, wxt@rock-chips.com, kever.yang@rock-chips.com, linux-pwm@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC PATCH v1 2/2] ARM: dts: rk3288: add the interrupts property for PWM
-Date: Wed, 19 Oct 2022 11:16:58 +0200
-Message-ID: <5883380.DvuYhMxLoT@phil>
-In-Reply-To: <20221019072621.lh5hcznggbcscihf@pengutronix.de>
-References: <6eba6c10-9c96-b40f-937a-e02d43b04cd7@gmail.com> <7ae39c9c-8424-8b65-ac09-c0e87f3b0f01@arm.com> <20221019072621.lh5hcznggbcscihf@pengutronix.de>
+	id 1olA36-002n6q-42; Wed, 19 Oct 2022 14:28:02 +0000
+Received: (Authenticated sender: foss@0leil.net)
+	by mail.gandi.net (Postfix) with ESMTPSA id 6AECBFF805;
+	Wed, 19 Oct 2022 14:27:50 +0000 (UTC)
+From: Quentin Schulz <foss+kernel@0leil.net>
+To: foss+kernel@0leil.net,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>
+Cc: Quentin Schulz <quentin.schulz@theobroma-systems.com>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>,
+	linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: lower rk3399-puma-haikou SD controller
+  clock frequency
+Date: Wed, 19 Oct 2022 16:27:27 +0200
+Message-Id: <20221019-upstream-puma-sd-40mhz-v1-0-754a76421518@theobroma-systems.com>
+X-Mailer: git-send-email 2.37.3
 MIME-Version: 1.0
+X-Mailer: b4 0.10.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221019_021716_163132_AF8CFF77 
-X-CRM114-Status: GOOD (  25.92  )
+X-CRM114-CacheID: sfid-20221019_072800_390358_E01EB34A 
+X-CRM114-Status: GOOD (  10.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -52,75 +60,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 19. Oktober 2022, 09:26:21 CEST schrieb Uwe Kleine-K=F6nig:
-> On Thu, Sep 29, 2022 at 04:50:43PM +0100, Robin Murphy wrote:
-> > On 2022-09-29 15:04, Johan Jonker wrote:
-> > > The Rockchip rk3288 SoC has 4-built-in PWM channels.
-> > > =
+From: Quentin Schulz <quentin.schulz@theobroma-systems.com>
 
-> > > Configurable to operate in capture mode.
-> > > Measures the high/low polarity effective cycles of this input waveform
-> > > Generates a single interrupt at the transition of input waveform pola=
-rity
-> > > =
+From: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
 
-> > > Configurable to operate in continuous mode or one-shot mode.
-> > > One-shot operation will produce N + 1 periods of the waveform,
-> > > where N is the repeat counter value, and generates a single interrupt=
- at
-> > > the end of operation.
-> > > Continuous mode generates the waveform continuously and
-> > > do not generates any interrupts.
-> > > =
+CRC errors (code -84 EILSEQ) have been observed for some SanDisk
+Ultra A1 cards when running at 50MHz.
 
-> > > Add interrupts property to rk3288 PWM nodes.
-> > =
+Waveform analysis suggest that the level shifters that are used on the
+RK3399-Q7 module for voltage translation between 3.0 and 3.3V don't
+handle clock rates at or above 48MHz properly. Back off to 40MHz for
+some safety margin.
 
-> > As far as I can make out from the TRM, these are only valid when
-> > GRF_SOC_CON2[0] =3D 0, otherwise it's in "new" RK_PWM mode using SPI 78=
- for
-> > all channels. Which apparently will be the case for anyone using upstre=
-am
-> > U-Boot:
-> > =
+Cc: stable@vger.kernel.org
+Fixes: 60fd9f72ce8a ("arm64: dts: rockchip: add Haikou baseboard with RK3399-Q7 SoM")
+Signed-off-by: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
+Signed-off-by: Quentin Schulz <quentin.schulz@theobroma-systems.com>
+---
+We've been carrying this patch downstream for years and completely forgot to
+upstream it. This is now done.
 
-> > https://source.denx.de/u-boot/u-boot/-/blob/master/arch/arm/mach-rockch=
-ip/rk3288/rk3288.c#L83
-> =
+To: Rob Herring <robh+dt@kernel.org>
+To: Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+Cc: Jakob Unterwurzacher <jakob.unterwurzacher@theobroma-systems.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> Huh, so it depends on a (software) setting which irqs are in use?
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+index 04c752f49be9..115c14c0a3c6 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
+@@ -207,7 +207,7 @@ &sdmmc {
+ 	cap-sd-highspeed;
+ 	cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
+ 	disable-wp;
+-	max-frequency = <150000000>;
++	max-frequency = <40000000>;
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
+ 	vmmc-supply = <&vcc3v3_baseboard>;
 
-In the past when Rockchip swapped one IP block for another they often
-had both in a soc for one generation (as a safeguard probably)
-So the rk3288 has two different pwm implementations and the GRF
-register selects which one is active.
+---
+base-commit: aae703b02f92bde9264366c545e87cec451de471
+change-id: 20221019-upstream-puma-sd-40mhz-b5aef1c351e6
 
-Heiko
-
-> So the
-> patch isn't correct as is, but I have no idea how to make it right.
-> Should we rely on the bootloader to fixup the dtb correctly?
-> =
-
-> Anyhow, I'm marking the patch as 'changes-requested' in our patchwork
-> instance.
-> =
-
-> Best regards
-> Uwe
-> =
-
-> =
-
-
-
-
-
+Best regards,
+-- 
+Quentin Schulz <quentin.schulz@theobroma-systems.com>
 
 _______________________________________________
 Linux-rockchip mailing list
