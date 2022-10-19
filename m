@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB09AC4332F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Oct 2022 15:18:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34B9FC4332F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Oct 2022 07:27:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qJJI9tKWOQYCuWwSOREQxgXcDRkLQlPjomLwtWzeMTI=; b=pB68iM4GqU9ptH
-	rCxd+JJiyQ86eWmpNaIFITnoRgvole0miaYIiL90U1mDSmBRa5oXCbBJZt2x4p+NhnoWyccz6xrLI
-	0UmCma6jz9yvA3zBIzmhC7/m6+Hf8IA52TcOETmGeR9JrNHMJU48dN59qhwQYqw7fubKEs20eRSCS
-	HXCbBXqoBVR8fjIbIzZSThyJl62qKkQrWIYQkzAyhqgww07KhJ/6SwpTIf6bnr5OU+SheR+PQ6fO3
-	936JUAWJuKrqb5Eqb/a7pV7QxxmahglLc22v3E2vcgHNBppqOhliHBtB3KWWOKxlwcgItSThNFyOW
-	SQsUg0ehSJjfcAYZcSuw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BFRYZriXQxr24bp1XAPTq53/aEkICuCp7uxgf3KMpeE=; b=G84OxbsClX0UiIhNP6FfuL2Np8
+	c46P2V2OG3ALIPFPOwL6KGWCNI3UpeU4xLYt7IgY+RrzJFrk8G7vJVxvsAqomPa0+gUoN3jlpj/AR
+	vTaeCLdqB2H+IWhBGDipow+p8IAJf1npFTaY7xgecJQYmkhO59prhGpG1wDGnGVQTY3O3uavCu7pj
+	i8gYBo9hMuH4PN6znLfhbJwpk1J3kR1ErVXZnV4dAz55+5KnWE7GYV9xL2p8tIQFWAEOOCHxKv32e
+	45SIUAmswtAkc01DZcpOGH1tNlYpMq/SeEUYP5bbKWLk30rhS8nm+HmOyHl4+1nGBZS0I35cofYiS
+	p9sPVzMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okoLc-007V88-BL; Tue, 18 Oct 2022 15:17:40 +0000
-Received: from madras.collabora.co.uk ([46.235.227.172])
+	id 1ol3Tf-00GAmv-IQ; Wed, 19 Oct 2022 07:26:59 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
 	by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1okoIV-007TE9-KN; Tue, 18 Oct 2022 15:14:31 +0000
-Received: from jupiter.universe (dyndsl-095-033-155-016.ewe-ip-backbone.de [95.33.155.16])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by madras.collabora.co.uk (Postfix) with ESMTPSA id 48E83660238E;
-	Tue, 18 Oct 2022 16:14:21 +0100 (BST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1666106061;
-	bh=+387BKRQUD05e5BRZcMNr0EsEiBwZ9y/fSKapHfwgbM=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oeXF/s46slnZpwqpb3qToXe4TgD5ya17gbIqnEkHuH28VSwIcCo5oL8GKR7eQwgam
-	 Y3emPGAoNoJOI0FfjEOy3SCGJiRxhnTRX7baRrcJFkM4vFiEovP1QfkqH2JxGcJ/MV
-	 Vy+xDY1TAfcjjeGMijtiIgrSlqPo8E8gdmiLdDjeUQVer5eI0U43m0uwuTW4hTjSJ3
-	 P70CdpKXni30Oy/hn7U7t7rwuTZvDgGe3CISl8MoT2IbDQxevDrWcwBAAdeAajLd0d
-	 pdQK9FhKX+IXhatjuuWc2bIIpqXHheDMnomI9uEkcX7DyP4WAT6ft8V3Q1TmA3ZMKi
-	 ts7B1pLUHMunA==
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 2A7CD4801BA; Tue, 18 Oct 2022 17:14:16 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	linux-clk@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
+	id 1ol3TF-00GAe3-4Q
+	for linux-rockchip@lists.infradead.org; Wed, 19 Oct 2022 07:26:46 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1ol3T6-00049x-J2; Wed, 19 Oct 2022 09:26:24 +0200
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1ol3T4-0003wz-E9; Wed, 19 Oct 2022 09:26:22 +0200
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.94.2)
+	(envelope-from <ukl@pengutronix.de>)
+	id 1ol3T3-00916N-M6; Wed, 19 Oct 2022 09:26:21 +0200
+Date: Wed, 19 Oct 2022 09:26:21 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de,
+	thierry.reding@gmail.com, robh+dt@kernel.org,
+	krzysztof.kozlowski+dt@linaro.org, sebastian.reichel@collabora.com,
+	wxt@rock-chips.com, kever.yang@rock-chips.com,
+	linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Elaine Zhang <zhangqing@rock-chips.com>,
-	kernel@collabora.com,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCHv3 5/9] clk: rockchip: add pll type for RK3588
-Date: Tue, 18 Oct 2022 17:14:03 +0200
-Message-Id: <20221018151407.63395-6-sebastian.reichel@collabora.com>
-X-Mailer: git-send-email 2.35.1
-In-Reply-To: <20221018151407.63395-1-sebastian.reichel@collabora.com>
-References: <20221018151407.63395-1-sebastian.reichel@collabora.com>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [RFC PATCH v1 2/2] ARM: dts: rk3288: add the interrupts property
+ for PWM
+Message-ID: <20221019072621.lh5hcznggbcscihf@pengutronix.de>
+References: <6eba6c10-9c96-b40f-937a-e02d43b04cd7@gmail.com>
+ <7ae39c9c-8424-8b65-ac09-c0e87f3b0f01@arm.com>
 MIME-Version: 1.0
+In-Reply-To: <7ae39c9c-8424-8b65-ac09-c0e87f3b0f01@arm.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20221018_081427_965574_54C2E653 
-X-CRM114-Status: GOOD (  19.84  )
+X-CRM114-CacheID: sfid-20221019_002644_486044_48A62BEE 
+X-CRM114-Status: GOOD (  23.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,315 +72,91 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8562798716527956578=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Elaine Zhang <zhangqing@rock-chips.com>
 
-Add RK3588 PLL support fully relying on lookup tables like
-the other upstream supported rockchip platforms.
+--===============8562798716527956578==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="egf4vu67dggq4mpk"
+Content-Disposition: inline
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-[rebase and modify code to avoid PLL parameter calculation]
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/clk/rockchip/clk-pll.c | 218 ++++++++++++++++++++++++++++++++-
- drivers/clk/rockchip/clk.h     |  18 +++
- 2 files changed, 235 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index f7827b3b7fc1..4b9840994295 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -842,6 +842,213 @@ static const struct clk_ops rockchip_rk3399_pll_clk_ops = {
- 	.init = rockchip_rk3399_pll_init,
- };
- 
-+/*
-+ * PLL used in RK3588
-+ */
-+
-+#define RK3588_PLLCON(i)               (i * 0x4)
-+#define RK3588_PLLCON0_M_MASK          0x3ff
-+#define RK3588_PLLCON0_M_SHIFT         0
-+#define RK3588_PLLCON1_P_MASK          0x3f
-+#define RK3588_PLLCON1_P_SHIFT         0
-+#define RK3588_PLLCON1_S_MASK          0x7
-+#define RK3588_PLLCON1_S_SHIFT         6
-+#define RK3588_PLLCON2_K_MASK          0xffff
-+#define RK3588_PLLCON2_K_SHIFT         0
-+#define RK3588_PLLCON1_PWRDOWN         BIT(13)
-+#define RK3588_PLLCON6_LOCK_STATUS     BIT(15)
-+
-+static int rockchip_rk3588_pll_wait_lock(struct rockchip_clk_pll *pll)
-+{
-+	u32 pllcon;
-+	int ret;
-+
-+	/*
-+	 * Lock time typical 250, max 500 input clock cycles @24MHz
-+	 * So define a very safe maximum of 1000us, meaning 24000 cycles.
-+	 */
-+	ret = readl_relaxed_poll_timeout(pll->reg_base + RK3588_PLLCON(6),
-+					 pllcon,
-+					 pllcon & RK3588_PLLCON6_LOCK_STATUS,
-+					 0, 1000);
-+	if (ret)
-+		pr_err("%s: timeout waiting for pll to lock\n", __func__);
-+
-+	return ret;
-+}
-+
-+static void rockchip_rk3588_pll_get_params(struct rockchip_clk_pll *pll,
-+					   struct rockchip_pll_rate_table *rate)
-+{
-+	u32 pllcon;
-+
-+	pllcon = readl_relaxed(pll->reg_base + RK3588_PLLCON(0));
-+	rate->m = ((pllcon >> RK3588_PLLCON0_M_SHIFT) & RK3588_PLLCON0_M_MASK);
-+
-+	pllcon = readl_relaxed(pll->reg_base + RK3588_PLLCON(1));
-+	rate->p = ((pllcon >> RK3588_PLLCON1_P_SHIFT) & RK3588_PLLCON1_P_MASK);
-+	rate->s = ((pllcon >> RK3588_PLLCON1_S_SHIFT) & RK3588_PLLCON1_S_MASK);
-+
-+	pllcon = readl_relaxed(pll->reg_base + RK3588_PLLCON(2));
-+	rate->k = ((pllcon >> RK3588_PLLCON2_K_SHIFT) & RK3588_PLLCON2_K_MASK);
-+}
-+
-+static unsigned long rockchip_rk3588_pll_recalc_rate(struct clk_hw *hw, unsigned long prate)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+	struct rockchip_pll_rate_table cur;
-+	u64 rate64 = prate, postdiv;
-+
-+	rockchip_rk3588_pll_get_params(pll, &cur);
-+
-+	rate64 *= cur.m;
-+	do_div(rate64, cur.p);
-+
-+	if (cur.k) {
-+		/* fractional mode */
-+		u64 frac_rate64 = prate * cur.k;
-+
-+		postdiv = cur.p * 65535;
-+		do_div(frac_rate64, postdiv);
-+		rate64 += frac_rate64;
-+	}
-+	rate64 = rate64 >> cur.s;
-+
-+	return (unsigned long)rate64;
-+}
-+
-+static int rockchip_rk3588_pll_set_params(struct rockchip_clk_pll *pll,
-+					  const struct rockchip_pll_rate_table *rate)
-+{
-+	const struct clk_ops *pll_mux_ops = pll->pll_mux_ops;
-+	struct clk_mux *pll_mux = &pll->pll_mux;
-+	struct rockchip_pll_rate_table cur;
-+	int rate_change_remuxed = 0;
-+	int cur_parent;
-+	int ret;
-+
-+	pr_debug("%s: rate settings for %lu p: %d, m: %d, s: %d, k: %d\n",
-+		 __func__, rate->rate, rate->p, rate->m, rate->s, rate->k);
-+
-+	rockchip_rk3588_pll_get_params(pll, &cur);
-+	cur.rate = 0;
-+
-+	if (pll->type == pll_rk3588) {
-+		cur_parent = pll_mux_ops->get_parent(&pll_mux->hw);
-+		if (cur_parent == PLL_MODE_NORM) {
-+			pll_mux_ops->set_parent(&pll_mux->hw, PLL_MODE_SLOW);
-+			rate_change_remuxed = 1;
-+		}
-+	}
-+
-+	/* set pll power down */
-+	writel(HIWORD_UPDATE(RK3588_PLLCON1_PWRDOWN,
-+			     RK3588_PLLCON1_PWRDOWN, 0),
-+	       pll->reg_base + RK3399_PLLCON(1));
-+
-+	/* update pll values */
-+	writel_relaxed(HIWORD_UPDATE(rate->m, RK3588_PLLCON0_M_MASK, RK3588_PLLCON0_M_SHIFT),
-+		       pll->reg_base + RK3399_PLLCON(0));
-+
-+	writel_relaxed(HIWORD_UPDATE(rate->p, RK3588_PLLCON1_P_MASK, RK3588_PLLCON1_P_SHIFT) |
-+		       HIWORD_UPDATE(rate->s, RK3588_PLLCON1_S_MASK, RK3588_PLLCON1_S_SHIFT),
-+		       pll->reg_base + RK3399_PLLCON(1));
-+
-+	writel_relaxed(HIWORD_UPDATE(rate->k, RK3588_PLLCON2_K_MASK, RK3588_PLLCON2_K_SHIFT),
-+		       pll->reg_base + RK3399_PLLCON(2));
-+
-+	/* set pll power up */
-+	writel(HIWORD_UPDATE(0, RK3588_PLLCON1_PWRDOWN, 0),
-+	       pll->reg_base + RK3588_PLLCON(1));
-+
-+	/* wait for the pll to lock */
-+	ret = rockchip_rk3588_pll_wait_lock(pll);
-+	if (ret) {
-+		pr_warn("%s: pll update unsuccessful, trying to restore old params\n",
-+			__func__);
-+		rockchip_rk3588_pll_set_params(pll, &cur);
-+	}
-+
-+	if ((pll->type == pll_rk3588) && rate_change_remuxed)
-+		pll_mux_ops->set_parent(&pll_mux->hw, PLL_MODE_NORM);
-+
-+	return ret;
-+}
-+
-+static int rockchip_rk3588_pll_set_rate(struct clk_hw *hw, unsigned long drate,
-+					unsigned long prate)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+	const struct rockchip_pll_rate_table *rate;
-+
-+	pr_debug("%s: changing %s to %lu with a parent rate of %lu\n",
-+		 __func__, __clk_get_name(hw->clk), drate, prate);
-+
-+	/* Get required rate settings from table */
-+	rate = rockchip_get_pll_settings(pll, drate);
-+	if (!rate) {
-+		pr_err("%s: Invalid rate : %lu for pll clk %s\n", __func__,
-+			drate, __clk_get_name(hw->clk));
-+		return -EINVAL;
-+	}
-+
-+	return rockchip_rk3588_pll_set_params(pll, rate);
-+}
-+
-+static int rockchip_rk3588_pll_enable(struct clk_hw *hw)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+
-+	writel(HIWORD_UPDATE(0, RK3588_PLLCON1_PWRDOWN, 0),
-+	       pll->reg_base + RK3588_PLLCON(1));
-+	rockchip_rk3588_pll_wait_lock(pll);
-+
-+	return 0;
-+}
-+
-+static void rockchip_rk3588_pll_disable(struct clk_hw *hw)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+
-+	writel(HIWORD_UPDATE(RK3588_PLLCON1_PWRDOWN, RK3588_PLLCON1_PWRDOWN, 0),
-+	       pll->reg_base + RK3588_PLLCON(1));
-+}
-+
-+static int rockchip_rk3588_pll_is_enabled(struct clk_hw *hw)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+	u32 pllcon = readl(pll->reg_base + RK3588_PLLCON(1));
-+
-+	return !(pllcon & RK3588_PLLCON1_PWRDOWN);
-+}
-+
-+static int rockchip_rk3588_pll_init(struct clk_hw *hw)
-+{
-+	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
-+
-+	if (!(pll->flags & ROCKCHIP_PLL_SYNC_RATE))
-+		return 0;
-+
-+	return 0;
-+}
-+
-+static const struct clk_ops rockchip_rk3588_pll_clk_norate_ops = {
-+	.recalc_rate = rockchip_rk3588_pll_recalc_rate,
-+	.enable = rockchip_rk3588_pll_enable,
-+	.disable = rockchip_rk3588_pll_disable,
-+	.is_enabled = rockchip_rk3588_pll_is_enabled,
-+};
-+
-+static const struct clk_ops rockchip_rk3588_pll_clk_ops = {
-+	.recalc_rate = rockchip_rk3588_pll_recalc_rate,
-+	.round_rate = rockchip_pll_round_rate,
-+	.set_rate = rockchip_rk3588_pll_set_rate,
-+	.enable = rockchip_rk3588_pll_enable,
-+	.disable = rockchip_rk3588_pll_disable,
-+	.is_enabled = rockchip_rk3588_pll_is_enabled,
-+	.init = rockchip_rk3588_pll_init,
-+};
-+
- /*
-  * Common registering of pll clocks
-  */
-@@ -890,7 +1097,8 @@ struct clk *rockchip_clk_register_pll(struct rockchip_clk_provider *ctx,
- 	if (pll_type == pll_rk3036 ||
- 	    pll_type == pll_rk3066 ||
- 	    pll_type == pll_rk3328 ||
--	    pll_type == pll_rk3399)
-+	    pll_type == pll_rk3399 ||
-+	    pll_type == pll_rk3588)
- 		pll_mux->flags |= CLK_MUX_HIWORD_MASK;
- 
- 	/* the actual muxing is xin24m, pll-output, xin32k */
-@@ -957,6 +1165,14 @@ struct clk *rockchip_clk_register_pll(struct rockchip_clk_provider *ctx,
- 		else
- 			init.ops = &rockchip_rk3399_pll_clk_ops;
- 		break;
-+	case pll_rk3588:
-+	case pll_rk3588_core:
-+		if (!pll->rate_table)
-+			init.ops = &rockchip_rk3588_pll_clk_norate_ops;
-+		else
-+			init.ops = &rockchip_rk3588_pll_clk_ops;
-+		init.flags = flags;
-+		break;
- 	default:
- 		pr_warn("%s: Unknown pll type for pll clk %s\n",
- 			__func__, name);
-diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
-index 43a37a43b6f3..6eb31d36c4cd 100644
---- a/drivers/clk/rockchip/clk.h
-+++ b/drivers/clk/rockchip/clk.h
-@@ -240,6 +240,8 @@ enum rockchip_pll_type {
- 	pll_rk3066,
- 	pll_rk3328,
- 	pll_rk3399,
-+	pll_rk3588,
-+	pll_rk3588_core,
- };
- 
- #define RK3036_PLL_RATE(_rate, _refdiv, _fbdiv, _postdiv1,	\
-@@ -272,6 +274,15 @@ enum rockchip_pll_type {
- 	.nb = _nb,						\
- }
- 
-+#define RK3588_PLL_RATE(_rate, _p, _m, _s, _k)			\
-+{								\
-+	.rate   = _rate##U,					\
-+	.p = _p,						\
-+	.m = _m,						\
-+	.s = _s,						\
-+	.k = _k,						\
-+}
-+
- /**
-  * struct rockchip_clk_provider - information about clock provider
-  * @reg_base: virtual address for the register base.
-@@ -307,6 +318,13 @@ struct rockchip_pll_rate_table {
- 			unsigned int dsmpd;
- 			unsigned int frac;
- 		};
-+		struct {
-+			/* for RK3588 */
-+			unsigned int m;
-+			unsigned int p;
-+			unsigned int s;
-+			unsigned int k;
-+		};
- 	};
- };
- 
--- 
-2.35.1
+--egf4vu67dggq4mpk
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Thu, Sep 29, 2022 at 04:50:43PM +0100, Robin Murphy wrote:
+> On 2022-09-29 15:04, Johan Jonker wrote:
+> > The Rockchip rk3288 SoC has 4-built-in PWM channels.
+> >=20
+> > Configurable to operate in capture mode.
+> > Measures the high/low polarity effective cycles of this input waveform
+> > Generates a single interrupt at the transition of input waveform polari=
+ty
+> >=20
+> > Configurable to operate in continuous mode or one-shot mode.
+> > One-shot operation will produce N + 1 periods of the waveform,
+> > where N is the repeat counter value, and generates a single interrupt at
+> > the end of operation.
+> > Continuous mode generates the waveform continuously and
+> > do not generates any interrupts.
+> >=20
+> > Add interrupts property to rk3288 PWM nodes.
+>=20
+> As far as I can make out from the TRM, these are only valid when
+> GRF_SOC_CON2[0] =3D 0, otherwise it's in "new" RK_PWM mode using SPI 78 f=
+or
+> all channels. Which apparently will be the case for anyone using upstream
+> U-Boot:
+>=20
+> https://source.denx.de/u-boot/u-boot/-/blob/master/arch/arm/mach-rockchip=
+/rk3288/rk3288.c#L83
+
+Huh, so it depends on a (software) setting which irqs are in use? So the
+patch isn't correct as is, but I have no idea how to make it right.
+Should we rely on the bootloader to fixup the dtb correctly?
+
+Anyhow, I'm marking the patch as 'changes-requested' in our patchwork
+instance.
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--egf4vu67dggq4mpk
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmNPppoACgkQwfwUeK3K
+7Akn2wf9E1mkjcU/X67/FHOeTDj1DxRQnT2HY0ff5ncZoX/knkINO0zn2zGjIGF0
+UDiwKP5KkEFkWGPkn1PZ7vnTRTeZelBL8O1TIqlpWHC9peH2gOEMSdUCcbE2e3aA
+MaErc+U4m9roSDtFnYkLFHudpANRgB545KscxYZaKR82ONFONQ57PaIiZuFnS2Fy
+uqMhDbgZc5OhHiKRwAvSumOPXoJ1XuJ85lZmmAmZd5mSp/2QAvk+H1zHxisjqw/b
+rQisgoJR1FVllkL6atrCQ1+Yml/9TtPZ05/y/pxbCVVdq69YgMpq0goABsX06Qx9
+W9a9eJvn0vfzsQ6TZBDIShGvmiRiFw==
+=DSeO
+-----END PGP SIGNATURE-----
+
+--egf4vu67dggq4mpk--
+
+
+--===============8562798716527956578==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8562798716527956578==--
+
